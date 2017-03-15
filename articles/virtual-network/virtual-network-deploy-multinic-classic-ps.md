@@ -1,10 +1,10 @@
 ---
-title: "Erstellen eines virtuellen Computers (VM) (klassisch) mit mehreren Netzwerkkarten über PowerShell | Microsoft Docs"
-description: "Erfahren Sie, wie Sie einen virtuellen Computern mit mehreren Netzwerkkarten (NICs) über das klassische Bereitstellungsmodell mithilfe von PowerShell erstellen."
+title: "Erstellen eines virtuellen Computers (klassisch) mit mehreren Netzwerkkarten – Azure PowerShell | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie über PowerShell einen virtuellen Computer (klassisch) mit mehreren Netzwerkkarten erstellen."
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-service-management
 ms.assetid: 6e50f39a-2497-4845-a5d4-7332dbc203c5
@@ -15,9 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 5f6f14a3bf779de0c4ef6d1f31c283b72d3a18f7
-ms.openlocfilehash: 9243294318c3f6c4c7a3563444f0db0ebcf33f28
+ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
+ms.openlocfilehash: cd3e6c548fd1f7dccaf478d3324efc8d768e3064
+ms.lasthandoff: 02/28/2017
 
 
 ---
@@ -140,8 +142,8 @@ Sie müssen die gewünschte Anzahl an virtuellen Computern mithilfe einer Schlei
 4. Legen Sie die Standard-Netzwerkkarte fest, und weisen Sie ihr eine statische IP-Adresse zu.
 
     ```powershell
-    Set-AzureSubnet         -SubnetNames $backendSubnetName -VM $vmConfig
-    Set-AzureStaticVNetIP   -IPAddress ($ipAddressPrefix+$suffixNumber+3) -VM $vmConfig
+    Set-AzureSubnet            -SubnetNames $backendSubnetName -VM $vmConfig
+    Set-AzureStaticVNetIP     -IPAddress ($ipAddressPrefix+$suffixNumber+3) -VM $vmConfig
     ```
 
 5. Fügen Sie für jeden virtuellen Computer eine zweite Netzwerkkarte hinzu.
@@ -194,10 +196,5 @@ Führen Sie das Skript aus, nachdem sie es heruntergeladen und angepasst haben, 
 
         New-AzureVM             xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded
         New-AzureVM             xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

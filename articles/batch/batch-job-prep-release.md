@@ -1,5 +1,5 @@
 ---
-title: "Verwenden von Tasks zur Auftragsvorbereitung und -freigabe – Azure Batch | Microsoft-Dokumentation"
+title: "Erstellen von Tasks zum Vorbereiten und Abschließen von Aufträgen auf Computeknoten – Azure Batch | Microsoft-Dokumentation"
 description: "Verwenden Sie Vorbereitungs- und Freigabeaufgaben auf Auftragsebene, um Datenübertragungen auf Azure Batch-Computeknoten zu minimieren und Knoten nach Abschluss des Auftrags zu bereinigen."
 services: batch
 documentationcenter: .net
@@ -12,15 +12,18 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 01/23/2017
+ms.date: 02/27/2017
 ms.author: tamram
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: bf22cd3426e936c8d74377f59443e5e1a6834286
-ms.openlocfilehash: 3b34a9665bfab85abbd633d01139ba2da2249bbf
+ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
+ms.openlocfilehash: 6a2525c02ce7bd3969469d2e28a5fccc948f89b1
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="run-job-preparation-and-completion-tasks-on-azure-batch-compute-nodes"></a>Ausführen von Auftragsvorbereitungs- und Auftragsabschlussaufgaben auf Azure Batch-Computeknoten
+# <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Ausführen von Tasks zum Vorbereiten und Freigeben von Aufträgen auf Azure Batch-Computeknoten
+
  Für einen Azure Batch-Auftrag ist häufig ein bestimmtes Setup erforderlich, bevor die entsprechenden Aufgaben ausgeführt werden, sowie ein Wartungsschritt nach der Durchführung der Aufgaben. Sie müssen unter Umständen allgemeine Eingabedaten für die Aufgaben auf Ihre Computeknoten herunterladen oder Ausgabedaten der Aufgaben in Azure Storage hochladen, nachdem der Auftrag abgeschlossen wurde. Sie können Aufgaben vom Typ **Auftragsvorbereitung** und **Auftragsfreigabe** verwenden, um diese Vorgänge durchzuführen.
 
 ## <a name="what-are-job-preparation-and-release-tasks"></a>Was sind Aufgaben zur Auftragsvorbereitung und -freigabe?
@@ -222,9 +225,4 @@ Der Beitrag wurde von einem Mitglied des Azure Batch-Teams geschrieben und enth�
 [net_list_tasks]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listtasks.aspx
 
 [1]: ./media/batch-job-prep-release/portal-jobprep-01.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

@@ -1,6 +1,6 @@
 ---
-title: Einrichten und Verwalten einer statischen privaten IP-Adresse mithilfe von PowerShell | Microsoft Docs
-description: "Erfahren Sie, wie Sie eine statische private IP-Adresse mithilfe von PowerShell einrichten und verwalten können | Azure Resource Manager."
+title: "Konfigurieren von privaten IP-Adressen für virtuelle Computer – Azure PowerShell | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie private IP-Adressen für virtuelle Computer mithilfe von PowerShell konfigurieren."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -15,13 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 75dbe164bf0fb4b3aff95954ce619781bbafaa5c
-ms.openlocfilehash: 3b966921bccb8e2bd29412c6e4aa200c606b4bf8
+ms.sourcegitcommit: b1eb8aa6bc822932b9f2abd1c448aca96069fefa
+ms.openlocfilehash: 2810190897c44c944912ef3325b1f40479aa3078
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="set-and-manage-a-static-private-ip-address-using-powershell"></a>Einrichten und Verwalten einer statischen privaten IP-Adresse mithilfe von PowerShell
+# <a name="configure-private-ip-addresses-for-a-virtual-machine-using-powershell"></a>Konfigurieren von privaten IP-Adressen für einen virtuellen Computer mithilfe von PowerShell
+
 [!INCLUDE [virtual-networks-static-private-ip-selectors-arm-include](../../includes/virtual-networks-static-private-ip-selectors-arm-include.md)]
 
 [!INCLUDE [virtual-networks-static-private-ip-intro-include](../../includes/virtual-networks-static-private-ip-intro-include.md)]
@@ -32,8 +35,8 @@ Azure verfügt über zwei Bereitstellungsmodelle: Azure Resource Manager und kla
 
 Die folgenden Beispielbefehle für PowerShell setzen voraus, dass bereits eine einfache Umgebung erstellt wurde, die auf dem zuvor beschriebenen Szenario basiert. Wenn Sie die in diesem Dokument aufgeführten Befehle ohne Veränderungen ausführen möchten, erstellen Sie zunächst eine Testumgebung, wie unter [Erstellen eines VNets](virtual-networks-create-vnet-arm-ps.md)beschrieben.
 
-## <a name="specify-a-static-private-ip-address-when-creating-a-vm"></a>Angeben einer statischen privaten IP-Adresse beim Erstellen eines virtuellen Computers
-Erstellen Sie in einem VNET mit dem Namen *TestVNet* im Subnetz *FrontEnd* einen virtuellen Computer mit dem Namen *DNS01* und der statischen privaten IP-Adresse *192.168.1.101*. Gehen Sie dabei wie folgt vor:
+## <a name="create-a-vm-with-a-static-private-ip-address"></a>Erstellen eines virtuellen Computers mit einer statischen privaten IP-Adresse
+Erstellen Sie in einem VNet mit dem Namen *TestVNet* im Subnetz *FrontEnd* einen virtuellen Computer mit dem Namen *DNS01* und der statischen privaten IP-Adresse *192.168.1.101*. Gehen Sie dabei wie folgt vor:
 
 1. Legen Sie die Variablen für das Speicherkonto, den Speicherort, die Ressourcengruppe und die zu verwendenden Anmeldeinformationen fest. Sie müssen einen Benutzernamen und ein Kennwort für den virtuellen Computer eingeben. Die Speichergruppe und die Ressourcengruppe müssen bereits vorhanden sein.
 
@@ -92,7 +95,7 @@ Erstellen Sie in einem VNET mit dem Namen *TestVNet* im Subnetz *FrontEnd* einen
         RequestId           : [Id]
         StatusCode          : OK 
 
-## <a name="retrieve-static-private-ip-address-information-for-a-vm"></a>Abrufen der Informationen zur statischen privaten IP-Adresse für einen virtuellen Computer
+## <a name="retrieve-static-private-ip-address-information-for-a-network-interface"></a>Abrufen der Informationen zur statischen privaten IP-Adresse für eine Netzwerkschnittstelle
 Führen Sie den folgenden PowerShell-Befehl aus, und sehen Sie sich die Werte für *PrivateIpAddress* und *PrivateIpAllocationMethod* an, um Informationen zur statischen privaten IP-Adresse des virtuellen Computers zu erhalten, der mit dem obigen Skript erstellt wurde:
 
 ```powershell
@@ -139,7 +142,7 @@ Erwartete Ausgabe:
     NetworkSecurityGroup : null
     Primary              : True
 
-## <a name="remove-a-static-private-ip-address-from-a-vm"></a>Entfernen einer statischen privaten IP-Adresse von einem virtuellen Computer
+## <a name="remove-a-static-private-ip-address-from-a-network-interface"></a>Entfernen einer statischen privaten IP-Adresse von einer Netzwerkschnittstelle
 Führen Sie die folgenden PowerShell-Befehle aus, um die statische private IP-Adresse zu entfernen, die dem virtuellen Computer im obigen Skript hinzugefügt wurde:
 
 ```powershell
@@ -188,7 +191,7 @@ Erwartete Ausgabe:
     NetworkSecurityGroup : null
     Primary              : True
 
-## <a name="add-a-static-private-ip-address-to-an-existing-vm"></a>Hinzufügen einer statischen privaten IP-Adresse zu einem vorhandenen virtuellen Computer
+## <a name="add-a-static-private-ip-address-to-a-network-interface"></a>Hinzufügen einer statischen privaten IP-Adresse zu einer Netzwerkschnittstelle
 Führen Sie folgenden Befehl aus, um dem virtuellen Computer, der mit dem obigen Skript erstellt wurde, eine statische private IP-Adresse hinzuzufügen:
 
 ```powershell
@@ -197,15 +200,31 @@ $nic.IpConfigurations[0].PrivateIpAllocationMethod = "Static"
 $nic.IpConfigurations[0].PrivateIpAddress = "192.168.1.101"
 Set-AzureRmNetworkInterface -NetworkInterface $nic
 ```
+## <a name="change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface"></a>Ändern der Zuordnungsmethode für eine private IP-Adresse, die einer Netzwerkschnittstelle zugewiesen ist
+
+Eine private IP-Adresse wird mithilfe der statischen oder der dynamischen Zuordnungsmethode zu einer Netzwerkwerkkarte zugewiesen. Dynamische IP-Adressen können sich nach dem Starten eines virtuellen Computers ändern, der zuvor beendet (freigegeben) war. Dies kann zu Problemen führen, wenn der virtuelle Computer einen Dienst hostet, der nach dem Neustarten des Computers aus dem beendeten (freigegebenen) Zustand weiterhin die gleiche IP-Adresse benötigt. Statische IP-Adressen werden beibehalten, bis der virtuelle Computer gelöscht wird. Um die Zuordnungsmethode einer IP-Adresse zu ändern, führen Sie das folgende Skript aus, das die Zuordnungsmethode von „dynamisch“ zu „statisch“ ändert. Wenn für die aktuelle private IP-Adresse die statische Zuordnungsmethode festgelegt ist, ändern Sie vor dem Ausführen des Skripts den Eintrag *Static* zu *Dynamic*.
+
+```powershell
+$RG = "TestRG"
+$NIC_name = "testnic1"
+
+$nic = Get-AzureRmNetworkInterface -ResourceGroupName $RG -Name $NIC_name
+$nic.IpConfigurations[0].PrivateIpAllocationMethod = 'Static'
+Set-AzureRmNetworkInterface -NetworkInterface $nic 
+$IP = $nic.IpConfigurations[0].PrivateIpAddress
+
+Write-Host "The allocation method is now set to"$nic.IpConfigurations[0].PrivateIpAllocationMethod"for the IP address" $IP"." -NoNewline
+```
+
+Wenn Sie den Namen der Netzwerkkarte nicht wissen, können Sie mithilfe des folgenden Befehls eine Liste der Netzwerkkarten in einer Ressourcengruppe anzeigen:
+
+```powershell
+Get-AzureRmNetworkInterface -ResourceGroupName $RG | Where-Object {$_.ProvisioningState -eq 'Succeeded'} 
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über [reservierte öffentliche IP-Adressen](virtual-networks-reserved-public-ip.md) .
 * Erfahren Sie mehr über [öffentliche IP-Adressen auf Instanzebene (ILPIP)](virtual-networks-instance-level-public-ip.md) .
 * Lesen Sie die Informationen zu [REST-APIs für reservierte IP-Adressen](https://msdn.microsoft.com/library/azure/dn722420.aspx).
-
-
-
-
-<!--HONumber=Nov16_HO5-->
 
 

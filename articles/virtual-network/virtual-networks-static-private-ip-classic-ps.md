@@ -1,10 +1,10 @@
 ---
-title: Einrichten einer statischen privaten IP-Adresse im klassischen Modus mithilfe von PowerShell | Microsoft Docs
-description: Grundlegendes zu statischen privaten IP-Adressen (DIPs) und zur Verwaltung dieser IP-Adressen im klassischen Modus mithilfe von PowerShell
+title: "Konfigurieren von privaten IP-Adressen für virtuelle Computer (klassisch) – Azure PowerShell | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie private IP-Adressen für virtuelle Computer (klassisch) mithilfe von PowerShell konfigurieren."
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
+manager: timlt
 editor: tysonn
 tags: azure-service-management
 ms.assetid: 60c7b489-46ae-48af-a453-2b429a474afd
@@ -15,13 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2a3fe657f9d4ed967701cfc91948b3a7ef799dbc
+ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
+ms.openlocfilehash: 5da2992fad89a703086b7645c88f6d8e1a39e4b3
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="how-to-set-a-static-private-ip-address-classic-in-powershell"></a>Einrichten einer statischen privaten IP-Adresse (klassisch) in PowerShell
+# <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-powershell"></a>Konfigurieren von privaten IP-Adressen für einen virtuellen Computer (klassisch) mithilfe von PowerShell
+
 [!INCLUDE [virtual-networks-static-private-ip-selectors-classic-include](../../includes/virtual-networks-static-private-ip-selectors-classic-include.md)]
 
 [!INCLUDE [virtual-networks-static-private-ip-intro-include](../../includes/virtual-networks-static-private-ip-intro-include.md)]
@@ -130,10 +133,5 @@ Erwartete Ausgabe:
 * Erfahren Sie mehr über [reservierte öffentliche IP-Adressen](virtual-networks-reserved-public-ip.md) .
 * Erfahren Sie mehr über [öffentliche IP-Adressen auf Instanzebene (ILPIP)](virtual-networks-instance-level-public-ip.md) .
 * Lesen Sie die Informationen zu [REST-APIs für reservierte IP-Adressen](https://msdn.microsoft.com/library/azure/dn722420.aspx).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

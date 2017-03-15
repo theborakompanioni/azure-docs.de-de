@@ -12,15 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 02/23/2017
 ms.author: kgremban
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 68f1088a7303b5eddecc9ff99f7330c0462baafc
-ms.openlocfilehash: 9fb517a08fb56a1adb9e23f820aa2e4aa20eacf6
-
+ms.sourcegitcommit: e4ef137656c12cf6495a00450eed308ac6a8a872
+ms.openlocfilehash: 804e811c0db5f72b6764b3cb120eb5ec8898baac
+ms.lasthandoff: 02/28/2017
 
 ---
-# <a name="augment-your-existing-authentication-infrastructure-with-the-nps-extension-for-azure-multi-factor-authentication---public-preview"></a>Verbessern der vorhandenen Authentifizierungsinfrastruktur mit der NPS-Erweiterung für Azure Multi-Factor Authentication: Öffentliche Vorschau
+# <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication---public-preview"></a>Integrieren Ihrer vorhandenen NPS-Infrastruktur in Azure Multi-Factor Authentication – Public Preview
 
 Die NPS-Erweiterung (Network Policy Server, Netzwerkrichtlinienserver) für Azure MFA fügt Ihrer Authentifizierungsinfrastruktur unter Verwendung Ihrer vorhandenen Server cloudbasierte MFA-Funktionen hinzu. Mit der NPS-Erweiterung können Sie Ihrem bestehenden Authentifizierungsvorgang eine Überprüfung per Telefonanruf, SMS oder Telefon-App hinzufügen, ohne neue Server installieren, konfigurieren und verwalten zu müssen. 
  
@@ -155,9 +156,4 @@ Dieser Fehler kann verschiedene Gründe haben. Gehen Sie zur Problembehandlung f
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie, wie Azure MFA in [Active Directory](multi-factor-authentication-get-started-server-dirint.md), die [RADIUS-Authentifizierung](multi-factor-authentication-get-started-server-radius.md) und [LDAP-Authentifizierung](multi-factor-authentication-get-started-server-ldap.md) integriert wird.
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

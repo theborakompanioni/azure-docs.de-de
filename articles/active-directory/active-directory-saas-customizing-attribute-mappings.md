@@ -1,5 +1,5 @@
 ---
-title: Anpassen von Attributzuordnungen | Microsoft Docs
+title: Anpassen von Azure AD-Attributzuordnungen | Microsoft-Dokumentation
 description: "Erfahren Sie, was Attributzuordnungen für SaaS-Apps in Azure Active Directory sind und wie Sie sie an Ihre geschäftlichen Anforderungen anpassen können."
 services: active-directory
 documentationcenter: 
@@ -12,16 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2017
+ms.date: 02/27/2017
 ms.author: markvi
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: b73c9dc8edd341898ede06f67f383b86010e1e39
+ms.sourcegitcommit: 18415c92d50a00c14823685857ab7e2624334ec7
+ms.openlocfilehash: 19e934895279adb3a32096fffafd567b294c3009
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="customizing-attribute-mappings"></a>Anpassen von Attributzuordnungen
-Microsoft Azure AD bietet Unterstützung für die Benutzerbereitstellung für SaaS-Anwendungen von Drittanbietern, z. B. Salesforce, Google Apps usw. Wenn Sie die Benutzerbereitstellung für eine SaaS-Anwendung eines Drittanbieters aktiviert haben, steuert das Azure-Verwaltungsportal deren Attributwerte mithilfe einer Konfiguration, die als "Attributzuordnung" bezeichnet wird.
+# <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory
+Microsoft Azure AD bietet Unterstützung für die Benutzerbereitstellung für SaaS-Anwendungen von Drittanbietern, z. B. Salesforce, Google Apps usw. Wenn Sie die Benutzerbereitstellung für eine SaaS-Anwendung eines Drittanbieters aktiviert haben, steuert das Azure-Verwaltungsportal deren Attributwerte mithilfe einer Konfiguration, die als „Attributzuordnung“ bezeichnet wird.
 
 Es ist eine vorkonfigurierte Sammlung von Attributzuordnungen zwischen Azure AD-Benutzerobjekten und den Benutzerobjekten der einzelnen SaaS-Apps vorhanden. Einige Apps verwalten andere Objekttypen, z. B. Gruppen oder Kontakte. <br> 
  Sie können die Standardattributzuordnungen den Anforderungen Ihres Unternehmens entsprechend anpassen. Dies bedeutet, dass Sie vorhandene Attributzuordnungen ändern oder löschen und neue Attributzuordnungen erstellen können.
@@ -59,12 +61,12 @@ Mit Attributzuordnungen steuern Sie, wie die Attribute in einer SaaS-Anwendung e
 * **Direkt** : Das Zielattribut wird mit dem Wert eines Attributs des verknüpften Objekts in Azure AD aufgefüllt.
 * **Konstant** : Das Zielattribut wird mit einer bestimmten Zeichenfolge, die Sie angegeben haben, aufgefüllt.
 * **Ausdruck** : Das Zielattribut wird abhängig vom Ergebnis eines skriptähnlichen Ausdrucks mit Daten aufgefüllt. 
-  Weitere Details finden Sie unter [Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory](active-directory-saas-writing-expressions-for-attribute-mappings.md).
+  Weitere Informationen finden Sie unter [Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory](active-directory-saas-writing-expressions-for-attribute-mappings.md).
 * **Kein** : Das Zielattribut bleibt unverändert. Wenn das Zielattribut allerdings leer ist, wird es mit dem von Ihnen angegebenen Standardwert aufgefüllt.
 
 Zusätzlich zu diesen vier grundlegenden Attributzuordnungstypen unterstützen benutzerdefinierte Attributzuordnungen das Konzept der Zuordnung von **Standardwerten** . Die Standardwertzuordnung stellt sicher, dass ein Zielattribut mit einem Wert aufgefüllt wird, wenn weder in Azure AD noch für das Zielobjekt ein Wert vorhanden ist.
 
-Microsoft Azure AD stellt eine äußerst effiziente Implementierung eines Synchronisierungsprozesses zur Verfügung. In einer initialisierten Umgebung werden nur Objekte, die eine Aktualisierung erfordern, während eines Synchronisierungszyklus verarbeitet. Das Aktualisieren von Attributzuordnungen besitzt Auswirkungen auf die Leistung eines Synchronisierungszyklus. Der Grund besteht darin, dass nach einer Aktualisierung der Attributzuordnungskonfiguration alle verwalteten Objekte erneut ausgewertet werden müssen. Aus diesem Grund ist es eine empfohlene bewährte Methode, die Anzahl der aufeinanderfolgenden Änderungen an Ihren Attributzuordnungen so gering wie möglich zu halten.
+Microsoft Azure AD stellt eine effiziente Implementierung eines Synchronisierungsprozesses zur Verfügung. In einer initialisierten Umgebung werden nur Objekte, die eine Aktualisierung erfordern, während eines Synchronisierungszyklus verarbeitet. Das Aktualisieren von Attributzuordnungen besitzt Auswirkungen auf die Leistung eines Synchronisierungszyklus. Nach einer Aktualisierung der Attributzuordnungskonfiguration müssen alle verwalteten Objekte erneut ausgewertet werden. Es hat sich bewährt, die Anzahl der aufeinanderfolgenden Änderungen an Attributzuordnungen so gering wie möglich zu halten.
 
 ## <a name="related-articles"></a>Verwandte Artikel
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
@@ -80,9 +82,4 @@ Microsoft Azure AD stellt eine äußerst effiziente Implementierung eines Synchr
 [2]: ./media/active-directory-saas-customizing-attribute-mappings/ic775419.png
 [3]: ./media/active-directory-saas-customizing-attribute-mappings/ic775420.png
 [4]: ./media/active-directory-saas-customizing-attribute-mappings/ic775421.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

@@ -1,5 +1,5 @@
 ---
-title: "Verwenden des internen DNS für die Auflösung von virtuellen Computernamen mit der Azure-Befehlszeilenschnittstelle 2.0 (Vorschau) | Microsoft-Dokumentation"
+title: "Verwenden des internen DNS für die Auflösung von virtuellen Computernamen mit der Azure CLI 2.0 | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie über die Azure-Befehlszeilenschnittstelle 2.0 virtuelle Netzwerkkarten erstellen und das interne DNS für die Auflösung von virtuellen Computernamen in Azure verwenden."
 services: virtual-machines-linux
 documentationcenter: 
@@ -16,31 +16,23 @@ ms.topic: article
 ms.date: 02/16/2017
 ms.author: v-livech
 translationtype: Human Translation
-ms.sourcegitcommit: 8584606666fe93630f6486c16350a619787c8d14
-ms.openlocfilehash: 389416818df272cf09c1a35bd23ea882ecf3b0fc
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 1aeb983730f732a021b828c658cc741f8659c487
+ms.openlocfilehash: 06554f939a6c4f2336f68676612df51c673afbb2
+ms.lasthandoff: 02/27/2017
 
 
 ---
 
 # <a name="create-virtual-network-interface-cards-and-use-internal-dns-for-vm-name-resolution-on-azure"></a>Erstellen von virtuellen Netzwerkkarten und Verwenden des internen DNS für die Auflösung von virtuellen Computernamen in Azure
-In diesem Artikel wird gezeigt, wie Sie mithilfe von virtuellen Netzwerkkarten (vNICs) und DNS-Bezeichnungsnamen statische interne DNS-Namen für virtuelle Linux-Computer festlegen. Statische DNS-Namen werden für permanente Infrastrukturdienste wie einen Jenkins-Buildserver, der in diesem Dokument als Beispiel dient, oder einen Git-Server verwendet.
+In diesem Artikel wird gezeigt, wie Sie mit der Azure CLI 2.0 mithilfe von virtuellen Netzwerkkarten (vNICs) und DNS-Bezeichnungsnamen statische interne DNS-Namen für virtuelle Linux-Computer festlegen. Sie können diese Schritte auch mit der [Azure CLI 1.0](virtual-machines-linux-static-dns-name-resolution-for-linux-on-azure-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ausführen. Statische DNS-Namen werden für permanente Infrastrukturdienste wie einen Jenkins-Buildserver, der in diesem Dokument als Beispiel dient, oder einen Git-Server verwendet.
 
 Folgende Anforderungen müssen erfüllt sein:
 
 * [ein Azure-Konto](https://azure.microsoft.com/pricing/free-trial/)
 * [Dateien mit den öffentlichen und privaten SSH-Schlüsseln](virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-
-## <a name="cli-versions-to-complete-the-task"></a>CLI-Versionen zum Durchführen dieser Aufgabe
-Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
-
-- [Azure CLI 1.0:](virtual-machines-linux-static-dns-name-resolution-for-linux-on-azure-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell
-- [Azure CLI 2.0 (Vorschau):](#quick-commands) Unsere Befehlszeilenschnittstelle der nächsten Generation für das Resource Manager-Bereitstellungsmodell (dieser Artikel)
-
-
 ## <a name="quick-commands"></a>Schnellbefehle
-Falls Sie die Aufgabe schnell durchführen müssen, finden Sie im folgenden Abschnitt eine Erläuterung der erforderlichen Befehle. Ausführlichere Informationen und Kontext zu den einzelnen Schritten finden Sie im übrigen Dokument ([ab hier](#detailed-walkthrough)). Zum Ausführen dieser Schritte muss die neueste [Azure-Befehlszeilenschnittstelle 2.0 (Vorschau)](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sein.
+Falls Sie die Aufgabe schnell durchführen müssen, finden Sie im folgenden Abschnitt eine Erläuterung der erforderlichen Befehle. Ausführlichere Informationen und Kontext zu den einzelnen Schritten finden Sie im übrigen Dokument ([ab hier](#detailed-walkthrough)). Zum Ausführen dieser Schritte muss die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sein.
 
 Voraussetzungen: Ressourcengruppe, virtuelles Netzwerk und Subnetz, Netzwerksicherheitsgruppe mit eingehenden SSH-Verbindungen.
 

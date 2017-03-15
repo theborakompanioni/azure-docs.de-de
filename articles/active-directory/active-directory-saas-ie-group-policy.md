@@ -1,5 +1,5 @@
 ---
-title: "Bereitstellen der Zugriffsbereichserweiterung für Internet Explorer mit Gruppenrichtlinien | Microsoft Docs"
+title: "Bereitstellen der Azure-Zugriffsbereichserweiterung für IE mithilfe eines Gruppenrichtlinienobjekts | Microsoft-Dokumentation"
 description: "So stellen Sie das Internet Explorer-Add-On für das Portal &quot;Meine Apps&quot; mithilfe von Gruppenrichtlinien bereit"
 services: active-directory
 documentationcenter: 
@@ -11,11 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/24/2017
+ms.date: 02/27/2017
 ms.author: markvi
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b312e1a37b15e170847fae02e40bae26103b6d6d
+ms.sourcegitcommit: c06c089fb08c19b55246122201c378917a560e14
+ms.openlocfilehash: af36f45e66b68e2e76651eb408682f36ee0cbb68
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -28,23 +30,23 @@ Die Zugriffsbereichserweiterung ist auch für [Chrome](https://go.microsoft.com/
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Sie haben [Active Directory-Domänendienste](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx)eingerichtet und die Computer Ihrer Benutzer Ihrer Domäne hinzugefügt.
-* Zum Bearbeiten von Gruppenrichtlinienobjekten benötigen Sie die Berechtigung „Einstellungen bearbeiten“. Standardmäßig verfügen Mitglieder der folgenden Sicherheitsgruppen über diese Berechtigung: Domänenadministratoren, Organisationsadministratoren und Richtlinien-Ersteller-Besitzer. [Weitere Informationen.](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)
+* Zum Bearbeiten des Gruppenrichtlinienobjekts benötigen Sie die Berechtigung „Einstellungen bearbeiten“. Standardmäßig verfügen Mitglieder der folgenden Sicherheitsgruppen über diese Berechtigung: Domänenadministratoren, Organisationsadministratoren und Richtlinien-Ersteller-Besitzer. [Weitere Informationen.](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)
 
 ## <a name="step-1-create-the-distribution-point"></a>Schritt 1: Erstellen des Verteilungspunkts
-Zunächst müssen Sie das Installationspaket an einem Speicherort im Netzwerk ablegen, auf den von allen Computern aus zugegriffen werden kann, auf denen Sie die Erweiterung per Remotezugriff installieren möchten. Gehen Sie dazu folgendermaßen vor:
+Zunächst müssen Sie das Installationspaket an einem Speicherort im Netzwerk ablegen, auf den über die Computer zugegriffen werden kann, auf denen Sie die Erweiterung per Remotezugriff installieren möchten. Gehen Sie dazu folgendermaßen vor:
 
 1. Melden Sie sich beim Server als Administrator an.
 2. Wechseln Sie im Fenster **Server-Manager** zu **Dateien und Speicherdienste**.
    
     ![Dateien und Speicherdienste öffnen](./media/active-directory-saas-ie-group-policy/files-services.png)
-3. Klicken Sie auf die Registerkarte **Freigaben** . Klicken Sie auf **Aufgaben** > **Neue Freigabe...**
+3. Klicken Sie auf die Registerkarte **Freigaben** . Klicken Sie dann auf **Aufgaben** > **Neue Freigabe**.
    
     ![Dateien und Speicherdienste öffnen](./media/active-directory-saas-ie-group-policy/shares.png)
 4. Schließen Sie den **Assistenten für neue Freigaben** , und legen Sie Berechtigungen fest, um sicherzustellen, dass von den Computern Ihrer Benutzer aus darauf zugegriffen werden kann. [Weitere Informationen zu Freigaben](https://technet.microsoft.com/library/cc753175.aspx)
 5. Laden Sie das folgende Microsoft Windows Installer-Paket (MSI-Datei) herunter: [Access Panel Extension.msi](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access Panel Extension.msi).
 6. Kopieren Sie das Installationspaket an den gewünschten Speicherort auf der Freigabe.
    
-    ![Kopieren Sie die MSI-Datei auf Ihre Freigabe.](./media/active-directory-saas-ie-group-policy/copy-package.png)
+    ![Kopieren Sie die MSI-Datei in die Freigabe.](./media/active-directory-saas-ie-group-policy/copy-package.png)
 7. Stellen Sie sicher, dass von den Clientcomputern aus auf das Installationspaket auf der Freigabe zugegriffen werden kann. 
 
 ## <a name="step-2-create-the-group-policy-object"></a>Schritt 2: Erstellen des Gruppenrichtlinienobjekts
@@ -58,23 +60,23 @@ Zunächst müssen Sie das Installationspaket an einem Speicherort im Netzwerk ab
    > Wenn Sie Organisationseinheiten erstellen oder bearbeiten möchten, wechseln Sie zurück zum Server-Manager, und wählen Sie **Extras** > **Active Directory-Benutzer und -Computer** aus.
    > 
    > 
-4. Nachdem Sie eine Organisationseinheit ausgewählt haben, klicken Sie mit der rechten Maustaste darauf, und wählen Sie **Gruppenrichtlinienobjekt hier erstellen und verknüpfen...**
+4. Nachdem Sie eine Organisationseinheit ausgewählt haben, klicken Sie mit der rechten Maustaste darauf, und wählen Sie **Gruppenrichtlinienobjekt hier erstellen und verknüpfen** aus.
    
     ![Neues Gruppenrichtlinienobjekt erstellen](./media/active-directory-saas-ie-group-policy/create-gpo.png)
 5. Geben Sie in der Eingabeaufforderung **Neues Gruppenrichtlinienobjekt** einen Namen für das neue Gruppenrichtlinienobjekt ein.
    
     ![Neues Gruppenrichtlinienobjekt benennen](./media/active-directory-saas-ie-group-policy/name-gpo.png)
-6. Klicken Sie mit der rechten Maustaste auf das Gruppenrichtlinienobjekt, das Sie gerade erstellt haben, und wählen Sie **Bearbeiten**.
+6. Klicken Sie mit der rechten Maustaste auf das Gruppenrichtlinienobjekt, das Sie gerade erstellt haben, und wählen Sie **Bearbeiten** aus.
    
     ![Neues Gruppenrichtlinienobjekt bearbeiten](./media/active-directory-saas-ie-group-policy/edit-gpo.png)
 
 ## <a name="step-3-assign-the-installation-package"></a>Schritt 3: Zuweisen des Installationspakets
-1. Legen Sie fest, ob Sie die Erweiterung basierend auf der **Computerkonfiguration** oder basierend auf der **Benutzerkonfiguration** bereitstellen möchten. Bei Verwendung der [Computerkonfiguration](https://technet.microsoft.com/library/cc736413%28v=ws.10%29.aspx)wird die Erweiterung auf dem Computer installiert, und zwar unabhängig davon, welche Benutzer sich bei ihm anmelden. Im Gegensatz dazu wird bei Verwendung von [Benutzerkonfiguration](https://technet.microsoft.com/library/cc781953%28v=ws.10%29.aspx)die Erweiterung für die Benutzer installiert, und zwar unabhängig davon, bei welchem Computer sie sich anmelden.
+1. Legen Sie fest, ob Sie die Erweiterung basierend auf der **Computerkonfiguration** oder basierend auf der **Benutzerkonfiguration** bereitstellen möchten. Bei Verwendung der [Computerkonfiguration](https://technet.microsoft.com/library/cc736413%28v=ws.10%29.aspx) wird die Erweiterung auf dem Computer installiert, und zwar unabhängig davon, welche Benutzer sich bei ihm anmelden. Bei Verwendung der [Benutzerkonfiguration](https://technet.microsoft.com/library/cc781953%28v=ws.10%29.aspx) wird die Erweiterung für die Benutzer installiert, und zwar unabhängig davon, bei welchem Computer sie sich anmelden.
 2. Folgen Sie abhängig vom gewählten Konfigurationstyp im linken Bereich des Fensters **Gruppenrichtlinienverwaltungs-Editor** einem der folgenden Ordnerpfade:
    
    * `Computer Configuration/Policies/Software Settings/`
    * `User Configuration/Policies/Software Settings/`
-3. Klicken Sie mit der rechten Maustaste auf **Softwareinstallation**, und wählen Sie dann **Neu** > **Paket...** aus.
+3. Klicken Sie mit der rechten Maustaste auf **Softwareinstallation**, und wählen Sie dann **Neu** > **Paket** aus.
    
     ![Neues Paket für die Softwareinstallation erstellen](./media/active-directory-saas-ie-group-policy/new-package.png)
 4. Klicken Sie auf den freigegebenen Ordner mit dem Installationspaket aus [Schritt 1: Erstellen des Verteilungspunkts](#step-1-create-the-distribution-point), markieren Sie die MSI-Datei, und klicken Sie auf **Öffnen**.
@@ -121,7 +123,7 @@ Wenn sich Benutzer unter Verwendung der Zugriffsbereichserweiterung bei Websites
 
 Falls diese Frage nicht angezeigt werden soll, führen Sie die folgenden Schritte aus, um das Speichern von Kennwörtern durch AutoVervollständigen zu unterbinden:
 
-1. Navigieren Sie im **Gruppenrichtlinienverwaltungs-Editor** zum unten angegebenen Pfad. Beachten Sie, dass diese Konfigurationseinstellung nur unter **Benutzerkonfiguration**verfügbar ist.
+1. Navigieren Sie im **Gruppenrichtlinienverwaltungs-Editor** zum unten angegebenen Pfad. Diese Konfigurationseinstellung ist nur unter **Benutzerkonfiguration** verfügbar.
    
    * `User Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/`
 2. Suchen Sie die Einstellung **AutoVervollständigen für Benutzernamen und Kennwörter in Formularen aktivieren**.
@@ -132,7 +134,7 @@ Falls diese Frage nicht angezeigt werden soll, führen Sie die folgenden Schritt
    > 
    
     ![Diese finden Sie in den Benutzereinstellungen.](./media/active-directory-saas-ie-group-policy/disable-auto-complete.png)
-3. Klicken Sie mit der rechten Maustaste auf die oben genannte Einstellung, und wählen Sie **Bearbeiten**aus.
+3. Klicken Sie mit der rechten Maustaste auf die oben genannte Einstellung, und wählen Sie **Bearbeiten** aus.
 4. Wählen Sie im Fenster **AutoVervollständigen für Benutzernamen und Kennwörter in Formularen aktivieren** die Option **Deaktiviert** aus.
    
     ![Wählen Sie „Deaktivieren“ aus.](./media/active-directory-saas-ie-group-policy/disable-passwords.png)
@@ -162,10 +164,5 @@ Gehen Sie folgendermaßen vor, um zu überprüfen, ob die Erweiterungsbereitstel
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 * [Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory](active-directory-appssoaccess-whatis.md)
 * [Problembehandlung in der Zugriffsbereichserweiterung für Internet Explorer](active-directory-saas-ie-troubleshooting.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

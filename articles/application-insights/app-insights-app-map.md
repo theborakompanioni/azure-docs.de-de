@@ -1,21 +1,22 @@
 ---
-title: Anwendungszuordnung in Application Insights | Microsoft Docs
+title: Anwendungszuordnung in Azure Application Insights | Microsoft-Dokumentation
 description: "Eine visuelle Darstellung der Abhängigkeiten zwischen App-Komponenten mit KPIs und Warnungen."
 services: application-insights
 documentationcenter: 
 author: SoubhagyaDash
-manager: douge
+manager: carmonm
 ms.assetid: 3bf37fe9-70d7-4229-98d6-4f624d256c36
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/18/2016
+ms.date: 02/22/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: fc2d3c3fee5abbab0eab16c106c88c8753e703cc
-ms.openlocfilehash: f7ee8a43c83b1bad53acdb71de7a66d8afaa09b2
+ms.sourcegitcommit: 1330d8be444f596b0d1ed2038eaeb1200e8b9285
+ms.openlocfilehash: 04a34eb24df356018590b1791ecc7719a550ab51
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -49,7 +50,7 @@ Wenn zahlreiche Abhängigkeiten eines Typs (SQL, HTTP usw.) vorhanden sind, werd
 ## <a name="spot-problems"></a>Erkennen von Problemen
 Jeder Knoten verfügt über relevante Leistungsindikatoren wie Last, Leistung und Fehlerraten für die jeweilige Komponente. 
 
-Warnsymbole weisen auf mögliche Probleme hin. Eine orangefarbene Warnung bedeutet, dass Fehler bei Anforderungen, Seitenaufrufen oder Abhängigkeitsaufrufen vorliegen. Rot gibt eine Fehlerquote von über 5 Prozent an.
+Warnsymbole weisen auf mögliche Probleme hin. Eine orangefarbene Warnung bedeutet, dass Fehler bei Anforderungen, Seitenaufrufen oder Abhängigkeitsaufrufen vorliegen. Rot gibt eine Fehlerquote von über 5 Prozent an. Wenn Sie diese Schwellenwerte anpassen möchten, öffnen Sie die Optionen.
 
 ![Fehlersymbole](./media/app-insights-app-map/04.png)
 
@@ -105,9 +106,6 @@ Die App-Zuordnung findet Serverknoten, indem alle Application Insights-Ressource
 
 ![MapLink-1 (Abbildung)](./media/app-insights-app-map/13.png)
 
+## <a name="next-steps"></a>Nächste Schritte
 
-
-
-<!--HONumber=Nov16_HO4-->
-
-
+* [Azure-Portal](https://portal.azure.com)

@@ -13,24 +13,25 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 02/08/2017
+ms.date: 02/23/2017
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: 99c7ca60b472d2481d9ebb1ec4be3d2eee088c26
-ms.openlocfilehash: e1b76cb4c6393d7c5783f55bf9a0f141786a9602
+ms.sourcegitcommit: 08682b7986cc2210ed21f254e2a9a63b5355e583
+ms.openlocfilehash: c7094a92355a199e9b94bc695c8499271b9adc39
+ms.lasthandoff: 02/24/2017
 
 
 ---
 # <a name="service-limits-in-azure-search"></a>Grenzwerte für den Azure Search-Dienst
-Die Höchstwerte für Speicher, Workloads und Mengen von Indizes, Dokumenten und anderen Objekten hängen davon ab, ob Sie Azure Search zum **Free**-, **Basic**- oder **Standard**-Tarif hinzufügen.
+Die Grenzwerte für Speicher, Workloads und Mengen von Indizes, Dokumenten und anderen Objekten hängen davon ab, ob die [Bereitstellung von Azure Search](search-create-service-portal.md) im Tarif **Free**, **Basic** oder **Standard** erfolgt.
 
 * **Free** ist ein gemeinsamer mehrinstanzfähiger Dienst, der Teil Ihres Azure-Abonnements ist. Es handelt sich um eine Option für vorhandene Abonnenten ohne zusätzliche Kosten, die es Ihnen ermöglicht, den Dienst zu testen, bevor Sie sich für spezifische Ressourcen anmelden.
 * **Basic** bietet spezifische Computerressourcen für Produktionsworkloads mit geringerem Umfang.
 * **Standard** wird auf dedizierten Computern ausgeführt. Sie bieten höhere Speicher- und Verarbeitungskapazität auf jeder Ebene. Standard ist in vier Ebenen verfügbar: S1, S2, S3 und S3 High Density (S3 HD).
 
-Alle Tarife können [im Portal bereitgestellt werden](search-create-service-portal.md). Ein Dienst wird anfangs einer Partition und einem Replikat zugeordnet, Sie können die Ressourcenzuordnung jedoch ändern, nachdem der Dienst erstellt wurde.
-
-Ein Dienst wird für einen bestimmten Tarif bereitgestellt. Wenn Sie den Tarif wechseln möchten, um die Kapazität zu erhöhen, müssen Sie einen neuen Dienst bereitstellen (es gibt kein direktes Upgrade). Weitere Informationen zu Tarifen finden Sie unter [Auswählen einer SKU oder eines Tarifs](search-sku-tier.md). Weitere Informationen zum Anpassen der Kapazität in einem Dienst, den Sie bereits bereitgestellt haben, finden Sie unter [Skalieren von Ressourcenebenen für Abfrage und Indizierung von Workloads in Azure Search](search-capacity-planning.md).
+> [!NOTE]
+> Ein Dienst wird für einen bestimmten Tarif bereitgestellt. Wenn Sie den Tarif wechseln möchten, um die Kapazität zu erhöhen, müssen Sie einen neuen Dienst bereitstellen (es gibt kein direktes Upgrade). Weitere Informationen finden Sie unter [Auswählen einer SKU oder eines Tarifs](search-sku-tier.md). Weitere Informationen zum Anpassen der Kapazität in einem Dienst, den Sie bereits bereitgestellt haben, finden Sie unter [Skalieren von Ressourcenebenen für Abfrage und Indizierung von Workloads in Azure Search](search-capacity-planning.md).
+>
 
 ## <a name="per-subscription-limits"></a>Nach Grenzwerten für Abonnements
 [!INCLUDE [azure-search-limits-per-subscription](../../includes/azure-search-limits-per-subscription.md)]
@@ -93,9 +94,4 @@ API-Schlüssel werden für die Dienstauthentifizierung verwendet. Es gibt zwei A
 
 * Maximal 2 Administratorschlüssel pro Dienst
 * Maximal 50 Abfrageschlüssel pro Dienst
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -1,5 +1,5 @@
 ---
-title: "Ausführen von parallelen Aufgaben zur Maximierung der Knotennutzung – Azure Batch | Microsoft-Dokumentation"
+title: "Parallele Ausführung von Tasks zur effizienten Nutzung von Computeressourcen – Azure Batch | Microsoft-Dokumentation"
 description: "Steigern der Effizienz und Reduzieren von Kosten durch Verringern der Serverknotenzahl und Ausführen paralleler Aufgaben auf jedem Knoten in einem Azure Batch-Pool"
 services: batch
 documentationcenter: .net
@@ -12,15 +12,18 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 01/23/2017
+ms.date: 02/27/2017
 ms.author: tamram
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: ffba988bd8cd3896816118afde979c7067fced79
-ms.openlocfilehash: 8080c8c43d1e88381cd49bdac6a5f36b6cd82709
+ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
+ms.openlocfilehash: c4053ded725ad7ab2acc6d5d54e8343ffb961408
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="maximize-azure-batch-compute-resource-usage-with-concurrent-node-tasks"></a>Maximieren der Azure Batch Compute-Ressourcenauslastung mit parallelen Knotenaufgaben
+# <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>Gleichzeitige Ausführung von Tasks zur optimalen Nutzung von Batch-Computeknoten 
+
 Wenn Sie mehrere Aufgaben gleichzeitig in jedem Computeknoten in Ihrem Azure Batch-Pool ausführen, wird die Maximierung der Ressourcenauslastung auf einer kleineren Anzahl von Knoten im Pool möglich. Bei einigen Workloads kann dies zu kürzeren Auftragszeiten und niedrigeren Kosten führen.
 
 In manchen Szenarien profitieren Sie davon, dass alle Ressourcen eines Knotens einer einzigen Aufgabe zugewiesen werden können. Dagegen profitieren Sie in vielen Situationen davon, diese Ressourcen von mehreren Aufgaben nutzen zu lassen:
@@ -143,9 +146,4 @@ Der [Azure Batch Explorer][batch_explorer], eine der [Beispielanwendungen][githu
 [task_schedule]: https://msdn.microsoft.com/library/microsoft.azure.batch.cloudpool.taskschedulingpolicy.aspx
 
 [1]: ./media/batch-parallel-node-tasks\heat_map.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2017
+ms.date: 02/23/2017
 ms.author: deguhath;bradsev;gokuma
 translationtype: Human Translation
-ms.sourcegitcommit: d1b5f52bb57f6d963db4bdb6249c3b9a3fd118cd
-ms.openlocfilehash: 4abcbfc8e1abfa1278307d97e366e0d0ae846d05
+ms.sourcegitcommit: 116344308a1173994ec85bcb8a7112ce158f4f60
+ms.openlocfilehash: 3d42453f5bbe84dbb1e8902279da6ac43c683478
+ms.lasthandoff: 02/24/2017
 
 
 
@@ -33,18 +34,20 @@ Diese Sammlung von Themen zeigt, wie mit HDInsight Spark allgemeine Data Science
 [HDInsight Spark](../hdinsight/hdinsight-apache-spark-overview.md) ist das in Azure gehostete Angebot für Open-Source-Spark. Darüber hinaus unterstützt der Spark-Cluster **Jupyter-PySpark-Notebooks**. Außerdem kann er interaktive Spark-SQL-Abfragen zum Transformieren, Filtern und Visualisieren von in Azure-Blobs (WASB) gespeicherten Daten ausführen. PySpark ist die Python-API für Spark. Die Codeausschnitte, die die Lösungen bereitstellen und die relevanten Plots zum Visualisieren der Daten zeigen, werden in Jupyter-Notebooks in den Spark-Clustern ausgeführt. Die Modellierungsschritte in diesen Themen enthalten auch Code zum Trainieren, Evaluieren, Speichern und Nutzen jedes Modelltyps. 
 
 ## <a name="setup-spark-clusters-and-jupyter-notebooks"></a>Einrichtung: Spark-Cluster und Jupyter-Notebooks
-Die Einrichtungsschritte und der Code in dieser exemplarischen Vorgehensweise beziehen sich auf HDInsight Spark 1.6. Jupyter-Notebooks werden jedoch für HDInsight Spark 1.6- und Spark 2.0-Cluster bereitgestellt. Eine Beschreibung der Notebooks und Links zu diesen finden Sie in der Datei [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) zu dem GitHub-Repository, das sie enthält. Der hier und in den verknüpften Notebooks zu findende Code ist darüber hinaus generisch und sollte in allen Spark-Clustern funktionieren. Wenn Sie HDInsight Spark nicht verwenden, weichen Clustereinrichtung und Verwaltungsschritte möglicherweise geringfügig von dem ab, was hier gezeigt wird. Der Einfachheit halber finden Sie hier die Links zu den Jupyter-Notebooks für Spark 1.6 und 2.0, die im PySpark-Kernel der Jupyter-Notebookserver ausgeführt werden:
+Die Einrichtungsschritte und der Code in dieser exemplarischen Vorgehensweise beziehen sich auf HDInsight Spark 1.6. Jupyter-Notebooks werden jedoch für HDInsight Spark 1.6- und Spark 2.0-Cluster bereitgestellt. Eine Beschreibung der Notebooks und Links zu diesen finden Sie in der Datei [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) zu dem GitHub-Repository, das sie enthält. Der hier und in den verknüpften Notebooks zu findende Code ist darüber hinaus generisch und sollte in allen Spark-Clustern funktionieren. Wenn Sie HDInsight Spark nicht verwenden, weichen Clustereinrichtung und Verwaltungsschritte möglicherweise geringfügig von dem ab, was hier gezeigt wird. Der Einfachheit halber finden Sie hier die Links zu den Jupyter-Notebooks für Spark 1.6 (auszuführen im PySpark-Kernel des Jupyter-Notebookservers) und Spark 2.0 (auszuführen im PySpark3-Kernel des Jupyter-Notebookservers):
 
 ### <a name="spark-16-notebooks"></a>Spark 1.6-Notebooks
+Diese Notebooks werden im PySpark-Kernel des Jupyter-Notebookservers ausgeführt.
 
 - [pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb:](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb) enthält Informationen zum Durchsuchen, Modellieren und Bewerten von Daten mit verschiedenen Algorithmen.
 - [pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb:](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) enthält Themen im Notebook 1 sowie zur Modellentwicklung über die Hyperparameteroptimierung und Kreuzvalidierung.
 - [pySpark-machine-learning-data-science-spark-model-consumption.ipynb:](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-model-consumption.ipynb) zeigt, wie ein gespeichertes Modell mithilfe von Python in HDInsight-Clustern operationalisiert wird.
 
 ### <a name="spark-20-notebooks"></a>Spark 2.0-Notebooks
+Diese Notebooks werden im PySpark3-Kernel des Jupyter-Notebookservers ausgeführt.
 
-- [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb:](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) enthält Informationen zum Durchsuchen, Modellieren und Bewerten von Daten in Spark 2.0-Clustern.
-- [Spark2.0-pySpark3_NYC_Taxi_Tip_Regression.ipynb:](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb) zeigt, wie Datenanalysen (Spark SQL und Dataframevorgänge), Suchvorgänge, Modellierungen und Bewertungen mithilfe des [hier](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-spark-overview) beschriebenen Datasets zu Taxifahrten und Fahrpreisen in New York durchgeführt werden.
+- [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb:](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) enthält Informationen zum Durchsuchen, Modellieren und Bewerten von Daten in Spark 2.0-Clustern anhand des [hier](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data) beschriebenen „NYC Taxi Trips“ und des Fahrpreisdatasets. Dieses Notebook ist möglicherweise ein guter Ausgangspunkt zum schnellen Untersuchen des Codes, den wir für Spark 2.0 bereitgestellt haben. Ein ausführlicheres Notebook zur Analyse der NYC-Taxidaten finden Sie im nächsten Notebook in dieser Liste. Informationen finden Sie in den Hinweisen im Anschluss an diese Liste, in denen diese Notebooks verglichen werden. 
+- [Spark2.0-pySpark3_NYC_Taxi_Tip_Regression.ipynb:](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb) zeigt, wie Datenanalysen (Spark SQL und Dataframevorgänge), Suchvorgänge, Modellierungen und Bewertungen mithilfe des [hier](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data) beschriebenen Datasets zu Taxifahrten und Fahrpreisen in New York durchgeführt werden.
 - [Spark2.0-pySpark3_Airline_Departure_Delay_Classification.ipynb:](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb) zeigt, wie Datenanalysen (Spark SQL und Dataframevorgänge), Suchvorgänge, Modellierungen und Bewertungen mithilfe des bekannten Datasets zur Pünktlichkeit von Flugreisestarts aus den Jahren 2011 und 2012 durchgeführt werden. Wir kombinieren das Fluglinien-Dataset vor der Modellierung mit den Flughafen-Wetterdaten (z.B. Windgeschwindigkeit, Temperatur, Höhe usw.), damit diese Wetterdaten in das Modell aufgenommen werden können.
 
 <!-- -->
@@ -60,12 +63,21 @@ Die Einrichtungsschritte und der Code in dieser exemplarischen Vorgehensweise be
 
 <!-- -->
 
+<!-- -->
+
+> [!NOTE]
+Die Ausführung der Spark 2.0-Notebooks zu den Datasets mit den NYC-Taxidaten und den Flugverspätungen bei Fluggesellschaften können 10 Minuten oder länger dauern (je nach Größe Ihres HDI-Clusters). Das erste Notebook in der oben aufgeführten Liste zeigt zahlreiche Aspekte der Datenuntersuchung, der Visualisierung und des Modelltrainings in einem Notebook, das durch ein komprimiertes NYC-Dataset, in dem die Taxi- und Fahrpreisdateien vorab verknüpft wurden, weniger Zeit für die Ausführung beansprucht: [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb). Dieses Notebook wird in wesentlich kürzerer Zeit abgeschlossen (2 bis 3 Minuten) und bietet möglicherweise einen guten Ausgangspunkt für eine schnelle Untersuchung des Codes, den wir für Spark 2.0 bereitgestellt haben. 
+
+<!-- -->
+
 Anleitungen zur Operationalisierung eines Spark 2.0-Modells und der Modellnutzung für die Bewertung finden Sie in der [Spark 1.6-Dokumentation zum Verbrauch](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-model-consumption.ipynb). Diese enthält ein Beispiel, in dem die erforderlichen Schritte aufgeführt werden. Um dies in Spark 2.0 verwenden zu können, ersetzen Sie die Python-Codedatei durch [diese Datei](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py).
 
 ### <a name="prerequisites"></a>Voraussetzungen
+Die folgenden Vorgehensweisen beziehen sich auf Spark 1.6. Verwenden Sie für die Version 2.0 von Spark die zuvor beschriebenen und verlinkten Notebooks. 
+
 1. Sie benötigen ein Azure-Abonnement. Wenn Sie noch keins besitzen, lesen Sie den Artikel [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)(Gewusst wie: Erhalten einer Azure-Testversion zum Testen von Hadoop in HDInsight).
 
-2. Sie benötigen einen Spark 1.6- oder Spark 2.0-Cluster zum Durchführen dieser exemplarischen Vorgehensweise. Anweisungen zum Erstellen eines solchen Clusters finden Sie unter [Erste Schritte: Erstellen von Apache Spark in Azure HDInsight](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md). Clustertyp und Version werden im Menü **Clustertyp auswählen** angegeben. 
+2. Sie benötigen einen Spark 1.6-Cluster zum Durchführen dieser exemplarischen Vorgehensweise. Anweisungen zum Erstellen eines solchen Clusters finden Sie unter [Erste Schritte: Erstellen von Apache Spark in Azure HDInsight](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md). Clustertyp und Version werden im Menü **Clustertyp auswählen** angegeben. 
 
 ![Konfigurieren des Clusters](./media/machine-learning-data-science-spark-overview/spark-cluster-on-portal.png)
 
@@ -176,10 +188,5 @@ Nachdem Sie einen HDInsight Spark-Cluster eingerichtet und die Jupyter-Notebooks
 **Modellnutzung:** Informationen zum Bewerten der in diesem Thema erstellten Klassifizierungs- und Regressionsmodelle finden Sie unter [Bewerten von Machine Learning-Modellen, die mit Spark erstellt wurden](machine-learning-data-science-spark-model-consumption.md).
 
 **Kreuzvalidierung und Hyperparameter-Sweeping:**Unter [Erweiterte Datendurchsuchung und Modellierung mit Spark](machine-learning-data-science-spark-advanced-data-exploration-modeling.md) erfahren Sie, wie Modelle mit Kreuzvalidierung und Hyperparameter-Sweeping trainiert werden können.
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

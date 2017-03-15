@@ -12,15 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 1/09/2017
+ms.date: 2/15/2017
 ms.author: pratshar
 translationtype: Human Translation
-ms.sourcegitcommit: 1c3a3a3e9381e20382bb537299b04993180ee729
-ms.openlocfilehash: 465da7ae1aa3a31400706c28d0516507ddf66ff0
+ms.sourcegitcommit: 6b1a5b2879a7b98ec4ad3e8ebbc9e95c0740d89f
+ms.openlocfilehash: 3aaa005319b1ce2a10cd913c63b31860d31b797e
+ms.lasthandoff: 02/23/2017
 
 
 ---
 # <a name="test-failover-vmm-to-vmm-in-site-recovery"></a>Testfailover (VMM auf VMM) in Site Recovery
+> [!div class="op_single_selector"]
+> * [Testfailover auf Azure](./site-recovery-test-failover-to-azure.md)
+> * [Testfailover (VMM zu VMM)](./site-recovery-test-failover-vmm-to-vmm.md)
+
 
 Dieser Artikel enthält Informationen und Anweisungen zum Ausführen eines Testfailovers oder eines DR-Drills von virtuellen Computern und physischen Servern, die mit Site Recovery und einem mithilfe von VMM verwalteten lokalen Speicherort als Wiederherstellungsstandort geschützt sind. 
 
@@ -67,6 +72,8 @@ Gehen Sie wie folgt vor, um einen DNS-Server für das Test-Failover vorzubereite
 ## <a name="run-a-test-failover"></a>Durchführen eines Test-Failovers
 Hier erfahren Sie, wie Sie ein Test-Failover für einen Wiederherstellungsplan durchführen. Alternativ können Sie das Failover über die Registerkarte **Virtuelle Computer** auch für einen einzelnen virtuellen Computer oder physischen Server durchführen.
 
+![Testfailover](./media/site-recovery-test-failover-vmm-to-vmm/TestFailover.png)
+
 1. Wählen Sie **Wiederherstellungspläne** > *Name des Wiederherstellungsplans* aus. Klicken Sie auf **Failover** > **Test Failover**veröffentlichen.
 1. Geben Sie auf dem Blatt **Testfailover** an, wie die virtuellen Computer nach dem Testfailover mit Netzwerken verbunden werden sollen. Weitere Details finden Sie in den [Netzwerkoptionen](#network-options-in-site-recovery).
 1. Verfolgen Sie den Verlauf des Failovers auf der Registerkarte **Aufträge** . 
@@ -100,9 +107,4 @@ Beim Durchführen eines Testfailovers wird empfohlen, ein anderes Netzwerk als d
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sobald Sie ein Testfailover erfolgreich durchgeführt haben, können Sie ein [Failover](site-recovery-failover.md) versuchen.
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

@@ -1,10 +1,10 @@
 ---
-title: Verschieben eines virtuellen Computers oder einer Rolleninstanz in ein anderes Subnetz
-description: Hier erfahren Sie, wie virtuelle Computer und Rolleninstanzen in ein anderes Subnetz verschoben werden.
+title: "Verschieben eines virtuellen Computers (klassisch) oder einer Cloud Services-Rolleninstanz in ein anderes Subnetz – Azure PowerShell | Microsoft-Dokumentation"
+description: Erfahren Sie, wie Sie virtuelle Computer (klassisch) und Cloud Services-Rolleninstanzen mithilfe von PowerShell in ein anderes Subnetz verschieben.
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
+manager: timlt
 editor: tysonn
 ms.assetid: de4135c7-dc5b-4ffa-84cc-1b8364b7b427
 ms.service: virtual-network
@@ -14,17 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2016
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 264e02fa48486acd7a9701c497c4e1fa95a1ce4e
+ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
+ms.openlocfilehash: b094f8338394ef2e84cad3070936d715411326a4
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="how-to-move-a-vm-or-role-instance-to-a-different-subnet"></a>Verschieben eines virtuellen Computers oder einer Rolleninstanz in ein anderes Subnetz
-Sie können PowerShell verwenden, um Ihre virtuellen Computer im selben virtuellen Netzwerk (VNet) zwischen Subnetzen zu verschieben. Rolleninstanzen können anstatt mit PowerShell mithilfe der CSCFG-Datei verschoben werden.
+# <a name="move-a-vm-classic-or-cloud-services-role-instance-to-a-different-subnet-using-powershell"></a>Verschieben eines virtuellen Computers (klassisch) oder einer Cloud Services-Rolleninstanz in ein anderes Subnetz mithilfe von PowerShell
+Sie können PowerShell verwenden, um Ihre virtuellen Computer (klassisch) zwischen Subnetzen im gleichen virtuellen Netzwerk (VNet) zu verschieben. Rolleninstanzen können anstatt mit PowerShell auch durch Bearbeiten der CSCFG-Datei verschoben werden.
 
 > [!NOTE]
-> Dieser Artikel enthält Informationen, die sich nur auf klassische Azure-Bereitstellungen beziehen.
+> In diesem Artikel wird nur das Verschieben von virtuellen Computern erläutert, die über das klassische Bereitstellungsmodell bereitgestellt wurden.
 > 
 > 
 
@@ -57,9 +59,4 @@ Bearbeiten Sie zum Verschieben einer Rolleninstanz die CSCFG-Datei. Im folgenden
            </InstanceAddress>
         </AddressAssignments>
     </NetworkConfiguration> 
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

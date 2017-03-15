@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 06/23/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: e841c21a15c47108cbea356172bffe766003a145
-ms.openlocfilehash: f72ae06c2e31de5d8a1121a9e265c23f016fffe9
+ms.sourcegitcommit: f2d009477a614c3b2876ce98a355d3775abf772b
+ms.openlocfilehash: 04f2d5d8e501ebf41cf95ea925d238f64b096c1d
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -34,7 +35,7 @@ Fügen Sie zum Erstellen eines Schlüsseltresors das folgende Schema im Ressourc
         "properties": {
             "enabledForDeployment": bool,
             "enabledForTemplateDeployment": bool,
-            "enabledForVolumeEncryption": bool,
+            "enabledForDiskEncryption": bool,
             "tenantId": string,
             "accessPolicies": [
                 {
@@ -75,7 +76,7 @@ In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlege
 | --- | --- |
 | enabledForDeployment |Boolean<br />Optional<br />**true** oder **false**<br /><br />Gibt an, ob der Tresor für die Bereitstellung virtueller Computer oder die Service Fabric-Bereitstellung aktiviert ist. |
 | enabledForTemplateDeployment |Boolean<br />Optional<br />**true** oder **false**<br /><br />Gibt an, ob der Tresor zur Verwendung in Resource Manager-Vorlagenbereitstellungen aktiviert ist. Weitere Informationen finden Sie unter [Übergeben sicherer Werte während der Bereitstellung](resource-manager-keyvault-parameter.md) |
-| enabledForVolumeEncryption |Boolean<br />Optional<br />**true** oder **false**<br /><br />Gibt an, ob der Tresor für die Volumeverschlüsselung aktiviert ist. |
+| enabledForDiskEncryption |Boolean<br />Optional<br />**true** oder **false**<br /><br />Gibt an, ob der Tresor für die Volumeverschlüsselung aktiviert ist. |
 | tenantId |String<br />Erforderlich<br />**Globally Unique Identifier (GUID)**<br /><br />Die Mandanten-ID für das Abonnement. Diese ID können Sie mit dem PowerShell-Cmdlet [Get-AzureRmSubscription](https://msdn.microsoft.com/library/azure/mt619284.aspx) oder mit dem Azure-CLI-Befehl **azure account show** abrufen. |
 | accessPolicies |Array<br />Erforderlich<br />[accessPolicies-Objekt](#accesspolicies)<br /><br />Ein Array von bis zu 16 Objekten, die die Berechtigungen für den Benutzer oder Dienstprinzipal angeben. |
 | sku |Objekt<br />Erforderlich<br />[sku-Objekt](#sku)<br /><br />Die SKU für den Schlüsseltresor. |
@@ -169,7 +170,7 @@ Im folgenden Beispiel werden ein Schlüsseltresor und ein geheimer Schlüssel be
                     "description": "Specifies if the vault is enabled for ARM template deployment"
                 }
             },
-            "enableVaultForVolumeEncryption": {
+            "enableVaultForDiskEncryption": {
                 "type": "bool",
                 "defaultValue": false,
                 "metadata": {
@@ -201,7 +202,7 @@ Im folgenden Beispiel werden ein Schlüsseltresor und ein geheimer Schlüssel be
             "properties": {
                 "enabledForDeployment": "[parameters('enabledForDeployment')]",
                 "enabledForTemplateDeployment": "[parameters('enabledForTemplateDeployment')]",
-                "enabledForVolumeEncryption": "[parameters('enableVaultForVolumeEncryption')]",
+                "enabledForDiskEncryption": "[parameters('enableVaultForDiskEncryption')]",
                 "tenantId": "[parameters('tenantId')]",
                 "accessPolicies": [
                 {
@@ -240,10 +241,5 @@ Die folgende Schnellstartvorlage stellt einen Schlüsseltresor bereit.
 ## <a name="next-steps"></a>Nächste Schritte
 * Allgemeine Informationen zu Schlüsseltresoren finden Sie unter [Erste Schritte mit dem Azure-Schlüsseltresor](../key-vault/key-vault-get-started.md).
 * Ein Beispiel für das Verweisen auf einen geheimen Schlüssel in einem Schlüsseltresor beim Bereitstellen von Vorlagen finden Sie unter [Übergeben sicherer Werte während der Bereitstellung](resource-manager-keyvault-parameter.md).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

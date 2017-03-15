@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/08/2017
+ms.date: 02/22/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 40f8f1b52c39a170a57168db9227a7c2fa069570
-ms.openlocfilehash: 12abed3f1220398574e04d6b367f57d86547bc61
+ms.sourcegitcommit: 56a61479971c4a03345bee8a044dbc17d16371ce
+ms.openlocfilehash: 8e87f9bd8122ec3c80d11e8ac563849f540e0cc5
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -109,7 +110,7 @@ In diesem Artikel wurden die Security Center-Komponenten für die Sicherheitsüb
 * Konfigurieren Sie eine Sicherheitsrichtlinie für Ihr Azure-Abonnement. Weitere Informationen hierzu finden Sie unter [Festlegen von Sicherheitsrichtlinien in Azure Security Center](security-center-policies.md).
 * Verwenden Sie die Empfehlungen in Security Center als Hilfe beim Schützen Ihrer Azure-Ressourcen. Weitere Informationen finden Sie unter [Verwalten von Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md).
 * Überprüfen und verwalten Sie Ihre aktuellen Sicherheitswarnungen. Weitere Informationen finden Sie unter [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md).
-* Informieren Sie sich über die [Funktionen der erweiterten Bedrohungserkennung](security-center-detection-capabilities.md), die Teil des [Standard-Tarifs](security-center-pricing.md) von Security Center sind. Eine kostenlose 90-Tage-Testversion des Standard-Tarifs ist verfügbar.
+* Informieren Sie sich über die [Funktionen der erweiterten Bedrohungserkennung](security-center-detection-capabilities.md), die Teil des [Standard-Tarifs](security-center-pricing.md) von Security Center sind. Der Standard-Tarif wird für die ersten 60 Tage kostenlos angeboten.
 * Antworten auf Fragen zur Verwendung von Security Center finden Sie unter [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md).
 
 <!--Image references-->
@@ -123,9 +124,4 @@ In diesem Artikel wurden die Security Center-Komponenten für die Sicherheitsüb
 [8]: ./media/security-center-get-started/security-alert-detail.png
 [9]: ./media/security-center-get-started/partner-solutions.png
 [10]: ./media/security-center-get-started/welcome.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

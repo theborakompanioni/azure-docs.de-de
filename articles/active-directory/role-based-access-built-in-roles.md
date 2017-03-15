@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/31/2017
+ms.date: 02/21/2017
 ms.author: kgremban
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: becd7fbcfa094257408ed96eda0c62deefceb44d
-ms.openlocfilehash: 59067ef58d276265e0431119986774ff14212067
-
+ms.sourcegitcommit: 53fa0876ce1e3e2b2ac47316f37c5a0de2591d41
+ms.openlocfilehash: 404c4c4012eb5b6f8e7acdd7f985009b9f13b9f3
+ms.lasthandoff: 02/28/2017
 
 ---
-# <a name="rbac-built-in-roles"></a>RBAC: Integrierte Rollen
+# <a name="built-in-roles-for-azure-role-based-access-control"></a>Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure
 Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure umfasst die folgenden integrierten Rollen, die Benutzern, Gruppen und Diensten zugewiesen werden können. Die Definitionen integrierter Rollen können nicht geändert werden. Sie können jedoch [benutzerdefinierte Rollen in Azure RBAC](role-based-access-control-custom-roles.md) zur Anpassung an die spezifischen Anforderungen Ihrer Organisation erstellen.
 
 ## <a name="roles-in-azure"></a>Rollen in Azure
@@ -647,9 +648,4 @@ Kann Websites verwalten, jedoch nicht die Webpläne, mit denen sie verbunden sin
 * [Benutzerdefinierte Rollen in Azure RBAC](role-based-access-control-custom-roles.md): Erfahren Sie, wie Sie benutzerdefinierte Rollen entsprechend Ihren Zugriffsanforderungen erstellen.
 * [Erstellen eines Verlaufsberichts zu Zugriffsänderungen:](role-based-access-control-access-change-history-report.md)Verfolgen Sie Änderungen an Rollenzuweisungen in RBAC.
 * [Problembehandlung bei rollenbasierter Zugriffssteuerung:](role-based-access-control-troubleshooting.md)Sehen Sie sich Vorschläge zur Behebung häufig auftretender Probleme an.
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

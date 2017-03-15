@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 02/23/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 445dd0dcd05aa25cc531e2d10cc32ad8f32a6e8c
-ms.openlocfilehash: 98e06e683e6ee473a0747b423ed7cf6ae2b8cfed
+ms.sourcegitcommit: aada5b96eb9ee999c5b1f60b6e7b9840fd650fbe
+ms.openlocfilehash: 2831416bbb290905835396835db2eb6cb5e7b46f
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -559,7 +560,7 @@ Falls die Anforderungen nicht erfüllt werden, überprüft Azure Data Factory di
 5. In der zugehörigen Kopieraktivität wird `columnMapping` nicht verwendet.
 
 ### <a name="staged-copy-using-polybase"></a>gestaffeltes Kopieren mit PolyBase
-Falls Ihre Quelldaten die Kriterien aus dem vorherigen Abschnitt nicht erfüllen, können Sie die Daten über einen zwischengeschalteten Azure-Stagingblobspeicher kopieren. In diesem Fall führt Azure Data Factory die erforderlichen Transformationen für die Daten durch, um die Datenformatanforderungen von PolyBase zu erfüllen, und die Daten werden anschließend mithilfe von PolyBase in SQL Data Warehouse geladen. Unter [Gestaffeltes Kopieren](data-factory-copy-activity-performance.md#staged-copy) finden Sie ausführliche Informationen zur allgemeinen Funktionsweise des Kopierens von Daten über ein Azure-Stagingblob.
+Falls Ihre Quelldaten die Kriterien aus dem vorherigen Abschnitt nicht erfüllen, können Sie die Daten über einen zwischengeschalteten Azure-Stagingblobspeicher kopieren (darf nicht Storage Premium sein). In diesem Fall führt Azure Data Factory die erforderlichen Transformationen für die Daten durch, um die Datenformatanforderungen von PolyBase zu erfüllen, und die Daten werden anschließend mithilfe von PolyBase in SQL Data Warehouse geladen. Unter [Gestaffeltes Kopieren](data-factory-copy-activity-performance.md#staged-copy) finden Sie ausführliche Informationen zur allgemeinen Funktionsweise des Kopierens von Daten über ein Azure-Stagingblob.
 
 > [!NOTE]
 > Wenn Sie beim Kopieren von Daten aus einem lokalen Datenspeicher in Azure SQL Data Warehouse mithilfe von PolyBase und einem Stagingverfahren ein Datenverwaltungsgateway mit einer Version vor 2.4 verwenden, ist JRE (Java Runtime Environment) auf dem Gatewaycomputer erforderlich, mit dem die Quelldaten in das richtige Format transformiert werden. Es wird empfohlen, dass Sie Ihr Gateway auf die aktuelle Version aktualisieren, um eine solche Abhängigkeit zu vermeiden.
@@ -596,17 +597,13 @@ Erstellen Sie zum Verwenden dieses Features einen [verknüpften Azure Storage-Di
 ### <a name="required-database-permission"></a>Erforderliche Datenbankberechtigungen
 Um PolyBase verwenden zu können, muss der zum Laden von Daten in SQL Data Warehouse verwendete Benutzer über die [Berechtigung „CONTROL“](https://msdn.microsoft.com/library/ms191291.aspx) für die Zieldatenbank verfügen. Sie können dies beispielsweise erreichen, indem Sie diesen Benutzer als Mitglied der Rolle „db_owner“ hinzufügen. [In diesem Abschnitt](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md#authorization) erfahren Sie, wie das geht.
 
-### <a name="row-size-limitation"></a>Zeilengrößeneinschränkung
-Polybase unterstützt eine maximale Zeilengröße von 32 KB. Beim Versuch, eine Tabelle mit Zeilen zu laden, die größer sind als 32 KB, tritt der folgende Fehler auf:
+### <a name="row-size-and-data-type-limitation"></a>Beschränkungen hinsichtlich Zeilengröße und Datentyp
+Der Ladevorgang in PolyBase ist auf das Laden von Zeilen beschränkt, die kleiner als **1 MB** sind und nicht in Spalten des Typs VARCHR(MAX) NVARCHAR(MAX) oder VARBINARY(MAX) geladen werden können. Informationen finden Sie [hier](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md#loads).
 
-```
-Type=System.Data.SqlClient.SqlException,Message=107093;Row size exceeds the defined Maximum DMS row size: [35328 bytes] is larger than the limit of [32768 bytes],Source=.Net SqlClient
-```
-
-Wenn Sie über Quelldaten mit Zeilen verfügen, deren Größe über 32 KB liegt, sollten Sie die Quelltabellen vertikal in kleinere Tabellen unterteilen, sodass die Zeilengröße der einzelnen Tabellen den Höchstwert nicht überschreitet. Die kleineren Tabellen können dann mit PolyBase geladen und in Azure SQL Data Warehouse zusammengeführt werden.
+Wenn Sie über Quelldaten mit Zeilen verfügen, deren Größe über 1 MB liegt, sollten Sie die Quelltabellen vertikal in kleinere Tabellen unterteilen, sodass die Zeilengröße der einzelnen Tabellen den Höchstwert nicht überschreitet. Die kleineren Tabellen können dann mit PolyBase geladen und in Azure SQL Data Warehouse zusammengeführt werden.
 
 ### <a name="sql-data-warehouse-resource-class"></a>SQL Data Warehouse-Ressourcenklasse
-Um einen optimalen Durchsatz zu erzielen, sollten Sie dem Benutzer, der zum Laden von Daten in SQL Data Warehouse über PolyBase verwendet wird, eine größere Ressourcenklasse zuweisen. Erfahren Sie, wie das geht, indem Sie das folgende [Beispiel: Ändern der Ressourcenklasse eines Benutzers](https://acom-sandbox.azurewebsites.net/en-us/documentation/articles/sql-data-warehouse-develop-concurrency/#change-a-user-resource-class-example) ausführen.
+Um einen optimalen Durchsatz zu erzielen, sollten Sie dem Benutzer, der zum Laden von Daten in SQL Data Warehouse über PolyBase verwendet wird, eine größere Ressourcenklasse zuweisen. Erfahren Sie, wie das geht, indem Sie das folgende [Beispiel: Ändern der Ressourcenklasse eines Benutzers](../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md#change-a-user-resource-class-example) ausführen.
 
 ### <a name="tablename-in-azure-sql-data-warehouse"></a>„tableName“ in Azure SQL Data Warehouse
 Die folgende Tabelle enthält Beispiele für das Angeben der **tableName** -Eigenschaft in Dataset-JSON für diverse Kombinationen aus Schema und Tabellenname:
@@ -723,9 +720,4 @@ Die Zuordnung ist mit der [SQL Server-Datentypzuordnung für ADO.NET](https://ms
 
 ## <a name="performance-and-tuning"></a>Leistung und Optimierung
 Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

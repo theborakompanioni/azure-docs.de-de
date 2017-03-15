@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/19/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 34bb02d93f74d437962334802f3bfbf938bbb258
-ms.openlocfilehash: 2bc98da479e6efea322a3782879fae72b106538a
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 67b4861ac564565b2a36932ae15141a1e1f56035
+ms.openlocfilehash: 29084a52aca22b31a2fa42660ec2cdf050aec7ca
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -190,7 +190,7 @@ Wenn Sie eine Netzwerkzuordnung konfigurieren möchten, gehen Sie wie folgt vor:
 
    * Wenn Sie einen benutzerdefinierten Proxy verwenden möchten, richten Sie diesen vor der Anbieterinstallation ein. Wenn Sie benutzerdefinierte Proxyeinstellungen konfigurieren, wird ein Test ausgeführt, um die Proxyverbindung zu überprüfen.
    * Wenn Sie einen benutzerdefinierten Proxy verwenden oder Ihr Standardproxy eine Authentifizierung erfordert, geben Sie die Proxydetails einschließlich Adresse und Port ein.
-   * Die [hier](site-recovery-best-practices.md#url-access) angegebenen URLs müssen für den VMM-Server zugänglich sein.
+   * Die erforderlichen URLs müssen für den VMM-Server zugänglich sein.
    * Wenn Sie einen benutzerdefinierten Proxy verwenden, wird ein ausführendes VMM-Konto (DRAProxyAccount) automatisch mit den angegebenen Proxyanmeldeinformationen erstellt. Konfigurieren Sie den Proxyserver so, dass für dieses Konto eine Authentifizierung möglich ist. Die Einstellungen für ausführende Konten können über die VMM-Konsole unter **Einstellungen** > **Sicherheit** > **Ausführende Konten** > **DRAProxyAccount** geändert werden. Sie müssen den VMM-Dienst neu starten, damit die Änderung wirksam wird.
 10. Wählen Sie unter **Registrierungsschlüssel** den Schlüssel aus, den Sie aus dem Portal heruntergeladen und auf den VMM-Server kopiert haben.
 11. Prüfen Sie unter **Tresorname**den Namen des Tresors, in dem der Server registriert wird.
@@ -321,7 +321,7 @@ Testen Sie Ihre Bereitstellung, um sicherzugehen, dass das Failover der virtuell
 
     ![Virtuelle Computer auswählen](./media/site-recovery-vmm-san/r-plan-vm.png)
 4. Erstellte Wiederherstellungspläne werden auf der Registerkarte **Wiederherstellungspläne** angezeigt. Wählen Sie den Plan aus und dann **Testfailover**.
-5. Wählen Sie auf der Seite **Testfailover bestätigen** den Eintrag **Kein** aus. Ist diese Option aktiviert, sind die virtuellen Replikatcomputer nach einem Failover nicht mit einem Netzwerk verbunden. Mit dieser Option wird nur getestet, ob das Failover der virtuellen Computer erwartungsgemäß funktioniert hat. Die Netzwerkumgebung wird dabei nicht getestet. Weitere Informationen zu anderen Netzwerkoptionen finden Sie unter [Failover in Site Recovery](site-recovery-failover.md#run-a-test-failover).
+5. Wählen Sie auf der Seite **Testfailover bestätigen** den Eintrag **Kein** aus. Ist diese Option aktiviert, sind die virtuellen Replikatcomputer nach einem Failover nicht mit einem Netzwerk verbunden. Mit dieser Option wird nur getestet, ob das Failover der virtuellen Computer erwartungsgemäß funktioniert hat. Die Netzwerkumgebung wird dabei nicht getestet. Weitere Informationen zu anderen Netzwerkoptionen finden Sie unter [Failover in Site Recovery](site-recovery-failover.md).
 
     ![Testnetzwerk auswählen](./media/site-recovery-vmm-san/test-fail1.png)
 

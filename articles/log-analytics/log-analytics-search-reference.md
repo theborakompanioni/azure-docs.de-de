@@ -1,5 +1,5 @@
 ---
-title: Referenz zur Log Analytics-Suche | Microsoft-Dokumentation
+title: Referenz zur Azure Log Analytics-Suche | Microsoft-Dokumentation
 description: "Die Referenz zur Log Analytics-Suche enthält eine Beschreibung der Suchsprache und die allgemeinen Optionen zur Abfragesyntax, die Sie beim Suchen von Daten und Filtern von Ausdrücken verwenden können, um Ihre Suche einzugrenzen."
 services: log-analytics
 documentationcenter: 
@@ -12,11 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2017
+ms.date: 02/27/2017
 ms.author: banders
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 81fd8dfa480fc6365b6373a4eefef1149248d800
-ms.openlocfilehash: 5e4fba6ff82cbe8af0116e35d71c8f9f04474f0f
+ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
+ms.openlocfilehash: a294ef357ea3c656e4e6392e89ad1d90b829e2cb
+ms.lasthandoff: 02/28/2017
 
 
 ---
@@ -254,7 +256,7 @@ SampleValue:[0..2]
 ```
 
 ### <a name="regular-expressions"></a>Reguläre Ausdrücke
-Sie können mit dem Schlüsselwort „Regex“ eine Suchbedingung für ein Feld mit einem regulären Ausdruck angeben.
+Sie können mit dem Schlüsselwort „Regex“ eine Suchbedingung für ein Feld mit einem regulären Ausdruck angeben.  Unter [Verwenden regulärer Ausdrücke zum Filtern der Protokollsuchen in Log Analytics](log-analytics-log-searches-regex.md) erhalten Sie eine vollständige Beschreibung der Syntax, die Sie in regulären Ausdrücken verwenden können.
 
 **Syntax**
 
@@ -581,7 +583,29 @@ Beispiele:
     Type:Perf CounterName:"% Total Run Time" | Measure max(CounterValue) by Computer | where (AggregatedValue>50 and AggregatedValue<90)
 
 ### <a name="in"></a>IN
-Syntax:
+Das Schlüsselwort **IN** ermöglicht Ihnen die Auswahl aus einer Liste von Werten.  Je nach verwendeter Syntax kann dies eine einfache Liste mit von Ihnen angegebenen Werten oder eine Liste mit Werten aus einer Aggregation sein.
+
+Syntax 1:
+
+```
+field IN {value1,value2,value3,...}
+```
+
+Beschreibung: Mithilfe dieser Syntax können Sie alle Werte in einer einfachen Liste einbeziehen.
+
+
+
+Beispiele:
+
+```
+EventID IN {1201,1204,1210}
+```
+
+```
+Computer IN {"srv01.contoso.com","srv02.contoso.com"}
+```
+
+Syntax 2:
 
 ```
 (Outer Query) (Field to use with inner query results) IN {Inner query | measure count() by (Field to send to outer query)} (rest  of outer query)  
@@ -810,9 +834,4 @@ Weitere Informationen zu Protokollsuchen:
 
 * Machen Sie sich mit [Protokollsuchvorgängen](log-analytics-log-searches.md) vertraut, um ausführliche Informationen anzuzeigen, die von Lösungen gesammelt werden.
 * Lesen Sie [Benutzerdefinierte Felder in Log Analytics](log-analytics-custom-fields.md) , um mehr über Protokollsuchen zu erfahren.
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

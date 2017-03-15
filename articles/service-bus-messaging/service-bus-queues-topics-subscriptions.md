@@ -1,5 +1,5 @@
 ---
-title: Service Bus-Warteschlangen, -Themen und -Abonnements | Microsoft Docs
+title: "Übersicht über Service Bus-Messagingwarteschlangen, -themen und -abonnements | Microsoft-Dokumentation"
 description: "Überblick über Service Bus-Nachrichtenentitäten"
 services: service-bus-messaging
 documentationcenter: na
@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 12/20/2016
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 60a914e4706414891863c5d1d07846898936815b
-ms.openlocfilehash: cd3b8b73db87a6b15b5a408609417ff2d2ca0a86
+ms.sourcegitcommit: 4a972b9b8b52a90f27afda98d8bdc661016d1fe1
+ms.openlocfilehash: b4c551e1d0511c868c8a54d1307529436c107945
+ms.lasthandoff: 02/28/2017
 
 
 ---
@@ -165,10 +166,5 @@ Weitere Informationen und Beispiele für die Verwendung von Messaging mit Servic
 * [REST-Tutorial zu Service Bus-Brokermessaging](service-bus-brokered-tutorial-rest.md)
 * [Themenfilter – Beispiel](https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/TopicFilters)
 * [Brokermessaging: Beispiel für erweiterte Filter](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

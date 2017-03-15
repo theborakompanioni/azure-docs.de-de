@@ -1,6 +1,6 @@
 ---
-title: "Übergang zum Azure AD-Anwendungsproxy von Microsoft Forefront | Microsoft-Dokumentation"
-description: Hier finden Sie grundlegende Informationen zu Azure AD-Anwendungsproxy-Connectors.
+title: Migrieren von Microsoft Forefront zu Azure AD-Anwendungsproxys | Microsoft-Dokumentation
+description: "Dieser Artikel erläutert die Grundlagen der Migration von den Microsoft Forefront TMG- und UAG-Lösungen zu Azure Active Directory-Anwendungsproxys."
 services: active-directory
 documentationcenter: 
 author: kgremban
@@ -14,44 +14,40 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 9945512d18d66c321c0d24ee1050497d4716fd47
-ms.openlocfilehash: 699112846cc1e4e9fc6b04b1b8509152d7aecdef
+ms.sourcegitcommit: c887adaae811972efd7fcea86eaa67a899f3f4c2
+ms.openlocfilehash: 542dd7df7e0b887298522f29cb597f1df73709cb
+ms.lasthandoff: 02/27/2017
 
 
 ---
-#<a name="transition-to-azure-ad-app-proxy-from-microsoft-forefront"></a>Übergang zum Azure AD-Anwendungsproxy von Microsoft Forefront
+# <a name="transition-to-azure-ad-application-proxies-from-microsoft-forefront"></a>Migrieren von Microsoft Forefront zu Azure AD-Anwendungsproxys
 
-In diesem Artikel wird beschrieben, wie Sie von den Microsoft-Lösungen Forefront Threat Management Gateway (TMG) und United Access Gateway (UAG) zu den folgenden Azure AD-Anwendungsproxys migrieren: Webanwendungsproxy (WAP) und Azure AD-Anwendungsproxy (AADAP). 
+In diesem Artikel wird beschrieben, wie Sie von den Microsoft Forefront-Lösungen Threat Management Gateway (TMG) und United Access Gateway (UAG) zu den folgenden Azure Active Directory-Anwendungsproxys migrieren: Webanwendungsproxy und Azure AD-Anwendungsproxy.
 
 > [!NOTE]
-> Das Feature "Anwendungsproxy" ist nur verfügbar, wenn Sie Azure Active Directory auf die Premium oder Basic Edition aktualisiert haben. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-editions.md).
-> 
- 
-Zahlreiche Kunden möchten wissen, wie der Übergang von Forefront UAG und TMG zu den neuen Anwendungsproxys funktioniert. Informationen finden Sie in diesem [Whitepaper](http://download.microsoft.com/download/3/E/3/3E335D93-6DB8-4834-90A8-B86105419F05/Microsoft%20TMG%20and%20UAG%20EOL%20and%20transitioning%20to%20WAP%20and%20AADAP.docx), in dem der Übergang ausführlich beschrieben wird. 
- 
-## <a name="tmguag-conversion-to-azure-ad-application-proxy-table"></a>Tabelle mit Übergang von TMG/UAG zum Azure AD-Anwendungsproxy
- 
-|**TMG-/UAG-Funktion**|**Webanwendungsproxy (WAP)/Azure AD-Anwendungsproxy (AADAP)**|
+> Der Azure AD-Anwendungsproxy ist ein Feature, das nur verfügbar ist, wenn Sie auf die Premium- oder Basic-Edition von Azure AD aktualisiert haben. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-editions.md).
+
+
+Um detaillierte Informationen zur Migration von Forefront TMG und UAG zu den neuen Anwendungsproxys zu erhalten, können Sie [ein Whitepaper von Microsoft zu diesem Thema herunterladen](http://download.microsoft.com/download/3/E/3/3E335D93-6DB8-4834-90A8-B86105419F05/Microsoft%20TMG%20and%20UAG%20EOL%20and%20transitioning%20to%20WAP%20and%20AADAP.docx).
+
+## <a name="functionality-details-for-the-conversion"></a>Informationen zur Funktionalität für die Konvertierung
+
+|**TMG-/UAG-Funktion**|**Webanwendungsproxy/Azure AD-Anwendungsproxy**|
 |:-----|:-----|
-|Selektive HTTP-Veröffentlichung für Browser-Apps|Verfügbar in WAP unter Windows Server 2012 R2 (in AADAP bereits verfügbar)|
-|ADFS-Integration|Verfügbar in WAP unter Windows Server 2012 R2 (in AADAP bereits verfügbar)|
-|Veröffentlichung vielfältiger Protokolle (z.B. Citrix, Lync, RDG)|Verfügbar in WAP unter Windows Server 2012 R2 (in AADAP bereits verfügbar)|
-|Präauthentifizierung für ActiveSync (HTTP-Standardauthentifizierung) und RDG|Wird in WAP unter Windows Server vNext verfügbar sein (künftig in AADAP verfügbar)|
-|Portal|Verwendung von Intune/System Center für WAP (Verwendung des für AADAP verfügbaren AAD-Zugriffsbereichs oder Office 365-App-Startfelds)|
-|Integritätserkennung für Endpunkte|Verwendung von Intune/System Center|
-|SSL-Tunneling|Verwendung von Windows SSL-/VPN-Funktionen|
-|Layer 2/3-Firewall|Verwendung von Windows Server-Funktionen|
-|Web Application Firewall|Keine aktuelle Lösung von Microsoft|
-|Sicheres Webgateway (Weiterleitungsproxy)|Keine aktuelle Lösung von Microsoft|
+|Selektive HTTP-Veröffentlichung für Browser-Apps|Verfügbar im Webanwendungsproxy in Windows Server 2012 R2. Bereits heute im Azure AD-Anwendungsproxy verfügbar.|
+|Integration in Active Directory-Verbunddienste (AD FS)|Verfügbar im Webanwendungsproxy in Windows Server 2012 R2. Bereits heute im Azure AD-Anwendungsproxy verfügbar.|
+|Veröffentlichung umfassender Protokolle (z.B. Citrix, Lync, RDG)|Verfügbar im Webanwendungsproxy in Windows Server 2012 R2. Bereits heute im Azure AD-Anwendungsproxy verfügbar.|
+|Präauthentifizierung für ActiveSync (HTTP-Standardauthentifizierung) und RDG|Derzeit im Webanwendungsproxy oder Azure AD-Anwendungsproxy nicht verfügbar.|
+|Portal|Verwenden Sie Intune oder System Center für den Webanwendungsproxy. Verwenden Sie den Azure AD-Zugriffsbereich oder das Office 365-App-Startfeld für den Azure AD-Anwendungsproxy.|
+|Erkennung der Endpunktintegrität|Verwenden Sie Intune oder System Center.|
+|SSL-Tunneling|Verwenden Sie Windows SSL- oder VPN-Funktionen.|
+|Layer 2/3-Firewall|Verwenden Sie Windows Server-Funktionen.|
+|Web Application Firewall|Keine aktuelle Lösung von Microsoft.|
+|Sicheres Webgateway (Weiterleitungsproxy)|Keine aktuelle Lösung von Microsoft.|
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Blogbeiträge zum Webanwendungsproxy](https://blogs.technet.microsoft.com/applicationproxyblog/tag/web-application-proxy)<br>
-[Blogbeiträge zum Anwendungsproxy](https://blogs.technet.microsoft.com/applicationproxyblog/tag/aad-ap)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
+[Blog zum Azure AD-Anwendungsproxy](https://blogs.technet.microsoft.com/applicationproxyblog/tag/aad-ap)
 

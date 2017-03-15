@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: bradsev;weig
 translationtype: Human Translation
-ms.sourcegitcommit: 34441f27e842214d009d64fbc658ff5b7c05df5d
-ms.openlocfilehash: e2aab1363c6a2ffef529f0708cb3bec9c095cf59
+ms.sourcegitcommit: 29c718d0c34d1e2f9d17b285a7270541a9ff15cf
+ms.openlocfilehash: c7444d457592538a26834091c77f49a3c1ef8591
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -45,8 +46,8 @@ In dieser exemplarischen Vorgehensweise werden nur die wichtigsten Schritte besc
 ## <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie mit diesen Themen beginnen können, benötigen Sie Folgendes:
 
-* Ein Azure-Abonnement. Wenn Sie noch keines haben, sehen Sie sich [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)(Erhalten einer kostenlosen Azure-Testversion zum Testen von Hadoop in HDInsight) an.
-* [Empfohlen] Visual Studio 2013 oder 2015. Falls nicht bereits eine dieser Versionen installiert ist, können Sie [hier](https://www.visualstudio.com/visual-studio-homepage-vs.aspx)eine kostenlose Community-Edition herunterladen. Klicken Sie unter dem Visual Studio-Abschnitt auf die Schaltfläche **Community 2015 herunterladen** . 
+* Ein Azure-Abonnement. Wenn Sie noch keins besitzen, lesen Sie den Artikel [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)(Gewusst wie: Erhalten einer Azure-Testversion zum Testen von Hadoop in HDInsight).
+* [Empfohlen] Visual Studio 2013 oder höher. Falls nicht bereits eine dieser Versionen installiert ist, können Sie von der [Visual Studio Community](https://www.visualstudio.com/vs/community/) eine kostenlose Community-Version herunterladen.
 
 > [!NOTE]
 > Statt Visual Studio können Sie auch das Azure-Portal nutzen, um Azure Data Lake-Abfragen zu übermitteln. Im Abschnitt **Verarbeiten von Daten mit U-SQL**finden Sie entsprechende Anweisungen für Visual Studio und das Portal. 
@@ -145,8 +146,8 @@ Zum Ausführen von U-SQL öffnen Sie Visual Studio, klicken auf **Datei--> Neu--
 
 ![9](./media/machine-learning-data-science-process-data-lake-walkthrough/9-portal-submit-job.PNG)
 
-### <a name="a-nameingestadata-ingestion-read-in-data-from-public-blob"></a><a name="ingest"></a>Datenerfassung: Einlesen von Daten aus öffentlichem Blob
-Der Speicherort der Daten im Azure-Blob wird als **wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name** referenziert und kann mithilfe von **Extractors.Csv()** extrahiert werden. Geben Sie in den folgenden Skripts für container_name@blob_storage_account_name in der „wasb“-Adresse Ihre eigenen Container- und Speicherkontonamen ein. Da die Dateinamen das gleiche Format haben, können wir **trip\_data_{\*\}.csv** verwenden, um alle 12 Fahrtendateien einzulesen. 
+### <a name="ingest"></a>Datenerfassung: Einlesen von Daten aus öffentlichem Blob
+Der Speicherort der Daten im Azure-Blob wird als **wasb://container_name@blob_storage_account_name.blob.core.windows.net/blobname** referenziert und kann mithilfe von **Extractors.Csv()** extrahiert werden. Geben Sie in den folgenden Skripts für container_name@blob_storage_account_name in der „wasb“-Adresse Ihre eigenen Container- und Speicherkontonamen ein. Da die Dateinamen das gleiche Format haben, können wir **trip\_data_{\*\}.csv** verwenden, um alle 12 Fahrtendateien einzulesen. 
 
     ///Read in Trip data
     @trip0 =
@@ -169,7 +170,7 @@ Der Speicherort der Daten im Azure-Blob wird als **wasb://container_name@blob_st
     FROM "wasb://container_name@blob_storage_account_name.blob.core.windows.net/nyctaxitrip/trip_data_{*}.csv"
     USING Extractors.Csv();
 
-Da die erste Zeile Überschriften enthält, müssen wir die Überschriften entfernen und Spaltentypen entsprechend anpassen. Wir können die verarbeiteten Daten entweder mithilfe von **swebhdfs://data_lake_storage_name.azuredatalakestorage.net/folder_name/file_name_** in Azure Data Lake Store oder mithilfe von **wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name** in einem Azure Blob Storage-Konto speichern. 
+Da die erste Zeile Überschriften enthält, müssen wir die Überschriften entfernen und Spaltentypen entsprechend anpassen. Wir können die verarbeiteten Daten entweder mithilfe von **swebhdfs://data_lake_storage_name.azuredatalakestorage.net/folder_name/file_name**_ in Azure Data Lake Store oder mithilfe von **wasb://container_name@blob_storage_account_name.blob.core.windows.net/blobname** in einem Azure Blob Storage-Konto speichern. 
 
     // change data types
     @trip =
@@ -207,7 +208,7 @@ Auf ähnliche Weise können wir die Datasets mit den Fahrpreisen einlesen. Klick
 
  ![11](./media/machine-learning-data-science-process-data-lake-walkthrough/11-data-in-ADL.PNG)
 
-### <a name="a-namequalityadata-quality-checks"></a><a name="quality"></a>Prüfungen der Datenqualität
+### <a name="quality"></a>Prüfungen der Datenqualität
 Nachdem die Tabellen mit Fahrten und Trinkgeldern eingelesen wurden, können Prüfungen der Datenqualität auf folgende Weise erfolgen. Die resultierenden CSV-Dateien können in Azure Blob- oder Azure Data Lake-Speicher ausgegeben werden. 
 
 Suchen Sie die Anzahl der Taxinummern („Medallions“) und eindeutige Anzahl von Taxinummern:
@@ -279,7 +280,7 @@ Suchen Sie fehlende Werte für einige Variablen:
 
 
 
-### <a name="a-nameexploreadata-exploration"></a><a name="explore"></a>Datenuntersuchung
+### <a name="explore"></a>Datenuntersuchung
 Wir können die Daten untersuchen, um sie besser zu verstehen.
 
 Suchen Sie die Verteilung von Fahrten mit und ohne Trinkgeld:
@@ -346,7 +347,7 @@ Suchen Sie die Quantile für die Fahrtstrecke:
     USING Outputters.Csv(); 
 
 
-### <a name="a-namejoinajoin-trip-and-fare-tables"></a><a name="join"></a>Verknüpfen der Tabellen mit Fahrten und Trinkgeldern
+### <a name="join"></a>Verknüpfen der Tabellen mit Fahrten und Trinkgeldern
 Die Tabellen „trip“ und „fare“ können anhand von „medallion“, „hack_license“ und „pickup_time“ verbunden werden.
 
     //join trip and fare table
@@ -388,7 +389,7 @@ Berechnen Sie für jede Ebene der Anzahl der Fahrgäste die Anzahl der Datensät
     USING Outputters.Csv();
 
 
-### <a name="a-namesampleadata-sampling"></a><a name="sample"></a>Ziehen von Datenstichproben
+### <a name="sample"></a>Ziehen von Datenstichproben
 Zunächst haben wir nach dem Zufallsprinzip 0,1 % der Daten aus der verknüpften Tabelle ausgewählt:
 
     //random select 1/1000 data for modeling purpose
@@ -428,7 +429,7 @@ Dann haben wir anhand der binären Variablen „tip_class“ geschichtete Stichp
     USING Outputters.Csv(); 
 
 
-### <a name="a-namerunarun-u-sql-jobs"></a><a name="run"></a>Ausführen von U-SQL-Aufträgen
+### <a name="run"></a>Ausführen von U-SQL-Aufträgen
 Wenn Sie mit der Bearbeitung von U-SQL-Skripts fertig sind, können Sie sie mithilfe Ihres Azure Data Lake Analytics-Kontos an den Server übermitteln. Klicken Sie auf **Data Lake**, **Auftrag übermitteln**, wählen Sie Ihr **Analytics-Konto** und dann **Parallelität** aus, und klicken Sie auf die Schaltfläche **Übermitteln**.  
 
  ![12](./media/machine-learning-data-science-process-data-lake-walkthrough/12-submit-USQL.PNG)
@@ -685,10 +686,5 @@ Der Lernpfad für den [Team Data Science-Prozess (TDSP)](http://aka.ms/datascien
 * [Der Team Data Science-Prozess in Aktion: Verwenden von HDInsight Hadoop-Clustern](machine-learning-data-science-process-hive-walkthrough.md)
 * [Der Team Data Science-Prozess: Verwenden von SQL Server](machine-learning-data-science-process-sql-walkthrough.md)
 * [Übersicht über Data Science mit Spark in Azure HDInsight](machine-learning-data-science-spark-overview.md)
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 
