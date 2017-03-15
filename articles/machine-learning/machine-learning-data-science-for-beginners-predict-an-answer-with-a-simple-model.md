@@ -22,7 +22,7 @@ ms.lasthandoff: 02/10/2017
 
 
 ---
-# <a name="predict-an-answer-with-a-simple-model"></a>4. Video: Vorhersagen einer Antwort mit einem einfachen Modell
+# <a name="predict-an-answer-with-a-simple-model"></a>Vorhersagen einer Antwort mit einem einfachen Modell
 ## <a name="video-4-data-science-for-beginners-series"></a>4. Video der Reihe „Data Science für Einsteiger“
 Erfahren Sie im 4. Video von „Data Science für Einsteiger“ mehr über das Erstellen eines einfachen Regressionsmodells zum Vorhersagen des Preises eines Diamanten. Wir zeichnen ein Regressionsmodell mit Zieldaten.
 
