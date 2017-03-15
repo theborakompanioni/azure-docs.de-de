@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 01/10/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
-ms.openlocfilehash: 55ecdb72c85276cbc8bb5c9ce67978e648ebddb1
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 4cf3aaa9678c423c71cf542591a5a98547bb5cf5
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -38,6 +38,9 @@ Zum Abschließen dieses Lernprogramms müssen folgende Voraussetzungen erfüllt 
 
 >[!NOTE]
 >Beim Erstellen Ihres AMS-Kontos wird dem Konto ein **Standard**-Streamingendpunkt mit dem Status **Beendet** hinzugefügt. Um mit dem Streamen der Inhalte zu beginnen und die dynamische Paketerstellung und dynamische Verschlüsselung zu nutzen, muss der Streamingendpunkt, von dem Sie Inhalte streamen möchten, den Status **Wird ausgeführt** aufweisen. 
+
+>[!NOTE]
+>Es gilt ein Grenzwert von 1.000.000 Richtlinien für verschiedene AMS-Richtlinien (z.B. für die Locator-Richtlinie oder für ContentKeyAuthorizationPolicy). Wenn Sie immer die gleichen Tage/Zugriffsberechtigungen verwenden, z.B. Richtlinien für Locator, die für einen längeren Zeitraum vorgesehen sind (Richtlinien ohne Upload), sollten Sie dieselbe Richtlinien-ID verwenden. Weitere Informationen finden Sie in [diesem](media-services-dotnet-manage-entities.md#limit-access-policies) Thema.
 
 Im Code weiter unten wird ein Medienobjekt erstellt, eine Mediendatei in das Medienobjekt hochgeladen, eine Aufgabe zur Transformation des Medienobjekts ausgeführt und ein Locator erstellt, um Ihr Video zu streamen.
 
