@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/01/2016
-ms.author: tdykstra
+ms.author: glenga
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 47db68afb8ea938a9861765f9e60c78436569110
@@ -29,7 +29,7 @@ In der Anleitung wird davon ausgegangen, dass Sie wissen, [wie ein WebJobs-Proje
 
 Einige der Codeausschnitte zeigen das `Table`-Attribut in Funktionen, die [manuell aufgerufen](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#manual) werden, d.h. nicht mit einem der Triggerattribute. 
 
-## <a name="a-idingressa-how-to-add-entities-to-a-table"></a><a id="ingress"></a> Hinzufügen von Entitäten zu einer Tabelle
+## <a id="ingress"></a> Hinzufügen von Entitäten zu einer Tabelle
 Um einer Tabelle Entitäten hinzuzufügen, verwenden Sie das `Table`-Attribut mit einem `ICollector<T>`- oder `IAsyncCollector<T>`-Parameter, wobei `T` das Schema der Entitäten angibt, die Sie hinzufügen möchten. Der Attributkonstruktor verwendet einen Zeichenfolgenparameter, der den Namen der Tabelle angibt. 
 
 Das folgende Codebeispiel fügt `Person` -Entitäten zu einer Tabelle namens *Ingress*hinzu.
@@ -65,7 +65,7 @@ In der Regel ist der Typ, den Sie mit `ICollector` verwenden, von `TableEntity` 
 
 Wenn Sie direkt mit der Azure Storage-API arbeiten möchten, können Sie der Methodensignatur einen `CloudStorageAccount` -Parameter hinzufügen.
 
-## <a name="a-idmonitora-real-time-monitoring"></a><a id="monitor"></a> Überwachung in Echtzeit
+## <a id="monitor"></a> Überwachung in Echtzeit
 Da Dateneingangsfunktionen oft große Datenmengen verarbeiten, bietet das Dashboard des WebJobs-SDK Überwachungsdaten in Echtzeit. Der Abschnitt **Aufrufprotokoll** informiert Sie, ob die Funktion noch ausgeführt wird.
 
 ![Eingangsfunktion wird ausgeführt](./media/websites-dotnet-webjobs-sdk-storage-tables-how-to/ingressrunning.png)
@@ -78,7 +78,7 @@ Wenn die Funktion abgeschlossen ist, meldet die Seite **Aufrufdetails** die Anza
 
 ![Eingangsfunktion ist abgeschlossen](./media/websites-dotnet-webjobs-sdk-storage-tables-how-to/ingresssuccess.png)
 
-## <a name="a-idmultiplea-how-to-read-multiple-entities-from-a-table"></a><a id="multiple"></a> Lesen mehrerer Entitäten aus einer Tabelle
+## <a id="multiple"></a> Lesen mehrerer Entitäten aus einer Tabelle
 Verwenden Sie zum Lesen einer Tabelle das `Table`-Attribut mit dem `IQueryable<T>`-Parameter, wobei der Typ `T` von `TableEntity` abgeleitet ist oder `ITableEntity` implementiert.
 
 Das folgende Codebeispiel liest und meldet alle Zeilen aus der `Ingress`-Tabelle:
@@ -95,7 +95,7 @@ Das folgende Codebeispiel liest und meldet alle Zeilen aus der `Ingress`-Tabelle
             }
         }
 
-### <a name="a-idreadonea-how-to-read-a-single-entity-from-a-table"></a><a id="readone"></a> Lesen einer einzelnen Entität aus einer Tabelle
+### <a id="readone"></a> Lesen einer einzelnen Entität aus einer Tabelle
 Es gibt einen `Table` -Attributkonstruktor mit zwei zusätzliche Parametern, mit denen Sie den Partitionsschlüssel und Zeilenschlüssel angeben können, wenn Sie eine Bindung mit einer einzelnen Tabellenentität herstellen möchten.
 
 Das folgende Codebeispiel liest eine Tabellenzeile für eine `Person`-Entität anhand der Partitions- und Zeilenschlüsselwerte, die in einer Warteschlange empfangen wurden:  
@@ -120,7 +120,7 @@ Das folgende Codebeispiel liest eine Tabellenzeile für eine `Person`-Entität a
 
 Die `Person`-Klasse in diesem Beispiel muss nicht zwingend `ITableEntity` implementieren.
 
-## <a name="a-idstorageapia-how-to-use-the-net-storage-api-directly-to-work-with-a-table"></a><a id="storageapi"></a> Verwenden der .NET Storage-API für das direkte Arbeiten mit der Tabelle
+## <a id="storageapi"></a> Verwenden der .NET Storage-API für das direkte Arbeiten mit der Tabelle
 Sie können auch das `Table`-Attribut mit einem `CloudTable`-Objekt verwenden, um flexibler mit einer Tabelle arbeiten zu können.
 
 Im folgenden Codebeispiel wird ein `CloudTable` -Objekt verwendet, um eine einzelne Entität zur Tabelle *Ingress* hinzuzufügen. 
@@ -141,7 +141,7 @@ Im folgenden Codebeispiel wird ein `CloudTable` -Objekt verwendet, um eine einze
 
 Weitere Informationen zur Verwendung des `CloudTable` -Objekts finden Sie unter [Verwenden von Tabellenspeicher aus .NET](../storage/storage-dotnet-how-to-use-tables.md). 
 
-## <a name="a-idqueuesarelated-topics-covered-by-the-queues-how-to-article"></a><a id="queues"></a>Verwandte Themen, die im Artikel zu Warteschlangen behandelt werden
+## <a id="queues"></a>Verwandte Themen, die im Artikel zu Warteschlangen behandelt werden
 Informationen zur Handhabung der durch eine Warteschlangennachricht ausgelösten Tabellenverarbeitung oder zu Szenarien für das WebJobs-SDK, die nicht spezifisch für die Blobverarbeitung sind, finden Sie unter [Verwenden von Azure-Warteschlangenspeicher mit dem WebJobs-SDK](websites-dotnet-webjobs-sdk-storage-queues-how-to.md). 
 
 In diesem Artikel werden u. a. die folgenden Themen behandelt:
@@ -155,7 +155,7 @@ In diesem Artikel werden u. a. die folgenden Themen behandelt:
 * Manuelles Auslösen einer Funktion
 * Schreiben von Protokollen
 
-## <a name="a-idnextstepsa-next-steps"></a><a id="nextsteps"></a> Nächste Schritte
+## <a id="nextsteps"></a> Nächste Schritte
 In dieser Anleitung wurden Codebeispiele bereitgestellt, in denen veranschaulicht wird, wie häufige Szenarien für das Arbeiten mit Azure-Tabellen behandelt werden. Weitere Informationen zur Verwendung von Azure WebJobs und dem WebJobs-SDK finden Sie unter [Empfohlene Ressourcen für Azure WebJobs](http://go.microsoft.com/fwlink/?linkid=390226).
 
 

@@ -13,31 +13,31 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/13/2017
+ms.date: 03/01/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: d391c5c6289aa63e969f63f189eb5db680883f0a
-ms.openlocfilehash: 2f2792c409b579ba721195e5749a38c6396f339d
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: a16b3eee9ed52a197b5407dc7ebe71c0710d6fa1
+ms.lasthandoff: 03/07/2017
 
 ---
-# <a name="correlate-events-that-arrive-at-differnet-times-using-storm-and-hbase"></a>Korrelieren von Ereignissen, die zu unterschiedlichen Zeiten eintreffen, mithilfe von Storm und HBase
+# <a name="correlate-events-that-arrive-at-different-times-using-storm-and-hbase"></a>Korrelieren von Ereignissen, die zu unterschiedlichen Zeiten eintreffen, mithilfe von Storm und HBase
 
 Durch die Verwendung eines persistenten Datenspeichers für Apache Storm können Sie Dateneinträge korrelieren, die zu unterschiedlichen Zeitpunkten eingehen. Beispielsweise kann durch die Verknüpfung der An- und Abmeldungsereignisse für eine Benutzersitzung berechnet werden, wie lange die Sitzung gedauert hat.
 
-In diesem Dokument erfahren Sie, wie Sie eine einfache C#-Storm-Topologie erstellen, die Anmelde-und Abmeldevorgänge für Benutzersitzungen verfolgt und die Sitzungsdauer berechnet. In dieser Topologie wird HBase als persistenter Datenspeicher verwendet. HBase ermöglicht es Ihnen auch, Batchabfragen an den historischen Daten auszuführen, um zusätzliche Einblicke zu gewinnen, wie z. B. wie viele Benutzersitzungen während eines bestimmten Zeitraums gestartet oder beendet wurden.
+In diesem Dokument erfahren Sie, wie Sie eine einfache C#-Storm-Topologie erstellen, die Anmelde-und Abmeldevorgänge für Benutzersitzungen verfolgt und die Sitzungsdauer berechnet. In dieser Topologie wird HBase als persistenter Datenspeicher verwendet. Mit HBase können Sie auch Batch-Abfragen auf den Verlaufsdaten ausführen, um zusätzliche Erkenntnisse zu gewinnen. Zum Beispiel, wie viele Benutzersitzungen während eines bestimmten Zeitraums gestartet oder beendet wurden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Visual Studio und HDInsight-Tools für Visual Studio: Installationsinformationen finden Sie unter [Erste Schritte bei der Verwendung von Hadoop-Tools für Visual Studio für HDInsight zum Ausführen einer Hive-Abfrage](hdinsight-hadoop-visual-studio-tools-get-started.md) .
+* Visual Studio und HDInsight-Tools für Visual Studio Weitere Informationen finden Sie unter [Erste Schritte mit den HDInsight-Tools für Visual Studio](hdinsight-hadoop-visual-studio-tools-get-started.md).
 
-* Apache Storm in HDInsight-Cluster (Windows-basiert). Diese Option führt die Storm-Topologie aus, die eingehende Daten verarbeitet und in HBase speichert.
+* Apache Storm in HDInsight-Cluster (Windows-basiert).
   
   > [!IMPORTANT]
   > Zwar werden SCP.NET-Topologien auf Linux-basierten Storm-Clustern unterstützt, die nach dem 28.10.2016 erstellt wurden, aber das HBase-SDK für das .NET-Paket, das seit dem 28.10.2016 verfügbar ist, funktioniert unter Linux nicht ordnungsgemäß.
 
-* Apache HBase in HDInsight-Cluster (Linux- oder Windows-basiert) Dies ist der Datenspeicher für dieses Beispiel.
+* Apache HBase in HDInsight-Cluster (Linux- oder Windows-basiert)
 
   > [!IMPORTANT]
   > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date).
@@ -106,7 +106,7 @@ In HBase werden die Daten in einer Tabelle mit den folgenden Schemaeinstellungen
 * VERSIONS: Die Familie 'cf' ist so konfiguriert, dass 5 Versionen jeder Zeile beibehalten werden.
   
   > [!NOTE]
-  > Versionen sind ein Protokoll der vorherigen Werte, die für einen bestimmte Zeilenschlüssel gespeichert wurden. Standardmäßig gibt HBase nur den Wert für die neueste Version einer Zeile zurück. In diesem Fall wird dieselbe Zeile für alle Ereignisse (START, END) verwendet. Jede Version einer Zeile wird durch den Timestampwert identifiziert. Dadurch wird eine historische Ansicht der Ereignisse bereitgestellt, die für eine bestimmte ID protokolliert wurden.
+  > Versionen sind ein Protokoll der vorherigen Werte, die für einen bestimmte Zeilenschlüssel gespeichert wurden. Standardmäßig gibt HBase nur den Wert für die neueste Version einer Zeile zurück. In diesem Fall wird dieselbe Zeile für alle Ereignisse (START, END) verwendet. Jede Version einer Zeile wird durch den Timestampwert identifiziert. Versionen stellen eine historische Ansicht der Ereignisse bereit, die für eine bestimmte ID protokolliert wurden.
 
 ## <a name="download-the-project"></a>Herunterladen des Projekts
 
@@ -148,7 +148,7 @@ Dieser Download enthält die folgenden C#-Projekte:
 
 2. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt **CorrelationTopology**, und wählen Sie „Eigenschaften“ aus.
 
-3. Wählen Sie im Eigenschaftenfenster **Einstellungen** , und geben Sie die folgenden Informationen an. Die ersten 5 Werte sollten mit den Werte identisch sein, die im Projekt **SessionInfo** verwendet wurden:
+3. Wählen Sie im Eigenschaftenfenster **Einstellungen** aus, und geben Sie die Konfigurationswerte für dieses Projekt an. Die ersten 5 Werte sind mit den Werten identisch, die im Projekt **SessionInfo** verwendet wurden:
    
    * HBaseClusterURL: die URL für den HBase-Cluster. Beispiel: https://myhbasecluster.azurehdinsight.net.
 
@@ -156,9 +156,9 @@ Dieser Download enthält die folgenden C#-Projekte:
 
    * HBaseClusterPassword: das Kennwort für das Administrator-/HTTP-Benutzerkonto.
 
-   * HBaseTableName: der Name der Tabelle, die in diesem Beispiel verwendet wird. Hier sollte der gleiche Tabellenname wie für das SessionInfo-Projekt verwendet werden.
+   * HBaseTableName: der Name der Tabelle, die in diesem Beispiel verwendet wird. Dieser Wert ist der gleiche Tabellenname wie der, der für das SessionInfo-Projekt verwendet wurde.
 
-   * HBaseTableColumnFamily: Der Spaltenfamilienname. Hier sollte der gleiche Spaltenfamilienname wie für das SessionInfo-Projekt verwendet werden.
+   * HBaseTableColumnFamily: Der Spaltenfamilienname. Dieser Wert ist die gleiche Name der Spaltenfamilie wie der, der für das SessionInfo-Projekt verwendet wurde.
    
    > [!IMPORTANT]
    > Verändern Sie HBaseTableColumnNames nicht, da die Standardeinstellungen den Namen entsprechen, die in **SessionInfo** zum Abrufen von Daten verwendet werden.
@@ -174,7 +174,7 @@ Dieser Download enthält die folgenden C#-Projekte:
    > [!NOTE]
    > Bei der ersten Übermittlung einer Topologie kann das Abrufen der Namen Ihrer HDInsight-Cluster einige Sekunden dauern.
 
-7. Sobald die Topologie hochgeladen und an den Cluster gesendet wurde, wird die **Storm-Topologieansicht** geöffnet und die aktive Topologie angezeigt. Wählen Sie **CorrelationTopology** aus, und verwenden Sie die Schaltfläche "Aktualisieren" oben rechts auf der Seite, um die Topologieinformationen zu aktualisieren.
+7. Sobald die Topologie hochgeladen und an den Cluster gesendet wurde, wird die **Storm-Topologieansicht** geöffnet und die aktive Topologie angezeigt. Wählen Sie **CorrelationTopology** aus, und verwenden Sie die Schaltfläche „Aktualisieren“ oben rechts auf der Seite, um die Daten zu aktualisieren.
    
    ![Bild der Topologie-Ansicht](./media/hdinsight-storm-correlation-topology/topologyview.png)
    
@@ -196,11 +196,11 @@ Sobald Daten ausgegeben wurden, gehen Sie folgendermaßen vor, um die Daten abzu
    
     Verwenden Sie zur Eingabe der Start- und Endzeiten folgendes Format: HH:MM und "am" oder "pm". Beispiel: 11:20pm.
    
-    Da die Topologie gerade gestartet wurde, wählen Sie eine Startzeit, die vor der Bereitstellung liegt, und als Endzeit die aktuelle Uhrzeit. Damit sollten die meisten START-Ereignisse erfasst werden, die beim Start generiert wurden. Wenn die Abfrage ausgeführt wird, sollte eine Liste von Einträgen angezeigt werden, die etwa wie folgt aussieht:
+    Um protokollierte Ereignisse zurückzugeben, wählen Sie eine Startzeit aus die vor der Bereitstellung der Storm-Topologie liegt, und als Endzeit die aktuelle Uhrzeit. Die Rückgabedaten enthält Einträge ähnlich dem folgenden Text:
    
         Session e6992b3e-79be-4991-afcf-5cb47dd1c81c started at 6/5/2015 6:10:15 PM. Timestamp = 1433527820737
 
-Die Suche nach END-Ereignissen wird auf dieselbe Weise wie die Suche nach START-Ereignissen ausgeführt. END-Ereignisse werden jedoch nach dem Zufallsprinzip zwischen 1 und 5 Minuten nach dem START-Ereignis generiert. Daher müssen Sie möglicherweise einige Zeitabschnitte ausprobieren, um die END-Ereignisse zu finden. END-Ereignisse enthalten außerdem die Dauer der Sitzung. Dies ist die Differenz zwischen der Zeitangabe des START-Ereignisses und der Zeitangabe des END-Ereignisses. Es folgen Beispieldaten für END-Ereignisse:
+Die Suche nach END-Ereignissen wird auf dieselbe Weise wie die Suche nach START-Ereignissen ausgeführt. END-Ereignisse werden jedoch nach dem Zufallsprinzip zwischen 1 und 5 Minuten nach dem START-Ereignis generiert. Sie müssen möglicherweise einige Zeitabschnitte ausprobieren, um die END-Ereignisse zu finden. END-Ereignisse enthalten außerdem die Dauer der Sitzung. Dies ist die Differenz zwischen der Zeitangabe des START-Ereignisses und der Zeitangabe des END-Ereignisses. Es folgen Beispieldaten für END-Ereignisse:
 
     Session fc9fa8e6-6892-4073-93b3-a587040d892e lasted 2 minutes, and ended at 6/5/2015 6:12:15 PM
 

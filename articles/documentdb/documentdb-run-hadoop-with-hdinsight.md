@@ -1,5 +1,5 @@
 ---
-title: "Ausführen eines Hadoop-Auftrags mit DocumentDB und HDInsight | Microsoft Docs"
+title: "Ausführen eines Hadoop-Auftrags mit Azure DocumentDB und HDInsight | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie einen einfachen Hive-, Pig- und MapReduce-Auftrag mit DocumentDB und Azure HDInsight ausführen können."
 services: documentdb
 author: dennyglee
@@ -14,14 +14,15 @@ ms.devlang: java
 ms.topic: article
 ms.date: 09/20/2016
 ms.author: denlee
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
-ms.openlocfilehash: f7b508071e76deb47bfbaf397ce168ebc78aa068
-ms.lasthandoff: 01/30/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 9304acd9f99b7f492a37bc4243ed8fb617998c6f
+ms.lasthandoff: 03/07/2017
 
 
 ---
-# <a name="a-namedocumentdb-hdinsightarun-a-hadoop-job-using-documentdb-and-hdinsight"></a><a name="DocumentDB-HDInsight"></a>Ausführen eines Hadoop-Auftrags mit DocumentDB und HDInsight
+# <a name="DocumentDB-HDInsight"></a>Ausführen eines Auftrags von Apache Hive, Pig oder Hadoop mithilfe von DocumentDB und HDInsight
 In diesem Tutorial erfahren Sie, wie Sie [Apache Hive][apache-hive]-, [Apache Pig][apache-pig]- und [Apache Hadoop][apache-hadoop]-MapReduce-Aufträge in Azure HDInsight mit dem Hadoop-Connector von DocumentDB ausführen können. Der Hadoop-Connector der DocumentDB ermöglicht es dieser, sowohl als Quelle als auch als Senke für Hive-, Pig- und MapReduce-Jobs zu fungieren. In diesem Lernprogramm wird DocumentDB sowohl als Datenquelle als auch als Ziel für Hadoop-Jobs verwendet.
 
 Nach Abschluss dieses Lernprogramms können Sie die folgenden Fragen beantworten:
@@ -44,7 +45,7 @@ Kehren Sie anschließend zu diesem Artikel zurück. Hier erhalten Sie umfassende
 
 Sie haben nicht die Zeit, das gesamte Lernprogramm zu bearbeiten und möchten lediglich sämtliche PowerShell-Beispielskripts zu Hive, Pig und MapReduce abrufen? Kein Problem. Sie erhalten diese [hier][documentdb-hdinsight-samples]. Der Download umfasst außerdem die Hql-, Pig- und Java-Dateien zu diesen Beispielen.
 
-## <a name="a-namenewestversionanewest-version"></a><a name="NewestVersion"></a>Neueste Version
+## <a name="NewestVersion"></a>Neueste Version
 <table border='1'>
     <tr><th>Hadoop-Connector-Version</th>
         <td>1.2.0</td></tr>
@@ -60,7 +61,7 @@ Sie haben nicht die Zeit, das gesamte Lernprogramm zu bearbeiten und möchten le
         </td></tr>
 </table>
 
-## <a name="a-nameprerequisitesaprerequisites"></a><a name="Prerequisites"></a>Voraussetzungen
+## <a name="Prerequisites"></a>Voraussetzungen
 Vor dem Ausführen der Anweisungen zu diesem Lernprogramm, müssen Sie sicherstellen, dass Sie über Folgendes verfügen:
 
 * Ein DocumentDB-Konto, eine Datenbank und eine Auflistung mit Dokumenten. Weitere Informationen finden Sie unter [Erste Schritte mit DocumentDB][getting-started]. Importieren Sie Beispieldaten in Ihr DocumentDB-Konto mit dem [DocumentDB-Importtool][documentdb-import-data].
@@ -74,7 +75,7 @@ Vor dem Ausführen der Anweisungen zu diesem Lernprogramm, müssen Sie sicherste
 >
 >
 
-## <a name="a-nameprovisionhdinsightastep-1-create-a-new-hdinsight-cluster"></a><a name="ProvisionHDInsight"></a>Schritt 1: Erstellen eines neuen HDInsight-Clusters
+## <a name="ProvisionHDInsight"></a>Schritt 1: Erstellen eines neuen HDInsight-Clusters
 Dieses Tutorial verwendet Skriptaktionen aus dem Azure-Portal, um Ihren HDInsight-Cluster anzupassen. In diesem Tutorial wird das Azure-Portal zum Erstellen Ihres HDInsight-Clusters verwendet. Anweisungen zur Verwendung von PowerShell-Cmdlets oder des HDInsight .NET SDK finden Sie im Artikel [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen][hdinsight-custom-provision].
 
 1. Melden Sie sich beim [Azure-Portal][azure-portal] an.
@@ -140,7 +141,7 @@ Dieses Tutorial verwendet Skriptaktionen aus dem Azure-Portal, um Ihren HDInsigh
 11. Erstellen Sie entweder eine neue **Ressourcengruppe** , oder verwenden Sie eine vorhandene Ressourcengruppe unter Ihrem Azure-Abonnement.
 12. Aktivieren Sie nun das Kontrollkästchen **An Dashboard anheften**, um die Bereitstellung nachzuverfolgen, und klicken Sie auf **Erstellen**.
 
-## <a name="a-nameinstallcmdletsastep-2-install-and-configure-azure-powershell"></a><a name="InstallCmdlets"></a>Schritt 2: Installieren und Konfigurieren von Azure PowerShell
+## <a name="InstallCmdlets"></a>Schritt 2: Installieren und Konfigurieren von Azure PowerShell
 1. Installieren Sie Azure PowerShell. Anweisungen dazu finden Sie [hier][powershell-install-configure].
 
    > [!NOTE]
@@ -161,7 +162,7 @@ Dieses Tutorial verwendet Skriptaktionen aus dem Azure-Portal, um Ihren HDInsigh
 
     ![Diagramm für Azure PowerShell][azure-powershell-diagram]
 
-## <a name="a-namerunhiveastep-3-run-a-hive-job-using-documentdb-and-hdinsight"></a><a name="RunHive"></a>Schritt 3: Ausführen eines Hive-Auftrags mit DocumentDB und HDInsight
+## <a name="RunHive"></a>Schritt 3: Ausführen eines Hive-Auftrags mit DocumentDB und HDInsight
 > [!IMPORTANT]
 > Alle durch < > gekennzeichneten Variablen müssen mithilfe der entsprechenden Konfigurationseinstellungen eingetragen werden.
 >
@@ -262,7 +263,7 @@ Dieses Tutorial verwendet Skriptaktionen aus dem Azure-Portal, um Ihren HDInsigh
 
    ![Ergebnisse der Hive-Abfrage][image-hive-query-results]
 
-## <a name="a-namerunpigastep-4-run-a-pig-job-using-documentdb-and-hdinsight"></a><a name="RunPig"></a>Schritt 4: Ausführen eines Pig-Auftrags mit DocumentDB und HDInsight
+## <a name="RunPig"></a>Schritt 4: Ausführen eines Pig-Auftrags mit DocumentDB und HDInsight
 > [!IMPORTANT]
 > Alle durch < > gekennzeichneten Variablen müssen mithilfe der entsprechenden Konfigurationseinstellungen eingetragen werden.
 >
@@ -349,7 +350,7 @@ Dieses Tutorial verwendet Skriptaktionen aus dem Azure-Portal, um Ihren HDInsigh
 
     ![Ergebnisse der Pig-Abfrage][image-pig-query-results]
 
-## <a name="a-namerunmapreduceastep-5-run-a-mapreduce-job-using-documentdb-and-hdinsight"></a><a name="RunMapReduce"></a>Schritt 5: Ausführen eines MapReduce-Auftrags mit DocumentDB und HDInsight
+## <a name="RunMapReduce"></a>Schritt 5: Ausführen eines MapReduce-Auftrags mit DocumentDB und HDInsight
 1. Legen Sie die folgenden Variablen im PowerShell-Skript-Bereich fest.
 
         $subscriptionName = "<SubscriptionName>"   # Azure subscription name
@@ -390,7 +391,7 @@ Dieses Tutorial verwendet Skriptaktionen aus dem Azure-Portal, um Ihren HDInsigh
 
       ![Ergebnisse der MapReduce-Abfrage][image-mapreduce-query-results]
 
-## <a name="a-namenextstepsanext-steps"></a><a name="NextSteps"></a>Nächste Schritte
+## <a name="NextSteps"></a>Nächste Schritte
 Glückwunsch! Sie haben soeben mithilfe von Azure-DocumentDB und HDInsight Ihre ersten Hive-, Pig- und MapReduce-Jobs ausgeführt.
 
 Der Hadoop-Connector steht im Rahmen von "Open Source" zur Verfügung. Wenn Sie möchten, können Sie in [GitHub][documentdb-github] einen Beitrag veröffentlichen.

@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/01/2016
-ms.author: tdykstra
+ms.author: glenga
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 4d5205b1c693b8c1f199235784263f3f7b6189ff
@@ -44,7 +44,7 @@ public class Program
 
 Ein [vollständiges Service Bus-Codebeispiel](https://github.com/Azure/azure-webjobs-sdk-samples/blob/master/BasicSamples/ServiceBus/Program.cs) finden Sie im Repository „azure-webjobs-sdk-samples“ auf GitHub.com.
 
-## <a name="a-idprerequisitesa-prerequisites"></a><a id="prerequisites"></a> Voraussetzungen
+## <a id="prerequisites"></a> Voraussetzungen
 Für die Arbeit mit Service Bus müssen Sie neben den weiteren WebJobs-SDK-Paketen das NuGet-Paket [Microsoft.Azure.WebJobs.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus/) installieren. 
 
 Sie müssen außerdem zusätzlich zu den Speicherverbindungszeichenfolgen die Verbindungszeichenfolge "AzureWebJobsServiceBus" festlegen.  Sie führen dies im Abschnitt `connectionStrings` der Datei "App.config" aus, wie im folgenden Beispiel gezeigt:
@@ -59,7 +59,7 @@ Ein Beispielprojekt, das die Einstellung für die Service Bus-Verbindungszeichen
 
 Die Verbindungszeichenfolgen können auch in der Azure-Laufzeitumgebung festgelegt werden, die dann die „App.config“-Einstellungen überschreibt, wenn der WebJob in Azure ausgeführt wird. Weitere Informationen finden Sie unter [Erste Schritte mit dem WebJobs SDK](websites-dotnet-webjobs-sdk-get-started.md#configure-the-web-app-to-use-your-azure-sql-database-and-storage-account).
 
-## <a name="a-idtriggera-how-to-trigger-a-function-when-a-service-bus-queue-message-is-received"></a><a id="trigger"></a> Auslösen einer Funktion, wenn eine Service Bus-Warteschlangennachricht empfangen wird
+## <a id="trigger"></a> Auslösen einer Funktion, wenn eine Service Bus-Warteschlangennachricht empfangen wird
 Zum Schreiben einer Funktion, die das WebJobs-SDK aufruft, wenn eine Warteschlangennachricht empfangen wird, verwenden Sie das `ServiceBusTrigger` -Attribut. Der Attributkonstruktor verwendet einen Parameter, der den Namen der abzufragenden Warteschlange angibt.
 
 ### <a name="how-servicebustrigger-works"></a>Funktionsweise von ServiceBusTrigger
@@ -99,7 +99,7 @@ Wenn Ihr Code zum Erstellen der Warteschlangennachricht nicht das WebJobs-SDK ve
 ### <a name="types-servicebustrigger-works-with"></a>Für "ServiceBusTrigger" verwendbare Typen
 Neben `string` und POCO-Typen können Sie das `ServiceBusTrigger`-Attribut mit einem Bytearray oder einem `BrokeredMessage`-Objekt verwenden.
 
-## <a name="a-idcreatea-how-to-create-service-bus-queue-messages"></a><a id="create"></a> Erstellen von Service Bus-Warteschlangennachrichten
+## <a id="create"></a> Erstellen von Service Bus-Warteschlangennachrichten
 Zum Schreiben einer Funktion, die eine neue Warteschlangennachricht erstellt, verwenden Sie das `ServiceBus` -Attribut und übergeben den Warteschlangennamen an den Attributkonstruktor. 
 
 ### <a name="create-a-single-queue-message-in-a-non-async-function"></a>Erstellen einer einzelnen Warteschlangennachricht in einer nicht asynchronen Funktion
@@ -136,7 +136,7 @@ Verwenden Sie zum Erstellen mehrerer Nachrichten das `ServiceBus`-Attribut mit `
 
 Jede Warteschlangennachricht wird unmittelbar nach dem Aufruf der `Add` -Methode erstellt.
 
-## <a name="a-idtopicsahow-to-work-with-service-bus-topics"></a><a id="topics"></a>Arbeiten mit Service Bus-Themen
+## <a id="topics"></a>Arbeiten mit Service Bus-Themen
 Zum Schreiben einer Funktion, die das SDK aufruft, wenn eine Nachricht zu einem Service Bus-Thema empfangen wird, verwenden Sie das `ServiceBusTrigger` -Attribut mit dem Konstruktor, der Themen- und Abonnementname enthält, wie im folgenden Codebeispiel gezeigt:
 
         public static void WriteLog([ServiceBusTrigger("outputtopic","subscription1")] string message,
@@ -157,7 +157,7 @@ In Version 1.1 wurden die folgenden Features hinzugefügt:
 * Einfache Anpassung von `OnMessageOptions` über `ServiceBusConfiguration.MessageOptions`.
 * [AccessRights](https://github.com/Azure/azure-webjobs-sdk-samples/blob/master/BasicSamples/ServiceBus/Functions.cs#L71) können für `ServiceBusTriggerAttribute`/`ServiceBusAttribute` angegeben werden (für Szenarios, in denen Sie möglicherweise keine Verwaltungsrechte besitzen). 
 
-## <a name="a-idqueuesarelated-topics-covered-by-the-storage-queues-how-to-article"></a><a id="queues"></a>Verwandte Themen, die im Artikel zu Speicherwarteschlangen behandelt werden
+## <a id="queues"></a>Verwandte Themen, die im Artikel zu Speicherwarteschlangen behandelt werden
 Informationen zu WebJobs-SDK-Szenarien, die nicht spezifisch für Service Bus sind, finden Sie unter [Verwenden des Azure-Warteschlangenspeichers mit dem WebJobs-SDK](websites-dotnet-webjobs-sdk-storage-queues-how-to.md). 
 
 In diesem Artikel werden u. a. die folgenden Themen behandelt:
@@ -171,7 +171,7 @@ In diesem Artikel werden u. a. die folgenden Themen behandelt:
 * Manuelles Auslösen einer Funktion
 * Schreiben von Protokollen
 
-## <a name="a-idnextstepsa-next-steps"></a><a id="nextsteps"></a> Nächste Schritte
+## <a id="nextsteps"></a> Nächste Schritte
 In dieser Anleitung wurde anhand von Codebeispielen veranschaulicht, wie häufige Szenarien für das Arbeiten mit Azure Service Bus behandelt werden. Weitere Informationen zur Verwendung von Azure WebJobs und dem WebJobs-SDK finden Sie unter [Empfohlene Ressourcen für Azure WebJobs](http://go.microsoft.com/fwlink/?linkid=390226).
 
 

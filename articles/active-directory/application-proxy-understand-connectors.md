@@ -11,11 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/12/2017
+ms.date: 02/22/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 36e737ebc3451a190e99dc2bc91ef4242d2f573e
-ms.openlocfilehash: e9dfe8ad62dfa0eec810ecdeeddadbecc25b9163
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: 41d6f678dba769cf7f949751da8cacf3df7f88c1
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -26,8 +27,6 @@ In diesem Artikel werden Connectors beschrieben, die für den Azure AD-Anwendung
 
 > [!NOTE]
 > Das Feature "Anwendungsproxy" ist nur verfügbar, wenn Sie Azure Active Directory auf die Premium oder Basic Edition aktualisiert haben. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-editions.md).
-> 
-> 
 
 ## <a name="what-are-azure-ad-application-proxy-connectors"></a>Was sind Azure AD-Anwendungsproxyconnectors?
 Der Anwendungsproxy kann verwendet werden, nachdem Sie den Windows Server-Dienst (den „Connector“) in Ihrem Netzwerk installiert haben. Sie können Connectors basierend auf Ihren Anforderungen an die hohe Verfügbarkeit und Skalierbarkeit installieren. Beginnen Sie mit einem Connector, und fügen Sie dann bei Bedarf weitere hinzu. Bei jeder Installation eines Connectors wird dieser dem Pool mit den Connectors hinzugefügt, der für Ihren Mandanten verwendet wird.
@@ -51,11 +50,13 @@ Sie können Ihre Connectors über den Computer überwachen, auf dem sie ausgefü
 ## <a name="all-networking-is-outbound"></a>Alle Netzwerkverbindungen nur in ausgehender Richtung
 Connectors senden nur ausgehende Anforderungen, sodass die Verbindung immer von den Connectors initiiert wird. Das Öffnen von eingehenden Ports ist nicht erforderlich, da der Datenverkehr nach dem Einrichten einer Sitzung in beide Richtungen fließt.
 
-Der ausgehende Datenverkehr wird an den Anwendungsproxydienst und die veröffentlichten Anwendungen gesendet. Der Datenverkehr an den Dienst wird über mehrere unterschiedliche Portnummern an Azure-Datencenter gesendet. Ausführliche Informationen hierzu finden Sie unter [Aktivieren des Anwendungsproxys über das Azure-Portal](active-directory-application-proxy-enable.md).
+Der ausgehende Datenverkehr wird an den Anwendungsproxydienst und die veröffentlichten Anwendungen gesendet. Der Datenverkehr an den Dienst wird über mehrere unterschiedliche Portnummern an Azure-Datencenter gesendet. Weitere Informationen finden Sie unter [Aktivieren des Anwendungsproxys über das Azure-Portal](active-directory-application-proxy-enable.md).
 
 Da es nur um ausgehenden Datenverkehr geht, muss kein Lastenausgleich zwischen den Connectors eingerichtet und auch kein Zugriff in eingehender Richtung über die Firewalls konfiguriert werden.
 
 Informationen zur Konfiguration von Firewallregeln für ausgehenden Datenverkehr finden Sie unter [Work with existing on-premise Proxy servers](application-proxy-working-with-proxy-servers.md) (Verwenden von vorhandenen lokalen Proxyservern).
+
+Verwenden Sie den [Azure AD Application Proxy Connector Ports Test Tool (Testtool der Anwendungsproxy-Connectortools von Azure AD)](https://aadap-portcheck.connectorporttest.msappproxy.net/), um sicherzustellen, dass Ihr Connector den Anwendungsproxydienst erreichen kann. Stellen Sie zumindest sicher, dass die Region USA (Mitte) und die Ihnen am nächsten gelegene Region alle über grüne Häkchen verfügen. Darüber hinaus bedeuten mehr grüne Häkchen größere Resilienz. 
 
 ## <a name="network-security"></a>Netzwerksicherheit
 
@@ -114,7 +115,7 @@ Ein weiterer Leistungsfaktor ist die Qualität der Netzwerkverbindung zwischen d
 * _Back-End-Anwendungen:_ In einigen Fällen werden zwischen dem Connector und den Back-End-Anwendungen zusätzliche Proxys verwendet. Hierfür kann die Problembehandlung leicht durchgeführt werden, indem ein Browser auf dem Connectorcomputer geöffnet und auf diese Anwendungen zugegriffen wird. Wenn Sie die Connectors in Azure ausführen und die Anwendungen lokal vorliegen, ist die Benutzerfreundlichkeit für die Benutzer ggf. nicht so hoch wie erwartet.
 * _Domänencontroller:_ Wenn die Connectors SSO per eingeschränkter Kerberos-Delegierung (KCD) durchführen, nehmen sie vor dem Senden der Anforderung an das Back-End Kontakt mit den Domänencontrollern auf. Die Connectors verfügen zwar über einen Cache mit Kerberos-Tickets, aber in Umgebungen mit hoher Auslastung kann es aufgrund einer verringerten Reaktionsfähigkeit der Domänencontroller zu einer Verlangsamung kommen. Dies ist häufiger für Connectors der Fall, die in Azure ausgeführt werden, während die Domänencontroller lokal vorliegen.
 
-##<a name="automatic-updates-to-the-connector"></a>Automatische Updates des Connectors
+## <a name="automatic-updates-to-the-connector"></a>Automatische Updates des Connectors
 
 Mit dem Connectorupdatedienst erhalten Sie eine automatisierte Möglichkeit, um alles auf dem neuesten Stand zu halten. So kommen Sie in den Genuss, immer über alle neuen Features und Sicherheits- und Leistungsverbesserungen zu verfügen.
 
@@ -152,13 +153,9 @@ Sie können den Zustand des Diensts im Fenster „Dienste“ untersuchen. Der Co
 
 Informationen zum Beheben von Fehlern in Bezug auf den Anwendungsproxyconnector finden Sie unter [Problembehandlung von Anwendungsproxys](https://azure.microsoft.com/en-us/documentation/articles/active-directory-application-proxy-troubleshoot).
 
-##<a name="next-steps"></a>Nächste Schritte
-[Verwenden von vorhandenen lokalen Proxyservern](application-proxy-working-with-proxy-servers.md)<br>
+## <a name="next-steps"></a>Nächste Schritte
+[Verwenden von vorhandenen lokalen Proxyservern](application-proxy-working-with-proxy-servers.md)
+
 [Installieren des Azure AD-Anwendungsproxyconnectors im Hintergrund](active-directory-application-proxy-silent-installation.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

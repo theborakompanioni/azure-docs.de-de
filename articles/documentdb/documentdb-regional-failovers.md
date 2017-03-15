@@ -14,13 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2017
 ms.author: arramac
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 0921464c10d5ca3d426a535d434eab6cf02013e6
-ms.openlocfilehash: c234958f5fc1ba0dbcb727e18e733d13ad0c7e71
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 4af4d30a3378e1aea66309a1d757be1c1da2ea0d
+ms.lasthandoff: 03/07/2017
 
 
 ---
-# <a name="regional-failovers-in-azure-documentdb"></a>Regionale Failover in Azure DocumentDB
+# <a name="automatic-regional-failovers-for-business-continuity-in-documentdb"></a>Automatisches regionales Failover für die Geschäftskontinuität in DocumentDB
 Azure DocumentDB vereinfacht die globale Verteilung von Daten, indem es vollständig verwaltete [Datenbankkonten in mehreren Regionen](documentdb-distribute-data-globally.md) bietet, die für eine sorgfältig austarierte Balance zwischen Konsistenz, Verfügbarkeit und Leistung mit den entsprechenden Garantien sorgen. DocumentDB-Konten bieten hohe Verfügbarkeit, Latenzen im einstelligen Millisekundenbereich, mehrere [klar abgegrenzte Konsistenzebenen](documentdb-consistency-levels.md), transparentes regionales Failover mit Multihosting-APIs sowie die Fähigkeit, Durchsatz und Speicher für alle Konten weltweit elastisch zu skalieren. 
 
 Azure DocumentDB unterstützt sowohl explizite als auch richtlinienbasiere Failover, mit denen Sie das Verhalten des gesamten Systems im Fall von Fehlern steuern können. In diesem Artikel wird Folgendes erläutert:
@@ -33,7 +35,7 @@ Informationen zu regionalen Failovern erhalten Sie auch in diesem Azure Friday-V
 
 >[!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Planet-Scale-NoSQL-with-DocumentDB/player]  
 
-## <a name="a-idconfiguremultiregionapplicationsaconfiguring-multi-region-applications"></a><a id="ConfigureMultiRegionApplications"></a>Konfigurieren von Anwendungen für mehrere Regionen
+## <a id="ConfigureMultiRegionApplications"></a>Konfigurieren von Anwendungen für mehrere Regionen
 Bevor wir uns mit Failovermodi beschäftigen, sehen wir uns an, wie Sie eine Anwendung so konfigurieren, dass diese von der Verfügbarkeit in mehreren Regionen profitiert und im bei einem regionalen Failover nicht ausfällt.
 
 * Zuerst stellen Sie die Anwendung in mehreren Regionen bereit.
@@ -69,7 +71,7 @@ Das folgende Architekturdiagramm zeigt eine Anwendungsbereitstellung in mehreren
 
 Sehen wir uns nun an, wie der DocumentDB-Dienst regionale Ausfälle mithilfe automatischer Failover verarbeitet. 
 
-## <a name="a-idautomaticfailoversaautomatic-failovers"></a><a id="AutomaticFailovers"></a>Automatische Failover
+## <a id="AutomaticFailovers"></a>Automatische Failover
 Im seltenen Fall des Ausfalls einer Azure-Region löst DocumentDB automatisch ein Failover aller DocumentDB-Konten aus, die sich in der betroffenen Region befinden. 
 
 **Was passiert beim Ausfall einer Leseregion?**
@@ -96,7 +98,7 @@ Sobald die betroffene Region nach dem Ausfall wiederhergestellt wurde, werden al
 * Sie können diese Region abfragen, um während des Ausfalls nicht replizierte Schreibvorgänge zu verarbeiten, indem diese mit den in der aktuellen Schreibregion verfügbaren Daten verglichen werden. Je nach den Anforderungen Ihrer Anwendung können Sie Daten zusammenführen und/oder Konflikte auflösen und den finalen Satz an Änderungen dann in die aktuelle Schreibregion schreiben. 
 * Nachdem Sie das Zusammenführen von Änderungen abgeschlossen haben, können Sie die betroffene Region wieder online schalten, indem Sie die Region aus Ihrem DocumentDB-Konto entfernen und diesem danach wieder hinzufügen. Sobald die Region wieder hinzugefügt wurde, können Sie sie erneut als Schreibregion konfigurieren, indem Sie über das Azure-Portal oder [programmgesteuert](https://docs.microsoft.com/rest/api/documentdbresourceprovider/databaseaccounts#DatabaseAccounts_CreateOrUpdate) ein manuelles Failover durchführen.
 
-## <a name="a-idmanualfailoversamanual-failovers"></a><a id="ManualFailovers"></a>Manuelle Failover
+## <a id="ManualFailovers"></a>Manuelle Failover
 
 Zusätzlich zu automatischen Failovern kann die aktuelle Schreibregion eines bestimmten DocumentDB-Kontos manuell und dynamisch in eine der vorhandenen Leseregionen geändert werden. Manuelle Failover können über das Azure-Portal oder [programmgesteuert](https://docs.microsoft.com/rest/api/documentdbresourceprovider/databaseaccounts#DatabaseAccounts_CreateOrUpdate) initiiert werden. 
 
@@ -114,15 +116,10 @@ Im Folgenden finden Sie einige häufige Szenarien, in denen ein manuelles Failov
 
 In diesem Artikel wurde erläutert, wie manuelle und automatische Failover in Azure DocumentDB funktionieren und wie Sie Ihre DocumentDB-Konten und -Anwendungen so konfigurieren, dass sie global verfügbar sind. Mithilfe der globalen Replikationsunterstützung von Azure DocumentDB können Sie die End-to-End-Latenz verbessern und sicherstellen, dass die Hochverfügbarkeit auch bei Regionsausfällen erhalten bleibt. 
 
-## <a name="a-idnextstepsanext-steps"></a><a id="NextSteps"></a>Nächste Schritte
+## <a id="NextSteps"></a>Nächste Schritte
 * Erfahren Sie, wie DocumentDB die [globale Verteilung](documentdb-distribute-data-globally.md) unterstützt.
 * Erfahren Sie mehr über die [globale Konsistenz bei DocumentDB](documentdb-consistency-levels.md).
 * Entwickeln Sie Ihre Umgebung mit mehreren Regionen mit dem [Azure DocumentDB-SDK](documentdb-developing-with-multiple-regions.md).
 * Erfahren Sie, wie Sie mit Azure DocumentDB [Schreibarchitekturen mit mehreren Regionen](documentdb-multi-region-writers.md) erstellen.
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

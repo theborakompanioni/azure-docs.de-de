@@ -15,9 +15,9 @@ ms.workload: backup-recovery
 ms.date: 2/14/2017
 ms.author: anoopkv
 translationtype: Human Translation
-ms.sourcegitcommit: 96e6696818a0de2fadd55ff7e0ccee350d2666ad
-ms.openlocfilehash: 0e49b7dded14ab6b76c7c73af714af5f5c854bbc
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 73d5f91f31780350c68b3475c2cbbb597f9b438e
+ms.openlocfilehash: 0c8f37055a6c64a54009ecafd883426824dcd901
+ms.lasthandoff: 03/01/2017
 
 ---
 
@@ -104,11 +104,32 @@ ProxyPassword="Password"
   ```
 
   >[!WARNING]
-  Wenn Sie Prozessserver für horizontales Hochskalieren mit diesem Konfigurationsserver verbunden haben, müssen Sie [die Proxyeinstellungen auf allen Prozessservern für horizontales Hochskalieren](site-recovery-vmware-to-azure-manage-scaleout-process-server.md) in Ihrer Bereitstellung korrigieren.
+  Wenn Sie Prozessserver für horizontales Hochskalieren mit diesem Konfigurationsserver verbunden haben, müssen Sie [die Proxyeinstellungen auf allen Prozessservern für horizontales Hochskalieren](site-recovery-vmware-to-azure-manage-scaleout-process-server.md#modifying-proxy-settings-for-scale-out-process-server) in Ihrer Bereitstellung korrigieren.
+
+## <a name="re-register-a-configuration-server-with-the-same-recovery-services-vault"></a>Erneutes Registrieren eines Konfigurationsservers beim gleichen Recovery Services-Tresor
+  1. Melden Sie sich beim Konfigurationsserver an.
+  2. Starten Sie die Datei „cspsconfigtool.exe“ über die Verknüpfung auf Ihrem Desktop.
+  3. Klicken Sie auf die Registerkarte **Tresorregistrierung**.
+  4. Laden Sie eine neue Registrierungsdatei vom Portal herunter und geben Sie sie als Eingabe für das Tool an.
+        ![register-configuration-server](./media/site-recovery-vmware-to-azure-manage-configuration-server/register-csonfiguration-server.png)
+  5. Geben Sie die Details des Proxyservers an, und klicken Sie auf die Schaltfläche **Registrieren**.  
+  6. Öffnen Sie ein PowerShell-Befehlsfenster mit Administratorrechten.
+  7. Führen Sie den folgenden Befehl aus
+
+      ```
+      $pwd = ConvertTo-SecureString -String MyProxyUserPassword
+      Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber – ProxyUserName domain\username -ProxyPassword $pwd
+      net stop obengine
+      net start obengine
+      ```
+
+  >[!WARNING]
+  Wenn mit diesem Konfigurationsserver Prozessserver für horizontales Hochskalieren verbunden sind, müssen Sie in Ihrer Bereitstellung [alle Prozessserver für horizontales Hochskalieren erneut registrieren](site-recovery-vmware-to-azure-manage-scaleout-process-server.md#re-registering-a-scale-out-process-server).
 
 ## <a name="registering-a-configuration-server-with-a-different-recovery-services-vault"></a>Registrieren eines Konfigurationsservers bei einem anderen Recovery Services-Tresor
 1. Melden Sie sich beim Konfigurationsserver an.
 2. Führen Sie an einer Eingabeaufforderung mit Administratorrechten folgenden Befehl aus:
+
 ```
 reg delete HKLM\Software\Microsoft\Azure Site Recovery\Registration
 net stop dra
@@ -152,11 +173,11 @@ net stop dra
 1. Melden Sie sich als Administrator beim Konfigurationsserver an.
 2. Öffnen Sie „Systemsteuerung > Programme > Programme deinstallieren“.
 3. Deinstallieren Sie die Programme in der folgenden Reihenfolge:
+  * Microsoft Azure Recovery Services-Agent
   * Microsoft Azure Site Recovery Mobility Service/Masterzielserver
+  * Microsoft Azure Site Recovery-Anbieter
   * Microsoft Azure Site Recovery-Konfigurationsserver/Prozessserver
   * Microsoft Azure Site Recovery-Konfigurationsserverabhängigkeiten
-  * Microsoft Azure Recovery Services-Agent
-  * Microsoft Azure Site Recovery-Anbieter
   * MySQL Server 5.5
 4. Führen Sie an einer Eingabeaufforderung mit Administratorrechten folgenden Befehl aus:
   ```

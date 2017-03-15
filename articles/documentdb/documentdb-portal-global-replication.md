@@ -13,11 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 02/24/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 691e2e9156a825e64890f035b23cb2526d502107
-ms.openlocfilehash: c7d8cea9a15ec79356c89f628ef9d8e8ccbaaec3
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: 41b75cf3059cd3758f1bce149ad8fcad4e5644ac
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -27,15 +28,10 @@ Erfahren Sie, wie Sie mit dem Azure-Portal Daten in mehreren Regionen repliziere
 
 Informationen zur Funktionsweise der globalen Datenreplikation in DocumentDB finden Sie unter [Globale Verteilung von Daten mit DocumentDB](documentdb-distribute-data-globally.md). Informationen zur programmgesteuerten Ausführung einer Datenbankreplikation finden Sie unter [Entwickeln mit regionsübergreifenden DocumentDB-Konten](documentdb-developing-with-multiple-regions.md).
 
-> [!NOTE]
-> Die globale Verteilung von DocumentDB-Datenbanken ist allgemein verfügbar und für alle neu erstellten DocumentDB-Konten automatisch aktiviert. Wir arbeiten daran, die globale Verteilung für alle vorhandenen Konten zu aktivieren. Wenn Sie jedoch in der Zwischenzeit die globale Verteilung für Ihr Konto aktivieren möchten, [kontaktieren Sie den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), der diesen Schritt für Sie ausführt.
-> 
-> 
-
-## <a name="a-idaddregionaadd-global-database-regions"></a><a id="addregion"></a>Hinzufügen von globalen Datenbankregionen
+## <a id="addregion"></a>Hinzufügen von globalen Datenbankregionen
 DocumentDB ist in den meisten [Azure-Regionen][azureregions] verfügbar. Nachdem Sie die Standardkonsistenzebene für Ihr Datenbankkonto ausgewählt haben, können Sie dem Konto eine oder mehrere Regionen zuordnen (je nachdem, welche Konsistenzebene Sie ausgewählt haben und welche Anforderungen an eine globale Verteilung bestehen).
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) in der Navigationsleiste auf **NoSQL (DocumentDB)**.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf der linken Leiste auf **NoSQL (DocumentDB)**.
 2. Wählen Sie auf dem Blatt **NoSQL (DocumentDB)** das zu ändernde Datenbankkonto aus.
 3. Klicken Sie auf dem Blatt „Konto“ im Menü auf **Daten global replizieren**.
 4. Wählen Sie auf dem Blatt **Daten global replizieren** die Regionen aus, die Sie hinzufügen oder entfernen möchten, und klicken Sie dann auf **Speichern**. Für das Hinzufügen von Regionen entstehen Kosten. Weitere Informationen hierzu finden Sie auf der Seite mit [Preisinformationen](https://azure.microsoft.com/pricing/details/documentdb/) sowie im Artikel [Globale Verteilung von Daten mit DocumentDB](documentdb-distribute-data-globally.md).
@@ -65,7 +61,7 @@ While all regions associated with your DocumentDB database account can serve rea
     ![Change the write region by reordering the region list under DocumentDB Account > Settings > Change Write Regions][3]
 -->
 
-## <a name="a-idnextanext-steps"></a><a id="next"></a>Nächste Schritte
+## <a id="next"></a>Nächste Schritte
 Informationen dazu, wie Sie die Konsistenz Ihres global replizierten Kontos verwalten, finden Sie unter [Konsistenzebenen in DocumentDB](documentdb-consistency-levels.md).
 
 Informationen zur Funktionsweise der globalen Datenreplikation in DocumentDB finden Sie unter [Globale Verteilung von Daten mit DocumentDB](documentdb-distribute-data-globally.md). Informationen zur programmgesteuerten Datenbankreplikation in mehreren Regionen finden Sie unter [Entwickeln mit regionsübergreifenden DocumentDB-Konten](documentdb-developing-with-multiple-regions.md).
@@ -80,9 +76,4 @@ Informationen zur Funktionsweise der globalen Datenreplikation in DocumentDB fin
 [consistency]: https://azure.microsoft.com/documentation/articles/documentdb-consistency-levels/
 [azureregions]: https://azure.microsoft.com/en-us/regions/#services
 [offers]: https://azure.microsoft.com/en-us/pricing/details/documentdb/
-
-
-
-<!--HONumber=Nov16_HO4-->
-
 

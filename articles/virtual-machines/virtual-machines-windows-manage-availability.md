@@ -1,5 +1,5 @@
 ---
-title: "Verwalten der Verfügbarkeit virtueller Windows-Computer | Microsoft Docs"
+title: "Verwalten der Verfügbarkeit virtueller Windows-Computer in Azure | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie mehrere virtuelle Computer verwenden, um eine hohe Verfügbarkeit für Ihre Windows-Anwendung in Azure sicherzustellen."
 services: virtual-machines-windows
 documentationcenter: 
@@ -13,15 +13,18 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2016
+ms.date: 03/06/2017
 ms.author: cynthn
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 569f67da5d91264a20927da64e560ec35a9a2d81
-ms.openlocfilehash: a12b91a794301d616a736fb0bac8b11f7cae9b95
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: 105880c146135a9ecdc29cf5363a240d3550a6a9
+ms.lasthandoff: 03/03/2017
 
 
 ---
-# <a name="manage-the-availability-of-virtual-machines"></a>Verwalten der Verfügbarkeit virtueller Computer
+# <a name="manage-the-availability-of-windows-virtual-machines-in-azure"></a>Verwalten der Verfügbarkeit virtueller Windows-Computer in Azure 
+
 Lernen Sie Möglichkeiten zum Einrichten und Verwalten mehrerer virtueller Computer kennen, um eine hohe Verfügbarkeit für Ihre Windows-Anwendungen in Azure zu gewährleisten. Sie können auch [die Verfügbarkeit virtueller Linux-Computer verwalten](virtual-machines-linux-manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
@@ -32,10 +35,5 @@ Anweisungen zum Erstellen und Verwenden von Verfügbarkeitsgruppe im klassischen
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Lastenausgleich zwischen virtuellen Computern finden Sie unter [Lastenausgleich für virtuelle Computer](virtual-machines-windows-load-balance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

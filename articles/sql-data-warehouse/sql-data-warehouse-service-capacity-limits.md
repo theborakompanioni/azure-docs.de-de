@@ -15,8 +15,9 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess;jrj
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0bd4b22355e0454245e261898c96b3e99057d707
+ms.sourcegitcommit: 3a9ea64c464a74c70e75634a3e5c1e49862a74e7
+ms.openlocfilehash: c6b44392c0b3a241d41ae55bd6bb3f544d867e9e
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -26,11 +27,11 @@ Die folgenden Tabellen erhalten die maximalen Werte, die für verschiedene Kompo
 ## <a name="workload-management"></a>Workloadverwaltung
 | Kategorie | Beschreibung | Maximum |
 |:--- |:--- |:--- |
-| [Data Warehouse-Einheiten (DWU)][Data Warehouse-Einheiten (DWU)] |Max. DWUs für ein einzelnes SQL Data Warehouse |6000 |
-| [Data Warehouse-Einheiten (DWU)][Data Warehouse-Einheiten (DWU)] |Max. DWUs für eine einzelne SQL Server-Instanz |Standardmäßig 6.000<br/><br/> Standardmäßig verfügt jede SQL Server-Instanz (z.B. „myserver.database.windows.net“) über ein Kontingent von 45.000 DTUs, das bis zu 6.000 DWUs zulässt. Bei diesem Kontingentwert handelt es sich einfach um ein Sicherheitslimit. Sie können Ihr Kontingent erhöhen, indem Sie ein [Erstellen eines Supporttickets][Erstellen eines Supporttickets] und als Anfragetyp *Kontingent* wählen.  Multiplizieren Sie zum Berechnen Ihrer DTU-Anforderungen die Anzahl der insgesamt benötigten DWUs mit 7,5. Sie können den aktuellen DTU-Verbrauch im Portal auf dem Blatt „SQL-Server“ anzeigen. Sowohl angehaltene als auch nicht angehaltene Datenbanken werden in das DTU-Kontingent eingerechnet. |
+| [Data Warehouse-Einheiten (Data Warehouse Unit, DWUs)][Data Warehouse Units (DWU)] |Max. DWUs für ein einzelnes SQL Data Warehouse |6000 |
+| [Data Warehouse-Einheiten (Data Warehouse Unit, DWUs)][Data Warehouse Units (DWU)] |Max. DWUs für eine einzelne SQL Server-Instanz |Standardmäßig&6;.000<br/><br/> Standardmäßig verfügt jede SQL Server-Instanz (z.B. „myserver.database.windows.net“) über ein Kontingent von 45.000 DTUs, das bis zu 6.000 DWUs zulässt. Bei diesem Kontingentwert handelt es sich einfach um ein Sicherheitslimit. Sie können Ihr Kontingent erhöhen, indem Sie ein [Supportticket erstellen][creating a support ticket] und als Anfragetyp *Kontingent* wählen.  Multiplizieren Sie zum Berechnen Ihrer DTU-Anforderungen die Anzahl der insgesamt benötigten DWUs mit 7,5. Sie können den aktuellen DTU-Verbrauch im Portal auf dem Blatt „SQL-Server“ anzeigen. Sowohl angehaltene als auch nicht angehaltene Datenbanken werden in das DTU-Kontingent eingerechnet. |
 | Datenbankverbindung |Gleichzeitig geöffnete Sitzungen |1.024<br/><br/>Wir unterstützen maximal 1.024 aktive Verbindungen, wobei jede Verbindung gleichzeitig Anforderungen an eine SQL Data Warehouse-Datenbank übermitteln kann. Beachten Sie, dass die Anzahl der Abfragen, die tatsächlich gleichzeitig ausgeführt werden können, begrenzt ist. Wenn der Grenzwert überschritten wird, gelangt die Anforderung in eine interne Warteschlange, in der sie auf die Verarbeitung wartet. |
 | Datenbankverbindung |Maximaler Arbeitsspeicher für vorbereitete Anweisungen |20 MB |
-| [Workloadverwaltung][Workloadverwaltung] |Maximale Anzahl gleichzeitiger Abfragen |32<br/><br/> SQL Data Warehouse kann standardmäßig maximal 32 gleichzeitige Abfragen ausführen. Darüber hinausgehende Abfragen werden in eine Warteschlange eingereiht.<br/><br/>Der Grad an Parallelität kann sich verringern, wenn Benutzer einer höheren Ressourcenklasse zugewiesen werden oder SQL Data Warehouse mit einer niedrigen DWU konfiguriert ist. Einige Abfragen, wie DMV-Abfragen, dürfen immer ausgeführt werden. |
+| [Workloadverwaltung][Workload management] |Maximale Anzahl gleichzeitiger Abfragen |32<br/><br/> SQL Data Warehouse kann standardmäßig maximal 32 gleichzeitige Abfragen ausführen. Darüber hinausgehende Abfragen werden in eine Warteschlange eingereiht.<br/><br/>Der Grad an Parallelität kann sich verringern, wenn Benutzer einer höheren Ressourcenklasse zugewiesen werden oder SQL Data Warehouse mit einer niedrigen DWU konfiguriert ist. Einige Abfragen, wie DMV-Abfragen, dürfen immer ausgeführt werden. |
 | [Tempdb][Tempdb] |Maximale Größe von „tempdb“ |399GB pro DW100. Daher ist „tempdb“ in DWU1000 3,99TB groß. |
 
 ## <a name="database-objects"></a>Datenbankobjekte
@@ -40,8 +41,8 @@ Die folgenden Tabellen erhalten die maximalen Werte, die für verschiedene Kompo
 | Tabelle |Max. Größe |60 TB komprimiert auf dem Datenträger |
 | Tabelle |Tabellen pro Datenbank |2 Milliarden |
 | Tabelle |Spalten pro Tabelle |1024 Spalten |
-| Tabelle |Bytes pro Spalte |Abhängig von der Spalte [Datentyp][Datentyp].  Grenzwert ist 8.000 für Char-Datentypen, 4.000 für Nvarchar oder 2GB für MAX-Datentypen. |
-| Tabelle |Bytes pro Zeile, definierte Größe |8.060 Bytes<br/><br/>Die Anzahl von Bytes pro Zeile wird auf die gleiche Weise wie bei SQL Server mit aktivierter Seitenkomprimierung berechnet. Wie SQL Server unterstützt SQL Data Warehouse die Speicherung von Zeilenüberlaufsdaten, sodass **Spalten variabler Länge** aus der Zeile verschoben werden können. Wenn Zeilen variabler Länge aus der Zeile verschoben werden, wird nur der 24-Byte-Stamm im Hauptdatensatz gespeichert. Weitere Informationen finden Sie im MSDN-Artikel [Zeilenüberlauf bei Daten über 8 KB][Zeilenüberlauf bei Daten über 8 KB]. |
+| Tabelle |Bytes pro Spalte |Abhängig von der Spalte [Datentyp][data type].  Grenzwert ist 8.000 für Char-Datentypen, 4.000 für Nvarchar oder 2GB für MAX-Datentypen. |
+| Tabelle |Bytes pro Zeile, definierte Größe |8.060 Bytes<br/><br/>Die Anzahl von Bytes pro Zeile wird auf die gleiche Weise wie bei SQL Server mit aktivierter Seitenkomprimierung berechnet. Wie SQL Server unterstützt SQL Data Warehouse die Speicherung von Zeilenüberlaufsdaten, sodass **Spalten variabler Länge** aus der Zeile verschoben werden können. Wenn Zeilen variabler Länge aus der Zeile verschoben werden, wird nur der 24-Byte-Stamm im Hauptdatensatz gespeichert. Weitere Informationen finden Sie im MSDN-Artikel [Zeilenüberlauf bei Daten über 8 KB][Row-Overflow Data Exceeding 8 KB]. |
 | Tabelle |Partitionen pro Tabelle |15.000<br/><br/>Um eine hohe Leistung zu erzielen, empfehlen wir, die Anzahl der Partitionen zu minimieren, die Sie zum Erfüllen Ihrer Geschäftsanforderungen benötigen. Mit einer steigenden Anzahl von Partitionen wächst der Verarbeitungsaufwand für Datendefinitionssprache (DDL)- und Datenbearbeitungssprache (DML)-Vorgänge, was zu Leistungseinbußen führt. |
 | Tabelle |Zeichen pro Partitionsbegrenzungswert. |4000 |
 | Index |Nicht gruppierte Indizes pro Tabelle. |999<br/><br/>Gilt nur für Rowstore-Tabellen |
@@ -57,7 +58,7 @@ Die folgenden Tabellen erhalten die maximalen Werte, die für verschiedene Kompo
 ## <a name="loads"></a>Lädt
 | Kategorie | Beschreibung | Maximum |
 |:--- |:--- |:--- |
-| PolyBase-Auslastung |Bytes pro Zeile |32.768<br/><br/>Der Ladevorgang in PolyBase ist auf das Laden von Zeilen beschränkt, die kleiner als 32.000 sind und nicht in Spalten des Typs VARCHR(MAX) NVARCHAR(MAX) oder VARBINARY(MAX) geladen werden können.  Diese Beschränkung existiert zwar noch, wird aber in Kürze entfernt.<br/><br/> |
+| PolyBase-Auslastung |MB pro Zeile |1<br/><br/>Der Ladevorgang in PolyBase ist auf das Laden von Zeilen beschränkt, die kleiner als 1 MB sind und nicht in Spalten des Typs VARCHR(MAX) NVARCHAR(MAX) oder VARBINARY(MAX) geladen werden können.<br/><br/> |
 
 ## <a name="queries"></a>Abfragen
 | Kategorie | Beschreibung | Maximum |
@@ -72,7 +73,7 @@ Die folgenden Tabellen erhalten die maximalen Werte, die für verschiedene Kompo
 | SELECT |Spalten pro JOIN |1024 Spalten<br/><br/>Für einen JOIN sind maximal 1.024 Spalten zulässig. Es gibt keine Garantie, dass Sie stets über 1024 verfügen. Wenn der JOIN-Plan eine temporäre Tabelle mit mehr Spalten als das JOIN-Ergebnis erfordert, gilt die Grenze von 1024 für die temporäre Tabelle. |
 | SELECT |Bytes pro GROUP BY-Spalten. |8.060<br/><br/>Die Maximalgröße von Spalten in der GROUP BY-Klausel beträgt 8.060 Bytes. |
 | SELECT |Bytes pro ORDER BY-Spalten |8.060<br/><br/>Die Maximalgröße von Spalten in der ORDER BY-Klausel beträgt 8.060 Bytes. |
-| Bezeichner und Konstanten pro Anweisung |Anzahl der Bezeichner und Konstanten, auf die verwiesen wird. |65.535<br/><br/>SQL Data Warehouse beschränkt die Anzahl von Bezeichnern und Konstanten, die in einem einzelnen Ausdruck einer Abfrage enthalten sein können. Dieser Grenzwert ist 65.535. Das Überschreiten dieses Werts führt zum SQL Server-Fehler 8632. Weitere Informationen finden Sie unter [Interner Fehler: ein Ausdrucksdienstelimit wurde erreicht.][Interner Fehler: ein Ausdrucksdienstelimit wurde erreicht.]. |
+| Bezeichner und Konstanten pro Anweisung |Anzahl der Bezeichner und Konstanten, auf die verwiesen wird. |65.535<br/><br/>SQL Data Warehouse beschränkt die Anzahl von Bezeichnern und Konstanten, die in einem einzelnen Ausdruck einer Abfrage enthalten sein können. Dieser Grenzwert ist 65.535. Das Überschreiten dieses Werts führt zum SQL Server-Fehler 8632. Weitere Informationen finden Sie unter [Interner Fehler: ein Ausdrucksdienstelimit wurde erreicht][Internal error: An expression services limit has been reached]. |
 
 ## <a name="metadata"></a>Metadaten
 | Systemsicht | Maximale Anzahl von Zeilen |
@@ -88,24 +89,19 @@ Die folgenden Tabellen erhalten die maximalen Werte, die für verschiedene Kompo
 | sys.dm_pdw_sql_requests |Die letzten 1000 SQL-Anforderungen, die in „sys.dm_pdw_exec_requests“ gespeichert sind. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Referenzinformationen finden Sie unter [SQL Data Warehouse-Referenz – Übersicht][SQL Data Warehouse-Referenz – Übersicht].
+Weitere Referenzinformationen finden Sie unter [SQL Data Warehouse-Referenz – Übersicht][SQL Data Warehouse reference overview].
 
 <!--Image references-->
 
 <!--Article references-->
-[Data Warehouse-Einheiten (DWU)]: ./sql-data-warehouse-overview-what-is.md#data-warehouse-units
-[SQL Data Warehouse-Referenz – Übersicht]: ./sql-data-warehouse-overview-reference.md
-[Workloadverwaltung]: ./sql-data-warehouse-develop-concurrency.md
+[Data Warehouse Units (DWU)]: ./sql-data-warehouse-overview-what-is.md
+[SQL Data Warehouse reference overview]: ./sql-data-warehouse-overview-reference.md
+[Workload management]: ./sql-data-warehouse-develop-concurrency.md
 [Tempdb]: ./sql-data-warehouse-tables-temporary.md
-[Datentyp]: ./sql-data-warehouse-tables-data-types.md
-[Erstellen eines Supporttickets]: /sql-data-warehouse-get-started-create-support-ticket.md
+[data type]: ./sql-data-warehouse-tables-data-types.md
+[creating a support ticket]: /sql-data-warehouse-get-started-create-support-ticket.md
 
 <!--MSDN references-->
-[Zeilenüberlauf bei Daten über 8 KB]: https://msdn.microsoft.com/library/ms186981.aspx
-[Interner Fehler: ein Ausdrucksdienstelimit wurde erreicht.]: https://support.microsoft.com/kb/913050
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+[Row-Overflow Data Exceeding 8 KB]: https://msdn.microsoft.com/library/ms186981.aspx
+[Internal error: An expression services limit has been reached]: https://support.microsoft.com/kb/913050
 

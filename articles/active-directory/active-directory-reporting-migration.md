@@ -15,9 +15,9 @@ ms.workload: identity
 ms.date: 02/17/2017
 ms.author: dhanyahk;markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 800397efdf2e3e3cb95c77bc90f45bb8852e1e42
-ms.openlocfilehash: d05cf7dc62518ea5519f319a2502e1d261b148f3
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: afd48a77faeeab6d5a8730934345cb7000a59831
+ms.openlocfilehash: e72e49140aaad55a6e66a9f331ce7fde20b8577c
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -35,7 +35,21 @@ Die Berichte im klassischen Azure-Portal sind in verschiedene Kategorien unterte
 
 ### <a name="activity-and-integrated-app-reports"></a>Aktivitätsberichte und Berichte zu integrierten Apps
 
-Im neuen Azure-Portal sind wir zur kontextbasierten Berichterstellung gewechselt und haben die vorhandenen Berichte in einer zentralen Ansicht zusammengeführt, wobei eine einzelne zugrunde liegende API die Daten in der Ansicht bereitstellt. Sie finden diese Ansicht im Azure-Portal (im linken Navigationsbereich) unter „*Aktivitäten* > Überwachungsprotokolle“. Es folgen die Berichte, die in dieser Ansicht zusammengeführt wurden.
+Im neuen Azure-Portal sind wir zur kontextbasierten Berichterstellung gewechselt und haben die vorhandenen Berichte in einer zentralen Ansicht zusammengeführt, wobei eine einzelne zugrunde liegende API die Daten in der Ansicht bereitstellt. 
+
+Sie finden diese Ansicht auf dem Blatt **Azure Active Directory** im Abschnitt **Aktivität** unter **Überwachungsprotokolle**.
+
+
+![Überwachungsprotokolle](./media/active-directory-reporting-migration/482.png "Überwachungsprotokolle")
+
+
+
+
+
+
+
+
+Es folgen die Berichte, die in dieser Ansicht zusammengeführt wurden.
 
 -    Überwachungsbericht
 
@@ -53,13 +67,22 @@ Im neuen Azure-Portal sind wir zur kontextbasierten Berichterstellung gewechselt
 -     Kontobereitstellungsfehler
 
 
-Der Bericht „Anwendungsnutzung“ wurde verbessert und einer Ansicht mit dem Namen „*Aktivitäten* -> Anmeldungen“ (im linken Navigationsbereich) hinzugefügt. Dieser Bericht enthält alle Anmeldevorgänge des Benutzers, anhand derer wiederum die Informationen zur „Anwendungsnutzung“ abgeleitet werden können. Auf dem Bildschirm mit der Übersicht über die Unternehmensanwendungen finden Sie ebenfalls Informationen zur App-Nutzung.
+Der Bericht zur Anwendungsnutzung wurde verbessert und enthält nun die Ansicht **Anmeldungen**. Sie finden diese Ansicht auf dem Blatt **Azure Active Directory** im Abschnitt **Aktivität**.
+
+
+![Überwachungsprotokolle](./media/active-directory-reporting-migration/483.png "Überwachungsprotokolle")
+
+Diese Ansicht enthält die Benutzeranmeldungen, die wiederum zum Abrufen der Informationen zur Anwendungsverwendung abgeleitet werden können. In der Übersicht über die **Unternehmensanwendungen** finden Sie ebenfalls Informationen zur Anwendungsnutzung.
+
+![Überwachungsprotokolle](./media/active-directory-reporting-migration/484.png "Überwachungsprotokolle")
+
+
 
 ## <a name="how-can-i-access-a-specific-report-in-this-single-view"></a>Wie kann ich in dieser zentralen Ansicht auf einen bestimmten Bericht zugreifen?
 
 ### <a name="audit-logs"></a>Überwachungsprotokolle
 
-Eine der häufigsten Anforderungen vieler Kunden ist die Möglichkeit, in Azure AD mittels mehrerer Filteroptionen auf Aktivitätsprotokolle zuzugreifen. An deren Stelle bieten wir nun einen erweiterten Filtermechanismus zum Filtern der gewünschten Daten. Einer der Filter, den wir bereitgestellt haben, heißt *Aktivitätskategorie*. Er listet die verschiedenen Typen von Aktivitätsprotokollen auf, die Azure AD bietet. Indem Sie die gewünschte Kategorie auswählen, können Sie die Ergebnisse der Aktivitätsprotokolle auf diejenigen eingrenzen, an denen Sie interessiert sind. 
+Eine der häufigsten Anforderungen vieler Kunden ist die Möglichkeit, in Azure AD mittels mehrerer Filteroptionen auf Aktivitätsprotokolle zuzugreifen. An deren Stelle bieten wir nun einen erweiterten Filtermechanismus zum Filtern der gewünschten Daten. Einer der Filter, den wir bereitgestellt haben, heißt **Aktivitätskategorie**. Er listet die verschiedenen Typen von Aktivitätsprotokollen auf, die Azure AD bietet. Durch Auswahl der gewünschten Kategorie können Sie die Ergebnisse auf Ihre Suche eingrenzen. 
 
 Wenn Sie beispielsweise nur an Aktivitäten im Zusammenhang mit der **Self-Service-Kennwortzurücksetzung** interessiert sind, können Sie die Kategorie**Self-Service-Kennwortverwaltung** wählen. Die angezeigten Kategorien sind im Kontext der Ressource, mit der Sie arbeiten.  
 
@@ -79,7 +102,7 @@ Derzeit gibt es die folgenden Kategorien:
 
 ### <a name="application-usage"></a>Anwendungsnutzung
 
-In der Ansicht „Aktivitäten -> Anmeldungen“ können Sie die Anwendungsnutzung für alle oder eine einzelne App anzeigen. Wie unten dargestellt, ist diese Ansicht für alle Anwendungen oder eine einzelne Anwendung vorhanden. Wenn Sie die Ergebnisse eingrenzen möchten, können Sie anhand des Benutzer- oder Anwendungsnamen filtern.
+In der Ansicht **Aktivitäten > Anmeldungen** können Sie die Anwendungsnutzung für alle oder eine einzelne App anzeigen. Wie unten dargestellt, ist diese Ansicht für alle Anwendungen oder eine einzelne Anwendung vorhanden. Wenn Sie die Ergebnisse eingrenzen möchten, können Sie anhand des **Benutzer**- oder **Anwendungsnamens** filtern.
  
 
 ![Überwachungsprotokolle](./media/active-directory-reporting-migration/07.png "Überwachungsprotokolle")
@@ -87,9 +110,10 @@ In der Ansicht „Aktivitäten -> Anmeldungen“ können Sie die Anwendungsnutzu
 
 ### <a name="security-reports"></a>Sicherheitsberichte
 
-Die Sicherheitsberichte wurden zusammengeführt, um eine Ansicht aller Risikosignale bereitzustellen, die Azure Active Directory erkennen und melden kann.
+Die Sicherheitsberichte wurden zusammengeführt, um eine vollständige Übersicht über alle sicherheitsrelevanten Risikoereignisse bereitzustellen, die Azure Active Directory erkennen und melden kann. Eine vollständige Übersicht finden Sie unter [Azure Active Directory-Risikoereignisse](active-directory-identity-protection-risk-events.md).  
+In diesem Thema finden Sie eine Übersicht darüber, in welchem Zusammenhang die Azure Active Directory-Berichte zu anomalen Aktivitäten zu den Risikoereignissen in Azure AD im Abschnitt [Azure AD-Berichte zu anomalen Aktivitäten](active-directory-identity-protection-risk-events.md#azure-ad-anomalous-activity-reports) stehen.
 
-Diese zusammengefasste Ansicht enthält Daten über Folgendes:
+Sie können im Azure-Portal auf dem Blatt **Azure Active Directory** im Abschnitt **Sicherheit** auf die Berichte zu erkannten Risikoereignissen zugreifen. Die erkannten Risikoereignisse werden in den folgenden Berichten nachverfolgt:   
 
 - Gefährdete Benutzer
 - Riskante Anmeldungen 
@@ -97,57 +121,42 @@ Diese zusammengefasste Ansicht enthält Daten über Folgendes:
 
 ![Überwachungsprotokolle](./media/active-directory-reporting-migration/04.png "Überwachungsprotokolle")
 
+Genauere Informationen zu diesen Berichten finden Sie unter:
+
+- [Sicherheitsbericht „Gefährdete Benutzer“ im Azure Active Directory-Portal – Vorschau](active-directory-reporting-security-user-at-risk.md)
+- [Bericht „Riskante Anmeldungen“ im Azure Active Directory-Portal – Vorschau](active-directory-reporting-security-risky-sign-ins.md)
+
+
+
+
 
 
 ## <a name="activity-reports-in-azure-classic-portal-versus-azure-portal"></a>Aktivitätsberichte im klassischen Azure-Portal im Vergleich zum Azure-Portal
 
 Dieser Abschnitt enthält die vorhandenen Berichte im klassischen Azure-Portal und erläutert, wie Sie diese Informationen in das Azure-Portal übertragen können.
 
-**Überwachungsprotokolle:**
 
-1. Klicken Sie im linken Navigationsbereich auf **Aktivitäten** und dann auf **Überwachungsprotokolle**.
-2. Wählen Sie als **Aktivitätskategorie** die Option **Kernverzeichnis**. 
+Ihr Einstiegspunkt für alle Überwachungsdaten ist die Option **Überwachungsprotokolle** im Abschnitt **Aktivität** auf dem Blatt **Azure Active Directory**.
 
-**Kennwortzurücksetzungsaktivität:**
+![Überwachungsprotokolle](./media/active-directory-reporting-migration/61.png "Überwachungsprotokolle")
 
-1. Klicken Sie im linken Navigationsbereich auf **Aktivitäten** und dann auf **Überwachungsprotokolle**.
-2. Wählen Sie als **Aktivitätskategorie** die Option **Self-Service-Kennwortverwaltung**. 
 
-**Aktivität „Registrierung für Zurücksetzen des Kennworts“:**    
+| Klassisches Azure-Portal                 | Schritte im Azure-Portal                                                         |
+| ---                                  | ---                                                                        |
+| Überwachungsprotokolle                           | Wählen Sie als **Aktivitätskategorie** die Option **Kernverzeichnis** aus.                       |
+| Kennwortzurücksetzungsaktivität              | Wählen Sie als **Aktivitätskategorie** die Option **Self-Service-Kennwortverwaltung** aus. | 
+| Aktivität "Registrierung für Zurücksetzen des Kennworts" | Wählen Sie als **Aktivitätskategorie** die Option **Self-Service-Kennwortverwaltung**.     |
+| Self-Service-Gruppenaktivität         | Wählen Sie als **Aktivitätskategorie** die Option **Self-Service-Gruppenverwaltung** aus.        |
+| Kontobereitstellungsaktivität        | Wählen Sie als **Aktivitätskategorie** die Option **Benutzerkontenbereitstellung** aus.         |
+| Status des Kennwortrollovers             | Wählen Sie als **Aktivitätskategorie** die Option **Automatischer Rollover von App-Kennwörtern** aus.      |
+| Kontobereitstellungsfehler          | Wählen Sie als **Aktivitätskategorie** die Option **Benutzerkontenbereitstellung** aus.        |
+| Namensänderungen für Office&365;-Gruppen         | Wählen Sie als **Aktivitätskategorie** die Option **Self-Service-Kennwortverwaltung**, als **Aktivitätsressourcentyp** die Option **Gruppe** und als **Aktivitätsquelle** die Option **Office&365;-Gruppen** aus.|
 
-1. Klicken Sie im linken Navigationsbereich auf **Aktivitäten** und dann auf **Überwachungsprotokolle**.
-2. Wählen Sie als **Aktivitätskategorie** die Option **Self-Service-Kennwortverwaltung**.
+ 
 
-**Self-Service-Gruppenaktivität:**    
+Der Einstiegspunkt für den Bericht zur **Anwendungsnutzung** ist **Azure Active Directory > Unternehmensanwendungen > Anmeldungen**. 
 
-1. Klicken Sie im linken Navigationsbereich auf **Aktivitäten** und dann auf **Überwachungsprotokolle**.
-2. Wählen Sie als **Aktivitätskategorie** die Option **Self-Service-Gruppenverwaltung**.
 
-**Namensänderungen für Office&365;-Gruppen:**
-
-1. Klicken Sie im linken Navigationsbereich auf **Aktivitäten** und dann auf **Überwachungsprotokolle**.
-2. Wählen Sie als **Aktivitätskategorie** die Option **Self-Service-Kennwortverwaltung**.
-3. Wählen Sie **Aktivitätsressourcentyp** die Option **Gruppe**. 
-4. Wählen Sie als **Aktivitätsquelle** die Option **Office&365;-Gruppen**. 
-
-**Kontobereitstellungsaktivität:**    
-
-1. Klicken Sie im linken Navigationsbereich auf **Aktivitäten** und dann auf **Überwachungsprotokolle**.
-2. Wählen Sie als **Aktivitätskategorie** die Option **Benutzerkontenbereitstellung**.
-
-**Status des Kennwortrollovers:**    
-
-1. Klicken Sie im linken Navigationsbereich auf **Aktivitäten** und dann auf **Überwachungsprotokolle**.
-2. Wählen Sie als **Aktivitätskategorie** die Option **Automatisches Rollover von App-Kennwörtern**.
-
-**Kontobereitstellungsfehler:**
-
-1. Klicken Sie im linken Navigationsbereich auf **Aktivitäten** und dann auf **Überwachungsprotokolle**.
-2. Wählen Sie als **Aktivitätskategorie** die Option **Benutzerkontenbereitstellung**.
-
-**Anwendungsnutzung:**
-
-- Klicken Sie im linken Navigationsbereich auf **Unternehmensanwendungen** und dann auf **Anmeldungen**.
-
+![Überwachungsprotokolle](./media/active-directory-reporting-migration/199.png "Überwachungsprotokolle")
 
 

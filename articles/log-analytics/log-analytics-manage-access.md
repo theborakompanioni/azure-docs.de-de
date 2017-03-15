@@ -1,6 +1,6 @@
 ---
-title: Verwalten von Arbeitsbereichen | Microsoft-Dokumentation
-description: "Es wird beschrieben, wie Sie Arbeitsbereiche in Azure Log Analytics verwalten, indem Sie verschiedene Verwaltungsaufgaben für Benutzer, Konten, Arbeitsbereiche und Azure-Konten verwenden."
+title: Verwalten von Arbeitsbereichen in Azure Log Analytics und im OMS-Portal | Microsoft-Dokumentation
+description: "Arbeitsbereiche können in Azure Log Analytics und im OMS-Portal mithilfe verschiedener Verwaltungsaufgaben für Benutzer, Konten, Arbeitsbereiche und Azure-Konten verwaltet werden."
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -12,12 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/17/2017
+ms.date: 03/01/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 9ee8f4aafcc35e43c4fcba5a3a72b043dd9fc32c
-ms.openlocfilehash: 1d330362389ee690dc2942c9bb1bc32e1f10e08a
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: dd09c109594e0ba86fe2f40625e765494bfc06eb
+ms.openlocfilehash: 1221de9ae16022f7300510b2db67ed0849b61397
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -163,25 +163,16 @@ Führen Sie die unten angegebenen Schritte aus, um einen Benutzer aus einem Arbe
 ## <a name="link-an-existing-workspace-to-an-azure-subscription"></a>Verknüpfen eines vorhandenen Arbeitsbereichs mit einem Azure-Abonnement
 Ab dem 26. September 2016 müssen alle Arbeitsbereiche bei der Erstellung mit einem Azure-Abonnement verknüpft werden. Vor diesem Datum erstellte Arbeitsbereiche müssen bei der nächsten Anmeldung mit einem Abonnement verknüpft werden. Wenn Sie den Arbeitsbereich über das Azure-Portal erstellen oder den Arbeitsbereich mit einem Azure-Abonnement verknüpfen, wird Azure Active Directory als Organisationskonto verknüpft.
 
-![Link zum Azure-Abonnement](./media/log-analytics-manage-access/required-link.png)
-
-> [!IMPORTANT]
-> Damit Sie einen Arbeitsbereich verknüpfen können, muss Ihr Azure-Konto bereits Zugriff auf den zu verknüpfenden Arbeitsbereich haben.  Anders ausgedrückt: Das Konto, das Sie für den Zugriff auf das Azure-Portal verwenden, muss **identisch** mit dem Konto sein, mit dem Sie auf den Arbeitsbereich zugreifen. Ist dies nicht der Fall, lesen Sie unter [Hinzufügen eines Benutzers zu einem vorhandenen Arbeitsbereich](#add-a-user-to-an-existing-workspace) weiter.
->
->
-
 ### <a name="to-link-a-workspace-to-an-azure-subscription-in-the-oms-portal"></a>So verknüpfen Sie einen Arbeitsbereich mit einem Azure-Abonnement im OMS-Portal
-Um einen Arbeitsbereich mit einem Azure-Abonnement im OMS-Portal zu verknüpfen, muss der angemeldete Benutzer bereits über ein kostenpflichtiges Azure-Konto verfügen.
 
-1. Klicken Sie im OMS-Portal auf die Kachel **Einstellungen**.
-2. Klicken Sie auf die Registerkarte **Konten****Azure Subscription & Data Plan** (Azure-Abonnement und -Datentarif).
-3. Klicken Sie auf den Datentarif, den Sie verwenden möchten.
-4. Klicken Sie auf **Speichern**.  
-   ![Abonnement und Datentarife](./media/log-analytics-manage-access/subscription-tab.png)
+- Wenn Sie sich beim OMS-Portal anmelden, werden Sie aufgefordert, ein Azure-Abonnement auszuwählen. Wählen Sie das Abonnement aus, das Sie mit Ihrem Arbeitsbereich verknüpfen möchten, und klicken Sie anschließend auf **Verknüpfen**.  
+    ![Verknüpfen des Azure-Abonnements](./media/log-analytics-manage-access/required-link.png)
 
-Der neue Datentarif wird oben auf der Webseite im Menüband des OMS-Portals angezeigt.
+    > [!IMPORTANT]
+    > Damit Sie einen Arbeitsbereich verknüpfen können, muss Ihr Azure-Konto bereits Zugriff auf den zu verknüpfenden Arbeitsbereich haben.  Anders ausgedrückt: Das Konto, das Sie für den Zugriff auf das Azure-Portal verwenden, muss **identisch** mit dem Konto sein, mit dem Sie auf den Arbeitsbereich zugreifen. Ist dies nicht der Fall, lesen Sie unter [Hinzufügen eines Benutzers zu einem vorhandenen Arbeitsbereich](#add-a-user-to-an-existing-workspace) weiter.
 
-![OMS-Menüband](./media/log-analytics-manage-access/data-plan-changed.png)
+
+
 
 ### <a name="to-link-a-workspace-to-an-azure-subscription-in-the-azure-portal"></a>So verknüpfen Sie einen Arbeitsbereich mit einem Azure-Abonnement im Azure-Portal
 1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com)an.
@@ -236,7 +227,7 @@ Wenn Sie über einen monetären Azure-Verpflichtungsbetrag für die Unternehmens
 
 Zum Ändern des Azure-Abonnements, mit dem der Arbeitsbereich verknüpft ist, können Sie das Azure PowerShell-Cmdlet [Move-AzureRmResource](https://msdn.microsoft.com/library/mt652516.aspx) verwenden.  
 
-### <a name="change-a-workspace-to-a-paid-pricing-tier"></a>Umstellen eines Arbeitsbereichs auf einen kostenpflichtigen Tarif
+### <a name="change-a-workspace-to-a-paid-pricing-tier-in-the-azure-portal"></a>Umstellen eines Arbeitsbereichs auf einen kostenpflichtigen Tarif über das Azure-Portal
 1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com)an.
 2. Suchen Sie nach **Log Analytics**, und wählen Sie diese Option aus.
 3. Ihre Liste mit den vorhandenen Arbeitsbereichen wird angezeigt. Wählen Sie einen Arbeitsbereich aus.  
@@ -250,6 +241,21 @@ Zum Ändern des Azure-Abonnements, mit dem der Arbeitsbereich verknüpft ist, k�
 > Falls Ihr Arbeitsbereich mit einem Automation-Konto verknüpft ist und Sie den Tarif *Standalone (Per GB)* (Eigenständig (pro GB)) auswählen möchten, müssen Sie zuvor alle Lösungen vom Typ **Automation & Control** löschen und die Verknüpfung mit dem Automation-Konto aufheben. Klicken Sie auf dem Blatt für den Arbeitsbereich unter **Allgemein** auf **Lösungen**, um die Lösungen anzuzeigen und zu löschen. Klicken Sie zum Aufheben der Verknüpfung mit dem Automation-Konto auf dem Blatt **Tarif** auf den Namen des Automatisierungskontos.
 >
 >
+
+## <a name="change-your-data-plan-in-the-oms-portal"></a>Ändern des Datentarifs über das OMS-Portal
+
+Wenn Sie einen Datentarif über das OMS-Portal ändern möchten, muss der angemeldete Benutzer bereits über ein Azure-Konto verfügen.
+
+1. Klicken Sie im OMS-Portal auf die Kachel **Einstellungen**.
+2. Klicken Sie auf die Registerkarte **Konten****Azure Subscription & Data Plan** (Azure-Abonnement und -Datentarif).
+3. Klicken Sie auf den Datentarif, den Sie verwenden möchten.
+4. Klicken Sie auf **Speichern**.  
+   ![Abonnement und Datentarife](./media/log-analytics-manage-access/subscription-tab.png)
+
+Der neue Datentarif wird oben auf der Webseite im Menüband des OMS-Portals angezeigt.
+
+![OMS-Menüband](./media/log-analytics-manage-access/data-plan-changed.png)
+
 
 ## <a name="change-how-long-log-analytics-stores-data"></a>Ändern des Speicherzeitraums für Daten in Log Analytics
 
@@ -266,8 +272,8 @@ Gehen Sie wie folgt vor, um die Länge der Datenaufbewahrung zu ändern:
 2. Suchen Sie nach **Log Analytics**, und wählen Sie diese Option aus.
 3. Ihre Liste mit den vorhandenen Arbeitsbereichen wird angezeigt. Wählen Sie einen Arbeitsbereich aus.  
 4. Klicken Sie auf dem Blatt für den Arbeitsbereich unter **Allgemein** auf **Aufbewahrung**.  
-5. Verwenden Sie den Schieberegler, um die Anzahl der Aufbewahrungstage zu erhöhen oder zu verringern, und klicken Sie dann auf **Speichern**.
-![Ändern der Aufbewahrungsdauer](./media/log-analytics-manage-access/manage-access-change-retention01.png)
+5. Passen Sie mithilfe des Schiebereglers die Anzahl von Aufbewahrungstagen an, und klicken Sie dann auf **Speichern**.  
+    ![Ändern der Aufbewahrungsdauer](./media/log-analytics-manage-access/manage-access-change-retention01.png)
 
 ## <a name="change-an-azure-active-directory-organization-for-a-workspace"></a>Ändern einer Azure Active Directory-Organisation für einen Arbeitsbereich
 

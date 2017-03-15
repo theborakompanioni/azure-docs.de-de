@@ -1,5 +1,5 @@
 ---
-title: "Hinzufügen von benutzerdefiniertem Code zu Logik-Apps mit Azure Functions | Microsoft-Dokumentation"
+title: "Hinzufügen von benutzerdefiniertem Code zu Azure Logic Apps mit Azure Functions | Microsoft-Dokumentation"
 description: "Erstellen von benutzerdefiniertem Code für Azure Logic Apps mit Azure Functions"
 services: logic-apps,functions
 documentationcenter: .net,nodejs,java
@@ -12,31 +12,32 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
+ms.custom: H1Hack27Feb2017
 ms.date: 10/18/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: c63dde728eaaf8237970e05cc524c6220b69a074
-ms.openlocfilehash: 8b68f017a2c7a17603508438b0d4bd760bec4f78
-ms.lasthandoff: 02/15/2017
-
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 7d21ab1180fcd6df39a5dcc5c095c9521c00f6fd
+ms.lasthandoff: 03/10/2017
 
 ---
-# <a name="add-custom-code-to-azure-logic-apps-with-azure-functions"></a>Hinzufügen von benutzerdefiniertem Code zu Azure Logic Apps mit Azure Functions
 
-Sie können benutzerdefinierte C#- oder Node.js-Codeausschnitte ausführen, indem Sie Azure Functions in Logik-Apps verwenden. 
+# <a name="add-and-run-custom-code-for-logic-apps-through-azure-functions"></a>Hinzufügen von benutzerdefiniertem Code für Logik-Apps über Azure Functions
+
+Sie können über Azure Functions benutzerdefinierte Funktionen erstellen, um benutzerdefinierte C#- oder Node.js-Codeausschnitte auszuführen. 
 [Azure Functions](../azure-functions/functions-overview.md) ermöglicht Computing ohne Server in Microsoft Azure und ist für die folgenden Aufgaben nützlich:
 
 * Erweiterte Formatierung oder Berechnung von Feldern in Logik-Apps
 * Berechnungen in einem Workflow
 * Erweiterung der Funktionalität von Logik-Apps um Funktionen, die in C# oder Node.js unterstützt werden
 
-## <a name="create-functions-for-logic-apps"></a>Erstellen von Funktionen für Logik-Apps
+## <a name="create-custom-functions-for-your-logic-apps"></a>Erstellen von benutzerdefinierten Funktionen für Ihre Logik-Apps
 
 Es wird empfohlen, eine Funktion im Azure Functions-Portal aus den Vorlagen für **generische Knotenwebhooks** oder **generische C#-Webhooks** zu erstellen. Das Ergebnis ist eine automatisch ausgefüllte Vorlage, die `application/json` von einer Logik-App akzeptiert. Funktionen, die Sie mit diesen Vorlagen erstellen, werden automatisch ermittelt und im Logik-Apps-Designer unter **Azure Functions in my region** (Azure Functions in meiner Region) angezeigt.
 
 Im Azure-Portal sollte für die Funktion im Bereich **Integrieren** für die Vorlage **Modus** auf **Webhook** und **Webhooktyp** auf **Generic JSON** (Generisches JSON-Format) festgelegt sein. 
 
-Webhookfunktionen akzeptieren eine Anforderung und übergeben sie über eine `data`-Variable an die Methode. Sie können auf die Eigenschaften Ihrer Nutzlast mit der Punktnotation zugreifen, z.B. `data.foo`. Beispielsweise sieht eine einfache JavaScript-Funktion, die einen DateTime-Wert in eine Datumszeichenfolge konvertiert, wie im folgenden Beispiel aus:
+Webhookfunktionen akzeptieren eine Anforderung und übergeben sie über eine `data`-Variable an die Methode. Sie können auf die Eigenschaften Ihrer Nutzlast mit der Punktnotation zugreifen, z.B. `data.function-name`. Beispielsweise sieht eine einfache JavaScript-Funktion, die einen DateTime-Wert in eine Datumszeichenfolge konvertiert, wie im folgenden Beispiel aus:
 
 ```
 function start(req, res){

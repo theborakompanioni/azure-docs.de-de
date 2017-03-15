@@ -1,5 +1,5 @@
 ---
-title: "Beibehalten der Ausgabe von Aufträgen und Aufgaben – Azure Batch | Microsoft-Dokumentation"
+title: "Beibehalten der Ausgabe von Aufträgen und Tasks in Azure Storage – Azure Batch | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie Azure Storage als dauerhaften Speicher für die Ausgabe von Batch-Tasks und -Aufträgen verwenden und die Anzeige dieser dauerhaft gespeicherten Ausgabe im Azure-Portal aktivieren."
 services: batch
 documentationcenter: .net
@@ -12,15 +12,18 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 01/23/2017
+ms.date: 02/27/2017
 ms.author: tamram
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: ffba988bd8cd3896816118afde979c7067fced79
-ms.openlocfilehash: e5231970b772f7cc043441954ebab6cb1bb6ed8b
+ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
+ms.openlocfilehash: 2c80f9d2bc788c60c5a7b3a5fd0d38cb86cbf838
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="persist-azure-batch-job-and-task-output"></a>Beibehalten der Ausgabe von Azure Batch-Aufträgen und -Tasks
+# <a name="persist-results-from-completed-jobs-and-tasks-to-azure-storage"></a>Beibehalten der Ergebnisse von abgeschlossenen Aufträgen und Tasks in Azure Storage
+
 Die Tasks, die Sie in Batch ausführen, generieren in der Regel Ausgaben, die gespeichert und später von anderen Tasks im Auftrag und/oder von der Clientanwendung, die den Auftrag ausführt, abgerufen werden müssen. Diese Ausgaben können Dateien sein, die durch die Verarbeitung von Eingabedaten oder Protokolldateien, die mit der Taskausführung verknüpft sind, generiert werden. In diesem Artikel wird eine .NET-Klassenbibliothek beschrieben, die ein auf Konventionen basierendes Verfahren zum Beibehalten solcher Taskausgaben in Azure Blob Storage verwendet. So sind die Ausgaben auch dann noch verfügbar, wenn Sie Ihre Pools, Aufträge und Computeknoten gelöscht haben.
 
 Mithilfe des in diesem Artikel beschriebenen Verfahrens können Sie die Taskausgabe auch im [Azure-Portal][portal] unter **Gespeicherte Ausgabedateien** und **Gespeicherte Protokolle** anzeigen.
@@ -248,9 +251,4 @@ Der Beitrag [Installing applications and staging data on Batch compute nodes][fo
 
 [1]: ./media/batch-task-output/task-output-01.png "Auswahl von „Gespeicherte Ausgabedateien“ und „Gespeicherte Protokolle“ im Portal"
 [2]: ./media/batch-task-output/task-output-02.png "Taskausgabeblatt im Azure-Portal"
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

@@ -4,7 +4,7 @@ description: "Es wird beschrieben, wie Sie die Azure Data Lake-Tools für Visual
 services: hdinsight
 documentationcenter: 
 author: Blackmist
-manager: paulettm
+manager: jhubbard
 editor: cgronlun
 ms.assetid: e3434c45-95d1-4b96-ad4c-fb59870e2ff0
 ms.service: hdinsight
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/10/2017
+ms.date: 02/28/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
-ms.openlocfilehash: a1e6216647b7401183ab2f47f72aaee1f80ccee0
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: 599aeb1f38c804c2edf6590140e739c9705ab1ab
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -30,7 +31,7 @@ Mit der Hortonworks Sandbox können Sie Hadoop lokal in Ihrer Entwicklungsumgebu
 
 * Hortonworks Sandbox, die auf einem virtuellen Computer in Ihrer Entwicklungsumgebung ausgeführt wird. Dieses Dokument wurde geschrieben und getestet, während die Sandbox in Oracle VirtualBox ausgeführt wurde. Diese wurde gemäß den Informationen im Dokument [Erste Schritte im Hadoop-Ökosystem](hdinsight-hadoop-emulator-get-started.md) konfiguriert.
 
-* Visual Studio 2013 oder 2015 (beliebige Edition).
+* Visual Studio 2013, 2015 oder 2017 (beliebige Edition).
 
 * [Azure SDK für .NET](https://azure.microsoft.com/downloads/) 2.7.1 oder höher.
 
@@ -38,7 +39,7 @@ Mit der Hortonworks Sandbox können Sie Hadoop lokal in Ihrer Entwicklungsumgebu
 
 ## <a name="configure-passwords-for-the-sandbox"></a>Konfigurieren von Kennwörtern für die Sandbox
 
-Stellen Sie sicher, dass die Hortonworks Sandbox ausgeführt wird. Führen Sie anschließend die Schritte unter [Erste Schritte im Hadoop-Ökosystem](hdinsight-hadoop-emulator-get-started.md#set-sandbox-passwords) aus, um das Kennwort für das SSH-`root`-Konto und das Ambari-`admin`-Konto zu konfigurieren. Diese Kennwörter werden verwendet, wenn Sie aus Visual Studio eine Verbindung mit der Sandbox herstellen.
+Stellen Sie sicher, dass die Hortonworks Sandbox ausgeführt wird. Führen Sie anschließend die Schritte unter [Erste Schritte im Hadoop-Ökosystem](hdinsight-hadoop-emulator-get-started.md#set-sandbox-passwords) aus. Mit diesen Schritten konfigurieren Sie das Kennwort für das SSH-`root`-Konto und das Ambari-`admin`-Konto. Diese Kennwörter werden verwendet, wenn Sie aus Visual Studio eine Verbindung mit der Sandbox herstellen.
 
 ## <a name="connect-the-tools-to-the-sandbox"></a>Verbinden der Tools mit der Sandbox
 
@@ -60,7 +61,7 @@ Stellen Sie sicher, dass die Hortonworks Sandbox ausgeführt wird. Führen Sie a
 
     Wählen Sie **Weiter**, um fortzufahren.
 
-5. Warten Sie, bis die Überprüfung der Dienste abgeschlossen ist. Es kann vorkommen, dass die Überprüfung nicht erfolgreich ist und Sie eine Aufforderung zum Aktualisieren der Konfiguration erhalten. Wählen Sie in diesem Fall die Schaltfläche **Aktualisieren**, und warten Sie, bis die Konfiguration und Verifizierung für den Dienst abgeschlossen ist.
+5. Warten Sie, bis die Überprüfung der Dienste abgeschlossen ist. Es kann vorkommen, dass die Überprüfung nicht erfolgreich ist und Sie eine Aufforderung zum Aktualisieren der Konfiguration erhalten. Wenn die Überprüfung nicht erfolgreich ist, wählen Sie die Schaltfläche **Aktualisieren** aus, und warten Sie, bis die Konfiguration und Verifizierung für den Dienst abgeschlossen ist.
 
     ![Fehler und Schaltfläche „Aktualisieren“](./media/hdinsight-hadoop-emulator-visual-studio/fail-and-update.png)
 
@@ -86,7 +87,7 @@ Hive stellt eine SQL-ähnliche Abfragesprache (HiveQL) für die Arbeit mit struk
 
     Ein neues Abfragefenster wird geöffnet, in dem Sie eine Abfrage schnell schreiben und an den lokalen Cluster senden können.
 
-2. Geben Sie im neuen Abfragefenster Folgendes ein:
+2. Geben Sie im neuen Abfragefenster den folgenden Befehl ein:
 
         select count(*) from sample_08;
 
@@ -94,15 +95,15 @@ Hive stellt eine SQL-ähnliche Abfragesprache (HiveQL) für die Arbeit mit struk
 
     ![Abfragefenster und Schaltfläche „Senden“](./media/hdinsight-hadoop-emulator-visual-studio/submit-hive.png)
 
-    Beachten Sie, dass Sie auch das Dropdownmenü neben **Senden** verwenden können, um **Erweitert** auszuwählen. Es wird ein Dialogfeld geöffnet, in dem Sie beim Senden des Auftrags weitere Optionen angeben können.
+    Sie können auch das Dropdownmenü neben **Senden** verwenden, um **Erweitert** auszuwählen. Mit den erweiterten Optionen können Sie beim Senden des Auftrags weitere Optionen angeben.
 
     ![Erweitertes Senden](./media/hdinsight-hadoop-emulator-visual-studio/advanced-hive.png)
 
-3. Nach dem Absenden der Abfrage wird der Auftragsstatus angezeigt. Hier erhalten Sie Informationen zum Auftrag, während er von Hadoop verarbeitet wird. Der Eintrag **Auftragsstatus** zeigt den aktuellen Status des Auftrags an. Der Status wird in regelmäßigen Abständen aktualisiert, oder Sie können das Aktualisierungssymbol verwenden, um den Status manuell zu aktualisieren.
+3. Nach dem Absenden der Abfrage wird der Auftragsstatus angezeigt. Der Auftragsstatus zeigt die Informationen zum Auftrag an, während er von Hadoop verarbeitet wird. Der Eintrag **Auftragsstatus** zeigt den Status des Auftrags an. Der Status wird in regelmäßigen Abständen aktualisiert, oder Sie können das Aktualisierungssymbol verwenden, um den Status manuell zu aktualisieren.
 
     ![Auftragszustand](./media/hdinsight-hadoop-emulator-visual-studio/job-state.png)
 
-    Nachdem sich der **Auftragsstatus** in **Beendet** geändert hat, wird ein gerichteter azyklischer Graph (Directed Acyclic Graph, DAG) angezeigt. Hiermit wird der Ausführungspfad beschrieben, der per Tez bestimmt wurde (Standardausführungsmodul für Hive im lokalen Cluster).
+    Nachdem sich der **Auftragsstatus** in **Beendet** geändert hat, wird ein gerichteter azyklischer Graph (Directed Acyclic Graph, DAG) angezeigt. Dieses Diagramm beschreibt den Ausführungspfad, der per Tez bestimmt wurde (Standardausführungsmodul für Hive im lokalen Cluster).
 
     > [!NOTE]
     > Tez ist auch die Standardeinstellung, wenn Linux-basierte HDInsight-Cluster verwendet werden. Für Windows-basiertes HDInsight ist dies nicht die Standardeinstellung. Zur Verwendung müssen Sie hierbei am Anfang der Hive-Abfrage die Zeile `set hive.execution.engine = tez;` hinzufügen.
@@ -113,7 +114,7 @@ Hive stellt eine SQL-ähnliche Abfragesprache (HiveQL) für die Arbeit mit struk
 
     ![Interaktive Abfrage](./media/hdinsight-hadoop-emulator-visual-studio/interactive-query.png)
 
-    Das Ausgabeprotokoll, das während der Verarbeitung generiert wurde, wird an das Fenster **HiveServer2-Ausgabe** gestreamt.
+    Das Ausgabeprotokoll, das während der Verarbeitung generiert wurde, wird von einer interaktiven Abfrage an das Fenster **HiveServer2-Ausgabe** gestreamt.
 
     > [!NOTE]
     > Dies sind die gleichen Informationen, die über den Link **Auftragsprotokoll** zur Verfügung stehen, nachdem ein Auftrag abgeschlossen wurde.
@@ -122,7 +123,7 @@ Hive stellt eine SQL-ähnliche Abfragesprache (HiveQL) für die Arbeit mit struk
 
 ## <a name="create-a-hive-project"></a>Erstellen eines Hive-Projekts
 
-Sie können auch ein Projekt erstellen, das mehrere Hive-Skripts enthält. Dies ist hilfreich, wenn Sie über verwandte Skripts verfügen, die zusammenbleiben oder die Sie mit einem Versionskontrollsystem verwalten müssen.
+Sie können auch ein Projekt erstellen, das mehrere Hive-Skripts enthält. Ein Projekt ist hilfreich, wenn Sie über verwandte Skripts verfügen, die zusammenbleiben oder die Sie mit einem Versionskontrollsystem verwalten müssen.
 
 1. Wählen Sie in Visual Studio die Option **Datei**, **Neu** und dann „Projekt“.
 
@@ -134,13 +135,13 @@ Das Projekt **Hive-Beispiel** enthält zwei Skripts: **WebLogAnalysis.hql** und 
 
 ## <a name="create-a-pig-project"></a>Erstellen eines Pig-Projekts
 
-Während für Hive eine SQL-ähnliche Sprache für die Arbeit mit strukturierten Daten bereitgestellt wird, wird für Pig eine Sprache (Pig Latin) verwendet, mit der Sie eine Pipeline mit Transformationen entwickeln können, die auf Ihre Daten angewendet werden. Verwenden Sie die folgenden Schritte, um Pig mit dem lokalen Cluster zu nutzen.
+Während Hive eine SQL-ähnliche Sprache zum Arbeiten mit strukturierten Daten bereitstellt, funktioniert Pig, indem Datentransformationen durchgeführt werden. Pig stellt eine Sprache bereit (Pig Latin), mit der Sie eine Pipeline von Transformationen entwickeln können. Verwenden Sie die folgenden Schritte, um Pig mit dem lokalen Cluster zu nutzen.
 
 1. Öffnen Sie Visual Studio, und wählen Sie **Datei**, **Neu** und dann **Projekt** aus. Erweitern Sie in der Liste mit den Projekten die Option **Vorlagen**, **Azure Data Lake**, und wählen Sie **Pig (HDInsight)** aus. Wählen Sie in der Liste der Vorlagen die Option **Pig-Anwendung** aus. Geben Sie einen Namen und einen Speicherort ein, und klicken Sie auf **OK**.
 
     ![Pig (HDInsight)-Projekt](./media/hdinsight-hadoop-emulator-visual-studio/new-pig.png)
 
-2. Geben Sie Folgendes als Inhalt der Datei **script.pig** ein, die mit diesem Projekt erstellt wurde.
+2. Geben Sie folgenden Text als Inhalt der Datei **script.pig** ein, die mit diesem Projekt erstellt wurde.
 
         a = LOAD '/demo/data/Website/Website-Logs' AS (
             log_id:int,
@@ -189,7 +190,7 @@ Mit Azure Data Lake-Tools können Sie leicht Informationen zu Aufträgen anzeige
 
 ### <a name="database-and-table-properties"></a>Datenbank- und Tabelleneigenschaften
 
-Sie werden vielleicht bemerkt haben, dass Sie für eine Datenbank oder Tabelle die **Eigenschaften** anzeigen können. Die Details zum ausgewählten Element werden im Eigenschaftenfenster aufgeführt.
+Sie werden vielleicht bemerkt haben, dass Sie für eine Datenbank oder Tabelle die **Eigenschaften** anzeigen können. Die Auswahl von **Eigenschaften** zeigt Details für das ausgewählte Element im Fenster „Eigenschaften“ an.
 
 ![Eigenschaften](./media/hdinsight-hadoop-emulator-visual-studio/properties.png)
 
@@ -207,9 +208,4 @@ Sie können die Tabelle dann mit einem Formular erstellen. Der unformatierte Hiv
 
 * [Einführung in Hortonworks Sandbox](http://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
 * [Hadoop tutorial - Getting started with HDP](http://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

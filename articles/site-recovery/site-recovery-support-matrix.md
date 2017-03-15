@@ -15,8 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 12/04/2016
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 1e88eba53b8ec3388ede1ae69cb290423919fda6
-ms.openlocfilehash: d683e25ef96bbd87a6d5b5ea143754b8f67f288e
+ms.sourcegitcommit: 3b9d269a780e9a4c61263208f26f440b1121c682
+ms.openlocfilehash: f437598b612a145c5dd8b46a1ba340d298a76981
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -62,7 +63,7 @@ vCenter 5.5 oder 6.0 (Unterstützung nur für 5.5-Features)  <br/><br/> vSphere 
 
 ### <a name="machines-replicate-to-azure"></a>Computer (Replikation zu Azure)
 
-Die virtuellen Computer müssen die [Azure-Anforderungen](site-recovery-best-practices.md#azure-virtual-machine-requirements)erfüllen.
+Die virtuellen Computer müssen die [Azure-Anforderungen](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)erfüllen.
 
 **Anforderung** | **VMware-/physische Server** | **Hyper-V (keine VMM)** | **Hyper-V (mit VMM)**
 --- | --- | --- | ---
@@ -163,17 +164,17 @@ Datenträger > 1 TB | Nein | Nein | Nein
 Volume mit Stripesetdatenträgern > 1 TB<br/><br/> LVM | Ja | Ja | Ja
 Speicherplätze | Nein | Ja | Ja
 Datenträger laufendem Systembetrieb hinzufügen/entfernen | Nein | Nein | Nein
-Ausschließen von Datenträgern | Ja | Nein | Nein
+Ausschließen von Datenträgern | Ja | Ja | Ja
 Multipfad (MPIO) | NA | Ja | Ja
 
 **Azure-Speicher** | **VMware-/physische Server** | **Hyper-V (keine VMM)** | **Hyper-V (mit VMM)**
 --- | --- | --- | ---
 LRS | Ja | Ja | Ja
-GRS | Ja | Ja | Ja
+GRS (nur für Standardspeicher) | Ja | Ja | Ja
 Speicherebene „Kalt“ | Nein | Nein | Nein
 Speicherebene „Heiß“| Nein | Nein | Nein
 Verschlüsselung ruhender Daten | Ja | Ja | Ja
-Storage Premium | Ja | Nein | Nein
+Storage Premium | Ja | Ja | Ja
 Import-/Exportdienst | Nein | Nein | Nein
 
 
@@ -261,10 +262,5 @@ Sie können Site Recovery zum Replizieren virtueller Computer und physischer Ser
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Vorbereiten der Bereitstellung](site-recovery-best-practices.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
+Lesen Sie die [Voraussetzungen](site-recovery-prereq.md).
 

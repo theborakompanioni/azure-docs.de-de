@@ -1,5 +1,5 @@
 ---
-title: "Behandeln von Problemen bei der Zugriffsbereichserweiterung für Internet Explorer | Microsoft Docs"
+title: "Behandeln von Problemen bei der Azure-Zugriffsbereichserweiterung für IE | Microsoft-Dokumentation"
 description: "So stellen Sie das Internet Explorer-Add-On für das Portal &quot;Meine Apps&quot; mithilfe von Gruppenrichtlinien bereit"
 services: active-directory
 documentationcenter: 
@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/24/2017
+ms.date: 02/27/2017
 ms.author: markvi
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 43768d76e3cdc0dc34a3412675ea4fb84170c021
+ms.sourcegitcommit: f593ecca4f4c82dcbd07e6f57ad120537f7d2134
+ms.openlocfilehash: 4c3f7f95b1052512547a9996019803b6185a3405
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -78,7 +80,7 @@ So deinstallieren Sie die Zugriffsbereichserweiterung auf Ihrem Computer:
 1. Drücken Sie auf der Tastatur die **Windows-Taste** , um das Startmenü zu öffnen. Wenn das Menü geöffnet ist, können Sie beliebige Begriffe für die Suche eingeben. Geben Sie "Systemsteuerung" ein, und öffnen Sie dann die **Systemsteuerung** , wenn diese in den Suchergebnissen angezeigt wird.
    
     ![Systemsteuerung suchen](./media/active-directory-saas-ie-troubleshooting/search_sm.png)
-2. Ändern Sie in der rechten oberen Ecke der Systemsteuerung die Option **Anzeige** in **Große Symbole**. Suchen Sie dann die Schaltfläche **Programme und Funktionen** , und klicken Sie darauf.
+2. Ändern Sie in der rechten oberen Ecke der Systemsteuerung die Option **Anzeige** in **Große Symbole**. Suchen Sie dann die Schaltfläche **Programme und Funktionen**, und klicken Sie darauf.
    
     ![Ansicht in große Symbole ändern](./media/active-directory-saas-ie-troubleshooting/control_panel.png)
 3. Wählen Sie in der Liste den Eintrag **Zugriffsbereichserweiterung** aus, und klicken Sie dann auf die Schaltfläche **Deinstallieren**.
@@ -92,10 +94,5 @@ Wenn beim Deinstallieren der Erweiterung Probleme auftreten, können Sie diese a
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 * [Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory](active-directory-appssoaccess-whatis.md)
 * [How to Deploy the Access Panel Extension for Internet Explorer using Group Policy (auf Englisch)](active-directory-saas-ie-group-policy.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -1,6 +1,6 @@
 ---
 title: "Azure Multi-Factor Authentication – Häufig gestellte Fragen | Microsoft Docs"
-description: "Enthält eine Liste mit häufig gestellten Fragen und Antworten im Zusammenhang mit Azure Multi-Factor Authentication. Multi-Factor Authentication ist eine Methode zum Überprüfen der Identität eines Benutzers, für die Benutzername und Kennwort nicht ausreichen. Sie bietet eine zusätzliche Sicherheitsebene für Benutzeranmeldungen und -transaktionen."
+description: "Häufig gestellte Fragen und Antworten im Zusammenhang mit Azure Multi-Factor Authentication. Multi-Factor Authentication ist eine Methode zum Überprüfen der Identität eines Benutzers, für die Benutzername und Kennwort nicht ausreichen. Sie bietet eine zusätzliche Sicherheitsebene für Benutzeranmeldungen und -transaktionen."
 services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
@@ -12,15 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/06/2017
+ms.date: 02/26/2017
 ms.author: kgremban
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 9617cd00ed4a5f8f867542238e5008a9a17663c9
-ms.openlocfilehash: 1e01bdc099af865e01eb2784cf367e482300ade8
-
+ms.sourcegitcommit: 20afeb3ba290ddf728d2b52c076c7a57fadc77c6
+ms.openlocfilehash: dfbb5e2358cd857c2a16ded5d4d82c1f246cbe20
+ms.lasthandoff: 02/28/2017
 
 ---
-# <a name="azure-multi-factor-authentication-faq"></a>Azure Multi-Factor Authentication – Häufig gestellte Fragen
+# <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Häufig gestellte Fragen zu Azure Multi-Factor Authentication
 Dieses FAQ beantwortet häufige Fragen zur Azure Multi-Factor Authentication und zur Nutzung des Multi-Factor Authentication-Diensts, einschließlich Fragen zu Abrechnungsmodell und Verwendbarkeit.
 
 ## <a name="general"></a>Allgemein
@@ -62,7 +63,7 @@ Wenn Sie das Modell „Pro Benutzer“ oder „Pro Authentifizierung“ benutzen
 
 Bei Verwendung des Lizenzmodells werden Lizenzen für Azure Multi-Factor Authentication erworben und wie bei Office 365 und anderen Abonnementprodukten den Benutzern zugewiesen.
 
-Weitere Informationen zu Ihren Möglichkeiten finden Sie unter [Funktionsweise von Azure Multi-Factor Authentication](multi-factor-authentication-how-it-works.md#how-to-get-azure-multi-factor-authentication).
+Weitere Informationen zu Ihren Möglichkeiten finden Sie unter [Funktionsweise von Azure Multi-Factor Authentication](multi-factor-authentication-how-it-works.md).
 
 **F: Gibt es eine kostenlose Version von Azure Multi-Factor Authentication für Administratoren?**
 
@@ -166,10 +167,5 @@ Wenn Ihre Frage hier nicht beantwortet wurde, schreiben Sie sie bitte in die Kom
 * In den [Azure Active Directory-Foren](https://social.msdn.microsoft.com/Forums/azure/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required)können Sie nach technischen Fragen und Antworten aus der Community suchen oder eine eigene Frage stellen.
 * Wenn Sie ein älterer PhoneFactor-Kunde sind und Fragen haben oder Hilfe beim Zurücksetzen eines Kennworts benötigen, verwenden Sie den Link zur [Kennwortzurücksetzung](mailto:phonefactorsupport@microsoft.com) , um eine Supportanfrage zu öffnen.
 * Wenden Sie sich über[Azure Multi-Factor Authentication-Server (PhoneFactor) – Support](https://support.microsoft.com/oas/default.aspx?prid=14947) an einen Support-Experten. Es ist hilfreich, wenn Sie uns so viele Informationen wie möglich über Ihr Problem geben, wenn Sie sich mit uns in Verbindung setzen. Diese Informationen können die Website umfassen, auf der der Fehler aufgetreten ist, den spezifischen Fehlercode, die spezifische Sitzungs-ID, und die ID des Benutzers, der den Fehler beobachtet hat.
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

@@ -12,12 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/19/2017
+ms.date: 03/06/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: a13850cf09424f7e4402204d97d1f6755d691550
-ms.openlocfilehash: 0d3f6dc80141d26cace60f177b35d527fd294261
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: c0cf8a3d4e257f88f81fca9a6a1161c158b335b8
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -30,8 +30,8 @@ Zum Abschließen dieses Lernprogramms müssen folgende Voraussetzungen erfüllt 
 
 * Ein Azure-Konto. Ausführliche Informationen finden Sie unter [Einen Monat kostenlos testen](https://azure.microsoft.com/pricing/free-trial/).
 * Media Services-Konto. Informationen zum Erstellen eines Media Services-Kontos finden Sie unter [Gewusst wie: Erstellen eines Media Services Kontos](media-services-portal-create-account.md).
-* .NET Framework 4.0 oder höher
-* Visual Studio 2010 SP1 (Professional, Premium, Ultimate oder Express) oder höhere Versionen.
+* .NET Framework 4.0 oder höher.
+* Visual Studio.
 * Erfahrung beim [Verwenden von Azure Functions](../azure-functions/functions-overview.md). Lesen Sie auch [HTTP- und Webhookbindungen in Azure Functions](../azure-functions/functions-bindings-http-webhook.md).
 
 Dieses Thema beschreibt Folgendes
@@ -46,7 +46,7 @@ Dieses Thema beschreibt Folgendes
     
 * Hinzufügen eines Webhooks zu Ihrer Verschlüsselungsaufgabe und Angeben der Webhook-URL und des geheimen Schlüssels, auf die dieser Webhook reagiert. Im hier gezeigten Beispiel ist der Code, mit dem die Verschlüsselungsaufgabe erstellt wird, eine Konsolen-App.
 
-## <a name="getting-webhook-notifications"></a>Abrufen von Webhookbenachrichtigungen
+## <a name="setting-up-webhook-notification-azure-functions"></a>Einrichten von Azure-Funktionen für „Webhook-Benachrichtigung“
 
 Der Code in diesem Abschnitt zeigt eine Implementierung einer Azure-Funktion, die ein Webhook ist. In diesem Beispiel lauscht die Funktion auf den Webhookrückruf von Media Services-Benachrichtigungen und veröffentlicht das Ausgabemedienobjekt, sobald der Auftrag beendet wurde.
 
@@ -56,7 +56,20 @@ Im folgenden Code führt die **VerifyWebHookRequestSignature**-Methode die Über
 
 Sie finden die Definition der folgenden .NET-Azure-Funktion für Media Services [hier](https://github.com/Azure-Samples/media-services-dotnet-functions-integration/tree/master/Notification_Webhook_Function).
 
-Das folgende Codebeispiel veranschaulicht die Definitionen von drei Dateien, die mit der Azure-Funktion verknüpft sind: „function.json“, „project.json“ und „run.csx“.
+Das folgende Codebeispiel veranschaulicht die Definitionen von Azure-Funktionsparametern und drei Dateien, die mit der Azure-Funktion verknüpft sind: function.json, project.json und run.csx.
+
+### <a name="application-settings"></a>Anwendungseinstellungen 
+
+In der folgenden Tabelle werden die Parameter aufgeführt, die von der in diesem Abschnitt definierten Azure-Funktion verwendet werden. 
+
+|Name|Definition|Beispiel| 
+|---|---|---|
+|AMSAccount|Ihr AMS-Kontoname |juliakomediaservices|
+|AMSKey |Ihr AMS-Kontoschlüssel | JUWJdDaOHQQqsZeiXZuE76eDt2SO+YMJk25Lghgy2nY=|
+|MediaServicesStorageAccountName |Ein Name des Speicherkontos, das mit Ihrem AMS-Konto verknüpft ist.| storagepkeewmg5c3peq|
+|MediaServicesStorageAccountKey |Ein Schlüssel des Speicherkontos, das mit Ihrem AMS-Konto verknüpft ist.|
+|SigningKey |Ein Signaturschlüssel| j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt|
+|WebHookEndpoint | Eine Webhook-Endpunktadresse | https://juliakofuncapp.azurewebsites.net/api/Notification_Webhook_Function?code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g==.|
 
 ### <a name="functionjson"></a>function.json
 
@@ -410,7 +423,6 @@ In diesem Abschnitt wird der Code gezeigt, der eine Webhookbenachrichtigung zu e
                 processor,
                 "Adaptive Streaming",
                 TaskOptions.None);
-
 
                 // Specify the input asset to be encoded.
                 task.InputAssets.Add(newAsset);

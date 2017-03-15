@@ -15,8 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 02/05/2017
 ms.author: rayne
 translationtype: Human Translation
-ms.sourcegitcommit: 6521cada7adeacd98fae46e5119ceffa0351e9b5
-ms.openlocfilehash: a5c6759d9826084ae339dd291140f8383b55b6db
+ms.sourcegitcommit: 993449b7840f5077f23b3809439b89f27759e35d
+ms.openlocfilehash: 1a991d1e4ac20019695fb557310e1981b5b491ec
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -26,22 +27,7 @@ Verwenden Sie diesen Artikel, um zu ermitteln, wie die Kapazität und die Skalie
 
 ## <a name="how-do-i-start-capacity-planning"></a>Wie beginne ich mit der Kapazitätsplanung?
 
-1. Tragen Sie mit Azure Site Recovery Capacity Planner Informationen zu Ihrer Replikationsumgebung zusammen. Dazu zählen Informationen zu virtuellen Computern, Datenträger pro virtuellem Computer und Speicher pro Datenträger.
-2. Schätzen Sie die tägliche Änderungsrate der replizierten Daten in Ihrer Umgebung.
-
-
-## <a name="gather-information"></a>Sammeln von Informationen
-
-1. Laden Sie [Capacity Planner[(https://gallery.technet.microsoft.com/Azure-Recovery-Capacity-d01dc40e)] herunter, und führen Sie das Tool aus.
-2. [Rufen Sie Anweisungen](site-recovery-capacity-planner.md) für die Ausführung des Tools ab.
-
-
-## <a name="estimate-the-daily-churn-rate"></a>Schätzen der täglichen Änderungsrate
-
-In Site Recovery Capacity Planner müssen Sie eine durchschnittliche tägliche Datenänderungsrate als Prozentsatz eingeben. Derzeit können Sie diese Informationen mithilfe der [Appliance für die vSphere-Kapazitätsplanung](https://labs.vmware.com/flings/vsphere-replication-capacity-planning-appliance) sammeln.
-
-In diesem Tool können Sie den Prozentsatz berechnen, indem Sie das vSphere-Planungstools auf alle Quell-VMs verweisen, sodass Sie alle täglichen Änderungen erhalten. Dies ist im Wesentlichen der Netzwerkdatenverkehr. [Erfahren Sie mehr](https://blogs.vmware.com/vsphere/2014/04/vsphere-replication-capacity-planning-appliance.html) über die Ausführung des Tools.
-
+Tragen Sie mit dem [Azure Site Recovery Deployment Planner](https://aka.ms/asr-deployment-planner-doc) Informationen zu Ihrer Replikationsumgebung zusammen. Hierzu gehören Informationen über die Anzahl von kompatiblen und nicht kompatiblen virtuellen Computern, die Anzahl von Datenträgern pro virtuellem Computer, die Datenänderungen pro Datenträger, die Anforderungen an die Netzwerkbandbreite und die erforderliche Azure-Infrastruktur für eine erfolgreiche Replikation und erfolgreiche Testfailover/Failover.
 
 ## <a name="capacity-considerations"></a>Überlegungen zur Kapazität
 
@@ -55,9 +41,9 @@ In diesem Tool können Sie den Prozentsatz berechnen, indem Sie das vSphere-Plan
 
 **CPU** | **Arbeitsspeicher** | **Größe des Cachedatenträgers** | **Datenänderungsrate** | **Geschützte Computer**
 --- | --- | --- | --- | ---
-8 vCPUs (2 Sockets * 4 Kerne @ 2,5 GHz) | 16 GB | 300 GB | 500 GB oder weniger | Weniger als 100 Computer replizieren.
-12 vCPUs (2 Sockets * 6 Kerne @ 2,5 GHz) | 18 GB | 600 GB | 500 GB bis 1 TB | Zwischen 100 und 150 Computer replizieren.
-16 vCPUs (2 Sockets * 8 Kerne @ 2,5 GHz) | 32 GB | 1 TB | 1 TB bis 2 TB | Zwischen 150 und 200 Computer replizieren.
+8 vCPUs (2 Sockets * 4 Kerne mit 2,5 GHz) | 16 GB | 300 GB | 500 GB oder weniger | Weniger als 100 Computer replizieren.
+12 vCPUs (2 Sockets * 6 Kerne mit 2,5 GHz) | 18 GB | 600 GB | 500 GB bis 1 TB | Zwischen 100 und 150 Computer replizieren.
+16 vCPUs (2 Sockets * 8 Kerne mit 2,5 GHz) | 32 GB | 1 TB | 1 TB bis 2 TB | Zwischen 150 und 200 Computer replizieren.
 Bereitstellen eines weiteren Prozessservers | | | > 2 TB | Stellen Sie zusätzliche Prozessserver bereit, wenn Sie mehr als 200 Computer replizieren oder wenn die tägliche Änderungsrate 2 TB überschreitet.
 
 Hierbei gilt:
@@ -81,9 +67,9 @@ Die folgende Tabelle beschreibt dieses Szenario:
 
 **Konfigurationsserver** | **Zusätzlicher Prozessserver** | **Größe des Cachedatenträgers** | **Datenänderungsrate** | **Geschützte Computer**
 --- | --- | --- | --- | ---
-8 vCPUs (2 Sockets * 4 Kerne @ 2,5 GHz), 16 GB Speicher | 4 vCPUs (2 Sockets * 2 Kerne @ 2,5 GHz), 8 GB Speicher | 300 GB | 250 GB oder weniger | Bis zu 85 Computer replizieren.
-8 vCPUs (2 Sockets * 4 Kerne @ 2,5 GHz), 16 GB Speicher | 8 vCPUs (2 Sockets * 4 Kerne @ 2,5 GHz), 12 GB Speicher | 600 GB | 250 GB bis 1 TB | Zwischen 85 und 150 Computer replizieren.
-12 vCPUs (2 Sockets * 6 Kerne @ 2,5 GHz), 18 GB Speicher | 12 vCPUs (2 Sockets * 6 Kerne @ 2,5 GHz), 24 GB Speicher | 1 TB | 1 TB bis 2 TB | Zwischen 150 und 225 Computer replizieren.
+8 vCPUs (2 Sockets * 4 Kerne mit 2,5 GHz), 16 GB Speicher | 4 vCPUs (2 Sockets * 2 Kerne mit 2,5 GHz), 8 GB Speicher | 300 GB | 250 GB oder weniger | Bis zu 85 Computer replizieren.
+8 vCPUs (2 Sockets * 4 Kerne mit 2,5 GHz), 16 GB Speicher | 8 vCPUs (2 Sockets * 4 Kerne mit 2,5 GHz), 12 GB Speicher | 600 GB | 250 GB bis 1 TB | Zwischen 85 und 150 Computer replizieren.
+12 vCPUs (2 Sockets * 6 Kerne mit 2,5 GHz), 18 GB Speicher | 12 vCPUs (2 Sockets * 6 Kerne mit 2,5 GHz), 24 GB Speicher | 1 TB | 1 TB bis 2 TB | Zwischen 150 und 225 Computer replizieren.
 
 Wie Sie Ihre Server skalieren, hängt davon ab, ob Sie das zentrale Hochskalieren oder das horizontale Hochskalieren als Modell bevorzugen.  Beim zentralen Hochskalieren stellen Sie wenige besonders leistungsstarke Konfigurations- und Prozessserver bereit. Beim horizontalen Hochskalieren stellen Sie mehr Server mit geringeren Ressourcen bereit. Wenn Sie zum Beispiel 220 Computer schützen müssen, können Sie sich für eine der beiden folgenden Optionen entscheiden:
 
@@ -93,7 +79,7 @@ Wie Sie Ihre Server skalieren, hängt davon ab, ob Sie das zentrale Hochskaliere
 
 ## <a name="control-network-bandwidth"></a>Steuern der Netzwerkbandbreite
 
-Sie können den Capacity Planner verwenden, um die Bandbreite zu berechnen, die Sie für die Replikation benötigen (erste Replikation und dann Deltareplikation). Zur Steuerung der für die Replikation verwendeten Bandbreite stehen Ihnen verschiedene Optionen zur Verfügung:
+Sie können den [Deployment Planner](https://aka.ms/asr-deployment-planner-doc) verwenden, um die Bandbreite zu berechnen, die Sie für die Replikation benötigen (erste Replikation und dann Deltareplikation). Zur Steuerung der für die Replikation verwendeten Bandbreite stehen Ihnen verschiedene Optionen zur Verfügung:
 
 * **Bandbreite drosseln**: VMware-Datenverkehr, der nach Azure repliziert wird, wird über einen speziellen Prozessserver geleitet. Sie können die Bandbreite auf den Computern, die als Prozessserver ausgeführt werden, einschränken.
 * **Bandbreite beeinflussen**: Die für die Replikation genutzte Bandbreite lässt sich mithilfe einiger Registrierungsschlüssel beeinflussen:
@@ -158,10 +144,5 @@ Wenn Sie Ihre Bereitstellung über 200 Quellcomputer oder eine gesamte tägliche
 
 
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

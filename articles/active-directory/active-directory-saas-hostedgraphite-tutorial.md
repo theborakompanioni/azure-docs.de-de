@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2016
+ms.date: 02/20/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: f7286285828414000f90cf9d71facb9a9a51afd8
+ms.sourcegitcommit: cc0992476d89b86b5848e9ae0bacb36b20f510fa
+ms.openlocfilehash: be29ac00d9f6e9dcdfd2ca3df5c2c29a293a7ee6
+ms.lasthandoff: 02/28/2017
 
 
 ---
@@ -26,7 +27,7 @@ Dieses Tutorial soll Ihnen zeigen, wie Sie Hosted Graphite in Azure Active Direc
 Die Integration von Hosted Graphite in Azure AD bietet die folgenden Vorteile:
 
 * Sie können in Azure AD steuern, wer Zugriff auf Hosted Graphite hat.
-* Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Hosted Graphite anzumelden (einmaliges Anmelden).
+* Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Hosted Graphite anzumelden (einmaliges Anmelden, SSO).
 * Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
@@ -37,15 +38,14 @@ Um die Azure AD-Integration mit Hosted Graphite konfigurieren zu können, benöt
 * Ein Azure AD-Abonnement
 * Ein Hosted Graphite-Abonnement, für das einmaliges Anmelden aktiviert ist
 
-> [!NOTE]
-> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
-> 
+>[!NOTE]
+>Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden. 
 > 
 
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
 * Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-* Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
+* Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 Ziel dieses Tutorials ist es, das einmalige Anmelden von Azure AD in einer Testumgebung zu testen.
@@ -53,9 +53,9 @@ Ziel dieses Tutorials ist es, das einmalige Anmelden von Azure AD in einer Testu
 Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
 1. Hinzufügen von Hosted Graphite aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+2. Konfigurieren und Testen der einmaligen Anmeldung (SSO) von Azure AD
 
-## <a name="adding-hosted-graphite-from-the-gallery"></a>Hinzufügen von Hosted Graphite aus dem Katalog
+## <a name="add-hosted-graphite-from-the-gallery"></a>Hinzufügen von Hosted Graphite aus dem Katalog
 Zum Konfigurieren der Integration von Hosted Graphite in Azure AD müssen Sie Hosted Graphite aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
 
 **Um Hosted Graphite aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
@@ -80,23 +80,23 @@ Zum Konfigurieren der Integration von Hosted Graphite in Azure AD müssen Sie Ho
    
     ![Auswählen der App im Katalog](./media/active-directory-saas-hostedgraphite-tutorial/tutorial_hostedgraphite_0001.png)
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
-In diesem Abschnitt soll anhand eines Testbenutzers namens „Britta Simon“ veranschaulicht werden, wie das einmalige Anmelden von Azure AD in Hosted Graphite konfiguriert und getestet werden kann.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
+In diesem Abschnitt soll anhand eines Testbenutzers namens Britta Simon veranschaulicht werden, wie das einmalige Anmelden von Azure AD in Hosted Graphite konfiguriert und getestet werden kann.
 
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Hosted Graphite als Gegenstück zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Hosted Graphite muss eine Linkbeziehung eingerichtet werden.
+Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Hosted Graphite als Entsprechung zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Hosted Graphite muss eine Linkbeziehung eingerichtet werden.
 
 Diese Linkbeziehung wird hergestellt, indem Sie den Benutzernamen**** in Azure AD als ****Benutzernamen in Hosted Graphite zuweisen.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Hosted Graphite müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
 2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 3. **[Erstellen eines Hosted Graphite-Testbenutzers](#creating-a-hosted-graphite-test-user)** , um eine Entsprechung von Britta Simon in Hosted Graphite zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** – um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
-In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im klassischen Portal und konfigurieren es in Ihrer Hosted Graphite-Anwendung.
+### <a name="configuring-azure-ad-sso"></a>Konfigurieren der einmaligen Anmeldung (SSO) von Azure AD
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden (SSO) von Azure AD im klassischen Portal und konfigurieren das einmalige Anmelden in Ihrer Hosted Graphite-Anwendung.
 
 **Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Hosted Graphite die folgenden Schritte aus:**
 
@@ -109,58 +109,50 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im klas
 3. Führen Sie auf der Dialogfeldseite **App-Einstellungen konfigurieren** die folgenden Schritte aus, wenn Sie die Anwendung im **IdP-initiierten Modus** konfigurieren möchten, und klicken Sie dann auf **Weiter**:
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-hostedgraphite-tutorial/tutorial_hostedgraphite_04.png)
-   
-    a. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://www.hostedgraphite.com/metadata/<user id>`
-   
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://www.hostedgraphite.com/complete/saml/<user id>`
-   
-    c. Klicken Sie auf **Weiter**
+  1. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://www.hostedgraphite.com/metadata/<user id>`
+  2. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://www.hostedgraphite.com/complete/saml/<user id>`
+  3. Klicken Sie auf **Weiter**.
 4. Wenn die Anwendung im **SP-initiierten Modus** konfiguriert werden soll, klicken Sie auf der Dialogfeldseite **App-Einstellungen konfigurieren** auf **Zeigen Sie die erweiterten Einstellungen an (optional)**, geben Sie die **Anmelde-URL** ein, und klicken Sie dann auf **Weiter**.
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-hostedgraphite-tutorial/tutorial_hostedgraphite_10.png)
+  1. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://www.hostedgraphite.com/login/saml/<user id>/`
+  2. Klicken Sie auf **Weiter**.
    
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://www.hostedgraphite.com/login/saml/<user id>/`
-   
-    b. Klicken Sie unten auf der Seite auf **Weiter**
-   
-   > [!NOTE]
-   > Hinweis: Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte durch die tatsächliche Anmelde-URL, den tatsächlichen Bezeichner und die tatsächliche Antwort-URL ersetzen. Um diese Werte abzurufen, können Sie auf der Seite Ihrer Anwendung zu „Access -> SAML Setup“ wechseln oder sich an Hosted Graphite wenden.
-   > 
-   > 
+   >[!NOTE]
+   >Hinweis: Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte durch die tatsächliche Anmelde-URL, den tatsächlichen Bezeichner und die tatsächliche Antwort-URL ersetzen. Um diese Werte abzurufen, können Sie auf der Seite Ihrer Anwendung zu „Access -> SAML Setup“ wechseln oder sich an Hosted Graphite wenden.
+   >  
 5. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für Hosted Graphite** die folgenden Schritte aus, und klicken Sie dann auf **Weiter**:
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-hostedgraphite-tutorial/tutorial_hostedgraphite_05.png)
-   
-    a. Klicken Sie auf **Zertifikat herunterladen**und speichern Sie die Datei auf Ihrem Computer.
-   
-    b. Klicken Sie auf **Weiter**.
+ ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-hostedgraphite-tutorial/tutorial_hostedgraphite_05.png)   
+ 1. Klicken Sie auf **Zertifikat herunterladen**und speichern Sie die Datei auf Ihrem Computer.
+ 2. Klicken Sie auf **Weiter**.
 6. Melden Sie sich bei Ihrem Hosted Graphite-Mandanten als Administrator an.
 7. Wechseln Sie über die Randleiste zur Seite **SAML Setup** (**Access -> SAML Setup**).
    
-    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-hostedgraphite-tutorial/tutorial_hostedgraphite_000.png)
+ ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-hostedgraphite-tutorial/tutorial_hostedgraphite_000.png)
 8. Überprüfen Sie, ob diese URLs Ihrer Konfiguration in Schritt 3 entsprechen.
    
-    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-hostedgraphite-tutorial/tutorial_hostedgraphite_001.png)
+ ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-hostedgraphite-tutorial/tutorial_hostedgraphite_001.png)
 9. Kopieren Sie **Aussteller-URL** und **SAML-SSO-URL** aus Azure AD, und fügen Sie die Werte in Hosted Graphite in die Felder **Entity or Issuer ID** (Entitäts- oder Aussteller-ID) und **SSO Login URL** (SSO-Anmelde-URL) ein.
    
-    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-hostedgraphite-tutorial/tutorial_hostedgraphite_002.png)
+ ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-hostedgraphite-tutorial/tutorial_hostedgraphite_002.png)
    
-    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-hostedgraphite-tutorial/tutorial_hostedgraphite_003.png)
+ ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-hostedgraphite-tutorial/tutorial_hostedgraphite_003.png)
 10. Wählen Sie für **Default User Role** (Standardbenutzerrolle) die Option **Schreibgeschützt** aus.
     
-     ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-hostedgraphite-tutorial/tutorial_hostedgraphite_004.png)
+ ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-hostedgraphite-tutorial/tutorial_hostedgraphite_004.png)
 11. Kopieren Sie den Inhalt der heruntergeladenen Zertifikatdatei, und fügen Sie ihn in das Textfeld **X.509 Certificate** ein.
     
-     ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-hostedgraphite-tutorial/tutorial_hostedgraphite_005.png)
+ ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-hostedgraphite-tutorial/tutorial_hostedgraphite_005.png)
 12. Klicken Sie auf die Schaltfläche **Save** .
 13. Wählen Sie im klassischen Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
     
-    ![Azure AD – einmaliges Anmelden][10]
+ ![Azure AD – einmaliges Anmelden][10]
 14. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.  
     
-    ![Azure AD – einmaliges Anmelden][11]
+ ![Azure AD – einmaliges Anmelden][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im klassischen Azure-Portal.
 
 ![Azure AD-Benutzer erstellen][20]
@@ -180,48 +172,37 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-hostedgraphite-tutorial/create_aaduser_05.png)
-   
-    a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
-   
-    b. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
-   
-    c. Klicken Sie auf **Weiter**.
+ 1. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
+ 2. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.  
+ 3. Klicken Sie auf **Weiter**.
 6. Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
    
-   ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-hostedgraphite-tutorial/create_aaduser_06.png)
-   
-   a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
-   
-   b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
-   
-   c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
-   
-   d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
-   
-   e. Klicken Sie auf **Weiter**.
+   ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-hostedgraphite-tutorial/create_aaduser_06.png) 
+ 1. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.   
+ 2. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein. 
+ 3. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein. 
+ 4. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus. 
+ 5. Klicken Sie auf **Weiter**.
 7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-hostedgraphite-tutorial/create_aaduser_07.png)
 8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
    
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-hostedgraphite-tutorial/create_aaduser_08.png)
-   
-    a. Notieren Sie den Wert von **Neues Kennwort**.
-   
-    b. Klicken Sie auf **Fertig stellen**.   
-
-### <a name="creating-a-hosted-graphite-test-user"></a>Erstellen eines Hosted Graphite-Testbenutzers
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-hostedgraphite-tutorial/create_aaduser_08.png) 
+ 1. Notieren Sie den Wert von **Neues Kennwort**.  
+ 2. Klicken Sie auf **Fertig stellen**.   
+ 
+### <a name="create-a-hosted-graphite-test-user"></a>Erstellen eines Hosted Graphite-Testbenutzers
 Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in Hosted Graphite. Hosted Graphite unterstützt die Just-in-Time-Bereitstellung, die standardmäßig aktiviert ist.
 
 Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf Hosted Graphite ein neuer Benutzer erstellt.
 
-> [!NOTE]
-> Setzen Sie sich über <mailto:help@hostedgraphite.com> mit dem Supportteam von Hosted Graphite in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
-> 
+>[!NOTE]
+>Setzen Sie sich über <mailto:help@hostedgraphite.com> mit dem Supportteam von Hosted Graphite in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen. 
 > 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
-Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmaligen Anmeldens von Azure zu ermöglichen, indem sie Zugriff auf Hosted Graphite erhält.
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmaligen Anmeldens (SSO) von Azure zu ermöglichen, indem sie Zugriff auf Hosted Graphite erhält.
 
 ![Benutzer zuweisen][200]
 
@@ -241,8 +222,8 @@ Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmal
    
     ![Benutzer zuweisen][205]
 
-### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
-Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
+Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden (SSO) über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Hosted Graphite“ klicken, sollten Sie automatisch bei Ihrer Hosted Graphite-Anwendung angemeldet werden.
 
@@ -267,9 +248,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Hosted Graphite“ klicken, sollte
 [203]: ./media/active-directory-saas-hostedgraphite-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-hostedgraphite-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-hostedgraphite-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

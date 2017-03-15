@@ -1,5 +1,5 @@
 ---
-title: Hierarchisches Ressourcenmodell und Konzepte von DocumentDB | Microsoft Docs
+title: Ressourcenmodell und Konzepte von Azure DocumentDB | Microsoft-Dokumentation
 description: "Erfahren Sie mehr zum hierarchischen Modell von DocumentDB für Datenbanken, Sammlungen, benutzerdefinierte Funktion, Dokumente, Berechtigungen zum Verwalten von Ressourcen und mehr."
 keywords: Hierarchisches Modell,DocumentDB,Azure,Microsoft Azure
 services: documentdb
@@ -15,14 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2017
 ms.author: anhoh
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 4125a8d930ead541420c83ef5d8aa3ae1ea2a263
-ms.openlocfilehash: 520dc84bfd882d33d32719d5225af91eb124f015
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 456ff5cd0c91232ace87e02363f812a36cc38297
+ms.lasthandoff: 03/07/2017
 
 
 ---
-# <a name="documentdb-hierarchical-resource-model-and-concepts"></a>Hierarchisches Ressourcenmodell und Konzepte von DocumentDB
+# <a name="documentdb-hierarchical-resource-model-and-core-concepts"></a>Hierarchisches Ressourcenmodell und wichtige Konzepte von DocumentDB
 Die in DocumentDB verwalteten Datenbankentitäten werden als **Ressourcen**bezeichnet. Jede Ressource wird durch einen logischen URI eindeutig identifiziert. Sie können über standardmäßige HTTP-Verben, Anforderungs-/Antwortheader und Statuscodes mit den Ressourcen interagieren. 
 
 Nach dem Lesen dieses Artikels können Sie die folgenden Fragen beantworten:

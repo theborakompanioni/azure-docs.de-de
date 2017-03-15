@@ -13,15 +13,16 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2016
+ms.date: 2/25/2017
 ms.author: ronitr; giladm
 translationtype: Human Translation
-ms.sourcegitcommit: 5d51a5ef3387b4c00079547b0f44ffe1f96bd77c
-ms.openlocfilehash: 2882c41ced74c35e28a9237f3f08b6e6f687b846
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: fb56545df42e997e5960eec73ae59e9334731392
+ms.openlocfilehash: 8c6fa92764cb720a0c71a24d839d3e73ce3ba447
+ms.lasthandoff: 03/02/2017
 
 
 ---
+
 # <a name="configure-and-manage-sql-database-auditing-in-the-azure-portal"></a>Konfigurieren und Verwalten der SQL-Datenbanküberwachung im Azure-Portal
 
 In diesem Abschnitt wird beschrieben, wie die Überwachung im Azure-Portal konfiguriert und verwaltet wird. Informationen zum Konfigurieren und Verwalten der Überwachung mithilfe von PowerShell finden Sie unter [Configure auditing with PowerShell](sql-database-auditing-powershell.md) (Konfigurieren der Überwachung mithilfe von PowerShell). Informationen zum Konfigurieren und Verwalten der Überwachung mithilfe der REST-API finden Sie unter [Configure auditing with the REST API](sql-database-auditing-rest.md) (Konfigurieren der Überwachung mithilfe der REST-API).
@@ -45,7 +46,9 @@ Eine Übersicht über die Überwachung finden Sie unter [SQL-Datenbanküberwachu
     <a id="storage-screenshot"></a>
     ![Navigationsbereich][4]
 6. Wenn Sie die überwachten Ereignisse anpassen möchten, erreichen Sie dies über [PowerShell](sql-database-auditing-powershell.md) oder [REST-API](sql-database-auditing-rest.md).
-7. Klicken Sie auf **Speichern**.
+7. Nachdem Sie Ihre Überwachungseinstellungen konfiguriert haben, können Sie das neue Feature Bedrohungserkennung (Vorschau) aktivieren und die E-Mail-Konten konfigurieren, an die Sicherheitswarnungen gesendet werden sollen. Mit der Bedrohungserkennung können Sie proaktive Warnungen bei anomalen Datenbankaktivitäten erhalten, die auf mögliche Sicherheitsbedrohungen hinweisen können. Weitere Informationen finden Sie unter [Bedrohungserkennung](sql-database-threat-detection.md).
+8. Klicken Sie auf **Speichern**.
+
 
 ## <a name="table-auditing"></a>Tabellenüberwachung
 

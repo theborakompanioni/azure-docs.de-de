@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/28/2016
-ms.author: tdykstra
+ms.author: glenga
 translationtype: Human Translation
 ms.sourcegitcommit: 80627139ee253bb6a01241e460781519dac69e71
 ms.openlocfilehash: a8541d5bd5e5becb25e8460b6ca774ec6637563a
@@ -31,7 +31,7 @@ Das Erstellen, Bereitstellen und Verwalten von WebJobs erfolgt dank der integrie
 
 Das WebJobs-Dashboard im Azure-Portal bietet leistungsstarke Verwaltungsfunktionen, mit denen Sie vollständige Kontrolle über die Ausführung von Webaufträgen haben, einschließlich der Möglichkeit, einzelne Funktionen innerhalb von WebJobs aufzurufen. Das Dashboard zeigt auch Funktionslaufzeiten und Protokollausgaben an. 
 
-## <a name="a-namegetstartedagetting-started-with-webjobs-and-the-webjobs-sdk"></a><a name="getstarted"></a>Erste Schritte mit WebJobs und dem WebJobs-SDK
+## <a name="getstarted"></a>Erste Schritte mit WebJobs und dem WebJobs-SDK
 * [Einführung in Azure WebJobs](http://www.hanselman.com/blog/IntroducingWindowsAzureWebJobs.aspx)
 * [Azure WebJobs are awesome and you should start using them right now! (Setzen Sie ab sofort das großartige Azure WebJobs ein; in englischer Sprache) (Setzen Sie ab sofort das großartige Azure WebJobs ein; in englischer Sprache)](http://www.troyhunt.com/2015/01/azure-webjobs-are-awesome-and-you.html) (Blogbeitrag von Troy Hunt)
 * [Funktionen von Azure WebJobs](https://azure.microsoft.com/blog/2014/10/22/webjobs-goes-into-full-production/)
@@ -54,7 +54,7 @@ Das WebJobs-Dashboard im Azure-Portal bietet leistungsstarke Verwaltungsfunktion
 
 Weitere Informationen finden Sie auch in den Abschnitten [Bereitstellen von WebJobs](#deploy) und [Testen und Debuggen von WebJobs](#debug).
 
-## <a name="a-namedeployadeploying-webjobs"></a><a name="deploy"></a>Bereitstellen von WebJobs
+## <a name="deploy"></a>Bereitstellen von WebJobs
 * [Bereitstellen von Azure WebJobs mit Visual Studio](websites-dotnet-deploy-webjobs.md)
 * [Bereitstellen von WebJobs mithilfe des Azure-Portals](web-sites-create-web-jobs.md)
 * [Aktivieren der befehlszeilengesteuerten oder der kontinuierlichen Bereitstellung von Azure WebJobs](https://azure.microsoft.com/blog/2014/08/18/enabling-command-line-or-continuous-delivery-of-azure-webjobs/)
@@ -65,14 +65,14 @@ Weitere Informationen finden Sie auch in den Abschnitten [Bereitstellen von WebJ
   * [Einführung in WebJobs-Tools für Visual Studio](http://channel9.msdn.com/Shows/Web+Camps+TV/Introducing-WebJobs-Tooling-for-Visual-Studio-with-Brady-Gaster) 
   * [WebJobs-Tools und Remotedebuggen](http://channel9.msdn.com/Shows/Web+Camps+TV/WebJobs-GA-Series-Episode-1-WebJobs-Tooling-with-Brady-Gaster) 
 
-## <a name="a-namescheduleascheduling-webjobs"></a><a name="schedule"></a>Planen von WebJobs
+## <a name="schedule"></a>Planen von WebJobs
 * [Das Dialogfeld "Azure-Webauftrag hinzufügen"](websites-dotnet-deploy-webjobs.md#configure)
 * [Erstellen geplanter WebJobs im Azure-Portal](web-sites-create-web-jobs.md#CreateScheduled)
 * [Hooking up a scheduler job to a WebJob (Einbinden eines Zeitplanungsauftrags in einen WebJob, in englischer Sprache)](http://blog.davidebbo.com/2015/05/scheduled-webjob.html)
 * [Scheduling Azure WebJobs with cron expressions (Planen von Azure WebJobs mit Cron-Ausdrücken, in englischer Sprache)](http://blog.amitapple.com/post/2015/06/scheduling-azure-webjobs/)
 * [Planen einzelner WebJobs-Funktionen mit der TimerTrigger-Funktion aus dem WebJobs-SDK](websites-dotnet-webjobs-sdk.md#schedule)
 
-## <a name="a-namedebugatesting-and-debugging-webjobs"></a><a name="debug"></a>Testen und Debuggen von WebJobs
+## <a name="debug"></a>Testen und Debuggen von WebJobs
 * [Neue Entwickler- und Debuggingfunktionen für Azure WebJobs in Visual Studio](http://blogs.msdn.com/b/webdev/archive/2014/11/12/new-developer-and-debugging-features-for-azure-webjobs-in-visual-studio.aspx)
 * [Anzeigen des Webauftrags-Dashboards](websites-dotnet-webjobs-sdk-get-started.md#view-the-webjobs-sdk-dashboard)
 * [Schreiben von Protokollen mit dem WebJobs-SDK und Anzeigen im Dashboard](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#logs)
@@ -84,13 +84,13 @@ Weitere Informationen finden Sie auch in den Abschnitten [Bereitstellen von WebJ
 * Videos
   * [WebJobs-Tools und Remotedebuggen](http://channel9.msdn.com/Shows/Web+Camps+TV/WebJobs-GA-Series-Episode-1-WebJobs-Tooling-with-Brady-Gaster) 
 
-## <a name="a-namescaleascaling-webjobs"></a><a name="scale"></a>Skalieren von WebJobs
+## <a name="scale"></a>Skalieren von WebJobs
 * [Skalieren Ihrer Webanwendung mit Azure-Websites](http://msdn.microsoft.com/magazine/dn786914.aspx)
 * [Azure App Service: Entwickeln sehr vieler einsatzbereiter Web-Apps](https://channel9.msdn.com/Events/Build/2014/3-626). Behandelt die Skalierung von Web-Apps mit WebJobs, einschließlich des WebJobs-SDK.
 * Videos
   * [Horizontales Skalieren von WebJobs](http://channel9.msdn.com/Shows/Azure-Friday/Azure-WebJobs-105-Scaling-out-Web-Jobs)
 
-## <a name="a-nameadditionalaadditional-webjobs-resources"></a><a name="additional"></a>Zusätzliche WebJobs-Ressourcen
+## <a name="additional"></a>Zusätzliche WebJobs-Ressourcen
 * [Blogbeitrag zur allgemeinen Verfügbarkeit von Azure WebJobs von Magnus Mårtensson](http://magnusmartensson.com/azure-webjobs-ga)
 * [Ausführen von PowerShell-Webaufträgen in Azure App Service](http://blogs.msdn.com/b/nicktrog/archive/2014/01/22/running-powershell-web-jobs-on-azure-websites.aspx)
 * [Erhalten von Benachrichtigungen, wenn die von Azure ausgelösten Webaufträge abgeschlossen sind](http://blog.amitapple.com/post/2014/03/webjobs-notification/)
@@ -102,7 +102,7 @@ Weitere Informationen finden Sie auch in den Abschnitten [Bereitstellen von WebJ
   * [Videos zu Azure WebJobs von Magnus Mårtensson](https://www.youtube.com/playlist?list=PLqp1ZOYYUSd81yEzMYLTw8cz91wx_LU9r)
   * [Videoreihe zu Azure WebJobs auf Channel 9](http://channel9.msdn.com/Tags/azurefridaywebjobs)
 
-## <a name="a-nameadditionalsdkaadditional-webjobs-sdk-resources"></a><a name="additionalsdk"></a>Zusätzliche Ressourcen für das WebJobs-SDK
+## <a name="additionalsdk"></a>Zusätzliche Ressourcen für das WebJobs-SDK
 * [Versionsanmerkungen zum WebJobs-SDK](https://github.com/Azure/azure-webjobs-sdk/wiki/Release-Notes)
 * [Quellcode des WebJobs-SDK](https://github.com/Azure/azure-webjobs-sdk)
 * [Quellcode von WebJobs SDK-Erweiterungen](https://github.com/Azure/azure-webjobs-sdk-extensions) mit [ausführlichem Leitfaden für das Erweiterbarkeitsmodell](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview).  
@@ -114,17 +114,17 @@ Weitere Informationen finden Sie auch in den Abschnitten [Bereitstellen von WebJ
 * Videos
   * [Videoreihe zu Azure WebJobs auf Channel 9](http://channel9.msdn.com/Tags/azurefridaywebjobs)
 
-## <a name="a-namesamplesasample-webjob-applications"></a><a name="samples"></a>Beispielanwendungen für WebJobs
+## <a name="samples"></a>Beispielanwendungen für WebJobs
 * [Vom WebJobs-Team von GitHub bereitgestellte Beispielanwendungen](https://github.com/azure/azure-webjobs-sdk-samples)
 * [Einfache Azure-Web-App mit WebJobs-Back-End mit dem WebJobs-SDK](http://code.msdn.microsoft.com/Simple-Azure-Website-with-b4391eeb)
 * [SiteMonitR](http://code.msdn.microsoft.com/SiteMonitR-dd4fcf77). Veranschaulicht die Verwendung von geplanten und ereignisgesteuerten Webaufträgen. Weitere Informationen finden Sie im Blogbeitrag [Neuerstellung von SiteMonitR mithilfe des Azure WebJobs-SDK](http://www.bradygaster.com/post/rebuilding-the-sitemonitr-using-windows-azure-webjobs).
 
-## <a name="a-nameblogsablogs"></a><a name="blogs"></a>Blogs
+## <a name="blogs"></a>Blogs
 * [Azure-Blog](/blog)
 * [Apple-Blog von Amit](http://blog.amitapple.com/). Behandelt WebJobs (aber nicht das SDK).
 * [Blog von Magnus Mårtensson](http://magnusmartensson.com/)
 
-## <a name="a-namegethelpagetting-help-with-webjobs"></a><a name="gethelp"></a>Hilfe zu WebJobs
+## <a name="gethelp"></a>Hilfe zu WebJobs
 * [Stapelüberlauf bei WebJobs](http://stackoverflow.com/questions/tagged/azure-webjobs)
 * [Stapelüberlauf beim WebJobs-SDK](http://stackoverflow.com/questions/tagged/azure-webjobssdk)
 * [Stapelüberlauf bei Azure Functions](http://stackoverflow.com/questions/tagged/azure-functions)

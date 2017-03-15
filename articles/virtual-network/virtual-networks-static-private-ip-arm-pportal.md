@@ -1,10 +1,10 @@
 ---
-title: 'Gewusst wie: Einrichten einer statischen privaten IP-Adresse im ARM-Modus mithilfe des Azure-Portals | Microsoft Docs'
-description: Grundlegendes zu privaten IP-Adressen (DIPs) und zur Verwaltung dieser IP-Adressen im ARM-Modus mithilfe des Azure-Portals
+title: "Konfigurieren von privaten IP-Adressen für virtuelle Computer – Azure-Portal | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie private IP-Adressen für virtuelle Computer über das Azure-Portal konfigurieren."
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
+manager: timlt
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 11245645-357d-4358-9a14-dd78e367b494
@@ -15,13 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 5d56a0d2c9c44d37520c6a9a3db326f9bdc5420e
-ms.openlocfilehash: e4f6d14f79536c58e40d3ac4b48d00a8c397f1b4
+ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
+ms.openlocfilehash: 251a2977d821b710807e00b2aae71992630feb77
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="how-to-set-a-static-private-ip-address-in-the-azure-portal"></a>Gewusst wie: Einrichten einer statischen privaten IP-Adresse im Azure-Portal
+# <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal"></a>Konfigurieren von privaten IP-Adressen für einen virtuellen Computer über das Azure-Portal
 
 > [!div class="op_single_selector"]
 - [Azure-Portal](virtual-networks-static-private-ip-arm-pportal.md)
@@ -104,10 +106,5 @@ Um die statische private IP-Adresse für den zuvor erstellten virtuellen Compute
 * Erfahren Sie mehr über [reservierte öffentliche IP-Adressen](virtual-networks-reserved-public-ip.md) .
 * Erfahren Sie mehr über [öffentliche IP-Adressen auf Instanzebene (ILPIP)](virtual-networks-instance-level-public-ip.md) .
 * Lesen Sie die Informationen zu [REST-APIs für reservierte IP-Adressen](https://msdn.microsoft.com/library/azure/dn722420.aspx).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

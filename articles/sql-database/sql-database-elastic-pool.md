@@ -11,19 +11,20 @@ ms.assetid: b46e7fdc-2238-4b3b-a944-8ab36c5bdb8e
 ms.service: sql-database
 ms.custom: multiple databases
 ms.devlang: NA
-ms.date: 02/01/2017
+ms.date: 02/24/2017
 ms.author: ddove
 ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 65b7e72d2cf0afd57aebd2e5938b540b2a2b4f20
-ms.openlocfilehash: a38e1bf40bde45d0122e07b50c748d57757635a5
+ms.sourcegitcommit: 1cac55acd88babc4ca4b04d2cafc6fa25f1393f0
+ms.openlocfilehash: 59f09d9529e8a97d8a0a4c7d9984a6fed850a57d
+ms.lasthandoff: 02/27/2017
 
 
 ---
 # <a name="what-is-an-azure-sql-elastic-pool"></a>Was ist ein Azure SQL-Pool für elastische Datenbanken?
-Einem SQL-Pool für elastische Datenbanken wird auf einem logischen Azure-Server eine feste Anzahl von eDTUs zu einem festen Preis zugeteilt, die über einen Datenbankpool auf diesem Server gemeinsam genutzt werden. Elastische SQL-Datenbankpools stellen eine einfache und kostengünstige Lösung zum Verwalten der Leistungsziele für mehrere Datenbanken mit unterschiedlichsten und unvorhersehbaren Nutzungsmustern dar.
+Einem SQL-Pool für elastische Datenbanken wird auf einem logischen Azure-Server eine festgelegte Anzahl von eDTUs zu einem festen Preis zugeteilt, die über einen Datenbankpool auf diesem Server gemeinsam genutzt werden. Elastische SQL-Datenbankpools stellen eine einfache und kostengünstige Lösung zum Verwalten der Leistungsziele für mehrere Datenbanken mit unterschiedlichsten und unvorhersehbaren Nutzungsmustern dar. Sie können einen elastischen Pool über das [Azure-Portal](sql-database-elastic-pool-manage-portal.md), mit [PowerShell](sql-database-elastic-pool-manage-powershell.md), [Transact-SQL](sql-database-elastic-pool-manage-tsql.md), [C#](sql-database-elastic-pool-manage-csharp.md) oder der REST-API erstellen und verwalten.
 
 > [!NOTE]
 > Elastische Pools sind in allen Azure-Regionen allgemein verfügbar, mit Ausnahme von „Indien, Westen“. Dort befinden sie sich derzeit in der Vorschauphase.  Die allgemeine Verfügbarkeit von elastischen Pools in dieser Region wird so bald wie möglich bereitgestellt.
@@ -61,7 +62,7 @@ Wenn alle DTUs eines elastischen Pools verwendet werden, erhält jede Datenbank 
 
 ## <a name="elastic-pool-properties"></a>Eigenschaften elastischer Pools
 
-Die nachfolgenden Tabellen beschreiben die Beschränkungen für elastische Pools und in einem Pool zusammengefasste Datenbanken.
+Die folgenden Tabellen beschreiben die Beschränkungen für elastische Pools und in einem Pool zusammengefasste Datenbanken.
 
 ### <a name="limits-for-elastic-pools"></a>Beschränkungen für elastische Pools
 | Eigenschaft | Beschreibung |
@@ -98,14 +99,12 @@ Die geografische Wiederherstellung ist die Standardoption für die Wiederherstel
 ### <a name="active-geo-replication"></a>Aktive Georeplikation
 Bei Anwendungen, für die umfangreichere Wiederherstellungsanforderungen als bei der geografischen Wiederherstellung erforderlich sind, konfigurieren Sie die aktive Georeplikation über das [Azure-Portal](sql-database-geo-replication-portal.md), mit [PowerShell](sql-database-geo-replication-powershell.md) oder [Transact-SQL](sql-database-geo-replication-transact-sql.md).
 
-## <a name="additional-resources"></a>Weitere Ressourcen
-* [Microsoft Virtual Academy video course on Azure SQL Database elastic capabilities](https://mva.microsoft.com/en-US/training-courses/elastic-database-capabilities-with-azure-sql-db-16554) (Microsoft Virtual Academy-Videokurs zu Funktionen elastischer Datenbanken in Azure SQL-Datenbank)
+## <a name="next-steps"></a>Nächste Schritte
+
+* Sie können einen elastischen Pool über das [Azure-Portal](sql-database-elastic-pool-manage-portal.md), mit [PowerShell](sql-database-elastic-pool-manage-powershell.md), [Transact-SQL](sql-database-elastic-pool-manage-tsql.md), [C#](sql-database-elastic-pool-manage-csharp.md) oder der REST-API erstellen und verwalten. 
+* Anleitungen dazu, wann Sie elastische Pools verwenden sollten, finden Sie unter [Wann sollte ein elastischer Pool verwendet werden?](sql-database-elastic-pool-guidance.md).
+* Ein Video finden Sie unter [Microsoft Virtual Academy video course on Azure SQL Database elastic capabilities](https://mva.microsoft.com/en-US/training-courses/elastic-database-capabilities-with-azure-sql-db-16554) (Microsoft Virtual Academy-Videokurs zu Funktionen elastischer Datenbanken in Azure SQL-Datenbank).
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-pool/databases.png
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

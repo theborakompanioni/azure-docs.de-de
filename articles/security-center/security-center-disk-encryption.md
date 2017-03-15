@@ -1,23 +1,7 @@
----
-title: "Verschlüsseln eines virtuellen Azure-Computers | Microsoft Docs"
-description: "Dieses Dokument hilft Ihnen dabei, einen virtuellen Azure-Computer zu verschlüsseln, wenn Sie eine Warnung vom Azure Security Center erhalten haben."
-services: security, security-center
-documentationcenter: na
-author: TomShinder
-manager: swadhwa
-editor: 
-ms.assetid: f6c28bc4-1f79-4352-89d0-03659b2fa2f5
-ms.service: security
-ms.devlang: na
-ms.topic: hero-article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 05/27/2016
-ms.author: tomsh
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 83e277fe261338aed960dea8e2ab15cbff3c895e
+le--- title: Encrypt an Azure Virtual Machine | Microsoft Docs description: This document helps you to encrypt an Azure Virtual Machine after receiving an alert from Azure Security Center.
+services: security, security-center documentationcenter: na author: TomShinder manager: swadhwa editor: ''
 
+ms.assetid: f6c28bc4-1f79-4352-89d0-03659b2fa2f5 ms.service: security ms.devlang: na ms.topic: hero-article ms.tgt_pltfrm: na ms.workload: na ms.date: 05/27/2016 ms.author: tomsh
 
 ---
 # <a name="encrypt-an-azure-virtual-machine"></a>Verschlüsseln eines virtuellen Azure-Computers
@@ -26,7 +10,7 @@ Azure Security Center gibt eine Warnung aus, wenn Sie über nicht verschlüsselt
 ![Empfehlung für Datenträgerverschlüsselung](./media/security-center-disk-encryption/security-center-disk-encryption-fig1.png)
 
 > [!NOTE]
-> Die Informationen in diesem Dokument gelten für die Vorschauversion von Azure Security Center.
+> Die Informationen in diesem Dokument gelten für die Verschlüsselung von virtuellen Computern ohne Verwendung eines Schlüsselverschlüsselungsschlüssels (der für die Sicherung von virtuellen Computern mithilfe von Azure Backup erforderlich ist). Informationen zum Verwenden eines Schlüsselverschlüsselungsschlüssels zur Unterstützung von Azure Backup für verschlüsselte virtuelle Azure-Computer finden Sie unter [Azure Disk Encryption für virtuelle Windows- und Linux-Computer](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption).
 >
 >
 
@@ -178,9 +162,3 @@ In diesem Dokument haben Sie gelernt, wie Sie einen virtuellen Azure-Computer ve
 * [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md) – Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und auf diese reagieren.
 * [Azure Security Center – häufig gestellte Fragen](security-center-faq.md) zur Verwendung des Diensts.
 * [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) – suchen Sie nach Blogbeiträgen über Azure-Sicherheit und -Compliance.
-
-
-
-<!--HONumber=Dec16_HO2-->
-
-

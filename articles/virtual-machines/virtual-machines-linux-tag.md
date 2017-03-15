@@ -1,6 +1,6 @@
 ---
-title: Markieren eines virtuellen Linux-Computers | Microsoft Docs
-description: "Informieren Sie sich über das Markieren eines virtuellen Linux-Computers mit Tags, der in Azure mithilfe des Resource Manager-Bereitstellungsmodells erstellt wurde."
+title: Markieren eines virtuellen Linux-Computers in Azure | Microsoft-Dokumentation
+description: "Informieren Sie sich über das Markieren eines virtuellen Linux-Computers unter Azure mit Tags, der in Azure mithilfe des Resource Manager-Bereitstellungsmodells erstellt wurde."
 services: virtual-machines-linux
 documentationcenter: 
 author: mmccrory
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/05/2016
+ms.date: 02/28/2017
 ms.author: memccror
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 56777605e84326fdde1821b42279bd7fc752c553
+ms.sourcegitcommit: 2ec95674901130c9c24de331257e40311c88cb6a
+ms.openlocfilehash: 8fad89189ba6836c5748c656457ab25564147550
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -27,19 +28,21 @@ In diesem Artikel werden verschiedene Methoden zum Markieren eines virtuellen Li
 [!INCLUDE [virtual-machines-common-tag](../../includes/virtual-machines-common-tag.md)]
 
 ## <a name="tagging-with-azure-cli"></a>Erstellen von Tags mit der Azure-Befehlszeilenschnittstelle
-Zunächst [installieren und konfigurieren Sie die Azure-Befehlszeilenschnittstelle](../xplat-cli-azure-resource-manager.md) und stellen sicher, dass Sie sich im Resource Manager-Modus (`azure config mode arm`) befinden.
+Die neueste [Azure CLI 2.0 (Vorschau)](/cli/azure/install-az-cli2) muss installiert sein, damit Sie beginnen können. Außerdem müssen Sie mithilfe von [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sein.
+
+Sie können diese Schritte auch per [Azure CLI 1.0](virtual-machines-linux-tag-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ausführen.
 
 Sie können alle Eigenschaften für einen bestimmten virtuellen Computer einschließlich der Tags anzeigen, indem Sie den folgenden Befehl verwenden:
 
-        azure vm show -g MyResourceGroup -n MyTestVM
+        az vm show --resource-group MyResourceGroup --name MyTestVM
 
-Zum Hinzufügen eines neuen VM-Tags über die Azure-Befehlszeilenschnittstelle können Sie den `azure vm set` -Befehl zusammen mit dem Tag-Parameter **-t**verwenden:
+Zum Hinzufügen eines neuen VM-Tags über die Azure-Befehlszeilenschnittstelle können Sie den `azure vm update` -Befehl zusammen mit dem Tag-Parameter **--set**verwenden:
 
-        azure vm set -g MyResourceGroup -n MyTestVM –t myNewTagName1=myNewTagValue1;myNewTagName2=myNewTagValue2
+        az vm update --resource-group MyResourceGroup --name MyTestVM –-set tags.myNewTagName1=myNewTagValue1 tags.myNewTagName2=myNewTagValue2
 
-Um alle Tags zu entfernen, können Sie den **–T**-Parameter im `azure vm set`-Befehl verwenden.
+Um Tags zu entfernen, können Sie den **--remove**-Parameter im `azure vm update`-Befehl verwenden.
 
-        azure vm set – g MyResourceGroup –n MyTestVM -T
+        az vm update –-resource-group MyResourceGroup –-name MyTestVM --remove tags.myNewTagName1
 
 
 Nun, da wir unseren Ressourcen über die Azure-Befehlszeilenschnittstelle und das Portal Tags zugewiesen haben, werfen wir einen Blick auf die Nutzungsdetails, um die Tags im Abrechnungsportal anzuzeigen.
@@ -55,9 +58,4 @@ Nun, da wir unseren Ressourcen über die Azure-Befehlszeilenschnittstelle und da
 [Using Tags to organize your Azure Resources]: ../azure-resource-manager/resource-group-using-tags.md
 [Understanding your Azure Bill]: ../billing/billing-understand-your-bill.md
 [Gain insights into your Microsoft Azure resource consumption]: ../billing/billing-usage-rate-card-overview.md
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

@@ -1,10 +1,10 @@
 ---
-title: Verwalten von DNS-Servern, die von einem virtuellen Netzwerk (VNet) verwendet werden
-description: "Hier erfahren Sie, wie Sie DNS-Server in einem virtuellen Netzwerk (VNet) hinzufügen und entfernen."
+title: "Verwalten von DNS-Servern, die von einem virtuellen Netzwerk (klassisch) verwendet werden – Azure-Portal (klassisch) | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie DNS-Server in einem virtuellen Netzwerk (klassisch) über das Azure-Portal (klassisch) hinzufügen und entfernen."
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
+manager: timlt
 editor: tysonn
 ms.assetid: b582be7d-dc78-4cfe-a766-185bd7e5dc68
 ms.service: virtual-network
@@ -14,22 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3416cf13180e124dab1c74b9c7254390ac5e49c4
+ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
+ms.openlocfilehash: b765fb94f881453ae6a90ec0ae6b6f06843b3aa2
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="manage-dns-servers-used-by-a-virtual-network-vnet"></a>Verwalten von DNS-Servern, die von einem virtuellen Netzwerk (VNet) verwendet werden
-Sie können die Liste der in einem VNet verwendeten DNS-Server im Verwaltungsportal oder mithilfe der Netzwerkkonfigurationsdatei verwalten. Sie können bis zu 12 DNS-Server für jedes VNet hinzufügen. Beim Angeben von DNS-Servern müssen Sie darauf achten, dass Sie sie in der richtigen Reihenfolge für Ihre Umgebung auflisten. DNS-Serverlisten werden nicht per Roundrobin verarbeitet. Die DNS-Server werden in der Reihenfolge verwendet, in der sie angegeben sind. Wenn der erste DNS-Server in der Liste erreicht werden kann, verwendet der Client diesen DNS-Server unabhängig davon, ob der DNS-Server ordnungsgemäß funktioniert. Um die Reihenfolge der DNS-Server für das virtuelle Netzwerk zu ändern, entfernen Sie die DNS-Server aus der Liste, und fügen Sie sie in der gewünschten Reihenfolge wieder hinzu.
+# <a name="manage-dns-servers-used-by-a-virtual-network-classic-using-the-azure-portal-classic"></a>Verwalten von DNS-Servern, die von einem virtuellen Netzwerk (klassisch) verwendet werden, über das Azure-Portal (klassisch)
+
+Sie können die Liste der in einem virtuellen Netzwerk (VNet) verwendeten DNS-Server über das Azure-Portal (klassisch) oder mithilfe der Netzwerkkonfigurationsdatei verwalten. Sie können bis zu 12 DNS-Server für jedes VNet hinzufügen. Beim Angeben von DNS-Servern müssen Sie darauf achten, dass Sie sie in der richtigen Reihenfolge für Ihre Umgebung auflisten. DNS-Serverlisten werden nicht per Roundrobin verarbeitet. Die DNS-Server werden in der Reihenfolge verwendet, in der sie angegeben sind. Wenn der erste DNS-Server in der Liste erreicht werden kann, verwendet der Client diesen DNS-Server unabhängig davon, ob der DNS-Server ordnungsgemäß funktioniert. Um die Reihenfolge der DNS-Server für das virtuelle Netzwerk zu ändern, entfernen Sie die DNS-Server aus der Liste, und fügen Sie sie in der gewünschten Reihenfolge wieder hinzu.
 
 > [!WARNING]
 > Nach dem Aktualisieren der DNS-Liste müssen Sie die virtuellen Computer in Ihrem virtuellen Netzwerk neu starten, damit sie die neuen DNS-Servereinstellungen verwenden. Virtuelle Computer verwenden bis zu ihrem Neustart weiter die aktuelle Konfiguration.
 > 
 > 
 
-## <a name="edit-a-dns-server-list-for-a-virtual-network-using-the-management-portal"></a>Bearbeiten einer DNS-Serverliste für ein virtuelles Netzwerk im Verwaltungsportal
-1. Melden Sie sich am **Verwaltungsportal**an.
+## <a name="edit-a-dns-server-list-for-a-virtual-network-using-the-azure-portal-classic"></a>Bearbeiten einer DNS-Serverliste für ein virtuelles Netzwerk über das Azure-Portal (klassisch)
+1. Melden Sie sich beim [Azure-Portal (klassisch)](https://manage.windowsazure.com)an.
 2. Klicken Sie im Navigationsbereich auf **Netzwerke** und anschließend in der Spalte **Name** auf den Namen Ihres virtuellen Netzwerks.
 3. Klicken Sie auf **Konfigurieren**.
 4. Unter **DNS-Server**können Sie Folgendes konfigurieren:
@@ -43,16 +46,11 @@ Sie können die Liste der in einem VNet verwendeten DNS-Server im Verwaltungspor
 6. Starten Sie die virtuellen Computer im virtuellen Netzwerk neu, damit sie die neuen DNS-Einstellungen abrufen.
 
 ## <a name="edit-a-dns-server-list-using-a-network-configuration-file"></a>Bearbeiten einer DNS-Serverliste mithilfe einer Netzwerkkonfigurationsdatei
-Um eine DNS-Serverliste mithilfe einer Netzwerkkonfigurationsdatei zu bearbeiten, müssen Sie zuerst Ihre Konfigurationseinstellungen aus dem Verwaltungsportal exportieren. Anschließend bearbeiten Sie die Netzwerkkonfigurationsdatei und importieren sie wieder in das Verwaltungsportal. Im Folgenden sind die allgemeinen Schritte zum Ausführen dieses Vorgangs aufgeführt.
+Um eine DNS-Serverliste mithilfe einer Netzwerkkonfigurationsdatei zu bearbeiten, müssen Sie zuerst Ihre Konfigurationseinstellungen aus dem Verwaltungsportal exportieren. Anschließend bearbeiten Sie die Netzwerkkonfigurationsdatei und importieren sie wieder in das Azure-Portal (klassisch). Im Folgenden sind die allgemeinen Schritte zum Ausführen dieses Vorgangs aufgeführt.
 
 1. Exportieren Sie die Einstellungen Ihres virtuellen Netzwerks in eine Netzwerkkonfigurationsdatei. Weitere Informationen und Anweisungen zum Exportieren der Netzwerkkonfigurationseinstellungen finden Sie unter [Exportieren der Einstellungen eines virtuellen Netzwerks in eine Netzwerkkonfigurationsdatei](virtual-networks-using-network-configuration-file.md).
 2. Geben Sie die DNS-Serverinformationen für Ihr virtuelles Netzwerk an. Weitere Informationen zum Angeben eines DNS-Servers finden Sie unter [Angeben eines DNS-Servers in der Konfigurationsdatei eines virtuellen Netzwerks](virtual-networks-specifying-a-dns-settings-in-a-virtual-network-configuration-file.md). Weitere Informationen zu Netzwerkkonfigurationsdateien finden Sie unter [Konfigurationsschema für Azure Virtual Network](https://msdn.microsoft.com/library/azure/jj157100.aspx) und [Konfigurieren eines virtuellen Netzwerks mithilfe einer Netzwerkkonfigurationsdatei](virtual-networks-using-network-configuration-file.md).
 3. Importieren Sie die Netzwerkkonfigurationsdatei. Weitere Informationen und Anweisungen zum Importieren der Netzwerkkonfigurationsdatei finden Sie unter [Importieren einer Netzwerkkonfigurationsdatei](virtual-networks-using-network-configuration-file.md).
 4. Starten Sie die virtuellen Computer im virtuellen Netzwerk neu, damit sie die neuen DNS-Einstellungen abrufen.
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

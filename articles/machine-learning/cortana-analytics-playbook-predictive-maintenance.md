@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2016
+ms.date: 03/14/2017
 ms.author: fboylu
 translationtype: Human Translation
 ms.sourcegitcommit: c78604783bb21f9162939637e04e60aa8131ce11
 ms.openlocfilehash: 1fc824c65e68c70ace589e788a0c470c475e66b4
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -368,10 +369,5 @@ Dieselben Data Warehouses können für die Batchbewertung der Beispielwerte und 
 Abbildung 8. Beispiel für eine Lösungsarchitektur für die vorbeugende Wartung
 
 Weitere Informationen zu den einzelnen Komponenten der Architektur finden Sie in der [Azure](https://azure.microsoft.com/) -Dokumentation.
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

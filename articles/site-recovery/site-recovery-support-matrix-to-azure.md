@@ -15,8 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 01/25/2017
 ms.author: rajanaki
 translationtype: Human Translation
-ms.sourcegitcommit: 43e818b0b60045f9e88d587441d39f46ab2fbfad
-ms.openlocfilehash: e529461d3c6e1876572848fbf6af5b0a1c64ac30
+ms.sourcegitcommit: 511e61552ec0a2c862ebd99fd881f87b56b69398
+ms.openlocfilehash: 84eabb9c898d32efeb6e1c4b1f17b683940b4c04
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.openlocfilehash: e529461d3c6e1876572848fbf6af5b0a1c64ac30
 > * [Replizieren am sekundären Standort im Besitz des Kunden](site-recovery-support-matrix-to-sec-site.md)
 
 
-In diesem Artikel werden die unterstützten Konfigurationen und Komponenten für Azure Site Recovery bei der Replikation und Wiederherstellung in Azure beschrieben. Weitere Informationen zu den Voraussetzungen für Azure Site Recovery finden Sie unter [Bewährte Methoden für Site Recovery](site-recovery-best-practices.md).
+In diesem Artikel werden die unterstützten Konfigurationen und Komponenten für Azure Site Recovery bei der Replikation und Wiederherstellung in Azure beschrieben. Weitere Informationen zu den Anforderungen für Azure Site Recovery finden Sie in den [Voraussetzungen](site-recovery-prereq.md).
 
 
 ## <a name="support-for-deployment-options"></a>Unterstützung für Bereitstellungsoptionen
@@ -64,7 +65,7 @@ In diesem Artikel werden die unterstützten Konfigurationen und Komponenten für
 
 ## <a name="support-for-replicated-machine-os-versions"></a>Unterstützung für replizierte Computer-Betriebssystemversionen
 
-Geschützte virtuelle Computer müssen für das Replizieren in Azure die [Azure-Anforderungen](site-recovery-best-practices.md#azure-virtual-machine-requirements) erfüllen.
+Geschützte virtuelle Computer müssen für das Replizieren in Azure die [Azure-Anforderungen](#failed-over-azure-vm-requirements) erfüllen.
 Die folgende Tabelle fasst die Unterstützung der replizierten Betriebssysteme in verschiedenen Bereitstellungsszenarien bei der Verwendung von Azure Site Recovery zusammen. Diese Unterstützung gilt für alle Workloads unter dem zuvor erwähnten Betriebssystem.
 
  **VMware-/physische Server** | **Hyper-V (ohne Virtual Machine Manager)** | **Hyper-V (mit Virtual Machine Manager)**
@@ -147,7 +148,7 @@ Multipfad (MPIO) | N/V | Ja | Ja
 
 **Azure-Speicher** | **VMware-/physische Server** | **Hyper-V (ohne Virtual Machine Manager)** | **Hyper-V (mit Virtual Machine Manager)**
 --- | --- | --- | ---
-LRS | Ja | Ja | Ja 
+LRS | Ja | Ja | Ja
 GRS | Ja | Ja | Ja
 Speicherebene „Kalt“ | Nein | Nein | Nein
 Speicherebene „Heiß“| Nein | Nein | Nein
@@ -206,10 +207,5 @@ Speicher, Netzwerk, Azure-VMs über Ressourcengruppen hinweg verschieben<br/><br
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Vorbereiten der Bereitstellung](site-recovery-best-practices.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
+[Überprüfen der Voraussetzungen](site-recovery-prereq.md)
 

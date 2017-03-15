@@ -15,8 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 02/06/2017
 ms.author: nisoneji
 translationtype: Human Translation
-ms.sourcegitcommit: 3b606aa6dc3b84ed80cd3cc5452bbe1da6c79a8b
-ms.openlocfilehash: 7ec48138cf18cf50dc34f28e177c8d774034090b
+ms.sourcegitcommit: d4183b73bcb0441c9ad5f12e7a3a1e4d8e31f4b5
+ms.openlocfilehash: 243fbea75c4ba9b280c65a378d6f2d069add1098
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -38,7 +39,7 @@ Sie können das Tool in einem von zwei Modi ausführen:
 2. Ermitteln Sie Ihre tägliche Änderungsrate für replizierte Daten. Gehen Sie dazu folgendermaßen vor:
 
    * Laden Sie beim Replizieren von Hyper-V-VMs das [Tool für die Hyper-V-Kapazitätsplanung](https://www.microsoft.com/download/details.aspx?id=39057) herunter, um die Änderungsrate zu erhalten. [Hier](site-recovery-capacity-planning-for-hyper-v-replication.md) finden Sie weitere Informationen zu diesem Tool. Es wird empfohlen, das Tool eine Woche lang auszuführen, um Durchschnittswerte zu erfassen.
-   * Verwenden Sie beim Replizieren von virtuellen VMware-Maschinen die [Appliance für die vSphere-Kapazitätsplanung](https://labs.vmware.com/flings/vsphere-replication-capacity-planning-appliance) , um die Änderungsrate zu ermitteln.
+   * Verwenden Sie beim Replizieren von virtuellen VMware-Computern die [Azure Site Recovery Deployment Planner](./site-recovery-deployment-planner.md), um die Änderungsrate zu ermitteln.
    * Wenn Sie physische Server replizieren, müssen Sie eine manuelle Schätzung erstellen.
 
 ## <a name="run-the-quick-planner"></a>Ausführen des Quick Planner-Tools
@@ -49,7 +50,7 @@ Sie können das Tool in einem von zwei Modi ausführen:
 3. Geben Sie im Arbeitsblatt **Capacity Planner** (Kapazitätsplaner) die erforderlichen Informationen ein. Sie müssen alle Felder ausfüllen, die unten im Screenshot rot eingekreist sind.
 
    * Wählen Sie unter **Select your scenario** (Ihr Szenario auswählen) die Option **Hyper-V to Azure** (Hyper-V zu Azure) oder **VMware/Physical to Azure** (VMware/Physisch zu Azure) aus.
-   * Geben Sie unter **Average daily data change rate (%)** (Durchschnittliche tägliche Änderungsrate (%)) die Informationen ein, die Sie mit dem [Tool für die Hyper-V-Kapazitätsplanung](site-recovery-capacity-planning-for-hyper-v-replication.md) oder der [Appliance für die vSphere-Kapazitätsplanung](https://labs.vmware.com/flings/vsphere-replication-capacity-planning-appliance) erfasst haben.  
+   * Geben Sie unter **Average daily data change rate (%)** (Durchschnittliche tägliche Änderungsrate [%]) die Informationen ein, die Sie mit dem [Tool für die Hyper-V-Kapazitätsplanung](site-recovery-capacity-planning-for-hyper-v-replication.md) oder dem [Azure Site Recovery Deployment Planner](./site-recovery-deployment-planner.md) erfasst haben.  
    * **Compression** gilt nur für die Komprimierung, die beim Replizieren von VMware-VMs oder physischen Servern zu Azure angeboten wird. Wir schätzen 30 % oder mehr, aber Sie können die Einstellung nach Bedarf ändern. Sie können zum Replizieren von Hyper-V-VMs zur Azure-Komprimierung ein Drittanbietergerät verwenden, z.B. Riverbed.
    * Geben Sie unter **Retention Inputs** (Aufbewahrungseingaben) an, wie lange Replikate aufbewahrt werden sollen. Geben Sie beim Replizieren von VMware- oder physischen Servern den Wert in Tagen ein. Geben Sie die Dauer in Stunden ein, wenn Sie eine Hyper-V-Replikation durchführen.
    * Geben Sie unter **Number of hours in which initial replication for the batch of virtual machines should complete** (Anzahl der Stunden für den Abschluss der anfänglichen Replikation für den Batch virtueller Computer) und **Number of virtual machines per initial replication batch** (Anzahl virtueller Computer pro anfänglichem Replikationsbatch) die Einstellungen ein, die zum Berechnen der Anforderungen für die erste Replikation verwendet werden.  Bei der Bereitstellung von Site Recovery sollte das gesamte Anfangsdataset hochgeladen werden.
@@ -119,16 +120,11 @@ Beispielsweise berechnet das Tool für sechs VMs mit den in der Tabelle angezeig
     > Der IOPS-Wert für Standard- und Premium-Speicher wird auf VM-Ebene und nicht auf Datenträgerebene berechnet. Ein standardmäßiger virtueller Computer kann bis zu 500 IOPS pro Datenträger verarbeiten. Wenn der IOPS-Wert für einen Datenträger mehr als 500 beträgt, benötigen Sie einen Premium-Speicher. Wenn der IOPS-Wert jedoch für einen Datenträger über 500 liegt, aber der IOPS-Wert für alle VM-Datenträger innerhalb der standardmäßigen Unterstützungsgrenzen (VM-Größe, Anzahl der Datenträger, Anzahl der Adapter, CPU, Arbeitsspeicher) für Azure-VMs liegt, wählt der Planer statt der DS- oder GS-Reihe eine Standard-VM aus. Sie müssen die Zuordnung der Azure-Größenzelle manuell mit einer geeigneten VM aus der DS- oder GS-Reihe aktualisieren.
 
 
-1. Klicken Sie nach dem Einrichten aller Details auf **Submit data to the planner tool** (Daten an das Planungstool senden), um den **Capacity Planner** zu öffnen. Die Workloads sind hervorgehoben, um anzuzeigen, ob sie für den Schutz geeignet sind oder nicht.
+Klicken Sie nach dem Einrichten aller Details auf **Submit data to the planner tool** (Daten an das Planungstool senden), um den **Capacity Planner** zu öffnen. Die Workloads sind hervorgehoben, um anzuzeigen, ob sie für den Schutz geeignet sind oder nicht.
 
 ### <a name="submit-data-in-the-capacity-planner"></a>Senden von Daten im Capacity Planner
 1. Beim Öffnen wird das Arbeitsblatt **Capacity Planner** basierend auf den Einstellungen, die Sie angegeben haben, gefüllt. In der Zelle **Infra inputs source** (Infrastruktureingabenquelle) wird „Workload“ angezeigt, um zu zeigen, dass die Eingabe das Arbeitsblatt **Workload Qualification** ist.
 2. Änderungen müssen Sie ggf. im Arbeitsblatt **Workload Qualification** vornehmen und erneut auf **Submit data to the planner tool** klicken.  
 
    ![Capacity Planner](./media/site-recovery-capacity-planner/capacity-planner.png)
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

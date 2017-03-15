@@ -16,12 +16,19 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: ed44ca2076860128b175888748cdaa8794c2310d
-ms.openlocfilehash: fd3ebcaa82952815ad31decd1b44cf6d41365d2f
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: f46965946905bc29a9058904ba62465aba1fa1bf
+ms.lasthandoff: 03/08/2017
 
 
 ---
 # <a name="import-data-to-documentdb-with-the-database-migration-tool"></a>Importieren von Daten in DocumentDB mit dem Datenbank-Migrationstool
+> [!div class="op_single_selector"]
+> * [Importieren in DocumentDB](documentdb-import-data.md)
+> * [Importieren in die API für MongoDB](documentdb-mongodb-migrate.md)
+>
+>
+
 Dieser Artikel beschreibt, wie Sie das offizielle Open-Source-basierte DocumentDB-Datenmigrationstool verwenden, um Daten aus verschiedenen Quellen, z. B. JSON-Dateien, CSV-Dateien, SQL, MongoDB, Azure-Tabellenspeicher, Amazon DynamoDB und DocumentDB-Sammlungen, in [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) zu importieren.
 
 Wenn Sie Daten in ein DocumentDB-Konto mit Unterstützung für MongoDB importieren, folgen Sie den Anweisungen in [Migrieren von Daten zu DocumentDB mit Protokollunterstützung für MongoDB](documentdb-mongodb-migrate.md).
@@ -32,12 +39,12 @@ Nach Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
 * Wie kann ich Daten aus einem Azure-Tabellenspeicher, Amazon DynamoDB und HBase in DocumentDB importieren?
 * Wie kann ich Daten zwischen DocumentDB-Sammlungen migrieren?
 
-## <a name="a-idprerequisitesaprerequisites"></a><a id="Prerequisites"></a>Voraussetzungen
+## <a id="Prerequisites"></a>Voraussetzungen
 Bevor Sie diesen Artikel durcharbeiten, sollten Sie sicherstellen, dass Folgendes installiert ist:
 
 * [Microsoft .NET Framework 4.51](https://www.microsoft.com/download/developer-tools.aspx) oder höher.
 
-## <a name="a-idoverviewlaoverview-of-the-documentdb-data-migration-tool"></a><a id="Overviewl"></a>Übersicht über das DocumentDB-Datenmigrationstool
+## <a id="Overviewl"></a>Übersicht über das DocumentDB-Datenmigrationstool
 Das DocumentDB-Datenmigrationstool ist eine Open-Source-Lösung, mit der Daten aus verschiedensten Quellen in DocumentDB importiert werden können:
 
 * JSON-Dateien
@@ -51,13 +58,13 @@ Das DocumentDB-Datenmigrationstool ist eine Open-Source-Lösung, mit der Daten a
 
 Das Importtool enthält zwar eine grafische Benutzeroberfläche (dtui.exe), kann aber auch über die Befehlszeile (dt.exe) gesteuert werden. In der Tat gibt es eine Option, mit der nach dem Einrichten eines Imports über die Benutzeroberfläche zugeordnete Befehl ausgegeben werden kann. Quelldateien in Tabellenformat (z. B. SQL Server- oder CSV-Dateien) können so umgewandelt werden, dass während des Imports hierarchische Beziehungen (Filialdokumente) erstellt werden können. Hier erhalten Sie weitere Informationen zu Quelloptionen, Beispielbefehlszeilen zum Importieren aus jedem Quellformat, Zieloptionen und zum Anzeigen der Importergebnisse.
 
-## <a name="a-idinstallainstalling-the-documentdb-data-migration-tool"></a><a id="Install"></a>Installieren des DocumentDB-Datenmigrationstools
+## <a id="Install"></a>Installieren des DocumentDB-Datenmigrationstools
 Der Quellcode des Migrationstools ist in GitHub in [diesem Repository](https://github.com/azure/azure-documentdb-datamigrationtool) und eine kompilierte Version ist im [Microsoft Download Center](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d) verfügbar. Sie können die Projektmappe kompilieren oder einfach die kompilierte Version in ein Verzeichnis Ihrer Wahl herunterladen und extrahieren. Führen Sie anschließend eine dieser Dateien aus:
 
 * **Dtui.exe**: GUI-Version des Tools
 * **Dt.exe**: Befehlszeilenversion des Tools
 
-## <a name="a-idjsonaimport-json-files"></a><a id="JSON"></a>Importieren von JSON-Dateien
+## <a id="JSON"></a>Importieren von JSON-Dateien
 Mit der Importprogrammoption für JSON-Dateiquellen können Sie ein oder mehrere JSON-Dateien mit einem einzelnen Dokument oder JSON-Dateien mit jeweils einem Array aus JSON-Dokumenten importieren. Wenn Sie Ordner hinzufügen, die zu importierende JSON-Dateien enthalten, können Sie in den Unterordnern rekursiv nach Dateien suchen.
 
 ![Screenshot der Optionen für JSON-Dateiquellen – Datenbank-Migrationstools](./media/documentdb-import-data/jsonsource.png)
@@ -79,7 +86,7 @@ Hier finden Sie einige Beispiele für Befehlszeilen zum Importieren von JSON-Dat
     #Import a single JSON file and partition the data across 4 collections
     dt.exe /s:JsonFile /s.Files:D:\\CompanyData\\Companies.json /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:comp[1-4] /t.PartitionKey:name /t.CollectionThroughput:2500
 
-## <a name="a-idmongodbaimport-from-mongodb"></a><a id="MongoDB"></a>Importieren aus MongoDB
+## <a id="MongoDB"></a>Importieren aus MongoDB
 
 > [!IMPORTANT]
 > Wenn Sie in ein DocumentDB-Konto mit Unterstützung für MongoDB importieren, befolgen Sie [diese Anweisungen](documentdb-mongodb-migrate.md).
@@ -109,7 +116,7 @@ Hier finden Sie einige Beispiele für Befehlszeilen zum Importieren aus MongoDB:
     #Import documents from a MongoDB collection which match the query and exclude the loc field
     dt.exe /s:MongoDB /s.ConnectionString:mongodb://<dbuser>:<dbpassword>@<host>:<port>/<database> /s.Collection:zips /s.Query:{pop:{$gt:50000}} /s.Projection:{loc:0} /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:BulkZipsTransform /t.IdField:_id/t.CollectionThroughput:2500
 
-## <a name="a-idmongodbexportaimport-mongodb-export-files"></a><a id="MongoDBExport"></a>Importieren von MongoDB-Exportdateien
+## <a id="MongoDBExport"></a>Importieren von MongoDB-Exportdateien
 
 > [!IMPORTANT]
 > Wenn Sie in ein DocumentDB-Konto mit Unterstützung für MongoDB importieren, befolgen Sie [diese Anweisungen](documentdb-mongodb-migrate.md).
@@ -126,7 +133,7 @@ Hier finden Sie ein Beispiel für eine Befehlszeile zum Importieren von JSON-Dat
 
     dt.exe /s:MongoDBExport /s.Files:D:\mongoemployees.json /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:employees /t.IdField:_id /t.Dates:Epoch /t.CollectionThroughput:2500
 
-## <a name="a-idsqlaimport-from-sql-server"></a><a id="SQL"></a>Importieren von SQL Server
+## <a id="SQL"></a>Importieren von SQL Server
 Mit der Importprogrammoption für SQL-Quellen können Sie Datensätze aus einer einzelnen SQL Server-Datenbank importieren und mithilfe einer Abfrage filtern. Darüber hinaus können Sie die Dokumentstruktur ändern, indem Sie ein Schachtelungstrennzeichen angeben (mehr dazu weiter unten).  
 
 ![Screenshot der Optionen für SQL-Dateiquellen – Datenbank-Migrationstools](./media/documentdb-import-data/sqlexportsource.png)
@@ -158,7 +165,7 @@ Hier finden Sie einige Beispiele für Befehlszeilen zum Importieren aus SQL Serv
     #Import records from sql which match a query and create hierarchical relationships
     dt.exe /s:SQL /s.ConnectionString:"Data Source=<server>;Initial Catalog=AdventureWorks;User Id=advworks;Password=<password>;" /s.Query:"select CAST(BusinessEntityID AS varchar) as Id, Name, AddressType as [Address.AddressType], AddressLine1 as [Address.AddressLine1], City as [Address.Location.City], StateProvinceName as [Address.Location.StateProvinceName], PostalCode as [Address.PostalCode], CountryRegionName as [Address.CountryRegionName] from Sales.vStoreWithAddresses WHERE AddressType='Main Office'" /s.NestingSeparator:. /t:DocumentDBBulk /t.ConnectionString:" AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:StoresSub /t.IdField:Id /t.CollectionThroughput:2500
 
-## <a name="a-idcsvaimport-csv-files---convert-csv-to-json"></a><a id="CSV"></a>Importieren von CSV-Dateien – Konvertieren von CSV zu JSON
+## <a id="CSV"></a>Importieren von CSV-Dateien – Konvertieren von CSV zu JSON
 Mit der Importprogrammoption für CSV-Dateiquellen können Sie eine oder mehrere CSV-Dateien importieren. Wenn Sie Ordner hinzufügen, die zu importierende CSV-Dateien enthalten, können Sie in den Unterordnern rekursiv nach Dateien suchen.
 
 ![Screenshot der Optionen für CSV-Quellen – CSV in JSON](media/documentdb-import-data/csvsource.png)
@@ -182,7 +189,7 @@ Hier finden Sie ein Beispiel für eine Befehlszeile zum Importieren von CSV-Date
 
     dt.exe /s:CsvFile /s.Files:.\Employees.csv /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:Employees /t.IdField:EntityID /t.CollectionThroughput:2500
 
-## <a name="a-idazuretablesourceaimport-from-azure-table-storage"></a><a id="AzureTableSource"></a>Importieren aus dem Azure-Tabellenspeicher
+## <a id="AzureTableSource"></a>Importieren aus dem Azure-Tabellenspeicher
 Mit der Importprogrammoption für Azure-Tabellenspeicherquellen können Sie Daten aus einer einzelnen Azure-Tabellenspeichertabelle importieren und optional die zu importierenden Tabellenentitäten filtern.  
 
 ![Screenshot der Optionen für Azure-Tabellenspeicherquellen](./media/documentdb-import-data/azuretablesource.png)
@@ -211,7 +218,7 @@ Hier finden Sie ein Beispiel für eine Befehlszeile zum Importieren aus einem Az
 
     dt.exe /s:AzureTable /s.ConnectionString:"DefaultEndpointsProtocol=https;AccountName=<Account Name>;AccountKey=<Account Key>" /s.Table:metrics /s.InternalFields:All /s.Filter:"PartitionKey eq 'Partition1' and RowKey gt '00001'" /s.Projection:ObjectCount;ObjectSize  /t:DocumentDBBulk /t.ConnectionString:" AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:metrics /t.CollectionThroughput:2500
 
-## <a name="a-iddynamodbsourceaimport-from-amazon-dynamodb"></a><a id="DynamoDBSource"></a>Importieren von Amazon DynamoDB
+## <a id="DynamoDBSource"></a>Importieren von Amazon DynamoDB
 Mit der Importprogrammoption für Amazon DynamoDB-Quellen können Sie aus einer einzelnen Amazon DynamoDB-Tabelle importieren und auf Wunsch die zu importierenden Entitäten filtern. Mehrere Vorlagen werden für einen einfachen Import bereitgestellt.
 
 ![Screenshot der Optionen für Amazon DynamoDB-Dateiquellen – Datenbank-Migrationstools](./media/documentdb-import-data/dynamodbsource1.png)
@@ -231,7 +238,7 @@ Hier finden Sie ein Beispiel für die Befehlszeile zum Importieren von Amazon Dy
 
     dt.exe /s:DynamoDB /s.ConnectionString:ServiceURL=https://dynamodb.us-east-1.amazonaws.com;AccessKey=<accessKey>;SecretKey=<secretKey> /s.Request:"{   """TableName""": """ProductCatalog""" }" /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:catalogCollection /t.CollectionThroughput:2500
 
-## <a name="a-idblobimportaimport-files-from-azure-blob-storage"></a><a id="BlobImport"></a>Importieren von Dateien aus dem Azure-Blob-Speicher
+## <a id="BlobImport"></a>Importieren von Dateien aus dem Azure-Blob-Speicher
 Mit den Importprogrammoptionen für JSON-Dateien, MongoDB-Exportdateien und die CSV-Dateien können Sie eine oder mehrere Dateien aus dem Azure-Blob-Speicher importieren. Nach dem Angeben von Blob-Container-URL und Kontoschlüssel geben Sie einfach einen regulären Ausdruck ein, um die Datei(en) zum Importieren auszuwählen.
 
 ![Screenshot der Optionen für Blob-Dateiquellen](./media/documentdb-import-data/blobsource.png)
@@ -240,7 +247,7 @@ Hier finden Sie ein Beispiel für eine Befehlszeile zum Importieren von JSON-Dat
 
     dt.exe /s:JsonFile /s.Files:"blobs://<account key>@account.blob.core.windows.net:443/importcontainer/.*" /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:doctest
 
-## <a name="a-iddocumentdbsourceaimport-from-documentdb"></a><a id="DocumentDBSource"></a>Importieren aus DocumentDB
+## <a id="DocumentDBSource"></a>Importieren aus DocumentDB
 Mit der Importprogrammoption für DocumentDB-Quellen können Sie Daten aus einer oder mehreren DocumentDB-Sammlungen importieren und optional Dokumente mithilfe einer Abfrage filtern.  
 
 ![Screenshot der Optionen für DocumentDB-Quellen](./media/documentdb-import-data/documentdbsource.png)
@@ -295,7 +302,7 @@ Hier finden Sie einige Beispiele für Befehlszeilen zum Importieren aus Document
 > 
 > 
 
-## <a name="a-idhbasesourceaimport-from-hbase"></a><a id="HBaseSource"></a>Importieren von HBase
+## <a id="HBaseSource"></a>Importieren von HBase
 Die Importprogrammoption für HBase-Quellen können Sie zum Importieren von Daten aus einer HBase-Tabelle und optional zum Filtern der Daten verwenden. Mehrere Vorlagen werden für einen einfachen Import bereitgestellt.
 
 ![Screenshot der Optionen für HBase-Quellen](./media/documentdb-import-data/hbasesource1.png)
@@ -315,7 +322,7 @@ Hier finden Sie ein Beispiel für die Befehlszeile zum Importieren von HBase:
 
     dt.exe /s:HBase /s.ConnectionString:ServiceURL=<server-address>;Username=<username>;Password=<password> /s.Table:Contacts /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:hbaseimport
 
-## <a name="a-iddocumentdbbulktargetaimport-to-documentdb-bulk-import"></a><a id="DocumentDBBulkTarget"></a>Importieren in DocumentDB (Massenimport)
+## <a id="DocumentDBBulkTarget"></a>Importieren in DocumentDB (Massenimport)
 Mit dem DocumentDB-Massenimportprogramm können Sie Daten aus allen verfügbaren Quelloptionen importieren und dabei zur Erhöhung der Effizienz eine gespeicherte DocumentDB-Prozedur verwenden. Das Tool unterstützt den Import in eine DocumentDB-Sammlung mit einzelner Partition sowie den Shardimport, bei dem die Daten über mehrere DocumentDB-Sammlungen mit einzelner Partition hinweg partitioniert werden. Weitere Informationen zur Partitionierung von Daten finden Sie unter [Partitionieren und Skalieren von Daten in DocumentDB](documentdb-partition-data.md). Mit dem Tool wird die gespeicherte Prozedur erstellt, ausgeführt und dann aus der Zielsammlung bzw. den Zielsammlungen gelöscht.  
 
 ![Screenshot der Optionen für DocumentDB-Massenvorgänge](./media/documentdb-import-data/documentdbbulk.png)
@@ -379,7 +386,7 @@ Das DocumentDB-Massenimportprogramm weist die folgenden erweiterten Optionen auf
 > 
 > 
 
-## <a name="a-iddocumentdbseqtargetaimport-to-documentdb-sequential-record-import"></a><a id="DocumentDBSeqTarget"></a>Importieren in DocumentDB (sequenzieller Datensatzimport)
+## <a id="DocumentDBSeqTarget"></a>Importieren in DocumentDB (sequenzieller Datensatzimport)
 Mit dem Programm für den Import von sequenziellen DocumentDB-Datensätzen können Sie Datensätze einzeln aus den verfügbaren Quelloptionen importieren. Sie können diese Option auswählen, wenn Sie Datensätze in eine vorhandene Sammlung importieren, die das Kontingent an gespeicherten Prozeduren erreicht hat. Das Tool unterstützt den Import in eine einzelne DocumentDB-Sammlung (mit sowohl einer einzelnen Partition als auch mit mehreren Partitionen) sowie den Shardimport, bei dem die Daten über mehrere DocumentDB-Sammlungen mit sowohl einer einzelnen Partition und/oder mehreren Partitionen hinweg partitioniert werden. Weitere Informationen zur Partitionierung von Daten finden Sie unter [Partitionieren und Skalieren von Daten in DocumentDB](documentdb-partition-data.md).
 
 ![Screenshot der Optionen für den sequenziellen DocumentDB-Datensatzimport](./media/documentdb-import-data/documentdbsequential.png)
@@ -438,7 +445,7 @@ Das Programm für den Import von sequenziellen DocumentDB-Datensätzen weist die
 > 
 > 
 
-## <a name="a-idindexingpolicyaspecify-an-indexing-policy-when-creating-documentdb-collections"></a><a id="IndexingPolicy"></a>Festlegen einer Indizierungsrichtlinie zum Erstellen von DocumentDB-Sammlungen
+## <a id="IndexingPolicy"></a>Festlegen einer Indizierungsrichtlinie zum Erstellen von DocumentDB-Sammlungen
 Wenn Sie zulassen, dass das Migrationstool während des Imports Sammlungen erstellt, können Sie die Indizierungsrichtlinie der Sammlungen festlegen. Navigieren Sie in den erweiterten Optionen für den DocumentDB-Massenimport und den sequenziellen DocumentDB-Datensatzimport zum Abschnitt zur Indizierungsrichtlinie.
 
 ![Screenshot der erweiterten Optionen für die DocumentDB-Indizierungsrichtlinie](./media/documentdb-import-data/indexingpolicy1.png)
@@ -522,10 +529,5 @@ Wählen Sie dann, ob alle, nur die kritischen oder gar keine Fehlermeldungen pro
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zu DocumentDB finden Sie im [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/documentdb/).
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

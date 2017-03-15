@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 12/13/2016
 ms.author: nberdy
 translationtype: Human Translation
-ms.sourcegitcommit: 8f72f2ca66a5d1394e87c7c0f8d8dff9da73732f
-ms.openlocfilehash: 612ef94efb9776ae0ce768de1b59fb208824da93
-ms.lasthandoff: 02/08/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 796bf9b1219b7f0e2c68688c5f5b51163ef4b49b
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -165,6 +165,26 @@ Die Kategorie „Nachrichtenweiterleitung“ verfolgt Fehler, die während der A
         "details": "ExternalEndpointDisabled"
     }
 
+## <a name="view-events"></a>Ereignisse anzeigen
+
+Sie können das Tool *iothub-explorer* verwenden, um schnell zu überprüfen, ob Ihr IoT Hub Überwachungsereignisse generiert. Anweisungen zum Installieren dieses Tools finden Sie im [iothub-explorer][lnk-iothub-explorer] GitHub-Repository.
+
+1. Stellen Sie sicher, dass die Überwachungskategorie **Verbindungen** im Portal auf **Ausführlich** festgelegt ist.
+
+1. Führen Sie an einer Befehlszeile den folgenden Befehl aus, um aus dem Überwachungsendpunkt zu lesen.
+
+    ```
+    iothub-explorer monitor-ops --login {your iothubowner connection string}
+    ```
+
+1. Führen Sie in einer anderen Eingabeaufforderung den folgenden Befehl zum Simulieren eines Geräts, das Gerät-zu-Cloud-Nachrichten sendet, aus:
+
+    ```
+    iothub-explorer simulate-device {your device name} --send "My test message" --login {your iothubowner connection string}
+    ```
+
+1. Die erste Befehlszeile zeigt die Überwachungsereignisse an, wenn das simulierte Gerät eine Verbindung mit Ihrem IoT Hub herstellt.
+
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
@@ -182,4 +202,5 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+[lnk-iothub-explorer]: https://github.com/azure/iothub-explorer
 

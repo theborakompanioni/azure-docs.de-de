@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2016
+ms.date: 03/06/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: ec522d843b2827c12ff04afac15d89d525d88676
-ms.openlocfilehash: 90bd5b4b6fb58c044b5edaba2c5f3a4bf7346e7d
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: a42dbefe6805cff5fb2df604265f0e62e2c25f69
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -35,9 +36,9 @@ ms.openlocfilehash: 90bd5b4b6fb58c044b5edaba2c5f3a4bf7346e7d
 
 Sie verwenden Transformationsaktivitäten in einer Data Factory-[Pipeline](data-factory-create-pipelines.md), um Rohdaten in Vorhersagen und Erkenntnisse umzuwandeln und zu verarbeiten. Die Aktivität der „Gespeicherte Prozedur“ ist eine der Transformationsaktivitäten, die Data Factory unterstützt. Dieser Artikel baut auf dem Artikel zu [Datentransformationsaktivitäten](data-factory-data-transformation-activities.md) auf, der eine allgemeine Übersicht über die Datentransformation und die unterstützten Transformationsaktivitäten bietet.
 
-Sie können die Aktivität „Gespeicherte Prozedur“ zum Aufrufen einer gespeicherten Prozedur in einem der folgenden Dateispeicher verwenden: Azure SQL-Datenbank, Azure SQL Data Warehouse, SQL Server-Datenbank in Ihrem Unternehmen oder auf einem virtuellen Azure-Computer.  Wenn Sie SQL Server verwenden, müssen Sie das Datenverwaltungsgateway auf dem Computer installieren, der die Datenbank hostet, oder auf einem separaten Computer, um zu vermeiden, dass der Computer mit der Datenbank um Ressourcen konkurriert. Das Datenverwaltungsgateway ist eine Software, die lokale Datenquellen/Datenquellen auf virtuellen Azure Computern mit Clouddiensten auf sichere, verwaltete Weise verbindet. Ausführliche Informationen finden Sie im Artikel [Datenverwaltungsgateway](data-factory-data-management-gateway.md).
+Sie können die Aktivität „Gespeicherte Prozedur“ zum Aufrufen einer gespeicherten Prozedur in einem der folgenden Dateispeicher verwenden: Azure SQL-Datenbank, Azure SQL Data Warehouse, SQL Server-Datenbank in Ihrem Unternehmen oder auf einem virtuellen Azure-Computer.  Wenn Sie SQL Server verwenden, müssen Sie das Datenverwaltungsgateway auf dem Computer installieren, der die Datenbank hostet, oder auf einem separaten Computer, der Zugriff auf die Datenbank hat. Das Datenverwaltungsgateway ist eine Komponente, die lokale Datenquellen/Datenquellen auf virtuellen Azure Computern mit Clouddiensten auf sichere und geschickte Weise verbindet. Ausführliche Informationen finden Sie im Artikel [Datenverwaltungsgateway](data-factory-data-management-gateway.md).
 
-Die folgende exemplarische Vorgehensweise bietet schrittweise Anleitungen zum Aufrufen einer gespeicherten Prozedur in einer Azure SQL-Datenbank aus einer Data Factory-Pipeline mithilfe der Aktivität „Gespeicherte Prozedur“. 
+In der folgenden exemplarischen Vorgehensweise wird die SQL Server-Aktivität in einer Pipeline zum Aufrufen einer gespeicherten Prozedur in einer Azure SQL-Datenbank verwendet. 
 
 ## <a name="walkthrough"></a>Exemplarische Vorgehensweise
 ### <a name="sample-table-and-stored-procedure"></a>Beispiel für eine Tabelle und eine gespeicherte Prozedur
@@ -58,7 +59,7 @@ Die folgende exemplarische Vorgehensweise bietet schrittweise Anleitungen zum Au
     
     ![Beispieldaten](./media/data-factory-stored-proc-activity/sample-data.png)
 
-    Dieses Beispiel verwendet Azure SQL-Datenbank, funktioniert aber auf gleiche Weise für Azure SQL Data Warehouse und eine SQL Server-Datenbank. Für SQL Server-Datenbanken müssen Sie ein [Datenverwaltungsgateway](data-factory-data-management-gateway.md) installieren.
+    In diesem Beispiel befindet sich die gespeicherte Prozedur in einer Azure SQL-Datenbank. Wenn sich die gespeicherte Prozedur in einem Azure SQL Data Warehouse und in einer SQL Server-Datenbank befindet, ist der Ansatz ähnlich. Für eine SQL Server-Datenbank müssen Sie ein [Datenverwaltungsgateway](data-factory-data-management-gateway.md) installieren.
 2. Erstellen Sie die folgende **gespeicherte Prozedur**, die Daten in **sampletable** einfügt.
 
     ```SQL
@@ -102,13 +103,13 @@ Nach dem Erstellen der Data Factory erstellen Sie einen mit Azure SQL verknüpft
    ![Neuer Datenspeicher](media/data-factory-stored-proc-activity/new-data-store.png)
 3. Nehmen Sie die folgenden Änderungen am JSON-Skript vor:
 
-   1. Ersetzen Sie **&lt;servername&gt;** mit dem Namen des Azure SQL-Datenbank-Servers.
-   2. Ersetzen Sie **&lt;databasename&gt;** mit der Datenbank, in der Sie die Tabelle und die gespeicherte Prozedur erstellt haben.
-   3. Ersetzen Sie **&lt;username@servername&gt;** mit dem Benutzerkonto, das über Zugriff auf die Datenbank verfügt.
-   4. Ersetzen Sie **&lt;password&gt;** mit dem Kennwort für das Benutzerkonto.
+   1. Ersetzen Sie `<servername>` durch den Namen des Azure SQL-Datenbankservers.
+   2. Ersetzen Sie `<databasename>` durch die Datenbank, in der Sie die Tabelle und die gespeicherte Prozedur erstellt haben.
+   3. Ersetzen Sie `<username@servername>` durch das Benutzerkonto, das über Zugriff auf die Datenbank verfügt.
+   4. Ersetzen Sie `<password>` durch das Kennwort für das Benutzerkonto.
 
       ![Neuer Datenspeicher](media/data-factory-stored-proc-activity/azure-sql-linked-service.png)
-4. Klicken Sie auf der Befehlsleiste auf **Bereitstellen** , um den verknüpften Dienst bereitzustellen. Vergewissern Sie sich, dass AzureSqlLinkedService in der Strukturansicht links angezeigt wird.
+4. Klicken Sie in der Befehlsleiste auf **Bereitstellen**, um den verknüpften Dienst bereitzustellen. Vergewissern Sie sich, dass AzureSqlLinkedService in der Strukturansicht links angezeigt wird.
 
     ![Strukturansicht mit verknüpften Diensten](media/data-factory-stored-proc-activity/tree-view.png)
 
@@ -134,7 +135,7 @@ Nach dem Erstellen der Data Factory erstellen Sie einen mit Azure SQL verknüpft
         }
     }
     ```
-3. Klicken Sie in der Befehlsleiste auf **Bereitstellen** , um das Dataset bereitzustellen. Vergewissern Sie sich, dass das Dataset in der Strukturansicht angezeigt wird.
+3. Klicken Sie in der Befehlsleiste auf **Bereitstellen**, um das Dataset bereitzustellen. Vergewissern Sie sich, dass das Dataset in der Strukturansicht angezeigt wird.
 
     ![Strukturansicht mit verknüpften Diensten](media/data-factory-stored-proc-activity/tree-view-2.png)
 
@@ -142,7 +143,7 @@ Nach dem Erstellen der Data Factory erstellen Sie einen mit Azure SQL verknüpft
 Erstellen wir jetzt eine Pipeline mit der Aktivität "SqlServerStoredProcedure".
 
 1. Klicken Sie in der Symbolleiste auf **... Weitere** und dann auf **Neue Pipeline**.
-2. Kopieren Sie folgenden JSON-Codeausschnitt, und fügen Sie ihn ein. Der **storedProcedureName** wird auf **sp_sample** festgelegt. Name und Schreibweise des Parameters **DateTime** muss mit dem Namen und der Schreibweise des Parameters in der Definition der gespeicherten Prozedur übereinstimmen.  
+2. Kopieren Sie folgenden JSON-Codeausschnitt, und fügen Sie ihn ein:   
 
     ```JSON
     {
@@ -176,8 +177,10 @@ Erstellen wir jetzt eine Pipeline mit der Aktivität "SqlServerStoredProcedure".
     }
     ```
 
+    Der **storedProcedureName** wird auf **sp_sample** festgelegt. Name und Schreibweise des Parameters **DateTime** muss mit dem Namen und der Schreibweise des Parameters in der Definition der gespeicherten Prozedur übereinstimmen.
+
     Wenn Sie für einen Parameter Null übergeben müssen, verwenden Sie die folgende Syntax: "param1": null (nur Kleinbuchstaben).
-3. Klicken Sie in der Symbolleiste auf **Bereitstellen** , um die Pipeline bereitzustellen.  
+3. Klicken Sie in der Symbolleiste auf **Bereitstellen**, um die Pipeline bereitzustellen.  
 
 ### <a name="monitor-the-pipeline"></a>Überwachen der Pipeline
 1. Klicken Sie auf **X**, um die Data Factory-Editor-Blätter zu schließen und zum Blatt „Data Factory“ zurückzukehren, und klicken Sie auf **Diagramm**.
@@ -186,10 +189,10 @@ Erstellen wir jetzt eine Pipeline mit der Aktivität "SqlServerStoredProcedure".
 2. In der **Diagrammansicht**sehen Sie eine Übersicht über die in diesem Tutorial verwendeten Pipelines und Datasets.
 
     ![Kachel „Diagramm“](media/data-factory-stored-proc-activity/data-factory-diagram-view.png)
-3. Doppelklicken Sie in der Diagrammansicht auf das Dataset **sprocsampleout**. Die Slices werden im Zustand „Bereit“ angezeigt. Es sollten fünf Slices vorhanden sein, da ein Slice für jede Stunde zwischen der Startzeit und Endzeit aus der JSON erstellt wird.
+3. Doppelklicken Sie in der Diagrammansicht auf das Dataset `sprocsampleout`. Die Slices werden im Zustand „Bereit“ angezeigt. Es sollten fünf Slices vorhanden sein, da ein Slice für jede Stunde zwischen der Startzeit und Endzeit aus der JSON erstellt wird.
 
     ![Kachel „Diagramm“](media/data-factory-stored-proc-activity/data-factory-slices.png)
-4. Wenn sich ein Slice im Zustand **Bereit** befindet, führen Sie eine Abfrage **select * from sampledata** für die Azure SQL-Datenbank aus, um sicherzustellen, dass die Daten von der gespeicherten Prozedur in die Tabelle eingefügt wurden.
+4. Wenn sich ein Slice im Zustand **Bereit** befindet, führen Sie eine `select * from sampletable`-Abfrage für die Azure SQL-Datenbank aus, um sicherzustellen, dass die Daten von der gespeicherten Prozedur in die Tabelle eingefügt wurden.
 
    ![Ausgabedaten](./media/data-factory-stored-proc-activity/output.png)
 
@@ -229,7 +232,7 @@ So sieht das JSON-Format zum Definieren der Aktivität „Gespeicherte Prozedur�
 | Beschreibung |Ein Text, der beschreibt, wofür die Aktivität verwendet wird. |Nein |
 | Typ | Muss festgelegt sein auf: **SqlServerStoredProcedure** | Ja |
 | inputs | Optional. Wenn Sie ein Eingabedataset angeben, muss es (im Status „Bereit“) verfügbar sein, damit die Aktivität „Gespeicherte Prozedur“ ausgeführt wird. Das Eingabedataset kann nicht als Parameter in der gespeicherten Prozedur genutzt werden. Es wird nur verwendet, um vor dem Start der Aktivität „Gespeicherte Prozedur“ die Abhängigkeit zu überprüfen. |Nein |
-| outputs |Sie müssen ein Ausgabedataset für eine Aktivität „Gespeicherte Prozedur“ angeben. Das Ausgabedataset gibt den **Zeitplan** für die Aktivität „Gespeicherte Prozedur“ an (stündlich, wöchentlich, monatlich usw.). <br/><br/>Das Ausgabedataset muss einen **verknüpften Dienst** verwenden, der auf eine Azure SQL-Datenbank, ein Azure SQL Data Warehouse oder eine SQL Server-Datenbank verweist, in der bzw. dem die gespeicherte Prozedur ausgeführt werden soll. <br/><br/>Das Ausgabedataset kann verwendet werden, um das Ergebnis der gespeicherten Prozedur für die nachfolgende Verarbeitung durch eine andere Aktivität in der Pipeline zu übergeben ([Verketten von Aktivitäten](data-factory-scheduling-and-execution.md#run-activities-in-a-sequence)). Data Factory schreibt die Ausgabe einer gespeicherten Prozedur jedoch nicht automatisch in dieses Dataset. Die gespeicherte Prozedur schreibt die Ausgabe in eine SQL-Tabelle, auf die das Ausgabedataset verweist. <br/><br/>In einigen Fällen kann das Ausgabedataset ein **Dummy-Dataset** sein, das nur dazu dient, den Zeitplan für die Ausführung der Aktivität „Gespeicherte Prozedur“ anzugeben. |Ja |
+| outputs | Sie müssen ein Ausgabedataset für eine Aktivität „Gespeicherte Prozedur“ angeben. Das Ausgabedataset gibt den **Zeitplan** für die Aktivität „Gespeicherte Prozedur“ an (stündlich, wöchentlich, monatlich usw.). <br/><br/>Das Ausgabedataset muss einen **verknüpften Dienst** verwenden, der auf eine Azure SQL-Datenbank, ein Azure SQL Data Warehouse oder eine SQL Server-Datenbank verweist, in der bzw. dem die gespeicherte Prozedur ausgeführt werden soll. <br/><br/>Das Ausgabedataset kann verwendet werden, um das Ergebnis der gespeicherten Prozedur für die nachfolgende Verarbeitung durch eine andere Aktivität in der Pipeline zu übergeben ([Verketten von Aktivitäten](data-factory-scheduling-and-execution.md#run-activities-in-a-sequence)). Data Factory schreibt die Ausgabe einer gespeicherten Prozedur jedoch nicht automatisch in dieses Dataset. Die gespeicherte Prozedur schreibt die Ausgabe in eine SQL-Tabelle, auf die das Ausgabedataset verweist. <br/><br/>In einigen Fällen kann das Ausgabedataset ein **Dummy-Dataset** sein, das nur dazu dient, den Zeitplan für die Ausführung der Aktivität „Gespeicherte Prozedur“ anzugeben. |Ja |
 | storedProcedureName |Geben Sie den Namen der gespeicherten Prozedur in der Azure SQL-Datenbank oder dem Azure SQL Data Warehouse an, die bzw. das vom verknüpften Dienst dargestellt wird, den die Ausgabetabelle verwendet. |Ja |
 | storedProcedureParameters |Geben Sie Werte für Parameter der gespeicherten Prozedur an. Wenn Sie für einen Parameter Null übergeben müssen, verwenden Sie die folgende Syntax: "param1": null (nur Kleinbuchstaben). Das folgende Beispiel veranschaulicht die Verwendung dieser Eigenschaft. |Nein |
 
@@ -332,8 +335,3 @@ END
     }
 }
 ```
-
-
-<!--HONumber=Feb17_HO3-->
-
-
