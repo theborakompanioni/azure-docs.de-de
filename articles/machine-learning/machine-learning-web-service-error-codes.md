@@ -12,12 +12,13 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.date: 11/16/2016
 ms.author: garye
 translationtype: Human Translation
 ms.sourcegitcommit: e8a6db7963203d747b1f506d0cfae8b3e98d58d3
 ms.openlocfilehash: 4b5c9e4c62fbcf548aad1dbe242e2df0f2f5d41f
+ms.lasthandoff: 11/18/2016
 
 
 ---
@@ -254,9 +255,4 @@ Der Vorgang konnte nicht innerhalb der zulässigen Zeit abgeschlossen werden.
 | BackendInitializationTimeout | The web service initialization could not be completed within the permitted time. (Die Webdienstinitialisierung konnte nicht innerhalb der zulässigen Dauer abgeschlossen werden.) |
 | BackendScoreTimeout | The web service request execution could not be completed within the permitted time. (Die Ausführung der Webdienstanforderung konnte nicht innerhalb der zulässigen Dauer abgeschlossen werden.) |
  
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 
