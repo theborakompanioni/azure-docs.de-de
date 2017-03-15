@@ -1,4 +1,4 @@
----
+﻿---
 title: 'Kurzanleitung: Machine Learning-Textanalyse-APIs | Microsoft Docs'
 description: "Azure Machine Learning-Textanalyse – Kurzanleitung"
 services: cognitive-services
@@ -286,5 +286,6 @@ Wie Textanalysefunktionen, z.B. Stimmung, als Teil eines Bots verwendet werden k
 
 
 <!--HONumber=Nov16_HO3-->
+
 
 
