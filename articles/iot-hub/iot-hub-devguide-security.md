@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 01/04/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: c93d0d47721546f25e72d97f4e019886ef801eba
-ms.openlocfilehash: a7ffc5e2547ca7ac52a56ec82b493b14acd7aaaa
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 0644efd8753c33c0404b45f567759c0be666bcef
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -42,10 +42,10 @@ Sie können [Berechtigungen](#iot-hub-permissions) auf folgende Weise gewähren:
 * **Richtlinien für den gemeinsamen Zugriff auf IoT Hub-Ebene**. SAS-Richtlinien können eine beliebige Kombination von [Berechtigungen](#iot-hub-permissions) gewähren. Sie können Richtlinien im [Azure-Portal][lnk-management-portal] oder programmgesteuert mithilfe von [IoT Hub-Ressourcenanbieter-REST-APIs][lnk-resource-provider-apis] definieren. Ein neu erstellter IoT Hub verfügt über die folgenden Standardrichtlinien:
   
   * **iothubowner**: Richtlinie mit sämtlichen Berechtigungen.
-  * **service**: Richtlinie mit ServiceConnect-Berechtigung.
-  * **device**: Richtlinie mit DeviceConnect-Berechtigung.
-  * **registryRead**: Richtlinie mit RegistryRead-Berechtigung.
-  * **registryReadWrite**: Richtlinie mit den Berechtigungen „RegistryRead“ und „RegistryWrite“.
+  * **service**: Richtlinie mit **ServiceConnect**-Berechtigung.
+  * **device**: Richtlinie mit **DeviceConnect**-Berechtigung.
+  * **registryRead**: Richtlinie mit **RegistryRead**-Berechtigung.
+  * **registryReadWrite**: Richtlinie mit den Berechtigungen **RegistryRead** und „RegistryWrite“.
   * **Sicherheitsanmeldeinformationen auf Gerätebasis**. Jeder IoT Hub enthält eine [Identitätsregistrierung][lnk-identity-registry]. Sie können für jedes Gerät in dieser Identitätsregistrierung Sicherheitsanmeldeinformationen konfigurieren, die **DeviceConnect**-Berechtigungen erteilen, deren Gültigkeitsbereich auf die entsprechenden Geräteendpunkte festgelegt ist.
 
 Beispielsweise In einer normalen IoT-Lösung:
@@ -54,6 +54,9 @@ Beispielsweise In einer normalen IoT-Lösung:
 * Die Ereignisprozessorkomponente verwendet die Richtlinie *service* .
 * Die Laufzeit-Geschäftslogikkomponente für Geräte verwendet die Richtlinie *service*.
 * Einzelne Geräte stellen unter Verwendung von Anmeldeinformationen eine Verbindung her, die in der IoT Hub-Identitätsregistrierung gespeichert sind.
+
+> [!NOTE]
+> Weitere Informationen finden Sie unter [Berechtigungen](#iot-hub-permissions).
 
 ## <a name="authentication"></a>Authentifizierung
 Azure IoT Hub gewährt Zugriff auf Endpunkte, indem ein Token zur Verifizierung mit gemeinsam genutzten Zugriffsrichtlinien und Sicherheitsanmeldeinformationen für die Identitätsregistrierung verglichen wird.
@@ -370,10 +373,10 @@ In der folgenden Tabelle werden die Berechtigungen aufgeführt, die Sie zum Steu
 
 | Berechtigung | Hinweise |
 | --- | --- |
-| **RegistryRead** |Diese Berechtigung gewährt Lesezugriff auf die Identitätsregistrierung. Weitere Informationen finden Sie unter [Identitätsregistrierung][lnk-identity-registry]. |
-| **RegistryReadWrite** |Diese Berechtigung gewährt Lese- und Schreibzugriff auf die Identitätsregistrierung. Weitere Informationen finden Sie unter [Identitätsregistrierung][lnk-identity-registry]. |
-| **ServiceConnect** |Diese Berechtigung gewährt Zugriff auf die clouddienstseitigen Endpunkte für Kommunikation und Überwachung. Beispielsweise wird Back-End-Clouddiensten die Berechtigung erteilt, D2C-Nachrichten zu empfangen, C2D-Nachrichten zu senden und die zugehörigen Übermittlungsbestätigungen zu empfangen. |
-| **DeviceConnect** |Diese Berechtigung gewährt Zugriff auf die geräteseitigen Endpunkte. Beispielsweise wird die Berechtigung zum Senden von D2C-Nachrichten und das Empfangen von C2D-Nachrichten erteilt. Diese Berechtigung wird von Geräten verwendet. |
+| **RegistryRead** |Diese Berechtigung gewährt Lesezugriff auf die Identitätsregistrierung. Weitere Informationen finden Sie unter [Identitätsregistrierung][lnk-identity-registry]. <br/>Diese Berechtigung wird von Back-End Cloud Services verwendet. |
+| **RegistryReadWrite** |Diese Berechtigung gewährt Lese- und Schreibzugriff auf die Identitätsregistrierung. Weitere Informationen finden Sie unter [Identitätsregistrierung][lnk-identity-registry]. <br/>Diese Berechtigung wird von Back-End Cloud Services verwendet. |
+| **ServiceConnect** |Diese Berechtigung gewährt Zugriff auf die clouddienstseitigen Endpunkte für Kommunikation und Überwachung. <br/>Clouddiensten wird die Berechtigung erteilt, D2C-Nachrichten zu empfangen, C2D-Nachrichten zu senden und die zugehörigen Übermittlungsbestätigungen zu empfangen. <br/>Erteilt die Berechtigung zum Abrufen der Übermittlungsbestätigungen für die Dateiuploads. <br/>Gewährt die Berechtigung zum Zugriff auf Gerätezwillinge zum Aktualisieren von Tags und der gewünschten Eigenschaften, zum Abrufen gemeldeter Eigenschaften und zum Ausführen von Abfragen. <br/>Diese Berechtigung wird von Back-End Cloud Services verwendet. |
+| **DeviceConnect** |Diese Berechtigung gewährt Zugriff auf die geräteseitigen Endpunkte. <br/>Gewährt die Berechtigung zum Senden von D2C-Nachrichten und zum Empfangen von C2D-Nachrichten. <br/>Gewährt die Berechtigung zum Ausführen eines Dateiupload von einem Gerät. <br/>Gewährt die Berechtigung zum Abrufen von gewünschten Eigenschaftsbenachrichtigungen für Gerätezwillinge und zum Aktualisieren von gemeldeten Eigenschaften. <br/>Gewährt die Berechtigung zum Ausführen eines Dateiupload. <br/>Diese Berechtigung wird von Geräten verwendet. |
 
 ## <a name="additional-reference-material"></a>Weiteres Referenzmaterial
 Weitere Referenzthemen im IoT Hub-Entwicklerhandbuch:

@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: mimig
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: b9902de45477bb7970da6c8f2234775bdb6edba8
-ms.openlocfilehash: 65f19191bbb736d3b7fbdd94d73f2308ee6dea83
-ms.lasthandoff: 02/08/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 659d6bd63ea996af7b7b172f998884354e5d5858
+ms.lasthandoff: 03/07/2017
 
 
 ---
-# <a name="performance-levels-in-documentdb"></a>Leistungsebenen in DocumentDB
+# <a name="retiring-the-s1-s2-and-s3-performance-levels-in-documentdb"></a>Aussondern der Leistungsebenen S1, S2 und S3 in DocumentDB
 
 > [!IMPORTANT] 
 > Die in diesem Artikel beschriebenen Leistungsebenen S1, S2 und S3 werden ausgesondert und sind für neue DocumentDB-Sammlungen nicht mehr verfügbar.
@@ -175,7 +176,7 @@ EA-Kunden genießen bis zum Ablauf ihres aktuellen Vertrags Preissicherheit.
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Preisen und der Datenverwaltung mit Azure DocumentDB finden Sie in folgenden Ressourcen:
 
-1.  [Partitionieren von Daten in DocumentDB](documentdb-partition-data.md): Es werden die Unterschiede zwischen Sammlungen mit nur einer Partition und partitionierten Sammlungen beschrieben, und Sie erhalten Tipps zur Implementierung einer Partitionierungsstrategie für die nahtlose Skalierung.
-2.  [DocumentDB-Preise](https://azure.microsoft.com/pricing/details/documentdb/): Enthält Informationen zu den Kosten für den Bereitstellungsdurchsatz und für den Speicherverbrauch.
-3.  [Anforderungseinheiten](documentdb-request-units.md): Enthält Informationen zum Verbrauch des Durchsatzes für verschiedene Vorgangstypen, z.B. Lesen, Schreiben, Abfragen.
-4.  [Modellieren von Daten in DocumentDB](documentdb-modeling-data.md): Es wird beschrieben, wie Sie Ihre Daten für DocumentDB modellieren.
+1.    [Partitionieren von Daten in DocumentDB](documentdb-partition-data.md): Es werden die Unterschiede zwischen Sammlungen mit nur einer Partition und partitionierten Sammlungen beschrieben, und Sie erhalten Tipps zur Implementierung einer Partitionierungsstrategie für die nahtlose Skalierung.
+2.    [DocumentDB-Preise](https://azure.microsoft.com/pricing/details/documentdb/): Enthält Informationen zu den Kosten für den Bereitstellungsdurchsatz und für den Speicherverbrauch.
+3.    [Anforderungseinheiten](documentdb-request-units.md): Enthält Informationen zum Verbrauch des Durchsatzes für verschiedene Vorgangstypen, z.B. Lesen, Schreiben, Abfragen.
+4.    [Modellieren von Daten in DocumentDB](documentdb-modeling-data.md): Es wird beschrieben, wie Sie Ihre Daten für DocumentDB modellieren.

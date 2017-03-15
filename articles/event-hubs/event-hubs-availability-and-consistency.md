@@ -15,20 +15,20 @@ ms.workload: na
 ms.date: 02/21/2017
 ms.author: sethm;jotaub
 translationtype: Human Translation
-ms.sourcegitcommit: 7587b1bed2f809fa2c4bab78c54396eed778b9ef
-ms.openlocfilehash: df2d79fdb4a26509f3c7c1f8f3a8adcaa6b24f9d
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: e293dcfc872ba95ca7a0d0faed9b4a824d3fa42c
+ms.openlocfilehash: ee9a19c8ae85867a0dfcb896b9c33fd4c51be7fa
+ms.lasthandoff: 02/27/2017
 
 ---
 
 # <a name="availability-and-consistency-in-event-hubs"></a>Verfügbarkeit und Konsistenz in Event Hubs
 
 ## <a name="overview"></a>Übersicht
-Azure Event Hubs verwendet ein [Partitionierungsmodell](event-hubs-what-is-event-hubs.md#partitions) zur Verbesserung der Verfügbarkeit und Parallelisierung innerhalb eines einzelnen Event Hubs. Wenn ein Event Hub z.B. über vier Partitionen verfügt, und eine dieser Partitionen wird im Rahmen eines Lastenausgleichs-Vorgangs von einem Server zu einem anderen verschoben, können Sie weiterhin an drei andere Partitionen Daten senden und von dort empfangen. Darüber hinaus ermöglichen mehr Partitionen, dass mehr gleichzeitige Leser Ihre Daten verarbeiten können, und dies verbessert den aggregierten Durchsatz. Die Kenntnis der Auswirkungen von Partitionierung und Reihenfolge in einem verteilten System ist ein wichtiger Aspekt des Lösungsentwurfs.
+Azure Event Hubs verwendet ein [Partitionierungsmodell](event-hubs-what-is-event-hubs.md#partitions) zur Verbesserung der Verfügbarkeit und Parallelisierung innerhalb eines einzelnen Event Hubs. Wenn ein Event Hub z.B. über vier Partitionen verfügt und eine dieser Partitionen im Rahmen eines Lastenausgleichsvorgangs von einem Server zu einem anderen verschoben wird, können Sie weiterhin an drei andere Partitionen Daten senden und von dort empfangen. Darüber hinaus ermöglichen mehr Partitionen, dass mehr gleichzeitige Leser Ihre Daten verarbeiten können, und dies verbessert den aggregierten Durchsatz. Die Kenntnis der Auswirkungen von Partitionierung und Reihenfolge in einem verteilten System ist ein wichtiger Aspekt des Lösungsentwurfs.
 
-Um den Kompromiss zwischen Reihenfolge und Verfügbarkeit zu erklären, betrachten wir das [CAP-Theorem](https://en.wikipedia.org/wiki/CAP_theorem), auch bekannt als Brewers Theorem. Das Theorem besagt, dass die Wahl zwischen Konsistenz, Verfügbarkeit und Ausfalltoleranz getroffen werden muss.
+Um den Kompromiss zwischen Reihenfolge und Verfügbarkeit zu erklären, betrachten Sie das [CAP-Theorem](https://en.wikipedia.org/wiki/CAP_theorem), auch bekannt als Brewers Theorem. Dieser Satz besagt, dass die Wahl zwischen Konsistenz, Verfügbarkeit und Ausfalltoleranz getroffen werden muss.
 
-Das Theorem definiert Konsistenz und Verfügbarkeit wie folgt:
+Brewers Theorem definiert Konsistenz und Verfügbarkeit wie folgt:
 * Ausfalltoleranz: Die Fähigkeit eines Datenverarbeitungssystems, die Datenverarbeitung auch dann fortzusetzen, wenn ein Partitionsausfall auftritt.
 * Verfügbarkeit: Von einem nicht fehlerhaften Knoten erfolgt innerhalb eines akzeptablen Zeitraums eine angemessene Reaktion (ohne Fehler oder Timeouts).
 * Konsistenz: Ein Lesevorgang gibt garantiert den letzten Schreibvorgang eines bestimmten Clients zurück.
@@ -37,7 +37,7 @@ Das Theorem definiert Konsistenz und Verfügbarkeit wie folgt:
 Event Hubs basiert auf einem partitionierten Modell. Sie können die Anzahl der Partitionen in Ihrem Event Hub während des Setups konfigurieren, aber Sie können diesen Wert später nicht ändern. Da Sie Partitionen mit Event Hubs verwenden müssen, müssen Sie nur eine Entscheidung hinsichtlich Verfügbarkeit und Konsistenz der Anwendung treffen.
 
 ## <a name="availability"></a>Availability
-Die einfachste Möglichkeit, erste Schritte mit Event Hubs auszuführen, ist das Standardverhalten. Wenn Sie einen neuen `EventHubClient` erstellen und die Sendefunktion verwenden, werden die Ereignisse automatisch auf die Partitionen Ihres Event Hubs verteilt. Dieses Verhalten ermöglicht das größte Maß an Betriebszeit.
+Die einfachste Möglichkeit, erste Schritte mit Event Hubs auszuführen, ist die Verwendung des Standardverhaltens. Wenn Sie einen neuen `EventHubClient` erstellen und die Sendefunktion verwenden, werden die Ereignisse automatisch auf die Partitionen Ihres Event Hubs verteilt. Dieses Verhalten ermöglicht das größte Maß an Betriebszeit.
 
 Für Anwendungsfälle, die maximale Betriebszeit erfordern, wird dieses Modell bevorzugt.
 

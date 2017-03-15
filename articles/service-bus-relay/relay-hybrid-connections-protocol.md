@@ -1,5 +1,5 @@
 ---
-title: Azure Relay-Hybridverbindungsprotokoll | Microsoft Docs
+title: Leitfaden zum Azure Relay-Hybridverbindungsprotokoll | Microsoft-Dokumentation
 description: Leitfaden zum Azure Relay-Hybridverbindungsprotokoll.
 services: service-bus-relay
 documentationcenter: na
@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 02/14/2017
 ms.author: sethm;clemensv
 translationtype: Human Translation
-ms.sourcegitcommit: 579942cfe0dc7d6a5e3f205308642d36bf6be880
-ms.openlocfilehash: d3a191797e75c424af07910e4a6a87e1183f6676
+ms.sourcegitcommit: 4a972b9b8b52a90f27afda98d8bdc661016d1fe1
+ms.openlocfilehash: f5fd4c6c0b8db3fe91d8b57a68fe33dcff353a59
+ms.lasthandoff: 02/28/2017
 
 
 ---
@@ -267,10 +268,5 @@ Wenn die Websocketverbindung absichtlich durch den Dienst heruntergefahren wird,
 * [Erstellen eines Namespaces](relay-create-namespace-portal.md)
 * [Erste Schritte mit .NET](relay-hybrid-connections-dotnet-get-started.md)
 * [Erste Schritte mit Node](relay-hybrid-connections-node-get-started.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

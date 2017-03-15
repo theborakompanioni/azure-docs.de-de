@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/08/2017
+ms.date: 02/22/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 40f8f1b52c39a170a57168db9227a7c2fa069570
-ms.openlocfilehash: 466d4a566ebb426f48e8c271e1305b844842d638
+ms.sourcegitcommit: f07cd15658f7d367bdf364ece449dd5d09b2f9d3
+ms.openlocfilehash: 38503e36f9c0ad981d0239d82a858dbe2c5263a4
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -36,7 +37,7 @@ Security Center wird in zwei Tarifen angeboten: Free und Standard.
 
 Mit dem Free-Tarif können Sie Sicherheitsrichtlinien festlegen und Sicherheitshinweise, Incidents und Empfehlungen empfangen, die Ihnen beim Konfigurieren der erforderlichen Steuerelemente helfen. Mit dem Free-Tarif können Sie zudem den Sicherheitsstatus Ihrer Azure-Ressourcen und der in Ihrem Azure-Abonnement integrierten Partnerlösungen überwachen.
 
-Der Standard-Tarif bietet die Funktionen des Free-Tarifs und zusätzlich erweiterte Erkennungsfunktionen: Informationen zu Bedrohungen, Verhaltensanalysen, Absturzanalysen und Anomalieerkennung. Eine kostenlose 90-Tage-Testversion des Standard-Tarifs ist verfügbar. Wenn Sie ein Upgrade durchführen möchten, wählen Sie in der [Sicherheitsrichtlinie](security-center-policies.md#set-security-policies-for-subscriptions)die Tarifoption aus. Weitere Informationen finden Sie unter [Security Center-Preise](security-center-pricing.md).
+Der Standard-Tarif bietet die Funktionen des Free-Tarifs und zusätzlich erweiterte Erkennungsfunktionen: Informationen zu Bedrohungen, Verhaltensanalysen, Absturzanalysen und Anomalieerkennung. Der Standard-Tarif wird für die ersten 60 Tage kostenlos angeboten. Wenn Sie den Dienst über diese 60 Tage hinaus verwenden, beginnen wir automatisch mit der Berechnung des Diensts. Wenn Sie ein Upgrade durchführen möchten, wählen Sie in der [Sicherheitsrichtlinie](security-center-policies.md#set-security-policies-for-subscriptions)die Tarifoption aus. Weitere Informationen finden Sie unter [Security Center-Preise](security-center-pricing.md).
 
 ## <a name="permissions"></a>Berechtigungen
 Azure Security Center verwendet die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)](../active-directory/role-based-access-control-configure.md). Diese stellt [integrierte Rollen](../active-directory/role-based-access-built-in-roles.md) bereit, die Benutzern, Gruppen und Diensten in Azure zugewiesen werden können.
@@ -161,9 +162,4 @@ Es kann einige Zeit dauern (weniger als eine Stunde), um die Überprüfungsdaten
 
 ### <a name="why-do-i-get-the-message-vm-agent-is-missing"></a>Warum erhalte ich die Meldung „VM-Agent fehlt“?
 Der VM-Agent muss auf virtuellen Computern installiert sein, um die Datensammlung zu ermöglichen. Der VM-Agent wird standardmäßig für virtuelle Maschinen installiert, die vom Azure Marketplace bereitgestellt werden. Informationen zum Installieren des VM-Agents auf anderen virtuellen Computern finden Sie im Blogbeitrag [VM Agent and Extensions](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/)(VM-Agent und Erweiterungen).
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

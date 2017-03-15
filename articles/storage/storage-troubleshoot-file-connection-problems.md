@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: genli
 translationtype: Human Translation
-ms.sourcegitcommit: 7aa2a60f2a02e0f9d837b5b1cecc03709f040898
-ms.openlocfilehash: cce72f374e2cc6f1a42428d9f8e1f3ab8be50f7b
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 0479db07710d7ff6037dc692e5387a314bed32ca
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -36,18 +36,18 @@ Dieser Artikel beschreibt allgemeine Probleme im Zusammenhang mit Microsoft Azur
 * [Geringe Leistung beim Zugriff auf Azure File Storage über Windows 8.1 oder Windows Server 2012 R2](#windowsslow)
 * [Fehler 53 beim Versuch, eine Azure-Dateifreigabe einzubinden](#error53)
 * [Fehler 87: Falscher Parameter bei dem Versuch, eine Azure-Dateifreigabe bereitzustellen](#error87)
-* [„net use“ war erfolgreich, aber die Azure Dateifreigabe wird nicht als im Windows-Explorer eingebunden angezeigt](#netuse)
+* [„net use“ war erfolgreich, aber die Azure Dateifreigabe wird nicht als in der Windows-Explorer-Benutzeroberfläche eingebunden oder als Laufwerkbuchstabe angezeigt](#netuse)
 * [Mein Speicherkonto enthält „/“, und beim Ausführen des Befehls „net use“ tritt ein Fehler auf](#slashfails)
 * [Meine Anwendung bzw. mein Dienst kann nicht auf das eingebundene Azure Files-Laufwerk zugreifen.](#accessfiledrive)
 * [Zusätzliche Empfehlungen zur Leistungsoptimierung](#additional)
+* [Fehler „You are copying a file to a destination that does not support encryption“ (Sie kopieren eine Datei in ein Ziel, das die Verschlüsselung nicht unterstützt) beim Hochladen/Kopieren von Dateien in Azure Files](#encryption)
 
 **Linux-Clientprobleme**
 
-* [Fehler „You are copying a file to a destination that does not support encryption“ (Sie kopieren eine Datei in ein Ziel, das die Verschlüsselung nicht unterstützt) beim Hochladen/Kopieren von Dateien in Azure Files](#encryption)
-* [Zeitweiliger E/A-Fehler „Host nicht verfügbar“ bei vorhandenen Dateifreigaben, oder die Shell hängt beim Ausführen von Listenbefehlen auf dem Einbindungspunkt](#errorhold)
+* [Zeitweiliger E/A-Fehler „Host nicht verfügbar“ (Fehler 112) bei vorhandenen Dateifreigaben, oder die Shell hängt beim Ausführen von Listenbefehlen auf dem Einbindungspunkt](#errorhold)
 * [Einbindungsfehler 115 beim Versuch, Azure Files auf der Linux-VM einzubinden](#error15)
-* [Bei der Linux-VM treten zufällige Verzögerungen in Befehlen wie „Is“ auf](#delayproblem)
-* [Fehler 112 – Timeoutfehler](#error112)
+* [In der Azure-Dateifreigabe auf der Linux-VM treten Probleme mit langsamer Leistung auf](#delayproblem)
+
 
 **Zugreifen von anderen Anwendungen aus**
 
@@ -193,7 +193,7 @@ Laufwerke werden pro Benutzer eingebunden. Wenn Ihre Anwendung oder Ihr Dienst u
 ### <a name="solution"></a>Lösung
 Binden Sie das Laufwerk von dem gleichen Benutzerkonto aus ein, unter dem sich die Anwendung befindet. Dies kann durch die Verwendung von Tools wie z.B. psexec erfolgen.
 
-Alternativ können Sie einen neuen Benutzer erstellen, der über die gleichen Berechtigungen wie das Netzwerkdienst- oder das Systemkonto verfügt, und führen Sie dann **cmdkey** und **net use** unter diesem Konto aus. Der Benutzername muss der Name des Speicherkontos sein, und das Kennwort muss der Speicherkontoschlüssel sein. Eine weitere Möglichkeit für **net use** ist, den Speicherkontonamen und -schlüssel an die Parameter des **net use**-Befehls zu übergeben.
+Eine weitere Möglichkeit für **net use** ist, den Speicherkontonamen und -schlüssel an die Parameter des **net use**-Befehls zu übergeben.
 
 Nachdem Sie diese Anleitung befolgt haben, erhalten Sie möglicherweise die folgende Fehlermeldung: „Systemfehler 1312 ist aufgetreten. Eine angegebene Anmeldesitzung ist nicht vorhanden. Sie wurde gegebenenfalls bereits beendet.“, wenn Sie **net use** für das System-/Netzwerkdienstkonto ausführen. Wenn dies auftritt, vergewissern Sie sich, dass der an **net use** übergebene Benutzername Domäneninformationen enthält (z.B. „[Speicherkontoname].file.core.windows.net“).
 
@@ -219,14 +219,34 @@ Beachten Sie jedoch, dass sich das Festlegen des Registrierungsschlüssels auf a
 
 <a id="errorhold"></a>
 
-## <a name="host-is-down-error-on-existing-file-shares-or-the-shell-hangs-when-you-run-list-commands-on-the-mount-point"></a>Fehler „Host is down“ (Host nicht verfügbar) bei vorhandenen Dateifreigaben, oder die Shell hängt beim Ausführen von Listenbefehlen auf dem Einbindungspunkt
+## <a name="host-is-down-error-112-on-existing-file-shares-or-the-shell-hangs-when-you-run-list-commands-on-the-mount-point"></a>Fehler „Host is down“ (Host nicht verfügbar) (Fehler 112) bei vorhandenen Dateifreigaben, oder die Shell hängt beim Ausführen von Listenbefehlen auf dem Einbindungspunkt
 ### <a name="cause"></a>Ursache
-Dieser Fehler tritt auf dem Linux-Client auf, wenn sich der Client für einen längeren Zeitraum im Leerlauf befand. Wenn dieser Fehler auftritt, trennt der Client die Verbindung, und der Timeout für die Clientverbindung wird erreicht.
+Dieser Fehler tritt auf dem Linux-Client auf, wenn sich der Client für einen längeren Zeitraum im Leerlauf befand. Wenn der Client über einen längeren Zeitraum im Leerlauf ist, trennt der Client die Verbindung, und der Timeout für die Verbindung wird erreicht. 
+
+Die Verbindung kann sich aufgrund verschiedener Ursachen im Leerlauf befinden. Ein Grund dafür sind Netzwerkkommunikationsfehler, die das erneute Wiederherstellen einer TCP-Verbindung mit dem Server verhindern, wenn die Option zur zeitweiligen Einbindung verwendet wird (dies ist die Standardeinstellung).
+
+Ein weiterer Grund dafür ist möglicherweise, dass es auch einige erneute Verbindungen gibt, die nicht in älteren Kernels befinden.
 
 ### <a name="solution"></a>Lösung
-Dieses Problem wurde im Linux-Kernel nun als Teil von [change set](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/fs/cifs?id=4fcd1813e6404dd4420c7d12fb483f9320f0bf93) behoben, wobei die Zurückportierung in die Linux-Distribution aussteht.
 
-Um dieses Problem zu umgehen, halten Sie die Verbindung aufrecht, und vermeiden Sie, in einen Leerlaufzustand zu geraten, und behalten Sie eine Datei in der Azure-Dateifreigabe, in die Sie regelmäßig schreiben. Dabei muss es sich um einen Schreibvorgang handeln, wie z.B. die Umschreibung des Erstellungs-/Änderungsdatums in der Datei. Andernfalls erhalten Sie möglicherweise zwischengespeicherte Ergebnisse, und Ihr Vorgang kann die Verbindung möglicherweise nicht auslösen.
+Durch Festlegen einer ständigen Einbindung wird der Client gezwungen, zu warten, bis eine Verbindung hergestellt oder explizit unterbrochen wurde. Auf diese Weise lassen sich auch Fehler aufgrund von Netzwerktimeouts verhindern. Benutzer sollten sich jedoch darüber im Klaren sein, dass diese Einstellung zu unendlichen Wartevorgängen führen kann, und Verbindungen bei Bedarf anhalten.
+
+Dieses Verbindungsproblem im Linux-Kernel ist nun als Teil der folgenden Changesets
+
+* [Fix reconnect to not defer smb3 session reconnect long after socket reconnect (Stellen Sie die Verbindung wieder her, um die Verbindungswiederherstellung der smb3-Sitzung lange nach der Socket-Verbindungswiederherstellung rückzustellen)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/fs/cifs?id=4fcd1813e6404dd4420c7d12fb483f9320f0bf93)
+
+* [Call echo service immediately after socket reconnect (Sofortiges Aufrufen des Echo-Diensts nach der Socket-Verbindungswiederherstellung)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=b8c600120fc87d53642476f48c8055b38d6e14c7)
+
+* [CIFS: Fix a possible memory corruption during reconnect (CIFS: Beheben einer Arbeitsspeicherbeschädigung während der Verbindungswiederherstellung)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=53e0e11efe9289535b060a51d4cf37c25e0d0f2b)
+
+* [CIFS: Fix a possible double locking of mutex during reconnect - for kernels v4.9 and higher (CIFS: Beheben einer möglichen doppelten Sperre des Mutex während der Verbindungswiederherstellung – für Kernels v4.9 und höher)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=96a988ffeb90dba33a71c3826086fe67c897a183) 
+
+Diese Änderung kann möglicherweise noch nicht an alle Linux-Distributionen portiert werden. Dies ist die Liste häufig verwendeter und bekannter Linux-Kernel, die über diese und andere Korrekturen eine erneute Verbindung verfügen: 4.4.40+, 4.8.16+, 4.9.1+.
+Sie können zu den oben empfohlenen Kernelversionen wechseln, um die neueste Fehlerbehebung zu übernehmen.
+
+### <a name="workaround"></a>Problemumgehung
+Wenn Sie die neuesten Kernelversionen nicht aufrufen können, können Sie dieses Problem umgehen, indem Sie eine Datei in der Azure-Dateifreigabe speichern, in die Sie alle 30 Sekunden oder früher schreiben. Dabei muss es sich um einen Schreibvorgang handeln, wie z.B. die Umschreibung des Erstellungs-/Änderungsdatums in der Datei. Andernfalls erhalten Sie möglicherweise zwischengespeicherte Ergebnisse, und Ihr Vorgang kann die Verbindungswiederherstellung möglicherweise nicht auslösen. 
+
 
 <a id="error15"></a>
 
@@ -239,36 +259,21 @@ Wenn der verwendete Linux-SMB-Client die Verschlüsselung nicht unterstützt, bi
 
 <a id="delayproblem"></a>
 
-## <a name="linux-vm-experiencing-random-delays-in-commands-like-ls"></a>Bei der Linux-VM treten zufällige Verzögerungen in Befehlen wie „Is“ auf
-### <a name="cause"></a>Ursache
-Dies kann auftreten, wenn der „mount“-Befehl die Option **serverino** nicht enthält. Ohne **serverino** führt der „Is“-Befehl auf jeder Datei **stat** aus.
+## <a name="azure-file-share-mounted-on-linux-vm-experiencing-slow-performance"></a>In der Azure-Dateifreigabe auf der Linux-VM treten Probleme mit langsamer Leistung auf
 
-### <a name="solution"></a>Lösung
-Überprüfen Sie die Option **serverino** in Ihrem Eintrag „/etc/fstab“:
+Ein möglicher Grund für langsame Leistung könnte deaktiviertes Caching sein. Um zu überprüfen, ob das Caching aktiviert ist, suchen Sie nach „cache=“.  *cache=none* gibt an, dass das Caching deaktiviert ist. Stellen Sie die Freigabe erneut bereit, entweder mit dem Standardbereitstellungsbefehl oder explizit durch das Hinzufügen der Option **cache=strict** zum Bereitstellungsbefehl, um sicherzustellen, dass das Standardcaching oder der Cachingmodus „strict“ aktiviert ist.
+
+In einigen Szenarios kann die serverino-Bereitstellungsoption einen „Is“-Befehl auslösen, um „stat“ für jeden Verzeichniseintrag auszuführen. Dieses Verhalten für zu Leistungsbeeinträchtigungen bei Auflistung eines großen Verzeichnisses. Sie können die Bereitstellungsoption in Ihrem „/etc/fstab“-Eintrag finden:
 
 `//azureuser.file.core.windows.net/cifs        /cifs   cifs vers=3.0,serverino,username=xxx,password=xxx,dir_mode=0777,file_mode=0777`
 
-Sie können auch überprüfen, ob diese Option verwendet wird, indem Sie den Befehl **sudo mount | grep cifs** ausführen und die Ausgabe überprüfen:
+Sie können auch überprüfen, ob korrekte Optionen verwendet werden, indem Sie den Befehl **sudo mount | grep cifs** ausführen und die Ausgabe überprüfen:
 
-`//mabiccacifs.file.core.windows.net/cifs on /cifs type cifs (rw,relatime,vers=3.0,sec=ntlmssp,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777,dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)`
+`//mabiccacifs.file.core.windows.net/cifs on /cifs type cifs
+(rw,relatime,vers=3.0,sec=ntlmssp,cache=strict,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777,
+dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)`
 
-Wenn die Option **serverino** nicht vorhanden ist, heben Sie die Einbindung von Azure Files auf, und binden Sie den Dienst mit ausgewählter Option **serverino** wieder ein.
-
-Ein weiterer Grund für langsame Leistung könnte deaktiviertes Caching sein. Um zu überprüfen, ob das Caching aktiviert ist, suchen Sie nach „cache=“.  *cache=none* gibt an, dass das Caching deaktiviert ist. Stellen Sie die Freigabe erneut bereit, entweder mit dem Standardbereitstellungsbefehl oder explizit durch das Hinzufügen der Option **cache=strict** zum Bereitstellungsbefehl, um sicherzustellen, dass das Standardcaching oder der Cachingmodus „strict“ aktiviert ist.
-
-<a id="error112"></a>
-## <a name="error-112---timeout-error"></a>Fehler 112 – Timeoutfehler
-
-Dieser Fehler weist auf Kommunikationsfehler hin, die das erneute Wiederherstellen einer TCP-Verbindung mit dem Server verhindern, wenn die Option zur zeitweiligen Einbindung verwendet wird (dies ist die Standardeinstellung).
-
-### <a name="cause"></a>Ursache
-
-Dieser Fehler kann durch ein Linux-Problem mit der erneuten Herstellung einer Verbindung oder durch andere Probleme verursacht werden, die eine erneute Verbindungsherstellung verhindern – z.B. durch Netzwerkfehler. Durch Festlegen einer ständigen Einbindung wird der Client gezwungen, zu warten, bis eine Verbindung hergestellt oder explizit unterbrochen wurde. Auf diese Weise lassen sich auch Fehler aufgrund von Netzwerktimeouts verhindern. Benutzer sollten sich jedoch darüber im Klaren sein, dass diese Einstellung zu unendlichen Wartevorgängen führen kann, und Verbindungen bei Bedarf anhalten.
-
-
-### <a name="workaround"></a>Problemumgehung
-
-Das Linux-Problem wurde gelöst, aber noch nicht in Linux-Distributionen portiert. Wenn der Fehler durch das Wiederverbindungsproblem in Linux verursacht wird, kann er durch Verhindern von Leerlaufzuständen vermieden werden. Speichern Sie zu diesem Zweck eine Datei in der Azure-Dateifreigabe, in die maximal alle 30 Sekunden geschrieben wird. Dabei muss es sich um einen Schreibvorgang handeln, wie z.B. die Umschreibung des Erstellungs-/Änderungsdatums in der Datei. Andernfalls erhalten Sie möglicherweise zwischengespeicherte Ergebnisse, und Ihr Vorgang kann die Verbindung möglicherweise nicht auslösen. Dies ist die Liste häufig verwendeter Linux-Kernel, die über diese und andere Korrekturen eine erneute Verbindung verfügen: 4.4.40+, 4.8.16+, 4.9.1+
+Wenn die Optionen „cache=strict“ oder „serverino“ nicht vorhanden sind, heben Sie die Bereitstellung von Azure Files aus, und stellen Sie sie wieder her, indem Sie den „mount“-Befehl aus der [Dokumentation](https://docs.microsoft.com/en-us/azure/storage/storage-how-to-use-files-linux#mount-the-file-share) ausführen und erneut überprüfen, dass der Eintrag „/etc/fstab“ die korrekten Optionen besitzt.
 
 <a id="webjobs"></a>
 

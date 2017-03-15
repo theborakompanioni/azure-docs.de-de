@@ -15,20 +15,28 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
-ms.openlocfilehash: 01fb45cc2d2323290427a08e3210fadf27f6cda8
+ms.sourcegitcommit: 2434762c2a1174a40d9c6daad6c317bc3ca8f374
+ms.openlocfilehash: 40d25726d31d2018785b77d169a8811c565316bf
+ms.lasthandoff: 02/23/2017
 
 
 ---
 # <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>So passen Sie das Azure API Management-Entwicklerportal mithilfe von Vorlagen an
-Azure API Management bietet eine Reihe von Anpassungsfeatures, mit denen Administratoren das [Aussehen und Verhalten des Entwicklerportals](api-management-customize-portal.md) sowie die Inhalte der Seiten im Entwicklerportal anpassen können. Zu diesem Zweck werden eine Reihe von Vorlagen verwendet, mit denen die Inhalte der Seiten selbst konfiguriert werden. Unter Verwendung dieser Vorlagen können Sie die Seiteninhalte mithilfe von [DotLiquid](http://dotliquidmarkup.org/)-Syntax und verschiedenen lokalisierten Zeichenfolgenressourcen, Symbolen und Seitensteuerelementen an Ihre Bedürfnisse anpassen.
+
+Es gibt drei grundlegende Möglichkeiten, das Entwicklerportal in Azure API Management anzupassen:
+
+* [Bearbeiten des Inhalts von statischen Seiten und Seitenlayoutelementen][modify-content-layout]
+* [Aktualisieren der Stile, die für Seitenelemente im gesamten Entwicklerportal verwendet werden][customize-styles]
+* [Ändern der Vorlagen, die für durch das Portal generierte Seiten verwendet werden][portal-templates] (in diesem Leitfaden erläutert)
+
+Vorlagen dienen zum Anpassen des Inhalts von systemgenerierten Entwicklerportalseiten (z.B. API-Dokumentation, Produkte, Benutzerauthentifizierung usw.). Sie können die Seiteninhalte mithilfe von [DotLiquid](http://dotliquidmarkup.org/)-Syntax und verschiedenen lokalisierten Zeichenfolgenressourcen, Symbolen und Seitensteuerelementen flexibel an Ihre Bedürfnisse anpassen.
 
 ## <a name="developer-portal-templates-overview"></a>Übersicht über die Vorlagen im Entwicklerportal
-Die Vorlagen des Entwicklerportals werden im Entwicklerportal von Administratoren der API Management-Dienstinstanz verwaltet. Zum Verwalten von Entwicklervorlagen wechseln Sie im Azure-Portal zu Ihrer API Management-Dienstinstanz. Klicken Sie dort auf der Symbolleiste auf **Entwicklerportal**.
+Die Bearbeitung von Vorlagen erfolgt über das **Entwicklerportal**, während Sie als Administrator angemeldet sind. Öffnen Sie hierzu zuerst das Azure-Portal, und klicken Sie in der Dienstsymbolleiste Ihrer API Management-Instanz auf **Herausgeberportal**.
 
-![Entwicklerportal][api-management-browse]
+![Herausgeberportal][api-management-management-console]
 
-Wenn Sie sich bereits im Herausgeberportal befinden, klicken Sie auf **Entwicklerportal**, um auf das Entwicklerportal zuzugreifen.
+Klicken Sie anschließend oben rechts auf **Entwicklerportal**. 
 
 ![Entwicklerportal: Menü][api-management-developer-portal-menu]
 
@@ -181,6 +189,9 @@ Die wiederhergestellten Vorlagen müssen dann einzeln oder gemeinsam veröffentl
 ## <a name="next-steps"></a>Nächste Schritte
 Eine Referenz zu Vorlagen im Entwicklerportal, Zeichenfolgenressourcen, Symbolen und Seitensteuerelementen finden Sie unter [API Management developer portal templates reference (Referenz zu Vorlagen im API Management-Entwicklerportal)](api-management-developer-portal-templates-reference.md).
 
+[modify-content-layout]: api-management-modify-content-layout.md
+[customize-styles]: api-management-customize-styles.md
+[portal-templates]: api-management-developer-portal-templates.md
 
 [api-management-customize-menu]: ./media/api-management-developer-portal-templates/api-management-customize-menu.png
 [api-management-templates-menu]: ./media/api-management-developer-portal-templates/api-management-templates-menu.png
@@ -188,6 +199,7 @@ Eine Referenz zu Vorlagen im Entwicklerportal, Zeichenfolgenressourcen, Symbolen
 [api-management-template]: ./media/api-management-developer-portal-templates/api-management-template.png
 [api-management-template-data]: ./media/api-management-developer-portal-templates/api-management-template-data.png
 [api-management-developer-portal-menu]: ./media/api-management-developer-portal-templates/api-management-developer-portal-menu.png
+[api-management-management-console]: ./media/api-management-developer-portal-templates/api-management-management-console.png
 [api-management-browse]: ./media/api-management-developer-portal-templates/api-management-browse.png
 [api-management-user-profile-templates]: ./media/api-management-developer-portal-templates/api-management-user-profile-templates.png
 [api-management-save-template]: ./media/api-management-developer-portal-templates/api-management-save-template.png
@@ -206,10 +218,5 @@ Eine Referenz zu Vorlagen im Entwicklerportal, Zeichenfolgenressourcen, Symbolen
 
 
 
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

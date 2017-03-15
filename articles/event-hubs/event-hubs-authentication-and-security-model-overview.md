@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/30/2016
+ms.date: 03/07/2017
 ms.author: sethm;clemensv
 translationtype: Human Translation
-ms.sourcegitcommit: 05ca343cfdfc602759eb3ea30a7186a0bb47bd74
-ms.openlocfilehash: 3f20a19c212c082aa766cc2bd67e938aaabf715e
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 930b3da630b88eecdec56e86d621daee53070257
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -28,7 +29,7 @@ Das Sicherheitsmodell von Azure Event Hubs erfüllt die folgenden Voraussetzunge
 * Ein nicht autorisiertes Gerät kann vom Senden von Daten an einen Event Hub blockiert werden.
 
 ## <a name="device-authentication"></a>Geräte-Authentifizierung
-Das Event Hubs-Sicherheitsmodell basiert auf einer Kombination aus [Shared Access Signature (SAS)](../service-bus-messaging/service-bus-shared-access-signature-authentication.md)-Token und *Ereignisherausgebern*. Ein Ereignisherausgeber definiert einen virtuellen Endpunkt für einen Event Hub. Der Herausgeber kann nur zum Senden von Nachrichten an einen Event Hub verwendet werden. Es ist nicht möglich, von einem Herausgeber Nachrichten zu empfangen.
+Das Event Hubs-Sicherheitsmodell basiert auf einer Kombination aus [Shared Access Signature (SAS)](../service-bus-messaging/service-bus-sas.md)-Token und *Ereignisherausgebern*. Ein Ereignisherausgeber definiert einen virtuellen Endpunkt für einen Event Hub. Der Herausgeber kann nur zum Senden von Nachrichten an einen Event Hub verwendet werden. Es ist nicht möglich, von einem Herausgeber Nachrichten zu empfangen.
 
 In der Regel setzt ein Event Hub einen Herausgeber pro Gerät ein. Alle Nachrichten, die an einen der Herausgeber eines Event Hubs gesendet werden, werden in die Warteschlange innerhalb dieses Event Hubs eingereiht. Herausgeber ermöglichen die präzise Access Control und Zugriffsdrosselung.
 
@@ -102,17 +103,12 @@ In Ermangelung einer SAS-Authentifizierung für einzelne Consumergruppen können
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Event Hubs finden Sie unter den folgenden Themen:
 
-* [Übersicht über Event Hubs]
-* [SAS-Übersicht]
-* Eine vollständige [Beispielanwendung mit Verwendung von Event Hubs]
+* [Übersicht über Event Hubs]
+* [Overview of Shared Access Signatures (Übersicht von Shared Access Signatures)]
+* [Sample applications that use Event Hubs (Beispielanwendung mit Verwendung von Event Hubs)]
 
-[Übersicht über Event Hubs]: event-hubs-overview.md
-[Beispielanwendung mit Verwendung von Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
-[SAS-Übersicht]: ../service-bus-messaging/service-bus-sas-overview.md
-
-
-
-
-<!--HONumber=Feb17_HO3-->
+[Übersicht über Event Hubs]: event-hubs-what-is-event-hubs.md
+[Sample applications that use Event Hubs (Beispielanwendung mit Verwendung von Event Hubs)]: https://github.com/Azure/azure-event-hubs/tree/master/samples
+[Overview of Shared Access Signatures (Übersicht von Shared Access Signatures)]: ../service-bus-messaging/service-bus-sas.md
 
 

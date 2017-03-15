@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/08/2017
+ms.date: 02/28/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: fda7455320e1c043f1f5aa2a92b72329fc20e76a
-ms.openlocfilehash: b4aca222974e3165c9131134a8e1a2171b3d5088
+ms.sourcegitcommit: feb6e388a98cd6e133d010cada97f895140c3f4f
+ms.openlocfilehash: ee9a3b605c5445007f880a37e96c2326dd7c9b89
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -40,7 +41,7 @@ Der Scheduler selbst wird immer ausgeführt, kann jedoch so konfiguriert werden,
 ## <a name="scheduler-configuration"></a>Schedulerkonfiguration
 Um die aktuellen Konfigurationseinstellungen anzuzeigen, wechseln Sie zu PowerShell, und führen Sie `Get-ADSyncScheduler`aus. Die Ausgabe ähnelt der folgenden Abbildung:
 
-![GetSyncScheduler](./media/active-directory-aadconnectsync-feature-scheduler/getsynccyclesettings.png)
+![GetSyncScheduler](./media/active-directory-aadconnectsync-feature-scheduler/getsynccyclesettings2016.png)
 
 Wenn beim Ausführen dieses Cmdlets die Meldung angezeigt wird, dass der **** Befehl oder das Cmdlet zur Synchronisierung nicht verfügbar ist, ist das PowerShell-Modul nicht geladen. Dieses Problem kann auftreten, wenn Sie Azure AD Connect auf einem Domänencontroller oder einem Server mit höherer PowerShell-Einschränkungsebene ausführen als in den Standardeinstellungen festgelegt. Wenn dieser Fehler angezeigt wird, führen Sie `Import-Module ADSync` aus, um das Cmdlet verfügbar zu machen.
 
@@ -52,7 +53,8 @@ Wenn beim Ausführen dieses Cmdlets die Meldung angezeigt wird, dass der **** Be
 * **PurgeRunHistoryInterval**. Der Zeitraum, für den die Vorgangsprotokolle aufbewahrt werden sollen. Diese Protokolle können im Synchronization Service Manager überprüft werden. Standardmäßig werden diese Protokolle sieben Tage lang gespeichert.
 * **SyncCycleEnabled**. Gibt an, ob der Scheduler die Import-, Synchronisierungs- und Exportprozesse als Teil seiner Operation ausführt.
 * **MaintenanceEnabled**. Zeigt an, ob der Wartungsprozess aktiviert ist. Dabei werden die Zertifikate/Schlüssel aktualisiert und das Vorgangsprotokoll bereinigt.
-* **IsStagingModeEnabled**. Zeigt an, ob der [Stagingmodus](active-directory-aadconnectsync-operations.md#staging-mode) aktiviert ist. Wenn diese Einstellung aktiviert ist, unterdrückt sie die Ausführung der Exporte. Der Import und die Synchronisierung werden jedoch weiterhin ausgeführt.
+* **StagingModeEnabled**. Zeigt an, ob der [Stagingmodus](active-directory-aadconnectsync-operations.md#staging-mode) aktiviert ist. Wenn diese Einstellung aktiviert ist, unterdrückt sie die Ausführung der Exporte. Der Import und die Synchronisierung werden jedoch weiterhin ausgeführt.
+* **SchedulerSuspended**. Während eines Upgrades von Connect festgelegt, um den Scheduler vorübergehend am Ausführen zu hindern.
 
 Sie können einige dieser Einstellungen mit `Set-ADSyncScheduler`ändern. Folgende Parameter können geändert werden:
 
@@ -61,6 +63,8 @@ Sie können einige dieser Einstellungen mit `Set-ADSyncScheduler`ändern. Folgen
 * PurgeRunHistoryInterval
 * SyncCycleEnabled
 * MaintenanceEnabled
+
+In früheren Builds von Azure AD Connect **isStagingModeEnabled** wurde im Set-ADSyncScheduler verfügbar gemacht. Es wird zum Festlegen dieser Eigenschaft **nicht unterstützt**. Die Eigenschaft **SchedulerSuspended** sollte nur von Connect geändert werden. Es wird **nicht unterstützt** dies direkt mit PowerShell festzulegen.
 
 Die Konfiguration des Schedulers wird in Azure AD gespeichert. Wenn Sie über einen Stagingserver verfügen, wirken sich alle Änderungen am primären Server auch auf den Stagingserver aus (mit Ausnahme von „IsStagingModeEnabled“).
 
@@ -169,9 +173,4 @@ Wenn Sie den Installations-Assistenten starten, wird der Scheduler vorübergehen
 Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-whatis.md) .
 
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

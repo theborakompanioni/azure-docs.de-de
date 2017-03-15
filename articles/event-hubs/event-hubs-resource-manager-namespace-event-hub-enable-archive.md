@@ -12,16 +12,17 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 11/21/2016
+ms.date: 03/07/2017
 ms.author: shvija;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: aa7244849f6286e8ef9f9785c133b4c326193c12
-ms.openlocfilehash: fffa437acabc2f26cbe285be9aec47c89232948c
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: cab8a4de9d8d98d77094da5d73f29237829e743a
+ms.lasthandoff: 03/08/2017
 
 
 ---
 # <a name="create-an-event-hubs-namespace-with-event-hub-and-enable-archive-using-an-azure-resource-manager-template"></a>Erstellen eines Event Hubs-Namespace mit Event Hub und Aktivieren von Archive mithilfe einer Azure Resource Manager-Vorlage
-In diesem Artikel wird beschrieben, wie Sie eine Azure Resource Manager-Vorlage verwenden, die einen Event Hubs-Namespace mit einem Event Hub erstellt und Archive auf Ihrem Event Hub aktiviert. Sie erfahren, wie Sie definieren, welche Ressourcen bereitgestellt werden und wie Sie Parameter definieren, die angegeben werden, wenn die Bereitstellung ausgeführt wird. Sie können diese Vorlage für Ihre eigenen Bereitstellungen verwenden oder Ihren Anforderungen anpassen.
+In diesem Artikel wird beschrieben, wie Sie eine Azure Resource Manager-Vorlage verwenden, die einen Namespace des Typs Event Hubs mit einem Event Hub erstellt und auch die Archivfunktion auf Ihrem Event Hub aktiviert. Der Artikel erklärt Ihnen, wie Sie definieren, welche Ressourcen bereitgestellt werden und wie Sie Parameter definieren, die angegeben werden, wenn die Bereitstellung ausgeführt wird. Sie können diese Vorlage für Ihre eigenen Bereitstellungen verwenden oder Ihren Anforderungen anpassen.
 
 Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen][Authoring Azure Resource Manager templates].
 
@@ -73,7 +74,7 @@ Der Name des im Event Hubs-Namespace erstellten Event Hubs.
 ```
 
 ### <a name="messageretentionindays"></a>messageRetentionInDays
-Die Anzahl der Tage, für die Nachrichten in Ihrem Event Hub beibehalten werden sollen. 
+Die Anzahl der Tage für die Beibehaltung von Nachrichten im Event Hub. 
 
 ```json
 "messageRetentionInDays":{
@@ -88,7 +89,7 @@ Die Anzahl der Tage, für die Nachrichten in Ihrem Event Hub beibehalten werden 
 ```
 
 ### <a name="partitioncount"></a>partitionCount
-Die Anzahl der Partitionen, die Sie in Ihrem Event Hub verwenden möchten.
+Die Anzahl der im Event Hub zu erstellenden Partitionen.
 
 ```json
 "partitionCount":{
@@ -133,7 +134,7 @@ Das Codierungsformat, das Sie zum Serialisieren der Ereignisdaten angeben.
 ```
 
 ### <a name="archivetime"></a>archiveTime
-Das Zeitintervall, in dem Archive beginnt, die Daten im Azure Blobspeicher zu archivieren.
+Das Zeitintervall, in dem Event Hubs-Archive beginnt, die Daten in Azure Blob Storage zu archivieren.
 
 ```json
 "archiveTime":{
@@ -148,7 +149,7 @@ Das Zeitintervall, in dem Archive beginnt, die Daten im Azure Blobspeicher zu ar
 ```
 
 ### <a name="archivesize"></a>archiveSize
-Das Größenintervall, in dem Archive beginnt, die Daten im Azure-Blobspeicher zu archivieren.
+Das Größenintervall, in dem Archive beginnt, die Daten in Azure Blob Storage zu archivieren.
 
 ```json
 "archiveSize":{
@@ -175,7 +176,7 @@ Archive benötigt eine Azure Storage- Kontoressourcen-ID, um die Archivierung in
 ```
 
 ### <a name="blobcontainername"></a>blobContainerName
-Der Blobcontainer, in dem Sie die Ereignisdaten archivieren möchten.
+Der BLOB-Container, in dem die Ereignisdaten archiviert werden sollen.
 
 ```json
  "blobContainerName":{
@@ -201,7 +202,7 @@ Die API-Version der Vorlage.
 ```
 
 ## <a name="resources-to-deploy"></a>Bereitzustellende Ressourcen
-Erstellt einen Namespace des Typs **EventHubs** mit einem Event Hub und aktiviert Archive.
+Erstellt einen Namespace des Typs **EventHubs** mit einem Event Hub und aktiviert auch Archive.
 
 ```json
 "resources":[  
@@ -257,7 +258,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -T
 ```
 
 ## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
-```
+```cli
 azure config mode arm
 
 azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-archive/azuredeploy.json][]
@@ -276,9 +277,4 @@ Weitere Informationen zu Event Hubs finden Sie unter den folgenden Links:
 [Event Hub and consumer group template]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-eventhubs-create-namespace-and-enable-archive/
 [Azure Resources Naming Conventions]: https://azure.microsoft.com/documentation/articles/guidance-naming-conventions/
 [Event Hub and enable Archive template]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-archive
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

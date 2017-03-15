@@ -14,18 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2017
 ms.author: arramac
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 788a1b9ef6a470c8f696228fd8fe51052c4f7007
-ms.openlocfilehash: 15c5a8be1097253e88af3a9f36b9067f0e2fbba3
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: d6292567bbf7afd71b21be3b236537c609c63644
+ms.lasthandoff: 03/07/2017
 
 
 ---
-# <a name="multi-master-database-architectures-with-azure-documentdb"></a>Architekturen mit mehreren Mastern mit Azure DocumentDB
+# <a name="multi-master-globally-replicated-database-architectures-with-documentdb"></a>Global replizierte Datenbank-Architekturen mit mehreren Mastern mit DocumentDB
 DocumentDB unterstützt die sofort einsetzbare [globale Replikation](documentdb-distribute-data-globally.md), bei der Sie Daten mit geringer Wartezeit beim Zugriff an allen Orten der Workload auf mehrere Regionen verteilen können. Dieses Modell wird häufig für Herausgeber-/Verbraucherworkloads verwendet, bei denen sich ein „Writer“ in einer bestimmten geografischen Region und global verteilte Leser in anderen Regionen (Leseregionen) befinden. 
 
 Sie können auch die Unterstützung für die globale Replikation von DocumentDB verwenden, um Anwendungen zu erstellen, bei denen Writer und Leser global verteilt sind. In diesem Dokument wird ein Muster beschrieben, das den lokalen Schreib- und Lesezugriff für verteilte Writer per Azure DocumentDB ermöglicht.
 
-## <a name="a-idexamplescenarioacontent-publishing---an-example-scenario"></a><a id="ExampleScenario"></a>Inhaltsveröffentlichung – Beispielszenario
+## <a id="ExampleScenario"></a>Inhaltsveröffentlichung – Beispielszenario
 Wir sehen uns ein Szenario aus der Praxis an, um zu beschreiben, wie Sie mit DocumentDB global verteilte Lese-/Schreibmuster mit mehreren Regionen bzw. Mastern verwenden können. Stellen Sie sich eine Plattform für die Inhaltsveröffentlichung vor, die auf DocumentDB basiert. Hier sind einige Anforderungen aufgeführt, die von dieser Plattform erfüllt werden müssen, um sowohl für Herausgeber als auch für Verbraucher für eine hohe Benutzerfreundlichkeit zu sorgen.
 
 * Autoren und Abonnenten sind weltweit verteilt 
@@ -39,7 +41,7 @@ Wenn wir von Millionen von Verbrauchern und Herausgebern mit Milliarden von Arti
 
 Weitere Informationen zur Partitionierung und zu Partitionsschlüsseln finden Sie unter [Partitionieren und Skalieren von Daten in DocumentDB](documentdb-partition-data.md).
 
-## <a name="a-idmodelingnotificationsamodeling-notifications"></a><a id="ModelingNotifications"></a>Modellieren von Benachrichtigungen
+## <a id="ModelingNotifications"></a>Modellieren von Benachrichtigungen
 Benachrichtigungen sind Datenfeeds für einen bestimmten Benutzer. Daher gelten die Zugriffsmuster für Benachrichtigungsdokumente immer im Kontext eines einzelnen Benutzers. Beispielsweise „posten Sie eine Benachrichtigung für einen Benutzer“ oder „rufen alle Benachrichtigungen für einen bestimmten Benutzer ab“. Die optimale Wahl eines Partitionierungsschlüssels für diesen Typ wäre also `UserId`.
 
     class Notification 
@@ -66,7 +68,7 @@ Benachrichtigungen sind Datenfeeds für einen bestimmten Benutzer. Daher gelten 
         public string ArticleId { get; set; } 
     }
 
-## <a name="a-idmodelingsubscriptionsamodeling-subscriptions"></a><a id="ModelingSubscriptions"></a>Modellieren von Abonnements
+## <a id="ModelingSubscriptions"></a>Modellieren von Abonnements
 Abonnements können für verschiedene Kriterien erstellt werden, z.B. eine bestimmte Kategorie von gewünschten Artikeln oder einen bestimmten Herausgeber. Daher ist `SubscriptionFilter` eine gute Wahl für den Partitionsschlüssel.
 
     class Subscriptions 
@@ -89,7 +91,7 @@ Abonnements können für verschiedene Kriterien erstellt werden, z.B. eine besti
         } 
     }
 
-## <a name="a-idmodelingarticlesamodeling-articles"></a><a id="ModelingArticles"></a>Modellieren von Artikeln
+## <a id="ModelingArticles"></a>Modellieren von Artikeln
 Nachdem ein Artikel über Benachrichtigungen identifiziert wurde, basieren die nachfolgenden Abfragen normalerweise auf der `ArticleId`. Die Wahl von `ArticleID` als Partitionsschlüssel ermöglicht daher die beste Verteilung für die Speicherung von Artikeln in einer DocumentDB-Sammlung. 
 
     class Article 
@@ -118,7 +120,7 @@ Nachdem ein Artikel über Benachrichtigungen identifiziert wurde, basieren die n
         //... 
     }
 
-## <a name="a-idmodelingreviewsamodeling-reviews"></a><a id="ModelingReviews"></a>Modellieren von Rezensionen
+## <a id="ModelingReviews"></a>Modellieren von Rezensionen
 Wie Artikel auch, werden Rezensionen meist in Zusammenhang mit einem Artikel geschrieben und gelesen. Wenn Sie `ArticleId` als Partitionsschlüssel wählen, erzielen Sie die beste Verteilung und einen effizienten Zugriff für die Rezensionen eines Artikels. 
 
     class Review 
@@ -144,7 +146,7 @@ Wie Artikel auch, werden Rezensionen meist in Zusammenhang mit einem Artikel ges
         public int Rating { get; set; } }
     }
 
-## <a name="a-iddataaccessmethodsadata-access-layer-methods"></a><a id="DataAccessMethods"></a>Datenzugriffsschicht-Methoden
+## <a id="DataAccessMethods"></a>Datenzugriffsschicht-Methoden
 Nun sehen wir uns die wichtigsten Methoden für den Datenzugriff an, die wir implementieren müssen. Dies ist die Liste mit den Methoden, die für `ContentPublishDatabase` benötigt werden:
 
     class ContentPublishDatabase 
@@ -160,7 +162,7 @@ Nun sehen wir uns die wichtigsten Methoden für den Datenzugriff an, die wir imp
         public async Task<IEnumerable<Review>> ReadReviewsAsync(string articleId); 
     }
 
-## <a name="a-idarchitectureadocumentdb-account-configuration"></a><a id="Architecture"></a>Konfiguration des DocumentDB-Kontos
+## <a id="Architecture"></a>Konfiguration des DocumentDB-Kontos
 Zum Sicherstellen von lokalen Lese- und Schreibvorgängen müssen wir die Daten nicht nur nach dem Partitionsschlüssel partitionieren, sondern auch basierend auf dem geografischen Zugriffsmuster für die Regionen. Das Modell basiert darauf, dass für jede Region ein Azure DocumentDB-Datenbankkonto mit Georeplikation verwendet wird. Bei zwei Regionen lautet die Einrichtung für Schreibvorgänge in mehreren Regionen beispielsweise wie folgt:
 
 | Kontoname | Schreibregion | Leseregion |
@@ -200,7 +202,7 @@ Bei der obigen Einrichtung kann die Datenzugriffsschicht alle Schreibvorgänge b
 | `contentpubdatabase-europe.documents.azure.com` | `North Europe` |`West US` |`Southeast Asia` |
 | `contentpubdatabase-asia.documents.azure.com` | `Southeast Asia` |`North Europe` |`West US` |
 
-## <a name="a-iddataaccessimplementationadata-access-layer-implementation"></a><a id="DataAccessImplementation"></a>Implementierung der Datenzugriffsschicht
+## <a id="DataAccessImplementation"></a>Implementierung der Datenzugriffsschicht
 Wir sehen uns nun die Implementierung der Datenzugriffsschicht (DAL) für eine Anwendung mit zwei Schreibregionen an. Für die DAL müssen die folgenden Schritte implementiert werden:
 
 * Erstellen Sie für jedes Konto mehrere Instanzen von `DocumentClient`. Bei zwei Regionen weist jede DAL-Instanz ein `writeClient`- und ein `readClient`-Element auf. 
@@ -309,15 +311,10 @@ Zum Lesen von Benachrichtigungen und Rezensionen müssen Sie aus beiden Regionen
 
 Indem Sie einen guten Partitionierungsschlüssel und eine Partitionierung wählen, die auf einem statischen Konto basiert, können Sie also lokale Schreib- und Lesevorgänge in mehreren Regionen mit Azure DocumentDB erreichen.
 
-## <a name="a-idnextstepsanext-steps"></a><a id="NextSteps"></a>Nächste Schritte
+## <a id="NextSteps"></a>Nächste Schritte
 In diesem Artikel wurde beschrieben, wie Sie mit DocumentDB global verteilte Lese-/Schreibmuster für mehrere Regionen verwenden können, und als Beispiel wurde die Inhaltsveröffentlichung genutzt.
 
 * Informieren Sie sich, wie die [globale Verteilung](documentdb-distribute-data-globally.md) von DocumentDB unterstützt wird.
 * Informieren Sie sich über [automatische und manuelle Failover in Azure DocumentDB](documentdb-regional-failovers.md).
 * Informieren Sie sich über die [globale Konsistenz mit DocumentDB](documentdb-consistency-levels.md).
 * Entwickeln Sie Ihre Umgebung mit mehreren Regionen mit dem [Azure DocumentDB-SDK](documentdb-developing-with-multiple-regions.md).
-
-
-<!--HONumber=Jan17_HO4-->
-
-

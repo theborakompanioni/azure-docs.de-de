@@ -10,15 +10,9 @@
 | Reservierte IPs pro Abonnement |20 |100 |
 | Zertifikate für gehostete Dienste pro Abonnement |400 |400 |
 | [Affinitätsgruppen](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) pro Abonnement |256 |256 |
-| [Batch](https://azure.microsoft.com/services/batch/) -Konten pro Region und Abonnement |1 |50 |
 | Warnungsregeln pro Abonnement |250 |250 |
 
 <sup>1</sup> Zusätzliche kleine Instanzen zählen als ganzer Prozessorkern im Sinn des Limits, obwohl nur ein Teil eines Kerns verwendet wird.
 
 <sup>2</sup>Dies umfasst sowohl Standard- als auch Premium-Speicherkonten. Wenn Sie mehr als 200 Speicherkonten benötigen, stellen Sie eine Anfrage an den [Azure-Support](https://azure.microsoft.com/support/faq/). Das Azure Storage-Team überprüft Ihr Geschäftsszenario und kann bis zu 250 Speicherkonten genehmigen. 
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

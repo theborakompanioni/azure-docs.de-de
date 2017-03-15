@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/05/2016
+ms.date: 02/27/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: c4983024e5f5902620c0be7b422bc3d1eaf4a36f
-ms.openlocfilehash: 8142454e1ee8bf439e9186ac94a3feb05b10ae69
+ms.sourcegitcommit: 2924309737f2bc631e4e4f764bc7e8473353e865
+ms.openlocfilehash: 053f6c292f942da6565b24ef5eecdabf85f15525
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -35,7 +36,7 @@ Das in diesem Tutorial beschriebene Szenario besteht aus den folgenden Bausteine
 3. Konfigurieren der Benutzerbereitstellung
 4. Zuweisen von Benutzern
 
-![Szenario](./media/active-directory-saas-itrp-tutorial/IC775551.png "Scenario")
+![Szenario](./media/active-directory-saas-itrp-tutorial/IC775551.png "Szenario")
 
 ## <a name="enabling-the-application-integration-for-itrp"></a>Aktivieren der Anwendungsintegration für ITRP
 In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für ITRP aktivieren.
@@ -49,19 +50,19 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für ITR
 
 3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
    
-    ![Anwendungen](./media/active-directory-saas-itrp-tutorial/IC700994.png "Applications")
+    ![Anwendungen](./media/active-directory-saas-itrp-tutorial/IC700994.png "Anwendungen")
 
 4. Klicken Sie unten auf der Seite auf **Hinzufügen** .
    
-    ![Anwendung hinzufügen](./media/active-directory-saas-itrp-tutorial/IC749321.png "Add application")
+    ![Anwendung hinzufügen](./media/active-directory-saas-itrp-tutorial/IC749321.png "Anwendung hinzufügen")
 
 5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
    
-    ![Anwendung aus dem Katalog hinzufügen](./media/active-directory-saas-itrp-tutorial/IC749322.png "Add an application from gallerry")
+    ![Anwendung aus dem Katalog hinzufügen](./media/active-directory-saas-itrp-tutorial/IC749322.png "Anwendung aus dem Katalog hinzufügen")
 
 6. Geben Sie im **Suchfeld** als Suchbegriff **ITRP** ein.
    
-    ![Anwendungskatalog](./media/active-directory-saas-itrp-tutorial/IC775565.png "Application Gallery")
+    ![Anwendungskatalog](./media/active-directory-saas-itrp-tutorial/IC775565.png "Anwendungskatalog")
 
 7. Wählen Sie im Ergebnisbereich **ITRP** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
    
@@ -76,19 +77,19 @@ Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [Abrufen de
 ### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>So konfigurieren Sie einmaliges Anmelden
 1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **ITRP** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-itrp-tutorial/IC771709.png "Configure single sign-on")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-itrp-tutorial/IC771709.png "Einmaliges Anmelden konfigurieren")
 
 2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei ITRP anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-itrp-tutorial/IC775567.png "Configure Single Sign-On")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-itrp-tutorial/IC775567.png "Einmaliges Anmelden konfigurieren")
 
 3. Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **ITRP-Anmelde-URL** die URL im Format *https://\<Mandantenname\>.ITRP.com* ein, und klicken Sie dann auf **Weiter**.
    
-    ![App-URL konfigurieren](./media/active-directory-saas-itrp-tutorial/IC775568.png "Configure App URL")
+    ![App-URL konfigurieren](./media/active-directory-saas-itrp-tutorial/IC775568.png "App-URL konfigurieren")
 
 4. Klicken Sie zum Herunterladen des Zertifikats auf der Seite **Einmaliges Anmelden konfigurieren für ITRP** auf **Zertifikat herunterladen**, und speichern Sie die Zertifikatsdatei lokal unter **c:\\ITRP.cer**.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-itrp-tutorial/IC775569.png "Configure Single Sign-On")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-itrp-tutorial/IC775569.png "Einmaliges Anmelden konfigurieren")
 
 5. Melden Sie sich in einem anderen Webbrowserfenster bei der ITRP-Unternehmenswebsite als Administrator an.
 
@@ -98,13 +99,13 @@ Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [Abrufen de
 
 7. Klicken Sie im linken Navigationsbereich auf **Einmaliges Anmelden**.
    
-    ![Einmaliges Anmelden](./media/active-directory-saas-itrp-tutorial/IC775571.png "Single Sign-On")
+    ![Einmaliges Anmelden](./media/active-directory-saas-itrp-tutorial/IC775571.png "des einmaligen Anmeldens")
 
 8. Führen Sie im Konfigurationsabschnitt „Einmaliges Anmelden“ die folgenden Schritte aus:
    
-    ![Einmaliges Anmelden](./media/active-directory-saas-itrp-tutorial/IC775572.png "Single Sign-On")
+    ![Einmaliges Anmelden](./media/active-directory-saas-itrp-tutorial/IC775572.png "des einmaligen Anmeldens")
     
-    ![Einmaliges Anmelden](./media/active-directory-saas-itrp-tutorial/IC775573.png "Single Sign-On")
+    ![Einmaliges Anmelden](./media/active-directory-saas-itrp-tutorial/IC775573.png "des einmaligen Anmeldens")
    
     a. Klicken Sie auf **Aktivieren**.
    
@@ -123,7 +124,7 @@ Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [Abrufen de
 
 9. Bestätigen Sie im klassischen Azure-Portal die Konfiguration der einmaligen Anmeldung, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-itrp-tutorial/IC775574.png "Configure Single Sign-On")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-itrp-tutorial/IC775574.png "Einmaliges Anmelden konfigurieren")
    
 ## <a name="configuring-user-provisioning"></a>Konfigurieren der Benutzerbereitstellung
 
@@ -139,7 +140,7 @@ Im Fall von ITRP ist die Bereitstellung eine manuelle Aufgabe.
 
 3. Wählen Sie im Popupmenü die Option **Personen**aus.
    
-    ![Personen](./media/active-directory-saas-itrp-tutorial/IC775587.png "People")
+    ![Personen](./media/active-directory-saas-itrp-tutorial/IC775587.png "Personen")
 
 4. Klicken Sie auf **Neue Person hinzufügen** (+).
    
@@ -147,7 +148,7 @@ Im Fall von ITRP ist die Bereitstellung eine manuelle Aufgabe.
 
 5. Führen Sie im Dialogfeld „Neue Person hinzufügen“ die folgenden Schritte aus:
    
-    ![Benutzer](./media/active-directory-saas-itrp-tutorial/IC775577.png "User")
+    ![Benutzer](./media/active-directory-saas-itrp-tutorial/IC775577.png "Benutzer")
    
     a. Geben Sie den **Namen** und die **E-Mail-Adresse** eines gültigen AAD-Kontos ein, das Sie bereitstellen möchten.
    
@@ -166,17 +167,12 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
 
 2. Klicken Sie auf der Anwendungsintegrationsseite für **ITRP** auf **Benutzer zuweisen**.
    
-    ![Benutzer zuweisen](./media/active-directory-saas-itrp-tutorial/IC775588.png "Assign Users")
+    ![Zuweisen von Benutzern](./media/active-directory-saas-itrp-tutorial/IC775588.png "Zuweisen von Benutzern")
 
 3. Wählen Sie den Testbenutzer aus, klicken Sie auf **Zuweisen** und anschließend auf **Ja**, um die Zuweisung zu bestätigen.
    
-    ![Ja](./media/active-directory-saas-itrp-tutorial/IC767830.png "Yes")
+    ![Ja](./media/active-directory-saas-itrp-tutorial/IC767830.png "Ja")
 
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

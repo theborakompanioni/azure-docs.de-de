@@ -1,6 +1,6 @@
 ---
-title: "Konfigurieren von Tasks, die von anderen Tasks abhängen – Azure Batch | Microsoft-Dokumentation"
-description: "Erstellen Sie Tasks, die vom erfolgreichen Abschluss anderer Tasks abhängig sind, um Vorgänge vom MapReduce-Typ und ähnliche Big Data-Workloads in Azure Batch zu verarbeiten."
+title: "Verwenden von Taskabhängigkeiten zum Ausführen von Tasks basierend auf dem Abschluss anderer Tasks – Azure Batch | Microsoft Docs"
+description: "Erstellen Sie Tasks, die vom Abschluss anderer Tasks abhängig sind, um Vorgänge vom MapReduce-Typ und ähnliche Big Data-Workloads in Azure Batch zu verarbeiten."
 services: batch
 documentationcenter: .net
 author: tamram
@@ -12,15 +12,18 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 01/23/2017
+ms.date: 02/27/2017
 ms.author: tamram
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: bf22cd3426e936c8d74377f59443e5e1a6834286
-ms.openlocfilehash: 32293e15b6f610a3613d6b666bdd0eea0495b2b8
+ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
+ms.openlocfilehash: d7cca5d71d3db45599b47328755c53a023e9c4ae
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="task-dependencies-in-azure-batch"></a>Taskabhängigkeiten in Azure Batch
+# <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>Erstellen von Taskabhängigkeiten zum Ausführen von Tasks, die von anderen Tasks abhängen
+
 Das Feature für Taskabhängigkeiten in Azure Batch eignet sich hervorragend für die Verarbeitung der folgenden Workloads und Aufträge:
 
 * Workloads vom Typ MapReduce in der Cloud.
@@ -166,9 +169,4 @@ Der Beitrag [Installing applications and staging data on Batch compute nodes][fo
 [1]: ./media/batch-task-dependency/01_one_to_one.png "Diagramm:&1;:1-Abhängigkeit"
 [2]: ./media/batch-task-dependency/02_one_to_many.png "Diagramm:&1;:n-Abhängigkeit"
 [3]: ./media/batch-task-dependency/03_task_id_range.png "Diagramm: Abhängigkeit vom Task-ID-Bereich"
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

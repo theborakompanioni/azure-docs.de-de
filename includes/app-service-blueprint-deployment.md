@@ -4,10 +4,4 @@
 * [Veröffentlichung und rollenbasierte Zugriffssteuerung (Role Based Access Control, RBAC)](https://azure.microsoft.com/blog/rbac-and-azure-websites-publishing/)
 
 ## <a name="videos"></a>Videos
-* [Automatisieren des Bereitstellungsworkflows für Releaseverwaltung](/documentation/videos/azurecon-2015-manage-code-changes-to-web-apps-using-the-devops-features-of-azure-app-service-and-visual-studio-release-management/)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-
+* [Automatisieren des Bereitstellungsworkflows für Releaseverwaltung](https://azure.microsoft.com/resources/videos/azurecon-2015-manage-code-changes-to-web-apps-using-the-devops-features-of-azure-app-service-and-visual-studio-release-management/)

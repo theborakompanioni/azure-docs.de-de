@@ -16,26 +16,32 @@ ms.tgt_pltfrm: na
 ms.date: 02/08/2017
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: bf06b5623ca6bd6005cdde6fd587048ded6412dd
-ms.openlocfilehash: 3e33d1c815589fdb40af46f3c3410e037f77a34c
+ms.sourcegitcommit: 08682b7986cc2210ed21f254e2a9a63b5355e583
+ms.openlocfilehash: bfed40417d800e86de7ef437c42162b1e1a0d886
+ms.lasthandoff: 02/24/2017
 
 ---
 
 # <a name="scale-resource-levels-for-query-and-indexing-workloads-in-azure-search"></a>Skalieren von Ressourcenebenen für Abfrage und Indizierung von Arbeitslasten in Azure Search
 Nach dem [Auswählen eines Tarifs](search-sku-tier.md) und dem [Bereitstellen eines Suchdiensts](search-create-service-portal.md) kann im nächsten Schritt optional die Anzahl der von dem Dienst verwendeten Replikate oder Partitionen erhöht werden. Jeder Tarif bietet eine feste Anzahl von Abrechnungseinheiten. In diesem Artikel wird erläutert, wie Sie diese Einheiten für eine optimale Konfiguration zuordnen, bei der Ihre Anforderungen für die Abfrageausführung, Indizierung und Speicherung ausgeglichen sind.
 
-Die Ressourcenkonfiguration ist verfügbar, wenn Sie einen Dienst zum [Basic-Tarif](http://aka.ms/azuresearchbasic) oder zu einem der [Standard-Tarife](search-limits-quotas-capacity.md) bereitstellen. Bei abrechenbaren Diensten wie diesen Tarifen wird die Kapazität in Abstufungen von *Sucheinheiten* (Search Units, SUs) erworben, wobei jede Partition und jedes Replikat jeweils als einzelne SU zählt. Bei Verwendung von weniger Sucheinheiten fällt die Rechnung entsprechend niedriger aus. Die Abrechnung ist aktiviert, solange der Dienst bereitgestellt wird. Wenn Sie einen Dienst vorübergehend nicht verwenden und eine Abrechnung vermeiden möchten, müssen Sie den Dienst löschen und später bei Bedarf neu erstellen.
+Die Ressourcenkonfiguration ist verfügbar, wenn Sie einen Dienst zum [Basic-Tarif](http://aka.ms/azuresearchbasic) oder zu einem der [Standard-Tarife](search-limits-quotas-capacity.md) bereitstellen. Bei abrechenbaren Diensten wie diesen Tarifen wird die Kapazität in Abstufungen von *Sucheinheiten* (Search Units, SUs) erworben, wobei jede Partition und jedes Replikat jeweils als einzelne SU zählt. 
+
+Bei Verwendung von weniger Sucheinheiten fällt die Rechnung entsprechend niedriger aus. Die Abrechnung ist aktiviert, solange der Dienst bereitgestellt wird. Wenn Sie einen Dienst vorübergehend nicht verwenden und eine Abrechnung vermeiden möchten, müssen Sie den Dienst löschen und später bei Bedarf neu erstellen.
+
+> [!Note]
+> Durch Löschen eines Diensts werden alle darin befindlichen Elemente gelöscht. Es gibt keine Möglichkeit in Azure Search, beibehaltene Suchdaten zu sichern und wiederherzustellen. Um einen vorhandenen Index in einem neuen Dienst erneut bereitzustellen, sollten Sie das Programm ausführen, das ursprünglich zum Erstellen und Laden des Index verwendet wurde. 
 
 ## <a name="terminology-partitions-and-replicas"></a>Terminologie: Partitionen und Replikate
 Ein Suchdienst basiert in erster Linie auf Partitionen und Replikaten.
 
-*Partitionen* stellen Indexspeicher und E/A für Lese-/Schreibvorgänge (beispielsweise bei der Neuerstellung oder Aktualisierung eines Index) bereit.
-
-*Replikate* sind Instanzen des Suchdiensts und dienen in erster Linie zum Lastenausgleich bei Abfragevorgängen. Jedes Replikat hostet jeweils eine Kopie eines Index. Wenn Sie über 12 Replikate verfügen, stehen für jeden im Dienst geladenen Index 12 Kopien zur Verfügung.
+| Ressource | Definition |
+|----------|------------|
+|*Partitionen* | Partitionen stellen Indexspeicher und E/A für Lese-/Schreibvorgänge (beispielsweise bei der Neuerstellung oder Aktualisierung eines Index) bereit.|
+|*Replikate* | Replikate sind Instanzen des Suchdiensts und dienen in erster Linie zum Lastenausgleich bei Abfragevorgängen. Jedes Replikat hostet jeweils eine Kopie eines Index. Wenn Sie über 12 Replikate verfügen, stehen für jeden im Dienst geladenen Index 12 Kopien zur Verfügung.|
 
 > [!NOTE]
 > Welche Indizes auf einem Replikat ausgeführt werden, ist nicht direkt beeinflussbar. Eine Kopie der einzelnen Indizes jedes Replikats ist Teil der Dienstarchitektur.
->
 >
 
 ## <a name="how-to-allocate-partitions-and-replicas"></a>Gewusst wie: Zuordnen von Partitionen und Replikaten
@@ -122,9 +128,4 @@ SUs, Preise und Kapazität werden auf der Azure-Website ausführlich erläutert.
 Die Formel zum Berechnen der Anzahl der erforderlichen SUs für bestimmte Kombinationen ergibt sich aus dem Produkt der Replikate und Partitionen: (R x P = SU). Beispielsweise werden drei Replikate multipliziert mit drei Partitionen als neun SUs abgerechnet.
 
 Die Kosten pro SU sind durch den Tarif vorgegeben. Der Kostensatz pro SU für den Basic-Tarif ist dabei niedriger als für den Standard-Tarif. Die Preise für die einzelnen Tarife finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/search/).
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

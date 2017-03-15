@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 11/14/2016
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 1eca8ece0fdefa711dd31ebcddd720d86b8f91b0
-ms.openlocfilehash: 08d4e2044a5ef8fde073c37ea15c6388d2ea5b4e
+ms.sourcegitcommit: d4a08f7eec5f57b06d87d13abe46942ddc24b482
+ms.openlocfilehash: d1909225a950b961491d3fe426f1e0d6aa5bdd53
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -30,39 +31,39 @@ Bevor Sie mit den Aufgaben in diesem Artikel beginnen, müssen Sie Folgendes sic
 * [Installieren Sie die Runtime, das SDK und die Tools](service-fabric-get-started.md). Dabei wird auch das PowerShell-Modul **ServiceFabric** installiert.
 * [Aktivieren Sie die PowerShell-Skriptausführung](service-fabric-get-started.md#enable-powershell-script-execution).
 * Starten Sie einen lokalen Cluster.  Öffnen Sie ein neues PowerShell-Fenster als Administrator, und führen Sie das Clustersetupskript aus dem SDK-Ordner aus: `& "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1"`
-* Bevor Sie die in diesem Artikel aufgeführten PowerShell-Befehle ausführen, stellen Sie zuerst mit [**Connect-ServiceFabricCluster**](https://docs.microsoft.com/powershell/servicefabric/vlatest/connect-servicefabriccluster) eine Verbindung mit dem lokalen Service Fabric-Cluster her: `Connect-ServiceFabricCluster localhost:19000`
+* Bevor Sie die in diesem Artikel aufgeführten PowerShell-Befehle ausführen, stellen Sie zuerst mit [Connect-ServiceFabricCluster](/powershell/servicefabric/vlatest/connect-servicefabriccluster) eine Verbindung mit dem lokalen Service Fabric-Cluster her: `Connect-ServiceFabricCluster localhost:19000`
 * Die folgenden Aufgaben erfordern ein Anwendungspaket der Version 1 für die Bereitstellung und ein Anwendungspaket der Version 2 für das Upgrade. Laden Sie die [**WordCount**-Beispielanwendung](http://aka.ms/servicefabricsamples) (aus den Beispielen für die ersten Schritte) herunter. Erstellen und packen Sie die Anwendung in Visual Studio, indem Sie im Projektmappen-Explorer mit der rechten Maustaste auf **WordCount** klicken und **Paket** auswählen. Kopieren Sie das Paket der Version 1 in `C:\ServiceFabricSamples\Services\WordCount\WordCount\pkg\Debug` nach `C:\Temp\WordCount`. Kopieren Sie `C:\Temp\WordCount` nach `C:\Temp\WordCountV2`, um das Anwendungspaket der Version 2 für das Upgrade zu erstellen. Öffnen Sie `C:\Temp\WordCountV2\ApplicationManifest.xml` in einem Text-Editor. Ändern Sie im **ApplicationManifest**-Element das **ApplicationTypeVersion**-Attribut von „1.0.0“ in „2.0.0“, um die App-Versionsnummer zu aktualisieren. Speichern Sie die geänderte Datei „ApplicationManifest.xml“.
 
 ## <a name="task-deploy-a-service-fabric-application"></a>Aufgabe: Bereitstellen einer Service Fabric-Anwendung
 Nachdem Sie die Anwendung erstellt und gepackt (oder das Anwendungspaket heruntergeladen) haben, können Sie die Anwendung in einem lokalen Service Fabric-Cluster bereitstellen. Die Bereitstellung umfasst das Hochladen des Anwendungspakets, das Registrieren des Anwendungstyps und das Erstellen der Anwendungsinstanz. Verwenden Sie die Anweisungen in diesem Abschnitt, um eine neue Anwendung in einem Cluster bereitzustellen.
 
 ### <a name="step-1-upload-the-application-package"></a>Schritt 1: Hochladen des Anwendungspakets
-Beim Hochladen des Anwendungspakets in den ImageStore wird das Paket an einem Speicherort gespeichert, an dem interne Service Fabric-Komponenten auf das Paket zugreifen können.  Das Anwendungspaket enthält die erforderlichen Anwendungs- und Dienstmanifeste sowie Code-, Konfigurations- und Datenpakete zum Erstellen der Anwendungs- und Dienstinstanzen.  Mit dem Befehl [**Copy-ServiceFabricApplicationPackage**](https://docs.microsoft.com/powershell/servicefabric/vlatest/copy-servicefabricapplicationpackage) wird das Paket hochgeladen. Beispiel:
+Beim Hochladen des Anwendungspakets in den ImageStore wird das Paket an einem Speicherort gespeichert, an dem interne Service Fabric-Komponenten auf das Paket zugreifen können.  Das Anwendungspaket enthält die erforderlichen Anwendungs- und Dienstmanifeste sowie Code-, Konfigurations- und Datenpakete zum Erstellen der Anwendungs- und Dienstinstanzen. Wenn Sie das App-Paket lokal überprüfen möchten, verwenden Sie das Cmdlet [Test-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/test-servicefabricapplicationpackage).  Mit dem Befehl [Copy-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/copy-servicefabricapplicationpackage) wird das Paket hochgeladen. Beispiel:
 
 ```powershell
 Copy-ServiceFabricApplicationPackage C:\Temp\WordCount\ -ImageStoreConnectionString file:C:\SfDevCluster\Data\ImageStoreShare -ApplicationPackagePathInImageStore WordCount
 ```
 
 ### <a name="step-2-register-the-application-type"></a>Schritt 2: Registrieren des Anwendungstyps
-Beim Registrieren des Anwendungspakets werden der Anwendungstyp und die Version im verfügbaren Anwendungsmanifest deklariert. Das System liest das in Schritt 1 hochgeladene Paket, überprüft es (entspricht der lokalen Ausführung von [**Test-ServiceFabricApplicationPackage**](https://docs.microsoft.com/powershell/servicefabric/vlatest/test-servicefabricapplicationpackage)), verarbeitet den Inhalt des Pakets und kopiert das verarbeitete Paket an einen internen Systemspeicherort.  Führen Sie das Cmdlet [**Register-ServiceFabricApplicationType**](https://docs.microsoft.com/powershell/servicefabric/vlatest/register-servicefabricapplicationtype) aus:
+Beim Registrieren des Anwendungspakets werden der Anwendungstyp und die Version im verfügbaren Anwendungsmanifest deklariert. Das System liest das in Schritt 1 hochgeladene Paket, überprüft es (entspricht der lokalen Ausführung von [Test-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/test-servicefabricapplicationpackage)), verarbeitet den Inhalt des Pakets und kopiert das verarbeitete Paket an einen internen Systemspeicherort.  Führen Sie das Cmdlet [Register-ServiceFabricApplicationType](/powershell/servicefabric/vlatest/register-servicefabricapplicationtype) aus:
 
 ```powershell
 Register-ServiceFabricApplicationType WordCount
 ```
-Um alle im Cluster registrierten Anwendungstypen anzuzeigen, führen Sie das Cmdlet [Get-ServiceFabricApplicationType](https://docs.microsoft.com/powershell/servicefabric/vlatest/get-servicefabricapplicationtype) aus:
+Um alle im Cluster registrierten Anwendungstypen anzuzeigen, führen Sie das Cmdlet [Get-ServiceFabricApplicationType](/powershell/servicefabric/vlatest/get-servicefabricapplicationtype) aus:
 
 ```powershell
 Get-ServiceFabricApplicationType
 ```
 
 ### <a name="step-3-create-the-application-instance"></a>Schritt 3: Erstellen der Anwendungsinstanz
-Eine Anwendung kann mit einer beliebigen Version des Anwendungstyps instanziiert werden, die mit dem Befehl [**New-ServiceFabricApplication**](https://docs.microsoft.com/powershell/servicefabric/vlatest/new-servicefabricapplication) erfolgreich registriert wurde. Der Name jeder Anwendung wird bei der Bereitstellung deklariert. Er muss mit dem **fabric:**-Schema beginnen und für jede Anwendungsinstanz eindeutig sein. Der Name und die Version des Anwendungstyps werden in der Datei **ApplicationManifest.xml** des Anwendungspakets deklariert. Wenn im Anwendungsmanifest des Zielanwendungstyps Standarddienste festgelegt wurden, werden diese in diesem Schritt erstellt.
+Eine Anwendung kann mit einer beliebigen Version des Anwendungstyps instanziiert werden, die mit dem Befehl [New-ServiceFabricApplication](/powershell/servicefabric/vlatest/new-servicefabricapplication) erfolgreich registriert wurde. Der Name jeder Anwendung wird bei der Bereitstellung deklariert. Er muss mit dem **fabric:**-Schema beginnen und für jede Anwendungsinstanz eindeutig sein. Der Name und die Version des Anwendungstyps werden in der Datei **ApplicationManifest.xml** des Anwendungspakets deklariert. Wenn im Anwendungsmanifest des Zielanwendungstyps Standarddienste festgelegt wurden, werden diese in diesem Schritt erstellt.
 
 ```powershell
 New-ServiceFabricApplication fabric:/WordCount WordCount 1.0.0
 ```
 
-Der Befehl [**Get-ServiceFabricApplication**](https://docs.microsoft.com/powershell/servicefabric/vlatest/get-servicefabricapplication) listet alle erfolgreich erstellten Anwendungsinstanzen zusammen mit ihrem Gesamtstatus auf. Der Befehl [**Get-ServiceFabricService**](https://docs.microsoft.com/powershell/servicefabric/vlatest/get-servicefabricservice) listet alle Dienstinstanzen auf, die innerhalb einer bestimmten Anwendungsinstanz erfolgreich erstellt wurden. Die Standarddienste (sofern vorhanden) werden aufgelistet.
+Der Befehl [Get-ServiceFabricApplication](/powershell/servicefabric/vlatest/get-servicefabricapplication) listet alle erfolgreich erstellten Anwendungsinstanzen zusammen mit ihrem Gesamtzustand auf. Der Befehl [Get-ServiceFabricService](/powershell/servicefabric/vlatest/get-servicefabricservice) listet alle Dienstinstanzen auf, die innerhalb einer bestimmten Anwendungsinstanz erfolgreich erstellt wurden. Die Standarddienste (sofern vorhanden) werden aufgelistet.
 
 ```powershell
 Get-ServiceFabricApplication
@@ -76,7 +77,7 @@ Sie können eine zuvor bereitgestellte Service Fabric-Anwendung mit einem Anwend
 Um dieses Beispiel einfach zu halten, wurde nur die Versionsnummer der Anwendung im Anwendungspaket WordCountV2 aktualisiert, das bei den Voraussetzungen erstellt wurde. Ein realistischeres Szenario würde eine Aktualisierung der Dienstcode-, Konfigurations- oder Datendateien sowie das Packen der Anwendung mit aktualisierten Versionsnummern beinhalten.  
 
 ### <a name="step-1-upload-the-updated-application-package"></a>Schritt 1: Hochladen des aktualisierten Anwendungspakets
-Die WordCount-Anwendung der Version 1 kann nun aktualisiert werden. Wenn Sie ein PowerShell-Fenster als Administrator öffnen und [**Get-ServiceFabricApplication**](https://docs.microsoft.com/powershell/servicefabric/vlatest/get-servicefabricapplication) eingeben, wird angezeigt, dass Version 1.0.0 des WordCount-Anwendungstyps bereitgestellt wurde.  
+Die WordCount-Anwendung der Version 1 kann nun aktualisiert werden. Wenn Sie ein PowerShell-Fenster als Administrator öffnen und [**Get-ServiceFabricApplication**](/powershell/servicefabric/vlatest/get-servicefabricapplication) eingeben, wird angezeigt, dass Version 1.0.0 des WordCount-Anwendungstyps bereitgestellt wurde.  
 
 Kopieren Sie jetzt das aktualisierte Anwendungspaket in den Service Fabric-ImageStore (in dem die Anwendungspakete von Service Fabric gespeichert werden). Der **ApplicationPackagePathInImageStore** -Parameter informiert Service Fabric darüber, wo sich das Anwendungspaket befindet. Der folgende Befehl kopiert das Anwendungspaket nach **WordCountV2** im Imagespeicher:  
 
@@ -85,7 +86,7 @@ Copy-ServiceFabricApplicationPackage C:\Temp\WordCountV2\ -ImageStoreConnectionS
 
 ```
 ### <a name="step-2-register-the-updated-application-type"></a>Schritt 2: Registrieren des aktualisierten Anwendungstyps
-Im nächsten Schritt wird die neue Version der Anwendung bei Service Fabric registriert. Dazu kann das Cmdlet [**Register-ServiceFabricApplicationType**](https://docs.microsoft.com/powershell/servicefabric/vlatest/register-servicefabricapplicationtype) verwendet werden:
+Im nächsten Schritt wird die neue Version der Anwendung bei Service Fabric registriert. Dazu kann das Cmdlet [Register-ServiceFabricApplicationType](/powershell/servicefabric/vlatest/register-servicefabricapplicationtype) verwendet werden:
 
 ```powershell
 Register-ServiceFabricApplicationType WordCountV2
@@ -94,7 +95,7 @@ Register-ServiceFabricApplicationType WordCountV2
 ### <a name="step-3-start-the-upgrade"></a>Schritt 3: Starten des Upgrades
 Auf Anwendungsupgrades können verschiedene Upgradeparameter, Timeoutwerte und Integritätskriterien angewendet werden. Weitere Informationen finden Sie in den Dokumenten [Parameter für Anwendungsupgrades](service-fabric-application-upgrade-parameters.md) und [Service Fabric-Anwendungsupgrade](service-fabric-application-upgrade.md). Alle Dienste und Instanzen sollten nach dem Upgrade *fehlerfrei* sein.  Legen Sie **HealthCheckStableDuration** auf 60 Sekunden fest (sodass die Dienste mindestens 20 Sekunden fehlerfrei sind, bevor zur nächsten Upgradedomäne gewechselt wird).  Wir legen außerdem **UpgradeDomainTimeout** auf 1200 Sekunden und **UpgradeTimeout** auf 3000 Sekunden fest. Schließlich legen wir für **UpgradeFailureAction** den Wert **rollback** fest, sodass Service Fabric die Anwendung auf die vorherige Version zurücksetzt, wenn während des Upgrades Fehler erkannt werden.
 
-Nun können Sie das Anwendungsupgrade mithilfe des Cmdlets [**Start ServiceFabricApplicationUpgrade**](https://docs.microsoft.com/powershell/servicefabric/vlatest/start-servicefabricapplicationupgrade) starten:
+Nun können Sie das Anwendungsupgrade mithilfe des Cmdlets [Start ServiceFabricApplicationUpgrade](/powershell/servicefabric/vlatest/start-servicefabricapplicationupgrade) starten:
 
 ```powershell
 Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/WordCount -ApplicationTypeVersion 2.0.0 -HealthCheckStableDurationSec 60 -UpgradeDomainTimeoutSec 1200 -UpgradeTimeout 3000  -FailureAction Rollback -Monitored
@@ -103,13 +104,13 @@ Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/WordCount -Applic
 Beachten Sie, dass der Name der Anwendung dem Namen der zuvor bereitgestellten v1.0.0-Anwendung entspricht (fabric:/WordCount). Service Fabric verwendet diesen Namen, um die zu aktualisierende Anwendung zu ermitteln. Wenn Sie die Timeoutwerte zu kurz festlegen, wird möglicherweise eine Fehlermeldung zu den Timeoutwerten angezeigt. Lesen Sie [Problembehandlung bei Anwendungsupgrades](service-fabric-application-upgrade-troubleshooting.md), oder erhöhen Sie die Timeoutwerte.
 
 ### <a name="step-4-check-upgrade-progress"></a>Schritt 4: Überprüfen des Upgradevorgangs
-Sie können den Fortschritt des Anwendungsupgrades mit [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) oder dem Cmdlet [**Get-ServiceFabricApplicationUpgrade**](https://docs.microsoft.com/powershell/servicefabric/vlatest/get-servicefabricapplicationupgrade) überwachen:
+Sie können den Fortschritt des Anwendungsupgrades mit [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) oder dem Cmdlet [Get-ServiceFabricApplicationUpgrade](/powershell/servicefabric/vlatest/get-servicefabricapplicationupgrade) überwachen:
 
 ```powershell
 Get-ServiceFabricApplicationUpgrade fabric:/WordCount
 ```
 
-In wenigen Minuten sollte das Cmdlet [Get-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/servicefabric/vlatest/get-servicefabricapplicationupgrade) anzeigen, dass alle Upgradedomänen aktualisiert (abgeschlossen) wurden.
+In wenigen Minuten sollte das Cmdlet [Get-ServiceFabricApplicationUpgrade](/powershell/servicefabric/vlatest/get-servicefabricapplicationupgrade) anzeigen, dass alle Upgradedomänen aktualisiert (abgeschlossen) wurden.
 
 ## <a name="task-test-a-service-fabric-application"></a>Aufgabe: Testen einer Service Fabric-Anwendung
 Um hochwertige Dienste schreiben zu können, müssen Entwickler dazu in der Lage sein, Fehler in unzuverlässigen Infrastrukturen auszulösen, um die Stabilität ihrer Dienste testen zu können. Service Fabric ermöglicht Entwicklern das Auslösen von Fehleraktionen, um das Verhalten von Diensten beim Auftreten von Fehlern mit Chaos- und Failovertestszenarien zu testen.  Weitere Informationen finden Sie unter [Testability – Übersicht](service-fabric-testability-overview.md) .
@@ -142,21 +143,21 @@ Invoke-ServiceFabricFailoverTestScenario -TimeToRunMinute $timeToRun -MaxService
 Sie können eine Instanz einer bereitgestellten Anwendung löschen, den bereitgestellten Anwendungstyp aus dem Cluster entfernen und das Anwendungspaket aus dem ImageStore entfernen.
 
 ### <a name="step-1-remove-an-application-instance"></a>Schritt 1: Entfernen einer Anwendungsinstanz
-Wird eine Anwendungsinstanz nicht mehr benötigt, können Sie diese mit dem Cmdlet [**Remove-ServiceFabricApplication**](https://docs.microsoft.com/powershell/servicefabric/vlatest/remove-servicefabricapplication) dauerhaft entfernen. Hierbei werden auch alle Dienste automatisch entfernt, die mit der Anwendung verknüpft sind, d.h., der Dienstzustand wird vollständig und dauerhaft entfernt. Dieser Vorgang kann nicht rückgängig gemacht werden, und der Anwendungsstatus kann nicht wiederhergestellt werden.
+Wird eine Anwendungsinstanz nicht mehr benötigt, können Sie diese mit dem Cmdlet [Remove-ServiceFabricApplication](/powershell/servicefabric/vlatest/remove-servicefabricapplication) dauerhaft entfernen. Hierbei werden auch alle Dienste automatisch entfernt, die mit der Anwendung verknüpft sind, d.h., der Dienstzustand wird vollständig und dauerhaft entfernt. Dieser Vorgang kann nicht rückgängig gemacht werden, und der Anwendungsstatus kann nicht wiederhergestellt werden.
 
 ```powershell
 Remove-ServiceFabricApplication fabric:/WordCount
 ```
 
 ### <a name="step-2-unregister-the-application-type"></a>Schritt 2: Aufheben der Registrierung des Anwendungstyps
-Wenn Sie eine bestimmte Version eines Anwendungstyps nicht mehr benötigen, heben Sie die Registrierung der Version mit dem Cmdlet [**Unregister-ServiceFabricApplicationType**](https://docs.microsoft.com/powershell/servicefabric/vlatest/unregister-servicefabricapplicationtype) auf. Durch das Aufheben der Registrierung nicht verwendeter Typen wird Speicherplatz freigegeben, der vom Anwendungspaket im Imagespeicher verwendet wird. Die Registrierung eines Anwendungstyps kann nur aufgehoben werden, wenn keine Anwendungen für den Typ instanziiert sind und keine ausstehenden Anwendungsupgrades vorliegen, die auf den Typ verweisen.
+Wenn Sie eine bestimmte Version eines Anwendungstyps nicht mehr benötigen, heben Sie die Registrierung der Version mit dem Cmdlet [Unregister-ServiceFabricApplicationType](/powershell/servicefabric/vlatest/unregister-servicefabricapplicationtype) auf. Durch das Aufheben der Registrierung nicht verwendeter Typen wird Speicherplatz freigegeben, der vom Anwendungspaket im Imagespeicher verwendet wird. Die Registrierung eines Anwendungstyps kann nur aufgehoben werden, wenn keine Anwendungen für den Typ instanziiert sind und keine ausstehenden Anwendungsupgrades vorliegen, die auf den Typ verweisen.
 
 ```powershell
 Unregister-ServiceFabricApplicationType WordCount 1.0.0
 ```
 
 ### <a name="step-3-remove-the-application-package"></a>Schritt 3: Entfernen des Anwendungspakets
-Nachdem die Registrierung des Anwendungstyps aufgehoben wurde, kann das Anwendungspaket mit dem Cmdlet [**Remove-ServiceFabricApplicationPackage**](https://docs.microsoft.com/powershell/servicefabric/vlatest/remove-servicefabricapplicationpackage) aus dem Imagespeicher entfernt werden.
+Nachdem die Registrierung des Anwendungstyps aufgehoben wurde, kann das Anwendungspaket mit dem Cmdlet [Remove-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/remove-servicefabricapplicationpackage) aus dem Imagespeicher entfernt werden.
 
 ```powershell
 Remove-ServiceFabricApplicationPackage -ImageStoreConnectionString file:C:\SfDevCluster\Data\ImageStoreShare -ApplicationPackagePathInImageStore WordCount
@@ -169,11 +170,6 @@ Remove-ServiceFabricApplicationPackage -ImageStoreConnectionString file:C:\SfDev
 
 [Anwendungsupgrade](service-fabric-application-upgrade.md)
 
-[Azure Service Fabric-Cmdlets](https://docs.microsoft.com/powershell/servicefabric/vlatest/servicefabric)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
+[Azure Service Fabric-Cmdlets](/powershell/servicefabric/vlatest/servicefabric)
 
 

@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 10/28/2016
 ms.author: dariagrigoriu
 translationtype: Human Translation
-ms.sourcegitcommit: 071e8056382128f7c5070b46591b2a66ba5b7e41
-ms.openlocfilehash: 57c38c3d19810fd8c2789a27983c521517f2303b
-ms.lasthandoff: 01/27/2017
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: 904a2251328ec7b2a6ed6f3c91e2aaba33076860
+ms.lasthandoff: 03/07/2017
 
 
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Kontinuierliche Bereitstellung in Azure App Service
-In diesem Tutorial erfahren Sie, wie Sie einen Workflow für die kontinuierliche Bereitstellung für Ihre [Azure App Service]-App konfigurieren. Die Integration von App Service in BitBucket, GitHub und Visual Studio Team Services (VSTS) ermöglicht einen Workflow für die kontinuierliche Bereitstellung. Hierbei werden die neuesten Updates aus Ihrem Projekt, das in einem der genannten Dienste veröffentlicht ist, per Pull nach Azure übertragen. Die kontinuierliche Bereitstellung ist hervorragend für Projekte geeignet, bei denen häufig zahlreiche Beiträge integriert werden.
+In diesem Tutorial erfahren Sie, wie Sie einen Workflow für die kontinuierliche Bereitstellung für Ihre [Azure App Service]-App konfigurieren. Die Integration von App Service in BitBucket, GitHub und [Visual Studio Team Services (VSTS)](https://www.visualstudio.com/team-services/) ermöglicht einen Workflow für die kontinuierliche Bereitstellung. Hierbei werden die neuesten Updates aus Ihrem Projekt, das in einem der genannten Dienste veröffentlicht ist, per Pull nach Azure übertragen. Die kontinuierliche Bereitstellung ist hervorragend für Projekte geeignet, bei denen häufig zahlreiche Beiträge integriert werden.
 
 Informationen zum manuellen Konfigurieren der kontinuierlichen Bereitstellung in einem Cloudrepository, das nicht im Azure-Portal aufgeführt ist (etwa [GitLab](https://gitlab.com/)), finden Sie unter [Setting up continuous deployment using manual steps](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps) (Manuelles Einrichten der kontinuierlichen Bereitstellung).
 
-## <a name="a-nameoverviewaenable-continuous-deployment"></a><a name="overview"></a>Aktivieren der kontinuierlichen Bereitstellung
+## <a name="overview"></a>Aktivieren der kontinuierlichen Bereitstellung
 Führen Sie die folgenden Schritte aus, um die kontinuierliche Bereitstellung zu aktivieren:
 
 1. Veröffentlichen Sie Ihren App-Inhalt indem Repository, das für die kontinuierliche Bereitstellung verwendet werden soll.  
@@ -53,7 +53,7 @@ Führen Sie die folgenden Schritte aus, um die kontinuierliche Bereitstellung zu
 5. Um zu überprüfen, ob die App erfolgreich bereitgestellt wurde, klicken Sie im Azure-Portal oben auf dem Blatt der App auf **URL**.
 6. Um sicherzustellen, dass die fortlaufende Bereitstellung aus dem Repository Ihrer Wahl stattfindet, übertragen Sie eine Änderung per Push in das Repository. Ihre App sollte aktualisiert werden und die Änderungen kurz nach dem Push ins Repository widerspiegeln. Sie können auf dem Blatt **Bereitstellungsoptionen** Ihrer App überprüfen, ob das Update abgerufen wurde.
 
-## <a name="a-namevssolutionacontinuous-deployment-of-a-visual-studio-solution"></a><a name="VSsolution"></a>Kontinuierliche Bereitstellung einer Visual Studio-Projektmappe
+## <a name="VSsolution"></a>Kontinuierliche Bereitstellung einer Visual Studio-Projektmappe
 Eine Visual Studio-Projektmappe lässt sich genauso leicht mithilfe von Push an Azure App Service übertragen wie eine einfache index.html-Datei. Der App Service-Bereitstellungsprozess optimiert alle Details, darunter das Wiederherstellen von NuGet-Abhängigkeiten und die Erstellung der Binärdateien der Anwendung. Sie können die Best Practices der Quellcodeverwaltung befolgen und Code ausschließlich in Ihrem Git-Repository verwalten, während die App Service-Bereitstellung den Rest erledigt.
 
 Die Schritte zur Pushübertragung der Visual Studio-Projektmappe an App Service sind mit denen im [vorherigen Abschnitt](#overview)identisch, wenn Sie Ihre Projektmappe und das Repository wie folgt konfigurieren:
@@ -65,7 +65,7 @@ Die Schritte zur Pushübertragung der Visual Studio-Projektmappe an App Service 
 
 Nachdem Sie Ihr Repository wie beschrieben eingerichtet und Ihre App in Azure für die kontinuierliche Veröffentlichung aus einem der Online-Git-Repositorys konfiguriert haben, können Sie Ihre ASP.NET-Anwendung lokal in Visual Studio entwickeln und Ihren Code kontinuierlich bereitstellen, indem Sie einfach Ihre Änderungen mithilfe von Push an Ihr Online-Git-Repository übertragen.
 
-## <a name="a-namedisablecdadisable-continuous-deployment"></a><a name="disableCD"></a>Deaktivieren der fortlaufenden Bereitstellung
+## <a name="disableCD"></a>Deaktivieren der fortlaufenden Bereitstellung
 Führen Sie die folgenden Schritte aus, um die kontinuierliche Bereitstellung zu deaktivieren:
 
 1. Klicken Sie im [Azure-Portal] auf dem Menüblatt Ihrer App auf **APP-BEREITSTELLUNG > Bereitstellungsoptionen**. Klicken Sie dann auf dem Blatt **Bereitstellungsoptionen** auf **Trennen**.
@@ -79,6 +79,7 @@ Führen Sie die folgenden Schritte aus, um die kontinuierliche Bereitstellung zu
 * [Verwenden des Azure-Befehlszeilentools für Mac und Linux]
 * [Git-Dokumentation]
 * [Projekt Kudu](https://github.com/projectkudu/kudu/wiki)
+* [Use Azure to automatically generate a CI/CD pipeline to deploy an ASP.NET 4 app (Verwenden von Azure zum automatischen Erstellen einer CI/CD-Pipeline zum Bereitstellen einer ASP.NET 4-App)](https://www.visualstudio.com/docs/build/get-started/aspnet-4-ci-cd-azure-automatic)
 
 > [!NOTE]
 > Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](https://azure.microsoft.com/try/app-service/)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.

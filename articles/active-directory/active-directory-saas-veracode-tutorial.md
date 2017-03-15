@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/05/2016
+ms.date: 02/22/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 1cef7ff21a8d076c89688f1fe75cebdb7c468199
-ms.openlocfilehash: d6845f666c8b987319bd0b5a7bbe8726f8501249
+ms.sourcegitcommit: 1c22e4fc17226578aaaf272fdf79178da65c63c2
+ms.openlocfilehash: 8c8ac0af8a39afdd9755040d21585185ceca890e
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -34,7 +35,7 @@ Das in diesem Tutorial beschriebene Szenario besteht aus den folgenden Bausteine
 3. Konfigurieren der Benutzerbereitstellung
 4. Zuweisen von Benutzern
 
-![Szenario](./media/active-directory-saas-veracode-tutorial/IC802903.png "Scenario")
+![Szenario](./media/active-directory-saas-veracode-tutorial/IC802903.png "Szenario")
 
 ## <a name="enabling-the-application-integration-for-veracode"></a>Aktivieren der Anwendungsintegration für Veracode
 In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Veracode aktivieren.
@@ -48,19 +49,19 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Ver
 
 3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
    
-    ![Anwendungen](./media/active-directory-saas-veracode-tutorial/IC700994.png "Applications")
+    ![Anwendungen](./media/active-directory-saas-veracode-tutorial/IC700994.png "Anwendungen")
 
 4. Klicken Sie unten auf der Seite auf **Hinzufügen** .
    
-    ![Anwendung hinzufügen](./media/active-directory-saas-veracode-tutorial/IC749321.png "Add application")
+    ![Anwendung hinzufügen](./media/active-directory-saas-veracode-tutorial/IC749321.png "Anwendung hinzufügen")
 
 5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
    
-    ![Anwendung aus dem Katalog hinzufügen](./media/active-directory-saas-veracode-tutorial/IC749322.png "Add an application from gallerry")
+    ![Anwendung aus dem Katalog hinzufügen](./media/active-directory-saas-veracode-tutorial/IC749322.png "Anwendung aus dem Katalog hinzufügen")
 
 6. Geben Sie im **Suchfeld** als Suchbegriff **Veracode** ein.
    
-    ![Anwendungskatalog](./media/active-directory-saas-veracode-tutorial/IC802904.png "Application Gallery")
+    ![Anwendungskatalog](./media/active-directory-saas-veracode-tutorial/IC802904.png "Anwendungskatalog")
 
 7. Wählen Sie im Ergebnisbereich **Veracode** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
    
@@ -71,36 +72,36 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 Die Veracode-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der **SAML-Tokenattribute** benutzerdefinierte Attributzuordnungen hinzufügen.  
 Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen:
 
-![Attribute](./media/active-directory-saas-veracode-tutorial/IC802906.png "Attributes")
+![Attribute](./media/active-directory-saas-veracode-tutorial/IC802906.png "Attribute")
 
 ### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>So konfigurieren Sie einmaliges Anmelden
 1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Veracode** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-veracode-tutorial/IC802907.png "Configure Single Sign-On")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-veracode-tutorial/IC802907.png "Einmaliges Anmelden konfigurieren")
 
 2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Veracode anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-veracode-tutorial/IC802908.png "Configure Single Sign-On")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-veracode-tutorial/IC802908.png "Einmaliges Anmelden konfigurieren")
 
 3. Klicken Sie auf der Seite **App-Einstellungen konfigurieren** auf **Weiter**.
    
-    ![App-Einstellungen konfigurieren](./media/active-directory-saas-veracode-tutorial/IC802909.png "Configure App Settings")
+    ![App-Einstellungen konfigurieren](./media/active-directory-saas-veracode-tutorial/IC802909.png "App-Einstellungen konfigurieren")
 
 4. Klicken Sie zum Herunterladen des Zertifikats auf der Seite **Einmaliges Anmelden konfigurieren für Veracode** auf **Zertifikat herunterladen**, und speichern Sie die Zertifikatsdatei lokal auf Ihrem Computer.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-veracode-tutorial/IC802910.png "Configure Single Sign-On")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-veracode-tutorial/IC802910.png "Einmaliges Anmelden konfigurieren")
 
 5. Melden Sie sich in einem anderen Webbrowserfenster bei der Veracode-Unternehmenswebsite als Administrator an.
 
 6. Klicken Sie oben im Menü auf **Einstellungen** und dann auf **Administration**.
    
-    ![Verwaltung](./media/active-directory-saas-veracode-tutorial/IC802911.png "Administration")
+    ![Verwaltung](./media/active-directory-saas-veracode-tutorial/IC802911.png "Verwaltung")
 
 7. Klicken Sie auf die Registerkarte **SAML** .
 
 8. Führen Sie im Abschnitt für die **SAML-Einstellungen der Organisation** die folgenden Schritte aus:
    
-    ![Verwaltung](./media/active-directory-saas-veracode-tutorial/IC802912.png "Administration")
+    ![Verwaltung](./media/active-directory-saas-veracode-tutorial/IC802912.png "Verwaltung")
    
     a. Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für Veracode** den Wert für **Aussteller-URL**, und fügen Sie ihn in das Textfeld **Aussteller** ein.
    
@@ -110,7 +111,7 @@ Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen:
 
 9. Führen Sie im Abschnitt **Selbstregistrierungseinstellungen** die folgenden Schritte aus. Klicken Sie dann auf **Speichern**:
    
-    ![Verwaltung](./media/active-directory-saas-veracode-tutorial/IC802913.png "Administration")
+    ![Verwaltung](./media/active-directory-saas-veracode-tutorial/IC802913.png "Verwaltung")
    
     a. Wählen Sie für **Aktivierung neuer Benutzer** die Option **Keine Aktivierung erforderlich** aus.
    
@@ -130,15 +131,15 @@ Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen:
 
 10. Bestätigen Sie im klassischen Azure-Portal die Konfiguration der einmaligen Anmeldung, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
     
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-veracode-tutorial/IC802914.png "Configure Single Sign-On")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-veracode-tutorial/IC802914.png "Einmaliges Anmelden konfigurieren")
 
 11. Klicken Sie oben im Menü auf **Attribute** to open the **SAML Token Attribute** zu öffnen.
     
-    ![Attribute](./media/active-directory-saas-veracode-tutorial/IC795920.png "Attributes")
+    ![Attribute](./media/active-directory-saas-veracode-tutorial/IC795920.png "Attribute")
 
 12. So fügen Sie die erforderlichen Attributzuordnungen hinzu:
     
-    ![Attribute](./media/active-directory-saas-veracode-tutorial/IC802906.png "Attributes")
+    ![Attribute](./media/active-directory-saas-veracode-tutorial/IC802906.png "Attribute")
     
     | Attributname | Attributwert |
     |:--- |:--- |
@@ -176,17 +177,12 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
 
 2. Klicken Sie auf der Anwendungsintegrationsseite für **Veracode** auf **Benutzer zuweisen**.
    
-    ![Benutzer zuweisen](./media/active-directory-saas-veracode-tutorial/IC802915.png "Assign Users")
+    ![Zuweisen von Benutzern](./media/active-directory-saas-veracode-tutorial/IC802915.png "Zuweisen von Benutzern")
 
 3. Wählen Sie den Testbenutzer aus, klicken Sie auf **Zuweisen** und anschließend auf **Ja**, um die Zuweisung zu bestätigen.
    
-    ![Ja](./media/active-directory-saas-veracode-tutorial/IC767830.png "Yes")
+    ![Ja](./media/active-directory-saas-veracode-tutorial/IC767830.png "Ja")
 
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

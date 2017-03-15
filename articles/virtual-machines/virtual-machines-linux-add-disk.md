@@ -32,8 +32,8 @@ Im folgenden Beispiel wird ein `50`-GB-Datenträger dem virtuellen Computer mit 
 Für verwaltete Datenträger:
 
 ```azurecli
-az vm disk attach –g myResourceGroup –-vm-name myVM –-disk myDataDisk \
-  –-new --size-gb 50
+az vm disk attach -g myResourceGroup --vm-name myVM --disk myDataDisk \
+  --new --size-gb 50
 ```
 
 Für nicht verwaltete Datenträger:
@@ -53,8 +53,8 @@ Durch die Verwendung von verwalteten Datenträgern können Sie sich auf Ihre vir
 Wenn Sie nur einen neuen Datenträger für Ihren virtuellen Computer benötigen, können Sie den Befehl `az vm disk attach` verwenden.
 
 ```azurecli
-az vm disk attach –g myResourceGroup –-vm-name myVM –-disk myDataDisk \
-  –-new --size-gb 50
+az vm disk attach -g myResourceGroup --vm-name myVM --disk myDataDisk \
+  --new --size-gb 50
 ```
 
 ### <a name="attach-an-existing-disk"></a>Anfügen eines vorhandenen Datenträgers 

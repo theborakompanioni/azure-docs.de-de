@@ -15,14 +15,15 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: dc6d0a2d48895da12a95e3f482ad8588b98db4ec
-ms.openlocfilehash: 37726a272b0fbe17c58e627d66106ccbbe083936
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 56eb95f5c8dfb34c0dbaec75efc5509f0c930ec3
+ms.lasthandoff: 03/06/2017
 
 ---
 # <a name="api-management-transformation-policies"></a>Azure API Management-Transformationsrichtlinien
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
   
-##  <a name="a-nametransformationpoliciesa-transformation-policies"></a><a name="TransformationPolicies"></a> Transformationsrichtlinien  
+##  <a name="TransformationPolicies"></a> Transformationsrichtlinien  
   
 -   [JSON in XML konvertieren](api-management-transformation-policies.md#ConvertJSONtoXML) – Konvertiert den Anforderungs- oder Antworttext von JSON in XML.  
   
@@ -44,7 +45,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 -   [XML mithilfe von XSLT transformieren](api-management-transformation-policies.md#XSLTransform) – Wendet eine XSL-Transformation auf XML im Anforderungs- oder Antworttext an.  
   
-##  <a name="a-nameconvertjsontoxmla-convert-json-to-xml"></a><a name="ConvertJSONtoXML"></a> JSON in XML konvertieren  
+##  <a name="ConvertJSONtoXML"></a> JSON in XML konvertieren  
  Die Richtlinie `json-to-xml` konvertiert einen Anforderungs- oder Antworttext von JSON in XML.  
   
 ### <a name="policy-statement"></a>Richtlinienanweisung  
@@ -87,7 +88,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 -   **Richtlinienbereiche:** global, Produkt, API, Vorgang  
   
-##  <a name="a-nameconvertxmltojsona-convert-xml-to-json"></a><a name="ConvertXMLtoJSON"></a> XML in JSON konvertieren  
+##  <a name="ConvertXMLtoJSON"></a> XML in JSON konvertieren  
  Die Richtlinie `xml-to-json` konvertiert einen Anforderungs- oder Antworttext von XML in JSON. Diese Richtlinie kann verwendet werden, um APIs basierend auf reinen XML-Back-End-Webdiensten zu aktualisieren.  
   
 ### <a name="policy-statement"></a>Richtlinienanweisung  
@@ -131,7 +132,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 -   **Richtlinienbereiche:** global, Produkt, API, Vorgang  
   
-##  <a name="a-namefindandreplacestringinbodya-find-and-replace-string-in-body"></a><a name="Findandreplacestringinbody"></a> Zeichenfolge in Text ersetzen  
+##  <a name="Findandreplacestringinbody"></a> Zeichenfolge in Text ersetzen  
  Die Richtlinie `find-and-replace` sucht nach einer Teilzeichenfolge in der Antwort oder Anforderung und ersetzt diese durch eine andere Teilzeichenfolge.  
   
 ### <a name="policy-statement"></a>Richtlinienanweisung  
@@ -166,7 +167,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 -   **Richtlinienbereiche:** global, Produkt, API, Vorgang  
   
-##  <a name="a-namemaskurlscontenta-mask-urls-in-content"></a><a name="MaskURLSContent"></a> URLs in Inhalt maskieren  
+##  <a name="MaskURLSContent"></a> URLs in Inhalt maskieren  
  Die Richtlinie `redirect-content-urls` ändert (maskiert) Links im Antworttext, sodass diese über das Gateway auf den äquivalenten Link zeigen. Verwenden Sie sie im Abschnitt „outbound“, um Links im Antworttext so zu ändern, dass sie auf das Gateway zeigen. Verwenden Sie sie im Abschnitt „inbound“ für den entgegengesetzten Effekt.  
   
 > [!NOTE]
@@ -197,7 +198,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 -   **Richtlinienbereiche:** global, Produkt, API, Vorgang  
   
-##  <a name="a-namesetbackendservicea-set-backend-service"></a><a name="SetBackendService"></a> Back-End-Dienst festlegen  
+##  <a name="SetBackendService"></a> Back-End-Dienst festlegen  
  Verwenden Sie die Richtlinie `set-backend-service`, um eine eingehende Anforderung an einen anderen Back-End umzuleiten, als in den API-Einstellungen für diesen Vorgang angegeben ist. Diese Richtlinie ändert die Basis-URL des Back-End-Diensts der eingehenden Anforderung in die in der Richtlinie angegebene.  
   
 ### <a name="policy-statement"></a>Richtlinienanweisung  
@@ -254,7 +255,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 -   **Richtlinienbereiche:** global, Produkt, API, Vorgang  
   
-##  <a name="a-namesetbodya-set-body"></a><a name="SetBody"></a> Text festlegen  
+##  <a name="SetBody"></a> Text festlegen  
  Verwenden Sie die Richtlinie `set-body`, um den Nachrichtentext für eingehende und ausgehende Anforderungen festzulegen. Um auf den Nachrichtentext zuzugreifen, können Sie die Eigenschaft `context.Request.Body` oder `context.Response.Body` verwenden, je nachdem, ob sich die Richtlinie im Abschnitt „inbound“ oder „outbound“ befindet.  
   
 > [!IMPORTANT]
@@ -330,13 +331,71 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   </when>  
 </choose>  
 ```  
-  
+
+### <a name="using-liquid-templates-with-set-body"></a>Verwenden von Liquid-Vorlagen mit Festlegen von Text 
+Die `set-body`-Richtlinie kann so konfiguriert werden, dass Sie die [Liquid](https://shopify.github.io/liquid/basics/introduction/)-Vorlagensprache verwendet, um den Hauptteil einer Anforderung oder Antwort zu transformieren. Dies kann sehr effektiv sein, wenn Sie das Format Ihrer Nachricht vollständig umformen müssen.
+
+> [!IMPORTANT]
+> Die Implementierung von Liquid, verwendet in der `set-body`-Richtlinie, wird im „C#-Modus“ konfiguriert. Dies ist beim Ausführen von Aktionen wie z.B. dem Filtern besonders wichtig. Beispielsweise erfordert die Verwendung eines Datumfilters das Verwenden der Pascal-Schreibweise und die C#-Datumsformatierung, z.B.:
+>
+> {{body.foo.startDateTime| Date:"yyyyMMddTHH:mm:ddZ"}}
+
+> [!IMPORTANT]
+> Zum ordnungsgemäßen Binden an ein XML-Text mithilfe der Vorlage für Liquid, verwenden Sie eine `set-header`-Richtlinie, um Content-Typ entweder auf Anwendung/xml, Text/xml (oder jeder Typ endend mit +xml) festzulegen. Für einen JSON-Text, muss es Anwendung/JSON, Text/JSON (oder jeder Typ endend mit +JSON) sein.
+
+#### <a name="convert-json-to-soap-using-a-liquid-template"></a>Konvertieren von JSON in SOAP mithilfe einer Liquid-Vorlage
+```xml
+<set-body template="liquid">
+    <soap:Envelope xmlns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+        <soap:Body>
+            <GetOpenOrders>
+                <cust>{{body.getOpenOrders.cust}}</cust>
+            </GetOpenOrders>
+        </soap:Body>
+    </soap:Envelope>
+</set-body>
+```
+
+#### <a name="tranform-json-using-a-liquid-template"></a>Transformieren von JSON mithilfe einer Liquid-Vorlage
+```xml
+{
+"order": {
+    "id": "{{body.customer.purchase.identifier}}",
+    "summary": "{{body.customer.purchase.orderShortDesc}}"
+    }
+}
+```
+
 ### <a name="elements"></a>Elemente  
   
 |Name|Beschreibung|Erforderlich|  
 |----------|-----------------|--------------|  
 |set-body|Stammelement Enthält den Text oder einen Ausdruck, der einen Text zurückgibt.|Ja|  
+
+### <a name="properties"></a>Eigenschaften  
   
+|Name|Beschreibung|Erforderlich|Standard|  
+|----------|-----------------|--------------|-------------|  
+|Vorlage|Es wird verwendet, um den Vorlagenmodus zu ändern, in dem die Richtlinie zum Festlegen von Text ausgeführt werden wird. Der einzige derzeit unterstützte Wert ist:<br /><br />- Liquid: Die Richtlinie zum Festlegen von Text wird das Liquid-Vorlagenmodul verwenden. |Nein|Liquid|  
+
+Für den Zugriff auf Informationen über die Anforderung und Antwort, kann die Liquid-Vorlage an ein context-Objekt mit den folgenden Eigenschaften binden: <br />
+<pre>context.
+Request.
+Url Method OriginalMethod OriginalUrl IpAddress MatchedParameters HasBody ClientCertificates Headers
+
+    Response.
+        StatusCode
+        Method
+        Headers
+URL, Max.
+Scheme Host Port Path Query QueryString ToUri ToString
+
+OriginalUrl.
+Scheme Host Port Path Query QueryString ToUri ToString
+</pre>
+
+
+
 ### <a name="usage"></a>Verwendung  
  Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
   
@@ -344,7 +403,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 -   **Richtlinienbereiche:** global, Produkt, API, Vorgang  
   
-##  <a name="a-namesethttpheadera-set-http-header"></a><a name="SetHTTPheader"></a> HTTP-Header setzen  
+##  <a name="SetHTTPheader"></a> HTTP-Header setzen  
  Die Richtlinie `set-header` weist einem vorhandenen Antwort- und/oder Anforderungsheader einen Wert zu oder fügt einen neuen Antwort- und/oder Anforderungsheader hinzu.  
   
  Fügt eine Liste von HTTP-Headern in eine HTTP-Nachricht ein. In eingehenden Pipelines setzt diese Richtlinie die HTTP-Header für die Anforderung, die an den Zieldienst übergeben wird. In ausgehenden Pipelines legt diese Richtlinie die HTTP-Header für die Antwort fest, die an den Client des Gateways gesendet wird.  
@@ -401,7 +460,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 -   **Richtlinienbereiche:** global, Produkt, API, Vorgang  
   
-##  <a name="a-namesetquerystringparametera-set-query-string-parameter"></a><a name="SetQueryStringParameter"></a> Abfrageparameter setzen  
+##  <a name="SetQueryStringParameter"></a> Abfrageparameter setzen  
  Die Richtlinie `set-query-parameter` fügt Abfrageparameter von Anforderungen hinzu, löscht diese oder ersetzt deren Werte. Mit dieser Richtlinie können Sie erwartete Abfrageparameter an den Back-End-Dienst übergeben, die optional sind oder in der Anforderung nie vorkommen.  
   
 ### <a name="policy-statement"></a>Richtlinienanweisung  
@@ -461,7 +520,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 -   **Richtlinienbereiche:** global, Produkt, API, Vorgang  
   
-##  <a name="a-namerewriteurla-rewrite-url"></a><a name="RewriteURL"></a> URL umschreiben  
+##  <a name="RewriteURL"></a> URL umschreiben  
  Die Richtlinie `rewrite-uri` konvertiert eine Anforderungs-URL von der öffentlichen Form in die vom Webdienst erwartete Form, wie im folgenden Beispiel gezeigt.  
   
 -   Öffentliche URL: `http://api.example.com/storenumber/ordernumber`  
@@ -539,7 +598,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 -   **Richtlinienbereiche:** Produkt, API, Vorgang  
   
-##  <a name="a-namexsltransforma-transform-xml-using-an-xslt"></a><a name="XSLTransform"></a> XML mithilfe von XSLT transformieren  
+##  <a name="XSLTransform"></a> XML mithilfe von XSLT transformieren  
  Die Richtlinie `Transform XML using an XSLT` wendet eine XSL-Transformation auf XML im Anforderungs- oder Antworttext an.  
   
 ### <a name="policy-statement"></a>Richtlinienanweisung  
@@ -574,7 +633,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   <outbound>  
       <base />  
       <xsl-transform>  
-        <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">  
+          <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">  
             <xsl:output omit-xml-declaration="yes" method="xml" indent="yes" />  
             <!-- Copy all nodes directly-->  
             <xsl:template match="node()| @*|*">  
@@ -582,7 +641,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
                     <xsl:apply-templates select="@* | node()|*" />  
                 </xsl:copy>  
             </xsl:template>  
-        </xsl:stylesheet>  
+          </xsl:stylesheet>  
     </xsl-transform>  
   </outbound>  
 </policies>  
@@ -605,9 +664,4 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Arbeiten mit Richtlinien finden Sie unter [Richtlinien in Azure API Management](api-management-howto-policies.md).  
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

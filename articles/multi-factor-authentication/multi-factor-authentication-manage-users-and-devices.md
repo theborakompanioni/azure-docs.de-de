@@ -12,22 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 02/23/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 27ff53646992308d574dcc2e631cd63b8227f9c8
-ms.openlocfilehash: 826fc2b2eaaf180d922c7a9a4c329ec4379c2ae0
+ms.sourcegitcommit: 847a8bdcf880b56f587f6759058825fd1965d29e
+ms.openlocfilehash: 43ab735b91bf3f3f1e9631067827f2c456dd7b72
+ms.lasthandoff: 03/01/2017
 
 
 ---
 # <a name="managing-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Verwalten von Benutzereinstellungen mit Azure Multi-Factor Authentication (MFA) in der Cloud
-Als Administrator können Sie die folgenden Einstellungen für Benutzer und Geräte verwalten.  
+Als Administrator können Sie die folgenden Einstellungen für Benutzer und Geräte verwalten:
 
-* [Ausgewählte Benutzer müssen Kontaktmethoden erneut bereitstellen.](#require-selected-users-to-provide-contact-methods-again)
-* [Löschen vorhandener App-Kennwörter eines Benutzers](#delete-users-existing-app-passwords)
-* [Wiederherstellen der MFA auf allen ausgesetzten Geräten eines Benutzers](#restore-mfa-on-all-suspended-devices-for-a-user)
-
-Dies ist hilfreich, wenn ein Computer oder Gerät verloren geht oder gestohlen wird, oder wenn Sie einen Benutzerzugriff entfernen müssen.
+* Ausgewählte Benutzer müssen Kontaktmethoden erneut bereitstellen.
+* Löschen vorhandener App-Kennwörter eines Benutzers
+* Wiederherstellen der MFA auf allen ausgesetzten Geräten eines Benutzers
 
 ## <a name="require-selected-users-to-provide-contact-methods-again"></a>Ausgewählte Benutzer müssen Kontaktmethoden erneut bereitstellen.
 Durch diese Einstellung wird der Benutzer gezwungen, die Registrierung bei der Anmeldung erneut durchzuführen. Denken Sie daran, dass Nicht-Browser-Apps weiterhin funktionieren, wenn der Benutzer über App-Kennwörter dafür verfügt.  Sie können die App-Kennwörter eines Benutzers löschen, indem Sie zusätzlich **Löschen aller vorhandener App-Kennwörter, die von ausgewählten Benutzern generiert wurden**auswählen.
@@ -62,7 +61,11 @@ Dies löscht alle App-Kennwörter, die ein Benutzer erstellt hat. Nicht-Browser-
 10. Klicken Sie auf "Schließen".
 
 ## <a name="restore-mfa-on-all-remembered-devices-for-a-user"></a>Wiederherstellen der MFA auf allen gespeicherten Geräten für einen Benutzer
-Administratoren haben die Möglichkeit, die Multi-Factor Authentication auf Geräten und in Browsern von Benutzern zurückzusetzen. Dabei wird die gespeicherte MFA auf allen Geräten und in allen Browsern der Benutzer entfernt, und die Benutzer müssen bei ihrer nächsten Anmeldung MFA verwenden.
+Eines der konfigurierbaren Features von Azure Multi-Factor Authentication besteht darin, Ihren Benutzern die Option zum Markieren von Geräten als vertrauenswürdig bereitzustellen. Weitere Informationen finden Sie unter [Konfigurieren der Einstellungen von Azure Multi-Factor Authentication](multi-factor-authentication-whats-next.md#remember-multi-factor-authentication-for-devices-that-users-trust).
+
+Benutzer können die Überprüfung in zwei Schritten für eine konfigurierbare Anzahl von Tagen auf ihren regulären Geräten deaktivieren. Wenn ein Konto kompromittiert wird oder ein vertrauenswürdiges Gerät verloren geht, müssen Sie in der Lage sein, den Status „Vertrauenswürdig“ aufzuheben und die Überprüfung in zwei Schritten wieder anzufordern.
+
+Die Einstellung **Mehrstufige Authentifizierung für alle gespeicherten Geräte wiederherstellen** bewirkt, dass der Benutzer bei der nächsten Anmeldung die Überprüfung in zwei Schritten durchführen muss, unabhängig davon, ob das Gerät als vertrauenswürdig markiert wurde. 
 
 ### <a name="how-to-restore-mfa-on-all-suspended-devices-for-a-user"></a>MFA auf allen ausgesetzten Geräten für einen Benutzer wiederherstellen
 1. Melden Sie sich beim klassischen Azure-Portal an.
@@ -76,9 +79,4 @@ Administratoren haben die Möglichkeit, die Multi-Factor Authentication auf Ger�
    ![App-Kennwörter löschen](./media/multi-factor-authentication-manage-users-and-devices/rememberdevices.png)
 9. Klicken Sie auf "Speichern".
 10. Klicken Sie auf "Schließen".
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

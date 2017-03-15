@@ -16,8 +16,9 @@ ms.workload: infrastructure
 ms.date: 01/13/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: c2f30eecb62ac578e8635346e1f67d441f29f189
-ms.openlocfilehash: e441e338a97c31b9131105ef08186c897d301ceb
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: fb6b3b357fd1f66184e480115a9c863ba31ac193
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -121,7 +122,15 @@ Um die Bereitstellungsvorgänge anzuzeigen, gehen Sie folgendermaßen vor:
   ----           -------                                                                        -------
   DnsRecordInUse DNS record dns.westus.cloudapp.azure.com is already used by another public IP. {}
   ```
+4. Jeder Bereitstellungsvorgang in Azure enthält Inhalte für Anforderung und Antwort. Der Inhalt der Anforderung ist das, was Sie während der Bereitstellung an Azure senden (z.B. erstellen einer VM, eines Betriebssystemdatenträgers und andere Ressourcen). Der Inhalts der Antwort ist das, was Azure aus der Bereitstellungsanforderung zurücksendet. Während der Bereitstellung können Sie den Parameter **DeploymentDebugLogLevel** verwenden, um anzugeben, dass die Anforderung und/oder Antwort im Protokoll beibehalten werden. 
 
+  Sie erhalten diese Information aus dem Protokoll, und speichern sie lokal mit den folgenden PowerShell-Befehlen:
+
+  ```powershell
+  (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName "TestDeployment" -ResourceGroupName "Test-RG").Properties.request | ConvertTo-Json |  Out-File -FilePath <PathToFile>
+
+  (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName "TestDeployment" -ResourceGroupName "Test-RG").Properties.response | ConvertTo-Json |  Out-File -FilePath <PathToFile>
+  ```
 
 ## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
@@ -208,10 +217,5 @@ Um die Bereitstellungsvorgänge anzuzeigen, gehen Sie folgendermaßen vor:
 * Unterstützung beim Beheben bestimmter Bereitstellungsfehler finden Sie unter [Beheben von häufigen Fehlern beim Bereitstellen von Ressourcen in Azure mit Azure Resource Manager](resource-manager-common-deployment-errors.md).
 * Weitere Informationen zur Verwendung der Aktivitätsprotokolle für die Überwachung anderer Arten von Aktionen finden Sie unter [Anzeigen von Aktivitätsprotokolle zum Verwalten von Azure-Ressourcen](resource-group-audit.md).
 * Informationen zum Überprüfen der Bereitstellung vor der Ausführung finden Sie unter [Bereitstellen einer Ressourcengruppe mit Azure Resource Manager-Vorlagen](resource-group-template-deploy.md).
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

@@ -15,9 +15,9 @@ ms.workload: identity
 ms.date: 01/23/2017
 ms.author: skwan;bryanla
 translationtype: Human Translation
-ms.sourcegitcommit: 7d6525f4614c6301f0ddb621b0483da70842a71b
-ms.openlocfilehash: 8daad095d80b244f53b4ee94c48ae9421172f062
-ms.lasthandoff: 02/11/2017
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: f87aedd989ab091efeac5f99e198fb60b6781ab2
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -164,6 +164,10 @@ Zustimmung wird in Azure AD über die Protokolle OAuth, OpenID Connect, WS-Verbu
 ## <a name="multi-tenant-applications-and-caching-access-tokens"></a>Mehrinstanzenfähige Anwendungen und Zwischenspeichern von Zugriffstoken
 Mehrinstanzenfähige Anwendungen können auch Zugriffstoken abrufen, um APIs aufzurufen, die von Azure AD geschützt sind.  Ein häufiger Fehler bei der Verwendung von Active Directory Authentication Library (ADAL) mit einer mehrinstanzenfähigen Anwendung ist, zuerst ein Token für einen Benutzer mithilfe von „/common“ anzufordern, eine Antwort zu erhalten und dann ein weiteres Token für den gleichen Benutzer ebenfalls mit „/common“ anzufordern.  Da die Antwort von Azure AD von einem Mandanten stammt (und nicht von „/common“), speichert ADAL das Token als Token von dem Mandanten zwischen. Beim nachfolgenden Aufruf von „/common“ zum Abrufen eines Zugriffstokens für den Benutzer wird der Cacheeintrag übersehen, und der Benutzer wird aufgefordert, sich erneut anzumelden.  Um zu vermeiden, dass Cacheeinträge übersehen werden, stellen Sie sicher, dass nachfolgende Aufrufe für einen bereits angemeldeten Benutzer dem Endpunkt des Mandanten gelten.
 
+## <a name="next-steps"></a>Nächste Schritte
+In diesem Artikel haben Sie gelernt, wie Sie eine Anwendung erstellen, die einen Benutzer aus einem Azure Active Directory-Mandanten anmelden kann. Nach der Aktivierung von Einmaliges Anmelden zwischen Ihrer App und Azure Active Directory, können Sie auch Ihre Anwendung aktualisieren, um auf von Microsoft-Ressourcen bereitgestellte APIs zuzugreifen, wie z.B. Office 365. Daher können Sie in Ihrer Anwendung ein personalisiertes Benutzererlebnis bieten, z.B. den Benutzern Kontextinformationen zeigen, wie ihr Profilfoto oder ihren nächsten Kalendertermin. Weitere Informationen zu API-Aufrufen an Azure Active Directory und zu Office 365-Diensten wie Exchange, SharePoint, OneDrive, OneNote, Planner, Excel und mehr finden Sie unter [Microsoft Graph-API][MSFT-Graph-overview].
+
+
 ## <a name="related-content"></a>Verwandte Inhalte
 * [Beispiele für mehrinstanzenfähige Anwendungen][AAD-Samples-MT]
 * [Brandingrichtlinien für Anwendungen][AAD-App-Branding]
@@ -171,7 +175,7 @@ Mehrinstanzenfähige Anwendungen können auch Zugriffstoken abrufen, um APIs auf
 * [Anwendungsobjekte und Dienstprinzipalobjekte][AAD-App-SP-Objects]
 * [Integrieren von Anwendungen in Azure Active Directory][AAD-Integrating-Apps]
 * [Übersicht über das Consent Framework][AAD-Consent-Overview]
-* [Microsoft Graph-API-Berechtigungsbereiche][MSFT-Graph-AAD]
+* [Microsoft Graph-API-Berechtigungsbereiche][MSFT-Graph-permision-scopes]
 * [Azure AD Graph-API-Berechtigungsbereiche][AAD-Graph-Perm-Scopes]
 
 Verwenden Sie den unten angezeigten Kommentarabschnitt, um uns Feedback zu senden und uns bei der Verbesserung unserer Inhalte zu unterstützen.
@@ -190,7 +194,8 @@ Verwenden Sie den unten angezeigten Kommentarabschnitt, um uns Feedback zu sende
 [AAD-Samples-MT]: https://azure.microsoft.com/documentation/samples/?service=active-directory&term=multitenant
 [AAD-Why-To-Integrate]: ./active-directory-how-to-integrate.md
 [AZURE-portal]: https://portal.azure.com
-[MSFT-Graph-AAD]: https://graph.microsoft.io/en-us/docs/authorization/permission_scopes
+[MSFT-Graph-overview]: https://graph.microsoft.io/en-us/docs/overview/overview
+[MSFT-Graph-permision-scopes]: https://graph.microsoft.io/en-us/docs/authorization/permission_scopes
 
 <!--Image references-->
 [AAD-Sign-In]: ./media/active-directory-devhowto-multi-tenant-overview/sign-in-with-microsoft-light.png

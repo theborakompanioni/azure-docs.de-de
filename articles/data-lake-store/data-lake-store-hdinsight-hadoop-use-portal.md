@@ -15,9 +15,9 @@ ms.workload: big-data
 ms.date: 02/16/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 9e480c13f48e93da32ff5a3c8d3064e98fed0265
-ms.openlocfilehash: 0ec19832d395547e8ebd3eee0d44dcf466a2ace7
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 8876a37b78fa8a80eba7af133d661c3d7ed425d7
+ms.openlocfilehash: 76e098525951d122799f11bdcd9ee5451c9a3777
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -30,7 +30,7 @@ ms.lasthandoff: 02/17/2017
 >
 >
 
-Hier erfahren Sie, wie Sie das Azure-Portal zum Erstellen eines HDInsight-Clusters mit Zugriff auf Azure Data Lake Store verwenden. Für unterstützte Clustertypen kann Data Lake Store als Standardspeicherkonto oder als zusätzliches Speicherkonto verwendet werden. Wenn Data Lake Store als zusätzlicher Speicher verwendet wird, ist das Standardspeicherkonto für den Cluster weiterhin Azure Storage Blob (WASB), und clusterbezogene Dateien (z.B. Protokolle usw.) werden weiterhin in den Standardspeicher geschrieben, während die Daten, die Sie verarbeiten möchten, in einem Data Lake Store-Konto gespeichert werden können. Das Verwenden von Data Lake-Speicher als zusätzliches Speicherkonto wirkt sich nicht auf Leistung oder die Fähigkeit aus, Daten aus dem Cluster in den Speicher zu lesen bzw. zu schreiben.
+Erfahren Sie, wie Sie das Azure-Portal zum Erstellen eines HDInsight-Clusters mit Zugriff auf Azure Data Lake Store verwenden. Für unterstützte Clustertypen kann Data Lake Store als Standardspeicherkonto oder als zusätzliches Speicherkonto verwendet werden. Wenn Data Lake Store als zusätzlicher Speicher verwendet wird, ist das Standardspeicherkonto für den Cluster weiterhin Azure Storage Blob (WASB), und clusterbezogene Dateien (z.B. Protokolle usw.) werden weiterhin in den Standardspeicher geschrieben, während die Daten, die Sie verarbeiten möchten, in einem Data Lake Store-Konto gespeichert werden können. Das Verwenden von Data Lake-Speicher als zusätzliches Speicherkonto wirkt sich nicht auf Leistung oder die Fähigkeit aus, Daten aus dem Cluster in den Speicher zu lesen bzw. zu schreiben.
 
 ## <a name="using-data-lake-store-for-hdinsight-cluster-storage"></a>Verwenden von Data Lake Store für die Speicherung von HDInsight-Clustern
 
@@ -97,7 +97,7 @@ In diesem Abschnitt erstellen Sie einen HDInsight Hadoop-Cluster, für den der D
     ![Dienstprinzipal für HDInsight-Cluster hinzufügen](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.3.png "Dienstprinzipal für HDInsight-Cluster hinzufügen")
 
     > [!NOTE]
-    > Wenn Sie das Data Lake Store-Konto als Standardspeicher für einen Cluster verwenden, **müssen** Sie die Berechtigungen dem Dienstprinzipal auf Stammebene des Data Lake Store-Kontos zuweisen.
+    > Wenn Sie das Data Lake Store-Konto als Standardspeicher für einen Cluster verwenden, **müssen** Sie dem Dienstprinzipal die Berechtigungen auf Stammebene des Data Lake Store-Kontos zuweisen.
 
 7. Wenn Sie Berechtigungen für Dateien oder Ordnern innerhalb eines Kontos zuweisen möchten, wählen Sie das Data Lake Store-Konto aus, um die Dateien bzw. Ordner im nächsten Bereich anzuzeigen. Wählen Sie die Dateien bzw. Ordner aus, wählen Sie die Berechtigungen (LESEN/SCHREIBEN/AUSFÜHREN) aus, die Sie zuweisen möchten, geben Sie an, ob die Berechtigungen auch rekursiv für die untergeordneten Elemente gelten sollen, und klicken Sie dann auf **Auswählen**.
 

@@ -37,7 +37,7 @@ Weisen Sie als Information-Worker in einer Partnerorganisation B2B-Zusammenarbei
 
 Information-Worker können B2B-Zusammenarbeitsbenutzer zu einer zugewiesenen Gruppe hinzufügen, die für die Self-Service-Gruppenverwaltung aktiviert ist.
 > [!NOTE]
-Sie können B2B-Zusammenarbeitsbenutzer nicht zu einer dynamischen Gruppe oder zu einer Gruppe hinzufügen, die mit einer lokalen Active Directory-Instanz synchronisiert wird.
+> Sie können B2B-Zusammenarbeitsbenutzer nicht zu einer dynamischen Gruppe oder zu einer Gruppe hinzufügen, die mit einer lokalen Active Directory-Instanz synchronisiert wird.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

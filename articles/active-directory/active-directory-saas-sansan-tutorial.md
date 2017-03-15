@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 02/16/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: a21fb8c22b5c429fc768e128162836275ff18bf1
+ms.sourcegitcommit: 2d8d925f80830a0d7047e9567fdd413af2e8c5c3
+ms.openlocfilehash: 87236d58018cd6696a97fad5d1413fa0975519b0
+ms.lasthandoff: 02/28/2017
 
 
 ---
@@ -26,7 +27,7 @@ In diesem Tutorial erfahren Sie, wie Sie SanSan in Azure Active Directory (Azure
 Die Integration von SanSan in Azure AD bietet die folgenden Vorteile:
 
 * Sie können in Azure AD steuern, wer Zugriff auf SanSan hat.
-* Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei SanSan anzumelden (einmaliges Anmelden).
+* Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei SanSan anzumelden (einmaliges Anmelden, SSO).
 * Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
@@ -37,23 +38,24 @@ Um die Azure AD-Integration mit SanSan konfigurieren zu können, benötigen Sie 
 * Ein Azure AD-Abonnement
 * Ein SanSan-Abonnement, für das einmaliges Anmelden aktiviert ist
 
-> [!NOTE]
-> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
-> 
+>[!NOTE]
+>Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden. 
 > 
 
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
 * Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-* Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
+* Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Microsoft Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+In diesem Tutorial testen Sie das einmalige Anmelden für Microsoft Azure AD in einer Testumgebung. 
+
+Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
 1. Hinzufügen von SanSan aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Microsoft Azure AD
+2. Konfigurieren und Testen der einmaligen Anmeldung (SSO) von Microsoft Azure AD
 
-## <a name="adding-sansan-from-the-gallery"></a>Hinzufügen von SanSan aus dem Katalog
+## <a name="add-sansan-from-the-gallery"></a>Hinzufügen von SanSan aus dem Katalog
 Zum Konfigurieren der Integration von SanSan in Azure AD müssen Sie SanSan über den Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
 **Führen Sie die folgenden Schritte aus, um SanSan aus dem Katalog hinzuzufügen:**
@@ -78,21 +80,23 @@ Zum Konfigurieren der Integration von SanSan in Azure AD müssen Sie SanSan übe
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-sansan-tutorial/tutorial_sansan_06.png)
 
-## <a name="configuring-and-testing-microsoft-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Microsoft Azure AD
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Microsoft Azure AD bei SanSan mithilfe eines Testbenutzers namens Britta Simon.
+## <a name="configure-and-test-microsoft-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens von Microsoft Azure AD
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Microsoft Azure AD (SSO) bei SanSan mithilfe eines Testbenutzers namens Britta Simon.
 
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in SanSan als Gegenstück für einen Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in SanSan muss eine Linkbeziehung eingerichtet werden.
+Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in SanSan als Entsprechung zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in SanSan muss eine Linkbeziehung eingerichtet werden.
+
 Diese Linkbeziehung wird hergestellt, indem Sie den Benutzernamen**** in Azure AD als Benutzernamen**** in SanSan zuweisen.
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens von Microsoft Azure AD bei SanSan müssen Sie die folgenden Schritte ausführen:
+Zum Konfigurieren und Testen des einmaligen Anmeldens von Microsoft Azure AD bei SanSan müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Microsoft Azure AD](#configuring-azure-ad-single-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+1. **[Konfigurieren des einmaligen Anmeldens von Microsoft Azure AD](#configuring-azure-ad-single-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
 2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Microsoft Azure AD mit dem Testbenutzer Britta Simon zu testen.
 3. **[Erstellen einen SanSan-Testbenutzers](#creating-an-sansan-test-user)** , um eine Entsprechung von Britta Simon in SanSan zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon das einmalige Anmelden von Microsoft Azure AD zu ermöglichen.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
-### <a name="configuring-microsoft-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Microsoft Azure AD
+### <a name="configure-microsoft-azure-ad-sso"></a>Konfigurieren der einmaligen Anmeldung (SSO) von Microsoft Azure AD
+
 In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Microsoft Azure AD im klassischen Portal und konfigurieren es in Ihrer SanSan-Anwendung.
 
 **Führen Sie zum Konfigurieren des einmaligen Anmeldens von Microsoft Azure AD in SanSan die folgenden Schritte aus:**
@@ -105,47 +109,37 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Microsoft Azure AD
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sansan-tutorial/tutorial_sansan_03.png) 
 3. Führen Sie auf der Dialogseite **App-Einstellungen konfigurieren** die folgenden Schritte aus:
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sansan-tutorial/tutorial_sansan_04.png) 
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sansan-tutorial/tutorial_sansan_04.png)    
+  1. Geben Sie im Textfeld **Anmelde-URL** die URL im folgenden Format ein:
    
-    a. Geben Sie im Textfeld **Anmelde-URL** die URL im folgenden Format ein:
-   
-   | Environment | URL |
-   |:--- |:--- |
-   | PC-Web |`https://ap.sansan.com/v/saml2/<company name>/acs` |
-   | Native Mobile App |`https://internal.api.sansan.com/saml2/<company name>/acs` |
-   | Einstellungen für mobile Browser |`https://ap.sansan.com/s/saml2/<company name>/acs` |
-
-    b. Geben Sie im Textfeld **Bezeichner** die URL im folgenden Format ein: 
+    | Environment | URL |
+    |:--- |:--- |
+    | PC-Web |`https://ap.sansan.com/v/saml2/<company name>/acs` |
+    | Native Mobile App |`https://internal.api.sansan.com/saml2/<company name>/acs` |
+    | Einstellungen für mobile Browser |`https://ap.sansan.com/s/saml2/<company name>/acs` 
+  2. Geben Sie im Textfeld **Bezeichner** die URL im folgenden Format ein: 
 
     | Environment             | URL |
     | :--                     | :-- |
     | PC-Web                  | `https://ap.sansan.com/v/saml2/<company name>`|
     | Native Mobile App       | `https://internal.api.sansan.com/saml2/<company name>` |
     | Einstellungen für mobile Browser | `https://ap.sansan.com/s/saml2/<company name>` |
-
-
-    c. Klicken Sie auf **Next**.
+  3. Klicken Sie auf **Weiter**.
 
 1. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für SanSan** die folgenden Schritte aus:
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sansan-tutorial/tutorial_sansan_05.png) 
-   
-    a. Klicken Sie auf **Zertifikat herunterladen**und speichern Sie die Datei auf Ihrem Computer.
-   
-    b. Klicken Sie auf **Next**.
+  1. Klicken Sie auf **Zertifikat herunterladen**und speichern Sie die Datei auf Ihrem Computer.
+  2. Klicken Sie auf **Weiter**.
 2. Wenden Sie sich an das SanSan-Supportteam, um Unterstützung bei der SSO-Konfiguration für Ihre Anwendung zu erhalten. Geben Sie dabei die folgenden Informationen an:
    
-   • Das heruntergeladene **Zertifikat**
-   
-   • Die **Identitätsanbieter-ID**
-   
-   • Die **SAML-SSO-URL**
-   
-   • Die **Dienst-URL für einmaliges Abmelden**
+  * Das heruntergeladene **Zertifikat**
+  * Die **Identitätsanbieter-ID**   
+  * Die **SAML-SSO-URL**
+  * Die **Dienst-URL für einmaliges Abmelden**
 
-> [!NOTE]
-> Die PC-Browsereinstellungen funktionieren auch für die Mobile App und den mobilen Browser mit PC-Web. 
-> 
+>[!NOTE]
+>Die PC-Browsereinstellungen funktionieren auch für die Mobile App und den mobilen Browser mit PC-Web.  
 > 
 
 1. Wählen Sie im klassischen Portal die Bestätigung zur Konfiguration der einmaligen Anmeldung aus, und klicken Sie dann auf **Weiter**.
@@ -155,9 +149,10 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Microsoft Azure AD
    
     ![Azure AD – einmaliges Anmelden][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit dem Namen Britta Simon.
-Wählen Sie in der Benutzerliste **Britta Simon**aus.
+
+* Wählen Sie in der Benutzerliste **Britta Simon**aus.
 
 ![Azure AD-Benutzer erstellen][20]
 
@@ -175,46 +170,35 @@ Wählen Sie in der Benutzerliste **Britta Simon**aus.
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-sansan-tutorial/create_aaduser_04.png) 
 5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
    
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-sansan-tutorial/create_aaduser_05.png) 
-   
-    a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
-   
-    b. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
-   
-    c. Klicken Sie auf **Weiter**.
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-sansan-tutorial/create_aaduser_05.png)  
+  1. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus. 
+  2. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
+  3. Klicken Sie auf **Weiter**.
 6. Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
    
    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-sansan-tutorial/create_aaduser_06.png) 
-   
-   a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
-   
-   b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
-   
-   c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
-   
-   d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
-   
-   e. Klicken Sie auf **Weiter**.
+  1. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
+  2. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
+  3. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
+  4. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
+  5. Klicken Sie auf **Weiter**.
 7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-sansan-tutorial/create_aaduser_07.png) 
 8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-sansan-tutorial/create_aaduser_08.png) 
-   
-    a. Notieren Sie den Wert von **Neues Kennwort**.
-   
-    b. Klicken Sie auf **Fertig stellen**.   
+   1. Notieren Sie den Wert von **Neues Kennwort**.
+   2. Klicken Sie auf **Fertig stellen**.   
 
-### <a name="creating-an-sansan-test-user"></a>Erstellen einen SanSan-Testbenutzers
+### <a name="create-an-sansan-test-user"></a>Erstellen einen SanSan-Testbenutzers
 In diesem Abschnitt erstellen Sie in SanSan einen Benutzer namens Britta Simon. Bei der SanSan-Anwendung muss der Benutzer in der Anwendung bereitgestellt werden, bevor das einmalige Anmelden möglich ist. 
 
-> [!NOTE]
-> Wenn Sie einen Benutzer manuell oder eine Gruppe von Benutzern erstellen müssen, wenden Sie sich an das SanSan-Supportteam.
-> 
+>[!NOTE]
+>Wenn Sie einen Benutzer manuell oder eine Gruppe von Benutzern erstellen müssen, wenden Sie sich an das SanSan-Supportteam. 
 > 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf SanSan gewähren.
 
 ![Benutzer zuweisen][200] 
@@ -235,8 +219,9 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
    
     ![Benutzer zuweisen][205]
 
-### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
-In diesem Abschnitt testen Sie die Microsoft Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
+In diesem Abschnitt testen Sie die Microsoft Azure AD-Konfiguration für einmaliges Anmelden (SSO) über den Zugriffsbereich.
+
 Wenn Sie im Zugriffsbereich auf die Kachel „SanSan“ klicken, sollten Sie automatisch bei Ihrer SanSan-Anwendung angemeldet werden.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
@@ -260,9 +245,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „SanSan“ klicken, sollten Sie aut
 [203]: ./media/active-directory-saas-sansan-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-sansan-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-sansan-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

@@ -13,11 +13,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2016
+ms.date: 02/23/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 4ff028f88e984f28bc0f4a228aabed1fabc90560
-ms.openlocfilehash: b5c031d1e36508e7622ba516d7bb8b2cfb3d7a89
+ms.sourcegitcommit: 847a8bdcf880b56f587f6759058825fd1965d29e
+ms.openlocfilehash: 6ad91429794e465be7cb26963d032d9357143053
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -30,7 +31,7 @@ Je nach der Konfiguration von Azure Multi-Factor Authentication in Ihrem Unterne
 Wenn der IT-Administrator eine bestimmte URL oder Schritte zum Verwalten der Überprüfung in zwei Schritten gesendet hat, befolgen Sie diese Anweisungen. Andernfalls sollten sich die Schritte mit den folgenden Anweisungen durchführen lassen. Wenn Sie diese Anweisungen befolgen, jedoch nicht die gleichen Optionen angezeigt werden, hat Ihr Unternehmen bzw. Ihre Bildungseinrichtung ein eigenes Portal konfiguriert. Erkundigen Sie sich bei Ihrem Administrator nach dem Link zu Ihrem Azure Multi-Factor Authentication-Portal.
 
 1. Melden Sie sich bei [https://myapps.microsoft.com](https://myapps.microsoft.com) an.  
-2. Wählen Sie oben das **Profil** aus.  
+2. Wählen Sie oben rechts Ihren Kontonamen aus, und wählen Sie dann **Profil**.  
 3. Klicken Sie auf **Zusätzliche Sicherheitsüberprüfung**.  
 
     ![MyApps](./media/multi-factor-authentication-end-user-manage/myapps1.png)
@@ -56,15 +57,17 @@ Konfigurieren Sie unbedingt eine sekundäre Authentifizierungstelefonnummer.  Da
 2. Geben Sie im Textfeld die sekundäre Telefonnummer ein.  
 3. Wählen Sie **Speichern** aus, und Ihre Änderungen sind abgeschlossen.  
 
+## <a name="require-two-step-verification-again-on-a-device-youve-marked-as-trusted"></a>Erneutes Anfordern der Überprüfung in zwei Schritten auf einem als vertrauenswürdig markierten Gerät
+
+Abhängig von den Organisationseinstellungen steht möglicherweise ein Kontrollkästchen „Die nächsten **X** Tage nicht erneut fragen“ zur Verfügung, wenn Sie die Überprüfung in zwei Schritten in Ihrem Browser ausführen. Wenn Sie dieses Kontrollkästchen aktivieren und dann Ihr Gerät verlieren oder befürchten, dass Ihr Konto kompromittiert wurde, sollten Sie die Überprüfung in zwei Schritten auf allen Geräten wiederherstellen. 
+
+1. Wählen Sie auf der Seite „Zusätzliche Sicherheitsüberprüfung“ die Option **Multi-Factor Authentication auf Geräten wiederherstellen, die zuvor als vertrauenswürdig eingestuft worden sind**.
+2. Bei der nächsten Anmeldung bei einem Gerät werden Sie aufgefordert, die Überprüfung in zwei Schritten durchzuführen. 
+
 ## <a name="how-do-i-clean-up-microsoft-authenticator-from-my-old-device-and-move-to-a-new-one"></a>Wie kann ich Microsoft Authenticator von meinem alten Gerät entfernen und zu einem neuen Gerät wechseln?
 Wenn Sie die App von Ihrem Gerät deinstallieren oder das Gerät auf die Werkseinstellungen zurücksetzen, wird die Aktivierung im Back-End nicht entfernt. Weitere Informationen finden Sie unter [Microsoft Authenticator](microsoft-authenticator-app-how-to.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Unter [Probleme bei der Überprüfung in zwei Schritten](multi-factor-authentication-end-user-troubleshoot.md) finden Sie Tipps zur Problembehandlung und Hilfe.
 * Richten Sie [App-Kennwörter](multi-factor-authentication-end-user-app-passwords.md) für Apps ein, die die Überprüfung in zwei Schritten nicht unterstützen.
-
-
-
-<!--HONumber=Dec16_HO4-->
-
 

@@ -16,8 +16,9 @@ ms.tgt_pltfrm: NA
 ms.date: 02/06/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 319e22e2fb423e0fe1fabf95d0018d4fa3232e0b
-ms.openlocfilehash: 5d7f11b9b027f86adf3d2382e82f2d382d71ee51
+ms.sourcegitcommit: 5e01db2676e3515f41bf98d23595e6509c0d6805
+ms.openlocfilehash: c5f50213be9cd20c82acf8dd94463e7dce0a0195
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -49,6 +50,7 @@ Sie können einzelne Azure SQL-Datenbanken mit dem [Azure-Portal](https://portal
     ![Blatt für neue Beispieldatenbank](./media/sql-database-get-started/new-sample-db-blade.png)
 
 ## <a name="change-the-service-tier-and-performance-level-of-a-single-database"></a>Ändern der Dienstebene und Leistungsstufe einer Einzeldatenbank
+
 Öffnen Sie das Blatt „SQL-Datenbank“ für die Datenbank, die Sie zentral hoch- oder herunterskalieren möchten:
 
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com)auf **Weitere Dienste** > **SQL-Datenbanken**.
@@ -59,12 +61,11 @@ Sie können einzelne Azure SQL-Datenbanken mit dem [Azure-Portal](https://portal
 
 4. Wählen Sie eine neue Stufe aus, und klicken Sie auf **Auswählen**:
    
-   Durch das Klicken auf **Auswählen** wird eine Skalierungsanforderung zum Ändern des Tarifs gesendet. Je nach Größe Ihrer Datenbank kann es einige Zeit dauern, bis der Skalierungsvorgang abgeschlossen ist (siehe Informationen oben in diesem Artikel).
+   Durch das Klicken auf **Auswählen** wird eine Skalierungsanforderung zum Ändern des Tarifs gesendet. Je nach Größe Ihrer Datenbank kann es einige Zeit dauern, bis der Skalierungsvorgang abgeschlossen ist (Informationen finden Sie unter [Dienstebenen](sql-database-service-tiers.md)).
    
    > [!NOTE]
    > Durch das Ändern des Tarifs für Ihre Datenbank ändert sich nicht die maximale Datenbankgröße. Verwenden Sie zum Ändern der maximalen Datenbankgröße [Transact-SQL (T-SQL)](https://msdn.microsoft.com/library/mt574871.aspx) oder [PowerShell](https://msdn.microsoft.com/library/mt619433.aspx).
-   > 
-   > 
+   >  
    
    ![Tarif auswählen](./media/sql-database-manage-single-database-portal/choose-tier.png)
 5. Klicken Sie auf das Benachrichtigungssymbol (Glocke), in der oberen rechten Ecke:
@@ -80,9 +81,4 @@ Sie können einzelne Azure SQL-Datenbanken mit dem [Azure-Portal](https://portal
 * Informationen zum Ausführen von Verwaltungsaufgaben mithilfe von SQL Server Management Studio finden Sie unter [Verwalten einer Azure SQL-Datenbank mit SQL Server Management Studio](sql-database-manage-azure-ssms.md).
 * Informationen zum SQL-Datenbank-Dienst finden Sie unter [Was ist SQL Database? Einführung in SQL-Datenbank](sql-database-technical-overview.md). 
 * Informationen zu Azure-Datenbankservern und Datenbankfeatures finden Sie unter [Funktionen von Azure SQL-Datenbank](sql-database-features.md).
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

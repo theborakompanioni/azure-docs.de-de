@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/05/2016
+ms.date: 02/22/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a9b5410785c0d4a979d04483037069cad6a5dfd7
+ms.sourcegitcommit: 1c22e4fc17226578aaaf272fdf79178da65c63c2
+ms.openlocfilehash: e6b1c8cbf45fea4f5af16231003ccc07a2a53233
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -32,7 +33,7 @@ Das in diesem Tutorial beschriebene Szenario besteht aus den folgenden Bausteine
 3. Konfigurieren der Benutzerbereitstellung
 4. Konfigurieren der Benutzerbereitstellung
 
-![Szenario](./media/active-directory-saas-workday-tutorial/IC782919.png "Scenario")
+![Szenario](./media/active-directory-saas-workday-tutorial/IC782919.png "Szenario")
 
 ## <a name="enabling-the-application-integration-for-workday"></a>Aktivieren der Anwendungsintegration für Workday
 In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Workday aktivieren.
@@ -46,11 +47,11 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Wor
 
 3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
    
-    ![Anwendungen](./media/active-directory-saas-workday-tutorial/IC700994.png "Applications")
+    ![Anwendungen](./media/active-directory-saas-workday-tutorial/IC700994.png "Anwendungen")
 
 4. Klicken Sie zum Öffnen des **Anwendungskatalogs** auf **App hinzufügen** und anschließend auf **Eine Anwendung hinzufügen, die mein Unternehmen verwendet**.
    
-    ![Was möchten Sie tun?](./media/active-directory-saas-workday-tutorial/IC700995.png "What do you want to do?")
+    ![Was möchten Sie tun?](./media/active-directory-saas-workday-tutorial/IC700995.png "Was möchten Sie tun?")
 
 5. Geben Sie im **Suchfeld** das Wort **Workday** ein.
    
@@ -68,15 +69,15 @@ Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [Konvertier
 ### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>So konfigurieren Sie einmaliges Anmelden
 1. Klicken Sie auf der Anwendungsintegrationsseite für**Workday** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-workday-tutorial/IC782920.png "Configure single sign-on")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-workday-tutorial/IC782920.png "Einmaliges Anmelden konfigurieren")
 
 2. Wählen Sie auf der Seite **How would you like users to sign on to Workday?** (Wie sollen sich Benutzer bei Workday anmelden?) die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie anschließend auf **Weiter**.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-workday-tutorial/IC782921.png "Configure single sign-on")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-workday-tutorial/IC782921.png "Einmaliges Anmelden konfigurieren")
 
 3. Führen Sie auf der Seite **App-URL konfigurieren** die folgenden Schritte aus, und klicken Sie dann auf **Weiter**.
    
-    ![App-URL konfigurieren](./media/active-directory-saas-workday-tutorial/IC782957.png "Configure App URL")
+    ![App-URL konfigurieren](./media/active-directory-saas-workday-tutorial/IC782957.png "App-URL konfigurieren")
    
     a. Geben Sie im Textfeld **Anmelde-URL** die von Ihren Benutzern zur Anmeldung bei Workday verwendete URL in folgendem Format ein: `https://impl.workday.com/<tenant>/login-saml2.htmld`
    
@@ -89,7 +90,7 @@ Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [Konvertier
 
 4. Klicken Sie zum Herunterladen des Zertifikats auf der Seite **Configure single sign-on at Workday** (Einmaliges Anmelden für Workday konfigurieren) auf **Zertifikat herunterladen**, und speichern Sie das Zertifikat auf Ihrem Computer.
  
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-workday-tutorial/IC782922.png "Configure single sign-on")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-workday-tutorial/IC782922.png "Einmaliges Anmelden konfigurieren")
 
 5. Melden Sie sich in einem anderen Webbrowserfenster auf der Workday-Unternehmenswebsite als Administrator an.
 
@@ -99,15 +100,15 @@ Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [Konvertier
 
 7. Wechseln Sie zu **Kontoverwaltung**.
    
-    ![Kontoverwaltung](./media/active-directory-saas-workday-tutorial/IC782924.png "Account Administration")
+    ![Kontoverwaltung](./media/active-directory-saas-workday-tutorial/IC782924.png "Kontoverwaltung")
 
 8. Wechseln Sie zu **Mandanten-Setup bearbeiten – Sicherheit**.
    
-    ![Mandanten-Sicherheit bearbeiten](./media/active-directory-saas-workday-tutorial/IC782925.png "Edit Tenant Security")
+    ![Mandantensicherheit bearbeiten](./media/active-directory-saas-workday-tutorial/IC782925.png "Mandantensicherheit bearbeiten")
 
 9. Führen Sie im Abschnitt **Umleitungs-URLs** die folgenden Schritte aus:
    
-    ![Umleitungs-URLs](./media/active-directory-saas-workday-tutorial/IC7829581.png "Redirection URLs")
+    ![Umleitungs-URLs](./media/active-directory-saas-workday-tutorial/IC7829581.png "Umleitungs-URLs")
    
     a. Klicken Sie auf **Zeile hinzufügen**.
    
@@ -124,7 +125,7 @@ Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [Konvertier
 
 1. Führen Sie im Abschnitt **SAML-Setup** die folgenden Schritte aus:
    
-    ![SAML-Setup](./media/active-directory-saas-workday-tutorial/IC782926.png "SAML Setup")
+    ![SAML-Setup](./media/active-directory-saas-workday-tutorial/IC782926.png "SAML-Setup")
    
     a.  Wählen Sie die Option **SAML-Authentifizierung aktivieren**.
    
@@ -132,7 +133,7 @@ Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [Konvertier
 
 2. Führen Sie im Abschnitt „SAML-Identitätsanbieter“ die folgenden Schritte aus:
    
-    ![SAML-Identitätsanbieter](./media/active-directory-saas-workday-tutorial/IC7829271.png "SAML Identity Providers")
+    ![SAML-Identitätsanbieter](./media/active-directory-saas-workday-tutorial/IC7829271.png "SAML-Identitätsanbieter")
    
     a. Geben Sie im Textfeld „Name des Identitätsanbieters“ einen Anbieternamen ein (z.B *SPInitiatedSSO*).
    
@@ -144,16 +145,16 @@ Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [Konvertier
 
     e. Klicken Sie auf **Identity Provider Public Key Certificate** (Öffentliches Schlüsselzertifikat des Identitätsanbieters), und klicken Sie dann auf **Erstellen**. 
 
-    ![Erstellen](./media/active-directory-saas-workday-tutorial/IC782928.png "Create")
+    ![Erstellen](./media/active-directory-saas-workday-tutorial/IC782928.png "Erstellen")
 
     f. Klicken Sie auf **Öffentlichen x509-Schlüssel erstellen**. 
 
-    ![Erstellen](./media/active-directory-saas-workday-tutorial/IC782929.png "Create")
+    ![Erstellen](./media/active-directory-saas-workday-tutorial/IC782929.png "Erstellen")
 
 
 1. Führen Sie im Abschnitt **Öffentlichen x509-Schlüssel anzeigen** die folgenden Schritte aus: 
    
-    ![Öffentlichen x509-Schlüssel anzeigen](./media/active-directory-saas-workday-tutorial/IC782930.png "View x509 Public Key") 
+    ![Öffentlichen x509-Schlüssel anzeigen](./media/active-directory-saas-workday-tutorial/IC782930.png "Öffentlichen x509-Schlüssel anzeigen") 
    
     a. Geben Sie im Textfeld **Name** einen Namen für das Zertifikat ein (z.B. *PPE\_SP*).
    
@@ -181,9 +182,9 @@ Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [Konvertier
 
 2. Führen Sie die folgenden Schritte aus: 
    
-    ![SSO-Konfiguration](./media/active-directory-saas-workday-tutorial/IC7829351111.png "SSO configuration")
+    ![SSO-Konfiguration](./media/active-directory-saas-workday-tutorial/IC7829351111.png "SSO-Konfiguration")
    
-    a.  Aktivieren Sie das **private Schlüsselpaar „X. 509“**.
+    a.  Aktivieren Sie das **private Schlüsselpaar „X.&509;“**.
    
     b.  Geben Sie im Textfeld **Dienstanbieter-ID** Folgendes ein: **http://www.workday.com**
    
@@ -195,7 +196,7 @@ Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [Konvertier
    
     f. Wählen Sie als **Authentication Request Signature Method** (Signaturmethode für Authentifizierungsanfragen) die Option **SHA256** aus. 
    
-    ![Signaturmethode für Authentifizierungsanfragen](./media/active-directory-saas-workday-tutorial/IC782932.png "Authentication Request Signature Method") 
+    ![Signaturmethode für Authentifizierungsanfragen](./media/active-directory-saas-workday-tutorial/IC782932.png "Signaturmethode für Authentifizierungsanfragen") 
    
     g. Klicken Sie auf **OK**. 
    
@@ -203,11 +204,11 @@ Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [Konvertier
 
 3. Klicken Sie im klassischen Azure-Portal auf der Seite **Configure single sign-on at Workday** (Einmaliges Anmelden bei Workday konfigurieren) auf **Weiter**. 
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-workday-tutorial/IC782934.png "Configure single sign-on")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-workday-tutorial/IC782934.png "Einmaliges Anmelden konfigurieren")
 
 4. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**. 
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-workday-tutorial/IC782935111.png "Configure single sign-on")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-workday-tutorial/IC782935111.png "Einmaliges Anmelden konfigurieren")
 
 ## <a name="configuring-user-provisioning"></a>Konfigurieren der Benutzerbereitstellung
 Um einen in Workday bereitgestellten Testbenutzer zu bekommen, müssen Sie sich an das Workday-Supportteam wenden.  
@@ -221,17 +222,12 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
 
 2. Klicken Sie auf der Anwendungsintegrationsseite für **Workday** auf **Benutzer zuweisen**.
    
-    ![Benutzer zuweisen](./media/active-directory-saas-workday-tutorial/IC782935.png "Assign Users")
+    ![Zuweisen von Benutzern](./media/active-directory-saas-workday-tutorial/IC782935.png "Zuweisen von Benutzern")
 
 3. Wählen Sie den Testbenutzer aus, klicken Sie auf **Zuweisen** und anschließend auf **Ja**, um die Zuweisung zu bestätigen.
    
-    ![Ja](./media/active-directory-saas-workday-tutorial/IC767830.png "Yes")
+    ![Ja](./media/active-directory-saas-workday-tutorial/IC767830.png "Ja")
 
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

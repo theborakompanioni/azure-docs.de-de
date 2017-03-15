@@ -1,6 +1,6 @@
 ---
-title: "Ändern von Profilinformationen für Ihr Azure-Konto | Microsoft Docs"
-description: "Beschreibt, wie Sie das Profil für Ihr Azure-Konto ändern, und beantwortet häufig gestellte Fragen, z. B., warum im Azure-Kontocenter das Land nicht geändert werden kann."
+title: "Ändern Ihrer Profilinformationen für Ihr Azure-Konto | Microsoft-Dokumentation"
+description: "Beschreibt, wie Sie das Profil für Ihr Azure-Konto ändern, und beantwortet häufig gestellte Fragen, z.B., warum im Azure-Kontocenter das Land nicht geändert werden kann"
 services: 
 documentationcenter: 
 author: genlin
@@ -13,15 +13,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/03/2017
+ms.date: 03/01/2017
 ms.author: genli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 8587b157886f2d0f5778573aeec55c072a50bf93
-ms.openlocfilehash: dd28c37bc63d1c457d7c8ffc60b1bad1f2831f31
-
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: c4f76065996c7db43ec5503ff76fc7a1bbeb87ed
+ms.lasthandoff: 03/03/2017
 
 ---
-# <a name="how-to-change-profile-information-of-your-azure-account-such-as-contact-email-address-and-phone-number"></a>Ändern von Profilinformationen für Ihr Azure-Konto, beispielsweise Kontakt-E-Mail-Adresse, Adresse und Telefonnummer
+# <a name="change-your-azure-account-profile-information-such-as-contact-email-address-and-phone-number"></a>Ändern Ihrer Profilinformationen für Ihr Azure-Konto, beispielsweise Kontakt-E-Mail-Adresse, Adresse und Telefonnummer
 Die E-Mail-Adresse im Profil des Kontoadministrators wird von Microsoft dazu verwendet, Sie über wichtige abrechnungsbezogene Aktualisierungen für das Abonnement zu benachrichtigen. Es wird empfohlen, dass Sie eine Kontakt-E-Mail-Adresse angeben, die Sie häufig überprüfen.
 
 ## <a name="how-to-change-your-profile-information"></a>Ändern Ihrer Profilinformationen
@@ -51,10 +52,5 @@ Sie erhalten Warnbenachrichtigungen unter der E-Mail-Adresse, die Sie bei der Re
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
 [Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen. 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

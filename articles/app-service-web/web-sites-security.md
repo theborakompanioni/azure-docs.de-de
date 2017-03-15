@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/12/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 5d51a5ef3387b4c00079547b0f44ffe1f96bd77c
-ms.openlocfilehash: 641fe31fc4b160fe5f0628df717006fb540394b9
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: eaf3df69428124127ef3daf134bc948cd0988ec6
+ms.openlocfilehash: c1956e97444077f197ab5d0fd67097ddea0f7244
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -51,11 +51,11 @@ Während Azure dafür verantwortlich ist, die Infrastruktur und Plattform zu sic
 Eine umfassende Erläuterung der Sicherheitsaspekte webbasierter Anwendungen wird über den Rahmen dieses Dokuments sprengen. Weitere Informationen zur Sicherung von Anwendungen finden Sie unter dem [Open Web Application Security Project (OWASP)](https://www.owasp.org/index.php/Main_Page), insbesondere unter dem [Top 10-Projekt](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project), das die 10 derzeit kritischsten Sicherheitsschwachstellen auflistet, die von OWASP-Mitgliedern angegeben wurden.
 
 ## <a name="perform-penetration-testing-on-your-app"></a>Ausführen von Penetrationstests für Ihre App
-Eine der einfachsten Möglichkeiten, mit der Sie Ihre App Service-App auf Sicherheitslücken testen können, ist die Verwendung der [Integration in Tinfoil Security](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/) , die diese per Mausklick auf Schwachstellen überprüft. Sie können die Testergebnisse in einem leicht verständlichen Bericht anzeigen lassen, und erfahren, wie Sie jede Sicherheitslücke mit einer Schritt-für-Schritt-Anleitung beheben können.
+Eine der einfachsten Möglichkeiten, mit der Sie Ihre App Service-App auf Sicherheitslücken testen können, ist die Verwendung der [Integration in Tinfoil Security](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/), die diese per Mausklick auf Schwachstellen überprüft. Sie können die Testergebnisse in einem leicht verständlichen Bericht anzeigen lassen, und erfahren, wie Sie jede Sicherheitslücke mit einer Schritt-für-Schritt-Anleitung beheben können.
 
 Wenn Sie lieber Ihre eigenen Penetrationstests ausführen möchten oder eine andere Scanner Suite oder einen anderen Anbieter verwenden möchten, befolgen Sie den [Azure Penetrationstests-Genehmigungsprozess](https://security-forms.azure.com/penetration-testing/terms) und erhalten Sie vorherige Genehmigungen zum Ausführen der gewünschten Penetrationstests.
 
-## <a name="a-namehttpsa-secure-communication-with-customers"></a><a name="https"></a> Sichere Kommunikation mit Kunden
+## <a name="https"></a> Sichere Kommunikation mit Kunden
 Wenn Sie den Domänennamen **\*.azurewebsites.net** nutzen, der für Ihre App Service-App erstellt wurde, können Sie HTTPS sofort verwenden, da ein SSL-Zertifikat für alle Domänennamen in **\*.azurewebsites.net** bereitgestellt wird. Wenn Ihre Website einen [kundenspezifischen Domänennamen](web-sites-custom-domain-name.md) verwendet, können Sie ein SSL-Zertifikat hochladen, um für die kundenspezifische Domäne [HTTPS zu aktivieren](web-sites-configure-ssl-certificate.md).
 
 Aktivieren von [HTTPS](https://en.wikipedia.org/wiki/HTTPS) kann gegen MITM-Angriffe auf die Kommunikation zwischen Ihrer Anwendung und deren Benutzern schützen.
@@ -65,7 +65,7 @@ App Service ist mit SQL-Datenbank so vernetzt, dass alle Verbindungszeichenfolge
 
 Wenn Sie eine Drittanbieter-Datenbank, wie z. B. ClearDB verwenden, sollten Sie sich an die vom Provider bereitgestellte Dokumentation zum Thema bewährte Sicherheitsmethoden halten.  
 
-## <a name="a-namedevelopa-secure-development-and-deployment"></a><a name="develop"></a> Sichere Entwicklung und Bereitstellung
+## <a name="develop"></a> Sichere Entwicklung und Bereitstellung
 ### <a name="publishing-profiles-and-publish-settings"></a>Veröffentlichung von Profilen und Einstellungen
 Bei der Entwicklung von Anwendungen, der Durchführung von Verwaltungsaufgaben oder der Automatisierung von Aufgaben, die **Visual Studio**, **Web Matrix**, **Azure PowerShell** oder die **Azure-Befehlszeilenschnittstelle (Azure-CLI)** verwenden, können Sie entweder eine Datei mit *Veröffentlichungseinstellungen* oder mit *Veröffentlichungsprofil* nutzen. Beide Datentypen authentifizieren Sie bei Azure und sollten geschützt werden, um unautorisierten Zugriff zu verhindern.
 

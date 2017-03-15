@@ -13,12 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2016
+ms.date: 03/06/2017
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: 218d41ac352f01a7e03b5b8a1c45e1bf6d5ace28
-ms.openlocfilehash: a3b1289d52207448cebc628466492371d1bf6519
-ms.lasthandoff: 01/11/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: fc917c9c9a92bf944d922a9418e065fa661c69df
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -36,18 +36,18 @@ Dieses Tutorial zeigt zwei Möglichkeiten, um Informationen zur Verbindungszeich
 - Ein Azure-Konto. Wenn Sie noch kein Azure-Konto besitzen, erstellen Sie jetzt ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/). 
 - Ein DocumentDB-Konto. Anweisungen finden Sie unter [Erstellen eines DocumentDB-Kontos zur Verwendung mit MongoDB-Apps](documentdb-create-mongodb-account.md).
 
-## <a name="a-idquickstartconnectionaget-the-mongodb-connection-string-using-the-quick-start"></a><a id="QuickStartConnection"></a>Abrufen der MongoDB-Verbindungszeichenfolge mithilfe der Schnellstartmethode
+## <a id="QuickStartConnection"></a>Abrufen der MongoDB-Verbindungszeichenfolge mithilfe der Schnellstartmethode
 1. Melden Sie sich in einem Internetbrowser beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie auf dem Blatt **NoSQL (DocumentDB)** das DocumentDB-Konto mit Protokollunterstützung für MongoDB aus. 
+2. Wählen Sie auf dem Blatt **NoSQL (DocumentDB)** das DocumentDB: API für MongoDB-Konto aus. 
 3. Klicken Sie auf der **linken Navigationsleiste** des Blatts „Konto“ auf **Schnellstart**. 
 4. Wählen Sie Ihre Plattform aus (*.NET-Treiber*, *Node.js-Treiber*, *MongoDB Shell*, *Java-Treiber*, *Python-Treiber*). Wenn der gewünschte Treiber oder das gewünschte Tool nicht aufgeführt wird, machen Sie sich keine Sorgen: Wir stellen kontinuierlich weitere Codeausschnitte für Verbindungen zur Verfügung. Teilen Sie uns in einem Kommentar unten mit, welche Informationen Sie benötigen. Unter [Abrufen der Informationen zur Verbindungszeichenfolge für das Konto](#GetCustomConnection), erfahren Sie, wie Sie die Verbindung selbst erstellen können.
 5. Kopieren Sie den Codeausschnitt, und fügen Sie ihn in Ihre MongoDB-App ein – und schon kann es losgehen.
 
     ![Screenshot des Blatts „Schnellstart“](./media/documentdb-connect-mongodb-account/QuickStartBlade.png)
 
-## <a name="a-idgetcustomconnectiona-get-the-mongodb-connection-string-to-customize"></a><a id="GetCustomConnection"></a> Abrufen der MongoDB-Verbindungszeichenfolge zum Anpassen
+## <a id="GetCustomConnection"></a> Abrufen der MongoDB-Verbindungszeichenfolge zum Anpassen
 1. Melden Sie sich in einem Internetbrowser beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie auf dem Blatt **NoSQL (DocumentDB)** das DocumentDB-Konto mit Protokollunterstützung für MongoDB aus. 
+2. Wählen Sie auf dem Blatt **NoSQL (DocumentDB)** das DocumentDB: API für MongoDB-Konto aus. 
 3. Klicken Sie auf der **linken Navigationsleiste** des Blatts „Konto“ auf **Verbindungszeichenfolge**. 
 4. Das Blatt **Informationen zur Verbindungszeichenfolge** wird geöffnet. Es enthält alle erforderlichen Informationen, um mithilfe eines Treibers für MongoDB eine Verbindung mit dem Konto herzustellen, einschließlich einer vorab erstellten Verbindungszeichenfolge.
 
@@ -82,6 +82,6 @@ Betrachten Sie beispielsweise das Konto in den Informationen zur Verbindungszeic
     mongodb://contoso123:0Fc3IolnL12312asdfawejunASDF@asdfYXX2t8a97kghVcUzcDv98hawelufhawefafnoQRGwNj2nMPL1Y9qsIr9Srdw==@anhohmongo.documents.azure.com:10250/mydatabase?ssl=true
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Erfahren Sie, wie Sie [MongoChef](documentdb-mongodb-mongochef.md) mit einem DocumentDB-Konto mit Protokollunterstützung für MongoDB verwenden.
-* Untersuchen Sie DocumentDB mit Protokollunterstützung für MongoDB anhand von [Beispielen](documentdb-mongodb-samples.md).
+* Erfahren Sie, wie Sie mit einem DocumentDB: API für MongoDB-Konto [MongoChef verwenden](documentdb-mongodb-mongochef.md).
+* Weitere Informationen über DocumentDB: API für MongoDB finden Sie unter [Beispiele](documentdb-mongodb-samples.md).
 

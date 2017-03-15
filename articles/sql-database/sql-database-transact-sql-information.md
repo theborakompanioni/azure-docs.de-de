@@ -11,40 +11,34 @@ ms.assetid: c05abd9e-28a7-4c97-9bdf-bc60d08fc92e
 ms.service: sql-database
 ms.custom: overview
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 11/28/2016
+ms.date: 02/22/2017
 ms.author: rickbyh
 translationtype: Human Translation
-ms.sourcegitcommit: 3f9077733725174f1eed61d37d544e4f36822f6e
-ms.openlocfilehash: d935571ccd18bc15baa000fb8c07fed11b66ba6c
+ms.sourcegitcommit: a08d9f2ef29002f10473b0e041737c9c607f3ca0
+ms.openlocfilehash: 7d6de93c99141248ea970ea668fb0b2191267b62
+ms.lasthandoff: 03/01/2017
 
 
 ---
 # <a name="azure-sql-database-transact-sql-differences"></a>Azure SQL-Datenbank – Abweichungen bei Transact-SQL   
 Die meisten Transact-SQL-Funktionen, von denen Anwendungen abhängen, werden in Microsoft SQL Server und Azure SQL-Datenbank unterstützt. Die zentralen SQL-Komponenten wie z.B. Datentypen, Operatoren, Zeichenfolgen-, Arithmetik-, logische und Cursorfunktionen usw., funktionieren ohne Unterschiede zu SQL Server.
 
-## <a name="why-some-transact-sql-is-not-supported"></a>Warum einige Transact-SQL-Features nicht unterstützt werden
+# <a name="why-some-transact-sql-is-not-supported"></a>Warum einige Transact-SQL-Features nicht unterstützt werden
 Azure SQL-Datenbank ist so konzipiert, dass Funktionen von den Abhängigkeiten von der master-Datenbank und dem Betriebssystem isoliert werden. Daher sind viele Aktivitäten auf Serverebene für die SQL-Datenbank nicht geeignet. Transact-SQL-Anweisungen sind in der Regel nicht verfügbar, wenn sie Optionen auf Serverebene, Betriebssystemkomponenten oder bestimmte Dateisystemkonfigurationen konfigurieren. Wenn Funktionen erforderlich sind, die sich außerhalb der Benutzerdatenbank befinden, dann ist häufig eine andere geeignete Alternative zur SQL-Datenbank bzw. aus einem anderen Azure-Feature oder -Dienst verfügbar. 
 
-Beispielsweise wird Always On mit der aktiven Georeplikation ersetzt. Aus diesem Grund werden alle Transact-SQL-Anweisungen, die sich auf Verfügbarkeitsgruppen beziehen, nicht von der SQL-Datenbank unterstützt, und die dynamischen Verwaltungssichten, die sich auf Always On beziehen, werden nicht unterstützt.  
+Beispielsweise gilt Always On nicht für Azure SQL-Datenbank, da die hohe Verfügbarkeit im Dienst integriert ist, d.h., jede Datenbank ist hoch verfügbar. Aus diesem Grund werden alle Transact-SQL-Anweisungen, die sich auf Verfügbarkeitsgruppen beziehen, nicht von der SQL-Datenbank unterstützt, und die dynamischen Verwaltungssichten, die sich auf Always On beziehen, werden nicht unterstützt.  
 
 Eine Liste der Funktionen, die von der SQL-Datenbank unterstützt bzw. nicht unterstützt werden, finden Sie unter [Azure SQL Database features (Features der Azure SQL-Datenbank)](sql-database-features.md).
 
-Syntax, die in SQL Server veraltet ist, wird im Allgemeinen von Azure SQL-Datenbank nicht unterstützt.
 
 ## <a name="transact-sql-syntax-partially-supported-in-sql-database"></a>Transact-SQL-Syntax, die teilweise in der SQL-Datenbank unterstützt wird
-Die SQL-Datenbank unterstützt einige, aber nicht alle Argumente, die in den entsprechenden SQL Server 2016-Transact-SQL-Anweisungen vorhanden sind. Beispielsweise steht die `CREATE PROCEDURE`-Anweisung zur Verfügung, die Optionen von `CREATE PROCEDURE` dagegen nicht. Das Beschreiben der vollständigen Syntax wäre hier verwirrend und überflüssig. In den verlinkten Syntaxthemen finden Sie Einzelheiten zu den unterstützten Bereichen jeder Anweisung.
+SQL-Datenbank unterstützt einige, aber nicht alle Argumente, die in den entsprechenden SQL Server 2016-Transact-SQL-Anweisungen zum Verwalten von Datenbanken und Anmeldungen enthalten sind. Beispielsweise ist die Anweisung `CREATE DATABASE` in Azure SQL-Datenbank verfügbar, jedoch werden nicht alle in SQL Server unterstützten Optionen in Azure SQL-Datenbank unterstützt (und umgekehrt). In den verlinkten Syntaxthemen finden Sie Einzelheiten zu den unterstützten Bereichen jeder Anweisung.
 
-- Datenbanken: [CREATE](https://msdn.microsoft.com/library/dn268335.aspx)/[ALTER_DATABASE](https://msdn.microsoft.com/library/ms174269.aspx)   
-- Funktionen: [CREATE](https://msdn.microsoft.com/library/ms186755.aspx)/[ALTER FUNCTION](https://msdn.microsoft.com/library/ms186967.aspx)   
+- Datenbanken: [CREATE](https://msdn.microsoft.com/library/dn268335.aspx)/[ALTER_DATABASE](https://msdn.microsoft.com/library/mt574871.aspx)   
 - Anmeldungen: [CREATE](https://msdn.microsoft.com/library/ms189751.aspx)/[ALTER LOGIN](https://msdn.microsoft.com/library/ms189828.aspx)   
-- Gespeicherte Prozeduren: [CREATE](https://msdn.microsoft.com/library/ms187926.aspx)/[ALTER PROCEDURE](https://msdn.microsoft.com/library/ms189762.aspx)   
-- Tabellen: [CREATE](https://msdn.microsoft.com/library/dn305849.aspx)/[ALTER TABLE](https://msdn.microsoft.com/library/ms190273.aspx)   
-- Typen (benutzerdefiniert): [CREATE TYPE](https://msdn.microsoft.com/library/ms175007.aspx)   
-- Benutzer: [CREATE](https://msdn.microsoft.com/library/ms173463.aspx)/[ALTER USER](https://msdn.microsoft.com/library/ms176060.aspx)   
-- Ansichten: [CREATE](https://msdn.microsoft.com/library/ms187956.aspx)/[ALTER VIEW](https://msdn.microsoft.com/library/ms173846.aspx)   
 
 ## <a name="transact-sql-syntax-not-supported-in-sql-database"></a>Transact-SQL-Syntax, die nicht in der SQL-Datenbank unterstützt wird   
 Zusätzlich zu Transact-SQL-Anweisungen, die sich auf die nicht unterstützen Features beziehen, die unter [Azure SQL Database features (Features der Azure SQL-Datenbank)](sql-database-features.md) beschrieben sind, werden die folgenden Anweisungen und Gruppen von Anweisungen nicht unterstützt.
@@ -65,7 +59,7 @@ Zusätzlich zu Transact-SQL-Anweisungen, die sich auf die nicht unterstützen Fe
 - Syntax im Zusammenhang mit hardwarebezogenen Servereinstellungen: Arbeitsspeicher, Worker-Threads, CPU-Affinität, Ablaufverfolgungskennzeichen usw. Verwenden Sie stattdessen Dienstebenen.
 - `HAS_DBACCESS`
 - `KILL STATS JOB`
-- `OPENQUERY`, `OPENROWSET`, `OPENDATASOURCE`, `BULK INSERT`, und vierteilige Namen
+- `OPENQUERY`, `OPENROWSET`, `OPENDATASOURCE` und vierteilige Namen
 - .NET Framework: [CLR-Integration in SQL Server](http://msdn.microsoft.com/library/ms254963.aspx)
 - Semantische Suche
 - Serveranmeldeinformationen. Verwenden Sie stattdessen datenbankbezogene Anmeldeinformationen.
@@ -90,9 +84,4 @@ Weitere Informationen zu Transact-SQL-Grammatik und -Syntax sowie Beispiele find
 Die Transact-SQL-Referenz umfasst Themen zu SQL Server-Versionen ab 2008. Unter der Themenüberschrift befindet sich ein Symbol, in dem die vier SQL Server-Plattformen aufgelistet sind und die Anwendbarkeit angezeigt wird. Beispielsweise wurden Verfügbarkeitsgruppen in SQL Server 2012 eingeführt. Das Thema [CREATE AVAILABILTY GROUP](https://msdn.microsoft.com/library/ff878399.aspx) gibt an, dass die Anweisung für **SQL Server gilt (beginnend mit 2012)**. Die Anweisung gilt nicht für SQL Server 2008, SQL Server 2008 R2, Azure SQL-Datenbank, Azure SQL Data Warehouse oder Parallel Data Warehouse.
 
 In einigen Fällen kann der allgemeine Gegenstand eines Themas in einem Produkt verwendet werden, es liegen jedoch kleine Unterschiede im Hinblick auf die verschiedenen Produkte vor. Die Unterschiede werden dann im Thema entsprechend angegeben.
-
-
-
-<!--HONumber=Nov16_HO5-->
-
 
