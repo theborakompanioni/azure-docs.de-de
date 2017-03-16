@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 10/31/2016
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: bec4f89556a2daa41e19b0ecb2ab9bbbed849107
-ms.openlocfilehash: 0bf40c5b44ea87c88d4464baf958e8afb7a59c38
+ms.sourcegitcommit: 273598a6eecb358c0b308c481193323e67dd475c
+ms.openlocfilehash: 24c3fdd8124ff3cc43feacb6f25dda84be9f46d9
+ms.lasthandoff: 02/28/2017
 
 ---
 
@@ -36,7 +37,7 @@ Wenn eine VM mit Endpunkten außerhalb von Azure im öffentlichen IP-Adressraum 
 
 ## <a name="standalone-vm-with-no-instance-level-public-ip-address"></a>Eigenständige VM ohne öffentliche IP-Adresse auf Instanzebene
 
-In diesem Szenario gehört die VM nicht zu einem Azure Load Balancer-Pool, und ihr ist keine öffentliche IP-Adresse auf Instanzebene zugewiesen. Wenn der virtuelle Computer einen ausgehenden Datenfluss einleitet, übersetzt Azure die private IP-Quelladresse für den ausgehenden Datenfluss in eine öffentliche IP-Quelladresse. Die für diesen ausgehenden Datenfluss verwendete öffentliche IP-Adresse ist nicht konfigurierbar. Azure verwendet das Verfahren „Source Network Address Translation (SNAT, Übersetzung der Quellnetzwerkadresse)“ für diese Aufgabe. Kurzlebige Ports der öffentlichen IP-Adresse werden verwendet, um einzelne Datenflüsse zu unterscheiden, die von der VM stammen. Beim Erstellen von Datenflüssen weist SNAT kurzlebige Ports dynamisch zu. In diesem Kontext werden die kurzlebigen für SNAT verwendeten Ports als SNAT-Ports bezeichnet.
+In diesem Szenario gehört die VM nicht zu einem Azure Load Balancer-Pool, und ihr ist keine öffentliche IP-Adresse auf Instanzebene zugewiesen. Wenn der virtuelle Computer einen ausgehenden Datenfluss einleitet, übersetzt Azure die private IP-Quelladresse für den ausgehenden Datenfluss in eine öffentliche IP-Quelladresse. Die für diesen ausgehenden Datenfluss verwendete öffentliche IP-Adresse ist nicht konfigurierbar und wird nicht auf die Ressourcengrenze des Abonnements für öffentliche IP-Adressen angerechnet. Azure verwendet das Verfahren „Source Network Address Translation (SNAT, Übersetzung der Quellnetzwerkadresse)“ für diese Aufgabe. Kurzlebige Ports der öffentlichen IP-Adresse werden verwendet, um einzelne Datenflüsse zu unterscheiden, die von der VM stammen. Beim Erstellen von Datenflüssen weist SNAT kurzlebige Ports dynamisch zu. In diesem Kontext werden die kurzlebigen für SNAT verwendeten Ports als SNAT-Ports bezeichnet.
 
 SNAT Ports sind begrenzte Ressourcen, die sich erschöpfen können. Es ist wichtig, ihre Nutzung zu verstehen. Pro Datenfluss zu einer einzelnen IP-Zieladresse wird ein SNAT-Port genutzt. Für mehrere Datenflüsse zur gleichen IP-Zieladresse belegt jeder Datenfluss einen einzelnen SNAT-Port. Dadurch wird sichergestellt, dass die Datenflüsse eindeutig sind, wenn sie von der gleichen öffentlichen IP-Adresse stammen und die gleiche IP-Zieladresse haben. Mehrere Datenflüsse mit jeweils einer anderen IP-Zieladresse nutzen pro Ziel einen einzelnen SNAT-Port. Die IP-Zieladresse sorgt für Eindeutigkeit der Datenflüsse.
 
@@ -65,9 +66,4 @@ Es gibt viele Möglichkeiten, die öffentliche IP-Quelladresse einer ausgehenden
 Mitunter ist es nicht wünschenswert, dass eine VM einen ausgehenden Datenfluss erstellen darf. Oder ggf. gibt es eine Anforderung zum Festlegen, welche Ziele ausgehende Datenflüsse erreichen dürfen. In diesem Fall verwenden Sie [Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md) zum Bestimmen der Ziele, die die VM erreichen kann. Wenn Sie eine Netzwerksicherheitsgruppe einer VM mit Lastenausgleich zuordnen, müssen Sie die [Standardtags](../virtual-network/virtual-networks-nsg.md#default-tags) und [Standardregeln](../virtual-network/virtual-networks-nsg.md#default-rules) beachten.
 
 Sie müssen sicherstellen, dass die VM Anforderungen von Integritätstests von Azure Load Balancer empfangen kann. Wenn eine Netzwerksicherheitsgruppe Anforderungen von Integritätstests vom Standardtag AZURE_LOADBALANCER blockiert, misslingt Ihr VM-Integritätstests, weshalb die VM mit „Außer Betrieb“ markiert wird. Der Lastenausgleich beendet das Senden neuer Datenflüsse an diese VM.
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 
