@@ -169,7 +169,7 @@
 ## [Azure-Befehlszeilenschnittstelle](/cli/azure/storage)
 ## .NET
 ### [Ressourcen-Manager](/dotnet/api/microsoft.azure.management.storage)
-### [Datenverschiebung](https://msdn.microsoft.com/library/azure/mt684990.aspx)
+### [Datenverschiebung](/dotnet/api/microsoft.windowsazure.storage.datamovement)
 ### [Blobs, Warteschlangen, Tabellen und Dateien](https://msdn.microsoft.com/library/azure/mt347887.aspx)
 ## [Java](http://azure.github.io/azure-storage-java/)
 ## [Node.js](http://azure.github.io/azure-storage-node)

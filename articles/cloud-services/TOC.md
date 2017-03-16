@@ -36,8 +36,8 @@
 #### [Installieren von .NET mithilfe eines Tasks auf einer Cloud Services-Rolle](cloud-services-dotnet-install-dotnet.md)
 
 ### Konfigurieren von Remotedesktop
-#### [Visual Studio](cloud-services-role-enable-remote-desktop.md)
-#### [Node.js](cloud-services-nodejs-enable-remote-desktop.md)
+#### [Portal](cloud-services-role-enable-remote-desktop-new-portal.md)
+#### [Klassisches Portal](cloud-services-role-enable-remote-desktop.md)
 #### [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 
 ## Bereitstellen

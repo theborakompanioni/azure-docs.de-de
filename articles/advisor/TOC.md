@@ -8,14 +8,11 @@
 
 # Erste Schritte
 ## [Erste Schritte mit Advisor](advisor-get-started.md)
-
+# Referenz
+## [REST](https://docs.microsoft.com/rest/api/advisor)
 # Verwandte Themen
 ## [Security Center](https://azure.microsoft.com/services/security-center/)
 ## [Advisor für SQL-Datenbank](https://azure.microsoft.com/documentation/articles/sql-database-advisor/)
 ## [Redis Cache](https://azure.microsoft.com/documentation/articles/cache-configure/#redis-cache-advisor)
 ## [App Services](https://azure.microsoft.com/documentation/articles/app-service-best-practices/)
  
-
-<!--HONumber=Nov16_HO4-->
-
-
