@@ -16,8 +16,9 @@ ms.workload: data-management
 ms.date: 07/31/2016
 ms.author: sashan
 translationtype: Human Translation
-ms.sourcegitcommit: d3456b190d78560dc9380d5ecb56e0e82006e2ea
-ms.openlocfilehash: 209446ae6b1a4f951bc141d95ff481f2f5ab43b0
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: 821be267a109bdcb1a1d22107f0ab4c469e6d6aa
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -53,7 +54,7 @@ Um die Ausfallzeit zu simulieren, können Sie die Web-Anwendung oder den virtuel
 
 #### <a name="recovery"></a>Wiederherstellen
 * Stellen Sie sicher, dass die Anwendungskonfiguration in der Notfallwiederherstellungsregion auf die vorherige sekundäre Datenbank verweist. Diese Datenbank wird zur neuen primären Datenbank, auf die vollständig zugegriffen werden kann.
-* Ausführen eines [geplanten Failovers](sql-database-geo-replication-failover-powershell.md#initiate-a-planned-failover) , um die sekundäre Datenbank als neue primäre Datenbank festzulegen
+* Ausführen eines [geplanten Failovers](scripts/sql-database-setup-geodr-and-failover-database-powershell.md) , um die sekundäre Datenbank als neue primäre Datenbank festzulegen
 * Führen Sie die Anweisungen unter [Konfigurieren einer Datenbank nach der Wiederherstellung](sql-database-disaster-recovery.md) aus, um die Wiederherstellung abzuschließen.
 
 #### <a name="validation"></a>Überprüfen
@@ -64,9 +65,4 @@ Um die Ausfallzeit zu simulieren, können Sie die Web-Anwendung oder den virtuel
 * Informationen über automatisierte Sicherungen von Azure SQL-Datenbanken finden Sie unter [Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md)
 * Informationen zum Verwenden automatisierter Sicherungen für die Wiederherstellung finden Sie unter [Wiederherstellen einer Datenbank aus vom Dienst initiierten Sicherungen](sql-database-recovery-using-backups.md)
 * Informationen über schnellere Wiederherstellungsoptionen finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md)  
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 
