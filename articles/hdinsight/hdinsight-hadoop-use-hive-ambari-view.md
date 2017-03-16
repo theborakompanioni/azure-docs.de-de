@@ -46,7 +46,7 @@ Ambari-Ansichten sind im Azure-Portal verfügbar. Wählen Sie Ihren HDInsight-Cl
 
 Sie können auch direkt zu Ambari navigieren, indem Sie in einem Webbrowser „https://CLUSTERNAME.azurehdinsight.net“ aufrufen. Ersetzen Sie **CLUSTERNAME** durch den Namen Ihres HDInsight-Clusters. Klicken Sie im Seitenmenü auf die Gruppe von Quadraten neben dem Link für **Admin**, um verfügbare Ansichten aufzulisten. Wählen Sie die Ansicht **Hive** aus.
 
-![Ambari-Ansichten auswählen](./media/hdinsight-hadoop-use-hive-ambari-view/selecthiveview.png)erforderlich.
+![Ambari-Ansichten auswählen](./media/hdinsight-hadoop-use-hive-ambari-view/selecthiveview.png).
 
 > [!NOTE]
 > Beim Zugriff auf Ambari werden Sie aufgefordert, sich bei der Website zu authentifizieren. Geben Sie den Administratorkontonamen (Standard-`admin`) und das Kennwort ein, den bzw. das Sie beim Erstellen des Clusters verwendet haben.
@@ -62,7 +62,7 @@ Wählen Sie im Abschnitt **Datenbank-Explorer** der Seite auf der Registerkarte 
 
 Wenn mit den Schritten in diesem Dokument neue Tabellen hinzugefügt werden, können Sie das Symbol „Aktualisieren“ oben rechts im Datenbank-Explorer verwenden, um die Liste zu aktualisieren.
 
-## <a name="a-namehivequeryaquery-editor"></a><a name="hivequery"></a>Abfrage-Editor
+## <a name="hivequery"></a>Abfrage-Editor
 
 Verwenden Sie die folgenden Schritte aus der Hive-Ansicht, um eine Hive-Abfrage auszuführen.
 
@@ -225,7 +225,7 @@ Weitere Informationen zur Verwendung von UDFs mit Hive unter HDInsight finden Si
 * [Verwenden von Python mit Hive und Pig in HDInsight](hdinsight-python.md)
 * [How to add a custom Hive UDF to HDInsight (in englischer Sprache)](http://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
 
-## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>Nächste Schritte
+## <a id="nextsteps"></a>Nächste Schritte
 Allgemeine Informationen zu Hive in HDInsight:
 
 * [Verwenden von Hive mit Hadoop in HDInsight](hdinsight-use-hive.md)
