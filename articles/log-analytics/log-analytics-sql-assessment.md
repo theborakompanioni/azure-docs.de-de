@@ -1,6 +1,6 @@
 ---
-title: "Optimieren der Umgebung mit der SQL Assessment-Lösung in Log Analytics | Microsoft Docs"
-description: "Mit Azure Log Analytics können Sie die SQL Assessment-Lösung verwenden, um die Risiken und die Integrität Ihrer Serverumgebungen in regelmäßigen Abständen zu bewerten."
+title: Optimieren Ihrer SQL Server-Umgebung mit Azure Log Analytics | Microsoft-Dokumentation
+description: "Mit Azure Log Analytics können Sie die SQL Assessment-Lösung verwenden, um die Risiken und die Integrität Ihrer SQL Server-Umgebungen in regelmäßigen Abständen zu bewerten."
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -12,16 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/17/2017
+ms.date: 02/27/2017
 ms.author: banders
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 9ee8f4aafcc35e43c4fcba5a3a72b043dd9fc32c
-ms.openlocfilehash: fc8b2d74737bc334d5c4f27782d4e0d46adbcb18
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
+ms.openlocfilehash: a78c3877ac64b9376104d853d6b66b90fbb476d8
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="optimize-your-environment-with-the-sql-assessment-solution-in-log-analytics"></a>Optimieren der Umgebung mit der SQL Assessment-Lösung in Log Analytics
+# <a name="optimize-your-sql-server-environment-with-the-sql-assessment-solution-in-log-analytics"></a>Optimieren der SQL Server-Umgebung mit der SQL Assessment-Lösung in Log Analytics
+
 Sie können die SQL Assessment-Lösung verwenden, um die Risiken und die Integrität Ihrer Serverumgebungen in regelmäßigen Abständen zu bewerten.. Dieser Artikel unterstützt Sie beim Installieren der Lösung, sodass Sie bei potenziellen Problemen korrigierende Maßnahmen ergreifen können.
 
 Die Lösung bietet eine priorisierte Liste von Empfehlungen, die spezifisch für Ihre bereitgestellte Serverinfrastruktur gelten. Die Empfehlungen sind in sechs Schwerpunktbereiche eingeteilt, mit deren Hilfe Sie die Risiken schnell einschätzen und korrigierende Maßnahmen ergreifen können.

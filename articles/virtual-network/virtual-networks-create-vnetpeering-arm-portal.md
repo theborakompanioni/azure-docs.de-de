@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 09/14/2016
 ms.author: narayan;annahar
 translationtype: Human Translation
-ms.sourcegitcommit: c3c3938577f610eba522ba593bfab5e93c70e459
-ms.openlocfilehash: d47a97fb023e2cc3ad4acaa07eb4edfd1f82509e
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: a4a770ec6f258c62864cd3fcc79b33b5cac38ace
+ms.openlocfilehash: 8f05957e8c40dee8ceb7fb1355d8d8776935cf5a
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -76,7 +76,7 @@ Jeder Link in einem VNET-Peering weist die vorherigen Eigenschaften auf. Sie kö
 [!INCLUDE [virtual-networks-create-vnet-scenario-crosssub-include](../../includes/virtual-networks-create-vnetpeering-scenario-crosssub-include.md)]
 
 1. Navigieren Sie in einem Browser zu http://portal.azure.com, und melden Sie sich, falls erforderlich, mit Ihrem Azure-Konto an.
-2. In diesem Beispiel verfügt UserA über Administratorberechtigungen für SubscriptionA und UserB über Administratorberechtigungen für SubscriptionB.
+2. In diesem Beispiel verfügt UserA über Administratorberechtigungen für SubscriptionA und UserB über Administratorberechtigungen für SubscriptionB. Beide Abonnements sind dem gleichen Azure Active Directory-Mandanten zugeordnet. Sie können kein Peering zwischen Abonnements erstellen, die verschiedenen Azure Active Directory-Mandanten zugeordnet sind.
 3. Klicken Sie im Portal auf **Durchsuchen**, und wählen Sie **Virtuelle Netzwerke**. Klicken Sie auf das VNET, für das Sie das Peering einrichten möchten.
 4. Klicken Sie auf dem Blatt für das ausgewählte VNET auf **Access Control**, und klicken Sie dann wie in der folgenden Abbildung gezeigt auf **Hinzufügen**:
 

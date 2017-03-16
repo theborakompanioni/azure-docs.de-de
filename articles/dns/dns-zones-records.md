@@ -11,16 +11,18 @@ ms.service: dns
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
+ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: jonatul
 translationtype: Human Translation
-ms.sourcegitcommit: efa52b5f30cab16bfde4202dbfe2c95f4464e2c4
-ms.openlocfilehash: 4950edd41f58175c675afb7a7ea9f14fe4a59b26
+ms.sourcegitcommit: 119275f335344858cd20b6a17ef87e3ef32b6e12
+ms.openlocfilehash: 4e25ec1ece6017dc58c24ce593802293b7fc12b8
+ms.lasthandoff: 03/01/2017
 
 ---
 
-# <a name="dns-zones-and-records"></a>DNS-Zonen und -Einträge
+# <a name="overview-of-dns-zones-and-records"></a>Übersicht über DNS-Zonen und -Einträge
 
 Auf dieser Seite werden die Konzepte Domänen, DNS-Zonen und DNS-Einträge sowie Ressourceneintragssätze erläutert, und es wird erklärt, wie diese in Azure DNS unterstützt werden.
 
@@ -58,19 +60,19 @@ Verwenden Sie zum Erstellen eines Ressourceneintragssatzes mit Platzhaltern den 
 
 CNAME-Ressourceneintragssätze können nicht gleichzeitig neben anderen Ressourceneintragssätzen mit dem gleichen Namen vorhanden sein. Sie können einen CNAME-Ressourceneintragssatz z.B. nicht mit dem relativen Namen „www“ und gleichzeitig einen A-Eintrag mit dem relativen Namen „www“ erstellen.
 
-Da die Zonenspitze (Name = '@')) immer die NS- und SOA-Ressourceneintragssätze enthält, die beim Erstellen der Zone erstellt wurden, können Sie keinen CNAME-Ressourceneintragssatz an der Zonenspitze erstellen.
+Da die Zonenspitze (name = „@“) immer die NS- und SOA-Ressourceneintragssätze enthält, die beim Erstellen der Zone erstellt wurden, können Sie keinen CNAME-Ressourceneintragssatz an der Zonenspitze erstellen.
 
 Diese Einschränkungen ergeben sich aus den DNS-Standards und sind keine Einschränkungen von Azure DNS.
 
 ### <a name="ns-records"></a>NS-Einträge
 
-Ein Satz von NS-Einträgen wird automatisch an der Spitze jeder Zone erstellt (name = '@'),) und automatisch gelöscht, wenn die Zone gelöscht wird (er kann nicht separat gelöscht werden).  Sie können die Gültigkeitsdauer dieses Eintragssatzes ändern. Allerdings können Sie keine Einträge ändern, die vorkonfiguriert sind, um auf die Azure DNS-Namenserver zu verweisen, die der Zone zugewiesen sind.
+Ein Satz von NS-Einträgen wird automatisch an der Spitze jeder Zone erstellt (name = „@“) und automatisch gelöscht, wenn die Zone gelöscht wird (er kann nicht separat gelöscht werden).  Sie können die Gültigkeitsdauer dieses Eintragssatzes ändern. Allerdings können Sie keine Einträge ändern, die vorkonfiguriert sind, um auf die Azure DNS-Namenserver zu verweisen, die der Zone zugewiesen sind.
 
 Sie können andere NS-Einträge innerhalb der Zone erstellen und löschen (nicht an der Zonenspitze).  Dadurch können Sie untergeordnete Zonen konfigurieren (siehe [Delegieren von Unterdomänen in Azure DNS](dns-domain-delegation.md#delegating-sub-domains-in-azure-dns).)
 
 ### <a name="soa-records"></a>SOA-Einträge
 
-Ein Satz von SOA-Einträgen wird automatisch an der Spitze jeder Zone erstellt (name = '@'),), und wird automatisch gelöscht, wenn die Zone gelöscht wird.  SOA-Einträge können nicht separat erstellt oder gelöscht werden.
+Ein Satz von SOA-Einträgen wird automatisch an der Spitze jeder Zone erstellt (name = „@“), und wird automatisch gelöscht, wenn die Zone gelöscht wird.  SOA-Einträge können nicht separat erstellt oder gelöscht werden.
 
 Sie können alle Eigenschaften des SOA-Eintrags ändern, bis auf die Eigenschaft „host“, die vorkonfiguriert ist, um auf den primären Namen des Namenserver zu verweisen, der von Azure DNS bereitgestellt wird.
 
@@ -86,7 +88,7 @@ Die DNS RFCs haben ursprünglich den neuen Eintragstyp „SPF“ eingeführt, um
 
 [SRV-Einträge](https://en.wikipedia.org/wiki/SRV_record) werden von verschiedenen Diensten verwendet, um Serverstandorte anzugeben. Wenn Sie einen SRV-Eintrag in Azure DNS angeben:
 
-* Müssen *service* und *protocol* als Teil des Namens des Eintragssatzes angegeben werden, und mit Unterstrichen vorangestellt werden.  z.B. '\_sip.\_tcp.name'.  Bei einem Eintrag an der Spitze der Zone ist es nicht nötig, '@' im Namen des Eintrags anzugeben. Verwenden Sie einfach den Dienst und das Protokoll, z.B. '\_sip.\_tcp'.
+* Müssen *service* und *protocol* als Teil des Namens des Eintragssatzes angegeben werden, und mit Unterstrichen vorangestellt werden.  z.B. '\_sip.\_tcp.name'.  Bei einem Eintrag an der Spitze der Zone ist es nicht nötig, „@“ im Namen des Eintrags anzugeben. Verwenden Sie einfach den Dienst und das Protokoll, z.B. „\_sip.\_tcp“.
 * Werden *priority*, *weight*, *port* und *target* als Parameter jedes Eintrags im Eintragssatz angegeben.
 
 ### <a name="txt-records"></a>TXT-Einträge
@@ -139,10 +141,5 @@ Bei der Verwendung von Azure DNS gelten folgende Standardgrenzwerte:
 
 * Lernen Sie, wie Sie [eine DNS-Zone erstellen](dns-getstarted-create-dnszone-portal.md) und [DNS-Einträge erstellen](dns-getstarted-create-recordset-portal.md), um mit der Verwendung von Azure DNS zu beginnen.
 * Um eine vorhandene DNS-Zone zu migrieren, sollten Sie sich zuerst darüber informieren, wie Sie [eine DNS-Zonendatei importieren und exportieren](dns-import-export.md).
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

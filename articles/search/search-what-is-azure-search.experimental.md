@@ -13,12 +13,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 02/15/2017
 ms.author: heidist
-experimental: true
-experiment_id: heidist-experiment1-20170221
+experiment_id: heidist-20170221
 translationtype: Human Translation
-ms.sourcegitcommit: f7e657906d24693dffd84ebbd348d1940f271931
-ms.openlocfilehash: a4e28e17cd3ce2488bd292a4c5e95fb532526a56
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: 71694028366f48682881523c0220a4158078a76c
+ms.openlocfilehash: b851f906b57225dce516d9704fdace80c44c4897
+ms.lasthandoff: 02/23/2017
 
 ---
 # <a name="what-is-azure-search"></a>Was ist Azure Search?
@@ -29,7 +28,7 @@ Azure Search bietet ein dediziertes und programmierbares Suchmodul mit intellige
 
 Eine zuverlässige Suchfunktion ist für die meisten Web-Apps und mobilen Apps unerlässlich. Eine Volltextsuche mit automatischer Vervollständigung der Suchbegriffe, Rechtschreibkorrektur und Abgleich semantisch identischer, aber unterschiedlich eingegebener Begriffe (Englisch: „car“ und „auto“) wird trotz der Komplexität, die hinter einer solchen Funktion steht, heute praktisch vorausgesetzt. Ebenso wichtig sind operative Anforderungen im Hinblick auf Skalierung, Zuverlässigkeit und Synchronisierung zwischen dem Suchmodul und den Back-End-Datenspeichern. 
 
-Azure Search bietet eine umfangreiche Palette an Funktionen, mit deren Hilfe Sie sowohl die Anforderungen an die Suchfunktion als auch die operativen Anforderungen erfüllen können.
+Azure Search bietet eine umfangreiche Funktionalität, mit deren Hilfe Sie sowohl die Anforderungen an die Suchfunktion als auch die operativen Anforderungen erfüllen können.
 
 ![Suchleiste und benutzerdefinierte Suchseite mit typischen Suchfeatures](./media/search-what-is-azure-search/search-page-callouts3.png)
 
@@ -50,7 +49,7 @@ Dedizierte Dienste werden rund um die Uhr an 7 Tagen pro Woche ausgeführt, mit 
 
 Verschiedene Clouddienste stellen benutzerdefinierte Suchmodule mit Features für eine Suchleiste in benutzerdefinierten Apps bereit. Einige bieten vergleichbare Basisfunktionen, mit Volltextsuche, geografischer Suche und der Möglichkeit zur Verarbeitung einer gewissen Ungenauigkeit bei der Sucheingabe. Das passende Suchmodul ergibt sich in der Regel durch ein [spezialisiertes Feature](#feature-drilldown) oder durch die Benutzerfreundlichkeit und Einfachheit von APIs, Tools und Verwaltungsfunktionen.
 
-Im Vergleich zu anderen Suchlösungen ist Azure Search am besten für die Volltextsuche in Inhaltsspeichern und Datenbanken auf Azure geeignet, mit einer zusätzlichen Funktionsebene für Apps, bei der die Inhaltsnavigation primär auf der Suche basiert. 
+Im Vergleich zu anderen Suchlösungen eignet Azure Search sich am besten für die Volltextsuche in Inhaltsspeichern und Datenbanken in Azure. Der Dienst bietet zudem eine zusätzliche Funktionsebene für Apps, bei denen Informationsabruf und Inhaltsnavigation primär auf der Suche basieren. 
 
 + Azure-Datenintegration (Crawler) auf Indexebene
 + Azure-Portal für eine zentrale Verwaltung
@@ -61,7 +60,9 @@ Im Vergleich zu anderen Suchlösungen ist Azure Search am besten für die Vollte
 > [!Note]
 > Nicht-Azure-Daten werden vollständig unterstützt. Sie können eine beliebige JSON-Dokumentsammlung an einen Azure Search-Index weiterreichen.
 
-### <a name="a-namefeature-drilldownafeature-drilldown"></a><a name="feature-drilldown"></a>Detaillierte Funktionsübersicht
+Onlinekataloge, Branchenprogramme und Anwendungen zur Dokumentermittlung sind einige Beispiele für Anwendungen, die optimal vom umfassenden Funktionsumfang von Azure Search profitieren können.
+
+### <a name="feature-drilldown"></a>Detaillierte Funktionsübersicht
 
 #### <a name="full-text-search-and-text-analysis"></a>Volltextsuche und Textanalyse
 

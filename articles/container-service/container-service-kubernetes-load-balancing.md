@@ -17,8 +17,9 @@ ms.workload: na
 ms.date: 01/30/2017
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 545ec23bc720dc1a17ce3d084642e96c2397d482
-ms.openlocfilehash: e61638db3c6c3acdc58f374b94b28d855161cf59
+ms.sourcegitcommit: e89ec01cb47a87a45378f73d138224095bcbebed
+ms.openlocfilehash: 201d98c4f4ff29393ad308824ed0575f1ff602ee
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -127,9 +128,9 @@ Die folgenden Schritte verwenden das [Guestbook example](https://github.com/kube
 
 Zum Lastenausgleich von HTTP- oder HTTPS-Datenverkehr an die Container-Web-Apps und zur Verwaltung von Zertifikaten für Transport Layer Security (TLS) verwenden Sie die Kubernetes-Ressource [Eingang](https://kubernetes.io/docs/user-guide/ingress/). Ein Eingang ist eine Sammlung von Regeln, die eingehenden Verbindungen das Aufrufen der Clusterdienste erlauben. Damit eine Eingangsressource funktioniert, muss in Kubernetes-Clustern ein [Eingangscontroller](https://kubernetes.io/docs/user-guide/ingress/#ingress-controllers) ausgeführt werden.
 
-Azure Container Service implementiert einen Kubernetes-Eingangscontroller nicht automatisch. Mehrere Controllerimplementierungen sind verfügbar. Derzeit wird für [Nginx Ingress controller](https://github.com/kubernetes/contrib/blob/master/ingress/controllers/nginx/README.md) (Nginx-Eingangscontroller) empfohlen, Eingangsregeln zu konfigurieren und einen Lastenausgleich für HTTP- und HTTPS-Datenverkehr vorzunehmen. 
+Azure Container Service implementiert einen Kubernetes-Eingangscontroller nicht automatisch. Mehrere Controllerimplementierungen sind verfügbar. Derzeit wird für [Nginx Ingress controller](https://github.com/kubernetes/ingress/tree/master/examples/deployment/nginx) (Nginx-Eingangscontroller) empfohlen, Eingangsregeln zu konfigurieren und einen Lastenausgleich für HTTP- und HTTPS-Datenverkehr vorzunehmen. 
 
-Weitere Informationen und Beispiele finden Sie in der [Nginx Ingress controller documentation](https://github.com/kubernetes/contrib/blob/master/ingress/controllers/nginx/README.md) (Dokumentation zum Nginx-Eingangscontroller).
+Weitere Informationen finden Sie in der [Nginx Ingress controller documentation](https://github.com/kubernetes/ingress/tree/master/controllers/nginx/README.md) (Dokumentation zum Nginx-Eingangscontroller).
 
 > [!IMPORTANT]
 > Bei Verwendung des Nginx-Eingangscontrollers in Azure Container Service müssen Sie die Controller-Bereitstellung als Dienst mit `type: LoadBalancer` zur Verfügung stellen. Dadurch wird Azure Load Balancer zum Weiterleiten von Datenverkehr an den Controller konfiguriert. Weitere Informationen finden Sie im vorherigen Abschnitt.
@@ -140,10 +141,5 @@ Weitere Informationen und Beispiele finden Sie in der [Nginx Ingress controller 
 * Weitere Informationen finden Sie in der [Kubernetes LoadBalancer documentation](https://kubernetes.io/docs/user-guide/load-balancer/) (Dokumentation zum Kubernetes-Lastenausgleich).
 * Weitere Informationen über [Kubernetes Ingress and Ingress controllers](https://kubernetes.io/docs/user-guide/ingress/) (Eingang und Eingangscontroller in Kubernetes)
 * Weitere Informationen finden Sie unter [Kubernetes examples](https://github.com/kubernetes/kubernetes/tree/master/examples) (Kubernetes-Beispiele).
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

@@ -1,6 +1,6 @@
 ---
-title: Bewerten von Azure Service Fabric-Anwendungen und -Microservices | Microsoft-Dokumentation
-description: "Mit der Service Fabric-Lösung können Sie die Risiken und Integrität Ihrer Service Fabric-Anwendungen, -Microservices, -Knoten und -Cluster bewerten."
+title: Bewerten von Service Fabric-Anwendungen mit Azure Log Analytics mithilfe von PowerShell | Microsoft-Dokumentation
+description: "Mit der Service Fabric-Lösung in Log Analytics können Sie über PowerShell die Risiken und Integrität Ihrer Service Fabric-Anwendungen, -Microservices, -Knoten und -Cluster bewerten."
 services: log-analytics
 documentationcenter: 
 author: niniikhena
@@ -15,14 +15,15 @@ ms.topic: article
 ms.date: 09/21/2016
 ms.author: nini
 translationtype: Human Translation
-ms.sourcegitcommit: 7695debd9f8152efbbc04b6d63a0b44e70646f16
-ms.openlocfilehash: 7cf1174791187cd7d751c4e2d2646282f4a0a5ce
+ms.sourcegitcommit: 6d20dc322a2493b9dd9a3fd843512befc1e90100
+ms.openlocfilehash: a822e7eb85eca42cba85d191e1effd7240deb1af
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="service-fabric-solution-in-log-analytics"></a>Service Fabric-Lösung in Log Analytics
+# <a name="assess-azure-service-fabric-applications-and-micro-services-with-powershell"></a>Bewerten von Azure Service Fabric-Anwendungen und -Microservices über PowerShell
 > [!div class="op_single_selector"]
-> * [Resource Manager](log-analytics-service-fabric-azure-resource-manager.md)
+> * [Ressourcen-Manager](log-analytics-service-fabric-azure-resource-manager.md)
 > * [PowerShell](log-analytics-service-fabric.md)
 >
 >
@@ -636,9 +637,4 @@ foreach($storageAccount in $storageAccountsToCheck)
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Verwenden Sie die [Protokollsuche in Log Analytics](log-analytics-log-searches.md), um ausführliche Service Fabric-Ereignisdaten anzuzeigen.
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

@@ -1,6 +1,6 @@
 ---
-title: Bewerten von Machine Learning-Modellen, die mit Spark erstellt wurden | Microsoft Docs
-description: Bewerten von Learning-Modellen, die im Azure-Blobspeicher (WASB) gespeichert wurden.
+title: Operationalisieren von Machine Learning-Modellen, die mit Spark erstellt wurden | Microsoft-Dokumentation
+description: Laden und Bewerten von in Azure Blob Storage (WASB) gespeicherten Learning-Modellen mit Python.
 services: machine-learning
 documentationcenter: 
 author: bradsev
@@ -12,28 +12,35 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2017
+ms.date: 02/24/2017
 ms.author: deguhath;bradsev;gokuma
 translationtype: Human Translation
-ms.sourcegitcommit: 5be82735c0221d14908af9d02500cc42279e325b
-ms.openlocfilehash: b30b3ed88ab271b5fa3db61ef276cba9b7fcdfdb
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 138c1182ea173ff2f14672e692ff79ae1015dcfc
+ms.openlocfilehash: 52319ff75817e75b31388aa03030a4f0e63c182d
+ms.lasthandoff: 02/27/2017
 
 
 ---
-# <a name="score-spark-built-machine-learning-models"></a>Bewerten von Machine Learning-Modellen, die mit Spark erstellt wurden
+# <a name="operationalize-spark-built-machine-learning-models"></a>Operationalisieren von Machine Learning-Modellen, die mit Spark erstellt wurden
 [!INCLUDE [machine-learning-spark-modeling](../../includes/machine-learning-spark-modeling.md)]
 
-In diesem Thema wird das Laden von Machine Learning-Modellen (ML) beschrieben, die mit Spark MLlib erstellt und in Azure-Blobspeicher (WASB) gespeichert wurden, und wie sie mit Datasets bewertet werden, die auch in WASB gespeichert wurden. Es zeigt, wie eingegebene Daten vorab verarbeitet, Funktionen mithilfe der Indizierungs- und Codierungsfunktionen im MLlib-Toolkit transformiert werden und ein bezeichnetes Datenpunktobjekt erstellt wird, das als Eingabe für die Bewertung der ML-Modelle verwendet werden kann. Zu den für die Bewertung verwendeten Modellen zählen lineare Regression, logistische Regression, Random Forest-Modelle und Gradient-Boosted-Strukturmodelle.
+In diesem Thema wird gezeigt, wie ein gespeichertes Machine Learning-Modell (ML) mithilfe von Python in HDInsight Spark-Clustern operationalisiert wird. Es wird beschrieben, wie Machine Learning-Modelle geladen werden, die mit Spark MLlib erstellt und in Azure Blob Storage (WASB) gespeichert wurden, und wie diese Modelle mit ebenfalls in WASB gespeicherten Datasets bewertet werden. Es zeigt, wie eingegebene Daten vorab verarbeitet, Funktionen mithilfe der Indizierungs- und Codierungsfunktionen im MLlib-Toolkit transformiert werden und ein bezeichnetes Datenpunktobjekt erstellt wird, das als Eingabe für die Bewertung der ML-Modelle verwendet werden kann. Zu den für die Bewertung verwendeten Modellen zählen lineare Regression, logistische Regression, Random Forest-Modelle und Gradient-Boosted-Strukturmodelle.
+
+## <a name="spark-clusters-and-jupyter-notebooks"></a>Spark-Cluster und Jupyter-Notebooks
+Setupschritte und der Code zum Operationalisieren eines ML-Modells werden in dieser exemplarischen Vorgehensweise für die Verwendung sowohl eines HDInsight Spark 1.6-Clusters als auch eines Spark 2.0-Clusters bereitgestellt. Der Code für diese Verfahren wird außerdem in Jupyter-Notebooks bereitgestellt.
+
+### <a name="notebook-for-spark-16"></a>Notebook für Spark 1.6
+Das Jupyter-Notebook [pySpark-machine-learning-data-science-spark-model-consumption.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-model-consumption.ipynb) zeigt, wie ein gespeichertes Modell mithilfe von Python in HDInsight-Clustern operationalisiert wird. 
+
+### <a name="notebook-for-spark-20"></a>Notebook für Spark 2.0
+Um das Jupyter-Notebook für Spark 1.6 für die Verwendung mit einem HDInsight Spark 2.0-Cluster zu ändern, ersetzen Sie die Python-Codedatei durch [diese Datei](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py). Dieser Code zeigt, wie die in Spark 2.0 erstellten Modelle genutzt werden.
+
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-1. Sie benötigen ein Azure-Konto und einen Spark 1.6- oder 2.0-HDInsight-Cluster zum Durchführen dieser exemplarischen Vorgehensweise. Anweisungen zum Erfüllen dieser Anforderungen finden Sie im Thema [Übersicht über Data Science mit Spark in Azure HDInsight](machine-learning-data-science-spark-overview.md). Dieses Thema enthält auch eine Beschreibung der hier verwendeten NYC 2013 Taxi-Daten und eine Anleitung zum Ausführen von Code aus einem Jupyter Notebook im Spark-Cluster. 
-2. Außerdem müssen Sie die hier zu bewertenden Machine Learning-Modelle erstellen, indem Sie das Thema [Durchsuchen von Daten und Modellierung mit Spark](machine-learning-data-science-spark-data-exploration-modeling.md) für Spark 1.6-Cluster oder Spark 2.0-Notebooks durcharbeiten. Beachten Sie, dass die Spark 2.0-Notebooks ein zusätzliches Dataset für den Klassifizierungstask verwenden, nämlich das bekannte Dataset zur Pünktlichkeit von Flugreisestarts aus den Jahren 2011 und 2012. Eine Beschreibung der Notebooks und Links zu diesen finden Sie in der Datei [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) zu dem GitHub-Repository, das sie enthält. Der hier und in den verknüpften Notebooks zu findende Code ist darüber hinaus generisch und sollte in allen Spark-Clustern funktionieren. Wenn Sie HDInsight Spark nicht verwenden, weichen Clustereinrichtung und Verwaltungsschritte möglicherweise geringfügig von dem ab, was hier gezeigt wird. 
-
-
-## <a name="setup-spark-clusters-and-notebooks"></a>Einrichtung: Spark-Cluster und Notebooks
-Die Einrichtungsschritte und der Code in dieser exemplarischen Vorgehensweise beziehen sich auf HDInsight Spark 1.6. Das [pySpark-machine-learning-data-science-spark-model-consumption.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-model-consumption.ipynb)-Notebook zeigt, wie ein gespeichertes Modell mithilfe von Python in HDInsight-Clustern operationalisiert wird. Um dieses Jupyter-Notebook für die Verwendung mit einem HDInsight Spark 2.0-Cluster zu ändern, ersetzen Sie die Python-Codedatei durch [diese Datei](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py).
+1. Sie benötigen ein Azure-Konto und einen Spark 1.6- (oder Spark 2.0-) HDInsight-Cluster zum Durchführen dieser exemplarischen Vorgehensweise. Anweisungen zum Erfüllen dieser Anforderungen finden Sie im Thema [Übersicht über Data Science mit Spark in Azure HDInsight](machine-learning-data-science-spark-overview.md). Dieses Thema enthält auch eine Beschreibung der hier verwendeten NYC 2013 Taxi-Daten und eine Anleitung zum Ausführen von Code aus einem Jupyter Notebook im Spark-Cluster. 
+2. Außerdem müssen Sie die hier zu bewertenden Machine Learning-Modelle erstellen, indem Sie das Thema [Durchsuchen von Daten und Modellierung mit Spark](machine-learning-data-science-spark-data-exploration-modeling.md) für Spark 1.6-Cluster oder Spark 2.0-Notebooks durcharbeiten. 
+3. Die Spark 2.0-Notebooks verwenden ein zusätzliches Dataset für den Klassifizierungstask, nämlich das bekannte Dataset zur Pünktlichkeit von Flugreisestarts aus den Jahren 2011 und 2012. Eine Beschreibung der Notebooks und Links zu diesen finden Sie in der Datei [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) zu dem GitHub-Repository, das sie enthält. Der hier und in den verknüpften Notebooks zu findende Code ist darüber hinaus generisch und sollte in allen Spark-Clustern funktionieren. Wenn Sie HDInsight Spark nicht verwenden, weichen Clustereinrichtung und Verwaltungsschritte möglicherweise geringfügig von dem ab, was hier gezeigt wird. 
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -578,7 +585,7 @@ Sie können diesen Python-Code auch [Azure Functions](https://azure.microsoft.co
 Wenn Sie eine codefreie Kundenerfahrung bevorzugen, verwenden Sie [Azure Logic Apps](https://azure.microsoft.com/documentation/services/app-service/logic/) zum Aufrufen der Spark-Batchbewertung durch Definieren einer HTTP-Aktion für den **Logik-Apps-Designer** und Festlegung seiner Parameter. 
 
 * Erstellen Sie im Azure-Portal eine neue Logik-App durch Auswählen von **+Neu** -> **Web und mobil** -> **Logik-App**. 
-* Geben Sie den Namen der Logik-App und den App Service-Plan ein, um den **Logik-Apps-Designer**aufzurufen.
+* Geben Sie den Namen der Logik-App und den App Service-Plan ein, um den **Logik-Apps-Designer** aufzurufen.
 * Wählen Sie eine HTTP-Aktion, und geben Sie die Parameter wie in der folgenden Abbildung dargestellt ein:
 
 ![Designer für Logik-Apps](./media/machine-learning-data-science-spark-model-consumption/spark-logica-app-client.png)

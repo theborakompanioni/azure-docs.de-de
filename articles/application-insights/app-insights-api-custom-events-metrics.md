@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 11/16/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 08e2e0894810693696b326538a7449ddab30d2f8
-ms.openlocfilehash: 7b156e647bbf27fe31d9c89b764c6c1c363a8827
+ms.sourcegitcommit: 1330d8be444f596b0d1ed2038eaeb1200e8b9285
+ms.openlocfilehash: 6951a50050c5b0c8edb2deb1eb64aef44e94ff96
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -39,7 +40,7 @@ Die API ist, abgesehen von ein paar kleinen Variationen, auf allen Plattformen e
 
 Sie können den meisten dieser Telemetrieaufrufe [Eigenschaften und Metriken anfügen](#properties) .
 
-## <a name="a-nameprepabefore-you-start"></a><a name="prep"></a>Vorbereitung
+## <a name="prep"></a>Vorbereitung
 Falls noch nicht geschehen:
 
 * Fügen Sie Ihrem Projekt das Application Insights-SDK hinzu:
@@ -399,12 +400,12 @@ Im [Metrik-Explorer](app-insights-metrics-explorer.md) können Sie ein Diagramm 
 
 Sie können auch nach Clientdatenpunkten mit bestimmten Benutzernamen und Konten [suchen][diagnostic].
 
-## <a name="a-namepropertiesafiltering-searching-and-segmenting-your-data-by-using-properties"></a><a name="properties"></a>Filtern, Durchsuchen und Segmentieren von Daten mithilfe von Eigenschaften
+## <a name="properties"></a>Filtern, Durchsuchen und Segmentieren von Daten mithilfe von Eigenschaften
 Sie können Ihren Ereignissen (und auch Metriken, Seitenaufrufen, Ausnahmen und anderen Telemetriedaten) Eigenschaften und Messungen anfügen.
 
 *Eigenschaften* sind die Zeichenfolgenwerte, die Sie zum Filtern der Telemetriedaten in den Nutzungsberichten verwenden können. Wenn die Anwendung beispielsweise mehrere Spiele bereitstellt, können Sie den Namen des Spiels an jedes Ereignis anfügen, damit Sie sehen können, welche Spiele immer populärer werden.
 
-Der Grenzwert für die Länge der Zeichenfolge beträgt ca. 1.000. (Wenn Sie große Datenblöcke senden möchten, verwenden Sie den message-Parameter von [TrackTrace](#track-trace).)
+Die Zeichenfolgenlänge ist auf 8192 Zeichen begrenzt. (Wenn Sie große Datenblöcke senden möchten, verwenden Sie den message-Parameter von [TrackTrace](#track-trace).)
 
 *Metriken* sind numerische Werte, die grafisch dargestellt werden können. Beispiel: Sie möchten überprüfen, ob die von den Spielern erreichten Punktzahlen stetig zunehmen. Die Diagramme können anhand der mit dem Ereignis gesendeten Eigenschaften unterteilt werden, sodass Sie für verschiedene Spiele separate oder gestapelte Diagramme erhalten.
 
@@ -516,7 +517,7 @@ Wenn es für Sie praktischer ist, können Sie die Parameter eines Ereignisses in
 >
 >
 
-## <a name="a-nametimeda-timing-events"></a><a name="timed"></a> Zeitmessung bei Ereignissen
+## <a name="timed"></a> Zeitmessung bei Ereignissen
 In bestimmten Fällen möchten Sie im Diagramm vielleicht darstellen, wie lange es dauert, eine Aktion auszuführen. Beispielsweise möchten Sie wissen, wie lange Benutzer brauchen, um die Auswahl in einem Spiel zu erwägen. Hierfür können Sie den Messparameter verwenden.
 
 *C#*
@@ -539,7 +540,7 @@ In bestimmten Fällen möchten Sie im Diagramm vielleicht darstellen, wie lange 
 
 
 
-## <a name="a-namedefaultsadefault-properties-for-custom-telemetry"></a><a name="defaults"></a>Standardeigenschaften für benutzerdefinierte Telemetriedaten
+## <a name="defaults"></a>Standardeigenschaften für benutzerdefinierte Telemetriedaten
 Wenn Sie die Standardeigenschaftswerte für einige Ihrer benutzerdefinierten Ereignisse festlegen möchten, können Sie diese in einer TelemetryClient-Instanz festlegen. Sie werden jedem Telemetrieelement zugeordnet, das von diesem Client gesendet wird.
 
 *C#*
@@ -604,7 +605,7 @@ So können Sie die Sammlung und Übermittlung von Telemetriedaten *dynamisch bee
 
 Um *ausgewählte Standardsammlungsmodule zu deaktivieren*, beispielsweise Leistungsindikatoren, HTTP-Anforderungen oder Abhängigkeiten, löschen Sie die entsprechenden Zeilen in [ApplicationInsights.config][config] oder kommentieren sie aus. Diese Vorgehensweise bietet sich beispielsweise an, wenn Sie Ihre eigenen TrackRequest-Daten senden möchten.
 
-## <a name="a-namedebugadeveloper-mode"></a><a name="debug"></a>Entwicklermodus
+## <a name="debug"></a>Entwicklermodus
 Während des Debuggens ist es sinnvoll, die Telemetriedaten beschleunigt über die Pipeline zu senden, damit die Ergebnisse sofort angezeigt werden. Sie erhalten außerdem zusätzliche Meldungen, mit denen Sie alle Probleme mit der Telemetrie verfolgen können. Schalten Sie ihn in der Produktion aus, da er Ihre App beeinträchtigen kann.
 
 *C#*
@@ -616,7 +617,7 @@ Während des Debuggens ist es sinnvoll, die Telemetriedaten beschleunigt über d
     TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = True
 
 
-## <a name="a-nameikeya-setting-the-instrumentation-key-for-selected-custom-telemetry"></a><a name="ikey"></a> Festlegen des Instrumentationsschlüssels für ausgewählte benutzerdefinierte Telemetriedaten
+## <a name="ikey"></a> Festlegen des Instrumentationsschlüssels für ausgewählte benutzerdefinierte Telemetriedaten
 *C#*
 
     var telemetry = new TelemetryClient();
@@ -624,7 +625,7 @@ Während des Debuggens ist es sinnvoll, die Telemetriedaten beschleunigt über d
     // ...
 
 
-## <a name="a-namedynamic-ikeya-dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a> Dynamischer Instrumentierungsschlüssel
+## <a name="dynamic-ikey"></a> Dynamischer Instrumentierungsschlüssel
 Um das Vermischen von Telemetriedaten aus Entwicklungs-, Test- und Produktionsumgebungen zu vermeiden, können Sie [separate Application Insights-Ressourcen erstellen][create] und ihre Schlüssel abhängig von der Umgebung ändern.
 
 Statt den Instrumentationsschlüssel aus der Konfigurationsdatei abzurufen, können Sie ihn im Code festlegen. Legen Sie den Schlüssel in einer Initialisierungsmethode fest, wie z. B. "global.aspx.cs" in einem ASP.NET-Dienst:
@@ -709,7 +710,7 @@ Informationen dazu, wie lange Daten aufbewahrt werden, finden Sie unter [Datensp
 
     Ja, die [Datenzugriffs-API](https://dev.applicationinsights.io/). Weitere Methoden zum Extrahieren von Daten stellen das [Exportieren aus Analytics in Power BI](app-insights-export-power-bi.md) und der [fortlaufende Export](app-insights-export-telemetry.md) dar.
 
-## <a name="a-namenextanext-steps"></a><a name="next"></a>Nächste Schritte
+## <a name="next"></a>Nächste Schritte
 * [Durchsuchen von Ereignissen und Protokollen][diagnostic]
 
 * [Beispiele und exemplarische Vorgehensweisen](app-insights-code-samples.md)
@@ -729,9 +730,4 @@ Informationen dazu, wie lange Daten aufbewahrt werden, finden Sie unter [Datensp
 [metrics]: app-insights-metrics-explorer.md
 [qna]: app-insights-troubleshoot-faq.md
 [trace]: app-insights-search-diagnostic-logs.md
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

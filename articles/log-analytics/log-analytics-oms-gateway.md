@@ -12,15 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2017
+ms.date: 02/27/2017
 ms.author: banders
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 6f9974c109905f432705b85dcc8fc4d3549f16e9
-ms.openlocfilehash: 445bc1259cb3fa6f02fa1cadec11b1ac4b186e78
+ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
+ms.openlocfilehash: de2e6d201ba54774697356e1cd55c4881664a401
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="connect-computers-and-devices-to-oms-using-the-oms-gateway"></a>Verbinden von Computern und Geräten mit der OMS mithilfe des OMS-Gateways
+# <a name="connect-computers-and-devices-without-internet-access-to-oms-using-the-oms-gateway"></a>Verbinden von Computern und Geräten ohne Internetzugriff mit der OMS mithilfe des OMS-Gateways
+
 Dieses Dokument beschreibt, wie Ihre OMS-verwalteten Geräte und Ihre von System Center Operations Manager überwachten Computer Daten an den OMS-Dienst senden können, wenn sie nicht über Internetzugriff verfügen. Das OMS-Gateway kann Daten sammeln und in seinem Namen an den OMS-Dienst senden.
 
 Das Gateway ist ein HTTP-Forwardproxy, der HTTP-Tunnel mit dem Befehl HTTP CONNECT unterstützt. Das Gateway kann bis zu 2000 gleichzeitig verbundene OMS-Geräte bei Ausführung auf einem 16-GB-Server mit 4-Core-CPU unter Windows verarbeiten.
@@ -277,9 +280,4 @@ Sie können auch Feedback zur OMS oder Log Analytics im [Microsoft Azure-Feedbac
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Fügen Sie Datenquellen hinzu](log-analytics-data-sources.md), um Daten aus verbundenen Quellen im OMS-Arbeitsbereich zu sammeln und im OMS-Repository zu speichern.
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

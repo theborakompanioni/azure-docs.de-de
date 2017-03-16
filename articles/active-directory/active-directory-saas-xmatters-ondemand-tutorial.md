@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/02/2016
+ms.date: 02/22/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: f454e7e218764e00cc19ca67b0edade213834b75
-ms.openlocfilehash: 143e4a856a31a44a9ec909d07d5f24710a6e2803
+ms.sourcegitcommit: 86742dc7ee1429a0cdb23f4da3fa58341468afbc
+ms.openlocfilehash: 02ed9be91db6de7f27810fe6b91d8604425073ae
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -34,7 +35,7 @@ Das in diesem Tutorial beschriebene Szenario besteht aus den folgenden Bausteine
 3. Konfigurieren der Benutzerbereitstellung
 4. Zuweisen von Benutzern
 
-![Szenario](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776788.png "Scenario")
+![Szenario](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776788.png "Szenario")
 
 ## <a name="enabling-the-application-integration-for-xmatters-ondemand"></a>Aktivieren der Anwendungsintegration für xMatters OnDemand
 In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für xMatters OnDemand aktivieren.
@@ -48,19 +49,19 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für xMa
 
 3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
    
-    ![Anwendungen](./media/active-directory-saas-xmatters-ondemand-tutorial/IC700994.png "Applications")
+    ![Anwendungen](./media/active-directory-saas-xmatters-ondemand-tutorial/IC700994.png "Anwendungen")
 
 4. Klicken Sie unten auf der Seite auf **Hinzufügen** .
    
-    ![Anwendung hinzufügen](./media/active-directory-saas-xmatters-ondemand-tutorial/IC749321.png "Add application")
+    ![Anwendung hinzufügen](./media/active-directory-saas-xmatters-ondemand-tutorial/IC749321.png "Anwendung hinzufügen")
 
 5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
    
-    ![Anwendung aus dem Katalog hinzufügen](./media/active-directory-saas-xmatters-ondemand-tutorial/IC749322.png "Add an application from gallerry")
+    ![Anwendung aus dem Katalog hinzufügen](./media/active-directory-saas-xmatters-ondemand-tutorial/IC749322.png "Anwendung aus dem Katalog hinzufügen")
 
 6. Geben Sie im **Suchfeld** **xMatters OnDemand** ein.
    
-    ![Anwendungskatalog](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776789.png "Application gallery")
+    ![Anwendungskatalog](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776789.png "Anwendungskatalog")
 
 7. Wählen Sie im Ergebnisbereich **xMatters OnDemand** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
    
@@ -72,15 +73,15 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 ### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>So konfigurieren Sie einmaliges Anmelden
 1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **xMatters OnDemand** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776791.png "Configure single sign-on")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776791.png "Einmaliges Anmelden konfigurieren")
 
 2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei xMatters OnDemand anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776792.png "Configure single sign-on")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776792.png "Einmaliges Anmelden konfigurieren")
 
 3. Führen Sie auf der Seite **App-URL konfigurieren** die folgenden Schritte aus:
    
-    ![App-URL konfigurieren](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776793.png "Configure app URL")
+    ![App-URL konfigurieren](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776793.png "App-URL konfigurieren")
    
     a. Geben Sie im Textfeld **xMatters OnDemand-Anmelde-URL** die URL in folgendem Format ein: `https://<tenant-name>.XMattersOnDemandapp.com`
    
@@ -93,17 +94,17 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
     > 
     > 
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776794.png "Configure single sign on")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776794.png "Einmaliges Anmelden konfigurieren")
 
 5. Melden Sie sich in einem anderen Webbrowserfenster bei der xMatters OnDemand-Unternehmenswebsite als Administrator an.
 
 6. Klicken Sie in der Symbolleiste oben auf **Administrator**, und klicken Sie dann in der Navigationsleiste auf der linken Seite auf **Unternehmensdetails**.
    
-    ![Administrator](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776795.png "Admin")
+    ![Admin](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776795.png "Admin")
 
 7. Führen Sie auf der Seite **SAML-Konfiguration** die folgenden Schritte aus:
    
-    ![SAML-Konfiguration](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776796.png "SAML configuration")
+    ![SAML-Konfiguration](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776796.png "SAML-Konfiguration")
    
     a. Wählen Sie **SAML aktivieren**.
    
@@ -115,11 +116,11 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
    
     e. Klicken Sie auf der Seite „Unternehmensdetails“ oben auf **Speichern**.
     
-    ![Unternehmensdetails](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776797.png "Company details")
+    ![Unternehmensdetails](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776797.png "Unternehmensdetails")
 
 8. Bestätigen Sie im klassischen Azure-Portal die Konfiguration der einmaligen Anmeldung, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776798.png "Configure single sign on")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776798.png "Einmaliges Anmelden konfigurieren")
 
 ## <a name="configuring-user-provisioning"></a>Konfigurieren der Benutzerbereitstellung
 Um Azure AD-Benutzern die Anmeldung bei xMatters OnDemand zu ermöglichen, müssen sie in xMatters OnDemand bereitgestellt werden.  
@@ -132,13 +133,13 @@ Im Fall von xMatters OnDemand ist die Bereitstellung eine manuelle Aufgabe.
 
 3. Klicken Sie auf **Benutzer hinzufügen**.
   
-    ![Benutzer](./media/active-directory-saas-xmatters-ondemand-tutorial/IC781048.png "Users")
+    ![Benutzer](./media/active-directory-saas-xmatters-ondemand-tutorial/IC781048.png "Benutzer")
 
 4. Wählen Sie **Aktiv**.
 
 5. Führen Sie im Abschnitt **Benutzer hinzufügen** die folgenden Schritte aus:
    
-    ![Benutzer hinzufügen](./media/active-directory-saas-xmatters-ondemand-tutorial/IC781049.png "Add a User")
+    ![Benutzer hinzufügen](./media/active-directory-saas-xmatters-ondemand-tutorial/IC781049.png "Benutzer hinzufügen")
    
     a. Geben Sie die **Benutzer-ID**, den **Vornamen**, den **Nachnamen** und die **Website** eines gültigen AAD-Kontos ein, das Sie bereitstellen möchten.
     
@@ -153,17 +154,12 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
 
 2. Klicken Sie auf der Anwendungsintegrationsseite für **xMatters OnDemand** auf **Benutzer zuweisen**.
    
-    ![Benutzer zuweisen](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776799.png "Assign users")
+    ![Zuweisen von Benutzern](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776799.png "Zuweisen von Benutzern")
 
 3. Wählen Sie den Testbenutzer aus, klicken Sie auf **Zuweisen** und anschließend auf **Ja**, um die Zuweisung zu bestätigen.
    
-    ![Ja](./media/active-directory-saas-xmatters-ondemand-tutorial/IC767830.png "Yes")
+    ![Ja](./media/active-directory-saas-xmatters-ondemand-tutorial/IC767830.png "Ja")
 
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

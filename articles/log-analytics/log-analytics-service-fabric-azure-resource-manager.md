@@ -1,6 +1,6 @@
 ---
-title: "Optimieren der Umgebung mit der Service Fabric-Lösung in Log Analytics | Microsoft Docs"
-description: "Mit der Service Fabric-Lösung können Sie die Risiken und Integrität Ihrer Service Fabric-Anwendungen, -Microservices, -Knoten und -Cluster bewerten."
+title: "Bewerten von Service Fabric-Anwendungen mit Log Analytics über das Azure-Portal | Microsoft-Dokumentation"
+description: "Mit der Service Fabric-Lösung in Log Analytics können Sie über das Azure-Portal die Risiken und Integrität Ihrer Service Fabric-Anwendungen, -Microservices, -Knoten und -Cluster bewerten."
 services: log-analytics
 documentationcenter: 
 author: niniikhena
@@ -15,17 +15,19 @@ ms.topic: article
 ms.date: 09/21/2016
 ms.author: nini
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2fe6c2b23c816a5ec5bb00199725cdf0b29b31f0
+ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
+ms.openlocfilehash: ac94bca1657efbe0ce94db953933f026217d1c8a
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="service-fabric-solution-in-log-analytics"></a>Service Fabric-Lösung in Log Analytics
+# <a name="assess-service-fabric-applications-and-micro-services-with-the-azure-portal"></a>Bewerten von Service Fabric-Anwendungen und -Microservices über das Azure-Portal
+
 > [!div class="op_single_selector"]
-> * [Resource Manager](log-analytics-service-fabric-azure-resource-manager.md)
+> * [Ressourcen-Manager](log-analytics-service-fabric-azure-resource-manager.md)
 > * [PowerShell](log-analytics-service-fabric.md)
-> 
-> 
+>
+>
 
 In diesem Artikel wird beschrieben, wie Sie die Service Fabric-Lösung in Log Analytics nutzen können, um Probleme im gesamten Service Fabric-Cluster zu identifizieren und beheben.
 
@@ -79,11 +81,11 @@ So zeigen Sie die Leistungsdaten der Knoten an:
 * Navigieren Sie im linken Bereich zu „Einstellungen“, und wählen Sie „Daten“ >> „Windows-Leistungsindikatoren“ >> „Ausgewählte Leistungsindikatoren hinzufügen“ aus: ![Service Fabric](./media/log-analytics-service-fabric/7.png)
 * Verwenden Sie in „Protokollsuche“ die folgenden Abfragen, um die wichtigsten Metriken der Knoten zu untersuchen:
   </br>
-  
+
     a. Vergleichen Sie die durchschnittliche CPU-Auslastung sämtlicher Knoten während der letzten Stunde, um zu erkennen, auf welchen Knoten Probleme auftreten und in welchem Zeitintervall auf einem Knoten eine Spitzenauslastung aufgetreten ist:
-  
+
     ``` Type=Perf ObjectName=Processor CounterName="% Processor Time"|measure avg(CounterValue) by Computer Interval 1HOUR. ```
-  
+
     ![Service Fabric](./media/log-analytics-service-fabric/10.png)
 
     b. Mit dieser Abfrage zeigen Sie ähnliche Liniendiagramme für den verfügbaren Speicher auf jedem Knoten an:
@@ -115,8 +117,8 @@ Mit dieser Vorlage werden einem neuen oder vorhandenen Log Analytics-Arbeitsbere
 > [!NOTE]
 > Wenn Sie mit einem bereits vorhandenen Log Analytics Arbeitsbereich arbeiten, aktivieren Sie beim Auswählen einer Ressourcengruppe „Vorhandene verwenden“, und suchen Sie die Ressourcengruppe, die den OMS-Arbeitsbereich enthält. Erstellen Sie andernfalls eine neue Ressourcengruppe.
 > ![Service Fabric](./media/log-analytics-service-fabric/8.png)
-> 
-> 
+>
+>
 
 Nachdem diese Vorlage bereitgestellt wurde, wird das Speicherkonto angezeigt, das mit dem Log Analytics Arbeitsbereich verbunden ist. In diesem Fall habe ich dem Exchange-Arbeitsbereich, den ich oben erstellt habe, ein weiteres Speicherkonto hinzugefügt.
 ![Service Fabric](./media/log-analytics-service-fabric/9.png)
@@ -144,15 +146,9 @@ Die folgende Tabelle enthält die Datensammlungsmethoden und andere Details dazu
 
 > [!NOTE]
 > Sie können den Bereich dieser Ereignisse in der Service Fabric-Lösung ändern, indem Sie am oberen Rand des Dashboards auf **Daten basierend auf „Letzte 7 Tage“** klicken. Sie können auch Ereignisse anzeigen, die innerhalb der letzten 7 Tage, innerhalb des letzten Tags oder innerhalb der letzten sechs Stunden generiert wurden. Oder wählen Sie **Benutzerdefiniert** aus, um einen benutzerdefinierten Datumsbereich anzugeben.
-> 
-> 
+>
+>
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Verwenden Sie die [Protokollsuche in Log Analytics](log-analytics-log-searches.md), um ausführliche Service Fabric-Ereignisdaten anzuzeigen.
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

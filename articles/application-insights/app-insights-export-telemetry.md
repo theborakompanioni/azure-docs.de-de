@@ -11,12 +11,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2017
+ms.date: 02/23/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 4df32e7e03f17ec46e46a3f2718d24783424ab9e
-ms.openlocfilehash: fc1f3c7160a4956ed7372a2797c03c2892fbfb65
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: 14627391a5df562a70737a71f41fe7cb934c9062
+ms.openlocfilehash: 54f579e5806a2fa5bd4ceace8a8ab46509b4be1e
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -29,67 +29,64 @@ Bevor Sie den fortlaufenden Export einrichten, sollten Sie folgende Alternativen
 
 * [Die Schaltfläche „Exportieren“](app-insights-metrics-explorer.md#export-to-excel) ganz oben in einem Blatt „Metriken“ oder „Suche“, mit der Sie Tabellen und Diagramme in ein Excel-Arbeitsblatt übertragen können. 
 
-* [Analytics](app-insights-analytics.md) bietet eine leistungsstarke Abfragesprache für Telemetriedaten, und mithilfe dieser Sprache lassen sich auch Ergebnisse exportieren.
+* [Analytics](app-insights-analytics.md) bietet eine leistungsstarke Abfragesprache für Telemetriedaten. Das Exportieren von Ergebnissen ist auch möglich.
 * Wenn Sie [Ihre Daten in Power BI untersuchen](app-insights-export-power-bi.md)möchten, benötigen Sie dazu keinen fortlaufenden Export.
 * Mit dem [REST-API für Datenzugriff](https://dev.applicationinsights.io/) können Sie programmgesteuert auf Ihre Telemetriedaten zugreifen. 
 
 Nachdem Ihre Daten vom Fortlaufende Export in den Speicher kopiert wurden (wo sie beliebig lange bleiben können), sind sie für die übliche [Aufbewahrungsdauer](app-insights-data-retention-privacy.md)auch noch in Application Insights verfügbar. 
 
-## <a name="create-a-storage-account"></a>Erstellen Sie ein Speicherkonto.
-Wenn Sie noch nicht über ein "klassisches" Speicherkonto verfügen, erstellen Sie jetzt eins.
+## <a name="setup"></a> Erstellen eines fortlaufenden Exports
+1. Öffnen Sie in der Application Insights-Ressource für Ihre App die Option „Fortlaufender Export“, und klicken Sie auf **Hinzufügen**: 
 
-1. Erstellen Sie ein Speicherkonto in Ihrem Abonnement im [Azure-Portal](https://portal.azure.com).
-   
-    ![Wählen Sie im Azure-Portal "Neu", "Daten" und "Speicher".](./media/app-insights-export-telemetry/030.png)
-2. Erstellen Sie einen Container.
-   
-    ![Wählen Sie im neuen Speicher "Container" aus, klicken Sie auf die Kachel "Container" und anschließend auf "Hinzufügen".](./media/app-insights-export-telemetry/040.png)
+    ![Führen Sie einen Bildlauf nach unten aus, und klicken Sie auf "Fortlaufender Export".](./media/app-insights-export-telemetry/01-export.png)
 
-Wenn Sie den Speicher in einer Region erstellen, die sich von Ihrer Application Insights-Ressource unterscheidet, entstehen möglicherweise [Gebühren für die Datenübertragung](https://azure.microsoft.com/pricing/details/bandwidth/).
+2. Wählen Sie die Telemetriedatentypen aus, die Sie exportieren möchten.
 
-## <a name="a-namesetupa-set-up-continuous-export"></a><a name="setup"></a> Einrichten des fortlaufenden Exports
-Öffnen Sie im Application Insights-Portal auf dem Blatt "Übersicht" Ihrer Anwendung "Fortlaufender Export": 
+3. Erstellen oder wählen Sie ein [Azure-Speicherkonto](../storage/storage-introduction.md), in dem Sie die Daten speichern möchten. 
 
-![Führen Sie einen Bildlauf nach unten aus, und klicken Sie auf "Fortlaufender Export".](./media/app-insights-export-telemetry/01-export.png)
+    > [!Warning]
+    > Der Speicherort wird standardmäßig auf die gleiche geografische Region festgelegt, in der sich auch Ihre Application Insights-Ressource befindet. Wenn Sie die Daten in einer anderen Region speichern, fallen möglicherweise Übertragungsgebühren an.
 
-Fügen Sie einen fortlaufenden Export hinzu, und wählen Sie die Ereignistypen, die Sie exportieren möchten:
+    ![Klicken Sie auf "Hinzufügen", "Exportziel", "Speicherkonto", und erstellen Sie dann einen neuen Speicher, oder wählen Sie einen vorhandenen Speicher aus.](./media/app-insights-export-telemetry/02-add.png)
 
-![Klicken Sie auf "Hinzufügen", "Exportziel", "Speicherkonto", und erstellen Sie dann einen neuen Speicher, oder wählen Sie einen vorhandenen Speicher aus.](./media/app-insights-export-telemetry/02-add.png)
+4. Erstellen oder wählen Sie einen Container im Speicher:
 
-Wählen oder erstellen Sie das [Azure-Speicherkonto](../storage/storage-introduction.md), in dem Sie die Daten speichern möchten:
+    ![Klicken Sie auf "Ereignistypen auswählen".](./media/app-insights-export-telemetry/create-container.png)
 
-![Klicken Sie auf "Ereignistypen auswählen".](./media/app-insights-export-telemetry/03-types.png)
+Nachdem Sie Ihren Exportvorgang erstellt haben, geht es gleich los. Sie erhalten nur Daten, die nach dem Erstellen des Exportvorgangs eingehen. 
 
-Nachdem Sie Ihren Exportvorgang erstellt haben, geht es gleich los. (Sie erhalten nur Daten, die nach Erstellung des Exportvorgangs eingehen.) 
+Es kann etwa eine Stunde dauern, bis Daten im Speicher angezeigt werden.
 
-Es kann etwa eine Stunde dauern, bis Daten im Blob angezeigt werden.
+### <a name="to-edit-continuous-export"></a>Bearbeiten des fortlaufenden Exports
 
 Wenn Sie die Ereignistypen später ändern möchten, bearbeiten Sie einfach den Export:
 
 ![Klicken Sie auf "Ereignistypen auswählen".](./media/app-insights-export-telemetry/05-edit.png)
 
-Klicken Sie auf "Deaktivieren", um den Datenstrom zu beenden. Wenn Sie erneut auf "Aktivieren" klicken, wird der Datenstrom mit neuen Daten neu gestartet. Sie erhalten nicht die Daten, die im Portal eingegangen sind, während der Export deaktiviert war.
+### <a name="to-stop-continuous-export"></a>Beenden des fortlaufenden Exports
 
-Um den Datenstrom dauerhaft zu beenden, löschen Sie den Exportvorgang. Dabei werden Ihre Daten nicht aus dem Speicher gelöscht.
+Um den Export zu beenden, klicken Sie auf „Deaktivieren“. Wenn Sie erneut auf „Aktivieren“ klicken, wird der Export mit neuen Daten neu gestartet. Sie erhalten nicht die Daten, die im Portal eingegangen sind, während der Export deaktiviert war.
 
-#### <a name="cant-add-or-change-an-export"></a>Wer darf einen Export ergänzen oder ändern?
+Um den Export dauerhaft zu beenden, löschen Sie ihn. Dabei werden Ihre Daten nicht aus dem Speicher gelöscht.
+
+### <a name="cant-add-or-change-an-export"></a>Wer darf einen Export ergänzen oder ändern?
 * Zum Ergänzen oder Ändern von Exporten benötigen Sie das Zugriffsrecht "Besitzer", "Mitwirkender" oder "Application Insights-Mitwirkender". [Weitere Informationen zu Rollen][roles].
 
-## <a name="a-nameanalyzea-what-events-do-you-get"></a><a name="analyze"></a> Welche Ereignisse werden abgerufen?
+## <a name="analyze"></a> Welche Ereignisse werden abgerufen?
 Bei den exportierten Daten handelt es sich um die Telemetrierohdaten, die wir von Ihrer Anwendung empfangen. Wir fügen allerdings Standortdaten hinzu, die wir anhand der Client-IP-Adresse berechnen. 
 
 Daten, die während der [Stichprobenerstellung](app-insights-sampling.md) verworfen wurden, werden nicht in die exportierten Daten aufgenommen.
 
 Andere berechnete Metriken sind nicht enthalten. Wir exportieren z. B. nicht die durchschnittliche CPU-Auslastung, doch wir exportieren die rohen Telemetriedaten, anhand derer der Durchschnitt berechnet wird.
 
-Die Daten umfassen außerdem die Ergebnisse von [Verfügbarkeitswebtests](app-insights-monitor-web-app-availability.md) , die Sie eventuell eingerichtet haben. 
+Die Daten umfassen außerdem die Ergebnisse von [Verfügbarkeitswebtests](app-insights-monitor-web-app-availability.md), die Sie eingerichtet haben. 
 
 > [!NOTE]
-> **Stichproben** Wenn Ihre Anwendung eine große Menge von Daten sendet und Sie das Application Insights-SDK für ASP.NET Version 2.0.0-beta3 oder höher verwenden, wird möglicherweise die adaptive Stichprobenerstellung verwendet, bei der nur ein bestimmter Prozentsatz der Telemetriedaten übermittelt wird. [Erfahren Sie mehr über das Erstellen von Stichproben.](app-insights-sampling.md)
+> **Stichproben** Wenn Ihre Anwendung große Datenmengen sendet, wird möglicherweise das Stichprobenfeature verwendet und sendet nur einen Teil der Telemetriedaten. [Erfahren Sie mehr über das Erstellen von Stichproben.](app-insights-sampling.md)
 > 
 > 
 
-## <a name="a-namegeta-inspect-the-data"></a><a name="get"></a> Untersuchen der Daten
+## <a name="get"></a> Untersuchen der Daten
 Sie können den Speicher direkt im Portal überprüfen. Klicken Sie auf **Durchsuchen**, wählen Sie das Speicherkonto aus, und öffnen Sie dann **Container**.
 
 Um Azure Storage in Visual Studio zu überprüfen, öffnen Sie **Anzeigen** und dann **Cloud-Explorer**. (Wenn dieser Menübefehl nicht verfügbar ist, müssen Sie das Azure SDK installieren: Öffnen Sie das Dialogfeld **Neues Projekt**, erweitern Sie „Visual C#/Cloud“, und wählen Sie **Get Microsoft Azure SDK for .NET** aus.)
@@ -109,7 +106,7 @@ Hierbei gilt:
 * `blobCreationTimeUtc` ist die Uhrzeit, zu der das Blob im internen Stagingspeicher erstellt wurde.
 * `blobDeliveryTimeUtc` ist die Uhrzeit, zu der das Blob in den Zielspeicher für den Export kopiert wird.
 
-## <a name="a-nameformata-data-format"></a><a name="format"></a> Datenformat
+## <a name="format"></a> Datenformat
 * Jedes Blob ist eine Textdatei, die mehrere durch '\n' getrennte Zeilen enthält. Es enthält die Telemetriedaten, die über einen Zeitraum von etwa einer halben Minute verarbeitet wurden.
 * Jede Zeile stellt einen Telemetriedatenpunkt dar, z.B. eine Anforderung oder einen Seitenaufruf.
 * Jede Zeile ist ein unformatiertes JSON-Dokument. Wenn Sie den Vorgang verfolgen möchten, öffnen Sie es in Visual Studio, und wählen Sie "Bearbeiten", "Erweitert", "Formatdatei":
@@ -146,7 +143,7 @@ Im kleinen Rahmen können Sie Code zum Aufteilen Ihrer Daten schreiben, sie in e
 
 Ein umfangreicheres Codebeispiel finden Sie unter [Verwenden einer Workerrolle][exportasa].
 
-## <a name="a-namedeleteadelete-your-old-data"></a><a name="delete"></a>Löschen der alten Daten
+## <a name="delete"></a>Löschen der alten Daten
 Beachten Sie, dass Sie für die Verwaltung Ihrer Speicherkapazität und das Löschen der alten Daten nach Bedarf verantwortlich sind. 
 
 ## <a name="if-you-regenerate-your-storage-key"></a>Wenn Sie Ihren Speicherschlüssel erneut generieren...

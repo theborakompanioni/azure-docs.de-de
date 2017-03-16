@@ -3,8 +3,8 @@ title: Replizieren von Apps mit SQL Server und Azure Site Recovery | Microsoft-D
 description: "In diesem Artikel wird beschrieben, wie Sie SQL Server mit Azure Site Recovery bzw. SQL Server-Funktionen für die Notfallwiederherstellung replizieren."
 services: site-recovery
 documentationcenter: 
-author: rayne-wiselman
-manager: jwhit
+author: prateek9us
+manager: gauravd
 editor: 
 ms.assetid: 9126f5e8-e9ed-4c31-b6b4-bf969c12c184
 ms.service: site-recovery
@@ -12,12 +12,12 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/19/2017
-ms.author: raynew
+ms.date: 02/22/2017
+ms.author: pratshar
 translationtype: Human Translation
-ms.sourcegitcommit: f822756c0ce45c98b95a0cec2efd1353aff71561
-ms.openlocfilehash: f2d8a9221a989f9e79b6f4e17d9448303544ffd6
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 9ea73dd91c9637692bbc3d6d2aa97fbed7ae500d
+ms.openlocfilehash: 79c110031a47f1bdb78f4acfcadd7bff1e909807
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -33,7 +33,7 @@ Informieren Sie sich zunächst unbedingt über die SQL Server-Funktionen zur Not
 Viele Workloads nutzen SQL Server als Grundlage, und die Plattform kann zum Implementieren von Datendiensten in Apps wie SharePoint, Dynamics und SAP integriert werden.  SQL Server kann auf verschiedene Arten bereitgestellt werden:
 
 * **Eigenständiger SQL-Server:**SQL Server und alle Datenbanken werden auf einem einzelnen Computer gehostet (physisch oder virtuell). Bei einer Virtualisierung wird Hostclustering verwendet, um die lokale hohe Verfügbarkeit sicherzustellen. Es wird keine hohe Verfügbarkeit für die Gastebene implementiert.
-* **SQL Server-Failoverclustering-Instanzen (Always ON FCI):** Zwei oder mehr Knoten mit SQL Server-Instanzen und freigegebenen Datenträgern werden in einem Windows-Failovercluster konfiguriert. Wenn ein Knoten heruntergefahren ist, kann der Cluster ein Failover von SQL Server auf eine andere Instanz ausführen. Dieses Setup wird in der Regel zum Implementieren von hoher Verfügbarkeit an einem primären Standort verwendet. Diese Bereitstellung stellt keinen Schutz vor Fehlern oder einem Ausfall auf der Ebene des freigegebenen Speichers dar. Ein freigegebener Datenträger kann per iSCSI, Fibre Channel oder freigegebener VHDX implementiert werden.
+* **SQL Server-Failoverclustering-Instanzen (AlwaysOn FCI):** Zwei oder mehr Knoten mit SQL Server-Instanzen und freigegebenen Datenträgern werden in einem Windows-Failovercluster konfiguriert. Wenn ein Knoten heruntergefahren ist, kann der Cluster ein Failover von SQL Server auf eine andere Instanz ausführen. Dieses Setup wird in der Regel zum Implementieren von hoher Verfügbarkeit an einem primären Standort verwendet. Diese Bereitstellung stellt keinen Schutz vor Fehlern oder einem Ausfall auf der Ebene des freigegebenen Speichers dar. Ein freigegebener Datenträger kann per iSCSI, Fibre Channel oder freigegebener VHDX implementiert werden.
 * **SQL AlwaysOn-Verfügbarkeitsgruppen:** Zwei oder mehr Knoten werden in einem Cluster ohne Freigabe mit SQL Server-Datenbanken eingerichtet, die in einer Verfügbarkeitsgruppe mit synchroner Replikation und automatischem Failover konfiguriert sind.
 
  In diesem Artikel werden die folgenden nativen SQL-Notfallwiederherstellungstechnologien zum Wiederherstellen von Datenbanken an einem Remotestandort verwendet:
@@ -72,15 +72,17 @@ Site Recovery kann zur Bereitstellung einer Notfallwiederherstellungslösung mit
 
 ## <a name="deployment-recommendations"></a>Bereitstellungsempfehlungen
 
-**Version** | **Bereitstellung** | **Lokal zu sekundärem Standort** | **Lokal zu Azure** |
---- | --- | --- | --- | --- |
-**SQL Server 2014/2012 Enterprise FCI** | Failovercluster | AlwaysOn-Verfügbarkeitsgruppen | AlwaysOn-Verfügbarkeitsgruppen
-**SQL Server 2014/2012 Always On** | AlwaysOn-Verfügbarkeitsgruppen | AlwaysOn | AlwaysOn
-**SQL Server 2014/2012 Standard FCI** | Failovercluster | Site Recovery-Replikation mit lokaler Spiegelung | Site Recovery-Replikation mit lokaler Spiegelung
-**SQL Server 2014/2012 Enterprise/Standard** | Eigenständig | Site Recovery-Replikation | Site Recovery-Replikation
-**SQL Server 2008 R2 Enterprise/Standard** | FCI |Site Recovery-Replikation mit lokaler Spiegelung |Site Recovery-Replikation mit lokaler Spiegelung |
-**SQL Server 2008 R2 Enterprise/Standard** | Eigenständig |Site Recovery-Replikation | Site Recovery-Replikation
-**SQL Server (beliebige Version) Enterprise/Standard** |FCI – DTC-Anwendung | Site Recovery-Replikation |Nicht unterstützt
+Diese Tabelle enthält unsere Empfehlungen für die Integration von SQL Server-BCDR-Technologien in Site Recovery:
+
+| **Version** | **Edition** | **Bereitstellung** | **Lokal zu lokal** | **Lokal zu Azure** |
+| --- | --- | --- | --- | --- |
+| SQL Server 2014 oder 2012 |Enterprise |Failoverclusterinstanz |AlwaysOn-Verfügbarkeitsgruppen |AlwaysOn-Verfügbarkeitsgruppen |
+|| Enterprise |AlwaysOn-Verfügbarkeitsgruppen für hohe Verfügbarkeit |AlwaysOn-Verfügbarkeitsgruppen |AlwaysOn-Verfügbarkeitsgruppen | |
+|| Standard |Failoverclusterinstanz (FCI) |Site Recovery-Replikation mit lokaler Spiegelung |Site Recovery-Replikation mit lokaler Spiegelung | |
+|| Enterprise oder Standard |Eigenständig |Site Recovery-Replikation |Site Recovery-Replikation | |
+| SQL Server 2008 R2 |Enterprise oder Standard |Failoverclusterinstanz (FCI) |Site Recovery-Replikation mit lokaler Spiegelung |Site Recovery-Replikation mit lokaler Spiegelung |
+|| Enterprise oder Standard |Eigenständig |Site Recovery-Replikation |Site Recovery-Replikation | |
+| SQL Server (beliebige Version) |Enterprise oder Standard |Failoverclusterinstanz – DTC-Anwendung |Site Recovery-Replikation |Nicht unterstützt |
 
 ## <a name="deployment-prerequisites"></a>Voraussetzungen für die Bereitstellung
 
@@ -97,15 +99,16 @@ Richten Sie für den ordnungsgemäßen Betrieb von SQL Server Active Directory a
 
 Bei den Anweisungen in diesem Artikel wird davon ausgegangen, dass am sekundären Standort ein Domänencontroller verfügbar ist. [weiteren Informationen](site-recovery-active-directory.md) zum Schützen von Active Directory mit Site Recovery.
 
-## <a name="integrate-with-sql-server-always-on-for-replication-to-azure-classic-portal-with-a-vmmconfiguration-server"></a>Integration in SQL Server Always On für die Replikation in Azure (klassisches Portal mit einem VMM-/Konfigurationsserver)
+## <a name="integrate-with-sql-server-alwayson-for-replication-to-azure-classic-portal-with-a-vmmconfiguration-server"></a>Integration in SQL Server AlwaysOn für die Replikation in Azure (klassisches Portal mit einem VMM-/Konfigurationsserver)
 
 
 Site Recovery bietet native Unterstützung von SQL AlwaysOn. Wenn Sie eine SQL-Verfügbarkeitsgruppe mit einem virtuellen Azure-Computer erstellt haben, die als sekundärer Standort eingerichtet ist, können Sie anschließend mithilfe von Site Recovery das Failover der Verfügbarkeitsgruppen verwalten.
 
 > [!NOTE]
-> Diese Funktion befindet sich derzeit in der Vorschauphase. Es steht zur Verfügung, wenn am primären Standort in System Center VMM-Clouds verwaltete Hyper-V-Hostserver vorhanden sind oder wenn Sie [VMware-Replikation](site-recovery-vmware-to-azure.md) eingerichtet haben. Die Funktion ist derzeit im neuen Azure-Portal nicht verfügbar. Derzeit ist diese Funktion im neuen Azure-Portal nicht verfügbar.
+> Diese Funktion befindet sich derzeit in der Vorschauphase. Es steht zur Verfügung, wenn am primären Standort in System Center VMM-Clouds verwaltete Hyper-V-Hostserver vorhanden sind oder wenn Sie [VMware-Replikation](site-recovery-vmware-to-azure.md) eingerichtet haben. Die Funktion ist derzeit im neuen Azure-Portal nicht verfügbar. Führen Sie die Schritte in [diesem Abschnitt](site-recovery-sql.md#integrate-with-sql-server-alwayson-for-replication-to-azure-azure-portalclassic-portal-with-no-vmmconfiguration-server) durch, wenn Sie das neue Azure-Portal verwenden.
 >
 >
+
 
 #### <a name="before-you-start"></a>Vorbereitung
 
@@ -122,7 +125,7 @@ Für die Integration von SQL Always On in Site Recovery benötigen Sie Folgendes
 - Wenn Sie VMware ausführen, muss mithilfe von „CSPSConfigtool.exe“ ein Konto auf dem Konfigurationsserver erstellt werden.
 * Das SQL PS-Modul muss für die lokal ausgeführten SQL Server-Instanzen und auf virtuellen Azure-Computern installiert werden.
 * Der VM-Agent muss auf virtuellen Azure-Computern installiert werden.
-* „NTAUTHORITY\System“ benötigt folgende Berechtigungen für eine auf virtuellen Azure-Computern ausgeführte SQL Server-Instanz:
+* „NTAUTHORITY\System“ benötigt folgende Berechtigungen für eine auf virtuellen Azure-Computern ausgeführte SQL Server-Instanz.
   * ALTER AVAILABILITY GROUP: Berechtigungen [hier](https://msdn.microsoft.com/library/hh231018.aspx) und [hier](https://msdn.microsoft.com/library/ff878601.aspx#Anchor_3)
   * ALTER DATABASE: Berechtigungen [hier](https://msdn.microsoft.com/library/ff877956.aspx#Security)
 
@@ -169,7 +172,7 @@ In diesem Beispiel besteht die SharePoint-App aus drei virtuellen Computern, die
 
 ![Wiederherstellungsplan anpassen](./media/site-recovery-sql/customize-rp.png)
 
-### <a name="fail-over"></a>Failover
+### <a name="failover"></a>Failover
 
 Nachdem die Verfügbarkeitsgruppe einem Wiederherstellungsplan hinzugefügt wurde, sind andere Failoveroptionen verfügbar.
 
@@ -195,7 +198,7 @@ Wenn Sie die Verfügbarkeitsgruppe für die lokale SQL Server-Instanz wieder als
 >
 >
 
-## <a name="integrate-with-sql-server-always-on-for-replication-to-azure-azure-portalclassic-portal-with-no-vmmconfiguration-server"></a>Integration in SQL Server Always On für die Replikation in Azure (Azure-Portal/klassisches Portal ohne VMM-/Konfigurationsserver)
+## <a name="integrate-with-sql-server-alwayson-for-replication-to-azure-azure-portalclassic-portal-with-no-vmmconfiguration-server"></a>Integration in SQL Server AlwaysOn für die Replikation in Azure (Azure-Portal/klassisches Portal ohne VMM-/Konfigurationsserver)
 
 Diese Anweisungen sind relevant, wenn Sie eine Integration in SQL Server-Verfügbarkeitsgruppen im neuen Azure-Portal oder im klassischen Portal ausführen, wenn Sie keinen VMM-Server oder Konfigurationsserver verwenden. In diesem Szenario können Azure Automation-Runbooks verwendet werden, um ein skriptgesteuertes Failover von SQL-Verfügbarkeitsgruppen zu konfigurieren.
 
@@ -304,7 +307,7 @@ Das müssen Sie tun:
          }
      }``
 
-## <a name="integrate-with-sql-server-always-on-for-replication-to-a-secondary-on-premises-site"></a>Integration in SQL Server Always On für die Replikation an einem sekundären lokalen Standort
+## <a name="integrate-with-sql-server-alwayson-for-replication-to-a-secondary-on-premises-site"></a>Integration in SQL Server AlwaysOn für die Replikation an einem sekundären lokalen Standort
 
 Wenn die SQL Server-Instanz Verfügbarkeitsgruppen für hohe Verfügbarkeit (oder eine FCI) verwendet, empfiehlt es sich, auch am Wiederherstellungsstandort Verfügbarkeitsgruppen zu verwenden. Diese Empfehlung gilt für Apps, die keine verteilten Transaktionen verwenden.
 
@@ -343,7 +346,7 @@ Bei einem Cluster mit SQL Server Standard Edition oder SQL Server 2008 R2 empfie
 
 ### <a name="on-premises-to-azure"></a>Lokal zu Azure
 
-Bei der Replikation in Azure unterstützt die Sitewiederherstellung keine Gastcluster. Für die Standard-Edition von SQL Server steht zudem keine kostengünstige Notfallwiederherstellungslösung zur Verfügung. In diesem Szenario empfiehlt es sich, den lokalen SQL Server-Cluster mit einer eigenständigen SQL Server-Instanz zu schützen und die Wiederherstellung in Azure vorzunehmen.
+Site Recovery unterstützt bei der Replikation in Azure keine Gastcluster. Für die Standard-Edition von SQL Server steht zudem keine kostengünstige Notfallwiederherstellungslösung zur Verfügung. In diesem Szenario empfiehlt es sich, den lokalen SQL Server-Cluster mit einer eigenständigen SQL Server-Instanz zu schützen und die Wiederherstellung in Azure vorzunehmen.
 
 1. Konfigurieren Sie eine zusätzliche eigenständige SQL Server-Instanz am lokalen Standort.
 2. Konfigurieren Sie diese Instanz so, dass sie als Spiegelung für die zu schützenden Datenbanken fungiert. Konfigurieren Sie die Spiegelung im Modus für hohe Sicherheit.

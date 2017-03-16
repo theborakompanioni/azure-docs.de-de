@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/09/2016
 ms.author: bradsev;hangzh;weig
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 572f09e5034f60e20b6668b5d513741048619ab6
+ms.sourcegitcommit: 29c718d0c34d1e2f9d17b285a7270541a9ff15cf
+ms.openlocfilehash: f12bf7ef4f608e01115a7e7d12b734d65ccc40e5
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -25,7 +26,7 @@ In diesem Tutorial führen wir Sie durch die Erstellung und Bereitstellung eines
 
 Das Verfahren folgt dem Workflow des [Team Data Science-Prozesses (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) . Wir zeigen das Einrichten einer Data Science-Umgebung, das Laden der Daten in SQL Data Warehouse und wie entweder SQL Data Warehouse oder ein IPython Notebook zum Untersuchen der Daten und Entwickeln von Modellierungsfeatures verwendet werden. Anschließend zeigen wir das Erstellen und Bereitstellen eines Modells mit Azure Machine Learning.
 
-## <a name="a-namedatasetathe-nyc-taxi-trips-dataset"></a><a name="dataset"></a>Das Dataset „NYC Taxi Trips“
+## <a name="dataset"></a>Das Dataset „NYC Taxi Trips“
 Die „NYC Taxi Trips“-Daten umfassen ca. 20 GB komprimierter CSV-Dateien (~48 GB unkomprimiert) mit Aufzeichnungen von mehr als 173 Millionen einzelner Fahrten mit den zugehörigen Preisen. Jeder Fahrtendatensatz enthält den Start- und Zielort, jeweils mit Uhrzeit, die anonymisierte Lizenznummer des Fahrers (Hack) und die eindeutige ID des Taxis (Medallion). Die Daten umfassen alle Fahrten im Jahr 2013. Sie werden für jeden Monat in den folgenden beiden Datasets bereitgestellt:
 
 1. Die Datei **trip_data.csv** enthält Fahrtendetails wie die Anzahl der Fahrgäste, Start- und Zielort, Fahrtdauer und Fahrtlänge. Es folgen einige Beispieleinträge:
@@ -51,10 +52,10 @@ Der **eindeutige Schlüssel** für die Zusammenführung von „trip\_data“ und
 * „hack\_license“ und
 * „pickup\_datetime“.
 
-## <a name="a-namemltasksaaddress-three-types-of-prediction-tasks"></a><a name="mltasks"></a>Drei Typen von Vorhersageaufgaben
+## <a name="mltasks"></a>Drei Typen von Vorhersageaufgaben
 Wir formulieren drei Vorhersageprobleme basierend auf *tip\_amount*, um drei Arten von Modellierungsaufgaben zu veranschaulichen:
 
-1. **Binäre Klassifizierung**: Vorhersagen, ob ein Trinkgeld bezahlt wurde, d.h. ein *tip\_amount* größer als 0 $ ist eine positive Probe, während ein *tip\_amount* gleich 0 $ eine negative Probe ist.
+1. **Binäre Klassifizierung**: Vorhersagen, ob ein Trinkgeld bezahlt wurde, d.h. ein *tip\_amount* größer als&0; $ ist eine positive Probe, während ein *tip\_amount* gleich&0; $ eine negative Probe ist.
 2. **Multiklassenklassifizierung**: Vorhersage des Trinkgeldbereichs für die Fahrt. Wir teilen *tip\_amount* in fünf Fächer oder Klassen auf:
    
         Class 0 : tip_amount = $0
@@ -64,7 +65,7 @@ Wir formulieren drei Vorhersageprobleme basierend auf *tip\_amount*, um drei Art
         Class 4 : tip_amount > $20
 3. **Regressionsaufgabe**: Vorhersage des Trinkgeldbetrags für eine Fahrt.  
 
-## <a name="a-namesetupaset-up-the-azure-data-science-environment-for-advanced-analytics"></a><a name="setup"></a>Einrichten der Azure Data Science-Umgebung für die erweiterte Analyse
+## <a name="setup"></a>Einrichten der Azure Data Science-Umgebung für die erweiterte Analyse
 Zum Einrichten Ihrer Azure Data Science-Umgebung führen Sie die folgenden Schritte durch:
 
 **Erstellen Ihres eigenen Azure-Blobspeicherkontos**
@@ -84,7 +85,7 @@ Befolgen Sie die Dokumentation unter [Erstellen eines SQL Data Warehouse](../sql
 * **Benutzername**
 * **Kennwort**
 
-**Installieren Sie Visual Studio 2015 und SQL Server Data Tools.** Eine Anleitung hierzu finden Sie unter [Installieren von Visual Studio 2015 und/oder SSDT (SQL Server Data Tools) für SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md)beschriebenen Schritte.
+**Installieren Sie Visual Studio und SQL Server Data Tools.** Eine Anleitung hierzu finden Sie unter [Installieren von Visual Studio 2015 und/oder SSDT (SQL Server Data Tools) für SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md)beschriebenen Schritte.
 
 **Stellen Sie mit Visual Studio eine Verbindung mit Ihrem Azure SQL Data Warehouse her.** Eine Anleitung hierzu finden Sie unter[ Herstellen einer Verbindung mit Azure SQL Data Warehouse über Visual Studio](../sql-data-warehouse/sql-data-warehouse-connect-overview.md) in den Schritten 1 und 2.
 
@@ -103,7 +104,7 @@ Befolgen Sie die Dokumentation unter [Erstellen eines SQL Data Warehouse](../sql
 
 **Erstellen Sie einen Machine Learning-Arbeitsbereich unter Ihrem Azure-Abonnement.** Eine Anleitung hierzu finden Sie unter [Erstellen eines Azure Machine Learning-Arbeitsbereichs](machine-learning-create-workspace.md)beschriebenen Schritte.
 
-## <a name="a-namegetdataaload-the-data-into-sql-data-warehouse"></a><a name="getdata"></a>Laden der Daten in SQL Data Warehouse
+## <a name="getdata"></a>Laden der Daten in SQL Data Warehouse
 Öffnen Sie eine Windows PowerShell-Befehlskonsole. Führen Sie die folgenden PowerShell-Befehle zum Herunterladen der Beispiel-SQL-Skriptdateien aus, die wir für Sie auf Github bereitstellen. Speichern Sie sie in einem lokalen Verzeichnis, das Sie mit dem Parameter *-DestDir* angeben. Sie können den Wert des Parameters *-DestDir* in ein beliebiges lokales Verzeichnis ändern. Wenn *-DestDir* nicht vorhanden ist, wird es vom PowerShell-Skript erstellt.
 
 > [!NOTE]
@@ -338,7 +339,7 @@ Nach erfolgreicher Ausführung wird folgender Bildschirm angezeigt:
 
 ![][20]
 
-## <a name="a-namedbexploreadata-exploration-and-feature-engineering-in-azure-sql-data-warehouse"></a><a name="dbexplore"></a>Durchsuchen von Daten und Entwickeln von Features in Azure SQL Data Warehouse
+## <a name="dbexplore"></a>Durchsuchen von Daten und Entwickeln von Features in Azure SQL Data Warehouse
 In diesem Abschnitt durchsuchen wir Daten und generieren Features durch das direkte Ausführen von SQL-Abfragen für Azure SQL Data Warehouse mit **Visual Studio Data Tools**. Alle in diesem Abschnitt verwendeten SQL-Abfragen finden Sie im Beispielskript *SQLDW_Explorations.sql*. Diese Datei wurde bereits vom PowerShell-Skript in das lokale Verzeichnis heruntergeladen. Sie können sie auch aus [GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/SQLDW_Explorations.sql)abrufen. In die Datei in Github sind jedoch keine Azure SQL Data Warehouse-Informationen eingebunden.
 
 Verbinden Sie sich mithilfe von Visual Studio unter Verwendung des Anmeldenamens und Kennworts von SQL Data Warehouse mit Ihrem Azure SQL Data Warehouse, und öffnen Sie den **SQL-Objekt-Explorer** , um zu überprüfen, ob Datenbank sowie Tabellen importiert wurden. Rufen Sie die Datei *SQLDW_Explorations.sql* ab.
@@ -564,7 +565,7 @@ Wenn Sie bereit sind, mit Azure Machine Learning fortzufahren, können Sie:
 1. die letzte SQL-Abfrage zum Extrahieren und Erstellen von Stichprobendaten speichern und per Kopieren und Einfügen direkt in ein Modul [Import Data][import-data] in Azure Machine Learning einfügen oder
 2. die extrahierten und verarbeiteten Daten, die Sie für Ihr Modell verwenden möchten, in einer neuen SQL Data Warehouse-Tabelle speichern und dann die neue Tabelle im Modul [Import Data][import-data] in Azure Machine Learning verwenden. Das PowerShell-Skript hat dies in einem früheren Schritt für Sie erledigt. Sie können Daten direkt aus dieser Tabelle in das „Import Data“-Modul einlesen.
 
-## <a name="a-nameipnbadata-exploration-and-feature-engineering-in-ipython-notebook"></a><a name="ipnb"></a>Durchsuchen von Daten und Entwickeln von Features in IPython Notebook
+## <a name="ipnb"></a>Durchsuchen von Daten und Entwickeln von Features in IPython Notebook
 In diesem Abschnitt werden wir Daten durchsuchen und Features generieren, und zwar sowohl mit Python als auch mit SQL-Abfragen für das zuvor erstellte SQL Server Data Warehouse. Ein IPython Notebook-Beispiel namens **SQLDW_Explorations.ipynb** und eine Python-Skriptdatei namens **SQLDW_Explorations_Scripts.py** wurden in Ihr lokales Verzeichnis heruntergeladen. Sie stehen auch auf [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/SQLDW)zur Verfügung. Diese beiden Dateien sind in Python-Skripts identisch. Für den Fall, dass Sie keinen IPython Notebook-Server verwenden, wird die Python-Skriptdatei für Sie bereitgestellt. Diese beiden Python-Beispieldateien wurden unter **Python 2.7**entworfen.
 
 Die erforderlichen Azure SQL Data Warehouse-Informationen im IPython Notebook-Beispiel und die auf Ihren lokalen Computer heruntergeladene Python-Skriptdatei wurden zuvor vom PowerShell-Skript eingebunden. Sie sind ohne Änderung ausführbar.
@@ -804,7 +805,7 @@ In diesem Abschnitt untersuchen wir die Datenverteilungen anhand der Stichproben
     query = '''SELECT TOP 100 * FROM <schemaname>.<nyctaxi_sample>'''
     pd.read_sql(query,conn)
 
-## <a name="a-namemlmodelabuild-models-in-azure-machine-learning"></a><a name="mlmodel"></a>Entwickeln von Modellen in Azure Machine Learning
+## <a name="mlmodel"></a>Entwickeln von Modellen in Azure Machine Learning
 Wir können nun mit der Modellerstellung und -bereitstellung in [Azure Machine Learning](https://studio.azureml.net)fortfahren. Die Daten können jetzt für die oben beschriebenen Vorhersageprobleme verwendet werden:
 
 1. **Binäre Klassifizierung**: Zur Vorhersage, ob ein Trinkgeld für eine Fahrt bezahlt wird.
@@ -853,7 +854,7 @@ Ein Beispiel für ein binäres Klassifizierungsexperiment zum Lesen von Daten di
 > 
 > 
 
-## <a name="a-namemldeployadeploy-models-in-azure-machine-learning"></a><a name="mldeploy"></a>Bereitstellen von Modellen in Azure Machine Learning
+## <a name="mldeploy"></a>Bereitstellen von Modellen in Azure Machine Learning
 Wenn das Modell fertig ist, können Sie es problemlos als Webdienst direkt aus dem Experiment heraus bereitstellen. Weitere Informationen zum Bereitstellen von Azure ML-Webdiensten finden Sie unter [Bereitstellen von Azure Machine Learning-Webdiensten](machine-learning-publish-a-machine-learning-web-service.md).
 
 So stellen Sie einen neuen Webdienst bereit:
@@ -920,9 +921,4 @@ Diese exemplarische Vorgehensweise und die zugehörigen Skripts und IPython Note
 [edit-metadata]: https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/
 [select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

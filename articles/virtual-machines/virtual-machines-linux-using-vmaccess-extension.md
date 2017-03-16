@@ -1,6 +1,6 @@
 ---
-title: "Zurücksetzen des Zugriffs mit der VMAccess-Erweiterung und der Azure-Befehlszeilenschnittstelle 2.0 (Vorschau) | Microsoft-Dokumentation"
-description: "Informationen zum Verwalten von Benutzern und Zurücksetzen des Zugriffs auf virtuellen Linux-Computern mithilfe der VMAccess-Erweiterung und der Azure-Befehlszeilenschnittstelle 2.0 (Vorschau)"
+title: "Zurücksetzen des Zugriffs mit der VMAccess-Erweiterung und der Azure CLI 2.0 | Microsoft-Dokumentation"
+description: "Informationen zum Verwalten von Benutzern und Zurücksetzen des Zugriffs auf virtuellen Linux-Computern mithilfe der VMAccess-Erweiterung und der Azure CLI 2.0"
 services: virtual-machines-linux
 documentationcenter: 
 author: vlivech
@@ -16,32 +16,25 @@ ms.topic: article
 ms.date: 02/16/2017
 ms.author: v-livech
 translationtype: Human Translation
-ms.sourcegitcommit: 98646daf5a4d2c9aca7dfc02a36f39d12f749443
-ms.openlocfilehash: 7752b486bda4a68b14ff3e8aaf1a369a649c83b5
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: debdb8a16c8cfd6a137bd2a7c3b82cfdbedb0d8c
+ms.openlocfilehash: 4fac98d37dde195af69d8bd03fd796c6eeae3734
+ms.lasthandoff: 02/27/2017
 
 
 ---
-# <a name="manage-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli-20-preview"></a>Verwalten von Benutzern, SSH und Überprüfen oder Reparieren von Datenträgern auf virtuellen Azure-Linux-Computern mit der VMAccess-Erweiterung und der Azure-Befehlszeilenschnittstelle 2.0 (Vorschau)
+# <a name="manage-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli-20"></a>Verwalten von Benutzern, SSH und Überprüfen oder Reparieren von Datenträgern auf virtuellen Azure-Linux-Computern mit der VMAccess-Erweiterung und der Azure CLI 2.0
 Der Datenträger auf Ihrer Linux-VM zeigt Fehler an. Aus irgendeinem Grund haben Sie das Stammkennwort für Ihre Linux-VM zurückgesetzt oder Ihren privaten SSH-Schlüssel versehentlich gelöscht. Wenn dies früher zu Rechenzentrumszeiten geschah, mussten Sie dorthin fahren und den KVM öffnen, um an die Serverkonsole zu gelangen. Stellen Sie sich die Azure-VMAccess-Erweiterung als diesen KVM-Switch vor, mit dem Sie Zugriff auf die Konsole haben, um den Zugriff auf Linux zurückzusetzen oder Wartung auf Datenträgerebene durchzuführen.
 
-Dieser Artikel veranschaulicht die Verwendung der Azure-VMAcesss-Erweiterung zum Überprüfen oder Reparieren eines Datenträgers, Zurücksetzen des Benutzerzugriffs, Verwalten von Benutzerkonten oder Zurücksetzen der SSHD-Konfiguration unter Linux.
-
-
-## <a name="cli-versions-to-complete-the-task"></a>CLI-Versionen zum Durchführen dieser Aufgabe
-Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
-
-- [Azure CLI 1.0:](virtual-machines-linux-using-vmaccess-extension-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell
-- [Azure CLI 2.0 (Vorschau):](#ways-to-use-the-vmaccess-extension) Unsere Befehlszeilenschnittstelle der nächsten Generation für das Resource Manager-Bereitstellungsmodell (dieser Artikel)
+Dieser Artikel veranschaulicht die Verwendung der Azure-VMAcesss-Erweiterung zum Überprüfen oder Reparieren eines Datenträgers, Zurücksetzen des Benutzerzugriffs, Verwalten von Benutzerkonten oder Zurücksetzen der SSHD-Konfiguration unter Linux. Sie können diese Schritte auch mit der [Azure CLI 1.0](virtual-machines-linux-using-vmaccess-extension-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ausführen.
 
 
 ## <a name="ways-to-use-the-vmaccess-extension"></a>Verschiedene Verwendungsmöglichkeiten für die VMAccess-Erweiterung
 Es gibt zwei Möglichkeiten, die VMAccess-Erweiterung auf Ihren virtuellen Linux-Computern zu verwenden:
 
-* Verwenden Sie die Azure-Befehlszeilenschnittstelle 2.0 (Vorschau) und die erforderlichen Parameter.
+* Verwenden Sie die Azure CLI 2.0 und die erforderlichen Parameter.
 * [Verwenden Sie JSON-Rohdatendateien, die von der VMAccess-Erweiterung verarbeitet](#use-json-files-and-the-vmaccess-extension) und dann verwendet werden können.
 
-Die folgenden Beispiele verwenden [az vm access](/cli/azure/vm/access) mit den geeigneten Parametern. Zum Ausführen dieser Schritte muss die neueste [Azure-Befehlszeilenschnittstelle 2.0 (Vorschau)](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sein.
+Die folgenden Beispiele verwenden [az vm access](/cli/azure/vm/access) mit den geeigneten Parametern. Zum Ausführen dieser Schritte muss die neueste Version der [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sein.
 
 ## <a name="reset-ssh-key"></a>Zurücksetzen des SSH-Schlüssels
 Das folgende Beispiel setzt den SSH-Schlüssel für den Benutzer `azureuser` auf dem virtuellen Computer `myVM` zurück:
