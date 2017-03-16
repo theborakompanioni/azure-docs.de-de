@@ -75,7 +75,7 @@ Weitere Informationen zur Konfiguration von VMM-Netzwerken finden Sie in unten s
 * [Konfigurieren von logischen Netzwerken in VMM](http://go.microsoft.com/fwlink/p/?LinkId=386307)
 * [Konfiguration von VM-Netzwerken und Gateways in VMM](http://go.microsoft.com/fwlink/p/?LinkId=386308)
 
-[hier](site-recovery-vmm-to-vmm.md#prepare-for-network-mapping) .
+[Erfahren Sie mehr](site-recovery-vmm-to-vmm.md#prepare-for-network-mapping) zur Funktionsweise der Netzwerkzuordnung.
 
 ### <a name="powershell-prerequisites"></a>PowerShell-Voraussetzungen
 Stellen Sie sicher, dass Azure PowerShell einsatzbereit ist. Wenn Sie PowerShell bereits verwenden, müssen Sie auf Version 0.8.10 oder höher aktualisieren. Informationen zum Einrichten von PowerShell finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs). Nach dem Einrichten und Konfigurieren von PowerShell können Sie alle verfügbaren Cmdlets für den Dienst [hier](https://msdn.microsoft.com/library/dn850420.aspx)anzeigen.
@@ -298,7 +298,7 @@ Um den Abschluss des Vorgangs zu überprüfen, führen Sie die Schritte in [Übe
 
         $jobIDResult =  Start-AzureRmSiteRecoveryUnPlannedFailoverJob -Direction PrimaryToRecovery -ProtectionEntity $protectionEntity
 
-## <a name="a-namemonitora-monitor-activity"></a><a name=monitor></a> Überwachen der Aktivität
+## <a name=monitor></a> Überwachen der Aktivität
 Verwenden Sie die folgenden Befehle zum Überwachen der Aktivität. Beachten Sie, dass Sie zwischen den Aufträgen auf den Abschluss der Verarbeitung warten müssen.
 
     Do
