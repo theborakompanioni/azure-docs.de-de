@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 1/31/2017
 ms.author: vakarand
 translationtype: Human Translation
-ms.sourcegitcommit: 55ee9f685427168c02865d204fda34066c6779c5
-ms.openlocfilehash: a8533926bbb26770d8e665436e38172aeffbb035
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 6a466937358932a28604cddf7f32cdfd02a5b88d
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -206,13 +207,15 @@ Wenn das UserPrincipalName-Suffix eines Benutzers von bob@**contoso.com** in bob
 Wenn ein Attribut die maximal zulässigen Grenzwerte für Größe, Länge oder Anzahl überschreitet, die durch das Azure Active Directory-Schema festgelegt sind, tritt beim Synchronisierungsvorgang der Synchronisierungsfehler **LargeObject** oder **ExceededAllowedLength** auf. In der Regel tritt dieser Fehler für die folgenden Attribute auf:
 
 * userCertificate
+* userSMIMECertificate
 * thumbnailPhoto
 * proxyAddresses
 
 ### <a name="possible-scenarios"></a>Mögliche Szenarien
-1. Bobs Attribut „userCertificate“ speichert zu viele Zertifikate, die Bob zugewiesen sind. Dazu können auch ältere, abgelaufene Zertifikate gehören. Der Grenzwert ist auf 50 Zertifikate festgelegt, es wird jedoch empfohlen, weniger als 25 Zertifikate zu verwenden.
-2. Bobs „thumbnailPhoto“, das in Active Directory festgelegt ist, ist zu groß, um in Azure AD synchronisiert zu werden.
-3. Während des automatischen Auffüllens des Attributs „ProxyAddresses“ in Active Directory, wurden einem Objekt >500 „ProxyAddresses“ zugewiesen.
+1. Bobs Attribut „userCertificate“ speichert zu viele Zertifikate, die Bob zugewiesen sind. Dazu können auch ältere, abgelaufene Zertifikate gehören. Die harte Grenze liegt bei 15 Zertifikaten.
+2. Bobs Attribut „userSMIMECertificate“ speichert zu viele Zertifikate, die Bob zugewiesen sind. Dazu können auch ältere, abgelaufene Zertifikate gehören. Die harte Grenze liegt bei 15 Zertifikaten.
+3. Bobs „thumbnailPhoto“, das in Active Directory festgelegt ist, ist zu groß, um in Azure AD synchronisiert zu werden.
+4. Während des automatischen Auffüllens des Attributs „ProxyAddresses“ in Active Directory, wurden einem Objekt >500 „ProxyAddresses“ zugewiesen.
 
 ### <a name="how-to-fix"></a>So behebt man den Fehler
 1. Stellen Sie sicher, dass das Attribut, das den Fehler verursacht, innerhalb der zulässigen Einschränkungen ist.
@@ -220,9 +223,4 @@ Wenn ein Attribut die maximal zulässigen Grenzwerte für Größe, Länge oder A
 ## <a name="related-links"></a>Verwandte Links
 * [Suchen von Active Directory-Objekten im Active Directory-Verwaltungscenter](https://technet.microsoft.com/library/dd560661.aspx)
 * [Verwalten von Azure AD mit Windows PowerShell](https://msdn.microsoft.com/library/azure/jj151815.aspx)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

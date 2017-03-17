@@ -1,5 +1,5 @@
 ---
-title: Konsistenzebenen in DocumentDB | Microsoft Docs
+title: Konsistenzebenen in Azure DocumentDB | Microsoft-Dokumentation
 description: "DocumentDB bietet vier Konsistenzebenen, um für vorhersehbare Kompromisse zwischen Konsistenz, Verfügbarkeit und Latenz sorgen zu können."
 keywords: Eventual Consistency, DocumentDB, Azure, Microsoft Azure
 services: documentdb
@@ -15,13 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2016
 ms.author: syamk
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2d833a559b72569983340972ba3b905b9e42e61d
-ms.openlocfilehash: dc5ddeaaa865260c58422ed00c015689946b63f5
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 839f8c8669c06e22635b68018d816a669aec895b
+ms.lasthandoff: 03/07/2017
 
 
 ---
-# <a name="consistency-levels-in-documentdb"></a>Konsistenzebenen in DocumentDB
+# <a name="tunable-data-consistency-levels-in-documentdb"></a>Einstellbare Datenkonsistenzebenen in DocumentDB
 Azure DocumentDB ist von Grund auf im Hinblick auf eine globale Verteilung konzipiert. Ziel ist das Bieten vorhersehbarer Garantien niedriger Latenz, einer SLA mit einer Verfügbarkeit von 99,99% und mehrerer überlegt definierter gelockerter Konsistenzmodelle. DocumentDB bietet derzeit vier Konsistenzebenen: STARK, BEGRENZTE VERALTUNG, SITZUNG und LETZTLICH. Neben den Konsistenzmodellen **STARK** und **LETZTLICH**, die meist von anderen NoSQL-Datenbanken geboten werden, bietet DocumentDB auch zwei sorgfältig programmierte und operationalisierte Modelle, **BEGRENZTE VERALTUNG** und **SITZUNG**, die ihren Nutzen in praktischen Anwendungsfällen unter Beweis gestellt haben. Diese vier Konsistenzebenen ermöglichen Ihnen, fundierte Kompromisse zwischen Konsistenz, Verfügbarkeit und Latenz zu finden. 
 
 ## <a name="scope-of-consistency"></a>Umfang der Konsistenz
@@ -116,9 +118,4 @@ Wenn Sie weitere Informationen zu Konsistenzebenen und deren Vor- und Nachteile 
   [http://allthingsdistributed.com/2008/12/eventually_consistent.html](http://allthingsdistributed.com/2008/12/eventually_consistent.html)
 
 [1]: ./media/documentdb-consistency-levels/consistency-tradeoffs.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

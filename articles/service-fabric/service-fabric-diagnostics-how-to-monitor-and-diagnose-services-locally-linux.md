@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 03/02/2017
 ms.author: subramar
 translationtype: Human Translation
-ms.sourcegitcommit: cf8f717d5343ae27faefdc10f81b4feaccaa53b9
-ms.openlocfilehash: a8f077168dbc8660625371a2b988926c69491337
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 86ed3f25f0bdd6bb5d8a93f124a0d2bcd7e2b07a
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -36,15 +36,15 @@ ms.lasthandoff: 01/24/2017
 
 ## <a name="debugging-service-fabric-java-applications"></a>Debuggen von Service Fabric Java-Anwendungen
 
-Für Java-Anwendungen sind [mehrere Protokollierungsframeworks](http://en.wikipedia.org/wiki/Java_logging_framework) verfügbar. Da `java.util.logging` die Standardoption bei JRE ist, wird dies auch für die [Codebeispiele in Github](http://github.com/Azure-Samples/service-fabric-java-getting-started)verwendet.  Im Folgenden wir die Konfiguration des `java.util.logging` -Frameworks erklärt. 
- 
-Mithilfe von „java.util.logging“ können Sie Ihre Anwendungsprotokolle zum Arbeitsspeicher, zu Ausgabestreams, zu Konsolendateien oder zu Sockets umleiten. Für jede dieser Optionen gibt es Standardhandler, die im Framework bereits bereitgestellt wurden. Sie können eine `app.properties` -Datei erstellen, um den Dateihandler für Ihre Anwendung zu konfigurieren, damit alle Protokolle zu einer lokalen Datei umgeleitet werden. 
+Für Java-Anwendungen sind [mehrere Protokollierungsframeworks](http://en.wikipedia.org/wiki/Java_logging_framework) verfügbar. Da `java.util.logging` die Standardoption bei JRE ist, wird dies auch für die [Codebeispiele in Github](http://github.com/Azure-Samples/service-fabric-java-getting-started)verwendet.  Im Folgenden wir die Konfiguration des `java.util.logging` -Frameworks erklärt.
 
-Der folgende Codeausschnitt enthält eine Beispielkonfiguration: 
+Mithilfe von „java.util.logging“ können Sie Ihre Anwendungsprotokolle zum Arbeitsspeicher, zu Ausgabestreams, zu Konsolendateien oder zu Sockets umleiten. Für jede dieser Optionen gibt es Standardhandler, die im Framework bereits bereitgestellt wurden. Sie können eine `app.properties` -Datei erstellen, um den Dateihandler für Ihre Anwendung zu konfigurieren, damit alle Protokolle zu einer lokalen Datei umgeleitet werden.
 
-```java 
+Der folgende Codeausschnitt enthält eine Beispielkonfiguration:
+
+```java
 handlers = java.util.logging.FileHandler
- 
+
 java.util.logging.FileHandler.level = ALL
 java.util.logging.FileHandler.formatter = java.util.logging.SimpleFormatter
 java.util.logging.FileHandler.limit = 1024000
@@ -54,13 +54,17 @@ java.util.logging.FileHandler.pattern = /tmp/servicefabric/logs/mysfapp%u.%g.log
 
 Der Ordner, auf den die `app.properties` -Datei verweist, muss vorhanden sein. Nachdem die `app.properties`-Datei erstellt wurde, müssen Sie auch Ihr Skript für den Einstiegspunkt, `entrypoint.sh` im `<applicationfolder>/<servicePkg>/Code/`-Ordner, ändern, um die Eigenschaft `java.util.logging.config.file` auf die `app.propertes`-Datei festzulegen. Der Eintrag sollte wie der folgende Ausschnitt aussehen:
 
-```sh 
+```sh
 java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path to app.properties> -jar <service name>.jar
 ```
- 
- 
-Diese Konfiguration führt zu Protokollen, die auf rotierende Weise unter `/tmp/servicefabric/logs/`erfasst werden. **%u** und **%g** ermöglichen das Erstellen von Dateien mit den Dateinamen „mysfapp0.log“, „mysfapp1.log“ usw. Wenn kein Handler explizit konfiguriert ist, wird standardmäßig der Konsolen-Handler registriert. Die Protokolle können in syslog unter „/var/log/syslog“ angezeigt werden.
- 
+
+
+Diese Konfiguration führt zu Protokollen, die auf rotierende Weise unter `/tmp/servicefabric/logs/`erfasst werden. Die Protokolldatei in diesem Fall heißt „mysfapp%u.%g.log“, wobei
+* **%u** eine eindeutige Zahl zum Lösen von Konflikten zwischen gleichzeitig ausgeführten Java-Prozessen ist.
+* **%g** ist die Generationszahl, um zwischen rotierenden Protokollen zu unterscheiden.
+
+Wenn kein Handler explizit konfiguriert ist, wird standardmäßig der Konsolen-Handler registriert. Die Protokolle können in syslog unter „/var/log/syslog“ angezeigt werden.
+
 Weitere Informationen finden Sie unter der [Codebeispielen in Github](http://github.com/Azure-Samples/service-fabric-java-getting-started).  
 
 
@@ -78,7 +82,7 @@ Der erste Schritt besteht darin, System.Diagnostics.Tracing einzuschließen, sod
 Sie können einen benutzerdefinierten EventListener verwenden, um auf Dienstereignisse zu lauschen, und diese dann zu den geeigneten Ablaufverfolgungsdateien weiterleiten. Der folgende Codeausschnitt zeigt eine Beispielimplementierung der Protokollierung mit EventSource und einem benutzerdefinierten EventListener:
 
 
-```c#
+```csharp
 
  public class ServiceEventSource : EventSource
  {
@@ -93,7 +97,7 @@ Sie können einen benutzerdefinierten EventListener verwenden, um auf Diensterei
                 this.Message(finalMessage);
             }
         }
-        
+
         // TBD: Need to add method for sample event.
 
 }
@@ -101,7 +105,7 @@ Sie können einen benutzerdefinierten EventListener verwenden, um auf Diensterei
 ```
 
 
-```
+```csharp
    internal class ServiceEventListener : EventListener
    {
 
@@ -112,7 +116,7 @@ Sie können einen benutzerdefinierten EventListener verwenden, um auf Diensterei
         protected override void OnEventWritten(EventWrittenEventArgs eventData)
         {
             using (StreamWriter Out = new StreamWriter( new FileStream("/tmp/MyServiceLog.txt", FileMode.Append)))           
-        {  
+        { 
                  // report all event information               
           Out.Write(" {0} ",  Write(eventData.Task.ToString(), eventData.EventName, eventData.EventId.ToString(), eventData.Level,""));
                 if (eventData.Message != null)              
@@ -130,11 +134,11 @@ Sie können einen benutzerdefinierten EventListener verwenden, um auf Diensterei
 
 Der vorherige Codeausschnitt gibt die Protokolle an eine Datei in `/tmp/MyServiceLog.txt` aus. Der Dateiname muss entsprechend aktualisiert werden. Wenn Sie die Protokolle an die Konsole umleiten möchten, verwenden Sie den folgenden Codeausschnitt in Ihrer benutzerdefinierten EventListener-Klasse:
 
-```
+```csharp
 public static TextWriter Out = Console.Out;
 ```
 
-Die Beispiele unter [C# Samples](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started) verwenden EventSource und einen benutzerdefinierten EventListener, um Ereignisse in eine Datei zu protokollieren. 
+Die Beispiele unter [C# Samples](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started) verwenden EventSource und einen benutzerdefinierten EventListener, um Ereignisse in eine Datei zu protokollieren.
 
 
 

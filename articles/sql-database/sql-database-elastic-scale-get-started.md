@@ -13,11 +13,12 @@ ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2016
+ms.date: 03/06/2017
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
-ms.openlocfilehash: 86391212e70a0f0a8ec0e53dce26b11218a5780c
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: a1e45a1ea15f76bcc7c0cd3bceca703818b3a9ff
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -33,20 +34,11 @@ Um die Bibliothek zu installieren, wechseln Sie zu [Microsoft.Azure.SqlDatabase.
 ## <a name="download-and-run-the-sample-app"></a>Herunterladen und Ausführen der Beispiel-App
 Die Beispielanwendung unter **Elastische Datenbank mit Azure SQL – Erste Schritte** veranschaulicht die wichtigsten Aspekte der Entwicklungsoberfläche für Sharding-Anwendungen, die Tools für elastische Datenbanken in Azure SQL verwenden. Dabei stehen die wichtigsten Anwendungsfälle für [Shardzuordnungsverwaltung](sql-database-elastic-scale-shard-map-management.md), [datenabhängiges Routing](sql-database-elastic-scale-data-dependent-routing.md) und [Abfragen mehrerer Shards](sql-database-elastic-scale-multishard-querying.md) im Mittelpunkt. Gehen Sie folgendermaßen vor, um das Beispiel herunterzuladen und auszuführen: 
 
-1. Öffnen Sie Visual Studio, und wählen Sie **Datei -> Neu -> Projekt** aus.
-2. Klicken Sie im Dialogfeld auf **Online**.
-   
-    ![Neues Projekt > Online][2]
-3. Klicken Sie anschließend unter **Beispiele** auf **Visual C#**.
-   
-    ![Auf Visual C klicken#][3]
-4. Geben Sie im Suchfeld die Zeichenfolge **elastic db** ein, um nach dem Beispiel zu suchen. Der Titel **Elastic DB Tools for Azure SQL - Getting Started** wird angezeigt.
-   
-    ![Suchfeld][1]
-5. Wählen Sie das Beispiel aus, wählen Sie einen Namen und einen Speicherort für das neue Projekt, und drücken Sie **OK** , um das Projekt zu erstellen.
-6. Öffnen Sie die Datei **app.config** in der Lösung des Beispielprojekts, und folgen Sie den Anweisungen in der Datei, um den Namen des Azure SQL-Datenbankservers und Ihre Anmeldeinformationen (Benutzername und Kennwort) hinzuzufügen.
-7. Erstellen Sie die Anwendung, und führen Sie sie aus. Gestatten Sie Visual Studio bei der entsprechenden Aufforderung, die NuGet-Pakete der Lösung wiederherzustellen. Dadurch wird die aktuelle Version der Clientbibliothek für elastische Datenbanken von NuGet heruntergeladen.
-8. Spielen Sie mit den verschiedenen Optionen, um mehr über die Funktionen der Clientbibliothek zu erfahren. Beachten Sie die Schritte, welche die Anwendung in der Konsolenausgabe ausführt, und erkunden Sie den zugrunde liegenden Code.
+1. Laden Sie das Beispiel [Elastic DB Tools for Azure SQL - Getting Started (Elastische DB-Tools für Azure SQL – Erste Schritte)](https://code.msdn.microsoft.com/windowsapps/Elastic-Scale-with-Azure-a80d8dc6) von MSDN herunter. Entzippen Sie das Beispiel in einem Speicherort Ihrer Wahl.
+2. Öffnen Sie die Lösung **ElasticScaleStarterKit.sln** aus dem **C#**-Verzeichnis, um ein Projekt zu erstellen.
+3. Öffnen Sie die Datei **app.config** in der Lösung des Beispielprojekts, und folgen Sie den Anweisungen in der Datei, um den Namen des Azure SQL-Datenbankservers und Ihre Anmeldeinformationen (Benutzername und Kennwort) hinzuzufügen.
+4. Erstellen Sie die Anwendung, und führen Sie sie aus. Gestatten Sie Visual Studio bei der entsprechenden Aufforderung, die NuGet-Pakete der Lösung wiederherzustellen. Dadurch wird die aktuelle Version der Clientbibliothek für elastische Datenbanken von NuGet heruntergeladen.
+5. Spielen Sie mit den verschiedenen Optionen, um mehr über die Funktionen der Clientbibliothek zu erfahren. Beachten Sie die Schritte, welche die Anwendung in der Konsolenausgabe ausführt, und erkunden Sie den zugrunde liegenden Code.
    
     ![Fortschritt][4]
 
@@ -58,10 +50,10 @@ Herzlichen Glückwunsch! Sie haben Ihre erste Shardinganwendung mit den Tools f�
 > 
 
 ### <a name="key-pieces-of-the-code-sample"></a>Zentrale Elemente des Codebeispiels
-1. **Verwalten von Shards und Shardzuordnungen**: Der Code in der Datei **ShardMapManagerSample.cs** veranschaulicht die Arbeit mit Shards, Bereichen und Zuordnungen. Weitere Informationen über dieses Thema finden Sie hier: [Shard Map-Verwaltung](http://go.microsoft.com/?linkid=9862595).  
+1. **Verwalten von Shards und Shardzuordnungen**: Der Code in der Datei **ShardManagementUtils.cs** veranschaulicht die Arbeit mit Shards, Bereichen und Zuordnungen. Weitere Informationen über dieses Thema finden Sie hier: [Shard Map-Verwaltung](http://go.microsoft.com/?linkid=9862595).  
 2. **Datenabhängiges Routing**: Das Routing von Transaktionen zum richtigen Shard wird in **DataDependentRoutingSample.cs** dargestellt. Weitere Einzelheiten finden Sie unter [Datenabhängiges Routing](http://go.microsoft.com/?linkid=9862596). 
 3. **Abfragen mehrerer Shards**: shardübergreifendes Abfragen wird in der Datei **MultiShardQuerySample.cs** veranschaulicht. Weitere Einzelheiten finden Sie unter [Abfragen mehrerer Shards](http://go.microsoft.com/?linkid=9862597).
-4. **Hinzufügen leerer Shards**: Das iterative Hinzufügen neuer leerer Shards wird mit dem Code in der Datei **AddNewShardsSample.cs** durchgeführt. Einzelheiten zu diesem Thema werden hier behandelt: [Shard Map-Verwaltung](http://go.microsoft.com/?linkid=9862595).
+4. **Hinzufügen leerer Shards**: Das iterative Hinzufügen neuer leerer Shards wird mit dem Code in der Datei **CreateShardsSample.cs** durchgeführt. Einzelheiten zu diesem Thema werden hier behandelt: [Shard Map-Verwaltung](http://go.microsoft.com/?linkid=9862595).
 
 ### <a name="other-elastic-scale-operations"></a>Weitere Elastic Scale-Operationen
 1. **Aufteilen eines vorhandenen Shards**: Die Möglichkeit zum Aufteilen von Shards wird über das **Split-Merge-Tool** bereitgestellt. Weitere Informationen zu diesem Tool finden Sie hier: [Übersicht über das Split-Merge-Tool](sql-database-elastic-scale-overview-split-and-merge.md).
@@ -99,10 +91,5 @@ Weitere Informationen zu den Tools für elastische Datenbanken finden Sie unter:
 [2]: ./media/sql-database-elastic-scale-get-started/click-online.png
 [3]: ./media/sql-database-elastic-scale-get-started/click-CSharp.png
 [4]: ./media/sql-database-elastic-scale-get-started/output2.png
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

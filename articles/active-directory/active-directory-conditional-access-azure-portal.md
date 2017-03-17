@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/19/2017
+ms.date: 03/06/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 4dad4bd824f199562cb972c98cfcb452f2823828
-ms.openlocfilehash: b85b10b9504c5efa7ec05b92b544ad777e3abacc
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: 62804019a8c2c5e719c36021ee04cbd20e03dd05
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -36,9 +36,10 @@ In einer Welt, in der Mobilität und die Cloud an erster Stelle stehen, ermögli
 - Schaffen von Bedingungen für Endbenutzer, unter denen sie an jedem Ort und zu jeder Zeit produktiv sein können
 - Lückenloses Schützen der Assets eines Unternehmens
 
-Zur Verbesserung der Produktivität verfügt Azure Active Directory über viele Optionen für Ihre Benutzer, mit denen sie auf die Assets des Unternehmens zugreifen können. Durch die Verwaltung des Anwendungszugriffs können Sie per Azure Active Directory sicherstellen, dass nur *die richtigen Personen* auf Ihre Anwendungen zugreifen können. Was kann getan werden, wenn Sie mehr Kontrolle darüber haben möchten, wie die richtigen Personen unter bestimmten Bedingungen auf Ihre Ressourcen zugreifen können? Welche Möglichkeiten haben Sie, wenn es Fälle gibt, in denen Sie den Zugriff auf bestimmte Apps auch für die *richtigen Personen* blockieren möchten? Es kann beispielsweise gewollt sein, dass die richtigen Personen über ein vertrauenswürdiges Netzwerk auf bestimmte Apps zugreifen. Aber es kann unerwünscht sein, dass der Zugriff auf diese Apps über ein Netzwerk erfolgt, das für Sie nicht vertrauenswürdig ist. Sie können diese Fragen mithilfe des bedingten Zugriffs beantworten. 
+Zur Verbesserung der Produktivität verfügt Azure Active Directory über viele Optionen für Ihre Benutzer, mit denen sie auf die Assets des Unternehmens zugreifen können. Durch die Verwaltung des Anwendungszugriffs können Sie per Azure Active Directory sicherstellen, dass nur *die richtigen Personen* auf Ihre Anwendungen zugreifen können. Was kann getan werden, wenn Sie mehr Kontrolle darüber haben möchten, wie die richtigen Personen unter bestimmten Bedingungen auf Ihre Ressourcen zugreifen können? Welche Möglichkeiten haben Sie, wenn es Fälle gibt, in denen Sie den Zugriff auf bestimmte Apps auch für die *richtigen Personen* blockieren möchten? Es kann beispielsweise gewollt sein, dass die richtigen Personen über ein vertrauenswürdiges Netzwerk auf bestimmte Apps zugreifen. Aber es kann unerwünscht sein, dass der Zugriff auf diese Apps über ein Netzwerk erfolgt, das für Sie nicht vertrauenswürdig ist. Sie können diese Fragen mithilfe des bedingten Zugriffs beantworten.
 
 Der bedingte Zugriff ist eine Funktion von Azure Active Directory, mit der Sie die Kontrolle des Zugriffs für Apps in Ihrer Umgebung basierend auf bestimmten Bedingungen erzwingen können. Im Rahmen der Kontrolle können Sie entweder weitere Anforderungen mit dem Zugriff verknüpfen oder den Zugriff blockieren. Die Implementierung des bedingten Zugriffs basiert auf Richtlinien. Ein auf Richtlinien basierender Ansatz führt zu einer Vereinfachung der Konfigurationsbenutzeroberfläche, da die Vorgehensweise dann an Ihren Zugriffsanforderungen ausgerichtet ist.  
+
 Normalerweise definieren Sie die Zugriffsanforderungen, indem Sie Anweisungen definieren, die auf dem folgenden Muster basieren:
 
 ![Kontrolle](./media/active-directory-conditional-access-azure-portal/10.png)
@@ -47,9 +48,9 @@ Wenn Sie in der obigen Abbildung „*this*“ jeweils durch echte Informationen 
 
 *Wenn Auftragnehmer versuchen, über nicht vertrauenswürdige Netzwerke auf unsere Cloud-Apps zuzugreifen, wird der Zugriff blockiert.*
 
-Die obige Richtlinienanweisung verdeutlicht die Nützlichkeit des bedingten Zugriffs. Sie können Auftragnehmern grundsätzlich Zugriff auf Ihre Cloud-Apps gewähren (**wer**), und mit dem bedingten Zugriff können Sie dann zusätzlich Bedingungen definieren, unter denen der Zugriff möglich ist (**wie**). 
+Die obige Richtlinienanweisung verdeutlicht die Nützlichkeit des bedingten Zugriffs. Sie können Auftragnehmern grundsätzlich Zugriff auf Ihre Cloud-Apps gewähren (**wer**), und mit dem bedingten Zugriff können Sie dann zusätzlich Bedingungen definieren, unter denen der Zugriff möglich ist (**wie**).
 
-Im Zusammenhang mit dem bedingten Zugriff per Azure Active Directory gilt Folgendes: 
+Im Zusammenhang mit dem bedingten Zugriff per Azure Active Directory gilt Folgendes:
 
 - „**When this happens**“ wird als **Bedingungsanweisung ** bezeichnet.
 - „**Then do this**“ wird als **Kontrolle** bezeichnet.
@@ -67,7 +68,8 @@ Bei einer Richtlinie für den bedingten Zugriff wird mit Kontrollen definiert, w
 Mit Kontrollen können Sie den Zugriff entweder blockieren oder unter Erfüllung zusätzlicher Anforderungen zulassen.
 Wenn Sie eine Richtlinie konfigurieren, mit der der Zugriff zugelassen wird, müssen Sie mindestens eine Anforderung auswählen.   
 
-Bei der aktuellen Implementierung von Azure Active Directory können Sie die folgenden Anforderungen konfigurieren: 
+### <a name="grant-controls"></a>Gewährungssteuerelemente
+Bei der aktuellen Implementierung von Azure Active Directory können Sie die folgenden Anforderungen für Gewährungssteuerelemente konfigurieren:
 
 ![Kontrolle](./media/active-directory-conditional-access-azure-portal/05.png)
 
@@ -81,13 +83,21 @@ Wenn Sie in einer Richtlinie für den bedingten Zugriff mehr als eine Anforderun
 
 ![Kontrolle](./media/active-directory-conditional-access-azure-portal/06.png)
 
+### <a name="session-controls"></a>Sitzungssteuerelemente
+Sitzungssteuerelemente ermöglichen das Einschränken der Benutzeroberfläche innerhalb einer Cloud-App. Die Sitzungssteuerelemente werden von Cloud-Apps erzwungen und verlassen sich auf zusätzliche Informationen über die Sitzung, die der App von Azure AD bereitgestellt werden.
+
+![Kontrolle](./media/active-directory-conditional-access-azure-portal/session-control-pic.png)
+
+#### <a name="use-app-enforced-restrictions"></a>Verwenden von App-erzwungenen Einschränkungen
+Sie können dieses Steuerelement verwenden, um von Azure AD anzufordern, die Geräteinformationen an die Cloud-App zu übergeben. Dadurch erfährt die Cloud-App, ob der Benutzer von einem konformen Gerät oder einem in eine Domäne eingebundenen Gerät stammt. Dieses Steuerelement wird derzeit nur mit SharePoint als Cloud-App unterstützt. SharePoint verwendet die Geräteinformationen dazu, Benutzern eine eingeschränkte oder vollständige Benutzeroberfläche zur Verfügung zu stellen, je nach Gerätezustand.
+Weitere Informationen zum Anfordern von eingeschränktem Zugriff mit SharePoint finden Sie [hier](https://aka.ms/spolimitedaccessdocs).
 
 ## <a name="condition-statement"></a>Bedingungsanweisung
 
 Im vorherigen Abschnitt wurden die unterstützten Optionen zum Blockieren oder Einschränken des Zugriffs auf Ihre Ressourcen in Form von Kontrollen beschrieben. In einer Richtlinie für den bedingten Zugriff definieren Sie die Kriterien, die erfüllt sein müssen, damit die Kontrollen angewendet werden, in Form einer Bedingungsanweisung.  
 
 Sie können die folgenden Zuweisungen in die Bedingungsanweisung einbinden:
-    
+
 ![Kontrolle](./media/active-directory-conditional-access-azure-portal/07.png)
 
 
@@ -98,7 +108,8 @@ Durch die Auswahl der Option „Benutzer und Gruppen“ definieren Sie die Benut
 
 
 
-- **Was**: Normalerweise erfordern einige Apps, die in Ihrer Umgebung ausgeführt werden, aus Sicht des Schutzes mehr Aufmerksamkeit als andere Apps. Dies können beispielsweise Apps sein, über die Zugriff auf sensible Daten besteht. Durch die Auswahl von „Cloud-Apps“ definieren Sie den Umfang der Cloud-Apps, für die die Richtlinie gilt. Bei Bedarf können Sie auch eine bestimmte Gruppe von Apps aus der Richtlinie ausschließen. 
+- **Was**: Normalerweise erfordern einige Apps, die in Ihrer Umgebung ausgeführt werden, aus Sicht des Schutzes mehr Aufmerksamkeit als andere Apps. Dies können beispielsweise Apps sein, über die Zugriff auf sensible Daten besteht.
+Durch die Auswahl von „Cloud-Apps“ definieren Sie den Umfang der Cloud-Apps, für die die Richtlinie gilt. Bei Bedarf können Sie auch eine bestimmte Gruppe von Apps aus der Richtlinie ausschließen.
 
     ![Kontrolle](./media/active-directory-conditional-access-azure-portal/09.png)
 
@@ -114,7 +125,7 @@ In der aktuellen Implementierung von Azure Active Directory können Sie Bedingun
 
 
 - **Geräteplattformen**: Die Geräteplattform ist durch das Betriebssystem gekennzeichnet, das auf dem Gerät ausgeführt wird (Android, iOS, Windows Phone, Windows). Sie können die Geräteplattformen angeben, die in eine Richtlinie einbezogen bzw. davon ausgeschlossen werden.  
-Ändern Sie zum Verwenden von Geräteplattformen in der Richtlinie zuerst die Option „Konfigurieren“ in **Ja**, und wählen Sie dann einige oder alle Geräteplattformen aus, für die die Richtlinie gelten soll. Wenn Sie nur eine Geräteplattform auswählen, gilt die Richtlinie nur für die jeweilige Plattform. In diesem Fall sind Anmeldungen an anderen unterstützten Plattformen von der Richtlinie nicht betroffen. 
+Ändern Sie zum Verwenden von Geräteplattformen in der Richtlinie zuerst die Option „Konfigurieren“ in **Ja**, und wählen Sie dann einige oder alle Geräteplattformen aus, für die die Richtlinie gelten soll. Wenn Sie nur eine Geräteplattform auswählen, gilt die Richtlinie nur für die jeweilige Plattform. In diesem Fall sind Anmeldungen an anderen unterstützten Plattformen von der Richtlinie nicht betroffen.
 
     ![Bedingungen](./media/active-directory-conditional-access-azure-portal/02.png)
 
@@ -146,20 +157,20 @@ Alle Zuweisungen sind logisch per **UND**-Operator verbunden. Wenn Sie mehr als 
 Falls Sie eine Standortbedingung konfigurieren müssen, die für alle Verbindungen von außerhalb des Organisationsnetzwerks gelten, können Sie dies wie folgt erreichen:
 
 - Einschließen: **All locations** (Alle Standorte)
-- Ausschließen: **All trusted IPs** (Alle vertrauenswürdigen IPs) 
+- Ausschließen: **All trusted IPs** (Alle vertrauenswürdigen IPs)
 
 ### <a name="what-happens-if-you-have-policies-in-the-azure-classic-portal-and-azure-portal-configured"></a>Was passiert, wenn Sie im klassischen Azure-Portal und im Azure-Portal Richtlinien konfiguriert haben?  
 Beide Richtlinien werden von Azure Active Directory erzwungen, und ein Benutzer erhält nur dann Zugriff, wenn alle Anforderungen erfüllt sind.
 
 ### <a name="what-happens-if-you-have-policies-in-the-intune-silverlight-portal-and-the-azure-portal"></a>Was passiert, wenn Sie im Intune Silverlight-Portal und im Azure-Portal über Richtlinien verfügen?
-Beide Richtlinien werden von Azure Active Directory erzwungen, und ein Benutzer erhält nur dann Zugriff, wenn alle Anforderungen erfüllt sind. 
+Beide Richtlinien werden von Azure Active Directory erzwungen, und ein Benutzer erhält nur dann Zugriff, wenn alle Anforderungen erfüllt sind.
 
 ### <a name="what-happens-if-i-have-multiple-policies-for-the-same-user-configured"></a>Was passiert, wenn ich mehrere Richtlinien für denselben Benutzer konfiguriert habe?  
 Bei jeder Anmeldung werden von Azure Active Directory alle Richtlinien ausgewertet, und es wird sichergestellt, dass alle Anforderungen erfüllt sind, bevor dem Benutzer der Zugriff gewährt wird.
 
 
 ### <a name="does-conditional-access-work-with-exchange-activesync"></a>Funktioniert der bedingte Zugriff mit Exchange ActiveSync?
- 
+
 Nein, Sie können Exchange ActiveSync derzeit nicht in einer Richtlinie für den bedingten Zugriff verwenden.
 
 
@@ -182,9 +193,9 @@ Vermeiden Sie in Ihrer Umgebung die folgenden Konfigurationen:
 - **Erfordert kompatibles Gerät:** Für Benutzer, die ihre Geräte noch nicht registriert haben, blockiert diese Richtlinie den gesamten Zugriff, einschließlich des Zugriffs auf das Intune-Portal. Wenn Sie ein Administrator ohne registriertes Gerät sind, verhindert diese Richtlinie auch, dass Sie in das Azure-Portal zurückkehren und die Richtlinie ändern können.
 
 - **Erfordert Domänenbeitritt:** Diese Richtlinie blockiert potenziell den Zugriff für alle Benutzer in Ihrer Organisation, wenn Sie noch nicht über in die Domäne eingebundene Geräte verfügen.
- 
 
-**Für alle Benutzer, alle Cloud-Apps, alle Geräteplattformen:** 
+
+**Für alle Benutzer, alle Cloud-Apps, alle Geräteplattformen:**
 
 - **Zugriff blockieren:** Diese Konfiguration blockiert Ihre gesamte Organisation, was in keinem Fall wünschenswert ist.
 
@@ -194,7 +205,8 @@ Vermeiden Sie in Ihrer Umgebung die folgenden Konfigurationen:
 ### <a name="requiring-multi-factor-authentication-for-apps"></a>Erzwingen von Multi-Factor Authentication für Apps
 
 Viele Umgebungen verfügen über Apps, für die eine höhere Schutzebene als für andere Apps erforderlich ist.
-Dies gilt beispielsweise für Apps, für die Zugriff auf sensible Daten besteht. Wenn Sie diesen Apps eine weitere Schutzebene hinzufügen möchten, können Sie eine Richtlinie für den bedingten Zugriff konfigurieren, für die eine Multi-Factor Authentication erforderlich ist, wenn Benutzer auf diese Apps zugreifen.
+Dies gilt beispielsweise für Apps, für die Zugriff auf sensible Daten besteht.
+Wenn Sie diesen Apps eine weitere Schutzebene hinzufügen möchten, können Sie eine Richtlinie für den bedingten Zugriff konfigurieren, für die eine Multi-Factor Authentication erforderlich ist, wenn Benutzer auf diese Apps zugreifen.
 
 
 ### <a name="requiring-multi-factor-authentication-for-access-from-networks-that-are-not-trusted"></a>Erzwingen der Multi-Factor Authentication für den Zugriff aus nicht vertrauenswürdigen Netzwerken
@@ -202,14 +214,14 @@ Dies gilt beispielsweise für Apps, für die Zugriff auf sensible Daten besteht.
 Dieses Szenario ähnelt dem vorherigen Szenario, da hiermit eine Anforderung für die Multi-Factor Authentication hinzugefügt wird.
 Der Hauptunterschied ist aber die Bedingung für diese Anforderung.  
 Während der Schwerpunkt des vorherigen Szenarios auf Apps mit Zugriff auf sensible Daten lag, geht es in diesem Szenario nun um vertrauenswürdige Standorte.  
-Anders ausgedrückt: Sie können beispielsweise die Multi-Factor Authentication erzwingen, wenn auf eine App von einem Benutzer über ein Netzwerk zugegriffen wird, das für Sie nicht vertrauenswürdig ist. 
+Anders ausgedrückt: Sie können beispielsweise die Multi-Factor Authentication erzwingen, wenn auf eine App von einem Benutzer über ein Netzwerk zugegriffen wird, das für Sie nicht vertrauenswürdig ist.
 
 
 ### <a name="only-trusted-devices-can-access-office-365-services"></a>Nur mit vertrauenswürdigen Geräten kann auf Office 365-Dienste zugegriffen werden
 
 Wenn Sie Intune in Ihrer Umgebung verwenden, können Sie sofort damit beginnen, die Oberfläche für Richtlinien für den bedingten Zugriff in der Azure-Konsole zu verwenden.
 
-Viele Intune-Kunden nutzen den bedingten Zugriff, um sicherzustellen, dass nur vertrauenswürdige Geräte auf Office 365-Dienste zugreifen können. Dies bedeutet, dass mobile Geräte bei Intune registriert werden und die Anforderungen der Konformitätsrichtlinien erfüllen und dass Windows-PCs in eine lokale Domäne eingebunden werden. Eine wichtige Verbesserung besteht darin, dass Sie eine Richtlinie nicht für jeden Office 365-Dienst neu festlegen müssen.  Konfigurieren Sie die Cloud-Apps beim Erstellen einer neuen Richtlinie so, dass alle O365-Apps eingebunden sind, die Sie per bedingtem Zugriff schützen möchten. 
+Viele Intune-Kunden nutzen den bedingten Zugriff, um sicherzustellen, dass nur vertrauenswürdige Geräte auf Office 365-Dienste zugreifen können. Dies bedeutet, dass mobile Geräte bei Intune registriert werden und die Anforderungen der Konformitätsrichtlinien erfüllen und dass Windows-PCs in eine lokale Domäne eingebunden werden. Eine wichtige Verbesserung besteht darin, dass Sie eine Richtlinie nicht für jeden Office 365-Dienst neu festlegen müssen.  Konfigurieren Sie die Cloud-Apps beim Erstellen einer neuen Richtlinie so, dass alle O365-Apps eingebunden sind, die Sie per bedingtem Zugriff schützen möchten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

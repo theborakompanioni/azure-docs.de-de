@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/17/2016
+ms.date: 03/06/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 31c6cb19827279995502c68ed6d86d23ef9eacd0
-ms.openlocfilehash: 5d98f086b4ccee300b18c8271f940272f618e93e
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: c6c92f0d357909921a9f3ee2f484ff355ddde0be
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -36,7 +37,7 @@ Es sind verschiedene Azure VM-Erweiterungen für jeweils spezifische Anwendungsf
 - Konfigurieren der Überwachung Ihrer Azure-Infrastruktur mit der Datadog-Erweiterung. Weitere Informationen finden Sie im [Datadog-Blog](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/).
 - Konfigurieren eines Docker-Hosts auf einem virtuellen Azure-Computer mithilfe der Docker-VM-Erweiterung. Weitere Informationen finden Sie unter [Docker-VM-Erweiterung](virtual-machines-linux-dockerextension.md).
 
-Über prozessspezifische Erweiterungen hinaus ist sowohl für virtuelle Windows- als auch für virtuelle Linux-Computer eine benutzerdefinierte Skripterweiterung verfügbar. Die benutzerdefinierte Skripterweiterung für Linux ermöglicht die Ausführung beliebiger Bash-Skripts auf virtuellen Computern. Dies ist beim Entwerfen von Azure-Bereitstellungen nützlich, die Konfiguration über das Maß hinaus erfordern, das mithilfe von Azure-Tools erreicht werden kann. Weitere Informationen finden Sie unter [Benutzerdefinierte Skripterweiterung für Linux-VMs](virtual-machines-linux-extensions-customscript.md).
+Über prozessspezifische Erweiterungen hinaus ist sowohl für virtuelle Windows- als auch für virtuelle Linux-Computer eine benutzerdefinierte Skripterweiterung verfügbar. Die benutzerdefinierte Skripterweiterung für Linux ermöglicht die Ausführung beliebiger Bash-Skripts auf virtuellen Computern. Benutzerdefinierte Skripts sind beim Entwerfen von Azure-Bereitstellungen nützlich, die Konfiguration über das Maß hinaus erfordern, das mithilfe von Azure-Tools erreicht werden kann. Weitere Informationen finden Sie unter [Benutzerdefinierte Skripterweiterung für Linux-VMs](virtual-machines-linux-extensions-customscript.md).
 
 Wenn Sie ein Beispiel für den Einsatz einer VM-Erweiterung in einer End-to-End-Anwendungsbereitstellung durcharbeiten möchten, lesen Sie [Automatisieren von Anwendungsbereitstellungen auf virtuellen Azure-Computern](virtual-machines-linux-dotnet-core-1-landing.md).
 
@@ -74,7 +75,7 @@ azure vm extension set myResourceGroup myVM CustomScript Microsoft.Azure.Extensi
   --public-config '{"fileUris": ["https://gist.github.com/ahmetalpbalkan/b5d4a856fe15464015ae87d5587a4439/raw/466f5c30507c990a4d5a2f5c79f901fa89a80841/hello.sh"],"commandToExecute": "./hello.sh"}'
 ```
 
-Dabei wird eine Ausgabe wie etwa der folgende Text erstellt:
+Das Skript erzeugt eine Ausgabe ähnlich wie bei folgendem Text:
 
 ```azurecli
 info:    Executing command vm extension set
@@ -85,15 +86,15 @@ info:    vm extension set command OK
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-VM-Erweiterungen können mithilfe des Azure-Portals auf einen vorhandenen virtuellen Computer angewendet werden. Wählen Sie zu diesem Zweck den virtuellen Computer aus, wählen Sie **Erweiterungen** aus, und klicken Sie auf **Hinzufügen**. Dadurch wird eine Liste der verfügbaren Erweiterungen ausgegeben. Wählen Sie die gewünschte Erweiterung aus, und befolgen Sie die Anweisungen im Assistenten.
+VM-Erweiterungen können mithilfe des Azure-Portals auf einen vorhandenen virtuellen Computer angewendet werden. Wählen Sie zu diesem Zweck den virtuellen Computer aus, wählen Sie **Erweiterungen** aus, und klicken Sie auf **Hinzufügen**. Wählen Sie die Erweiterung aus, die Sie aus der Liste verfügbarer Erweiterungen erhalten, und befolgen Sie die Anweisungen im Assistenten.
 
 Das folgende Bild zeigt die Installation der benutzerdefinierten Linux-Skripterweiterung aus dem Azure-Portal.
 
-![Benutzerdefinierte Skripterweiterung](./media/virtual-machines-linux-extensions-features/script-extension-linux.jpg)
+![Installieren benutzerdefinierter Skripterweiterung](./media/virtual-machines-linux-extensions-features/installscriptextensionlinux.png)
 
 ### <a name="azure-resource-manager-templates"></a>Azure-Ressourcen-Manager-Vorlagen
 
-VM-Erweiterungen können einer Azure Resource Manager-Vorlage hinzugefügt und mit der Bereitstellung der Vorlage ausgeführt werden. Wenn Sie eine Erweiterung mithilfe einer Vorlage bereitstellen, können Sie vollständig konfigurierte Azure-Bereitstellungen erstellen. Beispielsweise stammt der folgende JSON-Code aus einer Resource Manager-Vorlage, die einen Satz von virtuellen Computern mit Lastenausgleich und einer Azure SQL-Datenbank bereitstellt und dann auf jedem virtuellen Computer eine .NET Core-Anwendung installiert. Die VM-Erweiterung kümmert sich um die Softwareinstallation.
+VM-Erweiterungen können einer Azure Resource Manager-Vorlage hinzugefügt und mit der Bereitstellung der Vorlage ausgeführt werden. Wenn Sie eine Erweiterung mithilfe einer Vorlage bereitstellen, können Sie vollständig konfigurierte Azure-Bereitstellungen erstellen. Beispielsweise stammt der folgende JSON-Code aus einer Resource Manager-Vorlage. Die Vorlage stellt einen Satz von virtuellen Computern mit Lastenausgleich und einer Azure SQL-Datenbank bereit und installiert dann auf jedem virtuellen Computer eine .NET Core-Anwendung. Die VM-Erweiterung erledigt die Softwareinstallation.
 
 Weitere Informationen finden Sie in der vollständigen [Resource Manager-Vorlage](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux).
 
@@ -222,7 +223,7 @@ Der Ausführungsstatus von Erweiterungen findet sich ebenfalls im Azure-Portal. 
 
 ### <a name="rerun-a-vm-extension"></a>Erneutes Ausführen einer VM-Erweiterung
 
-In manchen Fällen kann die erneute Ausführung einer VM-Erweiterung erforderlich sein. Das können Sie erreichen, indem Sie die Erweiterung entfernen und sie dann mit einer Ausführungsmethode Ihrer Wahl erneut ausführen. Um eine Erweiterung zu entfernen, führen Sie den folgenden Befehl in der Azure-Befehlszeile aus. Ersetzen Sie die Namen der Beispielparameter durch Ihre eigenen Werte.
+In manchen Fällen kann die erneute Ausführung einer VM-Erweiterung erforderlich sein. Sie können eine Erweiterung erneut ausführen, indem Sie sie entfernen und die Erweiterung dann mit einer Ausführungsmethode Ihrer Wahl erneut ausführen. Um eine Erweiterung zu entfernen, führen Sie den folgenden Befehl in der Azure-Befehlszeile aus. Ersetzen Sie die Namen der Beispielparameter durch Ihre eigenen Werte.
 
 ```azurecli
 azure vm extension set myResourceGroup myVM --uninstall CustomScript Microsoft.Azure.Extensions 2.0
@@ -243,9 +244,4 @@ Im Azure-Portal können Sie eine Erweiterung mithilfe der folgenden Schritte ent
 | Erweiterungen für den Zugriff auf virtuelle Computer |Wiedererlangen des Zugriffs auf einen virtuellen Azure-Computer |[Erweiterungen für den Zugriff auf virtuelle Computer](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) |
 | Azure-Diagnoseerweiterung |Verwalten der Azure-Diagnose |[Azure-Diagnoseerweiterung](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
 | Erweiterung für den Zugriff auf virtuelle Azure-Computer |Verwalten von Benutzern und Anmeldeinformationen |[Erweiterungen für den Zugriff auf virtuelle Computer für Linux](https://azure.microsoft.com/en-us/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

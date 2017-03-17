@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/13/2016
+ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: f5143bc817215d075129170adcabf3dd53b5e15a
-ms.openlocfilehash: 1f6abf9bf123534f29b7976ecadbcf8cb49ce040
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 0c9a9a56e1489ee91fcc332beeef36cdc9c93dc1
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -67,7 +68,7 @@ In der folgenden Tabelle sind einige allgemeine Attribute sowie entsprechende Be
 | SID-Verlauf für Benutzer und Gruppen |Lokale primäre Benutzer- und Gruppen-SID |Das SidHistory-Attribut für Benutzer und Gruppen in der verwalteten Domäne ist so festgelegt, dass es mit der entsprechenden primären Benutzer- oder Gruppen-SID in der lokalen Domäne übereinstimmt. Diese Funktion erleichtert die Verlagerung lokaler Anwendungen in die verwaltete Domäne, da Sie keine neuen Zugriffssteuerungslisten für Ressourcen einrichten müssen. |
 
 > [!NOTE]
-> **Anmeldung in der verwalteten Domäne mit dem UPN-Format:** Das SAMAccountName-Attribut wird für einige Benutzerkonten in der verwalteten Domäne möglicherweise automatisch generiert. Wenn mehrere Benutzer dasselbe mailNickname-Attribut aufweisen oder Benutzer übermäßig lange UPN-Präfixe aufweisen, wird das SAMAccountName-Attribut für diese Benutzer möglicherweise automatisch generiert. Daher ist das Format für SAMAccountName (z.B. „CONTOSO100\joeuser“) nicht immer eine verlässliche Möglichkeit für die Anmeldung in der Domäne. Das automatisch generierte SAMAccountName-Attribut von Benutzern kann von ihrem UPN-Präfix abweichen. Verwenden Sie das UPN-Format (z.B. 'joeuser@contoso100.com') für die zuverlässige Anmeldung bei der verwalteten Domäne.
+> **Anmeldung in der verwalteten Domäne mit dem UPN-Format:** Das SAMAccountName-Attribut wird für einige Benutzerkonten in der verwalteten Domäne möglicherweise automatisch generiert. Wenn mehrere Benutzer dasselbe mailNickname-Attribut aufweisen oder Benutzer übermäßig lange UPN-Präfixe aufweisen, wird das SAMAccountName-Attribut für diese Benutzer möglicherweise automatisch generiert. Daher ist das Format für SAMAccountName (z.B. „CONTOSO100\joeuser“) nicht immer eine verlässliche Möglichkeit für die Anmeldung in der Domäne. Das automatisch generierte SAMAccountName-Attribut von Benutzern kann von ihrem UPN-Präfix abweichen. Verwenden Sie das UPN-Format (z.B. „joeuser@contoso100.com“) für die zuverlässige Anmeldung bei der verwalteten Domäne.
 >
 >
 
@@ -121,9 +122,4 @@ Wie in einem vorherigen Abschnitt dieses Artikels beschrieben wurde, erfolgt kei
 * [Bereitstellungsszenarios: Azure AD Domain Services](active-directory-ds-scenarios.md)
 * [Netzwerkaspekte für Azure AD Domain Services](active-directory-ds-networking.md)
 * [Erste Schritte mit Azure AD Domain Services](active-directory-ds-getting-started.md)
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

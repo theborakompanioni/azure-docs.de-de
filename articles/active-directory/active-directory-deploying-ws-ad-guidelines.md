@@ -15,8 +15,9 @@ ms.workload: identity
 ms.date: 02/22/2017
 ms.author: femila
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 5172ce4edbea0f5587075308c97d07aac98e9699
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: c6d26aca309597cf9552e97a22e84b6c122fe58b
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -74,7 +75,7 @@ Ein Demovideo und eine Liste mit Schritt-für-Schritt-Tutorials, z. B. [Konfigur
 ### <a name="static-ip-addresses-must-be-configured-with-azure-powershell"></a>Statische IP-Adressen müssen mit Azure PowerShell konfiguriert werden.
 Dynamische Adressen werden standardmäßig zugewiesen, aber verwenden Sie das Set-AzureStaticVNetIP-Cmdlet, um stattdessen eine statische IP-Adresse zuzuweisen. Hiermit wird eine statische IP-Adresse festgelegt, die die Dienstreparatur und das Herunterfahren und den Neustart der VM übersteht. Weitere Informationen finden Sie unter [Static Internal IP Address for Virtual Machines](http://azure.microsoft.com/blog/static-internal-ip-address-for-virtual-machines/)(Statische interne IP-Adresse für Virtual Machines).
 
-## <a name="a-namebkmkglossaryaterms-and-definitions"></a><a name="BKMK_Glossary"></a>Begriffe und Definitionen
+## <a name="BKMK_Glossary"></a>Begriffe und Definitionen
 Unten ist eine nicht erschöpfende Liste mit Begriffen für verschiedene Azure-Technologien angegeben, die in diesem Artikel erwähnt werden.
 
 * **Virtuelle Azure-Computer**: Die ist das IaaS-Angebot von Azure, bei dem Kunden VMs bereitstellen können, um darauf nahezu alle herkömmlichen lokalen Serverworkloads auszuführen.
@@ -107,7 +108,7 @@ Weitere Informationen dazu, welche Auswirkungen sich für DCs ergeben, finden Si
 Ab Windows Server 2012 sind in AD DS zusätzliche Sicherungsmechanismen integriert (siehe [Einführung in die Virtualisierung der Active Directory Domain Services](https://technet.microsoft.com/library/hh831734.aspx)). Mit diesen Sicherheitsmechanismen sind virtualisierte Domänencontroller besser vor den oben beschriebenen Problemen geschützt, solange die zugrunde liegende Hypervisorplattform „VM-GenerationID“ unterstützt. Azure unterstützt „VM-GenerationID“, sodass Domänencontroller, die Windows Server 2012 oder höher auf virtuellen Azure-Computern ausführen, über diese zusätzlichen Sicherheitsmechanismen verfügen.
 
 > [!NOTE]
-> Sie sollten einen virtuellen Computer herunterfahren und neu starten, von der die Domänencontroller-Rolle in Azure im Rahmen des Gastbetriebssystems ausgeführt wird, anstatt die Option **Herunterfahren** im klassischen Azure-Portal zu verwenden. Wenn Sie das klassische Portal zum Herunterfahren einer VM verwenden, wird jetzt die Zuordnung der VM aufgehoben. Eine VM mit aufgehobener Zuordnung hat den Vorteil, dass sie keine Kosten verursacht. Es wird aber auch die „VM-GenerationID“ zurückgesetzt, und dies ist für einen DC nicht wünschenswert. Wenn die „VM-GenerationID“ zurückgesetzt wird, wird dies auch für die „invocationID“ der AD DS-Datenbank durchgeführt, der RID-Pool wird verworfen, und SYSVOL wird als nicht autoritativ gekennzeichnet. Weitere Informationen finden Sie unter [Einführung in die Virtualisierung der Active Directory Domain Services (AD DS)](https://technet.microsoft.com/library/hh831734.aspx) und [Sichere Virtualisierung von DFSR](http://blogs.technet.com/b/filecab/archive/2013/04/05/safely-virtualizing-dfsr.aspx).
+> Sie sollten einen virtuellen Computer herunterfahren und neu starten, von der die Domänencontroller-Rolle in Azure im Rahmen des Gastbetriebssystems ausgeführt wird, anstatt die Option **Herunterfahren** im Azure-Portal oder im klassischen Portal zu verwenden. Wenn Sie das Portal zum Herunterfahren einer VM verwenden, wird jetzt die Zuordnung der VM aufgehoben. Eine VM mit aufgehobener Zuordnung hat den Vorteil, dass sie keine Kosten verursacht. Es wird aber auch die „VM-GenerationID“ zurückgesetzt, und dies ist für einen DC nicht wünschenswert. Wenn die „VM-GenerationID“ zurückgesetzt wird, wird dies auch für die „invocationID“ der AD DS-Datenbank durchgeführt, der RID-Pool wird verworfen, und SYSVOL wird als nicht autoritativ gekennzeichnet. Weitere Informationen finden Sie unter [Einführung in die Virtualisierung der Active Directory Domain Services (AD DS)](https://technet.microsoft.com/library/hh831734.aspx) und [Sichere Virtualisierung von DFSR](http://blogs.technet.com/b/filecab/archive/2013/04/05/safely-virtualizing-dfsr.aspx).
 > 
 > 
 
@@ -219,7 +220,7 @@ In der folgenden Tabelle wird verglichen, wie die Anmeldevorgänge mit und ohne 
 | Einmaliges Anmelden für Office 365 mit AD FS und DirSync | Gleiche Anmeldung für Office 365 mit DirSync und Kennwortsynchronisierung |
 | --- | --- |
 | 1. Der Benutzer meldet sich im Unternehmensnetzwerk an und wird mit Windows Server Active Directory authentifiziert. |1. Der Benutzer meldet sich im Unternehmensnetzwerk an und wird mit Windows Server Active Directory authentifiziert. |
-| 2. Der Benutzer versucht, auf Office 365 zuzugreifen (I am @contoso.com)). |2. Der Benutzer versucht, auf Office 365 zuzugreifen (I am @contoso.com)). |
+| 2. Der Benutzer versucht, auf Office 365 zuzugreifen (I am @contoso.com). |2. Der Benutzer versucht, auf Office 365 zuzugreifen (I am @contoso.com). |
 | 3. Office 365 leitet den Benutzer an Azure AD weiter. |3. Office 365 leitet den Benutzer an Azure AD weiter. |
 | 4. Da Azure AD den Benutzer nicht authentifizieren kann und davon ausgeht, dass lokal eine Vertrauensstellung mit AD FS vorhanden ist, wird der Benutzer an AD FS umgeleitet. |4. Azure AD kann Kerberos-Tickets nicht direkt akzeptieren, und es besteht keine Vertrauensstellung. Der Benutzer wird also zum Eingeben von Anmeldeinformationen aufgefordert. |
 | 5. Der Benutzer sendet ein Kerberos-Ticket an den AD FS-Sicherheitstokendienst. |5. Der Benutzer gibt das gleiche lokale Kennwort ein, und Azure AD gleicht diese Angabe mit dem Benutzernamen und dem Kennwort ab, die per DirSync synchronisiert wurden. |
@@ -254,7 +255,7 @@ Im folgenden Abschnitt werden häufig verwendete Bereitstellungsszenarien beschr
    
     Ein Beispiel hierfür ist eine LDAP-fähige Anwendung, die die in Windows integrierte Authentifizierung unterstützt und Windows Server AD DS als Repository für die Konfiguration und Benutzerprofildaten verwendet und auf einer Azure Virtual Machine bereitgestellt wird. Für die Anwendung ist es wünschenswert, die vorhandene Windows Server AD DS-Instanz des Unternehmens zu nutzen und das einmalige Anmelden bereitzustellen. Die Anwendung unterstützt keine Ansprüche.
 
-### <a name="a-namebkmkcloudonlya1-ad-ds-deploy-an-ad-ds-aware-application-with-no-requirement-for-corporate-network-connectivity"></a><a name="BKMK_CloudOnly"></a>1. AD DS: Bereitstellen einer AD DS-fähigen Anwendung ohne Erfordernis einer Verbindung mit dem Unternehmensnetzwerk
+### <a name="BKMK_CloudOnly"></a>1. AD DS: Bereitstellen einer AD DS-fähigen Anwendung ohne Erfordernis einer Verbindung mit dem Unternehmensnetzwerk
 ![Bereitstellung von AD DS nur in der Cloud](media/active-directory-deploying-ws-ad-guidelines/ADDS_cloud.png)
 **Abbildung 1**
 
@@ -274,7 +275,7 @@ SharePoint wird auf einer Azure Virtual Machine bereitgestellt, und die Anwendun
 * [Platzierung der Windows Server AD DS-Datenbank und von SYSVOL](#BKMK_PlaceDB): Fügen Sie DCs, die als Azure VMs ausgeführt werden, einen Datenträger hinzu, um die Windows Server Active Directory-Datenbank, Protokolle und SYSVOL zu speichern.
 * [Sichern und Wiederherstellen](#BKMK_BUR): Legen Sie fest, wo Sie Sicherungen des Systemstatus speichern möchten. Fügen Sie der DC-VM einen weiteren Datenträger zum Speichern von Sicherungen hinzu, falls dies erforderlich ist.
 
-### <a name="a-namebkmkcloudonlyfeda2-ad-fs-extend-a-claims-aware-on-premises-front-end-application-to-the-internet"></a><a name="BKMK_CloudOnlyFed"></a>2 AD FS: Erweitern einer Ansprüche unterstützenden lokalen Front-End-Anwendung ins Internet
+### <a name="BKMK_CloudOnlyFed"></a>2 AD FS: Erweitern einer Ansprüche unterstützenden lokalen Front-End-Anwendung ins Internet
 ![Verbund mit standortübergreifender Konnektivität](media/active-directory-deploying-ws-ad-guidelines/Federation_xprem.png)
 **Abbildung 2**
 
@@ -298,7 +299,7 @@ Um die Bereitstellungs- und Konfigurationsanforderungen dieser neuen Aufgabenste
 
 Weitere Informationen finden Sie im [Leitfaden zur AD DS Bereitstellung](https://technet.microsoft.com/library/cc753963).
 
-### <a name="a-namebkmkhybridexta3-ad-ds-deploy-a-windows-server-ad-ds-aware-application-that-requires-connectivity-to-the-corporate-network"></a><a name="BKMK_HybridExt"></a>3. AD DS: Bereitstellen einer Windows Server AD DS-fähigen Anwendung mit Erfordernis einer Verbindung mit dem Unternehmensnetzwerk
+### <a name="BKMK_HybridExt"></a>3. AD DS: Bereitstellen einer Windows Server AD DS-fähigen Anwendung mit Erfordernis einer Verbindung mit dem Unternehmensnetzwerk
 ![Standortübergreifende AD DS-Bereitstellung](media/active-directory-deploying-ws-ad-guidelines/ADDS_xprem.png)
 **Abbildung 3**
 
@@ -344,12 +345,12 @@ Wenn Sie beispielsweise einen Replikatdomänencontroller in einem virtuellen Net
 | [Anforderungen von Verbundservern für die öffentliche und private IP-Adressierung (dynamische IP und virtuelle IP)](#BKMK_FedReqVIPDIP) |<li>Muss die Windows Server AD FS-Instanz direkt über das Internet erreichbar sein?</li> <li>Benötigt die Anwendung, die in der Cloud bereitgestellt wird, eine eigene IP-Adresse und einen Port für den Zugriff über das Internet?</li> |Erstellen eines Clouddiensts für jede virtuelle IP-Adresse, die für Ihre Bereitstellung erforderlich ist |
 | [Konfiguration von Windows Server AD FS für hohe Verfügbarkeit](#BKMK_ADFSHighAvail) |<li>Wie viele Knoten sollte meine Windows Server AD FS-Serverfarm umfassen?</li> <li>Wie viele Knoten sollten in meiner Windows Server AD FS-Proxyfarm bereitgestellt werden?</li> |Resilienz und Fehlertoleranz |
 
-### <a name="a-namebkmknetworktopologyanetwork-topology"></a><a name="BKMK_NetworkTopology"></a>Netzwerktopologie
+### <a name="BKMK_NetworkTopology"></a>Netzwerktopologie
 Um die Einheitlichkeit von IP-Adressen und die DNS-Anforderungen von Windows Server AD DS zu erfüllen, müssen Sie zuerst ein [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) erstellen und Ihre virtuellen Computer daran anfügen. Bei der Erstellung müssen Sie entscheiden, ob Sie die Konnektivität optional auf Ihr lokales Unternehmensnetzwerk erweitern, um Azure Virtual Machines auf transparente Weise mit lokalen Computern zu verbinden. Dies wird mit herkömmlichen VPN-Technologien erreicht und ist mit der Anforderung verbunden, dass im Edgebereich des Unternehmensnetzwerks ein VPN-Endpunkt verfügbar gemacht wird. Das VPN wird also von Azure zum Unternehmensnetzwerk initiiert (nicht umgekehrt).
 
 Beachten Sie, dass zusätzliche Gebühren anfallen, wenn Sie ein virtuelles Netzwerk auf Ihre lokales Netzwerk erweitern und dies über die Standardgebühren hinausgeht, die für jeden virtuellen Computer gelten. Es fallen Kosten für die CPU-Zeit des Azure Virtual Network-Gateways und für den ausgehenden Datenverkehr der einzelnen VMs an, die mit lokalen Computern per VPN kommunizieren. Weitere Informationen zu Gebühren für Netzwerk-Datenverkehr finden Sie unter [Azure-Preise](http://azure.microsoft.com/pricing/).
 
-### <a name="a-namebkmkdeploymentconfigadc-deployment-configuration"></a><a name="BKMK_DeploymentConfig"></a>DC-Bereitstellungskonfiguration
+### <a name="BKMK_DeploymentConfig"></a>DC-Bereitstellungskonfiguration
 Die Art und Weise, wie Sie den DC konfigurieren können, hängt von den Anforderungen für den Dienst ab, den Sie unter Azure ausführen möchten. Beispielsweise können Sie eine neue Gesamtstruktur bereitstellen, die von Ihrer eigenen Unternehmensgesamtstruktur isoliert ist, um eine Machbarkeitsstudie, eine neue Anwendung oder ein anderes kurzfristiges Projekt zu testen, für das Verzeichnisdienste benötigt werden, aber kein spezieller Zugriff auf interne Unternehmensressourcen.
 
 Der Vorteil hierbei ist, dass ein isolierter Gesamtstruktur-Domänencontroller keine Replikation mit lokalen DCs durchführt. Dies führt dazu, dass vom System selbst weniger ausgehender Datenverkehr generiert wird und die Kosten direkt reduziert werden. Weitere Informationen zu Gebühren für Netzwerk-Datenverkehr finden Sie unter [Azure-Preise](http://azure.microsoft.com/pricing/).
@@ -360,7 +361,7 @@ Wählen Sie beim Erstellen einer neuen Gesamtstruktur aus, ob [Active Directory-
 
 Die Anforderungen in Bezug auf die Verfügbarkeit und Fehlertoleranz wirken sich ebenfalls auf Ihre Wahl aus. Wenn beispielsweise die Verknüpfung unterbrochen ist, sind alle Anwendungen, für die entweder eine Kerberos-Vertrauensstellung oder eine Verbundvertrauensstellung genutzt wird, mit großer Wahrscheinlichkeit vollständig funktionsunfähig, es sei denn, Sie haben in Azure eine ausreichende Infrastruktur bereitgestellt. Alternative Bereitstellungskonfigurationen, z. B. Replikatdomänencontroller (beschreibbar oder schreibgeschützt), erhöhen die Wahrscheinlichkeit, dass Verknüpfungsausfälle toleriert werden können.
 
-### <a name="a-namebkmkadsitetopologyawindows-server-active-directory-site-topology"></a><a name="BKMK_ADSiteTopology"></a>Windows Server Active Directory-Standorttopologie
+### <a name="BKMK_ADSiteTopology"></a>Windows Server Active Directory-Standorttopologie
 Sie müssen Standorte und Standortverknüpfungen richtig definieren, um den Datenverkehr zu optimieren und die Kosten zu reduzieren. Standorte, Standortverknüpfungen und Subnetze wirken sich auf die Replikationstopologie zwischen DCs und dem Fluss des Datenverkehrs für die Authentifizierung aus. Sehen Sie sich die folgenden Kosten an, und stellen Sie DCs dann gemäß den Anforderungen Ihres Bereitstellungsszenarios bereit, und konfigurieren Sie sie:
 
 * Für das eigentliche Gateway wird eine Grundgebühr pro Stunde berechnet:
@@ -376,7 +377,7 @@ Sie müssen Standorte und Standortverknüpfungen richtig definieren, um den Date
 * Falls die Reduzierung der Kosten Priorität hat, sollten Sie sicherstellen, dass die Replikation geplant und die Änderungsbenachrichtigung nicht aktiviert ist. Dies ist die Standardkonfiguration für die Replikation zwischen Standorten. Dies ist nicht wichtig, wenn Sie einen schreibgeschützten Domänencontroller (RODC) in einem virtuellen Netzwerk bereitstellen, da der RODC keine Änderungen in ausgehender Richtung repliziert. Falls Sie aber einen beschreibbaren DC bereitstellen, sollten Sie sicherstellen, dass die Standortverknüpfung nicht so konfiguriert ist, dass Updates mit unnötiger Häufigkeit repliziert werden. Stellen Sie beim Bereitstellen eines globalen Katalogservers (GC) Folgendes sicher: Jeder zweite Standort mit einem GC repliziert Domänenpartitionen von einem Quell-DC an einem Standort, der mit einer oder mehreren Standortverknüpfungen verbunden ist, die geringere Kosten als der GC am Azure-Standort verursachen.
 * Es ist möglich, den Netzwerk-Datenverkehr noch weiter zu reduzieren, der bei der Replikation zwischen Standorten generiert wird, indem der Komprimierungsalgorithmus für die Replikation geändert wird. Der Komprimierungsalgorithmus wird mit dem REG_DWORD-Registrierungseintrag „HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NTDS\Parameters\Replicator compression algorithm“ gesteuert. Der Standardwert ist 3, was dem Xpress-Komprimierungsalgorithmus entspricht. Sie können den Wert in 2 ändern, um für den Algorithmus zu MSZip zu wechseln. In den meisten Fällen wird die Komprimierung hierdurch erhöht. Dies geschieht aber auf Kosten der CPU-Auslastung. Weitere Informationen finden Sie unter [How Active Directory Replication Topology Works](https://technet.microsoft.com/library/cc755994) (Funktionsweise der Active Directory-Replikationstopologie).
 
-### <a name="a-namebkmkipaddressdnsaip-addressing-and-dns"></a><a name="BKMK_IPAddressDNS"></a>IP-Adressierung und DNS
+### <a name="BKMK_IPAddressDNS"></a>IP-Adressierung und DNS
 Azure Virtual Machines werden standardmäßig „Adressen mit DHCP-Lease“ zugeordnet. Da dynamische Azure Virtual Network-Adressen einem virtuellen Computer über seine gesamte Lebensdauer hinweg zugeordnet bleiben, werden die Anforderungen von Windows Server AD DS erfüllt.
 
 Wenn Sie in Azure eine dynamische Adresse verwenden, nutzen Sie daher praktisch eine statische IP-Adresse. Dies liegt daran, dass sie für den Lease-Zeitraum geroutet werden kann und der Lease-Zeitraum der Lebensdauer des Clouddiensts entspricht.
@@ -395,7 +396,7 @@ VMs registrieren ihren DNS-Namen automatisch beim Start oder bei einer Namensän
 
 Weitere Informationen zu diesem Beispiel und ein weiteres Beispiel, das veranschaulicht, wie Sie die erste VM bereitstellen und darauf AD DS installieren, finden Sie unter [Installieren einer neuen Active Directory-Gesamtstruktur unter Microsoft Azure](active-directory-new-forest-virtual-machine.md). Weitere Informationen zum Verwenden von Windows PowerShell finden Sie unter [Installieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) und [Azure-Cmdlets für die Verwaltung](https://msdn.microsoft.com/library/azure/jj152841).
 
-### <a name="a-namebkmkdistributeddcsageo-distributed-dcs"></a><a name="BKMK_DistributedDCs"></a>Geografisch verteilte DCs
+### <a name="BKMK_DistributedDCs"></a>Geografisch verteilte DCs
 Azure bietet Vorteile, wenn mehrere DCs in unterschiedlichen virtuellen Netzwerken gehostet werden:
 
 * Fehlertoleranz für mehrere Standorte
@@ -403,7 +404,7 @@ Azure bietet Vorteile, wenn mehrere DCs in unterschiedlichen virtuellen Netzwerk
 
 Informationen zum Konfigurieren der direkten Kommunikation zwischen virtuellen Netzwerken finden Sie unter [Konfigurieren der Verbindung von virtuellem Netzwerk zu virtuellem Netzwerk](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md).
 
-### <a name="a-namebkmkrodcaread-only-dcs"></a><a name="BKMK_RODC"></a>Schreibgeschützte DCs
+### <a name="BKMK_RODC"></a>Schreibgeschützte DCs
 Sie müssen auswählen, ob Sie schreibgeschützte oder beschreibbare DCs bereitstellen. Unter Umständen neigen Sie zur Bereitstellung von schreibgeschützten Domänencontrollern (RODCs), da Sie keine physische Kontrolle darüber haben. RODCs sind aber für die Bereitstellung an Standorten ausgelegt, an denen ihre physische Sicherheit gefährdet ist, z. B. in Zweigniederlassungen.
 
 Für Azure gilt das Risiko in Bezug auf die physische Sicherheit nicht wie bei einer Zweigniederlassung, aber RODCs sind ggf. trotzdem kostengünstiger, da die enthaltenen Features für diese Umgebungen gut geeignet sind, wenn auch aus anderen Gründen. Beispielsweise verfügen RODCs nicht über eine ausgehende Replikation und können geheime Schlüssel (Kennwörter) selektiv auffüllen. Ein Nachteil ist, dass das Fehlen dieser geheimen Schlüssel unter Umständen dazu führt, dass diese Angaben von bedarfsgesteuertem ausgehendem Datenverkehr überprüft werden müssen, wenn ein Benutzer oder Computer authentifiziert wird. Geheime Schlüssel können aber selektiv vorab aufgefüllt und zwischengespeichert werden.
@@ -412,14 +413,14 @@ RODCs haben im Zusammenhang mit HBI- und PII-Aspekten einen weiteren Vorteil, da
 
 Stellen Sie sicher, dass Anwendungen mit den RODCs kompatibel sind, die Sie verwenden möchten. Viele für Windows Server Active Directory geeignete Anwendungen funktionieren gut mit RODCs, aber bei einigen Anwendungen kann die Leistung unzureichend sein, oder es können Fehler auftreten, wenn kein Zugriff auf einen beschreibbaren DC besteht. Weitere Informationen finden Sie unter [Anwendungskompatibilität mit Domänencontrollern ohne Schreibzugriff](https://technet.microsoft.com/library/cc755190).
 
-### <a name="a-namebkmkgcaglobal-catalog"></a><a name="BKMK_GC"></a>Globaler Katalog
+### <a name="BKMK_GC"></a>Globaler Katalog
 Sie müssen wählen, ob Sie einen globalen Katalog (GC) installieren. In einer Gesamtstruktur mit nur einer Domäne sollten Sie alle Domänencontroller als globale Katalogserver konfigurieren. Die Kosten erhöhen sich hierdurch nicht, da kein zusätzlicher Replikationsdatenverkehr anfällt.
 
 In einer Gesamtstruktur mit mehreren Domänen werden GCs benötigt, um universelle Gruppenmitgliedschaften während des Authentifizierungsvorgangs zu erweitern. Wenn Sie keinen GC bereitstellen, generieren Workloads im virtuellen Netzwerk, die gegenüber einem DC unter Azure authentifiziert werden, indirekt ausgehenden Authentifizierungsdatenverkehr, um bei jedem Authentifizierungsversuch lokal GCs abzufragen.
 
 Die Kosten, die mit GCs verbunden sind, sind weniger vorhersagbar, da hierbei jede Domäne (teilweise) gehostet wird. Wenn die Workload einen mit dem Internet verbundenen Dienst hostet und Benutzer gegenüber Windows Server AD DS authentifiziert, können die Kosten vollständig unvorhersagbar sein. Sie können das [Caching für universelle Gruppenmitgliedschaften aktivieren](https://technet.microsoft.com/library/cc816928), um während der Authentifizierung zur Reduzierung von GC-Abfragen außerhalb des Cloudstandorts beizutragen.
 
-### <a name="a-namebkmkinstallmethodainstallation-method"></a><a name="BKMK_InstallMethod"></a>Installationsmethode
+### <a name="BKMK_InstallMethod"></a>Installationsmethode
 Sie müssen auswählen, wie die DCs im virtuellen Netzwerk installiert werden sollen:
 
 * Stufen Sie neue DCs herauf. Weitere Informationen finden Sie unter [Installieren einer neuen Active Directory-Gesamtstruktur in einem virtuellen Azure-Netzwerk](active-directory-new-forest-virtual-machine.md).
@@ -429,7 +430,7 @@ Verwenden Sie nur Azure Virtual Machines für DCs (im Gegensatz zu Azure-Webroll
 
 Verwenden Sie nicht SYSPREP, um DCs bereitzustellen oder zu klonen. Die Möglichkeit zum Klonen von DCs ist erst ab Windows Server 2012 vorhanden. Für die Klonfunktion ist die Unterstützung von VMGenerationID im zugrunde liegenden Hypervisor erforderlich. Hyper-V in Windows Server 2012 und Azure Virtual Networks unterstützen jeweils VMGenerationID, wie dies auch bei Virtualisierungssoftware von Drittanbietern der Fall ist.
 
-### <a name="a-namebkmkplacedbaplacement-of-the-windows-server-ad-ds-database-and-sysvol"></a><a name="BKMK_PlaceDB"></a>Platzierung der Windows Server AD DS-Datenbank und von SYSVOL
+### <a name="BKMK_PlaceDB"></a>Platzierung der Windows Server AD DS-Datenbank und von SYSVOL
 Wählen Sie aus, wo Sie die Windows Server AD DS-Datenbank, Protokolle und SYSVOL anordnen. Sie müssen auf Azure-Datenträgern bereitgestellt werden.
 
 > [!NOTE]
@@ -446,14 +447,14 @@ Verwenden Sie für virtuelle DCs die folgende bewährte Methode:
 * Legen Sie unter „Hostcacheeinstellungen“ für den Azure-Datenträger KEINE fest. So lassen sich Probleme in Verbindung mit dem Schreibcache für AD DS-Vorgänge verhindern.
 * Speichern Sie die Datenbank, Protokolle und das SYSVOL entweder auf demselben oder auf separaten Datenträgern. Dies ist normalerweise ein anderer Datenträger als der Datenträger, der für das eigentliche Betriebssystem verwendet wird. Die wichtigste Erkenntnis ist, dass die Windows Server AD DS-Datenbank und das SYSVOL nicht auf einem Azure-Datenträger für Betriebssysteme gespeichert werden müssen. Standardmäßig werden diese Komponenten vom AD DS-Installationsprozess im Ordner %systemroot% installiert. Dies ist für Azure NICHT zu empfehlen.
 
-### <a name="a-namebkmkburabackup-and-restore"></a><a name="BKMK_BUR"></a>Sichern und Wiederherstellen
+### <a name="BKMK_BUR"></a>Sichern und Wiederherstellen
 Achten Sie darauf, was für die Sicherung und Wiederherstellung eines DC im Allgemeinen sowie eines in einem VM ausgeführten DC unterstützt bzw. nicht unterstützt wird. Weitere Informationen finden Sie unter [Überlegungen zum Sichern und Wiederherstellen virtualisierter Domänencontroller](https://technet.microsoft.com/library/virtual_active_directory_domain_controller_virtualization_hyperv#backup_and_restore_considerations_for_virtualized_domain_controllers).
 
 Erstellen Sie Sicherungen des Systemstatus, indem Sie nur Sicherungssoftware verwenden, die speziell für Sicherungsanforderungen für Windows Server AD DS geeignet ist, z. B. Windows Server-Sicherung.
 
 Kopieren oder klonen Sie keine VHD-Dateien von DCs, anstatt regelmäßige Sicherungen durchzuführen. Sollte jemals eine Wiederherstellung erforderlich sein, ergeben sich USN-Blasen, wenn Sie hierfür geklonte oder kopierte VHDs ohne Windows Server 2012 und einen unterstützten Hypervisor verwenden.
 
-### <a name="a-namebkmkfedsrvconfigafederation-server-configuration"></a><a name="BKMK_FedSrvConfig"></a>Verbundserverkonfiguration
+### <a name="BKMK_FedSrvConfig"></a>Verbundserverkonfiguration
 Die Konfiguration von Windows Server AD FS-Verbundservern (Sicherheitstokendiensten) ist teilweise davon abhängig, ob die Anwendungen, die Sie unter Azure bereitstellen möchten, auf Ressourcen in Ihrem lokalen Netzwerk zugreifen müssen.
 
 Wenn die Anwendungen die folgenden Kriterien erfüllen, können Sie sie isoliert vom lokalen Netzwerk bereitstellen.
@@ -479,15 +480,15 @@ Diese Konfiguration hat den Vorteil, dass die Offenlegung von lokalen Ressourcen
 
 Beachten Sie, dass Sie bei beiden Szenarien Vertrauensstellungen mit mehr Identitätsanbietern einrichten können, falls die Business-to-Business-Zusammenarbeit erforderlich ist.
 
-### <a name="a-namebkmkcloudsvcconfigacloud-services-configuration"></a><a name="BKMK_CloudSvcConfig"></a>Konfiguration der Clouddienste
+### <a name="BKMK_CloudSvcConfig"></a>Konfiguration der Clouddienste
 Clouddienste sind erforderlich, wenn Sie eine VM direkt im Internet verfügbar machen oder eine mit dem Internet verbundene Anwendung mit Lastenausgleich verfügbar machen möchten. Dies ist möglich, da jeder Clouddienst nur eine konfigurierbare virtuelle IP-Adresse aufweist.
 
-### <a name="a-namebkmkfedreqvipdipafederation-server-requirements-for-public-and-private-ip-addressing-dynamic-ip-vs-virtual-ip"></a><a name="BKMK_FedReqVIPDIP"></a>Anforderungen von Verbundservern für die öffentliche und private IP-Adressierung (dynamische IP und virtuelle IP)
+### <a name="BKMK_FedReqVIPDIP"></a>Anforderungen von Verbundservern für die öffentliche und private IP-Adressierung (dynamische IP und virtuelle IP)
 Jede Azure Virtual Machine erhält eine dynamische IP-Adresse. Eine dynamische IP-Adresse ist eine private Adresse, auf die nur in Azure zugegriffen werden kann. In den meisten Fällen ist es aber erforderlich, eine virtuelle IP-Adresse für Ihre Windows Server AD FS-Bereitstellungen zu konfigurieren. Die virtuelle IP-Adresse wird benötigt, um Windows Server AD FS-Endpunkte im Internet verfügbar zu machen. Sie wird außerdem von Verbundpartnern und Clients für die Authentifizierung und fortlaufende Verwaltung verwendet. Eine virtuelle IP-Adresse ist eine Eigenschaft eines Clouddiensts, der einen oder mehrere virtuelle Azure-Computer umfasst. Wenn die beiden Ansprüche unterstützenden Anwendungen, die unter Azure und Windows Server AD FS bereitgestellt werden, mit dem Internet verbunden sind und gemeinsame Ports nutzen, ist jeweils eine eigene virtuelle IP-Adresse erforderlich. Daher müssen Sie einen Clouddienst für die Anwendung und einen zweiten Clouddienst für Windows Server AD FS erstellen.
 
 Definitionen der Begriffe „virtuelle IP-Adresse“ und „dynamische IP-Adresse“ finden Sie unter [Begriffe und Definitionen](#BKMK_Glossary).
 
-### <a name="a-namebkmkadfshighavailawindows-server-ad-fs-high-availability-configuration"></a><a name="BKMK_ADFSHighAvail"></a>Konfiguration von Windows Server AD FS für hohe Verfügbarkeit
+### <a name="BKMK_ADFSHighAvail"></a>Konfiguration von Windows Server AD FS für hohe Verfügbarkeit
 Es ist zwar möglich, eigenständige Windows Server AD FS-Verbunddienste bereitzustellen, aber es wird empfohlen, eine Farm mit mindestens zwei Knoten für AD FS-Sicherheitstokendienste und Proxys für Produktionsumgebungen bereitzustellen.
 
 Informationen zum Treffen der Entscheidung, welche Optionen für die Bereitstellungskonfiguration für Ihre Anforderungen am besten geeignet sind, finden Sie unter [Überlegungen zur AD FS 2.0-Bereitstellungstopologie](https://technet.microsoft.com/library/gg982489) im [AD FS 2.0-Entwurfshandbuch](https://technet.microsoft.com/library/dd807036).
@@ -497,10 +498,5 @@ Informationen zum Treffen der Entscheidung, welche Optionen für die Bereitstell
 > Der Windows Server-Netzwerklastenausgleich (Network Load Balancing, NLB) wird in Azure nicht unterstützt.
 > 
 > 
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

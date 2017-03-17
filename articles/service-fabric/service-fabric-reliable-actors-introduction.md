@@ -15,8 +15,9 @@ ms.workload: NA
 ms.date: 02/10/2017
 ms.author: vturecek
 translationtype: Human Translation
-ms.sourcegitcommit: 56220f357cbb44946d601167234636a1bce03bfa
-ms.openlocfilehash: bf69d2fdfb80395f9af58d113e4f8838c6bb93be
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 9b6668bf4b3f826a1d41527ce4a7ae8d05936731
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -86,9 +87,21 @@ IMyActor myActor = ActorProxy.Create<IMyActor>(actorId, new Uri("fabric:/MyApp/M
 await myActor.DoWorkAsync();
 ```
 
+```java
+// Create actor ID with some name
+ActorId actorId = new ActorId("Actor1");
+
+// This only creates a proxy object, it does not activate an actor or invoke any methods yet.
+MyActor myActor = ActorProxyBase.create(actorId, new URI("fabric:/MyApp/MyActorService"), MyActor.class);
+
+// This will invoke a method on the actor. If an actor with the given ID does not exist, it will be activated by this method call.
+myActor.DoWorkAsync().get();
+```
+
+
 Beachten Sie die beiden Informationen, die zum Erstellen des Actor-Proxyobjekts verwendet werden: die Actor-ID und der Name der Anwendung. Die Akteur-ID dient zur eindeutigen Identifikation des Akteurs, während der Anwendungsname die [Service Fabric-Anwendung](service-fabric-reliable-actors-platform.md#application-model) bezeichnet, in der der Akteur bereitgestellt wird.
 
-Die Klasse `ActorProxy` auf dem Client nimmt die erforderliche Auflösung vor, um den Akteur nach ID zu suchen und einen Kommunikationskanal mit ihm zu öffnen. Außerdem versucht die Klasse `ActorProxy` bei Kommunikationsfehlern und Failovern, den Akteur zu finden. Die Nachrichtenübermittlung weist daher folgende Merkmale auf:
+Die Klasse `ActorProxy`(C#) / `ActorProxyBase`(Java) auf dem Client nimmt die erforderliche Auflösung vor, um den Akteur nach ID zu suchen und einen Kommunikationskanal mit ihm zu öffnen. Außerdem versucht sie bei Kommunikationsfehlern und Failovern, den Akteur zu finden. Die Nachrichtenübermittlung weist daher folgende Merkmale auf:
 
 * Die Nachrichtenübermittlung ist vom Typ „Beste Leistung“.
 * Akteure können doppelte Nachrichten vom selben Client empfangen.
@@ -122,7 +135,7 @@ Einige wichtige Punkte sind zu beachten:
 * Bei der Ausführung von *Method1* für *ActorId2* als Antwort auf Clientanforderung *xyz789* trifft eine weitere Clientanforderung (*abc123*) ein, für die ebenfalls die Ausführung von *Method1* für *ActorId2* erforderlich ist. Die zweite Ausführung von *Method1* beginnt aber erst, nachdem die vorherige Ausführung abgeschlossen wurde. Analog gilt: Eine von *ActorId2* registrierte Erinnerung wird ausgelöst, während *Method1* als Antwort auf die Clientanforderung *xyz789* ausgeführt wird. Der Erinnerungs-Rückruf wird erst ausgeführt, nachdem beide Ausführungen von *Method1* abgeschlossen sind. All dies basiert auf der für *ActorId2*erzwungenen Turn-basierten Parallelität.
 * Analog dazu wird Turn-basierte Parallelität auch für *ActorId1* erzwungen, wie die serielle Ausführung von *Method1*, *Method2* und des Timer-Rückrufs für *ActorId1* zeigt.
 * Die Ausführung von *Method1* für *ActorId1* überschneidet sich mit deren Ausführung für *ActorId2*. Der Grund dafür ist, dass Turn-basierte Parallelität nur innerhalb eines Actors und nicht Actor-übergreifend erzwungen wird.
-* Bei einigen Ausführungen von Methode/Rückruf wird der von der Methode/dem Rückruf zurückgegebene `Task` nach der Rückkehr der Methode abgeschlossen. Bei einigen anderen ist der `Task` bereits zum Zeitpunkt der Rückkehr der Methode/des Rückrufs abgeschlossen. In beiden Fällen wird die Sperre pro Akteur erst freigegeben, nachdem sowohl die Methode/der Rückruf als auch der `Task` abgeschlossen ist.
+* Bei einigen Ausführungen von Methode/Rückruf wird der von der Methode/dem Rückruf zurückgegebene `Task`(C#) / `CompletableFuture`(Java) nach der Rückkehr der Methode abgeschlossen. Bei einigen anderen ist der asynchrone Vorgang bereits zum Zeitpunkt der Rückkehr der Methode/des Rückrufs abgeschlossen. In beiden Fällen wird die Sperre pro Akteur erst freigegeben, nachdem sowohl die Methode/der Rückruf als auch der asynchrone Vorgang abgeschlossen ist.
 
 #### <a name="reentrancy"></a>Eintrittsinvarianz
 Die Actors-Laufzeit lässt standardmäßig Eintrittsinvarianz zu. Dies bedeutet: Wenn eine Akteurmethode von *Actor A* eine Methode auf *Actor B* aufruft, die wiederum eine andere Methode auf *Actor A* aufruft, wird die Ausführung dieser Methode erlaubt. Der Grund dafür ist, dass sie zum selben logischen Kontext der Aufrufkette gehört. Alle Timer- und Erinnerungs-Aufrufe beginnen mit dem neuen logischen Aufrufkontext. Weitere Details finden Sie unter [Reliable Actors-Eintrittsinvarianz](service-fabric-reliable-actors-reentrancy.md) .
@@ -145,9 +158,4 @@ Die Actors-Laufzeit bietet diese Parallelitätsgarantien in Situationen, in dene
 [1]: ./media/service-fabric-reliable-actors-introduction/concurrency.png
 [2]: ./media/service-fabric-reliable-actors-introduction/distribution.png
 [3]: ./media/service-fabric-reliable-actors-introduction/actor-communication.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

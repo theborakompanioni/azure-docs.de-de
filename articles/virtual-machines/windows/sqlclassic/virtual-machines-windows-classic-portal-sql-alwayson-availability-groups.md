@@ -1,5 +1,5 @@
 ---
-title: "Konfigurieren von AlwaysOn-Verfügbarkeitsgruppen auf virtuellen Azure-Computern – klassisch"
+title: "Konfigurieren von Always On-Verfügbarkeitsgruppen auf virtuellen Azure-Computern (klassisch) | Microsoft-Dokumentation"
 description: "Erstellen Sie eine AlwaysOn-Verfügbarkeitsgruppe mit virtuellen Azure-Computern. In diesem Tutorial werden die Benutzeroberfläche und Tools anstelle von Skripts verwendet."
 services: virtual-machines-windows
 documentationcenter: na
@@ -16,12 +16,13 @@ ms.workload: iaas-sql-server
 ms.date: 09/22/2016
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
-ms.openlocfilehash: 87f16f54958b20b8b321d09c734923269bd0503e
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: c1a1c7d2fd56e20d30cf0468de2d7d6c2935ef3e
+ms.lasthandoff: 03/07/2017
 
 
 ---
-# <a name="configure-always-on-availability-group-in-azure-vm---classic"></a>Konfigurieren von AlwaysOn-Verfügbarkeitsgruppen auf virtuellen Azure-Computern – klassisch
+# <a name="configure-always-on-availability-group-in-azure-vm-classic"></a>Konfigurieren von Always On-Verfügbarkeitsgruppen auf virtuellen Azure-Computern (klassisch)
 > [!div class="op_single_selector"]
 > * [Resource Manager: Vorlage](../sql/virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
 > * [Resource Manager: manuell](../sql/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)
@@ -415,10 +416,5 @@ Sie sind jetzt bereit, um eine Verfügbarkeitsgruppe zu konfigurieren. Im Folgen
 Sie haben nun erfolgreich SQL Server AlwaysOn implementiert, indem Sie eine Verfügbarkeitsgruppe in Azure erstellt haben. Informationen zum Konfigurieren eines Listeners für diese Verfügbarkeitsgruppe finden Sie unter [Konfigurieren eines ILB-Listeners für AlwaysOn-Verfügbarkeitsgruppen in Azure](virtual-machines-windows-classic-ps-sql-int-listener.md).
 
 Weitere Informationen zur Verwendung von SQL Server in Azure finden Sie unter [SQL Server auf virtuellen Azure-Computern](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 
