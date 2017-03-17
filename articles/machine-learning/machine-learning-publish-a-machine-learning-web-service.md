@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/06/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 52153526fb5b127823316b86fa05c0528151e18f
-ms.openlocfilehash: df8aebc78969ac6ceb00ee8b20a60cb153e8891b
+ms.sourcegitcommit: 247d370c1f80729856e53690045991127ad54351
+ms.openlocfilehash: fa62c0883b8230e514f60626b59fa3b3b20a6784
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -62,6 +63,9 @@ Sie können das Vorhersageexperiment als neuen oder klassischen Webdienst bereit
 Nachdem das Vorhersageexperiment vorbereitet wurde, können Sie es neuen als Azure-Webdienst bereitstellen. Mithilfe des Webdiensts können Benutzer Daten an das Modell senden, und das Modell gibt seine Vorhersagen zurück.
 
 Um das Vorhersageexperiment bereitzustellen, klicken Sie unten im Experimentbereich auf **Run** . Sobald das Experiment ausgeführt wurde, klicken Sie auf **Deploy Web Service**, und wählen Sie **Deploy Web Service [New]** aus.  Die Bereitstellungsseite des Machine Learning Web Service-Portals wird geöffnet.
+
+> [!NOTE] 
+> Zum Bereitstellen eines neuen Webdiensts müssen Sie über ausreichende Berechtigungen in dem Abonnement verfügen, an das Sie den Webdienst bereitstellen. Weitere Informationen finden Sie unter [Verwalten eines Webdiensts im Azure Machine Learning Web Services-Portal](machine-learning-manage-new-webservice.md). 
 
 #### <a name="machine-learning-web-service-portal-deploy-experiment-page"></a>Machine Learning Web Services-Portal: Seite „Deploy Experiment“
 Geben Sie auf der Seite „Deploy Experiment“ einen Namen für den Webdienst ein.
@@ -116,7 +120,7 @@ Die Seite **Consume** bietet alle Informationen, die Sie benötigen, um auf den 
 Weitere Informationen zum Zugreifen auf einen Machine Learning-Webdienst finden Sie unter [Nutzen eines bereitgestellten Azure Machine Learning-Webdiensts](machine-learning-consume-web-services.md).
 
 #### <a name="manage-your-new-web-service"></a>Verwalten des neuen Webdiensts
-Sie können Ihre klassischen Webdienste im Machine Learning Web Services-Portal verwalten. Klicken Sie auf der [Hauptseite des Portals](https://services.azureml-test.net/) auf **Web Services**. Auf der Seite „Web Services“ können Sie einen Dienst löschen oder kopieren. Um einen bestimmten Dienst zu überwachen, klicken Sie auf den Dienst und dann auf **Dashboard**. Klicken Sie zum Überwachen von Batchaufträgen im Zusammenhang mit dem Webdienst auf **Batch Request Log**.
+Sie können Ihre neuen Webdienste im Machine Learning Web Services-Portal verwalten. Klicken Sie auf der [Hauptseite des Portals](https://services.azureml-test.net/) auf **Web Services**. Auf der Seite „Web Services“ können Sie einen Dienst löschen oder kopieren. Um einen bestimmten Dienst zu überwachen, klicken Sie auf den Dienst und dann auf **Dashboard**. Klicken Sie zum Überwachen von Batchaufträgen im Zusammenhang mit dem Webdienst auf **Batch Request Log**.
 
 ### <a name="deploy-the-predictive-experiment-as-a-classic-web-service"></a>Bereitstellen des Vorhersageexperiments als klassischen Webdienst
 
@@ -187,9 +191,4 @@ Eine Option zum Aktualisieren des Webdiensts ist das programmgesteuerte erneute 
 [Access]: #access-the-Web-service
 [Manage]: #manage-the-Web-service-in-the-azure-management-portal
 [Update]: #update-the-Web-service
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

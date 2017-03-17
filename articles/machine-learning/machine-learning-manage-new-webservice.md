@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2017
+ms.date: 02/28/2017
 ms.author: v-donglo
 translationtype: Human Translation
-ms.sourcegitcommit: 66fb3dc316ce25aea4dff4add5c25b7f0f56ad7a
-ms.openlocfilehash: ef24162006c508134db3f385e791306495ac4614
-ms.lasthandoff: 01/31/2017
+ms.sourcegitcommit: 1029c7e4c6a17ad2a290ff0783fc88692555b255
+ms.openlocfilehash: ad1314aa4b504bd2cb3285789073d4f1de1f545d
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -33,6 +33,19 @@ Das Machine Learning Web Services-Portal bietet diese Möglichkeiten:
 * Hinzufügen und Löschen von Endpunkten (nur klassisch)
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
+
+## <a name="permissions-to-manage-new-resources-manager-based-web-services"></a>Berechtigungen zum Verwalten von neuen Resource Manager-basierten Webdiensten
+
+Neue Webdienste werden als Azure-Ressourcen bereitgestellt. Daher benötigen Sie die erforderlichen Berechtigungen zum Bereitstellen und Verwalten neuer Webdienste.  Zum Bereitstellen oder Verwalten neuer Webdienste muss Ihnen in dem Abonnement, für das der Webdienst bereitgestellt wird, eine Teilnehmer- oder Administratorrolle zugewiesen sein. Wenn Sie andere Benutzer in einen Machine Learning-Arbeitsbereich einladen, müssen Sie ihnen eine Teilnehmer- oder Administratorrolle im Abonnement zuweisen, damit sie Webdienste bereitstellen oder verwalten können. 
+
+Wenn die Benutzer nicht über die korrekten Berechtigungen verfügen, um auf Ressourcen im Azure Machine Learning Web Services-Portal zuzugreifen, erhalten Sie beim Versuch einen Webdienst bereitzustellen folgende Fehlermeldung:
+
+*Web Service deployment failed (Bereitstellung des Webdiensts ist fehlgeschlagen). This account does not have sufficient access to the Azure subscription that contains the Workspace (Dieses Konto besitzt keine ausreichenden Zugriffsberechtigungen für das Azure-Abonnement mit dem Workspace). In order to deploy a Web Service to Azure, the same account must be invited to the Workspace and be given access to the Azure subscription that contains the Workspace.* (Für die Bereitstellung eines Webdiensts in Azure muss das gleiche Konto für den Workspace eingeladen werden und Zugriff auf das Azure-Abonnement mit dem Workspace erhalten).
+
+Weitere Informationen zum Erstellen eines Arbeitsbereichs finden Sie unter [Erstellen und Freigeben eines Azure Machine Learning-Arbeitsbereichs](machine-learning-create-workspace.md).
+
+Weitere Informationen zum Festlegen von Zugriffsberechtigungen finden Sie unter [Anzeigen von Zugriffszuweisungen für Benutzer und Gruppen im Azure-Portal – öffentliche Vorschau](../active-directory/role-based-access-control-manage-assignments.md).
+
 
 ## <a name="manage-new-web-services"></a>Verwalten neuer Webdienste
 So verwalten Sie Ihre neuen Webdienste

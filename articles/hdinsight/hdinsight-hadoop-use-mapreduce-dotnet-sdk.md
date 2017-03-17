@@ -13,12 +13,12 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/03/2017
+ms.date: 03/03/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: fcc47e3e054d88fe40c13a0fd9949c315dbfce9b
-ms.openlocfilehash: 1617aebffeec5b385b47a7425f6c849267da68a6
-ms.lasthandoff: 02/04/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: 03f3898182d405bced8ad41b281e2ce2037b8343
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -36,7 +36,7 @@ Erfahren Sie, wie Sie MapReduce-Jobs mit HDInsight .NET SDK übermitteln können
 Bevor Sie mit diesem Artikel beginnen können, benötigen Sie Folgendes:
 
 * **Einen Hadoop-Cluster in HDInsight**. Siehe [Erste Schritte bei der Verwendung von Linux-basiertem Hadoop in HDInsight](hdinsight-use-sqoop.md#create-cluster-and-sql-database).
-* **Visual Studio 2012/2013/2015**.
+* **Visual Studio 2013/2015/2017**.
 
 ## <a name="submit-mapreduce-jobs-using-hdinsight-net-sdk"></a>Übermitteln von MapReduce-Jobs mit HDInsight .NET SDK
 Das HDInsight .NET SDK enthält .NET-Clientbibliotheken, die das Arbeiten mit HDInsight-Clustern in .NET vereinfachen. 

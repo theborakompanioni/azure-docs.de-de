@@ -1,5 +1,5 @@
 ---
-title: Erfassen von Protokollen und Metrikdaten mithilfe der Speicheranalyse | Microsoft Docs
+title: Erfassen von Protokollen und Metrikdaten mithilfe der Azure-Speicheranalyse | Microsoft-Dokumentation
 description: "Mit der Speicheranalyse können Sie Metrikdaten für alle Speicherdienste nachverfolgen und Protokolle für Blob-, Warteschlangen- und Tabellenspeicher erfassen."
 services: storage
 documentationcenter: 
@@ -12,16 +12,17 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 03/03/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: af5fae5c5153c91fe78bdfb310c407a2c4462e04
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 4680985e5c66444ca8a356cc92d45dc0f1838f55
+ms.lasthandoff: 03/06/2017
 
 
 ---
 # <a name="storage-analytics"></a>Speicheranalyse
-## <a name="overview"></a>Übersicht
+
 Die Azure-Speicheranalyse führt die Protokollierung aus und stellt Metrikdaten für ein Speicherkonto bereit. Mit diesen Daten können Sie Anforderungen verfolgen, Verwendungstrends analysieren und Probleme mit dem Speicherkonto diagnostizieren.
 
 Zum Verwenden der Speicheranalyse müssen Sie sie einzeln für jeden zu überwachenden Dienst aktivieren. Sie können sie über das [Azure-Portal](https://portal.azure.com)aktivieren. Details finden Sie unter [Überwachen eines Speicherkontos im Azure-Portal](storage-monitor-storage-account.md). Sie können die Speicheranalyse auch programmgesteuert über die REST-API oder die Clientbibliothek aktivieren. Über die Vorgänge [Blob-Diensteigenschaften abrufen](https://msdn.microsoft.com/library/hh452239.aspx), [Warteschlangendiensteigenschaften abrufen](https://msdn.microsoft.com/library/hh452243.aspx), [Tabellendiensteigenschaften abrufen](https://msdn.microsoft.com/library/hh452238.aspx) und [Dateidiensteigenschaften abrufen](https://msdn.microsoft.com/library/mt427369.aspx) können Sie die Speicheranalyse für jeden Dienst aktivieren.
@@ -150,7 +151,7 @@ Alle Metrikdaten für jeden der Speicherdienste werden in drei Tabellen gespeich
 
 | Metrikebene | Tabellennamen | Unterstützte Versionen |
 | --- | --- | --- |
-| Stundenmetriken, primärer Standort |$MetricsTransactionsBlob  <br/>$MetricsTransactionsTable <br/>  $MetricsTransactionsQueue |Nur Versionen vor dem 15.08.2013. Obwohl diese Namen weiterhin unterstützt werden, wird empfohlen, die unten aufgeführten Tabellen zu verwenden. |
+| Stundenmetriken, primärer Standort |$MetricsTransactionsBlob  <br/>$MetricsTransactionsTable <br/> $MetricsTransactionsQueue |Nur Versionen vor dem 15.08.2013. Obwohl diese Namen weiterhin unterstützt werden, wird empfohlen, die unten aufgeführten Tabellen zu verwenden. |
 | Stundenmetriken, primärer Standort |$MetricsHourPrimaryTransactionsBlob <br/>$MetricsHourPrimaryTransactionsTable <br/>$MetricsHourPrimaryTransactionsQueue |Alle Versionen einschließlich 2013-08-15. |
 | Minutenmetriken, primärer Standort |$MetricsMinutePrimaryTransactionsBlob <br/>$MetricsMinutePrimaryTransactionsTable <br/>$MetricsMinutePrimaryTransactionsQueue |Alle Versionen einschließlich 2013-08-15. |
 | Stundenmetriken, sekundärer Standort |$MetricsHourSecondaryTransactionsBlob  <br/>$MetricsHourSecondaryTransactionsTable <br/>$MetricsHourSecondaryTransactionsQueue |Alle Versionen einschließlich 2013-08-15. Georedundante Replikation mit Lesezugriff muss aktiviert sein. |
@@ -163,7 +164,7 @@ Diese Tabellen werden automatisch erstellt, wenn die Speicheranalyse für ein Sp
 Auf alle Daten in den Metriktabellen kann mithilfe der Tabellendienst-APIs zugegriffen werden, einschließlich der .NET-APIs, die von der verwalteten Azure-Bibliothek bereitgestellt werden. Der Speicherkontoadministrator kann Tabellenentitäten lesen und löschen, jedoch nicht erstellen oder aktualisieren.
 
 ## <a name="billing-for-storage-analytics"></a>Abrechnung von Speicheranalysen
-Die Speicheranalyse wird vom Speicherkontobesitzer aktiviert. Standardmäßig ist sie nicht aktiviert. Alle Metrikdaten werden von den Diensten eines Speicherkontos geschrieben. Deshalb ist jeder Schreibvorgang, der von der Speicheranalyse ausgeführt wird, gebührenpflichtig. Darüber hinaus ist die Menge des von Metrikdaten genutzten Speichers ebenfalls gebührenpflichtig.
+Alle Metrikdaten werden von den Diensten eines Speicherkontos geschrieben. Deshalb ist jeder Schreibvorgang, der von der Speicheranalyse ausgeführt wird, gebührenpflichtig. Darüber hinaus ist die Menge des von Metrikdaten genutzten Speichers ebenfalls gebührenpflichtig.
 
 Die folgenden Aktionen der Speicheranalyse sind gebührenpflichtig:
 
@@ -191,10 +192,5 @@ Wenn Sie Speicheranalysedaten überprüfen, können Sie anhand der Tabellen im T
 * [Informationen zu Metriken der Speicheranalyse](https://msdn.microsoft.com/library/hh343258.aspx)
 * [Schema der Tabellen für Speicheranalysemetriken](https://msdn.microsoft.com/library/hh343264.aspx)
 * [Protokollierte Speicheranalysevorgänge und Statusmeldungen](https://msdn.microsoft.com/library/hh343260.aspx)  
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

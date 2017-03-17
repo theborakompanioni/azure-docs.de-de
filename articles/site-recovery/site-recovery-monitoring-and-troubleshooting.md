@@ -15,8 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 01/19/2017
 ms.author: rajanaki
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 5ef0bd33cb37474573cd136b882ca5141f365476
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 664a1bd9df9ace4993a8389dbeb049e721932082
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -35,12 +36,12 @@ Zum Einrichten der Datenbankwiederherstellung zwischen zwei lokalen Standorten m
 ![Virtual Machine Manager-Standortbereitstellung für die Replikation zwischen lokalen Standorten](media/site-recovery-monitoring-and-troubleshooting/image1.png)
 
 ### <a name="virtual-machine-manager-site-deployment-for-replication-between-on-premises-locations-and-azure"></a>Virtual Machine Manager-Standortbereitstellung für die Replikation zwischen der lokalen Umgebung und Azure
-Zum Einrichten der Datenbankwiederherstellung zwischen lokalen Standorten und Azure müssen Sie den Azure Site Recovery-Anbieter herunterladen und auf dem Virtual Machine Manager-Server installieren. Außerdem müssen Sie den Azure Recovery Services-Agent installieren, der auf jedem Hyper-V-Host vorhanden sein muss. Weitere Informationen finden Sie unter [Grundlegendes zum Schutz von Standorten in Azure](site-recovery-understanding-site-to-azure-protection.md).
+Zum Einrichten der Datenbankwiederherstellung zwischen lokalen Standorten und Azure müssen Sie den Azure Site Recovery-Anbieter herunterladen und auf dem Virtual Machine Manager-Server installieren. Außerdem müssen Sie den Azure Recovery Services-Agent installieren, der auf jedem Hyper-V-Host vorhanden sein muss. Klicken Sie [hier](site-recovery-hyper-v-azure-architecture.md), um weitere Informationen zu erhalten.
 
 ![Virtual Machine Manager-Standortbereitstellung für die Replikation zwischen der lokalen Umgebung und Azure](media/site-recovery-monitoring-and-troubleshooting/image2.png)
 
 ### <a name="hyper-v-site-deployment-for-replication-between-on-premises-locations-and-azure"></a>Hyper-V-Standortbereitstellung für die Replikation zwischen lokalen Standorten und Azure
-Dieser Prozess ähnelt der Bereitstellung von Virtual Machine Manager. Der einzige Unterschied besteht darin, dass der Azure Site Recovery-Anbieter und der Azure Recovery Services-Agent auf dem Hyper-V-Host selbst installiert werden. Weitere Informationen finden Sie unter [Grundlegendes zum Schutz von Standorten in Azure](site-recovery-understanding-site-to-azure-protection.md).
+Dieser Prozess ähnelt der Bereitstellung von Virtual Machine Manager. Der einzige Unterschied besteht darin, dass der Azure Site Recovery-Anbieter und der Azure Recovery Services-Agent auf dem Hyper-V-Host selbst installiert werden. [Weitere Informationen](site-recovery-hyper-v-azure-architecture.md). verfügbar.
 
 ## <a name="monitor-configuration-protection-and-recovery-operations"></a>Überwachen von Konfigurations-, Schutz- und Wiederherstellungsvorgängen
 Jeder Vorgang in Azure Site Recovery wird auf der Registerkarte **AUFTRÄGE** überwacht und nachverfolgt. Greifen Sie bei allen Fehlern, die sich auf die Konfiguration, den Schutz oder die Wiederherstellung beziehen, auf die Registerkarte **AUFTRÄGE** zu, und suchen Sie nach Fehlern.
@@ -80,8 +81,8 @@ Wie im vorherigen Screenshot dargestellt, lautet die Integrität des virtuellen 
 
 > [!NOTE]
 > Wenn aktive Vorgänge in Bearbeitung oder fehlgeschlagen sind, können Sie unter **AUFTRÄGE** wie oben beschrieben den Fehler zu einem bestimmten Auftrag anzeigen.
-> 
-> 
+>
+>
 
 ## <a name="troubleshoot-on-premises-hyper-v-issues"></a>Behandlung von lokalen Hyper-V-Problemen
 Stellen Sie eine Verbindung mit der lokalen Hyper-V-Manager-Konsole her, wählen Sie den virtuellen Computer aus, und prüfen Sie die Replikationsintegrität.
@@ -194,10 +195,4 @@ Im Folgenden sind häufige Fehler und die dazugehörigen Lösungen aufgeführt. 
 Wenn die Schaltfläche **Verbinden** im Portal ausgeblendet ist und keine ExpressRoute- oder Site-to-Site-VPN-Verbindung mit Azure besteht, müssen Sie eine öffentliche IP-Adresse erstellen und dem virtuellen Computer zuweisen, damit Sie Remotedesktop/Shared Shell nutzen können. Anschließend können Sie der Netzwerkschnittstelle des virtuellen Computers eine öffentliche IP hinzufügen.  
 
 ![Hinzufügen einer öffentlichen IP-Adresse an der Netzwerkschnittstelle des virtuellen Computers, für den ein Failover ausgeführt wurde](media/site-recovery-monitoring-and-troubleshooting/createpublicip.gif)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

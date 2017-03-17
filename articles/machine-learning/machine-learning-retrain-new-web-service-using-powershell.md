@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 12/13/2016
 ms.author: v-donglo
 translationtype: Human Translation
-ms.sourcegitcommit: 66fb3dc316ce25aea4dff4add5c25b7f0f56ad7a
-ms.openlocfilehash: d57d3802e1678c6754b0d770acc4fe6c092329a3
-ms.lasthandoff: 01/31/2017
+ms.sourcegitcommit: 1029c7e4c6a17ad2a290ff0783fc88692555b255
+ms.openlocfilehash: e971bd36f9245032296537ea3e0b64e5f3e18ddd
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -28,9 +28,9 @@ Beim erneuten Trainieren eines neuen Webdiensts wird die Definition des Vorhersa
 Sie benötigen ein Trainingsexperiment und ein Vorhersageexperiment (wie unter [Programmgesteuertes erneutes Trainieren von Machine Learning-Modellen](machine-learning-retrain-models-programmatically.md) beschrieben). 
 
 > [!IMPORTANT]
-> Das Vorhersageexperiment muss als ein auf Azure Resource Manager (neu) basierender Machine Learning-Webdienst bereitgestellt werden. 
-> 
-> 
+> Das Vorhersageexperiment muss als ein auf Azure Resource Manager (neu) basierender Machine Learning-Webdienst bereitgestellt werden. Zum Bereitstellen eines neuen Webdiensts müssen Sie über ausreichende Berechtigungen in dem Abonnement verfügen, an das Sie den Webdienst bereitstellen. Weitere Informationen finden Sie unter [Verwalten eines Webdiensts im Azure Machine Learning Web Services-Portal](machine-learning-manage-new-webservice.md). 
+
+
 
 Weitere Informationen zum Bereitstellen von Webdiensten finden Sie unter [Bereitstellen von Azure Machine Learning-Webdiensten](machine-learning-publish-a-machine-learning-web-service.md).
 

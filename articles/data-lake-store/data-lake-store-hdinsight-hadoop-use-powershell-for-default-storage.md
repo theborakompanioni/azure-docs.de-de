@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/14/2017
+ms.date: 03/02/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 307070c755cff059b4b82494d28e06cf490a6f7a
-ms.openlocfilehash: 6c5badbbea7385cac1407e4af148d5b647af04ac
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 01c75f20909c7334981bf407e775656476972276
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -37,6 +37,8 @@ Erfahren Sie, wie Sie mithilfe von Azure PowerShell einen HDInsight-Cluster mit 
 Hier finden Sie einige wichtige Überlegungen zur Verwendung von HDInsight mit Data Lake Store:
 
 * Eine Option zum Erstellen von HDInsight-Clustern mit Zugriff auf Data Lake Store als Standardspeicher ist für die HDInsight-Version 3.5 verfügbar.
+
+* Eine Option zum Erstellen von HDInsight-Clustern mit Zugriff auf Data Lake Store als Standardspeicher ist für HDInsight Premium-Cluster nicht verfügbar.
 
 * Für HBase-Cluster (Windows und Linux) wird Data Lake Store **nicht** als Speicheroption unterstützt, weder für Standardspeicher noch für zusätzlichen Speicher.
 

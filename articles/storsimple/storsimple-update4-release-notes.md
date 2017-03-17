@@ -12,12 +12,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 02/16/2017
+ms.date: 03/03/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: a87a4a8b290318bb9fdd1ae0b5fdce00085f59df
-ms.openlocfilehash: 3fe19196ce6af2aeb52bf941ced1892a9a172d87
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: c682f9eac1a6ff5e3771aa9e4dfa5b5ffefc1223
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -75,6 +75,7 @@ Die folgende Tabelle enthält eine Zusammenfassung der Probleme, die in Update 4
 | 3 |Supportpaket |In der vorherigen Version bestanden Probleme im Zusammenhang mit dem Supportpaket, die zur Ausnahme „System.OutOfMemory“ oder anderen Fehlern führten, die wiederum Fehler beim Erstellen von Supportpaketen bedingten. Diese Fehler wurden in dieser Version behoben. |Ja |Ja |
 | 4 |Überwachung |In der vorherigen Version bestand ein Problem im Zusammenhang mit der Überwachung von Diagrammen für lokale Volumes, deren Verbrauch in „EB“ gezeigt wurde. Dieser Fehler wurde in dieser Version behoben. |Ja |Ja |
 | 5 |Migration |In der vorherigen Version bestanden mehrere Probleme im Zusammenhang mit der Zuverlässigkeit der Migration von Geräten der 5000-7000-Serie zu Geräten der 8000-Serie. Diese Probleme wurden in dieser Version behoben. |Ja |Ja |
+| 6 |Aktualisieren |Wenn in vorherigen Releases ein Fehler beim Update aufgetreten ist, sind die Controller in den Wiederherstellungsmodus gewechselt. Daher konnte der Benutzer nicht mit dem Update fortfahren und musste sich an den Microsoft-Support wenden. <br> Dieses Verhalten wurde in diesem Release geändert. Wenn beim Benutzer ein Fehler beim Update auftritt, wenn beide Controller die gleiche Version ausführen (Update 4), wechseln die Controller nicht in den Wiederherstellungsmodus. Wenn beim Benutzer dieser Fehler auftritt, empfehlen wir eine Weile zu warten und das Update dann zu wiederholen. Die Wiederholung ist möglicherweise erfolgreich. Wenn das nicht erfolgreich ist sollte sich der Benutzer an den Microsoft-Support wenden. |Ja |Ja |
 
 
 ## <a name="known-issues-in-update-4-from-previous-releases"></a>Bekannte Probleme in Update 4 aus vorherigen Versionen

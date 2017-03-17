@@ -1,6 +1,7 @@
 ---
-title: "Übertragen eines Azure-Abonnements | Microsoft-Dokumentation"
-description: "Übertragung eines Azure-Abonnements auf einen anderen Benutzer, und einige häufig gestellte Fragen (FAQs) zu dem Prozess."
+title: "Übertragung des Besitzes eines Azure-Abonnements auf ein anderes Konto | Microsoft-Dokumentation"
+description: "In diesem Artikel wird die beschrieben, wie die Übertragung eines Azure-Abonnements auf einen anderen Benutzer erfolgt, und Sie finden hier einige häufig gestellte Fragen (FAQs) zu dem Prozess"
+keywords: "azure-abonnement übertragen, azure übertragung abonnement, verschieben azure-abonnement auf anderes konto, azure änderung besitzer des abonnements, übertragung azure-abonnement auf anderes konto"
 services: 
 documentationcenter: 
 author: genlin
@@ -13,15 +14,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/03/2017
+ms.date: 02/28/2017
 ms.author: genli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 1faa99b774d5f6cc4e4939ee465809710fd31524
-ms.openlocfilehash: 0cb3237f923faa32d77285775dafde55d678c7db
-
+ms.sourcegitcommit: 0ec56111847300833ba92cc9149e8a276ba2c6c1
+ms.openlocfilehash: af7cabf3d5286dc3cd368db191bc5218cd9c5893
+ms.lasthandoff: 03/02/2017
 
 ---
-# <a name="transferring-ownership-of-an-azure-subscription"></a>Übertragen eines Azure-Abonnements
+# <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>Übertragen des Besitzes eines Azure-Abonnements auf ein anderes Konto
 
 Sie können Ihr Abonnement im Kontocenter auf einen anderen Benutzer übertragen. Dies ist für Abonnements vom Typ „Nutzungsbasierte Bezahlung“, „Visual Studio“, „Action Pack“ und „BizSpark“ möglich. Wir unterstützen auch die Übertragung von externen Azure-Diensten für diese Abonnementtypen. 
 
@@ -34,7 +36,7 @@ Es kann beispielsweise folgende Gründe haben, warum Sie den Besitz eines Azure-
 
 Wie Sie Ihr Abonnement in ein anderes Angebot ändern können, erfahren Sie unter [Umstellen Ihres Azure-Abonnements auf ein anderes Angebot](billing-how-to-switch-azure-offer.md). 
 
-## <a name="how-to-transfer-ownership-of-an-azure-subscription"></a>Übertragen eines Azure-Abonnements
+## <a name="transfer-ownership-of-an-azure-subscription"></a>Übertragen des Besitzes eines Azure-Abonnements
 > [!VIDEO https://channel9.msdn.com/Series/Microsoft-Azure-Tutorials/Transfer-an-Azure-subscription/player]
 >
 >
@@ -46,7 +48,7 @@ Wie Sie Ihr Abonnement in ein anderes Angebot ändern können, erfahren Sie unte
 3. Klicken Sie auf die Option **Abonnement übertragen** . Wenn die Schaltfläche nicht angezeigt wird, finden Sie Informationen unter [Häufig gestellte Fragen (FAQ)](#no-button).
 
    ![Registerkarte „Azure-Kontoabonnements“](./media/billing-subscription-transfer/image1.png)
-4. Folgen Sie den Anweisungen, um den Empfänger anzugeben.
+4. Geben Sie den Empfänger an.
 
    ![Dialogfeld „Abonnement übertragen“](./media/billing-subscription-transfer/image2.PNG)
 5. Der Empfänger erhält automatisch eine E-Mail mit einem Link für den Vorgang zum Akzeptieren.
@@ -58,6 +60,26 @@ Wie Sie Ihr Abonnement in ein anderes Angebot ändern können, erfahren Sie unte
 
    ![Zweite Webseite zur Abonnementübertragung](./media/billing-subscription-transfer/image5.png)
 7. Erfolg! Das Abonnement ist jetzt übertragen.
+
+## <a name="transfer-subscription-ownership-for-enterprise-agreement-ea-customers"></a>Übertragen von Abonnements für Kunden mit Enterprise Agreement (EA)
+Der Unternehmensadministrator kann den Besitz von Abonnements in einer Registrierung übertragen. Informationen zum Einstieg finden Sie unter [Transfer Account Ownership](https://ea.azure.com/helpdocs/changeAccountOwnerForASubscription) (Übertragen des Kontobesitzes) im EA-Portal.
+
+## <a name="next-steps-after-accepting-ownership-of-a-subscription"></a>Nächste Schritte nach dem Übernehmen des Besitzes eines Abonnements
+1. Sie sind nun der Kontoadministrator. Überprüfen und aktualisieren Sie den Dienstadministrator und die Co-Administratoren. Sie verwalten Administratoren im [klassischen Azure-Portal](https://manage.windowsazure.com) unter „Einstellungen“. [Erfahren Sie mehr über Administratorrollen](billing-add-change-azure-subscription-administrator.md).
+
+2. Sie können auch die rollenbasierte Zugriffskontrolle (RBAC) für Ihr Abonnement und die Dienste verwenden. Besuchen Sie das [Azure-Portal](https://portal.azure.com). [Erfahren Sie mehr über RBAC](../active-directory/role-based-access-control-configure.md).
+
+3. Aktualisieren Sie die Anmeldeinformationen für die Dienste dieses Abonnements, darunter:
+   
+   * Verwaltungszertifikate, die dem Benutzer Administratorrechte auf Abonnementressourcen gewähren. Weitere Informationen finden Sie unter [Erstellen und Hochladen eines Verwaltungszertifikats für Azure](../cloud-services/cloud-services-certs-create.md)
+   
+   * Tastenkombinationen für Dienste wie Storage. Weitere Informationen finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md).
+   
+   * Anmeldeinformationen für den Remotezugriff für Dienste wie Azure Virtual Machines. 
+
+4. [Aktualisieren Sie die Abrechnungswarnungen für dieses Abonnement](billing-set-up-alerts.md) im [Azure-Kontocenter](https://account.windowsazure.com/Subscriptions). 
+
+5. Wenn Sie mit einem Partner arbeiten, sollten Sie die Partner-ID in diesem Abonnement aktualisieren. Sie können die Partner-ID im [Azure-Kontocenter](https://account.windowsazure.com/Subscriptions) aktualisieren.
 
 <a id="faq"></a>
 
@@ -95,7 +117,7 @@ Wie Sie Ihr Abonnement in ein anderes Angebot ändern können, erfahren Sie unte
   * Tastenkombinationen für Dienste wie Storage. Weitere Informationen finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md).
   * Anmeldeinformationen für den Remotezugriff für Dienste wie Azure Virtual Machines.
 
-  Dies ist keine vollständige Liste. Der Empfänger sollte sich überlegen, ob er dem Dienst zugeordnete Schlüssel aktualisiert, wenn der Zugriff auf die Ressourcen eingeschränkt werden soll. Die meisten Ressourcen können wie folgt aktualisiert werden:
+ Der Empfänger sollte sich überlegen, ob er die dem Dienst zugeordneten geheimen Schlüssel aktualisiert, wenn er den Zugriff auf die Ressourcen einschränken möchte. Die meisten Ressourcen können durch Ausführen der folgenden Schritte aktualisiert werden:
 
     1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
     2. Wählen Sie im Menü „Hub“ die Option **Alle Ressourcen** aus.
@@ -124,40 +146,16 @@ Wie Sie Ihr Abonnement in ein anderes Angebot ändern können, erfahren Sie unte
 
 * **Hat die Übertragung eines Azure-Abonnements Auswirkungen auf die Zahlungsmethode?**
 
-  Damit eine Abonnementübertragung akzeptiert wird, muss eine Kreditkarte oder eine ähnliche Zahlungsmethode für das Abonnement angegeben werden. Beispiel: Wenn Bob ein Abonnement auf Jane überträgt und Jane die Übertragung akzeptiert, muss Jane auch eine Zahlungsmethode angeben, die sie zur Bezahlung des Abonnements verwendet. Nachdem die Übertragung abgeschlossen ist, wird das Abonnement, das Bob auf Jane übertragen hat, nicht mehr über ihn abgerechnet.
+  Damit eine Abonnementübertragung akzeptiert wird, muss eine Kreditkarte oder eine ähnliche Zahlungsmethode für das Abonnement angegeben werden. Beispiel: Wenn Bob ein Abonnement auf Jane überträgt und Jane die Übertragung akzeptiert, muss Jane auch eine Zahlungsmethode für die Bezahlung des Abonnements angeben. Nachdem die Übertragung abgeschlossen ist, wird das Abonnement Jane in Rechnung gestellt, nicht Bob.
 
 * **Wie migriere ich Daten und Dienste für mein Azure-Abonnement in ein neues Abonnement?**
 
-  Wenn Sie ein Abonnement nicht übertragen können, könnten Sie Ihre Ressourcen manuell migrieren. Informationen finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/resource-group-move-resources.md).
+  Wenn Sie ein Abonnement nicht übertragen können, können Sie Ihre Ressourcen manuell migrieren. Informationen finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/resource-group-move-resources.md).
 
-## <a name="transfer-subscription-ownership-for-enterprise-agreement-ea-customers"></a>Übertragen von Abonnements für Kunden mit Enterprise Agreement (EA)
-Der Unternehmensadministrator kann den Besitz von Abonnements in einer Registrierung übertragen. Informationen zum Einstieg finden Sie unter [Transfer Account Ownership](https://ea.azure.com/helpdocs/changeAccountOwnerForASubscription) (Übertragen des Kontobesitzes) im EA-Portal.
-
-## <a name="next-steps-after-accepting-ownership-of-a-subscription"></a>Nächste Schritte nach dem Übernehmen des Besitzes eines Abonnements
-1. Sie sind nun der Kontoadministrator. Überprüfen und aktualisieren Sie den Dienstadministrator und die Co-Administratoren. Sie verwalten Administratoren im [klassischen Azure-Portal](https://manage.windowsazure.com) unter „Einstellungen“. [Erfahren Sie mehr über Administratorrollen](billing-add-change-azure-subscription-administrator.md).
-
-2. Sie können auch die rollenbasierte Zugriffskontrolle (RBAC) für Ihr Abonnement und die Dienste verwenden. Besuchen Sie das [Azure-Portal](https://portal.azure.com). [Erfahren Sie mehr über RBAC](../active-directory/role-based-access-control-configure.md).
-
-3. Aktualisieren Sie die Anmeldeinformationen für die Dienste dieses Abonnements. Diese umfassen:
-   
-   * Verwaltungszertifikate, die dem Benutzer Administratorrechte auf Abonnementressourcen gewähren. Weitere Informationen finden Sie unter [Erstellen und Hochladen eines Verwaltungszertifikats für Azure](../cloud-services/cloud-services-certs-create.md)
-   
-   * Tastenkombinationen für Dienste wie Storage. Weitere Informationen finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md).
-   
-   * Anmeldeinformationen für den Remotezugriff für Dienste wie Azure Virtual Machines. 
-
-4. [Aktualisieren Sie die Abrechnungswarnungen für dieses Abonnement](billing-set-up-alerts.md) im [Azure-Kontocenter](https://account.windowsazure.com/Subscriptions). 
-
-5. Wenn Sie mit einem Partner arbeiten, sollten Sie die Partner-ID in diesem Abonnement aktualisieren. Sie können die Partner-ID im [Azure-Kontocenter](https://account.windowsazure.com/Subscriptions) aktualisieren.
 
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
 [Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen. 
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

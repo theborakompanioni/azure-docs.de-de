@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/10/2016
+ms.date: 3/01/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 87fa4373e5496a91d4e808ceb45095a6aea9e884
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: 55baaf0984e01f3cbca7b2296f0b24661e70e7b5
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -24,8 +25,6 @@ ms.openlocfilehash: 87fa4373e5496a91d4e808ceb45095a6aea9e884
 > [!div class="op_single_selector"]
 > * [Verwalten des Zugriffs nach Benutzer oder Gruppe](role-based-access-control-manage-assignments.md)
 > * [Verwalten des Zugriffs nach Ressource](role-based-access-control-configure.md)
-> 
-> 
 
 Mit der rollenbasierten Zugriffssteuerung (RBAC) in der Vorschau von Azure Active Directory können Sie den Zugriff auf Ihre Azure-Ressourcen verwalten. [Was bietet die Vorschauversion?](active-directory-preview-explainer.md)
 
@@ -57,13 +56,9 @@ Auf diesem Blatt können Sie Zugriffszuweisungen löschen, die einem Benutzer od
 2. Wählen Sie **Entfernen**, und wählen Sie dann zur Bestätigung **Ja**.
     ![Entfernen der Zugriffszuweisung – Screenshot](./media/role-based-access-control-manage-assignments/delete_assignment.png)
 
-## <a name="related-topics"></a>Verwandte Themen
+## <a name="next-steps"></a>Nächste Schritte
+
 * Erste Schritte mit der rollenbasierten Zugriffssteuerung finden Sie unter [Verwenden von Rollenzuweisungen zum Verwalten des Zugriffs auf Ihre Azure-Abonnementressourcen](role-based-access-control-configure.md)
 * Weitere Informationen finden Sie unter [Integrierte RBAC-Rollen in Azure](role-based-access-built-in-roles.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

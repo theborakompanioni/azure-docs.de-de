@@ -14,12 +14,12 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2016
+ms.date: 03/02/2017
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
-ms.openlocfilehash: a2a738ef1df470e17b805e843a159e0abc23efdf
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 9d654904e06758bc8634efa9b18ea3bac2b64523
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -60,8 +60,8 @@ Sie müssen Ihre Clientanwendung aktivieren, um auf den SQL-Datenbank-Dienst zuz
 7. Kopieren Sie Ihre **CLIENT-ID**. (Sie benötigen diesen Wert später für Ihren Code.)
 8. Wählen Sie im Abschnitt **Schlüssel** in der Dropdownliste **Dauer auswählen** die Option **1 Jahr** aus. (Sie kopieren den Schlüssel nach dem Speichern in Schritt 13.)
 9. Scrollen Sie nach unten, und klicken Sie auf **Anwendung hinzufügen**.
-10. Behalten Sie für **ANZEIGEN** die Festlegung **Microsoft-Apps** bei, und wählen Sie **Microsoft Azure-Dienstverwaltung**. Klicken Sie auf das Häkchen, um fortzufahren.
-11. Wählen Sie in der Dropdownliste **Delegierte Berechtigungen** den Eintrag **Zugriff auf Azure-Dienstverwaltung** aus.
+10. Behalten Sie für **ANZEIGEN** die Einstellung **Microsoft-Apps** bei, und wählen Sie **Microsoft Azure-Service-Verwaltungs-API** aus. Klicken Sie auf das Häkchen, um fortzufahren.
+11. Wählen Sie in der Dropdownliste **Delegierte Berechtigungen** den Eintrag **Access Azure Service Management...** (Zugriff auf Azure-Dienstverwaltung) aus.
 12. Klicken Sie auf **SPEICHERN**.
 13. Nachdem der Speichervorgang abgeschlossen ist, kopieren Sie den Schlüsselwert in den Abschnitt **Schlüssel** . (Sie benötigen diesen Wert später für Ihren Code.)
 

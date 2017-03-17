@@ -15,9 +15,9 @@ ms.workload: azure-government
 ms.date: 02/13/2017
 ms.author: stemi
 translationtype: Human Translation
-ms.sourcegitcommit: ffe3991f68bbd255ff6f4ffedbd6638f32897d1a
-ms.openlocfilehash: 914870f59b488716bb283162078535849f732018
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 21c2a0faad87b84058093f02c831b374a644b4b6
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -25,7 +25,7 @@ ms.lasthandoff: 02/21/2017
 Die in Azure Government verfügbaren Dienste werden fortlaufend ergänzt.  Diese Dienste werden mit demselben Code bereitgestellt, der in Azure Public verwendet wird.  In diesem Abschnitt sind die Dienste aufgeführt, die derzeit in Azure Government verfügbar sind, einschließlich zweier wichtiger Arten von Informationen:
 
 * **Variationen:** Abweichungen aufgrund von Features, die noch nicht bereitgestellt wurden, oder bei Eigenschaften (z.B. URLs), die in der Government-Umgebung anders sind.  
-* **Überlegungen:** Government-spezifische Implementierungsdetails, mit denen sichergestellt werden soll, dass Daten stets im Compliancerahmen bleiben.
+* **Überlegungen:** Government-spezifische Implementierungsdetails, mit denen sichergestellt werden soll, dass Daten stets in den Compliancegrenzen bleiben.
 
 Alles Weitere, was Sie über diese Dienste wissen müssen, finden Sie in der allgemeinen Dokumentation.
 
@@ -95,6 +95,12 @@ Die in den folgenden Tabellen als Resource Manager-fähig angegebenen Dienste ve
 | [Redis Cache](documentation-government-services-database.md#azure-redis-cache) | Ja | Ja |
 
 
+## <a name="intelligence--analyticsdocumentation-government-services-intelligenceandanalyticsmd"></a>[Daten und Analyse](documentation-government-services-intelligenceandanalytics.md)
+
+| Dienst | Ressourcen-Manager aktiviert | Portal |
+| --- | --- | --- |
+| [HDInsights](documentation-government-services-intelligenceandanalytics.md#hdinsight) | Ja | Ja |
+| [Power BI Pro](documentation-government-services-intelligenceandanalytics.md#power-bi) | Nein | Nein (Office 365-Verwaltungsportal) |
 
 
 ## <a name="internet-of-things-iot"></a>Internet der Dinge (IoT, Internet of Things)
@@ -122,7 +128,6 @@ Die in den folgenden Tabellen als Resource Manager-fähig angegebenen Dienste ve
 | Azure Active Directory | Ja | Ja |
 | [Key Vault](documentation-government-services-securityandidentity.md#key-vault) | Ja | Nein (in Kürze verfügbar) |
 | Multi-Factor Authentication | Ja | Ja |
-| Intune | Ja | Nein |
 
 
 ## <a name="intelligence--analytics"></a>Daten und Analyse

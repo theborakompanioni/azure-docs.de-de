@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
-ms.openlocfilehash: 98060e27d72605934d773b3cb6291c7c5d0df6f8
+ms.sourcegitcommit: 01448fcff64e99429e2ee7df916b110c869307fb
+ms.openlocfilehash: 7776ac35f1a8a30c959286a9e31beb666f5fc799
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -27,18 +28,7 @@ ms.openlocfilehash: 98060e27d72605934d773b3cb6291c7c5d0df6f8
 
 In diesem Thema wird das Anpassen von Media Encoder Standard-Voreinstellungen gezeigt. Das Thema [Anpassen von Media Encoder Standard-Voreinstellungen](media-services-custom-mes-presets-with-dotnet.md) zeigt, wie Sie .NET verwenden können, um eine Codierungsaufgabe zu erstellen sowie einen Auftrag, der diese Aufgabe ausführt. Wenn Sie eine Voreinstellung anpassen, übergeben Sie die benutzerdefinierten Voreinstellungen der Codierungsaufgabe. 
 
-In diesem Thema werden die benutzerdefinierten Voreinstellungen veranschaulicht, die die folgenden Codierungsaufgaben ausführen:
-
-- [Generieren von Miniaturansichten](#thumbnails)
-- [Kürzen eines Videos (Clipping)](#trim_video)
-- [Erstellen einer Überlagerung](#overlay)
-- [Einfügen einer stillen Audiospur bei einer Eingabe ohne Audio](#silent_audio)
-- [Deaktivieren des automatischen Deinterlacings](#deinterlacing)
-- [Nur Audio-Voreinstellungen](#audio_only)
-- [Verketten von zwei oder mehr Videodateien](#concatenate)
-- [Zuschneiden von Videos mit Media Encoder Standard](#crop)
-- [Einfügen einer Videospur, wenn die Eingabe kein Video enthält](#no_video)
-- [Drehen eines Videos](#rotate_video)
+In diesem Thema werden die benutzerdefinierten Voreinstellungen veranschaulicht, die die folgenden Codierungsaufgaben ausführen.
 
 ## <a name="support-for-relative-sizes"></a>Unterstützung relativer Größen
 
@@ -52,7 +42,7 @@ Beim Generieren von Miniaturansichten müssen Sie nicht immer die Breite und Hö
     <Width>100%</Width>
     <Height>100%</Height>
 
-## <a name="a-idthumbnailsagenerate-thumbnails"></a><a id="thumbnails"></a>Generieren von Miniaturansichten
+## <a id="thumbnails"></a>Generieren von Miniaturansichten
 
 In diesem Abschnitt erfahren Sie, wie Sie eine Voreinstellung anpassen, die Miniaturansichten generiert. Die unten definierte Voreinstellung enthält Informationen zum Codieren Ihrer Datei sowie die erforderlichen Informationen zum Generieren von Miniaturansichten. Sie können alle in [diesem](media-services-mes-presets-overview.md) Abschnitt dokumentierten MES-Voreinstellungen verwenden und Code hinzufügen, mit dem Miniaturansichten generiert werden.  
 
@@ -65,7 +55,7 @@ Informationen zum Schema finden Sie in [diesem](media-services-mes-schema.md) Th
 
 Lesen Sie unbedingt den Abschnitt [Überlegungen](#considerations) .
 
-### <a name="a-idjsonajson-preset"></a><a id="json"></a>JSON-Voreinstellung
+### <a id="json"></a>JSON-Voreinstellung
     {
       "Version": 1.0,
       "Codecs": [
@@ -165,7 +155,7 @@ Lesen Sie unbedingt den Abschnitt [Überlegungen](#considerations) .
     }
 
 
-### <a name="a-idxmlaxml-preset"></a><a id="xml"></a>XML-Voreinstellung
+### <a id="xml"></a>XML-Voreinstellung
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
@@ -255,12 +245,12 @@ Es gelten die folgenden Bedingungen:
   * Standardwerte: Start:{Best}
 * Das Ausgabeformat muss für jedes Bildformat ausdrücklich bereitgestellt werden: "Jpg"/"Png"/"BmpFormat". Falls vorhanden, ordnet MES „JpgVideo“ zu „JpgFormat“ usw. zu. "OutputFormat" führt ein neues Imagecodec-spezifisches Makro ein: "{Index}". Dieses Makro muss für Bildausgabeformate vorhanden sein (genau einmal).
 
-## <a name="a-idtrimvideoatrim-a-video-clipping"></a><a id="trim_video"></a>Kürzen eines Videos (Clipping)
+## <a id="trim_video"></a>Kürzen eines Videos (Clipping)
 Dieser Abschnitt befasst sich mit dem Ändern der Encoder-Voreinstellungen zum Beschneiden oder Kürzen des Eingabevideos, wenn es sich bei der Eingabe um eine sogenannte Zwischendatei (Mezzanine File) oder bedarfsgesteuerte Datei handelt. Der Encoder kann darüber hinaus zum Beschneiden oder Kürzen eines Medienobjekts verwendet werden, das aus einem Livedatenstrom erfasst oder archiviert wird. Ausführliche Informationen hierzu finden Sie in [diesem Blog](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/).
 
 Zum Kürzen Ihrer Videos können Sie alle in [diesem](media-services-mes-presets-overview.md) Abschnitt dokumentierten MES-Voreinstellungen verwenden und das **Sources**-Element (wie unten gezeigt) ändern. Der Wert von „StartTime“ muss mit den absoluten Zeitstempeln des Eingabevideos übereinstimmen. Wenn z. B. der erste Frame des Eingabevideos den Zeitstempel 12:00:10.000 trägt, sollte „StartTime“ mindestens 12:00:10.000 betragen. Im folgenden Beispiel wird davon ausgegangen, dass das Eingabevideo den Startzeitstempel&0; trägt. **Sources** muss am Beginn der Voreinstellung platziert werden.
 
-### <a name="a-idjsonajson-preset"></a><a id="json"></a>JSON-Voreinstellung
+### <a id="json"></a>JSON-Voreinstellung
     {
       "Version": 1.0,
       "Sources": [
@@ -497,7 +487,7 @@ Zum Kürzen Ihrer Videos können Sie alle [hier](media-services-mes-presets-over
       </Outputs>
     </Preset>
 
-## <a name="a-idoverlayacreate-an-overlay"></a><a id="overlay"></a>Erstellen einer Überlagerung
+## <a id="overlay"></a>Erstellen einer Überlagerung
 
 Media Encoder Standard ermöglicht die Überlagerung eines Bildes mit einem vorhandenen Video. Derzeit werden die folgenden Formate unterstützt: png, jpg, gif und bmp. Die unten definierte Voreinstellung ist ein einfaches Beispiel einer Videoüberlagerung.
 
@@ -707,7 +697,7 @@ Bei Verwendung von .NET fügen Sie die folgenden zwei Funktionen dem in [diesem]
     </Preset>
 
 
-## <a name="a-idsilentaudioainsert-a-silent-audio-track-when-input-has-no-audio"></a><a id="silent_audio"></a>Einfügen einer stillen Audiospur bei einer Eingabe ohne Audio
+## <a id="silent_audio"></a>Einfügen einer stillen Audiospur bei einer Eingabe ohne Audio
 Wenn Sie eine Eingabe an den Encoder senden, die keine Audiodaten, sondern nur Videodaten enthält, besteht das Ausgabemedienobjekt standardmäßig nur aus Dateien mit Videodaten. Einige Player können derartige Ausgabedatenströme möglicherweise nicht verarbeiten. Mit dieser Einstellung können Sie den Encoder zwingen, der Ausgabe in diesem Szenario eine stille Audiospur hinzuzufügen.
 
 Um zu erzwingen, dass der Encoder ein Asset erstellt, das bei einer Eingabe ohne Audio eine stille Audiospur enthält, geben Sie den Wert „InsertSilenceIfNoAudio“ an.
@@ -730,7 +720,7 @@ Sie können alle in [diesem](media-services-mes-presets-overview.md) Abschnitt d
       <Bitrate>96</Bitrate>
     </AACAudio>
 
-## <a name="a-iddeinterlacingadisable-auto-de-interlacing"></a><a id="deinterlacing"></a>Deaktivieren des automatischen Deinterlacings
+## <a id="deinterlacing"></a>Deaktivieren des automatischen Deinterlacings
 Kunden müssen nichts tun, wenn sie wünschen, dass das Interlacing der die Interlace-Inhalte automatisch aufgehoben wird. Bei Aktivierung des automatischen De-Interlacings (Standard) übernimmt MWS die automatische Erkennung von Frames mit Zeilensprung und hebt das Interlacing nur für Frames auf, die als Interlaced markiert sind.
 
 Sie können das automatische De-Interlacing deaktivieren. Diese Option wird jedoch nicht empfohlen.
@@ -758,7 +748,7 @@ Sie können das automatische De-Interlacing deaktivieren. Diese Option wird jedo
     </Sources>
 
 
-## <a name="a-idaudioonlyaaudio-only-presets"></a><a id="audio_only"></a>Nur Audio-Voreinstellungen
+## <a id="audio_only"></a>Nur Audio-Voreinstellungen
 Dieser Abschnitt zeigt zwei auf Audio begrenzte MES-Voreinstellungen: AAC-Audio und AAC Good Quality Audio.
 
 ### <a name="aac-audio"></a>AAC Audio
@@ -805,7 +795,7 @@ Dieser Abschnitt zeigt zwei auf Audio begrenzte MES-Voreinstellungen: AAC-Audio 
       ]
     }
 
-## <a name="a-idconcatenateaconcatenate-two-or-more-video-files"></a><a id="concatenate"></a>Verketten von zwei oder mehr Videodateien
+## <a id="concatenate"></a>Verketten von zwei oder mehr Videodateien
 
 Das folgende Beispiel veranschaulicht, wie Sie eine Voreinstellung generieren, um zwei oder mehr Videodateien zu verketten. Das häufigste Szenario hierfür ist das Hinzufügen eines Vor- oder Nachspanns zum Hauptvideo. er Zweck ist, dass die Videodateien, die gemeinsam bearbeitet werden, über die gleichen Eigenschaften verfügen (Videoauflösung, Framerate, Anzahl von Audiospuren usw.). Sie sollten darauf achten, Videos mit verschiedenen Frameraten oder einer unterschiedlichen Anzahl von Audiospuren nicht gemeinsam zu verwenden.
 
@@ -915,10 +905,10 @@ Aktualisieren Sie Ihre benutzerdefinierte Voreinstellung mit den IDs der Medieno
       ]
     }
 
-## <a name="a-idcropacrop-videos-with-media-encoder-standard"></a><a id="crop"></a>Zuschneiden von Videos mit Media Encoder Standard
+## <a id="crop"></a>Zuschneiden von Videos mit Media Encoder Standard
 Siehe das Thema [Zuschneiden von Videos mit Media Encoder Standard](media-services-crop-video.md) .
 
-## <a name="a-idnovideoainsert-a-video-track-when-input-has-no-video"></a><a id="no_video"></a>Einfügen einer Videospur, wenn die Eingabe kein Video enthält
+## <a id="no_video"></a>Einfügen einer Videospur, wenn die Eingabe kein Video enthält
 Wenn Sie eine Eingabe an den Encoder senden, die nur Audiodaten und keine Videodaten enthält, besteht das Ausgabemedienobjekt standardmäßig aus Dateien mit ausschließlich Audiodaten. Einige Player, einschließlich Azure Media Player (siehe [hier](https://feedback.azure.com/forums/169396-azure-media-services/suggestions/8082468-audio-only-scenarios)), solche Streams möglicherweise nicht handhaben. Mit dieser Einstellung können Sie den Encoder zwingen, der Ausgabe in diesem Szenario eine monochrome Videospur hinzuzufügen.
 
 > [!NOTE]
@@ -927,7 +917,7 @@ Wenn Sie eine Eingabe an den Encoder senden, die nur Audiodaten und keine Videod
 >
 
 ### <a name="inserting-video-at-only-the-lowest-bitrate"></a>Einfügen von Videoinhalten mit ausschließlich der niedrigsten Bitrate
-Angenommen, Sie verwenden eine Codierungsvoreinstellung mit mehreren Bitraten wie [H264 Multiple Bitrate 720p](https://msdn.microsoft.com/library/mt269960.aspx) , um Ihren gesamten Eingabekatalog für das Streaming zu codieren, der eine Mischung aus Videodateien und reinen Audiodateien enthält. Wenn in diesem Szenario die Eingabe kein Video enthält, können Sie den Encoder zwingen, eine monochrome Videospur mit ausschließlich der niedrigsten Bitrate anstatt Video mit jeder Ausgabebitrate hinzuzufügen. Um dies zu erreichen, müssen Sie das Flag „InsertBlackIfNoVideoBottomLayerOnly“ angeben.
+Angenommen, Sie verwenden eine Codierungsvoreinstellung mit mehreren Bitraten wie [H264 Multiple Bitrate 720p](media-services-mes-preset-h264-multiple-bitrate-720p.md) , um Ihren gesamten Eingabekatalog für das Streaming zu codieren, der eine Mischung aus Videodateien und reinen Audiodateien enthält. Wenn in diesem Szenario die Eingabe kein Video enthält, können Sie den Encoder zwingen, eine monochrome Videospur mit ausschließlich der niedrigsten Bitrate anstatt Video mit jeder Ausgabebitrate hinzuzufügen. Um dies zu erreichen, müssen Sie das Flag „InsertBlackIfNoVideoBottomLayerOnly“ angeben.
 
 Sie können alle in [diesem](media-services-mes-presets-overview.md) Abschnitt dokumentierten MES-Voreinstellungen verwenden und folgende Änderung vornehmen:
 
@@ -966,7 +956,7 @@ Sie können alle in [diesem](media-services-mes-presets-overview.md) Abschnitt d
     <StretchMode>AutoSize</StretchMode>
     <Condition>InsertBlackIfNoVideo</Condition>
 
-## <a name="a-idrotatevideoarotate-a-video"></a><a id="rotate_video"></a>Drehen eines Videos
+## <a id="rotate_video"></a>Drehen eines Videos
 Der [Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) unterstützt Drehungen in den Winkeln 0/90/180/270 Grad. Das Standardverhalten ist „Auto“. Dabei wird versucht, die Rotationsmetadaten in der eingehenden Videodatei zu erkennen und auszugleichen. Schließen Sie das folgende **Sources**-Element in einer der in [diesem](media-services-mes-presets-overview.md) Abschnitt definierten JSON-Voreinstellungen ein:
 
 ### <a name="json-preset"></a>JSON-Voreinstellung
@@ -1003,9 +993,4 @@ Mit dem Wert „0“ können Sie den Encoder anweisen, Rotationsmetadaten im Vid
 
 ## <a name="see-also"></a>Weitere Informationen
 [Media Services-Codierung (Übersicht)](media-services-encode-asset.md)
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

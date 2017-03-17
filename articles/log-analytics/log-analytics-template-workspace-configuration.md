@@ -1,25 +1,28 @@
-
-
 ---
-title: Verwenden von Azure Resource Manager-Vorlagen zum Erstellen und Konfigurieren eines Log Analytics-Arbeitsbereichs | Microsoft Docs
-description: Sie können Azure Resource Manager-Vorlagen zum Erstellen und Konfigurieren von Log Analytics-Arbeitsbereichen verwenden.
+title: Verwenden von Azure Resource Manager-Vorlagen zum Erstellen und Konfigurieren eines Log Analytics-Arbeitsbereichs | Microsoft-Dokumentation
+description: "Sie können Azure Resource Manager-Vorlagen zum Erstellen und Konfigurieren von Log Analytics-Arbeitsbereichen verwenden."
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: richrundmsft
 manager: jochan
-editor: ''
-
+editor: 
+ms.assetid: d21ca1b0-847d-4716-bb30-2a8c02a606aa
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: json
 ms.topic: article
-ms.date: 08/25/2016
+ms.date: 11/01/2016
 ms.author: richrund
+translationtype: Human Translation
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: f392b3c0ab6b4d2e133d59766732188ce97c2f3e
+ms.lasthandoff: 03/03/2017
+
 
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>Verwalten von Log Analytics mithilfe von Azure Resource Manager-Vorlagen
-Sie können [Azure Resource Manager-Vorlagen](../resource-group-authoring-templates.md) zum Erstellen und Konfigurieren von Log Analytics-Arbeitsbereichen verwenden. Beispiele für die Aufgaben, die Sie mit Vorlagen ausführen können:
+Sie können [Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md) zum Erstellen und Konfigurieren von Log Analytics-Arbeitsbereichen verwenden. Beispiele für die Aufgaben, die Sie mit Vorlagen ausführen können:
 
 * Erstellen eines Arbeitsbereichs
 * Hinzufügen einer Lösung
@@ -38,7 +41,7 @@ Dieser Artikel enthält Vorlagenbeispiele, die einen Teil der Konfiguration vera
 ## <a name="create-and-configure-a-log-analytics-workspace"></a>Erstellen und Konfigurieren eines Log Analytics-Arbeitsbereichs
 Das folgende Vorlagenbeispiel veranschaulicht Folgendes:
 
-1. Erstellen eines Arbeitsbereichs
+1. Erstellen eines Arbeitsbereichs und Einrichten der Datenaufbewahrung
 2. Hinzufügen von Lösungen zum Arbeitsbereich
 3. Erstellen gespeicherter Suchvorgänge
 4. Erstellen einer Computergruppe
@@ -65,11 +68,20 @@ Das folgende Vorlagenbeispiel veranschaulicht Folgendes:
       "type": "string",
       "allowedValues": [
         "Free",
-        "Standard",
-        "Premium"
+        "Standalone",
+        "PerNode"
       ],
       "metadata": {
-        "description": "Service Tier: Free, Standard, or Premium"
+        "description": "Service Tier: Free, Standalone, or PerNode"
+    }
+      },
+    "dataRetention": {
+      "type": "int",
+      "defaultValue": 30,
+      "minValue": 7,
+      "maxValue": 730,
+      "metadata": {
+        "description": "Number of days of retention. Free plans can only have 7 days, Standalone and OMS plans include 30 days for free"
       }
     },
     "location": {
@@ -118,7 +130,8 @@ Das folgende Vorlagenbeispiel veranschaulicht Folgendes:
       "properties": {
         "sku": {
           "Name": "[parameters('serviceTier')]"
-        }
+        },
+    "retentionInDays": "[parameters('dataRetention')]"
       },
       "resources": [
         {
@@ -444,7 +457,5 @@ Der Katalog mit Azure-Schnellstartvorlagen enthält u.a. folgende Vorlagen für 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Bereitstellen von Agents in Azure-VMs mit Resource Manager-Vorlagen](log-analytics-azure-vm-extension.md)
-
-<!--HONumber=Oct16_HO2-->
 
 

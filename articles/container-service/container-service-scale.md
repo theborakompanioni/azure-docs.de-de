@@ -1,6 +1,6 @@
 ---
 title: Skalieren eines Azure Container Service-Clusters | Microsoft-Dokumentation
-description: "So skalieren Sie Ihren Azure Container Service-Cluster mithilfe der Azure-Befehlszeilenschnittstelle oder über das Azure-Portal."
+description: Skalieren von Agentknoten in einem DC/OS-, Docker Swarm- oder Kubernetes-Cluster in Azure Container Service mithilfe der Azure-Befehlszeilenschnittstelle oder des Azure-Portals.
 services: container-service
 documentationcenter: 
 author: sauryadas
@@ -14,19 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/21/2017
+ms.date: 03/01/2017
 ms.author: saudas
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
-ms.openlocfilehash: 773eba80715cb990b23ecec548a18c112ba73a42
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 2464901d22bb91cbf396ef60f4bda6d979b578b7
+ms.openlocfilehash: 022e34811de9d2023d113c43d6f85842812dfee3
+ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="scale-an-azure-container-service-cluster"></a>Skalieren eines Azure Container Service-Clusters
+# <a name="scale-agent-nodes-in-a-container-service-cluster"></a>Skalieren von Agentknoten in einem Container Service-Cluster
 Nach dem [Bereitstellen eines Azure Container Service-Clusters](container-service-deployment.md) müssen Sie eventuell die Anzahl von Agent-Knoten ändern. Möglicherweise benötigen Sie mehr Agents, damit Sie mehr Containeranwendungen oder -instanzen ausführen können. 
 
-Sie können die Anzahl von Agent-Knoten in einem DC/OS-, Docker Swarm- oder Kubernetes-Cluster über das Azure-Portal oder mithilfe von Azure CLI 2.0 ändern. Azure CLI 2.0 ist die [Befehlszeilenschnittstelle der nächsten Generation](/cli/azure/old-and-new-clis) für das Resource Manager-Bereitstellungsmodell.
+Sie können die Anzahl von Agent-Knoten in einem DC/OS-, Docker Swarm- oder Kubernetes-Cluster über das Azure-Portal oder mithilfe von Azure CLI 2.0 ändern. 
 
 ## <a name="scale-with-the-azure-portal"></a>Skalieren über das Azure-Portal
 

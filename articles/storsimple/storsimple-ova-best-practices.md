@@ -4,7 +4,7 @@ description: "Es werden die bewährten Methoden für die Bereitstellung und Verw
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 57ac6eeb-c47c-442d-a5f4-b360d81a76a6
 ms.service: storsimple
@@ -12,11 +12,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/18/2016
+ms.date: 03/01/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 242951777b80d249cb2e0ef4ec497c3447246c19
+ms.sourcegitcommit: 48f89fd53f88f7bd757265d248e5aa6e53ae8d38
+ms.openlocfilehash: 27cfc75c90a5ba0699af0491f52747e8a1ea711a
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -48,7 +49,7 @@ Berücksichtigen Sie beim Festlegen der Größe für das StorSimple Virtual Arra
 
 * Lokale Reservierung für Volumes oder Freigaben: Ungefähr 12% des Speicherplatzes sind auf der lokalen Ebene für jedes bereitgestellte mehrstufige Volume oder eine Freigabe reserviert. Ungefähr 10% des Speicherplatzes sind außerdem für ein lokales Volume für das Dateisystem reserviert.
 * Mehraufwand für Momentaufnahmen: Ungefähr 15% des Speicherplatzes auf der lokalen Ebene sind für Momentaufnahmen reserviert.
-* Erforderliche Wiederherstellungen: Beim Festlegen der Größe sollte der Speicherplatz berücksichtigt werden, der für die Wiederherstellung erforderlich ist, falls die Wiederherstellung als neuer Vorgang durchgeführt wird. Die Wiederherstellung erfolgt auf einer Freigabe oder einem Volume mit mindestens gleicher Größe.
+* Erforderliche Wiederherstellungen: Beim Festlegen der Größe sollte der Speicherplatz berücksichtigt werden, der für die Wiederherstellung erforderlich ist, falls die Wiederherstellung als neuer Vorgang durchgeführt wird. Die Wiederherstellung erfolgt auf einer Freigabe oder einem Volume gleicher Größe.
 * Rechnen Sie einen Puffer für eine unerwartete Zunahme der Größe ein.
 
 Basierend auf den oben genannten Punkten lassen sich die Anforderungen der Größenfestlegung mit der folgenden Gleichung ausdrücken:
@@ -157,9 +158,9 @@ Beachten Sie die folgenden bewährten Methoden, wenn Sie Freigaben oder Volumes 
 
 * Die Dateigrößen relativ zur bereitgestellten Größe einer mehrstufigen Freigabe können sich auf die Leistung der Anordnung in Ebenen auswirken. Das Arbeiten mit großen Dateien kann zu einer langsamen Anordnung führen. Bei der Arbeit mit großen Dateien sollte die größte Datei nach Möglichkeit kleiner als 3 % der Größe der Dateifreigabe sein.
 * Im virtuellen Array können maximal 16 Volumes/Freigaben erstellt werden. Bei lokaler Bereitstellung kann sich die Größe der Volumes bzw. Freigaben zwischen 50 GB und 2 TB bewegen. Wenn mehrere Stufen verwendet werden, müssen die Größe der Volumes bzw. Freigaben zwischen 500 GB und 20 TB liegen. 
-* Rechnen Sie beim Erstellen eines Volumes den erwarteten Datenverbrauch und das zukünftige Wachstum ein. Das Volume kann später zwar nicht erweitert werden, aber Sie können jederzeit die Wiederherstellung auf einem größeren Volume durchführen.
+* Rechnen Sie beim Erstellen eines Volumes den erwarteten Datenverbrauch und das zukünftige Wachstum ein. Das Volumen kann nicht nachträglich vergrößert werden.
 * Nach der Erstellung des Volumes können Sie die Größe des Volumes unter StorSimple nicht mehr verringern.
-* Beim Schreiben auf ein mehrstufiges Volume unter StorSimple wird eine E/A-Drosselung durchgeführt, wenn die Volumedaten einen bestimmten Schwellenwert erreichen (relativ zum lokalen Speicherplatz, der für das Volume reserviert ist). Wenn weiter auf dieses Volume geschrieben wird, wird der E/A-Vorgang erheblich verlangsamt. Es ist zwar möglich, über die bereitgestellte Kapazität hinaus auf ein mehrstufiges Volume zu schreiben (es wird nicht aktiv verhindert, dass der Benutzer das Schreiben über die Kapazität hinaus durchführt), aber es wird eine Warnungsbenachrichtigung mit dem Hinweis angezeigt, dass die abonnierte Menge überschritten ist. Wenn die Warnung angezeigt wird, sollten Sie unbedingt Korrekturmaßnahmen ergreifen, z.B. das Löschen der Volumedaten oder das Wiederherstellen des Volumes auf einem größeren Volume (Volumeerweiterung wird derzeit nicht unterstützt).
+* Beim Schreiben auf ein mehrstufiges Volume unter StorSimple wird eine E/A-Drosselung durchgeführt, wenn die Volumedaten einen bestimmten Schwellenwert erreichen (relativ zum lokalen Speicherplatz, der für das Volume reserviert ist). Wenn weiter auf dieses Volume geschrieben wird, wird der E/A-Vorgang erheblich verlangsamt. Es ist zwar möglich, über die bereitgestellte Kapazität hinaus auf ein mehrstufiges Volume zu schreiben (es wird nicht aktiv verhindert, dass der Benutzer das Schreiben über die Kapazität hinaus durchführt), aber es wird eine Warnungsbenachrichtigung mit dem Hinweis angezeigt, dass die abonnierte Menge überschritten ist. Wenn die Warnung angezeigt wird, sollten Sie unbedingt Korrekturmaßnahmen ergreifen, z.B. das Löschen der Volumedaten (Volumeerweiterung wird derzeit nicht unterstützt).
 * Für Anwendungsfälle der Notfallwiederherstellung gilt Folgendes: Da sowohl die Anzahl von zulässigen Freigaben/Volumes als auch die maximale Anzahl von Freigaben/Volumes, die parallel verarbeitet werden können, 16 beträgt, wirkt sich die Anzahl von Freigaben/Volumes nicht auf RPO und RTOs aus. 
 
 #### <a name="volumeshare-type"></a>Volumen-/Freigabetyp
@@ -285,10 +286,5 @@ Ggf. müssen mehrere virtuelle Arrays bereitgestellt werden, um einen wachsenden
 
 ## <a name="see-also"></a>Siehe auch
 Informieren Sie sich über das [Verwalten des StorSimple Virtual Array mithilfe des StorSimple Manager-Diensts](storsimple-ova-manager-service-administration.md) .
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

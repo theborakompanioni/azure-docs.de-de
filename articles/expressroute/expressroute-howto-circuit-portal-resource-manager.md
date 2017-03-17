@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 03/02/2017
 ms.author: cherylmc;ganesr
 translationtype: Human Translation
-ms.sourcegitcommit: 81face4253f50f17d48b940c1e355565958c829d
-ms.openlocfilehash: 7edda7d64f6bf1d2b8eb03bb6c14db68cc81eca9
-ms.lasthandoff: 02/03/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: 46b4e1b149a3e9427e1384abc0d95eb616002ab6
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -123,7 +123,7 @@ Sie können den Status einer Verbindung anzeigen, indem Sie die Verbindung ausw�
 ![Status einer ExpressRoute-Verbindung](./media/expressroute-howto-circuit-portal-resource-manager/listproperties1.png)
 
 ## <a name="modifying-an-expressroute-circuit"></a>Ändern einer ExpressRoute-Verbindung
-Sie können bestimmte Eigenschaften einer ExpressRoute-Verbindung ändern, ohne die Konnektivität zu beeinträchtigen. Zurzeit können Sie Eigenschaften von ExpressRoute-Verbindungen nicht über das Azure-Portal ändern. Sie können jedoch PowerShell verwenden, um Verbindungseigenschaften zu bearbeiten. Informationen dazu finden Sie im Abschnitt [Ändern einer ExpressRoute-Verbindung mit PowerShell](expressroute-howto-circuit-arm.md#modify).
+Sie können bestimmte Eigenschaften einer ExpressRoute-Verbindung ändern, ohne die Konnektivität zu beeinträchtigen.
 
 Sie können folgende Aktionen ausführen, ohne Ausfallzeiten zu verursachen:
 
@@ -133,6 +133,19 @@ Sie können folgende Aktionen ausführen, ohne Ausfallzeiten zu verursachen:
 * Sie können die Option **Klassische Vorgänge zulassen**aktivieren und deaktivieren.
 
 Weitere Informationen zu Beschränkungen und Grenzwerten finden Sie unter [ExpressRoute – Häufig gestellte Fragen](expressroute-faqs.md).
+
+Klicken Sie auf **Konfiguration**, um eine ExpressRoute-Verbindung zu ändern, wie unten dargestellt.
+
+![Ändern der Verbindung](./media/expressroute-howto-circuit-portal-resource-manager/modifycircuit.png)
+
+Sie können die Bandbreite, die SKU und das Abrechnungsmodell verändern und klassische Vorgänge innerhalb des Blatts „Konfiguration“ zulassen.
+
+> [!IMPORTANT]
+> Es ist nicht möglich, die Bandbreite einer ExpressRoute-Verbindung ohne Störungen zu reduzieren. Ein Downgrade der Bandbreite erfordert, dass Sie die Bereitstellung der ExpressRoute-Verbindung aufheben und dann eine neue ExpressRoute-Verbindung bereitstellen.
+> 
+> Beim Deaktivieren von Premium-Add-On-Vorgängen kann ein Fehler auftreten, wenn Sie Ressourcen verwenden, die die zulässige Menge für die Standardverbindung überschreiten.
+> 
+> 
 
 ## <a name="deprovisioning-and-deleting-an-expressroute-circuit"></a>Aufheben der Bereitstellung und Löschen einer ExpressRoute-Verbindung
 Sie können Ihre ExpressRoute-Verbindung löschen. Wählen Sie dazu das Symbol **Löschen** aus. Beachten Sie Folgendes:
