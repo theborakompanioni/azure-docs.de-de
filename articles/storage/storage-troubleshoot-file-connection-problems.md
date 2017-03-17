@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: genli
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 0479db07710d7ff6037dc692e5387a314bed32ca
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 62d2cd990bff4ffc982eef507ad69c68c00a65ab
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -48,10 +48,6 @@ Dieser Artikel beschreibt allgemeine Probleme im Zusammenhang mit Microsoft Azur
 * [Einbindungsfehler 115 beim Versuch, Azure Files auf der Linux-VM einzubinden](#error15)
 * [In der Azure-Dateifreigabe auf der Linux-VM treten Probleme mit langsamer Leistung auf](#delayproblem)
 
-
-**Zugreifen von anderen Anwendungen aus**
-
-* [Kann ich über einen Webauftrag auf die Azure-Dateifreigabe für meine Anwendung verweisen?](#webjobs)
 
 <a id="quotaerror"></a>
 
@@ -275,11 +271,6 @@ dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=10
 
 Wenn die Optionen „cache=strict“ oder „serverino“ nicht vorhanden sind, heben Sie die Bereitstellung von Azure Files aus, und stellen Sie sie wieder her, indem Sie den „mount“-Befehl aus der [Dokumentation](https://docs.microsoft.com/en-us/azure/storage/storage-how-to-use-files-linux#mount-the-file-share) ausführen und erneut überprüfen, dass der Eintrag „/etc/fstab“ die korrekten Optionen besitzt.
 
-<a id="webjobs"></a>
-
-## <a name="accessing-from-other-applications"></a>Zugreifen von anderen Anwendungen aus
-### <a name="can-i-reference-the-azure-file-share-for-my-application-through-a-webjob"></a>Kann ich über einen Webauftrag auf die Azure-Dateifreigabe für meine Anwendung verweisen?
-Das Einbinden von SMB-Freigaben in einen AppService-Sandkasten ist nicht möglich. Um dieses Problem zu umgehen, können Sie die Azure-Dateifreigabe als zugeordnetes Laufwerk festlegen und der Anwendung ermöglichen, über einen Laufwerkbuchstaben auf das Laufwerk zuzugreifen.
 ## <a name="learn-more"></a>Weitere Informationen
 * [Erste Schritte mit Azure File Storage unter Windows](storage-dotnet-how-to-use-files.md)
 * [Verwenden von Azure File Storage unter Linux](storage-how-to-use-files-linux.md)

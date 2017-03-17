@@ -1,5 +1,5 @@
 ---
-title: "Hinzufügen von Verwaltungslösungen von Operations Management Suite (OMS) | Microsoft-Dokumentation"
+title: "Hinzufügen von Azure Log Analytics-Verwaltungslösungen | Microsoft-Dokumentation"
 description: "Bei den Verwaltungslösungen von Operations Management Suite (OMS) bzw. von Log Analytics handelt sind um eine Sammlung von Logik-, Visualisierungs- und Datenerfassungsregeln, die Metriken rund um einen bestimmten Problembereich bereitstellen."
 services: log-analytics
 documentationcenter: 
@@ -12,17 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/13/2017
+ms.date: 02/27/2017
 ms.author: banders
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: db7bc67a7797bc83450b07c4f32accc3ea7c0354
-ms.openlocfilehash: 757fd850bf1cc9fb058a0a7e0f4b65d95ba3ce03
+ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
+ms.openlocfilehash: ecb848efd8516ae43d07f8c6ebbf3868b8e20757
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="add-operations-management-suite-oms-management-solutions"></a>Hinzufügen von Verwaltungslösungen von Operations Management Suite (OMS)
+# <a name="add-azure-log-analytics-management-solutions-to-your-workspace"></a>Hinzufügen von Azure Log Analytics-Verwaltungslösungen zu Ihrem Arbeitsbereich
 
-Bei den Verwaltungslösungen von Operations Management Suite (OMS) handelt sind um eine Sammlung von **Logik-**, **Visualisierungs-** und **Datenerfassungsregeln**, die Metriken rund um einen bestimmten Problembereich bereitstellen. In diesem Artikel sind von Log Analytics unterstützte Verwaltungslösungen aufgeführt. Darüber hinaus erfahren Sie, wie Sie mithilfe des Azure-Portals einen Arbeitsbereich hinzufügen und entfernen. Sie können auch Lösungen im OMS-Portal mithilfe des Lösungskatalogs hinzufügen.
+Log Analytics-Verwaltungslösungen sind eine Sammlung von **Logik**-, **Visualisierungs**- und **Datenerfassungsregeln**, die Metriken rund um einen bestimmten Problembereich bereitstellen. In diesem Artikel sind von Log Analytics unterstützte Verwaltungslösungen aufgeführt. Darüber hinaus erfahren Sie, wie Sie mithilfe des Azure-Portals einen Arbeitsbereich hinzufügen und entfernen. Sie können auch Lösungen im OMS-Portal mithilfe des Lösungskatalogs hinzufügen.
 
 Die detaillierten Einblicke der Verwaltungslösungen ermöglichen Folgendes:
 
@@ -61,9 +63,11 @@ Wenn eine Verwaltungslösung nicht mehr benötigt wird, können Sie sie probleml
 
 ## <a name="offers-and-pricing-tiers"></a>Angebote und Tarife
 
-In der folgenden Tabelle erfahren Sie, welche Verwaltungslösungen zu den einzelnen Operations Management- und Sicherheitsangeboten gehören. In der Tabelle sind außerdem die verfügbaren Tarife für die einzelnen Verwaltungslösungen angegeben. Alle Lösungen in der folgenden Tabelle sind im Azure-Portal und im Lösungskatalog des Log Analytics-Portals verfügbar.
+In der folgenden Tabelle erfahren Sie, welche Verwaltungslösungen zu den einzelnen Operations Management- und Sicherheitsangeboten gehören.
+In der Tabelle sind außerdem die verfügbaren Tarife für die einzelnen Verwaltungslösungen angegeben.
+Alle Lösungen in der folgenden Tabelle sind im Azure-Portal und im Lösungskatalog des Log Analytics-Portals verfügbar.
 
-| Verwaltungslösung                                                                        | Angebot                                                                     | Tarife<sup>1</sup>                                                    | Hinweise | 
+| Verwaltungslösung                                                                        | Angebot                                                                     | Tarife<sup>1</sup>                                                    | Hinweise |
 | ---                                                                                        | ---                                                                       | ---                                                                                                       | ---   |
 | Aktivitätsprotokollanalyse                                                                     | <ul><li>Insight&nbsp;&&nbsp;Analytics</li><li>Log Analytics</li></ul>     | Kostenlos<br> Standard<br> Premium&nbsp;(OMS)<br> Pro&nbsp;GB&nbsp;(eigenständig)<br> Pro&nbsp;Knoten&nbsp;(OMS)     | Kostenloses Datenvolumen (90 Tage) |
 | [AD-Bewertung](log-analytics-ad-assessment.md)                                              | <ul><li>Insight&nbsp;&&nbsp;Analytics</li><li>Log Analytics</li></ul>     | Kostenlos<br> Standard<br> Premium&nbsp;(OMS)<br> Pro&nbsp;GB&nbsp;(eigenständig)<br> Pro&nbsp;Knoten&nbsp;(OMS)     | |
@@ -74,7 +78,7 @@ In der folgenden Tabelle erfahren Sie, welche Verwaltungslösungen zu den einzel
 | Automation Hybrid Worker                                                                     | <ul><li>Automation & Control</li></ul>                                    | Kostenlos<br> Pro&nbsp;Knoten&nbsp;(OMS)                                                                            | Erfordert die Verknüpfung Ihres Log Analytics-Arbeitsbereichs mit einem Automation-Konto |
 | [Azure Application Gateway-Analyse](log-analytics-azure-networking-analytics.md)      | <ul><li>Insight&nbsp;&&nbsp;Analytics</li><li>Log Analytics</li></ul>     | Kostenlos<br> Standard<br> Premium&nbsp;(OMS)<br> Pro&nbsp;GB&nbsp;(eigenständig)<br> Pro&nbsp;Knoten&nbsp;(OMS)     | |
 | [Azure-Netzwerksicherheitsgruppen-Analyse](log-analytics-azure-networking-analytics.md)      | <ul><li>Insight&nbsp;&&nbsp;Analytics</li><li>Log Analytics</li></ul>     | Kostenlos<br> Standard<br> Premium&nbsp;(OMS)<br> Pro&nbsp;GB&nbsp;(eigenständig)<br> Pro&nbsp;Knoten&nbsp;(OMS)     | |
-| Azure SQL-Analysen <br>(Vorschau)                                                         | <ul><li>Insight&nbsp;&&nbsp;Analytics</li><li>Log Analytics</li></ul>     | Kostenlos<br>Pro&nbsp;Knoten&nbsp;(OMS)                                                                             | Erfordert die Verknüpfung Ihres Log Analytics-Arbeitsbereichs mit einem Automation-Konto|
+| [Azure SQL Analytics (Vorschau)](log-analytics-azure-sql.md)                                                          | <ul><li>Insight&nbsp;&&nbsp;Analytics</li><li>Log Analytics</li></ul>     | Kostenlos<br>Pro&nbsp;Knoten&nbsp;(OMS)                                                                             | Erfordert die Verknüpfung Ihres Log Analytics-Arbeitsbereichs mit einem Automation-Konto|
 | Sicherung                                                                                    | <ul><li>Insight & Analytics</li></ul>                                     | Kostenlos<br> Pro&nbsp;Knoten&nbsp;(OMS)                                                                            | Erfordert einen klassischen Sicherungstresor |
 | Kapazität und Leistung <br>(Vorschau)                                                     | <ul><li>Insight&nbsp;&&nbsp;Analytics</li><li>Log Analytics</li></ul>     | Kostenlos<br> Standard<br> Premium&nbsp;(OMS)<br> Pro&nbsp;GB&nbsp;(eigenständig)<br> Pro&nbsp;Knoten&nbsp;(OMS)     | |
 | [Änderungsnachverfolgung](log-analytics-change-tracking.md)                                         | <ul><li>Automation & Control</li></ul>                                    | Kostenlos<br> Pro&nbsp;Knoten&nbsp;(OMS)                                                                            | Erfordert die Verknüpfung Ihres Log Analytics-Arbeitsbereichs mit einem Automation-Konto |
@@ -103,7 +107,7 @@ In der folgenden Tabelle erfahren Sie, welche Verwaltungslösungen zu den einzel
 
 Von der Community bereitgestellte Lösungen sind über den [Azure-Vorlagenkatalog](https://azure.microsoft.com/resources/templates/?term=Per&nbsp;Node&nbsp;(OMS)) sowie direkt bei den Autoren erhältlich.
 
-| Verwaltungslösung                 | Angebot                                                                     | Tarife                         | Hinweise | 
+| Verwaltungslösung                 | Angebot                                                                     | Tarife                         | Hinweise |
 | ---                                 | ---                                                                       | ---                                   | ---   |
 | Alle von der Community bereitgestellten Lösungen  | <ul><li>Insight&nbsp;&&nbsp;Analytics</li><li>Log Analytics</li></ul>     | Kostenlos<br> Pro&nbsp;Knoten&nbsp;(OMS)     |    Erfordert die Verknüpfung Ihres Log Analytics-Arbeitsbereichs mit einem Automation-Konto |
 
@@ -122,7 +126,7 @@ Der Log Analytics-Windows-Agent und der System Center Operations Manager-Agent s
 > - Wenn Operations Manager nicht erforderlich ist und Operations Manager-Agent-Daten laut Tabelle unter Verwendung der Verwaltungsgruppe an OMS gesendet werden, werden Operations Manager-Agent-Daten immer unter Verwendung von Verwaltungsgruppen an OMS gesendet. Windows-Agents umgehen die Verwaltungsgruppe und senden ihre Daten direkt an OMS.
 > - Wenn die Operations Manager-Agent-Daten nicht unter Verwendung einer Verwaltungsgruppe gesendet werden, werden die Daten direkt (also unter Umgehung der Verwaltungsgruppe) an OMS gesendet.
 
-### <a name="insight--analytics--log-analytics"></a>Insight & Analytics/Log Analytics 
+### <a name="insight--analytics--log-analytics"></a>Insight & Analytics/Log Analytics
 
 | Verwaltungslösung | Plattform | Microsoft Monitoring Agent | Operations Manager-Agent | Azure-Speicher | Operations Manager erforderlich? | Daten vom Operations Manager-Agent über Verwaltungsgruppe gesendet | Sammlungshäufigkeit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -136,8 +140,9 @@ Der Log Analytics-Windows-Agent und der System Center Operations Manager-Agent s
 | Application Insights-Connector (Vorschau) | Azure | ![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png) | Bei Benachrichtigung |
 | Azure Application Gateway-Analyse | Azure | ![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![Ja](./media/log-analytics-add-solutions/oms-bullet-green.png) | ![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png) | 10 Minuten |
 | Azure-Netzwerksicherheitsgruppen-Analyse | Azure | ![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![Ja](./media/log-analytics-add-solutions/oms-bullet-green.png) | ![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png) | 10 Minuten |
+| Azure SQL Analytics (Vorschau) |Windows |![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png) |![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png) |![Ja](./media/log-analytics-add-solutions/oms-bullet-green.png) |![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png) |![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png) | 10 Minuten |
 | Capacity Management |Windows |![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png) |![Ja](./media/log-analytics-add-solutions/oms-bullet-green.png) |![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png) |![Ja](./media/log-analytics-add-solutions/oms-bullet-green.png) |![Ja](./media/log-analytics-add-solutions/oms-bullet-green.png) |Stündlich |
-| Container | Linux | ![Ja](./media/log-analytics-add-solutions/oms-bullet-green.png) | ![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png) | 3 Minuten |
+| Container | Windows und Linux | ![Ja](./media/log-analytics-add-solutions/oms-bullet-green.png) | ![Nein](./media/log-analytics-add-solutions/oms-bullet-green.png) | ![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png) | 3 Minuten |
 | Key Vault-Analysen |Windows |![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png) |![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png) |![Ja](./media/log-analytics-add-solutions/oms-bullet-green.png) |![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png) |![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png) |10 Minuten |
 | Netzwerkleistungsmonitor | Windows | ![Ja](./media/log-analytics-add-solutions/oms-bullet-green.png) | ![Ja](./media/log-analytics-add-solutions/oms-bullet-green.png) | ![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png) | TCP-Handshakes werden alle fünf Sekunden gesendet, Daten alle drei Minuten |
 | Office 365-Analysen (Vorschau) |Windows |![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png) |![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png) |![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png) |![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png) |![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png) |Bei Benachrichtigung |
@@ -265,9 +270,4 @@ Wir laden Kunden je nach Art der Version über verschiedene Wege zur Nutzung von
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Durchsuchen von Protokollen](log-analytics-log-searches.md), um detaillierte Informationen anzuzeigen, die von Verwaltungslösungen gesammelt wurden
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

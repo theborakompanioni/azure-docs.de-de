@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
-ms.openlocfilehash: ed28fcea134bfbeda25abff41a3163471cef4294
+ms.sourcegitcommit: 3152a1306f2c3eeb42dd3b21cff62b696ed01e5d
+ms.openlocfilehash: 75ea0486a1b5abc71df3b7d9e8385717954b89f4
+ms.lasthandoff: 03/01/2017
 
 ---
 # <a name="api-management-policy-expressions"></a>Richtlinienausdrücke in API Management
@@ -35,12 +36,12 @@ Die Syntax für Richtlinienausdrücke entspricht C# 6.0. Jeder Ausdruck besitzt 
 > -   Informationen zum Herunterladen der in diesem Video verwendeten Richtlinienanweisungen finden Sie im Github-Repository unter [api-management-samples/policies](https://github.com/Azure/api-management-samples/tree/master/policies).  
   
   
-##  <a name="a-namesyntaxa-syntax"></a><a name="Syntax"></a> Syntax  
+##  <a name="Syntax"></a> Syntax  
  Ausdrücke mit einer einzelnen Anweisung werden in `@(expression)` eingeschlossen, wobei `expression` eine wohlgeformte C#-Ausdrucksanweisung ist.  
   
  Ausdrücke mit mehreren Anweisungen werden in `@{expression}` eingeschlossen. Alle Codepfade in Ausdrücken mit mehreren Anweisungen müssen mit einer `return`-Anweisung enden.  
   
-##  <a name="a-namepolicyexpressionsexamplesa-examples"></a><a name="PolicyExpressionsExamples"></a> Beispiele  
+##  <a name="PolicyExpressionsExamples"></a> Beispiele  
   
 ```  
 @(true)  
@@ -51,7 +52,7 @@ Die Syntax für Richtlinienausdrücke entspricht C# 6.0. Jeder Ausdruck besitzt 
   
 @(Regex.Match(context.Response.Headers.GetValueOrDefault("Cache-Control",""), @"max-age=(?<maxAge>\d+)").Groups["maxAge"]?.Value)  
   
-@(context.Variables.ContainsKey("maxAge")?3600:int.Parse((string)context.Variables["maxAge"]))  
+@(context.Variables.ContainsKey("maxAge") ? int.Parse((string)context.Variables["maxAge"]) : 3600)  
   
 @{   
   string value;   
@@ -66,13 +67,13 @@ Die Syntax für Richtlinienausdrücke entspricht C# 6.0. Jeder Ausdruck besitzt 
 }  
 ```  
   
-##  <a name="a-namepolicyexpressionsusagea-usage"></a><a name="PolicyExpressionsUsage"></a> Verwendung  
+##  <a name="PolicyExpressionsUsage"></a> Verwendung  
  Ausdrücke können als Attributwerte oder Textwerte in einer beliebigen API Management-[Richtlinie](api-management-policies.md) verwendet werden, sofern in der Richtlinienreferenz nicht anders angegeben.  
   
 > [!IMPORTANT]
 >  Beachten Sie, dass bei Verwendung von Richtlinienausdrücken nur eine begrenzte Überprüfung der Richtlinienausdrücke beim Definieren der Richtlinie stattfindet. Da die Ausdrücke vom Gateway zur Laufzeit in der eingehenden oder ausgehenden Pipeline ausgeführt werden, führen zur Laufzeit von den Richtlinienausdrücken generierte Ausnahmen zu einem Laufzeitfehler im API-Aufruf.  
   
-##  <a name="a-nameclrtypesa-net-framework-types-allowed-in-policy-expressions"></a><a name="CLRTypes"></a> In Richtlinienausdrücken zulässige .NET Framework-Typen  
+##  <a name="CLRTypes"></a> In Richtlinienausdrücken zulässige .NET Framework-Typen  
  Die folgende Tabelle enthält die .NET Framework-Typen und die zugehörigen Mitglieder, die in Richtlinienausdrücken zulässig sind.  
   
 |CLR-Typ|Unterstützte Methoden|  
@@ -166,12 +167,12 @@ Die Syntax für Richtlinienausdrücke entspricht C# 6.0. Jeder Ausdruck besitzt 
 |System.Xml.Linq.XText|Alle Methoden werden unterstützt.|  
 |System.Xml.XmlNodeType|Alle|  
   
-##  <a name="a-namecontextvariablesa-context-variable"></a><a name="ContextVariables"></a> Kontextvariable  
+##  <a name="ContextVariables"></a> Kontextvariable  
  Eine Variable namens `context` steht implizit in jedem [Richtlinienausdruck](api-management-policy-expressions.md#Syntax) zur Verfügung. Ihre Mitglieder bieten Informationen zu `\request`. Alle `context`-Mitglieder sind schreibgeschützt.  
   
 |Kontextvariable|Zulässige Methoden, Eigenschaften und Parameterwerte|  
 |----------------------|-------------------------------------------------------|  
-|context|Api: IApi<br /><br /> Bereitstellung<br /><br /> LastError<br /><br /> Vorgang<br /><br /> Produkt<br /><br /> Request<br /><br /> Antwort<br /><br /> Abonnement<br /><br /> Tracing: bool<br /><br /> Benutzer<br /><br /> Variables:IReadOnlyDictionary<string, object><br /><br /> void Trace(message: string)|  
+|context|Api: IApi<br /><br /> Bereitstellung<br /><br /> LastError<br /><br /> Vorgang<br /><br /> Produkt<br /><br /> Request<br /><br /> RequestId: string<br /><br /> Antwort<br /><br /> Abonnement<br /><br /> Tracing: bool<br /><br /> Benutzer<br /><br /> Variables:IReadOnlyDictionary<string, object><br /><br /> void Trace(message: string)|  
 |context.Api|Id: string<br /><br /> Name: string<br /><br /> Path: string<br /><br /> ServiceUrl: IUrl|  
 |context.Deployment|Region: string<br /><br /> ServiceName: string|  
 |context.LastError|Source: string<br /><br /> Reason: string<br /><br /> Message: string<br /><br /> Scope: string<br /><br /> Section: string<br /><br /> Path: string<br /><br /> PolicyId: string<br /><br /> Weitere Informationen zu context.LastError finden Sie unter [Fehlerbehandlung](api-management-error-handling-policies.md).|  
@@ -201,8 +202,4 @@ Die Syntax für Richtlinienausdrücke entspricht C# 6.0. Jeder Ausdruck besitzt 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Arbeiten mit Richtlinien finden Sie unter [Richtlinien in Azure API Management](api-management-howto-policies.md).  
-
-
-<!--HONumber=Jan17_HO2-->
-
 

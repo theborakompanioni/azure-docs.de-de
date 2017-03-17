@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/19/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: c33b69dbdccd2a894b494175dec2bd423af478b1
-ms.openlocfilehash: 0019b64ba545d91cf32ed2945c5c0d4844e264e1
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: b0fb6e2b86aa0a47b7250face90be8ab2d06b78e
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -35,7 +35,7 @@ Kommentare oder Fragen können Sie am Ende dieses Artikels oder im [Forum zu Azu
 ## <a name="prerequisites"></a>Voraussetzungen
 Für diese Bereitstellung benötigen Sie Folgendes:
 
-* **Konfigurationsserver**: Ein lokaler virtueller Computer unter Windows Server 2012 R2, der als Konfigurationsserver dient. Sie installieren die anderen Site Recovery-Komponenten (einschließlich Prozessserver und Masterzielserver) auch auf diesem virtuellen Computer. Erfahren Sie mehr unter [Szenarioarchitektur](site-recovery-components.md#vmware-replication-to-azure) und [Voraussetzungen für den Konfigurationsserver](site-recovery-vmware-to-azure.md#prerequisites).
+* **Konfigurationsserver**: Ein lokaler virtueller Computer unter Windows Server 2012 R2, der als Konfigurationsserver dient. Sie installieren die anderen Site Recovery-Komponenten (einschließlich Prozessserver und Masterzielserver) auch auf diesem virtuellen Computer. Erfahren Sie mehr unter [Szenarioarchitektur](site-recovery-components.md#vmware-to-azure) und [Voraussetzungen für den Konfigurationsserver](site-recovery-vmware-to-azure.md#prerequisites).
 * **Virtuelle IaaS-Computer**: die virtuellen Computer, die Sie migrieren möchten. Migrieren Sie diese virtuellen Computer, indem Sie sie wie physische Computer behandeln.
 
 ## <a name="deployment-steps"></a>Bereitstellungsschritte

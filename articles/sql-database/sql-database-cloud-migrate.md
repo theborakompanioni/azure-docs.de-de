@@ -17,8 +17,9 @@ ms.workload: sqldb-migrate
 ms.date: 02/08/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 21be71a1b4c79ecec8af02d08f65c41128c5ef73
-ms.openlocfilehash: 92c8f2e0f2dfa35c904a1132d72c037ceb7d3765
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: 8d4823576fe0d44fa565fdb72e8b229d31dff609
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -50,7 +51,7 @@ Die folgende Liste enthält den allgemeinen Workflow für die Migration einer SQ
 
 Die folgende Liste enthält Empfehlungen, mit denen Sie während des Importprozesses eine optimale Leistung erzielen.
 
-* Wählen Sie im Rahmen Ihres verfügbaren Budgets das höchste Servicelevel und die höchste Leistungsstufe, um die Übertragungsleistung zu maximieren. Nach Abschluss der Migration können Sie zentral herunterskalieren, um Geld zu sparen. Weitere Informationen finden Sie unter [Change the service tier and performance level of a single database using the Azure portal](sql-database-manage-single-databases-portal.md#change-the-service-tier-and-performance-level-of-a-single-database) (Ändern der Dienstebene und Leistungsstufe einer Einzeldatenbank über das Portal), unter [Change the service tier and performance level of a single database using PowerShell](sql-database-manage-single-databases-powershell.md#change-the-service-tier-and-performance-level-of-a-single-database) (Ändern der Dienstebene und Leistungsstufe einer Einzeldatenbank mithilfe von PowerShell) oder unter [Change the service tier and performance level of a single database using Transact-SQL](sql-database-manage-single-databases-tsql.md#change-the-service-tier-and-performance-level-of-a-single-database) (Ändern der Dienstebene und Leistungsstufe einer Einzeldatenbank mithilfe von Transact-SQL).
+* Wählen Sie im Rahmen Ihres verfügbaren Budgets das höchste Servicelevel und die höchste Leistungsstufe, um die Übertragungsleistung zu maximieren. Nach Abschluss der Migration können Sie zentral herunterskalieren, um Geld zu sparen. 
 * Minimieren Sie die Entfernung zwischen Ihrer BACPAC-Datei und dem Zielrechenzentrum.
 * Deaktivieren Sie die automatische Statistik während der Migration.
 * Partitionieren Sie Tabellen und Indizes.
@@ -119,10 +120,5 @@ Zusätzlich zur Suche im Internet und zur Verwendung dieser Ressourcen sollten S
 * Informationen zur Verwendung von UTC-Zeit nach der Migration finden Sie unter [Modifying the default time zone for your local time zone](https://blogs.msdn.microsoft.com/azuresqlemea/2016/07/27/lesson-learned-4-modifying-the-default-time-zone-for-your-local-time-zone/) (Ändern der Standardzeitzone für Ihre lokale Zeitzone).
 * Informationen zum Ändern der Standardsprache einer Datenbank nach der Migration finden Sie unter [How to change the default language of Azure SQL Database](https://blogs.msdn.microsoft.com/azuresqlemea/2017/01/13/lesson-learned-16-how-to-change-the-default-language-of-azure-sql-database/) (Ändern der Standardsprache von Azure SQL-Datenbank).
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

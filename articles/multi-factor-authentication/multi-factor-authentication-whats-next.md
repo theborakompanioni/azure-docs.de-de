@@ -12,19 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2017
+ms.date: 02/21/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 999361daa2faebe3e88cab0b6085a938d6f40e9d
-ms.openlocfilehash: c8a53cbbfdb0f3d5d5b4b3a1e70f2c08d50c6004
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 042b99a77fae0de2fe65113d9d909a443f5487d4
+ms.openlocfilehash: 3a6020b2c189b4ce9a930a18d78140b7bd8ff8ff
+ms.lasthandoff: 02/24/2017
 
 
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurieren von Azure Multi-Factor Authentication-Einstellungen
 Dieser Artikel bietet Unterstützung bei der Verwaltung der Azure Multi-Factor Authentication, nachdem Sie nun bereit für die Ausführung sind.  Der Artikel umfasst eine Vielzahl von Themen, die Ihnen dabei helfen, Azure Multi-Factor Authentication optimal zu nutzen.  Nicht alle Funktionen sind in jeder Version von Azure Multi-Factor Authentication verfügbar.
 
-| Feature | Beschreibung | |:--- |:--- || | [Betrugswarnung](#fraud-alert) |Die Betrugswarnung kann so konfiguriert und eingerichtet werden, dass Ihre Benutzer betrügerische Versuche, auf ihre Ressourcen zuzugreifen, melden können. | | [Einmalumgehung](#one-time-bypass) |Mit einer Einmalumgehung kann sich ein Benutzer ein einziges Mal authentifizieren, indem er die mehrstufige Authentifizierung „umgeht“. | | [Benutzerdefinierte Sprachnachrichten ](#custom-voice-messages) |Mit benutzerdefinierten Sprachnachrichten können Sie Ihre eigenen Aufzeichnungen oder Begrüßungen mit mehrstufiger Authentifizierung verwenden. | | [Zwischenspeichern](#caching-in-azure-multi-factor-authentication) |Durch Zwischenspeichern können Sie einen bestimmten Zeitraum festlegen, sodass nachfolgende Authentifizierungsversuche automatisch erfolgreich sind. | | [Vertrauenswürdige IPs](#trusted-ips) |Mit vertrauenswürdigen IP-Adressen können Administratoren eines verwalteten Mandanten oder Verbundmandanten die Überprüfung in zwei Schritten für Benutzer umgehen, die sich über das lokale Intranet des Unternehmens anmelden. | | [App-Kennwörter](#app-passwords) |Durch ein App-Kennwort kann eine Anwendung, die MFA nicht erkennt, die mehrstufige Authentifizierung umgehen und weiter ausgeführt werden. | | [Speichern der Multi-Factor Authentication für gespeicherte Geräte und Browser](#remember-multi-factor-authentication-for-devices-users-trust) |Mit dieser Funktion können Sie Geräte für eine festgelegte Anzahl von Tagen speichern, nachdem ein Benutzer erfolgreich mit MFA angemeldet wurde. | | [Auswählbare Verifizierungsmethoden](#selectable-verification-methods) |Ermöglicht Ihnen die Auswahl der Authentifizierungsmethoden, die Sie den Benutzern zur Verfügung stellen möchten. |
+| Feature | Beschreibung | |:--- |:--- || | [Betrugswarnung](#fraud-alert) |Die Betrugswarnung kann so konfiguriert und eingerichtet werden, dass Ihre Benutzer betrügerische Versuche, auf ihre Ressourcen zuzugreifen, melden können. | | [Einmalumgehung](#one-time-bypass) |Mit einer Einmalumgehung kann sich ein Benutzer ein einziges Mal authentifizieren, indem er die mehrstufige Authentifizierung „umgeht“. | | [Benutzerdefinierte Sprachnachrichten ](#custom-voice-messages) |Mit benutzerdefinierten Sprachnachrichten können Sie Ihre eigenen Aufzeichnungen oder Begrüßungen mit mehrstufiger Authentifizierung verwenden. | | [Zwischenspeichern](#caching-in-azure-multi-factor-authentication) |Durch Zwischenspeichern können Sie einen bestimmten Zeitraum festlegen, sodass nachfolgende Authentifizierungsversuche automatisch erfolgreich sind. | | [Vertrauenswürdige IPs](#trusted-ips) |Mit vertrauenswürdigen IP-Adressen können Administratoren eines verwalteten Mandanten oder Verbundmandanten die Überprüfung in zwei Schritten für Benutzer umgehen, die sich über das lokale Intranet des Unternehmens anmelden. | | [App-Kennwörter](#app-passwords) |Durch ein App-Kennwort kann eine Anwendung, die MFA nicht erkennt, die mehrstufige Authentifizierung umgehen und weiter ausgeführt werden. | | [Speichern der Multi-Factor Authentication für gespeicherte Geräte und Browser](#remember-multi-factor-authentication-for-devices-that-users-trust) |Mit dieser Funktion können Sie Geräte für eine festgelegte Anzahl von Tagen speichern, nachdem ein Benutzer erfolgreich mit MFA angemeldet wurde. | | [Auswählbare Verifizierungsmethoden](#selectable-verification-methods) |Ermöglicht Ihnen die Auswahl der Authentifizierungsmethoden, die Sie den Benutzern zur Verfügung stellen möchten. |
 
 ## <a name="access-the-azure-mfa-management-portal"></a>Zugreifen auf das Azure MFA-Verwaltungsportal
 
@@ -164,7 +164,7 @@ Das Zwischenspeichern ist nicht für Anmeldungen bei Azure AD gedacht.
 <center>![Cloud](./media/multi-factor-authentication-whats-next/cache.png)</center>
 
 ## <a name="trusted-ips"></a>Vertrauenswürdige IP-Adressen
-Mit vertrauenswürdigen IP-Adressen der Azure MFA können Administratoren eines Mandanten oder Verbundmandanten die Überprüfung in zwei Schritten für Benutzer umgehen, die sich über das lokale Intranet des Unternehmens anmelden. Dieses Feature ist in der Vollversion von Azure Multi-Factor Authentication, aber nicht in der kostenlosen Version für Administratoren verfügbar. Weitere Informationen zum Beziehen der Vollversion von Azure Multi-Factor Authentication finden Sie unter [Beziehen von Azure Multi-Factor Authentication](multi-factor-authentication.md#how-to-get-azure-multi-factor-authentication).
+Mit vertrauenswürdigen IP-Adressen der Azure MFA können Administratoren eines Mandanten oder Verbundmandanten die Überprüfung in zwei Schritten für Benutzer umgehen, die sich über das lokale Intranet des Unternehmens anmelden. Dieses Feature ist in der Vollversion von Azure Multi-Factor Authentication, aber nicht in der kostenlosen Version für Administratoren verfügbar. Weitere Informationen zum Beziehen der Vollversion von Azure Multi-Factor Authentication finden Sie unter [Azure Multi-Factor Authentication](multi-factor-authentication.md).
 
 | Typen von Azure AD-Mandanten | Verfügbare vertrauenswürdige IP-Optionen |
 |:--- |:--- |
@@ -260,13 +260,18 @@ Benutzer können App-Kennwörter auch nach der Registrierung erstellen, indem si
 ## <a name="remember-multi-factor-authentication-for-devices-that-users-trust"></a>Speichern der Multi-Factor Authentication für Geräte, denen Benutzer vertrauen
 Die Speicherung der Multi-Factor Authentication für Geräte und Browser, denen Benutzer vertrauen, ist eine kostenlose Funktion für alle MFA-Benutzer. Damit können Sie Benutzern die Möglichkeit geben, MFA für eine festgelegte Anzahl von Tagen zu umgehen, nachdem sie sich erfolgreich mithilfe von MFA angemeldet haben. Bei Verwendung dieser Option muss der Benutzer auf einem Gerät seltener eine Überprüfung in zwei Schritten durchführen, was zur Verbesserung der Verwendbarkeit beiträgt.
 
+Ist ein Konto oder Gerät gefährdet, kann das Speichern von MFA für vertrauenswürdige Geräte jedoch die Sicherheit beeinträchtigen. Wenn ein Unternehmenskonto kompromittiert wird oder ein vertrauenswürdiges Gerät verloren geht oder gestohlen wird, sollten Sie die [Multi-Factor Authentication auf allen Geräten wiederherstellen](multi-factor-authentication-manage-users-and-devices.md#restore-mfa-on-all-remembered-devices-for-a-user). Durch diese Aktion wird der vertrauenswürdige Status aller Geräte widerrufen, und der Benutzer muss wieder die Überprüfung in zwei Schritten ausführen. Sie können Ihre Benutzer auch anweisen, MFA auf ihren eigenen Geräten anhand der Anweisungen unter [Verwalten der Einstellungen für die Überprüfung in zwei Schritten](./end-user/multi-factor-authentication-end-user-manage-settings.md#require-two-step-verification-again-on-a-device-youve-marked-as-trusted) wiederherzustellen.
+
+### <a name="how-it-works"></a>So funktioniert's
+
+Das Speichern der Multi-Factor Authentication funktioniert durch das Festlegen eines permanenten Cookies im Browser, wenn ein Benutzer das Kontrollkästchen „Die nächsten **X** Tage nicht erneut fragen“ aktiviert. Der Benutzer wird von diesem Browser bis zum Ablauf des Cookies nicht erneut zur MFA aufgefordert. Wenn der Benutzer einen anderen Browser auf dem gleichen Gerät öffnet oder seine Cookies löscht, wird er wieder zur Verifizierung aufgefordert. 
+
+Das Kontrollkästchen „Die nächsten **X** Tage nicht erneut fragen“ wird in Nicht-Browser-Apps nicht angezeigt, unabhängig davon, ob sie die moderne Authentifizierung unterstützen. Diese Apps verwenden Aktualisierungstoken, die jede Stunde neue Zugriffstoken bereitstellen. Bei der Überprüfung eines Aktualisierungstokens prüft Azure AD, ob die Überprüfung in zwei Schritten zuletzt innerhalb der konfigurierten Anzahl von Tagen durchgeführt wurde. 
+
+So reduziert sich durch das Speichern der MFA auf vertrauenswürdigen Geräten die Anzahl der Authentifizierungen für Web-Apps (die normalerweise jedes Mal dazu auffordern). Auf der anderen Seite erhöht sich jedoch die Anzahl der Authentifizierungen für Clients mit moderner Authentifizierung (die normalerweise alle 90 Tage dazu aufgefordert werden).
+
 > [!NOTE]
-> Dieses Feature wird als ein Cookie Browsercache implementiert. Es funktioniert nicht, wenn Browsercookies nicht aktiviert sind.
-
-Ist ein Konto oder Gerät gefährdet, kann das Speichern von MFA für vertrauenswürdige Geräte jedoch die Sicherheit beeinträchtigen. Es gibt eine Option zum Wiederherstellen von Multi-Factor Authentication auf allen Geräten, um die Kontosicherheit zu gewährleisten. Das bedeutet, dass alle Geräte den vertrauenswürdigen Status verlieren und der Benutzer die Überprüfung in zwei Schritten erneut ausführen muss. Sie sollten Multi-Factor Authentication für ihre Geräte in folgenden Fällen wiederherstellen:
-
-* Wenn das Unternehmenskonto gefährdet ist.
-* Wenn ein gespeichertes Gerät verloren ist oder gestohlen wurde.
+>Dieses Feature ist nicht kompatibel mit dem AD FS-Feature „Angemeldet bleiben“, bei dem Benutzer die Überprüfung in zwei Schritten für AD FS über Azure MFA Server oder eine MFA-Lösung von Drittanbietern ausführen. Wenn Ihre Benutzer in AD FS „Angemeldet bleiben“ auswählen und ihr Gerät außerdem als für MFA vertrauenswürdig markieren, können sie sich nach Ablauf der Anzahl von Tagen, die unter „MFA speichern“ angegeben wurde, nicht mehr verifizieren. Azure AD fordert eine neue Überprüfung in zwei Schritten an, aber AD FS gibt ein Token mit dem ursprünglichen MFA-Anspruch und Datum zurück, statt die Überprüfung in zwei Schritten erneut durchzuführen. Dadurch entsteht eine Schleife bei der Überprüfung zwischen Azure AD und AD FS. 
 
 ### <a name="enable-remember-multi-factor-authentication"></a>Aktivieren der Speicherung der mehrstufigen Authentifizierung
 1. Melden Sie sich beim [klassischen Azure-Portal](https://portal.azure.com/)an.

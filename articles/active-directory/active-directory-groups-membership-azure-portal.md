@@ -1,6 +1,6 @@
 ---
-title: "Verwalten der Gruppen, denen Ihre Gruppe angehört, in der Azure Active Directory-Vorschau | Microsoft Docs"
-description: "Gruppen können in Azure Active Directory andere Gruppen enthalten.  Nachfolgend wird erläutert, wie Sie diese Mitgliedschaften verwalten."
+title: "Verwalten der Gruppen, denen Ihre Gruppe angehört, in der Azure Active Directory-Vorschau | Microsoft-Dokumentation"
+description: "Gruppen können in Azure Active Directory andere Gruppen enthalten. Nachfolgend wird erläutert, wie Sie diese Mitgliedschaften verwalten."
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -12,16 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2017
+ms.date: 02/27/2017
 ms.author: curtand
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1968862a68d86c0f42e86ecb1f23aeebd264076c
+ms.sourcegitcommit: 58768cd59a922483bcb37797a6dcd515d159ef4c
+ms.openlocfilehash: 8e0563f3490186a19dd9418ebf7beac7dd8dd046
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="manage-the-groups-your-group-is-a-member-of-in-azure-active-directory-preview"></a>Verwalten der Gruppen, denen Ihre Gruppe angehört, in der Azure Active Directory-Vorschau
-Gruppen können in der Azure Active Directory-Vorschau andere Gruppen enthalten. [Was bietet die Vorschauversion?](active-directory-preview-explainer.md)  Nachfolgend wird erläutert, wie Sie diese Mitgliedschaften verwalten.
+# <a name="manage-to-which-groups-a-group-belongs-in-your-azure-active-directory-tenant"></a>Verwalten, welchen Gruppen eine Gruppe in Ihrem Azure Active Directory-Mandanten angehört
+Gruppen können in der Azure Active Directory-Vorschau andere Gruppen enthalten. [Was bietet die Vorschauversion?](active-directory-preview-explainer.md) Nachfolgend wird erläutert, wie Sie diese Mitgliedschaften verwalten.
 
 ## <a name="how-do-i-find-the-groups-my-group-is-a-member-of"></a>Wie finde ich die Gruppen, in denen meine Gruppe Mitglied ist?
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
@@ -53,9 +55,4 @@ Diese Artikel enthalten zusätzliche Informationen zu Azure Active Directory.
 * [Verwalten der Einstellungen einer Gruppe](active-directory-groups-settings-azure-portal.md)
 * [Verwalten der Mitglieder einer Gruppe](active-directory-groups-members-azure-portal.md)
 * [Verwalten dynamischer Regeln für Benutzer in einer Gruppe](active-directory-groups-dynamic-membership-azure-portal.md)
-
-
-
-<!--HONumber=Dec16_HO4-->
-
 

@@ -15,15 +15,14 @@ ms.topic: article
 ms.date: 03/01/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: f1b8c68639fd2b778e7e56a6826e91d5bffd4ae8
-ms.openlocfilehash: c6f843e452353edc7c4c7e9bacf653c555145afe
-ms.lasthandoff: 01/13/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 52f672dcf42a19bf10935fcf733b8f07ff559a8d
+ms.lasthandoff: 03/14/2017
 
 
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Erste Schritte zum Bereitstellen von Inhalten nach Bedarf mithilfe von REST
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
-
 
 Dieser Schnellstart führt Sie durch die Schritte zum Implementieren einer Anwendung zur Video-on-Demand (VoD)-Inhaltsübermittlung mit Azure Media Services (AMS)-REST-APIs.
 
@@ -52,6 +51,9 @@ Die folgenden Aufgaben werden in diesem Schnellstart beschrieben.
 5. Veröffentlichen des Medienobjekts und Abrufen von URLs für Streaming und progressiven Download mit der REST-API
 6. Wiedergeben Ihrer Inhalte
 
+>[!NOTE]
+>Es gilt ein Grenzwert von 1.000.000 Richtlinien für verschiedene AMS-Richtlinien (z.B. für die Locator-Richtlinie oder für ContentKeyAuthorizationPolicy). Wenn Sie immer die gleichen Tage/Zugriffsberechtigungen verwenden, z.B. Richtlinien für Locator, die für einen längeren Zeitraum vorgesehen sind (Richtlinien ohne Upload), sollten Sie dieselbe Richtlinien-ID verwenden. Weitere Informationen finden Sie in [diesem](media-services-dotnet-manage-entities.md#limit-access-policies) Thema.
+
 
 Weitere Informationen zu AMS-REST-Entitäten, die in diesem Thema verwendet werden, finden Sie unter [Azure Media Services REST-API-Referenz](/rest/api/media/services/azure-media-services-rest-api-reference). Siehe auch [Azure Media Services-Konzepte](media-services-concepts.md).
 
@@ -73,7 +75,7 @@ Führen Sie folgende Schritte aus, um den Streamingendpunkt zu starten:
 4. Klicken Sie auf das Symbol „Start“.
 5. Klicken Sie auf die Schaltfläche „Speichern“, um die Änderungen zu speichern.
 
-## <a name="a-idconnectaconnect-to-the-media-services-account-with-rest-api"></a><a id="connect"></a>Herstellen einer Verbindung mit dem Media Services-Konto mit der REST-API
+## <a id="connect"></a>Herstellen einer Verbindung mit dem Media Services-Konto mit der REST-API
 Für den Zugriff auf Azure Media Services benötigen Sie: ein von Azure Access Control Services (ACS) bereitgestelltes Zugriffstoken und den Media Services-URI selbst. Zur Erstellung dieser Anforderungen können Sie eine beliebige Methode verwenden, solange Sie die richtigen Headerwerte angeben und das Zugriffstoken beim Aufruf von Media Services ordnungsgemäß übergeben.
 
 Die folgenden Schritte beschreiben den am häufigsten verwendeten Workflow, der bei der Verbindung mit Media Services über die Media Services-REST-API zur Anwendung kommt:
@@ -216,7 +218,7 @@ Das folgende Beispiel veranschaulicht die HTTP-Anforderung an den Stamm-URI für
 >
 >
 
-## <a name="a-iduploadacreate-a-new-asset-and-upload-a-video-file-with-rest-api"></a><a id="upload"></a>Erstellen eines neuen Medienobjekts und Hochladen einer Videodatei mit der REST-API
+## <a id="upload"></a>Erstellen eines neuen Medienobjekts und Hochladen einer Videodatei mit der REST-API
 
 In Media Services laden Sie Ihre digitalen Dateien in ein Medienobjekt hoch. Die Entität **Asset** kann Videos, Audiodateien, Bilder, Miniaturansichtssammlungen, Texttitel und Untertiteldateien (und die Metadaten zu diesen Dateien) enthalten.  Nachdem die Dateien in das Medienobjekt hochgeladen wurden, werden Ihre Inhalte zur weiteren Verarbeitung und zum Streaming sicher in der Cloud gespeichert.
 
@@ -467,7 +469,7 @@ Im Erfolgsfall wird die folgende Antwort zurückgegeben:
 Nachdem Sie AccessPolicy und Locator konfiguriert haben, können Sie die eigentliche Datei mithilfe der Azure Storage-REST-APIs in einen Azure Blob Storage-Container hochladen. Sie müssen die Dateien als Blockblobs hochladen. Seitenblobs werden von Azure Media Services nicht unterstützt.  
 
 > [!NOTE]
-> Sie müssen den Dateinamen der Uploaddatei in den **Path** -Wert des Locators einfügen, den Sie im vorherigen Abschnitt empfangen haben. Beispiel: https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? zu erstellen und zu verwalten. . .
+> Sie müssen den Dateinamen der Uploaddatei in den **Path** -Wert des Locators einfügen, den Sie im vorherigen Abschnitt empfangen haben. Beispiel: https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? zu erstellen und zu verwalten. erforderlich. .
 >
 >
 
@@ -540,7 +542,7 @@ Im Erfolgsfall wird Folgendes zurückgegeben:
     HTTP/1.1 204 No Content
     ...
 
-## <a name="a-idencodeaencode-the-source-file-into-a-set-of-adaptive-bitrate-mp4-files"></a><a id="encode"></a>Codieren der Quelldatei in einen Satz von MP4-Dateien mit adaptiver Bitrate
+## <a id="encode"></a>Codieren der Quelldatei in einen Satz von MP4-Dateien mit adaptiver Bitrate
 
 Nach dem Erfassen der Medienobjekte in Media Services können die Medien u. a. codiert, transcodiert/multiplexiert und mit einem Wasserzeichen versehen werden, bevor sie an die Clients übermittelt werden. Diese Aktivitäten werden geplant und für mehrere Hintergrundrolleninstanzen ausgeführt, um hohe Leistung und Verfügbarkeit zu gewährleisten. Diese Aktivitäten werden als Aufträge bezeichnet, und jeder Auftrag besteht aus atomaren Tasks, welche die eigentliche Arbeit für die Medienobjektdatei leisten (weitere Informationen finden Sie in den Beschreibungen zu [Job](/rest/api/media/services/job) und [Task](/rest/api/media/services/task)).
 
@@ -829,7 +831,7 @@ Der folgende Code zeigt, wie Sie die ID des Ausgabemedienobjekts anfordern.
 
 
 
-## <a name="a-idpublishgeturlsapublish-the-asset-and-get-streaming-and-progressive-download-urls-with-rest-api"></a><a id="publish_get_urls"></a>Veröffentlichen des Medienobjekts und Abrufen von URLs für Streaming und progressiven Download mit der REST-API
+## <a id="publish_get_urls"></a>Veröffentlichen des Medienobjekts und Abrufen von URLs für Streaming und progressiven Download mit der REST-API
 
 Um ein Medienobjekt zu streamen oder herunterzuladen, müssen Sie es zunächst durch Erstellen eines Locators "veröffentlichen". Locators ermöglichen den Zugriff auf Dateien im Medienobjekt. Media Services unterstützt zwei Locator-Typen: OnDemandOrigin-Locator zum Streamen von Medien (z. B. MPEG DASH, HLS oder Smooth Streaming) und Access Signature (SAS)-Locator zum Herunterladen von Mediendateien. Weitere Informationen zu SAS-Locators finden Sie in [diesem](http://southworks.com/blog/2015/05/27/reusing-azure-media-services-locators-to-avoid-facing-the-5-shared-access-policy-limitation/) Blog.
 
@@ -956,7 +958,7 @@ Die zurückgegebene **Path** -Eigenschaft enthält die SAS-URL.
 Nachdem Sie AccessPolicy und Locator konfiguriert haben, können Sie Dateien mithilfe der Azure Storage-REST-APIs herunterladen.  
 
 > [!NOTE]
-> Sie müssen den Dateinamen der Downloaddatei in den **Path** -Wert des Locators einfügen, den Sie im vorherigen Abschnitt empfangen haben. Beispiel: https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? zu erstellen und zu verwalten. . .
+> Sie müssen den Dateinamen der Downloaddatei in den **Path** -Wert des Locators einfügen, den Sie im vorherigen Abschnitt empfangen haben. Beispiel: https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? zu erstellen und zu verwalten. erforderlich. .
 >
 >
 
@@ -1052,7 +1054,7 @@ Zum Streamen von MPEG DASH fügen Sie (format=mpd-time-csf) nach „/manifest“
     http://amstestaccount001.streaming.mediaservices.windows.net/ebf733c4-3e2e-4a68-b67b-cc5159d1d7f2/BigBuckBunny.ism/manifest(format=mpd-time-csf)
 
 
-## <a name="a-idplayaplay-your-content"></a><a id="play"></a>Wiedergeben Ihrer Inhalte
+## <a id="play"></a>Wiedergeben Ihrer Inhalte
 Verwenden Sie zum Streamen von Videos [Azure Media Services Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
 
 Fügen Sie zum Testen des progressiven Downloads eine URL in einen Browser ein (z. B. Internet Explorer, Chrome, Safari).

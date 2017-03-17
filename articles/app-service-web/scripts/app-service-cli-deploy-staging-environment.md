@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/21/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 15a811d35aab9995f4895a9106771310a95f7a41
-ms.openlocfilehash: 6ef9b43fb5fb88591186b20b52dd8f06b7d46cec
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: a985f7999affa1af8fdc1263d3cf674d6888158f
+ms.lasthandoff: 03/11/2017
 
 ---
 
@@ -33,13 +33,7 @@ Dieses Beispiel wird in einer Bash-Shell ausgeführt. Optionen zum Ausführen vo
 
 [!code-azurecli[main](../../../cli_scripts/app-service/deploy-deployment-slot/deploy-deployment-slot.sh "Erstellen einer Web-App und Bereitstellen von Code in einer Stagingumgebung")]
 
-## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung 
-
-Nach Ausführung des Skriptbeispiels können mit dem folgenden Befehl die Ressourcengruppe, die App Service-App und alle zugehörigen Ressourcen entfernt werden.
-
-```azurecli
-az group delete --name myResourceGroup
-```
+[!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
 ## <a name="script-explanation"></a>Erläuterung des Skripts
 
@@ -51,7 +45,7 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 | [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#create) | Erstellt einen App Service-Plan. |
 | [az appservice web create](https://docs.microsoft.com/cli/azure/appservice/web#delete) | Erstellt eine Azure-Web-App. |
 | [az appservice web deployment slot create](https://docs.microsoft.com/cli/azure/appservice/web/deployment/slot#create) | Erstellt einen Bereitstellungsslot. |
-| [az appservice web source-control config](https://docs.microsoft.com/cli/azure/appservice/web/source-control#config) | Ordnet eine Azure-Web-App einem Git-oder Mercurial-Repository zu. |
+| [az appservice web source-control config](https://docs.microsoft.com/cli/azure/appservice/web/source-control#config) | Ordnet eine Azure-Web-App einem Git- oder Mercurial-Repository zu. |
 | [az appservice web browse](https://docs.microsoft.com/cli/azure/appservice/web#browse) | Öffnet eine Azure-Web-App in einem Browser. |
 | [az appservice web deployment slot swap](https://docs.microsoft.com/cli/azure/appservice/web/deployment/slot#swap) | Ändert einen angegebenen Bereitstellungsslot in eine Produktionsumgebung. |
 

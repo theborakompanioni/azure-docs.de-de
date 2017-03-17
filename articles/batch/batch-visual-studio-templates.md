@@ -1,5 +1,5 @@
 ---
-title: "Schnelleinstieg in Ihr Batch-Projekt mit Visual Studio-Vorlagen – Azure | Microsoft-Dokumentation"
+title: "Einstieg in die Erstellung von Batch-Lösungen mit Visual Studio-Projektvorlagen – Azure | Microsoft-Dokumentation"
 description: "Es wird beschrieben, wie Visual Studio-Projektvorlagen Sie beim Implementieren und Ausführen von rechenintensiven Workloads in Azure Batch unterstützen können."
 services: batch
 documentationcenter: .net
@@ -12,15 +12,18 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 01/23/2017
+ms.date: 02/27/2017
 ms.author: tamram
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: bf22cd3426e936c8d74377f59443e5e1a6834286
-ms.openlocfilehash: d56525e55816595f33b1fcd9ea96e41fe48b55a3
+ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
+ms.openlocfilehash: dd7c67bf83e4b95b978b793c8169b7e9c98bc939
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="visual-studio-project-templates-for-azure-batch"></a>Visual Studio-Projektvorlagen für Azure Batch
+# <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Verwenden von Visual Studio-Vorlagen für den schnellen Einstieg in Batch-Lösungen
+
 Die Visual Studio-Vorlagen vom Typ **Auftrags-Manager** und **Aufgabenprozessor** für Batch enthalten Code zum Implementieren und Ausführen Ihrer rechenintensiven Workloads in Batch mit dem geringstmöglichen Aufwand. In diesem Dokument werden diese Vorlagen beschrieben, und es enthält eine Anleitung zur Verwendung.
 
 > [!IMPORTANT]
@@ -451,9 +454,4 @@ Das [Azure Batch-Forum][forum] auf MSDN eignet sich hervorragend, um Information
 [diagram01]: ./media/batch-visual-studio-templates/diagram01.png
 [solution_explorer01]: ./media/batch-visual-studio-templates/solution_explorer01.png
 [solution_explorer02]: ./media/batch-visual-studio-templates/solution_explorer02.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

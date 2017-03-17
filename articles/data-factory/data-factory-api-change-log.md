@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/21/2016
+ms.date: 03/15/2017
 ms.author: spelluru
 translationtype: Human Translation
 ms.sourcegitcommit: c2350ae447ccebf1a6b85a563e7fa1d7c12b16d7
 ms.openlocfilehash: 01ef15db6e62443a2d34bae8bc133f21f4d874f0
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -181,9 +182,4 @@ Die folgenden Klassen wurden umbenannt. Die neuen Namen entsprechen den ursprün
 ### <a name="feature-additions"></a>Hinzugefügte Features
 * Die [SqlDWSink](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsink.aspx)-Klasse unterstützt die beiden neuen Eigenschaften **SliceIdentifierColumnName** und **SqlWriterCleanupScript** zur Unterstützung einer idempotenten Kopie in Azure SQL Data Warehouse. Im Artikel [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md) finden Sie insbesondere in den Abschnitten [Mechanismus 1](data-factory-azure-sql-data-warehouse-connector.md#mechanism-1) und [Mechanismus 2](data-factory-azure-sql-data-warehouse-connector.md#mechanism-2) weitere Informationen zu diesen Eigenschaften.
 * Wir unterstützen jetzt im Rahmen der Kopieraktivität das Ausführen einer gespeicherten Prozedur für Azure SQL-Datenbank- und Azure SQL Data Warehouse-Datenquellen. Die Klassen [SqlSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) und [SqlDWSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) verfügen über die folgenden Eigenschaften: **SqlReaderStoredProcedureName** und **StoredProcedureParameters**. In den Artikeln [Azure SQL-Datenbank](data-factory-azure-sql-connector.md#sqlsource) und [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) auf Azure.com finden Sie ausführliche Informationen zu diesen Eigenschaften.  
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

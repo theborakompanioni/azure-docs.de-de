@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: priyamo
 translationtype: Human Translation
-ms.sourcegitcommit: d24fd29cfe453a12d72998176177018f322e64d8
-ms.openlocfilehash: 2000e2005533d4e4d4c7bba9d5168c395af1499f
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: 3d5ad974c01e0ee3954da4f990da87338b2d1756
+ms.openlocfilehash: e41620d3192dbb77a26b79663494e441ccd96d40
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -169,9 +169,7 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 | post_logout_redirect_uri |empfohlen |Die URL, an die der Benutzer nach erfolgreicher Abmeldung umgeleitet werden soll.  Wenn keine Angabe erfolgt, wird dem Benutzer eine generische Meldung angezeigt. |
 
 ## <a name="single-sign-out"></a>Einmaliges Abmelden
-Azure AD verwendet Cookies, um eine Benutzersitzung zu identifizieren. Ihre Webanwendung verwendet möglicherweise auch Cookies zum Verwalten von Sitzungen in Ihrer Anwendung. Wenn ein Benutzer sich zum ersten Mal bei einer Anwendung anmeldet, erstellt Azure AD ein Cookie im Browser des Benutzers. Wenn sich der Benutzer später bei einer anderen Anwendung anmeldet, überprüft Azure AD zuerst das Cookie, um zu bestimmen, ob es für den Benutzer eine gültige Anmeldungssitzung auf dem Azure AD-Endpunkt gibt, anstatt den Benutzer erneut zu authentifizieren.
-
-Wenn sich der Benutzer zum ersten Mal von einer Anwendung abmeldet, löscht Azure AD das Cookie entsprechend aus dem Browser. Allerdings kann der Benutzer weiterhin bei anderen Anwendungen angemeldet sein, die Azure AD für die Authentifizierung verwenden. Um sicherzustellen, dass der Benutzer von allen Anwendungen abgemeldet wird, sendet Azure AD eine HTTP GET-Anforderung an die `LogoutUrl` aller Anwendungen, bei denen der Benutzer zurzeit angemeldet ist. Die Anwendungen müssen auf diese Anforderung antworten, indem sie alle Cookies löschen, mit denen die Sitzung des Benutzers identifiziert wird. Sie können die `LogoutUrl` im Azure-Portal festlegen.
+Wenn Sie Benutzer an `end_session_endpoint` umleiten, löscht Azure AD die Sitzung des Benutzers aus dem Browser. Allerdings kann der Benutzer weiterhin bei anderen Anwendungen angemeldet sein, die Azure AD für die Authentifizierung verwenden. Damit diese Anwendungen den Benutzer gleichzeitig abmelden können, sendet Azure AD eine HTTP GET-Anforderung an die registrierte `LogoutUrl` aller Anwendungen, bei denen der Benutzer zurzeit angemeldet ist. Anwendungen müssen auf diese Anforderung antworten, indem sie alle Sitzungen löschen, mit denen der Benutzer identifiziert wird, und eine `200`-Antwort zurückgeben.  Wenn Sie das einmalige Abmelden in Ihrer Anwendung unterstützen möchten, müssen Sie eine solche `LogoutUrl` im Code Ihrer Anwendung implementieren.  Sie können die `LogoutUrl` im Azure-Portal festlegen:
 
 1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com).
 2. Wählen Sie Ihre Active Directory-Instanz aus, indem Sie in der rechten oberen Ecke der Seite auf Ihr Konto klicken.

@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/07/2016
+ms.date: 02/16/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 296a7ce8f84c226dfa899788bd4e0581f0a80eae
+ms.sourcegitcommit: 4682c79f1328af58326f709d94614429c5fd9f7f
+ms.openlocfilehash: e9eb8f444597000afae3de7a4cdfc60301bc3cea
+ms.lasthandoff: 02/28/2017
 
 
 ---
@@ -37,23 +38,22 @@ Um die Azure AD-Integration mit BenSelect konfigurieren zu können, benötigen S
 * Ein Azure AD-Abonnement
 * Ein SSO-fähiges BenSelect-Abonnement
 
-> [!NOTE]
-> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
-> 
-> 
+>[!NOTE]
+>Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
+>  
 
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
 * Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-* Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
+* Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung.
+In diesem Tutorial testen Sie das einmalige Anmelden (SSO) von Azure AD in einer Testumgebung.
 
 Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
-1. Hinzufügen von BenSelect über den Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+* Hinzufügen von BenSelect über den Katalog
+* Konfigurieren und Testen des einmaligen Anmeldens (SSO) von Azure AD
 
 ## <a name="adding-benselect-from-the-gallery"></a>Hinzufügen von BenSelect über den Katalog
 Zum Konfigurieren der Integration von BenSelect in Azure AD müssen Sie BenSelect über den Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
@@ -80,7 +80,7 @@ Zum Konfigurieren der Integration von BenSelect in Azure AD müssen Sie BenSelec
    
     ![Auswählen der App im Katalog](./media/active-directory-saas-benselect-tutorial/tutorial_benselect_001.png)
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+## <a name="configure-and-test-azure-ad-sso"></a>Konfigurieren und Testen des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei BenSelect mithilfe eines Testbenutzers namens Britta Simon.
 
 Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in BenSelect als Gegenstück zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in BenSelect muss eine Linkbeziehung eingerichtet werden.
@@ -89,14 +89,14 @@ Diese Linkbeziehung wird hergestellt, indem Sie den Benutzernamen** **in Azure A
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei BenSelect müssen die folgenden Schritte ausgeführt werden:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 3. **[Erstellen eines BenSelect-Testbenutzers](#creating-a-benselect-test-user)**, um in BenSelect einen Gegenpart von Britta Simon zu erhalten, der mit ihrer Darstellung in Azure AD verknüpft ist.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
-Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im klassischen Azure-Portal zu aktivieren und in Ihrer BenSelect-Anwendung zu konfigurieren.
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
+Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden (SSO) von Azure AD im klassischen Azure-Portal zu aktivieren und das einmalige Anmelden in Ihrer BenSelect-Anwendung zu konfigurieren.
 
 Die BenSelect-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie für diese Anwendung die folgenden Ansprüche. Sie können die Werte dieser Attribute auf der Registerkarte**Attribute**der Anwendung verwalten. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen: 
 
@@ -112,18 +112,13 @@ Die BenSelect-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format
    | Attributname | Attributwert |
    | --- | --- |
    | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier |extractmailprefix([Benutzerprinzipalname]) |
-   
-    a. Klicken Sie auf **Benutzerattribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
+  1. Klicken Sie auf **Benutzerattribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-benselect-tutorial/tutorial_benselect_08.png)
-   
-    b. Geben Sie im Textfeld **Attribute Name** den für die Zeile angezeigten Attributnamen ein.
-   
-    c. Geben in der Liste **Attributwert** die Zeichenfolge „ExtractMailPrefix()“ ein.
-   
-    d. Geben Sie in der Liste **Mail** die Zeichenfolge „User.userprincipalname“ ein.
-   
-    e. Klicken Sie unten auf der Seite auf **Abschließen**
+  2. Geben Sie im Textfeld **Attributname** den für die Zeile angezeigten Attributnamen ein. 
+  3. Geben in der Liste **Attributwert** die Zeichenfolge „ExtractMailPrefix()“ ein.
+  4. Geben Sie in der Liste **Mail** die Zeichenfolge „User.userprincipalname“ ein.
+  5. Klicken Sie auf **Fertig stellen**.
 3. Klicken Sie im oberen Menü auf **Schnellstart**.
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-benselect-tutorial/tutorial_benselect_09.png)
@@ -133,28 +128,22 @@ Die BenSelect-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format
 5. Führen Sie auf der Dialogseite **App-Einstellungen konfigurieren** die folgenden Schritte aus:
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-benselect-tutorial/tutorial_benselect_04.png) 
-   
-    a. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://www.benselect.com/enroll/login.aspx?Path={<tenant name>}`.
-   
-    b. Klicken Sie auf **Weiter**.
+   1. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://www.benselect.com/enroll/login.aspx?Path={<tenant name>}`.
+   2. Klicken Sie auf **Weiter**.
 6. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für BenSelect** die folgenden Schritte aus:
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-benselect-tutorial/tutorial_benselect_05.png)
-   
-    a. Klicken Sie auf **Zertifikat herunterladen**und speichern Sie die Datei auf Ihrem Computer.
-   
-    b. Klicken Sie auf **Weiter**.
+  1. Klicken Sie auf **Zertifikat herunterladen**und speichern Sie die Datei auf Ihrem Computer.
+  2. Klicken Sie auf **Weiter**.
 7. Wenden Sie sich unter [support@selerix.com](mailto:support@selerix.com) an das Supportteam von BenSelect, um SSO für Ihre Anwendung konfigurieren zu lassen, und stellen Sie Folgendes bereit:
-   
    * Das heruntergeladene Zertifikat
    * Die SAML-SSO-URL
    * Die Abmelde-URL 
    * Den Aussteller 
      
-     > [!NOTE]
-     > Weisen Sie darauf hin, dass für diese Integration der SHA256-Algorithmus erforderlich ist, um SSO für den entsprechenden Server (etwa „app2101“) festzulegen. (SHA1 wird nicht unterstützt.)
-     > 
-     > 
+   >[!NOTE]
+   >Weisen Sie darauf hin, dass für diese Integration der SHA256-Algorithmus erforderlich ist, um SSO für den entsprechenden Server (etwa „app2101“) festzulegen. (SHA1 wird nicht unterstützt.) 
+   > 
 8. Wählen Sie im klassischen Portal die Bestätigung für die Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
    
     ![Azure AD – einmaliges Anmelden][10]
@@ -162,7 +151,7 @@ Die BenSelect-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format
    
     ![Azure AD – einmaliges Anmelden][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit dem Namen Britta Simon.
 
 ![Azure AD-Benutzer erstellen][20]
@@ -179,44 +168,37 @@ In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit d
 4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-benselect-tutorial/create_aaduser_04.png) 
-5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:  ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-benselect-tutorial/create_aaduser_05.png) 
-   
-    a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
-   
-    b. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
-   
-    c. Klicken Sie auf **Weiter**.
-6. Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus: ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-benselect-tutorial/create_aaduser_06.png) 
-   
-   a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
-   
-   b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
-   
-   c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
-   
-   d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
-   
-   e. Klicken Sie auf **Weiter**.
+5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
+
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-benselect-tutorial/create_aaduser_05.png)    
+  1. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
+  2. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
+  3. Klicken Sie auf **Weiter**.
+6. Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
+
+   ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-benselect-tutorial/create_aaduser_06.png)   
+  1. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein. 
+  2. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
+  3. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
+  4. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
+  5. Klicken Sie auf **Weiter**.
 7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-benselect-tutorial/create_aaduser_07.png) 
 8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-benselect-tutorial/create_aaduser_08.png) 
-   
-    a. Notieren Sie den Wert von **Neues Kennwort**.
-   
-    b. Klicken Sie auf **Fertig stellen**.   
+   1. Notieren Sie den Wert von **Neues Kennwort**.
+   2. Klicken Sie auf **Fertig stellen**.   
 
-### <a name="creating-an-benselect-test-user"></a>Erstellen eines BenSelect-Testbenutzers
+### <a name="create-an-benselect-test-user"></a>Erstellen eines BenSelect-Testbenutzers
 In diesem Abschnitt wird in BenSelect ein Benutzer namens Britta Simon erstellt. Lassen Sie sich beim Hinzufügen der Benutzer ggf. vom Supportteam von BenSelect unterstützen.
 
-> [!NOTE]
-> Setzen Sie sich über <mailto:support@selerix.com> mit dem Supportteam von BenSelect in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
-> 
-> 
+>[!NOTE]
+>Setzen Sie sich über <mailto:support@selerix.com> mit dem Supportteam von BenSelect in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
+>  
 
-### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf BenSelect gewähren.
 
 ![Benutzer zuweisen][200] 
@@ -237,8 +219,8 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
    
     ![Benutzer zuweisen][205]
 
-### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden (SSO) über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „BenSelect“ klicken, sollten Sie automatisch bei Ihrer BenSelect-Anwendung angemeldet werden.
 
@@ -263,9 +245,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „BenSelect“ klicken, sollten Sie 
 [203]: ./media/active-directory-saas-benselect-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-benselect-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-benselect-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO4-->
-
 

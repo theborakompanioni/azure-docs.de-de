@@ -17,6 +17,7 @@ ms.author: dkershaw;bryanla
 translationtype: Human Translation
 ms.sourcegitcommit: 7d6525f4614c6301f0ddb621b0483da70842a71b
 ms.openlocfilehash: 2dc166a346c58d43e9ed60332f47619c1de89816
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -28,7 +29,7 @@ Es gibt verschiedene Optionen zum Aktualisieren der Eigenschaften für die Ident
 
 * Die **Webbenutzeroberfläche im [Azure-Portal][AZURE-PORTAL]** ermöglicht es Ihnen, die gängigsten Eigenschaften einer Anwendung zu aktualisieren. Dies ist die schnellste und am wenigsten fehleranfällige Möglichkeit zum Aktualisieren der Anwendungseigenschaften, sie bietet jedoch im Gegensatz zu den zwei weiteren Methoden keinen vollständigen Zugriff auf alle Eigenschaften.
 * Für einige erweiterte Szenarien, in denen Sie Eigenschaften aktualisieren müssen, die nicht im klassischen Azure-Portal verfügbar gemacht werden, können Sie das **Anwendungsmanifest**ändern. Dies ist der Schwerpunkt des vorliegenden Artikels, ausführliche Informationen erhalten Sie ab dem nächsten Abschnitt.
-* Sie können zum Aktualisieren Ihrer Anwendung auch **eine Anwendung schreiben, die die [Graph-API] nutzt[GRAPH-API]**. Dieser Ansatz erfordert den meisten Aufwand. Dies kann eine attraktive Option sein, wenn Sie Verwaltungssoftware schreiben oder die Anwendungseigenschaften regelmäßig und in automatisierter Weise aktualisieren müssen.
+* Sie können zum Aktualisieren Ihrer Anwendung auch **eine Anwendung schreiben, die die [Graph-API][GRAPH-API]** nutzt. Dieser Ansatz erfordert den meisten Aufwand. Dies kann eine attraktive Option sein, wenn Sie Verwaltungssoftware schreiben oder die Anwendungseigenschaften regelmäßig und in automatisierter Weise aktualisieren müssen.
 
 ## <a name="using-the-application-manifest-to-update-an-applications-identity-configuration"></a>Verwenden des Anwendungsmanifests zum Aktualisieren der Identitätskonfiguration einer Anwendung
 Über das [Azure-Portal][AZURE-PORTAL] können Sie die Identitätskonfiguration Ihrer Anwendung verwalten, indem Sie das Anwendungsmanifest mit dem Inline-Manifest-Editor aktualisieren. Sie können das Anwendungsmanifest auch als JSON-Datei herunter- und hochladen. Im Verzeichnis wird keine wirkliche Datei gespeichert. Das Anwendungsmanifest ist lediglich ein für die Azure AD-Graph-API-Anwendungsentität ausgeführter HTTP-GET-Vorgang, und das Hochladen ist ein HTTP-PATCH-Vorgang für die Anwendungsentität.
@@ -112,10 +113,5 @@ Verwenden Sie den unten angezeigten Kommentarabschnitt, um uns Feedback zu sende
 [O365-PERM-DETAILS]: https://msdn.microsoft.com/office/office365/HowTo/application-manifest
 [O365-SERVICE-DAEMON-APPS]: https://msdn.microsoft.com/office/office365/howto/building-service-apps-in-office-365
 [RBAC-CLOUD-APPS-AZUREAD]: http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

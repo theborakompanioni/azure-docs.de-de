@@ -14,11 +14,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 01/11/2017
-ms.author: chrande
+ms.date: 03/06/2017
+ms.author: chrande, glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 7b691e92cfcc8c6c62f854b3f1b6cf13d317df7b
-ms.openlocfilehash: 961aa46e3f3654c250aa10e61149fac2fc251935
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 1c071390fd6cd9bb5889cb225696b7782fe2bd6b
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -55,6 +56,8 @@ Beachten Sie Folgendes:
 
 * Für `path` finden Sie Informationen zur Formatierung von Blobnamensmustern unter [Namensmuster](#pattern).
 * `connection` muss den Namen einer App-Einstellung enthalten, die eine Speicherverbindungszeichenfolge enthält. Im Azure-Portal konfiguriert der Standard-Editor auf der Registerkarte **Integrieren** diese App-Einstellung für Sie, wenn Sie ein Speicherkonto erstellen oder ein vorhandenes auswählen. Wie Sie diese App-Einstellung manuell erstellen, erfahren Sie unter [Manuelles Konfigurieren dieser App-Einstellung](). 
+
+Wenn bei der Ausführung eines Verbrauchsplans eine Funktionen-App im Leerlauf ist, kann es möglicherweise bis zu 10 Minuten dauern, bis neue Blobs erstellt werden. Sobald die Funktionen-App ausgeführt wird, werden die Blobs schneller verarbeitet. Um diese anfängliche Verzögerung zu vermeiden, verwenden Sie entweder einen regulären App Service-Plan mit aktivierter Always On-Option oder einen anderen Mechanismus, um die Blobverarbeitung auszulösen, z.B. eine Warteschlangennachricht mit dem Blobnamen. 
 
 Weitere Informationen finden Sie auch unter einer der folgenden Unterüberschriften:
 
@@ -235,7 +238,7 @@ Dabei ist `T` der Datentyp, in den Sie die Daten deserialisieren möchten, und `
 Das Blob kann in die folgenden Typen deserialisiert werden:
 
 * Beliebiges [Objekt](https://msdn.microsoft.com/library/system.object.aspx) – nützlich für per JSON serialisierte Blobdaten.
-  Wenn Sie einen benutzerdefinierten Eingabetyp deklarieren (z.B. `FooType`), versucht Azure Functions, die JSON-Daten in den angegebenen Typ zu deserialisieren.
+  Wenn Sie einen benutzerdefinierten Eingabetyp deklarieren (z.B. `InputType`), versucht Azure Functions, die JSON-Daten in den angegebenen Typ zu deserialisieren.
 * Zeichenfolge – nützlich für Textblobdaten.
 
 In C#-Funktionen können Sie auch eine Bindung an folgende Typen einrichten. Die Functions-Laufzeit versucht, die Blobdaten mithilfe dieses Typs zu deserialisieren:
@@ -347,7 +350,7 @@ In C#-Funktionen stellen Sie eine Bindung an das Ausgabeblob mithilfe des benann
 Sie können in das Ausgabeblob schreiben, indem Sie einen der folgenden Typen verwenden:
 
 * Beliebiges [Objekt](https://msdn.microsoft.com/library/system.object.aspx) – nützlich für JSON-Serialisierung.
-  Wenn Sie einen benutzerdefinierten Ausgabetyp deklarieren (z.B. `out FooType paramName`), versucht Azure Functions, das Objekt in JSON zu serialisieren. Wenn der Ausgabeparameter bei Beendigung der Funktion NULL ist, erstellt die Functions-Laufzeit ein Blob als NULL-Objekt.
+  Wenn Sie einen benutzerdefinierten Ausgabetyp deklarieren (z.B. `out OutputType paramName`), versucht Azure Functions, das Objekt in JSON zu serialisieren. Wenn der Ausgabeparameter bei Beendigung der Funktion NULL ist, erstellt die Functions-Laufzeit ein Blob als NULL-Objekt.
 * Zeichenfolge – (`out string paramName`) nützlich für Textblobdaten. Die Functions-Laufzeit erstellt nur dann ein Blob, wenn der Zeichenfolgenparameter bei Rückgabe durch die Funktion ungleich NULL ist.
 
 In C#-Funktionen können Sie auch eine Ausgabe in einen der folgenden Typen erstellen:
@@ -358,8 +361,6 @@ In C#-Funktionen können Sie auch eine Ausgabe in einen der folgenden Typen erst
 * `ICloudBlob`
 * `CloudBlockBlob` 
 * `CloudPageBlob` 
-* `ICollector<T>` (um mehrere Blobs auszugeben)
-* `IAsyncCollector<T>` (asynchrone Version von `ICollector<T>`)
 
 <a name="outputsample"></a>
 
@@ -368,10 +369,5 @@ Siehe [Eingabebeispiel](#inputsample).
 
 ## <a name="next-steps"></a>Nächste Schritte
 [!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

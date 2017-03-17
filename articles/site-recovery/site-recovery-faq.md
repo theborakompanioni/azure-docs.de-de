@@ -15,9 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 02/21/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 080dce21c2c803fc05c945cdadb1edd55bd7fe1c
-ms.openlocfilehash: 84c9ac92ec08d1e7c1a163c2990c4fe3e14bf9e5
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: aebd94edbad210f15bce5b39ebf73269ec67a209
+ms.openlocfilehash: 3bcba1123d3ec00c760d022d200609bf28c22362
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -129,10 +129,10 @@ Ja. Sie können Site Recovery-Workflows mithilfe der REST-API, PowerShell oder A
 
 ### <a name="if-i-replicate-to-azure-what-kind-of-storage-account-do-i-need"></a>Wenn ich in Azure repliziere, welche Art von Speicherkonto benötige ich?
 * **Klassisches Azure-Portal**: Wenn Sie Site Recovery im klassischen Azure-Portal bereitstellen, benötigen Sie ein [georedundantes Standardspeicherkonto](../storage/storage-redundancy.md#geo-redundant-storage). Storage Premium wird derzeit nicht unterstützt. Das Konto muss sich in der gleichen Region wie der Site Recovery-Tresor befinden.
-* **Azure-Portal**: Wenn Sie Site Recovery im Azure-Portal bereitstellen, benötigen Sie ein LRS- oder GRS-Speicherkonto. Wir empfehlen Ihnen die Verwendung von GRS, damit Resilienz für die Daten besteht, wenn es zu einem regionalen Ausfall kommt oder wenn die primäre Region nicht wiederhergestellt werden kann. Das Konto muss sich in derselben Region wie der Recovery Services-Tresor befinden. Storage Premium wird nur unterstützt, wenn Sie VMware-VMs oder physische Server replizieren.
+* **Azure-Portal**: Wenn Sie Site Recovery im Azure-Portal bereitstellen, benötigen Sie ein LRS- oder GRS-Speicherkonto. Wir empfehlen Ihnen die Verwendung von GRS, damit Resilienz für die Daten besteht, wenn es zu einem regionalen Ausfall kommt oder wenn die primäre Region nicht wiederhergestellt werden kann. Das Konto muss sich in derselben Region wie der Recovery Services-Tresor befinden. Storage Premium wird jetzt für die Replikation von virtuellen VMware-Computern, virtuellen Hyper-V-Computern und physischen Servern verwendet, wenn Sie Site Recovery im Azure-Portal bereitstellen.
 
 ### <a name="how-often-can-i-replicate-data"></a>Wie oft kann ich Daten replizieren?
-* **Hyper-V:** Hyper-V-VMs können alle 30 Sekunden, 5 Minuten oder 15 Minuten repliziert werden. Wenn Sie die SAN-Replikation eingerichtet haben, erfolgt die Replikation synchron.
+* **Hyper-V:** Virtuelle Hyper-V-Computer können alle 30 Sekunden (außer bei Storage Premium), alle 5 Minuten oder alle 15 Minuten repliziert werden. Wenn Sie die SAN-Replikation eingerichtet haben, erfolgt die Replikation synchron.
 * **VMware- und physische Server:** Hier ist eine Replikationshäufigkeit irrelevant. Die Replikation ist fortlaufend.
 
 ### <a name="can-i-extend-replication-from-existing-recovery-site-to-another-tertiary-site"></a>Kann die Replikation von vorhandenen Wiederherstellungsstandorten auf einen weiteren tertiären Standort erweitert werden?
@@ -142,7 +142,7 @@ Eine erweiterte oder verkettete Replikation wird nicht unterstützt. Fordern Sie
 Dies wird nicht unterstützt. Fordern Sie dieses Feature im [Feedbackforum](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from).
 
 ### <a name="can-i-exclude-specific-disks-from-replication"></a>Können bestimmte Datenträger von der Replikation ausgeschlossen werden?
-Dies wird unterstützt, wenn Sie in Azure mithilfe des Azure-Portals [VMware-VMs und physische Server replizieren](site-recovery-exclude-disk.md).
+Dies wird beim [Replizieren von virtuellen VMware-Computern und virtuellen Hyper-V-Computern](site-recovery-exclude-disk.md) nach Azure über das Azure-Portal unterstützt.
 
 ### <a name="can-i-replicate-virtual-machines-with-dynamic-disks"></a>Können virtuelle Computer mit dynamischen Datenträgern repliziert werden?
 Dynamische Datenträger werden unterstützt, wenn virtuelle Hyper-V-Computer repliziert werden. Sie werden auch unterstützt, wenn VMware-VMs und physische Computer in Azure repliziert werden. Der Betriebssystem-Datenträger muss ein Basisdatenträger sein.

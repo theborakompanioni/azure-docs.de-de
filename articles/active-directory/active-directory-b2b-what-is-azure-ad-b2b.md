@@ -13,11 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/09/2017
+ms.date: 02/18/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: a4e59dfa8a098f63c3173176c4d2675d6a59af00
-ms.openlocfilehash: 5e55afe6eb88a558ea4eb147860ac5e2ebc97dbc
+ms.sourcegitcommit: 14028332ecc17478230d035206e8e00f6af67f7b
+ms.openlocfilehash: 8b6bf676dfa0df45d59763db70655d85fa08809a
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -93,10 +94,7 @@ Weitere Artikel zur Azure AD B2B-Kollaboration:
 * [Azure Active Directory B2B-Zusammenarbeit: API und Anpassung](active-directory-b2b-api.md)
 * [Multi-Factor Authentication für Benutzer der B2B-Zusammenarbeit](active-directory-b2b-mfa-instructions.md)
 * [Hinzufügen von Benutzern der B2B-Zusammenarbeit ohne Einladung](active-directory-b2b-add-user-without-invite.md)
+
+* [Überwachung eines B2B-Zusammenarbeitsbenutzers und Berichterstellung](active-directory-b2b-auditing-and-reporting.md)
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

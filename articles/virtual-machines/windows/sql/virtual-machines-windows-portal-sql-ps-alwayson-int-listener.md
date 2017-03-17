@@ -1,5 +1,5 @@
 ---
-title: "Konfigurieren von Always On-Verfügbarkeitsgruppenlistenern | Microsoft Azure"
+title: "Konfigurieren von Always On-Verfügbarkeitsgruppenlistenern (Microsoft Azure) | Microsoft-Dokumentation"
 description: "Es wird beschrieben, wie Sie Verfügbarkeitsgruppenlistener unter dem Azure Resource Manager-Modell konfigurieren, indem Sie ein internes Lastenausgleichsmodul mit einer oder mehreren IP-Adressen verwenden."
 services: virtual-machines
 documentationcenter: na
@@ -15,8 +15,9 @@ ms.workload: iaas-sql-server
 ms.date: 12/28/2016
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: 407b189af12116d633ed505facf4bcfde9be5822
-ms.openlocfilehash: dd6eb530f715d98c39ab8730ee33922887d5f9cc
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 1430807db46326779866f57bca3982e5f9448951
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -98,7 +99,7 @@ foreach($VMName in $VMNames)
     }
 ```
 
-## <a name="a-nameadd-ipa-example-script-add-an-ip-address-to-an-existing-load-balancer-with-powershell"></a><a name="Add-IP"></a> Beispielskript: Hinzufügen einer IP-Adresse zu einem vorhandenen Load Balancer mit PowerShell
+## <a name="Add-IP"></a> Beispielskript: Hinzufügen einer IP-Adresse zu einem vorhandenen Load Balancer mit PowerShell
 Wenn Sie mehrere Verfügbarkeitsgruppen verwenden möchten, fügen Sie dem Load Balancer eine zusätzliche IP-Adresse hinzu. Für jede IP-Adresse sind eine eigene Lastenausgleichsregel, ein Testport und ein Front-End-Port erforderlich.
 
 Der Front-End-Port ist der Port, der von Anwendungen zum Herstellen einer Verbindung mit der SQL Server-Instanz genutzt wird. IP-Adressen für unterschiedliche Verfügbarkeitsgruppen können denselben Front-End-Port verwenden.
@@ -300,9 +301,4 @@ Verwenden Sie die folgenden PowerShell-Cmdlets, um ein internes Lastenausgleichs
 * [New-AzureRmLoadBalancerBackendAddressPoolConfig](http://msdn.microsoft.com/library/mt603791.aspx) erstellt eine Back-End-Adresspoolkonfiguration für einen Load Balancer. 
 * [New-AzureRmLoadBalancerProbeConfig](http://msdn.microsoft.com/library/mt603847.aspx) erstellt eine Testkonfiguration für einen Load Balancer.
 * [Remove-AzureRmLoadBalancer](http://msdn.microsoft.com/library/mt603862.aspx) entfernt einen Load Balancer aus einer Azure-Ressourcengruppe.
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

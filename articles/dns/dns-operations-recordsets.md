@@ -10,16 +10,18 @@ ms.service: dns
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
+ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: bfb59158facd2a4f861fa3221f032fc65419bdc0
-ms.openlocfilehash: 909103172d0950df6f86be6fe932581e7e7fd663
+ms.sourcegitcommit: 119275f335344858cd20b6a17ef87e3ef32b6e12
+ms.openlocfilehash: 51ed9893aa0a49b2bde5069cfcad222b0bae4fdc
+ms.lasthandoff: 03/01/2017
 
 ---
 
-# <a name="manage-dns-records-in-azure-dns-using-azure-powershell"></a>Verwalten von DNS-Einträgen in Azure DNS mithilfe von Azure PowerShell
+# <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>Verwalten von DNS-Einträgen und -Ressourceneintragssätzen in Azure DNS über Azure PowerShell
 
 > [!div class="op_single_selector"]
 > * [Azure-Portal](dns-operations-recordsets-portal.md)
@@ -55,7 +57,7 @@ Im folgenden Beispiel wird ein Ressourceneintragssatz mit dem relativen Namen �
 New-AzureRmDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -IPv4Address "1.2.3.4") 
 ```
 
-Zum Erstellen eines Ressourceneintragssatzes auf oberster Ebene der Zone (in diesem Fall „contoso.com“) verwenden Sie den Namen des Ressourceneintragssatzes „'@'“ (ohne Anführungszeichen):
+Zum Erstellen eines Ressourceneintragssatzes auf oberster Ebene der Zone (in diesem Fall „contoso.com“) verwenden Sie den Namen des Ressourceneintragssatzes „@“ (ohne Anführungszeichen):
 
 ```powershell
 New-AzureRmDnsRecordSet -Name "@" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -IPv4Address "1.2.3.4") 
@@ -110,7 +112,7 @@ New-AzureRmDnsRecordSet -Name "test-cname" -RecordType CNAME -ZoneName "contoso.
 
 ### <a name="create-an-mx-record-set-with-a-single-record"></a>Erstellen einer MX-Datensatzgruppe mit einem einzelnen Datensatz
 
-In diesem Beispiel verwenden wir den Namen des Eintragssatzes '@' zum Erstellen des MX-Eintrags auf oberster Ebene der Zone (in diesem Fall „contoso.com“).
+In diesem Beispiel verwenden wir den Namen des Eintragssatzes „@“ zum Erstellen des MX-Eintrags auf oberster Ebene der Zone (in diesem Fall „contoso.com“).
 
 
 ```powershell
@@ -133,7 +135,7 @@ New-AzureRmDnsRecordSet -Name 10 -RecordType PTR -ZoneName "my-arpa-zone.com" -R
 
 ### <a name="create-an-srv-record-set-with-a-single-record"></a>Erstellen einer SRV-Datensatzgruppe mit einem einzelnen Datensatz
 
-Geben Sie beim Erstellen eines [SRV-Ressourceneintragssatzes](dns-zones-records.md#srv-records) den *\_Dienst* und das *\_Protokoll* im Namen des Ressourceneintragssatzes an. Wenn Sie einen SRV-Ressourceneintragssatz auf der obersten Ebene der Zone erstellen, muss '@' nicht in den Namen des Ressourceneintragssatzes eingeschlossen werden.
+Geben Sie beim Erstellen eines [SRV-Ressourceneintragssatzes](dns-zones-records.md#srv-records) den *\_Dienst* und das *\_Protokoll* im Namen des Ressourceneintragssatzes an. Wenn Sie einen SRV-Ressourceneintragssatz auf der obersten Ebene der Zone erstellen, muss „@“ nicht in den Namen des Ressourceneintragssatzes eingeschlossen werden.
 
 ```powershell
 New-AzureRmDnsRecordSet -Name "_sip._tls" -RecordType SRV -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -Priority 0 -Weight 5 -Port 8080 -Target "sip.contoso.com") 
@@ -384,9 +386,4 @@ Informieren Sie sich ausführlicher über [Zonen und Einträge in Azure DNS](dns
 Lernen Sie, wie Sie bei Verwendung von Azure DNS [Ihre Zonen und Einträge schützen](dns-protect-zones-recordsets.md).
 <br>
 Machen Sie sich mit der [Azure DNS PowerShell-Referenzdokumentation](/powershell/resourcemanager/azurerm.dns/v2.3.0/azurerm.dns) vertraut.
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

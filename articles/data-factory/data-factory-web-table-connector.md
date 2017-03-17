@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2016
+ms.date: 02/23/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: dd8a68029449ad013c4df9a46c558efaefd20e96
-ms.openlocfilehash: 88f746a4802e13e062f4414e5d2032dfcee565b7
+ms.sourcegitcommit: 5046ec3f6a29fb4791cd6badc67c2111a9e3ab2c
+ms.openlocfilehash: 132ecec8aef2f166753214fce410237103583c08
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -186,9 +187,7 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 | --- | --- | --- |
 | Typ |Die Typeigenschaft muss auf **Web** |Ja |
 | Url |URL der Webquelle |Ja |
-| authenticationType |Anonym oder Standard. |Ja |
-| userName |Benutzername für die Standardauthentifizierung. |Ja (für die Standardauthentifizierung) |
-| password |Kennwort für die Standardauthentifizierung. |Ja (für die Standardauthentifizierung) |
+| authenticationType |Anonym |Ja |
 
 ### <a name="using-anonymous-authentication"></a>Verwenden der anonymen Authentifizierung
 
@@ -202,25 +201,6 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
         {
             "authenticationType": "Anonymous",
             "url" : "https://en.wikipedia.org/wiki/"
-        }
-    }
-}
-```
-
-### <a name="using-basic-authentication"></a>Verwenden der Standardauthentifizierung
-
-```JSON
-{
-    "name": "web",
-    "properties":
-    {
-        "type": "Web",
-        "typeProperties":
-        {
-            "authenticationType": "basic",
-            "url" : "http://myit.mycompany.com/",
-            "userName": "Administrator",
-            "password": "password"
         }
     }
 }
@@ -296,9 +276,4 @@ Rufen Sie den Index bei Verwendung von Excel 2013 mit [Microsoft Power Query fü
 
 ## <a name="performance-and-tuning"></a>Leistung und Optimierung
 Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

@@ -1,5 +1,5 @@
 ---
-title: "Entwickeln von branchenspezifischen Apps für Azure AD | Microsoft-Dokumentation"
+title: "Entwickeln von Apps für Azure AD | Microsoft-Dokumentation"
 description: "Dieser Artikel wendet sich an IT-Fachpersonal und erläutert Richtlinien zur Integration von Azure-Anwendungen in Active Directory."
 services: active-directory
 documentationcenter: 
@@ -12,15 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 02/27/2017
 ms.author: kgremban
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: e66b606433f8924a509f2d04dae67ff00ded6dca
-ms.openlocfilehash: cd1c8d74afa51815b3f6c093e6a9054b97359843
-
+ms.sourcegitcommit: 015cc28903bfd366c653a51b0f73512bf8b578ea
+ms.openlocfilehash: aa3c83f82d1a60253f70350e88aa96fb285ef3d9
+ms.lasthandoff: 02/28/2017
 
 ---
-# <a name="azure-ad-and-applications-develop-line-of-business-apps"></a>Azure AD und Anwendungen: Entwickeln von Branchen-Apps
+# <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Entwickeln von Branchen-Apps für Azure Active Directory
 Dieser Leitfaden bietet eine Übersicht über die Entwicklung von Branchenanwendungen (Line of Business, LoB) für Azure Active Directory (AD) und richtet sich primär an globale Administratoren von Active Directory/Office 365.
 
 ## <a name="overview"></a>Übersicht
@@ -80,9 +81,4 @@ Weitere Informationen über die Benutzerzustimmung und den Zustimmungsprozess in
 * [Bedingter Zugriff unter Azure – Vorschau für SaaS-Apps](active-directory-conditional-access-azuread-connected-apps.md)
 * [Verwalten des Zugriffs auf Apps mit Azure AD](active-directory-managing-access-to-apps.md)
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

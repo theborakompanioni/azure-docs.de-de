@@ -15,12 +15,13 @@ ms.workload: infrastructure-services
 ms.date: 12/16/2016
 ms.author: amsriva
 translationtype: Human Translation
-ms.sourcegitcommit: 3a8e5583f213c6d35f8e41dd31fe2ccad7389977
-ms.openlocfilehash: a3c0aaae014619fb3f4a2fffa6063a473da691e1
+ms.sourcegitcommit: 119275f335344858cd20b6a17ef87e3ef32b6e12
+ms.openlocfilehash: 5af1b1bacce2fe189a7b557527520795ed622b54
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="application-gateway-websocket-support"></a>WebSocket-Unterstützung von Application Gateway
+# <a name="overview-of-websocket-support-in-application-gateway"></a>Übersicht über die WebSocket-Unterstützung in Application Gateway
 
 WebSocket wird von Application Gateway nativ für alle Gatewaygrößen unterstützt. Die WebSocket-Unterstützung kann von Benutzern nicht selektiv aktiviert oder deaktiviert werden. WebSocket-Datenverkehr kann mit einem standardmäßigen HTTP-Listener an den Ports 80 und 443 empfangen werden. Der empfangene WebSocket-Datenverkehr wird dann unter Verwendung des entsprechenden Back-End-Pools (gemäß Angabe in Anwendungsgatewayregeln) an den WebSocket-fähigen Back-End-Server weitergeleitet. Das in [RFC6455](https://tools.ietf.org/html/rfc6455) standardisierte WebSocket-Protokoll ermöglicht die Vollduplexkommunikation zwischen Server und Client über eine TCP-Verbindung mit langer Laufzeit. Dieses Feature ermöglicht wiederum mehr Interaktivität bei der Kommunikation zwischen Webserver und Client, da die Kommunikation auch ohne die bei HTTP-basierten Implementierungen erforderlichen Abfragen bidirektional sein kann.  Im Vergleich zu HTTP zeichnen sich WebSockets durch einen geringen Mehraufwand aus. Außerdem können sie die gleiche TCP-Verbindung für mehrere Anforderungen/Antworten verwenden, was eine effizientere Ressourcennutzung zur Folge hat. WebSocket-Protokolle sind für die Nutzung der herkömmlichen HTTP-Ports 80 und 443 konzipiert.
 
@@ -120,10 +121,5 @@ Ein weiterer Grund: Der Back-End-Integritätstest des Anwendungsgateways unterst
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informieren Sie sich im Anschluss an die WebSocket-Unterstützung unter [Erstellen eines Anwendungsgateways](application-gateway-create-gateway.md) über die ersten Schritte mit einer WebSocket-fähigen Webanwendung.
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

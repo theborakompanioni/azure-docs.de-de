@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 03/02/2017
 ms.author: SubramaR
 translationtype: Human Translation
-ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
-ms.openlocfilehash: 175edd2c45319f197d1df65ae22853ca0dc3d310
-ms.lasthandoff: 01/30/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: c4c83345596900162826feab9fe549bc261e7d00
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -27,16 +27,16 @@ Die Vorschauversion von Service Fabric unter Linux ermöglicht Ihnen, hoch verf�
 Service Fabric unter Linux entspricht dem Konzept von Service Fabric unter Windows (mit Ausnahme von Betriebssystembesonderheiten und der Unterstützung von Programmiersprachen). Folglich können Sie einen Großteil unserer [vorhandenen Dokumentation](http://aka.ms/servicefabricdocs) nutzen, um sich mit der Technologie vertraut zu machen.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Service-Fabric-Linux-Preview/player]
-> 
-> 
+>
+>
 
 ## <a name="supported-operating-systems-and-programming-languages"></a>Unterstützte Betriebssysteme und Programmiersprachen
 Die eingeschränkte Vorschauversion unterstützt das Erstellen von Entwicklungsclustern mit einem Computer sowie Clustern mit mehreren Computern in Azure, auf denen Ubuntu Server 16.04 ausgeführt wird. Die Vorschau unterstützt zusätzlich zu ausführbaren Gastanwendungsdateien und zur Orchestrierung von Docker-Containern die Reliable Actors-Frameworks und Frameworks für zustandslose Reliable Services in Java und C#.  
 
 > [!NOTE]
 > Reliable Collections werden unter Linux noch nicht unterstützt. Eigenständige Cluster werden ebenfalls nicht unterstützt. In der Vorschau werden lediglich One-Box-Cluster und Azure Linux-Cluster mit mehreren Computern unterstützt.
-> 
-> 
+>
+>
 
 
 ## <a name="supported-tooling"></a>Unterstützte Tools
@@ -47,5 +47,5 @@ Die Vorschau unterstützt die Interaktion mit dem Cluster über die Azure-Befehl
 2. [Vorbereiten Ihrer Entwicklungsumgebung unter Linux](service-fabric-get-started-linux.md)
 3. [Prepare your development environment on OSX (Vorbereiten Ihrer Entwicklungsumgebung unter OSX)](service-fabric-get-started-mac.md)
 4. [Create your first Service Fabric Java application on Linux](service-fabric-create-your-first-linux-application-with-java.md)
-
+5. [Einrichten von Continuous Integration und Continuous Deployment für Service Fabric mit Jenkins und GitHub](service-fabric-cicd-your-linux-java-application-with-jenkins.md)
 

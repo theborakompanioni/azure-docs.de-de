@@ -1238,7 +1238,7 @@ Diese Version enthält die folgenden Aktualisierungen von Komponenten.
 <td>YARN Timeline Server</td>
 <td>Der YARN Timeline Server (auch bekannt als Generic Application History Server) wurde standardmäßig aktiviert. Der Timeline Server bietet allgemeine Informationen zu vervollständigten Anwendungen (wie Anwendungs-ID, Anwendungsname, Anwendungszustand sowie Uhrzeit der Anwendungsübermittlung und -vervollständigung).
 
-Diese Anwendungsinformationen können vom Hauptknoten mittels Zugriff auf „http://headnodehost:8188“ oder durch Ausführen des folgenden YARN-Befehls abgerufen werden: yarn application -list -appStates ALL.
+Diese Anwendungsinformationen können vom Hauptknoten mittels Zugriff auf http://headnodehost:8188 oder durch Ausführen des folgenden YARN-Befehls abgerufen werden: yarn application -list -appStates ALL.
 
 Diese Informationen können auch remote über die REST API unter https://{ClusterDnsName}. azurehdinsight.net/ws/v1/applicationhistory/ abgerufen werden.
 

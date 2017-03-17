@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/17/2016
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: b520b4672dd403981d218c9855c3beb09ef55021
-ms.openlocfilehash: 6da28e6273d92445e4b14ea22752a6e59b1dd93a
+ms.sourcegitcommit: d7e635f7e84ac53399309bf4ec8a7fa9e70e3728
+ms.openlocfilehash: aa18efb0c622ae38eea0de28f25c72788e6d0f20
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -192,103 +193,135 @@ In den Beispielszenarios werden wir Richtlinien für Apps, Dienstprinzipale und 
 
 1. Laden Sie zunächst das aktuelle [Azure AD PowerShell-Cmdlet (Vorschau)](https://www.powershellgallery.com/packages/AzureADPreview) herunter. 
 2. Nach dem Herunterladen des Azure AD PowerShell-Cmdlets führen Sie den Befehl „Connect“ aus, um sich bei Ihrem Azure AD-Administratorkonto anzumelden. Sie müssen dies jedes Mal tun, wenn Sie eine neue Sitzung starten.
+
+    ```PowerShell
+    Connect-AzureAD -Confirm
+    ```
+
+3. Führen Sie den folgenden Befehl aus, um alle Richtlinien anzuzeigen, die in Ihrer Organisation erstellt wurden.  Dieser Befehl sollte nach den meisten Vorgängen in den folgenden Szenarios verwendet werden.  Außerdem erhalten Sie so die **ObjectId** Ihrer Richtlinien. 
    
-     Connect-AzureAD -Confirm
-3. Führen Sie den folgenden Befehl aus, um alle Richtlinien anzuzeigen, die in Ihrer Organisation erstellt wurden.  Dieser Befehl sollte nach den meisten Vorgängen in den folgenden Szenarios verwendet werden.  Außerdem erhalten Sie so die **Objekt-ID** Ihrer Richtlinien. 
-   
-     Get-AzureADPolicy
+    ```PowerShell
+    Get-AzureADPolicy
+    ```
 
 ### <a name="sample-managing-a-organizations-default-policy"></a>Beispiel: Verwalten der Standardrichtlinie einer Organisation
 In diesem Beispiel wird eine Richtlinie erstellt, die es den Benutzern ermöglicht, sich weniger häufig bei Ihrer gesamten Organisation anzumelden. 
 
 Hierzu erstellen wir eine Richtlinie für die Tokengültigkeitsdauer für Single-Factor-Aktualisierungstoken, die auf Ihre gesamte Organisation angewendet wird. Diese Richtlinie wird auf jede Anwendung in Ihrer Organisation und jeden Dienstprinzipal angewandt, für die/den noch keine Richtlinie festgelegt wurde. 
 
-1. **Legen Sie eine Tokengültigkeitsdauer-Richtlinie an.** 
+#### <a name="1-create-a-token-lifetime-policy"></a>1. Erstellen Sie eine Tokengültigkeitsdauer-Richtlinie.
 
 Setzen Sie das Single-Factor-Aktualisierungstoken auf „Bis zum Widerruf“, was bedeutet, es läuft erst ab, wenn der Zugriff widerrufen wird.  Wir werden die untenstehende Richtliniendefinition erstellen:
 
-        @("{
-          `"TokenLifetimePolicy`":
-              {
-                 `"Version`":1, 
-                 `"MaxAgeSingleFactor`":`"until-revoked`"
-              }
-        }")
+```PowerShell
+@('{
+    "TokenLifetimePolicy":
+    {
+        "Version":1, 
+        "MaxAgeSingleFactor":"until-revoked"
+    }
+}')
+```
 
 Führen Sie nun den folgenden Befehl zum Erstellen dieser Richtlinie aus. 
 
-    New-AzureADPolicy -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1, `"MaxAgeSingleFactor`":`"until-revoked`"}}") -DisplayName OrganizationDefaultPolicyScenario -IsOrganizationDefault $true -Type TokenLifetimePolicy
+```PowerShell
+New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1, "MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "OrganizationDefaultPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
+```
 
-Um Ihre neue Richtlinie und deren ObjectID abzurufen, führen Sie den folgenden Befehl aus.
+Um Ihre neue Richtlinie und deren ObjectId abzurufen, führen Sie den folgenden Befehl aus.
 
-    Get-AzureADPolicy
-&nbsp;&nbsp;2.    **Aktualisieren Sie die Richtlinie.**
+```PowerShell
+Get-AzureADPolicy
+```
+
+#### <a name="2-update-the-policy"></a>2. Aktualisieren Sie die Richtlinie.
 
 Sie haben festgestellt, dass die erste Richtlinie nicht so streng ist, wie es Ihr Dienst erfordert, weshalb Ihre Single-Factor-Aktualisierungstoken nach zwei Tagen ablaufen sollen. Führen Sie den folgenden Befehl aus: 
 
-    Set-AzureADPolicy -ObjectId <ObjectID FROM GET COMMAND> -DisplayName OrganizationDefaultPolicyUpdatedScenario -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxAgeSingleFactor`":`"2.00:00:00`"}}")
+```PowerShell
+Set-AzureADPolicy -ObjectId <ObjectId FROM GET COMMAND> -DisplayName "OrganizationDefaultPolicyUpdatedScenario" -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"2.00:00:00"}}')
+```
 
-&nbsp;&nbsp;3. **Fertig!** 
+#### <a name="3-youre-done"></a>3. Sie haben es geschafft! 
 
 ### <a name="sample-creating-a-policy-for-web-sign-in"></a>Beispiel: Erstellen einer Richtlinie für die Webanmeldung
+
 In diesem Beispiel erstellen wir eine Richtlinie, die öfter eine Authentifizierung von Benutzern in Ihrer Web-App erfordert. Diese Richtlinie wird die Lebensdauer der Zugriffs-/ID-Token und das maximale Alter eines Multi-Factor-Sitzungstokens auf die Werte des Dienstprinzipals Ihrer Web-App setzen.
 
-1. **Legen Sie eine Tokengültigkeitsdauer-Richtlinie an.**
+#### <a name="1-create-a-token-lifetime-policy"></a>1. Erstellen Sie eine Tokengültigkeitsdauer-Richtlinie.
 
 Diese Richtlinie für die Webanmeldung wird die Gültigkeit des Zugriffs-/ID-Tokens und das maximale Alter des Single-Factor-Sitzungstokens auf zwei Stunden festlegen.
 
-    New-AzureADPolicy -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"AccessTokenLifetime`":`"02:00:00`",`"MaxAgeSessionSingleFactor`":`"02:00:00`"}}") -DisplayName WebPolicyScenario -IsOrganizationDefault $false -Type TokenLifetimePolicy
+```PowerShell
+New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"AccessTokenLifetime":"02:00:00","MaxAgeSessionSingleFactor":"02:00:00"}}') -DisplayName "WebPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
+```
 
-Um Ihre neue Richtlinie und deren ObjectID abzurufen, führen Sie den folgenden Befehl aus.
+Um Ihre neue Richtlinie und deren ObjectId abzurufen, führen Sie den folgenden Befehl aus.
 
-    Get-AzureADPolicy
-&nbsp;&nbsp;2.    **Weisen Sie die Richtlinie Ihrem Dienstprinzipal zu.**
+```PowerShell
+Get-AzureADPolicy
+```
+
+#### <a name="2-assign-the-policy-to-your-service-principal"></a>2. Weisen Sie die Richtlinie Ihrem Dienstprinzipal zu.
 
 Wir werden diese neue Richtlinie mit einen Dienstprinzipal verknüpfen.  Sie benötigen auch eine Möglichkeit, auf die **ObjectId** Ihres Dienstprinzipals zuzugreifen. Sie können [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) abfragen oder zum [Graph-Tester](https://graphexplorer.cloudapp.net/) wechseln und sich bei Ihrem Azure AD-Konto anmelden, um alle Dienstprinzipale Ihrer Organisation zu sehen. 
 
 Nachdem Sie die **ObjectId** abgerufen haben, führen Sie den folgenden Befehl aus.
 
-    Add-AzureADServicePrincipalPolicy -ObjectId <ObjectID of the Service Principal> -RefObjectId <ObjectId of the Policy>
-&nbsp;&nbsp;3.    **Fertig!** 
+```PowerShell
+Add-AzureADServicePrincipalPolicy -ObjectId <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
+```
 
- 
+#### <a name="3-youre-done"></a>3. Fertig! 
 
 ### <a name="sample-creating-a-policy-for-native-apps-calling-a-web-api"></a>Beispiel: Erstellen einer Richtlinie für native Apps, die eine Web-API aufrufen
 In diesem Beispiel werden wir eine Richtlinie erstellen, mit der sich Benutzer seltener authentifizieren müssen und die die Zeitspanne verlängert, die Benutzer inaktiv sein können, ohne sich erneut authentifizieren zu müssen. Die Richtlinie wird auf die Web-API angewandt. Wenn die native App sie als Ressource anfordert, wird diese Richtlinie somit angewandt.
 
-1. **Legen Sie eine Tokengültigkeitsdauer-Richtlinie an.** 
+#### <a name="1-create-a-token-lifetime-policy"></a>1. Erstellen Sie eine Tokengültigkeitsdauer-Richtlinie. 
 
 Mit diesem Befehl wird eine strenge Richtlinie für eine Web-API erstellt. 
 
-    New-AzureADPolicy -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxInactiveTime`":`"30.00:00:00`",`"MaxAgeMultiFactor`":`"until-revoked`",`"MaxAgeSingleFactor`":`"180.00:00:00`"}}") -DisplayName WebApiDefaultPolicyScenario -IsOrganizationDefault $false -Type TokenLifetimePolicy
+```PowerShell
+New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"30.00:00:00","MaxAgeMultiFactor":"until-revoked","MaxAgeSingleFactor":"180.00:00:00"}}') -DisplayName "WebApiDefaultPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
+```
 
-Um Ihre neue Richtlinie und deren ObjectID abzurufen, führen Sie den folgenden Befehl aus.
+Um Ihre neue Richtlinie und deren ObjectId abzurufen, führen Sie den folgenden Befehl aus.
 
-    Get-AzureADPolicy
+```PowerShell
+Get-AzureADPolicy
+```
 
-&nbsp;&nbsp;2.    **Weisen Sie die Richtlinie Ihrer Web-API zu**.
+#### <a name="2-assign-the-policy-to-your-web-api"></a>2. Weisen Sie die Richtlinie Ihrer Web-API zu.
 
 Wir werden diese neue Richtlinie mit einer Anwendung verknüpfen.  Sie benötigen ferner eine Möglichkeit, auf die **ObjectId** Ihrer Anwendung zuzugreifen. Die **ObjectId** Ihrer App suchen Sie idealerweise über das [Azure-Portal](https://portal.azure.com/). 
 
 Nachdem Sie die **ObjectId** abgerufen haben, führen Sie den folgenden Befehl aus.
 
-    Add-AzureADApplicationPolicy -ObjectId <ObjectID of the App> -RefObjectId <ObjectId of the Policy>
+```PowerShell
+Add-AzureADApplicationPolicy -ObjectId <ObjectId of the Application> -RefObjectId <ObjectId of the Policy>
+```
 
-&nbsp;&nbsp;3.    **Fertig!** 
+#### <a name="3-youre-done"></a>3. Fertig! 
 
 ### <a name="sample-managing-an-advanced-policy"></a>Beispiel: Verwalten einer erweiterten Richtlinie
 In diesem Beispiel erstellen wir einige Richtlinien, um zu zeigen, wie das Prioritätssystem funktioniert und wie Sie mehrere Richtlinien verwalten können, die auf mehrere Objekte angewandt werden. Dadurch erhalten Sie Einblick in die Priorität der oben erläuterten Richtlinien und können auch komplexere Szenarios verwalten. 
 
-1. **Legen Sie eine Tokengültigkeitsdauer-Richtlinie an.**
+#### <a name="1-create-a-token-lifetime-policy"></a>1. Erstellen Sie eine Tokengültigkeitsdauer-Richtlinie.
 
 Bisher war es noch ziemlich einfach. Wir haben eine Standardrichtlinie für die Organisation erstellt, die die Gültigkeitsdauer des Single-Factor-Aktualisierungstokens auf 30 Tage festsetzt. 
 
-    New-AzureADPolicy -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxAgeSingleFactor`":`"30.00:00:00`"}}") -DisplayName ComplexPolicyScenario -IsOrganizationDefault $true -Type TokenLifetimePolicy
-Um Ihre neue Richtlinie anzuzeigen und deren ObjectID abzurufen, führen Sie den folgenden Befehl aus.
+```PowerShell
+New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"30.00:00:00"}}') -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
+```
 
-    Get-AzureADPolicy
+Um Ihre neue Richtlinie anzuzeigen und deren ObjectId abzurufen, führen Sie den folgenden Befehl aus.
 
-&nbsp;&nbsp;2.    **Weisen Sie die Richtlinie einem Dienstprinzipal zu.**
+```PowerShell
+Get-AzureADPolicy
+```
+
+#### <a name="2-assign-the-policy-to-a-service-principal"></a>2. Weisen Sie die Richtlinie einem Dienstprinzipal zu.
 
 Nun verfügen wir über eine Richtlinie für die gesamte Organisation.  Nehmen wir an, dass diese 30-Tage-Richtlinie für einen bestimmten Dienstprinzipal beibehalten werden soll, die Organisationsstandardrichtlinie jedoch so geändert werden soll, dass sie als Obergrenze für „Bis zum Widerruf“ fungiert. 
 
@@ -296,84 +329,104 @@ Wir werden diese neue Richtlinie zunächst mit unserem Dienstprinzipal verknüpf
 
 Nachdem Sie die **ObjectId** abgerufen haben, führen Sie den folgenden Befehl aus.
 
-    Add-AzureADServicePrincipalPolicy -ObjectId <ObjectID of the Service Principal> -RefObjectId <ObjectId of the Policy>
+```PowerShell
+Add-AzureADServicePrincipalPolicy -ObjectId <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
+```
 
-&nbsp;&nbsp;3.    **Setzen Sie das IsOrganizationDefault-Flag mithilfe des folgenden Befehls auf „false“.** 
+#### <a name="3-set-the-isorganizationdefault-flag-to-false"></a>3. Setzen Sie das IsOrganizationDefault-Flag auf „false“.
 
-    Set-AzureADPolicy -ObjectId <ObjectId of Policy> -DisplayName ComplexPolicyScenario -IsOrganizationDefault $false
-&nbsp;&nbsp;4.    **Erstellen Sie eine neue Organisationsstandardrichtlinie.**
+```PowerShell
+Set-AzureADPolicy -ObjectId <ObjectId of Policy> -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $false
+```
 
-    New-AzureADPolicy -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxAgeSingleFactor`":`"until-revoked`"}}") -DisplayName ComplexPolicyScenarioTwo -IsOrganizationDefault $true -Type TokenLifetimePolicy
+#### <a name="4-create-a-new-organization-default-policy"></a>4. Erstellen Sie eine neue Organisationsstandardrichtlinie.
 
-&nbsp;&nbsp;5.     **Fertig!** 
+```PowerShell
+New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "ComplexPolicyScenarioTwo" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
+```
+
+#### <a name="5-youre-done"></a>5. Fertig! 
 
 Sie haben jetzt die ursprüngliche Richtlinie mit Ihrem Dienstprinzipal verknüpft und die neue Richtlinie als Organisationsstandardrichtlinie festgelegt.  Beachten Sie, dass Richtlinien für Dienstprinzipale Priorität vor Organisationsstandardrichtlinien haben. 
 
 ## <a name="cmdlet-reference"></a>Cmdlet-Referenz
+
 ### <a name="manage-policies"></a>Verwalten von Richtlinien
-Mit den folgenden Cmdlets können Richtlinien verwaltet werden.</br></br>
+
+Mit den folgenden Cmdlets können Richtlinien verwaltet werden.
 
 #### <a name="new-azureadpolicy"></a>New-AzureADPolicy
+
 Erstellt eine neue Richtlinie.
 
-    New-AzureADPolicy -Definition <Array of Rules> -DisplayName <Name of Policy> -IsOrganizationDefault <boolean> -Type <Policy Type> 
+```PowerShell
+New-AzureADPolicy -Definition <Array of Rules> -DisplayName <Name of Policy> -IsOrganizationDefault <boolean> -Type <Policy Type> 
+```
 
 | Parameter | Beschreibung | Beispiel |
 | --- | --- | --- |
-| -Definition |Das JSON-Array, dargestellt als Zeichenfolge, das alle Regeln der Richtlinie enthält. |-Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxInactiveTime`":`"20:00:00`"}}") |
-| -DisplayName |Zeichenfolge mit dem Namen der Richtlinie |-DisplayName MyTokenPolicy |
-| -IsOrganizationDefault |Bei TRUE wird die Richtlinie als Standardrichtlinie der Organisation festgelegt, bei FALSE hat der Wert keine Auswirkung. |-IsOrganizationDefault $true |
-| -Type |Die Art der Richtlinie; verwenden Sie für die Tokengültigkeitsdauer stets „TokenLifetimePolicy“. |-Type TokenLifetimePolicy |
-| -AlternativeIdentifier [optional] |Legt eine alternative ID für die Richtlinie fest. |-AlternativeIdentifier myAltId |
+| <code>&#8209;Definition</code> |Das JSON-Array, dargestellt als Zeichenfolge, das alle Regeln der Richtlinie enthält. | `-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
+| <code>&#8209;DisplayName</code> |Zeichenfolge mit dem Namen der Richtlinie |`-DisplayName "MyTokenPolicy"` |
+| <code>&#8209;IsOrganizationDefault</code> |Bei TRUE wird die Richtlinie als Standardrichtlinie der Organisation festgelegt, bei FALSE hat der Wert keine Auswirkung. |`-IsOrganizationDefault $true` |
+| <code>&#8209;Type</code> |Die Art der Richtlinie; verwenden Sie für die Tokengültigkeitsdauer stets „TokenLifetimePolicy“. | `-Type "TokenLifetimePolicy"` |
+| <code>&#8209;AlternativeIdentifier</code> [Optional] |Legt eine alternative ID für die Richtlinie fest. |`-AlternativeIdentifier "myAltId"` |
 
 </br></br>
 
 #### <a name="get-azureadpolicy"></a>Get-AzureADPolicy
 Ruft alle Azure AD-Richtlinien oder die angegebene Richtlinie ab. 
 
-    Get-AzureADPolicy 
+```PowerShell
+Get-AzureADPolicy 
+```
 
 | Parameter | Beschreibung | Beispiel |
 | --- | --- | --- |
-| -ObjectId [optional] |Die Objekt-ID der Richtlinie, die Sie abrufen möchten |-ObjectId &lt;Objekt-ID der Richtlinie&gt; |
+| <code>&#8209;ObjectId</code> [Optional] |Die ObjectId der Richtlinie, die Sie abrufen möchten. |`-ObjectId <ObjectId of Policy>` |
 
 </br></br>
 
 #### <a name="get-azureadpolicyappliedobject"></a>Get-AzureADPolicyAppliedObject
 Ruft alle Apps und Dienstprinzipale ab, die mit einer Richtlinie verknüpft sind.
 
-    Get-AzureADPolicyAppliedObject -ObjectId <object id of policy> 
+```PowerShell
+Get-AzureADPolicyAppliedObject -ObjectId <ObjectId of Policy> 
+```
 
 | Parameter | Beschreibung | Beispiel |
 | --- | --- | --- |
-| -ObjectId |Die Objekt-ID der Richtlinie, die Sie abrufen möchten |-ObjectId &lt;Objekt-ID der Richtlinie&gt; |
+| <code>&#8209;ObjectId</code> |Die ObjectId der Richtlinie, die Sie abrufen möchten. |`-ObjectId <ObjectId of Policy>` |
 
 </br></br>
 
 #### <a name="set-azureadpolicy"></a>Set-AzureADPolicy
 Aktualisiert eine vorhandene Richtlinie.
 
-    Set-AzureADPolicy -ObjectId <object id of policy> -DisplayName <string> 
+```PowerShell
+Set-AzureADPolicy -ObjectId <ObjectId of Policy> -DisplayName <string> 
+```
 
 | Parameter | Beschreibung | Beispiel |
 | --- | --- | --- |
-| -ObjectId |Die Objekt-ID der Richtlinie, die Sie abrufen möchten |-ObjectId &lt;Objekt-ID der Richtlinie&gt; |
-| -DisplayName |Zeichenfolge mit dem Namen der Richtlinie |-DisplayName MyTokenPolicy |
-| -Definition [optional] |Das JSON-Array, dargestellt als Zeichenfolge, das alle Regeln der Richtlinie enthält. |-Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxInactiveTime`":`"20:00:00`"}}") |
-| -IsOrganizationDefault [Optional] |Bei TRUE wird die Richtlinie als Standardrichtlinie der Organisation festgelegt, bei FALSE hat der Wert keine Auswirkung. |-IsOrganizationDefault $true |
-| -Type [optional] |Die Art der Richtlinie; verwenden Sie für die Tokengültigkeitsdauer stets „TokenLifetimePolicy“. |-Type TokenLifetimePolicy |
-| -AlternativeIdentifier [optional] |Legt eine alternative ID für die Richtlinie fest. |-AlternativeIdentifier myAltId |
+| <code>&#8209;ObjectId</code> |Die ObjectId der Richtlinie, die Sie abrufen möchten. |`-ObjectId <ObjectId of Policy>` |
+| <code>&#8209;DisplayName</code> |Zeichenfolge mit dem Namen der Richtlinie |`-DisplayName "MyTokenPolicy"` |
+| <code>&#8209;Definition</code> [Optional] |Das JSON-Array, dargestellt als Zeichenfolge, das alle Regeln der Richtlinie enthält. |`-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
+| <code>&#8209;IsOrganizationDefault</code> [Optional] |Bei TRUE wird die Richtlinie als Standardrichtlinie der Organisation festgelegt, bei FALSE hat der Wert keine Auswirkung. |`-IsOrganizationDefault $true` |
+| <code>&#8209;Type</code> [Optional] |Die Art der Richtlinie; verwenden Sie für die Tokengültigkeitsdauer stets „TokenLifetimePolicy“. |`-Type "TokenLifetimePolicy"` |
+| <code>&#8209;AlternativeIdentifier</code> [Optional] |Legt eine alternative ID für die Richtlinie fest. |`-AlternativeIdentifier "myAltId"` |
 
 </br></br>
 
 #### <a name="remove-azureadpolicy"></a>Remove-AzureADPolicy
 Löscht die angegebene Richtlinie
 
-     Remove-AzureADPolicy -ObjectId <object id of policy>
+```PowerShell
+ Remove-AzureADPolicy -ObjectId <ObjectId of Policy>
+```
 
 | Parameter | Beschreibung | Beispiel |
 | --- | --- | --- |
-| -ObjectId |Die Objekt-ID der Richtlinie, die Sie abrufen möchten |-ObjectId &lt;Objekt-ID der Richtlinie&gt; |
+| <code>&#8209;ObjectId</code> |Die ObjectId der Richtlinie, die Sie abrufen möchten. | `-ObjectId <ObjectId of Policy>` |
 
 </br></br>
 
@@ -383,35 +436,41 @@ Die folgenden Cmdlets können für Anwendungsrichtlinien verwendet werden.</br><
 #### <a name="add-azureadapplicationpolicy"></a>Add-AzureADApplicationPolicy
 Verknüpft die angegebene Richtlinie mit einer Anwendung
 
-    Add-AzureADApplicationPolicy -ObjectId <object id of application> -RefObjectId <object id of policy>
+```PowerShell
+Add-AzureADApplicationPolicy -ObjectId <ObjectId of Application> -RefObjectId <ObjectId of Policy>
+```
 
 | Parameter | Beschreibung | Beispiel |
 | --- | --- | --- |
-| -ObjectId |Die Objekt-ID der Anwendung |-ObjectId &lt;Objekt-ID der Anwendung&gt; |
-| -RefObjectId |Die Objekt-ID der Richtlinie |-RefObjectId &lt;Objekt-ID der Richtlinie&gt; |
+| <code>&#8209;ObjectId</code> |Die ObjectId der Anwendung. | `-ObjectId <ObjectId of Application>` |
+| <code>&#8209;RefObjectId</code> |Die ObjectId der Richtlinie. | `-RefObjectId <ObjectId of Policy>` |
 
 </br></br>
 
 #### <a name="get-azureadapplicationpolicy"></a>Get-AzureADApplicationPolicy
 Ruft die Richtlinie ab, die einer Anwendung zugewiesen ist
 
-    Get-AzureADApplicationPolicy -ObjectId <object id of application>
+```PowerShell
+Get-AzureADApplicationPolicy -ObjectId <ObjectId of Application>
+```
 
 | Parameter | Beschreibung | Beispiel |
 | --- | --- | --- |
-| -ObjectId |Die Objekt-ID der Anwendung |-ObjectId &lt;Objekt-ID der Anwendung&gt; |
+| <code>&#8209;ObjectId</code> |Die ObjectId der Anwendung. | `-ObjectId <ObjectId of Application>` |
 
 </br></br>
 
 #### <a name="remove-azureadapplicationpolicy"></a>Remove-AzureADApplicationPolicy
 Entfernt eine Richtlinie aus einer Anwendung
 
-    Remove-AzureADApplicationPolicy -ObjectId <object id of application> -PolicyId <object id of policy>
+```PowerShell
+Remove-AzureADApplicationPolicy -ObjectId <ObjectId of Application> -PolicyId <ObjectId of Policy>
+```
 
 | Parameter | Beschreibung | Beispiel |
 | --- | --- | --- |
-| -ObjectId |Die Objekt-ID der Anwendung |-ObjectId &lt;Objekt-ID der Anwendung&gt; |
-| -PolicyId |Die Objekt-ID der Richtlinie |-PolicyId &lt;ObjectID der Richtlinie&gt; |
+| <code>&#8209;ObjectId</code> |Die ObjectId der Anwendung. | `-ObjectId <ObjectId of Application>` |
+| <code>&#8209;PolicyId</code> |Die ObjectId der Richtlinie. | `-PolicyId <ObjectId of Policy>` |
 
 </br></br>
 
@@ -421,39 +480,40 @@ Die folgenden Cmdlets können für Dienstprinzipalrichtlinien verwendet werden.<
 #### <a name="add-azureadserviceprincipalpolicy"></a>Add-AzureADServicePrincipalPolicy
 Verknüpft die angegebene Richtlinie mit einem Dienstprinzipal
 
-    Add-AzureADServicePrincipalPolicy -ObjectId <object id of service principal> -RefObjectId <object id of policy>
+```PowerShell
+Add-AzureADServicePrincipalPolicy -ObjectId <ObjectId of ServicePrincipal> -RefObjectId <ObjectId of Policy>
+```
 
 | Parameter | Beschreibung | Beispiel |
 | --- | --- | --- |
-| -ObjectId |Die Objekt-ID der Anwendung |-ObjectId &lt;Objekt-ID der Anwendung&gt; |
-| -RefObjectId |Die Objekt-ID der Richtlinie |-RefObjectId &lt;Objekt-ID der Richtlinie&gt; |
+| <code>&#8209;ObjectId</code> |Die ObjectId der Anwendung. | `-ObjectId <ObjectId of Application>` |
+| <code>&#8209;RefObjectId</code> |Die ObjectId der Richtlinie. | `-RefObjectId <ObjectId of Policy>` |
 
 </br></br>
 
 #### <a name="get-azureadserviceprincipalpolicy"></a>Get-AzureADServicePrincipalPolicy
 Ruft alle Richtlinien ab, die mit dem angegebenen Dienstprinzipal verknüpft sind
 
-    Get-AzureADServicePrincipalPolicy -ObjectId <object id of service principal>
+```PowerShell
+Get-AzureADServicePrincipalPolicy -ObjectId <ObjectId of ServicePrincipal>
+```
 
 | Parameter | Beschreibung | Beispiel |
 | --- | --- | --- |
-| -ObjectId |Die Objekt-ID der Anwendung |-ObjectId &lt;Objekt-ID der Anwendung&gt; |
+| <code>&#8209;ObjectId</code> |Die ObjectId der Anwendung. | `-ObjectId <ObjectId of Application>` |
 
 </br></br>
 
 #### <a name="remove-azureadserviceprincipalpolicy"></a>Remove-AzureADServicePrincipalPolicy
 Entfernt die Richtlinie aus dem angegebenen Dienstprinzipal
 
-    Remove-AzureADServicePrincipalPolicy -ObjectId <object id of service principal>  -PolicyId <object id of policy>
+```PowerShell
+Remove-AzureADServicePrincipalPolicy -ObjectId <ObjectId of ServicePrincipal>  -PolicyId <ObjectId of Policy>
+```
 
 | Parameter | Beschreibung | Beispiel |
 | --- | --- | --- |
-| -ObjectId |Die Objekt-ID der Anwendung |-ObjectId &lt;Objekt-ID der Anwendung&gt; |
-| -PolicyId |Die Objekt-ID der Richtlinie |-PolicyId &lt;ObjectID der Richtlinie&gt; |
-
-
-
-
-<!--HONumber=Jan17_HO3-->
+| <code>&#8209;ObjectId</code> |Die ObjectId der Anwendung. | `-ObjectId <ObjectId of Application>` |
+| <code>&#8209;PolicyId</code> |Die ObjectId der Richtlinie. | `-PolicyId <ObjectId of Policy>` |
 
 

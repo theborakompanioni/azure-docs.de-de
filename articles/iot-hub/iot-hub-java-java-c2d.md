@@ -12,11 +12,12 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/23/2016
+ms.date: 02/24/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
-ms.openlocfilehash: bd3b92e044a28237706fb004fdc43cca056047ad
+ms.sourcegitcommit: dc9f9c39a8eb644229887f76b5c441d4211af059
+ms.openlocfilehash: 6bf9136e1d95d4abd98010a1debbe875dc152e3f
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -97,7 +98,7 @@ In diesem Abschnitt erstellen Sie eine Java-Konsolen-App, die C2D-Nachrichten an
     <dependency>
       <groupId>com.microsoft.azure.iothub-java-client</groupId>
       <artifactId>iothub-java-service-client</artifactId>
-      <version>1.0.10</version>
+      <version>1.0.11</version>
     </dependency>
     ```
 4. Speichern und schließen Sie die Datei „pom.xml“.
@@ -114,9 +115,9 @@ In diesem Abschnitt erstellen Sie eine Java-Konsolen-App, die C2D-Nachrichten an
     ```
     private static final String connectionString = "{yourhubconnectionstring}";
     private static final String deviceId = "{yourdeviceid}";
-    private static final IotHubServiceClientProtocol protocol = IotHubServiceClientProtocol.AMQP;
+    private static final IotHubServiceClientProtocol protocol = IotHubServiceClientProtocol.AMQPS;
     ```
-8. Ersetzen Sie die **main**-Methode durch den folgenden Code. Dieser stellt die Verbindung mit Ihrer IoT Hub-Instanz her, sendet eine Nachricht an Ihr Gerät und wartet dann auf eine Empfangs- und Verarbeitungsbestätigung des Geräts:
+8. Ersetzen Sie die **main**-Methode durch den folgenden Code. Dieser Code stellt die Verbindung mit Ihrer IoT Hub-Instanz her, sendet eine Nachricht an Ihr Gerät und wartet dann auf eine Empfangs- und Verarbeitungsbestätigung des Geräts:
    
     ```
     public static void main(String[] args) throws IOException,
@@ -192,9 +193,4 @@ Weitere Informationen zum Entwickeln von Lösungen mit IoT Hub finden Sie im [Io
 [Behandeln vorübergehender Fehler]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [Azure-Portal]: https://portal.azure.com
 [Azure IoT Suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

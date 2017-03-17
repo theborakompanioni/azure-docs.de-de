@@ -1,6 +1,6 @@
 ---
 
-title: "Bestimmen und Beheben von Lizenzproblemen für eine Gruppe in Azure Active Directory | Microsoft-Dokumentation"
+title: "Beheben von Lizenzproblemen für eine Gruppe in Azure Active Directory | Microsoft-Dokumentation"
 description: Vorgehensweise zum Bestimmen und Beheben von Lizenzzuweisungsproblemen mithilfe der gruppenbasierten Lizenzierung mit Azure Active Directory
 services: active-directory
 keywords: "Azure AD-Lizenzierung"
@@ -14,17 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/21/2017
+ms.date: 02/28/2017
 ms.author: curtand
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 6a9cebafd1ad8f513bfab897970241f7b82b2a53
-ms.openlocfilehash: 9a434cf35d7934dc5eb759851fb65ad2a9f06eef
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: ac3f563828c5fa379f328392a3f5cf7c7932f534
+ms.openlocfilehash: 4ed83a1af1c31d41860931d363d93c7d61df9c98
+ms.lasthandoff: 03/01/2017
 
 
 ---
 
-# <a name="identifying-and-resolving-license-problems-for-a-group-in-azure-active-directory"></a>Bestimmen und Beheben von Lizenzproblemen für eine Gruppe in Azure Active Directory
+# <a name="identifying-and-resolving-license-assignment-problems-when-using-groups-in-azure-active-directory"></a>Bestimmen und Beheben von Lizenzzuweisungsproblemen bei Verwendung von Gruppen in Azure Active Directory
 
 
 Die gruppenbasierte Lizenzierung in Azure Active Directory (Azure AD) führt das Konzept von Benutzern mit dem Lizenzstatus „Fehler“ ein. In diesem Artikel wird erläutert, warum Benutzer diesen Status aufweisen können. Wenn Lizenzen einzelnen Benutzern direkt, d.h. ohne gruppenbasierte Lizenzierung, zugewiesen werden, kann der Zuweisungsvorgang misslingen. Wenn der Administrator das PowerShell-Cmdlet `Set-MsolUserLicense` auf einen Benutzer anwendet, kann das Cmdlet aus einer Reihe von Gründen der Geschäftslogik fehlschlagen, z.B. eine unzureichende Anzahl von Lizenzen oder ein Konflikt zwischen zwei Serviceplänen, die nicht gleichzeitig zugewiesen werden können. Das Problem wird sofort dem Benutzer gemeldet, der den Befehl ausführt.
@@ -53,7 +54,7 @@ Betrachten Sie das folgende Beispiel: Einem Benutzer ist eine Lizenz für Office
 
 Um diesen Konflikt zu lösen, müssen Sie diese beiden Pläne entweder in der E1-Lizenz deaktivieren, die dem Benutzer direkt zugewiesen ist, oder die gesamte Gruppenlizenzzuweisung ändern und die Pläne in der E3-Lizenz deaktivieren. Alternativ könnten Sie die E1-Lizenz dem Benutzer entziehen, falls sie im Kontext der E3-Lizenz redundant ist.
 
-Die Entscheidung, wie der Produktlizenzkonflikt zu lösen ist, liegt stets beim Administrator, denn Azure AD löst Lizenzkonflikte nicht automatisch.
+Die Entscheidung, wie der Produktlizenzkonflikt zu lösen ist, liegt stets beim Administrator. Azure AD löst Lizenzkonflikte nicht automatisch.
 
 ## <a name="other-products-depend-on-this-license"></a>Andere Produkte sind von dieser Lizenz abhängig
 

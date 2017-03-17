@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/16/2017
+ms.date: 02/23/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 509053c87e84a4dbff78eee503dcf3af149b6f1e
-ms.openlocfilehash: 81d2a746b5e1df2cfd5b8fc465045cb92af01358
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 2e26bd81c59fd53a0e8fc693dde30cb403995896
+ms.openlocfilehash: 38d37e45c34c8c0a3bd2ed94f72944208292f466
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -28,7 +28,7 @@ ms.lasthandoff: 02/16/2017
 
 Apache Ambari vereinfacht die Verwaltung und Überwachung von Hadoop-Clustern durch die Bereitstellung einer benutzerfreundlichen Webbenutzeroberfläche und REST-API. Ambari ist in HDInsight-Clustern mit dem Linux-Betriebssystem enthalten und wird verwendet, um den Cluster zu überwachen und Konfigurationsänderungen vorzunehmen. Dieses Dokument enthält grundlegende Informationen zur Verwendung der Ambari-REST-API.
 
-## <a name="a-idwhatisawhat-is-ambari"></a><a id="whatis"></a>Was ist Ambari?
+## <a id="whatis"></a>Was ist Ambari?
 
 [Apache Ambari](http://ambari.apache.org) vereinfacht die Hadoop-Verwaltung durch die Bereitstellung einer benutzerfreundlichen Webbenutzeroberfläche, die zum Bereitstellen, Verwalten und Überwachen von Hadoop-Clustern verwendet werden kann. Entwickler können diese Funktionen mithilfe der [Ambari-REST-APIs](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)in ihre Anwendungen integrieren.
 
@@ -207,7 +207,7 @@ Bei der Arbeit mit HDInsight müssen Sie möglicherweise den vollqualifizierten 
 >
 > Informationen zum Arbeiten mit HDInsight und virtuellen Netzwerken finden Sie unter [Erweitern der HDInsight-Funktionen mit Azure Virtual Network](hdinsight-extend-hadoop-virtual-network.md).
 
-Sie müssen zuerst den FQDN für den Host kennen, bevor Sie die IP-Adresse abrufen können. Sobald Sie den FQDN kennen, können Sie die IP-Adresse des Hosts abrufen. Die folgenden Beispiele fragen Ambari zuerst nach dem FQDN aller Hostknoten und dann nach der IP-Adresse jedes Hosts ab.
+Sie müssen den FQDN für den Host kennen, bevor Sie die IP-Adresse abrufen können. Sobald Sie den FQDN kennen, können Sie die IP-Adresse des Hosts abrufen. Die folgenden Beispiele fragen Ambari zuerst nach dem FQDN aller Hostknoten und dann nach der IP-Adresse jedes Hosts ab.
 
 ```bash
 for HOSTNAME in $(curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/hosts" | jq -r '.items[].Hosts.host_name')
@@ -293,7 +293,55 @@ Der Rückgabewert ähnelt einem der folgenden Beispiele:
 > [!NOTE]
 > Das `Get-AzureRmHDInsightCluster`-Cmdlet von [Azure PowerShell](https://docs.microsoft.com/powershell/) gibt auch die Speicherinformationen für den Cluster zurück.
 
-## <a name="example-update-ambari-configuration"></a>Beispiel: Aktualisieren der Ambari-Konfiguration
+
+## <a name="example-get-configuration"></a>Beispiel: Konfigurationsinformationen abrufen
+
+1. Rufen Sie die verfügbaren Konfigurationen für Ihren Cluster ab.
+
+    ```bash
+    curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME?fields=Clusters/desired_configs"
+    ```
+
+    ```powershell
+    Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName`?fields=Clusters/desired_configs" `
+        -Credential $creds
+    ```
+
+    In diesem Beispiel wird ein JSON-Dokument mit der aktuellen Konfiguration (angegeben durch den Wert *tag* ) für die im Cluster installierten Komponenten zurückgegeben. Das folgende Beispiel ist ein Datenauszug aus der Rückgabe eines Spark-Clustertyps:
+   
+   ```json
+   "spark-metrics-properties" : {
+       "tag" : "INITIAL",
+       "user" : "admin",
+       "version" : 1
+   },
+   "spark-thrift-fairscheduler" : {
+       "tag" : "INITIAL",
+       "user" : "admin",
+       "version" : 1
+   },
+   "spark-thrift-sparkconf" : {
+       "tag" : "INITIAL",
+       "user" : "admin",
+       "version" : 1
+   }
+   ```
+
+2. Rufen Sie die Konfiguration für die Komponente ab, die Sie interessiert. Ersetzen Sie im folgenden Beispiel `INITIAL` mit dem Tagwert, der von der vorherigen Anforderung zurückgegeben wurde.
+
+    ```bash
+    curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations?type=core-site&tag=INITIAL"
+    ```
+
+    ```powershell
+    $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations?type=core-site&tag=INITIAL" `
+        -Credential $creds
+    $resp.Content
+    ```
+
+    In diesem Beispiel wird ein JSON-Dokument zurückgegeben, das die aktuelle Konfiguration für die `core-site`-Komponente enthält.
+
+## <a name="example-update-configuration"></a>Beispiel: Konfiguration aktualisieren
 
 1. Rufen Sie die aktuelle Konfiguration ab, die von Ambari als „gewünschte Konfiguration“ gespeichert wird:
 
@@ -354,7 +402,7 @@ Der Rückgabewert ähnelt einem der folgenden Beispiele:
 
     * Die Elemente `href`, `version` und `Config` werden gelöscht, da sie zum Übermitteln einer neuen Konfiguration nicht benötigt werden.
 
-    * Ein neues `tag`-Element mit dem Wert `version#################` wird hinzugefügt. Der numerische Teil basiert auf dem aktuellen Datum. Jede Konfiguration muss über ein eindeutiges Tag verfügen.
+    * Ein `tag`-Element mit dem Wert `version#################` wird hinzugefügt. Der numerische Teil basiert auf dem aktuellen Datum. Jede Konfiguration muss über ein eindeutiges Tag verfügen.
      
     Schließlich werden die Daten im Dokument `newconfig.json` gespeichert. Die Dokumentstruktur sollte in etwa wie folgt aussehen:
      

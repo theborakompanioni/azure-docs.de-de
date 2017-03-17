@@ -15,9 +15,9 @@ ms.workload: backup-recovery
 ms.date: 02/12/2017
 ms.author: bsiva
 translationtype: Human Translation
-ms.sourcegitcommit: c33b69dbdccd2a894b494175dec2bd423af478b1
-ms.openlocfilehash: 61909f588077f3bbdbaf368db1a9138a3b28b117
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: c01805f797151f8970e1dcd2fdc58a8634fb0083
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -42,7 +42,7 @@ Site Recovery kann zum Migrieren von EC2-Instanzen verwendet werden, die unter e
 
 Für diese Bereitstellung benötigen Sie Folgendes:
 
-* **Konfigurationsserver:** Ein virtueller Amazon EC2-Computer unter Windows Server 2012 R2 wird als Konfigurationsserver bereitgestellt. Standardmäßig werden die anderen Azure Site Recovery-Komponenten (Prozessserver und Masterzielserver) beim Bereitstellen des Konfigurationsservers installiert. Dieser Artikel beschreibt die Schritte für die Migration im Azure-Portal. Er basiert auf den Anweisungen unter [Weitere Informationen](site-recovery-components.md#vmware-replication-to-azure).
+* **Konfigurationsserver:** Ein virtueller Amazon EC2-Computer unter Windows Server 2012 R2 wird als Konfigurationsserver bereitgestellt. Standardmäßig werden die anderen Azure Site Recovery-Komponenten (Prozessserver und Masterzielserver) beim Bereitstellen des Konfigurationsservers installiert. Dieser Artikel beschreibt die Schritte für die Migration im Azure-Portal. Er basiert auf den Anweisungen unter [Weitere Informationen](site-recovery-components.md#vmware-to-azure).
 
 * **EC2-Instanzen:** Die Amazon EC2-Instanzen von virtuellen Computern, die Sie migrieren möchten.
 

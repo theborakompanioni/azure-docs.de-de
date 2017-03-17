@@ -17,8 +17,9 @@ ms.workload: na
 ms.date: 05/13/2016
 ms.author: chrande
 translationtype: Human Translation
-ms.sourcegitcommit: da9da90e7ccd5d324b8f87a3585555ea5d5ed475
-ms.openlocfilehash: d587ff744fea5393a34d5a576e6af32cac5d2b44
+ms.sourcegitcommit: d405c58bf658222ceb72cc2b73e71f2ae1e1ed8d
+ms.openlocfilehash: 6b2473ef6336aea5c9a79aad78e02bcfc38b9018
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -52,6 +53,11 @@ public class MyClass
     public string Id { get; set; }
 }
 ```
+
+> [!TIP]
+>
+> Wenn Sie die HTTP- oder WebHook-Bindungen verwenden möchten, sollten Sie dieses Dokument mit bewährten Methoden zu [HTTPClient](https://github.com/mspnp/performance-optimization/blob/master/ImproperInstantiation/docs/ImproperInstantiation.md) lesen.
+>
 
 ## <a name="logging"></a>Protokollierung
 Sie können ein typisiertes `TraceWriter` -Argument angeben, um die Ausgabe in Ihren Streamingprotokollen in C# zu protokollieren. Verwenden Sie hierzu am besten den Namen `log`. Es wird davon abgeraten, `Console.Write` in Azure Functions zu verwenden.
@@ -314,10 +320,5 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 * [F#-Entwicklerreferenz zu Azure Functions](functions-reference-fsharp.md)
 * [NodeJS-Entwicklerreferenz zu Azure Functions](functions-reference-node.md)
 * [Trigger und Bindungen in Azure Functions](functions-triggers-bindings.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

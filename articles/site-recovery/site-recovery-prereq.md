@@ -15,9 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 12/11/2016
 ms.author: rajanaki
 translationtype: Human Translation
-ms.sourcegitcommit: 080dce21c2c803fc05c945cdadb1edd55bd7fe1c
-ms.openlocfilehash: a8e374c247be49d4b1390fb4061b4c9b1311f58a
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: b20d1a20119e8bffa3ece7105c38b3ee51c942d5
+ms.lasthandoff: 03/15/2017
 
 ---
 
@@ -104,6 +104,20 @@ Im Anschluss werden die Komponenten aufgeführt, die zusätzlich zu den genannte
 | --- | --- |
 | **Virtual Machine Manager** |  Es empfiehlt sich, einen Virtual Machine Manager-Server am primären Standort und einen Virtual Machine Manager-Server am sekundären Standort bereitzustellen.<br/><br/> Sie können [auf einem einzelnen VMM-Server cloudübergreifend replizieren](site-recovery-vmm-to-vmm.md#prepare-for-single-server-deployment). Hierzu müssen auf dem Virtual Machine Manager-Server mindestens zwei Clouds konfiguriert sein.<br/><br/> Auf den Virtual Machine Manager-Servern muss mindestens System Center 2012 SP1 mit den neuesten Updates ausgeführt werden.<br/><br/> Jeder Virtual Machine Manager-Server muss über mindestens eine Cloud verfügen. Für alle Clouds muss das Hyper-V-Kapazitätsprofil eingerichtet worden sein. <br/><br/>Die Clouds müssen mindestens eine Virtual Machine Manager-Hostgruppe enthalten. Weitere Informationen zum Einrichten von Virtual Machine Manager-Clouds finden Sie unter [Vorbereiten für Azure Site Recovery-Bereitstellung](https://msdn.microsoft.com/library/azure/dn469075.aspx#BKMK_Fabric). |
 | **Hyper-V** | Auf den Hyper-V-Servern muss mindestens Windows Server 2012 mit der Hyper-V-Rolle ausgeführt werden, und die neuesten Updates müssen installiert sein.<br/><br/> Ein Hyper-V-Server muss mindestens einen virtuellen Computer enthalten.<br/><br/>  Hyper-V-Hostserver müssen sich in Hostgruppen in der primären und in der sekundären VMM-Cloud befinden.<br/><br/> Wenn Sie Hyper-V in einem Cluster unter Windows Server 2012 R2 ausführen, empfiehlt es sich, das [Update 2961977](https://support.microsoft.com/kb/2961977) zu installieren.<br/><br/> Wenn Sie Hyper-V in einem Cluster unter Windows Server 2012 ausführen und über einen auf statischen IP-Adressen basierenden Cluster verfügen, wird der Clusterbroker nicht automatisch erstellt. Der Clusterbroker muss manuell konfiguriert werden. Weitere Informationen zum Clusterbroker finden Sie unter [Configure Replica Broker Role (Cluster to Cluster Replication)](http://social.technet.microsoft.com/wiki/contents/articles/18792.configure-replica-broker-role-cluster-to-cluster-replication.aspx) (Konfigurieren der Replikatbrokerrolle (Cluster-zu-Cluster-Replikation)). |
-
 | **Anbieter** | Im Rahmen der Site Recovery-Bereitstellung installieren Sie den Azure Site Recovery-Anbieter auf Virtual Machine Manager-Servern. Der Anbieter kommuniziert mit Azure Site Recovery über HTTPS 443, um die Replikation zu orchestrieren. Die Datenreplikation erfolgt über das LAN oder eine VPN-Verbindung zwischen dem primären und sekundären Hyper-V-Server.<br/><br/> Der auf dem Virtual Machine Manager-Server ausgeführte Anbieter benötigt Zugriff auf folgende URLs:<br/><br/>[!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)] <br/><br/>Der Anbieter muss die Firewallkommunikation der Virtual Machine Manager-Server mit den [IP-Bereichen des Azure-Datencenters](https://www.microsoft.com/download/confirmation.aspx?id=41653) und das HTTPS-Protokoll (443) zulassen. |
+
+
+## <a name="url-access"></a>URL-Zugriff
+Diese URLs sollten von VMware-, VMM- und Hyper-V-Hostservern verfügbar sein.
+
+|**URL** | **VMM zu VMM** | **VMM zu Azure** | **Hyper-V in Azure** | **VMware zu Azure** |
+|--- | --- | --- | --- | --- |
+|``*.accesscontrol.windows.net`` | Zulassen | Zulassen | Zulassen | Zulassen |
+|``*.backup.windowsazure.com`` | Nicht erforderlich | Zulassen | Zulassen | Zulassen |
+|``*.hypervrecoverymanager.windowsazure.com`` | Zulassen | Zulassen | Zulassen | Zulassen |
+|``*.store.core.windows.net`` | Zulassen | Zulassen | Zulassen | Zulassen |
+|``*.blob.core.windows.net`` | Nicht erforderlich | Zulassen | Zulassen | Zulassen |
+|``https://dev.mysql.com/get/archives/mysql-5.5/mysql-5.5.37-win32.msi`` | Nicht erforderlich | Nicht erforderlich | Nicht erforderlich | Für SQL-Download zulassen |
+|``time.windows.com`` | Zulassen | Zulassen | Zulassen | Zulassen|
+|``time.nist.gov`` | Zulassen | Zulassen | Zulassen | ZULASSEN |
 

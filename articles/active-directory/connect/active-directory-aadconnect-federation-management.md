@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 10/31/2016
 ms.author: anandy
 translationtype: Human Translation
-ms.sourcegitcommit: 7db56a4c0efb208591bb15aa03a4c0dbf833d22e
-ms.openlocfilehash: 4ed22092621949d53da5b8c961a080270dde1db7
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: da3b8a375d380a0e2f1c2e243a475f2f3ff94bfc
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -31,6 +32,7 @@ Dieser Artikel enthält Informationen zu den auf die Active Directory-Verbunddie
 | [Hinzufügen eines AD FS-Servers](#addadfsserver) |Erweitern der AD FS-Farm mit einem zusätzlichen AD FS-Server |
 | [Hinzufügen eines AD FS-Webanwendungs-Proxyservers](#addwapserver) |Erweitern der AD FS-Farm mit einem zusätzlichen WAP-Server |
 | [Hinzufügen einer Verbunddomäne](#addfeddomain) |Hinzufügen einer Verbunddomäne |
+| [Aktualisieren des SSL-Zertifikats](active-directory-aadconnectfed-ssl-update.md)| Aktualisieren des SSL-Zertifikats für eine Active Directory-Verbunddienste-Farm (AD FS)|
 | **AD FS-Anpassung** | |
 | [Hinzufügen eines benutzerdefinierten Firmenlogos oder einer Abbildung](#customlogo) |Anpassen einer AD FS-Anmeldeseite mit einem Firmenlogo und einer Abbildung |
 | [Hinzufügen einer Anmeldebeschreibung](#addsignindescription) |Hinzufügen einer Beschreibung für die Anmeldeseite |
@@ -39,7 +41,7 @@ Dieser Artikel enthält Informationen zu den auf die Active Directory-Verbunddie
 ## <a name="ad-fs-management"></a>AD FS-Verwaltung
 Azure AD Connect umfasst verschiedene AD FS-bezogene Aufgaben, die mithilfe des Azure AD Connect-Assistenten mit minimalem Benutzereingriff ausgeführt werden können. Nachdem Sie die Installation von Azure AD Connect durch Ausführen des Assistenten abgeschlossen haben, können Sie den Assistenten erneut ausführen, um zusätzliche Aufgaben durchzuführen.
 
-### <a name="repair-the-trust-a-namerepairthetrusta"></a>Reparieren der Vertrauensstellung <a name=repairthetrust></a>
+## Reparieren der Vertrauensstellung <a name=repairthetrust></a>
 Azure AD Connect kann den aktuellen Status der AD FS- und Azure Active Directory-Vertrauensstellung überprüfen und entsprechende Maßnahmen ergreifen, um die Vertrauensstellung zu reparieren. Führen Sie diese Schritte aus, um Ihre Azure AD- und AD FS-Vertrauensstellung zu reparieren.
 
 1. Wählen Sie in der Liste mit den weiteren Aufgaben die Option **AAD- und ADFS-Vertrauensstellung reparieren** .
@@ -63,7 +65,8 @@ Azure AD Connect kann den aktuellen Status der AD FS- und Azure Active Directory
 >
 >
 
-### <a name="add-an-ad-fs-server-a-nameaddadfsservera"></a>Hinzufügen eines AD FS-Servers <a name=addadfsserver></a>
+## Hinzufügen eines AD FS-Servers <a name=addadfsserver></a>
+
 > [!NOTE]
 > Für Azure AD Connect ist die PFX-Zertifikatdatei erforderlich, um einen AD FS-Server hinzuzufügen. Daher können Sie diesen Vorgang nur ausführen, wenn Sie die AD FS-Farm mit Azure AD Connect konfiguriert haben.
 >
@@ -86,7 +89,8 @@ Azure AD Connect kann den aktuellen Status der AD FS- und Azure Active Directory
 
     ![Installation abgeschlossen](media/active-directory-aadconnect-federation-management/AddNewADFSServer8.PNG)
 
-### <a name="add-an-ad-fs-web-application-proxy-server-a-nameaddwapservera"></a>Hinzufügen eines AD FS-Webanwendungs-Proxyservers <a name=addwapserver></a>
+## Hinzufügen eines AD FS-Webanwendungs-Proxyservers <a name=addwapserver></a>
+
 > [!NOTE]
 > Für Azure AD Connect ist die PFX-Zertifikatdatei erforderlich, um einen Webanwendungs-Proxyserver hinzuzufügen. Daher können Sie diesen Vorgang nur ausführen, wenn Sie die AD FS-Farm mit Azure AD Connect konfiguriert haben.
 >
@@ -109,7 +113,8 @@ Azure AD Connect kann den aktuellen Status der AD FS- und Azure Active Directory
 7. Klicken Sie auf **Installieren** , um die Konfiguration abzuschließen. Nach Abschluss der Konfiguration bietet der Assistent Ihnen die Möglichkeit, die Verbindung mit den Servern zu überprüfen. Klicken Sie auf **Überprüfen** , um die Konnektivität zu überprüfen.
    ![Installation abgeschlossen](media/active-directory-aadconnect-federation-management/WapServer8.PNG)
 
-### <a name="add-a-federated-domain-a-nameaddfeddomaina"></a>Hinzufügen einer Verbunddomäne <a name=addfeddomain></a>
+## Hinzufügen einer Verbunddomäne <a name=addfeddomain></a>
+
 Das Hinzufügen einer Domäne, die einen Verbund mit Azure AD bilden soll, ist mithilfe von Azure AD Connect einfach. Azure AD Connect fügt die Domäne für den Verbund hinzu und ändert auch die Anspruchsregeln, damit der richtige Aussteller angezeigt wird, falls Sie über mehrere Domänen in einem Verbund mit Azure AD verfügen.
 
 1. Zum Hinzufügen einer Verbunddomäne wählen Sie die Aufgabe **Weitere Azure AD-Domäne hinzufügen**.
@@ -128,11 +133,11 @@ Das Hinzufügen einer Domäne, die einen Verbund mit Azure AD bilden soll, ist m
 ## <a name="ad-fs-customization"></a>AD FS-Anpassung
 Die folgenden Abschnitte enthalten detaillierte Informationen zu einigen häufigen Aufgaben, die zum Anpassen der AD FS-Anmeldeseite erforderlich sind.
 
-### <a name="add-a-custom-company-logo-or-illustration-a-namecustomlogoa"></a>Hinzufügen eines benutzerdefinierten Firmenlogos oder einer Abbildung <a name=customlogo></a>
+## Hinzufügen eines benutzerdefinierten Firmenlogos oder einer Abbildung <a name=customlogo></a>
 Zum Ändern des auf der **Anmeldeseite** angezeigten Firmenlogos verwenden Sie das unten angegebene Windows PowerShell-Cmdlet und die entsprechende Syntax.
 
 > [!NOTE]
-> Die empfohlene Größe für das Logo beträgt 260 x 35 bei @96 DPI und einer Dateigröße von höchstens 10 KB.
+> Die empfohlene Größe für das Logo beträgt 260 x 35 bei 96 DPI und einer Dateigröße von höchstens 10 KB.
 >
 >
 
@@ -143,17 +148,17 @@ Zum Ändern des auf der **Anmeldeseite** angezeigten Firmenlogos verwenden Sie d
 >
 >
 
-### <a name="add-a-sign-in-description-a-nameaddsignindescriptiona"></a>Hinzufügen einer Anmeldebeschreibung <a name=addsignindescription></a>
+## Hinzufügen einer Anmeldebeschreibung <a name=addsignindescription></a>
 Zum Hinzufügen einer Beschreibung für die **Anmeldeseite**verwenden Sie das folgende Windows PowerShell-Cmdlet und die folgende Syntax:
 
     Set-AdfsGlobalWebContent -SignInPageDescriptionText "<p>Sign-in to Contoso requires device registration. Click <A href='http://fs1.contoso.com/deviceregistration/'>here</A> for more information.</p>"
 
-### <a name="modify-ad-fs-claim-rules-a-namemodclaimsa"></a>Ändern von AD FS-Anspruchsregeln <a name=modclaims></a>
+## Ändern von AD FS-Anspruchsregeln <a name=modclaims></a>
 AD FS unterstützt eine umfangreiche Sprache für Ansprüche, die Sie zum Erstellen von benutzerdefinierten Anspruchsregeln verwenden können. Weitere Informationen finden Sie unter [Rolle der Anspruchsregelsprache](https://technet.microsoft.com/library/dd807118.aspx).
 
 In den folgenden Abschnitten wird beschrieben, wie Sie benutzerdefinierte Regeln für einige Szenarien in Zusammenhang mit dem Azure AD- und AD FS-Verbund schreiben können.
 
-#### <a name="immutable-id-conditional-on-a-value-being-present-in-the-attribute"></a>Unveränderliche ID hängt von einem Wert im Attribut ab
+### <a name="immutable-id-conditional-on-a-value-being-present-in-the-attribute"></a>Unveränderliche ID hängt von einem Wert im Attribut ab
 Azure AD Connect ermöglicht Ihnen das Festlegen eines Attributs, das als Quellanker verwendet wird, wenn Objekte mit Azure AD synchronisiert werden. Wenn der Wert im benutzerdefinierten Attribut nicht leer ist, kann es ratsam sein, einen Anspruch mit unveränderlicher ID ausgeben. Beispielsweise können Sie **ms-ds-consistencyguid** als Attribut für den Quellanker auswählen und **ImmutableID** als **ms-ds-consistencyguid** ausgeben, falls für das Attribut ein Wert vorhanden ist. Wenn kein Wert für das Attribut vorhanden ist, geben Sie **objectGuid** als unveränderliche ID aus.  Sie können den Satz mit den benutzerdefinierten Anspruchsregeln wie im folgenden Abschnitt beschrieben erstellen.
 
 **Regel 1: Abfragen von Attributen**
@@ -192,7 +197,7 @@ In dieser Regel überprüfen Sie einfach das temporäre Flag **idflag**. Sie ent
 >
 >
 
-#### <a name="sso-with-a-subdomain-upn"></a>SSO mit Unterdomänen-UPN
+### <a name="sso-with-a-subdomain-upn"></a>SSO mit Unterdomänen-UPN
 Mit Azure AD Connect können Sie mehrere Domänen für den Verbund hinzufügen. Dies ist unter [Hinzufügen einer neuen Verbunddomäne](active-directory-aadconnect-federation-management.md#addfeddomain) beschrieben. Sie müssen den UPN-Anspruch ändern, damit die Aussteller-ID der Stammdomäne entspricht, und nicht der Unterdomäne, da die Verbundstammdomäne auch das untergeordnete Element abdeckt.
 
 Standardmäßig wird die Anspruchsregel für die Aussteller-ID wie folgt festgelegt:
@@ -221,9 +226,4 @@ Damit nur die Stammdomäne im Ausstelleranspruchswert enthalten ist, ändern Sie
 
 ## <a name="next-steps"></a>Nächste Schritte
 Erfahren Sie mehr über [Azure AD Connect-Optionen für die Benutzeranmeldung](active-directory-aadconnect-user-signin.md).
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

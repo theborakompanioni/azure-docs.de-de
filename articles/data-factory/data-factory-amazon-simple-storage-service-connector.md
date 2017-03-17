@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2017
+ms.date: 02/22/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: d49d7e6b4a9485c2371eb02ac8068adfde9bad6b
-ms.openlocfilehash: 92195f4479f429f0911d9e2ca7be29c1aef7785e
+ms.sourcegitcommit: bf5010537d222045b5bf13d85cab6c48c9659ed0
+ms.openlocfilehash: b055342d8e11e4d38688681b36ef9a1f717fdf15
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -29,7 +30,7 @@ Data Factory unterstützt derzeit nur das Verschieben von Daten aus Amazon S3 in
 Um Daten von Amazon S3 zu kopieren, müssen Sie sicherstellen, dass Ihnen die unten aufgeführten Berechtigungen erteilt wurden:
 
 * **s3:GetObject** und **s3:GetObjectVersion** für Amazon S3-Objektvorgänge
-* **s3:ListBucket** und **s3:ListAllMyBuckets** (werden nur im Kopier-Assistenten verwendet) für Amazon S3-Bucketvorgänge
+* **s3:ListBucket** für Amazon S3-Bucketvorgänge. Wenn Sie einen Assistenten zum Kopieren verwenden, ist **s3:ListAllMyBuckets** ebenfalls erforderlich.
 
 Sie finden die vollständige Liste der Amazon S3-Berechtigungen mit entsprechenden Details unter [Specifying Permissions in a Policy](http://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html) (Angeben von Berechtigungen in einer Richtlinie).
 
@@ -340,9 +341,4 @@ Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-fa
 Entsprechende Informationen finden Sie in den folgenden Artikeln:
 
 * [Kopieraktivität-Tutorial](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) für schrittweise Anleitungen zum Erstellen einer Pipeline mit einer Kopieraktivität.
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

@@ -1,5 +1,5 @@
 ---
-title: Power BI-Dashboard auf Stream Analytics | Microsoft Docs
+title: Power BI-Dashboard auf Azure Stream Analytics | Microsoft-Dokumentation
 description: "Verwenden Sie ein Power BI-Dashboard für Echtzeit-Streaming, um Business Intelligence zu erfassen und hohe Volumen von Daten aus einem Stream Analytics-Auftrag zu analysieren."
 keywords: Analysedashboard, Echtzeitdashboard
 services: stream-analytics
@@ -16,80 +16,84 @@ ms.workload: data-services
 ms.date: 02/01/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: c60d620d9fc91cfef2340b645e15ed19d3d1f4e1
-ms.openlocfilehash: 39b2852c39e8d3eb4687cbcfd9116e1d66fc9d9d
+ms.sourcegitcommit: 3dbc49d35def6d7b12ade529d1dd1156dee9d75b
+ms.openlocfilehash: 09c54f8cce119c1cbe6a08e969236612447d9e17
+ms.lasthandoff: 02/27/2017
 
 
 ---
-# <a name="stream-analytics--power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics und Power BI: Ein Dashboard mit Echtzeitanalyse von Streamingdaten
-Azure Stream Analytics ermöglicht Ihnen die Nutzung von Microsoft Power BI, eines der führenden Business Intelligence-Tools. Erfahren Sie, wie Sie Azure Stream Analytics verwenden, um hohe Volumen von Streamingdaten zu analysieren und diese in einem Power BI-Dashboard mit Echtzeitanalyse darzustellen.
+# <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics und Power BI: Ein Dashboard mit Echtzeitanalyse von Streamingdaten
+Azure Stream Analytics ermöglicht Ihnen die Nutzung von Microsoft Power BI, eines der führenden Business Intelligence-Tools. Erfahren Sie, wie Sie Azure Stream Analytics verwenden, um hohe Volumen von Streamingdaten zu analysieren und diese in einem Power BI-Analysedashboard in Echtzeit darzustellen.
 
-Verwenden Sie [Microsoft Power BI](https://powerbi.com/) , um ohne großen Zeitaufwand ein Live-Dashboard zu erstellen. [Betrachten Sie ein Video zur Veranschaulichung des Szenarios](https://www.youtube.com/watch?v=SGUpT-a99MA).
+Verwenden Sie [Microsoft Power BI](https://powerbi.com/) , um ohne großen Zeitaufwand ein Live-Dashboard zu erstellen. [Sehen Sie sich ein Video an, das dieses Szenario veranschaulicht](https://www.youtube.com/watch?v=SGUpT-a99MA).
 
-In diesem Artikel erfahren Sie, wie Sie eigene benutzerdefinierte Business Intelligence-Tools erstellen können, indem Sie Power BI als Ausgabe für Ihre Aufträge in Azure Stream Analytics verwenden und dazu ein Echtzeitdashboard nutzen.
+In diesem Artikel erfahren Sie, wie Sie eigene benutzerdefinierte Business Intelligence-Tools erstellen können, indem Sie Power BI als Ausgabe für Ihre Aufträge in Azure Stream Analytics verwenden. Sie erfahren außerdem, wie Sie ein Echtzeitdashboard verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Microsoft Azure-Konto
-* Geschäfts- oder Schulkonto für Power BI
-* Schließen Sie das Erste-Schritte-Szenario [Betrugserkennung in Echtzeit](stream-analytics-real-time-fraud-detection.md). Dieser Artikel baut auf diesem Workflow auf und fügt eine Power BI-Streaming-Dataset-Ausgabe hinzu.
+* Geschäfts-, Schul- oder Unikonto für Power BI
+* Abschluss des Szenarios zur [Betrugsermittlung in Echtzeit](stream-analytics-real-time-fraud-detection.md). Dieser Artikel baut auf dem Workflow auf, der unter [Betrugserkennung in Echtzeit](stream-analytics-real-time-fraud-detection.md) beschrieben ist, und fügt eine Power BI-Streaming-Dataset-Ausgabe hinzu.
 
 ## <a name="add-power-bi-output"></a>Power BI-Ausgabe hinzufügen
-Da nun eine Eingabe für den Auftrag vorhanden ist, kann eine Ausgabe zu Power BI definiert werden. Aktivieren Sie das Kästchen in der Mitte des Dashboardauftrags **Ausgaben**. Klicken Sie dann auf die bekannte **+ Hinzufügen**-Schaltfläche, und erstellen Sie Ihre Ausgabe.
+Da nun eine Eingabe für den Auftrag vorhanden ist, kann eine Ausgabe zu Power BI definiert werden.
 
-![Ausgabe hinzufügen](./media/stream-analytics-power-bi-dashboard/create-pbi-output.png)
+1. Aktivieren Sie das Kästchen **Ausgaben** in der Mitte des Auftragsdashboards. Wählen Sie anschließend **+ Hinzufügen**, um Ihre Ausgabe zu erstellen.
 
-Stellen Sie den **Ausgabealias** bereit – Sie können jeden Ausgabealias verwenden, auf den Sie auf einfache Weise verweisen können. Dieser Ausgabealias ist besonders hilfreich, wenn Sie sich mehrere Ausgaben für den Auftrag benötigen. In diesem Fall müssen Sie in der Abfrage auf diesen Alias verweisen. Verwenden Sie beispielsweise den Aliasausgabewert „StreamAnalyticsRealTimeFraudPBI“.
+    ![Ausgabe hinzufügen](./media/stream-analytics-power-bi-dashboard/create-pbi-output.png)
 
-Klicken Sie auf die Schaltfläche **Autorisieren**.
+2. Geben Sie den **Ausgabealias** an. Sie können jeden Ausgabealias verwenden, auf den Sie auf einfache Weise verweisen können. Dieser Ausgabealias ist hilfreich, wenn Sie mehrere Ausgaben für den Auftrag benötigen. Verweisen Sie in diesem Fall in Ihrer Abfrage auf diese Ausgabe. Verwenden Sie beispielsweise den Aliasausgabewert „StreamAnalyticsRealTimeFraudPBI“.
 
-![Autorisierung hinzufügen](./media/stream-analytics-power-bi-dashboard/pbi-authorize.png)
+3. Wählen Sie **Autorisieren**.
 
-Daraufhin wird ein Fenster angezeigt, in dem Sie Ihre Azure-Anmeldeinformationen (Geschäfts- oder Schulkonto) eingeben können, und dort erhalten Sie Azure-Auftragszugriff auf Ihren Power BI-Bereich.
+    ![Autorisierung hinzufügen](./media/stream-analytics-power-bi-dashboard/pbi-authorize.png)
 
-![Autorisierungsfelder](./media/stream-analytics-power-bi-dashboard/authorize-area.png)
+4. Ein Fenster wird geöffnet, in dem Sie Ihre Azure-Anmeldeinformationen angeben können (für ein Geschäfts-, Schul- oder Unikonto). Es umfasst auch Ihren Azure-Auftrag mit Zugriff auf Ihren Power BI-Bereich.
 
-Das Fenster für die Autorisierung wird nicht mehr angezeigt, nachdem es ausgefüllt wurde, und der neue Ausgabebereich enthält Felder für den Dataset- und Tabellennamen.
+    ![Autorisierungsfelder](./media/stream-analytics-power-bi-dashboard/authorize-area.png)
 
-![PBI-Arbeitsbereich](./media/stream-analytics-power-bi-dashboard/pbi-workspace.png)
+5. Die Autorisierung wird nicht mehr angezeigt, wenn Sie die erforderlichen Informationen angegeben haben. Der Bereich **Neue Ausgabe** beinhaltet die Felder **Datasetname** und **Tabellenname**.
 
-Definieren Sie sie wie folgt:
-* **Gruppenarbeitsbereich** – wählen Sie einen Arbeitsbereich in Ihrem Power BI-Mandanten aus, unter dem das Dataset erstellt wird.
-* **Datasetname** – Stellen Sie einen Datasetnamen für die Power BI-Ausgabe bereit. Verwenden Sie beispielsweise „StreamAnalyticsRealTimeFraudPBI“.
-* **Tabellenname** – Geben Sie einen Tabellennamen unter dem Dataset der Power BI-Ausgabe ein. Nehmen wir einfach „StreamAnalyticsRealTimeFraudPBI“. Derzeit darf die Power BI-Ausgabe von Stream Analytics-Aufträgen nur eine Tabelle pro Dataset aufweisen.
+    ![PBI-Arbeitsbereich](./media/stream-analytics-power-bi-dashboard/pbi-workspace.png)
 
-Klicken Sie auf **Erstellen**, und damit ist Ihre Ausgabekonfiguration abgeschlossen.
+6. Definieren Sie sie wie folgt:
+    * **Gruppenarbeitsbereich**: Wählen Sie einen Arbeitsbereich in Ihrem Power BI-Mandanten aus, unter dem das Dataset erstellt wird.
+    * **Datasetname**: Stellen Sie einen Datasetnamen für die Power BI-Ausgabe bereit. Verwenden Sie beispielsweise „StreamAnalyticsRealTimeFraudPBI“.
+    * **Tabellenname**: Geben Sie einen Tabellennamen unter dem Dataset der Power BI-Ausgabe ein. Verwenden Sie beispielsweise „StreamAnalyticsRealTimeFraudPBI“. Derzeit darf die Power BI-Ausgabe von Stream Analytics-Aufträgen nur eine Tabelle pro Dataset aufweisen.
+
+7. Klicken Sie auf **Erstellen**. Die Konfiguration der Ausgabe ist nun abgeschlossen.
 
 > [!WARNING]
-> Wenn Power BI bereits über ein Dataset und eine Tabelle mit dem gleichen Namen verfügt, den Sie in diesem Stream Analytics-Auftrag angegeben haben, beachten Sie bitte, dass die vorhandenen Daten überschrieben werden!
-> Sie sollten dieses Dataset und diese Tabelle auch nicht explizit in Ihrem Power BI-Konto erstellen. Sie werden automatisch erstellt, wenn Sie Ihren Stream Analytics-Auftrag starten und der Auftrag damit beginnt, Power BI mit Ausgaben zu füttern. Wenn die Auftragsabfrage keine Ergebnisse generiert, werden die Datasets und die Tabelle nicht erstellt.
-> 
-> 
+> Wenn Power BI bereits über ein Dataset und eine Tabelle mit demselben Namen verfügt, der in diesem Stream Analytics-Auftrag angegeben wurde, werden die vorhandenen Daten überschrieben.
+> Außerdem empfiehlt es sich, dieses Dataset und diese Tabelle nicht explizit in Ihrem Power BI-Konto zu erstellen. Diese werden automatisch erstellt, wenn Sie Ihren Stream Analytics-Auftrag starten und der Auftrag damit beginnt, Power BI mit Ausgaben zu füttern. Wenn die Auftragsabfrage keine Ergebnisse generiert, werden die Datasets und die Tabelle nicht erstellt.
+>
+>
 
 Das Dataset wird mit den folgenden Einstellungen erstellt:
-* defaultRetentionPolicy: BasicFIFO – Daten sind FIFO, maximale Zeilenanzahl 200k
-* defaultMode: pushStreaming: unterstützt sowohl Streamingkacheln als auch herkömmliche berichtsbasierte Visualisierungen (auch „Push“ genannt)
-* Erstellen von Datasets mit anderen Flags wird zu diesem Zeitpunkt nicht unterstützt
+* **defaultRetentionPolicy: BasicFIFO**: Daten sind FIFO mit maximal 200.000 Zeilen.
+* **defaultMode: pushStreaming**: Unterstützt sowohl Streamingkacheln als auch herkömmliche berichtsbasierte Visualisierungen (auch „Push“ genannt).
+
+Derzeit ist es nicht möglich, Datasets mit anderen Kennzeichen zu erstellen.
 
 Weitere Informationen zu Power BI-Datasets finden Sie in der [Power BI-REST-API](https://msdn.microsoft.com/library/mt203562.aspx)-Referenz.
 
 
 ## <a name="write-query"></a>Schreiben von Abfragen
-Gehen Sie zur Registerkarte **Abfrage** des Auftrags. Schreiben Sie die Abfrage, deren Ausgabe Sie in Power BI sehen möchten. Es kann z.B. die folgende SQL-Abfrage zum Abfangen von SIM-Betrug in der Telekommunikationsbranche sein:
+Gehen Sie zur Registerkarte **Abfrage** des Auftrags. Schreiben Sie die Abfrage, deren Ausgabe Sie in Power BI sehen möchten. Dies kann z.B. die folgende oder eine ähnliche SQL-Abfrage zum Abfangen von SIM-Betrug in der Telekommunikationsbranche sein:
 
 
 ```
 /* Our criteria for fraud:
- Calls made from the same caller to two phone switches in different locations (e.g. Australia and Europe) within 5 seconds) */
+ Calls made from the same caller to two phone switches in different locations (for example, Australia and Europe) within five seconds */
 
  SELECT System.Timestamp AS WindowEnd, COUNT(*) AS FraudulentCalls
  INTO "StreamAnalyticsRealTimeFraudPBI"
  FROM "StreamAnalyticsRealTimeFraudInput" CS1 TIMESTAMP BY CallRecTime
  JOIN "StreamAnalyticsRealTimeFraudInput" CS2 TIMESTAMP BY CallRecTime
-   
+
 /* Where the caller is the same, as indicated by IMSI (International Mobile Subscriber Identity) */
  ON CS1.CallingIMSI = CS2.CallingIMSI
 
-/* ...and date between CS1 and CS2 is between 1 and 5 seconds */
+/* ...and date between CS1 and CS2 is between one and five seconds */
  AND DATEDIFF(ss, CS1, CS2) BETWEEN 1 AND 5
 
 /* Where the switch location is different */
@@ -99,50 +103,57 @@ Gehen Sie zur Registerkarte **Abfrage** des Auftrags. Schreiben Sie die Abfrage,
 
 ## <a name="create-the-dashboard-in-power-bi"></a>Erstellen des Dashboards in Power BI
 
-Wechseln Sie zu [Powerbi.com](https://powerbi.com) , und melden Sie sich mit Ihrem Geschäfts- oder Schulkonto an. Wenn die Stream Analytics-Auftragsabfrage Ergebnisse ausgibt, werden Sie feststellen, dass das Dataset bereits erstellt wurde:
+1. Wechseln Sie zu [Powerbi.com](https://powerbi.com) , und melden Sie sich mit Ihrem Geschäfts-, Schul- oder Unikonto an. Wenn die Stream Analytics-Auftragsabfrage Ergebnisse ausgibt, werden Sie feststellen, dass das Dataset wie hier gezeigt bereits erstellt wurde:
 
-![Streamingdataset](./media/stream-analytics-power-bi-dashboard/streaming-dataset.png)
+    ![Streamingdataset](./media/stream-analytics-power-bi-dashboard/streaming-dataset.png)
 
-Klicken Sie auf „Kachel hinzufügen“, und wählen Sie Ihre benutzerdefinierten Streamingdaten.
+2. Wählen Sie **Kachel hinzufügen** und anschließend Ihre benutzerdefinierten Streamingdaten.
 
-![Benutzerdefiniertes Streamingdataset](./media/stream-analytics-power-bi-dashboard/custom-streaming-data.png)
+    ![Benutzerdefiniertes Streamingdataset](./media/stream-analytics-power-bi-dashboard/custom-streaming-data.png)
 
-Wählen Sie dann Ihr Dataset aus der Liste:
+3. Wählen Sie dann Ihr Dataset aus der Liste aus.
 
-![Ihr Streamingdataset](./media/stream-analytics-power-bi-dashboard/your-streaming-dataset.png)
+    ![Ihr Streamingdataset](./media/stream-analytics-power-bi-dashboard/your-streaming-dataset.png)
 
-Nun erstellen Sie eine Visualisierungskarte, und wählen Sie das Feld „fraudulentcalls“ aus.
+4. Erstellen Sie eine Visualisierungskarte. Wählen Sie dann das Feld **fraudulentcalls** aus.
 
-![Betrug hinzufügen](./media/stream-analytics-power-bi-dashboard/add-fraud.png)
+    ![Betrug hinzufügen](./media/stream-analytics-power-bi-dashboard/add-fraud.png)
 
-Jetzt haben wir einen Betrugszähler!
+    Jetzt haben wir einen Betrugszähler!
 
-![Betrugszähler](./media/stream-analytics-power-bi-dashboard/fraud-counter.png)
+    ![Betrugszähler](./media/stream-analytics-power-bi-dashboard/fraud-counter.png)
 
-Fügen Sie in der Übung eine weitere Kachel hinzu, aber wählen Sie nun ein Liniendiagramm. Fügen Sie „fraudulentcalls“ als Wert und die Achse als Fensterende hinzu. Wir haben die letzten 10 Minuten ausgewählt:
+5. Fügen Sie in der Übung eine weitere Kachel hinzu. Wählen Sie dieses Mal jedoch das Liniendiagramm aus. Fügen Sie **fraudulentcalls** als Wert und **windowend** als Achse hinzu. Wie Sie im folgenden Screenshot sehen, haben wir die letzten 10 Minuten ausgewählt:
 
 ![Betrugsanrufe](./media/stream-analytics-power-bi-dashboard/fraud-calls.png)
 
 
-Beachten Sie, dass in diesem Tutorial nur die Erstellung einer Art von Diagramm für ein Dataset gezeigt wurde. Mithilfe von Power BI können Sie weitere kundenspezifische Business Intelligence Tools für Ihr Unternehmen erstellen. Ein weiteres Beispiel für ein Power BI-Dashboard sehen Sie im Video [Erste Schritte mit Power BI](https://youtu.be/L-Z_6P56aas?t=1m58s) .
+In diesem Tutorial wird nur die Erstellung einer Art von Diagramm für ein Dataset gezeigt. Mithilfe von Power BI können Sie weitere kundenspezifische Business Intelligence Tools für Ihr Unternehmen erstellen. Ein weiteres Beispiel für ein Power BI-Dashboard sehen Sie im Video [Erste Schritte mit Power BI](https://youtu.be/L-Z_6P56aas?t=1m58s) .
 
-Weitere Informationen zum Konfigurieren einer Power BI-Ausgabe und zur Verwendung von Power BI-Gruppen finden Sie im Abschnitt [Power BI](stream-analytics-define-outputs.md#power-bi) unter [Stream Analytics-Ausgaben: Optionen für Speicher, Analyse](stream-analytics-define-outputs.md "Understanding Stream Analytics outputs"). Eine weitere nützliche Ressource, um mehr über das Erstellen von Dashboards mit Power BI zu erfahren, sind die [Dashboards in Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/).
+Weitere Informationen zum Konfigurieren einer Power BI-Ausgabe und zur Verwendung von Power BI-Gruppen finden Sie im Abschnitt [Power BI](stream-analytics-define-outputs.md#power-bi) unter [Stream Analytics-Ausgaben: Optionen für Speicher, Analyse](stream-analytics-define-outputs.md "Stream Analytics-Ausgaben"). [Dashboards in Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/) ist eine weitere hilfreiche Ressource.
 
-## <a name="limitations-and-best-practices"></a>Einschränkungen und bewährte Methoden
-In Power BI werden Parallelitäts- und Durchsatzeinschränkungen genutzt. Eine Beschreibung finden Sie hier: [https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing "Power BI Pricing").
+## <a name="learn-about-limitations-and-best-practices"></a>Einschränkungen und bewährte Methoden
+In Power BI werden Parallelitäts- und Durchsatzeinschränkungen genutzt. Eine Beschreibung hierzu finden Sie [auf dieser Seite zu Power BI](https://powerbi.microsoft.com/pricing "Power BI-Preise").
 
-Derzeit können Sie Power BI etwa einmal pro Sekunde aufrufen. Das Streaming von visuellen Elementen unterstützt Pakete bis zu einer Größe von 15KB. Darüber hinaus tritt beim Streaming von visuellen Elementen ein Fehler auf (aber Push ist weiterhin funktionsfähig).
+Derzeit können Sie Power BI etwa einmal pro Sekunde aufrufen. Das Streaming visueller Elemente unterstützt Pakete mit bis zu 15 KB. Darüber hinaus tritt beim Streaming visueller Elemente ein Fehler auf (Push funktioniert jedoch weiterhin).
 
 Aufgrund dieser Einschränkungen eignet sich Power BI perfekt für Anwendungsfälle, bei denen Azure Stream Analytics eine erhebliche Datenlastverringerung ermöglicht.
-Es wird die Verwendung von TumblingWindow oder HoppingWindow empfohlen, um sicherzustellen, dass beim Datenpush maximal 1 Push pro Sekunde erfolgt und dass die Abfrage innerhalb der Durchsatzanforderungen liegt. Mit der folgenden Gleichung können Sie den Wert für das Fenster in Sekunden berechnen:
+Wir empfehlen die Verwendung rollierender oder springender Fenster, um sicherzustellen, dass der Datenpush nicht höher ist als ein Push pro Sekunde und Ihre Abfrage innerhalb der Durchsatzanforderungen liegt.
+
+Mithilfe der folgenden Gleichung können Sie den Wert berechnen, um den Wert für Ihr Fenster in Sekunden zu berechnen:
 
 ![Gleichung1](./media/stream-analytics-power-bi-dashboard/equation1.png)  
 
-Beispiel: Wenn 1.000 Geräte jede Sekunde Daten senden und Sie das Power BI Pro-SKU verwenden, das 1.000.000 Zeilen pro Stunde unterstützt, und die durchschnittlichen Daten pro Gerät in Power BI berechnen möchten, können Sie maximal alle 4 Sekunden einen Push pro Gerät durchführen (wie im Folgenden gezeigt):  
+Beispiel:
+- Sie haben 1.000 Geräte, die in Intervallen von einer Sekunde Daten senden.
+- Sie verwenden das Power BI Pro-SKU, das 1.000.000 Zeilen pro Stunde unterstützt.
+- Sie möchten die Menge der durchschnittlichen Daten pro Gerät für Power BI veröffentlichen.
+
+Daraus resultiert die folgende Gleichung:
 
 ![Gleichung2](./media/stream-analytics-power-bi-dashboard/equation2.png)  
 
-Das bedeutet, dass die ursprüngliche Abfrage wie folgt geändert wird:
+Das heißt, dass wir die ursprüngliche Abfrage wie folgt ändern können:
 
     SELECT
         MAX(hmdt) AS hmdt,
@@ -159,23 +170,19 @@ Das bedeutet, dass die ursprüngliche Abfrage wie folgt geändert wird:
 
 
 ### <a name="renew-authorization"></a>Erneuern der Autorisierung
-Sie müssen Ihr Power BI-Konto erneut authentifizieren, wenn das Kennwort seit der Erstellung oder letzten Authentifizierung Ihres Auftrags geändert wurde. Wenn Multi-Factor Authentication (MFA) auf Ihrem Azure Active Directory (AAD)-Mandanten konfiguriert ist, müssen Sie auch Power BI-Autorisierung alle 2 Wochen erneuern. Dieses Problem zeigt sich daran, dass keine Auftragsausgabe erfolgt und in den Vorgangsprotokollen ein Benutzerauthentifizierungsfehler angezeigt wird.
+Wenn das Kennwort seit der Erstellung oder letzten Authentifizierung Ihres Auftrags geändert wurde, müssen Sie Ihr Power BI-Konto erneut authentifizieren. Wenn Azure Multi-Factor Authentication auf Ihrem Azure Active Directory (Azure AD)-Mandanten konfiguriert ist, müssen Sie die Power BI-Autorisierung ebenfalls alle zwei Wochen erneuern. Wenn Sie diese nicht erneuern, erhalten Sie unter Umständen keine Auftragsausgabe, oder in den Vorgangsprotokollen tritt ein Benutzerauthentifizierungsfehler auf.
 
-Wenn ein Auftrag zu starten versucht, während das Token abgelaufen ist, wird eine Fehlermeldung angezeigt und das Starten des Auftrags schlägt fehl. Um dieses Problem zu beheben, halten Sie den laufenden Auftrag an, und wechseln Sie zur Power BI-Ausgabe.  Klicken Sie auf den Link "Autorisierung erneuern", und starten Sie den Auftrag ab dem letzten Anhaltepunkt neu, um Datenverlust zu vermeiden. Sobald die Autorisierung mit Power BI aktualisiert wurde, wird im Autorisierungsbereich eine grüne Warnung angezeigt, um wiederzugeben, dass das Problem gelöst ist.
+Wenn ein Auftrag zu starten versucht, nachdem das Token abgelaufen ist, wird eine Fehlermeldung angezeigt, und das Starten des Auftrags schlägt fehl. Um dieses Problem zu beheben, halten Sie den laufenden Auftrag an, und wechseln Sie zur Power BI-Ausgabe. Klicken Sie auf den Link **Autorisierung erneuern**, und starten Sie den Auftrag ab der **Letzten Beendigungszeit** neu, um Datenverlust zu vermeiden.
+
+Nachdem die Autorisierung mit Power BI aktualisiert wurde, wird im Autorisierungsbereich eine grüne Benachrichtigung angezeigt, die darauf hinweist, dass das Problem gelöst ist.
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
-Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)
 * [Erste Schritte mit Azure Stream Analytics](stream-analytics-get-started.md)
 * [Skalieren von Azure Stream Analytics-Aufträgen](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (in englischer Sprache)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-* [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
-
+* [Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx) (Referenz zur Stream Analytics-Abfragesprache)
+* [Azure Stream Analytics Management REST API reference](https://msdn.microsoft.com/library/azure/dn835031.aspx) (Referenz zur Azure Stream Analytics-Verwaltungs-REST-API)
 

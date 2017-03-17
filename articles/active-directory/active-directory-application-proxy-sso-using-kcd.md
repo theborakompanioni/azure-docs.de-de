@@ -12,15 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/01/2016
+ms.date: 02/27/2017
 ms.author: kgremban
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: c308524e41047220fbad026edb6a87f196d89580
-ms.openlocfilehash: 3f293996d2565c495f707f99a0bb75bb7c24054e
+ms.sourcegitcommit: 015cc28903bfd366c653a51b0f73512bf8b578ea
+ms.openlocfilehash: aac56543b2b3b7fa8f8baf1cc719ead79b3c1b00
+ms.lasthandoff: 02/28/2017
 
 ---
 
-# <a name="single-sign-on-with-application-proxy"></a>Einmaliges Anmelden mit Anwendungsproxy
+# <a name="provide-single-sign-on-to-your-apps-with-application-proxy"></a>Bereitstellen von einmaligem Anmelden bei Ihren Apps mit dem Anwendungsproxy
 Die einmalige Anmeldung ist ein wichtiges Element von Azure AD-Anwendungsproxy. Sie bietet optimale Benutzerfreundlichkeit mit den folgenden Schritten:
 
 1. Ein Benutzer meldet sich bei der Cloud an.  
@@ -110,7 +112,7 @@ Weitere Informationen zu Kerberos finden Sie unter [All you want to know about K
 ### <a name="delegated-login-identity"></a>delegierte Identität für die Anmeldung
 Die Delegierte Identität für Anmeldung unterstützt zwei verschiedene Anmeldeszenarien:
 
-* Nicht-Windows-Anwendungen erhalten in der Regel die Benutzeridentität in Form eines Benutzernamens oder SAM-Kontonamens anstelle einer E-Mail-Adresse ((username@domain)).
+* Nicht-Windows-Anwendungen erhalten in der Regel die Benutzeridentität in Form eines Benutzernamens oder SAM-Kontonamens anstelle einer E-Mail-Adresse (username@domain).
 * Alternative Anmeldungskonfigurationen, bei denen sich die UPN in Azure AD und die UPN in Ihrem lokalen Active Directory unterscheiden.
 
 Mit dem Anwendungsproxy können Sie wählen, welche Identität verwendet werden soll, um das Kerberos-Ticket erhalten. Diese Einstellung erfolgt pro Anwendung. Einige dieser Optionen eignen sich für Systeme, die kein E-Mail-Adressformat akzeptieren, andere sind auf eine alternative Anmeldung ausgelegt.
@@ -124,8 +126,8 @@ Sofern nicht anderweitig konfiguriert, geht der Anwendungsproxy davon aus, dass 
 
 Diese Funktion ermöglicht vielen Organisationen mit unterschiedlichen lokalen Identitäten und Cloudidentitäten SSO aus der Cloud auf lokale Apps, ohne dass der Benutzer unterschiedliche Benutzernamen und Kennwörter eingeben muss. Hierzu gehören Organisationen mit folgenden Merkmalen:
 
-* Sie besitzen intern mehrere Domänen ((joe@us.contoso.com,, joe@eu.contoso.com)) und eine einzelne Domäne in der Cloud ((joe@contoso.com)).
-* Sie besitzen intern einen nicht routingfähigen Domänennamen ((joe@contoso.usa)) und einen zulässigen Namen in der Cloud.
+* Sie besitzen intern mehrere Domänen (joe@us.contoso.com, joe@eu.contoso.com) und eine einzelne Domäne in der Cloud (joe@contoso.com).
+* Sie besitzen intern einen nicht routingfähigen Domänennamen (joe@contoso.usa) und einen zulässigen Namen in der Cloud.
 * Sie verwenden intern keine Domänennamen (Joe).
 * Sie verwenden lokal und in der Cloud unterschiedliche Aliase. Beispiel: joe-johns@contoso.com und joej@contoso.com  
 
@@ -159,9 +161,4 @@ Aktuelle Neuigkeiten und Updates finden Sie im [Blog zum Anwendungsproxy](http:/
 <!--Image references-->
 [1]: ./media/active-directory-application-proxy-sso-using-kcd/AuthDiagram.png
 [2]: ./media/active-directory-application-proxy-sso-using-kcd/Properties.jpg
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

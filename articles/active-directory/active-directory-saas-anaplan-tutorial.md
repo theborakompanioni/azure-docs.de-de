@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 02/20/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 95369b2a0c1172e072aed33d075255fdcafe8a9c
+ms.sourcegitcommit: c9c2f20f608748e5a7f1b17b384650104560c9dc
+ms.openlocfilehash: cbd69cdffa9548d40ebbc7ecdd68501c1e89b24a
+ms.lasthandoff: 02/28/2017
 
 
 ---
@@ -26,7 +27,7 @@ In diesem Tutorial erfahren Sie, wie Sie Anaplan in Azure Active Directory (Azur
 Diese Integration bietet folgende Vorteile:
 
 * Sie können in Azure AD steuern, wer Zugriff auf Anaplan haben soll.
-* Sie können es Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei Anaplan anzumelden (Single Sign-On, SSO; einmaliges Anmelden).
+* Sie können Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Anaplan anzumelden (Single Sign-On, SSO; einmaliges Anmelden).
 * Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
@@ -35,27 +36,26 @@ Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unte
 Um die Azure AD-Integration mit Anaplan konfigurieren zu können, benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement
-* Ein SSA-fähiges Anaplan-Abonnement
+* Ein Anaplan-Abonnement, für das einmaliges Anmelden aktiviert ist
 
-> [!NOTE]
-> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
-> 
+>[!NOTE]
+>Sie sollten die Schritte in diesem Tutorial nicht in einer Produktionsumgebung testen. 
 > 
 
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
 * Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-* Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
+* Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-Ziel dieses Tutorials ist es, das einmalige Anmelden von Azure AD in einer Testumgebung zu testen.
+Ziel dieses Tutorials ist, das einmalige Anmelden (SSO) von Azure AD in einer Testumgebung zu testen.
 
 Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
 1. Hinzufügen von Anaplan über den Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
-## <a name="adding-anaplan-from-the-gallery"></a>Hinzufügen von Anaplan über den Katalog
+## <a name="add-anaplan-from-the-gallery"></a>Hinzufügen von Anaplan über den Katalog
 Zum Konfigurieren der Integration von Anaplan in Azure AD müssen Sie Anaplan über den Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
 **Führen Sie die folgenden Schritte aus, um Anaplan über den Katalog hinzuzufügen:**
@@ -80,25 +80,25 @@ Zum Konfigurieren der Integration von Anaplan in Azure AD müssen Sie Anaplan ü
    
     ![Auswählen der App im Katalog](./media/active-directory-saas-anaplan-tutorial/tutorial_anaplan_001.png)
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
-Dieser Abschnitt veranschaulicht anhand eines Testbenutzers namens Britta Simon, wie das einmalige Anmelden von Azure AD in Anaplan konfiguriert und getestet wird.
+## <a name="configure-and-test-azure-ad-sso"></a>Konfigurieren und Testen des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
+In diesem Abschnitt soll anhand eines Testbenutzers namens Britta Simon veranschaulicht werden, wie das einmalige Anmelden von Azure AD in Anaplan konfiguriert und getestet werden kann.
 
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Anaplan als Gegenstück zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Anaplan muss eine Linkbeziehung eingerichtet werden.
+Damit einmaliges Anmelden (SSO) funktioniert, muss Azure AD wissen, welcher Benutzer in Anaplan als Entsprechung zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Anaplan muss eine Linkbeziehung eingerichtet werden.
 
 Diese Linkbeziehung wird hergestellt, indem Sie den Benutzernamen**** in Azure AD als Benutzernamen**** in Anaplan zuweisen.
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Anaplan müssen die folgenden Schritte ausgeführt werden:
+Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Anaplan müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 3. **[Erstellen einen Anaplan-Testbenutzers](#creating-a-anaplan-test-user)** , um in Anaplan einen Gegenpart von Britta Simon zu erhalten, der mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** – um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
-In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im klassischen Portal und konfigurieren es in Ihrer Anaplan-Anwendung.
+### <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden (SSO) von Azure AD im klassischen Portal und konfigurieren das einmalige Anmelden in Ihrer Anaplan-Anwendung.
 
-**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Anaplan die folgenden Schritte aus:**
+**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Anaplan die folgenden Schritte aus:**
 
 1. Klicken Sie im klassischen Portal auf der Anwendungsintegrationsseite für **Anaplan** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
    
@@ -109,35 +109,31 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im klas
 3. Führen Sie auf der Seite **App-Einstellungen konfigurieren** die folgenden Schritte aus, und klicken Sie anschließend auf **Weiter**:
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-anaplan-tutorial/tutorial_anaplan_04.png)
-   
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein:  `https://sdp.anaplan.com/frontdoor/saml/<tenant name>`
-   
-    b. Klicken Sie unten auf der Seite auf **Weiter**
+  1. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://sdp.anaplan.com/frontdoor/saml/<tenant name>`
+  2. Klicken Sie auf **Weiter**.
 
-    > [AZURE.NOTE] Der Wert der Anmelde-URL ist in diesem Tutorial nur ein Platzhalter. Den tatsächlichen Wert für Ihre Umgebung können Sie beim Support von Anaplan erfragen.
-
-
-1. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für Anaplan** die folgenden Schritte aus, und klicken Sie dann auf **Weiter**:
+    > [!NOTE] 
+    > Der Wert der Anmelde-URL ist in diesem Tutorial nur ein Platzhalter. Den tatsächlichen Wert für Ihre Umgebung können Sie beim Support von Anaplan erfragen.
+    > 
+4. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für Anaplan** die folgenden Schritte aus, und klicken Sie dann auf **Weiter**:
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-anaplan-tutorial/tutorial_anaplan_05.png)
-   
-    a. Klicken Sie auf **Metadaten herunterladen**und speichern Sie die Datei auf Ihrem Computer.
-   
-    b. Klicken Sie auf **Weiter**.
-2. Wenden Sie sich unter [support@anaplan.com](mailto:support@anaplan.com) an das Supportteam von Anaplan, um SSO für Ihre Anwendung konfigurieren zu lassen, und stellen Sie Folgendes bereit:
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-anaplan-tutorial/tutorial_anaplan_05.png)  
+  1. Klicken Sie auf **Metadaten herunterladen**und speichern Sie die Datei auf Ihrem Computer.
+  2. Klicken Sie auf **Weiter**.
+5. Wenden Sie sich unter [support@anaplan.com](mailto:support@anaplan.com) an das Supportteam von Anaplan, um SSO für Ihre Anwendung konfigurieren zu lassen, und stellen Sie Folgendes bereit:
    
    * Die heruntergeladene Metadatendatei
    * Die **Entitäts-ID**
    * Die **SAML-SSO-URL** 
    * Die **Dienst-URL für einmaliges Abmelden**
-3. Wählen Sie im klassischen Portal die Bestätigung für die Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
+6. Wählen Sie im klassischen Portal die Bestätigung für die Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
    
     ![Azure AD – einmaliges Anmelden][10]
-4. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.  
+7. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.  
    
     ![Azure AD – einmaliges Anmelden][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im klassischen Azure-Portal.
 
 ![Azure AD-Benutzer erstellen][20]
@@ -156,42 +152,32 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-anaplan-tutorial/create_aaduser_04.png)
 5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
    
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-anaplan-tutorial/create_aaduser_05.png)
-   
-    a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
-   
-    b. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
-   
-    c. Klicken Sie auf **Weiter**.
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-anaplan-tutorial/create_aaduser_05.png) 
+  1. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
+  2. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
+  3. Klicken Sie auf **Weiter**.
 6. Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
    
    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-anaplan-tutorial/create_aaduser_06.png)
-   
-   a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
-   
-   b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
-   
-   c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
-   
-   d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
-   
-   e. Klicken Sie auf **Weiter**.
+  1. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
+  2. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
+  3. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
+  4. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
+  5. Klicken Sie auf **Weiter**.
 7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-anaplan-tutorial/create_aaduser_07.png)
 8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-anaplan-tutorial/create_aaduser_08.png)
-   
-    a. Notieren Sie den Wert von **Neues Kennwort**.
-   
-    b. Klicken Sie auf **Fertig stellen**.   
+  1. Notieren Sie den Wert von **Neues Kennwort**.
+  2. Klicken Sie auf **Fertig stellen**.   
 
-### <a name="creating-a-anaplan-test-user"></a>Erstellen einen Anaplan-Testbenutzers
+### <a name="create-a-anaplan-test-user"></a>Erstellen eines Anaplan-Testbenutzers
 In diesem Abschnitt erstellen Sie in Anaplan einen Benutzer namens Britta Simon. Arbeiten Sie über <mailto:support@anaplan.com> mit dem Supportteam von Anaplan zusammen, um Benutzer in der Anaplan-Plattform hinzuzufügen.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
-Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmaligen Anmeldens bei Azure zu ermöglichen, indem sie Zugriff auf Anaplan erhält.
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmaligen Anmeldens (SSO) von Azure zu ermöglichen, indem sie Zugriff auf Anaplan erhält.
 
 ![Benutzer zuweisen][200]
 
@@ -211,8 +197,8 @@ Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmal
    
     ![Benutzer zuweisen][205]
 
-### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
-Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
+Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden (SSO) über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Anaplan“ klicken, sollten Sie automatisch bei Ihrer Anaplan-Anwendung angemeldet werden.
 
@@ -237,9 +223,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Anaplan“ klicken, sollten Sie au
 [203]: ./media/active-directory-saas-anaplan-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-anaplan-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-anaplan-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

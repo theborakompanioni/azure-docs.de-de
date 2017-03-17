@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/31/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: b6c79691c75cb01eb4eea4d0e66b01d1792cfb11
-ms.openlocfilehash: 0e3f0166517d3fd0ddd5f04a12afa393d0ac2a92
+ms.sourcegitcommit: 2fb6f4d8330eb62e01af318277bc0e90aee039e0
+ms.openlocfilehash: d3c4d1a91615957764552a985e0dfeba7c10a927
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -88,10 +89,10 @@ Weitere Informationen zur Erstellung von benutzerdefinierten Endpunkten auf dem 
 
 ### <a name="built-in-endpoint-messagesevents"></a>Integrierter Endpunkt: messages/events
 
-Ein IoT Hub macht die folgenden Eigenschaften verfügbar, damit Sie den integrierten Messagingendpunkt für **messages/events** steuern können.
+Ein IoT Hub macht die folgenden Eigenschaften verfügbar, damit Sie den integrierten Event Hub-kompatiblen Messagingendpunkt für **messages/events** steuern können.
 
-* **Anzahl von Partitionen**. Legen Sie diese Eigenschaft bei der Erstellung fest, um die Anzahl von Partitionen für die D2C-Ereigniserfassung zu definieren.
-* **Aufbewahrungsdauer**. Diese Eigenschaft legt die Aufbewahrungszeit für D2C-Nachrichten fest. Als Standardwert ist ein Tag festgelegt, dieser Wert kann jedoch auf sieben Tage erhöht werden.
+* **Anzahl von Partitionen**. Legen Sie diese Eigenschaft bei der Erstellung fest, um die Anzahl von [Partitionen][lnk-event-hub-partitions] für die D2C-Ereigniserfassung zu definieren.
+* **Aufbewahrungsdauer**. Diese Eigenschaft gibt den Zeitraum in Tagen an, für den Nachrichten von IoT Hub aufbewahrt werden. Als Standardwert ist ein Tag festgelegt, dieser Wert kann jedoch auf sieben Tage erhöht werden.
 
 Mit dem IoT Hub können Sie außerdem Consumergruppen auf dem integrierten D2C-Empfangsendpunkt verwalten.
 
@@ -232,7 +233,7 @@ Jeder IoT Hub legt die folgenden Konfigurationsoptionen für das C2D-Messaging o
 Weitere Informationen finden Sie unter [Erstellen von IoT-Hubs][lnk-portal].
 
 ## <a name="read-device-to-cloud-messages"></a>Lesen von D2C-Nachrichten
-IoT Hub stellt den integrierten Endpunkt **messages/events** für Ihre Back-End-Dienste bereit, damit die D2C-Nachrichten gelesen werden können, die von Ihrem Hub empfangen werden. Da dieser Endpunkt Event Hubs-kompatibel ist, könne Sie zum Lesen von Nachrichten alle Mechanismen verwenden, die der Event Hubs-Dienst unterstützt.
+IoT Hub stellt den integrierten Endpunkt **messages/events** für Ihre Back-End-Dienste bereit, damit die D2C-Nachrichten gelesen werden können, die von Ihrem Hub empfangen werden. Der Endpunkt ist Event Hub-kompatibel, sodass Sie zum Lesen von Nachrichten alle Mechanismen verwenden können, die der Event Hubs-Dienst unterstützt.
 
 Außerdem können Sie im IoT Hub auch benutzerdefinierte Endpunkte erstellen. IoT Hub unterstützt derzeit Event Hubs, Service Bus-Warteschlangen und Service Bus-Themen als benutzerdefinierte Endpunkte. Weitere Details zum Lesen aus diesen Diensten finden Sie unter den Informationen zum „Lesen von [Event Hubs][lnk-getstarted-eh]“, „Lesen aus [Service Bus-Warteschlangen][lnk-getstarted-queue]“ und „Lesen aus [Service Bus-Themen][lnk-getstarted-topic]“.
 
@@ -435,9 +436,4 @@ Wenn Sie einige der in diesem Artikel beschriebenen Konzepte ausprobieren möcht
 [lnk-getstarted-tutorial]: iot-hub-csharp-csharp-getstarted.md
 [lnk-c2d-tutorial]: iot-hub-csharp-csharp-c2d.md
 [lnk-d2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
-
-
-
-<!--HONumber=Feb17_HO1-->
-
-
+[lnk-event-hub-partitions]: ../event-hubs/event-hubs-what-is-event-hubs.md#partitions

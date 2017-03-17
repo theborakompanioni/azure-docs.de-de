@@ -11,11 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2017
+ms.date: 02/22/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 52316e90cd2207ee20033cd96f981692b20b5ece
-ms.openlocfilehash: d581ecc99220befefcd8c2f14a756debb3ab2eb1
+ms.sourcegitcommit: ed8ef101a0757fd32585f5b3249e49d4fb0e09b4
+ms.openlocfilehash: ea3aa0b94c6a74747f7efa8633d5b6bfff75a230
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -106,10 +107,10 @@ Sobald Sie das einmalige Anmelden für Ihre Apps und Ressourcen eingerichtet hab
 
 | Artikelleitfaden |  |
 |:---:| --- |
-| Eine Einführung in die Funktionen für bedingten Zugriff, die über Azure AD, Office 365 und Intune hinweg bereitgestellt werden |[Verwalten von Risiken mit bedingtem Zugriff](active-directory-conditional-access.md) |
+| Eine Einführung in die Funktionen für bedingten Zugriff, die über Azure AD, Office&365; und Intune hinweg bereitgestellt werden |[Verwalten von Risiken mit bedingtem Zugriff](active-directory-conditional-access.md) |
 | Aktivieren des bedingten Zugriffs für die folgenden Ressourcentypen |[Bedingter Zugriff für SaaS-Apps](active-directory-conditional-access-azuread-connected-apps.md)<br /><br />[Bedingter Zugriff für Office 365-Dienste](active-directory-conditional-access-device-policies.md)<br /><br />[Bedingter Zugriff für lokale Anwendungen](active-directory-conditional-access-on-premises-setup.md)<br /><br />[Bedingter Zugriff für lokale, über den Azure AD-Anwendungsproxy veröffentlichte Anwendungen](active-directory-application-proxy-conditional-access.md) |
 | Registrieren von Geräten bei Azure Active Directory zum Aktivieren gerätebasierter Richtlinien für den bedingten Zugriff |[Erste Schritte bei der Azure Active Directory-Geräteregistrierung](active-directory-conditional-access-device-registration-overview.md)<br /><br />[Automatische Geräteregistrierung bei Azure Active Directory für in Domänen eingebundene Windows-Geräte](active-directory-conditional-access-automatic-device-registration.md)<br />– [Schritte für Windows 8.1-Geräte](active-directory-conditional-access-automatic-device-registration-windows-8-1.md)<br />– [Schritte für Windows 7-Geräte](active-directory-conditional-access-automatic-device-registration-windows7.md) |
-| Verwenden der Android-Version der Azure Authenticator-App für Richtlinien mit mehrstufiger Authentifizierung |[Azure Authenticator für Android](active-directory-conditional-access-azure-authenticator-app.md) |
+| Vorgehensweise: Verwenden der Microsoft Authenticator-App für die Überprüfung in zwei Schritten |[Microsoft Authenticator](../multi-factor-authentication/end-user/microsoft-authenticator-app-how-to.md) |
 
 Bedingter Zugriff ist ein [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) -Feature.
 
@@ -209,10 +210,5 @@ Um herauszufinden, welche Berichte in verschiedenen Editionen von Azure Active D
 [Azure Active Directory-Domänendienste](https://azure.microsoft.com/services/active-directory-ds/)
 
 [Azure Multi-Factor Authentication](https://azure.microsoft.com/services/multi-factor-authentication/)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

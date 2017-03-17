@@ -12,11 +12,12 @@ ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2016
+ms.date: 03/06/2017
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 44c2c181b1ca463c5d2bd92b77e4b92604964ba2
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 0bbbc4f61c37fe4d296221c372bfdf6dd429a32b
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -35,6 +36,7 @@ Durch Ausführen dieser Schritte in dieser Reihenfolge wird sichergestellt, dass
 * Wählen Sie in Ihrer Visual Studio-Projektmappe **Extras** --> **NuGet Package Manager** -->  **NuGet-Pakete für Projektmappe verwalten** aus. 
 * (Visual Studio 2013) Wählen Sie im linken Bereich **Updates** aus, und klicken Sie dann für das Paket **Azure SQL Database Elastic Scale Client Library**, das im Fenster angezeigt wird, auf die Schaltfläche **Aktualisieren**.
 * (Visual Studio 2015) Legen Sie das Filterfeld auf **Upgrade verfügbar**fest. Wählen Sie das zu aktualisierende Paket aus, und klicken Sie auf die Schaltfläche **Aktualisieren** .
+* (Visual Studio 2017) Wählen Sie im oberen Bereich des Dialogfelds **Updates** aus. Wählen Sie das zu aktualisierende Paket aus, und klicken Sie auf die Schaltfläche **Aktualisieren** .
 * Führen Sie die Schritte zur Erstellung und Bereitstellung aus. 
 
 **2. Aktualisieren Sie Ihre Skripts.** Wenn Sie **PowerShell**-Skripts zum Verwalten von Shards verwenden, [laden Sie die neue Bibliotheksversion herunter](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/), und kopieren Sie sie in das Verzeichnis, in dem Sie Skripts ausführen. 
@@ -77,10 +79,5 @@ Einen Versionsverlauf erhalten Sie unter [Microsoft.Azure.SqlDatabase.ElasticSca
 
 <!--Image references-->
 [1]:./media/sql-database-elastic-scale-upgrade-client-library/nuget-upgrade.png
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

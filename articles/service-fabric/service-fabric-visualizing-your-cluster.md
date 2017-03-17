@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/05/2017
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: dafaf29b6827a6f1c043af3d6bfe62d480d31ad5
-ms.openlocfilehash: bebfd5e0cc209d8c1fc28d2300c57e3519410954
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: cc61146e0353455c5c763297a002afb86b76887a
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -83,11 +84,11 @@ In der folgenden Tabelle sind die für jede Entität verfügbaren Aktionen aufge
 | Anwendung |Anwendung löschen |Löscht die Anwendung, einschließlich aller Dienste und zugehörigen Zustände (sofern vorhanden). |
 | Dienst |Dienst löschen |Löscht den Dienst und seinen Zustand (sofern vorhanden). |
 | Knoten |Aktivieren |Aktiviert den Knoten. |
-| Deaktivieren (anhalten) |Hält den Knoten im aktuellen Zustand an. Die Dienste werden weiterhin ausgeführt, Service Fabric verschiebt jedoch nur dann Elemente proaktiv in oder aus einem Dienst, wenn dies zur Vermeidung von Ausfällen oder Dateninkonsistenzen erforderlich ist. Diese Aktion wird normalerweise zum Aktivieren von Debuggingdiensten auf einem bestimmten Knoten verwendet, um sicherzustellen, dass sie während der Überprüfung nicht verschoben werden. | |
-| Deaktivieren (neu starten) |Verschiebt alle In-Memory-Dienste sicher aus einem Knoten und schließt dauerhafte Dienste. Wird in der Regel verwendet, wenn die Hostprozesse oder Hostcomputer neu gestartet werden müssen. | |
-| Deaktivieren (Daten entfernen) |Ermöglicht das sichere Schließen aller auf dem Knoten ausgeführten Dienste, nachdem ausreichend Ersatzreplikate erstellt wurden. Wird in der Regel verwendet, wenn ein Knoten (oder zumindest sein Speicher) dauerhaft außer Betrieb genommen wird. | |
-| Knotenzustand entfernen |Entfernt die Replikatinformationen eines Knotens aus dem Cluster. Wird in der Regel verwendet, wenn ein Knoten, auf dem bereits ein Fehler aufgetreten ist, als nicht mehr wiederherstellbar gilt. | |
-| Knoten | Neu starten | Simuliert einen Knotenausfall durch einen Neustart des Knotens. Weitere Informationen finden Sie [hier](https://docs.microsoft.com/en-us/powershell/servicefabric/vlatest/Restart-ServiceFabricNode). ||
+| Knoten | Deaktivieren (anhalten) | Hält den Knoten im aktuellen Zustand an. Die Dienste werden weiterhin ausgeführt, Service Fabric verschiebt jedoch nur dann Elemente proaktiv in oder aus einem Dienst, wenn dies zur Vermeidung von Ausfällen oder Dateninkonsistenzen erforderlich ist. Diese Aktion wird normalerweise zum Aktivieren von Debuggingdiensten auf einem bestimmten Knoten verwendet, um sicherzustellen, dass sie während der Überprüfung nicht verschoben werden. | |
+| Knoten | Deaktivieren (neu starten) | Verschiebt alle In-Memory-Dienste sicher aus einem Knoten und schließt dauerhafte Dienste. Wird in der Regel verwendet, wenn die Hostprozesse oder Hostcomputer neu gestartet werden müssen. | |
+| Knoten | Deaktivieren (Daten entfernen) | Ermöglicht das sichere Schließen aller auf dem Knoten ausgeführten Dienste, nachdem ausreichend Ersatzreplikate erstellt wurden. Wird in der Regel verwendet, wenn ein Knoten (oder zumindest sein Speicher) dauerhaft außer Betrieb genommen wird. | |
+| Knoten | Knotenzustand entfernen | Entfernt die Replikatinformationen eines Knotens aus dem Cluster. Wird in der Regel verwendet, wenn ein Knoten, auf dem bereits ein Fehler aufgetreten ist, als nicht mehr wiederherstellbar gilt. | |
+| Knoten | Neu starten | Simuliert einen Knotenausfall durch einen Neustart des Knotens. Weitere Informationen finden Sie [hier](https://docs.microsoft.com/en-us/powershell/servicefabric/vlatest/Restart-ServiceFabricNode). | |
 
 Da viele Aktionen destruktiv sind, werden Sie aufgefordert, den Vorgang zu bestätigen, bevor die Aktion abgeschlossen wird.
 
@@ -132,9 +133,4 @@ Wenn Sie versuchen, eine Verbindung mit Service Fabric Explorer in einem sichere
 [sfx-service-essentials]: ./media/service-fabric-visualizing-your-cluster/SfxServiceEssentials.png
 [sfx-delete-application]: ./media/service-fabric-visualizing-your-cluster/SfxDeleteApplication.png
 [sfx-create-app-instance]: ./media/service-fabric-visualizing-your-cluster/SfxCreateAppInstance.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

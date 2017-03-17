@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 11/25/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f7ea1762e3a3ffe8d3c0c6af307b846dc1f3c696
+ms.sourcegitcommit: 52590f0c47954d115f39cbe988e04a0ed3feb94d
+ms.openlocfilehash: cd3352ae30734cce116fda5a838f95e5e0b86a8a
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -95,7 +96,7 @@ Die folgenden Schritte führen Sie durch den Prozess der Erstellung einer neuen 
 7. Wählen Sie **OK** , um die Formel zu erstellen.
 
 ## <a name="use-a-formula-to-provision-a-vm"></a>Verwenden einer Formel zum Bereitstellen eines virtuellen Computers
-Nachdem Sie eine Formel erstellt haben, können Sie diese als Grundlage zum Erstellen eines virtuellen Computers verwenden. Die genaue Vorgehensweise wird im Abschnitt [Hinzufügen einer VM mit Artefakten](devtest-lab-add-vm-with-artifacts.md#add-a-vm-with-artifacts) beschrieben.
+Nachdem Sie eine Formel erstellt haben, können Sie diese als Grundlage zum Erstellen eines virtuellen Computers verwenden. Die genaue Vorgehensweise wird im Artikel [Hinzufügen einer VM mit Artefakten](devtest-lab-add-vm-with-artifacts.md) beschrieben.
 
 ## <a name="modify-a-formula"></a>Ändern einer Formel
 Um eine Formel zu ändern, gehen Sie folgendermaßen vor:
@@ -133,10 +134,5 @@ Um eine Formel zu löschen, gehen Sie folgendermaßen vor:
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie eine Formel erstellt haben, die zum Erstellen virtueller Computer verwendet werden soll, besteht der nächste Schritt darin, [Ihrem Lab einen virtuellen Computer hinzuzufügen](devtest-lab-add-vm-with-artifacts.md).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

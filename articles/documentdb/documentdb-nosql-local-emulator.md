@@ -13,11 +13,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2017
+ms.date: 02/23/2017
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: 5f9783232e9b03ca3777a000ffc189863d0956ab
-ms.openlocfilehash: ffc481943a9dc55593fa8b46dffef0098f288eaf
+ms.sourcegitcommit: 92479ddca2c69f1b8630374e88cc5eda9ac8c9ef
+ms.openlocfilehash: 59b2205fcddf48cfbfb8d15e174c385482a21ec9
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -38,9 +39,9 @@ Für den DocumentDB-Emulator gelten folgende Hardware- und Softwareanforderungen
 
 * Softwareanforderungen
   * Windows Server 2012 R2, Windows Server 2016 oder Windows 10
-*   Minimale Hardwareanforderungen
-  * 2 GB RAM
-  * 10 GB verfügbarer Festplattenspeicher
+*    Minimale Hardwareanforderungen
+  *    2 GB RAM
+  *    10 GB verfügbarer Festplattenspeicher
 
 ## <a name="installing-the-documentdb-emulator"></a>Installieren des DocumentDB-Emulators
 Sie können den DocumentDB-Emulator aus dem [Microsoft Download Center](https://aka.ms/documentdb-emulator) herunterladen und installieren. 
@@ -117,7 +118,7 @@ Importieren Sie das X.509-Zertifikat in den Java-Zertifikatspeicher, indem Sie d
 
 Beim Herstellen einer Verbindung mit dem Emulator in Python- und Node.js-SDKs ist die SSL-Überprüfung deaktiviert.
 
-## <a name="a-idcommand-lineadocumentdb-emulator-command-line-tool-reference"></a><a id="command-line"></a>Referenz zum DocumentDB-Emulator-Befehlszeilentool
+## <a id="command-line"></a>Referenz zum DocumentDB-Emulator-Befehlszeilentool
 Sie können die Befehlszeile im Installationspfad verwenden, um den Emulator zu starten und zu beenden, Optionen zu konfigurieren und andere Vorgänge auszuführen.
 
 ### <a name="command-line-syntax"></a>Befehlszeilensyntax
@@ -223,7 +224,7 @@ Da der DocumentDB-Emulator eine emulierte Umgebung bereitstellt, die auf einer l
 * Der DocumentDB-Emulator unterstützt nicht die Außerkraftsetzungen von Dienstkontingenten, die im Azure DocumentDB-Dienst verfügbar sind (z.B. Dokumentgrößenlimits, größerer partitionierter Sammlungsspeicher).
 * Möglicherweise ist Ihre Kopie des DocumentDB-Emulators nicht auf dem neuesten Stand der Änderungen im Azure DocumentDB-Dienst. Verwenden Sie daher den [DocumentDB-Kapazitätsplaner](https://www.documentdb.com/capacityplanner), um den erforderlichen Produktionsdurchsatz (RUs, Request Units) für Ihre Anwendung richtig zu einzuschätzen.
 
-## <a name="a-idset-partitioncountachange-the-number-of-collections"></a><a id="set-partitioncount"></a>Ändern der Anzahl von Sammlungen
+## <a id="set-partitioncount"></a>Ändern der Anzahl von Sammlungen
 
 Standardmäßig können Sie mithilfe des DocumentDB-Emulators bis zu 25 Sammlungen mit einer einzelnen Partition oder eine partitionierte Sammlung erstellen. Wenn Sie den Wert **PartitionCount** ändern, können Sie bis zu 250 Sammlungen mit nur einer Partition oder 10 partitionierte Sammlungen oder eine Kombination aus beidem erstellen, bei der insgesamt maximal 250 einzelne Partitionen vorhanden sind (wobei 1 partitionierte Sammlung = 25 Sammlungen mit einer Partition).
 
@@ -249,9 +250,11 @@ Verwenden Sie die folgenden Tipps zum Behandeln von Problemen, die mit dem Docum
 
 - Bei einem Absturz des DocumentDB-Emulators sammeln Sie Dumpdateien aus dem Ordner „C:\Benutzer\benutzername\AppData\Lokal\CrashDumps“, komprimieren sie und fügen sie einer E-Mail an [askdocdb@microsoft.com](mailto:askdocdb@microsoft.com) als Anhang hinzu.
 
+- Wenn Abstürze von „DocumentDB.StartupEntryPoint.exe“ auftreten, führen Sie den folgenden Befehl an einer Administratoreingabeaufforderung aus: `lodctr /R` 
+
 - Wenn ein Verbindungsproblem auftritt, [sammeln Sie Ablaufverfolgungsdateien](#trace-files), komprimieren sie und fügen sie einer E-Mail an [askdocdb@microsoft.com](mailto:askdocdb@microsoft.com) als Anhang hinzu.
 
-### <a name="a-idtrace-filesacollect-trace-files"></a><a id="trace-files"></a>Sammeln von Ablaufverfolgungsdateien
+### <a id="trace-files"></a>Sammeln von Ablaufverfolgungsdateien
 
 Zum Sammeln von Debugablaufverfolgungen führen Sie die folgenden Befehle an einer Administratoreingabeaufforderung aus:
 
@@ -268,9 +271,4 @@ Zum Sammeln von Debugablaufverfolgungen führen Sie die folgenden Befehle an ein
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zu DocumentDB finden Sie unter [Einführung in Azure DocumentDB](documentdb-introduction.md).
 * Um mit dem Entwickeln mithilfe des DocumentDB-Emulators zu beginnen, laden Sie eins der [unterstützten DocumentDB SDKs](documentdb-sdk-dotnet.md) herunter.
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

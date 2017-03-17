@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Novatus | Microsoft Docs'
+title: 'Tutorial: Azure Active Directory-Integration mit 10,000ft Plans | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und 10,000ft Plans konfigurieren.
 services: active-directory
 documentationcenter: 
@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/30/2016
+ms.date: 02/22/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: b1dded643a2526b7df799eddaca071c95ea35442
-ms.openlocfilehash: fbc47fe42fabbe65233364d86252d2e722600975
+ms.sourcegitcommit: 2a1f3df856116e372518b2f88460b3c6905c4c9a
+ms.openlocfilehash: 584ddcfc53afee6a8ff11a03d662d8acf58e4820
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -124,7 +125,7 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im
     a. Klicken Sie auf **Zertifikat herunterladen**und speichern Sie die Datei auf Ihrem Computer.
    
     b. Klicken Sie auf **Weiter**.
-2. Um das einmalige Anmelden (SSO, Single Sign-On) für Ihre Anwendung konfigurieren zu lassen, wenden Sie sich an das [Supportteam von 10,000ft Plans](mailto:support@10000ft.com), und fügen Sie das heruntergeladene Zertifikat an. Geben Sie außerdem die Aussteller-URL, die SAML-SSO-URL und die Abmelde-URL an.
+2. Um das einmalige Anmelden (SSO, Single Sign-On) für Ihre Anwendung konfigurieren zu lassen, wenden Sie sich an das [Supportteam von&10;,000ft Plans](mailto:support@10000ft.com), und fügen Sie das heruntergeladene Zertifikat an. Geben Sie außerdem die Aussteller-URL, die SAML-SSO-URL und die Abmelde-URL an.
 3. Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
    
     ![Azure AD – einmaliges Anmelden][10]
@@ -239,9 +240,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „10,000ft Plans“ klicken, sollten
 [203]: ./media/active-directory-saas-10000ftplans-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-10000ftplans-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-10000ftplans-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

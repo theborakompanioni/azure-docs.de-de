@@ -15,9 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2017
 ms.author: larryfr
+ROBOTS: NOINDEX
 translationtype: Human Translation
 ms.sourcegitcommit: ccd1dffda19718a434fc09bb74a536714799740a
 ms.openlocfilehash: 58881fd4608deddd8390cf4905b31a57f526e492
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -57,10 +59,5 @@ In diesem Beispiel verarbeiten Sie Verlaufsdaten von Klimaanlagensystemen mithil
    
     ![Abbildung zu „Erste Schritte mit dem Katalog“](./media/hdinsight-hive-analyze-sensor-data/getting-started-gallery.png)
 3. Folgen Sie den Anweisungen auf der Webseite, um das Beispiel abzuschließen.
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

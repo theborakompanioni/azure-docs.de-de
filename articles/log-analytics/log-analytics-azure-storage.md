@@ -1,5 +1,5 @@
 ---
-title: "Erfassen von Protokollen und Metriken für Azure-Dienste in Log Analytics | Microsoft-Dokumentation"
+title: "Sammeln von Azure-Dienstprotokollen und Metriken für Log Analytics | Microsoft-Dokumentation"
 description: "Konfigurieren Sie Diagnosen für Azure-Ressourcen, um Protokolle und Metriken in Log Analytics zu schreiben."
 services: log-analytics
 documentationcenter: 
@@ -12,15 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2017
+ms.date: 02/27/2017
 ms.author: banders
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: fcb2c38b18e40d3ca4406810e523ae339d612bcf
-ms.openlocfilehash: b2049e2b3673ddc0455fc07c298f1054c8c8e78e
+ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
+ms.openlocfilehash: 935680e33c1b32619b7acb8d50a61e48b6703402
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="collecting-logs-and-metrics-for-azure-services-in-log-analytics"></a>Erfassen von Protokollen und Metriken für Azure-Dienste in Log Analytics
+# <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Sammeln von Azure-Dienstprotokollen und Metriken zur Verwendung in Log Analytics
 
 Protokolle und Metriken für Azure-Dienste können auf vier Arten erfasst werden:
 
@@ -149,9 +151,4 @@ Der Azure-Vorlagenkatalog enthält [Beispiele für die Verwendung von Azure Auto
 * [Verwenden von Blob Storage für IIS und Table Storage für Ereignisse](log-analytics-azure-storage-iis-table.md) enthält Informationen zum Lesen der Protokolle für Azure-Dienste, die Diagnosedaten in Table Storage schreiben, oder der IIS-Protokolle, die in Blob Storage geschrieben werden.
 * [Aktivieren Sie Lösungen](log-analytics-add-solutions.md) , um Einblick in die Daten bereitzustellen.
 * [Erstellen Sie Suchabfragen](log-analytics-log-searches.md) , um die Daten zu analysieren.
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

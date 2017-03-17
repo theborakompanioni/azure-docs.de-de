@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2017
+ms.date: 02/22/2017
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: 876e0fd12d045bba85d1e30d4abfcb8ce421213a
-ms.openlocfilehash: ed58e623ff74a21df25fc93346e571edec7b40da
+ms.sourcegitcommit: 5ed72d95ae258d6fa8e808cd72ab6e8a665901c9
+ms.openlocfilehash: 0a8b53f7860548a2a013bfc7813cdf798b6a4910
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -29,7 +30,7 @@ Nach dem Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
 * Wie konfiguriere ich die Partitionierung in DocumentDB?
 * Was sind Partitionsschlüssel, und wie kann ich den richtigen Partitionsschlüssel für meine Anwendung auswählen?
 
-Sie können das Projekt aus dem [DocumentDB-Treiberbeispiel zur Leistungsüberprüfung](https://github.com/Azure/azure-documentdb-dotnet/tree/a2d61ddb53f8ab2a23d3ce323c77afcf5a608f52/samples/documentdb-benchmark)herunterladen, um mit dem Programmieren loszulegen. 
+Sie können das Projekt aus dem [DocumentDB-Treiberbeispiel zur Leistungsüberprüfung](https://github.com/Azure/azure-documentdb-dotnet/tree/a2d61ddb53f8ab2a23d3ce323c77afcf5a608f52/samples/documentdb-benchmark) herunterladen, um mit dem Programmieren zu beginnen. 
 
 Partitionierung und Partitionsschlüssel werden auch im folgenden Azure Friday-Video mit Scott Hanselman und Shireesh Thota (DocumentDB Principal Engineering Manager) behandelt:
 
@@ -45,10 +46,18 @@ Wie funktioniert das? Wenn Sie eine Sammlung in DocumentDB erstellen, können Si
 
 Stellen Sie sich z.B. eine Anwendung vor, die Daten über Mitarbeiter und deren Abteilungen in DocumentDB speichert. Wir wählen `"department"` als Partitionsschlüsseleigenschaft aus, um Daten nach Abteilung horizontal hochzuskalieren. Jedes Dokument in DocumentDB muss eine obligatorische `"id"`-Eigenschaft aufweisen, die für jedes Dokument mit dem gleichen Partitionsschlüssel eindeutig sein muss, z.B. `"Marketing`". Jedes Dokument, das in einer Sammlung gespeichert ist, muss eine eindeutige Kombination aus Partitionsschlüssel und ID enthalten, z.B. `{ "Department": "Marketing", "id": "0001" }`, `{ "Department": "Marketing", "id": "0002" }` und `{ "Department": "Sales", "id": "0001" }`. In anderen Worten gilt die zusammengesetzte Eigenschaft aus (Partitionsschlüssel, id) als Primärschlüssel für Ihre Auflistung.
 
-## <a name="partition-keys"></a>Partitionsschlüssel
-Die Auswahl des Partitionsschlüssels ist eine wichtige Entscheidung, die Sie zur Entwurfszeit treffen müssen. Sie müssen einen JSON-Eigenschaftennamen auswählen, der eine große Spanne von Werten sowie wahrscheinlich gleichmäßig verteilte Zugriffsmuster besitzt. Der Partitionsschlüssel wird als JSON-Pfad angegeben. So stellt z.B. `/department` die Eigenschaft „Abteilung“ dar. 
+DocumentDB erstellt eine kleine Anzahl von physischen Partitionen hinter jeder Sammlung basierend auf Speichergröße und bereitgestelltem Durchsatz. Die Eigenschaft, die Sie als Partitionsschlüssel definieren, ist eine logische Partition. Mehrere Schlüsselwerte der Partition nutzen in der Regel gemeinsam eine einzelne physische Partition, aber ein einzelner Wert erstreckt sich nie über eine Partition. Wenn Sie einen Partitionsschlüssel mit einer Vielzahl von Werten haben, ist dies hilfreich, da DocumentDB so einen besseren Lastenausgleich ausführen kann, wenn Ihre Datenmenge zunimmt, oder Sie den bereitgestellten Durchsatz steigern.
 
-Die folgende Tabelle zeigt Beispiele für Definitionen der Partitionsschlüssel und die entsprechenden JSON-Werte.
+Nehmen wir beispielsweise an, Sie erstellen eine Sammlung mit einem Durchsatz von 25.000 Anforderungen pro Sekunde, und DocumentDB kann 10.000 Anforderungen pro Sekunde pro einzelne physische Partition unterstützen. DocumentDB würde 3 physische Partitionen P1, P2 und P3 für Ihre Sammlung erstellen. Während der Einfügung oder des Lesens eines Dokuments erstellt der DocumentDB-Dienst einen Hash mit dem entsprechenden `Department`-Wert, um den drei Partitionen P1, P2 und P3 Daten zuzuordnen. Wenn z.B. „Marketing“ und „Sales“ den Hashwert 1 erhalten, werden beide in P1 gespeichert. Und wenn P1 voll wird, teilt DocumentDB P1 in zwei neue Partitionen P4 und P5 auf. Dann könnte der Dienst nach der Teilung „Marketing“ nach P4 und „Sales“ nach P5 verschieben und dann P1 löschen. Diese Verschiebungen von Partitionsschlüsseln zwischen Partitionen sind für die Anwendung transparent und haben keinen Einfluss auf die Verfügbarkeit der Sammlung.
+
+## <a name="partition-keys"></a>Partitionsschlüssel
+Die Auswahl des Partitionsschlüssels ist eine wichtige Entscheidung, die Sie zur Entwurfszeit treffen müssen. Sie müssen einen JSON-Eigenschaftennamen auswählen, der eine große Spanne von Werten sowie wahrscheinlich gleichmäßig verteilte Zugriffsmuster besitzt. 
+
+> [!NOTE]
+> Es hat sich bewährt, über einen Partitionsschlüssel mit einer großen Anzahl unterschiedlicher Werte (mindestens Hunderte bis Tausende) zu verfügen. Viele Kunden verwenden DocumentDB als effektiven Schlüsselwertspeicher, wobei die eindeutige „id“ der Partitionsschlüssel ist, also gibt es Millionen und Milliarden von Partitionsschlüsseln.
+>
+
+Die folgende Tabelle zeigt Beispiele für Definitionen der Partitionsschlüssel und die entsprechenden JSON-Werte. Der Partitionsschlüssel wird als JSON-Pfad angegeben. So stellt z.B. `/department` die Eigenschaft „Abteilung“ dar. 
 
 <table border="0" cellspacing="0" cellpadding="0">
     <tbody>
@@ -157,21 +166,22 @@ Das folgende Beispiel zeigt einen Ausschnitt für .NET, zum Erstellen einer Samm
 
 Für dieses Beispiel haben wir `deviceId` ausgewählt, da es (a) möglich ist, die Schreibvorgänge aufgrund der großen Anzahl von Geräten gleichmäßig auf Partitionen zu verteilen, und wir so die Datenbanken hochskalieren können, um riesige Datenmengen erfassen zu können, und da (b) viele der Anforderungen, wie das Abrufen der letzten Lesevorgänge für ein Gerät, einer einzelnen deviceId zugeordnet sind und von einer einzelnen Partition abgerufen werden können.
 
-    DocumentClient client = new DocumentClient(new Uri(endpoint), authKey);
-    await client.CreateDatabaseAsync(new Database { Id = "db" });
+```csharp
+DocumentClient client = new DocumentClient(new Uri(endpoint), authKey);
+await client.CreateDatabaseAsync(new Database { Id = "db" });
 
-    // Collection for device telemetry. Here the JSON property deviceId will be used as the partition key to 
-    // spread across partitions. Configured for 10K RU/s throughput and an indexing policy that supports 
-    // sorting against any number or string property.
-    DocumentCollection myCollection = new DocumentCollection();
-    myCollection.Id = "coll";
-    myCollection.PartitionKey.Paths.Add("/deviceId");
+// Collection for device telemetry. Here the JSON property deviceId will be used as the partition key to 
+// spread across partitions. Configured for 10K RU/s throughput and an indexing policy that supports 
+// sorting against any number or string property.
+DocumentCollection myCollection = new DocumentCollection();
+myCollection.Id = "coll";
+myCollection.PartitionKey.Paths.Add("/deviceId");
 
-    await client.CreateDocumentCollectionAsync(
-        UriFactory.CreateDatabaseUri("db"),
-        myCollection,
-        new RequestOptions { OfferThroughput = 20000 });
-
+await client.CreateDocumentCollectionAsync(
+    UriFactory.CreateDatabaseUri("db"),
+    myCollection,
+    new RequestOptions { OfferThroughput = 20000 });
+```
 
 > [!NOTE]
 > Um mit dem SDK partitionierte Sammlungen zu erstellen, müssen Sie einen Durchsatzwert von mindestens 10.100 Anforderungseinheiten (RU) pro Sekunde angeben. Zum Festlegen eines Durchsatzwerts zwischen 2.500 und 10.000 für partitionierte Sammlungen müssen Sie vorübergehend das Azure-Portal verwenden, da diese neuen, niedrigeren Werte im SDK noch nicht verfügbar sind.
@@ -183,107 +193,118 @@ Auf diese Weise wird ein REST-API-Aufruf in DocumentDB durchgeführt, und der Di
 ### <a name="reading-and-writing-documents"></a>Lesen und Schreiben von Dokumenten
 Jetzt fügen wir Daten in DocumentDB ein. Nachstehend finden Sie eine Beispielklasse, die eine Geräteanzeige enthält sowie einen Aufruf von CreateDocumentAsync, um ein neues Gerät mit Lesevorgang einer Sammlung hinzuzufügen.
 
-    public class DeviceReading
+```csharp
+public class DeviceReading
+{
+    [JsonProperty("id")]
+    public string Id;
+
+    [JsonProperty("deviceId")]
+    public string DeviceId;
+
+    [JsonConverter(typeof(IsoDateTimeConverter))]
+    [JsonProperty("readingTime")]
+    public DateTime ReadingTime;
+
+    [JsonProperty("metricType")]
+    public string MetricType;
+
+    [JsonProperty("unit")]
+    public string Unit;
+
+    [JsonProperty("metricValue")]
+    public double MetricValue;
+  }
+
+// Create a document. Here the partition key is extracted as "XMS-0001" based on the collection definition
+await client.CreateDocumentAsync(
+    UriFactory.CreateDocumentCollectionUri("db", "coll"),
+    new DeviceReading
     {
-        [JsonProperty("id")]
-        public string Id;
-
-        [JsonProperty("deviceId")]
-        public string DeviceId;
-
-        [JsonConverter(typeof(IsoDateTimeConverter))]
-        [JsonProperty("readingTime")]
-        public DateTime ReadingTime;
-
-        [JsonProperty("metricType")]
-        public string MetricType;
-
-        [JsonProperty("unit")]
-        public string Unit;
-
-        [JsonProperty("metricValue")]
-        public double MetricValue;
-      }
-
-    // Create a document. Here the partition key is extracted as "XMS-0001" based on the collection definition
-    await client.CreateDocumentAsync(
-        UriFactory.CreateDocumentCollectionUri("db", "coll"),
-        new DeviceReading
-        {
-            Id = "XMS-001-FE24C",
-            DeviceId = "XMS-0001",
-            MetricType = "Temperature",
-            MetricValue = 105.00,
-            Unit = "Fahrenheit",
-            ReadingTime = DateTime.UtcNow
-        });
-
+        Id = "XMS-001-FE24C",
+        DeviceId = "XMS-0001",
+        MetricType = "Temperature",
+        MetricValue = 105.00,
+        Unit = "Fahrenheit",
+        ReadingTime = DateTime.UtcNow
+    });
+```
 
 Nun rufen wir das Dokument mithilfe seines Partitionsschlüssels und seiner id auf, aktualisieren es und löschen es schließlich unter Angabe dieser beiden Werte. Beachten Sie, dass der Lesevorgang einen Wert für „PartitionKey“ enthält (entsprechend dem Anforderungsheader `x-ms-documentdb-partitionkey` in der REST-API).
 
-    // Read document. Needs the partition key and the ID to be specified
-    Document result = await client.ReadDocumentAsync(
-      UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"), 
-      new RequestOptions { PartitionKey = new PartitionKey("XMS-0001") });
+```csharp
+// Read document. Needs the partition key and the ID to be specified
+Document result = await client.ReadDocumentAsync(
+  UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"), 
+  new RequestOptions { PartitionKey = new PartitionKey("XMS-0001") });
 
-    DeviceReading reading = (DeviceReading)(dynamic)result;
+DeviceReading reading = (DeviceReading)(dynamic)result;
 
-    // Update the document. Partition key is not required, again extracted from the document
-    reading.MetricValue = 104;
-    reading.ReadingTime = DateTime.UtcNow;
+// Update the document. Partition key is not required, again extracted from the document
+reading.MetricValue = 104;
+reading.ReadingTime = DateTime.UtcNow;
 
-    await client.ReplaceDocumentAsync(
-      UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"), 
-      reading);
+await client.ReplaceDocumentAsync(
+  UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"), 
+  reading);
 
-    // Delete document. Needs partition key
-    await client.DeleteDocumentAsync(
-      UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"), 
-      new RequestOptions { PartitionKey = new PartitionKey("XMS-0001") });
-
-
+// Delete document. Needs partition key
+await client.DeleteDocumentAsync(
+  UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"), 
+  new RequestOptions { PartitionKey = new PartitionKey("XMS-0001") });
+```
 
 ### <a name="querying-partitioned-collections"></a>Abfragen von partitionierten Sammlungen
 Beim Abfragen von Daten in partitionierten Sammlungen leitet DocumentDB die Abfrage automatisch an die Partitionen weiter, die den im Filter angegebenen Partitionsschlüsselwerten entsprechen (sofern vorhanden). Diese Abfrage wird z.B. nur an die Partition weitergeleitet, die den Partitionsschlüssel „XMS-0001“ enthält.
 
-    // Query using partition key
-    IQueryable<DeviceReading> query = client.CreateDocumentQuery<DeviceReading>(
-        UriFactory.CreateDocumentCollectionUri("db", "coll"))
-        .Where(m => m.MetricType == "Temperature" && m.DeviceId == "XMS-0001");
-
+```csharp
+// Query using partition key
+IQueryable<DeviceReading> query = client.CreateDocumentQuery<DeviceReading>(
+    UriFactory.CreateDocumentCollectionUri("db", "coll"))
+    .Where(m => m.MetricType == "Temperature" && m.DeviceId == "XMS-0001");
+```
+    
 Die folgende Abfrage verfügt nicht über einen Filter für den Partitionsschlüssel (DeviceId) und wird an alle Partitionen verteilt, wo sie auf dem Partitionsindex ausgeführt wird. Beachten Sie, dass Sie „EnableCrossPartitionQuery“ (`x-ms-documentdb-query-enablecrosspartition` in der REST-API) angeben müssen, damit das SDK eine partitionsübergreifende Abfrage ausführen kann.
 
-    // Query across partition keys
-    IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<DeviceReading>(
-        UriFactory.CreateDocumentCollectionUri("db", "coll"), 
-        new FeedOptions { EnableCrossPartitionQuery = true })
-        .Where(m => m.MetricType == "Temperature" && m.MetricValue > 100);
+```csharp
+// Query across partition keys
+IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<DeviceReading>(
+    UriFactory.CreateDocumentCollectionUri("db", "coll"), 
+    new FeedOptions { EnableCrossPartitionQuery = true })
+    .Where(m => m.MetricType == "Temperature" && m.MetricValue > 100);
+```
+
+DocumentDB unterstützt [Aggregatfunktionen] ([Aggregatfunktionen](documentdb-sql-query.md#Aggregates) `COUNT`, `MIN`, `MAX`, `SUM` und `AVG`) über partitionierten Sammlungen mit SQL, beginnend mit SDKs 1.12.0 und höher. Abfragen müssen einen einzelnen Aggregate-Operator und einen einzelnen Wert in der Projektion enthalten.
 
 ### <a name="parallel-query-execution"></a>Ausführung paralleler Abfragen
 Ab dem DocumentDB SDK 1.9.0 werden Optionen zur parallelen Ausführung von Abfragen unterstützt. Dadurch können Sie Abfragen mit niedriger Latenz auf partitionierte Sammlungen anwenden, auch wenn eine große Anzahl von Sammlungen berücksichtigt werden muss. Die folgende Abfrage ist z.B. so konfiguriert, dass sie partitionsübergreifend parallel ausgeführt wird.
 
-    // Cross-partition Order By Queries
-    IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<DeviceReading>(
-        UriFactory.CreateDocumentCollectionUri("db", "coll"), 
-        new FeedOptions { EnableCrossPartitionQuery = true, MaxDegreeOfParallelism = 10, MaxBufferedItemCount = 100})
-        .Where(m => m.MetricType == "Temperature" && m.MetricValue > 100)
-        .OrderBy(m => m.MetricValue);
-
+```csharp
+// Cross-partition Order By Queries
+IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<DeviceReading>(
+    UriFactory.CreateDocumentCollectionUri("db", "coll"), 
+    new FeedOptions { EnableCrossPartitionQuery = true, MaxDegreeOfParallelism = 10, MaxBufferedItemCount = 100})
+    .Where(m => m.MetricType == "Temperature" && m.MetricValue > 100)
+    .OrderBy(m => m.MetricValue);
+```
+    
 Sie können die parallele Ausführung von Abfragen verwalten, indem Sie die folgenden Parameter optimieren:
 
 * Durch Festlegen von `MaxDegreeOfParallelism` können Sie den Grad der Parallelität steuern, d.h. die maximale Anzahl gleichzeitiger Verbindungen mit den Partitionen der Sammlung. Wenn Sie diese Einstellung auf „-1“ festlegen, wird der Grad der Parallelität vom SDK verwaltet. Falls `MaxDegreeOfParallelism` nicht angegeben oder auf 0 (Standardwert) festgelegt wurde, besteht eine einzelne Netzwerkverbindung mit den Partitionen der Sammlung.
-* Durch Festlegen von `MaxBufferedItemCount`können Sie eine Abstimmung zwischen Abfragelatenz und Speicherauslastung auf Clientseite ermöglichen. Wenn Sie diesen Parameter weglassen oder auf „-1“ festlegen, wird die Anzahl der Elemente, die während der Ausführung paralleler Abfragen gepuffert wird, vom SDK verwaltet.
+* Durch Festlegen von `MaxBufferedItemCount` können Sie eine Abstimmung zwischen Abfragelatenz und Speicherauslastung auf Clientseite ermöglichen. Wenn Sie diesen Parameter weglassen oder auf „-1“ festlegen, wird die Anzahl der Elemente, die während der Ausführung paralleler Abfragen gepuffert wird, vom SDK verwaltet.
 
 Bei gleichem Zustand der Sammlung gibt eine parallele Abfrage Ergebnisse in der gleichen Reihenfolge wie bei einer seriellen Ausführung zurück. Beim Durchführen einer partitionsübergreifenden Abfrage mit Sortierung (ORDER BY und/oder TOP) führt das DocumentDB SDK die Abfrage parallel auf den Partitionen durch und führt teilweise sortierte Ergebnisse auf Clientseite zusammen, um global sortierte Ergebnisse zu generieren.
 
 ### <a name="executing-stored-procedures"></a>Ausführen von gespeicherten Prozeduren
 Sie können auch atomarische Transaktionen für Dokumente mit derselben Geräte-ID ausführen, z.B. wenn Sie Aggregate oder den aktuellen Status eines Geräts in einem einzelnen Dokument verwalten. 
 
-    await client.ExecuteStoredProcedureAsync<DeviceReading>(
-        UriFactory.CreateStoredProcedureUri("db", "coll", "SetLatestStateAcrossReadings"),
-        new RequestOptions { PartitionKey = new PartitionKey("XMS-001") }, 
-        "XMS-001-FE24C");
-
+```csharp
+await client.ExecuteStoredProcedureAsync<DeviceReading>(
+    UriFactory.CreateStoredProcedureUri("db", "coll", "SetLatestStateAcrossReadings"),
+    new RequestOptions { PartitionKey = new PartitionKey("XMS-001") }, 
+    "XMS-001-FE24C");
+```
+    
 Im nächsten Abschnitt untersuchen wir, wie partitionierte Sammlungen aus Sammlungen mit nur einer Partition verschoben werden können.
 
 <a name="migrating-from-single-partition"></a>
@@ -335,7 +356,7 @@ Einen der häufigsten Anwendungsfälle von DocumentDB stellen Protokollierung un
 Wenn Sie eine mehrinstanzenfähige Anwendung mithilfe von DocumentDB implementieren, gibt es zwei wichtige Muster für die Implementierung von Mandanten mit DocumentDB – einen Partitionsschlüssel pro Mandant und eine Auflistung pro Mandant. Hier sind ihre Vor- und Nachteile auflistet:
 
 * Ein Partitionsschlüssel pro Mandant: In diesem Modell sind Mandanten innerhalb einer einzelnen Sammlung verbunden. Abfragen und Einfügungen können jedoch für Dokumente innerhalb eines einzelnen Mandanten für eine einzelne Partition ausgeführt werden. Sie können auch die Transaktionslogik über alle Dokumenten innerhalb eines Mandanten hinweg implementieren. Da mehrere Mandanten eine Sammlung gemeinsam nutzen, können Sie die Kosten für Speicher und Durchsatz sparen, indem Sie Ressourcen für Mandanten in einer einzelnen Sammlung zusammenfassen, anstatt zusätzlichen Toleranzbereich für jeden Mandanten bereitzustellen. Der Nachteil darin besteht, dass Sie über keine Leistungsisolation pro Mandant verfügen. Im Vergleich zu gezielten Steigerungen für Mandanten werden Erhöhungen von Leistung/Durchsatz auf die komplette Sammlung angewendet.
-* Eine Auflistung pro Mandant: jeder Mandant verfügt über seine eigene Sammlung. In diesem Modell können Sie die Leistung pro Mandant reservieren. Mit dem neuen, nutzungsbasierten Preismodell von DocumentDB, ist dieses Modell kosteneffektiver für mehrinstanzenfähige Anwendungen mit einer kleinen Anzahl von Mandanten.
+* Eine Auflistung pro Mandant: jeder Mandant verfügt über seine eigene Sammlung. In diesem Modell können Sie die Leistung pro Mandant reservieren. Mit dem neuen, nutzungsbasierten Preismodell von DocumentDB ist dieses Modell kosteneffektiver für mehrinstanzenfähige Anwendungen mit einer kleinen Anzahl von Mandanten.
 
 Sie können auch eine Kombination/einen abgestuften Ansatz verwenden. Hier werden kleine Mandanten zusammengefasst und größere Mandanten zu ihrer eigenen Sammlung migriert.
 
@@ -350,10 +371,5 @@ In diesem Artikel haben wir beschrieben, wie Partitionierung in Azure DocumentDB
 [2]: ./media/documentdb-partition-data/single-and-partitioned.png
 [3]: ./media/documentdb-partition-data/documentdb-migration-partitioned-collection.png  
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

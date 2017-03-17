@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/31/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: e331e7aab69890637a74382938e22cca56c4d39a
-ms.openlocfilehash: 223dcbb2b54c9b0de384515b185266dc19653191
+ms.sourcegitcommit: c2b0c6b125ededd30e9db8e7f42796bdf6b413d4
+ms.openlocfilehash: f254b4a9b942004f0d1d1065ec2efb2ea5df8418
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -29,8 +30,8 @@ In diesem Artikel sind einige Begriffe aufgeführt, die in den Artikeln zu IoT H
 ## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 Die [Azure CLI](../xplat-cli-install.md) ist ein plattformübergreifendes Open-Source-Befehlstool auf Shell-Basis und ermöglicht das Erstellen und Verwalten von Ressourcen in Microsoft Azure. Diese CLI-Version wird mithilfe von Node.js implementiert.
 
-## <a name="azure-cli-20-preview"></a>Azure CLI 2.0 (Vorschau)
-Die [Azure CLI 2.0 (Vorschau)](https://docs.microsoft.com/cli/azure/install-az-cli2) ist ein plattformübergreifendes Open-Source-Befehlstool auf Shell-Basis und ermöglicht das Erstellen und Verwalten von Ressourcen in Microsoft Azure. Diese CLI-Vorschauversion wird mithilfe von Python implementiert.
+## <a name="azure-cli-20"></a>Azure CLI 2.0
+Die [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2) ist ein plattformübergreifendes Open-Source-Befehlstool auf Shell-Basis und ermöglicht das Erstellen und Verwalten von Ressourcen in Microsoft Azure. Diese CLI-Vorschauversion wird mithilfe von Python implementiert.
 
 
 ## <a name="azure-iot-device-sdks"></a>Azure IoT-Geräte-SDKs
@@ -61,7 +62,7 @@ Mit dem [Azure Resource Manager](../azure-resource-manager/resource-group-overvi
 Im Kontext von [IoT Hub](#iot-hub) ist eine Back-End-App eine App, mit der eine Verbindung mit einem der dienstseitigen Endpunkte von IoT Hub hergestellt wird. Mit einer Back-End-App werden beispielsweise [Gerät-zu-Cloud](#device-to-cloud)-Nachrichten (D2C-Nachrichten) abgerufen, oder sie wird zum Verwalten der [Identitätsregistrierung](#identity-registry) eingesetzt. Eine Back-End-App wird normalerweise in der Cloud ausgeführt, aber in vielen Tutorials handelt es sich bei den Back-End-Apps um Konsolen-Apps, die auf dem lokalen Entwicklungscomputer ausgeführt werden.
 
 ## <a name="built-in-endpoints"></a>Integrierte Endpunkte
-Jeder IoT Hub umfasst einen mit Event Hubs kompatiblen [Endpunkt](iot-hub-devguide-endpoints.md). Sie können einen beliebigen für Event Hubs geeigneten Mechanismus zum Lesen von D2C-Nachrichten von diesem Endpunkt verwenden.
+Jeder IoT Hub umfasst einen mit Event Hub kompatiblen [Endpunkt](iot-hub-devguide-endpoints.md). Sie können einen beliebigen für Event Hubs geeigneten Mechanismus zum Lesen von D2C-Nachrichten von diesem Endpunkt verwenden.
 
 ## <a name="cloud-gateway"></a>Cloudgateway
 Mit einem Cloudgateway können Verbindungen für Geräte hergestellt werden, für die eine direkte Verbindung mit [IoT Hub](#iot-hub) nicht möglich ist. Ein Cloudgateway wird in der Cloud gehostet, während ein [Bereichsgateway](#field-gateway) lokal auf Ihren Geräten ausgeführt wird. Ein typischer Anwendungsfall für ein Cloudgateway ist die Implementierung der Protokollübersetzung für Ihre Geräte.
@@ -256,8 +257,3 @@ Sie können einen Tokendienst verwenden, um einen Authentifizierungsmechanismus 
 
 ## <a name="x509-client-certificate"></a>X.509-Clientzertifikat
 Ein Gerät kann ein X.509-Zertifikat für die Authentifizierung beim [IoT Hub](#iot-hub) verwenden. Der Einsatz eines X.509-Zertifikats ist eine Alternative zur Verwendung eines [SAS-Tokens](#shared-access-signature).
-
-
-<!--HONumber=Feb17_HO2-->
-
-

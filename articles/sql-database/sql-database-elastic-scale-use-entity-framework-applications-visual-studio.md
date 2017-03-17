@@ -13,11 +13,12 @@ ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/27/2016
+ms.date: 03/06/2017
 ms.author: torsteng
 translationtype: Human Translation
-ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
-ms.openlocfilehash: 91fe35cb57775c1ab9c30fdfe5cf82cd1afafd14
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 2a7229c9658cbbab676801f5c532a50bc0adedce
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -28,13 +29,10 @@ Dieses Dokument zeigt, welche Änderungen in einer Entity Framework-Anwendung er
 So laden Sie den Code für diesen Artikel herunter:
 
 * Visual Studio 2012 oder höher wird vorausgesetzt. 
+* Laden Sie das [Beispiel Elastic DB Tools for Azure SQL – Entity Framework Integration](https://code.msdn.microsoft.com/windowsapps/Elastic-Scale-with-Azure-bae904ba) von MSDN herunter. Entzippen Sie das Beispiel in einem Speicherort Ihrer Wahl.
 * Starten Sie Visual Studio. 
-* Wählen Sie in Visual Studio "Datei -> Neues Projekt" aus. 
-* Navigieren Sie im Dialogfeld „Neues Projekt“ zu den **Onlinebeispielen** für **Visual C#**, und geben Sie „elastic db“ in das Suchfeld oben rechts ein.
-  
-    ![Entity Framework und elastische Datenbank – Beispielanwendung][1] 
-  
-    Wählen Sie das Beispiel **Elastic DB Tools for Azure SQL – Entity Framework Integration** aus. Nachdem Sie die Lizenzbedingungen akzeptiert haben, wird das Beispiel geladen. 
+* Wählen Sie in Visual Studio „Datei“ > „Projekt/Projektmappe öffnen“ aus. 
+* Navigieren Sie im Dialog **Projekt öffnen** zu dem Beispiel, das Sie heruntergeladen haben, und wählen Sie **EntityFrameworkCodeFirst.sln** aus, um das Beispiel zu öffnen. 
 
 Um das Beispiel ausführen zu können, müssen Sie drei leere Datenbanken in Azure SQL-Datenbank erstellen:
 
@@ -266,9 +264,4 @@ Durch die in diesem Dokument beschriebenen Schritte können EF-Anwendungen die F
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-scale-use-entity-framework-applications-visual-studio/sample.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

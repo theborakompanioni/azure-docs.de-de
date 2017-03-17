@@ -1,9 +1,9 @@
 ---
-title: "Azure AD-Kennwortzurücksetzung | Microsoft Docs"
+title: "Azure Active Directory – Zurücksetzen von Kennwörtern | Microsoft-Dokumentation"
 description: "Beschreibung der Funktionen zur Kennwortverwaltung in Azure AD, einschließlich Zurücksetzen und Ändern des Kennworts, Berichte zur Kennwortverwaltung und Rückschreiben in Ihr lokales Active Directory."
 services: active-directory
 documentationcenter: 
-author: asteen
+author: MicrosoftGuyJFlo
 manager: femila
 editor: curtand
 ms.assetid: be6164fc-bae1-49df-af76-761329ba70a1
@@ -12,31 +12,32 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/13/2016
-ms.author: asteen
+ms.date: 02/28/2017
+ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: a6287228622070d566266f184dc1c32ec6c3dea5
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 68334eab580e7117cf0b18f84ba56ed699fea12e
+ms.lasthandoff: 03/10/2017
 
 
 ---
-# <a name="azure-ad-password-reset-for-it-administrators"></a>Zurücksetzen des Azure AD-Kennworts für IT-Administratoren
+# <a name="azure-active-directory-password-reset-for-it-administrators"></a>Azure Active Directory – Zurücksetzen von Kennwörtern für IT-Administratoren
 > [!IMPORTANT]
-> Sind Sie hier, weil Sie Ihr Azure- oder Office 365-Kennwort zurücksetzen möchten?  Wenn das der Fall ist, [überspringen Sie diesen Abschnitt](#users-how-to-manage-your-own-password).
-> 
-> 
+> **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password).
+>
+>
 
-Als Maßnahme zur Reduzierung von Kosten und Arbeitsaufwand ist Self-Service seit jeher ein wichtiges Ziel für IT-Abteilungen auf der ganzen Welt.  Tatsächlich ist der Markt überflutet mit Produkten, mit denen Sie Ihre lokalen Gruppen, Kennwörter oder Benutzerprofile über die Cloud oder lokal verwalten können. Azure AD unterscheidet sich von diesen Angeboten durch die Bereitstellung einiger der benutzerfreundlichsten und leistungsstärksten Self-Service-Funktionen, die gegenwärtig verfügbar sind.
+Als Maßnahme zur Reduzierung von Kosten und Arbeitsaufwand ist Self-Service seit jeher ein wichtiges Ziel für IT-Abteilungen auf der ganzen Welt.  Tatsächlich ist der Markt überflutet mit Produkten, mit denen Sie Ihre lokalen Gruppen, Kennwörter oder Benutzerprofile über die Cloud oder lokal verwalten können. Azure Active Directory (Azure AD) unterscheidet sich von anderen Angeboten durch die Bereitstellung einiger der benutzerfreundlichsten und leistungsstärksten Self-Service-Funktionen, die gegenwärtig verfügbar sind.
 
 **Azure AD-Kennwortverwaltung** ist ein Satz von Funktionen, mit denen Ihre Benutzer jederzeit und überall sowie unter Einhaltung der von Ihnen definierten Sicherheitsrichtlinien alle Kennwörter von einem beliebigen Gerät aus verwalten können.
 
-## <a name="admins-learn-about-how-to-get-started-with-azure-ad-password-reset"></a>FÜR ADMINISTRATOREN: Erste Schritte für das Zurücksetzen von Kennwörtern mit Azure AD
+## <a name="admins-learn-about-how-to-get-started-with-azure-ad-password-reset"></a>FÜR ADMINISTRATOREN: Erste Schritte für das Zurücksetzen von Kennwörtern mit Azure AD
 Wenn Sie Administrator sind und das Zurücksetzen von Kennwörtern in Azure AD aktivieren oder einfach nur mehr darüber erfahren möchten, klicken Sie auf die Links zu den für Sie relevanten Themen.
 
 | Thema |  |
 | --- | --- |
-| Unterstützte Szenarien |[Welche Möglichkeiten bietet die Kennwortzurücksetzung in Azure AD?](#what-is-possible-with-azure-ad-password-reset) |
-| Gründe für die Verwendung |[Gründe für die Verwendung der Kennwortzurücksetzung in Azure AD](#why-use-azure-ad-password-reset) |
+| Unterstützte Szenarien |[Welche Möglichkeiten bietet die Kennwortzurücksetzung in Azure AD?](#what-is-possible-with-azure-ad-password-reset) |
+| Gründe für die Verwendung |[Gründe für die Verwendung der Kennwortzurücksetzung in Azure AD](#why-use-azure-ad-password-reset) |
 | Preise und Verfügbarkeit |[Preise und Verfügbarkeit](#pricing-and-availability) |
 | Aktivieren der Kennwortzurücksetzung |[Aktivieren der Kennwortzurücksetzung für Ihre Benutzer](#enable-password-reset-for-your-users) |
 | Anpassen der Funktionsweise |[Anpassen des Verhaltens der Kennwortzurücksetzung](#customize-password-reset-behavior) |
@@ -50,7 +51,7 @@ Wenn Sie Administrator sind und das Zurücksetzen von Kennwörtern in Azure AD 
 | Neue Features |[Aktuelle Dienstupdates](#recent-service-updates) |
 | Links zu weiteren Informationen |[Links zur Dokumentation für die Kennwortzurücksetzung](#links-to-password-reset-documentation) |
 
-### <a name="what-is-possible-with-azure-ad-password-reset"></a>Welche Möglichkeiten bietet die Kennwortzurücksetzung in Azure AD?
+### <a name="what-is-possible-with-azure-ad-password-reset"></a>Welche Möglichkeiten bietet die Kennwortzurücksetzung in Azure AD?
 Hier sind einige Aktivitäten aufgeführt, die Sie mit den Funktionen der Azure AD-Kennwortverwaltung ausführen können.
 
 * **Self-Service-Kennwortänderung** können Endbenutzer oder Administratoren ihre abgelaufenen oder nicht abgelaufenen Kennwörter ändern, ohne einen Administrator oder den Helpdesk um Unterstützung zu bitten.
@@ -59,7 +60,7 @@ Hier sind einige Aktivitäten aufgeführt, die Sie mit den Funktionen der Azure 
 * **Berichte zu Kennwortverwaltungsaktivitäten** bieten Administratoren Einblicke in die Aktivitäten, die sich in ihrer Organisation in Bezug auf die Kennwortzurücksetzung und -registrierung ereignen.
 * **Rückschreiben von Kennwörtern** ermöglicht die Verwaltung lokaler Kennwörter in der Cloud, sodass alle oben genannten Szenarien von oder im Auftrag von Verbund- oder kennwortsynchronisierten Benutzern durchgeführt werden können. Für das Rückschreiben von Kennwörtern ist Azure AD Premium erforderlich. Weitere Informationen finden Sie unter "Erste Schritte mit Azure AD Premium".
 
-### <a name="why-use-azure-ad-password-reset"></a>Gründe für die Verwendung der Kennwortzurücksetzung in Azure AD
+### <a name="why-use-azure-ad-password-reset"></a>Gründe für die Verwendung der Kennwortzurücksetzung in Azure AD
 Hier sind einige Gründe aufgeführt, warum Sie die Funktionen der Azure AD-Kennwortverwaltung nutzen sollten.
 
 * **Kostensenkung** – Die vom Support unterstützte Kennwortzurücksetzung macht in der Regel 20 % der IT-Ausgaben einer Organisation aus.
@@ -68,7 +69,7 @@ Hier sind einige Gründe aufgeführt, warum Sie die Funktionen der Azure AD-Kenn
 * **Möglichkeit zur Mobilität** – Benutzer können ihre Kennwörter unabhängig von ihrem Standort zurücksetzen.
 
 ### <a name="pricing-and-availability"></a>Preise und Verfügbarkeit
-Die Azure AD-Kennwortzurücksetzung steht in drei Tarifen zur Verfügung, abhängig von Ihrem Abonnement:
+Die Azure AD-Kennwortzurücksetzung steht in 3 Tarifen zur Verfügung, abhängig von Ihrem Abonnement:
 
 * **Azure AD Free** : Cloudadministratoren können ihre eigenen Kennwörter zurücksetzen.
 * **Azure AD Basic oder beliebiges kostenpflichtiges Office 365-Abonnement** : Cloudbenutzer und Cloudadministratoren können ihre eigenen Kennwörter zurücksetzen.
@@ -117,8 +118,8 @@ Weitere Informationen über die Preise für Azure AD Premium oder Basic finden 
 | Thema |  |
 | --- | --- |
 | Wo kann ich Berichte zur Kennwortzurücksetzung sehen? |[Übersicht über Berichte zur Kennwortverwaltung](active-directory-passwords-get-insights.md#overview-of-password-management-reports) |
-| Wo kann ich sehen, wie die Benutzer in meiner Organisation die Kennwortzurücksetzung nutzen? |[Anzeigen der Aktivität „Zurücksetzen des Kennworts“](active-directory-passwords-get-insights.md#view-password-reset-activity) |
-| Wo kann ich sehen, wie viele Benutzer sich registrieren und wofür sie sich registrieren? |[Anzeigen der Aktivität „Registrierung für Zurücksetzen des Kennworts“](active-directory-passwords-get-insights.md#view-password-reset-registration-activity) |
+| Wo kann ich sehen, wie die Benutzer in meiner Organisation die Kennwortzurücksetzung nutzen? |[Anzeigen der Aktivität „Zurücksetzen des Kennworts“](active-directory-passwords-get-insights.md#how-to-view-password-management-reports) |
+| Wo kann ich sehen, wie viele Benutzer sich registrieren und wofür sie sich registrieren? |[Anzeigen der Aktivität „Registrierung für Zurücksetzen des Kennworts“](active-directory-passwords-get-insights.md#how-to-view-password-management-reports) |
 | Wie kann ich Berichte zur Kennwortzurücksetzung über eine API abrufen? |[Erstellen einer Azure AD-Anwendung für den Zugriff auf die Reporting-API](active-directory-reporting-api-getting-started.md) |
 | Welche Art von Berichtsinformationen zur Kennwortzurücksetzung ist über eine API verfügbar? |[In der Reporting-API verfügbare Kennwortzurücksetzungs- und Registrierungsereignisse](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-reports-and-events-preview#SsprActivityEvent) |
 
@@ -166,40 +167,40 @@ Weitere Informationen über die Preise für Azure AD Premium oder Basic finden 
 | Ich möchte wissen, welche Daten bei der Kennwortzurücksetzung verwendet werden. |[Welche Daten werden bei der Kennwortzurücksetzung verwendet?](active-directory-passwords-learn-more.md#what-data-is-used-by-password-reset) |
 
 ## <a name="recent-service-updates"></a>Aktuelle Dienstupdates
-#### <a name="enforce-password-reset-registration-at-sign-in-to-office-365-apps---november-2015"></a>Erzwingen der Registrierung für die Kennwortzurücksetzung während der Anmeldung bei Office 365-Apps – November 2015
+#### <a name="enforce-password-reset-registration-at-sign-in-to-office-365-apps---november-2015"></a>Erzwingen der Registrierung für die Kennwortzurücksetzung während der Anmeldung bei Office 365-Apps – November 2015
 * Nachdem nun das Feature für die [erzwungene Registrierung](active-directory-passwords-customize.md#require-users-to-register-when-signing-in) aktiviert wurde, müssen sich Ihre Benutzer für die Kennwortzurücksetzung registrieren, sobald sie sich von einem beliebigen Ort aus mit einem Geschäfts- oder Schulkonto anmelden.  Dadurch wird die Einführung der Kennwortzurücksetzung  in vielen Organisationen deutlich beschleunigt.  Mit diesem Feature war die Einführung bei einigen großen Organisationen innerhalb von nur zwei Wochen abgeschlossen.
 
-#### <a name="support-for-unlocking-active-directory-accounts-without-resetting-a-password---november-2015"></a>Unterstützung der Entsperrung von Active Directory-Konten ohne Zurücksetzung eines Kennworts – November 2015
-* Das alleinige Entsperren (ohne Zurücksetzen) ist ein heute ein gewichtiger Faktor für Helpdesks.  In vielen Organisationen werden bis zu 70 % des Budgets für Kennwortzurücksetzungen durch das Entsperren von Konten verbraucht.  Um auf diese Situation zu reagieren, können Sie nun bei der Azure AD-Kennwortzurücksetzung ein Feature aktivieren, das es den Benutzern ermöglicht, AD-Konten unabhängig vom Zurücksetzen des Kennworts zu entsperren.  Erfahren Sie hier, wie Sie dieses Feature aktivieren: [Einstellung: Benutzern ermöglichen, ihre AD-Konten ohne Zurücksetzen eines Kennworts zu entsperren](active-directory-passwords-customize.md#allow-users-to-unlock-accounts-without-resetting-their-password).
+#### <a name="support-for-unlocking-on-premises-ad-accounts-without-resetting-a-password---november-2015"></a>Unterstützung der Entsperrung von lokalen AD-Konten ohne Zurücksetzung eines Kennworts – November 2015
+* Das alleinige Entsperren (ohne Zurücksetzen) ist ein heute ein gewichtiger Faktor für Helpdesks.  In vielen Organisationen werden bis zu 70 % des Budgets für Kennwortzurücksetzungen durch das Entsperren von Konten verbraucht.  Um auf diese Situation zu reagieren, können Sie nun bei der Azure AD-Kennwortzurücksetzung ein Feature aktivieren, das den Benutzern ermöglicht, lokale AD-Konten unabhängig vom Zurücksetzen des Kennworts zu entsperren.  Erfahren Sie hier, wie Sie dieses Feature aktivieren: [Einstellung: Benutzern ermöglichen, ihre lokalen AD-Konten ohne Zurücksetzen eines Kennworts zu entsperren](active-directory-passwords-customize.md#allow-users-to-unlock-accounts-without-resetting-their-password).
 
-#### <a name="usability-updates-to-registration-page---october-2015"></a>Updates für die Benutzerfreundlichkeit der Registrierungsseite – Oktober 2015
+#### <a name="usability-updates-to-registration-page---october-2015"></a>Updates für die Benutzerfreundlichkeit der Registrierungsseite – Oktober 2015
 * Wenn ein Benutzer Daten bereits registriert hat, kann er einfach auf „Sieht gut aus“ klicken, um die Daten zu aktualisieren, ohne die E-Mail erneut senden oder einen Anruf tätigen zu müssen.
 
-#### <a name="improved-reliability-of-password-writeback---september-2015"></a>Verbesserung der Zuverlässigkeit des Kennwortrückschreibens – September 2015
+#### <a name="improved-reliability-of-password-writeback---september-2015"></a>Verbesserung der Zuverlässigkeit des Kennwortrückschreibens – September 2015
 * Ab der Septemberversion von Azure AD Connect versucht der Agent für das Kennwortrückschreiben „aggressiver“, Verbindungen erneut herzustellen, und verfügt über robustere Failoverfunktionen.
 
-#### <a name="api-for-retrieving-password-reset-reporting-data---august-2015"></a>API zum Abrufen von Berichtsdaten zur Kennwortzurücksetzung – August 2015
+#### <a name="api-for-retrieving-password-reset-reporting-data---august-2015"></a>API zum Abrufen von Berichtsdaten zur Kennwortzurücksetzung – August 2015
 * Die Daten aus den Berichten zur Kennwortzurücksetzung können jetzt direkt aus der [Azure AD-API zu Berichten und Ereignissen](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent)abgerufen werden.
 
-#### <a name="support-for-azure-ad-password-reset-during-cloud-domain-join---august-2015"></a>Unterstützung für die Azure AD-Kennwortzurücksetzung während des Clouddomänenbeitritts – August 2015
+#### <a name="support-for-azure-ad-password-reset-during-cloud-domain-join---august-2015"></a>Unterstützung für die Azure AD-Kennwortzurücksetzung während des Clouddomänenbeitritts – August 2015
 * Alle Cloudbenutzer können ihr Kennwort während des Onboarding-Vorgangs für den Clouddomänenbeitritt jetzt direkt über den Anmeldebildschirm von Windows 10 zurücksetzen.  Beachten Sie, dass dies auf dem Anmeldebildschirm von Windows 10 derzeit noch nicht verfügbar gemacht wurde.
 
-#### <a name="enforce-password-reset-registration-at-sign-in-to-azure-and-federated-apps---july-2015"></a>Erzwingen der Registrierung für die Kennwortzurücksetzung bei der Anmeldung bei Azure-Apps und Partner-Apps – Juli 2015
+#### <a name="enforce-password-reset-registration-at-sign-in-to-azure-and-federated-apps---july-2015"></a>Erzwingen der Registrierung für die Kennwortzurücksetzung bei der Anmeldung bei Azure-Apps und Partner-Apps – Juli 2015
 * Zusätzlich zur Erzwingung der Registrierung während der Anmeldung an „myapps.microsoft.com“ wird jetzt das Erzwingen der Registrierung bei Anmeldungen am Azure-Verwaltungsportal und allen Partneranwendungen mit einmaligem Anmelden unterstützt.
 
-#### <a name="security-question-localization-support---may-2015"></a>Unterstützung der Lokalisierung der Sicherheitsfragen – Mai 2015
+#### <a name="security-question-localization-support---may-2015"></a>Unterstützung der Lokalisierung der Sicherheitsfragen – Mai 2015
 * Sie können jetzt vordefinierte Sicherheitsfragen auswählen, die im vollständigen O365-Sprachsatz lokalisiert sind, wenn Sie Sicherheitsfragen für die Kennwortzurücksetzung konfigurieren.
 
-#### <a name="account-unlock-support-during-password-reset---june-2015"></a>Unterstützung für das Entsperren des Kontos während der Kennwortzurücksetzung – Juni 2015
+#### <a name="account-unlock-support-during-password-reset---june-2015"></a>Unterstützung für das Entsperren des Kontos während der Kennwortzurücksetzung – Juni 2015
 * Wenn Sie das Kennwortrückschreiben verwenden und Ihr Kennwort zurücksetzen, während Ihr Konto gesperrt ist, wird von uns automatisch Ihr Active Directory-Konto entsperrt!
 
-#### <a name="branded-sspr-registration---april-2015"></a>Organisationsspezifische SSPR-Registrierung – April 2015
+#### <a name="branded-self-service-password-reset-sspr-registration---april-2015"></a>Registrierung der Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) mit Branding – April 2015
 * Die Registrierungsseite für die Kennwortzurücksetzung enthält jetzt Ihr Firmenlogo!
 
-#### <a name="security-questions---march-2015"></a>Sicherheitsfragen – März 2015
+#### <a name="security-questions---march-2015"></a>Sicherheitsfragen – März 2015
 * Sicherheitsfragen zur allgemeinen Verfügbarkeit veröffentlicht!
 
-#### <a name="account-unlock---march-2015"></a>Entsperren von Konten – März 2015
+#### <a name="account-unlock---march-2015"></a>Entsperren von Konten – März 2015
 * Benutzer können jetzt bei der Kennwortzurücksetzung ihre Konten entsperren.
 
 ## <a name="coming-soon"></a>In Kürze verfügbar
@@ -209,10 +210,10 @@ Unten sind einige interessante Funktionen aufgeführt, an denen wir gerade arbei
 
 * Erinnerungen für Benutzer an die Aktualisierung ihrer registrierten Daten beim Zugreifen auf „myapps.microsoft.com“ werden bereits unterstützt, aber wir arbeiten daran, dies für alle Anmeldungen zu ermöglichen.
 
-## <a name="links-to-password-reset-documentation"></a>Links zur Dokumentation für die Kennwortzurücksetzung
-Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortzurücksetzung für Azure AD:
+## <a name="next-steps"></a>Nächste Schritte
+Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortzurücksetzung für Azure AD:
 
-* **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md).
+* **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password).
 * [**Funktionsweise**](active-directory-passwords-how-it-works.md) – Erfahren Sie mehr über die sechs verschiedenen Komponenten des Diensts und deren Funktionen.
 * [**Erste Schritte**](active-directory-passwords-getting-started.md) – Erfahren Sie, wie Sie Benutzern das Zurücksetzen und Ändern ihrer Cloud- oder lokalen Kennwörter erlauben.
 * [**Anpassen**](active-directory-passwords-customize.md) – Erfahren Sie, wie Sie das Aussehen und Verhalten des Diensts an die Anforderungen Ihrer Organisation anpassen.
@@ -221,10 +222,4 @@ Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortz
 * [**Häufig gestellte Fragen**](active-directory-passwords-faq.md) – Hier erhalten Sie Antworten auf häufig gestellte Fragen.
 * [**Problembehandlung**](active-directory-passwords-troubleshoot.md) – Erfahren Sie, wie Sie Probleme mit dem Dienst schnell beheben.
 * [**Weitere Informationen**](active-directory-passwords-learn-more.md) – Erhalten Sie tiefgehende technische Details zur Funktionsweise des Diensts.
-
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

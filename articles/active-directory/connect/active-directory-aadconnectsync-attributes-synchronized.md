@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: markvi;andkjell
 translationtype: Human Translation
-ms.sourcegitcommit: bb500d4705c3b67de6b9b31fa5311967beffffc2
-ms.openlocfilehash: ff5a7091e985629763dde416b17e060236f8f7ad
-ms.lasthandoff: 01/27/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 9238141fc56abcb618d71e4bfd1eccb77f282c71
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -33,8 +33,8 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 
 > [!WARNING]
 > Sie sollten beim Deaktivieren der Attribute äußerst vorsichtig vorgehen und nur diejenigen Attribute deaktivieren, die auf keinen Fall synchronisiert werden können. Das Deaktivieren von anderen Attributen kann eine negative Auswirkung auf Features haben.
-> 
-> 
+>
+>
 
 ## <a name="office-365-proplus"></a>Office 365 ProPlus
 | Attributname | Benutzer | Kommentar |
@@ -422,7 +422,7 @@ Diese Attribute werden vom Azure AD in das lokale Active Directory zurückgeschr
 
 | Attributname | Benutzer | Kontakt | Group | Kommentar |
 | --- |:---:|:---:|:---:| --- |
-| msDS-ExternalDirectoryObjectID |X | | |Abgeleitet von cloudAnchor in Azure AD. Dies ist ein neues Attribut in Exchange 2016. |
+| msDS-ExternalDirectoryObjectID |X | | |Abgeleitet von cloudAnchor in Azure AD. Dies ist ein neues Attribut in Exchange 2016 und Windows Server 2016 AD. |
 | msExchArchiveStatus |X | | |Online-Archiv: Ermöglicht Kunden, E-Mail-Nachrichten zu archivieren. |
 | msExchBlockedSendersHash |X | | |Filtern: Schreibt lokale Filterung, Onlinesicherung und blockierte Absenderdaten von Clients zurück. |
 | msExchSafeRecipientsHash |X | | |Filtern: Schreibt lokale Filterung, Onlinesicherung und blockierte Absenderdaten von Clients zurück. |
@@ -459,5 +459,4 @@ Geräteobjekte werden in Active Directory erstellt. Bei diesen Objekten kann es 
 Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-whatis.md) .
 
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
-
 

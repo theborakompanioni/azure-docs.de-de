@@ -1,6 +1,6 @@
 ---
 title: "DocumentDB-Automatisierung – Verwalten von Regionen | Microsoft Docs"
-description: "Verwenden Sie die Azure-Befehlszeilenschnittstelle und Azure Resource Manager, um Regionen in einem DocumentDB-Datenbankkonto zu verwalten. DocumentDB ist eine cloudbasierte NoSQL-Datenbank für JSON-Daten."
+description: "Verwenden Sie die Azure CLI 1.0 und Azure Resource Manager, um Regionen in einem DocumentDB-Datenbankkonto zu verwalten. DocumentDB ist eine cloudbasierte NoSQL-Datenbank für JSON-Daten."
 services: documentdb
 author: dmakwana
 manager: jhubbard
@@ -13,32 +13,33 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2016
+ms.date: 02/17/2017
 ms.author: dimakwan
 translationtype: Human Translation
-ms.sourcegitcommit: 0782000e87bed0d881be5238c1b91f89a970682c
-ms.openlocfilehash: cca2c112924c22846d5a00e0a94181669fb4cbc0
+ms.sourcegitcommit: 655f501f920e3169450831f501f7183ae46a4a60
+ms.openlocfilehash: 70614f7d97466fb7e8a2f325d744f5e1632640a6
+ms.lasthandoff: 02/27/2017
 
 
 ---
-# <a name="automate-documentdb-account-region-management-using-azure-cli-and-azure-resource-manager-templates"></a>Automatisieren der Verwaltung von Regionen in einem DocumentDB-Konto mithilfe der Azure-Befehlszeilenschnittstelle und Azure Resource Manager-Vorlagen
+# <a name="automate-documentdb-account-region-management-using-azure-cli-10-and-azure-resource-manager-templates"></a>Automatisieren der Verwaltung von Regionen in einem DocumentDB-Konto mithilfe der Azure CLI 1.0 und Azure Resource Manager-Vorlagen
 
-In diesem Artikel erfahren Sie, wie Sie eine Region in Ihrem Azure DocumentDB-Konto mithilfe der Azure-Befehlszeilenschnittstelle oder Azure Resource Manager-Vorlagen hinzufügen oder entfernen. Sie können Regionen auch über das [Azure-Portal](documentdb-portal-global-replication.md) verwalten. Beachten Sie, dass Sie mit den Befehlen im folgenden Tutorial die Failoverprioritäten der verschiedenen Regionen nicht ändern können. Es können nur Leseregionen hinzugefügt oder entfernt werden. Die Schreibregion eines Datenbankkontos (Failoverpriorität 0) kann nicht hinzugefügt oder entfernt werden.
+In diesem Artikel erfahren Sie, wie Sie eine Region in Ihrem Azure DocumentDB-Konto mithilfe der Azure CLI 1.0 oder Azure Resource Manager-Vorlagen hinzufügen oder entfernen. Sie können Regionen auch über das [Azure-Portal](documentdb-portal-global-replication.md) verwalten. Beachten Sie, dass Sie mit den Befehlen im folgenden Tutorial die Failoverprioritäten der verschiedenen Regionen nicht ändern können. Es können nur Leseregionen hinzugefügt oder entfernt werden. Die Schreibregion eines Datenbankkontos (Failoverpriorität 0) kann nicht hinzugefügt oder entfernt werden.
 
-DocumentDB-Datenbankkonten sind derzeit die einzige DocumentDB-Ressourcen, die mithilfe von [Azure Resource Manager-Vorlagen und der Azure-Befehlszeilenschnittstelle](documentdb-automation-resource-manager-cli.md) erstellt oder geändert werden können.
+DocumentDB-Datenbankkonten sind derzeit die einzige DocumentDB-Ressourcen, die mithilfe von [Azure Resource Manager-Vorlagen und der Azure CLI 1.0](documentdb-automation-resource-manager-cli.md) erstellt oder geändert werden können.
 
 ## <a name="getting-ready"></a>Vorbereitung
 
-Vor der Verwendung der Azure-CLI mit Azure-Ressourcengruppen benötigen Sie die richtige Version der Azure-CLI und ein Azure-Konto. Wenn Sie nicht über die Azure-CLI verfügen, [installieren Sie sie](../xplat-cli-install.md).
+Vor der Verwendung der Azure CLI 1.0 mit Azure-Ressourcengruppen benötigen Sie die richtige Version der Azure CLI 1.0 und ein Azure-Konto. Wenn Sie nicht über die Azure CLI 1.0 verfügen, [installieren Sie sie](../xplat-cli-install.md).
 
-### <a name="update-your-azure-cli-version"></a>Aktualisieren der Azure-CLI-Version
+### <a name="update-your-azure-cli-10-version"></a>Aktualisieren der Azure CLI 1.0-Version
 
-Geben Sie an der Eingabeaufforderung `azure --version` ein, um zu überprüfen, ob Sie bereits Version 0.10.4 oder höher installiert haben. Sie werden in diesem Schritt vielleicht aufgefordert, an einer Microsoft Azure-CLI-Datensammlung teilzunehmen, und können „j“ oder „n“ wählen.
+Geben Sie an der Eingabeaufforderung `azure --version` ein, um zu überprüfen, ob Sie bereits Version 0.10.4 oder höher installiert haben. Sie werden in diesem Schritt vielleicht aufgefordert, an einer Microsoft Azure CLI 1.0-Datensammlung teilzunehmen, und können „j“ oder „n“ wählen.
 
     azure --version
     0.10.4 (node: 4.2.4)
 
-Wenn Ihre Version nicht 0.10.4 oder höher entspricht, müssen Sie entweder die [Azure-CLI installieren](../xplat-cli-install.md) oder mit einem der systemeigenen Installer bzw. mit **npm** und Eingabe von `npm update -g azure-cli` ein Update durchführen oder die CLI mit `npm install -g azure-cli` installieren.
+Wenn Ihre Version nicht 0.10.4 oder höher entspricht, müssen Sie mit einem der nativen Installer die [Azure CLI 1.0 installieren](../xplat-cli-install.md) oder aktualisieren. Sie können die CLI auch mit **npm** und Eingabe von `npm update -g azure-cli` aktualisieren oder mit `npm install -g azure-cli` installieren.
 
 ### <a name="set-your-azure-account-and-subscription"></a>Festlegen Ihres Azure-Kontos und -Abonnements
 
@@ -59,7 +60,7 @@ Die folgende Ausgabe wird erzeugt:
 
 Öffnen Sie [https://aka.ms/devicelogin](https://aka.ms/devicelogin) in einem Browser, und geben Sie den in der Befehlsausgabe angegebenen Code ein.
 
-![Screenshot mit dem Geräteanmeldungsbildschirm für die Microsoft Azure-CLI](media/documentdb-automation-resource-manager-cli/azure-cli-login-code.png)
+![Screenshot mit dem Geräteanmeldungsbildschirm für die Microsoft Azure CLI 1.0](media/documentdb-automation-resource-manager-cli/azure-cli-login-code.png)
 
 Nach der Eingabe des Codes wählen Sie die gewünschte Identität im Browser aus und geben bei Bedarf Ihren Benutzernamen und Ihr Kennwort an.
 
@@ -76,11 +77,11 @@ Auf der Befehlsshell wird außerdem die folgende Ausgabe angezeigt.
     +
     info:    login command OK
 
-Zusätzlich zu der hier beschriebenen interaktiven Anmeldemethode sind zusätzliche Azure-CLI-Anmeldemethoden verfügbar. Informationen zu weiteren Methoden und zur Behandlung mehrerer Abonnements finden Sie unter [Herstellen einer Verbindung mit einem Azure-Abonnement von der Azure-Befehlszeilenschnittstelle (Azure-CLI)](../xplat-cli-connect.md).
+Zusätzlich zu der hier beschriebenen interaktiven Anmeldemethode sind zusätzliche Azure CLI 1.0-Anmeldemethoden verfügbar. Informationen zu weiteren Methoden und zur Behandlung mehrerer Abonnements finden Sie unter [Herstellen einer Verbindung mit einem Azure-Abonnement von der Azure-Befehlszeilenschnittstelle (Azure CLI 1.0)](../xplat-cli-connect.md).
 
-### <a name="switch-to-the-azure-cli-resource-group-mode"></a>Wechseln in den Azure CLI-Ressourcengruppenmodus
+### <a name="switch-to-azure-cli-10-resource-group-mode"></a>Wechseln in den Azure CLI 1.0-Ressourcengruppenmodus
 
-Standardmäßig startet die Azure-CLI im Service Management-Modus (**asm** -Modus). Geben Sie Folgendes ein, um in den Ressourcengruppen-Modus zu wechseln.
+Standardmäßig startet die Azure CLI 1.0 im Service Management-Modus (**asm**-Modus). Geben Sie Folgendes ein, um in den Ressourcengruppen-Modus zu wechseln.
 
     azure config mode arm
 
@@ -136,11 +137,11 @@ Die meisten Anwendungen basieren auf einer Kombination verschiedener Ressourcent
 Weitere Informationen zu Azure-Ressourcengruppen und ihrer Nutzung finden Sie unter [Übersicht über den Azure Resource Manager](../azure-resource-manager/resource-group-overview.md). Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md).
 
 
-## <a name="a-idadd-region-documentdb-accountatask-add-region-to-a-documentdb-account"></a><a id="add-region-documentdb-account"></a>Aufgabe: Hinzufügen einer Region zu einem DocumentDB-Konto
+## <a id="add-region-documentdb-account"></a>Aufgabe: Hinzufügen einer Region zu einem DocumentDB-Konto
 
-DocumentDB bietet die Möglichkeit zum [globalen Verteilen von Daten][distribute-globally] auf verschiedene [Azure-Regionen](https://azure.microsoft.com/regions/#services). Die Anweisungen in diesem Abschnitt erläutern, wie Sie mit der Azure-Befehlszeilenschnittstelle und Resource Manager-Vorlagen eine Leseregion zu einem vorhandenen DocumentDB-Konto hinzufügen. Hierfür können Sie die Azure-CLI mit oder ohne Resource Manager-Vorlagen verwenden.
+DocumentDB bietet die Möglichkeit zum [globalen Verteilen von Daten][distribute-globally] auf verschiedene [Azure-Regionen](https://azure.microsoft.com/regions/#services). Die Anweisungen in diesem Abschnitt erläutern, wie Sie mit der Azure CLI 1.0 und Resource Manager-Vorlagen eine Leseregion zu einem vorhandenen DocumentDB-Konto hinzufügen. Hierfür können Sie die Azure CLI 1.0 mit oder ohne Resource Manager-Vorlagen verwenden.
 
-### <a name="a-idadd-region-documentdb-account-clia-add-region-to-a-documentdb-account-using-azure-cli-without-resource-manager-templates"></a><a id="add-region-documentdb-account-cli"></a> Hinzufügen einer Region zu einem DocumentDB-Konto mithilfe der Azure-Befehlszeilenschnittstelle ohne Resource Manager-Vorlagen
+### <a id="add-region-documentdb-account-cli"></a> Hinzufügen einer Region zu einem DocumentDB-Konto mithilfe der Azure CLI 1.0 ohne Resource Manager-Vorlagen
 
 Fügen Sie eine Region zu einem vorhandenen DocumentDB-Konto zu einer neuen oder vorhandenen Ressourcengruppe hinzu, indem Sie den folgenden Befehl an der Eingabeaufforderung eingeben. Beachten Sie, dass das Array „locations“ die aktuelle Regionskonfiguration innerhalb des DocumentDB-Kontos widerspiegeln sollte, abgesehen von der neuen Region, die hinzugefügt werden soll. Das unten stehende Beispiel zeigt einen Befehl zum Hinzufügen einer zweiten Region zum Konto.
 
@@ -183,7 +184,7 @@ Beim Auftreten von Fehlern finden Sie weitere Informationen unter [Problembehand
 
 Nachdem der Befehl ausgeführt wurde, befindet sich das Konto einige Minuten im Zustand **Wird erstellt**, bis es in den Zustand **Online** wechselt und verwendet werden kann. Sie können den Status des Kontos im [Azure-Portal](https://portal.azure.com)auf dem Blatt **DocumentDB-Konten** überprüfen.
 
-### <a name="a-idadd-region-documentdb-account-cli-arma-add-region-to-a-documentdb-account-using-azure-cli-with-resource-manager-templates"></a><a id="add-region-documentdb-account-cli-arm"></a> Hinzufügen einer Region zu einem DocumentDB-Konto mithilfe der Azure-Befehlszeilenschnittstelle und Resource Manager-Vorlagen
+### <a id="add-region-documentdb-account-cli-arm"></a> Hinzufügen einer Region zu einem DocumentDB-Konto mithilfe der Azure CLI 1.0 und Resource Manager-Vorlagen
 
 Die Anweisungen in diesem Abschnitt erläutern, wie Sie mithilfe einer Azure Resource Manager-Vorlage und einer optionalen Parameterdatei (beides sind JSON-Dateien) eine Region zu einem vorhandenen DocumentDB-Konto hinzufügen. Mithilfe einer Vorlage können Sie genaue Vorgaben machen und diese ohne Fehler wiederverwenden.
 
@@ -321,13 +322,13 @@ Beim Auftreten von Fehlern finden Sie weitere Informationen unter [Problembehand
 
 Nachdem der Befehl ausgeführt wurde, befindet sich das Konto einige Minuten im Zustand **Wird erstellt**, bis es in den Zustand **Online** wechselt und verwendet werden kann. Sie können den Status des Kontos im [Azure-Portal](https://portal.azure.com)auf dem Blatt **DocumentDB-Konten** überprüfen.
 
-## <a name="a-idremove-region-documentdb-accountatask-remove-region-from-a-documentdb-account"></a><a id="remove-region-documentdb-account"></a>Aufgabe: Entfernen einer Region aus einem DocumentDB-Konto
+## <a id="remove-region-documentdb-account"></a>Aufgabe: Entfernen einer Region aus einem DocumentDB-Konto
 
-DocumentDB bietet die Möglichkeit zum [globalen Verteilen von Daten][distribute-globally] auf verschiedene [Azure-Regionen](https://azure.microsoft.com/regions/#services). Die Anweisungen in diesem Abschnitt erläutern, wie Sie mit der Azure-Befehlszeilenschnittstelle und Resource Manager-Vorlagen eine Region aus einem vorhandenen DocumentDB-Konto entfernen. Hierfür können Sie die Azure-CLI mit oder ohne Resource Manager-Vorlagen verwenden.
+DocumentDB bietet die Möglichkeit zum [globalen Verteilen von Daten][distribute-globally] auf verschiedene [Azure-Regionen](https://azure.microsoft.com/regions/#services). Die Anweisungen in diesem Abschnitt erläutern, wie Sie mit der Azure CLI 1.0 und Resource Manager-Vorlagen eine Region aus einem vorhandenen DocumentDB-Konto entfernen. Hierfür können Sie die Azure CLI 1.0 mit oder ohne Resource Manager-Vorlagen verwenden.
 
-### <a name="a-idremove-region-documentdb-account-clia-remove-region-to-a-documentdb-account-using-azure-cli-without-resource-manager-templates"></a><a id="remove-region-documentdb-account-cli"></a> Entfernen einer Region aus einem DocumentDB-Konto mithilfe der Azure-Befehlszeilenschnittstelle ohne Resource Manager-Vorlagen
+### <a id="remove-region-documentdb-account-cli"></a> Entfernen einer Region aus einem DocumentDB-Konto mithilfe der Azure CLI 1.0 ohne Resource Manager-Vorlagen
 
-Um eine Region aus einem vorhandenen DocumentDB-Konto zu entfernen, kann der unten stehende Befehl über die Azure-Befehlszeilenschnittstelle ausgeführt werden. Das Array „locations“ darf nur die Regionen enthalten, die nach dem Entfernen der Region verbleiben sollen. **Die hier nicht angegebene Region wird aus dem DocumentDB-Konto entfernt**. Geben Sie in der Befehlszeile den folgenden Befehl ein.
+Um eine Region aus einem vorhandenen DocumentDB-Konto zu entfernen, kann der unten stehende Befehl über die Azure CLI 1.0 ausgeführt werden. Das Array „locations“ darf nur die Regionen enthalten, die nach dem Entfernen der Region verbleiben sollen. **Die hier nicht angegebene Region wird aus dem DocumentDB-Konto entfernt**. Geben Sie in der Befehlszeile den folgenden Befehl ein.
 
 Für eine der Regionen muss failoverPriority den Wert 0 aufweisen. Hiermit wird angegeben, dass diese Region als [Schreibregion für das DocumentDB-Konto][scaling-globally] beibehalten werden soll. Die Werte für die Failoverpriorität müssen für die Standorte eindeutig sein, und der höchste Wert für die Failoverpriorität muss kleiner sein als die Gesamtzahl von Regionen. 
 
@@ -366,7 +367,7 @@ Beim Auftreten von Fehlern finden Sie weitere Informationen unter [Problembehand
 
 Nachdem der Befehl ausgeführt wurde, befindet sich das Konto einige Minuten im Zustand **Wird aktualisiert**, bis es in den Zustand **Online** wechselt und verwendet werden kann. Sie können den Status des Kontos im [Azure-Portal](https://portal.azure.com)auf dem Blatt **DocumentDB-Konten** überprüfen.
 
-### <a name="a-idremove-region-documentdb-account-cli-arma-remove-region-from-a-documentdb-account-using-azure-cli-with-resource-manager-templates"></a><a id="remove-region-documentdb-account-cli-arm"></a> Entfernen einer Region aus einem DocumentDB-Konto mithilfe der Azure-Befehlszeilenschnittstelle und Resource Manager-Vorlagen
+### <a id="remove-region-documentdb-account-cli-arm"></a> Entfernen einer Region aus einem DocumentDB-Konto mithilfe der Azure CLI 1.0 und Resource Manager-Vorlagen
 
 Die Anweisungen in diesem Abschnitt erläutern, wie Sie mithilfe einer Azure Resource Manager-Vorlage und einer optionalen Parameterdatei (beides sind JSON-Dateien) eine Region aus einem vorhandenen DocumentDB-Konto entfernen. Mithilfe einer Vorlage können Sie genaue Vorgaben machen und diese ohne Fehler wiederverwenden.
 
@@ -511,21 +512,16 @@ Nachdem Sie nun über ein DocumentDB-Datenbankkonto verfügen, besteht der näch
 
 Nach dem Erstellen der Datenbank müssen Sie der Datenbank [mindestens eine Sammlung hinzufügen](documentdb-create-collection.md) und den Sammlungen dann [Dokumente hinzufügen](documentdb-view-json-document-explorer.md). 
 
-Wenn eine Sammlung Dokumente enthält, können Sie in [DocumentDB SQL](documentdb-sql-query.md) an den Dokumenten [Abfragen ausführen](documentdb-sql-query.md#executing-sql-queries), indem Sie den [Abfrage-Explorer](documentdb-query-collections-query-explorer.md) im Portal, die [REST-API](https://msdn.microsoft.com/library/azure/dn781481.aspx) oder eines der [SDKs](https://msdn.microsoft.com/library/azure/dn781482.aspx) verwenden.
+Wenn eine Sammlung Dokumente enthält, können Sie in [DocumentDB SQL](documentdb-sql-query.md) an den Dokumenten [Abfragen ausführen](documentdb-sql-query.md#ExecutingSqlQueries), indem Sie den [Abfrage-Explorer](documentdb-query-collections-query-explorer.md) im Portal, die [REST-API](https://msdn.microsoft.com/library/azure/dn781481.aspx) oder eines der [SDKs](https://msdn.microsoft.com/library/azure/dn781482.aspx) verwenden.
 
 Weitere Informationen zu DocumentDB finden Sie in folgenden Ressourcen:
 
--   [Lernpfad für DocumentDB](https://azure.microsoft.com/documentation/learning-paths/documentdb/)
--   [Ressourcenmodell und Konzepte von DocumentDB](documentdb-resources.md)
+-    [Lernpfad für DocumentDB](https://azure.microsoft.com/documentation/learning-paths/documentdb/)
+-    [Ressourcenmodell und Konzepte von DocumentDB](documentdb-resources.md)
 
 Weitere Vorlagen finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/).
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
 [distribute-globally]: https://azure.microsoft.com/en-us/documentation/articles/documentdb-distribute-data-globally
 [scaling-globally]: https://azure.microsoft.com/en-us/documentation/articles/documentdb-distribute-data-globally/#scaling-across-the-planet
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

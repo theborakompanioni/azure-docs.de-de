@@ -1,5 +1,5 @@
 ---
-title: "Konfigurieren von AlwaysOn-Verfügbarkeitsgruppen auf virtuellen Azure-Computern mit PowerShell"
+title: "Konfigurieren von Always On-Verfügbarkeitsgruppen auf virtuellen Azure-Computern mit PowerShell | Microsoft-Dokumentation"
 description: "In diesem Tutorial werden Ressourcen verwendet, die mit dem klassischen Bereitstellungsmodell erstellt wurden, um mithilfe von PowerShell eine Always On-Verfügbarkeitsgruppe in Azure zu erstellen."
 services: virtual-machines-windows
 documentationcenter: na
@@ -16,8 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 09/22/2016
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
-ms.openlocfilehash: 9504b2f74fa0161b6c4dfb6a510913256b99629a
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 4d14b4f54957ae31e736211671cba816f8dea629
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -563,10 +564,5 @@ Sie sind jetzt bereit, die Verfügbarkeitsgruppe zu konfigurieren. Sie verwenden
 Sie haben nun erfolgreich SQL Server AlwaysOn implementiert, indem Sie eine Verfügbarkeitsgruppe in Azure erstellt haben. Informationen zum Konfigurieren eines Listeners für diese Verfügbarkeitsgruppe finden Sie unter [Konfigurieren eines ILB-Listeners für AlwaysOn-Verfügbarkeitsgruppen in Azure](virtual-machines-windows-classic-ps-sql-int-listener.md).
 
 Weitere Informationen zur Verwendung von SQL Server in Azure finden Sie unter [SQL Server auf virtuellen Azure-Computern](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

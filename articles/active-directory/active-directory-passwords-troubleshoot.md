@@ -3,7 +3,7 @@ title: 'Problembehandlung: Azure AD-Kennwortverwaltung | Microsoft-Dokumentation
 description: "Allgemeine Problembehandlungsschritte für die Azure AD-Kennwortverwaltung, einschließlich Zurücksetzen, Ändern und Zurückschreiben von Kennwörtern und dem Registrieren von Informationen. Außerdem erfahren Sie, welche Informationen Sie zum Anfordern von Hilfe benötigen."
 services: active-directory
 documentationcenter: 
-author: asteen
+author: MicrosoftGuyJFlo
 manager: femila
 editor: curtand
 ms.assetid: 18f3dcf7-9314-4a2b-8fed-54b00c0026dd
@@ -12,19 +12,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/12/2016
-ms.author: asteen
+ms.date: 02/28/2017
+ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: 8a4e26b7ccf4da27b58a6d0bcfe98fc2b5533df8
-ms.openlocfilehash: 3515091cf71ecb595d8c08902ff13549a9ddd2f4
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 3aa3a2fce46f37b06b60472d296e21fd10e070dc
+ms.lasthandoff: 03/10/2017
 
 
 ---
 # <a name="how-to-troubleshoot-password-management"></a>Problembehandlung für die Kennwortverwaltung
 > [!IMPORTANT]
-> **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md) weiter.
-> 
-> 
+> **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password) weiter.
+>
+>
 
 Wir helfen Ihnen, wenn Sie Probleme bei der Kennwortverwaltung haben. Die meisten Probleme, auf die Sie eventuell stoßen, können mithilfe weniger Problembehandlungsschritte gelöst werden:
 
@@ -46,11 +47,11 @@ Wenn Ihr Problem mithilfe der folgenden Anleitungen nicht gelöst wird, können 
 * **Seite** – Auf welcher Seite haben Sie sich befunden, als der Fehler aufgetreten ist (einschließlich URL)?
 * **Datum / Uhrzeit / Zeitzone** – An welchem Tag und zu welcher Uhrzeit genau haben Sie den Fehler beobachtet (einschließlich Zeitzone)?
 * **Unterstützungscode** – Welcher Unterstützungscode wurde generiert, als der Fehler aufgetreten ist? Um den Unterstützungscode zu ermitteln, reproduzieren Sie den Fehler und klicken im unteren Bildschirmbereich auf den Link „Unterstützungscode“. Senden Sie die Ergebnis-GUID anschließend an den Supportmitarbeiter.
-  
+
   * Wenn Sie sich auf einer Seite ohne Unterstützungscode befinden, drücken Sie F12, und suchen Sie nach SID und CID. Senden Sie beide Ergebnisse an den Supportmitarbeiter.
-    
+
     ![][001]
-* **Benutzer-ID** – Wie lautet die ID des Benutzers, der den Fehler beobachtet hat (z.B. user@contoso.com)?
+* **Benutzer-ID**: Wie lautet die ID des Benutzers, der den Fehler beobachtet hat (z.B. user@contoso.com)?
 * **Informationen zum Benutzer** – Handelt es sich um einen Verbundbenutzer, um einen Benutzer mit Kennworthashsynchronisierung, oder um einen Benutzer, der ausschließlich über die Cloud zugreift?  Ist dem Benutzer eine AAD Premium- oder eine AAD Basic-Lizenz zugewiesen?
 * **Anwendungsereignisprotokoll** – Wenn Sie die Kennwortrückschreibung verwenden und der Fehler in Ihrer lokalen Infrastruktur auftritt, zippen Sie eine Kopie des Anwendungsereignisprotokolls von Ihrem Azure AD Connect-Server, und fügen Sie die ZIP-Datei an Ihre Anfrage an.
 
@@ -1455,7 +1456,7 @@ Durch einen Neustart des Azure AD Connect-Synchronisierungsdiensts können Konne
 2. Geben Sie im Suchfeld **services.msc** ein, und drücken Sie die EINGABETASTE****.
 3. Suchen Sie nach dem Eintrag **Microsoft Azure AD Connect** .
 4. Klicken Sie mit der rechten Maustaste auf den Diensteintrag, klicken Sie auf **Neu starten**, und warten Sie, bis der Vorgang abgeschlossen wurde.
-   
+
    ![][002]
 
 Durch Ausführen dieser Schritte wird die Verbindung mit dem Clouddienst erneut hergestellt, und mögliche Unterbrechungen werden behoben.  Wenn das Problem durch einen Neustart des Synchronisierungsdiensts nicht gelöst werden kann, empfehlen wir, im nächsten Schritt die Funktion zur Kennwortrückschreibung zu deaktivieren und erneut zu aktivieren.
@@ -1468,14 +1469,14 @@ Durch das Deaktivieren und anschließende erneute Aktivieren der Funktion für d
 3. Geben Sie im Dialogfeld **Mit Azure AD verbinden** die **Anmeldeinformationen für Administratoren der AD-Domänendienste** ein.
 4. Klicken Sie im Dialogfeld **Eindeutige Identifizierung der Benutzer** auf die Schaltfläche **Weiter**.
 5. Deaktivieren Sie im Dialogfeld **Optionale Features** das Kontrollkästchen **Kennwort zurückschreiben**.
-   
+
    ![][003]
 6. Klicken Sie auf den verbleibenden Assistentenseiten auf **Weiter**, ohne Änderungen vorzunehmen, bis Sie zur Seite **Bereit zur Konfiguration** gelangen.
 7. Stellen Sie sicher, dass auf der Konfigurationsseite die **Option zur Kennwortrückschreibung als deaktiviert angezeigt wird**, und klicken Sie dann auf die grüne Schaltfläche **Konfigurieren**, um Ihre Änderungen zu übernehmen.
 8. Deaktivieren Sie auf der Seite **Fertig** die Option **Jetzt synchronisieren**, und klicken Sie auf **Fertig stellen**, um den Assistenten zu schließen.
 9. Öffnen Sie erneut den **Konfigurations-Assistenten für Azure AD Connect**.
 10. **Wiederholen Sie die Schritte 2 bis 8**, **aktivieren Sie jedoch die Option für die Kennwortrückschreibung** auf dem Bildschirm **Optionale Features**, um den Dienst erneut zu aktivieren.
-    
+
     ![][004]
 
 Durch Ausführen dieser Schritte wird die Verbindung mit dem Clouddienst erneut hergestellt, und mögliche Unterbrechungen werden behoben.
@@ -1496,14 +1497,12 @@ Wenn das Installieren der aktuellen Version von Azure AD Connect nicht zur Lösu
 
 Wenn das Problem anschließend weiterhin besteht, wird empfohlen, unter [Problembehandlung: Kennwortrückschreibung](#troubleshoot-password-writeback) und [Häufig gestellte Fragen zur Azure AD-Kennwortverwaltung](active-directory-passwords-faq.md) nachzusehen, ob Ihr Problem möglicherweise dort beschrieben wird.
 
-<br/>
-<br/>
-<br/>
 
-## <a name="links-to-password-reset-documentation"></a>Links zur Dokumentation für die Kennwortzurücksetzung
+
+## <a name="next-steps"></a>Nächste Schritte
 Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortzurücksetzung für Azure AD:
 
-* **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md).
+* **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password).
 * [**Funktionsweise**](active-directory-passwords-how-it-works.md) – Erfahren Sie mehr über die sechs verschiedenen Komponenten des Diensts und deren Funktionen.
 * [**Erste Schritte**](active-directory-passwords-getting-started.md) – Erfahren Sie, wie Sie Benutzern das Zurücksetzen und Ändern ihrer Cloud- oder lokalen Kennwörter erlauben.
 * [**Anpassen**](active-directory-passwords-customize.md) – Erfahren Sie, wie Sie das Aussehen und Verhalten des Diensts an die Anforderungen Ihrer Organisation anpassen.
@@ -1516,9 +1515,4 @@ Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortz
 [002]: ./media/active-directory-passwords-troubleshoot/002.jpg "Image_002.jpg"
 [003]: ./media/active-directory-passwords-troubleshoot/003.jpg "Image_003.jpg"
 [004]: ./media/active-directory-passwords-troubleshoot/004.jpg "Image_004.jpg"
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

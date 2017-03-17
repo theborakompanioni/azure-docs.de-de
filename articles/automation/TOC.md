@@ -54,6 +54,9 @@
 ### [Starten und Beenden von VMs außerhalb der Kernzeit](automation-solution-vm-management.md)
 ### [Integration der Quellcodeverwaltung mit GitHub Enterprise](automation-scenario-source-control-integration-with-github-ent.md)
 ### [Integration der Quellcodeverwaltung mit VSTS](automation-scenario-source-control-integration-with-VSTS.md)
+## Lösungen
+### [Änderungsnachverfolgung](../log-analytics/log-analytics-change-tracking.md)
+### [Updateverwaltung](../operations-management-suite/oms-solution-update-management.md)
 ## Überwachen
 ### [Weiterleiten von Azure Automation-Auftragsdaten an Log Analytics](automation-manage-send-joblogs-log-analytics.md)
 ### [Aufheben der Verknüpfung eines Azure Automation-Kontos mit Log Analytics](automation-unlink-from-log-analytics.md)
