@@ -12,15 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 02/27/2017
 ms.author: billmath
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 898b3d317aac7c1a3e5593e8c5ab5aaedee179e1
-ms.openlocfilehash: 06e738c2d81665baa4e21a574cdbd2997a17ff73
-
+ms.sourcegitcommit: b9a3b64d9de48f17a295ca7a9ea58cf26e8f83ed
+ms.openlocfilehash: d999cc5ce3527539bbdf868912d5b2f6f470c21e
+ms.lasthandoff: 02/28/2017
 
 ---
-# <a name="azure-ad-connect-sync-synchronization-service-manager"></a>Azure AD Connect-Synchronisierung: Synchronization Service Manager
+# <a name="introduction-to-the-azure-ad-connect-synchronization-service-manager-ui"></a>Einführung in die Benutzeroberfläche von Azure AD Connect Synchronization Service Manager
 
 ![Synchronization Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/ssmui.png)
 
@@ -35,9 +36,4 @@ Klicken Sie auf die Links oben in diesem Thema, um weitere Informationen zu den 
 Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-whatis.md) .
 
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

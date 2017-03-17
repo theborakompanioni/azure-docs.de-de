@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 01/31/2017
+ms.date: 02/22/2017
 ms.author: khdang
 translationtype: Human Translation
-ms.sourcegitcommit: 47a54e51fa7378336aabe3fa6f93794852152cfe
-ms.openlocfilehash: d61ed82cc7841e427d422d4e48f2b1a42cf97521
+ms.sourcegitcommit: 64858123a75686ba460de5e0f26b143c29f9f067
+ms.openlocfilehash: 7b7afa0ac55327b83e7ea8983a5e25782bda9f07
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -50,8 +51,12 @@ ms.openlocfilehash: d61ed82cc7841e427d422d4e48f2b1a42cf97521
 </table></br>
 
 ## <a name="release-notes"></a>Versionsinformationen
+### <a name="a-name196196httpmvnrepositorycomartifactcommicrosoftazureazure-documentdb196"></a><a name="1.9.6"/>[1.9.6](http://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb/1.9.6)
+* Ein Fehler in der Abfragemodulkonfiguration wurde behoben, der Ausnahmen bei Abfragen im Gatewaymodus verursachen konnte.
+* Eine Anzahl von Fehlern im Sitzungscontainer wurde behoben, die eine Ausnahme „Besitzerressource wurde nicht gefunden“ für Anforderungen direkt nach dem Erstellen der Sammlung verursachen konnten.
+
 ### <a name="a-name195195httpmvnrepositorycomartifactcommicrosoftazureazure-documentdb195"></a><a name="1.9.5"/>[1.9.5](http://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb/1.9.5)
-* Unterstützung für Aggregationsabfragen (AVG, COUNT, MIN, MAX und SUM) wurde hinzugefügt.
+* Unterstützung für Aggregationsabfragen (COUNT, MIN, MAX, SUM und AVG) wurde hinzugefügt. Siehe [Aggregationsunterstützung](documentdb-sql-query.md#Aggregates).
 * Unterstützung für Änderungsfeeds wurde hinzugefügt.
 * Unterstützung für Sammlungskontingentinformationen über „RequestOptions.setPopulateQuotaInfo“ wurde hinzugefügt.
 * Unterstützung für die Skriptprotokollierung gespeicherter Prozeduren über „RequestOptions.setScriptLoggingEnabled“ wurde hinzugefügt.
@@ -151,6 +156,7 @@ Anforderungen von DocumentDB mithilfe eines deaktivierten SDK werden vom Dienst 
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [1.9.6](#1.9.6) |21. Februar 2017 |--- |
 | [1.9.5](#1.9.5) |31. Januar 2017 |--- |
 | [1.9.4](#1.9.4) |24. November 2016 |--- |
 | [1.9.3](#1.9.3) |30. Oktober 2016 |--- |
@@ -182,10 +188,5 @@ Anforderungen von DocumentDB mithilfe eines deaktivierten SDK werden vom Dienst 
 
 ## <a name="see-also"></a>Weitere Informationen
 Weitere Informationen zu DocumentDB finden Sie auf der Seite zum Dienst [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) .
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

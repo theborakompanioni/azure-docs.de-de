@@ -5,18 +5,18 @@ services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: femila
-editor: na
 ms.assetid: 8e05afa9-2eda-4975-a0cc-6d408065860f
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/02/2016
+ms.date: 02/22/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 6a60db808388bf1fdf9441518920f2eb4e5fcc4d
-ms.openlocfilehash: bafbfb710d8cdb370d21d9299c447a0dfed3c468
+ms.sourcegitcommit: e5d37e9e723d97d1e6844f0b89ad1c2aae258565
+ms.openlocfilehash: 9ab3ac2cd6643b0e53f1f7853239c90e78f4bf77
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -28,7 +28,7 @@ Die Integration von Boomi in Azure AD bietet die folgenden Vorteile:
 
 - Sie können in Azure AD steuern, wer Zugriff auf Boomi hat.
 - Sie können Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei Boomi anzumelden (Sigle Sign-On, SSO; einmaliges Anmelden).
-- Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
+- Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Verwaltungsportal.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
@@ -62,31 +62,25 @@ Zum Konfigurieren der Integration von Boomi in Azure AD müssen Sie Boomi aus de
 
 **Führen Sie die folgenden Schritte aus, um Boomi aus dem Katalog hinzuzufügen:**
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**. 
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Verwaltungsportals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
 
     ![Active Directory][1]
 
-2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
-
-3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
+2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![Anwendungen][2]
-
-4. Klicken Sie unten auf der Seite auf **Hinzufügen** .
+    
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Hinzufügen**.
 
     ![Anwendungen][3]
 
-5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
+4. Geben Sie im Suchfeld als Suchbegriff **Boomi** ein.
 
-    ![Anwendungen][4]
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_000.png)
 
-6. Geben Sie im Suchfeld als Suchbegriff **Boomi** ein.
+5. Wählen Sie im Ergebnisbereich die Option **Boomi** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_01.png)
-
-7. Wählen Sie im Ergebnisbereich **Boomi** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
-
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_02.png)
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_0001.png)
 
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
@@ -106,125 +100,122 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Boomi mü
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
 
-Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im klassischen Azure-Portal zu aktivieren und das einmalige Anmelden in Ihrer Boomi-Anwendung zu konfigurieren.
-
-Die Boomi-Anwendung erwartet die SAML-Assertion in einem bestimmten Format, weshalb Sie den Wert des NameIdentifier-Attributs mit der Verbund-ID des Benutzers festlegen müssen. Azure AD verwendet standardmäßig „UserPrincipalName“ für das NameIdentifier-Attribut. Für die erfolgreiche Integration müssen Sie diesen Wert jedoch anpassen, damit er mit der Verbund-ID des Benutzers in Boomi übereinstimmt. Sie können dieses Verhalten auf der Registerkarte **Attribut** ändern, wie in unten stehendem Screenshot gezeigt. Die Integration funktioniert nur nach erfolgreicher Zuordnung.
-
-![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_51.png)
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-Verwaltungsportal und konfigurieren das einmalige Anmelden in Ihrer Boomi-Anwendung.
 
 **Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit Boomi zu konfigurieren:**
 
-1. Klicken Sie im klassischen Portal auf der Anwendungsintegrationsseite für **Boomi** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
+1. Klicken Sie im Azure-Verwaltungsportal auf der Anwendungsintegrationsseite für **Boomi** auf **Einmaliges Anmelden**.
 
-    ![Einmaliges Anmelden konfigurieren][6] 
+    ![Einmaliges Anmelden konfigurieren][4]
 
-2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Boomi anmelden?** die Option **Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
+2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_01.png)
+
+3. Geben Sie im Abschnitt **Domäne und URLs für Boomi** im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://platform.boomi.com/sso/<account name>/saml`
+
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_02.png)
+
+    > [!NOTE] 
+    > Hinweis: Hierbei handelt es sich um einen Beispielwert. Sie müssen den Wert mit der richtigen Antwort-URL aktualisieren. Wenden Sie sich an das Supportteam von Boomi, um diesen Wert zu erhalten. 
+
+4. Die Boomi-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie für diese Anwendung die folgenden Ansprüche. Sie können die Werte dieser Attribute über den Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen:
+    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_03.png)
 
-3. Führen Sie auf der Dialogseite **App-Einstellungen konfigurieren** die folgenden Schritte aus:
+5. Führen Sie im Dialogfeld **Einmaliges Anmelden** im Abschnitt **Benutzerattribute** für jede in der folgenden Tabelle aufgeführte Zeile die folgenden Schritte aus:
+    
+    | Attributname | Attributwert |
+    | --- | --- |    
+    | FEDERATION_ID | user.mail |
+
+    a. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_04.png)
 
-    a. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://platform.boomi.com/sso/<account name>/saml`
-
-    b. Klicken Sie auf **Weiter**.
-
-    > [!NOTE] 
-    > Hinweis: Hierbei handelt es sich um einen Beispielwert. Sie müssen den Wert mit der richtigen Antwort-URL aktualisieren. Wenden Sie sich an das Supportteam von Boomi, um diesen Wert zu erhalten.
-
-4. Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für Boomi** auf **Zertifikat herunterladen**, und speichern Sie die Datei auf Ihrem Computer:
-
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_05.png) 
-
-    > [!NOTE]
-    > Beachten Sie, dass der NameID-Anspruchswert in der Antwort mit der im Boomi-System konfigurierten Verbund-ID übereinstimmen muss. Arbeiten Sie mit dem Boomi-Supportteam zusammen, um die entsprechende Benutzer-ID in Ihrem Unternehmen als Verbund-ID zuzuordnen. Standardmäßig legt Azure AD den NameIdentifier-Wert als UPN-Wert fest. Sie können dieses Verhalten auf der Registerkarte „Attribut“ ändern, wie in unten stehendem Screenshot gezeigt. Die Integration funktioniert nur nach erfolgreicher Zuordnung. 
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_05.png)
     
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_51.png)
+    b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
+    
+    c. Geben Sie in der Liste **Wert** den für diese Zeile angezeigten Wert ein.
+    
+    d. Klicken Sie auf **OK**
 
-5. Melden Sie sich in einem anderen Webbrowserfenster bei der Boomi-Unternehmenswebsite als Administrator an. 
+6. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Neues Zertifikat erstellen**.
 
-6. Navigieren Sie zu **Firmenname**, und wechseln Sie zu **Einrichten**.
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_06.png)     
 
-7. Klicken Sie auf die Registerkarte **SSO-Optionen**, und führen Sie folgende Schritte aus.
+7. Klicken Sie im Dialogfeld **Neues Zertifikat erstellen** auf das Kalendersymbol, und wählen Sie ein **Ablaufdatum** aus. Klicken Sie auf die Schaltfläche **Speichern**.
 
-    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_06.png)
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-boomi-tutorial/tutorial_general_300.png)
+
+8. Wählen Sie im Abschnitt **SAML-Signaturzertifikat** die Option **Make new certificate active** (Neues Zertifikat zum aktiven Zertifikat machen), und klicken Sie auf die Schaltfläche **Speichern**.
+
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_07.png)
+
+9. Klicken Sie im Popupfenster **Rolloverzertifikat** auf **OK**.
+
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-boomi-tutorial/tutorial_general_400.png)
+
+10. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_08.png) 
+
+11. Klicken Sie im Abschnitt **Boomi-Konfiguration** auf **Boomi konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen.
+
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_09.png) 
+
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_10.png)
+
+12. Melden Sie sich in einem anderen Webbrowserfenster bei der Boomi-Unternehmenswebsite als Administrator an. 
+
+13. Navigieren Sie zu **Firmenname**, und wechseln Sie zu **Einrichten**.
+
+14. Klicken Sie auf die Registerkarte **SSO-Optionen**, und führen Sie folgende Schritte aus.
+
+    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_11.png)
 
     a. Aktivieren Sie das Kontrollkästchen **Enable SAML Single Sign-On**.
 
     b. Klicken Sie auf **Importieren**, um das heruntergeladene Zertifikat aus Azure AD in das **Identitätsanbieterzertifikat** hochzuladen.
     
-    c. Geben Sie im Textfeld **Anmelde-URL für Identitätsanbieter** den Wert für die **Remoteanmelde-URL** aus dem Konfigurations-Assistenten der Azure AD-Anwendung ein.
+    c. Geben Sie im Textfeld **Anmelde-URL des Identitätsanbieters:** den Wert für die **SAML-Dienst-URL für einmaliges Anmelden** aus dem Konfigurationsfenster der Azure AD-Anwendung ein.
 
-    d. Wählen Sie als **Federation Id Location** das Optionsfeld **Federation Id is in NameID element of the Subject** aus. 
+    d. Wählen Sie als **Federation Id Location** das Optionsfeld **Federation Id is in FEDERATION_ID Attribute element** aus. 
 
     e. Klicken Sie auf die Schaltfläche **Save** .
-
-8. Wählen Sie im klassischen Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
-
-    ![Azure AD – einmaliges Anmelden][10]
-
-9. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.  
   
-    ![Azure AD – einmaliges Anmelden][11]
-
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
-Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im klassischen Azure-Portal.
+In diesem Abschnitt wird im Azure-Verwaltungsportal eine Testbenutzerin namens Britta Simon erstellt.
 
-![Azure AD-Benutzer erstellen][20]
+![Azure AD-Benutzer erstellen][100]
 
 **Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
+1. Klicken Sie im linken Navigationsbereich des **Azure-Verwaltungsportals** auf das Symbol für **Azure Active Directory**.
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-boomi-tutorial/create_aaduser_09.png) 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-boomi-tutorial/create_aaduser_01.png) 
 
-2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
+2. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
+    
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-boomi-tutorial/create_aaduser_02.png) 
 
-3. Klicken Sie zum Anzeigen der Liste der Benutzer im Menü oben auf **Benutzer**.
-
+3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+ 
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-boomi-tutorial/create_aaduser_03.png) 
 
-4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**.
+4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-boomi-tutorial/create_aaduser_04.png) 
 
-5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
- 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-boomi-tutorial/create_aaduser_05.png) 
+    a. Geben Sie in das Textfeld **Name** den Namen **BrittaSimon** ein.
 
-    a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
+    b. Geben Sie in das Textfeld **Benutzername** die **E-Mail-Adresse** von Britta Simon ein.
 
-    b. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
+    c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
 
-    c. Klicken Sie auf **Weiter**.
-
-6.  Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
-
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-boomi-tutorial/create_aaduser_06.png) 
-
-    a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
-
-    b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
-
-    c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
-
-    d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
-
-    e. Klicken Sie auf **Weiter**.
-
-7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
-
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-boomi-tutorial/create_aaduser_07.png) 
-
-8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
-
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-boomi-tutorial/create_aaduser_08.png) 
-
-    a. Notieren Sie den Wert von **Neues Kennwort**.
-
-    b. Klicken Sie auf **Fertig stellen**.   
+    d. Klicken Sie auf **Create**. 
 
 
 
@@ -238,13 +229,13 @@ Damit sich Azure AD-Benutzer bei Boomi anmelden können, müssen sie in Boomi b
 
 2. Navigieren Sie nach der Anmeldung zu **Benutzerverwaltung** und wechseln Sie zu **Benutzer**.
 
-    ![Benutzer](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_001.png "Users")
+    ![Benutzer](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_001.png "Benutzer")
 
 3. Klicken Sie auf das Symbol **+**. Das Dialogfeld **Benutzerrollen hinzufügen/verwalten** wird geöffnet.
 
-    ![Benutzer](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_002.png "Users")
+    ![Benutzer](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_002.png "Benutzer")
 
-    ![Benutzer](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_003.png "Users")
+    ![Benutzer](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_003.png "Benutzer")
 
 4. Geben Sie die **E-Mail-Adresse des Benutzers** ein.
 
@@ -267,7 +258,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 **Führen Sie die folgenden Schritte aus, um Britta Simon Boomi zuzuweisen:**
 
-1. Klicken Sie in der Verzeichnisansicht des klassischen Portals auf der oberen Menüleiste auf **Anwendungen** , um die Anwendungsansicht zu öffnen.
+1. Öffnen Sie im Azure-Verwaltungsportal die Anwendungsansicht, navigieren Sie dann zur Verzeichnisansicht, wechseln Sie zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
 
     ![Benutzer zuweisen][201] 
 
@@ -275,16 +266,20 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_50.png) 
 
-3. Klicken Sie im oberen Menü auf **Benutzer**.
+3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
-    ![Benutzer zuweisen][203] 
+    ![Benutzer zuweisen][202] 
 
-4. Wählen Sie in der Benutzerliste **Britta Simon** aus.
+4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
-5. Klicken Sie auf der Symbolleiste unten auf **Zuweisen**.
+    ![Benutzer zuweisen][203]
+
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+
+6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+
+7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
     
-    ![Benutzer zuweisen][205]
-
 
 
 ### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
@@ -308,19 +303,9 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Boomi“ klicken, sollten Sie auto
 [3]: ./media/active-directory-saas-boomi-tutorial/tutorial_general_03.png
 [4]: ./media/active-directory-saas-boomi-tutorial/tutorial_general_04.png
 
-[6]: ./media/active-directory-saas-boomi-tutorial/tutorial_general_05.png
-[10]: ./media/active-directory-saas-boomi-tutorial/tutorial_general_06.png
-[11]: ./media/active-directory-saas-boomi-tutorial/tutorial_general_07.png
-[20]: ./media/active-directory-saas-boomi-tutorial/tutorial_general_100.png
+[100]: ./media/active-directory-saas-boomi-tutorial/tutorial_general_100.png
 
 [200]: ./media/active-directory-saas-boomi-tutorial/tutorial_general_200.png
 [201]: ./media/active-directory-saas-boomi-tutorial/tutorial_general_201.png
+[202]: ./media/active-directory-saas-boomi-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-boomi-tutorial/tutorial_general_203.png
-[204]: ./media/active-directory-saas-boomi-tutorial/tutorial_general_204.png
-[205]: ./media/active-directory-saas-boomi-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO1-->
-
-

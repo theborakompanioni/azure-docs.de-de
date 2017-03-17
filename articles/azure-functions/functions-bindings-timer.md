@@ -14,18 +14,20 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 10/31/2016
+ms.date: 02/27/2017
 ms.author: chrande; glenga
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: b41a5aacec6748af5ee05b01487310cc339af1f9
-ms.openlocfilehash: 542e5378aff893741a68c979bc2c5e8bfe58ba26
+ms.sourcegitcommit: 2542d8c750fc7e1bcc31a9c0eb1672402facfd58
+ms.openlocfilehash: 146884833e968767c14d7e4f924762a592e427e2
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="azure-functions-timer-trigger"></a>Azure Functions-Trigger mit Timer
+# <a name="schedule-code-execution-with-azure-functions"></a>Planen der Ausführung von Code mit Azure Functions
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-Dieser Artikel erläutert das Konfigurieren und Codieren von Triggern mit Timer in Azure Functions. Azure Functions unterstützt die Trigger für Timer. Trigger mit Timer rufen Funktionen anhand eines Zeitplans einmalig oder wiederholt auf. 
+Dieser Artikel erläutert das Konfigurieren und Codieren von Triggern mit Timer in Azure Functions. Azure Functions hat eine Timertriggerbindung, mit der Sie Ihren Funktionscode auf Basis eines definierten Zeitplans ausführen können. 
 
 Der Trigger mit Timer unterstützt das horizontale Hochskalieren mit mehreren Instanzen. Eine einzelne Instanz einer bestimmten Timerfunktion wird auf allen Instanzen ausgeführt.
 
@@ -45,21 +47,26 @@ Der Trigger mit Timer zu einer Funktion verwendet das folgende JSON-Objekte im `
 }
 ```
 
-Der Wert von `schedule` ist ein [CRON-Ausdruck](http://en.wikipedia.org/wiki/Cron#CRON_expression) mit sechs Feldern: `{second} {minute} {hour} {day} {month} {day of the week}`. In vielen der CRON-Ausdrücke, die Sie online finden, ist das `{second}`-Feld weggelassen. Wenn Sie aus einem von ihnen kopieren, müssen Sie eine Anpassung für das zusätzliche `{second}`-Feld vornehmen. Spezifische Beispiele finden Sie unten unter [Beispiele für Zeitpläne](#examples).
+Der Wert von `schedule` ist ein [CRON-Ausdruck](http://en.wikipedia.org/wiki/Cron#CRON_expression) mit diesen sechs Feldern: 
 
-Als Standardzeitzone wird in Verbindung mit den CRON-Ausdrücken die Coordinated Universal Time (UTC) verwendet. Wenn Sie möchten, dass Ihr CRON-Ausdruck auf einer anderen Zeitzone basiert, erstellen Sie eine neue App-Einstellung für die Funktions-App mit dem Namen `WEBSITE_TIME_ZONE`. Legen Sie den Wert auf den Namen der gewünschten Zeitzone gemäß [Microsoft Time Zone Index](https://msdn.microsoft.com/library/ms912391.aspx) (Microsoft-Zeitzonenindex) fest. 
+    {second} {minute} {hour} {day} {month} {day-of-week}
+&nbsp;
+>[!NOTE]   
+>In vielen der CRON-Ausdrücke, die Sie online finden, ist das `{second}`-Feld weggelassen. Wenn Sie aus einem von ihnen kopieren, müssen Sie eine Anpassung für das zusätzliche `{second}`-Feld vornehmen. Spezifische Beispiele finden Sie unten unter [Beispiele für Zeitpläne](#examples).
 
-Beispiel: *Eastern Normalzeit* ist UTC-05:00. Wenn Sie Ihren Trigger mit Timer täglich um 10:00 Uhr EST auslösen möchten, könnten Sie den folgenden CRON-Ausdruck verwenden, der die UTC-Zeitzone berücksichtigt:
+Als Standardzeitzone wird in Verbindung mit den CRON-Ausdrücken die Coordinated Universal Time (UTC) verwendet. Wenn Sie möchten, dass Ihr CRON-Ausdruck auf einer anderen Zeitzone basiert, erstellen Sie eine neue App-Einstellung für die Funktionen-App mit dem Namen `WEBSITE_TIME_ZONE`. Legen Sie den Wert auf den Namen der gewünschten Zeitzone gemäß [Microsoft Time Zone Index](https://msdn.microsoft.com/library/ms912391.aspx) (Microsoft-Zeitzonenindex) fest. 
+
+Beispiel: *Eastern Normalzeit* ist UTC-05:00. Wenn Sie Ihren Trigger mit Timer täglich um 10:00 Uhr EST auslösen möchten, verwenden Sie den folgenden CRON-Ausdruck, der die UTC-Zeitzone berücksichtigt:
 
 ```json
 "schedule": "0 0 15 * * *",
-``` 
+```    
 
 Sie könnten auch eine neue App-Einstellung für die Funktions-App mit dem Namen `WEBSITE_TIME_ZONE` hinzufügen und den Wert auf **Eastern Standard Time** (Eastern Normalzeit) festlegen.  Dann könnte der folgende CRON-Ausdruck für 10:00 Uhr EST verwendet werden: 
 
 ```json
 "schedule": "0 0 10 * * *",
-``` 
+```    
 
 
 <a name="examples"></a>
@@ -67,7 +74,7 @@ Sie könnten auch eine neue App-Einstellung für die Funktions-App mit dem Namen
 ## <a name="schedule-examples"></a>Beispiele für Zeitpläne
 Hier sind einige Beispiele für CRON-Ausdrücke, die Sie für die `schedule`-Eigenschaft verwenden können. 
 
-Alle 5 Minuten auslösen:
+Alle fünf Minuten auslösen:
 
 ```json
 "schedule": "0 */5 * * * *"
@@ -184,10 +191,5 @@ module.exports = function (context, myTimer) {
 
 ## <a name="next-steps"></a>Nächste Schritte
 [!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

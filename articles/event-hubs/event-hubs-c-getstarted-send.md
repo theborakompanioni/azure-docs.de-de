@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: fe331199333d492dbc42c9125c9da96a44066ee1
-ms.openlocfilehash: a6d6db0e0e6b6fe8d8ccbd6cbd3858ae0df5cb2d
+ms.sourcegitcommit: f92909e0098a543f99baf3df3197a799bc9f1edc
+ms.openlocfilehash: f62c0ca57bfd15a9ad1f767fa8fd59cc73b71c43
+ms.lasthandoff: 03/01/2017
 
 ---
 
@@ -32,7 +33,7 @@ In diesem Tutorial erfahren Sie, wie Sie mithilfe einer Konsolenanwendung in C E
 Für dieses Tutorial benötigen Sie Folgendes:
 
 * Eine C-Entwicklungsumgebung. In diesem Lernprogramm wird vom GCC-Stack auf einem virtuellen Linux-Computer mit Azure mit Ubuntu 14.04 ausgegangen.
-* Microsoft Visual Studio Express für Windows
+* Microsoft Visual Studio oder Visual Studio Community Edition
 * Ein aktives Azure-Konto. Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Einzelheiten finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="send-messages-to-event-hubs"></a>Senden von Nachrichten an Ereignis-Hubs
@@ -167,9 +168,4 @@ Weitere Informationen zu Event Hubs finden Sie unter den folgenden Links:
 [Event Hubs overview]: event-hubs-overview.md
 [sample application that uses Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
 [Scale out Event Processing with Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

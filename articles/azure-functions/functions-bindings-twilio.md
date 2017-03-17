@@ -15,14 +15,16 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/20/2016
-ms.author: wesmc
+ms.author: wesmc, glenga
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 96f253f14395ffaf647645176b81e7dfc4c08935
-ms.openlocfilehash: 29fa4620885ec787f362966f732510fded600d53
+ms.sourcegitcommit: 2fd12dd32ed3c8479c7460cbc0a1cac3330ff4f4
+ms.openlocfilehash: 9355aae6e3fbf70aae08cc829d7addd2decc44fd
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="azure-functions-twilio-output-binding"></a>Azure Functions Twilio-Ausgabebindung
+# <a name="send-sms-messages-from-azure-functions-using-the-twilio-output-binding"></a>Senden von SMS-Nachrichten mit Azure Functions mithilfe der Twilio-Ausgabebindung
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
 In diesem Artikel wird das Konfigurieren und Codieren von Twilio-Bindungen in Azure Functions erläutert. 
@@ -31,7 +33,7 @@ In diesem Artikel wird das Konfigurieren und Codieren von Twilio-Bindungen in Az
 
 Azure Functions unterstützt Twilio-Ausgabebindungen, mit denen Sie in Ihren Funktionen das Senden von SMS-Textnachrichten mit wenigen Codezeilen und einem [Twilio](https://www.twilio.com/)-Konto aktivieren können. 
 
-## <a name="functionjson-for-azure-notification-hub-output-binding"></a>„function.json“ für Azure Notification Hub-Ausgabebindung
+## <a name="functionjson-for-the-twilio-output-binding"></a>function.json für die Twilio-Ausgabebindung
 Die Datei „function.json“ stellt die folgenden Eigenschaften bereit:
 
 * `name`: Variablenname, der im Funktionscode für die Twilio-SMS-Textnachricht verwendet wird
@@ -155,10 +157,5 @@ module.exports = function (context, myQueueItem) {
 
 ## <a name="next-steps"></a>Nächste Schritte
 [!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

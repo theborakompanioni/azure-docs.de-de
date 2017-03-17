@@ -12,12 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2016
+ms.date: 02/15/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 9d32b156878ff963e6dac00663fc5f1f272d269b
-ms.openlocfilehash: f86b20d5cf20ff977901d481438292c7b38658da
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 0247e7c8f3803e27b4304dae6af11f18432e76b0
+ms.openlocfilehash: 92ee9f08ff85a85a08a2d1e021cdb7afec0c6de7
+ms.lasthandoff: 02/28/2017
 
 
 ---
@@ -36,7 +36,7 @@ Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unte
 Um die Azure AD-Integration mit Blackboard Learn konfigurieren zu können, benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement
-* Ein Blackboard Learn Cloud Platform-Abonnement, für das einmaliges Anmelden aktiviert ist
+* Ein Blackboard Learn Cloud Platform-Abonnement, für das einmaliges Anmelden (SSO) aktiviert ist
 
 >[!NOTE]
 >Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden. 
@@ -45,7 +45,7 @@ Um die Azure AD-Integration mit Blackboard Learn konfigurieren zu können, benö
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
 * Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-* Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
+* Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung.

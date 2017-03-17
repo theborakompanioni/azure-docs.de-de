@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect mit vorhandenem Mandanten | Microsoft-Dokumentation
+title: "Azure AD Connect: Wenn Sie bereits über Azure AD verfügen | Microsoft-Dokumentation"
 description: Dieses Thema beschreibt die Verwendung von Connect, wenn ein Azure AD-Mandant vorhanden ist.
 services: active-directory
 documentationcenter: 
@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 02/22/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: e358f6d1937a45f375777cea1153b975a745a719
-ms.openlocfilehash: 160a3ae7190dab76eee4634bd6babb5b047cd5ac
+ms.sourcegitcommit: f59028a2f909914222236f3b3575afd0949b4277
+ms.openlocfilehash: c89e206462856d25a81729e7028065ac1cd13ef3
+ms.lasthandoff: 02/23/2017
 
 ---
 
@@ -26,7 +27,7 @@ Bei den meisten Themen zur Verwendung von Azure AD Connect wird davon ausgegange
 ## <a name="the-basics"></a>Grundlagen
 Ein Objekt in Azure AD wird entweder in der Cloud (Azure AD) oder lokal verwaltet. Bei nur einem Objekt ist es nicht möglich, einige Attribute lokal und andere Attribute in Azure AD zu verwalten. Jedes Objekt verfügt über ein Flag, das angibt, wo das Objekt verwaltet wird.
 
-Sie können einige Benutzer lokal und andere in der Cloud verwalten. Ein häufiges Szenario für diese Konfiguration ist eine Organisation, die über Mitarbeiter im Büro und über Mitarbeiter in der Werkshalle verfügen. Die Mitarbeiter im Büro verfügen über ein lokales AD-Konto, die Mitarbeiter in der Werkshalle nicht. Daher müssen Sie einige Benutzer lokal und einige in Azure AD verwalten.
+Sie können einige Benutzer lokal und andere in der Cloud verwalten. Ein häufiges Szenario für diese Konfiguration ist eine Organisation, die sowohl über Buchhaltungs- als auch Vertriebsmitarbeiter verfügt. Die Buchhaltungsmitarbeiter haben ein lokales AD-Konto, aber die Vertriebsmitarbeiter nicht – sie haben ein Konto in Azure AD. Daher müssen Sie einige Benutzer lokal und einige in Azure AD verwalten.
 
 Wenn Sie damit begonnen haben, Benutzer in Azure AD zu verwalten, die sich auch im lokalen Azure Directory befinden, und später Connect verwenden möchten, sind einige weitere Aspekte zu berücksichtigen.
 
@@ -60,9 +61,4 @@ Wenn der einzige Grund, aus dem Sie ein lokales Active Directory planen, die Unt
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -11,17 +11,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2017
+ms.date: 02/27/2017
 ms.author: markvi
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 6adb1dd25c24b18b834dd921c2586ef29d56dc81
-ms.openlocfilehash: 2dd9c96e1c15e424588869b61eb26501b1b66be3
+ms.sourcegitcommit: 15cb521e928bab6c7966d19e74d9ae3bca99ef34
+ms.openlocfilehash: ef589c768f60e9a68ac7bc952fa181758452b1bd
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="introduction-to-the-access-panel"></a>Einführung in den Zugriffsbereich
+# <a name="what-is-the-access-panel"></a>Was ist der Zugriffsbereich?
 Der Zugriffsbereich ist ein webbasiertes Portal, das einem Endbenutzer mit einem Organisationskonto in Azure Active Directory erlaubt, cloudbasierte Anwendungen anzuzeigen und zu starten, für die der Azure AD-Administrator Zugriff gewährt hat. Als Endbenutzer mit Azure Active Directory-Editionen können Sie über den Zugriffsbereich auch Self-Service-Gruppenverwaltungsfunktionen verwenden. <br>
- Der Zugriffsbereich ist unabhängig vom Azure-Verwaltungsportal und setzt nicht voraus, dass Benutzer über ein Azure-Abonnement verfügen. 
+Der Zugriffsbereich ist unabhängig vom Azure-Verwaltungsportal und setzt nicht voraus, dass Benutzer über ein Azure-Abonnement verfügen. 
 
 ![Anpassung des Zugriffsbereichs][1] 
 
@@ -49,8 +51,8 @@ Diese URL muss allen Benutzern mitgeteilt werden, die sich bei in Azure AD inte
 
 ## <a name="authentication"></a>Authentifizierung
 Um auf den Zugriffsbereich zugreifen zu können, muss ein Benutzer unter Verwendung eines Organisationskontos in Azure AD authentifiziert sein. <br>
- Ein Benutzer kann direkt bei Azure AD authentifiziert sein. <br>
- Wenn eine Organisation mithilfe von ADFS oder anderen Technologien einen Verbund konfiguriert hat, können Benutzer alternativ dazu auch über Windows Server Active Directory authentifiziert werden.
+Ein Benutzer kann direkt bei Azure AD authentifiziert sein. <br>
+Wenn eine Organisation mithilfe von ADFS oder anderen Technologien einen Verbund konfiguriert hat, können Benutzer alternativ dazu auch über Windows Server Active Directory authentifiziert werden.
 
 Wenn ein Benutzer über ein Abonnement für Azure oder Office 365 verfügt und das Azure-Verwaltungsportal oder eine Office 365-Anwendung verwendet hat, wird dem Benutzer die Liste der Anwendungen angezeigt, ohne dass eine erneute Anmeldung erforderlich ist. Benutzer, die nicht authentifiziert sind, werden aufgefordert, sich mit dem Benutzernamen und Kennwort für ihr Konto in Azure AD anzumelden. Wenn die Organisation einen Verbund konfiguriert hat, reicht die Eingabe des Benutzernamens aus.
 
@@ -102,7 +104,7 @@ Dabei handelt es sich um Anwendungen, die der Administrator im Abschnitt „Acti
 Wenn ein Benutzer auf eine Anwendungskachel für eine dieser Anwendungen klickt, wird er an die betreffende Anwendung weitergeleitet und automatisch angemeldet.
 
 ### <a name="password-based-sso-without-identity-provisioning"></a>Kennwortbasiertes SSO ohne Identitätsbereitstellung
-Dabei handelt es sich um Anwendungen, die der Administrator im Abschnitt „Active Directory“ des Azure-Verwaltungsportals hinzugefügt und für die er den SSO-Modus auf*Kennwortbasiertes einmaliges Anmelden*festgelegt hat. <br>  Alle Benutzer im Verzeichnis sehen alle Anwendungen, die in diesem Modus konfiguriert wurden.
+Dabei handelt es sich um Anwendungen, die der Administrator im Abschnitt „Active Directory“ des Azure-Verwaltungsportals hinzugefügt und für die er den SSO-Modus auf*Kennwortbasiertes einmaliges Anmelden*festgelegt hat. <br> Alle Benutzer im Verzeichnis sehen alle Anwendungen, die in diesem Modus konfiguriert wurden.
 
 Wenn ein Benutzer erstmals auf eine Anwendungskachel für eine dieser Anwendungen klickt, wird er aufgefordert, das Plug-In für kennwortbasiertes SSO für Internet Explorer oder Chrome zu installieren. Dies erfordert ggf. einen Neustart des Webbrowsers. Wenn der Benutzer in den Zugriffsbereich zurückkehrt und nochmals auf die Anwendungskachel klickt, wird er zur Eingabe eines Benutzernamens und Kennworts für die Anwendung aufgefordert. Nachdem der Benutzername und das Kennwort eingegeben wurden, werden diese Anmeldeinformationen sicher in Azure AD gespeichert und mit dem entsprechenden Konto in Azure AD verknüpft. Der Zugriffsbereich automatisiert die Anmeldung des Benutzers bei der Anwendung mit diesen Anmeldeinformationen.
 
@@ -131,9 +133,4 @@ Beim Konfigurieren der einmaligen Anmeldung für eine Anwendung bietet das Azure
 [2]: ./media/active-directory-saas-access-panel-introduction/ic767167.png
 [3]: ./media/active-directory-saas-access-panel-introduction/ic767168.png
 [4]: ./media/active-directory-saas-access-panel-introduction/ic767169.png
-
-
-
-<!--HONumber=Dec16_HO4-->
-
 

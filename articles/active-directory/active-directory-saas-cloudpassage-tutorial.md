@@ -12,20 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/07/2016
+ms.date: 02/16/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 01676cbaf2b677b43a223cf33699710c77da41fa
+ms.sourcegitcommit: 1a4a1c3763fa13afcb7a93269a210b7dc4270e60
+ms.openlocfilehash: 17b80f63ae27c6e42b81d13e221ac5acda970fdd
+ms.lasthandoff: 02/28/2017
 
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cloudpassage"></a>Tutorial: Azure Active Directory-Integration mit CloudPassage
 In diesem Tutorial erfahren Sie, wie Sie CloudPassage in Azure Active Directory (Azure AD) integrieren.  
+
 Diese Integration bietet folgende Vorteile: 
 
 * Sie können in Azure AD steuern, wer auf CloudPassage Zugriff hat. 
-* Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei CloudPassage anzumelden (einmaliges Anmelden).
+* Sie können Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei CloudPassage anzumelden (einmaliges Anmelden, SSO).
 * Sie können Ihre Konten an einem zentralen Ort verwalten – in Azure Active Directory. 
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
@@ -33,30 +35,30 @@ Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unte
 ## <a name="prerequisites"></a>Voraussetzungen
 Um die Azure AD-Integration mit CloudPassage konfigurieren zu können, benötigen Sie Folgendes:
 
-* Ein Azure AD-Abonnement.
+* Ein Azure AD-Abonnement
 * Ein CloudPassage-Abonnement, für das einmaliges Anmelden aktiviert ist
 
-> [!NOTE]
-> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
-> 
+>[!NOTE]
+>Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden. 
 > 
 
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
 * Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-* Wenn Sie nicht über eine Azure AD-Testumgebung verfügen, erhalten Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine kostenlose, einmonatige Azure-Testversion. 
+* Wenn Sie nicht über eine Azure AD-Testumgebung verfügen, können Sie ein kostenloses, [einmonatiges Testabonnement](https://azure.microsoft.com/pricing/free-trial/) erhalten. 
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-Ziel dieses Tutorials ist es, das einmalige Anmelden von Azure AD in einer Testumgebung zu testen.  
+Ziel dieses Tutorials ist, das einmalige Anmelden (SSO) von Azure AD in einer Testumgebung zu testen.  
+
 Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
 1. Hinzufügen von CloudPassage aus dem Katalog 
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+2. Konfigurieren und Testen des einmaligen Anmeldens (SSO) von Azure AD
 
-## <a name="adding-cloudpassage-from-the-gallery"></a>Hinzufügen von CloudPassage aus dem Katalog
+## <a name="add-cloudpassage-from-the-gallery"></a>Hinzufügen von CloudPassage aus dem Katalog
 Zum Konfigurieren der Integration von CloudPassage in Azure AD müssen Sie CloudPassage aus dem Katalog zur Liste der verwalteten SaaS-Apps hinzufügen.
 
-### <a name="to-add-cloudpassage-from-the-gallery-perform-the-following-steps"></a>Um CloudPassage aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:
+**Um CloudPassage aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**. 
    
     ![Active Directory][1]
@@ -77,23 +79,27 @@ Zum Konfigurieren der Integration von CloudPassage in Azure AD müssen Sie Cloud
    
     ![Anwendungen][6]
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
-In diesem Abschnitt soll veranschaulicht werden, wie basierend auf einem Testbenutzer namens "Britta Simon" das einmalige Anmelden von Azure AD in CloudPassage konfiguriert und getestet werden kann.
+## <a name="configure-and-test-azure-ad-sso"></a>Konfigurieren und Testen des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
+In diesem Abschnitt soll anhand eines Testbenutzers namens Britta Simon veranschaulicht werden, wie das einmalige Anmelden von Azure AD in CloudPassage konfiguriert und getestet werden kann.
 
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, wer der entsprechende Gegenbenutzer in CloudPassage zu einem Benutzer in Azure AD ist. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in CloudPassage muss eine Linkbeziehung eingerichtet werden.  
+Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in CloudPassage als Entsprechung zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in CloudPassage muss eine Linkbeziehung eingerichtet werden.  
+
 Diese Linkbeziehung wird hergestellt, indem Sie den Wert des **Benutzernamens** in Azure AD als Wert dem **Benutzernamen** in CloudPassage zuweisen.
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei CloudPassage müssen Sie die folgenden Bausteine ausführen:
+Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei CloudPassage müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Konfigurieren der einmaligen Anmeldung in Azure AD](#configuring-azure-ad-single-single-sign-on)** – um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
 2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 3. **[Erstellen eines CloudPassage-Testbenutzers](#creating-a-halogen-software-test-user)** – um eine Entsprechung von Britta Simon in CloudPassage zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** – um Britta Simon für das einmalige Anmelden in Azure AD zu aktivieren.
-5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** – um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
-Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden in Azure AD im klassischen Azure AD-Portal zu aktivieren und es in Ihrer CloudPassage-Anwendung zu konfigurieren.  
-Die CloudPassage-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen:
+### <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
+Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden (SSO) von Azure AD im klassischen Azure-Portal zu aktivieren und das einmalige Anmelden in Ihrer CloudPassage-Anwendung zu konfigurieren.  
+
+Die CloudPassage-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. 
+
+Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen:
 
 ![Einmaliges Anmelden konfigurieren][21]
 
@@ -107,14 +113,12 @@ Die CloudPassage-Anwendung erwartet die SAML-Assertionen in einem bestimmten For
     ![Einmaliges Anmelden konfigurieren][8]
 3. Führen Sie auf der Dialogseite **App-Einstellungen konfigurieren** die folgenden Schritte aus: 
    
-    ![App-Einstellungen konfigurieren][9]
-   
-    a. Geben Sie im Textfeld **Anmelde-URL** die URL ein, die von Ihren Benutzern zum Anmelden an der CloudPassage-App verwendet wird (z.B. *https://portal.cloudpassage.com/saml/init/accountid*). 
-   
-    b. Geben Sie im Textfeld **Antwort-URL** Ihre AssertionConsumerService-URL ein (z.B. *https://portal.cloudpassage.com/saml/consume/accountid*). Sie können Ihren Wert für dieses Attribut abrufen, indem Sie auf die **Dokumentation der SSO-Einrichtung** im Abschnitt mit den **Einstellungen für einmaliges Anmelden** Ihres CloudPassage-Portals klicken.  
-    ![Einmaliges Anmelden konfigurieren][10]
-   
-    C. Klicken Sie auf **Weiter**.
+    ![App-Einstellungen konfigurieren][9]   
+  1. Geben Sie im Textfeld **Anmelde-URL** die URL ein, die von Ihren Benutzern zum Anmelden an der CloudPassage-App verwendet wird (z.B. *https://portal.cloudpassage.com/saml/init/accountid*).  
+  2. Geben Sie im Textfeld **Antwort-URL** Ihre AssertionConsumerService-URL ein (z.B. *https://portal.cloudpassage.com/saml/consume/accountid*). Sie können Ihren Wert für dieses Attribut abrufen, indem Sie auf die **Dokumentation der SSO-Einrichtung** im Abschnitt mit den **Einstellungen für einmaliges Anmelden** Ihres CloudPassage-Portals klicken.
+  
+    ![Einmaliges Anmelden konfigurieren][10]   
+  3. Klicken Sie auf **Weiter**.
 4. Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für CloudPassage** auf **Zertifikat herunterladen**, und speichern Sie das Zertifikat lokal auf Ihrem Computer. 
    
     ![Einmaliges Anmelden konfigurieren][11]
@@ -128,20 +132,14 @@ Die CloudPassage-Anwendung erwartet die SAML-Assertionen in einem bestimmten For
 8. Führen Sie im Abschnitt **Einstellungen für einmaliges Anmelden** die folgenden Schritte aus: 
    
     ![Einmaliges Anmelden konfigurieren][14]
-
-    a. Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für CloudPassage** den Wert der **Aussteller-URL**, und fügen Sie ihn in das Textfeld **URL des SAML-Ausstellers** ein.
-
-    b. Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für CloudPassage** den Wert von **Vom Dienstanbieter initiierter Endpunkt**, und fügen Sie ihn in das Textfeld **URL des SAML-Endpunkts** ein.
-
-    c. Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für CloudPassage** den Wert für **Abmelde-URL**, und fügen Sie ihn in das Textfeld **Zielseite der Abmeldung** ein.
-
-    d. Erstellen Sie eine **Base64-codierte** Datei aus dem heruntergeladenen Zertifikat. 
+  1. Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für CloudPassage** den Wert der **Aussteller-URL**, und fügen Sie ihn in das Textfeld **URL des SAML-Ausstellers** ein.
+  2. Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für CloudPassage** den Wert von **Vom Dienstanbieter initiierter Endpunkt**, und fügen Sie ihn in das Textfeld **URL des SAML-Endpunkts** ein.
+  3. Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für CloudPassage** den Wert für **Abmelde-URL**, und fügen Sie ihn in das Textfeld **Zielseite der Abmeldung** ein.
+  4. Erstellen Sie eine **Base64-codierte** Datei aus dem heruntergeladenen Zertifikat. 
 
     >[AZURE.TIP] Weitere Informationen finden Sie unter [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o)(in englischer Sprache).
-
-    e. Öffnen Sie das Base64-codierte Zertifikat in Editor, kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **X.509-Zertifikat** ein.
-
-    f. Klicken Sie auf **Speichern**.
+  5. Öffnen Sie das Base64-codierte Zertifikat in Editor, kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **X.509-Zertifikat** ein.
+  6. Klicken Sie auf **Speichern**.
 
 
 1. Wählen Sie im klassischen Azure AD-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**. 
@@ -160,23 +158,18 @@ Die CloudPassage-Anwendung erwartet die SAML-Assertionen in einem bestimmten For
    | firstname |user.givenname |
    | lastname |user.surname |
    | email |user.mail |
-
-    a. Klicken Sie auf **Benutzerattribut hinzufügen**. 
+  1. Klicken Sie auf **Benutzerattribut hinzufügen**. 
 
     ![Einmaliges Anmelden konfigurieren][18]
-
-    b. Geben Sie im Textfeld **Attributname** den für die entsprechende Zeile angezeigten Attributnamen ein, und wählen Sie als **Attributwert** den für diese Zeile angezeigten Attributwert aus. 
+  2. Geben Sie im Textfeld **Attributname** den für die entsprechende Zeile angezeigten Attributnamen ein, und wählen Sie als **Attributwert** den für diese Zeile angezeigten Attributwert aus. 
 
     ![Einmaliges Anmelden konfigurieren][19]
-
-    c. Klicken Sie auf **Fertig stellen**.
-
-
+  3. Klicken Sie auf **Fertig stellen**.
 1. Klicken Sie dann auf der Symbolleiste am unteren Rand auf **Änderungen übernehmen**. 
    
    ![Einmaliges Anmelden konfigurieren][20]
 
-### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens Britta Simon erstellt.  
 
 ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-cloudpassage-tutorial/create_aaduser_01.png)
@@ -196,40 +189,30 @@ In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens 
 5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus: 
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-cloudpassage-tutorial/create_aaduser_05.png) 
-   
-    a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
-   
-    b. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
-   
-    c. Klicken Sie auf Weiter.
+  1. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
+  2. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
+  3. Klicken Sie auf Weiter.
 6. Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus: 
    
    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-cloudpassage-tutorial/create_aaduser_06.png) 
-   
-   a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
-   
-   b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
-   
-   c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
-   
-   d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
-   
-   e. Klicken Sie auf **Weiter**.
+  1. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
+  2. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
+  3. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
+  4. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
+  5. Klicken Sie auf **Weiter**.
 7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-cloudpassage-tutorial/create_aaduser_07.png) 
 8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-cloudpassage-tutorial/create_aaduser_08.png) 
-   
-    a. Notieren Sie den Wert von **Neues Kennwort**.
-   
-    b. Klicken Sie auf **Fertig stellen**.   
+  1. Notieren Sie den Wert von **Neues Kennwort**.
+  2. Klicken Sie auf **Fertig stellen**.   
 
-### <a name="creating-a-cloudpassage-test-user"></a>Erstellen eines CloudPassage-Testbenutzers
+### <a name="create-a-cloudpassage-test-user"></a>Erstellen eines CloudPassage-Testbenutzers
 Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in CloudPassage.
 
-#### <a name="to-create-a-user-called-britta-simon-in-cloudpassage-perform-the-following-steps"></a>Um einen Benutzer namens Britta Simon in CloudPassage zu erstellen, führen Sie die folgenden Schritte aus:
+**Um einen Benutzer namens Britta Simon in CloudPassage zu erstellen, führen Sie die folgenden Schritte aus:**
 1. Melden Sie sich bei der **CloudPassage** -Unternehmenswebsite als Administrator an. 
 2. Klicken Sie auf der Symbolleiste am oberen Rand auf **Einstellungen** und dann auf **Websiteverwaltung**. 
    
@@ -240,19 +223,14 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon
 4. Führen Sie im Abschnitt **Neuen Benutzer hinzufügen** die folgenden Schritte aus: 
    
    ![Erstellen eines CloudPassage-Testbenutzers][24]
-   
-   a. Geben Sie in das Textfeld **Vorname** den Namen Britta ein.
-   
-   b. Geben Sie in das Textfeld **Nachname** den Namen Simon ein.
-   
-   c. Geben Sie in die Textfelder **Benutzername**, **E-Mail** und **E-Mail erneut eingeben** Brittas Benutzernamen in Azure AD ein.
-   
-   d. Wählen Sie als **Zugriffstyp** die Option **Halo-Portalzugriff aktivieren** aus.
-   
-   e. Klicken Sie auf **Hinzufügen**.
+  1. Geben Sie in das Textfeld **Vorname** den Namen Britta ein. 
+  2. Geben Sie in das Textfeld **Nachname** den Namen Simon ein.
+  3. Geben Sie in die Textfelder **Benutzername**, **E-Mail** und **E-Mail erneut eingeben** Brittas Benutzernamen in Azure AD ein.
+  4. Wählen Sie als **Zugriffstyp** die Option **Halo-Portalzugriff aktivieren** aus.
+  5. Klicken Sie auf **Hinzufügen**.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
-Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmaligen Anmeldens bei Azure zu ermöglichen, indem sie Zugriff auf CloudPassage erhält.
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmaligen Anmeldens (SSO) bei Azure zu ermöglichen, indem sie Zugriff auf CloudPassage erhält.
 
 ![Benutzer zuweisen][30]
 
@@ -272,8 +250,9 @@ Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmal
    
     ![Benutzer zuweisen][29]
 
-### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
-Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.  
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
+Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden (SSO) über den Zugriffsbereich.
+
 Wenn Sie im Zugriffsbereich auf die Kachel "CloudPassage" klicken, sollten Sie automatisch in Ihrer CloudPassage-Anwendung angemeldet werden.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
@@ -331,10 +310,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel "CloudPassage" klicken, sollten Sie a
 
 
 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

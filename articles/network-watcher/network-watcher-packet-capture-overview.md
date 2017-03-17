@@ -1,0 +1,79 @@
+---
+title: "Einführung in die Paketerfassung in Azure Network Watcher | Microsoft-Dokumentation"
+description: "Diese Seite enthält eine Übersicht über die Network Watcher-Paketerfassungsfunktion."
+services: network-watcher
+documentationcenter: na
+author: georgewallace
+manager: timlt
+editor: 
+ms.assetid: 3a81afaa-ecd9-4004-b68e-69ab56913356
+ms.service: network-watcher
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 02/22/2017
+ms.author: gwallace
+translationtype: Human Translation
+ms.sourcegitcommit: 211c33ceb8e3b9adc9ad75cf18aa459ad5523c18
+ms.openlocfilehash: 1478e5bb08b29e083861b63e4ca999a38fab8452
+ms.lasthandoff: 02/22/2017
+
+
+---
+
+# <a name="introduction-to-variable-packet-capture-in-azure-network-watcher"></a>Einführung in die variable Paketerfassung in Azure Network Watcher
+
+Mithilfe der variablen Paketerfassung in Network Watcher können Sie Paketerfassungssitzungen erstellen, um den eingehenden und ausgehenden Datenverkehr eines virtuellen Computers nachzuverfolgen. Mithilfe der Paketerfassung können Sie Netzwerkanomalien sowohl reaktiv als auch proaktiv diagnostizieren. Weitere Verwendungszwecke sind das Erfassen von Netzwerkstatistiken, das Gewinnen von Informationen zu Netzwerkangriffen, das Debuggen der Kommunikation zwischen Client und Server und vieles mehr.
+
+[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
+
+Paketerfassung ist eine Erweiterung des virtuellen Computers, die remote über Network Watcher gestartet wird. Diese Funktion erleichtert die manuelle Ausführung einer Paketerfassung auf dem gewünschten virtuellen Computer. So sparen Sie wertvolle Zeit. Paketerfassung kann über Portal, PowerShell, CLI oder REST-API ausgelöst werden. Ein Beispiel dafür, wie die Paketerfassung ausgelöst werden kann, ist die Auslösung mit VM-Warnungen. Für die Erfassungssitzung werden Filter bereitgestellt, um sicherzustellen, dass nur der gewünschte Datenverkehr erfasst wird. Filter basieren auf 5-Tupel-Informationen (Protokoll, lokale IP-Adresse, Remote-IP-Adresse, lokaler Port und Remoteport). Die aufgezeichneten Daten werden auf dem lokalen Datenträger oder in einem Speicherblob gespeichert.
+
+![Übersicht zur Paketerfassung][1]
+
+> [!IMPORTANT]
+> Die Paketerfassung erfordert eine VM-Erweiterung `AzureNetworkWatcherExtension`. Informationen zur Installation der Erweiterung finden Sie für einen virtuellen Windows-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Windows](../virtual-machines/virtual-machines-windows-extensions-nwa.md) und für eine Linux-VM unter [VM-Erweiterung für den Network Watcher-Agent für Linux](../virtual-machines/virtual-machines-linux-extensions-nwa.md).
+
+Damit Sie wirklich ausschließlich die gewünschten Informationen erfassen, können Sie die folgenden Optionen für eine Paketerfassungssitzung nutzen:
+
+**Erfassungskonfiguration**
+
+|Eigenschaft|Beschreibung|
+|---|---|
+|**Maximale Bytes pro Paket (Bytes)** | Die Anzahl der Bytes aus jedem Paket, die erfasst werden – wenn keine Angabe erfolgt, werden alle Bytes erfasst. Die Anzahl der Bytes aus jedem Paket, die erfasst werden – wenn keine Angabe erfolgt, werden alle Bytes erfasst. Wenn Sie nur die IPv4-Header benötigen, geben Sie hier 60 an. |
+|**Maximale Bytes pro Sitzung (Bytes)** | Gesamtanzahl der Bytes, die erfasst werden – nach Erreichen des Werts wird die Sitzung beendet.|
+|**Zeitlimit (Sekunden)** | Legt eine Zeitbeschränkung für die Paketerfassungssitzung fest. Der Standardwert beträgt 18.000 Sekunden, also 5 Stunden.|
+
+**Filterung (optional)**
+
+|Eigenschaft|Beschreibung|
+|---|---|
+|**Protokoll** | Das zu filternde Protokoll für die Paketerfassung. Die verfügbaren Werte sind „TCP“, „UDP“ und „Alle“.|
+|**Lokale IP-Adresse** | Dieser Wert filtert bei der Paketerfassung Pakete, deren lokale IP-Adresse mit diesem Filterwert übereinstimmt.|
+|**Lokaler Port** | Dieser Wert filtert bei der Paketerfassung Pakete, deren lokaler Port mit diesem Filterwert übereinstimmt.|
+|**Remote-IP-Adresse** | Dieser Wert filtert bei der Paketerfassung Pakete, deren Remote-IP-Adresse mit diesem Filterwert übereinstimmt.|
+|**Remoteport** | Dieser Wert filtert bei der Paketerfassung Pakete, deren Remoteport mit diesem Filterwert übereinstimmt.|
+
+### <a name="next-steps"></a>Nächste Schritte
+
+Um zu erfahren, wie Sie Paketerfassungen über das Portal verwalten, besuchen Sie [Manage packet captures with Azure Network Watcher using the portal](network-watcher-packet-capture-manage-portal.md) (Verwalten der Paketerfassung mit Azure Network Watcher über das Portal). Die entsprechenden Informationen zu PowerShell finden Sie unter [Manage packet captures with Azure Network Watcher using PowerShell](network-watcher-packet-capture-manage-powershell.md) (Verwalten der Paketerfassung mit Azure Network Watcher über PowerShell).
+
+Informationen zum Erstellen von proaktiven Paketerfassungen auf der Basis von VM-Warnungen finden Sie unter [Use packet capture to do proactive network monitoring with Azure Functions](network-watcher-alert-triggered-packet-capture.md) (Verwenden der Paketerfassung zur proaktiven Netzwerküberwachung durch Azure Functions).
+
+<!--Image references-->
+[1]: ./media/network-watcher-packet-capture-overview/figure1.png
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/31/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 1915044f252984f6d68498837e13c817242542cf
-ms.openlocfilehash: 58a5f8cfc376cd1fea6a668126683bb6d2521bab
+ms.sourcegitcommit: 32364c5a681c1d614abbc32cc8b73dba4e5a2d18
+ms.openlocfilehash: 00a576357c6e89d7943e6c6c6a83c2c1535d549e
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -49,6 +50,7 @@ Im Folgenden finden Sie eine Beschreibung der Endpunkte:
   * *Senden von C2D-Nachrichten und Empfangen von Übermittlungsbestätigungen*. Diese Endpunkte ermöglichen Ihrem Lösungs-Back-End das Senden von zuverlässigen [C2D-Nachrichten][lnk-c2d] sowie das Empfangen zugehöriger Übermittlungs- oder Ablaufbestätigungen.
   * *Empfangen von Dateibenachrichtigungen*. Dieser Messaging-Endpunkt ermöglicht den Empfang von Benachrichtigungen, wenn Ihre Geräte erfolgreich eine Datei hochgeladen haben. 
   * *Aufruf direkter Methoden*. Dieser Endpunkt ermöglicht einem Back-End-Dienst das Aufrufen einer [direkten Methode][lnk-methods] auf einem Gerät.
+  * *Empfangen von Vorgangsüberwachungsereignissen*. Mit diesem Endpunkt können Sie Vorgangsüberwachungsereignisse empfangen, wenn Ihr IoT Hub für deren Ausgabe konfiguriert wurde. Näheres siehe [IoT Hub-Vorgangsüberwachung][lnk-operations-mon].
 
 Im Artikel [Azure IoT SDKs][lnk-sdks] werden die verschiedenen Möglichkeiten zum Zugriff auf diese Endpunkte beschrieben.
 
@@ -109,9 +111,5 @@ Weitere Referenzthemen in diesem IoT Hub-Entwicklungsleitfaden:
 [lnk-devguide-query]: iot-hub-devguide-query-language.md
 [lnk-devguide-mqtt]: iot-hub-mqtt-support.md
 [lnk-devguide-messaging]: iot-hub-devguide-messaging.md
-
-
-
-<!--HONumber=Jan17_HO5-->
-
+[lnk-operations-mon]: iot-hub-operations-monitoring.md
 

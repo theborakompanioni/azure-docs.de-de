@@ -14,24 +14,27 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/09/2016
-ms.author: wesmc
+ms.date: 02/27/2017
+ms.author: glenga
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 182e28e37eb56c547e28524f2a3e13f042238cb4
-ms.openlocfilehash: c638bf42b9adf906f195d77268637d056f7b00a9
+ms.sourcegitcommit: 2fd12dd32ed3c8479c7460cbc0a1cac3330ff4f4
+ms.openlocfilehash: 53dcaea155471d47eb61317c52d38524c05e4600
+ms.lasthandoff: 03/01/2017
+
 
 ---
 
-# <a name="best-practices-for-azure-functions"></a>Bewährte Methoden für Azure Functions
+# <a name="tips-for-improving-the-performance-and-reliability-of-azure-functions"></a>Tipps zum Verbessern der Leistung und Zuverlässigkeit von Azure Functions
 
 ##<a name="overview"></a>Übersicht
 
-Dieser Artikel enthält eine Sammlung mit den bewährten Methoden, die Sie beim Implementieren von Funktionen-Apps nutzen können. Beachten Sie, dass Ihre Azure-Funktionen-App ein Azure App Service ist. Diese bewährten Methoden sind also relevant.
+Dieser Artikel enthält eine Sammlung mit den bewährten Methoden, die Sie beim Implementieren von Funktionen-Apps nutzen können. Beachten Sie, dass Ihre Funktionen-App eine App in Azure App Service ist. Es gelten also auch die bewährten Methoden von App Service.
 
 
 ## <a name="avoid-large-long-running-functions"></a>Vermeiden von Funktionen mit langer Ausführungsdauer
 
-Umfangreiche Funktionen mit langer Ausführungsdauer können zu unerwarteten Zeitüberschreitungsfehlern führen. Eine Funktion kann umfangreich werden, wenn sie über viele Node.js-Abhängigkeiten verfügt. Das Importieren dieser Abhängigkeiten kann zu längeren Ladezeiten und somit zu unerwarteten Zeitüberschreitungen führen. Node.js-Abhängigkeiten können von mehreren `require()`-Anweisungen in Ihrem Code explizit geladen werden. Sie können auch impliziter Art sein, wenn sie auf einem einzelnen Modul mit eigenen internen Abhängigkeiten basieren, das durch Ihren Code geladen wird.  
+Umfangreiche Funktionen mit langer Ausführungsdauer können zu unerwarteten Zeitüberschreitungsfehlern führen. Eine Funktion kann umfangreich werden, wenn sie über viele Node.js-Abhängigkeiten verfügt. Das Importieren dieser Abhängigkeiten kann zu längeren Ladezeiten und somit zu unerwarteten Zeitüberschreitungen führen. Node.js-Abhängigkeiten können von mehreren `require()`-Anweisungen in Ihrem Code explizit geladen werden. Abhängigkeiten können auch impliziter Art sein, wenn sie auf einem einzelnen Modul mit eigenen internen Abhängigkeiten basieren, das durch Ihren Code geladen wird.  
 
 Nach Möglichkeit sollten Sie umfangreiche Funktionen immer in kleinere Funktionssätze unterteilen, die zusammenarbeiten und schnelle Reaktionen ermöglichen. Für einen Webhook oder eine HTTP-Triggerfunktion ist unter Umständen eine Bestätigungsantwort innerhalb eines bestimmten Zeitraums erforderlich. Sie können die HTTP-Triggernutzlast an eine Warteschlange übergeben, damit sie von einer Funktion des Warteschlangentriggers verarbeitet wird. Dieser Ansatz ermöglicht es Ihnen, die eigentliche Arbeit zurückzustellen und sofort eine Antwort zurückzugeben. Es ist üblich, dass für Webhooks eine sofortige Antwort erforderlich ist.
 
@@ -71,8 +74,6 @@ Wenn ein Warteschlangenelement bereits verarbeitet wurde, sollte es möglich sei
 Nutzen Sie Verteidigungsmaßnahmen, die für auf der Azure Functions-Plattform verwendete Komponenten bereits bereitgestellt wurden. Informationen hierzu finden Sie beispielsweise unter **Behandeln von Nachrichten in der Warteschlange für nicht verarbeitbare Nachrichten** in der Dokumentation zu [Azure Storage-Warteschlangentriggern](functions-bindings-storage-queue.md#trigger).
  
 
-
-
 ## <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>Vermeiden Sie es, Test- und Produktionscodes in der derselben Funktionen-App zu mischen.
 
 Für Funktionen innerhalb einer Funktionen-App werden Ressourcen gemeinsam genutzt. Dies gilt beispielsweise für den Arbeitsspeicher. Wenn Sie eine Funktionen-App in der Produktion verwenden, sollten Sie ihr keine testbezogenen Funktionen und Ressourcen hinzufügen. Bei der Ausführung des Produktionscodes kann dies zu unerwartetem Mehraufwand führen.
@@ -103,10 +104,6 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 * [C#-Entwicklerreferenz zu Azure Functions](functions-reference-csharp.md)
 * [F#-Entwicklerreferenz zu Azure Functions](functions-reference-fsharp.md)
 * [NodeJS-Entwicklerreferenz zu Azure Functions](functions-reference-node.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
+* [Patterns and Practices HTTP Performance Optimizations](https://github.com/mspnp/performance-optimization/blob/master/ImproperInstantiation/docs/ImproperInstantiation.md) (Muster und Methoden – HTTP-Leistungsoptimierungen)
 
 

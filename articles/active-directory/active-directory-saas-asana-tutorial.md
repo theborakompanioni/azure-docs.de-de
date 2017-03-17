@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2016
+ms.date: 02/24/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 583141e7543cb5e824204a49ff4400fe462ff28b
+ms.sourcegitcommit: 4a07f946d396a9263d5b00202cd5229ddc86d1be
+ms.openlocfilehash: 257c1032ed8f1347c17be7e51021b9284b73f4a2
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -26,7 +27,7 @@ In diesem Tutorial erfahren Sie, wie Sie Asana in Azure Active Directory (Azure 
 Die Integration von Asana in Azure AD bietet folgende Vorteile:
 
 * Sie können in Azure AD steuern, wer Zugriff auf Asana haben soll.
-* Sie können es Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei Asana anzumelden (Single Sign-On, SSO; einmaliges Anmelden).
+* Sie können Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Asana anzumelden (Single Sign-On, SSO; einmaliges Anmelden).
 * Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
@@ -35,23 +36,22 @@ Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unte
 Um die Azure AD-Integration mit Asana konfigurieren zu können, benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement
-* Ein SSO-fähiges **Asana** -Abonnement
+* Ein **Asana**-Abonnement, für das einmaliges Anmelden aktiviert ist
 
-> [!NOTE]
-> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
-> 
+>[!NOTE]
+>Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden. 
 > 
 
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
 * Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-* Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
+* Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
 1. Hinzufügen von Asana über den Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+2. Konfigurieren und Testen des einmaligen Anmeldens (SSO) von Azure AD
 
 ## <a name="adding-asana-from-the-gallery"></a>Hinzufügen von Asana über den Katalog
 Zum Konfigurieren der Integration von Asana in Azure AD müssen Sie Asana über den Katalog zur Liste mit den verwalteten SaaS-Apps hinzufügen.
@@ -78,22 +78,23 @@ Zum Konfigurieren der Integration von Asana in Azure AD müssen Sie Asana über 
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-asana-tutorial/tutorial_asana_02.png)
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
-In diesem Abschnitt konfigurieren und testen Sie anhand eines Testbenutzers namens Britta Simon das einmalige Anmelden von Azure AD mit Asana.
+## <a name="configure-and-test-azure-ad-sso"></a>Konfigurieren und Testen des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden (SSO) von Azure AD mit Asana basierend auf einem Testbenutzer mit dem Namen Britta Simon.
 
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Asana als Gegenpart für einen Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Asana muss eine Linkbeziehung eingerichtet werden.
+Damit einmaliges Anmelden (SSO) funktioniert, muss Azure AD wissen, welcher Benutzer in Asana als Entsprechung zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Asana muss eine Linkbeziehung eingerichtet werden.
+
 Diese Linkbeziehung wird hergestellt, indem Sie den Benutzernamen ****in Azure AD dem Benutzernamen **** in Asana zuweisen.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Asana müssen die folgenden Schritte ausgeführt werden:
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
 2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 3. **[Erstellen eines Asana-Testbenutzers](#creating-an-Asana-test-user)** , um in Asana einen Gegenpart von Britta Simon zu erhalten, der mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** – um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
-Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im klassischen Azure-Portal zu aktivieren und in Ihrer Asana-Anwendung zu konfigurieren.
+### <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
+Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden (SSO) von Azure AD im klassischen Azure-Portal zu aktivieren und das einmalige Anmelden in Ihrer Asana-Anwendung zu konfigurieren.
 
 **Führen Sie die folgenden Schritte aus, um das einmalige Anmeldens von Azure AD mit Asana zu konfigurieren:**
 
@@ -109,34 +110,29 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im
 4. Führen Sie auf der Dialogseite **App-Einstellungen konfigurieren** die folgenden Schritte aus: 
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-asana-tutorial/tutorial_asana_07.png)
-
-    a. Geben Sie im Textfeld für die Anmelde-URL eine URL im folgenden Format ein: `https://app.asana.com`
-
-    c. Klicken Sie auf **Weiter**.
-
-1. Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für Asana** auf **Zertifikat herunterladen**, und speichern Sie die Datei auf Ihrem Computer. Kopieren Sie außerdem den Wert für die SAML-SSO-URL.
+  1. Geben Sie im Textfeld für die Anmelde-URL eine URL im folgenden Format ein: `https://app.asana.com`
+  2. Klicken Sie auf **Weiter**.
+5. Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für Asana** auf **Zertifikat herunterladen**, und speichern Sie die Datei auf Ihrem Computer. Kopieren Sie außerdem den Wert für die SAML-SSO-URL.
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-asana-tutorial/tutorial_asana_08.png)
-2. Klicken Sie mit der rechten Maustaste auf das Zertifikat, und öffnen Sie die Zertifikatsdatei mit Ihrem bevorzugten Text-Editor. Kopieren Sie den Inhalt zwischen den Überschriften für Beginn und Ende des Zertifikats. Hierbei handelt es sich um das X.509-Zertifikat zum Konfigurieren von SSO in Asana.
-3. Melden Sie sich in einem anderen Browserfenster bei Ihrer Asana-Anwendung als Administrator an. Greifen Sie zum Konfigurieren von SSO in Asana auf die Arbeitsbereichseinstellungen zu, indem Sie in der rechten oben Bildschirmecke auf den Namen des Arbeitsbereichs klicken. Klicken Sie dann auf **Einstellungen für \<Name Ihres Arbeitsbereichs\>**. 
+6. Klicken Sie mit der rechten Maustaste auf das Zertifikat, und öffnen Sie die Zertifikatsdatei mit Ihrem bevorzugten Text-Editor. Kopieren Sie den Inhalt zwischen den Überschriften für Beginn und Ende des Zertifikats. Hierbei handelt es sich um das X.509-Zertifikat zum Konfigurieren von SSO in Asana.
+7. Melden Sie sich in einem anderen Browserfenster bei Ihrer Asana-Anwendung als Administrator an. Greifen Sie zum Konfigurieren von SSO in Asana auf die Arbeitsbereichseinstellungen zu, indem Sie in der rechten oben Bildschirmecke auf den Namen des Arbeitsbereichs klicken. Klicken Sie dann auf **Einstellungen für \<Name Ihres Arbeitsbereichs\>**. 
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-asana-tutorial/tutorial_asana_09.png)
-4. Klicken Sie im Fenster **Organisationseinstellungen** auf **Verwaltung**. Klicken Sie auf **Members must log in via SAML** (Mitglieder müssen sich über SAML anmelden), um die SSO-Konfiguration zu aktivieren. Führen Sie anschließend die folgenden Schritte aus:
+8. Klicken Sie im Fenster **Organisationseinstellungen** auf **Verwaltung**. Klicken Sie auf **Members must log in via SAML** (Mitglieder müssen sich über SAML anmelden), um die SSO-Konfiguration zu aktivieren. Führen Sie anschließend die folgenden Schritte aus:
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-asana-tutorial/tutorial_asana_10.png)
-   
-    a. Fügen Sie im Textfeld **URL der Anmeldeseite** die SAML-Anmelde-URL aus Azure AD ein.
-   
-    b. Fügen Sie im Textfeld **X.509-Zertifikat** das aus Azure AD kopierte X.509-Zertifikat ein.
-5. Klicken Sie auf **Speichern**. Weitere Informationen finden Sie im [Asana-Handbuch zum Einrichten von SSO](https://asana.com/guide/help/premium/authentication#gl-saml) .
-6. Navigieren Sie in Azure AD zur Seite **Einmaliges Anmelden konfigurieren für Asana**, bestätigen Sie die Konfiguration des einmaligen Anmeldens, und klicken Sie anschließend auf **Weiter**.
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-asana-tutorial/tutorial_asana_10.png)  
+  1. Fügen Sie im Textfeld **URL der Anmeldeseite** die SAML-Anmelde-URL aus Azure AD ein.
+  2. Fügen Sie im Textfeld **X.509-Zertifikat** das aus Azure AD kopierte X.509-Zertifikat ein.
+9. Klicken Sie auf **Speichern**. Weitere Informationen finden Sie im [Asana-Handbuch zum Einrichten von SSO](https://asana.com/guide/help/premium/authentication#gl-saml) .
+10. Navigieren Sie in Azure AD zur Seite **Einmaliges Anmelden konfigurieren für Asana**, bestätigen Sie die Konfiguration des einmaligen Anmeldens (SSO), und klicken Sie anschließend auf **Weiter**.
    
     ![Azure AD – einmaliges Anmelden][10]
-7. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.  
+11. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.  
    
     ![Azure AD – einmaliges Anmelden][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit dem Namen Britta Simon.
 
 ![Azure AD-Benutzer erstellen][20]
@@ -156,37 +152,27 @@ In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit d
 5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-asana-tutorial/create_aaduser_05.png) 
-   
-    a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
-   
-    b. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
-   
-    c. Klicken Sie auf **Weiter**.
+  1. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
+  2. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
+  3. Klicken Sie auf **Weiter**.
 6. Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
    
    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-asana-tutorial/create_aaduser_06.png) 
-   
-   a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
-   
-   b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
-   
-   c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
-   
-   d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
-   
-   e. Klicken Sie auf **Weiter**.
+  1. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.   
+  2. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
+  3. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
+  4. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
+  5. Klicken Sie auf **Weiter**.
 7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-asana-tutorial/create_aaduser_07.png) 
 8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-asana-tutorial/create_aaduser_08.png) 
-   
-    a. Notieren Sie den Wert von **Neues Kennwort**.
-   
-    b. Klicken Sie auf **Fertig stellen**.   
+  1. Notieren Sie den Wert von **Neues Kennwort**. 
+  2. Klicken Sie auf **Fertig stellen**.   
 
-### <a name="creating-an-asana-test-user"></a>Erstellen eines Asana-Testbenutzers
+### <a name="create-an-asana-test-user"></a>Erstellen eines Asana-Testbenutzers
 In diesem Abschnitt erstellen Sie in Asana einen Benutzer namens Britta Simon.
 
 1. Navigieren Sie in **Asana** im linken Bereich zum Abschnitt **Teams**. Klicken Sie auf die Pluszeichen-Schaltfläche. 
@@ -195,7 +181,7 @@ In diesem Abschnitt erstellen Sie in Asana einen Benutzer namens Britta Simon.
 2. Geben Sie die E-Mail-Adresse „ britta.simon@contoso.com “ in das Textfeld ein, und wählen **Invite**(Einladen) aus.
 3. Klicken Sie auf **Send Invite**(Einladung senden). Eine E-Mail wird an das E-Mail-Konto des neuen Benutzers gesendet. Der Benutzer muss das Konto erstellen und bestätigen.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Asana gewähren.
 
 ![Benutzer zuweisen][200] 
@@ -216,10 +202,10 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
    
     ![Benutzer zuweisen][205]
 
-### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 In diesem Abschnitt wird das einmalige Anmelden von Azure AD getestet.
 
-Rufen Sie die Asana-Anmeldeseite auf. Geben Sie im Textfeld für die E-Mail-Adresse die E-Mail-Adresse „ britta.simon@contoso.com. Lassen Sie das Textfeld für das Kennwort leer, und klicken Sie dann auf **Log In**. Sie werden zur Azure AD-Anmeldeseite weitergeleitet. Geben Sie Ihre Azure AD-Anmeldeinformationen an. Sie sind nun bei Asana angemeldet.
+Rufen Sie die Asana-Anmeldeseite auf. Geben Sie im Textfeld für die E-Mail-Adresse die E-Mail-Adresse „britta.simon@contoso.com“ ein. Lassen Sie das Textfeld für das Kennwort leer, und klicken Sie dann auf **Anmelden**. Sie werden zur Azure AD-Anmeldeseite weitergeleitet. Geben Sie Ihre Azure AD-Anmeldeinformationen an. Sie sind nun bei Asana angemeldet.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
@@ -245,9 +231,4 @@ Rufen Sie die Asana-Anmeldeseite auf. Geben Sie im Textfeld für die E-Mail-Adre
 [203]: ./media/active-directory-saas-asana-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-asana-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-asana-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO4-->
-
 

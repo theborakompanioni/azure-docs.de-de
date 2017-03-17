@@ -1,5 +1,5 @@
 ---
-title: "Active Directory-Replikationsstatus-Lösung in Log Analytics | Microsoft Docs"
+title: "Überwachen des Active Directory-Replikationsstatus mit Azure Log Analytics | Microsoft-Dokumentation"
 description: "Mit dem Active Directory-Replikationsstatus-Lösungspaket wird die Active Directory-Umgebung regelmäßig auf Replikationsfehler überwacht, und die Ergebnisse werden in Ihrem OMS-Dashboard angezeigt."
 services: log-analytics
 documentationcenter: 
@@ -12,15 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2017
+ms.date: 02/27/2017
 ms.author: banders
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 744c4bd37b7b1443cf78586aab8ec2661e02254e
-ms.openlocfilehash: c0fc2ae5318068c204296b9e053c2cc7324e84c7
+ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
+ms.openlocfilehash: ffae86cb963f0df7f879effbace073d7e830cd94
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="active-directory-replication-status-solution-in-log-analytics"></a>Active Directory-Replikationsstatus-Lösung in Log Analytics
+# <a name="monitor-active-directory-replication-status-with-log-analytics"></a>Überwachen des Active Directory-Replikationsstatus mit Log Analytics
+
 Active Directory ist eine wichtige Komponente der IT-Umgebung eines Unternehmens. Um für hohe Verfügbarkeit und eine hohe Leistung zu sorgen, verfügt jeder Domänencontroller über eine eigene Kopie der Active Directory-Datenbank. Domänencontroller werden miteinander repliziert, um Änderungen im ganzen Unternehmen zu verteilen. Fehler bei diesem Replikationsprozess können zu einer Vielzahl von Problemen im Unternehmen führen.
 
 Mit dem AD-Replikationsstatus-Lösungspaket wird die Active Directory-Umgebung regelmäßig auf Replikationsfehler überwacht, und die Ergebnisse werden in Ihrem OMS-Dashboard angezeigt.
@@ -150,9 +153,4 @@ Falls Sie keinen Domänencontroller direkt mit OMS oder SCOM verbinden möchten,
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Verwenden Sie [Protokollsuchen in Log Analytics](log-analytics-log-searches.md) , um ausführliche Active Directory-Replikationsstatus-Daten anzuzeigen.
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

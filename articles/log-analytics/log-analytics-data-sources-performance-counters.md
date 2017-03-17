@@ -1,5 +1,5 @@
 ---
-title: Erfassen und Analysieren von Leistungsindikatoren in Log Analytics | Microsoft-Dokumentation
+title: Sammeln und Analysieren von Leistungsindikatoren in Azure Log Analytics | Microsoft-Dokumentation
 description: "Daten aus Leistungsindikatoren werden von Log Analytics gesammelt, um die Leistung von Windows- und Linux-Agents zu analysieren.  Dieser Artikel beschreibt, wie Sie die Sammlung von Leistungsindikatoren sowohl für Windows- als auch für Linux-Agents konfigurieren, wie die Daten im OMS-Repository gespeichert werden und wie sie im OMS-Portal analysiert werden können."
 services: log-analytics
 documentationcenter: 
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 02/24/2017
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 653696779e612726ed5b75829a5c6ed2615553d7
-ms.openlocfilehash: 1e4b5dac9333a9bd38f6ef89ddce22c74fed06ba
+ms.sourcegitcommit: 853177202e4724546242d4e8d1b41b456a444eeb
+ms.openlocfilehash: 2381b7e9ab4514d6668569c2a58d108af5008a7e
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -34,7 +35,7 @@ Wenn Sie die Windows- oder Linux-Leistungsindikatoren zum ersten Mal für einen 
 
 Gehen Sie folgendermaßen vor, um einen neuen Windows-Leistungsindikator hinzuzufügen, aus dem Daten gesammelt werden sollen.
 
-1. Geben Sie den Namen des Leistungsindikators im Format *Objekt(Instanz)\Indikator* in das Textfeld ein.  Wenn Sie mit der Eingabe beginnen, wird Ihnen eine Liste mit passenden allgemeinen Indikatoren angezeigt.  Sie können einen Indikator aus der Liste auswählen oder selbst einen eingeben.  Sie können auch durch die Angabe von *Objekt\Indikator* alle Instanzen eines bestimmten Leistungsindikators zurückgeben. 
+1. Geben Sie den Namen des Leistungsindikators im Format *Objekt(Instanz)\Indikator* in das Textfeld ein.  Wenn Sie mit der Eingabe beginnen, wird Ihnen eine Liste mit passenden allgemeinen Indikatoren angezeigt.  Sie können einen Indikator aus der Liste auswählen oder selbst einen eingeben.  Sie können auch durch die Angabe von *Objekt\Indikator* alle Instanzen eines bestimmten Leistungsindikators zurückgeben.
 2. Klicken Sie auf **+**, oder drücken Sie die EINGABETASTE****, um der Liste den Indikator hinzuzufügen.
 3. Wenn Sie einen Leistungsindikator hinzufügen, verwendet dieser den Standardwert von 10 Sekunden für das **Stichprobenintervall**.  Sie können diesen Standardwert auf einen höheren Wert von bis zu 1800 Sekunden (30 Minuten) festlegen, wenn Sie die Speicheranforderungen der gesammelten Leistungsdaten reduzieren möchten.
 4. Wenn Sie mit dem Hinzufügen von Leistungsindikatoren fertig sind, klicken Sie auf die Schaltfläche **Speichern** am oberen Bildschirmrand, um die Konfiguration zu speichern.
@@ -92,19 +93,9 @@ Wenn Sie eine Protokollsuche nach Leistungsdaten durchführen, wird standardmä�
 
 ![Metrikenansicht, reduziert](media/log-analytics-data-sources-performance-counters/metricscollapsed.png)
 
-Wenn die ausgewählte Zeitspanne 6 Stunden oder weniger beträgt, wird das Diagramm alle paar Sekunden aktualisiert.  Die Livedaten werden auf der rechten Seite des Diagramms in Hellblau angezeigt.
-
-![Metrikenansicht, erweitert mit Livedaten](media/log-analytics-data-sources-performance-counters/metricsexpanded.png)
-
 Informationen zum Aggregieren von Leistungsdaten in einer Protokollsuche finden Sie unter [On-demand metric aggregation and visualization in OMS](http://blogs.technet.microsoft.com/msoms/2016/02/26/on-demand-metric-aggregation-and-visualization-in-oms/) (On-Demand-Aggregation und -Visualisierung von Metriken in OMS).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über [Protokollsuchvorgänge](log-analytics-log-searches.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten.  
 * Exportieren Sie gesammelte Daten nach [Power BI](log-analytics-powerbi.md) , um weitere Möglichkeiten der Visualisierung und Analyse zu nutzen.
-
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

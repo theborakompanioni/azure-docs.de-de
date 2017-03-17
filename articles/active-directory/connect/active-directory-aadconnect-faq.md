@@ -11,11 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 02/22/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 85458f4477dadb83a6a2627ef490471ca38ac634
-ms.openlocfilehash: c2b78731feb1993e5c7123ff676f38704120ccff
+ms.sourcegitcommit: c22a8f4a895efc86abc328c6cf82685d7db8c19c
+ms.openlocfilehash: 33de5839e1e8fa70f75636488a0769f7aebf8b95
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -72,12 +73,33 @@ Nein, dies wird derzeit nicht unterstützt.
 **F: Ist es möglich, das ImmutableId-Attribut manuell für vorhandene Azure AD-Gruppen-/Kontaktobjekte festzulegen, um eine Hard-Match-Zuordnung zu lokalen AD-Gruppen-/Kontaktobjekten durchzuführen?**  
 Nein, dies wird derzeit nicht unterstützt.
 
+## <a name="security"></a>Sicherheit
+**F: Werden Konten nach einer bestimmten Anzahl von Versuchen, bei denen Fehler aufgetreten sind, gesperrt, oder wird eine ausgereiftere Strategie angewandt?**</br>
+Wir verwenden eine ausgereiftere Strategie zum Sperren von Konten.  Sie basiert auf der IP-Adresse der Anforderung und den eingegebenen Kennwörtern. Die Dauer der Sperre wird ebenfalls gemäß der Wahrscheinlichkeit erhöht, dass es sich um einen Angriff handelt.  
+
+**F: Bestimmte (häufige) Kennwörter werden mit „Dieses Kennwort wurde zu oft verwendet“-Meldungen zurückgewiesen – bezieht sich dies auf Kennwörter, die im aktuellen Active Directory verwendet wurden?**</br>
+Dies bezieht sich auf Kennwörter, die global häufig sind, z.B. alle Varianten von „Password“ und „123456“.
+
+**F: Wird eine Anmeldeanforderung aus fragwürdigen Quellen (Botnets, Tor-Endpunkt) in einem B2C-Mandanten blockiert, oder setzt dies einen Basic- oder Premium Edition-Mandanten voraus?**</br>
+Wir haben ein Gateway, das Anforderungen filtert, gewissen Schutz gegen Botnets bietet und für alle B2C-Mandanten gilt. 
+
 ## <a name="custom-configuration"></a>Benutzerdefinierte Konfiguration
 **F: Wo sind die PowerShell-Cmdlets für Azure AD Connect dokumentiert?**  
 Mit Ausnahme der auf dieser Website dokumentierten Cmdlets werden keine PowerShell-Cmdlets in Azure AD Connect zur Verwendung für Kunden unterstützt.
 
 **F: Kann ich mithilfe von „Serverexport/Serverimport“ in *Synchronization Service Manager* die Konfiguration zwischen Servern verschieben?**  
-Nein. Da bei dieser Option nicht alle Einstellungen abgerufen werden, sollte sie nicht verwendet werden. Verwenden Sie stattdessen den Assistenten zum Erstellen der Basiskonfiguration auf dem zweiten Server und verwenden Sie den Synchronisierungsregel-Editor, um PowerShell-Skripts zum Verschieben benutzerdefinierter Regeln zwischen Servern zu erstellen. Siehe dazu [Verschieben der benutzerdefinierten Konfiguration vom aktiven Server auf den Stagingserver](active-directory-aadconnect-upgrade-previous-version.md#move-custom-configuration-from-active-to-staging-server).
+Nein. Da bei dieser Option nicht alle Einstellungen abgerufen werden, sollte sie nicht verwendet werden. Verwenden Sie stattdessen den Assistenten zum Erstellen der Basiskonfiguration auf dem zweiten Server und verwenden Sie den Synchronisierungsregel-Editor, um PowerShell-Skripts zum Verschieben benutzerdefinierter Regeln zwischen Servern zu erstellen. Siehe [Swing-Migration](active-directory-aadconnect-upgrade-previous-version.md#swing-migration).
+
+**F: Können Kennwörter für die Azure-Anmeldeseite zwischengespeichert werden, und kann dies verhindert werden, da sie ein Kennworteingabeelement mit dem Attribut „autocomplete = "false"“ enthält?**</br>
+Wir unterstützen derzeit keine Änderung der HTML-Attribute des Kennworteingabefelds, einschließlich des AutoVervollständigen-Tags. Wir arbeiten derzeit an einem Feature, das benutzerdefiniertes Javascript zulässt, sodass Sie dem Kennwortfeld beliebige Attribute hinzufügen können. Dies sollte Ende 2017 verfügbar sein.
+
+**F: Auf der Azure-Anmeldeseite werden Benutzernamen für Benutzer angezeigt, die sich zuvor erfolgreich angemeldet haben.  Kann dieses Verhalten deaktiviert werden?**</br>
+Wir unterstützen derzeit keine Änderung der HTML-Attribute der Anmeldeseite. Wir arbeiten derzeit an einem Feature, das benutzerdefiniertes Javascript zulässt, sodass Sie dem Kennwortfeld beliebige Attribute hinzufügen können. Dies sollte Ende 2017 verfügbar sein.
+
+**F: Gibt es eine Möglichkeit, gleichzeitige Sitzungen zu verhindern?**</br>
+Nein.
+
+
 
 ## <a name="troubleshooting"></a>Problembehandlung
 **F: Wie erhalte ich Hilfe zu Azure AD Connect?**
@@ -93,10 +115,5 @@ Nein. Da bei dieser Option nicht alle Einstellungen abgerufen werden, sollte sie
 [Azure AD Connect-Kundensupport](https://manage.windowsazure.com/?getsupport=true)
 
 * Verwenden Sie diesen Link, um Support über das Azure-Portal zu erhalten.
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

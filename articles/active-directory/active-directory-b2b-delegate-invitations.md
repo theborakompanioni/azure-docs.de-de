@@ -16,41 +16,42 @@ ms.workload: identity
 ms.date: 02/06/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: 0c05cd490ee9125f7e5182cb502db6f4e9390094
-ms.openlocfilehash: 6c6d757a770613498bedca0f8f3a965241d692eb
+ms.sourcegitcommit: f06af80b14b439a223607e91c031a887c200d88d
+ms.openlocfilehash: 11da3f4ff55e8d52a1d0cecb0e275a8af80727ea
+ms.lasthandoff: 02/24/2017
 
 
 ---
 
 # <a name="delegate-invitations-for-azure-active-directory-b2b-collaboration"></a>Delegieren von Einladungen zur Azure Active Directory B2B-Zusammenarbeit
 
-Nach der Aktualisierung der öffentlichen Vorschau der Azure Active Directory B2B-Zusammenarbeit müssen Sie jetzt kein globaler Administrator mehr sein, um Benutzer einzuladen. Sie können mithilfe von Richtlinien steuern, welcher Benutzer Einladungen senden darf, und Sie können Einladungen an Benutzer delegieren, die Rollen mit der Berechtigung für Einladungen besitzen. Eine wichtige neue Möglichkeit, die Einladung von Gastbenutzern zu delegieren, ist die Rolle „Gasteinladender“.
+Nach der Aktualisierung der öffentlichen Vorschau der Azure Active Directory Business-to-Business-Zusammenarbeit (B2B) müssen Sie jetzt kein globaler Administrator mehr sein, um Einladungen zu senden. Stattdessen können Sie Richtlinien verwenden und Einladungen an Benutzer delegieren, deren Rollen ihnen erlauben, Einladungen zu senden. Eine wichtige neue Möglichkeit, die Einladung von Gastbenutzern zu delegieren, ist die Rolle „Gasteinladender“.
 
 ## <a name="guest-inviter-role"></a>Rolle „Gasteinladender“
-Sie können einem Benutzer die Rolle „Gasteinladender“ zuweisen, damit dieser Einladungen senden kann. Sie müssen kein Mitglied der Rolle der globalen Administratoren sein, um Einladungen zu senden. Standardmäßig können auch normale Benutzer die Einladungs-API aufrufen, sofern Einladungen für normale Benutzer nicht durch den globalen Administrator deaktiviert wurden. Sie können hierfür sowohl das Azure-Portal als auch PowerShell verwenden.
+Sie können einem Benutzer die Rolle „Gasteinladender“ zuweisen, damit dieser Einladungen senden kann. Sie müssen kein Mitglied der Rolle der globalen Administratoren sein, um Einladungen zu senden. Standardmäßig können auch normale Benutzer die Einladungs-API aufrufen, sofern ein globaler Administrator nicht Einladungen für normale Benutzer deaktiviert hat. Dies kann mithilfe des Azure-Portals oder PowerShell erfolgen.
 
-Dieses Beispiel zeigt das Hinzufügen eines Benutzers zur Rolle „Gasteinladender“ in PowerShell:
+Hier ist ein Beispiel, das zeigt, wie PowerShell verwendet wird, um einen Benutzer der Rolle „Gasteinladender“ hinzuzufügen:
 
 ```
-Add-MsolRoleMember -RoleObjectId 95e79109-95c0-4d8e-aee3-d01accf2d47b -RoleMemberEmailAddress <RoleMemberEmailAddress >
+Add-MsolRoleMember -RoleObjectId 95e79109-95c0-4d8e-aee3-d01accf2d47b -RoleMemberEmailAddress <RoleMemberEmailAddress>
 ```
 
-## <a name="controlling-who-can-invite"></a>Steuern der Berechtigungen zum Einladen
+## <a name="control-who-can-invite"></a>Steuern, wer einladen kann
 
-![Steuern der Einladungsberechtigung](media/active-directory-b2b-delegate-invitations/control-who-to-invite.png)
+![Steuern, wie eingeladen wird](media/active-directory-b2b-delegate-invitations/control-who-to-invite.png)
 
-In der Azure AD B2B-Zusammenarbeit kann der Mandantenadministrator folgende Einladungsrichtlinien festlegen:
+In der Azure AD B2B-Zusammenarbeit kann ein Mandantenadministrator folgende Einladungsrichtlinien festlegen:
 
-1. Einladungen sind deaktiviert.
-2. Nur Administratoren und Benutzer in der Rolle „Gasteinladender“ dürfen einladen.
-3. Administratoren, Benutzer der Rolle „Gasteinladender“ und Mitglieder dürfen einladen.
-4. Alle Benutzer, einschließlich Gästen, dürfen einladen.
+- Einladungen deaktivieren.
+- Nur Administratoren und Benutzer in der Rolle „Gasteinladender“ dürfen einladen.
+- Administratoren, Benutzer in der Rolle „Gasteinladender“ und Mitglieder dürfen einladen.
+- Alle Benutzer, einschließlich Gästen, dürfen einladen.
 
-Standardmäßig sind Mandanten auf Richtlinie 4 festgelegt (alle Benutzer, einschließlich Gästen, dürfen B2B-Benutzer einladen).
+Standardmäßig wird die Zahl der Mandanten auf 4 festgelegt. (Alle Benutzer, einschließlich Gästen, dürfen B2B-Benutzer einladen.)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Artikel zur Azure AD B2B-Zusammenarbeit:
+Weitere Artikel zur Azure AD B2B-Kollaboration:
 
 * [Was ist die Azure AD B2B-Zusammenarbeit?](active-directory-b2b-what-is-azure-ad-b2b.md)
 * [Eigenschaften von B2B-Zusammenarbeitsbenutzern](active-directory-b2b-user-properties.md)
@@ -60,11 +61,6 @@ Weitere Artikel zur Azure AD B2B-Zusammenarbeit:
 * [Konfigurieren von SaaS-Apps für die B2B-Zusammenarbeit](active-directory-b2b-configure-saas-apps.md)
 * [Benutzertoken für die B2B-Zusammenarbeit](active-directory-b2b-user-token.md)
 * [Zuordnen von Benutzeransprüchen für die B2B-Zusammenarbeit](active-directory-b2b-claims-mapping.md)
-* [Externe Office 365-Freigaben](active-directory-b2b-o365-external-user.md)
+* [Externe Office 365-Freigabe](active-directory-b2b-o365-external-user.md)
 * [Aktuelle Einschränkungen der B2B-Zusammenarbeit](active-directory-b2b-current-limitations.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

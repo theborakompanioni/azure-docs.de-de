@@ -3,7 +3,7 @@ title: Aktualisieren Ihres eigenen Kennworts mit Azure Active Directory| Microso
 description: "Hier erfahren Sie, wie Sie sich für das Zurücksetzen des Kennworts registrieren, wie Sie Ihr Kennwort ändern und wie Sie Ihr Kennwort zurücksetzen, falls Sie es einmal vergessen sollten."
 services: active-directory
 documentationcenter: 
-author: asteen
+author: MicrosoftGuyJFlo
 manager: femila
 editor: curtand
 ms.assetid: 7ba69b18-317a-4a62-afa3-924c4ea8fb49
@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2016
-ms.author: asteen
+ms.date: 02/28/2017
+ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 1535ce0e68b710feed6c7c063a7e0570535fe3dc
+ms.sourcegitcommit: 030e6a202ff111ef1a51d00a3ef5826ada536711
+ms.openlocfilehash: e7ccdbdee8bf29646e05bd168562f6e141790c5d
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -32,33 +33,33 @@ Wenn Sie sich nicht sicher sind, wie Sie Ihr Geschäfts-, Schul- oder Unikonto v
 
 ## <a name="dont-lose-access-to-your-account"></a>Verlieren Sie nicht den Zugriff auf Ihr Konto!
 > [!IMPORTANT]
-> **Warum wird dies angezeigt?**  Wenn Sie über einen Link auf diese Seite gelangt sind, fordert Ihr Administrator wahrscheinlich, dass Sie sich für die Kennwortzurücksetzung registrieren, um Zugriff auf die App zu erhalten. Sie werden unter Umständen zur Eingabe der Telefonnummer oder E-Mail-Adresse und zum Einrichten von Sicherheitsfragen aufgefordert.  Keine Sorge, diese Informationen werden nicht verwendet, um Sie mit unerwünschten Informationen zu belästigen, sondern um Ihr Konto besser zu schützen. Die hier aufgeführten Schritte sollen Sie bei der Erreichung Ihres Ziels unterstützen.
-> 
-> 
+> **Warum wird dies angezeigt?** Wenn Sie über einen Link auf diese Seite gelangt sind, fordert Ihr Administrator wahrscheinlich, dass Sie sich für die Kennwortzurücksetzung registrieren, um Zugriff auf die App zu erhalten. Sie werden unter Umständen zur Eingabe der Telefonnummer oder E-Mail-Adresse und zum Einrichten von Sicherheitsfragen aufgefordert.  Keine Sorge, diese Informationen werden nicht verwendet, um Sie mit unerwünschten Informationen zu belästigen, sondern um Ihr Konto besser zu schützen. Die hier aufgeführten Schritte sollen Sie bei der Erreichung Ihres Ziels unterstützen.
+>
+>
 
 Am schnellsten können Sie sich für die Kennwortzurücksetzung registrieren, indem Sie [http://aka.ms/ssprsetup](http://aka.ms/ssprsetup)aufrufen.  
 
 1. Navigieren Sie zu [http://aka.ms/ssprsetup](http://aka.ms/ssprsetup).
 2. Geben Sie Ihren Benutzernamen und Ihr Kennwort ein.
 3. Wählen Sie eine Option zum Registrieren, indem Sie auf **Jetzt einrichten**klicken.  Hier veranschaulichen wir die Registrierung mit einer **Telefonnummer für die Authentifizierung**.
-   
+
    ![][011]
 4. Wählen Sie in der Dropdownliste Ihre Landesvorwahl aus, und geben Sie Ihre **vollständige Telefonnummer mit Ortsvorwahl**ein.
-   
+
    ![][012]
    ![][013]
 5. Wählen Sie entweder **Textnachricht senden** oder **Mich anrufen** aus.  In diesem Fall wählen wir **Textnachricht senden** aus. Dadurch wird ein sechsstelliger Code an das Telefon gesendet.  Warten Sie, bis der Code auf Ihrem Telefon ankommt.
-   
+
    ![][014]
 6. Wenn Sie den Code erhalten haben, geben Sie ihn in das Eingabefeld ein und klicken auf „Überprüfen“.
 7. Wenn Sie **Danke**sehen, ist alles erledigt. Sie können nun jederzeit die Option verwenden, die Sie für die Zurücksetzung Ihres Kennworts registriert haben, indem Sie zu [https://passwordreset.microsoftonline.com](https://passwordreset.microsoftonline.com)navigieren.
-   
+
    ![][015]
-   
+
    > [!IMPORTANT]
    > Wenn Ihr Administrator es Ihnen ermöglicht, sich für mehrere Optionen zu registrieren, empfehlen wir Ihnen dringend, dass Sie sich zur Sicherheit auch für eine zweite Option registrieren. Dadurch sorgen Sie für den Fall vor, dass Sie Ihr Telefon oder den Zugang zu Ihrer E-Mail verlieren.
-   > 
-   > 
+   >
+   >
 
 ## <a name="how-to-change-your-password-from-o365"></a>Ändern des Kennworts in Office 365
 Führen Sie die folgenden Schritte aus, um das Kennwort für Ihr Geschäfts- oder Schulkonto in Office 365 zu ändern.  Falls Sie Ihr Kennwort vergessen haben und es zurücksetzen möchten, führen Sie [diese Schritte](#how-to-reset-your-password)aus.
@@ -78,7 +79,7 @@ Führen Sie die folgenden Schritte aus, um das Kennwort für Ihr Geschäfts- ode
 3. Klicken Sie rechts auf dem Bildschirm auf die Kachel **Mein Kennwort ändern** .
 4. Geben Sie Ihr altes Kennwort ein, geben Sie Ihr neues Kennwort ein, und bestätigen Sie das neue Kennwort.
 5. Klicken Sie auf **Senden**.
-   
+
    Gibt es ein Problem beim Ändern Ihres Kennworts?  Dann lesen Sie den Abschnitt über [häufige Probleme und Lösungen](#common-problems-and-their-solutions).
 
 ## <a name="how-to-reset-your-password"></a>Zurücksetzen des Kennworts
@@ -86,43 +87,43 @@ Führen Sie die folgenden Schritte aus, um das Kennwort für Ihr Geschäfts- ode
 
 > [!IMPORTANT]
 > Dieses Feature steht nur zur Verfügung, wenn Ihr Administrator es aktiviert hat. Wenn es nicht aktiviert ist, weist eine Nachricht Sie darauf hin, dass dieses Feature für Ihr Konto nicht aktiviert ist.  Verwenden Sie in diesem Fall den Link „Wenden Sie sich an Ihren Administrator“, damit der Administrator Ihr Konto entsperrt.
-> 
+>
 > Wenn der Administrator dieses Feature für Sie aktiviert hat, müssen Sie sich zunächst registrieren, bevor Sie es verwenden können. Sie können dies unter „http://aka.ms/ssprsetup“ tun.
-> 
-> 
+>
+>
 
 1. Klicken Sie auf einer beliebigen Anmeldeseite für Geschäfts-, Schul- oder Unikonten entweder auf den Link „Kein Zugriff auf Ihr Konto?“. oder „Haben Sie Ihr Kennwort vergessen?“. oder navigieren Sie direkt zu https://passwordreset.microsoftonline.com.
-   
+
    ![][001]
 2. Geben Sie auf der Seite „Wie heißen Sie?“ die ID Ihres Geschäfts, Schul- oder Unikontos an, und beweisen Sie mit der CAPTCHA-Prüfung, dass Sie kein Roboter sind.
-   
+
    ![][002]
 3. Klicken Sie auf die Schaltfläche „Weiter“.
 4. Wählen Sie eine Option zum Zurücksetzen Ihres Kennworts.  Abhängig davon, wie Ihr Administrator das System konfiguriert hat, sehen Sie eine oder mehrere der folgenden Optionen:
-   
+
    * **E-Mail an meine alternative E-Mail-Adresse senden**: Sendet eine E-Mail mit einem sechsstelligen Code entweder an Ihre **alternative E-Mail-Adresse** oder an Ihre **E-Mail-Adresse zur Authentifizierung** (Sie entscheiden das).
    * **Textnachricht an mein Mobiltelefon senden**: Sendet eine SMS mit einem sechsstelligen Code entweder an Ihr **Mobiltelefon** oder an Ihre **E-Mail-Adresse zur Authentifizierung** (Sie entscheiden das)
    * **Mein Mobiltelefon anrufen**: Ruft Ihr **Mobiltelefon** oder Ihr **Authentifizierungstelefon** an (Sie entscheiden das). Drücken Sie die Taste *#*, um den Anruf zu verifizieren.
    * **Meinen Geschäftsanschluss anrufen**: Ruft Ihr **Bürotelefon** an. Drücken Sie die Taste *#*, um den Anruf zu verifizieren.
    * **Meine Sicherheitsfragen beantworten** : Zeigt Ihre zuvor registrierten Sicherheitsfragen an, die Sie beantworten müssen.
-   
+
    ![][003]
 5. Hier verwenden wir die Option „Textnachricht an mein Mobiltelefon senden“ als Beispiel.  Wenn Sie eine telefonbasierte Option verwenden, müssen Sie zuerst Ihre Telefonnummer bestätigen, bevor wir Ihnen eine SMS senden.   Geben Sie Ihre vollständige Telefonnummer ein, und klicken Sie auf **Weiter**, um zu bestätigen, dass sie korrekt ist. Wir senden Ihnen dann eine SMS.
-   
+
    ![][004]
 6. Achten Sie nach dem Empfang der SMS darauf, dass Sie den Verifizierungscode im Nachrichtentext verwenden und nicht die Nummer, von der der Code gesendet wurde.  Es kann einige Minuten dauern, bis die SMS bei Ihnen eintrifft – Gelegenheit für einen Kaffee.
-   
+
    ![][009]
 7. Geben Sie nun den auf dem Telefon empfangenen Code in das Eingabefeld auf der Seite ein.
-   
+
    ![][005]
 8. Ihr Administrator kann festlegen, dass ein zweiter Überprüfungsschritt erforderlich ist. In diesem Fall müssen Sie Schritt 4 wiederholen und dabei eine andere Option auswählen.
 9. Geben Sie auf dem Bildschirm „Neues Kennwort auswählen“ ein neues Kennwort ein, bestätigen Sie Ihr neues Kennwort, und klicken Sie dann auf **Fertig stellen**.
-   
+
    ![][006]
    ![][007]
 10. Sobald die Seite mit der Erfolgsmeldung angezeigt wird, ist alles bereit.  Sie können sich mit Ihrem neuen Kennwort anmelden.
-    
+
     ![][008]
 
 Gibt es ein Problem beim Zurücksetzen Ihres Kennworts?  Dann lesen Sie den Abschnitt über [häufige Probleme und Lösungen](#common-problems-and-their-solutions).
@@ -132,45 +133,45 @@ Führen Sie die folgenden Schritte aus, um Ihr lokales Konto in einem beliebigen
 
 > [!IMPORTANT]
 > Dieses Feature steht nur zur Verfügung, wenn Ihr Administrator es aktiviert hat.  Wenn es nicht aktiviert ist, weist eine Nachricht Sie darauf hin, dass dieses Feature für Ihr Konto nicht aktiviert ist.  Verwenden Sie in diesem Fall den Link „Wenden Sie sich an Ihren Administrator“, damit der Administrator Ihr Konto entsperrt.
-> 
+>
 > Wenn der Administrator dieses Feature für Sie aktiviert hat, müssen Sie sich zunächst registrieren, bevor Sie es verwenden können.  Sie können dies unter „http://aka.ms/ssprsetup“ tun.
-> 
-> 
+>
+>
 
 1. Klicken Sie auf einer beliebigen Anmeldeseite für Geschäfts-, Schul- oder Unikonten entweder auf den Link „Kein Zugriff auf Ihr Konto?“. oder „Haben Sie Ihr Kennwort vergessen?“. oder navigieren Sie direkt zu https://passwordreset.microsoftonline.com.
-   
+
    ![][001]
 2. Geben Sie auf der Seite „Wie heißen Sie?“ die ID Ihres Geschäfts, Schul- oder Unikontos an, und beweisen Sie mit der CAPTCHA-Prüfung, dass Sie kein Roboter sind.
-   
+
    ![][002]
 3. Klicken Sie auf die Schaltfläche „Weiter“.
 4. Wählen Sie eine Option zum Entsperren Ihres Kontos.  Abhängig davon, wie Ihr Administrator das System konfiguriert hat, sehen Sie eine oder mehrere der folgenden Optionen:
-   
+
    * **E-Mail an meine alternative E-Mail-Adresse senden**: Sendet eine E-Mail mit einem sechsstelligen Code entweder an Ihre **alternative E-Mail-Adresse** oder an Ihre **E-Mail-Adresse zur Authentifizierung** (Sie entscheiden das).
    * **Textnachricht an mein Mobiltelefon senden**: Sendet eine SMS mit einem sechsstelligen Code entweder an Ihr **Mobiltelefon** oder an Ihre **E-Mail-Adresse zur Authentifizierung** (Sie entscheiden das)
    * **Mein Mobiltelefon anrufen**: Ruft Ihr **Mobiltelefon** oder Ihr **Authentifizierungstelefon** an (Sie entscheiden das). Drücken Sie die Taste *#*, um den Anruf zu verifizieren.
    * **Meinen Geschäftsanschluss anrufen**: Ruft Ihr **Bürotelefon** an. Drücken Sie die Taste *#*, um den Anruf zu verifizieren.
    * **Meine Sicherheitsfragen beantworten** : Zeigt Ihre zuvor registrierten Sicherheitsfragen an, die Sie beantworten müssen.
-   
+
    ![][003]
 5. Hier verwenden wir die Option „Textnachricht an mein Mobiltelefon senden“ als Beispiel.  Wenn Sie eine telefonbasierte Option verwenden, müssen Sie zuerst Ihre Telefonnummer bestätigen, bevor wir Ihnen eine SMS senden.   Geben Sie Ihre vollständige Telefonnummer ein, und klicken Sie auf **Weiter**, um zu bestätigen, dass sie korrekt ist. Wir senden Ihnen dann eine SMS.
-   
+
    ![][004]
 6. Achten Sie nach dem Empfang der SMS darauf, dass Sie den Verifizierungscode im Nachrichtentext verwenden und nicht die Nummer, von der der Code gesendet wurde.  Es kann einige Minuten dauern, bis die SMS bei Ihnen eintrifft – Gelegenheit für einen Kaffee.
-   
+
    ![][009]
 7. Geben Sie nun den auf dem Telefon empfangenen Code in das Eingabefeld auf der Seite ein.
-   
+
    ![][005]
 8. Ihr Administrator kann festlegen, dass ein zweiter Überprüfungsschritt erforderlich ist. In diesem Fall müssen Sie Schritt 4 wiederholen und dabei eine andere Option auswählen.
 9. Sobald die Seite mit der Erfolgsmeldung angezeigt wird, ist alles bereit.  Ihr lokales Konto wurde entsperrt, und Sie können sich nun wieder dort anmelden.
-   
+
    ![][010]
-   
+
    > [!IMPORTANT]
    > Stellen Sie sicher, dass Sie das Kennwort auf all Ihren Geräten aktualisieren. Nicht selten ist eine vergessene App mit einem alten Kennwort (z. B. der E-Mail-Client auf Ihrem Smartphone) die Ursache dafür, dass ein Konto gesperrt wird.
-   > 
-   > 
+   >
+   >
 
 Gibt es ein Problem beim Entsperren Ihres Kontos?  Dann lesen Sie den Abschnitt über [häufige Probleme und Lösungen](#common-problems-and-their-solutions).
 
@@ -231,7 +232,7 @@ Hier finden Sie einige häufige Fehler und die passenden Lösungen:
         </tbody></table>
 
 
-## <a name="links-to-password-reset-documentation"></a>Links zur Dokumentation für die Kennwortzurücksetzung
+## <a name="next-steps"></a>Nächste Schritte
 Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortzurücksetzung für Azure AD:
 
 * [**Funktionsweise**](active-directory-passwords-how-it-works.md) – Erfahren Sie mehr über die sechs verschiedenen Komponenten des Diensts und deren Funktionen.
@@ -257,10 +258,5 @@ Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortz
 [012]: ./media/active-directory-passwords-update-your-own-password/012.jpg "Image_012.jpg"
 [013]: ./media/active-directory-passwords-update-your-own-password/013.jpg "Image_013.jpg"
 [014]: ./media/active-directory-passwords-update-your-own-password/014.jpg "Image_014.jpg"
-[015]: ./media/active-directory-passwords-update-your-own-password/015.jpg "Image_015.jpg"
-
-
-
-<!--HONumber=Feb17_HO2-->
-
+[015]: ./media/active-directory-passwords-update-your-own-password/015.png "Image_015.png"
 

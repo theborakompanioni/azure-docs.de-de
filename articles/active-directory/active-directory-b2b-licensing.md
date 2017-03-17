@@ -16,8 +16,9 @@ ms.workload: identity
 ms.date: 02/09/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: a4e59dfa8a098f63c3173176c4d2675d6a59af00
-ms.openlocfilehash: 59a7fe2d1eea948f1452f21d2185e6bdf93dc41f
+ms.sourcegitcommit: 64af2509036d035c5802f4b1985c3f986b685545
+ms.openlocfilehash: 2b677e684021a873c0bc4db751d8e60d9eaa6f9d
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -27,14 +28,14 @@ ms.openlocfilehash: 59a7fe2d1eea948f1452f21d2185e6bdf93dc41f
 Bei der Azure Active Directory (Azure AD) B2B-Kollaboration wird ein ausgewählter Satz von vorhandenen Azure AD-Features auf Gastbenutzer erweitert, die eine Einladung für den Azure AD-Mandanten erhalten haben. Daher werden Gastbenutzer bei der Azure AD B2B-Kollaboration mithilfe von Azure AD-Lizenzen lizenziert und wie hier beschrieben den vorhandenen Lizenztarifen „Free“, „Basic“ und „Premium P1/P2“ zugeordnet: https://azure.microsoft.com/de-de/pricing/details/active-directory/.
 
 Es fallen Kosten für das Einladen von B2B-Benutzern und das Zuweisen zu einer Anwendung in Azure AD an. Außerdem sind bis zu zehn Apps pro Gastbenutzer und drei einfache Berichte für B2B-Benutzer kostenlos, da sie im Azure AD-Tarif „Free“ enthalten sind.
-Alle kostenpflichtigen Azure AD-Features, die per B2B-Kollaborationsfunktion auf B2B-Benutzer erweitert werden, müssen anhand von kostenpflichtigen Azure AD-Lizenzen (Basic, Premium P1 oder Premium P2, je nach den verwendeten Features) lizenziert werden. Der Mandant, von dem die Einladung ausgeht, erhält für jede kostenpflichtige Azure AD-Lizenz B2B-Rechte für fünf Benutzer. Jede kostenpflichtige Azure AD-Lizenz, mit der Rechte für einen Mitarbeiterbenutzer eines Mandanten bereitgestellt werden, enthält dann also auch Rechte für fünf B2B-Benutzer, die vom Mandanten eingeladen werden.
+Alle kostenpflichtigen Azure AD-Features, die per B2B-Kollaborationsfunktion auf B2B-Benutzer erweitert werden, müssen anhand von kostenpflichtigen Azure AD-Lizenzen (Basic, Premium P1 oder Premium P2, je nach den verwendeten Features) lizenziert werden. Der Mandant, von dem die Einladung ausgeht, erhält für jede kostenpflichtige Azure AD-Lizenz B2B-Rechte für fünf Benutzer. Das bedeutet: Jede kostenpflichtige Azure AD-Lizenz, die die Rechte für kostenpflichtige Azure AD-Features einem Mitarbeiterbenutzer eines Mandanten bereitstellt, stellt jetzt auch die Rechte für die gleichen kostenpflichtigen Azure AD-Features 5 zusätzlichen B2B-Benutzern bereit, die zu dem Mandanten eingeladen sind.
 
 ## <a name="licensing-examples"></a>Beispiele für die Lizenzierung
 - Ein Kunde möchte 100 B2B-Benutzer für seinen Azure AD-Mandanten einladen und verwendet die gruppenbasierte Zugriffsverwaltung und Bereitstellung für alle Benutzer, aber für 50 Benutzer werden außerdem MFA und der bedingte Zugriff benötigt. Der Kunde muss in diesem Fall zehn Azure AD-Lizenzen vom Typ „Basic“ und zehn Azure AD-Lizenzen vom Typ „Premium P1“ erwerben, um alle B2B-Benutzer abzudecken. Ebenso muss ein einladender Mandant über genügend Azure AD-Lizenzen vom Typ „Premium P2“ verfügen, um alle B2B-Benutzer im Verhältnis 5:1 abzudecken, wenn dieser Mandant für B2B-Benutzer die Verwendung von Identity Protection-Features plant.
 - Ein Kunde verfügt über zehn Mitarbeiter, die derzeit alle über eine Azure AD-Lizenz vom Typ „Premium P1“ abgedeckt sind. Der Kunde möchte nun 60 B2B-Benutzer einladen, für die Multi-Factor Authentication (MFA) benötigt wird. Laut dem in der Lizenzierungsregel festgelegten Verhältnis von 5:1 muss der Kunde mindestens zwölf Azure AD-Lizenzen vom Typ „Premium P1“ besitzen, um alle 60 Benutzer für die B2B-Kollaboration abzudecken. Da bereits zehn Premium P1-Lizenzen für die zehn Mitarbeiter vorhanden sind, ist der Kunde im Besitz von Rechten, die ihm das Einladen von 50 B2B-Benutzern mit Premium P1-Features wie MFA ermöglichen. In diesem Beispiel müssen also zwei zusätzliche Premium P1-Lizenzen erworben werden, um die restlichen zehn Benutzer für die B2B-Kollaboration abzudecken.
 
 > [!NOTE]
-Es ist nicht erforderlich, den B2B-Benutzern Lizenzen zuzuweisen, um diese Benutzerrechte für die B2B-Kollaboration zu aktivieren.
+> Es ist nicht erforderlich, den B2B-Benutzern Lizenzen zuzuweisen, um diese Benutzerrechte für die B2B-Kollaboration zu aktivieren.
 
 Der Kunde, der im Besitz des einladenden Mandanten ist, muss ermitteln, für wie viele Benutzer der B2B-Kollaboration kostenpflichtige Azure AD-Funktionen benötigt werden. Je nachdem, ob es sich um Features der Tarife „Basic“, „Premium P1“ oder „Premium P2“ handelt, müssen Kunden über eine ausreichende Anzahl von geeigneten kostenpflichtigen Azure AD-Lizenzen verfügen, um die Benutzer der B2B-Kollaboration im Verhältnis 5:1 abzudecken. Falls ein Unternehmen zusätzliche Benutzerrechte für die B2B-Kollaboration benötigt, muss es die erforderlichen kostenpflichtigen Azure AD-Lizenzen erwerben.
 
@@ -60,9 +61,4 @@ Weitere Artikel zur Azure AD B2B-Kollaboration:
 * [Multi-Factor Authentication für Benutzer der B2B-Zusammenarbeit](active-directory-b2b-mfa-instructions.md)
 * [Hinzufügen von Benutzern der B2B-Zusammenarbeit ohne Einladung](active-directory-b2b-add-user-without-invite.md)
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

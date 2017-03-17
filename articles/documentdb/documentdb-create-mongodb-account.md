@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 11/24/2016
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: 9b83a0878f45bf3a79d00ad77965308d95f33d28
-ms.openlocfilehash: 797ee3b1209e5abf545f0614c408d94391a29c8b
+ms.sourcegitcommit: 1c9e8d5a00445b31c81547df7bd2dbc55f8feac2
+ms.openlocfilehash: e9176ec520b05e5613eab610fbc96144e9405d07
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -25,7 +26,7 @@ ms.openlocfilehash: 797ee3b1209e5abf545f0614c408d94391a29c8b
 # <a name="create-a-documentdb-account-for-use-with-mongodb-apps"></a>Erstellen eines DocumentDB-Kontos zur Verwendung mit MongoDB-Apps
 DocumentDB-Datenbanken können jetzt als Datenspeicher für Apps verwendet werden, die für MongoDB geschrieben wurden. Um diese Funktion verwenden zu können, benötigen Sie ein Azure-Konto und ein DocumentDB-Konto. Dieses Tutorial führt Sie durch die Erstellung eines DocumentDB-Kontos zur Verwendung mit MongoDB-Apps. 
 
-Zum Erstellen eines DocumentDB-Kontos mit Unterstützung für MongoDB können Sie das Azure-Portal oder die Azure-Befehlszeilenschnittstelle mit Azure Resource Manager-Vorlagen verwenden. In diesem Artikel wird beschrieben, wie Sie ein DocumentDB-Konto mit Unterstützung für MongoDB im Azure-Portal erstellen. Informationen zum Erstellen eines Kontos mit der Azure-Befehlszeilenschnittstelle und Azure Resource Manager finden Sie unter [Automatisieren der Erstellung von DocumentDB-Konten mit Unterstützung für MongoDB](documentdb-automation-resource-manager-cli.md#quick-create-documentdb-with-mongodb-api-account).
+Zum Erstellen eines DocumentDB-Kontos mit Unterstützung für MongoDB können Sie das Azure-Portal oder die Azure-Befehlszeilenschnittstelle mit Azure Resource Manager-Vorlagen verwenden. In diesem Artikel wird beschrieben, wie Sie ein DocumentDB-Konto mit Unterstützung für MongoDB im Azure-Portal erstellen. Informationen zum Erstellen eines Kontos mit der Azure-Befehlszeilenschnittstelle und Azure Resource Manager finden Sie unter [Automatisieren der Azure DocumentDB-Kontoverwaltung mit Azure CLI 2.0](documentdb-automation-resource-manager-cli.md).
 
 ## <a name="prerequisite"></a>Voraussetzung
 Ein Azure-Konto. Wenn Sie noch kein Azure-Konto besitzen, erstellen Sie jetzt ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/).
@@ -71,9 +72,4 @@ Ein Azure-Konto. Wenn Sie noch kein Azure-Konto besitzen, erstellen Sie jetzt ei
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie, wie Sie eine [Verbindung](documentdb-connect-mongodb-account.md) mit einem DocumentDB-Konto mit Protokollunterstützung für MongoDB herstellen.
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 
