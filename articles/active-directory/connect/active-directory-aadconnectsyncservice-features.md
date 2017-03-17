@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: af5a8b4dd87d041282d6a857a505ad6c167caac0
-ms.openlocfilehash: ab1879cc1ef998f889a86ea7e2d4e7143e6c1cc4
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: a439f421d726f58b2d21fb4a0e883e16db719364
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -39,7 +40,6 @@ Folgende Einstellungen können durch `Set-MsolDirSyncFeature`konfiguriert werden
 
 | DirSyncFeature | Kommentar |
 | --- | --- |
-| [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) |Ermöglicht es, ein Attribut unter Quarantäne zu stellen, falls es sich um ein Duplikat eines anderen Objekts handelt, damit nicht der Export des gesamten Objekts mit einem Fehler abgebrochen wird. |
 | [EnableSoftMatchOnUpn](#userprincipalname-soft-match) |Ermöglicht Objekten den Beitritt zu userPrincipalName zusätzlich zur primären SMTP-Adresse. |
 | [SynchronizeUpnForManagedUsers](#synchronize-userprincipalname-updates) |Ermöglicht dem Synchronisierungsmodul die Aktualisierung des userPrincipalName-Attributs für verwaltete/lizenzierte Benutzer (keine Verbundbenutzer). |
 
@@ -56,12 +56,13 @@ Die folgenden Einstellungen werden von Azure AD Connect konfiguriert und können
 | --- | --- |
 | DeviceWriteback |[Azure AD Connect: Aktivieren des Geräterückschreibens](active-directory-aadconnect-feature-device-writeback.md) |
 | DirectoryExtensions |[Azure AD Connect Sync: Verzeichniserweiterungen](active-directory-aadconnectsync-feature-directory-extensions.md) |
+| [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) |Ermöglicht es, ein Attribut unter Quarantäne zu stellen, falls es sich um ein Duplikat eines anderen Objekts handelt, damit nicht der Export des gesamten Objekts mit einem Fehler abgebrochen wird. |
 | PasswordSync |[Implementieren der Kennwortsynchronisierung mit der Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-implement-password-synchronization.md) |
 | UnifiedGroupWriteback |[Vorschau: Gruppenrückschreiben](active-directory-aadconnect-feature-preview.md#group-writeback) |
 | UserWriteback |Derzeit nicht unterstützt. |
 
 ## <a name="duplicate-attribute-resiliency"></a>Resilienz bei doppelten Attributen
-Damit die Bereitstellung von Objekten mit doppelten UPN-/proxyAddresses-Werten nicht mit einem Fehler abgebrochen wird, wird das doppelte Attribut unter Quarantäne gestellt, und ein temporärer Wert wird zugewiesen. Wenn der Konflikt gelöst ist, wird der temporäre UPN-Wert automatisch auf den richtigen Wert gesetzt. Dieses Verhalten kann für UPN und proxyAddress separat aktiviert werden. Weitere Informationen finden Sie unter [Identitätssynchronisierung und Resilienz bei doppelten Attributen](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md).
+Damit die Bereitstellung von Objekten mit doppelten UPN-/proxyAddresses-Werten nicht mit einem Fehler abgebrochen wird, wird das doppelte Attribut unter Quarantäne gestellt, und ein temporärer Wert wird zugewiesen. Wenn der Konflikt gelöst ist, wird der temporäre UPN-Wert automatisch auf den richtigen Wert gesetzt. Weitere Informationen finden Sie unter [Identitätssynchronisierung und Resilienz bei doppelten Attributen](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md).
 
 ## <a name="userprincipalname-soft-match"></a>UserPrincipalName-„Soft Match“
 Wenn dieses Feature aktiviert ist, wird ein „Soft Match“ für den UPN sowie für die [primäre SMTP-Adresse](https://support.microsoft.com/kb/2641663)aktiviert, die immer aktiviert ist. Ein „Soft Match“ wird verwendet, um vorhandene Cloudbenutzer in Azure AD mit lokalen Benutzern abzugleichen.
@@ -107,10 +108,5 @@ Nach Aktivierung dieses Features bleiben vorhandene userPrincipalName-Werte unve
 ## <a name="see-also"></a>Siehe auch
 * [Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-whatis.md)
 * [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](active-directory-aadconnect.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

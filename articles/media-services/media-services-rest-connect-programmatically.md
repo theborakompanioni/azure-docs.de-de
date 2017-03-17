@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 9ec07aacbde3f218d7a1bbddadad7552e737e1ea
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 4feb0eb81823835e8e0b701463d85b27f5598019
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -49,6 +50,9 @@ Die folgenden Schritte beschreiben den am häufigsten verwendeten Workflow, der 
         Location: https://wamsbayclus001rest-hs.cloudapp.net/api/
    
     sollten Sie nachfolgende API-Aufrufe an „https://wamsbayclus001rest-hs.cloudapp.net/api/“ senden.
+
+    >[!NOTE]
+    >Es gilt ein Grenzwert von 1.000.000 Richtlinien für verschiedene AMS-Richtlinien (z.B. für die Locator-Richtlinie oder für ContentKeyAuthorizationPolicy). Wenn Sie immer die gleichen Tage/Zugriffsberechtigungen verwenden, z.B. Richtlinien für Locator, die für einen längeren Zeitraum vorgesehen sind (Richtlinien ohne Upload), sollten Sie dieselbe Richtlinien-ID verwenden. Weitere Informationen finden Sie in [diesem](media-services-dotnet-manage-entities.md#limit-access-policies) Thema.
 
 ## <a name="access-control-address"></a>Zugriffssteuerungsadresse
 Die Zugriffssteuerungsadresse für Media Services lautet: https://wamsprodglobal001acs.accesscontrol.windows.net, mit Ausnahme der Region „Nordchina“. Dort lautet sie: https://wamsprodglobal001acs.accesscontrol.chinacloudapi.cn.
@@ -182,10 +186,5 @@ Das folgende Beispiel veranschaulicht die HTTP-Anforderung an den Stamm-URI für
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

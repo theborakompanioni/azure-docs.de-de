@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie Sie die Azure Active Directory-Authentifizierung
 author: mattchenderson
 services: app-service
 documentationcenter: 
-manager: erikre
+manager: adrianha
 editor: 
 ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.service: app-service-mobile
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: mahender
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 425ecfeec54df9c52a4325964b2b48f6a2856693
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 1f8813370995a7a55c9d87b8ec1b60ae0fe623f5
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -35,7 +36,7 @@ In diesem Thema wird veranschaulicht, wie Sie Azure App Services zur Verwendung 
    ![][0]
    
    Standardmäßig erfolgt die Authentifizierung über App Service, wobei jedoch der Zugriff auf die Inhalte Ihrer Website und APIs nicht autorisiert wird. Sie müssen die Benutzer in Ihrem App-Code autorisieren.
-5. (Optional) Um den Zugriff auf Ihre Website ausschließlich auf Benutzer zu beschränken, die von Azure Active Directory authentifiziert werden, legen Sie **Die auszuführende Aktion, wenn die Anforderung nicht authentifiziert ist.** auf **Mit Azure Active Directory anmelden** fest. Dies erfordert, dass alle Anforderungen authentifiziert werden müssen. Alle nicht authentifizierten Anforderungen werden zur Authentifizierung an Azure Active Directory umgeleitet.
+5. (Optional) Um den Zugriff auf Ihre Website ausschließlich auf Benutzer zu beschränken, die von Azure Active Directory authentifiziert werden, legen Sie **Die auszuführende Aktion, wenn die Anforderung nicht authentifiziert ist** auf **Mit Azure Active Directory anmelden** fest. Dies erfordert, dass alle Anforderungen authentifiziert werden müssen. Alle nicht authentifizierten Anforderungen werden zur Authentifizierung an Azure Active Directory umgeleitet.
 6. Klicken Sie auf **Speichern**.
 
 Sie können nun Azure Active Directory für die Authentifizierung in Ihrer App verwenden.
@@ -101,10 +102,5 @@ Sie haben nun eine systemeigene Clientanwendung mit Zugriff auf Ihre App Service
 
 [Azure-Portal]: https://portal.azure.com/
 [Klassischen Azure-Portal]: https://manage.windowsazure.com/
-[Alternative Methode]:#advanced
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+[alternative method]:#advanced
 

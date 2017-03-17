@@ -4,7 +4,7 @@ description: "Liste der Client-SDKs und Kompatibilität mit Server-SDK-Versionen
 services: app-service\mobile
 documentationcenter: 
 author: adrianhall
-manager: erikre
+manager: adrianha
 editor: 
 ms.assetid: 35b19672-c9d6-49b5-b405-a6dcd1107cd5
 ms.service: app-service-mobile
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1d1ef7821eee67f4b9ace01af7e41bd7fdd28b5e
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: d74137dc3c994cb05e02c4f866043eabf134fcdd
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -63,12 +64,12 @@ Im Diagramm unten ist die Kompatibilität zwischen allen Client- und Servertypen
 
 <!-- NOTE: the fwlink to this document is http://go.microsoft.com/fwlink/?LinkID=690568 -->
 
-## <a name="a-name100amobile-services-client-and-server"></a><a name="1.0.0"></a>Mobile Services-Client und -Server
+## <a name="1.0.0"></a>Mobile Services-Client und -Server
 Die unten in der Tabelle angegebenen Client-SDKs sind mit **Mobile Services**kompatibel.
 
 Hinweis: Die Mobile Services-Client-SDKs senden *keinen* Headerwert für `ZUMO-API-VERSION`. Wenn der Dienst diesen Header- oder Abfragezeichenfolgenwert empfängt, wird ein Fehler zurückgegeben, es sei denn, Sie haben dies wie oben beschrieben ausdrücklich deaktiviert.
 
-### <a name="a-namemobileservicesclientsa-mobile-services-client-sdks"></a><a name="MobileServicesClients"></a> Mobile *Services* -Client-SDKs
+### <a name="MobileServicesClients"></a> Mobile *Services* -Client-SDKs
 | Clientplattform | Version | Versionsheaderwert |
 | --- | --- | --- |
 | Verwalteter Client (Windows, Xamarin) |[1.3.2](https://www.nuget.org/packages/WindowsAzure.MobileServices/1.3.2) |– |
@@ -91,8 +92,8 @@ Hinweis: Die Mobile Services-Client-SDKs senden *keinen* Headerwert für `ZUMO-A
 | Beliebiger Wert |True |200 – OK |
 | Beliebiger Wert |False/Nicht angegeben |400 – Ungültige Anforderung |
 
-## <a name="a-name200aazure-mobile-apps-client-and-server"></a><a name="2.0.0"></a>Azure Mobile Apps-Client und -Server
-### <a name="a-namemobileappsclientsa-mobile-apps-client-sdks"></a><a name="MobileAppsClients"></a> Mobile *Apps* -Client-SDKs
+## <a name="2.0.0"></a>Azure Mobile Apps-Client und -Server
+### <a name="MobileAppsClients"></a> Mobile *Apps* -Client-SDKs
 Die Versionsüberprüfung wurde ab den folgenden Versionen des Client-SDK für **Azure Mobile Apps**eingeführt:
 
 | Clientplattform | Version | Versionsheaderwert |
@@ -129,10 +130,5 @@ Die Versionsüberprüfung ist in den folgenden Versionen des Server-SDK enthalte
 
 [Mobile App Server SDK]: http://www.nuget.org/packages/microsoft.azure.mobile.server
 [Migrieren eines Mobile Service zu Azure App Service]: app-service-mobile-migrating-from-mobile-services.md
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
