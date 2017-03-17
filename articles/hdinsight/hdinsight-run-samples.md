@@ -15,6 +15,7 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2017
 ms.author: jgao
+ROBOTS: NOINDEX
 translationtype: Human Translation
 ms.sourcegitcommit: d83bfd81768722592565fe924c4d00610b149999
 ms.openlocfilehash: 16801860b78b40cc883393ca4db3ffa208b889fd
@@ -57,7 +58,7 @@ Mittlerweile entscheiden sich viele Benutzer lieber für Hive und Pig als für M
     >
     > Führen Sie zur Installation der neuesten Version von Azure PowerShell die unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) beschriebenen Schritte aus. Wenn Sie über Skripts verfügen, die zur Verwendung der neuen Cmdlets für Azure Resource Manager angepasst werden müssen, finden Sie unter [Migrieren zu Azure Resource Manager-basierten Entwicklungstools für HDInsight-Cluster](hdinsight-hadoop-development-using-azure-resource-manager.md) weitere Informationen.
 
-## <a name="a-namehdinsight-sample-wordcountaword-count---java"></a><a name="hdinsight-sample-wordcount"></a>Wortzählung – Java
+## <a name="hdinsight-sample-wordcount"></a>Wortzählung – Java
 Um ein MapReduce-Projekt zu übermitteln, erstellen Sie zunächst eine MapReduce-Auftragsdefinition. In der Auftragsdefinition geben Sie die JAR-Datei des MapReduce-Programms und den Speicherort der JAR-Datei, d.h. **wasbs:///example/jars/hadoop-mapreduce-examples.jar**, den Klassennamen und die Argumente an.  Das MapReduce-Programm für die Wortzählung akzeptiert zwei Argumente: die Quelldatei, die zum Zählen von Wörtern verwendet wird, und den Speicherort der Ausgabe.
 
 Den Quellcode finden Sie in [Anhang A](#apendix-a---the-word-count-MapReduce-program-in-java).
@@ -123,7 +124,7 @@ Anweisungen zum Entwickeln eines Java MapReduce-Programms finden Sie unter [Entw
     Der MapReduce-Auftrag erzeugt die Datei *part-r-00000*, welche die Wörter und deren Anzahl enthält. Das Skript verwendet den Befehl **findstr**, um alle Wörter aufzulisten, die *"there"*enthalten.
 3. Legen Sie die ersten drei Variablen fest, und führen Sie das Skript dann aus.
 
-## <a name="a-namehdinsight-sample-csharp-streamingaword-count---c-streaming"></a><a name="hdinsight-sample-csharp-streaming"></a>Wortzählung – C#-Streaming
+## <a name="hdinsight-sample-csharp-streaming"></a>Wortzählung – C#-Streaming
 Hadoop stellt eine Streaming-API für MapReduce zur Verfügung, mit der Sie Map- und Reduce-Funktionen in anderen Sprache als Java schreiben können.
 
 > [!NOTE]
@@ -156,7 +157,7 @@ In der Zwischenzeit erfasst der Reducer die zeilenorientierte Ausgabe aus [stdou
 
         example/data/StreamingOutput/wc.txt/part-00000
 
-## <a name="a-namehdinsight-sample-pi-estimatorapi-estimator"></a><a name="hdinsight-sample-pi-estimator"></a>Pi-Schätzung
+## <a name="hdinsight-sample-pi-estimator"></a>Pi-Schätzung
 Die Pi-Schätzung verwendet eine statistische (Quasi-Monte Carlo) Methode, um den Wert von Pi zu schätzen. Zufällig platzierte Punkte in einem Einheitsquadrat liegen mit einer Wahrscheinlichkeit gleich der Kreisoberfläche Pi/4 innerhalb eines Kreises, der sich im Quadrat befindet. Der Wert für Pi kann aus dem Wert 4R ermittelt werden, wobei R das Verhältnis zwischen der Anzahl der Punkte innerhalb des Kreises zur Gesamtanzahl der Punkte innerhalb des Quadrats ist. Je größer die Anzahl der Punkte, desto genauer die Schätzung.
 
 Das Skript in diesem Beispiel übermittelt einen Hadoop JAR-Auftrag und wird mit 16 Maps ausgeführt, die gemäß der Parameterwerte jeweils 10 Millionen Beispielpunkte berechnen. Sie können diese Parameterwerte ändern, um die Genauigkeit der Pi-Schätzung zu verbessern. Als Referenz: die ersten 10 Dezimalstellen von Pi lauten 3,1415926535.
@@ -172,7 +173,7 @@ Das Skript in diesem Beispiel übermittelt einen Hadoop JAR-Auftrag und wird mit
                                 -Arguments "16", "10000000"
     ```
 
-## <a name="a-namehdinsight-sample-10gb-graysorta10-gb-graysort"></a><a name="hdinsight-sample-10gb-graysort"></a>10-GB-Graysort
+## <a name="hdinsight-sample-10gb-graysort"></a>10-GB-Graysort
 Dieses Beispiel verwendet bescheidene 10 GB an Daten, um eine zügige Ausführung zu ermöglichen. Die Anwendung verwendet die MapReduce-Anwendungen von Owen O'Malley und Arun Murthy, die im Jahr 2009 den jährlichen allgemeinen ("daytona") Terabyte-Sortier-Benchmark mit einem Durchsatz von 0,578 TB/Min (100 TB in 173 Minuten) gewonnen haben. Weitere Informationen zu diesem und anderen Sortier-Benchmarks finden Sie unter [Sortbenchmark](http://sortbenchmark.org/) .
 
 Dieses Beispiel verwendet drei Sätze von MapReduce-Programmen:

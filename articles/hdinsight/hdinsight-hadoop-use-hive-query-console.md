@@ -15,6 +15,7 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/12/2017
 ms.author: larryfr
+ROBOTS: NOINDEX
 translationtype: Human Translation
 ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
 ms.openlocfilehash: 0c7f570db388b0ed96479e994a4a2f79e7919b17
@@ -32,13 +33,13 @@ In diesem Artikel erfahren Sie, wie Sie mit der HDInsight-Abfragekonsole Hive-Ab
 >
 > Informationen zum Ausführen von Hive-Abfragen über einen Webbrowser für HDInsight 3.4 oder höher finden Sie unter [Ausführen von Hive-Abfragen in Ambari Hive View](hdinsight-hadoop-use-hive-ambari-view.md).
 
-## <a name="a-idprereqaprerequisites"></a><a id="prereq"></a>Voraussetzungen
+## <a id="prereq"></a>Voraussetzungen
 Damit Sie die in dieser Artikel aufgeführten Schritte ausführen können, benötigen Sie Folgendes:
 
 * Einen Windows-basierten Hadoop-Cluster in HDInsight
 * Einen zeitgemäßen Webbrowser
 
-## <a name="a-idruna-run-hive-queries-using-the-query-console"></a><a id="run"></a> Ausführen von Hive-Abfragen mithilfe der Abfragekonsole
+## <a id="run"></a> Ausführen von Hive-Abfragen mithilfe der Abfragekonsole
 1. Öffnen Sie einen Webbrowser, und navigieren Sie zu **https://CLUSTERNAME.azurehdinsight.net**. Dabei steht **CLUSTERNAME** für den Namen des HDInsight-Clusters. Geben Sie nach der entsprechenden Aufforderung den Benutzernamen samt Kennwort ein, den Sie beim Erstellen des Clusters eingegeben haben.
 2. Wählen Sie am Seitenanfang in den Links die Option **Hive-Editor**aus. Dadurch wird ein Formular angezeigt, mit dem Sie HiveQL-Anweisungen eingeben können, die Sie auf dem HDInsight-Cluster ausführen möchten.
    
@@ -71,12 +72,12 @@ Damit Sie die in dieser Artikel aufgeführten Schritte ausführen können, benö
 3. Klicken Sie auf **Senden**. Die **Auftragssitzung** am unteren Seitenrand sollte Details für den Auftrag anzeigen.
 4. Sobald sich die Angabe im Feld **Status** in **Abgeschlossen** ändert, wählen Sie **Details anzeigen** für den Auftrag aus. Auf der Detailseite enthält die **Auftragsausgabe** die Zeichenfolge `[ERROR]    3`. Sie können die Schaltfläche **Herunterladen** unter diesem Feld verwenden, um eine Datei herunterzuladen, die die Ausgabe des Auftrags enthält.
 
-## <a name="a-idsummaryasummary"></a><a id="summary"></a>Zusammenfassung
+## <a id="summary"></a>Zusammenfassung
 Wie Sie sehen können, bietet die Abfragekonsole eine einfache Möglichkeit, um Hive-Abfragen auf einem HDInsight-Cluster auszuführen, den Auftragsstatus zu überwachen und die Ausgabe abzurufen.
 
 Um weitere Informationen zu Hive mithilfe der Abfragekonsole zu erhalten, wählen Sie am oberen Rand der Abfragekonsole **Erste Schritte** aus, und verwenden Sie dann die Beispiele. In jedem Beispiel werden Sie durch die Datenanalyse mit Hive geführt, einschließlich der Erläuterungen zu HiveQL-Anweisungen, die in diesem Beispiel verwendet werden.
 
-## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>Nächste Schritte
+## <a id="nextsteps"></a>Nächste Schritte
 Allgemeine Informationen zu Hive in HDInsight:
 
 * [Verwenden von Hive mit Hadoop in HDInsight](hdinsight-use-hive.md)

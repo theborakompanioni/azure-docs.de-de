@@ -15,6 +15,7 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/12/2017
 ms.author: larryfr
+ROBOTS: NOINDEX
 translationtype: Human Translation
 ms.sourcegitcommit: c9a5091973395dd888939432292fbd06dcbf0680
 ms.openlocfilehash: 565220fa7b90ac49fd0c9ad01d36ba50fd7f6849
@@ -32,16 +33,16 @@ In diesem Artikel erfahren Sie, wie Sie die Verbindung zu einem HDInsight-Cluste
 >
 > Informationen zum Ausführen von Hive-Abfragen direkt im Cluster mithilfe einer Befehlszeile für HDInsight 3.4 oder höher finden Sie unter [Verwenden von Hive mit HDInsight und Beeline](hdinsight-hadoop-use-hive-beeline.md).
 
-## <a name="a-idprereqaprerequisites"></a><a id="prereq"></a>Voraussetzungen
+## <a id="prereq"></a>Voraussetzungen
 Um die in diesem Artikel aufgeführten Schritte auszuführen, benötigen Sie Folgendes:
 
 * Einen Windows-basierten HDInsight-Cluster (Hadoop in HDInsight)
 * Ein Clientcomputer mit dem Betriebssystem Windows 10, Windows 8 oder Windows 7
 
-## <a name="a-idconnectaconnect-with-remote-desktop"></a><a id="connect"></a>Verbinden mit dem Remotedesktop
+## <a id="connect"></a>Verbinden mit dem Remotedesktop
 Aktivieren Sie Remotedesktop für den HDInsight-Cluster, und stellen Sie anschließend mithilfe der Anweisungen unter [Verbinden mit HDInsight-Clustern über RDP](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp) eine Verbindung her.
 
-## <a name="a-idhiveause-the-hive-command"></a><a id="hive"></a>Verwenden des Hive-Befehls
+## <a id="hive"></a>Verwenden des Hive-Befehls
 Nachdem die Verbindung mit dem Desktop für den HDInsight-Cluster hergestellt wurde, führen Sie die folgenden Schritte aus, um mit Hive zu arbeiten:
 
 1. Starten Sie auf dem HDInsight-Desktop die **Hadoop-Befehlszeile**.
@@ -96,10 +97,10 @@ Nachdem die Verbindung mit dem Desktop für den HDInsight-Cluster hergestellt wu
 
      Es sollten drei Datenzeilen zurückgegeben werden, die alle in Spalte "t4" den Wert **[ERROR]** enthalten.
 
-## <a name="a-idsummaryasummary"></a><a id="summary"></a>Zusammenfassung
+## <a id="summary"></a>Zusammenfassung
 Wie Sie sehen können, bietet der Hive-Befehl eine einfache Möglichkeit, um Hive-Abfragen auf einem HDInsight-Cluster interaktiv auszuführen, den Auftragsstatus zu überwachen und die Ausgabe abzurufen.
 
-## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>Nächste Schritte
+## <a id="nextsteps"></a>Nächste Schritte
 Allgemeine Informationen zu Hive in HDInsight:
 
 * [Verwenden von Hive mit Hadoop in HDInsight](hdinsight-use-hive.md)
