@@ -17,6 +17,7 @@ ms.author: kgremban
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: c6fe00b72d95a3eb40d91f6f7989b7163518c46f
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -97,10 +98,5 @@ Weitere Informationen finden Sie unter [Benutzerstatus in Azure Multi-Factor Aut
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie die Azure Multi-Factor Authentication in der Cloud eingerichtet haben, können Sie die Bereitstellung konfigurieren und einrichten. Weitere Informationen finden Sie unter [Konfigurieren von Azure Multi-Factor Authentication](multi-factor-authentication-whats-next.md).
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 
