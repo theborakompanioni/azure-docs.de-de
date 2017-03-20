@@ -1,6 +1,6 @@
 ---
 title: Abfragen von Daten aus HDFS-kompatiblem Azure-Speicher | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie Daten in Azure-Blobspeicher und Azure Data Lake Store abfragen, um die Ergebnisse Ihrer Analyse zu speichern.
+description: Es wird beschrieben, wie Sie Daten in Azure-Speicher und Azure Data Lake Store abfragen, um die Ergebnisse Ihrer Analyse zu speichern.
 keywords: Blobspeicher,HDFS,strukturierte Daten,unstrukturierte Daten,Data Lake Store
 services: hdinsight,storage
 documentationcenter: 
@@ -17,28 +17,33 @@ ms.topic: get-started-article
 ms.date: 02/27/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 6d8133299b062bf3935df9c30dc8a6fcf88a525e
-ms.openlocfilehash: d3af6358a5786510f4f150425d0eb8ed45e52a6c
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: f739459681b0941a3dde6ec615ee468444d92c36
+ms.lasthandoff: 03/11/2017
 
 
 ---
 # <a name="use-hdfs-compatible-storage-with-hadoop-in-hdinsight"></a>Verwenden des HDFS-kompatiblen Speichers mit Hadoop in HDInsight
 
-Zum Analysieren von Daten im HDInsight-Cluster können Sie die Daten entweder in Azure Blob Storage, Azure Data Lake Store oder beidem speichern. Beide Speichervarianten ermöglichen das sichere Löschen der HDInsight-Cluster, die für Berechnungen verwendet werden, ohne Benutzerdaten zu verlieren.
+Zum Analysieren von Daten im HDInsight-Cluster können Sie die Daten entweder in Azure Storage, Azure Data Lake Store oder beidem speichern. Beide Speichervarianten ermöglichen das sichere Löschen der HDInsight-Cluster, die für Berechnungen verwendet werden, ohne Benutzerdaten zu verlieren.
 
-Hadoop unterstützt eine Variante des Standarddateisystems. Das Standarddateisystem gibt ein Standardschema und eine Standardautorität vor. Es kann auch zur Auflösung relativer Pfade verwendet werden. Während der Erstellung des HDInsight-Clusters können Sie Azure-Blob-Speichercontainer als Standarddateisystem angeben. Mit HDInsight 3.5 können Sie Azure Blob Storage oder Azure Data Lake Store als Standarddateisystem auswählen.
+Hadoop unterstützt eine Variante des Standarddateisystems. Das Standarddateisystem gibt ein Standardschema und eine Standardautorität vor. Es kann auch zur Auflösung relativer Pfade verwendet werden. Während der Erstellung des HDInsight-Clusters können Sie einen Blobcontainer in Azure Storage als Standarddateisystem angeben. Mit HDInsight 3.5 können Sie Azure Storage oder Azure Data Lake Store als Standarddateisystem auswählen.
 
 In diesem Artikel wird beschrieben, wie die beiden Speicheroptionen für HDInsight-Cluster funktionieren. Weitere Informationen zum Erstellen eines HDInsight-Clusters finden Sie unter [Erste Schritte mit HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md).
 
-## <a name="using-azure-blob-storage-with-hdinsight-clusters"></a>Verwenden von Azure-Blobspeicher mit HDInsight-Clustern
+## <a name="using-azure-storage-with-hdinsight-clusters"></a>Verwenden von Azure-Speicher mit HDInsight-Clustern
 
-Azure-Blobspeicher stellt eine robuste, universelle Speicherlösung dar, die problemlos mit HDInsight integriert werden kann. Über eine HDFS-Schnittstelle (Hadoop Distributed File System) können sämtliche Komponenten in HDInsight direkt mit strukturierten oder unstrukturierten Daten im Blobspeicher arbeiten.
+Azure Storage stellt eine robuste, universelle Speicherlösung dar, die problemlos mit HDInsight integriert werden kann. In HDInsight kann ein Blobcontainer in Azure Storage als Standarddateisystem für den Cluster verwendet werden. Über eine HDFS-Schnittstelle (Hadoop Distributed File System) können sämtliche Komponenten in HDInsight direkt mit strukturierten oder unstrukturierten Daten arbeiten, die als Blobs gespeichert sind.
 
-> [!IMPORTANT]
-> HDInsight unterstützt nur Blockblobs. Seiten- oder Anfügeblobs werden nicht unterstützt.
+> [!WARNING]
+> Beim Erstellen eines Azure Storage-Kontos stehen Ihnen mehrere Optionen zur Verfügung. Die folgende Tabelle enthält Informationen dazu, welche Optionen mit HDInsight unterstützt werden:
 > 
-> 
+> | Speicherkontotyp | Speicherebene | Für HDInsight unterstützt |
+> | ------- | ------- | ------- |
+> | Allgemeines Speicherkonto | Standard | __Ja__ |
+> | &nbsp; | Premium | Nein |
+> | Blob Storage-Konto | Heiß | Nein |
+> | &nbsp; | Kalt | Nein |
 
 ### <a name="hdinsight-storage-architecture"></a>HDInsight-Speicherarchitektur
 Das folgende Diagramm bietet einen zusammenfassenden Überblick über die HDInsight-Speicherarchitektur.
@@ -49,7 +54,7 @@ HDInsight bietet Zugang zum verteilten Dateisystem, das lokal an die Rechenknote
 
     hdfs://<namenodehost>/<path>
 
-Zusätzlich bietet HDInsight die Möglichkeit, auf die im Azure-Blobspeicher gespeicherten Daten zuzugreifen. Die Syntax ist:
+Zusätzlich bietet HDInsight die Möglichkeit, auf die in Azure Storage gespeicherten Daten zuzugreifen. Die Syntax ist:
 
     wasb[s]://<containername>@<accountname>.blob.core.windows.net/<path>
 
@@ -65,27 +70,27 @@ Hier sind einige Aspekte beim Verwenden eines Azure Storage-Kontos mit HDInsight
   > 
 * **Private Container in Speicherkonten, die NICHT mit einem Cluster verbunden sind** : Sie können nicht auf die Blobs in den Containern zugreifen, es sei denn, Sie definieren beim Senden der WebHCat-Aufträge das Speicherkonto. Dies wird weiter unten im Artikel erläutert.
 
-Die bei der Erstellung definierten Speicherkonten und ihre Schlüssel werden in der Datei „%HADOOP_HOME%/conf/core-site.xml“ auf den Clusterknoten gespeichert. Standardmäßig verwendet HDInsight die in der Datei core-site.xml definierten Speicherkonten. Die Datei core-site.xml sollte nicht manuell bearbeitet werden, da der Cluster-Stammknoten (Master) jederzeit neu aus einem Abbild erstellt oder migriert werden kann, und die Änderungen an den Dateien in diesem Fall verloren gehen.
+Die bei der Erstellung definierten Speicherkonten und ihre Schlüssel werden in der Datei „%HADOOP_HOME%/conf/core-site.xml“ auf den Clusterknoten gespeichert. Standardmäßig verwendet HDInsight die in der Datei core-site.xml definierten Speicherkonten. Die Datei „core-site.xml“ sollte nicht direkt bearbeitet werden, da der Clusterhauptknoten (Master) jederzeit neu aus einem Image erstellt oder migriert werden kann, und Änderungen an dieser Datei werden nicht beibehalten.
 
 Verschiedene WebHCat-Aufträge, darunter Hive, MapReduce, Hadoop Streaming und Pig, können eine Beschreibung von Speicherkonten und Metadaten enthalten. (Dies funktioniert momentan nur für Pig und Speicherkonten, nicht für Metadaten.) Im Abschnitt [Blobzugriff über Azure PowerShell](#powershell) dieses Artikels finden Sie ein Beispiel für dieses Feature. Weitere Informationen finden Sie unter [Verwenden eines HDInsight-Clusters mit alternativen Speicherkonten und Metastores](http://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx).
 
-Blobspeicher kann für strukturierte und unstrukturierte Daten verwendet werden. In Blob-Speichercontainern werden Daten als Schlüssel/Wert-Paare gespeichert, und es gibt keine Verzeichnishierarchie. Allerdings kann im Schlüsselnamen der Schrägstrich (/) verwendet werden, damit es so aussieht, als wäre eine Datei in einer Verzeichnisstruktur gespeichert. Der Schlüssel eines Blobs kann z. B. *input/log1.txt* heißen. Das Verzeichnis *input* existiert zwar nicht, wegen des Schrägstrichs (/) im Schlüsselnamen sieht es jedoch so aus, als gäbe es einen Dateipfad.
+Blobs können für strukturierte und unstrukturierte Daten verwendet werden. In Blobcontainern werden Daten als Schlüssel-Wert-Paare gespeichert, und es gibt keine Verzeichnishierarchie. Allerdings kann im Schlüsselnamen der Schrägstrich (/) verwendet werden, damit es so aussieht, als wäre eine Datei in einer Verzeichnisstruktur gespeichert. Der Schlüssel eines Blobs kann z. B. *input/log1.txt* heißen. Das Verzeichnis *input* existiert zwar nicht, wegen des Schrägstrichs (/) im Schlüsselnamen sieht es jedoch so aus, als gäbe es einen Dateipfad.
 
-### <a name="a-idbenefitsabenefits-of-blob-storage"></a><a id="benefits"></a>Vorteile von Blobspeicher
-Der Leistungsaufwand, der damit verbunden ist, dass die Computecluster und Speicherressourcen nicht am selben Ort vorliegen, wird dadurch abgeschwächt, dass die Computecluster nahe an den Speicherkontoressourcen in der Azure-Region erstellt werden. Hier macht das Hochgeschwindigkeitsnetzwerk den Zugriff auf die Daten im Azure Blob Storage für die Serverknoten sehr effizient.
+### <a id="benefits"></a>Vorteile von Azure Storage
+Der Leistungsaufwand, der damit verbunden ist, dass die Computecluster und Speicherressourcen nicht an demselben Ort vorliegen, wird dadurch verringert, dass die Computecluster nahe an den Speicherkontoressourcen in der Azure-Region erstellt werden. Hier macht das Hochgeschwindigkeitsnetzwerk den Zugriff auf die Daten im Azure-Speicher für die Serverknoten sehr effizient.
 
-Die Speicherung von Daten im Azure-Blobspeicher statt im HDFS hat mehrere Vorteile:
+Die Speicherung von Daten im Azure-Speicher anstatt im HDFS hat mehrere Vorteile:
 
-* **Datenfreigabe und -wiederverwendung:** Die Daten im HDFS befinden sich innerhalb des Rechenclusters. Nur die Anwendungen, die Zugriff auf den Rechencluster haben, können die Daten über die HDFS-API verwenden. Auf die Dateien im Azure-Blobspeicher kann entweder über die HDFS-APIs oder über die [Blobspeicher-REST-APIs][blob-storage-restAPI] zugegriffen werden. Somit kann eine größere Menge von Anwendungen (darunter andere HDInsight-Cluster) und Tools verwendet werden, um die Daten zu produzieren und abzurufen.
-* **Datenarchivierung:** Die Speicherung von Daten im Azure-Blobspeicher sorgt dafür, dass die HDInsight-Cluster, die für Berechnungen verwendet werden, sicher gelöscht werden können, ohne Benutzerdaten zu verlieren.
-* **Datenspeicherkosten:** Die langfristige Datenspeicherung in DFS ist kostspieliger als die Datenspeicherung im Azure-Blobspeicher, da die Kosten eines Rechenclusters höher liegen als diejenigen eines Azure-Blobspeichercontainers. Da die Daten nicht für jede Erzeugung eines neues Rechenclusters neu geladen werden, sparen Sie auch Kosten für das Laden von Daten.
-* **Elastische horizontale Skalierung:** Auch wenn HDFS ein horizontal skaliertes Dateisystem bietet, wird die Skalierung durch die Anzahl der Knoten bestimmt, die Sie für Ihren Cluster erstellen. Eine Änderung der Skalierung kann weitaus schwieriger werden, als auf die flexiblen Speicherkapazitäten zu vertrauen, die Ihnen der Azure Blob Storage automatisch bietet.
-* **Georeplikation** : Ihre Azure-Blob-Speichercontainer können georepliziert werden. Obwohl Sie dadurch von geographischer Wiederherstellung und Datenredundanz profitieren, wirkt sich ein Ausfall des georeplizierten Standorts schwer auf Ihre Leistung aus und kann zusätzliche Kosten nach sich ziehen. Deshalb empfehlen wir, die Georeplikation mit Bedacht auszuwählen und nur dann anzuwenden, wenn der Wert der Daten die zusätzlichen Kosten rechtfertigt.
+* **Datenfreigabe und -wiederverwendung:** Die Daten im HDFS befinden sich innerhalb des Rechenclusters. Nur die Anwendungen, die Zugriff auf den Rechencluster haben, können die Daten über die HDFS-API verwenden. Auf die Dateien im Azure-Speicher kann entweder über die HDFS-APIs oder über die [Blob Storage-REST-APIs][blob-storage-restAPI] zugegriffen werden. Somit kann eine größere Menge von Anwendungen (darunter andere HDInsight-Cluster) und Tools verwendet werden, um die Daten zu produzieren und abzurufen.
+* **Datenarchivierung:** Die Speicherung von Daten im Azure-Speicher sorgt dafür, dass die HDInsight-Cluster, die für Berechnungen verwendet werden, sicher gelöscht werden können, ohne Benutzerdaten zu verlieren.
+* **Datenspeicherkosten:** Die langfristige Datenspeicherung in DFS ist kostspieliger als die Datenspeicherung im Azure-Speicher, da die Kosten eines Computeclusters höher als die Kosten für Azure-Speicher sind. Da die Daten nicht für jede Erzeugung eines neues Rechenclusters neu geladen werden, sparen Sie auch Kosten für das Laden von Daten.
+* **Elastische horizontale Skalierung:** Auch wenn HDFS ein horizontal skaliertes Dateisystem bietet, wird die Skalierung durch die Anzahl der Knoten bestimmt, die Sie für Ihren Cluster erstellen. Eine Änderung der Skalierung kann weitaus schwieriger werden, als auf die flexiblen Speicherkapazitäten zu vertrauen, die Ihnen der Azure-Speicher automatisch bietet.
+* **Georeplikation:** Für Ihren Azure-Speicher kann die Georeplikation durchgeführt werden. Obwohl Sie dadurch von geographischer Wiederherstellung und Datenredundanz profitieren, wirkt sich ein Ausfall des georeplizierten Standorts schwer auf Ihre Leistung aus und kann zusätzliche Kosten nach sich ziehen. Deshalb empfehlen wir, die Georeplikation mit Bedacht auszuwählen und nur dann anzuwenden, wenn der Wert der Daten die zusätzlichen Kosten rechtfertigt.
 
-Bestimmte MapReduce-Jobs und -Pakete können zu Zwischenergebnissen führen, die Sie nicht wirklich im Azure-Blobspeicher speichern möchten. In diesem Fall können Sie die Dateien auch im lokalen HDFS speichern. Tatsächlich verwendet HDInsight DFS für einige dieser Zwischenergebnisse in Hive-Jobs und anderen Prozessen.
+Bestimmte MapReduce-Aufträge und -Pakete können zu Zwischenergebnissen führen, die Sie eher nicht im Azure-Speicher speichern möchten. In diesem Fall können Sie die Dateien auch im lokalen HDFS speichern. Tatsächlich verwendet HDInsight DFS für einige dieser Zwischenergebnisse in Hive-Jobs und anderen Prozessen.
 
 > [!NOTE]
-> Die meisten HDFS-Befehle (z. B. <b>ls</b>, <b>copyFromLocal</b> und <b>mkdir</b>) funktionieren weiterhin wie erwartet. Nur die für die native HDFS-Implementierung (als DFS bezeichnet) spezifischen Befehle wie <b>fschk</b> und <b>dfsadmin</b> zeigen im Azure-Blobspeicher ein anderes Verhalten.
+> Die meisten HDFS-Befehle (z. B. <b>ls</b>, <b>copyFromLocal</b> und <b>mkdir</b>) funktionieren weiterhin wie erwartet. Nur die für die native HDFS-Implementierung (als DFS bezeichnet) spezifischen Befehle wie <b>fschk</b> und <b>dfsadmin</b> zeigen im Azure-Speicher ein anderes Verhalten.
 > 
 > 
 
@@ -94,7 +99,7 @@ Um Blobs zu verwenden, erstellen Sie zuerst ein Azure-[Speicherkonto][azure-stor
 
 Ein Blob gehört unabhängig davon, wo es sich befindet, stets zu einem Container Ihres Azure-Speicherkontos. Dieser Container kann ein außerhalb von HDInsight erstelltes Blob sein, oder es handelt sich um einen Container, der für einen HDInsight-Cluster erstellt wird.
 
-Der standardmäßige Blobcontainer speichert clusterspezifische Informationen wie etwa Auftragsverlauf und Protokolle. Geben Sie einen Standard-Blob-Container nicht für mehrere HDInsight-Cluster frei. Dadurch kann der Auftragsverlauf beschädigt werden, was zu unerwartetem Verhalten des Clusters führt. Es wird empfohlen, unterschiedliche Container für die einzelnen Cluster zu verwenden und freigegebene Daten nicht im Standardspeicherkonto, sondern in einem verknüpften Speicherkonto abzulegen, das in der Bereitstellung aller relevanten Cluster angegeben wird. Weitere Informationen zum Konfigurieren verknüpfter Speicherkonten finden Sie unter [Erstellen von HDInsight-Clustern][hdinsight-creation]. Einen Standardspeichercontainer können Sie jedoch auch wiederverwenden, wenn der ursprüngliche HDInsight-Cluster gelöscht wurde. Bei HBase-Clustern können Sie das HBase-Tabellenschema sowie die darin enthaltenen Daten sogar beibehalten, indem Sie einen neuen HBase-Cluster mit dem Standard-Blob Storage-Container erstellen, der von einem gelöschten HBase-Cluster verwendet wurde.
+Der standardmäßige Blobcontainer speichert clusterspezifische Informationen wie etwa Auftragsverlauf und Protokolle. Geben Sie einen Standard-Blob-Container nicht für mehrere HDInsight-Cluster frei. Dies kann zu einer Beschädigung des Auftragsverlaufs führen. Es wird empfohlen, unterschiedliche Container für die einzelnen Cluster zu verwenden und freigegebene Daten nicht im Standardspeicherkonto, sondern in einem verknüpften Speicherkonto abzulegen, das in der Bereitstellung aller relevanten Cluster angegeben wird. Weitere Informationen zum Konfigurieren verknüpfter Speicherkonten finden Sie unter [Erstellen von HDInsight-Clustern][hdinsight-creation]. Einen Standardspeichercontainer können Sie jedoch auch wiederverwenden, wenn der ursprüngliche HDInsight-Cluster gelöscht wurde. Bei HBase-Clustern können Sie das HBase-Tabellenschema sowie die darin enthaltenen Daten sogar beibehalten, indem Sie einen neuen HBase-Cluster mit dem Standardblobcontainer erstellen, der von einem gelöschten HBase-Cluster verwendet wurde.
 
 #### <a name="using-the-azure-portal"></a>Verwenden des Azure-Portals
 Beim Erstellen eines HDInsight-Clusters über das Portal können Sie Optionen zum Angeben der Details zum Speicherkonto nutzen (wie unten dargestellt). Sie können auch angeben, ob dem Cluster ein zusätzliches Speicherkonto zugeordnet werden soll. Wenn ja, können Sie Data Lake Store oder ein anderes Azure Storage-Blob als zusätzlichen Speicher auswählen.
@@ -113,7 +118,7 @@ Wenn Sie [die Befehlszeilenschnittstelle von Azure (Azure-CLI) installiert und k
 > 
 > 
 
-Sie werden zur Angabe der geografischen Region des Speicherkontos aufgefordert. Das Speicherkonto sollte in derselben Region erstellt werden, in der der HDInsight-Cluster erstellt werden soll.
+Sie werden zum Angeben der geografischen Region aufgefordert, in der das Speicherkonto erstellt wird. Das Speicherkonto sollte in derselben Region erstellt werden, in der der HDInsight-Cluster erstellt werden soll.
 
 Nach der Erstellung des Speicherkontos können Sie den Schlüssel des Speicherkontos mit dem folgenden Befehl abrufen:
 
@@ -149,15 +154,14 @@ Nach dem [Installieren und Konfigurieren von Azure PowerShell][powershell-instal
     $destContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey  
     New-AzureStorageContainer -Name $containerName -Context $destContext
 
-### <a name="address-files-in-blob-storage"></a>Adressdateien in Blob-Speicher
-Das URI-Schema für den Zugriff auf Dateien im Blobspeicher aus HDInsight ist:
+### <a name="address-files-in-azure-storage"></a>Zugreifen auf Dateien in Azure-Speicher
+Das URI-Schema für den Zugriff auf Dateien in Azure-Speicher aus HDInsight lautet:
 
     wasb[s]://<BlobStorageContainerName>@<StorageAccountName>.blob.core.windows.net/<path>
 
-
 Das URI-Schema bietet unverschlüsselten Zugriff (mit dem Präfix *wasb:*) wie auch SSL-verschlüsselten Zugriff (mit *wasbs*). Wir empfehlen die Verwendung von *wasbs* , und zwar auch für den Zugriff auf Daten, die sich in Azure in derselben Region befinden.
 
-&lt;BlobStorageContainerName&gt; ist der Name des Containers im Azure-Blobspeicher.
+&lt;BlobStorageContainerName&gt; ist der Name des Blobcontainers im Azure-Speicher.
 &lt;StorageAccountName&gt; ist der Name des Azure-Speicherkontos. Ein vollqualifizierter Domänenname (FQDN) ist erforderlich.
 
 Wenn weder &lt;BlobStorageContainerName&gt; noch &lt;StorageAccountName&gt; angegeben ist, wird das Standarddateisystem verwendet. Für die Dateien im Standarddateisystem können Sie relative oder absolute Pfade verwenden. Auf die Datei *hadoop-mapreduce-examples.jar*, die sich in HDInsight-Clustern befindet, kann z. B. mit einem der folgenden Befehle verwiesen werden:
@@ -171,7 +175,7 @@ Wenn weder &lt;BlobStorageContainerName&gt; noch &lt;StorageAccountName&gt; ange
 > 
 > 
 
-&lt;path&gt; ist der HDFS-Pfadname der Datei oder des Verzeichnisses. Da es sich bei Containern im Azure-Blobspeicher lediglich um Schlüssel/Wert-Paare handelt, gibt es kein wirkliches hierarchisches Dateisystem. Ein Schrägstrich (/) in einem Blobschlüssel wird als Verzeichnistrennzeichen interpretiert. Der Blob-Name für *hadoop-mapreduce-examples.jar* lautet z. B.:
+&lt;path&gt; ist der HDFS-Pfadname der Datei oder des Verzeichnisses. Da es sich bei Containern im Azure-Speicher lediglich um Schlüssel-Wert-Paare handelt, wird kein echtes hierarchisches Dateisystem verwendet. Ein Schrägstrich (/) in einem Blobschlüssel wird als Verzeichnistrennzeichen interpretiert. Der Blob-Name für *hadoop-mapreduce-examples.jar* lautet z. B.:
 
     example/jars/hadoop-mapreduce-examples.jar
 
@@ -346,7 +350,7 @@ Unter den unten angegebenen Links finden Sie eine ausführliche Anleitung, wie S
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel wurde beschrieben, wie Sie HDFS-kompatiblen Azure-Blobspeicher und Azure Data Lake Store mit HDInsight verwenden. Dadurch können Sie skalierbare Datenerfassungslösungen mit langfristiger Archivierung aufbauen und HDInsight verwenden, um die Informationen innerhalb der gespeicherten strukturierten und unstrukturierten Daten zu entsperren.
+In diesem Artikel wurde beschrieben, wie Sie HDFS-kompatiblen Azure-Speicher und Azure Data Lake Store mit HDInsight verwenden. Dadurch können Sie skalierbare Datenerfassungslösungen mit langfristiger Archivierung aufbauen und HDInsight verwenden, um die Informationen innerhalb der gespeicherten strukturierten und unstrukturierten Daten zu entsperren.
 
 Weitere Informationen finden Sie unter:
 

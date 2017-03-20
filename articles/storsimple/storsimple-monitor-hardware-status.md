@@ -111,8 +111,7 @@ Die folgende Tabelle gibt Aufschluss über die physischen und logischen Komponen
 | Gehäuseeinstellungen |Gehäuse |Physisch |Shared |Nein |Bezieht sich auf das OPS oder vordere Bedienfeld des Gehäuses. |
 | Spannungssensoren |PCM |Physisch |Shared |Nein |Der angezeigte Zustand zahlreicher Spannungssensoren gibt Aufschluss darüber, ob die gemessene Spannung innerhalb des Toleranzbereichs liegt. |
 | Stromsensoren |PCM |Physisch |Shared |Nein |Der angezeigte Zustand zahlreicher Stromsensoren gibt Aufschluss darüber, ob die gemessene Stromstärke innerhalb des Toleranzbereichs liegt. |
-| Temperatursensoren in PCM |PCM |Physisch |Shared
- |Nein |Der angezeigte Zustand zahlreicher Temperatursensoren (beispielsweise Einlass- und Hotspot-Sensoren) gibt Aufschluss darüber, ob die gemessene Temperatur innerhalb des Toleranzbereichs liegt. |
+| Temperatursensoren in PCM |PCM |Physisch |Shared |Nein |Der angezeigte Zustand zahlreicher Temperatursensoren (beispielsweise Einlass- und Hotspot-Sensoren) gibt Aufschluss darüber, ob die gemessene Temperatur innerhalb des Toleranzbereichs liegt. |
 | Netzteil [0-1] |PCM |Physisch |Shared |Ja |Für die einzelnen Stromversorgungen in den beiden PCMs an der Geräterückseite wird jeweils eine eigene Zeile angezeigt. |
 | Kühlung [0-1] |PCM |Physisch |Shared |Ja |Für die vier Lüfter in den beiden PCMs wird jeweils eine eigene Zeile angezeigt. |
 | Lokaler Speicher [HDD] |– |Logisch |Shared |– |Zeigt den Zustand des logischen Speicherpools an, der auf der Grundlage von Geräte-HDDs erstellt wird. |
