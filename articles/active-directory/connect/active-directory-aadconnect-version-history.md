@@ -15,9 +15,9 @@ ms.workload: identity
 ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 0966b1332ee6d831a1f24ee817aa8022538a5558
-ms.openlocfilehash: f8cd2b907bd6b20ec778dc6257e2a30113dd4909
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 7e16fa749389ab876ae413e2ffef7713ed22adac
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -34,6 +34,37 @@ Thema |  Details
 Schritte zum Upgrade von Azure AD Connect | Verschiedene Methoden zum [Aktualisieren von einer früheren Version auf die aktuelle Version](active-directory-aadconnect-upgrade-previous-version.md) von Azure AD Connect.
 Erforderliche Berechtigungen | Informationen zu den zum Anwenden eines Updates erforderlichen Berechtigungen finden Sie unter [Konten und Berechtigungen](./active-directory-aadconnect-accounts-permissions.md#upgrade).
 Download| [Azure AD Connect herunterladen](http://go.microsoft.com/fwlink/?LinkId=615771).
+
+## <a name="114430"></a>1.1.443.0
+Veröffentlichung: März 2017
+
+**Behobene Probleme:**
+
+Azure AD Connect-Synchronisierung
+* Ein Problem wurde behoben, durch das der Azure AD Connect-Assistent fehlschlägt, wenn der Anzeigename des Azure AD-Connectors nicht die anfängliche dem Azure AD-Mandanten zugewiesene onmicrosoft.com-Domäne enthält.
+* Ein Problem wurde behoben, durch das der Azure AD Connect-Assistent beim Herstellen einer Verbindung mit der SQL-Datenbank fehlschlägt, wenn das Kennwort des Sync-Dienstkonto Sonderzeichen wie z. B. Apostrophe, Doppelpunkte und Leerzeichen enthält.
+* Ein Problem wurde behoben, durch das der Fehler „The dimage has an anchor that is different than the image“ (Das Image weist einen Anker auf, der vom Image abweicht) auf einem Azure AD Connect-Server im Stagingmodus ausgegeben wird, wenn ein lokales AD-Objekt temporär vom Synchronisieren ausgeschlossen und dann wieder in die Synchronisierung eingeschlossen wird.
+* Ein Problem wurde behoben, durch das der Fehler „The object located by DN is a phantom“ (Das Objekt in DN ist ein Phantom) auf einem Azure AD Connect-Server im Stagingmodus ausgegeben wird, wenn ein lokales AD-Objekt temporär vom Synchronisieren ausgeschlossen und dann wieder in die Synchronisierung eingeschlossen wird.
+
+AD FS-Verwaltung
+* Ein Problem wurde behoben, durch das der Azure AD Connect-Assistent die AD FS-Konfiguration nicht aktualisiert und nicht die richtigen Ansprüche auf die Vertrauensstellung der vertrauenden Seite festlegt, nachdem die alternative Anmelde-ID konfiguriert wurde.
+* Ein Problem wurde behoben, durch das der Azure AD Connect-Assistent AD FS-Server nicht ordnungsgemäß verarbeiten kann, wenn deren Dienstkonten das Format „userPrincipalName“ statt „sAMAccountName“ verwenden.
+
+Passthrough-Authentifizierung
+* Ein Problem wurde behoben, durch das der Azure AD Connect-Assistent fehlschlägt, wenn die Pass-Through-Authentifizierung ausgewählt wird, aber die Registrierung des Connectors fehlschlägt.
+* Ein Problem wurde behoben, durch das der Azure AD Connect-Assistent Überprüfungen der gewählten Anmeldemethode umgeht, wenn Desktop SSO aktiviert ist.
+
+**Neue Features/Verbesserungen:**
+
+Azure AD Connect-Synchronisierung
+* Das Get-ADSyncScheduler-Cmdlet gibt jetzt eine neue boolesche Eigenschaft namens „SyncCycleInProgress“ zurück. Lautet der zurückgegebene Wert „true“, wird ein geplanter Synchronisierungszyklus bearbeitet.
+* Der Zielordner zum Speichern der Installations- und Setupprotokolle von Azure AD Connect wurde von %localappdata%\AADConnect zu %programdata%\AADConnect verschoben, um den Zugriff auf die Protokolldateien zu vereinfachen.
+
+AD FS-Verwaltung
+* Die Aktualisierung des SSL-Zertifikats für AD FS-Farm wird jetzt unterstützt.
+* Die Unterstützung für die Verwaltung von AD FS 2016 wird jetzt unterstützt.
+* Sie können jetzt bei der Installation von AD FS vorhandene gruppenverwaltete Dienstkonten angeben.
+* Sie können jetzt SHA-256 als Signaturhashalgorithmus für die Azure AD-Vertrauensstellung der vertrauenden Seite konfigurieren.
 
 ## <a name="113800"></a>1.1.380.0
 Veröffentlichung: Dezember 2016

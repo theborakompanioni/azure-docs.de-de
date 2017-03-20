@@ -13,10 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2016
-ms.author: dhanyahk
+ms.author: dhanyahk;markvi
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 90ba006f25c27e1dc24c85fdc4ef1d5e2a8d0e3d
+ms.lasthandoff: 12/28/2016
 
 
 ---
@@ -46,10 +47,5 @@ Ja, zum Deaktivieren von Benachrichtigungen in Zusammenhang mit anomalen Anmeldu
 * Möchten Sie wissen, welche Sicherheits-, Überwachungs- und Aktivitätsberichte zur Verfügung stehen? Lesen Sie [Sicherheits-, Überwachungs- und Aktivitätsberichte](active-directory-view-access-usage-reports.md)
 * [Erste Schritte mit Azure Active Directory Premium](active-directory-get-started-premium.md)
 * [Hinzufügen Ihres Unternehmensbranding zur Anmelde- und Zugriffsbereichsseite](active-directory-add-company-branding.md)
-
-
-
-
-<!--HONumber=Dec16_HO4-->
 
 

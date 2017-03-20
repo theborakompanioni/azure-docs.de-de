@@ -15,8 +15,9 @@ ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: 96747e898b2d84cbce9251758a90941f85112dd0
-ms.openlocfilehash: 7aa3844b9bdc2c5372c6e54b05296dcde6b1c05f
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: dc8c7beaf5b8e8d4f5467ffe22390c41f446d787
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -55,7 +56,7 @@ Beachten Sie im Feld **Dauer** das Fragezeichen neben dem Datentyp. Dies bedeute
 
 Im Skript finden Sie folgende Konzepte und Schlüsselwörter:
 
-* Rowsetvariablen: Jeder Abfrageausdruck, der ein Rowset produziert, kann einer Variablen zugewiesen werden. U-SQL folgt im Skript dem Benennungsmuster für T-SQL-Variablen (@searchlog, beispielsweise).
+* Rowsetvariablen: Jeder Abfrageausdruck, der ein Rowset produziert, kann einer Variablen zugewiesen werden. U-SQL basiert im Skript auf dem Benennungsmuster für T-SQL-Variablen (z.B. @searchlog).
 
  >[!NOTE]
  >Die Zuweisung erzwingt keine Ausführung. Der Ausdruck wird lediglich benannt, sodass Sie komplexere Ausdrücke erstellen können.
@@ -64,9 +65,9 @@ Im Skript finden Sie folgende Konzepte und Schlüsselwörter:
 
  >[!NOTE]
  >Die beiden Pfade sind relative Pfade. Sie können aber auch absolute Pfade verwenden. Beispiel:    
- >     adl://<ADLStorageAccountName>.azuredatalakestore.net:443/Samples/Data/SearchLog.tsv
+ >     adl://\<ADLStorageAccountName>.azuredatalakestore.net:443/Samples/Data/SearchLog.tsv
  >
- >Sie müssen einen absoluten Pfad verwenden, um auf die Dateien in den verknüpften Speicherkonten zuzugreifen.  Die Syntax für im verknüpften Azure-Speicherkonto gespeicherte Dateien lautet: wasb://<BlobContainerName>@<StorageAccountName>.blob.core.windows.net/Samples/Data/SearchLog.tsv
+ >Sie müssen einen absoluten Pfad verwenden, um auf die Dateien in den verknüpften Speicherkonten zuzugreifen.  Die Syntax für im verknüpften Azure-Speicherkonto gespeicherte Dateien lautet: wasb://\<BlobContainerName>@\<StorageAccountName>.blob.core.windows.net/Samples/Data/SearchLog.tsv
 
  >[!NOTE]
  >Azure-Blobspeichercontainer mit Zugriffsberechtigungen für öffentliche Blobs oder öffentliche Container werden derzeit nicht unterstützt.
@@ -410,9 +411,4 @@ Dieses Tutorial deckt nur einen kleinen Teil von U-SQL ab. Viele weitere Vorteil
 * [Feature anfordern](http://aka.ms/adlafeedback)
 * [Hilfe in Foren](http://aka.ms/adlaforums)
 * [Feedback zu U-SQL](http://aka.ms/usqldiscuss)
-
-
-
-<!--HONumber=Dec16_HO4-->
-
 

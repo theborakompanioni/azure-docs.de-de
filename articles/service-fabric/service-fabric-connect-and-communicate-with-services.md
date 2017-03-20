@@ -15,8 +15,9 @@ ms.workload: NA
 ms.date: 02/10/2017
 ms.author: vturecek
 translationtype: Human Translation
-ms.sourcegitcommit: 4e5568bfcc3d488ef07203b7d3ad95f44354cabc
-ms.openlocfilehash: f35a42154e5d14e798a787a3ecd100ab72512b96
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 6f408d6e4a6a80f10a5116071efee7546c7febdf
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -53,14 +54,14 @@ Beim Auflösen und Verbinden mit Diensten werden die folgenden Schritte in einer
 Dienste, die innerhalb eines Clusters miteinander verbunden sind, können im Allgemeinen direkt auf die Endpunkte anderer Dienste zugreifen, da sich die Knoten in einem Cluster in der Regel im gleichen Netzwerk befinden. In einigen Umgebungen kann sich ein Cluster jedoch hinter einem Load Balancer befinden, der den externen eingehenden Datenverkehr durch eine begrenzte Anzahl von Ports umleitet. In diesen Fällen können Dienste weiterhin miteinander kommunizieren und Adressen mithilfe von Naming Service auflösen, allerdings sind zusätzliche Schritte erforderlich, damit externe Clients eine Verbindung mit den Diensten herstellen können.
 
 ## <a name="service-fabric-in-azure"></a>Service Fabric in Azure
-Ein Service Fabric-Cluster in Azure befindet sich hinter einem Azure Load Balancer. Der gesamte externe Datenverkehr zum Cluster muss den Load Balancer durchlaufen. Der Load Balancer leitet auf einem bestimmten Port eingehenden Datenverkehr automatisch an einen beliebigen *Knoten* weiter, der den gleichen Port geöffnet hat. Der Azure Load Balancer weiß nur, welche Ports auf den *Knoten* geöffnet sind, aber nicht, welche Ports von einzelnen *Diensten* geöffnet wurden. 
+Ein Service Fabric-Cluster in Azure befindet sich hinter einem Azure Load Balancer. Der gesamte externe Datenverkehr zum Cluster muss den Load Balancer durchlaufen. Der Load Balancer leitet auf einem bestimmten Port eingehenden Datenverkehr automatisch an einen beliebigen *Knoten* weiter, der den gleichen Port geöffnet hat. Der Azure Load Balancer weiß nur, welche Ports auf den *Knoten* geöffnet sind, aber nicht, welche Ports von einzelnen *Diensten* geöffnet wurden.
 
 ![Azure Load Balancer und Service Fabric-Topologie][3]
 
 Damit externer Datenverkehr auf Port **80**zulässig ist, müssen die folgenden Punkte konfiguriert werden:
 
 1. Schreiben Sie einen Dienst, der an Port 80 lauscht. Konfigurieren Sie Port 80 in „ServiceManifest.xml“ für den Dienst, und öffnen Sie einen Listener im Dienst, z.B. einem selbst gehosteten Webserver.
-   
+
     ```xml
     <Resources>
         <Endpoints>
@@ -72,46 +73,82 @@ Damit externer Datenverkehr auf Port **80**zulässig ist, müssen die folgenden 
         class HttpCommunicationListener : ICommunicationListener
         {
             ...
-   
+
             public Task<string> OpenAsync(CancellationToken cancellationToken)
             {
-                EndpointResourceDescription endpoint = 
+                EndpointResourceDescription endpoint =
                     serviceContext.CodePackageActivationContext.GetEndpoint("WebEndpoint");
-   
+
                 string uriPrefix = $"{endpoint.Protocol}://+:{endpoint.Port}/myapp/";
-   
+
                 this.httpListener = new HttpListener();
                 this.httpListener.Prefixes.Add(uriPrefix);
                 this.httpListener.Start();
-   
+
                 string uriPublished = uriPrefix.Replace("+", FabricRuntime.GetNodeContext().IPAddressOrFQDN);
-   
+
                 return Task.FromResult(this.publishUri);
             }
-   
+
             ...
         }
-   
+
         class WebService : StatelessService
         {
             ...
-   
+
             protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
             {
                 return new[] {new ServiceInstanceListener(context => new HttpCommunicationListener(context))};
             }
-   
+
+            ...
+        }
+    ```
+    ```java
+        class HttpCommunicationlistener implements CommunicationListener {
+            ...
+
+            @Override
+            public CompletableFuture<String> openAsync(CancellationToken arg0) {
+                EndpointResourceDescription endpoint =
+                    this.serviceContext.getCodePackageActivationContext().getEndpoint("WebEndpoint");
+                try {
+                    HttpServer server = com.sun.net.httpserver.HttpServer.create(new InetSocketAddress(endpoint.getPort()), 0);
+                    server.start();
+
+                    String publishUri = String.format("http://%s:%d/",
+                        this.serviceContext.getNodeContext().getIpAddressOrFQDN(), endpoint.getPort());
+                    return CompletableFuture.completedFuture(publishUri);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            ...
+        }
+
+        class WebService extends StatelessService {
+            ...
+
+            @Override
+            protected List<ServiceInstanceListener> createServiceInstanceListeners() {
+                <ServiceInstanceListener> listeners = new ArrayList<ServiceInstanceListener>();
+                listeners.add(new ServiceInstanceListener((context) -> new HttpCommunicationlistener(context)));
+                return listeners;        
+            }
+
             ...
         }
     ```
 2. Erstellen Sie einen Service Fabric-Cluster in Azure, und geben Sie Port **80** als benutzerdefinierten Endpunktport für den Knotentyp an, der den Dienst hostet. Wenn Sie über mehrere Knotentypen verfügen, können Sie für den Dienst eine *Platzierungseinschränkung* festlegen, um sicherzustellen, dass er nur auf dem Knotentyp ausgeführt wird, für den der benutzerdefinierte Endpunktport geöffnet ist.
-   
+
     ![Öffnen Sie einen Port auf einem Knotentyp][4]
 3. Wenn der Cluster erstellt wurde, konfigurieren Sie den Azure Load Balancer in der Ressourcengruppe des Cluster, um Datenverkehr an Port 80 weiterzuleiten. Wenn Sie einen Cluster über das Azure-Portal erstellen, wird dieser automatisch für jeden benutzerdefinierten Endpunktport eingerichtet, der konfiguriert wurde.
-   
+
     ![Weiterleitung von Datenverkehr im Azure Load Balancer][5]
 4. Der Azure Load Balancer stellt mithilfe eines Tests fest, ob Datenverkehr an einen bestimmten Knoten gesendet wird. Dieser Test überprüft in regelmäßigen Abständen einen Endpunkt auf jedem Knoten, um festzustellen, ob der Knoten reagiert. Wenn nach einer bestimmten Anzahl von Versuchen keine Antwort eingeht, sendet der Load Balancer keinen Datenverkehr mehr an diesen Knoten. Wenn Sie einen Cluster über das Azure-Portal erstellen, wird automatisch ein Test für jeden konfigurierten benutzerdefinierten Endpunktport eingerichtet.
-   
+
     ![Weiterleitung von Datenverkehr im Azure Load Balancer][8]
 
 Bitte beachten Sie, dass Azure Load Balancer und der Test nur die *Knoten* kennen, nicht aber die *Dienste*, die auf den Knoten ausgeführt werden. Der Azure Load Balancer sendet Datenverkehr an die Knoten, die auf den Test reagieren. Stellen Sie daher sicher, dass die Dienste auf den Knoten verfügbar sind, die auf den Test reagieren können.
@@ -119,9 +156,9 @@ Bitte beachten Sie, dass Azure Load Balancer und der Test nur die *Knoten* kenne
 ## <a name="built-in-communication-api-options"></a>Integrierte Optionen für Kommunikations-APIs
 Das Reliable Services-Framework wird mit mehreren vorab erstellten Kommunikationsoptionen ausgeliefert. Welche Option in Ihrem Fall am besten geeignet ist, hängt vom Programmiermodell, dem Kommunikationsframework und der Programmiersprache Ihrer Dienste ab.
 
-* **Kein bestimmtes Protokoll** : Wenn Sie kein bestimmtes Kommunikationsframework verwenden und schnell eine Lösung implementieren möchten, ist das [Dienstremoting](service-fabric-reliable-services-communication-remoting.md) die ideale Lösung, da es stark typisierte Remoteprozeduraufrufe für Reliable Services und Reliable Actors zulässt. Dies ist die einfachste und schnellste Methode für den Einstieg in die Dienstkommunikation. Das Dienstremoting verarbeitet die Auflösung von Dienstadressen, die Verbindungsherstellung, Wiederholungsversuche sowie die Problembehandlung. Beachten Sie, dass das Dienstremoting nur für C#-Anwendungen verfügbar ist.
-* **HTTP**: Für die sprachunabhängige Kommunikation bietet HTTP eine branchenübliche Auswahl von Tools und HTTP-Servern, die in verschiedenen Sprachen verfügbar sind und alle von Service Fabric unterstützt werden. Dienste können alle verfügbaren HTTP-Stapel verwenden, einschließlich [ASP.NET Web API](service-fabric-reliable-services-communication-webapi.md). In C# geschriebene Clients können [die Klassen `ICommunicationClient` und `ServicePartitionClient`](service-fabric-reliable-services-communication.md) für die Dienstauflösung, HTTP-Verbindungen und Wiederholungsschleifen nutzen.
-* **WCF**: Wenn der vorhandene Code das WCF-Kommunikationsframework verwendet, können Sie `WcfCommunicationListener` für den Server und die Klassen `WcfCommunicationClient` und `ServicePartitionClient` für den Client verwenden. Weitere Informationen finden Sie in folgenden Artikel: [WCF-basierter Kommunikationsstapel für Reliable Services](service-fabric-reliable-services-communication-wcf.md).
+* **Kein bestimmtes Protokoll** : Wenn Sie kein bestimmtes Kommunikationsframework verwenden und schnell eine Lösung implementieren möchten, ist das [Dienstremoting](service-fabric-reliable-services-communication-remoting.md) die ideale Lösung, da es stark typisierte Remoteprozeduraufrufe für Reliable Services und Reliable Actors zulässt. Dies ist die einfachste und schnellste Methode für den Einstieg in die Dienstkommunikation. Das Dienstremoting verarbeitet die Auflösung von Dienstadressen, die Verbindungsherstellung, Wiederholungsversuche sowie die Problembehandlung. Dies ist jeweils für C#- und Java-Anwendungen erhältlich.
+* **HTTP**: Für die sprachunabhängige Kommunikation bietet HTTP eine branchenübliche Auswahl von Tools und HTTP-Servern, die in verschiedenen Sprachen verfügbar sind und alle von Service Fabric unterstützt werden. Dienste können alle verfügbaren HTTP-Stapel verwenden, einschließlich [ASP.NET Web API](service-fabric-reliable-services-communication-webapi.md) für C#-Anwendungen. In C# geschriebene Clients können `ICommunicationClient`die Klassen `ServicePartitionClient` verwenden, wobei für Java die `CommunicationClient`- und `FabricServicePartitionClient`-Klassen [für die Dienstauflösung, HTTP-Verbindungen und Wiederholungsschleifen](service-fabric-reliable-services-communication.md) verwendet werden sollten.
+* **WCF**: Wenn der vorhandene Code das WCF-Kommunikationsframework verwendet, können Sie `WcfCommunicationListener` für den Server und die Klassen `WcfCommunicationClient` und `ServicePartitionClient` für den Client verwenden. Dies ist jedoch nur für C#-Anwendungen für Windows-basierte Cluster verfügbar. Weitere Informationen finden Sie in folgenden Artikel: [WCF-basierter Kommunikationsstapel für Reliable Services](service-fabric-reliable-services-communication-wcf.md).
 
 ## <a name="using-custom-protocols-and-other-communication-frameworks"></a>Verwenden benutzerdefinierter Protokolle und anderer Kommunikationsframeworks
 Dienste können beliebige Protokolle oder Frameworks für die Kommunikation nutzen, unabhängig davon, ob es sich um ein benutzerdefiniertes binäres Protokoll über TCP-Sockets oder Streamingereignisse über [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) oder [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) handelt. Service Fabric bietet Kommunikations-APIs, an die Sie Ihren Kommunikationsstapel anschließen können, wobei Sie sich nicht um das Ermitteln und Verbinden kümmern müssen. Weitere Informationen finden Sie im folgenden Artikel: [Das Reliable Service-Kommunikationsmodell](service-fabric-reliable-services-communication.md) .
@@ -136,9 +173,4 @@ Lesen Sie mehr über die Konzepte und APIs im [Reliable Services-Kommunkationsmo
 [5]: ./media/service-fabric-connect-and-communicate-with-services/loadbalancerport.png
 [7]: ./media/service-fabric-connect-and-communicate-with-services/distributedservices.png
 [8]: ./media/service-fabric-connect-and-communicate-with-services/loadbalancerprobe.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

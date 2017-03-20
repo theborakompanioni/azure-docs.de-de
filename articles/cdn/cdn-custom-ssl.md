@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/03/2017
 ms.author: casoper
 translationtype: Human Translation
-ms.sourcegitcommit: aea6f0fedb447e953b9db40342e5091bd35486af
-ms.openlocfilehash: 9b80ae8c247480e69025b86fac322166a4d5cb4c
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: b334ba6bbec1d0a7e23a514174bffae01c7fff05
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -59,7 +60,13 @@ Zu den zentralen Attributen des HTTPS-Features zählen unter anderem folgende:
 >[!IMPORTANT] 
 >HTTPS wird für Ihre benutzerdefinierte Domäne erst nach Abschluss der Domänenüberprüfung aktiviert. Die Genehmigung der Domäne muss innerhalb von sechs Werktagen erfolgen. Liegt nach sechs Werktagen keine Genehmigung vor, wird die Anforderung storniert.  
 
-Nach der Aktivierung von HTTPS für Ihre benutzerdefinierte Domäne überprüft DigiCert (unser HTTPS-Zertifikatanbieter), ob die Domäne wirklich Ihnen gehört. Hierzu setzt sich DigiCert entweder per E-Mail (Standardverfahren) oder telefonisch mit dem Registrant für Ihre Domäne in Verbindung, der in den WHOIS-Registranteninformationen angegeben ist. Falls die WHOIS-Registranteninformationen privat sind, sendet DigiCert die Überprüfungs-E-Mail an **admin@*<Ihr-Domänenname.com>***.
+Nach der Aktivierung von HTTPS für Ihre benutzerdefinierte Domäne überprüft DigiCert (unser HTTPS-Zertifikatanbieter), ob die Domäne wirklich Ihnen gehört. Hierzu setzt sich DigiCert entweder per E-Mail (Standardverfahren) oder telefonisch mit dem Registrant für Ihre Domäne in Verbindung, der in den WHOIS-Registranteninformationen angegeben ist. DigiCert sendet die Bestätigungs-E-Mail an unten stehende Adressen. Falls die WHOIS-Registranteninformationen privat sind, müssen Sie sicherstellen, dass Sie die Bestätigung direkt aus einer dieser Adressen vornehmen können.
+
+>admin@<ihr-domänenname.com> administrator@<ihr-domänenname.com>  
+>webmaster@<ihr-domänenname.com>  
+>hostmaster@<ihr-domänenname.com>  
+>postmaster@<ihr-domänenname.com>
+
 
 Nach Erhalt der E-Mail haben Sie zwei Optionen:
 
@@ -104,10 +111,5 @@ Nach der Überprüfung des Domänennamens dauert es bis zu sechs bis acht Stunde
 
 - Informieren Sie sich, wie Sie eine [benutzerdefinierte Domäne für Ihren Azure CDN-Endpunkt](./cdn-map-content-to-custom-domain.md) einrichten.
 
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

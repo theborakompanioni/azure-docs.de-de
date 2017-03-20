@@ -16,9 +16,9 @@ ms.workload: na
 ms.date: 02/02/2017
 ms.author: glenga
 translationtype: Human Translation
-ms.sourcegitcommit: ab0b218a99ab3ff98edfa075eabbd3eb2c2bd1d4
-ms.openlocfilehash: 996fc80ff926117dc12180efe1949b3dbeba3f91
-ms.lasthandoff: 02/06/2017
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 4ee741cbec8db6b6400ff9f27daa2a0120bd2618
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -46,7 +46,12 @@ Eine Funktions-App hostet die Ausführung Ihrer Funktionen in Azure. Falls Sie n
 
 3. Klicken Sie auf **Erstellen** , um die neue Funktionen-App bereitzustellen.  
 
-Nach der Bereitstellung der Funktionen-App können Sie Ihre erste Funktion erstellen.
+### <a name="storage-account-requirements"></a>Anforderungen an das Speicherkonto
+
+Beim Erstellen einer Funktionen-App müssen Sie ein allgemeines Azure Storage-Konto erstellen oder verknüpfen, das Blob-, Warteschlangen- und Tabellenspeicher unterstützt. Intern verwendet Azure Functions Azure Storage für Vorgänge wie das Verwalten von Triggern und Ausführungen von Protokollierfunktionen. Manche Speicherkonten unterstützen keine Warteschlangen und Tabellen, wie z.B. reine Blobspeicherkonten (darunter Storage Premium) und allgemeine Speicherkonten mit Replikation von ZRS. Diese Konten werden aus dem Blatt „Speicherkonto“ herausgefiltert, wenn eine neue Funktionen-App erstellt wird.
+Wenn der verbrauchsbasierte Hostingplan verwendet wird, wird der Inhalt von Funktionen-Apps (z.B. Funktionscodedateien und Bindungskonfigurationen) in Azure Files-Freigaben auf dem Hauptspeicherkonto gespeichert. Wenn Sie das Hauptspeicherkonto löschen, wird dieser Inhalt ebenfalls gelöscht und kann nicht wiederhergestellt werden.
+
+Weitere Informationen zu Typen von Speicherkonten finden Sie unter [Einführung in die Azure Storage-Dienste] (../storage/storage-introduction.md#introducing-the-azure-storage-services).
 
 ## <a name="create-a-function"></a>Erstellen einer Funktion
 In diesen Schritten wird mithilfe des Schnellstarts von Azure Functions eine Funktion erstellt.
@@ -56,6 +61,7 @@ In diesen Schritten wird mithilfe des Schnellstarts von Azure Functions eine Fun
     ![](./media/functions-create-first-azure-function-azure-portal/function-app-quickstart-node-webhook.png)
 
 2. (Optional) Nun können Sie auswählen, ob Sie eine kurze Übersicht über die Features von Azure Functions im Portal erhalten möchten.    Nachdem Sie die Schnelleinführung durchlaufen oder übersprungen haben, können Sie Ihre neue Funktion mit dem HTTP-Trigger testen.
+
 
 ## <a name="test-the-function"></a>Testen der Funktion
 [!INCLUDE [Functions quickstart test](../../includes/functions-quickstart-test.md)]

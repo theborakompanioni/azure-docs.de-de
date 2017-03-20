@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/31/2016
 ms.author: trinadhk;markgal;
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: e12d533ac5befe020c0aad4aa64ca9ed50349c3d
-ms.openlocfilehash: bea1012fcd63b15ebfb5137dcfbd7e868c4e060f
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 82b7541ab1434179353247ffc50546812346bda9
+ms.openlocfilehash: d00235d788dbe1674eac219a7c708a8ecd53ccc5
+ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="manage-and-monitor-azure-virtual-machine-backups"></a>Verwalten und Überwachen der Sicherung von virtuellen Azure-Computern
+# <a name="manage-common-azure-backup-jobs-and-trigger-alerts-in-the-classic-portal"></a>Verwalten von häufigen Azure Backup-Sicherungsaufträgen und Warnungen im klassischen Portal
 > [!div class="op_single_selector"]
 > * [Verwalten von Azure-VM-Sicherungen](backup-azure-manage-vms.md)
 > * [Verwalten von klassischen VM-Sicherungen](backup-azure-manage-vms-classic.md)
@@ -239,7 +240,7 @@ Ereignisbasierte Warnungen unterliegen den folgenden Einschränkungen:
 
 1. Warnungen werden auf allen virtuellen Computern im Sicherungstresor ausgelöst. Sie können diese Einstellung nicht so anpassen, dass Sie Warnungen für eine bestimmte Gruppe von virtuellen Computern in einem Sicherungstresor erhalten.
 2. Dieses Feature befindet sich in der Vorschau. [Weitere Informationen](../monitoring-and-diagnostics/insights-powershell-samples.md#create-alert-rules)
-3. Sie erhalten Warnungen von "alerts-noreply@mail.windowsazure.com". Sie können den E-Mail-Absender derzeit nicht ändern.
+3. Sie erhalten Warnungen von „alerts-noreply@mail.windowsazure.com“. Sie können den E-Mail-Absender derzeit nicht ändern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Wiederherstellen virtueller Azure-Computer](backup-azure-restore-vms.md)

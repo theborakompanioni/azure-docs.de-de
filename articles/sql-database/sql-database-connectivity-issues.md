@@ -17,8 +17,9 @@ ms.topic: article
 ms.date: 01/20/2017
 ms.author: daleche
 translationtype: Human Translation
-ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
-ms.openlocfilehash: 7ca726f5dc67feae7eeccfdcc00b41aa95c38348
+ms.sourcegitcommit: a6489fd5ff5e60bc3a1c06485d330556250c21cd
+ms.openlocfilehash: eddbdda847d7d0cc12f3e1c6128ce76d15f6f39f
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -117,7 +118,7 @@ In der Praxis könnte Ihr Programm einen Laufzeitparameter ermitteln, der folgen
 <a id="net-sqlconnection-parameters-for-connection-retry" name="net-sqlconnection-parameters-for-connection-retry"></a>
 
 ### <a name="net-sqlconnection-parameters-for-connection-retry"></a>SqlConnection-Parameter von .NET für wiederholte Verbindungsversuche
-Wenn Ihr Clientprogramm mithilfe der .NET Framework-Klasse **System.Data.SqlClient.SqlConnection**eine Verbindung mit Azure SQL-Datenbank herstellt, sollten Sie .NET 4.6.1 oder höher verwenden, damit Sie das Feature für wiederholte Verbindungsversuche nutzen können. Details der Funktion finden Sie [hier](http://go.microsoft.com/fwlink/?linkid=393996).
+Wenn Ihr Clientprogramm mithilfe der .NET Framework-Klasse **System.Data.SqlClient.SqlConnection** eine Verbindung mit Azure SQL-Datenbank herstellt, sollten Sie .NET 4.6.1 oder höher (oder .NET Core) verwenden, damit Sie das Feature für wiederholte Verbindungsversuche nutzen können. Details der Funktion finden Sie [hier](http://go.microsoft.com/fwlink/?linkid=393996).
 
 <!--
 2015-11-30, FwLink 393996 points to dn632678.aspx, which links to a downloadable .docx related to SqlClient and SQL Server 2014.
@@ -446,10 +447,5 @@ public bool IsTransient(Exception ex)
 * Informationen zur Problembehandlung bei anderen häufigen Problemen bei der Verbindung mit Azure SQL-Datenbank erhalten Sie unter [Beheben von Verbindungsproblemen mit der Azure SQL-Datenbank](sql-database-troubleshoot-common-connection-issues.md).
 * [SQL Server-Verbindungspooling (ADO.NET)](http://msdn.microsoft.com/library/8xx3tyca.aspx)
 * [*Retrying* ist eine Apache 2.0-lizenzierte Allzweckbibliothek für Wiederholungen, die in **Python** geschrieben wurde und das Hinzufügen von Wiederholungsverhalten zu praktisch jeglichen Elementen vereinfacht.](https://pypi.python.org/pypi/retrying)
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

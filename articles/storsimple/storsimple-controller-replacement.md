@@ -4,7 +4,7 @@ description: "In diesem Thema wird erläutert, wie Sie ein oder beide Controller
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: e25b52b7-60f5-47f3-bffc-6c157d57ab5d
 ms.service: storsimple
@@ -12,11 +12,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 11/18/2016
+ms.date: 03/03/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: dcf0ff5c4d6ebb7d0aea0b9518cbbe66c9f0a649
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: 5dd5ffc7c08fcc9263b91ca5ac86de5163f91657
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -106,7 +107,8 @@ Führen Sie folgende Schritte aus, wenn einer der Controller in Ihrem Microsoft 
 
 > [!NOTE]
 > Wenn Sie das Gerät über die serielle Konsole überwachen, können mehrere Neustarts durchgeführt werden, während der Controller aus dem Austauschverfahren wiederhergestellt wird. Wenn das Menü der seriellen Konsole angezeigt wird, wissen Sie, dass der Austausch abgeschlossen ist. Wenn das Menü nicht innerhalb von zwei Stunden nach Beginn des Controlleraustauschs angezeigt wird, [wenden Sie sich an den Microsoft Support Service](storsimple-contact-microsoft-support.md).
-> 
+>
+> Ab Update 4 können Sie auch das Cmdlet `Get-HCSControllerReplacementStatus` in der Windows PowerShell-Schnittstelle des Geräts verwenden, um den Status des Austauschvorgangs der Controller zu überwachen.
 > 
 
 ## <a name="replace-both-controllers"></a>Austauschen beider Controller
@@ -246,10 +248,5 @@ Wenn diese LED blinkt, ist der Controller aktiv, und der andere Controller befin
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum [Austauschen von StorSimple-Hardwarekomponenten](storsimple-hardware-component-replacement.md).
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

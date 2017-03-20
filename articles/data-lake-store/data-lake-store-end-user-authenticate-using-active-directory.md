@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/10/2017
+ms.date: 03/02/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 9019a4115e81a7d8f1960098b1138cd437a0460b
-ms.openlocfilehash: a50fc687a1738a55c3d22eb3e12060397c162e06
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 0f6af54b351235390afa88f1ce156abd839a723f
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -34,14 +35,16 @@ Azure Data Lake Store verwendet Azure Active Directory für die Authentifizierun
 
 Bei beiden Optionen erhält Ihre Anwendung ein OAuth 2.0-Token, das an jede an Azure Data Lake Store oder Azure Data Lake Analytics gestellte Anforderung angefügt wird.
 
-Dieser Artikel erläutert, wie Sie eine Azure AD-Webanwendung für die Authentifizierung von Endbenutzern erstellen. Für Anweisungen zur Konfiguration von Azure AD-Anwendungen für die Dienst-zu-Dienst-Authentifizierung gehen Sie auf die Seite [Authentifizieren bei Data Lake Store mithilfe von Azure Active Directory](data-lake-store-authenticate-using-active-directory.md).
+Dieser Artikel erläutert, wie Sie eine **native Azure AD-Anwendung für die Authentifizierung von Endbenutzern** erstellen. Für Anweisungen zur Konfiguration von Azure AD-Anwendungen für die Dienst-zu-Dienst-Authentifizierung gehen Sie auf die Seite [Authentifizieren bei Data Lake Store mithilfe von Azure Active Directory](data-lake-store-authenticate-using-active-directory.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Ein Azure-Abonnement. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
+
 * Ihre Abonnement-ID. Sie können sie über das Azure-Portal abrufen. Sie ist beispielsweise auf dem Blatt „Data Lake Store“ des Kontos verfügbar.
   
     ![Abrufen der Abonnement-ID](./media/data-lake-store-end-user-authenticate-using-active-directory/get-subscription-id.png)
-* Der Name Ihrer Azure AD-Domäne. Diesen können Sie bestimmen, indem Sie den Mauszeiger über dem rechten oberen Bereich im Azure-Portal bewegen. Im Screenshot unten lautet der Domänenname **contoso.microsoft.com**, und die GUID in Klammern stellt die Mandanten-ID dar. 
+
+* Der Name Ihrer Azure AD-Domäne. Diesen können Sie bestimmen, indem Sie den Mauszeiger über dem rechten oberen Bereich im Azure-Portal bewegen. Im Screenshot unten lautet der Domänenname **contoso.onmicrosoft.com**, und die GUID in Klammern stellt die Mandanten-ID dar. 
   
     ![Abrufen der AAD-Domäne](./media/data-lake-store-end-user-authenticate-using-active-directory/get-aad-domain.png)
 
@@ -63,77 +66,59 @@ Ihre Anwendung kann Azure AD Benutzeranmeldeinformationen direkt bereitstellen. 
 
 ### <a name="what-do-i-need-to-use-this-approach"></a>Was brauche ich, um diesen Ansatz zu befolgen?
 * Name Ihrer Azure AD-Domäne Dieser ist bereits in den in diesem Artikel angegebenen Voraussetzungen aufgeführt.
-* Azure AD-**Webanwendung**
-* Client-ID für die Azure AD-Webanwendung
-* Antwort-URI für die Azure AD-Webanwendung
+* **Native Azure AD-Anwendung**
+* Client-ID für die native Azure Anwendung
+* Antwort-URI für die native Azure AD-Anwendung
 * Festlegen der delegierten Berechtigungen
 
-Für Anweisungen zur Erstellung einer Azure AD-Webanwendung und um diese für die oben angegebenen Anforderungen zu konfigurieren, lesen Sie den nachfolgenden Artikel [Erstellen einer Active Directory-Anwendung](#create-an-active-directory-application). 
 
-## <a name="create-an-active-directory-application"></a>Erstellen einer Active Directory-Anwendung
-In diesem Abschnitt erfahren Sie, wie Sie eine Azure AD-Webanwendung für die Authentifizierung von Endbenutzern mit Azure Data Lake Store mithilfe von Azure Active Directory erstellen und konfigurieren können.
+## <a name="step-1-create-an-active-directory-web-application"></a>Schritt 1: Erstellen Sie eine Active Directory-Webanwendung
 
-### <a name="step-1-create-an-azure-active-directory-application"></a>Schritt 1: Erstellen Sie eine Azure Active Directory-Anwendung.
-> [!NOTE]
-> Bei den Schritten unten kommt das Azure-Portal zum Einsatz. Sie können auch eine Azure AD-Anwendung mithilfe von [Azure PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md) oder der [Azure-Befehlszeilenschnittstelle](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md) erstellen.
-> 
-> 
+Erstellen und Konfigurieren Sie eine native Azure AD-Anwendung für die Authentifizierung von Endbenutzern mit Azure Data Lake Store mithilfe von Azure Active Directory. Anweisungen finden Sie unter [Erstellen einer Azure AD-Anwendung](../azure-resource-manager/resource-group-create-service-principal-portal.md).
 
-1. Melden Sie sich über das [klassische Portal](https://manage.windowsazure.com/)bei Ihrem Azure-Konto an.
-2. Wählen Sie im linken Bereich **Active Directory** aus.
-   
-     ![Active Directory auswählen](./media/data-lake-store-end-user-authenticate-using-active-directory/active-directory.png)
-3. Wählen Sie das Active Directory aus, das Sie zum Erstellen der neuen Anwendung nutzen möchten. Wenn Sie über mehr als eine Active Directory-Instanz verfügen, möchten Sie normalerweise die Anwendung im Verzeichnis erstellen, in dem sich Ihr Abonnement befindet. Sie können nur Zugriff für die Ressource in Ihrem Abonnement für Anwendungen gewähren, die sich im selben Verzeichnis wie Ihr Abonnement befinden.  
-   
-     ![Verzeichnis wählen](./media/data-lake-store-end-user-authenticate-using-active-directory/active-directory-details.png)
-4. Klicken Sie auf **Anwendungen**, um die Anwendungen in Ihrem Verzeichnis anzuzeigen.
-   
-     ![Anwendungen anzeigen](./media/data-lake-store-end-user-authenticate-using-active-directory/view-applications.png)
-5. Wenn Sie in diesem Verzeichnis zuvor noch keine Anwendung erstellt haben, sollten Sie eine Abbildung ähnlich dieser hier sehen. Klicken Sie auf **EINE ANWENDUNG HINZUFÜGEN**
-   
-     ![Anwendung hinzufügen](./media/data-lake-store-end-user-authenticate-using-active-directory/create-application.png)
-   
-     Oder klicken Sie im unteren Bereich auf **Hinzufügen** .
-   
-     ![Hinzufügen](./media/data-lake-store-end-user-authenticate-using-active-directory/add-icon.png)
-6. Geben Sie einen Namen für die Anwendung ein, und wählen Sie den Typ der Anwendung aus, die Sie erstellen möchten. Erstellen Sie für dieses Tutorial eine **WEBANWENDUNG UND/ODER WEB-API** , und klicken Sie auf die Schaltfläche „Weiter“.
-   
-     ![Anwendung benennen](./media/data-lake-store-end-user-authenticate-using-active-directory/tell-us-about-your-application.png)
-7. Tragen Sie die Eigenschaften Ihrer Anwendung ein. Geben Sie für die **ANMELDE-URL**den URI einer Website an, die Ihre Anwendung beschreibt. Das Vorhandensein der Website wird nicht überprüft. 
-   Geben Sie für die **APP-ID URI**die URI an, die Ihre Anwendung identifiziert.
-   
-     ![Anwendungseigenschaften](./media/data-lake-store-end-user-authenticate-using-active-directory/app-properties.png)
-   
-    Klicken Sie auf das Häkchen, um den Assistenten abzuschließen und die Anwendung zu erstellen.
+Wenn Sie die Anweisungen in diesem Link befolgen, stellen Sie sicher, dass Sie beim Typ der Anwendung **Nativ** auswählen, wie auf dem folgenden Screenshot gezeigt.
 
-### <a name="step-2-get-client-id-reply-uri-and-set-delegated-permissions"></a>Schritt 2: Rufen Sie die Client-ID ab, beantworten Sie den URI, und legen Sie delegierte Berechtigungen fest
-1. Klicken Sie auf die Registrierkarte **Konfigurieren**, um das Kennwort für Ihre Anwendung zu konfigurieren.
-   
-     ![Anwendung konfigurieren](./media/data-lake-store-end-user-authenticate-using-active-directory/application-configure.png)
-2. Kopieren Sie die **CLIENT-ID**.
-   
-     ![CLIENT-ID](./media/data-lake-store-end-user-authenticate-using-active-directory/client-id.png)
-3. Kopieren Sie unter dem Abschnitt **Einmaliges Anmelden** den **Antwort-URI**.
-   
-    ![CLIENT-ID](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-get-reply-uri.png)
-4. Klicken Sie im Abschnitt **Berechtigungen für andere Anwendungen** auf **Anwendung hinzufügen**
-   
+![Erstellen einer Webanwendung](./media/data-lake-store-end-user-authenticate-using-active-directory/azure-active-directory-create-native-app.png "Erstellen einer nativen Anwendung")
+
+## <a name="step-2-get-client-id-reply-uri-and-set-delegated-permissions"></a>Schritt 2: Rufen Sie die Client-ID ab, beantworten Sie den URI, und legen Sie delegierte Berechtigungen fest
+
+Unter [Abrufen der Client-ID](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key) finden Sie Informationen, wie Sie die Client-ID (auch Anwendungs-ID genannt) der nativen Azure AD-Anwendung abrufen.
+
+Führen Sie folgende Schritte aus, um den Umleitungs-URI abzurufen.
+
+1. Wählen Sie im Azure-Portal **Azure Active Directory** aus, klicken Sie auf **App-Registrierungen**, suchen Sie die native Azure AD-Anwendung, die Sie gerade erstellt haben, und klicken Sie darauf.
+
+2. Klicken Sie auf dem Blatt **Einstellungen** der Anwendung auf **Umleitungs-URIs**.
+
+    ![Abrufen des Umleitungs-URI](./media/data-lake-store-end-user-authenticate-using-active-directory/azure-active-directory-redirect-uri.png)
+
+3. Kopieren Sie den angezeigten Wert.
+
+
+## <a name="step-3-set-permissions"></a>Schritt 3: Legen Sie Berechtigungen fest
+
+1. Wählen Sie im Azure-Portal **Azure Active Directory** aus, klicken Sie auf **App-Registrierungen**, suchen Sie die native Azure AD-Anwendung, die Sie gerade erstellt haben, und klicken Sie darauf.
+
+2. Klicken Sie auf dem Blatt **Einstellungen** der Anwendung auf **Erforderliche Berechtigungen**, und klicken Sie auf **Hinzufügen**.
+
     ![CLIENT-ID](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-1.png)
-5. Wählen Sie im Assistenten **Berechtigungen für andere Anwendungen** die Option **Azure Data Lake** und **Windows** **Azure-Service-Dienstverwaltungs-API** aus, und klicken Sie auf das Häkchen.
-6. In der Standardeinstellung sind die **delegierten Berechtigungen** für die neu hinzugefügten Dienste auf Null festgelegt. Klicken Sie auf das Dropdownfeld **Delegierte Berechtigungen** für Azure Data Lake und den Windows Azure-Verwaltungsdienst, und wählen Sie die verfügbaren Kontrollkästchen aus, um die Werte auf 1 festzulegen. Das Ergebnis sollte wie folgt aussehen:
-   
-     ![CLIENT-ID](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-2.png)
-7. Klicken Sie auf **Speichern**.
 
+3. Klicken Sie auf dem Blatt **API-Zugriff hinzufügen** auf **Hiermit wählen Sie eine API aus**, klicken Sie auf **Azure Data Lake** und anschließend auf **Auswählen**.
+
+    ![CLIENT-ID](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-2.png)
+ 
+4.  Klicken Sie auf dem Blatt **API-Zugriff hinzufügen** auf **Berechtigungen auswählen**, aktivieren Sie das Kontrollkästchen, um **Data Lake Store vollen Zugriff zu gewähren**, und klicken Sie auf **Auswählen**.
+
+    ![CLIENT-ID](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-3.png)
+
+    Klicken Sie auf **Done**.
+
+5. Wiederholen Sie die letzten beiden Schritte, um ebenfalls Berechtigungen für die **Windows Azure-Service-Verwaltungs-API** zu erteilen.
+   
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie eine Azure AD-Webanwendung erstellt und die erforderlichen Informationen gesammelt, die für Ihre Clientanwendungen nötig sind, die Sie mithilfe des .NET SDKs, des Java SDKs usw. erstellen. Sie können nun mit den nachfolgend aufgeführten Artikeln fortfahren, in denen erläutert wird, wie Sie die Azure AD-Webanwendung verwenden, um sich zum ersten Mal mit Data Lake Store authentifizieren und anschließend andere Vorgänge im Store durchführen.
 
 * [Erste Schritte mit Azure Data Lake-Speicher mithilfe des .NET SDK](data-lake-store-get-started-net-sdk.md)
 * [Erste Schritte mit Azure Data Lake Store mit dem Java SDK](data-lake-store-get-started-java-sdk.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

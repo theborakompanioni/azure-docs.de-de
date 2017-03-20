@@ -16,8 +16,9 @@ ms.topic: get-started-article
 ms.date: 02/09/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 0a09f1511778623b21a26042a752009ae2208ba6
-ms.openlocfilehash: 415f6f71642726aeb8477f067bd406a57717ff2a
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: bdc00541e55ea68f0b18456f8fa1a1ac51116d69
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -54,7 +55,7 @@ Beim folgenden Verfahren wird eine Azure Resource Manager-Vorlage verwendet, um 
      
      Andere Parameter sind optional.  
      
-     Jeder Cluster verfügt über eine Abhängigkeit von einem Azure Blob Storage-Konto. Nach dem Löschen eines Clusters bleiben die Daten im Speicherkonto erhalten. Zur Bildung des Standardnamens für das Speicherkonto des Clusters wird „store“ an den Clusternamen angehängt. Er ist im Variablenabschnitt der Vorlage hartcodiert.
+     Jeder Cluster verfügt über eine Abhängigkeit von einem Azure Storage-Konto. Nach dem Löschen eines Clusters bleiben die Daten im Speicherkonto erhalten. Zur Bildung des Standardnamens für das Speicherkonto des Clusters wird „store“ an den Clusternamen angehängt. Er ist im Variablenabschnitt der Vorlage hartcodiert.
 3. Wählen Sie **Ich stimme den oben genannten Geschäftsbedingungen zu**, und klicken Sie anschließend auf **Kaufen**. Das Erstellen eines Clusters dauert ca. 20 Minuten.
 
 > [!NOTE]
@@ -280,9 +281,4 @@ Weitere Informationen finden Sie unter:
 [img-hbase-shell]: ./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-shell.png
 [img-hbase-sample-data-tabular]: ./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-tabular.png
 [img-hbase-sample-data-bigtable]: ./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-bigtable.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

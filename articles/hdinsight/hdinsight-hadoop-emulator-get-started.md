@@ -51,7 +51,7 @@ Erweitern Sie das Archiv, um eine Sandbox einer älteren HDP-Version herunterzul
 1. Wählen Sie „Hortonworks Sandbox“, **Start** und anschließend **Normal Start** (Normaler Start) aus. Nach Abschluss des Startvorgangs für den virtuellen Computer werden Anmeldeanweisungen angezeigt.
    
     ![Normaler Start](./media/hdinsight-hadoop-emulator-get-started/normal-start.png)
-2. Öffnen Sie einen Webbrowser, und navigieren Sie zur angezeigten URL (in der Regel „http://127.0.0.1:8888“).
+2. Öffnen Sie einen Webbrowser, und navigieren Sie zur angezeigten URL (in der Regel http://127.0.0.1:8888).
 
 ## <a name="set-sandbox-passwords"></a>Festlegen der Sandbox-Kennwörter
 

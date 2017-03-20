@@ -14,13 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/30/2016
 ms.author: elioda
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
-ms.openlocfilehash: 3c9b3a9509493e8c6900d90b5ab6519de7a0721f
+ms.sourcegitcommit: 37b2a82d7f6043224e68219fde753eef73078ffd
+ms.openlocfilehash: e0f03adefe1c04b4d7b8cc2dea18f15eb3f05397
+ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="device-twins"></a>Gerätezwillinge
+# <a name="understand-and-use-device-twins-in-iot-hub"></a>Verstehen und Verwenden von Gerätezwillingen in IoT Hub
 ## <a name="overview"></a>Übersicht
 *Gerätezwillinge* sind JSON-Dokumente, in denen Gerätestatusinformationen (Metadaten, Konfigurationen und Bedingungen) gespeichert werden. IoT Hub speichert einen Gerätezwilling für jedes Gerät, das Sie mit IoT Hub verbinden. In diesem Artikel wird Folgendes beschrieben:
 
@@ -290,7 +292,7 @@ Weitere Referenzthemen im IoT Hub-Entwicklerhandbuch:
 
 * Unter [IoT Hub-Endpunkte][lnk-endpoints] werden die verschiedenen Endpunkte beschrieben, die jeder IoT-Hub für Laufzeit- und Verwaltungsvorgänge bereitstellt.
 * Unter [Drosselung und Kontingente][lnk-quotas] werden die Kontingente für den IoT Hub-Dienst und das Drosselungsverhalten beschrieben, die bei Verwendung des Diensts zu erwarten sind.
-* Unter [Azure IoT device and service SDKs][lnk-sdks] (Azure IoT SDKs für Geräte und Dienste) werden die verschiedenen Sprach-SDKs aufgelistet, die Sie bei der Entwicklung von Geräte- und Dienst-Apps für die Interaktion mit IoT Hub verwenden können.
+* Unter [Azure IoT SDKs für Geräte und Dienste][lnk-sdks] werden die verschiedenen Sprach-SDKs aufgelistet, die Sie bei der Entwicklung von Geräte- und Dienst-Apps für die Interaktion mit IoT Hub verwenden können.
 * Unter [Referenz – Abfragesprache für Zwillinge und Aufträge][lnk-query] wird die IoT Hub-Abfragesprache beschrieben, mit der Sie von IoT Hub Informationen zu Gerätezwillingen und Aufträgen abrufen können.
 * [IoT Hub-MQTT-Unterstützung][lnk-devguide-mqtt] enthält weitere Informationen zur Unterstützung für das MQTT-Protokoll in IoT Hub.
 
@@ -332,9 +334,4 @@ Wenn Sie einige der in diesem Artikel beschriebenen Konzepte ausprobieren möcht
 [lnk-reconnection]: iot-hub-devguide-device-twins.md#device-reconnection-flow
 
 [img-twin]: media/iot-hub-devguide-device-twins/twin.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

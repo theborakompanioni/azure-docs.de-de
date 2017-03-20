@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 02/28/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 5121b2f9d33ebf4749fae6d990feab3bf9244e93
-ms.openlocfilehash: 6b99dbbacd9451285cca29de4a72ffb1473479fc
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: fa7c846cf5018b5f0d918e5dc9d9020313833d77
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -53,8 +53,8 @@ In diesem Lernprogramm lernen Sie Folgendes:
 
    ![Azure-Blatt „Virtuelle Computer“](./media/virtual-machines-windows-portal-sql-server-provision/azure-compute-blade2.png)
 
-5. Überprüfen Sie die verfügbaren SQL Server-Vorlagen. Für jede Vorlage sind eine SQL Server-Version und ein Betriebssystem angegeben. 
-6. Wählen Sie die Vorlage für SQL Server 2016 SP1 Developer unter Windows Server 2016 aus.
+5. Überprüfen Sie die verfügbaren SQL Server-Images. Für jedes Image sind eine SQL Server-Version und ein Betriebssystem angegeben. 
+6. Wählen Sie das Image für SQL Server 2016 SP1 Developer unter Windows Server 2016 aus.
 
    > [!TIP]
    > In diesem Tutorial wird die Developer Edition verwendet, weil es sich um eine Edition von SQL Server mit vollem Funktionsumfang handelt, die zu Testzwecken in der Entwicklung kostenlos ist. Sie zahlen nur für die Ausführung der VM.
@@ -97,7 +97,7 @@ Geben Sie auf dem Blatt **Grundeinstellungen** die folgenden Informationen an:
     ![Blatt mit SQL-Grundeinstellungen](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-basic.png)
 
 ## <a name="2-choose-virtual-machine-size"></a>2. VM-Größe auswählen
-Wählen Sie beim Schritt **Größe** auf dem Blatt **Größe auswählen** eine Größe für den virtuellen Computer aus. Auf dem Blatt werden zuerst die empfohlenen Computergrößen angezeigt. Dies erfolgt basierend auf der von Ihnen ausgewählten Vorlage. Außerdem werden die monatlichen Kosten für die Ausführung der VM geschätzt.
+Wählen Sie beim Schritt **Größe** auf dem Blatt **Größe auswählen** eine Größe für den virtuellen Computer aus. Auf dem Blatt werden zuerst die empfohlenen Computergrößen angezeigt. Dies erfolgt basierend auf dem von Ihnen ausgewählten Image. Außerdem werden die monatlichen Kosten für die Ausführung der VM geschätzt.
 
 ![Optionen für die Größe der SQL-VM](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-vm-choose-a-size.png)
 

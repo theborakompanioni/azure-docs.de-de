@@ -16,13 +16,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/14/2016
 ms.author: stevelas
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
-ms.openlocfilehash: 848a4011fd180721cf269390b8dd7426b2287dd2
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 0433e22dc7722ef9c8edfaf949dbd9a9d8645e67
+ms.openlocfilehash: acb04a648115c6de0b5699d404ebbf24a2edeb08
+ms.lasthandoff: 03/02/2017
 
 ---
-# <a name="authenticate-with-a-container-registry"></a>Authentifizieren für eine Containerregistrierung
+# <a name="authenticate-with-a-private-docker-container-registry"></a>Authentifizieren mit einer privaten Docker-Containerregistrierung
 Sie melden sich mit dem Befehl `docker login` an, um Containerimages in einer Azure-Containerregistrierung zu verwenden. Sie können sich anmelden, indem Sie entweder einen **[Azure Active Directory-Dienstprinzipal](../active-directory/active-directory-application-objects.md)** oder ein registrierungsspezifisches **Administratorkonto** nutzen. Dieser Artikel enthält weitere Details zu diesen Identitäten. 
 
 

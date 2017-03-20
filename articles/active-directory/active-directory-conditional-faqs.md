@@ -16,6 +16,7 @@ ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 3980b99206c9f0c81ba3d03778777878e25db7c8
+ms.lasthandoff: 12/28/2016
 
 
 ---
@@ -36,10 +37,5 @@ Die Richtlinie wird zurzeit für SharePoint-Gastbenutzer nicht erzwungen. Die Ga
 
 ## <a name="does-a-conditional-access-policy-apply-to-service-accounts"></a>Gilt eine Richtlinie für bedingten Zugriff für Dienstkonten?
 **A:** Richtlinien für bedingten Zugriff gelten für alle Benutzerkonten. Dies schließt Benutzerkonten ein, die als Dienstkonten verwendet werden. In vielen Fällen kann ein unbeaufsichtigt ausgeführtes Dienstkonto keine Richtlinie erfüllen, z. B. wenn eine MFA erforderlich ist. In diesen Fällen können Dienstkonten über die Einstellungen zur Verwaltung der Richtlinie für bedingten Zugriff von einer Richtlinie ausgeschlossen werden. Hier erfahren Sie mehr über das Anwenden einer Richtlinie für Benutzer.
-
-
-
-
-<!--HONumber=Dec16_HO4-->
 
 

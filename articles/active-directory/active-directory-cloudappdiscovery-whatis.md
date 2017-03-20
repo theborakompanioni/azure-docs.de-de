@@ -17,6 +17,7 @@ ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 011cdf5f1e1b78832a8e4f18f4eef0f376860c45
+ms.lasthandoff: 12/28/2016
 
 
 ---
@@ -50,10 +51,5 @@ Informationen zu den ersten Schritten mit Cloud App Discovery finden Sie unter [
 * [Cloud App Discovery – Agent-Änderungsprotokoll ](http://social.technet.microsoft.com/wiki/contents/articles/24616.cloud-app-discovery-agent-changelog.aspx)
 * [Cloud App Discovery – Häufig gestellte Fragen](http://social.technet.microsoft.com/wiki/contents/articles/24037.cloud-app-discovery-frequently-asked-questions.aspx)
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
-
-
-
-
-<!--HONumber=Dec16_HO4-->
 
 

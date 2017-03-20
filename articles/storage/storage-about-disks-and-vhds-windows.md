@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 794f87c3d4b8378d7aeca63791a8fbfd03e44ceb
-ms.openlocfilehash: c226d43e8cc24af7c86ae13b3752bfd6fb53b1c8
+ms.sourcegitcommit: e34a2bfbf5f1ae544a729c994d91c485d48bb440
+ms.openlocfilehash: 1027f9c73a45b7d148643f5ec217683f71c4e899
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -35,15 +36,12 @@ Werfen wir einen Blick darauf, wie die Datenträger von den virtuellen Computern
 Jedem virtuellen Computer ist ein Betriebssystem-Datenträger zugeordnet. Der Datenträger ist standardmäßig als SATA-Laufwerk registriert und als Laufwerk „C:“ gekennzeichnet. Dieser Datenträger hat eine maximale Kapazität von 1023 Gigabytes (GB). 
 
 ### <a name="temporary-disk"></a>Temporärer Datenträger
-Der temporäre Datenträger wird automatisch für Sie erstellt. Der temporäre Datenträger ist standardmäßig als Laufwerk „D:“ gekennzeichnet. Er wird zum Speichern von „pagefile.sys“ verwendet. 
+Jede VM verfügt über einen temporären Datenträger. Der temporäre Datenträger bietet kurzfristigen Speicher für Anwendungen und Prozesse und ist ausschließlich dafür ausgelegt, Daten wie z.B. Seiten-oder Auslagerungsdateien zu speichern. Daten auf dem temporären Datenträger können während eines [Wartungsereignisses](../virtual-machines/virtual-machines-windows-manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-planned-vs-unplanned-maintenance) verloren gehen, oder wenn Sie [eine VM erneut bereitstellen](../virtual-machines/virtual-machines-windows-redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Während eines standardmäßigen Neustarts der VM sollten die Daten auf dem virtuellen Datenträger erhalten bleiben.
 
-Die Größe des temporären Datenträgers variiert basierend auf der Größe des virtuellen Computers. Weitere Informationen finden Sie unter [Größen für virtuelle Computer in Azure](../virtual-machines/virtual-machines-windows-sizes.md).
-
-> [!WARNING]
-> Speichern Sie keine Daten auf dem temporären Datenträger. Er dient als temporärer Speicher für Anwendungen und Prozesse und ist ausschließlich dafür ausgelegt, Daten wie z.B. Seiten-oder Auslagerungsdateien zu speichern. Informationen zum erneuten Zuordnen dieses Datenträgers zu einem anderen Laufwerkbuchstaben finden Sie unter [Ändern des Laufwerkbuchstabens des temporären Windows-Datenträgers](../virtual-machines/virtual-machines-windows-classic-change-drive-letter.md).
-> 
+Der temporäre Datenträger ist standardmäßig als Laufwerk „D:“ gekennzeichnet. Er wird zum Speichern von „pagefile.sys“ verwendet. Informationen zum erneuten Zuordnen dieses Datenträgers zu einem anderen Laufwerkbuchstaben finden Sie unter [Ändern des Laufwerkbuchstabens des temporären Windows-Datenträgers](../virtual-machines/virtual-machines-windows-classic-change-drive-letter.md). Die Größe des temporären Datenträgers variiert basierend auf der Größe des virtuellen Computers. Weitere Informationen finden Sie unter [Größen für virtuelle Computer in Azure](../virtual-machines/virtual-machines-windows-sizes.md).
 
 Weitere Informationen zur Verwendung des temporären Datenträgers in Azure finden Sie unter [Understanding the temporary drive on Microsoft Azure Virtual Machines](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
+
 
 ### <a name="data-disk"></a>Datenträger
 Ein Datenträger ist eine VHD, die zum Speichern von Anwendungsdaten oder anderen Daten, die Sie aufbewahren müssen, an einen virtuellen Computer angebunden ist. Datenträger werden als SCSI-Laufwerke registriert und mit einem von Ihnen ausgewählten Buchstaben gekennzeichnet. Jeder Datenträger hat eine maximale Kapazität von 1023 GB. Die Größe des virtuellen Computers bestimmt die Anzahl der Datenträger, die Sie anfügen können, und den Typ des Speichers, den Sie zum Hosten der Datenträger verwenden können.
@@ -80,10 +78,5 @@ fsutil behavior set DisableDeleteNotify 0
 * [Anfügen eines Datenträgers](../virtual-machines/virtual-machines-windows-attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) , um zusätzlichen Speicherplatz für den virtuellen Computer hinzuzufügen.
 * [Hochladen eines Windows-VM-Images in Azure](../virtual-machines/virtual-machines-windows-upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) , das beim Erstellen eines neuen virtuellen Computers verwendet wird.
 * [Ändern des Laufwerkbuchstabens des temporären Windows-Datenträgers](../virtual-machines/virtual-machines-windows-classic-change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) , damit die Anwendung das Laufwerk „D:“ für Daten verwenden kann.
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

@@ -14,14 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/22/2017
 ms.author: nberdy
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 3f3ff3d196e9c640e9bd7cf01f9f1218c774ec6b
-ms.openlocfilehash: c06c43d430760a56d08dc0c2f9d158f4124db6d3
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 37b2a82d7f6043224e68219fde753eef73078ffd
+ms.openlocfilehash: a736be397e07a1ea98819f6e016df8c0c7c637eb
+ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="iot-hub-metrics"></a>IoT Hub-Metriken
+# <a name="understand-iot-hub-metrics"></a>Grundlegendes zu IoT Hub-Metriken
 IoT Hub-Metriken liefern bessere Daten zum Zustand der Azure IoT-Ressourcen in Ihrem Azure-Abonnement. Auf der Grundlage von IoT Hub-Metriken können Sie die allgemeine Integrität des IoT Hub-Diensts und der mit ihm verbundenen Geräte beurteilen. Benutzerorientierte Statistiken spielen eine wichtige Rolle. Sie bieten die Basis, um die Vorgänge in Ihrem IoT Hub zu erkennen und Probleme zu beheben, ohne den Azure-Support zu kontaktieren.
 
 Metriken sind standardmäßig aktiviert. IoT Hub-Metriken können über das Azure-Portal angezeigt werden.
@@ -40,12 +41,12 @@ IoT Hub bietet mehrere Metriken, um Ihnen einen Überblick über die Integrität
 
 |Metrik|Metrikanzeigename|Einheit|Aggregationstyp|Beschreibung|
 |---|---|---|---|---|
-|d2c.telemetry.Ingress.allProtocol|Telemetry message send attempts (Versuche zum Senden von Telemetrienachrichten)|Count|Gesamt|Anzahl von Telemetrienachrichten vom Gerät an die Cloud, die an Ihren IoT Hub gesendet werden sollten|
+|d2c.telemetry.Ingress.allProtocol|Telemetry message send attempts (Sendeversuche für Telemetrienachrichten)|Count|Gesamt|Anzahl von Telemetrienachrichten vom Gerät an die Cloud, die an Ihren IoT Hub gesendet werden sollten|
 |d2c.telemetry.ingress.success|Telemetry messages sent (Gesendete Telemetrienachrichten)|Count|Gesamt|Anzahl von Telemetrienachrichten vom Gerät an die Cloud, die erfolgreich an Ihren IoT Hub gesendet wurden|
 |c2d.commands.egress.complete.success|Commands completed (Abgeschlossene Befehle)|Count|Gesamt|Anzahl von Befehlen von der Cloud an das Gerät, die vom Gerät erfolgreich abgeschlossen wurden|
 |c2d.commands.egress.abandon.success|Commands abandoned (Abgebrochene Befehle)|Count|Gesamt|Anzahl von Befehlen von der Cloud an das Gerät, die vom Gerät abgebrochen wurden|
 |c2d.commands.egress.reject.success|Commands rejected (Abgelehnte Befehle)|Count|Gesamt|Anzahl von Befehlen von der Cloud an das Gerät, die vom Gerät abgelehnt wurden|
-|devices.totalDevices|Total devices (Gesamtanzahl von Geräten)|Count|Gesamt|Die Anzahl von Geräten, die beim IoT Hub registriert sind|
+|devices.totalDevices|Total devices (Geräte gesamt)|Count|Gesamt|Die Anzahl von Geräten, die beim IoT Hub registriert sind|
 |devices.connectedDevices.allProtocol|Verbundene Geräte|Count|Gesamt|Die Anzahl von Geräten, die mit dem IoT Hub verbunden sind|
 |d2c.telemetry.egress.success|Telemetry messages delivered (Übermittelte Telemetrienachrichten)|Count|Gesamt|Erfolgreich auf Endpunkte geschriebene Nachrichten (Häufigkeit gesamt)|
 |d2c.telemetry.egress.dropped|Dropped messages (Gelöschte Nachrichten)|Count|Gesamt|Gibt die Anzahl von Nachrichten an, die gelöscht wurden, weil sich keine Routenübereinstimmung ergeben hat und die Fallbackroute deaktiviert war.|

@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/03/2016
+ms.date: 03/03/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
-ms.openlocfilehash: ba615e296c39ccdd15f5867681f7274feb5478b0
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 3c3c7924655f5b932be2a3d947a4df786fc0630d
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -24,7 +25,7 @@ ms.openlocfilehash: ba615e296c39ccdd15f5867681f7274feb5478b0
 [!INCLUDE [storage-selector-portal-enable-and-view-metrics](../../includes/storage-selector-portal-enable-and-view-metrics.md)]
 
 ## <a name="overview"></a>Übersicht
-Standardmäßig sind für Ihre Speicherdienste keine Speichermetriken aktiviert. Sie können die Überwachung mithilfe des [klassischen Azure-Portals](https://manage.windowsazure.com), über Windows PowerShell oder programmgesteuert über eine Speicher-API aktivieren.
+Speichermetriken sind standardmäßig aktiviert, wenn Sie ein neues Speicherkonto erstellen. Sie können die Überwachung mithilfe des [klassischen Azure-Portals](https://manage.windowsazure.com), über Windows PowerShell oder programmgesteuert über eine Speicher-API konfigurieren.
 
 Wenn Sie Speichermetriken aktivieren, müssen Sie einen Aufbewahrungszeitraum für die Daten auswählen: Dieser Zeitraum bestimmt, wie lange der Speicherdienst die Metriken beibehält und Speicherplatz abgerechnet wird, der für ihre Speicherung erforderlich ist. Normalerweise sollten Sie einen kürzeren Aufbewahrungszeitraum für minütliche Metriken als für stündliche Metriken auswählen, weil für minütliche Metriken eine erhebliche Menge an zusätzlichem Speicherplatz erforderlich ist. Sie sollten den Aufbewahrungszeitraum so auswählen, dass ausreichend Zeit zum Analysieren der Daten und zum Herunterladen von Metriken verfügbar ist, die Sie für die Offlineanalyse oder zur Berichterstellung verwenden möchten. Denken Sie daran, dass auch für das Herunterladen von Metrikdaten aus Ihrem Speicherkonto Kosten anfallen.
 
@@ -190,8 +191,3 @@ Die von den Metriktabellen verwendete Kapazität ist ebenfalls kostenpflichtig: 
 
 ## <a name="next-steps"></a>Nächste Schritte:
 [Aktivieren der Protokollierung von Speicheranalysen und Zugreifen auf Protokolldaten](https://msdn.microsoft.com/library/dn782840.aspx)
-
-
-<!--HONumber=Dec16_HO1-->
-
-

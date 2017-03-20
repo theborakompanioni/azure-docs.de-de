@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2016
+ms.date: 02/22/2017
 ms.author: syamk
 translationtype: Human Translation
-ms.sourcegitcommit: a6aadaae2a9400dc62ab277d89d9a9657833b1b7
-ms.openlocfilehash: bf58d333e81fb76ffc3cca8a8e1ccb3f71ac72c9
+ms.sourcegitcommit: 4f8235ae743a63129799972ca1024d672faccbe9
+ms.openlocfilehash: 7c32d69f3d6d2cc60f830db96b6aea47ce8712ca
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -26,7 +27,11 @@ Jetzt verfügbar: [Rechner für Anforderungseinheiten](https://www.documentdb.co
 ![Durchsatzrechner][5]
 
 ## <a name="introduction"></a>Einführung
-Dieser Artikel bietet einen Überblick über Anforderungseinheiten in [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/). 
+[Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) ist ein vollständig verwalteter, skalierbarer NoSQL-Datenbankdienst für JSON-Dokumente. Mit DocumentDB müssen Sie keine virtuellen Computer mieten, Software bereitstellen oder Datenbanken überwachen. DocumentDB wird von Microsoft-Entwicklern betrieben und ständig überwacht, um erstklassige Verfügbarkeit, Leistung und Datensicherheit zu gewährleisten. Daten in DocumentDB werden innerhalb von Sammlungen gespeichert. Dabei handelt es sich um flexible, hochverfügbare Container. Anstatt auf Hardwareressourcen wie CPU, Arbeitsspeicher und IOPs für eine Sammlung zu achten und zu verwalten, können Sie Durchsatz im Hinblick auf Anforderungen pro Sekunde reservieren. DocumentDB verwaltet automatisch die Bereitstellung, transparente Partitionierung und Skalierung Ihrer Sammlung, um die bereitgestellte Anzahl von Anforderungen zu bedienen. 
+
+DocumentDB unterstützt eine Reihe von APIs für Lese- und Schreibvorgänge, Abfragen und Ausführungen von gespeicherten Prozeduren. Da nicht alle Anforderungen gleich sind, wird ihnen eine normalisierte Menge von **Anforderungseinheiten** zugewiesen, die auf dem für das Bedienen der Anforderung erforderlichen Rechenaufwand basiert. Die Anzahl der Anforderungseinheiten für einen Vorgang ist deterministisch, und Sie können die Anzahl der von den einzelnen Vorgängen genutzten Anforderungseinheiten in DocumentDB über einen Antwortheader verfolgen.
+
+Für jede Sammlung in DocumentDB kann Durchsatz reserviert werden, der auch in Form von Anforderungseinheiten ausgedrückt wird. Dieser Durchsatz wird in Blöcken von 100 Anforderungseinheiten pro Sekunde ausgedrückt und kann von Hunderten bis zu Millionen von Anforderungseinheiten pro Sekunde reichen. Der bereitgestellte Durchsatz kann während der gesamten Lebensdauer einer Sammlung angepasst werden, um sie auf die veränderten Verarbeitungsanforderungen und Zugriffsmuster der Anwendung abzustimmen. 
 
 Nach Lesen dieses Artikels können Sie die folgenden Fragen beantworten:  
 
@@ -47,9 +52,45 @@ Wir empfehlen Ihnen, sich zunächst das folgende Video anzusehen, in dem Aravind
 > 
 
 ## <a name="specifying-request-unit-capacity"></a>Angeben der Kapazität der Anforderungseinheiten
-Wenn Sie eine DocumentDB-Sammlung erstellen, geben Sie die Anzahl von Anforderungseinheiten pro Sekunde (Request Units, RUs) an, die für die Sammlung reserviert werden sollen.  Sobald die Sammlung erstellt wurde, ist die vollständige Zuweisung von RUs für die Sammlung reserviert.  Für jede Sammlung werden dedizierte und isolierte Durchsatzmerkmale garantiert.  
+Wenn Sie eine DocumentDB-Sammlung erstellen, geben Sie die Anzahl von Anforderungseinheiten (Request Units, RUs) pro Sekunde an, die für die Sammlung reserviert werden sollen. Basierend auf dem bereitgestellten Durchsatz ordnet DocumentDB physische Partitionen zum Hosten Ihrer Sammlung zu, und Daten werden gemäß ihres Wachstums zwischen Partitionen aufgeteilt/neu verteilt.
 
-Beachten Sie, dass DocumentDB mit einem Reservierungsmodell arbeitet. Ihnen wird also der für die Sammlung *reservierte* Durchsatz berechnet, unabhängig davon, wie viel von diesem Durchsatz aktiv *verwendet* wird.  Bedenken Sie jedoch, dass Sie die Menge reservierter RUs über DocumentDB-SDKs oder über das [Azure-Portal](https://portal.azure.com) ganz leicht zentral hoch- oder herunterskalieren können, wenn sich die Auslastung, die Daten und die Nutzungsmuster Ihrer Anwendung verändern.  Weitere Informationen zum zentralen Hoch- und Herunterskalieren des Durchsatzes finden Sie unter [Leistungsebenen in DocumentDB](documentdb-performance-levels.md).
+DocumentDB erfordert die Angabe eines Partitionsschlüssels, wenn eine Sammlung mit 10.000 oder mehr Anforderungseinheiten bereitgestellt wird. Ein Partitionsschlüssel ist auch erforderlich, um den Durchsatz Ihrer Sammlung künftig auf über 10.000 Anforderungseinheiten zu skalieren. Das Konfigurieren eines [Partitionsschlüssels](documentdb-partition-data.md) beim Erstellen einer Sammlung wird daher unabhängig von Ihrem ursprünglichen Durchsatz dringend empfohlen. Da Ihre Daten möglicherweise auf mehrere Partitionen aufgeteilt werden müssen, ist es notwendig, einen Partitionsschlüssel mit hoher Kardinalität (Hunderte bis Millionen von unterschiedlichen Werten) auszuwählen, damit Ihre Sammlung und die Anforderungen von DocumentDB gleichmäßig skaliert werden können. 
+
+> [!NOTE]
+> Ein Partitionsschlüssel ist eine logische Grenze, keine physische. Daher müssen Sie die Anzahl der unterschiedlichen Partitionsschlüsselwerte nicht beschränken. Es ist in der Tat besser, mehr unterschiedliche Partitionschlüsselwerte zu haben, da DocumentDB dann mehr Optionen für den Lastenausgleich zur Verfügung stehen.
+
+Hier sehen Sie einen Codeausschnitt zum Erstellen einer Sammlung mit 3.000 Anforderungseinheiten pro Sekunde mit .NET SDK:
+
+```C#
+DocumentCollection myCollection = new DocumentCollection();
+myCollection.Id = "coll";
+myCollection.PartitionKey.Paths.Add("/deviceId");
+
+await client.CreateDocumentCollectionAsync(
+    UriFactory.CreateDatabaseUri("db"),
+    myCollection,
+    new RequestOptions { OfferThroughput = 3000 });
+```
+
+DocumentDB wird mit einem Reservierungsmodell für den Durchsatz ausgeführt. Ihnen wird also der für die Sammlung *reservierte* Durchsatz berechnet, unabhängig davon, wie viel von diesem Durchsatz aktiv *verwendet* wird. Sie können die Menge reservierter RUs über DocumentDB-SDKs oder über das [Azure-Portal](https://portal.azure.com) ganz leicht zentral hoch- oder herunterskalieren, wenn sich die Auslastung, die Daten und die Nutzungsmuster Ihrer Anwendung verändern.
+
+Jede Sammlung ist einer `Offer`-Ressource in DocumentDB zugeordnet, die Metadaten zu dem von der Sammlung bereitgestellten Durchsatz enthält. Sie können den reservierten Durchsatz ändern, indem Sie die entsprechende Angebotsressource für eine Sammlung suchen und mit dem neuen Durchsatzwert aktualisieren. Hier sehen Sie einen Codeausschnitt zum Ändern des Durchsatzes einer Sammlung auf 5.000 Anforderungseinheiten pro Sekunde mithilfe von .NET SDK:
+
+```C#
+// Fetch the resource to be updated
+Offer offer = client.CreateOfferQuery()
+                .Where(r => r.ResourceLink == collection.SelfLink)    
+                .AsEnumerable()
+                .SingleOrDefault();
+
+// Set the throughput to 5000 request units per second
+offer = new OfferV2(offer, 5000);
+
+// Now persist these changes to the database by replacing the original resource
+await client.ReplaceOfferAsync(offer);
+```
+
+Die Durchsatzänderung hat keine Auswirkungen auf die Verfügbarkeit Ihrer Sammlung. In der Regel wird der neue reservierte Durchsatz innerhalb von Sekunden nach der Anwendung des neuen Durchsatzes wirksam.
 
 ## <a name="request-unit-considerations"></a>Aspekte zu Anforderungseinheiten
 Beim Abschätzen der Anzahl von Anforderungseinheiten, die für Ihre DocumentDB-Sammlung reserviert werden soll, sollten Sie unbedingt die folgenden Variablen berücksichtigen:
@@ -69,6 +110,55 @@ Eine Anforderungseinheit ist eine normalisierte Kennzahl für die Anforderungsve
 > Die Baseline einer Anforderungseinheit für ein Dokument von 1 KB entspricht einem einfachen GET-Vorgang per „self link“ oder ID des Dokuments.
 > 
 > 
+
+In der Tabelle unten ist beispielsweise angegeben, wie viele Anforderungseinheiten bei drei unterschiedlichen Dokumentgrößen (1 KB, 4 KB und 64 KB) und bei zwei unterschiedlichen Leistungsebenen (500 Lesevorgänge/Sekunde + 100 Schreibvorgänge/Sekunde und 500 Lesevorgänge/Sekunde + 500 Schreibvorgänge/Sekunde) bereitgestellt werden sollten. Für die Datenkonsistenz wurde „Session“ konfiguriert, und die Indizierungsrichtlinie wurde auf „None“ festgelegt.
+
+<table border="0" cellspacing="0" cellpadding="0">
+    <tbody>
+        <tr>
+            <td valign="top"><p><strong>Dokumentgröße</strong></p></td>
+            <td valign="top"><p><strong>Lesevorgänge/Sekunde</strong></p></td>
+            <td valign="top"><p><strong>Schreibvorgänge/Sekunde</strong></p></td>
+            <td valign="top"><p><strong>Anforderungseinheiten</strong></p></td>
+        </tr>
+        <tr>
+            <td valign="top"><p>1 KB</p></td>
+            <td valign="top"><p>500</p></td>
+            <td valign="top"><p>100</p></td>
+            <td valign="top"><p>(500 * 1) + (100 * 5) = 1.000 RU/s</p></td>
+        </tr>
+        <tr>
+            <td valign="top"><p>1 KB</p></td>
+            <td valign="top"><p>500</p></td>
+            <td valign="top"><p>500</p></td>
+            <td valign="top"><p>(500 * 5) + (100 * 5) = 3.000 RU/s</p></td>
+        </tr>
+        <tr>
+            <td valign="top"><p>4 KB</p></td>
+            <td valign="top"><p>500</p></td>
+            <td valign="top"><p>100</p></td>
+            <td valign="top"><p>(500 * 1.3) + (100 * 7) = 1.350 RU/s</p></td>
+        </tr>
+        <tr>
+            <td valign="top"><p>4 KB</p></td>
+            <td valign="top"><p>500</p></td>
+            <td valign="top"><p>500</p></td>
+            <td valign="top"><p>(500 * 1.3) + (500 * 7) = 4.150 RU/s</p></td>
+        </tr>
+        <tr>
+            <td valign="top"><p>64 KB</p></td>
+            <td valign="top"><p>500</p></td>
+            <td valign="top"><p>100</p></td>
+            <td valign="top"><p>(500 * 10) + (100 * 48) = 9.800 RU/s</p></td>
+        </tr>
+        <tr>
+            <td valign="top"><p>64 KB</p></td>
+            <td valign="top"><p>500</p></td>
+            <td valign="top"><p>500</p></td>
+            <td valign="top"><p>(500 * 10) + (500 * 48) = 29.000 RU/s</p></td>
+        </tr>
+    </tbody>
+</table>
 
 ### <a name="use-the-request-unit-calculator"></a>Verwenden des Rechners für Anforderungseinheiten
 Damit Kunden ihre Durchsatzschätzungen optimieren können, gibt es einen webbasierten [Rechner für Anforderungseinheiten](https://www.documentdb.com/capacityplanner) , um den Bedarf an Anforderungseinheiten für normale Vorgänge zu schätzen, einschließlich:
@@ -99,7 +189,7 @@ Die Verwendung des Tools ist einfach:
 > 
 
 ### <a name="use-the-documentdb-request-charge-response-header"></a>Verwenden des DocumentDB-Antwortheaders „request-charge“
-Jede Antwort des DocumentDB-Diensts enthält einen benutzerdefinierten Header (x-ms-request-charge), der die für die Anforderung verbrauchten Anforderungseinheiten enthält. Auf diesen Header kann auch über die DocumentDB-SDKs zugegriffen werden. Im .Net SDK ist „RequestCharge“ eine Eigenschaft des ResourceResponse-Objekts.  Für Abfragen stellt der DocumentDB-Abfrage-Explorer im Azure-Portal Informationen zu Anforderungsgebühren für ausgeführten Abfragen bereit.
+Jede Antwort des DocumentDB-Diensts enthält einen benutzerdefinierten Header (`x-ms-request-charge`), der die für die Anforderung verbrauchten Anforderungseinheiten enthält. Auf diesen Header kann auch über die DocumentDB-SDKs zugegriffen werden. Im .Net SDK ist „RequestCharge“ eine Eigenschaft des ResourceResponse-Objekts.  Für Abfragen stellt der DocumentDB-Abfrage-Explorer im Azure-Portal Informationen zu Anforderungsgebühren für ausgeführten Abfragen bereit.
 
 ![Untersuchen der berechneten RUs im Abfrage-Explorer][1]
 
@@ -122,53 +212,55 @@ Beispiel:
 ## <a name="a-request-unit-estimation-example"></a>Beispiel für die Schätzung von Anforderungseinheiten
 Betrachten Sie das folgende Dokument von&1; KB:
 
+```JSON
+{
+ "id": "08259",
+  "description": "Cereals ready-to-eat, KELLOGG, KELLOGG'S CRISPIX",
+  "tags": [
     {
-     "id": "08259",
-      "description": "Cereals ready-to-eat, KELLOGG, KELLOGG'S CRISPIX",
-      "tags": [
-        {
-          "name": "cereals ready-to-eat"
-        },
-        {
-          "name": "kellogg"
-        },
-        {
-          "name": "kellogg's crispix"
-        }
-    ],
-      "version": 1,
-      "commonName": "Includes USDA Commodity B855",
-      "manufacturerName": "Kellogg, Co.",
-      "isFromSurvey": false,
-      "foodGroup": "Breakfast Cereals",
-      "nutrients": [
-        {
-          "id": "262",
-          "description": "Caffeine",
-          "nutritionValue": 0,
-          "units": "mg"
-        },
-        {
-          "id": "307",
-          "description": "Sodium, Na",
-          "nutritionValue": 611,
-          "units": "mg"
-        },
-        {
-          "id": "309",
-          "description": "Zinc, Zn",
-          "nutritionValue": 5.2,
-          "units": "mg"
-        }
-      ],
-      "servings": [
-        {
-          "amount": 1,
-          "description": "cup (1 NLEA serving)",
-          "weightInGrams": 29
-        }
-      ]
+      "name": "cereals ready-to-eat"
+    },
+    {
+      "name": "kellogg"
+    },
+    {
+      "name": "kellogg's crispix"
     }
+  ],
+  "version": 1,
+  "commonName": "Includes USDA Commodity B855",
+  "manufacturerName": "Kellogg, Co.",
+  "isFromSurvey": false,
+  "foodGroup": "Breakfast Cereals",
+  "nutrients": [
+    {
+      "id": "262",
+      "description": "Caffeine",
+      "nutritionValue": 0,
+      "units": "mg"
+    },
+    {
+      "id": "307",
+      "description": "Sodium, Na",
+      "nutritionValue": 611,
+      "units": "mg"
+    },
+    {
+      "id": "309",
+      "description": "Zinc, Zn",
+      "nutritionValue": 5.2,
+      "units": "mg"
+    }
+  ],
+  "servings": [
+    {
+      "amount": 1,
+      "description": "cup (1 NLEA serving)",
+      "weightInGrams": 29
+    }
+  ]
+}
+```
 
 > [!NOTE]
 > Dokumente werden in DocumentDB minimiert, daher beträgt die vom System berechnete Größe des obigen Dokuments etwas weniger als 1 KB.
@@ -209,7 +301,7 @@ Mit diesen Informationen können wir den RU-Bedarf für diese Anwendung angesich
 
 In diesem Fall erwarten wir einen durchschnittlichen Durchsatzbedarf von 1,275 RU/s.  Wir runden auf den nächsten Hunderter auf und würden für die Sammlung dieser Anwendung 1.300 RU/s bereitstellen.
 
-## <a name="a-idrequestratetoolargea-exceeding-reserved-throughput-limits"></a><a id="RequestRateTooLarge"></a> Überschreiten von Grenzwerten für den reservierten Durchsatz
+## <a id="RequestRateTooLarge"></a> Überschreiten von Grenzwerten für den reservierten Durchsatz
 Der Verbrauch von Anforderungseinheiten wird als Rate pro Sekunde bemessen. Für Anwendungen, die die bereitgestellte Anforderungseinheitsrate für eine Sammlung überschreiten, werden Anforderungen an die Sammlung gedrosselt, bis die Rate unter das reservierte Niveau fällt. Bei einer Drosselung beendet der Server die Anforderung präemptiv mit „RequestRateTooLargeException“ (HTTP-Statuscode 429) und gibt den x-ms-retry-after-ms-Header zurück. Darin ist die Zeitspanne in Millisekunden angegeben, die der Benutzer abwarten muss, bevor ein neuer Anforderungsversuch unternommen werden kann.
 
     HTTP Status 429
@@ -236,9 +328,4 @@ Im Artikel [Leistungs- und Skalierungstests mit Azure DocumentDB](documentdb-per
 [3]: ./media/documentdb-request-units/RUEstimatorDocuments.png
 [4]: ./media/documentdb-request-units/RUEstimatorResults.png
 [5]: ./media/documentdb-request-units/RUCalculator2.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

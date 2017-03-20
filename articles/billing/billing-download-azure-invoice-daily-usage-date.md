@@ -1,6 +1,7 @@
 ---
-title: "Abrufen von Azure-Rechnungen und täglichen Nutzungsdaten | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie Azure-Rechnungen und tägliche Nutzungsdaten abrufen."
+title: "Herunterladen von Azure-Rechnungen und täglichen Nutzungsdaten | Microsoft-Dokumentation"
+description: "Hier erfahren Sie, wie Sie Azure-Rechnungen und tägliche Nutzungsdaten herunterladen oder ansehen können."
+keywords: Rechnung, Rechnungsdownload, Azure-Rechnung, Azure-Nutzung
 services: 
 documentationcenter: 
 author: genlin
@@ -13,19 +14,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 02/28/2017
 ms.author: genli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 4d974590ee7677a4f3fcebd9e2474c99a974f663
-ms.openlocfilehash: 60ac57fd22f237b7fe62773486fe46913aca8dd0
+ms.sourcegitcommit: 9c181935e7ba897087d286bea22ebf500ef36e52
+ms.openlocfilehash: 307bfae0e7161782a9ddb97f4ca0d510fc772ab7
+ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="how-to-get-your-azure-billing-invoice-and-daily-usage-data"></a>Abrufen von Azure-Rechnungen und täglichen Nutzungsdaten
-Sie können die entsprechende Option aktivieren und zusätzliche Empfänger konfigurieren, die Ihre Azure-Rechnung in einer E-Mail erhalten. Sie können Ihre Rechnung auch aus dem [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) herunterladen. Darüber hinaus können Sie eine CSV-Datei mit Nutzungsdaten aus dem [Azure-Kontocenter](https://account.windowsazure.com) herunterladen. Nur der Kontoadministrator hat die Berechtigung für die Abrechnung und Nutzungsinformationen. Den Kontoadministrator des Abonnements finden Sie unter [Übertragen eines Azure-Abonnements – Häufig gestellte Fragen](billing-subscription-transfer.md#faq).
+# <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Herunterladen oder Anzeigen Ihrer Azure-Rechnungen und täglichen Nutzungsdaten
+Sie können Ihre Rechnung auch aus dem [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) herunterladen oder sie per E-Mail zugeschickt bekommen. Um Ihre Daten zur täglichen Nutzung herunterzuladen, wechseln Sie zum [Azure-Kontocenter](https://account.windowsazure.com). Nur der Kontoadministrator hat die Berechtigung für die Abrechnung und Nutzungsinformationen. Den Kontoadministrator des Abonnements finden Sie unter [Übertragen eines Azure-Abonnements – Häufig gestellte Fragen](billing-subscription-transfer.md#faq).
 
-## <a name="get-your-invoice-over-email-pdf"></a>Empfangen Ihrer Rechnung per E-Mail (PDF)
-1. Wählen Sie auf dem [Blatt „Abonnements“](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) Ihr Abonnement aus. Sie müssen die Option für jedes Abonnement aktivieren, das Sie besitzen. Klicken Sie auf **Rechnungen** und dann auf **Rechnung per E-Mail**. Wenn Sie nicht der Kontoadministrator sind, wird diese Option möglicherweise nicht angezeigt.
+## <a name="get-your-invoice-in-email-pdf"></a>Empfangen Ihrer Rechnung per E-Mail (PDF)
+Sie können die entsprechende Option aktivieren und zusätzliche Empfänger konfigurieren, die Ihre Azure-Rechnung in einer E-Mail erhalten. Diese Funktion ist für bestimmte Abonnements möglicherweise nicht verfügbar, z.B. für Supportangebote, Enterprise Agreements oder Azure in Open.
+
+1. Wählen Sie auf dem [Blatt „Abonnements“](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) Ihr Abonnement aus. Aktivieren Sie die Option für jedes Abonnement, das Sie besitzen. Klicken Sie auf **Rechnungen** und dann auf **Rechnung per E-Mail**. 
 
     ![Screenshot mit dem Ablauf der Aktivierung](./media/billing-download-azure-invoice-daily-usage-date/InvoicesDeepLink.PNG)
     
@@ -37,12 +42,8 @@ Sie können die entsprechende Option aktivieren und zusätzliche Empfänger konf
 
     ![Screenshot mit dem Ablauf der Aktivierung](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep3.PNG)
     
-Sie können auch in der E-Mail mit der Benachrichtigung über den monatlichen Kontoauszug auf den Deep-Link dieses Blatts zugreifen.
+Wenn Sie keine E-Mail erhalten, nachdem Sie diese Schritte befolgt haben, stellen Sie sicher, dass Ihre E-Mail-Adresse in den [Kommunikationseinstellungen auf Ihrem Profil](https://account.windowsazure.com/profile) richtig ist.
 
-### <a name="i-cant-access-the-email-settings-blade"></a>Der Zugriff auf das Blatt mit den E-Mail-Einstellungen ist nicht möglich
-* Sie müssen der Kontoadministrator sein, um diese Einstellung zu konfigurieren. Sie sind nicht sicher, was dies bedeutet? [Hier erhalten Sie weitere Informationen](billing-add-change-azure-subscription-administrator.md).
-* Wenn Sie eine monatliche Rechnung haben, aber keine E-Mail empfangen, stellen Sie sicher, dass die [E-Mail für die Kommunikation ordnungsgemäß festgelegt wurde](https://account.windowsazure.com/profile).
-* Diese Funktion ist für bestimmte Abonnements möglicherweise nicht verfügbar, z.B. für Supportangebote, Enterprise Agreements oder Azure in Open.
 
 ## <a name="download-invoice-from-azure-portal-pdf"></a>Herunterladen der Rechnung aus dem Azure-Portal (PDF)
 
@@ -86,7 +87,7 @@ Weitere Informationen über Ihre Rechnung finden Sie unter [Erläuterungen zur R
 
 Weitere Informationen über Ihre Daten zur täglichen Nutzung finden Sie unter [Erläuterungen zur Rechnung für Microsoft Azure](billing-understand-your-bill.md).
 
-## <a name="a-namenoinvoicea-why-dont-i-see-an-invoice-for-the-last-billing-period"></a><a name="noinvoice"></a> Warum sehe ich keine Rechnung für den letzten Abrechnungszeitraum?
+## <a name="noinvoice"></a> Warum sehe ich keine Rechnung für den letzten Abrechnungszeitraum?
 Mehrere Gründe können dafür ausschlaggebend sein, dass Sie keine Rechnung sehen:
 - Sie haben einen monatlichen Guthabenbetrag in Ihrem Abonnement, den Sie nicht überschritten haben, oder eine kostenlose Testversion. Eine Rechnung wird nur generiert, wenn Sie Geld schuldig sind.
 - Es sind weniger als 30 Tage seit dem Abschluss Ihres Azure-Abonnements vergangen.
@@ -94,10 +95,5 @@ Mehrere Gründe können dafür ausschlaggebend sein, dass Sie keine Rechnung seh
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
 Bei weiteren Fragen [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 translationtype: Human Translation
-ms.sourcegitcommit: 57d00f2192fed7a2e89ac94e110ebb7e84c83b72
-ms.openlocfilehash: df0dec0731031f2dee69719dd03a588ad6589044
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: 242c3a6bf656da9b029a780e8b80667405b7b92f
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -49,7 +50,11 @@ In diesem Tutorial wird Schritt für Schritt erläutert, wie Sie zwischengespeic
    > [!TIP]
    > Nachdem Sie Text eingegeben haben, werden weitere **Pfad** -Textfelder angezeigt, damit Sie eine Liste mit mehreren Assets erstellen können.  Sie können Assets aus der Liste löschen, indem Sie auf die Schaltfläche mit den Auslassungspunkten (...) klicken.
    > 
-   > Pfade müssen eine relative URL enthalten, die dem folgenden [regulären Ausdruck](https://msdn.microsoft.com/library/az24scfc.aspx) entspricht: `^(?:\/[a-zA-Z0-9-_.\u0020]+)+$`.  Jedes Objekt muss einen eigenen Pfad haben.  Platzhalter werden beim Vorabladen von Assets nicht unterstützt.
+   > Pfade müssen eine relative URL enthalten, die dem folgenden [regulären Ausdruck](https://msdn.microsoft.com/library/az24scfc.aspx) entspricht:  
+   > >Laden eines einzelnen Dateipfads `@"^(?:\/[a-zA-Z0-9-_.%=\u0020]+)+$"`;  
+   > >Laden einer einzelnen Datei mit Abfragezeichenfolge `@"^(?:\?[-_a-zA-Z0-9\/%:;=!,.\+'&\u0020]*)?$";`  
+   > 
+   > Jedes Objekt muss einen eigenen Pfad haben.  Platzhalter werden beim Vorabladen von Assets nicht unterstützt.
    > 
    > 
    
@@ -66,10 +71,5 @@ In diesem Tutorial wird Schritt für Schritt erläutert, wie Sie zwischengespeic
 ## <a name="see-also"></a>Weitere Informationen
 * [Löschen eines Azure CDN-Endpunkts](cdn-purge-endpoint.md)
 * [Azure CDN-REST-API-Referenz – Löschen oder Vorabladen eines Endpunkts](https://msdn.microsoft.com/library/mt634451.aspx)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

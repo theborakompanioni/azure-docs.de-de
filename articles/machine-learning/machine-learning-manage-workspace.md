@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/27/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: cf0cd5202288a9da55e0f8409a51ea904eeb2d55
-ms.openlocfilehash: 775ef958846ad2a780abb761d1c3934e671d5f1c
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 1029c7e4c6a17ad2a290ff0783fc88692555b255
+ms.openlocfilehash: 94800f51baf83311c33490cada5f991ff2101da9
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -49,6 +49,8 @@ Verwenden Sie zum Verwalten der dem Arbeitsbereich zugeordneten Webdienste das P
 
 > [!NOTE]
 > Zum Bereitstellen oder Verwalten neuer Webdienste muss Ihnen in dem Abonnement, für das der Webdienst bereitgestellt wird, eine Teilnehmer- oder Administratorrolle zugewiesen sein. Wenn Sie andere Benutzer in einen Machine Learning-Arbeitsbereich einladen, müssen Sie ihnen eine Teilnehmer- oder Administratorrolle im Abonnement zuweisen, damit sie Webdienste bereitstellen oder verwalten können. 
+> 
+>Weitere Informationen zum Festlegen von Zugriffsberechtigungen finden Sie unter [Anzeigen von Zugriffszuweisungen für Benutzer und Gruppen im Azure-Portal – öffentliche Vorschau](../active-directory/role-based-access-control-manage-assignments.md).
 
 ## <a name="use-the-azure-classic-portal"></a>Verwenden des klassischen Azure-Portals
 

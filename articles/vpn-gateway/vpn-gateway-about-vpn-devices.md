@@ -16,33 +16,30 @@ ms.workload: infrastructure-services
 ms.date: 03/03/2017
 ms.author: yushwang;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: bea87fce9f1b1587af5a3e0d827a75e93d7bf534
-ms.lasthandoff: 03/04/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 13ef48ebe79571c7139e46f9510a5f8d2f504cb7
+ms.lasthandoff: 03/15/2017
 
 
 ---
-# <a name="about-vpn-devices-for-site-to-site-vpn-gateway-connections"></a>Informationen zu VPN-Geräten für VPN-Gatewayverbindungen zwischen Standorten
-Sie benötigen ein VPN-Gerät, um eine standortübergreifende S2S-VPN-Verbindung (Site-to-Site) per VPN Gateway zu konfigurieren. Standort-zu-Standort-Verbindungen können zum Erstellen einer Hybridlösung verwendet werden. Sie können sie auch zum Herstellen einer sicheren Verbindung zwischen Ihrem lokalen Netzwerk und dem virtuellen Netzwerk verwenden. Dieser Artikel beschreibt kompatible VPN-Geräte und Konfigurationsparameter.
+# <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>Informationen zu VPN-Geräten und IPsec-/IKE-Parametern für VPN-Gatewayverbindungen zwischen Standorten.
+
+Sie benötigen ein VPN-Gerät, um eine standortübergreifende S2S-VPN-Verbindung (Site-to-Site) per VPN Gateway zu konfigurieren. Standort-zu-Standort-Verbindungen können zum Erstellen einer Hybridlösung verwendet werden. Sie können sie auch zum Herstellen einer sicheren Verbindung zwischen Ihrem lokalen Netzwerk und dem virtuellen Netzwerk verwenden. Dieser Artikel beschreibt kompatible VPN-Geräte und Konfigurationsparameter. Dieses Dokument enthält die Liste der IPSec-/IKE-Parameter für Azure-VPN-Gateways und eine Liste mit überprüften VPN-Geräten, die Verbindungen mit Azure-VPN-Gateways herstellen.
 
 
 > [!IMPORTANT]
-> Bei Verbindungsproblemen zwischen Ihren lokalen VPN-Geräten und Azure-VPN-Gateways helfen Ihnen die Informationen unter [Bekannte Probleme mit der Gerätekompatibilität](#known) weiter.
-> 
-> 
+> Bei Verbindungsproblemen zwischen Ihren lokalen VPN-Geräten und Azure-VPN-Gateways helfen Ihnen die Informationen unter [Bekannte Probleme mit der Gerätekompatibilität](#known) weiter. 
 
 
 ###<a name="items-to-note-when-viewing-the-tables"></a>Was Sie beim Anzeigen der Tabellen beachten sollten:
 
-* Die Terminologie für statisches und dynamisches Routing wurde geändert. Wahrscheinlich finden Sie beide Begriffe. Die Funktionalität hat sich nicht geändert, nur die Namen.
+* Die Terminologie für Azure-VPN-Gateways wurde geändert. Wahrscheinlich finden Sie beide Begriffe. Die Funktionalität hat sich nicht geändert, nur die Namen.
   * Statisches Routing = Richtlinienbasiert (PolicyBased)
   * Dynamisches Routing = Routenbasiert (RouteBased)
 * Die Spezifikationen für Hochleistungs-VPN-Gateways und routenbasierte VPN-Gateways bleiben dieselben, sofern nicht anders angegeben. Beispielsweise sind die überprüften VPN-Geräte, die mit den routenbasierten VPN-Gateways kompatibel sind, auch mit dem Azure-Hochleistungs-VPN-Gateway kompatibel.
 
 > [!NOTE]
 > Beim Konfigurieren einer Standort-zu-Standort-Verbindung ist eine öffentliche IPv4-IP-Adresse für das VPN-Gerät erforderlich.                                                                                                                                                                               
->
->
 
 
 ## <a name="devicetable"></a>Überprüfte VPN-Geräte
@@ -102,58 +99,80 @@ Nachdem Sie die bereitgestellte Konfigurationsvorlage für das VPN-Gerät herunt
 | &lt;SP_AzureGatewayIpAddress&gt; |Diese Informationen gelten nur für Ihr virtuelles Netzwerk und befinden sich im Verwaltungsportal unter **Gateway-IP-Adresse**. |
 | &lt;SP_PresharedKey&gt; |Diese Informationen gelten nur für Ihr virtuelles Netzwerk und befinden sich im Verwaltungsportal unter "Schlüssel verwalten". |
 
-## <a name="IPSec"></a>IPsec-Parameter
+## <a name="IPSec"></a>IPsec-/IKE-Parameter
 > [!NOTE]
-> Die in der folgenden Tabelle aufgeführten Werte werden zwar vom Azure-VPN-Gateway unterstützt, derzeit ist es jedoch nicht möglich, über das Azure-VPN-Gateway eine bestimmte Kombination festzulegen oder auszuwählen. Alle Einschränkungen müssen Sie vom lokalen VPN-Gerät aus angeben. Darüber hinaus müssen Sie MSS mit 1350 verknüpfen.
->
->
+> Die in der folgenden Tabelle aufgeführten Werte werden zwar vom Azure-VPN-Gateway unterstützt, derzeit ist es jedoch nicht möglich, über das Azure-VPN-Gateway eine bestimmte Kombination von Algorithmen oder Parametern festzulegen oder auszuwählen. Alle Einschränkungen müssen Sie vom lokalen VPN-Gerät aus angeben.
+> 
+> Darüber hinaus müssen Sie **MSS** mit **1350** verknüpfen.
 
-### <a name="ike-phase-1-setup"></a>IKE Phase 1-Einrichtung
-| **Eigenschaft** | **PolicyBased** | **Routenbasiertes und Standard- oder Hochleistungs-VPN-Gateway** |
-| --- | --- | --- |
-| IKE-Version |IKEv1 |IKEv2 |
-| Diffie-Hellman-Gruppe |Gruppe 2 (1024 Bit) |Gruppe 2 (1024 Bit) |
-| Authentifizierungsmethode |Vorab ausgetauschter Schlüssel |Vorab ausgetauschter Schlüssel |
-| Verschlüsselungsalgorithmen |AES256 AES128 3DES |AES256 3DES |
-| Hashalgorithmus |SHA1(SHA128) |SHA1(SHA128), SHA2(SHA256) |
-| Phase 1 Sicherheitszuordnung (SA) Lebensdauer (Zeit) |28.800 Sekunden |10.800 Sekunden |
+In den folgenden Tabellen:
 
-### <a name="ike-phase-2-setup"></a>IKE Phase 2-Einrichtung
-| **Eigenschaft** | **PolicyBased** | **Routenbasiertes und Standard- oder Hochleistungs-VPN-Gateway** |
-| --- | --- | --- |
-| IKE-Version |IKEv1 |IKEv2 |
-| Hashalgorithmus |SHA1(SHA128), SHA2(SHA256) |SHA1(SHA128), SHA2(SHA256) |
-| Phase 2 Sicherheitszuordnung (SA) Lebensdauer (Zeit) |3.600 Sekunden |3.600 Sekunden |
-| Phase 2 Sicherheitszuordnung (SA) Lebensdauer (Durchsatz) |102.400.000 KB |- |
-| IPsec-SA-Verschlüsselungs- und Authentifizierungsangebote (sortiert nach Präferenz) |1. ESP-AES256 2. ESP-AES128 3. ESP-3DES 4. N/V |Siehe „IPsec-Sicherheitszuordnungsangebote (SA) für routenbasierte Gateways“ (weiter unten) |
-| Perfect Forward Secrecy (PFS) |Nein |Nein (*) |
-| Dead Peer Detection |Nicht unterstützt |Unterstützt |
+* SA = Sicherheitszuordnung
+* IKE-Phase 1 wird auch als „Hauptmodus“ bezeichnet.
+* IKE-Phase 2 wird auch als „Schnellmodus“ bezeichnet.
 
-(*) Azure Gateway als IKE-Antwortender kann PFS DH-Gruppe 1, 2, 5, 14, 24 akzeptieren.
+### <a name="ike-phase-1-main-mode-parameters"></a>Parameter der IKE-Phase 1 (Hauptmodus)
+| **Eigenschaft**          |**PolicyBased**    | **RouteBased**    |
+| ---                   | ---               | ---               |
+| IKE-Version           |IKEv1              |IKEv2              |
+| Diffie-Hellman-Gruppe  |Gruppe 2 (1024 Bit) |Gruppe 2 (1024 Bit) |
+| Authentifizierungsmethode |Vorab ausgetauschter Schlüssel     |Vorab ausgetauschter Schlüssel     |
+| Verschlüsselung und Hashalgorithmen |1. AES256, SHA256<br>2. AES256, SHA1<br>3. AES128, SHA1<br>4. 3DES, SHA1 |1. AES256, SHA1<br>2. AES256, SHA256<br>3. AES128, SHA1<br>4. AES128, SHA256<br>5. 3DES, SHA1<br>6. 3DES, SHA256 |
+| SA-Gültigkeitsdauer           |28.800 Sekunden     |10.800 Sekunden     |
 
-### <a name="routebased-gateway-ipsec-security-association-sa-offers"></a>IPsec-Sicherheitszuordnungsangebote (SA) für routenbasierte Gateways
-Die folgende Tabelle enthält die IPsec-SA-Verschlüsselungs- und -Authentifizierungsangebote. Angebote werden in der Reihenfolge ihrer Priorität aufgeführt, in der das Angebot dargeboten oder akzeptiert wurde.
+### <a name="ike-phase-2-quick-mode-parameters"></a>Parameter der IKE-Phase 2 (Schnellmodus)
+| **Eigenschaft**                  |**PolicyBased**| **RouteBased**                              |
+| ---                           | ---           | ---                                         |
+| IKE-Version                   |IKEv1          |IKEv2                                        |
+| Verschlüsselung und Hashalgorithmen |1. AES256, SHA256<br>2. AES256, SHA1<br>3. AES128, SHA1<br>4. 3DES, SHA1 |[SA-Angebote für RouteBased QM](#RouteBasedOffers) |
+| SA-Gültigkeitsdauer (Zeit)            |3.600 Sekunden  |3.600 Sekunden                                |
+| SA-Gültigkeitsdauer (Bytes)           |102.400.000 KB | -                                           |
+| Perfect Forward Secrecy (PFS) |Nein             |[SA-Angebote für RouteBased QM](#RouteBasedOffers) |
+| Dead Peer Detection (DPD)     |Nicht unterstützt  |Unterstützt                                    |
 
-| **IPsec-SA-Verschlüsselungs- und -Authentifizierungsangebote** | **Azure-Gateway als Initiator** | **Azure-Gateway als Antwortender** |
-| --- | --- | --- |
-| 1 |ESP AES_256 SHA |ESP AES_128 SHA |
-| 2 |ESP AES_128 SHA |ESP 3_DES MD5 |
-| 3 |ESP 3_DES MD5 |ESP 3_DES SHA |
-| 4 |ESP 3_DES SHA |AH SHA1 mit ESP AES_128 mit Null HMAC |
-| 5 |AH SHA1 mit ESP AES_256 mit Null HMAC |AH SHA1 mit ESP 3_DES mit Null HMAC |
-| 6 |AH SHA1 mit ESP AES_128 mit Null HMAC |AH MD5 mit ESP 3_DES mit Null HMAC, keine vorgesehene Lebensdauer |
-| 7 |AH SHA1 mit ESP 3_DES mit Null HMAC |AH SHA1 mit ESP 3_DES SHA1, keine Lebensdauer |
-| 8 |AH MD5 mit ESP 3_DES mit Null HMAC, keine vorgesehene Lebensdauer |AH MD5 mit ESP 3_DES MD5, keine Lebensdauer |
-| 9 |AH SHA1 mit ESP 3_DES SHA1, keine Lebensdauer |ESP DES MD5 |
-| 10 |AH MD5 mit ESP 3_DES MD5, keine Lebensdauer |ESP DES SHA1, keine Lebensdauer |
-| 11 |ESP DES MD5 |AH SHA1 mit ESP DES Null HMAC, keine vorgesehene Lebensdauer |
-| 12 |ESP DES SHA1, keine Lebensdauer |AH MD5 mit ESP DES Null HMAC, keine vorgesehene Lebensdauer |
-| 13 |AH SHA1 mit ESP DES Null HMAC, keine vorgesehene Lebensdauer |AH SHA1 mit ESP DES SHA1, keine Lebensdauer |
-| 14 |AH MD5 mit ESP DES Null HMAC, keine vorgesehene Lebensdauer |AH MD5 mit ESP DES MD5, keine Lebensdauer |
-| 15 |AH SHA1 mit ESP DES SHA1, keine Lebensdauer |ESP SHA, keine Lebensdauer |
-| 16 |AH MD5 mit ESP DES MD5, keine Lebensdauer |ESP MD5, keine Lebensdauer |
-| 17 |- |AH SHA, keine Lebensdauer |
-| 18 |- |AH MD5, keine Lebensdauer |
+
+### <a name ="RouteBasedOffers"></a>RouteBased-VPN-Angebote der IPsec Security Association (IKE-Schnellmodus-SA)
+Die folgende Tabelle enthält IPsec-SA-Angebote (IKE-Schnellmodus). Angebote werden in der Reihenfolge ihrer Priorität aufgeführt, in der das Angebot dargeboten oder akzeptiert wurde.
+
+#### <a name="azure-gateway-as-initiator"></a>Azure-Gateway als Initiator
+|-  |**Verschlüsselung**|**Authentifizierung**|**PFS-Gruppe**|
+|---| ---          |---               |---          |
+| 1 |GCM AES256    |GCM (AES256)      |Keine         |
+| 2 |AES256        |SHA1              |Keine         |
+| 3 |3DES          |SHA1              |Keine         |
+| 4 |AES256        |SHA256            |Keine         |
+| 5 |AES128        |SHA1              |Keine         |
+| 6 |3DES          |SHA256            |Keine         |
+
+#### <a name="azure-gateway-as-responder"></a>Azure-Gateway als Antwortender
+|-  |**Verschlüsselung**|**Authentifizierung**|**PFS-Gruppe**|
+|---| ---          | ---              |---          |
+| 1 |GCM AES256    |GCM (AES256)      |Keine         |
+| 2 |AES256        |SHA1              |Keine         |
+| 3 |3DES          |SHA1              |Keine         |
+| 4 |AES256        |SHA256            |Keine         |
+| 5 |AES128        |SHA1              |Keine         |
+| 6 |3DES          |SHA256            |Keine         |
+| 7 |DES           |SHA1              |Keine         |
+| 8 |AES256        |SHA1              |1            |
+| 9 |AES256        |SHA1              |2            |
+| 10|AES256        |SHA1              |14           |
+| 11|AES128        |SHA1              |1            |
+| 12|AES128        |SHA1              |2            |
+| 13|AES128        |SHA1              |14           |
+| 14|3DES          |SHA1              |1            |
+| 15|3DES          |SHA1              |2            |
+| 16|3DES          |SHA256            |2            |
+| 17|AES256        |SHA256            |1            |
+| 18|AES256        |SHA256            |2            |
+| 19|AES256        |SHA256            |14           |
+| 20|AES256        |SHA1              |24           |
+| 21|AES256        |SHA256            |24           |
+| 22|AES128        |SHA256            |Keine         |
+| 23|AES128        |SHA256            |1            |
+| 24|AES128        |SHA256            |2            |
+| 25|AES128        |SHA256            |14           |
+| 26|3DES          |SHA1              |14           |
 
 * Sie können IPsec-ESP-NULL-Verschlüsselung mit routenbasierten und High-Performance-VPN-Gateways angeben. Verschlüsselung auf Basis von NULL bietet keinen Schutz der Daten während der Übertragung und sollte nur verwendet werden, wenn maximaler Durchsatz und minimale Latenz erforderlich sind.  Clients können diese in Szenarien mit VNet-zu-VNet-Kommunikation oder bei Anwendung der Verschlüsselung an anderer Stelle in der Lösung verwenden.
 * Verwenden Sie für standortübergreifende Konnektivität über das Internet die Standardeinstellungen für Azure-VPN-Gateways mit Verschlüsselung und Hashalgorithmen, die in der Tabelle oben aufgelistet werden, um die Sicherheit Ihrer kritischen Kommunikation zu gewährleisten.

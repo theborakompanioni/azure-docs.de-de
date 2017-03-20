@@ -17,6 +17,7 @@ ms.author: yurid
 translationtype: Human Translation
 ms.sourcegitcommit: e223d0613cd48994315451da87e6b7066585bdb6
 ms.openlocfilehash: a4452dee2beec650f84dff4083e91684fe61d8b6
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -38,9 +39,4 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-security-deployment]: iot-hub-security-deployment.md
 
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

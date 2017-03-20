@@ -16,8 +16,9 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: cea81f16ecc6203f487fdf15310638b123312dde
-ms.openlocfilehash: caee6a14bd988f2355c9683519b5f5480428a709
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: 75f4792ff2aa2b73ebc3ff976887a74ce09988f3
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -35,7 +36,7 @@ In diesem Tutorial verwenden Sie das Azure-Portal zum Erstellen einer SQL Data W
 Zunächst benötigen Sie Folgendes:
 
 * **Azure-Konto:** Lesen Sie zum Erstellen eines Kontos die Informationen unter [Kostenlose Azure-Testversion][Azure Free Trial] oder [MSDN-Azure-Gutschriften][MSDN Azure Credits].
-* **Azure SQL Server:** Weitere Einzelheiten finden Sie unter [Erstellen eines logischen Servers für Azure SQL-Datenbank mit dem Azure-Portal][Create an Azure SQL Database logical server with the Azure portal].
+* **Azure SQL Server**: Weitere Einzelheiten finden Sie unter [Erstellen einer Azure SQL-Datenbank mit dem Azure-Portal][Create an Azure SQL database in the Azure portal].
 
 > [!NOTE]
 > Wenn Sie eine SQL Data Warehouse-Instanz erstellen, wird dadurch unter Umständen auch ein neuer abrechenbarer Dienst erstellt.  Unter [SQL Data Warehouse – Preise][SQL Data Warehouse pricing] finden Sie weitere Informationen.
@@ -82,11 +83,11 @@ Firewall-Regeln können auch mithilfe von Transact-SQL konfiguriert werden. Weit
 Außerdem sollten Sie sich mit den [bewährten Methoden][Best practices] vertraut machen.
 
 <!--Article references-->
-[Create an Azure SQL Database logical server with the Azure portal]: ../sql-database/sql-database-get-started.md#create-logical-server-bk
-[Create an Azure SQL Database logical server with PowerShell]: ../sql-database/sql-database-get-started-powershell.md#database-setup-create-a-resource-group-server-and-firewall-rule
+[Create an Azure SQL database in the Azure portal]: ../sql-database/sql-database-get-started.md
+[Create an Azure SQL database with PowerShell]: ../sql-database/sql-database-create-and-configure-database-powershell
 [resource groups]: ../azure-resource-manager/resource-group-template-deploy-portal.md
 [Best practices]: sql-data-warehouse-best-practices.md
-[DWU]: sql-data-warehouse-overview-what-is.md#data-warehouse-units
+[DWU]: sql-data-warehouse-overview-what-is.md
 [Abonnement]: ../azure-glossary-cloud-terminology.md#subscription
 [resource group]: ../azure-glossary-cloud-terminology.md#resource-group
 [T-SQL]: ./sql-data-warehouse-get-started-create-database-tsql.md
@@ -99,9 +100,4 @@ Außerdem sollten Sie sich mit den [bewährten Methoden][Best practices] vertrau
 [SQL Data Warehouse pricing]: https://azure.microsoft.com/pricing/details/sql-data-warehouse/
 [Azure Free Trial]: https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F
 [MSDN Azure Credits]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

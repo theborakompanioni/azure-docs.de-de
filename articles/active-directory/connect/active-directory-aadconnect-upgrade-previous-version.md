@@ -15,9 +15,9 @@ ms.workload: Identity
 ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: b6ec60f9e15e459f70127448eb7d9c03e4b118e8
-ms.openlocfilehash: 3bd1ca8e0bb9f17b76dda68a6cb2f9f64a5d05dd
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 085706dacdcb0cd5a4169ccac4dc7fd8b8ddb6e0
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -42,13 +42,13 @@ Informationen zu den Berechtigungen finden Sie unter [Erforderliche Berechtigung
 ## <a name="in-place-upgrade"></a>Direktes Upgrade
 Ein direktes Upgrade funktioniert für das Aktualisieren von Azure AD Sync oder Azure AD Connect. Es funktioniert nicht für einen Umstieg von DirSync oder für eine Lösung mit Forefront Identity Manager (FIM) + Azure AD-Connector.
 
-Dies ist die bevorzugte Methode, wenn Sie über einen einzelnen Server und weniger als ca. 100.000 Objekte verfügen. Nach dem Upgrade werden ein vollständiger Import und eine vollständige Synchronisierung durchgeführt, wenn die standardmäßigen Synchronisierungsregeln geändert wurden. Dadurch wird sichergestellt, dass die neue Konfiguration auf alle vorhandenen Objekte im System angewendet wird. Dies kann einige Stunden. Die Dauer ist abhängig von der Anzahl der Objekte, die vom Synchronisierungsmodul berücksichtigt werden. Der normale Deltasynchronisierungsscheduler (der standardmäßig alle 30 Minuten synchronisiert) wird angehalten, aber die Kennwortsynchronisierung wird fortgesetzt. Sie sollten das direkte Upgrade am Wochenende durchführen. Wenn Sie an der Standardkonfiguration der neuen Azure AD Connect-Version keine Änderungen durchgeführt haben, wird stattdessen ein normaler Deltaimport/eine Deltasynchronisierung durchgeführt.  
+Dies ist die bevorzugte Methode, wenn Sie über einen einzelnen Server und weniger als ca. 100.000 Objekte verfügen. Nach dem Upgrade werden ein vollständiger Import und eine vollständige Synchronisierung durchgeführt, wenn die standardmäßigen Synchronisierungsregeln geändert wurden. Mit dieser Methode wird sichergestellt, dass die neue Konfiguration auf alle vorhandenen Objekte im System angewendet wird. Diese Ausführung kann einige Stunden dauern. Die Dauer ist abhängig von der Anzahl der Objekte, die vom Synchronisierungsmodul berücksichtigt werden. Der normale Deltasynchronisierungsscheduler (der standardmäßig alle 30 Minuten synchronisiert) wird angehalten, aber die Kennwortsynchronisierung wird fortgesetzt. Sie sollten das direkte Upgrade am Wochenende durchführen. Wenn Sie an der Standardkonfiguration der neuen Azure AD Connect-Version keine Änderungen durchgeführt haben, wird stattdessen ein normaler Deltaimport/eine Deltasynchronisierung durchgeführt.  
 ![Direktes Upgrade](./media/active-directory-aadconnect-upgrade-previous-version/inplaceupgrade.png)
 
-Wenn Sie vordefinierte Synchronisierungsregeln geändert haben, werden diese beim Upgrade wieder auf die Standardkonfiguration zurückgesetzt. Um sicherzustellen, dass Ihre Konfiguration zwischen Upgrades erhalten bleibt, achten Sie darauf, dass die Änderungen wie in [Best Practices zum Ändern der Standardkonfiguration](active-directory-aadconnectsync-best-practices-changing-default-configuration.md) beschrieben vorgenommen werden.
+Wenn Sie vordefinierte Synchronisierungsregeln geändert haben, werden diese Regeln beim Upgrade wieder auf die Standardkonfiguration zurückgesetzt. Um sicherzustellen, dass Ihre Konfiguration zwischen Upgrades erhalten bleibt, achten Sie darauf, dass die Änderungen wie in [Best Practices zum Ändern der Standardkonfiguration](active-directory-aadconnectsync-best-practices-changing-default-configuration.md) beschrieben vorgenommen werden.
 
 ## <a name="swing-migration"></a>Swing-Migration
-Wenn Sie über eine komplexe Bereitstellung oder viele Objekte verfügen, kann möglicherweise ein direktes Upgrade auf einem Livesystem nicht ausgeführt werden. Dies könnte für einige Kunden mehrere Tage dauern, und während dieser Zeit werden keine Deltaänderungen verarbeitet. Sie können diese Methode auch anwenden, wenn Sie wesentliche Änderungen an Ihrer Konfiguration planen und diese vor der Übertragung in die Cloud testen möchten.
+Wenn Sie über eine komplexe Bereitstellung oder viele Objekte verfügen, kann möglicherweise ein direktes Upgrade auf einem Livesystem nicht ausgeführt werden. Dieser Prozess könnte für einige Kunden mehrere Tage dauern, und während dieser Zeit werden keine Deltaänderungen verarbeitet. Sie können diese Methode auch anwenden, wenn Sie wesentliche Änderungen an Ihrer Konfiguration planen und diese vor der Übertragung in die Cloud testen möchten.
 
 Die empfohlene Methode für diese Szenarien ist die Swing-Migration. Dafür benötigen Sie (mindestens) zwei Server: einen aktiven Server und einen Stagingserver. Der aktive Server (die durchgezogenen blauen Linien in der Abbildung unten) ist für die aktive Produktionslast verantwortlich. Der Stagingserver (mit violettem Strichlinien gezeigt) wird mit der neuen Version oder Konfiguration vorbereitet. Wenn er vollständig bereit ist, wird dieser Server zum aktiven Server gemacht. Der vorherige aktive Server, auf dem noch die alte Version oder Konfiguration installiert ist, wird jetzt zum Stagingserver und wird aktualisiert.
 
@@ -70,9 +70,9 @@ Diese Schritte funktionieren auch bei einem Wechsel von Azure AD Sync oder einer
 7. Wenn Sie ein Upgrade von Azure AD Connect durchführen, aktualisieren Sie den jetzt im Stagingmodus befindlichen Server auf die aktuelle Version. Führen Sie die gleichen Schritte wie zuvor aus, um die Daten und die Konfiguration zu aktualisieren. Wenn Sie ein Upgrade von Azure AD Sync durchgeführt haben, können Sie den alten Server jetzt ausschalten und außer Betrieb nehmen.
 
 ### <a name="move-a-custom-configuration-from-the-active-server-to-the-staging-server"></a>Verschieben einer benutzerdefinierten Konfiguration vom aktiven Server auf den Stagingserver
-Wenn Sie Änderungen an der Konfiguration des aktiven Servers vorgenommen haben, müssen Sie sicherstellen, dass die gleichen Änderungen auf dem Stagingserver angewendet werden.
+Wenn Sie Änderungen an der Konfiguration des aktiven Servers vorgenommen haben, müssen Sie sicherstellen, dass die gleichen Änderungen auf dem Stagingserver angewendet werden. Hierbei kann Ihnen der [Azure AD Connect configuration documenter (Azure AD Connect-Konfigurationsdokumentierer)](https://github.com/Microsoft/AADConnectConfigDocumenter) behilflich sein.
 
-Sie können die benutzerdefinierten Synchronisierungsregeln verschieben, die Sie mithilfe von PowerShell erstellt haben. Sie müssen weitere Änderungen auf beiden Systemen auf die gleiche Weise anwenden – die Änderungen können nicht migriert werden.
+Sie können die benutzerdefinierten Synchronisierungsregeln verschieben, die Sie mithilfe von PowerShell erstellt haben. Sie müssen weitere Änderungen auf beiden Systemen auf die gleiche Weise anwenden – die Änderungen können nicht migriert werden. Der [Konfigurationsdokumentierer](https://github.com/Microsoft/AADConnectConfigDocumenter) kann Ihnen dabei helfen, die beiden Systeme zu vergleichen, um sicherzustellen, dass sie identisch sind. Das Tool kann auch dabei helfen, die Schritte aus diesem Abschnitt zu automatisieren.
 
 Sie müssen die folgenden Konfigurationen auf beiden Servern auf die gleiche Weise vornehmen:
 

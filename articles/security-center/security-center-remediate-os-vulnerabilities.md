@@ -12,24 +12,30 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/03/2017
+ms.date: 03/03/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 522496ddcd3cc21501f2390e8cdc158798b6289d
-ms.openlocfilehash: 35d33625badeb0b32079f0487b8bf2a3dd97e141
-ms.lasthandoff: 02/04/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: 7680aafcefbe6f1e6e3b55137da2e46b42df5a9b
+ms.lasthandoff: 03/04/2017
 
 
 ---
 # <a name="remediate-os-vulnerabilities-in-azure-security-center"></a>Beheben von Betriebssystem-Sicherheitsrisiken in Azure Security Center
-Azure Security Center untersucht täglich das Betriebssystem Ihres virtuellen Computers (VM) auf Konfigurationen, die bewirken können, dass der virtuelle Computer anfälliger für Angriffe wird, und empfiehlt Konfigurationsänderungen, um diese Sicherheitsrisiken zu bereinigen. Weitere Informationen zu den speziellen Konfigurationen, die überwacht werden, finden Sie in der [Liste der empfohlenen Konfigurationsregeln](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335). Security Center empfiehlt, dass Sie Sicherheitsrisiken beheben, wenn die Betriebssystemkonfiguration Ihres virtuellen Computers nicht den empfohlenen Konfigurationsregeln entspricht.
+Azure Security Center untersucht täglich das Betriebssystem Ihres virtuellen Computers (VM) auf Konfigurationen, die bewirken können, dass der virtuelle Computer anfälliger für Angriffe wird, und empfiehlt Konfigurationsänderungen, um diese Sicherheitsrisiken zu bereinigen. Security Center empfiehlt, dass Sie Sicherheitsrisiken beheben, wenn die Betriebssystemkonfiguration Ihres virtuellen Computers nicht den empfohlenen Konfigurationsregeln entspricht.
+
+> [!NOTE]
+> Weitere Informationen zu den speziellen Konfigurationen, die überwacht werden, finden Sie in der [Liste der empfohlenen Konfigurationsregeln](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335). Zu diesem Zeitpunkt wird Windows Server 2016 nicht vollständig unterstützt.
+>
+>
+
+## <a name="implement-the-recommendation"></a>Implementieren der Empfehlung
 
 > [!NOTE]
 > Der Dienst wird anhand einer Beispielbereitstellung vorgestellt.  Es ist keine schrittweise Anleitung.
 >
 >
 
-## <a name="implement-the-recommendation"></a>Implementieren der Empfehlung
 1. Wählen Sie auf dem Blatt **Empfehlungen** die Option **Betriebssystem-Sicherheitsrisiken beheben**.
    ![Betriebssystem-Sicherheitsrisiken beheben][1]
 

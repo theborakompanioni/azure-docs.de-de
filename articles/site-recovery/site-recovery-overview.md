@@ -12,22 +12,22 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 02/26/2017
+ms.date: 03/14/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: e4bb13a73f6338d2d844a0561edc65063c685d59
-ms.openlocfilehash: e554a0ba87efb0272e092a121ba96edc9d9eb011
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: d8e4e4bb7dd1e40d8c561adba04b8346fcb2127d
+ms.lasthandoff: 03/15/2017
 
 
 ---
 # <a name="what-is-site-recovery"></a>Was ist Site Recovery?
 
-Willkommen beim Azure Site Recovery-Dienst! Dieser Artikel enthält eine Übersicht über den Dienst sowie Links zu weiteren Informationen.
+Willkommen beim Azure Site Recovery-Dienst! Dieser Artikel enthält eine kurze Übersicht über den Dienst.
 
-Eine Unterbrechung des Geschäftsbetriebs wird durch natürliche Ereignisse und durch Betriebsfehler verursacht. Ihre Organisation benötigt eine Strategie für Geschäftskontinuität und Notfallwiederherstellung (Business Continuity and Disaster Recovery, BCDR), die gewährleistet, dass Daten während geplanter und ungeplanter Ausfallzeiten geschützt und Apps verfügbar bleiben und dass die Organisation schnellstmöglich zum normalen Betrieb zurückkehren kann.
+Ausfälle werden durch natürliche Ereignisse und durch Betriebsfehler verursacht. Ihre Organisation benötigt eine Strategie für die Bereiche Geschäftskontinuität und Notfallwiederherstellung (Business Continuity and Disaster Recovery, BCDR), damit Apps und Daten bei geplanten und ungeplanten Ausfallzeiten geschützt und verfügbar bleiben und die normalen Arbeitsbedingungen so schnell wie möglich wiederhergestellt werden können.
 
-Die Wiederherstellungsdienste von Azure unterstützen Sie bei Ihrer BCDR-Strategie. Mit [Azure Backup](https://docs.microsoft.com/en-us/azure/backup/) sind Ihre Daten geschützt und wiederherstellbar. Site Recovery führt Replikations-, Failover- und Wiederherstellungsvorgänge für Workloads durch und gewährleistet so deren Verfügbarkeit während eines Ausfalls.
+Azure Recovery Services unterstützen Sie bei Ihrer BCDR-Strategie. Mit dem [Azure Backup](https://docs.microsoft.com/en-us/azure/backup/)-Dienst sind Ihre Daten geschützt und wiederherstellbar. Site Recovery führt Replikations-, Failover- und Wiederherstellungsvorgänge für Workloads durch und gewährleistet so deren Verfügbarkeit während eines Ausfalls.
 
 ## <a name="what-does-site-recovery-provide"></a>Was bietet Site Recovery?
 
@@ -47,12 +47,6 @@ Da die replizierten Daten in Azure Storage gespeichert werden, profitieren Sie v
 * **Integration der Automation-Bibliothek:** Eine umfassende Azure Automation-Bibliothek bietet produktionsbereite, anwendungsspezifische Skripts, die heruntergeladen und in Site Recovery integriert werden können.
 * **Einfache Netzwerkverwaltung:** Die erweiterte Netzwerkverwaltung in Site Recovery und Azure vereinfacht Anforderungen für Anwendungsnetzwerke, z.B. das Reservieren von IP-Adressen, Konfigurieren von Lastenausgleichsmodulen und Integrieren von Azure Traffic Manager für effiziente Netzwerkwechsel.
 
-## <a name="which-azure-portal"></a>Welches Azure-Portal?
-
-* Site Recovery kann sowohl im neueren [Azure-Portal](https://portal.azure.com) als auch im [klassischen Azure-Portal](https://manage.windowsazure.com/) bereitgestellt werden.
-* Im klassischen Azure-Portal können Sie Site Recovery mit dem klassischen Dienstverwaltungsmodell unterstützen.
-* Im Azure-Portal können Sie das klassische Modell oder das neuere [Resource Manager-Bereitstellungsmodell](../azure-resource-manager/resource-manager-deployment-model.md) unterstützen.
-- Das klassische Portal sollte nur zur Verwaltung bereits vorhandener Site Recovery-Bereitstellungen verwendet werden. Über das klassische Portal können keine neuen Tresore erstellt werden.
 
 ## <a name="whats-supported"></a>Was wird unterstützt?
 
@@ -64,6 +58,14 @@ Da die replizierten Daten in Azure Storage gespeichert werden, profitieren Sie v
 **Wo kann ich replizieren?** | In Azure-Speicher oder in einem sekundären Datencenter<br/><br/> Für Hyper-V gilt: In einem sekundären Datencenter können nur virtuelle Computer auf Hyper-V-Hosts repliziert werden, die in System Center VMM-Clouds verwaltet werden.
 **Welche VMware-Server/-Hosts benötige ich?** | Die virtuellen VMware-Computer, die Sie replizieren möchten, können durch [unterstützte vSphere-Hosts/vCenter-Server](site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers) verwaltet werden.
 **Welche Workloads kann ich replizieren?** | Sie können jede Workload replizieren, die auf einem unterstützten Replikationscomputer ausgeführt wird. Darüber hinaus hat das Site Recovery-Team App-spezifische Tests für eine [Reihe von Apps](site-recovery-workload.md#workload-summary) durchgeführt.
+
+
+## <a name="which-azure-portal"></a>Welches Azure-Portal?
+
+* Site Recovery kann sowohl im neueren [Azure-Portal](https://portal.azure.com) als auch im [klassischen Azure-Portal](https://manage.windowsazure.com/) bereitgestellt werden.
+* Im klassischen Azure-Portal können Sie Site Recovery mit dem klassischen Dienstverwaltungsmodell unterstützen.
+* Im Azure-Portal können Sie das klassische Modell oder das neuere [Resource Manager-Bereitstellungsmodell](../azure-resource-manager/resource-manager-deployment-model.md) unterstützen.
+- Das klassische Portal sollte nur zur Verwaltung bereits vorhandener Site Recovery-Bereitstellungen verwendet werden. Über das klassische Portal können keine neuen Tresore erstellt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Informieren Sie sich ausführlicher über [Workloadunterstützung](site-recovery-workload.md).

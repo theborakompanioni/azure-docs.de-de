@@ -1,5 +1,5 @@
 ---
-title: "Überprüfen des Datenverkehrs mit der IP-Datenflussüberprüfung in Azure Network Watcher – PowerShell | Microsoft Docs"
+title: "Überprüfen des Datenverkehrs mit der IP-Datenflussüberprüfung in Azure Network Watcher – PowerShell | Microsoft-Dokumentation"
 description: "Dieser Artikel beschreibt, wie Sie mithilfe von PowerShell überprüfen, ob bei einem virtuellen Computer eingehender und ausgehender Datenverkehr zugelassen oder verweigert wird."
 services: network-watcher
 documentationcenter: na
@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 1d0136b044f6049e59fa09d824cf244cac703c45
-ms.openlocfilehash: adc7cbb938d396979a87d22ec86c82a801f4be5b
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: 68860006266a60bf8e87f72d8669fb26ed3a5486
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -34,6 +34,8 @@ Die IP-Datenflussüberprüfung ist ein Feature von Network Watcher, mit dem Sie 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 Dieses Szenario setzt voraus, dass Sie die Schritte unter [Erstellen einer Network Watcher-Instanz](network-watcher-create.md) bereits durchgeführt haben, um eine Network Watcher-Instanz zu erstellen, bzw. dass Sie eine vorhandene Instanz von Network Watcher verwenden. Ferner wird davon ausgegangen, dass eine Ressourcengruppe mit einem gültigen virtuellen Computer vorhanden ist und verwendet werden kann.
+
+[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
 
 ## <a name="scenario"></a>Szenario
 

@@ -16,9 +16,9 @@ ms.workload: data-management
 ms.date: 02/24/2017
 ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: f2e48e290f59efb5ab6271b7b2882ca8ea8887a6
-ms.openlocfilehash: 15fd64f21eb20ae412f4d0cf1930e99e2e9fc62b
-ms.lasthandoff: 02/09/2017
+ms.sourcegitcommit: 8441a5318bfee3fc45482a61db13adaa034b824a
+ms.openlocfilehash: 7d50a2861e4dae06d4de09417a2208b453fa499b
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -63,7 +63,7 @@ Eine erweiterte Definition der einzelnen Ressourcen, die in den vorangehenden Ta
 | --- | --- | --- |
 | Datenbanken mit automatisiertem Export pro Abonnement |10 |Automatisierter Export ermöglicht es Ihnen, einen benutzerdefinierten Zeitplan für die Sicherung Ihrer SQL-Datenbanken zu erstellen. Die Vorschau für dieses Feature endet am 1. März 2017.  |
 | Datenbanken pro Server |Bis zu 5.000 |Bis zu 5.000 Datenbanken pro Server sind auf V12-Servern zulässig. |
-| DTUs pro Server. |45000 |45.000 DTUs pro Server sind auf V12-Servern für die Bereitstellung von Datenbanken, Pools für elastische Datenbanken und Data Warehouses verfügbar. |
+| DTUs pro Server. |45000 |45.000 DTUs pro Server sind auf V12-Servern für die Bereitstellung von eigenständigen Datenbanken und Pools für elastische Datenbanken zugelassen. Die maximale Anzahl von eigenständigen Datenbanken und Pools pro Server wird nur durch die Anzahl der DTUs pro Server begrenzt.  
 
 > [!IMPORTANT]
 > Der automatisierte Export von Azure SQL-Datenbanken ist jetzt als Vorschau verfügbar und wird am 1. März 2017 eingestellt. Seit dem 1. Dezember 2016 ist das Konfigurieren des automatisierten Exports für SQL-Datenbanken nicht mehr möglich. Alle vorhandenen Aufträge für automatisierten Export werden bis zum 1. März 2017 weiterhin ausgeführt. Seit dem 1. Dezember 2016 können Sie die [langfristige Sicherungsaufbewahrung](sql-database-long-term-retention.md) oder [Azure Automation](../automation/automation-intro.md) zum regelmäßigen Archivieren von SQL-Datenbanken mithilfe von PowerShell nach einem Zeitplan Ihrer Wahl verwenden. Als Beispielskript können Sie das [Beispielskript von GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-automation-automated-export) herunterladen. 

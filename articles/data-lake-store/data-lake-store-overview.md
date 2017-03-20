@@ -17,6 +17,7 @@ ms.author: nitinme
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: a1d30c77dd29a134017be7deec6bb50991e6a698
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -55,7 +56,7 @@ Azure Data Lake-Speicher kann beliebige Daten ohne vorherige Transformation im s
 
 Azure Data Lake-Speichercontainer für Daten sind im Wesentlichen Ordner und Dateien. Sie arbeiten mit den gespeicherten Daten mithilfe von SDKs, des Azure-Portals und von Azure PowerShell. Solange Sie Ihre Daten unter Verwendung dieser Schnittstellen im Speicher ablegen und die entsprechenden Container verwenden, können Sie jeden Datentyp speichern. Data Lake-Speicher führt keine spezielle Verarbeitung von Daten basierend auf dem Typ der gespeicherten Daten durch.
 
-## <a name="a-namedatalakestoresecurityasecuring-data-in-azure-data-lake-store"></a><a name="DataLakeStoreSecurity"></a>Sichern von Daten in Azure Data Lake-Speicher
+## <a name="DataLakeStoreSecurity"></a>Sichern von Daten in Azure Data Lake-Speicher
 Azure Data Lake-Speicher verwendet Azure Active Directory zur Authentifizierung und Zugriffssteuerungslisten (ACLs) zum Verwalten des Zugriffs auf Ihre Daten.
 
 | Feature | Beschreibung |
@@ -101,10 +102,5 @@ Für Benutzer, die sich lieber anhand von Videos informieren, stellt Data Lake-S
 * [Use Apache Sqoop to move data between relational sources and Azure Data Lake Store (Verschieben von Daten zwischen relationalen Quellen und dem Azure Data Lake-Speicher mithilfe von Apache Sqoop)](https://mix.office.com/watch/1butcdjxmu114)
 * [Data Orchestration using Azure Data Factory for Azure Data Lake Store (Datenorchestrierung mithilfe von Azure Data Factory für den Azure Data Lake-Speicher)](https://mix.office.com/watch/1oa7le7t2u4ka)
 * [Securing Data in the Azure Data Lake Store (Schützen von Daten im Azure Data Lake-Speicher)](https://mix.office.com/watch/1q2mgzh9nn5lx)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

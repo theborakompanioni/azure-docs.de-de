@@ -13,14 +13,16 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 1/10/2017
-ms.author: jimpark;trinadhk;markgal
+ms.author: saurse;trinadhk;markgal
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3bd18e805dafbfae315cab0e1d5c9421c8210b95
+ms.sourcegitcommit: 82b7541ab1434179353247ffc50546812346bda9
+ms.openlocfilehash: f0f3152daf5f91f7c9e540797bf09b21969d2d33
+ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="use-azure-backup-to-replace-your-tape-infrastructure"></a>Verwenden von Azure Backup als Ersatz für Ihre Bandinfrastruktur
+# <a name="move-your-long-term-storage-from-tape-to-the-azure-cloud"></a>Verschieben langfristiger Speicher von Bändern in die Azure-Cloud
 Kunden von Azure Backup und System Center Data Protection Manager haben folgende Möglichkeiten:
 
 * Sichern von Daten gemäß Zeitplänen, die den Anforderungen ihrer Organisation am besten entsprechen
@@ -77,9 +79,4 @@ Weitere Informationen zu Azure Backup finden Sie hier:
 
 * [Einführung in Azure Backup](backup-introduction-to-azure-backup.md)
 * [Azure Backup testen](backup-try-azure-backup-in-10-mins.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

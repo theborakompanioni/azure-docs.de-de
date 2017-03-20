@@ -14,14 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/11/2017
 ms.author: nberdy
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: d04f073ebf846955fde81434fd015ee4b943f695
-ms.openlocfilehash: 179abb91438fb20cd6b6adebfedb8a25e0127ad7
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 37b2a82d7f6043224e68219fde753eef73078ffd
+ms.openlocfilehash: 930be4397a56dc0af0fd13305e0e4171929cb2cc
+ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="direct-methods"></a>Direkte Methoden
+# <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Verstehen und Aufrufen direkter Methoden von IoT Hub
 ## <a name="overview"></a>Übersicht
 IoT Hub gibt Ihnen die Möglichkeit, direkte Methoden auf Geräten von der Cloud aus aufzurufen. Direkte Methoden stellen eine Anforderung-Antwort-Interaktion mit einem Gerät dar, die einem HTTP-Aufruf darin ähnelt, dass sie unverzüglich (nach einem vom Benutzer angegebenen Timeout) zu einem Erfolg oder Fehler führt. Dies ist hilfreich für Szenarios, in denen die unmittelbare Vorgehensweise davon abhängt, ob das Gerät antworten konnte, z.B. beim Senden eines SMS-Weckrufs an ein Gerät, wenn es offline ist (da eine SMS teurer als ein Methodenaufruf ist).
 

@@ -14,12 +14,12 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2016
+ms.date: 03/06/2017
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
-ms.openlocfilehash: a2a738ef1df470e17b805e843a159e0abc23efdf
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: aa3f2bc04fe33466ca44abd7331a4b3aa7be26fc
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -60,8 +60,8 @@ Sie müssen Ihre Clientanwendung aktivieren, um auf den SQL-Datenbank-Dienst zuz
 7. Kopieren Sie Ihre **CLIENT-ID**. (Sie benötigen diesen Wert später für Ihren Code.)
 8. Wählen Sie im Abschnitt **Schlüssel** in der Dropdownliste **Dauer auswählen** die Option **1 Jahr** aus. (Sie kopieren den Schlüssel nach dem Speichern in Schritt 13.)
 9. Scrollen Sie nach unten, und klicken Sie auf **Anwendung hinzufügen**.
-10. Behalten Sie für **ANZEIGEN** die Festlegung **Microsoft-Apps** bei, und wählen Sie **Microsoft Azure-Dienstverwaltung**. Klicken Sie auf das Häkchen, um fortzufahren.
-11. Wählen Sie in der Dropdownliste **Delegierte Berechtigungen** den Eintrag **Zugriff auf Azure-Dienstverwaltung** aus.
+10. Behalten Sie für **ANZEIGEN** die Einstellung **Microsoft-Apps** bei, und wählen Sie **Microsoft Azure-Service-Verwaltungs-API** aus. Klicken Sie auf das Häkchen, um fortzufahren.
+11. Wählen Sie in der Dropdownliste **Delegierte Berechtigungen** den Eintrag **Access Azure Service Management...** (Zugriff auf Azure-Dienstverwaltung) aus.
 12. Klicken Sie auf **SPEICHERN**.
 13. Nachdem der Speichervorgang abgeschlossen ist, kopieren Sie den Schlüsselwert in den Abschnitt **Schlüssel** . (Sie benötigen diesen Wert später für Ihren Code.)
 
@@ -192,9 +192,8 @@ Nach dem Einrichten von Always Encrypted können Sie eine Anwendung erstellen, d
 > 
 > 
 
-1. Öffnen Sie Visual Studio, und erstellen Sie eine neue C#-Konsolenanwendung. Stellen Sie sicher, dass Ihr Projekt auf **.NET Framework 4.6** oder höher festgelegt ist.
+1. Öffnen Sie Visual Studio und erstellen Sie eine neue C#-**Konsolenanwendung** (Visual Studio 2015 und früher) oder **Konsolenanwendung (.NET Framework)** (Visual Studio 2017 und höher). Stellen Sie sicher, dass Ihr Projekt auf **.NET Framework 4.6** oder höher festgelegt ist.
 2. Geben Sie dem Projekt den Namen **AlwaysEncryptedConsoleAKVApp**, und klicken Sie auf **OK**.
-   ![Neue Konsolenanwendung](./media/sql-database-always-encrypted-azure-key-vault/console-app.png)
 3. Installieren Sie die NuGet-Pakete, indem Sie zu **Tools** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole** navigieren.
 
 Führen Sie diese beiden Codezeilen in der Paket-Manager-Konsole aus.

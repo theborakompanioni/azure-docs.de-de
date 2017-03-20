@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/14/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 794f87c3d4b8378d7aeca63791a8fbfd03e44ceb
-ms.openlocfilehash: 50802013de0bd6f4bf1396df00cdc72bc378d503
+ms.sourcegitcommit: e34a2bfbf5f1ae544a729c994d91c485d48bb440
+ms.openlocfilehash: 7cd157cd1c5730443a710ac46d923319789aec61
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -35,13 +36,9 @@ Werfen wir einen Blick darauf, wie die Datenträger von den virtuellen Computern
 Jedem virtuellen Computer ist ein Betriebssystem-Datenträger zugeordnet. Dieser ist standardmäßig als SATA-Laufwerk registriert und mit „/dev/sda“ bezeichnet. Dieser Datenträger hat eine maximale Kapazität von 1023 Gigabytes (GB). 
 
 ## <a name="temporary-disk"></a>Temporärer Datenträger
-Der temporäre Datenträger wird automatisch für Sie erstellt. Auf virtuellen Linux-Computern lautet der Datenträger in der Regel "/dev/sdb". Er wird vom Azure Linux Agent formatiert und an /mnt/resource angefügt.
+Jede VM verfügt über einen temporären Datenträger. Der temporäre Datenträger bietet kurzfristigen Speicher für Anwendungen und Prozesse und ist ausschließlich dafür ausgelegt, Daten wie z.B. Seiten-oder Auslagerungsdateien zu speichern. Daten auf dem temporären Datenträger können während eines [Wartungsereignisses](../virtual-machines/virtual-machines-linux-manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#understand-planned-vs-unplanned-maintenance) verloren gehen, oder wenn Sie [eine VM erneut bereitstellen](../virtual-machines/virtual-machines-linux-redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Während eines standardmäßigen Neustarts der VM sollten die Daten auf dem virtuellen Datenträger erhalten bleiben.
 
-Die Größe des temporären Datenträgers variiert basierend auf der Größe des virtuellen Computers. Weitere Informationen finden Sie unter [Größen für virtuelle Computer in Azure](../virtual-machines/virtual-machines-linux-sizes.md).
-
-> [!WARNING]
-> Speichern Sie keine Daten auf dem temporären Datenträger. Er dient als temporärer Speicher für Anwendungen und Prozesse und ist ausschließlich dafür ausgelegt, Daten wie z. B. Seiten-oder Auslagerungsdateien zu speichern. 
-> 
+Auf virtuellen Linux-Computern lautet der Datenträger in der Regel **/dev/sdb**. Er wird vom Azure Linux-Agent formatiert und in **/mnt/** eingebunden. Die Größe des temporären Datenträgers variiert basierend auf der Größe des virtuellen Computers. Weitere Informationen finden Sie unter [Größen für virtuelle Computer in Azure](../virtual-machines/virtual-machines-linux-sizes.md).
 
 Weitere Informationen zur Verwendung des temporären Datenträgers in Azure finden Sie unter [Understanding the temporary drive on Microsoft Azure Virtual Machines](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
 
@@ -65,10 +62,5 @@ Sie können jederzeit Datenträger einem virtuellen Computer hinzufügen, indem 
 * [Anfügen eines Datenträgers](../virtual-machines/virtual-machines-linux-add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , um zusätzlichen Speicherplatz für den virtuellen Computer hinzuzufügen.
 * [Konfigurieren von Software-RAID](../virtual-machines/virtual-machines-linux-configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) für Redundanz.
 * [Erfassen eines virtuellen Linux-Computers](../virtual-machines/virtual-machines-linux-classic-capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json) für die schnelle Bereitstellung zusätzlicher virtueller Computer.
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

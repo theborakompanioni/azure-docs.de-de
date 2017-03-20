@@ -1,6 +1,7 @@
 ---
-title: "Einrichten von Abrechnungswarnungen für Microsoft Azure-Abonnements | Microsoft-Dokumentation"
+title: "Einrichten von Abrechnungs- oder Guthabenwarnungen für Azure-Abonnements | Microsoft-Dokumentation"
 description: "Hier wird beschrieben, wie Sie Warnungen für Ihre Azure-Rechnung einrichten können, um Überraschungen bei der Abrechnung zu vermeiden."
+keywords: Guthabenwarnung, Abrechnungswarnung
 services: 
 documentationcenter: 
 author: vikdesai
@@ -13,15 +14,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2017
+ms.date: 02/28/2017
 ms.author: vikdesai
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 54fcf8f12ffe5ead398b2556eb4c94840c15f530
-ms.openlocfilehash: b318843c1d1081bb5817f3f2aef6962f7fc00136
-
+ms.sourcegitcommit: 32a2508997d7f50b0b2989d76d0574951d81a73f
+ms.openlocfilehash: a2eb813bc96cd58762ce077d2c0710ed4bc7bde6
+ms.lasthandoff: 03/02/2017
 
 ---
-# <a name="set-up-billing-alerts-for-your-microsoft-azure-subscriptions"></a>Einrichten von Abrechnungswarnungen für Microsoft Azure-Abonnements
+# <a name="set-up-billing-or-credit-alerts-for-your-microsoft-azure-subscriptions"></a>Einrichten von Abrechnungs- oder Guthabenwarnungen für Microsoft Azure-Abonnements
 Wenn Sie der Kontoadministrator für ein Azure-Abonnement sind, können Sie den Dienst für Azure-Abrechnungswarnungen zum Erstellen von benutzerdefinierten Abrechnungswarnungen verwenden, um die Abrechnungsaktivitäten für Ihre Azure-Konten zu überwachen und zu verwalten.
 
 Dieser Dienst befindet sich in der Vorschau, daher müssen Sie ihn zunächst auf der Seite mit Vorschaufeatures aktivieren.
@@ -59,9 +61,4 @@ Weitere Informationen finden Sie im [Leitfaden zur Azure-Kostenverwaltung](billi
 [Image1]: ./media/azure-billing-set-up-alerts/billingalert1.png 
 [Image2]: ./media/azure-billing-set-up-alerts/billingalert2.png
 [Image3]: ./media/azure-billing-set-up-alerts/billingalerts3.png 
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

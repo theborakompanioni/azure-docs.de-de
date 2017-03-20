@@ -17,6 +17,7 @@ ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 04a045f41965b093aab71e59cd9b5f328b44de84
 ms.openlocfilehash: ac73b5c2ece8044d9f75e017428c43259f8a9357
+ms.lasthandoff: 02/03/2017
 
 
 ---
@@ -106,7 +107,7 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im
    
     ![Azure AD – einmaliges Anmelden][8] 
    
-   1. Geben Sie im Textfeld **Anmelde-URL** die URL ein, die die Benutzer zur Anmeldung bei Ihrer Promapp-Website verwenden (beispielsweise *https://<Unternehmensname>.promapp.com/<Instanzname>*).
+   1. Geben Sie im Textfeld **Anmelde-URL** die URL ein, die die Benutzer zur Anmeldung bei Ihrer Promapp-Website verwenden (beispielsweise *https://companyname.promapp.com/instancename*).
    2. Klicken Sie auf **Weiter**.
 
 1. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für Promapp** die folgenden Schritte aus:
@@ -248,9 +249,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Promapp“ klicken, sollten Sie au
 [400]: ./media/active-directory-saas-promapp-tutorial/tutorial_promapp_400.png
 [401]: ./media/active-directory-saas-promapp-tutorial/tutorial_promapp_401.png
 [402]: ./media/active-directory-saas-promapp-tutorial/tutorial_promapp_402.png
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

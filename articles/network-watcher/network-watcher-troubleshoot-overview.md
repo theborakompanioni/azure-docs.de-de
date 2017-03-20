@@ -15,15 +15,17 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 3bde4a676cce8ab914c000c8fef2b07d0c77e380
-ms.openlocfilehash: e172756f60ac1e8361f5481cd9defe61fa5f6448
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: dcf8a88ebd66f5e4a5a06538532fbfbae7ce852e
+ms.lasthandoff: 03/04/2017
 
 ---
 
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Einführung in die Problembehandlung bei Ressourcen in Azure Network Watcher
 
 Virtual Network-Gateways stellen die Konnektivität zwischen lokalen Ressourcen und anderen virtuellen Netzwerken in Azure bereit. Die Überwachung dieser Gateways und ihrer Verbindungen ist wichtig, damit die Kommunikation nicht unterbrochen wird. Network Watcher bietet Funktionen zur Problembehandlung bei Virtual Network-Gateways und -Verbindungen. Diese können über PowerShell, CLI oder REST-API aufgerufen werden. Bei Aufruf untersucht Network Watcher die Integrität des Virtual Network-Gateways oder der Verbindung und gibt die Ergebnisse zurück. Diese Anforderung ist eine lange andauernde Transaktion. Die Ergebnisse werden zurückgegeben, sobald die Diagnose abgeschlossen ist.
+
+[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
 
 ## <a name="results"></a>Ergebnisse
 
@@ -57,7 +59,7 @@ Die folgenden Tabellen enthalten die verschiedenen verfügbaren Fehlertypen (ID 
 | PlatformInActive | Es ist ein Problem mit der Plattform aufgetreten. | Nein|
 | ServiceNotRunning | Der zugrunde liegende Dienst wird nicht ausgeführt. | Nein|
 | NoConnectionsFoundForGateway | Es gibt keine Verbindungen auf dem Gateway. Dies ist nur eine Warnung.| Nein|
-| ConnectionsNotConnected | Es wurde keine der Verbindungen hergestellt. Dies ist nur eine Warnung.| Ja|
+| ConnectionsNotConnected | Es sind keine Verbindungen vorhanden. Dies ist nur eine Warnung.| Ja|
 | GatewayCPUUsageExceeded | Die aktuelle CPU-Auslastung auf dem Gateway liegt über 95 %. | Ja |
 
 ### <a name="connection"></a>Verbindung

@@ -17,6 +17,7 @@ ms.author: brandwe
 translationtype: Human Translation
 ms.sourcegitcommit: 7950cc1df19ddf0a5d12ff8cba8615bb920e58ba
 ms.openlocfilehash: 37666c8c2e1214f8754375efab1f8e6020dbb2e8
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -54,7 +55,7 @@ Die fertige Anwendung wird außerdem am Ende dieses Lernprogramms bereitgestellt
 5. Folgen Sie den Bildschirmaufforderungen, und erstellen Sie eine neue **Webanwendung** und/oder **Web-API**.
   * Am **Namen** der Anwendung sollten die Benutzer die Funktion der Anwendung ablesen können.
 
-  * Die **Anmelde-URL** ist die Basis-URL Ihrer Anwendung.  Der Standardwert des Gerüsts lautet „http://localhost:3000/auth/openid/return“.
+  * Die **Anmelde-URL** ist die Basis-URL Ihrer Anwendung.  Der Standardwert des Gerüsts lautet `http://localhost:3000/auth/openid/return``.
 
   * Die **App-ID-URI** ist eine eindeutige Kennung für die Anwendung. Üblicherweise wird das Format `https://<tenant-domain>/<app-name>` verwendet, z. B.: `https://contoso.onmicrosoft.com/my-first-aad-app`.
 
@@ -417,9 +418,4 @@ Sie können nun mit den Themen für fortgeschrittenere Benutzer fortfahren. Wie 
 [Schützen einer Web-API mit Azure AD](active-directory-devquickstarts-webapi-nodejs.md)
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

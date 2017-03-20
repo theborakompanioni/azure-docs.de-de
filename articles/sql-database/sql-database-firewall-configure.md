@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 02/09/2017
+ms.date: 02/28/2017
 ms.author: rickbyh
 translationtype: Human Translation
-ms.sourcegitcommit: ae230c012a17eb73c8993a32197c844c6abaa2a4
-ms.openlocfilehash: 09bc875449ecdf48c2570f1029df68d28ae5e798
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 6654b49658818a3dfd5297dc551a45de0f0968dc
+ms.openlocfilehash: 196a627b4c5cf921ddc99a0634f48f807593f8cc
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -79,7 +79,7 @@ Um Anwendungen von Azure die Verbindung mit dem Azure SQL-Server zu ermöglichen
 Die erste Firewalleinstellung auf Serverebene kann mit dem [Azure-Portal](https://portal.azure.com/) oder programmgesteuert mithilfe der REST-API oder Azure PowerShell erstellt werden. Nachfolgende Firewallregeln auf Serverebene können anhand dieser Methoden sowie über Transact-SQL erstellt und verwaltet werden. Um die Leistung zu verbessern, werden Firewallregeln auf Serverebene vorübergehend auf Datenbankebene zwischengespeichert. Informationen zum Aktualisieren des Caches finden Sie unter [DBCC FLUSHAUTHCACHE](https://msdn.microsoft.com/library/mt627793.aspx). Weitere Informationen zu Firewallregeln auf Serverebene finden Sie unter [Konfigurieren einer Firewallregel auf Serverebene für Azure SQL-Datenbank mithilfe des Azure-Portals](sql-database-configure-firewall-settings.md).
 
 ## <a name="creating-database-level-firewall-rules"></a>Erstellen von Firewallregeln auf Datenbankebene
-Nachdem Sie die erste Firewall auf Serverebene konfiguriert haben, können Sie den Zugriff auf bestimmte Datenbanken einschränken. Wenn Sie in der Firewallregel auf Datenbankebene einen IP-Adressbereich angeben, der außerhalb des Bereichs liegt, der in der Firewallregel auf Serverebene angegeben ist, können nur die Clients auf die Datenbank zugreifen, die IP-Adressen in dem auf Datenbankebene angegebenen Bereich aufweisen. Es können maximal 128 Firewallregeln auf Datenbankebene für eine Datenbank verwendet werden. Firewallregeln auf Datenbankebene für Master- und Benutzerdatenbanken können über Transact-SQL erstellt und verwaltet werden. Weitere Informationen zum Konfigurieren von Firewallregeln auf Datenbankebene finden Sie unter [sp_set_database_firewall_rule (Azure SQL-Datenbanken)](https://msdn.microsoft.com/library/dn270010.aspx).
+ Nachdem Sie die erste Firewall auf Serverebene konfiguriert haben, können Sie den Zugriff auf bestimmte Datenbanken einschränken. Wenn Sie in der Firewallregel auf Datenbankebene einen IP-Adressbereich angeben, der außerhalb des Bereichs liegt, der in der Firewallregel auf Serverebene angegeben ist, können nur die Clients auf die Datenbank zugreifen, die IP-Adressen in dem auf Datenbankebene angegebenen Bereich aufweisen. Es können maximal 128 Firewallregeln auf Datenbankebene für eine Datenbank verwendet werden. Firewallregeln auf Datenbankebene für Master- und Benutzerdatenbanken können über Transact-SQL erstellt und verwaltet werden. Weitere Informationen zum Konfigurieren von Firewallregeln auf Datenbankebene finden Sie unter [sp_set_database_firewall_rule (Azure SQL-Datenbanken)](https://msdn.microsoft.com/library/dn270010.aspx).
 
 ## <a name="programmatically-managing-firewall-rules"></a>Programmgesteuertes Verwalten von Firewallregeln
 Außer im Azure-Portal können Firewallregeln programmgesteuert mithilfe von Transact-SQL, REST-API und Azure PowerShell verwaltet werden. Die folgenden Tabellen beschreiben den Satz von Befehlen, die für jede Methode verfügbar sind.
@@ -112,8 +112,26 @@ Außer im Azure-Portal können Firewallregeln programmgesteuert mithilfe von Tra
 
 > [!NOTE]
 > Es kann bis zu fünf Minuten dauern, bis die Änderungen der Firewalleinstellungen wirksam werden.
-> 
-> 
+ 
+ 
+### <a name="faq-when-should-you-use-a-server-level-firewall-rule-and-when-should-you-use-a-database-level-firewall-rule"></a>Häufig gestellte Fragen: Wenn sollte eine Firewallregel auf Serverebene und wann eine Firewallregel auf Datenbankebene verwendet werden?   
+F: Sollten Benutzer einer Datenbank vollständig von anderen Datenbanken isoliert werden?   
+  Wenn ja, sollten Sie den Zugriff mit Firewallregeln auf Datenbankebene gewähren. Dadurch verhindern Sie die Verwendung von Firewallregeln auf Serverebene, die durch die Firewall den Zugriff auf alle Datenbanken ermöglichen und weniger Sicherheit bieten.   
+ 
+F: Benötigen Benutzer unter der IP-Adresse Zugriff auf alle Datenbanken?   
+  Verwenden Sie Firewallregeln auf Serverebene, wenn Sie weniger Firewallregeln konfigurieren möchten.   
+
+F: Wird den Benutzern oder Teams, die die Firewall-Regeln konfigurieren, der Zugriff nur über das Azure-Portal, PowerShell oder die REST-API gewährt?   
+  Dann müssen Sie Firewallregeln auf Serverebene verwenden. Firewallregeln auf Datenbankebene können nur mit Transact-SQL konfiguriert werden.  
+
+F: Werden den Benutzern oder Teams, die die Firewall-Regeln konfigurieren, übergeordnete Berechtigungen auf Datenbankebene verweigert?   
+  Verwenden Sie Firewallregeln auf Serverebene. Zum Konfigurieren von Firewallregeln auf Datenbankebene mit Transact-SQL benötigen Sie mindestens eine `CONTROL DATABASE`-Berechtigung auf Datenbankebene.  
+
+F: Verwalten die Benutzer oder Teams, die die Firewall-Regeln konfigurieren oder überwachen, die Firewallregeln für viele (vielleicht sogar Hunderte) Datenbanken zentral?   
+  Diese Entscheidung hängt von Ihren Anforderungen und Ihrer Umgebung ab. Firewallregeln auf Serverebene sind möglicherweise einfacher zu konfigurieren, doch durch Skripterstellung können Sie Regeln auf Datenbankebene konfigurieren. Selbst wenn Sie Firewallregeln auf Serverebene verwenden, müssen Sie möglicherweise Firewallregeln auf Datenbankebene überwachen, um zu prüfen, ob Benutzer mit der `CONTROL`-Berechtigung für die Datenbank Firewallregeln auf Datenbankebene erstellt haben.   
+
+F: Kann ich ein Kombination aus Firewallregeln auf Serverebene und Firewallregeln auf Datenbankebene verwenden?   
+  Ja. Einige Benutzer, z. B. Administratoren, benötigen möglicherweise Firewallregeln auf Serverebene. Andere Benutzer, z. B. Benutzer einer Datenbankanwendung, benötigen möglicherweise Firewallregeln auf Datenbankebene.   
 
 ## <a name="troubleshooting-the-database-firewall"></a>Problembehandlung der Datenbankfirewall
 Wenn der Zugriff auf den Microsoft Azure SQL-Datenbankdienst nicht das erwartete Verhalten aufweist, sind folgende Punkte zu beachten:
@@ -128,7 +146,7 @@ Wenn der Zugriff auf den Microsoft Azure SQL-Datenbankdienst nicht das erwartete
   * Verwenden Sie stattdessen die statische IP-Adressierung für die Clientcomputer, und fügen Sie dann die IP-Adressen als Firewallregeln hinzu.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Artikel zum Erstellen von Firewallregeln auf Serverebene und auf Datenbankebene finden Sie unter:
+Artikel zum Erstellen von Firewallregeln auf Serverebene und auf Datenbankebene finden Sie hier:
 
 * [Konfigurieren von Firewallregeln auf Serverebene für Azure SQL-Datenbank mithilfe des Azure-Portals](sql-database-configure-firewall-settings.md)
 * [Konfigurieren von Firewallregeln auf Serverebene und Datenbankebene für Azure SQL-Datenbank mithilfe von T-SQL](sql-database-configure-firewall-settings-tsql.md)
@@ -137,7 +155,8 @@ Artikel zum Erstellen von Firewallregeln auf Serverebene und auf Datenbankebene 
 
 Ein Tutorial zum Erstellen einer Datenbank finden Sie unter [Ihre erste Azure SQL-Datenbank](sql-database-get-started.md).
 Hilfe beim Herstellen einer Verbindung mit einer Azure SQL-Datenbank über Open Source-Anwendungen oder Anwendungen von Drittanbietern finden Sie unter [Clientcodebeispiele für die ersten Schritte mit SQL-Datenbank](https://msdn.microsoft.com/library/azure/ee336282.aspx).
-Informationen zum Navigieren zu Datenbanken finden Sie unter [Verwalten von Datenbankzugriff und Anmeldesicherheit](https://msdn.microsoft.com/library/azure/ee336235.aspx).
+Informationen zum Navigieren zu Datenbanken finden Sie unter [Verwalten von Datenbankzugriff und Anmeldesicherheit](https://msdn.microsoft.com/library/azure/ee336235.aspx).   
+Ein umfassendes Tutorial zum Erstellen von Anmeldungen, Benutzern und Firewalls finden Sie unter [SQL Server-Authentifizierung, Zugriff und Firewallregeln auf Datenbankebene](sql-database-control-access-sql-authentication-get-started.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 * [Sichern der Datenbank](sql-database-security-overview.md)

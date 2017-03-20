@@ -17,8 +17,9 @@ ms.workload: na
 ms.date: 11/10/2016
 ms.author: chrande; glenga
 translationtype: Human Translation
-ms.sourcegitcommit: c9e736f7ce5330823f3890c669da40e2bb1ecf43
-ms.openlocfilehash: 13b69118c6732ed872bec11e880737db3b8fa3c5
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: e476a80a3846b8c80c35d6803d5518727f008824
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -53,7 +54,7 @@ Die DocumentDB-Eingabe zu einer Funktion verwendet das folgende JSON-Objekt im `
 Beachten Sie Folgendes:
 
 * `id` unterstützt Bindungen wie `{queueTrigger}`, die den Zeichenfolgenwert der Warteschlangennachricht als Dokument-ID verwendet.
-* `connection` muss der Name einer App-Einstellung sein, die auf den Endpunkt für Ihr DocumentDB-Konto verweist (Wert: `AccountEndpoint=<Endpoint for your account>;AccountKey=<Your primary access key>`). Wenn Sie über die Functions-Portal-UI ein DocumentDB-Konto erstellen, wird bei der Kontoerstellung eine App-Einstellung für Sie erstellt. Damit Sie ein vorhandenes DocumentDB-Konto verwenden können, müssen Sie [diese App-Einstellung manuell konfigurieren](). 
+* `connection` muss der Name einer App-Einstellung sein, die auf den Endpunkt für Ihr DocumentDB-Konto verweist (Wert: `AccountEndpoint=<Endpoint for your account>;AccountKey=<Your primary access key>`). Wenn Sie über die Functions-Portal-UI ein DocumentDB-Konto erstellen, wird bei der Kontoerstellung eine App-Einstellung für Sie erstellt. Damit Sie ein vorhandenes DocumentDB-Konto verwenden können, müssen Sie [diese App-Einstellung manuell konfigurieren](functions-how-to-use-azure-function-app-settings.md). 
 * Wenn das angegebene Dokument nicht gefunden wird, wird der benannte Eingabeparameter zur Funktion auf `null` festgelegt. 
 
 ## <a name="input-usage"></a>Eingabeverwendung
@@ -132,7 +133,7 @@ module.exports = function (context) {
 };
 ```
 
-## <a name="a-iddocdboutputadocumentdb-output-binding"></a><a id="docdboutput"></a>DocumentDB-Ausgabebindung
+## <a id="docdboutput"></a>DocumentDB-Ausgabebindung
 Die DocumentDB-Ausgabebindung ermöglicht das Schreiben eines neuen Dokuments in eine Azure DocumentDB-Datenbank. 
 
 Die Ausgabebindung verwendet das folgende JSON-Objekte im `bindings`-Array von „function.json“: 
@@ -157,7 +158,10 @@ Beachten Sie Folgendes:
 ## <a name="output-usage"></a>Ausgabeverwendung
 Dieser Abschnitt veranschaulicht die Verwendung Ihrer DocumentDB-Ausgabebindung in Ihrem Funktionscode.
 
-Beim Schreiben in den Ausgabeparameter in Ihrer Funktion wird standardmäßig ein neues Dokument mit einer automatisch generierten GUID als Dokument-ID in Ihrer Datenbank erstellt. Sie können die Dokument-ID des Ausgabedokument angeben, indem Sie im Ausgabeparameter die JSON-Eigenschaft `id` festlegen. Wenn ein Dokument mit dieser ID bereits vorhanden ist, wird es vom Ausgabedokument überschrieben. 
+Beim Schreiben in den Ausgabeparameter in Ihrer Funktion wird standardmäßig ein neues Dokument mit einer automatisch generierten GUID als Dokument-ID in Ihrer Datenbank erstellt. Sie können die Dokument-ID des Ausgabedokument angeben, indem Sie im Ausgabeparameter die JSON-Eigenschaft `id` festlegen. 
+
+>[!Note]  
+>Wenn Sie die ID eines vorhandenen Dokuments angeben, wird dieses vom neuen Ausgabedokument überschrieben. 
 
 Sie können in die Ausgabe schreiben, indem Sie einen der folgenden Typen verwenden:
 
@@ -306,9 +310,4 @@ module.exports = function (context) {
   context.done();
 };
 ```
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

@@ -12,20 +12,38 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/30/2017
-ms.author: jotaub
+ms.date: 03/08/2017
+ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: fe331199333d492dbc42c9125c9da96a44066ee1
-ms.openlocfilehash: 4a3656d09f216e5c895bac5d7d680b44d76f4df8
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 38fe7818771f6a6965cb324631d0935959576541
+ms.lasthandoff: 03/09/2017
 
 
 ---
-# <a name="get-started-with-event-hubs-using-the-net-framework"></a>Erste Schritte mit Event Hubs unter Verwendung von .NET Framework
+# <a name="receive-events-from-azure-event-hubs-using-the-net-framework"></a>Empfangen von Ereignissen von Azure Event Hubs mithilfe von .NET Framework
 
-## <a name="receive-messages-with-eventprocessorhost"></a>Empfangen von Nachrichten mit EventProcessorHost
-[EventProcessorHost][EventProcessorHost] ist eine .NET-Klasse, die das Empfangen von Ereignissen von Event Hubs durch Verwalten von permanenten Prüfpunkten und parallelen Empfangsvorgängen von diesen Event Hubs vereinfacht. Mit [EventProcessorHost][EventProcessorHost] können Sie Ereignisse selbst dann auf mehrere Empfänger aufteilen, wenn diese auf verschiedenen Knoten gehostet werden. Dieses Beispiel zeigt, wie [EventProcessorHost][EventProcessorHost] für einen einzelnen Empfänger verwendet wird. Das Beispiel [Skalieren der Ereignisverarbeitung][Scale out Event Processing with Event Hubs] veranschaulicht, wie [EventProcessorHost][EventProcessorHost] mit mehreren Empfängern verwendet wird.
+## <a name="introduction"></a>Einführung
+Event Hubs ist ein Dienst, der große Mengen von Ereignisdaten (Telemetriedaten) von verbundenen Geräten und Anwendungen verarbeiten kann. Nach dem Sammeln von Daten auf Ereignis-Hubs können die Daten mithilfe eines Speicherclusters gespeichert oder mit einem Echtzeitanalyse-Anbieter transformiert werden. Diese umfangreiche Ereignissammlung und -verarbeitung ist eine wichtige Komponente moderner Anwendungsarchitekturen. Hierzu zählt auch das Internet der Dinge (Internet of Things, IoT).
 
-Um [EventProcessorHost][EventProcessorHost] verwenden zu können, benötigen Sie ein [Azure-Speicherkonto][Azure Storage account]:
+In diesem Tutorial lernen Sie, eine .NET Framework-Konsolenanwendung zum Empfangen von Nachrichten von einem Event Hub mithilfe des **[Ereignisprozessorhosts][EventProcessorHost]** zu schreiben. Informationen zum Senden von Ereignissen mithilfe von .NET Framework finden Sie im Artikel [Senden von Ereignissen an Azure Event Hubs mithilfe von .NET Framework](event-hubs-dotnet-framework-getstarted-send.md). Alternativ können Sie auch links im Inhaltsverzeichnis auf die entsprechende Sendesprache klicken.
+
+Der [Ereignisprozessorhost][EventProcessorHost] ist eine .NET-Klasse, die das Empfangen von Ereignissen von Event Hubs durch Verwalten von permanenten Prüfpunkten und parallelen Empfangsvorgängen von diesen Event Hubs vereinfacht. Mit dem [Ereignisprozessorhost][Event Processor Host] können Sie Ereignisse selbst dann auf mehrere Empfänger aufteilen, wenn sie in verschiedenen Knoten gehostet werden. Dieses Beispiel zeigt, wie der [Ereignisprozessorhost][EventProcessorHost] für einen einzelnen Empfänger verwendet wird. Das Beispiel [Skalieren der Ereignisverarbeitung][Scale out Event Processing with Event Hubs] veranschaulicht, wie der [Ereignisprozessorhost][EventProcessorHost] mit mehreren Empfängern verwendet wird.
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Für dieses Tutorial benötigen Sie Folgendes:
+
+* [Microsoft Visual Studio 2015 oder höher](http://visualstudio.com) Die Screenshots in diesem Tutorial zeigen Visual Studio 2017.
+* Ein aktives Azure-Konto. Falls Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Konto erstellen. Weitere Informationen finden Sie unter [Kostenloses Azure-Testkonto](https://azure.microsoft.com/free/).
+
+## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Erstellen eines Event Hubs-Namespace und eines Event Hubs
+
+Verwenden Sie zunächst das [Azure-Portal](https://portal.azure.com), um einen Namespace vom Typ „Event Hubs“ zu erstellen, und erhalten Sie so die Verwaltungsanmeldeinformationen, die Ihre Anwendung benötigt, um mit dem Event Hub zu kommunizieren. Folgen Sie dem Ablauf in [diesem Artikel](event-hubs-create.md), um einen Namespace und einen Event Hub zu erstellen, und fahren Sie mit den folgenden Schritten fort.
+
+## <a name="create-an-azure-storage-account"></a>Erstellen eines Azure-Speicherkontos
+
+Zur Verwendung des [Ereignisprozessorhosts][EventProcessorHost] benötigen Sie ein [Azure Storage-Konto][Azure Storage account]:
 
 1. Melden Sie sich beim [Azure-Portal][Azure portal] an, und klicken Sie oben links auf dem Bildschirm auf **Neu**.
 2. Klicken Sie auf **Storage** und anschließend auf **Speicherkonto**.
@@ -41,8 +59,8 @@ Um [EventProcessorHost][EventProcessorHost] verwenden zu können, benötigen Sie
 6. Erstellen Sie in Visual Studio mithilfe der Projektvorlage **Konsolenanwendung** ein neues Visual C#-Desktopanwendungsprojekt. Geben Sie dem Projekt den Namen **Receiver**.
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-receiver-csharp1.png)
-7. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf die Projektmappe, und klicken Sie dann auf **NuGet-Pakete für Projektmappe verwalten**.
-8. Klicken Sie auf die Registerkarte **Durchsuchen**, und suchen Sie nach `Microsoft Azure Service Bus Event Hub - EventProcessorHost`. Stellen Sie sicher, dass der Projektname (**Receiver**) im Feld **Version(en)** angegeben ist. Klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen.
+7. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das **Receiver**-Projekt, und klicken Sie dann auf **NuGet-Pakete für Projektmappe verwalten**.
+8. Klicken Sie auf die Registerkarte **Durchsuchen**, und suchen Sie nach `Microsoft Azure Service Bus Event Hub - EventProcessorHost`. Klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen.
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-eph-csharp1.png)
    
@@ -113,7 +131,7 @@ Um [EventProcessorHost][EventProcessorHost] verwenden zu können, benötigen Sie
      ```csharp
      static void Main(string[] args)
      {
-       string eventHubConnectionString = "{Event Hub connection string}";
+       string eventHubConnectionString = "{Event Hubs namespace connection string}";
        string eventHubName = "{Event Hub name}";
        string storageAccountName = "{storage account name}";
        string storageAccountKey = "{storage account key}";
@@ -132,6 +150,11 @@ Um [EventProcessorHost][EventProcessorHost] verwenden zu können, benötigen Sie
      }
      ```
 
+12. Führen Sie das Programm aus, und stellen Sie sicher, dass keine Fehler auftreten.
+  
+Glückwunsch! Soeben haben Sie Nachrichten von einem Event Hub mithilfe eines Ereignisprozessorhosts erhalten.
+
+
 > [!NOTE]
 > Dieses Tutorial verwendet eine einzelne Instanz von [EventProcessorHost][EventProcessorHost]. Um den Durchsatz zu erhöhen, sollten Sie mehrere Instanzen von [EventProcessorHost][EventProcessorHost] ausführen, wie im Beispiel [Horizontal hochskalierte Ereignisverarbeitung][Horizontal hochskalierte Ereignisverarbeitung] beschrieben. In diesen Fällen koordinieren sich die verschiedenen Instanzen automatisch untereinander, um die Last der eingegangenen Ereignisse ausgeglichen zu verteilen. Wenn mehrere Empfänger für jeden Prozess *alle* Ereignisse verarbeiten sollen, müssen Sie das **ConsumerGroup** -Konzept verwenden. Wenn Ereignisse von anderen Computern empfangen werden, kann es hilfreich sein, die [EventProcessorHost][EventProcessorHost]-Instanzen nach den Computern (oder Rollen) zu benennen, auf denen sie bereitgestellt werden. Weitere Informationen zu diesen Themen finden Sie unter [Event Hubs – Übersicht][Event Hubs Overview] und im [Event Hubs-Programmierhandbuch][Event Hubs Programming Guide].
 > 
@@ -141,7 +164,7 @@ Um [EventProcessorHost][EventProcessorHost] verwenden zu können, benötigen Sie
 [Event Hubs Overview]: event-hubs-overview.md
 [Event Hubs Programming Guide]: event-hubs-programming-guide.md
 [Azure Storage account]: ../storage/storage-create-storage-account.md
-[EventProcessorHost]: /dotnet/api/microsoft.servicebus.messaging.eventprocessorhost
+[Event Processor Host]: /dotnet/api/microsoft.servicebus.messaging.eventprocessorhost
 [Azure portal]: https://portal.azure.com
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -158,11 +181,6 @@ Nachdem Sie eine funktionierende Anwendung erstellt haben, die einen Event Hub e
 [22]: ./media/event-hubs-csharp-ephcs-getstarted/run-csharp-ephcs2.png
 
 <!-- Links -->
-[Event Processor Host]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
+[EventProcessorHost]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
 [Event Hubs overview]: event-hubs-overview.md
 [Scale out Event Processing with Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
-
-
-<!--HONumber=Feb17_HO1-->
-
-

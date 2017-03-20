@@ -15,12 +15,14 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: a9ebbbdc431a34553de04e920efbbc8c2496ce5f
-ms.openlocfilehash: 4953b9cb4db2fe0f5bf75589145fde39a6f35a68
+ms.sourcegitcommit: 1029c7e4c6a17ad2a290ff0783fc88692555b255
+ms.openlocfilehash: 89bec0e3af42b03ef21e3e8c4059f6aad86db4c0
+ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="walkthrough-step-6-access-the-azure-machine-learning-web-service"></a>Anleitung Schritt 6: Zugreifen auf den Azure Machine Learning-Webdienst
+# <a name="walkthrough-step-6-access-the-azure-machine-learning-web-service"></a>Anleitung Schritt 6: Zugreifen auf den Azure Machine Learning-Webdienst
+
 Dies ist der letzte Schritt der exemplarischen Vorgehensweise zum [Entwickeln einer Predictive Analytics-Lösung mit Azure Machine Learning](machine-learning-walkthrough-develop-predictive-solution.md)
 
 1. [Erstellen eines Machine Learning-Arbeitsbereichs](machine-learning-walkthrough-1-create-ml-workspace.md)
@@ -38,17 +40,14 @@ Der Webdienst ist ein Azure-Webdienst, der Daten auf eine von zwei Arten über R
 * **Anfrage/Antwort:** Der Benutzer sendet über das HTTP-Protokoll eine oder mehrere Zeilen Kreditdaten an den Dienst, und dieser antwortet mit einem oder mehreren Sätzen von Ergebnissen.
 * **Batchausführung:** Der Benutzer speichert Zeilen von Kreditdaten in einem Azure-Blob und sendet den Speicherorts des Blobs dann an den Dienst. Der Dienst bewertet alle Datenzeilen im Eingabeblob, speichert die Ergebnisse in einem anderen Blob und gibt die URL dieses Containers zurück.  
 
-Die schnellste und einfachste Möglichkeit, auf den Webdienst zuzugreifen, bieten die [Azure ML-Web-App für den Anfrage-/Antwort-Dienst](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlaspnettemplateforrrs/) oder die [Azure ML-Web-App-Vorlage für den Batchausführungsdienst](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/).
+Die schnellste und einfachste Möglichkeit, auf einen klassischen Webdienst zuzugreifen, bietet die [Azure ML Request-Response Service Web App](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlaspnettemplateforrrs/) (Azure ML-Web-App für den Anfrage-/Antwort-Dienst) oder die [Azure ML Batch Execution Service Web App Template ](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/) (Azure ML-Web-App-Vorlage für den Batchausführungsdienst).
+
 Die Web-App-Vorlagen können eine benutzerdefinierte Web-App erstellen, der die Eingabedaten und die zurückgegebenen Ergebnisse des Webdiensts bekannt sind. Dafür müssen Sie nur Zugriff auf den Webdienst und die Daten gewähren, und die Vorlage übernimmt den Rest.
 
 Weitere Informationen zur Verwendung von Web-App-Vorlagen finden Sie unter [Verwenden eines Azure Machine Learning-Webdiensts mit einer Web-App-Vorlage](machine-learning-consume-web-service-with-web-app-template.md).
 
 Sie können auch eine benutzerdefinierte Anwendung entwickeln, die mithilfe von in den Programmiersprachen R, C# und Python bereitgestelltem Startcode auf den Webdienst zugreift.
+
 Vollständige Details finden Sie unter [Nutzen eines Azure Machine Learning-Webdiensts, der von einem Machine Learning-Experiment aus veröffentlicht wurde](machine-learning-consume-web-services.md).
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

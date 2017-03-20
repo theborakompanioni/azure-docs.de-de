@@ -15,38 +15,42 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: bwren;dairwin
 translationtype: Human Translation
-ms.sourcegitcommit: 834e805e05696175bfc5a1d71f2223a8f7cf45e8
-ms.openlocfilehash: 2c4b07a7bf541c0ad1e979df9cb2937bfa66c216
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: afba457134ba0fbc4ed35040828bb3745364ef78
+ms.lasthandoff: 03/03/2017
 
 
 ---
 
 # <a name="service-map-integration-with-system-center-operations-manager-integration"></a>Integration von Service Map in System Center Operations Manager
+  > [!NOTE]
+  > Dieses Feature ist in der privaten Vorschau enthalten und sollte deshalb nicht auf Produktionssystemen verwendet werden.
+  > 
+  
 Service Map in der Operations Management Suite (OMS) ermittelt automatisch Anwendungskomponenten auf Windows- und Linux-Systemen und bildet die Kommunikation zwischen Diensten ab. In dieser Lösung können Sie die Server ihrer Funktion gemäß anzeigen – als verbundene Systeme, die wichtige Dienste bereitstellen. Service Map zeigt Verbindungen zwischen Servern, Prozessen und Ports über die gesamte TCP-Verbindungsarchitektur an. Außer der Installation eines Agents ist keine weitere Konfiguration erforderlich.  Weitere Informationen finden Sie in der [Dokumentation zu Service Map](operations-management-suite-service-map.md).
 
-Mit dieser Vorschau der Integration zwischen Service Map und System Center Operations Manager (SCOM) können Sie basierend auf dynamischen Abhängigkeitszuordnungen in Service Map automatisch Diagramme der verteilten Anwendungen in SCOM erstellen.
+Mit dieser Integration zwischen Service Map und System Center Operations Manager (SCOM) können Sie basierend auf dynamischen Abhängigkeitszuordnungen in Service Map automatisch Diagramme der verteilten Anwendungen in SCOM erstellen.
 
-# <a name="prerequisites"></a>Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 1.    Eine SCOM-Verwaltungsgruppe zur Verwaltung einer Gruppe von Servern
 2.    Ein OMS-Arbeitsbereich mit aktivierter Service Map-Lösung
 3.    Eine Gruppe von Servern (mindestens eine), die über SCOM verwaltet werden und Daten an Service Map senden.  Es werden Windows- und Linux-Server unterstützt.
-4.    Ein Dienstprinzipal mit Zugriff auf das Azure-Abonnement, das dem OMS-Arbeitsbereich zugeordnet ist.  Im Anhang finden Sie weitere Informationen zu Dienstprinzipalen.
+4.    Ein Dienstprinzipal mit Zugriff auf das Azure-Abonnement, das dem OMS-Arbeitsbereich zugeordnet ist.  [Weitere Informationen zum Erstellen eines Dienstprinzipals](#creating-a-service-principal).
 
-# <a name="installing-service-map-management-pack"></a>Installieren des Service Map Management Pack
+## <a name="installing-service-map-management-pack"></a>Installieren des Service Map Management Pack
 Die Integration zwischen SCOM und Service Map wird durch Importieren des Management Pack-Pakets Microsoft.SystemCenter.ServiceMap (Microsoft.SystemCenter.ServiceMap.mpb) aktiviert.  Das Paket enthält die folgenden Management Packs:
 * Microsoft ServiceMap Application Views
 * Microsoft System Center ServiceMap Internal
 * Microsoft System Center ServiceMap Overrides
 * Microsoft System Center ServiceMap
 
-# <a name="configuring-the-service-map-integration"></a>Konfigurieren der Integration von Service Map
+## <a name="configuring-the-service-map-integration"></a>Konfigurieren der Integration von Service Map
 1. Nach der Installation des ServiceMap Management Packs wird im Bereich „Verwaltung“ unter „Operations Management Suite“ der neue Knoten „Service Map“ angezeigt.
 2. Klicken Sie im Bereich mit der Service Map-Übersicht auf „Arbeitsbereich hinzufügen“, um den Konfigurations-Assistenten zu öffnen.
 
     ![SCOM-Konfigurations-Assistent](media/oms-service-map/scom-configuration.png)
 
-3. Im ersten Schritt des Assistenten wird in „Verbindungskonfiguration“ ein Dienstprinzipalname konfiguriert. Geben Sie die Mandanten-ID, die Anwendungs-ID (oder den Benutzernamen bzw. die ClientID) und das Kennwort des Dienstprinzipals ein.  Im Abschnitt „Anhang“ finden Sie Informationen zum Erstellen eines Dienstprinzipals.
+3. Der erste Schritt im Assistenten ist die Verbindungskonfiguration, bei der Sie die Informationen für Ihren Azure-Dienstprinzipal eingeben. Geben Sie den Mandantennamen, die Mandanten-ID, die Anwendungs-ID (oder den Benutzernamen bzw. die ClientID) und das Kennwort des Dienstprinzipals ein.  [Weitere Informationen zum Erstellen eines Dienstprinzipals](#creating-a-service-principal).
 
     ![SCOM-Konfiguration – Dienstprinzipalname](media/oms-service-map/scom-config-spn.png)
 
@@ -68,31 +72,31 @@ Die Integration zwischen SCOM und Service Map wird durch Importieren des Managem
 
 **Hinweis:** Das Standardsynchronisierungsintervall ist auf 60 Minuten festgelegt. Benutzer können Außerkraftsetzungen konfigurieren, um das Synchronisierungsintervall zu ändern. Benutzer können der Service Map-Servergruppe zudem im Bereich „Konfiguration“ (Bereich „Erstellen“ > „Gruppen“, dann nach „Service Map-Servergruppe“ suchen) manuell Server hinzufügen. Die Serverzuordnungen für diese Server werden dann bei der nächsten Synchronisierung synchronisiert (basierend auf dem konfigurierten Synchronisierungsintervall).
 
-# <a name="monitoring-service-map"></a>Überwachen von Service Map
+## <a name="monitoring-service-map"></a>Überwachen von Service Map
 Wenn der OMS-Arbeitsbereich verbunden ist, wird im Bereich „Überwachung“ der SCOM-Konsole der neue Ordner „Service Map“ angezeigt.
 ![SCOM-Überwachung](media/oms-service-map/scom-monitoring.png)
 
 Der Ordner „Service Map“ umfasst drei Knoten:
-## <a name="all-alerts"></a>Alle Warnungen:
+### <a name="all-alerts"></a>Alle Warnungen:
 Hier werden alle Warnungen zur Kommunikation zwischen SCOM und der Service Map-Lösung in OMS angezeigt.
 
 **Hinweis:** Dabei handelt es sich nicht um OMS-Warnungen, die in SCOM angezeigt werden.
-## <a name="servers"></a>Server:
+### <a name="servers"></a>Server:
 Hier wird die Liste der überwachten Server angezeigt, die für die Synchronisierung mit Service Map konfiguriert sind.
 
 ![SCOM-Überwachung – Server](media/oms-service-map/scom-monitoring-servers.png)
 
-## <a name="server-dependency-views"></a>Ansichten der Serverabhängigkeiten:
+### <a name="server-dependency-views"></a>Ansichten der Serverabhängigkeiten:
 In dieser Ansicht wird die Liste aller mit Service Map synchronisierten Server angezeigt. Benutzer können auf einen Server klicken, um das entsprechende Diagramm der verteilten Anwendungen anzuzeigen.
 
 ![SCOM – Diagramm der verteilten Anwendungen](media/oms-service-map/scom-dad.png)
 
-# <a name="editdelete-workspace"></a>Bearbeiten und Löschen von Arbeitsbereichen
+## <a name="editdelete-workspace"></a>Bearbeiten und Löschen von Arbeitsbereichen
 Benutzer können den konfigurierten Arbeitsbereich im Bereich der Service Map-Übersicht (Bereich „Verwaltung“ > „Operations Management Suite“ > „Service Map“) bearbeiten oder löschen.  Beachten Sie, dass vorerst nur ein OMS-Arbeitsbereich konfiguriert werden kann.
 
 ![SCOM-Bearbeitung – Arbeitsbereich](media/oms-service-map/scom-edit-workspace.png)
 
-# <a name="configuring-rules-and-overrides"></a>Konfigurieren von Regeln und Außerkraftsetzungen
+## <a name="configuring-rules-and-overrides"></a>Konfigurieren von Regeln und Außerkraftsetzungen
 Eine Regel (**Microsoft.SystemCenter.ServiceMap.Import.Rule**) wird erstellt, damit regelmäßig Informationen von Service Map abgerufen werden.  Benutzer können Außerkraftsetzungen für diese Regel konfigurieren, um die Zeitvorgaben für die Synchronisierung zu ändern.
 Bereich „Erstellen“ > „Regeln“ > „Microsoft.SystemCenter.ServiceMapImport.Rule“
 
@@ -102,18 +106,17 @@ Bereich „Erstellen“ > „Regeln“ > „Microsoft.SystemCenter.ServiceMapImp
 * **TimeoutSeconds:** Zeitspanne vor dem Timeout der Anforderung 
 * **TimeWindowMinutes:** Zeitfenster für die Abfrage von Daten.  Standardmäßig ist ein Fenster von 60 Minuten festgelegt. Der Maximalwert ist 1 Stunde (maximal zulässiger Wert in Service Map).
 
-# <a name="known-issueslimitations"></a>Bekannte Probleme und Einschränkungen
+## <a name="known-issueslimitations"></a>Bekannte Probleme und Einschränkungen
 Im aktuellen Entwurf:
 1. Benutzer können im Bereich „Erstellen“ in „Service Map-Servergruppe“ zwar manuell Server hinzufügen, die Synchronisierung der Zuordnungen für diese Server mit Service Map erfolgt aber erst während des nächsten Synchronisierungszyklus (Standardmäßig&60; Minuten. Benutzer können die Zeitvorgabe für die Synchronisierung ändern.). 
 2. Benutzer können nur eine Verbindung mit einem einzigen OMS-Arbeitsbereich herstellen.
 
-# <a name="appendix"></a>Anhang
 ## <a name="creating-a-service-principal"></a>Erstellen eines Dienstprinzipals
 Über die folgenden Links gelangen Sie zur offiziellen Azure-Dokumentation für die drei verschiedenen Möglichkeiten zum Erstellen eines Dienstprinzipals.
 * [Erstellen eines Dienstprinzipals mit PowerShell](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authenticate-service-principal)
 * [Erstellen eines Dienstprinzipals über die Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
 * [Erstellen eines Dienstprinzipals über das Azure-Portal](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal)
 
-## <a name="feedback"></a>Feedback
+### <a name="feedback"></a>Feedback
 Haben Sie Feedback für uns zu Service Map oder dieser Dokumentation?  Besuchen Sie unsere [User Voice-Webseite](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), auf der Sie Features vorschlagen oder vorhandene Vorschläge unterstützen können.
 

@@ -13,11 +13,12 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 10/17/2016
+ms.date: 03/05/2017
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 71cfd2ea327cad22cdb1085558658934804c15f1
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: e0de3b12b98bf9bf361607dac4b087e4eacabf1e
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -41,13 +42,10 @@ Azure Search ist ein vollständig verwalteter cloudbasierter Suchdienst zum Erst
 
 *Abfrageleistung* wird in diesem Artikel ebenfalls nicht eingegangen. Weitere Informationen finden Sie unter [Überwachen der Nutzung und Abfragemetriken](search-monitor-usage.md) und [Leistung und Optimierung](search-performance-optimization.md).
 
-Bei einem Ausfalls wird ein Failover von Azure Search in andere Cluster und Rechenzentren ausgeführt, aber es gibt keine integrierte Lösungen für manuelle Sicherungs- und Wiederherstellungsvorgänge, wenn der Index oder der Dienst vorsätzlich oder unbeabsichtigt gelöscht wird. Für Kunden, die Objekte und Daten per Pushvorgang an ihren Dienst übermitteln, stellt der Quellcode für die Erstellung und Auffüllung eines Index praktisch die Wiederherstellungsoption dar, wenn ein Index versehentlich gelöscht wird. 
-
-Azure Search bietet keine dienstübergreifende Georeplikation von Indizes. Wenn die Lösung global genutzt wird, könnten Sie Redundanz über einen zusätzlichen Dienst in einem anderen regionalen Rechenzentrum hinzufügen, damit alle Anwendungskomponenten an einem Ort gehostet werden. Weitere Informationen finden Sie unter [Überlegungen zur Leistung und Optimierung von Azure Search](search-performance-optimization.md).
 
 <a id="admin-rights"></a>
 
-## <a name="administrator-rights-in-azure-search"></a>Administratorrechte in Azure Search
+## <a name="administrator-rights"></a>Administratorrechte
 Die Bereitstellung oder Außerbetriebnahme des eigentlichen Diensts kann von einem Administrator oder Co-Administrator des Azure-Abonnements durchgeführt werden.
 
 Innerhalb eines Diensts verfügen alle Benutzer mit Zugriff auf die Dienst-URL und mit einem Administrator-API-Schlüssel über Lese-/Schreibzugriff auf den Dienst und können entsprechend Serverobjekte, z.B. API-Schlüssel, Indizes, Indexer, Datenquellen, Zeitpläne und Rollenzuweisungen hinzufügen, löschen oder ändern, die über [per RBAC-definierte Rollen](#rbac) implementiert wurden.
@@ -56,7 +54,21 @@ Alle Benutzerinteraktionen mit Azure Search fallen unter einen dieser beiden Mod
 
 <a id="sys-info"></a>
 
-## <a name="logging-in-azure-search-and-system-information"></a>Protokollierung in Azure Search und Systeminformationen
+## <a name="set-rbac-roles-for-administrative-access"></a>Festlegen von RBAC-Rollen für den Administratorzugriff
+In Azure wird ein [globales Modell für die rollenbasierte Autorisierung](../active-directory/role-based-access-control-configure.md) für alle Dienste bereitgestellt, die über das Portal oder mit Resource Manager-APIs verwaltet werden. Die Rollen „Besitzer“, „Mitwirkender“ und „Leser“ bestimmen die Ebene der Dienstverwaltung für Active Directory-Benutzer, -Gruppen und -Dienstprinzipale, die einer Rolle jeweils zugewiesen sind. 
+
+Für Azure Search werden die folgenden administrativen Aufgaben mit RBAC-Berechtigungen gesteuert:
+
+| Rolle | Task |
+| --- | --- |
+| Besitzer |Erstellen oder löschen Sie den Dienst bzw. jedes Objekt im Dienst, einschließlich API-Schlüsseln, Indizes, Indexern sowie Datenquellen und Zeitplänen für Indexer.<p>Zeigen Sie den Dienststatus an, einschließlich Anzahl und Speichergröße.<p>Hinzufügen oder Löschen von Rollenmitgliedschaften (Nur ein Besitzer kann die Rollenmitgliedschaften verwalten.)<p>Abonnementadministratoren und Dienstbesitzer sind automatisch Mitglieder der Besitzerrolle. |
+| Mitwirkender |Die gleiche Ebene wie „Besitzer“, mit Ausnahme der RBAC-Rollenverwaltung. So kann z.B. ein Mitwirkender den `api-key` anzeigen und neu generieren, aber nicht die Rollenmitgliedschaften ändern. |
+| Leser |Dienststatus und Abfrageschlüssel anzeigen. Mitglieder dieser Rolle können die Dienstkonfiguration nicht ändern und auch keine Admin-Schlüssel anzeigen. |
+
+Beachten Sie, dass die Rollen keine Zugriffsrechte für den Dienstendpunkt erteilen. Suchdienstoperationen, wie z. B. die Indexverwaltung, Auffüllung des Indexes und Abfragen von Suchdaten werden durch die API-Schlüssel und nicht durch Rollen gesteuert. Weitere Informationen finden Sie unter „Autorisierung für Verwaltungsvorgänge im Vergleich zu Datenvorgängen“ im Artikel [Rollenbasierte Zugriffssteuerung](../active-directory/role-based-access-control-what-is.md).
+
+<a id="secure-keys"></a>
+## <a name="logging-and-system-information"></a>Protokollierungs- und Systeminformationen
 In Azure Search werden keine Protokolldateien für einen einzelnen Dienst über das Portal oder programmgesteuerte Schnittstellen verfügbar gemacht. Im Basic-Tarif und höher überwacht Microsoft alle Azure Search-Dienste auf eine Verfügbarkeit von 99,9% gemäß der Vereinbarung zum Servicelevel (SLA). Wenn der Dienst langsam ist oder der Anforderungsdurchsatz unter die SLA-Schwellenwerte fällt, überprüfen Supportteams die verfügbaren Protokolldateien und kümmern sich um die Lösung des Problems.
 
 Allgemeine Informationen zu Ihrem Dienst erhalten Sie wie folgt:
@@ -67,7 +79,7 @@ Allgemeine Informationen zu Ihrem Dienst erhalten Sie wie folgt:
 
 <a id="manage-keys"></a>
 
-## <a name="manage-the-api-keys"></a>Verwalten der API-Schlüssel
+## <a name="manage-api-keys"></a>Verwalten von API-Schlüsseln
 Für alle Anforderungen an einen Suchdienst wird ein API-Schlüssel benötigt, der speziell für Ihren Dienst generiert wurde. Dieser API-Schlüssel ist der einzige Authentifizierungsmechanismus für den Zugriff auf Ihren Dienstendpunkt. 
 
 Ein API-Schlüssel ist eine Zeichenfolge, die aus zufällig generierten Zahlen und Buchstaben besteht. Er wird ausschließlich von Ihrem Dienst generiert. Mit [RBAC-Berechtigungen](#rbac) können Sie die Schlüssel löschen oder lesen, aber das Überschreiben eines generierten Schlüssels mit einer benutzerdefinierten Zeichenfolge ist nicht möglich (wenn Sie routinemäßig Kennwörter verwenden, können Sie einen API-Schlüssel nicht durch ein benutzerdefiniertes Kennwort ersetzen). 
@@ -87,22 +99,7 @@ Abfrage-Schlüssel sind für Clientanwendungen bestimmt, bei denen Search direkt
 
 <a id="rbac"></a>
 
-## <a name="set-rbac-roles-on-administrative-access-for-azure-search"></a>Festlegen von RBAC-Rollen für den administrativen Zugriff für Azure Search
-In Azure wird ein [globales Modell für die rollenbasierte Autorisierung](../active-directory/role-based-access-control-configure.md) für alle Dienste bereitgestellt, die über das Portal oder mit Resource Manager-APIs verwaltet werden. Die Rollen „Besitzer“, „Mitwirkender“ und „Leser“ bestimmen die Ebene der Dienstverwaltung für Active Directory-Benutzer, -Gruppen und -Dienstprinzipale, die einer Rolle jeweils zugewiesen sind. 
-
-Für Azure Search werden die folgenden administrativen Aufgaben mit RBAC-Berechtigungen gesteuert:
-
-| Rolle | Task |
-| --- | --- |
-| Besitzer |Erstellen oder löschen Sie den Dienst bzw. jedes Objekt im Dienst, einschließlich API-Schlüsseln, Indizes, Indexern sowie Datenquellen und Zeitplänen für Indexer.<p>Zeigen Sie den Dienststatus an, einschließlich Anzahl und Speichergröße.<p>Hinzufügen oder Löschen von Rollenmitgliedschaften (Nur ein Besitzer kann die Rollenmitgliedschaften verwalten.)<p>Abonnementadministratoren und Dienstbesitzer sind automatisch Mitglieder der Besitzerrolle. |
-| Mitwirkender |Die gleiche Ebene wie „Besitzer“, mit Ausnahme der RBAC-Rollenverwaltung. So kann z.B. ein Mitwirkender den `api-key` anzeigen und neu generieren, aber nicht die Rollenmitgliedschaften ändern. |
-| Leser |Dienststatus und Abfrageschlüssel anzeigen. Mitglieder dieser Rolle können die Dienstkonfiguration nicht ändern und auch keine Admin-Schlüssel anzeigen. |
-
-Beachten Sie, dass die Rollen keine Zugriffsrechte für den Dienstendpunkt erteilen. Suchdienstoperationen, wie z. B. die Indexverwaltung, Auffüllung des Indexes und Abfragen von Suchdaten werden durch die API-Schlüssel und nicht durch Rollen gesteuert. Weitere Informationen finden Sie unter „Autorisierung für Verwaltungsvorgänge im Vergleich zu Datenvorgängen“ im Artikel [Rollenbasierte Zugriffssteuerung](../active-directory/role-based-access-control-what-is.md).
-
-<a id="secure-keys"></a>
-
-## <a name="secure-the-api-keys"></a>Verwalten der API-Schlüssel
+## <a name="secure-api-keys"></a>Sichern von API-Schlüsseln
 Die Sicherheit der Schlüssel wird erreicht, indem der Zugriff über das Portal oder Resource Manager-Oberflächen (PowerShell oder Befehlszeilenschnittstelle) eingeschränkt wird. Wie bereits erwähnt, können Abonnementadministratoren alle API-Schlüssel anzeigen und neu generieren. Informieren Sie sich über Rollenzuweisungen, damit Sie wissen, wer Zugriff auf die Admin-Schlüssel hat.
 
 1. Klicken Sie im Dashboard des Diensts auf das Zugriffssymbol, um das Blatt „Benutzer“ zu öffnen.
@@ -126,6 +123,21 @@ Mit der Suchdienst-API können Sie Gesamtzahlen für Dokumente und Indizes abruf
 > Durch Caching-Eigenheiten können die Obergrenzen vorübergehend überschritten werden. Wenn Sie z. B. den gemeinsam genutzten Dienst verwenden, kann es passieren, dass eine Dokumentenanzahl oberhalb der Grenze von 10.000 Dokumenten angezeigt wird. Dies ist vorübergehend und wird bei der nächsten Einhaltungsprüfung für die Obergrenze entdeckt. 
 > 
 > 
+
+## <a name="disaster-recovery-and-service-outages"></a>Notfallwiederherstellung und Dienstausfälle
+
+Obwohl wir Ihre Daten retten können, bietet Azure Search kein sofortiges Failover des Diensts, wenn ein Ausfall auf Cluster- oder Rechenzentrumsebene auftritt. Wenn ein Cluster im Rechenzentrum fehlschlägt, wird das Betriebsteam dieses ermitteln und daran arbeiten, den Dienst wiederherzustellen. Während der Dienstwiederherstellung kommt es zu Ausfallzeiten. Sie können laut [Vereinbarung zum Servicelevel (SLA)](https://azure.microsoft.com/support/legal/sla/search/v1_0/) Dienstguthaben anfordern, um damit die Nichtverfügbarkeit des Diensts kompensieren zu können. 
+
+Damit ein unterbrechungsfreier Dienst sichergestellt werden kann, einschließlich schwerwiegender Fehler, die nicht der Kontrolle von Microsoft unterliegen, müssen Sie [einen zusätzlichen Dienst](search-create-service-portal.md) in einer anderen Region bereitstellen und eine Georeplikationsstrategie implementieren, um sicherzustellen, dass Indizes für alle Dienste vollständig redundant sind.
+
+Kunden, die Indexer zum Auffüllen und Aktualisieren von Indizes verwenden, führen die Notfallwiederherstellung über geospezifische Indizes aus, die die gleiche Datenquelle verwenden. Anstelle von Indexern verwenden Sie Ihren Anwendungscode, um Objekte und Daten gleichzeitig per Pushvorgang an verschiedene Dienste zu übermitteln. Weitere Informationen finden Sie unter [Überlegungen zur Leistung und Optimierung von Azure Search](search-performance-optimization.md).
+
+## <a name="backup-and-restore"></a>Sichern und Wiederherstellen
+
+Da Azure Search keine primäre Datenspeicherlösung ist, wird kein formales Verfahren für Self-Service-Sicherung und -Wiederherstellung bereitgestellt. Ihr Anwendungscode, der zum Erstellen und Auffüllung eines Index verwendet wird, ist de facto die Wiederherstellungsoption, wenn Sie aus Versehen einen Index löschen. 
+
+Um einen Index neu zu erstellen, würden Sie ihn (sofern vorhanden) löschen, den Index im Dienst wiederherstellen und ihn erneut laden, indem Sie Daten aus Ihrem primären Datenspeicher abrufen. Alternativ können Sie sich an den [Kundensupport]() wenden, um Indizes zu retten, falls es zu einem regionalen Ausfall kommt.
+
 
 <a id="scale"></a>
 
@@ -162,7 +174,7 @@ Für die zukünftige Planung können Sie den Speicherverbrauch prüfen (siehe [A
 
 <a id="advanced-deployment"></a>
 
-## <a name="best-practices-on-scale-and-deployment-video"></a>Bewährte Methoden zur Skalierung und Bereitstellung (Video)
+## <a name="best-practices-on-scale-and-deployment"></a>Bewährte Methoden zur Skalierung und Bereitstellung
 In diesem 30-minütigen Video werden die bewährten Methoden für erweiterte Bereitstellungsszenarien vorgestellt, z.B. geografisch verteilte Workloads. Unter [Leistung und Optimierung von Azure Search](search-performance-optimization.md) finden Sie auch Hilfeseiten zu denselben Punkten.
 
 > [!VIDEO https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON319/player]
@@ -186,10 +198,5 @@ Falls noch nicht geschehen, können Sie sich auch den [Artikel zur Leistung und 
 [10]: ./media/search-manage/Azure-Search-Manage-3-ScaleUp.png
 
 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

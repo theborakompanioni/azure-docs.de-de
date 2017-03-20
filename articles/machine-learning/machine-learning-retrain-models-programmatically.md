@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/12/2017
 ms.author: raymondl;garye;v-donglo
 translationtype: Human Translation
-ms.sourcegitcommit: cd32cb7d2247676795f345448960d547eafba084
-ms.openlocfilehash: 9290258998f6756dce55a764e020fb3278c2f8a6
+ms.sourcegitcommit: 0dc0f84ed65e76a95dcac523e42268039212773c
+ms.openlocfilehash: 5032e66556622e44e5f5bba84c4ddf5318b1e194
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -56,6 +57,9 @@ Erstellen Sie als Nächstes ein Vorhersageexperiment.
 1. Klicken Sie am unteren Rand des Experimentbereichs auf **Set Up Web Service**, und wählen Sie **Predictive Web Service** aus. Dadurch wird das Modell als trainiertes Modell gespeichert, und es werden Ein- und Ausgabemodule für den Webdienst hinzugefügt. 
 2. Klicken Sie auf **Run**(Ausführen). 
 3. Klicken Sie nach der Ausführung des Experiments auf **Deploy Web Service [Classic]** oder auf **Deploy Web Service [New]**.
+
+> [!NOTE] 
+> Zum Bereitstellen eines neuen Webdiensts müssen Sie über ausreichende Berechtigungen in dem Abonnement verfügen, an das Sie den Webdienst bereitstellen. Weitere Informationen finden Sie unter [Verwalten eines Webdiensts im Azure Machine Learning Web Services-Portal](machine-learning-manage-new-webservice.md). 
 
 ## <a name="deploy-the-training-experiment-as-a-training-web-service"></a>Bereitstellen des Trainingsexperiments als Trainingswebdienst
 Um das trainierte Modell erneut zu trainieren, müssen Sie das erstellte Trainingsexperiment als Webdienst für erneutes Training bereitstellen. Dieser Webdienst benötigt ein mit dem Modul *[Train Model][train-model]* verbundenes *Webdienst-Ausgabemodul*, um neue trainierte Modelle erzeugen zu können.
@@ -183,9 +187,4 @@ Wenn Sie den Vorhersagewebdienst durch Klicken auf **Deploy Web Service [New]** 
 
 <!-- Module References -->
 [train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

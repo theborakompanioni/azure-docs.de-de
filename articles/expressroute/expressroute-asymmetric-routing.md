@@ -17,6 +17,7 @@ ms.author: osamam
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 10166e6b8b9144f0a5dde4f2fc10b492120e85d7
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -71,10 +72,5 @@ Eine weitere Möglichkeit zur Behandlung von Problemen durch asymmetrisches Rout
 
 ## <a name="asymmetric-routing-detection"></a>Erkennung von asymmetrischem Routing
 Wenn Sie sich vergewissern möchten, dass der Netzwerkdatenverkehr den erwarteten Pfad durchläuft, verwenden Sie am besten Traceroute. Soll an Microsoft gerichteter Datenverkehr von Ihrem lokalen SMTP-Server über den Internetpfad abgewickelt werden, verläuft die erwartete Traceroute zwischen SMTP-Server und Office 365. Das Ergebnis gibt Aufschluss darüber, ob der Datenverkehr Ihr Netzwerk tatsächlich in Richtung Internet (und nicht Richtung ExpressRoute) verlässt.
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

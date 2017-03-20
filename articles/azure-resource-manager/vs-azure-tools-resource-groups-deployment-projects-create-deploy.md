@@ -1,5 +1,5 @@
 ---
-title: "Visual Studio-Projekte für Azure-Ressourcengruppen | Microsoft Docs"
+title: Azure-Ressourcengruppenprojekte in Visual Studio | Microsoft-Dokumentation
 description: Verwenden Sie Visual Studio, um ein Azure-Ressourcengruppenprojekt zu erstellen und die Ressourcen in Azure bereitzustellen.
 services: azure-resource-manager
 documentationcenter: na
@@ -12,11 +12,12 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/19/2016
+ms.date: 03/10/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: e3df10acf4a6c123186c72687a56ccb4856c46fe
-ms.openlocfilehash: 07499f9b1c9668d8cb4037405478210e0738e03d
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 14fbfbc5abd6d95744832d9b39e377bbffe652ac
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -25,9 +26,9 @@ Mit Visual Studio und dem [Azure SDK](https://azure.microsoft.com/downloads/) k�
 
 Azure-Ressourcengruppenprojekte enthalten Azure Resource Manager-JSON-Vorlagen, die die für Azure bereitgestellten Ressourcen definieren. Weitere Informationen über die Elemente von Ressourcen-Manager-Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](resource-group-authoring-templates.md). Visual Studio ermöglicht das Bearbeiten dieser Vorlagen und bietet Tools, die das Arbeiten mit Vorlagen vereinfachen.
 
-In diesem Thema stellen Sie eine Web-App und SQL-Datenbank bereit. Die Schritte sind jedoch für jeden Ressourcentyp nahezu identisch. Genauso einfach können Sie einen virtuellen Computer und die dazugehörigen Ressourcen bereitstellen. Visual Studio bietet viele verschiedene Starter-Vorlagen für die Bereitstellung gängiger Szenarien.
+In diesem Artikel stellen Sie eine Web-App und SQL-Datenbank bereit. Die Schritte sind jedoch für jeden Ressourcentyp nahezu identisch. Genauso einfach können Sie einen virtuellen Computer und die dazugehörigen Ressourcen bereitstellen. Visual Studio bietet viele verschiedene Starter-Vorlagen für die Bereitstellung gängiger Szenarien.
 
-Im diesem Artikel werden Visual Studio 2015 Update 2 und Microsoft Azure SDK für .NET 2.9 verwendet. Bei Verwendung von Visual Studio 2013 mit Azure SDK 2.9 ist der Ablauf größtenteils identisch. Sie können ein Azure SDK ab Version 2.6 verwenden. Die Benutzeroberfläche kann sich dann aber von der Benutzeroberfläche in diesem Artikel unterscheiden. Es wird dringend empfohlen, die neueste Version des [Azure SDK](https://azure.microsoft.com/downloads/) zu installieren, bevor Sie mit der Ausführung der Schritte beginnen. 
+Dieser Artikel zeigt Visual Studio 2017. Bei Verwendung von Visual Studio 2015 Update 2 und Microsoft Azure SDK für .NET 2.9 oder Visual Studio 2013 mit Azure SDK 2.9 ist der Ablauf größtenteils identisch. Sie können ein Azure SDK ab Version 2.6 verwenden. Die Benutzeroberfläche kann sich dann aber von der Benutzeroberfläche in diesem Artikel unterscheiden. Es wird dringend empfohlen, die neueste Version des [Azure SDK](https://azure.microsoft.com/downloads/) zu installieren, bevor Sie mit der Ausführung der Schritte beginnen. 
 
 ## <a name="create-azure-resource-group-project"></a>Erstellen eines Azure-Ressourcengruppenprojekts
 In diesem Verfahren erstellen Sie ein Azure-Ressourcengruppenprojekt mit einer Vorlage vom Typ **Web-App und SQL** .
@@ -35,7 +36,7 @@ In diesem Verfahren erstellen Sie ein Azure-Ressourcengruppenprojekt mit einer V
 1. Wählen Sie in Visual Studio **Datei**, **Neues Projekt** und anschließend **C#** oder **Visual Basic** aus. Wählen Sie dann **Cloud** und anschließend das Projekt **Azure-Ressourcengruppe** aus.
    
     ![Cloudbereitstellungsprojekt](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/create-project.png)
-2. Wählen Sie die Vorlage aus, die Sie im Azure-Ressourcen-Manager bereitstellen möchten. Je nach Art des bereitzustellenden Projekts stehen Ihnen viele verschiedene Optionen zur Verfügung. In diesem Thema wählen wir die Vorlage **Web-App und SQL** aus.
+2. Wählen Sie die Vorlage aus, die Sie im Azure-Ressourcen-Manager bereitstellen möchten. Je nach Art des bereitzustellenden Projekts stehen Ihnen viele verschiedene Optionen zur Verfügung. In diesem Artikel wählen wir die Vorlage **Web-App und SQL** aus.
    
     ![Vorlage auswählen](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/select-project.png)
    
@@ -47,7 +48,7 @@ In diesem Verfahren erstellen Sie ein Azure-Ressourcengruppenprojekt mit einer V
    > 
    
     Visual Studio erstellt ein Ressourcengruppen-Bereitstellungsprojekt für eine Web-App und SQL-Datenbank.
-3. Erweitern Sie die Knoten im Bereitstellungsprojekt, um zu ermitteln, was erstellt wurde.
+3. Sehen Sie sich die Knoten im Bereitstellungsprojekt an, um zu ermitteln, was erstellt wurde.
    
     ![Knoten anzeigen](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-items.png)
    
@@ -113,7 +114,7 @@ Sie können **numberOfWorkers** auf „1“ festlegen.
 ## <a name="deploy-the-resource-group-project-to-azure"></a>Bereitstellen des Ressourcengruppen-Projekts in Azure
 Sie können das Projekt jetzt bereitstellen. Wenn Sie ein Azure-Ressourcengruppenprojekt bereitstellen, stellen Sie es für eine Azure-Ressourcengruppe bereit. Die Ressourcengruppe ist eine logische Gruppierung von Ressourcen mit einem gemeinsamen Lebenszyklus.
 
-1. Wählen Sie im Kontextmenü des Bereitstellungsprojektknotens **Bereitstellen** > **New Bereitstellenment**.
+1. Wählen Sie im Kontextmenü des Bereitstellungsprojektknotens **Bereitstellen** > **Neu**.
    
     ![Bereitstellen, Menüelement "Neue Bereitstellung"](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/deploy.png)
    
@@ -141,7 +142,7 @@ Sie können das Projekt jetzt bereitstellen. Wenn Sie ein Azure-Ressourcengruppe
     **databaseName** wird ein Name für die zu erstellende Datenbank angegeben. 
    
     ![Dialogfeld "Parameter bearbeiten"](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/provide-parameters.png)
-5. Wählen Sie die Schaltfläche **Bereitstellen** aus, um das Projekt in Azure bereitzustellen. Eine PowerShell-Konsole wird außerhalb der Visual Studio-Instanz geöffnet. Geben Sie das SQL Server-Administratorkennwort in der PowerShell-Konsole ein, wenn Sie dazu aufgefordert werden. **Unter Umständen ist die PowerShell-Konsole hinter anderen Elementen angeordnet oder in der Taskleiste minimiert.**  Suchen Sie nach der Konsole, und wählen Sie sie aus, um das Kennwort anzugeben.
+5. Wählen Sie die Schaltfläche **Bereitstellen** aus, um das Projekt in Azure bereitzustellen. Eine PowerShell-Konsole wird außerhalb der Visual Studio-Instanz geöffnet. Geben Sie das SQL Server-Administratorkennwort in der PowerShell-Konsole ein, wenn Sie dazu aufgefordert werden. **Unter Umständen ist die PowerShell-Konsole hinter anderen Elementen angeordnet oder in der Taskleiste minimiert.** Suchen Sie nach der Konsole, und wählen Sie sie aus, um das Kennwort anzugeben.
    
    > [!NOTE]
    > Visual Studio fordert Sie unter Umständen zur Installation der die Azure PowerShell-Cmdlets auf. Die Azure PowerShell-Cmdlets werden zur erfolgreichen Bereitstellung von Ressourcengruppen benötigt. Führen Sie die Installation durch, wenn Sie dazu aufgefordert werden.
@@ -150,7 +151,7 @@ Sie können das Projekt jetzt bereitstellen. Wenn Sie ein Azure-Ressourcengruppe
 6. Die Bereitstellung kann mehrere Minuten dauern. Im Fenster **Ausgabe** wird der Status der Bereitstellung angezeigt. Nachdem die Bereitstellung abgeschlossen ist, wird die letzte Meldung mit dem Hinweis angezeigt, dass die Bereitstellung erfolgreich war. Sie sieht in etwa wie folgt aus:
    
         ... 
-        18:00:58 - Successfully deployed template 'c:\users\user\documents\visual studio 2015\projects\azureresourcegroup1\azureresourcegroup1\templates\websitesqldatabase.json' to resource group 'DemoSiteGroup'.
+        18:00:58 - Successfully deployed template 'websitesqldatabase.json' to resource group 'DemoSiteGroup'.
 7. Öffnen Sie in einem Browser das [Azure-Portal](https://portal.azure.com/) , und melden Sie sich an Ihrem Konto an. Wählen Sie zum Anzeigen der Ressourcengruppe die Option **Ressourcengruppen** sowie die bereitgestellte Ressourcengruppe aus.
    
     ![Gruppe auswählen](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/select-group.png)
@@ -162,7 +163,7 @@ Sie können das Projekt jetzt bereitstellen. Wenn Sie ein Azure-Ressourcengruppe
     ![Bereitgestellte Azure-Ressourcengruppe](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/redeploy.png)
 
 ## <a name="deploy-code-with-your-infrastructure"></a>Bereitstellen von Code mit Ihrer Infrastruktur
-Jetzt haben Sie die Infrastruktur für Ihre App bereitgestellt, im Projekt ist jedoch kein Code bereitgestellt. In diesem Thema wird veranschaulicht, wie Sie während der Bereitstellung eine Web-App sowie SQL-Datenbanktabellen bereitstellen können. Wenn Sie anstelle einer Web-App eine virtuelle Maschine bereitstellen, müssen Sie bei der Bereitstellung Code auf der Maschine ausführen. Der Prozess für die Bereitstellung von Code für eine Web-App oder für das Einrichten einer virtuellen Maschine ist fast identisch.
+Jetzt haben Sie die Infrastruktur für Ihre App bereitgestellt, im Projekt ist jedoch kein Code bereitgestellt. In diesem Artikel wird veranschaulicht, wie Sie während der Bereitstellung eine Web-App sowie SQL-Datenbanktabellen bereitstellen können. Wenn Sie anstelle einer Web-App eine virtuelle Maschine bereitstellen, müssen Sie bei der Bereitstellung Code auf der Maschine ausführen. Der Prozess für die Bereitstellung von Code für eine Web-App oder für das Einrichten einer virtuellen Maschine ist fast identisch.
 
 1. Fügen Sie Ihrer Visual Studio-Projektmappe ein Projekt hinzu: Klicken Sie mit der rechten Maustaste auf die Projektmappe, und wählen Sie **Hinzufügen** > **Neues Projekt** aus.
    
@@ -170,7 +171,7 @@ Jetzt haben Sie die Infrastruktur für Ihre App bereitgestellt, im Projekt ist j
 2. Fügen Sie eine **ASP.NET-Webanwendung**hinzu. 
    
     ![Web-App hinzufügen](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-app.png)
-3. Wählen Sie **MVC** aus, und deaktivieren Sie das Kontrollkästchen **In der Cloud hosten**, da diese Aufgabe vom Ressourcengruppenprojekt ausgeführt wird.
+3. Wählen Sie **MVC** aus.
    
     ![MVC auswählen](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/select-mvc.png)
 4. Nachdem die Web-App in Visual Studio erstellt wurde, werden beide Projekte in der Projektmappe angezeigt.
@@ -194,7 +195,7 @@ Jetzt haben Sie die Infrastruktur für Ihre App bereitgestellt, im Projekt ist j
    * Der Standardwert **Build;Package** ermöglicht der Bereitstellung das Erstellen eines Webbereitstellungspakets (package.zip).  
      
      Ein Veröffentlichungsprofil ist nicht erforderlich, da die Bereitstellung die erforderlichen Informationen aus den Eigenschaften zum Erstellen des Pakets bezieht.
-7. Fügen Sie der Vorlage eine Ressource hinzu.
+7. Wechseln Sie zurück zur Datei „WebSiteSQLDatabase.json“, und fügen Sie der Vorlage eine Ressource hinzu.
    
     ![Ressource hinzufügen](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-resource-2.png)
 8. Wählen Sie nun **Web Deploy für Web Apps**aus. 
@@ -215,10 +216,5 @@ Jetzt haben Sie die Infrastruktur für Ihre App bereitgestellt, im Projekt ist j
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen zur Ressourcenverwaltung über das Portal finden Sie unter [Verwenden des Azure-Portals zum Verwalten Ihrer Azure-Ressourcen](resource-group-portal.md).
 * Weitere Informationen zu Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 
