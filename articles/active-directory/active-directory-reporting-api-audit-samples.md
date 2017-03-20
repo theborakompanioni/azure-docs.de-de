@@ -17,6 +17,7 @@ ms.author: dhanyahk;markvi
 translationtype: Human Translation
 ms.sourcegitcommit: 665b613db31b15b6f6d2826a0795be6275c832ca
 ms.openlocfilehash: 8216fa7ab092b2d0225d075d933fa56fbab56f40
+ms.lasthandoff: 12/28/2016
 
 
 ---
@@ -166,10 +167,5 @@ Das Skript gibt die Ausgabe des Überwachungsberichts im JSON-Format zurück. Da
 * Möchten Sie die Beispiele in diesem Thema anpassen? Dann sehen Sie sich die [Referenz zur Azure Active Directory-Überwachungs-API](active-directory-reporting-api-audit-reference.md)an. 
 * Eine vollständige Übersicht zur Verwendung der Azure Active Directory-Berichterstellungs-API finden Sie im Artikel [Erste Schritte mit der Azure Active Directory-Berichterstellungs-API](active-directory-reporting-api-getting-started.md).
 * Wenn Sie weitere Informationen zur Azure Active Directory-Berichterstellung benötigen, finden Sie diese im [Leitfaden zur Azure Active Directory-Berichterstellung](active-directory-reporting-guide.md).  
-
-
-
-
-<!--HONumber=Dec16_HO4-->
 
 

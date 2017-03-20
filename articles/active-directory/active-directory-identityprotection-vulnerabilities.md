@@ -6,18 +6,18 @@ keywords: Azure Active Directory Identity Protection, Cloud App Discovery, Verwa
 documentationcenter: 
 author: MarkusVi
 manager: femila
-editor: 
 ms.assetid: 92233a5b-cb34-4d28-88cc-d5d29c0f3256
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/11/2016
+ms.date: 01/24/2017
 ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: 2e229cab7b8a498d3015183d438e2bc2465822aa
 ms.openlocfilehash: f526af67a94ce0cab61591d9250f4742b1ede579
+ms.lasthandoff: 12/28/2016
 
 
 ---
@@ -25,7 +25,7 @@ ms.openlocfilehash: f526af67a94ce0cab61591d9250f4742b1ede579
 Bei Sicherheitsrisiken handelt es sich um Schwachstellen in Ihrer Umgebung, die von einem Angreifer ausgenutzt werden können. Es wird empfohlen, dass Sie diese Sicherheitsrisiken entschärfen, um den Sicherheitsstatus Ihrer Organisation zu verbessern und Angreifer daran zu hindern, diese Schwachstellen auszunutzen.
 
 
-![Sicherheitsrisiken](./media/active-directory-identityprotection-vulnerabilities/101.png "vulnerabilities")
+![Sicherheitsrisiken](./media/active-directory-identityprotection-vulnerabilities/101.png "Sicherheitsrisiken")
 
 
 
@@ -60,10 +60,5 @@ Ausführliche Informationen finden Sie unter [Azure AD Privileged Identity Manag
 
 ## <a name="see-also"></a>Siehe auch
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
-
-
-
-
-<!--HONumber=Dec16_HO4-->
 
 
