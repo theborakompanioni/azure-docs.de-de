@@ -16,6 +16,7 @@ ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: f6bceb2fd03230e4a39c22605ad1fea8dd422be1
+ms.lasthandoff: 12/28/2016
 
 
 ---
@@ -111,10 +112,5 @@ Erste Schritte in die Anwendungsintegration in Azure AD finden Sie unter [Erste 
 
 ## <a name="see-also"></a>Weitere Informationen
 [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
-
-
-
-
-<!--HONumber=Dec16_HO4-->
 
 
