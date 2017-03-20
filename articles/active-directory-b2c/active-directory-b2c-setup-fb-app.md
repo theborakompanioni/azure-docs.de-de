@@ -17,6 +17,7 @@ ms.author: swkrish
 translationtype: Human Translation
 ms.sourcegitcommit: e37c48d6c92a8a2cd480458abdff0a3a1ca9338f
 ms.openlocfilehash: c7a3d6f50e65aa79c4f325cd5a1ecbcdccefbad8
+ms.lasthandoff: 12/28/2016
 
 
 ---
@@ -66,10 +67,5 @@ Um Facebook als Identitätsanbieter in Azure Active Directory (Azure AD) B2C ve
 5. Klicken Sie auf **Typ des Identitätsanbieters**, wählen Sie **Facebook** aus, und klicken Sie auf **OK**.
 6. Klicken Sie auf **Diesen Identitätsanbieter einrichten**, und geben Sie die App-ID und das Anwendungsgeheimnis (der Facebook-Anwendung, die Sie zuvor erstellt haben) in den Feldern **Client-ID** bzw. **Clientgeheimnis** ein.
 7. Klicken Sie auf **OK** und dann auf **Erstellen**, um die Facebook-Konfiguration zu speichern.
-
-
-
-
-<!--HONumber=Dec16_HO4-->
 
 
