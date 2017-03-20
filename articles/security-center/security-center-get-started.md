@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/22/2017
+ms.date: 03/06/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 56a61479971c4a03345bee8a044dbc17d16371ce
-ms.openlocfilehash: 8e87f9bd8122ec3c80d11e8ac563849f540e0cc5
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 40636aa9d847b97ea872bf4689a1da6e3eb23eb4
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -92,7 +92,7 @@ Sie können die Sicherheitsrichtlinien für Ihre Azure-Abonnements und Ressource
    ![Sicherheitswarnungen in Azure Security Center][7]
 
    > [!NOTE]
-   > Sicherheitswarnungen sind nur verfügbar, wenn der Standard-Tarif von Security Center aktiviert ist. Eine kostenlose 90-Tage-Testversion des Standard-Tarifs ist verfügbar. Informationen dazu, wie Sie den Standard-Tarif nutzen können, finden Sie unter [Nächste Schritte](#next-steps).
+   > Sicherheitswarnungen sind nur verfügbar, wenn der Standard-Tarif von Security Center aktiviert ist. Eine kostenlose 60-Tage-Testversion des Standard-Tarifs ist verfügbar. Informationen dazu, wie Sie den Standard-Tarif nutzen können, finden Sie unter [Nächste Schritte](#next-steps).
    >
    >
 2. Wählen Sie eine Warnung aus, um weitere Informationen anzuzeigen. In diesem Beispiel wählen wir die Option **Erkennung der Änderung einer Systembinärdatei**. Es werden Blätter geöffnet, die weitere Details zur Warnung enthalten.

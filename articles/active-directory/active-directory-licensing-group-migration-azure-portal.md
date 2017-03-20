@@ -18,18 +18,18 @@ ms.date: 02/28/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: ac3f563828c5fa379f328392a3f5cf7c7932f534
-ms.openlocfilehash: 7582602b16a9a307cc4e5e9a1862653e25ba300f
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: d7c5ba12738c4713517743ae8c44e236c5e1a210
+ms.lasthandoff: 03/08/2017
 
 
 ---
 
 # <a name="how-to-add-licensed-users-to-a-group-for-licensing-in-azure-active-directory"></a>Migrieren lizenzierter Benutzer zu einer Gruppe für die Lizenzierung in Azure Active Directory
 
-Sie haben möglicherweise einzelnen Benutzern in den Abteilungen bereits per direkter Zuweisung Lizenzen zugewiesen, z.B. mithilfe von PowerShell-Skripts oder anderen Tools. Wenn Sie mit der gruppenbasierten Lizenzierung zum Verwalten von Lizenzen in Ihrer Organisation beginnen möchten, benötigen Sie einen Migrationsplan, um vorhandene Lösungen reibungslos durch die gruppenbasierte Lizenzierung zu ersetzen.
+Sie haben möglicherweise einzelnen Benutzern in den Abteilungen bereits mit „direkte Zuweisung“ Lizenzen zugewiesen, z.B. mithilfe von PowerShell-Skripts oder anderen Tools. Wenn Sie mit der gruppenbasierten Lizenzierung zum Verwalten von Lizenzen in Ihrer Organisation beginnen möchten, benötigen Sie einen Migrationsplan, um vorhandene Lösungen reibungslos durch die gruppenbasierte Lizenzierung zu ersetzen.
 
-Der wichtigste zu beachtende Aspekt ist, dass Sie unbedingt eine Situation vermeiden müssen, in der die gruppenbasierte Lizenzierung dazu führt, dass Benutzer ihre derzeit zugewiesenen Lizenzen vorübergehend nicht nutzen können. Jeder Vorgang, der zu Änderungen an zugewiesenen Lizenzen führt, muss vermieden werden, damit kein Risiko besteht, dass Benutzer keinen Zugriff mehr auf Dienste und ihre Daten haben.
+Der wichtigste zu beachtende Aspekt ist, dass Sie unbedingt eine Situation vermeiden müssen, in der die gruppenbasierte Lizenzierung dazu führt, dass Benutzer ihre derzeit zugewiesenen Lizenzen vorübergehend nicht nutzen können. Jeder Vorgang, der zum Entfernen von Lizenzen führt, muss vermieden werden, damit kein Risiko besteht, dass Benutzer keinen Zugriff mehr auf Dienste und ihre Daten haben.
 
 ## <a name="recommended-migration-process"></a>Empfohlener Migrationsprozess
 
@@ -41,21 +41,21 @@ Der wichtigste zu beachtende Aspekt ist, dass Sie unbedingt eine Situation verme
 
 4. Stellen Sie sicher, dass Lizenzen allen Benutzer in diesen Gruppen zugewiesen wurden. Überprüfen Sie hierzu den Verarbeitungsstatus der einzelnen Gruppen oder die Überwachungsprotokolle.
 
-  - Sie können einzelne Benutzer stichprobenartig überprüfen, indem Sie sich ihre Lizenzdetails ansehen. Sie erkennen dann, ob ihnen dieselben Lizenzen entweder direkt oder über Gruppen zugewiesen wurden. Etwaige parallele Zuweisungspfade werden offenkundig, und die ursprüngliche direkte Zuweisung kann sicher aufgehoben werden.
+  - Sie können einzelne Benutzer stichprobenartig überprüfen, indem Sie sich ihre Lizenzdetails ansehen. Sie erkennen dann, ob ihnen dieselben Lizenzen entweder direkt oder über Gruppen zugewiesen wurden.
 
-  - Sie können ein PowerShell-Skript ausführen, um zu [überprüfen, wie Benutzern Lizenzen zugewiesen sind](active-directory-licensing-group-advanced.md).
+  - Sie können ein PowerShell-Skript ausführen, um zu [überprüfen, wie Benutzern Lizenzen zugewiesen sind](active-directory-licensing-group-advanced.md#use-powershell-to-see-who-has-inherited-and-direct-licenses).
 
   - Wenn die gleichen Produktlizenz dem Benutzer direkt und über eine Gruppe zugewiesen ist, wird vom Benutzer nur eine Lizenz genutzt. Daher sind keine zusätzlichen Lizenzen erforderlich, um die Migration auszuführen.
 
 5. Vergewissern Sie sich, dass Lizenzzuweisungen nicht misslungen sind, indem Sie jede Gruppe auf Benutzer mit dem Status „Fehler“ überprüfen. Weitere Informationen finden Sie unter [Bestimmen und Beheben von Lizenzproblemen für eine Gruppe](active-directory-licensing-group-problem-resolution-azure-portal.md).
 
-6. Erwägen Sie die Aufhebung direkter Zuweisungen. Dies kann gestaffelt erfolgen, um zunächst das Ergebnis für eine Teilmenge von Benutzern zu prüfen.
+6. Erwägen Sie die Aufhebung direkter Zuweisungen. Dies kann gestaffelt, also nach und nach, erfolgen, um zunächst das Ergebnis für eine Teilmenge von Benutzern zu prüfen.
 
   Sie können die ursprünglichen direkten Zuweisungen für Benutzer intakt lassen. Doch wenn die Benutzer ihre lizenzierte Gruppe verlassen, behalten sie die ursprüngliche Lizenz, was Sie möglicherweise nicht möchten.
 
 ## <a name="an-example"></a>Beispiel
 
-Wir sind eine Organisation mit 1.000 Benutzern. Alle Benutzer benötigen EMS-Lizenzen (Enterprise Mobility + Security). 200 Benutzer in der Finanzabteilung benötigen Office 365 Enterprise E3-Lizenzen. Wir haben ein lokal ausgeführtes PowerShell-Skript, mit dem Benutzern den Anforderungen entsprechend Lizenzen zugewiesen und entzogen werden. Wir möchten das Skript durch die gruppenbasierte Lizenzierung ersetzen, damit Lizenzen von Azure AD automatisch verwaltet werden.
+Es gibt eine Organisation mit 1000 Benutzern. Alle Benutzer benötigen EMS-Lizenzen (Enterprise Mobility + Security). 200 Benutzer in der Finanzabteilung benötigen Office 365 Enterprise E3-Lizenzen. Wir haben ein lokal ausgeführtes PowerShell-Skript, mit dem Benutzern den Anforderungen entsprechend Lizenzen zugewiesen und entzogen werden. Wir möchten das Skript durch die gruppenbasierte Lizenzierung ersetzen, damit Lizenzen von Azure AD automatisch verwaltet werden.
 
 Der Migrationsvorgang kann wie folgt aussehen:
 
@@ -65,9 +65,9 @@ Der Migrationsvorgang kann wie folgt aussehen:
 
   - Suchen Sie nach „Latest license changes have been applied to all users“ (Die letzten Lizenzänderungen wurden von allen Benutzern übernommen), um zu bestätigen, dass die Verarbeitung abgeschlossen ist.
 
-  - Suchen Sie oben nach einer Benachrichtigung zu Benutzern, denen Lizenzen möglicherweise nicht erfolgreich zugewiesen wurden. Haben wir für einige Benutzer nicht genügend Lizenzen? Wurden einigen Benutzern in Konflikt stehende Lizenz-SKUs zugewiesen, die das Übernehmen der von der Gruppe zugewiesenen Lizenzen verhindern?
+  - Suchen Sie oben nach einer Benachrichtigung zu Benutzern, denen Lizenzen möglicherweise nicht erfolgreich zugewiesen wurden. Haben wir für einige Benutzer nicht genügend Lizenzen? Verfügen einige Benutzer über in Konflikt stehende Lizenz-SKUs, die verhindern, dass diese Gruppenlizenzen erben können?
 
-3. Überprüfen Sie stichprobenartig einige Benutzer, um zu prüfen, ob ihnen Lizenzen direkt oder per Gruppe zugewiesen wurden. Wechseln Sie zum Blatt eines Benutzers, wählen Sie **Lizenzen** aus, und untersuchen Sie den Status der Lizenzen.
+3. Überprüfen Sie stichprobenartig einige Benutzer, um zu prüfen, ob ihnen sowohl Lizenzen direkt als auch per Gruppe zugewiesen wurden. Wechseln Sie zum Blatt eines Benutzers, wählen Sie **Lizenzen** aus, und untersuchen Sie den Status der Lizenzen.
 
   - Dies ist der erwartete Benutzerzustand während der Migration:
 
@@ -79,7 +79,7 @@ Der Migrationsvorgang kann wie folgt aussehen:
 
       ![Überprüfen von Serviceplänen](media/active-directory-licensing-group-migration-azure-portal/check-service-plans.png)
 
-4. Nachdem Sie sichergestellt haben, dass sowohl die direkt als auch die per Gruppe zugewiesenen Lizenzen äquivalent sind, können Sie beginnen, den Benutzern direkt zugewiesene Lizenzen zu entziehen. Sie können dies testen, indem Sie sie direkt im Portal entziehen und anschließend Automatisierungsskripts ausführen, um sie in einem Massenvorgang zu entziehen. Hier ist ein Beispiel des gleichen Benutzers, dem die direkt zugewiesenen Lizenzen mithilfe des Portals entzogen werden. Beachten Sie, dass der Lizenzstatus unverändert bleibt, aber keine direkten Zuweisungen mehr zu sehen sind.
+4. Nachdem Sie sichergestellt haben, dass sowohl die direkt als auch die per Gruppe zugewiesenen Lizenzen äquivalent sind, können Sie beginnen, den Benutzern direkt zugewiesene Lizenzen zu entziehen. Sie können dies testen, indem Sie sie für einzelne Benutzer im Portal entziehen und anschließend Automatisierungsskripts ausführen, um sie in einem Massenvorgang zu entziehen. Hier ist ein Beispiel des gleichen Benutzers, dem die direkt zugewiesenen Lizenzen mithilfe des Portals entzogen werden. Beachten Sie, dass der Lizenzstatus unverändert bleibt, aber keine direkten Zuweisungen mehr zu sehen sind.
 
   ![direkte Lizenzen entzogen](media/active-directory-licensing-group-migration-azure-portal/direct-licenses-removed.png)
 

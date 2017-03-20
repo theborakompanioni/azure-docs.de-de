@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/14/2017
 ms.author: aelnably
 translationtype: Human Translation
-ms.sourcegitcommit: 842eb16768fd5064bd57a0c3672e7ae57885720e
-ms.openlocfilehash: 6ed0f07268715102be197bb8a6654fb05b52b0c4
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 148bc76b7f3e09745cbecfa41710a5e949704948
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -61,6 +61,10 @@ Wenn Sie eine Frage haben, kommentieren Sie den Artikel, und wir werden so bald 
 **F:** Unterstützen Sie nicht kompilierte .NET Core-Apps?
 
 **A:** Nein. Nein, Sie müssen kompilierte .NET Core-Apps mit allen Abhängigkeiten bereitstellen. Vollständige Funktionen für Bereitstellungen und Builds werden in einer zukünftigen Version verfügbar sein.
+
+**F:** Unterstützen Sie Composer als Abhängigkeits-Manager für PHP-Apps?
+
+**A:** Nein. Sie müssen Ihre PHP-Apps mit allen Abhängigkeiten bereitstellen. Vollständige Funktionen für Bereitstellungen werden in einer zukünftigen Version verfügbar sein.
 
 ## <a name="custom-containers"></a>Benutzerdefinierte Container
 
