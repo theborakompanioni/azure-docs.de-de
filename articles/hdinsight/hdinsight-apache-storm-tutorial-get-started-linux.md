@@ -13,7 +13,7 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/12/2017
+ms.date: 03/17/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
@@ -107,7 +107,7 @@ Verwenden Sie die folgenden Schritte, um ein Cluster vom Typ „Storm in HDInsig
 
 2. Verwenden Sie zum Starten einer Beispieltopologie den folgenden Befehl.
    
-        storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-*.jar storm jar org.apache.storm.starter.WordCountTopology wordcount
+        storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-*.jar org.apache.storm.starter.WordCountTopology wordcount
    
     > [!NOTE]
     > Unter älteren Versionen von HDInsight ist der Klassenname der Topologie `storm.starter.WordCountTopology` anstelle von `org.apache.storm.starter.WordCountTopology`.
@@ -199,7 +199,7 @@ Kehren Sie zur **Topologiezusammenfassung** der WordCount-Topologie zurück, und
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-## <a name="a-idnextanext-steps"></a><a id="next"></a>Nächste Schritte
+## <a id="next"></a>Nächste Schritte
 
 In diesem Lernprogramm zu Apache Storm haben Sie die Grundlagen der Arbeit mit Storm in HDInsight erlernt. Anschließend erfahren Sie, wie Sie [Java-basierte Topologien mit Maven entwickeln](hdinsight-storm-develop-java-topology.md).
 

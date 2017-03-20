@@ -17,6 +17,7 @@ ms.author: osamam
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 5e3c65d9ada5c75e0ddef3b3778a79ca77aa07d8
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -190,10 +191,5 @@ Zusätzlich zu den obigen Kennzeichnungen versieht Microsoft Präfixe auch basie
   * [Erstellen einer ExpressRoute-Verbindung für das klassische Bereitstellungsmodell](expressroute-howto-circuit-classic.md) oder [Erstellen und Ändern einer ExpressRoute-Verbindung mit Azure Resource Manager](expressroute-howto-circuit-arm.md)
   * [Konfigurieren des Routings für das klassische Bereitstellungsmodell](expressroute-howto-routing-classic.md) oder [Konfigurieren des Routings für das Resource Manager-Bereitstellungsmodell](expressroute-howto-routing-arm.md)
   * [Verknüpfen eines klassischen VNET mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-classic.md) oder [Verknüpfen eines Resource Manager-VNET mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-arm.md)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

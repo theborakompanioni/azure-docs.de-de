@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/03/2016
+ms.date: 03/09/2017
 ms.author: briz
 translationtype: Human Translation
-ms.sourcegitcommit: 55d3f08de7f8c7ba68faba1945e8fd960e888853
-ms.openlocfilehash: 5e1b1333212af0b9042e7ed3793c08e305085519
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 352c42ddeef5537f9b912ddfe6a72b6b5342835b
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -38,7 +39,11 @@ IoT ist mit besonderen Geräteverwaltungsanforderungen verbunden. Daher müssen 
 
 * **Skalierung und Automatisierung:** IoT-Lösungen müssen über unkomplizierte Tools verfügen, mit denen Routineaufgaben automatisiert werden können und eine relativ kleine Gruppe von Bedienern Millionen von Geräten verwalten kann. Bediener erwarten Tag für Tag, dass Gerätevorgänge per Remotezugriff und als Massenvorgang erledigt werden können und dass sie nur benachrichtigt werden, wenn Probleme direkte Aufmerksamkeit erfordern.
 * **Flexibilität und Kompatibilität:** Das Spektrum der Geräte ist äußerst vielfältig. Verwaltungstools müssen an eine Vielzahl von Geräteklassen, -plattformen und -protokolle angepasst werden. Die Bediener müssen zahlreiche Arten von Geräten unterstützen können – von einfachen eingebetteten Chips für Einzelvorgänge bis hin zu leistungsfähigen Computern mit vollem Funktionsumfang.
-* **Kontexterkennung:** IoT-Umgebungen sind dynamisch und verändern sich ständig. Die Zuverlässigkeit des Diensts ist von entscheidender Bedeutung. Bei den Vorgängen der Geräteverwaltung müssen SLA-Wartungsfenster, Netzwerk- und Stromversorgungszustände, Bedingungen während der Nutzung und die Geolocation von Geräten berücksichtigt werden, um sicherzustellen, dass sich Ausfallzeiten aufgrund von Wartungsarbeiten nicht negativ auf wichtige Geschäftsvorgänge auswirken oder zu gefährlichen Situationen führen.
+* **Kontexterkennung:** IoT-Umgebungen sind dynamisch und verändern sich ständig. Die Zuverlässigkeit des Diensts ist von entscheidender Bedeutung. Bei Geräteverwaltungsvorgängen müssen die folgenden Faktoren berücksichtigt werden, um sicherzustellen, dass sich Ausfallzeiten aufgrund von Wartungsarbeiten nicht negativ auf wichtige Geschäftsvorgänge auswirken oder zu gefährlichen Situationen führen:
+    * SLA-Wartungsfenster
+    * Netzwerk- und Stromversorgungszustände
+    * Bedingungen während der Nutzung
+    * Geolocation von Geräten
 * **Abdeckung zahlreicher Rollen:** Die Unterstützung der einzigartigen Workflows und Prozesse von IoT-Vorgängen ist sehr wichtig. Das Bedienpersonal muss trotz etwaiger Einschränkungen durch interne IT-Abteilungen harmonisch zusammenarbeiten  und relevante Echtzeitinformationen zu Gerätevorgängen auf nachhaltige Weise an Vorgesetzte und andere Personen mit Leitungsfunktion weitergeben.
 
 ## <a name="device-lifecycle"></a>Lebenszyklus von Geräten
@@ -50,19 +55,19 @@ In jeder dieser fünf Phasen müssen mehrere Anforderungen von Gerätebedienern 
 
 * **Planung:** Bediener müssen in die Lage versetzt werden, ein Schema der Gerätemetadaten zu erstellen. Damit können sie eine Gruppe von Geräten einfach und präzise abfragen und Massenvorgänge zu Verwaltungszwecken durchführen. Mit dem Gerätezwilling können Sie die Gerätemetadaten in Form von Tags und Eigenschaften speichern.
   
-    *Weiterführende Themen*: [Erste Schritte mit Gerätezwillingen][lnk-twins-getstarted], [Grundlegendes zu Gerätezwillingen][lnk-twins-devguide], [Tutorial: Verwenden von gewünschten Eigenschaften zum Konfigurieren von Geräten (Vorschau)][lnk-twin-properties]
+    *Weiterführende Themen*: [Erste Schritte mit Gerätezwillingen][lnk-twins-getstarted], [Grundlegendes zu Gerätezwillingen][lnk-twins-devguide], [Verwenden der Eigenschaften von Gerätezwillingen][lnk-twin-properties]
 * **Bereitstellung:** Neue Geräte können sicher für IoT Hub bereitgestellt werden, und Bediener können die Funktionen eines Geräts sofort ermitteln.  Verwenden Sie die IoT Hub-Identitätsregistrierung, um flexible Geräteidentitäten und Anmeldeinformationen zu erstellen, und führen Sie diesen Vorgang mithilfe eines Auftrags als Massenvorgang durch. Erstellen Sie Geräte, um ihre Funktionen und Bedingungen über Geräteeigenschaften im Gerätezwilling zu melden.
   
-    *Weitere nützliche Informationen*: [Verwalten von Geräteidentitäten][lnk-identity-registry], [Massenverwaltung von IoT Hub-Geräte-Identitäten][lnk-bulk-identity], [Tutorial: Verwenden von gewünschten Eigenschaften zum Konfigurieren von Geräten (Vorschau)][lnk-twin-properties]
+    *Weitere nützliche Informationen*: [Verwalten von Geräteidentitäten][lnk-identity-registry], [Massenverwaltung von Geräteidentitäten][lnk-bulk-identity], [Verwenden der Eigenschaften von Gerätezwillingen][lnk-twin-properties]
 * **Konfiguration:** Massenvorgänge zum Ändern der Konfiguration und Firmwareupdates für Geräte können ohne Beeinträchtigung der Integrität und der Sicherheit durchgeführt werden. Verwenden Sie die gewünschten Eigenschaften, um diese Geräteverwaltungsvorgänge als Massenvorgang durchzuführen, oder verwenden Sie direkte Methoden und Broadcastaufträge.
   
-    *Weitere nützliche Informationen*: [Verwenden von direkten Methoden][lnk-c2d-methods], [Aufrufen einer direkten Methode auf einem Gerät][lnk-methods-devguide], [Tutorial: Verwenden von gewünschten Eigenschaften zum Konfigurieren von Geräten (Vorschau)][lnk-twin-properties], [Planen und Übermitteln von Aufträgen][lnk-jobs], [Planen von Aufträgen auf mehreren Geräten][lnk-jobs-devguide]
+    *Weitere nützliche Informationen*: [Verwenden von direkten Methoden][lnk-c2d-methods], [Aufrufen einer direkten Methode auf einem Gerät][lnk-methods-devguide], [Verwenden der Eigenschaften von Gerätezwillingen][lnk-twin-properties], [Planen und Übermitteln von Aufträgen][lnk-jobs], [Planen von Aufträgen auf mehreren Geräten][lnk-jobs-devguide]
 * **Überwachung:** Überwachen Sie die allgemeine Geräteintegrität und den Status laufender Vorgänge, und weisen Sie Bediener auf Probleme hin, die ggf. ihre Aufmerksamkeit erfordern.  Wenden Sie den Gerätezwilling an, um es Geräten zu ermöglichen, Bedingungen und den Status von Updatevorgängen in Echtzeit zu melden. Erstellen Sie leistungsfähige Dashboardberichte, die mithilfe von Abfragen für den Gerätezwilling über neueste Probleme informieren.
   
-    *Weitere nützliche Informationen*: [Tutorial: Verwenden von gewünschten Eigenschaften zum Konfigurieren von Geräten (Vorschau)][lnk-twin-properties], [Referenz – Abfragesprache für Zwillinge und Aufträge][lnk-query-language]
+    *Weitere nützliche Informationen*: [Verwenden der Eigenschaften von Gerätezwillingen][lnk-twin-properties], [IoT Hub-Abfragesprache für Gerätezwillinge und Aufträge][lnk-query-language]
 * **Ausmusterung:** Geräte werden nach einem Fehler oder Upgradezyklus oder am Ende der Lebensdauer ausgetauscht oder außer Betrieb gesetzt.  Verwenden Sie zur Verwaltung von Geräteinformationen den Gerätezwilling, falls das physische Gerät ausgetauscht wird (oder das Archiv, falls das Gerät ausgemustert wird). Verwenden Sie die IoT Hub-Identitätsregistrierung zum sicheren Sperren von Geräteidentitäten und Anmeldeinformationen.
   
-    *Weitere nützliche Informationen*: [Tutorial: Verwenden von gewünschten Eigenschaften zum Konfigurieren von Geräten (Vorschau)][lnk-twin-properties], [Verwalten von Geräteidentitäten][lnk-identity-registry]
+    *Weitere nützliche Informationen*: [Verwenden der Eigenschaften von Gerätezwillingen][lnk-twin-properties], [Verwalten von Geräteidentitäten][lnk-identity-registry]
 
 ## <a name="device-management-patterns"></a>Geräteverwaltungsmuster
 IoT Hub ermöglicht die folgenden Geräteverwaltungsmuster.  In den [Tutorials zur Geräteverwaltung][lnk-get-started] erfahren Sie ausführlicher, wie Sie diese Muster auf Ihr individuelles Szenario abstimmen und auf der Grundlage der grundlegenden Vorlagen neue Muster entwerfen.
@@ -84,7 +89,7 @@ IoT Hub ermöglicht die folgenden Geräteverwaltungsmuster.  In den [Tutorials z
     ![Muster für Fortschritts- und Statusmeldungen der Geräteverwaltung – Grafik][img-report_progress_pattern]
 
 ## <a name="next-steps"></a>Nächste Schritte
-Auf der Grundlage der Funktionen, Muster und Codebibliotheken der IoT Hub-Geräteverwaltung können Sie IoT-Anwendungen erstellen, die in jeder Lebenszyklusphase des jeweiligen Geräts die Anforderungen professioneller IoT-Bediener erfüllen.
+Mit den Funktionen, Mustern und Codebibliotheken der IoT Hub-Geräteverwaltung können Sie IoT-Anwendungen erstellen, die in jeder Lebenszyklusphase des jeweiligen Geräts die Anforderungen professioneller IoT-Bediener erfüllen.
 
 Weitere Informationen zu den Geräteverwaltungsfunktionen in IoT Hub finden Sie im Tutorial [Erste Schritte mit der Geräteverwaltung][lnk-get-started].
 
@@ -109,9 +114,4 @@ Weitere Informationen zu den Geräteverwaltungsfunktionen in IoT Hub finden Sie 
 [lnk-methods-devguide]: iot-hub-devguide-direct-methods.md
 [lnk-jobs]: iot-hub-node-node-schedule-jobs.md
 [lnk-jobs-devguide]: iot-hub-devguide-jobs.md
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

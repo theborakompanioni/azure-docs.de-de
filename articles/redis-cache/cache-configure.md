@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 02/14/2017
+ms.date: 02/28/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 296a842157e4ecae1b3700e1d22c56852ffc06a2
-ms.openlocfilehash: ad88d998302d264b2a0f607d8408cd12bf833a68
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 59d4e08d0e93096120cc74deb641385084cfd912
+ms.openlocfilehash: 8a4f3616ff314cb280e6673c71ebdcd5d9b3441c
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -52,6 +52,7 @@ Sie können die folgenden Einstellungen über das **Ressourcenmenü** anzeigen u
     * [Redis-Datenpersistenz](#redis-data-persistence)
     * [Planen von Updates](#schedule-updates)
     * [Virtual Network](#virtual-network)
+    * [Firewall](#firewall)
     * [Eigenschaften](#properties)
     * [Sperren](#locks)
     * [Automatisierungsskript](#automation-script)
@@ -104,6 +105,7 @@ Der Abschnitt **Einstellungen** ermöglicht den Zugriff auf die folgenden Cachee
 * [Redis-Datenpersistenz](#redis-data-persistence)
 * [Planen von Updates](#schedule-updates)
 * [Virtual Network](#virtual-network)
+* [Firewall](#firewall)
 * [Eigenschaften](#properties)
 * [Sperren](#locks)
 * [Automatisierungsskript](#automation-script)
@@ -262,7 +264,7 @@ Aktivieren Sie zum Angeben eines Wartungsfensters die Kontrollkästchen der gew�
 
 
 
-## <a name="virtual-network"></a>Virtuelles Netzwerk
+### <a name="virtual-network"></a>Virtuelles Netzwerk
 Im Abschnitt **Virtuelles Netzwerk** können Sie die Einstellungen des virtuellen Netzwerks für Ihren Cache konfigurieren. Weitere Informationen zum Erstellen eines Premium-Caches mit VNET-Unterstützung sowie zum Aktualisieren der Einstellungen finden Sie unter [Konfigurieren der Unterstützung virtueller Netzwerke für Azure Redis Cache vom Typ „Premium“](cache-how-to-premium-vnet.md).
 
 > [!IMPORTANT]
@@ -270,6 +272,20 @@ Im Abschnitt **Virtuelles Netzwerk** können Sie die Einstellungen des virtuelle
 > 
 > 
 
+### <a name="firewall"></a>Firewall
+
+Klicken Sie auf **Firewall**, um Firewallregeln für Ihr Azure Redis Cache vom Typ „Premium“ anzuzeigen und zu konfigurieren.
+
+![Firewall](./media/cache-configure/redis-firewall-rules.png)
+
+Sie können Firewallregeln mit einem Start- und End-IP-Adressbereich angeben. Wenn Firewallregeln konfiguriert werden, können nur Clientverbindungen aus dem angegebenen IP-Adressbereich eine Verbindung mit dem Cache herstellen. Wenn eine Firewallregel gespeichert wird, gibt es eine kurze Verzögerung, bevor die Regel in Kraft tritt. Diese Verzögerung beträgt in der Regel weniger als eine Minute.
+
+> [!IMPORTANT]
+> Verbindungen von Azure Redis Cache-Überwachungssystemen werden immer zugelassen, auch wenn Firewallregeln konfiguriert sind.
+> 
+> Firewallregeln sind nur für Caches im Premium-Tarif verfügbar.
+> 
+> 
 
 ### <a name="properties"></a>Eigenschaften
 Klicken Sie auf **Eigenschaften**, um Informationen zu Ihrem Cache anzuzeigen, z.B. den Endpunkt und die Ports des Caches.

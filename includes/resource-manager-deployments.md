@@ -1,22 +1,10 @@
 ## <a name="incremental-and-complete-deployments"></a>Inkrementelle und vollständige Bereitstellungen
-Bei der Bereitstellung Ihrer Ressourcen geben Sie an, dass es sich bei der Bereitstellung entweder um ein inkrementelles Update oder um ein vollständiges Update handelt. Standardmäßig behandelt Ressourcen-Manager Bereitstellungen als inkrementelle Updates für die Ressourcengruppe. Bei der inkrementellen Bereitstellung kann Ressourcen-Manager Folgendes:
+Bei der Bereitstellung Ihrer Ressourcen geben Sie an, dass es sich bei der Bereitstellung entweder um ein inkrementelles Update oder um ein vollständiges Update handelt. Der Hauptunterschied zwischen diesen beiden Modi besteht darin, wie Resource Manager vorhandene Ressourcen in der Ressourcengruppe behandelt, die nicht in der Vorlage sind:
 
-* **unverändert lassen** , die in der Ressourcengruppe vorhanden, aber nicht in der Vorlage angegeben sind.
-* **hinzufügen** , die in der Vorlage angegeben, jedoch nicht in der Ressourcengruppe vorhanden sind. 
-* **Das erneute Bereitstellen von Ressourcen unterlassen**, die in der Ressourcengruppe gemäß der in der Vorlage definierten Bedingung vorhanden sind
-* Vorhandene Ressourcen, die aktualisierte Einstellungen in der Vorlage enthalten, **erneut bereitstellen**
+* Im vollständigen-Modus **löscht** Resource Manager Ressourcen, die in der Ressourcengruppe vorhanden, aber nicht in der Vorlage angegeben sind. 
+* Im inkrementellen Modus lässt Resource Manager Ressourcen **unverändert**, die in der Ressourcengruppe vorhanden, aber nicht in der Vorlage angegeben sind.
 
-Bei der vollständigen Bereitstellung kann Ressourcen-Manager Folgendes:
+In beiden Modi versucht Resource Manager, alle in der Vorlage angegebenen Ressourcen bereitstellen. Wenn die Ressource bereits in der Ressourcengruppe vorhanden ist und ihre Einstellungen unverändert sind, führt der Vorgang zu keiner Änderung. Wenn Sie die Einstellungen für eine Ressource ändern, wird die Ressource mit diesen neuen Einstellungen bereitgestellt. Der Speicherort oder Typ einer vorhandenen Ressource können allerdings nicht aktualisiert werden. Stellen Sie stattdessen eine neue Ressource mit dem gewünschten Speicherort oder Typ bereit.
 
-* **löschen** , die in der Ressourcengruppe vorhanden, aber nicht in der Vorlage angegeben sind.
-* **hinzufügen** , die in der Vorlage angegeben, jedoch nicht in der Ressourcengruppe vorhanden sind. 
-* **Das erneute Bereitstellen von Ressourcen unterlassen**, die in der Ressourcengruppe gemäß der in der Vorlage definierten Bedingung vorhanden sind
-* Vorhandene Ressourcen, die aktualisierte Einstellungen in der Vorlage enthalten, **erneut bereitstellen**
-
-Die Art der Bereitstellung wird mithilfe der Eigenschaft **Mode** angegeben.
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+Resource Manager verwendet standardmäßig den inkrementellen Modus.
 

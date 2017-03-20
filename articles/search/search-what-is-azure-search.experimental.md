@@ -15,9 +15,9 @@ ms.date: 02/15/2017
 ms.author: heidist
 experiment_id: heidist-20170221
 translationtype: Human Translation
-ms.sourcegitcommit: 71694028366f48682881523c0220a4158078a76c
-ms.openlocfilehash: b851f906b57225dce516d9704fdace80c44c4897
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 8f4947ba2641bc8a39a71945ff2a6818d1ff7830
+ms.lasthandoff: 03/08/2017
 
 ---
 # <a name="what-is-azure-search"></a>Was ist Azure Search?
@@ -49,7 +49,7 @@ Dedizierte Dienste werden rund um die Uhr an 7 Tagen pro Woche ausgeführt, mit 
 
 Verschiedene Clouddienste stellen benutzerdefinierte Suchmodule mit Features für eine Suchleiste in benutzerdefinierten Apps bereit. Einige bieten vergleichbare Basisfunktionen, mit Volltextsuche, geografischer Suche und der Möglichkeit zur Verarbeitung einer gewissen Ungenauigkeit bei der Sucheingabe. Das passende Suchmodul ergibt sich in der Regel durch ein [spezialisiertes Feature](#feature-drilldown) oder durch die Benutzerfreundlichkeit und Einfachheit von APIs, Tools und Verwaltungsfunktionen.
 
-Im Vergleich zu anderen Suchlösungen eignet Azure Search sich am besten für die Volltextsuche in Inhaltsspeichern und Datenbanken in Azure. Der Dienst bietet zudem eine zusätzliche Funktionsebene für Apps, bei denen Informationsabruf und Inhaltsnavigation primär auf der Suche basieren. 
+Im Vergleich zu anderen Suchlösungen eignet Azure Search sich am besten für die Volltextsuche in Inhaltsspeichern und Datenbanken in Azure. Der Dienst bietet zudem eine zusätzliche Funktionsebene für Apps, bei denen Informationsabruf und Inhaltsnavigation primär auf der Suche basieren. Wichtige Vorteile umfassen:
 
 + Azure-Datenintegration (Crawler) auf Indexebene
 + Azure-Portal für eine zentrale Verwaltung

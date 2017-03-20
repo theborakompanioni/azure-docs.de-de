@@ -75,6 +75,20 @@ sql-database-service-tiers.md
 | Max. Anz. von eDTUs pro Datenbank | {25,50,75,<br>125,250,500,<br>1000,1750} | {25,50,75,<br>125,250,500,<br>1000,1750} | {25,50,75,<br>125,250,500,<br>1000,1750} | {25,50,75,<br>125,250,500,<br>1000,1750} | {25,50,75,<br>125,250,500,<br>1000,1750,4000} | 
 ||||||||
 
+### <a name="premium-rs-elastic-pool-limits"></a>Grenzwerte für elastische RS-Pools – Premium
+
+| Poolgröße (eDTUs)  | **125** | **250** | **500** | **1000** |
+|:---|---:|---:|---:| ---: | ---: | 
+| Max. Datenspeicher pro Pool* | 250 GB| 500 GB | 750 GB | 750 GB |
+| Max. In-Memory-OLTP-Speicher pro Pool* | 1 GB | 2 GB | 4 GB | 10 GB |
+| Max. Anzahl Datenbanken pro Pool | 50 | 100 | 100 | 100 |
+| Max. gleichzeitige Worker pro Pool | 200 | 400 | 800 | 1600 |
+| Max. gleichzeitige Anmeldungen pro Pool | 200 | 400 | 800 | 1600 |
+| Max. gleichzeitige Sitzungen pro Pool | 30000 | 30000 | 30000 | 30000 |
+| Min. Anz. von eDTUs pro Datenbank | {0,25,50,75,<br>125} | {0,25,50,75,<br>125,250} | {0,25,50,75,<br>125,250,500} | {0,25,50,75,<br>125,250,500,<br>1000} |
+| Max. Anz. von eDTUs pro Datenbank | {25,50,75,<br>125} | {25,50,75,<br>125,250} | {25,50,75,<br>125,250,500} | {25,50,75,<br>125,250,500,<br>1000} | 
+||||||||
+
 > [!IMPORTANT]
 >\* In einem Pool zusammengefasste Datenbanken nutzen den Poolspeicher gemeinsam, daher ist der Datenspeicher in einem Pool für elastische Datenbanken auf den jeweils kleineren Wert des verbleibenden Poolspeichers oder des maximalen Speicherplatzes pro Datenbank beschränkt.
 >

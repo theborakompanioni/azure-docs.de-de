@@ -15,9 +15,9 @@ ms.workload: infrastructure
 ms.date: 2/7/2017
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 6fda4b6e77104b6022b86010b53b46ae5df1b82e
-ms.openlocfilehash: fb670dd7296f329fc280cf9f2c2adba2df44c07c
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 710307b01fe64852771c071c070f5fcee59c9579
+ms.openlocfilehash: 494dbaf23de22efa79cfe65aa22bb7c948b3da80
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -232,6 +232,13 @@ In diesem Abschnitt wird erläutert, wie Sie Daten sichern, wenn Sie sie in oder
 Wir erläutern Storage Service Encryption (SSE) und beschreiben, und wie Sie diese Verschlüsselung für ein Speicherkonto aktivieren können, sodass Ihre Block-, Seiten- und Anfügeblobs beim Schreiben in Azure Storage automatisch verschlüsselt werden. Außerdem erläutern wie die Verwendung von Azure Disk Encryption und untersuchen die grundlegenden Anwendungsfälle von Azure Disk Encryption, SSE und clientseitiger Verschlüsselung sowie deren wesentlichen Unterschiede. Wir betrachten kurz die FIPS-Konformität für die US- Regierungscomputer.
 
 * [Azure Storage-Sicherheitsleitfaden](../storage/storage-security-guide.md)
+
+## <a name="temporary-disk"></a>Temporärer Datenträger
+Jede VM verfügt über einen temporären Datenträger. Der temporäre Datenträger bietet kurzfristigen Speicher für Anwendungen und Prozesse und ist ausschließlich dafür ausgelegt, Daten wie z.B. Seiten-oder Auslagerungsdateien zu speichern. Daten auf dem temporären Datenträger können während eines [Wartungsereignisses](virtual-machines-linux-manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#understand-planned-vs-unplanned-maintenance) verloren gehen, oder wenn Sie [eine VM erneut bereitstellen](virtual-machines-linux-redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Während eines standardmäßigen Neustarts der VM sollten die Daten auf dem virtuellen Datenträger erhalten bleiben.
+
+Auf virtuellen Linux-Computern lautet der Datenträger in der Regel **/dev/sdb**. Er wird vom Azure Linux-Agent formatiert und in **/mnt/** eingebunden. Die Größe des temporären Datenträgers variiert basierend auf der Größe des virtuellen Computers. Weitere Informationen finden Sie unter [Größen für virtuelle Computer in Azure](../virtual-machines/virtual-machines-linux-sizes.md).
+
+Weitere Informationen zur Verwendung des temporären Datenträgers in Azure finden Sie unter [Understanding the temporary drive on Microsoft Azure Virtual Machines](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
 
 ## <a name="cost-savings"></a>Kostenersparnis
 * [Speicherkosten](https://azure.microsoft.com/pricing/details/storage/)

@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/05/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
-ms.openlocfilehash: d1f4b7806f72dc2632ba981781097b19e89d07f3
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: 407e9a1e4a50b875fa65e61d3e9aae245dd907e5
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -56,10 +57,10 @@ Dieses Thema wurde für Version 3.3.0 aktualisiert. Wenn Sie über eine frühere
 ## <a name="log-in-to-your-azure-account"></a>Melden Sie sich bei Ihrem Azure-Konto an.
 Bevor Sie an Ihrer Lösung arbeiten, müssen Sie sich bei Ihrem Konto anmelden.
 
-Um sich bei Ihrem Azure-Konto anzumelden, verwenden Sie das **Add-AzureRmAccount**-Cmdlet.
+Um sich bei Ihrem Azure-Konto anzumelden, verwenden Sie das Cmdlet **Login-AzureRmAccount**.
 
 ```powershell
-Add-AzureRmAccount
+Login-AzureRmAccount
 ```
 
 Sie werden vom Cmdlet zur Eingabe der Anmeldeinformationen für Ihr Azure-Konto aufgefordert. Nach dem Anmelden werden Ihre Kontoeinstellungen heruntergeladen, damit sie Azure PowerShell zur Verfügung stehen.
@@ -273,10 +274,5 @@ In den folgenden Themen wird gezeigt, wie Sie mit Azure Automation, Resource Man
 * Informationen zum Bereitstellen von Vorlagen finden Sie unter [Bereitstellen einer Anwendung mit einer Azure Resource Manager-Vorlage](resource-group-template-deploy.md).
 * Sie können vorhandene Ressourcen in eine neue Ressourcengruppe verschieben. Beispiele finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](resource-group-move-resources.md).
 * Anleitungen dazu, wie Unternehmen Abonnements mit Resource Manager effektiv verwalten können, finden Sie unter [Azure-Unternehmensgerüst - Präskriptive Abonnementgovernance](resource-manager-subscription-governance.md).
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

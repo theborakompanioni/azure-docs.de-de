@@ -17,6 +17,7 @@ ms.author: aelnably
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: e238f804d4a96e10101e7aa2e2a1bcb78a44e967
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -46,7 +47,7 @@ Mit dem Befehl New-AzureRmWebApp können wir die neue Web-App in der nördlichen
 
 Um eine bereits existierende Web-App zu klonen, einschließlich aller zugeordneten Bereitstellungsslots, muss der Benutzer den IncludeSourceWebAppSlots-Parameter verwenden. Der folgende PowerShell-Befehl zeigt den Gebrauch dieses Parameters mit dem Befehl New-AzureRmWebApp:
 
-    $destapp = New-AzureRmWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -IncludeSourceWebAppSlots $true
+    $destapp = New-AzureRmWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -IncludeSourceWebAppSlots
 
 Um eine vorhandene Web-App innerhalb derselben Region zu klonen, muss der Benutzer eine neue Ressourcengruppe und einen neuen App-Service-Plan in derselben Region erstellen und dann den folgenden PowerShell-Befehl zum Klonen der Web-App benutzen:
 
@@ -112,10 +113,5 @@ Dieses Feature ist zurzeit in der Vorschau. Wir arbeiten daran, neue Funktionen 
 * [Unterstützung des Azure Resource Manager für Azure Traffic Manager – Vorschau](../traffic-manager/traffic-manager-powershell-arm.md)
 * [Einführung in die App Service-Umgebung](app-service-app-service-environment-intro.md)
 * [Verwenden von Windows PowerShell mit dem Azure-Ressourcen-Manager](../powershell-azure-resource-manager.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

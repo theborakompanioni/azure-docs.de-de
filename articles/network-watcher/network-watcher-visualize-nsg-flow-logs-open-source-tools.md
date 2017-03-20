@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 437bbb47a490ecc66c5820eccfc8db8ec28d76be
-ms.openlocfilehash: 0a5aaf64f22e6c116165a63b77618b535dfd3797
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 7018320e601c1e8762e1c8fc409813a113a35044
+ms.lasthandoff: 03/06/2017
 
 ---
 
@@ -26,6 +26,8 @@ ms.lasthandoff: 02/24/2017
 NSG-Datenflussprotokolle (Netzwerksicherheitsgruppen) enthalten Informationen für ein besseres Verständnis von ein- und ausgehendem IP-Datenverkehr in Netzwerksicherheitsgruppen. Diese Datenflussprotokolle zeigen ausgehende und eingehende Datenflüsse pro Regel, die NIC, auf die sich der Datenfluss bezieht, 5-Tupel-Informationen über den Datenfluss (Quell-/Ziel-IP, Quell-/Zielport, Protokoll) und Informationen zu zugelassenem oder verweigertem Datenverkehr.
 
 Die manuelle Analyse und Auswertung dieser Datenflussprotokolle kann schwierig sein. Es gibt jedoch mehrere Open-Source-Tools, die zur Visualisierung dieser Daten beitragen können. In diesem Artikel wird eine Lösung für Visualisierung dieser Protokolle mit dem Elastic Stack bereitgestellt, mit der Sie Ihre Datenflussprotokolle schnell in einem Kibana-Dashboard indizieren und visualisieren können.
+
+[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
 
 ## <a name="scenario"></a>Szenario
 
@@ -156,7 +158,7 @@ Weitere Anweisungen zum Installieren von Logstash finden Sie in der [offiziellen
 
 ### <a name="install-the-logstash-input-plugin-for-azure-blob-storage"></a>Installieren des Logstash-Eingangs-Plug-Ins für Azure Blob Storage
 
-Mit diesem Logstash-Plug-In können Sie direkt auf die Datenflussprotokolle im jeweiligen Speicherkonto zugreifen. Führen Sie zum Installieren dieses Plug-Ins folgenden Befehl aus:
+Mit diesem Logstash-Plug-In können Sie direkt auf die Datenflussprotokolle im jeweiligen Speicherkonto zugreifen. Sie installieren dieses Plug-In, indem Sie über das Logstash-Standardinstallationsverzeichnis (in diesem Fall /usr/share/logstash/bin) folgenden Befehl ausführen:
 
 ```
 logstash-plugin install logstash-input-azureblob
@@ -230,7 +232,7 @@ Das Beispieldashboard stellt mehrere Visualisierungen der Datenflussprotokolle b
 1. Datenflusstupel: Diese Tabelle zeigt Informationen innerhalb jedes Datenflusstupels mit der zugehörigen NSG und Regel.
 
   ![Abbildung&7;][7]
-  
+
 Mithilfe der Abfrageleiste oben im Dashboard können Sie das Dashboard basierend auf beliebige Parameter der Datenflüsse filtern, z.B. nach Abonnement-ID, Ressourcengruppen, Regel oder andere relevante Variablen. Weitere Informationen zu Kibana-Abfragen und -Filtern finden Sie in der [offiziellen Dokumentation](https://www.elastic.co/guide/en/beats/packetbeat/current/kibana-queries-filters.html).
 
 ## <a name="conclusion"></a>Zusammenfassung
@@ -252,5 +254,4 @@ Erfahren Sie unter [Visualisieren der Datenflussprotokolle von Netzwerksicherhei
 [5]: ./media/network-watcher-visualize-nsg-flow-logs-open-source-tools/figure5.png
 [6]: ./media/network-watcher-visualize-nsg-flow-logs-open-source-tools/figure6.png
 [7]: ./media/network-watcher-visualize-nsg-flow-logs-open-source-tools/figure7.png
-
 

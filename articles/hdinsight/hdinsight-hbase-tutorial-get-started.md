@@ -13,11 +13,12 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 03/03/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 541c06240f0c437ad92ea955caee67456851a6e1
-ms.openlocfilehash: 59aee407be91279276ec6eaafed608e354030676
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: 0e4d560113581dc9dbafd421a1307bff61a2aa9b
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -34,7 +35,7 @@ Erfahren Sie, wie Sie HBase-Cluster in HDInsight erstellen, HBase-Tabellen erste
 Bevor Sie mit diesem Lernprogramm zu HBase beginnen können, benötigen Sie Folgendes:
 
 * **Ein Microsoft Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* **Arbeitsstation** mit Visual Studio 2013 oder höher: Anweisungen hierzu finden Sie unter [Installieren von Visual Studio](http://msdn.microsoft.com/library/e2h7fzkw.aspx).
+* **Eine Arbeitsstation** mit Visual Studio 2013/2015/2017: Anweisungen hierzu finden Sie unter [Installieren von Visual Studio](http://msdn.microsoft.com/library/e2h7fzkw.aspx).
 
 ### <a name="access-control-requirements"></a>Voraussetzungen für die Zugriffssteuerung
 [!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
@@ -321,9 +322,4 @@ Weitere Informationen finden Sie unter:
 [img-hbase-shell]: ./media/hdinsight-hbase-tutorial-get-started/hdinsight-hbase-shell.png
 [img-hbase-sample-data-tabular]: ./media/hdinsight-hbase-tutorial-get-started/hdinsight-hbase-contacts-tabular.png
 [img-hbase-sample-data-bigtable]: ./media/hdinsight-hbase-tutorial-get-started/hdinsight-hbase-contacts-bigtable.png
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

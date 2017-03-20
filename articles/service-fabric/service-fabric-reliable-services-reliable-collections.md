@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 10/18/2016
+ms.date: 3/1/2017
 ms.author: mcoskun
 translationtype: Human Translation
-ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
-ms.openlocfilehash: 287707d528d2327637ad3d17633ef830657c04f8
+ms.sourcegitcommit: 4952dfded6ec5c4512a61cb18d4c754bf001dade
+ms.openlocfilehash: b5fab7cf91493d477cafd66e27e346ea3ad02f04
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -97,11 +98,9 @@ Eine Aktualisierungssperre ist eine asymmetrische Sperre, mit der eine häufig a
 
 Die Kompatibilitätsmatrix für Sperren finden Sie unten:
 
-| Anforderung\Gewährt | Keine | Shared
- | Aktualisieren | Exklusiv |
+| Anforderung \ Gewährt | Keine | Shared | Aktualisieren | Exklusiv |
 | --- |:--- |:--- |:--- |:--- |
-| Shared
- |Kein Konflikt |Kein Konflikt |Konflikt: |Konflikt: |
+| Shared |Kein Konflikt |Kein Konflikt |Konflikt: |Konflikt: |
 | Aktualisieren |Kein Konflikt |Kein Konflikt |Konflikt: |Konflikt: |
 | Exklusiv |Kein Konflikt |Konflikt: |Konflikt: |Konflikt: |
 
@@ -149,6 +148,7 @@ Wenn das Replikat neu gestartet werden muss, stellen zuverlässige Auflistungen 
 * Verwenden Sie Aktualisierungssperren beim Lesen eines Elements, das aktualisiert werden soll, um eine bestimmte Klasse von Deadlocks zu vermeiden.
 * Sie sollten zwecks Notfallwiederherstellung die Verwendung der Funktionen „Backup“ und „Wiederherstellung“ in Betracht ziehen.
 * Verwenden Sie Vorgänge mit einer einzigen Entität und Vorgänge mit mehreren Entitäten (z.B. `GetCountAsync` und `CreateEnumerableAsync`) aufgrund der unterschiedlichen Isolationsstufen nicht in der gleichen Transaktion.
+* Behandeln Sie „InvalidOperationException“. Benutzertransaktionen können aus verschiedenen Gründen vom System abgebrochen werden, z.B. wenn der Reliable State Manager seine primäre Rolle ändert, oder wenn eine Transaktion mit langer Laufzeit das Abschneiden des Transaktionsprotokolls einschränkt. In solchen Fällen erhalten die Benutzer möglicherweise die Fehlermeldung „InvalidOperationException“, was bedeutet, dass Ihre Transaktion bereits beendet wurde. Vorausgesetzt, das Beenden der Transaktion wurde nicht durch den Benutzer angefordert, ist der beste Weg, diese Ausnahme zu behandeln, die Transaktion zu beenden und zu überprüfen, ob das Abbruchtoken signalisiert wurde (oder ob sich die Rolle des Replikats geändert hat). Falls dies nicht der Fall ist, erstellen Sie eine neue Transaktion und versuchen Sie es erneut.  
 
 Hier folgen einige Punkte, die es zu beachten gilt:
 
@@ -169,10 +169,5 @@ Hier folgen einige Punkte, die es zu beachten gilt:
 * [Erste Schritte mit Web-API-Diensten von Service Fabric](service-fabric-reliable-services-communication-webapi.md)
 * [Erweiterte Verwendung des Reliable Services-Programmiermodells](service-fabric-reliable-services-advanced-usage.md)
 * [Entwicklerreferenz für zuverlässige Auflistungen](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

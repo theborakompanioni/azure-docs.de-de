@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 251d7b973426afb50206c428873021144b8bffdf
-ms.openlocfilehash: 63e2509b92b4d97bfdc98629cc356816839b03b5
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 140dd5f165b88a1b0d0771b0360769a340d082cf
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -35,7 +36,7 @@ Um die OMS-Agent-Erweiterung für Windows verwenden zu können, muss der virtuel
 
 ## <a name="extension-schema"></a>Erweiterungsschema
 
-Der folgende JSON-Code zeigt das Schema für die OMS Agent-Erweiterung. Für Erweiterung werden die Arbeitsbereichs-ID und der Arbeitsbereichsschlüssel aus dem OMS-Zielarbeitsbereich benötigt. Diese sind im OMS-Portal zu finden. Da der Arbeitsbereichsschlüssel als vertrauliche Information behandelt werden muss, sollte er in einer geschützten Einstellungskonfiguration gespeichert werden. Die geschützten Einstellungsdaten der Azure-VM-Erweiterung werden verschlüsselt und nur auf dem virtuellen Zielcomputer entschlüsselt.
+Der folgende JSON-Code zeigt das Schema für die OMS Agent-Erweiterung. Für Erweiterung werden die Arbeitsbereichs-ID und der Arbeitsbereichsschlüssel aus dem OMS-Zielarbeitsbereich benötigt. Diese sind im OMS-Portal zu finden. Da der Arbeitsbereichsschlüssel als vertrauliche Information behandelt werden muss, sollte er in einer geschützten Einstellungskonfiguration gespeichert werden. Die geschützten Einstellungsdaten der Azure-VM-Erweiterung werden verschlüsselt und nur auf dem virtuellen Zielcomputer entschlüsselt. Bitte beachten Sie, dass bei **workspaceId** und **workspaceKey** die Groß-/Kleinschreibung beachtet wird.
 
 ```json
 {
@@ -114,9 +115,4 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonit
 ### <a name="support"></a>Support
 
 Sollten Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie sich über das [MSDN Azure-Forum oder über das Stack Overflow-Forum](https://azure.microsoft.com/en-us/support/forums/) mit Azure-Experten in Verbindung setzen. Alternativ dazu haben Sie die Möglichkeit, einen Azure-Supportfall zu erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/en-us/support/options/) auf, und wählen Sie „Support erhalten“ aus. Informationen zur Nutzung von Azure-Support finden Sie unter [Microsoft Azure-Support-FAQ](https://azure.microsoft.com/en-us/support/faq/).
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

@@ -17,6 +17,7 @@ ms.author: ambapat
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 7fc69510ee07f8a0c50fa7ab59c7e1fac38fc5bb
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -40,10 +41,5 @@ Nachdem Sie Ihren Tresor nun der richtigen Mandanten-ID zugeordnet haben und alt
 
 ## <a name="next-steps"></a>Nächste Schritte
 Besuchen Sie die [Azure Key Vault-Foren](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault), wenn Sie Fragen zu Azure Key Vault haben.
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

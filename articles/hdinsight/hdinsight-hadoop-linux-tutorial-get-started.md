@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 01/17/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: c08b568642e88da1aeddd36cb25a9f5c94b083e2
-ms.openlocfilehash: f283f103804d8e6d4a3c2037c8d38daafcb3f3e8
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: d038245747ff8cfd2c80d7a7e0f05373ccb1e5fe
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -63,7 +63,7 @@ Die in diesem Tutorial verwendete Resource Manager-Vorlage befindet sich in [Git
     * **Betriebssystemtyp**: Linux
     * **Anzahl von Workerknoten**: 2
 
-     Jeder Cluster verfügt über eine Abhängigkeit von einem Azure Blob Storage-Konto. Es wird in der Regel als Standardspeicherkonto bezeichnet. Der HDInsight-Cluster und das dazugehörige Speicherkonto müssen sich in derselben Azure-Region befinden. Beim Löschen von Clustern wird das Speicherkonto nicht gelöscht. 
+     Jeder Cluster verfügt über eine Abhängigkeit von einem Azure Storage-Konto. Es wird in der Regel als Standardspeicherkonto bezeichnet. Der HDInsight-Cluster und das dazugehörige Speicherkonto müssen sich in derselben Azure-Region befinden. Beim Löschen von Clustern wird das Speicherkonto nicht gelöscht. 
      
      Eine ausführlichere Erläuterung dieser Eigenschaften finden Sie unter [Erstellen von Linux-basierten Hadoop-Clustern in HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 
@@ -135,7 +135,7 @@ Weitere Informationen zur Datenanalyse mit HDInsight finden Sie in den folgenden
 
 Wenn Sie mit eigenen Daten arbeiten und mehr darüber wissen möchten, wie Daten in HDInsight gespeichert werden oder wie HDInsight auf Daten zugreift, finden Sie weitere Informationen in folgenden Artikeln:
 
-* Informationen zur Verwendung von Azure-Blob-Speicher durch HDInsight finden Sie unter [Verwenden von Azure-Blob-Speicher mit HDInsight](hdinsight-hadoop-use-blob-storage.md).
+* Informationen zur Verwendung von Azure Storage durch HDInsight finden Sie unter [Verwenden von Azure Storage mit HDInsight](hdinsight-hadoop-use-blob-storage.md).
 * Informationen zum Hochladen von Daten in HDInsight finden Sie im Artikel zum [Hochladen von Daten zu HDInsight][hdinsight-upload-data].
 
 Weitere Informationen zum Erstellen und Verwalten von HDInsight-Clustern finden Sie in folgenden Artikeln:

@@ -1,5 +1,5 @@
 ---
-title: "Überprüfen des Datenverkehrs mit der IP-Datenflussüberprüfung in Azure Network Watcher – REST | Microsoft Docs"
+title: "Überprüfen des Datenverkehrs mit der IP-Datenflussüberprüfung in Azure Network Watcher – REST | Microsoft-Dokumentation"
 description: "Dieser Artikel beschreibt, wie Sie überprüfen, ob bei einem virtuellen Computer eingehender und ausgehender Datenverkehr zugelassen oder verweigert wird."
 services: network-watcher
 documentationcenter: na
@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 1d0136b044f6049e59fa09d824cf244cac703c45
-ms.openlocfilehash: 5c2054800d2234653c60c35f9c009499e231fd31
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: 18b98300ee103e3f3118f6db4e1c1a0e169eecad
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -37,9 +37,11 @@ ARMClient dient zum Aufrufen der REST-API mithilfe von PowerShell. Sie finden [A
 
 Dieses Szenario setzt voraus, dass Sie die Schritte unter [Erstellen einer Network Watcher-Instanz](network-watcher-create.md) bereits durchgeführt haben, um eine Network Watcher-Instanz zu erstellen.
 
+[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
+
 ## <a name="scenario"></a>Szenario
 
-Dieses Szenario verwendet die IP-Datenflussüberprüfung, um zu überprüfen, ob ein virtueller Computer über den Port 443 mit einem anderen Computer kommunizieren kann. Wenn der Datenverkehr abgelehnt wird, wird die Sicherheitsregel zurückgegeben, die den jeweiligen Datenverkehr verweigert. Weitere Informationen zur IP-Datenflussüberprüfung finden Sie in der [Übersicht zur IP-Datenflussüberprüfung](network-watcher-ip-flow-verify-overview.md).
+Dieses Szenario verwendet die IP-Datenflussüberprüfung, um zu überprüfen, ob ein virtueller Computer über den Port 443 mit einem anderen Computer kommunizieren kann. Wenn der Datenverkehr abgelehnt wird, wird die Sicherheitsregel zurückgegeben, die den jeweiligen Datenverkehr verweigert. Weitere Informationen zur IP-Datenflussüberprüfung finden Sie in der [Übersicht zur IP-Datenflussüberprüfung](network-watcher-ip-flow-verify-overview.md)
 
 In diesem Szenario führen Sie Folgendes durch:
 
@@ -102,7 +104,7 @@ pute/virtualMachines/ContosoVM/extensions/CustomScriptExtension"
 Das folgende Beispiel erstellt eine Anforderung zur Überprüfung des Datenverkehrs für einen angegebenen virtuellen Computer. Die Antwort gibt zurück, ob Datenverkehr zugelassen oder verweigert wird. Wenn der Datenverkehr verweigert wird, enthält sie auch die Regel, die den Datenverkehr blockiert.
 
 > [!NOTE]
-> Für die IP-Datenflussüberprüfung ist es erforderlich, dass die VM-Ressource für zugeordnet ist.
+> Für die IP-Datenflussüberprüfung ist es erforderlich, dass die VM-Ressource zugeordnet ist.
 
 Das Skript benötigt die Ressourcen-ID eines virtuellen Computers und einer Netzwerkschnittstellenkarte auf dem virtuellen Computer. Diese Werte finden Sie in der obigen Ausgabe.
 

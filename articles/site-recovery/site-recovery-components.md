@@ -12,30 +12,33 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/21/2017
+ms.date: 03/14/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 22b50dd6242e8c10241b0626b48f8ef842b6b0fd
-ms.openlocfilehash: c33ca9e5292096a0fd96d98da3e89d721463e903
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 4674985363bc1267449e018ab15a53757a8fd32d
+ms.lasthandoff: 03/15/2017
 
 
 ---
 # <a name="how-does-azure-site-recovery-work"></a>Wie funktioniert Azure Site Recovery?
 
-Lesen Sie diesen Artikel, um sich über die zugrunde liegende Architektur des Diensts [Azure Site Recovery](site-recovery-overview.md) und die dafür erforderlichen Komponenten zu informieren.
+Dieser Artikel beschreibt die zugrunde liegende Architektur des Diensts [Azure Site Recovery](site-recovery-overview.md) und die dafür erforderlichen Komponenten.
 
 Kommentare können Sie am Ende dieses Artikels eingeben oder im [Forum zu Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr) veröffentlichen.
 
 
-## <a name="replication-to-azure"></a>Replikation in Azure
+## <a name="replicate-to-azure"></a>Replikation zu Azure
 
 Sie können Folgendes in Azure replizieren:
+
 - **VMware:** Lokale virtuelle VMware-Computer unter einem [unterstützten Host](site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers). Sie können virtuelle VMware-Computer replizieren, die über eines der [unterstützten Betriebssysteme](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions) verfügen.
 - **Hyper-V:** Lokale virtuelle Hyper-V-Computer auf [unterstützten Hosts](site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers).
 - **Physische Computer:** Lokale physische Server unter Windows oder Linux. (Informationen zu unterstützten Betriebssystemen finden Sie [hier](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions).) Sie können virtuelle Hyper-V-Computer unter einem beliebigen Gastbetriebssystem replizieren, das [von Hyper-V und Azure unterstützt](https://technet.microsoft.com/en-us/windows-server-docs/compute/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) wird.
 
-## <a name="vmware-replication-to-azure"></a>VMware-Replikation in Azure
+## <a name="vmware-to-azure"></a>VMware zu Azure
+
+Für das Replizieren von virtuellen VMware-Computern in Azure benötigen Sie Folgendes:
 
 Bereich | Komponente | Details
 --- | --- | ---
@@ -85,14 +88,16 @@ Für Failbacks gelten einige Anforderungen:
 
 ![Failback](./media/site-recovery-components/enhanced-failback.png)
 
-## <a name="physical-server-replication-to-azure"></a>Replikation physischer Server in Azure
+## <a name="physical-to-azure"></a>Physisch nach Azure
 
-In diesem Replikationsszenario werden die gleichen Komponenten und der gleiche Prozess wie bei [VMware zu Azure](#vmware-replication-to-azure) verwendet. Es gibt jedoch folgende Unterschiede:
+Beim Replizieren von physischen lokalen Servers in Azure verwendet die Replikation zwar auch die gleichen Komponenten und Prozesse wie bei [VMware in Azure](#vmware-replication-to-azure), beachten Sie jedoch diese Unterschiede:
 
 - Anstelle eines virtuellen VMware-Computers können Sie für den Konfigurationsserver einen physischen Server verwenden.
 - Sie benötigen eine lokale VMware-Infrastruktur für das Failback. Ein Failback zu einem physischen Computer ist nicht möglich.
 
-## <a name="hyper-v-replication-to-azure"></a>Hyper-V-Replikation in Azure
+## <a name="hyper-v-to-azure"></a>Hyper-V in Azure
+
+Für das Replizieren von virtuellen Hyper-V-Computern in Azure benötigen Sie Folgendes:
 
 **Bereich** | **Komponente** | **Details**
 --- | --- | ---
@@ -130,7 +135,7 @@ In diesem Replikationsszenario werden die gleichen Komponenten und der gleiche P
 ![Komponenten](./media/site-recovery-components/arch-onprem-onprem-azure-vmm.png)
 
 
-## <a name="replication-to-a-secondary-site"></a>Replikation an einem sekundären Standort
+## <a name="replicate-to-a-secondary-site"></a>Replikation an einem sekundären Standort
 
 Sie können Folgendes an Ihrem sekundären Standort replizieren:
 
@@ -139,13 +144,15 @@ Sie können Folgendes an Ihrem sekundären Standort replizieren:
 - **Hyper-V:** Lokale virtuelle Hyper-V-Computer auf [unterstützten Hosts](site-recovery-support-matrix-to-sec-site.md#on-premises-servers) mit Verwaltung in VMM-Clouds. (Informationen zu unterstützten Hosts finden Sie [hier](site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers).) Sie können virtuelle Hyper-V-Computer unter einem beliebigen Gastbetriebssystem replizieren, das [von Hyper-V und Azure unterstützt](https://technet.microsoft.com/en-us/windows-server-docs/compute/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) wird.
 
 
-## <a name="vmware-vmphysical-server-replication-to-a-secondary-site"></a>Replikation von virtuellen VMware-Computern/physischen Servern an einem sekundären Standort
+## <a name="vmwarephysical-to-a-secondary-site"></a>VMware/physisch an einem sekundären Standort
+
+Zum Replizieren von virtuellen VMware-Computern oder physischen Servern an einem sekundären Standort verwenden Sie InMage Scout.
 
 ### <a name="components"></a>Komponenten
 
 **Bereich** | **Komponente** | **Details**
 --- | --- | ---
-**Azure** | Sie stellen dieses Szenario mit InMage Scout bereit. | Zum Herunterladen von InMage Scout benötigen Sie ein Azure-Abonnement.<br/><br/> Nachdem Sie einen Recovery Services-Tresor erstellt haben, laden Sie InMage Scout herunter und installieren die aktuellen Updates, um die Bereitstellung einzurichten.
+**Azure** | InMage Scout | Zum Herunterladen von InMage Scout benötigen Sie ein Azure-Abonnement.<br/><br/> Nachdem Sie einen Recovery Services-Tresor erstellt haben, laden Sie InMage Scout herunter und installieren die aktuellen Updates, um die Bereitstellung einzurichten.
 **Prozessserver** | Befindet sich am primären Standort. | Der Prozessserver wird zur Abwicklung von Zwischenspeicherung, Komprimierung und Datenoptimierung bereitgestellt.<br/><br/> Außerdem erfolgt hierüber die Pushinstallation des vereinheitlichten Agents auf Maschinen, die Sie schützen möchten.
 **Konfigurationsserver** | Befindet sich am sekundären Standort. | Der Konfigurationsserver dient zum Verwalten, Konfigurieren und Überwachen Ihrer Bereitstellung (entweder über die Verwaltungswebsite oder über die vContinuum-Konsole).
 **vContinuum-Server** | Optional. Wird an demselben Standort wie der Konfigurationsserver installiert. | Er enthält eine Konsole zum Verwalten und Überwachen Ihrer geschützten Umgebung.
@@ -166,7 +173,9 @@ Sie können Folgendes an Ihrem sekundären Standort replizieren:
 
 
 
-## <a name="hyper-v-vm-replication-to-a-secondary-site"></a>Replikation virtueller Hyper-V-Computer an einem sekundären Standort
+## <a name="hyper-v-to-a-secondary-site"></a>Hyper-V an einem sekundären Standort
+
+Für das Replizieren von virtuellen Hyper-V-Computern an einem sekundären Standort benötigen Sie Folgendes:
 
 
 **Bereich** | **Komponente** | **Details**
@@ -202,25 +211,8 @@ Sie können Folgendes an Ihrem sekundären Standort replizieren:
 7. Initiieren Sie ein geplantes Failover vom sekundären zum primären Standort, und führen Sie anschließend eine erneute umgekehrte Replikation durch, um den primären Standort wieder zum aktiven Standort zu machen.
 
 
-## <a name="hyper-v-replication-workflow"></a>Workflow der Hyper-V-Replikation
-
-**Workflowphase** | **Aktion**
---- | ---
-1. **Schutz aktivieren** | Nach dem Aktivieren des Schutzes für eine Hyper-V-VM wird der Auftrag **Schutz aktivieren** initiiert, um sicherzustellen, dass der Computer die Voraussetzungen erfüllt. Der Auftrag ruft zwei Methoden auf:<br/><br/> [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx), um die Replikation mit den von Ihnen konfigurierten Einstellungen einzurichten.<br/><br/> [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx), um eine vollständige VM-Replikation zu initialisieren.
-2. **Erste Replikation** |  Es wird eine Momentaufnahme des virtuellen Computers erstellt, und die virtuellen Festplatten werden einzeln nacheinander repliziert, bis sie alle an den sekundären Standort kopiert wurden.<br/><br/> Wie lange dieser Vorgang dauert, richtet sich nach der VM-Größe, der Netzwerkbandbreite und der Methode für die anfängliche Replikation.<br/><br/> Falls es während der ersten Replikation zu Festplattenänderungen kommt, werden diese Änderungen mit dem Replication Tracker für Hyper-V-Replikate in Form von Hyper-V-Replikationsprotokollen (.hrl) nachverfolgt, die sich in demselben Ordner wie die Festplatten befinden.<br/><br/> Jeder Datenträger verfügt über eine zugeordnete HRL-Datei, die an den sekundären Speicher gesendet wird.<br/><br/> Beachten Sie, dass die Momentaufnahme- und Protokolldateien Festplattenressourcen belegen, während die anfängliche Replikation durchgeführt wird. Nach Abschluss der ersten Replikation wird die VM-Momentaufnahme gelöscht, und die Festplatten-Deltaänderungen im Protokoll werden synchronisiert und zusammengeführt.
-3. **Schutz abschließen** | Nachdem die erste Replikation abgeschlossen ist, werden mit dem Auftrag **Schutz abschließen** das Netzwerk und andere Einstellungen für die Zeit nach der Replikation konfiguriert, damit der virtuelle Computer geschützt ist.<br/><br/> Wenn Sie eine Replikation zu Azure durchführen, müssen Sie die Einstellungen für den virtuellen Computer unter Umständen so optimieren, dass er bereit für das Failover ist.<br/><br/> An diesem Punkt können Sie ein Testfailover durchführen, um zu überprüfen, ob alles wie erwartet funktioniert.
-4. **Replikation** | Nach der ersten Replikation beginnt die Deltasynchronisierung gemäß den Replikationseinstellungen.<br/><br/> **Replikationsfehler**: Wenn die Deltareplikation fehlschlägt und eine vollständige Replikation einen hohen Aufwand in Bezug auf die Bandbreite oder Dauer bedeuten würde, wird eine Neusynchronisierung durchgeführt. Wenn die HRL-Dateien beispielsweise 50% des Festplattenspeichers füllen, wird die VM für die Neusynchronisierung gekennzeichnet. Bei der Neusynchronisierung wird die Menge der gesendeten Daten verringert, indem Prüfsummen für die virtuellen Quell- und Zielmaschinen berechnet werden und nur das Delta gesendet wird. Nach Abschluss der Neusynchronisierung wird die Deltareplikation fortgesetzt. Standardmäßig ist die Neusynchronisierung so geplant, dass sie automatisch außerhalb der Geschäftszeiten durchgeführt wird, aber Sie können eine virtuelle Maschine auch manuell neu synchronisieren.<br/><br/> **Replikationsfehler**: Wenn ein Replikationsfehler auftritt, wird die integrierte Wiederholungsfunktion verwendet. Bei Auftreten eines Fehlers, für den keine Wiederherstellung möglich ist, z.B. ein Authentifizierungs- oder Autorisierungsfehler oder ein Replikatcomputer in einem ungültigen Zustand, wird nicht versucht, den Vorgang zu wiederholen. Bei einem Fehler, bei dem eine Wiederherstellung möglich ist, z.B. einem Netzwerkfehler oder einer geringen Menge an verbleibendem Festplattenspeicher/Arbeitsspeicher, wird eine Wiederholung mit zunehmenden Intervallen durchgeführt (1, 2, 4, 8, 10 und dann alle 30 Minuten).
-5. **Geplantes/ungeplantes Failover** | Sie können je nach Bedarf geplante oder ungeplante Failover durchführen.<br/><br/> Wenn Sie ein geplantes Failover durchführen, werden die Quell-VMs heruntergefahren, um sicherzustellen, dass kein Datenverlust auftritt.<br/><br/> Nach der Erstellung der Replikat-VMs werden diese in den Zustand „Commit ausstehend“ versetzt. Sie müssen ein Commit durchführen, um das Failover abzuschließen.<br/><br/> Nachdem der primäre Standort fertig eingerichtet ist und ausgeführt wird, können Sie ein Failback zum primären Standort durchführen, wenn er verfügbar ist.
-
-
-**Abbildung 8: Hyper-V-Workflow**
-
-![Workflow](./media/site-recovery-components/arch-hyperv-azure-workflow.png)
-
-
-
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Überprüfen der Voraussetzungen](site-recovery-prereq.md)
+- [Weitere Informationen](site-recovery-hyper-v-azure-architecture.md) zum Workflow der Hyper-V-Replikation
+- [Überprüfen der Voraussetzungen](site-recovery-prereq.md)
 

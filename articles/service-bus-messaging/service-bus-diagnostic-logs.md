@@ -1,6 +1,6 @@
 ---
 title: Azure Service Bus-Diagnoseprotokolle | Microsoft Docs
-description: Erfahren Sie, wie Sie Diagnoseprotokolle von Service Bus in Microsoft Azure analysieren.
+description: "Hier erfahren Sie, wie Sie Diagnoseprotokolle für Service Bus in Azure einrichten."
 keywords: 
 documentationcenter: 
 services: service-bus-messaging
@@ -16,64 +16,71 @@ ms.workload: data-services
 ms.date: 02/17/2017
 ms.author: babanisa
 translationtype: Human Translation
-ms.sourcegitcommit: 90321171586110a3b60c3df5b749003ebbf70ec9
-ms.openlocfilehash: 70205b33e9d52e41f5c1a637fee4da192e2a971a
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: abcb0eee979853948cf6d981ff8f3a457eeeeef0
+ms.openlocfilehash: 65fe81dc90f2dc7a251860adfdd8374912cb8d73
+ms.lasthandoff: 03/01/2017
 
 
 ---
 # <a name="service-bus-diagnostic-logs"></a>Service Bus-Diagnoseprotokolle
 
-## <a name="introduction"></a>Einführung
-Service Bus bietet zwei Typen von Protokollen: 
-* [Aktivitätsprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs), die immer aktiviert sind und Einblicke in Vorgänge bieten, die im Rahmen des Auftrags ausgeführt werden;
-* [Diagnoseprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs), die vom Benutzer konfigurierbar sind und umfangreichere Einblicke in alle Vorgänge bieten, die im Rahmen des Auftrags ausgeführt werden, beginnend beim Erstellen und Aktualisieren über die Ausführung bis zum Löschen.
+Sie können zwei Typen von Protokollen für Azure Service Bus anzeigen:
+* **[Aktivitätsprotokolle](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)**. Diese Protokolle enthalten Informationen zu Vorgängen, die für einen Auftrag ausgeführt werden. Diese Protokolle sind immer aktiviert.
+* **[Diagnoseprotokolle](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)**. Sie können Diagnoseprotokolle konfigurieren, um umfangreichere Einblicke in alle Vorgänge zu erhalten, die im Rahmen des Auftrags ausgeführt werden. Diagnoseprotokolle enthalten Informationen zu Aktivitäten vom Erstellen bis zum Löschen des Auftrags, einschließlich Updates und Aktivitäten während der Auftragsausführung.
 
-## <a name="how-to-enable-diagnostic-logs"></a>Aktivieren von Diagnoseprotokollen
-Die Diagnoseprotokolle sind standardmäßig **deaktiviert**. Gehen Sie folgendermaßen vor, um sie zu aktivieren:
+## <a name="turn-on-diagnostic-logs"></a>Aktivieren der Diagnoseprotokolle
+Diagnoseprotokolle sind standardmäßig **deaktiviert**. So aktivieren Sie Diagnoseprotokolle:
 
-Melden Sie sich beim Azure-Portal an, navigieren Sie zu dem Blatt „Streamingauftrag“, und verwenden Sie das Blatt „Diagnoseprotokolle“ unter „Überwachung“.
+1.    Rufen Sie im Azure-Portal das Blatt zum Streamingauftrag auf.
 
-![Blatt „Navigation zu Diagnoseprotokollen“](./media/service-bus-diagnostic-logs/image1.png)  
+2.    Klicken Sie unter **Überwachung** auf das Blatt **Diagnoseprotokolle**.
 
-Klicken Sie dann auf den Link „Diagnose aktivieren“.
+    ![Blatt „Navigation zu Diagnoseprotokollen“](./media/service-bus-diagnostic-logs/image1.png)  
 
-![Aktivieren der Diagnoseprotokolle](./media/service-bus-diagnostic-logs/image2.png)
+3.    Wählen Sie **Diagnose aktivieren**.
 
-Ändern Sie in der geöffneten Diagnose den Status in „Nein“.
+    ![Aktivieren der Diagnoseprotokolle](./media/service-bus-diagnostic-logs/image2.png)
 
-![Ändern des Status der Diagnoseprotokolle](./media/service-bus-diagnostic-logs/image3.png)
+4.    Wählen Sie als **Status** **Ein** aus.
 
-Konfigurieren Sie das gewünschte Archivierungsziel (Speicherkonto, Ereignishub, Log Analytics), und wählen Sie die Kategorien der Protokolle, die Sie erfassen möchten (Ausführung, Erstellung). Speichern Sie dann die neue Diagnosekonfiguration.
+    ![Ändern des Status der Diagnoseprotokolle](./media/service-bus-diagnostic-logs/image3.png)
 
-Nach dem Speichern dauert es ungefähr zehn Minuten, bis die Konfiguration wirksam ist. Danach werden Protokolle im konfigurierten Archivierungsziel angezeigt, die Sie auf dem Blatt „Diagnoseprotokolle“ sehen können:
+5.    Legen Sie das gewünschte Archivierungsziel fest, z.B. ein Speicherkonto, einen Event Hub oder eine Azure-Protokollanalyse.
 
-Weitere Informationen zum Konfigurieren der Diagnose finden Sie auf der Seite [Diagnoseprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs).
+6.    Wählen Sie die Kategorien von Protokollen, die Sie erfassen möchten z. B. **Ausführung** oder **Erstellung**.
+
+7.    Speichern Sie die neuen Diagnoseeinstellungen.
+
+Neue Einstellungen werden in etwa zehn Minuten wirksam. Danach werden die Protokolle im gewünschten Archivierungsziel auf dem Blatt **Diagnoseprotokolle** angezeigt.
+
+Weitere Informationen zum Konfigurieren der Diagnose finden Sie in der [Übersicht über Diagnoseprotokolle](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
 
 ## <a name="diagnostic-logs-schema"></a>Schema „Diagnoseprotokolle“
 
-Alle Protokolle werden im JSON-Format gespeichert, und jeder Eintrag enthält Zeichenfolgenfelder im folgenden Format.
+Alle Protokolle werden im JavaScript Object Notation (JSON)-Format gespeichert. Jeder Eintrag enthält Zeichenfolgenfelder im nachfolgend beschriebenen Format.
 
-### <a name="operation-logs"></a>Vorgangsprotokolle
+## <a name="operation-logs-example"></a>Beispiel für Vorgangsprotokolle
 
-Mit OperationalLogs werden Abläufe während Service Bus-Vorgängen erfasst. Dazu zählen der Vorgangstyp (etwa Warteschlangenerstellung), verwendete Ressourcen und der Status des Vorgangs.
+Protokolle in der Kategorie **OperationalLogs** erfassen, was während des Service Bus-Vorgangs passiert. Diese Protokolle erfassen insbesondere den Vorgangstyp, darunter das Erstellen von Warteschlangen, verwendete Ressourcen und den Status des Vorgangs.
+
+JSON-Zeichenfolgen im Vorgangsprotokoll enthalten Elemente, die in der folgenden Tabelle aufgeführt sind:
 
 Name | Beschreibung
 ------- | -------
 ActivityId | Interne ID zur Nachverfolgung
 EventName | Vorgangsname             
-resourceId | ARM-Ressourcen-ID
+resourceId | Azure Resource Manager-Ressourcen-ID
 SubscriptionId | Abonnement-ID
 EventTimeString | Vorgangsdauer
 EventProperties | Vorgangseigenschaften
 Status | Vorgangsstatus
-Aufrufer | Aufrufer des Vorgangs (Portal oder Verwaltungsclient)
+Aufrufer | Aufrufer des Vorgangs (Azure-Portal oder Verwaltungsclient)
 category | OperationalLogs
 
-#### <a name="example-operation-log"></a>Beispiel eines Vorgangsprotokolls
+Hier ein Beispiel für eine JSON-Zeichenfolge im Vorgangsprotokoll:
 
 ```json
-Example: 
+Example:
 {
      "ActivityId": "6aa994ac-b56e-4292-8448-0767a5657cc7",
      "EventName": "Create Queue",

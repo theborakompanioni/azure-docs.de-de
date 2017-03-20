@@ -12,117 +12,140 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/01/2017
-ms.author: jotaub
+ms.date: 03/03/2017
+ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: f92909e0098a543f99baf3df3197a799bc9f1edc
-ms.openlocfilehash: 8f0870c98f625a56cfddacd91b401206293122f1
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 7506430f4ec5522165274f05a2fd5b77e3d6252d
+ms.lasthandoff: 03/06/2017
 
 ---
 
-# <a name="get-started-receiving-messages-with-the-eventprocessorhost-in-net-standard"></a>Erste Schritte zum Empfangen von Nachrichten mit „EventProcessorHost“ in .NET Standard
+# <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-standard"></a>Erste Schritte zum Empfangen von Nachrichten mit dem Ereignisprozessorhost (EventProcessorHost) in .NET Standard
 
 > [!NOTE]
-> Dieses Beispiel ist auf [GitHub](https://github.com/Azure/azure-event-hubs-dotnet/tree/master/samples/SampleEphReceiver) verfügbar.
+> Dieses Beispiel ist auf [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/SampleEphReceiver) verfügbar.
 
-## <a name="what-will-be-accomplished"></a>Ziele
-
-In diesem Tutorial wird gezeigt, wie die vorhandene Projektmappe **SampleEphReceiver** (in diesem Ordner) erstellt wird. Sie können die Projektmappe ohne Änderung ausführen. Ersetzen Sie die Zeichenfolgen `EhConnectionString`, `EhEntityPath` und `StorageAccount` durch Ihre Event Hub- und Speicherkontowerte, oder führen Sie die Schritte in diesem Tutorial aus, um eine eigene Projektmappe zu erstellen.
-
-In diesem Tutorial schreiben Sie eine .NET Core-Konsolenanwendung zum Empfangen von Nachrichten von einem Event Hub mithilfe von **EventProcessorHost**.
+In diesem Tutorial lernen Sie, wie Sie eine .NET Core-Konsolenanwendung zum Empfangen von Nachrichten von einem Event Hub mithilfe von **EventProcessorHost** schreiben können. Sie können die [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/SampleEphReceiver)-Lösung ohne Änderung ausführen. Ersetzen Sie die Zeichenfolgen durch Ihre Event Hub- und Speicherkontowerte, oder folgen Sie den Schritten in diesem Tutorial, um eine eigene Lösung zu erstellen. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-1. [Microsoft Visual Studio 2015 oder 2017](http://www.visualstudio.com)
-
-2. [.NET Core Visual Studio 2015- oder 2017-Tools](http://www.microsoft.com/net/core)
-
+1. [Microsoft Visual Studio 2015 oder 2017](http://www.visualstudio.com) In den Beispielen in diesem Tutorial wird Visual Studio 2015 verwendet, aber Visual Studio 2017 wird ebenfalls unterstützt.
+2. [.NET Core Visual Studio 2015- oder 2017-Tools](http://www.microsoft.com/net/core).
 3. Ein Azure-Abonnement.
-
 4. Ein Event Hubs-Namespace
+5. Azure Storage-Konto
+
+## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Erstellen eines Event Hubs-Namespace und eines Event Hubs  
+  
+Verwenden Sie zunächst das [Azure-Portal](https://portal.azure.com), um einen Namespace des Typs „Event Hubs“ zu erstellen, und erhalten Sie so die Verwaltungsanmeldeinformationen, die Ihre Anwendung benötigt, um mit dem Event Hub zu kommunizieren. Folgen Sie dem Ablauf in [diesem Artikel](event-hubs-create.md), um einen Namespace und einen Event Hub zu erstellen, und machen Sie mit folgenden Schritten weiter.  
+
+## <a name="create-an-azure-storage-account"></a>Erstellen eines Azure-Speicherkontos  
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.  
+2. Klicken Sie im Portal im Navigationsbereich auf der linken Seite auf **Neu**, **Speicher** und **Speicherkonto**.  
+3. Füllen Sie die Felder auf dem Blatt „Speicherkonto“ aus, und klicken Sie dann auf **Erstellen**.
+  
+    ![][1]
+
+4. Klicken Sie nach dem Erscheinen der Meldung **Die Bereitstellungen waren erfolgreich** auf den Namen des neuen Speicherkontos und dann auf dem Blatt **Zusammenfassung** auf **Blobs**. Klicken Sie oben auf **+ Container**, nachdem das Blatt **Blob-Dienst** geöffnet wurde. Benennen Sie den Container, und schließen Sie das Blatt **Blob-Dienst**.  
+5. Klicken Sie auf dem linken Blatt auf **Zugriffsschlüssel**, und kopieren Sie den Namen des Speichercontainers, des Speicherkontos und den Wert von **key1**. Speichern Sie diese Werte im Editor oder an einem anderen temporären Speicherort.  
     
-## <a name="receive-messages-from-the-event-hub"></a>Empfangen von Nachrichten vom Event Hub
+## <a name="create-a-console-application"></a>Erstellen einer Konsolenanwendung
 
-### <a name="create-a-console-application"></a>Erstellen einer Konsolenanwendung
+1. Starten Sie Visual Studio. Klicken Sie im Menü „Datei“ auf **Neu** und dann auf **Projekt**. Erstellen Sie eine .NET Core-Konsolenanwendung.
 
-1. Starten Sie Visual Studio, und erstellen Sie eine neue .NET Core-Konsolenanwendung.
+    ![][2]
 
-### <a name="add-the-event-hubs-nuget-package"></a>Hinzufügen des Event Hubs-NuGet-Pakets
+2. Doppelklicken Sie im Projektmappen-Explorer auf die Datei **project.json**, um sie im Visual Studio-Editor zu öffnen.
+3. Fügen Sie der Deklaration `"imports"` im Bereich „`"frameworks`“ die Zeichenfolge `"portable-net45+win8"` hinzu. Dieser Abschnitt sollte jetzt wie folgt angezeigt werden. Diese Zeichenfolge ist aufgrund der Abhängigkeit von Azure Storage von OData erforderlich:
+
+    ```json
+    "frameworks": {
+      "netcoreapp1.0": {
+        "imports": [
+          "dnxcore50",
+          "portable-net45+win8"
+        ]
+      }
+    }
+    ```
+
+4. Klicken Sie im Menü „Datei“ auf **Alle speichern**.
+
+Bitte beachten Sie, dass Sie in diesem Tutorial lernen, wie Sie eine .NET Core-Anwendung schreiben können; wenn Sie jedoch das vollständige .NET Framework als Ziel setzen möchten, fügen Sie im Bereich `"frameworks"` folgende Codezeile in die Datei „project.json“ ein:
+
+```json
+"net451": {
+},
+``` 
+
+## <a name="add-the-event-hubs-nuget-package"></a>Hinzufügen des Event Hubs-NuGet-Pakets
 
 * Fügen Sie Ihrem Projekt die folgenden NuGet-Pakete hinzu:
   * [`Microsoft.Azure.EventHubs`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/)
   * [`Microsoft.Azure.EventHubs.Processor`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs.Processor/)
 
-### <a name="implement-the-ieventprocessor-interface"></a>Implementieren der IEventProcessor-Schnittstelle
+## <a name="implement-the-ieventprocessor-interface"></a>Implementieren der IEventProcessor-Schnittstelle
 
-1. Erstellen Sie eine neue Klasse namens „SimpleEventProcessor“.
+1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und klicken Sie auf **Hinzufügen** und anschließend auf **Klasse**. Nennen Sie die neue Klasse **SimpleEventProcessor**.
 
-2. Fügen Sie die folgenden `using`-Anweisungen am Anfang der Datei „SimpleEventProcessor.cs“ hinzu:
+2. Öffnen Sie die Datei „SimpleEventProcessor.cs“, und fügen Sie folgende `using`-Anweisung am Anfang der Datei ein.
 
-    ```cs
+    ```csharp
+    using System.Text;
     using Microsoft.Azure.EventHubs;
     using Microsoft.Azure.EventHubs.Processor;
     ```
 
-3. Implementieren Sie die `IEventProcessor`-Schnittstelle. Die Klasse sollte wie folgt aussehen:
+3. Implementieren Sie die `IEventProcessor`-Schnittstelle. Ersetzen Sie den gesamten Inhalt der Klasse `SimpleEventProcessor` durch folgenden Code:
 
-    ```cs
-    namespace SampleEphReceiver
+    ```csharp
+    public class SimpleEventProcessor : IEventProcessor
     {
-        using System;
-        using System.Collections.Generic;
-        using System.Text;
-        using System.Threading.Tasks;
-        using Microsoft.Azure.EventHubs;
-        using Microsoft.Azure.EventHubs.Processor;
-    
-        public class SimpleEventProcessor : IEventProcessor
+        public Task CloseAsync(PartitionContext context, CloseReason reason)
         {
-            public Task CloseAsync(PartitionContext context, CloseReason reason)
+            Console.WriteLine($"Processor Shutting Down. Partition '{context.PartitionId}', Reason: '{reason}'.");
+            return Task.CompletedTask;
+        }
+    
+        public Task OpenAsync(PartitionContext context)
+        {
+            Console.WriteLine($"SimpleEventProcessor initialized. Partition: '{context.PartitionId}'");
+            return Task.CompletedTask;
+        }
+    
+        public Task ProcessErrorAsync(PartitionContext context, Exception error)
+        {
+            Console.WriteLine($"Error on Partition: {context.PartitionId}, Error: {error.Message}");
+            return Task.CompletedTask;
+        }
+    
+        public Task ProcessEventsAsync(PartitionContext context, IEnumerable<EventData> messages)
+        {
+            foreach (var eventData in messages)
             {
-                Console.WriteLine($"Processor Shutting Down. Partition '{context.PartitionId}', Reason: '{reason}'.");
-                return Task.CompletedTask;
+                var data = Encoding.UTF8.GetString(eventData.Body.Array, eventData.Body.Offset, eventData.Body.Count);
+                Console.WriteLine($"Message received. Partition: '{context.PartitionId}', Data: '{data}'");
             }
     
-            public Task OpenAsync(PartitionContext context)
-            {
-                Console.WriteLine($"SimpleEventProcessor initialized. Partition: '{context.PartitionId}'");
-                return Task.CompletedTask;
-            }
-    
-            public Task ProcessErrorAsync(PartitionContext context, Exception error)
-            {
-                Console.WriteLine($"Error on Partition: {context.PartitionId}, Error: {error.Message}");
-                return Task.CompletedTask;
-            }
-    
-            public Task ProcessEventsAsync(PartitionContext context, IEnumerable<EventData> messages)
-            {
-                foreach (var eventData in messages)
-                {
-                    var data = Encoding.UTF8.GetString(eventData.Body.Array, eventData.Body.Offset, eventData.Body.Count);
-                    Console.WriteLine($"Message received. Partition: '{context.PartitionId}', Data: '{data}'");
-                }
-    
-                return context.CheckpointAsync();
-            }
+            return context.CheckpointAsync();
         }
     }
     ```
 
-### <a name="write-a-main-console-method-that-uses-simpleeventprocessor-to-receive-messages-from-an-event-hub"></a>Schreiben einer Hauptkonsolenmethode, die `SimpleEventProcessor` zum Empfangen von Nachrichten von einem Event Hub verwendet
+## <a name="write-a-main-console-method-that-uses-the-simpleeventprocessor-class-to-receive-messages"></a>Schreiben Sie eine Hauptkonsolenmethode, die die Klasse „SimpleEventProcessor“ verwendet, um Nachrichten zu erhalten
 
 1. Fügen Sie am Anfang der Datei „Program.cs“ die folgenden `using`-Anweisungen hinzu:
   
-    ```cs
+    ```csharp
     using Microsoft.Azure.EventHubs;
     using Microsoft.Azure.EventHubs.Processor;
     ```
 
-2. Fügen Sie der `Program`-Klasse Konstanten für die Event Hubs-Verbindungszeichenfolge, den Event Hub-Pfad, den Speichercontainernamen, den Speicherkontonamen und den Speicherkontoschlüssel hinzu. Ersetzen Sie Platzhalter durch die entsprechenden Werte.
+2. Fügen Sie der `Program`-Klasse Konstanten für die Event Hubs-Verbindungszeichenfolge, den Event Hub-Namen, den Speichercontainernamen, den Speicherkontonamen und den Speicherkontoschlüssel hinzu. Fügen Sie folgenden Code ein, sodass die Platzhalter durch die entsprechenden Werte ersetzt werden.
 
-    ```cs
+    ```csharp
     private const string EhConnectionString = "{Event Hubs connection string}";
     private const string EhEntityPath = "{Event Hub path/name}";
     private const string StorageContainerName = "{Storage account container name}";
@@ -132,8 +155,9 @@ In diesem Tutorial schreiben Sie eine .NET Core-Konsolenanwendung zum Empfangen 
     private static readonly string StorageConnectionString = string.Format("DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1}", StorageAccountName, StorageAccountKey);
     ```   
 
-3. Fügen Sie der `Program`-Klasse folgendermaßen eine neue Methode namens `MainAsync` hinzu:
-    ```cs
+3. Fügen Sie wie folgt eine neue Methode mit dem Namen `MainAsync` in die `Program`-Klasse ein:
+
+    ```csharp
     private static async Task MainAsync(string[] args)
     {
         Console.WriteLine("Registering EventProcessor...");
@@ -148,7 +172,7 @@ In diesem Tutorial schreiben Sie eine .NET Core-Konsolenanwendung zum Empfangen 
         // Registers the Event Processor Host and starts receiving messages
         await eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>();
 
-        Console.WriteLine("Receiving. Press enter key to stop worker.");
+        Console.WriteLine("Receiving. Press ENTER to stop worker.");
         Console.ReadLine();
 
         // Disposes of the Event Processor Host
@@ -158,19 +182,15 @@ In diesem Tutorial schreiben Sie eine .NET Core-Konsolenanwendung zum Empfangen 
 
 3. Fügen Sie der `Main`-Methode die folgende Codezeile hinzu:
 
-    ```cs
+    ```csharp
     MainAsync(args).GetAwaiter().GetResult();
     ```
 
     Die Datei „Program.cs“ sollte nun wie folgt aussehen:
 
-    ```cs
+    ```csharp
     namespace SampleEphReceiver
     {
-        using System;
-        using System.Threading.Tasks;
-        using Microsoft.Azure.EventHubs;
-        using Microsoft.Azure.EventHubs.Processor;
     
         public class Program
         {
@@ -201,7 +221,7 @@ In diesem Tutorial schreiben Sie eine .NET Core-Konsolenanwendung zum Empfangen 
                 // Registers the Event Processor Host and starts receiving messages
                 await eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>();
     
-                Console.WriteLine("Receiving. Press enter key to stop worker.");
+                Console.WriteLine("Receiving. Press ENTER to stop worker.");
                 Console.ReadLine();
     
                 // Disposes of the Event Processor Host
@@ -213,7 +233,7 @@ In diesem Tutorial schreiben Sie eine .NET Core-Konsolenanwendung zum Empfangen 
   
 4. Führen Sie das Programm aus, und stellen Sie sicher, dass keine Fehler auftreten.
   
-Glückwunsch! Sie haben jetzt Nachrichten von einem Event Hub empfangen.
+Glückwunsch! Soeben haben Sie Nachrichten von einem Event Hub mithilfe eines Ereignisprozessorhosts erhalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Event Hubs finden Sie unter den folgenden Links:
@@ -221,3 +241,6 @@ Weitere Informationen zu Event Hubs finden Sie unter den folgenden Links:
 * [Übersicht über Event Hubs](event-hubs-what-is-event-hubs.md)
 * [Erstellen eines Event Hubs](event-hubs-create.md)
 * [Event Hubs – häufig gestellte Fragen](event-hubs-faq.md)
+
+[1]: ./media/event-hubs-dotnet-standard-getstarted-receive-eph/event-hubs-python1.png
+[2]: ./media/event-hubs-dotnet-standard-getstarted-receive-eph/netcore.png

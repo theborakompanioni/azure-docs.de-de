@@ -3,7 +3,7 @@ title: "Erste Schritte bei der Überwachung von Azure SQL-Datenbank | Microsoft-
 description: "Erste Schritte bei der Überwachung von SQL-Datenbank"
 services: sql-database
 documentationcenter: 
-author: ronitr
+author: giladm
 manager: jhubbard
 editor: giladm
 ms.assetid: 89c2a155-c2fb-4b67-bc19-9b4e03c6d3bc
@@ -13,12 +13,12 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2016
-ms.author: ronitr; giladm
+ms.date: 7/3/2017
+ms.author: giladm
 translationtype: Human Translation
-ms.sourcegitcommit: 506fd7b5cbf11dd4d9348962db5e06077953bd51
-ms.openlocfilehash: 185c6aaa2db0820421c8ea3523865bc90a1475f7
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 6b5b357c996f5c4642e61b09c5a7e5e0ec6a93c7
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -76,7 +76,8 @@ Der folgende Abschnitt beschreibt die Konfiguration der Überwachung über das A
     <a id="storage-screenshot"></a>
     ![Navigationsbereich][4]
 6. Wenn Sie die überwachten Ereignisse anpassen möchten, können Sie dies über PowerShell oder die REST-API tun. Weitere Informationen finden Sie im Abschnitt [Automatisierung (PowerShell / REST-API)](#subheading-7).
-7. Klicken Sie auf **Speichern**.
+7. Nachdem Sie Ihre Überwachungseinstellungen konfiguriert haben, können Sie das neue Feature **Bedrohungserkennung** (Vorschau) aktivieren und die E-Mail-Konten konfigurieren, an die Sicherheitswarnungen gesendet werden sollen. Mit der Bedrohungserkennung können Sie proaktive Warnungen bei anomalen Datenbankaktivitäten erhalten, die auf mögliche Sicherheitsbedrohungen hinweisen können. Weitere Informationen finden Sie unter [Erste Schritte mit der Bedrohungserkennung](sql-database-threat-detection-get-started.md).
+8. Klicken Sie auf **Speichern**.
 
 ### <a id="subheading-2-2">Tabellenüberwachung</a>
 
@@ -282,3 +283,4 @@ Sie können die Überwachung in Azure SQL-Datenbank auch mit den folgenden Autom
 [105]: https://msdn.microsoft.com/library/azure/mt603531(v=azure.200).aspx
 [106]: https://msdn.microsoft.com/library/azure/mt603794(v=azure.200).aspx
 [107]: https://msdn.microsoft.com/library/azure/mt619353(v=azure.200).aspx
+

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/22/2016
+ms.date: 03/02/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 45f1716d7520981845fbfb96cfaf24cde9dd5c5d
-ms.openlocfilehash: 8b906c402dde8d2bbaa2354a370a775058c146a7
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: 32c6224b36c73394c6bbd2aa5f6439f54f39f306
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -26,8 +26,6 @@ ms.lasthandoff: 02/15/2017
 > * [PowerShell](role-based-access-control-manage-access-powershell.md)
 > * [Azure-Befehlszeilenschnittstelle](role-based-access-control-manage-access-azure-cli.md)
 > * [REST-API](role-based-access-control-manage-access-rest.md)
-> 
-> 
 
 Mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) im Azure-Portal und in der Azure Resource Management-API können Sie den Zugriff auf Ihr Abonnement differenziert steuern. Mithilfe dieser Funktion lassen sich Zugriffsberechtigungen für Active Directory-Benutzer, -Gruppen oder -Dienstprinzipale festlegen, indem ihnen bestimmte Rollen für einen bestimmten Bereich zugewiesen werden.
 
@@ -132,13 +130,15 @@ Verwenden Sie zum Erstellen einer benutzerdefinierten Rolle den Befehl ```New-Az
 
 ## <a name="get-actions-from-particular-resource-provider"></a>Abrufen von Aktionen von einem bestimmten Ressourcenanbieter
 Wenn Sie benutzerdefinierte Rollen von Grund auf neu erstellen, ist es wichtig, alle möglichen Vorgänge der Ressourcenanbieter zu kennen.
-Dies erreichen Sie mit dem Befehl ```Get-AzureRMProviderOperation```. Wenn Sie beispielsweise alle verfügbaren Vorgänge für den virtuellen Computer überprüfen möchten, lautet der Befehl folgendermaßen:
+Verwenden Sie den Befehl „```Get-AzureRMProviderOperation```“, um diese Informationen abzurufen.
+Wenn Sie beispielsweise alle verfügbaren Vorgänge für den virtuellen Computer überprüfen möchten, verwenden Sie folgenden Befehl:
 
-```Get-AzureRMProviderOperation "Microsoft.Compute/virtualMachines/*" | FT OperationName, Operation , Description -AutoSize```
-
+```
+Get-AzureRMProviderOperation "Microsoft.Compute/virtualMachines/*" | FT OperationName, Operation , Description -AutoSize
+```
 
 ### <a name="create-role-with-psroledefinitionobject"></a>Erstellen der Rolle mit „PSRoleDefinitionObject“
-Wenn Sie eine benutzerdefinierte Rolle mithilfe von PowerShell erstellen, können Sie von Grund auf beginnen oder eine der [integrierten Rollen](role-based-access-built-in-roles.md) als Ausgangspunkt verwenden, wobei letzteres in diesem Beispiel erfolgt. Bearbeiten Sie die Attribute, und fügen Sie die gewünschten *Actions*, *notActions* oder *scopes* hinzu. Speichern Sie die Änderungen anschließend als neue Rolle.
+Wenn Sie PowerShell verwenden, um eine benutzerdefinierte Rolle zu erstellen, können Sie von Grund auf beginnen oder eine der [integrierten Rollen](role-based-access-built-in-roles.md) als Ausgangspunkt verwenden. Das Beispiel in diesem Abschnitt beginnt mit einer integrierten Rolle. Diese wird dann mit weiteren Berechtigungen angepasst. Bearbeiten Sie die Attribute, und fügen Sie die gewünschten *Actions*, *notActions* oder *scopes* hinzu. Speichern Sie die Änderungen anschließend als neue Rolle.
 
 Das folgende Beispiel beginnt mit der Rolle *Virtual Machine Contributor*. Diese Rolle wird zum Erstellen einer benutzerdefinierten Rolle namens *Virtual Machine Operator* verwendet. Die neue Rolle gewährt Zugriff auf alle Lesevorgänge der Ressourcenanbieter *Microsoft.Compute*, *Microsoft.Storage* und *Microsoft.Network* sowie zum Starten, Neustarten und Überwachen virtueller Computer. Die benutzerdefinierte Rolle kann in zwei Abonnements verwendet werden.
 
@@ -166,7 +166,7 @@ New-AzureRmRoleDefinition -Role $role
 ![RBAC PowerShell – Get-AzureRmRoleDefinition – Screenshot](./media/role-based-access-control-manage-access-powershell/2-new-azurermroledefinition.png)
 
 ### <a name="create-role-with-json-template"></a>Erstellen der Rolle mit einer JSON-Vorlage
-Eine JSON-Vorlage kann als Quelldefinition für die benutzerdefinierte Rolle verwendet werden. Im folgenden Beispiel wird eine benutzerdefinierte Rolle erstellt, die Lesezugriff auf Speicher- und Computeressourcen und Zugriff auf den Support ermöglicht. Außerdem wird diese Rolle zwei Abonnements hinzugefügt. Erstellen Sie die neue Datei `C:\CustomRoles\customrole1.json` mit folgendem Inhalt. Beachten Sie, dass die ID bei der Ersterstellung der Rolle auf `null` festgelegt werden muss, da eine neue ID generiert wird. 
+Eine JSON-Vorlage kann als Quelldefinition für die benutzerdefinierte Rolle verwendet werden. Im folgenden Beispiel wird eine benutzerdefinierte Rolle erstellt, die Lesezugriff auf Speicher- und Computeressourcen und Zugriff auf den Support ermöglicht. Außerdem wird diese Rolle zwei Abonnements hinzugefügt. Erstellen Sie die neue Datei `C:\CustomRoles\customrole1.json` mit folgendem Inhalt. Die ID muss bei der Ersterstellung der Rolle auf `null` festgelegt werden, da eine neue ID automatisch generiert wird. 
 
 ```
 {
@@ -221,7 +221,7 @@ Set-AzureRmRoleDefinition -Role $role
 ![RBAC PowerShell – Set-AzureRmRoleDefinition – Screenshot](./media/role-based-access-control-manage-access-powershell/3-set-azurermroledefinition-2.png)
 
 ### <a name="modify-role-with-json-template"></a>Ändern der Rolle mit einer JSON-Vorlage
-Mithilfe der vorherigen JSON-Vorlage können Sie eine vorhandene benutzerdefinierte Rolle über das Hinzufügen oder Entfernen von Aktionen mühelos ändern. Aktualisieren Sie die JSON-Vorlage, indem Sie „Microsoft.Network“ die Aktion „Read“ hinzufügen (siehe unten). Beachten Sie, dass die Definitionen in der Vorlage nicht kumulativ auf eine vorhandene Definition angewendet werden. Dies bedeutet, dass die Rolle entsprechend Ihren Angaben in der Vorlage angezeigt wird. Außerdem müssen Sie die ID mit der ID der Rolle aktualisieren. Wenn Sie nicht sicher sind, wie dieser Wert lautet, können Sie diese Informationen mit dem Cmdlet `Get-AzureRmRoleDefinition` abrufen.
+Mithilfe der vorherigen JSON-Vorlage können Sie eine vorhandene benutzerdefinierte Rolle über das Hinzufügen oder Entfernen von Aktionen mühelos ändern. Aktualisieren Sie die JSON-Vorlage, indem Sie „Microsoft.Network“ die Aktion „Read“ hinzufügen (siehe unten). Die Definitionen in der Vorlage werden nicht kumulativ auf eine vorhandene Definition angewendet. Dies bedeutet, dass die Rolle entsprechend Ihren Angaben in der Vorlage angezeigt wird. Außerdem müssen Sie das Feld „ID“ mit der ID der Rolle aktualisieren. Wenn Sie nicht sicher sind, wie dieser Wert lautet, können Sie diese Informationen mit dem Cmdlet `Get-AzureRmRoleDefinition` abrufen.
 
 ```
 {

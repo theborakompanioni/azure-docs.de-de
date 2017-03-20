@@ -13,16 +13,16 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 02/06/2017
+ms.date: 03/11/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: bd7925f3fa9a717cbe0649bf899cdd00511d5ca6
-ms.openlocfilehash: b9dff45d1bb60d50c882c6daf363fca86a7f8f4c
-ms.lasthandoff: 02/22/2017
-
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 4afa8d2c7f8ec1942521ba5fa131967dfd581c91
+ms.lasthandoff: 03/14/2017
 
 ---
 # <a name="get-started-with-microsoft-power-bi-embedded"></a>Erste Schritte mit Microsoft Power BI Embedded
+
 **Power BI Embedded** ist ein Azure-Dienst, mit dem Anwendungsentwickler eigenen Anwendungen interaktive Power BI-Berichte hinzufügen können. **Power BI Embedded** kann mit vorhandenen Anwendungen verwendet werden, ohne dass der Entwurf oder der Anmeldevorgang der Benutzer geändert werden müssen.
 
 Ressourcen für **Microsoft Power BI Embedded** werden über die [Azure ARM-APIs](https://msdn.microsoft.com/library/mt712306.aspx)bereitgestellt. In diesem Fall ist die Ressource, die Sie bereitstellen, eine **Power BI-Arbeitsbereichssammlung**.
@@ -30,6 +30,7 @@ Ressourcen für **Microsoft Power BI Embedded** werden über die [Azure ARM-APIs
 ![](media/power-bi-embedded-get-started/introduction.png)
 
 ## <a name="create-a-workspace-collection"></a>Erstellen einer Arbeitsbereichssammlung
+
 Eine **Arbeitsbereichssammlung** ist die Azure-Ressource der obersten Ebene und ein Container für den Inhalt, der in Ihre Anwendung eingebettet wird. Eine **Arbeitsbereichssammlung** kann auf zwei Arten erstellt werden:
 
 * Manuell mit dem Azure-Portal
@@ -56,6 +57,7 @@ Das Blatt für die **Erstellung** enthält die erforderlichen Informationen zum 
 <a name="view-access-keys"/>
 
 ## <a name="view-power-bi-api-access-keys"></a>Anzeigen von Power BI-API-Zugriffsschlüsseln
+
 Zu den wichtigsten Informationen zum Aufrufen der Power BI-REST-APIs gehören die **Zugriffsschlüssel**. Sie dienen zum Generieren der **App-Token** , die zum Authentifizieren Ihrer API-Anforderungen verwendet werden. Klicken Sie zum Anzeigen der **Zugriffsschlüssel** auf dem Blatt **Einstellungen** auf **Zugriffsschlüssel**. Weitere Informationen zu **App-Token**finden Sie unter [Authentifizieren und Autorisieren mit Power BI Embedded](power-bi-embedded-app-token-flow.md).
 
    ![](media/power-bi-embedded-get-started/access-keys.png)
@@ -74,8 +76,9 @@ Nachdem Sie nun über eine Instanz von Power BI für Ihre Anwendung und **Zugrif
 
 Nach der Erstellung Ihrer Arbeitsbereichssammlung müssen Sie einen Arbeitsbereich für Ihre Berichte und Datasets erstellen. Zum Erstellen eines Arbeitsbereichs müssen Sie die [REST-API „Post Workspace“](https://msdn.microsoft.com/library/azure/mt711503.aspx) verwenden.
 
-## <a name="create-power-bi-datasets-and-reports-to-embed-into-an-app"></a>Erstellen von Power BI-Datasets und -Berichten zum Einbetten in eine App
-Nachdem Sie nun eine Instanz von Power BI für Ihre Anwendung erstellt haben und über **Zugriffsschlüssel**verfügen, müssen Sie die Power BI-Datasets und -Berichte erstellen, die eingebettet werden sollen. Sie können Datasets und Berichte mit **Power BI Desktop** erstellen. Sie können [Power BI Desktop kostenlos herunterladen](https://go.microsoft.com/fwlink/?LinkId=521662). Alternativ können Sie als schnellen Einstieg das [PBIX-Beispiel „Retail Analysis“](http://go.microsoft.com/fwlink/?LinkID=780547)herunterladen.
+## <a name="create-power-bi-datasets-and-reports-to-embed-into-an-app-using-power-bi-desktop"></a>Erstellen von Power BI-Datasets und -Berichten zum Einbetten in eine App mithilfe von Power BI Desktop
+
+Nachdem Sie nun eine Instanz von Power BI für Ihre Anwendung erstellt haben und über **Zugriffsschlüssel**verfügen, müssen Sie die Power BI-Datasets und -Berichte erstellen, die eingebettet werden sollen. Sie können Datasets und Berichte mit **Power BI Desktop**erstellen. Sie können [Power BI Desktop kostenlos herunterladen](https://go.microsoft.com/fwlink/?LinkId=521662). Alternativ können Sie als schnellen Einstieg das [PBIX-Beispiel „Retail Analysis“](http://go.microsoft.com/fwlink/?LinkID=780547)herunterladen.
 
 > [!NOTE]
 > Weitere Informationen zur Verwendung von **Power BI Desktop** finden Sie unter [Getting Started with Power BI Desktop](https://powerbi.microsoft.com/guided-learning/powerbi-learning-0-2-get-started-power-bi-desktop) (Erste Schritte mit Power BI Desktop).
@@ -95,20 +98,25 @@ Wenn Sie Ihre Arbeit in **Power BI Desktop** speichern, wird eine PBIX-Datei ers
 > [!NOTE]
 > **Power BI Embedded** verfügt über weitere APIs zum Ändern des Servers und der Datenbank, auf den bzw. auf die Ihr Dataset verweist, sowie zum Festlegen von Dienstkonto-Anmeldeinformationen, die vom Dataset zum Herstellen der Verbindung mit Ihrer Datenbank verwendet werden. Weitere Informationen finden Sie unter [Post SetAllConnections](https://msdn.microsoft.com/library/mt711505.aspx) und [Patch GatewayDatasource](https://msdn.microsoft.com/library/mt711498.aspx).
 
-## <a name="next-steps"></a>Nächste Schritte
-In den obigen Schritten haben Sie eine Arbeitsbereichssammlung und Ihren ersten Bericht und ein Dataset erstellt. Als Nächstes erfahren Sie, wie Sie Code für **Power BI Embedded**schreiben. Als Starthilfe haben wir eine Beispiel-Web-App erstellt: [Erste Schritte mit dem Beispiel](power-bi-embedded-get-started-sample.md). Mit dem Beispiel wird Folgendes veranschaulicht:
+## <a name="create-power-bi-datasets-and-reports-using-apis"></a>Erstellen von Power BI-Datasets und -Berichten mithilfe von APIs
 
-* Bereitstellen von Inhalt
-  * Erstellen eines Arbeitsbereichs
-  * Importieren einer PBIX-Datei
-  * Aktualisieren von Verbindungszeichenfolgen und Festlegen von Anmeldeinformationen für Ihre Datasets
-* Sicheres Einbetten eines Berichts
+### <a name="datsets"></a>Datasets
+
+Sie können Datasets in Power BI Embedded mithilfe der REST-API erstellen. Anschließend können Sie Daten per Push in das Dataset übertragen. So können Sie ohne Power BI Desktop mit Daten arbeiten. Weitere Informationen finden Sie unter [Post Datasets](https://msdn.microsoft.com/library/azure/mt778875.aspx).
+
+### <a name="reports"></a>Berichte
+
+Mithilfe der JavaScript-API können Sie einen Bericht aus einem Dataset direkt in der Anwendung erstellen. Weitere Informationen finden Sie unter [Erstellen eines neuen Berichts aus einem Dataset in Power BI Embedded](power-bi-embedded-create-report-from-dataset.md).
 
 ## <a name="see-also"></a>Weitere Informationen
-* [Erste Schritte mit dem Beispiel](power-bi-embedded-get-started-sample.md)
-* [Authentifizieren und Autorisieren mit Power BI Embedded](power-bi-embedded-app-token-flow.md)
-* [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)
 
+[Erste Schritte mit dem Beispiel](power-bi-embedded-get-started-sample.md)  
+[Authentifizieren und Autorisieren in Power BI Embedded](power-bi-embedded-app-token-flow.md)  
+[Einbetten eines Berichts](power-bi-embedded-embed-report.md)  
+[Erstellen eines neuen Berichts aus einem Dataset in Power BI Embedded](power-bi-embedded-create-report-from-dataset.md)
+[Speichern von Berichten](power-bi-embedded-save-reports.md)  
+[Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)  
+[JavaScript-Einbettungsbeispiel](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
 Weitere Fragen? [Power BI-Community ausprobieren](http://community.powerbi.com/)
 
 

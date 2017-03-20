@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/17/2017
+ms.date: 03/01/2017
 ms.author: dhanyahk;markvi
 translationtype: Human Translation
-ms.sourcegitcommit: afd48a77faeeab6d5a8730934345cb7000a59831
-ms.openlocfilehash: e72e49140aaad55a6e66a9f331ce7fde20b8577c
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 35323a56297c9aaf4939febd32140d6d101ee4e5
+ms.openlocfilehash: 9cb98ad710d82bade25f99d171f49433aea1204c
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -110,8 +110,25 @@ In der Ansicht **Aktivitäten > Anmeldungen** können Sie die Anwendungsnutzung 
 
 ### <a name="security-reports"></a>Sicherheitsberichte
 
-Die Sicherheitsberichte wurden zusammengeführt, um eine vollständige Übersicht über alle sicherheitsrelevanten Risikoereignisse bereitzustellen, die Azure Active Directory erkennen und melden kann. Eine vollständige Übersicht finden Sie unter [Azure Active Directory-Risikoereignisse](active-directory-identity-protection-risk-events.md).  
-In diesem Thema finden Sie eine Übersicht darüber, in welchem Zusammenhang die Azure Active Directory-Berichte zu anomalen Aktivitäten zu den Risikoereignissen in Azure AD im Abschnitt [Azure AD-Berichte zu anomalen Aktivitäten](active-directory-identity-protection-risk-events.md#azure-ad-anomalous-activity-reports) stehen.
+Die Sicherheitsberichte zur **anormalen Aktivität von Azure AD** im klassischen Azure-Portal wurden zusammengestellte, um Ihnen einen zentralen Blick auf alle sicherheitsrelevanten Risikoereignisse zu gewähren, die Azure AD ermitteln und melden kann. 
+
+Die folgende Tabelle listet die verschiedenen Sicherheitsberichte zur **anormalen Aktivität von Azure AD** und die entsprechenden Risikoereignistypen im Azure-Portal auf. 
+
+| Bericht zur anormalen Aktivität von Azure AD |  Typ des Identity Protection-Risikoereignisses|
+| :--- | :--- |
+| Benutzer mit kompromittierten Anmeldeinformationen | Kompromittierte Anmeldeinformationen |
+| Irreguläre Anmeldeaktivitäten | Unmöglicher Ortswechsel zu atypischen Orten |
+| Anmeldungen von möglicherweise infizierten Geräten | Anmeldungen von infizierten Geräten|
+| Anmeldungen von unbekannten Quellen | Anmeldungen von anonymen IP-Adressen |
+| Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten | Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten |
+| - | Anmeldungen von unbekannten Standorten |
+
+Folgende Sicherheitsberichte zur anormalen Aktivität von Azure AD gehören nicht zu Risikoereignissen in Azure AD. Diese Berichte sind im klassischen Azure-Portal weiterhin verfügbar. Sie werden allerdings zu einem zukünftigen Zeitpunkt als veraltet markiert werden.
+
+* Anmeldungen nach mehreren Fehlern
+* Anmeldungen aus mehreren geografischen Regionen
+
+Eine vollständige Übersicht finden Sie unter [Azure Active Directory-Risikoereignisse](active-directory-identity-protection-risk-events.md).  
 
 Sie können im Azure-Portal auf dem Blatt **Azure Active Directory** im Abschnitt **Sicherheit** auf die Berichte zu erkannten Risikoereignissen zugreifen. Die erkannten Risikoereignisse werden in den folgenden Berichten nachverfolgt:   
 

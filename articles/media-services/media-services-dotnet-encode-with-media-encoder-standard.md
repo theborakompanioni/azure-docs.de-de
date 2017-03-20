@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 09/19/2016
 ms.author: juliako;anilmur
 translationtype: Human Translation
-ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
-ms.openlocfilehash: 775578cb4e89f561449eea10b21a300f20646424
-ms.lasthandoff: 02/11/2017
+ms.sourcegitcommit: 452b6a541309736ee4bd7e1dbbf5288289e70922
+ms.openlocfilehash: 6a48bae7cd5c394f7b400f6870dba4da7f0d19f2
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -58,7 +58,7 @@ Im folgenden Codebeispiel wird das Media Services-.NET-SDK verwendet, um die fol
 
 * Erstellen eines Codierungsauftrags.
 * Abrufen eines Verweises auf den Media Encoder Standard-Encoder
-* Angeben, dass die Voreinstellung „H264 Multiple Bitrate 720p“ verwendet werden soll. Alle Voreinstellungen finden Sie [hier](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409). Sie können sich auch das Schema ansehen, dem diese Voreinstellungen entsprechen müssen. Klicken Sie dazu [hier](https://msdn.microsoft.com/library/mt269962.aspx).
+* Angeben der Voreinstellung [Adaptives Streaming](media-services-autogen-bitrate-ladder-with-mes.md). 
 * Fügen Sie eine einzelne Codierungsaufgabe zum Auftrag hinzu. 
 * Geben Sie das zu codierende Asset an.
 * Erstellen Sie ein Ausgabeasset, das das codierte Asset enthalten soll.
@@ -74,10 +74,10 @@ Im folgenden Codebeispiel wird das Media Services-.NET-SDK verwendet, um die fol
             IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
 
             // Create a task with the encoding details, using a string preset.
-            // In this case "H264 Multiple Bitrate 720p" preset is used.
+            // In this case "Adaptive Streaming" preset is used.
             ITask task = job.Tasks.AddNew("My encoding task",
                 processor,
-                "H264 Multiple Bitrate 720p",
+                "Adaptive Streaming",
                 TaskOptions.None);
 
             // Specify the input asset to be encoded.

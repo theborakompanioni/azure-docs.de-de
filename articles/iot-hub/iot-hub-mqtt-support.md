@@ -12,16 +12,17 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/24/2016
+ms.date: 03/01/2017
 ms.author: kdotchko
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 47e1d5172dabac18c1b355d8514ae492cd973d32
-ms.openlocfilehash: 5c362af149afd4a204c2705ae3d7f67361d8d528
-ms.lasthandoff: 02/11/2017
+ms.sourcegitcommit: c09caf68b4acf90b5a76d2d715e07fc3a522f18c
+ms.openlocfilehash: 7b9b7e558a95de88dedcb744e2a4b3c18cde35cc
+ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="iot-hub-mqtt-support"></a>IoT Hub MQTT-Unterstützung
+# <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunikation mit Ihrem IoT Hub mithilfe des Protokolls MQTT
 IoT Hub ermöglicht Geräten mithilfe des Protokolls [MQTT v3.1.1][lnk-mqtt-org] an Port 8883 oder MQTT v3.1.1 über WebSocket an Port 443 die Kommunikation mit den IoT Hub-Geräteendpunkten. IoT Hub setzt voraus, dass die gesamte Gerätekommunikation mithilfe von TLS/SSL geschützt wird (weshalb IoT Hub keine ungeschützten Verbindungen über Port 1883 unterstützt).
 
 ## <a name="connecting-to-iot-hub"></a>Herstellen einer Verbindung mit einem IoT Hub
@@ -92,7 +93,7 @@ Die Geräte-App kann auch `devices/{device_id}/messages/events/{property_bag}` a
 - IoT Hub speichert Beibehaltungsnachrichten („Retain“) nicht beständig. Wenn ein Geräte eine Nachricht mit auf 1 festgelegtem **RETAIN**-Flag sendet, fügt IoT Hub der Nachricht die Anwendungseigenschaft **x-opt-retain** hinzu. In diesem Fall speichert IoT Hub die Beibehaltungsnachricht nicht beständig, sondern übergibt sie an die Back-End-App.
 - IoT Hub unterstützt nur eine aktive MQTT-Verbindung pro Gerät. Jede neue MQTT-Verbindung für die gleiche Geräte-ID bewirkt, dass IoT Hub die vorhandene Verbindung löscht.
 
-Weitere Informationen finden Sie im [Entwicklerleitfaden zum Messaging][lnk-messaging].
+Weitere Informationen finden Sie im [Entwicklerhandbuch zum Messaging][lnk-messaging].
 
 ### <a name="receiving-cloud-to-device-messages"></a>Empfangen von C2D-Nachrichten
 Zum Empfangen von Nachrichten von einem IoT Hub muss ein Gerät ein Abonnement unter Verwendung von `devices/{device_id}/messages/devicebound/#` als **Themenfilter** einrichten. Der Platzhalter mit mehreren Ebenen **#** im Themenfilter wird nur verwendet, um dem Gerät das Empfangen zusätzlicher Eigenschaften im Themennamen zu erlauben. IoT Hub lässt sich nicht die Verwendung der Platzhalter **#** und **?** für die Filterung von Unterthemen zu. Da IoT Hub kein allgemeiner Nachrichtenbrokerdienst für das Veröffentlichen und Abonnieren ist, werden nur die dokumentierten Themennamen und -filter unterstützt.
@@ -107,7 +108,7 @@ Wenn eine Geräte-App ein Thema mit **QoS 2** abonniert, gewährt IoT Hub im **S
 
 Als Erstes abonniert ein Gerät `$iothub/twin/res/#`, um die Antworten des Vorgangs zu erhalten. Anschließend wird eine leere Nachricht an das Thema `$iothub/twin/GET/?$rid={request id}` gesendet, wobei der Wert für **request id** ausgefüllt ist. Als Nächstes sendet der Dienst eine Antwortnachricht mit den Daten des Gerätezwillings im Thema `$iothub/twin/res/{status}/?$rid={request id}`, indem die gleiche **request id** wie für die Anforderung verwendet wird.
 
-Die Anforderungs-ID (request id) kann ein beliebiger gültiger Wert für den Eigenschaftswert einer Nachricht sein (siehe [Entwicklerhandbuch zum IoT Hub-Messaging][lnk-messaging], und der Status wird als ganze Zahl validiert.
+Die Anforderungs-ID (request id) kann ein beliebiger gültiger Wert für den Eigenschaftswert einer Nachricht sein (siehe [Entwicklerhandbuch zum IoT Hub-Messaging][lnk-messaging]). Der Status wird als ganze Zahl validiert.
 Der Text der Antwort enthält den Abschnitt mit den Eigenschaften des Gerätezwillings:
 
 Der Text des Eintrags in der Identitätsregistrierung ist auf den Member „properties“ beschränkt, z.B.:
@@ -188,7 +189,7 @@ Als Erstes muss ein Gerät `$iothub/methods/POST/#` abonnieren. IoT Hub sendet M
 
 Als Antwort sendet das Gerät eine Nachricht mit gültigem JSON-Code oder leerem Text an das Thema `$iothub/methods/res/{status}/?$rid={request id}`, wobei die **request id** mit der ID in der Anforderungsnachricht übereinstimmen und **status** eine ganze Zahl sein muss.
 
-Weitere Informationen finden Sie im [Entwicklerhandbuch zur direkten Methode][lnk-methods].
+Weitere Informationen finden Sie im [Entwicklerhandbuch zu direkten Methoden][lnk-methods].
 
 ### <a name="additional-considerations"></a>Zusätzliche Überlegungen
 Wenn Sie das Verhalten des Protokolls MQTT auf Cloudseite anpassen möchten, sollte schließlich noch der Einsatz eines [Azure IoT-Protokollgateways][lnk-azure-protocol-gateway] erwogen werden, das die Bereitstellung eines hochleistungsfähigen benutzerdefinierten Protokollgateways mit einer direkten Schnittstelle zu IoT Hub ermöglicht. Das Azure IoT-Protokollgateway dient zum Anpassen des Geräteprotokolls zum Unterstützen von Brownfield MQTT-Bereitstellungen oder anderer benutzerdefinierter Protokolle. Dieser Ansatz setzt jedoch voraus, dass Sie ein benutzerdefiniertes Protokollgateway ausführen und betreiben.

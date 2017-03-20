@@ -13,12 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 03/03/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 4f8235ae743a63129799972ca1024d672faccbe9
-ms.openlocfilehash: 441e2adf6a222a0fc2e7e06c9b0140548655d542
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: cf8db132c7f541017744505bf0fca9393db8b3f9
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -59,7 +59,7 @@ Es gibt keine Beschränkung in Bezug auf die Gesamtmenge der Daten, die von eine
 Es gibt kein Limit für den Gesamtdurchsatz, der von einer Sammlung in DocumentDB unterstützt werden kann, wenn Ihre Workload in etwa gleichmäßig auf eine ausreichend große Zahl von Partitionsschlüsseln verteilt werden kann.
 
 ### <a name="how-much-does-microsoft-azure-documentdb-cost"></a>Wie viel kostet Microsoft Azure DocumentDB?
-Ausführliche Informationen dazu finden Sie auf der Seite [DocumentDB – Preise](https://azure.microsoft.com/pricing/details/documentdb/). Die Nutzungsgebühren für DocumentDB werden von der verwendeten Anzahl von Sammlungen, der Anzahl von Stunden, die die Sammlungen online waren, und dem genutzten Speicher und bereitgestellten Durchsatz für jede Sammlung bestimmt.
+Ausführliche Informationen dazu finden Sie auf der Seite [DocumentDB – Preise](https://azure.microsoft.com/pricing/details/documentdb/). Die Nutzungsgebühren für DocumentDB werden von der Anzahl von bereitgestellten Sammlungen, der Anzahl der Stunden, die die Sammlungen online waren, und dem bereitgestellten Durchsatz für jede Sammlung bestimmt.
 
 ### <a name="is-there-a-free-account-available"></a>Ist ein kostenloses Konto verfügbar?
 Wenn Azure für Sie neu ist, können Sie sich für ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) registrieren. Sie erhalten eine Gutschrift von 200 US-Dollar für 30 Tage, in denen Sie alle Azure-Dienste ausprobieren können. Wenn Sie ein Visual Studio-Abonnement besitzen, haben Sie Anspruch auf ein [kostenloses Azure-Guthaben von&150; US-Dollar pro Monat](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), das Sie für beliebige Azure-Dienste nutzen können.  

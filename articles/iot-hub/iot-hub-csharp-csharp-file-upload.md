@@ -17,21 +17,22 @@ ms.author: elioda
 translationtype: Human Translation
 ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
 ms.openlocfilehash: ddc181bde6a154cb3fb35254da6b76a91450ba6b
+ms.lasthandoff: 12/06/2016
 
 
 ---
 # <a name="upload-files-from-devices-to-the-cloud-with-iot-hub"></a>Hochladen von Dateien von Geräten in die Cloud mit IoT Hub
 ## <a name="introduction"></a>Einführung
-Azure IoT Hub ist ein vollständig verwalteter Dienst, der eine zuverlässige und sichere bidirektionale Kommunikation zwischen Millionen von Geräten und einem Lösungs-Back-End ermöglicht. In vorhergehenden Tutorials ([Erste Schritte mit IoT Hub] [und Senden von C2D-Nachrichten mit IoT Hub]) werden die grundlegenden Funktionen von IoT Hub für Gerät-zu-Cloud- (Device-to-Cloud, D2C) und Cloud-zu-Gerät-Messaging (Cloud-to-Device, C2D) und der Zugriff auf diese Funktionen über Geräte und Cloudkomponenten beschrieben. Im Tutorial [Verarbeiten von Gerät-zu-Cloud-Nachrichten] wird eine Möglichkeit zum zuverlässigen Speichern von D2C-Nachrichten in Azure-Blobspeicher beschrieben. In einigen Szenarien können Sie allerdings nicht einfach die Daten, die Ihre Geräte senden, den relativ kleinen D2C-Nachrichten zuordnen, die IoT Hub akzeptiert. Beispiele sind große Dateien mit Bildern, Videos, Vibrationsdatenerfassungen mit hoher Frequenz oder vorverarbeiteten Daten. Diese Dateien werden normalerweise als Batch in der Cloud mit Tools wie [Azure Data Factory] oder dem [Hadoop]-Stapel verarbeitet. Wenn das Hochladen einer Datei von einem Gerät dem Senden von Ereignissen vorgezogen wird, können dennoch IoT Hub-Sicherheits- und Zuverlässigkeitsfunktionen verwendet werden.
+Azure IoT Hub ist ein vollständig verwalteter Dienst, der eine zuverlässige und sichere bidirektionale Kommunikation zwischen Millionen von Geräten und einem Lösungs-Back-End ermöglicht. In vorhergehenden Tutorials ([Erste Schritte mit IoT Hub] und [Senden von C2D-Nachrichten mit IoT Hub]) werden die grundlegenden Funktionen von IoT Hub für Gerät-zu-Cloud- (Device-to-Cloud, D2C) und Cloud-zu-Gerät-Messaging (Cloud-to-Device, C2D) und der Zugriff auf diese Funktionen über Geräte und Cloudkomponenten beschrieben. Im Tutorial [Verarbeiten von Gerät-zu-Cloud-Nachrichten] wird eine Möglichkeit zum zuverlässigen Speichern von D2C-Nachrichten in Azure-Blobspeicher beschrieben. In einigen Szenarien können Sie allerdings nicht einfach die Daten, die Ihre Geräte senden, den relativ kleinen D2C-Nachrichten zuordnen, die IoT Hub akzeptiert. Beispiele sind große Dateien mit Bildern, Videos, Vibrationsdatenerfassungen mit hoher Frequenz oder vorverarbeiteten Daten. Diese Dateien werden normalerweise als Batch in der Cloud mit Tools wie [Azure Data Factory] oder dem [Hadoop]-Stapel verarbeitet. Wenn das Hochladen einer Datei von einem Gerät dem Senden von Ereignissen vorgezogen wird, können dennoch IoT Hub-Sicherheits- und Zuverlässigkeitsfunktionen verwendet werden.
 
-Dieses Tutorial baut auf dem Code im Tutorial [und Senden von C2D-Nachrichten mit IoT Hub] auf, um zu zeigen, wie Sie die IoT Hub-Funktionen zum Hochladen von Dateien nutzen. Es beschreibt Folgendes:
+Dieses Tutorial baut auf dem Code im Tutorial [Senden von C2D-Nachrichten mit IoT Hub] auf, um zu zeigen, wie Sie die IoT Hub-Funktionen zum Hochladen von Dateien nutzen. Es beschreibt Folgendes:
 
 - Sicheres Bereitstellen eines Geräts mit einem Azure-Blob-URI für das Hochladen einer Datei.
 - Verwenden der IoT Hub-Dateihochlade-Benachrichtigungen zum Auslösen der Dateiverarbeitung in Ihrem App-Back-End.
 
 Am Ende dieses Tutorials führen Sie zwei .NET-Konsolen-Apps aus:
 
-* **SimulatedDevice**, eine geänderte Version der App, die im Tutorial [und Senden von C2D-Nachrichten mit IoT Hub] erstellt wurde. Diese App lädt mithilfe eines SAS-URI, den Ihr IoT Hub bereitstellt, eine Datei in den Speicher hoch.
+* **SimulatedDevice**, eine geänderte Version der App, die im Tutorial [Senden von C2D-Nachrichten mit IoT Hub] erstellt wurde. Diese App lädt mithilfe eines SAS-URI, den Ihr IoT Hub bereitstellt, eine Datei in den Speicher hoch.
 * **ReadFileUploadNotification**, die Benachrichtigungen zum Hochladen von Dateien von Ihrem IoT Hub empfängt.
 
 > [!NOTE]
@@ -50,7 +51,7 @@ Da von der simulierten Geräte-App eine Datei in ein Blob hochgeladen wird, müs
 Befolgen Sie die Anweisungen unter [Konfigurieren von Dateiuploads über das Azure-Portal][lnk-configure-upload], um Ihrem IoT Hub ein Azure Storage-Konto zuzuordnen.
 
 ## <a name="upload-a-file-from-a-simulated-device-app"></a>Hochladen einer Datei von einer simulierten Geräte-App
-In diesem Abschnitt ändern Sie die simulierte Geräte-App, die Sie in [und Senden von C2D-Nachrichten mit IoT Hub] erstellt haben, um Cloud-zu-Gerät-Nachrichten von IoT Hub zu empfangen.
+In diesem Abschnitt ändern Sie die simulierte Geräte-App, die Sie in [Senden von C2D-Nachrichten mit IoT Hub] erstellt haben, um Cloud-zu-Gerät-Nachrichten von IoT Hub zu empfangen.
 
 1. Klicken Sie in Visual Studio mit der rechten Maustaste auf das Projekt **SimulatedDevice**. Klicken Sie auf **Hinzufügen** und dann auf **Vorhandenes Element**. Navigieren Sie zu einer Bilddatei, und fügen Sie sie Ihrem Projekt hinzu. In diesem Tutorial wird davon ausgegangen, dass das Bild `image.jpg` heißt.
 2. Klicken Sie mit der rechten Maustaste auf das Bild, und klicken Sie dann auf **Eigenschaften**. Stellen Sie sicher, dass **In Ausgabeverzeichnis kopieren** auf **Immer kopieren** festgelegt ist.
@@ -166,7 +167,7 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [Azure Data Factory]: https://azure.microsoft.com/documentation/services/data-factory/
 [Hadoop]: https://azure.microsoft.com/documentation/services/hdinsight/
 
-[und Senden von C2D-Nachrichten mit IoT Hub]: iot-hub-csharp-csharp-c2d.md
+[Senden von C2D-Nachrichten mit IoT Hub]: iot-hub-csharp-csharp-c2d.md
 [Verarbeiten von Gerät-zu-Cloud-Nachrichten]: iot-hub-csharp-csharp-process-d2c.md
 [Erste Schritte mit IoT Hub]: iot-hub-csharp-csharp-getstarted.md
 [Azure IoT Developer Center]: http://www.azure.com/develop/iot
@@ -183,10 +184,5 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
 
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

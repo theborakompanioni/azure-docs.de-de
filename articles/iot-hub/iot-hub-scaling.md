@@ -14,13 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/19/2016
 ms.author: elioda
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: e223d0613cd48994315451da87e6b7066585bdb6
-ms.openlocfilehash: 7683a6c6afa3dbec3fccadc9f095480ed90aa039
+ms.sourcegitcommit: 7adde91586f5fbbffd0aeaf0efb0810cc891ac0b
+ms.openlocfilehash: cbff931e7acc88b29ed6f51a16156b44c1596d3f
+ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="scaling-iot-hub"></a>Skalieren von IoT Hub
+# <a name="scale-your-iot-hub-solution"></a>Skalieren einer IoT Hub-Lösung
 Azure IoT Hub kann bis zu einer Million gleichzeitig verbundener Geräte unterstützen. Weitere Informationen finden Sie unter [IoT Hub – Preise][lnk-pricing]. Jede IoT Hub-Einheit lässt eine bestimmte Anzahl von täglichen Nachrichten zu.
 
 Um Ihre Lösung richtig skalieren zu können, sollten Sie sich nach dem jeweiligen IoT Hub-Anwendungsfall richten. Achten Sie besonders auf den erforderlichen Spitzendurchsatz für die folgenden Kategorien von Vorgängen:
@@ -61,9 +63,4 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

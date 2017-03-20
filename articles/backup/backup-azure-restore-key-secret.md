@@ -14,13 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: pajosh
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0c5b2969ddc943b2b15826003f5a9e686e84e1c4
+ms.sourcegitcommit: 82b7541ab1434179353247ffc50546812346bda9
+ms.openlocfilehash: ddb9e7909eb4ab97204059d21690795ceb6ff9e8
+ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>Wiederherstellen von Key Vault-Schlüssel und -Geheimschlüssel für verschlüsselte virtuelle Computer mithilfe von Azure Backup
+# <a name="restore-an-encrypted-virtual-machine-from-an-azure-backup-recovery-point"></a>Wiederherstellen eines virtuellen Azure-Computers mithilfe eines Azure Backup-Wiederherstellungspunkts
 Dieser Artikel befasst sich mit Azure VM Backup für die Wiederherstellung von verschlüsselten Azure-VMs, wenn Schlüssel und Geheimschlüssel nicht im Schlüsseltresor vorhanden sind. Diese Schritte können auch verwendet werden, wenn Sie eine separate Kopie von Schlüssel (Key Encryption Key) und Geheimschlüssel (BitLocker-Verschlüsselungsschlüssel) für den wiederhergestellten virtuellen Computer verwalten möchten.
 
 ## <a name="pre-requisites"></a>Voraussetzungen
@@ -89,10 +91,10 @@ PS C:\> $rp1 = Get-AzureRmRecoveryServicesBackupRecoveryPoint -RecoveryPointId $
 
 > [!NOTE]
 > Nachdem dieses Cmdlet erfolgreich ausgeführt wurde, wird eine Blob-Datei im angegebenen Ordner auf dem gleichen Computer generiert. Diese Blobdatei stellt den Schlüssel in verschlüsselter Form dar.
-> 
-> 
+>
+>
 
-Stellen Sie den Schlüssel zum Schlüsseltresor mit dem folgenden Cmdlet wieder her. 
+Stellen Sie den Schlüssel zum Schlüsseltresor mit dem folgenden Cmdlet wieder her.
 
 ```
 PS C:\> Restore-AzureKeyVaultKey -VaultName "contosokeyvault" -InputFile "C:\Users\downloads\key.blob"
@@ -108,11 +110,11 @@ https://contosokeyvault.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848
 ```
 
 > [!NOTE]
-> Der Text vor „vault.azure.net“ steht für den ursprünglichen Schlüsseltresornamen. Der Text nach „secrets/“ steht für den Geheimschlüsselnamen. 
-> 
-> 
+> Der Text vor „vault.azure.net“ steht für den ursprünglichen Schlüsseltresornamen. Der Text nach „secrets/“ steht für den Geheimschlüsselnamen.
+>
+>
 
-Erhalten Sie den Namen und Wert des geheimen Schlüssels aus der Ausgabe des Cmdlets, das oben ausgeführt wurde, für den Fall, dass Sie den gleichen Namen des geheimen Schlüssels verwenden möchten. In anderen Fällen sollte „$secretname“ unten aktualisiert werden, um den neuen Namen des geheimen Schlüssels zu verwenden. 
+Erhalten Sie den Namen und Wert des geheimen Schlüssels aus der Ausgabe des Cmdlets, das oben ausgeführt wurde, für den Fall, dass Sie den gleichen Namen des geheimen Schlüssels verwenden möchten. In anderen Fällen sollte „$secretname“ unten aktualisiert werden, um den neuen Namen des geheimen Schlüssels zu verwenden.
 
 ```
 PS C:\> $secretname = "B3284AAA-DAAA-4AAA-B393-60CAA848AAAA"
@@ -120,7 +122,7 @@ PS C:\> $secretdata = $rp1.KeyAndSecretDetails.SecretData
 PS C:\> $Secret = ConvertTo-SecureString -String $secretdata -AsPlainText -Force
 ```
 
-Setzen Sie Tags für den geheimen Schlüssel, falls der virtuelle Computer auch wiederhergestellt werden muss. Beim Tag „DiskEncryptionKeyFileName“ sollte der Wert den Namen des geheimen Schlüssels erhalten, den Sie verwenden möchten. 
+Setzen Sie Tags für den geheimen Schlüssel, falls der virtuelle Computer auch wiederhergestellt werden muss. Beim Tag „DiskEncryptionKeyFileName“ sollte der Wert den Namen des geheimen Schlüssels erhalten, den Sie verwenden möchten.
 
 ```
 PS C:\> $Tags = @{'DiskEncryptionKeyEncryptionAlgorithm' = 'RSA-OAEP';'DiskEncryptionKeyFileName' = 'B3284AAA-DAAA-4AAA-B393-60CAA848AAAA.BEK';'DiskEncryptionKeyEncryptionKeyURL' = 'https://contosokeyvault.vault.azure.net:443/keys/KeyName/84daaac999949999030bf99aaa5a9f9';'MachineName' = 'vm-name'}
@@ -128,8 +130,8 @@ PS C:\> $Tags = @{'DiskEncryptionKeyEncryptionAlgorithm' = 'RSA-OAEP';'DiskEncry
 
 > [!NOTE]
 > Der Wert für „DiskEncryptionKeyFileName“ ist identisch mit dem Namen des geheimen Schlüssels, den Sie oben abgerufen haben. Der Wert für „DiskEncryptionKeyEncryptionKeyURL“ kann mithilfe des Cmdlet [Get-AzureKeyVaultKey](https://msdn.microsoft.com/library/dn868053.aspx) aus dem Schlüsseltresor abgerufen werden, nachdem die Schlüssel wiederhergestellt wurden.    
-> 
-> 
+>
+>
 
 Setzen Sie den geheimen Schlüssel wieder auf den Schlüsseltresor zurück.
 
@@ -139,10 +141,4 @@ PS C:\> Set-AzureKeyVaultSecret -VaultName "contosokeyvault" -Name $secretname -
 
 ### <a name="restore-virtual-machine"></a>Wiederherstellen des virtuellen Computers
 Die oben aufgeführten PowerShell-Cmdlets unterstützen Sie, Schlüssel und geheime Schlüssel auf den Schlüsseltresor wiederherzustellen, wenn Sie einen verschlüsselten virtuellen Computer mit Azure VM Backup gesichert haben. Im Artikel [Sichern und Wiederherstellen von Azure-VMs mithilfe von PowerShell](backup-azure-vms-automation.md) finden Sie ausführliche Informationen zum Wiederherstellen verschlüsselter virtueller Computer.
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/14/2016
+ms.date: 03/02/2017
 ms.author: subramar
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e95d00d0ff9bcb825bfe3fcc787386c8c8133c69
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: caeb0569de89b1af7b87f393601c7aa1a1e293dc
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -45,7 +46,7 @@ Number of Nodes = (DB_Size * RF)/Node_Size
 ## <a name="account-for-growth"></a>Berücksichtigen von Wachstum
 Möglicherweise möchten Sie die Anzahl von Knoten basierend auf der Datenbankgröße „DB_Size“ berechnen, bis zu der Ihr Dienst erwartungsgemäß zusätzlich zur anfänglichen „DB_Size“ wachsen wird. Steigern Sie dann die Anzahl der Knoten mit dem Wachstum Ihres Diensts so, dass Sie sie nicht überdimensionieren. Die Anzahl der Partitionen sollte jedoch auf der Anzahl von Knoten basieren, die bei Ausführung des Diensts bei maximalem Wachstum erforderlich ist.
 
-Es ist ratsam, jederzeit einige zusätzliche VMs vorzuhalten, damit Sie unerwartete Spitzen oder Ausfälle bewältigen können (z.B. wenn einige VMs ausfallen).  Grundlage der Berechnung dieser Zusatzkapazität sollten Ihre erwarteten Spitzen sein. Als Ausgangspunkt für die Reservierung einiger zusätzlicher VMs empfiehlt sich ein Wert von 5-10 %.
+Es ist ratsam, jederzeit einige zusätzliche VMs vorzuhalten, damit Sie unerwartete Spitzen oder Ausfälle bewältigen können (z.B. wenn einige VMs ausfallen).  Grundlage der Berechnung dieser Zusatzkapazität sollten Ihre erwarteten Spitzen sein. Als Ausgangspunkt für die Reservierung einiger zusätzlicher VMs empfiehlt sich ein Wert von&5;-10 %.
 
 Im vorangehenden Beispiel wird von einem einzelnen statusbehafteten Dienst ausgegangen. Wenn Sie mehr als einen statusbehafteten Dienst haben, müssen Sie die „DB_Size“ der anderen Dienste der Gleichung hinzufügen. Alternativ können Sie die Anzahl der Knoten für jeden statusbehafteten Dienst separat berechnen.  Ihr Dienst weist möglicherweise Replikate oder Partitionen auf, die nicht ausgeglichen sind. Bedenken Sie, dass sich in Partitionen auch mehr Daten als in anderen befinden können. Weitere Informationen zur Partitionierung finden Sie im Artikel [Partitionieren von Service Fabric Reliable Services](service-fabric-concepts-partitioning.md). Die vorherige Gleichung ist jedoch unabhängig von der Anzahl der Partitionen oder Replikate, da Service Fabric dafür sorgt, dass die Replikate optimal auf die Knoten verteilt werden.
 
@@ -59,16 +60,11 @@ Basierend auf all diesen Informationen zeigt das Arbeitsblatt nun, dass physisch
 ![Kalkulationstabelle zur Berechnung der Kosten][Image1]
 
 ## <a name="next-steps"></a>Nächste Schritte
-Unter [Partitionieren von Service Fabric-Diensten][10] erfahren Sie mehr über die Partitionierung Ihres Diensts.
+Unter [Partitionieren von Service Fabric-Diensten][10] erfahren Sie mehr über die Partitionierung von Diensten.
 
 <!--Image references-->
 [Image1]: ./media/SF-Cost.png
 
 <!--Link references--In actual articles, you only need a single period before the slash-->
 [10]: service-fabric-concepts-partitioning.md
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

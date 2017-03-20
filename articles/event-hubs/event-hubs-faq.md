@@ -13,11 +13,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/16/2017
-ms.author: sethm;jotaub
+ms.author: sethm;jotaub;shvija
 translationtype: Human Translation
-ms.sourcegitcommit: 8e483b17e453dedf17a21c673d3b2231b9bfba3a
-ms.openlocfilehash: 3c04f0225ec36f700fff59d87c6d0939ab74355c
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: 59622f283daeca59464dfb7a13ca76c7a0148a21
+ms.lasthandoff: 03/03/2017
 
 ---
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 02/21/2017
 ## <a name="general"></a>Allgemein
 
 ### <a name="what-is-the-difference-between-event-hubs-basic-and-standard-tiers"></a>Was ist der Unterschied zwischen den Event Hubs-Ebenen Basic und Standard?
-Event Hubs im Standard-Tarif bieten mehr Features als der Basic-Tarif sowie einige vergleichbare Systeme. Zu diesen Features gehören Aufbewahrungszeiträume von mehr als 24 Stunden und die Fähigkeit, eine einzelne AMQP-Verbindung zum Senden von Befehlen an eine große Anzahl von Geräten mit einer Latenz von Sekundenbruchteilen sowie Telemetriedaten von diesen Geräten an Event Hubs zu senden. Die Liste der Funktionen finden Sie unter [Event Hubs – Preisdetails](https://azure.microsoft.com/pricing/details/event-hubs/)
+Event Hubs im Standard-Tarif bieten mehr Features als der Basic-Tarif sowie einige vergleichbare Systeme. Zu diesen Features gehören Aufbewahrungszeiträume von mehr als 24 Stunden und die Fähigkeit, eine einzelne AMQP-Verbindung zum Senden von Befehlen an eine große Anzahl von Geräten mit einer Latenz von Sekundenbruchteilen sowie Telemetriedaten von diesen Geräten an Event Hubs zu senden. Der Standard-Tarif bietet auch das Feature [Archive](https://docs.microsoft.com/azure/event-hubs/event-hubs-archive-overview). Eine Liste der Features finden Sie unter [Event Hubs Preise](https://azure.microsoft.com/pricing/details/event-hubs/).
 
 ### <a name="what-are-event-hubs-throughput-units"></a>Was sind Event Hubs-Durchsatzeinheiten?
 Sie wählen die Event Hubs-Durchsatzeinheiten explizit aus, entweder über das Azure-Portal oder mithilfe von Event Hubs Resource Manager-Vorlagen. Durchsatzeinheiten betreffen alle Event Hubs in einem Event Hubs-Namespace, und durch jede Durchsatzeinheit erhält der Namespace die Berechtigung für folgende Funktionen:
@@ -49,7 +49,7 @@ Es gibt ein Kontingent von 20 Durchsatzeinheiten pro Namespace. Sie können ein 
 Ja, solange sich alle Event Hubs im gleichen Namespace befinden.
 
 ### <a name="what-is-the-maximum-retention-period-for-events"></a>Was ist die maximale Beibehaltungsdauer für Ereignisse?
-Die Standard-Ebene für Event Hubs unterstützt derzeit einen maximalen Aufbewahrungszeitraum von 7 Tagen. Beachten Sie, dass Event Hubs nicht als dauerhafter Datenspeicher vorgesehen sind. Beibehaltungsdauern größer als 24 Stunden sind für Szenarien vorgesehen, in denen es praktisch ist, einen Stream von Ereignissen in die gleichen Systeme wiederzugeben, wenn Sie beispielsweise ein neues Computerlernmodell für vorhandene Daten trainieren oder überprüfen wollen.
+Die Standard-Ebene für Event Hubs unterstützt derzeit einen maximalen Aufbewahrungszeitraum von 7 Tagen. Beachten Sie, dass Event Hubs nicht als dauerhafter Datenspeicher vorgesehen sind. Beibehaltungsdauern größer als 24 Stunden sind für Szenarien vorgesehen, in denen es praktisch ist, einen Stream von Ereignissen in die gleichen Systeme wiederzugeben, wenn Sie beispielsweise ein neues Computerlernmodell für vorhandene Daten trainieren oder überprüfen wollen. Wenn Sie Nachrichten länger als 7 Tage aufbewahren möchten, werden die Daten durch Aktivieren von [Archive](https://docs.microsoft.com/azure/event-hubs/event-hubs-archive-overview) in Ihrem Event Hub von Ihrem Event Hub per Pull in den von Ihnen gewünschten Speicher übertragen. Abhängig von Ihrer Durchsatzeinheit entstehen durch das aktivieren von „Archive“ Kosten.
 
 ### <a name="where-is-azure-event-hubs-available"></a>Wo steht Azure Event Hubs zur Verfügung?
 Azure Event Hubs ist in allen unterstützten Azure-Regionen verfügbar. Eine Liste finden Sie auf der Seite [Azure-Regionen](https://azure.microsoft.com/regions/).  
@@ -69,7 +69,7 @@ Aber wenn Sie über ein Modell verfügen, in dem die Anwendung eine bestimmte Pa
 Umfassende Informationen zu den Preisen von Event Hubs finden Sie unter [Event Hubs – Preisübersicht](https://azure.microsoft.com/pricing/details/event-hubs/).
 
 ### <a name="is-there-a-charge-for-retaining-event-hubs-events-for-more-than-24-hours"></a>Gibt es eine Gebühr für die Beibehaltung von Event Hubs-Ereignissen für mehr als 24 Stunden?
-Die Standard-Ebene für Event Hubs erlaubt eine Aufbewahrung von Nachrichten länger als 24 Stunden, maximal 30 Tage. Wenn die Größe der Gesamtanzahl der gespeicherten Ereignisse das Speicherkontingent für die Anzahl der ausgewählten Durchsatzeinheiten (84 GB pro Durchsatzeinheit) überschreitet, wird die überschrittene Größe zur veröffentlichten Rate für den Azure Blob Storage in Rechnung gestellt. Das Speicherkontingent in allen Durchsatzeinheiten deckt alle Speicherkosten für die Aufbewahrungsdauer von 24 Stunden (Standard), selbst, wenn die Durchsatzeinheit bis zum maximal erlaubten Eingang verbraucht ist.
+Der Standard-Tarif für Event Hubs erlaubt eine Aufbewahrung von Nachrichten länger als 24 Stunden, maximal 7 Tage. Wenn die Größe der Gesamtanzahl der gespeicherten Ereignisse das Speicherkontingent für die Anzahl der ausgewählten Durchsatzeinheiten (84 GB pro Durchsatzeinheit) überschreitet, wird die überschrittene Größe zur veröffentlichten Rate für den Azure Blob Storage in Rechnung gestellt. Das Speicherkontingent in allen Durchsatzeinheiten deckt alle Speicherkosten für die Aufbewahrungsdauer von 24 Stunden (Standard), selbst, wenn die Durchsatzeinheit bis zum maximal erlaubten Eingang verbraucht ist.
 
 ### <a name="how-is-the-event-hubs-storage-size-calculated-and-charged"></a>Wie wird die Event Hubs-Speichergröße berechnet und in Rechnung gestellt?
 Die Gesamtgröße aller gespeicherten Ereignisse, einschließlich des gesamten internen Mehraufwands für Ereignisheader oder Speicherstrukturen auf Datenträgern in allen Event Hubs, wird im Laufe des Tages gemessen. Am Ende des Tages wird die maximale Speichergröße berechnet. Das tägliche Speicherkontingent wird auf Grundlage der Mindestanzahl der Durchsatzeinheiten berechnet, die im Laufe des Tages ausgewählt wurden (jede Durchsatzeinheit bietet ein Kontingent von 84 GB). Wenn die Gesamtgröße das berechnete tägliche Speicherkontingent überschreitet, wird der überschüssige Speicher zu Azure-Blob-Speichersätzen in Rechnung gestellt (auf der **lokal redundanter Speicher** Rate).
@@ -80,7 +80,14 @@ Jedes an einen Event Hub gesendete Ereignis wird als abrechenbare Nachricht gez�
 Von einem Event Hub genutzte Ereignisse sowie Verwaltungsvorgänge und Kontrollaufrufe wie etwa Checkpoints werden nicht als abzurechnende Eingangsereignisse gezählt, sondern bis zur erlaubten Durchsatzeinheit angesammelt.
 
 ### <a name="do-brokered-connection-charges-apply-to-event-hubs"></a>Gelten vermittelte Verbindungsgebühren für Event Hubs?
-Verbindungsgebühren fallen nur an, wenn das AMQP-Protokoll verwendet wird. Es gibt keine Verbindungsgebühren für das Senden von Ereignissen über HTTP, unabhängig von der Anzahl der sendenden Systeme oder Geräte. Wenn Sie AMQP verwenden möchten (z.B. um effizienteres Ereignisstreaming zu erreichen oder bidirektionale Kommunikation in Befehls- und -Steuerungsszenarien von IoT zu ermöglichen), lesen Sie sich bitte die Seite [Event Hubs Preise](https://azure.microsoft.com/pricing/details/event-hubs/) durch, um Näheres darüber zu erfahren, wie viele Verbindungen in jeder Dienstebene enthalten sind.
+Verbindungsgebühren fallen nur an, wenn das AMQP-Protokoll verwendet wird. Es gibt keine Verbindungsgebühren für das Senden von Ereignissen über HTTP, unabhängig von der Anzahl der sendenden Systeme oder Geräte. Wenn Sie AMQP verwenden möchten (z.B. um effizienteres Ereignisstreaming zu erreichen oder bidirektionale Kommunikation in Befehls- und -Steuerungsszenarios von IoT zu ermöglichen), lesen Sie sich bitte die Seite [Event Hubs Preise](https://azure.microsoft.com/pricing/details/event-hubs/) durch, um Näheres darüber zu erfahren, wie viele Verbindungen in jeder Dienstebene enthalten sind.
+
+### <a name="how-is-event-hubs-archive-billed"></a>Wie erfolgt die Abrechnung für Event Hubs Archive?
+Event Hubs Archive wird aktiviert, wenn für eine Event Hub-Instanz im Namespace das Feature „Archive“ aktiviert wird. Das Feature „Archive“ wird stundenweise pro erworbener Durchsatzeinheit abgerechnet. Wenn die Anzahl von Durchsatzeinheiten erhöht oder verringert wird, werden diese Änderungen bei der Abrechnung für Event Hubs Archive in Schritten ganzer Stunden übernommen.
+Auf der Seite [Event Hubs Preise](https://azure.microsoft.com/pricing/details/event-hubs/) finden Sie weitere Informationen zur Abrechnung von Event Hubs Archive.
+
+### <a name="will-i-be-billed-for-the-storage-account-i-select-for-event-hubs-archive"></a>Werden Speichergebühren für das für Event Hubs Archive ausgewählte Speicherkonto abgerechnet?
+Archive verwendet ein Speicherkonto, das Sie angeben, wenn es auf einem Event Hub aktiviert ist. Da es sich um Ihr Speicherkonto handelt, werden die Nutzungsgebühren für dieses Speicherkonto über Ihr Azure-Abonnement abgerechnet.
 
 ## <a name="quotas"></a>Kontingente
 
