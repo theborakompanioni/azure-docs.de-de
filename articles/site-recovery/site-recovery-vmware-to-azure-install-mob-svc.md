@@ -15,9 +15,9 @@ ms.workload: backup-recovery
 ms.date: 2/20/2017
 ms.author: anoopkv
 translationtype: Human Translation
-ms.sourcegitcommit: 1f4075d6a3ab81bdbde614bbee400bd23f6cea20
-ms.openlocfilehash: 1fd481d06f355547fd15200999c4bca3a503ec31
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 7e82ac74a8aef4e3cc8aff4dea3c572dcb9d9c40
+ms.lasthandoff: 03/03/2017
 
 ---
 
@@ -82,6 +82,30 @@ Um die Pushinstallation von Mobility Service mithilfe von Azure Site Recovery au
 [!INCLUDE [site-recovery-prepare-push-install-mob-svc-lin](../../includes/site-recovery-prepare-push-install-mob-svc-lin.md)]
 
 
-## <a name="next-steps"></a>Nächste Schritte
+> [!NOTE]
 Nach der Installation von Mobility Service können Sie die Schaltfläche **+Replizieren** im Azure-Portal verwenden, um den Schutz für diese virtuellen Computer zu aktivieren.
+
+## <a name="uninstall-mobility-service-on-windows-servers"></a>Deinstallieren von Mobility Service auf Windows-Servern
+Es gibt zwei Möglichkeiten, wie Sie Mobility Service auf einem Windows-Server deinstallieren können
+
+### <a name="uninstall-using-graphical-user-interface"></a>Deinstallieren mithilfe der grafischen Benutzeroberfläche
+1. Öffnen Sie „Systemsteuerung“ > „Programme“
+2. Wählen Sie **Microsoft Azure Site Recovery Mobility Service/Masterzielserver** aus, und klicken Sie auf „Deinstallieren“.
+
+### <a name="uninstall-using-command-line"></a>Deinstallieren mithilfe der Befehlszeile
+1. Öffnen Sie eine Administratoreingabeaufforderung
+2. Führen Sie den folgenden Befehl zum Deinstallieren von Mobility Service aus.
+
+```
+MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
+```
+
+## <a name="uninstall-mobility-service-on-linux-computers"></a>Deinstallieren von Mobility Service auf Linux-Computern
+1. Melden Sie sich als **Root-Benutzer** auf dem Linux-Server an
+2. Navigieren Sie in einem **Terminal** zu /user/local/ASR
+3. Führen Sie den folgenden Befehl zum Deinstallieren von Mobility Service aus
+
+```
+uninstall.sh -Y
+```
 

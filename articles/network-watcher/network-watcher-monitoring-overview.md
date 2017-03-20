@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 3e7595baa26ba9eebfcb8a2fd5c2744d9c0fbfcb
-ms.openlocfilehash: 03dbde64aefc12145a589d8b741c67865162b9b5
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: f9e4fededc2bbb069cc653791137f248a7dc3fe8
+ms.lasthandoff: 03/04/2017
 
 ---
 
@@ -36,6 +36,8 @@ Dieser Artikel behandelt die Überwachung auf Szenario- und Ressourcenebene. Die
 
 Network Watcher ist ein regionaler Dienst, mit dem Sie Bedingungen auf der Ebene von Netzwerkszenarien in Azure überwachen und diagnostizieren können. Die Tools zur Netzwerkdiagnose und -visualisierung von Network Watcher helfen Ihnen dabei, Ihr Netzwerk in Azure zu verstehen, Diagnosen durchzuführen und Einblicke zu gewinnen.
 
+[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
+
 Network Watcher verfügt derzeit über die folgenden Funktionen:
 
 * **[Topologie:](network-watcher-topology-overview.md)** bietet eine Ansicht auf Netzwerkebene mit verschiedenen Verbindungen und Beziehungen zwischen Netzwerkressourcen innerhalb einer Ressourcengruppe
@@ -50,7 +52,7 @@ Network Watcher verfügt derzeit über die folgenden Funktionen:
 
 ### <a name="role-based-access-control-rbac-in-network-watcher"></a>Rollenbasierte Zugriffssteuerung (RBAC) in Network Watcher
 
-Network Watcher verwendet das [Azure-Modell zur rollenbasierten Zugriffssteuerung (RBAC)](../active-directory/role-based-access-control-what-is.md). Die folgende Berechtigung ist für Network Watcher in der Vorschau erforderlich. Sie müssen unbedingt sicherstellen, dass die Rolle zum Initiieren von Network Watcher-APIs oder zum Verwenden von Network Watcher über das Portal über die erforderlichen Zugriffsberechtigungen verfügt.
+Network Watcher verwendet das [Azure-Modell zur rollenbasierten Zugriffssteuerung (RBAC)](../active-directory/role-based-access-control-what-is.md). Die folgenden Berechtigungen sind für Network Watcher in der Vorschau erforderlich. Sie müssen unbedingt sicherstellen, dass die Rolle zum Initiieren von Network Watcher-APIs oder zum Verwenden von Network Watcher über das Portal über die erforderlichen Zugriffsberechtigungen verfügt.
 
 |Ressource| Berechtigung|
 |---|---|

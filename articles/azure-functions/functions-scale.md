@@ -18,9 +18,9 @@ ms.date: 02/27/2017
 ms.author: dariagrigoriu, glenga
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 1c740ac1f98a07b08bdf922dde99ce54bac23ee5
-ms.openlocfilehash: e41e246b081efbdf5edf70ee5de86cd2a68043b2
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: f4d589382fe337549f117e7c03af6fd5e237491f
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -49,6 +49,12 @@ In einem **App Service-Plan** werden Ihre Funktionen-Apps auf dedizierten virtue
 Der Verbrauchsplan skaliert CPU- und Arbeitsspeicherressourcen automatisch, indem basierend auf den Laufzeitanforderungen der Funktionen in der Funktionen-App weitere Verarbeitungsinstanzen hinzugefügt werden. Jeder Verarbeitungsinstanz der Funktionen-App werden bis zu 1,5 GB Arbeitsspeicherressourcen zugewiesen.
 
 Wenn bei der Ausführung eines Verbrauchsplans eine App-Funktion im Leerlauf ist, kann es möglicherweise bis zu 10 Minuten dauern, bis neue Blobs erstellt werden. Sobald die Funktionen-App ausgeführt wird, werden die Blobs schneller verarbeitet. Um diese anfängliche Verzögerung zu vermeiden, verwenden Sie entweder einen regulären App Service-Plan mit aktivierter Always On-Option oder einen anderen Mechanismus, um die Blobverarbeitung auszulösen, z.B. eine Warteschlangennachricht mit dem Blobnamen. 
+
+Beim Erstellen einer Funktionen-App müssen Sie ein allgemeines Azure Storage-Konto erstellen oder verknüpfen, das Blob-, Warteschlangen- und Tabellenspeicher unterstützt. Intern verwendet Azure Functions Azure Storage für Vorgänge wie das Verwalten von Triggern und Ausführungen von Protokollierfunktionen. Manche Speicherkonten unterstützen keine Warteschlangen und Tabellen, wie z.B. reine Blobspeicherkonten (darunter Storage Premium) und allgemeine Speicherkonten mit Replikation von ZRS. Diese Konten werden aus dem Blatt „Speicherkonto“ herausgefiltert, wenn eine neue Funktionen-App erstellt wird.
+
+Wenn der verbrauchsbasierte Hostingplan verwendet wird, wird der Inhalt von Funktionen-Apps (z.B. Funktionscodedateien und Bindungskonfigurationen) in Azure Files-Freigaben auf dem Hauptspeicherkonto gespeichert. Wenn Sie das Hauptspeicherkonto löschen, wird dieser Inhalt ebenfalls gelöscht und kann nicht wiederhergestellt werden.
+
+Weitere Informationen zu Typen von Speicherkonten finden Sie unter [Einführung in die Azure Storage-Dienste] (../storage/storage-introduction.md#introducing-the-azure-storage-services).
 
 ### <a name="runtime-scaling"></a>Laufzeitskalierung
 
