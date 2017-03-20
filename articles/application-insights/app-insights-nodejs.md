@@ -14,9 +14,9 @@ ms.topic: get-started-article
 ms.date: 02/23/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 46b829ce52994a5112494145a02e78859c5fae2d
-ms.openlocfilehash: d4c7fa2058b1c07671329304c37630d2e6e8e8a7
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: bc7b0d4037effd7bcc8685a357a49de339e31d7b
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -34,7 +34,7 @@ Erforderlich:
 
 * Ein Abonnement für [Microsoft Azure](http://azure.com). Wenn Ihr Team oder Ihre Organisation über ein Azure-Abonnement verfügt, kann der Besitzer Sie mit Ihrem [Microsoft-Konto](http://live.com)hinzufügen.
 
-## <a name="a-nameaddacreate-an-application-insights-resource"></a><a name="add"></a>Erstellen einer Application Insights-Ressource
+## <a name="add"></a>Erstellen einer Application Insights-Ressource
 Melden Sie sich beim [Azure-Portal][portal] an, und erstellen Sie eine neue Application Insights-Ressource. Eine [Ressource][roles] ist in Azure eine Instanz eines Diensts. In dieser Ressource werden Telemetriedaten aus Ihrer App analysiert und Ihnen angezeigt.
 
 ![Klicken Sie auf "Neu > Application Insights"](./media/app-insights-nodejs/01-new-asp.png)
@@ -46,7 +46,7 @@ Der Schlüssel identifiziert die Ressource, den Sie bald im SDK installieren kö
 
 ![Klicken Sie auf "Eigenschaften", wählen Sie den Schlüssel aus, und drücken Sie STRG+C](./media/app-insights-nodejs/02-props-asp.png)
 
-## <a name="a-namesdka-install-the-sdk-in-your-application"></a><a name="sdk"></a> Installieren des SDK in Ihrer Anwendung
+## <a name="sdk"></a> Installieren des SDK in Ihrer Anwendung
 ```
 npm install applicationinsights --save
 ```
@@ -64,10 +64,10 @@ Der Instrumentierungsschlüssel kann auch in der Umgebungsvariablen APPINSIGHTS_
 
 Sie können das SDK testen, ohne Telemetriedaten zu senden: Legen Sie als Instrumentierungsschlüssel eine nicht leere Zeichenfolge fest.
 
-## <a name="a-nameruna-run-your-project"></a><a name="run"></a> Ausführen des Projekts
+## <a name="run"></a> Ausführen des Projekts
 Starten Sie Ihre Anwendung, und testen Sie sie: Öffnen Sie verschiedene Seiten, um einige Telemetriedaten zu generieren.
 
-## <a name="a-namemonitora-view-your-telemetry"></a><a name="monitor"></a> Anzeigen der Telemetrie
+## <a name="monitor"></a> Anzeigen der Telemetrie
 Kehren Sie zum [Azure-Portal](https://portal.azure.com) zurück, und navigieren Sie zur Application Insights-Ressource.
 
 Suchen Sie nach Daten auf der Übersichtsseite. Zuerst sehen Sie lediglich einen oder zwei Punkte. Zum Beispiel:
@@ -86,10 +86,7 @@ Klicken Sie sich durch ein beliebiges Diagramm, um ausführlichere Metriken anzu
 Stellen Sie jetzt Ihre Anwendung für IIS bereit, und beobachten Sie, wie die Daten gesammelt werden.
 
 #### <a name="no-data-after-you-publish-to-your-server"></a>Keine Daten nach dem Veröffentlichen auf Ihrem Server?
-Öffnen Sie diese Ports für den ausgehenden Datenverkehr in der Firewall des Servers:
-
-* `dc.services.visualstudio.com:443`
-* `f5.services.visualstudio.com:443`
+Stellen Sie sicher, dass [die erforderlichen Firewallports geöffnet sind](app-insights-ip-addresses.md).
 
 #### <a name="trouble-on-your-build-server"></a>Probleme auf dem Buildserver?
 Weitere Informationen finden Sie in [diesem Artikel zur Problembehandlung](app-insights-asp-net-troubleshoot-no-data.md#NuGetBuild).

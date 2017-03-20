@@ -3,8 +3,8 @@ title: 'Azure Active Directory B2C: Registrierung einer Anwendung | Microsoft Do
 description: Registrieren Ihrer Anwendung bei Azure Active Directory B2C
 services: active-directory-b2c
 documentationcenter: 
-author: swkrish
-manager: mbaldwin
+author: parakhj
+manager: krassk
 editor: bryanla
 ms.assetid: 20e92275-b25d-45dd-9090-181a60c99f69
 ms.service: active-directory-b2c
@@ -12,15 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/06/2016
-ms.author: swkrish
+ms.date: 3/13/2017
+ms.author: parakhj
 translationtype: Human Translation
-ms.sourcegitcommit: fd22e9596feecbc12e577a4abfb47552e1b6e520
-ms.openlocfilehash: da8f083cb7bca59501df080036e789a0fb75731e
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 541849501335fb25d96cffa81b8119adc158cdd7
+ms.lasthandoff: 03/14/2017
 
 
 ---
 # <a name="azure-active-directory-b2c-register-your-application"></a>Azure Active Directory B2C: Registrieren der Anwendung
+
+> [!IMPORTANT]
+> Anwendungen, die im Azure-Portal auf dem Blatt „Azure AD B2C“ erstellt wurden, müssen am selben Speicherort verwaltet werden. Mit PowerShell oder über ein anderes Portal bearbeitete B2C-Anwendungen werden nicht mehr unterstützt und können voraussichtlich nicht mehr mit Azure Active Directory B2C verwendet werden.
+> 
+> 
+
 ## <a name="prerequisite"></a>Voraussetzung
 Zum Erstellen einer Anwendung, die Registrierungen und Anmeldungen von Kunden akzeptiert, müssen Sie die Anwendung zunächst bei einem Azure Active Directory B2C-Mandanten registrieren. Erstellen Sie einen eigenen Mandanten mithilfe der unter [Erstellen eines Azure AD B2C-Mandanten](active-directory-b2c-get-started.md)beschriebenen Schritte. Nachdem Sie alle Schritte in diesem Artikel ausgeführt haben, ist das Blatt „B2C-Funktionen“ an Ihr Startmenü angeheftet.
 
@@ -32,37 +39,45 @@ Wenn das Blatt „B2C-Funktionen“ an Ihr Startmenü angeheftet ist, sehen Sie 
 Sie können auf das Blatt auch zugreifen, indem Sie im [Azure-Portal](https://portal.azure.com/) im linken Navigationsbereich auf **Weitere Dienste** klicken und dann nach **Azure AD B2C** suchen.
 
 > [!IMPORTANT]
-> Sie müssen als globaler Administrator des B2C-Mandanten festgelegt sein, um auf das Blade mit den B2C-Features zugreifen zu können. Globale Administratoren anderer Mandanten oder Benutzer von Mandanten haben keinen Zugriff.  Mit dem Mandantenumschalter in der oberen rechten Ecke des Azure-Portals können Sie zu Ihrem B2C-Mandanten wechseln.
+> Sie müssen als globaler Administrator des B2C-Mandanten festgelegt sein, um auf das Blade mit den B2C-Features zugreifen zu können. Globale Administratoren anderer Mandanten oder Benutzer von Mandanten haben keinen Zugriff.  Mit dem Mandantenumschalter oben rechts im Azure-Portals können Sie zu Ihrem B2C-Mandanten wechseln.
 > 
 > 
 
-## <a name="register-an-application"></a>Registrieren einer Anwendung
+## <a name="register-a-web-application"></a>Registrieren einer Webanwendung
 1. Klicken Sie auf dem Blatt „B2C-Funktionen“ im Azure-Portal auf **Anwendungen**.
 2. Klicken Sie oben auf dem Blatt auf **+Hinzufügen** .
 3. Geben Sie einen **Namen** für die Anwendung ein, der die Funktion der Anwendung für Kunden beschreibt. Sie könnten z. B. „Contoso B2C-App“ eingeben.
-4. Wenn Sie eine webbasierte Anwendung entwickeln, stellen Sie den Schalter **Web-App/Web-API** einschließen auf **Ja**. Die **Antwort-URLs** sind Endpunkte, an denen Azure AD B2C von Ihrer Anwendung angeforderte Token zurückgibt. Geben Sie z. B. Folgendes ein: `https://localhost:44316/`. Falls Ihre Webanwendung auch eine durch Azure AD B2C geschützte Web-API aufruft, wird darüber hinaus die Erstellung eines geheimen **Anwendungsschlüssels** empfohlen. Klicken Sie dazu auf die Schaltfläche **Schlüssel generieren**.
-   
-   > [!NOTE]
-   > **Geheime Anwendungsschlüssel** sind wichtige Sicherheitsanmeldeinformationen, die entsprechend geschützt werden müssen.
-   > 
-   > 
-5. Wenn Sie eine mobile Anwendung entwickeln, stellen Sie den Schalter **Nativen Client einschließen** auf **Ja**. Notieren Sie sich den standardmäßigen **Umleitungs-URI** , der automatisch für Sie erstellt wurde.
-6. Klicken Sie auf **Erstellen** , um Ihre Anwendung zu registrieren.
+4. Stellen Sie den Schalter **Web-App/Web-API einschließen** auf **Ja**. Die **Antwort-URLs** sind Endpunkte, an denen Azure AD B2C von Ihrer Anwendung angeforderte Token zurückgibt. Geben Sie z. B. Folgendes ein: `https://localhost:44316/`.
+5. Klicken Sie auf **Speichern**, um Ihre Anwendung zu registrieren.
+6. Klicken Sie auf die soeben erstellte Anwendung, und notieren Sie sich die global eindeutige **Anwendungsclient-ID** zur späteren Verwendung in Ihrem Code.
+
+
+## <a name="register-a-web-api"></a>Registrieren einer Web-API
+1. Klicken Sie auf dem Blatt „B2C-Funktionen“ im Azure-Portal auf **Anwendungen**.
+2. Klicken Sie oben auf dem Blatt auf **+Hinzufügen** .
+3. Geben Sie einen **Namen** für die Anwendung ein, der die Funktion der Anwendung für Kunden beschreibt. Sie könnten z.B. „Contoso B2C-API“ eingeben.
+4. Stellen Sie den Schalter **Web-App/Web-API einschließen** auf **Ja**. Die **Antwort-URLs** sind Endpunkte, an denen Azure AD B2C von Ihrer Anwendung angeforderte Token zurückgibt. Geben Sie z. B. Folgendes ein: `https://localhost:44316/`.
+5. Klicken Sie auf **Speichern**, um Ihre Anwendung zu registrieren.
+6. Klicken Sie auf die soeben erstellte Anwendung, und notieren Sie sich die global eindeutige **Anwendungsclient-ID** zur späteren Verwendung in Ihrem Code.
+
+
+## <a name="register-a-mobilenative-application"></a>Registrieren einer mobilen/systemeigenen Anwendung
+1. Klicken Sie auf dem Blatt „B2C-Funktionen“ im Azure-Portal auf **Anwendungen**.
+2. Klicken Sie oben auf dem Blatt auf **+Hinzufügen** .
+3. Geben Sie einen **Namen** für die Anwendung ein, der die Funktion der Anwendung für Kunden beschreibt. Sie könnten z. B. „Contoso B2C-App“ eingeben.
+4. Stellen Sie den Schalter **Nativen Client einschließen** auf **Ja**.
+5. Geben Sie einen **Umleitungs-URI** mit einem benutzerdefinierten Schema ein. Beispielsweise „com.onmicrosoft.contoso.appname://redirect/path“. Achten Sie darauf, einen [funktionierenden Umleitungs-URI](#choosing-a-redirect-uri) zu wählen.
+6. Klicken Sie auf **Speichern**, um Ihre Anwendung zu registrieren.
 7. Klicken Sie auf die soeben erstellte Anwendung, und notieren Sie sich die global eindeutige **Anwendungsclient-ID** zur späteren Verwendung in Ihrem Code.
 
-> [!IMPORTANT]
-> Über das Blatt „B2C-Funktionen“ erstellte Anwendungen müssen am gleichen Ort verwaltet werden. Mit PowerShell oder über ein anderes Portal bearbeitete B2C-Anwendungen werden nicht mehr unterstützt und können voraussichtlich nicht mehr mit Azure Active Directory B2C verwendet werden.
-> 
-> 
+### <a name="choosing-a-redirect-uri"></a>Wählen eines Umleitungs-URIs
+Bei der Auswahl eines Umleitungs-URIs für mobile/systemeigene Anwendungen sind zwei Aspekte zu berücksichtigen: 
+* **Eindeutigkeit**: Das Schema des Umleitungs-URIS muss für jede Anwendung eindeutig sein. In unserem Beispiel (com.onmicrosoft.contoso.appname://redirect/path) verwenden wir „com.onmicrosoft.contoso.appname“ als Schema. Es wird empfohlen, diesem Muster zu folgen. Wenn zwei Anwendungen dasselbe Schema verwenden, wird den Benutzer das Dialogfeld „App auswählen“ angezeigt. Wenn der Benutzer die falsche Auswahl trifft, schlägt die Anmeldung fehl. 
+* **Vollständigkeit**: Der Umleitungs-URI muss ein Schema und einen Pfad aufweisen. Der Pfad muss nach der Domäne mindestens ein Schrägstrich enthalten (Beispiel: „//contoso/“ funktioniert, aber „//contoso“ schlägt fehl). 
 
 ## <a name="build-a-quick-start-application"></a>Erstellen einer Schnellstart-App
 Nachdem Sie nun über eine bei Azure AD B2C registrierte Anwendung verfügen, können Sie zum Einstieg eines der Schnellstarttutorials ausführen. Hier sind einige Vorschläge:
 
 [!INCLUDE [active-directory-v2-quickstart-table](../../includes/active-directory-b2c-quickstart-table.md)]
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 
