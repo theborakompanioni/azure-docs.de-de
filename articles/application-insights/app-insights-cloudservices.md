@@ -4,7 +4,7 @@ description: "Effektives Überwachen Ihrer Web- und Workerrollen mit Application
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 editor: alancameronwills
 ms.assetid: 5c7a5b34-329e-42b7-9330-9dcbb9ff1f88
 ms.service: application-insights
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.tgt_pltfrm: ibiza
 ms.topic: article
 ms.workload: tbd
-ms.date: 11/02/2016
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 4fbfb24a2e9d55d718902d468bd25e12f64e7d24
-ms.openlocfilehash: 925411deed422af00b10ff6787606f5039a5fb23
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 42e4fe54eec414549f09b93a3e12ea130eeee68f
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -98,19 +99,19 @@ Dadurch werden die Application Insights-Instrumentierungsschlüssel in die Datei
 
 Wenn Sie festlegen möchten, welche Diagnosedaten an Application Insights gesendet werden, können Sie dies [direkt durch Bearbeiten der CSCFG-Dateien](app-insights-azure-diagnostics.md) erledigen.
 
-## <a name="a-namesdkainstall-the-sdk-in-each-project"></a><a name="sdk"></a>Installieren des SDK in den einzelnen Projekten
+## <a name="sdk"></a>Installieren des SDK in den einzelnen Projekten
 Hierdurch haben Sie die Möglichkeit, allen Rollen benutzerdefinierte Geschäftstelemetriedaten hinzuzufügen. Dies ermöglicht eine genauere Analyse, wie die Anwendung verwendet und ausgeführt wird.
 
-Fügen Sie in Visual Studio jedem Cloud-App-Projekt das Application Insights SDK hinzu.
+Konfigurieren Sie in Visual Studio das Application Insights SDK für jedes Cloud-App-Projekt.
 
-1. Bearbeiten Sie die NuGet-Pakete des Projekts.
+1. **Webrollen**: Klicken Sie mit der rechten Maustaste auf das Projekt, und wählen Sie **Application Insights konfigurieren** oder **Hinzufügen > Application Insights-Telemetrie**.
    
-    ![Klicken Sie mit der rechten Maustaste auf das Projekt, und wählen Sie "NuGet-Pakete verwalten".](./media/app-insights-cloudservices/03-nuget.png)
-2. **Webrollen:** Fügen Sie [Application Insights for Web](http://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) hinzu. Diese Version des SDK enthält Module, die HTTP-Anforderungsdaten erfassen und Serverkontext wie z.B. Rolleninformationen hinzufügen.
-   
-    **Workerrollen:** Fügen Sie [Application Insights for Windows Servers](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) hinzu.
+2. **Workerrollen**: 
+ * Klicken Sie mit der rechten Maustaste auf das Projekt, und wählen Sie **NuGet-Pakete verwalten**.
+ * Fügen Sie [Application Insights für Windows-Dienste](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) hinzu.
    
     ![Suchen Sie nach "Application Insights".](./media/app-insights-cloudservices/04-ai-nuget.png)
+
 3. Konfigurieren Sie das SDK zum Senden von Daten an die Application Insights-Ressource.
    
     Legen Sie in einer geeigneten Startfunktion den Instrumentierungsschlüssel aus der Konfigurationseinstellung in der CSCFG-Datei fest:
@@ -245,9 +246,4 @@ Haben Sie für .NET 4.6 erstellt? 4.6 wird nicht automatisch in Azure Cloud Ser
 [qna]: app-insights-troubleshoot-faq.md
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md 
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

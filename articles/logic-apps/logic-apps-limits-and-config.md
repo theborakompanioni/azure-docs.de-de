@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 084919e9dbe3647c45cf67e6836a8c9de6a5cd70
-ms.openlocfilehash: 307a70b5efb22642e54212d8d3517bf5d9070505
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 7427a5740dd7fe32aeb4d8396568706399c66bd7
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -35,13 +35,13 @@ Dies sind die Grenzwerte für eine einzelne HTTP-Anforderung und/oder einen Conn
 
 |Name|Begrenzung|Hinweise|
 |----|----|----|
-|Anforderungstimeout|90 Sekunden|Bei Bedarf können ein [asynchrones Muster](../logic-apps/logic-apps-create-api-app.md) oder eine [Until-Schleife](logic-apps-loops-and-scopes.md) zur Kompensation verwendet werden.|
+|Anforderungstimeout|120 Sekunden|Bei Bedarf können ein [asynchrones Muster](../logic-apps/logic-apps-create-api-app.md) oder eine [Until-Schleife](logic-apps-loops-and-scopes.md) zur Kompensation verwendet werden.|
 
 #### <a name="message-size"></a>Nachrichtengröße
 
 |Name|Begrenzung|Hinweise|
 |----|----|----|
-|Nachrichtengröße|50 MB|Einige Connectors und APIs unterstützen unter Umständen nicht 50 MB. |
+|Nachrichtengröße|100 MB|Einige Connectors und APIs unterstützen unter Umständen nicht 100 MB. |
 |Grenzwert für die Auswertung von Ausdrücken|131.072 Zeichen|`@concat()`, `@base64()`, `string` dürfen nicht länger sein.|
 
 #### <a name="retry-policy"></a>Wiederholungsrichtlinie
@@ -50,7 +50,7 @@ Dies sind die Grenzwerte für eine einzelne HTTP-Anforderung und/oder einen Conn
 |----|----|----|
 |Wiederholungsversuche|4|Konfiguration mit dem [Parameter für die Wiederholungsrichtlinie](https://msdn.microsoft.com/en-us/library/azure/mt643939.aspx)|
 |Maximale Wiederholungsverzögerung|1 Stunde|Konfiguration mit dem [Parameter für die Wiederholungsrichtlinie](https://msdn.microsoft.com/en-us/library/azure/mt643939.aspx)|
-|Minimale Wiederholungsverzögerung|20 Sekunden|Konfiguration mit dem [Parameter für die Wiederholungsrichtlinie](https://msdn.microsoft.com/en-us/library/azure/mt643939.aspx)|
+|Minimale Wiederholungsverzögerung|5 Sekunden|Konfiguration mit dem [Parameter für die Wiederholungsrichtlinie](https://msdn.microsoft.com/en-us/library/azure/mt643939.aspx)|
 
 ### <a name="run-duration-and-retention"></a>Ausführungsdauer und Aufbewahrung
 
@@ -93,7 +93,7 @@ Dies sind die Grenzwerte für eine einzelne Logik-App-Definition.
 |----|----|----|
 |Aktionen pro Workflow|250|Bei Bedarf können Sie geschachtelte Workflows als Erweiterung hinzufügen.|
 |Zulässige Schachtelungstiefe für Aktion|5|Bei Bedarf können Sie geschachtelte Workflows als Erweiterung hinzufügen.|
-|Flüsse pro Region und Abonnement|1000||
+|Workflows pro Region und Abonnement|1000||
 |Trigger pro Workflow|10||
 |Maximale Anzahl von Zeichen pro Ausdruck|8.192||
 |Max. `trackedProperties`-Größe in Zeichen|16.000|
@@ -134,6 +134,8 @@ Aufrufe, die direkt aus einer Logik-App erfolgen (d.h. über [HTTP](../connector
 |Australien (Osten)|13.75.153.66, 104.210.89.222, 104.210.89.244, 13.75.149.4, 104.210.91.55, 104.210.90.241|
 |Australien (Südosten)|13.73.115.153, 40.115.78.70, 40.115.78.237, 13.73.114.207, 13.77.3.139, 13.70.159.205|
 |Brasilien Süd|191.235.86.199, 191.235.95.229, 191.235.94.220, 191.235.82.221, 191.235.91.7, 191.234.182.26|
+|Kanada, Mitte|52.233.29.92,52.228.39.241,52.228.39.244|
+|Kanada, Osten|52.232.128.155,52.229.120.45,52.229.126.25|
 |Indien (Mitte)|52.172.157.194, 52.172.184.192, 52.172.191.194, 52.172.154.168, 52.172.186.159, 52.172.185.79|
 |USA (Mitte)|13.67.236.76, 40.77.111.254, 40.77.31.87, 13.67.236.125, 104.208.25.27, 40.122.170.198|
 |Asien (Osten)|168.63.200.173, 13.75.89.159, 23.97.68.172, 13.75.94.173, 40.83.127.19, 52.175.33.254|
@@ -159,6 +161,8 @@ Aufrufe, die über einen [Connector](../connectors/apis-list.md) durchgeführt w
 |Australien (Osten)|40.126.251.213|
 |Australien (Südosten)|40.127.80.34|
 |Brasilien Süd|191.232.38.129|
+|Kanada, Mitte|52.233.31.197,52.228.42.205,52.228.33.76,52.228.34.13|
+|Kanada, Osten|52.229.123.98,52.229.120.178,52.229.126.202,52.229.120.52|
 |Indien (Mitte)|104.211.98.164|
 |USA (Mitte)|40.122.49.51|
 |Ostasien|23.99.116.181|

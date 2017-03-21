@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/16/2017
+ms.date: 03/13/2017
 ms.author: sethm;jotaub;shvija
 translationtype: Human Translation
-ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
-ms.openlocfilehash: 59622f283daeca59464dfb7a13ca76c7a0148a21
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 7bae4ae6d41e6dc6515a3fcdf574ffd193ae1aa3
+ms.lasthandoff: 03/14/2017
 
 ---
 
@@ -26,7 +26,13 @@ ms.lasthandoff: 03/03/2017
 ## <a name="general"></a>Allgemein
 
 ### <a name="what-is-the-difference-between-event-hubs-basic-and-standard-tiers"></a>Was ist der Unterschied zwischen den Event Hubs-Ebenen Basic und Standard?
-Event Hubs im Standard-Tarif bieten mehr Features als der Basic-Tarif sowie einige vergleichbare Systeme. Zu diesen Features gehören Aufbewahrungszeiträume von mehr als 24 Stunden und die Fähigkeit, eine einzelne AMQP-Verbindung zum Senden von Befehlen an eine große Anzahl von Geräten mit einer Latenz von Sekundenbruchteilen sowie Telemetriedaten von diesen Geräten an Event Hubs zu senden. Der Standard-Tarif bietet auch das Feature [Archive](https://docs.microsoft.com/azure/event-hubs/event-hubs-archive-overview). Eine Liste der Features finden Sie unter [Event Hubs Preise](https://azure.microsoft.com/pricing/details/event-hubs/).
+Im Standard-Tarif von Azure Event Hubs stehen Ihnen mehr Funktionen als im Basic-Tarif zur Verfügung. Die folgenden Features sind in Standard enthalten:
+* Längere Aufbewahrung von Ereignissen
+* Zusätzliche Brokerverbindungen (Bei Überschreitung der enthaltenen Anzahl fällt eine Zusatzgebühr an.)
+* Mehr als eine Consumergruppe
+* [Archivieren](https://docs.microsoft.com/azure/event-hubs/event-hubs-archive-overview)
+
+Ausführliche Informationen zu den Tarifen, u.a. für Dedicated Event Hubs, finden Sie unter [Event Hubs – Preise](https://azure.microsoft.com/pricing/details/event-hubs/).
 
 ### <a name="what-are-event-hubs-throughput-units"></a>Was sind Event Hubs-Durchsatzeinheiten?
 Sie wählen die Event Hubs-Durchsatzeinheiten explizit aus, entweder über das Azure-Portal oder mithilfe von Event Hubs Resource Manager-Vorlagen. Durchsatzeinheiten betreffen alle Event Hubs in einem Event Hubs-Namespace, und durch jede Durchsatzeinheit erhält der Namespace die Berechtigung für folgende Funktionen:

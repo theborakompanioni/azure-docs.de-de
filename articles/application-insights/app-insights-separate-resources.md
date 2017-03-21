@@ -4,18 +4,19 @@ description: "Überwachen der Leistung und Nutzung Ihrer Anwendung in verschiede
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: 578e30f0-31ed-4f39-baa8-01b4c2f310c9
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2016
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 96614dd3c0bf9c55ffd81d0912ecb62b71c32b22
-ms.openlocfilehash: 2eeb22d310a3aa67bacf821d319fb2919d0b536f
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 43fb1e764c929be14d42c3d214b051aeb5367d77
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -24,7 +25,7 @@ Sollten Telemetriedaten aus verschiedenen Komponenten und Versionen einer Anwend
 
 Aber betrachten wir zunächst genauer, worauf die Frage abzielt. Die von Ihrer Anwendung empfangenen Daten werden von Application Insights in einer Microsoft Azure- *Ressource*gespeichert und verarbeitet. Jede Ressource wird durch einen *Instrumentierungsschlüssel* (iKey) identifiziert. In Ihrer App wird der Schlüssel dem Application Insights-SDK bereitgestellt, sodass es die gesammelten Daten an die richtige Ressource senden kann. Der Schlüssel kann im Code oder in "ApplicationInsights.config" bereitgestellt werden. Durch Ändern des Schlüssels im SDK können Sie Daten an andere Ressourcen weiterleiten. 
 
-Ein einfacher Fall als Beispiel: Wenn Sie Code für eine neue Anwendung erstellen, erstellen Sie auch eine neue Ressource in Application Insights. In Visual Studio übernimmt der Dialog *Neues Projekt* das für Sie.
+Ein einfacher Fall als Beispiel: Wenn Sie eine Anwendung in Application Insights registrieren, erstellen Sie auch eine neue Ressource in Application Insights. In Visual Studio erfolgen diese Schritte im Dialogfeld *Application Insights konfigurieren* bzw. *Application Insights hinzufügen*.
 
 Wenn es sich um eine Website mit großem Datenvolumen handelt, wird sie unter Umständen auf mehreren Serverinstanzen bereitgestellt.
 
@@ -61,7 +62,7 @@ Damit Sie den Schlüssel bei der Veröffentlichung Ihrer App leichter automatisc
 
 (Wenn Ihr System ein Azure-Clouddienst ist, gibt es [eine weitere Methode zum Festlegen von separaten iKeys](app-insights-cloudservices.md).)
 
-### <a name="a-namedynamic-ikeya-dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a> Dynamischer Instrumentierungsschlüssel
+### <a name="dynamic-ikey"></a> Dynamischer Instrumentierungsschlüssel
 Legen Sie den Schlüssel in einer Initialisierungsmethode fest, wie z. B. "global.aspx.cs" in einem ASP.NET-Dienst:
 
 *C#*
@@ -115,10 +116,5 @@ Der Instrumentierungsschlüssel identifiziert die Ressource, die Sie erstellt ha
 ![Klicken Sie auf "Essentials", klicken Sie auf den Instrumentierungsschlüssel, STRG+C.](./media/app-insights-separate-resources/02-props.png)
 
 Sie benötigen die Instrumentierungsschlüssel aller Ressourcen, an die Ihre App Daten sendet.
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

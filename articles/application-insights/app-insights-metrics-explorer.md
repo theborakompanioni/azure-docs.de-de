@@ -11,12 +11,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 02/03/2017
+ms.date: 03/08/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: f3a8ef4a166a061e1f4e7ce056255e02b810c196
-ms.openlocfilehash: 1f8083e095ee3c207d3d6d9178017e2dc1670fde
-ms.lasthandoff: 02/08/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: ee759149df038ac08f0d5987c3577454a81999db
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -29,7 +29,7 @@ Hier sehen Sie einige Beispiele für Diagramme:
 
 ![](./media/app-insights-metrics-explorer/01-overview.png)
 
-Metrikdiagramme finden Sie überall im Application Insights-Portal. In den meisten Fällen lassen sich diese anpassen, und Sie können dem Blatt weitere Diagramme hinzufügen. Klicken Sie auf dem Blatt „Übersicht“, um ausführlichere Diagramme anzuzeigen (mit Titeln wie z.B. „Serverantworten“), oder klicken Sie auf **Metrik-Explorer**, um ein neues Blatt zu öffnen, auf dem Sie benutzerdefinierte Diagramme erstellen können.
+Metrikdiagramme finden Sie überall im Application Insights-Portal. In den meisten Fällen lassen sich diese anpassen, und Sie können dem Blatt weitere Diagramme hinzufügen. Klicken Sie auf dem Blatt „Übersicht“, um ausführlichere Diagramme anzuzeigen (mit Titeln wie z.B. „Server“), oder klicken Sie auf **Metrik-Explorer**, um ein neues Blatt zu öffnen, auf dem Sie benutzerdefinierte Diagramme erstellen können.
 
 ## <a name="time-range"></a>Zeitbereich
 Sie können den Zeitbereich der Diagramme oder Raster auf jedem Blatt ändern.
@@ -175,16 +175,6 @@ Fügen Sie eine Benachrichtigung hinzu, wenn Sie per E-Mail über ungewöhnliche
 
 [Weitere Informationen zu Warnungen][alerts]
 
-## <a name="export-to-excel"></a>Exportieren in Excel
-Sie können im Metrik-Explorer angezeigte Metrikdaten in eine Excel-Datei exportieren. Die exportierten Daten enthalten Daten aus allen Diagrammen und Tabellen, die im Portal angezeigt werden.
-
-![Wählen Sie im Metrik-Explorer "Warnungsregeln", "Warnung hinzufügen"](./media/app-insights-metrics-explorer/31-export.png)
-
-Die Daten jedes Diagramms und jeder Tabelle werden in separate Blätter der Excel-Datei exportiert.
-
-Die Dateien, die Ihnen angezeigt werden, werden exportiert. Ändern Sie den Zeitraum oder die Filter, wenn Sie den zu exportierenden Datenbereich ändern möchten. Wenn bei Tabellen der Befehl **Weitere laden** angezeigt wird, können Sie darauf klicken, bevor Sie auf "Exportieren" klicken, um mehr Daten zu exportieren.
-
-*Der Export funktioniert zurzeit nur mit Internet Explorer und Chrome. Unterstützung für weitere Browser wird in Zukunft verfügbar sein.*
 
 ## <a name="continuous-export"></a>Fortlaufender Export
 Wenn Sie Daten zur externen Verarbeitung fortlaufend exportieren möchten, sollten Sie die Funktion [Fortlaufender Export](app-insights-export-telemetry.md)verwenden.
@@ -193,7 +183,9 @@ Wenn Sie Daten zur externen Verarbeitung fortlaufend exportieren möchten, sollt
 Wenn Sie umfangreichere Ansichten der Daten wünschen, können Sie sie [nach Power BI exportieren](http://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx).
 
 ## <a name="analytics"></a>Analyse
-[Analytics](app-insights-analytics.md) bietet eine vielseitigere Möglichkeit zum Analysieren Ihrer Telemetriedaten mit einer leistungsfähigen Abfragesprache. Verwenden Sie sie, wenn Sie Ergebnisse von Metriken kombinieren oder berechnen oder eine eingehende Untersuchung der kürzlich erreichten Leistung Ihrer App durchführen möchten. Verwenden Sie dagegen den Metrik-Explorer, wenn Sie eine automatische Aktualisierung, Diagramme im Dashboard und Warnungen verwenden möchten.
+[Analytics](app-insights-analytics.md) bietet eine vielseitigere Möglichkeit zum Analysieren Ihrer Telemetriedaten mit einer leistungsfähigen Abfragesprache. Verwenden Sie sie, wenn Sie Ergebnisse von Metriken kombinieren oder berechnen oder eine eingehende Untersuchung der kürzlich erreichten Leistung Ihrer App durchführen möchten. 
+
+In einem Metrikdiagramm können Sie auf das Symbol „Analyse“ klicken, um direkt die entsprechende Analytics-Abfrage aufzurufen.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 *In meinem Diagramm werden keine Daten angezeigt.*

@@ -12,12 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/01/2017
+ms.date: 03/02/2017
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: 3693b90509646fd7292861979cd7c2d1c0100d68
-ms.openlocfilehash: 30e92d17a99a0c751397e448108d488aefdd557a
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: ca55f1c295d99ff92abaef1a919d4c90d3c33b8a
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -32,13 +32,13 @@ Cloudanwendungen sind komplexe Systeme mit zahlreichen Variablen. Die Überwachu
 
 Im folgenden Diagramm wird das Konzept der Azure-Überwachung dargestellt (einschließlich der Art von Protokollen, die Sie erfassen können, und den Verwendungsmöglichkeiten der jeweiligen Daten):   
 
-![Logisches Modell zur Überwachung und Diagnose für Nicht-Computeressourcen](./media/monitoring-overview/MonitoringAzureResources-non-compute_v3.png)
+![Modell zur Überwachung und Diagnose für Nicht-Computeressourcen](./media/monitoring-overview/Monitoring_Azure_Resources-compute_v4.png)
 
 Abbildung 1: Konzeptmodell zur Überwachung und Diagnose computefremder Ressourcen
 
 <br/>
 
-![Logisches Modell zur Überwachung und Diagnose für Computeressourcen](./media/monitoring-overview/MonitoringAzureResources-compute_v3.png)
+![Modell zur Überwachung und Diagnose für Computeressourcen](./media/monitoring-overview/Monitoring_Azure_Resources-non-compute_v4.png)
 
 Abbildung 2: Konzeptmodell zur Überwachung und Diagnose von Computeressourcen
 
@@ -114,7 +114,8 @@ Beispiele:
 * Senden der Daten an Event Hubs, um sie an Drittanbietertools weiterleiten und Echtzeitanalysen durchführen zu können
 
 ### <a name="automate"></a>Automatisieren
-Sie können die Überwachungsdaten nutzen, um Warnungen, Ereignisse oder sogar ganze Prozesse auszulösen. Beispiele:
+Sie können die Überwachungsdaten nutzen, um Warnungen, Ereignisse oder sogar ganze Prozesse auszulösen.
+Beispiele:
 
 * Verwenden der Daten, um Compute-Instanzen je nach Anwendungslast automatisch horizontal hoch- oder herunterzuskalieren
 * Senden von E-Mails, wenn eine Metrik einen vorgegebenen Schwellenwert überschreitet

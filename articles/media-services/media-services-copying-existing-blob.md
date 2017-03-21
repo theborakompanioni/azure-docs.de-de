@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/31/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: b74fbba254f73c1df388b2b0ff9134cc7b8a31e8
-ms.openlocfilehash: acc4780ea16f5a5ef0b87788b72595f29f6dcd89
-ms.lasthandoff: 02/14/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 14bdbe593d8c6ec5297ce37ce57b759deb533cec
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -151,6 +151,9 @@ Der folgende Code verwendet die Erweiterungsmethode **IAsset.Copy**, um alle Dat
 ### <a name="copy-blobs-from-some-storage-account-into-a-new-asset-in-a-ams-account"></a>Kopieren von Blobs aus einem Speicherkonto in ein neues Medienobjekt in einem AMS-Konto
 
 Der folgende Code kopiert Blobs aus einem Speicherkonto in ein Media Services-Medienobjekt. 
+
+>[!NOTE]
+>Es gilt ein Grenzwert von 1.000.000 Richtlinien für verschiedene AMS-Richtlinien (z.B. für die Locator-Richtlinie oder für ContentKeyAuthorizationPolicy). Wenn Sie immer die gleichen Tage/Zugriffsberechtigungen verwenden, z.B. Richtlinien für Locator, die für einen längeren Zeitraum vorgesehen sind (Richtlinien ohne Upload), sollten Sie dieselbe Richtlinien-ID verwenden. Weitere Informationen finden Sie in [diesem](media-services-dotnet-manage-entities.md#limit-access-policies) Thema.
 
     using System;
     using System.Configuration;

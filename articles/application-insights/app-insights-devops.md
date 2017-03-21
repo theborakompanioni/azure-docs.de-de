@@ -4,18 +4,19 @@ description: Application Insights im DevOps-Zyklus
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: 479522a9-ff5c-471e-a405-b8fa221aedb3
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
-ms.date: 11/16/2016
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
-ms.openlocfilehash: e5652353d658a5de197d71231f649c75fe3b245b
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 9f837ea815fdd3ea47608dc36029c35e92eda0ae
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -156,7 +157,7 @@ Wenn Sie Visual Studio Team Services verwenden, um Ihre App zu erstellen und ber
 ![Anmerkungen zum Build](./media/app-insights-devops/070.png)
 
 ### <a name="work-items"></a>Arbeitselemente
-Wenn eine Warnung ausgelöst wird, kann Application Insights automatisch ein Arbeitselement in Ihrem Arbeitsüberwachungssystem erstellen (zurzeit nur Visual Studio Team Services).
+Wenn eine Warnung ausgelöst wird, kann Application Insights automatisch ein Arbeitselement in Ihrem Arbeitsüberwachungssystem erstellen.
 
 ## <a name="but-what-about"></a>Aber was ist mit...?
 * [Datenschutz und Speicher:](app-insights-data-retention-privacy.md) Ihre Telemetrie wird auf sicheren Azure-Servern gespeichert.
@@ -170,10 +171,5 @@ Die ersten Schritte mit Application Insights sind ganz einfach. Dies sind die wi
 * Instrumentieren Sie eine Web-App, die bereits ausgeführt wird. Dadurch können Sie die gesamte integrierte Leistungstelemetrie nutzen. Diese ist für [Java](app-insights-java-live.md)- und [IIS-Server](app-insights-monitor-performance-live-website-now.md)-Apps sowie für [Azure-Web-Apps](app-insights-azure.md) verfügbar.
 * Instrumentieren Sie Ihr Projekt während der Entwicklung. Dies ist für [ASP.NET](app-insights-asp-net.md)- oder [Java](app-insights-java-get-started.md)-Apps sowie für [Node.js](app-insights-nodejs.md) und eine Vielzahl [weiterer Sprachen und Plattformen](app-insights-platforms.md) möglich. 
 * Instrumentieren Sie [beliebige Webseiten](app-insights-javascript.md) durch Hinzufügen eines kurzen Codeausschnitts.
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

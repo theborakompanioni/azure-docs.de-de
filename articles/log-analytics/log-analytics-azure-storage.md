@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 03/09/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
-ms.openlocfilehash: 935680e33c1b32619b7acb8d50a61e48b6703402
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 04bab3024474ae521090a8693b6c095e1704d4dc
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -48,14 +48,16 @@ Protokolle und Metriken für Azure-Dienste können auf vier Arten erfasst werden
 | Load Balancer          | Microsoft.Network/loadBalancers         | Diagnose |             |  |
 | Logik-Apps              | Microsoft.Logic/workflows <br> Microsoft.Logic/integrationAccounts | Diagnose | Diagnose | |
 | Netzwerksicherheitsgruppen | Microsoft.Network/networksecuritygroups | Diagnose |             | [Azure-Netzwerksicherheitsgruppen-Analyse](log-analytics-azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-log-analytics) |
+| Recovery-Tresore         | Microsoft.RecoveryServices/vaults       |             |             | [Azure Recovery Services Analytics (Vorschau)](https://github.com/krnese/AzureDeploy/blob/master/OMS/MSOMS/Solutions/recoveryservices/)|
 | Suchdienste         | Microsoft.Search/searchServices         | Diagnose | Diagnose | |
-| Service Bus-Namespace   | Microsoft.ServiceBus/namespaces         | Diagnose | Diagnose | |
+| Service Bus-Namespace   | Microsoft.ServiceBus/namespaces         | Diagnose | Diagnose | [Service Bus Analytics (Vorschau)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|
 | Service Fabric          |                                         | Speicher     |             | [Service Fabric-Analysen (Vorschau)](log-analytics-service-fabric.md) |
-| SQL (v12)               | Microsoft.Sql/servers/databases <br> Microsoft.Sql/servers/elasticPools |             | Diagnose | |
+| SQL (v12)               | Microsoft.Sql/servers/databases <br> Microsoft.Sql/servers/elasticPools |             | Diagnose | [Azure SQL Analytics (Vorschau)](log-analytics-azure-sql.md) |
+| Speicher                 |                                         |             | Skript      | [Azure Storage Analytics (Vorschau)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution) |
 | Virtual Machines        | Microsoft.Compute/virtualMachines       | Durchwahl   | Durchwahl <br> Diagnose  | |
 | VM-Skalierungsgruppen | Microsoft.Compute/virtualMachines <br> Microsoft.Compute/virtualMachineScaleSets/virtualMachines |             | Diagnose | |
 | Webserverfarmen        | Microsoft.Web/serverfarms               |             | Diagnose | |
-| Websites               | Microsoft.Web/sites <br> Microsoft.Web/sites/slots |             | Diagnose | [Weitere Informationen](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webappazure-oms-monitoring) |
+| Websites               | Microsoft.Web/sites <br> Microsoft.Web/sites/slots |             | Diagnose | [Azure Web Apps Analytics (Vorschau)](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureWebAppsAnalyticsOMS?tab=Overview) |
 
 
 > [!NOTE]

@@ -14,13 +14,14 @@ ms.topic: article
 ms.date: 05/07/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1520fde6b60546e408772e04488e8a530a9c1344
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 89e3cb3a7e9185d4a2944c1aa9aaf5aee4bd2b24
+ms.lasthandoff: 03/15/2017
 
 
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Ressourcen, Rollen und Zugriffssteuerung in Application Insights
-Anhand einer [rollenbasierten Zugriffssteuerung in Microsoft Azure](../active-directory/role-based-access-control-configure.md) können Sie steuern, wer in Visual Studio [Application Insights][start] über Lese- und Aktualisierungszugriff auf Ihre Daten verfügt.
+Anhand einer [rollenbasierten Zugriffssteuerung in Microsoft Azure](../active-directory/role-based-access-control-configure.md) können Sie steuern, wer in Azure [Application Insights][start] über Lese- und Aktualisierungszugriff auf Ihre Daten verfügt.
 
 > [!IMPORTANT]
 > Weisen Sie Benutzern den Zugriff in der **Ressourcengruppe oder dem Abonnement** zu, dem Ihre Anwendungsressource angehört – nicht in der Ressource selbst. Weisen Sie die Rolle **Mitwirkender der Application Insights-Komponente** zu. Dadurch wird eine einheitliche Steuerung des Zugriffs auf Webtests und Warnungen zusammen mit Ihrer Anwendungsressource sichergestellt. [Weitere Informationen](#access).
@@ -38,14 +39,14 @@ Zunächst einige Definitionen:
 
 <a name="resource-group"></a>
 
-* [**Ressourcengruppe**][Gruppe]: Jede Ressource gehört zu einer Gruppe. Eine Gruppe ist eine bequeme Möglichkeit, verwandte Ressourcen insbesondere für die Zugriffssteuerung zu verwalten. Beispielsweise könnten Sie eine Web-App, eine Application Insights-Ressource zur Überwachung der App sowie eine Storage-Ressource zur Aufbewahrung exportierter Daten in eine Ressourcengruppe aufnehmen.
+* [**Ressourcengruppe**][group]: Jede Ressource gehört zu einer Gruppe. Eine Gruppe ist eine bequeme Möglichkeit, verwandte Ressourcen insbesondere für die Zugriffssteuerung zu verwalten. Beispielsweise könnten Sie eine Web-App, eine Application Insights-Ressource zur Überwachung der App sowie eine Storage-Ressource zur Aufbewahrung exportierter Daten in eine Ressourcengruppe aufnehmen.
 
     ![Wählen Sie "Durchsuchen", "Ressourcengruppen" und dann eine Gruppe aus.](./media/app-insights-resources-roles-access-control/11-group.png)
 
 * [**Abonnement**](https://manage.windowsazure.com): Um Application Insights oder sonstige Azure-Ressourcen zu verwenden, müssen Sie ein Azure-Abonnement abschließen. Jede Ressourcengruppe gehört zu einem Azure-Abonnement, in dem Sie Ihr Preispaket und, wenn es sich um ein Abonnement für die Organisation handelt, die Mitglieder und deren Zugriffsberechtigungen auswählen.
-* [**Microsoft-Konto**][Konto]: Benutzername und Kennwort für Ihre Anmeldung an Ihre Microsoft Azur-Abonnements, an XBox Live, Outlook.com und sonstige Microsoft-Dienste.
+* [**Microsoft-Konto**][account]: Benutzername und Kennwort für Ihre Anmeldung bei Microsoft Azure-Abonnements, XBox Live, „Outlook.com“ und sonstigen Microsoft-Dienste.
 
-## <a name="a-nameaccessa-control-access-in-the-resource-group"></a><a name="access"></a> Steuern des Zugriffs in der Ressourcengruppe
+## <a name="access"></a> Steuern des Zugriffs in der Ressourcengruppe
 Es ist wichtig zu wissen, dass es zusätzlich zu den Ressource, die Sie für Ihre Anwendung erstellt haben, auch separate, ausgeblendete Ressourcen für Warnungen und Webtests gibt. Sie sind derselben [Ressourcengruppe](#resource-group) zugeordnet wie Ihre Anwendung. Möglicherweise haben Sie auch andere Azure-Dienste dort aufgenommen, z. B. Websites oder Speicher.
 
 ![Ressourcen in Application Insights](./media/app-insights-resources-roles-access-control/00-resources.png)
@@ -58,7 +59,7 @@ Zum Steuern des Zugriffs auf diese Ressourcen empfiehlt es sich daher, folgender
 ## <a name="to-provide-access-to-another-user"></a>So erteilen Sie einem anderen Benutzer Zugriffsberechtigungen
 Sie benötigen Eigentümerrechte für das Abonnement oder die Ressourcengruppe.
 
-Der Benutzer muss über ein [Microsoft-Konto][Konto] oder über Zugriff auf sein [Microsoft-Organisationskonto](../active-directory/sign-up-organization.md) verfügen. Sie können den Zugriff an Einzelpersonen und auch an Benutzergruppen erteilen, die in Azure Active Directory definiert sind.
+Der Benutzer muss über ein [Microsoft-Konto][account] oder über Zugriff auf sein [Microsoft-Organisationskonto](../active-directory/sign-up-organization.md) verfügen. Sie können den Zugriff an Einzelpersonen und auch an Benutzergruppen erteilen, die in Azure Active Directory definiert sind.
 
 #### <a name="navigate-to-the-resource-group"></a>Navigieren zur Ressourcengruppe
 Fügen Sie den Benutzer dort hinzu.
@@ -95,13 +96,8 @@ Wenn der gewünschte Benutzer nicht im Verzeichnis enthalten ist, können Sie je
 
 <!--Link references-->
 
-[Konto]: https://account.microsoft.com
-[Gruppe]: ../azure-resource-manager/resource-group-overview.md
+[account]: https://account.microsoft.com
+[group]: ../azure-resource-manager/resource-group-overview.md
 [portal]: https://portal.azure.com/
 [start]: app-insights-overview.md
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

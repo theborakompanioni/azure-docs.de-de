@@ -1,6 +1,6 @@
 ---
-title: Codieren von X12-Nachrichten in Azure Logic Apps | Microsoft-Dokumentation
-description: Verwenden des im Enterprise Integration Pack enthaltenen X12-Encoders in Ihren Logik-Apps
+title: "Codieren von X12-Nachrichten – Azure Logic Apps | Microsoft-Dokumentation"
+description: "Überprüfen von EDI und Konvertieren XML-codierter Nachrichten mit dem X12-Nachrichtenencoder im Enterprise Integration Pack für Azure Logic Apps"
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: padmavc
@@ -15,54 +15,70 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: padmavc
 translationtype: Human Translation
-ms.sourcegitcommit: bd339e60aff1edca7f86e0ae82746f55eb67b296
-ms.openlocfilehash: 9f7b53cfafa8c14ab46cf80015afc8da4e0fda2b
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: b319970e0fd744b21bd0362f1de500a0f182d52e
+ms.lasthandoff: 03/10/2017
 
 
 ---
-# <a name="get-started-with-encode-x12-message"></a>Erste Schritte mit dem Codieren von X12-Nachrichten
-Überprüft EDI- und partnerspezifische Eigenschaften, konvertiert XML-codierte Nachrichten in EDI-Transaktionssätze im Austausch und fordert eine technische Bestätigung und/oder eine Funktionsbestätigung an.
+# <a name="encode-x12-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Codieren von X12-Nachrichten für Azure Logic Apps mit dem Enterprise Integration Pack
 
-## <a name="prereqs"></a>Voraussetzungen
+Mit dem Connector zum Codieren von X12-Nachrichten können Sie EDI- und partnerspezifische Eigenschaften überprüfen, XML-codierte Nachrichten in EDI-Transaktionssätze im Austausch konvertieren und eine technische Bestätigung und/oder eine Funktionsbestätigung anfordern.
+Um diesen Connector verwenden zu können, müssen Sie ihn einem vorhandenen Trigger in Ihrer Logik-App hinzufügen.
+
+## <a name="before-you-start"></a>Vorbereitung
+
+Sie benötigen Folgendes:
+
 * Ein Azure-Konto. Sie können ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen.
-* Für die Verwendung des Connectors zum Codieren von X12-Nachrichten ist ein Integrationskonto erforderlich. Hier finden Sie Details zum Erstellen eines [Integrationskontos](logic-apps-enterprise-integration-create-integration-account.md) sowie zu [Partnern](logic-apps-enterprise-integration-partners.md) und zur [X12-Vereinbarung](logic-apps-enterprise-integration-x12.md).
+* Ein bereits definiertes und mit Ihrem Azure-Abonnement verknüpftes [Integrationskonto](logic-apps-enterprise-integration-create-integration-account.md). Für die Verwendung des Connectors zum Codieren von X12-Nachrichten ist ein Integrationskonto erforderlich.
+* Mindestens zwei [Partner](logic-apps-enterprise-integration-partners.md), die bereits in Ihrem Integrationskonto definiert sind.
+* Eine bereits in Ihrem Integrationskonto definierte [X12-Vereinbarung](logic-apps-enterprise-integration-x12.md).
 
 ## <a name="encode-x12-messages"></a>Codieren von X12-Nachrichten
 
 1. [Erstellen Sie eine Logik-App](logic-apps-create-a-logic-app.md).
-2. Dieser Connector verfügt über keine Trigger. Verwenden Sie andere Trigger, um die Logik-App zu starten (beispielsweise einen Anforderungstrigger).  Fügen Sie im Designer für Logik-Apps einen Trigger und anschließend eine Aktion hinzu.  Wählen Sie in der Dropdownliste die Option „Von Microsoft verwaltete APIs anzeigen“ aus, und geben Sie anschließend „x12“ in das Suchfeld ein.  Wählen Sie entweder „X12 - Encode X12 Message by agreement name“ (X12 – X12-Nachricht nach Vereinbarungsname codieren) oder „X12 - Encode to X 12 message by identities“ (X12 – X12-Nachricht nach Identitäten codieren) aus:  
+
+2. Da der Connector zum Codieren von X12-Nachrichten über keine Trigger verfügt, müssen Sie einen Trigger zum Starten Ihrer Logik-App hinzufügen (beispielsweise einen Anforderungstrigger). Fügen Sie im Logik-App-Designer einen Trigger hinzu, und fügen Sie anschließend Ihrer Logik-App eine Aktion hinzu.
+
+3.    Geben Sie „x12“ als Filter in das Suchfeld ein. Wählen Sie entweder **X12 – In X12-Nachricht nach Vereinbarungsname codieren** oder **X12 – In X12-Nachricht nach Identitäten codieren** aus.
    
-    ![Nach x12 suchen](./media/logic-apps-enterprise-integration-x12-encode/x12decodeimage1.png) 
-3. Wenn Sie zuvor noch keine Verbindungen mit dem Integrationskonto erstellt haben, werden Sie zur Eingabe der Verbindungsdetails aufgefordert:
+    ![Nach „x12“ suchen](./media/logic-apps-enterprise-integration-x12-encode/x12decodeimage1.png) 
+
+3. Falls Sie noch keine Verbindungen mit Ihrem Integrationskonto erstellt haben, werden Sie aufgefordert, eine solche Verbindung zu erstellen. Benennen Sie die Verbindung, und wählen Sie das Integrationskonto aus, mit dem Sie eine Verbindung herstellen möchten. 
    
-    ![Integrationskontoverbindung](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage1.png) 
-4. Geben Sie die Details des Integrationskontos ein.  Mit einem Sternchen gekennzeichnete Eigenschaften müssen angegeben werden:
-   
-   | Eigenschaft | Details |
-   | --- | --- |
-   | Verbindungsname* |Geben Sie einen beliebigen Namen für Ihre Verbindung ein. |
-   | Integrationskonto* |Geben Sie den Namen des Integrationskontos ein. Ihr Integrationskonto und Ihre Logik-App müssen sich am gleichen Azure-Standort befinden. |
-   
-    Nach Abschluss des Vorgangs sehen Ihre Verbindungsdetails in etwa wie folgt aus:
-   
-    ![Integrationskontoverbindung erstellt](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage2.png) 
-5. Klicken Sie auf **Erstellen**.
-6. Beachten Sie, dass die Verbindung erstellt wurde.
-   
+    ![Integrationskontoverbindung](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage1.png)
+
+    Mit einem Sternchen gekennzeichnete Eigenschaften müssen angegeben werden.
+
+    | Eigenschaft | Details |
+    | --- | --- |
+    | Verbindungsname* |Geben Sie einen beliebigen Namen für Ihre Verbindung ein. |
+    | Integrationskonto* |Geben Sie einen Namen für Ihr Integrationskonto ein. Achten Sie darauf, dass sich Ihr Integrationskonto und Ihre Logik-App am gleichen Azure-Standort befinden. |
+
+5.    Am Ende sollten Ihre Verbindungsdetails in etwa wie im folgenden Beispiel aussehen. Wählen Sie **Erstellen** aus, um die Verbindungserstellung abzuschließen.
+
+    ![Integrationskontoverbindung erstellt](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage2.png)
+
+    Die Verbindung wird nun erstellt.
+
     ![Verbindungsdetails des Integrationskontos](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage3.png) 
 
 #### <a name="encode-x12-messages-by-agreement-name"></a>Encode X12 Message by agreement name (X12-Nachricht nach Vereinbarungsname codieren)
-Wählen Sie in der Dropdownliste die Option „X12Agreement“ und im nächsten Feld die zu codierende XML-Nachricht aus:     
-    ![Pflichtfelder ausfüllen](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage4.png) 
+
+Falls Sie sich für die Codierung von X12-Nachrichten nach Vereinbarungsname entschieden haben, öffnen Sie die Liste **Name der X12-Vereinbarung**, und geben Sie Ihre vorhandene X12-Vereinbarung ein, oder wählen Sie sie aus. Geben Sie die zu codierende XML-Nachricht ein.
+
+![Name der X12-Vereinbarung und zu codierende XML-Nachricht eingeben](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage4.png)
 
 #### <a name="encode-x12-messages-by-identities"></a>Encode to X&12; message by identities (X12-Nachricht nach Identitäten codieren)
-Geben Sie den Absenderqualifizierer und -bezeichner und den Empfängerqualifizierer und -bezeichner wie in der X12-Vereinbarung konfiguriert an.  Wählen Sie die zu codierende XML-Nachricht aus:
+
+Falls Sie sich für die Codierung von X12-Nachrichten nach Identitäten entschieden haben, geben Sie den Absenderqualifizierer und -bezeichner und den Empfängerqualifizierer und -bezeichner gemäß der Konfiguration in Ihrer X12-Vereinbarung ein. Wählen Sie die zu codierende XML-Nachricht aus.
    
-   ![Pflichtfelder ausfüllen](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage5.png) 
+![Identitäten für Absender und Empfänger angeben und zu codierende XML-Nachricht auswählen](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage5.png) 
 
 ## <a name="x12-encode-details"></a>Details zum Codieren von X12-Nachrichten
 
-Der Connector zur Codierung von X12-Nachrichten führt Folgendes aus:
+Der Connector zum Codieren von X12-Nachrichten führt folgende Aufgaben aus:
 
 * Vereinbarungsauflösung durch Zuordnen der Kontexteigenschaften von Absender und Empfänger.
 * Serialisierung des EDI-Austauschs mit Konvertierung von XML-codierten Nachrichten in EDI-Transaktionssätze im Austausch
@@ -79,10 +95,5 @@ Der Connector zur Codierung von X12-Nachrichten führt Folgendes aus:
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Weitere Informationen zum Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack") 
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

@@ -1,9 +1,9 @@
 ---
-title: 'Anpassen: Azure AD-Kennwortverwaltung | Microsoft Docs'
+title: 'Anpassen: Azure Active Directory-Kennwortverwaltung | Microsoft-Dokumentation'
 description: Vorgehensweise zum Anpassen von Aussehen und Verhalten der Kennwortverwaltung und von Benachrichtigungen in Azure AD an Ihre Anforderungen.
 services: active-directory
 documentationcenter: 
-author: asteen
+author: MicrosoftGuyJFlo
 manager: femila
 editor: curtand
 ms.assetid: 2cddd150-8747-447a-a7cf-1d7d5775c0b3
@@ -12,38 +12,43 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2016
-ms.author: asteen
+ms.date: 02/28/2017
+ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: c02f5a2b0ef127805aed0f8b8b5ec8ccac1f879f
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: b6794425e233508ae72cb3b541738e56044453c1
+ms.lasthandoff: 03/10/2017
 
 
 ---
 # <a name="customizing-password-management-to-fit-your-organizations-needs"></a>Anpassen der Kennwortverwaltung an die Anforderungen Ihrer Organisation
 > [!IMPORTANT]
-> **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md).
-> 
-> 
+> **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password).
+>
+>
 
-Es wird empfohlen, alle verfügbaren Konfigurationsoptionen für die Kennwortverwaltung zu untersuchen und auszuprobieren, um Ihren Benutzern das bestmögliche Ergebnis zu bieten. Tatsächlich können Sie sofort damit anfangen, indem Sie im [klassischen Azure-Portal](https://manage.windowsazure.com) zur Registerkarte „Konfiguration“ der **Active Directory-Erweiterung** wechseln. Dieses Thema führt Sie durch alle Anpassungen zur Kennwortverwaltung, die Sie als Administrator über die Registerkarte **Konfigurieren** für Ihr Verzeichnis im [klassischen Azure-Portal](https://manage.windowsazure.com) vornehmen können. Dazu gehören:
+Sie sollten alle verfügbaren Konfigurationsoptionen für die Kennwortverwaltung untersuchen und ausprobieren, um Ihren Benutzern das bestmögliche Ergebnis zu bieten. Tatsächlich können Sie sofort damit anfangen, indem Sie im [klassischen Azure-Portal](https://manage.windowsazure.com) zur Registerkarte „Konfiguration“ der **Active Directory-Erweiterung** wechseln. Dieses Thema führt Sie durch alle Anpassungen zur Kennwortverwaltung, die Sie als Administrator über die Registerkarte **Konfigurieren** für Ihr Verzeichnis im [klassischen Azure-Portal](https://manage.windowsazure.com) vornehmen können.
 
-| Thema |  |
-| --- | --- |
-| Wie aktiviere oder deaktiviere ich das Zurücksetzen von Kennwörtern? |[Einstellung: Benutzer, für die das Zurücksetzen des Kennworts aktiviert ist](#users-enabled-for-password-reset) |
-| Wie beschränke ich das Zurücksetzen von Kennwörtern auf eine bestimmte Gruppe von Benutzern? |[Beschränken der Kennwortzurücksetzung auf bestimmte Benutzer](#restrict-access-to-password-reset) |
-| Wie ändere ich die unterstützten Authentifizierungsmethoden? |[Einstellung: Für Benutzer verfügbare Authentifizierungsmethoden](#authentication-methods-available-to-users) |
-| Wie ändere ich die Anzahl erforderlicher Authentifizierungsmethoden? |[Einstellung: Anzahl erforderlicher Authentifizierungsmethoden](#number-of-authentication-methods-required) |
-| Wie richte ich benutzerdefinierte Sicherheitsfragen ein? |[Einstellung: Benutzerdefinierte Sicherheitsfragen](#custom-security-questions) |
-| Wie richte ich vorgefertigte lokalisierte Sicherheitsfragen ein? |[Einstellung: Informationsbasierte Sicherheitsfragen](#knowledge-based-security-questions) |
-| Wie kann ich ändern, wie viele Sicherheitsfragen erforderlich sind? |[Einstellung: Anzahl der Sicherheitsfragen für die Registrierung oder das Zurücksetzen](#number-of-questions-required-to-register) |
-| Wie kann ich meine Benutzer bei der Anmeldung zum Registrieren zwingen? |[Erzwungene registrierungsbasierte Einführung der Kennwortzurücksetzung](#require-users-to-register-when-signing-in) |
-| Wie kann ich veranlassen, dass meine Benutzer ihre registrierten Authentifizierungsdaten in regelmäßigen Abständen erneut bestätigen müssen? |[Einstellung: Anzahl der Tage, bis die Benutzer ihre Authentifizierungsdaten erneut bestätigen müssen](#number-of-days-before-users-must-confirm-their-contact-data) |
-| Wie kann ich anpassen, wie ein Benutzer mit dem Administrator in Kontakt tritt? |[Einstellung: Link „Wenden Sie sich Ihren Administrator“ anpassen](#customize-the-contact-your-administrator-link) |
-| Wie kann ich Benutzern das Entsperren von AD-Konten ohne Zurücksetzen eines Kennworts ermöglichen? |[Einstellung: Benutzern ermöglichen, ihre AD-Konten ohne Zurücksetzen eines Kennworts zu entsperren](#allow-users-to-unlock-accounts-without-resetting-their-password) |
-| Wie kann ich Benachrichtigungen zur Kennwortzurücksetzung für Benutzer aktivieren? |[Einstellung: Benutzer benachrichtigen, wenn ihre Kennwörter zurückgesetzt wurden](#notify-users-and-admins-when-their-own-password-has-been-reset) |
-| Wie kann ich Benachrichtigungen zur Kennwortzurücksetzung für Administratoren aktivieren? |[Einstellung: Andere Administratoren benachrichtigen, wenn ein Administrator sein eigenes Kennwort zurückgesetzt hat](#notify-admins-when-other-admins-reset-their-own-passwords) |
-| Wie kann ich das Look-and-Feel für das Zurücksetzen von Kennwörtern anpassen? |[Einstellung: Firmenname, Branding und Logo ](#password-management-look-and-feel) |
+## <a name="what-customization-options-are-available"></a>Welche Anpassungsoptionen sind verfügbar?
+In der folgenden Tabelle werden die verfügbaren Anpassungsoptionen für die Azure Active Directory-Kennwortzurücksetzung erläutert.
+
+| Thema | Einstellung | Erforderliche Lizenzen |
+| --- | --- | --- |
+| Wie aktiviere oder deaktiviere ich das Zurücksetzen von Kennwörtern? |[Einstellung: Benutzer, für die das Zurücksetzen des Kennworts aktiviert ist](#users-enabled-for-password-reset) | <ul><li>O365 (beliebige kostenpflichtige SKU) [nur Cloudbenutzer]</li><li>Azure AD Basic [nur Cloudbenutzer]</li><li>Azure AD Premium P1 oder P2 [Cloudbenutzer oder lokale Benutzer]</li><li>Enterprise Mobility Suite [Cloudbenutzer oder lokale Benutzer]</li><li>Enterprise Cloud Suite [Cloudbenutzer oder lokale Benutzer]</li></ul> |
+| Wie beschränke ich das Zurücksetzen von Kennwörtern auf eine bestimmte Gruppe von Benutzern? |[Beschränken der Kennwortzurücksetzung auf bestimmte Benutzer](#restrict-access-to-password-reset) | <ul><li>O365 (beliebige kostenpflichtige SKU) [nur Cloudbenutzer]</li><li>Azure AD Basic [nur Cloudbenutzer]</li><li>Azure AD Premium P1 oder P2 [Cloudbenutzer oder lokale Benutzer]</li><li>Enterprise Mobility Suite [Cloudbenutzer oder lokale Benutzer]</li><li>Enterprise Cloud Suite [Cloudbenutzer oder lokale Benutzer]</li></ul> |
+| Wie ändere ich die unterstützten Authentifizierungsmethoden? |[Einstellung: Für Benutzer verfügbare Authentifizierungsmethoden](#authentication-methods-available-to-users) | <ul><li>O365 (beliebige kostenpflichtige SKU) [nur Cloudbenutzer]</li><li>Azure AD Basic [nur Cloudbenutzer]</li><li>Azure AD Premium P1 oder P2 [Cloudbenutzer oder lokale Benutzer]</li><li>Enterprise Mobility Suite [Cloudbenutzer oder lokale Benutzer]</li><li>Enterprise Cloud Suite [Cloudbenutzer oder lokale Benutzer]</li></ul> |
+| Wie ändere ich die Anzahl erforderlicher Authentifizierungsmethoden? |[Einstellung: Anzahl erforderlicher Authentifizierungsmethoden](#number-of-authentication-methods-required) | <ul><li>O365 (beliebige kostenpflichtige SKU) [nur Cloudbenutzer]</li><li>Azure AD Basic [nur Cloudbenutzer]</li><li>Azure AD Premium P1 oder P2 [Cloudbenutzer oder lokale Benutzer]</li><li>Enterprise Mobility Suite [Cloudbenutzer oder lokale Benutzer]</li><li>Enterprise Cloud Suite [Cloudbenutzer oder lokale Benutzer]</li></ul> |
+| Wie richte ich benutzerdefinierte Sicherheitsfragen ein? |[Einstellung: Benutzerdefinierte Sicherheitsfragen](#custom-security-questions) | <ul><li>O365 (beliebige kostenpflichtige SKU) [nur Cloudbenutzer]</li><li>Azure AD Basic [nur Cloudbenutzer]</li><li>Azure AD Premium P1 oder P2 [Cloudbenutzer oder lokale Benutzer]</li><li>Enterprise Mobility Suite [Cloudbenutzer oder lokale Benutzer]</li><li>Enterprise Cloud Suite [Cloudbenutzer oder lokale Benutzer]</li></ul> |
+| Wie richte ich vorgefertigte lokalisierte Sicherheitsfragen ein? |[Einstellung: Informationsbasierte Sicherheitsfragen](#knowledge-based-security-questions) | <ul><li>O365 (beliebige kostenpflichtige SKU) [nur Cloudbenutzer]</li><li>Azure AD Basic [nur Cloudbenutzer]</li><li>Azure AD Premium P1 oder P2 [Cloudbenutzer oder lokale Benutzer]</li><li>Enterprise Mobility Suite [Cloudbenutzer oder lokale Benutzer]</li><li>Enterprise Cloud Suite [Cloudbenutzer oder lokale Benutzer]</li></ul> |
+| Wie kann ich ändern, wie viele Sicherheitsfragen erforderlich sind? |[Einstellung: Anzahl der Sicherheitsfragen für die Registrierung oder das Zurücksetzen](#number-of-questions-required-to-register) | <ul><li>O365 (beliebige kostenpflichtige SKU) [nur Cloudbenutzer]</li><li>Azure AD Basic [nur Cloudbenutzer]</li><li>Azure AD Premium P1 oder P2 [Cloudbenutzer oder lokale Benutzer]</li><li>Enterprise Mobility Suite [Cloudbenutzer oder lokale Benutzer]</li><li>Enterprise Cloud Suite [Cloudbenutzer oder lokale Benutzer]</li></ul> |
+| Wie kann ich meine Benutzer bei der Anmeldung zum Registrieren zwingen? |[Erzwungene registrierungsbasierte Einführung der Kennwortzurücksetzung](#require-users-to-register-when-signing-in) | <ul><li>O365 (beliebige kostenpflichtige SKU) [nur Cloudbenutzer]</li><li>Azure AD Basic [nur Cloudbenutzer]</li><li>Azure AD Premium P1 oder P2 [Cloudbenutzer oder lokale Benutzer]</li><li>Enterprise Mobility Suite [Cloudbenutzer oder lokale Benutzer]</li><li>Enterprise Cloud Suite [Cloudbenutzer oder lokale Benutzer]</li></ul> |
+| Wie kann ich veranlassen, dass meine Benutzer ihre registrierten Authentifizierungsdaten in regelmäßigen Abständen erneut bestätigen müssen? |[Einstellung: Anzahl der Tage, bis die Benutzer ihre Authentifizierungsdaten erneut bestätigen müssen](#number-of-days-before-users-must-confirm-their-contact-data) | <ul><li>O365 (beliebige kostenpflichtige SKU) [nur Cloudbenutzer]</li><li>Azure AD Basic [nur Cloudbenutzer]</li><li>Azure AD Premium P1 oder P2 [Cloudbenutzer oder lokale Benutzer]</li><li>Enterprise Mobility Suite [Cloudbenutzer oder lokale Benutzer]</li><li>Enterprise Cloud Suite [Cloudbenutzer oder lokale Benutzer]</li></ul> |
+| Wie kann ich anpassen, wie ein Benutzer mit dem Administrator in Kontakt tritt? |[Einstellung: Link „Wenden Sie sich Ihren Administrator“ anpassen](#customize-the-contact-your-administrator-link) | <ul><li>O365 (beliebige kostenpflichtige SKU) [nur Cloudbenutzer]</li><li>Azure AD Basic [nur Cloudbenutzer]</li><li>Azure AD Premium P1 oder P2 [Cloudbenutzer oder lokale Benutzer]</li><li>Enterprise Mobility Suite [Cloudbenutzer oder lokale Benutzer]</li><li>Enterprise Cloud Suite [Cloudbenutzer oder lokale Benutzer]</li></ul> |
+| Wie kann ich das Kennwortrückschreiben über die Cloudadministratorumgebung aktivieren oder deaktivieren? |[Einstellung: Kennwortrückschreiben aktivieren oder deaktivieren](#write-back-passwords-to-on-premises-directory) | <ul><li>Azure AD Premium P1 oder P2 [Cloudbenutzer oder lokale Benutzer]</li><li>Enterprise Mobility Suite [Cloudbenutzer oder lokale Benutzer]</li><li>Enterprise Cloud Suite [Cloudbenutzer oder lokale Benutzer]</li></ul> |
+| Wie kann ich Benutzern das Entsperren von lokalen AD-Konten ohne Zurücksetzen eines Kennworts ermöglichen? |[Einstellung: Benutzern ermöglichen, ihre AD-Konten ohne Zurücksetzen eines Kennworts zu entsperren](#allow-users-to-unlock-accounts-without-resetting-their-password) | <ul><li>Azure AD Premium P1 oder P2 [Cloudbenutzer oder lokale Benutzer]</li><li>Enterprise Mobility Suite [Cloudbenutzer oder lokale Benutzer]</li><li>Enterprise Cloud Suite [Cloudbenutzer oder lokale Benutzer]</li></ul> |
+| Wie kann ich Benachrichtigungen zur Kennwortzurücksetzung für Benutzer aktivieren? |[Einstellung: Benutzer benachrichtigen, wenn ihre Kennwörter zurückgesetzt wurden](#notify-users-and-admins-when-their-own-password-has-been-reset) |  <ul><li>O365 (beliebige kostenpflichtige SKU) [nur Cloudbenutzer]</li><li>Azure AD Basic [nur Cloudbenutzer]</li><li>Azure AD Premium P1 oder P2 [Cloudbenutzer oder lokale Benutzer]</li><li>Enterprise Mobility Suite [Cloudbenutzer oder lokale Benutzer]</li><li>Enterprise Cloud Suite [Cloudbenutzer oder lokale Benutzer]</li></ul> |
+| Wie kann ich Benachrichtigungen zur Kennwortzurücksetzung für Administratoren aktivieren? |[Einstellung: Andere Administratoren benachrichtigen, wenn ein Administrator sein eigenes Kennwort zurückgesetzt hat](#notify-admins-when-other-admins-reset-their-own-passwords) | <ul><li>O365 (beliebige kostenpflichtige SKU) [nur Cloudbenutzer]</li><li>Azure AD Basic [nur Cloudbenutzer]</li><li>Azure AD Premium P1 oder P2 [Cloudbenutzer oder lokale Benutzer]</li><li>Enterprise Mobility Suite [Cloudbenutzer oder lokale Benutzer]</li><li>Enterprise Cloud Suite [Cloudbenutzer oder lokale Benutzer]</li></ul> |
+| Wie kann ich das Look-and-Feel für das Zurücksetzen von Kennwörtern anpassen? |[Einstellung: Firmenname, Branding und Logo ](#password-management-look-and-feel) |  <ul><li>O365 (beliebige kostenpflichtige SKU) [nur Cloudbenutzer]</li><li>Azure AD Basic [nur Cloudbenutzer]</li><li>Azure AD Premium P1 oder P2 [Cloudbenutzer oder lokale Benutzer]</li><li>Enterprise Mobility Suite [Cloudbenutzer oder lokale Benutzer]</li><li>Enterprise Cloud Suite [Cloudbenutzer oder lokale Benutzer]</li></ul> |
 
 ## <a name="password-management-look-and-feel"></a>Aussehen und Verhalten der Kennwortverwaltung
 In der folgenden Tabelle werden die Auswirkungen der einzelnen Steuerelemente auf die bereitgestellte Funktionalität für Benutzer beschrieben, die sich für die Kennwortzurücksetzung registrieren und ihre Kennwörter zurücksetzen.  Sie können diese Optionen im Abschnitt **Verzeichniseigenschaften** auf der Registerkarte **Konfigurieren** Ihres Verzeichnisses innerhalb des [Azure-Verwaltungsportals](https://manage.windowsazure.com) konfigurieren.
@@ -74,6 +79,15 @@ In der folgenden Tabelle werden die Auswirkungen der einzelnen Steuerelemente au
               </td>
               <td>
                 <p>Legt fest, welcher Organisationsname den Benutzern oder Administratoren bei der E-Mail-Kommunikation zur Kennwortzurücksetzung angezeigt wird</p>
+                <br>
+                <p><b><u>Erfordert eine der folgenden Lizenzen <a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">(Weitere Informationen)</a></u></b></p>
+                 <ul>
+                   <li>O365 (beliebige kostenpflichtige SKU) [nur Cloudbenutzer]</li>
+                   <li>Azure AD Basic [nur Cloudbenutzer]</li>
+                   <li>Azure AD Premium P1 oder P2 [Cloudbenutzer und lokale Benutzer]</li>
+                   <li>Enterprise Mobility Suite [Cloudbenutzer und lokale Benutzer]</li>
+                   <li>Enterprise Cloud Suite [Cloudbenutzer und lokale Benutzer]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -102,10 +116,16 @@ Legt den Anzeigenamen der Von-Adresse fest, z. B. „Microsoft im Auftrag von <s
               </td>
               <td>
                 <p>Legt fest, ob Benutzern, die die Seite zur Kennwortzurücksetzung besuchen, das Microsoft-Logo oder Ihr eigenes benutzerdefiniertes Logo angezeigt wird.  Dieses Konfigurationselement fügt den Seiten "Zugriffsbereich" und "Anmelden" außerdem Ihr Branding hinzu.</p>
-                <p>
-
-                </p>
                 <p>Unter <a href="https://technet.microsoft.com/library/dn532270.aspx">Hinzufügen von Unternehmensbranding zu Anmelde- und Zugriffsbereichsseiten</a> erhalten Sie weitere Informationen zum Branding- und Anpassungsfeature für Mandanten.</p>
+                                <br>
+                <p><b><u>Erfordert eine der folgenden Lizenzen <a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">(Weitere Informationen)</a></u></b></p>
+                 <ul>
+                   <li>O365 (beliebige kostenpflichtige SKU) [nur Cloudbenutzer]</li>
+                   <li>Azure AD Basic [nur Cloudbenutzer]</li>
+                   <li>Azure AD Premium P1 oder P2 [Cloudbenutzer und lokale Benutzer]</li>
+                   <li>Enterprise Mobility Suite [Cloudbenutzer und lokale Benutzer]</li>
+                   <li>Enterprise Cloud Suite [Cloudbenutzer und lokale Benutzer]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -113,9 +133,10 @@ Legt den Anzeigenamen der Von-Adresse fest, z. B. „Microsoft im Auftrag von <s
                 </p>
                 <ul>
                   <li class="unordered">
-Legt fest, ob Ihr Logo anstelle des Microsoft-Standardlogos am oberen Rand des Kennwortzurücksetzungsportals angezeigt wird.<br><br></li>
-                  <li class="unordered">
-                    <strong>Hinweis:</strong> Ihr Logo wird möglicherweise nicht auf der ersten Seite des Kennwortzurücksetzungsportals angezeigt, wenn Sie direkt zur Seite „Kennwort zurücksetzen“ wechseln.  Sobald ein Benutzer seine Benutzer-ID eingibt und auf "Weiter" klickt, wird Ihr Logo angezeigt.  Sie können erzwingen, dass Ihr Logo beim Laden der Seite angezeigt wird, indem Sie den whr-Parameter wie folgt an die Seite zur Kennwortzurücksetzung übergeben: <a href="https://passwordreset.microsoftonline.com?whr=wingtiptoysonline.com">https://passwordreset.microsoftonline.com?whr=wingtiptoysonline.com</a><br><br></li>
+Legt fest, ob Ihr Logo anstelle des Microsoft-Standardlogos am oberen Rand des Kennwortzurücksetzungsportals angezeigt wird.<br><br>
+                    <strong>Hinweis:</strong> Ihr Logo wird möglicherweise nicht auf der ersten Seite des Kennwortzurücksetzungsportals angezeigt, wenn Sie direkt zur Seite „Kennwort zurücksetzen“ wechseln. Wenn ein Benutzer seinen Benutzernamen eingibt und auf „Weiter“ klickt, wird Ihr Logo angezeigt.<br><br>
+Sie können erzwingen, dass Ihr Logo beim Laden der Seite angezeigt wird. Übergeben Sie hierzu den <code>whr</code>-Parameter wie folgt an die Kennwortzurücksetzungsseite: <code><a href="https://passwordreset.microsoftonline.com?whr=wingtiptoysonline.com">https://passwordreset.microsoftonline.com?whr=wingtiptoysonline.com</a></code><br><br>
+Sie können einen Link generieren, der das Benutzernamenfeld vorab ausfüllt. Übergeben Sie hierzu den <code>username</code>-Parameter. Dadurch wird auch das Logo Ihrer Organisation geladen (sofern eines konfiguriert ist): <code><a href="https://passwordreset.microsoftonline.com?username=user%40wingtiptoysonline.com">https://passwordreset.microsoftonline.com?username=user%40wingtiptoysonline.com</a></code></li>
                 </ul>
                 <p>
                   <strong>„Wenden Sie sich an Ihren Administrator“-E-Mails:</strong>
@@ -140,8 +161,8 @@ In der folgenden Tabelle werden die Auswirkungen der einzelnen Steuerelemente au
 
 > [!NOTE]
 > Dem Administratorkonto, das Sie verwenden, muss eine AAD Premium-Lizenz zugewiesen sein, damit diese Richtliniensteuerelemente angezeigt werden.<br><br>Diese Richtliniensteuerelemente gelten nur für Endbenutzer, die ihre Kennwörter zurücksetzen, nicht für Administratoren.  **Administratoren besitzen eine Standardrichtlinie einer alternativen E-Mail-Adresse und/oder eines Mobiltelefons. Diese wird von Microsoft angegeben und kann nicht geändert werden.**
-> 
-> 
+>
+>
 
 <table>
             <tbody><tr>
@@ -169,6 +190,15 @@ In der folgenden Tabelle werden die Auswirkungen der einzelnen Steuerelemente au
               </td>
               <td>
                 <p>Legt fest, ob das Zurücksetzen von Kennwörtern für Benutzer in diesem Verzeichnis aktiviert ist. </p>
+                <br>
+                <p><b><u>Erfordert eine der folgenden Lizenzen <a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">(Weitere Informationen)</a></u></b></p>
+                 <ul>
+                   <li>O365 (beliebige kostenpflichtige SKU) [nur Cloudbenutzer]</li>
+                   <li>Azure AD Basic [nur Cloudbenutzer]</li>
+                   <li>Azure AD Premium P1 oder P2 [Cloudbenutzer und lokale Benutzer]</li>
+                   <li>Enterprise Mobility Suite [Cloudbenutzer und lokale Benutzer]</li>
+                   <li>Enterprise Cloud Suite [Cloudbenutzer und lokale Benutzer]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -203,6 +233,15 @@ Wenn sie auf „Ja“ gesetzt ist, können Benutzer ihre Kennwörter automatisch
               </td>
               <td>
                 <p>Legt fest, ob nur eine bestimmte Gruppe von Benutzern das Zurücksetzen von Kennwörtern verwenden darf. (Nur sichtbar, wenn <strong>Benutzer, für die das Zurücksetzen des Kennworts aktiviert ist</strong> auf <strong>Ja</strong> festgelegt ist).</p>
+                <br>
+                <p><b><u>Erfordert eine der folgenden Lizenzen <a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">(Weitere Informationen)</a></u></b></p>
+                 <ul>
+                   <li>O365 (beliebige kostenpflichtige SKU) [nur Cloudbenutzer]</li>
+                   <li>Azure AD Basic [nur Cloudbenutzer]</li>
+                   <li>Azure AD Premium P1 oder P2 [Cloudbenutzer und lokale Benutzer]</li>
+                   <li>Enterprise Mobility Suite [Cloudbenutzer und lokale Benutzer]</li>
+                   <li>Enterprise Cloud Suite [Cloudbenutzer und lokale Benutzer]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -232,10 +271,16 @@ Ist die Einstellung auf „Ja“ festgelegt, können nur die Endbenutzer, die im
               </td>
               <td>
                 <p>Legt fest, welche Gruppe von Endbenutzern die Kennwortzurücksetzung durchführen kann. </p>
-                <p>
-
-                </p>
                 <p>(Nur sichtbar, wenn <strong>Zugriff auf die Kennwortrücksetzung beschränken</strong> auf <strong>Ja</strong> festgelegt ist.)</p>
+                <br>
+                <p><b><u>Erfordert eine der folgenden Lizenzen <a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">(Weitere Informationen)</a></u></b></p>
+                 <ul>
+                   <li>O365 (beliebige kostenpflichtige SKU) [nur Cloudbenutzer]</li>
+                   <li>Azure AD Basic [nur Cloudbenutzer]</li>
+                   <li>Azure AD Premium P1 oder P2 [Cloudbenutzer und lokale Benutzer]</li>
+                   <li>Enterprise Mobility Suite [Cloudbenutzer und lokale Benutzer]</li>
+                   <li>Enterprise Cloud Suite [Cloudbenutzer und lokale Benutzer]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -272,10 +317,16 @@ Wenn <strong>Zugriff auf die Kennwortrücksetzung beschränken</strong> auf <str
               </td>
               <td>
                 <p>Legt fest, welche Überprüfungsmethoden ein Benutzer beim Zurücksetzen des Kennworts verwenden darf.</p>
-                <p>
-
-                </p>
                 <p>(Nur sichtbar, wenn <strong>Benutzer, für die das Zurücksetzen des Kennworts aktiviert ist</strong> auf <strong>Ja</strong> festgelegt ist).</p>
+                <br>
+                <p><b><u>Erfordert eine der folgenden Lizenzen <a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">(Weitere Informationen)</a></u></b></p>
+                 <ul>
+                   <li>O365 (beliebige kostenpflichtige SKU) [nur Cloudbenutzer]</li>
+                   <li>Azure AD Basic [nur Cloudbenutzer]</li>
+                   <li>Azure AD Premium P1 oder P2 [Cloudbenutzer und lokale Benutzer]</li>
+                   <li>Enterprise Mobility Suite [Cloudbenutzer und lokale Benutzer]</li>
+                   <li>Enterprise Cloud Suite [Cloudbenutzer und lokale Benutzer]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -332,10 +383,16 @@ Legt fest, welche Authentifizierungsmethoden ein Benutzer für einen bestimmten 
               </td>
               <td>
                 <p>Bestimmt die Mindestanzahl der verfügbaren Authentifizierungsmethoden, die ein Benutzer zum Zurücksetzen des Kennworts durchlaufen muss.</p>
-                <p>
-
-                </p>
                 <p>(Nur sichtbar, wenn <strong>Benutzer, für die das Zurücksetzen des Kennworts aktiviert ist</strong> auf <strong>Ja</strong> festgelegt ist).</p>
+                <br>
+                <p><b><u>Erfordert eine der folgenden Lizenzen <a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">(Weitere Informationen)</a></u></b></p>
+                 <ul>
+                   <li>O365 (beliebige kostenpflichtige SKU) [nur Cloudbenutzer]</li>
+                   <li>Azure AD Basic [nur Cloudbenutzer]</li>
+                   <li>Azure AD Premium P1 oder P2 [Cloudbenutzer und lokale Benutzer]</li>
+                   <li>Enterprise Mobility Suite [Cloudbenutzer und lokale Benutzer]</li>
+                   <li>Enterprise Cloud Suite [Cloudbenutzer und lokale Benutzer]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -372,6 +429,15 @@ Betrifft die Anzahl der Überprüfungsschritte, die ein Benutzer durchlaufen mus
               <td>
                 <p>Bestimmt die Mindestanzahl von Fragen, die ein Benutzer beim Registrieren für die Sicherheitsfragenoption beantworten muss.</p>
                 <p>(Nur sichtbar, wenn das Kontrollkästchen <strong>Sicherheitsfragen</strong> aktiviert ist).</p>
+                <br>
+                <p><b><u>Erfordert eine der folgenden Lizenzen <a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">(Weitere Informationen)</a></u></b></p>
+                 <ul>
+                   <li>O365 (beliebige kostenpflichtige SKU) [nur Cloudbenutzer]</li>
+                   <li>Azure AD Basic [nur Cloudbenutzer]</li>
+                   <li>Azure AD Premium P1 oder P2 [Cloudbenutzer und lokale Benutzer]</li>
+                   <li>Enterprise Mobility Suite [Cloudbenutzer und lokale Benutzer]</li>
+                   <li>Enterprise Cloud Suite [Cloudbenutzer und lokale Benutzer]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -402,10 +468,16 @@ Bestimmt die Mindestanzahl von Fragen, die ein Benutzer beantworten muss, damit 
               </td>
               <td>
                 <p>Bestimmt die Mindestanzahl von Fragen, die ein Benutzer beim Zurücksetzen eines Kennworts beantworten muss.</p>
-                <p>
-
-                </p>
                 <p>(Nur sichtbar, wenn das Kontrollkästchen <strong>Sicherheitsfragen</strong> aktiviert ist).</p>
+                <br>
+                <p><b><u>Erfordert eine der folgenden Lizenzen <a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">(Weitere Informationen)</a></u></b></p>
+                 <ul>
+                   <li>O365 (beliebige kostenpflichtige SKU) [nur Cloudbenutzer]</li>
+                   <li>Azure AD Basic [nur Cloudbenutzer]</li>
+                   <li>Azure AD Premium P1 oder P2 [Cloudbenutzer und lokale Benutzer]</li>
+                   <li>Enterprise Mobility Suite [Cloudbenutzer und lokale Benutzer]</li>
+                   <li>Enterprise Cloud Suite [Cloudbenutzer und lokale Benutzer]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -436,10 +508,16 @@ Zum Zeitpunkt der Kennwortzurücksetzung wird diese Anzahl von Fragen nach dem Z
               </td>
               <td>
                 <p>Definiert die vordefinierten Sicherheitsfragen, aus denen Ihre Benutzer auswählen können, wenn sie sich für die Kennwortzurücksetzung registrieren und wenn sie ihre Kennwörter zurücksetzen.</p>
-                <p>
-
-                </p>
                 <p>(Nur sichtbar, wenn das Kontrollkästchen <strong>Sicherheitsfragen</strong> aktiviert ist).</p>
+                <br>
+                <p><b><u>Erfordert eine der folgenden Lizenzen <a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">(Weitere Informationen)</a></u></b></p>
+                 <ul>
+                   <li>O365 (beliebige kostenpflichtige SKU) [nur Cloudbenutzer]</li>
+                   <li>Azure AD Basic [nur Cloudbenutzer]</li>
+                   <li>Azure AD Premium P1 oder P2 [Cloudbenutzer und lokale Benutzer]</li>
+                   <li>Enterprise Mobility Suite [Cloudbenutzer und lokale Benutzer]</li>
+                   <li>Enterprise Cloud Suite [Cloudbenutzer und lokale Benutzer]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -487,10 +565,16 @@ Legt fest, welche Fragen ein Benutzer zum Zurücksetzen eines Kennworts verwende
               </td>
               <td>
                 <p>Definiert die Sicherheitsfragen, aus denen Ihre Benutzer auswählen können, wenn sie sich für die Kennwortzurücksetzung registrieren und wenn sie ihre Kennwörter zurücksetzen.</p>
-                <p>
-
-                </p>
                 <p>(Nur sichtbar, wenn das Kontrollkästchen <strong>Sicherheitsfragen</strong> aktiviert ist).</p>
+                <br>
+                <p><b><u>Erfordert eine der folgenden Lizenzen <a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">(Weitere Informationen)</a></u></b></p>
+                 <ul>
+                   <li>O365 (beliebige kostenpflichtige SKU) [nur Cloudbenutzer]</li>
+                   <li>Azure AD Basic [nur Cloudbenutzer]</li>
+                   <li>Azure AD Premium P1 oder P2 [Cloudbenutzer und lokale Benutzer]</li>
+                   <li>Enterprise Mobility Suite [Cloudbenutzer und lokale Benutzer]</li>
+                   <li>Enterprise Cloud Suite [Cloudbenutzer und lokale Benutzer]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -537,31 +621,25 @@ Legt fest, welche Fragen ein Benutzer zum Zurücksetzen eines Kennworts verwende
                 <div id="require-users-to-register-when-signing-in">
                   <p>Registrierung von Benutzern bei der Anmeldung verlangen?</p>
                 </div>
-                <p>
-
-                </p>
               </td>
               <td>
                 <p>Legt fest, ob ein Benutzer bei der nächsten Anmeldung Kontaktdaten für die Kennwortzurücksetzung registrieren muss.  
                 </p>
                 <p>Diese Funktion funktioniert auf jeder Anmeldeseite, die ein Geschäfts- oder Schulkonto verwendet.  Zu diesen Seiten gehören alle Office 365-Seiten, das Azure-Verwaltungsportal, der Zugriffsbereich und alle Verbundbenutzer oder speziell entwickelten Anwendungen, bei denen die Anmeldung über Azure AD erfolgt.
                 </p>
-                <p>
-
-                </p>
                 <p>Die erzwungene Registrierung gilt nur für Benutzer, für die das Zurücksetzen des Kennworts aktiviert ist. Falls daher die Funktion „Zugriff auf die Kennwortrücksetzung beschränken“ verwendet wird und das Zurücksetzen des Kennworts auf eine bestimmte Benutzergruppe beschränkt ist, müssen nur Benutzer dieser Gruppe sich beim Anmelden für das Zurücksetzen des Kennworts registrieren.</p>
-                <p>
-
-                </p>
                 <p>(Nur sichtbar, wenn <strong>Benutzer, für die das Zurücksetzen des Kennworts aktiviert ist</strong> auf <strong>Ja</strong> festgelegt ist).</p>
+                <br>
+                <p><b><u>Erfordert eine der folgenden Lizenzen <a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">(Weitere Informationen)</a></u></b></p>
+                 <ul>
+                   <li>O365 (beliebige kostenpflichtige SKU) [nur Cloudbenutzer]</li>
+                   <li>Azure AD Basic [nur Cloudbenutzer]</li>
+                   <li>Azure AD Premium P1 oder P2 [Cloudbenutzer und lokale Benutzer]</li>
+                   <li>Enterprise Mobility Suite [Cloudbenutzer und lokale Benutzer]</li>
+                   <li>Enterprise Cloud Suite [Cloudbenutzer und lokale Benutzer]</li>
+                 </ul>
               </td>
               <td>
-                <p>
-
-                </p>
-                <p>
-
-                </p>
                 <p>
                   <strong>Hinweis</strong>
                 </p>
@@ -590,18 +668,18 @@ Diese Einstellung wirkt sich nicht auf das Verhalten des Registrierungsportals s
               </td>
               <td>
                 <p>Wenn <strong>Sollen Benutzer sich registrieren müssen?</strong> aktiviert ist, bestimmt diese Einstellung den Zeitraum, der verstreichen kann, bevor ein Benutzer seine Daten erneut bestätigen muss. </p>
-                <p>
-
-                </p>
                 <p>(Nur sichtbar, wenn <strong>Sollen sich Benutzer bei der Anmeldung im Zugriffsbereich registrieren müssen?</strong> auf <strong>Ja</strong> gesetzt ist.)</p>
+                <br>
+                <p><b><u>Erfordert eine der folgenden Lizenzen <a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">(Weitere Informationen)</a></u></b></p>
+                 <ul>
+                   <li>O365 (beliebige kostenpflichtige SKU) [nur Cloudbenutzer]</li>
+                   <li>Azure AD Basic [nur Cloudbenutzer]</li>
+                   <li>Azure AD Premium P1 oder P2 [Cloudbenutzer und lokale Benutzer]</li>
+                   <li>Enterprise Mobility Suite [Cloudbenutzer und lokale Benutzer]</li>
+                   <li>Enterprise Cloud Suite [Cloudbenutzer und lokale Benutzer]</li>
+                 </ul>
               </td>
               <td>
-                <p>
-
-                </p>
-                <p>
-
-                </p>
                 <p>
                   <strong>Hinweis</strong>
                 </p>
@@ -626,10 +704,16 @@ Diese Einstellung wirkt sich nicht auf das Verhalten des Registrierungsportals s
               </td>
               <td>
                 <p>Steuert, ob der Link "Wenden Sie sich an Ihren Administrator" (auf der linken Seite gezeigt), der bei Auftreten eines Fehlers oder bei zu langen Wartezeiten für Benutzer im Kennwortzurücksetzungsportal angezeigt wird, auf eine benutzerdefinierte URL oder E-Mail-Adresse verweist.</p>
-                <p>
-
-                </p>
                 <p>(Nur sichtbar, wenn <strong>Benutzer, für die das Zurücksetzen des Kennworts aktiviert ist</strong> auf <strong>Ja</strong> festgelegt ist).</p>
+                <br>
+                <p><b><u>Erfordert eine der folgenden Lizenzen <a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">(Weitere Informationen)</a></u></b></p>
+                 <ul>
+                   <li>O365 (beliebige kostenpflichtige SKU) [nur Cloudbenutzer]</li>
+                   <li>Azure AD Basic [nur Cloudbenutzer]</li>
+                   <li>Azure AD Premium P1 oder P2 [Cloudbenutzer und lokale Benutzer]</li>
+                   <li>Enterprise Mobility Suite [Cloudbenutzer und lokale Benutzer]</li>
+                   <li>Enterprise Cloud Suite [Cloudbenutzer und lokale Benutzer]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -672,10 +756,16 @@ Wenn Sie eine E-Mail-Adresse angeben, erstellen wir einen mailto-Link zu dieser 
               </td>
               <td>
                 <p>Steuert die E-Mail-Adresse oder URL, auf die der Link <strong>Wenden Sie sich an Ihren Administrator</strong> verweist. </p>
-                <p>
-
-                </p>
                 <p>(Nur sichtbar, wenn <strong>Link „Wenden Sie sich an Ihren Administrator“ anpassen?</strong> auf <strong>Ja</strong> festgelegt ist.)</p>
+                <br>
+                <p><b><u>Erfordert eine der folgenden Lizenzen <a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">(Weitere Informationen)</a></u></b></p>
+                 <ul>
+                   <li>O365 (beliebige kostenpflichtige SKU) [nur Cloudbenutzer]</li>
+                   <li>Azure AD Basic [nur Cloudbenutzer]</li>
+                   <li>Azure AD Premium P1 oder P2 [Cloudbenutzer und lokale Benutzer]</li>
+                   <li>Enterprise Mobility Suite [Cloudbenutzer und lokale Benutzer]</li>
+                   <li>Enterprise Cloud Suite [Cloudbenutzer und lokale Benutzer]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -706,15 +796,16 @@ Wenn Sie eine URL angeben, wird der Link zu einem standardmäßigen "href", der 
               </td>
               <td>
                 <p>Steuert, ob das Rückschreiben von Kennwörtern für dieses Verzeichnis aktiviert ist. In diesem Fall wird der Status des lokalen Rückschreibungsdiensts angezeigt.</p>
-                <p>
-
-                </p>
                 <p>Diese Einstellung ist nützlich, wenn Sie den Dienst vorübergehend deaktivieren möchten, ohne Azure AD Connect erneut zu konfigurieren.</p>
+                <br>
+                <p><b><u>Erfordert eine der folgenden Lizenzen <a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">(Weitere Informationen)</a></u></b></p>
+                 <ul>
+                   <li>Azure AD Premium P1 oder P2 [Cloudbenutzer und lokale Benutzer]</li>
+                   <li>Enterprise Mobility Suite [Cloudbenutzer und lokale Benutzer]</li>
+                   <li>Enterprise Cloud Suite [Cloudbenutzer und lokale Benutzer]</li>
+                 </ul>
               </td>
               <td>
-                <p>
-
-                </p>
                 <p>
                   <strong>Hinweis</strong>
                 </p>
@@ -744,22 +835,25 @@ Wenn das Rückschreiben bereitgestellt und konfiguriert und diese Option auf <st
                   <li class="unordered">
 Wenn die Option auf <strong>Ja</strong> gesetzt ist, wird das Rückschreiben aktiviert, und Verbundbenutzer und Benutzer mit Kennworthashsynchronisierung können ihre Kennwörter zurücksetzen.<br><br></li>
                 </ul>
-              </td>
+              </td
             </tr>
              <tr>
               <td>
                 <div id="allow-users-to-unlock-accounts-without-resetting-their-password">
-                  <p>Benutzern das Entsperren von Konten ohne Zurücksetzen des Kennworts erlauben</p>
+                  <p>Benutzern das Entsperren von lokalen Active Directory-Konten ohne Zurücksetzen des Kennworts erlauben</p>
                 </div>
               </td>
               <td>
-
               <p>Legt fest, ob Benutzer, die das Kennwortzurücksetzungsportal aufrufen, die Option zum Entsperren ihrer lokalen Active Directory-Konten ohne Zurücksetzen ihres Kennworts erhalten sollen. Standardmäßig werden Azure AD-Konten beim Zurücksetzen von Kennwörtern stets entsperrt – mit dieser Einstellung können Sie diese beiden Vorgänge trennen.</p>
-
               <p>Bei der Einstellung „Ja“ erhalten die Benutzer die Option zum Zurücksetzen ihres Kennworts und Entsperren ihres Kontos, und auch die Option des Entsperrens ohne ein Zurücksetzen des Kennworts. </p>
-
               <p>Bei der Einstellung „Nein“ können die Benutzer das Entsperren des Kontos nur in Kombination mit dem Zurücksetzen des Kennworts vornehmen.</p>
-
+                <br>
+                <p><b><u>Erfordert eine der folgenden Lizenzen <a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">(Weitere Informationen)</a></u></b></p>
+                 <ul>
+                   <li>Azure AD Premium P1 oder P2 [Cloudbenutzer und lokale Benutzer]</li>
+                   <li>Enterprise Mobility Suite [Cloudbenutzer und lokale Benutzer]</li>
+                   <li>Enterprise Cloud Suite [Cloudbenutzer und lokale Benutzer]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -768,7 +862,6 @@ Wenn die Option auf <strong>Ja</strong> gesetzt ist, wird das Rückschreiben akt
                 <ul>
                   <li class="unordered">
 Um dieses Feature verwenden zu können, müssen Sie die Azure AD Connect-Version von August 2015 oder später (Version 1.0.8667.0 oder höher) installieren.<br><br><a href="http://www.microsoft.com/download/details.aspx?id=47594">Klicken Sie hier, um die aktuelle Version von Azure AD Connect herunterzuladen</a>.</li>
-
                   <li class="unordered">
                     <strong>Hinweis</strong>: Um diese Funktion zu testen, muss das Kennwortrückschreiben aktiviert sein sowie ein lokal erstelltes Konto (beispielsweise eines Verbundbenutzers oder synchronisierten Benutzers) verwendet werden, bei dem ein gesperrtes Konto vorliegt.  Benutzern, die nicht lokal bereitgestellt sind und über kein gesperrtes Konto verfügen, wird die Option zum Entsperren ihres Kontos nicht angezeigt.</li>
                 </ul>
@@ -812,6 +905,15 @@ In der folgenden Tabelle werden die Auswirkungen der einzelnen Steuerelemente au
               </td>
               <td>
                 <p>Legt fest, ob alle globale Administratoren über eine E-Mail an ihre primäre E-Mail-Adresse benachrichtigt werden, sobald ein anderer Administrator eines beliebigen Typs sein eigenes Kennwort zurücksetzt.</p>
+                <br>
+                <p><b><u>Erfordert eine der folgenden Lizenzen <a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">(Weitere Informationen)</a></u></b></p>
+                 <ul>
+                   <li>O365 (beliebige kostenpflichtige SKU) [nur Cloudbenutzer]</li>
+                   <li>Azure AD Basic [nur Cloudbenutzer]</li>
+                   <li>Azure AD Premium P1 oder P2 [Cloudbenutzer und lokale Benutzer]</li>
+                   <li>Enterprise Mobility Suite [Cloudbenutzer und lokale Benutzer]</li>
+                   <li>Enterprise Cloud Suite [Cloudbenutzer und lokale Benutzer]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -842,6 +944,15 @@ Wenn diese Option aktiviert ist, geschieht Folgendes: Wenn Administrator A sein 
               </td>
               <td>
                 <p>Legt fest, ob Benutzer oder Administratoren, die ihre eigenen Kennwörter zurücksetzen, eine E-Mail-Benachrichtigung erhalten, dass ihr Kennwort zurückgesetzt wurde.</p>
+                <br>
+                <p><b><u>Erfordert eine der folgenden Lizenzen <a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">(Weitere Informationen)</a></u></b></p>
+                 <ul>
+                   <li>O365 (beliebige kostenpflichtige SKU) [nur Cloudbenutzer]</li>
+                   <li>Azure AD Basic [nur Cloudbenutzer]</li>
+                   <li>Azure AD Premium P1 oder P2 [Cloudbenutzer und lokale Benutzer]</li>
+                   <li>Enterprise Mobility Suite [Cloudbenutzer und lokale Benutzer]</li>
+                   <li>Enterprise Cloud Suite [Cloudbenutzer und lokale Benutzer]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -864,10 +975,10 @@ Diese Benachrichtigung wird per E-Mail an den Benutzerprinzipalnamen und die alt
 <br/>
 <br/>
 
-## <a name="links-to-password-reset-documentation"></a>Links zur Dokumentation für die Kennwortzurücksetzung
+## <a name="next-steps"></a>Nächste Schritte
 Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortzurücksetzung für Azure AD:
 
-* **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md).
+* **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password).
 * [**Funktionsweise**](active-directory-passwords-how-it-works.md) – Erfahren Sie mehr über die sechs verschiedenen Komponenten des Diensts und deren Funktionen.
 * [**Erste Schritte**](active-directory-passwords-getting-started.md) – Erfahren Sie, wie Sie Benutzern das Zurücksetzen und Ändern ihrer Cloud- oder lokalen Kennwörter erlauben.
 * [**Best Practices**](active-directory-passwords-best-practices.md) – Erfahren Sie, wie Sie Kennwörter in Ihrer Organisation schnell bereitstellen und effektiv verwalten.
@@ -877,9 +988,4 @@ Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortz
 * [**Weitere Informationen**](active-directory-passwords-learn-more.md) – Erhalten Sie tiefgehende technische Details zur Funktionsweise des Diensts.
 
 [001]: ./media/active-directory-passwords-customize/001.jpg "Image_001.jpg"
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

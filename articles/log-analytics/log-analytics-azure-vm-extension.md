@@ -16,9 +16,9 @@ ms.date: 10/10/2016
 ms.author: richrund
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
-ms.openlocfilehash: 3bb103a8def2e1c56695169568c2d3c64b7f291f
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 844f7d6fa4191a54d14010adf974401d3a94ba69
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -64,6 +64,12 @@ Sie können den Agent für Log Analytics installieren und den virtuellen Azure-C
    ![Verbunden](./media/log-analytics-azure-vm-extension/oms-connect-azure-05.png)
 
 ## <a name="enable-the-vm-extension-using-powershell"></a>Aktivieren Sie die VM-Erweiterung mithilfe von PowerShell
+Bei der Konfiguration der virtuellen Computer mit PowerShell müssen Sie Werte für **workspaceId** und **workspaceKey** angeben. Bei den Eigenschaftennamen in der JSON-Konfiguration muss die **Groß-/Kleinschreibung** beachten werden.
+
+Sie finden Ihre Arbeitsbereichs-ID und den Primärschlüssel auf der Seite **Einstellungen** im OMS-Portal oder indem Sie PowerShell wie im Beispiel oben gezeigt verwenden.
+
+![Arbeitsbereichs-ID und Primärschlüssel](./media/log-analytics-azure-vm-extension/oms-analyze-azure-sources.png)
+
 Es gibt verschiedene Befehle für klassische virtuelle Azure-Computer und virtuelle Resource Manager-Computer. Im Folgenden finden Sie Beispiele für klassische virtuelle Computer und virtuelle Resource Manager-Computer.
 
 Verwenden Sie für klassische virtuelle Computer das folgende PowerShell-Beispiel:
@@ -115,9 +121,6 @@ $location = $vm.Location
 
 
 ```
-Bei der Konfiguration der virtuellen Computer mit PowerShell müssen Sie die **Arbeitsbereichs-ID** und einen **Primärschlüssel** angeben. Sie finden Ihre Arbeitsbereichs-ID und den Primärschlüssel auf der Seite **Einstellungen** im OMS-Portal oder indem Sie PowerShell wie im Beispiel oben gezeigt verwenden.
-
-![Arbeitsbereichs-ID und Primärschlüssel](./media/log-analytics-azure-vm-extension/oms-analyze-azure-sources.png)
 
 ## <a name="deploy-the-vm-extension-using-a-template"></a>Bereitstellen der VM-Erweiterung mithilfe einer Vorlage
 Mit dem Azure Resource Manager können Sie eine einfache Vorlage (im JSON-Format) erstellen, mit der die Bereitstellung und Konfiguration Ihrer Anwendung definiert wird. Diese Vorlage wird als Ressourcen-Manager-Vorlage bezeichnet und ist eine deklarative Möglichkeit zum Definieren der Bereitstellung. Mit einer Vorlage können Sie die Anwendung während des gesamten App-Lebenszyklus wiederholt bereitstellen und dabei sicher sein, dass Ihre Ressourcen einheitlich bereitgestellt werden.
@@ -363,7 +366,20 @@ Sie können eine Vorlage mit dem folgenden PowerShell-Befehl bereitstellen:
 New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile $templateFilePath
 ```
 
-## <a name="troubleshooting-windows-virtual-machines"></a>Behandeln von Problemen bei virtuellen Windows-Computern
+## <a name="troubleshooting-the-log-analytics-vm-extension"></a>Problembehandlung für die Log Analytics-VM-Erweiterung
+In der Regel erhalten Sie vom Azure-Portal oder von Azure PowerShell eine Nachricht, wenn etwas nicht funktioniert.
+
+1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com)an.
+2. Suchen Sie den virtuellen Computer, und öffnen Sie seine Details.
+3. Klicken Sie auf **Erweiterungen**, um zu überprüfen, ob die OMS-Erweiterung aktiviert ist.
+
+   ![Ansicht der VM-Erweiterung](./media/log-analytics-azure-vm-extension/oms-vmview-extensions.png)
+
+4. Klicken Sie auf die *MicrosoftMonitoringAgent*-Erweiterung (Windows) oder die *OmsAgentForLinux*-Erweiterung (Linux), und sehen Sie sich die Details an. 
+
+   ![Details der VM-Erweiterung](./media/log-analytics-azure-vm-extension/oms-vmview-extensiondetails.png)
+
+### <a name="troubleshooting-windows-virtual-machines"></a>Behandeln von Problemen bei virtuellen Windows-Computern
 Wenn die VM-Agent-Erweiterung *Microsoft Monitoring Agent* nicht installiert ist oder keine Berichte erstellt, können Sie die folgenden Schritte ausführen, um das Problem zu beheben.
 
 1. Überprüfen Sie, ob der Azure-VM-Agent installiert ist und ordnungsgemäß funktioniert, indem Sie die Schritte unter [KB 2965986](https://support.microsoft.com/kb/2965986#mt1) ausführen.
@@ -383,7 +399,7 @@ Wenn die VM-Agent-Erweiterung *Microsoft Monitoring Agent* nicht installiert ist
 
 Weitere Informationen finden Sie unter [Behandeln von Problemen bei Windows-Erweiterungen](../virtual-machines/virtual-machines-windows-extensions-troubleshoot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-## <a name="troubleshooting-linux-virtual-machines"></a>Behandeln von Problemen bei virtuellen Linux-Computern
+### <a name="troubleshooting-linux-virtual-machines"></a>Behandeln von Problemen bei virtuellen Linux-Computern
 Wenn die VM-Agent-Erweiterung *OMS-Agent für Linux* nicht installiert ist oder keine Berichte erstellt, können Sie die folgenden Schritte ausführen, um das Problem zu beheben.
 
 1. Wenn der Status der Erweiterung *Unbekannt* lautet, überprüfen Sie, ob der Azure-VM-Agent installiert ist und ordnungsgemäß funktioniert. Dazu überprüfen Sie die Protokolldatei des VM-Agents: `/var/log/waagent.log`.

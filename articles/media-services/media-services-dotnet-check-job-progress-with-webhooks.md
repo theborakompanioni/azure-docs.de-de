@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/06/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: c0cf8a3d4e257f88f81fca9a6a1161c158b335b8
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 357a707724266acfef016add97e19d4b1abb41e3
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -54,9 +54,9 @@ Der Webhook erwartet einen Signaturschlüssel (Anmeldeinformationen), der mit de
 
 Im folgenden Code führt die **VerifyWebHookRequestSignature**-Methode die Überprüfung auf die Benachrichtigungsmeldung durch. Mit dieser Überprüfung soll sichergestellt werden, dass die Meldung von Azure Media Services gesendet und nicht manipuliert wurde. Die Signatur ist für Azure-Funktionen optional, da der **Code**-Wert als Abfrageparameter für Transport Layer Security (TLS) vorhanden ist. 
 
-Sie finden die Definition der folgenden .NET-Azure-Funktion für Media Services [hier](https://github.com/Azure-Samples/media-services-dotnet-functions-integration/tree/master/Notification_Webhook_Function).
+Die Definition verschiedener .NET Azure-Funktionen für Media Services (einschließlich der in diesem Thema gezeigten Funktion) finden Sie [hier](https://github.com/Azure-Samples/media-services-dotnet-functions-integration).
 
-Das folgende Codebeispiel veranschaulicht die Definitionen von Azure-Funktionsparametern und drei Dateien, die mit der Azure-Funktion verknüpft sind: function.json, project.json und run.csx.
+Das folgende Codebeispiel veranschaulicht die Definitionen von Azure-Funktionsparametern und drei Dateien, die mit der Azure-Funktion verknüpft sind: „function.json“, „project.json“ und „run.csx“.
 
 ### <a name="application-settings"></a>Anwendungseinstellungen 
 
@@ -115,6 +115,10 @@ Die Datei „project.json“ enthält die Abhängigkeiten.
 ### <a name="runcsx"></a>run.csx
 
 Der folgende C#-Code zeigt eine Definition einer Azure-Funktion, die ein Webhook ist. Die Funktion lauscht auf den Webhookrückruf von Media Services-Benachrichtigungen und veröffentlicht das Ausgabemedienobjekt, sobald der Auftrag beendet wurde. 
+
+
+>[!NOTE]
+>Es gilt ein Grenzwert von 1.000.000 Richtlinien für verschiedene AMS-Richtlinien (z.B. für die Locator-Richtlinie oder für ContentKeyAuthorizationPolicy). Wenn Sie immer die gleichen Tage/Zugriffsberechtigungen verwenden, z.B. Richtlinien für Locator, die für einen längeren Zeitraum vorgesehen sind (Richtlinien ohne Upload), sollten Sie dieselbe Richtlinien-ID verwenden. Weitere Informationen finden Sie in [diesem](media-services-dotnet-manage-entities.md#limit-access-policies) Thema.
 
     ///////////////////////////////////////////////////
     #r "Newtonsoft.Json"

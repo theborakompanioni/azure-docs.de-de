@@ -17,8 +17,9 @@ ms.workload: big-data
 ms.date: 03/07/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: e2d78b7e71cd17c88ce4e283cc0b0ddc9bf7b479
-ms.openlocfilehash: 0b12dcfbf69c0f66df7587f6a755f74089090960
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: 8a925c38a561d11f1c0e394b8c993f739e912f54
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -157,8 +158,8 @@ Sie benötigen Excel 2013 oder 2010, um diesen Teil des Lernprogramms durchführ
 2. Klicken Sie auf das Menü **Power Query**, klicken Sie auf **Aus anderen Quellen**, und klicken Sie dann auf **Aus Azure HDInsight**.
    
     ![Für Azure HDInsight geöffnetes Menü "Excel PowerQuery importieren".][image-hdi-gettingstarted-powerquery-importdata]
-3. Geben Sie den **Kontonamen** des mit Ihrem Cluster verbundenen Azure Blob Storage-Kontos ein, und klicken Sie dann auf **OK**. (Dies ist das Speicherkonto, das Sie zu Beginn des Tutorials erstellt haben.)
-4. Geben Sie den **Kontoschlüssel** für das Azure Blob Storage-Konto ein, und klicken Sie dann auf **Speichern**.
+3. Geben Sie den **Kontonamen** des mit Ihrem Cluster verbundenen Azure Storage-Kontos ein, und klicken Sie dann auf **OK**. (Dies ist das Speicherkonto, das Sie zu Beginn des Tutorials erstellt haben.)
+4. Geben Sie den **Kontoschlüssel** für das Azure Storage-Konto ein, und klicken Sie dann auf **Speichern**.
 5. Doppelklicken Sie im rechten Bereich auf den Blobnamen. Standardmäßig entspricht der Blobname dem Namen des Clusters.
 6. Suchen Sie in der Spalte **Name** nach dem Eintrag **stdout**. Prüfen Sie, ob die GUID in der entsprechenden Spalte **Ordnerpfad** mit der GUID übereinstimmt, die Sie zuvor kopiert haben. Eine Übereinstimmung deutet darauf hin, dass die Ausgabedaten zu dem von Ihnen übermittelten Job gehören. Klicken Sie in der Spalte links von **stdout** auf **Binary**.
    
@@ -190,7 +191,7 @@ In diesem Hadoop-Tutorial haben Sie erfahren, wie ein Hadoop-Cluster unter Windo
 
 * [Erste Schritte mit den HDInsight Hadoop-Tools für Visual Studio][1]
 * [Erste Schritte mit dem HDInsight-Emulator][hdinsight-emulator]
-* [Verwenden von Azure Blob Storage mit HDInsight][hdinsight-storage]
+* [Verwenden von Azure Storage mit HDInsight][hdinsight-storage]
 * [Verwalten von HDInsight mit PowerShell][hdinsight-admin-powershell]
 * [Hochladen von Daten in HDInsight][hdinsight-upload-data]
 * [Verwenden von MapReduce mit HDInsight][hdinsight-use-mapreduce]
@@ -252,10 +253,5 @@ In diesem Hadoop-Tutorial haben Sie erfahren, wie ein Hadoop-Cluster unter Windo
 
 [image-hdi-gettingstarted-powerquery-importdata]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData.png
 [image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData2.png
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

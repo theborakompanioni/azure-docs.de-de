@@ -18,9 +18,9 @@ ms.date: 02/27/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 09f0ed3f7624bb242c40868710fb3eae49cda906
-ms.openlocfilehash: a798de49ed08eedaf27267c6bac12f8b0b64739f
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 3bad24f35cf7867f1e02e8470c602a7f6a9ce8fb
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -59,7 +59,9 @@ Jedes Abonnement umfasst einen oder mehrere Dienstpläne, die jeweils die enthal
 
 Zwar ist nur der Erwerb eines Abonnements erforderlich, um kostenpflichtige Funktionen zu konfigurieren, die Verwendung Ihrer kostenpflichtigen Azure AD-Funktionen erfordert jedoch die Verteilung von Lizenzen an die richtigen Personen. Im Allgemeinen muss allen Benutzern, die Zugriff haben sollen oder die über kostenpflichtige Azure AD-Funktionen verwaltet werden, eine Lizenz zugewiesen werden. Die Lizenzzuweisung ist eine Zuordnung zwischen einem Benutzer und einem erworbenen Dienst wie Azure AD Premium, Basic oder Enterprise Mobility Suite.
 
-Es ist einfach zu verwalten, welche Benutzer im Verzeichnis eine Lizenz erhalten sollen. Hierzu können Sie Lizenzen entweder Gruppen im Azure-Portal zuweisen oder sie über das Portal, mithilfe von PowerShell oder über APIs direkt den richtigen Personen zuweisen. Wenn einer Gruppe Lizenzen zugewiesen werden, wird allen Mitgliedern der Gruppe eine Lizenz zugewiesen. Wenn Benutzer der Gruppe hinzugefügt oder aus der Gruppe entfernt werden, werden sie der entsprechenden Lizenz zugewiesen oder davon entfernt. Für die Gruppenzuweisung kann jede verfügbare Gruppenverwaltung genutzt werden, die Ihnen zur Verfügung steht und die mit der gruppenbasierten Zuweisung zu Anwendungen konsistent ist. Durch diesen Ansatz können Sie Regeln so einrichten, dass alle Benutzer in Ihrem Verzeichnis automatisch zugewiesen werden, dass sichergestellt ist, dass jeder in der entsprechenden Position über eine Lizenz verfügt, oder dass die Entscheidung an andere Manager in der Organisation delegiert wird. Ausführliche Informationen zur Lizenzzuweisung zu Gruppen (einschließlich erweiterter Szenarien und Office 365-Lizenzierungsszenarien) finden Sie in diesem Artikel.
+Es ist einfach zu verwalten, welche Benutzer im Verzeichnis eine Lizenz erhalten sollen. Hierzu können Sie Lizenzen entweder Gruppen im Azure-Portal zuweisen oder sie über das Portal, mithilfe von PowerShell oder über APIs direkt den richtigen Personen zuweisen. Wenn einer Gruppe Lizenzen zugewiesen werden, wird allen Mitgliedern der Gruppe eine Lizenz zugewiesen. Wenn Benutzer der Gruppe hinzugefügt oder aus der Gruppe entfernt werden, werden sie der entsprechenden Lizenz zugewiesen oder davon entfernt. Für die Gruppenzuweisung kann jede verfügbare Gruppenverwaltung genutzt werden, die Ihnen zur Verfügung steht und die mit der gruppenbasierten Zuweisung zu Anwendungen konsistent ist. Durch diesen Ansatz können Sie Regeln so einrichten, dass alle Benutzer in Ihrem Verzeichnis automatisch zugewiesen werden, dass sichergestellt ist, dass jeder in der entsprechenden Position über eine Lizenz verfügt, oder dass die Entscheidung an andere Manager in der Organisation delegiert wird. 
+
+Ausführliche Informationen zur Lizenzzuweisung zu Gruppen (einschließlich erweiterter Szenarien und Office 365-Lizenzierungsszenarien) finden Sie in [diesem Artikel](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-group-assignment-azure-portal).
 
 ## <a name="getting-started-with-azure-ad-licensing"></a>Erste Schritte mit der Azure AD-Lizenzierung
 
@@ -152,6 +154,7 @@ Jetzt sind Sie möglicherweise bereit, einige Funktionen von Azure AD Premium zu
 * [Self-Service-Gruppenverwaltung](active-directory-accessmanagement-self-service-group-management.md)
 * [Azure AD Connect-Zustand](active-directory-aadconnect-health.md)
 * [Gruppenzuweisung zu Anwendungen](active-directory-manage-groups.md)
+* [Zuweisen von Lizenzen zu einer Gruppe](active-directory-licensing-group-assignment-azure-portal.md)
 * [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)
 * [Direkter Erwerb von Azure AD Premium-Lizenzen](http://aka.ms/buyaadp)
 

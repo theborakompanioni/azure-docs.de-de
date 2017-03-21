@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 02/23/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: d6a9be6c5c681cba04fa8ba216c89234ae35b846
-ms.openlocfilehash: 8e554fc73906a912c426cabf6f6dffdc10002c9b
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 2289c99ddd08c1e7ba356e233180cf59d99de182
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -277,7 +277,7 @@ In der JSON-Vorlage werden folgende Data Factory-Entitäten definiert:
 * [Datenpipeline mit einer Kopieraktivität](#data-pipeline)
 
 #### <a name="azure-storage-linked-service"></a>Mit Azure Storage verknüpfter Dienst
-Die mit Ihrem Dienst verknüpfte Azure Storage-Instanz verbindet Ihr Azure-Speicherkonto mit der Data Factory. In diesem Tutorial wird dasselbe Speicherkonto verwendet, das als Standardspeicherkonto, Eingabedatenspeicher und Ausgabedatenspeicher für HDInsight verwendet wird. Daher definieren Sie nur einen mit Azure Storage verknüpften Dienst. In der Definition des verknüpften Diensts geben Sie den Namen und Schlüssel Ihres Azure-Speicherkontos an. Informationen zu JSON-Eigenschaften zum Definieren eines mit Azure Storage verknüpften Diensts finden Sie unter [Mit Azure Storage verknüpfter Dienst](../data-factory/data-factory-azure-blob-connector.md#azure-storage-linked-service). 
+Die mit Ihrem Dienst verknüpfte Azure Storage-Instanz verbindet Ihr Azure-Speicherkonto mit der Data Factory. In diesem Tutorial wird dasselbe Speicherkonto als Standardspeicherkonto, Eingabedatenspeicher und Ausgabedatenspeicher für HDInsight verwendet. Daher definieren Sie nur einen mit Azure Storage verknüpften Dienst. In der Definition des verknüpften Diensts geben Sie den Namen und Schlüssel Ihres Azure-Speicherkontos an. Informationen zu JSON-Eigenschaften zum Definieren eines mit Azure Storage verknüpften Diensts finden Sie unter [Mit Azure Storage verknüpfter Dienst](../data-factory/data-factory-azure-blob-connector.md#azure-storage-linked-service). 
 
 ```json
 {

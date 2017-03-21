@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 02/08/2017
 ms.author: ganesr;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: fe0bff84a5316628d9e465da0d4e62162f1ea4f2
-ms.openlocfilehash: cb67631dbbfb53a0de9b07bc3918bd70751ec41b
-ms.lasthandoff: 02/10/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 62ecd4cc2eed8623cab75777605d621e16b99977
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -232,7 +232,7 @@ Sie können bestimmte Eigenschaften einer ExpressRoute-Verbindung ändern, ohne 
 Sie können folgende Aktionen ausführen, ohne Ausfallzeiten zu verursachen:
 
 * Aktivieren oder deaktivieren Sie ein ExpressRoute Premium-Add-On für Ihre ExpressRoute-Verbindung.
-* Erhöhen Sie die Bandbreite Ihrer ExpressRoute-Verbindung. Beachten Sie, dass ein Downgrade der Bandbreite einer Verbindung nicht unterstützt wird.
+* Erhöhen Sie die Bandbreite der ExpressRoute-Verbindung, sofern Kapazität am Port vorhanden ist. Beachten Sie, dass ein Downgrade der Bandbreite einer Verbindung nicht unterstützt wird. 
 * Sie können den Abrechnungsplan von „Volumentarif“ zu „Datenflatrate“ ändern. Beachten Sie, dass eine Änderung des Abrechnungsplans von „Datenflatrate“ zu „Volumentarif“ nicht unterstützt wird.
 * Sie können die Option *Klassische Vorgänge zulassen*aktivieren und deaktivieren.
 
@@ -286,6 +286,8 @@ Für Ihre bereits vorhandene Verbindung können Sie das ExpressRoute Premium-Add
 Informationen zu unterstützten Bandbreitenoptionen für Ihren Anbieter finden Sie unter [ExpressRoute – Häufig gestellte Fragen](expressroute-faqs.md) . Sie können eine beliebige Größe auswählen, die größer als die vorhandene Verbindung ist, sofern der physische Port (für den die Verbindung erstellt wird) dies zulässt.
 
 > [!IMPORTANT]
+> Unter Umständen müssen Sie die ExpressRoute-Verbindung neu erstellen, wenn nicht ausreichend Kapazität am vorhandenen Port verfügbar ist. Die Verbindung kann nicht aktualisiert werden, wenn an dieser Stelle keine zusätzliche Kapazität verfügbar ist.
+>
 > Es ist nicht möglich, die Bandbreite einer ExpressRoute-Verbindung ohne Störungen zu reduzieren. Ein Downgrade der Bandbreite erfordert, dass Sie die Bereitstellung der ExpressRoute-Verbindung aufheben und dann eine neue ExpressRoute-Verbindung bereitstellen.
 > 
 > 

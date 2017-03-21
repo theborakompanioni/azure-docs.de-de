@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/09/2017
 ms.author: richrund
 translationtype: Human Translation
-ms.sourcegitcommit: abea89ceab4c606a574ad739e9feca5b5dafacf0
-ms.openlocfilehash: bc87bafd1ce6926d787915fae2f72727940bb90e
-ms.lasthandoff: 02/09/2017
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: 6cf48883d397a4b04e707111306d4596cd7af683
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -35,8 +35,8 @@ Wenn Sie die Lösung verwenden möchten, müssen Sie die Protokollierung für Az
 ## <a name="install-and-configure-the-solution"></a>Installieren und Konfigurieren der Lösung
 Gehen Sie folgendermaßen vor, um die Azure Key Vault-Lösung zu installieren und zu konfigurieren:
 
-1. Aktivieren Sie entweder im Portal oder mit PowerShell die Diagnoseprotokollierung für die zu überwachenden Key Vault-Ressourcen. 
-2. Aktivieren Sie die Azure Key Vault-Lösung mithilfe des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md) beschriebenen Prozesses. 
+1. Aktivieren Sie die Azure Key Vault-Lösung mithilfe des [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview) oder des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md) beschriebenen Prozesses. 
+2. Aktivieren Sie entweder im [Portal](#enable-key-vault-diagnostics-in-the-portal) oder mit [PowerShell](#enable-key-vault-diagnostics-using-powershell) die Diagnoseprotokollierung für die zu überwachenden Key Vault-Ressourcen. 
 
 ### <a name="enable-key-vault-diagnostics-in-the-portal"></a>Aktivieren der Key Vault-Diagnose im Portal
 
@@ -76,7 +76,7 @@ Die folgende Tabelle enthält die Datensammlungsmethoden und andere Details dazu
 | Azure |![Nein](./media/log-analytics-azure-keyvault/oms-bullet-red.png) |![Nein](./media/log-analytics-azure-keyvault/oms-bullet-red.png) |![Ja](./media/log-analytics-azure-keyvault/oms-bullet-green.png) |![Nein](./media/log-analytics-azure-keyvault/oms-bullet-red.png) |![Nein](./media/log-analytics-azure-keyvault/oms-bullet-red.png) | Bei Ankunft |
 
 ## <a name="use-azure-key-vault"></a>Verwenden von Azure Key Vault
-Zeigen Sie nach der Installation der Lösung die Key Vault-Daten an, indem Sie in Log Analytics auf der Seite **Übersicht** auf die Kachel **Azure Key Vault** klicken.
+Zeigen Sie nach der [Installation der Lösung](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview) die Key Vault-Daten an, indem Sie in Log Analytics auf der Seite **Übersicht** auf die Kachel **Azure Key Vault** klicken.
 
 ![Abbildung der Kachel „Azure Key Vault“](./media/log-analytics-azure-keyvault/log-analytics-keyvault-tile.png)
 
