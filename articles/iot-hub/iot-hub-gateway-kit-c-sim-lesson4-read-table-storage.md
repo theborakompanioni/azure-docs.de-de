@@ -13,11 +13,12 @@ ms.devlang: c
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2016
+ms.date: 3/21/2017
 ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
 ms.openlocfilehash: b12e16a5a532448cf2e939cfcad322225b9ee811
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -99,9 +100,4 @@ Alle gesendeten und empfangenen Nachrichten werden auf dem Hostcomputer sofort i
 ## <a name="summary"></a>Zusammenfassung
 
 Sie haben den Beispielcode zum Lesen der Nachrichten in Ihrem Azure-Tabellenspeicher nach dem Speichern mit der Azure-Funktionen-Anwendung ausgeführt.
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 
