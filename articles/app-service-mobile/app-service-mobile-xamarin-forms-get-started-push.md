@@ -185,7 +185,7 @@ Wenn das Back-End per FCM konfiguriert wurde, können Sie dem Client für die Re
             }
         }
 
-    Beachten Sie, daß der 'messageParam'-Parameter bei der Registrierung des Templates verwendet wird.
+    Beachten Sie, dass bei der Registrierung der Vorlage der "messageParam"-Parameter in diesem Code verwendet wird.
 12. Fügen Sie den folgenden Code hinzu, mit dem **OnMessage**implementiert wird:
 
         protected override void OnMessage(Context context, Intent intent)
