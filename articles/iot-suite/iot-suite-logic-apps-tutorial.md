@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/08/2017
+ms.date: 03/09/2017
 ms.author: corywink
 translationtype: Human Translation
-ms.sourcegitcommit: 14e2fcea9a6afbac640d665d5e44a700f855db4b
-ms.openlocfilehash: 609de3ff0fb14aa98b28572dce1eaeb8a4412d93
-ms.lasthandoff: 02/09/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 5e3221395082513f842863615d40f7d3ebf2562e
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -31,6 +31,8 @@ Bevor Sie mit diesem Tutorial beginnen, sollten Sie zunächst:
 
 * eine vorkonfigurierte Lösung für die Remoteüberwachung in Ihrem Azure-Abonnement bereitstellen
 * ein SendGrid-Konto erstellen, um eine E-Mail zu senden, die Ihren Geschäftsprozess auslöst Sie können sich bei [SendGrid](https://sendgrid.com/) durch Klicken auf **Jetzt loslegen** für ein kostenloses Testkonto registrieren. Nachdem Sie sich für Ihr kostenloses Testkonto registriert haben, müssen Sie in SendGrid einen [API-Schlüssel](https://sendgrid.com/docs/User_Guide/Settings/api_keys.html) erstellen, der Berechtigungen zum Senden von E-Mail erteilt. Sie benötigen diesen API-Schlüssel im weiteren Verlauf des Tutorials.
+
+Zum Abschließen dieses Tutorials benötigen Sie Visual Studio 2015 oder Visual Studio 2017, damit Sie Aktionen im Back-End der vorkonfigurierten Lösung ändern können.
 
 Wenn Sie Ihre vorkonfigurierte Remoteüberwachungslösung bereits bereitgestellt haben, navigieren Sie im [Azure-Portal][lnk-azureportal] zur Ressourcengruppe dieser Lösung. Die Ressourcengruppe hat den gleichen Namen wie die Lösung, den Sie gewählt haben, als Sie Ihre Remoteüberwachungslösung bereitgestellt haben. In der Ressourcengruppe finden Sie alle bereitgestellten Azure-Ressourcen für Ihre Lösung mit Ausnahme der Azure Active Directory-Anwendung, die Sie im klassischen Azure-Portal finden. Der folgende Screenshot zeigt ein Beispiel des Blatts **Ressourcengruppe** für eine vorkonfigurierte Remoteüberwachungslösung:
 
@@ -117,8 +119,8 @@ In diesem Abschnitt verbinden Sie Ihre vorkonfigurierte Lösung mit der Logik-Ap
     ```
     private Dictionary<string,string> actionIds = new Dictionary<string, string>()
     {
-        { "Send Message", "<Http Post to this UR>" },
-        { "Raise Alarm", "<Http Post to this UR> }
+        { "Send Message", "<Http Post to this URL>" },
+        { "Raise Alarm", "<Http Post to this URL>" }
     };
     ```
 5. Speichern Sie die Änderungen in der Projektmappe, und beenden Sie Visual Studio.

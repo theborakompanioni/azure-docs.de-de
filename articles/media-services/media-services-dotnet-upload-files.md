@@ -12,11 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 03/12/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 9cd4fa1c5927fb85a406a99bf5d2dacbb0fcbb2f
-ms.openlocfilehash: 0cdc48927c22292a4637a4e40b4ecd5be5e4478e
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 08dfdb54db0655bc025f8c268988804b069f70c6
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -38,7 +39,7 @@ Die Dateien im Medienobjekt heißen **Medienobjektdateien**. Die **AssetFile** -
 > * Media Services verwendet beim Erstellen von URLs für den Streaminginhalt den Wert der IAssetFile.Name-Eigenschaft (z. B. http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters). Aus diesem Grund ist die Prozentkodierung nicht zulässig. Der Wert der **Name**-Eigenschaft darf keines der folgenden [für die Prozentcodierung reservierten Zeichen](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) enthalten: !*'();:@&=+$,/?%#[]". Darüber hinaus wird für die Dateinamenerweiterung nur ein Punkt (.) unterstützt.
 > * Die Länge des Namens darf 260 Zeichen nicht überschreiten.
 > * Bei der Verarbeitung in Media Services werden nur Dateien bis zu einer bestimmten Größe unterstützt. Ausführliche Informationen zur Dateigrößenbeschränkung finden Sie in [diesem Thema](media-services-quotas-and-limitations.md).
->
+> * Es gilt ein Grenzwert von 1.000.000 Richtlinien für verschiedene AMS-Richtlinien (z.B. für die Locator-Richtlinie oder für ContentKeyAuthorizationPolicy). Wenn Sie immer die gleichen Tage/Zugriffsberechtigungen verwenden, z.B. Richtlinien für Locator, die für einen längeren Zeitraum vorgesehen sind (Richtlinien ohne Upload), sollten Sie dieselbe Richtlinien-ID verwenden. Weitere Informationen finden Sie in [diesem](media-services-dotnet-manage-entities.md#limit-access-policies) Thema.
 > 
 
 Wenn Sie Medienobjekte erstellen, können Sie die folgenden Verschlüsselungsoptionen angeben. 
@@ -60,13 +61,8 @@ Wenn Sie für Ihr Medienobjekt eine Verschlüsselung mit einer **StorageEncrypte
 In diesem Thema wird beschrieben, wie Sie mit dem Media Services .NET SDK und den Media Services .NET SDK-Erweiterungen Dateien in ein Media Services-Medienobjekt hochladen.
 
 ## <a name="upload-a-single-file-with-media-services-net-sdk"></a>Hochladen einer einzelnen Datei mit Media Services .NET SDK
-Im Beispielcode unten wird das .NET SDK für folgende Aufgaben verwendet: 
+Der folgende Beispielcode verwendet .NET SDK zum Hochladen einer einzelnen Datei. „AccessPolicy“ und „Locator“ werden mit der Funktion zum Hochladen erstellt und zerstört. 
 
-* Erstellen eines leeren Medienobjekts.
-* Erstellt eine AssetFile-Instanz, der wir das Medienobjekt zuweisen werden.
-* Erstellt eine AccessPolicy-Instanz mit den Berechtigungen und der Zugriffsdauer auf das Medienobjekt.
-* Erstellt eine Locator-Instanz, die Zugriff auf das Medienobjekt bietet.
-* Hochladen einer einzelnen Datei in Media Services. 
 
         static public IAsset CreateAssetAndUploadSingleFile(AssetCreationOptions assetCreationOptions, string singleFilePath)
         {
@@ -77,29 +73,18 @@ Im Beispielcode unten wird das .NET SDK für folgende Aufgaben verwendet:
             }
 
             var assetName = Path.GetFileNameWithoutExtension(singleFilePath);
-            IAsset inputAsset = _context.Assets.Create(assetName, assetCreationOptions); 
+            IAsset inputAsset = _context.Assets.Create(assetName, assetCreationOptions);
 
             var assetFile = inputAsset.AssetFiles.Create(Path.GetFileName(singleFilePath));
-
-            Console.WriteLine("Created assetFile {0}", assetFile.Name);
-
-            var policy = _context.AccessPolicies.Create(
-                                    assetName,
-                                    TimeSpan.FromDays(30),
-                                    AccessPermissions.Write | AccessPermissions.List);
-
-            var locator = _context.Locators.CreateLocator(LocatorType.Sas, inputAsset, policy);
 
             Console.WriteLine("Upload {0}", assetFile.Name);
 
             assetFile.Upload(singleFilePath);
             Console.WriteLine("Done uploading {0}", assetFile.Name);
 
-            locator.Delete();
-            policy.Delete();
-
             return inputAsset;
         }
+
 
 ## <a name="upload-multiple-files-with-media-services-net-sdk"></a>Hochladen mehrerer Dateien mit Media Services .NET SDK
 Der folgende Code zeigt, wie Sie ein Medienobjekt erstellen und mehrere Dateien hochladen können.
@@ -182,7 +167,7 @@ Wenn Sie eine große Anzahl von Medienobjekten hochladen, sollten Sie Folgendes 
 * Erhöhen Sie NumberOfConcurrentTransfers vom Standardwert 2 auf einen höheren Wert wie 5. Das Festlegen dieser Eigenschaft wirkt sich auf alle Instanzen von **CloudMediaContext**aus. 
 * Behalten Sie für ParallelTransferThreadCount den Standardwert 10 bei.
 
-## <a name="a-idingestinbulkaingesting-assets-in-bulk-using-media-services-net-sdk"></a><a id="ingest_in_bulk"></a>Sammelerfassung von Medienobjekten mithilfe von Media Services .NET SDK
+## <a id="ingest_in_bulk"></a>Sammelerfassung von Medienobjekten mithilfe von Media Services .NET SDK
 Das Hochladen großer Medienobjektdateien kann während der Erstellung von Medienobjekten einen Engpass verursachen. Beim Erfassen von Medienobjekten in einem Massenvorgang bzw. bei der "Sammelerfassung" wird die Erstellung von Medienobjekten vom Uploadvorgang entkoppelt. Zur Verwendung der Sammelerfassung erstellen Sie ein Manifest (IngestManifest), in dem das Medienobjekt und die zugeordneten Dateien beschrieben werden. Laden Sie dann die zugeordneten Dateien mithilfe der gewünschten Uploadmethode in den Blobcontainer des Manifests hoch. Microsoft Azure Media Services überwacht den dem Manifest zugeordneten Blobcontainer. Nachdem eine Datei in den Blobcontainer hochgeladen wurde, wird die Erstellung des Medienobjekts basierend auf dessen Konfiguration im Manifest (IngestManifestAsset) durch Microsoft Azure Media Services abgeschlossen.
 
 Zum Neuerstellen des Manifests (IngestManifest) rufen Sie die Create-Methode auf, die von der IngestManifests-Auflistung im CloudMediaContext verfügbar gemacht wird. Durch diese Methode wird ein neues Manifest (IngestManifest) mit dem von Ihnen angegebenen Manifestnamen erstellt.
@@ -314,10 +299,5 @@ Sie können auch mithilfe von Azure Functions einen Codierungsauftrag auslösen,
 Sie haben nun ein Medienobjekt in Media Services hochgeladen und können mit dem Artikel [Abrufen eines Medienprozessors][How to Get a Media Processor] fortfahren.
 
 [How to Get a Media Processor]: media-services-get-media-processor.md
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

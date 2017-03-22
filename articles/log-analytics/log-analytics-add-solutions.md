@@ -16,9 +16,9 @@ ms.date: 02/27/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
-ms.openlocfilehash: ecb848efd8516ae43d07f8c6ebbf3868b8e20757
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: dc4a28b64620ecc4829d614b9a3c9e1939fd0063
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -38,6 +38,12 @@ Die detaillierten Einblicke der Verwaltungslösungen ermöglichen Folgendes:
 In diesem Artikel fügen Sie mit dem Marketplace im Azure-Portal einem Arbeitsbereich Verwaltungslösungen hinzu. Nachdem Sie eine Lösung hinzugefügt haben, werden Daten von den Servern in Ihrer Infrastruktur erfasst und an den OMS-Dienst gesendet. Die Verarbeitung durch den OMS-Dienst dauert normalerweise von einigen Minuten bis zu einer Stunde. Nach der Verarbeitung der Daten durch den Dienst können Sie diese in OMS anzeigen.
 
 Wenn eine Verwaltungslösung nicht mehr benötigt wird, können Sie sie problemlos entfernen. Wenn Sie eine Verwaltungslösung entfernen, werden deren Daten nicht an OMS gesendet. Bei Verwendung des Free-Tarifs lässt sich durch Entfernen einer Lösung die genutzte Datenmenge verringern, um eine Überschreitung des Tageskontingents zu vermeiden.
+
+## <a name="view-available-management-solutions"></a>Anzeigen verfügbarer Verwaltungslösungen
+
+Azure Marketplace enthält die Liste der [Verwaltungslösungen für Log Analytics](https://azuremarketplace.microsoft.com/marketplace/apps/category/monitoring-management?page=1&subcategories=management-solutions).
+
+Sie können Verwaltungslösungen aus Azure Marketplace installieren, indem Sie unten in jeder Lösung auf den Link **Jetzt herunterladen** klicken.
 
 ## <a name="add-a-management-solution"></a>Hinzufügen einer Verwaltungslösung
 1. Melden Sie sich mit Ihrem Azure-Abonnement beim [Azure-Portal](https://portal.azure.com) an, sofern Sie noch nicht angemeldet sind.
@@ -172,7 +178,7 @@ Der Log Analytics-Windows-Agent und der System Center Operations Manager-Agent s
 | Antischadsoftwarebewertung |Windows |![Ja](./media/log-analytics-add-solutions/oms-bullet-green.png) |![Ja](./media/log-analytics-add-solutions/oms-bullet-green.png) |![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png) |![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png) |![Ja](./media/log-analytics-add-solutions/oms-bullet-green.png) |Stündlich |
 | Sicherheit und Überwachung<sup>1</sup> | Windows und Linux | ![Einige](./media/log-analytics-add-solutions/oms-bullet-yellow.png) | ![Einige](./media/log-analytics-add-solutions/oms-bullet-yellow.png) | ![Einige](./media/log-analytics-add-solutions/oms-bullet-yellow.png) | ![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![Einige](./media/log-analytics-add-solutions/oms-bullet-yellow.png) | Verschiedene |
 
-<sup>1</sup>Die Lösung für Sicherheit und Überwachung kann Protokolle von Windows-, Operations Manager- und Linux-Agents erfassen. Unter [Datenquellen](#data-sources) finden Sie Datenerfassungsinformationen zu Folgendem:
+<sup>1</sup> Die Lösung für Sicherheit und Überwachung kann Protokolle von Windows-, Operations Manager- und Linux-Agents erfassen. Unter [Datenquellen](#data-sources) finden Sie Datenerfassungsinformationen zu Folgendem:
 
 - syslog
 - Windows-Sicherheitsereignisprotokolle

@@ -15,8 +15,9 @@ ms.workload: identity
 ms.date: 02/08/2017
 ms.author: mbaldwin;bryanla
 translationtype: Human Translation
-ms.sourcegitcommit: b5dbb8c28bd6b2bdbb53939314348104bbbe4f34
-ms.openlocfilehash: f6ec7634a1d21c7205ac8ae7377a312ed386ee61
+ms.sourcegitcommit: 57383c11682342cb0a6446c79e603843a698fc8c
+ms.openlocfilehash: 835e1c494de59576fd8ac529240729cb33eaa50b
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -55,13 +56,13 @@ Nachdem Ihre Anwendung in Azure AD registriert wurde, muss sie ggf. aktualisiert
 Weitere Informationen zur Funktionsweise der Authentifizierung in Azure AD finden Sie unter [Authentifizierungsszenarien für Azure AD](active-directory-authentication-scenarios.md).
 
 ### <a name="overview-of-the-consent-framework"></a>Übersicht über das Consent Framework
-Das Consent Framework von Azure AD erleichtert die Entwicklung mehrinstanzenfähiger Web- und nativer Clientanwendungen, die Zugriff auf Web-APIs benötigen, die von einem anderen Azure AD-Mandanten gesichert werden als dem, bei dem die Clientanwendung registriert ist. Zu diesen Web-APIs gehören neben Ihren eigenen Web-APIs die Graph-API, Office 365 und anderen Microsoft-Dienste. Das Framework basiert darauf, dass Benutzer oder Administratoren ihre Zustimmung zur Registrierung einer Anwendung in ihrem Verzeichnis erteilen. Diese Zustimmung kann auch den Zugriff auf Verzeichnisdaten umfassen.
+Das Consent Framework von Azure AD erleichtert die Entwicklung mehrinstanzenfähiger Web- und nativer Clientanwendungen, die Zugriff auf Web-APIs benötigen, die von einem anderen Azure AD-Mandanten gesichert werden als dem, bei dem die Clientanwendung registriert ist. Diese Web-APIs enthalten die Microsoft Graph-API (zum Zugriff auf Azure Active Directory, Intune und Office 365-Dienste) und andere Microsoft-Dienste-APIs zusätzlich zu Ihren eigenen Web-APIs. Das Framework basiert darauf, dass Benutzer oder Administratoren ihre Zustimmung zur Registrierung einer Anwendung in ihrem Verzeichnis erteilen. Diese Zustimmung kann auch den Zugriff auf Verzeichnisdaten umfassen.
 
-Wenn beispielsweise eine Webclientanwendung die Web-API-/Ressourcenanwendung von Office 365 zum Lesen von Kalenderinformationen über einen Benutzer aufrufen muss, muss dieser Benutzer der Clientanwendung seine Zustimmung erteilen. Anschließend kann die Clientanwendung die Office 365-Web-API im Namen des Benutzers aufrufen und die Kalenderinformationen nach Bedarf verwenden.
+Wenn beispielsweise eine Webclientanwendung Kalenderinformationen über einen Benutzer aus Office 365 lesen muss, muss dieser Benutzer der Clientanwendung seine Zustimmung erteilen. Anschließend kann die Clientanwendung die Microsoft Graph-API im Namen des Benutzers aufrufen und die Kalenderinformationen nach Bedarf verwenden. Die [Microsoft Graph-API](https://graph.microsoft.io) ermöglicht den Zugriff auf Daten in Office 365 (z.B. Kalender und Nachrichten aus Exchange, Websites und Listen in SharePoint, Dokumente aus OneDrive, OneNote-Notizbücher, Aufgaben aus dem Planer, Arbeitsmappen aus Excel usw.) sowie auf Benutzer und Gruppen von Azure AD und andere Datenobjekte aus weiteren Microsoft-Clouddiensten. 
 
 Das Consent Framework basiert auf OAuth 2.0 und seinen verschiedenen Datenflüssen, z. B. Authorization Code Grant und Client Credentials Grant. Dabei kommen öffentliche oder vertrauliche Clients zum Einsatz. Durch die Verwendung von OAuth 2.0 ermöglicht Azure AD die Entwicklung zahlreicher verschiedener Typen von Clientanwendungen, z. B. für Telefon, Tablet, Server oder Web, und ermöglicht den Zugriff auf die erforderlichen Ressourcen.
 
-Ausführlichere Informationen zum Consent Framework finden Sie unter [OAuth 2.0 in Azure AD](https://msdn.microsoft.com/library/azure/dn645545.aspx), [Authentifizierungsszenarios für Azure AD](active-directory-authentication-scenarios.md) und im Office 365-Thema [Grundlegendes zur Authentifizierung mit Office 365-APIs](https://msdn.microsoft.com/office/office365/howto/common-app-authentication-tasks).
+Ausführlichere Informationen zum Consent Framework finden Sie unter [OAuth 2.0 in Azure AD](https://msdn.microsoft.com/library/azure/dn645545.aspx) und [Authentifizierungsszenarien für Azure AD](active-directory-authentication-scenarios.md), und wie Sie autorisierten Zugriff auf Office 365 über Microsoft Graph erhalten, erfahren Sie unter [App-Authentifizierung mit Microsoft Graph](https://graph.microsoft.io/docs/authorization/auth_overview).
 
 #### <a name="example-of-the-consent-experience"></a>Beispiel für die Zustimmungsbenutzeroberfläche
 Die folgenden Schritte zeigen, wie das Consent Framework in der Benutzeroberfläche für den Anwendungsentwickler und für den Benutzer umgesetzt wird.
@@ -88,7 +89,7 @@ Die folgenden Schritte zeigen, wie das Consent Framework in der Benutzeroberflä
 ### <a name="configuring-a-client-application-to-access-web-apis"></a>Konfigurieren einer Clientanwendung für den Zugriff auf Web-APIs
 Damit eine Webanwendung oder vertrauliche Clientanwendung an einem Flow zur Autorisierungsgenehmigung teilnehmen kann, bei dem eine Authentifizierung (und das Abrufen eines Zugriffstokens) erforderlich ist, benötigt sie sichere Anmeldeinformationen. Die Standardauthentifizierungsmethode im Azure-Portal ist Client-ID + symmetrischer Schlüssel. In diesem Abschnitt werden die erforderlichen Konfigurationsschritte zum Bereitstellen des geheimen Schlüssels für die Anmeldeinformationen des Clients behandelt.
 
-Bevor ein Client Zugriff auf eine Web-API erhält, die durch eine Ressourcenanwendung (d.h. Azure AD Graph-API) bereitgestellt wird, stellt das Consent Framework außerdem sicher, dass dem Client die erforderlichen Berechtigungen basierend auf den angeforderten Berechtigungen erteilt werden. Standardmäßig können alle Anwendungen Berechtigungen aus Azure Active Directory (Graph-API) und der Azure Service Management-API auswählen. Hierbei ist die Azure AD-Berechtigung "Anmeldung aktivieren und Benutzerprofil lesen" bereits standardmäßig ausgewählt. Wenn Ihre Clientanwendung bei einem Office 365-Azure AD-Mandanten registriert ist, stehen Web-APIs und Berechtigungen für SharePoint und Exchange Online ebenfalls zur Auswahl. In den Dropdownmenüs neben der gewünschten Web-API können Sie zwischen [zwei Arten von Berechtigungen](active-directory-dev-glossary.md#permissions) wählen:
+Bevor ein Client Zugriff auf eine Web-API erhält, die durch eine Ressourcenanwendung (d.h. Microsoft Graph-API) bereitgestellt wird, stellt das Consent Framework außerdem sicher, dass dem Client die erforderlichen Berechtigungen basierend auf den angeforderten Berechtigungen erteilt werden. Standardmäßig können alle Anwendungen Berechtigungen aus Azure Active Directory (Graph-API) und der Azure Service Management-API auswählen. Hierbei ist die Azure AD-Berechtigung "Anmeldung aktivieren und Benutzerprofil lesen" bereits standardmäßig ausgewählt. Wenn Ihre Clientanwendung bei einem Office 365-Azure AD-Mandanten registriert ist, stehen Web-APIs und Berechtigungen für SharePoint und Exchange Online ebenfalls zur Auswahl. In den Dropdownmenüs neben der gewünschten Web-API können Sie zwischen [zwei Arten von Berechtigungen](active-directory-dev-glossary.md#permissions) wählen:
 
 * Anwendungsberechtigungen: Ihre Clientanwendung benötigt direkten Zugriff auf die Web-API selbst (kein Benutzerkontext). Für diese Art von Berechtigung ist die Zustimmung des Administrators erforderlich, sie steht nicht für systemeigene Clientanwendungen zur Verfügung.
 * Delegierte Berechtigungen: Ihre Clientanwendung benötigt als angemeldeter Benutzer Zugriff auf die Web-API. Der Zugriff ist jedoch durch die ausgewählte Berechtigung eingeschränkt. Diese Art von Berechtigung kann von einem Benutzer erteilt werden – es sei denn, die Berechtigung ist so konfiguriert, dass sie die Zustimmung durch einen Administrator erfordert. 
@@ -165,13 +166,10 @@ Das Anwendungsmanifest dient als Mechanismus zum Aktualisieren der Anwendungsent
 
 Weitere Informationen zu Anwendungsmanifestkonzepten im Allgemeinen finden Sie unter [Grundlegendes zum Azure Active Directory-Anwendungsmanifest](active-directory-application-manifest.md).
 
-### <a name="accessing-the-azure-ad-graph-and-office-365-apis"></a>Zugreifen auf die Azure AD-Graph- und Office 365-APIs
-Wie bereits zuvor erwähnt, können Sie zusätzlich zum Verfügbarmachen von/Zugreifen auf APIs über Ihre eigenen Ressourcenanwendungen auch Ihre Clientanwendung für den Zugriff auf APIs aktualisieren, die von Microsoft-Ressourcen verfügbar gemacht werden.  Die Azure AD Graph-API, die in der Liste der Berechtigungen für andere Anwendungen als „Azure Active Directory“ bezeichnet wird, ist standardmäßig für alle Anwendungen verfügbar, die mit Azure AD registriert sind. Wenn Sie Ihre Clientanwendung in einem Azure AD-Mandanten registrieren, der von Office 365 bereitgestellt wurde, können Sie auch auf alle Berechtigungen zugreifen, die durch die APIs für verschiedene Office 365-Ressourcen verfügbar gemacht werden.
+### <a name="accessing-the-azure-ad-graph-and-office-365-via-microsoft-graph-apis"></a>Zugreifen auf Azure AD-Graph-API und Office 365 über Microsoft Graph-APIs  
+Wie bereits zuvor erwähnt, können Sie zusätzlich zum Verfügbarmachen von/Zugreifen auf APIs über Ihre eigenen Ressourcenanwendungen auch Ihre Clientanwendung für den Zugriff auf APIs aktualisieren, die von Microsoft-Ressourcen verfügbar gemacht werden.  Die Microsoft Graph-API, die in der Liste der Berechtigungen für andere Anwendungen als „Microsoft Graph“ bezeichnet wird, ist für alle Anwendungen verfügbar, die mit Azure AD registriert sind. Wenn Sie Ihre Clientanwendung in einem Azure AD-Mandanten registrieren, der von Office 365 bereitgestellt wurde, können Sie auch auf alle Berechtigungen zugreifen, die durch die Microsoft Graph-API für verschiedene Office 365-Ressourcen verfügbar gemacht werden.
 
-Eine vollständige Erläuterung zu Zugriffsbereichen, die durch Folgendes verfügbar gemacht werden:  
-
-* Graph-API von Azure AD, siehe Artikel [Berechtigungsbereiche | Graph-API-Konzepte](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes).
-* Office 365-APIs, finden Sie im Artikel [Authentifizierung und Autorisierung mit dem allgemeinen Consent Framework](https://msdn.microsoft.com/office/office365/howto/application-manifest) . Unter [Einrichten der Office 365-Entwicklungsumgebung](https://msdn.microsoft.com/office/office365/HowTo/setup-development-environment) finden Sie eine umfangreiche Erörterung zum Erstellen einer Client-App, die in Office 365-APIs integriert wird.
+Eine vollständige Erläuterung der Zugriffsbereiche, die von Microsoft Graph-API verfügbar gemacht werden, finden Sie im Artikel [Berechtigungsbereiche | Graph-API-Konzepte](https://graph.microsoft.io/docs/authorization/permission_scopes).
 
 > [!NOTE]
 > Aufgrund einer aktuellen Einschränkung können systemeigene Clientanwendungen die Azure AD Graph-API nur aufrufen, wenn sie die Berechtigung "Zugriff auf das Verzeichnis Ihrer Organisation" verwenden.  Diese Einschränkung gilt nicht für Webanwendungen.
@@ -258,10 +256,5 @@ Um den Zugriff einer mehrinstanzenfähigen Anwendung auf Ihr Verzeichnis zu entz
 * Weitere Informationen zur Rolle des App-Manifests finden Sie unter [Grundlegendes zum Azure Active Directory-Anwendungsmanifest](active-directory-application-manifest.md).
 * Unter [Azure AD-Entwicklerglossar](active-directory-dev-glossary.md) finden Sie Definitionen für einige der wichtigsten Konzepte für Azure Active Directory-Entwickler (AD).
 * Im [Active Directory-Entwicklerhandbuch](active-directory-developers-guide.md) finden Sie eine Übersicht über alle für Entwickler relevanten Inhalte.
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

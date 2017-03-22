@@ -13,8 +13,11 @@
 
 ## Verwalten
 ### [Herstellen einer Verbindung mit einer Datenquelle](power-bi-embedded-connect-datasource.md)
-### [Einbetten eines Power BI-Berichts mit einem IFrame](power-bi-embedded-iframe.md)
+### [Einbetten eines Power BI-Berichts](power-bi-embedded-embed-report.md)
 ### [Interagieren mit Berichten](power-bi-embedded-interact-with-reports.md)
+### [Erstellen eines neuen Berichts aus einem Dataset](power-bi-embedded-create-report-from-dataset.md)
+### [Speichern von Berichten](power-bi-embedded-save-reports.md)
+### [Wechseln zwischen Anzeigen und Bearbeiten](power-bi-embedded-toggle-mode.md)
 
 ## Schützen
 ### [Authentifizierung und Autorisierung](power-bi-embedded-app-token-flow.md)
@@ -22,13 +25,17 @@
 
 # Referenz
 ## [PowerShell](/powershell/resourcemanager/azurerm.powerbiembedded/v2.3.0/azurerm.powerbiembedded)
-## [.NET](/dotnet/api/microsoft.azure.management.powerbiembedded)
+## [.NET Azure Resource Manager](/dotnet/api/microsoft.azure.management.powerbiembedded)
 ## [.NET SDK-Download](https://www.nuget.org/profiles/powerbi)
-## [JavaScript](https://github.com/Microsoft/PowerBI-JavaScript)
-## [REST](/rest/api/powerbiembedded/)
+## [JavaScript](https://github.com/Microsoft/PowerBI-JavaScript/wiki)
+## [REST-APIs für die Verwaltung](/rest/api/powerbiembedded/)
+## [REST-APIs](https://msdn.microsoft.com/library/azure/mt711507.aspx)
 
 
 # Ressourcen
-## [Beispiele](https://github.com/Azure-Samples/power-bi-embedded-integrate-report-into-web-app/)
+## [Beispielanwendung](https://github.com/Azure-Samples/power-bi-embedded-integrate-report-into-web-app/)
+## [JavaScript-Einbettungsbeispiel](https://microsoft.github.io/PowerBI-JavaScript/demo/)
+## [JavaScript-Git-Repository](https://github.com/Microsoft/PowerBI-JavaScript)
+## [Git-Repository für Power BI (C#)](https://github.com/Microsoft/PowerBI-CSharp)
 ## [Power BI-Community](http://community.powerbi.com/t5/Developer/bd-p/Developer)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/powerbi)

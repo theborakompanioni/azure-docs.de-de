@@ -10,14 +10,15 @@ tags: azure-portal
 ms.assetid: 3fade1e5-c2e1-4ad5-b371-f95caea23f6d
 ms.service: hdinsight
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/25/2016
 ms.author: saurinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 20ae053057e74e0bc874391dd8a9cd19e0a293e7
-ms.openlocfilehash: 2d244187585f716af8c4e6d65a445e0ab8217890
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 9ddeaea93af8d5a4356d49da76cb64f5e43657db
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -62,7 +63,7 @@ In diesem Abschnitt erstellen Sie zwei Ranger-Richtlinien für den Zugriff auf �
    * Benutzer auswählen: hiveuser1
    * Berechtigungen: Auswählen
 
-     ![HDInsight mit Domänenverknüpfung – Ranger – Konfigurieren der Hive-Richtlinie](./media/hdinsight-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png) zu erstellen und zu verwalten.
+     ![HDInsight mit Domänenverknüpfung – Ranger – Konfigurieren der Hive-Richtlinie](./media/hdinsight-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png)zu erstellen und zu verwalten.
 
      > [!NOTE]
      > Wenn unter „Benutzer auswählen“ kein Domänenbenutzer eingetragen wird, warten Sie kurz, bis Ranger mit AAD synchronisiert wurde.
@@ -90,7 +91,7 @@ Die Anleitung finden Sie unter [Erstellen einer Hive ODBC-Datenquelle](hdinsight
     Hive-Servertyp|Wählen Sie <strong>Hive Server 2</strong> aus.
     Mechanismus|Wählen Sie <strong>Azure HDInsight Service</strong> aus.
     HTTP-Pfad|Lassen Sie dieses Feld leer.
-    Benutzername|Geben Sie Folgendes ein: hiveuser1@contoso158.onmicrosoft.com. Aktualisieren Sie ggf. den Domänennamen, falls er sich unterscheidet.
+    Benutzername|Geben Sie hiveuser1@contoso158.onmicrosoft.com ein. Aktualisieren Sie ggf. den Domänennamen, falls er sich unterscheidet.
     Kennwort|Geben Sie das Kennwort für „hiveuser1“ ein.
     </table>
 
@@ -100,7 +101,7 @@ Klicken Sie vor dem Speichern der Datenquelle auf **Testen**.
 Im letzten Abschnitt haben Sie zwei Richtlinien konfiguriert:  „hiveuser1“ verfügt über die Auswahlberechtigung für alle Spalten, „hiveuser2“ über die Auswahlberechtigung für zwei Spalten. In diesem Abschnitt nehmen Sie die Identität der beiden Benutzer an, um Daten in Excel zu importieren.
 
 1. Öffnen Sie eine neue oder bereits vorhandene Arbeitsmappe in Excel.
-2. Klicken Sie auf der Registerkarte **Daten** auf **Aus anderen Quellen**. Klicken Sie dann auf **Aus dem Datenverbindungs-Assistenten**, um den Datenverbindungs-Assistenten** **zu starten.
+2. Klicken Sie auf der Registerkarte **Daten** auf **Aus anderen Quellen**. Klicken Sie dann auf **Aus dem Datenverbindungs-Assistenten**, um den Datenverbindungs-Assistenten****zu starten.
 
     ![Öffnen des Datenverbindungs-Assistenten][img-hdi-simbahiveodbc.excel.dataconnection]
 3. Wählen Sie als Datenquelle **ODBC DSN** aus, und klicken Sie dann auf **Weiter**.
@@ -143,9 +144,4 @@ So testen Sie die zweite Richtlinie (read-hivesampletable-devicemake), die Sie i
 * Informationen zum Verbinden von Hive unter Verwendung von Hive JDBC finden Sie unter [Herstellen einer Verbindung mit Hive unter Azure HDInsight per Hive-JDBC-Treiber](hdinsight-connect-hive-jdbc-driver.md).
 * Informationen zum Verbinden von Excel mit Hadoop unter Verwendung von Hive ODBC finden Sie unter [Verbinden von Excel über den Microsoft Hive ODBC-Treiber mit Hadoop](hdinsight-connect-excel-hive-odbc-driver.md).
 * Informationen zum Verbinden von Excel mit Hadoop unter Verwendung von Power Query finden Sie unter [Verbinden von Excel mit Hadoop mithilfe von Power Query](hdinsight-connect-excel-power-query.md).
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

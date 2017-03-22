@@ -1,6 +1,6 @@
 ---
-title: "Hinzufügen und Verwalten von mehreren Azure Active Directory-Verzeichnissen | Microsoft Docs"
-description: "Anleitungen und bewährte Methoden für das Hinzufügen und Verwalten von Azure Active Directory-Verzeichnissen, wobei Verzeichnisse als vollständig unabhängige Ressource betrachtet werden"
+title: Merkmale von Azure Active Directory-Verzeichnissen | Microsoft-Dokumentation
+description: "Verwalten Ihrer Azure Active Directory-Verzeichnisse, indem Sie Ihre Verzeichnisse als vollständig unabhängige Ressourcen verstehen"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -12,15 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/13/2017
+ms.date: 02/27/2017
 ms.author: curtand
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a4a78b92c8bb9e8aff25fd724ed78283de8f2fd8
-ms.openlocfilehash: 23aad0421088b620f32bbf3f6b3f0b11e001e3ae
+ms.sourcegitcommit: f8b63e5831897d3a45298b0415bb2d6d44ab0de1
+ms.openlocfilehash: 5ec00d5e8380f121dd9302cf08a0708c530aab9b
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="add-and-manage-multiple-azure-active-directory-directories"></a>Hinzufügen und Verwalten von mehreren Azure Active Directory-Verzeichnissen
+# <a name="understand-how-multiple-azure-active-directory-directories-interact"></a>Grundlegendes zum Interagieren mehrerer Azure Active Directory-Verzeichnisse
 In Azure Active Directory (Azure AD) ist jedes Verzeichnis eine vollständig unabhängige Ressource: gleichgestellt, voll funktionsfähig und logisch unabhängig von anderen Verzeichnissen, die Sie verwalten. Es gibt keine unter- und übergeordneten Beziehungen zwischen den Verzeichnissen. Diese Unabhängigkeit zwischen den Verzeichnissen beinhaltet Ressourcen-, Verwaltungs- und Synchronisierungsunabhängigkeit.
 
 ## <a name="resource-independence"></a>Ressourcenunabhängigkeit
@@ -49,9 +51,4 @@ Um ein Azure AD-Verzeichnis im klassischen Azure-Portal hinzuzufügen, wählen S
 
 ## <a name="next-steps"></a>Nächste Schritte
 Eine grobe Übersicht über Lizenzierungsprobleme und bewährte Methoden im Zusammenhang mit Azure AD finden Sie unter [Was ist Azure Active Directory-Lizenzierung?](active-directory-licensing-what-is.md).
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

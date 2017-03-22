@@ -1,6 +1,6 @@
 ---
 title: "Verwalten der Mitglieder für eine Gruppe in der Azure Active Directory-Vorschau | Microsoft Docs"
-description: "Verwalten von Benutzern und Geräten, bei denen es sich um Mitglieder einer Gruppe in Azure Active Directory handelt"
+description: "Hinzufügen oder Entfernen von Benutzern und Geräten zu bzw. aus einer Gruppe in Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -12,15 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2017
+ms.date: 02/27/2017
 ms.author: curtand
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7c0c411f6e2f51fa2d55d46ff92153dc8882bb38
+ms.sourcegitcommit: 58768cd59a922483bcb37797a6dcd515d159ef4c
+ms.openlocfilehash: 3373af848720c7c04e679d7fd4b075c5571fb417
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="manage-the-members-for-a-group-in-azure-active-directory-preview"></a>Verwalten der Mitglieder für eine Gruppe in der Azure Active Directory-Vorschau
+# <a name="manage-group-membership-for-users-in-your-azure-active-directory-tenant"></a>Verwalten der Gruppenmitgliedschaft für Benutzer in Ihrem Azure Active Directory-Mandanten
 In diesem Artikel wird erläutert, wie Sie die Mitglieder für eine Gruppe in der Azure Active Directory-Vorschau (Azure AD) verwalten. [Was bietet die Vorschauversion?](active-directory-preview-explainer.md)
 
 ## <a name="how-do-i-find-the-members-and-manage-them"></a>Wie finde ich Mitglieder und verwalte sie?
@@ -53,9 +55,4 @@ Diese Artikel enthalten zusätzliche Informationen zu Azure Active Directory.
 * [Verwalten der Einstellungen einer Gruppe](active-directory-groups-settings-azure-portal.md)
 * [Verwalten der Mitgliedschaften einer Gruppe](active-directory-groups-membership-azure-portal.md)
 * [Verwalten dynamischer Regeln für Benutzer in einer Gruppe](active-directory-groups-dynamic-membership-azure-portal.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

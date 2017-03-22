@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 03/10/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: ab8c601d862868018fdffb4cd49e8b26acb878c9
-ms.openlocfilehash: 5eacb832ba2a20eae35c58704296c9d03e94ef0e
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 9245a2ce63746f039a3015a5a0cda2ff05cf950e
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -112,7 +113,7 @@ Bei Verwendung von LDAPS muss SSL 3.0 oder TLS verwendet werden. SSL 2.0 wird 
 Damit der Connector ordnungsgemäß verwendet werden kann, müssen auf dem LDAP-Server folgende LDAP-Steuerelemente/-Features verfügbar sein:   
 `1.3.6.1.4.1.4203.1.5.3` True/False-Filter
 
-Der True/False-Filter wird oftmals nicht als von LDAP-Verzeichnissen unterstützt gemeldet und möglicherweise auf der globalen Seite** **unter **Nicht gefundene erforderliche Features** angezeigt. Er dient zum Erstellen von OR-Filtern **** in LDAP-Abfragen (beispielsweise beim Importieren mehrerer Objekttypen). Wenn Sie mehrere Objekttypen importieren können, wird dieses Feature von Ihrem LDAP-Server unterstützt.
+Der True/False-Filter wird oftmals nicht als von LDAP-Verzeichnissen unterstützt gemeldet und möglicherweise auf der globalen Seite****unter **Nicht gefundene erforderliche Features** angezeigt. Er dient zum Erstellen von OR-Filtern **** in LDAP-Abfragen (beispielsweise beim Importieren mehrerer Objekttypen). Wenn Sie mehrere Objekttypen importieren können, wird dieses Feature von Ihrem LDAP-Server unterstützt.
 
 Wenn Sie ein Verzeichnis verwenden, bei dem ein eindeutiger Bezeichner als Anker fungiert, muss auch Folgendes verfügbar sein (weitere Informationen finden Sie im Abschnitt [Konfigurieren von Ankern](#configure-anchors)):  
 `1.3.6.1.4.1.4203.1.5.1` Alle Betriebsattribute
@@ -148,7 +149,7 @@ Folgende LDAP-Features werden nicht unterstützt:
 * LDAP-Verweise zwischen Servern (RFC 4511/4.1.10)
 
 ## <a name="create-a-new-connector"></a>Erstellen eines neuen Connectors
-Wählen Sie zum Erstellen eines generischen LDAP-Connectors im Synchronisierungsdienst** **die Option **Verwaltungs-Agent** und anschließend **Erstellen** aus. Wählen Sie den Connector **Generisch, LDAP (Microsoft)** aus.
+Wählen Sie zum Erstellen eines generischen LDAP-Connectors im Synchronisierungsdienst****die Option **Verwaltungs-Agent** und anschließend **Erstellen** aus. Wählen Sie den Connector **Generisch, LDAP (Microsoft)** aus.
 
 ![CreateConnector](./media/active-directory-aadconnectsync-connector-genericldap/createconnector.png)
 
@@ -228,10 +229,18 @@ Für jeden Namespace können außerdem Konnektivitätseinstellungen konfiguriert
 
 Sie können auch auswählen, welche Container und Organisationseinheiten der Connector als Quelle für Importvorgänge bzw. als Ziel für Exportvorgänge verwenden soll.
 
+Bei einer Suche werden alle Container in der Partition einbezogen. Bei einer großen Anzahl von Containern führt dieses Verhalten zu einem Leistungsabfall.
+
+>[!NOTE]
+Seit dem Update des generischen LDAP-Connectors vom März 2017 können Suchvorgänge nur auf die ausgewählten Container beschränkt werden. Aktivieren Sie dazu das Kontrollkästchen „Search only in selected containers“ (Nur in ausgewählten Containern suchen), wie in der Abbildung unten gezeigt.
+
+![Nur in ausgewählten Containern suchen](./media/active-directory-aadconnectsync-connector-genericldap/partitions-only-selected-containers.png)
+
 ### <a name="configure-anchors"></a>Konfigurieren von Ankern
 Diese Seite besitzt immer einen vorkonfigurierten Wert und kann nicht geändert werden. Wenn der Serveranbieter erkannt wurden, wird für den Anker unter Umständen ein unveränderliches Attribut (etwa die GUID für ein Objekt) verwendet. Falls die Informationen nicht erkannt wurden oder kein unveränderliches Attribut verfügbar ist, verwendet der Connector den DN (Distinguished Name) als Anker.
 
 ![Anker](./media/active-directory-aadconnectsync-connector-genericldap/anchors.png)
+
 
 Im Anschluss finden Sie eine Liste mit LDAP-Servern und verwendetem Anker:
 
@@ -261,9 +270,4 @@ Bei Verzeichnissen mit einem datums-/uhrzeitbasierten Delta-Änderungsprotokoll 
 
 ## <a name="troubleshooting"></a>Problembehandlung
 * Informationen zum Aktivieren der Protokollierung für die Behandlung von Connectorproblemen finden Sie unter [Vorgehensweise: Aktivieren der ETW-Ablaufverfolgung für Connectors](http://go.microsoft.com/fwlink/?LinkId=335731).
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

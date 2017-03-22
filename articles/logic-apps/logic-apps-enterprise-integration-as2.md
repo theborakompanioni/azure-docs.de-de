@@ -1,6 +1,6 @@
 ---
-title: Erstellen einer AS2-Vereinbarung in Azure Logic Apps | Microsoft-Dokumentation
-description: "Erstellen einer AS2-Vereinbarung für das Enterprise Integration Pack | Azure Logic Apps"
+title: "AS2-Nachrichten für die B2B-Unternehmensintegration – Azure Logic Apps | Microsoft-Dokumentation"
+description: "Austauschen von AS2-Nachrichten für die B2B-Unternehmensintegration mit Azure Logic Apps"
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: MandiOhlinger
@@ -15,140 +15,163 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: mandia
 translationtype: Human Translation
-ms.sourcegitcommit: 6a947ea997bbcfe1b6b28c7cbb49911836750e6a
-ms.openlocfilehash: a490b89c5420aecdfb3f79289979faab9a4630e9
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 5733592fc1633d8722905c33dd267b4cbe1fe184
+ms.lasthandoff: 03/10/2017
 
 
 ---
-# <a name="enterprise-integration-with-as2"></a>Unternehmensintegration mit AS2
-Zum Verwenden der Features für die Unternehmensintegration in Logik-Apps müssen Sie zuerst Vereinbarungen erstellen.
+# <a name="exchange-as2-messages-for-enterprise-integration-with-logic-apps"></a>Austauschen von AS2-Nachrichten für die Unternehmensintegration mit Logik-Apps
 
-## <a name="prerequisites"></a>Voraussetzungen
-* In Ihrem Azure-Abonnement muss ein [Integrationskonto](../logic-apps/logic-apps-enterprise-integration-accounts.md) definiert sein.  
-* Mindestens zwei [Partner](logic-apps-enterprise-integration-partners.md) müssen bereits in Ihrem Integrationskonto definiert sein.  
+Bevor Sie AS2-Nachrichten für Azure Logic Apps austauschen können, müssen Sie eine AS2-Vereinbarung erstellen und in Ihrem Integrationskonto speichern. Hier erfahren Sie, wie Sie eine AS2-Vereinbarung erstellen.
+
+## <a name="before-you-start"></a>Vorbereitung
+
+Sie benötigen Folgendes:
+
+* Ein bereits definiertes und mit Ihrem Azure-Abonnement verknüpftes [Integrationskonto](../logic-apps/logic-apps-enterprise-integration-accounts.md)
+* Mindestens zwei [Partner](logic-apps-enterprise-integration-partners.md), die bereits in Ihrem Integrationskonto definiert und mit dem AS2-Qualifizierer unter **Geschäftsidentitäten** konfiguriert sind
 
 > [!NOTE]
 > Beim Erstellen einer Vereinbarung muss der Inhalt der Vereinbarungsdatei dem Vereinbarungstyp entsprechen.    
 
-Nachdem Sie ein Integrationskonto erstellt und Partner hinzugefügt haben, können Sie mit den Verfahren in den folgenden Abschnitten eine Vereinbarung erstellen:  
+Nachdem Sie [ein Integrationskonto erstellt](../logic-apps/logic-apps-enterprise-integration-accounts.md) und [Partner hinzugefügt](logic-apps-enterprise-integration-partners.md) haben, können Sie eine AS2-Vereinbarung erstellen. Gehen Sie dazu wie folgt vor:
 
-## <a name="create-an-agreement"></a>Erstellen einer Vereinbarung
+## <a name="create-an-as2-agreement"></a>Erstellen einer AS2-Vereinbarung
 
-1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com "Azure-Portal") an.  
-2. Wählen Sie **Weitere Dienste**, geben Sie den Begriff **Integration** in das Filtersuchfeld ein, und wählen Sie in der Ergebnisliste die Option **Integrationskonten**.
+1.    Melden Sie sich beim [Azure-Portal](http://portal.azure.com "Azure-Portal") an.  
 
- ![Auswählen von „Integrationskonten“ in der Suchergebnisliste](./media/logic-apps-enterprise-integration-agreements/overview-1.png)    
-3. Wählen Sie das Integrationskonto aus, dem Sie das Zertifikat hinzufügen möchten.
+2.    Wählen Sie im linken Menü die Option **Weitere Dienste** aus. Geben Sie im Suchfeld den Begriff **integration** als Filter ein. Wählen Sie in der Ergebnisliste die Option **Integrationskonten** aus.
 
- ![Auswählen des Integrationskontos](./media/logic-apps-enterprise-integration-overview/overview-3.png)  
-4. Wählen Sie die Kachel **Vereinbarungen** aus. Wenn die Kachel nicht angezeigt wird, fügen Sie sie hinzu.
+    > [!TIP]
+    > Sollte **Weitere Dienste** nicht angezeigt werden, müssen Sie das Menü möglicherweise erst erweitern. Wählen Sie im oberen Bereich des reduzierten Menüs die Option **Menü anzeigen** aus.
 
- ![Wählen Sie die Kachel „Vereinbarungen“ aus.](./media/logic-apps-enterprise-integration-agreements/agreement-1.png)   
-5. Wählen Sie auf dem Blatt **Vereinbarungen** die Option **Hinzufügen** aus.
+    ![Weitere Dienste, nach „Integration“ filtern, „Integrationskonten“ auswählen](./media/logic-apps-enterprise-integration-agreements/overview-1.png)
 
- ![Wählen Sie "Hinzufügen" aus.](./media/logic-apps-enterprise-integration-agreements/agreement-2.png)  
-6. Geben Sie einen Namen für die Vereinbarung ein. Wählen Sie dann in der Liste **Vereinbarungstyp** den Typ **AS2** aus, und geben Sie die jeweiligen Informationen in die Listen **Hostpartner**, **Hostidentität**, **Gastpartner** und **Gastidentität** ein.
+3. Wählen Sie auf dem geöffneten Blatt **Integrationskonten** das Integrationskonto aus, in dem Sie die Vereinbarung erstellen möchten.
+Sollten keine Integrationskonten angezeigt werden, [erstellen Sie zunächst ein Konto](../logic-apps/logic-apps-enterprise-integration-accounts.md "Alles über Integrationskonten").  
 
- ![Eingeben eines Namens für die Vereinbarung](./media/logic-apps-enterprise-integration-agreements/agreement-3.png)  
+    ![Integrationskonto für die Erstellung der Vereinbarung auswählen](./media/logic-apps-enterprise-integration-overview/overview-3.png)
 
- In der folgenden Tabelle werden die Eigenschaften im Dialogfeld **Hinzufügen** beschrieben:
+4. Wählen Sie die Kachel **Vereinbarungen** aus. Sollte die Kachel „Vereinbarungen“ nicht angezeigt werden, fügen Sie sie hinzu.
+
+    ![Kachel „Vereinbarungen“ auswählen](./media/logic-apps-enterprise-integration-agreements/agreement-1.png)
+
+5. Wählen Sie auf dem geöffneten Blatt „Vereinbarungen“ die Option **Hinzufügen** aus.
+
+    ![„Hinzufügen“ auswählen](./media/logic-apps-enterprise-integration-agreements/agreement-2.png)
+
+6. Geben Sie unter **Hinzufügen** im Feld **Name** einen Namen für Ihre Vereinbarung ein. Wählen Sie unter **Vertragstyp** die Option **AS2** aus. Wählen Sie den **Hostpartner**, die **Hostidentität**, den **Gastpartner** und die **Gastidentität** für Ihre Vereinbarung aus.
+
+    ![Details zur Vereinbarung angeben](./media/logic-apps-enterprise-integration-agreements/agreement-3.png)  
 
     | Eigenschaft | Beschreibung |
     | --- | --- |
-    | Hostpartner | Eine Vereinbarung erfordert einen Host- und einen Gastpartner. Der Hostpartner stellt die Organisation dar, die die Vereinbarung konfiguriert. |
-    | Hostidentität | Ein Bezeichner für den Hostpartner. |
-    | Gastpartner | Eine Vereinbarung erfordert einen Host- und einen Gastpartner. Der Gastpartner stellt die Organisation dar, die Geschäfte mit dem Hostpartner tätigt. |
-    | Gastidentität | Ein Bezeichner für den Gastpartner. |
-    | Empfangseinstellungen | Die Eigenschaften, die für alle Nachrichten gelten, die von der Vereinbarung empfangen werden. |
-    | Sendeeinstellungen | Die Eigenschaften, die für alle Nachrichten gelten, die von der Vereinbarung gesendet werden. |
+    | Name |Name der Vereinbarung |
+    | Vereinbarungstyp | Muss „AS2“ sein |
+    | Hostpartner |Eine Vereinbarung benötigt einen Host- und einen Gastpartner. Der Hostpartner stellt die Organisation dar, die die Vereinbarung konfiguriert. |
+    | Hostidentität |Ein Bezeichner für den Hostpartner. |
+    | Gastpartner |Eine Vereinbarung benötigt einen Host- und einen Gastpartner. Der Gastpartner stellt die Organisation dar, die Geschäfte mit dem Hostpartner tätigt. |
+    | Gastidentität |Ein Bezeichner für den Gastpartner. |
+    | Empfangseinstellungen |Diese Eigenschaften gelten für alle Nachrichten, die von einer Vereinbarung empfangen werden. |
+    | Sendeeinstellungen |Diese Eigenschaften gelten für alle Nachrichten, die von einer Vereinbarung gesendet werden. |
 
-7. Führen Sie die folgenden Schritte aus, um zu konfigurieren, wie Nachrichten behandelt werden, die über diese Vereinbarung empfangen werden:
+## <a name="configure-how-your-agreement-handles-received-messages"></a>Konfigurieren der Behandlung empfangener Nachrichten durch die Vereinbarung
 
- a. Wählen Sie **Empfangseinstellungen**.
+Nachdem Sie die Vereinbarungseigenschaften festgelegt haben, können Sie konfigurieren, wie die Vereinbarung eingehende Nachrichten identifizieren und behandeln soll, die im Rahmen dieser Vereinbarung von Ihrem Partner gesendet werden.
 
- b. Optional können Sie die Eigenschaften eingehender Nachrichten überschreiben, indem Sie das Kontrollkästchen **Nachrichteneigenschaften überschreiben** aktivieren.
+1.    Wählen Sie unter **Hinzufügen** die Option **Empfangseinstellungen** aus.
+Konfigurieren Sie die Eigenschaften auf der Grundlage Ihrer Vereinbarung mit dem Partner, der Nachrichten mit Ihnen austauscht. Die Eigenschaften werden in der Tabelle in diesem Abschnitt beschrieben.
 
- c. Wenn Sie festlegen möchten, dass alle eingehenden Nachrichten signiert sein müssen, aktivieren Sie das Kontrollkästchen **Nachricht muss signiert sein**. Wenn Sie diese Option auswählen, überprüfen Sie die Signatur in den Nachrichten, indem Sie in der Liste **Zertifikat** das **öffentliche Zertifikat des Gastpartners** auswählen.
+    ![Empfangseinstellungen konfigurieren](./media/logic-apps-enterprise-integration-agreements/agreement-4.png)
 
- d. Wenn Sie festlegen möchten, dass alle eingehenden Nachrichten verschlüsselt sein müssen, aktivieren Sie das Kontrollkästchen **Nachricht muss verschlüsselt sein**. Wenn Sie diese Option auswählen, entschlüsseln Sie die eingehenden Nachrichten, indem Sie in der Liste **Zertifikat** das **private Zertifikat des Hostpartners** auswählen.
+2. Optional können Sie die Eigenschaften eingehender Nachrichten überschreiben, indem Sie das Kontrollkästchen **Nachrichteneigenschaften überschreiben** aktivieren.
 
- e. Wenn Sie festlegen möchten, dass Nachrichten komprimiert sein müssen, aktivieren Sie das Kontrollkästchen **Nachricht muss komprimiert sein**.    
+3. Wenn Sie festlegen möchten, dass alle eingehenden Nachrichten signiert sein müssen, aktivieren Sie das Kontrollkästchen **Nachricht muss signiert sein**. Wählen Sie zur Validierung der Nachrichtensignatur in der Liste **Zertifikat** ein vorhandenes [öffentliches Gastpartnerzertifikat](../logic-apps/logic-apps-enterprise-integration-certificates.md) aus. Oder: Erstellen Sie das Zertifikat, falls Sie noch keins besitzen.
 
- f. Aktivieren Sie das Kontrollkästchen **MDN senden**, um eine synchrone Benachrichtigung über den Nachrichtenstatus (Message Disposition Notification, MDN) für empfangene Nachrichten zu senden.
+4.    Wenn Sie festlegen möchten, dass alle eingehenden Nachrichten verschlüsselt sein müssen, aktivieren Sie das Kontrollkästchen **Nachricht muss verschlüsselt sein**. Wählen Sie zur Entschlüsselung eingehender Nachrichten in der Liste **Zertifikat** ein vorhandenes [privates Hostpartnerzertifikat](../logic-apps/logic-apps-enterprise-integration-certificates.md) aus. Oder: Erstellen Sie das Zertifikat, falls Sie noch keins besitzen.
 
- g. Aktivieren Sie das Kontrollkästchen **Signierte MDN senden**, um signierte MDNs für empfangene Nachrichten zu senden.
+5. Wenn Sie festlegen möchten, dass Nachrichten komprimiert sein müssen, aktivieren Sie das Kontrollkästchen **Nachricht muss komprimiert sein**.
 
- h. Aktivieren Sie das Kontrollkästchen **Asynchrone MDN senden**, um asynchrone MDNs für empfangene Nachrichten zu senden.
+6. Aktivieren Sie das Kontrollkästchen **MDN senden**, wenn für empfangene Nachrichten eine synchrone Benachrichtigung über den Nachrichtenstatus (Message Disposition Notification, MDN) gesendet werden soll.
 
- ![Festlegen der Eigenschaften für „Empfangseinstellungen“](./media/logic-apps-enterprise-integration-agreements/agreement-4.png)  
+7. Aktivieren Sie das Kontrollkästchen **Signierte MDN senden**, wenn für empfangene Nachrichten signierte MDNs gesendet werden sollen.
 
- In der folgenden Tabelle sind die Eigenschaften für **Empfangseinstellungen** beschrieben:  
+8. Aktivieren Sie das Kontrollkästchen **Asynchrone MDN senden**, wenn für empfangene Nachrichten asynchrone MDNs gesendet werden sollen.
 
- | Eigenschaft | Beschreibung |
- | --- | --- |
- | Nachrichteneigenschaften überschreiben | Gibt an, dass Eigenschaften in empfangenen Nachrichten überschrieben werden können. |
- | Nachricht muss signiert sein | Erfordert, dass Nachrichten digital signiert werden. Konfigurieren Sie das öffentliche Zertifikat des Gastpartners für die Signaturüberprüfung.  |
- | Nachricht muss verschlüsselt sein | Erfordert, dass Nachrichten verschlüsselt werden. Nicht verschlüsselte Nachrichten werden zurückgewiesen. Konfigurieren Sie das private Zertifikat des Hostpartners für das Entschlüsseln von Nachrichten.  |
- | Nachricht muss komprimiert sein | Erfordert, dass Nachrichten komprimiert werden. Nicht komprimierte Nachrichten werden zurückgewiesen. |
- | MDN-Text | Die standardmäßige Benachrichtigung über den Nachrichtenstatus (MDN), die an den Absender der Nachricht gesendet werden soll. |
- | MDN senden | Erfordert, dass MDNs gesendet werden. |
- | Signierte MDN senden | Erfordert, dass MDNs signiert werden. |
- | MIC-Algorithmus | |
- | Asynchrone MDN senden | Erfordert, dass Nachrichten asynchron gesendet werden. |
- | URL | Die URL, an die die MDNs gesendet werden. |
+9. Klicken Sie abschließend auf **OK**, um die Einstellungen zu speichern.
 
-8. Führen Sie die folgenden Schritte aus, um zu konfigurieren, wie Nachrichten behandelt werden, die über diese Vereinbarung gesendet werden:
+Ihre Vereinbarung kann nun eingehende Nachrichten verarbeiten, die den ausgewählten Einstellungen entsprechen.
 
- a. Wählen Sie **Sendeeinstellungen**.  
+| Eigenschaft | Beschreibung |
+| --- | --- |
+| Nachrichteneigenschaften überschreiben |Gibt an, dass Eigenschaften in empfangenen Nachrichten überschrieben werden können. |
+| Nachricht muss signiert sein |Erfordert, dass Nachrichten digital signiert werden. Konfigurieren Sie das öffentliche Zertifikat des Gastpartners für die Signaturüberprüfung.  |
+| Nachricht muss verschlüsselt sein |Erfordert, dass Nachrichten verschlüsselt werden. Nicht verschlüsselte Nachrichten werden abgelehnt. Konfigurieren Sie das private Zertifikat des Hostpartners für das Entschlüsseln von Nachrichten.  |
+| Nachricht muss komprimiert sein |Erfordert, dass Nachrichten komprimiert werden. Nicht komprimierte Nachrichten werden abgelehnt. |
+| MDN-Text |Die standardmäßige Benachrichtigung über den Nachrichtenstatus (MDN), die an den Absender der Nachricht gesendet werden soll. |
+| MDN senden |Erfordert, dass MDNs gesendet werden. |
+| Signierte MDN senden |Erfordert, dass MDNs signiert werden. |
+| MIC-Algorithmus |Wählen Sie den Algorithmus zum Signieren der Nachrichten aus. |
+| Asynchrone MDN senden | Erfordert, dass Nachrichten asynchron gesendet werden. |
+| URL | Geben Sie die URL an, an die die MDNs gesendet werden sollen. |
 
- b. Aktivieren Sie das Kontrollkästchen **Nachrichtensignatur aktivieren**, um signierte Nachrichten an den Partner zu senden. Wenn Sie diese Option auswählen, signieren Sie die Nachrichten, indem Sie in der Liste **MIC-Algorithmus** den **MIC-Algorithmus für das private Zertifikat des Hostpartners** und in der Liste **Zertifikat** das **private Zertifikat des Hostpartners** auswählen.
+## <a name="configure-how-your-agreement-sends-messages"></a>Konfigurieren des Nachrichtenversands Ihrer Vereinbarung
 
- c. Aktivieren Sie das Kontrollkästchen **Nachrichtenverschlüsselung aktivieren**, um verschlüsselte Nachrichten an den Partner zu senden. Wenn Sie diese Option auswählen, verschlüsseln Sie die Nachrichten, indem Sie in der Liste **Verschlüsselungsalgorithmus** den **Algorithmus für das öffentliche Zertifikat des Gastpartners** und in der Liste **Zertifikat** das **öffentliche Zertifikat des Gastpartners** auswählen.
+Sie können konfigurieren, wie Ihre Vereinbarung ausgehende Nachrichten identifizieren und behandeln soll, die Sie im Rahmen dieser Vereinbarung an Ihre Partner senden.
 
- d. Aktivieren Sie das Kontrollkästchen **Nachrichtenkomprimierung aktivieren**, um die Nachricht zu komprimieren.
+1.    Wählen Sie unter **Hinzufügen** die Option **Sendeeinstellungen** aus.
+Konfigurieren Sie die Eigenschaften auf der Grundlage Ihrer Vereinbarung mit dem Partner, der Nachrichten mit Ihnen austauscht. Die Eigenschaften werden in der Tabelle in diesem Abschnitt beschrieben.
 
- e. Aktivieren Sie das Kontrollkästchen **HTTP-Header erweitern**, um HTTP-Header des Typs „Content-Type“ in eine einzige Zeile zu erweitern.
+    ![Festlegen der Eigenschaften für „Sendeeinstellungen“](./media/logic-apps-enterprise-integration-agreements/agreement-5.png)
 
- f. Aktivieren Sie das Kontrollkästchen **MDN anfordern**, um synchrone MDNs für die gesendeten Nachrichten zu erhalten.
+2. Wenn Sie signierte Nachrichten an den Partner senden möchten, aktivieren Sie das Kontrollkästchen **Nachrichtensignatur aktivieren**. Wählen Sie zum Signieren der Nachrichten in der Liste **MIC-Algorithmus** den *MIC-Algorithmus für das private Hostpartnerzertifikat* aus. Wählen Sie außerdem in der Liste **Zertifikat** ein vorhandenes [privates Hostpartnerzertifikat](../logic-apps/logic-apps-enterprise-integration-certificates.md) aus.
 
- g. Aktivieren Sie das Kontrollkästchen **Signierte MDN anfordern**, um signierte MDNs für die gesendeten Nachrichten zu erhalten.
+3. Wenn Sie verschlüsselte Nachrichten an den Partner senden möchten, aktivieren Sie das Kontrollkästchen **Nachrichtenverschlüsselung aktivieren**. Wählen Sie zum Verschlüsseln der Nachrichten in der Liste **Verschlüsselungsalgorithmus** den *Algorithmus für das öffentliche Gastpartnerzertifikat* aus.
+Wählen Sie außerdem in der Liste **Zertifikat** ein vorhandenes [öffentliches Gastpartnerzertifikat](../logic-apps/logic-apps-enterprise-integration-certificates.md) aus.
 
- h. Aktivieren Sie das Kontrollkästchen **Asynchrone MDN anfordern**, um asynchrone MDNs für die gesendeten Nachrichten zu erhalten. Wenn Sie diese Option auswählen, geben Sie die URL ein, an die die MDNs gesendet werden sollen.  
+4. Wenn die Nachricht komprimiert werden soll, aktivieren Sie das Kontrollkästchen **Nachrichtenkomprimierung aktivieren**.
 
- i. Aktivieren Sie das Kontrollkästchen **NRR aktivieren**, um die Nichtabstreitbarkeit des Empfangs zu erfordern.
+5. Wenn der HTTP-Header „Content-Type“ in eine einzelne Zeile umgewandelt werden soll, aktivieren Sie das Kontrollkästchen **HTTP-Header erweitern**.
 
- j. Klicken Sie auf **OK**.
+6. Wenn Sie für die gesendeten Nachrichten synchrone MDNs erhalten möchten, aktivieren Sie das Kontrollkästchen **MDN anfordern**.
 
- ![Festlegen der Eigenschaften für „Sendeeinstellungen“](./media/logic-apps-enterprise-integration-agreements/agreement-5.png)  
+7. Wenn Sie für die gesendeten Nachrichten signierte MDNs erhalten möchten, aktivieren Sie das Kontrollkästchen **Signierte MDN anfordern**.
 
- In der folgenden Tabelle sind die Eigenschaften für **Sendeeinstellungen** beschrieben:  
+8. Wenn Sie für die gesendeten Nachrichten asynchrone MDNs erhalten möchten, aktivieren Sie das Kontrollkästchen **Asynchrone MDN anfordern**. Geben Sie bei Verwendung dieser Option die URL ein, an die die MDNs gesendet werden sollen.
 
- | Eigenschaft | Beschreibung |
- | --- | --- |
- | Nachrichtensignatur aktivieren | Erfordert, dass alle von der Vereinbarung gesendeten Nachrichten signiert sind. |
- | MIC-Algorithmus | Der zum Signieren von Nachrichten zu verwendende Algorithmus. Konfiguriert den MIC-Algorithmus für das private Zertifikat des Hostpartners für das Signieren der Nachrichten. |
- | Zertifikat | Das zum Signieren von Nachrichten zu verwendende Zertifikat. Konfiguriert Sie das private Zertifikat des Hostpartners für das Signieren der Nachrichten. |
- | Nachrichtenverschlüsselung aktivieren | Erfordert, dass alle von dieser Vereinbarung gesendeten Nachrichten verschlüsselt sind. Konfiguriert den Algorithmus für das öffentliche Zertifikat des Gastpartners für das Verschlüsseln der Nachrichten. |
- | Verschlüsselungsalgorithmus | Der für die Verschlüsselung von Nachrichten zu verwendende Verschlüsselungsalgorithmus. Konfiguriert das öffentliche Zertifikat des Gastpartners für das Verschlüsseln der Nachrichten. |
- | Zertifikat | Das zum Verschlüsseln von Nachrichten zu verwendende Zertifikat. Konfiguriert das private Zertifikat des Gastpartners für das Verschlüsseln der Nachrichten. |
- | Nachrichtenkomprimierung aktivieren | Erfordert, dass alle von dieser Vereinbarung gesendeten Nachrichten komprimiert sind. |
- | HTTP-Header erweitern | Erweitert HTTP-Header des Typs „Content-Type“ in eine einzige Zeile. |
- | MDN anfordern | Erfordert eine MDN für alle von dieser Vereinbarung gesendeten Nachrichten. |
- | Signierte MDN anfordern | Erfordert, dass alle an diese Vereinbarung gesendeten MDNs signiert sind. |
- | Asynchrone MDN anfordern | Erfordert, dass asynchrone MDNs an diese Vereinbarung gesendet werden. |
- | URL | Die URL, an die die MDNs gesendet werden. |
- | NRR aktivieren | Erfordert die Nichtabstreitbarkeit des Empfangs (NRR), ein Kommunikationsattribut, das nachweist, dass die Daten ordnungsgemäß empfangen wurden. |
+9. Falls Sie die Nichtabstreitbarkeit des Empfangs aktivieren möchten, aktivieren Sie das Kontrollkästchen **NRR aktivieren**.
 
-## <a name="view-the-agreements-list"></a>Anzeigen der Liste mit Vereinbarungen
-Wählen Sie zum Anzeigen der neu hinzugefügten Vereinbarung auf dem Blatt **Integrationskonto** die Kachel **Vereinbarungen** aus.
+10. Klicken Sie abschließend auf **OK**, um die Einstellungen zu speichern.
 
-![Anzeigen der Liste „Vereinbarungen“](./media/logic-apps-enterprise-integration-agreements/agreement-6.png)
+Ihre Vereinbarung kann nun ausgehende Nachrichten verarbeiten, die den ausgewählten Einstellungen entsprechen.
+
+| Eigenschaft | Beschreibung |
+| --- | --- |
+| Nachrichtensignatur aktivieren |Erfordert, dass alle von der Vereinbarung gesendeten Nachrichten signiert sind. |
+| MIC-Algorithmus |Der Algorithmus zum Signieren der Nachrichten. Konfiguriert den MIC-Algorithmus für das private Zertifikat des Hostpartners für das Signieren der Nachrichten. |
+| Zertifikat |Wählen Sie das Zertifikat zum Signieren der Nachrichten aus. Konfiguriert Sie das private Zertifikat des Hostpartners für das Signieren der Nachrichten. |
+| Nachrichtenverschlüsselung aktivieren |Erfordert, dass alle von dieser Vereinbarung gesendeten Nachrichten verschlüsselt sind. Konfiguriert den Algorithmus für das öffentliche Zertifikat des Gastpartners für das Verschlüsseln der Nachrichten. |
+| Verschlüsselungsalgorithmus |Der für die Verschlüsselung von Nachrichten zu verwendende Verschlüsselungsalgorithmus. Konfiguriert das öffentliche Zertifikat des Gastpartners für das Verschlüsseln der Nachrichten. |
+| Zertifikat |Das zum Verschlüsseln von Nachrichten zu verwendende Zertifikat. Konfiguriert das private Zertifikat des Gastpartners für das Verschlüsseln der Nachrichten. |
+| Nachrichtenkomprimierung aktivieren |Erfordert, dass alle von dieser Vereinbarung gesendeten Nachrichten komprimiert sind. |
+| HTTP-Header erweitern |Erweitert HTTP-Header des Typs „Content-Type“ in eine einzige Zeile. |
+| MDN anfordern |Erfordert eine MDN für alle von dieser Vereinbarung gesendeten Nachrichten. |
+| Signierte MDN anfordern |Erfordert, dass alle an diese Vereinbarung gesendeten MDNs signiert sind. |
+| Asynchrone MDN anfordern |Erfordert, dass asynchrone MDNs an diese Vereinbarung gesendet werden. |
+| URL |Geben Sie die URL an, an die die MDNs gesendet werden sollen. |
+| NRR aktivieren |Erfordert die Nichtabstreitbarkeit des Empfangs (NRR), ein Kommunikationsattribut, das nachweist, dass die Daten ordnungsgemäß empfangen wurden. |
+
+## <a name="find-your-created-agreement"></a>Suchen der erstellten Vereinbarung
+
+1.    Wählen Sie nach dem Festlegen der Vereinbarungseigenschaften auf dem Blatt **Hinzufügen** die Option **OK** aus, um die Erstellung Ihrer Vereinbarung abzuschließen und zum Blatt Ihres Integrationskontos zurückzukehren.
+
+    Die neu hinzugefügte Vereinbarung ist nun in der Liste **Vereinbarungen** enthalten.
+
+2.    Sie können Ihre Vereinbarungen auch in der Integrationskontoübersicht anzeigen. Wählen Sie auf dem Blatt Ihres Integrationskontos die Option **Übersicht** und anschließend die Kachel **Vereinbarungen** aus. 
+
+    ![Kachel „Vereinbarungen“ auswählen, um alle Vereinbarungen anzuzeigen](./media/logic-apps-enterprise-integration-agreements/agreement-6.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Weitere Informationen zum Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack")  
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

@@ -17,6 +17,7 @@ ms.author: curtand
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: c18ef38661e31e16114b88bdfad36320776ef12b
+ms.lasthandoff: 12/28/2016
 
 
 ---
@@ -122,9 +123,4 @@ Zusätzliche Anleitungen des Microsoft-Programmmanagers Rob de Jong stehen unter
 
 * [Verwalten des Zugriffs auf Ressourcen mit Azure Active Directory-Gruppen](active-directory-manage-groups.md)
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
-
-
-
-<!--HONumber=Dec16_HO4-->
-
 

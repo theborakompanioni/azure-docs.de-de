@@ -12,20 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2016
+ms.date: 02/24/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 605ba0aee99b81c07e37e13314e7bc1226e7e161
+ms.sourcegitcommit: a59a0782176f5221bb8b2f590faeee660f4d1101
+ms.openlocfilehash: 2ebc4571cb7ff763449f192f5140c79a65d69833
+ms.lasthandoff: 03/01/2017
 
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-23-video"></a>Tutorial: Azure Active Directory-Integration mit 23 Video
-Dieses Tutorial soll Ihnen zeigen, wie Sie 23 Video in Azure Active Directory (Azure AD) integrieren können.  
+Dieses Tutorial soll Ihnen zeigen, wie Sie 23 Video in Azure Active Directory (Azure AD) integrieren können.
+
 Die Integration von 23 Video in Azure AD bietet die folgenden Vorteile: 
 
 * Sie können in Azure AD steuern, wer Zugriff auf 23 Video hat. 
-* Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei 23 Video anzumelden (einmaliges Anmelden).
+* Sie können Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei 23 Video mit einmaligem Anmelden (Single Sign-On, SSO) anzumelden.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
@@ -33,24 +35,24 @@ Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unte
 Um die Azure AD-Integration mit 23 Video konfigurieren zu können, benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement
-* Ein 23 Video-Abonnement, für das einmaliges Anmelden aktiviert ist
+* Ein 23 Video-Abonnement, für das einmaliges Anmelden (SSO) aktiviert ist
 
-> [!NOTE]
-> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
-> 
+>[!NOTE]
+>Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden. 
 > 
 
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
 * Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-* Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern. 
+* Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/). 
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-Ziel dieses Tutorials ist es, das einmalige Anmelden von Azure AD in einer Testumgebung zu testen.  
+Ziel dieses Tutorials ist, das einmalige Anmelden (SSO) von Azure AD in einer Testumgebung zu testen.
+
 Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
 1. Hinzufügen von 23 Video aus dem Katalog 
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+2. Konfigurieren und Testen des einmaligen Anmeldens (SSO) von Azure AD
 
 ## <a name="adding-23-video-from-the-gallery"></a>Hinzufügen von 23 Video aus dem Katalog
 Zum Konfigurieren der Integration von 23 Video in Azure AD müssen Sie 23 Video aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
@@ -77,24 +79,25 @@ Zum Konfigurieren der Integration von 23 Video in Azure AD müssen Sie 23 Vide
    
     ![Anwendungen][25]
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
-In diesem Abschnitt soll veranschaulicht werden, wie basierend auf einem Testbenutzer namens „Britta Simon“ das einmalige Anmelden von Azure AD in 23 Video konfiguriert und getestet werden kann.
+## <a name="configuring-and-testing-azure-ad-sso"></a>Konfigurieren und Testen des einmaligen Anmeldens (SSO) von Azure AD
+In diesem Abschnitt soll anhand eines Testbenutzers namens Britta Simon veranschaulicht werden, wie das einmalige Anmelden von Azure AD in 23 Video konfiguriert und getestet werden kann.
 
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in 23 Video als Gegenbenutzer zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in 23 Video muss eine Linkbeziehung eingerichtet werden.  
+Damit einmaliges Anmelden (SSO) funktioniert, muss Azure AD wissen, welcher Benutzer in 23 Video als Entsprechung zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in 23 Video muss eine Linkbeziehung eingerichtet werden.  
+
 Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD als Wert dem **Benutzernamen** in 23 Video zuweisen.
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei 23 Video müssen Sie die folgenden Bausteine ausführen:
+Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei 23 Video müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
 2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 3. **[Erstellen eines 23 Video-Testbenutzers](#creating-a-23-video-test-user)** , um eine Entsprechung von Britta Simon in 23 Video zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** – um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
-Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im klassischen Azure-Portal zu aktivieren und das einmalige Anmelden in Ihrer 23 Video-Anwendung zu konfigurieren.
+### <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
+Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden (SSO) von Azure AD im klassischen Azure-Portal zu aktivieren und das einmalige Anmelden in Ihrer 23 Video-Anwendung zu konfigurieren.
 
-**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in 23 Video die folgenden Schritte aus:**
+**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in 23 Video die folgenden Schritte aus:**
 
 1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **23 Video** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
    
@@ -105,24 +108,19 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im
 3. Führen Sie auf der Dialogseite **App-Einstellungen konfigurieren** die folgenden Schritte aus:
    
     ![Azure AD – einmaliges Anmelden][8] 
+  1. Geben Sie im Textfeld **Antwort-URL** die URL ein, die die Benutzer für die Anmeldung bei der 23 Video-Website verwenden (z.B. *https://britta-simon.23Video.com/saml/login*).
    
-     a. Geben Sie im Textfeld **Antwort-URL** die URL ein, die die Benutzer für die Anmeldung bei der 23 Video-Website verwenden (z.B. *https://britta-simon.23Video.com/saml/login*).
-   
-   > [!NOTE]
-   > Die Active Directory-Integration mithilfe von SAML 2.0 ist für alle 23 Video-Benutzer verfügbar. Wenn Sie zugehörige Metadaten benötigen, wenden Sie sich unter [support@23company.com](mailto:support@23company.com) an den Support.
-   > 
-   > 
-   
-     b. Klicken Sie auf **Weiter**.
+    >[!NOTE]
+    >Die Active Directory-Integration mithilfe von SAML 2.0 ist für alle 23 Video-Benutzer verfügbar. Wenn Sie zugehörige Metadaten benötigen, wenden Sie sich unter [support@23company.com](mailto:support@23company.com) an den Support. 
+    > 
+ 
+  2. Klicken Sie auf **Weiter**.
 4. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für 23 Video** die folgenden Schritte aus:
    
     ![Azure AD – einmaliges Anmelden][9] 
-   
-    a. Klicken Sie auf "Zertifikat herunterladen", und speichern Sie das Zertifikat auf Ihrem Computer.
-   
-    b. Wenden Sie sich unter [support@23company.com](mailto:support@23company.com) an das 23 Video-Supportteam. Geben Sie das heruntergeladene Zertifikat, die **Aussteller-URL**, die **Service-URL für einmaliges Anmelden** und die **URL für einmaliges Abmelden** an, und bitten Sie das Team, für Ihre 23 Video-App SSO einzurichten. 
-   
-    c. Klicken Sie auf **Next**.
+ 1. Klicken Sie auf "Zertifikat herunterladen", und speichern Sie das Zertifikat auf Ihrem Computer.
+ 2. Wenden Sie sich unter [support@23company.com](mailto:support@23company.com) an das 23 Video-Supportteam. Geben Sie das heruntergeladene Zertifikat, die **Aussteller-URL**, die **Service-URL für einmaliges Anmelden** und die **URL für einmaliges Abmelden** an, und bitten Sie das Team, für Ihre 23 Video-App SSO einzurichten.    
+ 3. Klicken Sie auf **Weiter**.
 5. Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**. 
    
     ![Azure AD – einmaliges Anmelden][10]
@@ -130,7 +128,7 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im
    
     ![Azure AD – einmaliges Anmelden][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens Britta Simon erstellt.
 
 ![Azure AD-Benutzer erstellen][20]
@@ -150,36 +148,27 @@ In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens 
 5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus: 
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-23video-tutorial/create_aaduser_05.png)  
-   
-    a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
-   
-    b. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
-   
-    c. Klicken Sie auf **Weiter**.
+ 1. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus. 
+ 2. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein. 
+ 3. Klicken Sie auf **Weiter**.
 6. Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus: 
    
-   ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-23video-tutorial/create_aaduser_06.png) 
-   
-   a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
-   
-   b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
-   
-   c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
-   
-   d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
-   e. Klicken Sie auf **Weiter**.
+   ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-23video-tutorial/create_aaduser_06.png)  
+ 1. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.   
+ 2. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein. 
+ 3. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein. 
+ 4. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
+ 5. Klicken Sie auf **Weiter**.
 7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-23video-tutorial/create_aaduser_07.png) 
 8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
    
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-23video-tutorial/create_aaduser_08.png) 
-   
-    a. Notieren Sie den Wert von **Neues Kennwort**.
-   
-    b. Klicken Sie auf **Fertig stellen**.   
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-23video-tutorial/create_aaduser_08.png)  
+ 1. Notieren Sie den Wert von **Neues Kennwort**. 
+ 2. Klicken Sie auf **Fertig stellen**.   
 
-### <a name="creating-a-23-video-test-user"></a>Erstellen eines 23 Video-Testbenutzers
+### <a name="create-a-23-video-test-user"></a>Erstellen eines 23 Video-Testbenutzers
 Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in 23 Video.
 
 **Um einen Benutzer namens Britta Simon in 23 Video zu erstellen, führen Sie die folgenden Schritte aus:**
@@ -195,13 +184,11 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon
 5. Führen Sie im Abschnitt **Personen zu dieser Website einladen** die folgenden Schritte aus:
    
     ![Benutzer zuweisen][402]
-   
-    a. Geben Sie im Textfeld **E-Mail-Adressen** die E-Mail-Adresse von Britta Simon in Azure AD ein.
-   
-    b. Klicken Sie auf **Benutzer hinzufügen**.   
+ 1. Geben Sie im Textfeld **E-Mail-Adressen** die E-Mail-Adresse von Britta Simon in Azure AD ein.  
+ 2. Klicken Sie auf **Benutzer hinzufügen**.   
 
-### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
-Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmaligen Anmeldens von Azure zu ermöglichen, indem sie Zugriff auf 23 Video erhält.
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmaligen Anmeldens (SSO) von Azure zu ermöglichen, indem sie Zugriff auf 23 Video erhält.
 
 ![Benutzer zuweisen][200] 
 
@@ -221,8 +208,9 @@ Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmal
    
     ![Benutzer zuweisen][205]
 
-### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
-Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.  
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
+Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden (SSO) über den Zugriffsbereich.
+
 Wenn Sie im Zugriffsbereich auf die Kachel „23 Video“ klicken, sollten Sie automatisch bei Ihrer 23 Video-Anwendung angemeldet werden.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
@@ -258,10 +246,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „23 Video“ klicken, sollten Sie a
 
 
 
-
-
-
-
-<!--HONumber=Dec16_HO4-->
 
 

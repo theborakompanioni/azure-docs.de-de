@@ -1,6 +1,6 @@
 ---
-title: "EDIFACT-Nachrichten für die Unternehmensintegration – Azure Logic Apps | Microsoft-Dokumentation"
-description: "Austauschen von EDIFACT-Nachrichten für die Unternehmensintegration mit Azure Logic Apps"
+title: "EDIFACT-Nachrichten für die B2B-Unternehmensintegration – Azure Logic Apps | Microsoft-Dokumentation"
+description: "Austauschen von EDIFACT-Nachrichten im EDI-Format für die B2B-Unternehmensintegration mit Azure Logic Apps"
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: jeffhollan
@@ -16,74 +16,103 @@ ms.custom: H1Hack27Feb2017
 ms.date: 07/26/2016
 ms.author: jonfan
 translationtype: Human Translation
-ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
-ms.openlocfilehash: c5ed4f7413bf8a0b4fd188ca451d4a60b761e886
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: e067ea1a800dbcbc1c95ec03c7437ab3c8a610d7
+ms.lasthandoff: 03/10/2017
 
 
 ---
-# <a name="exchange-edifact-messages-with-logic-apps"></a>Austauschen von EDIFACT-Nachrichten mit Logik-Apps
+# <a name="exchange-edifact-messages-for-enterprise-integration-with-logic-apps"></a>Austauschen von EDIFACT-Nachrichten für die Unternehmensintegration mit Logik-Apps
+
+Bevor Sie EDIFACT-Nachrichten für Azure Logic Apps austauschen können, müssen Sie eine EDIFACT-Vereinbarung erstellen und in Ihrem Integrationskonto speichern. Hier erfahren Sie, wie Sie eine EDIFACT-Vereinbarung erstellen.
 
 > [!NOTE]
-> Auf dieser Seite werden die EDIFACT-Features von Azure Logic Apps beschrieben. Weitere Informationen finden Sie unter [X12](logic-apps-enterprise-integration-x12.md).
+> Auf dieser Seite werden die EDIFACT-Features für Azure Logic Apps beschrieben. Weitere Informationen finden Sie unter [X12](logic-apps-enterprise-integration-x12.md).
 
-## <a name="create-an-edifact-agreement"></a>Erstellen einer EDIFACT-Vereinbarung
-Bevor Sie EDIFACT-Nachrichten austauschen können, müssen Sie eine EDIFACT-Vereinbarung erstellen und in Ihrem Integrationskonto speichern. In den folgenden Schritten werden Sie durch das Erstellen einer EDIFACT-Vereinbarung geführt.
+## <a name="before-you-start"></a>Vorbereitung
 
-### <a name="before-you-get-started"></a>Bevor Sie beginnen
+Sie benötigen Folgendes:
 
-Sie benötigen folgende Elemente:
-
-* Ein in Ihrem Azure-Abonnement definiertes [Integrationskonto](../logic-apps/logic-apps-enterprise-integration-accounts.md)  
-* Mindestens zwei [Partner](logic-apps-enterprise-integration-partners.md), die bereits in Ihrem Integrationskonto definiert sind  
+* Ein bereits definiertes und mit Ihrem Azure-Abonnement verknüpftes [Integrationskonto](../logic-apps/logic-apps-enterprise-integration-accounts.md)  
+* Mindestens zwei [Partner](logic-apps-enterprise-integration-partners.md), die bereits in Ihrem Integrationskonto definiert sind
 
 > [!NOTE]
-> Beim Erstellen einer Vereinbarung muss der Inhalt in den Nachrichten, die Sie an den Partner senden und vom Partner empfangen, mit dem Vereinbarungstyp übereinstimmen.    
-> 
-> 
+> Beim Erstellen einer Vereinbarung muss der Inhalt in den Nachrichten, die Sie an den Partner senden oder vom Partner empfangen, zum Vereinbarungstyp passen.
 
-Nachdem Sie [ein Integrationskonto erstellt](../logic-apps/logic-apps-enterprise-integration-accounts.md) und [Partner hinzugefügt](logic-apps-enterprise-integration-partners.md) haben, können Sie eine EDIFACT-Vereinbarung erstellen, indem Sie folgende Schritte ausführen:  
+Nachdem Sie [ein Integrationskonto erstellt](../logic-apps/logic-apps-enterprise-integration-accounts.md) und [Partner hinzugefügt](logic-apps-enterprise-integration-partners.md) haben, können Sie eine EDIFACT-Vereinbarung erstellen. Gehen Sie dazu wie folgt vor:
 
-### <a name="from-the-azure-portal-home-page"></a>Auf der Startseite des Azure-Portals
-Nach der Anmeldung beim [Azure-Portal](http://portal.azure.com "Azure-Portal"):  
+## <a name="create-an-edifact-agreement"></a>Erstellen einer EDIFACT-Vereinbarung 
 
-1. Wählen Sie im Menü links **Durchsuchen** .  
+1.    Melden Sie sich beim [Azure-Portal](http://portal.azure.com "Azure-Portal") an. Wählen Sie im linken Menü die Option **Weitere Dienste** aus.
 
-> [!TIP]
-> Wenn der Link **Durchsuchen** nicht angezeigt wird, müssen Sie möglicherweise zuerst das Menü erweitern. Wählen Sie dazu den Link **Menü anzeigen** aus, der sich links oben neben dem reduzierten Menü befindet.  
-> 
-> 
+    > [!TIP]
+    > Sollte **Weitere Dienste** nicht angezeigt werden, müssen Sie das Menü möglicherweise erst erweitern. Wählen Sie im oberen Bereich des reduzierten Menüs die Option **Menü anzeigen** aus.
 
-![](./media/logic-apps-enterprise-integration-edifact/edifact-0.png)    
+    ![Im linken Menü die Option „Weitere Dienste“ auswählen](./media/logic-apps-enterprise-integration-edifact/edifact-0.png)
 
-1. Geben Sie in das Filtersuchfeld *Integration* ein, und wählen Sie in der Ergebnisliste **Integrationskonten** aus.       
-   ![](./media/logic-apps-enterprise-integration-edifact/edifact-1-3.png)    
-2. Wählen Sie auf dem geöffneten Blatt **Integrationskonten** das Integrationskonto aus, in dem Sie die Vereinbarung erstellen möchten. Wenn keine Listen mit Integrationskonten angezeigt werden, [erstellen Sie zunächst ein Konto](../logic-apps/logic-apps-enterprise-integration-accounts.md "All about integration accounts").  
-   ![](./media/logic-apps-enterprise-integration-edifact/edifact-1-4.png)  
-3. Wählen Sie die Kachel **Vereinbarungen** aus. Wenn die Kachel „Vereinbarungen“ nicht angezeigt wird, fügen Sie sie zunächst hinzu.   
-   ![](./media/logic-apps-enterprise-integration-edifact/edifact-1-5.png)     
-4. Wählen Sie auf dem geöffneten Blatt „Vereinbarungen“ die Schaltfläche **Hinzufügen** aus.  
-   ![](./media/logic-apps-enterprise-integration-edifact/edifact-agreement-2.png)  
-5. Geben Sie einen **Namen** für die Vereinbarung ein. Wählen Sie dann auf dem geöffneten Blatt „Vereinbarungen“ den **Vereinbarungstyp** für EDIFACT, **Hostpartner**, die **Hostidentität**, den **Gastpartner** und die **Gastidentität** aus.  
-   ![](./media/logic-apps-enterprise-integration-edifact/edifact-1.png)  
-6. Wählen Sie nach dem Festlegen der Vereinbarungseigenschaften die Option **Empfangseinstellungen** aus, um zu konfigurieren, wie Nachrichten, die über diese Vereinbarung empfangen werden, behandelt werden.  
-7. Das Steuerelement „Empfangseinstellungen“ ist in die folgenden Abschnitte unterteilt, einschließlich Bezeichnern, Bestätigung, Schemas, Kontrollnummern, Überprüfungen, internen Einstellungen und Batchverarbeitung. Konfigurieren Sie diese Eigenschaften basierend auf Ihrer Vereinbarung mit dem Partner, mit dem Sie Nachrichten austauschen. Hier ist eine Ansicht dieser Steuerelemente angegeben. Konfigurieren Sie sie so, wie diese Vereinbarung eingehende Nachrichten identifizieren und verarbeiten soll:  
-   ![](./media/logic-apps-enterprise-integration-edifact/edifact-2.png)  
-8. Wählen Sie die Schaltfläche **OK** , um die Einstellungen zu speichern.  
+2. Geben Sie im Suchfeld den Begriff „integration“ als Filter ein. Wählen Sie in der Ergebnisliste die Option **Integrationskonten** aus.
+
+    ![Nach „Integration“ filtern, „Integrationskonten“ auswählen](./media/logic-apps-enterprise-integration-edifact/edifact-1-3.png)
+
+3. Wählen Sie auf dem geöffneten Blatt **Integrationskonten** das Integrationskonto aus, in dem Sie die Vereinbarung erstellen möchten.
+Sollten keine Integrationskonten angezeigt werden, [erstellen Sie zunächst ein Konto](../logic-apps/logic-apps-enterprise-integration-accounts.md "Alles über Integrationskonten").  
+
+    ![Integrationskonto für die Erstellung der Vereinbarung auswählen](./media/logic-apps-enterprise-integration-edifact/edifact-1-4.png)
+
+4. Wählen Sie die Kachel **Vereinbarungen** aus. Sollte die Kachel „Vereinbarungen“ nicht angezeigt werden, fügen Sie sie hinzu.   
+
+    ![Kachel „Vereinbarungen“ auswählen](./media/logic-apps-enterprise-integration-edifact/edifact-1-5.png)
+
+5. Wählen Sie auf dem geöffneten Blatt „Vereinbarungen“ die Option **Hinzufügen** aus.
+
+    ![„Hinzufügen“ auswählen](./media/logic-apps-enterprise-integration-edifact/edifact-agreement-2.png)
+
+6. Geben Sie unter **Hinzufügen** im Feld **Name** einen Namen für Ihre Vereinbarung ein. Wählen Sie unter **Vertragstyp** die Option **EDIFACT** aus. Wählen Sie den **Hostpartner**, die **Hostidentität**, den **Gastpartner** und die **Gastidentität** für Ihre Vereinbarung aus.
+
+    ![Details zur Vereinbarung angeben](./media/logic-apps-enterprise-integration-edifact/edifact-1.png)
+
+    | Eigenschaft | Beschreibung |
+    | --- | --- |
+    | Name |Name der Vereinbarung |
+    | Vereinbarungstyp | Muss EDIFACT lauten. |
+    | Hostpartner |Eine Vereinbarung benötigt einen Host- und einen Gastpartner. Der Hostpartner stellt die Organisation dar, die die Vereinbarung konfiguriert. |
+    | Hostidentität |Ein Bezeichner für den Hostpartner. |
+    | Gastpartner |Eine Vereinbarung benötigt einen Host- und einen Gastpartner. Der Gastpartner stellt die Organisation dar, die Geschäfte mit dem Hostpartner tätigt. |
+    | Gastidentität |Ein Bezeichner für den Gastpartner. |
+    | Empfangseinstellungen |Diese Eigenschaften gelten für alle Nachrichten, die von einer Vereinbarung empfangen werden. |
+    | Sendeeinstellungen |Diese Eigenschaften gelten für alle Nachrichten, die von einer Vereinbarung gesendet werden. |
+
+## <a name="configure-how-your-agreement-handles-received-messages"></a>Konfigurieren der Behandlung empfangener Nachrichten durch die Vereinbarung
+
+Nachdem Sie die Vereinbarungseigenschaften festgelegt haben, können Sie konfigurieren, wie die Vereinbarung eingehende Nachrichten identifizieren und behandeln soll, die im Rahmen dieser Vereinbarung von Ihrem Partner gesendet werden.
+
+1.    Wählen Sie unter **Hinzufügen** die Option **Empfangseinstellungen** aus.
+Konfigurieren Sie die Eigenschaften auf der Grundlage Ihrer Vereinbarung mit dem Partner, der Nachrichten mit Ihnen austauscht. Die Eigenschaften werden in den Tabellen in diesem Abschnitt beschrieben.
+
+    **Empfangseinstellungen** ist in die folgenden Abschnitte unterteilt: „Bezeichner“, „Bestätigung“, „Schemas“, „Kontrollnummern“, „Überprüfung“ und „Interne Einstellungen“.
+
+    ![Empfangseinstellungen konfigurieren](./media/logic-apps-enterprise-integration-edifact/edifact-2.png)  
+
+2. Klicken Sie abschließend auf **OK**, um die Einstellungen zu speichern.
+
+Ihre Vereinbarung kann nun eingehende Nachrichten verarbeiten, die den ausgewählten Einstellungen entsprechen.
 
 ### <a name="identifiers"></a>Bezeichner
+
 | Eigenschaft | Beschreibung |
 | --- | --- |
 | UNB6.1 (Empfängerverweiskennwort) |Geben Sie einen alphanumerischen Wert mit 1 bis 14 Zeichen ein. |
 | UNB6.2 (Empfängerverweisqualifizierer) |Geben Sie einen alphanumerischen Wert mit einer Länge von mindestens einem und maximal zwei Zeichen ein. |
 
 ### <a name="acknowledgments"></a>Danksagungen
+
 | Eigenschaft | Beschreibung |
 | --- | --- |
 | Nachrichtenquittung (CONTRL) |Wählen Sie dieses Kontrollkästchen, um eine technische Bestätigung (CONTRL) an den Austauschabsender zurückzugeben. Die Bestätigung wird anhand der Sendeeinstellungen für die Vereinbarung an den Austauschabsender gesendet. |
 | Bestätigung (CONTRL) |Aktivieren Sie dieses Kontrollkästchen, um eine funktionale Bestätigung (CONTRL) an den Austauschabsender zurückzugeben. Die Bestätigung wird anhand der Sendeeinstellungen für die Vereinbarung an den Austauschabsender gesendet. |
 
 ### <a name="schemas"></a>Schemas
+
 | Eigenschaft | Beschreibung |
 | --- | --- |
 | UNH2.1 (TYP) |Wählen Sie einen Transaktionssatztyp aus. |
@@ -92,47 +121,57 @@ Nach der Anmeldung beim [Azure-Portal](http://portal.azure.com "Azure-Portal"):
 | UNH2.5 (ZUGEWIESENER CODE FÜR ZUORDNUNG) |Geben Sie den zugewiesenen Code ein. (Maximal sechs Zeichen. Muss alphanumerisch sein.) |
 | UNG2.1 (ID FÜR APP-SENDER) |Geben Sie einen alphanumerischen Wert mit einer Länge von mindestens einem und maximal 35 Zeichen ein. |
 | UNG2.2 (CODEQUALIFIZIERER FÜR APP-SENDER) |Geben Sie einen alphanumerischen Wert mit maximal vier Zeichen ein. |
-| SCHEMA |Wählen Sie das zuvor hochgeladene Schema, das Sie verwenden möchten, im zugeordneten Integrationskonto aus. |
+| SCHEMA |Wählen Sie im zugeordneten Integrationskonto das gewünschte Schema aus, das Sie zuvor hochgeladen haben. |
 
 ### <a name="control-numbers"></a>Kontrollnummern
 | Eigenschaft | Beschreibung |
 | --- | --- |
-| Doppelte Austauschkontrollnummern nicht zulassen |Aktivieren Sie dieses Kontrollkästchen, um doppelte Austauschvorgänge zu blockieren. Bei Aktivierung wird mit der EDIFACT-Decodierungsaktion sichergestellt, dass die Austauschkontrollnummer (UNB5) für den empfangenen Austausch nicht mit einer zuvor verarbeiteten Austauschkontrollnummer übereinstimmt. Wenn eine Übereinstimmung erkannt wird, wird der Austausch nicht verarbeitet. |
-| Innerhalb der folgenden Anzahl von Tagen auf UNB5-Duplikate prüfen |Wenn Sie sich gegen das Zulassen von doppelten Austauschkontrollnummern entschieden haben, können Sie die Anzahl von Tagen angeben, nach denen die Überprüfung durchgeführt werden soll. Geben Sie hierzu den gewünschten Wert für die Option **Innerhalb der folgenden Anzahl von Tagen auf UNB5-Duplikate prüfen** ein. |
-| Doppelte Gruppenkontrollnummern nicht zulassen |Aktivieren Sie dieses Kontrollkästchen, um Austauschvorgänge mit doppelten Gruppenkontrollnummern (UNG5) zu blockieren. |
-| Doppelte Transaktionssatz-Kontrollnummern nicht zulassen |Aktivieren Sie dieses Kontrollkästchen, um Austauschvorgänge mit doppelten Transaktionssatz-Kontrollnummern (UNH1) zu blockieren. |
-| EDIFACT-Bestätigungskontrollnummer |Um die Transaktionssatz-Verweisnummern zur Verwendung in einer Bestätigung anzugeben, geben Sie einen Wert für das Präfix, einen Bereich von Verweisnummern und ein Suffix ein. |
+| Doppelte Austauschkontrollnummern nicht zulassen |Wählen Sie diese Eigenschaft aus, um doppelte Austauschvorgänge zu blockieren. Bei Aktivierung wird mit der EDIFACT-Decodierungsaktion sichergestellt, dass die Austauschkontrollnummer (UNB5) für den empfangenen Austausch nicht mit einer zuvor verarbeiteten Austauschkontrollnummer übereinstimmt. Wenn eine Übereinstimmung erkannt wird, wird der Austausch nicht verarbeitet. |
+| Innerhalb der folgenden Anzahl von Tagen auf UNB5-Duplikate prüfen |Wenn Sie sich gegen das Zulassen von doppelten Austauschkontrollnummern entschieden haben, können Sie die Anzahl von Tagen angeben, nach denen die Überprüfung durchgeführt werden soll. Geben Sie hierzu einen geeigneten Wert für diese Einstellung an. |
+| Doppelte Gruppenkontrollnummern nicht zulassen |Wählen Sie diese Eigenschaft aus, um Austauschvorgänge mit doppelten Gruppenkontrollnummern (UNG5) zu blockieren. |
+| Doppelte Transaktionssatz-Kontrollnummern nicht zulassen |Wählen Sie diese Eigenschaft aus, um Austauschvorgänge mit doppelten Transaktionssatz-Kontrollnummern (UNH1) zu blockieren. |
+| EDIFACT-Bestätigungskontrollnummer |Geben Sie einen Wert für das Präfix, einen Bereich von Verweisnummern und ein Suffix ein, um die Transaktionssatz-Verweisnummern für die Verwendung in einer Bestätigung anzugeben. |
 
 ### <a name="validations"></a>Überprüfungen
+
+Nach Abschluss der einzelnen Überprüfungszeilen wird jeweils automatisch eine weitere hinzugefügt. Wenn Sie keine Regeln angeben, verwendet die Überprüfung die Standardzeile.
+
 | Eigenschaft | Beschreibung |
 | --- | --- |
-| Nachrichtentyp |Geben Sie den Nachrichtentyp an. Wenn eine Überprüfungszeile abgeschlossen ist, wird jeweils eine andere automatisch hinzugefügt. Falls keine Regeln angegeben sind, wird die als Standardeinstellung markierte Zeile für die Validierung verwendet. |
-| EDI-Überprüfung |Aktivieren Sie dieses Kontrollkästchen, um eine EDI-Überprüfung für Datentypen gemäß den EDI-Eigenschaften Schema, Längeneinschränkungen, leere Datenelemente und nachgestellte Trennzeichen durchzuführen. |
-| Erweiterte Überprüfung |Aktivieren Sie dieses Kontrollkästchen, um die erweiterte Überprüfung (XSD) von Austauschvorgängen zu ermöglichen, die vom Austauschabsender empfangen wurden. Dazu gehören zusätzlich zur Überprüfung des XSD-Datentyps die Überprüfung von Feldlänge, Optionalität und Wiederholungsanzahl. |
-| Führende/nachfolgende Nullen zulassen |Wählen Sie **Zulässig**, um führende/nachgestellte Nullen zuzulassen, und **Nicht zulässig**, um führende/nachgestellte Nullen nicht zuzulassen. Oder wählen Sie **Beschneiden**, um führende/nachgestellte Nullen abzuschneiden. |
-| Führende/nachgestellte Nullen abschneiden |Aktivieren Sie dieses Kontrollkästchen, um alle führenden oder nachgestellten Nullen abzuschneiden. |
-| Richtlinie für nachgestellte Trennzeichen |Wählen Sie **Nicht zulässig** , wenn Sie keine nachgestellten Trennzeichen in einem Austauschvorgang zulassen möchten, die vom Austauschabsender empfangen wurden. Wenn der Austauschvorgang nachgestellte Trennzeichen enthält, wird er als ungültig deklariert. Wählen Sie **Optional** , um Austauschvorgänge mit oder ohne nachgestellte Trennzeichen zu akzeptieren. Wählen Sie **Erforderlich** , wenn der empfangene Austauschvorgang zwingend nachgestellte Trennzeichen enthalten muss. |
+| Nachrichtentyp |Wählen Sie den EDI-Nachrichtentyp aus. |
+| EDI-Überprüfung |Die EDI-Überprüfung erfolgt für Datentypen gemäß den EDI-Eigenschaften des Schemas, Längenbeschränkungen, leeren Datenelementen und nachfolgenden Trennzeichen. |
+| Erweiterte Überprüfung |Wenn der Datentyp nicht EDI ist, werden die Datenelementanforderung sowie zulässige Wiederholung, Enumerationen und Datenelementlänge (Min./Max.) überprüft. |
+| Führende/nachfolgende Nullen zulassen |Behält alle zusätzlichen führenden oder nachfolgenden Nullen und Leerzeichen bei. Diese Zeichen werden nicht entfernt. |
+| Führende/nachgestellte Nullen abschneiden |Entfernt führende oder nachfolgende Nullen und Leerzeichen. |
+| Richtlinie für nachgestellte Trennzeichen |Generiert nachfolgende Trennzeichen. <p>Wählen Sie **Nicht zulässig** aus, wenn der empfangene Austauschvorgang keine nachfolgenden Trennzeichen enthalten darf. Wenn der Austauschvorgang nachfolgende Trennzeichen enthält, wird er als ungültig deklariert. <p>Wählen Sie **Optional** , um Austauschvorgänge mit oder ohne nachgestellte Trennzeichen zu akzeptieren. <p>Wählen Sie **Erforderlich** aus, wenn der empfangene Austauschvorgang nachfolgende Trennzeichen enthalten muss. |
 
 ### <a name="internal-settings"></a>Interne Einstellungen
+
 | Eigenschaft | Beschreibung |
 | --- | --- |
 | Leere XML-Tags erstellen, wenn nachfolgende Trennzeichen zulässig sind |Aktivieren Sie dieses Kontrollkästchen, damit der Austauschabsender leere XML-Tags für nachfolgende Trennzeichen einbezieht. |
-| Eingehende Batchverarbeitung |Beispiele für Optionen:</br></br>**Austausch in Transaktionssätze trennen – Transaktionssätze bei Fehler anhalten**: Analysiert jeden Transaktionssatz in einem Austausch in ein separates XML-Dokument, indem der geeignete Umschlag auf den Transaktionssatz angewendet wird. Wenn ein oder mehrere Transaktionssätze im Austausch die Überprüfung nicht bestehen, werden nur diese Transaktionssätze angehalten. Austausch in Transaktionssätze trennen – Austausch bei Fehler anhalten: Analysiert jeden Transaktionssatz in einem Austausch in ein separates XML-Dokument, indem der geeignete Umschlag angewendet wird. Wenn bei dieser Option ein oder mehrere Transaktionssätze im Austausch die Überprüfung nicht bestehen, wird der gesamte Austausch angehalten.</br></br>**Austausch beibehalten – Transaktionssätze bei Fehler anhalten**: Lässt den Austausch intakt und erstellt ein XML-Dokument für den gesamten Batchaustausch. Wenn ein oder mehrere Transaktionssätze im Austausch die Überprüfung nicht bestehen, werden bei dieser Option nur diese Transaktionssätze angehalten, und alle anderen Transaktionssätze werden verarbeitet.</br></br>**Austausch beibehalten – Austausch bei Fehler anhalten**: Lässt den Austausch intakt und erstellt ein XML-Dokument für den gesamten Batchaustausch. Wenn mindestens ein Transaktionssatz im Austausch die Überprüfung nicht besteht, wird bei dieser Option der gesamte Austausch angehalten. |
+| Austausch in Transaktionssätze trennen – Transaktionssätze bei Fehler anhalten|Analysiert jeden Transaktionssatz in einem Austausch in ein separates XML-Dokument, indem der geeignete Umschlag auf den Transaktionssatz angewendet wird. Hält nur die Transaktionssätze an, die die Überprüfung nicht bestehen. |
+| Austausch in Transaktionssätze trennen – Austausch bei Fehler anhalten|Analysiert jeden Transaktionssatz in einem Austausch in ein separates XML-Dokument, indem der geeignete Umschlag angewendet wird. Hält den gesamten Austausch an, wenn mindestens ein Transaktionssatz im Austausch die Überprüfung nicht besteht. | 
+| Austausch beibehalten – Transaktionssätze bei Fehler anhalten |Behält den Austausch bei und erstellt ein XML-Dokument für den gesamten Batchaustausch. Hält nur die Transaktionssätze an, die die Überprüfung nicht bestehen. Alle anderen Transaktionssätze werden verarbeitet. |
+| Austausch beibehalten – Austausch bei Fehler anhalten |Behält den Austausch bei und erstellt ein XML-Dokument für den gesamten Batchaustausch. Hält den gesamten Austausch an, wenn mindestens ein Transaktionssatz im Austausch die Überprüfung nicht besteht. |
 
-Ihre Vereinbarung ist bereit, eingehende Nachrichten zu verarbeiten, die den von Ihnen ausgewählten Einstellungen entsprechen.
+## <a name="configure-how-your-agreement-sends-messages"></a>Konfigurieren des Nachrichtenversands Ihrer Vereinbarung
 
-So konfigurieren Sie die Einstellungen, die Nachrichten verarbeiten, die Sie an Partner senden:  
+Sie können konfigurieren, wie Ihre Vereinbarung ausgehende Nachrichten identifizieren und behandeln soll, die Sie im Rahmen dieser Vereinbarung an Ihre Partner senden.
 
-1. Wählen Sie **Sendeeinstellungen** aus, um zu konfigurieren, wie Nachrichten, die über diese Vereinbarung gesendet werden, behandelt werden.  
+1.    Wählen Sie unter **Hinzufügen** die Option **Sendeeinstellungen** aus.
+Konfigurieren Sie die Eigenschaften auf der Grundlage Ihrer Vereinbarung mit dem Partner, der Nachrichten mit Ihnen austauscht. Die Eigenschaften werden in den Tabellen in diesem Abschnitt beschrieben.
 
-Das Steuerelement „Sendeeinstellungen“ ist in die folgenden Abschnitte unterteilt, einschließlich Bezeichnern, Bestätigung, Schemas, Umschläge, Zeichensätze und Trennzeichen, Kontrollnummern sowie Überprüfung. 
+    **Sendeeinstellungen** ist in die folgenden Abschnitte unterteilt: „Bezeichner“, „Bestätigung“, „Schemas“, „Umschläge“, „Zeichensätze und Trennzeichen“, „Kontrollnummern“ und „Überprüfungen“.
 
-Hier ist eine Ansicht dieser Steuerelemente. Treffen Sie Ihre Auswahl danach, wie Nachrichten verarbeitet werden sollen, die Sie über diese Vereinbarung an Partner senden:    
-![](./media/logic-apps-enterprise-integration-edifact/edifact-3.png)    
+    ![Sendeeinstellungen konfigurieren](./media/logic-apps-enterprise-integration-edifact/edifact-3.png)    
 
-1. Wählen Sie die Schaltfläche **OK** , um die Einstellungen zu speichern.  
+2. Klicken Sie abschließend auf **OK**, um die Einstellungen zu speichern.
+
+Ihre Vereinbarung kann nun ausgehende Nachrichten verarbeiten, die den ausgewählten Einstellungen entsprechen.
 
 ### <a name="identifiers"></a>Bezeichner
+
 | Eigenschaft | Beschreibung |
 | --- | --- |
 | UNB1.2 (Syntaxversion) |Wählen Sie einen Wert zwischen **1** und **4** aus. |
@@ -160,41 +199,55 @@ Hier ist eine Ansicht dieser Steuerelemente. Treffen Sie Ihre Auswahl danach, wi
 ### <a name="envelopes"></a>Umschläge
 | Eigenschaft | Beschreibung |
 | --- | --- |
-| UNB8 (Verarbeitungsprioritätscode) |Geben Sie einen alphabetischen Wert ein, der nicht länger als ein Zeichen ist. |
+| UNB8 (Verarbeitungsprioritätscode) |Geben Sie einen alphabetischen Wert mit einer Länge von maximal einem Zeichen ein. |
 | UNB10 (Kommunikationsvereinbarung ) |Geben Sie einen alphanumerischen Wert mit einer Länge von mindestens einem und maximal 40 Zeichen ein. |
 | UNB11 (Testindikator) |Aktivieren Sie dieses Kontrollkästchen, um anzugeben, dass es sich beim generierten Austausch um Testdaten handelt. |
 | UNA-Segment übernehmen (Zeichenfolgedienstanweisung) |Aktivieren Sie dieses Kontrollkästchen, um ein UNA-Segment für den zu sendenden Austausch zu generieren. |
-| UNG-Segmente übernehmen (Funktionsgruppenheader) |Aktivieren Sie dieses Kontrollkästchen, um Gruppierungssegmente im Funktionsgruppenheader in den Nachrichten zu erstellen, die an den Gastpartner gesendet werden. Die folgenden Werte werden verwendet, um die UNG-Segmente zu erstellen:</br></br>Geben Sie für **UNG1** einen alphanumerischen Wert mit einer Länge von mindestens einem und maximal sechs Zeichen ein.</br></br>Geben Sie für **UNG2.1** einen alphanumerischen Wert mit einer Länge von mindestens einem und maximal 35 Zeichen ein.</br></br>Geben Sie für **UNG2.2** einen alphanumerischen Wert mit maximal vier Zeichen ein.</br></br>Geben Sie für **UNG3.1** einen alphanumerischen Wert mit einer Länge von mindestens einem und maximal 35 Zeichen ein.</br></br>Geben Sie für **UNG3.2** einen alphanumerischen Wert mit maximal vier Zeichen ein.</br></br>Geben Sie für **UNG6** einen alphanumerischen Wert mit einer Länge von mindestens einem und maximal drei Zeichen ein.</br></br>Geben Sie für **UNG7.1** einen alphanumerischen Wert mit einer Länge von mindestens einem und maximal drei Zeichen ein.</br></br>Geben Sie für **UNG7.2** einen alphanumerischen Wert mit einer Länge von mindestens einem und maximal drei Zeichen ein.</br></br>Geben Sie für **UNG7.3** einen alphanumerischen Wert mit einer Länge von mindestens einem und maximal sechs Zeichen ein.</br></br>Geben Sie für **UNG8**einen alphanumerischen Wert mit einer Länge von mindestens einem und maximal 14 Zeichen ein. |
+| UNG-Segmente übernehmen (Funktionsgruppenheader) |Aktivieren Sie dieses Kontrollkästchen, um Gruppierungssegmente im Funktionsgruppenheader in den Nachrichten zu erstellen, die an den Gastpartner gesendet werden. Die folgenden Werte werden verwendet, um die UNG-Segmente zu erstellen: <p>Geben Sie für **UNG1** einen alphanumerischen Wert mit einer Länge von mindestens einem und maximal sechs Zeichen ein. <p>Geben Sie für **UNG2.1** einen alphanumerischen Wert mit einer Länge von mindestens einem und maximal 35 Zeichen ein. <p>Geben Sie für **UNG2.2** einen alphanumerischen Wert mit maximal vier Zeichen ein. <p>Geben Sie für **UNG3.1** einen alphanumerischen Wert mit einer Länge von mindestens einem und maximal 35 Zeichen ein. <p>Geben Sie für **UNG3.2** einen alphanumerischen Wert mit maximal vier Zeichen ein. <p>Geben Sie für **UNG6** einen alphanumerischen Wert mit einer Länge von mindestens einem und maximal drei Zeichen ein. <p>Geben Sie für **UNG7.1** einen alphanumerischen Wert mit einer Länge von mindestens einem und maximal drei Zeichen ein. <p>Geben Sie für **UNG7.2** einen alphanumerischen Wert mit einer Länge von mindestens einem und maximal drei Zeichen ein. <p>Geben Sie für **UNG7.3** einen alphanumerischen Wert mit einer Länge von mindestens einem und maximal sechs Zeichen ein. <p>Geben Sie für **UNG8**einen alphanumerischen Wert mit einer Länge von mindestens einem und maximal 14 Zeichen ein. |
 
 ### <a name="character-sets-and-separators"></a>Zeichensätze und Trennzeichen
+
 Anders als beim Zeichensatz können Sie für jeden Nachrichtentyp einen anderen Satz zu verwendender Trennzeichen eingeben. Wenn ein Zeichensatz nicht für ein bestimmtes Nachrichtenschema angegeben ist, wird der Standardzeichensatz verwendet.
 
 | Eigenschaft | Beschreibung |
 | --- | --- |
 | UNB1.1 (Systembezeichner) |Wählen Sie den EDIFACT-Zeichensatz aus, der auf den ausgehenden Austauschvorgang angewendet werden soll. |
-| SCHEMA |Wählen Sie in der Dropdownliste ein Schema aus. Wenn eine Zeile abgeschlossen ist, wird eine neue Zeile hinzugefügt. Wählen Sie die zu verwendenden Trennzeichen für das ausgewählte Schema:</br></br>**Komponentenelementtrennzeichen** – Geben Sie ein einzelnes Zeichen zum Trennen zusammengesetzter Datenelemente an.</br></br>**Datenelementtrennzeichen** – Geben Sie ein einzelnes Zeichen zum Trennen einfacher Datenelemente in zusammengesetzten Datenelementen an.</br></br></br></br>**Ersetzungszeichen** – Wählen Sie dieses Kontrollkästchen, wenn die Nutzlastdaten Zeichen enthalten, die auch als Daten-, Segment- oder Komponententrennzeichen verwendet werden. Sie können anschließend ein Ersatzzeichen eingeben. Beim Generieren der ausgehenden EDIFACT-Nachricht werden alle Instanzen von Trennzeichen in den Nutzlastdaten durch das angegebene Zeichen ersetzt.</br></br>**Segmentabschlusszeichen** – Geben Sie ein einzelnes Zeichen ein, um das Ende eines EDI-Segments anzuzeigen.</br></br>**Suffix** – Wählen Sie das Zeichen, das mit dem Segmentbezeichner verwendet wird. Wenn Sie ein Suffix angeben, kann das Segmentabschlusszeichen-Datenelement leer sein. Wenn das Segmentabschlusszeichen leer gelassen wird, müssen Sie ein Suffix angeben. |
+| SCHEMA |Wählen Sie in der Dropdownliste ein Schema aus. Nach Abschluss der einzelnen Zeilen wird jeweils automatisch eine neue Zeile hinzugefügt. Wählen Sie für das ausgewählte Schema den gewünschten Trennzeichensatz aus. Orientieren Sie sich dabei an den folgenden Trennzeichenbeschreibungen. |
+| Eingabetyp |Wählen Sie in der Dropdownliste einen Eingabetyp aus. |
+| Komponententrennzeichen |Geben Sie ein einzelnes Zeichen zum Trennen zusammengesetzter Datenelemente ein. |
+| Datenelementtrennzeichen |Geben Sie ein einzelnes Zeichen zum Trennen einfacher Datenelemente in zusammengesetzten Datenelementen ein. |
+| Segmentabschlusszeichen |Geben Sie ein einzelnes Zeichen ein, um das Ende eines EDI-Segments anzugeben. |
+| Suffix |Wählen Sie das Zeichen, das mit dem Segmentbezeichner verwendet wird. Wenn Sie ein Suffix angeben, kann das Segmentabschlusszeichen-Datenelement leer sein. Wenn das Segmentabschlusszeichen leer gelassen wird, müssen Sie ein Suffix angeben. |
 
 ### <a name="control-numbers"></a>Kontrollnummern
 | Eigenschaft | Beschreibung |
 | --- | --- |
-| UNB5 (Austauschkontrollnummer) |Geben Sie ein Präfix, einen Bereich mit Werten für die Austauschkontrollnummer und ein Suffix ein. Diese Werte werden verwendet, um einen ausgehenden Austausch zu generieren. Das Präfix und das Suffix sind optional. Die Kontrollnummer ist erforderlich. Die Kontrollnummer wird für jede neue Nachricht um den Wert&1; erhöht. Das Präfix und das Suffix bleibt jeweils gleich. |
-| UNG5 (Gruppenkontrollnummer) |Geben Sie ein Präfix, einen Bereich mit Werten für die Austauschkontrollnummer und ein Suffix ein. Diese Werte werden verwendet, um die Gruppenkontrollnummer zu generieren. Das Präfix und das Suffix sind optional. Die Kontrollnummer ist erforderlich. Die Kontrollnummer wird für jede neue Nachricht um den Wert&1; erhöht, bis der Maximalwert erreicht ist. Das Präfix und das Suffix bleiben gleich. |
-| UNH1 (Verweisnummer des Nachrichtenheaders) |Geben Sie ein Präfix, einen Bereich mit Werten für die Austauschkontrollnummer und ein Suffix ein. Diese Werte werden verwendet, um die Verweisnummer des Nachrichtenheaders zu generieren. Das Präfix und das Suffix sind optional. Die Verweisnummer ist erforderlich. Die Verweisnummer wird für jede neue Nachricht um den Wert&1; erhöht. Das Präfix und das Suffix bleibt jeweils gleich. |
+| UNB5 (Austauschkontrollnummer) |Geben Sie ein Präfix, einen Bereich mit Werten für die Austauschkontrollnummer und ein Suffix ein. Diese Werte werden verwendet, um einen ausgehenden Austausch zu generieren. Präfix und Suffix sind optional. Die Kontrollnummer ist erforderlich. Die Kontrollnummer wird für jede neue Nachricht um den Wert&1; erhöht. Das Präfix und das Suffix bleibt jeweils gleich. |
+| UNG5 (Gruppenkontrollnummer) |Geben Sie ein Präfix, einen Bereich mit Werten für die Austauschkontrollnummer und ein Suffix ein. Diese Werte werden verwendet, um die Gruppenkontrollnummer zu generieren. Präfix und Suffix sind optional. Die Kontrollnummer ist erforderlich. Die Kontrollnummer wird für jede neue Nachricht um den Wert&1; erhöht, bis der Maximalwert erreicht ist. Das Präfix und das Suffix bleiben gleich. |
+| UNH1 (Verweisnummer des Nachrichtenheaders) |Geben Sie ein Präfix, einen Bereich mit Werten für die Austauschkontrollnummer und ein Suffix ein. Diese Werte werden verwendet, um die Verweisnummer des Nachrichtenheaders zu generieren. Präfix und Suffix sind optional. Die Verweisnummer ist erforderlich. Die Verweisnummer wird für jede neue Nachricht um den Wert&1; erhöht. Das Präfix und das Suffix bleibt jeweils gleich. |
 
 ### <a name="validations"></a>Überprüfungen
+
+Nach Abschluss der einzelnen Überprüfungszeilen wird jeweils automatisch eine weitere hinzugefügt. Wenn Sie keine Regeln angeben, verwendet die Überprüfung die Standardzeile.
+
 | Eigenschaft | Beschreibung |
 | --- | --- |
-| Nachrichtentyp |Durch Auswahl dieser Option wird die Überprüfung auf dem Austauschempfänger aktiviert. Diese Überprüfung führt die EDI-Überprüfung für Transaktionssatz-Datenelemente durch, wobei Datentypen, Längeneinschränkungen und leere Datenelemente sowie nachfolgende Trennzeichen überprüft werden. |
-| EDI-Überprüfung |Aktivieren Sie dieses Kontrollkästchen, um eine EDI-Überprüfung für Datentypen gemäß den EDI-Eigenschaften Schema, Längeneinschränkungen, leere Datenelemente und nachgestellte Trennzeichen durchzuführen. |
-| Erweiterte Überprüfung |Diese Option ermöglicht die erweiterte Überprüfung von Austauschvorgängen, die vom Austauschabsender empfangen wurden. Dazu gehören zusätzlich zur Überprüfung des XSD-Datentyps die Überprüfung von Feldlänge, Optionalität und Wiederholungsanzahl. Sie können die Erweiterungsüberprüfung aktivieren, ohne die EDI-Überprüfung zu aktivieren, und umgekehrt. |
-| Führende/nachgestellte Nullen zulassen |Diese Option gibt an, dass ein von der Partei empfangener EDI-Austausch die Überprüfung auch dann besteht, wenn ein Datenelement in einem EDI-Austausch aufgrund nachfolgender Leerzeichen nicht der Längenanforderung entspricht, jedoch nach Entfernen der Leerzeichen der Längenanforderung entspricht. |
-| Führende/nachgestellte Nullen abschneiden |Wenn Sie diese Option aktivieren, werden die führenden und nachgestellten Nullen abgeschnitten. |
-| Nachfolgendes Trennzeichen |Diese Option gibt an, dass ein von der Partei empfangener EDI-Austausch die Überprüfung auch dann besteht, wenn ein Datenelement in einem EDI-Austausch aufgrund führender (oder nachgestellter) Nullen oder Leerzeichen nicht der Längenanforderung entspricht (jedoch nach deren Entfernung).</br></br>Wählen Sie **Nicht zulässig** , wenn Sie keine nachgestellten Trennzeichen in einem Austauschvorgang zulassen möchten, die vom Austauschabsender empfangen wurden. Wenn der Austauschvorgang nachgestellte Trennzeichen enthält, wird er als ungültig deklariert.</br></br>Wählen Sie **Optional** , um Austauschvorgänge mit oder ohne nachgestellte Trennzeichen zu akzeptieren.</br></br>Wählen Sie **Erforderlich** , wenn der empfangene Austauschvorgang zwingend nachgestellte Trennzeichen enthalten muss. |
+| Nachrichtentyp |Wählen Sie den EDI-Nachrichtentyp aus. |
+| EDI-Überprüfung |Die EDI-Überprüfung erfolgt für Datentypen gemäß den EDI-Eigenschaften des Schemas, Längenbeschränkungen, leeren Datenelementen und nachfolgenden Trennzeichen. |
+| Erweiterte Überprüfung |Wenn der Datentyp nicht EDI ist, werden die Datenelementanforderung sowie zulässige Wiederholung, Enumerationen und Datenelementlänge (Min./Max.) überprüft. |
+| Führende/nachfolgende Nullen zulassen |Behält alle zusätzlichen führenden oder nachfolgenden Nullen und Leerzeichen bei. Diese Zeichen werden nicht entfernt. |
+| Führende/nachgestellte Nullen abschneiden |Entfernt führende oder nachfolgende Nullen. |
+| Richtlinie für nachgestellte Trennzeichen |Generiert nachfolgende Trennzeichen. <p>Wählen Sie **Nicht zulässig** aus, wenn der gesendete Austauschvorgang keine nachfolgenden Trennzeichen enthalten darf. Wenn der Austauschvorgang nachfolgende Trennzeichen enthält, wird er als ungültig deklariert. <p>Wählen Sie **Optional** aus, um Austauschvorgänge mit und ohne nachgestellte Trennzeichen zu senden. <p>Wählen Sie **Erforderlich** aus, wenn der gesendete Austauschvorgang nachfolgende Trennzeichen enthalten muss. |
 
-Gehen Sie auf dem geöffneten Blatt nach der Auswahl von **OK** wie folgt vor:  
+## <a name="find-your-created-agreement"></a>Suchen der erstellten Vereinbarung
 
-1. Wählen Sie auf dem Blatt „Integrationskonto“ die Kachel **Vereinbarungen** aus, auf dem die neu hinzugefügte Vereinbarung aufgeführt ist.  
-   ![](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
+1.    Wählen Sie nach dem Festlegen der Vereinbarungseigenschaften auf dem Blatt **Hinzufügen** die Option **OK** aus, um die Erstellung Ihrer Vereinbarung abzuschließen und zum Blatt Ihres Integrationskontos zurückzukehren.
+
+    Die neu hinzugefügte Vereinbarung ist nun in der Liste **Vereinbarungen** enthalten.
+
+2.    Sie können Ihre Vereinbarungen auch in der Integrationskontoübersicht anzeigen. Wählen Sie auf dem Blatt Ihres Integrationskontos die Option **Übersicht** und anschließend die Kachel **Vereinbarungen** aus. 
+
+    ![Kachel „Vereinbarungen“ auswählen, um alle Vereinbarungen anzuzeigen](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
 
 ## <a name="learn-more"></a>Weitere Informationen
 * [Weitere Informationen zum Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack")  

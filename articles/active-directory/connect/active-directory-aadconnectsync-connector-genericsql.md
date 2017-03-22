@@ -12,12 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 03/10/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: ab8c601d862868018fdffb4cd49e8b26acb878c9
-ms.openlocfilehash: da12e642dc4d41fc74fe7b0f3722090da7818405
-ms.lasthandoff: 02/06/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 7185ab62ee0e4383a7128fe731bd68da0ae87e66
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -145,10 +145,25 @@ Auf dieser Seite wird für alle Referenzattribute konfiguriert, auf welche Parti
 
 Bei Verwendung von **DN is anchor**(DN ist Anker) muss der gleiche Objekttyp verwendet werden, der auch den Ausgangspunkt des Verweises darstellt. Sie können nicht auf einen anderen Objekttyp verweisen.
 
+>[!NOTE]
+Seit dem Update vom März 2017 steht nun eine Option für „*“ zur Verfügung. Bei Auswahl dieser Option werden alle möglichen Mitgliedstypen importiert.
+
+![globalparameters3](./media/active-directory-aadconnectsync-connector-genericsql/any-option.png)
+
+
+Nach dem Import wird etwas Ähnliches wie in der folgenden Abbildung angezeigt:
+
+  ![globalparameters3](./media/active-directory-aadconnectsync-connector-genericsql/after-import.png)
+
+
+
 ### <a name="global-parameters"></a>Globale Parameter
 Auf der Seite für globale Parameter können Sie den Deltaimport, das Datums-/Uhrzeitformat sowie die Kennwortmethode konfigurieren.
 
 ![globalparameters1](./media/active-directory-aadconnectsync-connector-genericsql/globalparameters1.png)
+
+>[!IMPORTANT]
+ „*“ (**jede Option**) kann nicht für Export- oder Löschvorgänge verwendet werden.
 
 Der generische SQL-Connector unterstützt folgende Methoden für den Deltaimport:
 

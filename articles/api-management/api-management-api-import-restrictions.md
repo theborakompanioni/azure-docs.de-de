@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: apipm
 translationtype: Human Translation
-ms.sourcegitcommit: fff43da07603be1e54cb9948dfd442491bb8f35a
-ms.openlocfilehash: 8103c85cf27c46acf2a46d87d73ecc7227723479
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: f941f87019a667deba5ec3e5cd054d04318689db
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -29,7 +30,7 @@ Wenn Ihnen beim Import von Open API-Dokumenten Fehler gemeldet werden, sollten S
 
 * **Hostname**: Das Attribut für den Hostnamen ist erforderlich.
 * **Basispfad**: Das Attribut für den Basispfad ist erforderlich.
-* **Schemas**: Ein Schema-Array ist erforderlich.
+* **Schemas**: Ein Schema-Array ist erforderlich. 
 
 ## <a name="wsdl"> </a>WSDL
 WSDL-Dateien werden zur Generierung von SOAP-Pass-Through-APIs verwendet oder dienen als Back-End einer SOAP-to-REST-API.
@@ -38,6 +39,7 @@ WSDL-Dateien werden zur Generierung von SOAP-Pass-Through-APIs verwendet oder di
 * **Mehrteilige Nachrichten**: Werden derzeit nicht unterstützt.
 * **WCF wsHttpBinding**: Für SOAP-Dienste, die mit Windows Communication Foundation erstellt wurden, sollte „basicHttpBinding - wsHttpBinding“ verwendet werden.
 * **MTOM**: Dienste, die MTOM verwenden, funktionieren <em>möglicherweise</em>. Eine offizielle Unterstützung wird derzeit nicht geboten.
+* Rekursiv definierte (also beispielsweise auf ein eigenes Array verweisende) **Rekursionstypen** werden nicht unterstützt.
 
 ## <a name="wadl"> </a>WADL
 Derzeit sind keine Probleme beim Import im Format WADL bekannt.
@@ -79,9 +81,4 @@ Derzeit sind keine Probleme beim Import im Format WADL bekannt.
 [How to add operations to an API]: api-management-howto-add-operations.md
 [How to create and publish a product]: api-management-howto-add-products.md
 [How to cache operation results in Azure API Management]: api-management-howto-cache.md
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

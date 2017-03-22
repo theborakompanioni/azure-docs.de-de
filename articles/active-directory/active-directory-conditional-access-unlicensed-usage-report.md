@@ -16,6 +16,7 @@ ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 3400d00112b4b66cceef602dba5cb8666e49e0e4
+ms.lasthandoff: 12/28/2016
 
 
 ---
@@ -44,10 +45,5 @@ Dies gilt für MFA-/Standortrichtlinien sowie Geräterichtlinien, die Intune ver
 ## <a name="see-also"></a>Weitere Informationen
 * [Verwenden von bedingtem Zugriff mit Office 365 und anderen verbundenen Azure Active Directory-Apps](active-directory-conditional-access.md)
 * [Erste Schritte mit bedingtem Zugriff auf Azure AD](active-directory-conditional-access-azuread-connected-apps.md) 
-
-
-
-
-<!--HONumber=Dec16_HO4-->
 
 

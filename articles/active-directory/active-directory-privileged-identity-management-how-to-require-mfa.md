@@ -17,6 +17,7 @@ ms.author: billmath
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: d36fb97f22802b040d2d527ccfd7a48327fe0cb4
+ms.lasthandoff: 12/28/2016
 
 
 ---
@@ -47,10 +48,5 @@ Wenn sich Benutzer lokal authentifizieren, können Sie alternativ festlegen, das
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>Nächste Schritte
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
-
-
-
-
-<!--HONumber=Dec16_HO4-->
 
 

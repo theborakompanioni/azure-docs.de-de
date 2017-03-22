@@ -16,9 +16,9 @@ ms.date: 02/27/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
-ms.openlocfilehash: f812ff8fb2b32f89e24d640e0eae8f2da9858a18
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: 97ae17912eaa7508e3ae1315800408664a340837
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -45,7 +45,7 @@ Die Lösung kann mit Microsoft System Operations Manager 2012 R2 und 2012 SP1 ve
 
 Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der Lösung.
 
- - Bevor Sie eine Assessment-Lösung in OMS verwenden können, müssen Sie die Lösung installieren. Weitere Informationen zum Installieren von Lösungen finden Sie unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md).
+ - Bevor Sie eine Assessment-Lösung in OMS verwenden können, müssen Sie die Lösung installieren. Installieren Sie die Projektmappe aus dem [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SCOMAssessmentOMS?tab=Overview) oder anhand der Anweisungen unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md).
 
  - Nach dem Hinzufügen der Lösung zum Arbeitsbereich zeigt die Kachel der System Center Operations Manager-Bewertung auf dem Dashboard die Nachricht an, dass zusätzliche Konfigurationsschritte erforderlich sind. Klicken Sie auf die Kachel, und führen Sie die auf der Seite erwähnten Konfigurationsschritte aus.
 

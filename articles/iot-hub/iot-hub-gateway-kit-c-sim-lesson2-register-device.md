@@ -13,11 +13,12 @@ ms.devlang: c
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/07/2016
+ms.date: 3/21/2017
 ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
 ms.openlocfilehash: 759085dcb4993d38f79cb19efe58e1a968ddb682
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -106,8 +107,3 @@ Sie haben eine IoT Hub-Instanz erstellt und Ihr logisches Gerät mit einer Gerä
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Konfigurieren und Ausführen der Cloudupload-Beispielanwendung für das simulierte Gerät](iot-hub-gateway-kit-c-sim-lesson3-configure-simulated-device-app.md)
-
-
-<!--HONumber=Jan17_HO4-->
-
-

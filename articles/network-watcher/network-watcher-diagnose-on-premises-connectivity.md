@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: c232e334e60f9205076ba09d9f561c9fb1b42a4c
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: c7576ce3e802e66ebea6ba83927609ed81fe0869
+ms.lasthandoff: 03/09/2017
 
 ---
 
@@ -59,7 +59,7 @@ Diese Probleme sind schwierig zu beheben, und die eigentlichen Ursachen sind hä
 
 ## <a name="troubleshooting-using-azure-network-watcher"></a>Beheben von Problemen mithilfe von Azure Network Watcher
 
-Um eine Diagnose für die Verbindung durchzuführen, stellen Sie eine Verbindung mit Azure PowerShell her und initiieren das Cmdlet `Start-AzureRmNetworkWatcherResourceTroubleshooting`. Einzelheiten zur Verwendung dieses Cmdlets finden Sie unter „Beheben von Problemen bei Virtual Network-Gateways und -Verbindungen – PowerShell“. Dies Ausführung dieses Cmdlets kann einige Minuten dauern. 
+Um eine Diagnose für die Verbindung durchzuführen, stellen Sie eine Verbindung mit Azure PowerShell her und initiieren das Cmdlet `Start-AzureRmNetworkWatcherResourceTroubleshooting`. Einzelheiten zur Verwendung dieses Cmdlets finden Sie unter [Beheben von Problemen bei Virtual Network-Gateways und -Verbindungen – PowerShell](network-watcher-troubleshoot-manage-powershell.md). Dies Ausführung dieses Cmdlets kann einige Minuten dauern. 
 
 Wenn die Ausführung des Cmdlets abgeschlossen wurde, können Sie zu dem im Cmdlet angegebenen Speicherort navigieren, um ausführliche Informationen zu dem Problem und den Protokollen zu erhalten. Azure Network Watcher erstellt einen ZIP-Ordner, der die folgenden Protokolldateien enthält:
 
@@ -116,3 +116,4 @@ Das Azure Network Watcher-Feature zur Problembehandlung ermöglicht es Ihnen, Pr
 Erfahren Sie unter [Überwachen von VPN-Gateways mit der Problembehandlung von Azure Network Watcher](network-watcher-monitor-with-azure-automation.md), wie Sie die VPN Gateway-Konnektivität mit PowerShell und Azure Automation überprüfen.
 
 [1]: ./media/network-watcher-diagnose-on-premises-connectivity/figure1.png
+
