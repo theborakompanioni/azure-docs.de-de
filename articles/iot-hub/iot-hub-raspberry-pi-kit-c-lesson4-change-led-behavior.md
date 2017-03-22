@@ -13,11 +13,12 @@ ms.devlang: c
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2016
+ms.date: 3/21/2017
 ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
 ms.openlocfilehash: c1c999e40ecc92a1018067822be66f14b61a8c36
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -104,9 +105,4 @@ Glückwunsch! Sie haben die Nachrichten, die von IoT Hub an den Pi gesendet werd
 
 ### <a name="summary"></a>Zusammenfassung
 In diesem optionalen Abschnitt wird gezeigt, wie Nachrichten angepasst werden, damit die Beispielanwendung das Ein- und Aus-Verhalten der LED auf andere Weise steuern kann.
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

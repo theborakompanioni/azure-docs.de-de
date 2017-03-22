@@ -17,6 +17,7 @@ ms.author: swkrish
 translationtype: Human Translation
 ms.sourcegitcommit: 4b13c040a15bef2f04d2cd2126e2270d061898bd
 ms.openlocfilehash: 4226075affd1ae03c7bd258b244718f7bb72f127
+ms.lasthandoff: 12/28/2016
 
 
 ---
@@ -57,10 +58,5 @@ Wenn sich der Kunde (mit einem lokalen Konto oder dem Konto eines sozialen Netzw
 
 ## <a name="multi-factor-authentication-on-other-policies"></a>Multi-Factor Authentication in anderen Richtlinien
 Wie für Registrierungs- und Anmeldungsrichtlinien oben beschrieben, ist es auch möglich, die mehrstufige Authentifizierung für Registrierungs- und Anmeldungsrichtlinien sowie für Richtlinien zur Kennwortrücksetzung zu aktivieren. Dies ist bald auch für Richtlinien zur Profilbearbeitung möglich.
-
-
-
-
-<!--HONumber=Dec16_HO4-->
 
 

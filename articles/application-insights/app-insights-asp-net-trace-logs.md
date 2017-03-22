@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 07/21/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
-ms.openlocfilehash: f2de2b3f4deb702f6cdc4e36b988ef6ea2697787
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: f803b44172b068b7ba65047c769421e39445ce10
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -137,9 +138,9 @@ Verwenden Sie die [Java-Protokolladapter](app-insights-java-trace-logs.md).
 ### <a name="no-log-adapter-option-in-the-configuration-tool"></a>Keine Option für die Protokolladapter im Konfigurationstool
 * Sie müssen zunächst das Protokollierungsframework installieren.
 * Wenn Sie „System.Diagnostics.Trace“ verwenden, müssen Sie die [Konfiguration in `web.config` vornehmen](https://msdn.microsoft.com/library/system.diagnostics.eventlogtracelistener.aspx).
-* Haben Sie die neueste Version der Application Insights-Tools? Wählen Sie in Visual Studio im Menü **Extras** die Option **Erweiterungen und Updates** aus, und öffnen Sie die Registerkarte **Updates**. Wenn die Application Insights-Tools hier aufgeführt werden, klicken Sie darauf, um sie zu aktualisieren.
+* Haben Sie die neueste Version von Application Insights? Wählen Sie in Visual Studio im Menü **Extras** die Option **Erweiterungen und Updates** aus, und öffnen Sie die Registerkarte **Updates**. Wenn die Developer Analytics-Tools hier aufgeführt werden, klicken Sie darauf, um sie zu aktualisieren.
 
-### <a name="a-nameemptykeyai-get-an-error-instrumentation-key-cannot-be-empty"></a><a name="emptykey"></a>Eine Fehlermeldung "Instrumentationsschlüssel darf nicht leer sein" wird angezeigt.
+### <a name="emptykey"></a>Eine Fehlermeldung "Instrumentationsschlüssel darf nicht leer sein" wird angezeigt.
 Anscheinend haben Sie das Protokollierungsadapter-Nuget-Paket installiert, ohne Application Insights zu installieren.
 
 Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf `ApplicationInsights.config`. Wählen Sie dann **Application Insights aktualisieren** aus. Ein Dialogfeld wird angezeigt, das Sie zur Anmeldung bei Azure und zum Erstellen einer Application Insights-Ressource oder dem Wiederverwenden einer vorhandenen Ressource einlädt. Damit sollte das Problem behoben sein.
@@ -147,13 +148,13 @@ Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf `Application
 ### <a name="i-can-see-traces-in-diagnostic-search-but-not-the-other-events"></a>Ablaufverfolgungen werden in der Diagnosesuche angezeigt, aber nicht die anderen Ereignisse.
 Manchmal kann es eine Weile dauern, bis alle Ereignisse und Anforderungen über die Pipeline abgerufen werden.
 
-### <a name="a-namelimitsahow-much-data-is-retained"></a><a name="limits"></a>Wie viele Daten werden beibehalten?
+### <a name="limits"></a>Wie viele Daten werden beibehalten?
 Bis zu 500 Ereignisse pro Sekunde für jede Anwendung. Ereignisse werden sieben Tage lang aufbewahrt.
 
 ### <a name="im-not-seeing-some-of-the-log-entries-that-i-expect"></a>Ich kann einige erwartete Protokolleinträge nicht finden.
 Wenn Ihre Anwendung eine große Menge von Daten sendet und Sie das Application Insights-SDK für ASP.NET Version 2.0.0-beta3 oder höher verwenden, wird möglicherweise die adaptive Stichprobenerstellung verwendet, bei der nur ein bestimmter Prozentsatz der Telemetriedaten übermittelt wird. [Erfahren Sie mehr über das Erstellen von Stichproben.](app-insights-sampling.md)
 
-## <a name="a-nameaddanext-steps"></a><a name="add"></a>Nächste Schritte
+## <a name="add"></a>Nächste Schritte
 * [Einrichten von Tests zu Verfügbarkeit und Reaktionsfähigkeit][availability]
 * [Behandeln von Problemen][qna]
 
@@ -165,9 +166,4 @@ Wenn Ihre Anwendung eine große Menge von Daten sendet und Sie das Application I
 [portal]: https://portal.azure.com/
 [qna]: app-insights-troubleshoot-faq.md
 [start]: app-insights-overview.md
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

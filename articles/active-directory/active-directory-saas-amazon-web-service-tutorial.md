@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2016
+ms.date: 02/27/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: bc60476253fd3e646fbd08cd6749e06fb403959c
-ms.openlocfilehash: 7ce638ae0cdca9f6114acae458a2cdea38a7793f
+ms.sourcegitcommit: 3152a1306f2c3eeb42dd3b21cff62b696ed01e5d
+ms.openlocfilehash: 391943c6057081b48594d74898d798e5365509d3
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -308,6 +309,11 @@ In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens 
 ### <a name="creating-a-amazon-web-services-aws-test-user"></a>Erstellen eines Testbenutzers für Amazon Web Services (AWS)
 Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in Amazon Web Services (AWS).
 
+> [!NOTE]
+> AWS unterstützt die Just-in-Time-Benutzerbereitstellung mit SAML. Dies ist standardmäßig aktiviert, sodass Sie keine Benutzer in AWS bereitstellen müssen.
+> 
+> 
+
 ### <a name="to-create-a-user-called-britta-simon-in-amazon-web-services-aws-perform-the-following-steps"></a>Um einen Benutzer namens Britta Simon in Amazon Web Services (AWS) zu erstellen, führen Sie die folgenden Schritte aus:
 1. Melden Sie sich bei der Unternehmenswebsite von **Amazon Web Services (AWS)** als Administrator an.
 
@@ -421,10 +427,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Amazon Web Services (AWS)“ klick
 
 
 
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

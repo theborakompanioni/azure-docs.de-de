@@ -1,5 +1,5 @@
 ---
-title: Was ist Microsoft Azure Active Directory-Lizenzierung? | Microsoft Docs
+title: Lizenzieren von Azure Active Directory-Benutzern im klassischen Azure-Portal | Microsoft-Dokumentation
 description: "Beschreibung der Microsoft Azure Active Directory-Lizenzierung, der Funktionsweise, der ersten Schritte und der bewährten Methoden, einschließlich Office 365, Microsoft Intune und Azure Active Directory Premium und Basic"
 services: active-directory
 keywords: "Azure AD-Lizenzierung"
@@ -13,15 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/06/2017
+ms.date: 02/27/2017
 ms.author: curtand
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: ae4961611195c1574f5b94edbca74e1f182b4361
-ms.openlocfilehash: eb0b428f84dc16abd5cfee73dc8e4191698ebdd6
+ms.sourcegitcommit: f8b63e5831897d3a45298b0415bb2d6d44ab0de1
+ms.openlocfilehash: 7df8805139b6e3cc23041a8201b496fb7fce8063
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="what-is-microsoft-azure-active-directory-licensing"></a>Was ist Microsoft Azure Active Directory-Lizenzierung?
+# <a name="what-is-microsoft-azure-active-directory-licensing-in-the-azure-classic-portal"></a>Was ist die Microsoft Azure Active Directory-Lizenzierung im klassischen Azure-Portal?
 
 > [!div class="op_single_selector"]
 > * [Azure-Portal](active-directory-licensing-get-started-azure-portal.md)
@@ -158,9 +160,4 @@ Jetzt sind Sie möglicherweise bereit, einige Funktionen von Azure AD Premium zu
 * [Gruppenzuweisung zu Anwendungen](active-directory-manage-groups.md)
 * [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)
 * [Direkter Erwerb von Azure AD Premium-Lizenzen](http://aka.ms/buyaadp)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

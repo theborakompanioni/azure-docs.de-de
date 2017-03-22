@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/27/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 59be15f2d17bbcbc4db6dd9d291cb1ea5991db2e
-ms.openlocfilehash: a753ac16e3329c85656682314824eb14ad8a4e52
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 86ba122b406d8a3d633184982fbacab078d7c0d1
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -25,7 +25,7 @@ ms.lasthandoff: 03/01/2017
 
 Wahrscheinlich haben Sie diese Seite aufgerufen, weil Sie leider bei der Nutzung des MyApps-Portals auf ein Problem gestoßen sind. In manchen Fällen ist es erforderlich, dass Sie sich an den Helpdesk oder Ihren Administrator wenden, um ein Problem zu beheben, doch in diesem Thema zeigen wir Ihnen Schritte zu häufig gestellten Fragen, die Sie zunächst selbst ausprobieren können. 
 
-Wenn Sie Hilfe im Zusammenhang mit der Kennwortverwaltung suchen, könnten Sie [hier](active-directory-passwords-update-your-own-password.md) eine Antwort finden.
+Wenn Sie Hilfe im Zusammenhang mit der Kennwortverwaltung suchen, könnten Sie [hier](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password) eine Antwort finden.
   
 
 ## <a name="what-is-the-myapps-portal"></a>Was ist das MyApps-Portal?
@@ -49,7 +49,7 @@ MyApps ist ein Webportal, über das Sie folgende Aufgaben ausführen können:
 3.    Geben Sie Ihr altes Kennwort ein, geben Sie Ihr neues Kennwort ein, und bestätigen Sie das neue Kennwort.
 4.    Klicken Sie auf **Senden**.
 
-Ausführlichere Informationen finden Sie unter [Aktualisieren Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md).
+Ausführlichere Informationen finden Sie unter [Aktualisieren Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password).
 
 
 ## <a name="how-do-i-setup-password-reset"></a>Wie richte ich die Kennwortzurücksetzung ein?

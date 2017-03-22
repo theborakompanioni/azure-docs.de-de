@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/14/2016
+ms.date: 03/09/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 3d24c0c29da8c97e5fcff524dc88746982fda77c
-ms.openlocfilehash: a34a30a301e213ad227c21196a0b6299dbc4d357
-ms.lasthandoff: 12/15/2016
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 900f0b4c38f08d1e3017954db01cf32362765578
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -34,7 +34,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 * Ein aktives Azure-Abonnement. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion][lnk_free_trial].
 * [Node.js][lnk-node]-Version 0.12.x oder höher zum Erstellen eines simulierten Geräts.
-* Microsoft Visual Studio 2015 zum Ändern Sie des Back-Ends der vorkonfigurierten Lösung mit Ihren neuen Regeln.
+* Visual Studio 2015 oder Visual Studio 2017 zum Ändern des Back-Ends der vorkonfigurierten Lösung mit Ihren neuen Regeln
 
 [!INCLUDE [iot-suite-provision-remote-monitoring](../../includes/iot-suite-provision-remote-monitoring.md)]
 

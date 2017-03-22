@@ -17,6 +17,7 @@ ms.author: alkohli
 translationtype: Human Translation
 ms.sourcegitcommit: 30f56224a00957127497b6a05a809453294ea94e
 ms.openlocfilehash: ef477af0cfc24233ae9460d6bf020d81d68c87e5
+ms.lasthandoff: 02/09/2017
 
 ---
 
@@ -79,7 +80,7 @@ Nein. Sie können StorSimple Virtual Array im CSP über das Azure-Portal verwalt
 ### <a name="i-have-provisioned-a-standalone-storsimple-subscription-for-my-customer-do-i-have-to-use-the-azure-portal-to-administer-my-device"></a>Ich habe für meinen Kunden ein eigenständiges StorSimple-Abonnement bereitgestellt. Muss ich mein Gerät über das Azure-Portal verwalten? 
 Ja. 
 
-### <a name="is-the-microsoft-field-compensated-as-a-result-of-sales-of-storsimple-through-csp"></a>Erhält der Außendienst von Microsoft eine Vergütung für StorSimple-Verkäufe über CSP?
+### <a name="is-the-microsoft-field-compensated-as-a-result-of-sales-of-storsimple-through-csp"></a>Erhält das Microsoft-Kontoteam eine Vergütung für StorSimple-Verkäufe über CSP?
 Ja. Der Vertriebsleiter des Partners und das Kundenkontoteam für den Endkunden erhalten eine Vergütung für CSP-Verkäufe. Von den Partnern wird erwartet, dass sie beim Verkauf ihrer differenzierten Vorteile und Angebote eine Führungsrolle einnehmen.
 
 ## <a name="support-for-storsimple-and-csp"></a>Support für StorSimple und CSP
@@ -98,9 +99,4 @@ Weitere Informationen zu StorSimple für CSP finden Sie unter den folgenden Link
 
 ## <a name="next-steps"></a>Nächste Schritte
 Wenn Sie zur Bereitstellung Ihrer StorSimple-Lösung bereit sind, lesen Sie unter [Deploy StorSimple Virtual Array for Cloud Solution Provider Program](storsimple-partner-csp-deploy.md) (Bereitstellen von StorSimple Virtual Array für das Programm für Cloudlösungsanbieter) weiter.
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

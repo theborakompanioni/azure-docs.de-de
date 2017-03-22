@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 01/04/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 0644efd8753c33c0404b45f567759c0be666bcef
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: efd7aab21a9899ed0f56ffeeda362a61d69ffdc9
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -329,7 +329,7 @@ await registryManager.AddDeviceAsync(device);
 Das [Azure IoT-Geräte-SDK für .NET][lnk-client-sdk] (mindestens Version 1.0.11) unterstützt die Verwendung von X.509-Zertifikaten.
 
 ### <a name="c-support"></a>C\#-Unterstützung
-Die Klasse **DeviceAuthenticationWithX509Certificate** unterstützt die Erstellung von  **DeviceClient**-Instanzen mithilfe eines X.509-Zertifikats.
+Die Klasse **DeviceAuthenticationWithX509Certificate** unterstützt die Erstellung von  **DeviceClient**-Instanzen mithilfe eines X.509-Zertifikats. Das X.509-Zertifikat muss im PFX-Format (auch als „PKCS #12“ bezeichnet) vorliegen, das den privaten Schlüssel enthält. 
 
 Hier sehen Sie ein Beispiel für einen Codeausschnitt:
 

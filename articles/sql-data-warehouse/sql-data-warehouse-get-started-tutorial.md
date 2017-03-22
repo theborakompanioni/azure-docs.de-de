@@ -127,7 +127,7 @@ In diesem Schritt erstellen Sie ein Benutzerkonto für den Zugriff auf Ihr Data 
 
 - SQL Data Warehouse verwendet vordefinierte Datenbankrollen (so genannte Ressourcenklassen), um Benutzern unterschiedliche Mengen an Arbeitsspeicher, CPU-Ressourcen und Parallelitätsslots zuzuordnen. Jeder Benutzer kann einer kleinen, mittleren, großen oder sehr großen Ressourcenklasse angehören. Die Ressourcenklasse des Benutzers bestimmt die Ressourcen, die dem Benutzer für Abfragen und Ladevorgänge zur Verfügung stehen.
 
-- Für eine optimale Datenkomprimierung benötigt der Benutzer bei Ladevorgängen in der Regel eine große oder sehr große Ressourcenzuordnung. Weitere Informationen zu Ressourcenklassen finden Sie [hier](./sql-data-warehouse-develop-concurrency.md#resource-classes):
+- Für eine optimale Datenkomprimierung muss der Benutzer beim Laden unter Umständen eine große oder sehr große Ressourcenzuordnung verwenden. Weitere Informationen zu Ressourcenklassen finden Sie [hier](./sql-data-warehouse-develop-concurrency.md#resource-classes):
 
 ### <a name="create-an-account-that-can-control-a-database"></a>Erstellen eines Kontos zum Steuern einer Datenbank
 

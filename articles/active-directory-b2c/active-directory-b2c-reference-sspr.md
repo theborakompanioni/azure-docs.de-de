@@ -17,6 +17,7 @@ ms.author: swkrish
 translationtype: Human Translation
 ms.sourcegitcommit: 4b13c040a15bef2f04d2cd2126e2270d061898bd
 ms.openlocfilehash: 0508868e3b00c5771cc26038a3dd71fde6625a84
+ms.lasthandoff: 12/28/2016
 
 
 ---
@@ -45,10 +46,5 @@ Zum Testen verwenden Sie das Feature „Jetzt ausführen“ für eine beliebige 
 > Die Seiten der Self-Service-Kennwortrücksetzung können mithilfe des [Features für Unternehmensbranding](../active-directory/active-directory-add-company-branding.md)angepasst werden.
 > 
 > 
-
-
-
-
-<!--HONumber=Dec16_HO4-->
 
 

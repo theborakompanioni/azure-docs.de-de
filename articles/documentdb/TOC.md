@@ -4,6 +4,7 @@
 ## [Was ist DocumentDB bzw. die API für MongoDB?](documentdb-protocol-mongodb.md)
 ## [Wichtige Konzepte](documentdb-resources.md)
 ## [Globale Verteilung](documentdb-distribute-data-globally.md)
+## [Sicherheit](documentdb-nosql-database-security.md)
 ## [NoSQL-TCO-Analyse](https://aka.ms/documentdb-tco-paper)
 ## Szenarios
 ### [Gängige Anwendungsfälle](documentdb-use-cases.md)
@@ -19,7 +20,7 @@
 ### [C++-Konsolen-App](documentdb-cpp-get-started.md)
 ## Erstellen einer Web-App
 ### [.NET-Web-App](documentdb-dotnet-application.md)
-### [.NET-Web-App für MongoDB-APIs](documentdb-mongodb-application.md)
+### [.NET-Web-App für die MongoDB-API](documentdb-mongodb-application.md)
 ### [Node.js-Web-App](documentdb-nodejs-application.md)
 ### [Java-Web-App](documentdb-java-application.md)
 ### [Python Flask-Web-App](documentdb-python-application.md)
@@ -36,32 +37,33 @@
 ### [Kostengünstige Lese- und Schreibvorgänge](documentdb-key-value-store-cost.md)
 
 ## Verwalten
+### [Anforderungseinheiten](documentdb-request-units.md)
 ### [Importieren Ihrer Daten](documentdb-import-data.md)
 ### [Importieren in die API für MongoDB](documentdb-mongodb-migrate.md)
 ### [Herstellen einer Verbindung mit Ihrem MongoDB-Konto](documentdb-connect-mongodb-account.md)
 ### [Verwenden von MongoChef](documentdb-mongodb-mongochef.md)
 ### [Verwenden von Robomongo](documentdb-mongodb-robomongo.md)
 ### [Modellieren der Daten](documentdb-modeling-data.md)
-### [Verwenden von Geodaten](documentdb-geospatial.md)
-### [Entwickeln für mehrere Regionen](documentdb-developing-with-multiple-regions.md)
-### [Regionale Failover](documentdb-regional-failovers.md)
 ### [Festlegen einer Gültigkeitsdauer für den automatischen Ablauf von Daten](documentdb-time-to-live.md)
-### [Anpassen von Indizes](documentdb-indexing-policies.md)
-### [Sicherer Zugriff auf Daten](documentdb-secure-access-to-data.md)
 ### [Sichern und Wiederherstellen](documentdb-online-backup-and-restore.md)
+### [Regionale Failover](documentdb-regional-failovers.md)
+### Automation
+#### [Azure CLI 2.0](documentdb-automation-resource-manager-cli.md)
+#### [Azure CLI 1.0: Erstellen eines Kontos](documentdb-automation-resource-manager-cli-nodejs.md)
+#### [Azure CLI 1.0: Hinzufügen oder Entfernen von Regionen](documentdb-automation-region-management.md)
+#### [Azure PowerShell](documentdb-manage-account-with-powershell.md)
+### Sicherheit
+#### [Sicherer Zugriff auf Daten](documentdb-secure-access-to-data.md)
+#### [Firewallunterstützung](documentdb-firewall-support.md)
 ### [Ausmusterung von S1, S2, S3](documentdb-performance-levels.md)
-### [Anforderungseinheiten](documentdb-request-units.md)
-### [Azure CLI 2.0](documentdb-automation-resource-manager-cli.md)
-### Azure-Befehlszeilenschnittstelle 1.0
-#### [Erstellen eines Kontos](documentdb-automation-resource-manager-cli-nodejs.md)
-#### [Hinzufügen oder Entfernen von Regionen](documentdb-automation-region-management.md)
-### [Azure PowerShell](documentdb-manage-account-with-powershell.md)
-### [Firewallunterstützung](documentdb-firewall-support.md)
 
 ## Entwickeln
 ### [SQL query](documentdb-sql-query.md)
 ### [Gespeicherte Prozeduren, Trigger und UDFs](documentdb-programming.md)
+### [Anpassen von Indizes](documentdb-indexing-policies.md)
+### [Entwicklung für mehrere Regionen](documentdb-developing-with-multiple-regions.md)
 ### [Nachverfolgen von Änderungen mittels Änderungsfeed](documentdb-change-feed.md)
+### [Verwenden von Geodaten](documentdb-geospatial.md)
 ### [Leistungstests](documentdb-performance-testing.md)
 ### [Leistungstipps](documentdb-performance-tips.md)
 ### Bewährte Methoden

@@ -17,6 +17,7 @@ ms.author: swkrish
 translationtype: Human Translation
 ms.sourcegitcommit: 4b13c040a15bef2f04d2cd2126e2270d061898bd
 ms.openlocfilehash: a37992cd2bfe346fd171bde15b6180c56527289b
+ms.lasthandoff: 12/28/2016
 
 
 ---
@@ -64,10 +65,5 @@ Sobald Azure AD B2C die allgemeine Verfügbarkeit in den oben genannten Ländern
 
 ## <a name="availability-of-b2c-tenants"></a>Verfügbarkeit von B2C-Mandanten
 In den folgenden Ländern oder Regionen sind B2C-Mandanten derzeit nicht verfügbar: Afghanistan, Argentinien, Australien, Brasilien, Chile, Ecuador, Hongkong, Indien, Indonesien, Irak, Japan, Kolumbien, Malaysia, Neuseeland, Paraguay, Peru, Philippinen, Singapur, Sri Lanka, Südkorea, Taiwan, Thailand, Uruguay und Venezuela. Diese Länder sollen in Zukunft eingebunden werden.
-
-
-
-
-<!--HONumber=Dec16_HO4-->
 
 

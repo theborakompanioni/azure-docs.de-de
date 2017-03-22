@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 03/10/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: ab8c601d862868018fdffb4cd49e8b26acb878c9
-ms.openlocfilehash: da949459f734ea08527fe2380ab2a6a06e6976e7
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: aebe0b74c952045375e264bed88d33d936e34b92
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -146,6 +147,11 @@ Die Seite mit den globalen Parametern dient zum Konfigurieren der Zeitzone und d
 Der Parameter **Domino Server-Serverzeitzone** definiert den Standort Ihres Domino-Servers.
 
 Diese Konfigurationsoption wird für Vorgänge vom Typ **Deltaimport** benötigt, da der Synchronisierungsdienst so Veränderungen zwischen den letzten beiden Importen ermitteln kann.
+
+>[!Note]
+Seit dem Update vom März 2017 beinhaltet der Bildschirm mit den globalen Parametern die Option zum Löschen der E-Mail-Datenbank des Benutzers während der Löschung des Benutzers.
+
+![Löschen des Postfachs eines Benutzers](./media/active-directory-aadconnectsync-connector-domino/AdminP.png)
 
 #### <a name="import-settings-method"></a>Importeinstellungen, Methode
 Für **Vollständigen Import durchführen nach** stehen folgende Optionen zur Verfügung:
@@ -320,7 +326,7 @@ Die Ressourcen können genau wie andere Objekttypen in den Synchronisierungsdien
 ### <a name="mail-in-databases"></a>Mail-In-Datenbanken
 Eine Mail-In-Datenbank ist eine Datenbank für den Empfang von E-Mails. Diese Datenbank ist ein Lotus Domino-Postfach, das keinem bestimmten Lotus Domino-Benutzerkonto zugeordnet ist (d.h. es besitzt keine eigene ID-Datei und kein eigenes Kennwort). Einer Mail-In-Datenbank sind eine eindeutige Benutzer-ID (Kurzname) und eine eigene E-Mail-Adresse zugeordnet.
 
-Falls ein separates Postfach mit eigener E-Mail-Adresse benötigt wird, die von verschiedenen Benutzern gemeinsam genutzt werden kann (z. B. group@contoso.com),), wird eine Mail-In-Datenbank erstellt. Der Zugriff auf dieses Postfach wird mithilfe der entsprechenden Zugriffssteuerungsliste (Access Control List, ACL), gesteuert. Diese enthält die Namen der Notes-Benutzer, die zum Öffnen des Postfachs berechtigt sind.
+Falls ein separates Postfach mit eigener E-Mail-Adresse benötigt wird, die von verschiedenen Benutzern gemeinsam genutzt werden kann (z.B. „group@contoso.com“), wird eine Mail-In-Datenbank erstellt. Der Zugriff auf dieses Postfach wird mithilfe der entsprechenden Zugriffssteuerungsliste (Access Control List, ACL), gesteuert. Diese enthält die Namen der Notes-Benutzer, die zum Öffnen des Postfachs berechtigt sind.
 
 Eine Liste mit den erforderlichen Attributen finden Sie weiter unten in diesem Artikel im Abschnitt [Erforderliche Attribute](#mandatory-attributes) .
 
@@ -489,9 +495,4 @@ Das Schema kann in Domino auf unterschiedliche Arten erweitert werden, sodass es
 
 ## <a name="troubleshooting"></a>Problembehandlung
 * Informationen zum Aktivieren der Protokollierung für die Behandlung von Connectorproblemen finden Sie unter [Vorgehensweise: Aktivieren der ETW-Ablaufverfolgung für Connectors](http://go.microsoft.com/fwlink/?LinkId=335731).
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

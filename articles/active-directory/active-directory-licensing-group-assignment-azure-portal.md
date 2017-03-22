@@ -1,7 +1,7 @@
 ---
 
 title: Zuweisen von Lizenzen zu einer Gruppe in Azure Active Directory | Microsoft-Dokumentation
-description: Informationen zum Zuweisen von Lizenzen mithilfe der gruppenbasierten Lizenzierung in Azure Active Directory
+description: Zuweisen von Lizenzen mithilfe der gruppenbasierten Lizenzierung von Azure Active Directory
 services: active-directory
 keywords: "Azure AD-Lizenzierung"
 documentationcenter: 
@@ -18,24 +18,24 @@ ms.date: 02/27/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: f8b63e5831897d3a45298b0415bb2d6d44ab0de1
-ms.openlocfilehash: 73727d8d1e5de01794589538bd67d3d698d325a0
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: cd2c8b8bd006d3172cb75f12f4a16fef9b698974
+ms.lasthandoff: 03/10/2017
 
 
 ---
 
 # <a name="assign-licenses-to-a-group-of-users-in-azure-active-directory"></a>Zuweisen von Lizenzen zu einer Gruppe von Benutzern in Azure Active Directory
 
-In diesem Artikel durchlaufen wir das grundlegende Verfahren der Zuweisung von Produktlizenzen zu einer Gruppe und Überprüfung, ob alle Mitglieder der Gruppe ordnungsgemäß lizenziert sind.
+In diesem Artikel werden einer Gruppe von Benutzern in Azure Active Directory (Azure AD) im Rahmen eines einfachen Szenarios Produktlizenzen zugewiesen. Anschließend wird überprüft, ob alle Mitglieder der Gruppe ordnungsgemäß lizenziert sind.
 
-In seinem Beispiel enthält der Mandant eine Sicherheitsgruppe namens **HR Department**, zu der alle Mitglieder der Personalabteilung zählen (in diesem Fall ca. 1.000 Benutzer). Der Administrator möchte der gesamten Abteilung Office 365 Enterprise E3-Lizenzen zuweisen. Der in dem Produkt enthaltene Yammer Enterprise-Dienst soll vorübergehend bis zu dem Zeitpunkt deaktiviert werden, zu dem die Abteilung für seine Nutzung bereit ist. Der Administrator möchte außerdem Enterprise Mobility + Security-Lizenzen für die gleiche Benutzergruppe bereitstellen.
+In diesem Beispiel enthält der Mandant eine Sicherheitsgruppe namens *HR Department* (Personalabteilung). Diese Gruppe enthält alle Mitglieder der Personalabteilung (in diesem Fall etwa 1.000 Benutzer). Der Administrator möchte der gesamten Abteilung Office 365 Enterprise E3-Lizenzen zuweisen. Der in dem Produkt enthaltene Yammer Enterprise-Dienst muss vorübergehend deaktiviert werden, bis die Abteilung für dessen Verwendung bereit ist. Der Administrator möchte außerdem Enterprise Mobility + Security-Lizenzen für die gleiche Benutzergruppe bereitstellen.
 
 ## <a name="step-1-assign-the-required-licenses"></a>Schritt 1: Zuweisen der erforderlichen Lizenzen
 
-1. Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com) mit einem Administratorkonto an. Zum Verwalten von Lizenzen benötigt das Konto die Rolle „Globaler Administrator“ oder „Benutzerkontoadministrator“.
+1. Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com) mit einem Administratorkonto an. Das Konto benötigt die Rolle „Globaler Administrator“ oder „Benutzerkontoadministrator“, um Lizenzen verwalten zu können.
 
-2. Klicken Sie im linken Navigationsbereich auf **Weitere Dienste**, und wählen Sie dann **Azure Active Directory** aus. Sie können dieses Blatt als Favoriten festlegen, indem Sie auf das Sternsymbol klicken oder es an das Dashboard im Portal anheften.
+2. Klicken Sie im linken Navigationsbereich auf **Weitere Dienste**, und wählen Sie anschließend **Azure Active Directory** aus. Sie können dieses Blatt als Favorit festlegen, indem Sie auf das Sternsymbol klicken oder es an das Dashboard im Portal anheften.
 
 3. Wählen Sie auf dem Blatt **Azure Active Directory** den Eintrag **Lizenzen** aus. Daraufhin wird ein Blatt geöffnet, auf dem Sie alle lizenzierbaren Produkte im Mandanten anzeigen und verwalten können.
 
@@ -43,57 +43,54 @@ In seinem Beispiel enthält der Mandant eine Sicherheitsgruppe namens **HR Depar
 
   ![Alle Produkte, Lizenz zuweisen](media/active-directory-licensing-group-assignment-azure-portal/all-products-assign.png)
 
-5. Klicken Sie auf dem Blatt **Lizenz zuweisen** auf **Benutzer und Gruppen**, um das Blatt „Benutzer und Gruppen“ zu öffnen. Suchen Sie den Gruppennamen *HR Department*, wählen Sie die Gruppe aus, und klicken Sie zur Bestätigung unten auf dem Blatt auf **Auswählen**.
+5. Klicken Sie auf dem Blatt **Lizenz zuweisen** auf **Benutzer und Gruppen**, um das Blatt **Benutzer und Gruppen** zu öffnen. Suchen Sie den Gruppennamen *HR Department*, wählen Sie die Gruppe aus, und klicken Sie zur Bestätigung unten auf dem Blatt auf **Auswählen**.
 
   ![Auswählen einer Gruppe](media/active-directory-licensing-group-assignment-azure-portal/select-a-group.png)
 
-6. Klicken Sie auf dem Blatt **Lizenz zuweisen** auf **Zuweisungsoptionen (optional)**. Daraufhin werden alle Servicepläne angezeigt, die aus den beiden zuvor ausgewählten Produkten bestehen. Wechseln Sie zu Yammer Enterprise, und legen Sie das Produkt auf **Aus** fest, um diesen Dienst in der Produktlizenz zu deaktivieren. Bestätigen Sie, indem Sie unten in **Zuweisungsoptionen** auf **OK** klicken.
+6. Klicken Sie auf dem Blatt **Lizenz zuweisen** auf **Zuweisungsoptionen (optional)**. Daraufhin werden alle Servicepläne angezeigt, die in den beiden zuvor ausgewählten Produkten enthalten sind. Wechseln Sie zu **Yammer Enterprise**, und legen Sie das Produkt auf **Aus** fest, um den Dienst in der Produktlizenz zu deaktivieren. Bestätigen Sie, indem Sie unten in **Zuweisungsoptionen** auf **OK** klicken.
 
   ![Zuweisungsoptionen](media/active-directory-licensing-group-assignment-azure-portal/assignment-options.png)
 
 7. Klicken Sie schließlich unten auf dem Blatt **Lizenz zuweisen** auf **Zuweisen**, um die Zuweisung abzuschließen.
 
-8. Rechts oben wird eine Benachrichtigung mit dem Status und Ergebnis des Vorgangs angezeigt. Wenn die Zuweisung an die Gruppe nicht abgeschlossen werden konnte (z.B. aufgrund bereits vorhandener Lizenzen für die Gruppe), klicken Sie auf die Benachrichtigung, um Details zum Fehler anzuzeigen.
+8. Rechts oben wird eine Benachrichtigung mit dem Status und Ergebnis des Vorgangs angezeigt. Falls die Gruppenzuweisung nicht abgeschlossen werden konnte (beispielsweise aufgrund bereits vorhandener Lizenzen für die Gruppe), klicken Sie auf die Benachrichtigung, um Details zum Fehler anzuzeigen.
 
-Wir haben nun eine Lizenzvorlage für die Gruppe „HR Department“ angegeben. Ein Hintergrundprozess in Azure AD wurde gestartet, um alle vorhandenen Mitglieder dieser Gruppe zu verarbeiten. Dieser anfängliche Vorgang dauert je nach aktueller Größe der Gruppe einige Zeit. Im nächsten Schritt erläutern wir das Überprüfen, ob der Vorgang abgeschlossen wurde und ob weitere Maßnahmen zur Problembehebung erforderlich sind.
+Wir haben nun eine Lizenzvorlage für die Gruppe „HR Department“ angegeben. Ein Hintergrundprozess in Azure AD wurde gestartet, um alle vorhandenen Mitglieder dieser Gruppe zu verarbeiten. Dieser anfängliche Vorgang dauert je nach aktueller Größe der Gruppe einige Zeit. Im nächsten Schritt erfahren Sie, wie Sie überprüfen, ob der Vorgang abgeschlossen wurde und ob weitere Maßnahmen zur Problembehebung erforderlich sind.
 
 > [!NOTE]
-> Die gleiche Zuweisung kann von anderer Stelle aus gestartet werden, nämlich in **Benutzer und Gruppen** in Azure AD. Wechseln Sie zu **Azure Active Directory &gt; Benutzer und Gruppen &gt; Alle Gruppen**. Wählen Sie die gewünschte Gruppe aus, und wechseln Sie zur Registerkarte **Lizenzen**. Über die Schaltfläche **Zuweisen** oben auf dem Blatt wird das Blatt zur Lizenzzuweisung geöffnet.
+> Die gleiche Zuweisung kann auch über **Benutzer und Gruppen** in Azure AD gestartet werden. Navigieren Sie zu **Azure Active Directory** > **Benutzer und Gruppen** > **Alle Gruppen**. Suchen Sie dann nach der Gruppe, wählen Sie sie aus, und navigieren Sie zur Registerkarte **Lizenzen**. Über die Schaltfläche **Zuweisen** oben auf dem Blatt wird das Blatt zur Lizenzzuweisung geöffnet.
 
 ## <a name="step-2-verify-that-the-initial-assignment-has-completed"></a>Schritt 2: Überprüfen, ob die anfängliche Zuweisung erfolgt ist
 
-1. Wechseln Sie zu **Azure Active Directory &gt; Benutzer und Gruppen &gt; Alle Gruppen**. Wählen Sie die Gruppe *HR Department* aus, der die Lizenzen zugewiesen wurden.
+1. Navigieren Sie zu **Azure Active Directory** > **Benutzer und Gruppen** > **Alle Gruppen**. Suchen Sie dann nach der Gruppe *HR Department*, der Lizenzen zugewiesen wurden.
 
-2. Wählen Sie auf dem Blatt der Gruppe *HR Department* den Eintrag **Lizenzen** aus, um schnell zu prüfen, ob Lizenzen Benutzern vollständig zugewiesen wurden und ob es Fehler gibt, die ggf. untersucht werden müssen, wie z.B.:
+2. Wählen Sie auf dem Blatt der Gruppe *HR Department* die Option **Lizenzen** aus, um schnell zu überprüfen, ob den Benutzern die Lizenzen vollständig zugewiesen wurden und ob Fehler vorliegen, die ggf. untersucht werden müssen. Folgende Informationen stehen zur Verfügung:
 
-  - Produktlizenzen, die der Gruppe zugewiesen wurden. Wählen Sie einen Eintrag aus, um die bestimmten Dienste anzuzeigen, die aktiviert wurden, und um Änderungen vorzunehmen.
+  - Liste mit den Produktlizenzen, die der Gruppe aktuell zugewiesen sind. Wählen Sie einen Eintrag aus, um die bestimmten Dienste anzuzeigen, die aktiviert wurden, und um Änderungen vorzunehmen.
 
-  - Status der letzten Änderungen an der Lizenzzuweisung:. Prüfen Sie, ob die Änderungen verarbeitet wurden oder ob die Verarbeitung für alle Gruppenmitglieder erfolgt ist.
+  - Status der letzten Lizenzänderungen für die Gruppe (also ob die Änderungen verarbeitet werden oder ob die Verarbeitung für alle Benutzermitglieder abgeschlossen ist).
 
-  - Wenn Fehler aufgetreten sind, Informationen zu Benutzern mit dem Status „Fehler“ oder denen keine Lizenzen zugewiesen werden konnten.
+  - Informationen zu Benutzern, bei denen ein Fehler vorliegt, da ihnen keine Lizenzen zugewiesen werden konnten.
 
   ![Zuweisungsoptionen](media/active-directory-licensing-group-assignment-azure-portal/assignment-errors.png)
 
-3. Detaillierte Informationen zur Lizenzverarbeitung finden Sie unter **Azure Active Directory &gt; Benutzer und Gruppen &gt;
-    *Gruppenname* &gt; Überwachungsprotokolle**:
+3. Ausführlichere Informationen zur Lizenzverarbeitung finden Sie unter **Azure Active Directory** > **Benutzer und Gruppen** > *Gruppenname* > **Überwachungsprotokolle**. Beachten Sie folgende Aktivitäten:
 
-  - Aktivität: **Starten der gruppenbasierten Lizenzzuweisung zu Benutzern**. Es wird protokolliert, wann unser System die Änderung der Lizenzzuweisung für die Gruppe verarbeitet und beginnt, diese für alle Gruppenmitglieder zu übernehmen. Das Protokoll enthält Informationen über die erfolgte Änderung.
+  - Aktivität: **Starten der gruppenbasierten Lizenzzuweisung zu Benutzern**. Wird protokolliert, wenn das System die Änderung der Lizenzzuweisung für die Gruppe verarbeitet und beginnt, diese für alle Benutzermitglieder zu übernehmen. Das Protokoll enthält Informationen über die erfolgte Änderung.
 
-  - Aktivität: **Beenden der gruppenbasierten Lizenzzuweisung zu Benutzern**. Es wird protokolliert, wann unser System mit der Verarbeitung aller Benutzer in der Gruppe fertig ist. Das Protokoll enthält eine Übersicht über die Anzahl der erfolgreich verarbeiteten Benutzer und die Anzahl der Benutzer, denen die Gruppenlizenzen nicht zugewiesen werden konnten.
+  - Aktivität: **Beenden der gruppenbasierten Lizenzzuweisung zu Benutzern**. Wird protokolliert, wenn das System alle Benutzer in der Gruppe verarbeitet hat. Das Protokoll enthält eine Übersicht über die Anzahl erfolgreich verarbeiteter Benutzer und über die Anzahl von Benutzern, denen keine Gruppenlizenzen zugewiesen werden konnten.
 
-## <a name="step-3-checking-for-license-problems-and-resolving-them"></a>Schritt 3: Suchen nach Lizenzproblemen und deren Behebung
+## <a name="step-3-check-for-license-problems-and-resolve-them"></a>Schritt 3: Suchen nach Lizenzproblemen und Beheben der Probleme
 
-1. Wechseln Sie zu **Azure Active Directory &gt; Benutzer und Gruppen &gt; Alle Gruppen**. Wählen Sie die Gruppe *HR Department* aus, der die Lizenzen zugewiesen wurden.
-
-2. Wählen Sie auf dem Blatt der Gruppe **HR Department** den Eintrag **Lizenzen** aus. Die Benachrichtigung oben auf dem Blatt gibt an, dass 10 Benutzern keine Lizenzen zugewiesen werden konnten. Es wird eine Liste aller Benutzer mit dem Lizenzierungsstatus „Fehler“ in dieser Gruppe geöffnet.
-
-3. Die Spalte **Fehlerhafte Zuweisungen** informiert uns, dass den Benutzern beide Produktlizenzen nicht zugewiesen werden konnten. **Häufigste Fehlerursache** enthält die Ursache des Fehlers, in diesem Fall **Im Konflikt stehende Diensteeinstellungen**.
+1. Wechseln Sie zu **Azure Active Directory** > **Benutzer und Gruppen** > **Alle Gruppen**. Wählen Sie die Gruppe *HR Department* aus, der Lizenzen zugewiesen wurden.
+2. Wählen Sie auf dem Blatt der Gruppe **HR Department** den Eintrag **Lizenzen** aus. Die Benachrichtigung oben auf dem Blatt gibt an, dass zehn Benutzern keine Lizenzen zugewiesen werden konnten. Wenn Sie auf die Benachrichtigung klicken, wird für diese Gruppe eine Liste aller Benutzer mit dem Lizenzierungsstatus „Fehler“ geöffnet.
+3. In der Spalte **Fehlerhafte Zuweisungen** ist zu sehen, dass den Benutzern beide Produktlizenzen nicht zugewiesen werden konnten. **Häufigste Fehlerursache** enthält die Ursache des Fehlers. In diesem Fall: **Widersprüchliche Servicepläne**.
 
   ![Fehlerhafte Zuweisungen](media/active-directory-licensing-group-assignment-azure-portal/failed-assignments.png)
 
-4. Wählen Sie einen Benutzer aus, um das Blatt **Lizenzen** zu öffnen, das alle Lizenzen zeigt, die dem Benutzer derzeit zugewiesen sind. Bei diesem Beispiel sehen wir, dass der Benutzer die Office 365 Enterprise E1-Lizenz von der Gruppe **Kiosk users** übernommen hat. Dies steht in Konflikt mit der E3-Lizenz, die das System versucht, der Gruppe **HR Department** zuzuweisen. Dies hat zur Folge, dass keine der Lizenzen dieser Gruppe dem Benutzer zugewiesen wurden.
+4. Wählen Sie einen Benutzer aus, um das Blatt **Lizenzen** zu öffnen. Auf diesem Blatt werden alle Lizenzen angezeigt, die dem Benutzer derzeit zugewiesen sind. In diesem Beispiel sehen wir, dass der Benutzer die Office 365 Enterprise E1-Lizenz von der Gruppe **Kiosk users** geerbt hat. Dies steht in Konflikt mit der E3-Lizenz, die über die Gruppe **HR Department** angewendet werden sollte. Daher wurde dem Benutzer keine der Lizenzen aus dieser Gruppe zugewiesen.
 
-  ![Anzeigen von Lizenzen für einen Benutzer](media/active-directory-licensing-group-assignment-azure-portal/user-license-view.png)
+  ![Lizenzen für einen Benutzer anzeigen](media/active-directory-licensing-group-assignment-azure-portal/user-license-view.png)
 
 5. Um dieses Problem zu beheben, entfernen Sie den Benutzer aus der Gruppe **Kiosk users**. Nachdem Azure AD die Änderung verarbeitet hat, sind die Lizenzen für **HR Department** richtig zugewiesen.
 
@@ -101,7 +98,7 @@ Wir haben nun eine Lizenzvorlage für die Gruppe „HR Department“ angegeben. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu den Funktionen für die Lizenzverwaltung mithilfe von Gruppen finden Sie unter
+Weitere Informationen zu den Features für die gruppenbasierte Lizenzverwaltung finden Sie in den folgenden Artikeln:
 
 * [Was ist die gruppenbasierte Lizenzierung in Azure Active Directory?](active-directory-licensing-whatis-azure-portal.md)
 * [Bestimmen und Beheben von Lizenzproblemen für eine Gruppe in Azure Active Directory](active-directory-licensing-group-problem-resolution-azure-portal.md)

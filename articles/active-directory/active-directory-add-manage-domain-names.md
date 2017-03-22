@@ -3,7 +3,7 @@ title: "Verwalten von benutzerdefinierten Domänennamen in Azure Active Director
 description: "Verwaltungskonzepte und Vorgehensweisen für die Verwaltung einer benutzerdefinierten Domäne in Azure Active Directory"
 services: active-directory
 documentationcenter: 
-author: jeffsta
+author: curtand
 manager: femila
 editor: 
 ms.assetid: cf3523bd-9ee0-439e-963d-ccea038867b9
@@ -17,6 +17,7 @@ ms.author: curtand;jeffsta
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 77d857e8d692f8bf47e00d655071a825533290b6
+ms.lasthandoff: 12/28/2016
 
 
 ---
@@ -66,10 +67,5 @@ Die meisten Verwaltungsaufgaben für Domänennamen in Azure Active Directory kö
 ## <a name="next-steps"></a>Nächste Schritte
 * [Informationen zu Domänennamen in Azure AD](active-directory-add-domain-concepts.md)
 * [Verwalten von benutzerdefinierten Domänennamen](active-directory-add-manage-domain-names.md)
-
-
-
-
-<!--HONumber=Dec16_HO4-->
 
 

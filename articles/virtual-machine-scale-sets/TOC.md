@@ -2,13 +2,16 @@
 ## [Was sind Skalierungsgruppen für virtuelle Computer?](virtual-machine-scale-sets-overview.md)
 
 # Erste Schritte
-## [Erstellen einer Skalierungsgruppe im Portal](virtual-machine-scale-sets-portal-create.md)
-## [Erstellen einer Skalierungsgruppe mit der Azure-Befehlszeilenschnittstelle](virtual-machine-scale-sets-linux-create-cli.md)
-## [Erstellen einer Skalierungsgruppe mithilfe einer Resource Manager-Vorlage](virtual-machine-scale-sets-mvss-start.md)
+## [Bereitstellen einer Skalierungsgruppe im Portal](virtual-machine-scale-sets-portal-create.md)
+## [Bereitstellen einer Skalierungsgruppe mit der Azure-Befehlszeilenschnittstelle](virtual-machine-scale-sets-linux-create-cli.md)
+## [Bereitstellen einer einfachen Skalierungsgruppe mithilfe einer Resource Manager-Vorlage](virtual-machine-scale-sets-mvss-start.md)
 
 # Anleitung
 ## Planen und Entwerfen
 ### [Überlegungen zum Entwurf](virtual-machine-scale-sets-design-overview.md)
+## Schreiben von Skalierungsgruppenvorlagen in
+### [Bereitstellen einer einfachen Skalierungsgruppe](virtual-machine-scale-sets-mvss-start.md)
+### [Bereitstellen einer Skalierungsgruppe in einem vorhandenen virtuellen Netzwerk](virtual-machine-scale-sets-mvss-existing-vnet.md)
 
 ## Bereitstellen
 ### [Skalierungsgruppe unter Verwendung des Portals](virtual-machine-scale-sets-portal-create.md)
@@ -36,6 +39,9 @@
 
 ## Problembehandlung
 ### [Automatische Skalierung](virtual-machine-scale-sets-troubleshoot.md)
+
+## Häufig gestellte Fragen
+### [Häufig gestellte Fragen (FAQ) zu Skalierungsgruppen](virtual-machine-scale-sets-faq.md)
 
 # Referenz
 ## [PowerShell](/powershell/azureps-cmdlets-docs)

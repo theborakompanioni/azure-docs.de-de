@@ -12,12 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: media
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/21/2017
+ms.date: 03/02/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: f76277ab93c58098648ee65ea5aba0757495da68
-ms.openlocfilehash: 1222a670a1bf530871a19c79b7da441c03f8df51
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: 353677bc7eb7fe791d23bcfdb79f3a0df6366c6f
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -44,6 +44,13 @@ In diesen Versionshinweisen werden Änderungen im Vergleich zu früheren Version
 
 ## <a id="rest_version_history"></a>REST-API-Versionsverlauf
 Informationen zum Versionsverlauf der Media Services-REST-API finden Sie unter [Azure Media Services – REST-API-Referenz].
+
+## <a name="march-2017-release"></a>Version März 2017
+
+Sie können nun Azure Media Standard zum [automatischen Generieren einer Reihen von Bitraten/Auflösungs-Paaren](media-services-autogen-bitrate-ladder-with-mes.md) zum Angeben der Voreinstellungszeichenfolge „adaptives Streaming“ verwenden, wenn Sie eine Codierungsaufgabe erstellen. „Adaptives Streaming“ ist die empfohlene Voreinstellung, wenn Sie ein Video für das Streamen mit Media Services codieren möchten. Wenn Sie eine für Ihr bestimmtes Szenario voreingestellte Codierung anpassen müssen, können Sie mit [diesen](media-services-mes-presets-overview.md) Voreinstellungen beginnen.
+
+Jetzt können Sie Azure Media Standard- oder den Medienencoder-Premium-Workflow verwenden, um [eine Codierungsaufgabe zu erstellen, die fMP4-Abschnitte generiert](media-services-generate-fmp4-chunks.md). 
+
 
 ## <a name="febuary-2017-release"></a>Version Februar 2017
 

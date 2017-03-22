@@ -17,6 +17,7 @@ ms.author: swkrish
 translationtype: Human Translation
 ms.sourcegitcommit: 4b13c040a15bef2f04d2cd2126e2270d061898bd
 ms.openlocfilehash: 42c00632fee16b61f502b5a8ac15825788403ab8
+ms.lasthandoff: 12/28/2016
 
 
 ---
@@ -31,10 +32,5 @@ Wenn beim [Erstellen eines Azure AD B2C-Mandanten](active-directory-b2c-get-star
 * Wenn der Azure AD B2C-Mandant in Ihrer Liste der Mandanten angezeigt wird, und Sie eine Fehlermeldung erhalten („Erstellung des B2C-Mandanten 'contosob2c' konnte nicht abgeschlossen werden. Besuchen Sie diesen [Link](http://go.microsoft.com/fwlink/?LinkID=624192&clcid=0x409) , um weitere Anleitungen zu erhalten.“), löschen Sie anschließend den soeben erstellten Mandanten, und versuchen Sie es noch einmal.
 * Beachten Sie, dass beim Löschen eines vorhandenen B2C-Mandanten und erneuten Erstellen mit demselben Domänennamen bekannte Probleme auftreten. Sie müssen einen B2C-Mandanten mit einem anderen Domänennamen erstellen.
 * Wenn diese Lösung für Sie nicht funktioniert, wenden Sie sich an den Support. Hier finden Sie weitere Informationen zum [Senden von Supportanfragen für Azure AD B2C](active-directory-b2c-support.md).
-
-
-
-
-<!--HONumber=Dec16_HO4-->
 
 

@@ -12,11 +12,12 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2016
+ms.date: 03/21/2017
 ms.author: manayar
 translationtype: Human Translation
 ms.sourcegitcommit: 3b606aa6dc3b84ed80cd3cc5452bbe1da6c79a8b
 ms.openlocfilehash: ed484afc59bbf48490e3ff4389e8e28c71a5e471
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -193,9 +194,4 @@ Ein Partner kann auch über das CSP-Portal dem Mandantenabonnement einen neuen B
     ![Benutzerabonnement](./media/site-recovery-multi-tenant-support-vmware-using-csp/add-user-subscription.png)
 
     Für die meisten Verwaltungsvorgänge ist die Rolle „Mitwirkender“ ausreichend. Ein Benutzer mit dieser Zugriffsebene kann fast alle Aufgaben für ein Abonnement ausführen, jedoch keine Zugriffsebenen ändern (wofür die Zugriffsebene „Besitzer“ erforderlich ist). Sie können die Zugriffsebenen nach Bedarf auch optimieren.
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

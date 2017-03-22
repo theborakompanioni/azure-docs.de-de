@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/24/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 9bf2e87353901a043f01ff7d634e1b174cd6a52a
-ms.openlocfilehash: 3dd67e08951780725c4d81ce54aa841a5d13e59a
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: 1209acfb13d53288b1ff0ed232c44c3fdcd3a9f4
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -37,7 +38,7 @@ Beim Versuch, ein neues Objekt mit einem UPN- oder ProxyAddress-Wert bereitzuste
 
 ## <a name="behavior-with-duplicate-attribute-resiliency"></a>Verhalten mit Resilienz bei doppelten Attributen
 Das Bereitstellen oder Aktualisieren eines Objekts mit doppeltem Attribut ist nicht einfach ohne Erfolg. Stattdessen wird das doppelte Attribut, das gegen die Eindeutigkeitsanforderung verstößt, von Azure Active Directory isoliert. Ist dieses Attribut für die Bereitstellung erforderlich (wie etwa im Falle von UserPrincipalName), weist der Dienst einen Platzhalterwert zu. Diese temporären Werte weisen folgendes Format auf:  
-***<OriginalPrefix>+<4DigitNumber>@<InitialTenantDomain>.onmicrosoft.com***.  
+***<OriginalPrefix>+<4-stellige Zahl>@<InitialTenantDomain>.onmicrosoft.com***  
 Ist das Attribut nicht erforderlich (etwa im Falle von **ProxyAddress**), wird das Konfliktattribut einfach von Azure Active Directory unter Quarantäne gestellt, und die Objekterstellung oder -aktualisierung wird fortgesetzt.
 
 Im Falle einer Attributisolierung werden Informationen zum Konflikt in der gleichen Fehlerbericht-E-Mail gesendet, die auch im Rahmen des alten Verhaltens verwendet wurde. Diese Informationen werden aber nur einmal (zum Zeitpunkt der Isolierung) in den Fehlerbericht aufgenommen und in zukünftigen E-Mails nicht immer wieder erneut protokolliert. Da der Export für das Objekt erfolgreich war, protokolliert der Synchronisierungsclient keinen Fehler, und es wird in den folgenden Synchronisierungszyklen nicht erneut versucht, die Erstellung/Aktualisierung durchzuführen.
@@ -50,7 +51,8 @@ Hierbei handelt es sich um ein mehrwertiges Attribut zum Speichern der in Konfli
 ### <a name="enabling-duplicate-attribute-resiliency"></a>Aktivieren der Resilienz bei doppelten Attributen
 Resilienz bei doppelten Attributen wird in allen Azure Active Directory-Mandanten das neue Standardverhalten sein. Es wird standardmäßig für alle Mandanten eingeschaltet sein, die die Synchronisierung zum ersten Mal am 22. August 2016 oder später aktiviert haben. Bei Mandanten, die die Synchronisierung vor diesem Datum aktiviert haben, wird das Feature mithilfe von Batches aktiviert. Dieses Rollout wird im September 2016 beginnen. Die Benachrichtigung über das genaue Aktivierungsdatum des Features wird an die technische Kontaktadresse der Mandaten gesendet.
 
-Nach der Aktivierung der Resilienz bei doppelten Attributen kann diese nicht mehr deaktiviert werden.
+> [!NOTE]
+> Nach der Aktivierung der Resilienz bei doppelten Attributen kann diese nicht mehr deaktiviert werden.
 
 Durch Herunterladen der neuesten Version des PowerShell-Moduls von Azure Active Directory und Ausführen der folgenden Befehle kann geprüft werden, ob das Feature für Ihren Mandanten aktiviert ist:
 
@@ -58,11 +60,8 @@ Durch Herunterladen der neuesten Version des PowerShell-Moduls von Azure Active 
 
 `Get-MsolDirSyncFeatures -Feature DuplicateProxyAddressResiliency`
 
-Durch Herunterladen der neuesten Version des PowerShell-Moduls von Azure Active Directory und Ausführen der folgenden Befehle kann das Feature vor der Aktivierung für Ihren Mandanten proaktiv aktiviert werden:
-
-`Set-MsolDirSyncFeature -Feature DuplicateUPNResiliency -Enable $true`
-
-`Set-MsolDirSyncFeature -Feature DuplicateProxyAddressResiliency -Enable $true`
+> [!NOTE]
+> Die Funktion für Resilienz bei doppelten Attributen kann vor der Aktivierung für den Mandanten nicht mehr proaktiv mithilfe des Cmdlets „Set-MsolDirSyncFeature“ aktiviert werden. Damit Sie die Funktion testen können, müssen Sie einen neuen Azure Active Directory-Mandanten erstellen.
 
 ## <a name="identifying-objects-with-dirsyncprovisioningerrors"></a>Ermitteln von Objekten mit DirSyncProvisioningErrors
 Objekte mit Fehlern aufgrund von Konflikten mit doppelten Eigenschaften können derzeit auf zwei Arten ermittelt werden: über Azure Active Directory PowerShell und über das Office 365-Verwaltungsportal. Es ist geplant, dieses Feature im Laufe der Zeit um weitere Portale zu erweitern.
@@ -174,10 +173,5 @@ Er sollte auf [https://aka.ms/duplicateattributeresiliency](https://aka.ms/dupli
 * [Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-whatis.md)
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 * [Ermitteln von Fehlern der Verzeichnissynchronisierung in Office 365](https://support.office.com/en-us/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 
