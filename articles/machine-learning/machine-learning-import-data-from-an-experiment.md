@@ -13,11 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2016
+ms.date: 03/20/2017
 ms.author: garye;bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: 1738899a271045e37cdcedaaf862553f29ec92f1
 ms.openlocfilehash: b1c06135cf8628197fb9601affd6a7131b41d0ca
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -32,10 +33,5 @@ Hin und wieder wird ein Zwischenergebnis aus einem Experiment benötigt, um es a
 4. Klicken Sie auf das Häkchen **OK** .
 
 Wenn der Speichervorgang abgeschlossen ist, ist das Dataset für die Verwendung in allen Experimenten in Ihrem Arbeitsbereich verfügbar. Sie finden es in der Liste **Saved Datasets** in der Modulpalette.
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 
