@@ -32,13 +32,13 @@ Azure verfügt über zwei Bereitstellungsmodelle: Azure Resource Manager und kla
 In diesem Artikel wird beschrieben, wie Sie mit dem Resource Manager-Bereitstellungsmodell über PowerShell ein VNET erstellen. Sie können ein VNet per Resource Manager auch mit anderen Tools erstellen oder dafür das klassische Bereitstellungsmodell verwenden, indem Sie in der folgenden Liste eine andere Option wählen:
 
 > [!div class="op_single_selector"]
-- [Portal](virtual-networks-create-vnet-arm-pportal.md)
-- [PowerShell](virtual-networks-create-vnet-arm-ps.md)
-- [BEFEHLSZEILENSCHNITTSTELLE (CLI)](virtual-networks-create-vnet-arm-cli.md)
-- [Vorlage](virtual-networks-create-vnet-arm-template-click.md)
-- [Portal (klassisch)](virtual-networks-create-vnet-classic-pportal.md)
-- [PowerShell (klassisch)](virtual-networks-create-vnet-classic-netcfg-ps.md)
-- [CLI (klassisch)](virtual-networks-create-vnet-classic-cli.md)
+> * [Portal](virtual-networks-create-vnet-arm-pportal.md)
+> * [PowerShell](virtual-networks-create-vnet-arm-ps.md)
+> * [BEFEHLSZEILENSCHNITTSTELLE (CLI)](virtual-networks-create-vnet-arm-cli.md)
+> * [Vorlage](virtual-networks-create-vnet-arm-template-click.md)
+> * [Portal (klassisch)](virtual-networks-create-vnet-classic-pportal.md)
+> * [PowerShell (klassisch)](virtual-networks-create-vnet-classic-netcfg-ps.md)
+> * [CLI (klassisch)](virtual-networks-create-vnet-classic-cli.md)
 
 [!INCLUDE [virtual-networks-create-vnet-scenario-include](../../includes/virtual-networks-create-vnet-scenario-include.md)]
 

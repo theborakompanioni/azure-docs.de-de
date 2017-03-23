@@ -38,13 +38,13 @@ Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
     Sie können ein VNet per Resource Manager auch mit anderen Tools erstellen oder dafür das klassische Bereitstellungsmodell verwenden, indem Sie in der folgenden Liste eine andere Option wählen:
 
 > [!div class="op_single_selector"]
-- [Portal](virtual-networks-create-vnet-arm-pportal.md)
-- [PowerShell](virtual-networks-create-vnet-arm-ps.md)
-- [BEFEHLSZEILENSCHNITTSTELLE (CLI)](virtual-networks-create-vnet-arm-cli.md)
-- [Vorlage](virtual-networks-create-vnet-arm-template-click.md)
-- [Portal (klassisch)](virtual-networks-create-vnet-classic-pportal.md)
-- [PowerShell (klassisch)](virtual-networks-create-vnet-classic-netcfg-ps.md)
-- [CLI (klassisch)](virtual-networks-create-vnet-classic-cli.md)
+> * [Portal](virtual-networks-create-vnet-arm-pportal.md)
+> * [PowerShell](virtual-networks-create-vnet-arm-ps.md)
+> * [BEFEHLSZEILENSCHNITTSTELLE (CLI)](virtual-networks-create-vnet-arm-cli.md)
+> * [Vorlage](virtual-networks-create-vnet-arm-template-click.md)
+> * [Portal (klassisch)](virtual-networks-create-vnet-classic-pportal.md)
+> * [PowerShell (klassisch)](virtual-networks-create-vnet-classic-netcfg-ps.md)
+> * [CLI (klassisch)](virtual-networks-create-vnet-classic-cli.md)
 
 [!INCLUDE [virtual-networks-create-vnet-scenario-include](../../includes/virtual-networks-create-vnet-scenario-include.md)]
 
@@ -65,22 +65,22 @@ Führen Sie die folgenden Schritte aus, um mithilfe von Azure CLI 2.0 ein virtue
 
     ```azurecli
     az network vnet create \
-        --name TestVNet \
-        --resource-group TestRG \
-        --location centralus \
-        --address-prefix 192.168.0.0/16 \
-        --subnet-name FrontEnd \
-        --subnet-prefix 192.168.1.0/24
+    --name TestVNet \
+    --resource-group TestRG \
+    --location centralus \
+    --address-prefix 192.168.0.0/16 \
+    --subnet-name FrontEnd \
+    --subnet-prefix 192.168.1.0/24
     ```
 
     Erwartete Ausgabe:
-   
+    
     ```json
     {
         "newVNet": {
             "addressSpace": {
             "addressPrefixes": [
-                "192.168.0.0/16"
+            "192.168.0.0/16"
             ]
             },
             "dhcpOptions": {
@@ -100,7 +100,7 @@ Führen Sie die folgenden Schritte aus, um mithilfe von Azure CLI 2.0 ein virtue
                 "resourceGroup": "TestRG"
             }
             ]
-        }
+            }
     }
     ```
 
@@ -121,20 +121,20 @@ Führen Sie die folgenden Schritte aus, um mithilfe von Azure CLI 2.0 ein virtue
 
     Die folgende Ausgabe wird erzeugt:
 
-            Where      Name      Group
-            ---------  --------  -------
-            centralus  TestVNet  TestRG
+        Where      Name      Group
+
+        centralus  TestVNet  TestRG
 
 4. Erstellen Sie ein Subnetz:
 
     ```azurecli
     az network vnet subnet create \
-        --address-prefix 192.168.2.0/24 \
-        --name BackEnd \
-        --resource-group TestRG \
-        --vnet-name TestVNet
+    --address-prefix 192.168.2.0/24 \
+    --name BackEnd \
+    --resource-group TestRG \
+    --vnet-name TestVNet
     ```
-   
+
     Erwartete Ausgabe:
 
     ```json
@@ -168,11 +168,11 @@ Führen Sie die folgenden Schritte aus, um mithilfe von Azure CLI 2.0 ein virtue
     --query '{Name:name,Where:location,Group:resourceGroup,Status:provisioningState,SubnetCount:subnets | length(@)}' \
     -o table
     ```
-   
+
     Erwartete Ausgabe:
-   
+
         Name      Where      Group    Status       SubnetCount
-        --------  ---------  -------  ---------  -------------
+
         TestVNet  centralus  TestRG   Succeeded              2
 
 6. Fragen Sie die Eigenschaften des Subnetzes ab:
@@ -188,7 +188,7 @@ Führen Sie die folgenden Schritte aus, um mithilfe von Azure CLI 2.0 ein virtue
     Erwartete Ausgabe:
 
         Name      CIDR            Status
-        --------  --------------  ---------
+
         FrontEnd  192.168.1.0/24  Succeeded
         BackEnd   192.168.2.0/24  Succeeded
 
