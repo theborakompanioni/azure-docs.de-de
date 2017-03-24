@@ -12,16 +12,19 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/04/2017
+ms.date: 03/24/2017
 ms.author: dobett
 translationtype: Human Translation
 ms.sourcegitcommit: 9ded95283b52f0fc21ca5b99df8e72e1e152fe1c
 ms.openlocfilehash: c56a568fa003ec45e92279e070e6309763071827
+ms.lasthandoff: 02/17/2017
 
 
 ---
 # <a name="file-uploads-with-iot-hub"></a>Dateiuploads mit IoT Hub
+
 ## <a name="overview"></a>Übersicht
+
 Wie im Artikel [IoT Hub-Endpunkte][lnk-endpoints] ausführlich beschrieben, können Geräte Dateiuploads auslösen, indem sie eine Benachrichtigung über einen geräteseitigen Endpunkt (**/devices/{Geräte-ID}/files**) senden.  Wenn ein Gerät IoT Hub über einen abgeschlossenen Upload benachrichtigt, generiert IoT Hub Dateiuploadbenachrichtigungen, die Sie über einen dienstseitigen Endpunkt als Nachrichten empfangen können (**/messages/servicebound/filenotifications**).
 
 Statt Nachrichten über IoT Hub selbst zu übertragen, fungiert IoT Hub als Verteiler für ein zugeordnetes Azure Storage-Konto. Ein Gerät fordert ein Speichertoken von IoT Hub an, das spezifisch für die vom Gerät hochgeladene Datei gilt. Das Gerät verwendet den SAS-URI zum Hochladen der Datei in den Speicher. Wenn der Upload abgeschlossen ist, sendet das Gerät eine Benachrichtigung über den Abschluss an IoT Hub. IoT Hub überprüft, ob die Datei hochgeladen wurde, und fügt dann dem neuen dienstseitigen Messaging-Endpunkt für Dateibenachrichtigungen eine Dateiuploadbenachrichtigung hinzu.
@@ -31,22 +34,23 @@ Bevor Sie eine Datei von einem Gerät in IoT Hub hochladen, müssen Sie Ihren Hu
 Ihr Gerät kann dann [einen Upload initialisieren][lnk-initialize] und anschließend [IoT Hub benachrichtigen][lnk-notify], sobald der Upload abgeschlossen ist. Optional: Wenn ein Gerät IoT Hub benachrichtigt, dass der Upload abgeschlossen ist, kann der Dienst eine [Benachrichtigung][lnk-service-notification] generieren.
 
 ### <a name="when-to-use"></a>Einsatzgebiete
+
 Verwenden Sie Dateiuploads zum Senden von Mediendateien und umfangreichen Telemetriebatches, die von zeitweise verbundenen Geräten hochgeladen oder komprimiert werden, um Bandbreite zu sparen.
 
 Weitere Informationen zur Verwendung von gemeldeten Eigenschaften, D2C-Nachrichten oder Dateiuploads finden Sie im Thema [Leitfaden zur D2C-Kommunikation][lnk-d2c-guidance].
 
 ## <a name="associate-an-azure-storage-account-with-iot-hub"></a>Zuordnen eines Azure Storage-Kontos zu IoT Hub
+
 Damit Sie die Funktion zum Hochladen von Dateien verwenden können, müssen Sie IoT Hub zunächst ein Azure Storage-Konto zuweisen. Sie können diese Aufgabe über das [Azure-Portal][lnk-management-portal] oder programmgesteuert über [REST-APIs für den IoT Hub-Ressourcenanbieter][lnk-resource-provider-apis] ausführen. Nachdem Sie Ihrem IoT Hub ein Azure Storage-Konto zugeordnet haben, gibt der Dienst einen SAS-URI an ein Gerät zurück, wenn das Gerät eine Anforderung zum Dateiupload auslöst.
 
 > [!NOTE]
 > Die [Azure IoT SDKs][lnk-sdks] behandeln automatisch das Abrufen des SAS-URIs, das Hochladen der Datei und das Benachrichtigen von IoT Hub über einen abgeschlossenen Upload.
-> 
-> 
+
 
 ## <a name="initialize-a-file-upload"></a>Initialisieren eines Dateiuploads
 IoT Hub verfügt über einen Endpunkt speziell für Geräte zum Anfordern eines SAS-URI für die Speicherung zum Hochladen einer Datei. Das Gerät leitet den Dateiupload ein, indem es eine POST-Anforderung mit dem folgenden JSON-Text an den IoT Hub unter `{iot hub}.azure-devices.net/devices/{deviceId}/files`sendet.
 
-```
+```json
 {
     "blobName": "{name of the file for which a SAS URI will be generated}"
 }
@@ -54,7 +58,7 @@ IoT Hub verfügt über einen Endpunkt speziell für Geräte zum Anfordern eines 
 
 IoT Hub gibt die folgenden Daten zurück, die vom Gerät zum Hochladen der Datei genutzt werden:
 
-```
+```json
 {
     "correlationId": "somecorrelationid",
     "hostname": "contoso.azure-devices.net",
@@ -65,17 +69,17 @@ IoT Hub gibt die folgenden Daten zurück, die vom Gerät zum Hochladen der Datei
 ```
 
 ### <a name="deprecated-initialize-a-file-upload-with-a-get"></a>Veraltet: Initialisieren des Uploads einer Datei mit einer GET-Anweisung
+
 > [!NOTE]
 > In diesem Abschnitt wird veraltete Funktionalität zum Empfangen eines SAS-URI von IoT Hub beschrieben. Sie sollten die zuvor beschriebene POST-Methode verwenden.
-> 
-> 
 
 IoT Hub verfügt über zwei REST-Endpunkte, um den Dateiupload zu unterstützen: einen zum Abrufen des SAS-URIs für den Speicher und einen zum Benachrichtigen von IoT Hub über einen abgeschlossenen Upload. Das Gerät initiiert den Dateiupload, indem es eine GET-Anforderung an IoT Hub unter `{iot hub}.azure-devices.net/devices/{deviceId}/files/{filename}`sendet. Der IoT-Hub gibt einen SAS-URI, der speziell für die hochzuladende Datei gilt, sowie eine Korrelations-ID zurück, die nach Abschluss des Uploads verwendet werden soll.
 
 ## <a name="notify-iot-hub-of-a-completed-file-upload"></a>Benachrichtigen von IoT Hub über einen abgeschlossenen Dateiupload
+
 Das Gerät ist verantwortlich für das Hochladen der Datei in den Speicher mithilfe der Azure Storage-SDKs. Nach Abschluss des Uploads sendet das Gerät eine POST-Anforderung mit dem folgenden JSON-Text an den IoT Hub unter `{iot hub}.azure-devices.net/devices/{deviceId}/files/notifications`:
 
-```
+```json
 {
     "correlationId": "{correlation ID received from the initial request}",
     "isSuccess": bool,
@@ -87,9 +91,11 @@ Das Gerät ist verantwortlich für das Hochladen der Datei in den Speicher mithi
 Der Wert `isSuccess` ist eine boolesche Darstellung, ob die Datei erfolgreich hochgeladen wurde. Der Statuscode `statusCode` ist der Status des Uploads der Datei in Speicher, und `statusDescription` entspricht `statusCode`.
 
 ## <a name="reference-topics"></a>Referenzthemen:
+
 Die folgenden Referenzthemen enthalten weitere Informationen zum Hochladen von Dateien von einem Gerät.
 
 ## <a name="file-upload-notifications"></a>Benachrichtigungen zum Dateiupload
+
 Wenn ein Gerät eine Datei hochlädt und IoT Hub über den Abschluss des Uploads informiert, generiert der Dienst optional eine Benachrichtigung, die den Namen und den Speicherort der Datei enthält.
 
 Wie im Abschnitt [Endpunkte][lnk-endpoints] erläutert, übermittelt IoT Hub Dateiuploadbenachrichtigungen als Nachrichten über einen dienstseitigen Endpunkt (**/messages/servicebound/fileuploadnotifications**). Die Empfangssemantik für Dateiuploadbenachrichtigungen entspricht der Empfangssemantik für C2D-Nachrichten und besitzt den gleichen [Nachrichtenlebenszyklus][lnk-lifecycle]. Jede Nachricht, die vom Endpunkt für Dateiuploadbenachrichtigungen abgerufen wird, ist ein JSON-Datensatz mit den folgenden Eigenschaften:
@@ -105,7 +111,7 @@ Wie im Abschnitt [Endpunkte][lnk-endpoints] erläutert, übermittelt IoT Hub Dat
 
 **Beispiel**. Dieses Beispiel zeigt den Text einer Dateiuploadbenachrichtigung.
 
-```
+```json
 {
     "deviceId":"mydevice",
     "blobUri":"https://{storage account}.blob.core.windows.net/{container name}/mydevice/myfile.jpg",
@@ -117,6 +123,7 @@ Wie im Abschnitt [Endpunkte][lnk-endpoints] erläutert, übermittelt IoT Hub Dat
 ```
 
 ## <a name="file-upload-notification-configuration-options"></a>Konfigurationsoptionen für Dateiuploadbenachrichtigungen
+
 Jeder IoT Hub legt die folgenden Konfigurationsoptionen für Dateiuploadbenachrichtigungen offen:
 
 | Eigenschaft | Beschreibung | Bereich und Standardwert |
@@ -127,6 +134,7 @@ Jeder IoT Hub legt die folgenden Konfigurationsoptionen für Dateiuploadbenachri
 | **fileNotifications.maxDeliveryCount** |Maximale Übermittlungsanzahl für die Warteschlange der Dateiuploadbenachrichtigungen. |1 bis 100. Standardwert: 100. |
 
 ## <a name="additional-reference-material"></a>Weiteres Referenzmaterial
+
 Weitere Referenzthemen im IoT Hub-Entwicklerhandbuch:
 
 * Unter [IoT Hub-Endpunkte][lnk-endpoints] werden die verschiedenen Endpunkte beschrieben, die jeder IoT-Hub für Laufzeit- und Verwaltungsvorgänge bereitstellt.
@@ -136,6 +144,7 @@ Weitere Referenzthemen im IoT Hub-Entwicklerhandbuch:
 * [IoT Hub-MQTT-Unterstützung][lnk-devguide-mqtt] enthält weitere Informationen zur Unterstützung für das MQTT-Protokoll in IoT Hub.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Nachdem Sie gelernt haben, wie Sie Dateien mithilfe von IoT Hub von Geräten hochladen, sind möglicherweise die folgenden Themen im IoT Hub-Entwicklerhandbuch für Sie interessant:
 
 * [Verwalten von Geräteidentitäten in IoT Hub][lnk-devguide-identities]
@@ -168,9 +177,4 @@ Wenn Sie einige der in diesem Artikel beschriebenen Konzepte ausprobieren möcht
 [lnk-devguide-device-twins]: iot-hub-devguide-device-twins.md
 [lnk-devguide-directmethods]: iot-hub-devguide-direct-methods.md
 [lnk-devguide-jobs]: iot-hub-devguide-jobs.md
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 
