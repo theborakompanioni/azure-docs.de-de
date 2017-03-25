@@ -7,14 +7,13 @@
 
 # Erste Schritte
 ## [Exportieren der Vorlage](resource-manager-export-template.md)
-## [Exemplarische Vorgehensweise zu Vorlagen](resource-manager-template-walkthrough.md)
+## [Erstellen Ihrer ersten Vorlage](resource-manager-create-first-template.md)
 ## [Visual Studio mit Resource Manager](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
-## [VS-Code mit Resource Manager](resource-manager-vs-code.md)
 
 # Anleitung
 ## Erstellen von Vorlagen
 ### [Bewährte Methoden für Vorlagen](resource-manager-template-best-practices.md)
-### [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md)
+### [Vorlagenabschnitte](resource-group-authoring-templates.md)
 ### [Vorlagenfunktionen](resource-group-template-functions.md)
 ### [Definieren der Abhängigkeit zwischen Ressourcen](resource-group-define-dependencies.md)
 ### [Festlegen von Name und Typ der untergeordneten Ressource](resource-manager-template-child-resource.md)
@@ -38,7 +37,8 @@
 ### [Verschieben von Ressourcen in neue Gruppen oder Abonnements](resource-group-move-resources.md)
 ## Steuern des Zugriffs
 ### [Erstellen des Dienstprinzipals mit PowerShell](resource-group-authenticate-service-principal.md)
-### [Erstellen des Dienstprinzipals über die Azure-Befehlszeilenschnittstelle](resource-group-authenticate-service-principal-cli.md)
+### [Erstellen eines Dienstprinzipals über die Azure-Befehlszeilenschnittstelle 2.0](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [Erstellen eines Dienstprinzipals über die Azure-Befehlszeilenschnittstelle 1.0](resource-group-authenticate-service-principal-cli.md)
 ### [Erstellen des Dienstprinzipals über das Portal](resource-group-create-service-principal-portal.md)
 ### [Authentifizierungs-API für den Zugriff auf Abonnements](resource-manager-api-authentication.md)
 ### [Sperren von Ressourcen](resource-group-lock-resources.md)
@@ -61,7 +61,7 @@
 ## [.NET](/dotnet/api/microsoft.azure.management.resourcemanager)
 ## [Java](/java/api/com.microsoft.azure.management.resources)
 ## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/resourcemanagement.html)
-## [Vorlagenschemas](https://github.com/Azure/azure-resource-manager-schemas)
+## [Vorlagenformat](/azure/templates/)
 ## [REST](/rest/api/resources/)
 
 # Ressourcen

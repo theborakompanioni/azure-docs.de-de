@@ -7,9 +7,6 @@
 ## IP-Adressierung
 ### [Ressourcen-Manager](virtual-network-ip-addresses-overview-arm.md)
 ### [Klassisch](virtual-network-ip-addresses-overview-classic.md)
-## Virtuelle Computer
-### [Netzwerkschnittstellen](virtual-network-network-interface-overview.md)
-### [Namensauflösung](virtual-networks-name-resolution-for-vms-and-role-instances.md)
 
 # Erste Schritte
 ## [Erstellen Ihres ersten virtuellen Netzwerks](virtual-network-get-started-vnet-subnet.md)
@@ -107,6 +104,7 @@
 ### Zugriffssteuerungslisten
 #### [Klassisches Portal](virtual-networks-acl.md)
 #### [PowerShell](virtual-networks-acl-powershell.md)
+### [Namensauflösung für virtuelle Computer und Clouddienste](virtual-networks-name-resolution-for-vms-and-role-instances.md)
 
 ## Verwalten
 ### Netzwerksicherheitsgruppen

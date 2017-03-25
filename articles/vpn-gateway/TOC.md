@@ -14,12 +14,12 @@
 ## Site-to-Site-Verbindung konfigurieren
 ### [Azure-Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 ### [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
+### [Azure-Portal (klassisch)](vpn-gateway-howto-site-to-site-classic-portal.md)
 ### [Klassisches Portal (klassisch)](vpn-gateway-site-to-site-create.md)
 ## Point-to-Site-Verbindung konfigurieren
 ### [Azure-Portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 ### [PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
 ### [Azure-Portal (klassisch)](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
-### [Klassisches Portal (klassisch)](vpn-gateway-point-to-site-create.md)
 ## Konfigurieren von VNet-zu-VNet-Verbindungen
 ### [Azure-Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 ### [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
@@ -39,9 +39,12 @@
 ## [Konfigurieren von BGP für Azure VPN Gateway-Instanzen mithilfe von PowerShell](vpn-gateway-bgp-resource-manager-ps.md)
 ## [Konfigurieren hochverfügbarer Aktiv/Aktiv-Verbindungen](vpn-gateway-activeactive-rm-powershell.md)
 ## [Ändern der Einstellungen des lokalen Netzwerkgateways mit PowerShell](vpn-gateway-modify-local-network-gateway.md)
-## [Überprüfen einer Gatewayverbindung](vpn-gateway-verify-connection-resource-manager.md)
-## [Zurücksetzen einer Azure VPN Gateway-Instanz](vpn-gateway-resetgw-classic.md)
-## [Gewusst wie: Verwenden von selbstsignierten Zertifikaten für Point-to-Site-Verbindungen](vpn-gateway-certificates-point-to-site.md)
+## [Überprüfen einer VPN Gateway-Verbindung](vpn-gateway-verify-connection-resource-manager.md)
+## [Zurücksetzen einer VPN Gateway-Instanz](vpn-gateway-resetgw-classic.md)
+## Löschen eines VPN-Gateways
+### [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
+### [PowerShell (klassisch)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
+## [Erstellen selbstsignierter Stammzertifikate für P2S-Verbindungen](vpn-gateway-certificates-point-to-site.md)
 ## [Konfigurieren einer VPN Gateway-Instanz (klassisch)](vpn-gateway-configure-vpn-gateway-mp.md)
 
 # Referenz
@@ -64,8 +67,3 @@
 ## [Preise](https://azure.microsoft.com/pricing/details/vpn-gateway)
 ## [SLA](https://azure.microsoft.com/support/legal/sla)
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=vpn-gateway)
-
-
-<!--HONumber=Jan17_HO5-->
-
-

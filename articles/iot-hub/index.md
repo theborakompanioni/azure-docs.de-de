@@ -13,12 +13,13 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: eb364084e5f5155399c8a052b036ec0316616366
-ms.openlocfilehash: 36b9070260b334f1713cf575eb94007ce1b556f5
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 9a27b7dc57772a8e4c82c96546463576daa6b1d9
+ms.lasthandoff: 03/18/2017
 
 ---
 
-#<a name="iot-hub-documentation"></a>Dokumentation zu IoT Hub
+# <a name="iot-hub-documentation"></a>Dokumentation zu IoT Hub
 
 Hier erfahren Sie, wie Sie mithilfe von IoT Hub Millionen von Ressourcen des Internets der Dinge (Internet of Things, IoT) verbinden, überwachen und steuern. Anhand von Tutorials, API-Referenzen, Videos und anderem Dokumentationsmaterial wird gezeigt, wie Sie eine zuverlässige, bidirektionale Kommunikation zwischen IoT-Geräten und einem Lösungs-Back-End bereitstellen. 
 
@@ -141,8 +142,8 @@ Hier erfahren Sie, wie Sie mithilfe von IoT Hub Millionen von Ressourcen des Int
                         <p><a href="/dotnet/api/microsoft.azure.devices.client">.NET (Geräte)</a></p>
                         <p><a href="/java/api/com.microsoft.azure.sdk.iot.service.auth">Java (Dienst)</a></p>
                         <p><a href="/java/api/com.microsoft.azure.sdk.iot.device">Java (Geräte)</a></p>
-                        <p><a href="http://azure.github.io/azure-iot-sdks/node/api_reference/azure-iothub/1.0.17/index.html">Knoten (Dienst)</a></p>
-                        <p><a href="http://azure.github.io/azure-iot-sdks/node/api_reference/azure-iot-device/1.0.15/index.html">Knoten (Geräte)</a></p>
+                        <p><a href="https://azure.github.io/azure-iot-sdk-node/azure-iothub/1.1.7/index.html">Knoten (Dienst)</a></p>
+                        <p><a href="https://azure.github.io/azure-iot-sdk-node/azure-iot-device/1.1.7/index.html">Knoten (Geräte)</a></p>
                         <p><a href="http://azure.github.io/azure-iot-sdks/">Azure IoT SDKs</a></p>
                         <p><a href="http://azure.github.io/azure-iot-gateway-sdk">Gateway-SDK</a></p>
                     </div>
@@ -167,10 +168,5 @@ Hier erfahren Sie, wie Sie mithilfe von IoT Hub Millionen von Ressourcen des Int
     </li>
 </ul>
 
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

@@ -82,7 +82,6 @@
 
 ### [Migrieren aus IIS](web-sites-migration-from-iis-server.md)
 ### [Testen in der Produktion](app-service-web-test-in-production-get-start.md)
-### [Ausführen von Leistungstests](app-service-web-app-performance-test.md) 
 
 ## Herstellen einer Verbindung mit DB/Ressourcen        
 
