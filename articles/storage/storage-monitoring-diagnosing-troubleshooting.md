@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/03/2017
 ms.author: jahogg
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 2e2978f6e81b3f584eb73ce10fb373b62f7b85ff
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: a5193cb222fab1f3ed3e700d45c4a51676707d5a
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -144,7 +144,7 @@ Hilfe für die Schätzung der Größe der verschiedenen Speicherobjekte wie Blob
 ### <a name="monitoring-availability"></a>Verfügbarkeitsüberwachung
 Sie sollten die Verfügbarkeit des Speicherdiensts in Ihrem Speicherkonto überwachen, indem Sie in den Tabellen für Stunden- oder Minutenmetriken den Wert in der Spalte **Availability** überwachen: **$MetricsHourPrimaryTransactionsBlob**, **$MetricsHourPrimaryTransactionsTable**, **$MetricsHourPrimaryTransactionsQueue**, **$MetricsMinutePrimaryTransactionsBlob**, **$MetricsMinutePrimaryTransactionsTable**, **$MetricsMinutePrimaryTransactionsQueue**, **$MetricsCapacityBlob**. Die Spalte **Availability** enthält einen Prozentwert, der die Verfügbarkeit des Diensts oder API-Vorgangs in der jeweiligen Zeile darstellt. (Der Wert von **RowKey** gibt Aufschluss darüber, ob die Zeile allgemeine Metriken für den Dienst oder Metriken für einen bestimmten API-Vorgang enthält.)
 
-Jeder unter 100 % liegende Wert zeigt an, dass einige Speicheranfragen fehlschlagen. Zur Ermittlung der Fehlerursache können Sie die anderen Spalten in den Metrikdaten untersuchen, in denen die Anzahl von Anfragen mit verschiedenen Fehlerarten (beispielsweise **ServerTimeoutError**) angezeigt wird. Aufgrund von vorübergehenden Servertimeouts, die beispielsweise auftreten können, wenn der Server Partitionen verschiebt, um eine bessere Lastverteilung der Anforderungen zu erreichen, ist mit dem vorübergehenden Absinken der Verfügbarkeit** **auf unter 100 Prozent zu rechnen. Solche zeitweiligen Bedingungen sollten von der Wiederholungslogik in Ihrer Clientanwendung behandelt werden. Im Artikel [Protokollierte Speicheranalysevorgänge und Statusmeldungen](http://msdn.microsoft.com/library/azure/hh343260.aspx) sind die Transaktionsarten aufgeführt, die die Speichermetriken in ihrer Berechnung der **Verfügbarkeit** enthalten.
+Jeder unter 100 % liegende Wert zeigt an, dass einige Speicheranfragen fehlschlagen. Zur Ermittlung der Fehlerursache können Sie die anderen Spalten in den Metrikdaten untersuchen, in denen die Anzahl von Anfragen mit verschiedenen Fehlerarten (beispielsweise **ServerTimeoutError**) angezeigt wird. Aufgrund von vorübergehenden Servertimeouts, die beispielsweise auftreten können, wenn der Server Partitionen verschiebt, um eine bessere Lastverteilung der Anforderungen zu erreichen, ist mit dem vorübergehenden Absinken der Verfügbarkeit****auf unter 100 Prozent zu rechnen. Solche zeitweiligen Bedingungen sollten von der Wiederholungslogik in Ihrer Clientanwendung behandelt werden. Im Artikel [Protokollierte Speicheranalysevorgänge und Statusmeldungen](http://msdn.microsoft.com/library/azure/hh343260.aspx) sind die Transaktionsarten aufgeführt, die die Speichermetriken in ihrer Berechnung der **Verfügbarkeit** enthalten.
 
 Im [Azure-Portal](https://portal.azure.com) können Sie Warnregeln hinzufügen, um benachrichtigt zu werden, wenn die **Verfügbarkeit** den von Ihnen festgelegten Grenzwert unterschreitet.
 
@@ -305,7 +305,7 @@ Dieser Abschnitt wird Sie bei der Diagnose und Behandlung einiger bekannter Prob
 
 **Entscheidungsbaum für die Problembehandlung**
 
-- - -
+---
 Bezieht sich Ihr Problem auf die Leistungsfähigkeit eines Speicherdiensts?
 
 * [Metriken zeigen hohe AverageE2ELatency und niedrige AverageServerLatency an]
@@ -313,39 +313,39 @@ Bezieht sich Ihr Problem auf die Leistungsfähigkeit eines Speicherdiensts?
 * [Metriken zeigen hohe AverageServerLatency an]
 * [Sie stoßen auf unerwartete Verzögerungen bei der Nachrichtenübermittlung in einer Warteschlange]
 
-- - -
+---
 Bezieht sich Ihr Problem auf die Verfügbarkeit eines Speicherdiensts?
 
 * [Metriken zeigen Anstieg bei PercentThrottlingError an]
 * [Metriken zeigen Anstieg bei PercentTimeoutError an]
 * [Metriken zeigen Anstieg bei PercentNetworkError an]
 
-- - -
-Empfängt Ihre Clientanwendung eine HTTP 4XX-Antwort (beispielsweise 404) von einem Speicherdienst?
+---
+ Empfängt Ihre Clientanwendung eine HTTP 4XX-Antwort (beispielsweise 404) von einem Speicherdienst?
 
 * [Der Client empfängt HTTP 403 (Verboten)-Meldungen]
 * [Der Client empfängt HTTP 404 (Nicht gefunden)-Meldungen]
 * [Der Client empfängt HTTP 409 (Konflikt)-Meldungen]
 
-- - -
-[Metriken zeigen niedrigen PercentSuccess an, oder Vorgänge in Analyse-Protokolleinträgen haben den Transaktionsstatus „ClientOtherErrors“]
+---
+[Metrics show low PercentSuccess or analytics log entries have operations with transaction status of ClientOtherErrors]
 
-- - -
+---
 [Kapazitätsmetriken zeigen einen unerwarteten Anstieg der Speicherkapazitätsauslastung an]
 
-- - -
-[Sie stoßen auf unerwartete Neustarts von virtuellen Computern, die über eine große Anzahl angeschlossener virtueller VHDs verfügen]
+---
+[You are experiencing unexpected reboots of Virtual Machines that have a large number of attached VHDs]
 
-- - -
+---
 [Ihre Probleme entstehen aus der Verwendung des Speicheremulators für Entwicklung oder Test]
 
-- - -
-[Sie stoßen bei der Installation von Azure SDK für .NET auf Probleme]
+---
+[You are encountering problems installing the Azure SDK for .NET]
 
-- - -
+---
 [Sie haben ein anderes Problem mit einem Speicherdienst]
 
-- - -
+---
 ### <a name="metrics-show-high-AverageE2ELatency-and-low-AverageServerLatency"></a>Metriken zeigen hohe AverageE2ELatency und niedrige AverageServerLatency an
 Die Abbildung unten aus dem Überwachungstool des [Azure-Portals](https://portal.azure.com) zeigt ein Beispiel, in dem die **AverageE2ELatency** wesentlich höher als die **AverageServerLatency** ist.
 
@@ -788,7 +788,7 @@ Die integrierte **Web-Proxy** -Rückverfolgung in Microsoft Message Analyzer bas
 #### <a name="diagnosing-network-issues-using-microsoft-message-analyzer"></a>Diagnose von Netzwerkproblemen mithilfe von Microsoft Message Analyzer
 Neben der Erfassung des HTTP-/HTTPS-Datenverkehrs zwischen der Anwendung und dem Speicherdienst mithilfe der **Webproxy**-Ablaufverfolgung können Sie mit Microsoft Message Analyzer über die integrierte **Local-Link-Layer**-Ablaufverfolgung auch Netzwerkpaketinformationen erfassen. Dadurch können Sie wie mit Wireshark Daten erfassen und Netzwerkprobleme wie verworfene Pakete diagnostizieren.
 
-Der folgende Screenshot zeigt ein Beispiel für die **Local-Link-Layer**-Ablaufverfolgung mit einigen Informationsmeldungen** **in der Spalte **DiagnosisTypes**. Mit einem Klick auf die Spalte **DiagnosisTypes** werden die Nachrichtendetails angezeigt. In diesem Beispiel hat der Server Nachricht "#305" neu übertragen, weil sie keine Bestätigung vom Client erhalten hat:
+Der folgende Screenshot zeigt ein Beispiel für die **Local-Link-Layer**-Ablaufverfolgung mit einigen Informationsmeldungen****in der Spalte **DiagnosisTypes**. Mit einem Klick auf die Spalte **DiagnosisTypes** werden die Nachrichtendetails angezeigt. In diesem Beispiel hat der Server Nachricht "#305" neu übertragen, weil sie keine Bestätigung vom Client erhalten hat:
 
 ![][9]
 

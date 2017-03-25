@@ -13,11 +13,12 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 03/10/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: e80bf82df28fbce8a1019c6eb07cfcae4cbba930
-ms.openlocfilehash: 49bec6125bcd76c3bb52f1237b0f0e0ceff85ffb
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: b615f97484033bb406022e84fbcf50f88458de3c
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -44,7 +45,7 @@ Weitere Informationen zur Verwendung von Berechtigungen mit in die Domäne einge
 
 ## <a name="access-control"></a>Zugriffssteuerung
 
-Wenn Sie ein Azure-Abonnement verwenden, für das Sie nicht als Administrator/Besitzer fungieren (etwa ein Abonnement eines Unternehmens), müssen Sie sicherstellen, dass Sie mit Ihrer Azure-Anmeldung mindestens über Zugriff vom Typ **Mitwirkender** auf die Azure-Ressourcengruppe verfügen, die den HDInsight-Cluster enthält.
+Wenn Sie ein Azure-Abonnement verwenden, für das Sie nicht als Administrator/Besitzer fungieren (etwa ein Abonnement eines Unternehmens), müssen Sie sicherstellen, dass Sie mit Ihrem Azure-Konto mindestens über Zugriff vom Typ **Mitwirkender** auf die Azure-Ressourcengruppe verfügen, die den HDInsight-Cluster enthält.
 
 Wenn Sie einen HDInsight-Cluster erstellen, muss der Anbieter für HDInsight bereits von einer Person registriert worden sein, die mindestens über Zugriff vom Typ **Mitwirkender** auf das Azure-Abonnement verfügt. Die Anbieterregistrierung findet statt, wenn ein Benutzer, der über Abonnementzugriff vom Typ „Mitwirkender“ verfügt, erstmals eine Ressource für das Abonnement erstellt. Dies kann auch ohne Erstellung einer Ressource erreicht werden. Führen Sie dazu wie [hier](https://msdn.microsoft.com/library/azure/dn790548.aspx) beschrieben eine REST-basierte Anbieterregistrierung aus.
 
@@ -55,7 +56,7 @@ Weitere Informationen zur Verwendung der Zugriffsverwaltung finden Sie in den fo
 
 ## <a name="understanding-script-actions"></a>Grundlegendes zu Skriptaktionen
 
-Eine Skriptaktion ist einfach ein Bash-Skript, für das Sie einen URI und die Parameter angeben und das dann auf den HDInsight-Clusterknoten ausgeführt wird. Unten sind die Merkmale und Features von Skriptaktionen aufgeführt.
+Eine Skriptaktion ist einfach ein Bash-Skript, für das Sie einen URI und die Parameter angeben. Das Skript wird dann auf den HDInsight-Clusterknoten ausgeführt. Unten sind die Merkmale und Features von Skriptaktionen aufgeführt.
 
 * Sie müssen als URI gespeichert werden, der über den HDInsight-Cluster verfügbar ist. Dies sind zwei mögliche Speicherorte:
 
@@ -66,12 +67,14 @@ Eine Skriptaktion ist einfach ein Bash-Skript, für das Sie einen URI und die Pa
         > [!NOTE]
         > Der Dienstprinzipal, der von HDInsight zum Zugreifen auf Data Lake Store genutzt wird, muss über Lesezugriff auf das Skript verfügen.
 
-    * Ein **Blob-Speicherkonto**, das entweder das primäre oder das zusätzliche Speicherkonto für den HDInsight-Cluster darstellt. Da HDInsight während der Clustererstellung Zugriff auf beide Typen von Speicherkonten gewährt wird, stellen diese eine Möglichkeit dar, eine nicht öffentliche Skriptaktion zu verwenden.
+    * Ein Blob in einem **Azure Storage-Konto**, das entweder das primäre oder das zusätzliche Speicherkonto für den HDInsight-Cluster darstellt. Da HDInsight während der Clustererstellung Zugriff auf beide Typen von Speicherkonten gewährt wird, stellen diese eine Möglichkeit dar, eine nicht öffentliche Skriptaktion zu verwenden.
 
-    * „https://docs.microsoft.com/en-us/azure/service-bus/“, z.B. ein Azure-Blob, GitHub, OneDrive, Dropbox usw.
+    * Ein öffentlicher Dateifreigabedienst wie ein Azure-Blob, GitHub, OneDrive, Dropbox usw.
 
         Beispiele für den URI für Skripts, die im Blobcontainer (öffentlich lesbar) gespeichert werden, finden Sie im Abschnitt [Script Action-Beispielskripts](#example-script-action-scripts) .
 
+        > [!WARNING]
+        > HDInsight unterstützt nur __allgemeine__ Azure Storage-Konten. Der Kontotyp __Blobspeicher__ wird derzeit nicht unterstützt.
 
 * Sie können auf die **ausschließliche Ausführung auf bestimmten Knotentypen** beschränkt werden, z.B. Hauptknoten oder Workerknoten.
 
@@ -126,7 +129,7 @@ Während der Clustererstellung können Sie mehrere Skriptaktionen angeben, die i
 > [!IMPORTANT]
 > Skriptaktionen müssen innerhalb von 60 Minuten abgeschlossen sein, andernfalls tritt ein Timeout ein. Während der Clusterbereitstellung wird das Skript gleichzeitig mit anderen Einrichtungs- und Konfigurationsprozessen ausgeführt. Der Wettbewerb um Ressourcen wie CPU-Zeit oder Netzwerkbandbreite kann dazu führen, dass es länger als in Ihrer Entwicklungsumgebung dauert, bis das Skript abgeschlossen ist.
 >
-> Um die Ausführungsdauer des Skripts zu minimieren, vermeiden Sie Aufgaben wie das Herunterladen und Kompilieren von Anwendungen aus der Quelle. Führen Sie stattdessen eine Vorkompilierung der Anwendung durch, und speichern Sie die binäre Version im Azure-BLOB-Speicher, damit sie schnell in den Cluster heruntergeladen werden kann.
+> Um die Ausführungsdauer des Skripts zu minimieren, vermeiden Sie Aufgaben wie das Herunterladen und Kompilieren von Anwendungen aus der Quelle. Führen Sie stattdessen eine Vorkompilierung der Anwendung durch, und speichern Sie die binäre Version im Azure Storage, damit sie schnell in den Cluster heruntergeladen werden kann.
 
 
 ### <a name="script-action-on-a-running-cluster"></a>Skriptaktion in einem ausgeführten Cluster
@@ -540,7 +543,7 @@ Stellen Sie vor dem Fortfahren sicher, dass Azure PowerShell installiert und kon
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-the-azure-cli"></a>Anwenden einer Skriptaktion auf einen ausgeführten Cluster über die Azure-Befehlszeilenschnittstelle (CLI)
 
-Stellen Sie vor dem Fortfahren sicher, dass die Azure-CLI installiert und konfiguriert ist. Weitere Informationen finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md).
+Stellen Sie vor dem Fortfahren sicher, dass die Azure-CLI installiert und konfiguriert ist. Weitere Informationen finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md).
 
 [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
 
@@ -697,7 +700,7 @@ Der HDInsight-Dienst bietet mehrere Möglichkeiten, benutzerdefinierte Komponent
 
     ![Screenshot von Vorgängen](./media/hdinsight-hadoop-customize-cluster-linux/ambariscriptaction.png)
 
-    Wählen Sie diesen Eintrag aus, und führen Sie einen Drilldown durch die Links aus, um die Ausgabe für STDOUT und STDERR anzuzeigen, die beim Ausführen des Skripts auf dem Cluster generiert wurde.
+    Wählen Sie den Eintrag „run\customscriptaction“ aus, und führen Sie einen Drilldown durch die Links aus, um die Ausgabe für STDOUT und STDERR anzuzeigen. Diese Ausgabe wird beim Ausführen des Skripts auf dem Cluster generiert und kann hilfreiche Informationen enthalten.
 
 ### <a name="access-logs-from-the-default-storage-account"></a>Rufen Sie Protokolle über das Standardspeicherkonto auf.
 
@@ -783,9 +786,4 @@ Informationen und Beispiele zum Erstellen und Verwenden von Skripts zum Anpassen
 * [Hinzufügen von zusätzlichem Speicher zu einem HDInsight-Cluster](hdinsight-hadoop-add-storage.md)
 
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/HDI-Cluster-state.png "Phasen während der Clustererstellung"
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

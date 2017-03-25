@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/05/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 204fa369dd6db618ec5340317188681b0a2988e3
-ms.openlocfilehash: a46db1815b84f0ecf93c805f3ea36e4e3d4282ac
-ms.lasthandoff: 02/11/2017
+ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
+ms.openlocfilehash: 42d9e68c3c18d04c02ab818d84a653ece811fc52
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -27,14 +27,6 @@ ms.lasthandoff: 02/11/2017
 
 
 In diesem Abschnitt erhalten Sie Informationen zum Migrieren Ihrer vorhandenen Azure-VMs vom klassischen Bereitstellungsmodell zu [Managed Disks](../storage/storage-managed-disks-overview.md) im Ressourcen-Manager-Bereitstellungsmodell.
-
-## <a name="before-you-begin"></a>Voraussetzungen
-Wenn Sie PowerShell verwenden, vergewissern Sie sich, dass Sie die neueste Version des AzureRM.Compute-PowerShell-Moduls verwenden. Führen Sie den folgenden Befehl aus, um es zu installieren.
-
-```powershell
-Install-Module AzureRM.Compute -RequiredVersion 2.6.0
-```
-Weitere Informationen finden Sie unter [Azure PowerShell-Versionsverwaltung](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/#azure-powershell-versioning).
 
 
 ## <a name="plan-for-the-migration-to-managed-disks"></a>Planen der Migration zu Managed Disks

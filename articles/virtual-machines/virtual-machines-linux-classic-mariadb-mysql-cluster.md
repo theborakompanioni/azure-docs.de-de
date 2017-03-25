@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 04/15/2015
 ms.author: asabbour
 translationtype: Human Translation
-ms.sourcegitcommit: 3136b8345d0c851c29a9498089da73c8564549d1
-ms.openlocfilehash: 72aed50d3dd86c5875d3b741a6fff16cb8f17a2d
-ms.lasthandoff: 01/31/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: bcb4fa81971ee1276cb8e7b0b249e970423bd630
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -45,7 +45,7 @@ In diesem Artikel wird beschrieben, wie Sie die folgenden Schritte ausführen:
 ![Systemarchitektur](media/virtual-machines-linux-classic-mariadb-mysql-cluster/Setup.png)
 
 > [!NOTE]
-> In diesem Thema werden die [Azure CLI](../xplat-cli-install.md)-Tools verwendet. Denken Sie deshalb daran, sie herunterzuladen und gemäß den Anweisungen mit Ihrem Azure-Abonnement zu verbinden. Referenzinformationen zu den Befehlen der Azure-Befehlszeilenschnittstelle (Azure CLI) finden Sie unter [Befehlsreferenz zur Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2). Darüber hinaus müssen Sie einen [SSH-Schlüssel für die Authentifizierung erstellen] und sich den Speicherort der PEM-Datei notieren.
+> In diesem Thema werden die [Azure CLI](../cli-install-nodejs.md)-Tools verwendet. Denken Sie deshalb daran, sie herunterzuladen und gemäß den Anweisungen mit Ihrem Azure-Abonnement zu verbinden. Referenzinformationen zu den Befehlen der Azure-Befehlszeilenschnittstelle (Azure CLI) finden Sie unter [Befehlsreferenz zur Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2). Darüber hinaus müssen Sie einen [SSH-Schlüssel für die Authentifizierung erstellen] und sich den Speicherort der PEM-Datei notieren.
 >
 >
 
@@ -282,7 +282,7 @@ Erstellen Sie drei virtuelle Computer anhand der Vorlage, die Sie gerade erstell
 
         sudo vi /etc/my.cnf.d/server.cnf
 
-    Heben Sie die Auskommentierung von ** `wsrep_cluster_name` ** und ** `wsrep_cluster_address` ** durch Entfernen von **#** am Anfang der Zeile auf.
+    Heben Sie die Auskommentierung von **`wsrep_cluster_name`** und **`wsrep_cluster_address`** durch Entfernen von **#** am Anfang der Zeile auf.
     Ersetzen Sie außerdem **`<ServerIP>`** in **`wsrep_node_address`** und **`<NodeName>`** in **`wsrep_node_name`** durch die IP-Adresse bzw. den Namen des virtuellen Computers, und kommentieren Sie auch diese Zeilen aus.
 5. Starten Sie den Cluster auf MariaDB1, und führen Sie ihn beim Start aus.
 

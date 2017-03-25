@@ -17,9 +17,9 @@ ms.date: 10/04/2016
 ms.author: rasquill
 "\"/": 
 translationtype: Human Translation
-ms.sourcegitcommit: 3136b8345d0c851c29a9498089da73c8564549d1
-ms.openlocfilehash: 88414392c4ee03e0b140bba0f73e44b6886c4038
-ms.lasthandoff: 01/31/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 31efab60690b54faf7992251fcd01e307c4464f2
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -29,7 +29,7 @@ Die Azure-Befehlszeilenschnittstelle umfasst eine Reihe von plattformübergreife
 * Führen Sie den CLI-Befehl `azure login` aus, um sich über Azure Active Directory zu authentifizieren. Diese Methode ermöglicht den Zugriff auf CLI-Befehle in beiden [Befehlsmodi](#cli-command-modes). Wenn Sie den Befehl ohne zusätzliche Optionen ausführen, werden Sie von `azure login` aufgefordert, die Anmeldung interaktiv über ein Webportal fortzusetzen. Weitere Befehlsoptionen für `azure login` finden Sie in den Szenarien dieses Artikels oder durch Eingabe von `azure login --help`.
 * Falls Sie nur die CLI-Befehle des Azure Service Management-Modus verwenden möchten (was bei den meisten neuen Bereitstellungen nicht empfehlenswert ist), können Sie eine Datei mit Veröffentlichungseinstellungen herunterladen und installieren.
 
-Wenn Sie die Befehlszeilenschnittstelle noch nicht installiert haben, finden Sie alle erforderlichen Informationen unter [Installieren der Azure-Befehlszeilenschnittstelle](xplat-cli-install.md). Wenn Sie über kein Azure-Abonnement verfügen, können Sie in wenigen Minuten ein [kostenloses Konto](http://azure.microsoft.com/free/) erstellen.
+Wenn Sie die Befehlszeilenschnittstelle noch nicht installiert haben, finden Sie alle erforderlichen Informationen unter [Installieren der Azure-Befehlszeilenschnittstelle](cli-install-nodejs.md). Wenn Sie über kein Azure-Abonnement verfügen, können Sie in wenigen Minuten ein [kostenloses Konto](http://azure.microsoft.com/free/) erstellen.
 
 Hintergrundinformationen zu anderen Kontoidentitäten und Azure-Abonnements finden Sie unter [Beziehung zwischen Azure-Abonnements und Azure Active Directory](active-directory/active-directory-how-subscriptions-associated-directory.md).
 

@@ -1,64 +1,8 @@
 ---
-title: "Konfigurieren der Traffic Manager-Routingmethode &quot;Roundrobin&quot; für Datenverkehr | Microsoft Docs"
-description: "In diesem Artikel finden Sie Informationen zum Konfigurieren der Lastenausgleichsmethode &quot;Roundrobin&quot; für Ihre Traffic Manager-Endpunkte."
-services: traffic-manager
-documentationcenter: 
-author: kumudd
-manager: timlt
-editor: tysonn
-ms.assetid: 0bd41a6c-8889-4dc8-bc7a-324b681b2959
-ms.service: traffic-manager
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/18/2016
-ms.author: kumud
+redirect_url: /azure/traffic-manager/traffic-manager-configure-weighted-routing-method
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 49979fe1b9694fa55de9190f7071c96752887a87
-
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: e6e078f537b6d26a5fe0772e7c1aba2fec85bfe4
+ms.lasthandoff: 03/22/2017
 
 ---
-<!-- repub for nofollow -->
-
-# <a name="configure-round-robin-routing-method"></a>Konfigurieren der Routingmethode "Roundrobin"
-Ein gängiges Muster für das Routing von Datenverkehr besteht darin, eine Reihe identischer Endpunkte (die Clouddienste und Websites umfassen) bereitzustellen und Datenverkehr im Roundrobin-Verfahren an die einzelnen Endpunkte zu senden. Die nachstehende Schritte zeigen, wie Traffic Manager konfiguriert wird, um die entsprechende Methode für das Routing von Datenverkehr zu implementieren. Weitere Informationen zu den verschiedenen Routingmethoden für Datenverkehr finden Sie unter [Informationen zu Traffic Manager-Routingmethoden für Datenverkehr](traffic-manager-routing-methods.md).
-
-> [!NOTE]
-> Beachten Sie, dass Azure Websites bereits Roundrobin-Lastenausgleichsfunktionen für Websites in einem Datencenter (auch als "Region" bezeichnet) zur Verfügung stellt. Traffic Manager ermöglicht das Angeben von Routingmethoden für Roundrobin-Datenverkehr für Websites in verschiedenen Datencentern.
-> 
-> 
-
-## <a name="routing-traffic-equally-round-robin-across-a-set-of-endpoints"></a>Gleichmäßiges Routing von Datenverkehr (Roundrobin) in einer Gruppe von Endpunkten:
-1. Klicken Sie im klassischen Azure-Portal im linken Bereich auf das Symbol **Traffic Manager** , um den Bereich „Traffic Manager“ zu öffnen. Wenn Sie noch kein Traffic Manager-Profil erstellt haben, finden Sie unter [Verwalten von Traffic Manager-Profilen](traffic-manager-manage-profiles.md) Anweisungen zum Erstellen eines einfachen Traffic Manager-Profils.
-2. Suchen Sie im klassischen Azure-Portal im Bereich „Traffic Manager“ das Traffic Manager-Profil mit den Einstellungen, die Sie ändern möchten, und klicken Sie dann auf den Pfeil rechts neben dem Profilnamen. Die Einstellungsseite für das Profil wird geöffnet.
-3. Klicken Sie auf der Seite für Ihr Profil oben auf **Endpunkte** , und prüfen Sie, ob die Dienstendpunkte, die Sie einschließen möchten, in Ihrer Konfiguration vorhanden sind. Schritte zum Hinzufügen oder Entfernen von Endpunkten finden Sie unter [Verwalten von Endpunkten in Traffic Manager](traffic-manager-endpoints.md).
-4. Klicken Sie auf der Seite Ihres Profils oben auf **Konfigurieren** , um die Konfigurationsseite zu öffnen.
-5. Überprüfen Sie in den Einstellungen der **Routingmethode für Datenverkehr**, ob die Routingmethode für Datenverkehr **Roundrobin** ist. Klicken Sie andernfalls in der Dropdownliste auf **Roundrobin** .
-6. Stellen Sie sicher, dass die **Überwachungseinstellungen** ordnungsgemäß konfiguriert sind. Durch die Überwachung wird sichergestellt, dass die Endpunkte, die offline sind, keinen Datenverkehr empfangen. Um Endpunkte zu überwachen, müssen Sie einen Pfad und einen Dateinamen angeben. Beachten Sie, dass der Schrägstrich"/"ein gültiger Eintrag für den relativen Pfad ist und bedeutet, dass sich die Datei im Stammverzeichnis (Standardwert) befindet. Weitere Informationen zur Überwachung finden Sie unter [Traffic Manager-Überwachung](traffic-manager-monitoring.md).
-7. Klicken Sie nach der Durchführung der Konfigurationsänderungen unten auf der Seite auf **Speichern** .
-8. Testen Sie die Änderungen in Ihrer Konfiguration. Weitere Informationen finden Sie unter [Testen von Traffic Manager-Einstellungen](traffic-manager-testing-settings.md).
-9. Sobald das Traffic Manager-Profil eingerichtet und funktionsfähig ist, bearbeiten Sie den DNS-Eintrag auf dem autoritativen DNS-Server, damit Ihre Unternehmensdomäne auf den Namen der Traffic Manager-Domäne verweisen kann. Weitere Informationen hierzu finden Sie unter [Verweisen auf eine Traffic Manager-Domäne mit der Internetdomäne eines Unternehmens](traffic-manager-point-internet-domain.md).
-
-## <a name="next-steps"></a>Nächste Schritte
-[Verweisen einer Unternehmens-Internetdomäne auf eine Traffic Manager-Domäne](traffic-manager-point-internet-domain.md)
-
-[Traffic Manager-Routingmethoden](traffic-manager-routing-methods.md)
-
-[Konfigurieren der Routingmethode „Failover“](traffic-manager-configure-failover-routing-method.md)
-
-[Konfigurieren der Routingmethode „Performance“](traffic-manager-configure-performance-routing-method.md)
-
-[Problembehandlung beim Status „Heruntergestuft“ in Traffic Manager](traffic-manager-troubleshooting-degraded.md)
-
-[Deaktivieren, Aktivieren oder Löschen eines Traffic Manager-Profils](disable-enable-or-delete-a-profile.md)
-
-[Deaktivieren oder Aktivieren eines Traffic Manager-Endpunkts](disable-or-enable-an-endpoint.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

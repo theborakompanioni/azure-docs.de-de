@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 03/08/2017
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: ba75d58b6e0ce6a75173c6d38ea27e7917a054c8
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 88351f0c3333fb06b1949a8ab9f63deea7259a41
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -61,9 +61,9 @@ Für Azure sind öffentliche und private Schlüssel mit mindestens 2.048 Bit im 
 
 Im Folgenden sind die Dateitypen für die unterschiedlichen Bereitstellungsszenarien aufgeführt:
 
-1. **ssh-rsa**-Schlüssel werden für Bereitstellungen über das [Azure-Portal](https://portal.azure.com) sowie für Resource Manager-Bereitstellungen über die [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) benötigt.
+1. **ssh-rsa**-Schlüssel werden für Bereitstellungen über das [Azure-Portal](https://portal.azure.com) sowie für Resource Manager-Bereitstellungen über die [Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md) benötigt.
    * Diese Schlüssel sind in der Regel alles, was die meisten Benutzer benötigen.
-2. Eine `.pem`-Datei wird für die Erstellung virtueller Computer über die klassische Bereitstellung benötigt. Diese Schlüssel werden bei klassischen Bereitstellungen unterstützt, wenn das [Azure-Portal](https://portal.azure.com) oder die [Azure CLI](../xplat-cli-install.md) verwendet wird.
+2. Eine `.pem`-Datei wird für die Erstellung virtueller Computer über die klassische Bereitstellung benötigt. Diese Schlüssel werden bei klassischen Bereitstellungen unterstützt, wenn das [Azure-Portal](https://portal.azure.com) oder die [Azure CLI](../cli-install-nodejs.md) verwendet wird.
    * Die zusätzlichen Schlüssel und Zertifikate müssen nur erstellt werden, wenn Sie Ressourcen verwalten, die mit dem klassischen Bereitstellungsmodell erstellt wurden.
 
 ## <a name="install-git-for-windows"></a>Installieren von Git für Windows

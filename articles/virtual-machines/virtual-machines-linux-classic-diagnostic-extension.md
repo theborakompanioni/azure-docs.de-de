@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 12/15/2015
 ms.author: Ning
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 625f4cc08ba023309ac4a9a8b7834d9ab4f4c116
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: e43a3920da0baafa1be0d3a9a8596f19bf7ebc3e
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -55,7 +55,7 @@ Beachten Sie, dass die hier beschriebenen Konfigurationsmethoden nicht für das 
 ## <a name="prerequisites"></a>Voraussetzungen
 * **Azure Linux Agent ab Version 2.0.6**.
   Beachten Sie, dass die meisten Images des Linux-Katalogs für virtuelle Azure-Computer die Version 2.0.6 oder höher besitzen. Sie können **WAAgent -version** ausführen, um zu ermitteln, welche Version auf dem virtuellen Computer installiert ist. Wenn auf dem virtuellen Computer eine ältere Version als 2.0.6 ausgeführt wird, können Sie sie unter Verwendung [dieser Anweisungen bei GitHub](https://github.com/Azure/WALinuxAgent "Anweisungen") aktualisieren.
-* **Azure-Befehlszeilenschnittstelle**. Folgen Sie [dieser Anleitung zur CLI-Installation](../xplat-cli-install.md) , um die Azure-Befehlszeilenschnittstelle auf Ihrem Computer einzurichten. Sobald die Azure-Befehlszeilenschnittstelle installiert ist, können Sie über Ihre Befehlszeilenschnittstelle (Bash, Terminal oder Eingabeaufforderung) mithilfe des Befehls **azure** auf die Befehle der Azure-Befehlszeilenschnittstelle zugreifen. Beispiel:
+* **Azure-Befehlszeilenschnittstelle**. Folgen Sie [dieser Anleitung zur CLI-Installation](../cli-install-nodejs.md) , um die Azure-Befehlszeilenschnittstelle auf Ihrem Computer einzurichten. Sobald die Azure-Befehlszeilenschnittstelle installiert ist, können Sie über Ihre Befehlszeilenschnittstelle (Bash, Terminal oder Eingabeaufforderung) mithilfe des Befehls **azure** auf die Befehle der Azure-Befehlszeilenschnittstelle zugreifen. Beispiel:
   
   * Führen Sie **azure vm extension set --help** aus, um ausführliche Hilfeinformationen zu erhalten.
   * Führen Sie **azure login** aus, um sich bei Azure anzumelden.

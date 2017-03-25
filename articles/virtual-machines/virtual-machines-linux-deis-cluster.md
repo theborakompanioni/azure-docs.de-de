@@ -17,9 +17,9 @@ ms.date: 06/24/2015
 ms.author: hbai
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: fa842efd99718be7fa9eaf8aac8030c32cbceeec
-ms.openlocfilehash: a972ab1671e55a94fa1dc2060f220d2e85787e35
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: cb631a1bcbe73c18b06e247b29056a83cfa61a46
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -34,7 +34,7 @@ Zum Ausführen der folgenden Schritte benötigen Sie Folgendes:
 
 * Ein aktives Azure-Abonnement. Wenn Sie kein Abonnement besitzen, können Sie eine kostenlose Testversion unter [azure.com](https://azure.microsoft.com/)erhalten.
 * Eine Arbeits- oder Schulkonto-ID für die Verwendung von Azure-Ressourcengruppen. Wenn Sie über ein persönliches Konto verfügen, und Sie sich mit einer Microsoft-ID anmelden, müssen Sie [aus der persönlichen ID eine Arbeits-ID erstellen](virtual-machines-windows-create-aad-work-id.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-* Je nach Client-Betriebssystem entweder [Azure PowerShell](/powershell/azureps-cmdlets-docs) oder [Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows](../xplat-cli-install.md).
+* Je nach Client-Betriebssystem entweder [Azure PowerShell](/powershell/azureps-cmdlets-docs) oder [Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows](../cli-install-nodejs.md).
 * [OpenSSL](https://www.openssl.org/). OpenSSL wird verwendet, um die erforderlichen Zertifikate zu generieren.
 * Ein Git-Client, z. B. [Git Bash](https://git-scm.com/).
 * Um die Beispielanwendung zu testen, benötigen Sie auch einen DNS-Server. Sie können beliebige DNS-Server oder -Dienste verwenden, die Platzhalter-A-Datensätze unterstützen.
@@ -250,7 +250,7 @@ In diesem Artikel wurden Sie durch alle Schritte der Bereitstellung eines neuen 
 [Verwenden der Azure-Befehlszeilenschnittstelle][azure-command-line-tools]  
 [Verwenden von Windows PowerShell mit Azure Resource Manager][powershell-azure-resource-manager]  
 
-[azure-command-line-tools]: ../xplat-cli-install.md
+[azure-command-line-tools]: ../cli-install-nodejs.md
 [resource-group-overview]: ../azure-resource-manager/resource-group-overview.md
 [powershell-azure-resource-manager]: ../powershell-azure-resource-manager.md
 

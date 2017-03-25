@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: jgao
+ROBOTS: NOINDEX
 translationtype: Human Translation
-ms.sourcegitcommit: 6407c371bc51461a05429fabaf38d3f9bc80d32c
-ms.openlocfilehash: d8ea4fb54db5c114aa886a6267b18eba6563d231
-ms.lasthandoff: 02/07/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 05e8c264376b976bcdc8f3e1f03ed79cb712991e
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -241,7 +242,7 @@ Weitere Informationen zur Erstellung eines HDInsight-Clusters und zur Ausführun
 
 - - -
 
-## <a name="a-idappendix-aaappendix-a---upload-flight-delay-data-to-azure-blob-storage"></a><a id="appendix-a"></a>Anhang A – Hochladen der Daten zu Flugverspätungen in den Azure-Blobspeicher
+## <a id="appendix-a"></a>Anhang A – Hochladen der Daten zu Flugverspätungen in den Azure-Blobspeicher
 Das Hochladen der Datendatei und der HiveQL-Skriptdateien (siehe [Anhang B](#appendix-b))  erfordert eine gewisse Planung. Idealerweise sollten die Datendateien und die HiveQL-Datei vor dem Erstellen eines HDInsight-Clusters und vor dem Ausführen des Hive-Auftrags gespeichert werden. Sie haben zwei Möglichkeiten:
 
 * **Verwenden Sie dasselbe Azure-Speicherkonto, das vom HDInsight-Cluster als Standarddateisystem verwendet wird.** Da der HDInsight-Cluster über den Zugriffsschlüssel für das Speicherkonto verfügt, müssen Sie keine weiteren Änderungen vornehmen.
@@ -361,7 +362,7 @@ Bei „tutorials/flightdelay/data“ handelt es sich um den virtuellen Ordner, d
 
 - - -
 
-## <a name="a-idappendix-baappendix-b---create-and-upload-a-hiveql-script"></a><a id="appendix-b"></a>Anhang B – Erstellen und Hochladen eines HiveQL-Skripts
+## <a id="appendix-b"></a>Anhang B – Erstellen und Hochladen eines HiveQL-Skripts
 Mit Azure PowerShell können Sie mehrere HiveQL-Anweisungen gleichzeitig ausführen oder die HiveQL-Anweisung in eine Skriptdatei paketieren. Der Abschnitt zeigt, wie Sie ein HiveQL-Skript erstellen und das Skript mithilfe von Azure PowerShell in den Azure-Blobspeicher hochladen. Hive erfordert, dass HiveQL-Skripte im Azure-Blobspeicher gespeichert werden.
 
 Das HiveQL-Skript führt Folgendes durch:
@@ -560,7 +561,7 @@ Eine vollständige Liste der HiveQL-Befehle finden Sie unter [Hive-Datendefiniti
    * **$srcDataFolder** und **$dstDataFolder** - = "tutorials/flightdelay/data" = "tutorials/flightdelay/output"
 
 - - -
-## <a name="a-idappendix-caappendix-c---prepare-an-azure-sql-database-for-the-sqoop-job-output"></a><a id="appendix-c"></a>Anhang C: Vorbereiten der Azure SQL-Datenbank für die Ausgabe des Sqoop-Auftrags
+## <a id="appendix-c"></a>Anhang C: Vorbereiten der Azure SQL-Datenbank für die Ausgabe des Sqoop-Auftrags
 **So bereiten Sie die SQL-Datenbank vor (Zusammenführen mit dem Sqoop-Skript)**
 
 1. Bereiten Sie die Parameter vor:
@@ -710,7 +711,7 @@ Eine vollständige Liste der HiveQL-Befehle finden Sie unter [Hive-Datendefiniti
 4. Drücken Sie **F5** , um das Skript auszuführen.
 5. Validieren Sie die Skriptausgabe. Überprüfen Sie, ob das Skript erfolgreich ausgeführt wurde.
 
-## <a name="a-idnextstepsa-next-steps"></a><a id="nextsteps"></a> Nächste Schritte
+## <a id="nextsteps"></a> Nächste Schritte
 Jetzt wissen Sie, wie Sie eine Datei in den Azure-Blobspeicher hochladen, eine Hive-Tabelle mit Daten aus dem Azure-Blobspeicher füllen, Hive-Abfragen ausführen und Sqoop zum Exportieren von Daten aus dem HDFS in eine Azure SQL-Datenbank verwenden können. Weitere Informationen finden Sie in den folgenden Artikeln:
 
 * [Erste Schritte mit HDInsight][hdinsight-get-started]

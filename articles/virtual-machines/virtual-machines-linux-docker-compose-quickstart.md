@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 02/13/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 0240ecede4afc937972f81ca8536b3b05e905deb
-ms.openlocfilehash: 8389b743dec50e3de0e13e023ef43e4f706eb477
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: ad6401c1d18d44f56e0db9e7277f7ded995386bc
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -65,7 +65,7 @@ az vm show --resource-group myResourceGroup --name myDockerVM \
 Wenn diese Befehl `Succeeded` zurückgibt, ist die Bereitstellung abgeschlossen, und Sie können im nächsten Schritt eine SSH-Verbindung mit dem virtuellen Computer herstellen.
 
 ### <a name="azure-cli-10"></a>Azure-Befehlszeilenschnittstelle 1.0
-Installieren Sie die neueste [Azure-Befehlszeilenschnittstelle 1.0](../xplat-cli-install.md), und melden Sie sich bei einem Azure-Konto an. Stellen Sie sicher, dass der Resource Manager-Modus (`azure config mode arm`) aktiviert ist, bevor Sie den virtuellen Computer erstellen.
+Installieren Sie die neueste [Azure-Befehlszeilenschnittstelle 1.0](../cli-install-nodejs.md), und melden Sie sich bei einem Azure-Konto an. Stellen Sie sicher, dass der Resource Manager-Modus (`azure config mode arm`) aktiviert ist, bevor Sie den virtuellen Computer erstellen.
 
 Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen `myResourceGroup` im Standort `West US` und stellt einen virtuellen Computer mit der Azure Docker-VM-Erweiterung bereit. Zum Bereitstellen der Umgebung wird eine [Azure Resource Manager-Vorlage von GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu) verwendet:
 

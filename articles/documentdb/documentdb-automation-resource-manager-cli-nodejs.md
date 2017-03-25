@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/27/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 9ebf15e5f2ca21f3ec39af9be93253694a97cdf8
-ms.openlocfilehash: ba2f9d965528e69ce2d1fce62e5b16e738263c87
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 4725f4200446434bfcb8754aac9bf0d99f8a7526
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -34,7 +34,7 @@ In diesem Artikel erfahren Sie, wie Sie ein Azure DocumentDB-Konto mithilfe von 
 DocumentDB-Datenbankkonten sind derzeit die einzige DocumentDB-Ressource, die mithilfe von Resource Manager-Vorlagen und der Azure CLI 1.0 erstellt werden kann.
 
 ## <a name="getting-ready"></a>Vorbereitung
-Vor der Verwendung der Azure CLI 1.0 mit Azure-Ressourcengruppen benötigen Sie die richtige Version und ein Azure-Konto. Wenn Sie nicht über die Azure CLI 1.0 verfügen, [installieren Sie sie](../xplat-cli-install.md).
+Vor der Verwendung der Azure CLI 1.0 mit Azure-Ressourcengruppen benötigen Sie die richtige Version und ein Azure-Konto. Wenn Sie nicht über die Azure CLI 1.0 verfügen, [installieren Sie sie](../cli-install-nodejs.md).
 
 ### <a name="update-your-azure-cli-10-version"></a>Aktualisieren der Azure CLI 1.0-Version
 Geben Sie an der Eingabeaufforderung `azure --version` ein, um zu überprüfen, ob Sie bereits Version 0.10.4 oder höher installiert haben. Sie werden in diesem Schritt vielleicht aufgefordert, an einer Microsoft Azure-CLI-Datensammlung teilzunehmen, und können „j“ oder „n“ wählen.
@@ -42,7 +42,7 @@ Geben Sie an der Eingabeaufforderung `azure --version` ein, um zu überprüfen, 
     azure --version
     0.10.4 (node: 4.2.4)
 
-Wenn Ihre Version nicht 0.10.4 oder höher entspricht, müssen Sie mit einem der nativen Installer die [Azure CLI 1.0 installieren](../xplat-cli-install.md) oder aktualisieren. Sie können die CLI auch mit **npm** und Eingabe von `npm update -g azure-cli` aktualisieren oder mit `npm install -g azure-cli` installieren.
+Wenn Ihre Version nicht 0.10.4 oder höher entspricht, müssen Sie mit einem der nativen Installer die [Azure CLI 1.0 installieren](../cli-install-nodejs.md) oder aktualisieren. Sie können die CLI auch mit **npm** und Eingabe von `npm update -g azure-cli` aktualisieren oder mit `npm install -g azure-cli` installieren.
 
 ### <a name="set-your-azure-account-and-subscription"></a>Festlegen Ihres Azure-Kontos und -Abonnements
 Wenn Sie noch kein Azure-Abonnement, aber ein Visual Studio-Abonnement besitzen, können Sie Ihre [Visual Studio-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)aktivieren. Oder Sie registrieren sich für eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/).

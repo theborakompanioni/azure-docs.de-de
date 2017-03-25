@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 09/13/2016
 ms.author: guybo
 translationtype: Human Translation
-ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
-ms.openlocfilehash: 6fe3bd55b23432a8fddb1ffeeed33bc113b8bd73
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: f63649cc3b6c4acad6e39356f0210d3726548b17
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -40,7 +41,7 @@ Weitere Informationen zum Erstellen von Linux-VMs auf Azure finden Sie unter [Er
 
 Für die Installationsbefehle wird von Ubuntu ausgegangen, Sie können die Installation jedoch an alle unterstützten Linux-Distribution anpassen.
 
-Auf dem virtuellen Computer „script-vm“ muss die Azure-CLI mit einer funktionierenden Verbindung zu Azure installiert sein. Hilfe zu diesem Thema finden Sie unter [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md).
+Auf dem virtuellen Computer „script-vm“ muss die Azure-CLI mit einer funktionierenden Verbindung zu Azure installiert sein. Hilfe zu diesem Thema finden Sie unter [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md).
 
 ## <a name="upload-a-script"></a>Hochladen von Skripts
 Wir führen mit der CustomScript-Erweiterung ein Skript auf einem virtuellen Remotecomputer aus, um den LAMP-Stack zu installieren und eine PHP-Seite zu erstellen. Damit von einem beliebigen Standort aus auf das Skript zugegriffen werden kann, wird es als Azure-Blob hochgeladen.
@@ -105,10 +106,5 @@ Nachfolgend finden Sie einige zusätzliche Ressourcen für die Azure-CLI, Linux 
 [Azure-Erweiterungen für Linux (GitHub)](https://github.com/Azure/azure-linux-extensions)
 
 [Linux und Open-Source-Computing auf Azure](virtual-machines-linux-opensource-links.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

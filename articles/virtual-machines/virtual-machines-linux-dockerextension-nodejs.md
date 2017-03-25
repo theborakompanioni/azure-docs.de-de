@@ -15,9 +15,9 @@ ms.workload: infrastructure
 ms.date: 02/09/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 722c867f00628731f4001b050c5f4df0f2f21db7
-ms.openlocfilehash: bdbd2323b1fda2b4e4b4d3ce6755b04cec03085b
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: a6230ae2e9b22655988cd25e5f3660bf1bc214d7
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -44,7 +44,7 @@ Mit Azure Resource Manager-Vorlagen wird die gesamte Struktur Ihrer Umgebung def
 ## <a name="deploy-a-template-with-the-azure-docker-vm-extension"></a>Bereitstellen einer Vorlage mit der Azure Docker-VM-Erweiterung
 Wir verwenden eine vorhandene Schnellstartvorlage zum Erstellen einer Ubuntu-VM, bei der die Azure Docker-VM-Erweiterung zum Installieren und Konfigurieren des Docker-Hosts verwendet wird. Die Vorlage finden Sie hier: [Simple deployment of an Ubuntu VM with Docker](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)(Einfache Bereitstellung eines virtuellen Ubuntu-Computers mit Docker). 
 
-Installieren Sie die [neueste Version der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md), und melden Sie sich wie folgt im Resource Manager-Modus an:
+Installieren Sie die [neueste Version der Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md), und melden Sie sich wie folgt im Resource Manager-Modus an:
 
 ```azurecli
 azure config mode arm

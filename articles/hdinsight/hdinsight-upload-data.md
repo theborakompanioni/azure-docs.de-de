@@ -9,6 +9,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 56b913ee-0f9a-4e9f-9eaf-c571f8603dd6
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,8 +17,9 @@ ms.topic: article
 ms.date: 02/22/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: f9b191a68fe19f30aa157fd01f33afb0a4f1e279
-ms.openlocfilehash: 6e6f7793e03930cc002183172ccfbed6305378bd
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 74fe2d241dfcd6e572f0f20714f91c6aff970f34
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -58,12 +60,12 @@ Microsoft bietet die folgenden Hilfsprogramme für die Verwendung mit dem Azure-
 >
 >
 
-### <a name="a-idxplatcliaazure-cli"></a><a id="xplatcli"></a>Azure-Befehlszeilenschnittstelle
+### <a id="xplatcli"></a>Azure-Befehlszeilenschnittstelle
 Die Azure-Befehlszeilenschnittstelle ist ein plattformübergreifendes Tool zur Verwaltung von Azure-Diensten. Verwenden Sie die folgenden Schritte zum Hochladen von Daten in Azure-BLOB-Speicher:
 
 [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
 
-1. [Installieren und konfigurieren Sie die Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows](../xplat-cli-install.md).
+1. [Installieren und konfigurieren Sie die Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows](../cli-install-nodejs.md).
 2. Öffnen Sie eine Eingabeaufforderung, Bash oder eine andere Shell, und authentifizieren Sie Ihr Azure-Abonnement wie folgt.
 
         azure login
@@ -97,7 +99,7 @@ Die Azure-Befehlszeilenschnittstelle ist ein plattformübergreifendes Tool zur V
 >
 >
 
-### <a name="a-idpowershellaazure-powershell"></a><a id="powershell"></a>Azure PowerShell
+### <a id="powershell"></a>Azure PowerShell
 Azure PowerShell ist eine Skriptumgebung, mit der Sie die Bereitstellung und Verwaltung Ihrer Workloads in Azure steuern und automatisieren können. Informationen zum Konfigurieren der Arbeitsstation für die Ausführung von Azure PowerShell finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
 
 [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell.md)]
@@ -125,7 +127,7 @@ Azure PowerShell ist eine Skriptumgebung, mit der Sie die Bereitstellung und Ver
 
 PowerShell-Skripts, die für die Verwendung mit HDInsight erstellt wurden, finden Sie z.B. unter [HDInsight-Tools](https://github.com/blackmist/hdinsight-tools).
 
-### <a name="a-idazcopyaazcopy"></a><a id="azcopy"></a>AzCopy
+### <a id="azcopy"></a>AzCopy
 AzCopy ist ein Befehlszeilenprogramm, das den Austausch von Daten mit einem Azure Storage-Konto vereinfachen soll. Sie können dieses Dienstprogramm als eigenständiges Tool verwenden oder in eine vorhandene Anwendung integrieren. [Laden Sie AzCopy herunter][azure-azcopy-download].
 
 Die AzCopy-Syntax lautet folgendermaßen:
@@ -134,7 +136,7 @@ Die AzCopy-Syntax lautet folgendermaßen:
 
 Weitere Informationen finden Sie unter [AzCopy – Hochladen/Herunterladen von Dateien für Azure-Blobs][azure-azcopy].
 
-### <a name="a-idcommandlineahadoop-command-line"></a><a id="commandline"></a>Hadoop-Befehlszeile
+### <a id="commandline"></a>Hadoop-Befehlszeile
 Die Hadoop-Befehlszeile eignet sich nur zum Speichern von Daten im Blob-Speicher, wenn die Daten bereits auf dem Hauptknoten des Clusters vorhanden sind.
 
 Um den Hadoop-Befehl verwenden zu können, müssen Sie zunächst mithilfe einer der folgenden Methoden eine Verbindung zum Hauptknoten herstellen:
@@ -159,7 +161,7 @@ oder
 Eine Liste weiterer Hadoop-Befehle für die Arbeit mit Dateien finden Sie unter [http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html](http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html)
 
 > [!WARNING]
-> In HBase-Clustern ist die standardmäßige Blockgröße beim Schreiben von Daten 256 KB. Bei Verwendung von HBase-APIs oder REST-APIs funktioniert dies einwandfrei. Die Nutzung der Befehle `hadoop` und `hdfs dfs` zum Schreiben von Daten mit einem Umfang von mehr als ca. 12 GB führt allerdings zu einem Fehler. Weitere Informationen finden Sie im Abschnitt [Speicherausnahme beim Schreiben in ein Blob](#storageexception) weiter unten.
+> In HBase-Clustern ist die standardmäßige Blockgröße beim Schreiben von Daten 256 KB. Bei Verwendung von HBase-APIs oder REST-APIs funktioniert dies einwandfrei. Die Nutzung der Befehle `hadoop` und `hdfs dfs` zum Schreiben von Daten mit einem Umfang von mehr als ca.&12; GB führt allerdings zu einem Fehler. Weitere Informationen finden Sie im Abschnitt [Speicherausnahme beim Schreiben in ein Blob](#storageexception) weiter unten.
 >
 >
 
@@ -178,7 +180,7 @@ Es gibt auch einige Anwendungen, die eine grafische Benutzeroberfläche für die
 ### <a name="visual-studio-tools-for-hdinsight"></a>Visual Studio-Tools für HDInsight
 Weitere Informationen finden Sie unter [Navigieren durch die verknüpften Ressourcen](hdinsight-hadoop-visual-studio-tools-get-started.md#navigate-the-linked-resources).
 
-### <a name="a-idstorageexploreraazure-storage-explorer"></a><a id="storageexplorer"></a>Azure-Speicher-Explorer
+### <a id="storageexplorer"></a>Azure-Speicher-Explorer
 *Azure-Speicher-Explorer* ist ein hilfreiches Tool zum Prüfen und Ändern der Daten in BLOBs. Dieses kostenlose Open Source-Tool kann von [http://storageexplorer.com/](http://storageexplorer.com/)heruntergeladen werden. Der Quellcode ist über diesen Link ebenfalls verfügbar.
 
 Bevor Sie das Tool verwenden können, müssen Sie den Namen Ihres Azure-Speicherkontos und den Kontoschlüssel kennen. Anleitungen zum Abrufen dieser Informationen finden Sie unter [Erstellen, Verwalten oder Löschen von Speicherkonten][azure-create-storage-account] im Abschnitt „Anzeigen, Kopieren und Neuerstellen von Speicherzugriffsschlüsseln“.
@@ -209,7 +211,7 @@ Mit Azure Data Factory können Daten in den Azure-Blob-Speicher verschoben oder 
 
 Weitere Informationen finden Sie in der [Dokumentation zu Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/).
 
-### <a name="a-idsqoopaapache-sqoop"></a><a id="sqoop"></a>Apache Sqoop
+### <a id="sqoop"></a>Apache Sqoop
 Sqoop ist ein Tool zum Übertragen von Daten zwischen Hadoop und relationalen Datenbanken. Sie können damit Daten aus einem Managementsystem für relationale Datenbanken (RDBMS) wie SQL Server, MySQL oder Oracle in das verteilte Dateisystem von Hadoop (HDFS) importieren, die Daten in Hadoop mit MapReduce oder Hive transformieren und sie anschließend wieder in ein RDBMS exportieren.
 
 Weitere Informationen finden Sie unter [Verwenden von Sqoop mit HDInsight][hdinsight-use-sqoop].
@@ -227,8 +229,8 @@ Auf den Azure-Blob-Speicher kann auch mithilfe eines Azure-SDK über die folgend
 Weitere Informationen zum Installieren der Azure-SDKs finden Sie unter [Azure-Downloads](https://azure.microsoft.com/downloads/)
 
 ## <a name="troubleshooting"></a>Problembehandlung
-### <a name="a-idstorageexceptionastorage-exception-for-write-on-blob"></a><a id="storageexception"></a>Speicherausnahme beim Schreiben in ein Blob
-**Symptome**: Bei Verwendung der Befehle `hadoop` und `hdfs dfs`, um Dateien mit etwa 12 GB oder größer in einem HBase-Cluster zu schreiben, wird möglicherweise die folgende Fehlermeldung angezeigt:
+### <a id="storageexception"></a>Speicherausnahme beim Schreiben in ein Blob
+**Symptome**: Bei Verwendung der Befehle `hadoop` und `hdfs dfs`, um Dateien mit etwa&12; GB oder größer in einem HBase-Cluster zu schreiben, wird möglicherweise die folgende Fehlermeldung angezeigt:
 
     ERROR azure.NativeAzureFileSystem: Encountered Storage Exception for write on Blob : example/test_large_file.bin._COPYING_ Exception details: null Error Code : RequestBodyTooLarge
     copyFromLocal: java.io.IOException
@@ -301,15 +303,10 @@ Jetzt wissen Sie, wie Sie Daten in HDInsight importieren. Lesen Sie in den folge
 
 [Powershell-install-configure]: /powershell/azureps-cmdlets-docs
 
-[azurecli]: ../xplat-cli-install.md
+[azurecli]: ../cli-install-nodejs.md
 
 
 [image-azure-storage-explorer]: ./media/hdinsight-upload-data/HDI.AzureStorageExplorer.png
 [image-ase-addaccount]: ./media/hdinsight-upload-data/HDI.ASEAddAccount.png
 [image-ase-blob]: ./media/hdinsight-upload-data/HDI.ASEBlob.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

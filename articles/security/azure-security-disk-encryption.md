@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 01/30/2017
 ms.author: kakhan
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 10cc114451da7e73726772da4159776e76f5b8c9
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: f52b9064d4771c714b829a409037ef6f03c54161
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -177,7 +177,7 @@ Bevor Sie Azure Disk Encryption auf virtuellen Azure-IaaS-Computern für die unt
   > Azure Disk Encryption wird unter [Azure PowerShell SDK Version 1.1.0](https://github.com/Azure/azure-powershell/releases/tag/v1.1.0-January2016) nicht unterstützt. Wenn Sie im Zusammenhang mit der Verwendung von Azure PowerShell 1.1.0 eine Fehlermeldung erhalten, nutzen Sie die Informationen unter [Azure Disk Encryption Error Related to Azure PowerShell 1.1.0](http://blogs.msdn.com/b/azuresecurity/archive/2016/02/10/azure-disk-encryption-error-related-to-azure-powershell-1-1-0.aspx) (Azure Disk Encryption-Fehler im Zusammenhang mit Azure PowerShell 1.1.0).
 
 * Sie müssen zuerst die richtige Azure-CLI-Version installieren, um Azure-CLI-Befehle ausführen und die Zuordnung zum Azure-Abonnement durchführen zu können:
-  * Um die Azure-CLI zu installieren und Ihrem Azure-Abonnement zuzuordnen, lesen Sie im Abschnitt zum [Installieren und Konfigurieren der Azure-CLI](../xplat-cli-install.md).
+  * Um die Azure-CLI zu installieren und Ihrem Azure-Abonnement zuzuordnen, lesen Sie im Abschnitt zum [Installieren und Konfigurieren der Azure-CLI](../cli-install-nodejs.md).
   * Informationen zur Verwendung der Azure-CLI für Mac, Linux und Windows mit Azure Resource Manager finden Sie unter [Befehle der Azure-Befehlszeilenschnittstelle im Resource Manager-Modus](../virtual-machines/azure-cli-arm-commands.md).
 * Die Azure Disk Encryption-Lösung verwendet für virtuelle Windows-IaaS-Computer die externe BitLocker-Schlüsselschutzvorrichtung. Wenn Ihre virtuellen Computer der Domäne beigetreten sind, sollten Sie keine Gruppenrichtlinien nutzen, mit denen TPM-Schutzvorrichtungen durchgesetzt werden. Informationen zur Gruppenrichtlinie „BitLocker ohne kompatibles TPM zulassen“ finden Sie unter [BitLocker Group Policy Reference](https://technet.microsoft.com/library/ee706521) (Referenz zur BitLocker-Gruppenrichtlinie).
 * Informationen zum Erstellen einer Azure AD-Anwendung, zum Erstellen eines neuen Schlüsseltresors oder zum Einrichten eines vorhandenen Schlüsseltresors und Aktivieren der Verschlüsselung finden Sie auf der Seite zum für [Azure Disk Encryption erforderlichen PowerShell-Skript](https://github.com/Azure/azure-powershell/blob/dev/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1).
@@ -338,7 +338,7 @@ Verwenden Sie die folgende Terminologietabelle, um sich mit einigen allgemeinen 
 | ARM | Azure Resource Manager |
 | BitLocker |Bei [BitLocker](https://technet.microsoft.com/library/hh831713.aspx) handelt es sich um eine branchenübliche Verschlüsselungstechnologie für Windows-Volumes, um die Datenträgerverschlüsselung auf virtuellen Windows-IaaS-Computern zu aktivieren. |
 | BEK | BitLocker-Verschlüsselungsschlüssel (BitLocker Encryption Keys) werden verwendet, um das Startvolume des Betriebssystems und Datenvolumes zu verschlüsseln. Die BitLocker-Schlüssel sind in einem Schlüsseltresor als Geheimnisse geschützt. |
-| CLI | Siehe [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md). |
+| CLI | Siehe [Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md). |
 | DM-Crypt |[DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) ist das Linux-basierte transparente Subsystem für die Datenträgerverschlüsselung, das zum Aktivieren der Datenträgerverschlüsselung auf virtuellen Linux-IaaS-Computern verwendet wird. |
 | KEK | Der Schlüsselverschlüsselungsschlüssel (Key Encryption Key) ist der asymmetrische Schlüssel (RSA 2048), der zum Schützen oder Umschließen des Geheimnisses verwendet wird. Sie können einen mit Hardwaresicherheitsmodulen geschützten Schlüssel oder einen Schlüssel mit Softwareschutz bereitstellen. Weitere Informationen finden Sie in der Dokumentation zu [Azure Key Vault](https://azure.microsoft.com/services/key-vault/). |
 | PS-Cmdlets | Siehe [Azure PowerShell-Cmdlets](/powershell/azureps-cmdlets-docs). |
@@ -560,7 +560,7 @@ In der folgenden Tabelle werden Parameter der Resource Manager-Vorlage für vorh
 > _KeyEncryptionKeyURL_ ist ein optionaler Parameter. Sie können Ihren eigenen KEK nutzen, um den Schutz für den Datenverschlüsselungsschlüssel (Passphrasegeheimnis) im Schlüsseltresor zu erhöhen.
 
 #### <a name="cli-commands"></a>CLI-Befehle
-Sie können die Datenträgerverschlüsselung auf Ihrer verschlüsselten VHD aktivieren, indem Sie den [CLI-Befehl](../xplat-cli-install.md) installieren und verwenden. Führen Sie die folgenden Schritte aus, um die Verschlüsselung auf einem vorhandenen oder ausgeführten virtuellen IaaS-Linux-Computer in Azure mit CLI-Befehlen zu aktivieren:
+Sie können die Datenträgerverschlüsselung auf Ihrer verschlüsselten VHD aktivieren, indem Sie den [CLI-Befehl](../cli-install-nodejs.md) installieren und verwenden. Führen Sie die folgenden Schritte aus, um die Verschlüsselung auf einem vorhandenen oder ausgeführten virtuellen IaaS-Linux-Computer in Azure mit CLI-Befehlen zu aktivieren:
 
 1. Legen Sie Zugriffsrichtlinien im Schlüsseltresor fest:
 

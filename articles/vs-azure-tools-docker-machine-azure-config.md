@@ -15,8 +15,9 @@ ms.workload: multiple
 ms.date: 06/08/2016
 ms.author: mlearned
 translationtype: Human Translation
-ms.sourcegitcommit: c327fc0f8175f3fe62f9a0975b7fbad1437bbbe0
-ms.openlocfilehash: 4309d2dffacb9baf2563c8a4fcd1984beabdeef0
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: a5b845a93f318b991e14705f0fadea3acd802ced
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -32,7 +33,7 @@ In diesem Thema wird beschrieben, wie Sie den Befehl [docker-machine](https://do
 ## <a name="create-vms-with-docker-machine"></a>Erstellen von virtuellen Computern mit dem Befehl „docker- machine“
 Erstellen Sie Docker-Host-VMs in Azure mit dem Befehl `docker-machine create` unter Verwendung des Treibers `azure`. 
 
-Für den Azure-Treiber wird Ihre Abonnement-ID benötigt. Sie können die [Azure-Befehlszeilenschnittstelle](xplat-cli-install.md) oder das [Azure-Portal](https://portal.azure.com) verwenden, um Ihr Azure-Abonnement abzurufen. 
+Für den Azure-Treiber wird Ihre Abonnement-ID benötigt. Sie können die [Azure-Befehlszeilenschnittstelle](cli-install-nodejs.md) oder das [Azure-Portal](https://portal.azure.com) verwenden, um Ihr Azure-Abonnement abzurufen. 
 
 **Verwenden des Azure-Portals**
 
@@ -120,10 +121,5 @@ Mit docker-machine können Sie Docker-Hosts mühelos für einzelne Überprüfung
 Informationen zum Hosten von Containern in der Produktion finden Sie unter [Azure-Containerdienst](http://aka.ms/AzureContainerService)
 
 Informationen zum Entwickeln von .NET Core-Anwendungen mit Visual Studio finden Sie unter [Docker-Tools für Visual Studio](http://aka.ms/DockerToolsForVS)
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

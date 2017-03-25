@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: azure-government
-ms.date: 2/28/2017
+ms.date: 3/13/2017
 ms.author: ryansoc
 translationtype: Human Translation
-ms.sourcegitcommit: a04b2f26c8ab34fdbfc7412d47292a560466eb44
-ms.openlocfilehash: c33d50a900be53a3161ad60bc34e2e819fe62947
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 4d7de786dc902cb1c32e70a1f69bc74282de44f1
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -39,8 +39,12 @@ Backup ist in Azure Government allgemein verfügbar.
 
 Weitere Informationen finden Sie unter [Azure Government Backup](documentation-government-services-backup.md).
 
+## <a name="resource-policy"></a>Ressourcenrichtlinie
+
+[Azure-Ressourcenrichtlinien](../azure-resource-manager/resource-manager-policy.md) sind in Azure Government nicht verfügbar.
+
 ## <a name="site-recovery"></a>Site Recovery
-Site Recovery (ASR) ist in Azure Government allgemein verfügbar.
+Azure Site Recovery ist in Azure Government allgemein verfügbar.
 
 Weitere Informationen finden Sie in der [öffentlichen Site Recovery-Dokumentation](../site-recovery/site-recovery-overview.md).
 
@@ -59,13 +63,13 @@ Die folgenden Site Recovery-Features sind aktuell nicht in Azure Government verf
 >[!NOTE]
 >Die Tabelle gilt für „USA Gov Virginia“ und „USA Gov Iowa“.
 
-Die folgenden URLs für ASR unterscheiden sich in Azure Government:
+Die folgenden URLs für Site Recovery lauten in Azure Government anders:
 
 | Azure – Öffentlich | Azure Government | Hinweise |
 | --- | --- | --- |
-| *.hypervrecoverymanager.windowsazure.com | *.hypervrecoverymanager.windowsazure.us | Zugriff auf den Site Recovery-Dienst |
-| *. backup.windowsazure.com  | *.backup.windowsazure.us | Zugriff auf Protection Service |
-| *.blob.core.windows.net | *.blob.core.usgovcloudapi.net | Zum Speichern der VM-Momentaufnahmen |
+| \*.hypervrecoverymanager.windowsazure.com | \*.hypervrecoverymanager.windowsazure.us | Zugriff auf den Site Recovery-Dienst |
+| \*.backup.windowsazure.com  | \*.backup.windowsazure.us | Zugriff auf Protection Service |
+| \*.blob.core.windows.net | \*.blob.core.usgovcloudapi.net | Zum Speichern der VM-Momentaufnahmen |
 | http://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi | http://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi | Zum Herunterladen von MySQL |
 
 ## <a name="log-analytics"></a>Log Analytics
@@ -84,7 +88,6 @@ Die folgenden Log Analytics-Features und -Lösungen sind aktuell nicht in Azure 
   * Azure Automation Analytics-Lösung
   * Key Vault Analytics-Lösung
 * Lösungen und Funktionen, die Updates von lokaler Software erfordern, einschließlich:
-  * Computergruppen aus „System Center Configuration Manager“
   * Surface Hub-Lösung
 * Funktionen, die als Vorschau im öffentlichen Azure enthalten sind, einschließlich:
   * Exportieren von Daten nach Power BI
@@ -106,15 +109,15 @@ Die folgenden Log Analytics-Features verhalten sich in Azure Government anders:
 * Zum Verbinden Ihres System Center Operations Manager-Verwaltungsservers mit Log Analytics müssen Sie aktualisierte Management Packs herunterladen und importieren.
   + System Center Operations Manager 2016
     1. Installieren Sie [Updaterollup 2 für System Center 2016 Operations Manager](https://support.microsoft.com/help/3209591).
-    2. Importieren Sie die Management Packs, die in Updaterollup 2 enthalten sind, in Operations Manager. Informationen zum Importieren eines Management Packs von einem Datenträger finden Sie auf der TechNet-Website im Thema [Importieren eines Management Packs von Operations Manager](http://technet.microsoft.com/library/hh212691.aspx).
+    2. Importieren Sie die Management Packs, die in Updaterollup 2 enthalten sind, in Operations Manager. Informationen zum Importieren eines Management Packs von einem Datenträger finden Sie unter [How to Import an Operations Manager Management Pack](http://technet.microsoft.com/library/hh212691.aspx) (Importieren eines Management Packs von Operations Manager).
     3. Zum Verbinden von Operations Manager mit Log Analytics führen Sie die Schritte in [Herstellen einer Verbindung zwischen Operations Manager und Log Analytics](../log-analytics/log-analytics-om-agents.md) aus.
   + System Center Operations Manager 2012 R2 UR3 (oder höher) / Operations Manager 2012 SP1 UR7 (oder höher)
     1. Laden Sie die [aktualisierten Management Packs](http://go.microsoft.com/fwlink/?LinkId=828749) herunter, und speichern Sie sie.
     2. Entzippen Sie die heruntergeladene Datei.
-    3. Importieren Sie die Management Packs in Operations Manager. Informationen zum Importieren eines Management Packs von einem Datenträger finden Sie auf der TechNet-Website im Thema [Importieren eines Management Packs von Operations Manager](http://technet.microsoft.com/library/hh212691.aspx).
+    3. Importieren Sie die Management Packs in Operations Manager. Informationen zum Importieren eines Management Packs von einem Datenträger finden Sie unter [How to Import an Operations Manager Management Pack](http://technet.microsoft.com/library/hh212691.aspx) (Importieren eines Management Packs von Operations Manager).
     4. Zum Verbinden von Operations Manager mit Log Analytics führen Sie die Schritte in [Herstellen einer Verbindung zwischen Operations Manager und Log Analytics](../log-analytics/log-analytics-om-agents.md) aus.
   
-
+* Um [Computergruppen aus System Center Configuration Manager 2016](../log-analytics/log-analytics-sccm.md) verwenden zu können, müssen Sie die [Technical Preview 1701](https://docs.microsoft.com/en-us/sccm/core/get-started/technical-preview) oder höher verwenden.
 
 ### <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 * Kann ich Daten aus Log Analytics in Microsoft Azure zu Azure Government migrieren?

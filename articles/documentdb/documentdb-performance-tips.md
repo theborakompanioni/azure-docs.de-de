@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/23/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: d1ff26fd2d93881d028728bf86197c2dc9835ad7
-ms.openlocfilehash: 01f250b218e348a8bad046ac1ddb8c532aa8267f
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 3124185a486335d978634281b63d2475981e57f8
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -97,7 +97,7 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
     Anforderungen an DocumentDB erfolgen bei Verwendung des Gatewaymodus standardmäßig über HTTPS/REST und unterliegen dem Standardverbindungslimit pro Hostname oder IP-Adresse. Unter Umständen müssen Sie einen höheren MaxConnections-Wert festlegen (100 -&1;.000), damit die Clientbibliothek mehrere Verbindungen zu DocumentDB gleichzeitig nutzen kann. Ab .NET SDK 1.8.0 ist der Standardwert für [ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) auf 50 festgelegt. Zur Erhöhung dieses Werts können Sie [Documents.Client.ConnectionPolicy.MaxConnectionLimit](https://msdn.microsoft.com/en-us/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) auf einen höheren Wert festlegen.   
 4. **Optimieren von parallelen Abfragen für partitionierte Sammlungen**
 
-     Ab Version 1.9.0 des DocumentDB .NET SDKs werden parallele Abfragen unterstützt, mit denen Sie eine partitionierte Sammlung parallel abfragen können. (Weitere Informationen finden Sie unter [Arbeiten mit den SDKs](documentdb-partition-data.md#working-with-the-sdks) und in den dazugehörigen [Codebeispielen](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs).) Parallele Abfragen sind darauf ausgelegt, Latenz und Durchsatz im Vergleich mit seriellen Abfragen zu verbessern. Parallele Abfragen verfügen über zwei Parameter, die Benutzer optimieren können, um sie an ihre Anforderungen anzupassen: (a) MaxDegreeOfParallelism zum Steuern der maximalen Anzahl von Partitionen, die parallel abgefragt werden können, und (b) MaxBufferedItemCount zum Steuern der Anzahl von vorab abgerufenen Ergebnissen.
+     Ab Version 1.9.0 des DocumentDB .NET SDKs werden parallele Abfragen unterstützt, mit denen Sie eine partitionierte Sammlung parallel abfragen können. (Weitere Informationen finden Sie unter [Arbeiten mit den SDKs](documentdb-partition-data.md#working-with-the-documentdb-sdks) und in den dazugehörigen [Codebeispielen](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs).) Parallele Abfragen sind darauf ausgelegt, Latenz und Durchsatz im Vergleich mit seriellen Abfragen zu verbessern. Parallele Abfragen verfügen über zwei Parameter, die Benutzer optimieren können, um sie an ihre Anforderungen anzupassen: (a) MaxDegreeOfParallelism zum Steuern der maximalen Anzahl von Partitionen, die parallel abgefragt werden können, und (b) MaxBufferedItemCount zum Steuern der Anzahl von vorab abgerufenen Ergebnissen.
 
     (a) ***Optimieren von MaxDegreeOfParallelism\:***
     Bei parallelen Abfragen werden mehrere Partitionen parallel abgefragt. Die Daten einer individuell partitionierten Sammlung werden in Bezug auf die Abfrage aber seriell abgerufen. Wenn Sie MaxDegreeOfParallelism also auf die Anzahl von Partitionen festlegen, ist die Wahrscheinlichkeit am höchsten, dass die bestmögliche Leistung für die Abfrage erzielt wird (vorausgesetzt, alle anderen Systembedingungen bleiben unverändert). Falls Ihnen die Anzahl von Partitionen nicht bekannt ist, können Sie MaxDegreeOfParallelism auf einen hohen Wert festlegen. Das System wählt für MaxDegreeOfParallelism dann den minimalen Wert aus (Anzahl von Partitionen, Benutzereingabe).
@@ -133,17 +133,17 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
 10. **Erhöhen der Anzahl von Threads/Aufgaben**
 
     Siehe [Erhöhen der Anzahl von Threads/Aufgaben](#increase-threads) im Abschnitt „Netzwerk“.
-    
+
 11. **Verwenden der 64-Bit-Hostverarbeitung.**
 
     Das DocumentDB SDK funktioniert in einem 32-Bit-Hostprozess, wenn Sie DocumentDB .NET SDK Version 1.11.4 und höher verwenden. Wenn Sie jedoch partitionsübergreifende Abfragen verwenden, wird die 64-Bit-Hostverarbeitung empfohlen, um eine bessere Leistung zu erzielen. Bei den folgenden Anwendungstypen ist der 32-Bit-Hostprozess der Standardprozess. Führen Sie je nach Typ Ihrer Anwendung die folgenden Schritte aus, um diesen zu 64-Bit zu ändern:
-    
-    - Bei ausführbaren Anwendungen deaktivieren Sie dazu auf der Registerkarte **Build** im Fenster **Projekteigenschaften** die Option **32-Bit bevorzugen**. 
-    
+
+    - Bei ausführbaren Anwendungen deaktivieren Sie dazu auf der Registerkarte **Build** im Fenster **Projekteigenschaften** die Option **32-Bit bevorzugen**.
+
     - Bei VSTest-basierten Testprojekten ist dies möglich, indem Sie in der Menüoption **Visual Studio Test** die Optionen **Test**->**Testeinstellungen**->**Default Processor Architecture as X64** (Standardprozessorarchitektur als X64) auswählen.
-    
+
     - Bei lokal bereitgestellten ASP.NET-Webanwendungen ist dies möglich, indem Sie unter **Extras**->**Optionen**->**Projekte und Projektmappen**->**Webprojekte** die Option **64-Bit-Version von IIS Express für Websites und Projekte verwenden** aktivieren.
-    
+
     - Für auf Azure bereitgestellte ASP.NET-Webanwendungen wählen Sie im Azure-Portal unter **Anwendungseinstellungen** die Option **Platform as 64-bit** (Plattform als 64-Bit) aus.
 
 ## <a name="indexing-policy"></a>Indizierungsrichtlinien

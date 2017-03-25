@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 01/03/2017
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 5ea7095e12b6194556d3cd0baa43ccfed1e087ee
-ms.openlocfilehash: 940c762a00dc0efcaedff266cce82e5353c227f6
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: cdf9d576b6a7d3afcfb0839ce8bab2103fba14ed
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -30,7 +30,7 @@ Dieser Artikel enthält Informationen zur Syntax und zu den Optionen für Befehl
 >Erfahren Sie mehr über die [alte und die neue Azure-Befehlszeilenschnittstelle](/cli/azure/old-and-new-clis).
 >
 
-Führen Sie zuerst die [Installation der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) durch, und [stellen Sie die Verbindung mit Ihrem Azure-Abonnement her](../xplat-cli-connect.md).
+Führen Sie zuerst die [Installation der Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md) durch, und [stellen Sie die Verbindung mit Ihrem Azure-Abonnement her](../xplat-cli-connect.md).
 
 Geben Sie zum Anzeigen der aktuellen Befehlssyntax und Optionen in der Befehlszeile im Ressourcen-Manager-Modus `azure help` oder der Hilfe für einen bestimmten Befehl `azure help [command]` ein. In der Dokumentation finden Sie auch CLI-Beispiele zum Erstellen und Verwalten bestimmter Azure-Dienste.
 

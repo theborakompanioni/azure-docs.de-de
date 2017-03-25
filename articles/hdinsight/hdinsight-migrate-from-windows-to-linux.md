@@ -8,6 +8,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: ff35be59-bae3-42fd-9edc-77f0041bab93
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,9 +16,9 @@ ms.workload: big-data
 ms.date: 01/13/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: a4d30ffc0a5c5ef9fe7bb892d17f0859ff27f569
-ms.openlocfilehash: bf6ef38ba28d11d7894a30115174582903f84580
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 1a2a08a844f1502d970cb7686d512387263d1d13
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -86,7 +87,7 @@ Kopieren Sie anhand folgender Schritte Daten aus dem Produktionscluster in das T
 Alternativ können Sie das Azure PowerShell-Cmdlet `Start-AzureStorageBlobCopy` verwenden, um Blobs zwischen Speicherkonten außerhalb von HDInsight zu kopieren. Weitere Informationen finden Sie im Abschnitt „Verwalten von Azure-Blobs“ im Artikel „Verwenden von Azure PowerShell mit Azure Storage“.
 
 ## <a name="client-side-technologies"></a>Clientseitige Technologien
-Im Allgemeinen funktionieren clientseitige Technologien wie [Azure PowerShell-Cmdlets](/powershell/azureps-cmdlets-docs), die [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) oder das [.NET SDK für Hadoop](https://hadoopsdk.codeplex.com/) mit Linux-basierten Clustern weiterhin genauso wie bisher, da sie auf REST-APIs basieren, die bei beiden Cluster-Betriebssystemtypen gleich sind.
+Im Allgemeinen funktionieren clientseitige Technologien wie [Azure PowerShell-Cmdlets](/powershell/azureps-cmdlets-docs), die [Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md) oder das [.NET SDK für Hadoop](https://hadoopsdk.codeplex.com/) mit Linux-basierten Clustern weiterhin genauso wie bisher, da sie auf REST-APIs basieren, die bei beiden Cluster-Betriebssystemtypen gleich sind.
 
 ## <a name="server-side-technologies"></a>Serverseitige Technologien
 Die folgende Tabelle enthält eine Hilfestellung zum Migrieren von serverseitigen Komponenten, die Windows-spezifisch sind.
@@ -94,7 +95,7 @@ Die folgende Tabelle enthält eine Hilfestellung zum Migrieren von serverseitige
 | Wenn Sie folgende Technologie verwenden ... | Führen Sie diese Aktion durch... |
 | --- | --- |
 | **PowerShell** (serverseitige Skripts, einschließlich Skriptaktionen, die während der Clustererstellung verwendet werden) |Umschreiben zu Bash-Skripts. Informationen zu Skriptaktionen finden Sie unter [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md) und [Entwickeln von Skriptaktionen mit HDInsight](hdinsight-hadoop-script-actions-linux.md). |
-| **Azure-Befehlszeilenschnittstelle** (serverseitige Skripts) |Die Azure-Befehlszeilenschnittstelle ist für Linux verfügbar, auf den Hauptknoten des HDInsight-Clusters jedoch nicht vorinstalliert. Wenn Sie sie zum Erstellen serverseitiger Skripts benötigen, finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) Informationen zur Installation auf Linux-basierten Plattformen. |
+| **Azure-Befehlszeilenschnittstelle** (serverseitige Skripts) |Die Azure-Befehlszeilenschnittstelle ist für Linux verfügbar, auf den Hauptknoten des HDInsight-Clusters jedoch nicht vorinstalliert. Wenn Sie sie zum Erstellen serverseitiger Skripts benötigen, finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md) Informationen zur Installation auf Linux-basierten Plattformen. |
 | **.NET-Komponenten** |.NET wird derzeit auf Linux-basierten HDInsight-Clustertypen nicht vollständig unterstützt. Linux-basierte Cluster mit Storm in HDInsight, die nach dem 28.10.2016 erstellt wurden, unterstützen C#-Storm-Topologien mithilfe des SCP.NET-Frameworks. Zusätzliche Unterstützung für .NET wird in zukünftigen Updates hinzugefügt. |
 | **Win32-Komponenten oder andere reine Windows-Technologie** |Die Anleitung hängt von der Komponente oder der Technologie ab. Möglicherweise finden Sie eine mit Linux kompatible Version, möglicherweise brauchen Sie eine alternative Lösung oder müssen diese Komponente umschreiben. |
 

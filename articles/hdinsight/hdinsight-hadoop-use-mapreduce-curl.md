@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: bc6daf37-fcdc-467a-a8a8-6fb2f0f773d1
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,9 +17,9 @@ ms.workload: big-data
 ms.date: 01/17/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: ccd1dffda19718a434fc09bb74a536714799740a
-ms.openlocfilehash: ae39e06022a8bf53832283173dc97ef8c0e0b9ef
-ms.lasthandoff: 01/18/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 41733f76e5f0c82c5321158d6a919f35f6faee3a
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -33,14 +34,14 @@ Curl dient zum Veranschaulichen der Interaktion mit HDInsight über unformatiert
 > Wenn Sie bereits mit der Verwendung von Linux-basierten Hadoop-Servern vertraut sind, nicht jedoch mit HDInsight, finden Sie weitere Informationen unter [Was Sie über Linux-basiertes Hadoop in HDInsight wissen müssen](hdinsight-hadoop-linux-information.md).
 
 
-## <a name="a-idprereqaprerequisites"></a><a id="prereq"></a>Voraussetzungen
+## <a id="prereq"></a>Voraussetzungen
 Um die in diesem Artikel aufgeführten Schritte auszuführen, benötigen Sie Folgendes:
 
 * Hadoop in einem HDInsight-Cluster
 * [Curl](http://curl.haxx.se/)
 * [jq](http://stedolan.github.io/jq/)
 
-## <a name="a-idcurlarun-mapreduce-jobs-using-curl"></a><a id="curl"></a>Ausführen von MapReduce-Aufträgen mit Curl
+## <a id="curl"></a>Ausführen von MapReduce-Aufträgen mit Curl
 > [!NOTE]
 > Wenn Sie Curl oder eine andere REST-Kommunikation mit WebHCat verwenden, müssen Sie die Anforderungen authentifizieren, indem Sie den Benutzernamen und das Kennwort des Administrators des HDInsight-Clusters bereitstellen. Sie müssen auch den Clusternamen als Teil des URI verwenden, der zum Senden der Anforderungen an den Server genutzt wird.
 > 
@@ -92,7 +93,7 @@ Um die in diesem Artikel aufgeführten Schritte auszuführen, benötigen Sie Fol
    > 
 4. Sobald der Status des Auftrags in **SUCCEEDED** wechselt, können Sie die Ergebnisse des Auftrags aus Azure Blob Storage abrufen. Der mit der Abfrage übergebene Parameter `statusdir` enthält den Speicherort der Ausgabedatei. In diesem Fall ist dies **wasbs:///example/curl**. Diese Adresse speichert die Ausgabe des Auftrags im Verzeichnis **example/curl** des Standardspeichercontainers, der von Ihrem HDInsight-Cluster verwendet wird.
 
-Sie können diese Dateien mithilfe der [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) auflisten und herunterladen. Wenn Sie beispielsweise Dateien im Verzeichnis **example/curl** auflisten möchten, verwenden Sie den folgenden Befehl:
+Sie können diese Dateien mithilfe der [Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md) auflisten und herunterladen. Wenn Sie beispielsweise Dateien im Verzeichnis **example/curl** auflisten möchten, verwenden Sie den folgenden Befehl:
 
     azure storage blob list <container-name> example/curl
 
@@ -105,12 +106,12 @@ Verwenden Sie den folgenden Befehl, um eine Datei herunterzuladen:
 > 
 > 
 
-## <a name="a-idsummaryasummary"></a><a id="summary"></a>Zusammenfassung
+## <a id="summary"></a>Zusammenfassung
 Wie in diesem Dokument veranschaulicht, können Sie unformatierte HTTP-Anforderungen dazu verwenden, um Hive-Aufträge im HDInsight-Cluster auszuführen, zu überwachen und deren Ergebnisse anzuzeigen.
 
 Weitere Informationen zur REST-Schnittstelle, die in diesem Artikel verwendet wird, finden Sie in der [WebHCat-Referenz](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference).
 
-## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>Nächste Schritte
+## <a id="nextsteps"></a>Nächste Schritte
 Allgemeine Informationen zu MapReduce-Aufträgen in HDInsight:
 
 * [Verwenden von MapReduce mit Hadoop in HDInsight](hdinsight-use-mapreduce.md)

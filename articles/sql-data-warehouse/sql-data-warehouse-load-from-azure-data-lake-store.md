@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 01/25/2017
 ms.author: cakarst;barbkess
+ms.custom: loading
 translationtype: Human Translation
-ms.sourcegitcommit: 3aa72480898e00cab8ee48e646ea63ade01f347f
-ms.openlocfilehash: 31c7337bdf9dd302ea2f7c5dd0af9d668b23acb2
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: aca0e4cfdcfb3e3ed2e69ad8153b4c965b299806
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -40,7 +41,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 >[!NOTE] 
 > Sie benötigen die Client-ID, den Schlüssel und den OAuth2.0-Token-Endpunktwert Ihrer Active Directory-Anwendung, um über SQL Data Warehouse eine Verbindung mit Ihrer Azure Data Lake-Instanz herstellen zu können. Ausführliche Informationen zum Ermitteln dieser Werte finden Sie unter dem oben angegebenen Link.
 
-* SQL Server Management Studio oder SQL Server Data Tools. Informationen zum Herunterladen von SSMS sowie zum Herstellen einer Verbindung finden Sie unter [Herstellen einer Verbindung mit der SQL Data Warehouse-Instanz mit SQL Server Management Studio (SSMS)](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-query-ssms.md).
+* SQL Server Management Studio oder SQL Server Data Tools. Informationen zum Herunterladen von SSMS sowie zum Herstellen einer Verbindung finden Sie unter [Herstellen einer Verbindung mit der SQL Data Warehouse-Instanz mit SQL Server Management Studio (SSMS)](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-query-ssms).
 
 * Eine Azure SQL Data Warehouse-Instanz. Eine Erstellungsanleitung finden Sie unter „https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-provision“.
 
@@ -56,7 +57,7 @@ PolyBase verwendet externe T-SQL-Objekte, um den Speicherort und die Attribute d
 ###  <a name="create-a-credential"></a>Erstellen einer Anmeldeinformation
 Für den Zugriff auf Ihre Azure Data Lake Store-Instanz müssen Sie einen Datenbank-Hauptschlüssel erstellen, um die geheimen Anmeldeinformationen zu verschlüsseln, die Sie im nächsten Schritt verwenden.
 Anschließend erstellen Sie datenbankbezogene Anmeldeinformationen, in denen die in AAD eingerichteten Dienstprinzipal-Anmeldeinformationen gespeichert werden. Bei Benutzern, die die Verbindung mit Azure Storage Blob-Instanzen über PolyBase herstellen, unterscheidet sich die Syntax für die Anmeldeinformationen.
-Zum Herstellen einer Verbindung mit Azure Data Lake Store muss vor dem Erstellen datenbankbezogener Anmeldeinformationen zunächst eine Azure Active Directory-Anwendung erstellt werden.
+Um eine Verbindung mit Azure Data Lake Store herzustellen, müssen Sie **zuerst** eine Azure Active Directory-Anwendung sowie einen Zugriffsschlüssel erstellen und der Anwendung Zugriff auf die Azure Data Lake-Ressource gewähren. Anweisungen zum Ausführen dieser Schritte finden Sie [hier](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-authenticate-using-active-directory).
 
 ```sql
 -- A: Create a Database Master Key.
@@ -72,7 +73,7 @@ CREATE MASTER KEY;
 -- SECRET: Provide your AAD Application Service Principal key.
 -- For more information on Create Database Scoped Credential: https://msdn.microsoft.com/en-us/library/mt270260.aspx
 
-CREATE DATABASE SCOPED CREDENTIAL ADL_User
+CREATE DATABASE SCOPED CREDENTIAL ADLCredential
 WITH
     IDENTITY = '<client_id>@<OAuth_2.0_Token_EndPoint>',
     SECRET = '<key>'
@@ -95,7 +96,7 @@ CREATE EXTERNAL DATA SOURCE AzureDataLakeStore
 WITH (
     TYPE = HADOOP,
     LOCATION = 'adl://<AzureDataLake account_name>.azuredatalake.net',
-    CREDENTIAL = AzureStorageCredential
+    CREDENTIAL = ADLCredential
 );
 ```
 
