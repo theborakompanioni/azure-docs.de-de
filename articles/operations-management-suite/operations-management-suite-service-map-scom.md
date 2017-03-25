@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: bwren;dairwin
 translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: afba457134ba0fbc4ed35040828bb3745364ef78
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 389c01234acff068dc90f3cdfdc4916a9d76d244
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -97,7 +97,7 @@ Benutzer können den konfigurierten Arbeitsbereich im Bereich der Service Map-Ü
 ![SCOM-Bearbeitung – Arbeitsbereich](media/oms-service-map/scom-edit-workspace.png)
 
 ## <a name="configuring-rules-and-overrides"></a>Konfigurieren von Regeln und Außerkraftsetzungen
-Eine Regel (**Microsoft.SystemCenter.ServiceMap.Import.Rule**) wird erstellt, damit regelmäßig Informationen von Service Map abgerufen werden.  Benutzer können Außerkraftsetzungen für diese Regel konfigurieren, um die Zeitvorgaben für die Synchronisierung zu ändern.
+Die Regel **Microsoft.SystemCenter.ServiceMap.Import.Rule** wird erstellt, damit regelmäßig Informationen von Service Map abgerufen werden.  Benutzer können Außerkraftsetzungen für diese Regel konfigurieren, um die Zeitvorgaben für die Synchronisierung zu ändern.
 Bereich „Erstellen“ > „Regeln“ > „Microsoft.SystemCenter.ServiceMapImport.Rule“
 
 ![SCOM-Außerkraftsetzungen](media/oms-service-map/scom-overrides.png)

@@ -14,11 +14,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2016
+ms.date: 03/10/2017
 ms.author: ankshah
 translationtype: Human Translation
-ms.sourcegitcommit: 08cac64a6b08266f78bca03f1139a13e9686ebc3
-ms.openlocfilehash: 819602cda932ea698287724e307ebbd73f1af988
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: 7acbdda2e8179219c21370d20d30a94feb405fce
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -47,25 +48,32 @@ Wenn Sie der Gruppe weitere virtuelle Computerinstanzen hinzufügen, erhalten di
 ## <a name="connections-from-the-internet"></a>Verbindungen über das Internet
 Wenn Sie über einen Computer im Internet auf ein DocumentDB-Datenbankkonto zugreifen, muss die Client-IP-Adresse oder der Client-IP-Adressbereich des Computers der Liste der zulässigen IP-Adressen für das DocumentDB-Datenbankkonto hinzugefügt werden. 
 
-## <a name="a-idconfigure-ip-policya-configuring-the-ip-access-control-policy"></a><a id="configure-ip-policy"></a> Konfigurieren der IP-Access Control-Richtlinie
-Die IP-Access Control-Richtlinie kann programmgesteuert über die [Azure CLI](documentdb-automation-resource-manager-cli.md), über [Azure Powershell](documentdb-manage-account-with-powershell.md) oder die [REST-API](https://msdn.microsoft.com/library/azure/dn781481.aspx) durch Aktualisierung der `ipRangeFilter`-Eigenschaft festgelegt werden. IP-Adressen und -Adressbereiche müssen durch Kommas voneinander getrennt werden und dürfen keine Leerzeichen enthalten. Beispiel:&13;.91.6.132,13.91.6.1/24. Achten Sie beim Aktualisieren Ihres Datenbankkontos mithilfe dieser Methoden darauf, dass alle Eigenschaften ausgefüllt sind, um eine Zurücksetzung auf die Standardeinstellungen zu vermeiden.
+## <a id="configure-ip-policy"></a> Konfigurieren der IP-Access Control-Richtlinie
+Die IP-Zugriffssteuerungsrichtlinie kann im Azure-Portal oder programmgesteuert über die [Azure CLI](documentdb-automation-resource-manager-cli.md), über [Azure PowerShell](documentdb-manage-account-with-powershell.md) oder die [REST-API](https://msdn.microsoft.com/library/azure/dn781481.aspx) durch Aktualisierung der `ipRangeFilter`-Eigenschaft festgelegt werden. IP-Adressen und -Adressbereiche müssen durch Kommas voneinander getrennt werden, und sie dürfen keine Leerzeichen enthalten. Beispiel:&13;.91.6.132,13.91.6.1/24. Achten Sie beim Aktualisieren Ihres Datenbankkontos mithilfe dieser Methoden darauf, dass alle Eigenschaften ausgefüllt sind, um eine Zurücksetzung auf die Standardeinstellungen zu vermeiden.
 
 > [!NOTE]
 > Durch Aktivieren einer IP-Access Control-Richtlinie für Ihr DocumentDB-Datenbankkonto wird der Zugriff auf das DocumentDB-Datenbankkonto von Computern außerhalb der konfigurierten Liste der zulässigen IP-Adressbereiche blockiert. Aufgrund dieses Modells wird auch das Durchsuchen der Vorgänge auf Datenebene über das Portal blockiert, um die Integrität der Access Control sicherzustellen.
 
+Um die Entwicklung zu vereinfachen, unterstützt das Azure-Portal Sie dabei, die IP-Adresse Ihres Clientcomputers zu ermitteln und der Zulassungsliste hinzuzufügen, sodass auf Ihrem Computer ausgeführte Apps auf das DocumentDB-Konto zugreifen können. Beachten Sie, dass die Client-IP-Adresse so ermittelt wird, wie sie im Portal zu sehen ist. Es kann sich um die Client-IP-Adresse Ihres Computers handeln, aber auch um die IP-Adresse Ihres Netzwerkgateways. Vergessen Sie nicht, diese Adresse vor dem Übergang in die Produktion zu entfernen.
+
+Um die IP-Zugriffssteuerungsrichtlinie im Azure-Portal festzulegen, wechseln Sie zum Blatt des DocumentDB-Kontos, und klicken Sie im Navigationsmenü auf **Firewall** und dann auf **EIN**. 
+
+![Screenshot: Öffnen des Blatts „Firewall“ im Azure-Portal](./media/documentdb-firewall-support/documentdb-azure-portal-firewall.png)
+
+Geben Sie im neuen Fenster an, ob das Azure-Portal auf das Konto zugreifen kann, und fügen Sie nach Bedarf weitere Adressen und Adressbereiche hinzu. Klicken Sie dann auf **Speichern**.  
+
+![Screenshot: Konfigurieren von Firewalleinstellungen im Azure-Portal](./media/documentdb-firewall-support/documentdb-azure-portal-firewall-configure.png)
+
 ## <a name="troubleshooting-the-ip-access-control-policy"></a>Problembehandlung für die IP-Access Control-Richtlinie
 ### <a name="portal-operations"></a>Portalvorgänge
-Durch Aktivieren einer IP-Access Control-Richtlinie für Ihr DocumentDB-Datenbankkonto wird der Zugriff auf das DocumentDB-Datenbankkonto von Computern außerhalb der konfigurierten Liste der zulässigen IP-Adressbereiche blockiert. Aufgrund dieses Modells wird auch das Durchsuchen der Vorgänge auf Datenebene über das Portal blockiert, um die Integrität der Access Control sicherzustellen. 
+Durch Aktivieren einer IP-Access Control-Richtlinie für Ihr DocumentDB-Datenbankkonto wird der Zugriff auf das DocumentDB-Datenbankkonto von Computern außerhalb der konfigurierten Liste der zulässigen IP-Adressbereiche blockiert. Wenn Sie also Vorgänge auf Portaldatenebene wie das Durchsuchen von Sammlungen und das Abfragen von Dokumenten aktivieren möchten, müssen Sie den Zugriff durch das Azure-Portal auf dem Blatt **Firewall** im Portal explizit zulassen. 
+
+![Screenshot: Zulassen des Zugriffs auf das Azure-Portal](./media/documentdb-firewall-support/documentdb-azure-portal-access-firewall.png)
 
 ### <a name="sdk--rest-api"></a>SDK und REST-API
 Aus Sicherheitsgründen wird beim Zugriff über das SDK oder die REST-API von Computern, die in der Zulassungsliste nicht enthalten sind, die generische Antwort „404 Nicht gefunden“ ohne weitere Einzelheiten zurückgegeben. Überprüfen Sie die Liste der zulässigen IP-Adressen, die für Ihr DocumentDB-Datenbankkonto konfiguriert ist, um sicherzustellen, dass die passende Richtlinienkonfiguration für das DocumentDB-Datenbankkonto angewendet wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen zur netzwerkbezogenen Leistungssteigerung finden Sie unter [Tipps zur Leistungssteigerung](documentdb-performance-tips.md).
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

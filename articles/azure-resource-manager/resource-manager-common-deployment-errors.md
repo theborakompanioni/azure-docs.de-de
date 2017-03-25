@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/18/2017
+ms.date: 03/15/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 5aa0677e6028c58b7a639f0aee87b04e7bd233a0
-ms.openlocfilehash: 2093c6220ea01a83b7e43b3084d13b719feca3ca
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: b31ecb83665208151e48f81e6148928bbf21d1b5
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -48,6 +49,7 @@ In diesem Thema werden die folgenden Fehlercodes beschrieben:
 * [Fehler bei der Autorisierung](#authorization-failed)
 * [BadRequest](#badrequest)
 * [DeploymentFailed](#deploymentfailed)
+* [DisallowedOperation](#disallowedoperation)
 * [InvalidContentLink](#invalidcontentlink)
 * [InvalidTemplate](#invalidtemplate)
 * [MissingSubscriptionRegistration](#noregisteredproviderfound)
@@ -122,6 +124,40 @@ Sie erhalten diesen Fehler, wenn die ausgewählte Ressourcen-SKU (z.B. die Grö�
   ```
 
 Wenn Sie keine geeignete SKU in dieser oder einer anderen Region finden, die Ihre Geschäftsanforderungen erfüllt, wenden Sie sich an den [Azure-Support](https://portal.azure.com/#create/Microsoft.Support).
+
+### <a name="disallowedoperation"></a>DisallowedOperation
+
+```
+Code: DisallowedOperation
+Message: The current subscription type is not permitted to perform operations on any provider 
+namespace. Please use a different subscription.
+```
+
+Wenn Sie diese Fehlermeldung erhalten, verwenden Sie ein Abonnement, das nicht zum Zugriff auf andere Azure-Dienste als Azure Active Directory berechtigt ist. Möglicherweise besitzen Sie diesen Abonnementtyp, wenn Sie im klassischen Portal zugreifen müssen, aber nicht zum Bereitstellen von Ressourcen berechtigt sind. Um dieses Problem zu beheben, müssen Sie ein Abonnement verwenden, das über die Berechtigung zum Bereitstellen von Ressourcen verfügt.  
+
+Zum Anzeigen Ihrer verfügbaren Abonnements mit PowerShell verwenden Sie:
+
+```powershell
+Get-AzureRmSubscription
+```
+
+Verwenden Sie außerdem zum Festlegen des aktuellen Abonnements:
+
+```powershell
+Set-AzureRmContext -SubscriptionName {subscription-name}
+```
+
+Zum Anzeigen Ihrer verfügbaren Abonnements mit Azure CLI 2.0 verwenden Sie:
+
+```azurecli
+az account list
+```
+
+Verwenden Sie außerdem zum Festlegen des aktuellen Abonnements:
+
+```azurecli
+az account set --subscription {subscription-name}
+```
 
 ### <a name="invalidtemplate"></a>InvalidTemplate
 Dieser Fehler kann aus verschiedenen Arten von Fehlern entstehen.
@@ -387,19 +423,19 @@ Verwenden Sie zum Abrufen der unterstützten API-Versionen für einen bestimmten
 Mit dem Befehl `azure provider list` können Sie ermitteln, ob der Anbieter registriert ist.
 
 ```azurecli
-azure provider list
+az provider list
 ```
 
 Verwenden Sie den Befehl `azure provider register` , um einen Ressourcenanbieter zu registrieren, und geben Sie den zu registrierenden *Namespace* an.
 
 ```azurecli
-azure provider register Microsoft.Cdn
+az provider register --namespace Microsoft.Cdn
 ```
 
-Verwenden Sie zum Anzeigen der unterstützten Standorte und API-Versionen für einen Ressourcenanbieter Folgendes:
+Verwenden Sie zum Anzeigen der unterstützten Standorte und API-Versionen für einen Ressourcentyp Folgendes:
 
 ```azurecli
-azure provider show -n Microsoft.Compute --json > compute.json
+az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites'].locations"
 ```
 
 <a id="quotaexceeded" />
@@ -410,18 +446,23 @@ Die vollständigen Kontingentinformationen finden Sie unter [Grenzwerte, Konting
 Mit dem Befehl `azure vm list-usage` können Sie über die Azure-Befehlszeilenschnittstelle die Kernkontingente Ihres eigenen Abonnements untersuchen. Im folgenden Beispiel wird veranschaulicht, dass das Kernkontingent für ein kostenloses Testkonto 4 ist:
 
 ```azurecli
-azure vm list-usage
+az vm list-usage --location "South Central US"
 ```
 
 Ausgabe des Befehls:
 
 ```azurecli
-info:    Executing command vm list-usage
-Location: westus
-data:    Name   Unit   CurrentValue  Limit
-data:    -----  -----  ------------  -----
-data:    Cores  Count  0             4
-info:    vm list-usage command OK
+[
+  {
+    "currentValue": 0,
+    "limit": 2000,
+    "name": {
+      "localizedValue": "Availability Sets",
+      "value": "availabilitySets"
+    }
+  },
+  ...
+]
 ```
 
 Wenn Sie in der Region „USA, Westen“ eine Vorlage bereitstellen, die mehr als vier Kerne erstellt, erhalten Sie einen Bereitstellungsfehler ähnlich dem folgenden:
@@ -479,13 +520,13 @@ Policy identifier(s): '/subscriptions/{guid}/providers/Microsoft.Authorization/p
 Geben Sie in **PowerShell** diese Richtlinienkennung als **Id**-Parameter an, um Details zur Richtlinie abzurufen, die Ihre Bereitstellung blockiert.
 
 ```powershell
-(Get-AzureRmPolicyAssignment -Id "/subscriptions/{guid}/providers/Microsoft.Authorization/policyDefinitions/regionPolicyDefinition").Properties.policyRule | ConvertTo-Json
+(Get-AzureRmPolicyDefinition -Id "/subscriptions/{guid}/providers/Microsoft.Authorization/policyDefinitions/regionPolicyDefinition").Properties.policyRule | ConvertTo-Json
 ```
 
-Geben Sie an der **Azure-Befehlszeilenschnittstelle** den Namen der Richtliniendefinition an:
+Geben Sie in der **Azure CLI 2.0** den Namen der Richtliniendefinition an:
 
 ```azurecli
-azure policy definition show regionPolicyDefinition --json
+az policy definition show --name regionPolicyAssignment
 ```
 
 Weitere Informationen zu Richtlinien finden Sie unter [Verwenden von Richtlinien für Ressourcenverwaltung und Zugriffssteuerung](resource-manager-policy.md).
@@ -522,21 +563,13 @@ Sie können wertvolle Informationen darüber sammeln, wie Ihre Bereitstellung ve
 
    Mithilfe dieser Informationen können Sie ermitteln, ob ein Wert in der Vorlage nicht ordnungsgemäß festgelegt wurde.
 
-- Azure-Befehlszeilenschnittstelle
+- Azure CLI 2.0
 
-   Legen Sie in der Azure-Befehlszeilenschnittstelle den Parameter **--debug-setting** auf „All“, „ResponseContent“ oder „RequestContent“ fest.
-
-  ```azurecli
-  azure group deployment create --debug-setting All -f c:\Azure\Templates\storage.json -g examplegroup -n ExampleDeployment
-  ```
-
-   Überprüfen Sie den Inhalt der protokollierten Anforderung und Antwort mit dem folgenden Befehl:
+   Untersuchen Sie die Bereitstellungsvorgänge mit folgendem Befehl:
 
   ```azurecli
-  azure group deployment operation list --resource-group examplegroup --name ExampleDeployment --json
+  az group deployment operation list --resource-group ExampleGroup --name vmlinux
   ```
-
-   Mithilfe dieser Informationen können Sie ermitteln, ob ein Wert in der Vorlage nicht ordnungsgemäß festgelegt wurde.
 
 - Geschachtelte Vorlage
 
@@ -625,7 +658,7 @@ Resource Manager kennzeichnet Ringabhängigkeiten während der Überprüfung der
 
 Das Entfernen von Werten aus der **dependsOn**-Eigenschaft kann zu Fehlern beim Bereitstellen der Vorlage führen. Fügen Sie die Abhängigkeit wieder in die Vorlage ein, wenn ein Fehler auftritt. 
 
-Falls sich die Ringabhängigkeit mit dieser Vorgehensweise nicht beseitigen lässt, können Sie erwägen, einen Teil Ihrer Bereitstellungslogik in untergeordnete Ressourcen zu verschieben (z.B. Erweiterungen oder Konfigurationseinstellungen). Konfigurieren Sie diese untergeordneten Ressourcen so, dass sie nach den an der Ringabhängigkeit beteiligten Ressourcen bereitgestellt werden. Nehmen wir beispielsweise an, Sie stellen zwei virtuelle Computer bereit, müssen aber Eigenschaften festlegen, die auf den jeweils anderen verweisen. Sie können diese in der folgenden Reihenfolge festlegen:
+Falls sich die Ringabhängigkeit mit dieser Vorgehensweise nicht beseitigen lässt, können Sie erwägen, einen Teil Ihrer Bereitstellungslogik in untergeordnete Ressourcen zu verschieben (z.B. Erweiterungen oder Konfigurationseinstellungen). Konfigurieren Sie diese untergeordneten Ressourcen so, dass sie nach den an der Ringabhängigkeit beteiligten Ressourcen bereitgestellt werden. Nehmen wir beispielsweise an, Sie stellen zwei virtuelle Computer bereit, müssen aber Eigenschaften festlegen, die auf den jeweils anderen verweisen. Sie können diese in der folgenden Reihenfolge bereitstellen:
 
 1. VM1
 2. VM2
@@ -662,7 +695,7 @@ In der folgenden Tabelle sind die Themen für die Problembehandlung für andere 
 | Automation |[Tipps zur Problembehandlung für häufige Fehler in Azure Automation](../automation/automation-troubleshooting-automation-errors.md) |
 | Azure Stack |[Microsoft Azure Stack troubleshooting (Problembehandlung für Microsoft Azure Stack)](../azure-stack/azure-stack-troubleshooting.md) |
 | Data Factory |[Problembehandlung bei Data Factory](../data-factory/data-factory-troubleshoot.md) |
-| Service Fabric |[Häufig auftretende Probleme und Problembehandlung beim Bereitstellen von Diensten in Azure Service Fabric](../service-fabric/service-fabric-diagnostics-troubleshoot-common-scenarios.md) |
+| Service Fabric |[Überwachen und Diagnostizieren von Azure Service Fabric-Anwendungen](../service-fabric/service-fabric-diagnostics-overview.md) |
 | Site Recovery |[Überwachung und Problembehandlung für den Schutz von virtuellen Computern und physischen Servern](../site-recovery/site-recovery-monitoring-and-troubleshooting.md) |
 | Speicher |[Microsoft Azure-Speicher: Überwachung, Diagnose und Problembehandlung](../storage/storage-monitoring-diagnosing-troubleshooting.md) |
 | StorSimple |[Beheben von Problemen mit der Bereitstellung von StorSimple-Geräten](../storsimple/storsimple-troubleshoot-deployment.md) |
@@ -672,9 +705,4 @@ In der folgenden Tabelle sind die Themen für die Problembehandlung für andere 
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen zur Überwachung von Aktionen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](resource-group-audit.md).
 * Weitere Informationen zu Aktionen zum Bestimmen von Fehlern während der Bereitstellung finden Sie unter [Anzeigen von Bereitstellungsvorgängen mit dem Azure-Portal](resource-manager-deployment-operations.md).
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

@@ -13,12 +13,12 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 03/10/2017
 ms.author: masaran;trinadhk;pullabhk;markgal
 translationtype: Human Translation
-ms.sourcegitcommit: 2224ddf52283d7da599b1b4842ca617d28b28668
-ms.openlocfilehash: 2d32e8bb650d682684be0e093a9f5dfd9d536a8f
-ms.lasthandoff: 01/27/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 2b278b5c512d3ea0ff045869487d4551118c0e5c
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -53,31 +53,19 @@ Der erste Schritt zum Einrichten von Azure Backup Server ist die Bereitstellung 
 >
 >
 
-Wenn Sie diesen Server zu einem späteren Zeitpunkt mit einer Domäne verknüpfen möchten, ist es ratsam, den Beitritt zur Domäne vor der Installation von Azure Backup Server durchzuführen. Das Verschieben eines vorhandenen Azure Backup Server-Computers in eine neue Domäne nach der Bereitstellung wird *nicht unterstützt*.
+Wenn Sie Azure Backup Server einer Domäne hinzufügen möchten, empfiehlt es sich, den physischen Server oder virtuellen Computer vor der Installation der Azure Backup Server-Software der Domäne hinzuzufügen. Das Verschieben von Azure Backup Server in eine neue Domäne nach der Bereitstellung wird *nicht unterstützt*.
 
 ## <a name="2-backup-vault"></a>2. Sicherungstresor
 ![Schritt 2](./media/backup-azure-microsoft-azure-backup/step2.png)
 
-Die Software muss unabhängig davon über eine Verbindung mit Azure verfügen, ob Sie Sicherungsdaten an Azure senden oder lokal verwalten. Genauer gesagt: Der Azure Backup Server-Computer muss für einen Sicherungstresor registriert sein.
+Unabhängig davon, ob Sie die Sicherungsdaten an Azure senden oder lokal speichern, muss Azure Backup Server bei einem Tresor registriert sein.
 
-So erstellen Sie einen Sicherungstresor
+> [!IMPORTANT]
+> Ab März 2017 können im klassischen Portal keine Sicherungstresore mehr erstellt werden. Vorhandene Sicherungstresore werden weiterhin unterstützt, und [mithilfe von Azure PowerShell können neue Sicherungstresore erstellt werden](./backup-client-automation-classic.md#create-a-backup-vault). Microsoft empfiehlt jedoch das Erstellen von Recovery Services-Tresoren für alle Bereitstellungen, da zukünftige Verbesserungen nur für Recovery Services-Tresore gelten.
+>
+>
 
-1. Melden Sie sich im [Verwaltungsportal](http://manage.windowsazure.com/)an.
-2. Klicken Sie auf **Neu** > **Data Services** > **Recovery Services** > **Sicherungstresor** > **Schnellerfassung**. Wenn mit Ihrem Organisationskonto mehrere Abonnements verknüpft sind, wählen Sie das Abonnement aus, das mit dem Sicherungstresor verknüpft werden soll.
-3. Geben Sie unter **Name**einen Anzeigenamen ein, über den der Tresor identifiziert wird. Dieser muss für jedes Abonnement eindeutig sein.
-4. Wählen Sie unter **Region**die geografische Region für den Tresor aus. Die Region des Tresors wird normalerweise basierend auf der Datensouveränität oder auf Einschränkungen der Netzwerklatenz ausgewählt.
 
-    ![Erstellen des Sicherungstresors](./media/backup-azure-microsoft-azure-backup/backup_vaultcreate.png)
-5. Klicken Sie auf **Tresor erstellen**. Es kann eine Weile dauern, bis der Sicherungstresor fertiggestellt wird. Unten im Portal können Sie anhand der Benachrichtigungen den Status prüfen.
-
-    ![Popupbenachrichtigung zur Erstellung des Tresors](./media/backup-azure-microsoft-azure-backup/creating-vault.png)
-6. In einer Meldung wird bestätigt, dass der Tresor erfolgreich erstellt wurde. Er wird dann auf der Seite "Recovery Services" als aktiv aufgeführt.
-    ![Liste der Sicherungstresore](./media/backup-azure-microsoft-azure-backup/backup_vaultslist.png)
-
-   > [!IMPORTANT]
-   > Vergewissern Sie sich nach der Erstellung des Tresors, dass die entsprechende Speicherredundanzoption ausgewählt ist. Erfahren Sie in dieser [Übersicht](../storage/storage-redundancy.md) mehr über die Optionen für [georedundanten](../storage/storage-redundancy.md#geo-redundant-storage) und [lokal redundanten](../storage/storage-redundancy.md#locally-redundant-storage) Speicher.
-   >
-   >
 
 ## <a name="3-software-package"></a>3. Softwarepaket
 ![Schritt 3](./media/backup-azure-microsoft-azure-backup/step3.png)
@@ -125,6 +113,7 @@ Aktivieren Sie nach Abschluss der Extrahierung das Kontrollkästchen, um die ger
    > Azure Backup Server funktioniert nicht mit einer Remoteinstanz von SQL Server. Die von Azure Backup Server verwendete Instanz muss lokal vorliegen.
    >
    >
+
 4. Geben Sie einen Speicherort für die Installation der Microsoft Azure Backup-Serverdateien an, und klicken Sie auf **Weiter**.
 
     ![Voraussetzungen 2 für Microsoft Azure Backup](./media/backup-azure-microsoft-azure-backup/space-screen.png)

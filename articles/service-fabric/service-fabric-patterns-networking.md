@@ -15,38 +15,40 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 030114fa1ea9b76c0ed48baeffb8859260fc8e52
-ms.openlocfilehash: 78012ae1552c01690b0ad5b1285173ef9faf12bc
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 3021ebbe88705b0c5a1691a45ed0ba400af6dd34
+ms.lasthandoff: 03/09/2017
 
 
 ---
 # <a name="service-fabric-networking-patterns"></a>Netzwerkmuster für Service Fabric
-Eine der häufigsten Fragen, die beim Erstellen eines Service Fabric-Clusters auftreten, ist, wie man den Cluster mithilfe verschiedener Netzwerkfeatures von Azure integriert.  In diesem Artikel wird gezeigt, wie man Cluster mithilfe der folgenden Features erstellt:
+Sie können Ihre Azure Service Fabric-Cluster in andere Azure-Netzwerkfeatures integrieren. In diesem Artikel erfahren Sie, wie Sie Cluster erstellen, die folgende Features nutzen:
 
-- [Vorhandenes virtuelles Netzwerk / Subnetz](#existingvnet)
-- [Statische öffentliche IP-Adresse](#staticpublicip)
+- [Vorhandenes virtuelles Netzwerk oder Subnetz](#existingvnet)
+- [Statische öffentliche IP-Adressen](#staticpublicip)
 - [Rein interner Lastenausgleich](#internallb)
-- [Interner + externer Lastenausgleich](#internalexternallb)
+- [Interner und externer Lastenausgleich](#internalexternallb)
 
-Ein zu berücksichtigendes Hauptkonzept ist, dass Service Fabric in einer standardmäßigen VM-Skalierungsgruppe ausgeführt wird. Dadurch können alle Funktionen, die Sie in einer VM-Skalierungsgruppe verwenden können, auch in einem Service Fabric-Cluster verwendet werden. Die Teile des Netzwerks der Resource Manager-Vorlage sind identisch.  Sobald Sie an ein vorhandenes virtuelles Netzwerk (VNET) bereitstellen, können Sie ganz einfach andere Netzwerkfeatures, z.B. ExpressRoute, VPN Gateway, Netzwerksicherheitsgruppen (NSG) und VNET-Peering integrieren.
+Service Fabric wird in einer standardmäßigen VM-Skalierungsgruppe ausgeführt. Alle Funktionen, die Sie in einer VM-Skalierungsgruppe verwenden können, können Sie mit einem Service Fabric-Cluster verwenden. Die Netzwerkabschnitte der Azure Resource Manager-Vorlagen für VM-Skalierungsgruppen und Service Fabric sind identisch. Sobald Sie ein vorhandenes virtuelles Netzwerk bereitgestellt haben, ist es einfach, andere Netzwerkfeatures wie Azure ExpressRoute, Azure-VPN-Gateway, eine Netzwerksicherheitsgruppe und Peering virtueller Netzwerke zu integrieren.
 
-Nur ein Aspekt ist spezifisch für Service Fabric: Das [Azure-Portal](https://portal.azure.com) verwendet intern den Service Fabric-Ressourcenanbieter (Service Fabric resource provider, SFRP), um zum Abruf von Informationen über Knoten und Anwendungen einen Cluster aufzurufen.  SFRP erfordert öffentlich zugänglichen eingehenden Zugriff auf den Port für das HTTP-Gateway (standardmäßig&19080;) auf dem Verwaltungsendpunkt, der von [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) zur Verwaltung Ihres Clusters verwendet wird. Dieser Port wird außerdem vom Service Fabric-Ressourcenanbieter dazu verwendet, Informationen über Ihren Cluster zur Anzeige im Azure-Portal abzufragen.  Wenn vom SFRP nicht auf diesen Port zugegriffen werden kann, wird im Verwaltungsportal eine Nachricht wie „Nodes Not Found“ (Knoten nicht gefunden) angezeigt, und die Liste der Knoten und Anwendungen ist leer.  Wenn Sie Ihren Cluster über das Azure-Portal anzeigen lassen möchten, muss Ihr Lastenausgleich eine öffentliche IP-Adresse bereitstellen, und die NSG muss über 19080 eingehenden Datenverkehr zulassen.  Wenn diese Anforderungen nicht erfüllt werden, zeigt das Azure-Portal den aktuellen Status Ihres Clusters nicht an.  Ihr Cluster ist andernfalls nicht betroffen, und Sie können [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) verwenden, um den aktuellen Status abzurufen. Je nach Ihren Netzwerkanforderungen stellt dies vermutlich eine akzeptable Einschränkung dar.  Es handelt sich hierbei um eine temporäre Einschränkung, die wir voraussichtlich in einem späteren Update beheben werden. Zu dieser Zeit ist Ihr Cluster nicht ohne Verlust der Funktionalität des Verwaltungsportals öffentlich zugänglich.
+Service Fabric unterscheidet sich in einem Aspekt von anderen Netzwerkfeatures. Das [Azure-Portal](https://portal.azure.com) verwendet intern den Service Fabric-Ressourcenanbieter, um Informationen über Knoten und Anwendungen von einem Cluster abzurufen. Der Service Fabric-Ressourcenanbieter erfordert öffentlich zugänglichen eingehenden Zugriff auf den HTTP-Gatewayport (standardmäßig Port 19080) auf dem Verwaltungsendpunkt. [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) verwendet den Verwaltungsendpunkt zur Verwaltung Ihres Clusters. Der Service Fabric-Ressourcenanbieter verwendet diesen Port außerdem zur Abfrage von Informationen über Ihren Cluster, um sie im Azure-Portal anzuzeigen. 
+
+Wenn vom Service Fabric-Ressourcenanbieter aus kein Zugriff auf Port 190980 möglich ist, wird eine Meldung wie *Knoten nicht gefunden* im Portal angezeigt, und die Liste Ihrer Knoten und Anwendungen ist leer. Wenn Sie Ihren Cluster im Azure-Portal anzeigen möchten, muss Ihr Lastenausgleich eine öffentliche IP-Adresse bereitstellen, und Ihre Netzwerksicherheitsgruppe muss über Port 19080 eingehenden Datenverkehr zulassen. Wenn Ihr Setup diese Anforderungen nicht erfüllt, zeigt das Azure-Portal den Status Ihres Clusters nicht an.
 
 ## <a name="templates"></a>Vorlagen
 
-Alle Vorlagen finden Sie [hier](https://msdnshared.blob.core.windows.net/media/2016/10/SF_Networking_Templates.zip). Sie sollten in der Lage sein, die Vorlagen mithilfe der folgenden PowerShell-Befehle ohne Änderungen bereitzustellen.  Stellen Sie sicher, dass Sie zuerst die Schritte im Abschnitt [Anfangssetup](#initialsetup) befolgen, wenn Sie die vorhandene Vorlage des VNETs oder der statischen öffentlichen IP-Adresse bereitstellen.
+Alle Service Fabric-Vorlagen befinden sich in [einer Downloaddatei](https://msdnshared.blob.core.windows.net/media/2016/10/SF_Networking_Templates.zip). Sie sollten in der Lage sein, die Vorlagen mithilfe der folgenden PowerShell-Befehle ohne Änderungen bereitzustellen. Wenn Sie die vorhandene Azure Virtual Network-Vorlage oder die Vorlage der statischen öffentlichen IP bereitstellen, lesen Sie zuerst den Abschnitt [Anfangssetup](#initialsetup) dieses Artikels.
 
 <a id="initialsetup"></a>
 ## <a name="initial-setup"></a>Anfangssetup
 
 ### <a name="existing-virtual-network"></a>Vorhandenes virtuelles Netzwerk
 
-Ich beginne mit einem vorhandenen virtuellen Netzwerk mit dem Namen „ExistingRG-vnet“ in der Ressourcengruppe *ExistingRG* mit einem Subnetz namens „Standard“.  Hierbei handelt es sich um die Standardressourcen, die erstellt werden, wenn mithilfe des Azure-Portals ein standardmäßiger virtueller Computer erstellt wird.  Sie können das VNET und das Subnetz auch ohne den virtuellen Computer erstellen. Das Hauptziel beim Hinzufügen eines Clusters zu einem bestehenden VNET ist es aber, Netzwerkkonnektivität mit anderen VMs herzustellen, daher ist das Erstellen einer VM ein konkretes Beispiel dafür, wie die übliche Verwendung erfolgt.  Wenn Ihr Service Fabric-Cluster nur einen internen Lastenausgleich ohne öffentliche IP-Adresse verwendet, kann die VM mit öffentlicher IP-Adresse als „Jumpbox“ verwendet werden.
+Im folgenden Beispiel beginnen wir mit einem vorhandenen virtuellen Netzwerk mit dem Namen „ExistingRG-vnet“ in der Ressourcengruppe **ExistingRG**. Das Subnetz ist standardmäßig benannt. Diese Standardressourcen werden erstellt, wenn Sie im Azure-Portal einen standardmäßigen virtuellen Computer erstellen. Sie könnten das virtuelle Netzwerk und Subnetz erstellen, ohne den virtuellen Computer zu erstellen, aber einem vorhandenen virtuellen Netzwerk einen Cluster hinzuzufügen dient im Wesentlichen dazu, die Netzwerkkonnektivität mit anderen virtuellen Computern bereitzustellen. Das Erstellen des virtuellen Computers ist ein gutes Beispiel dafür, wie ein vorhandenes virtuelles Netzwerk in der Regel verwendet wird. Wenn Ihr Service Fabric-Cluster nur einen internen Lastenausgleich ohne öffentliche IP-Adresse verwendet, können Sie die VM mit öffentlicher IP-Adresse als *Jumpbox* verwenden.
 
 ### <a name="static-public-ip-address"></a>Statische öffentliche IP-Adressen
 
-Da es sich bei einer statischen öffentlichen IP-Adresse im Allgemeinen um eine dedizierte Ressource handelt, die separat von der VM oder den VMs, denen sie zugewiesen ist, verwaltet wird, wird sie in einer dedizierten Netzwerkressourcengruppe (anstatt innerhalb der Ressourcengruppe des Service Fabric-Clusters selbst) bereitgestellt.  Erstellen Sie entweder über das Azure-Portal oder PowerShell eine statische öffentliche IP-Adresse mit dem Namen „staticIP1“ in der gleichen Ressourcengruppe *ExistingRG*:
+Eine statische öffentliche IP-Adresse ist im Allgemeinen eine dedizierte Ressourcen, die getrennt von dem virtuellen Computer bzw. den virtuellen Computern verwaltet wird, dem bzw. denen sie zugewiesen ist. Sie wird in einer dedizierten Netzwerkressourcengruppe bereitgestellt (statt in der Service Fabric-Clusterressourcengruppe selbst). Erstellen Sie entweder über das Azure-Portal oder PowerShell eine statische öffentliche IP-Adresse mit dem Namen staticIP1 in der gleichen Ressourcengruppe ExistingRG:
 
 ```powershell
 PS C:\Users\user> New-AzureRmPublicIpAddress -Name staticIP1 -ResourceGroupName ExistingRG -Location westus -AllocationMethod Static -DomainNameLabel sfnetworking
@@ -72,14 +74,12 @@ DnsSettings              : {
 
 ### <a name="service-fabric-template"></a>Service Fabric-Vorlage
 
-Ich verwende die Service Fabric-Vorlage template.json, die vor dem Erstellen eines Clusters mit dem Standardassistenten des Portals aus dem Portal heruntergeladen werden kann. Sie können auch eine der Vorlagen im [Vorlagenkatalog](https://azure.microsoft.com/en-us/documentation/templates/?term=service+fabric) verwenden, z.B. [Five node Service Fabric cluster](https://azure.microsoft.com/en-us/documentation/templates/service-fabric-unsecure-cluster-5-node-1-nodetype/) (Service Fabric-Cluster mit fünf Knoten).
+In den Beispielen in diesem Artikel wird die Service Fabric-template.json verwendet. Sie können die Vorlage mit dem standardmäßigen Portal-Assistenten vom Portal herunterladen, bevor Sie einen Cluster erstellen. Sie können auch eine der Vorlagen im [Vorlagenkatalog](https://azure.microsoft.com/en-us/documentation/templates/?term=service+fabric) verwenden, z.B. [five-node Service Fabric cluster](https://azure.microsoft.com/en-us/documentation/templates/service-fabric-unsecure-cluster-5-node-1-nodetype/) (Service Fabric-Cluster mit fünf Knoten).
 
 <a id="existingvnet"></a>
-## <a name="existing-virtual-networksubnet"></a>Vorhandenes virtuelles Netzwerk / Subnetz
+## <a name="existing-virtual-network-or-subnet"></a>Vorhandenes virtuelles Netzwerk oder Subnetz
 
-[24. Januar 2016: Sie finden ein weiteres Beispiel außerhalb des Service Fabric-Bereichs unter [https://github.com/gbowerman/azure-myriad/tree/master/existing-vnet](https://github.com/gbowerman/azure-myriad/tree/master/existing-vnet)]
-
-1. Ändern Sie den Parameter des Subnetzes in den Namen des vorhandenen Subnetzes, und fügen Sie zwei weitere Parameter hinzu, um auf das vorhandene VNET zu verweisen:
+1. Ändern Sie den Parameter des Subnetzes in den Namen des vorhandenen Subnetzes, und fügen Sie zwei weitere Parameter hinzu, um auf das vorhandene virtuelle Netzwerk zu verweisen:
 
     ```
         "subnet0Name": {
@@ -107,14 +107,14 @@ Ich verwende die Service Fabric-Vorlage template.json, die vor dem Erstellen ein
     ```
 
 
-2. Ändern Sie die Variable *vnetID* so, dass sie auf das vorhandene VNET zeigt:
+2. Ändern Sie die Variable `vnetID` so, dass sie auf das vorhandene virtuelle Netzwerk zeigt:
 
     ```
             /*old "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]",*/
             "vnetID": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', parameters('existingVNetRGName'), '/providers/Microsoft.Network/virtualNetworks/', parameters('existingVNetName'))]",
     ```
 
-3. Entfernen Sie *Microsoft.Network/virtualNetworks* aus den Ressourcen, damit Azure kein neues VNET erstellt:
+3. Entfernen Sie `Microsoft.Network/virtualNetworks` aus Ihren Ressourcen, sodass Azure kein neues virtuelles Netzwerk erstellt:
 
     ```
     /*{
@@ -144,7 +144,7 @@ Ich verwende die Service Fabric-Vorlage template.json, die vor dem Erstellen ein
     },*/
     ```
 
-4. Kommentieren Sie das VNET über das Attribut *dependsOn* von *Microsoft.Compute/virtualMachineScaleSets* aus, damit wir kein neues VNET erstellen müssen:
+4. Kommentieren Sie das virtuelle Netzwerk aus dem `dependsOn`-Attribut von `Microsoft.Compute/virtualMachineScaleSets` aus, sodass Sie nicht vom Erstellen eines neuen virtuellen Netzwerks abhängig sind:
 
     ```
     "apiVersion": "[variables('vmssApiVersion')]",
@@ -165,17 +165,20 @@ Ich verwende die Service Fabric-Vorlage template.json, die vor dem Erstellen ein
     New-AzureRmResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkingexistingvnet -TemplateFile C:\SFSamples\Final\template\_existingvnet.json
     ```
 
-    Nach der Bereitstellung sollte Ihr virtuelles Netzwerk die neuen Skalierungsgruppen-VMs enthalten, und der Knotentyp „VM-Skalierungsgruppe“ sollte das vorhandene VNET und das Subnetz anzeigen.  Sie können auch eine RDP-Verbindung mit der vorhandenen VM herstellen, die sich bereits im VNET befand, und die neuen Skalierungsgruppen-VMs pinnen:
+    Nach der Bereitstellung sollte Ihr virtuelles Netzwerk die neuen Skalierungsgruppen-VMs enthalten. Der Knotentyp der VM-Skalierungsgruppe sollte das vorhandene virtuelle Netzwerk und Subnetz anzeigen. Sie können auch mit dem Remotedesktopprotokoll (Remote Desktop Protocol, RDP) auf den virtuellen Computer zugreifen, der sich bereits im virtuellen Netzwerk befand, und die neuen Skalierungsgruppen-VMs pingen:
 
     ```
     C:>\Users\users>ping 10.0.0.5 -n 1
     C:>\Users\users>ping NOde1000000 -n 1
     ```
 
+Ein weiteres Beispiel, das nicht für Service Fabric spezifisch ist, finden Sie [hier](https://github.com/gbowerman/azure-myriad/tree/master/existing-vnet).
+
+
 <a id="staticpublicip"></a>
 ## <a name="static-public-ip-address"></a>Statische öffentliche IP-Adressen
 
-1. Fügen Sie Parameter für den Namen der Ressourcengruppe der statischen IP-Adresse, den Namen und den vollqualifizierten Domänennamen (FQDN) hinzu:
+1. Fügen Sie Parameter für den Namen der vorhandenen Ressourcengruppe der statischen IP-Adresse, den Namen und den vollqualifizierten Domänennamen (FQDN) hinzu:
 
     ```
     "existingStaticIPResourceGroup": {
@@ -189,13 +192,13 @@ Ich verwende die Service Fabric-Vorlage template.json, die vor dem Erstellen ein
     }
     ```
 
-2. Löschen Sie den Parameter *dnsName*, da die statische IP-Adresse bereits über einen DNS-Namen verfügt:
+2. Entfernen Sie den `dnsName`-Parameter. (Die statische IP-Adresse hat bereits einen.)
 
     ```
     /*
     "dnsName": {
         "type": "string"
-    }, 
+    },
     */
     ```
 
@@ -205,7 +208,7 @@ Ich verwende die Service Fabric-Vorlage template.json, die vor dem Erstellen ein
     "existingStaticIP": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', parameters('existingStaticIPResourceGroup'), '/providers/Microsoft.Network/publicIPAddresses/', parameters('existingStaticIPName'))]",
     ```
 
-4. Entfernen Sie *Microsoft.Network/publicIPAddresses* aus den *Ressourcen*, damit Azure keine neue IP-Adresse erstellt:
+4. Entfernen Sie `Microsoft.Network/publicIPAddresses` aus Ihren Ressourcen, sodass Azure keine neue IP-Adresse erstellt:
 
     ```
     /*
@@ -227,7 +230,7 @@ Ich verwende die Service Fabric-Vorlage template.json, die vor dem Erstellen ein
     }, */
     ```
 
-5. Kommentieren Sie die IP-Adresse über das Attribut *dependsOn* von *Microsoft.Network/loadBalancers* aus, damit keine neue IP-Adresse erstellt werden muss:
+5. Kommentieren Sie die IP-Adresse aus dem `dependsOn`-Attribut von `Microsoft.Network/loadBalancers` aus, sodass Sie nicht vom Erstellen einer neuen IP-Adresse abhängig sind:
 
     ```
     "apiVersion": "[variables('lbIPApiVersion')]",
@@ -241,7 +244,7 @@ Ich verwende die Service Fabric-Vorlage template.json, die vor dem Erstellen ein
     "properties": {
     ```
 
-6. Ändern Sie das Element *publicIPAddress* von *frontendIPConfigurations* in der Ressource *Microsoft.Network/loadBalancers*, um auf die vorhandene statische IP-Adresse statt auf eine neu erstellte zu verweisen:
+6. Ändern Sie in der `Microsoft.Network/loadBalancers`-Ressource das `publicIPAddress`-Element von `frontendIPConfigurations` so, dass auf die vorhandene statische IP-Adresse statt auf eine neu erstellte verwiesen wird:
 
     ```
                 "frontendIPConfigurations": [
@@ -257,7 +260,7 @@ Ich verwende die Service Fabric-Vorlage template.json, die vor dem Erstellen ein
                     ],
     ```
 
-7. Ändern Sie *managementEndpoint* in der Ressource *Microsoft.ServiceFabric/clusters* zu den DNS-FQDN der statischen IP-Adresse.  **Wenn Sie einen sicheren Cluster verwenden, stellen Sie sicher, dass Sie „http://“ zu „https://“ ändern.** (Hinweis: Diese Anweisung gilt nur für Service Fabric-Cluster.  Wenn Sie eine VM-Skalierungsgruppe verwenden, überspringen Sie diesen Schritt):
+7. Ändern Sie in der `Microsoft.ServiceFabric/clusters`-Ressource `managementEndpoint` in den DNS-FQDN der statischen IP-Adresse. Wenn Sie einen sicheren Cluster verwenden, stellen Sie sicher, dass Sie *http://* in *https://* ändern. (Beachten Sie, dass dieser Schritt nur für Service Fabric-Cluster gilt. Wenn Sie eine VM-Skalierungsgruppe verwenden, überspringen Sie diesen Schritt.)
 
     ```
                     "fabricSettings": [],
@@ -282,9 +285,9 @@ Nach der Bereitstellung sehen Sie, dass Ihr Lastenausgleich an die öffentliche 
 <a id="internallb"></a>
 ## <a name="internal-only-load-balancer"></a>Rein interner Lastenausgleich
 
-Dieses Szenario ersetzt den externen Lastenausgleich in der standardmäßigen Service Fabric-Vorlage durch einen rein internen Lastenausgleich.  Weiter oben finden Sie Auswirkungen auf das Azure-Portal und SFRP.
+Dieses Szenario ersetzt den externen Lastenausgleich in der standardmäßigen Service Fabric-Vorlage durch einen rein internen Lastenausgleich. Informationen zu Konsequenzen für das Azure-Portal und den Service Fabric-Ressourcenanbieter finden Sie im vorherigen Abschnitt.
 
-1. Entfernen Sie den Parameter *dnsName*, da er nicht benötigt wird:
+1. Entfernen Sie den `dnsName`-Parameter. (Er ist nicht erforderlich.)
 
     ```
     /*
@@ -294,7 +297,7 @@ Dieses Szenario ersetzt den externen Lastenausgleich in der standardmäßigen Se
     */
     ```
 
-2. Fügen Sie optional einen Parameter für die statische IP-Adresse hinzu, wenn Sie die statische Zuordnungsmethode verwenden. Bei der dynamischen Zuordnungsmethode wird Folgendes nicht benötigt:
+2. Optional können Sie einen statischen IP-Adressparameter hinzufügen, wenn Sie eine statische Zuordnungsmethode verwenden. Wenn Sie eine dynamische Zuordnungsmethode verwenden, müssen Sie diesen Schritt nicht ausführen.
 
     ```
             "internalLBAddress": {
@@ -303,7 +306,7 @@ Dieses Szenario ersetzt den externen Lastenausgleich in der standardmäßigen Se
             }
     ```
 
-3. Entfernen Sie *Microsoft.Network/publicIPAddresses* aus den Ressourcen, damit Azure keine neue IP-Adresse erstellt:
+3. Entfernen Sie `Microsoft.Network/publicIPAddresses` aus Ihren Ressourcen, sodass Azure keine neue IP-Adresse erstellt:
 
     ```
     /*
@@ -325,7 +328,7 @@ Dieses Szenario ersetzt den externen Lastenausgleich in der standardmäßigen Se
     }, */
     ```
 
-4. Entfernen Sie das Attribut *dependsOn* der IP-Adresse von *Microsoft.Network/loadBalancers*, damit wir keine neue IP-Adresse erstellen müssen.  Fügen Sie das Attribut *dependsOn* des VNETs hinzu, da der Lastenausgleich jetzt vom Subnetz des VNETs abhängt:
+4. Entfernen Sie das IP-Adressen-`dependsOn`-Attribut von `Microsoft.Network/loadBalancers`, sodass Sie nicht vom Erstellen einer neuen IP-Adresse abhängig sind. Fügen Sie das Attribut `dependsOn` des virtuellen Netzwerks hinzu, da der Lastenausgleich jetzt vom Subnetz aus dem virtuellen Netzwerk abhängig ist:
 
     ```
                 "apiVersion": "[variables('lbApiVersion')]",
@@ -338,7 +341,7 @@ Dieses Szenario ersetzt den externen Lastenausgleich in der standardmäßigen Se
                 ],
     ```
 
-5. Ändern Sie *frontendIPConfigurations* des Lastenausgleichs von der Verwendung von *publicIPAddress* auf die Verwendung eines Subnetzes und *privateIPAddress*, welche eine festgelegte statische interne IP-Adresse verwendet.  Sie könnten eine dynamische IP-Adresse verwenden, indem Sie das Element *privateIPAdresse* entfernen, und *privateIPAllocationMethod* in „Dynamisch“ ändern.
+5. Ändern Sie die Einstellung `frontendIPConfigurations` des Lastenausgleichs von der Verwendung einer `publicIPAddress` in die Verwendung eines Subnetzes und einer `privateIPAddress`. `privateIPAddress` verwendet eine vordefinierte statische interne IP-Adresse. Um eine dynamische IP-Adresse zu verwenden, entfernen Sie das `privateIPAddress`-Element, und ändern Sie dann `privateIPAllocationMethod` in **Dynamisch**.
 
     ```
                 "frontendIPConfigurations": [
@@ -359,7 +362,7 @@ Dieses Szenario ersetzt den externen Lastenausgleich in der standardmäßigen Se
                     ],
     ```
 
-6. Ändern Sie in der Ressource *Microsoft.ServiceFabric/clusters* *managementEndpoint*, um auf die Adresse des internen Lastenausgleichs zu zeigen.  **Wenn Sie einen sicheren Cluster verwenden, stellen Sie sicher, dass Sie „http://“ zu „https://“ ändern.** (Hinweis: Diese Anweisung gilt nur für Service Fabric-Cluster.  Wenn Sie eine VM-Skalierungsgruppe verwenden, überspringen Sie diesen Schritt):
+6. Ändern Sie in der `Microsoft.ServiceFabric/clusters`-Ressource `managementEndpoint` so, dass auf die interne Adresse des Lastenausgleichs verwiesen wird. Wenn Sie einen sicheren Cluster verwenden, stellen Sie sicher, dass Sie *http://* in *https://* ändern. (Beachten Sie, dass dieser Schritt nur für Service Fabric-Cluster gilt. Wenn Sie eine VM-Skalierungsgruppe verwenden, überspringen Sie diesen Schritt.)
 
     ```
                     "fabricSettings": [],
@@ -375,16 +378,16 @@ Dieses Szenario ersetzt den externen Lastenausgleich in der standardmäßigen Se
     New-AzureRmResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkinginternallb -TemplateFile C:\SFSamples\Final\template\_internalonlyLB.json
     ```
 
-Nach der Bereitstellung verwendet Ihr Lastenausgleich die private statische IP-Adresse 10.0.0.250. Wenn sich ein weiterer Computer im gleichen VNET befindet, können Sie auch zum internen [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)-Endpunkt navigieren und sicherstellen, dass er mit einem der Knoten hinter dem Lastenausgleich verbunden ist.
+Nach der Bereitstellung verwendet Ihr Lastenausgleich die private statische IP-Adresse 10.0.0.250. Wenn Sie in diesem gleichen virtuellen Netzwerk über einen anderen Computer verfügen, können Sie zu dem internen [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)-Endpunkt gehen. Beachten Sie, dass er eine Verbindung mit einem der Knoten hinter dem Lastenausgleich herstellt.
 
 <a id="internalexternallb"></a>
 ## <a name="internal-and-external-load-balancer"></a>Interner und externer Lastenausgleich
 
-In diesem Szenario wird der vorhandene externe Lastenausgleich mit einem einzigen Knotentyp verwendet und ein zusätzlicher interner Lastenausgleich zum gleichen Knotentyp hinzugefügt.  Ein Back-End-Port, der an Back-End-Adresspools angefügt ist, kann nur einem einzelnen Lastenausgleich zugewiesen werden. Daher müssen Sie entscheiden, welcher Lastenausgleich über Ihre Anwendungsports und welcher Lastenausgleich über Ihre Verwaltungsendpunkte (Port 19000/19080) verfügen soll.  Bedenken Sie die oben aufgeführten Einschränkungen für SFRP, wenn Sie Verwaltungsendpunkte in den internen Lastenausgleich setzen möchten.  In diesem Beispiel bleiben die Verwaltungsendpunkte im externen Lastenausgleich. Außerdem wird ein Port 80-Anwendungsport hinzugefügt und im internen Lastenausgleich platziert.
+In diesem Szenario beginnen Sie mit dem vorhandenen externen Lastenausgleich mit einem einzigen Knotentyp und fügen einen internen Lastenausgleich für den gleichen Knotentyp hinzu. Ein Back-End-Port, der einem Back-End-Adresspool angefügt ist, kann nur einem einzelnen Lastenausgleich zugewiesen werden. Wählen Sie, welcher Lastenausgleich Ihre Anwendungsports und welcher Lastenausgleich Ihre Verwaltungsendpunkte (Ports 19000 und 19080) enthalten soll. Wenn Sie die Verwaltungsendpunkte auf den internen Lastenausgleich legen, beachten Sie die weiter oben in diesem Artikel erläuterten Service Fabric-Ressourcenanbieter-Einschränkungen. In unserem Beispiel verbleiben die Verwaltungsendpunkte auf dem externen Lastenausgleich. Sie können auch einen Port 80-Anwendungsport hinzufügen und auf dem internen Lastenausgleich platzieren.
 
-Wenn Sie einen Cluster mit zwei Knotentypen erstellen möchten, bei dem sich ein Knotentyp auf dem externen Lastenausgleich und der andere auf dem internen Lastenausgleich befindet, verwenden Sie die Vorlage des über das Portal erstellten Knotentyps mit zwei Knoten (die mit 2 Lastenausgleichen geliefert wird), und wandeln Sie den zweiten Lastenausgleich in einen internen Lastenausgleich um, wie im obigen Abschnitt „Rein interner Lastenausgleich“ beschrieben.
+In einem Zwei-Knotentypen-Cluster befindet sich ein Knotentyp auf dem externen Lastenausgleich. Der andere Knotentyp befindet sich auf dem internen Lastenausgleich. Um einen Zwei-Knotentypen-Cluster zu verwenden, wandeln Sie in der im Portal erstellten Zwei-Knotentypen-Vorlage (mit zwei Lastenausgleichsmodulen) den zweiten Lastenausgleich in einen internen Lastenausgleich um. Weitere Informationen finden Sie unter [Rein interner Lastenausgleich](#internallb).
 
-1. Fügen Sie einen Parameter „LB“ für die statische interne IP-Adresse hinzu (für eine dynamische IP-Adresse siehe obige Anmerkungen):
+1. Fügen Sie den statischen IP-Adressparameter für den internen Lastenausgleich hinzu. (Hinweise zur Verwendung einer dynamischen IP-Adresse finden Sie in vorherigen Abschnitten dieses Artikels.)
 
     ```
             "internalLBAddress": {
@@ -393,22 +396,22 @@ Wenn Sie einen Cluster mit zwei Knotentypen erstellen möchten, bei dem sich ein
             }
     ```
 
-2. Fügen Sie den Parameter für den Anwendungsport 80 hinzu:
+2. Fügen Sie einen Parameter für den Anwendungsport 80 hinzu.
 
-3. Fügen Sie mit Kopieren/Einfügen und Anfügen von „-Int“ den Namen interne Versionen von vorhandenen Netzwerkvariablen hinzu:
+3. Um interne Versionen der vorhandenen Netzwerkvariablen hinzuzufügen, kopieren Sie sie, fügen Sie sie ein, und fügen Sie ihrem Namen das Suffix „-Int“ an:
 
     ```
-    /* Add internal LB networking variables */
+    /* Add internal load balancer networking variables */
             "lbID0-Int": "[resourceId('Microsoft.Network/loadBalancers', concat('LB','-', parameters('clusterName'),'-',parameters('vmNodeType0Name'), '-Internal'))]",
             "lbIPConfig0-Int": "[concat(variables('lbID0-Int'),'/frontendIPConfigurations/LoadBalancerIPConfig')]",
             "lbPoolID0-Int": "[concat(variables('lbID0-Int'),'/backendAddressPools/LoadBalancerBEAddressPool')]",
             "lbProbeID0-Int": "[concat(variables('lbID0-Int'),'/probes/FabricGatewayProbe')]",
             "lbHttpProbeID0-Int": "[concat(variables('lbID0-Int'),'/probes/FabricHttpGatewayProbe')]",
             "lbNatPoolID0-Int": "[concat(variables('lbID0-Int'),'/inboundNatPools/LoadBalancerBEAddressNatPool')]",
-            /* internal LB networking variables end */
+            /* Internal load balancer networking variables end */
     ```
 
-4. Wenn Sie mit einer vom Portal generierten Vorlage mit Anwendungsport 80 beginnen, wird von der Standard-Portalvorlage *AppPort1* (Port 80) an den externen Lastenausgleich angefügt.  Entfernen Sie in diesem Fall „AppPort1“ vom externen Lastenausgleich *loadBalancingRules* und von Tests, damit Sie es später zum internen Lastenausgleich hinzufügen können:
+4. Wenn Sie mit der vom Portal generierten Vorlage mit Anwendungsport 80 beginnen, fügt die Standardportalvorlage dem externen Lastenausgleich AppPort1 (Port 80) hinzu. Entfernen Sie in diesem Fall AppPort1 vom externen Lastenausgleich `loadBalancingRules` und von Tests, damit Sie ihn später dem internen Lastenausgleich hinzufügen können:
 
     ```
     "loadBalancingRules": [
@@ -430,7 +433,7 @@ Wenn Sie einen Cluster mit zwei Knotentypen erstellen möchten, bei dem sich ein
                 },
                 "protocol": "tcp"
             }
-        } /* remove the AppPort1 from the external LB,
+        } /* Remove AppPort1 from the external load balancer.
         {
             "name": "AppPortLBRule1",
             "properties": {
@@ -454,7 +457,7 @@ Wenn Sie einen Cluster mit zwei Knotentypen erstellen möchten, bei dem sich ein
     ],
     "probes": [
         {
-            "name": "FabricGatewayProbe", 
+            "name": "FabricGatewayProbe",
             "properties": {
                 "intervalInSeconds": 5,
                 "numberOfProbes": 2,
@@ -470,7 +473,7 @@ Wenn Sie einen Cluster mit zwei Knotentypen erstellen möchten, bei dem sich ein
                 "port": "[parameters('nt0fabricHttpGatewayPort')]",
                 "protocol": "tcp"
             }
-        } /* remove the AppPort1 from the external LB,,
+        } /* Remove AppPort1 from the external load balancer.
         {
             "name": "AppPortProbe1",
             "properties": {
@@ -481,18 +484,18 @@ Wenn Sie einen Cluster mit zwei Knotentypen erstellen möchten, bei dem sich ein
             }
         } */
 
-    ], 
+    ],
     "inboundNatPools": [
     ```
 
-5. Fügen Sie eine zweite Ressource *Microsoft.Network/loadBalancers* hinzu, die dem internen Lastenausgleich sehr ähnlich ist, den wir im Abschnitt [Rein interner Lastenausgleich](#internallb) erstellt haben. Diese Ressource verwendet allerdings nur die Lastenausgleichsvariable „-Int“ und implementiert nur den Anwendungsport 80.  Hierdurch wird auch *inboundNatPools* gelöscht, um RDP-Endpunkte im öffentlichen Lastenausgleich zu halten – wenn Sie RDP im internen Lastenausgleich haben möchten, verschieben Sie *inboundNATPools* aus dem externen Lastenausgleich in diesen internen Lastenausgleich.
+5. Fügen Sie eine zweite `Microsoft.Network/loadBalancers`-Ressource hinzu. Sie ähnelt dem im Abschnitt [Rein interner Lastenausgleich](#internallb) erstellten internen Lastenausgleich, verwendet jedoch die „-Int“-Lastenausgleichsvariablen und implementiert nur den Anwendungsport 80. Dies entfernt auch `inboundNatPools`, um die RDP-Endpunkte auf dem öffentlichen Lastenausgleich beizubehalten. Wenn Sie die RDP-Endpunkte auf dem internen Lastenausgleich wünschen, verschieben Sie `inboundNatPools` vom externen Lastenausgleich auf diesen internen Lastenausgleich:
 
     ```
-            /* Add a second load balancer, configured with a static privateIPAddress and the "-Int" LB variables */
+            /* Add a second load balancer, configured with a static privateIPAddress and the "-Int" load balancer variables. */
             {
                 "apiVersion": "[variables('lbApiVersion')]",
                 "type": "Microsoft.Network/loadBalancers",
-                /* Add '-Internal' to name */
+                /* Add "-Internal" to the name. */
                 "name": "[concat('LB','-', parameters('clusterName'),'-',parameters('vmNodeType0Name'), '-Internal')]",
                 "location": "[parameters('computeLocation')]",
                 "dependsOn": [
@@ -527,7 +530,7 @@ Wenn Sie einen Cluster mit zwei Knotentypen erstellen möchten, bei dem sich ein
                         }
                     ],
                     "loadBalancingRules": [
-                        /* Add the AppPort rule, making sure to reference the "-Int" versions of the backendAddressPool, frontendIPConfiguration, and probe variables */
+                        /* Add the AppPort rule. Be sure to reference the "-Int" versions of backendAddressPool, frontendIPConfiguration, and the probe variables. */
                         {
                             "name": "AppPortLBRule1",
                             "properties": {
@@ -549,7 +552,7 @@ Wenn Sie einen Cluster mit zwei Knotentypen erstellen möchten, bei dem sich ein
                         }
                     ],
                     "probes": [
-                    /* Add the probe for the app port */
+                    /* Add the probe for the app port. */
                     {
                             "name": "AppPortProbe1",
                             "properties": {
@@ -570,7 +573,7 @@ Wenn Sie einen Cluster mit zwei Knotentypen erstellen möchten, bei dem sich ein
             },
     ```
 
-6. Fügen Sie im Netzwerkprofil *networkProfile* der Ressource *Microsoft.Compute/virtualMachineScaleSets* den internen Back-End-Adresspool hinzu:
+6. Fügen Sie in `networkProfile` für die `Microsoft.Compute/virtualMachineScaleSets`-Ressource den internen Back-End-Adresspool hinzu:
 
     ```
     "loadBalancerBackendAddressPools": [
@@ -592,8 +595,8 @@ Wenn Sie einen Cluster mit zwei Knotentypen erstellen möchten, bei dem sich ein
     New-AzureRmResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkinginternalexternallb -TemplateFile C:\SFSamples\Final\template\_internalexternalLB.json
     ```
 
-Nach der Bereitstellung befinden sich zwei Lastenausgleiche in der Ressourcengruppe. Wenn Sie in den Lastenausgleichen suchen, sehen Sie die öffentliche IP-Adresse und die Verwaltungsendpunkte (Port 19000/19080) sowie die statische interne IP-Adresse und den Verwaltungsendpunkt (Port 80). Beide Lastenausgleiche verwenden den gleichen Back-End-Pool der VM-Skalierungsgruppe.
+Nach der Bereitstellung sehen Sie zwei Lastenausgleichsmodule in der Ressourcengruppe. Wenn Sie die Lastenausgleichsmodule durchsuchen, sehen Sie die öffentliche IP-Adresse und die Verwaltungsendpunkte (Ports 19000 und 19080), die der öffentlichen IP-Adresse zugewiesen sind. Sie können auch die statische interne IP-Adresse und den Anwendungsendpunkt (Port 80) sehen, die dem internen Lastenausgleich zugewiesen sind. Beide Lastenausgleichsmodule verwenden den gleichen VM-Skalierungsgruppen-Back-End-Pool.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie mehr über das Integrieren von Service Fabric Clustern mithilfe der Netzwerkfeatures von Azure erfahren haben, fahren Sie mit dem [Erstellen eines Clusters](service-fabric-cluster-creation-via-arm.md) fort. 
+[Erstellen eines Clusters](service-fabric-cluster-creation-via-arm.md)
 

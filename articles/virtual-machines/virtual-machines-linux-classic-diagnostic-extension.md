@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 12/15/2015
 ms.author: Ning
 translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: 11a1f6ea289db38aeb8c2fff2c9b0e6b1f0f044c
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 625f4cc08ba023309ac4a9a8b7834d9ab4f4c116
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -45,7 +46,7 @@ Die neueste Version der Erweiterung ist **2.3**. **Ältere Versionen (2.0, 2.1 u
 ## <a name="enable-the-extension"></a>Aktivieren der Erweiterung
 Sie können diese Erweiterung über das [Azure-Portal](https://portal.azure.com/#), über Azure PowerShell oder über Azure-CLI-Skripts aktivieren.
 
-Um die System- und Leistungsdaten direkt vom Azure-Portal aus anzuzeigen und zu konfigurieren, folgen Sie [diesen Schritten im Azure-Blog] (https://azure.microsoft.com/blog/2014/09/02/windows-azure-virtual-machine-monitoring-with-wad-extension/„URL zum Windows-Blog“/).
+Um die System- und Leistungsdaten direkt im Azure-Portal anzuzeigen und zu konfigurieren, führen Sie [diese Schritte im Azure-Blog](https://azure.microsoft.com/en-us/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) aus.
 
 In diesem Artikel wird beschrieben, wie Sie die Erweiterung mit Azure-CLI-Befehlen aktivieren und konfigurieren. So können Sie die Daten direkt aus der Speichertabelle lesen und anzeigen.
 
@@ -147,10 +148,5 @@ Wenn Sie fileCfg oder perfCfg aktiviert haben (wie in Szenario 2 und 3 beschrieb
 
 ## <a name="known-issues"></a>Bekannte Probleme
 * In der aktuellen Version (2.3) der Linux-Diagnoseerweiterung kann auf die Rsyslog-Informationen und die benutzerdefinierte Protokolldatei nur per Skript zugegriffen werden.
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

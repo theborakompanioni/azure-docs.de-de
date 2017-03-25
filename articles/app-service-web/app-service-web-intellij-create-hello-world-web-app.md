@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/22/2016
 ms.author: robmcm;asirveda
 translationtype: Human Translation
-ms.sourcegitcommit: 2687011c449715d2ce5f491c3da501f38035d631
-ms.openlocfilehash: 9c7b708c2bd923733cd034116453fcca2ada949b
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 756c9fa079782f8f0cb194ca07c637d083f9ebd7
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -69,7 +70,7 @@ Vor der Veröffentlichung Ihrer Anwendung müssen Sie zuerst die Moduleinstellun
 2. Wenn das Dialogfeld „Projektstruktur“ angezeigt wird:
 
    a. Klicken Sie in der Liste der **Projekteinstellungen** auf **Artefakte**.
-   b. Ändern Sie den Artefaktnamen im Feld **Name** so, dass er Leerzeichen oder Sonderzeichen enthält; dies ist erforderlich, da der Name im Uniform Resource Identifier (URI) verwendet wird.
+   b. Ändern Sie den Artefaktnamen im Feld **Name** so, dass er keine Leerzeichen oder Sonderzeichen enthält; dies ist erforderlich, da der Name im Uniform Resource Identifier (URI) verwendet wird.
    c. Ändern Sie den **Typ** in **Webanwendung: Archiv**.
    d. Klicken Sie auf **OK**, um das Dialogfeld mit der Projektstruktur zu schließen.
 
@@ -254,9 +255,4 @@ Weitere Informationen zum Erstellen von Azure-Web-Apps finden Sie unter [Web-App
 [16]: ./media/app-service-web-intellij-create-hello-world-web-app/16-Progress-Indicator.png
 [17]: ./media/app-service-web-intellij-create-hello-world-web-app/17-Browse-Web-App.png
 [18]: ./media/app-service-web-intellij-create-hello-world-web-app/18-Stop-Web-App.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

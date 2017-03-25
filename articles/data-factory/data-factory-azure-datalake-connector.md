@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 03/13/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: b2d1a740782a20a7c6b7b8cec8335a41f16231f5
-ms.openlocfilehash: 5a6a14e5fc8f6915b34f9667c4294a46c8591633
-ms.lasthandoff: 02/09/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: ee0cee5e653cb8900936e12e87c56cfee5639bc5
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -425,7 +425,7 @@ Die folgende Tabelle beschreibt spezifische JSON-Elemente für den verknüpften 
 Wenn Sie die Dienstprinzipalauthentifizierung verwenden möchten, müssen Sie zunächst in Azure Active Directory (AAD) eine Anwendungsentität registrieren und ihr in Data Lake Store Zugriff gewähren. Anschließend können Sie in Azure Data Factory die folgenden Eigenschaften mit entsprechenden Werten für Anwendungs-ID, Anwendungsschlüssel und Mandant angeben, um Daten aus bzw. in Data Lake Store zu kopieren. Informationen zur Einrichtung sowie zum Abrufen der erforderlichen Informationen finden Sie unter [Dienst-zu-Dienst-Authentifizierung](../data-lake-store/data-lake-store-authenticate-using-active-directory.md).
 
 > [!IMPORTANT]
-> Wenn Sie den Assistenten zum Kopieren verwenden, müssen Sie dem Dienstprinzipal mindestens Leseberechtigung für den ADLS-Stamm („/“) gewähren oder die Reader-Rolle für das ADLS-Konto zuweisen, damit Sie durch die Ordner navigieren können. Andernfalls wird möglicherweise der Fehler „Die angegebenen Anmeldeinformationen sind ungültig“ angezeigt.
+> Wenn Sie zum Erstellen den Kopier-Assistenten verwenden, müssen Sie dem Dienstprinzipal in der Zugriffssteuerung (IAM) mindestens die Leserolle für das ADLS-Konto UND mindestens die Berechtigung zum Lesen und Ausführen für den ADLS-Stamm („/“) und untergeordnete Elemente gewähren, damit Sie durch die Ordner navigieren können. Andernfalls wird möglicherweise der Fehler „Die angegebenen Anmeldeinformationen sind ungültig“ angezeigt.
 >
 > Wenn Sie einen Dienstprinzipal in AAD neu erstellen oder aktualisieren, kann es einige Minuten dauern, bis er tatsächlich wirksam wird. Überprüfen Sie den Dienstprinzipal und die ADLS-ACL-Konfiguration zunächst gründlich, wenn weiterhin die Fehlermeldung „Die angegebenen Anmeldeinformationen sind ungültig“ angezeigt wird. Warten Sie dann einen Moment, und wiederholen Sie den Vorgang.
 >
@@ -484,7 +484,7 @@ Der von Ihnen mithilfe der Schaltfläche **Autorisieren** generierte Autorisieru
 
 | Benutzertyp | Läuft ab nach |
 |:--- |:--- |
-| Benutzerkonten, die NICHT von Azure Active Directory verwaltet werden (@hotmail.com, @live.com, usw.). |12 Stunden |
+| Benutzerkonten, die NICHT von Azure Active Directory verwaltet werden (@hotmail.com, @live.com usw.). |12 Stunden |
 | Benutzerkonten, die von Azure Active Directory (AAD) verwaltet werden |14 Tage nach der letzten Sliceausführung. <br/><br/>90 Tage, wenn ein Slice, das auf einem verknüpften OAuth-Dienst basiert, mindestens einmal alle 14 Tage ausgeführt wird. |
 
 Wenn Sie Ihr Kennwort vor Ablauf der Tokengültigkeitsdauer ändern, läuft das Token sofort ab, und Ihnen wird der in diesem Abschnitt aufgeführte Fehler angezeigt.
@@ -527,7 +527,7 @@ Der Abschnitt **typeProperties** unterscheidet sich bei jeder Art von Dataset un
 | Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | folderPath |Der Pfad zum Container und Ordner im Azure Data Lake-Speicher. |Ja |
-| fileName |Der Name der Datei im Azure Data Lake-Speicher. fileName ist optional, wobei seine Groß- und Kleinschreibung beachtet werden muss. <br/><br/>Wenn Sie einen Dateinamen angeben, funktioniert die Aktivität (einschließlich Kopieren) für die jeweilige Datei.<br/><br/>Wenn „fileName“ nicht angegeben ist, werden alle Dateien in „folderPath“ für das Eingabedataset kopiert.<br/><br/>Wenn „fileName“ für ein Ausgabedataset nicht angegeben ist, hat der Name der generierten Datei folgendes Format: Data.<Guid>.txt (Beispiel: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt). |Nein |
+| fileName |Der Name der Datei im Azure Data Lake-Speicher. fileName ist optional, wobei seine Groß- und Kleinschreibung beachtet werden muss. <br/><br/>Wenn Sie einen Dateinamen angeben, funktioniert die Aktivität (einschließlich Kopieren) für die jeweilige Datei.<br/><br/>Wenn „fileName“ nicht angegeben ist, werden alle Dateien in „folderPath“ für das Eingabedataset kopiert.<br/><br/>Wenn „fileName“ für ein Ausgabedataset nicht angegeben ist, hat der Name der generierten Datei folgendes Format: Data<Guid>.txt (Beispiel: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt). |Nein |
 | partitionedBy |"partitionedBy" ist eine optionale Eigenschaft. "partitionedBy" kann genutzt werden, um einen dynamischen Wert für "folderPath" oder "fileName" für Zeitreihendaten anzugeben. Beispiel: "folderPath" kann für jedes stündliche Datenaufkommen parametrisiert werden. Im Abschnitt [Nutzen der partitionedBy-Eigenschaft](#using-partitionedby-property) finden Sie Details und Beispiele. |Nein |
 | format | Die folgenden Formattypen werden unterstützt: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Sie müssen die **type** -Eigenschaft unter „format“ auf einen dieser Werte festlegen. Weitere Informationen finden Sie in den Abschnitten [Textformat](#specifying-textformat), [JSON-Format](#specifying-jsonformat), [Avro-Format](#specifying-avroformat), [Orc-Format](#specifying-orcformat) und [Parquet-Format](#specifying-parquetformat). <br><br> Wenn Sie **Dateien unverändert zwischen dateibasierten Speichern kopieren** möchten (binäre Kopie), können Sie den Formatabschnitt bei den Definitionen von Eingabe- und Ausgabedatasets überspringen. |Nein |
 | Komprimierung | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Folgende Typen werden unterstützt: **GZip**, **Deflate**, **BZip2** und **ZipDeflate**. Folgende Komprimierungsstufen werden unterstützt: **Optimal** und **Schnellste**. Weitere Informationen finden Sie im Abschnitt [Angeben der Komprimierung](#specifying-compression). |Nein |

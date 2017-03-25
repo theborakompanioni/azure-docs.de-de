@@ -16,19 +16,19 @@ ms.topic: article
 ms.date: 03/06/2017
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: fc917c9c9a92bf944d922a9418e065fa661c69df
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 6d376b9db07a46c467bd772959de3f7acf9c123d
+ms.lasthandoff: 03/15/2017
 
 
 ---
 
-# <a name="connect-a-mongodb-app-to-a-documentdb-account-using-a-mongodb-connection-string"></a>Verbinden einer MongoDB-App mit einem DocumentDB-Konto mithilfe einer MongoDB-Verbindungszeichenfolge
+# <a name="connect-an-application-to-documentdb-api-for-mongodb"></a>Verbinden einer Anwendung mit DocumentDB: API für MongoDB
 Erfahren Sie, wie Sie Ihre MongoDB-App mithilfe einer MongoDB-Verbindungszeichenfolge zu einem Azure DocumentDB-Konto hinzufügen. Indem Sie Ihre MongoDB-App mit einer Azure DocumentDB-Datenbank verbinden, können Sie die DocumentDB-Datenbank als Datenspeicher für die MongoDB-App verwenden. 
 
 Dieses Tutorial zeigt zwei Möglichkeiten, um Informationen zur Verbindungszeichenfolge abzurufen:
 
-- [Die Schnellstartmethode](#QuickStartConnection) zur Verwendung mit .NET-, Node.js-, MongoDB Shell-, Java- und Python-Treibern.
+- [Die Schnellstartmethode](#QuickstartConnection) zur Verwendung mit .NET-, Node.js-, MongoDB Shell-, Java- und Python-Treibern.
 - [Benutzerdefinierte Verbindungszeichenfolgen](#GetCustomConnection) zur Verwendung mit anderen Treibern.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -36,7 +36,7 @@ Dieses Tutorial zeigt zwei Möglichkeiten, um Informationen zur Verbindungszeich
 - Ein Azure-Konto. Wenn Sie noch kein Azure-Konto besitzen, erstellen Sie jetzt ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/). 
 - Ein DocumentDB-Konto. Anweisungen finden Sie unter [Erstellen eines DocumentDB-Kontos zur Verwendung mit MongoDB-Apps](documentdb-create-mongodb-account.md).
 
-## <a id="QuickStartConnection"></a>Abrufen der MongoDB-Verbindungszeichenfolge mithilfe der Schnellstartmethode
+## <a id="QuickstartConnection"></a>Abrufen der MongoDB-Verbindungszeichenfolge mithilfe der Schnellstartmethode
 1. Melden Sie sich in einem Internetbrowser beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie auf dem Blatt **NoSQL (DocumentDB)** das DocumentDB: API für MongoDB-Konto aus. 
 3. Klicken Sie auf der **linken Navigationsleiste** des Blatts „Konto“ auf **Schnellstart**. 

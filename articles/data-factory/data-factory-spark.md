@@ -12,38 +12,138 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 02/21/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: b3895dbf56c58e8e10e6af84afc520e5aef6e01e
-ms.openlocfilehash: c2eb07b83f3096f86772f9af63a48da79ce0fd2e
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 2af5d275bb331101b370e4a12043e27b6cdf5b68
+ms.lasthandoff: 03/15/2017
 
 
 ---
 # <a name="invoke-spark-programs-from-data-factory"></a>Aufrufen von Spark-Programmen aus Data Factory
+> [!div class="op_single_selector" title1="Transformation Activities"]
+> * [Hive-Aktivität](data-factory-hive-activity.md) 
+> * [Pig-Aktivität](data-factory-pig-activity.md)
+> * [MapReduce-Aktivität](data-factory-map-reduce.md)
+> * [Hadoop-Streamingaktivität](data-factory-hadoop-streaming-activity.md)
+> * [Spark-Aktivität](data-factory-spark.md)
+> * [Machine Learning-Batchausführungsaktivität](data-factory-azure-ml-batch-execution-activity.md)
+> * [Machine Learning-Ressourcenaktualisierungsaktivität](data-factory-azure-ml-update-resource-activity.md)
+> * [Aktivität „Gespeicherte Prozedur“](data-factory-stored-proc-activity.md)
+> * [U-SQL-Aktivität für Data Lake Analytics](data-factory-usql-activity.md)
+> * [Benutzerdefinierte .NET-Aktivität](data-factory-use-custom-activities.md)
+
 ## <a name="introduction"></a>Einführung
-Sie können die MapReduce-Aktivität in einer Data Factory-Pipeline verwenden, um Spark-Programme in Ihrem HDInsight Spark-Cluster auszuführen. Lesen Sie die detaillierten Informationen zur Verwendung der Aktivität unter [MapReduce-Aktivität](data-factory-map-reduce.md) , bevor Sie mit dem vorliegenden Artikel fortfahren. 
+Die HDInsight Spark-Aktivität in einer Data Factory-[Pipeline](data-factory-create-pipelines.md) führt Spark-Programme in [Ihrem eigenen](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) HDInsight-Cluster aus. Dieser Artikel baut auf dem Artikel zu [Datentransformationsaktivitäten](data-factory-data-transformation-activities.md) auf, der eine allgemeine Übersicht über die Datentransformation und die unterstützten Transformationsaktivitäten bietet.
 
-## <a name="spark-sample-on-github"></a>Spark-Beispiel auf GitHub
-Das [Spark-Beispiel für Data Factory auf GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/Spark) zeigt, wie Sie die MapReduce-Aktivität verwenden, um ein Spark-Programm aufzurufen. Das Spark-Programm kopiert ganz einfach Daten von einem Azure-Blobcontainer in einen anderen. 
+## <a name="hdinsight-linked-service"></a>Verknüpfter HDInsight-Dienst
+Bevor Sie eine Spark-Aktivität in einer Data Factory-Pipeline verwenden, erstellen Sie einen verknüpften (Ihren eigenen) HDInsight-Dienst. Der folgende JSON-Codeausschnitt zeigt die Definition eines verknüpften HDInsight-Diensts, der auf Ihren eigenen Azure HDInsight Spark-Cluster zeigt.   
 
-## <a name="data-factory-entities"></a>Data Factory-Entitäten
-Der Ordner **Spark-ADF/src/ADFJsons** enthält Dateien für Data Factory-Entitäten (verknüpfte Dienste, Datasets, Pipeline).  
+```json
+{
+    "name": "HDInsightLinkedService",
+    "properties": {
+        "type": "HDInsight",
+        "typeProperties": {
+            "clusterUri": "https://MyHdinsightSparkcluster.azurehdinsight.net/",
+              "userName": "admin",
+              "password": "password",
+              "linkedServiceName": "MyHDInsightStoragelinkedService"
+        }
+    }
+}
+```
 
-Dieses Beispiel enthält zwei **verknüpfte Dienste** : Azure Storage und Azure HDInsight. Geben Sie den Namen und die Schlüsselwerte Ihres Azure-Speichers in **StorageLinkedService.json** an, und geben Sie Cluster-URI, Benutzernamen sowie Kennwort in **HDInsightLinkedService.json** an.
+> [!NOTE]
+> Zurzeit unterstützt die Spark-Aktivität keine Spark-Cluster, die Data Lake Store als primären Speicher oder einen bedarfsbasierten verknüpften HDInsight-Dienst verwenden. 
 
-Dieses Beispiel enthält zwei **Datasets**: **input.json** und **output.json**. Diese Dateien befinden sich im Ordner **Datasets** .  Diese Dateien stellen die Eingabe- und Ausgabedatasets für die MapReduce-Aktivität dar.
+Weitere Informationen zu verknüpften HDInsight-Diensten und anderen verknüpften Computediensten finden Sie im Artikel [Verknüpfte Data Factory-Computedienste](data-factory-compute-linked-services.md). 
 
-Beispielpipelines finden Sie im Ordner **ADFJsons/Pipeline** . Sehen Sie sich eine Pipeline an, um zu verstehen, wie Sie mithilfe der MapReduce-Aktivität ein Spark-Programm aufrufen. 
+## <a name="spark-activity-json"></a>JSON für Spark-Aktivität
+Dies ist die JSON-Beispieldefinition einer Spark-Aktivität:    
 
-Die MapReduce-Aktivität ist so konfiguriert, dass sie **com.adf.sparklauncher.jar** im **adflibs**-Container in Ihrem Azure-Speicher aufruft (angegeben in „StorageLinkedService.json“). Der Quellcode für dieses Programm befindet sich im Ordner „Spark-ADF/src/main/java/com/adf/“, ruft „spark-submit“ auf und führt Spark-Aufträge aus. 
+```json
+{
+    "name": "MySparkActivity",
+    "description": "This activity invokes the Spark program",
+    "type": "HDInsightSpark",
+    "outputs": [
+        {
+            "name": "PlaceholderDataset"
+        }
+    ],
+    "linkedServiceName": "HDInsightLinkedService",
+    "typeProperties": {
+        "rootPath": "mycontainer\\myfolder",
+        "entryFilePath": "main.py",
+        "arguments": [ "arg1", "arg2" ],
+        "sparkConfig": {
+              "spark.python.worker.memory": "512m"
+        }
+    }
+}
+```
+Die folgende Tabelle beschreibt die JSON-Eigenschaften, die in der JSON-Definition verwendet werden: 
+
+| Eigenschaft | Beschreibung | Erforderlich |
+| -------- | ----------- | -------- |
+| name | Der Name der Aktivität in der Pipeline. | Ja |
+| Beschreibung | Ein Text, der beschreibt, was mit der Aktivität ausgeführt wird. | Nein |
+| Typ | Diese Eigenschaft muss auf „HDInsightSpark“ festgelegt werden. | Ja |
+| linkedServiceName | Verweis auf einen verknüpften HDInsight-Dienst, in dem das Spark-Programm ausgeführt wird. | Ja |
+| rootPath | Der Azure-Blobcontainer und -ordner mit der Spark-Datei. Beim Dateinamen muss die Groß-/Kleinschreibung beachtet werden. | Ja |
+| entryFilePath | Der relative Pfad zum Stammordner des Spark-Codes bzw. -Pakets. | Ja |
+| className | Die Java-/Spark-Hauptklasse der Anwendung. | Nein | 
+| arguments | Eine Liste der Befehlszeilenargumente für das Spark-Programm. | Nein | 
+| proxyUser | Das Benutzerkonto, dessen Identität angenommen werden soll, um das Spark-Programm auszuführen. | Nein | 
+| sparkConfig | Eigenschaften der Spark-Konfiguration. | Nein | 
+| getDebugInfo | Gibt an, ob die Spark-Protokolldateien in den Azure-Speicher kopiert werden, der vom HDInsight-Cluster verwendet (oder) von sparkJobLinkedService angegeben wird. Zulässige Werte: Keine, Immer oder Fehler. Standardwert: Keine | Nein | 
+| sparkJobLinkedService | Der verknüpfte Azure Storage-Dienst, der die Datei sowie die Abhängigkeiten und Protokolle für den Spark-Auftrag enthält.  Wenn Sie für diese Eigenschaft keinen Wert angeben, wird der Speicher verwendet, der dem HDInsight-Cluster zugeordnet ist. | Nein |
+
+## <a name="folder-structure"></a>Ordnerstruktur
+Die Spark-Aktivität unterstützt im Gegensatz zu Pig- und Hive-Aktivitäten keine Inlineskripts. Spark-Aufträge lassen sich zudem besser erweitern als Pig- oder Hive-Aufträge. Bei Spark-Aufträgen können Sie mehrere Abhängigkeiten wie z.B. jar-Pakete (im Java-CLASSPATH platziert), Python-Dateien (im PYTHONPATH platziert) sowie beliebige andere Dateien bereitstellen.
+
+Erstellen Sie folgende Ordnerstruktur in dem Azure-Blobspeicher, auf den der verknüpfte HDInsight-Dienst verweist. Laden Sie dann abhängige Dateien in die entsprechenden Unterordner in dem Stammordner hoch, der von **entryFilePath** repräsentiert wird. Python-Dateien werden beispielsweise in den Unterordner „pyFiles“ und jar-Dateien in den Unterordner „jars“ des Stammordners hochgeladen. Zur Laufzeit erwartet der Data Factory-Dienst die folgende Ordnerstruktur im Azure-Blobspeicher:     
+
+| path | Beschreibung | Erforderlich | Typ |
+| ---- | ----------- | -------- | ---- | 
+| verfügbar.    | Der Stammpfad des Spark-Auftrags im verknüpften Speicherdienst.    | Ja | Ordner |
+| &lt;benutzerdefiniert&gt; | Der Pfad, der auf die Eingabedatei des Spark-Auftrags zeigt. | Ja | File | 
+| ./jars | Alle Dateien in diesem Ordner werden hochgeladen und im Java-CLASSPATH des Clusters platziert. | Nein | Ordner |
+| ./pyFiles | Alle Dateien in diesem Ordner werden hochgeladen und im PYTHONPATH des Clusters platziert. | Nein | Ordner |
+| ./files | Alle Dateien in diesem Ordner werden hochgeladen und im Executor-Arbeitsverzeichnis platziert. | Nein | Ordner |
+| ./archives | Alle Dateien in diesem Ordner sind nicht komprimiert. | Nein | Ordner |
+| ./logs | Der Ordner, in dem Protokolle aus dem Spark-Cluster gespeichert werden.| Nein | Ordner |
+
+Hier finden Sie ein Beispiel für einen Speicher mit zwei Spark-Auftragsdateien in dem Azure-Blobspeicher, auf den der verknüpfte HDInsight-Dienst verweist. 
+
+```
+SparkJob1
+    main.jar
+    files
+        input1.txt
+        input2.txt
+    jars
+        package1.jar
+        package2.jar
+    logs
+
+SparkJob2
+    main.py
+    pyFiles
+        scrip1.py
+        script2.py
+    logs    
+```
 
 > [!IMPORTANT]
-> Lesen Sie die Datei [README.md](https://github.com/Azure/Azure-DataFactory/blob/master/Samples/Spark/README.md), um neue und zusätzliche Informationen zu erhalten, bevor Sie das Beispiel verwenden. 
-> 
-> Bei dieser Vorgehensweise verwenden Sie Ihren eigenen HDInsight-Cluster, um Spark-Programme mithilfe der MapReduce-Aktivität aufzurufen. Die Verwendung eines bedarfsgesteuerten HDInsight-Clusters wird nicht unterstützt.   
-> 
-> 
+> Eine vollständige exemplarische Vorgehensweise zum Erstellen einer Pipeline mit einer Transformationsaktivität finden Sie unter [Erstellen einer Pipeline zum Transformieren von Daten](data-factory-build-your-first-pipeline-using-editor.md). 
+
+## <a name="spark-sample-on-github"></a>Spark-Beispiel auf GitHub
+Bevor die Spark-Aktivität unterstützt wurde, bestand die Problemumgehung zum Ausführen von Spark-Programmen aus einer Data Factory-Pipeline darin, eine MapReduce-Aktivität zu verwenden. Sie können die [MapReduce-Aktivität](data-factory-map-reduce.md) in einer Data Factory-Pipeline weiterhin verwenden, um Spark-Programme in Ihrem HDInsight Spark-Cluster auszuführen. Es wird allerdings empfohlen, anstelle der MapReduce-Aktivität die Spark-Aktivität zu verwenden. 
+
+Das [Spark-Beispiel für Data Factory auf GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/Spark) zeigt, wie Sie die MapReduce-Aktivität verwenden, um ein Spark-Programm aufzurufen. Das Spark-Programm kopiert ganz einfach Daten von einem Azure-Blobcontainer in einen anderen. 
 
 ## <a name="see-also"></a>Weitere Informationen
 * [Hive-Aktivität](data-factory-hive-activity.md)
@@ -51,10 +151,5 @@ Die MapReduce-Aktivität ist so konfiguriert, dass sie **com.adf.sparklauncher.j
 * [MapReduce-Aktivität](data-factory-map-reduce.md)
 * [Hadoop-Streamingaktivität](data-factory-hadoop-streaming-activity.md)
 * [Invoke R scripts (Aufrufen von R-Skripts)](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

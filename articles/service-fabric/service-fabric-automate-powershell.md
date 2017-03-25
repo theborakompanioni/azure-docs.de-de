@@ -1,5 +1,5 @@
 ---
-title: Automatisieren der Service Fabric-Anwendungsverwaltung mithilfe von PowerShell | Microsoft Docs
+title: Automatisieren der Azure Service Fabric-Anwendungsverwaltung | Microsoft-Dokumentation
 description: Bereitstellen, Aktualisieren, Testen und Entfernen von Service Fabric-Anwendungen mithilfe von PowerShell.
 services: service-fabric
 documentationcenter: .net
@@ -12,12 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/14/2016
+ms.date: 03/14/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: d4a08f7eec5f57b06d87d13abe46942ddc24b482
-ms.openlocfilehash: d1909225a950b961491d3fe426f1e0d6aa5bdd53
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 59133d11d2d66daa44f28ef5b9aa3aae92e56a1e
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -113,7 +113,7 @@ Get-ServiceFabricApplicationUpgrade fabric:/WordCount
 In wenigen Minuten sollte das Cmdlet [Get-ServiceFabricApplicationUpgrade](/powershell/servicefabric/vlatest/get-servicefabricapplicationupgrade) anzeigen, dass alle Upgradedomänen aktualisiert (abgeschlossen) wurden.
 
 ## <a name="task-test-a-service-fabric-application"></a>Aufgabe: Testen einer Service Fabric-Anwendung
-Um hochwertige Dienste schreiben zu können, müssen Entwickler dazu in der Lage sein, Fehler in unzuverlässigen Infrastrukturen auszulösen, um die Stabilität ihrer Dienste testen zu können. Service Fabric ermöglicht Entwicklern das Auslösen von Fehleraktionen, um das Verhalten von Diensten beim Auftreten von Fehlern mit Chaos- und Failovertestszenarien zu testen.  Weitere Informationen finden Sie unter [Testability – Übersicht](service-fabric-testability-overview.md) .
+Um hochwertige Dienste schreiben zu können, müssen Entwickler dazu in der Lage sein, Fehler in unzuverlässigen Infrastrukturen auszulösen, um die Stabilität ihrer Dienste testen zu können. Service Fabric ermöglicht Entwicklern das Auslösen von Fehleraktionen, um das Verhalten von Diensten beim Auftreten von Fehlern mit Chaos- und Failovertestszenarien zu testen.  Weitere Informationen finden Sie unter [Einführung in den Fault Analysis Service](service-fabric-testability-overview.md).
 
 ### <a name="step-1-run-the-chaos-test-scenario"></a>Schritt 1: Ausführen des Chaostestszenarios
 Beim Chaosszenario werden Fehler im gesamten Service Fabric-Cluster generiert. Fehler, die normalerweise in Zeiträumen von mehreren Monaten oder Jahren auftreten, werden auf wenige Stunden komprimiert. Bei dieser Kombination aus überlappenden Fehlern mit hoher Fehlerrate werden auch Spezialfälle erkannt, die sonst nicht auffallen würden. Im folgenden Beispiel wird das Chaostestszenario für 60 Minuten ausgeführt.

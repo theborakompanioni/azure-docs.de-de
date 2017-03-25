@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2016
+ms.date: 03/02/2016
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: f28c528b51fdf08129f78fce74dba298be7326dd
-ms.openlocfilehash: 20f820a4883643e8941be3ec59667242d727b0c1
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 99c972b4adf1dedbc556b20cdc7587edeb7f50e0
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -26,30 +27,29 @@ In diesem Artikel wird beschrieben, was die automatische Skalierung von Microsof
 Die automatische Skalierung von Azure Monitor gilt nur für [Skalierungsgruppen für virtuelle Computer](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/) und [App Service – Web-Apps](https://azure.microsoft.com/services/app-service/web/).
 
 > [!NOTE]
-> Azure verfügt über zwei Methoden für die automatische Skalierung. Eine ältere Version der automatischen Skalierung gilt für virtuelle Computer (Verfügbarkeitsgruppen). Diese Funktion verfügt über eingeschränkten Support. Wir empfehlen die Migration zu VM-Skalierungsgruppen, um für einen schnelleren und zuverlässigeren Support der automatischen Skalierung zu sorgen. Dieser Artikel enthält einen Link zur Verwendung der älteren Technologie.  
-> 
-> 
+> Azure verfügt über zwei Methoden für die automatische Skalierung. Eine ältere Version der automatischen Skalierung gilt für virtuelle Computer (Verfügbarkeitsgruppen). Diese Funktion verfügt über eingeschränkten Support. Wir empfehlen die Migration zu Skalierungsgruppen für virtuelle Computer, um für einen schnelleren und zuverlässigeren Support der automatischen Skalierung zu sorgen. Dieser Artikel enthält einen Link zur Verwendung der älteren Technologie.  
+>
+>
 
 ## <a name="what-is-autoscale"></a>Was ist die automatische Skalierung?
 Bei der automatischen Skalierung können Sie jeweils die richtige Menge an Ressourcen ausführen, um die Lasten für Ihre Anwendung zu bewältigen. Sie können Ressourcen hinzufügen, um auf einen Anstieg der Last zu reagieren, und Kosten sparen, indem Sie ungenutzte Ressourcen entfernen. Sie geben eine minimale und maximale Anzahl von auszuführenden Instanzen an und können VMs basierend auf einer Reihe von Regeln automatisch hinzufügen oder entfernen. Eine minimale Anzahl sorgt dafür, dass Ihre Anwendung auch dann immer ausgeführt wird, wenn keine Last vorhanden ist. Mit einer maximalen Anzahl können Sie eine Obergrenze für die Gesamtkosten pro Stunde festlegen. Sie bestimmen die automatische Skalierung zwischen diesen beiden Grenzwerten, indem Sie Regeln erstellen.
 
- ![Automatische Skalierung – Beschreibung VMs hinzufügen und entfernen](./media/monitoring-autoscale-overview/AutoscaleConcept.png)
+ ![Automatische Skalierung – Beschreibung VMs hinzufügen und entfernen](./media/monitoring-overview-autoscale/AutoscaleConcept.png)
 
 Wenn die Bedingungen der Regel erfüllt sind, werden eine oder mehrere Aktionen der automatischen Skalierung ausgelöst. Sie können VMs hinzufügen und entfernen oder andere Aktionen durchführen. Im folgenden konzeptionellen Diagramm ist dieser Prozess dargestellt.  
 
- ![Konzeptionelles Flussdiagramm – Automatische Skalierung](./media/monitoring-autoscale-overview/AutoscaleOverview3.png)
+ ![Flussdiagramm zur automatischen Skalierung](./media/monitoring-overview-autoscale/Autoscale_Overview_v4.png)
 
-## <a name="autoscale-process-explained"></a>Prozess der automatischen Skalierung
 Die folgende Beschreibung bezieht sich auf die einzelnen Elemente des obigen Diagramms.   
 
-### <a name="resource-metrics"></a>Ressourcenmetriken
+## <a name="resource-metrics"></a>Ressourcenmetriken
 Ressourcen geben Metriken aus, die später von Regeln verarbeitet werden. Metriken sind über verschiedene Methoden verfügbar.
-Für VM-Skalierungsgruppen werden Telemetriedaten von Azure-Diagnose-Agents verwendet, während die Telemetriedaten für Web-Apps und Clouddienste direkt aus der Azure-Infrastruktur stammen. Einige häufig verwendete Statistiken sind CPU-Nutzung, Arbeitsspeichernutzung, Threadanzahl, Warteschlangenlänge und Datenträgerverwendung. Eine Liste mit den Telemetriedaten, die Sie verwenden können, finden Sie unter [Allgemeine Metriken für die automatische Skalierung](insights-autoscale-common-metrics.md).
+Für Skalierungsgruppen für virtuelle Computer werden Telemetriedaten von Azure-Diagnose-Agents verwendet, während die Telemetriedaten für Web-Apps und Clouddienste direkt aus der Azure-Infrastruktur stammen. Einige häufig verwendete Statistiken sind CPU-Nutzung, Arbeitsspeichernutzung, Threadanzahl, Warteschlangenlänge und Datenträgerverwendung. Eine Liste mit den Telemetriedaten, die Sie verwenden können, finden Sie unter [Allgemeine Metriken für die automatische Skalierung](insights-autoscale-common-metrics.md).
 
-### <a name="time"></a>Zeit
+## <a name="time"></a>Zeit
 Für zeitplanbasierte Regeln gilt die UTC-Zeit. Sie müssen die Zeitzone richtig einrichten, wenn Sie Ihre Regeln festlegen.  
 
-### <a name="rules"></a>Regeln
+## <a name="rules"></a>Regeln
 Im Diagramm wird nur eine Regel für die automatische Skalierung angezeigt, aber Sie können auch eine höhere Zahl von Regeln verwenden. Sie können je nach Ihren Anforderungen komplexe überlappende Regeln erstellen.  Regeltypen  
 
 * **Metrikbasiert** : Führen Sie diese Aktion beispielsweise aus, wenn die CPU-Auslastung oberhalb von 50% liegt.
@@ -57,7 +57,7 @@ Im Diagramm wird nur eine Regel für die automatische Skalierung angezeigt, aber
 
 Mit metrikbasierten Regeln wird die Anwendungslast gemessen, und basierend auf dieser Last werden VMs hinzugefügt oder entfernt. Zeitplanbasierte Regeln ermöglichen die Skalierung, wenn für die Last Zeitmuster erkennbar sind und Sie die Skalierung durchführen möchten, bevor eine mögliche Zu- oder Abnahme der Last eintritt.  
 
-### <a name="actions-and-automation"></a>Aktionen und Automation
+## <a name="actions-and-automation"></a>Aktionen und Automation
 Mit Regeln können eine oder mehrere Arten von Aktionen ausgelöst werden.
 
 * **Skalieren** : Horizontales Herunter- oder Hochskalieren von VMs
@@ -67,14 +67,20 @@ Mit Regeln können eine oder mehrere Arten von Aktionen ausgelöst werden.
 ## <a name="autoscale-settings"></a>Einstellungen für die automatische Skalierung
 Für die automatische Skalierung wird die folgende Terminologie bzw. Struktur verwendet.
 
-* Eine **Autoskalierungseinstellung** wird vom Modul für die automatische Skalierung gelesen, um zu ermitteln, ob zentral hoch- oder herunterskaliert werden soll. Sie enthält mindestens ein Profil, Informationen zur Zielressource und Benachrichtigungseinstellungen.
-  * Ein **Autoskalierungsprofil** ist eine Kombination aus einer Kapazitätseinstellung, einem Regelsatz für die Trigger, Skalierungsaktionen für das Profil und einer Wiederholung. Sie können mehrere Profile verwenden, um unterschiedliche Anforderungen abzudecken, die sich ggf. überschneiden.
-    * Mit einer **Kapazitätseinstellung** werden die minimalen Werte, maximalen Werte und Standardwerte für die Anzahl von Instanzen angegeben. [Platz für Abbildung 1]
-    * Eine **Regel** enthält einen Trigger – entweder einen metrischen Trigger oder einen zeitlichen Trigger – und eine Skalierungsaktion, mit der angegeben wird, ob automatisch zentral hoch- oder herunterskaliert werden soll, wenn die Bedingung der Regel erfüllt ist.
-    * Mit einer **Wiederholung** wird angegeben, wann die automatische Skalierung dieses Profil anwenden soll. Sie können beispielsweise unterschiedliche Autoskalierungsprofile für verschiedene Tageszeiten oder Wochentage verwenden.
-* Mit einer **Benachrichtigungseinstellung** wird definiert, welche Benachrichtigungen gesendet werden sollen, wenn ein Autoskalierungsereignis eintritt. Hierfür müssen jeweils die entsprechenden Kriterien eines Profils der Autoskalierungseinstellung erfüllt sein. Bei der automatischen Skalierung können Benachrichtigungen an eine oder mehrere E-Mail-Adressen gesendet oder Webhooks aufgerufen werden.
+- Eine **Autoskalierungseinstellung** wird vom Modul für die automatische Skalierung gelesen, um zu ermitteln, ob zentral hoch- oder herunterskaliert werden soll. Sie enthält mindestens ein Profil, Informationen zur Zielressource und Benachrichtigungseinstellungen.
 
-![Azure-Autoskalierungseinstellung, Profil und Regelstruktur](./media/monitoring-autoscale-overview/AzureResourceManagerRuleStructure3.png)
+    - Ein **Profil für die automatische Skalierung** ist eine Kombination aus:
+
+        - einer **Kapazitätseinstellung**, mit der die minimalen Werte, maximalen Werte und Standardwerte für die Anzahl von Instanzen angegeben werden
+        - einem **Satz von Regeln**, von denen jede einen Trigger (Zeit oder Metrik) und eine Skalierungsaktion (nach oben oder unten) enthält
+        - einer **Wiederholung**, mit der angegeben wird, wann die automatische Skalierung dieses Profil anwenden soll.
+
+        Sie können mehrere Profile verwenden, um unterschiedliche Anforderungen abzudecken, die sich ggf. überschneiden. Sie können beispielsweise unterschiedliche Autoskalierungsprofile für verschiedene Tageszeiten oder Wochentage verwenden.
+
+    - Mit einer **Benachrichtigungseinstellung** wird definiert, welche Benachrichtigungen gesendet werden sollen, wenn ein Autoskalierungsereignis eintritt. Hierfür müssen jeweils die entsprechenden Kriterien eines Profils der Autoskalierungseinstellung erfüllt sein. Bei der automatischen Skalierung können Benachrichtigungen an eine oder mehrere E-Mail-Adressen gesendet oder Webhooks aufgerufen werden.
+
+
+![Azure-Autoskalierungseinstellung, Profil und Regelstruktur](./media/monitoring-overview-autoscale/AzureResourceManagerRuleStructure3.png)
 
 Die vollständige Liste mit den konfigurierbaren Feldern und Beschreibungen finden Sie unter den Informationen zur [REST-API für die automatische Skalierung](https://msdn.microsoft.com/library/dn931928.aspx).
 
@@ -84,9 +90,9 @@ Codebeispiele finden Sie unter:
 * [REST-API für die automatische Skalierung](https://msdn.microsoft.com/library/dn931953.aspx)
 
 ## <a name="horizontal-vs-vertical-scaling"></a>Horizontale und vertikale Skalierung
-Bei der automatischen Skalierung wird nur horizontal skaliert. Dies bedeutet, dass die Anzahl von VM-Instanzen erhöht („horizontal hochskalieren“) oder verringert wird („horizontal herunterskalieren“).  Die horizontale Skalierung ist in einer Cloudsituation flexibler, da Sie bei Bedarf Tausende von VMs ausführen können, um die Last zu bewältigen. 
+Bei der automatischen Skalierung wird nur horizontal skaliert. Dies bedeutet, dass die Anzahl von VM-Instanzen erhöht („horizontal hochskalieren“) oder verringert wird („horizontal herunterskalieren“).  Die horizontale Skalierung ist in einer Cloudsituation flexibler, da Sie bei Bedarf Tausende von VMs ausführen können, um die Last zu bewältigen.
 
-Bei der vertikalen Skalierung ist dies anders. Hierbei wird die gleiche Anzahl von VMs beibehalten, aber die Leistungsfähigkeit der VMs wird erhöht („zentral hochskalieren“) oder verringert („zentral herunterskalieren“). Die Leistungsfähigkeit wird in Bezug auf den Arbeitsspeicher, die CPU-Geschwindigkeit, Speicherplatz auf dem Datenträger usw. gemessen.  Für die vertikale Skalierung gelten mehr Einschränkungen. Sie ist von der Verfügbarkeit größerer Hardware abhängig, die relativ schnell das obere Limit erreicht und je nach Region variieren kann. Außerdem ist für die vertikale Skalierung auch das Beenden und Starten einer VM erforderlich. 
+Bei der vertikalen Skalierung ist dies anders. Hierbei wird die gleiche Anzahl von VMs beibehalten, aber die Leistungsfähigkeit der VMs wird erhöht („zentral hochskalieren“) oder verringert („zentral herunterskalieren“). Die Leistungsfähigkeit wird in Bezug auf den Arbeitsspeicher, die CPU-Geschwindigkeit, Speicherplatz auf dem Datenträger usw. gemessen.  Für die vertikale Skalierung gelten mehr Einschränkungen. Sie ist von der Verfügbarkeit größerer Hardware abhängig, die relativ schnell das obere Limit erreicht und je nach Region variieren kann. Außerdem ist für die vertikale Skalierung auch das Beenden und Starten einer VM erforderlich.
 
 Weitere Informationen finden Sie unter [Vertikales Skalieren von virtuellen Azure-Computern mit Azure Automation](../virtual-machines/virtual-machines-linux-vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
@@ -116,10 +122,4 @@ Weitere Informationen zur automatischen Skalierung können Sie den obigen exempl
 * [Verwenden von automatischen Skalierungsvorgängen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen](insights-autoscale-to-webhook-email.md)
 * [REST-API für die automatische Skalierung](https://msdn.microsoft.com/library/dn931953.aspx)
 * [Beheben von Problemen bei der automatischen Skalierung von VM-Skalierungsgruppen](../virtual-machine-scale-sets/virtual-machine-scale-sets-troubleshoot.md)
-
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

@@ -1,6 +1,6 @@
 ---
-title: "Konfigurieren der Georeplikation für eine Azure SQL-Datenbank mit dem Azure-Portal | Microsoft Docs"
-description: "Konfigurieren der Georeplikation für die Azure SQL-Datenbank mit dem Azure-Portal"
+title: "Azure-Portal: SQL-Datenbank – Georeplikation | Microsoft-Dokumentation"
+description: "Konfigurieren der Georeplikation für Azure SQL-Datenbank im Azure-Portal und Initiieren eines Failovers"
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -13,18 +13,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/22/2016
+ms.date: 03/062/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
-ms.openlocfilehash: fe2d2ef731fb94c7e4e8da0e518bcef8c1ada650
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: 6f646b3776f0aa0bbfba227c81ac5fc4fde9265f
+ms.lasthandoff: 03/10/2017
 
 
 ---
-# <a name="configure-active-geo-replication-for-azure-sql-database-with-the-azure-portal"></a>Konfigurieren der aktiven Georeplikation für Azure SQL-Datenbank mit dem Azure-Portal
+# <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Konfigurieren der aktiven Georeplikation für Azure SQL-Datenbank im Azure-Portal und Initiieren eines Failovers
 
-In diesem Artikel erfahren Sie, wie Sie die aktive Georeplikation für eine SQL-Datenbank mit dem [Azure-Portal](http://portal.azure.com)konfigurieren.
+In diesem Artikel erfahren Sie, wie Sie die aktive Georeplikation für SQL-Datenbank im [Azure-Portal](http://portal.azure.com) konfigurieren und ein Failover initiieren.
 
 Informationen zum Initiieren eines Failovers mit dem Azure-Portal finden Sie unter [Initiieren eines geplanten oder ungeplanten Failovers für die Azure SQL-Datenbank mit dem Azure-Portal](sql-database-geo-replication-failover-portal.md).
 
@@ -51,9 +51,7 @@ Nachdem die sekundäre Datenbank erstellt und das Seeding ausgeführt wurde, beg
 > [!NOTE]
 > Wenn die Partnerdatenbank bereits vorhanden ist (z.B. aufgrund der Beendigung einer vorherigen Georeplikationsbeziehung), tritt für den Befehl ein Fehler auf.
 > 
-> 
 
-### <a name="add-secondary"></a>Sekundäre Datenbank hinzufügen
 1. Navigieren Sie im [Azure-Portal](http://portal.azure.com) zu der Datenbank, die Sie für die Georeplikation einrichten möchten.
 2. Wählen Sie auf der Seite „SQL-Datenbank“ die Option **Georeplikation**, und wählen Sie dann die Region aus, in der die sekundäre Datenbank erstellt werden soll. Sie können jede Region außer der Region auswählen, in der die primäre Datenbank gehostet wird. Es empfiehlt sich jedoch, die Partnerregion im [Regionspaar](../best-practices-availability-paired-regions.md) zu verwenden.
    
@@ -69,6 +67,26 @@ Nachdem die sekundäre Datenbank erstellt und das Seeding ausgeführt wurde, beg
 7. Nach Abschluss des Seedingprozesses wird der Status für die zweite Datenbank angezeigt.
    
     ![Seeding abgeschlossen](./media/sql-database-geo-replication-portal/seeding-complete.png)
+
+## <a name="initiate-a-failover"></a>Initiieren eines Failovers
+
+Für die sekundäre Datenbank kann ein Wechsel durchgeführt werden, bei dem sie zur primären Datenbank wird.  
+
+1. Navigieren Sie im [Azure-Portal](http://portal.azure.com) zur primären Datenbank in der Georeplikationspartnerschaft.
+2. Wählen Sie auf dem Blatt „SQL-Datenbank“ **Alle Einstellungen** > **Georeplikation**.
+3. Wählen Sie in der Liste **SEKUNDÄRE DATENBANKEN** die Datenbank aus, die zur neuen primären Datenbank werden soll. Klicken Sie anschließend auf **Failover**.
+   
+    ![Failover](./media/sql-database-geo-replication-failover-portal/secondaries.png)
+4. Klicken Sie auf **Ja** , um das Failover zu beginnen.
+
+Durch den Befehl wird die sekundäre Datenbank sofort in die primäre Rolle geändert. 
+
+Es gibt einen kurzer Zeitraum, in dem beide Datenbanken während des Rollenwechsels (ca. 0 bis 25 Sekunden) nicht verfügbar sind. Wenn die primäre Datenbank über mehrere sekundäre Datenbanken verfügt, werden die anderen sekundären Datenbanken durch den Befehl automatisch neu konfiguriert, sodass sie eine Verbindung mit der neuen primären Datenbank herstellen. Unter normalen Umständen dauert der gesamte Vorgang nicht länger als&1; Minute. 
+
+> [!NOTE]
+> Wenn die primäre Datenbank bei Ausgabe des Befehls online ist und gerade Commits für Transaktionen ausführt, können einige Daten verloren gehen.
+> 
+> 
 
 ## <a name="remove-secondary-database"></a>Entfernen einer sekundären Datenbank 
 Dieser Vorgang beendet die Replikation zur sekundären Datenbank dauerhaft und ändert die Rolle der sekundären Datenbank in eine normale Datenbank mit Lese-/Schreibzugriff. Wenn die Verbindung mit der sekundären Datenbank unterbrochen wird, ist der Befehl zwar erfolgreich, aber die sekundäre Datenbank wird erst mit Lese-/ Schreibzugriff versehen, nachdem die Verbindung wiederhergestellt wurde.  

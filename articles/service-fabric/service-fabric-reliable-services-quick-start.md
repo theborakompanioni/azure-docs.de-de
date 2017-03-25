@@ -1,5 +1,5 @@
 ---
-title: "Erstellen Ihres ersten zuverlässigen Azure-Microservice in C# | Microsoft-Dokumentation"
+title: Erstellen Ihrer ersten Service Fabric-Anwendung in C# | Microsoft-Dokumentation
 description: "Einführung in das Erstellen einer Microsoft Azure Service Fabric-Anwendung mit zustandslosen und zustandsbehafteten Diensten."
 services: service-fabric
 documentationcenter: .net
@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/10/2017
+ms.date: 03/06/2017
 ms.author: vturecek
 translationtype: Human Translation
-ms.sourcegitcommit: cf8f717d5343ae27faefdc10f81b4feaccaa53b9
-ms.openlocfilehash: 41823b962caf25e1826fc06bc49887fd99876fc4
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 813021d6239ae3cf79bb84b78f77e39c9e0783f6
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -35,14 +36,14 @@ Eine Azure Service Fabric-Anwendung enthält einen oder mehrere Dienste zum Ausf
 Für den Einstieg in Reliable Services müssen Sie sich nur mit einigen grundlegenden Konzepten vertraut machen:
 
 * **Diensttyp**: Dies ist Ihre Dienstimplementierung. Sie wird durch die von Ihnen geschriebene Klasse definiert, mit der `StatelessService` und alle anderen darin verwendeten Codeelemente oder Abhängigkeiten erweitert werden, einschließlich eines Namens und der Versionsnummer.
-* **Instanz des benannten Diensts**: Zum Ausführen des Diensts erstellen Sie benannte Instanzen Ihres Diensttyps. Dies ähnelt der Erstellung von Objektinstanzen eines Klassentyps. Bei Dienstinstanzen handelt es sich eigentlich um Objektinstanziierungen der von Ihnen geschriebenen Dienstklasse. 
-* **Diensthost**: Die benannten Dienstinstanzen, die Sie erstellen, müssen in einem Host ausgeführt werden. Der Diensthost ist nur ein Prozess, für den Instanzen Ihres Diensts ausgeführt werden können.
+* **Instanz des benannten Diensts**: Zum Ausführen des Diensts erstellen Sie benannte Instanzen Ihres Diensttyps. Dies ähnelt der Erstellung von Objektinstanzen eines Klassentyps. Eine Dienstinstanz hat einen Namen in Form eines URI mit dem „fabric:/“-Schema, z.B. „fabric:/MyApp/MyService“.
+* **Diensthost**: Die benannten Dienstinstanzen, die Sie erstellen, müssen in einem Hostprozess ausgeführt werden. Der Diensthost ist nur ein Prozess, für den Instanzen Ihres Diensts ausgeführt werden können.
 * **Dienstregistrierung**: Bei der Registrierung werden alle Elemente zusammengeführt. Der Diensttyp muss bei der Service Fabric-Laufzeit in einem Diensthost registriert werden, damit von Service Fabric Instanzen davon für die Ausführung erstellt werden können.  
 
 ## <a name="create-a-stateless-service"></a>Erstellen eines zustandslosen Diensts
 Ein zustandsloser Dienst ist eine Art von Dienst, der in Cloudanwendungen derzeit die Norm ist. Er wird als zustandslos angesehen, weil der Dienst selbst keine Daten enthält, die zuverlässig gespeichert werden oder hoch verfügbar sein müssen. Wenn eine Instanz eines zustandslosen Diensts heruntergefahren wird, geht sein gesamter interner Zustand verloren. Damit der Zustand dieser Dienste hoch verfügbar und zuverlässig ist, muss er extern gespeichert werden, z. B. in Azure-Tabellen oder in einer SQL-Datenbank.
 
-Starten Sie Visual Studio 2015 als Administrator, und erstellen Sie ein neues Projekt mit einer Service Fabric-Anwendung, das den Namen *HelloWorld*trägt:
+Starten Sie Visual Studio 2015 oder Visual Studio 2017 als Administrator, und erstellen Sie ein neues Projekt mit einer Service Fabric-Anwendung, das den Namen *HelloWorld* trägt:
 
 ![Erstellen Sie über das Dialogfeld „Neues Projekt“ eine neue Service Fabric-Anwendung.](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject.png)
 
@@ -67,7 +68,7 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 }
 ```
 
-* Einen Einstiegspunkt für die Kommunikation, den Sie mit einem beliebigen Kommunikationsstapel verbinden können, z. B. der ASP.NET Web-API. Dies ist der Punkt, an dem Sie mit dem Empfangen der Anforderungen von Benutzern und anderen Diensten beginnen können.
+* Einen Einstiegspunkt für die Kommunikation, den Sie mit einem beliebigen Kommunikationsstapel verbinden können, z.B. den ASP.NET Core. Dies ist der Punkt, an dem Sie mit dem Empfangen der Anforderungen von Benutzern und anderen Diensten beginnen können.
 
 ```csharp
 protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -227,10 +228,5 @@ Nach dem Beginn der Dienstausführung können Sie die generierten ETW-Ereignisse
 [Anwendungsupgrade](service-fabric-application-upgrade.md)
 
 [Entwicklerreferenz für zuverlässige Dienste](https://msdn.microsoft.com/library/azure/dn706529.aspx)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

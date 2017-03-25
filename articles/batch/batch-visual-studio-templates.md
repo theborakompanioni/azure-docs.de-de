@@ -16,9 +16,9 @@ ms.date: 02/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
-ms.openlocfilehash: dd7c67bf83e4b95b978b793c8169b7e9c98bc939
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 53c9b75599af48be82c63bc7a9df31d4c2de13a3
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -55,7 +55,7 @@ Wie im Diagramm unten zu sehen, durchläuft ein Computeauftrag, für den diese V
 ## <a name="prerequisites"></a>Voraussetzungen
 Für die Verwendung der Batch-Vorlagen benötigen Sie Folgendes:
 
-* Einen Computer, auf dem Visual Studio 2015 oder höher bereits installiert ist.
+* Einen Computer, auf dem Visual Studio 2015 oder höher installiert ist.
 * Die Batch-Vorlagen, die in der [Visual Studio Gallery][vs_gallery] als Visual Studio-Erweiterungen verfügbar sind. Es gibt zwei Möglichkeiten zum Abrufen der Vorlagen:
   
   * Installieren Sie die Vorlagen über das Dialogfeld **Erweiterungen und Updates** in Visual Studio (weitere Informationen finden Sie unter [Suchen und Verwenden von Visual Studio-Erweiterungen][vs_find_use_ext]). Suchen Sie im Dialogfeld **Erweiterungen und Updates** nach den folgenden beiden Erweiterungen, und laden Sie sie herunter:
@@ -68,7 +68,7 @@ Für die Verwendung der Batch-Vorlagen benötigen Sie Folgendes:
 ## <a name="preparation"></a>Vorbereitung
 Wir empfehlen Ihnen die Erstellung einer Projektmappe, die Ihren Auftrags-Manager und Ihren Aufgabenprozessor enthalten kann. Dies kann Ihnen die gemeinsame Nutzung von Code zwischen Ihren Auftrags-Manager- und Aufgabenprozessor-Programmen erleichtern. Führen Sie die folgenden Schritte aus, um diese Projektmappe zu erstellen:
 
-1. Öffnen Sie Visual Studio 2015, und wählen Sie **Datei** > **Neu** > **Projekt** aus.
+1. Öffnen Sie Visual Studio, und wählen Sie **Datei** > **Neu** > **Projekt** aus.
 2. Erweitern Sie unter **Vorlagen** die Option **Andere Projekttypen**, klicken Sie auf **Visual Studio-Projektmappen**, und wählen Sie dann **Leere Projektmappe** aus.
 3. Geben Sie einen Namen ein, der die Anwendung und den Zweck der Projektmappe beschreibt (z.B. „LitwareBatchTaskPrograms“).
 4. Klicken Sie zum Erstellen der neuen Projektmappe auf **OK**.
@@ -87,7 +87,7 @@ Die Auftrags-Manager-Vorlage dient Ihnen als Hilfe beim Implementieren einer Auf
 ### <a name="create-a-job-manager-using-the-template"></a>Erstellen eines Auftrags-Managers mit der Vorlage
 Führen Sie diese Schritte aus, um einen Auftrags-Manager der zuvor erstellten Projektmappe hinzuzufügen:
 
-1. Öffnen Sie die vorhandene Projektmappe in Visual Studio 2015.
+1. Öffnen Sie die vorhandene Projektmappe in Visual Studio.
 2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf Ihre Projektmappe, und wählen Sie dann **Hinzufügen** > **Neues Projekt** aus.
 3. Klicken Sie unter **Visual C#** auf **Cloud** und dann auf **Azure Batch Job Manager with Job Splitter** (Azure Batch-Auftrags-Manager mit Auftragsteilung).
 4. Geben Sie einen Namen ein, der die Anwendung beschreibt und dieses Projekt als Auftrags-Manager identifiziert (z.B. „LitwareJobManager“).
@@ -256,7 +256,7 @@ Die vom Aufgabenprozessor durchgeführten Aktionen können einfach oder komplex 
 ### <a name="create-a-task-processor-using-the-template"></a>Erstellen eines Aufgabenprozessors mit der Vorlage
 Führen Sie diese Schritte aus, um einen Aufgabenprozessor der zuvor erstellten Projektmappe hinzuzufügen:
 
-1. Öffnen Sie die vorhandene Projektmappe in Visual Studio 2015.
+1. Öffnen Sie die vorhandene Projektmappe in Visual Studio.
 2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf die Projektmappe, und klicken Sie dann auf **Hinzufügen** und **Neues Projekt**.
 3. Klicken Sie unter **Visual C#** auf **Cloud** und dann auf **Azure Batch-Aufgabenprozessor**.
 4. Geben Sie einen Namen ein, der die Anwendung beschreibt und dieses Projekt als Aufgabenprozessor identifiziert (z.B. „LitwareTaskProcessor“).

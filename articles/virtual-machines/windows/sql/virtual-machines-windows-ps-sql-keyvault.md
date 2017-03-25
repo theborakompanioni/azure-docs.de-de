@@ -1,5 +1,5 @@
 ---
-title: Integrieren von Key Vault in SQL Server auf Windows-VMs in Azure | Microsoft-Dokumentation
+title: Integrieren von Key Vault in SQL Server auf Windows-VMs in Azure (Resource Manager) | Microsoft-Dokumentation
 description: "Erfahren Sie, wie Sie die Konfiguration der SQL Server-Verschlüsselung zur Verwendung mit dem Azure-Schlüsseltresor automatisieren. In diesem Thema wird beschrieben, wie Sie die Azure-Schlüsseltresor-Integration mit virtuellen SQL Server-Computern verwenden, die mit dem Ressourcen-Manager erstellt wurden."
 services: virtual-machines-windows
 documentationcenter: 
@@ -13,15 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 10/25/2016
+ms.date: 03/14/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 7a285920888bdfb46922d8708cf778229efff0a3
-ms.openlocfilehash: 3a10beb423ee0068508ddb06262aeba5e575bf94
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: f42e1934ce163e26c1a3f526b4589fb175aac446
+ms.lasthandoff: 03/15/2017
 
 
 ---
-# <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-vms-resource-manager"></a>Konfigurieren der Azure-Schlüsseltresor-Integration für SQL Server auf virtuellen Azure-Computern (Ressourcen-Manager)
+# <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Konfigurieren der Azure Key Vault-Integration für SQL Server auf virtuellen Azure-Computern (Resource Manager)
 > [!div class="op_single_selector"]
 > * [Ressourcen-Manager](virtual-machines-windows-ps-sql-keyvault.md)
 > * [Klassisch](../sqlclassic/virtual-machines-windows-classic-ps-sql-keyvault.md)
@@ -64,10 +65,5 @@ Klicken Sie abschließend unten auf dem Blatt **SQL Server-Konfiguration** auf d
 > 
 
 [!INCLUDE [AKV Integration Next Steps](../../../../includes/virtual-machines-sql-server-akv-next-steps.md)]
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

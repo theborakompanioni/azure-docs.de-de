@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 02/24/2017
+ms.date: 03/06/2017
 ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: 8441a5318bfee3fc45482a61db13adaa034b824a
-ms.openlocfilehash: 7d50a2861e4dae06d4de09417a2208b453fa499b
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 15692a155cdb55d8dc6eeeb68df264411e46b662
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -50,6 +50,10 @@ Es gibt Tarife und Leistungsstufen sowohl für Einzeldatenbanken als auch für P
 Für eine einzelne Datenbank sind deren Einschränkungen durch die Dienstebene und Leistungsstufe der Datenbank definiert. In der folgenden Tabelle sind die Merkmale von Basic-, Standard- und Premium-Datenbanken für unterschiedliche Leistungsstufen beschrieben.
 
 [!INCLUDE [SQL DB service tiers table](../../includes/sql-database-service-tiers-table.md)]
+
+> [!IMPORTANT]
+> Kunden mit den Leistungsstufen P11 und P15 können bis zu 4TB Speicher ohne Aufpreis nutzen. Diese 4-TB-Option ist derzeit in folgenden Regionen in der Public Preview verfügbar: USA, Osten 2; USA, Westen; Europa, Westen; Asien, Südosten; Japan, Osten; Australien, Osten; Kanada, Mitte und Kanada, Osten. Aktuelle Einschränkungen finden Sie unter [Current limitations of P11 and P15 databases with 4 TB maxsize](sql-database-service-tiers.md#current-limitations-of-p11-and-p15-databases-with-4-tb-maxsize) (Aktuelle Einschränkungen bei P11- und P15-Datenbanken mit maximal 4TB).
+>
 
 ### <a name="elastic-pools"></a>Elastische Pools
 [Elastische Pools](sql-database-elastic-pool.md) nutzen Ressourcen in verschiedenen Datenbanken im Pool gemeinsam. In der folgenden Tabelle sind die Merkmale von elastischen Basic-, Standard- und Premium-Pools beschrieben.

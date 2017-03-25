@@ -12,18 +12,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2016
+ms.date: 03/08/2017
 ms.author: elioda
 translationtype: Human Translation
-ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
-ms.openlocfilehash: ddc181bde6a154cb3fb35254da6b76a91450ba6b
-ms.lasthandoff: 12/06/2016
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 78fce5e464e065620e2f2da7f001d34b5cfd7a9f
+ms.lasthandoff: 03/10/2017
 
 
 ---
-# <a name="upload-files-from-devices-to-the-cloud-with-iot-hub"></a>Hochladen von Dateien von Geräten in die Cloud mit IoT Hub
+# <a name="upload-files-from-your-simulated-device-to-the-cloud-with-iot-hub"></a>Hochladen von Dateien von Ihrem simulierten Gerät in die Cloud mit IoT Hub
 ## <a name="introduction"></a>Einführung
-Azure IoT Hub ist ein vollständig verwalteter Dienst, der eine zuverlässige und sichere bidirektionale Kommunikation zwischen Millionen von Geräten und einem Lösungs-Back-End ermöglicht. In vorhergehenden Tutorials ([Erste Schritte mit IoT Hub] und [Senden von C2D-Nachrichten mit IoT Hub]) werden die grundlegenden Funktionen von IoT Hub für Gerät-zu-Cloud- (Device-to-Cloud, D2C) und Cloud-zu-Gerät-Messaging (Cloud-to-Device, C2D) und der Zugriff auf diese Funktionen über Geräte und Cloudkomponenten beschrieben. Im Tutorial [Verarbeiten von Gerät-zu-Cloud-Nachrichten] wird eine Möglichkeit zum zuverlässigen Speichern von D2C-Nachrichten in Azure-Blobspeicher beschrieben. In einigen Szenarien können Sie allerdings nicht einfach die Daten, die Ihre Geräte senden, den relativ kleinen D2C-Nachrichten zuordnen, die IoT Hub akzeptiert. Beispiele sind große Dateien mit Bildern, Videos, Vibrationsdatenerfassungen mit hoher Frequenz oder vorverarbeiteten Daten. Diese Dateien werden normalerweise als Batch in der Cloud mit Tools wie [Azure Data Factory] oder dem [Hadoop]-Stapel verarbeitet. Wenn das Hochladen einer Datei von einem Gerät dem Senden von Ereignissen vorgezogen wird, können dennoch IoT Hub-Sicherheits- und Zuverlässigkeitsfunktionen verwendet werden.
+Azure IoT Hub ist ein vollständig verwalteter Dienst, der eine zuverlässige und sichere bidirektionale Kommunikation zwischen Millionen von Geräten und einem Lösungs-Back-End ermöglicht. Die Tutorials [Erste Schritte mit IoT Hub] und [Senden von C2D-Nachrichten mit IoT Hub] veranschaulichen die grundlegenden Gerät-zu-Cloud- und Cloud-zu-Gerät-Messagingfunktionen von IoT Hub. Im Tutorial [Verarbeiten von D2C-Nachrichten] wird eine Möglichkeit für das zuverlässige Speichern von D2C-Nachrichten in Azure-Blobspeicher beschrieben. In einigen Szenarien können Sie allerdings nicht einfach die Daten, die Ihre Geräte senden, den relativ kleinen D2C-Nachrichten zuordnen, die IoT Hub akzeptiert. Beispiele große Dateien mit Bildern, Videos, Vibrationsdatenerfassungen mit hoher Frequenz oder vorverarbeitete Daten in irgendeiner Form. Diese Dateien werden normalerweise als Batch in der Cloud mit Tools wie [Azure Data Factory] oder dem [Hadoop]-Stapel verarbeitet. Wenn das Hochladen einer Datei von einem Gerät dem Senden von Ereignissen vorgezogen wird, können dennoch IoT Hub-Sicherheits- und Zuverlässigkeitsfunktionen verwendet werden.
 
 Dieses Tutorial baut auf dem Code im Tutorial [Senden von C2D-Nachrichten mit IoT Hub] auf, um zu zeigen, wie Sie die IoT Hub-Funktionen zum Hochladen von Dateien nutzen. Es beschreibt Folgendes:
 
@@ -42,13 +42,16 @@ Am Ende dieses Tutorials führen Sie zwei .NET-Konsolen-Apps aus:
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-* Microsoft Visual Studio 2015
+* Visual Studio 2015 oder Visual Studio 2017
 * Ein aktives Azure-Konto. (Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto][lnk-free-trial] erstellen.)
 
 ## <a name="associate-an-azure-storage-account-to-iot-hub"></a>Zuweisen eines Azure Storage-Kontos zu IoT Hub
-Da von der simulierten Geräte-App eine Datei in ein Blob hochgeladen wird, müssen Sie über ein [Azure Storage]-Konto verfügen, das IoT Hub zugeordnet ist. Wenn Sie ein Azure Storage-Konto mit einer IoT Hub-Instanz verknüpfen, kann die IoT Hub-Instanz einen SAS-URI generieren, den ein Gerät zum sicheren Hochladen einer Datei an einen Blobcontainer verwenden kann. Der IoT Hub-Dienst und die Geräte-SDKs koordinieren den Prozess, der die SAS-URI generiert und für ein Gerät verfügbar macht, sodass er beim Hochladen einer Datei verwendet werden kann.
+Da von der simulierten Geräte-App eine Datei in ein Blob hochgeladen wird, müssen Sie über ein [Azure Storage]-Konto verfügen, das IoT Hub zugeordnet ist. Wenn Sie Azure Storage-Konto einem IoT Hub zuordnen, generiert der IoT Hub einen SAS-URI. Ein Gerät kann diesen SAS-URI für das sichere Hochladen einer Datei zu einem Blobcontainer verwenden. Der IoT Hub-Dienst und die Geräte-SDKs koordinieren den Prozess, der die SAS-URI generiert und für ein Gerät verfügbar macht, sodass er beim Hochladen einer Datei verwendet werden kann.
 
-Befolgen Sie die Anweisungen unter [Konfigurieren von Dateiuploads über das Azure-Portal][lnk-configure-upload], um Ihrem IoT Hub ein Azure Storage-Konto zuzuordnen.
+Befolgen Sie die Anweisungen unter [Konfigurieren von Dateiuploads über das Azure-Portal][lnk-configure-upload], um Ihrem IoT Hub ein Azure Storage-Konto zuzuordnen. Stellen Sie sicher, dass Ihrem IoT Hub ein Blobcontainer zugeordnet ist und die Dateibenachrichtigungen aktiviert sind. 
+   
+![Aktivieren von Dateibenachrichtigungen im Portal][3]
+
 
 ## <a name="upload-a-file-from-a-simulated-device-app"></a>Hochladen einer Datei von einer simulierten Geräte-App
 In diesem Abschnitt ändern Sie die simulierte Geräte-App, die Sie in [Senden von C2D-Nachrichten mit IoT Hub] erstellt haben, um Cloud-zu-Gerät-Nachrichten von IoT Hub zu empfangen.
@@ -93,10 +96,9 @@ In diesem Abschnitt schreiben Sie eine .NET-Konsolen-App, die Uploadbenachrichti
 1. Erstellen Sie in der aktuellen Visual Studio-Projektmappe mithilfe der Projektvorlage **Konsolenanwendung** ein Visual C#-Windows-Projekt. Nennen Sie das Projekt **ReadFileUploadNotification**.
    
     ![Neues Projekt in Visual Studio][2]
-2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **ReadFileUploadNotification**, und klicken Sie dann auf **NuGet-Pakete verwalten**.
-   
-    Diese Aktion zeigt das Fenster „NuGet-Pakete verwalten“ an.
-3. Suchen Sie nach `Microsoft.Azure.Devices`, klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen. 
+2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **ReadFileUploadNotification**, und klicken Sie dann auf **NuGet-Pakete verwalten...**.
+       
+3. Suchen Sie im Fenster **NuGet-Paket-Manager** nach **Microsoft.Azure.Devices**, klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen. 
    
     Diese Aktion lädt das [NuGet-Paket mit dem SDK des Azure IoT-Diensts] herunter, installiert es und fügt im **ReadFileUploadNotification**-Projekt einen Verweis darauf hinzu.
 
@@ -158,7 +160,8 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
 [50]: ./media/iot-hub-csharp-csharp-file-upload/run-apps1.png
 [1]: ./media/iot-hub-csharp-csharp-file-upload/image-properties.png
-[2]: ./media/iot-hub-csharp-csharp-file-upload/create-identity-csharp1.png
+[2]: ./media/iot-hub-csharp-csharp-file-upload/file-upload-project-csharp1.png
+[3]: ./media/iot-hub-csharp-csharp-file-upload/enable-file-notifications.png
 
 <!-- Links -->
 
@@ -168,7 +171,7 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [Hadoop]: https://azure.microsoft.com/documentation/services/hdinsight/
 
 [Senden von C2D-Nachrichten mit IoT Hub]: iot-hub-csharp-csharp-c2d.md
-[Verarbeiten von Gerät-zu-Cloud-Nachrichten]: iot-hub-csharp-csharp-process-d2c.md
+[Verarbeiten von D2C-Nachrichten]: iot-hub-csharp-csharp-process-d2c.md
 [Erste Schritte mit IoT Hub]: iot-hub-csharp-csharp-getstarted.md
 [Azure IoT Developer Center]: http://www.azure.com/develop/iot
 
@@ -182,7 +185,7 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-c-sdk]: iot-hub-device-sdk-c-intro.md
 [lnk-sdks]: iot-hub-devguide-sdks.md
 
-[lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+[lnk-gateway]: iot-hub-windows-gateway-sdk-simulated-device.md
 
 
 

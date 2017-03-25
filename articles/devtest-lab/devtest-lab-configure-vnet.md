@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/25/2016
+ms.date: 03/16/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1821aa2a3d6428ca98cad14b0bf5e8b37ec6cb9c
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: 8c5ce9570541def245ca33f5841a8392e73569b4
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -39,25 +40,27 @@ Die folgenden Schritte führen Sie durch das Hinzufügen eines vorhandenen virtu
    
     ![Wählen Sie ein vorhandenes virtuelles Netzwerk aus.](./media/devtest-lab-configure-vnet/lab-settings-vnets-vnet1.png)
 9. Wählen Sie auf dem Blatt **Virtuelles Netzwerk wählen** das gewünschte virtuelle Netzwerk aus. Das Blatt zeigt alle virtuellen Netzwerke, die sich im Abonnement in derselben Region wie das Lab befinden.  
-10. Nachdem Sie ein virtuelles Netzwerk ausgewählt haben, wird Ihnen wieder das Blatt **Virtuelles Netzwerk** angezeigt, und mehrere Felder sind aktiviert.  
+10. Nachdem Sie ein virtuelles Netzwerk ausgewählt haben, werden Sie zum **virtuellen Netzwerk** zurückgeleitet. Klicken Sie in der Liste im unteren Bereich des Blatts auf das Subnetz.
+
+    ![Subnetzliste](./media/devtest-lab-configure-vnet/lab-settings-vnets-vnet2.png)
     
-     ![Wählen Sie ein vorhandenes virtuelles Netzwerk aus.](./media/devtest-lab-configure-vnet/lab-settings-vnets-vnet2.png)
-11. Geben Sie eine Beschreibung für Ihre Kombination aus virtuellem Netzwerk und Lab an.
-12. Damit ein Subnetz bei der Lab-VM-Erstellung verwendet werden kann, aktivieren Sie die Option **USE IN VIRTUAL MACHINE CREATION**(BEIM ERSTELLEN VIRTUELLER COMPUTER VERWENDEN).
-13. Um die Verwendung öffentlicher IP-Adressen in einem Subnetz zu ermöglichen, aktivieren Sie die Option **ALLOW PUBLIC IP**(ÖFFENTLICHE IP-ADRESSE ZULASSEN).
-14. Geben Sie im Feld **MAX. VIRTUELLE COMPUTER PRO BENUTZER** die maximale Anzahl von virtuellen Computern pro Benutzer für jedes Subnetz an. Wenn eine unbeschränkte Anzahl von VMs verwendet werden soll, lassen Sie dieses Feld leer.
-15. Wählen Sie **Speichern**aus.
-16. Jetzt ist das virtuelle Netzwerk konfiguriert und kann beim Erstellen eines virtuellen Computers ausgewählt werden. 
+    Das Blatt mit dem Labsubnetz wird angezeigt.
+
+    ![Blatt mit Labsubnetz](./media/devtest-lab-configure-vnet/lab-subnet.png)
+
+11. Geben Sie unter **Name des Labsubnetzes** einen Namen an.
+12. Damit ein Subnetz bei der Lab-VM-Erstellung verwendet werden kann, aktivieren Sie die Option **Bei Erstellung virtueller Computer verwenden**.
+13. Zum Aktivieren einer [freigegebenen öffentlichen IP-Adresse](devtest-lab-shared-ip.md) wählen Sie die Option **Freigegebene öffentliche IP-Adresse aktivieren**.
+14. Um die Verwendung öffentlicher IP-Adressen in einem Subnetz zu ermöglichen, wählen Sie die Option **Erstellung öffentlicher IP-Adressen zulassen**.
+15. Geben Sie im Feld **Max. Anzahl virtueller Computer pro Benutzer** die maximale Anzahl von virtuellen Computern pro Benutzer für jedes Subnetz an. Wenn eine unbeschränkte Anzahl von VMs verwendet werden soll, lassen Sie dieses Feld leer.
+16. Wählen Sie **OK**, um das Blatt mit dem Labsubnetz zu schließen.
+17. Wählen Sie **Speichern**, um das Blatt mit dem virtuellen Netzwerk zu schließen.
+18. Jetzt ist das virtuelle Netzwerk konfiguriert und kann beim Erstellen eines virtuellen Computers ausgewählt werden. 
     Informationen zum Erstellen eines virtuellen Computers und zum Angeben eines virtuellen Netzwerks finden Sie im Artikel [Hinzufügen einer VM mit Artefakten zu einem Lab](devtest-lab-add-vm-with-artifacts.md). 
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie Ihrem Lab das gewünschte virtuelle Netzwerk hinzugefügt haben, besteht der nächste Schritt darin, [Ihrem Lab einen virtuellen Computer hinzuzufügen](devtest-lab-add-vm-with-artifacts.md).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

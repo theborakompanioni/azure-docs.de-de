@@ -17,8 +17,9 @@ ms.workload: na
 ms.date: 01/09/2017
 ms.author: zachal
 translationtype: Human Translation
-ms.sourcegitcommit: c2ce603e80243584fdc302c545e520b4503f5555
-ms.openlocfilehash: ca2d8d4b277f48ec46156293f73b18b6c2967c51
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 3749d5aac5da83b43d5c6d6b7bd971eac7f07548
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -156,10 +157,5 @@ Sehen Sie sich die [Azure Resource Manager-Vorlage für die DSC-Erweiterung](vir
 Weitere Funktionen, die Sie mit PowerShell DSC verwalten können, finden Sie, indem Sie den [PowerShell-Katalog](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0) nach weiteren DSC-Ressourcen durchsuchen.
 
 Ausführliche Informationen zum Übergeben von sensiblen Parametern an Konfigurationen finden Sie unter [Übergeben von Anmeldeinformationen an den Azure DSC-Erweiterungshandler](virtual-machines-windows-extensions-dsc-credentials.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

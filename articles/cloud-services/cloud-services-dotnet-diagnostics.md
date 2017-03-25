@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/25/2016
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: c3540d86a12935cea100248f7f6669df34ae2209
-ms.openlocfilehash: cedc52b514eacb6cf7bc32634819573f5ee154c3
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 81f814ebb977f0f192d450b9c75aab84d2e1c069
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -27,10 +28,10 @@ Hintergrundinformationen über Azure-Diagnose finden Sie unter [Übersicht über
 In dieser Anleitung wird beschrieben, wie Sie eine Azure-Workerrolle implementieren, die mithilfe der .NET-EventSource-Klasse Telemetriedaten ausgibt. Die Telemetriedaten werden mit der Azure-Diagnose erfasst und in einem Azure-Speicherkonto gespeichert. Wenn Sie eine Workerrolle erstellen, aktiviert Visual Studio automatisch die Diagnose 1.0 als Teil der Projektmappe in Azure SDKs für .NET 2.4 und niedriger. In den folgenden Anweisungen wird beschrieben, wie Sie die Workerrolle erstellen, die Diagnose 1.0 in der Projektmappe deaktivieren und die Diagnose 1.2 oder 1.3 in Ihrer Workerrolle bereitstellen.
 
 ### <a name="prerequisites"></a>Voraussetzungen
-In diesem Artikel wird davon ausgegangen, dass Sie über ein Azure-Abonnement verfügen und Visual Studio 2013 mit dem Azure-SDK verwenden. Falls Sie nicht über ein Azure-Abonnement verfügen, können Sie sich für eine [kostenlose Testversion][Free Trial] registrieren. [Installieren und konfigurieren Sie Azure PowerShell Version 0.8.7 oder höher][Install and configure Azure PowerShell version 0.8.7 or later].
+In diesem Artikel wird davon ausgegangen, dass Sie über ein Azure-Abonnement verfügen und Visual Studio mit dem Azure-SDK verwenden. Falls Sie nicht über ein Azure-Abonnement verfügen, können Sie sich für eine [kostenlose Testversion][Free Trial] registrieren. [Installieren und konfigurieren Sie Azure PowerShell Version 0.8.7 oder höher][Install and configure Azure PowerShell version 0.8.7 or later].
 
 ### <a name="step-1-create-a-worker-role"></a>Schritt 1: Erstellen einer Workerrolle
-1. Starten Sie **Visual Studio 2013**.
+1. Starten Sie **Visual Studio**.
 2. Erstellen Sie ein neues **Azure Cloud Service**-Projekt mithilfe der **Cloudvorlage** für .NET Framework 4.5.  Geben Sie dem Projekt den Namen "WadExample", und klicken Sie auf "OK".
 3. Wählen Sie **Workerrolle** aus, und klicken Sie auf "OK". Das Projekt wird erstellt.
 4. Doppelklicken Sie im **Projektmappen-Explorer** auf die Eigenschaftendatei **WorkerRole1**.
@@ -173,7 +174,7 @@ namespace WorkerRole1
 Für die Verwaltung von Diagnose in einer Web- oder Workerrolle werden folgende PowerShell-Cmdlets verwendet: Set-AzureServiceDiagnosticsExtension, Get-AzureServiceDiagnosticsExtension und Remove-AzureServiceDiagnosticsExtension.
 
 1. Öffnen Sie Azure PowerShell.
-2. Führen Sie das Skript zum Installieren der Diagnose in Ihrer Workerrolle aus (ersetzen Sie *StorageAccountKey* durch den Speicherkontoschlüssel für Ihr Speicherkonto "wadexample"):
+2. Führen Sie das Skript zum Installieren der Diagnose in Ihrer Workerrolle aus. Ersetzen Sie dabei *StorageAccountKey* durch den Speicherkontoschlüssel für Ihr wadexample-Speicherkonto und *config_path* durch den Pfad zur Datei *WadExample.xml*:
 
 ```powershell
 $storage_name = "wadexample"
@@ -204,9 +205,4 @@ Unter [Problembehandlung bei Azure-Diagnose](../azure-diagnostics-troubleshootin
 [Collect Logging Data by Using Azure Diagnostics]: http://msdn.microsoft.com/library/windowsazure/gg433048.aspx
 [Free Trial]: http://azure.microsoft.com/pricing/free-trial/
 [Install and configure Azure PowerShell version 0.8.7 or later]: http://azure.microsoft.com/documentation/articles/install-configure-powershell/
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

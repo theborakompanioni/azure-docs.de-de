@@ -16,9 +16,9 @@ ms.date: 02/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
-ms.openlocfilehash: c1357e93a1d02e40411696bb36e93fabd1a99400
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: a23ae729e20dcf79ada73f7545861356e31b957e
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -50,7 +50,7 @@ Wenn Sie einen Task mit Einstellungen für mehrere Instanzen an einen Auftrag ü
 >
 
 ## <a name="requirements-for-multi-instance-tasks"></a>Anforderungen für Tasks mit mehreren Instanzen
-Tasks mit mehreren Instanzen erfordern einen Pool, in dem die **Kommunikation zwischen Knoten** aktiviert und die** gleichzeitige Ausführung von Tasks deaktiviert** ist. Wenn Sie versuchen, einen Task mit mehreren Instanzen in einem Pool auszuführen, in dem die knotenübergreifende Kommunikation deaktiviert ist oder der einen höheren *maxTasksPerNode* -Wert als 1 aufweist, wird der Task nie geplant – er bleibt auf unbestimmte Zeit im aktiven Zustand. Dieser Codeausschnitt zeigt die Erstellung eines solchen Pools mithilfe der Batch-Bibliothek für .NET.
+Tasks mit mehreren Instanzen erfordern einen Pool, in dem die **Kommunikation zwischen Knoten** aktiviert und die**gleichzeitige Ausführung von Tasks deaktiviert** ist. Wenn Sie versuchen, einen Task mit mehreren Instanzen in einem Pool auszuführen, in dem die knotenübergreifende Kommunikation deaktiviert ist oder der einen höheren *maxTasksPerNode* -Wert als 1 aufweist, wird der Task nie geplant – er bleibt auf unbestimmte Zeit im aktiven Zustand. Dieser Codeausschnitt zeigt die Erstellung eines solchen Pools mithilfe der Batch-Bibliothek für .NET.
 
 ```csharp
 CloudPool myCloudPool =
@@ -275,7 +275,7 @@ Im Codebeispiel [MultiInstanceTasks][github_mpi] auf GitHub wird veranschaulicht
 
 ### <a name="execution"></a>Ausführung
 1. Laden Sie [azure-batch-samples][github_samples_zip] von GitHub herunter.
-2. Öffnen Sie die **Lösung** MultiInstanceTasks in Visual Studio 2015. Die Lösungsdatei `MultiInstanceTasks.sln` befindet sich hier:
+2. Öffnen Sie die MultiInstanceTasks-**Projektmappe** in Visual Studio 2015 oder höher. Die Lösungsdatei `MultiInstanceTasks.sln` befindet sich hier:
 
     `azure-batch-samples\CSharp\ArticleProjects\MultiInstanceTasks\`
 3. Geben Sie die Anmeldeinformationen für Ihr Batch- und Storage-Konto in `AccountSettings.settings` im Projekt **Microsoft.Azure.Batch.Samples.Common** ein.

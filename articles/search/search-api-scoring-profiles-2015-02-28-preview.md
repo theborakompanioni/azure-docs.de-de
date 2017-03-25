@@ -15,8 +15,9 @@ ms.tgt_pltfrm: na
 ms.author: heidist
 ms.date: 10/27/2016
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 076e97d1a264216d7f51914ed53dc70450aa2677
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 960880e44ad4de74339df7d0786dd8aa34962e3f
+ms.lasthandoff: 03/15/2017
 
 ---
 
@@ -244,7 +245,7 @@ In diesem Abschnitt wird die Syntax und die Vorlage für die Bewertungsprofile v
 
 | Eigenschaft | Beschreibung |
 | --- | --- |
-| `name` |Erforderlich. Dies ist der Name des Bewertungsprofils. Er folgt denselben Benennungskonventionen, die für Felder gelten. Er muss mit einem Buchstaben beginnen, darf keine Punkte, Doppelpunkte oder @-Symbole enthalten und darf nicht mit dem Begriff „azureSearch“ beginnen (Groß-/Kleinschreibung wird berücksichtigt). |
+| `name` |Erforderlich. Dies ist der Name des Bewertungsprofils. Er folgt denselben Benennungskonventionen, die für Felder gelten. Er muss mit einem Buchstaben beginnen, darf keine Punkte, Doppelpunkte oder @-Symbole enthalten und darf nicht mit dem Begriff "azureSearch" (Groß-/Kleinschreibung wird berücksichtigt) beginnen. |
 | `text` |Enthält die Weights-Eigenschaft. |
 | `weights` |Optional. Ein Name-Wert-Paar, das einen Feldnamen und eine relative Gewichtung angibt. Die relative Gewichtung muss eine positive ganze oder Gleitkommazahl sein. Sie können den Feldnamen ohne eine entsprechende Gewichtung angeben. Gewichtungen werden dazu verwendet, um die Bedeutung der Felder untereinander anzugeben. |
 | `functions` |Optional. Beachten Sie, dass eine Bewertungsfunktion nur auf Felder angewendet werden kann, die filterbar sind. |
@@ -252,12 +253,12 @@ In diesem Abschnitt wird die Syntax und die Vorlage für die Bewertungsprofile v
 | `boost` |Erforderlich für Bewertungsfunktionen. Eine positive Zahl, die als Multiplikator für die unformatierte Bewertung verwendet wird. Sie darf nicht gleich 1 sein. |
 | `fieldName` |Erforderlich für Bewertungsfunktionen. Eine Bewertungsfunktion kann nur auf Felder angewendet werden, die Teil der Feldauflistung für den Index und filterbar sind. Darüber hinaus führt jeder Funktionstyp zusätzliche Einschränkungen ein ("frehsness" wird für Datetime-Felder, "magnitude" für Integer- oder Double-Felder, "distance" für Location-Felder und "tag" für Zeichenfolgen- oder Zeichenfolgenauflistungsfelder verwendet). Sie können pro Funktionsdefinition nur ein einzelnes Feld angeben. Um z. B. "magnitude" zweimal in demselben Profil verwenden zu können, müssen Sie zwei Definitionen für "magnitude", eine für jedes Feld, einbeziehen. |
 | `interpolation` |Erforderlich für Bewertungsfunktionen. Definiert die Steigung, für die die Bewertungsverstärkung vom Anfang bis zum Ende des Bereichs zunimmt. Gültige Werte sind `linear` (Standard), `constant`, `quadratic` und `logarithmic`. Details finden Sie unter [Festlegen von Interpolationen](#bkmk_interpolation) . |
-| `magnitude` |Die Bewertungsfunktion für die Größe wird dazu verwendet, um Rangfolgen auf Basis des Wertebereichs für ein numerisches Feld zu ändern. Einige der gängigsten Nutzungsbeispiele sind:<ul><li> Sternbewertungen: Ändern Sie die Bewertung basierend auf dem Wert innerhalb des Felds für die „Sternbewertung“. Wenn zwei Elemente relevant sind, wird das Element mit der höheren Bewertung zuerst angezeigt.</li><li>Gewinnspanne: Wenn zwei Dokumente relevant sind, möchte ein Einzelhändler möglicherweise zuerst Dokumente verstärken, die eine höhere Gewinnspanne aufweisen.</li><li>Anzahl der Klicks: Für Anwendungen, bei denen das Klicken über Aktionen mit Produkten oder Seiten nachverfolgt wird, könnten Sie die „Größe“ verwenden, um Elemente zu verstärken, die in der Regel den meisten Datenverkehr aufweisen.</li><li>Anzahl der Downloads: Für Anwendungen, die Downloads nachverfolgen, können Sie mit der Größenfunktion die Elemente verstärken, die am meisten heruntergeladen wurden.</li></ul> |
+| `magnitude` |Die Bewertungsfunktion für die Größe wird dazu verwendet, um Rangfolgen auf Basis des Wertebereichs für ein numerisches Feld zu ändern. Einige der gängigsten Nutzungsbeispiele sind:<ul><li>Sternbewertungen: Ändern Sie die Bewertung basierend auf dem Wert innerhalb des Felds für die „Sternbewertung“. Wenn zwei Elemente relevant sind, wird das Element mit der höheren Bewertung zuerst angezeigt.</li><li>Gewinnspanne: Wenn zwei Dokumente relevant sind, möchte ein Einzelhändler möglicherweise zuerst Dokumente verstärken, die eine höhere Gewinnspanne aufweisen.</li><li>Anzahl der Klicks: Für Anwendungen, bei denen das Klicken über Aktionen mit Produkten oder Seiten nachverfolgt wird, könnten Sie die „Größe“ verwenden, um Elemente zu verstärken, die in der Regel den meisten Datenverkehr aufweisen.</li><li>Anzahl der Downloads: Für Anwendungen, die Downloads nachverfolgen, können Sie mit der Größenfunktion die Elemente verstärken, die am meisten heruntergeladen wurden.</li></ul> |
 | `magnitude:boostingRangeStart` |Legt den Anfangswert des Bereichs fest, über den die Größe bewertet wird. Der Wert muss vom Typ „Integer“ oder „Gleitkomma“ sein. Für Sternbewertungen von 1 bis 4 wäre dies die 1. Für Gewinnspannen von über 50 % wäre dies die 50. |
 | `magnitude:boostingRangeEnd` |Legt den Endwert des Bereichs fest, über den die Größe bewertet wird. Der Wert muss vom Typ „Integer“ oder „Gleitkomma“ sein. Für Sternbewertungen von 1 bis 4 wäre dies die 4. |
 | `magnitude:constantBoostBeyondRange` |Gültige Werte sind "true" oder "false" (Standard). Bei "true" wird die vollständige Verstärkung weiterhin auf Dokumente angewendet, die einen Wert für das Zielfeld aufweisen, der über dem oberen Ende des Bereichs liegt. Bei "false" wird die Verstärkung dieser Funktion nicht auf Dokumente angewendet, die einen Wert für das Zielfeld aufweisen, der außerhalb des Bereichs liegt. |
 | `freshness` |Die Bewertungsfunktion für die Aktualität wird dazu verwendet, um Rangfolgenbewertungen für Elemente auf Basis von Werten in DateTimeOffset-Feldern zu ändern. Ein Element mit einem aktuelleren Datum kann z. B. höher als ältere Elemente eingestuft werden.  (Beachten Sie, dass z. B. Kalenderereignisse mit in der Zukunft liegenden Daten so eingestuft werden können, dass Ereignisse mit geringerem Abstand zur Gegenwart höher als Ereignisse eingestuft werden, die weiter in der Zukunft liegen.) Im aktuellen Service Release wird ein Ende des Bereichs auf die aktuelle Zeit festgelegt. Das andere Ende ist ein Zeitpunkt in der Vergangenheit, der auf `boostingDuration` basiert. Um einen Bereich von Zeitpunkten in der Zukunft zu verstärken, verwenden Sie einen negativen Wert für `boostingDuration`. Die Rate, mit der die Verstärkung von einem maximalen und minimalen Bereich wechselt, wird durch die Interpolation bestimmt, die auf das Bewertungsprofil angewendet wird (siehe folgende Abbildung). Wählen Sie zum Umkehren des angewendeten Verstärkungsfaktors einen Verstärkungsfaktor, der kleiner ist als 1. |
-| `freshness:boostingDuration` |Legt eine Ablaufdauer fest, nach der die Verstärkung für ein bestimmtes Dokument beendet wird. Informationen zur Syntax und Beispiele finden Sie im folgenden Abschnitt unter [Festlegen von „boostingDuration“](#bkmk_boostdur). |
+| `freshness:boostingDuration` |Legt eine Ablaufdauer fest, nach der die Verstärkung für ein bestimmtes Dokument beendet wird. Informationen zur Syntax und Beispiele finden Sie im folgenden Abschnitt unter [Festlegen von boostingDuration](#bkmk_boostdur). |
 | `distance` |Die Bewertungsfunktion für den Abstand wird dazu verwendet, um auf Basis des Abstands relativ zu einem geografischen Standort Einfluss auf die Bewertung von Dokumenten zu nehmen. Der Referenzstandort wird als Teil der Abfrage in einem Parameter (mithilfe des Abfrageparameters `scoringParameter` ) als „lon,lat“-Argument (Längengrad, Breitengrad) angegeben. |
 | `distance:referencePointParameter` |Ein in Abfragen zu übergebender Parameter, der als Referenzstandort verwendet wird. scoringParameter ist ein Abfrageparameter; "scoringParameter" ist ein Abfrageparameter. Beschreibungen zu den Abfrageparametern finden Sie unter [Dokumente durchsuchen (REST-API in Azure Search-Dienst)](search-api-2015-02-28-preview.md#SearchDocs) . |
 | `distance:boostingDistance` |Dies muss eine ganze Zahl sein. Legt den Abstand in Kilometern vom Referenzstandort fest, an dem der Verstärkungsbereich endet. |
@@ -304,9 +305,4 @@ Weitere Beispiele finden Sie unter [XML-Schema: Datentypen (W3.org-Website)](htt
 
 <!--Image references-->
 [1]: ./media/search-api-scoring-profiles-2015-02-28-Preview/scoring_interpolations.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

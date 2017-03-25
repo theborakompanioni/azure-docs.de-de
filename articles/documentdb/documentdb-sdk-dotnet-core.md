@@ -1,5 +1,5 @@
 ---
-title: "DocumentDB – .NET Core-API und .NET Core SDK | Microsoft Docs"
+title: Azure DocumentDB .NET Core-API, -SDK und -Ressourcen | Microsoft-Dokumentation
 description: "Wichtige Informationen zu .NET Core-API und .NET Core SDK einschließlich Terminen für Veröffentlichung und Außerbetriebnahme sowie Änderungen an den einzelnen Versionen des DocumentDB .NET Core SDK."
 services: documentdb
 documentationcenter: .net
@@ -12,16 +12,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 03/14/2017
 ms.author: rnagpal
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: e37416268802b849f6be350a8d7e0e6b284e830b
-ms.openlocfilehash: a2972c7c7fead727e6147212b211d102faf01a29
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 492444304c42a270e638050506e04297c8b17e51
+ms.lasthandoff: 03/15/2017
 
 
 ---
-# <a name="documentdb-apis-and-sdks"></a>DocumentDB-APIs und -SDKs
+# <a name="documentdb-net-core-sdk-release-notes-and-resources"></a>DocumentDB .NET Core-SDK: Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-sdk-dotnet.md)
 > * [.NET Core](documentdb-sdk-dotnet-core.md)
@@ -34,7 +35,6 @@ ms.lasthandoff: 02/22/2017
 > 
 > 
 
-## <a name="documentdb-net-core-api-and-sdk"></a>DocumentDB – .NET Core-API und .NET Core SDK
 <table>
 
 <tr><td>**SDK-Download**</td><td>[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)</td></tr>
@@ -56,6 +56,13 @@ Das DocumentDB .NET Core SDK weist Funktionsparität mit der neuesten Version de
 
 > [!NOTE] 
 > Das DocumentDB .NET Core SDK ist noch nicht mit UWP-Apps (Universelle Windows-Plattform) kompatibel. Senden Sie eine E-Mail an [askdocdb@microsoft.com](mailto:askdocdb@microsoft.com), um Informationen zum .NET Core SDK zu erhalten, mit dem UWP-Apps unterstützt werden.
+
+### <a name="a-name111111httpswwwnugetorgpackagesmicrosoftazuredocumentdbcore111"></a><a name="1.1.1"/>[1.1.1](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/1.1.1)
+
+* LINQ-Unterstützung für Aggregationsabfragen (COUNT, MIN, MAX, SUM und AVG) wurde hinzugefügt.
+* Behebung eines Problems mit einem Arbeitsspeicherverlust für das ConnectionPolicy-Objekt, das durch die Verwendung des Ereignishandlers verursacht wurde.
+* Behebung eines Problems, bei dem UpsertAttachmentAsync nicht funktionierte, wenn ETag verwendet wurde.
+* Behebung eines Problems, bei dem die partitionsübergreifende Fortsetzung einer order-by-Abfrage nicht funktionierte, wenn ein Zeichenfolgenfeld sortiert wurde.
 
 ### <a name="a-name110110httpswwwnugetorgpackagesmicrosoftazuredocumentdbcore110"></a><a name="1.1.0"/>[1.1.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/1.1.0)
 
@@ -82,6 +89,7 @@ Wenn Sie Fragen zu diesem SDK haben, stellen Sie diese bei [StackOverflow](http:
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [1.1.1](#1.1.1) |14. März 2017 |--- |
 | [1.1.0](#1.1.0) |16. Februar 2017 |--- |
 | [1.0.0](#1.0.0) |21. Dezember 2016 |--- |
 | [0.1.0-preview](#0.1.0-preview) |15. November 2016 |31. Dezember 2016 |

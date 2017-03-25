@@ -12,16 +12,16 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/05/2017
+ms.date: 03/12/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: dc533f46d71ec1bbe49b3e19821e4fc6009773fc
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: d811cdabe35f28ab8f2496b08c959107c10ef1be
+ms.lasthandoff: 03/14/2017
 
 
 ---
-# <a name="replicate-vmware-virtual-machines-to-azure-with-azure-site-recovery"></a>Replizieren von virtuellen VMware-Computern in Azure mithilfe von Azure Site Recovery
+# <a name="replicate-vmware-virtual-machines-to-azure-with--site-recovery"></a>Replizieren von virtuellen VMware-Computern in Azure mithilfe von Site Recovery
 
 > [!div class="op_single_selector"]
 > * [Azure-Portal](site-recovery-vmware-to-azure.md)
@@ -30,11 +30,11 @@ ms.lasthandoff: 03/06/2017
 
 In diesem Artikel erfahren Sie, wie Sie lokale virtuelle VMware-Computer mit dem [Azure Site Recovery](site-recovery-overview.md)-Dienst über das Azure-Portal in Azure replizieren.
 
- Wenn Sie virtuelle VMware-Computer zu Azure migrieren möchten, lesen Sie [diesen Artikel](site-recovery-migrate-to-azure.md), um mehr zu erfahren.
+Wenn Sie virtuelle VMware-Computer zu Azure migrieren möchten (nur Failover), lesen Sie [diesen Artikel](site-recovery-migrate-to-azure.md), um mehr zu erfahren.
 
 Kommentare und Fragen können Sie am Ende dieses Artikels oder im [Forum zu Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr) veröffentlichen.
 
-## <a name="deployment-summary"></a>Zusammenfassung der Bereitstellungen
+## <a name="deployment-steps"></a>Bereitstellungsschritte
 
 Das müssen Sie tun:
 
@@ -92,7 +92,7 @@ Das müssen Sie tun:
 
 ## <a name="prepare-for-automatic-discovery-and-push-installation"></a>Vorbereiten für die automatische Ermittlung und Pushinstallation
 
-- **Vorbereiten eines Kontos für die automatische Ermittlung**: Der Site Recovery-Prozessserver ermittelt VMs automatisch. Hierfür benötigt Site Recovery Anmeldeinformationen, mit denen auf vCenter-Server/vSphere ESXi-Hosts zugegriffen werden kann.
+- **Vorbereiten eines Kontos für die automatische Ermittlung**: Der Site Recovery-Prozessserver ermittelt VMs automatisch. Hierfür benötigt Site Recovery Anmeldeinformationen, mit denen auf vCenter-Server und vSphere ESXi-Hosts zugegriffen werden kann.
 
     1. Erstellen Sie zum Verwenden eines dedizierten Kontos eine Rolle (auf vCenter-Ebene mit diesen [Berechtigungen](#vmware-account-permissions)). Geben Sie ihr einen Namen wie **Azure_Site_Recovery**.
     2. Erstellen Sie anschließend einen Benutzer auf dem vSphere-Host bzw. dem vCenter-Server, und weisen Sie die Rolle dem Benutzer zu. Sie geben dieses Benutzerkonto während der Site Recovery-Bereitstellung an.
@@ -111,11 +111,11 @@ Das müssen Sie tun:
 
 Wählen Sie aus, was Sie replizieren möchten und wohin die Daten repliziert werden sollen.
 
-1. Klicken Sie auf **Recovery Services-Tresore** > <vault name>.
-2. Klicken Sie unter **Erste Schritte** auf **Site Recovery** > **Schritt 1: Bereiten Sie die Infrastruktur vor** > **Schutzziel**.
+1. Klicken Sie auf **Recovery Services-Tresore** > „Tresor“.
+2. Klicken Sie im Ressourcenmenü auf **Site Recovery** > **Schritt 1: Bereiten Sie die Infrastruktur vor** > **Schutzziel**.
 
     ![Ziele wählen](./media/site-recovery-vmware-to-azure/choose-goals.png)
-3. Wählen Sie unter **Wohin möchten Sie Ihre Computer replizieren?** **To Azure** (Zu Azure) und in **Sind Ihre Computer virtualisiert?** **Yes, with VMware vSphere Hypervisor** (Ja, mit VMware vSphere Hypervisor) aus.
+3. Wählen Sie unter **Schutzziel** die Option **To Azure** (Zu Azure) > **Yes, with VMware vSphere Hypervisor** (Ja, mit VMware vSphere-Hypervisor) aus.
 
     ![Ziele wählen](./media/site-recovery-vmware-to-azure/choose-goals2.png)
 
@@ -123,32 +123,35 @@ Wählen Sie aus, was Sie replizieren möchten und wohin die Daten repliziert wer
 
 Richten Sie den Konfigurationsserver ein, registrieren Sie ihn im Tresor, und ermitteln Sie die VMs.
 
-1. Klicken Sie unter **Schritt 1: Bereiten Sie die Infrastruktur vor** auf **Quelle**.
+1. Klicken Sie auf **Site Recovery** > **Schritt 1: Bereiten Sie die Infrastruktur vor** > **Quelle**.
 2. Wenn Sie keinen Konfigurationsserver verwenden, klicken Sie auf **+Konfigurationsserver**.
 
     ![Quelle einrichten](./media/site-recovery-vmware-to-azure/set-source1.png)
 3. Überprüfen Sie unter **Server hinzufügen**, ob unter **Servertyp** die Option **Konfigurationsserver** angezeigt wird.
-4. Laden Sie die Installationsdatei **Microsoft Azure Site Recovery Unified Setup** (Einheitliches Setup von Microsoft Azure Site Recovery) herunter.
-5. Laden Sie den Tresorregistrierungsschlüssel herunter. Sie benötigen diesen Schlüssel beim Ausführen des einheitlichen Setups. Der Schlüssel ist nach der Erstellung fünf Tage lang gültig.
+4. Laden Sie die Installationsdatei für das einheitliche Setup von Site Recovery herunter.
+5. Laden Sie den Tresorregistrierungsschlüssel herunter. Sie benötigen diesen beim Ausführen des einheitlichen Setups. Der Schlüssel ist nach der Erstellung fünf Tage lang gültig.
 
    ![Quelle einrichten](./media/site-recovery-vmware-to-azure/set-source2.png)
-6. Stellen Sie auf dem Konfigurationsservercomputer sicher, dass die Systemuhr über einen [Zeitserver](https://technet.microsoft.com/en-us/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-2016-accurate-time) synchronisiert wird. Führen Sie anschließend das einheitliche Setup aus, um den Konfigurationsserver, den Prozessserver und den Masterzielserver zu installieren.
+
 
 ## <a name="run-site-recovery-unified-setup"></a>Ausführen des einheitlichen Setups von Site Recovery
 
-Vorbereitung:
+Erledigen Sie das Folgende, bevor Sie beginnen, und führen Sie dann das einheitliche Setup aus, um den Konfigurationsserver, den Prozessserver und den Masterzielserver zu installieren.
+    - Verschaffen Sie sich schnell einen Überblick per Video
 
-- Stellen Sie sicher, dass die Uhrzeit auf der VM der Uhrzeit in Ihrer lokalen Zeitzone entspricht. Die Zeiten sollten übereinstimmen. Falls der Unterschied 15 Minuten beträgt, ist das Setup unter Umständen nicht erfolgreich.
-- Führen Sie das Setup als lokaler Administrator auf der Konfigurationsserver-VM aus.
-- Stellen Sie sicher, dass TLS 1.0 auf der VM aktiviert ist.
+        > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/VMware-to-Azure-with-ASR-Video1-Source-Infrastructure-Setup/player]
 
-Führen Sie anschließend die Installationsdatei für das einheitliche Setup auf dem Konfigurationsserver aus.
+    - Stellen Sie auf der Konfigurationsserver-VM sicher, dass die Systemuhr mit einem [Zeitserver](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service) synchronisiert ist. Die Zeiten sollten übereinstimmen. Falls der Unterschied 15 Minuten beträgt, ist das Setup unter Umständen nicht erfolgreich.
+    - Führen Sie das Setup als lokaler Administrator auf der Konfigurationsserver-VM aus.
+    - Stellen Sie sicher, dass TLS 1.0 auf der VM aktiviert ist.
 
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
 > [!NOTE]
-> Der Konfigurationsserver kann über die Befehlszeile installiert werden. [Weitere Informationen](http://aka.ms/installconfigsrv).
+> Der Konfigurationsserver kann auch [über die Befehlszeile](http://aka.ms/installconfigsrv) installiert werden.
+
+
 
 ### <a name="add-the-account-for-automatic-discovery"></a>Hinzufügen des Kontos für die automatische Ermittlung
 
@@ -160,7 +163,7 @@ Stellen Sie eine Verbindung mit vSphere ESXi-Hosts oder vCenter-Servern her, um 
 
 - Wenn Sie den vCenter-Server oder vSphere-Hosts mit einem Konto ohne Administratorrechte auf dem Server hinzufügen, müssen für das Konto die folgenden Berechtigungen aktiviert sein:
     - Datencenter, Datenspeicher, Ordner, Host, Netzwerk, Ressource, Virtueller Computer, vSphere Distributed Switch.
-    - Für den vCenter-Server ist die Anzeigeberechtigung für den Speicher erforderlich.
+    - Der vCenter-Server erfordert Anzeigeberechtigungen für den Speicher.
 - Beim Hinzufügen von VMware-Servern kann es 15 Minuten oder auch länger dauern, bis sie im Portal angezeigt werden.
 Damit Azure Site Recovery virtuelle Computern in Ihrer lokalen Umgebung ermitteln kann, müssen Sie den VMware vCenter Server- oder vSphere ESXi-Host mit Site Recovery verbinden.
 
@@ -181,7 +184,10 @@ Site Recovery stellt mithilfe der angegebenen Einstellungen eine Verbindung mit 
    ![Ziel](./media/site-recovery-vmware-to-azure/gs-target.png)
 4. Gehen Sie wie folgt vor, falls Sie kein Speicherkonto oder Netzwerk erstellt haben: Klicken Sie auf **+Speicherkonto** oder **+Netzwerk**, um „inline“ ein Resource Manager-Konto oder Netzwerk zu erstellen.
 
-## <a name="set-up-replication-settings"></a>Einrichten von Replikationseinstellungen
+## <a name="set-up-replication-settings"></a>Einrichten der Replikationseinstellungen
+
+Bevor Sie beginnen, verschaffen Sie sich schnell einen Überblick per Video:
+> [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/VMware-to-Azure-with-ASR-Video2-vCenter-Server-Discovery-and-Replication-Policy/player]
 
 1. Klicken Sie zum Erstellen einer neuen Replikationsrichtlinie auf **Site Recovery-Infrastruktur** > **Replikationsrichtlinien** > **+Replikationsrichtlinie**.
 2. Geben Sie unter **Replikationsrichtlinie erstellen** einen Richtliniennamen an.
@@ -191,6 +197,7 @@ Site Recovery stellt mithilfe der angegebenen Einstellungen eine Verbindung mit 
 
     ![Replikationsrichtlinie](./media/site-recovery-vmware-to-azure/gs-replication2.png)
 8. Wenn Sie eine neue Richtlinie erstellen, wird sie dem Konfigurationsserver automatisch zugeordnet. Standardmäßig wird für das Failback automatisch eine passende Richtlinie erstellt. Bei Verwendung der Replikationsrichtlinie **rep-policy** lautet die Failbackrichtlinie beispielsweise **rep-policy-failback**. Diese Richtlinie wird erst verwendet, wenn Sie ein Failback über Azure initiieren.  
+
 
 
 ## <a name="plan-capacity"></a>Planen der Kapazität
@@ -203,7 +210,7 @@ Site Recovery stellt mithilfe der angegebenen Einstellungen eine Verbindung mit 
 
 ## <a name="prepare-vms-for-replication"></a>Vorbereiten von VMs für die Replikation
 
-Für alle Computer, die Sie replizieren möchten, muss der Mobilitätsdienst installiert sein. Sie können den Mobilitätsdienst auf verschiedene Arten installieren:
+Der Mobilitätsdienst muss auf jeder VMware-VM installiert sein, die Sie replizieren möchten. Sie können den Mobilitätsdienst auf verschiedene Arten installieren:
 
 1. Installation per Pushvorgang vom Prozessserver. Sie müssen VMs vorbereiten, um diese Methode zu verwenden.
 2. Installation mit Bereitstellungstools, z.B. System Center Configuration Manager oder Azure Automation DSC.
@@ -227,6 +234,10 @@ Vorbereitung:
 Standardmäßig werden alle Datenträger auf einem Computer repliziert. Sie können Datenträger von der Replikation ausschließen. Beispielsweise möchten Sie möglicherweise nicht, dass Datenträger mit temporären Daten oder Daten, die bei jedem Neustart des Computers oder der Anwendung aktualisiert werden (z.B. pagefile.sys oder SQL Server tempdb), repliziert werden.
 
 ### <a name="replicate-vms"></a>Replizieren von VMs
+
+Bevor Sie beginnen, verschaffen Sie sich schnell einen Überblick per Video
+
+>[!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/VMware-to-Azure-with-ASR-Video3-Protect-VMware-Virtual-Machines/player]
 
 1. Klicken Sie auf **Schritt 2: Replizieren Sie die Anwendung** > **Quelle**.
 2. Wählen Sie unter **Quelle** den Konfigurationsserver aus.
@@ -258,9 +269,10 @@ Standardmäßig werden alle Datenträger auf einem Computer repliziert. Sie kön
     * Es wird empfohlen, dass Sie virtuelle Computer und physische Server zusammenfassen, damit sie Ihre Workloads widerspiegeln. Das Aktivieren von Multi-VM-Konsistenz kann sich auf die Leistung der Workload auswirken und sollte nur verwendet werden, wenn Computer die gleiche Workload ausführen und Sie Konsistenz benötigen.
 
     ![Replikation aktivieren](./media/site-recovery-vmware-to-azure/enable-replication7.png)
-13. Klicken Sie auf **Replikation aktivieren**. Sie können den Fortschritt des Auftrags **Schutz aktivieren** unter **Aufträge** > **Site Recovery-Aufträge** verfolgen. Nachdem der Auftrag **Schutz abschließen** ausgeführt wurde, ist der Computer bereit für das Failover.
+13. Klicken Sie auf **Replikation aktivieren**. Sie können den Fortschritt des Auftrags **Schutz aktivieren** unter **Einstellungen** > **Aufträge** > **Site Recovery-Aufträge** verfolgen. Nachdem der Auftrag **Schutz abschließen** ausgeführt wurde, ist der Computer bereit für das Failover.
 
 Nach dem Aktivieren der Replikation wird der Mobilitätsdienst installiert, wenn Sie die Pushinstallation einrichten. Nachdem die Pushinstallation für den Mobilitätsdienst auf einer VM installiert wurde, wird ein Schutzauftrag gestartet und verursacht einen Fehler. Nach dem Fehler müssen Sie jeden Computer manuell neu starten. Anschließend wird der Schutzauftrag erneut gestartet, und die erste Replikation wird ausgeführt.
+
 
 
 ### <a name="view-and-manage-vm-properties"></a>Anzeigen und Verwalten von VM-Eigenschaften
@@ -289,26 +301,30 @@ Wir empfehlen Ihnen, die VM-Eigenschaften zu überprüfen und die erforderlichen
 
 ## <a name="run-a-test-failover"></a>Ausführen eines Testfailovers
 
-Führen Sie nach Abschluss der Einrichtung ein Testfailover durch, um sicherzustellen, dass alles wie erwartet funktioniert.
+
+Führen Sie nach Abschluss der Einrichtung ein Testfailover durch, um sicherzustellen, dass alles wie erwartet funktioniert. Bevor Sie beginnen, verschaffen Sie sich schnell einen Überblick per Video
+>[!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/VMware-to-Azure-with-ASR-Video4-Recovery-Plan-DR-Drill-and-Failover/player]
 
 
-1. Klicken Sie zum Durchführen eines Failovers für einen einzelnen Computer unter **Replizierte Elemente** auf den virtuellen Computer und dann auf das Symbol **+Testfailover**.
+1. Klicken Sie zum Durchführen eines Failovers für einen einzelnen Computer unter **Einstellungen** > **Replizierte Elemente** auf den virtuellen Computer und dann auf das Symbol **+Testfailover**.
 
     ![Testfailover](./media/site-recovery-vmware-to-azure/TestFailover.png)
 
-1. Klicken Sie zum Ausführen eines Failovers für einen Wiederherstellungsplan unter **Wiederherstellungspläne** mit der rechten Maustaste auf den Plan, und klicken Sie anschließend auf **Testfailover**. Eine Anleitung zum Erstellen eines Wiederherstellungsplans finden Sie [hier](site-recovery-create-recovery-plans.md).  
+1. Klicken Sie zum Durchführen eines Failovers für einen Wiederherstellungsplan unter **Einstellungen** > **Wiederherstellungspläne** mit der rechten Maustaste auf den Plan, und klicken Sie dann auf **Testfailover**. Eine Anleitung zum Erstellen eines Wiederherstellungsplans finden Sie [hier](site-recovery-create-recovery-plans.md).  
 
 1. Wählen Sie unter **Testfailover** das Azure-Netzwerk aus, mit dem Azure-VMs nach dem Failover verbunden werden.
 
-1. Klicken Sie auf **OK**, um den Failovervorgang zu starten. Sie können den Fortschritt verfolgen, indem Sie auf den virtuellen Computer klicken, um die Eigenschaften zu öffnen. Alternativ können Sie unter „Tresorname“ > > **Aufträge** > **Site Recovery-Aufträge** auf den Auftrag **Testfailover** klicken.
+1. Klicken Sie auf **OK**, um den Failovervorgang zu starten. Sie können den Fortschritt verfolgen, indem Sie auf den virtuellen Computer klicken, um die Eigenschaften zu öffnen. Alternativ können Sie unter „Tresorname“ > **Einstellungen** > **Aufträge** > **Site Recovery-Aufträge** auf den Auftrag **Testfailover** klicken.
 
 1. Nach Abschluss des Failovers sollte der Azure-Replikatcomputer im Azure-Portal unter **Virtuelle Computer** angezeigt werden. Stellen Sie sicher, dass die VM die richtige Größe hat, mit dem richtigen Netzwerk verbunden ist und ausgeführt wird.
 
 1. Wenn Sie die [Vorbereitung für Verbindungen nach dem Failover](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover) durchgeführt haben, sollten Sie eine Verbindung mit dem virtuellen Azure-Computer herstellen können.
 
-1. Klicken Sie anschließend auf dem Wiederherstellungsplan auf **Cleanup-Test-Failover** (Testfailover bereinigen). Erfassen und speichern Sie unter **Notizen** alle Beobachtungen im Zusammenhang mit dem Test-Failover. Dadurch werden die während des Testfailovers erstellten virtuellen Computer gelöscht.
+1. Klicken Sie anschließend auf dem Wiederherstellungsplan auf **Cleanup-Test-Failover** (Testfailover bereinigen). Erfassen und speichern Sie unter **Notizen** alle Beobachtungen im Zusammenhang mit dem Testfailover. Dadurch werden die während des Testfailovers erstellten virtuellen Computer gelöscht.
 
-Weitere Informationen finden Sie im Dokument [Testfailover in Azure](site-recovery-test-failover-to-azure.md).
+[Erfahren Sie mehr](site-recovery-test-failover-to-azure.md) über Testfailover.
+
+
 ## <a name="vmware-account-permissions"></a>VMware-Kontoberechtigungen
 
 Für Site Recovery ist der Zugriff auf VMware erforderlich, damit der Prozessserver VMs automatisch ermitteln und das Failover und Failback von VMs durchgeführt werden kann.

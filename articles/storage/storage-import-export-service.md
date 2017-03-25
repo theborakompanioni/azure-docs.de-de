@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 1/15/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 787f54ca2c19d87866ede452ea1cce0b1c37f263
-ms.openlocfilehash: 50f66d229b80489e429b5db3f2c6cc5787b6884c
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: c30203120a155fd3fc431009baa3e8b318e1330f
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -249,8 +250,8 @@ Der erste Schritt beim Importieren von Daten mit dem Azure Import/Export-Dienst 
 1. Identifizieren Sie die zu importierenden Daten. Hierbei kann es sich um Verzeichnisse und eigenständige Dateien auf dem lokalen Server oder einer Netzwerkfreigabe handeln.  
 2. Bestimmen Sie anhand der Gesamtgröße der Daten die Anzahl von benötigten Festplatten. Beschaffen Sie die erforderliche Anzahl von 2,5-Zoll-SSD-Laufwerken oder 2,5-Zoll- bzw. 3,5-Zoll-SATA II- oder -III-Festplatten.
 3. Identifizieren Sie das Zielspeicherkonto, den Container, die virtuellen Verzeichnisse und die Blobs.
-4.  Bestimmen Sie die Verzeichnisse bzw. eigenständigen Dateien, die auf jede Festplatte kopiert werden sollen.
-5.  Erstellen Sie die CSV-Dateien für das Dataset und Driveset.
+4.    Bestimmen Sie die Verzeichnisse bzw. eigenständigen Dateien, die auf jede Festplatte kopiert werden sollen.
+5.    Erstellen Sie die CSV-Dateien für das Dataset und Driveset.
     
     **Dataset-CSV-Datei**
     
@@ -284,8 +285,8 @@ Der erste Schritt beim Importieren von Daten mit dem Azure Import/Export-Dienst 
 
     Erfahren Sie mehr über das [Vorbereiten der Driveset-CSV-Datei](storage-import-export-tool-preparing-hard-drives-import.md#prepare-initialdriveset-or-additionaldriveset-csv-file).
 
-6.  Kopieren Sie Ihre Daten mithilfe des [WAImportExport-Tools](http://download.microsoft.com/download/3/6/B/36BFF22A-91C3-4DFC-8717-7567D37D64C5/WAImportExport.zip) auf eine oder mehrere Festplatten.
-7.  Sie können „Encrypt“ im Feld „Encryption“ der Driveset-CSV-Datei angeben, um für die Festplatte die BitLocker-Verschlüsselung zu aktivieren. Alternativ dazu können Sie die BitLocker-Verschlüsselung auf der Festplatte auch manuell aktivieren, „AlreadyEncrypted“ angeben und den Schlüssel beim Ausführen des Tools in der Driveset-CSV-Datei bereitstellen.
+6.    Kopieren Sie Ihre Daten mithilfe des [WAImportExport-Tools](http://download.microsoft.com/download/3/6/B/36BFF22A-91C3-4DFC-8717-7567D37D64C5/WAImportExport.zip) auf eine oder mehrere Festplatten.
+7.    Sie können „Encrypt“ im Feld „Encryption“ der Driveset-CSV-Datei angeben, um für die Festplatte die BitLocker-Verschlüsselung zu aktivieren. Alternativ dazu können Sie die BitLocker-Verschlüsselung auf der Festplatte auch manuell aktivieren, „AlreadyEncrypted“ angeben und den Schlüssel beim Ausführen des Tools in der Driveset-CSV-Datei bereitstellen.
 
 8. Ändern Sie die Daten auf den Festplatten oder die Journaldatei nicht mehr, nachdem Sie die Festplattenvorbereitung abgeschlossen haben.
 
@@ -422,7 +423,7 @@ Nein. Der Azure Import/Export-Dienst unterstützt nur Blockblobs und Seitenblobs
 
 **Ist der Azure Import/Export-Dienst für CSP-Abonnements verfügbar?**
 
-Nein. Der Azure Import/Export-Dienst unterstützt keine CSP-Abonnements. Diese Unterstützung ist für die Zukunft geplant.
+Der Azure Import/Export-Dienst unterstützt CSP-Abonnements.
 
 **Kann ich den Schritt für die Festplattenvorbereitung für einen Importauftrag überspringen, oder kann ich eine Festplatte ohne Kopiervorgang vorbereiten?**
 
@@ -499,10 +500,5 @@ Informationen hierzu finden Sie unter [Workflow zur Offlinesicherung in Azure Ba
 * [Einrichten des WAImportExport-Tools](storage-import-export-tool-how-to.md)
 * [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md)
 * [Azure Import/Export-REST-API-Beispiel](https://azure.microsoft.com/documentation/samples/storage-dotnet-import-export-job-management/)
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

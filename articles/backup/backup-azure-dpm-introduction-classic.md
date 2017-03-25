@@ -13,12 +13,12 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/21/2016
+ms.date: 03/10/2017
 ms.author: nkolli;giridham;markgal
 translationtype: Human Translation
-ms.sourcegitcommit: 2224ddf52283d7da599b1b4842ca617d28b28668
-ms.openlocfilehash: f4a5412615e23cc90acc54a9c7430b01fe77dbcf
-ms.lasthandoff: 01/27/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 9d1e68b0e73c60542de566c32c92caf0b3c4630c
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -62,11 +62,13 @@ Nachdem die Momentaufnahme erstellt wurde, werden die Daten vom Azure Backup-Die
 ## <a name="prerequisites"></a>Voraussetzungen
 Bereiten Sie Azure Backup wie folgt zum Sichern von DPM-Daten vor:
 
-1. **Erstellen eines Sicherungstresors** – Erstellen Sie einen Tresors in der Azure Backup-Konsole.
+1. **Erstellen eines Sicherungstresors**
+
+  > [!IMPORTANT]
+  > Ab März 2017 können im klassischen Portal keine Sicherungstresore mehr erstellt werden. Vorhandene Sicherungstresore werden weiterhin unterstützt, und [mithilfe von Azure PowerShell können neue Sicherungstresore erstellt werden](./backup-client-automation-classic.md#create-a-backup-vault). Microsoft empfiehlt jedoch das Erstellen von Recovery Services-Tresoren für alle Bereitstellungen, da zukünftige Verbesserungen nur für Recovery Services-Tresore gelten.
+
 2. **Herunterladen von Tresoranmeldedaten** – Laden Sie in Azure Backup das Verwaltungszertifikat hoch, das Sie für den Tresor erstellt haben.
 3. **Installieren des Azure Backup-Agents und Registrieren des Servers** – Installieren Sie von Azure Backup aus, den Agent auf jedem DPM-Server, und registrieren Sie den DPM-Server im Sicherungstresor.
-
-[!INCLUDE [backup-create-vault](../../includes/backup-create-vault.md)]
 
 [!INCLUDE [backup-download-credentials](../../includes/backup-download-credentials.md)]
 
