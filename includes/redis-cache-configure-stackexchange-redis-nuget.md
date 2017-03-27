@@ -25,8 +25,8 @@ Das NuGet-Paket wird heruntergeladen und fügt die benötigten Assemblyverweise 
 > 
 > 
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-
+Sie können das StackExchange.Redis-NuGet-Paket auch installieren, indem Sie im Menü **Tools** auf **NuGet-Paket-Manager** > **Paket-Manager-Konsole** klicken und im Fenster `Package Manager Console` den folgenden Befehl ausführen:
+    
+```
+Install-Package StackExchange.Redis
+```

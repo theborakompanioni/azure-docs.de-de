@@ -13,21 +13,21 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/10/2017
+ms.date: 03/15/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 15cbf897f3f67b9d1bee0845b4d287fdabe63ba8
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
+ms.openlocfilehash: 6f2a3880c6cd307282020a689ddd4e22a95c17b0
+ms.lasthandoff: 03/15/2017
 
 
 ---
 # <a name="authenticate-runbooks-with-azure-run-as-account"></a>Authentifizieren von Runbooks mit der Azure-Option „Ausführendes Konto“
 In diesem Thema wird erläutert, wie Sie im Azure-Portal ein Automation-Konto mit dem Feature „Als Konto ausführen“ konfigurieren, um Runbooks zur Verwaltung von Ressourcen in Azure Resource Manager oder Azure Service Management zu authentifizieren.
 
-Wenn Sie ein Automation-Konto im Azure-Portal erstellen, wird automatisch Folgendes erstellt:
+Wenn Sie ein neues Automation-Konto im Azure-Portal erstellen, wird automatisch Folgendes erstellt:
 
-* Ein ausführendes Konto, das einen Dienstprinzipal in Azure Active Directory sowie ein Zertifikat erstellt und die zum Verwalten von Resource Manager-Ressourcen mit Runbooks verwendete Rolle „Mitwirkender“ der rollenbasierten Zugriffssteuerung (RBAC) zuweist.   
+* Ein ausführendes Konto, das einen neuen Dienstprinzipal in Azure Active Directory sowie ein Zertifikat erstellt und die zum Verwalten von Resource Manager-Ressourcen mit Runbooks verwendete Rolle „Mitwirkender“ der rollenbasierten Zugriffssteuerung (RBAC) zuweist.   
 * Ein klassisches ausführendes Konto, indem ein Verwaltungszertifikat hochgeladen wird, das zum Verwalten von Azure Service Management-Ressourcen oder klassischen Ressourcen mit Runbooks verwendet wird.  
 
 Dies vereinfacht den Prozess für Sie und ermöglicht Ihnen das schnelle Erstellen und Bereitstellen von Runbooks als Unterstützung für Ihre Anforderungen an die Automation.      
@@ -47,11 +47,8 @@ Beachten Sie Folgendes, bevor Sie fortfahren.
 
 1. Die hier beschriebenen Schritte haben keine Auswirkung auf vorhandene Automation-Konten, die bereits im klassischen Bereitstellungsmodell oder Resource Manager-Bereitstellungsmodell erstellt wurden.  
 2. Die hier beschriebenen Schritte funktionieren nur für über das Azure-Portal erstellte Automation-Konten.  Wenn Sie versuchen, ein Konto über das klassische Portal zu erstellen, wird die Konfiguration des ausführenden Kontos nicht repliziert.
-3. Wenn Sie momentan über Runbooks und Assets (Zeitpläne, Variablen usw.) verfügen, die zuvor für die Verwaltung klassischer Ressourcen erstellt wurden, und diese Runbooks mit dem neuen klassischen ausführenden Konto authentifiziert werden sollen, gehen Sie wie folgt vor: Erstellen Sie wie unter „Verwalten eines ausführenden Azure-Kontos“ beschrieben ein klassisches ausführendes Konto, oder aktualisieren Sie Ihr vorhandenes Konto mithilfe des weiter unten bereitgestellten PowerShell-Skripts.  
-4. Zur Authentifizierung mit dem neuen ausführenden Konto und klassischen ausführenden Automation-Konto müssen Sie Ihre vorhandenen Runbooks mit dem Beispielcode ändern, der im Abschnitt [Beispiele für Authentifizierungscode](#authentication-code-examples) angegeben ist.  
-   
-    >[!NOTE] 
-    >Das ausführende Konto dient zur Authentifizierung gegenüber Resource Manager-Ressourcen anhand des zertifikatbasierten Dienstprinzipals, und das klassische ausführende Konto ist für die Authentifizierung gegenüber Service Management-Ressourcen mit einem Verwaltungszertifikat bestimmt.     
+3. Wenn Sie momentan über Runbooks und Assets (Zeitpläne, Variablen usw.) verfügen, die zuvor für die Verwaltung klassischer Ressourcen erstellt wurden, und diese Runbooks mit dem neuen klassischen ausführenden Konto authentifiziert werden sollen, erstellen Sie mithilfe von „Verwalten eines ausführenden Azure-Kontos“ ein klassisches ausführendes Konto, oder aktualisieren Sie Ihr vorhandenes Konto mithilfe des weiter unten bereitgestellten PowerShell-Skripts.  
+4. Zur Authentifizierung mit dem neuen ausführenden Konto und klassischen ausführenden Automation-Konto müssen Sie Ihre vorhandenen Runbooks mit dem folgenden Beispielcode ändern.  **Beachten Sie** , dass das ausführende Konto zur Authentifizierung gegenüber Resource Manager-Ressourcen anhand des zertifikatbasierten Dienstprinzipals dient und das klassische ausführende Konto zur Authentifizierung gegenüber Service Management-Ressourcen mit dem Verwaltungszertifikat.     
 
 ## <a name="create-a-new-automation-account-from-the-azure-portal"></a>Erstellen eines neuen Automation-Kontos über das Azure-Portal
 In diesem Abschnitt führen Sie die folgenden Schritte aus, um im Azure-Portal ein neues Azure Automation-Konto zu erstellen.  Dadurch werden sowohl das ausführende als auch das klassische ausführende Konto erstellt.  
@@ -88,7 +85,7 @@ Nach der erfolgreichen Erstellung des Automation-Kontos werden automatisch versc
 | --- | --- |
 | AzureAutomationTutorial-Runbook |Ein grafisches Beispielrunbook, das die Authentifizierung mithilfe des ausführenden Kontos veranschaulicht und alle Resource Manager-Ressourcen abruft. |
 | AzureAutomationTutorialScript-Runbook |Ein PowerShell-Beispielrunbook, das die Authentifizierung mithilfe des ausführenden Kontos veranschaulicht und alle Resource Manager-Ressourcen abruft. |
-| AzureRunAsCertificate |Ein Zertifikatasset, das während der Erstellung des Automation-Kontos automatisch oder mit dem folgenden PowerShell-Skript für ein vorhandenes Konto erstellt wird.  Das Zertifikat ermöglicht die Authentifizierung bei Azure, sodass Sie Azure Resource Manager-Ressourcen über Runbooks verwalten können.  Dieses Zertifikat ist ein Jahr lang gültig. |
+| AzureRunAsCertificate |Ein Zertifikatasset, das während der Erstellung des Automation-Kontos automatisch oder mit dem unten stehenden PowerShell-Skript für ein vorhandenes Konto erstellt wird.  Das Zertifikat ermöglicht die Authentifizierung bei Azure, sodass Sie Azure Resource Manager-Ressourcen über Runbooks verwalten können.  Dieses Zertifikat ist ein Jahr lang gültig. |
 | AzureRunAsConnection |Ein Verbindungsasset, das während der Erstellung des Automation-Kontos automatisch oder mit dem unten stehenden PowerShell-Skript für ein vorhandenes Konto erstellt wird. |
 
 In der folgenden Tabelle sind die Ressourcen für das klassische ausführende Konto zusammengefasst.<br>
@@ -126,7 +123,7 @@ Als Nächstes führen wir einen kleinen Test durch, um sicherzustellen, dass Sie
 7. Um die detaillierten Ergebnisse des Runbooks anzuzeigen, klicken Sie auf die Kachel **Ausgabe** .
 8. Auf dem Blatt **Ausgabe** sollte angezeigt werden, dass die Authentifizierung erfolgreich war und eine Liste mit allen klassischen VMs im Abonnement zurückgegeben wurde.
 9. Schließen Sie das Blatt **Ausgabe**, um zum Blatt **Auftragszusammenfassung** zurückzukehren.
-10. Schließen Sie das Blatt **Auftragszusammenfassung** und das entsprechende Runbookblatt **AzureClassicAutomationTutorialScript**.
+10. Schließen Sie das Blatt **Auftragszusammenfassung** und das entsprechende Runbook-Blatt **AzureClassicAutomationTutorialScript**.
 
 ## <a name="managing-azure-run-as-account"></a>Verwalten eines ausführenden Azure-Kontos
 Während der Lebensdauer Ihres Automation-Kontos müssen Sie das Zertifikat erneuern, bevor es abläuft. Falls der Verdacht besteht, dass das Konto kompromittiert wurde, können Sie das ausführende Konto löschen und neu erstellen.  In diesem Abschnitt erfahren Sie, wie Sie dazu vorgehen müssen.  
@@ -151,7 +148,7 @@ Die folgende Anleitung beschreibt, wie Sie Ihr ausführendes Azure oder Ihr klas
 4. Während das Konto gelöscht wird, können Sie den Status im Menü unter **Benachrichtigungen** verfolgen.  Nach Abschluss des Löschvorgangs können Sie das Konto neu erstellen, indem Sie auf dem Eigenschaftenblatt **Ausführende Konten** die Erstellungsoption für **Ausführendes Azure-Konto** auswählen.<br><br> ![Neuerstellen des ausführenden Automation-Kontos](media/automation-sec-configure-azure-runas-account/automation-account-create-runas.png)<br> 
 
 ### <a name="misconfiguration"></a>Fehlkonfiguration
-Damit das ausführende Konto bzw. das klassische ausführende Konto einwandfrei funktioniert, dürfen bestimmte erforderliche Konfigurationselemente nicht gelöscht bzw. müssen bei der anfänglichen Einrichtung richtig erstellt werden. Beispiele für solche Elemente oder unzulässige Vorgänge wären etwa:
+Damit das ausführende Konto oder das klassische ausführende Konto einwandfrei funktioniert, dürfen bestimmte erforderliche Konfigurationselemente nicht gelöscht bzw. müssen bei der anfänglichen Einrichtung ordnungsgemäß erstellt werden. Beispiele für solche Elemente oder unzulässige Vorgänge wären etwa:
 
 * Zertifikatasset 
 * Verbindungsasset 
@@ -392,15 +389,9 @@ Wenn Sie die Option zum Erstellen eines klassischen ausführenden Kontos wählen
     > 
     > 
 
-Führen Sie bei Erstellung eines klassischen ausführenden Kontos nach Abschluss des Skripts die Schritte aus, mit denen das [Zertifikat für die Verwaltungs-API](../azure-api-management-certs.md) in das klassische Azure-Portal hochgeladen wird.  Falls Sie ein klassisches ausführendes Konto mit einem selbstsignierten öffentlichen Zertifikat (CER-Format) erstellt haben, befindet sich eine Kopie des erstellten Zertifikats auf Ihrem Computer im Ordner mit den temporären Dateien (unter dem Benutzerprofil, das zum Ausführen der PowerShell-Sitzung verwendet wurde: *%USERPROFILE%\AppData\Local\Temp*).  Wenn Sie das klassische ausführende Konto dagegen so konfiguriert haben, dass ein von der Zertifizierungsstelle Ihres Unternehmens generiertes Zertifikat (CER-Format) verwendet wird, müssen Sie dieses Zertifikat nutzen.  Sehen Sie sich nach dem Hochladen des Zertifikats den [Beispielcode](#sample-code-to-authenticate-with-service-management-resources) an, mit dem die Konfiguration der Anmeldeinformationen mit Ressourcen der Dienstverwaltung überprüft wird.  
+Nach dem erfolgreichen Abschluss des Skripts geht es wie folgt weiter: Wenn Sie ein klassisches ausführendes Konto mit einem selbstsignierten Zertifikat (CER-Format) erstellt haben, wird es mit dem Skript erstellt und auf Ihrem Computer im Ordner mit den temporären Dateien gespeichert (unter dem Benutzerprofil, das zum Ausführen der PowerShell-Sitzung verwendet wurde: *%USERPROFILE%\AppData\Local\Temp*). Wenn Sie ein klassisches ausführendes Konto mit einem öffentlichen Unternehmenszertifikat (CER-Format) erstellt haben, müssen Sie dieses Zertifikat verwenden.  Führen Sie die Schritte zum [Hochladen eines Verwaltungszertifikats für die Verwaltungs-API](../azure-api-management-certs.md) in das klassische Azure-Portal durch, und verwenden Sie anschließend den unten stehenden [Beispielcode](#sample-code-to-authenticate-with-service-management-resources), um die Anmeldeinformationen für Service Management-Ressourcen zu überprüfen.  Falls Sie kein klassisches ausführendes Konto erstellt haben, können Sie den unten angegebenen [Beispielcode](#sample-code-to-authenticate-with-resource-manager-resources) zum Authentifizieren gegenüber Resource Manager-Ressourcen und Überprüfen der Anmeldeinformationen verwenden.
 
-Falls Sie kein klassisches ausführendes Konto erstellt haben, können Sie den unten angegebenen [Beispielcode](#sample-code-to-authenticate-with-resource-manager-resources) zum Authentifizieren gegenüber Resource Manager-Ressourcen und Überprüfen der Anmeldeinformationen verwenden.   
-
-##  <a name="authentication-code-examples"></a>Beispiele für Authentifizierungscode
-
-Mit den folgenden Beispielen soll veranschaulicht werden, wie Sie Ihre Runbooks gegenüber dem Resource Manager oder klassischen Ressourcen mit einem ausführenden Konto authentifizieren.
-
-### <a name="authenticate-with-resource-manager-resources"></a>Durchführen der Authentifizierung mit Resource Manager-Ressourcen
+## <a name="sample-code-to-authenticate-with-resource-manager-resources"></a>Beispielcode für die Authentifizierung mit Resource Manager-Ressourcen
 Sie können den unten stehenden aktualisierten Beispielcode aus dem Beispielrunbook **AzureAutomationTutorialScript** verwenden, um sich zum Verwalten von Resource Manager-Ressourcen mit Ihren Runbooks mit dem ausführenden Konto zu authentifizieren.   
 
     $connectionName = "AzureRunAsConnection"
@@ -435,7 +426,7 @@ Das Skript enthält zwei zusätzliche Codezeilen, um Verweise auf einen Abonneme
 
 Beachten Sie das zur Authentifizierung im Runbook verwendete Cmdlet – **Add-AzureRmAccount**verwendet den Parametersatz *ServicePrincipalCertificate* .  Die Authentifizierung wird nicht mit Anmeldeinformationen vorgenommen, sondern mit einem Dienstprinzipalzertifikat.  
 
-### <a name="authenticate-with-service-management-resources"></a>Durchführen der Authentifizierung mit Ressourcen der Dienstverwaltung
+## <a name="sample-code-to-authenticate-with-service-management-resources"></a>Beispielcode für die Authentifizierung mit Service Management-Ressourcen
 Sie können den unten stehenden aktualisierten Beispielcode aus dem Beispielrunbook **AzureClassicAutomationTutorialScript** verwenden, um sich zum Verwalten von klassischen Ressourcen mit Ihren Runbooks mit dem klassischen ausführenden Konto zu authentifizieren.
 
     $ConnectionAssetName = "AzureClassicRunAsConnection"

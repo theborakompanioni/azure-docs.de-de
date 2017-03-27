@@ -8,16 +8,17 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: b5e111f3-c029-436c-ba22-c54a4a3016e3
 ms.service: HDInsight
+ms.custom: hdinsightactive
 ms.devlang: R
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 02/28/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: c4315f75ff8e2b822aeab14a8211bb45ddbdb5b1
-ms.openlocfilehash: 5f9db46e5ab8fd6216e0386f96a011b2bb24dae9
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
+ms.openlocfilehash: 383a325bfd2620f6c4fd25ce2f3a66522131efef
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -40,7 +41,7 @@ HDInsight umfasst eine R Server-Option für die Integration in Ihren HDInsight-C
 
 ## <a name="create-the-cluster"></a>Cluster erstellen
 > [!NOTE]
-> In den Schritten dieses Dokuments wird beschrieben, wie Sie einen R Server in einem HDInsight-Cluster mit grundlegenden Konfigurationsinformationen erstellen. Informationen zu anderen Clusterkonfigurationseinstellungen (z.B. zum Hinzufügen zusätzlicher Speicherkonten, zum Verwenden eines virtuellen Azure-Netzwerks oder zum Erstellen eines Metastore für Hive) finden Sie unter [Erstellen von Linux-basierten HDInsight-Clustern](hdinsight-hadoop-provision-linux-clusters.md).
+> In den Schritten dieses Dokuments wird beschrieben, wie Sie einen R Server in einem HDInsight-Cluster mit grundlegenden Konfigurationsinformationen erstellen. Informationen zu anderen Clusterkonfigurationseinstellungen (z.B. zum Hinzufügen zusätzlicher Speicherkonten, zum Verwenden eines virtuellen Azure-Netzwerks oder zum Erstellen eines Metastore für Hive) finden Sie unter [Erstellen von Linux-basierten HDInsight-Clustern](hdinsight-hadoop-provision-linux-clusters.md). Informationen zur R Server-Erstellung mit einer Azure Resource Manager-Vorlage finden Sie unter [Deploy an R-server HDInsight cluster](https://azure.microsoft.com/resources/templates/101-hdinsight-rserver/) (Bereitstellen eines R Server-HDInsight-Clusters).
 >
 > 
 
@@ -84,7 +85,7 @@ HDInsight umfasst eine R Server-Option für die Integration in Ihren HDInsight-C
    
    ![SSH-Verzeichnis](./media/hdinsight-getting-started-with-r/dir.png)
 
-   * Geben Sie dann die Datei mit dem öffentlichen Schlüssel (*.pub) beim Zuweisen von HDI-Clusteranmeldeinformationen ein, bestätigen Sie abschließend Ihre Ressourcengruppe und Region, und wählen Sie **Weiter**.
+   * Geben Sie dann die Datei mit dem öffentlichen Schlüssel (*.pub) beim Zuweisen von HDI-Clusteranmeldeinformationen ein, bestätigen Sie abschließend Ihre Ressourcengruppe und Region, und wählen Sie**Weiter**.
    
    ![Blatt „Anmeldeinformationen“](./media/hdinsight-getting-started-with-r/publickeyfile.png)  
    

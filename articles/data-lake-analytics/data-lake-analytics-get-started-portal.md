@@ -12,18 +12,19 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/05/2016
+ms.date: 03/21/2017
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: 194b5d79505afbfd0208f63dd182a0e03227ba69
-ms.openlocfilehash: 24b0a928967e6abf9f1eb4f085179a8cd6e82955
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 7f23ae904461e754b3871b33ca40c2ff4fcb99f0
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="tutorial-get-started-with-azure-data-lake-analytics-using-azure-portal"></a>Tutorial: Erste Schritte mit Azure Data Lake Analytics mithilfe des Azure-Portals
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-Enthält Informationen zur Verwendung des Azure-Portals zum Erstellen von Azure Data Lake Analytics-Konten, zum Definieren von Data Lake Analytics-Aufträgen in [U-SQL](data-lake-analytics-u-sql-get-started.md) und zum Übermitteln von Aufträgen an den Data Lake Analytics-Dienst. Weitere Informationen zu Data Lake Analytics finden Sie unter [Übersicht über Azure Data Lake Analytics](data-lake-analytics-overview.md).
+Enthält Informationen zur Verwendung des Azure-Portals zum Erstellen von Azure Data Lake Analytics-Konten, zum Definieren von Aufträgen in [U-SQL](data-lake-analytics-u-sql-get-started.md) und zum Übermitteln von Aufträgen an den Data Lake Analytics-Dienst. Weitere Informationen zu Data Lake Analytics finden Sie unter [Übersicht über Azure Data Lake Analytics](data-lake-analytics-overview.md).
 
 In diesem Tutorial entwickeln Sie einen Auftrag, bei dem eine Datei mit tabulatorgetrennten Werten (TSV) gelesen und in eine Datei mit kommagetrennten Werten (CSV) konvertiert wird. Um das gleiche Lernprogramm unter Verwendung anderer unterstützter Tools zu durchlaufen, klicken Sie auf die Registerkarten oben in diesem Abschnitt. Nachdem Ihr erster Auftrag erfolgreich durchgeführt wurde, können Sie damit beginnen, mit U-SQL komplexere Datentransformationen zu schreiben.
 
@@ -35,9 +36,9 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 ## <a name="create-data-lake-analytics-account"></a>Erstellen eines Data Lake Analytics-Kontos
 Zum Ausführen von Aufträgen ist ein Data Lake Analytics-Konto erforderlich.
 
-Jedes Data Lake Analytics-Konto ist von einem [Azure Data Lake-Speicher]() konto abhängig.  Dieses Konto wird als Data Lake-Standardspeicherkonto bezeichnet.  Sie können das Data Lake-Speicherkonto vorher oder während der Erstellung Ihres Data Lake Analytics-Kontos erstellen. In diesem Tutorial erstellen Sie das Data Lake-Speicherkonto mit dem Data Lake Analytics-Konto.
+Jedes Data Lake Analytics-Konto ist von einem Azure Data Lake Store-Konto abhängig.  Dieses Konto wird als Data Lake-Standardspeicherkonto bezeichnet.  Sie können das Data Lake-Speicherkonto vorher oder während der Erstellung Ihres Data Lake Analytics-Kontos erstellen. In diesem Tutorial erstellen Sie das Data Lake-Speicherkonto mit dem Data Lake Analytics-Konto.
 
-**So erstellen Sie ein Data Lake Analytics-Konto**
+**Erstellen eines Data Lake Analytics-Kontos**
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 2. Klicken Sie auf **Neu**, auf **Intelligence + Analyse** und anschließend auf **Data Lake Analytics**.
@@ -45,21 +46,22 @@ Jedes Data Lake Analytics-Konto ist von einem [Azure Data Lake-Speicher]() konto
 
     ![Portalblatt für Azure Data Lake Analytics](./media/data-lake-analytics-get-started-portal/data-lake-analytics-portal-create-adla.png)
 
-   * **Name**: Name des Data Lake Analytics-Kontos.
+   * **Name**: Geben Sie dem Data Lake Analytics-Konto einen Namen (nur Kleinbuchstaben und Zahlen sind zulässig).
    * **Abonnement**: Wählen Sie das Azure-Abonnement aus, das für das Analytics-Konto verwendet wird.
    * **Ressourcengruppe**. Wählen Sie eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue Ressourcengruppe. Azure Resource Manager ermöglicht es Ihnen, mit den Ressourcen in Ihrer Anwendung als Gruppe zu arbeiten. Weitere Informationen finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](../azure-resource-manager/resource-group-overview.md).
    * **Standort**. Wählen Sie ein Azure-Rechenzentrum für das Data Lake Analytics-Konto aus.
-   * **Data Lake-Speicher**: Jedes Data Lake Analytics-Konto verfügt über ein abhängiges Data Lake-Speicherkonto. Das Data Lake Analytics-Konto und das abhängige Data Lake-Speicherkonto müssen sich in demselben Azure-Rechenzentrum befinden. Führen Sie die Anweisungen zum Erstellen eines neuen Data Lake-Speicherkontos aus, oder wählen Sie ein vorhandenes Konto aus.
-4. Klicken Sie auf **Erstellen**. Sie gelangen auf die Startseite des Portals. Dem Startmenü wird eine neue Kachel mit der Bezeichnung „Azure Data Lake Analytics wird bereitgestellt“ hinzugefügt. Es dauert einige Zeit, bis ein Data Lake Analytics-Konto erstellt wurde. Bei seiner Erstellung wird das Konto im Portal auf einem neuen Blatt geöffnet.
+   * **Data Lake Store**: Klicken Sie auf *Erforderliche Einstellungen konfigurieren*. Führen Sie die Anweisungen zum Erstellen eines neuen Data Lake-Speicherkontos aus, oder wählen Sie ein vorhandenes Konto aus. Jedes Data Lake Analytics-Konto verfügt über ein abhängiges Data Lake Store-Konto. Das Data Lake Analytics-Konto und das abhängige Data Lake-Speicherkonto müssen sich in demselben Azure-Rechenzentrum befinden.
+4. Auswählen des Tarifs  
+5. Klicken Sie auf **Erstellen**. Sie gelangen zurück zur Startseite des Portals, auf der eine neue Kachel mit dem Text „Deploying Azure Data Lake Analytics“ (Azure Data Lake Analytics wird bereitgestellt) angezeigt wird. Der Bereitstellungsprozess zur Erstellung eines Data Lake Analytics-Kontos dauert mehrere Minuten. Bei seiner Erstellung wird das Konto im Portal auf einem neuen Blatt geöffnet.
 
 Nachdem ein Data Lake Analytics-Konto erstellt wurde, können Sie weitere Data Lake-Speicherkonten und Azure-Speicherkonten hinzufügen. Eine Anleitung finden Sie unter [Verwalten von Datenquellen für Data Lake Analytics-Konten](data-lake-analytics-manage-use-portal.md#manage-account-data-sources).
 
 ## <a name="prepare-source-data"></a>Vorbereiten von Quelldaten
-In diesem Tutorial verarbeiten Sie einige Suchprotokolle.  Das Suchprotokoll kann entweder in einem Data Lake-Speicher oder einem Azure-Blobspeicher gespeichert werden.
+In diesem Tutorial verarbeiten Sie Suchprotokolle.  Das Suchprotokoll kann entweder in einem Data Lake-Speicher oder einem Azure-Blobspeicher gespeichert werden.
 
-Das Azure-Portal enthält eine Benutzeroberfläche zum Kopieren einiger Beispieldatendateien in das Data Lake Store-Standardkonto. Hierzu gehört auch eine Suchprotokolldatei.
+Das Azure-Portal enthält eine Benutzeroberfläche zum Kopieren von Beispieldatendateien in das Data Lake Store-Standardkonto. Hierzu gehört auch eine Suchprotokolldatei.
 
-**So kopieren Sie Beispieldatendateien**
+**Kopieren von Beispieldatendateien**
 
 1. Öffnen Sie über das [Azure-Portal](https://portal.azure.com) Ihr Data Lake Analytics-Konto.  Informationen zur Erstellung eines Kontos finden Sie unter [Verwalten von Data Lake Analytics-Konten](data-lake-analytics-get-started-portal.md#create-data-lake-analytics-account). Öffnen Sie das Konto im Portal.
 2. Erweitern Sie den Bereich **Zusammenfassung**, und klicken Sie dann auf **Beispielskripts erkunden**. Ein weiteres Blatt mit dem Namen **Beispielskripts** wird geöffnet.
@@ -138,9 +140,4 @@ Nachdem Sie die Quelldaten vorbereitet haben, können Sie mit dem Entwickeln ein
 * Eine Übersicht über Data Lake Analytics finden Sie unter [Azure Data Lake Analytics – Übersicht](data-lake-analytics-overview.md).
 * Wenn Sie dasselbe Tutorial mit anderen Tools verwenden möchten, klicken Sie oben auf der Seite auf die Registerkartenauswahl.
 * Informationen zum Protokollieren von Diagnoseinformationen finden Sie unter [Accessing diagnostic logs for Azure Data Lake Analytics](data-lake-analytics-diagnostic-logs.md)
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

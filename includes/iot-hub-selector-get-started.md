@@ -16,10 +16,5 @@ Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
 * Erstellen eines IoT Hubs mit dem Azure-Portal
 * Erstellen einer Geräteidentität im IoT Hub
-* Erstellen einer simulierten Geräte-App, die Telemetrie an das Lösungs-Back-End sendet und Befehle vom Lösungs-Back-End empfängt
-
-
-
-<!--HONumber=Dec16_HO1-->
-
+* Erstellen Sie eine simulierte Geräte-App, mit der Telemetriedaten an Ihr Lösungs-Back-End gesendet werden.
 

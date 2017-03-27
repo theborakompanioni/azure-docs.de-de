@@ -1,5 +1,5 @@
 ---
-title: "Application Insights für Windows-Dienste und Workerrollen | Microsoft Docs"
+title: "Azure Application Insights für Windows-Dienste und Workerrollen | Microsoft-Dokumentation"
 description: "Fügen Sie das Application Insights SDK manuell zu Ihrer ASP.NET-Anwendung hinzu, um Nutzung, Verfügbarkeit und Leistung zu analysieren."
 services: application-insights
 documentationcenter: .net
@@ -14,8 +14,9 @@ ms.topic: get-started-article
 ms.date: 11/01/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 7a9c40081f52b2ffe918f4612f790f7fd08acc5a
-ms.openlocfilehash: 926f77b6674a0dba92e160435e4cce7bb0de160d
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: df23a55197d15946f16868d14c6db08dcba4df19
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -30,7 +31,7 @@ Erforderlich:
 * Ein Abonnement für [Microsoft Azure](http://azure.com). Wenn Ihr Team oder Ihre Organisation über ein Azure-Abonnement verfügt, kann der Besitzer Sie mit Ihrem [Microsoft-Konto](http://live.com)hinzufügen.
 * Visual Studio 2013 oder höher
 
-## <a name="a-nameadda1-create-an-application-insights-resource"></a><a name="add"></a>1. Erstellen einer Application Insights-Ressource
+## <a name="add"></a>1. Erstellen einer Application Insights-Ressource
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an, und erstellen Sie eine neue Application Insights-Ressource. Wählen Sie als Anwendungstyp "ASP.NET" aus.
 
 ![Klicken Sie auf "Neu > Application Insights"](./media/app-insights-windows-services/01-new-asp.png)
@@ -46,7 +47,7 @@ Der Schlüssel identifiziert die Ressource, den Sie bald im SDK installieren kö
 
 Die Schritte, die Sie gerade zum Erstellen einer neuen Ressource getan haben, sind eine gute Möglichkeit zum Starten der Überwachung einer Anwendung. Nun können Sie Daten zur Anwendung senden.
 
-## <a name="a-namesdka2-install-the-sdk-in-your-application"></a><a name="sdk"></a>2. Installieren des SDK in Ihrer Anwendung
+## <a name="sdk"></a>2. Installieren des SDK in Ihrer Anwendung
 Installieren und Konfigurieren des Application Insights-SDK variiert abhängig von der Plattform, mit der Sie gerade arbeiten. Bei ASP.NET-Apps ist es einfach.
 
 1. Bearbeiten Sie die NuGet-Pakete Ihres Web-App-Projekts in Visual Studio.
@@ -79,19 +80,19 @@ Wenn Sie Anpassungen an der Datei "ApplicationInsights.config" vorgenommen haben
 
 * Bearbeiten Sie die Datei "ApplicationInsights.config" (die bei der NuGet-Installation hinzugefügt wurde). Fügen Sie Folgendes direkt vor dem Endtag ein:
   
-    `<InstrumentationKey>` *Der kopierte Instrumentationsschlüssel * `</InstrumentationKey>`
+    `<InstrumentationKey>` *Der kopierte Instrumentationsschlüssel* `</InstrumentationKey>`
 * Stellen Sie sicher, dass die Eigenschaften von „ApplicationInsights.config“ im Projektmappen-Explorer auf **Buildvorgang = Inhalt, In Ausgabeverzeichnis kopieren = Kopieren**festgelegt sind.
 
 Es ist nützlich, den Instrumentierungsschlüssel im Code festzulegen, wenn Sie [den Schlüssel für verschiedene Buildkonfigurationen wechseln möchten](app-insights-separate-resources.md). Wenn Sie den Schlüssel im Code festlegen, müssen Sie ihn nicht in der Datei `.config` festlegen.
 
-## <a name="a-nameruna-run-your-project"></a><a name="run"></a> Ausführen des Projekts
+## <a name="run"></a> Ausführen des Projekts
 Starten Sie Ihre Anwendung mit **F5** , und testen Sie sie: Öffnen Sie verschiedene Seiten, um einige Telemetriedaten zu generieren.
 
 In Visual Studio sehen Sie eine Anzahl der gesendeten Ereignisse.
 
 ![Ereignisanzahl in Visual Studio](./media/app-insights-windows-services/appinsights-09eventcount.png)
 
-## <a name="a-namemonitora-view-your-telemetry"></a><a name="monitor"></a> Anzeigen der Telemetrie
+## <a name="monitor"></a> Anzeigen der Telemetrie
 Kehren Sie zum [Azure-Portal](https://portal.azure.com/) zurück, und navigieren Sie zur Application Insights-Ressource.
 
 Suchen Sie nach Daten in der Übersichtsdiagrammen. Zuerst sehen Sie lediglich einen oder zwei Punkte. Zum Beispiel:
@@ -124,16 +125,15 @@ Weitere Informationen finden Sie in [diesem Artikel zur Problembehandlung](app-i
 
 > [!NOTE]
 > Wenn die Anwendung viele Telemetriedaten generiert (und Sie Version 2.0.0-beta3 oder höher des ASP.NET-SDK verwenden), reduziert das adaptive Stichprobenmodul automatisch die an das Portal gesendete Datenmenge, indem nur ein repräsentativer Bruchteil der Ereignisse gesendet wird. Ereignisse, die mit derselben Anforderung im Zusammenhang stehen, werden als Gruppe aus- oder abgewählt, sodass Sie zwischen verwandten Ereignissen navigieren können. 
-> [Erfahren Sie mehr über das Erstellen von Stichproben.](app-insights-sampling.md)
+> [Erfahren Sie mehr über das Erstellen von Stichproben](app-insights-sampling.md).
 > 
 > 
+
+## <a name="video"></a>Video
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Fügen Sie weitere Telemetriefunktionen hinzu](app-insights-asp-net-more.md) , um eine Rundumansicht Ihrer Anwendung zu erhalten:
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

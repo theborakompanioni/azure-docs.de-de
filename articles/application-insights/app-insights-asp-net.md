@@ -11,12 +11,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/28/2017
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 05b642949205d7698fbcf791a5d2f06528ff239e
-ms.openlocfilehash: e827bddfa0bcc1c1e46d06c6856033e77859c7fb
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: ae869be6ed9f304629498f416ffdda96252bdf9c
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -34,7 +34,7 @@ Es gibt noch weitere Themen, die für Sie unter Umständen von Interesse sind:
 * [Instrumentieren von Web-Apps zur Laufzeit mit Application Insights](app-insights-monitor-performance-live-website-now.md)
 * [Azure Cloud Services](app-insights-cloudservices.md)
 
-## <a name="a-nameidea-step-1-add-the-application-insights-sdk"></a><a name="ide"></a> Schritt 1: Hinzufügen des Application Insights SDK
+## <a name="ide"></a> Schritt 1: Hinzufügen des Application Insights SDK
 
 Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf Ihr Web-App-Projekt, und klicken Sie auf **Hinzufügen** > **Application Insights-Telemetrie** oder **Application Insights konfigurieren**.
 
@@ -53,7 +53,7 @@ Fahren Sie mit der Seite für die Application Insights-Konfiguration fort:
 5. Alternativ dazu können Sie das Application Insights SDK auch einfach Ihrer App hinzufügen. In diesem Fall werden die Telemetriedaten in Visual Studio angezeigt, während Sie debuggen. Sie können später zu dieser Konfigurationsseite zurückkehren oder warten, bis Sie Ihre App bereitgestellt haben, und die [Telemetrie zur Laufzeit aktivieren](app-insights-monitor-performance-live-website-now.md).
 
 
-## <a name="a-nameruna-step-2-run-your-app"></a><a name="run"></a> Schritt 2: Ausführen der App
+## <a name="run"></a> Schritt 2: Ausführen der App
 Führen Sie Ihre App mit F5 aus. Öffnen Sie verschiedene Seiten, um Telemetriedaten zu generieren.
 
 In Visual Studio wird die Anzahl von protokollierten Ereignissen angezeigt.
@@ -124,7 +124,7 @@ Sie können Ihre Telemetriedaten auch in [Visual Studio](app-insights-visual-stu
 >
 >
 
-## <a name="a-namelanda-what-does-the-add-application-insights-command-do"></a><a name="land"></a> Wie funktioniert der Befehl „Application Insights hinzufügen“?
+## <a name="land"></a> Wie funktioniert der Befehl „Application Insights hinzufügen“?
 Application Insights sendet Telemetriedaten aus Ihrer App an das Application Insights-Portal (in Azure gehostet).
 
 ![Diagramm mit dem Weg der Telemetriedaten](./media/app-insights-asp-net/01-scheme.png)
@@ -197,6 +197,10 @@ Beachten Sie aber, dass die Buildversionsnummer nur vom Microsoft-Buildmodul gen
 Bei Verwendung von Visual Studio Team Services können Sie Ihren Diagrammen einen [Anmerkungsmarker](app-insights-annotations.md) hinzufügen lassen, wenn Sie eine neue Version veröffentlichen. In der folgenden Abbildung ist dargestellt, wie dieser Marker angezeigt wird.
 
 ![Screenshot eines Beispiels für eine Versionsanmerkung in einem Diagramm](./media/app-insights-asp-net/release-annotation.png)
+
+## <a name="video"></a>Video
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>Nächste Schritte
 **[Arbeiten mit Application Insights in Visual Studio](app-insights-visual-studio.md)**<br/>Enthält Informationen zum Debuggen per Telemetrie, zur Diagnosesuche und zum Drillthrough für Code.

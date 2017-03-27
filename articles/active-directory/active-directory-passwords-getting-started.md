@@ -16,9 +16,9 @@ ms.topic: get-started-article
 ms.date: 03/08/2017
 ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 441caf3cc9a3b9074bd263f4a4c45763967fa580
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: ee46da891ab50a64c649b0370cb9231dd3448ea1
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -31,14 +31,14 @@ ms.lasthandoff: 03/15/2017
 Es sind lediglich einige einfache Schritte erforderlich, um Ihren Benutzern das Verwalten eigener Cloudkennwörter für Azure Active Directory oder lokaler Kennwörter für Active Directory zu ermöglichen. Nachdem Sie sichergestellt haben, dass einige wenige Voraussetzungen erfüllt sind, haben Sie im Handumdrehen eine Kennwortänderung und -zurücksetzung für Ihre gesamte Organisation eingerichtet. In diesem Artikel lernen Sie die folgenden Konzepte kennen:
 
 * [**Die besten Tipps von unseren Kunden für den Einstieg**](#top-tips-from-our-customers-to-read-before-you-begin)
- * [**TOP-TIPP: NAVIGATION DER DOKUMENTATION ** – verwenden Sie unser Inhaltsverzeichnis und die Suchfunktion Ihres Browsers, um Antworten zu finden.](#top-tip-documentation-navigation---use-our-table-of-contents-and-your-browsers-find-feature-to-find-answers)
+ * [**TOP-TIPP: NAVIGATION DER DOKUMENTATION** – verwenden Sie unser Inhaltsverzeichnis und die Suchfunktion Ihres Browsers, um Antworten zu finden.](#top-tip-documentation-navigation---use-our-table-of-contents-and-your-browsers-find-feature-to-find-answers)
  * [**Tipp 1: LIZENZIERUNG** – stellen Sie sicher, dass Sie die Lizenzanforderungen verstehen.](#tip-1-licensing---make-sure-you-understand-the-licensing-requirements)
- * [**Tipp 2: TESTEN** - testen Sie nicht mit einem Administrator, sondern einem Endbenutzer, und führen Sie das Pilotprojekt mit einer kleinen Gruppe von Benutzern durch.](#tip-2-testing---test-with-a-end-user-not-an-administrator-and-pilot-with-a-small-set-of-users)
+ * [**Tipp 2: TESTEN** - testen Sie nicht mit einem Administrator, sondern einem Endbenutzer, und führen Sie das Pilotprojekt mit einer kleinen Gruppe von Benutzern durch.](#tip-2-testing---test-with-an-end-user-not-an-administrator-and-pilot-with-a-small-set-of-users)
  * [**Tipp 3: BEREITSTELLUNG** – füllen Sie Daten für Ihre Benutzer vorab aus, damit sie sich nicht registrieren müssen.](#tip-3-deployment---pre-populate-data-for-your-users-so-they-dont-have-to-register)
  * [**Tipp 4: BEREITSTELLUNG** – verwenden Sie die Kennwortzurücksetzung, damit keine temporären Kennwörter weitergegeben werden müssen.](#tip-4-deployment---use-password-reset-to-obviate-the-need-to-communicate-temporary-passwords)
  * [**Tipp 5: RÜCKSCHREIBEN** – sehen Sie sich das Anwendungsereignisprotokoll auf dem AAD Connect-Computer an, um Probleme mit dem Rückschreiben von Kennwörtern zu beheben.](#tip-5-writeback---look-at-the-application-event-log-on-your-aad-connect-machine-to-troubleshoot-password-writeback)
  * [**Tipp 6: RÜCKSCHREIBEN** – stellen Sie sicher, dass die richtigen Berechtigungen, Firewallregeln und Verbindungseinstellungen für das Rückschreiben von Kennwörtern festgelegt sind.](#tip-6-writeback---ensure-you-enable-the-correct-permissions-firewall-rules-and-connection-settings-for-password-writeback)
- * [**Tipp 7: Berichterstellung ** – ermitteln Sie anhand der Azure AD SSPR-Überwachungsprotokolle, wer sich registriert oder Kennwörter zurücksetzt.](#tip-7-reporting---see-who-is-registering-or-resetting-passwords-with-the-azure-ad-sspr-audit-logs)
+ * [**Tipp 7: Berichterstellung** – ermitteln Sie anhand der Azure AD SSPR-Überwachungsprotokolle, wer sich registriert oder Kennwörter zurücksetzt.](#tip-7-reporting---see-who-is-registering-or-resetting-passwords-with-the-azure-ad-sspr-audit-logs)
  * [**Tipp 8: PROBLEMBEHANDLUNG** – lesen Sie unser Handbuch und die häufig gestellten Fragen zur Problembehandlung, um die Lösung für zahlreiche Probleme zu finden.](#tip-8-troubleshoot---read-our-troubleshooting-guide-and-faq-to-solve-many-issues)
  * [**Tipp 9: PROBLEMBEHANDLUNG** – wenn Sie weitere Unterstützung benötigen, stellen Sie uns genügend Informationen zur Verfügung, damit wir Ihnen helfen können.](#tip-9-troubleshoot---if-you-still-need-help-include-enough-information-for-us-to-assist-you)
 * [**Aktivieren von Benutzern für das Zurücksetzen ihrer Azure Active Directory-Kennwörter**](#enable-users-to-reset-their-azure-ad-passwords)
@@ -57,14 +57,14 @@ Es sind lediglich einige einfache Schritte erforderlich, um Ihren Benutzern das 
 ## <a name="top-tips-from-our-customers-to-read-before-you-begin"></a>Die besten Tipps von unseren Kunden für den Einstieg
 Nachfolgend finden Sie einige der besten Tipps, die sich für Kunden bei der Bereitstellung der Kennwortverwaltung in ihrer Organisation als hilfreich erwiesen haben.
 
-* [**TOP-TIPP: NAVIGATION DER DOKUMENTATION ** – verwenden Sie unser Inhaltsverzeichnis und die Suchfunktion Ihres Browsers, um Antworten zu finden.](#top-tip-documentation-navigation---use-our-table-of-contents-and-your-browsers-find-feature-to-find-answers)
+* [**TOP-TIPP: NAVIGATION DER DOKUMENTATION** – verwenden Sie unser Inhaltsverzeichnis und die Suchfunktion Ihres Browsers, um Antworten zu finden.](#top-tip-documentation-navigation---use-our-table-of-contents-and-your-browsers-find-feature-to-find-answers)
 * [**Tipp 1: LIZENZIERUNG** – stellen Sie sicher, dass Sie die Lizenzanforderungen verstehen.](#tip-1-licensing---make-sure-you-understand-the-licensing-requirements)
-* [**Tipp 2: TESTEN** - testen Sie nicht mit einem Administrator, sondern einem Endbenutzer, und führen Sie das Pilotprojekt mit einer kleinen Gruppe von Benutzern durch.](#tip-2-testing---test-with-a-end-user-not-an-administrator-and-pilot-with-a-small-set-of-users)
+* [**Tipp 2: TESTEN** - testen Sie nicht mit einem Administrator, sondern einem Endbenutzer, und führen Sie das Pilotprojekt mit einer kleinen Gruppe von Benutzern durch.](#tip-2-testing---test-with-an-end-user-not-an-administrator-and-pilot-with-a-small-set-of-users)
 * [**Tipp 3: BEREITSTELLUNG** – füllen Sie Daten für Ihre Benutzer vorab aus, damit sie sich nicht registrieren müssen.](#tip-3-deployment---pre-populate-data-for-your-users-so-they-dont-have-to-register)
 * [**Tipp 4: BEREITSTELLUNG** – verwenden Sie die Kennwortzurücksetzung, damit keine temporären Kennwörter weitergegeben werden müssen.](#tip-4-deployment---use-password-reset-to-obviate-the-need-to-communicate-temporary-passwords)
 * [**Tipp 5: RÜCKSCHREIBEN** – sehen Sie sich das Anwendungsereignisprotokoll auf dem AAD Connect-Computer an, um Probleme mit dem Rückschreiben von Kennwörtern zu beheben.](#tip-5-writeback---look-at-the-application-event-log-on-your-aad-connect-machine-to-troubleshoot-password-writeback)
 * [**Tipp 6: RÜCKSCHREIBEN** – stellen Sie sicher, dass die richtigen Berechtigungen, Firewallregeln und Verbindungseinstellungen für das Rückschreiben von Kennwörtern festgelegt sind.](#tip-6-writeback---ensure-you-enable-the-correct-permissions-firewall-rules-and-connection-settings-for-password-writeback)
-* [**Tipp 7: Berichterstellung ** – ermitteln Sie anhand der Azure AD SSPR-Überwachungsprotokolle, wer sich registriert oder Kennwörter zurücksetzt.](#tip-7-reporting---see-who-is-registering-or-resetting-passwords-with-the-azure-ad-sspr-audit-logs)
+* [**Tipp 7: Berichterstellung** – ermitteln Sie anhand der Azure AD SSPR-Überwachungsprotokolle, wer sich registriert oder Kennwörter zurücksetzt.](#tip-7-reporting---see-who-is-registering-or-resetting-passwords-with-the-azure-ad-sspr-audit-logs)
 * [**Tipp 8: PROBLEMBEHANDLUNG** – lesen Sie unser Handbuch und die häufig gestellten Fragen zur Problembehandlung, um die Lösung für zahlreiche Probleme zu finden.](#tip-8-troubleshoot---read-our-troubleshooting-guide-and-faq-to-solve-many-issues)
 * [**Tipp 9: PROBLEMBEHANDLUNG** – wenn Sie weitere Unterstützung benötigen, stellen Sie uns genügend Informationen zur Verfügung, damit wir Ihnen helfen können.](#tip-9-troubleshoot---if-you-still-need-help-include-enough-information-for-us-to-assist-you)
 
@@ -78,9 +78,9 @@ Sehen Sie sich das folgende Inhaltsverzeichnis an:
 In Ihrer Organisation muss mindestens eine Lizenz zugewiesen sein, damit die Kennwortzurücksetzung in Azure AD funktioniert. Für die Kennwortzurücksetzung an sich erzwingen wir keine benutzerbasierte Lizenzierung. Wenn Sie die Funktion jedoch für einen Benutzer ohne zugewiesene Lizenz nutzen, gelten die Bestimmungen Ihres Microsoft-Lizenzvertrags als nicht erfüllt, und Sie müssen den entsprechenden Benutzern Lizenzen zuweisen.
 
 In diesen Dokumenten können Sie sich informieren, welche Lizenzen für das Zurücksetzen von Kennwörtern erforderlich sind.
-* [Lizenzinformationen zur allgemeinen Kennwortzurücksetzung]()
-* [Lizenzinformationen zur featurebasierten Kennwortzurücksetzung]()
-* [Unterstützte Szenarien für die Kennwortrückschreibung]()
+* [Lizenzinformationen zur allgemeinen Kennwortzurücksetzung](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-customize#what-customization-options-are-available)
+* [Lizenzinformationen zur featurebasierten Kennwortzurücksetzung](https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability)
+* [Unterstützte Szenarien für die Kennwortrückschreibung](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-learn-more#scenarios-supported-for-password-writeback)
 
 ### <a name="tip-2-testing---test-with-an-end-user-not-an-administrator-and-pilot-with-a-small-set-of-users"></a>Tipp 2: TESTEN - testen Sie nicht mit einem Administrator, sondern einem Endbenutzer, und führen Sie das Pilotprojekt mit einer kleinen Gruppe von Benutzern durch.
 Beim Testen mit einem Administrator wird die unten definierte Richtlinie zur Administratorkennwortrücksetzung erzwungen.  Dies bedeutet, dass NICHT die erwarteten Ergebnisse der Richtlinie angezeigt werden, die Sie für Ihre Endbenutzer konfiguriert haben.
@@ -310,6 +310,7 @@ In diesem Abschnitt werden Sie durch den Vorgang zum Konfigurieren der Kennwortz
 Bevor Sie das Zurückschreiben von Kennwörtern aktivieren und verwenden können, müssen Sie die folgenden Voraussetzungen erfüllen:
 
 * Sie verfügen über einen Azure AD-Mandanten, für den Azure AD Premium aktiviert ist.  Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-editions.md).
+* Sie müssen für Azure AD Connect eine Verbindung mit dem primären Domänencontrolleremulator herstellen, damit das Kennwortrückschreiben funktioniert.  Wenn Sie möchten, können Sie Azure AD Connect für die Verwendung eines primären Domänencontrollers konfigurieren, indem Sie mit der rechten Maustaste auf die **Eigenschaften** des Active Directory-Synchronisierungsconnectors klicken und die Option **configure directory partitions** (Verzeichnispartitionen konfigurieren) wählen. Suchen Sie nach dem Abschnitt **domain controller connection settings** (Domänencontroller-Verbindungseinstellungen), und aktivieren Sie das Kontrollkästchen **only use preferred domain controllers** (Nur bevorzugte Domänencontroller verwenden).  Hinweis: Wenn der bevorzugte DC kein PDC-Emulator ist, nutzt Azure AD Connect trotzdem den PDC für das Kennwortrückschreiben.
 * Für Ihren Mandanten wurde die Kennwortzurücksetzung konfiguriert und aktiviert.  Weitere Informationen finden Sie unter [Aktivieren von Benutzern für das  Zurücksetzen ihrer Azure AD-Kennwörter](#enable-users-to-reset-their-azure-ad-passwords)
 * Sie verfügen über mindestens ein Administratorkonto und ein Testbenutzerkonto mit einer Azure AD Premium-Lizenz zum Testen dieser Funktion.  Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-editions.md).
 
