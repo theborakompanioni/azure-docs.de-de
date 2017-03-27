@@ -4,7 +4,7 @@ description: Beschreibt die StorSimple-Warnungsbedingungen und -Schweregrade, di
 services: storsimple
 documentationcenter: NA
 author: SharS
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: bee49253-9ac7-4131-95f6-6bf0e72b8438
 ms.service: storsimple
@@ -12,11 +12,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/18/2016
+ms.date: 03/08/2017
 ms.author: anbacker
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c09a105bd321ec29f4331d2ba4c8cf80a796da45
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 2a1e44920581771af77fb46984b1cea31a957d67
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -155,6 +156,7 @@ Wenn die Cloudverbindung für das StorSimple-Gerät in der Produktion ausfällt,
 |:--- |:--- |:--- |
 | Hardwarekomponente <*Komponenten-ID*> meldet den Status <*Status*>. | |Manchmal werden diese Warnungen durch vorübergehende Bedingungen verursacht. In diesem Fall wird die Warnung nach einiger Zeit automatisch gelöscht. Wenden Sie sich an den Microsoft Support, wenn das Problem weiterhin besteht. |
 | Passive Controllerfehlfunktion. |Der passive (sekundäre) Controller funktioniert nicht. |Ihr Gerät ist betriebsbereit, aber einer der Controller funktioniert nicht. Versuchen Sie, diesen Controller neu zu starten. Wenden Sie sich an den Microsoft Support, wenn das Problem weiterhin besteht. |
+| Bevorstehender Laufwerksausfall erkannt. | Bevorstehender Laufwerksausfall erkannt. |Es wurde ein bevorstehender Laufwerksausfall auf der Hardwarekomponente „Laufwerk in Einschubfach <*ID des Einschubfachs*>, Gehäuse <*Gehäuse-ID*>“ erkannt. Erwägen Sie einen Austausch des Laufwerks. <br> Lesen Sie die folgenden Informationen, bevor Sie mit dem Festplattenaustausch beginnen.<br><br>Wenn Ihr Gerät mehr als eine fehlerhafte Festplatte aufweist, entfernen Sie nicht mehr als ein SSD oder HDD pro Arbeitsschritt. Andernfalls kann es zu Datenverlusten kommen.<br><br>Stellen Sie sicher, dass Sie eine Austausch-SSD in einem Einschubfach platzieren, das zuvor eine SSD enthalten hat. Gleiches gilt für HDD.<br><br>Die Einschübe sind von 0 bis 11 nummeriert. Eine fehlerhafte Festplatte in Einschub 2 ist einer fehlerhaften Festplatte in Einschub 3 des Geräts zugeordnet (von oben links).<br><br>Weitere Informationen zum Austausch von Festplatten finden Sie unter „https://go.microsoft.com/fwlink/?linkid=838653“. Wenden Sie sich unter „https://go.microsoft.com/fwlink/?linkid=838654“ an den Microsoft-Support, wenn das Problem weiterhin besteht. |
 
 ### <a name="job-failure-alerts"></a>Warnungen zu Auftragsfehlern
 | Warnungstext | Ereignis | Weitere Informationen/Empfohlene Maßnahmen |
@@ -213,10 +215,5 @@ Wenn die Cloudverbindung für das StorSimple-Gerät in der Produktion ausfällt,
 
 ## <a name="next-steps"></a>Nächste Schritte
 Erfahren Sie mehr über [Problembehandlung bei einem betriebsbereiten StorSimple-Gerät](storsimple-troubleshoot-operational-device.md).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

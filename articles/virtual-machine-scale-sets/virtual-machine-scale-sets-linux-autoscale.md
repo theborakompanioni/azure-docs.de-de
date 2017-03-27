@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 09/27/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 3c00742d9686b986841d676872cc93b58827a8e8
-ms.openlocfilehash: b87b507118244f0f275f54cd65cea13a92cdaec6
-ms.lasthandoff: 02/09/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: fefd6f08d3150a28f73d7733fb397f7db38aef95
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -41,7 +41,7 @@ In diesem Tutorial stellen Sie die folgenden Ressourcen und Erweiterungen bereit
 
 Weitere Informationen über Resource Manager-Ressource finden Sie unter [Azure Resource Manager im Vergleich zur klassischen Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md).
 
-[Installieren Sie die Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md), bevor Sie mit den Schritten in diesem Tutorial beginnen.
+[Installieren Sie die Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md), bevor Sie mit den Schritten in diesem Tutorial beginnen.
 
 ## <a name="step-1-create-a-resource-group-and-a-storage-account"></a>Schritt 1: Erstellen einer Ressourcengruppe und eines Speicherkontos
 

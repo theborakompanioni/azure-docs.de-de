@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: a5cce0da15941e91cbe74cdd1e0306ebd8db362c
-ms.openlocfilehash: d228ceb1a99e8fe11b59e6372b60bbfc93adac27
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: cd727a02716323c54d1c54a23cd4edd8f4940da1
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -42,7 +42,9 @@ Storage Service Encryption – SSE-Dateivorschau steht jetzt zum Verschlüsseln 
 Zur Teilnahme an der SSE-Dateivorschau wenden Sie sich an ssediscussions@microsoft.com.
 
 Weitere Informationen erhalten Sie in den FAQ.
-Verfügbarkeit für File Storage: Storage Service Encryption für File Storage ist derzeit in den Regionen „Asien, Osten“, „Europa, Norden“ und „USA, Osten 2“ verfügbar.
+
+### <a name="availability-for-file-storage"></a>Verfügbarkeit für File Storage
+Speicherdienstverschlüsselung für File Storage ist derzeit in den Regionen USA, Osten; USA, Osten&2; USA, Mitte; USA, Norden-Mitte; USA, Süden-Mitte, USA, Westen-Mitte; USA, Westen; USA, Westen&2; Asien, Osten; Europa, Norden; Europa, Westen, Australien, Osten und Australien, Südosten verfügbar.
 
 
 Melden Sie sich zum Aktivieren oder Deaktivieren der Speicherdienstverschlüsselung für ein Speicherkonto beim [Azure-Portal](https://azure.portal.com) an, und wählen Sie ein Speicherkonto aus. Suchen Sie auf dem Blatt „Einstellungen“ nach dem Abschnitt mit dem Blobdienst, und klicken Sie auf „Verschlüsselung“.
@@ -173,7 +175,7 @@ A: Derzeit nicht; die Schlüssel werden vollständig von Microsoft verwaltet.
 
 A: SSE ist nicht standardmäßig aktiviert. Sie können dieses Feature im Azure-Portal aktivieren. Außerdem können Sie dieses Feature programmgesteuert mit der Speicherressourcenanbieter-REST-API aktivieren.
 
-**F: Wo liegt der Unterschied zu Azure Drive Encryption?**
+**F: Wo liegt der Unterschied zu Azure Disk Encryption?**
 
 A: Dieses Feature wird zum Verschlüsseln von Daten im Azure-Blobspeicher verwendet. Azure Disk Encryption wird zum Verschlüsseln von Betriebssystemdatenträgern und sonstigen Datenträgern in virtuellen IaaS-Computern verwendet. Weitere Informationen finden Sie in unserem [Azure Storage-Sicherheitsleitfaden](storage-security-guide.md).
 

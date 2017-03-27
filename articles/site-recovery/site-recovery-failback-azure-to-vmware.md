@@ -12,22 +12,24 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.workload: required
-ms.date: 10/05/2016
+ms.date: 03/27/2017
 ms.author: ruturajd
 translationtype: Human Translation
-ms.sourcegitcommit: 7688df2aac74d10de7c188ad46f8ab2ec38bbe86
-ms.openlocfilehash: 34c335d17641e9df9b64a7882448afc268e4da7c
-ms.lasthandoff: 02/03/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: ba801c69cf2d0d542bebf54e99ef981854284ab0
+ms.lasthandoff: 03/09/2017
 
 
 ---
 # <a name="fail-back-vmware-virtual-machines-and-physical-servers-to-the-on-premises-site"></a>Failback von virtuellen VMware-Computern und physischen Servern zum lokalen Standort
 > [!div class="op_single_selector"]
-> * [Azure-Portal](site-recovery-failback-azure-to-vmware.md)
-> * [Klassisches Azure-Portal](site-recovery-failback-azure-to-vmware-classic.md)
-> * [Klassisches Azure-Portal (Vorgängerversion)](site-recovery-failback-azure-to-vmware-classic-legacy.md)
+> * [VMware-/physische Computer von Azure](site-recovery-failback-azure-to-vmware.md)
+> * [Hyper-V-VMs von Azure](site-recovery-failback-from-azure-to-hyper-v.md)
 
-In diesem Artikel wird beschrieben, wie Sie für virtuelle Azure-Computer ein Failback zum lokalen Standort durchführen. Befolgen Sie die Anweisungen hier, wenn Sie bereit sind, Ihre virtuellen VMware-Computer oder Ihre physischen Windows-/Linux-Server nach einem Failover vom lokalen Standort auf Azure (beschrieben in diesem [Tutorial](site-recovery-vmware-to-azure-classic.md)) wieder per Failback auf den lokalen Standort zurückzuführen.
+In diesem Artikel wird beschrieben, wie Sie für virtuelle Azure-Computer ein Failback auf den lokalen Standort durchführen. Befolgen Sie die Anweisungen hier, wenn Sie bereit sind, Ihre virtuellen VMware-Computer oder Ihre physischen Windows-/Linux-Server wieder per Failback zurückzuführen, nachdem Sie Ihre Computer mithilfe dieses [Verweises](site-recovery-how-to-reprotect.md) erneut geschützt haben.
+
+>[!NOTE]
+>Wenn Sie das klassische Azure-Portal verwenden, nutzen Sie die [hier](site-recovery-failback-azure-to-vmware-classic.md) genannten Anweisungen für verbesserte VMware-zu-Azure-Architektur und die [hier](site-recovery-failback-azure-to-vmware-classic-legacy.md) genannten Anweisungen für die ältere Architektur.
 
 ## <a name="overview"></a>Übersicht
 Die Diagramme in diesem Abschnitt zeigen Aufbau und Ablauf des Failbacks in diesem Szenario.

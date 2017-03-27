@@ -16,9 +16,9 @@ ms.date: 05/16/2016
 ms.author: kmouss;aglick
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: fa842efd99718be7fa9eaf8aac8030c32cbceeec
-ms.openlocfilehash: a70f30f380bf110271cb597d8755611da5d2d78c
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: b1fb88277f6da86c023cd63af0d7c2c5681f8be0
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -32,9 +32,9 @@ Azure weist bereits viele integrierte Plattformfunktionen auf, die hoch verfügb
 Dieser Artikel behandelt ein echtes Szenario der Notfallwiederherstellung für den Fall, dass eine ganze Region aufgrund einer Naturkatastrophe oder einer umfangreichen Dienstunterbrechung von einem Ausfall betroffen ist. So etwas kommt zwar äußerst selten vor, dennoch müssen Sie für den Ausfall einer gesamten Region vorbereitet sein. Falls eine ganze Region von einer Dienstunterbrechung betroffen ist, sind die lokal redundanten Kopien Ihrer Daten vorübergehend nicht verfügbar. Bei aktivierter Georeplikation sind drei zusätzliche Kopien Ihrer Azure Storage-Blobs und -Tabellen in einer anderen Region gespeichert. Sollte eine gesamte Region ausfallen oder die primäre Region aufgrund einer Katastrophe nicht wiederherstellbar sein, ordnet Azure alle DNS-Einträge der georeplizierten Region zu.
 
 > [!NOTE]
-> Denken Sie daran, dass Sie keine Kontrolle über diesen Prozess haben. Er tritt nur bei einer regionsweiten Dienstunterbrechung auf. Setzen Sie daher auch auf andere anwendungsspezifische Sicherungsstrategien, um eine möglichst hohe Verfügbarkeit zu erreichen. Weitere Informationen finden Sie im Abschnitt zu [Datenstrategien für die Notfallwiederherstellung](../resiliency/resiliency-disaster-recovery-azure-applications.md#data-strategies-for-disaster-recovery).
-> 
-> 
+> Denken Sie daran, dass Sie keine Kontrolle über diesen Prozess haben. Er tritt nur bei einer regionsweiten Dienstunterbrechung auf. Setzen Sie daher auch auf andere anwendungsspezifische Sicherungsstrategien, um eine möglichst hohe Verfügbarkeit zu erreichen. Weitere Informationen finden Sie im Abschnitt zu [Datenstrategien für die Notfallwiederherstellung](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications#data-strategies-for-disaster-recovery).
+>
+>
 
 In den folgenden Informationen zu virtuellen Azure-Computern erfahren Sie, welche Möglichkeiten Sie haben, wenn die gesamte Region, in der Ihre virtuelle Azure-Computeranwendung bereitgestellt wurde, von einer Dienstunterbrechung betroffen ist.
 
@@ -43,15 +43,15 @@ In diesem Fall ist keine weitere Aktion erforderlich. Wir arbeiten intensiv dara
 
 > [!NOTE]
 > Dies ist die beste Option, wenn Sie vor der Unterbrechung nicht Azure Site Recovery, die Sicherung virtueller Computer, georedundanten Speicher mit Lesezugriff oder georedundanten Speicher eingerichtet haben. Wenn Sie den georedundanten Speicher oder den georedundanten Speicher mit Lesezugriff für das Speicherkonto eingerichtet haben, unter dem die virtuellen Festplatten (VHDs) der VM gespeichert sind, können Sie versuchen, die Festplatte mit dem Basisimage wiederherzustellen und darüber eine neue VM bereitzustellen. Dies ist nicht die bevorzugte Option, da die Synchronisierung der Daten nur dann sichergestellt ist, wenn eine Sicherung von Azure-VMs oder Azure Site Recovery verwendet wird. Daher kann nicht garantiert werden, dass diese Option funktioniert.
-> 
-> 
+>
+>
 
 Für Kunden, die umgehend Zugriff auf virtuelle Computer benötigen, stehen die beiden folgenden Optionen zur Verfügung.  
 
 > [!NOTE]
 > Bei beiden Optionen besteht die Gefahr von Datenverlusten.     
-> 
-> 
+>
+>
 
 ## <a name="option-2-restore-a-vm-from-a-backup"></a>Option 2: Wiederherstellen eines virtuellen Computers aus einer Sicherung
 Für Kunden, die eine VM-Sicherung konfiguriert haben, können Sie den virtuellen Computer auf der Grundlage einer Sicherung und eines Wiederherstellungspunkts wiederherstellen.
@@ -65,8 +65,8 @@ Wenn Sie Azure Site Recovery für Ihre betroffenen virtuellen Azure-Computer kon
 
 > [!NOTE]
 > Datenträger mit Betriebssystemen oder mit Daten von virtuellen Azure-Computern werden zwar auf einer sekundären VHD repliziert, aber wenn sie in einem georedundanten Speicher oder einem georedundanten Speicherkonto mit Lesezugriff vorliegen, wird jede VHD separat repliziert. Diese Replikationsebene garantiert keine Konsistenz über die replizierten VHDs hinweg. Wenn Ihre Anwendung und/oder Ihre Datenbanken, die diese Datenträger verwenden, voneinander abhängig sind, ist nicht gewährleistet, dass alle virtuellen Festplatten als einzelne Momentaufnahme repliziert werden. Außerdem ist nicht garantiert, dass das VHD-Replikat aus georedundantem Speicher oder georedundantem Speicher mit Lesezugriff zu einer für Anwendungen konsistenten Momentaufnahme zum Starten der VM führt.
-> 
-> 
+>
+>
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur Implementierung einer Strategie für Notfallwiederherstellung und hohe Verfügbarkeit finden Sie unter [Notfallwiederherstellung und hohe Verfügbarkeit für in Microsoft Azure erstellte Anwendungen](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
@@ -78,5 +78,4 @@ Informationen zum Sichern von VMs finden Sie unter [Sichern von virtuellen Azure
 Informationen zur Verwendung von Azure Site Recovery zum Orchestrieren und Automatisieren des Schutzes Ihrer physischen (und virtuellen) Windows- und Linux-Computer, die auf VMWare- und Hyper-V-VMs ausgeführt werden, finden Sie unter [Azure Site Recovery](https://azure.microsoft.com/documentation/learning-paths/site-recovery/).
 
 Wenden Sie sich an den [Kundensupport](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls die Anweisungen nicht klar sein sollten oder Microsoft die Schritte für Sie ausführen soll.
-
 

@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 09/19/2016
 ms.author: apurvajo
 translationtype: Human Translation
-ms.sourcegitcommit: 3629280101a6c8c53dacf9f80c09becf1db53f03
-ms.openlocfilehash: e4331c6d5a07e6450c1fdde43d4c226e9a06de54
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: edcb6d37eb4d82ff5928ee33cf456c3795eb8131
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -29,7 +29,7 @@ ms.lasthandoff: 02/27/2017
 > 
 > 
 
-Standardmäßig aktiviert **[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)** über ein Platzhalterzertifikat für die Domäne *.azurewebsites.net bereits HTTPS für Ihre Web-App. Wenn Sie keine benutzerdefinierte Domäne konfigurieren möchten, können Sie das Standard-HTTPS-Zertifikat nutzen. *[Platzhalterdomänen](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates) sind jedoch generell nicht so sicher wie die Verwendung einer benutzerdefinierten Domäne mit Ihrem eigenen Zertifikat. Azure App Service bietet Ihnen jetzt eine wirklich einfache Möglichkeit, ein SSL-Zertifikat direkt vom Azure-Portal aus zu erwerben und zu verwalten, ohne das Portal verlassen zu müssen.  
+Standardmäßig aktiviert **[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)** über ein Platzhalterzertifikat für die Domäne *.azurewebsites.net bereits HTTPS für Ihre Web-App. Wenn Sie keine benutzerdefinierte Domäne konfigurieren möchten, können Sie das Standard-HTTPS-Zertifikat nutzen.*[Platzhalterdomänen](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates) sind jedoch generell nicht so sicher wie die Verwendung einer benutzerdefinierten Domäne mit Ihrem eigenen Zertifikat. Azure App Service bietet Ihnen jetzt eine wirklich einfache Möglichkeit, ein SSL-Zertifikat direkt vom Azure-Portal aus zu erwerben und zu verwalten, ohne das Portal verlassen zu müssen.  
 In diesem Artikel erfahren Sie, wie Sie ein SSL-Zertifikat für Ihre **[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)**-Instanz in 3 einfachen Schritten kaufen und konfigurieren können. 
 
 > [!NOTE]
@@ -170,8 +170,11 @@ Wenn Sie **IP-basiertes SSL** ausgewählt haben und Ihre benutzerdefinierte Dom�
   
     Diese IP-Adresse unterscheidet sich von der virtuellen IP-Adresse, die zuvor zum Konfigurieren des A-Datensatzes für Ihre Domäne verwendet wurde. Wenn SNI-basiertes SSL konfiguriert bzw. wenn die Verwendung von SSL nicht konfiguriert ist, wird für diesen Eintrag keine Adresse aufgeführt.
 
-1. Ändern Sie mit den von der Domänennamen-Registrierungsstelle bereitgestellten Tools den A-Datensatz für den benutzerdefinierten Domänennamen, sodass dieser auf die im vorherigen Schritt genannte IP-Adresse verweist.
+* Ändern Sie mit den von der Domänennamen-Registrierungsstelle bereitgestellten Tools den A-Datensatz für den benutzerdefinierten Domänennamen, sodass dieser auf die im vorherigen Schritt genannte IP-Adresse verweist.
    Sie sollten jetzt in der Lage sein, Ihre App über HTTPS:// anstelle von HTTP:// zu erreichen. Sie können damit überprüfen, ob das Zertifikat richtig konfiguriert wurde.
+
+## <a name="bkmk_Rekey"></a>Exportieren eines App Service-Zertifikats
+Sie können eine lokale PFX-Kopie eines App Service-Zertifikats erstellen, sodass Sie es mit anderen Azure-Diensten verwenden können. Weitere Informationen finden Sie in **[unserem Blogbeitrag](https://blogs.msdn.microsoft.com/appserviceteam/2017/02/24/creating-a-local-pfx-copy-of-app-service-certificate/)**.
 
 ## <a name="bkmk_Rekey"></a>Erneute Schlüsselerstellung für das Zertifikat und Synchronisierung
 1. Wenn Sie jemals erneut einen Schlüssel für Ihr Zertifikat erstellen müssen, wählen Sie aus Sicherheitsgründen einfach die Option **Erstellung neuer Schlüssel und Synchronisierung** auf dem Blatt **Zertifikateigenschaften** aus. 

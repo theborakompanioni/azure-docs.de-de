@@ -13,11 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/22/2017
+ms.date: 03/22/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: da98bc3e4dda1a05cba38701c0042f1c023c419a
-ms.openlocfilehash: 40b172356b3171557d6309a6bb2984fba34f485d
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: f4c225c97ac997c412704b278c033c519d4424ed
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -73,7 +74,7 @@ Die Kopieraktivität liest und schreibt Dateien in den folgenden Formaten: **Tex
 * Kopieren von Daten in einer lokalen SQL Server-Instanz und Schreiben in Azure Data Lake Store im ORC-Format
 * Kopieren von ZIP-Dateien aus dem lokalen Dateisystem und Dekomprimieren in Azure Data Lake Store
 
-## <a name="a-nameglobalaglobally-available-data-movement"></a><a name="global"></a>Global verfügbare Datenverschiebung
+## <a name="global"></a>Global verfügbare Datenverschiebung
 Azure Data Factory ist nur in den USA (Westen), USA (Osten) und Nordeuropa verfügbar. Jedoch ist der Dienst, der die Kopieraktivität unterstützt, in den folgenden Regionen und Ländern global verfügbar. Die global verfügbare Topologie gewährleistet effiziente Datenverschiebungen, die regionsübergreifende Hops in der Regel vermeiden. Unter [Dienste nach Region](https://azure.microsoft.com/regions/#services) erfahren Sie, in welchen Regionen Data Factory und die Datenverschiebung verfügbar sind.
 
 ### <a name="copy-data-between-cloud-data-stores"></a>Kopieren von Daten zwischen Clouddatenspeichern
@@ -81,30 +82,30 @@ Wenn sich Quell- und Senkendatenspeicher in der Cloud befinden, verwendet Data F
 
 | Gebiet des Zieldatenspeichers | Region des Zieldatenspeichers | Verwendete Region für die Datenverschiebung |
 |:--- |:--- |:--- |
-| USA | USA (Ost) | USA (Ost) |
-| verfügbar. | USA (Ost) 2 | USA (Ost) 2 |
-| verfügbar. | USA (Mitte) | USA (Mitte) |
-| verfügbar. | USA (Mitte/Norden) | USA (Mitte/Norden) |
-| verfügbar. | USA (Mitte/Süden) | USA (Mitte/Süden) |
-| verfügbar. | USA, Westen-Mitte | USA, Westen-Mitte |
-| beschrieben. | USA (West) | USA (West) |
-| verfügbar. | USA, Westen 2 | USA (West) |
+| USA | USA (Ost) | USA, Osten |
+| &nbsp; | USA, Osten 2 | USA, Osten 2 |
+| &nbsp; | USA, Mitte | USA (Mitte) |
+| &nbsp; | USA Nord Mitte | USA Nord Mitte |
+| &nbsp; | USA, Süden-Mitte | USA Süd Mitte |
+| &nbsp; | USA, Westen-Mitte | USA, Westen-Mitte |
+| &nbsp; | USA (West) | USA (West) |
+| &nbsp; | USA, Westen 2 | USA (West) |
 | Kanada | Kanada, Osten | Kanada, Mitte |
-| verfügbar. | Kanada, Mitte | Kanada, Mitte |
+| &nbsp; | Kanada, Mitte | Kanada, Mitte |
 | Brasilien | Brasilien Süd | Brasilien Süd |
-| Europa | Nordeuropa | Nordeuropa |
-| verfügbar. | Westeuropa | Westeuropa |
+| Europa | Nordeuropa | Europa, Norden |
+| &nbsp; | Europa, Westen | Westeuropa |
 | Asien-Pazifik | Südostasien | Südostasien |
-| verfügbar. | Ostasien | Südostasien |
-| Australien | Australien (Osten) | Australien (Osten) |
-| verfügbar. | Australien (Südost) | Australien (Südost) |
+| &nbsp; | Ostasien | Südostasien |
+| Australien | Australien (Osten) | Australien, Osten |
+| &nbsp; | Australien, Südosten | Australien (Südost) |
 | Japan | Japan Ost | Japan Ost |
-| verfügbar. | Japan (Westen) | Japan Ost |
+| &nbsp; | Japan, Westen | Japan Ost |
 | Indien | Indien (Mitte) | Indien (Mitte) |
-| verfügbar. | Indien, Westen | Indien (Mitte) |
-| verfügbar. | Indien, Süden | Indien (Mitte) |
+| &nbsp; | Indien, Westen | Indien (Mitte) |
+| &nbsp; | Indien, Süden | Indien (Mitte) |
 
-Alternativ können Sie unter den Typeigenschaften der Kopieraktivität (`typeProperties`) mithilfe der `executionLocation`-Eigenschaft explizit die Region des Data Factory-Diensts angeben, die für den Kopiervorgang verwendet werden soll. Die unterstützten Werte für diese Eigenschaft finden Sie weiter oben in der Spalte **Verwendete Region für die Datenverschiebung**. Hinweis: Beim Kopieren werden Ihre Daten über diese Region geleitet. Wenn Sie also beispielsweise einen Kopiervorgang zwischen Azure-Speichern im Vereinigten Königreich durchführen möchten, können Sie `executionLocation` als „Europa, Norden“ angeben, um die Daten über Nordeuropa zu leiten.
+Alternativ können Sie unter den Typeigenschaften der Kopieraktivität (`typeProperties`) mithilfe der `executionLocation`-Eigenschaft explizit die Region des Data Factory-Diensts angeben, die für den Kopiervorgang verwendet werden soll. Die unterstützten Werte für diese Eigenschaft finden Sie weiter oben in der Spalte **Verwendete Region für die Datenverschiebung**. Hinweis: Beim Kopieren werden Ihre Daten über diese Region geleitet. Wenn Sie beispielsweise einen Kopiervorgang zwischen Azure-Speichern im Vereinigten Königreich durchführen möchten, können Sie `"executionLocation": "North Europe"` angeben, um die Daten über Nordeuropa zu leiten (siehe [Beispiel-JSON](#by-using-json-scripts) zur Referenz).
 
 > [!NOTE]
 > Falls die Region des Zieldatenspeichers in der obigen Liste nicht enthalten ist oder nicht gefunden wird, tritt standardmäßig ein Fehler auf, und die Daten werden nicht über eine Alternativregion geleitet (es sei denn, `executionLocation` wurde angegeben). Die Liste mit den unterstützten Regionen wird im Laufe der Zeit erweitert.
@@ -124,7 +125,7 @@ Sie können den Data Factory-Editor im Azure-Portal, Visual Studio oder Azure Po
 
 JSON-Eigenschaften wie Name, Beschreibung, Eingabe- und Ausgabetabellen und Richtlinien sind für alle Arten von Aktivitäten verfügbar. Die Eigenschaften, die im Abschnitt `typeProperties` der Aktivität verfügbar sind, variieren je nach Aktivitätstyp.
 
-Bei der Kopieraktivität variiert der Abschnitt `typeProperties` je nach Art der Quellen und Senken. Klicken Sie im Abschnitt mit [unterstützten Quellen und Senken](#supported-data-stores) auf eine Quelle bzw. Senke, um Informationen zu den Typeigenschaften zu erhalten, die von der Kopieraktivität für diesen Datenspeicher unterstützt werden.   
+Bei der Kopieraktivität variiert der Abschnitt `typeProperties` je nach Art der Quellen und Senken. Klicken Sie im Abschnitt mit [unterstützten Quellen und Senken](#supported-data-stores-and-formats) auf eine Quelle bzw. Senke, um Informationen zu den Typeigenschaften zu erhalten, die von der Kopieraktivität für diesen Datenspeicher unterstützt werden.
 
 Dies ist eine Beispiel-JSON-Definition:
 
@@ -152,10 +153,9 @@ Dies ist eine Beispiel-JSON-Definition:
             "type": "BlobSource"
           },
           "sink": {
-            "type": "SqlSink",
-            "writeBatchSize": 10000,
-            "writeBatchTimeout": "60:00:00"
-          }
+            "type": "SqlSink"
+          },
+          "executionLocation": "North Europe"          
         },
         "Policy": {
           "concurrency": 1,
@@ -191,9 +191,4 @@ Die Zuordnung zwischen einem nativen Typ und einem .NET-Typ für den Datenspeich
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen über die Kopieraktivität finden Sie unter [Kopieren von Daten aus Azure Blob Storage in Azure SQL-Datenbank](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 * Unter [Verschieben von Daten zwischen lokalen Quellen und der Cloud](data-factory-move-data-between-onprem-and-cloud.md)erfahren Sie, wie Sie Daten aus einem lokalen Datenspeicher in einen Clouddatenspeicher verschieben.
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

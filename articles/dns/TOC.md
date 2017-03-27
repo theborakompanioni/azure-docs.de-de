@@ -4,13 +4,11 @@
 
 # Erste Schritte
 
-## [Erstellen einer DNS-Zone](dns-getstarted-create-dnszone-portal.md)
-### [PowerShell](dns-getstarted-create-dnszone.md)
-### [Azure-Befehlszeilenschnittstelle](dns-getstarted-create-dnszone-cli.md)
-
-## [Erstellen von DNS-Einträgen](dns-getstarted-create-recordset-portal.md)
-### [PowerShell](dns-getstarted-create-recordset.md)
-### [Azure-Befehlszeilenschnittstelle](dns-getstarted-create-recordset-cli.md)
+## Erstellen einer DNS-Zone und eines Eintrags
+### [Portal](dns-getstarted-portal.md)
+### [PowerShell](dns-getstarted-powershell.md)
+### [Azure CLI 1.0](dns-getstarted-cli-nodejs.md)
+### [Azure CLI 2.0](dns-getstarted-cli.md)
 
 ## [Delegieren einer Domäne an Azure DNS](dns-domain-delegation.md)
 ## [Erstellen von benutzerdefinierten DNS-Einträgen für eine Web-App](dns-web-sites-custom-domain.md)

@@ -3,7 +3,7 @@ title: "Authentifizierung und Autorisierung für API-Apps in Azure App Service |
 description: "Informationen über die Authentifizierungs- und Autorisierungsdienste von Azure App Service für API-Apps."
 services: app-service\api
 documentationcenter: .net
-author: tdykstra
+author: alexkarcher-msft
 manager: erikre
 editor: 
 ms.assetid: d620b53a-5a6f-41c9-84c7-f7ef5ff02ae7
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2016
-ms.author: rachelap
+ms.author: alkarche
 translationtype: Human Translation
 ms.sourcegitcommit: b75f7aa757679a29a42cdfc04799873ee30bab2e
 ms.openlocfilehash: cd66296718d8ae3cd2bcd69c66f54684f57d7ece
@@ -77,7 +77,7 @@ Aktivieren Sie für Option 1 und 2 **App Service-Authentifizierung**, und wähle
 
 Ausführliche Informationen zum Konfigurieren der Authentifizierung finden Sie unter [So konfigurieren Sie Ihre App Service-Anwendung zur Verwendung der Azure Active Directory-Anmeldung](../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md). Der Artikel gilt für API-Apps sowie für mobile Apps und enthält Links zu weiteren Artikeln für andere Authentifizierungsanbieter.
 
-## <a name="a-idinternala-service-account-authentication"></a><a id="internal"></a> Dienstkontoauthentifizierung
+## <a id="internal"></a> Dienstkontoauthentifizierung
 Die App Service-Authentifizierung eignet sich für interne Szenarien, z. B. für den Aufruf aus einer API-App, der sich an eine andere API-App richtet. In diesem Szenario können Sie ein Token abrufen, indem Sie Anmeldeinformationen für ein Dienstkonto anstelle der Endbenutzer-Anmeldeinformationen verwenden. Ein Dienstkonto wird in Azure Active Directory auch als *Dienstprinzipal* bezeichnet. Die Authentifizierung mithilfe eines solchen Kontos ist auch als Dienst-zu-Dienst-Szenario bekannt. 
 
 Schützen Sie in Dienst-zu-Dienst-Szenarien die aufgerufene API-App mithilfe von Azure Active Directory, und stellen Sie ein AAD-Dienstprinzipal-Autorisierungstoken bereit, wenn Sie die API-App aufrufen. Sie können ein Token anfordern, indem Sie die Client-ID und den geheimen Clientschlüssel aus der AAD-Anwendung bereitstellen. Es ist kein spezieller Azure-Code erforderlich, wie er beispielsweise für das Behandeln des Mobile Services-Zumo-Tokens benötigt wurde. Ein Beispiel für dieses Szenario mithilfe von ASP.NET-API-Apps finden Sie in dem Tutorial [Dienstprinzipalauthentifizierung für API-Apps in Azure App Service](app-service-api-dotnet-service-principal-auth.md).

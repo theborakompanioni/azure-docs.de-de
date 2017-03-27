@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/11/2016
+ms.date: 03/16/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 69b94c93ad3e9c9745af8485766b4237cac0062c
-ms.openlocfilehash: 680c3dd7bbc5ac86d021e119b31352cbfb3451f7
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: f686685138625a53971f1fc5fc754fd22c9d67b2
+ms.lasthandoff: 03/18/2017
 
 ---
 
@@ -26,7 +27,7 @@ Auf dieser Seite werden Überlegungen zur Leistung bei der Verwendung von Traffi
 
 Sie verfügen über Instanzen Ihrer Website in den Regionen USA, Westen und Ostasien. Bei einer der Instanzen ist die Integritätsprüfung für den Traffic Manager-Test fehlgeschlagen. Anwendungsdatenverkehr wird an die fehlerfreie Region geleitet. Dieser Failover wird erwartet, aber die Leistung kann aufgrund der Latenz ein Problem darstellen, nachdem der Datenverkehr jetzt zu einer weiter entfernten Region geleitet wird.
 
-## <a name="how-traffic-manager-works"></a>Funktionsweise von Traffic Manager
+## <a name="performance-considerations-for-traffic-manager"></a>Leistungsüberlegungen zu Traffic Manager
 
 Die einzige Leistungsbeeinträchtigung, die Traffic Manager für Websites haben kann, geschieht bei der ersten DNS-Suche. Eine DNS-Anforderung für den Namen Ihres Traffic Manager-Profils wird durch den DNS-Stammserver verarbeitet, der die Zone „trafficmanager.net“ hostet. Traffic Manager füllt und aktualisiert regelmäßig die regulären Microsoft DNS-Stammserver auf Grundlage Ihrer Traffic Manager-Richtlinie und der Testergebnisse. So erfolgt auch die erste DNS-Suche, ohne dass DNS-Abfragen an Traffic Manager gesendet werden.
 
@@ -85,10 +86,5 @@ Die Tools dieser Websites messen DNS-Latenzen und zeigen aufgelöste IP-Adressen
 [Vorgänge für Traffic Manager (REST-API-Referenz)](http://go.microsoft.com/fwlink/?LinkId=313584)
 
 [Azure Traffic Manager-Cmdlets](http://go.microsoft.com/fwlink/p/?LinkId=400769)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

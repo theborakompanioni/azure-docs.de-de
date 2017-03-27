@@ -4,19 +4,19 @@ description: "Richten Sie Webtests in Application Insights ein. Erhalten Sie Ben
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: 46dc13b4-eb2e-4142-a21c-94a156f760ee
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/13/2017
+ms.date: 03/13/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: c800f6e7b6bd1e17165146f981e32a8cbb251e3c
-ms.openlocfilehash: af4343dbe23f314a85c98d7337f42c4b60b03c6a
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 153a97154faf65598141f321bcd33c4503fa30b0
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -34,7 +34,7 @@ Es gibt zwei Arten von Webtests:
 
 Sie können bis zu zehn Webtests pro Anwendungsressource erstellen.
 
-## <a name="a-namecreatea1-create-a-resource-for-your-test-reports"></a><a name="create"></a>1. Erstellen einer Ressource für Ihre Testberichte
+## <a name="create"></a>1. Erstellen einer Ressource für Ihre Testberichte
 Überspringen Sie diesen Schritt, wenn Sie bereits eine [Application Insights-Ressource][start] für diese Anwendung eingerichtet haben und die Verfügbarkeitsberichte am gleichen Ort angezeigt werden sollen.
 
 Melden Sie sich bei [Microsoft Azure](http://azure.com) an, wechseln Sie zum [Azure-Portal](https://portal.azure.com), und erstellen Sie eine Application Insights-Ressource.
@@ -43,7 +43,7 @@ Melden Sie sich bei [Microsoft Azure](http://azure.com) an, wechseln Sie zum [Az
 
 Klicken Sie auf **All resources** (Alle Ressourcen), um das Blatt „Übersicht“ für die neue Ressource zu öffnen.
 
-## <a name="a-namesetupa2-create-a-url-ping-test"></a><a name="setup"></a>2. Erstellen eines URL-Pingtests
+## <a name="setup"></a>2. Erstellen eines URL-Pingtests
 Suchen Sie in der Application Insights-Ressource nach der Kachel "Verfügbarkeit". Klicken Sie darauf, um das Blatt "Webtests" für Ihre Anwendung zu öffnen, und fügen Sie einen Webtest hinzu.
 
 ![Mindestens die URL der Website eintragen](./media/app-insights-monitor-web-app-availability/13-availability.png)
@@ -67,7 +67,7 @@ Suchen Sie in der Application Insights-Ressource nach der Kachel "Verfügbarkeit
 ### <a name="test-more-urls"></a>Testen weiterer URLs
 Fügen Sie weitere Tests hinzu. Neben dem Testen der Startseite können Sie auch sicherstellen, dass die Datenbank ausgeführt wird, indem Sie eine Such-URL testen.
 
-## <a name="a-namemonitora3-see-your-web-test-results"></a><a name="monitor"></a>3. Anzeigen der Webtestergebnisse
+## <a name="monitor"></a>3. Anzeigen der Webtestergebnisse
 Nach ein bis zwei Minuten werden Ergebnisse auf dem Webtestblatt angezeigt.
 
 ![Ergebnisübersicht im Startblatt](./media/app-insights-monitor-web-app-availability/14-availSummary.png)
@@ -76,7 +76,7 @@ Klicken Sie auf einen beliebigen Balken im Übersichtsdiagramm, um eine detailli
 
 In diesen Diagrammen werden die Ergebnisse für alle Webtests dieser Anwendung kombiniert.
 
-## <a name="a-namefailuresaif-you-see-failures"></a><a name="failures"></a>Wenn Sie Fehler finden ...
+## <a name="failures"></a>Wenn Sie Fehler finden ...
 Klicken Sie auf einen roten Punkt.
 
 ![Auf einen roten Punkt klicken](./media/app-insights-monitor-web-app-availability/open-instance.png)
@@ -101,7 +101,7 @@ Sie können ein Szenario überwachen, das eine Sequenz mit mehreren URLs umfasst
 > Für Webtests mit mehreren Schritten wird eine Gebühr erhoben. Informationen hierzu finden Sie in der [Preisübersicht](http://azure.microsoft.com/pricing/details/application-insights/).
 > 
 
-Um einen mehrstufigen Test zu erstellen, zeichnen das Szenario mit Visual Studio auf. Laden Sie dann die Aufzeichnung in Application Insights hoch. Application Insights wiederholt das Szenario in bestimmten Abständen und überprüft die Antworten.
+Um einen mehrstufigen Test zu erstellen, zeichnen das Szenario mit Visual Studio Enterprise auf. Laden Sie dann die Aufzeichnung in Application Insights hoch. Application Insights wiederholt das Szenario in bestimmten Abständen und überprüft die Antworten.
 
 Beachten Sie, dass Sie keine codierten Funktionen in den Tests verwenden können: Die Szenarioschritte müssen als Skript in der Webtest-Datei enthalten sein.
 
@@ -110,7 +110,10 @@ Verwenden Sie Visual Studio Enterprise, um eine Websitzung aufzuzeichnen.
 
 1. Erstellen Sie ein Webleistungstest-Projekt.
 
-    ![Erstellen Sie in Visual Studio ein Projekt aus der Vorlage für Webleistungs- und Auslastungstests.](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-create.png)
+    ![Erstellen Sie in der Visual Studio Enterprise Edition ein Projekt aus der Vorlage für Webleistungs- und Auslastungstests.](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-create.png)
+
+ * *Wird die Vorlage für Webleistungs- und Auslastungstests nicht angezeigt?* - Schließen Sie Visual Studio Enterprise. Öffnen Sie den **Visual Studio-Installer**, um Ihre Visual Studio Enterprise-Installation zu ändern. Wählen Sie unter **Einzelne Komponenten** die Option **Tools für Webleistung und Auslastungstests**.
+
 2. Öffnen Sie die .webtest-Datei und starten Sie die Aufzeichnung.
 
     ![Öffnen Sie die WEBTEST-Datei, und klicken Sie auf "Aufzeichnen".](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-start.png)
@@ -208,7 +211,7 @@ Wenn bei Ihrem Test die Anmeldung mit OAuth erforderlich ist, lautet die allgeme
 * Parametrisieren Sie die Token, indem Sie den Parameter festlegen, wenn das Token vom Authentifikator zurückgegeben wird, und ihn in der Abfrage an die Website verwenden.
   (Visual Studio versucht, den Test zu parametrisieren, aber die Token werden nicht richtig parametrisiert.)
 
-## <a name="a-nameedita-edit-or-disable-a-test"></a><a name="edit"></a> Bearbeiten oder Deaktivieren eines Tests
+## <a name="edit"></a> Bearbeiten oder Deaktivieren eines Tests
 Öffnen Sie einen Test, um ihn zu bearbeiten oder zu deaktivieren.
 
 ![Webtest bearbeiten oder deaktivieren](./media/app-insights-monitor-web-app-availability/19-availEdit.png)
@@ -257,12 +260,12 @@ Nach Abschluss des Tests werden die Antwortzeiten und Erfolgsraten angezeigt.
 
     Dies wird leider nicht unterstützt.
 
-## <a name="a-namevideoavideo"></a><a name="video"></a>Video
+## <a name="video"></a>Video
 > [!VIDEO https://channel9.msdn.com/Series/Application-Insights-on-Azure-Preview-Portal/Monitoring-Availability-with-Application-Insights/player]
 >
 >
 
-## <a name="a-namenextanext-steps"></a><a name="next"></a>Nächste Schritte
+## <a name="next"></a>Nächste Schritte
 [Durchsuchen der Diagnoseprotokolle][diagnostic]
 
 [Behandeln von Problemen][qna]

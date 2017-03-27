@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/08/2017
+ms.date: 03/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: aa20b20c86763791eb579883b5273ea79cc714b5
-ms.openlocfilehash: 58c89833330d8dbb1147b42c086ca2c86be3e94d
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 3051ed0385b81892b8495e83817ed8255dbce8cd
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -36,6 +37,61 @@ Verwandte Links:
 * [Web Services-Connector](http://go.microsoft.com/fwlink/?LinkID=226245) – Referenzdokumentation
 * [PowerShell-Connector](active-directory-aadconnectsync-connector-powershell.md) – Referenzdokumentation
 * [Lotus Domino-Connector](active-directory-aadconnectsync-connector-domino.md) – Referenzdokumentation
+
+## <a name="114430"></a>1.1.443.0
+
+Veröffentlicht: März 2017
+
+### <a name="enhancements"></a>Verbesserungen
+* SQL (generisch):</br>
+  **Symptome des Szenarios:** Für den SQL-Connector gibt es eine bekannte Einschränkung, bei der nur ein Verweis auf einen Objekttyp zulässig und ein Querverweis mit Membern erforderlich ist. </br>
+  **Lösungsbeschreibung:** Im Verarbeitungsschritt für Verweise, bei denen die Option „*“ gewählt wird, werden ALLE Kombinationen von Objekttypen an das Synchronisierungsmodul zurückgegeben.
+
+>[!Important]
+- Es werden viele Platzhalter erstellt.
+- Es muss sichergestellt werden, dass die Benennung objekttypübergreifend eindeutig ist.
+
+
+* LDAP (generisch):</br>
+ **Szenario:** Wenn in einer bestimmten Partition nur einige Container ausgewählt werden, wird die Suche trotzdem in der gesamten Partition durchgeführt. Die bestimmte Partition wird nach dem Synchronisierungsdienst gefiltert, aber nicht nach MA. Dies kann zu einer Beeinträchtigung der Leistung führen. </br>
+
+ **Lösungsbeschreibung:** Der Code des GLDAP-Connectors wurde geändert, um es zu ermöglichen, dass jeweils alle Container und Suchobjekte durchlaufen werden, anstatt die gesamte Partition zu durchsuchen.
+
+
+* Lotus Domino:
+
+  **Szenario:** Unterstützung für das Löschen von Domino-E-Mails zum Entfernen einer Person während eines Exportvorgangs. </br>
+  **Lösung:** Unterstützung eines konfigurierbaren E-Mail-Löschvorgangs zum Entfernen einer Person während eines Exportvorgangs.
+
+### <a name="fixed-issues"></a>Behobene Probleme:
+* Webdienste (generisch):
+ * Wenn die Dienst-URL in SAP-wsconfig-Standardprojekten mit dem WebService-Konfigurationstool geändert wird, tritt der folgende Fehler auf: „Ein Teil des Pfads konnte nicht gefunden werden.“
+
+      ``'C:\Users\cstpopovaz\AppData\Local\Temp\2\e2c9d9b0-0d8a-4409-b059-dceeb900a2b3\b9bedcc0-88ac-454c-8c69-7d6ea1c41d17\cfg.config\cloneconfig.xml'. ``
+
+* LDAP (generisch):
+ * Fehler vom Typ „Wasserzeichen für SQL (generisch): Mehrwertiges Attribut für Deltaimport nicht importiert“ behoben
+ * Für den GLDAP-Connector sind in AD LDS nicht alle Attribute sichtbar
+ * Fehler im Assistenten, wenn für das LDAP-Verzeichnisschema keine UPN-Attribute erkannt werden
+ * Deltaimporte schlagen mit Ermittlungsfehlern fehl, die während des vollständigen Imports nicht vorhanden sind, wenn das „objectclass“-Attribut nicht ausgewählt ist
+ * Auf der Konfigurationsseite zum „Konfigurieren von Partitionen und Hierarchien“ werden keine Objekte angezeigt, deren Typ der Partition für Novel-Server für  
+LDAP MA (generisch) entspricht. Es wurden nur Objekte der RootDSE-Partition angezeigt.
+
+
+* SQL (generisch):
+ * Beim Exportieren von gelöschten/hinzugefügten Werten von mehrwertigen Attributen werden diese in der Datenquelle nicht gelöscht/hinzugefügt.  
+
+
+* Lotus Notes:
+ * Ein spezifisches Feld für den „Vollständigen Namen“ wird im Metaverse richtig angezeigt, aber beim Exportieren nach Notes ist der Wert für das Attribut ein Nullwert oder leer.
+ * Fehler aufgrund von doppeltem Zertifizierer behoben
+ * Wenn das Objekt ohne Daten im Lotus Domino Connector mit anderen Objekten ausgewählt wird, tritt beim vollständigen Import der Ermittlungsfehler auf.
+ * Wenn der Deltaimport auf dem Lotus Domino Connector ausgeführt wird, gibt der Dienst „Microsoft.IdentityManagement.MA.LotusDomino.Service.exe“ am Ende der Ausführung ggf. einen Anwendungsfehler aus.
+ * Die Gruppenmitgliedschaft funktioniert im Allgemeinen gut und wird beibehalten. Ausnahme: Beim Ausführen des Exports zum Entfernen eines Benutzers aus der Mitgliedschaft wird der Vorgang für ein Update als erfolgreich angezeigt, aber der Benutzer wird nicht tatsächlich aus der Lotus Notes-Mitgliedschaft entfernt.
+ * In der Konfigurations-GUI von Lotus MA wurde die Möglichkeit zum Auswählen von „Append Item at bottom“ (Element unten anfügen) hinzugefügt, damit während des Exports für mehrwertige Attribute unten neue Elemente angefügt werden können.
+ * Der Connector fügt die erforderliche Logik zum Löschen der Datei aus dem Mailordner und dem ID-Tresor hinzu.
+ * Das Löschen der Mitgliedschaft für übergreifende NAB-Member funktioniert nicht.
+ * Werte sollten erfolgreich aus dem mehrwertigen Attribut gelöscht werden
 
 ## <a name="111170"></a>1.1.117.0
 Veröffentlicht März 2016
@@ -98,9 +154,4 @@ Vor März 2016 wurden die Connectors als Support-Themen veröffentlicht.
 Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-whatis.md) .
 
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

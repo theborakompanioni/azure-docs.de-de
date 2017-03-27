@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/24/2017
+ms.date: 03/15/2017
 ms.author: deguhath;bradsev;gokuma
 translationtype: Human Translation
-ms.sourcegitcommit: 138c1182ea173ff2f14672e692ff79ae1015dcfc
-ms.openlocfilehash: 52319ff75817e75b31388aa03030a4f0e63c182d
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: cfab4ea7491d15321d54cd9482e35a89fe7c7275
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -30,7 +30,7 @@ In diesem Thema wird gezeigt, wie ein gespeichertes Machine Learning-Modell (ML)
 Setupschritte und der Code zum Operationalisieren eines ML-Modells werden in dieser exemplarischen Vorgehensweise für die Verwendung sowohl eines HDInsight Spark 1.6-Clusters als auch eines Spark 2.0-Clusters bereitgestellt. Der Code für diese Verfahren wird außerdem in Jupyter-Notebooks bereitgestellt.
 
 ### <a name="notebook-for-spark-16"></a>Notebook für Spark 1.6
-Das Jupyter-Notebook [pySpark-machine-learning-data-science-spark-model-consumption.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-model-consumption.ipynb) zeigt, wie ein gespeichertes Modell mithilfe von Python in HDInsight-Clustern operationalisiert wird. 
+Das Jupyter-Notebook [pySpark-machine-learning-data-science-spark-model-consumption.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb) zeigt, wie ein gespeichertes Modell mithilfe von Python in HDInsight-Clustern operationalisiert wird. 
 
 ### <a name="notebook-for-spark-20"></a>Notebook für Spark 2.0
 Um das Jupyter-Notebook für Spark 1.6 für die Verwendung mit einem HDInsight Spark 2.0-Cluster zu ändern, ersetzen Sie die Python-Codedatei durch [diese Datei](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py). Dieser Code zeigt, wie die in Spark 2.0 erstellten Modelle genutzt werden.

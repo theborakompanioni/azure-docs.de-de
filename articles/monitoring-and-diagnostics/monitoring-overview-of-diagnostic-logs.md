@@ -12,35 +12,49 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2017
+ms.date: 03/12/2017
 ms.author: johnkem; magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 2e011fbde0ee1b070d51a38b23193a4b48a3a154
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 5675a65e3b48e39f44dc320b7b87910ab759b764
+ms.lasthandoff: 03/14/2017
 
 
 ---
-# <a name="overview-of-azure-diagnostic-logs"></a>Übersicht über Azure-Diagnoseprotokolle
-**Azure-Diagnoseprotokolle** sind von einer Ressource ausgegebene Protokolle mit umfangreichen, in kurzen Abständen erfassten Betriebsdaten der Ressource. Der Inhalt dieser Protokolle variiert je nach Ressourcentyp. (Windows-Systemereignisprotokolle sind beispielsweise eine Diagnoseprotokollkategorie für virtuelle Computer; Blob-, Tabellen- und Warteschlangenprotokolle sind Diagnoseprotokollkategorien für Speicherkonten.) Darüber hinaus unterscheiden sich Diagnoseprotokolle vom [Aktivitätsprotokoll (ehemals Überwachungsprotokoll oder Betriebsprotokoll genannt)](monitoring-overview-activity-logs.md), das Informationen zu den Vorgängen liefert, die auf Ressourcen in Ihrem Abonnement ausgeführt wurden. Die hier beschriebene neue Art von Diagnoseprotokollen wird nicht von allen Ressourcen unterstützt. Die weiter unten bereitgestellte Liste mit unterstützten Diensten gibt Aufschluss darüber, welche Ressourcentypen die neuen Diagnoseprotokolle unterstützen.
+# <a name="collect-and-consume-diagnostic-data-from-your-azure-resources"></a>Erfassen und Nutzen von Diagnosedaten aus Ihren Azure-Ressourcen
 
-![Logische Position von Diagnoseprotokollen](./media/monitoring-overview-of-diagnostic-logs/logical-placement-chart.png)
+## <a name="what-are-azure-diagnostic-logs"></a>Was sind Azure-Diagnoseprotokolle?
+**Azure-Diagnoseprotokolle** sind von einer Ressource ausgegebene Protokolle mit umfangreichen, in kurzen Abständen erfassten Betriebsdaten der Ressource. Der Inhalt dieser Protokolle variiert je nach Ressourcentyp. Windows-Systemereignisprotokolle sind z.B. eine Kategorie des Diagnoseprotokolls für virtuelle Computer und Blob-, Tabellen- und Warteschlangenprotokolle sind Kategorien der Diagnoseprotokolle für Speicherkonten.
+
+Diagnoseprotokolle unterscheiden sich vom [Aktivitätsprotokoll (früher als Überwachungsprotokoll, oder Betriebsprotokoll bezeichnet)](monitoring-overview-activity-logs.md). Das Aktivitätsprotokoll bietet Einblicke in Vorgänge, die für Ressourcen Ihres Abonnements durchgeführt wurden. Diagnoseprotokolle bieten Einblick in Vorgänge, die Ihre Ressource selbst ausgeführt hat.
+
+Die hier beschriebene neue Art von Diagnoseprotokollen wird nicht von allen Ressourcen unterstützt. Dieser Artikel enthält einen Abschnitt, in dem aufgeführt ist, welche Ressourcentypen die neuen Diagnoseprotokolle unterstützen.
+
+![Diagnoseprotokolle im Vergleich zu anderen Protokolltypen ](./media/monitoring-overview-of-diagnostic-logs/Diagnostics_Logs_vs_other_logs_v5.png)
+
+Abbildung 1: Diagnoseprotokolle im Vergleich zu anderen Protokolltypen
 
 ## <a name="what-you-can-do-with-diagnostic-logs"></a>Verwendungsmöglichkeiten für Diagnoseprotokolle
 Im Anschluss sind einige Verwendungsmöglichkeiten für Diagnoseprotokolle aufgeführt:
+
+![Logische Position von Diagnoseprotokollen](./media/monitoring-overview-of-diagnostic-logs/Diagnostics_Logs_Actions.png)
+
 
 * Diagnoseprotokolle können zur Überwachung oder manuellen Überprüfung in einem [**Speicherkonto**](monitoring-archive-diagnostic-logs.md) gespeichert werden. Mithilfe der **Diagnoseeinstellungen**können Sie eine Aufbewahrungsdauer (in Tagen) angeben.
 * [Sie können Diagnoseprotokolle zur Erfassung durch einen Drittanbieterdienst oder durch eine benutzerdefinierte Analyselösung wie Power BI an **Event Hubs**](monitoring-stream-diagnostic-logs-to-event-hubs.md) streamen.
 * Diagnoseprotokolle können mit [OMS Log Analytics](../log-analytics/log-analytics-azure-storage.md)
 
-Das Speicherkonto oder der Event Hub-Namespace muss sich nicht unter demselben Abonnement befinden, wie die Ressource, die Protokolle ausgibt, sofern der Benutzer, der die Einstellung konfiguriert, den entsprechenden RBAC-Zugriff auf beide Abonnements hat.
+Sie können ein Speicherkonto oder Event Hub-Namespace verwenden, das sich nicht im gleichen Abonnement befindet wie das, das Protokolle angibt. Der Benutzer, der die Einstellung konfiguriert, benötigt den entsprechenden RBAC-Zugriff auf beide Abonnements.
 
 ## <a name="diagnostic-settings"></a>Diagnoseeinstellungen
 Diagnoseprotokolle für computefremde Ressourcen werden mithilfe von Diagnoseeinstellungen konfiguriert. **Diagnoseeinstellungen** für ein Ressourcensteuerelement können Sie Folgendes festlegen:
 
 * Wohin Diagnoseprotokolle gesendet werden sollen (Speicherkonto, Event Hubs und/oder OMS Log Analytics)
 * Welche Protokollkategorien gesendet werden sollen
-* Wie lange die einzelnen Protokollkategorien in einem Speicherkonto aufbewahrt werden sollen. Bei Angabe einer Aufbewahrungsdauer von null Tagen werden die Protokolle dauerhaft aufbewahrt. Andernfalls kann dieser Wert zwischen 1 und 2147483647 liegen. Wenn Aufbewahrungsrichtlinien festgelegt werden, aber das Speichern von Protokollen in einem Speicherkonto deaktiviert ist (etwa, wenn nur die Event Hubs- oder die OMS-Option aktiviert ist), werden die Aufbewahrungsrichtlinien ignoriert. Aufbewahrungsrichtlinien werden pro Tag angewendet, sodass Protokolle am Ende eines Tages (UTC) ab dem Tag, der nun außerhalb der Aufbewahrungsrichtlinie liegt, gelöscht werden. Beispiel: Wenn Sie eine Aufbewahrungsrichtlinie für einen Tag verwenden, werden heute am Anfang des Tages die Protokolle von vorgestern gelöscht.
+* Wie lange die einzelnen Protokollkategorien in einem Speicherkonto beibehalten werden sollen
+    - Wenn für die Beibehaltungsdauer&0; Tage festgelegt sind, bedeutet dies, dass Protokolle unbegrenzt beibehalten werden. Andernfalls kann als Wert die Anzahl von Tagen (1 bis 2.147.483.647) festgelegt werden.
+    - Wenn Aufbewahrungsrichtlinien festgelegt werden, aber das Speichern von Protokollen in einem Speicherkonto deaktiviert ist (etwa, wenn nur die Event Hubs- oder die OMS-Option aktiviert ist), werden die Aufbewahrungsrichtlinien ignoriert.
+    - Aufbewahrungsrichtlinien werden pro Tag angewendet, sodass Protokolle am Ende eines Tages (UTC) ab dem Tag, der nun außerhalb der Aufbewahrungsrichtlinie liegt, gelöscht werden. Beispiel: Wenn Sie eine Aufbewahrungsrichtlinie für einen Tag verwenden, werden heute am Anfang des Tages die Protokolle von vorgestern gelöscht.
 
 Diese Einstellungen können für eine Ressource ganz einfach über das Blatt „Diagnose“ im Azure-Portal, mithilfe von Azure PowerShell oder CLI-Befehlen oder über die [Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn931943.aspx) konfiguriert werden.
 
@@ -141,13 +155,13 @@ Sie können diese Parameter miteinander kombinieren, um mehrere Ausgabeoptionen 
 Informationen zum Ändern der Diagnoseeinstellungen mithilfe der Azure Monitor-REST-API finden Sie in [diesem Dokument](https://msdn.microsoft.com/library/azure/dn931931.aspx).
 
 ## <a name="manage-diagnostic-settings-in-the-portal"></a>Verwalten von Diagnoseeinstellungen im Portal
-Um sicherzustellen, dass all Ihre Ressourcen korrekt mit den Diagnoseeinstellungen eingerichtet wurden, können Sie im Portal zum Blatt **Überwachen** navigieren und das Blatt **Diagnoseprotokolle** öffnen.
+Stellen Sie sicher, dass für alle Ihre Ressourcen Diagnoseeinstellungen festgelegt sind. Navigieren Sie im Portal zum Blatt **Überwachung**, und öffnen Sie das Blatt **Diagnoseprotokolle**.
 
 ![Das Blatt „Diagnoseprotokolle“ im Portal](./media/monitoring-overview-of-diagnostic-logs/manage-portal-nav.png)
 
 Möglicherweise müssen Sie auf „Weitere Dienste“ klicken, um das Blatt „Überwachung“ zu finden.
 
-Auf diesem Blatt können Sie alle Ressourcen anzeigen und filtern, die Diagnoseprotokolle unterstützen, um festzustellen, ob die Diagnose für sie aktiviert ist und in welchem Speicherkonto, Event Hub und/oder Log Analytics-Arbeitsbereich diese Protokolle eingehen.
+Auf diesem Blatt können Sie alle Ressourcen anzeigen und filtern, die Diagnoseprotokolle unterstützen, um zu ermitteln, ob die Diagnose dafür aktiviert ist. Sie können auch überprüfen, an welches Speicherkonto, welchen Event Hub und welchen Log Analytics-Arbeitsbereich diese Protokolle übertragen werden.
 
 ![Ergebnisse auf dem Blatt „Diagnoseprotokolle“ im Portal](./media/monitoring-overview-of-diagnostic-logs/manage-portal-blade.png)
 
@@ -160,14 +174,14 @@ Durch Klicken auf eine Ressource werden alle Protokolle angezeigt, die im Speich
 >
 >
 
-Wenn Sie auf den Link für **Diagnoseeinstellungen** klicken, wird das Blatt „Diagnoseeinstellungen“ geöffnet, auf dem Sie die Diagnoseeinstellungen für die ausgewählte Ressource aktivieren, deaktivieren oder ändern können.
+Wenn Sie auf den Link für **Diagnoseeinstellungen** klicken, wird das Blatt „Diagnoseeinstellungen“ angezeigt, auf dem Sie die Diagnoseeinstellungen für die ausgewählte Ressource aktivieren, deaktivieren oder ändern können.
 
 ## <a name="supported-services-and-schema-for-diagnostic-logs"></a>Unterstützte Dienste und Schema für Diagnoseprotokolle
-Das Schema für Diagnoseprotokolle variiert abhängig von der Ressource und der Protokollkategorie. Im Anschluss finden Sie die unterstützten Dienste und das zugehörige Schema:
+Das Schema für Diagnoseprotokolle variiert abhängig von der Ressource und der Protokollkategorie.   
 
 | Dienst | Schema und Dokumente |
 | --- | --- |
-| Lastenausgleichsmodul |[Protokollanalysen für den Azure-Lastenausgleich (Vorschau)](../load-balancer/load-balancer-monitor-log.md) |
+| Lastenausgleichsmodul |[Log Analytics für den Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md) |
 | Netzwerksicherheitsgruppen |[Protokollanalysen für Netzwerksicherheitsgruppen (NSGs)](../virtual-network/virtual-network-nsg-manage-log.md) |
 | Anwendungsgateways |[Diagnoseprotokollierung für Application Gateway](../application-gateway/application-gateway-diagnostics.md) |
 | Schlüsseltresor |[Azure-Schlüsseltresor-Protokollierung](../key-vault/key-vault-logging.md) |
@@ -211,7 +225,8 @@ Das Schema für Diagnoseprotokolle variiert abhängig von der Ressource und der 
 |Microsoft.StreamAnalytics/streamingjobs|Erstellen|Erstellen|
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * [Streamen von Diagnoseprotokollen an **Event Hubs**](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 * [Ändern der Diagnoseeinstellungen mithilfe der Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn931931.aspx)
-* [Analysieren der Protokolle mit OMS Log Analytics](../log-analytics/log-analytics-azure-storage.md)
+* [Analysieren von Protokollen aus Azure Storage mit Log Analytics](../log-analytics/log-analytics-azure-storage.md)
 

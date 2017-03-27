@@ -15,19 +15,19 @@ ms.workload: infrastructure-services
 ms.date: 10/24/2016
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: ca52a8cfdc4262f55a1fed439f29631966211a00
-ms.openlocfilehash: c605b2f0b49fcc26955e73c931192ada5e407525
-ms.lasthandoff: 01/31/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 93640e208c99db41d922399d42c80622022287eb
+ms.lasthandoff: 03/09/2017
 
 ---
 
 # <a name="log-analytics-for-azure-load-balancer"></a>Protokollanalysen für den Azure-Lastenausgleich
 
-Sie können in Azure verschiedene Protokolltypen verwenden, um den Lastenausgleich zu verwalten und eventuelle Fehler zu beheben. Auf einige dieser Protokolle kann über das Portal zugegriffen werden. Alle Protokolle können aus einem Azure-Blobspeicher extrahiert und in anderen Tools wie Excel und PowerBI angezeigt werden. In der unten stehenden Liste finden Sie weitere Informationen über die verschiedenen Typen von Protokollen.
+Sie können in Azure verschiedene Protokolltypen verwenden, um den Lastenausgleich zu verwalten und eventuelle Fehler zu beheben. Auf einige dieser Protokolle kann über das Portal zugegriffen werden. Alle Protokolle können aus Azure Blob Storage extrahiert und in anderen Tools wie Excel und PowerBI angezeigt werden. In der unten stehenden Liste finden Sie weitere Informationen über die verschiedenen Typen von Protokollen.
 
 * **Überwachungsprotokolle:** Sie können [Azure-Überwachungsprotokolle](../monitoring-and-diagnostics/insights-debugging-with-events.md) (ehemals Betriebsprotokolle) verwenden, um alle Vorgänge, die an Ihre Azure-Abonnements übermittelt werden, sowie deren Status anzuzeigen. Überwachungsprotokolle sind standardmäßig aktiviert und können im Azure-Portal angezeigt werden.
-* **Warnereignisprotokolle** : Verwenden Sie dieses Protokoll, um die Warnungen anzuzeigen, die für den Lastenausgleich ausgelöst wurden. Der Status des Lastenausgleichs wird alle fünf Minuten erfasst. Dieses Protokoll wird nur geschrieben, wenn ein Warnereignis für den Lastenausgleich ausgelöst wird.
-* **Integritätstestprotokolle** : Verwenden Sie dieses Protokoll, um den Status von Integritätstests abzurufen und zu überprüfen, wie viele Instanzen im Back-End des Lastenausgleichs online sind und wie viel Prozent der virtuellen Computer Netzwerkdatenverkehr aus dem Lastenausgleich empfangen. Dieses Protokoll wird bei Ereignisänderungen des Teststatus geschrieben.
+* **Warnereignisprotokolle** : Verwenden Sie dieses Protokoll, um Warnungen anzuzeigen, die vom Lastenausgleich ausgelöst wurden. Der Status des Lastenausgleichs wird alle fünf Minuten erfasst. Dieses Protokoll wird nur geschrieben, wenn ein Warnereignis für den Lastenausgleich ausgelöst wird.
+* **Integritätstestprotokolle**: Verwenden Sie dieses Protokoll zum Anzeigen von Problemen, die vom Integritätstest erkannt wurden, z.B. die Anzahl der Instanzen in Ihrem Back-End-Pool, die aufgrund von Integritätstestfehlern keine Anforderungen vom Lastenausgleich empfangen. In dieses Protokoll wird geschrieben, wenn sich der Integritätsteststatus ändert.
 
 > [!IMPORTANT]
 > Die Protokollanalyse funktioniert derzeit nur für Lastenausgleichsmodule mit Internetzugriff. Protokolle sind nur für Ressourcen verfügbar, die im Ressourcen-Manager-Bereitstellungsmodell bereitgestellt werden. Sie können Protokolle nicht für Ressourcen im klassischen Bereitstellungsmodell verwenden. Weitere Informationen zu diesen Bereitstellungsmodellen finden Sie unter [Grundlegendes zur Bereitstellung über Resource Manager im Vergleich zur klassischen Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md).
@@ -50,7 +50,8 @@ Melden Sie sich beim [Azure-Portal](http://portal.azure.com)an. Wenn Sie noch ni
 
 5. Wählen Sie im Bereich **Diagnose** unter **Status** die Option **Ein** aus.
 6. Klicken Sie auf **Speicherkonto**.
-7. Wählen Sie unter **PROTOKOLLE** ein vorhandenes Speicherkonto aus, oder erstellen Sie ein neues. Legen Sie mithilfe des Schiebereglers fest, wie lange Ereignisdaten im Ereignisprotokoll gespeichert werden sollen (in Tagen). 8. Klicken Sie auf **Speichern**.
+7. Wählen Sie unter **PROTOKOLLE** ein vorhandenes Speicherkonto aus, oder erstellen Sie ein neues. Legen Sie mithilfe des Schiebereglers in Tagen fest, wie lange Ereignisdaten im Ereignisprotokoll gespeichert werden sollen. 
+8. Klicken Sie auf **Speichern**.
 
     ![Portal – Diagnoseprotokolle](./media/load-balancer-monitor-log/load-balancer-diagnostics.png)
 

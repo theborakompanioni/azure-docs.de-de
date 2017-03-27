@@ -109,11 +109,11 @@
 #### [Clusternetzwerkmuster](service-fabric-patterns-networking.md)
 #### [Knotentypen und VM-Skalierungsgruppen](service-fabric-cluster-nodetypes.md)
 #### [Skalieren eines Clusters](service-fabric-cluster-scale-up-down.md)
+#### [Programmgesteuertes Skalieren eines Clusters](service-fabric-cluster-programmatic-scaling.md)
 #### [Upgraden eines Clusters](service-fabric-cluster-upgrade.md)
 #### [Löschen eines Clusters](service-fabric-cluster-delete.md)
 #### [Zugriffssteuerung](service-fabric-cluster-security-roles.md)
 #### [Konfigurieren eines Clusters](service-fabric-cluster-fabric-settings.md)
-#### [Sichern eines Clusters mithilfe von Zertifikaten](service-fabric-windows-cluster-x509-security.md)
 #### [Hinzufügen oder Ausführen eines Rollovers für Clusterzertifikate](service-fabric-cluster-security-update-certs-azure.md) 
 #### [Kostenloses Testen eines Partyclusters](http://aka.ms/tryservicefabric)
 
@@ -131,7 +131,8 @@
 
 ## Verwalten des Anwendungslebenszyklus
 ### [Übersicht](service-fabric-application-lifecycle.md)
-### [Einrichten von Continuous Integration](service-fabric-set-up-continuous-integration.md)
+### [Einrichten von Continuous Integration mit VSTS](service-fabric-set-up-continuous-integration.md)
+### [Bereitstellen Ihrer Linux-Java-App mithilfe von Jenkins](service-fabric-cicd-your-linux-java-application-with-jenkins.md)
 ### [Grundlegendes zur ImageStoreConnectionString-Einstellung](service-fabric-image-store-connection-string.md)
 ### Bereitstellen oder Entfernen von Anwendungen
 #### [PowerShell](service-fabric-deploy-remove-applications.md)

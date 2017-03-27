@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: azure-government
-ms.date: 11/18/2016
+ms.date: 3/13/2017
 ms.author: ryansoc
 translationtype: Human Translation
-ms.sourcegitcommit: ca01baebd755e92aff1ef080af1fcd4606b9a2ec
-ms.openlocfilehash: 200caac4b480495b0bbb8f10cc89fdd73c42dbe2
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 146fcd9788bab55e4abd9e70dcfe25741f041d34
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -27,16 +28,18 @@ Ausführliche Informationen zu diesem Dienst und seiner Verwendungsweise finden 
 ### <a name="variations"></a>Variationen
 Die Produkte (VMs) sind in Azure Government verfügbar:
 
-| Produkte (VMs) | US Gov VA | US Gov IA |
-| --- | --- | --- |
-| A0–A7 |J |J |
-| D-Serie |J |N |
-| Dv2-Serie |J |J |
-| DS-Serie |J |N |
-| F-Serie |J |J |
-| FS-Serie |N |N |
-| G-Serie |J |N |
-| GS-Serie |J |N |
+| Produkte (VMs) | US Gov VA | US Gov IA | US DoD, Osten | US DoD, Westen
+| --- | --- | --- |--- |--- |
+| A0–A7 |J |J |J |J |J |
+| Av2 |J |J |J |J |J |
+| D-Serie |J |N |N |N |
+| Dv2-Serie |J |J |J |J |
+| DS-Serie |J |N |N |N |
+| DSv2-Serie |J |N |J |J |
+| F-Serie |J |J |J |J |
+| FS-Serie |J |N |J |J |
+| G-Serie |J |N |N |N |
+| GS-Serie |J |N |N |N |
 
 ### <a name="data-considerations"></a>Überlegungen zu Daten
 Die folgenden Informationen geben Aufschluss über die Abgrenzung von Azure Government für Azure Virtual Machines:
@@ -47,10 +50,5 @@ Die folgenden Informationen geben Aufschluss über die Abgrenzung von Azure Gove
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen und Updates erhalten Sie, indem Sie den <a href="https://blogs.msdn.microsoft.com/azuregov/">Microsoft Azure Government-Blog</a> abonnieren.
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

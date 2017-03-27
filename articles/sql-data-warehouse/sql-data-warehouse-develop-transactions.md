@@ -15,8 +15,9 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: dde5397405b64d394cdff9c69c05a565c5427f56
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: a0582c71e786ae5365e39a5f161b63e946435b2e
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -51,7 +52,7 @@ Für die Tabelle unten gelten die folgenden Annahmen:
 
 Die Obergrenze für die Transaktionsgröße wird pro Transaktion oder Vorgang angewendet. Sie wird nicht übergreifend für alle gleichzeitigen Transaktionen angewendet. Daher ist es für jede Transaktion zulässig, diese Menge an Daten in das Protokoll zu schreiben. 
 
-Informationen zum Optimieren und Minimieren der Datenmenge, die in das Protokoll geschrieben wird, finden Sie im Artikel [Bewährte Methoden für Transaktionen][Bewährte Methoden für Transaktionen].
+Informationen zum Optimieren und Reduzieren der Datenmenge, die in das Protokoll geschrieben wird, finden Sie im Artikel [Bewährte Methoden für Transaktionen][Transactions best practices].
 
 > [!WARNING]
 > Die maximale Transaktionsgröße kann nur für Tabellen mit HASH- oder ROUND_ROBIN-Verteilung erreicht werden, bei denen die Daten gleichmäßig verteilt werden. Wenn bei der Transaktion Daten auf verzerrte Weise in die Verteilungen geschrieben werden, wird die Obergrenze wahrscheinlich vor der maximalen Transaktionsgröße erreicht.
@@ -175,23 +176,18 @@ Dies sind:
 * Keine Unterstützung für DDL wie z.B. `CREATE TABLE` innerhalb von benutzerdefinierten Transaktionen
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zum Optimieren von Transaktionen finden Sie unter [Bewährte Methoden für Transaktionen][Bewährte Methoden für Transaktionen].  Informationen zu weiteren bewährten Methoden für SQL Data Warehouse finden Sie unter [Bewährte Methoden für SQL Data Warehouse][Bewährte Methoden für SQL Data Warehouse].
+Weitere Informationen zum Optimieren von Transaktionen finden Sie unter [Bewährte Methoden für Transaktionen][Transactions best practices].  Informationen zu weiteren bewährten Methoden für SQL Data Warehouse finden Sie unter [Bewährte Methoden für SQL Data Warehouse][SQL Data Warehouse best practices].
 
 <!--Image references-->
 
 <!--Article references-->
-[DWU]: ./sql-data-warehouse-overview-what-is.md#data-warehouse-units
-[Entwicklungsübersicht]: ./sql-data-warehouse-overview-develop.md
-[Bewährte Methoden für Transaktionen]: ./sql-data-warehouse-develop-best-practices-transactions.md
-[Bewährte Methoden für SQL Data Warehouse]: ./sql-data-warehouse-best-practices.md
+[DWU]: ./sql-data-warehouse-overview-what-is.md
+[development overview]: ./sql-data-warehouse-overview-develop.md
+[Transactions best practices]: ./sql-data-warehouse-develop-best-practices-transactions.md
+[SQL Data Warehouse best practices]: ./sql-data-warehouse-best-practices.md
 [LABEL]: ./sql-data-warehouse-develop-label.md
 
 <!--MSDN references-->
 
 <!--Other Web references-->
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

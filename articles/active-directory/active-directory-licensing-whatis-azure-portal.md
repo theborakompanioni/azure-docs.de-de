@@ -18,44 +18,44 @@ ms.date: 02/27/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: f8b63e5831897d3a45298b0415bb2d6d44ab0de1
-ms.openlocfilehash: 0591b536a9be901085074f4b49fc65b097382835
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: b5153d2339f688b22796789d74cb9117985a43d2
+ms.lasthandoff: 03/09/2017
 
 
 ---
 
 # <a name="group-based-licensing-basics-in-azure-active-directory"></a>Grundlagen der gruppenbasierten Lizenzierung in Azure Active Directory
 
-Microsoft-Clouddienste wie Office 365, Enterprise Mobility + Security, Dynamics CRM und andere ähnliche Produkte erfordern Lizenzen, die jedem Benutzer zugewiesen werden müssen, der Zugriff auf diese Dienste benötigt. Die Lizenzverwaltung führen Administratoren über eines der Verwaltungsportale (Office, Azure) und PowerShell-Cmdlets durch. Der Lizenzzuweisungsstatus wird in Azure Active Directory gespeichert, der zugrunde liegenden Infrastruktur für die Identitätsverwaltung aller Microsoft-Clouddienste.
+Microsoft-Clouddienste wie Office 365, Enterprise Mobility + Security, Dynamics CRM und andere ähnliche Produkte erfordern Lizenzen. Diese Lizenzen werden jedem Benutzer zugewiesen, der Zugriff auf diese Dienste benötigt. Administratoren verwalten Lizenzen über eines der Verwaltungsportale (Office, Azure) und PowerShell-Cmdlets. Azure Active Directory (Azure AD) ist die zugrunde liegende Infrastruktur, die die Identitätsverwaltung aller Microsoft-Clouddienste unterstützt. Azure AD speichert Informationen zum Lizenzzuweisungsstatus für Benutzer.
 
-Bislang konnten Lizenzen nur auf Ebene einzelner Benutzer zugewiesen werden, was die umfassende Verwaltung für unsere Kunden erschweren kann. Um Benutzerlizenzen basierend auf Organisationsänderungen zu vergeben oder zu entziehen, wenn beispielsweise Benutzer der Organisation oder Abteilung beitreten oder diese verlassen, muss ein Administrator häufig ein komplexes PowerShell-Skript schreiben, um einzelne Aufrufe an den Clouddienst zu richten.
+Bislang konnten Lizenzen nur auf Ebene einzelner Benutzer zugewiesen werden, was die umfassende Verwaltung erschweren kann. Um Benutzerlizenzen basierend auf Organisationsänderungen zu vergeben oder zu entziehen, wenn beispielsweise Benutzer der Organisation oder Abteilung beitreten oder diese verlassen, muss ein Administrator häufig ein komplexes PowerShell-Skript schreiben. Dieses Skript richtet einzelne Aufrufe an den Clouddienst.
 
-Um diese Aufgaben zu vereinfachen, haben wir in das Azure AD-Lizenzverwaltungssystem ein neues Feature eingeführt, die gruppenbasierte Lizenzierung. Es ist nun möglich, einer Gruppe eine oder mehrere Produktlizenzen zuzuweisen. Azure AD stellt sicher, dass die Lizenzen allen Mitgliedern der Gruppe zugewiesen werden. Alle neuen Mitglieder, die der Gruppe beitreten, werden die entsprechenden Lizenzen zugewiesen. Wenn sie die Gruppe später verlassen sollten, werden diese Lizenzen entzogen. Dadurch ist keine automatisierte Lizenzverwaltung über PowerShell mehr erforderlich, um Änderungen in der Organisations- und Abteilungsstruktur benutzerbezogen widerzuspiegeln.
+Um diese Probleme zu beheben, enthält Azure AD jetzt die gruppenbasierte Lizenzierung. Sie können einer Gruppe eine oder mehrere Produktlizenzen zuweisen. Azure AD stellt sicher, dass die Lizenzen allen Mitgliedern der Gruppe zugewiesen werden. Allen neuen Mitgliedern, die der Gruppe beitreten, werden die entsprechenden Lizenzen zugewiesen. Wenn sie die Gruppe verlassen, werden diese Lizenzen entfernt. Dadurch ist keine automatisierte Lizenzverwaltung über PowerShell mehr erforderlich, um Änderungen in der Organisations- und Abteilungsstruktur benutzerbezogen widerzuspiegeln.
 
 ## <a name="features"></a>Features
 
-Es folgen die Hauptmerkmale der gruppenbasierten Lizenzierung:
+Hier die Hauptmerkmale der gruppenbasierten Lizenzierung:
 
-- Lizenzen können beliebigen Sicherheitsgruppen in Azure AD zugewiesen werden. Sicherheitsgruppen können lokal mithilfe von Azure AD Connect synchronisiert, in Azure AD (auch als reine Cloudgruppen) direkt erstellt oder automatisch über das Azure AD-Feature „Dynamische Gruppe“ erstellt werden.
+- Lizenzen können beliebigen Sicherheitsgruppen in Azure AD zugewiesen werden. Sicherheitsgruppen können mithilfe von Azure AD Connect lokal synchronisiert werden. Sie können Sicherheitsgruppen auch direkt in Azure AD Connect (auch als reine Cloudgruppen bezeichnet) oder automatisch über das Azure AD-Feature „Dynamische Gruppe“ erstellen.
 
-- Wenn eine Produktlizenz einer Gruppe zugewiesen wird, kann der Administrator einen oder mehrere Servicepläne im Produkt deaktivieren. Dies erfolgt in der Regel, wenn die Organisation noch nicht bereit ist, mit der Nutzung eines im Produkt enthaltenen Diensts zu beginnen. Der Administrator möchte beispielsweise das Produkt Office 365 E3 einer Abteilung zuweisen, aber den Yammer Enterprise-Dienst vorübergehend deaktivieren.
+- Wenn eine Produktlizenz einer Gruppe zugewiesen wird, kann der Administrator einen oder mehrere Servicepläne im Produkt deaktivieren. In der Regel erfolgt dies, wenn die Organisation noch nicht für die Verwendung eines Dienstes in einem Produkt bereit ist. Beispielsweise könnte der Administrator Office 365 einer Abteilung zuweisen, aber den Yammer-Dienst vorübergehend deaktivieren.
 
-- Alle Microsoft-Clouddienste, die eine Lizenzierung auf Benutzerebene erfordern, werden unterstützt. Dazu zählen alle Office 365-Produkte, Enterprise Mobility + Security, Dynamics CRM usw.
+- Alle Microsoft-Clouddienste, die eine Lizenzierung auf Benutzerebene erfordern, werden unterstützt. Dazu zählen alle Office 365-Produkte, Enterprise Mobility + Security und Dynamics CRM.
 
-- Die gruppenbasierte Lizenzierung ist derzeit nur über [das Azure-Portal](https://portal.azure.com) verfügbar. Kunden, die in erster Linie andere Verwaltungsportale für die Benutzer- und Gruppenverwaltung nutzen, z.B. das Office 365-Portal, können dies weiterhin tun. Sie müssen jedoch das Azure-Portal zum Verwalten von Lizenzen auf Gruppenebene nutzen.
+- Die gruppenbasierte Lizenzierung ist derzeit nur über [das Azure-Portal](https://portal.azure.com) verfügbar. Wenn Sie in erster Linie andere Verwaltungsportale für die Benutzer- und Gruppenverwaltung nutzen, z.B. das Office 365-Portal, können Sie dies weiterhin tun. Jedoch sollten Sie das Azure-Portal zum Verwalten von Lizenzen auf Gruppenebene verwenden.
 
-- Azure AD verwaltet Lizenzänderungen, die sich aus Änderungen an der Gruppenmitgliedschaft ergeben, automatisch. In der Regel erfolgt bei einem Benutzer, der einer Gruppe beitritt oder diese verlässt, eine Änderung des Lizenzstatus binnen Minuten nach der Mitgliedschaftsänderung.
+- Azure AD verwaltet Lizenzänderungen, die sich aus Änderungen an der Gruppenmitgliedschaft ergeben, automatisch. In der Regel erfolgen Änderungen des Lizenzstatus binnen Minuten nach einer Mitgliedschaftsänderung.
 
-- Ein Benutzer kann Mitglied mehrerer Gruppen mit angegebenen Lizenzrichtlinien sein und auch über Lizenzen verfügen, die im außerhalb von Gruppen zugewiesen wurden. Der resultierende Benutzerstatus ist eine Kombination aller zugewiesenen Produkt- und Dienstlizenzen.
+- Ein Benutzer kann Mitglied mehrerer Gruppen mit angegebenen Lizenzrichtlinien sein. Ein Benutzer kann auch über Lizenzen verfügen, die außerhalb von Gruppen zugewiesen wurden. Der resultierende Benutzerstatus ist eine Kombination aller zugewiesenen Produkt- und Dienstlizenzen.
 
-- In einigen Fällen können einem Benutzer keine Lizenzen zugewiesen werden. Gründe sind das Fehlen verfügbarer Lizenzen im Mandanten oder in Konflikt stehende Dienste, die gleichzeitig zugewiesen wurden. Administratoren haben Zugriff auf Informationen zu Benutzern, für die Azure AD Gruppenlizenzen nicht vollständig verarbeiten konnte. Sie können anhand dieser Informationen Korrekturmaßnahmen vornehmen.
+- In manchen Fällen können Benutzern keine Lizenzen zugewiesen werden. Mögliche Gründe sind das Fehlen verfügbarer Lizenzen im Mandanten oder in Konflikt stehende Dienste, die gleichzeitig zugewiesen wurden. Administratoren haben Zugriff auf Informationen zu Benutzern, für die Azure AD Gruppenlizenzen nicht vollständig verarbeiten konnte. Sie können anhand dieser Informationen Korrekturmaßnahmen vornehmen.
 
-- Während der öffentlichen Vorschauphase ist im Mandanten ein kostenpflichtiges oder Testabonnement für Azure AD Basic oder höher erforderlich, um die gruppenbasierte Lizenzverwaltung nutzen zu können. Außerdem muss jeder Benutzer, dem Lizenzen über Gruppen zugewiesen werden, über die kostenpflichtige Azure AD-Editionslizenz verfügen.
+- Während der öffentlichen Vorschauphase ist im Mandanten ein kostenpflichtiges oder Testabonnement für Azure AD Basic oder Premium Edition erforderlich, um die gruppenbasierte Lizenzverwaltung nutzen zu können. Außerdem muss jeder Benutzer, dem Lizenzen über Gruppen zugewiesen werden, über die kostenpflichtige Azure AD-Edition-Lizenz verfügen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu anderen Szenarien für die gruppenbasierte Lizenzverwaltung finden Sie in folgenden Artikeln.
+Weitere Informationen zu anderen Szenarien für die gruppenbasierte Lizenzverwaltung finden Sie unter:
 
 * [Zuweisen von Lizenzen zu einer Gruppe in Azure Active Directory](active-directory-licensing-group-assignment-azure-portal.md)
 * [Bestimmen und Beheben von Lizenzproblemen für eine Gruppe in Azure Active Directory](active-directory-licensing-group-problem-resolution-azure-portal.md)

@@ -16,14 +16,14 @@ ms.workload: data-management
 ms.date: 05/27/2016
 ms.author: srinia
 translationtype: Human Translation
-ms.sourcegitcommit: 6453cca9f876e6c363fbed463263c0f9684a3e70
-ms.openlocfilehash: 11b1a6dd9ecaaa3abaf088b1fed73aae783252f5
-ms.lasthandoff: 02/08/2017
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: a3acd5f4ec63061254b550737ae9fb4d39b343c6
+ms.lasthandoff: 03/10/2017
 
 
 ---
 # <a name="monitor-and-manage-an-elastic-pool-with-transact-sql"></a>Überwachen und Verwalten eines elastischen Pools per Transact-SQL
-In diesem Thema wird das Verwalten skalierbarer [Pools für elastische Datenbanken](sql-database-elastic-pool.md) mit Transact-SQL erläutert.  Ein Azure-Pool für elastische Datenbanken kann auch mit dem [Azure-Portal](https://portal.azure.com/), mit [PowerShell](sql-database-elastic-pool-manage-powershell.md), der REST-API oder mithilfe von [C#][Erstellen und Verwalten eines Pools für elastische Datenbanken mithilfe von C#](sql-database-elastic-pool-manage-csharp.md) erstellt und verwaltet werden. Mithilfe von [Transact-SQL](sql-database-elastic-pool-manage-tsql.md) können Sie Datenbanken auch erstellen und in und aus Pools für elastische Datenbanken verschieben.
+In diesem Thema wird das Verwalten skalierbarer [Pools für elastische Datenbanken](sql-database-elastic-pool.md) mit Transact-SQL erläutert.  Sie können einen Azure-Pool für elastische Datenbanken auch mit dem [Azure-Portal](https://portal.azure.com/), mit [PowerShell](sql-database-elastic-pool-manage-powershell.md), der REST-API oder [C#](sql-database-elastic-pool-manage-csharp.md) erstellen und verwalten. Mithilfe von [Transact-SQL](sql-database-elastic-pool-manage-tsql.md) können Sie Datenbanken auch erstellen und in und aus Pools für elastische Datenbanken verschieben.
 
 
 Verwenden Sie die Befehle [Create Database (Azure SQL-Datenbank)](https://msdn.microsoft.com/library/dn268335.aspx) und [Alter Database(Azure SQL-Datenbank)](https://msdn.microsoft.com/library/mt574871.aspx), um Datenbanken zu erstellen und in elastische Pools bzw. aus elastischen Pools zu verschieben. Der elastische Pool muss vorhanden sein, bevor Sie diese Befehle verwenden können. Diese Befehle wirken sich nur auf Datenbanken aus. Die Erstellung eines neuen Pools und die Einstellung der Pooleigenschaften (z.B. min. und max. eDTUs) kann mit T-SQL-Befehlen nicht geändert werden.

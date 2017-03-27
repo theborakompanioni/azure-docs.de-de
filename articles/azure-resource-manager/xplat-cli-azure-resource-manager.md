@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 08/22/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 0782000e87bed0d881be5238c1b91f89a970682c
-ms.openlocfilehash: 7fcf16ac835089a1c4127fd34264f2cf7cb098ac
-ms.lasthandoff: 01/14/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: bd6f81ee12a7bb655166cf059236175bfb9994e5
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -33,7 +33,7 @@ ms.lasthandoff: 01/14/2017
 Die Azure-Befehlszeilenschnittstelle (Azure Command-Line Interface, Azure CLI) ist eines von mehreren Tools zum Bereitstellen und Verwalten von Ressourcen mit Resource Manager. In diesem Artikel werden allgemeine Methoden vorgestellt, mit denen Sie Azure-Ressourcen und -Ressourcengruppen mithilfe der Azure-Befehlszeilenschnittstelle im Resource Manager-Modus verwalten können. Information zum Bereitstellen von Ressourcen mithilfe der Befehlszeilenschnittstelle finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-CLI](resource-group-template-deploy-cli.md). Hintergrundinformationen zu Azure-Ressourcen und Resource Manager finden Sie in der [Übersicht über Azure Resource Manager](resource-group-overview.md).
 
 > [!NOTE]
-> Wenn Sie Azure-Ressourcen mit der Azure-Befehlszeilenschnittstelle verwalten möchten, müssen Sie die [Azure-Befehlszeilenschnittstelle installieren](../xplat-cli-install.md) und sich mithilfe des `azure login`-Befehls [bei Azure anmelden](../xplat-cli-connect.md). Vergewissern Sie sich, dass sich die Befehlszeilenschnittstelle im Resource Manager-Modus befindet, indem Sie `azure config mode arm` ausführen. Damit sind dann alle nötigen Vorbereitungen abgeschlossen.
+> Wenn Sie Azure-Ressourcen mit der Azure-Befehlszeilenschnittstelle verwalten möchten, müssen Sie die [Azure-Befehlszeilenschnittstelle installieren](../cli-install-nodejs.md) und sich mithilfe des `azure login`-Befehls [bei Azure anmelden](../xplat-cli-connect.md). Vergewissern Sie sich, dass sich die Befehlszeilenschnittstelle im Resource Manager-Modus befindet, indem Sie `azure config mode arm` ausführen. Damit sind dann alle nötigen Vorbereitungen abgeschlossen.
 > 
 > 
 

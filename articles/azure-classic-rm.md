@@ -17,8 +17,9 @@ ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: telmos
 translationtype: Human Translation
-ms.sourcegitcommit: 109ca4a4672d21969096af26a094390673de25d9
-ms.openlocfilehash: 0843651c8fcddbc171bb485ce9c96b53b170881d
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: f6df10ce5edefbff24011fc20cad8ae927ba5125
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -61,15 +62,10 @@ Mit [PowerShell](/powershell/azureps-cmdlets-docs) können Sie eine Befehlszeile
 * **PowerShell-Cmdlets mit einer Azure-Ressourcen-Manager-Vorlage:** Sie können PowerShell zum Erstellen von Azure-Ressourcen über eine Azure-Ressourcen-Manager-Vorlage verwenden. Vorlagen können gespeichert und versioniert werden. Weitere Informationen finden Sie im Artikel [Bereitstellen einer Anwendung mit einer Azure-Ressourcen-Manager-Vorlage](resource-group-template-deploy.md) . Es gibt mehrere [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/) für gängige Lösungen, die heruntergeladen und geändert werden können.
 
 ## <a name="cli"></a>Befehlszeilenschnittstelle (CLI)
-Sie können Azure-Ressourcen auf Windows-, OS X- oder Linux-Computern über die Befehlszeilenschnittstelle erstellen und konfigurieren.  Lesen Sie den Artikel [Installieren der Azure-Befehlszeilenschnittstelle](xplat-cli-install.md) , um die Befehlszeilenschnittstelle auf dem Betriebssystem Ihrer Wahl zu installieren. Wie in PowerShell gibt es verschiedene Befehle, die abhängig davon verwendet werden müssen, ob Sie Ressourcen mit dem [Resource Manager-Bereitstellungsmodell](xplat-cli-azure-resource-manager.md) oder mit dem [klassischen Bereitstellungsmodell (Dienstverwaltung)](virtual-machines/virtual-machines-linux-classic-manage-visual-studio.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json) erstellen.
+Sie können Azure-Ressourcen auf Windows-, OS X- oder Linux-Computern über die Befehlszeilenschnittstelle erstellen und konfigurieren.  Lesen Sie den Artikel [Installieren der Azure-Befehlszeilenschnittstelle](cli-install-nodejs.md) , um die Befehlszeilenschnittstelle auf dem Betriebssystem Ihrer Wahl zu installieren. Wie in PowerShell gibt es verschiedene Befehle, die abhängig davon verwendet werden müssen, ob Sie Ressourcen mit dem [Resource Manager-Bereitstellungsmodell](xplat-cli-azure-resource-manager.md) oder mit dem [klassischen Bereitstellungsmodell (Dienstverwaltung)](virtual-machines/virtual-machines-linux-classic-manage-visual-studio.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json) erstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über [Resource Manager](azure-resource-manager/resource-group-overview.md).
 * Erlernen Sie das [Entwerfen von Vorlagen](best-practices-resource-manager-design-templates.md).
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

@@ -18,9 +18,9 @@ ms.date: 03/03/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: c11adbe77131d4e0337ccd926da03041042c3703
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 682ebb212f9056f3704a6de5dde8d3a35681108f
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -105,7 +105,7 @@ Die Verbindungszeichenfolge können Sie im Azure-Portal oder mithilfe von Azure-
 
 3. Klicken Sie auf dem Blatt **Bereitstellungsverlauf** auf die Bereitstellung, deren Name sich aus **microsoft-acs** und einem Bereitstellungsdatum zusammensetzt. Beispiel: microsoft-acs-201701310000.  
 
-4. Auf der Seite **Zusammenfassung** werden unter **Ausgaben** mehrere Clusterlinks bereitgestellt<provided></provided>. **SSHMaster0** stellt eine SSH-Verbindungszeichenfolge für den ersten Master in Ihrem Containerdienstcluster bereit. 
+4. Auf der Seite **Zusammenfassung** werden unter **Ausgaben** mehrere Clusterlinks bereitgestellt. **SSHMaster0** stellt eine SSH-Verbindungszeichenfolge für den ersten Master in Ihrem Containerdienstcluster bereit. 
 
 Wie bereits erwähnt kann der FQDN des Masters auch mithilfe von Azure-Tools ermittelt werden. Stellen Sie eine SSH-Verbindung mit dem Master her, und verwenden Sie dabei den FQDN des Masters sowie den Benutzernamen, den Sie bei der Clustererstellung angegeben haben. Beispiel:
 
@@ -122,3 +122,4 @@ Weitere Informationen finden Sie unter [Verbinden mit einem Azure Container Serv
 
 * [Informieren Sie sich ausführlicher](container-service-intro.md) über Azure Container Service.
 * Stellen Sie einen Azure Container Service-Cluster über das [Portal](container-service-deployment.md) oder mithilfe von [Azure CLI 2.0](container-service-create-acs-cluster-cli.md) bereit.
+

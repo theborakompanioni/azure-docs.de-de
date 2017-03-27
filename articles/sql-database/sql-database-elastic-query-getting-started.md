@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 05/23/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: cbd1c7e7d915e8a10d69c7a2f1679835dcee23b7
-ms.openlocfilehash: b64129b77385685b41aac55c52a34e9d0495124e
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 531fdbbeab09a67be9636b3a70eabbb4148f7400
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -122,15 +122,12 @@ Sie werden feststellen, dass die Abfrage Ergebnisse aus allen Shards aggregiert 
 
 Die Excel-Tabelle wird mit allen Zeilen aus der Tabelle **Customers** gefüllt, die in verschiedenen Shards gespeichert sind.
 
-## <a name="next-steps"></a>Nächste Schritte
 Sie können jetzt die leistungsstarken Funktionen von Excel zur Datenvisualisierung verwenden. Sie können die Verbindungszeichenfolge mit dem Servernamen, Datenbanknamen und den Anmeldeinformationen zur Verbindung der BI und der Datenintegrationstools mit der elastischen Abfragedatenbank verwenden. Stellen Sie sicher, dass SQL Server als Datenquelle für das Tool unterstützt wird. Sie können auf die elastische Abfragedatenbank und die externen Tabellen wie auf jede andere SQL Server-Datenbank und SQL Server-Tabelle verweisen, zu denen Sie mit dem Tool eine Verbindung herstellen würden.
 
 ### <a name="cost"></a>Kosten
 Es gibt keine zusätzlichen Gebühren für die Verwendung der Abfragefunktion für elastische Datenbanken.
 
 Preisinformationen finden Sie in der [SQL-Datenbank – Preisdetails](https://azure.microsoft.com/pricing/details/sql-database/).
-
-## <a name="next-steps"></a>Nächste Schritte
 
 ## <a name="next-steps"></a>Nächste Schritte
 

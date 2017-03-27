@@ -32,6 +32,7 @@
 ### [Überwachung von Zustand und Warnungen](azure-stack-monitor-health.md)
 ### [Verwalten von Netzwerkressourcen](azure-stack-viewing-public-ip-address-consumption-in-tp2.md)
 ### [Verwalten von Speicherressourcen](azure-stack-manage-storage-accounts.md)
+### [Verwalten von virtuellen Computern mit Windows Azure Pack](azure-stack-manage-windows-azure-pack.md)
 
 # Sicherheit und Compliance
 ## Anleitung
@@ -55,6 +56,8 @@
 #### [Bevor Sie beginnen](azure-stack-app-service-before-you-get-started.md)
 #### [Bereitstellen eines SQL-Ressourcenanbieters](azure-stack-app-service-deploy.md)
 #### [Hinzufügen von weiteren Web-Workerrollen](azure-stack-app-service-add-worker-roles.md)
+#### [Konfigurieren von Bereitstellungsquellen](azure-stack-app-service-configure-deployment-sources.md)
+#### [Aktivieren von FTP in App Service in Azure Stack](azure-stack-app-service-enable-ftp.md)
 ### Auffüllen des Marketplace
 #### [Marketplace-Übersicht](azure-stack-marketplace.md)
 #### [Herunterladen von Marketplace-Elementen](azure-stack-download-azure-marketplace-item.md)
@@ -84,7 +87,6 @@
 #### [Verwalten mit dem Portal](azure-stack-kv-manage-portal.md)
 #### [Verwalten mit PowerShell](azure-stack-kv-manage-powershell.md)
 ### Anleitung
-#### [Bereitstellen eines virtuellen Computers mit einem Kennwort](azure-stack-kv-deploy-vm-with-secret.md)
 #### [Erstellen eines virtuellen Computers mit einem Zertifikat](azure-stack-kv-push-secret-into-vm.md)
 #### [Key Vault-Beispiel-App](azure-stack-kv-sample-app.md)
 
@@ -110,6 +112,7 @@
 
 # Problembehandlung
 ## [Bekannte Probleme](azure-stack-troubleshooting.md)
+## [Diagnose in Azure Stack](azure-stack-diagnostics.md)
 
 # Ressourcen
 ## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStack)  

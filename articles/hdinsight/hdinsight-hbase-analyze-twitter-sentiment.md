@@ -8,16 +8,17 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 5c798ad3-a20d-4385-a463-f4f7705f9566
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 03/03/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: a62cd616f0abd59c83c834bf13b4ba8549a9c73e
-ms.openlocfilehash: dd47e9c8f5c440c72acb60877d556476fe187ddf
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 5fa91c0fb1858a46745ff50991b843530f0a5d23
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -34,11 +35,11 @@ Soziale Netzwerke sind einer der Hauptfaktoren für die Akzeptanz von Big Data. 
   * Analysieren der Stimmung dieser Tweets
   * Speichern der Stimmungsinformationen in HBase mithilfe des Microsoft HBase SDK
 * Die Azure Websites-Anwendung
-  
+
   * Grafisches Darstellen der Echtzeit-Statistikergebnisse auf Bing Maps mithilfe einer ASP.NET-Webanwendung Eine Visualisierung der Tweets sieht etwa so aus:
-    
+
     ![hdinsight.hbase.twitter.sentiment.bing.map][img-bing-map]
-    
+
     Sie können Tweets mit bestimmten Schlüsselwörtern abfragen, um abzuschätzen, ob die geäußerten Meinungen in den Tweets positiv, negativ oder neutral sind.
 
 Ein vollständiges Visual Studio-Lösungsbeispiel finden Sie auf GitHub: [Realtime social sentiment analysis app](https://github.com/maxluk/tweet-sentiment)(in englischer Sprache).
@@ -55,7 +56,7 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
     <tr><td>Clusterbenutzer-Kennwort</td><td>Das Benutzerkennwort für den Hadoop-Cluster.</td></tr>
     </table>
 
-* **Eine Workstation** mit installiertem Visual Studio 2013. [Installieren von Visual Studio](http://msdn.microsoft.com/library/e2h7fzkw.aspx)
+* **Eine Workstation** mit installiertem Visual Studio 2013/2015/2017. [Installieren von Visual Studio](http://msdn.microsoft.com/library/e2h7fzkw.aspx)
 
 ## <a name="create-a-twitter-application-id-and-secrets"></a>Erstellen einer Twitter-Anwendungs-ID und von Geheimschlüsseln
 Die Streaming-APIs von Twitter verwenden [OAuth](http://oauth.net/) , um Anforderungen zu autorisieren. Um OAuth zu verwenden, müssen Sie zunächst auf der Twitter-Entwicklerwebsite eine neue Anwendung erstellen.
@@ -64,14 +65,14 @@ Die Streaming-APIs von Twitter verwenden [OAuth](http://oauth.net/) , um Anforde
 
 1. Melden Sie sich bei [Twitter-Apps](https://apps.twitter.com/)an. Klicken Sie auf den Link **Registriere Dich jetzt** , wenn Sie noch kein Twitter-Konto haben.
 2. Klicken Sie auf **Create New App**.
-3. Geben Sie einen **Namen**, eine **Beschreibung** und eine **Website** ein. Der Name der Twitter-Anwendung muss eindeutig sein. Das Feld "Website" ist nicht zwingend erforderlich. Es muss keine gültige URL enthalten. 
+3. Geben Sie einen **Namen**, eine **Beschreibung** und eine **Website** ein. Der Name der Twitter-Anwendung muss eindeutig sein. Das Feld "Website" ist nicht zwingend erforderlich. Es muss keine gültige URL enthalten.
 4. Aktivieren Sie **Yes, I agree**, und klicken Sie dann auf **Create your Twitter application**.
-5. Klicken Sie auf die Registerkarte **Permissions** . Die Standardberechtigung ist **Read only**. Diese Berechtigung reicht für dieses Lernprogramm aus. 
+5. Klicken Sie auf die Registerkarte **Permissions** . Die Standardberechtigung ist **Read only**. Diese Berechtigung reicht für dieses Lernprogramm aus.
 6. Klicken Sie auf die Registerkarte **Keys and Access Tokens** .
 7. Klicken Sie auf **Create my access token**.
 8. Klicken Sie oben rechts auf der Seite auf **Test OAuth** .
 9. Kopieren Sie die Werte für **Consumer key** (Verbraucherschlüssel), **Consumer secret** (Geheimer Verbraucherschlüssel), **Access token** (Zugriffstoken) und **Access token secret** (Geheimes Zugriffstoken). Sie benötigen diese Werte später im Tutorial.
-   
+
     ![hdi.hbase.twitter.sentiment.twitter.app][img-twitter-app]
 
 ## <a name="create-twitter-streaming-service"></a>Erstellen von Twitter-Streamingdiensten
@@ -79,21 +80,21 @@ Sie müssen eine Anwendung erstellen, um Tweets zu erhalten, einen Stimmungswert
 
 **So erstellen Sie die Streaminganwendung**
 
-1. Öffnen Sie **Visual Studio**, und erstellen Sie eine Visual C#-Konsolenanwendung mit der Bezeichnung **TweetSentimentStreaming**. 
+1. Öffnen Sie **Visual Studio**, und erstellen Sie eine Visual C#-Konsolenanwendung mit der Bezeichnung **TweetSentimentStreaming**.
 2. Führen Sie in der **Paket-Manager-Konsole**die folgenden Befehle aus:
-   
+
         Install-Package Microsoft.HBase.Client -version 0.4.2.0
         Install-Package TweetinviAPI -version 1.0.0.0
-   
+
     Mit den folgenden Befehlen installieren Sie das Paket [HBase .NET SDK](https://www.nuget.org/packages/Microsoft.HBase.Client/), das die Clientbibliothek für den Zugriff auf den HBase-Cluster ist, und das Paket [Tweetinvi API](https://www.nuget.org/packages/TweetinviAPI/), das verwendet wird, um auf die Twitter-API zuzugreifen.
-   
+
    > [!NOTE]
    > Das in diesem Artikel verwendete Beispiel wurde mit der oben angegebenen Version getestet.  Sie können den Parameter „-version“ entfernen, um die neueste Version zu installieren.
-   > 
-   > 
+   >
+   >
 3. Fügen Sie im **Projektmappen-Explorer** in der Referenz den Eintrag **System.Configuration** hinzu.
 4. Fügen Sie dem Projekt die neue Klassendatei **HBaseWriter.cs**hinzu, und ersetzen Sie den Code durch Folgendes:
-   
+
         using System;
         using System.Collections.Generic;
         using System.IO;
@@ -104,7 +105,7 @@ Sie müssen eine Anwendung erstellen, um Tweets zu erhalten, einen Stimmungswert
         using org.apache.hadoop.hbase.rest.protobuf.generated;
         using Microsoft.HBase.Client;
         using Tweetinvi.Models;
-   
+
         namespace TweetSentimentStreaming
         {
             class HBaseWriter
@@ -113,36 +114,36 @@ Sie müssen eine Anwendung erstellen, um Tweets zu erhalten, einen Stimmungswert
                 const string CLUSTERNAME = "https://<Enter Your Cluster Name>.azurehdinsight.net/";
                 const string HADOOPUSERNAME = "admin"; //the default name is "admin"
                 const string HADOOPUSERPASSWORD = "<Enter the Hadoop User Password>";
-   
+
                 const string HBASETABLENAME = "tweets_by_words";
                 const string COUNT_ROW_KEY = "~ROWCOUNT";
                 const string COUNT_COLUMN_NAME = "d:COUNT";
-   
+
                 long rowCount = 0;
-   
+
                 // Sentiment dictionary file and the punctuation characters
                 const string DICTIONARYFILENAME = @"..\..\dictionary.tsv";
                 private static char[] _punctuationChars = new[] {
             ' ', '!', '\"', '#', '$', '%', '&', '\'', '(', ')', '*', '+', ',', '-', '.', '/',   //ascii 23--47
             ':', ';', '<', '=', '>', '?', '@', '[', ']', '^', '_', '`', '{', '|', '}', '~' };   //ascii 58--64 + misc.
-   
+
                 // For writting to HBase
                 HBaseClient client;
-   
+
                 // a sentiment dictionary for estimate sentiment. It is loaded from a physical file.
                 Dictionary<string, DictionaryItem> dictionary;
-   
+
                 // use multithread write
                 Thread writerThread;
                 Queue<ITweet> queue = new Queue<ITweet>();
                 bool threadRunning = true;
-   
+
                 // This function connects to HBase, loads the sentiment dictionary, and starts the thread for writting.
                 public HBaseWriter()
                 {
                     ClusterCredentials credentials = new ClusterCredentials(new Uri(CLUSTERNAME), HADOOPUSERNAME, HADOOPUSERPASSWORD);
                     client = new HBaseClient(credentials);
-   
+
                     // create the HBase table if it doesn't exist
                     if (!client.ListTablesAsync().Result.name.Contains(HBASETABLENAME))
                     {
@@ -152,23 +153,23 @@ Sie müssen eine Anwendung erstellen, um Tweets zu erhalten, einen Stimmungswert
                         client.CreateTableAsync(tableSchema).Wait();
                         Console.WriteLine("Table \"{0}\" is created.", HBASETABLENAME);
                     }
-   
+
                     // Read current row count cell
                     rowCount = GetRowCount();
-   
+
                     // Load sentiment dictionary from a file
                     LoadDictionary();
-   
+
                     // Start a thread for writting to HBase
                     writerThread = new Thread(new ThreadStart(WriterThreadFunction));
                     writerThread.Start();
                 }
-   
+
                 ~HBaseWriter()
                 {
                     threadRunning = false;
                 }
-   
+
                 private long GetRowCount()
                 {
                     try
@@ -195,12 +196,12 @@ Sie müssen eine Anwendung erstellen, um Tweets zu erhalten, einen Stimmungswert
                         {
                             throw ex;
                         }
-   
+
                     }
-   
+
                     return 0;
                 }
-   
+
                 // Enqueue the Tweets received
                 public void WriteTweet(ITweet tweet)
                 {
@@ -209,7 +210,7 @@ Sie müssen eine Anwendung erstellen, um Tweets zu erhalten, einen Stimmungswert
                         queue.Enqueue(tweet);
                     }
                 }
-   
+
                 // Load sentiment dictionary from a file
                 private void LoadDictionary()
                 {
@@ -228,7 +229,7 @@ Sie müssen eine Anwendung erstellen, um Tweets zu erhalten, einen Stimmungswert
                             Polarity = fields[pos++]
                         };
                     });
-   
+
                     dictionary = new Dictionary<string, DictionaryItem>();
                     foreach (var item in items)
                     {
@@ -238,7 +239,7 @@ Sie müssen eine Anwendung erstellen, um Tweets zu erhalten, einen Stimmungswert
                         }
                     }
                 }
-   
+
                 // Calculate sentiment score
                 private int CalcSentimentScore(string[] words)
                 {
@@ -267,49 +268,49 @@ Sie müssen eine Anwendung erstellen, um Tweets zu erhalten, einen Stimmungswert
                         return 0;
                     }
                 }
-   
+
                 // Popular a CellSet object to be written into HBase
                 private void CreateTweetByWordsCells(CellSet set, ITweet tweet)
                 {
                     // Split the Tweet into words
                     string[] words = tweet.Text.ToLower().Split(_punctuationChars);
-   
+
                     // Calculate sentiment score base on the words
                     int sentimentScore = CalcSentimentScore(words);
                     var word_pairs = words.Take(words.Length - 1)
                                         .Select((word, idx) => string.Format("{0} {1}", word, words[idx + 1]));
                     var all_words = words.Concat(word_pairs).ToList();
-   
+
                     // For each word in the Tweet add a row to the HBase table
                     foreach (string word in all_words)
                     {
                         string time_index = (ulong.MaxValue - (ulong)tweet.CreatedAt.ToBinary()).ToString().PadLeft(20) + tweet.IdStr;
                         string key = word + "_" + time_index;
-   
+
                         // Create a row
                         var row = new CellSet.Row { key = Encoding.UTF8.GetBytes(key) };
-   
-                        // Add columns to the row, including Tweet identifier, language, coordinator(if available), and sentiment 
+
+                        // Add columns to the row, including Tweet identifier, language, coordinator(if available), and sentiment
                         var value = new Cell { column = Encoding.UTF8.GetBytes("d:id_str"), data = Encoding.UTF8.GetBytes(tweet.IdStr) };
                         row.values.Add(value);
-   
+
                         value = new Cell { column = Encoding.UTF8.GetBytes("d:lang"), data = Encoding.UTF8.GetBytes(tweet.Language.ToString()) };
                         row.values.Add(value);
-   
+
                         if (tweet.Coordinates != null)
                         {
                             var str = tweet.Coordinates.Longitude.ToString() + "," + tweet.Coordinates.Latitude.ToString();
                             value = new Cell { column = Encoding.UTF8.GetBytes("d:coor"), data = Encoding.UTF8.GetBytes(str) };
                             row.values.Add(value);
                         }
-   
+
                         value = new Cell { column = Encoding.UTF8.GetBytes("d:sentiment"), data = Encoding.UTF8.GetBytes(sentimentScore.ToString()) };
                         row.values.Add(value);
-   
+
                         set.rows.Add(row);
                     }
                 }
-   
+
                 // Write a Tweet (CellSet) to HBase
                 public void WriterThreadFunction()
                 {
@@ -328,7 +329,7 @@ Sie müssen eine Anwendung erstellen, um Tweets zu erhalten, einen Stimmungswert
                                         CreateTweetByWordsCells(set, tweet);
                                     } while (queue.Count > 0);
                                 }
-   
+
                                 // Write the Tweet by words cell set to the HBase table
                                 client.StoreCellsAsync(HBASETABLENAME, set).Wait();
                                 Console.WriteLine("\tRows written: {0}", set.rows.Count);
@@ -354,12 +355,12 @@ Sie müssen eine Anwendung erstellen, um Tweets zu erhalten, einen Stimmungswert
         }
 5. Legen Sie die Konstanten im vorherigen Code fest, einschließlich **CLUSTERNAME**, **HADOOPUSERNAME**, **HADOOPUSERPASSWORD** und DICTIONARYFILENAME. Die DICTIONARYFILENAME ist der Dateinamen und der Speicherort von „direction.tsv“.  Die Datei kann unter **https://hditutorialdata.blob.core.windows.net/twittersentiment/dictionary.tsv** heruntergeladen werden. Falls Sie den HBase-Tabellennamen ändern möchten, müssen Sie den Tabellennamen in der Webanwendung ebenfalls entsprechend ändern.
 6. Öffnen Sie die Datei **Program.cs**, und ersetzen Sie den Code durch Folgendes:
-   
+
         using System;
         using System.Diagnostics;
         using Tweetinvi;
         using Tweetinvi.Models;
-   
+
         namespace TweetSentimentStreaming
         {
             class Program
@@ -368,14 +369,14 @@ Sie müssen eine Anwendung erstellen, um Tweets zu erhalten, einen Stimmungswert
                 const string TWITTERAPPACCESSTOKENSECRET = "<Enter Twitter Access Token Secret>";
                 const string TWITTERAPPAPIKEY = "<Enter Twitter App API Key>";
                 const string TWITTERAPPAPISECRET = "<Enter Twitter App API Secret>";
-   
+
                 static void Main(string[] args)
                 {
                     Auth.SetUserCredentials(TWITTERAPPAPIKEY, TWITTERAPPAPISECRET, TWITTERAPPACCESSTOKEN, TWITTERAPPACCESSTOKENSECRET);
-   
+
                     Stream_FilteredStreamExample();
                 }
-   
+
                 private static void Stream_FilteredStreamExample()
                 {
                     for (;;)
@@ -384,19 +385,19 @@ Sie müssen eine Anwendung erstellen, um Tweets zu erhalten, einen Stimmungswert
                         {
                             HBaseWriter hbase = new HBaseWriter();
                             var stream = Stream.CreateFilteredStream();
-                            stream.AddLocation(new Coordinates(-180, -90), new Coordinates(180, 90)); 
-   
+                            stream.AddLocation(new Coordinates(-180, -90), new Coordinates(180, 90));
+
                             var tweetCount = 0;
                             var timer = Stopwatch.StartNew();
-   
+
                             stream.MatchingTweetReceived += (sender, args) =>
                             {
                                 tweetCount++;
                                 var tweet = args.Tweet;
-   
+
                                 // Write Tweets to HBase
                                 hbase.WriteTweet(tweet);
-   
+
                                 if (timer.ElapsedMilliseconds > 1000)
                                 {
                                     if (tweet.Coordinates != null)
@@ -406,13 +407,13 @@ Sie müssen eine Anwendung erstellen, um Tweets zu erhalten, einen Stimmungswert
                                         Console.ForegroundColor = ConsoleColor.White;
                                         Console.WriteLine("\tLocation: {0}, {1}", tweet.Coordinates.Longitude, tweet.Coordinates.Latitude);
                                     }
-   
+
                                     timer.Restart();
                                     Console.WriteLine("\tTweets/sec: {0}", tweetCount);
                                     tweetCount = 0;
                                 }
                             };
-   
+
                             stream.StartStreamMatchingAllConditions();
                         }
                         catch (Exception ex)
@@ -421,16 +422,16 @@ Sie müssen eine Anwendung erstellen, um Tweets zu erhalten, einen Stimmungswert
                         }
                     }
                 }
-   
+
             }
         }
-7. Legen Sie die Konstanten fest, einschließlich **TWITTERAPPACCESSTOKEN**, **TWITTERAPPACCESSTOKENSECRET**, **TWITTERAPPAPIKEY** und **TWITTERAPPAPISECRET**. 
+7. Legen Sie die Konstanten fest, einschließlich **TWITTERAPPACCESSTOKEN**, **TWITTERAPPACCESSTOKENSECRET**, **TWITTERAPPAPIKEY** und **TWITTERAPPAPISECRET**.
 
 Um den Streamingdienst auszuführen, drücken Sie **F5**. Nachfolgend sehen Sie einen Screenshot der Konsolenanwendung:
 
 ![hdinsight.hbase.twitter.sentiment.streaming.service][img-streaming-service]
 
-Führen Sie die Streaming-Konsolenanwendung weiter aus, während Sie die Webanwendung entwickeln, sodass Sie mehr Daten nutzen können. Zum Überprüfen der in die Tabelle eingefügten Daten können Sie die HBase-Befehlszeile verwenden. Weitere Informationen finden Sie unter [Erste Schritte mit HBase in HDInsight](hdinsight-hbase-tutorial-get-started.md#create-tables-and-insert-data).
+Führen Sie die Streaming-Konsolenanwendung weiter aus, während Sie die Webanwendung entwickeln, sodass Sie mehr Daten nutzen können. Zum Überprüfen der in die Tabelle eingefügten Daten können Sie die HBase-Befehlszeile verwenden. Weitere Informationen finden Sie unter [Erste Schritte mit HBase in HDInsight](hdinsight-hbase-tutorial-get-started-linux.md#create-tables-and-insert-data).
 
 ## <a name="visualize-real-time-sentiment"></a>Visualisieren der Stimmung in Echtzeit
 In diesem Abschnitt erstellen Sie eine ASP.NET MVC-Webanwendung, die die Echtzeit-Stimmungsdaten aus HBase liest und die Daten auf Bing Maps grafisch darstellt.
@@ -440,27 +441,27 @@ In diesem Abschnitt erstellen Sie eine ASP.NET MVC-Webanwendung, die die Echtzei
 1. Öffnen Sie Visual Studio.
 2. Klicken Sie auf **Datei**, auf **Neu** und anschließend auf **Projekt**.
 3. Geben Sie Folgendes ein:
-   
+
    * Vorlagenkategorie: **Visual C#/Web**
    * Vorlage: **ASP.NET-Webanwendung**
    * Name: **TweetSentimentWeb**
-   * Speicherort: **C:\Tutorials** 
+   * Speicherort: **C:\Tutorials**
 4. Klicken Sie auf **OK**.
-5. Klicken Sie unter **Vorlage auswählen** auf **MVC**. 
+5. Klicken Sie unter **Vorlage auswählen** auf **MVC**.
 6. Klicken Sie in **Microsoft Azure** auf **Abonnements verwalten**.
 7. Klicken Sie unter **Microsoft Azure-Abonnements verwalten** auf **Anmelden**.
 8. Geben Sie Ihre Azure-Anmeldeinformationen ein. Auf der Registerkarte **Konten** werden die Informationen zu Ihrem Azure-Abonnement angezeigt.
 9. Klicken Sie auf **Schließen**, um das Fenster **Microsoft Azure-Abonnements verwalten** zu schließen.
 10. Klicken Sie unter **Neues ASP.NET-Projekt – TweetSentimentWeb** auf **OK**.
-11. Wählen Sie unter **Microsoft Azure-Site-Einstellungen konfigurieren** die Ihnen am nächsten gelegene **Region** aus. Sie müssen keinen Datenbankserver angeben. 
+11. Wählen Sie unter **Microsoft Azure-Site-Einstellungen konfigurieren** die Ihnen am nächsten gelegene **Region** aus. Sie müssen keinen Datenbankserver angeben.
 12. Klicken Sie auf **OK**.
 
 **So installieren Sie NuGet-Pakete**
 
 1. Klicken Sie im Menü **Extras** auf **NuGet-Paket-Manager** und dann auf **Paket-Manager-Konsole**. Die Konsole wird am unteren Ende der Seite geöffnet.
 2. Verwenden Sie den folgenden Befehl zum Installieren des Pakets [HBase .NET SDK](https://www.nuget.org/packages/Microsoft.HBase.Client/). Dies ist die Clientbibliothek für den Zugriff auf den HBase-Cluster:
-   
-        Install-Package Microsoft.HBase.Client 
+
+        Install-Package Microsoft.HBase.Client
 
 **So fügen Sie die HBaseReader-Klasse hinzu**
 
@@ -468,31 +469,31 @@ In diesem Abschnitt erstellen Sie eine ASP.NET MVC-Webanwendung, die die Echtzei
 2. Klicken Sie mit der rechten Maustaste auf **Modelle** und anschließend auf **Hinzufügen** und **Klasse**.
 3. Geben Sie im Feld **Name** den Namen **HBaseReader.cs** ein, und klicken Sie dann auf **Hinzufügen**.
 4. Ersetzen Sie den Code durch den folgenden Code:
-   
+
         using System;
         using System.Collections.Generic;
         using System.Linq;
         using System.Web;
-   
+
         using System.Configuration;
         using System.Threading.Tasks;
         using System.Text;
         using Microsoft.HBase.Client;
         using org.apache.hadoop.hbase.rest.protobuf.generated;
-   
+
         namespace TweetSentimentWeb.Models
         {
             public class HBaseReader
             {
                 // For reading Tweet sentiment data from HDInsight HBase
                 HBaseClient client;
-   
+
                 // HDinsight HBase cluster and HBase table information
                 const string CLUSTERNAME = "<HBaseClusterName>";
                 const string HADOOPUSERNAME = "<HBaseClusterHadoopUserName>"
                 const string HADOOPUSERPASSWORD = "<HBaseCluserUserPassword>";
                 const string HBASETABLENAME = "tweets_by_words";
-   
+
                 // The constructor
                 public HBaseReader()
                 {
@@ -502,12 +503,12 @@ In diesem Abschnitt erstellen Sie eine ASP.NET MVC-Webanwendung, die die Echtzei
                                     HADOOPUSERPASSWORD);
                     client = new HBaseClient(creds);
                 }
-   
-                // Query Tweets sentiment data from the HBase table asynchronously 
+
+                // Query Tweets sentiment data from the HBase table asynchronously
                 public async Task<IEnumerable<Tweet>> QueryTweetsByKeywordAsync(string keyword)
                 {
                     List<Tweet> list = new List<Tweet>();
-   
+
                     // Demonstrate Filtering the data from the past 6 hours the row key
                     string timeIndex = (ulong.MaxValue -
                         (ulong)DateTime.UtcNow.Subtract(new TimeSpan(6, 0, 0)).ToBinary()).ToString().PadLeft(20);
@@ -519,25 +520,25 @@ In diesem Abschnitt erstellen Sie eine ASP.NET MVC-Webanwendung, die die Echtzei
                         startRow = Encoding.UTF8.GetBytes(startRow),
                         endRow = Encoding.UTF8.GetBytes(endRow)
                     };
-   
+
                     // Make async scan call
                     ScannerInformation scannerInfo =
                         await client.CreateScannerAsync(HBASETABLENAME, scanSettings);
-   
+
                     CellSet next;
-   
+
                     while ((next = await client.ScannerGetNextAsync(scannerInfo)) != null)
                     {
                         foreach (CellSet.Row row in next.rows)
                         {
-                            // find the cell with string pattern "d:coor" 
+                            // find the cell with string pattern "d:coor"
                             var coordinates =
                                 row.values.Find(c => Encoding.UTF8.GetString(c.column) == "d:coor");
-   
+
                             if (coordinates != null)
                             {
                                 string[] lonlat = Encoding.UTF8.GetString(coordinates.data).Split(',');
-   
+
                                 var sentimentField =
                                     row.values.Find(c => Encoding.UTF8.GetString(c.column) == "d:sentiment");
                                 Int32 sentiment = 0;
@@ -545,7 +546,7 @@ In diesem Abschnitt erstellen Sie eine ASP.NET MVC-Webanwendung, die die Echtzei
                                 {
                                     sentiment = Convert.ToInt32(Encoding.UTF8.GetString(sentimentField.data));
                                 }
-   
+
                                 list.Add(new Tweet
                                 {
                                     Longtitude = Convert.ToDouble(lonlat[0]),
@@ -553,18 +554,18 @@ In diesem Abschnitt erstellen Sie eine ASP.NET MVC-Webanwendung, die die Echtzei
                                     Sentiment = sentiment
                                 });
                             }
-   
+
                             if (coordinates != null)
                             {
                                 string[] lonlat = Encoding.UTF8.GetString(coordinates.data).Split(',');
                             }
                         }
                     }
-   
+
                     return list;
                 }
             }
-   
+
             public class Tweet
             {
                 public string IdStr { get; set; }
@@ -576,12 +577,12 @@ In diesem Abschnitt erstellen Sie eine ASP.NET MVC-Webanwendung, die die Echtzei
             }
         }
 5. Ändern Sie innerhalb der Klasse **HBaseReader** die Konstantenwerte wie folgt:
-   
-   * **CLUSTERNAME**: Der HBase-Clustername, z.B. *https://<HBaseClusterName>.azurehdinsight.net/*. 
+
+   * **CLUSTERNAME**: Der HBase-Clustername, z.B. *https://<HBaseClusterName>.azurehdinsight.net/*.
    * **HADOOPUSERNAME**: Der Hadoop-Benutzername des HBase-Clusters. Der Standardname lautet *admin*.
    * **HADOOPUSERPASSWORD**: Das Hadoop-Benutzerkennwort des HBase-Clusters.
    * **HBASETABLENAME** = "tweets_by_words";
-     
+
      Der HBase-Tabellenname lautet **tweets_by_words**. Die Werte müssen mit denen übereinstimmen, die Sie im Streamingdienst gesendet haben, damit die Webanwendung die Daten aus der gleichen HBase-Tabelle liest.
 
 **So fügen Sie den Controller "TweetsController" hinzu**
@@ -592,23 +593,23 @@ In diesem Abschnitt erstellen Sie eine ASP.NET MVC-Webanwendung, die die Echtzei
 4. Geben Sie im Feld **Controllername** den Namen **TweetsController** ein, und klicken Sie dann auf **Hinzufügen**.
 5. Doppelklicken Sie im **Projektmappen-Explorer**auf "TweetsController.cs", um die Datei zu öffnen.
 6. Ändern Sie die Datei, sodass sie wie folgt aussieht:
-   
+
         using System;
         using System.Collections.Generic;
         using System.Linq;
         using System.Net;
         using System.Net.Http;
         using System.Web.Http;
-   
+
         using System.Threading.Tasks;
         using TweetSentimentWeb.Models;
-   
+
         namespace TweetSentimentWeb.Controllers
         {
             public class TweetsController : ApiController
             {
                 HBaseReader hbase = new HBaseReader();
-   
+
                 public async Task<IEnumerable<Tweet>> GetTweetsByQuery(string query)
                 {
                     return await hbase.QueryTweetsByKeywordAsync(query);
@@ -622,13 +623,13 @@ In diesem Abschnitt erstellen Sie eine ASP.NET MVC-Webanwendung, die die Echtzei
 2. Klicken Sie mit der rechten Maustaste auf **Skripts** und anschließend auf **Hinzufügen** und **JavaScript-Datei**.
 3. Geben Sie im Feld **Elementname** den Namen **heatmap.js** ein.
 4. Fügen Sie den folgenden Code in die Datei ein. Der Code wurde von Alastair Aitchison geschrieben. Weitere Informationen finden Sie unter [Bing Maps AJAX v7 HeatMap Library](http://alastaira.wordpress.com/2011/04/15/bing-maps-ajax-v7-heatmap-library/)(in englischer Sprache).
-   
+
         /*******************************************************************************
         * Author: Alastair Aitchison
         * Website: http://alastaira.wordpress.com
         * Date: 15th April 2011
-        * 
-        * Description: 
+        *
+        * Description:
         * This JavaScript file provides an algorithm that can be used to add a heatmap
         * overlay on a Bing Maps v7 control. The intensity and temperature palette
         * of the heatmap are designed to be easily customisable.
@@ -636,7 +637,7 @@ In diesem Abschnitt erstellen Sie eine ASP.NET MVC-Webanwendung, die die Echtzei
         * Requirements:
         * The heatmap layer itself is created dynamically on the client-side using
         * the HTML5 &lt;canvas> element, and therefore requires a browser that supports
-        * this element. It has been tested on IE9, Firefox 3.6/4 and 
+        * this element. It has been tested on IE9, Firefox 3.6/4 and
         * Chrome 10 browsers. If you can confirm whether it works on other browsers or
         * not, I'd love to hear from you!
         *
@@ -678,7 +679,7 @@ In diesem Abschnitt erstellen Sie eine ASP.NET MVC-Webanwendung, die die Echtzei
                     "1.00": 'rgba(255,0,0,150)'    // Red
                 },
 
-                // Callback function to be fired after heatmap layer has been redrawn 
+                // Callback function to be fired after heatmap layer has been redrawn
                 callback: null
             };
 
@@ -876,7 +877,7 @@ In diesem Abschnitt erstellen Sie eine ASP.NET MVC-Webanwendung, die die Echtzei
 2. Klicken Sie mit der rechten Maustaste auf **Skripts** und anschließend auf **Hinzufügen** und **JavaScript-Datei**.
 3. Geben Sie im Feld **Elementname** den Namen **twitterStream.js** ein.
 4. Kopieren Sie den folgenden Code, und fügen Sie ihn in die Datei ein:
-   
+
         var liveTweetsPos = [];
         var liveTweets = [];
         var liveTweetsNeg = [];
@@ -884,7 +885,7 @@ In diesem Abschnitt erstellen Sie eine ASP.NET MVC-Webanwendung, die die Echtzei
         var heatmap;
         var heatmapNeg;
         var heatmapPos;
-   
+
         function initialize() {
             // Initialize the map
             var options = {
@@ -895,30 +896,30 @@ In diesem Abschnitt erstellen Sie eine ASP.NET MVC-Webanwendung, die die Echtzei
                 zoom: 2.5
             };
             var map = new Microsoft.Maps.Map(document.getElementById('map_canvas'), options);
-   
+
             // Heatmap options for positive, neutral and negative layers
-   
+
             var heatmapOptions = {
                 // Opacity at the centre of each heat point
                 intensity: 0.5,
-   
+
                 // Affected radius of each heat point
                 radius: 15,
-   
+
                 // Whether the radius is an absolute pixel value or meters
                 unit: 'pixels'
             };
-   
+
             var heatmapPosOptions = {
                 // Opacity at the centre of each heat point
                 intensity: 0.5,
-   
+
                 // Affected radius of each heat point
                 radius: 15,
-   
+
                 // Whether the radius is an absolute pixel value or meters
                 unit: 'pixels',
-   
+
                 colourgradient: {
                     0.0: 'rgba(0, 255, 255, 0)',
                     0.1: 'rgba(0, 255, 255, 1)',
@@ -932,17 +933,17 @@ In diesem Abschnitt erstellen Sie eine ASP.NET MVC-Webanwendung, die die Echtzei
                     1.0: 'rgba(0, 255, 0, 1)'
                 }
             };
-   
+
             var heatmapNegOptions = {
                 // Opacity at the centre of each heat point
                 intensity: 0.5,
-   
+
                 // Affected radius of each heat point
                 radius: 15,
-   
+
                 // Whether the radius is an absolute pixel value or meters
                 unit: 'pixels',
-   
+
                 colourgradient: {
                     0.0: 'rgba(0, 255, 255, 0)',
                     0.1: 'rgba(0, 255, 255, 1)',
@@ -956,7 +957,7 @@ In diesem Abschnitt erstellen Sie eine ASP.NET MVC-Webanwendung, die die Echtzei
                     1.0: 'rgba(0, 0, 255, 1)'
                 }
             };
-   
+
             // Register and load the Client Side HeatMap Module
             Microsoft.Maps.registerModule("HeatMapModule", "scripts/heatmap.js");
             Microsoft.Maps.loadModule("HeatMapModule", {
@@ -967,7 +968,7 @@ In diesem Abschnitt erstellen Sie eine ASP.NET MVC-Webanwendung, die die Echtzei
                     heatmapNeg = new HeatMapLayer(map, liveTweetsNeg, heatmapNegOptions);
                 }
             });
-   
+
             $("#searchbox").val("xbox");
             $("#searchBtn").click(onsearch);
             $("#positiveBtn").click(onPositiveBtn);
@@ -975,7 +976,7 @@ In diesem Abschnitt erstellen Sie eine ASP.NET MVC-Webanwendung, die die Echtzei
             $("#neutralBtn").click(onNeutralBtn);
             $("#neutralBtn").button("toggle");
         }
-   
+
         function onsearch() {
             var uri = 'api/tweets?query=';
             var query = $('#searchbox').val();
@@ -984,12 +985,12 @@ In diesem Abschnitt erstellen Sie eine ASP.NET MVC-Webanwendung, die die Echtzei
                     liveTweetsPos = [];
                     liveTweets = [];
                     liveTweetsNeg = [];
-   
+
                     // On success, 'data' contains a list of tweets.
                     $.each(data, function (key, item) {
                         addTweet(item);
                     });
-   
+
                     if (!$("#neutralBtn").hasClass('active')) {
                         $("#neutralBtn").button("toggle");
                     }
@@ -999,7 +1000,7 @@ In diesem Abschnitt erstellen Sie eine ASP.NET MVC-Webanwendung, die die Echtzei
                     $('#statustext').text('Error: ' + err);
                 });
         }
-   
+
         function addTweet(item) {
             //Add tweet to the heat map arrays.
             var tweetLocation = new Microsoft.Maps.Location(item.Latitude, item.Longtitude);
@@ -1011,7 +1012,7 @@ In diesem Abschnitt erstellen Sie eine ASP.NET MVC-Webanwendung, die die Echtzei
                 liveTweets.push(tweetLocation);
             }
         }
-   
+
         function onPositiveBtn() {
             if ($("#neutralBtn").hasClass('active')) {
                 $("#neutralBtn").button("toggle");
@@ -1019,15 +1020,15 @@ In diesem Abschnitt erstellen Sie eine ASP.NET MVC-Webanwendung, die die Echtzei
             if ($("#negativeBtn").hasClass('active')) {
                 $("#negativeBtn").button("toggle");
             }
-   
+
             heatmapPos.SetPoints(liveTweetsPos);
             heatmapPos.Show();
             heatmapNeg.Hide();
             heatmap.Hide();
-   
+
             $('#statustext').text('Tweets: ' + liveTweetsPos.length + "   " + getPosNegRatio());
         }
-   
+
         function onNeutralBtn() {
             if ($("#positiveBtn").hasClass('active')) {
                 $("#positiveBtn").button("toggle");
@@ -1035,15 +1036,15 @@ In diesem Abschnitt erstellen Sie eine ASP.NET MVC-Webanwendung, die die Echtzei
             if ($("#negativeBtn").hasClass('active')) {
                 $("#negativeBtn").button("toggle");
             }
-   
+
             heatmap.SetPoints(liveTweets);
             heatmap.Show();
             heatmapNeg.Hide();
             heatmapPos.Hide();
-   
+
             $('#statustext').text('Tweets: ' + liveTweets.length + "   " + getPosNegRatio());
         }
-   
+
         function onNegativeBtn() {
             if ($("#positiveBtn").hasClass('active')) {
                 $("#positiveBtn").button("toggle");
@@ -1051,15 +1052,15 @@ In diesem Abschnitt erstellen Sie eine ASP.NET MVC-Webanwendung, die die Echtzei
             if ($("#neutralBtn").hasClass('active')) {
                 $("#neutralBtn").button("toggle");
             }
-   
+
             heatmapNeg.SetPoints(liveTweetsNeg);
             heatmapNeg.Show();
             heatmap.Hide();;
             heatmapPos.Hide();;
-   
+
             $('#statustext').text('Tweets: ' + liveTweetsNeg.length + "\t" + getPosNegRatio());
         }
-   
+
         function getPosNegRatio() {
             if (liveTweetsNeg.length == 0) {
                 return "";
@@ -1075,7 +1076,7 @@ In diesem Abschnitt erstellen Sie eine ASP.NET MVC-Webanwendung, die die Echtzei
 
 1. Erweitern Sie im **Projektmappen-Explorer** den Eintrag **TweetSentimentWeb**, **Ansichten**, **Freigegeben**, und doppelklicken Sie abschließend auf **Layout.cshtml**.
 2. Ersetzen Sie den Inhalt durch Folgendes:
-   
+
         <!DOCTYPE html>
         <html>
         <head>
@@ -1138,7 +1139,7 @@ In diesem Abschnitt erstellen Sie eine ASP.NET MVC-Webanwendung, die die Echtzei
 
 1. Erweitern Sie im **Projektmappen-Explorer** den Eintrag **TweetSentimentWeb**, **Ansichten**, **Home**, und doppelklicken Sie abschließend auf **Layout.cshtml**.
 2. Ersetzen Sie den Inhalt durch Folgendes:
-   
+
         @{
             ViewBag.Title = "Tweet Sentiment";
         }
@@ -1151,17 +1152,17 @@ In diesem Abschnitt erstellen Sie eine ASP.NET MVC-Webanwendung, die die Echtzei
 
 1. Erweitern Sie im **Projektmappen-Explorer** den Eintrag **TweetSentimentWeb**, dann **Inhalt** und doppelklicken Sie abschließend auf **Site.css**.
 2. Ergänzen Sie den folgenden Code in der Datei:
-   
+
         /* make container, and thus map, 100% width */
         .map_container {
             width: 100%;
             height: 100%;
         }
-   
+
         #map_canvas{
           height:100%;
         }
-   
+
         #tweets{
           position: absolute;
           top: 60px;
@@ -1174,22 +1175,22 @@ In diesem Abschnitt erstellen Sie eine ASP.NET MVC-Webanwendung, die die Echtzei
 
 1. Erweitern Sie im **Projektmappen-Explorer** den Eintrag **TweetSentimentWeb**, und doppelklicken Sie dann auf **Global.asax**.
 2. Fügen Sie die folgende **using** -Anweisung hinzu:
-   
+
         using System.Web.Http;
 3. Fügen Sie der Funktion **Application_Start()** die folgenden Zeilen hinzu:
-   
+
         // Register API routes
         GlobalConfiguration.Configure(WebApiConfig.Register);
-   
+
     Ändern sie die Registrierung der API-Routen, damit der Web-API-Controller innerhalb der MVC-Anwendung funktionsfähig ist.
 
 **So führen Sie die Webanwendung aus**
 
 1. Stellen Sie sicher, dass die Streamingdienst-Konsolenanwendung weiterhin ausgeführt wird, damit Sie die Änderungen in Echtzeit sehen können.
 2. Drücken Sie **F5** , um die Webanwendung auszuführen.
-   
+
     ![hdinsight.hbase.twitter.sentiment.bing.map][img-bing-map]
-3. Geben Sie ein Schlüsselwort in das Textfeld ein, und klicken Sie dann auf **Los**.  Je nach den in der HBase-Tabelle gesammelten Daten werden einige Schlüsselwörter ggf. nicht gefunden. Probieren Sie einige gebräuchliche Schlüsselwörter aus, beispielsweise "liebe", "xbox", "playstation". 
+3. Geben Sie ein Schlüsselwort in das Textfeld ein, und klicken Sie dann auf **Los**.  Je nach den in der HBase-Tabelle gesammelten Daten werden einige Schlüsselwörter ggf. nicht gefunden. Probieren Sie einige gebräuchliche Schlüsselwörter aus, beispielsweise "liebe", "xbox", "playstation".
 4. Wechseln Sie zwischen **Positiv**, **Neutral** und **Negativ**, um die Stimmungen zum Thema zu vergleichen.
 5. Führen Sie den Streamingdienst eine weitere Stunde lang aus, suchen Sie dann nach den gleichen Schlüsselwörtern, und vergleichen Sie die Ergebnisse.
 
@@ -1199,7 +1200,7 @@ Optional können Sie die Anwendung auf Azure Websites bereitstellen. Anweisungen
 In diesem Tutorial haben Sie erfahren, wie Sie Tweets abrufen, die Stimmung von Tweets analysieren, die Stimmungsdaten in HBase speichern und die Echtzeit-Stimmungsdaten von Twitter in Bing Maps darstellen. Weitere Informationen finden Sie unter:
 
 * [Erste Schritte mit HDInsight][hdinsight-get-started]
-* [Konfigurieren der HBase-Replikation in HDInsight](hdinsight-hbase-replication.md) 
+* [Konfigurieren der HBase-Replikation in HDInsight](hdinsight-hbase-replication.md)
 * [Analysieren von Twitter-Daten mit Hadoop in HDInsight][hdinsight-analyze-twitter-data]
 * [Analysieren von Daten zu Flugverspätungen mit HDInsight][hdinsight-analyze-flight-delay-data]
 * [Entwickeln von Java MapReduce-Programmen für HDInsight][hdinsight-develop-mapreduce]
@@ -1242,5 +1243,4 @@ In diesem Tutorial haben Sie erfahren, wie Sie Tweets abrufen, die Stimmung von 
 [hdinsight-use-sqoop]: hdinsight-use-sqoop.md
 [hdinsight-power-query]: hdinsight-connect-excel-power-query.md
 [hdinsight-hive-odbc]: hdinsight-connect-excel-hive-ODBC-driver.md
-
 

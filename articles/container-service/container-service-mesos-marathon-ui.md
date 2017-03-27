@@ -17,8 +17,9 @@ ms.workload: na
 ms.date: 12/02/2016
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 0aa9b3ae14f586fc79e6ebee898e794d526c19bd
-ms.openlocfilehash: de250fbc3982cdc493f74976914290d8ac89bb08
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: f26b191d9d98768d766e4c974138c9d191340027
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -40,7 +41,7 @@ Navigieren Sie [nach der Einrichtung](container-service-connect.md) eines SSH-Tu
 ![DC/OS-Benutzeroberfläche](./media/dcos/dcos2.png)
 
 ## <a name="explore-the-marathon-ui"></a>Erkunden der Marathon-Benutzeroberfläche
-Um die Marathon-Benutzeroberfläche anzuzeigen, navigieren Sie zu „http://localhost/Marathon“. Auf diesem Bildschirm können Sie einen neuen Container oder eine andere Anwendung im Azure Container Service-DC/OS-Cluster starten. Sie können auch Informationen zu ausgeführten Containern und Anwendungen anzeigen.  
+Um die Marathon-Benutzeroberfläche anzuzeigen, navigieren Sie zu „http://localhost/marathon“. Auf diesem Bildschirm können Sie einen neuen Container oder eine andere Anwendung im Azure Container Service-DC/OS-Cluster starten. Sie können auch Informationen zu ausgeführten Containern und Anwendungen anzeigen.  
 
 ![Marathon-Benutzeroberfläche](./media/dcos/dcos3.png)
 
@@ -110,9 +111,4 @@ Sobald der Skalierungsvorgang abgeschlossen ist, sehen Sie, dass mehrere Instanz
 
     > [!VIDEO https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON203/player]
     > 
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

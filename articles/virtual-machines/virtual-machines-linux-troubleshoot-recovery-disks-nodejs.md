@@ -15,9 +15,9 @@ ms.workload: infrastructure
 ms.date: 02/09/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 1aeb983730f732a021b828c658cc741f8659c487
-ms.openlocfilehash: 214d968c95fec4695f22152cca53a369299b6e10
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 5dba93fdf9b0f0ca73b47743aa0188dd47094a3f
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -42,7 +42,7 @@ Der Problembehebungsprozess sieht wie folgt aus:
 4. Heben Sie die Bereitstellung auf, und trennen Sie die virtuelle Festplatte von der Problembehebungs-VM.
 5. Erstellen Sie eine VM mithilfe der ursprünglichen virtuellen Festplatte.
 
-Vergewissern Sie sich, dass Sie die [neueste Azure-Befehlszeilenschnittstelle 1.0](../xplat-cli-install.md) installiert haben, dass Sie angemeldet sind und den Resource Manager-Modus verwenden:
+Vergewissern Sie sich, dass Sie die [neueste Azure-Befehlszeilenschnittstelle 1.0](../cli-install-nodejs.md) installiert haben, dass Sie angemeldet sind und den Resource Manager-Modus verwenden:
 
 ```azurecli
 azure config mode arm

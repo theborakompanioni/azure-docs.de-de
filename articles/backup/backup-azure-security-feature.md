@@ -65,7 +65,7 @@ Benutzer, die einen Recovery Services-Tresor erstellen, können dann alle Sicher
    Als Teil der Sicherheitsfunktionen müssen Sie die im Azure-Portal verfügbare Sicherheits-PIN eingeben, wenn in Azure Backup kritische Vorgänge ausgeführt werden. Durch das Aktivieren von Multi-Factor Authentication wird eine Sicherheitsebene hinzugefügt und gewährleistet, dass nur Benutzer mit gültigen Azure-Anmeldedaten, die sich außerdem von einem zweiten Gerät aus authentifiziert haben, auf das Azure-Portal zugreifen und solche kritischen Vorgänge ausführen können.
 6. Verwenden Sie wie in der Abbildung dargestellt die Umschaltfläche **Aktivieren**, um die Sicherheitseinstellungen zu aktivieren, und klicken Sie auf die oben sichtbare Schaltfläche **Speichern**, um die Sicherheitseinstellungen zu speichern. Sie können **Aktivieren** erst auswählen, nachdem Sie aus der Dropdownliste „Haben Sie Azure Multi-Factor Authentication konfiguriert?“ einen Wert ausgewählt haben.
 
-    ![Aktivieren der Sicherheitseinstellungen](./media/backup-azure-security-feature/enable-security-settings.png)
+    ![Aktivieren der Sicherheitseinstellungen](./media/backup-azure-security-feature/enable-security-settings-dpm-update.png)
 
 ## <a name="recovering-deleted-backup-data"></a>Wiederherstellen von gelöschten Sicherungsdaten
 Als Sicherheitsmaßnahme bewahrt Azure Backup gelöschte Sicherungsdaten zusätzlich 14 Tage lang auf und löscht sie nicht sofort, wenn der Datenvorgang „Stop backup with delete backup“ (Sicherungsabbruch mit Sicherungslöschung) ausgeführt wird. Um diese Daten innerhalb der 14-tägigen Frist wiederherzustellen, führen Sie die folgenden Schritte aus:

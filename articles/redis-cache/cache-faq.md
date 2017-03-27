@@ -12,12 +12,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2017
+ms.date: 03/08/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 256d215deb2224dca188e373a1bf2cf7fc55be1f
-ms.openlocfilehash: 9089a14f1f0b1fa5265f616e0bd9f0f30aff0c60
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 705e64d52d796ae861465f71de397d11bf14086e
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -59,6 +59,7 @@ Im Folgenden finden Sie häufig gestellte Fragen zu grundlegenden Konzepten. Fra
 * [Wie führe ich Redis-Befehle aus?](#how-can-i-run-redis-commands)
 * [Warum gibt es für Azure Redis Cache keinen MSDN-Klassenbibliothekverweis wie für einige andere Azure-Dienste?](#why-doesnt-azure-redis-cache-have-an-msdn-class-library-reference-like-some-of-the-other-azure-services)
 * [Kann ich Azure Redis Cache als PHP-Sitzungscache verwenden?](#can-i-use-azure-redis-cache-as-a-php-session-cache)
+* [Was sind Redis-Datenbanken?](#what-are-redis-databases)
 
 ## <a name="security-faqs"></a>Häufig gestellte Fragen zur Sicherheit
 * [Wann sollte ich den Nicht-SSL-Port für die Verbindungsherstellung mit Redis verwenden?](#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis)
@@ -264,6 +265,16 @@ Ja. Um Azure Redis Cache als PHP-Sitzungscache zu verwenden, geben Sie die Verbi
 >
 
 Weitere Informationen zur Nutzung von Redis Cache als PHP-Sitzungscache mit dem PhpRedis-Client finden Sie unter [PHP Session handler](https://github.com/phpredis/phpredis#php-session-handler)(PHP-Sitzungshandler).
+
+### <a name="what-are-redis-databases"></a>Was sind Redis-Datenbanken?
+
+Redis-Datenbanken sind einfach eine logische Trennung von Daten innerhalb der gleichen Redis-Instanz. Der Cachespeicher wird von allen Datenbanken gemeinsam genutzt, und die tatsächliche Arbeitsspeichernutzung einer bestimmten Datenbank richtet sich nach den in dieser Datenbank gespeicherten Schlüsseln bzw. Werten. Ein Beispiel: Ein C6-Cache verfügt über 53 GB Arbeitsspeicher. Sie können die Gesamtmenge von 53 GB einer einzigen Datenbank zuweisen oder das Datenvolumen auf mehrere Datenbanken aufteilen. 
+
+> [!NOTE]
+> Wenn Sie einen Azure Redis-Premium-Cache mit aktiviertem Clustering verwenden, ist nur Datenbank 0 verfügbar. Dies ist eine intrinsische Einschränkung von Redis und nicht spezifisch für Azure Redis Cache. Weitere Informationen finden Sie unter [Muss ich Änderungen an meiner Clientanwendung vornehmen, um Clustering verwenden zu können?](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
+> 
+> 
+
 
 <a name="cache-ssl"></a>
 

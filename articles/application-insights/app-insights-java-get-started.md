@@ -4,18 +4,18 @@ description: "Überwachung der Anwendungsleistung für Java-Web-Apps mithilfe vo
 services: application-insights
 documentationcenter: java
 author: harelbr
-manager: douge
+manager: carmonm
 ms.assetid: 051d4285-f38a-45d8-ad8a-45c3be828d91
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/02/2016
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 4fc4561516490b9b285220e7ae688bf97384fe6e
-ms.openlocfilehash: c900840e419c06b70e3a2f53a6aa8314145324fe
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: d2f94ead2e5c7e60037e601ce65a03e809b66dd3
 
 
 ---
@@ -76,7 +76,7 @@ Aktualisieren Sie dann die Projektabhängigkeiten, damit die Binärdateien herun
 ```
 
 * *Build- oder Prüfsummenvalidierungsfehler?* Versuchen Sie es mit einer bestimmten Version, z. B.: `<version>1.0.n</version>`. Sie finden die neueste Version in den [SDK-Versionshinweisen](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) oder in unseren [Maven-Artefakten](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights).
-* *Sie müssen auf ein neues SDK aktualisieren?*  Aktualisieren Sie die Abhängigkeiten des Projekts.
+* *Sie müssen auf ein neues SDK aktualisieren?* Aktualisieren Sie die Abhängigkeiten des Projekts.
 
 #### <a name="if-youre-using-gradle"></a>Wenn Sie Gradle verwenden...
 Wenn Ihr Projekt bereits für die Verwendung von Gradle für den Buildprozess eingerichtet ist, fügen Sie Ihrer Datei „build.gradle“ den folgenden Code hinzu:
@@ -95,9 +95,9 @@ Aktualisieren Sie dann die Projektabhängigkeiten, damit die Binärdateien herun
     }
 ```
 
-* *Build- oder Prüfsummenvalidierungsfehler? Versuchen Sie es mit einer bestimmten Version, z. B.: * `version:'1.0.n'`. *Sie finden die neueste Version in den [SDK-Versionshinweisen](https://github.com/Microsoft/ApplicationInsights-Java#release-notes).*
+* *Build- oder Prüfsummenvalidierungsfehler? Versuchen Sie es mit einer bestimmten Version, z. B.:* `version:'1.0.n'`. *Sie finden die neueste Version in den [SDK-Versionshinweisen](https://github.com/Microsoft/ApplicationInsights-Java#release-notes).*
 * *So aktualisieren Sie auf ein neues SDK*
-  *  Aktualisieren Sie die Abhängigkeiten des Projekts.
+  * Aktualisieren Sie die Abhängigkeiten des Projekts.
 
 #### <a name="otherwise-"></a>Andernfalls...
 Fügen Sie das SDK manuell hinzu:
@@ -375,6 +375,10 @@ Sie erhalten Diagramme von Reaktionszeiten sowie E-Mail-Benachrichtigungen, fall
 ## <a name="questions-problems"></a>Fragen? Probleme?
 [Problembehandlung für Java](app-insights-java-troubleshoot.md)
 
+## <a name="video"></a>Video
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
+
 ## <a name="next-steps"></a>Nächste Schritte
 * [Überwachen von Abhängigkeitsaufrufen](app-insights-java-agent.md)
 * [Überwachen von Unix-Leistungsindikatoren](app-insights-java-collectd.md)
@@ -394,9 +398,4 @@ Sie erhalten Diagramme von Reaktionszeiten sowie E-Mail-Benachrichtigungen, fall
 [javalogs]: app-insights-java-trace-logs.md
 [metrics]: app-insights-metrics-explorer.md
 [usage]: app-insights-web-track-usage.md
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

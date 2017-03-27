@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 11/22/2016
 ms.author: daseidma;bwren;dairwin
 translationtype: Human Translation
-ms.sourcegitcommit: 48a0060edf30b53f685f25efebcb896af2c6122b
-ms.openlocfilehash: ee69cc8402cd9321d1f47ceb4be045274376f440
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: d616a8574d2087be66bc10dfdf3bf6f5a14c11fd
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -55,10 +55,26 @@ Computer können in der Zuordnung erweitert werden, um die ausgeführten Prozess
 
 Standardmäßig zeigt Service Map Abhängigkeitsinformationen der letzten 10 Minuten an.  Mithilfe der Zeitauswahl in der linken oberen Ecke können Zuordnungen nach historischen Zeiträumen (max. eine Stunde) abgefragt werden, um zu zeigen, wie die Abhängigkeiten in der Vergangenheit aussahen, z.B. während eines Incidents oder vor einer Änderung.    Service Map-Daten werden in kostenpflichtigen Arbeitsbereichen 30 Tage lang gespeichert, in kostenlosen Arbeitsbereichen 7 Tage lang.
 
-## <a name="status-badges"></a>Statusbadges
+## <a name="status-badges-and-border-coloring"></a>Statusbadges und Rahmenfarbe
 Am unteren Rand jedes Servers in der Zuordnung wird möglicherweise eine Liste der Statusbadges mit Statusinformationen über den Server angezeigt.  Die Badges weisen darauf hin, dass relevante Informationen für den Server aus einer der OMS-Lösungsintegrationen vorliegen.  Indem Sie auf einen Badge klicken, gelangen Sie direkt zu den Statusdetails im rechten Bereich.  Aktuell sind folgende Statusbadges verfügbar: Warnungen, Änderungen, Sicherheit und Updates.
 
-![Verbindungsfehler](media/oms-service-map/status-badges.png)
+Basierend auf den Schweregrad der Statusbadges können die Computerknotenrahmen rot (kritisch), gelb (Warnung) oder blau (Information) sein.  Die Farbe stellt den schwerwiegendsten Status aller Statusbadges dar.  Ein grauer Rahmen gibt an, dass ein Knoten keine aktuellen Statusindikatoren aufweist.
+
+![Statusbadges](media/oms-service-map/status-badges.png)
+
+## <a name="role-icons"></a>Rollensymbole
+Bestimmte Prozesse haben bestimmte Rollen auf Computern: Webserver, Anwendungsserver, Datenbank usw.  Die Dienstzuordnung versehen Prozess- und Computerfelder mit Rollensymbolen, damit die Rolle eines Prozesses oder Servers auf einen Blick erkannt werden kann.
+
+| Rollensymbol | Beschreibung |
+|:--|:--|
+| ![Webserver](media/oms-service-map/role-web-server.png) | Webserver |
+| ![App-Server](media/oms-service-map/role-application-server.png) | Anwendungsserver |
+| ![Datenbankserver](media/oms-service-map/role-database.png) | Datenbankserver |
+| ![LDAP-Server](media/oms-service-map/role-ldap.png) | LDAP-Server |
+| ![SMB-Server](media/oms-service-map/role-smb.png) | SMB-Server |
+
+![Rollensymbole](media/oms-service-map/role-icons.png)
+
 
 ## <a name="failed-connections"></a>Verbindungsfehler
 Verbindungsfehler werden in Service Map-Zuordnungen für Prozesse und Computer angezeigt. Eine gestrichelte rote Linie zeigt, dass ein Clientsystem einen Prozess oder Port nicht erreichen kann.  Verbindungsfehler werden von jedem System mit einem bereitgestellten Service Map-Agent berichtet, wenn dieses System dasjenige ist, das versucht, die fehlerhafte Verbindung herzustellen.  Service Map misst dies durch Überwachen der TCP-Sockets, die keine Verbindung herstellen können.  Der Fehler kann durch eine Firewall, eine fehlerhafte Konfiguration auf einem Client oder Server oder dadurch verursacht werden, dass ein Remotedienst nicht verfügbar ist.

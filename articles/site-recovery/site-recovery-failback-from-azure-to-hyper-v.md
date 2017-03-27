@@ -15,13 +15,17 @@ ms.workload: storage-backup-recovery
 ms.date: 2/15/2017
 ms.author: ruturajd
 translationtype: Human Translation
-ms.sourcegitcommit: 88a09929582e69941101e884697592c91c0f5cfa
-ms.openlocfilehash: 862b80bdb00efcbf8863699df12aacdbab60bcef
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: a1769a522d13926e887e82b8d26b36afb4c80b08
+ms.lasthandoff: 03/09/2017
 
 
 ---
 # <a name="failback-in-site-recovery"></a>Failback in Site Recovery
+> [!div class="op_single_selector"]
+> * [VMware-/physische Computer von Azure](site-recovery-failback-azure-to-vmware.md)
+> * [Hyper-V-VMs von Azure](site-recovery-failback-from-azure-to-hyper-v.md)
+
 In diesem Artikel wird beschrieben, wie Sie für virtuelle Computer, die von Site Recovery geschützt werden, ein Failback durchführen. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -40,7 +44,7 @@ Azure ist eine hoch verfügbare Umgebung und Ihre virtuellen Computer sind immer
 Nach dem Failover vom primären zum sekundären Standort sind die virtuellen Replikatcomputer nicht durch Site Recovery geschützt, und der sekundäre Standort fungiert nun als der aktive Standort. Gehen Sie wie folgt vor, um ein Failback zum ursprünglichen primären Standort durchzuführen. Hier erfahren Sie, wie Sie ein geplantes Failover für einen Wiederherstellungsplan durchführen. Alternativ können Sie das Failover über die Registerkarte **Virtuelle Computer** auch für einen einzelnen virtuellen Computer durchführen.
 
 1. Wählen Sie **Wiederherstellungspläne** > *Name des Wiederherstellungsplans* aus. Klicken Sie auf **Failover** > **Planned Failover**veröffentlichen.
-2. Wählen Sie auf der Seite **Geplantes Failover bestätigen **den Quell- und Zielort aus. Beachten Sie die Failover-Richtung. Wenn das Failover vom primären Standort erwartungsgemäß funktioniert hat und sich alle virtuellen Computer am sekundären Standort befinden, dient diese Angabe nur zu Informationszwecken.
+2. Wählen Sie auf der Seite **Geplantes Failover bestätigen**den Quell- und Zielort aus. Beachten Sie die Failover-Richtung. Wenn das Failover vom primären Standort erwartungsgemäß funktioniert hat und sich alle virtuellen Computer am sekundären Standort befinden, dient diese Angabe nur zu Informationszwecken.
 3. Wählen Sie bei einem Failback von Azure Einstellungen unter **Datensynchronisierung**aus:
 
    * **Daten vor dem Failover synchronisieren (nur Deltaänderungen synchronisieren)**: Diese Option minimiert die Ausfallzeiten der virtuellen Computer, da diese für die Synchronisierung nicht heruntergefahren werden. Die Option bewirkt Folgendes:

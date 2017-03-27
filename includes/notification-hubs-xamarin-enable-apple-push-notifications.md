@@ -31,14 +31,14 @@ Erstellen Sie eine neue explizite App-ID für Ihre Anwendung bei Apple, und konf
    * **Pushbenachrichtigungen**: Aktivieren Sie die Option **Push Notifications** im Bereich **App Services**.
      
      ![](./media/notification-hubs-xamarin-enable-apple-push-notifications/notification-hubs-new-appid-info.png)
-3. Überprüfen Sie die Einstellung im Bildschirm „Confirm your App ID“, und klicken Sie nach der Überprüfung auf **Submit**
-4. Sobald Sie die neue App-ID übermittelt haben, wird der **Registration complete** -Bildschirm geöffnet. Klicken Sie auf **Done**.
+3. Überprüfen Sie die Einstellung im Bildschirm „Confirm your App ID“, und klicken Sie nach der Überprüfung auf **Register**.
+4. Nach dem Übermitteln der neuen App-ID wird der Bildschirm **Registration complete** angezeigt. Klicken Sie auf **Done**.
 5. Bestimmen Sie im Developer Center unter "App IDs" die soeben erstellte App-ID, und klicken Sie auf deren Zeile. Durch Klicken auf die Zeile mit der App-ID werden Einzelheiten zur App angezeigt. Klicken Sie unten auf dem Bildschirm auf **Bearbeiten** .
 6. Scrollen Sie bis zur Unterseite des Bildschirms und klicken Sie auf die Schaltfläche **Create Certificate...** unter dem Abschnitt **Development Push SSL Certificate**.
    
        ![](./media/notification-hubs-xamarin-enable-apple-push-notifications/notification-hubs-appid-create-cert.png)
    
-       This will display the "Add iOS Certificate" assistant.
+       This displays the "Add iOS Certificate" assistant.
    
    > [!NOTE]
    > In diesem Lernprogramm wird ein Entwicklungszertifikat verwendet. Derselbe Prozess wird auch zum Registrieren eines Produktionszertifikats durchgeführt. Achten Sie darauf, dass Sie denselben Zertifikattyp beim Senden von Benachrichtigungen verwenden.
@@ -64,15 +64,15 @@ Erstellen Sie eine neue explizite App-ID für Ihre Anwendung bei Apple, und konf
        ![](./media/notification-hubs-xamarin-enable-apple-push-notifications/notification-hubs-cert-in-keychain.png)
    
    > [!NOTE]
-   > Der Name in Ihrem Zertifikat kann sich davon unterscheiden, er enthält jedoch das Präfix **Apple Development iOS Push Services:**.
+   > Der Name in Ihrem Zertifikat kann sich davon unterscheiden, aber er enthält das Präfix **Apple Development iOS Push Services:**.
    > 
    > 
 10. Klicken Sie in der Schlüsselbundverwaltung bei gedrückter Control-Taste auf das neue Pushzertifikat, das Sie soeben in der Kategorie **Zertifikate** erstellt haben. Klicken Sie auf **Exportieren**, benennen Sie die Datei, wählen Sie das Format **.p12** aus, und klicken Sie dann auf **Speichern**.
     
-    Notieren Sie sich den Dateinamen und den Speicherort des exportierten P12-Zertifikats. Damit wird die Authentifizierung mit APNS aktiviert, indem Sie es zum klassischen Azure-Portal hochladen.
+    Notieren Sie sich den Dateinamen und den Speicherort des exportierten P12-Zertifikats. Es wird zum Aktivieren der Authentifizierung mit APNS verwendet, indem Sie es im klassischen Azure-Portal hochladen. Wenn die Formatoption **.p12** nicht verfügbar ist, müssen Sie Keychain Access unter Umständen neu starten.
 
 #### <a name="create-a-provisioning-profile-for-the-app"></a>Erstellen eines Bereitstellungsprofils für die App
-1. Zurück im <a href="http://go.microsoft.com/fwlink/p/?LinkId=272456" target="_blank">iOS Provisioning Portal</a> wählen Sie **Provisioning Profiles**, dann **All**, und klicken Sie schließlich auf die Schaltfläche **+**, um ein neues Profil zu erstellen. Hierdurch wird der Assistent **Add iOS Provisiong Profile** gestartet
+1. Zurück im <a href="http://go.microsoft.com/fwlink/p/?LinkId=272456" target="_blank">iOS Provisioning Portal</a> wählen Sie **Provisioning Profiles**, dann **All**, und klicken Sie schließlich auf die Schaltfläche **+**, um ein neues Profil zu erstellen. Der Assistent **Add iOS Provisioning Profile** wird gestartet.
    
        ![](./media/notification-hubs-xamarin-enable-apple-push-notifications/notification-hubs-new-provisioning-profile.png)
 2. Wählen Sie unter **Development** die Option **iOS App Development** als Bereitstellungsprofiltyp aus, und klicken Sie dann auf **Continue**.
@@ -82,15 +82,11 @@ Erstellen Sie eine neue explizite App-ID für Ihre Anwendung bei Apple, und konf
 4. Wählen Sie im Bildschirm **Select certificates** das für die Codesignatur verwendete Entwicklungszertifikat aus, und klicken Sie auf **Continue**. Dabei handelt es sich um ein Signaturzertifikat, nicht um das soeben erstellte Pushzertifikat.
    
        ![](./media/notification-hubs-xamarin-enable-apple-push-notifications/notification-hubs-provisioning-select-cert.png)
+       
 5. Anschließend wählen Sie die zum Testen zu verwendenden **Devices**, und klicken Sie auf **Continue**.
    
        ![](./media/notification-hubs-xamarin-enable-apple-push-notifications/notification-hubs-provisioning-select-devices.png)
 6. Geben Sie schließlich einen Namen für das Profil im Feld **Profile Name** ein, und klicken Sie auf **Generate**.
    
        ![](./media/notification-hubs-xamarin-enable-apple-push-notifications/notification-hubs-provisioning-name-profile.png)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

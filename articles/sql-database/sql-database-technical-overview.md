@@ -14,22 +14,25 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 12/20/2016
+ms.date: 03/17/2017
 ms.author: shkurhek
 translationtype: Human Translation
-ms.sourcegitcommit: ae493fbb3690e80eef4b37e0315d1715a924e568
-ms.openlocfilehash: 7c70c737fb41e8c1c5a339462fa77a8bc7318f7e
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: c505844cc2b7c745a1106b3c446833fb206ca98a
+ms.lasthandoff: 03/18/2017
 
 ---
 # <a name="what-is-sql-database-introduction-to-sql-database"></a>Was ist SQL Database? Einführung in SQL-Datenbank
 SQL-Datenbank ist ein relationaler Datenbankdienst in der Microsoft Cloud, der auf dem marktführenden Microsoft SQL Server-Modul basiert und unternehmenswichtige Workloads verarbeiten kann. SQL-Datenbank bietet vorhersagbare Leistung auf mehreren Dienstebenen, dynamische Skalierbarkeit ohne Ausfallzeiten, integrierte Geschäftskontinuität und Datenschutz – nahezu ohne Verwaltungsaufwand. Mit diesen Funktionen können Sie sich auf die schnelle Entwicklung von Apps und die Verkürzung des Zeitraums bis zur Markteinführung konzentrieren, anstatt wertvolle Zeit und Ressourcen für die Verwaltung von virtuellen Computern und der Infrastruktur aufwenden zu müssen. Da SQL-Datenbank auf dem [SQL Server](https://msdn.microsoft.com/library/bb545450.aspx)-Modul basiert, unterstützt SQL-Datenbank vorhandene SQL Server-Tools, -Bibliotheken und -APIs. Es ist für Sie also einfach, neue Lösungen zu entwickeln und vorhandene SQL Server-Lösungen zu verschieben und in die Microsoft Cloud zu erweitern, ohne dass Sie hierfür neue Fähigkeiten erlernen müssen.
 
-Dieser Artikel bietet eine Einführung in die wesentlichen Konzepte und Features von SQL-Datenbank im Hinblick auf Leistung, Skalierbarkeit und Verwaltbarkeit sowie Links zu detaillierten Informationen. Falls Sie mit praktischen Tutorials starten möchten, können Sie auf [Erstellen Ihrer ersten SQL-Datenbank](sql-database-get-started.md) oder [Erstellen eines elastischen Pools](sql-database-elastic-pool-manage-portal.md) zugreifen. Dieses Video enthält eine kurze Demonstration.
+Dieser Artikel bietet eine Einführung in die wesentlichen Konzepte und Features von SQL-Datenbank im Hinblick auf Leistung, Skalierbarkeit und Verwaltbarkeit sowie Links zu detaillierten Informationen. Diese Schnellstarts erleichtern Ihnen den Einstieg:
+ - [Create a SQL database in the Azure portal](sql-database-get-started-portal.md) (Erstellen einer SQL-Datenbank im Azure-Portal)  
+ - [Erstellen einer SQL-Datenbank mit der Azure CLI](sql-database-get-started-cli.md)
+ - [Erstellen einer SQL-Datenbank mithilfe von PowerShell](sql-database-get-started-powershell.md)
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-create-DBs-in-seconds/player]
-> 
-> 
+Azure CLI- und PowerShell-Beispiele finden Sie unter:
+ - [Azure CLI-Beispiele für Azure SQL-Datenbank](sql-database-cli-samples.md)
+ - [Azure PowerShell-Beispiele für Azure SQL-Datenbank](sql-database-powershell-samples.md)
 
 ## <a name="adjust-performance-and-scale-without-downtime"></a>Anpassen von Leistung und Skalierung ohne Ausfallzeiten
 Der SQL-Datenbank-Dienst verfügt über drei Dienstebenen: Basic, Standard und Premium. Jede Dienstebene bietet [verschiedene Leistungsstufen und Funktionen](sql-database-service-tiers.md) zur Unterstützung geringer und hoher Datenbankworkloads. Sie können zu geringen monatlichen Kosten Ihre erste App in einer kleinen Datenbank erstellen und dann manuell oder programmgesteuert jederzeit die [Dienstebene (Tarif) ändern](sql-database-service-tiers.md), um die Anforderungen Ihrer Lösung zu erfüllen. Dies ist möglich, ohne dass es für die App oder für Ihre Kunden zu Ausfallzeiten kommt. Dank der dynamischen Skalierbarkeit kann Ihre Datenbank in transparenter Form auf sich schnell ändernde Ressourcenanforderungen reagieren, und Sie zahlen nur für die Ressourcen, die Sie jeweils benötigen.

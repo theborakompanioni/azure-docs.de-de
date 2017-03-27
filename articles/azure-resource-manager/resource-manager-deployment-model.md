@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/17/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 4f541e34e7c0696e4074613c4ab0734a096c6d12
-ms.openlocfilehash: d6ac6253caaf5af1f8a14a499653c8afcbb7a2d8
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: c56a1dc92c27d55b90554e23dd9763ff98ce6cc7
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -212,15 +213,10 @@ Alle Automatisierungen und Skripts, die Sie erstellt haben, bleiben für die vor
 
 **Wo finde ich Beispiele für Vorlagen für den Azure-Ressourcen-Manager?**
 
-Einen umfassenden Satz von Startervorlagen finden Sie unter [Schnellstartvorlagen für den Azure-Ressourcen-Manager](https://azure.microsoft.com/documentation/templates/).
+Einen umfassenden Satz von Startervorlagen finden Sie unter [Schnellstartvorlagen für den Azure Resource-Manager](https://azure.microsoft.com/documentation/templates/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Eine exemplarische Vorgehensweise zum Erstellen einer Vorlage, mit der ein virtueller Computer, ein Speicherkonto und ein virtuelles Netzwerk definiert werden, finden Sie unter [Resource Manager-Vorlage – exemplarische Vorgehensweise](resource-manager-template-walkthrough.md).
 * Die Befehle zum Bereitstellen einer Vorlage finden Sie unter [Bereitstellen einer Anwendung mit einer Azure-Ressourcen-Manager-Vorlage](resource-group-template-deploy.md).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

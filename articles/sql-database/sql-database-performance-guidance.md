@@ -13,30 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 02/09/2017
+ms.date: 03/06/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: 12da8c9f7b55a8758d7f4bf743cd85e493fb24b9
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: a9d496d696298d800bc40b1f3880c95f84e5f29f
+ms.lasthandoff: 03/10/2017
 
 
 ---
 # <a name="azure-sql-database-and-performance-for-single-databases"></a>Azure SQL-Datenbank und Leistung für Einzeldatenbanken
-Azure SQL-Datenbank verfügt über drei [Dienstebenen](sql-database-service-tiers.md): Basic, Standard und Premium. Auf jeder Dienstebene sind die Ressourcen, die von der SQL-Datenbank genutzt werden können, streng voneinander isoliert, und es wird eine vorhersagbare Leistung für die Dienstebene sichergestellt. In diesem Artikel erhalten Sie nützliche Informationen zum Auswählen der Dienstebene für Ihre Anwendung. Außerdem werden Möglichkeiten zum Optimieren Ihrer Anwendung beschrieben, um mit Azure SQL-Datenbank das beste Ergebnis zu erzielen.
+Azure SQL-Datenbank bietet vier [Dienstebenen](sql-database-service-tiers.md): Basic, Standard, Premium und Premium RS. Auf jeder Dienstebene sind die Ressourcen, die von der SQL-Datenbank genutzt werden können, streng voneinander isoliert, und es wird eine vorhersagbare Leistung für die Dienstebene sichergestellt. In diesem Artikel erhalten Sie nützliche Informationen zum Auswählen der Dienstebene für Ihre Anwendung. Außerdem werden Möglichkeiten zum Optimieren Ihrer Anwendung beschrieben, um mit Azure SQL-Datenbank das beste Ergebnis zu erzielen.
 
 > [!NOTE]
 > In diesem Artikel geht es schwerpunktmäßig um die Verbesserung der Leistung für Einzeldatenbanken in Azure SQL-Datenbank. Informationen zur Verbesserung der Leistung für elastische Pools finden Sie unter [Wo sollte ein elastischer Pool verwendet werden?](sql-database-elastic-pool-guidance.md). Beachten Sie aber, dass Sie viele Optimierungsempfehlungen in diesem Artikel auf Datenbanken in einem elastischen Pool anwenden und ähnliche Leistungsvorteile erzielen können.
 > 
 > 
-
-Es gibt drei Azure SQL-Datenbank-Dienstebenen (Tarife), aus denen Sie wählen können (die Leistung wird in Datenbankdurchsatzeinheiten [Database Throughput Units, [DTUs](sql-database-what-is-a-dtu.md)] gemessen):
-
-* **Basic**. Die Dienstebene Basic bietet eine gute Vorhersagbarkeit der Leistung für jede Datenbankstunde. In einer Basic-Datenbank sorgen ausreichende Ressourcen für eine gute Leistung einer kleinen Datenbank, in der nicht mehrere gleichzeitige Anforderungen auftreten.
-* **Standard**: Die Dienstebene Standard bietet eine verbesserte Leistungsvorhersagbarkeit und ist für Datenbanken mit mehreren gleichzeitigen Anforderungen konzipiert, z.B. Die Dienstebene Standard bietet eine verbesserte Leistungsvorhersagbarkeit und gute Leistung, die für Datenbanken mit mehreren gleichzeitigen Anforderungen konzipiert sind, z.B. Arbeitsgruppen und Webanwendungen. Wenn Sie eine Datenbank der Dienstebene Standard wählen, können Sie die Größe Ihrer Datenbankanwendung basierend auf einer minutengenauen vorhersagbaren Leistung festlegen.
-* **Premium**. Die Dienstebene Premium bietet für jede Premium-Datenbank eine sekundengenau vorhersagbare Leistung. Wenn Sie die Dienstebene Premium wählen, können Sie die Größe Ihrer Datenbankanwendung basierend auf der Spitzenlast der Datenbank festlegen. Bei diesem Plan werden Fälle verhindert, in denen die Leistungsvarianz bewirkt, dass kleinere Abfragen bei latenzanfälligen Vorgängen länger als erwartet dauern. Dieses Modell kann für eine starke Vereinfachung bei Entwicklungs- und Produktprüfungszyklen für Anwendungen sorgen, bei denen in Bezug auf Ressourcenspitzenlast, Leistungsvarianz oder Abfragewartezeit hohe Anforderungen bestehen.
-
-Sie legen die Leistungsebene auf jeder Dienstebene so fest, dass Sie flexibel nur für die jeweils benötige Kapazität bezahlen. Sie können die [Kapazität anpassen](sql-database-service-tiers.md) (nach oben oder unten), wenn sich die Workload ändert. Wenn Ihre Datenbankworkload beispielsweise während der heißen Einkaufsphase vor dem Schulbeginn hoch ist, können Sie die Leistungsebene für die Datenbank für einen bestimmten Zeitraum erhöhen (z.B. Juli bis September). Sie können sie dann wieder reduzieren, wenn diese Zeit der höheren Auslastung endet. Sie können die zu zahlenden Kosten reduzieren, indem Sie die Cloudumgebung an die Saisongebundenheit Ihres Unternehmens anpassen. Dieses Modell eignet sich auch gut für die Veröffentlichungszyklen von Softwareprodukten. Ein Testteam kann die Kapazität zuordnen und Testläufe durchführen und die Kapazität dann wieder freigeben, wenn das Testing beendet ist. Bei einem Kapazitätsanforderungsmodell bezahlen Sie für die Kapazität, wenn Sie sie benötigen, und haben keine Kosten für dedizierte Ressourcen, die Sie ggf. nur sehr selten nutzen.
 
 ## <a name="why-service-tiers"></a>Warum werden Dienstebenen verwendet?
 Jede Datenbankworkload kann sich zwar unterscheiden, aber der Zweck von Dienstebenen besteht darin, für verschiedene Leistungsebenen eine Vorhersagbarkeit der Leistung zu ermöglichen. Kunden mit höheren Anforderungen an Datenbankressourcen können in einer dedizierteren Computingumgebung arbeiten.
@@ -56,12 +48,18 @@ Für die meisten Anwendungsfälle der Dienstebene Premium gelten die folgenden M
 * **Hohe Zahl von gleichzeitigen Anforderungen**: Einige Datenbankanwendungen verarbeiten viele gleichzeitige Anforderungen, z.B. bei einer Website mit hohem Datenverkehrsaufkommen. Für die Dienstebenen Basic und Standard gelten bei der Anzahl von gleichzeitigen Anforderungen bestimmte Einschränkungen pro Datenbank. Für Anwendungen, die mehr Verbindungen benötigen, muss eine angemessene Reservierungsgröße gewählt werden, um die maximale Anzahl von erforderlichen Anforderungen verarbeiten zu können.
 * **Niedrige Latenz**. Für einige Anwendungen muss eine Reaktion der Datenbank in kürzester Zeit garantiert werden. Wenn eine bestimmte gespeicherte Prozedur im Rahmen eines größeren Kundenvorgangs aufgerufen wird, kann unter Umständen die Anforderung bestehen, dass die Rückgabe für diesen Aufruf in 99 Prozent der Fälle innerhalb von maximal 20 Millisekunden erfolgt. Diese Art von Anwendung profitiert von der Dienstebene Premium, da sichergestellt ist, dass genügend erforderliche Rechenleistung verfügbar ist.
 
+* **Premium RS**. Speziell für Kunden mit E/A-intensiven Workloads, die aber nicht die höchsten Verfügbarkeitsgarantien benötigen. Beispiele hierfür sind das Testen von Hochleistungsworkloads oder eine analytische Workload, wo die Datenbank nicht das bevorzugte System ist.
+
 Die Dienstebene, die Sie für Ihre SQL-Datenbank benötigen, richtet sich nach den Spitzenlastanforderungen für die einzelnen Ressourcendimensionen. Bei einigen Anwendungen wird nur ein geringer Anteil einer Ressource genutzt, aber dafür bestehen erhebliche Anforderungen in Bezug auf andere Ressourcen.
 
 ## <a name="service-tier-capabilities-and-limits"></a>Funktionen und Beschränkungen von Dienstebenen
 Jeder Dienstebene und Leistungsebene sind verschiedene Beschränkungen und Leistungsmerkmale zugeordnet. In dieser Tabelle sind diese Merkmale für eine Einzeldatenbank beschrieben.
 
 [!INCLUDE [SQL DB service tiers table](../../includes/sql-database-service-tiers-table.md)]
+
+> [!IMPORTANT]
+> Kunden mit den Leistungsstufen P11 und P15 können bis zu 4TB Speicher ohne Aufpreis nutzen. Diese 4-TB-Option ist derzeit in folgenden Regionen in der Public Preview verfügbar: USA, Osten 2; USA, Westen; Europa, Westen; Asien, Südosten; Japan, Osten; Australien, Osten; Kanada, Mitte und Kanada, Osten. Aktuelle Einschränkungen finden Sie unter [Current limitations of P11 and P15 databases with 4 TB maxsize](sql-database-service-tiers.md#current-limitations-of-p11-and-p15-databases-with-4-tb-maxsize) (Aktuelle Einschränkungen bei P11- und P15-Datenbanken mit maximal 4TB).
+>
 
 ### <a name="maximum-in-memory-oltp-storage"></a>Maximaler In-Memory-OLTP-Speicher
 Sie können die **sys.dm_db_resource_stats**-Ansicht verwenden, um die Verwendung des Azure-In-Memory-Speichers zu überwachen. Weitere Informationen zur Überwachung finden Sie unter [Überwachen des In-Memory-OLTP-Speichers](sql-database-in-memory-oltp-monitoring.md).
@@ -189,7 +187,7 @@ Das nächste Beispiel enthält unterschiedliche Möglichkeiten zum Einsatz der *
         WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
 3. Mit diesen Informationen zu den Durchschnitts- und Höchstwerten der Ressourcenmetriken können Sie bewerten, wie gut Ihre Workload zur gewählten Leistungsebene passt. Normalerweise erhalten Sie mit den Durchschnittswerten aus **sys.resource_stats** eine gute Grundlage gegenüber der Zielgröße. Dies sollte Ihre primäre Messlatte sein. Beispielsweise können Sie die Standard-Dienstebene mit der Leistungsebene S2 verwenden. Die durchschnittlichen Nutzungsprozentsätze für CPU- und I/O-Lese- und -Schreibvorgänge liegen unter 40 Prozent, die durchschnittliche Anzahl von Workern unter 50 und die durchschnittliche Anzahl von Sitzungen unter 200. Für diese Workload ist unter Umständen die Leistungsebene S1 geeignet. Es ist leicht zu erkennen, ob Ihre Datenbank die Grenzen für Worker und Sitzungen einhält. Um zu ermitteln, ob eine Datenbank in Bezug auf CPU, Lesevorgänge und Schreibvorgänge zu einer niedrigeren Leistungsebene passt, dividieren Sie die DTU-Anzahl der niedrigeren Leistungsebene durch die DTU-Anzahl Ihrer aktuellen Leistungsebene und multiplizieren das Ergebnis dann mit 100:
    
-    **S1 DTU / S2 DTU * 100 = 20 / 50 * 100 = 40**
+    **S1 DTU / S2 DTU * 100 = 20 / 50* 100 = 40**
    
     Das Ergebnis ist der relative Leistungsunterschied zwischen den beiden Leistungsebenen als Prozentsatz. Wenn die Ressourcennutzung diese Menge nicht überschreitet, kann für Ihre Workload ggf. die niedrigere Leistungsstufe geeignet sein. Sie sollten sich aber alle Bereiche der Ressourcennutzung ansehen und den Prozentsatz dafür ermitteln, wie oft Ihre Datenbankworkload in die niedrigere Leistungsebene passt. Mit der folgenden Abfrage wird der Prozentsatz für die Eignung pro Ressourcendimension basierend auf dem in diesem Beispiel berechneten Schwellenwert von 40% ausgegeben:
    

@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 12/15/2015
 ms.author: Ning
 translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: 11a1f6ea289db38aeb8c2fff2c9b0e6b1f0f044c
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: e43a3920da0baafa1be0d3a9a8596f19bf7ebc3e
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -45,7 +46,7 @@ Die neueste Version der Erweiterung ist **2.3**. **Ältere Versionen (2.0, 2.1 u
 ## <a name="enable-the-extension"></a>Aktivieren der Erweiterung
 Sie können diese Erweiterung über das [Azure-Portal](https://portal.azure.com/#), über Azure PowerShell oder über Azure-CLI-Skripts aktivieren.
 
-Um die System- und Leistungsdaten direkt vom Azure-Portal aus anzuzeigen und zu konfigurieren, folgen Sie [diesen Schritten im Azure-Blog] (https://azure.microsoft.com/blog/2014/09/02/windows-azure-virtual-machine-monitoring-with-wad-extension/„URL zum Windows-Blog“/).
+Um die System- und Leistungsdaten direkt im Azure-Portal anzuzeigen und zu konfigurieren, führen Sie [diese Schritte im Azure-Blog](https://azure.microsoft.com/en-us/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) aus.
 
 In diesem Artikel wird beschrieben, wie Sie die Erweiterung mit Azure-CLI-Befehlen aktivieren und konfigurieren. So können Sie die Daten direkt aus der Speichertabelle lesen und anzeigen.
 
@@ -54,7 +55,7 @@ Beachten Sie, dass die hier beschriebenen Konfigurationsmethoden nicht für das 
 ## <a name="prerequisites"></a>Voraussetzungen
 * **Azure Linux Agent ab Version 2.0.6**.
   Beachten Sie, dass die meisten Images des Linux-Katalogs für virtuelle Azure-Computer die Version 2.0.6 oder höher besitzen. Sie können **WAAgent -version** ausführen, um zu ermitteln, welche Version auf dem virtuellen Computer installiert ist. Wenn auf dem virtuellen Computer eine ältere Version als 2.0.6 ausgeführt wird, können Sie sie unter Verwendung [dieser Anweisungen bei GitHub](https://github.com/Azure/WALinuxAgent "Anweisungen") aktualisieren.
-* **Azure-Befehlszeilenschnittstelle**. Folgen Sie [dieser Anleitung zur CLI-Installation](../xplat-cli-install.md) , um die Azure-Befehlszeilenschnittstelle auf Ihrem Computer einzurichten. Sobald die Azure-Befehlszeilenschnittstelle installiert ist, können Sie über Ihre Befehlszeilenschnittstelle (Bash, Terminal oder Eingabeaufforderung) mithilfe des Befehls **azure** auf die Befehle der Azure-Befehlszeilenschnittstelle zugreifen. Beispiel:
+* **Azure-Befehlszeilenschnittstelle**. Folgen Sie [dieser Anleitung zur CLI-Installation](../cli-install-nodejs.md) , um die Azure-Befehlszeilenschnittstelle auf Ihrem Computer einzurichten. Sobald die Azure-Befehlszeilenschnittstelle installiert ist, können Sie über Ihre Befehlszeilenschnittstelle (Bash, Terminal oder Eingabeaufforderung) mithilfe des Befehls **azure** auf die Befehle der Azure-Befehlszeilenschnittstelle zugreifen. Beispiel:
   
   * Führen Sie **azure vm extension set --help** aus, um ausführliche Hilfeinformationen zu erhalten.
   * Führen Sie **azure login** aus, um sich bei Azure anzumelden.
@@ -147,10 +148,5 @@ Wenn Sie fileCfg oder perfCfg aktiviert haben (wie in Szenario 2 und 3 beschrieb
 
 ## <a name="known-issues"></a>Bekannte Probleme
 * In der aktuellen Version (2.3) der Linux-Diagnoseerweiterung kann auf die Rsyslog-Informationen und die benutzerdefinierte Protokolldatei nur per Skript zugegriffen werden.
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

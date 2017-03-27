@@ -1,6 +1,6 @@
 ---
 title: Konzepte und Anforderungen im Zusammenhang mit der Netzwerksicherheit in Azure | Microsoft-Dokumentation
-description: " Dieser Artikel erläutert Ihnen das Angebot von Microsoft Azure im Bereich Netzwerksicherheit. Wir bieten grundlegende Erklärungen zu Kernkonzepten und Anforderungen im Bereich Netzwerksicherheit sowie Informationen über die Vorteile von Azure in jedem dieser Bereiche.. "
+description: " Dieser Artikel erläutert Ihnen das Angebot von Microsoft Azure im Bereich Netzwerksicherheit. Wir bieten grundlegende Erklärungen zu Kernkonzepten und Anforderungen im Bereich Netzwerksicherheit und Informationen über die Vorteile von Azure in jedem dieser Bereiche. "
 services: security
 documentationcenter: na
 author: TomShinder
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2017
+ms.date: 03/13/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: b5edb42f7fac6943a72e02a85a4cbc32300b9f38
-ms.openlocfilehash: 8b0266a86221b379a105b87f130cd0a4f97385f7
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 4f8ff754858dfb12a7c1fb6e11b1ea99d99d4aeb
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -203,7 +204,7 @@ Weitere Informationen:
 ## <a name="logging"></a>Protokollierung
 Protokollierung auf Netzwerkebene ist eine entscheidende Funktion für jedes Netzwerksicherheitsszenario. In Azure können Sie Informationen für Netzwerksicherheitsgruppen (NSG) protokollieren, um Protokollierungsinformationen auf Netzwerkebene zu erhalten. Mit der NSG-Protokollierung erhalten Sie Informationen aus:
 
-* Überwachungsprotokollen – Diese Protokolle werden verwendet, um alle Vorgänge anzuzeigen, die an Ihre Azure-Abonnements übermittelt werden. Diese Protokolle sind standardmäßig aktiviert und können im Azure-Portal verwendet werden.
+* [Überwachungsprotokollen](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md): Diese Protokolle werden verwendet, um alle Vorgänge anzuzeigen, die an Ihre Azure-Abonnements übermittelt werden. Diese Protokolle sind standardmäßig aktiviert und können im Azure-Portal verwendet werden. Sie wurden zuvor als „Überwachungsprotokolle“ oder „Betriebsprotokolle“ bezeichnet.
 * Ereignisprotokollen – Diese Protokolle bieten Informationen darüber, welche NSG-Regeln angewendet wurden.
 * Leistungsindikatorenprotokolle – Dieses Protokolle zeigen Ihnen an, wie oft jede NSG-Regel angewendet wurde, um Datenverkehr zuzulassen oder zu verweigern.
 
@@ -267,9 +268,4 @@ Mit Azure Security Center können Sie die Netzwerksicherheit wie folgt optimiere
 Weitere Informationen:
 
 * [Einführung in Azure Security Center](../security-center/security-center-intro.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

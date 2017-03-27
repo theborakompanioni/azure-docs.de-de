@@ -1,8 +1,8 @@
 ---
 title: "Überblick über Metriken in Microsoft Azure | Microsoft-Dokumentation"
-description: "Übersicht über Metriken und ihre Verwendung in Microsoft Azure"
+description: "Überblick über Metriken und ihre Verwendung in Microsoft Azure"
 author: kamathashwin
-manager: carolz
+manager: carmonm
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 03/02/2017
 ms.author: ashwink
 translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: b1c3eb101a6eebf43237d1f08a30721e80616adc
-ms.lasthandoff: 03/03/2017
-
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 86e025f9211a1d7ed07e831b7ce4c21be351513b
+ms.lasthandoff: 03/09/2017
 
 ---
+
 # <a name="overview-of-metrics-in-microsoft-azure"></a>Überblick über Metriken in Microsoft Azure
 In diesem Artikel wird beschrieben, was Metriken in Microsoft Azure sind, welche Vorteile sie haben und wie Sie mit deren Nutzung beginnen.  
 
@@ -40,20 +40,24 @@ Metriken sind eine wertvolle Quelle für Telemetriedaten, mit denen Sie folgende
 Metriken weisen folgende Merkmale auf:
 
 * Sämtliche Metriken werden im **1-Minuten-Takt** erfasst. Jede Minute erhalten Sie von Ihrer Ressource einen Metrikwert, der Ihnen einen Überblick über den Zustand und die Integrität Ihrer Ressource nahezu in Echtzeit bietet.
-* Metriken sind **standardmäßig verfügbar. Dies bedeutet, dass Sie sie nicht aktivieren** oder zusätzliche Diagnosen einrichten müssen.
+* Metriken sind **sofort verfügbar**. Sie müssen sie nicht aktivieren oder zusätzliche Diagnosen einrichten.
 * Sie haben **30 Tage lang Zugriff auf den Verlauf** jeder Metrik. Sie können schnell den aktuellen und monatlichen Trend für die Leistung oder Integrität Ihrer Ressource überblicken.
 
 Weitere Funktionen:
 
-* Einfaches Entdecken, Zugreifen auf und **Anzeigen aller Metriken** über das Azure-Portal, wenn Sie eine Ressource auswählen und die Metriken in einem Diagramm darstellen.
 * Konfigurieren einer **Warnungsregel für eine Metrik, die eine Benachrichtigung sendet oder eine automatisierte Aktion ausführt**, sobald der Metrikwert einen von Ihnen festgelegten Schwellenwert überschreitet. Die automatische Skalierung ist eine besondere automatisierte Aktion, mit der Sie Ihre Ressource horizontal hochskalieren können, um die auf Ihrer Website oder Ihren Computeressourcen eingehenden Anforderungen oder Lasten zu bewältigen. Sie können eine Regel für die automatische Skalierung konfigurieren, die das horizontale Hoch- und Herunterskalieren auslöst, sobald eine Metrik einen bestimmten Schwellenwert überschreitet.
-* **Archivieren** von Metriken für längere Zeit oder Verwendung von Metriken zur Erstellung von Offlineberichten. Sie können Ihre Metriken an Azure Blob Storage weiterleiten, wenn Sie die Diagnoseeinstellungen für Ihre Ressource konfigurieren.
-* **Streamen** von Metriken an einen Event Hub, wodurch Sie sie dann an Azure Stream Analytics oder benutzerdefinierte Apps weiterleiten können, um Analysen nahezu in Echtzeit durchführen zu können. Dies können Sie in den Diagnoseeinstellungen festlegen.
-* **Weiterleiten** aller Metriken an Log Analytics (OMS), um unmittelbare Analysen, Suchen und benutzerdefinierte Warnungen für von Ihren Ressourcen gesendete Metrikdaten zu ermöglichen.
+
+* **Leiten** Sie alle Metriken an Application Insights oder Log Analytics (OMS) weiter, um unmittelbare Analysen, Suchen und benutzerdefinierte Warnungen für von Ihren Ressourcen gesendete Metrikdaten zu ermöglichen. Sie können auch Metriken an einen Event Hub streamen, wodurch Sie sie dann an Azure Stream Analytics oder benutzerdefinierte Apps weiterleiten können, um Analysen nahezu in Echtzeit durchführen zu können. Event Hub-Streaming wird mit Diagnoseeinstellungen eingerichtet.
+
+* **Archivieren Sie Metriken im Speicher**, um sie länger aufzubewahren oder zur Erstellung von Offlineberichten zu verwenden. Sie können Ihre Metriken an Azure Blob Storage weiterleiten, wenn Sie die Diagnoseeinstellungen für Ihre Ressource konfigurieren.
+
+* Einfaches Entdecken, Zugreifen auf und **Anzeigen aller Metriken** über das Azure-Portal, wenn Sie eine Ressource auswählen und die Metriken in einem Diagramm darstellen.
+
 * **Nutzen** von Metriken über die neuen Azure Monitor-REST-APIs.
+
 * **Abfragen** von Metriken mithilfe von PowerShell-Cmdlets oder der plattformübergreifenden REST-API.
-  
-  ![Routing von Metriken in Azure Monitor](./media/monitoring-overview-metrics/MetricsOverview0.png)
+
+  ![Routing von Metriken in Azure Monitor](./media/monitoring-overview-metrics/Metrics_Overview_v4.png)
 
 ## <a name="access-metrics-via-the-portal"></a>Zugreifen auf Metriken über das Portal
 Es folgt eine kurze exemplarische Vorgehensweise zum Erstellen eines Metrikdiagramm mithilfe des Azure-Portals.
@@ -63,7 +67,7 @@ Es folgt eine kurze exemplarische Vorgehensweise zum Erstellen eines Metrikdiagr
 2. Erstellen Sie eine Azure App Service-Website.
 3. Wechseln Sie nach dem Erstellen einer Website zum Blatt **Übersicht** der Website.
 4. Auf der Kachel **Überwachung** können Sie neue Metriken anzeigen. Sie können die Kachel bearbeiten und weitere Metriken auswählen.
-   
+
    ![Metriken für eine Ressource in Azure Monitor](./media/monitoring-overview-metrics/MetricsOverview1.png)
 
 ### <a name="to-access-all-metrics-in-a-single-place"></a>So greifen Sie zentral auf alle Metriken zu
@@ -72,13 +76,13 @@ Es folgt eine kurze exemplarische Vorgehensweise zum Erstellen eines Metrikdiagr
 3. Wählen Sie in der Dropdownliste Ihr Abonnement, Ihre Ressourcengruppe und den Namen der Ressource aus.
 4. Sehen Sie sich die Liste mit den verfügbaren Metriken an. Wählen Sie die Metrik aus, die Sie interessiert, und stellen Sie sie dar.
 5. Durch Klicken auf den Stift in der rechten oberen Ecke können Sie sie an das Dashboard heften.
-   
+
    ![Zugreifen auf alle Metriken von einer zentralen Stelle in Azure Monitor](./media/monitoring-overview-metrics/MetricsOverview2.png)
 
 > [!NOTE]
 > Sie können auf Metriken auf Hostebene von VMs (basierend auf Azure Resource Manager) und VM-Skalierungsgruppen aus zugreifen, ohne eine zusätzliche Diagnose einzurichten. Diese neuen Metriken auf Hostebene sind für Windows- und Linux-Instanzen verfügbar. Diese Metriken sind nicht zu verwechseln mit Metriken auf Gastbetriebssystemebene, auf die Sie zugreifen können, wenn Sie die Azure-Diagnose auf Ihren virtuellen Computern oder in Ihren VM-Skalierungsgruppen eingeschaltet haben. Weitere Informationen zum Konfigurieren der Diagnose finden Sie unter [Was ist Microsoft Azure-Diagnose?](../azure-diagnostics.md).
-> 
-> 
+>
+>
 
 ## <a name="access-metrics-via-the-rest-api"></a>Zugreifen auf Metriken über die REST-API
 Auf Azure-Metriken kann über Azure Monitor-APIs zugegriffen werden. Es gibt zwei APIs, mit denen Sie Metriken ermitteln und darauf zugreifen können:
@@ -88,8 +92,8 @@ Auf Azure-Metriken kann über Azure Monitor-APIs zugegriffen werden. Es gibt zwe
 
 > [!NOTE]
 > In diesem Artikel geht es um die Metriken, die über die [neue API für Metriken](https://msdn.microsoft.com/library/dn931930.aspx) für Azure-Ressourcen abgerufen werden können. Die aktuelle API-Version für die neue Metrikdefinitions-API lautet 2016-03-01, die Version für die Metrik-API lautet 2016-09-01. Auf die Legacy-Metrikdefinitionen und -Metriken kann über die API-Version 2014-04-01 zugegriffen werden.
-> 
-> 
+>
+>
 
 Eine ausführliche exemplarische Vorgehensweise unter Verwendung der Azure Monitor-REST-APIs finden Sie unter [Exemplarische Vorgehensweise zur Azure Monitor-REST-API](monitoring-rest-api-walkthrough.md).
 
@@ -114,7 +118,7 @@ Einige Azure-Ressourcen unterstützen das horizontale Hoch- oder Herunterskalier
  ![Metriken und automatische Skalierung in Azure Monitor](./media/monitoring-overview-metrics/MetricsOverview5.png)
 
 ## <a name="learn-about-supported-services-and-metrics"></a>Informationen zu unterstützten Diensten und Metriken
-Azure Monitor ist eine neue Metrikinfrastruktur. Sie bietet Unterstützung für die folgenden Azure-Dienste im Azure-Portal sowie die neue Version der Azure Monitor-API:
+Azure Monitor ist eine neue Metrikinfrastruktur. Sie unterstützt die folgenden Azure-Dienste im Azure-Portal sowie die neue Version der Azure Monitor-API:
 
 * VMs (auf Azure Resource Manager-Basis)
 * VM-Skalierungsgruppen
@@ -138,5 +142,5 @@ Weitere Informationen finden Sie auch über die Links in diesem Artikel. Außerd
 
 * [Allgemeine Metriken für die automatische Skalierung](insights-autoscale-common-metrics.md)
 * [Erstellen von Warnungsregeln](insights-alerts-portal.md)
-
+* [Analysieren von Protokollen aus Azure Storage mit Log Analytics](../log-analytics/log-analytics-azure-storage.md)
 

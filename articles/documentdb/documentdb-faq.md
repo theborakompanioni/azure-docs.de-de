@@ -13,12 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/03/2017
+ms.date: 03/08/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: cf8db132c7f541017744505bf0fca9393db8b3f9
-ms.lasthandoff: 03/04/2017
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: 8ebc1aa663f298d1f3f495523d85bda8777d5d29
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -122,6 +122,26 @@ Ja. Da es sich bei DocumentDB um einen RESTful-Dienst handelt, sind Ressourcenli
 
 ### <a name="is-a-local-instance-of-documentdb-available"></a>Ist eine lokale Instanz von DocumentDB verfügbar?
 Ja. Der [Azure DocumentDB-Emulator](documentdb-nosql-local-emulator.md) bietet eine hochwertige Emulation des DocumentDB-Diensts. Er unterstützt identische Funktionalität wie Azure DocumentDB, einschließlich Unterstützung des Erstellens und Abfragens von JSON-Dokumenten, Bereitstellung und Skalierung von Sammlungen und Ausführen von gespeicherten Prozeduren und Triggern. Sie können Anwendungen mit dem DocumentDB-Emulator entwickeln und testen und diese in Azure auf globaler Ebene bereitstellen, indem Sie nur eine einzige Konfigurationsänderung am Verbindungsendpunkt für DocumentDB vornehmen.
+
+## <a name="database-questions-about-developing-against-api-for-mongodb"></a>Datenbankfragen zum Entwickeln mit API für MongoDB
+### <a name="what-is-documentdbs-api-for-mongodb"></a>Was ist die API für MongoDB von DocumentDB?
+Die API für MongoDB von Microsoft Azure DocumentDB ist eine Kompatibilitätsebene, mit der Anwendungen auf einfache und transparente Weise über vorhandene, von der Community unterstützte Apache MongoDB-APIs und -Treiber mit dem nativen DocumentDB-Datenbankmodul kommunizieren können. Entwickler können jetzt vorhandene MongoDB-Toolketten und -Fähigkeiten nutzen, um Anwendungen zu erstellen, die DocumentDB nutzen und dabei von den einzigartigen Funktionen von DocumentDB profitieren. Diese umfassen die automatische Indizierung, Sicherungswartung, finanziell abgesicherte Vereinbarungen zum Servicelevel usw.
+
+### <a name="how-to-do-i-connect-to-my-api-for-mongodb-database"></a>Wie stelle ich eine Verbindung mit meiner API für die MongoDB-Datenbank her?
+Die schnellste Möglichkeit zum Herstellen einer Verbindung mit der API für MongoDB von DocumentDB besteht darin, dass Sie zum [Azure-Portal](https://portal.azure.com) wechseln. Navigieren Sie zu Ihrem Konto. Klicken Sie im *linken Navigationsbereich* des Kontos auf *Schnellstart*. Der *Schnellstart* ist die beste Möglichkeit, um Codeausschnitte abzurufen, um eine Verbindung mit Ihrer Datenbank herzustellen. 
+
+DocumentDB erzwingt strenge Sicherheitsanforderungen und -standards. DocumentDB-Konten erfordern eine Authentifizierung und eine sichere Kommunikation über *SSL*. Verwenden Sie daher unbedingt TLSv1.2.
+
+Weitere Informationen finden Sie unter [Verbinden einer MongoDB-App mit einem DocumentDB-Konto mithilfe einer MongoDB-Verbindungszeichenfolge](documentdb-connect-mongodb-account.md).
+
+### <a name="are-there-additional-error-codes-for-an-api-for-mongodb-database"></a>Gibt es weitere Fehlercodes für eine API für die MongoDB-Datenbank?
+API für MongoDB verfügt zusätzlich zu den allgemeinen MongoDB-Fehlercodes über eigene, spezifische Fehlercodes.
+
+
+| Error               | Code  | Beschreibung  | Lösung  |
+|---------------------|-------|--------------|-----------|
+| TooManyRequests     | 16500 | Die Gesamtanzahl der verbrauchten Anforderungseinheiten hat die bereitgestellte Anforderungseinheitenrate für die Sammlung überschritten und wurde gedrosselt. | Skalieren Sie ggf. im Azure-Portal den Durchsatz der Sammlung, oder versuchen Sie es noch mal. |
+| ExceededMemoryLimit | 16501 | Der Vorgang ist ein mehrinstanzenfähiger Dienst und hat die Speicherzuweisung des Clients überschritten. | Verringern Sie den Umfang des Vorgangs mithilfe restriktiverer Abfragekriterien, oder wenden Sie sich im [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) an den Support. <br><br>*Ex:  &nbsp;&nbsp;&nbsp;&nbsp;db.getCollection('users').aggregate([<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$match: {name: "Andy"}}, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$sort: {age: -1}}<br>&nbsp;&nbsp;&nbsp;&nbsp;])*) |
 
 [azure-portal]: https://portal.azure.com
 [query]: documentdb-sql-query.md

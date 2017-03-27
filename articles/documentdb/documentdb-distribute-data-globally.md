@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/20/2017
+ms.date: 03/14/2017
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: 72d9c639a6747b0600c5ce3a1276f3c1d2da64b2
-ms.openlocfilehash: 8c3ced706c26e09d709d7cfb4d81534c362e1628
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 8e1fccf953579beb138d47d1897bf702461fc39a
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -91,8 +91,31 @@ DocumentDB unterstützt automatisches Failover bei regionalen Ausfällen. Währe
 ### <a id="GranularFailover"></a>Konzipiert für verschiedene Failovergranularitäten
 Aktuell werden die automatischen und manuellen Failoverfunktionen mit der Granularität des Datenbankkontos verfügbar gemacht. Intern ist DocumentDB allerdings für ein präziseres *automatisches* Failover einer Datenbank, Sammlung oder sogar Partition (eine Sammlung mit einer Reihe von Schlüsseln) konzipiert. 
 
-### <a id="MultiHomingAPIs"></a>Multihosting-APIs
+### <a id="MultiHomingAPIs"></a>Multihosting-APIs in DocumentDB
 DocumentDB ermöglicht die Interaktion mit der Datenbank über logische (regionsunabhängige) oder physische (regionsspezifische) Endpunkte. Die Verwendung logischer Endpunkte ermöglicht transparentes Multihosting der Anwendung im Falle eines Failovers. Physische Endpunkte bieten präzise Steuerungsmöglichkeiten für die Anwendung, um Lese- und Schreibvorgänge an bestimmte Regionen umzuleiten.
+
+### <a id="ReadPreferencesAPIforMongoDB"></a> Konfigurierbare Voreinstellungen für Lesevorgänge in API für MongoDB
+API für MongoDB ermöglicht es Ihnen, Voreinstellungen für Lesevorgänge in Ihrer Sammlung für eine global verteilte Datenbank anzugeben. Sowohl für Lesevorgänge mit niedriger Latenz als auch für eine globale hohe Verfügbarkeit empfiehlt es sich, die Voreinstellung Ihrer Sammlung für Lesevorgänge auf *nächste* festzulegen. Mit der Einstellung *nächste* erfolgen Lesevorgänge aus der nächstgelegenen Region.
+
+```csharp
+var collection = database.GetCollection<BsonDocument>(collectionName);
+collection = collection.WithReadPreference(new ReadPreference(ReadPreferenceMode.Nearest));
+```
+
+Bei Anwendungen mit einer primären Lese-/Schreibregion und einer sekundären Region für Notfallwiederherstellungsszenarien empfiehlt es sich, die Voreinstellung Ihrer Sammlung für Lesevorgänge auf *sekundäre bevorzugte* festzulegen. Mit der Einstellung *sekundäre bevorzugte* erfolgen Lesevorgänge aus der sekundären Region, wenn die primäre Region nicht verfügbar ist.
+
+```csharp
+var collection = database.GetCollection<BsonDocument>(collectionName);
+collection = collection.WithReadPreference(new ReadPreference(ReadPreferenceMode.SecondaryPreferred));
+```
+
+Sie können Leseregionen auch manuell angeben. Legen Sie das entsprechende Regionstag in Ihrer Voreinstellung für Lesevorgänge fest.
+
+```csharp
+var collection = database.GetCollection<BsonDocument>(collectionName);
+var tag = new Tag("region", "Southeast Asia");
+collection = collection.WithReadPreference(new ReadPreference(ReadPreferenceMode.Secondary, new[] { new TagSet(new[] { tag }) }));
+```
 
 ### <a id="TransparentSchemaMigration"></a>Transparente und konsistente Migration von Datenbankschemas und Indizes 
 DocumentDB ist vollkommen [schemaunabhängig](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf). Dank des einzigartigen Designs des Datenbankmoduls kann die Lösung automatisch und synchron sämtliche erfasste Daten indizieren, ohne dass Sie dafür ein Schema oder sekundäre Indizes bereitstellen müssen. Dadurch können Sie Ihre global verteilte Anwendung schnell durchlaufen, ohne sich Gedanken über die Migration von Datenbankschemas oder Indizes zu machen oder mehrstufige Anwendungsrollouts mit Schemaänderungen zu koordinieren. DocumentDB garantiert, dass Änderungen, die Sie explizit an Indizierungsrichtlinien vornehmen, keine Beeinträchtigung der Leistung oder Verfügbarkeit zur Folge haben.  
@@ -237,3 +260,4 @@ DocumentDB macht die Durchsatz-, Latenz-, Konsistenz- und Verfügbarkeitsmetrike
 7. Naor and Wool. [Load, Capacity and Availability in Quorum Systems](http://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf)
 8. Herlihy and Wing. [Lineralizability: A correctness condition for concurrent objects](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf)
 9. Azure DocumentDB-SLA (letzte Aktualisierung: Dezember 2016)
+

@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/11/2016
+ms.date: 03/16/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 69b94c93ad3e9c9745af8485766b4237cac0062c
-ms.openlocfilehash: 2ced9e73a65160f4f3c8ba92affc143ca554d07c
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: c27b6ed05faa5d9c408e6812d4ecbb8e0e2bbbab
+ms.lasthandoff: 03/17/2017
 
 ---
 
@@ -89,49 +90,11 @@ Weitere Informationen finden Sie unter [Traffic Manager-Endpunktüberwachung](tr
 
 Wenn alle Endpunkte eines Profils deaktiviert werden oder das Profil selbst deaktiviert wird, beantwortet Traffic Manager DNS-Abfragen mit einer „NXDOMAIN“-Antwort.
 
-## <a name="faq"></a>Häufig gestellte Fragen
-
-### <a name="can-i-use-traffic-manager-with-endpoints-from-multiple-subscriptions"></a>Kann ich Traffic Manager mit Endpunkten mehrerer Abonnements verwenden?
-
-Die Verwendung von Endpunkten aus mehreren Abonnements ist mit Azure-Web-Apps nicht möglich. Für Azure-Web-Apps dürfen mit Web-Apps verwendete, benutzerdefinierte Domänennamen nur innerhalb eines einzelnen Abonnements genutzt werden. Es ist nicht möglich, Web-Apps aus mehreren Abonnements mit dem gleichen Domänennamen zu verwenden.
-
-Für andere Endpunkttypen kann Traffic Manager mit Endpunkten aus mehreren Abonnements verwendet werden. Das Konfigurieren von Traffic Manager hängt davon ab, ob Sie mit dem klassischen Bereitstellungsmodell oder der Resource Manager-Umgebung arbeiten.
-
-* In Resource Manager können Endpunkte aus jedem Abonnement zu Traffic Manager hinzugefügt werden, solange die Person, die das Traffic Manager-Profil konfiguriert, über Lesezugriff für den Endpunkt verfügt. Diese Berechtigungen können über die [rollenbasierte Zugriffssteuerung (RBAC) von Azure Resource Manager](../active-directory/role-based-access-control-configure.md)gewährt werden.
-* In dem klassischen Bereitstellungsmodell ist es für Traffic Manager erforderlich, dass sich der als Azure-Endpunkt konfigurierte Clouddienst bzw. die Web-App im gleichen Abonnement wie das Traffic Manager-Profil befindet. Clouddienstendpunkte in anderen Abonnements können als „externe“ Endpunkte zu Traffic Manager hinzugefügt werden. Diese externen Endpunkte werden als Azure-Endpunkte berechnet, nicht mit der externen Rate.
-
-### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>Kann ich Traffic Manager mit „Stagingslots“ des Clouddiensts verwenden?
-
-Ja. Stagingslots des Clouddiensts können in Traffic Manager als externe Endpunkte konfiguriert werden. Integritätsprüfungen werden weiterhin mit der Rate von Azure-Endpunkten berechnet. Änderungen des zugrunde liegenden Diensts werden nicht automatisch übernommen, da ein Endpunkt vom Typ „Extern“ verwendet wird. Mit externen Endpunkten kann Traffic Manager nicht erkennen, wenn der Clouddienst beendet oder gelöscht wird. Aus diesem Grund wird die Abrechnung für Integritätsprüfungen von Traffic Manager fortgesetzt, bis der Endpunkt deaktiviert oder gelöscht wird.
-
-### <a name="does-traffic-manager-support-ipv6-endpoints"></a>Unterstützt Traffic Manager IPv6-Endpunkte?
-
-Traffic Manager stellt derzeit keine IPv6-adressierbaren Nameserver zur Verfügung. Traffic Manager kann jedoch weiterhin von IPv6-Clients verwendet werden, die IPv6-Endpunkte verbinden. Ein Client erstellt keine DNS-Anfragen direkt an Traffic Manager. Stattdessen verwendet der Client einen rekursiven DNS-Dienst. Ein reiner IPv6-Client sendet Anforderungen an den rekursiven DNS-Dienst über IPv6. Der rekursive Dienst sollte anschließend in der Lage sein, die Traffic Manager-Namensserver per IPv4 zu kontaktieren.
-
-Traffic Manager antwortet mit dem DNS-Namen des Endpunkts. Ein IPv6-Endpunkt kann unterstützt werden, indem ein DNS AAAA-Eintrag konfiguriert wird, mit dem der DNS-Name des Endpunkts auf die IPv6-Adresse verwiesen wird. Traffic Manager-Integritätsprüfungen unterstützen nur IPv4-Adressen. Der Dienst muss einen IPv4-Endpunkt auf dem gleichen DNS-Namen verfügbar machen.
-
-### <a name="can-i-use-traffic-manager-with-more-than-one-web-app-in-the-same-region"></a>Kann ich Traffic Manager mit mehr als einer Web-App in derselben Region verwenden?
-
-Normalerweise wird Traffic Manager verwendet, um Datenverkehr an Anwendungen zu leiten, die in verschiedenen Regionen bereitgestellt wurden. Traffic Manager kann aber auch eingesetzt werden, wenn eine Anwendung über mehr als eine Bereitstellung in derselben Region verfügt. Die Traffic Manager-Azure-Endpunkte lassen es nicht zu, dass demselben Traffic Manager-Profil mehr als ein Web-App-Endpunkt für dieselbe Azure-Region hinzugefügt wird.
-
-Die folgenden Schritte stellen eine Umgehung dieser Einschränkung dar:
-
-1. Überprüfen Sie, ob sich Ihre Endpunkte in verschiedenen Web-App-„Skalierungseinheiten“ befinden. Ein Domänenname muss zu einem einzelnen Standort in einer bestimmten Skalierungseinheit zugeordnet werden. Aus diesem Grund können sich zwei Web-Apps in der gleichen Skalierungseinheit nicht ein Traffic Manager-Profil teilen.
-2. Fügen Sie Ihren Vanity-Domänennamen als einen benutzerdefinierten Hostnamen zu jeder Web-App hinzu. Jede Web-App muss sich in einer anderen Skalierungseinheit befinden. Alle Web-Apps müssen zu demselben Abonnement gehören.
-3. Fügen Sie (nur) einen Web-App-Endpunkt dem Traffic Manager-Profil als Azure-Endpunkt hinzu.
-4. Fügen Sie jeden weiteren Web-App-Endpunkt dem Traffic Manager-Profil als externen Endpunkt hinzu. Externe Endpunkte können nur mit dem Resource Manager-Bereitstellungsmodell hinzugefügt werden.
-5. Erstellen Sie einen DNS CNAME-Eintrag in Ihrer Vanity-Domäne, der auf den DNS-Namen des Traffic Manager-Profils verweist (<…>.trafficmanager.net).
-6. Greifen Sie über den Vanity-Domänennamen auf Ihre Website zu, nicht über den DNS-Namen des Traffic Manager-Profils.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen zur [Funktionsweise von Traffic Manager](traffic-manager-how-traffic-manager-works.md)
 * Informationen zu [Endpunktüberwachung und automatisches Failover](traffic-manager-monitoring.md)von Traffic Manager
 * Informationen zu Traffic Manager- [Routingmethoden für Datenverkehr](traffic-manager-routing-methods.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

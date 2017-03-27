@@ -17,6 +17,7 @@ ms.author: magoedte;bwren
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: cf3d1ae66483fed4aa9cd31f674729e4b875653c
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -68,7 +69,7 @@ Parameter für ein mittels Cmdlet gestartetes untergeordnetes Runbook werden wie
 Im folgenden Beispiel wird ein untergeordnetes Runbook mit Parametern gestartet und anschließend auf seinen Abschluss gewartet. Dabei wird „Start-AzureRmAutomationRunbook“ mit dem Parameter „-wait“ verwendet. Danach wird die Ausgabe aus dem untergeordneten Runbook abgerufen.
 
     $params = @{"VMName"="MyVM";"RepeatCount"=2;"Restart"=$true} 
-    $joboutput = Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-ChildRunbook" -ResouceGroupName "LabRG" –Parameters $params –wait
+    $joboutput = Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-ChildRunbook" -ResourceGroupName "LabRG" –Parameters $params –wait
 
 
 ## <a name="comparison-of-methods-for-calling-a-child-runbook"></a>Vergleich der Methoden zum Aufrufen eines untergeordneten Runbooks
@@ -86,10 +87,5 @@ Die folgende Tabelle enthält eine Zusammenfassung der Unterschiede zwischen den
 ## <a name="next-steps"></a>Nächste Schritte
 * [Starten eines Runbooks in Azure Automation](automation-starting-a-runbook.md)
 * [Runbookausgabe und -meldungen in Azure Automation](automation-runbook-output-and-messages.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

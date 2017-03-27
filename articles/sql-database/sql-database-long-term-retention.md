@@ -17,22 +17,23 @@ ms.workload: NA
 ms.date: 12/22/2016
 ms.author: sashan
 translationtype: Human Translation
-ms.sourcegitcommit: 2c13daf84727a500a2ea6a3dc1d4968c9824e223
-ms.openlocfilehash: 6abc5c10f6116886ac5d6cbc11f251f083ee2b29
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 0cb96f97358378a723d7528e53f5c5a771e2000b
+ms.lasthandoff: 03/14/2017
 
 
 ---
 # <a name="storing-azure-sql-database-backups-for-up-to-10-years"></a>Speichern von Sicherungen von Azure SQL-Datenbank bis zu 10 Jahre lang
-Viele Anwendungen dienen gesetzlichen, ordnungsgemäßen oder anderen geschäftlichen Zwecken, die voraussetzen, dass die vollständige automatische Datenbanksicherung länger als der Zeitraum zwischen 7-35 Tagen beibehalten wird, der von den [automatischen Sicherungen](sql-database-automated-backups.md) der SQL-Datenbank zur Verfügung gestellt wurde.
+Viele Anwendungen dienen gesetzlichen, ordnungsgemäßen oder anderen geschäftlichen Zwecken, die voraussetzen, dass die vollständige automatische Datenbanksicherung länger als der Zeitraum zwischen 7-35 Tagen beibehalten wird, der von den [automatischen Sicherungen](sql-database-automated-backups.md) der SQL-Datenbank zur Verfügung gestellt wurde. Das Feature der **langfristigen Beibehaltung der Sicherung** lässt Sie Ihre Sicherungen von Azure SQL-Datenbank in einem Azure Recovery Services-Tresor bis zu 10 Jahre lang speichern. Sie können bis zu 1000 Datenbanken pro Tresor speichern. Sie können jede Sicherung im Tresor auswählen, um sie als eine neue Datenbank wiederherzustellen.
 
-Das Feature der **langfristigen Beibehaltung der Sicherung** lässt Sie Ihre Sicherungen von Azure SQL-Datenbank in einem Azure Recovery Services-Tresor bis zu 10 Jahre lang speichern. Sie können bis zu 1000 Datenbanken pro Tresor speichern. Sie können jede Sicherung im Tresor auswählen, um sie als eine neue Datenbank wiederherzustellen.
+> [!IMPORTANT]
+> Langfristige Beibehaltung der Sicherung ist zurzeit in den folgenden Regionen als Vorschau verfügbar: Australien, Osten; Australien, Südosten; Brasilien, Süden; USA, Mitte; Asien, Osten; USA, Osten; USA, Osten 2; Indien, Mitte; Indien, Süden; Japan, Osten; Japan, Westen; USA, Norden-Mitte; Europa, Norden; USA, Süden-Mitte; Asien, Südosten; Europa, Westen und USA, Westen.
+>
 
 > [!NOTE]
 > Sie können bis zu 200 Datenbanken pro Tresor innerhalb eines Zeitraums von 24 Stunden aktivieren. Darum empfehlen wir, dass Sie einen separaten Tresor für jeden Server verwenden, um die Auswirkung dieser Einschränkung zu minimieren. 
 > 
 > 
-
 ## <a name="how-does-sql-database-long-term-backup-retention-work"></a>Wie funktioniert die langfristige Sicherungsaufbewahrung von SQL-Datenbank?
 
 Mithilfe der langfristigen Aufbewahrung von Sicherungen können Sie einen Azure SQL-Datenbank-Server einem Azure Recovery Services-Tresor zuordnen. 
@@ -40,7 +41,6 @@ Mithilfe der langfristigen Aufbewahrung von Sicherungen können Sie einen Azure 
 * Der Tresor muss im gleichen Azure-Abonnement erstellt werden, das den SQL-Server erstellt hat und sich in der gleichen geografischen Region und Ressourcengruppe befindet. 
 * Dann konfigurieren Sie eine Beibehaltungsrichtlinie für jede beliebige Datenbank. Die Richtlinie sorgt dafür, dass die wöchentlichen vollständigen Datenbanksicherungen in den Recovery Services-Tresor kopiert werden und für die angegebene Beibehaltungsdauer (bis zu 10 Jahre) aufbewahrt werden. 
 * Sie können dann aus jeder dieser Sicherungen eine neue Datenbank in jedem beliebigen Server innerhalb des Abonnements wiederherstellen. Die Kopie wird vom Azure-Speicher aus vorhandenen Sicherungen erstellt und schränkt die Leistung auf die vorhandene Datenbank nicht ein.
-
 
 > [!TIP]
 > Ein Tutorial finden Sie unter [Erste Schritte mit der Sicherung und Wiederherstellung für Datenschutz und -wiederherstellung mit dem Azure-Portal](sql-database-get-started-backup-recovery-portal.md) bzw. [Erste Schritte mit der Sicherung und Wiederherstellung für Datenschutz und -wiederherstellung mithilfe von PowerShell](sql-database-get-started-backup-recovery-powershell.md).

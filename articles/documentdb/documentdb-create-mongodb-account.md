@@ -1,29 +1,16 @@
 ---
-title: Erstellen eines DocumentDB-Kontos zur Verwendung mit MongoDB-Apps | Microsoft Docs
-description: "In diesem Tutorial erfahren Sie, wie Sie ein DocumentDB-Konto mit Protokollunterstützung für MongoDB erstellen (jetzt als Vorschau verfügbar)."
-keywords: mongodb apps, mongodb app
-services: documentdb
-author: AndrewHoh
-manager: jhubbard
-editor: 
-documentationcenter: 
-ms.assetid: 413f3ae1-a68e-43be-b0d7-fa2987644f3e
-ms.service: documentdb
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 11/24/2016
-ms.author: anhoh
+redirect_url: https://docs.microsoft.com/azure/documentdb/documentdb-create-account
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 1c9e8d5a00445b31c81547df7bd2dbc55f8feac2
-ms.openlocfilehash: e9176ec520b05e5613eab610fbc96144e9405d07
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: 21a388894278c9086b40812e5cfa7dc9b662a5ef
+ms.lasthandoff: 03/10/2017
+
 
 
 ---
 
-# <a name="create-a-documentdb-account-for-use-with-mongodb-apps"></a>Erstellen eines DocumentDB-Kontos zur Verwendung mit MongoDB-Apps
+# <a name="create-a-documentdb-account-with-mongodb-api"></a>Erstellen eines DocumentDB-Kontos mit API für MongoDB
 DocumentDB-Datenbanken können jetzt als Datenspeicher für Apps verwendet werden, die für MongoDB geschrieben wurden. Um diese Funktion verwenden zu können, benötigen Sie ein Azure-Konto und ein DocumentDB-Konto. Dieses Tutorial führt Sie durch die Erstellung eines DocumentDB-Kontos zur Verwendung mit MongoDB-Apps. 
 
 Zum Erstellen eines DocumentDB-Kontos mit Unterstützung für MongoDB können Sie das Azure-Portal oder die Azure-Befehlszeilenschnittstelle mit Azure Resource Manager-Vorlagen verwenden. In diesem Artikel wird beschrieben, wie Sie ein DocumentDB-Konto mit Unterstützung für MongoDB im Azure-Portal erstellen. Informationen zum Erstellen eines Kontos mit der Azure-Befehlszeilenschnittstelle und Azure Resource Manager finden Sie unter [Automatisieren der Azure DocumentDB-Kontoverwaltung mit Azure CLI 2.0](documentdb-automation-resource-manager-cli.md).

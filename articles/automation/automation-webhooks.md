@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: magoedte;bwren;sngun
 translationtype: Human Translation
-ms.sourcegitcommit: deb32f98bbfc0032ffbdcf168a2b4c42f1c4ae76
-ms.openlocfilehash: 4cf402877d5ddee8f4944a104163a55025013cc0
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 6c65427fcd18e41a90dfb872aa9525f758b17b87
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -74,7 +74,7 @@ Dann würden Sie den folgenden JSON-Wert in der Benutzeroberfläche für den Web
 
 > [!NOTE]
 > Die Werte aller Eingabeparameter werden mit dem Runbookauftrag protokolliert.  Dies bedeutet, dass alle vom Client in der Webhookanforderung bereitgestellten Eingaben protokolliert werden und jedem Benutzer mit Zugriff auf den Automatisierungsauftrag zur Verfügung stehen.  Aus diesem Grund sollten Sie sorgfältig überlegen, welche vertraulichen Daten Sie in Webhookaufrufe einschließen.
-> 
+>
 
 ## <a name="security"></a>Sicherheit
 Die Sicherheit eines Webhooks beruht auf dem Datenschutz seiner URL, die ein Sicherheitstoken enthält, mit dem es aufgerufen werden kann. Azure Automation führt keinerlei Authentifizierung der Anforderung durch, sofern diese über die richtige URL erfolgt. Aus diesem Grund sollten Webhooks nicht für Runbooks verwendet werden, die sehr vertrauliche Funktionen ausführen, ohne eine alternative Möglichkeit zur Überprüfung der Anforderung zu verwenden.
@@ -267,6 +267,4 @@ Das folgende Beispiel-Runbook wird immer dann ausgelöst, wenn die Warnregel akt
 * Informationen zu verschiedenen Methoden zum Starten eines Runbooks finden Sie unter [Starten eines Runbooks](automation-starting-a-runbook.md).
 * Informationen zum Anzeigen des Status eines Runbookauftrags finden Sie unter [Ausführen von Runbooks in Azure Automation](automation-runbook-execution.md).
 * Informationen zur Verwendung von Azure Automation für die Reaktion auf Azure-Warnungen finden Sie unter [Wartung nach Azure-VM-Warnungen mit Automation-Runbooks](automation-azure-vm-alert-integration.md).
-* Informationen zum Aufrufen eines Runbooks aus einer OMS Log Analytics-Warnung finden Sie unter [Runbookaktionen mit Log Analytics-Warnungen](../log-analytics/log-analytics-alerts.md#runbook-actions).
-
 

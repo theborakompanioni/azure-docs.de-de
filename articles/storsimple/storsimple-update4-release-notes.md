@@ -12,12 +12,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 03/03/2017
+ms.date: 03/08/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: c682f9eac1a6ff5e3771aa9e4dfa5b5ffefc1223
-ms.lasthandoff: 03/04/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: ec49b8784eb9b18135c5f7ec7242a2468ac87e50
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -57,9 +57,9 @@ Die folgenden wichtigen Verbesserungen und Fehlerbehebungen wurden in Update 4 v
 
 * **Änderungen im Zusammenhang mit FIPS:** Ab dieser Version ist FIPS standardmäßig auf allen Geräten der StorSimple 8000-Serie für Microsoft Azure Government- und Azure Public Cloud-Konten aktiviert.
 
-* **Änderungen am Update:** Ab dieser Version ist FIPS standardmäßig auf allen Geräten der StorSimple 8000-Serie für Microsoft Azure Government- und Azure Public Cloud-Konten aktiviert.
+* **Aktualisieren von Änderungen:** In dieser Version wurden Fehler im Zusammenhang mit Aktualisierungsfehlern behoben.
 
-* **Warnung bei Datenträgerfehlern:** Eine neue Warnung, die den Benutzer auf bevorstehende Datenträgerfehler hinweist, wurde in dieser Version hinzugefügt.
+* **Warnung bei Datenträgerfehlern:** Eine neue Warnung, die den Benutzer auf bevorstehende Datenträgerfehler hinweist, wurde in dieser Version hinzugefügt. Wenn diese Warnung auftritt, wenden Sie sich an den Microsoft-Support, damit ein Ersatzdatenträger bereitgestellt wird.
 
 * **Änderungen am Controlleraustausch:** Ein Cmdlet, das dem Benutzer das Abfragen des Status des Controlleraustauschvorgangs ermöglicht, wurde in dieser Version hinzugefügt. Weitere Informationen finden Sie unter [HCS-Cmdlets in Windows PowerShell](https://technet.microsoft.com/library/dn688168.aspx).
 

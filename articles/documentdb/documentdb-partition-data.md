@@ -12,16 +12,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 03/14/2017
 ms.author: arramac
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 5ed72d95ae258d6fa8e808cd72ab6e8a665901c9
-ms.openlocfilehash: 0a8b53f7860548a2a013bfc7813cdf798b6a4910
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 67d817c04672979ec8af8a540c5a63eb4df9bf6a
+ms.lasthandoff: 03/15/2017
 
 
 ---
-# <a name="partitioning-and-scaling-in-azure-documentdb"></a>Partitionieren und Skalieren von Daten in DocumentDB
+# <a name="partitioning-partition-keys-and-scaling-in-documentdb"></a>Partitionierung, Partitionsschlüssel und Skalierung in DocumentDB
+
 [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) wurde entwickelt, damit Sie eine schnelle, vorhersagbare Leistung für Ihre Anwendung erzielen und diese nahtlos skalieren können, wenn sie wächst. Dieser Artikel bietet einen Überblick darüber, wie Partitionierung in DocumentDB funktioniert. Er beschreibt, wie Sie DocumentDB-Sammlungen konfigurieren können, um Ihre Anwendungen effektiv skalieren zu können.
 
 Nach dem Lesen dieses Artikels können Sie die folgenden Fragen beantworten:   
@@ -50,6 +52,10 @@ DocumentDB erstellt eine kleine Anzahl von physischen Partitionen hinter jeder S
 
 Nehmen wir beispielsweise an, Sie erstellen eine Sammlung mit einem Durchsatz von 25.000 Anforderungen pro Sekunde, und DocumentDB kann 10.000 Anforderungen pro Sekunde pro einzelne physische Partition unterstützen. DocumentDB würde 3 physische Partitionen P1, P2 und P3 für Ihre Sammlung erstellen. Während der Einfügung oder des Lesens eines Dokuments erstellt der DocumentDB-Dienst einen Hash mit dem entsprechenden `Department`-Wert, um den drei Partitionen P1, P2 und P3 Daten zuzuordnen. Wenn z.B. „Marketing“ und „Sales“ den Hashwert 1 erhalten, werden beide in P1 gespeichert. Und wenn P1 voll wird, teilt DocumentDB P1 in zwei neue Partitionen P4 und P5 auf. Dann könnte der Dienst nach der Teilung „Marketing“ nach P4 und „Sales“ nach P5 verschieben und dann P1 löschen. Diese Verschiebungen von Partitionsschlüsseln zwischen Partitionen sind für die Anwendung transparent und haben keinen Einfluss auf die Verfügbarkeit der Sammlung.
 
+## <a name="sharding-in-api-for-mongodb"></a>Sharding in API für MongoDB
+Sammlungen mit Shards in API für MongoDB verwenden die gleiche Infrastruktur wie die partitionierten Sammlungen in DocumentDB. Sammlungen mit Shards können ebenso wie partitionierte Sammlungen über eine beliebige Anzahl von Shards verfügen. Jedem Shard ist eine bestimmte Menge an SSD-gesichertem Speicher zugeordnet. Sammlungen mit Shards sind im Hinblick auf Speicher und Durchsatz praktisch unbegrenzt. Der Shardschlüssel von API für MongoDB entspricht dem Partitionsschlüssel von DocumentDB. Wenn Sie einen Shardschlüssel auswählen, lesen Sie die Abschnitte [Partitionsschlüssel](#partition-keys) und [Entwerfen für Partitionierung](#designing-for-partitioning).
+
+<a name="partition-keys"></a>
 ## <a name="partition-keys"></a>Partitionsschlüssel
 Die Auswahl des Partitionsschlüssels ist eine wichtige Entscheidung, die Sie zur Entwurfszeit treffen müssen. Sie müssen einen JSON-Eigenschaftennamen auswählen, der eine große Spanne von Werten sowie wahrscheinlich gleichmäßig verteilte Zugriffsmuster besitzt. 
 
@@ -158,7 +164,7 @@ In der folgenden Tabelle sind die Unterschiede zwischen der Arbeit mit einer Sam
     </tbody>
 </table>
 
-## <a name="working-with-the-sdks"></a>Arbeiten mit den SDKs
+## <a name="working-with-the-documentdb-sdks"></a>Arbeiten mit den DocumentDB-SDKs
 Azure DocumentDB bietet nun zusätzliche Unterstützung für die automatische Partitionierung durch [REST-API-Version 2015-12-16](https://msdn.microsoft.com/library/azure/dn781481.aspx). Um partitionierte Sammlungen erstellen zu können, müssen Sie die SDK-Versionen 1.6.0 oder neuer in einer der unterstützten SDK Plattformen (.NET, Node.js, Java, Python) herunterladen. 
 
 ### <a name="creating-partitioned-collections"></a>Erstellen von partitionierten Sammlungen
@@ -274,7 +280,7 @@ IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<Devic
     .Where(m => m.MetricType == "Temperature" && m.MetricValue > 100);
 ```
 
-DocumentDB unterstützt [Aggregatfunktionen] ([Aggregatfunktionen](documentdb-sql-query.md#Aggregates) `COUNT`, `MIN`, `MAX`, `SUM` und `AVG`) über partitionierten Sammlungen mit SQL, beginnend mit SDKs 1.12.0 und höher. Abfragen müssen einen einzelnen Aggregate-Operator und einen einzelnen Wert in der Projektion enthalten.
+DocumentDB unterstützt die [Aggregatfunktionen](documentdb-sql-query.md#Aggregates) `COUNT`, `MIN`, `MAX`, `SUM` und `AVG` in partitionierten Sammlungen mit SQL, beginnend mit SDKs 1.12.0 und höher. Abfragen müssen einen einzelnen Aggregate-Operator und einen einzelnen Wert in der Projektion enthalten.
 
 ### <a name="parallel-query-execution"></a>Ausführung paralleler Abfragen
 Ab dem DocumentDB SDK 1.9.0 werden Optionen zur parallelen Ausführung von Abfragen unterstützt. Dadurch können Sie Abfragen mit niedriger Latenz auf partitionierte Sammlungen anwenden, auch wenn eine große Anzahl von Sammlungen berücksichtigt werden muss. Die folgende Abfrage ist z.B. so konfiguriert, dass sie partitionsübergreifend parallel ausgeführt wird.
@@ -307,9 +313,34 @@ await client.ExecuteStoredProcedureAsync<DeviceReading>(
     
 Im nächsten Abschnitt untersuchen wir, wie partitionierte Sammlungen aus Sammlungen mit nur einer Partition verschoben werden können.
 
+## <a name="creating-an-api-for-mongodb-sharded-collection"></a>Erstellen einer API für MongoDB-Sammlung mit Shards
+Die einfachste Möglichkeit zum Erstellen einer API für MongoDB-Sammlung mit Shards ist die Verwendung Ihrer bevorzugten Tools, Treiber oder SDKs. In diesem Beispiel verwenden wir die Mongo Shell zum Erstellen der Sammlung.
+
+In der Mongo Shell:
+
+```
+db.runCommand( { shardCollection: "admin.people", key: { region: "hashed" } } )
+```
+    
+Ergebnisse:
+
+```JSON
+{
+    "_t" : "ShardCollectionResponse",
+    "ok" : 1,
+    "collectionsharded" : "admin.people"
+}
+```
+
 <a name="migrating-from-single-partition"></a>
 
-## <a name="migrating-from-single-partition-to-partitioned-collections"></a>Migrieren von Sammlungen mit nur einer Partitionen zu partitionierten Sammlungen
+## <a name="migrating-from-single-partition-to-partitioned-collections-in-documentdb"></a>Migrieren von Sammlungen mit nur einer Partition zu partitionierten Sammlungen in DocumentDB
+
+> [!IMPORTANT]
+> Wenn Sie in API für MongoDB importieren, befolgen Sie [diese Anweisungen](documentdb-mongodb-migrate.md).
+> 
+> 
+
 Wenn eine Anwendung, die eine Sammlung mit nur einer Partition verwendet, einen höheren Durchsatz (>&10;.000 RU/s) oder mehr Speicher (>&10; GB) benötigt, können Sie mit dem [DocumentDB-Datenmigrationstool](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d) die Daten aus der Sammlung mit nur einer Partition zu einer partitionierten Sammlung migrieren. 
 
 So führen Sie eine Migration aus einer Sammlung mit nur einer Partition in eine partitionierte Sammlung durch
@@ -326,6 +357,7 @@ So führen Sie eine Migration aus einer Sammlung mit nur einer Partition in eine
 
 Nun, da wir die Grundlagen abgeschlossen haben, sehen wir uns einige wichtige Entwurfsüberlegungen bei der Arbeit mit Partitionsschlüsseln in DocumentDB an.
 
+<a name="designing-for-partitioning"></a>
 ## <a name="designing-for-partitioning"></a>Entwerfen für Partitionierung
 Die Auswahl des Partitionsschlüssels ist eine wichtige Entscheidung, die Sie zur Entwurfszeit treffen müssen. Dieser Abschnitt beschreibt einige der Vor-und Nachteile bei der Auswahl der Partitionsschlüssel für Ihre Sammlung.
 

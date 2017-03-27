@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 9e75c5af6cb6d2f2a25f18269ec6822aa86459fc
-ms.openlocfilehash: 95ea1a9bc8fe80c39ca9f0683855cc3a4e7a77c4
-ms.lasthandoff: 02/07/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: f9d15570aeeb398b34198918b78590948020f256
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -56,7 +56,7 @@ Wenn Sie ein neues Speicherkonto erstellen, wählen Sie ein Modell zur Bereitste
 Dieser Leitfaden konzentriert sich auf das Resource Manager-Modell, der empfohlenen Methode zum Erstellen von Speicherkonten. Mit den Resource Manager-Speicherkonten können Sie, anstatt Zugriff auf das gesamte Abonnement zu gewähren, den Zugriff auf die Verwaltungsebene mit der rollenbasierten Zugriffssteuerung präziser steuern.
 
 ### <a name="how-to-secure-your-storage-account-with-role-based-access-control-rbac"></a>Sichern Ihres Speicherkontos mit rollenbasierter Zugriffssteuerung (RBAC)
-Was ist RBAC, und wie können Sie sie verwenden? Jedes Azure-Abonnement hat ein Azure Active Directory. Benutzern, Gruppen und Anwendungen aus diesem Verzeichnis kann Verwaltungszugriff auf Ressourcen im zugehörigen Azure-Abonnement gewährt werden, die das Resource Manager-Bereitstellungsmodell verwenden. Dies wird als rollenbasierte Zugriffssteuerung (RBAC) bezeichnet. Um diesen Zugriff zu verwalten, können Sie das [Azure-Portal](https://portal.azure.com/), die [Tools der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md), [PowerShell](/powershell/azureps-cmdlets-docs) oder die [REST-APIs des Azure Storage-Ressourcenanbieters](https://msdn.microsoft.com/library/azure/mt163683.aspx) verwenden.
+Was ist RBAC, und wie können Sie sie verwenden? Jedes Azure-Abonnement hat ein Azure Active Directory. Benutzern, Gruppen und Anwendungen aus diesem Verzeichnis kann Verwaltungszugriff auf Ressourcen im zugehörigen Azure-Abonnement gewährt werden, die das Resource Manager-Bereitstellungsmodell verwenden. Dies wird als rollenbasierte Zugriffssteuerung (RBAC) bezeichnet. Um diesen Zugriff zu verwalten, können Sie das [Azure-Portal](https://portal.azure.com/), die [Tools der Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md), [PowerShell](/powershell/azureps-cmdlets-docs) oder die [REST-APIs des Azure Storage-Ressourcenanbieters](https://msdn.microsoft.com/library/azure/mt163683.aspx) verwenden.
 
 Mit dem Resource Manager-Modell platzieren Sie das Speicherkonto in einer Ressourcengruppe und steuern den Zugriff auf die Verwaltungsebene dieses bestimmten Speicherkontos mithilfe von Active Directory. Beispielsweise können Sie bestimmten Benutzern den Zugriff auf die Speicherkontoschlüssel gewähren, während andere Benutzer Informationen über das Speicherkonto anzeigen, jedoch nicht auf die Speicherkontoschlüssel zugreifen können.
 

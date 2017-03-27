@@ -17,20 +17,20 @@ ms.date: 04/27/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
-ms.openlocfilehash: 0aa12ea5fd7df7bee57aa7bcacd4c1fe4d6542b8
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 1bb49c0c03a3103194d068b511fa92ecb996caf3
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="create-a-vm-with-a-static-public-ip-address-using-an-azure-resource-manager-template"></a>Erstellen eines virtuellen Computers mit einer statischen öffentlichen IP-Adresse mithilfe einer Azure Resource Manager-Vorlage
 
 > [!div class="op_single_selector"]
-- [Azure-Portal](virtual-network-deploy-static-pip-arm-portal.md)
-- [PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
-- [Azure-Befehlszeilenschnittstelle](virtual-network-deploy-static-pip-arm-cli.md)
-- [Vorlage](virtual-network-deploy-static-pip-arm-template.md)
-- [PowerShell (klassisch)](virtual-networks-reserved-public-ip.md)
+> * [Azure-Portal](virtual-network-deploy-static-pip-arm-portal.md)
+> * [PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
+> * [Azure-Befehlszeilenschnittstelle](virtual-network-deploy-static-pip-arm-cli.md)
+> * [Vorlage](virtual-network-deploy-static-pip-arm-template.md)
+> * [PowerShell (klassisch)](virtual-networks-reserved-public-ip.md)
 
 [!INCLUDE [virtual-network-deploy-static-pip-intro-include.md](../../includes/virtual-network-deploy-static-pip-intro-include.md)]
 
@@ -171,7 +171,7 @@ Führen Sie zum Bereitstellen der mithilfe von PowerShell heruntergeladenen Vorl
 ## <a name="deploy-the-template-by-using-the-azure-cli"></a>Bereitstellen der Vorlage mithilfe der Azure-Befehlszeilenschnittstelle
 Führen Sie zum Bereitstellen der Vorlage mithilfe der Azure-Befehlszeilenschnittstelle die folgenden Schritte aus:
 
-1. Falls Sie Azure CLI zum ersten Mal verwenden, befolgen Sie die Anleitung im Artikel [Installieren und Konfigurieren von Azure CLI](../xplat-cli-install.md), um CLI zu installieren und zu konfigurieren.
+1. Falls Sie Azure CLI zum ersten Mal verwenden, befolgen Sie die Anleitung im Artikel [Installieren und Konfigurieren von Azure CLI](../cli-install-nodejs.md), um CLI zu installieren und zu konfigurieren.
 2. Führen Sie den Befehl `azure config mode` aus, um in den Resource Manager-Modus zu wechseln, wie unten dargestellt.
 
     ```azurecli

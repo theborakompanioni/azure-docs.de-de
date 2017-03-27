@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: cc93ed5c-a358-456a-91a4-f179185c0e98
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -30,7 +31,7 @@ In diesem Thema wird beschrieben, wie Sie Solr in Azure HDInsight mithilfe der F
 
 Das in diesem Thema verwendete Beispielskript erstellt einen Solr-Cluster mit einer bestimmten Konfiguration. Wenn Sie den Solr-Cluster mit anderen Auflistungen, Shards, Schemas, Replikaten usw. konfigurieren möchten, müssen Sie das Skript und die Solr-Binärdateien entsprechend ändern.
 
-## <a name="a-namewhatisawhat-is-solr"></a><a name="whatis"></a>Was ist Solr?
+## <a name="whatis"></a>Was ist Solr?
 [Apache Solr](http://lucene.apache.org/solr/features.html) ist eine Unternehmensplattform für die leistungsstarke Volltextsuche in Daten. Während Hadoop das Speichern und Verwalten von großen Datenmengen ermöglicht, bietet Apache Solr die Suchfunktionen, um schnell Daten abzurufen. In diesem Thema wird beschrieben, wie Sie ein HDInsight-Cluster zum Installieren von Solr anpassen können.
 
 > [!WARNING]
@@ -48,7 +49,7 @@ Mit diesem Skript werden die folgenden Änderungen am HDInsight-Cluster vorgenom
 * Legt **Solruser** als Besitzer von `/usr/hdp/current/solr` fest.
 * Fügt eine [Upstart](http://upstart.ubuntu.com/) -Konfiguration hinzu, die Solr startet, wenn ein Clusterknoten neu gestartet wird. Solr wird außerdem nach der Installation automatisch auf den Clusterknoten gestartet.
 
-## <a name="a-nameinstallainstall-solr-using-script-actions"></a><a name="install"></a>Installation von Solr mithilfe von Skriptaktionen
+## <a name="install"></a>Installation von Solr mithilfe von Skriptaktionen
 Ein Beispielskript zum Installieren von Solr in einem HDInsight-Cluster ist an folgendem Ort verfügbar:
 
     https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh
@@ -72,7 +73,7 @@ Dieser Abschnitt enthält Anweisungen zur Verwendung des Beispielskripts währen
 3. Verwenden Sie am unteren Rand der **Skriptaktionen** die Schaltfläche **Auswählen**, um die Konfiguration zu speichern. Verwenden Sie schließlich die Schaltfläche **Auswählen** am unteren Rand des Blatts **Optionale Konfiguration**, um die optionalen Konfigurationsinformationen zu speichern.
 4. Setzen Sie die Bereitstellung des Clusters wie unter [Bereitstellen Linux-basierter HDInsight-Cluster](hdinsight-hadoop-create-linux-clusters-portal.md)beschrieben fort.
 
-## <a name="a-nameusesolrahow-do-i-use-solr-in-hdinsight"></a><a name="usesolr"></a>Wie verwende ich Solr in HDInsight?
+## <a name="usesolr"></a>Wie verwende ich Solr in HDInsight?
 ### <a name="indexing-data"></a>Indizieren von Daten
 Sie müssen mit der Indizierung von Solr mit einigen Datendateien beginnen. Sie können dann Solr verwenden, um Suchabfragen der indizierten Daten auszuführen. Verwenden Sie die folgenden Schritte, um einige Beispieldaten zu Solr hinzuzufügen und diese dann abzufragen:
 

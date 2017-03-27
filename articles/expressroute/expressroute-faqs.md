@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/01/2017
+ms.date: 03/13/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 239702c8b099dd422e6b67a267b1185a27a21807
-ms.openlocfilehash: 52d9194920019291696d5ace3ac24751fde674ab
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 0df7bba472daf2c499f3ccff1296b8a9ee8ab89d
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -27,9 +27,6 @@ ExpressRoute ist ein Azure-Dienst, der es Ihnen ermöglicht, private Verbindunge
 
 ### <a name="what-are-the-benefits-of-using-expressroute-and-private-network-connections"></a>Was sind die Vorteile von ExpressRoute und privaten Netzwerkverbindungen?
 ExpressRoute-Verbindungen erfolgen nicht über das öffentliche Internet und bieten eine höhere Sicherheit, größere Zuverlässigkeit und schnellere Geschwindigkeit bei konstanter Latenz als herkömmliche Verbindungen über das Internet. In einigen Fällen können durch die Verwendung von ExpressRoute-Verbindungen zum Übertragen von Daten zwischen lokalen Geräten und Azure auch drastische Kosteneinsparungen erzielt werden.
-
-### <a name="what-microsoft-cloud-services-are-supported-over-expressroute"></a>Welche Microsoft-Clouddienste werden von ExpressRoute unterstützt?
-ExpressRoute unterstützt die meisten der derzeit verfügbaren Microsoft Azure-Dienste, z. B. Office 365.  Achten Sie in nächster Zeit auf Updates hinsichtlich der allgemeinen Verfügbarkeit.
 
 ### <a name="where-is-the-service-available"></a>Wo ist der Dienst verfügbar?
 Auf der folgenden Seite finden Sie Informationen bezüglich der Dienststandorte und Verfügbarkeit: [ExpressRoute-Partner und -Standorte](expressroute-locations.md).
@@ -99,7 +96,7 @@ Ja. Jede ExpressRoute-Verbindung verfügt über ein redundantes Paar von Querver
 ### <a name="will-i-lose-connectivity-if-one-of-my-expressroute-links-fail"></a>Geht die Konnektivität verloren, wenn einer meiner ExpressRoute-Links ausfällt?
 Wenn eine der Querverbindungen ausfällt, bleibt die Konnektivität bestehen. Es steht eine redundante Verbindung zur Verfügung, um die Auslastung des Netzwerks zu unterstützen. Sie können zudem mehrere Verbindungen an einem anderen Peeringstandort erstellen, um die Ausfallsicherheit bei einem Fehler sicherzustellen.
 
-### <a name="a-nameonep2plinkaif-im-not-co-located-at-a-cloud-exchange-and-my-service-provider-offers-point-to-point-connection-do-i-need-to-order-two-physical-connections-between-my-on-premises-network-and-microsoft"></a><a name="onep2plink"></a>Wenn ich mich nicht am selben Standort wie ein Cloud Exchange befinde und mein Dienstanbieter Punkt-zu-Punkt-Verbindungen bereitstellt, muss ich zwei physische Verbindungen zwischen meinem lokalen Netzwerk und Microsoft anfordern?
+### <a name="onep2plink"></a>Wenn ich mich nicht am selben Standort wie ein Cloud Exchange befinde und mein Dienstanbieter Punkt-zu-Punkt-Verbindungen bereitstellt, muss ich zwei physische Verbindungen zwischen meinem lokalen Netzwerk und Microsoft anfordern?
 Nein, Sie benötigen nur eine einzige physische Verbindung, wenn Ihr Dienstanbieter zwei virtuelle Ethernet-Verbindungen über die physische Verbindung herstellen kann. Die physische Verbindung (z.B. Glasfaser) wird auf einem Gerät der Ebene 1 (L1) beendet (siehe Abbildung unten). Die zwei virtuellen Ethernet-Verbindungen werden mit unterschiedlichen VLAN-IDs markiert, eine für die primäre Verbindung und eine für die sekundäre Verbindung. Diese VLAN-IDs befinden sich im äußeren 802.1Q-Ethernet-Header. Der innere 802.1Q-Ethernet-Header (nicht dargestellt) wird einer bestimmten [ExpressRoute-Routingdomäne](expressroute-circuit-peerings.md) zugeordnet. 
 
 ![](./media/expressroute-faqs/expressroute-p2p-ref-arch.png)
@@ -111,7 +108,10 @@ Nein. Wir unterstützen keine Schicht-2-Konnektivitätserweiterungen in Azure.
 Ja. Ihr Abonnement kann mehr als eine ExpressRoute-Verbindung enthalten. Das Limit für die Anzahl dedizierter Verbindungen ist standardmäßig auf 10 festgelegt. Wenden Sie sich an Microsoft Support, um das Limit bei Bedarf zu erhöhen.
 
 ### <a name="can-i-have-expressroute-circuits-from-different-service-providers"></a>Kann ich ExpressRoute-Verbindungen von verschiedenen Dienstanbietern haben?
-Ja. Sie können ExpressRoute-Verbindungen von verschiedenen Dienstanbietern verwenden. Jede ExpressRoute-Verbindung wird nur einem Dienstanbieter zugeordnet.
+Ja. Sie können ExpressRoute-Verbindungen von verschiedenen Dienstanbietern verwenden. Jede ExpressRoute-Verbindung wird nur einem Dienstanbieter zugeordnet. 
+
+### <a name="can-i-have-multiple-expressroute-circuits-in-the-same-location"></a>Kann ich mehrere ExpressRoute-Verbindungen am gleichen Standort haben?
+Ja. Sie können am gleichen Standort mehrere ExpressRoute-Verbindungen mit den gleichen oder unterschiedlichen Dienstanbietern haben. Es ist jedoch nicht möglich, dass Sie mehrere ExpressRoute-Verbindungen mit der gleichen Virtual Network-Instanz verknüpfen.
 
 ### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>Wie kann ich meine Virtual Networks mit einer ExpressRoute-Verbindung verbinden?
 Die grundlegenden Schritte werden im Folgenden beschrieben.
@@ -126,7 +126,7 @@ Weitere Informationen finden Sie unter [ExpressRoute-Workflows für die Verbindu
 Ja. [ExpressRoute-Partner und -Standorte](expressroute-locations.md) bietet eine Übersicht über die Konnektivitätsgrenzen für eine ExpressRoute-Verbindung. Die Konnektivität für eine ExpressRoute-Verbindung ist auf eine einzelne geopolitische Region beschränkt. Die Konnektivität kann auf verschiedene geopolitische Regionen erweitert werden, wenn Sie das ExpressRoute Premium-Feature aktivieren.
 
 ### <a name="can-i-link-to-more-than-one-virtual-network-to-an-expressroute-circuit"></a>Kann ich mehr als ein virtuelles Netzwerk mit einer ExpressRoute-Verbindung verknüpfen?
-Ja. Sie können bis zu 10 virtuelle Netzwerke mit einer ExpressRoute-Verbindung verknüpfen.
+Ja. Bei einer standardmäßigen ExpressRoute-Verbindung sind bis zu 10 Verbindungen mit virtuellen Netzwerken möglich. Bei einer [ExpressRoute Premium-Verbindung](#expressroute-premium) sind es bis zu 100. 
 
 ### <a name="i-have-multiple-azure-subscriptions-that-contain-virtual-networks-can-i-connect-virtual-networks-that-are-in-separate-subscriptions-to-a-single-expressroute-circuit"></a>Ich habe mehrere Azure-Abonnements, die Virtual Networks enthalten. Kann ich Virtual Networks, die sich in unterschiedlichen Abonnements befinden, mit einer ExpressRoute-Verbindung verbinden?
 Ja. Sie können bis zu 10 andere Azure-Abonnements autorisieren, eine einzige ExpressRoute-Verbindung zu verwenden. Dieses Limit kann durch das Aktivieren des ExpressRoute Premium-Features erhöht werden.
@@ -154,6 +154,9 @@ Ja. ExpressRoute kann zusammen mit Standort-zu-Standort-VPNs verwendet werden.
 ### <a name="can-i-move-a-virtual-network-from-site-to-site--point-to-site-configuration-to-use-expressroute"></a>Kann ich ein virtuelles Netzwerk mit einer Standort-zu-Standort-/Punkt-zu-Standort-Konfiguration so konfigurieren, dass es ExpressRoute verwendet?
 Ja. Sie müssen in Ihrem virtuellen Netzwerk ein ExpressRoute-Gateway erstellen. Bei diesem Vorgang kommt es zu einer kurzen Dienstunterbrechung.
 
+### <a name="why-is-there-a-public-ip-address-associated-with-the-expressroute-gateway-on-a-virtual-network"></a>Weshalb ist dem ExpressRoute-Gateway in einem virtuellen Netzwerk eine öffentliche IP-Adresse zugeordnet?
+Dies dient nur der internen Verwaltung. Diese öffentliche IP-Adresse ist nicht im Internet verfügbar, und sie stellt für Ihr virtuelles Netzwerk kein Sicherheitsrisiko dar.
+
 ### <a name="what-do-i-need-to-connect-to-azure-storage-over-expressroute"></a>Was brauche ich, um über ExpressRoute eine Verbindung mit Azure Storage herzustellen?
 Sie müssen eine ExpressRoute-Verbindung einrichten und Routen für öffentliches Peering konfigurieren.
 
@@ -179,7 +182,7 @@ Die folgenden Schritte helfen Azure dabei, die Aktivierungsanforderung zu erkenn
    * Fordern Sie Ihren Netzwerkdienstanbieter auf, den Datenverkehr über das öffentliche Peering wieder an Azure zurückzuleiten.
 
 ### <a name="can-i-change-the-bandwidth-of-an-expressroute-circuit"></a>Kann ich die Bandbreite einer ExpressRoute-Verbindung ändern?
-Ja. Die Bandbreite einer ExpressRoute-Verbindung kann erhöht werden, ohne sie beenden zu müssen. Wenden Sie sich an Ihren Konnektivitätsanbieter, um sicherzustellen, dass er die Drosselungen in seinen Netzwerken aktualisiert, um die Erhöhung der Bandbreite zu unterstützen. Sie können die Bandbreite einer ExpressRoute-Verbindung jedoch nicht reduzieren. Wenn Sie die Bandbreite verringern müssen, wird die ExpressRoute-Verbindung beendet und anschließend neu erstellt.
+Ja, Sie können versuchen, die Bandbreite Ihrer ExpressRoute-Verbindung im Azure-Portal oder mithilfe von PowerShell zu ändern. Wenn auf dem physischen Port, auf dem die Verbindung erstellt wurde, Kapazität verfügbar ist, ist die Änderung erfolgreich. Wenn die Änderung fehlschlägt, bedeutet dies, dass die Kapazität auf dem aktuellen Port nicht ausreicht und dass Sie eine neue ExpressRoute-Verbindung mit der höheren Bandbreite erstellen müssen. Es kann aber auch bedeuten, dass an dem Standort keine zusätzliche Kapazität verfügbar ist. In dem Fall können Sie die Bandbreite nicht erhöhen. Wenden Sie sich auch an Ihren Konnektivitätsanbieter, um sicherzustellen, dass er die Drosselungen in seinen Netzwerken aktualisiert, damit die Erhöhung der Bandbreite unterstützt wird. Sie können Bandbreite Ihrer ExpressRoute-Verbindung jedoch nicht verringern. Stattdessen müssen Sie eine neue ExpressRoute-Verbindung mit der geringeren Bandbreite erstellen und die alte Verbindung löschen.
 
 ### <a name="how-do-i-change-the-bandwidth-of-an-expressroute-circuit"></a>Wie kann ich die Bandbreite einer ExpressRoute-Verbindung ändern?
 Sie können die Bandbreite der ExpressRoute-Verbindung mithilfe der API zum Aktualisieren der dedizierten Verbindung und des PowerShell-Cmdlets aktualisieren.
@@ -190,7 +193,7 @@ ExpressRoute Premium ist eine Sammlung der unten aufgeführten Features.
 
 * Erhöhung des Grenzwerts für Routingtabellen von 4.000 auf 10.000 Routen für privates Peering.
 * Größere Anzahl an VNets, die mit der ExpressRoute-Verbindung verbunden werden können. (Der Standardwert ist&10;.) Weitere Details finden Sie in der Tabelle unten.
-* Globale Konnektivität über das Microsoft-Kernnetzwerk. Jetzt können Sie ein VNet in einer geopolitischen Region mit einer ExpressRoute-Verbindung in einer anderen Region verknüpfen. **Beispiel:** Sie können ein in Westeuropa erstelltes VNet mit einer ExpressRoute-Verbindung verknüpfen, die im Silicon Valley erstellt wurde.
+* Globale Konnektivität über das Microsoft-Kernnetzwerk. Jetzt können Sie ein VNet in einer geopolitischen Region mit einer ExpressRoute-Verbindung in einer anderen Region verknüpfen. **Beispiel:** Sie können ein in Westeuropa erstelltes VNet mit einer ExpressRoute-Verbindung verknüpfen, die im Silicon Valley erstellt wurde. **Anderes Beispiel**: Beim öffentlichen Peering werden Präfixe anderer geopolitischer Regionen so angekündigt, dass Sie sich z.B. von einer Verbindung im Silicon Valley ausgehend mit SQL Azure in der Region „Europa, Westen“ verbinden können.
 * Verbindung mit Office 365-Diensten und CRM Online.
 
 ### <a name="how-many-vnets-can-i-link-to-an-expressroute-circuit-if-i-enabled-expressroute-premium"></a>Wie viele VNets kann ich mit einer ExpressRoute-Verbindung verknüpfen, wenn ich ExpressRoute Premium aktiviert habe?

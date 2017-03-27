@@ -1,6 +1,7 @@
 # Übersicht
 ## [Was ist Azure Batch?](batch-technical-overview.md)
 ## [Funktionsübersicht](batch-api-basics.md)
+## [APIs und Tools](batch-apis-tools.md)
 ## [Kontingente und Grenzwerte](batch-quota-limit.md)
 # Erste Schritte
 ## [Erstellen eines Batch-Kontos](batch-account-create-portal.md)
@@ -10,6 +11,7 @@
 ## Entwickeln
 ### [Anwendungspakete](batch-application-packages.md)
 ### [Automatisches Skalieren von Computeknoten](batch-automatic-scaling.md)
+### [Azure AD-Authentifizierung](batch-aad-auth.md)
 ### [Gleichzeitige Knotenaufgaben](batch-parallel-node-tasks.md)
 ### [Effiziente Listenabfragen](batch-efficient-list-queries.md)
 ### [Vorbereitung und Abschluss von Aufträgen](batch-job-prep-release.md)
@@ -25,7 +27,8 @@
 ### [Diagnoseprotokolle für Batch](batch-diagnostics.md)
 
 # Referenz
-## [PowerShell](/powershell/resourcemanager/azurerm.batch/v2.3.0/azurerm.batch)
+## [PowerShell](/powershell/resourcemanager/azurerm.batch/v2.5.0/azurerm.batch)
+## [Azure-Befehlszeilenschnittstelle](/cli/azure/batch)
 ## [.NET](/dotnet/api/microsoft.azure.batch)
 ## [Java](/java/api/com.microsoft.azure.batch)
 ## [Node.js](http://azure.github.io/azure-sdk-for-node/azure-batch/latest)
@@ -45,9 +48,5 @@
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=batch&updatetype=&platform=)
 ## [C#-Codebeispiele](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/)
 ## [Python-Codebeispiele](https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch)
-
-
-
-<!--HONumber=Jan17_HO3-->
-
+## [Blog](https://blogs.technet.microsoft.com/windowshpc/)
 

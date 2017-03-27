@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 03/13/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
-ms.openlocfilehash: 3953a83b20ee2d1ca0035b31824ca167e92f4864
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: becb179da6bc6b6df629a07d3ddb5d50edbaa577
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -32,7 +32,7 @@ Sie installieren die Lösung, um den Typ des installierten Agents zu aktualisier
 Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der Lösung.
 
 * Sie benötigen einen [Windows](log-analytics-windows-agents.md)-, [Operations Manager](log-analytics-om-agents.md)- oder [Linux](log-analytics-linux-agents.md)-Agent auf jedem Computer, auf dem Änderungen überwacht werden sollen.
-* Fügen Sie mithilfe des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md)beschriebenen Prozesses Ihrem OMS-Arbeitsbereich die Änderungsnachverfolgungslösung hinzu.  Es ist keine weitere Konfiguration erforderlich.
+* Fügen Sie mithilfe des [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ChangeTrackingOMS?tab=Overview) oder des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md) beschriebenen Prozesses Ihrem OMS-Arbeitsbereich die Lösung für die Änderungsnachverfolgung hinzu.  Es ist keine weitere Konfiguration erforderlich.
 
 ### <a name="configure-windows-files-to-track"></a>Konfigurieren der nachzuverfolgenden Windows-Dateien
 Führen Sie zum Konfigurieren der nachzuverfolgenden Dateien auf Windows-Computern die folgenden Schritte aus.
@@ -66,7 +66,21 @@ Die folgende Tabelle zeigt die Datensammlungsmethoden und andere Details dazu, w
 
 | Plattform | Direkt-Agent | SCOM-Agent | Linux-Agent | Azure Storage | SCOM erforderlich? | Daten von SCOM-Agent über Verwaltungsgruppe gesendet | Sammlungshäufigkeit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Windows und Linux |![Ja](./media/log-analytics-change-tracking/oms-bullet-green.png) |![Ja](./media/log-analytics-change-tracking/oms-bullet-green.png) |![Ja](./media/log-analytics-change-tracking/oms-bullet-green.png) |![Nein](./media/log-analytics-change-tracking/oms-bullet-red.png) |![Nein](./media/log-analytics-change-tracking/oms-bullet-red.png) |![Ja](./media/log-analytics-change-tracking/oms-bullet-green.png) | Zwischen 15 Minuten und einer Stunde (je nach Art der Änderung) |
+| Windows und Linux |![Ja](./media/log-analytics-change-tracking/oms-bullet-green.png) |![Ja](./media/log-analytics-change-tracking/oms-bullet-green.png) |![Ja](./media/log-analytics-change-tracking/oms-bullet-green.png) |![Nein](./media/log-analytics-change-tracking/oms-bullet-red.png) |![Nein](./media/log-analytics-change-tracking/oms-bullet-red.png) |![Ja](./media/log-analytics-change-tracking/oms-bullet-green.png) | Zwischen 5 und 50 Minuten (je nach Art der Änderung) Weitere Informationen finden Sie unten. |
+
+
+Die folgende Tabelle zeigt die Datensammlungshäufigkeit für die Änderungstypen.
+
+| **Änderungstyp** | **frequency** | **Sendet der** **Agent** **gefundene Änderungen?** |
+| --- | --- | --- |
+| Windows-Registrierung | 50 Minuten | no |
+| Windows-Datei | 30 Minuten | Ja. Wenn es innerhalb von 24 Stunden keine Änderungen gibt, wird eine Momentaufnahme gesendet. |
+| Linux-Datei | 15 Minuten | Ja. Wenn es innerhalb von 24 Stunden keine Änderungen gibt, wird eine Momentaufnahme gesendet. |
+| Windows-Dienste | 30 Minuten | Ja, alle 30 Minuten, wenn Änderungen gefunden werden. Alle 24 Stunden wird unabhängig von Änderungen eine Momentaufnahme gesendet. Die Momentaufnahme wird also auch gesendet, wenn es keine Änderungen gibt. |
+| Linux-Daemons | 5 Minuten | Ja. Wenn es innerhalb von 24 Stunden keine Änderungen gibt, wird eine Momentaufnahme gesendet. |
+| Windows-Software | 30 Minuten | Ja, alle 30 Minuten, wenn Änderungen gefunden werden. Alle 24 Stunden wird unabhängig von Änderungen eine Momentaufnahme gesendet. Die Momentaufnahme wird also auch gesendet, wenn es keine Änderungen gibt. |
+| Linux-Software | 5 Minuten | Ja. Wenn es innerhalb von 24 Stunden keine Änderungen gibt, wird eine Momentaufnahme gesendet. |
+
 
 ## <a name="use-change-tracking"></a>Verwenden von Change Tracking
 Nach der Installation können Sie die Zusammenfassung der Änderungen für die überwachten Server in OMS über die Kachel **Änderungsnachverfolgung** auf der Seite **Übersicht** anzeigen.

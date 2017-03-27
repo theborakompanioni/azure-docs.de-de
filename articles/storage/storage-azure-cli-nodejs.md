@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
 translationtype: Human Translation
-ms.sourcegitcommit: 36fa9cd757b27347c08f80657bab8a06789a3c2f
-ms.openlocfilehash: 289bf7ab1ba91bd9edc6288af93e06170d8f2def
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: b246d8813a41d353a9c0fa31fe838e025fc93046
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 02/27/2017
 
 Die Azure-Befehlszeilenschnittstelle stellt eine Reihe von plattformübergreifenden Open Source-Befehlen für die Arbeit mit der Azure-Plattform bereit. Sie bietet im Wesentlichen die gleiche Funktionalität wie das [Azure-Portal](https://portal.azure.com) sowie umfangreiche Datenzugriffsfunktionen.
 
-Diese Anleitung enthält Informationen zur Verwendung der [Azure-Befehlszeilenschnittstelle (Azure CLI)](../xplat-cli-install.md) zum Ausführen einer Vielzahl von Entwicklungs- und Verwaltungsaufgaben mit Azure Storage. Sie sollten die neueste Azure-Befehlszeilenschnittstelle herunterladen und installieren bzw. ein Upgrade durchführen, bevor Sie diese Anleitung verwenden.
+Diese Anleitung enthält Informationen zur Verwendung der [Azure-Befehlszeilenschnittstelle (Azure CLI)](../cli-install-nodejs.md) zum Ausführen einer Vielzahl von Entwicklungs- und Verwaltungsaufgaben mit Azure Storage. Sie sollten die neueste Azure-Befehlszeilenschnittstelle herunterladen und installieren bzw. ein Upgrade durchführen, bevor Sie diese Anleitung verwenden.
 
 Diese Anleitung setzt voraus, dass Sie die grundlegenden Konzepte von Azure-Speicher verstehen. Die Anleitung bietet eine Reihe von Skripts, um die Verwendung der Azure-Befehlszeilenschnittstelle mit Azure-Speicher zu veranschaulichen. Sie müssen die Skriptvariablen auf Basis Ihrer Konfiguration aktualisieren, bevor Sie die jeweiligen Skripts ausführen.
 
@@ -47,7 +47,7 @@ Unter [Zuweisen von Administratorrollen in Azure Active Directory (Azure AD)](ht
 
 **Nach der Erstellung eines Microsoft Azure-Abonnements und eines Kontos:**
 
-1. Laden Sie die Azure-Befehlszeilenschnittstelle herunterladen und installieren Sie sie gemäß den Anweisungen unter [Installieren der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md).
+1. Laden Sie die Azure-Befehlszeilenschnittstelle herunterladen und installieren Sie sie gemäß den Anweisungen unter [Installieren der Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md).
 2. Sobald die Befehlszeilenschnittstelle installiert ist, können Sie den Befehl "azure" in Ihrer Befehlszeilenschnittstelle (Bash, Terminal, Eingabeaufforderung) verwenden, um auf die Befehle der Azure-Befehlszeilenschnittstelle zuzugreifen. Wenn Sie den Befehl _azure_ eingeben, sollte die folgende Ausgabe angezeigt werden.
 
     ![Azure-Befehlsausgabe:][Image1]
@@ -239,7 +239,7 @@ azure storage file copy start --source-container srcctn --source-blob hello2.txt
 Sie finden die Befehlsreferenz zur Azure-Befehlszeilenschnittstelle 1.0 für die Arbeit mit Speicherressourcen hier:
 
 * [Befehle der Azure-Befehlszeilenschnittstelle im Resource Manager-Modus](../virtual-machines/azure-cli-arm-commands.md#azure-storage-commands-to-manage-your-storage-objects)
-* [Befehle der Azure-Befehlszeilenschnittstelle im Modus „Azure-Dienstverwaltung“](../xplat-cli-install.md)
+* [Befehle der Azure-Befehlszeilenschnittstelle im Modus „Azure-Dienstverwaltung“](../cli-install-nodejs.md)
 
 Sie können auch die [Azure CLI 2.0](storage-azure-cli.md) testen. Dies ist eine in Python geschriebene Befehlszeilenschnittstelle (Command Line Interface, CLI) der nächsten Generation zur Verwendung mit dem Resource Manager-Bereitstellungsmodell.
 

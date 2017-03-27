@@ -16,14 +16,14 @@ ms.topic: article
 ms.date: 2/21/2017
 ms.author: juluk
 translationtype: Human Translation
-ms.sourcegitcommit: 59af3469a5b2d5cca68bf18dca1aa1e3ab684adb
-ms.openlocfilehash: 0675b6471e37e89e426df85e2fb696fcff2927fd
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: c216b573e91894f2b9e17bf870c03b7d2a0f7161
+ms.lasthandoff: 03/21/2017
 
 
 ---
 # <a name="deploy-lamp-stack-with-the-azure-cli-10"></a>Bereitstellen von LAMP-Stapeln mit Azure CLI 1.0
-In diesem Artikel werden Sie durch die Bereitstellung eines Apache-Webservers und von MySQL und PHP (LAMP-Stapel) in Azure geführt. Sie benötigen ein Azure-Konto ([kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/)) und die [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md), die [mit Ihrem Azure-Konto verbunden](../xplat-cli-connect.md) ist.
+In diesem Artikel werden Sie durch die Bereitstellung eines Apache-Webservers und von MySQL und PHP (LAMP-Stapel) in Azure geführt. Sie benötigen ein Azure-Konto ([kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/)) und die [Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md), die [mit Ihrem Azure-Konto verbunden](../xplat-cli-connect.md) ist.
 
 ## <a name="cli-versions-to-complete-the-task"></a>CLI-Versionen zum Durchführen dieser Aufgabe
 Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
@@ -98,13 +98,13 @@ Eine Antwort mit Aufforderungen zur weiteren Eingabe wird angezeigt:
     data:    ubuntuOSVersion           String        14.04.2-LTS
     info:    group deployment create command OK
 
-Sie haben nun eine Linux-VM erstellt, auf der LAMP bereits installiert ist. Bei Bedarf können Sie die Installation überprüfen, indem Sie nach unten zu [Überprüfen der erfolgreichen LAMP-Installation](#verify-lamp-successfully-installed) wechseln.
+Sie haben nun eine Linux-VM erstellt, auf der LAMP bereits installiert ist. Bei Bedarf können Sie die Installation überprüfen, indem Sie die Schritte zum [Überprüfen der erfolgreichen LAMP-Installation](#verify-lamp-successfully-installed) unten in diesem Artikel ausführen.
 
-## <a name="deploy-lamp-on-existing-vm-walkthrough"></a>Bereitstellen von LAMP auf einer vorhandenen VM – Exemplarische Vorgehensweise
-Falls Sie bei der Erstellung einer Linux-VM Hilfe benötigen, lesen Sie diese [Informationen zum Erstellen einer Linux-VM](virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Als Nächstes müssen Sie per SSH auf die Linux-VM wechseln. Falls Sie bei der Erstellung eines SSH-Schlüssels Hilfe benötigen, lesen Sie diese [Informationen zum Erstellen eines SSH-Schlüssels unter Linux/Mac](virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-Wenn Sie bereits über einen SSH-Schlüssel verfügen, können Sie mit `ssh exampleUsername@exampleDNS` per SSH auf die Linux-VM wechseln.
+## <a name="deploy-lamp-on-existing-vm-walkthrough"></a>Bereitstellen von LAMP auf einem vorhandenen virtuellen Computer – exemplarische Vorgehensweise
+Falls Sie beim Erstellen eines virtuellen Linux-Computers Hilfe benötigen, helfen Ihnen diese [Informationen zum Erstellen eines virtuellen Linux-Computers](virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) weiter. Als Nächstes müssen Sie eine SSH-Verbindung mit dem virtuellen Linux-Computer herstellen. Falls Sie beim Erstellen eines SSH-Schlüssels Hilfe benötigen, lesen Sie diese [Informationen zum Erstellen eines SSH-Schlüssels unter Linux/Mac](virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Wenn Sie bereits über einen SSH-Schlüssel verfügen, können Sie mit `ssh exampleUsername@exampleDNS` eine SSH-Verbindung mit dem virtuellen Linux-Computer herstellen.
 
-Da Sie sich jetzt auf der Linux-VM befinden, folgt nun die exemplarische Vorgehensweise zur Installation des LAMP-Stapels auf Debian-basierten Distributionen. Die Befehle können für andere Linux-Distributionen jeweils variieren.
+Da Sie jetzt auf dem virtuellen Linux-Computer arbeiten, folgt nun die exemplarische Vorgehensweise zur Installation des LAMP-Stapels in Debian-basierten Distributionen. Die Befehle können für andere Linux-Distributionen jeweils variieren.
 
 #### <a name="installing-on-debianubuntu"></a>Installation unter Debian/Ubuntu
 Die folgenden Pakete müssen installiert sein: `apache2`, `mysql-server`, `php5` und `php5-mysql`. Sie können diese Pakete installieren, indem Sie direkt darauf zugreifen oder Tasksel verwenden. Die Anleitungen für beide Optionen sind unten aufgeführt.
@@ -117,7 +117,7 @@ Verwenden von apt-get:
 
     user@ubuntu$ sudo apt-get install apache2 mysql-server php5 php5-mysql
 
-##### <a name="using-tasksel"></a>Verwenden von Tasksel:
+##### <a name="using-tasksel"></a>Verwenden von Tasksel
 Alternativ dazu können Sie Tasksel herunterladen. Dabei handelt es sich um ein Debian/Ubuntu-Tool, das mehrere in Beziehung stehende Pakete als koordinierten „Task“ auf Ihrem System installiert.
 
     user@ubuntu$ sudo apt-get install tasksel
@@ -135,7 +135,7 @@ Führen Sie folgenden Befehl aus, um weitere PHP-Erweiterungen anzuzeigen, die a
 #### <a name="create-infophp-document"></a>Erstellen des Dokuments „info.php“
 Sie sollten jetzt in der Befehlszeile überprüfen können, welche Version von Apache, MySQL und PHP Sie verwenden, indem Sie `apache2 -v`, `mysql -v` oder `php -v` eingeben.
 
-Falls Sie weitere Tests durchführen möchten, können Sie schnell eine PHP-Infoseite zum Anzeigen in einem Browser erstellen. Erstellen Sie im Text-Editor Nano mit diesem Befehl eine neue Datei:
+Falls Sie weitere Tests durchführen möchten, können Sie schnell eine PHP-Infoseite zum Anzeigen in einem Browser erstellen. Erstellen Sie mit dem Nano-Text-Editor und diesem Befehl eine neue Datei:
 
     user@ubuntu$ sudo nano /var/www/html/info.php
 
@@ -152,7 +152,7 @@ Starten Sie Apache mit diesem Befehl neu, damit alle neuen Installationen wirksa
     user@ubuntu$ sudo service apache2 restart
 
 ## <a name="verify-lamp-successfully-installed"></a>Überprüfen der erfolgreichen LAMP-Installation
-Sie können jetzt die von Ihnen erstellte PHP-Informationsseite überprüfen, indem Sie einen Browser öffnen und zu http://IhrDNS/info.php navigieren. Es sollte in etwa wie in der folgenden Abbildung aussehen.
+Sie können jetzt die von Ihnen erstellte PHP-Informationsseite überprüfen, indem Sie einen Browser öffnen und zu „http://IhrDNS/info.php“ wechseln. Die Seite sollte ähnlich wie diese Abbildung aussehen.
 
 ![][2]
 

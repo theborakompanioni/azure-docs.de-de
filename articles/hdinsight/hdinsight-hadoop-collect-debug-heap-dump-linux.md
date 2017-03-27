@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 8f151adb-f687-41e4-aca0-82b551953725
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -32,7 +33,7 @@ Heapdumps enthalten eine Momentaufnahme des Speichers der Anwendung, einschließ
 > [!IMPORTANT]
 > Die Schritte in diesem Dokument funktionieren nur mit einem HDInsight-Cluster unter Linux. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date).
 
-## <a name="a-namewhichservicesaservices"></a><a name="whichServices"></a>Dienste
+## <a name="whichServices"></a>Dienste
 Sie können Heapdumps für die folgenden Dienste aktivieren:
 
 * **hcatalog** : tempelton
@@ -43,7 +44,7 @@ Sie können Heapdumps für die folgenden Dienste aktivieren:
 
 Sie können Heapdumps auch für die Mapper- und Reducer-Prozesse aktivieren, die von HDInsight ausgeführt wurden.
 
-## <a name="a-nameconfigurationaunderstanding-heap-dump-configuration"></a><a name="configuration"></a>Grundlegendes zur Konfiguration von Heapdumps
+## <a name="configuration"></a>Grundlegendes zur Konfiguration von Heapdumps
 Heapdumps werden aktiviert, indem Optionen (oder Parameter) an die JVM übergeben werden, wenn ein Dienst gestartet wird. Für die meisten Hadoop-Dienste kann dies erreicht werden, indem das Shellskript geändert wird, das zum Starten des Diensts verwendet wird.
 
 In jedem Skript ist ein Export für **\*\_OPTS** vorhanden, der die an die JVM übergebenen Optionen enthält. Beispiel: Im Skript **hadoop-env.sh** enthält die Zeile, die mit `export HADOOP_NAMENODE_OPTS=` beginnt, die Optionen für den NameNode-Dienst.

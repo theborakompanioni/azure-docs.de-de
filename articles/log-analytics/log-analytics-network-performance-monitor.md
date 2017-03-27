@@ -12,12 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 03/09/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 2b427d37a144b947d8d905e8f310ea35785ddf61
-ms.openlocfilehash: f397266afa269831d3791c625342454054b86ff2
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: 7e9ca0c15c29fb670b742d939107bb5d4a48245c
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -61,7 +61,19 @@ Agents überwachen die Netzwerkkonnektivität (Verknüpfungen) zwischen Hosts �
 
 ### <a name="configure-agents"></a>Konfigurieren von Agents
 
-Wenn Sie beabsichtigen, das ICMP-Protokoll für synthetische Transaktionen zu verwenden, müssen Sie die Agents nicht konfigurieren. Dann können Sie mit dem Konfigurieren der Lösung beginnen. Wenn Sie das TCP-Protokoll jedoch verwenden möchten, müssen Sie Firewallports für diese Computer öffnen, um sicherzustellen, dass Agents kommunizieren können. Sie müssen das [PowerShell-Skript EnableRules.ps1](https://gallery.technet.microsoft.com/OMS-Network-Performance-04a66634) herunterladen und ohne Parameter in einem PowerShell-Fenster mit Administratorrechten ausführen.
+Wenn Sie das ICMP-Protokoll für synthetische Transaktionen verwenden möchten, müssen Sie die folgenden Firewallregeln für die zuverlässige Verwendung von ICMP aktivieren:
+
+```
+netsh advfirewall firewall add rule name="NPMDICMPV4Echo" protocol="icmpv4:8,any" dir=in action=allow
+netsh advfirewall firewall add rule name="NPMDICMPV6Echo" protocol="icmpv6:128,any" dir=in action=allow
+netsh advfirewall firewall add rule name="NPMDICMPV4DestinationUnreachable" protocol="icmpv4:3,any" dir=in action=allow
+netsh advfirewall firewall add rule name="NPMDICMPV6DestinationUnreachable" protocol="icmpv6:1,any" dir=in action=allow
+netsh advfirewall firewall add rule name="NPMDICMPV4TimeExceeded" protocol="icmpv4:11,any" dir=in action=allow
+netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmpv6:3,any" dir=in action=allow
+```
+
+
+Wenn Sie das TCP-Protokoll verwenden möchten, müssen Sie Firewallports für diese Computer öffnen, um sicherzustellen, dass Agents kommunizieren können. Sie müssen das [PowerShell-Skript EnableRules.ps1](https://gallery.technet.microsoft.com/OMS-Network-Performance-04a66634) herunterladen und ohne Parameter in einem PowerShell-Fenster mit Administratorrechten ausführen.
 
 Das Skript erstellt vom Netzwerkleistungsmonitor benötigte Registrierungsschlüssel und Windows-Firewallregeln, die es Agents erlauben, untereinander TCP-Verbindungen herzustellen. Die vom Skript erstellten Registrierungsschlüssel geben außerdem an, ob die Debugprotokolle und der Pfad zur Protokolldatei protokolliert werden sollen. Ferner definieren sie den für die Kommunikation verwendeten Agent-TCP-Port. Die Werte für diese Schlüssel werden automatisch durch das Skript festgelegt, daher sollten Sie diese Schlüssel nicht manuell ändern.
 
@@ -76,7 +88,10 @@ Standardmäßig wird Port 8084 geöffnet. Sie können einen benutzerdefinierten 
 Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der Lösung.
 
 1. Die Netzwerkleistungsmonitor-Lösung erhält Daten von Computern unter Windows Server 2008 SP1 oder höher bzw. Windows 7 SP1 oder höher, die dieselben Anforderungen erfüllen wie der Microsoft Monitoring Agent (MMA). NPM-Agents können auch unter Windows-Desktop/Client-Betriebssystemen (Windows 10, Windows 8.1, Windows 8 und Windows 7) ausgeführt werden.
-2. Fügen Sie Ihrem Arbeitsbereich mithilfe der unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md) beschriebenen Prozesse die Netzwerkleistungsmonitor-Lösung hinzu.  
+    >[!NOTE]
+    >Die Agents für Windows-Serverbetriebssysteme unterstützen sowohl TCP-als auch ICMP-Protokolle für synthetische Transaktionen. Die Agents für Windows-Clientbetriebssysteme unterstützen jedoch nur ICMP als Protokolle für synthetische Transaktionen.
+
+2. Fügen Sie mithilfe des [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview) oder des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md) beschriebenen Prozesses Ihrem Arbeitsbereich die Netzwerkleistungsmonitor-Lösung hinzu.  
    ![Symbol des Netzwerkleistungsmonitors](./media/log-analytics-network-performance-monitor/npm-symbol.png)
 3. Im OMS-Portal sehen Sie eine neue Kachel mit der Bezeichnung **Netzwerkleistungsmonitor** und der Meldung *Für die Lösung ist eine weitere Konfiguration erforderlich*. Sie müssen die Lösung konfigurieren, um Netzwerke basierend auf von Agents ermittelten Subnetzwerken und Knoten hinzuzufügen. Klicken Sie auf **Netzwerkleistungsmonitor**, um mit dem Konfigurieren des Standardnetzwerks zu beginnen.  
    ![Für die Lösung ist eine weitere Konfiguration erforderlich](./media/log-analytics-network-performance-monitor/npm-config.png)
@@ -290,6 +305,11 @@ Nachdem Sie nun mit dem Netzwerkleistungsmonitor vertraut sind, erfahren Sie in 
 
    In der Abbildung unten ist anhand der rot gekennzeichneten Pfade und Hops deutlich erkennbar, wo die Ursache für die Problembereiche im betreffenden Abschnitt des Netzwerks liegt. Durch Klicken auf einen Knoten in der Topologiekarte werden die Eigenschaften des Knotens einschließlich FQDN und IP-Adresse angezeigt. Durch Klicken auf einen Hop wird die IP-Adresse des Hops angezeigt.  
    ![Fehlerhafte Topologie – Beispiel für Pfaddetails](./media/log-analytics-network-performance-monitor/npm-investigation06.png)
+
+## <a name="provide-feedback"></a>Feedback geben
+
+- **UserVoice** – Sie können Ihre Ideen zu Funktionen des Netzwerkleistungsmonitors veröffentlichen, an denen wir arbeiten sollen. Besuchen Sie unsere [UserVoice-Seite](https://feedback.azure.com/forums/267889-log-analytics/category/188146-network-monitoring).
+- **Treten Sie unserer Gruppe bei** – wir sind immer an neuen Kunden interessiert, die unserer Gruppe beitreten. Als Teil der Gruppe erhalten Sie vorab Zugriff auf neue Funktionen und helfen uns dabei, den Netzwerkleistungsmonitor zu verbessern. Wenn Sie beitreten möchten, füllen Sie diesen [kurzen Fragebogen](https://aka.ms/npmcohort) aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Mit [Protokollsuchen](log-analytics-log-searches.md) können Sie Detaildatensätze mit Netzwerkleistungsdaten anzeigen.

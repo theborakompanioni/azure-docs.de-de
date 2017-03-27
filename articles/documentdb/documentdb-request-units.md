@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 03/08/2017
 ms.author: syamk
 translationtype: Human Translation
-ms.sourcegitcommit: 4f8235ae743a63129799972ca1024d672faccbe9
-ms.openlocfilehash: 7c32d69f3d6d2cc60f830db96b6aea47ce8712ca
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: b098e3087cb08528c5fbdc2d0d768ce40e7ffe0d
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -41,7 +41,7 @@ Nach Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
 * Was geschieht, wenn ich die Kapazität der Anforderungseinheiten für eine Sammlung überschreite?
 
 ## <a name="request-units-and-request-charges"></a>Anforderungseinheiten und Anforderungsgebühren
-DocumentDB bietet eine schnelle, vorhersagbare Leistung durch die *Reservierung* von Ressourcen, die dem benötigten Durchsatz für Ihre Anwendung entsprechen.  Da sich Anwendungsauslastung und Zugriffsmuster mit der Zeit ändern, können Sie mit DocumentDB den Umfang des reservierten Durchsatzes, der Ihrer Anwendung zur Verfügung steht, ganz einfach erhöhen oder verringern.
+DocumentDB und API für MongoDB bieten eine schnelle, vorhersagbare Leistung durch die *Reservierung* von Ressourcen, die dem benötigten Durchsatz für Ihre Anwendung entsprechen.  Da sich Anwendungsauslastung und Zugriffsmuster mit der Zeit ändern, können Sie mit DocumentDB den Umfang des reservierten Durchsatzes, der Ihrer Anwendung zur Verfügung steht, ganz einfach erhöhen oder verringern.
 
 Bei DocumentDB wird der reservierte Durchsatz in Anforderungseinheiten pro Sekunde angegeben.  Sie können sich Anforderungseinheiten als Währung für den Durchsatz vorstellen, wobei Sie eine Anzahl garantierter Anforderungseinheiten auf Sekundenbasis für Ihre Anwendung *reservieren* .  Jeder Vorgang in DocumentDB – das Schreiben eines Dokuments, das Durchführen einer Abfrage, das Aktualisieren eines Dokuments – beansprucht CPU, Arbeitsspeicher und IOPS.  Mit anderen Worten: Für jeden Vorgang fällt eine *Anforderungsgebühr* an, die in *Anforderungseinheiten* ausgedrückt wird.  Wenn Sie die Faktoren, die sich auf die berechneten Anforderungseinheiten auswirken, sowie die Durchsatzanforderungen Ihrer Anwendung genau kennen, können Sie die Kosten für Ihre Anwendung optimieren. 
 
@@ -51,7 +51,7 @@ Wir empfehlen Ihnen, sich zunächst das folgende Video anzusehen, in dem Aravind
 > 
 > 
 
-## <a name="specifying-request-unit-capacity"></a>Angeben der Kapazität der Anforderungseinheiten
+## <a name="specifying-request-unit-capacity-in-documentdb"></a>Angeben der Kapazität der Anforderungseinheiten in DocumentDB
 Wenn Sie eine DocumentDB-Sammlung erstellen, geben Sie die Anzahl von Anforderungseinheiten (Request Units, RUs) pro Sekunde an, die für die Sammlung reserviert werden sollen. Basierend auf dem bereitgestellten Durchsatz ordnet DocumentDB physische Partitionen zum Hosten Ihrer Sammlung zu, und Daten werden gemäß ihres Wachstums zwischen Partitionen aufgeteilt/neu verteilt.
 
 DocumentDB erfordert die Angabe eines Partitionsschlüssels, wenn eine Sammlung mit 10.000 oder mehr Anforderungseinheiten bereitgestellt wird. Ein Partitionsschlüssel ist auch erforderlich, um den Durchsatz Ihrer Sammlung künftig auf über 10.000 Anforderungseinheiten zu skalieren. Das Konfigurieren eines [Partitionsschlüssels](documentdb-partition-data.md) beim Erstellen einer Sammlung wird daher unabhängig von Ihrem ursprünglichen Durchsatz dringend empfohlen. Da Ihre Daten möglicherweise auf mehrere Partitionen aufgeteilt werden müssen, ist es notwendig, einen Partitionsschlüssel mit hoher Kardinalität (Hunderte bis Millionen von unterschiedlichen Werten) auszuwählen, damit Ihre Sammlung und die Anforderungen von DocumentDB gleichmäßig skaliert werden können. 
@@ -61,7 +61,7 @@ DocumentDB erfordert die Angabe eines Partitionsschlüssels, wenn eine Sammlung 
 
 Hier sehen Sie einen Codeausschnitt zum Erstellen einer Sammlung mit 3.000 Anforderungseinheiten pro Sekunde mit .NET SDK:
 
-```C#
+```csharp
 DocumentCollection myCollection = new DocumentCollection();
 myCollection.Id = "coll";
 myCollection.PartitionKey.Paths.Add("/deviceId");
@@ -76,7 +76,7 @@ DocumentDB wird mit einem Reservierungsmodell für den Durchsatz ausgeführt. Ih
 
 Jede Sammlung ist einer `Offer`-Ressource in DocumentDB zugeordnet, die Metadaten zu dem von der Sammlung bereitgestellten Durchsatz enthält. Sie können den reservierten Durchsatz ändern, indem Sie die entsprechende Angebotsressource für eine Sammlung suchen und mit dem neuen Durchsatzwert aktualisieren. Hier sehen Sie einen Codeausschnitt zum Ändern des Durchsatzes einer Sammlung auf 5.000 Anforderungseinheiten pro Sekunde mithilfe von .NET SDK:
 
-```C#
+```csharp
 // Fetch the resource to be updated
 Offer offer = client.CreateOfferQuery()
                 .Where(r => r.ResourceLink == collection.SelfLink)    
@@ -89,6 +89,13 @@ offer = new OfferV2(offer, 5000);
 // Now persist these changes to the database by replacing the original resource
 await client.ReplaceOfferAsync(offer);
 ```
+
+Die Durchsatzänderung hat keine Auswirkungen auf die Verfügbarkeit Ihrer Sammlung. In der Regel wird der neue reservierte Durchsatz innerhalb von Sekunden nach der Anwendung des neuen Durchsatzes wirksam.
+
+## <a name="specifying-request-unit-capacity-in-api-for-mongodb"></a>Angeben der Kapazität der Anforderungseinheiten in API für MongoDB
+In API für MongoDB können Sie die Anzahl von Anforderungseinheiten (Request Units, RUs) pro Sekunde angeben, die für die Sammlung reserviert werden sollen.
+
+API für MongoDB arbeitet mit dem gleichen auf Durchsatz basierenden Reservierungsmodell wie DocumentDB. Ihnen wird also der für die Sammlung *reservierte* Durchsatz berechnet, unabhängig davon, wie viel von diesem Durchsatz aktiv *verwendet* wird. Sie können die Menge reservierter RUs ganz einfach über das [Azure-Portal](https://portal.azure.com) zentral hoch- oder herunterskalieren, wenn sich die Auslastung, die Daten und die Nutzungsmuster Ihrer Anwendung verändern.
 
 Die Durchsatzänderung hat keine Auswirkungen auf die Verfügbarkeit Ihrer Sammlung. In der Regel wird der neue reservierte Durchsatz innerhalb von Sekunden nach der Anwendung des neuen Durchsatzes wirksam.
 
@@ -125,37 +132,37 @@ In der Tabelle unten ist beispielsweise angegeben, wie viele Anforderungseinheit
             <td valign="top"><p>1 KB</p></td>
             <td valign="top"><p>500</p></td>
             <td valign="top"><p>100</p></td>
-            <td valign="top"><p>(500 * 1) + (100 * 5) = 1.000 RU/s</p></td>
+            <td valign="top"><p>(500 *1) + (100* 5) = 1.000 RU/s</p></td>
         </tr>
         <tr>
             <td valign="top"><p>1 KB</p></td>
             <td valign="top"><p>500</p></td>
             <td valign="top"><p>500</p></td>
-            <td valign="top"><p>(500 * 5) + (100 * 5) = 3.000 RU/s</p></td>
+            <td valign="top"><p>(500 *5) + (100* 5) = 3.000 RU/s</p></td>
         </tr>
         <tr>
             <td valign="top"><p>4 KB</p></td>
             <td valign="top"><p>500</p></td>
             <td valign="top"><p>100</p></td>
-            <td valign="top"><p>(500 * 1.3) + (100 * 7) = 1.350 RU/s</p></td>
+            <td valign="top"><p>(500 *1.3) + (100* 7) = 1.350 RU/s</p></td>
         </tr>
         <tr>
             <td valign="top"><p>4 KB</p></td>
             <td valign="top"><p>500</p></td>
             <td valign="top"><p>500</p></td>
-            <td valign="top"><p>(500 * 1.3) + (500 * 7) = 4.150 RU/s</p></td>
+            <td valign="top"><p>(500 *1.3) + (500* 7) = 4.150 RU/s</p></td>
         </tr>
         <tr>
             <td valign="top"><p>64 KB</p></td>
             <td valign="top"><p>500</p></td>
             <td valign="top"><p>100</p></td>
-            <td valign="top"><p>(500 * 10) + (100 * 48) = 9.800 RU/s</p></td>
+            <td valign="top"><p>(500 *10) + (100* 48) = 9.800 RU/s</p></td>
         </tr>
         <tr>
             <td valign="top"><p>64 KB</p></td>
             <td valign="top"><p>500</p></td>
             <td valign="top"><p>500</p></td>
-            <td valign="top"><p>(500 * 10) + (500 * 48) = 29.000 RU/s</p></td>
+            <td valign="top"><p>(500 *10) + (500* 48) = 29.000 RU/s</p></td>
         </tr>
     </tbody>
 </table>
@@ -209,10 +216,42 @@ Beispiel:
 5. Notieren Sie die berechneten Anforderungseinheiten für benutzerdefinierte Skripts (gespeicherte Prozeduren, Trigger, benutzerdefinierte Funktionen), die von der Anwendung genutzt werden.
 6. Berechnen Sie die erforderlichen Anforderungseinheiten anhand der geschätzten Anzahl von Vorgängen, die erwartungsgemäß pro Sekunde ausgeführt werden.
 
+### <a id="GetLastRequestStatistics"></a>Verwenden des GetLastRequestStatistics-Befehls von API für MongoDB
+API für MongoDB unterstützt den benutzerdefinierten Befehl *getLastRequestStatistics*, um die Anforderungsgebühr für bestimmte Vorgänge abzurufen.
+
+Führen Sie z.B. in der Mongo Shell den Vorgang aus, für den Sie die Anforderungsgebühr überprüfen möchten.
+```
+> db.sample.find()
+```
+
+Anschließend führen Sie den Befehl *getLastRequestStatistics* aus.
+```
+> db.runCommand({getLastRequestStatistics: 1})
+{
+    "_t": "GetRequestStatisticsResponse",
+    "ok": 1,
+    "CommandName": "OP_QUERY",
+    "RequestCharge": 2.48,
+    "RequestDurationInMilliSeconds" : 4.0048
+}
+```
+
+Vor diesem Hintergrund besteht eine Methode zum Abschätzen des von der Anwendung benötigten Durchsatzes darin, typische Vorgänge mit einem repräsentativen, von Ihrer Anwendung verwendeten Dokument auszuführen, dabei die berechneten Anforderungseinheiten zu notieren und anschließend die Anzahl von Vorgängen zu schätzen, die erwartungsgemäß pro Sekunde ausgeführt werden.
+
+> [!NOTE]
+> Wenn sich die Dokumenttypen im Hinblick auf Größe und Anzahl indizierter Eigenschaften erheblich voneinander unterscheiden, erfassen Sie für jeden typischen Dokumenttyp** jeweils die berechneten Anforderungseinheiten des jeweiligen Vorgangs.
+> 
+> 
+
+## <a name="use-api-for-mongodbs-portal-metrics"></a>Verwenden von Portalmetriken von API für MongoDB
+Die einfachste Möglichkeit, eine recht genaue Schätzung der Gebühren für Anforderungseinheiten für Ihre API für MongoDB-Datenbank zu erhalten, ist die Verwendung der Metriken im [Azure-Portal](https://portal.azure.com). Mit den Diagrammen *Anzahl von Anforderungen* und *Anforderungsgebühr* können Sie abschätzen, wie viele Anforderungseinheiten von jedem Vorgang verbraucht werden und wie viele Einheiten in Relation der Vorgänge zueinander verbraucht werden.
+
+![Portalmetriken von API für MongoDB][6]
+
 ## <a name="a-request-unit-estimation-example"></a>Beispiel für die Schätzung von Anforderungseinheiten
 Betrachten Sie das folgende Dokument von&1; KB:
 
-```JSON
+```json
 {
  "id": "08259",
   "description": "Cereals ready-to-eat, KELLOGG, KELLOGG'S CRISPIX",
@@ -301,7 +340,7 @@ Mit diesen Informationen können wir den RU-Bedarf für diese Anwendung angesich
 
 In diesem Fall erwarten wir einen durchschnittlichen Durchsatzbedarf von 1,275 RU/s.  Wir runden auf den nächsten Hunderter auf und würden für die Sammlung dieser Anwendung 1.300 RU/s bereitstellen.
 
-## <a id="RequestRateTooLarge"></a> Überschreiten von Grenzwerten für den reservierten Durchsatz
+## <a id="RequestRateTooLarge"></a> Überschreiten von Grenzwerten für den reservierten Durchsatz in DocumentDB
 Der Verbrauch von Anforderungseinheiten wird als Rate pro Sekunde bemessen. Für Anwendungen, die die bereitgestellte Anforderungseinheitsrate für eine Sammlung überschreiten, werden Anforderungen an die Sammlung gedrosselt, bis die Rate unter das reservierte Niveau fällt. Bei einer Drosselung beendet der Server die Anforderung präemptiv mit „RequestRateTooLargeException“ (HTTP-Statuscode 429) und gibt den x-ms-retry-after-ms-Header zurück. Darin ist die Zeitspanne in Millisekunden angegeben, die der Benutzer abwarten muss, bevor ein neuer Anforderungsversuch unternommen werden kann.
 
     HTTP Status 429
@@ -311,6 +350,9 @@ Der Verbrauch von Anforderungseinheiten wird als Rate pro Sekunde bemessen. Für
 Wenn Sie das .NET Client SDK und LINQ-Abfragen verwenden, werden Sie sich normalerweise nicht mit dieser Ausnahme beschäftigen müssen, da die aktuelle Version des .NET Client SDK diese Antwort implizit abfängt, den vom Server angegebenen Retry-After-Header beachtet und die Anforderung wiederholt. Wenn nicht mehrere Clients gleichzeitig auf Ihr Konto zugreifen, wird die nächste Wiederholung erfolgreich ausgeführt.
 
 Wenn mehrere Clients kumulativ oberhalb der Anforderungsrate arbeiten, reicht das Standard-Wiederholungsverhalten möglicherweise nicht aus, und der Client löst für die Anwendung eine DocumentClientException mit dem Statuscode 429 aus. In diesen Fällen sollten Sie in Betracht ziehen, das Wiederholungsverhalten und die zugehörige Logik in die Anwendungsroutinen zur Fehlerbehandlung aufzunehmen oder den reservierten Durchsatz für die Sammlung zu erhöhen.
+
+## <a id="RequestRateTooLargeAPIforMongoDB"></a> Überschreiten von Grenzwerten für den reservierten Durchsatz in API für MongoDB
+Anwendungen, die die bereitgestellten Anforderungseinheiten für eine Sammlung überschreiten, werden gedrosselt, bis die Rate unter das reservierte Niveau fällt. Wenn eine Drosselung eintritt, beendet das Back-End die Anforderung präventiv mit einem *16500*-Fehlercode – *Zu viele Anforderungen*. API für MongoDB versucht standardmäßig automatisch bis zu 10-mal, eine Anforderung erneut zu senden, bevor der Fehlercode *Zu viele Anforderungen* zurückgegeben wird. Wenn Sie zu viele Fehlercodes *Zu viele Anforderungen* erhalten, sollten Sie in Betracht ziehen, das Wiederholungsverhalten in die Fehlerbehandlungsroutinen Ihrer Anwendung aufzunehmen oder den [reservierten Durchsatz für die Sammlung zu erhöhen](documentdb-set-throughput.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum reservierten Durchsatz mit Azure DocumentDB-Datenbanken finden Sie in folgenden Ressourcen:
@@ -328,4 +370,5 @@ Im Artikel [Leistungs- und Skalierungstests mit Azure DocumentDB](documentdb-per
 [3]: ./media/documentdb-request-units/RUEstimatorDocuments.png
 [4]: ./media/documentdb-request-units/RUEstimatorResults.png
 [5]: ./media/documentdb-request-units/RUCalculator2.png
+[6]: ./media/documentdb-request-units/api-for-mongodb-metrics.png
 

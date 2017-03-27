@@ -17,9 +17,9 @@ ms.date: 09/30/2016
 ms.author: josephd
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 32e30b44c2f7cfa9c1069190fdc53dbe6e9f4cd5
-ms.openlocfilehash: b668e32bf00ec32c7ffa77594bd1fb07440cf1ac
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 9e8eb54913b1e7e3f40ac2c9b80b0818eee3a35f
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -79,7 +79,7 @@ Das Azure-Portal erstellt beide Farmen in einem virtuellen Cloudnetzwerk mit ein
 ![SharePoint-Farm](./media/virtual-machines-windows-sharepoint-farm/SP2016Farm.png)
 
 ## <a name="managing-the-sharepoint-farms"></a>Verwalten der SharePoint-Farmen
-Sie können die Server dieser Farmen über Remotedesktopverbindungen verwalten. Weitere Informationen finden Sie unter [Anmelden beim virtuellen Computer](virtual-machines-windows-hero-tutorial.md#connect-to-the-virtual-machine-and-sign-on).
+Sie können die Server dieser Farmen über Remotedesktopverbindungen verwalten. Weitere Informationen finden Sie unter [Anmelden beim virtuellen Computer](virtual-machines-windows-quick-create-portal.md#connect-to-virtual-machine).
 
 Auf der SharePoint-Website für die Zentraladministration können Sie eigene Websites, SharePoint-Anwendungen und andere Funktionen konfigurieren. Weitere Informationen finden Sie unter [Konfigurieren von SharePoint](http://technet.microsoft.com/library/ee836142.aspx).
 

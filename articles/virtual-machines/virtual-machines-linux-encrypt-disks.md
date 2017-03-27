@@ -15,9 +15,9 @@ ms.workload: infrastructure
 ms.date: 02/10/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
-ms.openlocfilehash: 97dd91986751031daef24fc806adc7021b2f94fc
-ms.lasthandoff: 01/31/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: c6acdf97ee5e947ac48866c003480e393dd4bf35
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -27,7 +27,7 @@ Zur Verbesserung der Sicherheit und Compliance von virtuellen Computern können 
 ## <a name="quick-commands"></a>Schnellbefehle
 Der folgende Abschnitt enthält Informationen zu den grundlegenden Befehlen für die Verschlüsselung virtueller Datenträger auf Ihrem virtuellen Computer. Ausführlichere Informationen und Kontext für die einzelnen Schritte finden Sie im übrigen Dokument ([ab hier](#overview-of-disk-encryption)).
 
-Installieren Sie die [neueste Version der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md), und melden Sie sich wie folgt im Resource Manager-Modus an:
+Installieren Sie die [neueste Version der Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md), und melden Sie sich wie folgt im Resource Manager-Modus an:
 
 ```azurecli
 azure config mode arm
@@ -157,7 +157,7 @@ Die Datenträgerverschlüsselung wird derzeit in folgenden Szenarien nicht unter
 * Bei Aktualisierung der kryptografischen Schlüssel auf einem bereits verschlüsselten virtuellen Linux-Computer
 
 ## <a name="create-the-azure-key-vault-and-keys"></a>Erstellen der Azure Key Vault-Instanz und der Schlüssel
-Installieren Sie die [neueste Version der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md), und melden Sie sich wie folgt im Resource Manager-Modus an, um die restlichen Schritte in diesem Leitfaden ausführen zu können:
+Installieren Sie die [neueste Version der Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md), und melden Sie sich wie folgt im Resource Manager-Modus an, um die restlichen Schritte in diesem Leitfaden ausführen zu können:
 
 ```azurecli
 azure config mode arm

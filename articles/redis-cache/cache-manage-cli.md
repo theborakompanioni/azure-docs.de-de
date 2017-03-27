@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: c885edd7064f7ee3c9907e6b938d826e181dcae5
-ms.openlocfilehash: 940210325c28252de2f38cfe56e56d4c3ecd28ed
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: ae8e531c32b49e121b1c43b15071c138aaacf498
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -33,7 +34,7 @@ Die Azure-Befehlszeilenschnittstelle ist eine hervorragende Methode, um Ihre Azu
 Zum Erstellen und Verwalten von Azure Redis Cache-Instanzen mithilfe der Azure-Befehlszeilenschnittstelle müssen Sie die folgenden Schritte ausführen.
 
 * Sie benötigen ein Azure-Abonnement. Wenn Sie dies noch nicht haben, können Sie in nur wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen.
-* [Installieren Sie die Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md).
+* [Installieren Sie die Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md).
 * Verbinden Sie die Installation der Azure-Befehlszeilenschnittstelle mit einem persönlichen Azure-Konto oder einem Arbeits- oder Schulkonto für Azure, und melden Sie sich mit dem `azure login` -Befehl über die Azure-Befehlszeilenschnittstelle an. Um die Unterschiede zu verstehen und die richtige Auswahl treffen zu können, lesen Sie die Informationen unter [Herstellen einer Verbindung mit einem Azure-Abonnement von der Azure-Befehlszeilenschnittstelle (Azure-CLI)](../xplat-cli-connect.md).
 * Wechseln Sie vor dem Ausführen eines der folgenden Befehle in der Azure-Befehlszeilenschnittstelle in den Ressourcen-Manager-Modus, indem Sie den Befehl `azure config mode arm` ausführen. Weitere Informationen finden Sie unter [Verwalten von Azure-Ressourcen und -Ressourcengruppen mithilfe der Azure-Befehlszeilenschnittstelle](../xplat-cli-azure-resource-manager.md).
 
@@ -266,9 +267,4 @@ Wenn Sie weitere Informationen zu diesem Befehl benötigen, führen Sie den `azu
     help:      -s, --subscription <subscription>      the subscription identifier
     help:
     help:    Current Mode: arm (Azure Resource Management)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

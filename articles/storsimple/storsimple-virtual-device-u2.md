@@ -12,11 +12,12 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/16/2016
+ms.date: 03/20/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: b84e07b26506149cf9475491b32b9ff3ea9ae80d
-ms.openlocfilehash: c081f31acb7d8767343f41be59d75616fa14b2da
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 8b07ac76ebf40cd9bcf428711c2c0f3f3d917388
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -32,34 +33,13 @@ Das virtuelle StorSimple-Gerät steht in zwei Modellen zur Verfügung, dem Stand
 | **Maximale Kapazität** |30 TB |64 TB |
 | **Azure-VM** |Standard_A3 (4 Kerne, 7 GB Arbeitsspeicher) |Standard_DS3 (4 Kerne, 14 GB Arbeitsspeicher) |
 | **Versionskompatibilität** |Versionen unter Vorgängerversionen von Update 2 oder höher |Versionen unter Update 2 oder höher |
-| **Regionale Verfügbarkeit** |Alle Azure-Regionen |Azure-Regionen, die Storage Premium unterstützen<br></br>Eine Liste dieser Regionen finden Sie unter [Unterstützte Regionen für 8020](#supported-regions-for-8020) |
+| **Regionale Verfügbarkeit** |Alle Azure-Regionen |Alle Azure-Regionen, die Storage Premium unterstützen<br></br>Sie finden die Storage Premium-Regionen in der Liste mit den [Azure-Diensten nach Region](https://azure.microsoft.com/en-us/regions/services). Hier können Sie die Regionen identifizieren, in denen die VM-Serien DS, DSV2, Fs und GS unterstützt werden. |
 | **Speichertyp** |Verwendet Azure Storage Standard für lokale Datenträger<br></br> Erfahren Sie, wie Sie ein [Storage Standard-Konto erstellen](../storage/storage-create-storage-account.md) |Verwendet Azure Storage Premium für lokale Datenträger<sup>2</sup> <br></br>Erfahren Sie, wie Sie ein [Storage Premium-Konto erstellen](../storage/storage-premium-storage.md) |
 | **Informationen zu Workloads** |Abrufen von Dateien aus Sicherungskopien auf Elementebene |Cloudentwicklungs- und Testszenarien, niedrige Latenz und Workloads mit höherer Leistung  <br></br>Sekundäres Gerät für die Notfallwiederherstellung |
 
 <sup>1</sup> *Ehemals 1100*.
 
 <sup>2</sup> *Die Serien 8010 und 8020 verwenden Azure Storage Standard für die Cloud-Ebene. Einen Unterschied gibt es nur in der lokalen Ebene innerhalb des Geräts*.
-
-#### <a name="supported-regions-for-8020"></a>Unterstützte Regionen für 8020
-Die derzeit für 8020 unterstützten Storage Premium-Regionen sind unten in Tabellenform aufgeführt. Diese Liste wird laufend aktualisiert, wenn Storage Premium in weiteren Regionen verfügbar wird.
-
-| S. Nr. | Derzeit in folgenden Regionen unterstützt |
-| --- | --- |
-| 1 |USA (Mitte) |
-| 2 |USA (Ost) |
-| 3 |USA (Ost) 2 |
-| 4 |USA (West) |
-| 5 |Nordeuropa |
-| 6 |Westeuropa |
-| 7 |Südostasien |
-| 8 |Japan Ost |
-| 9 |Japan (Westen) |
-| 10 |Australien (Osten) |
-| 11 |Australien (Südost)* |
-| 12 |Asien (Osten)* |
-| 13 |USA (Mitte/Süden)* |
-
-*Storage Premium wurde vor Kurzem in diesen Regionen eingeführt.
 
 In diesem Artikel werden die einzelnen Schritte beim Bereitstellen eines virtuellen StorSimple-Geräts in Azure beschrieben. In diesem Artikel lernen Sie Folgendes:
 
@@ -89,7 +69,7 @@ In den folgenden Abschnitten werden die Konfigurationsvoraussetzungen für das v
 #### <a name="azure-requirements"></a>Anforderungen für Azure
 Bevor Sie das virtuelle Gerät bereitstellen, müssen Sie in Ihrer Umgebung die folgenden Vorbereitungen treffen:
 
-* [Konfigurieren Sie ein virtuelles Netzwerk in Azure](../virtual-network/virtual-networks-create-vnet-classic-portal.md)für das virtuelle Gerät. Wenn Sie Storage Premium verwenden, müssen Sie ein virtuelles Netzwerk in einer Azure-Region erstellen, die Storage Premium unterstützt. Weitere Informationen zu [Regionen, die derzeit für 8020 unterstützt werden](#supported-regions-for-8020).
+* [Konfigurieren Sie ein virtuelles Netzwerk in Azure](../virtual-network/virtual-networks-create-vnet-classic-portal.md)für das virtuelle Gerät. Wenn Sie Storage Premium verwenden, müssen Sie ein virtuelles Netzwerk in einer Azure-Region erstellen, die Storage Premium unterstützt. Sie finden die Storage Premium-Regionen in der Liste mit den [Azure-Diensten nach Region](https://azure.microsoft.com/en-us/regions/services). Hier können Sie die Regionen identifizieren, in denen die VM-Serien DS, DSV2, Fs und GS unterstützt werden.
 * Es empfiehlt sich, die von Azure bereitgestellten DNS-Standardserver zu verwenden, anstatt einen eigenen DNS-Servernamen anzugeben. Wenn Ihr DNS-Servername ungültig ist oder der DNS-Server IP-Adressen nicht ordnungsgemäß auflösen kann, ist die Erstellung des virtuellen Geräts nicht möglich.
 * Punkt-zu-Standort und Standort-zu-Standort sind optional, aber nicht erforderlich. Sie können diese Optionen gegebenenfalls für erweiterte Szenarios konfigurieren.
 * Sie können [virtuelle Azure-Computer](../virtual-machines/virtual-machines-linux-about.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Hostserver) im virtuellen Netzwerk erstellen, die die vom virtuellen Gerät verfügbar gemachten Volumes verwenden können. Diese Server müssen die folgenden Anforderungen erfüllen:                             
@@ -256,9 +236,4 @@ Wenn beim Erstellen eines virtuellen Geräts keine Verbindung mit dem Internet b
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie, wie Sie beim [Verwalten Ihres virtuellen Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md)vorgehen.
 * Erfahren Sie, wie Sie [StorSimple-Volumes aus einem Sicherungssatz wiederherstellen](storsimple-restore-from-backup-set.md).
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

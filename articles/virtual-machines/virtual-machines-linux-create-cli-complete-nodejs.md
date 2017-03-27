@@ -17,9 +17,9 @@ ms.workload: infrastructure
 ms.date: 02/09/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 67d4fee2fc59651903d4c02d1fce84c7b81e5da1
-ms.openlocfilehash: 03356c0499c595f73221d05d941233de5f01f357
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: e8ee93cacba552bc7a6ec559dd8aa1fb773fadc2
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -36,20 +36,20 @@ Die Umgebung enthält:
 
 ![Grundlegende Umgebung – Übersicht](./media/virtual-machines-linux-create-cli-complete/environment_overview.png)
 
-Um diese benutzerdefinierte Umgebung zu erstellen, benötigen Sie die aktuelle [Azure-Befehlszeilenschnittstelle 1.0](../xplat-cli-install.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) im Resource Manager-Modus (`azure config mode arm`). Sie benötigen außerdem ein JSON-Analysetool. In diesem Beispiel wird [jq](https://stedolan.github.io/jq/)verwendet.
+Um diese benutzerdefinierte Umgebung zu erstellen, benötigen Sie die aktuelle [Azure-Befehlszeilenschnittstelle 1.0](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) im Resource Manager-Modus (`azure config mode arm`). Sie benötigen außerdem ein JSON-Analysetool. In diesem Beispiel wird [jq](https://stedolan.github.io/jq/)verwendet.
 
 
 ## <a name="cli-versions-to-complete-the-task"></a>CLI-Versionen zum Durchführen dieser Aufgabe
 Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
 
 - [Azure-CLI 1.0](#quick-commands): Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell (in diesem Artikel)
-- [Azure CLI 2.0](virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json): Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
+- [Azure CLI 2.0:](virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
 
 
 ## <a name="quick-commands"></a>Schnellbefehle
 Im folgenden Abschnitt werden die grundlegenden Befehlen zum Hochladen eines virtuellen Computers in Azure beschrieben, falls Sie die Aufgabe schnell durchführen müssen. Ausführlichere Informationen und Kontext für die einzelnen Schritte finden Sie im übrigen Dokument ([ab hier](#detailed-walkthrough)).
 
-Vergewissern Sie sich, ob die [Azure-Befehlszeilenschnittstelle 1.0](../xplat-cli-install.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) angemeldet ist und den Resource Manager-Modus nutzt:
+Vergewissern Sie sich, ob die [Azure-Befehlszeilenschnittstelle 1.0](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) angemeldet ist und den Resource Manager-Modus nutzt:
 
 ```azurecli
 azure config mode arm
@@ -273,7 +273,7 @@ azure group export myResourceGroup
 ## <a name="detailed-walkthrough"></a>Ausführliche exemplarische Vorgehensweise
 In den folgenden ausführlichen Schritten wird erklärt, was jeder Befehl macht, wenn Sie Ihre Umgebung erstellen. Diese Konzepte helfen Ihnen beim Erstellen Ihrer eigenen benutzerdefinierten Umgebungen für Entwicklung oder Produktion.
 
-Vergewissern Sie sich, ob die [Azure-Befehlszeilenschnittstelle 1.0](../xplat-cli-install.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) angemeldet ist und den Resource Manager-Modus nutzt:
+Vergewissern Sie sich, ob die [Azure-Befehlszeilenschnittstelle 1.0](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) angemeldet ist und den Resource Manager-Modus nutzt:
 
 ```azurecli
 azure config mode arm
