@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 08/29/2016
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
-ms.openlocfilehash: 0daa75e1d4fccf7d7c7785422a9607787e55ca8b
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: f79f6fb82a74d6195491f243dc79db0c6753a894
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -37,7 +38,7 @@ Die Verwendung von Docker auf Azure ist einfach:
 * Verwenden Sie die lokalen Docker-Befehle, um die Docker-Container im virtuellen Docker-Computer in Azure zu verwalten.
 
 ### <a name="install-the-azure-command-line-interface-azure-cli"></a>Installieren der Azure-Befehlszeilenschnittstelle (Azure-CLI)
-Informationen zum Installieren und Konfigurieren der Azure-CLI finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md). Um die Installation zu bestätigen, geben Sie an der Eingabeaufforderung `azure` ein. Nach wenigen Sekunden sollten die ASCII-Zeichnungen der Azure-CLI mit den verfügbaren grundlegenden Befehlen angezeigt werden. Wenn die Installation erfolgreich war, sollten Sie bei Eingabe von `azure help vm` unter den aufgelisteten Befehlen „docker“ finden.
+Informationen zum Installieren und Konfigurieren der Azure-CLI finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md). Um die Installation zu bestätigen, geben Sie an der Eingabeaufforderung `azure` ein. Nach wenigen Sekunden sollten die ASCII-Zeichnungen der Azure-CLI mit den verfügbaren grundlegenden Befehlen angezeigt werden. Wenn die Installation erfolgreich war, sollten Sie bei Eingabe von `azure help vm` unter den aufgelisteten Befehlen „docker“ finden.
 
 > [!NOTE]
 > Docker enthält Tools für Windows, die als [Docker Machine](https://docs.docker.com/installation/windows/) bezeichnet werden. Automatisieren Sie damit das Erstellen eines Docker-Clients, mit dem Sie Azure-VMs als Docker-Hosts verwenden können.
@@ -181,9 +182,4 @@ Der Docker-Daemon auf dem Host ist so konfiguriert, dass er Clientverbindungen a
 [Docker-Benutzerhandbuch]: https://docs.docker.com/userguide/
 
 [Erste Schritte mit Docker und Compose zum Definieren und Ausführen einer Anwendung mit mehreren Containern auf einem virtuellen Azure-Computer]:virtual-machines-linux-docker-compose-quickstart.md
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

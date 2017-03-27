@@ -13,17 +13,19 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 03/06/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: cc14f7747c4a24acea434f62b7615d10819bd619
-ms.openlocfilehash: a2df2169acda706a0fc3e1b7daf743ce29e5f030
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: 28a6858729adbef439625864abc2fd7aa77fab35
+ms.lasthandoff: 03/11/2017
 
 
 ---
 # <a name="upload-a-windows-vhd-from-an-on-premises-vm-to-azure"></a>Hochladen einer Windows-VHD von einem lokalen virtuellen Computer in Azure
 In diesem Artikel erfahren Sie, wie Sie eine Windows-VHD (Virtual Hard Disk, virtuelle Festplatte) erstellen und hochladen, die für die Erstellung eines virtuellen Azure-Computers verwendet werden soll. Sie können eine VHD von einem generalisierten oder einem spezialisierten virtuellen Computer hochladen. 
+
+Eine vollständige exemplarische Vorgehensweise zum Vorbereiten, Hochladen und Erstellen eines neuen virtuellen Computers mithilfe verwalteter Datenträger finden Sie unter [Erstellen einer generalisierten VHD in Azure, die mithilfe verwalteter Datenträger in Azure hochgeladen wurde](virtual-machines-windows-upload-generalized-managed.md) oder [Hochladen einer spezialisierten VHD zum Erstellen einer VM in Azure](virtual-machines-windows-upload-specialized.md).
 
 Ausführlichere Informationen zu Datenträgern und VHDs in Azure finden Sie unter [Informationen zu Datenträgern und VHDs für virtuelle Computer](../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

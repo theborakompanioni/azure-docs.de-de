@@ -1,5 +1,5 @@
 ---
-title: "Verbinden von zugehörigen Vorlagen für die Azure-Bereitstellung | Microsoft-Dokumentation"
+title: "Verknüpfen von Vorlagen für die Azure-Bereitstellung | Microsoft-Dokumentation"
 description: "Beschreibt, wie verknüpfte Vorlagen in einer Azure-Ressourcen-Manager-Vorlage zum Erstellen einer modularen Vorlagenprojektmappe verwendet werden. Zeigt, wie Parameterwerte übergeben, eine Parameterdatei festgelegt und URLs dynamisch erstellt werden."
 services: azure-resource-manager
 documentationcenter: na
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2016
+ms.date: 03/14/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
-ms.openlocfilehash: 7bc5e1102b60db0bdf7a8310d0816f65bcfec3a1
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: a6c3e0150a60777d9f824cb1e0768bd44a8c981e
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -26,7 +27,7 @@ Aus einer Azure Resource Manager-Vorlage heraus können Sie einen Link zu einer 
 Sie können Parameter aus einer Hauptvorlage an eine verknüpfte Vorlage übergeben, und diese Parameter können direkt Parametern oder Variablen zugeordnet werden, die von der aufrufenden Vorlage verfügbar gemacht werden. Die verknüpfte Vorlage kann auch eine Ausgabevariable zurück an die Quellvorlage übergeben, wodurch ein bidirektionaler Datenaustausch zwischen Vorlagen ermöglicht wird.
 
 ## <a name="linking-to-a-template"></a>Verknüpfen mit einer Vorlage
-Sie erstellen einen Link zwischen zwei Vorlagen durch Hinzufügen einer Bereitstellungsressource innerhalb der Hauptvorlage, die auf die verknüpfte Vorlage verweist. Sie legen die **templateLink** -Eigenschaft für den URI der verknüpften Vorlage fest. Für die verknüpfte Vorlage können Sie Parameterwerte angeben, indem Sie die Werte entweder direkt in der Vorlage oder per Verknüpfung mit einer Parameterdatei angeben. Im folgenden Beispiel wird die **parameters** -Eigenschaft verwendet, um direkt einen Parameterwert anzugeben.
+Sie erstellen einen Link zwischen zwei Vorlagen durch Hinzufügen einer Bereitstellungsressource innerhalb der Hauptvorlage, die auf die verknüpfte Vorlage verweist. Sie legen die **templateLink** -Eigenschaft für den URI der verknüpften Vorlage fest. Für die verknüpfte Vorlage können Sie Parameterwerte direkt in der Vorlage oder in einer Parameterdatei angeben. Im folgenden Beispiel wird die **parameters** -Eigenschaft verwendet, um direkt einen Parameterwert anzugeben.
 
 ```json
 "resources": [ 
@@ -87,7 +88,7 @@ Im folgenden Beispiel wird eine übergeordnete Vorlage gezeigt, die mit einer an
 ],
 ```
 
-Obwohl das Token als sichere Zeichenfolge übergeben wird, wird der URI der verknüpften Vorlage samt SAS-Token in den Bereitstellungsvorgängen für diese Ressourcengruppe protokolliert. Legen Sie ein Ablaufdatum für das Token fest, um den Zugriff zu beschränken.
+Obwohl das Token als sichere Zeichenfolge übergeben wird, wird der URI der verknüpften Vorlage samt SAS-Token in den Bereitstellungsvorgängen protokolliert. Legen Sie ein Ablaufdatum für das Token fest, um den Zugriff zu beschränken.
 
 Der Resource Manager behandelt jede verknüpfte Vorlage als separate Bereitstellung. Im Bereitstellungsverlauf für die Ressourcengruppe finden Sie separate Bereitstellungen für die übergeordneten und geschachtelten Vorlagen.
 
@@ -308,26 +309,36 @@ In PowerShell rufen Sie ein Token für den Container ab und stellen die Vorlagen
 ```powershell
 Set-AzureRmCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates
 $token = New-AzureStorageContainerSASToken -Name templates -Permission r -ExpiryTime (Get-Date).AddMinutes(30.0)
-New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateUri ("https://storagecontosotemplates.blob.core.windows.net/templates/parent.json" + $token) -containerSasToken $token
+$url = (Get-AzureStorageBlob -Container templates -Blob parent.json).ICloudBlob.uri.AbsoluteUri
+New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateUri ($url + $token) -containerSasToken $token
 ```
 
-An der Azure-Befehlszeilenschnittstelle (CLI) rufen Sie ein Token für den Container ab und stellen die Vorlagen mit folgendem Code bereit. Derzeit müssen Sie einen Namen für die Bereitstellung angeben, wenn Sie eine URI-Vorlage nutzen, die ein SAS-Token enthält.  
+An der Azure CLI 2.0 rufen Sie ein Token für den Container ab und stellen die Vorlagen mit folgendem Code bereit:
 
+```azurecli
+seconds='@'$(( $(date +%s) + 1800 ))
+expiretime=$(date +%Y-%m-%dT%H:%MZ --date=$seconds)
+connection=$(az storage account show-connection-string \
+    --resource-group ManageGroup \
+    --name storagecontosotemplates \
+    --query connectionString)
+token=$(az storage container generate-sas \
+    --name templates \
+    --expiry $expiretime \
+    --permissions r \
+    --output tsv \
+    --connection-string $connection)
+url=$(az storage blob url \
+    --container-name templates \
+    --name parent.json \
+    --output tsv \
+    --connection-string $connection)
+parameter='{"containerSasToken":{"value":"?'$token'"}}'
+az group deployment create --resource-group ExampleGroup --template-uri $url?$token --parameters $parameter
 ```
-expiretime=$(date -I'minutes' --date "+30 minutes")  
-azure storage container sas create --container templates --permissions r --expiry $expiretime --json | jq ".sas" -r
-azure group deployment create -g ExampleGroup --template-uri "https://storagecontosotemplates.blob.core.windows.net/templates/parent.json?{token}" -n tokendeploy  
-```
-
-Sie werden aufgefordert, das SAS-Token als Parameter anzugeben. Sie müssen dem Token **?**voranstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen zum Definieren der Bereitstellungsreihenfolge Ihrer Ressourcen finden Sie unter [Definieren von Abhängigkeiten in Azure-Ressourcen-Manager-Vorlagen](resource-group-define-dependencies.md)
 * Informationen, wie Sie eine Ressource definieren und von dieser viele Instanzen erstellen, finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](resource-group-create-multiple.md)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

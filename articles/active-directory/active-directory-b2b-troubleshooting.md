@@ -13,11 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/09/2017
+ms.date: 03/14/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: a4e59dfa8a098f63c3173176c4d2675d6a59af00
-ms.openlocfilehash: f85c6bcc2abbd14c7879462f7013a97f550fdca5
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 66c0084c89b5c7510196142afd27b58953d0dc86
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -34,6 +35,11 @@ Wenn für den externen Benutzer, den Sie einladen möchten, bereits ein Kontakto
 
 Falls externe Benutzer in der Liste nicht angezeigt werden: Es kann einige Minuten dauern, bis das Objekt repliziert wurde.
 
+## <a name="a-b2b-guest-user-is-not-showing-up-in-sharepoint-onlineonedrive-people-picker"></a>Ein B2B-Gastbenutzer wird in der SharePoint Online/OneDrive-Personenauswahl nicht angezeigt. 
+ 
+Die Möglichkeit, in der SharePoint Online Personenauswahl nach vorhandenen Gastbenutzern zu suchen, ist dem Verhalten in älteren Versionen entsprechend standardmäßig deaktiviert.
+Sie können die Suche mit der Einstellung „ShowPeoplePickerSuggestionsForGuestUsers“ auf Mandanten- und Websitesammlungsebene aktivieren. Diese Einstellung kann mithilfe der Cmdlets „Set-SPOTenant“ und „Set-SPOSite“ vorgenommen werden, die Mitgliedern das Durchsuchen des Verzeichnisses nach allen vorhandenen Gastbenutzern ermöglichen. Änderungen im Mandantenbereich wirken sich nicht auf bereits bereitgestellte SPO-Websites aus.
+
 ## <a name="invitations-have-been-disabled-for-directory"></a>Einladungen wurden für das Verzeichnis deaktiviert.
 
 Wenn Sie in einer Fehlermeldung darüber informiert werden, dass Sie nicht über die Berechtigung verfügen, Benutzer einzuladen, überprüfen Sie, ob Ihr Benutzerkonto für die Einladung externer Benutzer autorisiert ist. Dies kann unter „Benutzereinstellungen“ erfolgen:
@@ -46,9 +52,9 @@ Wenn Sie diese Einstellungen kürzlich geändert oder einem Benutzer die Rolle �
 
 Häufige Fehler sind z.B. folgende:
 
-### <a name="invitees-admin-has-disallowed-emailverified-users-from-being-created-in-their-tenant"></a>Der Administrator des Eingeladenen hat die Option deaktiviert, Benutzer im Mandanten zu erstellen, die per E-Mail verifiziert werden:
+### <a name="invitees-admin-has-disallowed-emailverified-users-from-being-created-in-their-tenant"></a>Der Administrator des Eingeladenen hat die Option deaktiviert, Benutzer im Mandanten zu erstellen, die per E-Mail verifiziert werden.
 
-Dieser Fehler kann auftreten, wenn Benutzer eingeladen werden, deren Organisation Azure Active Directory verwenden, der Benutzer aber dort nicht vorhanden ist (Benutzer ist in AAD für contoso.com nicht vorhanden). Der Administrator von contoso.com hat möglicherweise eine Richtlinie festgelegt, die das Erstellen von Benutzern verhindert. Der externe Benutzer muss bei seinem Administrator nachfragen, ob externe Benutzer zulässig sind. Möglicherweise muss der Administrator des externen Benutzers per E-Mail verifizierte Benutzer in der Domäne zulassen (Informationen zum Zulassen von per E-Mail verifizierten Benutzern finden Sie in diesem [Artikel](https://docs.microsoft.com/en-us/powershell/msonline/v1/set-msolcompanysettings#parameters)).
+Dieser Fehler kann auftreten, wenn Benutzer eingeladen werden, deren Organisation Azure Active Directory verwenden, das Konto des entsprechenden Benutzers aber dort nicht vorhanden ist (Benutzer ist z.B. in Azure AD für contoso.com nicht vorhanden). Der Administrator von contoso.com hat möglicherweise eine Richtlinie festgelegt, die das Erstellen von Benutzern verhindert. Der Benutzer muss sich bei seinem Administrator informieren, ob externe Benutzer zulässig sind. Der Administrator des externen Benutzers muss ggf. per E-Mail verifizierte Benutzer in seiner Domäne zulassen (Informationen dazu finden Sie in diesem [Artikel](https://docs.microsoft.com/powershell/msonline/v1/set-msolcompanysettings#parameters) zum Zulassen per E-Mail verifizierter Benutzer).
 
 ![](media/active-directory-b2b-troubleshooting/allow-email-verified-users.png)
 
@@ -58,7 +64,7 @@ Wenn ein externer Benutzer eine Verbundlösung verwendet, in der die Authentifiz
 
 Um dieses Problem zu lösen, muss der Administrator des externen Benutzers das Benutzerkonto mit Azure Active Directory synchronisieren.
 
-## <a name="how-does--which-is-normally-an-invalid-character-sync-with-azure-ad"></a>Wie wird „\#“ – normalerweise ein ungültiges Zeichen – in Azure AD synchronisiert?
+## <a name="how-does--which-is-not-normally-a-valid-character-sync-with-azure-ad"></a>Wie wird „\#“ – normalerweise ein ungültiges Zeichen – in Azure AD synchronisiert?
 
 „\#“ ist ein reserviertes Zeichen in UPNs für die Azure AD B2B-Zusammenarbeit oder externe Benutzer (der UPN &lt;user@contoso.com&gt; eines eingeladenen Benutzers wird zu &lt;user_contoso.com#EXT@fabrikam.onmicrosoft.com&gt;). Aus lokalen Systemen abgerufene UPNs mit \# dürfen sich daher nicht am Azure-Portal anmelden.
 
@@ -89,9 +95,4 @@ Weitere Artikel zur Azure AD B2B-Kollaboration:
 * [Multi-Factor Authentication für Benutzer der B2B-Zusammenarbeit](active-directory-b2b-mfa-instructions.md)
 * [Hinzufügen von Benutzern der B2B-Zusammenarbeit ohne Einladung](active-directory-b2b-add-user-without-invite.md)
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

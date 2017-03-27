@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/10/2017
+ms.date: 03/07/2017
 ms.author: vturecek;mikhegn
 translationtype: Human Translation
-ms.sourcegitcommit: 7a79b19bf51c89e19ad67421978dacccddeb5119
-ms.openlocfilehash: 95cb29e3a7fe59fb29189c7e62b5c6c8e77e6a20
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 6167f3edd3e99522a8997382d6569c82ea387d5c
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.openlocfilehash: 95cb29e3a7fe59fb29189c7e62b5c6c8e77e6a20
 
 
 ## <a name="debug-a-local-service-fabric-application"></a>Debuggen einer lokalen Service Fabric-Anwendung
-Sie können Zeit und Geld sparen, indem Sie Ihre Azure Service Fabric-Anwendung in einem Cluster für die Entwicklung auf einem lokalen Computer bereitstellen und debuggen. Visual Studio kann die Anwendung im lokalen Cluster bereitstellen und den Debugger automatisch mit allen Instanzen der Anwendung verbinden.
+Sie können Zeit und Geld sparen, indem Sie Ihre Azure Service Fabric-Anwendung in einem Cluster für die Entwicklung auf einem lokalen Computer bereitstellen und debuggen. Visual Studio 2017 bzw. Visual Studio 2015 kann die Anwendung im lokalen Cluster bereitstellen und den Debugger automatisch mit allen Instanzen der Anwendung verbinden.
 
 1. Um einen lokalen Cluster für die Entwicklung zu erstellen, folgen Sie den Schritten unter [Einrichten der Service Fabric-Entwicklungsumgebung](service-fabric-get-started.md).
 2. Drücken Sie **F5** oder klicken Sie auf **Debuggen** > **Debugging starten**.
@@ -159,9 +160,4 @@ Sie können Ablaufverfolgungen von einem Remoteclusterknoten aus auch direkt zu 
 [viewingstreamingtraces]: ./media/service-fabric-debugging-your-application/viewingstreamingtraces.png
 [viewremotestreamingtraces]: ./media/service-fabric-debugging-your-application/viewremotestreamingtraces.png
 [disablestreamingtraces]: ./media/service-fabric-debugging-your-application/disablestreamingtraces.png
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

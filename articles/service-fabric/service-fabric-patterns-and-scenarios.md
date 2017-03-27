@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/30/2016
+ms.date: 03/08/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: e96941bebe07553f8575be4f5dd4ead3271225c9
-ms.openlocfilehash: 924f3287a2b34103eba56310e8e4c4e3e063a44b
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: df7c127f4ab140cb26c82e723964f1d99f03131a
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -76,7 +77,7 @@ Machen Sie sich mit Konzepten wie Continuous Integration/Continuous Delivery mit
 <table><tr><th>Video</th><th>PowerPoint-Folienstapel</th></tr>
 <tr><td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=78h5ofSGD_305167344">
 <img src="./media/service-fabric-patterns-and-scenarios/cd.png" WIDTH="360" HEIGHT="244">
-</a></td><td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=VlENvOSGD_105167344">Continuous Delivery</a></td></tr>
+</a></td><td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=VlENvOSGD_105167344">Continuous delivery</a></td></tr>
 </table>
 
 ## <a name="migration"></a>Migration
@@ -94,14 +95,9 @@ Beschäftigen Sie sich mit Gründen für die Verwendung von Containern. Informie
 <table><tr><th>Video</th><th>PowerPoint-Folienstapel</th></tr>
 <tr><td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=V1ERJhSGD_305167344">
 <img src="./media/service-fabric-patterns-and-scenarios/containers.png" WIDTH="360" HEIGHT="244">
-</a></td><td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=mlYsZRSGD_2105167344">Container und Linux-Unterstützung</a></td></tr>
+</a></td><td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=mlYsZRSGD_2105167344">Container- und Linux-Unterstützung</a></td></tr>
 </table>
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie nun mit Mustern und Szenarien für Service Fabric vertraut sind, können Sie sich mit folgenden Themen beschäftigen: [Erstellen und Verwalten von Clustern](service-fabric-deploy-anywhere.md), [Migrieren von Cloud Services-Apps zu Service Fabric](service-fabric-cloud-services-migration-worker-role-stateless-service.md), [Einrichten von Continuous Delivery](service-fabric-set-up-continuous-integration.md) und [Bereitstellen von Containern](service-fabric-containers-overview.md).
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

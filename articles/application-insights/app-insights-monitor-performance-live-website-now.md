@@ -14,15 +14,16 @@ ms.topic: get-started-article
 ms.date: 02/08/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 917f54248f4c9277caa3cf09d92f78593a901e89
-ms.openlocfilehash: fd76f40f5a34b6adf9c6ec3bded604d59b6baa72
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: a0340359dff470551a08a8213f3a704f15f78794
+ms.lasthandoff: 03/16/2017
 
 
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights"></a>Instrumentieren von Web-Apps zur Laufzeit mit Application Insights
 
 
-Sie können eine Live-Web-App mit Azure Application Insights instrumentieren, ohne dass Sie Ihren Code ändern oder erneut bereitstellen müssen. Falls Ihre Apps von einem lokalen IIS-Server gehostet werden, installieren Sie den Statusmonitor. Falls es sich um Azure-Web-Apps handelt oder die Apps auf einem virtuellen Azure-Computer ausgeführt werden, können Sie die Application Insights-Erweiterung installieren. (Es gibt auch separate Artikel zum Instrumentieren von [Live-J2EE-Web-Apps](app-insights-java-live.md) und [Azure Cloud Services](app-insights-cloudservices.md).) Sie benötigen ein [Microsoft Azure](http://azure.com) -Abonnement.
+Sie können eine Live-Web-App mit Azure Application Insights instrumentieren, ohne dass Sie Ihren Code ändern oder erneut bereitstellen müssen. Installieren Sie den Statusmonitor, wenn Ihre Apps von einem lokalen IIS-Server gehostet werden. Wenn es sich um Azure-Web-Apps handelt oder die Apps auf einer Azure-VM ausgeführt werden, können Sie die Application Insights-Überwachung über die Azure-Systemsteuerung aktivieren. (Es gibt auch separate Artikel zum Instrumentieren von [Live-J2EE-Web-Apps](app-insights-java-live.md) und [Azure Cloud Services](app-insights-cloudservices.md).) Sie benötigen ein [Microsoft Azure](http://azure.com) -Abonnement.
 
 ![Beispieldiagramme](./media/app-insights-monitor-performance-live-website-now/10-intro.png)
 
@@ -64,7 +65,7 @@ So aktivieren Sie die Überwachung, wenn Ihre Anwendung als Azure-Webdienst ausg
 Wenn Ihre App auf einem IIS-Server gehostet wird, aktivieren Sie Application Insights über den Statusmonitor.
 
 1. Melden Sie sich mit Administratorrechten auf Ihrem IIS-Webserver an.
-2. Falls der Application Insights-Statusmonitor noch nicht installiert ist, laden Sie den [Statusmonitor-Installer](http://go.microsoft.com/fwlink/?LinkId=506648) herunter, und starten Sie ihn.
+2. Wenn der Application Insights-Statusmonitor nicht bereits installiert ist, können Sie das [Installationsprogramm für den Statusmonitor](http://go.microsoft.com/fwlink/?LinkId=506648) herunterladen und ausführen (oder führen Sie den [Webplattform-Installer](https://www.microsoft.com/web/downloads/platform.aspx) aus, und suchen Sie darin nach dem Application Insights-Statusmonitor).
 3. Wählen Sie im Statusmonitor die installierte Webanwendung oder Website aus, die Sie überwachen möchten. Melden Sie sich mit Ihren Azure-Anmeldeinformationen an.
 
     Konfigurieren Sie die Ressource, in der die Ergebnisse im Application Insights-Portal angezeigt werden sollen. (In der Regel empfiehlt es sich, eine neue Ressource zu erstellen. Wählen Sie eine vorhandene Ressource aus, falls Sie bereits über [Webtests][availability] oder über eine [Clientüberwachung][client] für die App verfügen.) 
@@ -97,7 +98,7 @@ Wenn Sie die App erneut veröffentlichen möchten, ohne Application Insights dem
 
 ### <a name="cant-connect-no-telemetry"></a>Keine Verbindung möglich? Keine Telemetriedaten?
 
-* Sie müssen [einige ausgehende Ports](app-insights-ip-addresses.md#outgoing-ports) in der Firewall des Servers öffnen, damit der Statusmonitor funktioniert.
+* Öffnen Sie [die erforderlichen ausgehenden Ports](app-insights-ip-addresses.md#outgoing-ports) in der Firewall des Servers, damit der Statusmonitor funktioniert.
 
 * Öffnen Sie den Statusmonitor, und wählen Sie Ihre Anwendung auf der linken Seite aus. Prüfen Sie, ob für diese Anwendung Diagnosemeldungen im Abschnitt mit den Konfigurationsbenachrichtigungen vorliegen:
 
@@ -105,7 +106,7 @@ Wenn Sie die App erneut veröffentlichen möchten, ohne Application Insights dem
 * Wenn auf dem Server eine Meldung über "unzureichende Berechtigungen" angezeigt wird, versuchen Sie Folgendes:
   * Wählen Sie in IIS-Manager Ihren Anwendungspool aus, öffnen Sie **Erweiterte Einstellungen**, und überprüfen Sie die Identität unter **Prozessmodell**.
   * Fügen Sie in der Systemsteuerung "Computerverwaltung" diese Identität der Gruppe "Systemmonitorbenutzer" hinzu.
-* Wenn Sie MMA/SCOM auf Ihrem Server installiert haben, können einige Versionen in Konflikt stehen. Deinstallieren Sie sowohl SCOM als auch den Statusmonitor, und installieren Sie die neuesten Versionen.
+* Es kann zu Versionskonflikten kommen, wenn Sie MMA/SCOM (Systems Center Operations Manager) auf Ihrem Server installiert haben. Deinstallieren Sie sowohl SCOM als auch den Statusmonitor, und installieren Sie die neuesten Versionen.
 * Informationen hierzu finden Sie unter [Problembehandlung][qna].
 
 ## <a name="system-requirements"></a>Systemanforderungen
@@ -150,7 +151,7 @@ Ermitteln Sie, welche Apps überwacht werden:
 * `-InstrumentationKey` Dies ist der iKey der Application Insights-Ressource, für die die Ergebnisse angezeigt werden sollen.
 * Dieses Cmdlet wirkt sich nur auf Apps aus, die nicht bereits instrumentiert wurden (SdkState==NotInstrumented).
 
-    Das Cmdlet wirkt sich nicht auf eine App aus, die bereits instrumentiert wurde, und zwar entweder zur Erstellungszeit, indem dem Code das SDK hinzugefügt wurde, oder zur Laufzeit bei einer vorherigen Nutzung dieses Cmdlets.
+    Das Cmdlet wirkt sich nicht auf eine App aus, die bereits instrumentiert wurde. Es spielt keine Rolle, ob die App zur Buildzeit instrumentiert wurde, indem dem Code das SDK hinzugefügt wurde, oder zur Laufzeit durch eine vorherige Verwendung dieses Cmdlets.
 
     Die zum Instrumentieren der App verwendete SDK-Version ist die Version, die zuletzt auf diesen Server heruntergeladen wurde.
 
@@ -183,7 +184,11 @@ Ermitteln Sie, welche Apps überwacht werden:
 
 * Lädt das aktuelle Application Insights SDK auf den Server herunter.
 
-## <a name="a-namenextanext-steps"></a><a name="next"></a>Nächste Schritte
+## <a name="video"></a>Video
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
+
+## <a name="next"></a>Nächste Schritte
 
 Anzeigen der Telemetrie:
 
@@ -208,9 +213,4 @@ Hinzufügen weiterer Telemetrieelemente:
 [qna]: app-insights-troubleshoot-faq.md
 [roles]: app-insights-resources-roles-access-control.md
 [usage]: app-insights-web-track-usage.md
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

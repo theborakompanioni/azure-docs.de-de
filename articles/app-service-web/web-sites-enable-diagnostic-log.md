@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: 27bf5b15ebeed13733df2ddd9dbda5d5cfe4e49d
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 6a000e84f38e7e2b56f1d79d5c88f1704b6789a0
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -29,7 +29,7 @@ In diesem Artikel wird die Verwendung von Diagnoseprotokollen mit dem [Azure-Por
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-## <a name="a-namewhatisdiagaweb-server-diagnostics-and-application-diagnostics"></a><a name="whatisdiag"></a>Webserver- und Anwendungsdiagnose
+## <a name="whatisdiag"></a>Webserver- und Anwendungsdiagnose
 App Service-Web-Apps bieten Diagnosefunktionen zum Protokollieren von Informationen sowohl über den Webserver als auch über die Webanwendung. Diese sind logisch in **Webserverdiagnose** und **Anwendungsdiagnose** unterteilt.
 
 ### <a name="web-server-diagnostics"></a>Webserverdiagnose
@@ -48,7 +48,7 @@ Sie können diese Protokolle zur Laufzeit abrufen und bei der Problembehandlung 
 
 App Service-Web-Apps protokollieren auch Bereitstellungsinformationen, wenn Sie Inhalte in einer Web-App veröffentlichen. Dies erfolgt automatisch, und es gibt keine Konfigurationseinstellung für die Bereitstellungsprotokollierung. Anhand der Bereitstellungsprotokollierung können Sie bestimmen, warum eine Bereitstellung fehlgeschlagen ist. Wenn Sie beispielsweise ein benutzerdefiniertes Bereitstellungsskript verwenden, können Sie die Bereitstellungsprotokollierung verwenden, um festzustellen, warum das Skript fehlgeschlagen ist.
 
-## <a name="a-nameenablediagahow-to-enable-diagnostics"></a><a name="enablediag"></a>Aktivieren der Diagnose
+## <a name="enablediag"></a>Aktivieren der Diagnose
 Zum Aktivieren der Diagnose im [Azure-Portal](https://portal.azure.com) navigieren Sie zum Blatt für Ihre Web-App und klicken auf **Einstellungen > Diagnoseprotokolle**.
 
 <!-- todo:cleanup dogfood addresses in screenshot -->
@@ -90,7 +90,7 @@ Obwohl alle drei Speicherorte dieselben grundlegenden Informationen zu protokoll
 >
 >
 
-## <a name="a-namedownloada-how-to-download-logs"></a><a name="download"></a> Vorgehensweise: Herunterladen von Blobs
+## <a name="download"></a> Vorgehensweise: Herunterladen von Blobs
 Im Dateisystem der Web-App gespeicherte Diagnoseinformationen können direkt über FTP aufgerufen werden. Außerdem können sie als ZIP-Archiv mit Azure PowerShell oder mit der Azure-Befehlszeilenschnittstelle (Azure-CLI) heruntergeladen werden.
 
 Protokolle werden in der folgenden Verzeichnisstruktur gespeichert:
@@ -129,7 +129,7 @@ Zum Herunterladen der Protokolldateien mit der Azure-Befehlszeilenschnittstelle 
 Damit werden die Protokolle für die Web-App namens 'webappname' in der Datei **diagnostics.zip** im aktuellen Verzeichnis gespeichert.
 
 > [!NOTE]
-> Wenn Sie die Azure-Befehlszeilenschnittstelle (Azure-CLI) nicht installiert oder nicht für Ihr Azure-Abonnement konfiguriert haben, lesen Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md)weiter.
+> Wenn Sie die Azure-Befehlszeilenschnittstelle (Azure-CLI) nicht installiert oder nicht für Ihr Azure-Abonnement konfiguriert haben, lesen Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md)weiter.
 >
 >
 
@@ -145,7 +145,7 @@ Visual Studio Application Insights bietet Tools zum Filtern und Suchen von Proto
 
 [Erfahren Sie mehr über die Leistungsüberwachung mit Application Insights](../application-insights/app-insights-azure-web-apps.md)
 
-## <a name="a-namestreamlogsa-how-to-stream-logs"></a><a name="streamlogs"></a> Vorgehensweise: Streaming von Protokollen
+## <a name="streamlogs"></a> Vorgehensweise: Streaming von Protokollen
 Beim Entwickeln einer Anwendung ist es häufig nützlich, Protokollinformationen nahezu in Echtzeit zu sehen. Dies kann durch das Streaming von Protokollinformationen in die Entwicklungsumgebung entweder mit Azure PowerShell oder mit der Azure-Befehlszeilenschnittstelle erfolgen.
 
 > [!NOTE]
@@ -194,11 +194,11 @@ Um bestimmte Protokolltypen wie HTTP zu filtern, verwenden Sie den Parameter **-
     azure site log tail webappname --path http
 
 > [!NOTE]
-> Wenn Sie die Azure-Befehlszeilenschnittstelle nicht installiert oder nicht für Ihr Azure-Abonnement konfiguriert haben, lesen Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md)weiter.
+> Wenn Sie die Azure-Befehlszeilenschnittstelle nicht installiert oder nicht für Ihr Azure-Abonnement konfiguriert haben, lesen Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md)weiter.
 >
 >
 
-## <a name="a-nameunderstandlogsa-how-to-understand-diagnostics-logs"></a><a name="understandlogs"></a> Vorgehensweise: Verstehen von Diagnoseprotokollen
+## <a name="understandlogs"></a> Vorgehensweise: Verstehen von Diagnoseprotokollen
 ### <a name="application-diagnostics-logs"></a>Anwendungs-Diagnoseprotokolle
 Die Anwendungsdiagnose speichert Informationen in einem bestimmten Format für .NET-Anwendungen, je nachdem, ob Sie Protokolle im Dateisystem, im Tabellenspeicher oder im Blob-Speicher speichern. Der Grunddatensatz ist für alle drei Speichertypen gleich – Datum und Zeit des Ereignisses, Prozess-ID, die das Ereignis erzeugt hat, sowie Ereignistyp (Info, Warnung, Fehler) und Ereignismeldung.
 
@@ -274,7 +274,7 @@ Webserverprotokolle werden im [erweiterten W3C-Protokolldateiformat](http://msdn
 >
 >
 
-## <a name="a-namenextstepsa-next-steps"></a><a name="nextsteps"></a> Nächste Schritte
+## <a name="nextsteps"></a> Nächste Schritte
 * [Überwachen von Web-Apps](/manage/services/web-sites/how-to-monitor-websites/)
 * [Problembehandlung von Azure-Web-Apps in Visual Studio](web-sites-dotnet-troubleshoot-visual-studio.md)
 * [Analyse von Web-App-Protokollen in HDInsight](http://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)

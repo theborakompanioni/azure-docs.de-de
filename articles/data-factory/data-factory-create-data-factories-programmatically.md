@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/17/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 7c9f14503a7cf5c0808e26884a73cd2918ff1c74
-ms.openlocfilehash: 4973a2218ec480fb239e3b32e8f34e3fb14454d0
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 6a76c399e626ea85581d5f8fb863da878bdbf50b
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -313,7 +314,7 @@ Sie können Azure Data Factorys mithilfe des Data Factory .NET SDK programmgeste
         throw new InvalidOperationException("Failed to acquire token");
     }
     ```
-12. Fügen Sie den folgenden Code zur Methode **Main** hinzu, um den Status eines Datenslices des Ausgabedatasets abzurufen. Es gibt nur ein Slice in diesem Beispiel erwartet.
+12. Fügen Sie den folgenden Code zur Methode **Main** hinzu, um den Status eines Datenslices des Ausgabedatasets abzurufen. In diesem Beispiel wird nur ein Slice erwartet.
 
     ```csharp
     // Pulling status within a timeout threshold
@@ -478,9 +479,4 @@ Wenn Sie nicht die aktuelle Version von PowerShell auf Ihrem Computer installier
     ```PowerShell
 
 Note down the **SubscriptionId** and **TenantId** values.
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/18/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 4232c27926c2d48adb91eedd15884e44cc004ac2
-ms.openlocfilehash: 2fad0a4e7c4ac282802c2bc0dd10c7d86b651e08
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: f09aa6cffbbaa2a3df7f84edee2d3e03aa23a719
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -39,7 +40,7 @@ Die allermeisten Sicherheitsverletzungen kommen vor, wenn Angreifer Zugriff auf 
 
 Daher müssen Sie:
 
-- Alle Identitäten unabhängig von deren Berechtigungsstufe schützen 
+- Alle Identitäten unabhängig von deren Berechtigungsstufe schützen
 
 - Proaktiv verhindern, dass gefährdete Identitäten missbraucht werden
 
@@ -74,12 +75,12 @@ Azure Active Directory Identity Protection ist viel mehr als nur ein Tool für d
 
 ### <a name="vulnerabilities"></a>Sicherheitsrisiken
 
-Azure Active Directory Identity Protection analysiert Ihre Konfiguration und erkennt Sicherheitsrisiken, die sich auf die Identitäten Ihrer Benutzers auswirken können. Weitere Details finden Sie unter [Von Azure Active Directory Identity Protection erkannte Sicherheitsrisiken](active-directory-identityprotection-vulnerabilities.md). 
+Azure Active Directory Identity Protection analysiert Ihre Konfiguration und erkennt Sicherheitsrisiken, die sich auf die Identitäten Ihrer Benutzers auswirken können. Weitere Details finden Sie unter [Von Azure Active Directory Identity Protection erkannte Sicherheitsrisiken](active-directory-identityprotection-vulnerabilities.md).
 
 ### <a name="risk-events"></a>Risikoereignisse
 
 Azure Active Directory verwendet adaptive Machine Learning-Algorithmen und -Heuristiken, um verdächtige Aktivitäten im Zusammenhang mit den Identitäten Ihrer Benutzer zu erkennen. Das System erstellt für jede erkannte verdächtige Aktivität einen Datensatz. Diese Datensätze werden auch als Risikoereignisse bezeichnet.  
-Weitere Details finden Sie unter [Azure Active Directory-Risikoereignisse](active-directory-identity-protection-risk-events.md). 
+Weitere Details finden Sie unter [Azure Active Directory-Risikoereignisse](active-directory-identity-protection-risk-events.md).
 
 
 ## <a name="investigation"></a>Untersuchung
@@ -101,11 +102,11 @@ Die folgenden Abschnitte enthalten ausführliche Informationen und die Schritte 
 
 ## <a name="risky-sign-ins"></a>Riskante Anmeldungen
 
-Azure Active Directory erkennt einige [Risikoereignistypen](active-directory-identity-protection-risk-events.md#risk-event-types) in Echtzeit. Alle Echtzeit-Risikoereignisse, die während der Anmeldung eines Benutzers erkannt wurden, tragen zu einem logischen Konzept bei, das als *risikobehaftete Anmeldung* bezeichnet wird. Eine risikobehaftete Anmeldung ist ein Hinweis auf einen Anmeldeversuch, der nicht vom rechtmäßigen Besitzer eines Benutzerkontos durchgeführt wurde. Der Lebenszyklus einer risikobehafteten Anmeldung endet, wenn sich ein Benutzer abmeldet.
+Azure Active Directory erkennt einige [Risikoereignistypen](active-directory-reporting-risk-events.md#risk-event-types) in Echtzeit. Alle Echtzeit-Risikoereignisse, die während der Anmeldung eines Benutzers erkannt wurden, tragen zu einem logischen Konzept bei, das als *risikobehaftete Anmeldung* bezeichnet wird. Eine risikobehaftete Anmeldung ist ein Hinweis auf einen Anmeldeversuch, der nicht vom rechtmäßigen Besitzer eines Benutzerkontos durchgeführt wurde. Der Lebenszyklus einer risikobehafteten Anmeldung endet, wenn sich ein Benutzer abmeldet.
 
 ### <a name="sign-in-risk-level"></a>Risikostufe für die Anmeldung
 
-Eine Risikostufe für die Anmeldung ist ein Hinweis auf die Wahrscheinlichkeit (hoch, mittel oder niedrig), dass ein Anmeldeversuch nicht vom rechtmäßigen Besitzer eines Benutzerkontos durchgeführt wurde. 
+Eine Risikostufe für die Anmeldung ist ein Hinweis auf die Wahrscheinlichkeit (hoch, mittel oder niedrig), dass ein Anmeldeversuch nicht vom rechtmäßigen Besitzer eines Benutzerkontos durchgeführt wurde.
 
 ### <a name="mitigating-sign-in-risk-events"></a>Lösen von Anmelderisikoereignissen
 
@@ -395,9 +396,4 @@ Eine Übersicht über die zugehörige Benutzeroberfläche finden Sie unter:
 * [Azure Active Directory Identity Protection – Aufheben der Blockierung von Benutzern](active-directory-identityprotection-unblock-howto.md)
 
 * [Erste Schritte mit Azure Active Directory Identity Protection und Microsoft Graph](active-directory-identityprotection-graph-getting-started.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

@@ -17,9 +17,9 @@ ms.workload: na
 ms.date: 03/06/2017
 ms.author: chrande, glenga
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 1c071390fd6cd9bb5889cb225696b7782fe2bd6b
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 590cb831ad265d9b83713f573c92d8675e64db3d
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -100,7 +100,7 @@ Geschweifte Klammern werden in Namensmustern als Sonderzeichen angesehen. Sie k�
 
 Dieser Pfad findet ein Blob mit dem Namen *{20140101}-soundfile.mp3* im Container *images*, und der Wert der Variablen `name` im Funktionscode lautet *soundfile.mp3*. 
 
-<a name"receipts"></a>
+<a name="receipts"></a>
 
 ### <a name="blob-receipts"></a>BLOB-Zugänge
 Die Azure Functions-Laufzeit stellt sicher, dass Blobtriggerfunktionen für ein neues oder aktualisiertes Blob nicht mehrmals aufgerufen werden. Zu diesem Zweck wird mittels Verwaltung der *Blobbelege* ermittelt, ob eine bestimmte Blobversion verarbeitet wurde.

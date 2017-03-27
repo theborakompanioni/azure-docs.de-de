@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/03/2017
+ms.date: 03/21/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: 7680aafcefbe6f1e6e3b55137da2e46b42df5a9b
-ms.lasthandoff: 03/04/2017
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: c88dc19cdacc94b9b81adcdbf69f22aac8f6eabe
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -70,7 +70,7 @@ Azure Security Center untersucht täglich das Betriebssystem Ihres virtuellen Co
   - AUSWERTUNGSERGEBNIS: Ergebnis der Analyse: Bestanden oder Fehler
 
 ## <a name="see-also"></a>Weitere Informationen
-In diesem Artikel wurde gezeigt, wie Sie die Security Center-Empfehlung „Betriebssystem-Sicherheitsrisiken beheben“ umsetzen. Sie können den Satz der Konfigurationsregeln [hier](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)überprüfen. Security Center verwendet die Common Configuration Enumeration (CCE), um Konfigurationsregeln eindeutige Bezeichner zuzuweisen. Auf der Website zu [CCE](http://cce.mitre.org) finden Sie weitere Informationen.
+In diesem Artikel wurde gezeigt, wie Sie die Security Center-Empfehlung „Betriebssystem-Sicherheitsrisiken beheben“ umsetzen. Sie können den Satz der Konfigurationsregeln [hier](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)überprüfen. Security Center verwendet die Common Configuration Enumeration (CCE), um Konfigurationsregeln eindeutige Bezeichner zuzuweisen. Auf der Website zu [CCE](https://nvd.nist.gov/cce/index.cfm) finden Sie weitere Informationen.
 
 Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 

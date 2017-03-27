@@ -15,14 +15,18 @@ ms.workload: azure-government
 ms.date: 10/20/2016
 ms.author: brendal
 translationtype: Human Translation
-ms.sourcegitcommit: f245bf964664a0817ba26580aea9990b1767da82
-ms.openlocfilehash: 9b2fee2e98c11ef0468cef3f2bdc81e15698a6fe
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: e2d82497c2ceaa9a6c0a1592b5785449f095f85c
+ms.lasthandoff: 03/10/2017
 
 
 ---
 # <a name="azure-government-marketplace-images"></a>Azure Government Marketplace-Images
 ## <a name="overview"></a>Übersicht
 Der Microsoft Azure Government Marketplace ähnelt dem öffentlichen Azure-Portal.  Kunden können auch vorgefertigte Images von Microsoft und unseren Partnern bereitstellen oder ihre eigenen VHDs hochladen.  Dies bietet Flexibilität, um bei Bedarf Ihre eigenen standardisierten Images bereitzustellen.
+
+## <a name="variations"></a>Variationen
+* Marketplace-Images werden für DoD zurzeit nicht unterstützt.
 
 Unten ist eine Liste angeführt, welche die im Azure Government Marketplace verfügbaren Images enthält.  Einige der vorgefertigten Images enthalten eine Zahlung für bestimmte Software-Lizenzierungen.  Informieren Sie sich auf der Seite <a href="http://azure.microsoft.com/pricing/details/virtual-machines/">Virtual Machine – Preisübersicht</a>, wenn Sie weitere Anleitungen benötigen, und kontaktieren Sie Ihren Microsoft-Kundenbetreuer oder den Reseller von Azure Government bezüglich bestimmter Preise.
 
@@ -251,9 +255,4 @@ Die folgenden Ressourcen bieten nähere Informationen zur Bereitstellung über d
 [Link 1 to another azure.microsoft.com documentation topic]: virtual-machines/virtual-machines-windows-hero-tutorial.md
 [Link 2 to another azure.microsoft.com documentation topic]: app-service-web/web-sites-custom-domain-name.md
 [Link 3 to another azure.microsoft.com documentation topic]: storage-whatis-account.md
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

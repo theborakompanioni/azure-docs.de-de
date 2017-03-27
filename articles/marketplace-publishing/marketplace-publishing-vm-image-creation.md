@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
 translationtype: Human Translation
-ms.sourcegitcommit: 27f49a7c0c2736423d73930a1865f7b542f54da4
-ms.openlocfilehash: 63c1591db91a2ffeaced8ac775525291f0fd033f
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: e801d966e7461be7ec6101941c7b70912ad8c403
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -187,7 +188,7 @@ Weitere Informationen zu VM-Images finden Sie in den folgenden Blogbeiträgen:
 
 ### <a name="set-up-the-necessary-tools-powershell-and-azure-cli"></a>Einrichten der erforderlichen Tools, von PowerShell und der Azure-CLI
 * [Einrichten von PowerShell](/powershell/azureps-cmdlets-docs)
-* [Einrichten der Azure-CLI](../xplat-cli-install.md)
+* [Einrichten der Azure-CLI](../cli-install-nodejs.md)
 
 ### <a name="41-create-a-user-vm-image"></a>4.1 Erstellen eines Benutzer-VM-Images
 #### <a name="capture-vm"></a>Erfassen eines virtuellen Computers
@@ -567,9 +568,4 @@ Wenn Sie die SKU-Details abgeschlossen haben, können Sie mit der [Anleitung fü
 [link-openssl]:https://www.openssl.org/
 [link-intsvc]:http://www.microsoft.com/download/details.aspx?id=41554
 [link-python]:https://www.python.org/
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

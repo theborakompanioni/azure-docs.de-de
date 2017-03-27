@@ -2,7 +2,6 @@
 title: "Problembehandlung für das Datenverwaltungsgateway | Microsoft-Dokumentation"
 description: Tipps zur Problembehandlung im Zusammenhang mit dem Datenverwaltungsgateway.
 services: data-factory
-documentationcenter: 
 author: linda33wj
 manager: jhubbard
 editor: monicar
@@ -14,10 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2017
 ms.author: jingwang
+published: true
 translationtype: Human Translation
-ms.sourcegitcommit: 03e15660e04e192d9035c25f1a8030310413c118
-ms.openlocfilehash: 738fcd1e2b33bf072f004eb95265ed87e6e931c0
-
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 4bc78bdf71c6de0c35197e84f4bb800d13bda6c0
+ms.lasthandoff: 03/14/2017
 
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Behandeln von Problemen bei der Verwendung des Datenverwaltungsgateways
@@ -91,10 +91,12 @@ Möglicherweise wird beim Registrieren eines Gateways die folgende Fehlermeldung
 ![Gatewayschlüssel ist ungültig oder leer](media/data-factory-troubleshoot-gateway-issues/gateway-key-is-invalid-or-empty.png)
 
 #### <a name="cause"></a>Ursache
-Der Gatewayschlüssel wurde neu generiert, oder das Gateway wurde im Portal gelöscht.
+Der Gatewayschlüssel wurde neu generiert, oder das Gateway wurde im Azure-Portal gelöscht. Es ist auch möglich, dass das Datenverwaltungsgateway nicht das neueste Setup aufweist.
 
 #### <a name="resolution"></a>Lösung
-Wenn das Gateway noch vorhanden ist, generieren Sie einen Gatewayschlüssel im Portal neu, und klicken Sie auf die Schaltfläche „Kopieren“, um den gesamten Schlüssel zu kopieren. Fügen Sie ihn dann in das Fenster ein, um das Gateway zu registrieren. Andernfalls erstellen Sie das Gateway neu und beginnen von vorne.
+Überprüfen Sie, ob das Datenverwaltungsgateway das neueste Setup aufweist. Sie finden die neueste Version im [Microsoft Download Center](https://go.microsoft.com/fwlink/p/?LinkId=271260).
+
+Wenn das Setup aktuell und das Gateway im Portal noch vorhanden ist, generieren Sie den Gatewayschlüssel erneut im Azure-Portal, und verwenden Sie die Schaltfläche „Kopieren“, um den gesamten Schlüssel zu kopieren. Fügen Sie den Schlüssel dann in diesem Fenster ein, um das Gateway zu registrieren. Andernfalls erstellen Sie das Gateway neu, und beginnen Sie erneut.
 
 ### <a name="6-problem"></a>6. Problem
 Möglicherweise wird beim Registrieren eines Gateways die folgende Fehlermeldung angezeigt.
@@ -284,9 +286,4 @@ Ausführliche Informationen hierzu finden Sie in den Gateway-Protokollinformatio
  Wenn Sie Probleme mit dem Gateway beheben müssen, suchen Sie in der Ereignisanzeige nach Ereignissen des Typs „Fehler“.
 
 ![Datenverwaltungsgateway: Protokolle in der Ereignisanzeige](media/data-factory-troubleshoot-gateway-issues/gateway-logs-event-viewer.png)
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

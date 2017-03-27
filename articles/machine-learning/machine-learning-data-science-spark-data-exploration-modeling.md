@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/23/2017
+ms.date: 03/15/2017
 ms.author: deguhath;bradsev;gokuma
 translationtype: Human Translation
-ms.sourcegitcommit: 116344308a1173994ec85bcb8a7112ce158f4f60
-ms.openlocfilehash: d4cb0ad3ad88aad6cabc67b32d048da9ed797d07
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 711407f7dd9e6d442e3f04a23962487f4808e8e2
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -51,14 +51,14 @@ Die Einrichtungsschritte und der Code in dieser exemplarischen Vorgehensweise be
 
 ### <a name="spark-16-notebooks"></a>Spark 1.6-Notebooks
 
-[pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb:](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb) enthält Informationen zum Durchsuchen, Modellieren und Bewerten von Daten mit verschiedenen Algorithmen.
+[pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb:](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb) enthält Informationen zum Durchsuchen, Modellieren und Bewerten von Daten mit verschiedenen Algorithmen.
 
 ### <a name="spark-20-notebooks"></a>Spark 2.0-Notebooks
 Die Regressions- und Klassifizierungsaufgaben, die mit einem Spark 2.0-Cluster implementiert werden, befinden sich in separaten Notebooks, und das Klassifizierungsnotebook verwendet ein anderes Dataset:
 
-- [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb:](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) enthält Informationen zum Durchsuchen, Modellieren und Bewerten von Daten in Spark 2.0-Clustern anhand des [hier](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data) beschriebenen „NYC Taxi Trips“ und des Fahrpreisdatasets. Dieses Notebook ist möglicherweise ein guter Ausgangspunkt zum schnellen Untersuchen des Codes, den wir für Spark 2.0 bereitgestellt haben. Ein ausführlicheres Notebook zur Analyse der NYC-Taxidaten finden Sie im nächsten Notebook in dieser Liste. Informationen finden Sie in den Hinweisen im Anschluss an diese Liste, in denen diese Notebooks verglichen werden. 
-- [Spark2.0-pySpark3_NYC_Taxi_Tip_Regression.ipynb:](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb) zeigt, wie Datenanalysen (Spark SQL und Dataframevorgänge), Suchvorgänge, Modellierungen und Bewertungen mithilfe des [hier](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data) beschriebenen Datasets zu Taxifahrten und Fahrpreisen in New York durchgeführt werden.
-- [Spark2.0-pySpark3_Airline_Departure_Delay_Classification.ipynb:](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb) zeigt, wie Datenanalysen (Spark SQL und Dataframevorgänge), Suchvorgänge, Modellierungen und Bewertungen mithilfe des bekannten Datasets zur Pünktlichkeit von Flugreisestarts aus den Jahren 2011 und 2012 durchgeführt werden. Wir kombinieren das Fluglinien-Dataset vor der Modellierung mit den Flughafen-Wetterdaten (z.B. Windgeschwindigkeit, Temperatur, Höhe usw.), damit diese Wetterdaten in das Modell aufgenommen werden können.
+- [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb:](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) enthält Informationen zum Durchsuchen, Modellieren und Bewerten von Daten in Spark 2.0-Clustern anhand des [hier](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data) beschriebenen „NYC Taxi Trips“ und des Fahrpreisdatasets. Dieses Notebook ist möglicherweise ein guter Ausgangspunkt zum schnellen Untersuchen des Codes, den wir für Spark 2.0 bereitgestellt haben. Ein ausführlicheres Notebook zur Analyse der NYC-Taxidaten finden Sie im nächsten Notebook in dieser Liste. Informationen finden Sie in den Hinweisen im Anschluss an diese Liste, in denen diese Notebooks verglichen werden. 
+- [Spark2.0-pySpark3_NYC_Taxi_Tip_Regression.ipynb:](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb) zeigt, wie Datenanalysen (Spark SQL und Dataframevorgänge), Suchvorgänge, Modellierungen und Bewertungen mithilfe des [hier](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data) beschriebenen Datasets zu Taxifahrten und Fahrpreisen in New York durchgeführt werden.
+- [Spark2.0-pySpark3_Airline_Departure_Delay_Classification.ipynb:](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb) zeigt, wie Datenanalysen (Spark SQL und Dataframevorgänge), Suchvorgänge, Modellierungen und Bewertungen mithilfe des bekannten Datasets zur Pünktlichkeit von Flugreisestarts aus den Jahren 2011 und 2012 durchgeführt werden. Wir kombinieren das Fluglinien-Dataset vor der Modellierung mit den Flughafen-Wetterdaten (z.B. Windgeschwindigkeit, Temperatur, Höhe usw.), damit diese Wetterdaten in das Modell aufgenommen werden können.
 
 <!-- -->
 
@@ -76,7 +76,7 @@ Die Regressions- und Klassifizierungsaufgaben, die mit einem Spark 2.0-Cluster i
 <!-- -->
 
 > [!NOTE]
-Die Ausführung der Spark 2.0-Notebooks zu den Datasets mit den NYC-Taxidaten und den Flugverspätungen bei Fluggesellschaften können 10 Minuten oder länger dauern (je nach Größe Ihres HDI-Clusters). Das erste Notebook in der oben aufgeführten Liste zeigt zahlreiche Aspekte der Datenuntersuchung, der Visualisierung und des Modelltrainings in einem Notebook, das durch ein komprimiertes NYC-Dataset, in dem die Taxi- und Fahrpreisdateien vorab verknüpft wurden, weniger Zeit für die Ausführung beansprucht: [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb). Dieses Notebook wird in wesentlich kürzerer Zeit abgeschlossen (2 bis 3 Minuten) und bietet möglicherweise einen guten Ausgangspunkt für eine schnelle Untersuchung des Codes, den wir für Spark 2.0 bereitgestellt haben. 
+Die Ausführung der Spark 2.0-Notebooks zu den Datasets mit den NYC-Taxidaten und den Flugverspätungen bei Fluggesellschaften können 10 Minuten oder länger dauern (je nach Größe Ihres HDI-Clusters). Das erste Notebook in der oben aufgeführten Liste zeigt zahlreiche Aspekte der Datenuntersuchung, der Visualisierung und des Modelltrainings in einem Notebook, das durch ein komprimiertes NYC-Dataset, in dem die Taxi- und Fahrpreisdateien vorab verknüpft wurden, weniger Zeit für die Ausführung beansprucht: [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb). Dieses Notebook wird in wesentlich kürzerer Zeit abgeschlossen (2 bis 3 Minuten) und bietet möglicherweise einen guten Ausgangspunkt für eine schnelle Untersuchung des Codes, den wir für Spark 2.0 bereitgestellt haben. 
 
 <!-- -->
 
@@ -970,7 +970,7 @@ Für die Ausführung der obigen Zelle benötigte Zeit: 49,21 Sekunden
 ### <a name="gradient-boosting-trees-regression"></a>Gradient-Boosted-Strukturenregression
 Der Code in diesem Abschnitt zeigt, wie ein Gradient-Boosted-Strukturmodell, das den Trinkgeldbetrag für die NYC-Taxifahrtendaten vorhersagt, trainiert, evaluiert und gespeichert werden kann.
 
-**Trainieren und bewerten **
+**Trainieren und bewerten**
 
     #PREDICT TIP AMOUNTS USING GRADIENT BOOSTING TREES
 

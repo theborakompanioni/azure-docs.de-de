@@ -16,8 +16,9 @@ ms.workload: big-data
 ms.date: 01/24/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 528266346733fff72113104d585540d75512b3a6
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 9dcac84fdc33515ef12ab5b8154f700bb8618290
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -27,6 +28,7 @@ Hier finden Sie anhand eines Vergleichs von Apache Storm mit Azure Stream Analyt
 Beide Analyseplattformen bieten Vorteile einer PaaS-Lösung, es gibt aber einige charakteristische Hauptfunktionen, durch die sie sich unterscheiden. Funktionen sowie die Einschränkungen dieser Dienste sind im Folgenden aufgeführt, um Ihnen dabei zu helfen, die Lösung zu finden, die Sie benötigen, um Ihre Ziele zu erreichen.
 
 ## <a name="storm-comparison-to-stream-analytics-general-features"></a>Vergleich von Storm mit Stream Analytics: allgemeine Funktionen
+
 <table border="1" cellspacing="0" cellpadding="0">
     <tbody>
         <tr>
@@ -137,7 +139,9 @@ Für Apache Storm auf HDInsight basiert die Einheit des Kaufs auf einem Cluster 
         </tr>
     </tbody>
 </table>
-## Erstellung auf den Analyseplattformen ##
+
+## <a name="authoring-on-each-analytics-platform"></a>Erstellung auf den Analyseplattformen ##
+
 <table border="1" cellspacing="0" cellpadding="0">
     <tbody>
         <tr>
@@ -261,7 +265,9 @@ Ja, es kann benutzerdefinierter Code in C#, Java oder anderen unterstützten Spr
         </tr>
     </tbody>
 </table>
-## Datenquellen und Ausgaben ##
+
+## <a name="data-sources-and-outputs"></a>Datenquellen und Ausgaben ##
+
 <table border="1" cellspacing="0" cellpadding="0">
     <tbody>
         <tr>
@@ -350,7 +356,9 @@ Jedes Datenverschlüsselungsformat kann über benutzerdefinierten Code implement
         </tr>
     </tbody>
 </table>
-## Verwaltung und Abläufe ##
+
+## <a name="management-and-operations"></a>Verwaltung und Abläufe ##
+
 <table border="1" cellspacing="0" cellpadding="0">
     <tbody>
         <tr>
@@ -509,7 +517,9 @@ SLA von 99,9 % Verfügbarkeit des Storm-Clusters. Apache Storm ist eine fehlerto
         </tr>
     </tbody>
 </table>
-## Erweiterte Funktionen ##
+
+## <a name="advanced-features"></a>Erweiterte Funktionen ##
+
 <table border="1" cellspacing="0" cellpadding="0">
     <tbody>
         <tr>
@@ -585,9 +595,4 @@ Durch Konfiguration veröffentlichter Azure Machine Learning-Modelle als Funktio
         </tr>
     </tbody>
 </table>
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

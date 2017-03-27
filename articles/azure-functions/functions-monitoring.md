@@ -17,8 +17,9 @@ ms.workload: na
 ms.date: 11/03/2016
 ms.author: wesmc
 translationtype: Human Translation
-ms.sourcegitcommit: 109ca4a4672d21969096af26a094390673de25d9
-ms.openlocfilehash: f349dea2ba1a080312cf07f19eded201775c9cd1
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 831b7cc21ee34f900f7e35885a36f6e0faf38211
+ms.lasthandoff: 03/21/2017
 
 ---
 
@@ -78,7 +79,7 @@ Sie können Protokolldateien mithilfe der Azure-Befehlszeilenschnittstelle oder 
 
 ### <a name="monitoring-function-app-log-files-with-the-azure-cli"></a>Überwachen der Protokolldateien von Funktionen-Apps mithilfe der Azure-Befehlszeilenschnittstelle
 
-Als Erstes [installieren Sie die Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md).
+Als Erstes [installieren Sie die Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md).
 
 Melden Sie sich mithilfe des folgenden Befehls bei Ihrem Azure-Konto an. Alternativ können Sie auch eine der anderen unter [Anmelden bei Azure über die Azure-Befehlszeilenschnittstelle (CLI)](../xplat-cli-connect.md) beschriebenen Methoden verwenden.
 
@@ -124,10 +125,5 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 
 * [Testen einer Funktion](functions-test-a-function.md)
 * [Skalieren einer Funktion](functions-scale.md)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

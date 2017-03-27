@@ -14,13 +14,13 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 02/27/2017
+ms.date: 03/14/2017
 ms.author: dariagrigoriu, glenga
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: f4d589382fe337549f117e7c03af6fd5e237491f
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 9b5dabe5e27e68a4a9f140d4f07131caf7306e32
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -58,7 +58,7 @@ Weitere Informationen zu Typen von Speicherkonten finden Sie unter [Einführung 
 
 ### <a name="runtime-scaling"></a>Laufzeitskalierung
 
-Funktionen verwenden einen zentralen Listener, um Computeanforderungen basierend auf den konfigurierten Triggern zu bewerten und zu entscheiden, wann horizontal hoch- oder herunterskaliert werden soll. Der zentrale Listener verarbeitet kontinuierlich Hinweise auf Arbeitsspeicheranforderungen und triggerspezifische Datenpunkte. Im Fall eines Triggers für Azure Queue Storage beispielsweise umfassen die Datenpunkte die Länge der Warteschlange und die Uhrzeit des ältesten Eintrags in der Warteschlange.
+Funktionen verwenden einen Skalierungscontroller, um Computeanforderungen basierend auf den konfigurierten Triggern zu bewerten und zu entscheiden, wann horizontal hoch- oder herunterskaliert werden soll. Der Skalierungscontroller verarbeitet kontinuierlich Hinweise auf Arbeitsspeicheranforderungen und triggerspezifische Datenpunkte. Im Fall eines Triggers für Azure Queue Storage beispielsweise umfassen die Datenpunkte die Länge der Warteschlange und die Uhrzeit des ältesten Eintrags in der Warteschlange.
 
 ![](./media/functions-scale/central-listener.png)
 

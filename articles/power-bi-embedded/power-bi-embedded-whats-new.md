@@ -13,16 +13,42 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 01/06/2017
+ms.date: 03/11/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 2f0f36e7ffeec52bacc35ac5039cd183976dc3aa
-ms.openlocfilehash: fd2649f9936da9f86d4fe24b4fa87ca1733d1f3c
-
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 07c53a5d6b1881a4c207a2aefed9fcede0fa069e
+ms.lasthandoff: 03/14/2017
 
 ---
 # <a name="whats-new-in-power-bi-embedded"></a>Neuerungen in Power BI Embedded
+
 Updates für **Power BI Embedded** werden in regelmäßigen Abständen veröffentlicht. Nicht jede Version umfasst jedoch neue Funktionen für Benutzer, da sich einige Versionen auf Back-End-Dienstfunktionen konzentrieren. Wir stellen hier neue Funktionen für Benutzer vor. Überprüfen Sie diese Seite daher regelmäßig.
+
+## <a name="march-2017"></a>17. März 2017
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/ibuN4DzCl5c?showinfo=0" frameborder="0" allowfullscreen></iframe>
+
+**Self-service-Funktionen**
+
+* [Create a new report from a dataset in Power BI Embedded](power-bi-embedded-create-report-from-dataset.md) (Erstellen eines neuen Berichts aus einem Dataset in Power BI Embedded)
+* [Save reports in Power BI Embedded](power-bi-embedded-save-reports.md) (Speichern von Berichten in Power BI Embedded)
+* Einbetten eines Berichts im Lese-/Bearbeitungs-/Neuerstellungsmodus 
+* [Toggle between view and edit mode for reports in Power BI Embedded](power-bi-embedded-toggle-mode.md) (Wechseln zwischen Ansichts- und Bearbeitungsmodus für Berichte in Power BI Embedded)
+
+**Datenkonnektivität mit REST-APIs**
+
+* [Post Datasets](https://msdn.microsoft.com/library/azure/mt778875.aspx) (Erstellen von Datasets)
+* Übertragen von Daten 
+
+**Verwaltungs-APIs**
+
+* Klonen von Bericht und Dataset
+* Binden des Berichts an ein anderes Dataset
+
+**Beispiele**
+
+* Aktualisiertes [Beispiel für die Einbettung von JavaScript-Berichten](https://microsoft.github.io/PowerBI-JavaScript/demo)
 
 ## <a name="december-2016"></a>Dezember 2016
 
@@ -50,10 +76,5 @@ In dieser Version:
 * Power BI Embedded-Unterstützung für Azure SDK, PowerShell und CLI.
 * Benutzer können Visualisierungsdaten in eine **CSV-Datei**exportieren.
 * Power BI Embedded wird nun in den gleichen Sprachen/Gebietsschemas unterstützt wie Microsoft Azure. Weitere Informationen finden Sie unter [Azure – Languages](http://social.technet.microsoft.com/wiki/contents/articles/4234.windows-azure-extent-of-localization.aspx) (Azure – Sprachen).
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

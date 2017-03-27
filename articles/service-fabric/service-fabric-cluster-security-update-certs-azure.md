@@ -12,12 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/11/2017
+ms.date: 03/09/2017
 ms.author: chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 45225c4250539dfeb9f3b4654615acbdd162191b
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: c433e8683755e454f9561f094269c3daccf78a62
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -64,7 +64,7 @@ Damit Sie alles besser verfolgen können, enthält die Beispieldatei „5-VM-1-N
 
 **Achten Sie darauf, dass Sie alle Schritte ausführen**.
 
-**Schritt 1:** Öffnen Sie die Resource Manager-Vorlage, die Sie verwendet haben, um den Cluster bereitzustellen.  (Gehen Sie wie folgt vor, wenn Sie das Beispiel aus dem obigen Repository heruntergeladen haben: Verwenden Sie die Datei „5-VM-1-NodeTypes-Secure_Step1.JSON“, um einen sicheren Cluster bereitzustellen, und öffnen Sie anschließend diese Vorlage.)
+**Schritt 1:** Öffnen Sie die Resource Manager-Vorlage, die Sie verwendet haben, um den Cluster bereitzustellen. (Gehen Sie wie folgt vor, wenn Sie das Beispiel aus dem obigen Repository heruntergeladen haben: Verwenden Sie die Datei „5-VM-1-NodeTypes-Secure_Step1.JSON“, um einen sicheren Cluster bereitzustellen, und öffnen Sie anschließend diese Vorlage.)
 
 **Schritt 2:** Fügen Sie die **beiden neuen Parameter** „secCertificateThumbprint“ und „secCertificateUrlValue“ vom Typ „Zeichenfolge“ dem Parameterabschnitt Ihrer Vorlage hinzu. Sie können den folgenden Codeausschnitt kopieren und der Vorlage hinzufügen. Je nach Quelle Ihrer Vorlage kann es sein, dass dies bereits definiert wurde. Wenn dies der Fall ist, können Sie mit dem nächsten Schritt fortfahren. 
  
@@ -84,7 +84,7 @@ Damit Sie alles besser verfolgen können, enthält die Beispieldatei „5-VM-1-N
 
 ```
 
-**Schritt 3:** Nehmen Sie Änderungen an der Ressource **Microsoft.ServiceFabric/clusters** vor. Suchen Sie in Ihrer Vorlage nach der Ressourcendefinition „Microsoft.ServiceFabric/clusters“. Unter den Eigenschaften dieser Definition finden Sie das JSON-Tag „Certificate“, das dem folgenden JSON-Codeausschnitt ähneln sollte.
+**Schritt 3:** Nehmen Sie Änderungen an der Ressource **Microsoft.ServiceFabric/clusters** vor. Suchen Sie in Ihrer Vorlage nach der Ressourcendefinition „Microsoft.ServiceFabric/clusters“. Unter den Eigenschaften dieser Definition finden Sie das JSON-Tag „Certificate“, das dem folgenden JSON-Codeausschnitt ähneln sollte:
 
    
 ```JSON
@@ -108,7 +108,7 @@ Nun sollte die Ressourcendefinition ungefähr wie folgt aussehen (je nach Ihrer 
      }
 ``` 
 
-Wenn Sie ein **Rollover für das Zertifikat** durchführen möchten, geben Sie das neue Zertifikat als primäres Zertifikat an und machen das primäre Zertifikat zum sekundären Zertifikat.  Dies führt zum Rollover vom aktuellen primären Zertifikat zum neuen Zertifikat in einem einzigen Bereitstellungsschritt.
+Wenn Sie ein **Rollover für das Zertifikat** durchführen möchten, geben Sie das neue Zertifikat als primäres Zertifikat an und machen das primäre Zertifikat zum sekundären Zertifikat. Dies führt zum Rollover vom aktuellen primären Zertifikat zum neuen Zertifikat in einem einzigen Bereitstellungsschritt.
 
 ```JSON
       "properties": {

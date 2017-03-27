@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 01/17/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: fe38c16f94faa3e7a5a2622ff4eb8a1ae93fba20
-ms.openlocfilehash: 1bf1e323798a702029663953d3a30de174aefc4c
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: a673044269016f5d216fa62a3bcc6f3b106838c0
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -65,6 +65,7 @@ Wenn Sie eine öffentliche IP-Adresse als Endpunkt verwenden, können diese Info
 **F: Ändert sich die IP-Adresse oder der DNS während der Lebensdauer von Application Gateway?**
 
 Die VIP kann sich ändern, wenn das Gateway vom Kunden beendet und gestartet wird. Der zugeordnete DNS von Application Gateway ändert sich während des Lebenszyklus des Gateways nicht. Daher wird empfohlen, einen CNAME-Alias zu verwenden und damit auf die DNS-Adresse von Application Gateway zu verweisen.
+
 
 **F: Unterstützt Application Gateway statische IP-Adressen?**
 
@@ -123,6 +124,10 @@ Benutzerdefinierte Überprüfungen unterstützen keine Platzhalter/regulären Au
 **F: Was ist im Feld „Host“ für benutzerdefinierte Überprüfungen angegeben?**
 
 Das Feld „Host“ gibt den Namen an, an den die Überprüfung zu senden ist. Nur relevant, wenn in Application Gateway mehrere Standorte konfiguriert sind. Andernfalls verwenden Sie&127;.0.0.1. Dieser Wert entspricht nicht dem VM-Hostnamen und weist folgendes Format auf: \<Protokoll\>://\<Host\>:\<Port\>\<Pfad\>. 
+
+**F: Unterstützt Application Gateway mehrinstanzenfähige Back-Ends?**
+
+Nein, derzeit behält Application Gateway den eingehenden Hostheader bei und sendet den gleichen Header an das Back-End. Wenn für das Back-End ein anderer Header erforderlich ist, funktioniert dies nicht. Wenn das Back-End mehrinstanzenfähig ist und End-to-End-SSL aktiviert ist, erwartet das Back-End den Servernamen in der SNI-Erweiterung. Application Gateway sendet derzeit in End-to-End-SSL-Szenarien keine SNI-Header in Back-End-Anforderungen, dies würde Probleme bei Tests und Datenpfaden verursachen. 
 
 ## <a name="performance"></a>Leistung
 
@@ -283,3 +288,4 @@ Der häufigste Grund ist eine Blockierung des Zugriffs auf das Back-End durch ei
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu Application Gateway finden Sie unter [Einführung in Application Gateway](application-gateway-introduction.md).
+

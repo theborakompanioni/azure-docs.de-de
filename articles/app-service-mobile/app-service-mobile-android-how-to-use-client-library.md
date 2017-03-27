@@ -4,7 +4,7 @@ description: "Verwenden des Android-Client-SDK für Azure Mobile Apps."
 services: app-service\mobile
 documentationcenter: android
 author: ysxu
-manager: erikre
+manager: adrianha
 editor: 
 ms.assetid: 5352d1e4-7685-4a11-aaf4-10bd2fa9f9fc
 ms.service: app-service-mobile
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: yuaxu
 translationtype: Human Translation
-ms.sourcegitcommit: b70c8baab03703bc00b75c2c611f69e3b71d6cd7
-ms.openlocfilehash: b22c7904be77ba06764f0922c77ba5f7c7b3fe4d
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 277df83870c9cbfcb2407999ca9bc6a799284abe
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -51,7 +52,7 @@ Wenn Sie das Schnellstarttutorial nicht absolvieren möchten, führen Sie folgen
 * [Aktualisieren Sie die Gradle-Builddateien](#gradle-build)in Android Studio.
 * [Aktivieren Sie die Internetberechtigung](#enable-internet).
 
-### <a name="a-namegradle-buildaupdate-the-gradle-build-file"></a><a name="gradle-build"></a>Aktualisieren der Gradle-Builddatei
+### <a name="gradle-build"></a>Aktualisieren der Gradle-Builddatei
 Ändern Sie beide **build.gradle** -Dateien:
 
 1. Fügen Sie diesen Code in die *Project*-Ebene der **build.gradle**-Datei im *buildscript*-Tag ein:
@@ -67,7 +68,7 @@ Wenn Sie das Schnellstarttutorial nicht absolvieren möchten, führen Sie folgen
 
     Derzeit ist 3.1.0 die neueste Version. Die unterstützten Versionen sind [hier][14] aufgeführt.
 
-### <a name="a-nameenable-internetaenable-internet-permission"></a><a name="enable-internet"></a>Aktivieren der Internetberechtigung
+### <a name="enable-internet"></a>Aktivieren der Internetberechtigung
 Für den Zugriff auf Azure muss für Ihre App die INTERNET-Berechtigung aktiviert sein. Wenn sie nicht bereits aktiviert ist, fügen Sie Ihrer Datei **AndroidManifest.xml** die folgende Codezeile hinzu:
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -75,7 +76,7 @@ Für den Zugriff auf Azure muss für Ihre App die INTERNET-Berechtigung aktivier
 ## <a name="the-basics-deep-dive"></a>Die fundierte Einführung 
 Dieser Abschnitt behandelt einen Teil des Codes in der Schnellstart-App, die sich auf die Verwendung von Azure Mobile Apps bezieht.  
 
-### <a name="a-namedata-objectadefine-client-data-classes"></a><a name="data-object"></a>Definieren von Clientdatenklassen
+### <a name="data-object"></a>Definieren von Clientdatenklassen
 Für den Zugriff auf Daten aus SQL Azure-Tabellen definieren Sie Clientdatenklassen, die den Tabellen im Mobile App-Back-End entsprechen. Für die Beispiele in diesem Thema wird eine Tabelle mit dem Namen **ToDoItem**verwendet, die folgende Spalten hat:
 
 * id
@@ -113,9 +114,9 @@ Wenn Ihre SQL Azure-Tabelle weitere Spalten enthält, würden Sie die entspreche
         mPriority = priority;
     }
 
-Informationen zum Erstellen zusätzlicher Tabellen in Ihrem Mobile Apps-Back-End finden Sie unter [Gewusst wie: Definieren eines Tabellencontrollers][15] (.NET-Back-End) oder [Definieren von Tabellen mit einem dynamischen Schema][16] (Node.js-Back-End). Für ein Node.js-Back-End können Sie auch die Einstellung **Einfache Tabellen** im [Azure-Portal]verwenden.
+Informationen zum Erstellen zusätzlicher Tabellen in Ihrem Mobile Apps-Back-End finden Sie unter [Definieren eines Tabellencontrollers][15] (.NET-Back-End) oder [Definieren von Tabellen mit einem dynamischen Schema][16] (Node.js-Back-End). Für ein Node.js-Back-End können Sie auch die Einstellung **Einfache Tabellen** im [Azure-Portal]verwenden.
 
-### <a name="a-namecreate-clientahow-to-create-the-client-context"></a><a name="create-client"></a>Gewusst wie: Erstellen des Clientkontexts
+### <a name="create-client"></a>Gewusst wie: Erstellen des Clientkontexts
 Der folgende Code erstellt das **MobileServiceClient** -Objekt, das für den Zugriff auf Ihr Mobile App-Back-End verwendet wird. Der Code gehört in die `onCreate`-Methode der **Activity**-Klasse, die in *AndroidManifest*.xml als **MAIN**-Aktion und **LAUNCHER**-Kategorie angegeben ist. Im Schnellstartcode gehört er in die Datei **ToDoActivity.java** .
 
         MobileServiceClient mClient = new MobileServiceClient(
@@ -126,7 +127,7 @@ Ersetzen Sie in diesem Code `MobileAppUrl` durch die URL des Mobile App-Back-End
 
     import com.microsoft.windowsazure.mobileservices.*;
 
-### <a name="a-nameinstantiatingahow-to-create-a-table-reference"></a><a name="instantiating"></a>Erstellen von Tabellenverweisen
+### <a name="instantiating"></a>Erstellen von Tabellenverweisen
 Der einfachste Weg, Daten im Back-End abzufragen oder zu ändern, ist das *typisierte Programmiermodell*, da Java eine stark typisierte Sprache ist. Dieses Modell ermöglicht eine nahtlose JSON-Serialisierung und -Deserialisierung mithilfe der [gson][3]-Bibliothek, wenn Daten zwischen Clientobjekten und Tabellen in der Azure SQL-Datenbankinstanz im Back-End gesendet werden.
 
 Um auf eine Tabelle zuzugreifen, erstellen Sie zuerst ein [MobileServiceTable][8]-Objekt durch Aufrufen der **getTable**-Methode im [MobileServiceClient][9].  Diese Methode verfügt über zwei Überladungen:
@@ -144,7 +145,7 @@ Die zweite Überladung wird verwendet, wenn sich Tabellenname und Klassenname un
 
     MobileServiceTable<ToDoItem> mToDoTable = mClient.getTable("ToDoItemBackup", ToDoItem.class);
 
-### <a name="a-namebindingahow-to-bind-data-to-the-user-interface"></a><a name="binding"></a>Gewusst wie: Datenbindung in der Benutzeroberfläche
+### <a name="binding"></a>Gewusst wie: Datenbindung in der Benutzeroberfläche
 Datenbindung besteht aus drei Komponenten:
 
 * Die Datenquelle
@@ -155,7 +156,7 @@ In unserem Beispielcode geben wir die Daten aus der Mobile Apps-SQL Azure-Tabell
 
 Der Code gibt ein Bildschirmlayout an, das die Ansicht der auf dem Gerät angezeigten Daten definiert.  Diese beiden Komponenten sind über einen Adapter verbunden, in diesem Fall eine Erweiterung der **ArrayAdapter&lt;ToDoItem&gt;**-Klasse.
 
-#### <a name="a-namelayoutahow-to-define-the-layout"></a><a name="layout"></a>Definieren des Layouts
+#### <a name="layout"></a>Definieren des Layouts
 Das Layout wird durch mehrere XML-Codeabschnitte definiert. In einem existierenden Layout stellt der folgende Code die **ListView** dar, die wir mit unseren Serverdaten auffüllen möchten.
 
     <ListView
@@ -180,7 +181,7 @@ Das *listitem* -Attribut im obigen Code definiert die ID des Layouts für eine b
     </LinearLayout>
 
 
-#### <a name="a-nameadapterahow-to-define-the-adapter"></a><a name="adapter"></a>Definieren des Adapters
+#### <a name="adapter"></a>Definieren des Adapters
 Da die Datenquelle in unserer Ansicht ein **ToDoItem** ist, leiten wir unseren Adapter von der Klasse **ArrayAdapter&lt;ToDoItem&gt;** ab. Diese Unterklasse produziert eine Ansicht für jedes **ToDoItem** und verwendet dabei das **row_list_to_do**-Layout.
 
 In unserem Code definieren wir die folgende Klasse, die eine Erweiterung der **ArrayAdapter&lt;E&gt;**-Klasse ist:
@@ -235,12 +236,12 @@ Der zweite Parameter für den ToDoItemAdapter-Konstruktor ist ein Verweis auf da
     ListView listViewToDo = (ListView) findViewById(R.id.listViewToDo);
     listViewToDo.setAdapter(mAdapter);
 
-### <a name="a-nameapiathe-api-structure"></a><a name="api"></a>Die API-Struktur
+### <a name="api"></a>Die API-Struktur
 Tabellenvorgänge für Mobile Apps und benutzerdefinierte API-Aufrufe sind asynchron. Verwenden Sie die Objekte [Future] und [AsyncTask] für die asynchronen Methoden zum Abfragen, Einfügen, Aktualisieren und Löschen. Die Verwendung von Future-Objekten erleichtert die Ausführung mehrerer Vorgänge in einem Hintergrundthread, ohne sich um mehrere geschachtelte Rückrufe kümmern zu müssen.
 
 Sehen Sie sich im **ToDoActivity.java** als Beispiel die Datei [Azure-Portal] im Android-Schnellstartprojekt an.
 
-#### <a name="a-nameuse-adapterahow-to-use-the-adapter"></a><a name="use-adapter"></a>Verwenden des Adapters
+#### <a name="use-adapter"></a>Verwenden des Adapters
 Sie sind nun in der Lage, die Datenbindung zu verwenden. Der folgende Code zeigt, wie Elemente in der Tabelle abgerufen werden und der lokale Adapter mit den zurückgegebenen Elementen gefüllt wird.
 
     public void showAll(View view) {
@@ -270,7 +271,7 @@ Sie sind nun in der Lage, die Datenbindung zu verwenden. Der folgende Code zeigt
 
 Rufen Sie den Adapter bei jeder Änderung der **ToDoItem** -Tabelle auf. Da Änderungen in einzelnen Datensätzen erfolgen, verarbeiten Sie eine einzelne Zeile anstatt einer Sammlung. Beim Einfügen von Elementen rufen Sie die **add**-Methode des Adapters auf, beim Löschen rufen Sie die **remove**-Methode auf.
 
-## <a name="a-namequeryingahow-to-query-data-from-your-mobile-app-backend"></a><a name="querying"></a>Abfragen von Daten aus Ihrem Mobile App-Back-End
+## <a name="querying"></a>Abfragen von Daten aus Ihrem Mobile App-Back-End
 Dieser Abschnitt beschreibt, wie Sie Abfragen an Ihr Mobile App-Back-End stellen können. Dies umfasst folgende Aufgaben:
 
 * [Zurückgeben aller Elemente]
@@ -280,14 +281,14 @@ Dieser Abschnitt beschreibt, wie Sie Abfragen an Ihr Mobile App-Back-End stellen
 * [Bestimmte Spalten auswählen]
 * [Verketten von Abfragemethoden](#chaining)
 
-### <a name="a-nameshowallahow-to-return-all-items-from-a-table"></a><a name="showAll"></a>Zurückgeben aller Elemente einer Tabelle
+### <a name="showAll"></a>Zurückgeben aller Elemente einer Tabelle
 Die folgende Abfrage gibt alle Elemente aus der **ToDoItem** -Tabelle zurück.
 
     List<ToDoItem> results = mToDoTable.execute().get();
 
 Die Variable *results* gibt das Resultset der Abfrage als Liste zurück.
 
-### <a name="a-namefilteringahow-to-filter-returned-data"></a><a name="filtering"></a>Filtern zurückgegebener Daten
+### <a name="filtering"></a>Filtern zurückgegebener Daten
 Bei der Ausführung der folgenden Abfrage werden alle Elemente aus der **ToDoItem**-Tabelle zurückgegeben, wobei **complete** gleich **false** ist.
 
     List<ToDoItem> result = mToDoTable.where()
@@ -325,14 +326,14 @@ Gruppieren und Schachteln von logischen Operatoren:
 
 Eine detailliertere Besprechung und weitere Beispiele für Filter finden Sie unter [Exploring the richness of the Android client query model](http://hashtagfail.com/post/46493261719/mobile-services-android-querying)(Untersuchen der umfassenden Möglichkeiten des Android-Clientabfragemodells).
 
-### <a name="a-namesortingahow-to-sort-returned-data"></a><a name="sorting"></a>Gewusst wie: Sortieren zurückgegebener Daten
+### <a name="sorting"></a>Gewusst wie: Sortieren zurückgegebener Daten
 Der folgende Code gibt alle Elemente aus einer **ToDoItems** -Tabelle in aufsteigender Reihenfolge nach dem *text* -Feld sortiert zurück. *mToDoTable* ist der Verweis auf die zuvor erstellte Back-End-Tabelle:
 
     mToDoTable.orderBy("text", QueryOrder.Ascending).execute().get();
 
 Der erste Parameter der **orderBy** -Methode ist eine Zeichenfolge mit dem Namen des Felds, nach dem sortiert werden soll. Für den zweiten Parameter wird die Aufzählung **QueryOrder** verwendet, um anzugeben, ob auf- oder absteigend sortiert werden soll.  Beim Filtern mit der ***where***-Methode muss die ***where***-Methode vor dem Aufruf der ***orderBy***-Methode aufgerufen werden.
 
-### <a name="a-namepagingahow-to-return-data-in-pages"></a><a name="paging"></a>Seitenweises Zurückgeben von Daten
+### <a name="paging"></a>Seitenweises Zurückgeben von Daten
 Das erste Beispiel zeigt, wie Sie die ersten fünf Elemente einer Tabelle abrufen können. Die Abfrage gibt die Elemente aus einer **ToDoItems**-Tabelle zurück. **mToDoTable** ist der Verweis auf die zuvor erstellte Back-End-Tabelle:
 
     List<ToDoItem> result = mToDoTable.top(5).execute().get();
@@ -342,7 +343,7 @@ Hier ist eine Abfrage, welche die ersten fünf Elemente überspringt und die nä
 
     mToDoTable.skip(5).top(5).execute().get();
 
-### <a name="a-nameselectingahow-to-select-specific-columns"></a><a name="selecting"></a>Gewusst wie: Auswählen bestimmter Spalten
+### <a name="selecting"></a>Gewusst wie: Auswählen bestimmter Spalten
 Der folgende Code gibt alle Elemente der Tabelle **ToDoItems** zurück, zeigt jedoch nur die Felder **complete** und **text** an. **mToDoTable** ist der Verweis auf die zuvor erstellte Back-End-Tabelle.
 
     List<ToDoItemNarrow> result = mToDoTable.select("complete", "text").execute().get();
@@ -351,7 +352,7 @@ Die Parameter der select-Funktion sind in diesem Fall die Zeichenfolgennamen der
 
 Die **select**-Methode muss Methoden wie **where** und **orderBy** folgen. Auf sie können Pagingmethoden wie **top**folgen.
 
-### <a name="a-namechainingahow-to-concatenate-query-methods"></a><a name="chaining"></a>Verketten von Abfragemethoden
+### <a name="chaining"></a>Verketten von Abfragemethoden
 Die beim Abfragen von Back-End-Tabellen verwendeten Methoden können verkettet werden. Durch die Verkettung von Abfragemethoden können Sie spezielle Spalten gefilterter Zeilen mit Sortierung und Paging abfragen. Sie können komplexe logische Filter erstellen.
 Jede Abfragemethode gibt ein Query-Objekt zurück. Um die Methodenserie zu beenden und die Abfrage auszuführen, rufen Sie die **execute** -Methode auf. Beispiel:
 
@@ -371,7 +372,7 @@ Die verketteten Abfragemethoden müssen wie folgt sortiert werden:
 3. Auswahlmethoden (**select**).
 4. Pagingmethoden (**skip** und **top**).
 
-## <a name="a-nameinsertingahow-to-insert-data-into-the-backend"></a><a name="inserting"></a>Einfügen von Daten in das Back-End
+## <a name="inserting"></a>Einfügen von Daten in das Back-End
 Instanziieren Sie eine Instanz der *ToDoItem* -Klasse und legen deren Eigenschaften fest.
 
     ToDoItem item = new ToDoItem();
@@ -394,7 +395,7 @@ Zeichenfolgen-ID-Werte bieten folgende Vorteile:
 
 Zeichenfolgen-ID-Werte sind für die Unterstützung der Offlinesynchronisierung **ERFORDERLICH** .
 
-## <a name="a-nameupdatingahow-to-update-data-in-a-mobile-app"></a><a name="updating"></a>Aktualisieren von Daten in einer mobilen App
+## <a name="updating"></a>Aktualisieren von Daten in einer mobilen App
 Um Daten in einer Tabelle zu aktualisieren, übergeben Sie das neue Objekt an die **update()** -Methode.
 
     mToDoTable.update(item).get();
@@ -402,7 +403,7 @@ Um Daten in einer Tabelle zu aktualisieren, übergeben Sie das neue Objekt an di
 In diesem Beispiel ist *item* ein Verweis auf eine Zeile in der *ToDoItem*-Tabelle, an der einige Änderungen vorgenommen wurden.
 Die Zeile mit dem gleichen **id** -Wert wird aktualisiert.
 
-## <a name="a-namedeletingahow-to-delete-data-in-a-mobile-app"></a><a name="deleting"></a>Löschen von Daten in einer mobilen App
+## <a name="deleting"></a>Löschen von Daten in einer mobilen App
 Der folgende Code zeigt, wie Sie Daten durch Angabe des Datenobjekts aus einer Tabelle löschen.
 
     mToDoTable.delete(item);
@@ -412,19 +413,19 @@ Sie können ein Element auch durch Angabe des **id** -Felds der zu löschenden Z
     String myRowId = "2FA404AB-E458-44CD-BC1B-3BC847EF0902";
        mToDoTable.delete(myRowId);
 
-## <a name="a-namelookupahow-to-look-up-a-specific-item"></a><a name="lookup"></a>Gewusst wie: Abfragen bestimmter Elemente
+## <a name="lookup"></a>Gewusst wie: Abfragen bestimmter Elemente
 Mit der **lookUp()**-Methode suchen Sie nach einem Element mit einem bestimmten **id**-Feld:
 
     ToDoItem result = mToDoTable
                         .lookUp("0380BAFB-BCFF-443C-B7D5-30199F730335")
                         .get();
 
-## <a name="a-nameuntypedahow-to-work-with-untyped-data"></a><a name="untyped"></a>Arbeiten mit nicht typisierten Daten
+## <a name="untyped"></a>Arbeiten mit nicht typisierten Daten
 Das Programmiermodell ohne Typisierung ermöglicht Ihnen eine genaue Steuerung der JSON-Serialisierung.  Es gibt einige häufige Szenarien, in denen der Einsatz eines nicht typisierten Programmiermodells wünschenswert ist. Beispiel: Ihre Back-End-Tabelle enthält viele Spalten, und Sie müssen nur auf eine Teilmenge der Spalten verweisen.  Im typisierten Modell müssen Sie alle Spalten der Tabelle in Ihrer mobilen App in Ihrer Datenklasse definieren.  
 
 Die meisten API-Aufrufe für den Datenzugriff sind gleich wie beim typisierten Programmiermodell. Im untypisierten Modell rufen Sie Methoden des **MobileServiceJsonTable**-Objekts anstelle des **MobileServiceTable**-Objekts auf.
 
-### <a name="a-namejsoninstanceahow-to-create-an-instance-of-an-untyped-table"></a><a name="json_instance"></a>Erstellen einer Instanz einer nicht typisierten Tabelle
+### <a name="json_instance"></a>Erstellen einer Instanz einer nicht typisierten Tabelle
 Ähnlich wie beim typisierten Modell benötigen Sie zunächst einen Tabellenverweis. In diesem Fall handelt es sich jedoch um ein **MobileServicesJsonTable**-Objekt. Rufen Sie den Verweis durch Aufruf der **getTable**-Methode in einer Instanz des Clients ab:
 
     private MobileServiceJsonTable mJsonToDoTable;
@@ -433,7 +434,7 @@ Die meisten API-Aufrufe für den Datenzugriff sind gleich wie beim typisierten P
 
 Nachdem Sie eine Instanz der **MobileServiceJsonTable**erstellt haben, steht dieser Instanz praktisch die gleiche API zur Verfügung wie beim typisierten Programmiermodell. In einigen Fällen akzeptieren die Methoden einen nicht typisierten Parameter anstelle eines typisierten Parameters.
 
-### <a name="a-namejsoninsertahow-to-insert-into-an-untyped-table"></a><a name="json_insert"></a>Einfügen in nicht typisierte Tabellen
+### <a name="json_insert"></a>Einfügen in nicht typisierte Tabellen
 Der folgende Code zeigt, wie Sie Elemente einfügen können. Sie müssen zunächst ein [JsonObject][1] erstellen, das Teil der [gson][3]-Bibliothek ist.
 
     JsonObject jsonItem = new JsonObject();
@@ -448,7 +449,7 @@ Wenn Sie die ID des eingefügten Objekts abrufen müssen, verwenden Sie die **ge
 
     jsonItem.getAsJsonPrimitive("id").getAsInt());
 
-### <a name="a-namejsondeleteahow-to-delete-from-an-untyped-table"></a><a name="json_delete"></a>Löschen aus einer nicht typisierten Tabelle
+### <a name="json_delete"></a>Löschen aus einer nicht typisierten Tabelle
 Der folgende Code zeigt, wie Sie eine Instanz löschen, in diesem Fall die Instanz des **JsonObject** , die Sie im vorigen *insert* -Beispiel eingefügt haben. Der Code ist derselbe wie im typisierten Fall, aber die Methode weist eine andere Signatur auf, da sie auf ein **JsonObject**verweist.
 
          mToDoTable.delete(jsonItem);
@@ -457,7 +458,7 @@ Sie können eine Instanz auch direkt anhand ihrer ID löschen:
 
          mToDoTable.delete(ID);
 
-### <a name="a-namejsongetahow-to-return-all-rows-from-an-untyped-table"></a><a name="json_get"></a>Zurückgeben aller Zeilen aus einer nicht typisierten Tabelle
+### <a name="json_get"></a>Zurückgeben aller Zeilen aus einer nicht typisierten Tabelle
 Der folgende Code ruft eine gesamte Tabelle ab. Da Sie eine JSON-Tabelle verwenden, können Sie nur einige der Spalten der Tabelle selektiv abrufen.
 
     public void showAllUntyped(View view) {
@@ -494,7 +495,7 @@ Der folgende Code ruft eine gesamte Tabelle ab. Da Sie eine JSON-Tabelle verwend
 
 Für das nicht typisierte Modell steht der gleiche Satz an Filter- sowie Filter- und Pagingmethoden zur Verfügung wie für das typisierte Modell.
 
-## <a name="a-namecustom-apiahow-to-call-a-custom-api"></a><a name="custom-api"></a>Gewusst wie: Aufrufen einer benutzerdefinierten API
+## <a name="custom-api"></a>Gewusst wie: Aufrufen einer benutzerdefinierten API
 Mit einer benutzerdefinierten API können Sie benutzerdefinierte Endpunkte definieren, die Serverfunktionen zur Verfügung stellen, welche keinem Einfüge-, Aktualisierungs-, Lösch- oder Lesevorgang zugeordnet sind. Durch die Verwendung einer benutzerdefinierten API erhalten Sie mehr Kontrolle über das Messaging, einschließlich Lesen und Einstellen der HTTP-Nachrichten-Header sowie Definieren eines von JSON abweichenden Nachrichtentextformats.
 
 Rufen Sie von einem Android-Client aus die **invokeApi** -Methode auf, um den benutzerdefinierten API-Endpunkt aufzurufen. Das folgende Beispiel zeigt, wie Sie einen API-Endpunkt mit dem Namen **completeAll** aufrufen, der eine Sammlungsklasse mit dem Namen **MarkAllResult** zurückgibt.
@@ -519,7 +520,7 @@ Rufen Sie von einem Android-Client aus die **invokeApi** -Methode auf, um den be
 
 Die **invokeApi** -Methode wird beim Client aufgerufen, der eine POST-Anfrage an die neue benutzerdefinierte API sendet. Das von der benutzerdefinierten API zurückgegebene Ergebnis wird in einem Meldungsdialogfeld angezeigt, ebenso wie jegliche Fehler. Mit anderen Versionen von **invokeApi** können Sie optional ein Objekt im Anforderungshauptteil senden, die HTTP-Methode angeben und Abfrageparameter mit der Anforderung senden. Nicht typisierte Versionen von **invokeApi** werden ebenfalls bereitgestellt.
 
-## <a name="a-nameauthenticationahow-to-add-authentication-to-your-app"></a><a name="authentication"></a>Hinzufügen von Authentifizierung zur App
+## <a name="authentication"></a>Hinzufügen von Authentifizierung zur App
 Es stehen bereits Tutorials zur Verfügung, in denen das Hinzufügen dieser Features im Detail beschrieben wird.
 
 App Service unterstützt die [Authentifizierung von App-Benutzern](app-service-mobile-android-get-started-users.md) mit einer Vielzahl externer Identitätsanbieter: Facebook, Google, Microsoft-Konto, Twitter und Azure Active Directory. Sie können Berechtigungen für Tabellen vergeben, um den Zugriff auf bestimmte Operationen auf authentifizierte Benutzer zu beschränken. Außerdem können Sie die Identität authentifizierter Benutzer verwenden, um Autorisierungsregeln auf Ihrem Back-End zu implementieren.
@@ -537,21 +538,21 @@ Zum Aktivieren der Authentifizierung in Ihrer App sind vier Schritte erforderlic
 
 Sie können Berechtigungen für Tabellen vergeben, um den Zugriff auf bestimmte Operationen auf authentifizierte Benutzer zu beschränken. Außerdem können Sie die SID eines authentifizierten Benutzers verwenden, um Anfragen zu verändern.  Weitere Informationen finden Sie unter [Erste Schritte mit Authentifizierungen] und in der Dokumentation des Server-SDK.
 
-### <a name="a-namecachingahow-to-add-authentication-code-to-your-app"></a><a name="caching"></a>Hinzufügen des Authentifizierungscodes zur App
+### <a name="caching"></a>Hinzufügen des Authentifizierungscodes zur App
 Der folgende Code startet einen Serverfluss-Anmeldeprozess mit dem Google-Anbieter:
 
     MobileServiceUser user = mClient.login(MobileServiceAuthenticationProvider.Google);
 
 Rufen Sie die ID des angemeldeten Benutzers mit der **getUserId**-Methode aus einem **MobileServiceUser** ab. Ein Beispiel zur Verwendung von „Futures“ zum Abrufen der asynchronen APIs für die Anmeldung finden Sie unter [Erste Schritte mit Authentifizierungen].
 
-### <a name="a-namecachingahow-to-cache-authentication-tokens"></a><a name="caching"></a>Zwischenspeichern von Authentifizierungstokens
+### <a name="caching"></a>Zwischenspeichern von Authentifizierungstokens
 Beim Zwischenspeichern von Authentifizierungstoken müssen Benutzer-ID und Authentifizierungstoken lokal auf dem Gerät gespeichert werden. Beim nächsten Start der App prüfen Sie den Cache. Wenn diese Werte vorhanden sind, können Sie die Anmeldeprozedur überspringen und den Client mit den vorhandenen Daten füllen. Diese Daten sind jedoch vertraulich und sollten aus Sicherheitsgründen verschlüsselt gespeichert werden, falls das Telefon gestohlen wird.
 
 Ein vollständiges Beispiel zum Zwischenspeichern von Authentifizierungstoken finden Sie im Abschnitt [Zwischenspeichern von Authentifizierungstokens][7].
 
 Wenn Sie versuchen, ein abgelaufenes Token zu verwenden, erhalten Sie die Antwort *401 – nicht autorisiert* . Mithilfe von Filtern können Sie Authentifizierungsfehler behandeln.  Filter fangen Anforderungen an das App Service-Back-End ab. Der Filtercode prüft Antworten auf 401-Fehler, löst den Anmeldeprozess aus und setzt anschließend die Anforderung fort, die den 401-Fehler ausgelöst hatte.
 
-## <a name="a-nameadalahow-to-authenticate-users-with-the-active-directory-authentication-library"></a><a name="adal"></a>Gewusst wie: Authentifizieren von Benutzern mit der Active Directory-Authentifizierungsbibliothek
+## <a name="adal"></a>Gewusst wie: Authentifizieren von Benutzern mit der Active Directory-Authentifizierungsbibliothek
 Nutzen Sie die Active Directory-Authentifizierungsbibliothek (Active Directory Authentication Library, ADAL), um Benutzer mithilfe von Azure Active Directory bei Ihrer Anwendung anzumelden. Aufgrund der besseren Bedienbarkeit und der Möglichkeit, zusätzliche Anpassungen vorzunehmen, wird eine Clientflussanmeldung den `loginAsync()` -Methoden häufig vorgezogen.
 
 1. Konfigurieren Sie Ihr mobiles App-Back-End für die AAD-Anmeldung, indem Sie die im Tutorial [So konfigurieren Sie Ihre App Service-Anwendung zur Verwendung der Azure Active Directory-Anmeldung](app-service-mobile-how-to-configure-active-directory-authentication.md) beschriebenen Schritte ausführen. Schließen Sie auch den optionalen Schritt zur Registrierung einer nativen Clientanwendung ab.
@@ -649,7 +650,7 @@ dependencies {
         }
 
 ## <a name="how-to-add-push-notification-to-your-app"></a>Hinzufügen von Pushbenachrichtigungen zur App
-In der [Übersicht][6] erfahren Sie, wie Microsoft Azure Notification Hubs eine Vielzahl von Pushbenachrichtigungen unterstützt.  In diesem [Tutorial][5] wird bei jedem Einfügen eines Datensatzes eine Pushbenachrichtigung an alle Geräte gesendet.
+In der [Übersicht][6] erfahren Sie, wie Microsoft Azure Notification Hubs eine Vielzahl von Pushbenachrichtigungen unterstützt.  In [diesem Tutorial][5] wird bei jedem Einfügen eines Datensatzes eine Pushbenachrichtigung an alle Geräte gesendet.
 
 ## <a name="how-to-add-offline-sync-to-your-app"></a>Hinzufügen von Offlinesynchronisierung zu Ihrer App
 Das Schnellstarttutorial enthält Code, der Offlinesynchronisierung implementiert. Suchen Sie nach Code, dem Kommentare vorangestellt sind:
@@ -658,10 +659,10 @@ Das Schnellstarttutorial enthält Code, der Offlinesynchronisierung implementier
 
 Indem Sie die Auskommentierung der  folgenden Codezeilen aufheben, können Sie Offlinesynchronisierung implementieren, und Sie können mit ähnlichem Code den Code anderer Mobile Apps ergänzen.
 
-## <a name="a-namecustomizingahow-to-customize-the-client"></a><a name="customizing"></a>Gewusst wie: Anpassen des Clients
+## <a name="customizing"></a>Gewusst wie: Anpassen des Clients
 Sie haben mehrere Möglichkeiten, das Standardverhalten des Clients anzupassen.
 
-### <a name="a-nameheadersahow-to-customize-request-headers"></a><a name="headers"></a>Gewusst wie: Anpassen der Anforderungsheader
+### <a name="headers"></a>Gewusst wie: Anpassen der Anforderungsheader
 Konfigurieren Sie einen **ServiceFilter** , um jeder Anforderung einen benutzerdefinierten HTTP-Header hinzuzufügen:
 
     private class CustomHeaderFilter implements ServiceFilter {
@@ -687,7 +688,7 @@ Konfigurieren Sie einen **ServiceFilter** , um jeder Anforderung einen benutzerd
             }
         }
 
-### <a name="a-nameserializationahow-to-customize-serialization"></a><a name="serialization"></a>Gewusst wie: Anpassen der Serialisierung
+### <a name="serialization"></a>Gewusst wie: Anpassen der Serialisierung
 Der Client geht davon aus, dass alle Tabellennamen, Spaltennamen und Datentypen im Back-End genau den im Client definierten Datenobjekten entsprechen. Diese Namen können sich jedoch aus verschiedensten Gründen auf Server und Client unterschieden. In Ihrem Szenario möchten Sie vielleicht eine der folgenden Arten von Anpassungen vornehmen:
 
 * Die in der App Service-Tabelle verwendeten Spaltennamen entsprechen nicht den Namen, die Sie im Client verwenden.
@@ -695,7 +696,7 @@ Der Client geht davon aus, dass alle Tabellennamen, Spaltennamen und Datentypen 
 * Aktivieren Sie die automatische Großschreibung von Eigenschaften.
 * Fügen Sie Objekten komplexe Eigenschaften hinzu.
 
-### <a name="a-namecolumnsahow-to-map-different-client-and-server-names"></a><a name="columns"></a>Zuordnen unterschiedlicher Namen zwischen Client und Server
+### <a name="columns"></a>Zuordnen unterschiedlicher Namen zwischen Client und Server
 Nehmen Sie an, Ihr Java-Clientcode verwendet Namen nach Java-Standardschema für die **ToDoItem**-Objekteigenschaften, wie z.B. die folgenden Eigenschaften:
 
 * mId
@@ -717,12 +718,12 @@ Serialisieren Sie die clientseitigen Namen zu JSON-Namen, die den Spaltennamen i
     @com.google.gson.annotations.SerializedName("duration")
     private String mDuration;
 
-### <a name="a-nametableahow-to-map-different-table-names-between-the-client-and-the-backend"></a><a name="table"></a>Zuordnen unterschiedlicher Tabellennamen zwischen Client und Back-End
+### <a name="table"></a>Zuordnen unterschiedlicher Tabellennamen zwischen Client und Back-End
 Ordnen Sie den Clienttabellennamen einem anderen Tabellennamen eines mobilen Diensts zu, indem Sie eine Überschreibung der [getTable()][4]-Methode verwenden:
 
     mToDoTable = mClient.getTable("ToDoItemBackup", ToDoItem.class);
 
-### <a name="a-nameconversionsahow-to-automate-column-name-mappings"></a><a name="conversions"></a>Automatisieren von Tabellennamenzuordnungen
+### <a name="conversions"></a>Automatisieren von Tabellennamenzuordnungen
 Sie können mit der [gson][3]-API eine Konvertierungsstrategie angeben, die für jede Spalte gilt. Die Android-Clientbibliothek verwendet im Hintergrund [gson][3], um Java-Objekte zu JSON-Daten zu serialisieren, bevor die Daten an Azure App Service übertragen werden.  Der folgende Code verwendet die **setFieldNamingStrategy()** -Methode, um die Strategie festzulegen. Dieses Beispiel löscht für jeden Feldnamen das erste Zeichen (ein „m“) und wandelt das folgende Zeichen zu einem Kleinbuchstaben um. Die Zeichenfolge „mId“ beispielsweise wird in „id“ umgewandelt.
 
     client.setGsonBuilder(
@@ -738,48 +739,48 @@ Sie können mit der [gson][3]-API eine Konvertierungsstrategie angeben, die für
 
 Dieser Code muss vor der Verwendung von **MobileServiceClient**ausgeführt werden.
 
-### <a name="a-namecomplexahow-to-store-an-object-or-array-property-into-a-table"></a><a name="complex"></a>Speichern von Objekt- oder Array-Eigenschaften in einer Tabelle
-Bisher wurden bei den vorliegenden Serialisierungsbeispielen primitive Datentypen wie Ganzzahlen und Zeichenfolgen verwendet.  Primitive Datentypen lassen sich problemlos zu JSON serialisieren.  Wenn Sie ein komplexes Objekt hinzufügen möchten, das sich nicht automatisch zu JSON serialisieren lässt, müssen Sie die JSON-Serialisierungsmethode bereitstellen.  Ein Beispiel für die Bereitstellung einer benutzerdefinierten JSON-Serialisierungsmethode finden Sie im Blogeintrag [Customizing serialization using the gson library in the Mobile Services Android client][2] (Benutzerdefinierte Serialisierung mit der gson-Bibliothek im Android-Client für mobile Dienste).
+### <a name="complex"></a>Speichern von Objekt- oder Array-Eigenschaften in einer Tabelle
+Bisher wurden bei den vorliegenden Serialisierungsbeispielen primitive Datentypen wie Ganzzahlen und Zeichenfolgen verwendet.  Primitive Datentypen lassen sich problemlos zu JSON serialisieren.  Wenn Sie ein komplexes Objekt hinzufügen möchten, das sich nicht automatisch zu JSON serialisieren lässt, müssen Sie die JSON-Serialisierungsmethode bereitstellen.  Ein Beispiel für die Bereitstellung einer benutzerdefinierten JSON-Serialisierungsmethode finden Sie im Blogbeitrag [Customizing serialization using the gson library in the Mobile Services Android client][2] (Benutzerdefinierte Serialisierung mit der gson-Bibliothek im Android-Client für mobile Dienste).
 
 <!-- Anchors. -->
 
-[Was sind Mobile Services?]: #what-is
-[Konzepte]: #concepts
-[Gewusst wie: Erstellen des Mobile Services-Clients]: #create-client
-[Erstellen von Tabellenverweisen]: #instantiating
-[Die API-Struktur]: #api
-[Abfragen von Daten aus einem mobilen Dienst]: #querying
+[What is Mobile Services]: #what-is
+[Concepts]: #concepts
+[How to: Create the Mobile Services client]: #create-client
+[How to: Create a table reference]: #instantiating
+[The API structure]: #api
+[How to: Query data from a mobile service]: #querying
 [Zurückgeben aller Elemente]: #showAll
 [Zurückgegebene Daten filtern]: #filtering
 [Zurückgegebene Daten sortieren]: #sorting
 [Daten seitenweise zurückgeben]: #paging
 [Bestimmte Spalten auswählen]: #selecting
-[Verketten von Abfragemethoden]: #chaining
-[Gewusst wie: Datenbindung in der Benutzeroberfläche]: #binding
+[How to: Concatenate query methods]: #chaining
+[How to: Bind data to the user interface]: #binding
 [How to: Define the layout]: #layout
-[Definieren des Adapters]: #adapter
-[Verwenden des Adapters]: #use-adapter
-[Gewusst wie: Einfügen von Daten in einen mobilen Dienst]: #inserting
+[How to: Define the adapter]: #adapter
+[How to: Use the adapter]: #use-adapter
+[How to: Insert data into a mobile service]: #inserting
 [How to: update data in a mobile service]: #updating
-[Gewusst wie:Löschen von Daten in einem mobilen Dienst]: #deleting
-[Gewusst wie: Abfragen bestimmter Elemente]: #lookup
-[Arbeiten mit nicht typisierten Daten]: #untyped
-[Authentifizieren von Benutzern]: #authentication
-[Zwischenspeichern von Authentifizierungstokens]: #caching
-[Fehlerbehandlung]: #errors
-[Gewusst wie: Design von Komponententests]: #tests
-[Gewusst wie: Anpassen des Clients]: #customizing
-[Anpassen der Anforderungsheader]: #headers
-[Anpassen der Serialisierung]: #serialization
+[How to: Delete data in a mobile service]: #deleting
+[How to: Look up a specific item]: #lookup
+[How to: Work with untyped data]: #untyped
+[How to: Authenticate users]: #authentication
+[Cache authentication tokens]: #caching
+[How to: Handle errors]: #errors
+[How to: Design unit tests]: #tests
+[How to: Customize the client]: #customizing
+[Customize request headers]: #headers
+[Customize serialization]: #serialization
 [Next Steps]: #next-steps
-[Einrichtung und Voraussetzungen]: #setup
+[Setup and Prerequisites]: #setup
 
 <!-- Images. -->
 
 <!-- URLs. -->
-[Erste Schritte mit Azure Mobile Apps]: app-service-mobile-android-get-started.md
-[ASCII-Steuerzeichen C0 und C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
-[Mobile Services SDK für Android]: http://go.microsoft.com/fwlink/p/?LinkID=717033
+[Get started with Azure Mobile Apps]: app-service-mobile-android-get-started.md
+[ASCII control codes C0 and C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
+[Mobile Services SDK for Android]: http://go.microsoft.com/fwlink/p/?LinkID=717033
 [Azure-Portal]: https://portal.azure.com
 [Erste Schritte mit Authentifizierungen]: app-service-mobile-android-get-started-users.md
 [1]: http://google-gson.googlecode.com/svn/trunk/gson/docs/javadocs/com/google/gson/JsonObject.html
@@ -800,9 +801,4 @@ Bisher wurden bei den vorliegenden Serialisierungsbeispielen primitive Datentype
 [16]: app-service-mobile-node-backend-how-to-use-server-sdk.md#TableOperations
 [Future]: http://developer.android.com/reference/java/util/concurrent/Future.html
 [AsyncTask]: http://developer.android.com/reference/android/os/AsyncTask.html
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

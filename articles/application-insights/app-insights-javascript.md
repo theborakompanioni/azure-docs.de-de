@@ -1,21 +1,22 @@
 ---
-title: "Application Insights für JavaScript-Web-Apps | Microsoft Docs"
+title: "Azure Application Insights für JavaScript-Web-Apps | Microsoft-Dokumentation"
 description: Erhalten Sie die Anzahl der Seitenaufrufe und Sitzungen, rufen Sie Webclientdaten ab, und verfolgen Sie Verwendungsmuster. Erkennen Sie Ausnahmen und Leistungsprobleme in JavaScript-Web-Apps.
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: 3b710d09-6ab4-4004-b26a-4fa840039500
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/01/2016
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 601045a6048266cbd317f3a8ff328caa7edf877f
-ms.openlocfilehash: a7b17961ea23c109dc840192fa3f7cea1d88326e
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: c4e1ecc824b09fd7523cdc7a29559adca19488f3
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -44,7 +45,7 @@ Wenn keine Ressource vorhanden ist, erstellen Sie sie:
 
 ![Wählen Sie "Neu", "Entwicklerdienste", Application Insights.](./media/app-insights-javascript/01-create.png)
 
-*Schon Fragen?* [Weitere Informationen zum Erstellen einer Ressource](app-insights-create-new-resource.md)Abonnement.
+*Schon Fragen?* [Weitere Informationen zum Erstellen einer Ressource](app-insights-create-new-resource.md)-Abonnement.
 
 ### <a name="add-the-sdk-script-to-your-app-or-web-pages"></a>Hinzufügen des SDK-Skripts zu Ihrer App oder Ihren Webseiten
 Rufen Sie im Schnellstart das Skript für Webseiten ab:
@@ -97,7 +98,7 @@ Zu den [verfügbaren Parametern](https://github.com/Microsoft/ApplicationInsight
 
 
 
-## <a name="a-namerunarun-your-app"></a><a name="run"></a>Ausführen Ihrer App
+## <a name="run"></a>Ausführen Ihrer App
 Führen Sie die Web-App aus, verwenden Sie sie eine Weile, um Telemetrie zu generieren, und warten Sie einige Sekunden. Sie können sie entweder durch Drücken von **F5** auf dem Entwicklungscomputer ausführen, oder Sie können sie veröffentlichen und von Benutzern testen lassen.
 
 Wenn Sie die Telemetrie, die von einer Web-App an Application Insights gesendet wird, prüfen möchten, verwenden Sie dazu die Debugtools Ihres Browsers (**F12** bei vielen Browsern). Daten werden an "dc.services.visualstudio.com" gesendet.
@@ -107,7 +108,7 @@ Wenn Sie die Telemetrie, die von einer Web-App an Application Insights gesendet 
 
 ![Öffnen Sie unter „portal.azure.com“ die Ressource Ihrer App, und klicken Sie auf „Einstellungen“ > „Browser“.](./media/app-insights-javascript/03.png)
 
-*Noch keine Daten verfügbar? Klicken Sie am oberen Seitenrand auf **Aktualisieren**. Immer noch nichts? Informationen hierzu finden Sie unter [Problembehandlung](app-insights-troubleshoot-faq.md).*
+*Noch keine Daten verfügbar? Klicken Sie am oberen Seitenrand auf**Aktualisieren**. Immer noch nichts? Informationen hierzu finden Sie unter [Problembehandlung](app-insights-troubleshoot-faq.md).*
 
 Das Blatt „Browser“ ist ein [Metrik-Explorer-Blatt](app-insights-metrics-explorer.md) mit voreingestellter Filter- und Diagrammauswahl. Sie können bei Bedarf den Zeitbereich, die Filter und die Diagrammkonfiguration ändern und das Ergebnis als Favorit speichern. Klicken Sie auf **Standard wiederherstellen** , um zur ursprünglichen Blattkonfiguration zurückzukehren.
 
@@ -167,6 +168,7 @@ Klicken Sie auf eine beliebige Zeile, um besondere Details anzuzeigen.
 
 ![](./media/app-insights-javascript/37.png)
 
+
 Klicken Sie auf `...` , um die gesamten Telemetriedaten für einen Ajax-Aufruf anzuzeigen.
 
 ### <a name="no-ajax-calls-reported"></a>Es wurden keine Ajax-Aufrufe gemeldet?
@@ -180,6 +182,7 @@ Auf dem Blatt „Browser“ befindet sich ein Übersichtsdiagramm zu Ausnahmen u
 Falls keine gemeldeten Browserausnahmen angezeigt werden, sollten Sie sicherstellen, dass im Codeausschnitt der [Parameter](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config) `disableExceptionTracking` nicht festgelegt ist.
 
 ## <a name="inspect-individual-page-view-events"></a>Überprüfen einzelner Seitenaufruf-Ereignisse
+
 Normalerweise wird die Seitenaufruf-Telemetrie von Application Insights analysiert, und Sie erhalten nur kumulative Berichte, gemittelt über alle Benutzer. Sie können jedoch zu Debugging-Zwecken auch einzelne Seitenaufrufereignisse anzeigen.
 
 Legen Sie im Blatt "Diagnosesuche" als Filter die Einstellung "Seitenansicht" fest.
@@ -217,19 +220,16 @@ Möchten Sie herausfinden, wofür die Benutzer Ihre App verwenden?
 * [Weitere Informationen zur Nutzungsnachverfolgung](app-insights-web-track-usage.md)
 * [Informationen zur API für benutzerdefinierte Ereignisse und Metriken](app-insights-api-custom-events-metrics.md).
 
-#### <a name="a-namevideoa-video-tracking-usage"></a><a name="video"></a> Video: Nachverfolgen der Nutzung
-> [!VIDEO https://channel9.msdn.com/Series/Application-Insights-on-Azure-Preview-Portal/Tracking-Usage-with-Application-Insights/player]
-> 
-> 
+## <a name="video"></a> Video
 
-## <a name="a-namenexta-next-steps"></a><a name="next"></a> Nächste Schritte
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
+
+
+
+## <a name="next"></a> Nächste Schritte
 * [Nutzung nachverfolgen](app-insights-web-track-usage.md)
 * [Benutzerdefinierte Ereignisse und Metriken](app-insights-api-custom-events-metrics.md)
 * [Erstellen-Messen-Lernen](app-insights-overview-usage.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

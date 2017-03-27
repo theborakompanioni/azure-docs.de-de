@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: ae28e4a009e7fbf40d8fc2f3c10d3dadc7407819
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 29cb2faa2e2d6cb9f45242794d88d3c8f881539d
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -81,7 +82,7 @@ Nachdem sie installiert wurden, können Sie mit dem Befehl "azure" auf die Tools
 Um per FTP auf die Diagnoseinformationen zuzugreifen, rufen Sie das [Azure-Portal](https://portal.azure.com)auf, wählen Sie Ihre Web-App aus, und wählen Sie dann **DASHBOARD**aus. Im Abschnitt **QuickLinks** bieten die Links **FTP-DIAGNOSEPROTOKOLLE** und **FTPS-DIAGNOSEPROTOKOLLE** per FTP Zugriff auf die Protokolldateien.
 
 > [!NOTE]
-> Wenn Sie noch keinen Benutzernamen und kein Kennwort für FTP oder die Bereitstellung konfiguriert haben, können Sie dies auf der **QuickStart**-Verwaltungsseite durchführen, indem Sie **Anmeldeinformationen für die Bereitstellung einrichten** auswählen.
+> Wenn Sie noch keinen Benutzernamen und kein Kennwort für FTP oder die Bereitstellung konfiguriert haben, können Sie dies auf der **Schnellstart**-Verwaltungsseite durchführen, indem Sie **Anmeldeinformationen für die Bereitstellung einrichten** auswählen.
 > 
 > 
 
@@ -131,15 +132,10 @@ Weitere Informationen finden Sie außerdem im [Node.js Developer Center](/develo
 
 [IISNode]: https://github.com/tjanczuk/iisnode
 [IISNode Readme]: https://github.com/tjanczuk/iisnode#readme (IIS Node-Infodatei)
-[How to Use The Azure Command-Line Interface]: ../xplat-cli-install.md
+[How to Use The Azure Command-Line Interface]:../cli-install-nodejs.md
 [Using Node.js Modules with Azure Applications]: ../nodejs-use-node-modules-azure-apps.md
 [Festlegen einer Node.js-Version in einer Azure-Anwendung]: ../nodejs-specify-node-version-azure-apps.md
 
 [restart-button]: ./media/web-sites-nodejs-debug/restartbutton.png
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

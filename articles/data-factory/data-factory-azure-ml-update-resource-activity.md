@@ -14,13 +14,26 @@ ms.topic: article
 ms.date: 02/16/2017
 ms.author: shlo
 translationtype: Human Translation
-ms.sourcegitcommit: ffe3e6c5f61f2debee70683990cf26ce094dc64b
-ms.openlocfilehash: c06b8d6010ca6ddf562df99dcb7bf61ad9648f07
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: f78c735ec9a0bb34921e2ce03a4b96478480bcd0
+ms.lasthandoff: 03/14/2017
 
 
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>Aktualisieren von Azure Machine Learning-Modellen mithilfe der Ressourcenaktualisierungsaktivität
+
+> [!div class="op_single_selector" title1="Transformation Activities"]
+> * [Hive-Aktivität](data-factory-hive-activity.md) 
+> * [Pig-Aktivität](data-factory-pig-activity.md)
+> * [MapReduce-Aktivität](data-factory-map-reduce.md)
+> * [Hadoop-Streamingaktivität](data-factory-hadoop-streaming-activity.md)
+> * [Spark-Aktivität](data-factory-spark.md)
+> * [Machine Learning-Batchausführungsaktivität](data-factory-azure-ml-batch-execution-activity.md)
+> * [Machine Learning-Ressourcenaktualisierungsaktivität](data-factory-azure-ml-update-resource-activity.md)
+> * [Aktivität „Gespeicherte Prozedur“](data-factory-stored-proc-activity.md)
+> * [U-SQL-Aktivität für Data Lake Analytics](data-factory-usql-activity.md)
+> * [Benutzerdefinierte .NET-Aktivität](data-factory-use-custom-activities.md)
+
 Dieser Artikel stellt eine Ergänzung zum Hauptartikel zur Integration von Azure Data Factory und Azure Machine Learning dar: [Erstellen von Vorhersagepipelines mithilfe von Azure Machine Learning und Azure Data Factory](data-factory-azure-ml-batch-execution-activity.md). Wenn Sie dies noch nicht getan haben, lesen Sie zunächst den Hauptartikel, bevor Sie diesen Artikel lesen. 
 
 ## <a name="overview"></a>Übersicht

@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/03/2017
+ms.date: 03/20/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: ef1e790edc4cd329245331bf1178ed1f610e914c
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: c43648dae95d90d0ee9f3d6b5bedfad7ab4889ca
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -32,6 +32,7 @@ Dieser Artikel zeigt, wie Sie einen Kubernetes-Cluster in Azure Container Servic
 
 > [!NOTE]
 > Die Unterstützung für Windows-Container mit Kubernetes in Azure Container Service befindet sich in der Vorschauphase. Verwenden Sie das Azure-Portal oder eine Resource Manager-Vorlage, um einen Kubernetes-Cluster mit Windows-Knoten zu erstellen. Diese Funktion wird für Azure CLI 2.0 derzeit nicht unterstützt.
+>
 
 
 
@@ -81,13 +82,13 @@ Nach dem Erstellen des Clusters und dem Herstellen der Verbindung mit `kubectl` 
 
 1. Geben Sie `kubectl get nodes` ein, um eine Liste mit Ihren Knoten anzuzeigen. Geben Sie Folgendes ein, wenn Sie alle Details der Knoten anzeigen möchten:  
 
-  ```
-  kubectl get nodes -o yaml
-  ```
+    ```
+    kubectl get nodes -o yaml
+    ```
 
 2. Erstellen Sie eine Datei mit dem Namen `simpleweb.yaml`, und kopieren Sie Folgendes: Mit dieser Datei wird eine Web-App mit dem Windows Server 2016 Server Core-Betriebssystem-Basisimage von [Docker Hub](https://hub.docker.com/r/microsoft/windowsservercore/) eingerichtet.  
 
-  ```yaml
+```yaml
   apiVersion: v1
   kind: Service
   metadata:
@@ -123,40 +124,44 @@ Nach dem Erstellen des Clusters und dem Herstellen der Verbindung mit `kubectl` 
           command:
           - powershell.exe
           - -command
-          - "<#code used from https://gist.github.com/wagnerandrade/5424431#> ; $$ip = (Get-NetIPAddress | where {$$_.IPAddress -Like '*.*.*.*'})[0].IPAddress ; $$url = 'http://'+$$ip+':80/' ; $$listener = New-Object System.Net.HttpListener ; $$listener.Prefixes.Add($$url) ; $$listener.Start() ; $$callerCounts = @{} ; Write-Host('Listening at {0}...' -f $$url) ; while ($$listener.IsListening) { ;$$context = $$listener.GetContext() ;$$requestUrl = $$context.Request.Url ;$$clientIP = $$context.Request.RemoteEndPoint.Address ;$$response = $$context.Response ;Write-Host '' ;Write-Host('> {0}' -f $$requestUrl) ;  ;$$count = 1 ;$$k=$$callerCounts.Get_Item($$clientIP) ;if ($$k -ne $$null) { $$count += $$k } ;$$callerCounts.Set_Item($$clientIP, $$count) ;$$header='<html><body><H1>Windows Container Web Server</H1>' ;$$callerCountsString='' ;$$callerCounts.Keys | % { $$callerCountsString+='<p>IP {0} callerCount {1} ' -f $$_,$$callerCounts.Item($$_) } ;$$footer='</body></html>' ;$$content='{0}{1}{2}' -f $$header,$$callerCountsString,$$footer ;Write-Output $$content ;$$buffer = [System.Text.Encoding]::UTF8.GetBytes($$content) ;$$response.ContentLength64 = $$buffer.Length ;$$response.OutputStream.Write($$buffer, 0, $$buffer.Length) ;$$response.Close() ;$$responseStatus = $$response.StatusCode ;Write-Host('< {0}' -f $$responseStatus)  } ; "
+          - "<#code used from https://gist.github.com/wagnerandrade/5424431#> ; $$listener = New-Object System.Net.HttpListener ; $$listener.Prefixes.Add('http://*:80/') ; $$listener.Start() ; $$callerCounts = @{} ; Write-Host('Listening at http://*:80/') ; while ($$listener.IsListening) { ;$$context = $$listener.GetContext() ;$$requestUrl = $$context.Request.Url ;$$clientIP = $$context.Request.RemoteEndPoint.Address ;$$response = $$context.Response ;Write-Host '' ;Write-Host('> {0}' -f $$requestUrl) ;  ;$$count = 1 ;$$k=$$callerCounts.Get_Item($$clientIP) ;if ($$k -ne $$null) { $$count += $$k } ;$$callerCounts.Set_Item($$clientIP, $$count) ;$$header='<html><body><H1>Windows Container Web Server</H1>' ;$$callerCountsString='' ;$$callerCounts.Keys | % { $$callerCountsString+='<p>IP {0} callerCount {1} ' -f $$_,$$callerCounts.Item($$_) } ;$$footer='</body></html>' ;$$content='{0}{1}{2}' -f $$header,$$callerCountsString,$$footer ;Write-Output $$content ;$$buffer = [System.Text.Encoding]::UTF8.GetBytes($$content) ;$$response.ContentLength64 = $$buffer.Length ;$$response.OutputStream.Write($$buffer, 0, $$buffer.Length) ;$$response.Close() ;$$responseStatus = $$response.StatusCode ;Write-Host('< {0}' -f $$responseStatus)  } ; "
         nodeSelector:
           beta.kubernetes.io/os: windows
   ```
 
-3. Geben Sie Folgendes ein, um die Anwendung zu starten:
+      
+> [!NOTE] 
+> Die Konfiguration enthält `type: LoadBalancer`. Diese Einstellung bewirkt, dass der Dienst über einen Azure Load Balancer (Lastenausgleich) für den Zugriff über das Internet verfügbar gemacht wird. Weitere Informationen finden Sie unter [Lastenausgleich für Container in einem Kubernetes-Cluster in Azure Container Service](container-service-kubernetes-load-balancing.md).
+>
 
-  ```
-  kubectl apply -f simpleweb.yaml
-  ```
+## <a name="start-the-application"></a>Starten der Anwendung
+
+1. Geben Sie Folgendes ein, um die Anwendung zu starten:  
+
+    ```
+    kubectl apply -f simpleweb.yaml
+    ```  
   
-  > [!NOTE] 
-  > Die Konfiguration enthält `type: LoadBalancer`. Diese Einstellung bewirkt, dass der Dienst über einen Azure Load Balancer (Lastenausgleich) für den Zugriff über das Internet verfügbar gemacht wird. Weitere Informationen finden Sie unter [Lastenausgleich für Container in einem Kubernetes-Cluster in Azure Container Service](container-service-kubernetes-load-balancing.md).
   
-4. Geben Sie Folgendes ein, um die Bereitstellung des Diensts (Dauer ca. 30 Sekunden) zu überprüfen:
+2. Geben Sie Folgendes ein, um die Bereitstellung des Diensts (Dauer ca. 30 Sekunden) zu überprüfen:  
 
-  ```
-  kubectl get pods
-  ```
+    ```
+    kubectl get pods
+    ```
 
-5. Geben Sie Folgendes ein, um bei ausgeführtem Dienst die internen und externen IP-Adressen anzuzeigen:
+3. Geben Sie Folgendes ein, um bei ausgeführtem Dienst die internen und externen IP-Adressen anzuzeigen:
 
-  ```
-  kubectl get svc
-  ``` 
+    ```
+    kubectl get svc
+    ``` 
+  
+    ![IP-Adressen des Windows-Diensts](media/container-service-kubernetes-windows-walkthrough/externalipa.png)
 
-  ![IP-Adressen des Windows-Diensts](media/container-service-kubernetes-windows-walkthrough/externalipa.png)
+    Das Hinzufügen der externen IP-Adresse dauert mehrere Minuten. Bevor die externe Adresse vom Lastenausgleich konfiguriert wird, wird dafür `<pending>` angezeigt.
 
-  Das Hinzufügen der externen IP-Adresse dauert mehrere Minuten. Bevor die externe Adresse vom Lastenausgleich konfiguriert wird, wird dafür `<pending>` angezeigt.
+4. Wenn die externe IP-Adresse verfügbar ist, ist der Dienst über Ihren Webbrowser erreichbar.
 
-
-6. Wenn die externe IP-Adresse verfügbar ist, ist der Dienst über Ihren Webbrowser erreichbar.
-
-  ![Windows-Server-App im Browser](media/container-service-kubernetes-windows-walkthrough/wincontainerwebserver.png)
+    ![Windows-Server-App im Browser](media/container-service-kubernetes-windows-walkthrough/wincontainerwebserver.png)
 
 
 ## <a name="access-the-windows-nodes"></a>Zugreifen auf die Windows-Knoten
@@ -170,37 +175,31 @@ Es gibt mehrere Möglichkeiten, wie Sie SSH-Tunnel unter Windows erstellen könn
 
 3. Geben Sie einen Hostnamen ein, der aus dem Administratorbenutzernamen für den Cluster und dem öffentlichen DNS-Namen für den ersten Master im Cluster besteht. Der **Hostname** hat das Format `adminuser@PublicDNSName`. Geben Sie 22 als **Port** ein.
 
-    ![PuTTY-Konfiguration 1](media/container-service-kubernetes-windows-walkthrough/putty1.png)
+  ![PuTTY-Konfiguration 1](media/container-service-kubernetes-windows-walkthrough/putty1.png)
 
 4. Wählen Sie **SSH > Auth**. Fügen Sie der Datei mit dem privaten Schlüssel (PPK-Format) für die Authentifizierung einen Pfad hinzu. Sie können ein Tool wie [PuTTYgen](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) nutzen, um diese Datei aus dem SSH-Schlüssel zu generieren, der zum Erstellen des Clusters verwendet wurde.
 
-    ![PuTTY-Konfiguration 2](media/container-service-kubernetes-windows-walkthrough/putty2.png)
+  ![PuTTY-Konfiguration 2](media/container-service-kubernetes-windows-walkthrough/putty2.png)
 
 5. Wählen Sie **SSH > Tunnel**, und konfigurieren Sie die weitergeleiteten Ports. Da für Ihren lokalen Windows-Computer bereits Port 3389 verwendet wird, wird die Verwendung der folgenden Einstellungen empfohlen, um Windows-Knoten 0 und Windows-Knoten 1 zu erreichen. (Behalten Sie dieses Muster für weitere Windows-Knoten bei.)
 
-  **Windows-Knoten 0**
+    **Windows-Knoten 0**
 
-  * **Quellport:** 3390
-  * **Ziel:** 10.240.245.5:3389
+    * **Quellport:** 3390
+    * **Ziel:** 10.240.245.5:3389
 
-  **Windows-Knoten 1**
+    **Windows-Knoten 1**
 
-  * **Quellport:** 3391
-  * **Ziel:** 10.240.245.6:3389
+    * **Quellport:** 3391
+    * **Ziel:** 10.240.245.6:3389
 
-  ![Image von Windows-RDP-Tunneln](media/container-service-kubernetes-windows-walkthrough/rdptunnels.png)
+    ![Image von Windows-RDP-Tunneln](media/container-service-kubernetes-windows-walkthrough/rdptunnels.png)
 
 6. Klicken Sie nach Abschluss der Schritte auf **Sitzung > Speichern**, um die Verbindungskonfiguration zu speichern.
 
 7. Klicken Sie zum Herstellen der Verbindung mit der PuTTY-Sitzung auf **Öffnen**. Stellen Sie die Verbindung mit dem Masterknoten her.
 
 8. Starten Sie die Remotedesktopverbindung. Geben Sie zum Herstellen der Verbindung mit dem ersten Windows-Knoten für **Computer** die Daten `localhost:3390` an, und klicken Sie auf **Verbinden**. (Geben Sie zum Herstellen der Verbindung mit dem zweiten Knoten `localhost:3390` an usw.) Geben Sie als Abschluss für Ihre Verbindung das Kennwort des lokalen Windows-Administrators ein, das Sie während der Bereitstellung konfiguriert haben.
-
-
-
-
-
-
 
 
 ## <a name="next-steps"></a>Nächste Schritte

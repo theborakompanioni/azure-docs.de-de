@@ -1,5 +1,5 @@
 ---
-title: "Ressourcen zu .NET-API und SDK – Azure DocumentDB | Microsoft-Dokumentation"
+title: Azure DocumentDB .NET-SDK und -Ressourcen | Microsoft-Dokumentation
 description: "Wichtige Informationen zu .NET-API und -SDK einschließlich Veröffentlichungstermine, Deaktivierungstermine und Änderungen an den einzelnen Versionen des DocumentDB-.NET-SDK."
 services: documentdb
 documentationcenter: .net
@@ -12,16 +12,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 03/14/2017
 ms.author: rnagpal
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: e37416268802b849f6be350a8d7e0e6b284e830b
-ms.openlocfilehash: c92a54c40c329e519832f2f8de71aa5d8e15a090
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 2de833df26de9a9e160dd0cfcc1589eb0ebb7d34
+ms.lasthandoff: 03/15/2017
 
 
 ---
-# <a name="documentdb-apis-and-sdks"></a>DocumentDB-APIs und -SDKs
+# <a name="documentdb-net-sdk-download-and-release-notes"></a>DocumentDB .NET SDK: Download und Anmerkungen zur Version
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-sdk-dotnet.md)
 > * [.NET Core](documentdb-sdk-dotnet-core.md)
@@ -34,7 +35,6 @@ ms.lasthandoff: 02/22/2017
 > 
 > 
 
-## <a name="documentdb-net-api-and-sdk"></a>DocumentDB – .NET-API und -SDK
 <table>
 
 <tr><td>**SDK-Download**</td><td>[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)</td></tr>
@@ -51,6 +51,12 @@ ms.lasthandoff: 02/22/2017
 </table></br>
 
 ## <a name="release-notes"></a>Versionshinweise
+
+### <a name="a-name11211121httpswwwnugetorgpackagesmicrosoftazuredocumentdb1121"></a><a name="1.12.1"/>[1.12.1](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.12.1)
+* LINQ-Unterstützung für Aggregationsabfragen (COUNT, MIN, MAX, SUM und AVG) wurde hinzugefügt.
+* Behebung eines Problems mit einem Arbeitsspeicherverlust für das ConnectionPolicy-Objekt, das durch die Verwendung des Ereignishandlers verursacht wurde.
+* Behebung eines Problems, bei dem UpsertAttachmentAsync nicht funktionierte, wenn ETag verwendet wurde.
+* Behebung eines Problems, bei dem die partitionsübergreifende Fortsetzung einer order-by-Abfrage nicht funktionierte, wenn ein Zeichenfolgenfeld sortiert wurde.
 
 ### <a name="a-name11201120httpswwwnugetorgpackagesmicrosoftazuredocumentdb1120"></a><a name="1.12.0"/>[1.12.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.12.0)
 * Unterstützung für Aggregationsabfragen (COUNT, MIN, MAX, SUM und AVG) wurde hinzugefügt. Siehe [Aggregationsunterstützung](documentdb-sql-query.md#Aggregates).
@@ -206,6 +212,7 @@ Anforderungen von DocumentDB mithilfe eines deaktivierten SDK werden vom Dienst 
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [1.12.1](#1.12.1) |14. März 2017 |--- |
 | [1.12.0](#1.12.0) |15. Februar 2017 |--- |
 | [1.11.4](#1.11.4) |6. Februar 2017 |--- |
 | [1.11.3](#1.11.3) |26. Januar 2017 |--- |

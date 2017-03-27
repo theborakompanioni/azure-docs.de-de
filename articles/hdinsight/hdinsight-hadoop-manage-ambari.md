@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 4787f3cc-a650-4dc3-9d96-a19a67aad046
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -30,7 +31,7 @@ Apache Ambari vereinfacht die Verwaltung und Überwachung von Hadoop-Clustern du
 
 In diesem Dokument erfahren Sie, wie Sie die Webbenutzeroberfläche Ambari mit einem HDInsight-Cluster verwenden.
 
-## <a name="a-idwhatisawhat-is-ambari"></a><a id="whatis"></a>Was ist Ambari?
+## <a id="whatis"></a>Was ist Ambari?
 
 [Apache Ambari](http://ambari.apache.org) vereinfacht die Hadoop-Verwaltung durch die Bereitstellung einer benutzerfreundlichen Webbenutzeroberfläche, die zum Bereitstellen, Verwalten und Überwachen von Hadoop-Clustern verwendet werden kann. Entwickler können diese Funktionen mithilfe der [Ambari-REST-APIs](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)in ihre Anwendungen integrieren.
 
@@ -197,7 +198,7 @@ Die Seite **Hosts** listet alle Hosts im Cluster auf. Gehen Sie folgendermaßen 
      > [!NOTE]
      > Verwenden Sie diese Aktion nicht für HDInsight-Cluster.
 
-### <a name="a-idserviceaservices"></a><a id="service"></a>Dienste
+### <a id="service"></a>Dienste
 
 Verwenden Sie auf der Seite **Dashboard** oder **Dienste** am Ende der Dienstliste die Schaltfläche **Aktionen**, um alle Dienste zu beenden und zu starten.
 

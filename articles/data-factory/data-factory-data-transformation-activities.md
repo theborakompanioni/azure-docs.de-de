@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 01/25/2017
 ms.author: shlo
 translationtype: Human Translation
-ms.sourcegitcommit: a4121f8857fa9eaeb1cf1bca70e29666f6a04f63
-ms.openlocfilehash: 2714bfbf2bf35b11ca1ba6ab8b7e4e6bf5431f45
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 36c245b98868682c24a87bba6628de492e620012
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -51,10 +52,11 @@ Die HDInsight Pig-Aktivität in einer Data Factory-Pipeline wendet Pig-Abfragen 
 ## <a name="hdinsight-mapreduce-activity"></a>HDInsight MapReduce-Aktivität
 Die HDInsight MapReduce-Aktivität in einer Data Factory-Pipeline wendet MapReduce-Programme auf Ihren eigenen oder bedarfsgesteuerten Windows-/Linux-basierten HDInsight-Cluster an. Im Artikel [MapReduce-Aktivität](data-factory-map-reduce.md) finden Sie Details zu dieser Aktivität.
 
-Sie können die MapReduce-Aktivität verwenden, um Spark-Programme in Ihrem HDInsight Spark-Cluster auszuführen. Weitere Informationen finden Sie unter [Invoke Spark programs from Azure Data Factory](data-factory-spark.md) (Aufrufen von Spark-Programmen aus Azure Data Factory).
-
 ## <a name="hdinsight-streaming-activity"></a>HDInsight-Streamingaktivität
 Die HDInsight-Streamingaktivität in einer Data Factory-Pipeline wendet Hadoop-Streamingprogramme auf Ihren eigenen oder bedarfsgesteuerten Windows-/Linux-basierten HDInsight-Cluster an. Unter [HDInsight-Streamingaktivität](data-factory-hadoop-streaming-activity.md) finden Sie ausführliche Informationen zu dieser Aktivität.
+
+## <a name="hdinsight-spark-activity"></a>HDInsight Spark-Aktivität
+Die HDInsight Spark-Aktivität in einer Data Factory-Pipeline führt Spark-Programme in Ihrem eigenen HDInsight-Cluster aus. Weitere Informationen finden Sie unter [Aufrufen von Spark-Programmen aus Azure Data Factory](data-factory-spark.md). 
 
 ## <a name="machine-learning-activities"></a>Machine Learning-Aktivitäten
 Azure Data Factory ermöglicht die einfache Erstellung von Pipelines, die einen veröffentlichten Azure Machine Learning-Webdienst für Predictive Analytics nutzen. Mithilfe der [Batchausführungsaktivität](data-factory-azure-ml-batch-execution-activity.md#invoking-a-web-service-using-batch-execution-activity) in einer Azure Data Factory-Pipeline können Sie einen Machine Learning-Webdienst aufrufen, um Vorhersagen zu den Daten im Batch zu machen.
@@ -95,10 +97,5 @@ Azure Data Factory unterstützt für die Aktivitäten die folgenden Datentransfo
 | [Gespeicherte Prozedur](data-factory-stored-proc-activity.md) |Azure SQL, Azure SQL Data Warehouse oder SQL Server |
 | [Data Lake Analytics U-SQL](data-factory-usql-activity.md) |Azure Data Lake Analytics |
 | [DotNet](data-factory-use-custom-activities.md) |HDInsight [Hadoop] oder Azure Batch |
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

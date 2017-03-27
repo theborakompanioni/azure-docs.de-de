@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 01/17/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 71116ade676677c5b6d14b07a038d043fba46032
-ms.openlocfilehash: 02a1aae805aa36aa68f341197e44b19bc6236b7b
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 161d36f0bef4b3cd1ac1ad85d0844a3dd8e51e16
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -24,26 +25,26 @@ ms.openlocfilehash: 02a1aae805aa36aa68f341197e44b19bc6236b7b
 > [!div class="op_single_selector"]
 > * [Azure-Portal](active-directory-known-networks-azure-portal.md)
 > * [Klassisches Azure-Portal](active-directory-known-networks.md)
-> 
-> 
+>
+>
 
 
 Azure Active Directory erstellt einen Datensatz für jedes erkannte [Risikoereignis](active-directory-identity-protection-risk-events.md). Da die Informationen zu Risikoereignissen in den Azure Active Directory-Sicherheitsberichten verfügbar sind, erhalten Sie Einblicke in die Wahrscheinlichkeit für kompromittierte Benutzerkonten in Ihrer Umgebung.   
 
-Möglicherweise erkennt Azure Active Directory falsch positive Ergebnisse der [Risikoereignistypen](active-directory-identity-protection-risk-events.md#risk-event-types) *Unmöglicher Ortswechsel zu atypischen Orten* und *Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten* für IP-Adressen, die sich tatsächlich im Besitz Ihrer Organisation befinden. 
+Möglicherweise erkennt Azure Active Directory falsch positive Ergebnisse der [Risikoereignistypen](active-directory-reporting-risk-events.md#risk-event-types) *Unmöglicher Ortswechsel zu atypischen Orten* und *Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten* für IP-Adressen, die sich tatsächlich im Besitz Ihrer Organisation befinden. 
 
-Dies kann in folgenden Fällen geschehen: 
+Dies kann in folgenden Fällen geschehen:
 
-- Ein Benutzer in der Niederlassung in Boston hat sich per Remoteverbindung beim Rechenzentrum in San Francisco angemeldet. Dadurch wird das Risikoereignis *Anmeldungen aus mehreren geografischen Regionen* generiert. 
+- Ein Benutzer in der Niederlassung in Boston hat sich per Remoteverbindung beim Rechenzentrum in San Francisco angemeldet. Dadurch wird das Risikoereignis *Anmeldungen aus mehreren geografischen Regionen* generiert.
 
-- Ein Benutzer Ihrer Organisation versucht mehrere Male, sich mit einem falschen Kennwort anzumelden. Dadurch wird das Risikoereignis *Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten* generiert. 
+- Ein Benutzer Ihrer Organisation versucht mehrere Male, sich mit einem falschen Kennwort anzumelden. Dadurch wird das Risikoereignis *Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten* generiert.
 
 Damit in diesen Fällen keine irreführenden Risikoereignisse generiert werden, wird empfohlen, der Liste der öffentlichen IP-Adressen Ihres Unternehmens benannte IP-Adressbereiche hinzuzufügen.    
 
 ### <a name="to-add-your-organizations-public-ip-address-ranges-perform-the-following-steps"></a>Führen Sie zum Hinzufügen der öffentlichen IP-Adressbereiche Ihrer Organisation die folgenden Schritte aus:
 
 1. Melden Sie sich beim Azure-Verwaltungsportal an.
- 
+
 2. Klicken Sie im linken Bereich auf **Active Directory**.
 
     ![Bekannte Netzwerke](./media/active-directory-known-networks-azure-portal/01.png)
@@ -73,10 +74,4 @@ Damit in diesen Fällen keine irreführenden Risikoereignisse generiert werden, 
 * [Anzeigen Ihrer Zugriffs- und Nutzungsberichte](active-directory-view-access-usage-reports.md)
 * [Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten](active-directory-reporting-sign-ins-from-ip-addresses-with-suspicious-activity.md)
 * [Anmeldungen aus mehreren geografischen Regionen](active-directory-reporting-sign-ins-from-multiple-geographies.md)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 translationtype: Human Translation
-ms.sourcegitcommit: 57d00f2192fed7a2e89ac94e110ebb7e84c83b72
-ms.openlocfilehash: 26085360a1f2a2ffda3789c654bc7212f2e652f3
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 7c6ca3789e9a5dcde799d9ef40b58bd2f3c8966c
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -98,7 +99,7 @@ class Program
 > 
 
 ## <a name="other-methods"></a>Andere Methoden
-* [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md)
+* [Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md)
   
     Legen Sie beim Hochladen von Blobs die Eigenschaft *cacheControl* mit dem Switch `-p` fest.  In diesem Beispiel wird die Gültigkeitsdauer auf eine Stunde (3.600 Sekunden) festgesetzt.
   
@@ -118,10 +119,5 @@ Sie können die Gültigkeitsdauer Ihrer Blobs einfach überprüfen.  Mithilfe de
 ## <a name="next-steps"></a>Nächste Schritte
 * [Weitere Informationen zum *Cache-Control*-Header](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)
 * [Erfahren Sie, wie Sie den Ablauf von Clouddienstinhalten in Azure CDN verwalten können.](cdn-manage-expiration-of-cloud-service-content.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

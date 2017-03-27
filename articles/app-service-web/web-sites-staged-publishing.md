@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
-ms.openlocfilehash: 10b1998789feafaf0c28155bc8a96a28ff78cf02
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 51aabf4938714c597ae0cfb2ec524f326b6e355a
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -233,7 +233,7 @@ Remove-AzureRmResource -ResourceGroupName [resource group name] -ResourceType Mi
 ## <a name="azure-command-line-interface-azure-cli-commands-for-deployment-slots"></a>Befehle der Azure-Befehlszeilenschnittstelle (Azure-CLI) für Bereitstellungsslots
 Die Azure CLI bietet plattformübergreifende Befehle für das Arbeiten mit Azure, einschließlich Unterstützung der Verwaltung von App Service-Bereitstellungsslots.
 
-* Anweisungen zur Installation und Konfiguration der Azure-Befehlszeilenschnittstelle, einschließlich Informationen zur Verbindung der Azure-Befehlszeilenschnittstelle mit Ihrem Azure-Abonnement, finden Sie unter [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md).
+* Anweisungen zur Installation und Konfiguration der Azure-Befehlszeilenschnittstelle, einschließlich Informationen zur Verbindung der Azure-Befehlszeilenschnittstelle mit Ihrem Azure-Abonnement, finden Sie unter [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md).
 * Um eine Liste der verfügbaren Befehle für Azure App Service in der Azure-Befehlszeilenschnittstelle zu erhalten, rufen Sie `azure site -h`auf.
 
 > [!NOTE] 

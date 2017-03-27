@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: d6174c08-06aa-42ac-8e9b-8b8718d9978e
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -18,6 +19,7 @@ ms.author: rashimg
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 5054865a4321bb5d2c188e485b033b16f49cb525
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -199,7 +201,7 @@ Es gibt noch weitere Optimierungsmethoden, die durchaus erwägenswert sind, zum 
 * **Join-Optimierung**: Optimierung des Hive-Abfrageausführungsplans zur Steigerung der Effizienz von Joins. Außerdem sollen dadurch Benutzerhinweise weitgehend unnötig werden. Weitere Informationen finden Sie unter [Join-Optimierung](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+JoinOptimization#LanguageManualJoinOptimization-JoinOptimization).
 * **Reducer erhöhen**
 
-## <a name="a-idnextstepsa-next-steps"></a><a id="nextsteps"></a> Nächste Schritte
+## <a id="nextsteps"></a> Nächste Schritte
 In diesem Artikel haben Sie mehrere allgemeine Hive-Methoden zur Optimierung von Abfragen kennengelernt. Weitere Informationen finden Sie in den folgenden Artikeln:
 
 * [Verwenden von Apache Hive in HDInsight](hdinsight-use-hive.md)
@@ -212,9 +214,4 @@ In diesem Artikel haben Sie mehrere allgemeine Hive-Methoden zur Optimierung von
 [image-hdi-optimize-hive-scaleout_2]: ./media/hdinsight-hadoop-optimize-hive-query/scaleout_2.png
 [image-hdi-optimize-hive-tez_1]: ./media/hdinsight-hadoop-optimize-hive-query/tez_1.png
 [image-hdi-optimize-hive-partitioning_1]: ./media/hdinsight-hadoop-optimize-hive-query/partitioning_1.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

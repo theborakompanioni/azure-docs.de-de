@@ -13,12 +13,12 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2017
+ms.date: 03/07/2017
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: debdb8a16c8cfd6a137bd2a7c3b82cfdbedb0d8c
-ms.openlocfilehash: 9f3923092e0731b6bc75e9f28d152b1f50ca0848
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: ea363667db5a4ef0dd6c3f06a13f3f8f6c192714
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -31,10 +31,10 @@ Es sind viele [Vorlagen im Katalog](https://azure.microsoft.com/documentation/te
 
 Dieses Beispiel zeigt einen typischen Ressourcenabschnitt einer Vorlage zum Erstellen einer angegebenen Anzahl von VMs:
 
-```
+```json
 "resources": [
   { 
-    "apiVersion": "2016-03-30", 
+    "apiVersion": "2016-04-30-preview", 
     "type": "Microsoft.Compute/virtualMachines", 
     "name": "[concat('myVM', copyindex())]", 
     "location": "[resourceGroup().location]",
@@ -63,10 +63,6 @@ Dieses Beispiel zeigt einen typischen Ressourcenabschnitt einer Vorlage zum Erst
         }, 
         "osDisk": { 
           "name": "[concat('myOSDisk', copyindex())]" 
-          "vhd": { 
-            "uri": "[concat('https://', variables('storageName'), 
-              '.blob.core.windows.net/vhds/myOSDisk', copyindex(),'.vhd')]" 
-          }, 
           "caching": "ReadWrite", 
           "createOption": "FromImage" 
         }
@@ -75,10 +71,6 @@ Dieses Beispiel zeigt einen typischen Ressourcenabschnitt einer Vorlage zum Erst
             "name": "[concat('myDataDisk', copyindex())]",
             "diskSizeGB": "100",
             "lun": 0,
-            "vhd": {
-              "uri": "[concat('https://', variables('storageName'), 
-                '.blob.core.windows.net/vhds/myDataDisk', copyindex(),'.vhd')]"
-            },  
             "createOption": "Empty"
           }
         ] 
@@ -165,7 +157,7 @@ Dieses Beispiel zeigt einen typischen Ressourcenabschnitt einer Vorlage zum Erst
 Beim Bereitstellen von Ressourcen mit einer Vorlage müssen Sie eine Version der API angeben, die verwendet werden soll. Im Beispiel wird veranschaulicht, wie die Ressource des virtuellen Computers dieses apiVersion-Element verwendet:
 
 ```
-"apiVersion": "2016-03-30",
+"apiVersion": "2016-04-30-preview",
 ```
 
 Die Version der API, die Sie in Ihrer Vorlage angeben, wirkt sich darauf aus, welche Eigenschaften Sie in der Vorlage definieren können. Im Allgemeinen sollten Sie beim Erstellen von Vorlagen die neueste Version der API wählen. Für vorhandene Vorlagen können Sie entscheiden, ob Sie weiterhin eine frühere Version der API verwenden oder die Vorlage für die aktuelle Version aktualisieren möchten, um die neuen Features zu nutzen.
@@ -236,15 +228,20 @@ Wenn Sie mehr als einen virtuellen Computer für Ihre Anwendung benötigen, kön
 },
 ```
 
-Achten Sie im Beispiel auch darauf, dass der Schleifenindex verwendet wird, wenn einige Werte für die Ressource angegeben werden. Wenn Sie beispielsweise eine Instanzanzahl von&3; angegeben haben, führt die Definition für vhd zu Datenträgern mit dem Namen „myOSDisk1“, „myOSDisk2“ und „myOSDisk3“:
+Achten Sie im Beispiel auch darauf, dass der Schleifenindex verwendet wird, wenn einige Werte für die Ressource angegeben werden. Wenn Sie beispielsweise eine Instanzanzahl von&3; angegeben haben, lauten die Namen der Betriebssystem-Datenträger myOSDisk1, myOSDisk2 und myOSDisk3:
 
 ```
-"vhd": { 
-  "uri": "[concat('https://', variables('storageName'), 
-    '.blob.core.windows.net/vhds/myOSDisk', 
-    copyindex(),'.vhd')]" 
-},
+"osDisk": { 
+  "name": "[concat('myOSDisk', copyindex())]" 
+  "caching": "ReadWrite", 
+  "createOption": "FromImage" 
+}
 ```
+
+> [!NOTE] 
+>In diesem Beispiel werden verwaltete Datenträger für die virtuellen Computer verwendet.
+>
+>
 
 Beachten Sie, dass die Erstellung einer Schleife für eine Ressource in der Vorlage bedeuten kann, dass Sie die Schleife auch verwenden müssen, wenn Sie andere Ressourcen erstellen oder darauf zugreifen. Für mehrere VMs kann beispielsweise nicht dieselbe Netzwerkschnittstelle verwendet werden. Wenn Ihre Vorlage also eine Schleife zur Erstellung von drei VMs durchläuft, muss auch eine Schleife zum Erstellen von drei Netzwerkschnittstellen durchlaufen werden. Beim Zuweisen einer Netzwerkschnittstelle zu einer VM wird der Schleifenindex für die Identifizierung genutzt:
 
@@ -278,23 +275,7 @@ Woran ist erkennbar, dass eine Abhängigkeit erforderlich ist? Sehen Sie sich di
 }
 ```
 
-Zum Festlegen dieser Eigenschaft muss die Netzwerkschnittstelle vorhanden sein. Aus diesem Grund benötigen Sie eine Abhängigkeit. Außerdem müssen Sie eine Abhängigkeit festlegen, wenn eine Ressource (untergeordnetes Element) in einer anderen Ressource (übergeordnetes Element) definiert wird. Beispielsweise sind die Diagnoseeinstellungen und benutzerdefinierten Skripterweiterungen jeweils als untergeordnete Ressourcen des virtuellen Computers definiert. Sie können erst erstellt werden, wenn der virtuelle Computer vorhanden ist. Aus diesem Grund sind beide Ressourcen als abhängig vom virtuellen Computer gekennzeichnet. 
-
-Vielleicht fragen Sie sich, warum die VM-Ressource keine Abhängigkeit vom Speicherkonto aufweist. Der virtuelle Computer enthält Elemente, die auf das Speicherkonto zeigen.
-
-```
-"osDisk": { 
-  "name": "[concat('myOSDisk', copyindex())]" 
-  "vhd": { 
-    "uri": "[concat('https://', variables('storageName'), 
-      '.blob.core.windows.net/vhds/myOSDisk', copyindex(),'.vhd')]" 
-  }, 
-  "caching": "ReadWrite", 
-  "createOption": "FromImage" 
-}
-```
-
-In diesem Fall nehmen wir an, dass das Speicherkonto bereits vorhanden ist. Wenn das Speicherkonto in derselben Vorlage bereitgestellt wird, müssen Sie für das Speicherkonto eine Abhängigkeit festlegen.
+Zum Festlegen dieser Eigenschaft muss die Netzwerkschnittstelle vorhanden sein. Aus diesem Grund benötigen Sie eine Abhängigkeit. Außerdem müssen Sie eine Abhängigkeit festlegen, wenn eine Ressource (untergeordnetes Element) in einer anderen Ressource (übergeordnetes Element) definiert wird. Beispielsweise sind die Diagnoseeinstellungen und benutzerdefinierten Skripterweiterungen jeweils als untergeordnete Ressourcen des virtuellen Computers definiert. Sie können erst erstellt werden, wenn der virtuelle Computer vorhanden ist. Aus diesem Grund sind beide Ressourcen als abhängig vom virtuellen Computer gekennzeichnet.
 
 ## <a name="profiles"></a>Profile
 
@@ -334,83 +315,64 @@ Sie können diese Definition verwenden, wenn Sie ein Linux-Betriebssystem erstel
 },
 ```
 
-Konfigurationseinstellungen für den Datenträger werden dem osDisk-Element zugewiesen. Im Beispiel werden der Speicherort der Datenträger im Speicher, der Cachemodus der Datenträger und die Erstellung der Datenträger aus einem [Plattformimage](virtual-machines-windows-cli-ps-findimage.md) definiert:
+Konfigurationseinstellungen für den Betriebssystem-Datenträger werden mit dem osDisk-Element zugewiesen. Das Beispiel definiert einen neuen verwalteten Datenträger mit dem Zwischenspeicherungsmodus **ReadWrite** und der Einstellung, dass der Datenträger aus einem [Plattformimage](virtual-machines-windows-cli-ps-findimage.md) erstellt wird:
 
 ```
 "osDisk": { 
-  "name": "[concat('myOSDisk', copyindex())]" 
-  "vhd": { 
-    "uri": "[concat('https://', variables('storageName'), 
-      '.blob.core.windows.net/vhds/myOSDisk', copyindex(),'.vhd')]" 
-  }, 
+  "name": "[concat('myOSDisk', copyindex())]",
   "caching": "ReadWrite", 
   "createOption": "FromImage" 
 }
 ```
 
-### <a name="create-new-virtual-machines-from-existing-disks"></a>Erstellen neuer virtueller Computer aus vorhandenen Datenträgern
+### <a name="create-new-virtual-machines-from-existing-managed-disks"></a>Erstellen neuer virtueller Computer aus vorhandenen verwalteten Datenträgern
 
 Entfernen Sie zum Erstellen von virtuellen Computern von vorhandenen Datenträgern die Elemente „imageReference“ und „osProfile“, und definieren Sie diese Datenträgereinstellungen:
 
 ```
 "osDisk": { 
-  "name": "[concat('myOSDisk', copyindex())]", 
   "osType": "Windows",
-  "vhd": { 
-    "[concat('https://', variables('storageName'),
-      '.blob.core.windows.net/vhds/myOSDisk', copyindex(),'.vhd')]" 
+  "managedDisk": { 
+    "id": "[resourceId('Microsoft.Compute/disks', [concat('myOSDisk', copyindex())])]" 
   }, 
   "caching": "ReadWrite",
   "createOption": "Attach" 
 }
 ```
 
-In diesem Beispiel zeigt der URI auf vorhandene VHD-Dateien, und nicht auf einen Speicherort für neue Dateien. „createOption“ wird festgelegt, um die vorhandenen Datenträger anzufügen.
+### <a name="create-new-virtual-machines-from-a-managed-image"></a>Erstellen neuer virtueller Computer aus einem verwalteten Image
 
-### <a name="create-new-virtual-machines-from-a-custom-image"></a>Erstellen neuer virtueller Computer aus einem benutzerdefinierten Image
-
-Entfernen Sie zum Erstellen eines virtuellen Computers aus einem [benutzerdefinierten Image](virtual-machines-windows-upload-image.md) das imageReference-Element, und definieren Sie diese Datenträgereinstellungen:
+Ändern Sie zum Erstellen eines virtuellen Computers aus einem verwalteten Image das imageReference-Element, und definieren Sie diese Datenträgereinstellungen:
 
 ```
-"osDisk": { 
-  "name": "[concat('myOSDisk', copyindex())]",
-  "osType": "Windows", 
-  "vhd": { 
-    "uri": "[concat('https://', variables('storageName'), 
-      '.blob.core.windows.net/vhds/myOSDisk', copyindex(),'.vhd')]"
+"storageProfile": { 
+  "imageReference": {
+    "id": "[resourceId('Microsoft.Compute/images', 'myImage')]"
   },
-  "image": {
-    "uri": "[concat('https://', variables('storageName'), 
-      'blob.core.windows.net/images/myImage.vhd"
-  },
-  "caching": "ReadWrite", 
-  "createOption": "FromImage" 
+  "osDisk": { 
+    "name": "[concat('myOSDisk', copyindex())]",
+    "osType": "Windows",
+    "caching": "ReadWrite", 
+    "createOption": "FromImage" 
+  }
 }
 ```
 
-In diesem Beispiel zeigt der VHD-URI auf einen Speicherort, an dem die neuen Datenträger gespeichert werden, und der Image-URI zeigt auf das zu verwendende benutzerdefinierte Image.
-
 ### <a name="attach-data-disks"></a>Anfügen von Datenträgern für Daten
 
-Optional können Sie den VMs Datenträger für Daten hinzufügen. Die [Anzahl von Datenträgern](virtual-machines-windows-sizes.md) richtet sich nach der Größe des von Ihnen genutzten Betriebssystemdatenträgers. Wenn die Größe der VMs auf „Standard_DS1_v2“ festgelegt ist, können ihnen maximal zwei Datenträger für Daten hinzugefügt werden. Im Beispiel wird jeder VM ein Datenträger für Daten hinzugefügt:
+Optional können Sie den VMs Datenträger für Daten hinzufügen. Die [Anzahl von Datenträgern](virtual-machines-windows-sizes.md) richtet sich nach der Größe des von Ihnen genutzten Betriebssystemdatenträgers. Wenn die Größe der VMs auf „Standard_DS1_v2“ festgelegt ist, können ihnen maximal zwei Datenträger für Daten hinzugefügt werden. Im Beispiel wird jeder VM ein verwalteter Datenträger für Daten hinzugefügt:
 
 ```
 "dataDisks": [
   {
     "name": "[concat('myDataDisk', copyindex())]",
     "diskSizeGB": "100",
-    "lun": 0,
-    "vhd": {
-      "uri": "[concat('https://', variables('storageName'), 
-        '.blob.core.windows.net/vhds/myDataDisk', copyindex(),'.vhd')]"
-    },  
+    "lun": 0, 
     "caching": "ReadWrite",
     "createOption": "Empty"
   }
 ]
 ```
-
-Die VHD in diesem Beispiel ist eine neue Datei, die für den Datenträger erstellt wird. Sie können den URI auf eine vorhandene VHD und „createOption“ auf **Attach** festlegen.
 
 ## <a name="extensions"></a>Erweiterungen
 

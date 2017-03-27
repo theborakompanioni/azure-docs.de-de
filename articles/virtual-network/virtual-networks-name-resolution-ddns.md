@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/31/2016
+ms.date: 02/23/2017
 ms.author: garbrad
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: b4fffba6d95f4c9c30ab3a1ecd9dfeb7acd9119d
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -57,8 +58,8 @@ Sie können die vom DHCP-Client bereitgestellten Hooks verwenden, um den Hostnam
               nsupdate $nsupdatecmds
         fi
 
-        #done
-        exit 0;
+        
+        
 
 Sie können den Befehl *nsupdate* auch verwenden, um sichere Dynamic DNS-Updates durchzuführen. Wenn Sie beispielsweise einen Bind-DNS-Server nutzen, wird ein Schlüsselpaar aus öffentlichem und privatem Schlüssel [generiert](http://linux.yyz.us/nsupdate/).  Der DNS-Server wird mit dem öffentlichen Teil des Schlüssels [konfiguriert](http://linux.yyz.us/dns/ddns-server.html) , damit die Signatur der Anforderung überprüft werden kann. Sie müssen die Option *-k* verwenden, um das Schlüsselpaar für *nsupdate* bereitzustellen, damit die Dynamic DNS-Updateanforderung signiert werden kann.
 
@@ -67,10 +68,5 @@ Wenn Sie einen Windows-DNS-Server nutzen, können Sie die Kerberos-Authentifizie
 Bei Bedarf können Sie Ihren VMs ein Suffix für die DNS-Suche hinzufügen. Das DNS-Suffix wird in der Datei */etc/resolv.conf* angegeben. In den meisten Linux-Distributionen wird der Inhalt dieser Datei automatisch verwaltet. Daher lässt sie sich in der Regel nicht bearbeiten. Sie können das Suffix aber außer Kraft setzen, indem Sie den Befehl *supersede* des DHCP-Clients verwenden. Fügen Sie hierfür in */etc/dhcp/dhclient.conf* Folgendes hinzu:
 
         supersede domain-name <required-dns-suffix>;
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -15,6 +15,7 @@
 ### [Aktivieren des öffentlichen DC/OS-Zugriffs](container-service-enable-public-access.md)
 ### [Lastenausgleich für DC/OS-Container](container-service-load-balancing.md)
 ### [App-/benutzerspezifischer Orchestrator in DC/OS](container-service-application-specific-marathon.md)
+### [Hinzufügen einer Dateifreigabe](container-service-dcos-fileshare.md)
 ### Überwachen von DC/OS
 #### [Überwachen mit ELK](container-service-monitoring-elk.md)
 #### [Überwachen mit OMS](container-service-monitoring-oms.md)

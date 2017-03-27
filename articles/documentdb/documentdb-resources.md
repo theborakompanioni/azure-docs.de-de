@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2017
+ms.date: 03/14/2017
 ms.author: anhoh
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 456ff5cd0c91232ace87e02363f812a36cc38297
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 0c62fc01947e0f2e4b0e45d176d5af04c6250fa8
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -161,7 +161,7 @@ Eine DocumentDB-Datenbank ist ein logischer Container einer oder mehrerer Sammlu
 ![Hierarchisches Modell für Datenbankkonten und -sammlungen][2]  
 **Eine Datenbank ist ein logischer Container von Benutzern und Sammlungen**
 
-Eine Datenbank kann praktisch unbegrenzten Dokumentspeicher enthalten, der in Sammlungen unterteilt ist, die die Transaktionsdomänen für die darin enthaltenen Dokumente bilden. 
+Eine Datenbank kann praktisch unbegrenzten Dokumentenspeicher umfassen, der in Sammlungen partitioniert ist.
 
 ### <a name="elastic-scale-of-a-documentdb-database"></a>Elastische Skalierbarkeit einer DocumentDB-Datenbank
 Eine DocumentDB-Datenbank ist standardmäßig flexibel und kann von einigen GB zu mehreren Petabytes an SSD-gestütztem Dokumentspeicher und bereitgestelltem Durchsatz reichen. 
@@ -175,7 +175,7 @@ Eine DocumentDB-Datenbank ist ebenfalls ein Container für Benutzer. Ein Benutze
 Datenbanken können wie andere Ressourcen im DocumentDB-Ressourcenmodell einfach über [Azure DocumentDB-REST-APIs](https://msdn.microsoft.com/library/azure/dn781481.aspx) oder eines der [Client-SDKs](https://msdn.microsoft.com/library/azure/dn781482.aspx) erstellt, ersetzt, gelöscht, gelesen oder aufgezählt werden. DocumentDB garantiert für das Lesen oder Abfragen der Metadaten einer Datenbankressource eine hohe Konsistenz. Das Löschen einer Datenbank stellt automatisch sicher, dass Sie nicht auf die darin enthaltenen Sammlungen oder Benutzer zugreifen können.   
 
 ## <a name="collections"></a>Sammlungen
-Eine DocumentDB-Sammlung ist ein Container für Ihre JSON-Dokumente. Eine Sammlung ist auch eine Maßeinheit für Transaktionen und Abfragen. 
+Eine DocumentDB-Sammlung ist ein Container für Ihre JSON-Dokumente. 
 
 ### <a name="elastic-ssd-backed-document-storage"></a>Flexibler SSD-gestützter Dokumentspeicher
 Eine Sammlung ist an sich flexibel. Durch das Hinzufügen oder Entfernen von Dokumenten wächst oder schrumpft sie automatisch. Sammlungen sind logische Ressourcen und können eine oder mehrere physische Partitionen oder einen oder mehrere Server umfassen. Die Anzahl der Partitionen in einer Sammlung wird von DocumentDB auf Basis der Speichergröße und dem bereitgestellten Durchsatz Ihrer Sammlung bestimmt. Jede Partition in DocumentDB verfügt über eine feste Menge an SSD-gestütztem Speicher, der dieser zugeordnet ist. Ebenso ist sie für eine hohe Verfügbarkeit repliziert. Die Partitionsverwaltung wird komplett von Azure DocumentDB verwaltet. Sie müssen also keinen komplexen Code schreiben oder Ihre Partitionen verwalten. DocumentDB-Sammlungen sind im Hinblick auf Speicher und Durchsatz **praktisch unbegrenzt**. 
@@ -206,7 +206,7 @@ Das Abfragemodell von DocumentDB versucht die Balance zwischen Funktionalität, 
 > 
 > 
 
-### <a name="multi-document-transactions"></a>Mehrdokumenttransaktionen
+## <a name="multi-document-transactions"></a>Mehrdokumenttransaktionen
 Datenbanktransaktionen bieten ein sicheres und berechenbares Programmiermodell zur Behandlung von gleichzeitig an den Daten vorgenommenen Änderungen. In RDBMS umfasst die herkömmliche Vorgehensweise zum Erstellen der Geschäftslogik das Schreiben von **gespeicherten Prozeduren** und/oder **Triggern** sowie deren Übermittlung an den Datenbankserver zur transaktionalen Ausführung. In RDBMS muss der Anwendungsprogrammierer mit zwei verschiedenen Programmiersprachen umgehen: 
 
 * Die (nicht transaktionale) Anwendungsprogrammiersprache (z. B. JavaScript, Python, C#, Java usw.)

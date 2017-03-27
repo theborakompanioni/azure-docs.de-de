@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/08/2016
-ms.author: edmaca
+ms.date: 03/17/2017
+ms.author: edmaca, yanacai
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 2fa2d26b996435c18c2f88396991bf7210350553
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: f5a27eba14560a56ad5020daf7741f37ac2cc6f2
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -128,9 +128,9 @@ Die Data Lake Analytics-Aufträge werden in der Sprache U-SQL geschrieben. Weite
        Der Name wird automatisch vervollständigt, und die Member werden für Rowsets, Klassen, Datenbanken, Schemas und benutzerdefinierte Objekte (User Defined Objects, UDOs) angezeigt.
 
        IntelliSense für Katalogentitäten (Datenbanken, Schemas, Tabellen, UDOs usw.) bezieht sich auf Ihr Compute-Konto. Sie können das aktuelle aktive Compute-Konto, die Datenbank und das Schema in der obersten Symbolleiste überprüfen und über die Dropdownlisten wechseln.
-   * **Erweitern von Spalten mit * **
+   * **Erweitern von Spalten mit ***
 
-       Klicken Sie rechts neben *. Unter * wird eine blaue Unterstreichung angezeigt. Bewegen Sie den Mauszeiger auf die blaue Unterstreichung, und klicken Sie auf den Pfeil nach unten.
+       Klicken Sie rechts neben *. Unter* wird eine blaue Unterstreichung angezeigt. Bewegen Sie den Mauszeiger auf die blaue Unterstreichung, und klicken Sie auf den Pfeil nach unten.
        ![Data Lake Visual Studio-Tools – Erweitern *](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-expand-asterisk.png)
 
        Klicken Sie auf **Spalten erweitern**, und das Tool ersetzt das Sternchen („*“) durch die Spaltennamen.
@@ -197,73 +197,13 @@ Mithilfe der Auftragswiedergabe können Sie den Status der Auftragsausführung v
 In den Data Lake-Tools für Visual Studio werden auswählbare Farbüberlagerungen für die Auftragsanzeige bereitgestellt, um Status, Ein-/Ausgang von Daten, Ausführungszeit, E/A-Durchsatz für jede Phase anzeigen zu können. So können Benutzer potenzielle Probleme und die Verteilung von Auftragseigenschaften direkt und intuitiv ermitteln. Sie können eine anzuzeigende Datenquelle in der Dropdownliste auswählen.  
 
 ## <a name="run-u-sql-locally"></a>Lokales Ausführen von U-SQL
-Mithilfe der U-SQL-Oberfläche zum lokalen Ausführen in Visual Studio können Sie Folgendes:
 
-* U-SQL-Skripts zusammen mit C#-Assemblys lokal ausführen
-* C#-Assemblys lokal debuggen
-* Lokale Datenbanken, Assemblys, Schemas und Tabellen in Server-Explorer so erstellen, löschen und anzeigen, wie Sie es auch für Ihren Azure Data Lake Analytics-Dienst können.
+Sie können Azure Data Lake-Tools für Visual Studio und das Azure Data Lake-U-SQL-SDK zum Ausführen von U-SQL-Aufträgen auf der Arbeitsstation verwenden, so wie es auch im Azure Data Lake-Dienst möglich ist. Mit diesen beiden Funktionen für lokale Testläufe sparen Sie beim Testen und Debuggen Ihrer U-SQL-Aufträge Zeit. 
 
-In Visual Studio wird ein Konto *Lokal* angezeigt, und das Installationsprogramm erstellt einen Ordner *DataRoot* im Pfad *C:\LocalRunRoot*. Der Ordner „DataRoot“ wird wie folgt verwendet:
+* [Testen und Debuggen von U-SQL-Aufträgen mit lokalen Testläufen und dem Azure Data Lake-U-SQL-SDK](data-lake-analytics-data-lake-tools-local-run.md)
 
-* Speichern von Metadaten, einschließlich Tabellen, Datenbanken, TVFs usw.
-* Für ein bestimmtes Skript: Wenn in Eingabe-/Ausgabepfaden auf einen relativen Pfad verwiesen wird, wird DataRoot nachgeschlagen (sowie der Pfad des Skripts, wenn er zur Eingabe gehört).
-* Auf den Ordner „DataRoot“ wird nicht verwiesen, wenn Sie versuchen, eine Assembly zu registrieren, und dabei einen relativen Pfad verwenden (Weitere Details finden Sie im Abschnitt unter „Verwenden von Assemblys bei lokalen Ausführungen“.)
 
-Das folgende Video veranschaulicht das Feature zum lokalen Ausführen von U-SQL:
-
-> [!VIDEO https://channel9.msdn.com/Series/AzureDataLake/USQL-LocalRun/player]
->
->
-
-### <a name="known-issues-and-limitations"></a>Bekannte Probleme und Einschränkungen
-* In Server-Explorer kann keine Tabelle/Datenbank usw. für das lokale Konto erstellt werden.
-* Wenn auf einen relativen Pfad verwiesen wird:
-
-  * In der Skripteingabe (EXTRACT * FROM "/path/abc"): Sowohl der „DataRoot“-Pfad als auch der Skriptpfad werden durchsucht.
-  * In der Skriptausgabe (OUTPUT TO "pfad/abc"): Der „DataRoot“-Pfad wird als Ausgabeordner verwendet.
-  * In der Assemblyregistrierung (CREATE ASSEMBLY xyz FROM "/path/abc"): Der Skriptpfad wird durchsucht, aber nicht DataRoot.
-  * In registrierten TVF-/Ansichts- oder anderen Metadatenentitäten: Der „DataRoot“-Pfad wird durchsucht, aber nicht der Skriptpfad.
-
-    Bei Skripts, die im Data Lake-Dienst ausgeführt werden, wird das Standardspeicherkonto als Stammordner verwendet und dementsprechend durchsucht.
-
-### <a name="test-u-sql-scripts-locally"></a>Lokales Testen von U-SQL-Skripts
-Anleitungen zur Entwicklung von U-SQL-Skripts finden Sie unter [Entwickeln eines U-SQL-Skripts](#develop-and-test-u-sql-scripts). Wählen Sie zum lokalen Erstellen und Ausführen von U-SQL-Skripts in der Cluster-Dropdownliste **(Lokal)** aus, und klicken Sie dann auf **Senden**. Stellen Sie sicher, dass Sie auf die richtigen Daten verweisen – verweisen Sie entweder auf den absoluten Pfad, oder legen Sie die Daten im Ordner „DataRoot“ ab.
-
-![Lokales Senden von Visual Studio-U-SQL-Projekten](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-submit-job-local-run.png)
-
-Sie können auch mit der rechten Maustaste auf ein Skript klicken und dann im Kontextmenü auf **Lokalen Plan ausführen** klicken, oder Sie drücken **STRG+F5**, um die lokale Ausführung auszulösen.
-
-### <a name="use-assemblies-in-local-run"></a>Verwenden von Assemblys bei der lokalen Ausführung
-Es gibt zwei Möglichkeiten zum Ausführen der angepassten C#-Dateien:
-
-* Schreiben Sie die Assemblys in die CodeBehind-Datei, und die Assemblys werden automatisch registriert und gelöscht, nachdem das Skript ausgeführt wurde.
-* Erstellen Sie ein C#-Assemblyprojekt, und registrieren Sie die Ausgabe-DLL für das lokale Konto über ein ähnliches Skript wie unten gezeigt. Beachten Sie, dass sich der Pfad relativ auf das Skript, nicht auf den Ordner „DataRoot“ bezieht.
-
-![Verwenden von Assemblys bei der lokalen U-SQL-Ausführung](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-local-run-assembly.png)
-
-### <a name="debug-scripts-and-c-assemblies-locally"></a>Lokales Debuggen von Skripts und C#-Assemblys
-Sie können C#-Assemblys debuggen, ohne sie zu senden und beim Azure Data Lake Analytics-Dienst zu registrieren. Sie können sowohl in der Code-Behind-Datei als auch in einem referenzierten C#-Projekt Haltepunkte festlegen.
-
-**So debuggen Sie lokalen Code in der CodeBehind-Datei:**
-
-1. Legen Sie Haltepunkte in der CodeBehind-Datei fest.
-2. Drücken Sie **F5** , um das Skript lokal zu debuggen.
-
-Das folgende Verfahren funktioniert nur in Visual Studio 2015. In älteren Versionen von Visual Studio müssen Sie eventuell die PDB-Dateien manuell hinzufügen.
-
-**So debuggen Sie lokalen Code in einem referenzierten C#-Projekt:**
-
-1. Erstellen Sie ein C#-Assemblyprojekt, und erstellen Sie es, um die Ausgabe-DLL zu generieren.
-2. Registrieren Sie die DLL mithilfe einer U-SQL-Anweisung:
-
-    ```
-    CREATE ASSEMBLY assemblyname FROM @"..\..\path\to\output\.dll";
-    ```
-    
-3. Legen Sie Haltepunkte im C#-Code fest.
-4. Drücken Sie **F5** , um das Skript mit Verweis auf die C#-DLL lokal zu debuggen.  
-
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 Informationen zu den ersten Schritten mit Data Lake Analytics unter Verwendung unterschiedlicher Tools finden Sie unter:
 
 * [Erste Schritte mit Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-get-started-portal.md)

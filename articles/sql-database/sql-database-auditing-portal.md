@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 2/25/2017
-ms.author: ronitr; giladm
+ms.author: ronitr;giladm
 translationtype: Human Translation
-ms.sourcegitcommit: fb56545df42e997e5960eec73ae59e9334731392
-ms.openlocfilehash: 8c6fa92764cb720a0c71a24d839d3e73ce3ba447
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: d1350081aa4f70660802c61a77250496e1e7fc2a
+ms.lasthandoff: 03/10/2017
 
 
 ---
 
 # <a name="configure-and-manage-sql-database-auditing-in-the-azure-portal"></a>Konfigurieren und Verwalten der SQL-Datenbanküberwachung im Azure-Portal
 
-In diesem Abschnitt wird beschrieben, wie die Überwachung im Azure-Portal konfiguriert und verwaltet wird. Informationen zum Konfigurieren und Verwalten der Überwachung mithilfe von PowerShell finden Sie unter [Configure auditing with PowerShell](sql-database-auditing-powershell.md) (Konfigurieren der Überwachung mithilfe von PowerShell). Informationen zum Konfigurieren und Verwalten der Überwachung mithilfe der REST-API finden Sie unter [Configure auditing with the REST API](sql-database-auditing-rest.md) (Konfigurieren der Überwachung mithilfe der REST-API).
+In diesem Abschnitt wird beschrieben, wie die Überwachung im Azure-Portal konfiguriert und verwaltet wird. Informationen zum Konfigurieren und Verwalten der Überwachung mithilfe von PowerShell finden Sie unter [Configure auditing with PowerShell](sql-database-auditing-powershell.md) (Konfigurieren der Überwachung mithilfe von PowerShell). 
 
 Eine Übersicht über die Überwachung finden Sie unter [SQL-Datenbanküberwachung](sql-database-auditing.md).
 
 ## <a name="configure-blob-auditing"></a>Konfigurieren der Blobüberwachung
 
-1. Öffnen Sie das Azure-Portal unter [https://portal.azure.com](https://portal.azure.com).
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com) unter https://portal.azure.com.
 2. Navigieren Sie zum Blatt mit den Einstellungen der SQL-Datenbank-/SQL Server-Instanz, die Sie überwachen möchten. Wählen Sie auf dem Blatt „Einstellungen“ die Option **Überwachung und Bedrohungserkennung**.
 
     ![Navigationsbereich](./media/sql-database-auditing-get-started/1_auditing_get_started_settings.png)
@@ -45,7 +45,7 @@ Eine Übersicht über die Überwachung finden Sie unter [SQL-Datenbanküberwachu
 
     <a id="storage-screenshot"></a>
     ![Navigationsbereich][4]
-6. Wenn Sie die überwachten Ereignisse anpassen möchten, erreichen Sie dies über [PowerShell](sql-database-auditing-powershell.md) oder [REST-API](sql-database-auditing-rest.md).
+6. Wenn Sie die überwachten Ereignisse anpassen möchten, erreichen Sie dies über PowerShell oder REST-API.
 7. Nachdem Sie Ihre Überwachungseinstellungen konfiguriert haben, können Sie das neue Feature Bedrohungserkennung (Vorschau) aktivieren und die E-Mail-Konten konfigurieren, an die Sicherheitswarnungen gesendet werden sollen. Mit der Bedrohungserkennung können Sie proaktive Warnungen bei anomalen Datenbankaktivitäten erhalten, die auf mögliche Sicherheitsbedrohungen hinweisen können. Weitere Informationen finden Sie unter [Bedrohungserkennung](sql-database-threat-detection.md).
 8. Klicken Sie auf **Speichern**.
 
@@ -56,7 +56,7 @@ Eine Übersicht über die Überwachung finden Sie unter [SQL-Datenbanküberwachu
 > Überprüfen Sie vor der Einrichtung der **Tabellenüberwachung**, ob Sie einen [„kompatiblen Client“](sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md) verwenden. Falls Sie strikte Firewalleinstellungen haben, beachten Sie außerdem, dass der [IP-Endpunkt Ihrer Datenbank geändert wird](sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md), wenn Sie die Tabellenüberwachung aktivieren.
 >
 
-1. Öffnen Sie das Azure-Portal unter [https://portal.azure.com](https://portal.azure.com).
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com) unter https://portal.azure.com.
 2. Navigieren Sie zum Blatt mit den Einstellungen der SQL-Datenbank-/SQL Server-Instanz, die Sie überwachen möchten. Wählen Sie auf dem Blatt „Einstellungen“ die Option **Überwachung und Bedrohungserkennung** (*[siehe Screenshot im Abschnitt „Blobüberwachung“](#auditing-screenshot)*).
 3. Auf dem Blatt für die Konfiguration der Datenbanküberwachung können Sie das Kontrollkästchen **Einstellungen vom Server erben** aktivieren, um anzugeben, dass diese Datenbank gemäß den Einstellungen des zugehörigen Servers überwacht wird. Wenn Sie diese Option aktivieren, wird der Link **Server-Überwachungseinstellungen anzeigen** angezeigt, den Sie verwenden können, um die Überwachungseinstellungen des Servers für diesen Kontext anzuzeigen oder zu ändern.
 
@@ -83,7 +83,7 @@ Wenn Sie georeplizierte Datenbanken verwenden, können Sie die Überwachung je n
 2. **Sekundäre Datenbank**: Die Blobüberwachung kann nur in den Überwachungseinstellungen der primären Datenbank aktiviert und deaktiviert werden.
 
    * Aktivieren Sie die Blobüberwachung in der primären Datenbank. Die Blobüberwachung muss in der *primären Datenbank selbst* aktiviert werden, nicht auf dem Server.
-   * Nachdem die Blobüberwachung in der primären Datenbank aktiviert wurde, wird sie auch in der sekundären Datenbank aktiviert.
+   * Nachdem die Blobüberwachung in der primären Datenbank aktiviert wurde, wird sie auch in der sekundären Datenbank aktiv.
 
     > [!IMPORTANT]
     > Standardmäßig sind die Speichereinstellungen für die sekundäre Datenbank identisch mit den Einstellungen der primären Datenbank, wodurch regionsübergreifender Datenverkehr generiert wird. Sie können dies verhindern, indem Sie die Blobüberwachung auf dem sekundären Server aktivieren und in den Speichereinstellungen des sekundären Servers einen lokalen Speicherort konfigurieren. Dadurch wird der Speicherort für die sekundäre Datenbank überschrieben, und jede Datenbank speichert die Überwachungsprotokolle an einem lokalen Speicherort.  
@@ -189,7 +189,6 @@ In einer Produktionsumgebung werden Sie Ihre Speicherschlüssel wahrscheinlich r
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen zum Konfigurieren und Verwalten der Überwachung mithilfe von PowerShell finden Sie unter [Configure database auditing using PowerShell](sql-database-auditing-powershell.md) (Konfigurieren der Datenbanküberwachung mithilfe von PowerShell).
-* Informationen zum Konfigurieren und Verwalten der Überwachung mithilfe der REST-API finden Sie unter [Configure database auditing using the REST API](sql-database-auditing-rest.md) (Konfigurieren der Datenbanküberwachung mithilfe der REST-API).
 * Eine Übersicht über die Überwachung finden Sie unter [Datenbanküberwachung](sql-database-auditing.md).
 
 

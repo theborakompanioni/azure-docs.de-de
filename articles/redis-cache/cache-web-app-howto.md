@@ -12,11 +12,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 01/27/2017
+ms.date: 03/21/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 8d1b9293a0b3958d0f478b6a0b6816b8d534883d
-ms.openlocfilehash: d7e98ef1205f0d88e12779a4ce9317128ae81e73
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: 5e7520f8a023cd5feb8401483161e7296a413b02
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -45,7 +46,7 @@ Sie lernen Folgendes:
 Für dieses Tutorial benötigen Sie Folgendes:
 
 * [Azure-Konto](#azure-account)
-* [Visual Studio 2015 mit dem Azure SDK für .NET](#visual-studio-2015-with-the-azure-sdk-for-net)
+* [Visual Studio 2017 mit dem Azure SDK für .NET](#visual-studio-2017-with-the-azure-sdk-for-net)
 
 ### <a name="azure-account"></a>Azure-Konto
 Sie benötigen ein Azure-Konto, um das Tutorial durchführen zu können. Sie können:
@@ -53,22 +54,23 @@ Sie benötigen ein Azure-Konto, um das Tutorial durchführen zu können. Sie kö
 * [Kostenloses Anlegen eines Azure-Kontos](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero). Sie erhalten ein Guthaben, mit dem Sie andere kostenpflichtige Azure-Dienste ausprobieren können. Auch nachdem Sie das Guthaben aufgebraucht haben, können Sie das Konto behalten und kostenlose Azure-Dienste und -Features nutzen.
 * [Aktivieren Sie Visual Studio-Abonnementvorteile](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=redis_cache_hero). Ihr MSDN-Abonnement beinhaltet ein monatliches Guthaben, das Sie für zahlungspflichtige Azure-Dienste verwenden können.
 
-### <a name="visual-studio-2015-with-the-azure-sdk-for-net"></a>Visual Studio 2015 mit dem Azure SDK für .NET
-Das Tutorial wurde für Visual Studio 2015 mit dem [Azure SDK für .NET](../dotnet-sdk.md) 2.8.2 oder höher geschrieben. Das aktuelle Azure SDK für Visual Studio 2015 können Sie [hier](http://go.microsoft.com/fwlink/?linkid=518003) herunterladen. Visual Studio&2015; wird automatisch mit dem SDK installiert, wenn das Programm noch nicht vorhanden ist.
+### <a name="visual-studio-2017-with-the-azure-sdk-for-net"></a>Visual Studio 2017 mit dem Azure SDK für .NET
+Das Tutorial wurde für Visual Studio 2017 mit dem [Azure SDK für .NET](https://www.visualstudio.com/news/releasenotes/vs2017-relnotes#azuretools) geschrieben. Das Azure SDK 2.9.5 ist im Visual Studio-Installer enthalten.
+
+Wenn Sie Visual Studio 2015 haben, können Sie das Tutorial mit dem [Azure-SDK für .NET](../dotnet-sdk.md) 2.8.2 oder höher durcharbeiten. Das aktuelle Azure SDK für Visual Studio 2015 können Sie [hier](http://go.microsoft.com/fwlink/?linkid=518003) herunterladen. Visual Studio&2015; wird automatisch mit dem SDK installiert, wenn das Programm noch nicht vorhanden ist. Einige Bildschirme unterscheiden sich unter Umständen von den Abbildungen in diesem Tutorial.
 
 Bei Verwendung von Visual Studio 2013 können Sie [das aktuelle Azure SDK für Visual Studio 2013 herunterladen](http://go.microsoft.com/fwlink/?LinkID=324322). Einige Bildschirme unterscheiden sich unter Umständen von den Abbildungen in diesem Tutorial.
-
-> [!NOTE]
-> Abhängig von der Anzahl an bereits bestehenden SDK-Abhängigkeiten auf Ihrem Computer kann der Installationsvorgang des SDK von mehreren Minuten bis hin zu einer halben Stunde oder länger dauern.
-> 
-> 
 
 ## <a name="create-the-visual-studio-project"></a>Erstellen des Visual Studio-Projekts
 1. Öffnen Sie Visual Studio, und klicken Sie auf **Datei** > **Neu** > **Projekt**.
 2. Erweitern Sie in der Liste **Vorlagen** den Knoten **Visual C#**, wählen Sie **Cloud** aus, und klicken Sie anschließend auf **ASP.NET-Webanwendung**. Vergewissern Sie sich, dass mindestens **.NET Framework 4.5.2** ausgewählt ist.  Geben Sie im Textfeld **Name** die Zeichenfolge **ContosoTeamStats** ein, und klicken Sie auf **OK**.
    
     ![Projekt erstellen][cache-create-project]
-3. Wählen Sie als Projekttyp die Option **MVC** aus. Deaktivieren Sie das Kontrollkästchen **In der Cloud hosten** . Die Schritte zum [Bereitstellen der Azure-Ressourcen](#provision-the-azure-resources) und [Veröffentlichen der Anwendung für Azure](#publish-the-application-to-azure) werden im weiteren Verlauf des Tutorials ausgeführt. Ein Beispiel, in dem eine App Service-Web-App über Visual Studio mit aktiviertem Kontrollkästchen **In der Cloud hosten** bereitgestellt wird, finden Sie unter [Erste Schritte mit Web-Apps in Azure App Service mit ASP.NET und Visual Studio](../app-service-web/web-sites-dotnet-get-started.md).
+3. Wählen Sie als Projekttyp die Option **MVC** aus. 
+
+    Stellen Sie sicher, dass für die Einstellungen unter **Authentifizierung** die Option **Keine Authentifizierung** angegeben ist. Je nach Ihrer Version von Visual Studio kann der Standardwert auch anders lauten. Um dies zu ändern, klicken Sie auf **Authentifizierung ändern** und wählen **Keine Authentifizierung**.
+
+    Falls Sie für diesen Vorgang Visual Studio 2015 nutzen, sollten Sie das Kontrollkästchen **In der Cloud hosten** deaktivieren. Die Schritte zum [Bereitstellen der Azure-Ressourcen](#provision-the-azure-resources) und [Veröffentlichen der Anwendung für Azure](#publish-the-application-to-azure) werden im weiteren Verlauf des Tutorials ausgeführt. Ein Beispiel, in dem eine App Service-Web-App über Visual Studio mit aktiviertem Kontrollkästchen **In der Cloud hosten** bereitgestellt wird, finden Sie unter [Erste Schritte mit Web-Apps in Azure App Service mit ASP.NET und Visual Studio](../app-service-web/web-sites-dotnet-get-started.md).
    
     ![Projektvorlage auswählen][cache-select-template]
 4. Klicken Sie auf **OK** , um das Projekt zu erstellen.
@@ -76,9 +78,21 @@ Bei Verwendung von Visual Studio 2013 können Sie [das aktuelle Azure SDK für V
 ## <a name="create-the-aspnet-mvc-application"></a>Erstellen der ASP.NET MVC-Anwendung
 In diesem Abschnitt des Tutorials wird die grundlegende Anwendung zum Lesen und Anzeigen der Teamstatistik aus einer Datenbank erstellt.
 
+* [Hinzufügen des Entity Framework-NuGet-Pakets](#add-the-entity-framework-nuget-package)
 * [Hinzufügen des Modells](#add-the-model)
 * [Hinzufügen des Controllers](#add-the-controller)
 * [Konfigurieren der Ansichten](#configure-the-views)
+
+### <a name="add-the-entity-framework-nuget-package"></a>Hinzufügen des Entity Framework-NuGet-Pakets
+
+1. Klicken Sie im Menü **Extras** auf **NuGet-Paket-Manager** > **Paket-Manager-Konsole**.
+2. Führen Sie im Fenster `Package Manager Console` den folgenden Befehl aus:
+    
+    ```
+    Install-Package EntityFramework
+    ```
+
+Weitere Informationen zu diesem Paket finden Sie auf der [EntityFramework](https://www.nuget.org/packages/EntityFramework/)-NuGet-Seite.
 
 ### <a name="add-the-model"></a>Hinzufügen des Modells
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf **Modelle**, und wählen Sie **Hinzufügen** > **Klasse** aus. 
@@ -172,21 +186,27 @@ In diesem Abschnitt des Tutorials wird die grundlegende Anwendung zum Lesen und 
 1. Doppelklicken Sie im **Projektmappen-Explorer** auf die Datei **web.config**, um sie zu öffnen.
    
     ![Web.config][cache-web-config]
-2. Fügen Sie dem Abschnitt `connectionStrings` die folgende Verbindungszeichenfolge hinzu. Der Name der Verbindungszeichenfolge muss dem Namen der Entity Framework-Datenbankkontextklasse ( `TeamContext`) entsprechen.
-
-    ```xml   
-    <add name="TeamContext" connectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\Teams.mdf;Integrated Security=True" providerName="System.Data.SqlClient" />
-    ```
-
-    Anschließend muss der Abschnitt `connectionStrings` in etwa wie folgt aussehen:
+2. Fügen Sie den folgenden `connectionStrings`-Abschnitt hinzu. Der Name der Verbindungszeichenfolge muss dem Namen der Entity Framework-Datenbankkontextklasse ( `TeamContext`) entsprechen.
 
     ```xml
     <connectionStrings>
-        <add name="DefaultConnection" connectionString="Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-ContosoTeamStats-20160216120918.mdf;Initial Catalog=aspnet-ContosoTeamStats-20160216120918;Integrated Security=True"
-            providerName="System.Data.SqlClient" />
         <add name="TeamContext" connectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\Teams.mdf;Integrated Security=True"     providerName="System.Data.SqlClient" />
     </connectionStrings>
     ```
+
+    Sie können den neuen `connectionStrings`-Abschnitt so hinzufügen, dass er auf `configSections` folgt. Dies ist im folgenden Beispiel dargestellt.
+
+    ```xml
+    <configuration>
+      <configSections>
+        <!-- For more information on Entity Framework configuration, visit http://go.microsoft.com/fwlink/?LinkID=237468 -->
+        <section name="entityFramework" type="System.Data.Entity.Internal.ConfigFile.EntityFrameworkSection, EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
+      </configSections>
+      <connectionStrings>
+        <add name="TeamContext" connectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\Teams.mdf;Integrated Security=True"     providerName="System.Data.SqlClient" />
+      </connectionStrings>
+      ...
+      ```
 
 ### <a name="add-the-controller"></a>Hinzufügen des Controllers
 1. Drücken Sie F6 **** , um das Projekt zu erstellen. 
@@ -261,14 +281,14 @@ In diesem Abschnitt des Tutorials wird die Beispielanwendung zum Speichern und A
 * [Aktualisieren der Teams-Indexansicht für den Cache](#update-the-teams-index-view-to-work-with-the-cache)
 
 ### <a name="configure-the-application-to-use-stackexchangeredis"></a>Konfigurieren der Anwendung für die Verwendung von „StackExchange.Redis“
-1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **NuGet-Pakete verwalten** aus, um eine Clientanwendung in Visual Studio mithilfe des StackExchange.Redis-NuGet-Pakets zu konfigurieren. 
+1. Gehen Sie wie folgt vor, um eine Clientanwendung in Visual Studio mit dem StackExchange.Redis-NuGet-Paket zu konfigurieren: Klicken Sie im Menü **Extras** auf **NuGet-Paket-Manager** > **Paket-Manager-Konsole**.
+2. Führen Sie im Fenster `Package Manager Console` den folgenden Befehl aus:
+    
+    ```
+    Install-Package StackExchange.Redis
+    ```
    
-    ![NuGet-Pakete verwalten][redis-cache-manage-nuget-menu]
-2. Geben Sie in das Suchtextfeld die Zeichenfolge **StackExchange.Redis** ein, wählen Sie in den Ergebnissen die gewünschte Version aus, und klicken Sie auf **Installieren**.
-   
-    ![StackExchange.Redis-NuGet-Paket][redis-cache-stack-exchange-nuget]
-   
-    Das NuGet-Paket wird heruntergeladen und fügt die benötigten Assemblyverweise zu Ihrer Clientanwendung hinzu, um mithilfe des StackExchange.Redis-Cacheclients auf den Azure Redis Cache zuzugreifen. Falls Sie eine Version der **StackExchange.Redis**-Clientbibliothek mit starkem Namen bevorzugen, wählen Sie **StackExchange.Redis.StrongName** aus. Wählen Sie andernfalls **StackExchange.Redis** aus.
+    Das NuGet-Paket wird heruntergeladen und fügt die benötigten Assemblyverweise zu Ihrer Clientanwendung hinzu, um mithilfe des StackExchange.Redis-Cacheclients auf den Azure Redis Cache zuzugreifen. Installieren Sie das Paket `StackExchange.Redis.StrongName`, wenn Sie es vorziehen, eine Version der `StackExchange.Redis`-Clientbibliothek mit sicheren Namen zu verwenden.
 3. Erweitern Sie im **Projektmappen-Explorer** den Ordner **Controller**, und doppelklicken Sie auf **TeamsController.cs**, um die Datei zu öffnen.
    
     ![Teamcontroller][cache-teamscontroller]
@@ -670,7 +690,7 @@ Der im Rahmen dieses Beispiels generierte Gerüstcode enthält Methoden zum Hinz
     <tr><td colspan="5">@ViewBag.Msg</td></tr>
     ```
    
-    Diese Zeile zeigt den Wert von `ViewBag.Msg` an. Dieses Element enthält einen Statusbericht für den aktuellen Vorgang, der festgelegt wird, wenn Sie auf einen der Aktionslinks aus dem vorherigen Schritt klicken.   
+    In dieser Zeile wird der Wert `ViewBag.Msg` angezeigt, der einen Statusbericht zum aktuellen Vorgang enthält. `ViewBag.Msg` wird festgelegt, wenn Sie auf einen der Aktionslinks aus dem vorherigen Schritt klicken.   
    
     ![Statusmeldung][cache-status-message]
 2. Drücken Sie F6 **** , um das Projekt zu erstellen.
@@ -698,7 +718,7 @@ Nach dem Klicken auf die Schaltfläche zum Bereitstellen für Azure **** gelange
 ![Bereitstellen in Azure][cache-deploy-to-azure-step-1]
 
 1. Wählen Sie im Abschnitt **Grundlagen** das gewünschte Azure-Abonnement und dann eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue, und geben Sie den Speicherort der Ressourcengruppe an.
-2. Geben Sie im Abschnitt **Einstellungen** einen Administratorkontonamen (**ADMINISTRATORLOGIN**, nicht: **admin**), ein Kennwort für die Administratoranmeldung (**ADMINISTRATORLOGINPASSWORD**) und einen Datenbanknamen (**DATABASENAME**) an. Die anderen Parameter sind für einen kostenlosen App Service-Hostingtarif (Free-Tarif) sowie mit kostengünstigen Optionen für SQL-Datenbank und Azure Redis Cache konfiguriert, die im Free-Tarif nicht enthalten sind.
+2. Geben Sie im Abschnitt **Einstellungen** eine **Administratoranmeldung** (nicht **admin**), ein **Kennwort für die Administratoranmeldung** und einen **Datenbanknamen** ein. Die anderen Parameter sind für einen kostenlosen App Service-Hostingtarif (Free-Tarif) sowie mit kostengünstigen Optionen für SQL-Datenbank und Azure Redis Cache konfiguriert, die im Free-Tarif nicht enthalten sind.
 
     ![Bereitstellen in Azure][cache-deploy-to-azure-step-2]
 
@@ -726,17 +746,13 @@ In diesem Schritt des Tutorials wird Anwendung für Azure veröffentlicht und in
 1. Klicken Sie in Visual Studio mit der rechten Maustaste auf das Projekt **ContosoTeamStats**, und wählen Sie **Veröffentlichen**.
    
     ![Veröffentlichen][cache-publish-app]
-2. Klicken Sie auf **Microsoft Azure App Service**.
+2. Klicken Sie auf **Microsoft Azure App Service**, wählen Sie **Vorhandene auswählen**, und klicken Sie auf **Veröffentlichen**.
    
     ![Veröffentlichen][cache-publish-to-app-service]
-3. Wählen Sie das Abonnement aus, das beim Erstellen der Azure-Ressourcen verwendet wurde, erweitern Sie die Ressourcengruppe mit den Ressourcen, wählen Sie die gewünschte Web-App aus, und klicken Sie auf **OK**. Bei Verwendung der Schaltfläche zum Bereitstellen für Azure**** beginnt der Name Ihrer Web-App mit **webSite**, gefolgt von einigen zusätzlichen Zeichen.
+3. Wählen Sie das Abonnement aus, das beim Erstellen der Azure-Ressourcen verwendet wurde, erweitern Sie die Ressourcengruppe mit den Ressourcen, und wählen Sie die gewünschte Web-App aus. Bei Verwendung der Schaltfläche zum Bereitstellen für Azure**** beginnt der Name Ihrer Web-App mit **webSite**, gefolgt von einigen zusätzlichen Zeichen.
    
     ![Web-App auswählen][cache-select-web-app]
-4. Klicken Sie auf **Verbindung überprüfen**, um Ihre Einstellungen zu überprüfen, und klicken Sie dann auf **Veröffentlichen**.
-   
-    ![Veröffentlichen][cache-publish]
-   
-    Der Veröffentlichungsprozess wird kurz darauf abgeschlossen, und die Beispielanwendung wird in einem Browser gestartet. Falls bei der Überprüfung oder Veröffentlichung ein DNS-Fehler auftritt und der Bereitstellungsprozess der Azure-Ressourcen für die Anwendung erst vor Kurzem abgeschlossen wurde, warten Sie einen Moment, und versuchen Sie es dann noch einmal.
+4. Klicken Sie auf **OK**, um mit dem Veröffentlichungsprozess zu beginnen. Der Veröffentlichungsprozess wird kurz darauf abgeschlossen, und die Beispielanwendung wird in einem Browser gestartet. Falls bei der Überprüfung oder Veröffentlichung ein DNS-Fehler auftritt und der Bereitstellungsprozess der Azure-Ressourcen für die Anwendung erst vor Kurzem abgeschlossen wurde, warten Sie einen Moment, und versuchen Sie es dann noch einmal.
    
     ![Cache hinzugefügt][cache-added-to-application]
 
@@ -848,10 +864,5 @@ Nachdem Sie den zu verwendenden Cache ausgewählt oder erstellt haben, navigiere
 [cache-publish]: ./media/cache-web-app-howto/cache-publish.png
 [cache-delete-resource-group]: ./media/cache-web-app-howto/cache-delete-resource-group.png
 [cache-delete-confirm]: ./media/cache-web-app-howto/cache-delete-confirm.png
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

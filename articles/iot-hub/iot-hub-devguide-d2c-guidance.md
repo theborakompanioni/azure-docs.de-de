@@ -12,44 +12,43 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/30/2016
+ms.date: 03/09/2017
 ms.author: elioda
 translationtype: Human Translation
-ms.sourcegitcommit: e223d0613cd48994315451da87e6b7066585bdb6
-ms.openlocfilehash: 8c3479e29b55eacc30842ffdfee23b4a00a13126
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: aa3704fe844a41fef22b8cdd35838c68aebc7752
+ms.lasthandoff: 03/10/2017
 
 
 ---
 # <a name="device-to-cloud-communications-guidance"></a>Leitfaden zur D2C-Kommunikation
 Beim Senden von Informationen von der Geräte-App an das Lösungs-Back-End stehen in IoT Hub drei Optionen zur Verfügung:
 
-* [Gerät-zu-Cloud-Nachrichten (D2C)][lnk-d2c] für Time Series-Telemetrie und Warnungen;
-* [Gemeldete Eigenschaften][lnk-twins] für die Meldung von Gerätestatusinformationen, z.B. verfügbare Funktionen, Bedingungen und Status von Workflows mit langer Laufzeit (z.B. Konfiguration und Softwareupdates);
+* [Gerät-zu-Cloud-Nachrichten][lnk-d2c] für Time Series-Telemetrie und Warnungen
+* [Gemeldete Eigenschaften][lnk-twins] für die Meldung von Gerätestatusinformationen, z.B. verfügbare Funktionen, Bedingungen und Status von Workflows mit langer Laufzeit, z.B. Konfigurations- und Softwareupdates.
 * [Dateiuploads][lnk-fileupload] für Mediendateien und große Telemetriebatches, die von zeitweise verbundenen Geräten hochgeladen oder komprimiert werden, um Bandbreite zu sparen.
 
 Hier finden Sie einen detaillierten Vergleich verschiedener Optionen für die D2C-Kommunikation.
 
-|  | D2C-Meldungen | Gemeldete Eigenschaften | Dateiuploads |
+|  | D2C-Nachrichten | Gemeldete Eigenschaften | Dateiuploads |
 | ---- | ------- | ---------- | ---- |
-| Szenario | Telemetrie-Time Series und Warnungen, z.B. Sendung von 256-KB-Sensordatenbatches alle 5 Minuten. | Verfügbare Funktionen und Bedingungen, z.B. aktueller Verbindungsmodus des Geräts (Mobilfunk oder WiFi). Synchronisierung von Workflows mit langer Laufzeit, z.B. Konfiguration und Softwareupdates. | Mediendateien. Große (normalerweise komprimierte) Telemetriebatches. |
+| Szenario | Telemetrie-Zeitreihen und -Warnungen, z.B. Sendung von 256-KB-Sensordatenbatches alle 5 Minuten. | Verfügbare Funktionen und Bedingungen, z.B. der aktuelle Gerätekonnektivitätsmodus wie Mobilfunk oder WLAN. Synchronisierung von Workflows mit langer Laufzeit, z.B. Konfiguration und Softwareupdates. | Mediendateien. Große (normalerweise komprimierte) Telemetriebatches. |
 | Speichern und Abrufen | Temporäre Speicherung durch IoT Hub, bis zu 7 Tage. Nur sequenzielles Lesen. | Von IoT Hub im Gerätezwilling gespeichert. Abrufbar mithilfe der [IoT Hub-Abfragesprache][lnk-query]. | Speicherung im vom Benutzer bereitgestellten Azure Storage-Konto. |
 | Größe | Nachrichten bis zu 256KB. | Die Maximalgröße gemeldeter Eigenschaften beträgt 8KB. | Maximale von Azure Blob Storage unterstützte Dateigröße. |
-| Frequency | Hoch. Weitere Informationen finden Sie unter [IoT Hub-Grenzen][lnk-quotas]. | Mittel. Weitere Informationen finden Sie unter [IoT Hub-Grenzen][lnk-quotas]. | Niedrig. Weitere Informationen finden Sie unter [IoT Hub-Grenzen][lnk-quotas]. |
+| Frequency | Hoch. Weitere Informationen finden Sie unter [Referenz: IoT Hub-Kontingente und -Drosselung][lnk-quotas]. | Mittel. Weitere Informationen finden Sie unter [Referenz: IoT Hub-Kontingente und -Drosselung][lnk-quotas]. | Niedrig. Weitere Informationen finden Sie unter [Referenz: IoT Hub-Kontingente und -Drosselung][lnk-quotas]. |
 | Protocol | Mit allen Protokollen verfügbar. | Derzeit nur mit MQTT verfügbar. | Mit jedem Protokoll verfügbar, doch auf dem Gerät ist HTTP erforderlich. |
 
-> [!NOTE]
-> Möglicherweise erfordert eine Anwendung, dass Informationen sowohl als Telemetrie-Time Series als auch Warnung gesendet werden und außerdem im Gerätezwilling verfügbar sind. In diesen Fällen kann die Geräte-App sowohl eine D2C-Nachricht senden als auch eine Eigenschaftenänderung melden, oder das Lösungs-Back-End kann die Informationen beim Empfang der Nachricht in den Gerätezwillingstags speichern. Da D2C-Nachrichten einen viel höheren Durchsatz zulassen als Gerätezwillingsupdates, ist es in einigen Fällen ratsam, das Gerätezwillingsupdate nicht für jede D2C-Nachricht durchzuführen.
-> 
-> 
+Möglicherweise erfordert eine Anwendung, dass Informationen sowohl als Telemetrie-Time Series als auch Warnung gesendet werden und außerdem im Gerätezwilling verfügbar sind. In diesem Szenario können Sie eine der folgenden Optionen wählen:
+
+* Entweder sendet die Geräte-App eine D2C-Nachricht und meldet eine Eigenschaftsänderung, 
+* oder das Lösungs-Back-End speichert die Informationen beim Empfang der Nachricht in den Tags des Gerätezwillings. 
+
+Da D2C-Nachrichten einen viel höheren Durchsatz zulassen als Gerätezwillingsupdates, ist es in einigen Fällen ratsam, das Gerätezwillingsupdate nicht für jede D2C-Nachricht durchzuführen.
+
 
 [lnk-twins]: iot-hub-devguide-device-twins.md
 [lnk-fileupload]: iot-hub-devguide-file-upload.md
 [lnk-quotas]: iot-hub-devguide-quotas-throttling.md
 [lnk-query]: iot-hub-devguide-query-language.md
 [lnk-d2c]: iot-hub-devguide-messaging.md#device-to-cloud-messages
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

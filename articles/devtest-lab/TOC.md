@@ -5,17 +5,20 @@
 
 # Erste Schritte
 ## [Labs erstellen](devtest-lab-create-lab.md)
+## [Erstellen von Formeln](devtest-lab-create-formulas.md)
 ## [Virtuellen Computer erstellen](devtest-lab-add-vm.md)
+## [Verwalten von allgemeinen Labrichtlinien](devtest-lab-get-started-with-lab-policies.md)
 ## [Lab zu Schulungszwecken erstellen](devtest-lab-training-lab.md)
 ## [Häufig gestellte Fragen](devtest-lab-faq.md)
 
 # Anleitung
 ## Verwalten von Labs
 ### [Hinzufügen von Lab-Besitzern und -Benutzern](devtest-lab-add-devtest-user.md)
-### [Definieren von Labrichtlinien](devtest-lab-set-lab-policy.md)
+### [Verwalten aller Labrichtlinien](devtest-lab-set-lab-policy.md)
 ### [Gewähren von Berechtigungen für Richtlinien](devtest-lab-grant-user-permissions-to-specific-lab-policies.md)
 ### [Konfigurieren des Kostenmanagements](devtest-lab-configure-cost-management.md)
 ### [Konfigurieren virtueller Netzwerke](devtest-lab-configure-vnet.md)
+### [Grundlegendes zu freigegebenen IP-Adressen](devtest-lab-shared-ip.md)
 
 ## Verwalten von Artefakten
 ### [Hinzufügen eines Artefaktrepositorys](devtest-lab-add-artifact-repo.md)
@@ -23,6 +26,7 @@
 ### [Verwalten von Artefakten](devtest-lab-add-vm-with-artifacts.md)
 
 ## Verwalten von VM-Grundlagen und -Vorlagen
+### [Erstellen von anforderbaren virtuellen Computern](devtest-lab-add-claimable-vm.md)
 ### [Erstellen von Umgebungen mit mehreren virtuellen Computern mit Azure Resource Manager-Vorlagen](devtest-lab-create-environment-from-arm.md)
 ### [Konfigurieren von Marketplace-Images](devtest-lab-configure-marketplace-images.md)
 ### [Vergleichen von Images und Formeln](devtest-lab-comparing-vm-base-image-types.md)
@@ -33,8 +37,6 @@
 ### [Hochladen der VHD-Datei mit AzCopy](devtest-lab-upload-vhd-using-azcopy.md)
 ### [Hochladen der VHD-Datei mithilfe von PowerShell](devtest-lab-upload-vhd-using-powershell.md)
 ### [Hochladen der VHD-Datei mithilfe des Speicher-Explorers](devtest-lab-upload-vhd-using-storage-explorer.md)
-
-
 
 # Ressourcen
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=devtest-lab)

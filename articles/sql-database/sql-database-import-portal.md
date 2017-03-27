@@ -16,8 +16,9 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 60bcd02d24e2084b9020ce56ef6a9f8268c6b1b5
-ms.openlocfilehash: e77a3ba82e7620e23441d9296ebed46d41cb525c
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: ca15248d7ac5232e6308d8188332975f1d21c09b
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -27,7 +28,7 @@ Dieser Artikel enthält Anweisungen zum Erstellen einer Azure SQL-Datenbank aus 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Importieren einer SQL-­Datenbank aus einer BACPAC-Datei benötigen Sie Folgendes:
+Zum Importieren einer SQL-­Datenbank von einer BACPAC-Datei benötigen Sie Folgendes:
 
 * Ein Azure-Abonnement. 
 * Einen Azure SQL-Datenbank V12-Server Wenn Sie nicht über einen V12-Server verfügen, können Sie die Erstellung anhand der Schritte im folgenden Artikel durchführen: [Erstellen der ersten Azure SQL-Datenbank](sql-database-get-started.md).
@@ -83,9 +84,4 @@ Durch Klicken auf **Erstellen** wird eine Anforderung zum Importieren der Datenb
 [4]: ./media/sql-database-import/create.png
 [5]: ./media/sql-database-import/import-history.png
 [6]: ./media/sql-database-import/import-status.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

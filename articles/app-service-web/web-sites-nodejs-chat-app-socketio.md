@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: e3de500e3dc64abbbe7a5983db0ad14a0a9b76c8
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 4f5c04525437aefeccbe58e06b084433d0413dc1
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -65,7 +66,7 @@ Befolgen Sie diese Schritte, um eine Azure-Web-App zu erstellen und dann die Git
 > 
 > 
 
-1. Installieren Sie die Azure-Befehlszeilenschnittstelle (Azure-CLI), und stellen Sie eine Verbindung mit Ihrem Azure-Abonnement her. Weitere Informationen finden Sie unter [Installieren und Konfigurieren der plattformübergreifenden Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md).
+1. Installieren Sie die Azure-Befehlszeilenschnittstelle (Azure-CLI), und stellen Sie eine Verbindung mit Ihrem Azure-Abonnement her. Weitere Informationen finden Sie unter [Installieren und Konfigurieren der plattformübergreifenden Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md).
 2. Wenn Sie zum ersten Mal ein Repository in Azure einrichten, müssen Sie Anmeldeinformationen erstellen. Geben Sie über die Azure-Befehlszeilenschnittstelle den folgenden Befehl ein:
    
         azure site deployment user set [username] [password]
@@ -283,7 +284,7 @@ Weitere Informationen finden Sie außerdem im [Node.js Developer Center].
 [App Service-Web-Apps]: http://go.microsoft.com/fwlink/?LinkId=529714
 [Web-Apps – Preise]: http://go.microsoft.com/fwlink/?LinkId=511643
 [Erstellen einer Node.js-Chatanwendung mit Socket.IO in einer Azure Cloud Services-Instanz]: ../cloud-services/cloud-services-nodejs-chat-app-socketio.md
-[Install and Configure the Azure CLI]: ../xplat-cli-install.md
+[Install and Configure the Azure CLI]: ../cli-install-nodejs.md
 [Azure App Service und vorhandene Azure-Dienste]: http://go.microsoft.com/fwlink/?LinkId=529714
 [Node.js Developer Center]: /develop/nodejs/
 [App Service testen]: https://azure.microsoft.com/try/app-service/
@@ -299,9 +300,4 @@ Weitere Informationen finden Sie außerdem im [Node.js Developer Center].
 [chat-example-view]: ./media/web-sites-nodejs-chat-app-socketio/socketio-2.png
 [npm-output]: ./media/web-sites-nodejs-chat-app-socketio/socketio-7.png
 [completed-app]: ./media/web-sites-nodejs-chat-app-socketio/websitesocketcomplete.png
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

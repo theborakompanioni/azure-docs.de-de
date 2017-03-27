@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 03/07/2017
+ms.date: 03/14/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 0abe257f3c1c2f35c92fa5f382e9778217f01159
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 4b7ed095729e810f7f1112d3b6becfaf186bf508
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -72,8 +72,6 @@ Sie können den Zugriff auf das [Azure-Portal](https://portal.azure.com) für Ga
 
   >[!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-block-guest-user/Player]
 
-  Wenn dieses Video nicht eingebettet angezeigt wird, können Sie es [hier](https://channel9.msdn.com/Blogs/Azure/b2b-block-guest-user) aufrufen.
-
 ### <a name="what-is-the-timeline-by-which-azure-ad-b2b-collaboration-will-start-support-for-mfa-and-consumer-email-accounts"></a>Wann wird die Azure AD B2B-Zusammenarbeit die MFA und E-Mail-Konten für Endbenutzer unterstützen?
 Sowohl MFA als auch E-Mail-Konten für Endbenutzer werden jetzt in dieser aktualisierten öffentlichen Vorschau unterstützt.
 
@@ -89,8 +87,16 @@ Derzeit nicht.
 ### <a name="does-microsoft-crm-provide-online-support-to-azure-ad-b2b-collaboration"></a>Bietet Microsoft CRM Onlineunterstützung für die Azure AD B2B-Zusammenarbeit?
 CRM wird die Azure AD B2B-Zusammenarbeit unterstützen, sobald das Feature allgemein verfügbar ist.
 
+### <a name="are-b2b-collaboration-guest-users-visible-in-sharepoint-onlineonedrive-people-picker"></a>Werden Gastbenutzer für die B2B-Zusammenarbeit in der SharePoint Online/OneDrive Personenauswahl angezeigt?
+ 
+Ja. Allerdings ist die Möglichkeit, in der SharePoint Online Personenauswahl nach vorhandenen Gastbenutzern zu suchen dem Verhalten in älteren Versionen entsprechend standardmäßig deaktiviert. Sie können die Suche mit der Einstellung „ShowPeoplePickerSuggestionsForGuestUsers“ auf Mandanten- und Websitesammlungsebene aktivieren. Diese Einstellung kann mithilfe der Cmdlets „Set-SPOTenant“ und „Set-SPOSite“ vorgenommen werden, die Mitgliedern das Durchsuchen des Verzeichnisses nach allen vorhandenen Gastbenutzern ermöglichen. Änderungen im Mandantenbereich wirken sich nicht auf bereits bereitgestellte SharePoint Online-Websites aus.
+
 ### <a name="what-is-the-lifetime-of-an-initial-password-for-a-newly-created-b2b-collaboration-user"></a>Wie lang ist ein anfängliches Kennwort für einen neu erstellten B2B-Zusammenarbeitsbenutzer gültig?
 Azure AD verfügt über einen festen Satz von Anforderungen an Zeichen, Kennwortstärke und Kontosperre, die gleichermaßen für alle Azure AD-Cloudbenutzerkonten gelten. Cloudbenutzerkonten sind diejenigen Konten, die nicht mit einem anderen Identitätsanbieter wie Microsoft-Konto, Facebook, AD FS oder (im Fall der B2B-Zusammenarbeit) einem anderen Cloudmandanten in einem Verbund stehen. Bei Verbundkonten richtet sich die Kennwortrichtlinie nach der Richtlinie im lokalen Mandanten und den Einstellungen des Microsoft-Kontos des Benutzers.
+
+### <a name="applications-want-to-differentiate-their-experience-between-a-tenant-user-and-a-guest-user-is-there-standard-guidance-for-this-is-the-presence-of-the-identity-provider-claim-the-right-model-for-this"></a>Die Oberfläche einer Anwendung soll sich für Mandantenbenutzer und Gastbenutzer unterscheiden. Gibt es dafür eine Standardanleitung? Ist das Vorhandensein des Identitätsanbieteranspruchs das richtige Modell dafür?
+ 
+Ein Gastbenutzer kann wie in [Eigenschaften eines B2B-Zusammenarbeitsbenutzers](active-directory-b2b-user-properties.md) erörtert einen beliebigen Identitätsanbieter zur Authentifizierung verwenden. Daher ist UserType die richtige Eigenschaft, um dies festzulegen. Der UserType-Anspruch ist derzeit nicht im Token enthalten. Anwendungen sollten zur Abfrage des Verzeichnisses nach dem Benutzer und zum Abrufen seiner UserType-Eigenschaft die Graph-API verwenden.
 
 ### <a name="next-steps"></a>Nächste Schritte
 

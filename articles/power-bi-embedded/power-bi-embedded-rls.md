@@ -13,15 +13,17 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 01/06/2017
+ms.date: 03/11/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 2f0f36e7ffeec52bacc35ac5039cd183976dc3aa
-ms.openlocfilehash: c0b3e2de393c53dab4c9e9341269f792603eec18
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 1cde5b9ee4c716af07d427d4d0eb3f0775d456ac
+ms.lasthandoff: 03/14/2017
 
 
 ---
 # <a name="row-level-security-with-power-bi-embedded"></a>Sicherheit auf Zeilenebene in Power BI Embedded
+
 Sicherheit auf Zeilenebene (Row-Level Security, RLS) kann verwendet werden, um den Benutzerzugriff auf bestimmte Daten in einem Bericht oder Dataset einzuschränken. So können mehrere unterschiedliche Benutzer denselben Bericht verwenden, sehen dabei aber unterschiedliche Daten. Power BI Embedded unterstützt jetzt Datasets, die mit Sicherheit auf Zeilenebene konfiguriert sind.
 
 ![](media/power-bi-embedded-rls/pbi-embedded-rls-flow-1.png)
@@ -35,6 +37,7 @@ Um RLS nutzen zu können, ist es wichtig, dass Sie drei Hauptbegriffe verstanden
 **Regeln** : Rollen verfügen über Regeln, bei denen es sich um die eigentlichen Filter handelt, die auf die Daten angewendet werden. Dies kann ein einfacher Filter wie „Country = USA“ oder auch ein dynamischerer Filter sein.
 
 ### <a name="example"></a>Beispiel
+
 Für den restlichen Teil dieses Artikels geben wir ein Beispiel für die Erstellung von RLS und die anschließende Verwendung in einer eingebetteten Anwendung an. In unserem Beispiel wird die PBIX-Datei [Retail Analysis Sample](http://go.microsoft.com/fwlink/?LinkID=780547) verwendet.
 
 ![](media/power-bi-embedded-rls/pbi-embedded-rls-scenario-2.png)
@@ -81,7 +84,8 @@ Jetzt können Filter auch von der Tabelle „Sales“ zur Tabelle **Item** flie�
 
 ![](media/power-bi-embedded-rls/pbi-embedded-rls-diagram-view-11.png)
 
-**Hinweis** Wenn Sie den DirectQuery-Modus für Ihre Daten verwenden, müssen Sie die bidirektionale Kreuzfilterung aktivieren, indem Sie diese beiden Optionen auswählen:
+> [!NOTE]
+> Wenn Sie den DirectQuery-Modus für Ihre Daten verwenden, müssen Sie die bidirektionale Kreuzfilterung aktivieren, indem Sie diese beiden Optionen auswählen:
 
 1. **Datei** -> **Optionen und Einstellungen** -> **Vorschaufeatures** -> **Kreuzfilterung in beide Richtungen für DirectQuery aktivieren**.
 2. **Datei** -> **Optionen und Einstellungen** -> **DirectQuery** -> **Unbeschränkte Measures im DirectQuery-Modus zulassen**.
@@ -112,11 +116,11 @@ Wenn sich nach Abschluss all dieser Schritte nun eine Person an unserer Anwendun
 ![](media/power-bi-embedded-rls/pbi-embedded-rls-dashboard-13.png)
 
 ## <a name="see-also"></a>Siehe auch
-[Row-level security (RLS) with Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-admin-rls/) (Sicherheit auf Zeilenebene)
 
-
-
-
-<!--HONumber=Feb17_HO3-->
+[Row-level security (RLS) with Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-admin-rls/) (Sicherheit auf Zeilenebene)  
+[Authentifizieren und Autorisieren in Power BI Embedded](power-bi-embedded-app-token-flow.md)  
+[Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)  
+[JavaScript-Einbettungsbeispiel](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
+Weitere Fragen? [Power BI-Community ausprobieren](http://community.powerbi.com/)
 
 

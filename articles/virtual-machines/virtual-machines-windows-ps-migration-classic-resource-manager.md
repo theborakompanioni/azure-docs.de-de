@@ -1,9 +1,9 @@
 ---
 title: Migrieren zu Resource Manager mit PowerShell | Microsoft Docs
-description: "In diesem Artikel wird die plattformgestützte Migration von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager mithilfe von Azure PowerShell-Befehlen erläutert."
+description: "In diesem Artikel wird die plattformgestützte Migration von IaaS-Ressourcen wie virtuellen Computern (VMs), virtuellen Netzwerken (VNETs) und Speicherkonten vom klassischen Bereitstellungsmodell zu Azure Resource Manager (ARM) mithilfe von Azure PowerShell-Befehlen erläutert."
 services: virtual-machines-windows
 documentationcenter: 
-author: cynthn
+author: singhkays
 manager: timlt
 editor: 
 tags: azure-resource-manager
@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2016
-ms.author: cynthn
+ms.date: 03/14/2017
+ms.author: kasing
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 30faf4b99414e5f7b5131c231b4dccf3a7272d25
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: f5ef5242a565358fb4af90cf10bb332b9c942fce
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -211,7 +211,9 @@ Wenn die vorbereitete Konfiguration in Ordnung ist, können Sie den Vorgang fort
 ```
 
 ### <a name="migrate-virtual-machines-in-a-virtual-network"></a>Migrieren virtueller Computer in einem virtuellen Netzwerk
-Um virtuelle Computer in einem virtuellen Netzwerk zu migrieren, migrieren Sie das Netzwerk. Die virtuellen Computer werden automatisch zusammen mit dem Netzwerk migriert. Wählen Sie das virtuelle Netzwerk aus, das Sie migrieren möchten. 
+Um virtuelle Computer in einem virtuellen Netzwerk zu migrieren, migrieren Sie das virtuelle Netzwerk. Die virtuellen Computer werden automatisch zusammen mit dem virtuellen Netzwerk migriert. Wählen Sie das virtuelle Netzwerk aus, das Sie migrieren möchten. 
+> [!NOTE]
+> [Migrieren Sie einzelne klassische virtuelle Computer](./virtual-machines-windows-migrate-single-classic-to-resource-manager.md) durch Erstellen einer neuen Resource Manager-VM mit Managed Disks unter Verwendung der VHD-Dateien (Betriebssystem und Daten) des virtuellen Computers. 
 
 In diesem Beispiel wird der Name des virtuellen Netzwerks auf **myVnet** festgelegt. Ersetzen Sie den Namen des virtuellen Netzwerks im Beispiel durch den Namen Ihres eigenen virtuellen Netzwerks. 
 
@@ -251,6 +253,50 @@ Wenn die vorbereitete Konfiguration in Ordnung ist, können Sie den Vorgang fort
 ### <a name="migrate-a-storage-account"></a>Migrieren eines Speicherkontos
 Sobald Sie mit der Migration der virtuellen Computer fertig sind, sollten Sie die Speicherkonten migrieren.
 
+Bevor Sie das Speicherkonto migrieren, führen Sie Voraussetzungsprüfungen durch:
+
+* **Migrieren klassischer virtueller Computer, deren Datenträger im Speicherkonto gespeichert sind**
+
+    Der obige Befehl gibt die Eigenschaften RoleName und DiskName aller klassischen VM-Datenträger im Speicherkonto zurück. RoleName ist der Name des virtuellen Computers, dem ein Datenträger angefügt ist. Wenn der obige Befehl Datenträger zurückgibt, stellen Sie sicher, dass virtuelle Computer, denen diese Datenträger angefügt sind, vor der Migration des Speicherkontos migriert werden.
+    ```powershell
+     $storageAccountName = 'yourStorageAccountName'
+      Get-AzureDisk | where-Object {$_.MediaLink.Host.Contains($storageAccountName)} | Select-Object -ExpandProperty AttachedTo -Property `
+      DiskName | Format-List -Property RoleName, DiskName 
+
+    ```
+* **Löschen nicht angefügter klassischer, im Speicherkonto gespeicherter VM-Datenträger**
+ 
+    Mit folgendem Befehl finden Sie nicht angefügte klassische, im Speicherkonto gespeicherte VM-Datenträger: 
+
+    ```powershell
+        $storageAccountName = 'yourStorageAccountName'
+        Get-AzureDisk | where-Object {$_.MediaLink.Host.Contains($storageAccountName)} | Format-List -Property DiskName  
+
+    ```
+    Wenn der obige Befehl Datenträger zurückgibt, dann löschen Sie diese Datenträger mit folgendem Befehl:
+
+    ```powershell
+       Remove-AzureDisk -DiskName 'yourDiskName'
+    ```
+* **Löschen von VM-Images, die im Speicherkonto gespeichert sind**
+
+    Der obige Befehl gibt alle VM-Images mit Betriebssystemdatenträgern zurück, die im Speicherkonto gespeichert sind.
+     ```powershell
+        Get-AzureVmImage | Where-Object { $_.OSDiskConfiguration.MediaLink -ne $null -and $_.OSDiskConfiguration.MediaLink.Host.Contains($storageAccountName)`
+                                } | Select-Object -Property ImageName, ImageLabel
+     ```
+     Der obige Befehl gibt alle VM-Images mit Datenträgern für Daten zurück, die im Speicherkonto gespeichert sind.
+     ```powershell
+
+        Get-AzureVmImage | Where-Object {$_.DataDiskConfigurations -ne $null `
+                                         -and ($_.DataDiskConfigurations | Where-Object {$_.MediaLink -ne $null -and $_.MediaLink.Host.Contains($storageAccountName)}).Count -gt 0 `
+                                        } | Select-Object -Property ImageName, ImageLabel
+     ```
+    Löschen Sie alle VM-Images, die von den vorherigen Befehlen zurückgegeben wurden, mit folgendem Befehl:
+    ```powershell
+    Remove-AzureVMImage -ImageName 'yourImageName'
+    ```
+    
 Bereiten Sie jedes Speicherkonto mithilfe des folgenden Befehls für die Migration vor. In diesem Beispiel lautet der Name des Speicherkontos **MyStorageAccount**. Ersetzen Sie den Namen im Beispiel durch den Namen Ihres eigenen Speicherkontos. 
 
 ```powershell

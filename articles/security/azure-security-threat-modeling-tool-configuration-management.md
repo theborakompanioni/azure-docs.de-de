@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: rodsan
 translationtype: Human Translation
-ms.sourcegitcommit: e0c0d40cc0c198000264623476c05473d9d24eaf
-ms.openlocfilehash: 34c29cb8a6289ab4dcb489e6cb83e7f16a748177
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 66465e74298c08d64b37ab0ede86f3d187068555
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -35,11 +35,11 @@ ms.lasthandoff: 02/15/2017
 | Azure Storage | <ul><li>[Gewährleisten Sie die sichere Verwaltung von Azure-Speicherzugriffsschlüsseln.](#secure-keys)</li><li>[Stellen Sie sicher, dass nur vertrauenswürdige Ursprünge zulässig sind, wenn CORS für Azure Storage aktiviert ist.](#cors-storage)</li></ul> |
 | WCF | <ul><li>[Aktivieren Sie das Diensteinschränkungsfeature von WCF.](#throttling)</li><li>[Offenlegung von WCF-Informationen durch Metadaten](#info-metadata)</li></ul> | 
 
-## <a name="a-idcsp-jsaimplement-content-security-policy-csp-and-disable-inline-javascript"></a><a id="csp-js"></a>Implementieren Sie die Inhaltssicherheitsrichtlinie (Content Security Policy, CSP), und deaktivieren Sie Inline-JavaScript.
+## <a id="csp-js"></a>Implementieren Sie die Inhaltssicherheitsrichtlinie (Content Security Policy, CSP), und deaktivieren Sie Inline-JavaScript.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| Komponente               | Webanwendung | 
+| Komponente               | Webanwendung. | 
 | SDL-Phase               | Entwickeln |  
 | Technologien | Allgemein |
 | Attribute              | –  |
@@ -67,44 +67,44 @@ Zeichenfolgen werden nicht als Code ausgewertet.
 Example: var str="alert(1)"; eval(str);
 ```
 
-## <a name="a-idxss-filteraenable-browsers-xss-filter"></a><a id="xss-filter"></a>Aktivieren Sie die XSS-Filter des Browsers.
+## <a id="xss-filter"></a>Aktivieren Sie die XSS-Filter des Browsers.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| Komponente               | Webanwendung | 
+| Komponente               | Webanwendung. | 
 | SDL-Phase               | Entwickeln |  
 | Technologien | Allgemein |
-| Attribute              | N/V  |
+| Attribute              | –  |
 | Referenzen              | [XSS Protection Filter](https://www.owasp.org/index.php/List_of_useful_HTTP_headers#X-XSS-Protection) (XSS-Schutzfilter) |
 | Schritte | <p>Die Konfiguration des X-XSS-Protection-Antwortheaders steuert den websiteübergreifenden Skriptfilter des Browsers. Dieser Antwortheader kann folgende Werte besitzen:</p><ul><li>`0:`: Deaktiviert den Filter.</li><li>`1: Filter enabled`: Wenn ein Angriff mit websiteübergreifendem Skripting erkannt wird, wird die Seite vom Browser bereinigt, um den Angriff abzuwehren.</li><li>`1: mode=block : Filter enabled`: Bei Erkennung eines XSS-Angriffs verhindert der Browser das Rendern der Seite, anstatt die Seite zu bereinigen.</li><li>`1: report=http://[YOURDOMAIN]/your_report_URI : Filter enabled`: Der Browser bereinigt die Seite und meldet die Verletzung.</li></ul><p>Hierbei handelt es sich um eine Chromium-Funktion, die CSP-Verletzungsberichte verwendet, um Details an einen URI Ihrer Wahl zu senden. Die letzten beiden Optionen werden als sichere Werte betrachtet.</p>|
 
-## <a name="a-idtrace-deployaaspnet-applications-must-disable-tracing-and-debugging-prior-to-deployment"></a><a id="trace-deploy"></a>ASP.NET-Anwendungen müssen vor der Bereitstellung die Ablaufverfolgung und das Debugging deaktivieren.
+## <a id="trace-deploy"></a>ASP.NET-Anwendungen müssen vor der Bereitstellung die Ablaufverfolgung und das Debugging deaktivieren.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| Komponente               | Webanwendung | 
+| Komponente               | Webanwendung. | 
 | SDL-Phase               | Entwickeln |  
 | Technologien | Allgemein |
-| Attribute              | N/V  |
+| Attribute              | –  |
 | Referenzen              | [Übersicht über den ASP.NET-Debugger](http://msdn2.microsoft.com/library/ms227556.aspx), [Übersicht über die ASP.NET-Ablaufverfolgung](http://msdn2.microsoft.com/library/bb386420.aspx), [Gewusst wie: Aktivieren der Ablaufverfolgung für eine ASP.NET-Anwendung](http://msdn2.microsoft.com/library/0x5wc973.aspx), [Gewusst wie: Debuggen für ASP.NET-Anwendungen aktivieren](http://msdn2.microsoft.com/library/e8z01xdh(VS.80).aspx) |
 | Schritte | Wenn die Ablaufverfolgung für die Seite aktiviert ist, erhält jeder Browser, der die Seite anfordert, auch die Ablaufverfolgungsinformationen, die Daten zum internen Serverzustand und zum Workflow enthalten. Diese Informationen sind möglicherweise sicherheitsrelevant. Wenn das Debuggen für die Seite aktiviert ist, führen Fehler auf dem Server dazu, dass der Browser die vollständigen Daten der Stapelüberwachung erhält. Diese Daten enthalten möglicherweise sicherheitsrelevante Informationen zum Workflow des Servers. |
 
-## <a name="a-idjs-trustedaaccess-third-party-javascripts-from-trusted-sources-only"></a><a id="js-trusted"></a>Greifen Sie nur auf Drittanbieter-JavaScripts aus vertrauenswürdigen Quellen zu.
+## <a id="js-trusted"></a>Greifen Sie nur auf Drittanbieter-JavaScripts aus vertrauenswürdigen Quellen zu.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| Komponente               | Webanwendung | 
+| Komponente               | Webanwendung. | 
 | SDL-Phase               | Entwickeln |  
 | Technologien | Allgemein |
-| Attribute              | N/V  |
-| Referenzen              | N/V  |
+| Attribute              | –  |
+| Referenzen              | –  |
 | Schritte | Auf Drittanbieter-JavaScripts darf nur verwiesen werden, wenn diese aus vertrauenswürdigen Quellen stammen. Die Verweisendpunkte müssen immer SSL verwenden. |
 
-## <a name="a-idui-defensesaensure-that-authenticated-aspnet-pages-incorporate-ui-redressing-or-clickjacking-defenses"></a><a id="ui-defenses"></a>Stellen Sie sicher, dass authentifizierte ASP.NET-Seiten gegen UI Redressing und Clickjacking geschützt sind.
+## <a id="ui-defenses"></a>Stellen Sie sicher, dass authentifizierte ASP.NET-Seiten gegen UI Redressing und Clickjacking geschützt sind.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| Komponente               | Webanwendung | 
+| Komponente               | Webanwendung. | 
 | SDL-Phase               | Entwickeln |  
 | Technologien | Allgemein |
 | Attribute              | –  |
@@ -135,19 +135,19 @@ Codeausschnitt aus „web.config“ für Websites, die nur von Seiten aus der gl
     </system.webServer>
 ```
 
-## <a name="a-idcors-aspnetaensure-that-only-trusted-origins-are-allowed-if-cors-is-enabled-on-aspnet-web-applications"></a><a id="cors-aspnet"></a>Stellen Sie sicher, dass nur vertrauenswürdige Ursprünge zulässig sind, wenn CORS für ASP.NET-Webanwendungen aktiviert ist.
+## <a id="cors-aspnet"></a>Stellen Sie sicher, dass nur vertrauenswürdige Ursprünge zulässig sind, wenn CORS für ASP.NET-Webanwendungen aktiviert ist.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| Komponente               | Webanwendung | 
+| Komponente               | Webanwendung. | 
 | SDL-Phase               | Entwickeln |  
-| Technologien | Webformulare, MVC5 |
-| Attribute              | N/V  |
-| Referenzen              | N/V  |
+| Zutreffende Technologien | Web Forms, MVC5 |
+| Attribute              | –  |
+| Referenzen              | –  |
 | Schritte | <p>Die Browsersicherheit verhindert, dass eine Webseite AJAX-Anforderungen an eine andere Domäne richtet. Diese Einschränkung wird als Richtlinie des gleichen Ursprungs bezeichnet und verhindert, dass eine schädliche Website sensible Daten von einer anderen Website liest. Manchmal müssen jedoch unter Umständen APIs sicher verfügbar gemacht werden, damit sie von anderen Websites genutzt werden können. CORS (Cross Origin Resource Sharing; Ressourcenfreigabe zwischen verschiedenen Ursprüngen) ist ein W3C-Standard, der einem Server eine weniger strenge Anwendung der Richtlinie des gleichen Ursprungs ermöglicht. Mit CORS kann ein Server explizit einige ursprungsübergreifende Anforderungen zulassen und andere ablehnen.</p><p>CORS ist sicherer und flexibler als frühere Techniken wie etwa JSONP. Durch die Aktivierung von CORS werden der Webanwendung im Grunde einige HTTP-Antwortheader (Access-Control-*) hinzugefügt. Dies ist auf mehrere Arten möglich.</p>|
 
 ### <a name="example"></a>Beispiel
-Wenn der Zugriff auf „web.config“ möglich ist, kann CORS über den folgenden Knoten hinzugefügt werden: 
+Wenn der Zugriff auf „web.config“ möglich ist, kann CORS über den folgenden Code hinzugefügt werden: 
 ```XML
 <system.webServer>
     <httpProtocol>
@@ -166,14 +166,14 @@ HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "http://example
 
 Stellen Sie unbedingt sicher, dass die Liste mit Ursprüngen im Attribut „Access-Control-Allow-Origin“ auf eine begrenzte Anzahl vertrauenswürdiger Ursprünge festgelegt ist. Ist dieser Aspekt nicht ordnungsgemäß konfiguriert (also der Wert beispielsweise auf „*“ festgelegt), können schädliche Websites ursprungsübergreifende Anforderungen ohne jegliche Einschränkungen an die Webanwendung richten, wodurch die Anwendung für CSRF-Angriffe anfällig wird. 
 
-## <a name="a-idvalidate-aspnetaenable-validaterequest-attribute-on-aspnet-pages"></a><a id="validate-aspnet"></a>Aktivieren Sie für ASP.NET-Seiten das ValidateRequest-Attribut.
+## <a id="validate-aspnet"></a>Aktivieren Sie für ASP.NET-Seiten das ValidateRequest-Attribut.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| Komponente               | Webanwendung | 
+| Komponente               | Webanwendung. | 
 | SDL-Phase               | Entwickeln |  
-| Technologien | Webformulare, MVC5 |
-| Attribute              | N/V  |
+| Zutreffende Technologien | Web Forms, MVC5 |
+| Attribute              | –  |
 | Referenzen              | [Request Validation - Preventing Script Attacks](http://www.asp.net/whitepapers/request-validation) (Anforderungsüberprüfung – Verhindern von Skriptangriffen) |
 | Schritte | <p>Das Anforderungsüberprüfungsfeature von ASP.NET ist seit Version 1.1 verfügbar und verhindert, dass der Server Inhalte mit nicht codierter HTML akzeptiert. Dieses Feature dient zur Abwehr von Skripteinschleusungsangriffen, bei denen Clientskriptcode oder HTML unbewusst an einen Server übermittelt, gespeichert und anschließend anderen Benutzern angezeigt werden kann. Es wird weiterhin dringend empfohlen, sämtliche Eingabedaten zu überprüfen und gegebenenfalls als HTML zu codieren.</p><p>Bei der Anforderungsüberprüfung werden sämtliche Eingabedaten mit einer Liste potenziell gefährlicher Werte verglichen. Im Falle einer Übereinstimmung löst ASP.NET Folgendes aus: `HttpRequestValidationException`. Das Anforderungsüberprüfungsfeature ist standardmäßig aktiviert.</p>|
 
@@ -192,25 +192,25 @@ Oder auf Anwendungsebene:
 ```
 Hinweis: Das Anforderungsüberprüfungsfeature wird nicht unterstützt und ist nicht Teil der MVC6-Pipeline. 
 
-## <a name="a-idlocal-jsause-locally-hosted-latest-versions-of-javascript-libraries"></a><a id="local-js"></a>Verwenden Sie die neuesten Versionen von JavaScript-Bibliotheken (lokal gehostet).
+## <a id="local-js"></a>Verwenden Sie die neuesten Versionen von JavaScript-Bibliotheken (lokal gehostet).
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| Komponente               | Webanwendung | 
+| Komponente               | Webanwendung. | 
 | SDL-Phase               | Entwickeln |  
 | Technologien | Allgemein |
-| Attribute              | N/V  |
-| Referenzen              | N/V  |
+| Attribute              | –  |
+| Referenzen              | –  |
 | Schritte | <p>Entwickler, die mit standardmäßigen JavaScript-Bibliotheken wie JQuery arbeiten, müssen genehmigte Versionen gängiger JavaScript-Bibliotheken verwenden, die keine bekannten Sicherheitsmängel enthalten. Es empfiehlt sich, stets die neueste Version der Bibliotheken zu verwenden, da sie Sicherheitsfixes für bekannte Sicherheitsrisiken aus älteren Versionen enthalten.</p><p>Falls die neueste Version aus Kompatibilitätsgründen nicht verwendet werden kann, sollten folgende Mindestversionen verwendet werden.</p><p>Akzeptable Mindestversionen:</p><ul><li>**JQuery**<ul><li>JQuery 1.7.1</li><li>JQueryUI 1.10.0</li><li>JQuery Validate 1.9</li><li>JQuery Mobile 1.0.1</li><li>JQuery Cycle 2.99</li><li>JQuery DataTables 1.9.0</li></ul></li><li>**AJAX Control Toolkit**<ul><li>AJAX Control Toolkit 40412</li></ul></li><li>**ASP.NET-Web Forms und AJAX**<ul><li>ASP.NET-Web Forms und AJAX 4</li><li>ASP.NET AJAX 3.5</li></ul></li><li>**ASP.NET MVC**<ul><li>ASP.NET MVC 3.0</li></ul></li></ul><p>Laden Sie niemals eine JavaScript-Bibliothek von externen Websites (beispielsweise von öffentlichen CDNs).</p>|
 
-## <a name="a-idmime-sniffadisable-automatic-mime-sniffing"></a><a id="mime-sniff"></a>Deaktivieren Sie die automatische MIME-Ermittlung.
+## <a id="mime-sniff"></a>Deaktivieren Sie die automatische MIME-Ermittlung.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| Komponente               | Webanwendung | 
+| Komponente               | Webanwendung. | 
 | SDL-Phase               | Entwickeln |  
 | Technologien | Allgemein |
-| Attribute              | N/V  |
+| Attribute              | –  |
 | Referenzen              | [IE8 Security Part V: Comprehensive Protection](http://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx) (IE8-Sicherheit Teil V: Umfassender Schutz), [MIME type](http://en.wikipedia.org/wiki/Mime_type) (MIME-Typ) |
 | Schritte | Der Header „X-Content-Type-Options“ ist ein HTTP-Header, mit dem Entwickler angeben, dass für ihre Inhalte keine MIME-Ermittlung erfolgen soll. Dieser Header ist als Gegenmaßnahme für MIME-Ermittlungsangriffe konzipiert. Für jede Seite, die möglicherweise von Benutzern steuerbare Inhalte enthält, muss der HTTP-Header „X-Content-Type-Options:nosniff“ verwendet werden. Verwenden Sie eines der folgenden Verfahren, um den erforderlichen Header global für alle Seiten in der Anwendung zu aktivieren:|
 
@@ -268,29 +268,29 @@ Sie können den erforderlichen Header für bestimmte Seiten aktivieren, indem si
 this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 ```
 
-## <a name="a-idstandard-fingeraremove-standard-server-headers-on-windows-azure-web-sites-to-avoid-fingerprinting"></a><a id="standard-finger"></a>Entfernen Sie Serverstandardheader für Windows Azure-Websites, um Fingerprinting zu vermeiden.
+## <a id="standard-finger"></a>Entfernen Sie Serverstandardheader für Windows Azure-Websites, um Fingerprinting zu vermeiden.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| Komponente               | Webanwendung | 
+| Komponente               | Webanwendung. | 
 | SDL-Phase               | Entwickeln |  
 | Technologien | Allgemein |
 | Attribute              | EnvironmentType: Azure |
 | Referenzen              | [Removing standard server headers on Windows Azure Web Sites](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/) (Entfernen von Serverstandardheadern für Windows Azure-Websites) |
 | Schritte | Header wie „Server“, „X-Powered-By“ und „X-AspNet-Version“ geben Informationen zum Server und zu den zugrunde liegenden Technologien preis. Es empfiehlt sich, diese Header zu unterdrücken, um das Fingerprinting der Anwendung zu verhindern. |
 
-## <a name="a-idfirewall-dbaconfigure-a-windows-firewall-for-database-engine-access"></a><a id="firewall-db"></a>Konfigurieren Sie eine Windows-Firewall für Datenbankmodulzugriff.
+## <a id="firewall-db"></a>Konfigurieren Sie eine Windows-Firewall für Datenbankmodulzugriff.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | Komponente               | Datenbank | 
 | SDL-Phase               | Entwickeln |  
-| Technologien | SQL Azure, lokal |
+| Zutreffende Technologien | SQL Azure, lokal |
 | Attribute              | N/V, SQL-Version: V12 |
 | Referenzen              | [Übersicht über Firewallregeln für Azure SQL-Datenbank](https://azure.microsoft.com/documentation/articles/sql-database-firewall-configure/), [Konfigurieren einer Windows-Firewall für Datenbankmodulzugriff](https://msdn.microsoft.com/library/ms175043) |
 | Schritte | Firewallsysteme tragen dazu bei, nicht autorisierte Zugriffe auf Computerressourcen zu verhindern. Wenn Sie durch eine Firewall auf eine Instanz des SQL Server-Datenbankmoduls zugreifen möchten, müssen Sie die Firewall auf dem Computer, auf dem SQL Server ausgeführt wird, entsprechend konfigurieren. |
 
-## <a name="a-idcors-apiaensure-that-only-trusted-origins-are-allowed-if-cors-is-enabled-on-aspnet-web-api"></a><a id="cors-api"></a>Stellen Sie sicher, dass nur vertrauenswürdige Ursprünge zulässig sind, wenn CORS für die ASP.NET-Web-API aktiviert ist.
+## <a id="cors-api"></a>Stellen Sie sicher, dass nur vertrauenswürdige Ursprünge zulässig sind, wenn CORS für die ASP.NET-Web-API aktiviert ist.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
@@ -393,7 +393,7 @@ public class ResourcesController : ApiController
 | Komponente               | Web-API | 
 | SDL-Phase               | Entwickeln |  
 | Technologien | MVC 6 |
-| Attribute              | N/V  |
+| Attribute              | –  |
 | Referenzen              | [Enabling Cross-Origin Requests (CORS) in ASP.NET Core 1.0](https://docs.asp.net/en/latest/security/cors.html) (Aktivieren von CORS in ASP.NET Core 1.0) |
 | Schritte | <p>In ASP.NET Core 1.0 kann CORS entweder mithilfe von Middleware oder mithilfe von MVC aktiviert werden. Bei Verwendung von MVC werden die gleichen CORS-Dienste verwendet, aber nicht die CORS-Middleware.</p>|
 
@@ -478,29 +478,29 @@ Wenn Sie CORS für einen Controller oder eine Aktion deaktivieren möchten, verw
     }
 ```
 
-## <a name="a-idconfig-sensitiveaencrypt-sections-of-web-apis-configuration-files-that-contain-sensitive-data"></a><a id="config-sensitive"></a>Verschlüsseln Sie Abschnitte der Web-API-Konfigurationsdateien, die sensible Daten enthalten.
+## <a id="config-sensitive"></a>Verschlüsseln Sie Abschnitte der Web-API-Konfigurationsdateien, die sensible Daten enthalten.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | Komponente               | Web-API | 
 | SDL-Phase               | Bereitstellung |  
 | Technologien | Allgemein |
-| Attribute              | N/V  |
+| Attribute              | –  |
 | Referenzen              | [How To: Encrypt Configuration Sections in ASP.NET 2.0 Using DPAPI](https://msdn.microsoft.com/library/ff647398.aspx) (Gewusst wie: Verschlüsseln von Konfigurationsabschnitten in ASP.NET 2.0 mithilfe von DPAPI), [Angeben eines geschützten Konfigurationsanbieters](https://msdn.microsoft.com/library/68ze1hb2.aspx), [Using Azure Key Vault to protect application secrets](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) (Schützen von Anwendungsgeheimnissen mithilfe von Azure Key Vault) |
 | Schritte | In Konfigurationsdateien wie „web.config“ und „appsettings.json“ werden häufig sensible Informationen wie Benutzernamen, Kennwörter, Datenbankverbindungszeichenfolgen und Verschlüsselungsschlüssel gespeichert. Wenn Sie diese Informationen nicht schützen, können Angreifer oder böswillige Benutzer an sensible Informationen wie Kontobenutzernamen und Kennwörter, Datenbanknamen und Servernamen gelangen. Verschlüsseln Sie daher die sensiblen Abschnitte von Konfigurationsdateien basierend auf dem Bereitstellungstyp (Azure/lokal) mithilfe von DPAPI oder mithilfe von Diensten wie Azure Key Vault. |
 
-## <a name="a-idadmin-strongaensure-that-all-admin-interfaces-are-secured-with-strong-credentials"></a><a id="admin-strong"></a>Stellen Sie sicher, dass alle Administratoroberflächen durch sichere Anmeldeinformationen geschützt sind.
+## <a id="admin-strong"></a>Stellen Sie sicher, dass alle Administratoroberflächen durch sichere Anmeldeinformationen geschützt sind.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | Komponente               | IoT-Gerät | 
 | SDL-Phase               | Bereitstellung |  
 | Technologien | Allgemein |
-| Attribute              | N/V  |
-| Referenzen              | N/V  |
+| Attribute              | –  |
+| Referenzen              | –  |
 | Schritte | Administratoroberflächen, die das Gerät oder das zwischengeschaltete Gateway verfügbar macht, müssen mit sicheren Anmeldeinformationen geschützt werden. Weitere verfügbar gemachte Schnittstellen wie WLAN, SSH, Dateifreigaben und FTP müssen mit sicheren Anmeldeinformationen geschützt werden. Verwenden Sie keine unsicheren Standardkennwörter. |
 
-## <a name="a-idunknown-exeaensure-that-unknown-code-cannot-execute-on-devices"></a><a id="unknown-exe"></a>Stellen Sie sicher, dass auf Geräten kein unbekannter Code ausgeführt werden kann.
+## <a id="unknown-exe"></a>Stellen Sie sicher, dass auf Geräten kein unbekannter Code ausgeführt werden kann.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
@@ -511,7 +511,7 @@ Wenn Sie CORS für einen Controller oder eine Aktion deaktivieren möchten, verw
 | Referenzen              | [Enabling Secure Boot and BitLocker Device Encryption on Windows 10 IoT Core](https://developer.microsoft.com/windows/iot/win10/sb_bl) (Aktivieren des sicheren Starts und der BitLocker-Geräteverschlüsselung unter Windows 10 IoT Core) |
 | Schritte | Der sichere UEFI-Start sorgt mittels Einschränkung des Systems dafür, dass nur Binärdateien ausgeführt werden können, die von einer angegebenen Stelle signiert wurden. Dieses Feature verhindert die Ausführung von unbekanntem Code auf der Plattform und damit eine potenzielle Beeinträchtigung ihres Sicherheitsstatus. Aktivieren Sie den sicheren UEFI-Start, und schränken Sie die Liste mit den vertrauenswürdigen Zertifizierungsstellen ein, die Code signieren können. Lassen Sie sämtlichen Code, der auf dem Gerät bereitgestellt wird, von einer der vertrauenswürdigen Zertifizierungsstellen signieren. |
 
-## <a name="a-idpartition-iotaencrypt-os-and-additional-partitions-of-iot-device-with-bitlocker"></a><a id="partition-iot"></a>Verschlüsseln Sie die Betriebssystempartition und andere Partitionen des IoT-Geräts mit BitLocker.
+## <a id="partition-iot"></a>Verschlüsseln Sie die Betriebssystempartition und andere Partitionen des IoT-Geräts mit BitLocker.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
@@ -522,29 +522,18 @@ Wenn Sie CORS für einen Controller oder eine Aktion deaktivieren möchten, verw
 | Referenzen              | –  |
 | Schritte | Windows 10 IoT Core implementiert eine vereinfachte Version der BitLocker-Geräteverschlüsselung, die stark davon abhängig ist, dass die Plattform über ein TPM verfügt – einschließlich des erforderlichen preOS-Protokolls in UEFI zur Durchführung der erforderlichen Messungen. Mit diesen preOS-Messungen wird sichergestellt, dass das Betriebssystem später eindeutig nachvollziehen kann, wie es gestartet wurde. Verschlüsseln Sie Betriebssystempartitionen und andere Partitionen, auf denen sensible Daten gespeichert sind, mit BitLocker. |
 
-## <a name="a-idmin-enableaensure-that-only-the-minimum-servicesfeatures-are-enabled-on-devices"></a><a id="min-enable"></a>Stellen Sie sicher, dass auf Geräten nur unbedingt erforderliche Dienste/Features aktiviert sind.
+## <a id="min-enable"></a>Stellen Sie sicher, dass auf Geräten nur unbedingt erforderliche Dienste/Features aktiviert sind.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | Komponente               | IoT-Gerät | 
 | SDL-Phase               | Bereitstellung |  
 | Technologien | Allgemein |
-| Attribute              | N/V  |
-| Referenzen              | N/V  |
+| Attribute              | –  |
+| Referenzen              | –  |
 | Schritte | Lassen Sie alle Features oder Dienste des Betriebssystems, die nicht für den ordnungsgemäßen Betrieb der Lösung benötigt werden, deaktiviert, bzw. deaktivieren Sie sie. Falls für das Gerät also beispielsweise keine Benutzeroberfläche bereitgestellt werden muss, installieren Sie Windows IoT Core im monitorlosen Modus. |
 
-## <a name="a-idfield-bitlockeraencrypt-os-and-additional-partitions-of-iot-field-gateway-with-bitlocker"></a><a id="field-bitlocker"></a>Verschlüsseln Sie die Betriebssystempartition und andere Partitionen des zwischengeschalteten IoT-Gateways mit BitLocker.
-
-| Titel                   | Details      |
-| ----------------------- | ------------ |
-| Komponente               | Zwischengeschaltetes IoT-Gateway | 
-| SDL-Phase               | Bereitstellung |  
-| Technologien | Allgemein |
-| Attribute              | N/V  |
-| Referenzen              | –  |
-| Schritte | Windows 10 IoT Core implementiert eine vereinfachte Version der BitLocker-Geräteverschlüsselung, die stark davon abhängig ist, dass die Plattform über ein TPM verfügt – einschließlich des erforderlichen preOS-Protokolls in UEFI zur Durchführung der erforderlichen Messungen. Mit diesen preOS-Messungen wird sichergestellt, dass das Betriebssystem später eindeutig nachvollziehen kann, wie es gestartet wurde. Verschlüsseln Sie Betriebssystempartitionen und andere Partitionen, auf denen sensible Daten gespeichert sind, mit BitLocker. |
-
-## <a name="a-iddefault-changeaensure-that-the-default-login-credentials-of-the-field-gateway-are-changed-during-installation"></a><a id="default-change"></a>Stellen Sie sicher, dass die Standardanmeldeinformationen des zwischengeschalteten Gateways bei der Installation geändert werden.
+## <a id="field-bitlocker"></a>Verschlüsseln Sie die Betriebssystempartition und andere Partitionen des zwischengeschalteten IoT-Gateways mit BitLocker.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
@@ -552,32 +541,43 @@ Wenn Sie CORS für einen Controller oder eine Aktion deaktivieren möchten, verw
 | SDL-Phase               | Bereitstellung |  
 | Technologien | Allgemein |
 | Attribute              | –  |
-| Referenzen              | N/V  |
+| Referenzen              | –  |
+| Schritte | Windows 10 IoT Core implementiert eine vereinfachte Version der BitLocker-Geräteverschlüsselung, die stark davon abhängig ist, dass die Plattform über ein TPM verfügt – einschließlich des erforderlichen preOS-Protokolls in UEFI zur Durchführung der erforderlichen Messungen. Mit diesen preOS-Messungen wird sichergestellt, dass das Betriebssystem später eindeutig nachvollziehen kann, wie es gestartet wurde. Verschlüsseln Sie Betriebssystempartitionen und andere Partitionen, auf denen sensible Daten gespeichert sind, mit BitLocker. |
+
+## <a id="default-change"></a>Stellen Sie sicher, dass die Standardanmeldeinformationen des zwischengeschalteten Gateways bei der Installation geändert werden.
+
+| Titel                   | Details      |
+| ----------------------- | ------------ |
+| Komponente               | Zwischengeschaltetes IoT-Gateway | 
+| SDL-Phase               | Bereitstellung |  
+| Technologien | Allgemein |
+| Attribute              | –  |
+| Referenzen              | –  |
 | Schritte | Stellen Sie sicher, dass die Standardanmeldeinformationen des zwischengeschalteten Gateways bei der Installation geändert werden. |
 
-## <a name="a-idcloud-firmwareaensure-that-the-cloud-gateway-implements-a-process-to-keep-the-connected-devices-firmware-up-to-date"></a><a id="cloud-firmware"></a>Stellen Sie sicher, dass das Cloudgateway einen Prozess implementiert, der die Firmware verbundener Geräte auf dem neuesten Stand hält.
+## <a id="cloud-firmware"></a>Stellen Sie sicher, dass das Cloudgateway einen Prozess implementiert, der die Firmware verbundener Geräte auf dem neuesten Stand hält.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | Komponente               | IoT-Cloudgateway | 
 | SDL-Phase               | Entwickeln |  
 | Technologien | Allgemein |
-| Attribute              | Wahl des Gateways – Azure IoT Hub |
+| Attribute              | Wahl des Gateways: Azure IoT Hub |
 | Referenzen              | [Übersicht über die Geräteverwaltung mit IoT Hub](https://azure.microsoft.com/documentation/articles/iot-hub-device-management-overview/), [How to update Device Firmware](https://azure.microsoft.com/documentation/articles/iot-hub-device-management-device-jobs/) (Aktualisieren der Gerätefirmware) |
 | Schritte | LWM2M ist ein Protokoll der Open Mobile Alliance zur Verwaltung von IoT-Geräten. Die Azure IoT-Geräteverwaltung ermöglicht die Interaktion mit physischen Geräten über Geräteaufträge. Stellen Sie sicher, dass das Cloudgateway einen Prozess implementiert, der das Gerät und andere Konfigurationsdaten mithilfe der Geräteverwaltung von Azure IoT Hub regelmäßig auf den neuesten Stand bringt. |
 
-## <a name="a-idcontrols-policiesaensure-that-devices-have-end-point-security-controls-configured-as-per-organizational-policies"></a><a id="controls-policies"></a>Stellen Sie sicher, dass für Geräte organisationsrichtlinienkonforme Endpunktsicherheitskontrollen konfiguriert sind.
+## <a id="controls-policies"></a>Stellen Sie sicher, dass für Geräte organisationsrichtlinienkonforme Endpunktsicherheitskontrollen konfiguriert sind.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | Komponente               | Computer-Vertrauensstellungsgrenze | 
 | SDL-Phase               | Bereitstellung |  
 | Technologien | Allgemein |
-| Attribute              | N/V  |
-| Referenzen              | N/V  |
+| Attribute              | –  |
+| Referenzen              | –  |
 | Schritte | Stellen Sie sicher, dass für Geräte organisationsrichtlinienkonforme Endpunktsicherheitskontrollen konfiguriert sind. Beispiele wären etwa BitLocker für die Verschlüsselung auf Datenträgerebene, Virenschutz mit aktualisierten Signaturen, eine hostbasierte Firewall, Betriebssystemupgrades und Gruppenrichtlinien. |
 
-## <a name="a-idsecure-keysaensure-secure-management-of-azure-storage-access-keys"></a><a id="secure-keys"></a>Gewährleisten Sie die sichere Verwaltung von Azure-Speicherzugriffsschlüsseln.
+## <a id="secure-keys"></a>Gewährleisten Sie die sichere Verwaltung von Azure-Speicherzugriffsschlüsseln.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
@@ -588,25 +588,25 @@ Wenn Sie CORS für einen Controller oder eine Aktion deaktivieren möchten, verw
 | Referenzen              | [Azure Storage-Sicherheitsleitfaden – Verwalten Ihres Speicherkontoschlüssels](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_managing-your-storage-account-keys) |
 | Schritte | <p>Schlüsselspeicher: Es wird empfohlen, die Azure-Speicherzugriffsschlüssel als Geheimnis in Azure Key Vault zu speichern und von den Anwendungen aus dem Schlüsseltresor abrufen zu lassen. Dies empfiehlt sich aus folgenden Gründen:</p><ul><li>Der Speicherschlüssel liegt zu keinem Zeitpunkt als hartcodierter Speicherschlüssel in einer Konfigurationsdatei der Anwendung vor, sodass ohne ausdrückliche Berechtigung niemand Zugriff auf die Schlüssel erlangen kann.</li><li>Der Zugriff auf die Schlüssel kann über Azure Active Directory gesteuert werden. Das bedeutet, ein Kontoinhaber kann einigen wenigen Anwendungen, die Schlüssel aus Azure Key Vault abrufen müssen, Zugriff gewähren. Andere Anwendungen können nur auf die Schlüssel zugreifen, wenn ihnen dies explizit gestattet wird.</li><li>Erneute Schlüsselgenerierung: Aus Sicherheitsgründen empfiehlt es sich, einen Prozess für die erneute Generierung von Speicherzugriffsschlüsseln einzurichten. Details zu den Gründen und zur Vorgehensweise für die Planung der erneuten Schlüsselgenerierung finden Sie im Referenzartikel des Azure Storage-Sicherheitsleitfadens.</li></ul>|
 
-## <a name="a-idcors-storageaensure-that-only-trusted-origins-are-allowed-if-cors-is-enabled-on-azure-storage"></a><a id="cors-storage"></a>Stellen Sie sicher, dass nur vertrauenswürdige Ursprünge zulässig sind, wenn CORS für Azure Storage aktiviert ist.
+## <a id="cors-storage"></a>Stellen Sie sicher, dass nur vertrauenswürdige Ursprünge zulässig sind, wenn CORS für Azure Storage aktiviert ist.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | Komponente               | Azure Storage | 
 | SDL-Phase               | Entwickeln |  
 | Technologien | Allgemein |
-| Attribute              | N/V  |
+| Attribute              | –  |
 | Referenzen              | [Cross-Origin Resource Sharing (CORS) Support for the Azure Storage Services](https://msdn.microsoft.com/library/azure/dn535601.aspx) (Unterstützung von CORS (Cross-Origin Resource Sharing; ursprungsübergreifende Freigabe) für die Azure Storage-Dienste) |
 | Schritte | Mit Azure Storage können Sie CORS aktivieren – Ressourcenfreigabe zwischen verschiedenen Ursprüngen. Für jedes Speicherkonto können Sie Domänen angeben, die auf die Ressourcen in diesem Speicherkonto zugreifen können. CORS ist standardmäßig für alle Dienste deaktiviert. Sie können CORS mithilfe der REST-API oder der Speicherclientbibliothek für den Aufruf einer der Methoden zum Festlegen von Dienstrichtlinien aktivieren. |
 
-## <a name="a-idthrottlingaenable-wcfs-service-throttling-feature"></a><a id="throttling"></a>Aktivieren Sie das Diensteinschränkungsfeature von WCF.
+## <a id="throttling"></a>Aktivieren Sie das Diensteinschränkungsfeature von WCF.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | Komponente               | WCF | 
 | SDL-Phase               | Entwickeln |  
 | Technologien | .NET Framework 3 |
-| Attribute              | N/V  |
+| Attribute              | –  |
 | Referenzen              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Kingdom](https://vulncat.fortify.com/en/vulncat/index.html) |
 | Schritte | <p>Wird die Verwendung der Systemressourcen nicht begrenzt, gehen die Ressourcen unter Umständen zur Neige, was letztendlich zu einem Denial-of-Service-Zustand führt.</p><ul><li>**ERLÄUTERUNG:** Windows Communication Foundation (WCF) ermöglicht die Drosselung von Dienstanforderungen. Wenn zu viele Clientanforderungen zugelassen werden, ist das System möglicherweise zu stark ausgelastet, und die Ressourcen gehen zur Neige. Wird dagegen nur eine geringe Anzahl von Dienstanforderungen zugelassen, können berechtigte Benutzer den Dienst unter Umständen nicht verwenden. Jeder Dienst muss einzeln optimiert und so konfiguriert werden, dass eine angemessene Ressourcenmenge zugelassen wird.</li><li>**EMPFEHLUNGEN:** Aktivieren Sie das Diensteinschränkungsfeature von WCF, und legen Sie geeignete Grenzwerte für Ihre Anwendung fest.</li></ul>|
 
@@ -622,7 +622,7 @@ Das folgende Beispiel zeigt eine Konfiguration mit aktivierter Drosselung:
 </system.serviceModel> 
 ```
 
-## <a name="a-idinfo-metadataawcf-information-disclosure-through-metadata"></a><a id="info-metadata"></a>Offenlegung von WCF-Informationen durch Metadaten
+## <a id="info-metadata"></a>Offenlegung von WCF-Informationen durch Metadaten
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
@@ -651,3 +651,4 @@ smb.HttpGetEnabled = false;
 smb.HttpGetUrl = new Uri(EndPointAddress); 
 Host.Description.Behaviors.Add(smb);
 ```
+

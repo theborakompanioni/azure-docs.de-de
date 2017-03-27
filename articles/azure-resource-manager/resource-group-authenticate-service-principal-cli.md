@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/17/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
-ms.openlocfilehash: 76c5bdeb2a27b733d8566c7a19f9457feebdc273
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: a99b55c98f29356fb78e053434f6f3fc5c9d0efc
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -34,7 +35,7 @@ Wenn eine App oder ein Skript Zugriff auf Ressourcen benötigt, können Sie eine
 * Sie müssen keine Anmeldeinformationen für die App ändern, wenn sich Ihre Zuständigkeiten ändern. 
 * Sie können ein Zertifikat verwenden, um die Authentifizierung beim Ausführen eines unbeaufsichtigten Skripts zu automatisieren.
 
-In diesem Thema erfahren Sie, wie Sie mithilfe der [Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows](../xplat-cli-install.md) eine Anwendung einrichten, die unter eigenen Anmeldeinformationen und einer eigenen Identität ausgeführt wird.
+In diesem Thema erfahren Sie, wie Sie mithilfe der [Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows](../cli-install-nodejs.md) eine Anwendung einrichten, die unter eigenen Anmeldeinformationen und einer eigenen Identität ausgeführt wird.
 
 Mit der Azure-Befehlszeilenschnittstelle stehen Ihnen für die Authentifizierung Ihrer AD-Anwendung zwei Optionen zur Verfügung:
 
@@ -372,10 +373,5 @@ Die folgenden Beispielanwendungen veranschaulichen die Anmeldung als Dienstprinz
 ## <a name="next-steps"></a>Nächste Schritte
 * Ausführliche Schritte zum Integrieren einer Anwendung in Azure zur Verwaltung von Ressourcen finden Sie im [Entwicklerhandbuch für die Autorisierung mit der Azure Resource Manager-API](resource-manager-api-authentication.md).
 * Weitere Informationen zur Verwendung von Zertifikaten und der Azure-Befehlszeilenschnittstelle finden Sie unter [Certificate-based auth with Azure Service Principals from Linux command line](http://blogs.msdn.com/b/arsen/archive/2015/09/18/certificate-based-auth-with-azure-service-principals-from-linux-command-line.aspx)(Zertifikatbasierte Authentifizierung mit Azure-Dienstprinzipalen über die Linux-Befehlszeile). 
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 
