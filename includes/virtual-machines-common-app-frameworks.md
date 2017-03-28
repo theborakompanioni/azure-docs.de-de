@@ -53,7 +53,7 @@ Ersetzen Sie in den folgenden Befehlen den Text in den geschweiften Klammern dur
 Wenn Sie den Befehl **New-AzureRmResourceGroupDeployment** ausführen, werden Sie aufgefordert, für die Parameter in der Vorlage die entsprechenden Werte einzugeben. Je nach Vorlage kann es einige Zeit dauern, bis die Ressourcen in Azure bereitgestellt sind.
 
 ## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
-[Installieren Sie die Azure-Befehlszeilenschnittstelle](../articles/xplat-cli-install.md), melden Sie sich an, und stellen Sie sicher, dass die Resource Manager-Befehle aktiviert sind. Informationen zur Vorgehensweise finden Sie unter [Verwenden der plattformübergreifenden Azure-Befehlszeilenschnittstelle mit dem Azure Resource Manager](../articles/xplat-cli-azure-resource-manager.md).
+[Installieren Sie die Azure-Befehlszeilenschnittstelle](../articles/cli-install-nodejs.md), melden Sie sich an, und stellen Sie sicher, dass die Resource Manager-Befehle aktiviert sind. Informationen zur Vorgehensweise finden Sie unter [Verwenden der plattformübergreifenden Azure-Befehlszeilenschnittstelle mit dem Azure Resource Manager](../articles/xplat-cli-azure-resource-manager.md).
 
 Ersetzen Sie in den folgenden Befehlen den Text in den geschweiften Klammern durch den Namen der Ressourcengruppe, den Standort, den Namen der Bereitstellung und den Namen der Vorlage. Führen Sie die Befehle anschließend aus, um die Ressourcengruppe und die Bereitstellung zu erstellen:
 
@@ -66,9 +66,4 @@ Wenn Sie den Befehl **azure group deployment create** ausführen, werden Sie auf
 Auf [GitHub](https://github.com/Azure/azure-quickstart-templates)finden Sie alle Vorlagen, die Ihnen zur Verfügung stehen.
 
 Hier finden Sie weitere Informationen zum [Azure-Ressourcen-Manager](../articles/resource-group-template-deploy.md).
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

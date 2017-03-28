@@ -1,6 +1,6 @@
 Bevor Sie die Azure-Befehlszeilenschnittstelle mit Resource Manager-Befehlen und -Vorlagen zur Bereitstellung von Azure-Ressourcen und -Workloads über Ressourcengruppen verwenden können, benötigen Sie ein Azure-Konto. Wenn Sie noch kein Konto haben, erhalten Sie [hier eine kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 
-Wenn Sie die Azure-Befehlszeilenschnittstelle noch nicht installiert und noch keine Verbindung mit Ihrem Abonnement hergestellt haben, lesen Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](../articles/xplat-cli-install.md) weiter, legen Sie den Modus mithilfe von `azure config mode arm` auf `arm` fest, und stellen Sie mithilfe des Befehls `azure login` eine Verbindung mit Azure her.
+Wenn Sie die Azure-Befehlszeilenschnittstelle noch nicht installiert und noch keine Verbindung mit Ihrem Abonnement hergestellt haben, lesen Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](../articles/cli-install-nodejs.md) weiter, legen Sie den Modus mithilfe von `azure config mode arm` auf `arm` fest, und stellen Sie mithilfe des Befehls `azure login` eine Verbindung mit Azure her.
 
 ## <a name="basic-azure-resource-manager-commands-in-azure-cli"></a>Grundlegende Azure Resource Manager-Befehle in der Azure-Befehlszeilenschnittstelle
 Dieser Artikel behandelt die grundlegenden Befehle, die Sie mit der Azure-Befehlszeilenschnittstelle verwenden, um Ihre ARM-Ressourcen (hauptsächlich virtuelle Computer) im Azure-Abonnement zu verwalten und mit ihnen zu interagieren.  Ausführlichere Informationen zu bestimmten Befehlszeilenschaltern und -optionen finden Sie in der Onlinehilfe zu Befehlen und Optionen, die Sie durch Eingeben von `azure <command> <subcommand> --help` oder `azure help <command> <subcommand>` aufrufen können.
@@ -36,9 +36,4 @@ Dieser Artikel behandelt die grundlegenden Befehle, die Sie mit der Azure-Befehl
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Beispiele für die Befehle der CLI, die über die grundlegende Verwaltung virtueller Computer hinausgehen, finden Sie unter [Befehle der Azure-Befehlszeilenschnittstelle im Azure Resource Manager-Modus](../articles/virtual-machines/azure-cli-arm-commands.md).
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 
