@@ -15,8 +15,9 @@ ms.topic: get-started-article
 ms.date: 01/31/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 4ce5ad30d79e92a11231313fe13dd42b94fc2aa4
-ms.openlocfilehash: 50969591267ca74e5c4d4aa5c1efe5b673498309
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 8460ed6be3e922fb85f46982662d44eed21dda7c
+ms.lasthandoff: 03/18/2017
 
 ---
 
@@ -35,7 +36,7 @@ Beim Konfigurieren der Warnung stehen zwei Aufrufoptionen für Runbooks zur Verf
 
 ## <a name="calling-a-runbook-using-a-webhook"></a>Aufrufen eines Runbooks unter Verwendung eines Webhooks
 
-Mit einem Webhook können Sie ein bestimmtes Runbook in Azure Automation über eine einfache HTTP-Anforderung starten.  Bevor Sie die [Log Analytics-Warnung](../log-analytics/log-analytics-alerts.md#creating-an-alert-rule) so konfigurieren, dass sie das Runbook unter Verwendung eines Webhooks aufruft, müssen Sie zunächst einen Webhook für das Runbook erstellen, das mit dieser Methode aufgerufen werden soll.  Führen Sie die unter [Erstellen eines Webhooks](automation-webhooks.md#creating-a-webhook) angegebenen Schritte aus, und vergessen Sie nicht, sich die Webhook-URL zu notieren, damit Sie sie später beim Konfigurieren der Warnungsregel zur Hand haben.   
+Mit einem Webhook können Sie ein bestimmtes Runbook in Azure Automation über eine einfache HTTP-Anforderung starten.  Bevor Sie die [Log Analytics-Warnung](../log-analytics/log-analytics-alerts.md#creating-alert-rules) so konfigurieren, dass sie das Runbook unter Verwendung eines Webhooks aufruft, müssen Sie zunächst einen Webhook für das Runbook erstellen, das mit dieser Methode aufgerufen werden soll.  Führen Sie die unter [Erstellen eines Webhooks](automation-webhooks.md#creating-a-webhook) angegebenen Schritte aus, und vergessen Sie nicht, sich die Webhook-URL zu notieren, damit Sie sie später beim Konfigurieren der Warnungsregel zur Hand haben.   
 
 ## <a name="calling-a-runbook-directly"></a>Direktes Aufrufen eines Runbooks
 
@@ -52,14 +53,14 @@ Beide Methoden, mit denen das Runbook über die Log Analytics-Warnung aufgerufen
           [Parameter (Mandatory=$true)]  
           [object] $WebhookData  
          )
-  
+
 *  Sie benötigen Code, der die Webhookdaten (WebhookData) in ein PowerShell-Objekt konvertiert.
 
     `$SearchResults = (ConvertFrom-Json $WebhookData.RequestBody).SearchResults.value`
 
     *$SearchResults* ist ein Array von Objekten, wobei jedes Objekt die Felder mit Werten eines einzelnen Suchergebnisses enthält.
 
-### <a name="webhookdata-inconsistencies-between-the-webhook-option-and-runbook-option"></a>WebhookData-Inkonsistenzen zwischen der Webhook- und der Runbookoption 
+### <a name="webhookdata-inconsistencies-between-the-webhook-option-and-runbook-option"></a>WebhookData-Inkonsistenzen zwischen der Webhook- und der Runbookoption
 
 * Wenn Sie eine Warnung zum Aufrufen eines Webhooks konfigurieren, geben Sie eine Webhook-URL ein, die Sie für ein Runbook erstellt haben, und klicken Sie anschließend auf die Schaltfläche **Test Webhook** (Webhook testen).  Die Webhookdaten, die daraufhin an das Runbook gesendet werden, enthalten weder *.SearchResult* noch *.SearchResults*.
 
@@ -68,7 +69,7 @@ Beide Methoden, mit denen das Runbook über die Log Analytics-Warnung aufgerufen
 
 Daher müssen Sie im obigen Codebeispiel *.SearchResult* abrufen, wenn die Warnung einen Webhook aufruft, und *.SearchResults*, wenn die Warnung ein Runbook direkt aufruft.
 
-## <a name="example-walkthrough"></a>Exemplarische Vorgehensweise 
+## <a name="example-walkthrough"></a>Exemplarische Vorgehensweise
 
 Wie das funktioniert, zeigen wir anhand des folgenden grafischen Beispielrunbooks, das einen Windows-Dienst startet.<br><br> ![Grafisches Runbook zum Starten eines Windows-Diensts](media/automation-invoke-runbook-from-omsla-alert/automation-runbook-restartservice.png)<br>
 
@@ -90,9 +91,4 @@ Falls Ihr Automation-Konto nicht mit Ihrem OMS-Arbeitsbereich verknüpft ist, k�
 * Weitere Informationen zu Warnungen in Log Analytics und zu deren Erstellung finden Sie unter [Warnungen in Log Analytics](../log-analytics/log-analytics-alerts.md).
 
 * Informationen zum Auslösen von Runbooks mithilfe eines Webhooks finden Sie unter [Azure Automation-Webhooks](automation-webhooks.md).
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

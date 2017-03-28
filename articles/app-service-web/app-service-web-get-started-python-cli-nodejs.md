@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 01/04/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: d24e78a826de9fb72e0eedc48877c83e867f70ca
-ms.openlocfilehash: 281b8500e884ad79b16d96556c8a4ee309308210
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: de83677374966cdebe10a90338265cb57fc19d8c
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -41,11 +41,11 @@ In diesem Tutorial führen Sie folgende Schritte aus:
 Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
 
 - [Azure CLI 1.0:](app-service-web-get-started-python-cli-nodejs.md) Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell
-- [Azure CLI 2.0:](app-service-web-get-started-python.md) Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
+- [Azure CLI 2.0:](app-service-web-get-started-python.md) Unsere Befehlszeilenschnittstelle der nächsten Generation für das Resource Manager-Bereitstellungsmodell
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * [Git](http://www.git-scm.com/downloads).
-* [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md).
+* [Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md).
 * Ein Microsoft Azure-Konto. Falls Sie noch kein Konto haben, können Sie sich [für eine kostenlose Testversion registrieren](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) oder [Ihre Visual Studio-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
 
 > [!NOTE]

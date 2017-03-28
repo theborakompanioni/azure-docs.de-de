@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
-ms.openlocfilehash: 002fa917e0cc17c34e0e617a28f2e21ba9b7e35f
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 3b1780033cbc8aa3e108a213a4d2bfd0332fd7d7
+ms.lasthandoff: 03/21/2017
 
 ---
 # <a name="creating-an-internet-load-balancer-using-the-azure-cli"></a>Erstellen eines Internet-Load Balancers mithilfe der Azure-Befehlszeilenschnittstelle
@@ -53,7 +53,7 @@ Weitere Informationen finden Sie unter [Unterstützung des Azure Resource Manage
 
 ## <a name="set-up-cli-to-use-resource-manager"></a>Einrichten der Befehlszeilenschnittstelle für die Verwendung des Resource Managers
 
-1. Wenn Sie die Azure-Befehlszeilenschnittstelle noch nie verwendet haben, ziehen Sie [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) zurate, und folgen Sie den Anweisungen bis zu dem Punkt, an dem Sie Ihr Azure-Konto und Ihr Abonnement auswählen.
+1. Wenn Sie die Azure-Befehlszeilenschnittstelle noch nie verwendet haben, ziehen Sie [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md) zurate, und folgen Sie den Anweisungen bis zu dem Punkt, an dem Sie Ihr Azure-Konto und Ihr Abonnement auswählen.
 2. Führen Sie den Befehl **azure config mode** aus, um in den Ressourcen-Manager-Modus zu wechseln, wie unten dargestellt.
 
     ```azurecli

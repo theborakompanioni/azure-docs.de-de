@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 03/13/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 44b393a2316825fd335bca2a1a7bb7033c10a565
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 3be72ac862650d2381a56c4ab682e41a8aaa8a27
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -41,8 +41,6 @@ Sie können zunächst mit einem Konfigurationstool wie dem Azure-Portal Ressourc
 ###<a name="deployment-model"></a>Bereitstellungsmodell
 Die Konfigurationsschritte für ein VPN-Gateway hängen davon ab, mit welchem Bereitstellungsmodell Sie das virtuelle Netzwerk erstellt haben. Wenn Sie Ihr VNET beispielsweise mit dem klassischen Bereitstellungsmodell erstellt haben, verwenden Sie die Richtlinien und Anleitungen für das klassische Bereitstellungsmodell, um die Einstellungen für das VPN Gateway zu erstellen und zu konfigurieren. Weitere Informationen zu Bereitstellungsmodellen finden Sie unter [Azure Resource Manager-Bereitstellung im Vergleich zur klassischen Bereitstellung: Grundlegendes zu Bereitstellungsmodellen und zum Status von Ressourcen](../azure-resource-manager/resource-manager-deployment-model.md).
 
-
-
 ## <a name="diagrams"></a>Diagramme zur Verbindungstopologie
 Wichtig: Für VPN-Gateway-Verbindungen sind verschiedene Konfigurationen verfügbar. Sie müssen ermitteln, welche Konfiguration am besten zu Ihren Anforderungen passt. Die folgenden Abschnitte enthalten Informationen und Topologiediagramme zu den folgenden VPN-Gatewayverbindungen: Die folgenden Abschnitte enthalten Tabellen mit Folgendem:
 
@@ -51,7 +49,6 @@ Wichtig: Für VPN-Gateway-Verbindungen sind verschiedene Konfigurationen verfüg
 * Direkte Links zu Artikeln, sofern verfügbar
 
 Orientieren Sie sich bei der Wahl einer geeigneten Verbindungstopologie an den Diagrammen und Beschreibungen. Die Diagramme zeigen die grundlegenden Topologien, aber Sie können auch komplexere Topologien erstellen, indem Sie die Diagramme als Anhaltspunkte verwenden.
-
 
 ## <a name="site-to-site-and-multi-site-ipsecike-vpn-tunnel"></a>Site-to-Site und Multi-Site (IPsec-/IKE-VPN-Tunnel)
 ### <a name="S2S"></a>Site-to-Site
@@ -96,7 +93,9 @@ Sofern Ihr virtuelles Netzwerk bestimmte Anforderungen erfüllt, können Sie Ihr
 [!INCLUDE [vpn-gateway-table-vnet-to-vnet](../../includes/vpn-gateway-table-vnet-to-vnet-include.md)]
 
 ## <a name="ExpressRoute"></a>ExpressRoute (dedizierte private Verbindung)
-[!INCLUDE [expressroute-intro](../../includes/expressroute-intro-include.md)]
+Mit Microsoft Azure ExpressRoute können Sie Ihre lokalen Netzwerke über eine dedizierte private Verbindung, die von einem Konnektivitätsanbieter bereitgestellt wird, in die Microsoft Cloud erweitern. Mit ExpressRoute können Sie Verbindungen mit Microsoft-Clouddiensten herstellen, z. B. Microsoft Azure, Office 365 und CRM Online. Die Konnektivität kann über ein Any-to-Any-Netzwerk (IP VPN), ein Point-to-Point-Ethernet-Netzwerk oder eine virtuelle Querverbindung über einen Konnektivitätsanbieter in einer Co-Location-Einrichtung bereitgestellt werden.
+
+ExpressRoute-Verbindungen verlaufen nicht über das öffentliche Internet. Auf diese Weise können ExpressRoute-Verbindungen eine höhere Sicherheit, größere Zuverlässigkeit und schnellere Geschwindigkeit bei geringerer Latenz als herkömmliche Verbindungen über das Internet bieten.
 
 Bei ExpressRoute-Verbindungen kommt zwar kein VPN-Gateway zur Anwendung, als Teil der erforderlichen Konfiguration wird jedoch ein Gateway für virtuelle Netzwerke verwendet. Bei einer ExpressRoute-Verbindung wird das Gateway für virtuelle Netzwerke nicht mit dem Gatewaytyp „Vpn“, sondern mit „ExpressRoute“ konfiguriert. Weitere Informationen über ExpressRoute finden Sie unter [ExpressRoute – Technische Übersicht](../expressroute/expressroute-introduction.md).
 

@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
-ms.openlocfilehash: bd1f5e497bcf39a0d8848cc63c718e693f775d63
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 128b91c685b5f7e494a69ca5b04165a0ee7cbb78
+ms.lasthandoff: 03/21/2017
 
 ---
 
@@ -51,7 +52,7 @@ Weitere Informationen finden Sie unter [Unterstützung des Azure Resource Manage
 
 ## <a name="set-up-cli-to-use-resource-manager"></a>Einrichten der Befehlszeilenschnittstelle für die Verwendung des Resource Managers
 
-1. Wenn Sie die Azure-Befehlszeilenschnittstelle noch nicht verwendet haben, lesen Sie [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md). Folgen Sie den Anweisungen, bis Sie Ihr Azure-Konto und Ihr Abonnement auswählen müssen.
+1. Wenn Sie die Azure-Befehlszeilenschnittstelle noch nicht verwendet haben, lesen Sie [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md). Folgen Sie den Anweisungen, bis Sie Ihr Azure-Konto und Ihr Abonnement auswählen müssen.
 2. Führen Sie den Befehl **azure config mode** aus, um in den Resource Manager-Modus zu wechseln, wie unten dargestellt:
 
     ```azurecli
@@ -214,10 +215,5 @@ azure network lb delete --resource-group nrprg --name ilbset
 [Konfigurieren eines Load Balancer-Verteilungsmodus mithilfe der Quell-IP-Affinität](load-balancer-distribution-mode.md)
 
 [Konfigurieren von TCP-Leerlauftimeout-Einstellungen für den Lastenausgleich](load-balancer-tcp-idle-timeout.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -17,9 +17,9 @@ ms.date: 10/24/2016
 ms.author: v-livech
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: fa842efd99718be7fa9eaf8aac8030c32cbceeec
-ms.openlocfilehash: bd0c9fd0044ce8a5de9004c68b1267b8b66df80a
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: e692e87899e49f6ad681de8e682492ec69e47eac
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 03/01/2017
 Dieser Artikel zeigt, wie Sie mithilfe einer Azure-Vorlage schnell einen virtuellen Linux-Computer auf Azure bereitstellen können.  Zum Ausführen der Schritte in diesem Artikel ist Folgendes erforderlich:
 
 * Azure-Konto ([kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/))
-* [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md), angemeldet mit `azure login`
+* [Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md), angemeldet mit `azure login`
 * Die Azure-Befehlszeilenschnittstelle *muss* im Azure Resource Manager-Modus `azure config mode arm` ausgeführt werden.
 
 Sie können eine Vorlage für eine Linux-VM auch schnell über das [Azure-Portal](virtual-machines-linux-quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) bereitstellen.

@@ -15,8 +15,9 @@ ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: c9440e26a563ed9315225b34709b009d01e065d7
-ms.openlocfilehash: ff9b0d9e098fd8c6cde7c63c005c8f1906c6e0f2
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 4db7d45678c592749831c6b12d38363134da9e93
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -31,7 +32,7 @@ In diesem Tutorial entwickeln Sie einen Auftrag, bei dem eine Datei mit tabulato
 Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 
 * **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
-* **Azure-Befehlszeilenschnittstelle**. Weitere Informationen finden Sie unter [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md).
+* **Azure-Befehlszeilenschnittstelle**. Weitere Informationen finden Sie unter [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md).
   * Laden Sie für diese Demo die **Vorabversion** [Azure Command-line Tools (CLI) for Data Lake](https://github.com/MicrosoftBigData/AzureDataLake/releases) herunter, und installieren Sie sie.
 * **Authentifizierung**. Verwenden Sie den folgenden Befehl:
   
@@ -161,10 +162,5 @@ Nachdem der Auftrag abgeschlossen wurde, können Sie die folgenden Cmdlets verwe
 * Informationen zum Erlernen von U-SQL finden Sie unter [Erste Schritte mit der Sprache U-SQL für Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md).
 * Informationen zu Verwaltungsaufgaben finden Sie unter [Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-manage-use-portal.md).
 * Eine Übersicht über Data Lake Analytics finden Sie unter [Azure Data Lake Analytics – Übersicht](data-lake-analytics-overview.md).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

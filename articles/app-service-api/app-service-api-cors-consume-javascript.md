@@ -3,7 +3,7 @@ title: "CORS-Unterstützung in App Service | Microsoft Docs"
 description: "Erfahren Sie, wie Sie die CORS-Unterstützung in Azure App Service verwenden."
 services: app-service\api
 documentationcenter: .net
-author: tdykstra
+author: alexkarcher-msft
 manager: erikre
 editor: 
 ms.assetid: 4f980a97-b9f5-4d1d-87ab-82b60bb96e1c
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: dotnet
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/27/2016
-ms.author: rachelap
+ms.author: alkarche
 translationtype: Human Translation
-ms.sourcegitcommit: a0580f8d303c7ce33a65f0ce6faecf2492f851b0
-ms.openlocfilehash: b0b701b7ea7a608f114d3a82f0403c2ae506854f
-ms.lasthandoff: 12/21/2016
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 79fe018bb6721c431a935dda14b36968688d34e3
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -29,7 +29,7 @@ Dieser Artikel enthält zwei Abschnitte:
 * Im Abschnitt [Konfigurieren von CORS](#corsconfig) wird allgemein beschrieben, wie Sie CORS für eine API-App, Web-App oder mobile App konfigurieren. Diese Informationen gelten gleichermaßen für alle Frameworks, die von App Service unterstützt werden, z.B. .NET, Node.js und Java. 
 * Der Artikel beginnt mit dem Abschnitt [Fortsetzen der Erste-Schritte-Tutorials für .NET](#tutorialstart) und ist ein Tutorial, mit dem die CORS-Unterstützung veranschaulicht wird. Hierfür wird fortgeführt, was Sie im [ersten Tutorial zu den ersten Schritten mit API-Apps](app-service-api-dotnet-get-started.md) begonnen haben. 
 
-## <a name="a-idcorsconfiga-how-to-configure-cors-in-azure-app-service"></a><a id="corsconfig"></a> Konfigurieren von CORS in Azure App Service
+## <a id="corsconfig"></a> Konfigurieren von CORS in Azure App Service
 Sie können CORS im Azure-Portal oder über [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)-Tools konfigurieren.
 
 #### <a name="configure-cors-in-the-azure-portal"></a>Konfigurieren von CORS im Azure-Portal
@@ -52,7 +52,7 @@ Sie können CORS im Azure-Portal oder über [Azure Resource Manager](../azure-re
    Nachdem Sie auf **Speichern**geklickt haben, akzeptiert die API-App JavaScript-Aufrufe von den angegebenen URLs.
 
 #### <a name="configure-cors-by-using-azure-resource-manager-tools"></a>Konfigurieren von CORS mit Azure-Ressourcen-Manager-Tools
-Sie können CORS für eine API-App auch konfigurieren, indem Sie [Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md) in Befehlszeilentools verwenden, z.B. [Azure PowerShell](/powershell/azureps-cmdlets-docs) und die [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md). 
+Sie können CORS für eine API-App auch konfigurieren, indem Sie [Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md) in Befehlszeilentools verwenden, z.B. [Azure PowerShell](/powershell/azureps-cmdlets-docs) und die [Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md). 
 
 Öffnen Sie die [Datei „azuredeploy.json“ im Repository für die Beispielanwendung dieses Tutorials](https://github.com/azure-samples/app-service-api-dotnet-todo-list/blob/master/azuredeploy.json), um ein Beispiel für eine Azure Resource Manager-Vorlage zum Festlegen der CORS-Eigenschaft anzuzeigen. Suchen Sie nach dem Abschnitt der Vorlage, die wie im folgenden Beispiel aussieht:
 
@@ -62,7 +62,7 @@ Sie können CORS für eine API-App auch konfigurieren, indem Sie [Azure Resource
             ]
         }
 
-## <a name="a-idtutorialstarta-continuing-the-net-getting-started-tutorial"></a><a id="tutorialstart"></a> Fortsetzen des Erste-Schritte-Tutorials für .NET
+## <a id="tutorialstart"></a> Fortsetzen des Erste-Schritte-Tutorials für .NET
 Falls Sie die API-App-Reihe „Erste Schritte“ für Node.js oder Java durcharbeiten, haben Sie die Reihe „Erste Schritte“ abgeschlossen. Im Abschnitt [Nächste Schritte](#next-steps) erfahren Sie, wo Sie sich noch ausführlicher über API-Apps informieren können.
 
 Der Rest dieses Artikels ist eine Fortsetzung der Reihe „Erste Schritte“ für .NET. Es wird vorausgesetzt, dass Sie das [erste Tutorial](app-service-api-dotnet-get-started.md) erfolgreich abgeschlossen haben.

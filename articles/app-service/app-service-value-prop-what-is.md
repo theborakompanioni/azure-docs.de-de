@@ -16,8 +16,9 @@ ms.topic: get-started-article
 ms.date: 12/02/2016
 ms.author: byvinyal
 translationtype: Human Translation
-ms.sourcegitcommit: 40dd75832302d7d88e852e2ea93821750675607e
-ms.openlocfilehash: 4deb60c25bf13d1f31b58f002a7edea0672eca25
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: a773e43b28b144dd8341b276eee3fa504d4f1080
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -36,7 +37,7 @@ Das folgende vierminütige Video enthält eine kurze Erklärung dazu, wie sich A
 Hier sind einige wichtige Features und Funktionen von App Service aufgeführt:
 
 * **Mehrere Sprachen und Frameworks** : App Service verfügt über erstklassige Unterstützung für ASP.NET, Node.js, Java, PHP und Python. Außerdem können Sie [Windows PowerShell und andere Skripts oder ausführbare Dateien](../app-service-web/web-sites-create-web-jobs.md) auf App Service-VMs ausführen.
-* **DevOps-Optimierung** : Richten Sie mit Visual Studio Team Services, GitHub oder BitBucket die [fortlaufende Integration und Bereitstellung](../app-service-web/app-service-continuous-deployment.md) ein. Stufen Sie Updates über [Test- und Stagingumgebungen](../app-service-web/web-sites-staged-publishing.md)herauf. Führen Sie [A/B-Tests](../app-service-web/app-service-web-test-in-production-get-start.md)aus. Verwalten Sie Ihre Apps in App Service mithilfe von [Azure PowerShell](/powershell/azureps-cmdlets-docs) oder der [plattformübergreifenden Befehlszeilenschnittstelle (Command-Line Interface, CLI)](../xplat-cli-install.md).
+* **DevOps-Optimierung** : Richten Sie mit Visual Studio Team Services, GitHub oder BitBucket die [fortlaufende Integration und Bereitstellung](../app-service-web/app-service-continuous-deployment.md) ein. Stufen Sie Updates über [Test- und Stagingumgebungen](../app-service-web/web-sites-staged-publishing.md)herauf. Führen Sie [A/B-Tests](../app-service-web/app-service-web-test-in-production-get-start.md)aus. Verwalten Sie Ihre Apps in App Service mithilfe von [Azure PowerShell](/powershell/azureps-cmdlets-docs) oder der [plattformübergreifenden Befehlszeilenschnittstelle (Command-Line Interface, CLI)](../cli-install-nodejs.md).
 * **Globale Skalierung mit hoher Verfügbarkeit** – Skalieren Sie manuell oder automatisch [zentral](../app-service-web/web-sites-scale.md) oder [horizontal](../monitoring-and-diagnostics/insights-how-to-scale.md) hoch. Hosten Sie Ihre Apps überall in der globalen Rechenzentrumsinfrastruktur von Microsoft. Die App Service-[SLA](https://azure.microsoft.com/support/legal/sla/app-service/) garantiert eine hohe Verfügbarkeit.
 * **Verbindungen mit SaaS-Plattformen und lokalen Daten** – Wählen Sie aus über 50 [Connectors](../connectors/apis-list.md) für Unternehmenssysteme (z.B. SAP, Siebel und Oracle), SaaS-Dienste (z.B. Salesforce und Office 365) sowie Internetdienste (z.B. Facebook und Twitter). Greifen Sie über [Hybridverbindungen](../biztalk-services/integration-hybrid-connection-overview.md) und [Azure Virtual Networks](../app-service-web/web-sites-integrate-with-vnet.md) auf lokale Daten zu.
 * **Sicherheit und Compliance** – App Service ist [ISO-, SOC- und PCI-konform](https://www.microsoft.com/TrustCenter/).
@@ -90,10 +91,5 @@ Oder eröffnen Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/pri
 * [Tutorial: Erstellen einer mobilen App](../app-service-mobile/app-service-mobile-android-get-started.md)
 * [Tutorial: Erstellen einer API-App](../app-service-api/app-service-api-dotnet-get-started.md)
 * [Tutorial: Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

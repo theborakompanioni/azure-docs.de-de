@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 639328ca-d800-4fa9-97ed-5664477b88cd
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
@@ -16,8 +17,9 @@ ms.workload: big-data
 ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
-ms.openlocfilehash: 744d41a85d39cb468a17ac5a60cd2517f3e60147
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: b1806950581e0adbeec52839f12c70599d28100d
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -110,7 +112,7 @@ Dadurch wird für den angegebenen Benutzer ein Anmeldename erstellt und die Kenn
 
 ### <a name="azure-command-line-interface-for-mac-linux-and-windows"></a>Azure-Befehlszeilenschnittstelle (CLI) für Mac, Linux und Microsoft Azure
 
-Sie können über die [Azure-CLI für Mac, Linux und Windows](../xplat-cli-install.md) einen neuen Cluster mithilfe des Befehls `azure hdinsight cluster create` erstellen.
+Sie können über die [Azure-CLI für Mac, Linux und Windows](../cli-install-nodejs.md) einen neuen Cluster mithilfe des Befehls `azure hdinsight cluster create` erstellen.
 
 Weitere Informationen zur Verwendung dieses Befehls finden Sie unter [Benutzerdefinierte Bereitstellung eines Hadoop-Linux-Clusters in HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 
@@ -221,7 +223,7 @@ Wenn Sie weitere Konten zum Cluster hinzufügen möchten, führen Sie die folgen
 
 6. Sie sollten jetzt in der Lage sein, sich beim Server mit dem neuen Benutzerkonto und dem privaten Schlüssel zu authentifizieren.
 
-## <a name="a-idtunnelassh-tunneling"></a><a id="tunnel"></a>SSH-Tunnel
+## <a id="tunnel"></a>SSH-Tunnel
 
 SSH kann auch zum Tunneln lokaler Anforderungen wie etwa Webanforderungen zum HDInsight-Cluster verwendet werden. Die Anforderung wird dann zur angeforderten Ressource weitergeleitet, als ob sie vom Stammknoten des HDInsight-Clusters stammen würde.
 
@@ -239,9 +241,4 @@ Nachdem Sie jetzt wissen, wie die Authentifizierung mithilfe eines SSH-Schlüsse
 * [Verwenden von MapReduce-Aufträgen mit HDInsight](hdinsight-use-mapreduce.md)
 
 [preview-portal]: https://portal.azure.com/
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

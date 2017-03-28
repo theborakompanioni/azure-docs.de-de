@@ -1,7 +1,24 @@
-le--- title: Encrypt an Azure Virtual Machine | Microsoft Docs description: This document helps you to encrypt an Azure Virtual Machine after receiving an alert from Azure Security Center.
-services: security, security-center documentationcenter: na author: TomShinder manager: swadhwa editor: ''
+---
+title: "Verschlüsseln eines virtuellen Azure-Computers | Microsoft Docs"
+description: "Dieses Dokument hilft Ihnen dabei, einen virtuellen Azure-Computer zu verschlüsseln, wenn Sie eine Warnung vom Azure Security Center erhalten haben."
+services: security, security-center
+documentationcenter: na
+author: TomShinder
+manager: swadhwa
+editor: 
+ms.assetid: f6c28bc4-1f79-4352-89d0-03659b2fa2f5
+ms.service: security
+ms.devlang: na
+ms.topic: hero-article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 03/15/2017
+ms.author: tomsh
+translationtype: Human Translation
+ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
+ms.openlocfilehash: 5054ea1d5bd17712a4b343319d583e62a256752d
+ms.lasthandoff: 03/15/2017
 
-ms.assetid: f6c28bc4-1f79-4352-89d0-03659b2fa2f5 ms.service: security ms.devlang: na ms.topic: hero-article ms.tgt_pltfrm: na ms.workload: na ms.date: 05/27/2016 ms.author: tomsh
 
 ---
 # <a name="encrypt-an-azure-virtual-machine"></a>Verschlüsseln eines virtuellen Azure-Computers
@@ -162,3 +179,4 @@ In diesem Dokument haben Sie gelernt, wie Sie einen virtuellen Azure-Computer ve
 * [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md) – Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und auf diese reagieren.
 * [Azure Security Center – häufig gestellte Fragen](security-center-faq.md) zur Verwendung des Diensts.
 * [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) – suchen Sie nach Blogbeiträgen über Azure-Sicherheit und -Compliance.
+
