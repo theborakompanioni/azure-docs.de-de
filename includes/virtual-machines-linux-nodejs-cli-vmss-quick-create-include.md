@@ -1,6 +1,6 @@
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Falls noch nicht erfolgt, können Sie eine [kostenlose Testversion eines Azure-Abonnements](https://azure.microsoft.com/pricing/free-trial/) und die [Azure CLI 1.0](../articles/xplat-cli-install.md) erhalten, [die mit Ihrem Azure-Konto verbunden ist](../articles/xplat-cli-connect.md). Vergewissern Sie sich wie folgt, dass sich die Azure-Befehlszeilenschnittstelle im Resource Manager-Modus befindet.
+Falls noch nicht erfolgt, können Sie eine [kostenlose Testversion eines Azure-Abonnements](https://azure.microsoft.com/pricing/free-trial/) und die [Azure CLI 1.0](../articles/cli-install-nodejs.md) erhalten, [die mit Ihrem Azure-Konto verbunden ist](../articles/xplat-cli-connect.md). Vergewissern Sie sich wie folgt, dass sich die Azure-Befehlszeilenschnittstelle im Resource Manager-Modus befindet.
 
 ```azurecli
 azure config mode arm

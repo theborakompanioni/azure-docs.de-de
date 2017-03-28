@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
-ms.openlocfilehash: cf5ecd7652bf1b10d24731a5b6829995fea81e41
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: da3a908f17ff5c6d3923549a884ecc0a13cb8e9e
+ms.lasthandoff: 03/21/2017
 
 ---
 
@@ -39,7 +40,7 @@ ms.openlocfilehash: cf5ecd7652bf1b10d24731a5b6829995fea81e41
 
 In diesem Handbuch erfahren Sie, wie Sie auf der Grundlage des oben beschriebenen Szenarios einen Internet-Load Balancer erstellen.
 
-1. Wenn Sie die Azure-Befehlszeilenschnittstelle noch nie verwendet haben, ziehen Sie [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) zurate, und folgen Sie den Anweisungen bis zu dem Punkt, an dem Sie Ihr Azure-Konto und Ihr Abonnement auswählen.
+1. Wenn Sie die Azure-Befehlszeilenschnittstelle noch nie verwendet haben, ziehen Sie [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md) zurate, und folgen Sie den Anweisungen bis zu dem Punkt, an dem Sie Ihr Azure-Konto und Ihr Abonnement auswählen.
 2. Führen Sie den Befehl **azure config mode** aus, um in den klassischen Modus zu wechseln, wie unten dargestellt.
 
     ```azurecli
@@ -151,9 +152,4 @@ azure vm endpoint delete web1 tcp-80-80
 [Konfigurieren eines Lastenausgleichs-Verteilungsmodus](load-balancer-distribution-mode.md)
 
 [Konfigurieren von TCP-Leerlauftimeout-Einstellungen für den Lastenausgleich](load-balancer-tcp-idle-timeout.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

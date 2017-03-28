@@ -17,6 +17,7 @@ ms.author: dhanyahk;markvi
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: dce65678f9fc96d5802a7b705689cc63e6532c84
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -180,10 +181,5 @@ Es gibt zwei Optionen für den loginStatus: 0 = erfolgreich, 1 = fehlerhaft.
 ## <a name="next-steps"></a>Nächste Schritte
 * Möchten Sie Beispiele für gefilterte Anmeldeaktivitäten anzeigen? Dann sehen Sie sich die [Beispiele zur Azure Active Directory-Anmeldeaktivitätsbericht-API](active-directory-reporting-api-sign-in-activity-samples.md)an.
 * Sie möchten mehr über die Azure AD-Berichterstellungs-API erfahren? Lesen Sie den Artikel [Erste Schritte mit der Berichterstellungs-API von Azure Active Directory](active-directory-reporting-api-getting-started.md).
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

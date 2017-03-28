@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: eea00841708212789e14fa8717d83dd81d472bac
-ms.openlocfilehash: 835968ec5b540890dbe8644038ab7f63b0721847
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 9df9d10d436ac56c881c9547f3095b630d4cb97f
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -25,9 +26,10 @@ ms.openlocfilehash: 835968ec5b540890dbe8644038ab7f63b0721847
 > [!div class="op_single_selector"]
 > * [Resource Manager – Azure-Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 > * [Resource Manager – PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
+> * [Klassisch – Azure-Portal](vpn-gateway-howto-site-to-site-classic-portal.md)
 > * [Klassisch – Klassisches Portal](vpn-gateway-site-to-site-create.md)
-> 
-> 
+>
+>
 
 In diesem Artikel werden das Erstellen eines virtuellen Netzwerks und das Herstellen einer Site-to-Site-VPN-Gatewayverbindung mit Ihrem lokalen Netzwerk mithilfe des klassischen Bereitstellungsmodells und des Azure-Portals beschrieben. Site-to-Site-Verbindungen können für standortübergreifende Konfigurationen und Hybridkonfigurationen verwendet werden.
 
@@ -50,25 +52,25 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass Sie über Folgendes ver
 * Eine externe öffentliche IP-Adresse für Ihr VPN-Gerät. Diese IP-Adresse darf sich nicht hinter einer NAT befinden.
 * Ein Azure-Abonnement. Wenn Sie noch kein Azure-Abonnement besitzen, können Sie Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) aktivieren oder sich für ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial) registrieren.
 
-## <a name="a-namecreatevnetacreate-your-virtual-network"></a><a name="CreateVNet"></a>Erstellen des virtuellen Netzwerks
+## <a name="CreateVNet"></a>Erstellen des virtuellen Netzwerks
 1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com/)an.
 2. Klicken Sie unten links auf dem Bildschirm auf **Neu**. Klicken Sie im Navigationsbereich auf **Network Services** und dann auf **Virtual Network**. Klicken Sie auf **Custom Create** , um den Konfigurationsassistenten zu starten.
 3. Geben Sie zum Erstellen des VNet Ihre Konfigurationseinstellungen auf den folgenden Seiten ein:
 
-## <a name="a-namedetailsavirtual-network-details-page"></a><a name="Details"></a>Seite „Details zu Virtual Network“
+## <a name="Details"></a>Seite „Details zu Virtual Network“
 Geben Sie Folgendes ein:
 
 * **Name**: Name des virtuellen Netzwerks. Beispiel: *EastUSVNet*. Sie verwenden den hier festgelegten Namen bei der Bereitstellung Ihrer VMs und PaaS-Instanzen. Deshalb sollte der Name nicht zu kompliziert sein.
 * **Speicherort**: Der Speicherort steht in direkter Beziehung zu dem physischen Standort (Region), an dem sich Ihre Ressourcen (VMs) befinden sollen. Wenn Sie z.B. möchten, dass sich die virtuellen Computer, die Sie für Ihr virtuelles Netzwerk bereitstellen, physisch in der Region *USA, Osten* befinden, wählen Sie diesen Standort aus. Sie können die Ihrem virtuellen Netzwerk zugeordnete Region nach dem Erstellen nicht mehr ändern.
 
-## <a name="a-namednsadns-servers-and-vpn-connectivity-page"></a><a name="DNS"></a>Seite „DNS-Server und VPN-Konnektivität“
+## <a name="DNS"></a>Seite „DNS-Server und VPN-Konnektivität“
 Geben Sie die folgenden Informationen ein, und klicken Sie dann unten rechts auf den Pfeil „Weiter“.
 
 * **DNS-Server**: Geben Sie den Namen und die IP-Adresse des DNS-Servers ein, oder wählen Sie einen zuvor registrierten DNS-Server im Kontextmenü aus. Mit dieser Einstellung wird kein DNS-Server erstellt. Sie bietet die Möglichkeit, den DNS-Server anzugeben, den Sie zur Namensauflösung für dieses virtuelle Netzwerk verwenden möchten.
 * **Site-to-Site-VPNs konfigurieren:** Aktivieren Sie das Kontrollkästchen **Ein Site-to-Site-VPN konfigurieren**.
 * **Lokales Netzwerk:**Ein lokales Netzwerk stellt Ihren lokalen physischen Standort dar. Sie können ein zuvor erstelltes lokales Netzwerk auswählen oder ein neues lokales Netzwerk erstellen. Wenn Sie ein zuvor erstelltes lokales Netzwerk auswählen, sollten Sie aber auf der Konfigurationsseite **Lokale Netzwerke** sicherstellen, dass die IP-Adresse des VPN-Geräts (öffentliche IPv4-Adresse) stimmt.
 
-## <a name="a-nameconnectivityasite-to-site-connectivity-page"></a><a name="Connectivity"></a>Seite „Site-to-Site-Konnektivität“
+## <a name="Connectivity"></a>Seite „Site-to-Site-Konnektivität“
 Wenn Sie ein neues lokales Netzwerk erstellen, wird die Seite **Site-to-Site-Konnektivität** angezeigt. Wenn Sie ein zuvor erstelltes lokales Netzwerk verwenden möchten, wird diese Seite nicht im Assistenten angezeigt, und Sie können mit dem nächsten Abschnitt fortfahren.
 
 Geben Sie die folgenden Informationen ein, und klicken Sie dann auf den Pfeil "Weiter".
@@ -78,7 +80,7 @@ Geben Sie die folgenden Informationen ein, und klicken Sie dann auf den Pfeil "W
 * **Adressraum:**Umfasst die Start-IP und CIDR (Adressenanzahl). Sie geben die Adressbereiche an, die über das Gateway für das virtuelle Netzwerk an Ihren lokalen Standort gesendet werden sollen. Wenn eine IP-Zieladresse in die hier angegebenen Bereiche fällt, wird sie über das Gateway für das virtuelle Netzwerk geleitet.
 * **Adressraum hinzufügen**: Wenn mehrere Adressbereiche über das Gateway für das virtuelle Netzwerk gesendet werden sollen, geben Sie alle zusätzlichen Adressbereiche an. Sie können die Bereiche später auf der Seite **Lokales Netzwerk** hinzufügen oder entfernen.
 
-## <a name="a-nameaddressavirtual-network-address-spaces-page"></a><a name="Address"></a>Seite „Adressräume von Virtual Network“
+## <a name="Address"></a>Seite „Adressräume von Virtual Network“
 Geben Sie den Adressbereich an, den Sie für Ihr virtuelles Netzwerk verwenden möchten. Dies sind die dynamischen IP-Adressen (DIPS), die den virtuellen Computern und anderen Rolleninstanzen zugewiesen werden, die Sie für dieses virtuelle Netzwerk bereitstellen.
 
 Es ist besonders wichtig, einen Bereich auszuwählen, der sich nicht mit den anderen Bereichen überschneidet, die für Ihr lokales Netzwerk verwendet werden. Sprechen Sie sich mit Ihrem Netzwerkadministrator ab. Der Netzwerkadministrator muss ggf. einen Bereich von IP-Adressen aus dem Adressraum Ihres lokalen Netzwerks reservieren, den Sie für Ihr virtuelles Netzwerk verwenden können.
@@ -93,15 +95,10 @@ Klicken Sie auf das Häkchen am rechten unteren Rand der Seite, damit das virtue
 
 [!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 
-## <a name="a-namevnetgatewayaconfigure-your-virtual-network-gateway"></a><a name="VNetGateway"></a>Konfigurieren des Gateways für das virtuelle Netzwerk
+## <a name="VNetGateway"></a>Konfigurieren des Gateways für das virtuelle Netzwerk
 Konfigurieren Sie das Gateway für das virtuelle Netzwerk, um eine sichere Site-to-Site-Verbindung zu erstellen. Weitere Informationen finden Sie unter [Konfigurieren eines Gateways für ein virtuelles Netzwerk im klassischen Azure-Portal](vpn-gateway-configure-vpn-gateway-mp.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
  Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Weitere Informationen finden Sie unter [Virtuelle Computer](https://docs.microsoft.com/azure/#pivot=services&panel=Compute) .
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

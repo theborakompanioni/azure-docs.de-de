@@ -1,7 +1,7 @@
 ## <a name="how-to-create-a-classic-vnet-using-azure-cli"></a>Erstellen eines klassischen VNet über die Azure-Befehlszeilenschnittstelle
 Sie können die Azure-Befehlszeilenschnittstelle verwenden, um Ihre Azure-Ressourcen über die Eingabeaufforderung eines beliebigen Computers mit Windows, Linux oder OSX zu verwalten. Führen Sie zum Erstellen eines VNet mithilfe der Azure-Befehlszeilenschnittstelle die folgenden Schritte aus.
 
-1. Wenn Sie die Azure-Befehlszeilenschnittstelle noch nie verwendet haben, ziehen Sie [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../articles/xplat-cli-install.md) zurate, und folgen Sie den Anweisungen bis zu dem Punkt, an dem Sie Ihr Azure-Konto und Ihr Abonnement auswählen.
+1. Wenn Sie die Azure-Befehlszeilenschnittstelle noch nie verwendet haben, ziehen Sie [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../articles/cli-install-nodejs.md) zurate, und folgen Sie den Anweisungen bis zu dem Punkt, an dem Sie Ihr Azure-Konto und Ihr Abonnement auswählen.
 2. Führen Sie den Befehl **azure network vnet create** aus, um ein VNet und ein Subnetz zu erstellen, wie unten dargestellt. In der nach der Ausgabe angezeigten Liste werden die verwendeten Parameter erläutert.
    
             azure network vnet create --vnet TestVNet -e 192.168.0.0 -i 16 -n FrontEnd -p 192.168.1.0 -r 24 -l "Central US"
@@ -61,9 +61,4 @@ Sie können die Azure-Befehlszeilenschnittstelle verwenden, um Ihre Azure-Ressou
             data:      Address prefix                : 192.168.2.0/24
             data:
             info:    network vnet show command OK
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -15,8 +15,9 @@ ms.workload: big-data
 ms.date: 01/31/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: f33ccee7dd520adf074856616005c929040116dd
-ms.openlocfilehash: 89d1811f3f336f2526ccba3b6be26e90ab7120ad
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: e43a6ea9510c481518becb52cc571ec62e3b151d
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -46,7 +47,7 @@ Die Azure-CLI ist in Node.js implementiert. Sie kann auf allen Plattformen verwe
 Bevor Sie mit diesem Artikel beginnen können, benötigen Sie Folgendes:
 
 * **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
-* **Azure-CLI** – Informationen zur Installation und Konfiguration finden Sie unter [Installieren und Konfigurieren der Azure-CLI](../xplat-cli-install.md) . Achten Sie darauf, Ihren Computer nach der Installation der Befehlszeilenschnittstelle neu zu starten.
+* **Azure-CLI** – Informationen zur Installation und Konfiguration finden Sie unter [Installieren und Konfigurieren der Azure-CLI](../cli-install-nodejs.md) . Achten Sie darauf, Ihren Computer nach der Installation der Befehlszeilenschnittstelle neu zu starten.
 
 ## <a name="authentication"></a>Authentifizierung
 In diesem Artikel wird ein einfacheres Authentifizierungskonzept mit Data Lake Store verwendet, bei dem Sie sich als Endbenutzer anmelden. Die Zugriffsebene für das Data Lake Store-Konto und das Dateisystem hängt dann von der Zugriffsebene des angemeldeten Benutzers ab. Für die Authentifizierung mit Data Lake Store stehen mit **Endbenutzerauthentifizierung** und **Dienst-zu-Dienst-Authentifizierung** aber auch noch andere Konzepte zur Verfügung. Anweisungen und weitere Informationen zur Authentifizierung finden Sie unter [Authenticate with Data Lake Store using Azure Active Directory](data-lake-store-authenticate-using-active-directory.md)(Authentifizieren bei Data Lake Store mithilfe von Azure Active Directory).
@@ -178,10 +179,5 @@ Geben Sie nach entsprechender Aufforderung **Y** ein, um das Konto zu löschen.
 * [Verwenden von Azure Data Lake Analytics mit Data Lake-Speicher](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Verwenden von Azure HDInsight mit Data Lake-Speicher](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-[azure-command-line-tools]: ../xplat-cli-install.md
-
-
-
-<!--HONumber=Feb17_HO1-->
-
+[azure-command-line-tools]: ../cli-install-nodejs.md
 
