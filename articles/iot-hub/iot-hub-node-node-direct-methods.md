@@ -144,7 +144,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die eine Methode in
     ```
     var methodParams = {
         methodName: methodName,
-        payload: 'a line to be written',
+        payload: 'hello world',
         timeoutInSeconds: 30
     };
    
