@@ -28,6 +28,7 @@
 ### [Konfigurieren eines Dienstprinzipals](container-service-kubernetes-service-principal.md)
 ### [Containerverwaltung – Kubernetes-Benutzeroberfläche](container-service-kubernetes-ui.md)
 ### [Lastenausgleich für Kubernetes-Container](container-service-kubernetes-load-balancing.md)
+### [Jenkins-Integration mit ACS Kubernetes](container-service-kubernetes-jenkins.md)
 ### Überwachen von Kubernetes
 #### [Überwachen mit OMS](container-service-kubernetes-oms.md)
 #### [Überwachen mit Datadog](container-service-kubernetes-datadog.md)

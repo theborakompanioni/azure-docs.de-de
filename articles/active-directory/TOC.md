@@ -160,6 +160,8 @@
 #### Veröffentlichen von Apps
 ##### [Azure-Portal](application-proxy-publish-azure-portal.md)
 ##### [Klassisches Portal](active-directory-application-proxy-publish.md)
+
+#### [PingAccess für Azure AD](application-proxy-ping-access.md)
 #### [Sicherheit](application-proxy-security-considerations.md)
 #### [Netzwerke](application-proxy-network-topology-considerations.md)
 #### [Remotedesktop](application-proxy-publish-remote-desktop.md)

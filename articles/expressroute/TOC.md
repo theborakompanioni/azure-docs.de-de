@@ -2,27 +2,25 @@
 ## [Was ist ExpressRoute?](expressroute-introduction.md)
 ## [ExpressRoute – FAQ](expressroute-faqs.md)
 ## [Konnektivitätsmodelle](expressroute-connectivity-models.md)
+## [Verbindungen und Routingdomänen](expressroute-circuit-peerings.md)
 ## [Standorte und Partner](expressroute-locations.md)
 ### [Anbieter nach Standort](expressroute-locations-providers.md)
 ### [Standorte nach Anbieter](expressroute-locations.md)
+## [Gateways für virtuelle Netzwerke für ExpressRoute](expressroute-about-virtual-network-gateways.md)
 
 # Erste Schritte
-## [Workflows](expressroute-workflows.md)
 ## [Voraussetzungen](expressroute-prerequisites.md)
-## [Verbindungen und Routingdomänen](expressroute-circuit-peerings.md)
+## [Workflows](expressroute-workflows.md)
 ## [Routinganforderungen](expressroute-routing.md)
-## [Optimieren des Routings](expressroute-optimize-routing.md)
 ## [NAT-Anforderungen](expressroute-nat.md)
 ## [QoS-Anforderungen](expressroute-qos.md)
 ## [Umstellen von Verbindungen vom klassischen Modell auf das Resource Manager-Modell](expressroute-move.md)
-## [Gateways für virtuelle Netzwerke für ExpressRoute](expressroute-about-virtual-network-gateways.md)
 
 # Anleitung
 ## Erstellen und Ändern einer Verbindung
 ### [Azure-Portal](expressroute-howto-circuit-portal-resource-manager.md)
 ### [PowerShell](expressroute-howto-circuit-arm.md)
-### [PowerShell (klassisch)](expressroute-howto-circuit-classic.md)
-## Erstellen und Ändern einer Routingkonfiguration
+## Erstellen und Ändern einer Peeringkonfiguration
 ### [Azure-Portal](expressroute-howto-routing-portal-resource-manager.md)
 ### [PowerShell](expressroute-howto-routing-arm.md)
 ### [PowerShell (klassisch)](expressroute-howto-routing-classic.md)
@@ -38,11 +36,12 @@
 ### [PowerShell (klassisch)](expressroute-howto-coexist-classic.md)
 ## [Migrieren einer Verbindung vom klassischen Modell auf das Resource Manager-Modell](expressroute-howto-move-arm.md)
 ## Konfigurieren eines Routers für ExpressRoute
-### [Setupbeispiele für die Routerkonfiguration](expressroute-config-samples-routing.md)
+### [Konfigurieren eines Routers](expressroute-config-samples-routing.md)
 ### [Beispiele für die Routerkonfiguration für NAT](expressroute-config-samples-nat.md)
 
 ## Bewährte Methoden
 ### [Bewährte Methoden für Netzwerksicherheit und Clouddienste](../best-practices-network-security.md)
+## [Optimieren des Routings](expressroute-optimize-routing.md)
 ### [Asymmetrisches Routing](expressroute-asymmetric-routing.md)
 
 ## Problembehandlung
