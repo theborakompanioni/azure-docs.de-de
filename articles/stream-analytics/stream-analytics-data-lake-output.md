@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/24/2017
+ms.date: 03/28/2017
 ms.author: jeffstok
 translationtype: Human Translation
 ms.sourcegitcommit: 2b4a10c77ae02ac0e9eeecf6d7d6ade6e4c33115
 ms.openlocfilehash: 5d0a86742e4b238b94855464b2528db32b80526b
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -87,10 +88,5 @@ Derzeit besteht die Einschränkung, dass das Authentifizierungstoken alle 90 Tag
 Um dieses Problem zu beheben, halten Sie den laufenden Auftrag an, und wechseln Sie zu Ihrer Data Lake-Speicherausgabe. Klicken Sie auf „Autorisierung erneuern“, und für einen kurzen Zeitraum wird die Seite „Umleitung an die Autorisierung...“ angezeigt. Die Seite wird automatisch geschlossen und im Erfolgsfall wird „Autorisierung wurde erfolgreich erneuert“ angezeigt. Sie müssen dann unten auf der Seite auf „Speichern“ klicken und können fortfahren, indem Sie Ihren Auftrag von der letzten Beendigungszeit aus neu starten, um Datenverlust zu vermeiden.
 
 ![](media/stream-analytics-data-lake-output/stream-analytics-data-lake-output-renew-authorization.png)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 
