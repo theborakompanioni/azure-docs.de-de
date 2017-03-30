@@ -15,8 +15,9 @@ ms.workload: NA
 ms.date: 02/10/2017
 ms.author: vturecek
 translationtype: Human Translation
-ms.sourcegitcommit: c2e8f2d2f26bb93af5c2858242392b3dc207beb4
-ms.openlocfilehash: 2a3a5647f506d61e853f465f241d66fbe8c4ced0
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: ba07b1bf1b49ebb24a7d5cfbaad71f5f17c49192
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -30,7 +31,7 @@ In diesem Artikel wird die Funktionsweise von Reliable Actors auf der Service Fa
 Diese Komponenten bilden zusammen das Reliable Actors-Framework. 
 
 ## <a name="service-layering"></a>Dienstebenen
-Da der Actordienst selbst einer der Reliable Services ist, gelten alle Konzepte für Reliable Services wie [Anwendungsmodell](service-fabric-application-model.md), Lebenszyklus, [Verpackung](service-fabric-application-model.md#package-an-application), [Bereitstellung](service-fabric-deploy-remove-applications.md), Upgrade und Skalierung auch für Actordienste. 
+Da der Actordienst selbst einer der Reliable Services ist, gelten alle Konzepte für Reliable Services wie [Anwendungsmodell](service-fabric-application-model.md), Lebenszyklus, [Verpackung](service-fabric-package-apps.md), [Bereitstellung](service-fabric-deploy-remove-applications.md), Upgrade und Skalierung auch für Actordienste. 
 
 ![Actordienstebenen][1]
 
@@ -248,9 +249,4 @@ Bei Verwendung von GUIDs und Zeichenfolgen werden für die Werte Int64-Hashwerte
 [3]: ./media/service-fabric-reliable-actors-platform/actor-partition-info.png
 [4]: ./media/service-fabric-reliable-actors-platform/actor-replica-role.png
 [5]: ./media/service-fabric-reliable-actors-introduction/distribution.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

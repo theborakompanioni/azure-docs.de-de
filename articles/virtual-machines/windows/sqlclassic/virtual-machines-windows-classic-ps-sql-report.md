@@ -16,8 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 7402249aa87ffe985ae13f28a701e22af3afd450
-ms.openlocfilehash: b036296a4b4ce8ba3e6707226642a928381bcf31
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 8f62547316e4ecc02da0341aab94010d880115f8
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -77,7 +78,7 @@ In diesem Thema wird beschrieben und sind Anleitungen enthalten, wie ein SQL Ser
    * **ENDPUNKTE:** Übernehmen Sie den **Remotedesktop**- und den **PowerShell**-Endpunkt, und fügen Sie dann abhängig von Ihrer Umgebung einen HTTP- oder HTTPS-Endpunkt hinzu.
      
      * **HTTP:** Port **80** ist der öffentliche und private Standardport. Möchten Sie als privaten Port anstelle von 80 einen anderen Port verwenden, müssen Sie **$HTTPport = 80** im HTTP-Skript ändern.
-     * **HTTPS:** Port **443** ist der öffentliche und private Standardport. Aus Sicherheitsgründen empfiehlt es sich, den privaten Port zu ändern und die Firewall und den Berichtsserver so zu konfigurieren, dass sie den privaten Port verwenden. Weitere Informationen zu Endpunkten finden Sie unter [Einrichten von Endpunkten für einen virtuellen Computer](../../virtual-machines-windows-classic-setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Wenn Sie anstelle von 443 einen anderen Port verwenden, müssen Sie den Parameter **$HTTPsport = 443** im HTTPS-Skript ändern.
+     * **HTTPS:** Port **443** ist der öffentliche und private Standardport. Aus Sicherheitsgründen empfiehlt es sich, den privaten Port zu ändern und die Firewall und den Berichtsserver so zu konfigurieren, dass sie den privaten Port verwenden. Weitere Informationen zu Endpunkten finden Sie unter [Einrichten von Endpunkten für einen virtuellen Computer](../classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Wenn Sie anstelle von 443 einen anderen Port verwenden, müssen Sie den Parameter **$HTTPsport = 443** im HTTPS-Skript ändern.
    * Klicken Sie auf „Weiter“. ![Weiter](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
 8. Behalten Sie auf der letzten Seite des Assistenten die Standardoption **VM-Agent installieren** bei. Für die Schritte in diesem Thema wird der VM-Agent nicht verwendet, wenn Sie aber planen, diesen virtuellen Computer weiterzuverwenden, bieten Ihnen der VM-Agent und die Erweiterungen die Möglichkeit, den virtuellen Computer zu erweitern.  Weitere Informationen zum VM-Agenten finden Sie unter [VM Agent and Extensions – Part 1](https://azure.microsoft.com/blog/2014/04/11/vm-agent-and-extensions-part-1/). Eine der Standarderweiterungen, die installiert und ausgeführt werden, ist die BGINFO-Erweiterung, die auf dem Desktop des virtuellen Computers Systeminformationen wie die interne IP-Adresse und den freien Speicherplatz anzeigt.
 9. Klicken Sie auf „Fertig stellen“. ![Ok](./media/virtual-machines-windows-classic-ps-sql-report/IC660122.gif)
@@ -607,10 +608,5 @@ In der folgende Tabelle sind einige der Optionen zusammengefasst, mit denen vorh
 
 ### <a name="links-to-other-resources-for-sql-server-in-azure-vms"></a>Links zu anderen Ressourcen für SQL Server auf virtuellen Azure Computern:
 [Übersicht zu SQL Server auf virtuellen Azure-Computern](../sql/virtual-machines-windows-sql-server-iaas-overview.md)
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

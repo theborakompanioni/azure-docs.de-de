@@ -16,9 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: eabba7daa746a836592f775858782aa77fcebd9b
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 8a6b48437eecd9f2f5c3fe8447b31192d8318149
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -102,7 +102,7 @@ Es gibt zwei Hauptoptionen für das Einrichten des Listeners: extern (öffentlic
 Wenn die Verfügbarkeitsgruppe mehrere Azure-Subnetze umfasst (z.B. bei einer Bereitstellung über mehrere Azure-Regionen hinweg), muss die Client-Verbindungszeichenfolge „**MultisubnetFailover=True**“ enthalten. Dies führt zu parallelen Verbindungsversuchen mit den Replikaten in unterschiedlichen Subnetzen. Eine Anleitung zum Einrichten eines Listeners finden Sie unter
 
 * [Konfigurieren eines ILB-Listeners für Always On-Verfügbarkeitsgruppen in Azure](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md)
-* [Konfigurieren eines externen Listeners für AlwaysOn-Verfügbarkeitsgruppen in Azure](../sqlclassic/virtual-machines-windows-classic-ps-sql-ext-listener.md)
+* [Konfigurieren eines externen Listeners für AlwaysOn-Verfügbarkeitsgruppen in Azure](../classic/ps-sql-ext-listener.md)
 
 Sie können weiterhin separate Verbindungen mit den einzelnen Verfügbarkeitsreplikaten herstellen, indem Sie eine direkte Verbindung mit der Serverinstanz herstellen. Da AlwaysOn-Verfügbarkeitsgruppen abwärtskompatibel mit Clients für die Datenbankspiegelung sind, können Sie außerdem Verbindungen mit Verfügbarkeitsreplikaten wie Datenbankspiegelungspartnern herstellen, sofern die Replikate ähnlich wie die Datenbankspiegelung konfiguriert sind:
 

@@ -10,20 +10,18 @@ ms.assetid:
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
-ms.devlang: na
+ms.devlang: azurecli
 ms.topic: article
 ms.date: 02/18/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 36fa9cd757b27347c08f80657bab8a06789a3c2f
-ms.openlocfilehash: 5008bb0292bc7513a6264ff1768976fd5ba11bfa
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: be44ca9d14d6dbb7a50d5c42c163bc66531bb90f
+ms.lasthandoff: 03/30/2017
 
 
 ---
 # <a name="using-the-azure-cli-20-with-azure-storage"></a>Verwenden der Azure CLI 2.0 mit Azure Storage
-
-## <a name="overview"></a>Übersicht
 
 Die plattformübergreifende Azure CLI 2.0 auf Open-Source-Basis bietet eine Reihe von Befehlen zum Arbeiten mit der Azure-Plattform. Sie bietet im Wesentlichen die gleiche Funktionalität wie das [Azure-Portal](https://portal.azure.com), so z.B. umfangreiche Datenzugriffsfunktionen.
 
@@ -165,10 +163,10 @@ echo "Done"
 
    * **\<storage_account_name\>**: Der Name Ihres Speicherkontos.
    * **\<storage_account_key\>** Der primäre oder sekundäre Zugriffsschlüssel für Ihr Speicherkonto.
-   * **\<container_name\> ** Ein Name für den zu erstellenden Container wie z.B. „azure-cli-beispielcontainer“.
-   * **\<blob_name\> ** Ein Name für das Zielblob im Container.
+   * **\<container_name\>** Ein Name für den zu erstellenden Container wie z.B. „azure-cli-beispielcontainer“.
+   * **\<blob_name\>** Ein Name für das Zielblob im Container.
    * **\<file_to_upload\>** Der Pfad zu der kleinen Datei auf Ihrem lokalen Computer, wie z.B. „~/images/HelloWorld.png“.
-   * **\<destination_file\> ** Der Zieldateipfad, z.B. „~/downloadedImage.png“.
+   * **\<destination_file\>** Der Zieldateipfad, z.B. „~/downloadedImage.png“.
 
 3. Nachdem Sie die erforderlichen Variablen aktualisiert haben, speichern Sie das Skript, und beenden Sie den Editor. In den nächsten Schritten wird vorausgesetzt, dass Sie Ihr **my_storage_sample.sh** genannt haben.
 

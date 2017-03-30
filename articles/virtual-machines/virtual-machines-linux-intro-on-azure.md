@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 02/02/2017
 ms.author: szark
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: dc61f74a10fed1ba9e3959326e0020cf2b4440ea
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 554d1d504205767a287c690d82f03808047b1961
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -42,7 +43,7 @@ Optional können Sie über **sudo -s**eine Root-Shell abrufen.
 ## <a name="firewall-configuration"></a>Firewall-Konfiguration
 Azure bietet einen integrierten Paketfilter, der die Konnektivität auf die im klassischen Azure-Portal angegebenen Ports beschränkt. Standardmäßig ist SSH der einzige erlaubte Port. Sie können den Zugriff auf zusätzliche Ports auf Ihrem virtuellen Linux-Computer aktivieren, indem Sie im klassischen Azure-Portal Endpunkte konfigurieren.
 
-* Siehe: [Einrichten von Endpunkten für einen virtuellen Computer](virtual-machines-windows-classic-setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+* Siehe: [Einrichten von Endpunkten für einen virtuellen Computer](windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 Die Linux-Images im Azure-Katalog aktivieren nicht standardmäßig die *iptables* -Firewall. Bei Bedarf kann die Firewall für die Bereitstellung einer zusätzlichen Filterung konfiguriert werden.
 
@@ -60,7 +61,7 @@ Der Azure Linux Agent enthält eine Funktion zur automatischen Erkennung dieser 
 ### <a name="cloud-init"></a>cloud-init
 **Ubuntu**- und **CoreOS**-Images nutzen „cloud-init“ in Azure, was zusätzliche Funktionen für das Bootstrapping eines virtuellen Computers bietet.
 
-* [Einfügen von benutzerdefinierten Daten](virtual-machines-windows-classic-inject-custom-data.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* [Einfügen von benutzerdefinierten Daten](windows/classic/inject-custom-data.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 * [Custom Data and Cloud-Init on Microsoft Azure (Benutzerdefinierte Daten und Cloud-Init in Microsoft Azure, in englischer Sprache)](https://azure.microsoft.com/blog/2014/04/21/custom-data-and-cloud-init-on-windows-azure/)
 * [AzureSwapPartitions (in englischer Sprache)](https://wiki.ubuntu.com/AzureSwapPartitions)
 * [Verwenden von CoreOS in Azure](https://coreos.com/os/docs/latest/booting-on-azure.html)
@@ -72,7 +73,7 @@ Azure bietet die Möglichkeit, den Status eines vorhandenen virtuellen Computers
 2. Schalten Sie den virtuellen Computer aus.
 3. Klicken Sie im klassischen Azure-Portal auf *Erfassen* , oder verwenden Sie PowerShell oder Tools der Befehlszeilenschnittstelle, um den virtuellen Computer als Image zu erfassen.
    
-   * Siehe [Erfassen eines virtuellen Linux-Computers zur Verwendung als Vorlage](virtual-machines-linux-classic-capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
+   * Siehe [Erfassen eines virtuellen Linux-Computers zur Verwendung als Vorlage](linux/classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
 
 ## <a name="attaching-disks"></a>Anfügen von Datenträgern
 An jeden virtuellen Computer ist ein temporärer lokaler *Ressourcendatenträger* angefügt. Da die Daten auf einem Ressourcendatenträger bei Neustarts verloren gehen können, werden Ressourcendatenträger oft von Anwendungen und Prozessen zur **temporären** Datenspeicherung auf dem virtuellen Computer verwendet. Außerdem dienen sie zur Speicherung von Auslagerungsdateien für das Betriebssystem.
@@ -84,13 +85,8 @@ Unter Linux wird der Ressourcendatenträger normalerweise vom Azure Linux-Agent 
 > 
 > 
 
-Der Datenträger unter Linux kann vom Kernel den Namen `/dev/sdc` erhalten. Die Benutzer müssen diese Ressource partitionieren, formatieren und bereitstellen. Dieser Vorgang wird Schritt für Schritt im Tutorial [Anfügen eines Datenträgers an einen virtuellen Computer](virtual-machines-linux-classic-attach-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json) beschrieben.
+Der Datenträger unter Linux kann vom Kernel den Namen `/dev/sdc` erhalten. Die Benutzer müssen diese Ressource partitionieren, formatieren und bereitstellen. Dieser Vorgang wird Schritt für Schritt im Tutorial [Anfügen eines Datenträgers an einen virtuellen Computer](linux/classic/attach-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json) beschrieben.
 
 * **Siehe auch**: [Konfigurieren von Software-RAID unter Linux](virtual-machines-linux-configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) & [Konfigurieren von LVM auf einem virtuellen Linux-Computer in Azure](virtual-machines-linux-configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

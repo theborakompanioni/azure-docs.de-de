@@ -15,9 +15,9 @@ ms.date: 01/25/2017
 ms.author: jingwang
 published: true
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 4bc78bdf71c6de0c35197e84f4bb800d13bda6c0
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
+ms.openlocfilehash: d04bf7c5a457b90c5128050642bee6a2623787a0
+ms.lasthandoff: 03/29/2017
 
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Behandeln von Problemen bei der Verwendung des Datenverwaltungsgateways
@@ -40,7 +40,7 @@ Auf dem Computer, auf dem das Gateway installiert werden soll, konnte die aktuel
 #### <a name="resolution"></a>Lösung
 Überprüfen Sie die Firewall-/Proxyservereinstellungen, um festzustellen, ob die Einstellungen die Netzwerkverbindung zwischen dem Computer und dem [Download Center](https://download.microsoft.com/) blockieren, und aktualisieren Sie sie ggf. entsprechend.
 
-Alternativ können Sie die Installationsdatei für das neueste Gateway aus dem [Download Center](https://www.microsoft.com/en-US/download/details.aspx?id=39717) auf andere Computer herunterladen, die auf das Download Center zugreifen können. Anschließend können Sie die Installationsdatei auf den Hostcomputer des Gateways kopieren und manuell ausführen, um das Gateway zu installieren und zu aktualisieren.
+Alternativ können Sie die Installationsdatei für das neueste Gateway aus dem [Download Center](https://www.microsoft.com/download/details.aspx?id=39717) auf andere Computer herunterladen, die auf das Download Center zugreifen können. Anschließend können Sie die Installationsdatei auf den Hostcomputer des Gateways kopieren und manuell ausführen, um das Gateway zu installieren und zu aktualisieren.
 
 ### <a name="2-problem"></a>2. Problem
 Dieser Fehler wird angezeigt, wenn Sie versuchen, ein Gateway zu installieren, indem Sie im Azure-Portal auf **Direkt auf diesem Computer installieren** klicken.

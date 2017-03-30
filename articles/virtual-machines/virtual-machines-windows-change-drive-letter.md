@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 09/27/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 808343035c2554a3cd01cf3fe0ef6ebba2c54e23
-ms.openlocfilehash: 5b4443a8746bc8c88e2c5b58068c200aafc4beea
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 53e053fe12ea6753b6a47443ab91948c9a753a17
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -34,7 +35,7 @@ Weitere Informationen zur Verwendung des temporären Datenträgers in Azure find
 Zunächst müssen Sie den Datenträger an den virtuellen Computer anfügen. 
 
 * Informationen zur Verwendung des Portals finden Sie unter [Anfügen eines Datenträgers für Daten im Azure-Portal](virtual-machines-windows-attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-* Informationen zur Verwendung des klassischen Portals finden Sie unter [Anfügen eines Datenträgers an einen virtuellen Windows-Computer](virtual-machines-windows-classic-attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). 
+* Informationen zur Verwendung des klassischen Portals finden Sie unter [Anfügen eines Datenträgers an einen virtuellen Windows-Computer](windows/classic/attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). 
 
 ## <a name="temporarily-move-pagefilesys-to-c-drive"></a>Temporäres Verschieben von „pagefile.sys“ zu Laufwerk C
 1. Stellen Sie eine Verbindung mit dem virtuellen Computer her. 
@@ -69,10 +70,5 @@ Zunächst müssen Sie den Datenträger an den virtuellen Computer anfügen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Sie können den Speicher erhöhen, der für den virtuellen Computer verfügbar ist, indem Sie [einen zusätzlichen Datenträger anfügen](virtual-machines-windows-attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 55fb454f-c7dc-46de-a978-e242e9a94f4c
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,8 +17,9 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
-ms.openlocfilehash: 2d50c432f335d362068e55899f350cdf1c4c09ec
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 9b822da3d8fd2706bc65ab842d063be66904649f
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -31,7 +33,7 @@ Dieser Artikel enthält eine Schrittanleitung zur Verwendung der HDInsight-Tools
 5. Stellen Sie die Anwendung bereit, und führen Sie das Debuggen durch.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* Ein Azure-Abonnement. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+* Ein Azure-Abonnement. Siehe [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)(in englischer Sprache).
 * Ein Apache Spark-Cluster unter HDInsight. Eine Anleitung finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md).
 * Oracle Java Development Kit. Das Installationspaket finden Sie [hier](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
 * IntelliJ IDEA. In diesem Artikel wird die Version 15.0.1 verwendet. Das Installationspaket finden Sie [hier](https://www.jetbrains.com/idea/download/).
@@ -75,7 +77,7 @@ Sie sollten auch einen Apache Spark-Cluster unter Azure HDInsight erstellen, der
            192.xxx.xx.xx hn1-nitinp
            192.xxx.xx.xx hn1-nitinp.lhwwghjkpqejawpqbwcdyp3.gx.internal.cloudapp.net
 6. Überprüfen Sie auf dem Computer mit Verbindung zu dem Azure Virtual Network, das vom HDInsight-Cluster verwendet wird, ob sowohl die Hauptknoten als auch der Hostname unter der IP-Adresse per Ping erreichbar sind.
-7. Greifen Sie per SSH auf den Cluster-Hauptknoten zu, indem Sie die Anleitung unter [Herstellen einer Verbindung mit einem HDInsight-Cluster per SSH](hdinsight-hadoop-linux-use-ssh-windows.md#connect-to-a-linux-based-hdinsight-cluster)verwenden. Senden Sie vom Cluster-Hauptknoten aus eine Ping-Nachricht an die IP-Adresse des Desktopcomputers. Es ist ratsam, die Verbindung für beide IP-Adressen zu testen, die dem Computer zugewiesen sind: eine für die Netzwerkverbindung und die andere für das Azure Virtual Network, mit dem der Computer verbunden ist.
+7. Greifen Sie per SSH auf den Cluster-Hauptknoten zu, indem Sie die Anleitung unter [Herstellen einer Verbindung mit einem HDInsight-Cluster per SSH](hdinsight-hadoop-linux-use-ssh-unix.md)verwenden. Senden Sie vom Cluster-Hauptknoten aus eine Ping-Nachricht an die IP-Adresse des Desktopcomputers. Es ist ratsam, die Verbindung für beide IP-Adressen zu testen, die dem Computer zugewiesen sind: eine für die Netzwerkverbindung und die andere für das Azure Virtual Network, mit dem der Computer verbunden ist.
 8. Wiederholen Sie die Schritte auch für den anderen Hauptknoten. 
 
 ## <a name="step-4-create-a-spark-scala-application-using-the-hdinsight-tools-in-azure-toolkit-for-intellij-and-configure-it-for-remote-debugging"></a>Schritt 4: Erstellen einer Spark Scala-Anwendung mit den HDInsight-Tools im Azure-Toolkit für IntelliJ und Konfigurieren für das Remotedebuggen
@@ -254,7 +256,7 @@ Sie sollten auch einen Apache Spark-Cluster unter Azure HDInsight erstellen, der
    
     ![Programm im Debugmodus ausführen](./media/hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-complete.png)
 
-## <a name="a-nameseealsoasee-also"></a><a name="seealso"></a>Weitere Informationen
+## <a name="seealso"></a>Weitere Informationen
 * [Übersicht: Apache Spark in Azure HDInsight](hdinsight-apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Szenarios
@@ -279,10 +281,5 @@ Sie sollten auch einen Apache Spark-Cluster unter Azure HDInsight erstellen, der
 ### <a name="manage-resources"></a>Verwalten von Ressourcen
 * [Verwalten von Ressourcen für den Apache Spark-Cluster in Azure HDInsight](hdinsight-apache-spark-resource-manager.md)
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight(Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)](hdinsight-apache-spark-job-debugging.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

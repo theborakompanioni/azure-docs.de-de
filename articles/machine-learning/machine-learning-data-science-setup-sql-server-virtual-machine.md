@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/19/2016
 ms.author: xibingao;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: a6bc79b2cb5b73109cddd6cf57caeba754b52e2e
-ms.openlocfilehash: 777dc11be139b20363e2060776ac0227883591ff
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 497b683b1058e134c3c79dbc8c8a119ff20e330b
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -33,7 +34,7 @@ In der Galerie der virtuellen Computer von Azure sind verschiedene Images zu fin
   > 
   > 
 
-## <a name="a-nameprovisionaconnect-to-the-azure-classic-portal-and-provision-an-sql-server-virtual-machine"></a><a name="Provision"></a>Verbinden mit dem klassischen Azure-Portal und Bereitstellen eines virtuellen Computers mit SQL Server
+## <a name="Provision"></a>Verbinden mit dem klassischen Azure-Portal und Bereitstellen eines virtuellen Computers mit SQL Server
 1. Melden Sie sich mit Ihrem Konto beim [klassischen Azure-Portal](http://manage.windowsazure.com/) an.
    Wenn Sie kein Azure-Konto haben, sollten Sie die Seite [Kostenlose einmonatige Testversion](https://azure.microsoft.com/pricing/free-trial/)besuchen.
 2. Klicken Sie im klassischen Azure-Portal unten links auf der Webseite auf **+NEU**, und klicken Sie dann nacheinander auf **COMPUTE**, auf **VIRTUELLER COMPUTER** und dann auf **AUS KATALOG**.
@@ -83,7 +84,7 @@ In der Galerie der virtuellen Computer von Azure sind verschiedene Images zu fin
    * Wird ausgeführt (Bereitstellung)
    * Wird ausgeführt
 
-## <a name="a-nameremotedesktopaopen-the-virtual-machine-using-remote-desktop-and-complete-setup"></a><a name="RemoteDesktop"></a>Öffnen des virtuellen Computers mithilfe von Remotedesktop und vollständige Einrichtung
+## <a name="RemoteDesktop"></a>Öffnen des virtuellen Computers mithilfe von Remotedesktop und vollständige Einrichtung
 1. Wenn die Bereitstellung abgeschlossen ist, klicken Sie auf den Namen des virtuellen Computers, um zur Seite "DASHBOARD" zu gelangen. Klicken Sie unten auf der Seite auf **Verbinden**.
 2. Öffnen Sie die RPD-Datei mit dem Windows-Remotedesktop-Programm (`%windir%\system32\mstsc.exe`).
 3. Geben Sie im Dialogfeld **Windows-Sicherheit** das Kennwort für das lokale Administratorkonto an, das Sie zuvor festgelegt haben.
@@ -92,7 +93,7 @@ In der Galerie der virtuellen Computer von Azure sind verschiedene Images zu fin
 
 Nachdem Sie über Windows Remotedesktop mit dem virtuellen Computer verbunden sind, funktioniert der virtuelle Computer wie jeder andere Computer. Stellen Sie ganz normal eine Verbindung zur Standardinstanz von SQL Server mit SQL Server Management Studio, das auf dem virtuellen Computer ausgeführt wird, her.
 
-## <a name="a-nameinstallipythonainstall-ipython-notebook-and-other-supporting-tools"></a><a name="InstallIPython"></a>Installieren von IPython Notebook und anderen Tools
+## <a name="InstallIPython"></a>Installieren von IPython Notebook und anderen Tools
 Zum Konfigurieren der neuen SQL Server-VM als IPython Notebook-Server und zum Installieren zusätzlicher unterstützender Tools wie AzCopy, Azure-Speicher-Explorer, hilfreicher Python-Pakete für Data Science und anderer steht ein spezielles Anpassungsskript bereit. So führen Sie die Installation durch:
 
 * Klicken Sie mit der rechten Maustaste auf das Symbol **Windows-Start**, und klicken dann Sie auf **Eingabeaufforderung (Administrator)**.
@@ -113,7 +114,7 @@ Zum Konfigurieren der neuen SQL Server-VM als IPython Notebook-Server und zum In
 * Sie können über einen beliebigen Browser lokal oder remote auf IPython Notebook zugreifen und es ausführen. Verwenden Sie dazu eine URL im Format `https://<virtual_machine_DNS_name>:<port>`, wobei der Port der öffentliche IPython-Port ist, den Sie beim Bereitstellen des virtuellen Computers ausgewählt haben.
 * Der IPython Notebook-Server wird als Hintergrunddienst ausgeführt und bei einem Neustart des virtuellen Computers ebenfalls automatisch neu gestartet.
 
-## <a name="a-nameoptionalaattach-data-disk-as-needed"></a><a name="Optional"></a>Anfügen eines Datenträgers
+## <a name="Optional"></a>Anfügen eines Datenträgers
 Wenn Ihr VM-Image keine Datenträger enthält, d. h. keine anderen Datenträger als die Laufwerke C (Datenträger für das Betriebssystem) und D (temporärer Datenträger), müssen Sie mindestens einen Datenträger zum Speichern der Daten hinzufügen. Das VM-Image für SQL Server 2012 SP2 Enterprise Optimized für DataWarehousing Workloads ist bereits mit zusätzlichen Datenträgern für die Daten- und Protokolldateien von SQL Server vorkonfiguriert.
 
 > [!NOTE]
@@ -121,12 +122,12 @@ Wenn Ihr VM-Image keine Datenträger enthält, d. h. keine anderen Datenträger
 > 
 > 
 
-Um zusätzliche Datenträger anzufügen, führen Sie die Schritte unter [Anfügen eines Datenträgers an einen virtuellen Windows-Computer](../virtual-machines/virtual-machines-windows-classic-attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)durch:
+Um zusätzliche Datenträger anzufügen, führen Sie die Schritte unter [Anfügen eines Datenträgers an einen virtuellen Windows-Computer](../virtual-machines/windows/classic/attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)durch:
 
 1. Anfügen leerer Datenträger an den in den vorherigen Schritten bereitgestellten virtuellen Computer
 2. Initialisieren der neuen Datenträger auf dem virtuellen Computer
 
-## <a name="a-namessmsaconnect-to-sql-server-management-studio-and-enable-mixed-mode-authentication"></a><a name="SSMS"></a>Herstellen einer Verbindung mit SQL Server Management Studio und Aktivieren der Authentifizierung im gemischten Modus
+## <a name="SSMS"></a>Herstellen einer Verbindung mit SQL Server Management Studio und Aktivieren der Authentifizierung im gemischten Modus
 Das SQL Server-Datenbankmodul kann ohne Domänenumgebung keine Windows-Authentifizierung nutzen. Um eine Verbindung zum Datenbankmodul von einem anderen Computer aus herzustellen, konfigurieren Sie SQL Server für die Authentifizierung mit gemischtem Modus. Die Authentifizierung mit gemischtem Modus ermöglicht sowohl die SQL Server-Authentifizierung als auch die Windows-Authentifizierung. Der SQL-Authentifizierungsmodus ist erforderlich, um Daten mithilfe des „Import Data“-Moduls direkt aus den Datenbanken des virtuellen SQL Server-Computers in [Azure Machine Learning Studio](https://studio.azureml.net) zu erfassen.
 
 1. Verwenden Sie, während der virtuelle Computer über Remotedesktop verbunden ist, den Windows-Bereich **Suche**, und geben Sie dort **SQL Server Management Studio (SSMS)** ein. Klicken Sie auf diese Option, um SQL Server Management Studio (SSMS) zu starten. Sie können für die zukünftige Verwendung eine Verknüpfung mit SSMS auf Ihrem Desktop hinzufügen.
@@ -166,7 +167,7 @@ Das SQL Server-Datenbankmodul kann ohne Domänenumgebung keine Windows-Authentif
    ![Neu starten][9]
 5. Klicken Sie im Dialogfeld **SQL Server Management Studio** auf **Ja**, um zu bestätigen, dass SQL Server neu gestartet werden soll.
 
-## <a name="a-nameloginsacreate-sql-server-authentication-logins"></a><a name="Logins"></a>Erstellen von Anmeldenamen für die SQL Server-Authentifizierung
+## <a name="Logins"></a>Erstellen von Anmeldenamen für die SQL Server-Authentifizierung
 Um von einem anderen Computer aus eine Verbindung zum Datenbankmodul herzustellen, müssen Sie mindestens einen Anmeldenamen für die SQL Server-Authentifizierung erstellen.  
 
 Sie können programmgesteuert oder mithilfe von SQL Server Management Studio neue SQL Server-Anmeldungen erstellen. Um programmgesteuert einen neuen sysadmin-Benutzer mit SQL-Authentifizierung zu erstellen, starten Sie eine **Neue Abfrage** und führen das folgende Skript aus. Ersetzen Sie <new user name\> und <new password\> durch den gewünschten *Benutzernamen* und das gewünschte *Kennwort*. 
@@ -209,7 +210,7 @@ So erstellen Sie mit SQL Server Management Studio neue SQL Server-Anmeldungen:
     ![Serverrollen][12]
 12. Klicken Sie auf OK.
 
-## <a name="a-namednsadetermine-the-dns-name-of-the-virtual-machine"></a><a name="DNS"></a>Bestimmen des DNS-Namens des virtuellen Computers
+## <a name="DNS"></a>Bestimmen des DNS-Namens des virtuellen Computers
 Um sich von einem anderen Computer aus mit dem SQL Server-Datenbankmodul zu verbinden, müssen Sie den DNS-Namen (Domain Name System) des virtuellen Computers kennen.
 
 (Dies ist der Name, den das Internet verwendet, um den virtuellen Computer zu identifizieren. Sie können die IP-Adresse verwenden, aber die IP-Adresse ändert sich möglicherweise, wenn Azure aufgrund von Redundanz oder Wartungsarbeiten Ressourcen verschiebt. Der DNS-Name bleibt bestehen, da er zu einer neuen IP-Adresse weitergeleitet werden kann.)
@@ -217,7 +218,7 @@ Um sich von einem anderen Computer aus mit dem SQL Server-Datenbankmodul zu verb
 1. Wählen Sie im klassischen Azure-Portal (oder aus dem vorherigen Schritt) **VIRTUELLE COMPUTER**.
 2. Kopieren Sie auf der Seite **INSTANZEN VIRTUELLER COMPUTER** in der Spalte **DNS-NAME** den DNS-Namen für den virtuellen Computer, der auf **http://** folgt. (In der Benutzeroberfläche wird möglicherweise nicht der gesamte Name angezeigt, aber Sie können mit der rechten Maustaste darauf klicken und diese kopieren.)
 
-## <a name="a-namecdeaconnect-to-the-database-engine-from-another-computer"></a><a name="cde"></a>Verbinden mit dem Datenbankmodul von einem anderen Computer aus
+## <a name="cde"></a>Verbinden mit dem Datenbankmodul von einem anderen Computer aus
 1. Öffnen Sie auf einem mit dem Internet verbundenen Computer SQL Server Management Studio.
 2. Geben Sie im Dialogfeld **Verbindung mit Server herstellen** oder **Verbindung mit Datenbankmodul herstellen** im Feld **Servername** den DNS-Namen des virtuellen Computers ein (in vorherigen Aufgabe festgelegt) sowie die Portnummer eines öffentlichen Endpunkts im Format *DNSName,Portnummer* wie etwa **tutorialtestVM.cloudapp.net,57500**.
 3. Wählen Sie im Feld **Authentifizierung** den Eintrag **SQL Server-Authentifizierung**.
@@ -225,7 +226,7 @@ Um sich von einem anderen Computer aus mit dem SQL Server-Datenbankmodul zu verb
 5. Geben Sie im Feld **Kennwort** das Kennwort des Anmeldenamens ein, den Sie vorher erstellt haben.
 6. Klicken Sie auf **Verbinden**.
 
-## <a name="a-nameamlconnectaconnect-to-the-database-engine-from-azure-machine-learning"></a><a name="amlconnect"></a>Herstellen einer Verbindung von Azure Machine Learning zum Datenbankmodul
+## <a name="amlconnect"></a>Herstellen einer Verbindung von Azure Machine Learning zum Datenbankmodul
 In späteren Phasen des Cloud Team Data Science-Prozesses verwenden Sie [Azure Machine Learning Studio](https://studio.azureml.net) zum Erstellen und Bereitstellen von Machine Learning-Modellen. Verwenden Sie zum Erfassen von Daten aus den SQL Server-VM-Datenbanken direkt in Azure Machine Learning für das Training oder die Bewertung das **Import Data** -Modul in einem neuen [Azure Machine Learning Studio](https://studio.azureml.net) -Experiment. In diesem Thema werden weitere Einzelheiten über Links im Leitfaden zum Team Data Science-Prozess bereitgestellt. Eine Einführung finden Sie unter [Was ist Azure Machine Learning Studio?](machine-learning-what-is-ml-studio.md).
 
 1. Wählen Sie im Bereich **Properties** des [Import Data](https://msdn.microsoft.com/library/azure/dn905997.aspx)-Moduls die Option **Azure SQL Database** in der Dropdownliste **Data Source** aus.
@@ -235,7 +236,7 @@ In späteren Phasen des Cloud Team Data Science-Prozesses verwenden Sie [Azure M
    
    ![Azure Machine Learning: Importieren von Daten][13]
 
-## <a name="a-nameshutdownashutdown-and-deallocate-virtual-machine-when-not-in-use"></a><a name="shutdown"></a>Herunterfahren und Freigeben von nicht genutzten virtuellen Computern
+## <a name="shutdown"></a>Herunterfahren und Freigeben von nicht genutzten virtuellen Computern
 Virtuelle Azure-Computer werden **nach Nutzung abgerechnet**. Damit Sie nicht für ungenutzte virtuelle Computer bezahlen müssen, sollten Sie diese in den Status **Angehalten (Freigegeben)** versetzen.
 
 > [!NOTE]
@@ -273,10 +274,5 @@ Die nächsten Schritte im Data Science-Prozess sind unter [Team Data Science-Pro
 [12]: ./media/machine-learning-data-science-setup-sql-server-virtual-machine/25sysadmin.png
 [13]: ./media/machine-learning-data-science-setup-sql-server-virtual-machine/amlreader.png
 [15]: ./media/machine-learning-data-science-setup-sql-server-virtual-machine/vmshutdown.png
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 
