@@ -42,7 +42,7 @@ Wenn Sie Änderungen auf Ihre Anmeldeseite angewendet haben, kann es bis zu eine
 
 Eine Anmeldeseite mit Branding wird nur angezeigt, wenn Sie einen Dienst mit einer mandantenspezifischen URL besuchen, z. B. https://outlook.com/**contoso**.com oder https://mail.**contoso**.com.
 
-Wenn Sie einen Dienst mit nicht mandantenspezifischen URLs besuchen (7. B. https://mail.office365.com), wird eine Anmeldeseite ohne Branding angezeigt. In diesem Fall wird Ihr Branding angezeigt, nachdem Sie die Benutzer-ID eingegeben oder eine Benutzerkachel ausgewählt haben.
+Wenn Sie einen Dienst mit nicht mandantenspezifischen URLs besuchen (z.B. https://mail.office365.com), wird eine Anmeldeseite ohne Branding angezeigt. In diesem Fall wird Ihr Branding angezeigt, nachdem Sie die Benutzer-ID eingegeben oder eine Benutzerkachel ausgewählt haben.
 
 > [!NOTE]
 > * Ihr Domänenname muss im Abschnitt **Active Directory** > **Verzeichnis** > **Domänen** im klassischen Azure-Portal, in dem Sie das Branding konfiguriert haben, als „Aktiv“ angezeigt werden.
