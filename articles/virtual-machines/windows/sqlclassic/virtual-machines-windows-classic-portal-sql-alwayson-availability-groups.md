@@ -13,28 +13,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 09/22/2016
+ms.date: 03/17/2017
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: c1a1c7d2fd56e20d30cf0468de2d7d6c2935ef3e
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 1390a0caf4e9cfe2af8bd6171a4d07f58da4bc43
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-classic"></a>Konfigurieren von Always On-Verfügbarkeitsgruppen auf virtuellen Azure-Computern (klassisch)
 > [!div class="op_single_selector"]
-> * [Resource Manager: Vorlage](../sql/virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
-> * [Resource Manager: manuell](../sql/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)
 > * [Klassisch: Benutzeroberfläche](virtual-machines-windows-classic-portal-sql-alwayson-availability-groups.md)
 > * [Klassisch: PowerShell](virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md)
-> 
-> 
-
 <br/>
 
 > [!IMPORTANT] 
-> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager- und klassische Bereitstellung](../../../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells.
+> Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells. Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager- und klassische Bereitstellung](../../../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. 
+
+Informationen zum Durchführen dieser Aufgabe unter dem Azure Resource Manager-Modell finden Sie unter [SQL Server-Always On-Verfügbarkeitsgruppen auf virtuellen Azure-Computern](../sql/virtual-machines-windows-portal-sql-availability-group-overview.md).
 
 In diesem End-to-End-Tutorial erfahren Sie, wie Sie Verfügbarkeitsgruppen mithilfe von SQL Server AlwaysOn implementieren, das auf virtuellen Computern in Azure ausgeführt wird.
 
@@ -43,14 +40,14 @@ Am Ende des Tutorials besteht Ihre SQL Server AlwaysOn-Lösung in Azure aus folg
 * Einem virtuellen Netzwerk, das mehrere Subnetze enthält, einschließlich einem Front-End- und Back-End-Subnetz
 * Einem Domänencontroller mit einer Active Directory-Domäne (AD)
 * Zwei virtuellen SQL Server-Computern, die im Back-End-Subnetz bereitgestellt und der AD-Domäne beigetreten sind
-* Einem WSFC-Cluster aus 3 Knoten mit dem Knotenmehrheit-Quorummodell
+* Einem Failovercluster aus drei Knoten mit dem Knotenmehrheit-Quorummodell
 * Einer Verfügbarkeitsgruppe mit zwei Replikaten einer Verfügbarkeitsdatenbank mit synchronem Commit
 
 Die folgende Abbildung ist eine grafische Darstellung der Lösung.
 
 ![Test Lab-Architektur für AG in Azure](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC791912.png)
 
-Beachten Sie, dass dies nur eine mögliche Konfiguration ist. Beispielsweise können Sie die Anzahl der virtuellen Computer für eine Verfügbarkeitsgruppe aus zwei Replikaten verringern, um Rechenzeit in Azure zu sparen, indem Sie den Domänencontroller als Quorum-Dateifreigabezeugen in einem WSFC-Cluster mit 2 Knoten verwenden. Diese Methode verringert die Anzahl der virtuellen Computer in der oben dargestellten Konfiguration um einen Computer.
+Beachten Sie, dass dies nur eine mögliche Konfiguration ist. Beispielsweise können Sie die Anzahl der virtuellen Computer für eine Verfügbarkeitsgruppe aus zwei Replikaten verringern, um Rechenzeit in Azure zu sparen, indem Sie den Domänencontroller als Quorum-Dateifreigabezeugen in einem Cluster mit 2 Knoten verwenden. Diese Methode verringert die Anzahl der virtuellen Computer in der oben dargestellten Konfiguration um einen Computer.
 
 In diesem Tutorial wird Folgendes vorausgesetzt:
 
@@ -140,7 +137,7 @@ In den nächsten Schritten werden die Active Directory-Konten (AD) für die spä
    
     ![Active Directory-Verwaltungscenter](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC784626.png)
 3. Geben Sie auf dem Blatt **Active Directory-Verwaltungscenter** select **corp (lokal)** aus.
-4. Wählen Sie rechts im Aufgabenbereich** **die Option **Neu** aus, und klicken Sie dann auf **Benutzer**. Verwenden Sie folgende Einstellungen:
+4. Wählen Sie rechts im Aufgabenbereich****die Option **Neu** aus, und klicken Sie dann auf **Benutzer**. Verwenden Sie folgende Einstellungen:
    
    | Einstellung | Wert |
    | --- | --- |
@@ -150,9 +147,9 @@ In den nächsten Schritten werden die Active Directory-Konten (AD) für die spä
    | **Kennwort bestätigen** |Contoso!000 |
    | **Andere Kennwortoptionen** |Aktiviert |
    | **Kennwort läuft nie ab** |Aktiviert |
-5. Klicken Sie auf **OK**, um den Installationsbenutzer** **zu erstellen. Dieses Konto wird zum Konfigurieren des Failoverclusters und der Verfügbarkeitsgruppe verwendet.
-6. Erstellen Sie mit der gleichen Vorgehensweise zwei weitere Benutzer: **CORP\SQLSvc1** und **CORP\SQLSvc2**. Diese Konten werden für die SQL Server-Instanzen verwendet. Anschließend müssen Sie **CORP\Install** die erforderlichen Berechtigungen für das Konfigurieren von Windows Service Failover Clustering (WSFC) gewähren.
-7. Wählen Sie im **Active Directory-Verwaltungscenter** im linken Bereich die Option **corp (lokal)** aus. Klicken Sie dann rechts im Aufgabenbereich** **auf **Eigenschaften**.
+5. Klicken Sie auf **OK**, um den Installationsbenutzer****zu erstellen. Dieses Konto wird zum Konfigurieren des Failoverclusters und der Verfügbarkeitsgruppe verwendet.
+6. Erstellen Sie mit der gleichen Vorgehensweise zwei weitere Benutzer: **CORP\SQLSvc1** und **CORP\SQLSvc2**. Diese Konten werden für die SQL Server-Instanzen verwendet. Anschließend müssen Sie **CORP\Install** die erforderlichen Berechtigungen für das Konfigurieren von Windows-Failoverclustering gewähren.
+7. Wählen Sie im **Active Directory-Verwaltungscenter** im linken Bereich die Option **corp (lokal)** aus. Klicken Sie dann rechts im Aufgabenbereich****auf **Eigenschaften**.
    
     ![Eigenschaften des Benutzers CORP](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC784627.png)
 8. Wählen Sie **Erweiterungen** aus, und klicken Sie auf der Registerkarte **Sicherheit** auf die Schaltfläche **Erweitert**.
@@ -166,7 +163,7 @@ In den nächsten Schritten werden die Active Directory-Konten (AD) für die spä
 Nachdem Sie nun die Konfiguration von Active Directory und den Benutzerobjekten abgeschlossen haben, erstellen drei virtuelle SQL Server-Computer und lassen sie dieser Domäne beitreten.
 
 ## <a name="create-the-sql-server-vms"></a>Erstellen der virtuellen SQL Server-Computer
-Als Nächstes erstellen Sie drei virtuelle Computer, einschließlich eines WSFC-Clusterknotens und zweier virtueller SQL Server-Computer. Um diese virtuellen Computer zu erstellen, kehren Sie zum klassischen Azure-Portal zurück. Klicken Sie auf **Neu**, **Compute**, **Virtueller Computer** und dann auf **Aus Katalog**. Verwenden Sie dann die Vorlagen aus der folgenden Tabelle, die Sie bei der Erstellung der virtuellen Computer unterstützen.
+Als Nächstes erstellen Sie drei virtuelle Computer, einschließlich eines Clusterknotens und zweier virtueller SQL Server-Computer. Um diese virtuellen Computer zu erstellen, kehren Sie zum klassischen Azure-Portal zurück. Klicken Sie auf **Neu**, **Compute**, **Virtueller Computer** und dann auf **Aus Katalog**. Verwenden Sie dann die Vorlagen aus der folgenden Tabelle, die Sie bei der Erstellung der virtuellen Computer unterstützen.
 
 | Seite | VM1 | VM2 | VM3 |
 | --- | --- | --- | --- |
@@ -231,15 +228,15 @@ Sobald die drei virtuellen Computer vollständig bereitgestellt wurden, müssen 
 
 Die virtuellen SQL Server-Computer sind jetzt bereitgestellt und werden ausgeführt, sie sind aber mit SQL Server mit Standardoptionen installiert.
 
-## <a name="create-the-wsfc-cluster"></a>Erstellen des WSFC-Clusters
-In diesem Abschnitt erstellen Sie den WSFC-Cluster, der die Verfügbarkeitsgruppe hostet, die Sie später erstellen werden. Mittlerweile sollen Sie Folgendes auf jedem der drei virtuellen Computer, die im WSFC-Cluster verwendet werden sollen, erledigt haben:
+## <a name="create-the-failover-cluster"></a>Erstellen des Failoverclusters
+In diesem Abschnitt erstellen Sie den Failovercluster, der die später erstellte Verfügbarkeitsgruppe hosten soll. Mittlerweile sollten Sie Folgendes auf jedem der drei virtuellen Computer, die im Failovercluster verwendet werden sollen, erledigt haben:
 
 * Vollständige Bereitstellung in Azure
 * Beitritt des virtuellen Computers zur Domäne
 * Hinzufügen von **CORP\Install** zur lokalen Administratorgruppe
 * Hinzufügen der Funktion "Failoverclustering"
 
-All dies sind Voraussetzungen für jeden der virtuellen Computer, damit er dem WSFC-Cluster hinzugefügt werden kann.
+All dies sind Voraussetzungen für jeden der virtuellen Computer, damit er dem Failovercluster hinzugefügt werden kann.
 
 Beachten Sie außerdem, dass sich das virtuelle Azure-Netzwerk nicht auf dieselbe Weise wie ein lokales Netzwerk verhält. Sie müssen die Cluster in der folgenden Reihenfolge erstellen:
 
@@ -342,14 +339,14 @@ Sie sind jetzt bereit, um eine Verfügbarkeitsgruppe zu konfigurieren. Im Folgen
 ### <a name="create-the-mydb1-database-on-contososql1"></a>Erstellen der Datenbank "MyDB1" auf "ContosoSQL1":
 1. Wenn Sie sich noch nicht von den Remotedesktopsitzungen für **ContosoSQL1** und **ContosoSQL2** abgemeldet haben, tun Sie dies jetzt.
 2. Starten Sie die RDP-Datei für **ContosoSQL1**, und melden Sie sich als **CORP\Install** an.
-3. Erstellen Sie im **Datei-Explorer** unter **C:\** ein Verzeichnis namens **backup**. Dieses Verzeichnis verwenden Sie zum Sichern und Wiederherstellen Ihrer Datenbank.
+3. Erstellen Sie im **Datei-Explorer** unter **C:\** ein Verzeichnis namens**backup**. Dieses Verzeichnis verwenden Sie zum Sichern und Wiederherstellen Ihrer Datenbank.
 4. Klicken Sie mit der rechten Maustaste auf das neue Verzeichnis, zeigen Sie auf **Freigeben für**, und klicken Sie dann auf **Bestimmte Personen**, wie unten gezeigt.
    
     ![Erstellen eines Sicherungsordners](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC665521.gif)
 5. Fügen Sie **CORP\SQLSvc1** hinzu, und erteilen Sie dafür die Berechtigung **Lesen/Schreiben**. Fügen Sie anschließend **CORP\SQLSvc2** hinzu, und erteilen Sie dafür die Berechtigung **Lesen**, wie unten dargestellt. Klicken Sie dann auf **Freigeben**. Nachdem der Dateifreigabeprozess abgeschlossen ist, klicken Sie auf **Fertig**.
    
     ![Erteilen von Berechtigungen für den Sicherungsordner](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC665522.gif)
-6. Erstellen Sie als Nächstes die Datenbank. Starten Sie **SQL Server Management Studio** über das** **Startmenü, und klicken Sie dann auf **Verbinden**, um eine Verbindung mit der Standardinstanz von SQL Server herzustellen.
+6. Erstellen Sie als Nächstes die Datenbank. Starten Sie **SQL Server Management Studio** über das****Startmenü, und klicken Sie dann auf **Verbinden**, um eine Verbindung mit der Standardinstanz von SQL Server herzustellen.
 7. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf **Datenbanken**, und klicken Sie dann auf **Neue Datenbank**.
 8. Geben Sie unter **Datenbankname** den Namen **MyDB1** ein, und klicken Sie dann auf **OK**.
 
@@ -361,7 +358,7 @@ Sie sind jetzt bereit, um eine Verfügbarkeitsgruppe zu konfigurieren. Im Folgen
 5. Als Nächstes erstellen Sie eine Transaktionsprotokollsicherung der Datenbank. Erweitern Sie im **Objekt-Explorer** den Eintrag **Datenbanken**, klicken Sie mit der rechten Maustaste auf **MyDB1**, zeigen Sie auf **Aufgaben**, und klicken Sie dann auf **Sichern**.
 6. Wählen Sie unter **Sicherungstyp** die Option **Transaktionsprotokoll** aus. Behalten Sie für den Dateipfad **Ziel** den von Ihnen zuvor angegebenen Pfad bei, und klicken Sie auf **OK**. Wenn der Sicherungsvorgang abgeschlossen ist, klicken Sie wieder auf **OK** .
 7. Als Nächstes stellen Sie die vollständige Sicherung und die Transaktionsprotokollsicherung auf **ContosoSQL2**wieder her. Starten Sie die RDP-Datei für **ContosoSQL2**, und melden Sie sich als **CORP\Install** an. Lassen Sie die Remotedesktopsitzung für **ContosoSQL1** geöffnet.
-8. Starten Sie **SQL Server Management Studio** über das** **Startmenü, und klicken Sie dann auf **Verbinden**, um eine Verbindung mit der Standardinstanz von SQL Server herzustellen.
+8. Starten Sie **SQL Server Management Studio** über das****Startmenü, und klicken Sie dann auf **Verbinden**, um eine Verbindung mit der Standardinstanz von SQL Server herzustellen.
 9. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf **Datenbanken**, und klicken Sie dann auf **Datenbank wiederherstellen**.
 10. Wählen Sie im Abschnitt **Quelle** die Option **Gerät** aus, und klicken Sie dann auf die Schaltfläche mit den Auslassungspunkten (**...**) .
 11. Klicken Sie unter **Sicherungsmedien auswählen** auf **Hinzufügen**.
@@ -408,7 +405,7 @@ Sie sind jetzt bereit, um eine Verfügbarkeitsgruppe zu konfigurieren. Im Folgen
      ![Verfügbarkeitsgruppe im Failovercluster-Manager](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC665534.gif)
 
 > [!WARNING]
-> Versuchen Sie nicht, ein Failover der Verfügbarkeitsgruppe aus dem Failovercluster-Manager heraus durchzuführen. Alle Failovervorgänge sollten über das **AlwaysOn-Dashboard** in SSMS ausgeführt werden. Weitere Informationen finden Sie unter [Einschränkungen für die Verwendung des WSFC-Failovercluster-Managers mit Verfügbarkeitsgruppen](https://msdn.microsoft.com/library/ff929171.aspx).
+> Versuchen Sie nicht, ein Failover der Verfügbarkeitsgruppe aus dem Failovercluster-Manager heraus durchzuführen. Alle Failovervorgänge sollten über das **AlwaysOn-Dashboard** in SSMS ausgeführt werden. Weitere Informationen finden Sie unter [Restrictions on Using The Failover Cluster Manager with Availability Groups](https://msdn.microsoft.com/library/ff929171.aspx) (Einschränkungen für die Verwendung des Failovercluster-Managers mit Verfügbarkeitsgruppen).
 > 
 > 
 

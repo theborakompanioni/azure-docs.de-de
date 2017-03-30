@@ -126,10 +126,10 @@ Führen Sie die folgenden Schritte aus, um einen SSH-Tunnel mithilfe von PuTTY z
 
 Nachdem der Cluster eingerichtet wurde, gehen Sie folgendermaßen vor, um zu überprüfen, ob Sie von der Ambari-Webbenutzeroberfläche auf Dienst-Webbenutzeroberflächen zugreifen können:
 
-1. Öffnen Sie in Ihrem Browser „http://headnodehost:8080“. Die `headnodehost`-Adresse wird durch den Tunnel an den Cluster gesendet und in den Hauptknoten aufgelöst, auf dem Ambari ausgeführt wird. Geben Sie bei der entsprechenden Aufforderung den Benutzernamen ("admin") und das Kennwort des Administrators für den Cluster ein. Sie werden eventuell von der Ambari-Webbenutzeroberfläche ein zweites Mal zur Eingabe aufgefordert. Geben Sie in diesem Fall die Informationen erneut ein.
+1. Öffnen Sie in Ihrem Browser http://headnodehost:8080 . Die `headnodehost`-Adresse wird durch den Tunnel an den Cluster gesendet und in den Hauptknoten aufgelöst, auf dem Ambari ausgeführt wird. Geben Sie bei der entsprechenden Aufforderung den Benutzernamen ("admin") und das Kennwort des Administrators für den Cluster ein. Sie werden eventuell von der Ambari-Webbenutzeroberfläche ein zweites Mal zur Eingabe aufgefordert. Geben Sie in diesem Fall die Informationen erneut ein.
    
    > [!NOTE]
-   > Bei Verwendung der Adresse „http://headnodehost:8080“ zum Herstellen der Verbindung mit dem Cluster wird die Verbindung direkt über den Tunnel mit dem Hauptknoten hergestellt, auf dem Ambari ausgeführt wird. Hierfür wird HTTP genutzt, und die Kommunikation ist mit dem SSH-Tunnel geschützt. Bei einer Verbindung über das Internet ohne Tunnel wird die Kommunikation per HTTPS geschützt. Verwenden Sie zum Herstellen einer Verbindung über das Internet per HTTPS die Adresse „https://CLUSTERNAME.azurehdinsight.net“, wobei **CLUSTERNAME** der Name des Clusters ist.
+   > Bei Verwendung der Adresse http://headnodehost:8080 zum Herstellen der Verbindung mit dem Cluster wird die Verbindung direkt über den Tunnel mit dem Hauptknoten hergestellt, auf dem Ambari ausgeführt wird. Hierfür wird HTTP genutzt, und die Kommunikation ist mit dem SSH-Tunnel geschützt. Bei einer Verbindung über das Internet ohne Tunnel wird die Kommunikation per HTTPS geschützt. Verwenden Sie zum Herstellen einer Verbindung über das Internet per HTTPS die Adresse „https://CLUSTERNAME.azurehdinsight.net“, wobei **CLUSTERNAME** der Name des Clusters ist.
 
 2. Wählen Sie auf der Ambari-Webbenutzeroberfläche aus der Liste links auf der Seite „HDFS“ aus.
    

@@ -16,9 +16,9 @@ ms.workload: na
 ms.date: 02/15/2017
 ms.author: corywink
 translationtype: Human Translation
-ms.sourcegitcommit: 623f502a92dc8eb152a9b01c4f6db0640ce57e54
-ms.openlocfilehash: ab027e1f21e8c2c33829f833395a6872cb7bcdd8
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: ce37bb41babb7bf894c23add994bf2c144ee6549
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -75,6 +75,9 @@ Zwei. In einem Azure-Abonnement können für Bing Karten für Unternehmen nur zw
 
 ### <a name="can-i-create-a-preconfigured-solution-if-i-have-microsoft-azure-for-dreamspark"></a>Kann ich eine vorkonfigurierte Lösung erstellen, wenn ich Microsoft Azure für DreamSpark besitze?
 Zu diesem Zeitpunkt können Sie keine vorkonfigurierte Lösung mit einem Konto für [Microsoft Azure für DreamSpark][lnk-dreamspark] erstellen. Sie können jedoch in wenigen Minuten ein [kostenloses Testkonto für Azure][lnk-30daytrial] einrichten, mit dem Sie eine vorkonfigurierte Lösung erstellen können.
+
+### <a name="can-i-create-a-preconfigured-solution-if-i-have-cloud-solution-provider-csp-subscription"></a>Kann ich eine vorkonfigurierte Lösung erstellen, wenn ich über ein CSP-Abonnement (Cloud Solution Provider, Cloudlösungsanbieter) verfüge?
+Derzeit können Sie keine vorkonfigurierte Lösung erstellen, wenn Sie über ein CSP-Abonnement (Cloud Solution Provider, Cloudlösungsanbieter) verfügen. Sie können jedoch in wenigen Minuten ein [kostenloses Testkonto für Azure][lnk-30daytrial] einrichten, mit dem Sie eine vorkonfigurierte Lösung erstellen können.
 
 ### <a name="how-do-i-delete-an-aad-tenant"></a>Wie lösche ich einen AAD-Mandanten?
 Informationen hierzu finden Sie im Blogbeitrag von Eric Golpe: [Exemplarische Vorgehensweise zum Löschen eines Azure AD-Mandanten][lnk-delete-aad-tennant].

@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 72d54080-1e48-4a5e-aa50-cce4ffc85077
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
@@ -16,9 +17,9 @@ ms.workload: big-data
 ms.date: 01/11/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 354292f51d07bff00e7a6811e4d1d7beb7844920
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
+ms.openlocfilehash: 0aa2a7075f64b353f6b052ab6b973a06622a9339
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -42,7 +43,7 @@ Apache Storm in HDInsight bietet die folgenden Hauptvorteile:
 * Einfache Anpassung durch Ausführung von Skripts für den Cluster während oder nach der Erstellung. Weitere Informationen finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md).
 
 * Nutzung der Sprache Ihrer Wahl: Storm-Komponenten können in vielen verschiedenen Sprachen geschrieben werden, z.B. **Java**, **C#** und **Python**.
-  
+
   * Visual Studio-Integration mit HDInsight für die Entwicklung, Verwaltung und Überwachung von C#-Topologien. Weitere Informationen finden Sie unter [Entwickeln von C#-Storm-Topologien mit HDInsight-Tools für Visual Studio](hdinsight-storm-develop-csharp-visual-studio-topology.md).
 
   * Unterstützt die Java-Schnittstelle **Trident**. Mit dieser Schnittstelle können Sie Storm-Topologien erstellen, die eine „exakt einmalige“ Verarbeitung von Nachrichten, „transaktionale“ Datenspeicherpersistenz sowie eine Reihe allgemeiner Datenstrom-Analysevorgänge unterstützen.
@@ -50,13 +51,13 @@ Apache Storm in HDInsight bietet die folgenden Hauptvorteile:
 * Einfache zentrale Hoch- und Herunterskalierung des Clusters: Sie können Workerknoten hinzufügen oder entfernen, ohne dass sich dies auf aktive Storm-Topologien auswirkt.
 
 * Integration in die folgenden Azure-Dienste:
-  
+
     * Event Hubs
     * Virtuelles Netzwerk
     * SQL-Datenbank
     * Azure Storage
     * DocumentDB gespeichert.
-  
+
   * Sicheres Kombinieren der Funktionen mehrerer HDInsight-Cluster mithilfe von Azure Virtual Network: Erstellen Sie analytische Pipelines, die HDInsight-, HBase- oder Hadoop-Cluster nutzen.
 
 Eine Liste der Unternehmen, die Apache Storm für ihre Echtzeitanalyselösungen verwenden, finden Sie unter [Unternehmen, die Apache Storm verwenden](https://storm.apache.org/documentation/Powered-By.html).
@@ -68,7 +69,7 @@ Eine Einführung in Storm finden Sie unter [Erste Schritte mit Storm in HDInsigh
 Sie können einen neuen Storm in HDInsight-Cluster in wenigen Minuten bereitstellen. Geben Sie den Clusternamen, die Größe, das Administratorkonto und das Speicherkonto an. Azure erstellt den Cluster, einschließlich Beispieltopologien und Dashboard für die Webverwaltung.
 
 > [!NOTE]
-> Sie können Storm-Cluster auch über die [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) oder [Azure PowerShell](/powershell/azureps-cmdlets-docs) bereitstellen.
+> Sie können Storm-Cluster auch über die [Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md) oder [Azure PowerShell](/powershell/azureps-cmdlets-docs) bereitstellen.
 
 Innerhalb von 15 Minuten nach Übermittlung der Anforderung verfügen Sie über einen neuen Storm-Cluster, der bereit ist für die erste Echtzeitanalysepipeline.
 
@@ -80,7 +81,7 @@ Innerhalb von 15 Minuten nach Übermittlung der Anforderung verfügen Sie über 
 
 * __Webkonnektivität__: Für HDInsight-Cluster wird die Ambari-Webbenutzeroberfläche bereitgestellt. Mit der Ambari-Webbenutzeroberfläche können Sie Dienste in Ihrem Cluster leicht überwachen, konfigurieren und verwalten. Außerdem wird für Storm in HDInsight die Storm-Benutzeroberfläche bereitgestellt, mit der Sie die Ausführung von Storm-Topologien in Ihrem Browser überwachen und verwalten können.
 
-  Weitere Informationen finden Sie unter [Verwalten von HDInsight mithilfe der Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md) und [Überwachen und Verwalten mit der Storm-Benutzeroberfläche](hdinsight-storm-deploy-monitor-topology-linux.md#monitor-and-manage-using-the-storm-ui).
+  Weitere Informationen finden Sie unter [Verwalten von HDInsight mithilfe der Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md) und [Überwachen und Verwalten mit der Storm-Benutzeroberfläche](hdinsight-storm-deploy-monitor-topology-linux.md#monitor-and-manage-storm-ui).
 
 * __Azure PowerShell und -CLI__: Sowohl Azure PowerShell als auch die Azure-CLI verfügen über Befehlszeilen-Hilfsprogramme, die Sie über Ihr Clientsystem verwenden können, um mit HDInsight und anderen Azure-Diensten zu arbeiten.
 
@@ -152,7 +153,7 @@ Apache Storm verarbeitet **Topologien** anstelle der MapReduce-Aufträge, die Si
 * **Datenstrom**: Eine ungebundene Sammlung von **Tupeln**. Datenströme werden von **Spouts** und **Bolts** erzeugt und von **Bolts** konsumiert.
 * **Tupel**: Eine benannte Liste dynamisch typisierter Werte.
 * **Spout**: Konsumiert Daten aus einer Datenquelle und gibt einen oder mehrere **Datenströme** aus.
-  
+
   > [!NOTE]
   > In vielen Fällen werden Daten aus einer Warteschlange gelesen, z.B. Kafka oder Azure Event Hubs. Die Warteschlange sorgt dafür, dass die Daten bei einem Ausfall beibehalten werden.
 

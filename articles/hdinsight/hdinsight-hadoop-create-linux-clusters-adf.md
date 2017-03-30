@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 02/23/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 2289c99ddd08c1e7ba356e233180cf59d99de182
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 121be952ea49a8ff47f7e2528adbc87e05359a15
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -194,7 +194,7 @@ Wenn das Speicherkonto, die Eingabedaten und das HiveQL-Skript vorbereitet sind,
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fadfhiveactivity%2Fdata-factory-hdinsight-on-demand.json" target="_blank"><img src="./media/hdinsight-hadoop-create-linux-clusters-adf/deploy-to-azure.png" alt="Deploy to Azure"></a>
 2. Wählen Sie die Option **Vorhandene verwenden** für die Einstellung **Ressourcengruppe** und den Namen der Ressourcengruppe aus, die Sie im vorherigen Schritt (mithilfe des PowerShell-Skripts) erstellt haben. 
 3. Geben Sie einen Namen für die Data Factory ein (**Name der Data Factory**). Dieser Name muss global eindeutig sein.
-4. Geben Sie den **Speicherkontonamen** und **Speicherkontoschlüssel** ein, die Sie im vorherigen Schritt notiert haben.
+4. Geben Sie den **Speicherkontonamen** und den **Speicherkontoschlüssel** ein, die Sie im vorherigen Schritt notiert haben.
 5. Wählen Sie die Option **Ich stimme den oben genannten Geschäftsbedingungen zu** aus, nachdem Sie die **Geschäftsbedingungen** gelesen haben.
 6. Wählen Sie die Option **An Dashboard anheften** aus. 
 6. Klicken Sie auf **Purchase/Create** (Kaufen/Erstellen). Eine Kachel mit dem Namen **Vorlagenbereitstellung bereitstellen** wird auf dem Dashboard angezeigt. Warten Sie, bis das Blatt **Ressourcengruppe** für Ihre Ressourcengruppe geöffnet wird. Sie können auch auf die Kachel mit dem Namen Ihrer Ressourcengruppe klicken, um das Blatt der Ressourcengruppe zu öffnen. 

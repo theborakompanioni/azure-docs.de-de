@@ -1,5 +1,5 @@
 ---
-title: "Traffic Manager – Methoden für das Datenverkehrsrouting | Microsoft-Dokumente"
+title: "Azure Traffic Manager – Methoden für das Datenverkehrsrouting | Microsoft-Dokumentation"
 description: "Diese Artikel erläutern Ihnen die verschiedenen Methoden für das Datenverkehrsrouting, die von Traffic Manager verwendet werden"
 services: traffic-manager
 documentationcenter: 
@@ -12,41 +12,32 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/16/2017
+ms.date: 03/22/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 11a120338a9f76bfb0a56a70d0c566625bc518b9
-ms.openlocfilehash: ee3265032a839b1c35821e60e1143ae772389804
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: 6f5a94588e20e62775ffddea0d711bb01e3db4ef
+ms.lasthandoff: 03/22/2017
 
 ---
 
-# <a name="traffic-manager-traffic-routing-methods"></a>Traffic Manager-Methoden für das Datenverkehrsrouting
+# <a name="traffic-manager-routing-methods"></a>Traffic Manager-Routingmethoden
 
 Azure Traffic Manager unterstützt drei Methoden für das Datenverkehrsrouting, um zu bestimmen, wie Netzwerkverkehr an die verschiedenen Dienstendpunkte weitergeleitet wird. Traffic Manager wendet die Methode für das Datenverkehrsrouting auf jede empfangene DNS-Abfrage an. Mit der Methode für das Datenverkehrsrouting wird festgelegt, welcher Endpunkt in der DNS-Antwort zurückgegeben wird.
 
-Die Azure Resource Manager-Unterstützung für Traffic Manager verwendet eine andere Terminologie als das klassische Bereitstellungsmodell. Die folgende Tabelle zeigt die Unterschiede zwischen den Resource Manager- und den klassischen Begriffen:
-
-| Resource Manager-Begriff | Klassischer Begriff |
-| --- | --- |
-| Datenverkehrsrouting-Methode |Lastenausgleichsmethode |
-| Prioritätsmethode |Failover-Methode |
-| Gewichtete Methode |Roundrobin-Methode |
-| Leistungsmethode |Leistungsmethode |
-
-Die Änderung der Terminologie wurde aufgrund von Kundenfeedback eingeführt, um die Klarheit zu verbessern und Missverständnisse zu reduzieren. Es gibt keinen Unterschied in der Funktionalität.
-
-Drei Methoden für das Datenverkehrsrouting sind in Traffic Manager verfügbar:
+Vier Methoden für das Datenverkehrsrouting sind in Traffic Manager verfügbar:
 
 * **Priorität**: Wählen Sie „Priorität“ aus, wenn Sie einen primären Dienstendpunkt für sämtlichen Datenverkehr verwenden möchten. Stellen Sie Backups bereit, falls der primäre Endpunkt nicht verfügbar ist.
 * **Gewichtet** : Wählen Sie „Gewichtet“, wenn Sie Datenverkehr über eine Gruppe von Endpunkten verteilen möchten – gleichmäßig oder gemäß einer von Ihnen definieren Gewichtung.
 * **Leistung** : Wählen Sie „Leistung“ aus, wenn sich Ihre Endpunkte an unterschiedlichen geografischen Standorten befinden und Endbenutzer an den „nächstgelegenen“ Endpunkt (im Hinblick auf die geringste Netzwerklatenz) weitergeleitet werden sollen.
+* **Geographisch:** Wählen Sie „Geographisch“ aus, damit Benutzer auf bestimmte Endpunkte (Azure, Extern oder Gschachtelt) geleitet werden, je nach dem geografischen Ursprungsort ihrer DNS-Abfrage. Dadurch können Traffic Manager-Kunden Szenarien unterstützen, in denen die Kenntnis der geografischen Region eines Benutzers und das Routing auf der Grundlage dieser Kenntnis wichtig sind. Zu Beispielen dafür gehören die Einhaltung von Datenhoheitsmandaten, die Verortung von Inhalten und Benutzererfahrungen und das Messen von Datenverkehr aus verschiedenen Regionen.
 
 Alle Traffic Manager-Profile beinhalten die Überwachung der Endpunktintegrität sowie automatisches Endpunktfailover. Weitere Informationen finden Sie unter [Traffic Manager-Endpunktüberwachung](traffic-manager-monitoring.md). Ein einzelnes Traffic Manager-Profil kann nur eine einzige Methode für das Datenverkehrsrouting verwenden. Sie können jederzeit eine andere Methode für das Datenverkehrsrouting für Ihr Profil auswählen. Änderungen werden innerhalb einer Minute angewendet, und es entstehen keine Ausfallzeiten. Methoden für das Datenverkehrsrouting können durch Verwendung geschachtelter Traffic Manager-Profile kombiniert werden. Durch die Schachtelung können ausgefeilte und flexible Konfigurationen für das Datenverkehrsrouting erstellt werden, um die Anforderungen größerer und komplexer Anwendungen zu erfüllen. Weitere Informationen finden Sie unter [Geschachtelte Traffic Manager-Profile](traffic-manager-nested-profiles.md).
 
 ## <a name="priority-traffic-routing-method"></a>Prioritätsmethode für das Datenverkehrsrouting
 
 Wenn Organisationen die Zuverlässigkeit ihrer Dienste gewährleisten möchten, stellen sie häufig einen oder mehrere Sicherungsdienste bereit, für den Fall, dass der primäre Dienst ausfällt. Mithilfe der prioritätsbasierten Methode für das Datenverkehrsrouting können Azure-Kunden dieses Failovermuster problemlos implementieren.
+
 ![Prioritätsbasierte Methode für das Datenverkehrsrouting in Azure Traffic Manager][1]
 
 Das Traffic Manager-Profil enthält eine Prioritätenliste mit Dienstendpunkten. Standardmäßig sendet Traffic Manager den gesamten Datenverkehr an den primären Endpunkt (mit der höchsten Priorität). Wenn der primäre Endpunkt nicht verfügbar ist, leitet Traffic Manager den Datenverkehr an den sekundären Endpunkt weiter. Wenn weder der primäre noch der sekundäre Endpunkt verfügbar sind, wird der Datenverkehr an den dritten Endpunkt gesendet usw. Ob ein Endpunkt verfügbar ist, hängt vom konfigurierten Status (aktiviert oder deaktiviert) sowie von der fortlaufenden Endpunktüberwachung ab.
@@ -55,14 +46,12 @@ Das Traffic Manager-Profil enthält eine Prioritätenliste mit Dienstendpunkten.
 
 Mit Azure Resource Manager wird die Endpunktpriorität mithilfe der für jeden Endpunkt definierten Prioritätseigenschaft explizit konfiguriert. Für diese Eigenschaft wird ein Wert zwischen 1 und 1000 festgelegt. Niedrigere Werte stellen eine höhere Priorität dar. Der gleiche Prioritätswert kann nicht für mehrere Endpunkte konfiguriert werden. Diese Eigenschaft kann optional festgelegt werden. Wird sie nicht festgelegt, wird eine Standardpriorität basierend auf der Endpunktreihenfolge verwendet.
 
-Mit der klassischen Benutzeroberfläche wird die Endpunktpriorität implizit konfiguriert. Dabei hängt die Priorität von der Reihenfolge ab, in der die Endpunkte in der Profildefinition aufgeführt sind.
-
 ## <a name="weighted-traffic-routing-method"></a>Gewichtete Methode für das Datenverkehrsrouting
 Bei der gewichteten Methode für das Datenverkehrsrouting wird der Datenverkehr gleichmäßig verteilt oder eine vordefinierte Gewichtung verwendet.
 
 ![Gewichtete Methode für das Datenverkehrsrouting in Azure Traffic Manager][2]
 
-Bei der gewichteten Methode für das Datenverkehrsrouting wird jedem Endpunkt im Rahmen der Traffic Manager-Profilkonfiguration eine Gewichtung zugewiesen. Die Gewichtung ist eine Ganzzahl zwischen 1 und 1000. Dieser Parameter ist optional. Wenn er nicht angegeben wird, wird die Standardgewichtung&1; verwendet.
+Bei der gewichteten Methode für das Datenverkehrsrouting wird jedem Endpunkt im Rahmen der Traffic Manager-Profilkonfiguration eine Gewichtung zugewiesen. Die Gewichtung ist eine Ganzzahl zwischen 1 und 1000. Dieser Parameter ist optional. Wenn er nicht angegeben wird, wird die Standardgewichtung 1 verwendet.
 
 Für jede empfangene DNS-Abfrage wählt Traffic Manager einen verfügbaren Endpunkt nach dem Zufallsprinzip aus. Die Wahrscheinlichkeit für die Auswahl eines Endpunkts basiert hierbei auf der Gewichtung, die allen verfügbaren Endpunkten zugewiesen wurde. Die Verwendung der gleichen Gewichtung für alle Endpunkte führt zu einer gleichmäßigen Verteilung des Datenverkehrs. Wenn für bestimmte Endpunkte eine höhere oder niedrigere Gewichtung verwendet wird, werden diese Endpunkte häufiger oder seltener in den DNS-Antworten zurückgegeben.
 
@@ -72,7 +61,7 @@ Durch die gewichtete Methode werden einige nützliche Szenarios ermöglicht:
 * Anwendungsmigration zu Azure: Erstellen Sie ein Profil mit Azure- und externen Endpunkten. Passen Sie die Gewichtung der Endpunkte so an, dass die neuen Endpunkte bevorzugt werden.
 * Erweiterung in die Cloud für zusätzliche Kapazität: Erweitern Sie eine lokale Bereitstellung schnell in die Cloud, indem Sie diese hinter einem Traffic Manager-Profil zur Verfügung stellen. Wenn Sie zusätzliche Kapazität in der Cloud benötigen, können Sie weitere Endpunkte hinzufügen oder aktivieren. Geben Sie dann an, welcher Teil des Datenverkehrs an jeden Endpunkt gesendet wird.
 
-Das neue Azure-Portal unterstützt die Konfiguration von gewichtetem Datenverkehrsrouting. Gewichtungen können im klassischen Portal nicht konfiguriert werden. Gewichtungen können auch mithilfe von Resource Manager und den klassischen Versionen von Azure PowerShell, der Befehlszeilenschnittstelle und den REST-APIs konfiguriert werden.
+Das Azure-Ressourcen-Manager-Portal unterstützt die Konfiguration von gewichtetem Datenverkehrsrouting.  Gewichtungen können mithilfe der Resource Manager-Versionen von Azure PowerShell, der Befehlszeilenschnittstelle und den REST-APIs konfiguriert werden.
 
 Hinweis: DNS-Antworten werden sowohl von Clients als auch von den rekursiven DNS-Servern zwischengespeichert, die von diesen Clients für ihre DNS-Abfragen verwendet werden. Dieses Zwischenspeichern hat möglicherweise Auswirkungen auf die gewichtete Datenverkehrsverteilungen. Wenn die Anzahl von Clients und rekursiven DNS-Servern hoch ist, funktioniert die Verteilung des Datenverkehrs wie erwartet. Wenn die Anzahl von Clients oder rekursiven DNS-Servern jedoch gering ist, kann diese Zwischenspeicherung die Verteilung des Datenverkehrs massiv verzerren.
 
@@ -108,14 +97,42 @@ Beachten Sie Folgendes:
 * Der Algorithmus, mit dem der Endpunkt ausgewählt wird, ist deterministisch. Wiederholte DNS-Abfragen des gleichen Clients werden an den gleichen Endpunkt geleitet. Clients verwenden unterwegs üblicherweise verschiedene rekursive DNS-Server. Der Client kann daher an einen anderen Endpunkt weitergeleitet werden. Routing kann sich ebenfalls auf die Internetlatenztabelle auswirken. Daher ist mit der leistungsorientierten Methode für das Datenverkehrsrouting nicht gewährleistet, dass ein Client immer an denselben Endpunkt weitergeleitet wird.
 * Wenn die Internetlatenztabelle geändert wird, stellen Sie möglicherweise fest, dass einige Clients an einen anderen Endpunkt weitergeleitet werden. Dies reflektiert ein genaueres Routing basierend auf aktuellen Latenzdaten. Diese Updates sind wichtig, um angesichts der kontinuierlichen Entwicklung des Internets die Genauigkeit der leistungsorientierten Methode für das Datenverkehrsrouting sicherzustellen.
 
+## <a name="geographic-traffic-routing-method"></a>Geografische Routingmethode für Datenverkehr
+
+Traffic Manager-Profile können für die Verwendung der geografischen Routingmethode konfiguriert werden, damit Benutzer je nach dem geografischen Ursprungsort ihrer DNS-Abfrage auf bestimmte Endpunkte (Azure, Extern oder Geschachtelt) geleitet werden. Dadurch können Traffic Manager-Kunden Szenarien unterstützen, in denen die Kenntnis der geografischen Region eines Benutzers und das Routing auf der Grundlage dieser Kenntnis wichtig sind. Beispiele dafür bilden etwa die Einhaltung von Datenhoheitsmandaten, die Verortung von Inhalten und Benutzererfahrungen und das Messen von Datenverkehr aus verschiedenen Regionen.
+Wenn ein Profil für geografisches Routing konfiguriert ist, muss jedem Endpunkt, der dem betreffenden Profil zugeordnet ist, eine Reihe geografischer Regionen zugeordnet sein. Die Granularität einer geografischen Region kann die folgenden Abstufungen aufweisen 
+- Welt – jede Region
+- Regionale Gruppierung – zum Beispiel Afrika, Naher Osten, Australien/Pazifik usw. 
+- Land/Region – zum Beispiel Irland, Peru, Hongkong (SAR) usw. 
+- Bundesland/Provinz – z.B USA-Kalifornien, Australien-Queensland, Kanada-Alberta usw. (Hinweis: Diese Granularitätsstufe wird nur für Bundesländer/Provinzen in Australien, Kanada, dem Vereinigten Königreich und den USA unterstützt).
+
+Wenn einem Endpunkt eine Region oder eine Reihe von Regionen zugewiesen ist, werden alle Anforderungen aus diesen Regionen nur an den betreffenden Endpunkt geroutet. Traffic Manager verwendet die IP-Quelladresse der DNS-Abfrage, um die Region zu bestimmen, aus der eine Benutzerabfrage stammt – in den meisten Fällen handelt es sich um die IP-Adresse des lokalen DNS-Auflösers, der die Abfrage im Auftrag des Benutzers ausführt.  
+
+![Geografische Methode für das Datenverkehrsrouting in Azure Traffic Manager](./media/traffic-manager-routing-methods/geographic.png)
+
+Traffic Manager liest die IP-Quelladresse der DNS-Abfrage und entscheidet, aus welcher geografischen Region sie stammt. Anschließend überprüft er, ob ein Endpunkt vorhanden ist, dem die betreffende geografische Region zugeordnet ist. Diese Suche beginnt auf der niedrigsten Granularitätsstufe (Bundesland/Provinz für die unterstützten Regionen, andernfalls auf der Ebene Land/Region) und schreitet bis zu höchsten Ebene „Welt“ fort. Die erste Übereinstimmung, die bei diesem Durchlauf gefunden wird, wird als der in der Antwort auf die Abfrage zurückzugebende Endpunkt gekennzeichnet. Falls eine Übereinstimmung mit einem geschachtelten Endpunkttyp festgestellt wird, wird auf der Grundlage seiner Routingmethode ein Endpunkt mit dem entsprechenden untergeordneten Profil zurückgegeben. Die folgenden Punkte treffen auf dieses Verhalten zu:
+
+1. Wenn der Routingtyp geografisches Routing ist, kann ein Endpunkt in einem Traffic Manager-Profil nur einer geografischen Region zugeordnet werden. Dadurch ist sichergestellt, dass das Routing von Benutzern deterministisch erfolgt, sodass Kunden Szenarien aktivieren können, die unzweideutige geografische Grenzen erfordern.
+2. Wenn die Region eines Benutzers unter der geografischen Zuordnung zweier Endpunkte vorkommt, wählt Traffic Manager den Endpunkt mit der niedrigsten Granularität aus und verwirft Routinganforderungen aus der betreffenden Region für den anderen Endpunkt. Beispiel: Betrachten wir ein Profil vom geografischen Routingtyp mit zwei Endpunkten – Endpunkt 1 und Endpunkt 2. Endpunkt 1 ist für den Empfang von Datenverkehr aus Irland und Endpunkt 2 für den Empfang von Datenverkehr aus Europa konfiguriert. Wenn eine Anforderung aus Irland stammt, wird sie immer an Endpunkt 1 geroutet.
+3. Da eine Region nur einem Endpunkt zugeordnet sein kann, gibt Traffic Manager diesen Endpunkt unabhängig von seinem Integritätsstatus zurück. Daher wird Kunden dringend empfohlen, die geografische Routingmethode für Endpunkte vom Typ „Geschachtelt“ zu verwenden, die über untergeordnete Profile mit wenigstens zwei erreichbaren Endpunkten aufweisen.
+4. Wenn ein übereinstimmender Endpunkt gefunden wird und dieser den Status **Beendet** aufweist, gibt Traffic Manager die Antwort NODATA zurück. In diesem Fall erfolgen keine weiteren Suchläufe weiter oben in der Hierarchie der geografischen Regionen. Dieses Verhalten trifft auch auf geschachtelte Endpunkttypen zu, wenn sich das untergeordnete Profil im Status **Beendet** oder **Deaktiviert** befindet.
+5. Wenn sich ein Endpunkt im Status **Deaktiviert** befindet, wird er in den Prozess der Regionszuordnung nicht einbezogen. Dieses Verhalten trifft auch auf geschachtelte Endpunkttypen zu, wenn der Endpunkt sich im Status **Deaktiviert** befindet.
+6. Wenn eine Abfrage aus einer geografischen Region stammt, für die es im betreffenden Profil keine Zuordnung gibt, gibt Traffic Manager die Antwort NODATA zurück. Daher wird Kunden dringend empfohlen, geografisches Routing mit einem Endpunkt zu verwenden, idealerweise vom Typ „Geschachtelt“ mit mindestens zwei Endpunkten im untergeordneten Profil, dem die Region **Welt** zugeordnet ist. Dadurch wird auch die Verarbeitung aller IP-Adressen sichergestellt, die keiner Region zugeordnet werden können.
+
+Wie unter [Funktionsweise von Traffic Manager Works](traffic-manager-how-traffic-manager-works.md) bereits beschrieben, erhält Traffic Manager DNS-Abfragen nicht direkt von Clients. Vielmehr erhält er DNS-Abfragen vom rekursiven DNS-Dienst, für deren Verwendung die Clients konfiguriert sind. Daher handelt es sich bei der IP-Adresse, die zur Ermittlung der Region verwendet wird, nicht um die IP-Adresse eines Clients, sondern um die IP-Adresse des zugehörigen rekursiven DNS-Diensts. In der Praxis lässt sich diese IP-Adresse für diesen Zweck gut verwenden.
+
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie, wie Sie mithilfe der [Traffic Manager endpoint monitoring](traffic-manager-monitoring.md)
 
-Informationen zum [Erstellen eines Traffic Manager-Profils](traffic-manager-manage-profiles.md)
+Informationen zum [Erstellen eines Traffic Manager-Profils](traffic-manager-create-profile.md)
 
 <!--Image references-->
 [1]: ./media/traffic-manager-routing-methods/priority.png
 [2]: ./media/traffic-manager-routing-methods/weighted.png
 [3]: ./media/traffic-manager-routing-methods/performance.png
+
+
+
 

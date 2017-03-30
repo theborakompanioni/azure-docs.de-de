@@ -17,16 +17,16 @@ ms.workload: sqldb-migrate
 ms.date: 02/08/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: 8d4823576fe0d44fa565fdb72e8b229d31dff609
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 2d72731304aee0952abbb1f3b2c24b620118fc6c
+ms.lasthandoff: 03/18/2017
 
 
 ---
 # <a name="sql-server-database-migration-to-sql-database-in-the-cloud"></a>Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank in der Cloud
 Dieser Artikel enthält Informationen zu den beiden Hauptmethoden, mit denen eine SQL Server-Datenbank (ab SQL Server 2005) zu Azure SQL-Datenbank migriert wird. Die erste Methode ist einfacher, aber auch mit einer gewissen (möglicherweise sogar erheblichen) Ausfallzeit während der Migration verbunden. Die zweite Methode ist komplexer, verringert aber deutlich die Ausfallzeit während der Migration.
 
-In beiden Fällen muss die Quelldatenbank mit Azure SQL-Datenbank kompatibel sein. Mit SQL-Datenbank V12 nähern wir uns der [Featureübereinstimmung](sql-database-features.md) mit SQL Server (abgesehen von Problemen mit Vorgängen auf Serverebene und datenbankübergreifenden Vorgängen). Datenbanken und Anwendungen, die auf [teilweise oder nicht unterstützten Funktionen](sql-database-transact-sql-information.md) basieren, müssen zur Behebung dieser Kompatibilitätsprobleme vor der Migration der SQL Server-Datenbank etwas [umstrukturiert](sql-database-cloud-migrate.md#resolving-database-migration-compatibility-issues) werden.
+In beiden Fällen muss mit dem [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) sichergestellt werden, dass die Quelldatenbank mit Azure SQL-Datenbank kompatibel ist. SQL-Datenbank V12 nähert sich der [Featureübereinstimmung](sql-database-features.md) mit SQL Server (abgesehen von Problemen mit Vorgängen auf Serverebene und datenbankübergreifenden Vorgängen). Datenbanken und Anwendungen, die auf [teilweise oder nicht unterstützten Funktionen](sql-database-transact-sql-information.md) basieren, müssen zur Behebung dieser Kompatibilitätsprobleme vor der Migration der SQL Server-Datenbank etwas [umstrukturiert](sql-database-cloud-migrate.md#resolving-database-migration-compatibility-issues) werden.
 
 > [!NOTE]
 > Informationen zum Migrieren einer SQL Server-fremden Datenbank (einschließlich Microsoft Access, Sybase, MySQL Oracle und DB2) zu einer Azure SQL-Datenbank finden Sie unter [SQL Server-Migrations-Assistent](https://blogs.msdn.microsoft.com/datamigration/2016/12/22/released-sql-server-migration-assistant-ssma-v7-2/).

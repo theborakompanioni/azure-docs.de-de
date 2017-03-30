@@ -1,10 +1,10 @@
 ---
-title: Lastenausgleich bei Konfigurationen mit mehreren IP-Adressen | Microsoft-Dokumentation
+title: Lastenausgleich bei Konfigurationen mit mehreren IP-Adressen in Azure | Microsoft-Dokumentation
 description: "Lastenausgleich in Konfigurationen mit primären und sekundären IP-Adressen"
 services: load-balancer
 documentationcenter: na
-author: anavinahar
-manager: narayan
+author: kumudd
+manager: timlt
 editor: na
 ms.assetid: 244907cd-b275-4494-aaf7-dcfc4d93edfe
 ms.service: load-balancer
@@ -12,160 +12,120 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/10/2017
-ms.author: annahar
+ms.date: 03/22/2017
+ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 555f43d6fca2ac6ba53eae94bff22426d667c444
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: cf1e68c7b37b2506de007bdf24eea63a27187a33
+ms.lasthandoff: 03/22/2017
 
 ---
 
-# <a name="load-balancing-on-multiple-ip-configurations"></a>Lastenausgleich bei Konfigurationen mit mehreren IP-Adressen
+# <a name="load-balancing-on-multiple-ip-configurations-using-the-azure-portal"></a>Lastenausgleich bei Konfigurationen mit mehreren IP-Adressen mithilfe des Azure-Portals
 
 > [!div class="op_single_selector"]
-> * [PowerShell](load-balancer-multiple-ip.md)
+> * [Portal](load-balancer-multiple-ip.md)
+> * [PowerShell](load-balancer-multiple-ip-powershell.md)
 > * [BEFEHLSZEILENSCHNITTSTELLE (CLI)](load-balancer-multiple-ip-cli.md)
->
 
-In diesem Artikel wird beschrieben, wie Sie Azure Load Balancer mit mehreren IP-Adressen pro virtueller Netzwerkschnittstellenkarte (Network Interface Card, NIC) verwenden. Die Unterstützung für mehrere IP-Adressen auf einer NIC ist eine Funktion, die sich derzeit noch in der Vorschauphase befindet. Weitere Informationen finden Sie im Abschnitt [Einschränkungen](#limitations) in diesem Artikel. Das folgende Szenario veranschaulicht, wie dieses Feature mit Load Balancer funktioniert.
-
-In diesem Szenario verwenden wir zwei virtuelle Computer unter Windows mit jeweils einer NIC. Jede NIC verfügt über Konfigurationen mit mehreren IP-Adressen. Jeder virtuelle Computer hostet beide Websites für „contoso.com“ und „fabrikam.com“. Jede Website ist an eine der IP-Konfigurationen auf der NIC gebunden. Wir verwenden Load Balancer, um zwei Front-End-IP-Adressen verfügbar zu machen (jeweils eine für jede Website), damit der Datenverkehr an die entsprechende IP-Konfiguration für die Website verteilt werden kann. Dieses Szenario verwendet die gleiche Portnummer auf beiden Front-Ends sowie beide Back-End-Pool-IP-Adressen.
+Dieser Artikel beschreibt die Verwendung von Azure Load Balancer mit mehreren IP-Adressen an einer sekundären Netzwerkschnittstelle (NIC). In diesem Szenario verwenden wir zwei virtuelle Computer mit Windows, von denen jeder eine primäre und eine sekundäre NIC aufweist. Die sekundären NICs haben jeweils zwei IP-Konfigurationen. Jeder virtuelle Computer hostet die beiden Websites „contoso.com“ und „fabrikam.com“. Jede Website ist an eine der IP-Konfigurationen der sekundären NIC gebunden. Wir verwenden Azure Load Balancer, um zwei Front-End-IP-Adressen verfügbar zu machen (jeweils eine für jede Website), damit der Datenverkehr an die entsprechende IP-Konfiguration für die Website verteilt werden kann. Dieses Szenario verwendet die gleiche Portnummer auf beiden Front-Ends sowie beide Back-End-Pool-IP-Adressen.
 
 ![Abbildung zum LB-Szenario](./media/load-balancer-multiple-ip/lb-multi-ip.PNG)
 
-## <a name="limitations"></a>Einschränkungen
-
-Zu diesem Zeitpunkt ist die Konfiguration für den Lastenausgleich für sekundäre IP-Konfigurationen nur mithilfe von Azure PowerShell und der Azure-CLI möglich. Diese Einschränkung ist nicht dauerhaft und kann sich jederzeit ändern. Besuchen Sie diese Seite regelmäßig, um nach Updates zu suchen.
-
-[!INCLUDE [virtual-network-preview](../../includes/virtual-network-preview.md)]
-
-Registrieren Sie sich für die Vorschau, indem Sie in PowerShell die folgenden Befehle ausführen, nachdem Sie sich angemeldet und das entsprechende Abonnement ausgewählt haben:
-
-```
-Register-AzureRmProviderFeature -FeatureName AllowMultipleIpConfigurationsPerNic -ProviderNamespace Microsoft.Network
-
-Register-AzureRmProviderFeature -FeatureName AllowLoadBalancingonSecondaryIpconfigs -ProviderNamespace Microsoft.Network
-
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
-```
-
-Führen Sie die restlichen Schritte erst aus, nachdem nach Ausführen des Befehls ```Get-AzureRmProviderFeature``` die folgende Ausgabe angezeigt wird:
-        
-```powershell
-FeatureName                            ProviderName      RegistrationState
------------                            ------------      -----------------      
-AllowLoadBalancingOnSecondaryIpConfigs Microsoft.Network Registered       
-AllowMultipleIpConfigurationsPerNic    Microsoft.Network Registered       
-```
-        
->[!NOTE] 
->Dies kann einige Minuten dauern.
+##<a name="prerequisites"></a>Voraussetzungen
+In diesem Beispiel wird angenommen, dass Sie über eine Ressourcengruppe mit dem Namen *contosofabrikam* und folgender Konfiguration verfügen:
+ -  Enthalten sind ein virtuelles Netzwerk mit dem Namen *meinVNetz*, zwei virtuelle Computer *VM1* bzw. *VM2* innerhalb der gleichen Verfügbarkeitsgruppe *meineVerfügbarkeitsgruppe*. 
+ - Jeder virtuelle Computer verfügt über eine primäre NIC und eine sekundäre NIC. Die primären NICs heißen *VM1NIC1* und *VM2NIC1*, und die sekundären NICs tragen die Namen *VM1NIC2* und *VM2NIC2*. Weitere Informationen zum Erstellen von virtuellen Computern mit mehreren NICs finden Sie unter [Erstellen einer VM mit mehreren Netzwerkkarten (NICs) mithilfe von PowerShell](../virtual-network/virtual-network-deploy-multinic-arm-ps.md).
 
 ## <a name="steps-to-load-balance-on-multiple-ip-configurations"></a>Schritte für den Lastenausgleich bei Konfigurationen mit mehreren IP-Adressen
 
-Führen Sie die folgenden Schritte aus, um das in diesem Artikel beschriebene Szenario umzusetzen:
+Führen Sie die Schritte unten aus, um das in diesem Artikel beschriebene Szenario umzusetzen:
 
-1. Installieren Sie Azure PowerShell. Unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) erfahren Sie, wie Sie die neueste Version von Azure PowerShell installieren, Ihr Abonnement auswählen und sich bei Ihrem Konto anmelden.
-2. Erstellen Sie mithilfe der folgenden Einstellungen eine Ressourcengruppe:
+### <a name="step-1-configure-the-secondary-nics-for-each-vm"></a>SCHRITT 1: Konfigurieren der sekundären NICs für jeden virtuellen Computer
 
-    ```powershell
-    $location = "westcentralus".
-    $myResourceGroup = "contosofabrikam"
-    ```
+Fügen Sie für jeden virtuellen Computer in Ihrem virtuellen Netzwerk die IP-Konfiguration für die sekundäre NIC wie folgt hinzu:  
 
-    Weitere Informationen finden Sie in Schritt 2 unter [Erstellen einer Ressourcengruppe](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json).
+1. Navigieren Sie in einem Browser zum Azure-Portal: http://portal.azure.com, und melden Sie sich mit Ihrem Azure-Konto an.
+2. Klicken Sie oben links auf dem Bildschirm auf das Symbol „Ressourcengruppe“, und klicken Sie dann auf die Ressourcengruppe, in der sich die VMs befinden (z.B. *contosofabrikam*). Daraufhin wird das Blatt **Ressourcengruppen** angezeigt, auf dem alle Ressourcen zusammen mit den Netzwerkschnittstellen für die virtuellen Computer aufgelistet sind.
+3. Fügen Sie der sekundären NIC jedes virtuellen Computers in folgender Weise eine IP-Konfiguration hinzu:
+    1. Wählen Sie die Netzwerkkarte aus, der Sie die IP-Konfiguration hinzufügen möchten.
+    2. Klicken Sie auf dem Blatt, das für die ausgewählte NIC angezeigt wird, auf **IP-Konfigurationen**. Klicken Sie im oberen Bereich des angezeigten Blatts auf **Hinzufügen**.
+    3. Fügen Sie auf dem Blatt **IP-Konfigurationen hinzufügen** der NIC in folgender Weise eine zweite IP-Konfiguration hinzu: 
+        1. Geben Sie einen Namen für Ihre sekundäre IP-Konfiguration ein (benennen Sie beispielsweise für VM1 und VM2 die IP-Konfigurationen *VM1NIC2-ipconfig2* bzw. *VM2NIC2-ipconfig2*).
+        2. Wählen Sie als **Private IP-Adresse** für **Zuteilung** **Statisch** aus.
+        3. Klicken Sie auf **OK**.
+        4. Wenn die zweite IP-Konfiguration für die sekundäre NIC abgeschlossen ist, wird sie auf dem Einstellungsblatt **IP-Konfigurationen** für die betreffende NIC angezeigt.
 
-3. [Erstellen Sie eine Verfügbarkeitsgruppe](../virtual-machines/virtual-machines-windows-create-availability-set.md?toc=%2fazure%2fload-balancer%2ftoc.json) mit Ihren virtuellen Computern. Führen Sie für dieses Szenario den folgenden Befehl aus:
+### <a name="step-2-create-a-load-balancer"></a>SCHRITT 2: Erstellen eines Load Balancers
 
-    ```powershell
-    New-AzureRmAvailabilitySet -ResourceGroupName "contosofabrikam" -Name "myAvailset" -Location "West Central US"
-    ```
+Erstellen Sie wie folgt einen Load Balancer:
 
-4. Führen Sie die Anweisungsschritte 3 bis 5 im Artikel [Erstellen einer Windows-VM mit dem Resource Manager und PowerShell](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json) aus, um die Erstellung eines virtuellen Computers mit einer NIC vorzubereiten. Führen Sie Schritt 6.1 aus, und verwenden Sie anstelle von Schritt 6.2 Folgendes:
+1. Navigieren Sie in einem Browser zum Azure-Portal: http://portal.azure.com, und melden Sie sich mit Ihrem Azure-Konto an.
+2. Klicken Sie oben links auf dem Bildschirm auf **Neu** > **Netzwerk** > **Load Balancer**. Klicken Sie dann auf **Erstellen**.
+3. Geben Sie auf dem Blatt **Load Balancer erstellen** einen Namen für den Load Balancer ein. In diesem Fall heißt er *meinlb*.
+4. Erstellen Sie unter „Öffentliche IP-Adresse“ eine neue öffentliche IP-Adresse mit dem Namen **ÖffentlicheIP1**.
+5. Wählen Sie unter „Ressourcengruppe“ die vorhandene Ressourcengruppe Ihrer virtuellen Computer aus (z.B. *contosofabrikam*). Wählen Sie einen geeigneten Speicherort aus, und klicken Sie dann auf **OK**. Die Bereitstellung des Load Balancers wird dann gestartet und wird einige Minuten dauern.
+6. Nach der Bereitstellung wird der Load Balancer in Ihrer Ressourcengruppe als Ressource angezeigt.
 
-    ```powershell
-    $availset = Get-AzureRmAvailabilitySet -ResourceGroupName "contosofabrikam" -Name "myAvailset"
-    New-AzureRmVMConfig -VMName "VM1" -VMSize "Standard_DS1_v2" -AvailabilitySetId $availset.Id
-    ```
+### <a name="step-3-configure-the-frontend-ip-pool"></a>SCHRITT 3: Konfigurieren des Front-End-IP-Adresspools
 
-    Führen Sie anschließend die Schritte 6.3 bis 6.8 unter [Erstellen einer Windows-VM mit dem Resource Manager und PowerShell](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json) aus.
+Konfigurieren Sie den Front-End-IP-Adresspool für jede Website (Contoso und Fabrikam) wie folgt:
 
-5. Fügen Sie jedem virtuellen Computer eine zweite IP-Konfiguration hinzu. Folgen Sie den Anweisungen im Artikel [Zuweisen von mehreren IP-Adressen zu virtuellen Computern](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md#add). Verwenden Sie die folgenden Konfigurationseinstellungen:
-
-    ```powershell
-    $NicName = "VM1-NIC2"
-    $RgName = "contosofabrikam"
-    $NicLocation = "West Central US"
-    $IPConfigName4 = "VM1-ipconfig2"
-    $Subnet1 = Get-AzureRmVirtualNetworkSubnetConfig -Name "mySubnet" -VirtualNetwork $myVnet
-    ```
-
-    Sie müssen in diesem Tutorial den sekundären IP-Konfigurationen keine öffentlichen IPs zuweisen. Bearbeiten Sie den Befehl, um den Teil zur Zuweisung der öffentlichen IP zu entfernen.
-
-6. Führen Sie die Schritte 4 bis 6 dieses Artikels erneut für den zweiten virtuellen Computer (VM2) aus. Ersetzen Sie dabei unbedingt den Namen des virtuellen Computers durch den Namen des zweiten virtuellen Computers. Beachten Sie, dass Sie kein virtuelles Netzwerk für den zweiten virtuellen Computer erstellen müssen. Sie können abhängig von Ihrem Anwendungsfall ein neues Subnetz erstellen.
-
-7. Erstellen Sie zwei öffentliche IP-Adressen, und speichern Sie sie wie gezeigt in den entsprechenden Variablen:
-
-    ```powershell
-    $publicIP1 = New-AzureRmPublicIpAddress -Name PublicIp1 -ResourceGroupName contosofabrikam -Location 'West Central US' -AllocationMethod Dynamic -DomainNameLabel contoso
-    $publicIP2 = New-AzureRmPublicIpAddress -Name PublicIp2 -ResourceGroupName contosofabrikam -Location 'West Central US' -AllocationMethod Dynamic -DomainNameLabel fabrikam
-
-    $publicIP1 = Get-AzureRmPublicIpAddress -Name PublicIp1 -ResourceGroupName contosofabrikam
-    $publicIP2 = Get-AzureRmPublicIpAddress -Name PublicIp2 -ResourceGroupName contosofabrikam
-    ```
-
-8. Erstellen Sie zwei Front-End-IP-Konfigurationen:
-
-    ```powershell
-    $frontendIP1 = New-AzureRmLoadBalancerFrontendIpConfig -Name contosofe -PublicIpAddress $publicIP1
-    $frontendIP2 = New-AzureRmLoadBalancerFrontendIpConfig -Name fabrikamfe -PublicIpAddress $publicIP2
-    ```
-
-9. Erstellen Sie die Back-End-Adresspools, einen Test und die Lastenausgleichsregeln:
-
-    ```powershell
-    $beaddresspool1 = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name contosopool
-    $beaddresspool2 = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name fabrikampool
-
-    $healthProbe = New-AzureRmLoadBalancerProbeConfig -Name HTTP -RequestPath 'index.html' -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
-
-    $lbrule1 = New-AzureRmLoadBalancerRuleConfig -Name HTTPc -FrontendIpConfiguration $frontendIP1 -BackendAddressPool $beaddresspool1 -Probe $healthprobe -Protocol Tcp -FrontendPort 80 -BackendPort 80
-    $lbrule2 = New-AzureRmLoadBalancerRuleConfig -Name HTTPf -FrontendIpConfiguration $frontendIP2 -BackendAddressPool $beaddresspool2 -Probe $healthprobe -Protocol Tcp -FrontendPort 80 -BackendPort 80
-    ```
-
-10. Erstellen Sie nach der Erstellung dieser Ressourcen den Lastenausgleich:
-
-    ```powershell
-    $mylb = New-AzureRmLoadBalancer -ResourceGroupName contosofabrikam -Name mylb -Location 'West Central US' -FrontendIpConfiguration $frontendIP1 -LoadBalancingRule $lbrule -BackendAddressPool $beAddressPool -Probe $healthProbe
-    ```
-
-11. Fügen sie den zweiten Back-End-Adresspool und die Front-End-IP-Konfiguration zum neu erstellten Lastenausgleich hinzu:
-
-    ```powershell
-    $mylb = Get-AzureRmLoadBalancer -Name "mylb" -ResourceGroupName $myResourceGroup | Add-AzureRmLoadBalancerBackendAddressPoolConfig -Name fabrikampool | Set-AzureRmLoadBalancer
-
-    $mylb | Add-AzureRmLoadBalancerFrontendIpConfig -Name fabrikamfe -PublicIpAddress $publicIP2 | Set-AzureRmLoadBalancer
+1. Klicken Sie im Portal auf **Weitere Dienste** > geben Sie **Öffentliche IP-Adresse** in das Filterfeld ein, und klicken sie dann auf **Öffentliche IP-Adressen**. Klicken Sie im oberen Bereich des angezeigten Blatts auf **Hinzufügen**.
+2. Konfigurieren Sie wie folgt zwei öffentliche IP-Adressen (*ÖffentlicheIP1* und *ÖffentlicheIP2*) für beide Websites (Contoso und Fabrikam):
+    1. Geben Sie einen Namen für Ihre Front-End-IP-Adresse ein.
+    2. Wählen Sie als **Ressourcengruppe** die vorhandene Ressourcengruppe der virtuellen Computer aus (zum Beispiel *contosofabrikam*).
+    3. Wählen Sie als **Speicherort** den gleichen Speicherort wie für die virtuellen Computer aus.
+    4. Klicken Sie auf **OK**.
+    5. Nachdem die beiden öffentlichen IP-Adressen erstellt wurden, werden sie beide auf dem Blatt **Öffentliche IP-Adresse** angezeigt.
+3. Klicken Sie im Portal auf **Weitere Dienste**, geben Sie im Filterfeld **Load Balancer** ein, und klicken Sie dann auf **Load Balancer**.  
+4. Wählen Sie den Load Balancer (*meinlb*) aus, dem Sie den Front-End-IP-Pool hinzufügen möchten.
+5. Wählen Sie unter **Einstellungen** **Front-End-Pools** aus. Klicken Sie im oberen Bereich des angezeigten Blatts auf **Hinzufügen**.
+6. Geben Sie einen Namen für Ihre Front-End-IP-Adresse ein (*farbikamfe* oder **contosofe*).
+7. Klicken Sie auf **IP-Adresse**, und wählen Sie auf dem Blatt **Öffentliche IP-Adresse auswählen** die IP-Adressen für Ihr Front-End aus (*ÖffentlicheIP1* oder *ÖffentlicheIP2*).
+8. Wiederholen Sie die Schritte 3 bis 7 in diesem Abschnitt, um die zweite Front-End-IP-Adresse zu erstellen.
+9. Wenn die Konfiguration des Front-End-IP-Pools abgeschlossen ist, werden beide Front-End-IP-Adressen auf dem Blatt **Front-End-IP-Pool** Ihres Load Balancers angezeigt. 
     
-    Add-AzureRmLoadBalancerRuleConfig -Name HTTP -LoadBalancer $mylb -FrontendIpConfiguration $frontendIP2 -BackendAddressPool $beaddresspool2 -Probe $healthProbe -Protocol Tcp -FrontendPort 80 -BackendPort 80 | Set-AzureRmLoadBalancer
-    ```
+### <a name="step-4-configure-the-backend-pool"></a>SCHRITT 4: Konfigurieren des Back-End-Pools   
+Konfigurieren Sie die Back-End-Adresspools Ihres Load Balancers für jede Website (Contoso und Fabrikam) wie folgt:
+        
+1. Klicken Sie im Portal auf **Weitere Dienste**, geben Sie im Filterfeld „Load Balancer“ ein, und klicken Sie dann auf **Load Balancer**.  
+2. Wählen Sie den Load Balancer (*meinlb*) aus, dem Sie die Back-End-Pools hinzufügen möchten.
+3. Wählen Sie unter **Einstellungen** die Option **Back-End-Pools** aus. Geben Sie einen Namen für den Back-End-Pool ein (z.B. *contosopool* oder *fabrikampool*). Klicken Sie dann auf die oben auf dem Blatt angezeigte Schaltfläche **Hinzufügen**. 
+4. Wählen Sie als **Verknüpft mit** **Verfügbarkeitsgruppe** aus.
+5. Wählen Sie unter **Verfügbarkeitsgruppe** die Option **meineVerfügbarkeitsgruppe** aus.
+6. Fügen Sie die Zielnetzwerk-IP-Konfigurationen für beide virtuelle Computer wie folgt hinzu (siehe Abbildung 2):  
+    1. Wählen Sie für **Virtueller Zielcomputer** den virtuellen Computer aus, den Sie dem Back-End-Pool hinzufügen möchten (z.B. VM1 oder VM2).
+    2. Wählen Sie unter **Netzwerk-IP-Konfiguration** die IP-Konfiguration der sekundären NICs für den betreffenden virtuellen Computer aus (zum Beispiel VM1NIC2-ipconfig2 oder VM2NIC2-ipconfig2).
+    ![LB-Szenarioabbildung](./media/load-balancer-multiple-ip/lb-backendpool.PNG)
+            
+        **Abbildung 2**: Konfigurieren des Load Balancers mit Back-End-Pools  
+7. Klicken Sie auf **OK**.
+8. Wenn die Konfiguration des Back-End-Pools abgeschlossen ist, werden beide Back-End-Adresspools auf dem Blatt **Back-End-Pool** Ihres Load Balancers angezeigt.
 
-12. Die unten aufgeführten Befehle rufen die NICs ab und fügen anschließend beide IP-Konfigurationen der sekundären NICs zum Back-End-Adresspool des Lastenausgleichs hinzu:
+### <a name="step-5-configure-a-health-probe-for-your-load-balancer"></a>SCHRITT 5: Konfigurieren eines Integritätstests für Ihren Load Balancer
+Konfigurieren Sie wie folgt einen Integritätstest für Ihren Load Balancer:
+    1. Klicken Sie im Portal auf „Weitere Dienste“ >, geben Sie im Filterfeld „Load Balancer“ ein, und klicken Sie dann auf **Load Balancer**.  
+    2. Wählen Sie den Load Balancer aus, dem Sie die Back-End-Pools hinzufügen möchten.
+    3. Wählen Sie unter **Einstellungen** die Option **Integritätstest** aus. Klicken Sie im oberen Bereich des angezeigten Blatts auf **Hinzufügen**.
+    4. Geben Sie einen Namen für den Integritätstest ein (z.B. „HTTP“), und klicken Sie auf **OK**.
 
-    ```powershell
-    $nic1 = Get-AzureRmNetworkInterface -Name "VM1-NIC2" -ResourceGroupName "MyResourcegroup";
-    $nic2 = Get-AzureRmNetworkInterface -Name "VM2-NIC2" -ResourceGroupName "MyResourcegroup";
+### <a name="step-6-configure-load-balancing-rules"></a>SCHRITT 6: Konfigurieren von Lastenausgleichsregeln
+Konfigurieren Sie wie folgt Lastenausgleichsregeln (*HTTPc* und *HTTPf*) für jede Website:
+    
+1. Wählen Sie unter **Einstellungen** die Option **Integritätstest** aus. Klicken Sie im oberen Bereich des angezeigten Blatts auf **Hinzufügen**.
+2. Geben Sie als **Name** einen Namen für die Lastenausgleichsregel ein (beispielsweise *HTTPc* für Contoso oder *HTTPf* für Fabrikam)
+3. Wählen Sie als Front-End-IP-Adresse die Front-End-IP-Adresse aus (z.B. *Contosofe* oder *Fabrikamfe*)
+4. Behalten Sie für **Port** und **Back-End-Port** den Standardwert **80** bei.
+5. Klicken Sie für **Floating IP (Direct Server Return)** auf **Aktiviert**.
+6. Klicken Sie auf **OK**.
+7. Wiederholen Sie die Schritte 1 bis 6 in diesem Abschnitt, um die zweite Lastenausgleichsregel zu erstellen.
+8. Wenn die Konfiguration der Lastenausgleichsregeln abgeschlossen ist, werden beide Regeln (*HTTPc* und *HTTPf*) auf dem Blatt **Lastenausgleichsregeln** Ihres Load Balancers angezeigt.
 
-    $nic1.IpConfigurations[0].LoadBalancerBackendAddressPools.Add($mylb.BackendAddressPools[0]);
-    $nic1.IpConfigurations[1].LoadBalancerBackendAddressPools.Add($mylb.BackendAddressPools[1]);
-    $nic2.IpConfigurations[0].LoadBalancerBackendAddressPools.Add($mylb.BackendAddressPools[0]);
-    $nic2.IpConfigurations[1].LoadBalancerBackendAddressPools.Add($mylb.BackendAddressPools[1]);
+### <a name="step-7-configure-dns-records"></a>SCHRITT 7: Konfigurieren von DNS-Einträgen
+Abschließend müssen Sie DNS-Ressourceneinträge konfigurieren, um auf die entsprechende Front-End-IP-Adresse des Load Balancers zu verweisen. Sie können Ihre Domänen in Azure DNS hosten. Weitere Informationen zur Verwendung von Azure DNS mit Lastenausgleich finden Sie unter [Verwenden von Azure DNS mit anderen Azure-Diensten](../dns/dns-for-azure-services.md).
 
-    $mylb = $mylb | Set-AzureRmLoadBalancer
-
-    $nic1 | Set-AzureRmNetworkInterface
-    $nic2 | Set-AzureRmNetworkInterface
-    ```
-
-13. Abschließend müssen Sie DNS-Ressourceneinträge konfigurieren, um auf die entsprechende Front-End-IP-Adresse des Lastenausgleichs zu verweisen. Sie können Ihre Domänen in Azure DNS hosten. Weitere Informationen zur Verwendung von Azure DNS mit Lastenausgleich finden Sie unter [Verwenden von Azure DNS mit anderen Azure-Diensten](../dns/dns-for-azure-services.md).
+## <a name="next-steps"></a>Nächste Schritte
+- Erfahren Sie in [Verwenden von Lastenausgleichsdiensten in Azure](../traffic-manager/traffic-manager-load-balancing-azure.md), wie Sie Lastenausgleichsdienste in Azure kombinieren.
+- Erfahren Sie in [Log Analytics für den Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md), wie Sie in Azure verschiedene Protokolltypen verwenden, um den Load Balancer zu verwalten und eventuelle Fehler zu beheben.
 

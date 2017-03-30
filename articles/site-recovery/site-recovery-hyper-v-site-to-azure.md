@@ -15,9 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 03/05/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: c7ef2a9535362a3dc352b92732abcdf6cd4836c2
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 9da7a59ca5d544121dc9c540a25a3b975988e9a1
+ms.lasthandoff: 03/21/2017
 
 ---
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 03/06/2017
 >
 >
 
-In diesem Artikel erfahren Sie, wie Sie lokale virtuelle Hyper-V-Computer mithilfe von Azure Site Recovery[](site-recovery-overview.md) über das Azure-Portal zu Azure replizieren können.
+In diesem Artikel erfahren Sie, wie Sie lokale virtuelle Hyper-V-Computer mithilfe von [Azure Site Recovery](site-recovery-overview.md) über das Azure-Portal zu Azure replizieren können.
 
 Sie replizieren Hyper-V-VMs zu Azure-Speicher und führen für virtuelle Computer ein Failover zu Azure aus, wenn der primäre Standort nicht mehr verfügbar ist. Sie können in Azure auf Workloads zugreifen und bei Rückkehr zum normalen Betrieb ein Failback auf lokale Ressourcen durchführen. Sie können auch die Anweisungen in diesem Artikel verwenden, um VMs zu Azure zu migrieren. In einem Migrationsszenario führen Sie Replikationen und Failover für virtuelle Computer aus, jedoch kein Failback.
 
@@ -100,7 +100,7 @@ Richten Sie ein Azure-Netzwerk ein. Sie benötigen dies, damit die nach dem Fail
 
 ### <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
-2. Klicken Sie auf **Neu** > **Verwaltung** > **Backup und Site Recovery (OMS)**. Alternativ können Sie auf **Durchsuchen** > **Recovery Services-Tresore > ****Hinzufügen** klicken.
+2. Klicken Sie auf **Neu** > **Verwaltung** > **Backup und Site Recovery (OMS)**. Alternativ können Sie auf **Durchsuchen** > **Recovery Services-Tresore >****Hinzufügen** klicken.
 
     ![Neuer Tresor](./media/site-recovery-hyper-v-site-to-azure/new-vault3.png)
 3. Geben Sie unter **Name** einen Anzeigenamen an, mit dem der Tresor identifiziert wird. Wenn Sie mehrere Abonnements haben, müssen Sie ein Abonnement auswählen.
@@ -228,7 +228,7 @@ Wenn Sie ein Netzwerk mit dem klassischen Modell erstellen möchten, verwenden S
 2. Geben Sie unter **Richtlinie erstellen und zuordnen** einen Richtliniennamen an.
 3. Geben Sie unter **Kopierhäufigkeit** an, wie oft Sie Deltadaten nach der ersten Replikation replizieren möchten (alle 30 Sekunden, nach 5 Minuten oder nach 15 Minuten).
 4. Geben Sie unter **Aufbewahrungszeitraum des Wiederherstellungspunkts**das Aufbewahrungszeitfenster für die einzelnen Wiederherstellungspunkte in Stunden an. Geschützte Computer können innerhalb eines Zeitfensters an einem beliebigen Punkt wiederhergestellt werden.
-5. Geben Sie unter **App-konsistente Momentaufnahmehäufigkeit** an, wie häufig (1 bis&12; Stunden) Wiederherstellungspunkte erstellt werden sollen, die anwendungskonsistente Momentaufnahmen enthalten. Hyper-V verwendet zwei Momentaufnahmen: eine Standard-Momentaufnahme, die eine inkrementelle Momentaufnahme des gesamten virtuellen Computers bereitstellt, und eine anwendungskonsistente Momentaufnahme, die eine Zeitpunkt-Momentaufnahme der Anwendungsdaten innerhalb des virtuellen Computers erfasst. Anwendungskonsistente Momentaufnahmen verwenden den Volumeschattenkopie-Dienst (Volume Shadow Copy Service, VSS), um sicherzustellen, dass Anwendungen sich bei der Erstellung der Momentaufnahme in einem konsistenten Zustand befinden. Beachten Sie, dass die Leistung von Anwendungen auf virtuellen Quellcomputern durch die Aktivierung anwendungskonsistenter Momentaufnahmen beeinträchtigt wird. Stellen Sie sicher, dass der festgelegte Wert kleiner als die konfigurierte Anzahl der zusätzlichen Wiederherstellungspunkte ist.
+5. Geben Sie unter **App-konsistente Momentaufnahmehäufigkeit** an, wie häufig (1 bis 12 Stunden) Wiederherstellungspunkte erstellt werden sollen, die anwendungskonsistente Momentaufnahmen enthalten. Hyper-V verwendet zwei Momentaufnahmen: eine Standard-Momentaufnahme, die eine inkrementelle Momentaufnahme des gesamten virtuellen Computers bereitstellt, und eine anwendungskonsistente Momentaufnahme, die eine Zeitpunkt-Momentaufnahme der Anwendungsdaten innerhalb des virtuellen Computers erfasst. Anwendungskonsistente Momentaufnahmen verwenden den Volumeschattenkopie-Dienst (Volume Shadow Copy Service, VSS), um sicherzustellen, dass Anwendungen sich bei der Erstellung der Momentaufnahme in einem konsistenten Zustand befinden. Beachten Sie, dass die Leistung von Anwendungen auf virtuellen Quellcomputern durch die Aktivierung anwendungskonsistenter Momentaufnahmen beeinträchtigt wird. Stellen Sie sicher, dass der festgelegte Wert kleiner als die konfigurierte Anzahl der zusätzlichen Wiederherstellungspunkte ist.
 6. Geben Sie unter **Startzeit der ersten Replikation** an, wann die erste Replikation starten soll. Da die Replikation über Ihre Internetbandbreite durchgeführt wird, ist es ratsam, sie außerhalb der Zeiten mit der höchsten Arbeitsbelastung einzuplanen. Klicken Sie dann auf **OK**.
 
     ![Replikationsrichtlinie](./media/site-recovery-hyper-v-site-to-azure/gs-replication2.png)
@@ -393,7 +393,7 @@ Diese Option sollte gewählt werden, um Compliance-Anforderungen zu erfüllen od
 
 1. Wählen Sie **Wiederherstellungspläne > <Name des Wiederherstellungsplans>**.
 2. Klicken Sie auf dem Blatt „Wiederherstellungsplan“ auf **Geplantes Failover**.
-3. Wählen Sie auf der Seite **Geplantes Failover bestätigen **den Quell- und Zielort aus.
+3. Wählen Sie auf der Seite **Geplantes Failover bestätigen**den Quell- und Zielort aus.
 4. Zu Beginn eines geplantes Failovers wird zur Vermeidung von Datenverlusten zunächst der virtuelle Computer heruntergefahren. Der Fortschritt des Failovers wird auf der Registerkarte **Aufträge** angezeigt. Tritt während des Failovers ein Fehler auf (entweder auf einem virtuellen Computer oder in einem Skript aus dem Wiederherstellungsplan), wird das geplante Failover des Wiederherstellungsplans beendet. Sie können das Failover erneut initiieren.
 6. Nach der Erstellung der virtuellen Replikatcomputer weist deren Status darauf hin, dass ein Commit aussteht. Klicken Sie auf **Commit**, um ein Commit für das Failover auszuführen.
 7. Nach Abschluss der Replikation werden die virtuellen Computer am sekundären Standort gestartet.

@@ -1,21 +1,22 @@
 ---
-title: Dashboards und Navigation im Application Insights-Portal | Microsoft Docs
+title: Dashboards und Navigation in Azure Application Insights | Microsoft Docs
 description: "Es wird beschrieben, wie Sie Ansichten für Ihre wichtigsten APM-Diagramme und -Abfragen erstellen."
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: 39b0701b-2fec-4683-842a-8a19424f67bd
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
-ms.date: 10/18/2016
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: f3a8ef4a166a061e1f4e7ce056255e02b810c196
-ms.openlocfilehash: aa4c6400bcd16c90654c40e14b7a8ed239a4d8aa
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: 097a8aeecc783199b25d95dbc470dcabefa37ced
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -148,15 +149,15 @@ SUPPORT
 
 * **Supportanfrage**: Hierfür ist ein kostenpflichtiges Abonnement erforderlich. Siehe auch [Hilfe](app-insights-get-dev-support.md).
 
-## <a name="whats-next"></a>Wie geht es weiter?
+## <a name="video"></a>Video
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
+
+## <a name="next-steps"></a>Nächste Schritte
+
 |  |  |
 | --- | --- |
 | [Metrik-Explorer](app-insights-metrics-explorer.md)<br/>Filtern und Segmentieren von Metriken |![Suchbeispiel](./media/app-insights-dashboards/64.png) |
 | [Diagnosesuche](app-insights-diagnostic-search.md)<br/>Suchen und Untersuchen von Ereignissen bzw. zugehörigen Ereignissen und Erstellen von Fehlern |![Suchbeispiel](./media/app-insights-dashboards/61.png) |
 | [Analyse](app-insights-analytics.md)<br/>Leistungsfähige Abfragesprache |![Suchbeispiel](./media/app-insights-dashboards/63.png) |
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

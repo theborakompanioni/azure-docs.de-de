@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: a74872f308624028016ffb30ead3c056b1fa69ce
-ms.openlocfilehash: fbab411a22d3d1e140bc3ea8f56b113de79f204c
-ms.lasthandoff: 02/03/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 43618268aa0b234d271dcee7f95dfad2f2a1bb2b
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -28,8 +28,8 @@ Azure API Management kann im virtuellen Netzwerk (VNET) bereitgestellt werden, d
 
 > [!NOTE]
 > Azure API Management unterstützt sowohl klassische als auch Azure Resource Manager-VNets.
-> 
-> 
+>
+>
 
 ## <a name="enable-vpn"> </a>Aktivieren der VNet-Verbindung
 > [!NOTE]
@@ -59,20 +59,20 @@ Es wird daraufhin eine Liste aller Regionen angezeigt, in denen Ihr API Manageme
 
 > [!IMPORTANT]
 > Beim Bereitstellen einer Azure API Management-Instanz in einem Ressourcen-Manager-VNet muss sich der Dienst in einem dedizierten Subnetz befinden, das außer den Azure API Management-Instanzen keine anderen Ressourcen enthält. Wenn versucht wird, eine Azure API Management-Instanz in einem Subnetz eines Ressourcen-Manager-VNet bereitzustellen, das andere Ressourcen enthält, misslingt die Bereitstellung.
-> 
-> 
+>
+>
 
 ![VPN auswählen][api-management-setup-vpn-select]
 
-Klicken Sie am oberen Bildschirmrand auf **Speichern**. 
+Klicken Sie am oberen Bildschirmrand auf **Speichern**.
 
 > [!NOTE]
 > Die VIP-Adresse der API Management-Instanz ändert sich bei jeder Aktivierung oder Deaktivierung des VNet.  
 > Die VIP-Adresse ändert sich auch, wenn API Management von **Extern** in **Intern** geändert wird oder umgekehrt.
-> 
+>
 
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > Wenn Sie den API Management-Dienst aus einem VNET entfernen oder das VNET, in dem er bereitgestellt wird, ändern, kann das zuvor verwendete VNET bis zu 4 Stunden gesperrt bleiben. Während dieses Zeitraums ist es nicht möglich, das VNET zu löschen oder in ihm eine neue Ressource bereitzustellen.
 
 ## <a name="enable-vnet-powershell"> </a>Aktivieren der VNet-Verbindung mithilfe von PowerShell-Cmdlets
@@ -94,7 +94,7 @@ Es folgt eine Liste gängiger Konfigurationsprobleme, die beim Bereitstellen des
 
 > [!IMPORTANT]
 > Wenn Sie einen benutzerdefinierten DNS-Server für das VNET verwenden, wird empfohlen, diesen **vor** dem Bereitstellen eines API Management-Diensts einzurichten. Andernfalls muss der CloudService, in dem der Dienst gehostet wird, neu gestartet werden, damit die neuen DNS-Servereinstellungen übernommen werden.
-> 
+>
 
 * **Für API Management erforderliche Ports**: Ein- und ausgehender Datenverkehr im Subnetz, in dem API Management bereitgestellt ist, kann mithilfe einer [Netzwerksicherheitsgruppe][Network Security Group] gesteuert werden. Wenn diese Ports nicht verfügbar sind, funktioniert API Management möglicherweise nicht ordnungsgemäß und kann möglicherweise nicht mehr aufgerufen werden. Eine bestehende Sperre für mindestens einen dieser Ports ist eine weitere gängige Fehlkonfiguration, die beim Verwenden von API Management in einem VNet auftritt.
 
@@ -134,7 +134,7 @@ Beim Hosten einer API Management-Dienstinstanz in einem VNET werden die in der f
 
 
 ## <a name="related-content"> </a>Verwandte Inhalte
-* [Verbinden eines virtuellen Netzwerks mit dem Back-End über VPN Gateway][Different topologies to connect to Vpn Gateway]
+* [Verbinden eines virtuellen Netzwerks mit dem Back-End über VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site-ipsecike-vpn-tunnel)
 * [Herstellen einer Verbindung mit einem virtuellen Netzwerk in verschiedenen Bereitstellungsmodellen](../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
 * [Verwenden des API-Inspektors zur Verfolgung von Aufrufen in Azure API Management](api-management-howto-api-inspector.md)
 
@@ -149,7 +149,6 @@ Beim Hosten einer API Management-Dienstinstanz in einem VNET werden die in der f
 [Connect to a web service behind VPN]: #connect-vpn
 [Related content]: #related-content
 
-[Different topologies to connect to Vpn Gateway]: ../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site-connections
 [UDRs]: ../virtual-network/virtual-networks-udr-overview.md
 [Network Security Group]: ../virtual-network/virtual-networks-nsg.md
 

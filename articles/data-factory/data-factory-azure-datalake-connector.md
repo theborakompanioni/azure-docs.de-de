@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/13/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: ee0cee5e653cb8900936e12e87c56cfee5639bc5
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 582cb9dee06c6ec4b030ded866a0f92a575b93ed
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -417,24 +417,23 @@ Die folgende Tabelle beschreibt spezifische JSON-Elemente für den verknüpften 
 | Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | Typ | Die type-Eigenschaft muss auf **AzureDataLakeStore** | Ja |
-| dataLakeStoreUri | Geben Sie Informationen zum Azure Data Lake-Speicherkonto an. Sie weisen das folgende Format auf: **https://[Kontoname].azuredatalakestore.net/webhdfs/v1** oder **adl://[Kontoname].azuredatalakestore.net/**. | Ja |
+| dataLakeStoreUri | Geben Sie Informationen zum Azure Data Lake-Speicherkonto an. Es wird das folgende Format verwendet: `https://[accountname].azuredatalakestore.net/webhdfs/v1` oder `adl://[accountname].azuredatalakestore.net/`. | Ja |
 | subscriptionId | ID des Azure-Abonnements, dem die Data Lake Store-Instanz angehört. | Erforderlich für Senke |
 | ResourceGroupName | Name der Azure-Ressourcengruppe, der die Data Lake Store-Instanz angehört. | Erforderlich für Senke |
 
 ### <a name="using-service-principal-authentication-recommended"></a>Verwenden der Dienstprinzipalauthentifizierung (empfohlen)
-Wenn Sie die Dienstprinzipalauthentifizierung verwenden möchten, müssen Sie zunächst in Azure Active Directory (AAD) eine Anwendungsentität registrieren und ihr in Data Lake Store Zugriff gewähren. Anschließend können Sie in Azure Data Factory die folgenden Eigenschaften mit entsprechenden Werten für Anwendungs-ID, Anwendungsschlüssel und Mandant angeben, um Daten aus bzw. in Data Lake Store zu kopieren. Informationen zur Einrichtung sowie zum Abrufen der erforderlichen Informationen finden Sie unter [Dienst-zu-Dienst-Authentifizierung](../data-lake-store/data-lake-store-authenticate-using-active-directory.md).
+Wenn Sie die Dienstprinzipalauthentifizierung verwenden möchten, registrieren Sie in Azure Active Directory (AAD) eine Anwendungsentität und gewähren ihr Zugriff auf Data Lake Store. Eine ausführliche Anleitung finden Sie unter [Dienst-zu-Dienst-Authentifizierung](../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Notieren Sie die folgenden Werte: **Anwendungs-ID**, **Anwendungsschlüssel** und **Mandanten-ID**. Sie verwenden diese Informationen beim Definieren des verknüpften Diensts. 
 
 > [!IMPORTANT]
-> Wenn Sie zum Erstellen den Kopier-Assistenten verwenden, müssen Sie dem Dienstprinzipal in der Zugriffssteuerung (IAM) mindestens die Leserolle für das ADLS-Konto UND mindestens die Berechtigung zum Lesen und Ausführen für den ADLS-Stamm („/“) und untergeordnete Elemente gewähren, damit Sie durch die Ordner navigieren können. Andernfalls wird möglicherweise der Fehler „Die angegebenen Anmeldeinformationen sind ungültig“ angezeigt.
+> Wenn Sie zum Erstellen von Datenpipelines den Kopier-Assistenten verwenden, müssen Sie dem Dienstprinzipal in Access Control (IAM) mindestens die Leserolle für das Data Lake Store-Konto und mindestens die Berechtigung zum Lesen und Ausführen für den Data Lake Store-Stamm („/“) und untergeordnete Elemente gewähren. Andernfalls wird möglicherweise der Fehler „Die angegebenen Anmeldeinformationen sind ungültig“ angezeigt.
 >
-> Wenn Sie einen Dienstprinzipal in AAD neu erstellen oder aktualisieren, kann es einige Minuten dauern, bis er tatsächlich wirksam wird. Überprüfen Sie den Dienstprinzipal und die ADLS-ACL-Konfiguration zunächst gründlich, wenn weiterhin die Fehlermeldung „Die angegebenen Anmeldeinformationen sind ungültig“ angezeigt wird. Warten Sie dann einen Moment, und wiederholen Sie den Vorgang.
->
+> Nachdem Sie einen Dienstprinzipal in AAD neu erstellt oder aktualisiert haben, kann es einige Minuten dauern, bis die Änderungen wirksam werden. Überprüfen Sie zunächst den Dienstprinzipal und die Data Lake Store-ACL-Konfiguration. Wenn weiterhin der Fehler „Die angegebenen Anmeldeinformationen sind ungültig“ angezeigt wird, warten Sie einen Moment und wiederholen dann den Vorgang.
 
 | Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | servicePrincipalId | Geben Sie die Client-ID der Anwendung an. | Ja |
 | servicePrincipalKey | Geben Sie den Schlüssel der Anwendung an. | Ja |
-| tenant | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Diesen können Sie bestimmen, indem Sie den Mauszeiger über dem rechten oberen Bereich im Azure-Portal bewegen. | Ja |
+| tenant | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Diese können Sie abrufen, indem Sie den Mauszeiger über den rechten oberen Bereich im Azure-Portal bewegen. | Ja |
 
 **Beispiel: Verwenden der Dienstprinzipalauthentifizierung**
 ```json
@@ -455,7 +454,7 @@ Wenn Sie die Dienstprinzipalauthentifizierung verwenden möchten, müssen Sie zu
 ```
 
 ### <a name="using-user-credential-authentication"></a>Verwenden der Authentifizierung mit Benutzeranmeldeinformationen
-Alternativ können Sie die Authentifizierung mit Benutzeranmeldeinformationen verwenden, um Daten aus/in Data Lake Store zu kopieren. Geben Sie hierzu die folgenden Eigenschaften an:
+Alternativ können Sie die Authentifizierung mit Benutzeranmeldeinformationen verwenden, um Daten aus/in Data Lake Store zu kopieren. Geben Sie hierzu die folgenden Eigenschaften an.
 
 | Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
@@ -480,7 +479,11 @@ Alternativ können Sie die Authentifizierung mit Benutzeranmeldeinformationen ve
 ```
 
 #### <a name="token-expiration"></a>Tokenablauf
-Der von Ihnen mithilfe der Schaltfläche **Autorisieren** generierte Autorisierungscode läuft nach einer gewissen Zeit ab. Die Zeiten bis zum Ablaufen der Autorisierungscodes für die verschiedenen Benutzerkonten finden Sie in der folgenden Tabelle. Unter Umständen wird Ihnen nach dem **Ablauf des Tokens** folgende Fehlermeldung angezeigt: „Fehler beim Anmeldevorgang: invalid_grant – AADSTS70002: Fehler beim Überprüfen der Anmeldeinformationen. AADSTS70008: Die angegebene Zugriffserteilung ist abgelaufen oder wurde widerrufen. Ablaufverfolgungs-ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 Korrelations-ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 Zeitstempel: 2015-12-15 21-09-31Z“.
+Der von Ihnen mithilfe der Schaltfläche **Autorisieren** generierte Autorisierungscode läuft nach einer gewissen Zeit ab. Die Zeiten bis zum Ablaufen der Autorisierungscodes für die verschiedenen Benutzerkonten finden Sie in der folgenden Tabelle. Möglicherweise wird folgende Fehlermeldung angezeigt, wenn das **Authentifizierungstoken abläuft**:
+ 
+```
+"Credential operation error: invalid_grant - AADSTS70002: Error validating credentials. AADSTS70008: The provided access grant is expired or revoked. Trace ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 Correlation ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 Timestamp: 2015-12-15 21-09-31Z".
+```
 
 | Benutzertyp | Läuft ab nach |
 |:--- |:--- |
@@ -530,7 +533,7 @@ Der Abschnitt **typeProperties** unterscheidet sich bei jeder Art von Dataset un
 | fileName |Der Name der Datei im Azure Data Lake-Speicher. fileName ist optional, wobei seine Groß- und Kleinschreibung beachtet werden muss. <br/><br/>Wenn Sie einen Dateinamen angeben, funktioniert die Aktivität (einschließlich Kopieren) für die jeweilige Datei.<br/><br/>Wenn „fileName“ nicht angegeben ist, werden alle Dateien in „folderPath“ für das Eingabedataset kopiert.<br/><br/>Wenn „fileName“ für ein Ausgabedataset nicht angegeben ist, hat der Name der generierten Datei folgendes Format: Data<Guid>.txt (Beispiel: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt). |Nein |
 | partitionedBy |"partitionedBy" ist eine optionale Eigenschaft. "partitionedBy" kann genutzt werden, um einen dynamischen Wert für "folderPath" oder "fileName" für Zeitreihendaten anzugeben. Beispiel: "folderPath" kann für jedes stündliche Datenaufkommen parametrisiert werden. Im Abschnitt [Nutzen der partitionedBy-Eigenschaft](#using-partitionedby-property) finden Sie Details und Beispiele. |Nein |
 | format | Die folgenden Formattypen werden unterstützt: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Sie müssen die **type** -Eigenschaft unter „format“ auf einen dieser Werte festlegen. Weitere Informationen finden Sie in den Abschnitten [Textformat](#specifying-textformat), [JSON-Format](#specifying-jsonformat), [Avro-Format](#specifying-avroformat), [Orc-Format](#specifying-orcformat) und [Parquet-Format](#specifying-parquetformat). <br><br> Wenn Sie **Dateien unverändert zwischen dateibasierten Speichern kopieren** möchten (binäre Kopie), können Sie den Formatabschnitt bei den Definitionen von Eingabe- und Ausgabedatasets überspringen. |Nein |
-| Komprimierung | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Folgende Typen werden unterstützt: **GZip**, **Deflate**, **BZip2** und **ZipDeflate**. Folgende Komprimierungsstufen werden unterstützt: **Optimal** und **Schnellste**. Weitere Informationen finden Sie im Abschnitt [Angeben der Komprimierung](#specifying-compression). |Nein |
+| Komprimierung | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Unterstützte Typen sind: **Gzip**, **Deflate**, **bzip2** und **ZipDeflate**. Unterstützte Grade sind: **Optimal** und **Schnellste**. Weitere Informationen finden Sie im Abschnitt [Angeben der Komprimierung](#specifying-compression). |Nein |
 
 ### <a name="using-partitionedby-property"></a>Nutzen der partitionedBy-Eigenschaft
 Sie können die dynamischen Werte „folderPath“ und „fileName“ für Zeitreihendaten mit dem Abschnitt **partitionedBy** , mit Data Factory-Makros und mit den Systemvariablen „SliceStart“ und „SliceEnd“ angeben, die die Start- und Endzeit für einen bestimmten Datenslice festlegen.
@@ -569,7 +572,7 @@ Im Beispiel oben werden Jahr, Monat, Tag und Uhrzeit von SliceStart in separate 
 ## <a name="azure-data-lake-copy-activity-type-properties"></a>Eigenschaften von Azure Data Lake-Kopieraktivitätstypen
 Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md). Eigenschaften wie Name, Beschreibung, Eingabe- und Ausgabetabellen und Richtlinie sind für alle Arten von Aktivitäten verfügbar.
 
-Eigenschaften im Abschnitt „typeProperties“ der Aktivität können dagegen je nach Aktivitätstyp variieren. Für die Kopieraktivität variieren die Eigenschaften je nach Art der Quellen und Senken.
+Eigenschaften im Abschnitt typeProperties der Aktivität können dagegen je nach Aktivitätstyp variieren. Für die Kopieraktivität variieren die Eigenschaften je nach Art der Quellen und Senken.
 
 **AzureDataLakeStoreSource** unterstützt die folgenden Eigenschaften im Abschnitt **typeProperties**:
 
@@ -581,7 +584,7 @@ Eigenschaften im Abschnitt „typeProperties“ der Aktivität können dagegen j
 
 | Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
-| copyBehavior |Gibt das Kopierverhalten an. |**PreserveHierarchy:** Behält die Dateihierarchie im Zielordner bei. Der relative Pfad der Quelldatei zum Quellordner entspricht dem relativen Pfad der Zieldatei zum Zielordner.<br/><br/>**FlattenHierarchy** : Alle Dateien aus dem Quellordner werden auf der ersten Ebene des Zielordners erstellt. Die Namen der Zieldateien werden automatisch generiert.<br/><br/>**MergeFiles** : Führt alle Dateien aus dem Quellordner in einer Datei zusammen. Wenn der Datei-/Blob-Name angegeben wurde, entspricht der Name dem angegebenen Namen, andernfalls dem automatisch generierten Dateinamen. |Nein |
+| copyBehavior |Gibt das Kopierverhalten an. |<b>PreserveHierarchy:</b> behält die Dateihierarchie im Zielordner bei. Der relative Pfad der Quelldatei zum Quellordner entspricht dem relativen Pfad der Zieldatei zum Zielordner.<br/><br/><b>FlattenHierarchy:</b> Alle Dateien aus dem Quellordner werden auf der ersten Ebene des Zielordners erstellt. Die Namen der Zieldateien werden automatisch generiert.<br/><br/><b>MergeFiles:</b> führt alle Dateien aus dem Quellordner in einer Datei zusammen. Wenn der Datei-/Blob-Name angegeben wurde, entspricht der Name dem angegebenen Namen, andernfalls dem automatisch generierten Dateinamen. |Nein |
 
 [!INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
@@ -590,8 +593,5 @@ Eigenschaften im Abschnitt „typeProperties“ der Aktivität können dagegen j
 [!INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
 ## <a name="performance-and-tuning"></a>Leistung und Optimierung
-
-Abhängig davon, ob die anfängliche Datenverschiebung mit einer großen Menge von Verlaufsdaten oder mit inkrementeller Produktionsdatenlast geplant ist, verfügt Azure Data Factory über Optionen zur Verbesserung der Leistung dieser Aufgaben. Der Parallelitätsparameter ist ein Teil der **Kopieraktivität** und definiert, wie viele unterschiedliche Aktivitätsfenster parallel verarbeitet werden. Der **parallelCopies**-Parameter definiert die Parallelität für die einzelne Aktivitätsausführung. Zur Erzielung des besten Durchsatzes ist es wichtig, beim Entwerfen von Pipelines für die Datenverschiebung mit Azure Data Factory diese Parameter zu berücksichtigen.
-
 Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 

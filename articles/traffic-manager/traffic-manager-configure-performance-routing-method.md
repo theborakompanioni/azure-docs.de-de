@@ -1,59 +1,55 @@
 ---
-title: "Konfigurieren der Routingmethode für Leistungsdatenverkehr | Microsoft Docs"
-description: "In diesem Artikel finden Sie Informationen zum Konfigurieren der Routingmethode für Leistungsdatenverkehr in Traffic Manager."
+title: "Konfigurieren der leistungsorientierten Routingmethode für Datenverkehr mit Azure Traffic Manager | Microsoft Docs"
+description: "In diesem Artikel wird erläutert, wie Traffic Manager so konfiguriert wird, dass Datenverkehr an den Endpunkt mit der kürzesten Wartezeit geleitet wird."
 services: traffic-manager
 documentationcenter: 
 author: kumudd
 manager: timlt
-editor: tysonn
-ms.assetid: 6dd23b8e-0ed5-4ea4-b5ae-018f42e72688
+editor: 
+ms.assetid: 6dca6de1-18f7-4962-bd98-6055771fab22
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/18/2016
+ms.date: 03/20/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 51a3f970059f4b83240cb61411dbf612209d9293
-
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: 014aa646459cd64fca7c697419324caa3edaeeea
+ms.lasthandoff: 03/22/2017
 
 ---
-<!-- repub for nofollow -->
 
-# <a name="configure-performance-traffic-routing-method"></a>Konfigurieren der Routingmethode für Leistungsdatenverkehr
-Wenn Sie ein Datenverkehrsrouting für Clouddienste und Websites (Endpunkte) in verschiedenen Datencentern weltweit (die auch als "Regionen" bezeichnet werden) einrichten möchten, können Sie eingehenden Datenverkehr an den Endpunkt mit der kürzesten Wartezeit zwischen dem anfordernden Client und dem Endpunkt weiterleiten. Normalerweise entspricht das Datencenter mit der geringsten Wartezeit der kürzesten geografischen Distanz. Die Routingmethode für Leistungsdatenverkehr ermöglicht Ihnen eine Verteilung basierend auf der kürzesten Wartezeit, kann jedoch keine Echtzeitänderungen in der Netzwerkkonfiguration bzw. -last berücksichtigen. Weitere Informationen zu den verschiedenen Routingmethoden für Datenverkehr, die von Azure Traffic Manager bereitgestellt werden, finden Sie unter [Traffic Manager-Routingmethoden](traffic-manager-routing-methods.md).
+# <a name="configure-the-performance-traffic-routing-method"></a>Konfigurieren der leistungsorientierten Routingmethode für Datenverkehr
 
-## <a name="route-traffic-based-on-lowest-latency-across-a-set-of-endpoints"></a>Führen Sie ein Routing für Datenverkehr basierend auf der kürzesten Wartezeit für eine Gruppe von Endpunkten aus:
-1. Klicken Sie im klassischen Azure-Portal im linken Bereich auf das Symbol **Traffic Manager** , um den Bereich „Traffic Manager“ zu öffnen. Wenn Sie noch kein Traffic Manager-Profil erstellt haben, finden Sie unter [Verwalten von Traffic Manager-Profilen](traffic-manager-manage-profiles.md) Anweisungen zum Erstellen eines einfachen Traffic Manager-Profils.
-2. Suchen Sie im klassischen Azure-Portal im Bereich „Traffic Manager“ das Traffic Manager-Profil mit den Einstellungen, die Sie ändern möchten, und klicken Sie dann auf den Pfeil rechts neben dem Profilnamen. Die Einstellungsseite für das Profil wird geöffnet.
-3. Klicken Sie auf der Seite für Ihr Profil oben auf **Endpunkte** , und prüfen Sie, ob die Dienstendpunkte, die Sie einschließen möchten, in Ihrer Konfiguration vorhanden sind. Die Schritte zum Hinzufügen oder Entfernen von Endpunkten zu/aus Ihrem Profil finden Sie unter [Verwalten von Endpunkten in Traffic Manager](traffic-manager-endpoints.md).
-4. Klicken Sie auf der Seite Ihres Profils oben auf **Konfigurieren** , um die Konfigurationsseite zu öffnen.
-5. Üerprüfen Sie in den Einstellungen der **Routingmethode für Datenverkehr**, ob die Routingmethode für Datenverkehr **Leistung* ist. Klicken Sie andernfalls in der Dropdownliste auf **Leistung**.
-6. Stellen Sie sicher, dass die **Überwachungseinstellungen** ordnungsgemäß konfiguriert sind. Durch die Überwachung wird sichergestellt, dass die Endpunkte, die offline sind, keinen Datenverkehr empfangen. Um Endpunkte zu überwachen, müssen Sie einen Pfad und einen Dateinamen angeben. Beachten Sie, dass der Schrägstrich"/"ein gültiger Eintrag für den relativen Pfad ist und bedeutet, dass sich die Datei im Stammverzeichnis (Standardwert) befindet. Weitere Informationen zur Überwachung finden Sie unter [Traffic Manager-Überwachung](traffic-manager-monitoring.md).
-7. Klicken Sie nach der Durchführung der Konfigurationsänderungen unten auf der Seite auf **Speichern** .
-8. Testen Sie die Änderungen in Ihrer Konfiguration. Weitere Informationen finden Sie unter [Testen von Traffic Manager-Einstellungen](traffic-manager-testing-settings.md).
-9. Sobald das Traffic Manager-Profil eingerichtet und funktionsfähig ist, bearbeiten Sie den DNS-Eintrag auf dem autoritativen DNS-Server, damit Ihre Unternehmensdomäne auf den Namen der Traffic Manager-Domäne verweisen kann. Weitere Informationen hierzu finden Sie unter [Verweisen auf eine Traffic Manager-Domäne mit der Internetdomäne eines Unternehmens](traffic-manager-point-internet-domain.md).
+Mit der Routingmethode für Leistungsdatenverkehr können Sie Datenverkehr zu den Endpunkten leiten, mit der niedrigsten Latenz des Client-Netzwerks. Normalerweise stellt das Rechenzentrum mit der geringsten Wartezeit die kürzeste geografische Distanz dar. Diese Routingmethode für Datenverkehr kann keine Änderungen in Echtzeit in der Netzwerkkonfiguration oder im Lastenausgleich berücksichtigen.
+
+##  <a name="to-configure-performance-routing-method"></a>So konfigurieren Sie die Routingmethode „Leistung“
+
+1. Melden Sie sich in einem Browser beim [Azure-Portal](http://portal.azure.com) an. Falls Sie noch nicht über ein Azure-Konto verfügen, können Sie sich für eine [kostenlose einmonatige Testversion](https://azure.microsoft.com/free/) registrieren. 
+2. Suchen Sie auf der Suchleiste des Portals die **Traffic Manager-Profile**, und klicken Sie dann auf den Namen des Profils, für das Sie die Routingmethode konfigurieren möchten.
+3. Stellen Sie auf dem Blatt **Traffic Manager-Profil** sicher, dass die Clouddienste sowie die Websites, die Ihre Konfiguration beinhalten soll, vorhanden sind.
+4. Klicken Sie im Abschnitt **Einstellungen** auf **Konfiguration**, und nehmen Sie auf dem Blatt **Konfiguration** die folgenden Einstellungen vor:
+    1. Wählen Sie in den Einstellungen der **Routingmethode für Datenverkehr** für **Routingmethode** die Option **Leistung** aus.
+    2. Legen Sie die **Überwachungseinstellungen für Endpunkt** für alle Endpunkte in diesem Profil wie folgt identisch fest:
+        1. Wählen Sie das entsprechende **Protokoll** aus, und geben Sie die Nummer für den **Port** an. 
+        2. Geben Sie unter **Pfad** einen Schrägstrich */* ein. Sie müssen einen Pfad und einen Dateinamen angeben, um Endpunkte zu überwachen. Ein Schrägstrich „/“ ist ein gültiger Eintrag für den relativen Pfad und bedeutet, dass sich die Datei im Stammverzeichnis (Standardwert) befindet.
+        3. Klicken Sie oben auf der Seite auf **Speichern**.
+5.  Testen Sie wie folgt die Änderungen in Ihrer Konfiguration:
+    1.    Suchen Sie auf der Suchleiste des Portals nach dem Namen des Traffic Manager-Profils, und klicken Sie in den angezeigten Ergebnissen auf das Traffic Manager-Profil.
+    2.    Klicken Sie auf dem Blatt **Traffic Manager-Profil** auf **Übersicht**.
+    3.    Auf dem Blatt **Traffic Manager-Profil** wird der DNS-Name des neu erstellten Traffic Manager-Profils angezeigt. Dieser kann von beliebigen Clients (etwa durch Navigation in einem Webbrowser) für das Routing zum richtigen Endpunkt nach Maßgabe des Routingtyps verwendet werden. In diesem Fall werden alle Anforderungen im Netzwerk des Clients an den Endpunkt mit der kürzesten Wartezeit geleitet.
+6. Sobald das Traffic Manager-Profil funktionsfähig ist, bearbeiten Sie den DNS-Eintrag auf dem autoritativen DNS-Server, damit Ihre Unternehmensdomäne auf den Namen der Traffic Manager-Domäne verweisen kann.
+
+![Konfigurieren der leistungsorientierten Routingmethode für Datenverkehr mit Traffic Manager][1]
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Verweisen einer Unternehmens-Internetdomäne auf eine Traffic Manager-Domäne](traffic-manager-point-internet-domain.md)
 
-[Traffic Manager-Routingmethoden](traffic-manager-routing-methods.md)
+- Informationen zur [gewichteten Routingmethode für Datenverkehr](traffic-manager-configure-weighted-routing-method.md).
+- Informationen zur [prioritätsbasierten Routingmethode](traffic-manager-configure-priority-routing-method.md).
+- Informationen zur [geografischen Routingmethode](traffic-manager-configure-geographic-routing-method.md).
+- Informationen zum [Testen von Traffic Manager-Einstellungen](traffic-manager-testing-settings.md).
 
-[Konfigurieren der Routingmethode „Failover“](traffic-manager-configure-failover-routing-method.md)
-
-[Konfigurieren der Routingmethode „Roundrobin“](traffic-manager-configure-round-robin-routing-method.md)
-
-[Problembehandlung beim Status „Heruntergestuft“ in Traffic Manager](traffic-manager-troubleshooting-degraded.md)
-
-[Deaktivieren, Aktivieren oder Löschen eines Traffic Manager-Profils](disable-enable-or-delete-a-profile.md)
-
-[Deaktivieren oder Aktivieren eines Traffic Manager-Endpunkts](disable-or-enable-an-endpoint.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-
+<!--Image references-->
+[1]: ./media/traffic-manager-performance-routing-method/traffic-manager-performance-routing-method.png

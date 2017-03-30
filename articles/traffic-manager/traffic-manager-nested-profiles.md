@@ -1,5 +1,5 @@
 ---
-title: Geschachtelte Traffic Manager-Profile | Microsoft Docs
+title: Geschachtelte Traffic Manager-Profile | Microsoft-Dokumente
 description: "Dieser Artikel erläutert das Feature der geschachtelten Profile von Azure Traffic Manager."
 services: traffic-manager
 documentationcenter: 
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/11/2016
+ms.date: 03/22/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 3e48a28aa1ecda6792e79646a33875c8f01a878f
-ms.openlocfilehash: fdf22a3f8d0ba6f1838af4f5e6924c8c0a18ef64
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: e274d10b59c6f198962974fda0a804f4d993c324
+ms.lasthandoff: 03/22/2017
 
 ---
 
@@ -32,7 +33,7 @@ Die folgenden Beispiele zeigen, wie geschachtelte Traffic Manager-Profile in ver
 
 Angenommen, Sie haben eine Anwendung in den folgenden Azure-Regionen bereitgestellt: „USA, Westen“, „Europa, Westen“ und „Asien, Osten“. Sie verwenden die leistungsorientierte Traffic Manager-Methode für das Datenverkehrsrouting, um den Datenverkehr an die Region zu verteilen, die dem Benutzer am nächsten ist.
 
-![Einzelnes Traffic Manager-Profil][1]
+![Einzelnes Traffic Manager-Profil][4]
 
 Angenommen, Sie möchten ein Update Ihres Diensts testen, bevor Sie es in größerem Rahmen einführen. Sie möchten die gewichtete Methode für das Datenverkehrsrouting verwenden, mit der ein kleiner Prozentsatz des Datenverkehrs an die Testbereitstellung geleitet wird. Sie richten die Testbereitstellung zusammen mit der vorhandenen Produktionsbereitstellung in Europa, Westen, ein.
 
@@ -48,7 +49,7 @@ Wenn das übergeordnete Profil die leistungsorientierte Methode für das Datenve
 
 ## <a name="example-2-endpoint-monitoring-in-nested-profiles"></a>Beispiel 2: Endpunktüberwachung in geschachtelten Profilen
 
-Traffic Manager überwacht aktiv die Integrität der einzelnen Dienstendpunkte. Wenn ein Endpunkt fehlerhaft ist, leitet Traffic Manager Benutzer an andere Endpunkte, um die Verfügbarkeit Ihres Dienstes zu gewährleisten. Dieses Verhalten für Endpunktüberwachung und -failover gilt für alle Methoden für das Datenverkehrsrouting. Weitere Informationen finden Sie unter [Traffic Manager-Endpunktüberwachung](traffic-manager-monitoring.md). Die Endpunktüberwachung funktioniert bei geschachtelten Profilen anders. Bei geschachtelten Profilen führt das übergeordnete Profil die Integritätsprüfung nicht direkt am untergeordneten Profil durch. Stattdessen wird mit der Integrität der Endpunkte des untergeordneten Profils die Gesamtintegrität des untergeordneten Profils berechnet. Diese Integritätsinformationen werden in der Hierarchie der geschachtelten Profile nach oben weitergegeben. Das übergeordnete Profil verwendet diese aggregierte Integrität, um festzulegen, ob der Datenverkehr an das untergeordnete Profil weitergeleitet wird. Ausführliche Informationen zur Integritätsüberwachung bei geschachtelten Profilen finden Sie im Abschnitt [Häufig gestellte Fragen](#faq) in diesem Artikel.
+Traffic Manager überwacht aktiv die Integrität der einzelnen Dienstendpunkte. Wenn ein Endpunkt fehlerhaft ist, leitet Traffic Manager Benutzer an andere Endpunkte, um die Verfügbarkeit Ihres Dienstes zu gewährleisten. Dieses Verhalten für Endpunktüberwachung und -failover gilt für alle Methoden für das Datenverkehrsrouting. Weitere Informationen finden Sie unter [Traffic Manager-Endpunktüberwachung](traffic-manager-monitoring.md). Die Endpunktüberwachung funktioniert bei geschachtelten Profilen anders. Bei geschachtelten Profilen führt das übergeordnete Profil die Integritätsprüfung nicht direkt am untergeordneten Profil durch. Stattdessen wird mit der Integrität der Endpunkte des untergeordneten Profils die Gesamtintegrität des untergeordneten Profils berechnet. Diese Integritätsinformationen werden in der Hierarchie der geschachtelten Profile nach oben weitergegeben. Das übergeordnete Profil verwendet diese aggregierte Integrität, um festzulegen, ob der Datenverkehr an das untergeordnete Profil weitergeleitet wird. Ausführliche Informationen zur Integritätsüberwachung bei geschachtelten Profilen finden Sie unter [Häufig gestellte Fragen](traffic-manager-FAQs.md#traffic-manager-nested-profiles).
 
 Zurück zum vorherigen Beispiel: Angenommen, in der Produktionsbereitstellung in Europa, Westen, tritt ein Fehler auf. Standardmäßig leitet das untergeordnete Profil sämtlichen Datenverkehr an die Testbereitstellung weiter. Wenn in der Testbereitstellung ebenfalls ein Fehler auftritt, legt das übergeordnete Profil fest, dass das untergeordnete Profil keinen Datenverkehr mehr empfangen soll, da alle untergeordneten Endpunkte fehlerhaft sind. Das übergeordnete Profil verteilt den Datenverkehr daraufhin auf die anderen Regionen.
 
@@ -61,7 +62,7 @@ Die folgende Abbildung veranschaulicht diese Konfiguration:
 ![Failover eines geschachtelten Profils mit MinChildEndpoints = 2][4]
 
 > [!NOTE]
-> Mit der prioritätsbasierten Methode für das Datenverkehrsrouting wird der gesamte Datenverkehr an einen Endpunkt geleitet. Daher ist es in diesem Fall wenig sinnvoll, MinChildEndpoints für ein untergeordnetes Profil auf einen anderen Wert als&1; festzulegen.
+> Mit der prioritätsbasierten Methode für das Datenverkehrsrouting wird der gesamte Datenverkehr an einen Endpunkt geleitet. Daher ist es in diesem Fall wenig sinnvoll, MinChildEndpoints für ein untergeordnetes Profil auf einen anderen Wert als 1 festzulegen.
 
 ## <a name="example-3-prioritized-failover-regions-in-performance-traffic-routing"></a>Beispiel 3: Priorisierte Failoverregionen im leistungsorientierten Datenverkehrsrouting
 
@@ -97,56 +98,11 @@ Die Überwachungseinstellungen in einem Traffic Manager-Profil gelten für alle 
 
 ![Traffic Manager-Endpunktüberwachung mit separaten Einstellungen für jeden Endpunkt][10]
 
-## <a name="faq"></a>Häufig gestellte Fragen
-
-### <a name="how-do-i-configure-nested-profiles"></a>Wie konfiguriere ich geschachtelte Profile?
-
-Geschachtelte Traffic Manager-Profile können sowohl mit Azure Resource Manager als auch mit den klassischen Azure-REST-APIs, Azure PowerShell-Cmdlets und plattformübergreifenden Befehlen der Azure-Befehlszeilenschnittstelle konfiguriert werden. Sie werden auch im neuen Azure-Portal unterstützt. Über das klassische Portal werden sie jedoch nicht unterstützt.
-
-### <a name="how-many-layers-of-nesting-does-traffic-manger-support"></a>Wie viele Schachtelungsebenen werden in Traffic Manager unterstützt?
-
-Sie können Profile bis zu 10 Ebenen schachteln. Schleifen sind nicht zulässig.
-
-### <a name="can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile"></a>Kann ich andere Endpunkttypen mit geschachtelten untergeordneten Profilen im gleichen Traffic Manager-Profil kombinieren?
-
-Ja. Es gibt keine Einschränkungen hinsichtlich der Kombination von Endpunkten verschiedener Typen innerhalb eines Profils.
-
-### <a name="how-does-the-billing-model-apply-for-nested-profiles"></a>Wie wird das Abrechnungsmodell auf geschachtelte Profile angewendet?
-
-Die Verwendung geschachtelter Profile wirkt sich nicht negativ auf die Preise aus.
-
-Die Abrechnung für Traffic Manager besteht aus zwei Komponenten: Integritätsprüfungen der Endpunkte und Millionen von DNS-Abfragen.
-
-* Überprüfungen der Endpunktintegrität: Wenn ein untergeordnetes Profil als Endpunkt in einem übergeordneten Profil konfiguriert wird, fallen keine Gebühren an. Die Überwachung von Endpunkten im untergeordneten Profil wird wie üblich abgerechnet.
-* DNS-Abfragen: Jede Abfrage wird nur einmal gezählt. Die Abfrage eines übergeordneten Profils, die einen Endpunkt aus einem untergeordneten Profil zurückgibt, wird nur im übergeordneten Profil gezählt.
-
-Ausführliche Informationen finden Sie auf der Seite [Traffic Manager Preise](https://azure.microsoft.com/pricing/details/traffic-manager/).
-
-### <a name="is-there-a-performance-impact-for-nested-profiles"></a>Wirken sich geschachtelte Profile auf die Leistung aus?
-
-Nein. Durch geschachtelte Profile entstehen keine Leistungseinbußen.
-
-Die Traffic Manager-Namenserver durchlaufen bei der Verarbeitung der einzelnen DNS-Abfragen intern die Profilhierarchie. Eine DNS-Abfrage an ein übergeordnetes Profil kann eine DNS-Antwort mit einem Endpunkt aus einem untergeordneten Profil erhalten. Unabhängig davon, ob Sie ein einzelnes Profil oder geschachtelte Profile verwenden, wird nur ein einziger CNAME-Eintrag verwendet. Es gibt keine Notwendigkeit, für jedes Profil in der Hierarchie einen CNAME-Eintrag zu erstellen.
-
-### <a name="how-does-traffic-manager-compute-the-health-of-a-nested-endpoint-in-a-parent-profile"></a>Wie berechnet Traffic Manager die Integrität eines geschachtelten Endpunkts in einem übergeordneten Profil?
-
-Das übergeordnete Profil führt die Integritätsprüfung nicht direkt am untergeordneten Profil durch. Stattdessen wird mit der Integrität der Endpunkte des untergeordneten Profils die Gesamtintegrität des untergeordneten Profils berechnet. Diese Informationen werden in der Hierarchie der geschachtelten Profile nach oben weitergegeben, um die Integrität des geschachtelten Endpunkts zu bestimmen. Das übergeordnete Profil verwendet diese aggregierte Integrität, um festzulegen, ob der Datenverkehr an das untergeordnete Profil weitergeleitet wird.
-
-Die folgende Tabelle beschreibt das Verhalten von Traffic Manager-Integritätsprüfungen für einen geschachtelten Endpunkt.
-
-| Überwachungsstatus von untergeordneten Profilen | Überwachungsstatus von übergeordneten Endpunkten | Hinweise |
-| --- | --- | --- |
-| Deaktiviert. Das untergeordnete Profil wurde deaktiviert. |Stopped |Der Status des übergeordneten Endpunkts ist "Beendet", nicht "Deaktiviert". Der Status "Deaktiviert" zeigt lediglich an, dass Sie den Endpunkt im übergeordneten Profil deaktiviert haben. |
-| Heruntergestuft. Der Status mindestens eines Endpunkts wurde heruntergestuft. |Online: Die Anzahl von Onlineendpunkten im untergeordneten Profil ist mindestens gleich dem Wert von MinChildEndpoints.<BR>CheckingEndpoint: Die Anzahl von Online- plus CheckingEndpoint-Endpunkten im untergeordneten Profil ist mindestens gleich dem Wert von MinChildEndpoints.<BR>Heruntergestuft: andere Fälle. |Der Datenverkehr wird an einen Endpunkt mit dem Status „CheckingEndpoint“ weitergeleitet. Wenn MinChildEndpoints zu hoch festgelegt wurde, wird der Endpunkt immer heruntergestuft. |
-| Online. Mindestens ein untergeordneter Profilendpunkt weist den Status „Online“ auf. Kein Endpunkt weist den Status „Heruntergestuft“ auf. |Siehe oben. | |
-| CheckingEndpoints. Mindestens ein untergeordneter Profilendpunkt weist den Status „CheckingEndpoint“ auf. Kein Endpunkt weist den Status „Online“ oder „Heruntergestuft“ auf. |Wie oben. | |
-| Inaktiv. Alle untergeordneten Profilendpunkte sind „Deaktiviert“ oder „Beendet“, oder dieses Profil weist keine Endpunkte auf. |Stopped | |
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur [Funktionsweise von Traffic Manager](traffic-manager-how-traffic-manager-works.md)
+Weitere Informationen zu [Traffic Manager-Profilen](traffic-manager-overview.md)
 
-Informationen zum [Erstellen eines Traffic Manager-Profils](traffic-manager-manage-profiles.md)
+Informationen zum [Erstellen eines Traffic Manager-Profils](traffic-manager-create-profile.md)
 
 <!--Image references-->
 [1]: ./media/traffic-manager-nested-profiles/figure-1.png
@@ -159,9 +115,4 @@ Informationen zum [Erstellen eines Traffic Manager-Profils](traffic-manager-mana
 [8]: ./media/traffic-manager-nested-profiles/figure-8.png
 [9]: ./media/traffic-manager-nested-profiles/figure-9.png
 [10]: ./media/traffic-manager-nested-profiles/figure-10.png
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

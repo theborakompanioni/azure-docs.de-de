@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/23/2017
+ms.date: 03/17/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: aada5b96eb9ee999c5b1f60b6e7b9840fd650fbe
-ms.openlocfilehash: 2831416bbb290905835396835db2eb6cb5e7b46f
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: e7d2d0063b1555e098c43b95272c78eaf4678af9
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -32,10 +32,9 @@ In diesem Artikel erfahren Sie, wie Sie die Kopieraktivität in Azure Data Facto
 Die einfachste Möglichkeit zum Erstellen einer Pipeline, die Daten in und aus Azure SQL Data Warehouse kopiert, ist die Verwendung des Assistenten zum Kopieren von Daten. Im [Tutorial: Laden von Daten in SQL Data Warehouse mit Data Factory](../sql-data-warehouse/sql-data-warehouse-load-with-data-factory.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistent zum Kopieren von Daten.
 
 > [!TIP]
-> Beim Kopieren von Daten aus SQL Server oder Azure SQL-Datenbank in Azure SQL Data Warehouse unterstützt Data Factory die automatische Tabellenerstellung anhand des Quellschemas, wenn die Tabelle im Zielspeicher nicht vorhanden ist. Probieren Sie es mit dem Kopier-Assistenten aus, und erfahren Sie mehr über die [Automatische Tabellenerstellung](#auto-table-creation).
->
+> Beim Kopieren von Daten aus SQL Server oder Azure SQL-Datenbank in Azure SQL Data Warehouse kann Data Factory die Tabelle, wenn sie im Zielspeicher nicht vorhanden ist, anhand des Schemas im Quelldatenspeicher automatisch in SQL Data Warehouse erstellen. Einzelheiten finden Sie unter [Automatische Tabellenerstellung](#auto-table-creation). 
 
-Die folgenden Beispiele zeigen JSON-Beispieldefinitionen, die Sie zum Erstellen einer Pipeline mit dem [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder mit [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Sie zeigen Ihnen das Kopieren von Daten in und aus Azure SQL Data Warehouse und Azure Blob Storage. Daten können jedoch mithilfe der Kopieraktivität in Azure Data Factory **direkt** aus beliebigen Quellen in die [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) aufgeführten Senken kopiert werden.
+Die folgenden Beispiele zeigen JSON-Beispieldefinitionen, die Sie zum Erstellen einer Pipeline mit dem [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Sie zeigen Ihnen das Kopieren von Daten in und aus Azure SQL Data Warehouse und Azure Blob Storage. Daten können jedoch mithilfe der Kopieraktivität in Azure Data Factory **direkt** aus beliebigen Quellen in die [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) aufgeführten Senken kopiert werden.
 
 ## <a name="sample-copy-data-from-azure-sql-data-warehouse-to-azure-blob"></a>Beispiel: Kopieren von Daten aus Azure SQL Data Warehouse in ein Azure-Blob
 Das Beispiel definiert folgende Data Factory-Entitäten:
@@ -485,7 +484,7 @@ GO
 | Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
 | writeBatchSize |Fügt Daten in die SQL-Tabelle ein, wenn die Puffergröße "writeBatchSize" erreicht. |Integer (Gesamtanzahl von Zeilen) |Nein (Standard = 10000) |
-| writeBatchTimeout |Die Wartezeit für den Abschluss der Batcheinfügung, bis das Timeout wirksam wird. |Zeitraum<br/><br/> Beispiel:&amp;00;:30:00 (30 Minuten) |Nein |
+| writeBatchTimeout |Die Wartezeit für den Abschluss der Batcheinfügung, bis das Timeout wirksam wird. |Zeitraum<br/><br/> Beispiel: 00:30:00 (30 Minuten) |Nein |
 | sqlWriterCleanupScript |Geben Sie eine Abfrage für die Kopieraktivität an, bei deren Ausführung die Daten eines bestimmten Slice bereinigt werden. Ausführlichere Informationen finden Sie im [Abschnitt zur Wiederholbarkeit](#repeatability-during-copy). |Eine Abfrageanweisung. |Nein |
 | allowPolyBase |Gibt an, ob (falls zutreffend) PolyBase anstelle des BULKINSERT-Mechanismus zum Laden von Daten in Azure SQL Data Warehouse verwendet werden soll. <br/><br/>Derzeit kann nur ein Quelldataset vom Typ **Azure-Blob** verwendet werden, bei dem **format** auf **TextFormat** festgelegt ist. <br/><br/>Einschränkungen und Einzelheiten finden Sie im Abschnitt [Daten unter Verwendung von PolyBase in Azure SQL Data Warehouse laden](#use-polybase-to-load-data-into-azure-sql-data-warehouse) . |True  <br/>False (Standardwert) |Nein |
 | polyBaseSettings |Eine Gruppe von Eigenschaften, die angegeben werden können, wenn die **allowPolybase**-Eigenschaft auf **true** festgelegt ist. |&nbsp; |Nein |
@@ -507,7 +506,7 @@ GO
 Mit **PolyBase** lassen sich große Datenmengen effizient und mit hohem Durchsatz in Azure SQL Data Warehouse laden. Wenn Sie PolyBase anstelle des standardmäßigen BULKINSERT-Mechanismus verwenden, wird der Durchsatz erheblich gesteigert. Einen ausführlichen Vergleich finden Sie in der [Leistungsreferenz zur Kopieraktivität](data-factory-copy-activity-performance.md#performance-reference).
 
 * Wenn das Format Ihrer Quelldaten mit PolyBase kompatibel ist, können Sie mithilfe von PolyBase direkt aus dem Quelldatenspeicher in Azure SQL Data Warehouse kopieren. Details finden Sie unter **[Direktes Kopieren mithilfe von PolyBase](#direct-copy-using-polybase)**. Eine exemplarische Vorgehensweise mit einem Anwendungsfall finden Sie unter [Laden von 1 TB in Azure SQL Data Warehouse in weniger als 15 Minuten mit Azure Data Factory](data-factory-load-sql-data-warehouse.md).
-* Wenn Ihr Quelldatenformat ursprünglich nicht von PolyBase unterstützt wird, können Sie stattdessen das **[gestaffelte Kopieren mithilfe von PolyBase](#staged-copy-using-polybase)** nutzen. Dadurch erreichen Sie außerdem einen besseren Durchsatz, indem Sie zuerst automatisch die Daten in ein PolyBase-kompatibles Format konvertieren und in Azure Blob Storage speichern und anschließend in SQL Data Warehouse laden.
+* Wenn Ihr Quelldatenformat von PolyBase ursprünglich nicht unterstützt wird, können Sie stattdessen das Feature **[Gestaffeltes Kopieren mit PolyBase](#staged-copy-using-polybase)** verwenden. Es bietet auch einen besseren Durchsatz, da die Daten automatisch in ein PolyBase-kompatibles Format konvertiert und in Azure Blob Storage gespeichert werden. Anschließend werden die Daten in SQL Data Warehouse geladen.
 
 Legen Sie die `allowPolyBase`-Eigenschaft auf **true** fest, wie im folgenden Beispiel für Azure Data Factory gezeigt, um Daten unter Verwendung von PolyBase in Azure SQL Data Warehouse zu kopieren. Wenn Sie „allowPolyBase“ auf „true“ festlegen, können Sie über die `polyBaseSettings`-Eigenschaftengruppe PolyBase-spezifische Eigenschaften festlegen. Im Abschnitt [SqlDWSink](#SqlDWSink) finden Sie Einzelheiten zu den Eigenschaften, die mit „polyBaseSettings“ verwendet werden können.
 
@@ -536,7 +535,7 @@ Falls die Anforderungen nicht erfüllt werden, überprüft Azure Data Factory di
    2. `nullValue` ist auf eine **leere Zeichenfolge** ("") festgelegt, oder `treatEmptyAsNull` ist auf **true** festgelegt.
    3. `encodingName` ist auf **utf-8** festgelegt. (Dies ist der **Standardwert**.)
    4. `escapeChar`, `quoteChar`, `firstRowAsHeader` und `skipLineCount` sind nicht angegeben.
-   5. `compression` kann auf **keine Komprimierung** oder auf **GZip** oder **Deflate** (Verkleinern) festgelegt sein.
+   5. `compression` kann auf **keine Komprimierung** oder auf **Gzip** oder **Deflate** (Verkleinern) festgelegt sein.
 
     ```JSON
     "typeProperties": {
@@ -598,7 +597,7 @@ Erstellen Sie zum Verwenden dieses Features einen [verknüpften Azure Storage-Di
 Um PolyBase verwenden zu können, muss der zum Laden von Daten in SQL Data Warehouse verwendete Benutzer über die [Berechtigung „CONTROL“](https://msdn.microsoft.com/library/ms191291.aspx) für die Zieldatenbank verfügen. Sie können dies beispielsweise erreichen, indem Sie diesen Benutzer als Mitglied der Rolle „db_owner“ hinzufügen. [In diesem Abschnitt](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md#authorization) erfahren Sie, wie das geht.
 
 ### <a name="row-size-and-data-type-limitation"></a>Beschränkungen hinsichtlich Zeilengröße und Datentyp
-Der Ladevorgang in PolyBase ist auf das Laden von Zeilen beschränkt, die kleiner als **1 MB** sind und nicht in Spalten des Typs VARCHR(MAX) NVARCHAR(MAX) oder VARBINARY(MAX) geladen werden können. Informationen finden Sie [hier](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md#loads).
+Der Ladevorgang in PolyBase ist auf das Laden von Zeilen beschränkt, die kleiner als **1 MB** sind und nicht in Spalten des Typs VARCHR(MAX), NVARCHAR(MAX) oder VARBINARY(MAX) geladen werden können. Informationen finden Sie [hier](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md#loads).
 
 Wenn Sie über Quelldaten mit Zeilen verfügen, deren Größe über 1 MB liegt, sollten Sie die Quelltabellen vertikal in kleinere Tabellen unterteilen, sodass die Zeilengröße der einzelnen Tabellen den Höchstwert nicht überschreitet. Die kleineren Tabellen können dann mit PolyBase geladen und in Azure SQL Data Warehouse zusammengeführt werden.
 
@@ -630,9 +629,9 @@ All columns of the table must be specified in the INSERT BULK statement.
 Der NULL-Wert ist eine Sonderform eines Standardwerts. Wenn die Spalte NULL-Werte zulässt, könnten die Eingabedaten (im Blob) für diese Spalte leer sein (sie dürfen im Eingabedataset nicht fehlen). PolyBase fügt für diese Daten in Azure SQL Data Warehouse den Wert „NULL“ ein.  
 
 ## <a name="auto-table-creation"></a>Automatische Tabellenerstellung
-Beim Kopieren von Daten aus SQL Server oder Azure SQL-Datenbank in Azure SQL Data Warehouse unterstützt Data Factory die automatische Tabellenerstellung anhand des Quellschemas, wenn Sie zum Erstellen den Kopier-Assistenten verwenden.
+Wenn Sie den Kopier-Assistenten zum Kopieren von Daten aus SQL Server oder Azure SQL-Datenbank in Azure SQL Data Warehouse verwenden, kann Data Factory eine Tabelle aus dem Quellspeicher, wenn diese im Zielspeicher nicht vorhanden ist, anhand des Quelltabellenschemas automatisch in Data Warehouse erstellen. 
 
-Data Factory erstellt die Tabelle am Zielort mit dem gleichen Namen wie die Quelle, erstellt die Spaltendatentypen mit der unten angegebenen Zuordnung und verwendet die Roundrobin-Tabellenverteilung. Beachten Sie, dass bei Bedarf eine ordnungsgemäße Datentypkonvertierung erfolgen kann, um die Inkompatibilität zwischen Quell- und Zielspeichern zu beseitigen.
+Data Factory erstellt die Tabelle im Zielspeicher mit dem gleichen Tabellennamen wie im Quelldatenspeicher. Die Datentypen für die Spalten werden basierend auf der folgenden Typzuordnung ausgewählt. Bei Bedarf werden Typkonvertierungen durchgeführt, um Inkompatibilitäten zwischen Quell- und Zielspeichern zu korrigieren. Darüber hinaus wird für Tabellen die Roundrobin-Verteilung verwendet. 
 
 | SQL-Datenbank-Quellspaltentyp | SQL DW-Zielspaltentyp (Größenbeschränkung) |
 | --- | --- |

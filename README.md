@@ -1,3 +1,8 @@
+## <a name="microsoft-open-source-code-of-conduct"></a>Microsoft Open-Source-Verhaltensregeln
+
+Für dieses Projekt wird der [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) (Verhaltenskodex für Microsoft Open Source) beachtet.
+Weitere Informationen finden Sie in den [häufig gestellten Fragen zum Verhaltenskodex](https://opensource.microsoft.com/codeofconduct/faq/). Sie können sich auch an [opencode@microsoft.com](mailto:opencode@microsoft.com) wenden, wenn Sie weitere Fragen oder Kommentare haben.
+
 # <a name="azure-technical-documentation-contributor-guide"></a>Leitfaden für Mitwirkende bei der technischen Dokumentation zu Azure
 Sie haben das GitHub-Repository mit der Quelle für die technische Azure-Dokumentation gefunden, die unter [https://docs.microsoft.com/azure](https://docs.microsoft.com/azure) veröffentlicht wird.
 
@@ -20,9 +25,6 @@ Sie können wie folgt Updates für die [Azure-Dokumentation](https://docs.micros
 
 * Tragen Sie zu technischen Artikeln über die GitHub-Benutzeroberfläche bei. Das ist einfach. Entweder finden Sie den Artikel in diesem Repository, oder Sie besuchen die Seite mit dem Artikel unter [https://docs.microsoft.com/azure](https://docs.microsoft.com/azure) und klicken dort auf den Link, der zum GitHub-Quelltext des Artikels führt.
 * Wenn Sie wesentliche Änderungen an einem vorhandenen Artikel vornehmen, Bilder hinzufügen oder austauschen oder einen neuen Artikel verfassen möchten, müssen Sie einen Fork (d.h. eine Abspaltung) dieses Repositorys erstellen, Git Bash und Markdown Pad installieren und einige Git-Befehle erlernen.
-
-## <a name="code-of-conduct"></a>Verhaltenskodex
-Für dieses Projekt wird der [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) (Verhaltenskodex für Microsoft Open Source) beachtet. Weitere Informationen finden Sie in den [häufig gestellten Fragen zum Verhaltenskodex](https://opensource.microsoft.com/codeofconduct/faq/). Sie können sich auch an [opencode@microsoft.com](mailto:opencode@microsoft.com) wenden, wenn Sie weitere Fragen oder Kommentare haben.
 
 ## <a name="about-your-contributions-to-azure-content"></a>Über Ihre Beiträge zu Azure-Inhalten
 ### <a name="minor-corrections"></a>Kleinere Korrekturen
@@ -83,9 +85,4 @@ Automatisierte Bezeichnungen werden Pull Requests zugewiesen, damit wir den Pull
 
 ## <a name="more-resources"></a>Weitere Ressourcen
 Alle Anleitungsthemen finden Sie im [Index zum Leitfaden für Mitwirkende](contributor-guide/contributor-guide-index.md).
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

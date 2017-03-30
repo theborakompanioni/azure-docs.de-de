@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/24/2017
+ms.date: 03/28/2017
 ms.author: jeffstok
 translationtype: Human Translation
 ms.sourcegitcommit: 4c3f32cd6159052f17557c51e08e7e3f611aa338
 ms.openlocfilehash: 7a1e705e40cd8f7b260c38f41e81e2f199555059
+ms.lasthandoff: 01/06/2017
 
 
 ---
@@ -510,10 +511,5 @@ Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://
 * [Skalieren von Azure Stream Analytics-Aufträgen](stream-analytics-scale-jobs.md)
 * [Stream Analytics Query Language Reference (in englischer Sprache)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

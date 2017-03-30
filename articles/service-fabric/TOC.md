@@ -1,3 +1,4 @@
+
 # Übersicht
 ## [Was ist Service Fabric?](service-fabric-overview.md)
 ## [Grundlegendes zu Microservices](service-fabric-overview-microservices.md)
@@ -22,11 +23,13 @@
 ### [Muster und Szenarien](service-fabric-patterns-and-scenarios.md)
 ### Grundlagen
 #### [Anwendungsmodell](service-fabric-application-model.md)
+#### [Packen einer Anwendung](service-fabric-package-apps.md)
 #### [Unterstütztes Programmiermodell](service-fabric-choose-framework.md)
 #### [Dienststatus](service-fabric-concepts-state.md)
 #### [Dienstkommunikation](service-fabric-connect-and-communicate-with-services.md)
 #### [Hinzufügen eines Web-Front-Ends](service-fabric-add-a-web-frontend.md)
 #### [Dienstmanifestressourcen](service-fabric-service-manifest-resources.md)
+#### [Erste Schritte mit dem Eclipse-Plug-In für die Entwicklung mit Java](service-fabric-get-started-eclipse.md)
 #### [Verwalten von Apps in Visual Studio](service-fabric-manage-application-in-visual-studio.md)
 #### [Konfigurieren sicherer Verbindungen in Visual Studio](service-fabric-visualstudio-configure-secure-connections.md)
 #### Debuggen
@@ -62,7 +65,7 @@
 #### [Sichern und Wiederherstellen](service-fabric-reliable-services-backup-restore.md)
 #### [Kommunizieren mit Reliable Services](service-fabric-reliable-services-communication.md)
 #### [Sichere Kommunikation mit Reliable Services](service-fabric-reliable-services-secure-communication.md)
-##### [ASP.NET](service-fabric-reliable-services-communication-webapi.md)
+##### [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)
 ##### [Dienstremoting](service-fabric-reliable-services-communication-remoting.md)
 ##### [WCF](service-fabric-reliable-services-communication-wcf.md)
 ##### [Reverseproxy](service-fabric-reverseproxy.md)
@@ -88,6 +91,7 @@
 ## Migrieren aus Cloud Services
 ### [Unterschiede zwischen Cloud Services und Service Fabric](service-fabric-cloud-services-migration-differences.md)
 ### [Migrieren zu Service Fabric](service-fabric-cloud-services-migration-worker-role-stateless-service.md)
+### [Empfohlene Vorgehensweisen](/azure/architecture/service-fabric/migrate-from-cloud-services)
 
 ## Erstellen und Verwalten von Clustern
 

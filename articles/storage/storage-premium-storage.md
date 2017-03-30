@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: ramankum
 translationtype: Human Translation
-ms.sourcegitcommit: 3a353bc874c1827f8a0fc85352894ad96cff16b5
-ms.openlocfilehash: c9e43df37784999036c6cf250f27a808f79ebe2f
-ms.lasthandoff: 02/10/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 26e78f559fa9a82183a26034580148e39331a214
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -59,7 +59,7 @@ Alle Objekte in einem Storage Premium-Konto sind Seitenblobs. Die Objekte werden
 
 **Storage Premium-Konto**: Erstellen Sie für die Verwendung von Storage Premium ein Storage Premium-Konto für nicht verwaltete Datenträger. Wenn Sie lieber das [Azure-Portal](https://portal.azure.com) verwenden möchten, können Sie ein Storage Premium-Konto erstellen, indem Sie als Leistungsstufe „Premium“ und als Replikationsoption „Lokal redundanter Speicher (LRS)“ angeben. Sie können auch ein Storage Premium-Konto erstellen, indem Sie mithilfe der [Azure Storage-Rest-API](/rest/api/storageservices/fileservices/Azure-Storage-Services-REST-API-Reference) in der Version 2014-02-14 oder höher, der [REST-API der Dienstverwaltung](http://msdn.microsoft.com/library/azure/ee460799.aspx) in der Version 2014-10-01 oder höher (klassische Bereitstellungen), der [Referenz zur REST-API des Azure Storage-Ressourcenanbieters](/rest/api/storagerp) (Resource Manager-Bereitstellungen) und [Azure PowerShell](../powershell-install-configure.md) in der Version 0.8.10 oder höher den Typ „Premium_LRS“ angeben. Informationen zu den Begrenzungen von Storage Premium-Konten finden Sie im folgenden Abschnitt über [Skalierbarkeits- und Leistungsziele für Storage Premium](#premium-storage-scalability-and-performance-targets.md).
 
-**Lokal redundanter Storage Premium**: Ein Storage Premium-Konto unterstützt nur den lokal redundanten Speicher (LRS) als Replikationsoption. Dies bedeutet, dass innerhalb einer Region drei Kopien der Daten beibehalten werden. Überlegungen zur Georeplikation bei der Verwendung von Storage Premium finden Sie in diesem Artikel im Abschnitt [Momentaufnahmen und Kopieren von Blobs](#snapshots-and-copy-blob) .
+**Lokal redundanter Storage Premium**: Ein Storage Premium-Konto unterstützt nur den lokal redundanten Speicher (LRS) als Replikationsoption. Dies bedeutet, dass innerhalb einer Region drei Kopien der Daten beibehalten werden. Für eine regionale Notfallwiederherstellung müssen Sie Ihre VM-Datenträger mit dem [Azure Backup-Dienst](../backup/backup-introduction-to-azure-backup.md) und einem GRS-Speicherkonto als Sicherungstresor in einer anderen Region sichern. 
 
 Von Azure wird das Speicherkonto als Container für Ihre nicht verwalteten Datenträger genutzt. Wenn Sie einen virtuellen Azure-Computer der DS-, DSv2-, GS- oder Fs-Serie mit nicht verwalteten Datenträgern erstellen und ein Storage Premium-Konto auswählen, werden Ihr Betriebssystem und die Datenträger in diesem Speicherkonto gespeichert.
 
@@ -261,9 +261,9 @@ Ausführliche Informationen zu den Preisen für Storage Premium, von Storage Pre
 
 ## <a name="azure-backup-service-support"></a>Azure Backup-Dienst – Unterstützung 
 
-Virtuelle Azure-Computer mit nicht verwalteten Datenträgern können mithilfe von Azure Backup gesichert werden. [Weitere Informationen](../backup/backup-azure-vms-first-look-arm.md)
+Für eine regionale Notfallwiederherstellung müssen Sie Ihre VM-Datenträger mit dem [Azure Backup-Dienst](../backup/backup-introduction-to-azure-backup.md) und einem GRS-Speicherkonto als Sicherungstresor in einer anderen Region sichern.
 
-Der Azure Backup-Dienst kann auch in Kombination mit Managed Disks verwendet werden, um einen Sicherungsauftrag mit zeitbasierten Sicherungen, unkomplizierter Wiederherstellung von virtuellen Computern und Aufbewahrungsrichtlinien für Sicherungen zu erstellen. Weitere Informationen hierzu finden Sie im Artikel zur [Verwendung des Azure Backup-Diensts für virtuelle Computer mit Managed Disks](../backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup). 
+Der Azure Backup-Dienst kann auch sowohl mit nicht verwalteten Datenträgern als auch mit Managed Disks verwendet werden, um einen Sicherungsauftrag mit zeitbasierten Sicherungen, unkomplizierter Wiederherstellung von virtuellen Computern und Aufbewahrungsrichtlinien für Sicherungen zu erstellen. Weitere Informationen hierzu finden Sie unter [Verwenden des Azure Backup-Diensts für virtuelle Computer mit Managed Disks](../backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup) und [Verwenden des Azure Backup-Diensts für virtuelle Computer mit nicht verwalteten Datenträgern](../backup/backup-azure-vms-first-look-arm.md). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Azure Storage Premium finden Sie in den folgenden Artikeln.
@@ -278,3 +278,4 @@ Weitere Informationen zu Azure Storage Premium finden Sie in den folgenden Artik
 ### <a name="blog-posts"></a>Blogbeiträge
 * [Azure Premium Storage Generally Available (Azure Storage Premium allgemein verfügbar)](https://azure.microsoft.com/blog/azure-premium-storage-now-generally-available-2/)
 * [Announcing the GS-Series: Adding Premium Storage Support to the Largest VMs in the Public Cloud (Ankündigung der GS-Serie: Unterstützung von Storage Premium für die größten virtuellen Computer in der öffentlichen Cloud)](https://azure.microsoft.com/blog/azure-has-the-most-powerful-vms-in-the-public-cloud/)
+

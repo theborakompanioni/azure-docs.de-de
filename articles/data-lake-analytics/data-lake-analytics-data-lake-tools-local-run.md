@@ -15,9 +15,9 @@ ms.workload: big-data
 ms.date: 11/15/2016
 ms.author: yanacai
 translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: ffa31e7eee7642c29a846658b999828434347316
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 7e8aed4f56471bb2946c610ca63b0ec50ee1b57e
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -81,13 +81,35 @@ Sie können auch oben im Skriptfenster auf das Konto **(Lokal)** klicken und dan
 
     ![Senden von Aufträgen für lokale Testläufe mit den Data Lake-Tools für Visual Studio](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-submit-job.png)
 
+### <a name="debug-scripts-and-c-assemblies-locally"></a>Lokales Debuggen von Skripts und C#-Assemblys
+
+Sie können C#-Assemblys debuggen, ohne sie zu senden und beim Azure Data Lake Analytics-Dienst zu registrieren. Sie können sowohl in der Code-Behind-Datei als auch in einem referenzierten C#-Projekt Haltepunkte festlegen.
+
+#### <a name="to-debug-local-code-in-code-behind-file"></a>So debuggen Sie lokalen Code in der CodeBehind-Datei:
+
+1. Legen Sie Haltepunkte in der CodeBehind-Datei fest.
+2. Drücken Sie F5, um das Skript lokal zu debuggen.
+
+> [!NOTE]
+   > Das folgende Verfahren funktioniert nur in Visual Studio 2015. In älteren Versionen von Visual Studio müssen Sie eventuell die PDB-Dateien manuell hinzufügen.  
+   >
+   >
+
+#### <a name="to-debug-local-code-in-a-referenced-c-project"></a>So debuggen Sie lokalen Code in einem referenzierten C#-Projekt:
+
+1. Erstellen Sie ein C#-Assemblyprojekt, und erstellen Sie es, um die Ausgabe-DLL zu generieren.
+2. Registrieren Sie die DLL mithilfe einer U-SQL-Anweisung:
+
+        CREATE ASSEMBLY assemblyname FROM @"..\..\path\to\output\.dll";
+        
+3. Legen Sie Haltepunkte im C#-Code fest.
+4. Drücken Sie F5, um das Skript mit Verweis auf die C#-DLL lokal zu debuggen.
+
 ## <a name="use-local-run-from-the-data-lake-u-sql-sdk"></a>Verwenden lokaler Testläufe über das Data Lake-U-SQL-SDK
 
 Neben der lokalen Ausführung von U-SQL-Skripts mithilfe von Visual Studio können Sie auch das Azure Data Lake-U-SQL-SDK verwenden, um U-SQL-Skripts lokal über die Befehlszeile und Programmierschnittstellen auszuführen. Damit können Sie Ihren lokalen U-SQL-Test skalieren.
 
 Weitere Informationen zu [Azure Data Lake U-SQL SDK](data-lake-analytics-u-sql-sdk.md).
-
-
 
 
 ## <a name="next-steps"></a>Nächste Schritte

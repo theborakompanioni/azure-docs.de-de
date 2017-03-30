@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 03/11/2017
+ms.date: 03/20/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 1fb7b268e83da66a4bb9fe6d3e053b7a673d3555
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 0b5f7a2c3fd16ac32b0bc382616ca6600d378bb8
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -30,7 +30,7 @@ Mit **Power BI Embedded**können Sie Power BI-Berichte direkt in webbasierte ode
 Power BI Embedded ist ein **Azure-Dienst**, mit dessen Hilfe unabhängige Softwarehersteller (Independent Software Vendors, ISVs) und App-Entwickler Power BI-Daten innerhalb ihrer Anwendungen darstellen können. Als Entwickler haben Sie Anwendungen erstellt. Diese Anwendungen verfügen über eigene Benutzer und eine besondere Auswahl an Features. Möglicherweise umfassen diese Apps auch integrierte Datenelemente wie Diagramme und Berichte, die jetzt durch Microsoft Power BI Embedded unterstützt werden können. Sie benötigen für die Verwendung Ihrer App kein Power BI-Konto. Sie können sich weiterhin wie gewohnt bei Ihrer Anwendung anmelden und ganz ohne zusätzliche Lizenzen die Berichtsoberfläche von Power BI anzeigen und damit interagieren.
 
 ## <a name="licensing-for-microsoft-power-bi-embedded"></a>Lizenzierung von Microsoft Power BI Embedded
-Im Nutzungsmodell von **Microsoft Power BI Embedded** liegt die Verantwortung für die Lizenzierung von Power BI nicht beim Endbenutzer.  Stattdessen erwirbt der Entwickler der App, in der die visuellen Elemente genutzt werden, sogenannte **Sitzungen** , die im Rahmen des Abonnements abgerechnet werden, das diese Ressourcen besitzt. Weitere Informationen finden Sie auf der Seite „Preise“ (https://azure.microsoft.com/en-us/pricing/details/power-bi-embedded/).
+Im Nutzungsmodell von **Microsoft Power BI Embedded** liegt die Verantwortung für die Lizenzierung von Power BI nicht beim Endbenutzer.  Stattdessen erwirbt der Entwickler der App, in der die visuellen Elemente genutzt werden, sogenannte **Sitzungen** , die im Rahmen des Abonnements abgerechnet werden, das diese Ressourcen besitzt. Weiterführende Informationen finden Sie auf der Seite [Preise](https://azure.microsoft.com/en-us/pricing/details/power-bi-embedded/).
 
 ## <a name="microsoft-power-bi-embedded-conceptual-model"></a>Microsoft Power BI Embedded – Konzeptmodell
 

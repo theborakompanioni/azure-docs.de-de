@@ -12,12 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2016
+ms.date: 03/22/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: fee6c375f93e1e669c031d8ca63470f7f48fadf2
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 4fc454a8c7974b8f53cd6621639dd5b575cc66f7
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -65,9 +65,10 @@ In diesem Artikel werden einige der am häufigsten gestellten Fragen zu Azure De
 * [Für mein Artefakt ist während der VM-Erstellung ein Fehler aufgetreten. Wie kann ich das Problem beheben?](#my-artifact-failed-during-vm-creation-how-do-i-troubleshoot-it)
 * [Warum wird mein vorhandenes virtuelles Netzwerk nicht korrekt gespeichert?](#why-isnt-my-existing-virtual-network-saving-properly)
 * [Warum erhalte ich den Fehler „Übergeordnete Ressource wurde nicht gefunden“ bei der Bereitstellung von PowerShell?](#why-do-i-get-a-parent-resource-not-found-error-when-provisioning-a-vm-from-powershell)  
+* [Wo finde ich weitere Fehlerinformationen zu Fehlern bei einer VM-Bereitstellung](#where-can-i-find-more-error-information-when-vm-deployment-is-failed)  
 
 ### <a name="what-if-my-question-isnt-answered-here"></a>Was kann ich tun, wenn meine Frage hier nicht beantwortet wird?
-Wenn Ihre Frage hier nicht aufgeführt wird, informieren Sie uns, und wir helfen Ihnen dabei, eine Antwort zu finden.
+Wenn Ihre Frage hier nicht aufgeführt wird, informieren Sie uns, damit wir Ihnen helfen können, eine Antwort zu finden.
 
 * Stellen Sie eine Frage im [Disqus-Thread](#comments) am Ende dieser FAQ, und diskutieren Sie mit dem Azure Cache-Team und anderen Mitgliedern der Community über diesen Artikel.
 * Um eine größere Benutzergruppe zu erreichen, stellen Sie eine Frage im [MSDN-Forum zu Azure DevTest Labs](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureDevTestLabs), und diskutieren mit dem Azure DevTest Labs-Team und anderen Mitgliedern der Community.
@@ -157,7 +158,12 @@ Wir arbeiten an einer Lösung, die das direkte Verschieben von VMs nach Azure De
 Das Anfügen mehrerer Datenträger an VMs wird unterstützt.  
 
 ### <a name="if-i-want-to-use-a-windows-os-image-for-my-testing-do-i-have-to-purchase-an-msdn-subscription"></a>Wenn ich ein Windows-Betriebssystemimage für meine Tests verwenden möchte, muss ich dann ein MSDN-Abonnement erwerben?
-Ja, Sie müssen [ein MSDN-Abonnement erwerben](https://www.visualstudio.com/products/how-to-buy-vs), wenn Sie Client-Betriebssystemimages (Windows 7 und höher) für Ihre Tests verwenden. [Monatliche Azure-Gutschrift für Visual Studio-Abonnenten](https://azure.microsoft.com/en-us/pricing/member-offers/msdn-benefits-details/) zeigt die Azure-Guthaben für jedes MSDN-Angebot an und enthält weitere Details.
+Wenn Sie Windows-Clientbetriebssystem-Images (Windows 7 oder höher) für Ihre Entwicklung oder Ihre Tests in Azure benötigen, müssen Sie eine dieser Optionen nutzen:
+
+- [Ein MSDN-Abonnement erwerben](https://www.visualstudio.com/products/how-to-buy-vs). 
+- Wenn Sie über ein Enterprise Agreement verfügen, erstellen Sie mit dem [Enterprise Dev/Test-Angebot](https://azure.microsoft.com/en-us/offers/ms-azr-0148p) ein Azure-Abonnement.
+
+Weitere Informationen zu den Azure-Gutschriften für die einzelnen MSDN-Angebote finden Sie unter [Monatliche Azure-Gutschrift für Visual Studio-Abonnenten](https://azure.microsoft.com/en-us/pricing/member-offers/msdn-benefits-details/).
 
 ### <a name="how-do-i-automate-the-process-of-uploading-vhd-files-to-create-custom-images"></a>Wie automatisiere ich das Hochladen von VHD-Dateien zum Erstellen benutzerdefinierter Images?
 Es gibt zwei Optionen:
@@ -176,7 +182,7 @@ Führen Sie folgende Schritte aus, um nach dem Zielspeicherkonto zu suchen, das 
 7. Verwenden Sie die **URL** im AzCopy-Befehl als Ziel.
 
 ### <a name="how-can-i-automate-the-process-of-deleting-all-the-vms-in-my-lab"></a>Wie kann ich den Löschvorgang für alle virtuellen Computer in meinem Lab automatisieren?
-Zusätzlich zum Löschen von virtuellen Computern aus Ihrem Lab im Azure-Portal können Sie alle virtuellen Computer in Ihrem Lab mithilfe eines PowerShell-Skripts löschen. Ändern Sie im folgenden Beispiel einfach die Werte der Parameter unter dem Kommentar **Values to change** . Sie können die Werte `subscriptionId`, `labResourceGroup` und `labName` aus dem Labblatt im Azure-Portal abrufen.
+Zusätzlich zum Löschen von virtuellen Computern aus Ihrem Lab im Azure-Portal können Sie alle virtuellen Computer in Ihrem Lab mithilfe eines PowerShell-Skripts löschen. Ändern Sie im folgenden Beispiel die Werte der Parameter unter dem Kommentar **Values to change** . Sie können die Werte `subscriptionId`, `labResourceGroup` und `labName` aus dem Labblatt im Azure-Portal abrufen.
 
     # Delete all the VMs in a lab
 
@@ -225,13 +231,13 @@ Es gibt keine bestimmte Beschränkung für die Anzahl von Labs, die pro Abonneme
 Es gibt keine bestimmte Beschränkung für die Anzahl von virtuellen Computern (VMs), die pro Abonnement erstellt werden können. Das Lab unterstützt zurzeit aber nur ca. 40 gleichzeitig ausgeführte VMs für Standardspeicher und 25 gleichzeitig ausgeführte VMs für Storage Premium. Wir arbeiten daran, diese Limits zu erhöhen.
 
 ### <a name="how-do-i-share-a-direct-link-to-my-lab"></a>Wie gebe ich einen direkten Link zu meinem Lab frei?
-Einen direkten Link können Sie mit folgendem Verfahren für Ihre Labbenutzer freigeben.
+Einen direkten Link können Sie mit folgendem Verfahren für Ihre Labbenutzer freigeben:
 
 1. Navigieren Sie im Azure-Portal zum Lab.
 2. Kopieren Sie die Lab-URL aus Ihrem Browser, und geben Sie sie für die Laborbenutzer frei.
 
 > [!NOTE]
-> Wenn Ihre Labbenutzer externe Benutzer mit einem [MSA-Konto](#what-is-a-microsoft-account) sind und nicht zum Active Directory Ihres Unternehmens gehören, erhalten sie möglicherweise eine Fehlermeldung, wenn sie zu dem bereitgestellten Link navigieren. Weisen Sie sie an, im Falle einer Fehlermeldung oben rechts im Azure-Portal auf ihren Namen zu klicken und im Bereich **Verzeichnis** des Menüs das Verzeichnis auszuwählen, in dem sich das Lab befindet.
+> Wenn Ihre Labbenutzer externe Benutzer mit einem [Microsoft-Konto](#what-is-a-microsoft-account) sind und nicht zum Active Directory Ihres Unternehmens gehören, erhalten sie möglicherweise eine Fehlermeldung, wenn sie zu dem bereitgestellten Link navigieren. Weisen Sie sie an, im Falle einer Fehlermeldung oben rechts im Azure-Portal auf ihren Namen zu klicken und im Bereich **Verzeichnis** des Menüs das Verzeichnis auszuwählen, in dem sich das Lab befindet.
 >
 >
 
@@ -252,5 +258,10 @@ Möglicherweise enthält der Name des virtuellen Netzwerks Punkte. Wenn dies der
 ### <a name="why-do-i-get-a-parent-resource-not-found-error-when-provisioning-a-vm-from-powershell"></a>Warum erhalte ich den Fehler „Übergeordnete Ressource wurde nicht gefunden“ bei der Bereitstellung einer VM von PowerShell?
 Wenn eine Ressource einer anderen übergeordnet ist, muss die übergeordnete Ressource vor dem Erstellen der untergeordneten Ressource bereits vorhanden sein. Wenn sie nicht vorhanden ist, erhalten Sie den Fehler **ParentResourceNotFound**. Wenn Sie keine Abhängigkeit von der übergeordneten Ressource angeben, wird die untergeordnete Ressource möglicherweise vor der übergeordneten bereitgestellt.
 
-VMs sind untergeordnete Ressourcen unter einem Lab in einer Ressourcengruppe. Wenn Sie ARM-Vorlagen zur Bereitstellung über PowerShell verwenden, sollte der im PowerShell-Skript bereitgestellte Name der Ressourcengruppe der Name der Ressourcengruppe des Labs sein. Weitere Informationen finden Sie unter [Beheben verbreiteter Azure-Bereitstellungsfehler](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-common-deployment-errors#parentresourcenotfound).
+VMs sind untergeordnete Ressourcen unter einem Lab in einer Ressourcengruppe. Wenn Sie Azure-Ressourcenvorlagen zur Bereitstellung über PowerShell verwenden, sollte der im PowerShell-Skript bereitgestellte Name der Ressourcengruppe der Name der Ressourcengruppe des Labs sein. Weitere Informationen finden Sie unter [Beheben verbreiteter Azure-Bereitstellungsfehler](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-common-deployment-errors#parentresourcenotfound).
+
+### <a name="where-can-i-find-more-error-information-if-a-vm-deployment-fails"></a>Wo finde ich weitere Fehlerinformationen zu Fehlern bei einer VM-Bereitstellung?
+VM-Bereitstellungsfehler werden in den Aktivitätsprotokollen erfasst. Sie können die Aktivitätsprotokolle von virtuellen Labcomputern über die **Überwachungsprotokolle** oder **VM-Diagnose** auf dem VM-Blatt des Labs im Ressourcenmenü finden (das Blatt wird angezeigt, nachdem Sie den virtuellen Computer in der Liste **Meine virtuellen Computer** ausgewählt haben). 
+
+Manchmal tritt der Bereitstellungsfehler vor dem Start der VM-Bereitstellung auf – etwa, wenn das Abonnementlimit für eine mithilfe des virtuellen Computers erstellte Ressource überschritten ist. In diesem Fall werden die Fehlerdetails in den **Aktivitätsprotokollen** der Lab-Ebene erfasst, die Sie unten in den **Konfigurations- und Richtlinieneinstellungen** finden. Weitere Informationen zum Verwenden von Aktivitätsprotokollen in finden Sie unter [Anzeigen von Aktivitätsprotokollen, um Aktionen an Ressourcen zu überwachen](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-audit).
 

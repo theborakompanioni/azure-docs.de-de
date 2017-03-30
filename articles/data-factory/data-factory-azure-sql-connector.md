@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2016
+ms.date: 02/22/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 5b8144b0a65c18fb98cb410cfd83ad9812c6ed2a
-ms.openlocfilehash: 5cb04849a3346777a124fc3c0d3464843efaca52
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 90f8a2c0a30c9cce411215e1b98954de0ed9b787
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -350,7 +351,7 @@ Eine Liste mit den Eigenschaften, die von diesem Dataset-Typ unterstützt werden
 
 **Azure SQL-Ausgabedataset**
 
-Das Beispiel kopiert Daten in eine Tabelle namens "MyTable" in Azure SQL. Erstellen Sie die Tabelle in Azure SQL mit der gleichen Anzahl von Spalten, die Sie in der Blob-CSV-Datei erwarten. Neue Zeilen werden der Tabelle stündlich hinzugefügt.
+Das Beispiel kopiert Daten in eine Tabelle namens „MyOutputTable“ in Azure SQL. Erstellen Sie die Tabelle in Azure SQL mit der gleichen Anzahl von Spalten, die Sie in der Blob-CSV-Datei erwarten. Neue Zeilen werden der Tabelle stündlich hinzugefügt.
 
 ```JSON
 {
@@ -512,7 +513,7 @@ GO
 
 | Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
-| writeBatchTimeout |Die Wartezeit für den Abschluss der Batcheinfügung, bis das Timeout wirksam wird. |Zeitraum<br/><br/>  Beispiel: 00:30:00 (30 Minuten) |Nein |
+| writeBatchTimeout |Die Wartezeit für den Abschluss der Batcheinfügung, bis das Timeout wirksam wird. |Zeitraum<br/><br/> Beispiel: 00:30:00 (30 Minuten) |Nein |
 | writeBatchSize |Fügt Daten in die SQL-Tabelle ein, wenn die Puffergröße "writeBatchSize" erreicht. |Integer (Gesamtanzahl von Zeilen) |Nein (Standard = 10000) |
 | sqlWriterCleanupScript |Geben Sie eine Abfrage für die Kopieraktivität an, bei deren Ausführung die Daten eines bestimmten Slice bereinigt werden. Weitere Informationen finden Sie im Abschnitt zur [Wiederholbarkeit](#repeatability-during-copy). |Eine Abfrageanweisung. |Nein |
 | sliceIdentifierColumnName |Geben Sie einen Spaltennamen an, den die Kopieraktivität mit einem automatisch generierten Slicebezeichner füllen soll, der bei erneuter Ausführung zum Bereinigen der Daten eines bestimmten Slice verwendet wird. Weitere Informationen finden Sie im Abschnitt zur [Wiederholbarkeit](#repeatability-during-copy). |Spaltenname einer Spalte mit binärem Datentyp (32). |Nein |
@@ -666,9 +667,4 @@ Die Zuordnung ist mit der SQL Server-Datentypzuordnung für ADO.NET identisch.
 
 ## <a name="performance-and-tuning"></a>Leistung und Optimierung
 Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

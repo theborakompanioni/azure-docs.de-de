@@ -15,9 +15,9 @@ ms.workload: infrastructure
 ms.date: 2/7/2017
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 710307b01fe64852771c071c070f5fcee59c9579
-ms.openlocfilehash: 494dbaf23de22efa79cfe65aa22bb7c948b3da80
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 1ada403a502972ee0d8cd96af2d62d923d43f6cf
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -30,13 +30,13 @@ Für virtuelle Azure-Computer ist jetzt [Azure Managed Disks](../storage/storage
 
 - Unterstützung für automatische Skalierbarkeit. Azure erstellt die Datenträger und verwaltet den zugrunde liegenden Speicher, um bis zu 10.000 Datenträger pro Abonnement zu unterstützen.
 - Höhere Zuverlässigkeit mit Verfügbarkeitsgruppen. Azure stellt sicher, dass Datenträger für virtuelle Computer innerhalb der gleichen Verfügbarkeitsgruppe automatisch voneinander isoliert werden.
-- Verbesserte Zugriffssteuerung. Verwaltete Datenträger machen verschiedene Vorgänge verfügbar, die über die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)](../active-directory/role-based-access-control-what-is.md) gesteuert werden. 
+- Verbesserte Zugriffssteuerung. Verwaltete Datenträger machen verschiedene Vorgänge verfügbar, die über die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)](../active-directory/role-based-access-control-what-is.md) gesteuert werden.
 
-Die Preise für verwaltete Datenträger unterscheiden sich von denen für nicht verwaltete Datenträger. Informationen dazu finden Sie unter [Preise und Abrechnung für verwaltete Datenträger](../storage/storage-managed-disks-overview.md#pricing-and-billing). 
+Die Preise für verwaltete Datenträger unterscheiden sich von denen für nicht verwaltete Datenträger. Informationen dazu finden Sie unter [Preise und Abrechnung für verwaltete Datenträger](../storage/storage-managed-disks-overview.md#pricing-and-billing).
 
 Sie können vorhandene virtuelle Computer, die nicht verwaltete Datenträger verwenden, mithilfe von [az vm convert](/cli/azure/vm#convert) zur Verwendung von verwalteten Datenträgern konvertieren. Weitere Informationen finden Sie unter [Konvertieren eines virtuellen Linux-Computers von nicht verwalteten Datenträgern zu Azure Managed Disks](virtual-machines-linux-convert-unmanaged-to-managed-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Sie können einen nicht verwalteten Datenträger nicht in einen verwalteten Datenträger konvertieren, wenn der nicht verwaltete Datenträger sich in einem Speicherkonto befindet, das mithilfe von [Azure Storage Service Encryption (SSE)](../storage/storage-service-encryption.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) verschlüsselt ist oder jemals war. Die folgenden Schritte beschreiben, wie Sie nicht verwaltete Datenträger konvertieren, die sich in einem verschlüsselten Speicherkonto befinden oder jemals befanden:
 
-- [Kopieren Sie die virtuelle Festplatte (VHD)](virtual-machines-linux-copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#unmanaged-disks) mit [az storage blob copy start](/cli/azure/storage/blob/copy#start) in ein Speicherkonto, das nie für Azure Storage Service Encryption aktiviert war.
+- Kopieren Sie die virtuelle Festplatte (VHD) mit [az storage blob copy start](/cli/azure/storage/blob/copy#start) in ein Speicherkonto, das nie für Azure Storage Service Encryption aktiviert wurde.
 - Erstellen Sie einen virtuellen Computer, der verwaltete Datenträger verwendet, und geben Sie diese VHD-Datei während der Erstellung mit [az vm create](/cli/azure/vm#create) an. Alternativ dazu:
 - Fügen Sie die kopierte VHD mit [az vm disk attach](/cli/azure/vm/disk#attach) an einen ausgeführten virtuellen Computer mit verwalteten Datenträgern an.
 
@@ -62,7 +62,7 @@ Erstellen Sie dann mit dem Befehl `az vm create` den virtuellen Computer, wie in
 az vm create \
 --image credativ:Debian:8:latest \
 --admin-username azureuser \
---ssh-key-value ~/.ssh/id_rsa.pub 
+--ssh-key-value ~/.ssh/id_rsa.pub
 --public-ip-address-dns-name manageddisks \
 --resource-group myResourceGroup \
 --location westus \
@@ -76,7 +76,7 @@ az vm create \
 --storage-sku Premium_LRS
 --image credativ:Debian:8:latest \
 --admin-username azureuser \
---ssh-key-value ~/.ssh/id_rsa.pub 
+--ssh-key-value ~/.ssh/id_rsa.pub
 --public-ip-address-dns-name manageddisks \
 --resource-group myResourceGroup \
 --location westus \
@@ -246,5 +246,4 @@ Weitere Informationen zur Verwendung des temporären Datenträgers in Azure find
 
 ## <a name="storage-limits"></a>Speichergrenzwerte
 * [Grenzwerte für den Speicherdienst](../azure-subscription-service-limits.md#storage-limits)
-
 

@@ -16,19 +16,24 @@ ms.topic: article
 ms.date: 02/21/2017
 ms.author: kasing
 translationtype: Human Translation
-ms.sourcegitcommit: e64449991bc28427d8f559ed13c3bdf9160488db
-ms.openlocfilehash: 92211cc98b6d8394ff04bc7c2fe33f7bd710713b
-ms.lasthandoff: 01/26/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 5152367ec4a2ef225f08f2b8d4cb2e92eea8ce26
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>Migrieren von IaaS-Ressourcen aus dem klassischen Bereitstellungsmodell zu Azure Resource Manager mithilfe der Azure-Befehlszeilenschnittstelle
-Diese Schritte zeigen, wie Sie Befehle der Azure-Befehlszeilenschnittstelle zum Migrieren von IaaS-Ressourcen (Infrastructure as a Service) aus dem klassischen Bereitstellungsmodell in das Azure Resource Manager-Bereitstellungsmodell verwenden. Für diesen Artikel ist die [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md)erforderlich.
+Diese Schritte zeigen, wie Sie Befehle der Azure-Befehlszeilenschnittstelle zum Migrieren von IaaS-Ressourcen (Infrastructure as a Service) aus dem klassischen Bereitstellungsmodell in das Azure Resource Manager-Bereitstellungsmodell verwenden. Für diesen Artikel ist die [Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md)erforderlich.
 
 > [!NOTE]
 > Alle hier beschriebenen Vorgänge sind idempotent. Sollte ein Problem auftreten, das nicht auf ein nicht unterstütztes Feature oder auf einen Konfigurationsfehler zurückzuführen ist, wiederholen Sie den Vorbereitungs-, Abbruch- oder Commitvorgang. Die Plattform versucht dann erneut, die Aktion auszuführen.
 > 
 > 
+
+<br>
+Hier sehen Sie ein Flussdiagramm, das die Reihenfolge veranschaulicht, in der Schritte während einer Migration ausgeführt werden müssen.
+
+![Screenshot mit den Migrationsschritten](./media/virtual-machines-windows-migration-classic-resource-manager/migration-flow.png)
 
 ## <a name="step-1-prepare-for-migration"></a>Schritt 1: Vorbereiten der Migration
 Hier finden Sie einige bewährte Methoden, die wir empfehlen, wenn Sie eine Migration von IaaS-Ressourcen aus dem klassischen Bereitstellungsmodell zu Resource Manager in Erwägung ziehen:
@@ -37,7 +42,7 @@ Hier finden Sie einige bewährte Methoden, die wir empfehlen, wenn Sie eine Migr
 * Wenn Sie derzeit über automatisierte Skripts zum Bereitstellen Ihrer Infrastruktur und Anwendungen verfügen, versuchen Sie, mithilfe dieser Skripts für die Migration eine ähnliche Testeinrichtung zu erstellen. Alternativ dazu können Sie über das Azure-Portal Beispielumgebungen einrichten.
 
 ## <a name="step-2-set-your-subscription-and-register-the-provider"></a>Schritt 2: Festlegen des Abonnements und Registrieren des Anbieters
-Für Migrationsszenarien müssen Sie Ihre Umgebung sowohl für das klassische Bereitstellungsmodell als auch für Resource Manager einrichten. [Installieren Sie die Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md), und [wählen Sie Ihr Abonnement aus](../xplat-cli-connect.md).
+Für Migrationsszenarien müssen Sie Ihre Umgebung sowohl für das klassische Bereitstellungsmodell als auch für Resource Manager einrichten. [Installieren Sie die Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md), und [wählen Sie Ihr Abonnement aus](../xplat-cli-connect.md).
 
 Melden Sie sich bei Ihrem Konto an.
 

@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/27/2017
+ms.date: 03/15/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: f0ccf2706b5ce514613712fb866dc2d0120b0ad3
-ms.openlocfilehash: fe420fc0d4e5e2b7c625bf3a3d87005fdbcff200
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: 118521a127b2e4b765efabdbdde71605440d81c7
+ms.lasthandoff: 03/16/2017
 
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>Bereitstellen des StorSimple Virtual Array – Bereitstellen in VMware
@@ -166,7 +166,7 @@ Führen Sie die folgenden Schritte aus, um ein virtuelles Gerät im Hypervisor b
 30. Wählen Sie auf der Seite **Datenträger auswählen** die Option **Neuen virtuellen Datenträger erstellen**. Klicken Sie auf **Weiter**.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image31.png)
-31. Ändern Sie auf der Seite **Datenträger erstellen** die **Datenträgergröße** in 500 GB (oder mehr). Wählen Sie unter **Datenträgerbereitstellung** die Option **Thin-Bereitstellung**. Klicken Sie auf **Weiter**.
+31. Ändern Sie auf der Seite **Datenträger erstellen** die **Datenträgergröße** in 500 GB (oder mehr). 500 GB sind die Mindestanforderung, aber Sie können auch einen größeren Datenträger bereitstellen. Beachten Sie hierbei, dass Sie den Datenträger nach der Bereitstellung nicht mehr erweitern oder verkleinern können. Weitere Informationen zur Größe des bereitzustellenden Datenträgers finden Sie im Abschnitt zum Festlegen der Größe im Dokument mit [Best Practices](storsimple-ova-best-practices.md). Wählen Sie unter **Datenträgerbereitstellung** die Option **Thin-Bereitstellung**. Klicken Sie auf **Weiter**.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image32.png)
 32. Übernehmen Sie auf der Seite **Erweiterte Optionen** die Standardeinstellung.

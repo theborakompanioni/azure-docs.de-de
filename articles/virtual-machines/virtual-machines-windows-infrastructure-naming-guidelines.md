@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2017
+ms.date: 03/17/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
-ms.openlocfilehash: a59b8178fb011b837a402207ca86dd2db4505f74
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: e335ecafdd6347bf8b839f50bf36e3d5e2cd42fa
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -45,7 +45,7 @@ Es sollte eine geeignete Benennungskonvention vorhanden sein, bevor Sie mit der 
 
 Sie können auch einen bestimmten Satz von Benennungskonventionen für Ihre gesamte Organisation oder für ein bestimmtes Azure-Abonnement oder -Konto anwenden. Es ist zwar einfach, für Einzelpersonen innerhalb von Organisationen implizite Regeln für die Arbeit mit Azure-Ressourcen einzurichten, bei der Arbeit eines Teams an einem Projekt in Azure ist dieses Modell jedoch nicht gut geeignet.
 
-Vereinbaren Sie im Voraus den Satz von Benennungskonventionen. Es gibt einige Überlegungen hinsichtlich Benennungskonventionen, die für alle Regelsätze gelten.
+Vereinbaren Sie im Voraus den Satz von Benennungskonventionen. Es gibt einige Überlegungen hinsichtlich Benennungskonventionen, die diesen Regelsätzen widersprechen.
 
 ## <a name="affixes"></a>Affixe
 Beim Festlegen einer Benennungskonvention müssen Sie sich auch für die Position des Affixes entscheiden:
@@ -98,7 +98,7 @@ Falls ein virtueller Computer aus einer VHD-Imagedatei erstellt wird, die bereit
 Es wird empfohlen, für den virtuellen Azure-Computer und das zugrunde liegende Betriebssystem den gleichen Computernamen zu verwenden.
 
 ## <a name="storage-account-names"></a>Speicherkontonamen
-Für die Benennung von Speicherkonten gelten spezielle Regeln. Sie können nur Kleinbuchstaben und Zahlen verwenden. Weitere Informationen finden Sie unter [Erstellen eines Speicherkontos](../storage/storage-create-storage-account.md#create-a-storage-account). Darüber hinaus sollte der Namen des Speicherkontos in Kombination mit „core.windows.net“ ein global gültiger und eindeutiger DNS-Name sein. Wenn beispielsweise das Speicherkonto den Namen "meinspeicherkonto" besitzt, sollten die folgenden resultierenden DNS-Namen eindeutig sein:
+Dieser Abschnitt gilt nicht für [Azure Managed Disks](../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), da Sie kein separates Speicherkonto erstellen. Bei nicht verwalteten Datenträgern gelten für die Benennung von Speicherkonten spezielle Regeln. Sie können nur Kleinbuchstaben und Zahlen verwenden. Weitere Informationen finden Sie unter [Erstellen eines Speicherkontos](../storage/storage-create-storage-account.md#create-a-storage-account). Darüber hinaus sollte der Namen des Speicherkontos in Kombination mit „core.windows.net“ ein global gültiger und eindeutiger DNS-Name sein. Wenn beispielsweise das Speicherkonto den Namen "meinspeicherkonto" besitzt, sollten die folgenden resultierenden DNS-Namen eindeutig sein:
 
 * meinspeicherkonto.blob.core.windows.net
 * meinspeicherkonto.table.core.windows.net

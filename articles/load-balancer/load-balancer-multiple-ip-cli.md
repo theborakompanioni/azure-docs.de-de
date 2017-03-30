@@ -16,56 +16,28 @@ ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: annahar
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 4c90cf910af142e8d0cd73a4e6f502a4fb78be9b
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: fef0d6007aa3f9357d7288033220a7d5d6eb5a49
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="load-balancing-on-multiple-ip-configurations"></a>Lastenausgleich bei Konfigurationen mit mehreren IP-Adressen
 
 > [!div class="op_single_selector"]
-> * [PowerShell](load-balancer-multiple-ip.md)
+> * [Portal](load-balancer-multiple-ip.md)
 > * [BEFEHLSZEILENSCHNITTSTELLE (CLI)](load-balancer-multiple-ip-cli.md)
->
+> * [PowerShell](load-balancer-multiple-ip-powershell.md)
 
-In diesem Artikel wird beschrieben, wie Sie Azure Load Balancer mit mehreren IP-Adressen an einer sekundären Netzwerkschnittstellenkarte (Network Interface Card, NIC) verwenden. Die Unterstützung für mehrere IP-Adressen auf einer NIC ist eine Funktion, die sich derzeit noch in der Vorschauphase befindet. Weitere Informationen finden Sie im Abschnitt [Einschränkungen](#limitations) in diesem Artikel. Das folgende Szenario veranschaulicht, wie dieses Feature mit Load Balancer funktioniert.
-
-In diesem Szenario verwenden wir zwei virtuelle Computer unter Windows mit jeweils einer primären und einer sekundären NIC. Die sekundären NICs haben jeweils zwei IP-Konfigurationen. Jeder virtuelle Computer hostet beide Websites für „contoso.com“ und „fabrikam.com“. Jede Website ist an eine der IP-Konfigurationen der sekundären NIC gebunden. Wir verwenden Azure Load Balancer, um zwei Front-End-IP-Adressen verfügbar zu machen (jeweils eine für jede Website), damit der Datenverkehr an die entsprechende IP-Konfiguration für die Website verteilt werden kann. Dieses Szenario verwendet die gleiche Portnummer auf beiden Front-Ends sowie beide Back-End-Pool-IP-Adressen.
+In diesem Artikel wird beschrieben, wie Sie Azure Load Balancer mit mehreren IP-Adressen an einer sekundären Netzwerkschnittstellenkarte (Network Interface Card, NIC) verwenden. In diesem Szenario verwenden wir zwei virtuelle Computer unter Windows mit jeweils einer primären und einer sekundären NIC. Die sekundären NICs haben jeweils zwei IP-Konfigurationen. Jeder virtuelle Computer hostet die beiden Websites „contoso.com“ und „fabrikam.com“. Jede Website ist an eine der IP-Konfigurationen der sekundären NIC gebunden. Wir verwenden Azure Load Balancer, um zwei Front-End-IP-Adressen verfügbar zu machen (jeweils eine für jede Website), damit der Datenverkehr an die entsprechende IP-Konfiguration für die Website verteilt werden kann. Dieses Szenario verwendet die gleiche Portnummer auf beiden Front-Ends sowie beide Back-End-Pool-IP-Adressen.
 
 ![Abbildung zum LB-Szenario](./media/load-balancer-multiple-ip/lb-multi-ip.PNG)
-
-## <a name="limitations"></a>Einschränkungen
-
-[!INCLUDE [virtual-network-preview](../../includes/virtual-network-preview.md)]
-
-Registrieren Sie sich für die Vorschau, indem Sie in PowerShell die folgenden Befehle ausführen, nachdem Sie sich angemeldet und das entsprechende Abonnement ausgewählt haben:
-
-```
-Register-AzureRmProviderFeature -FeatureName AllowMultipleIpConfigurationsPerNic -ProviderNamespace Microsoft.Network
-
-Register-AzureRmProviderFeature -FeatureName AllowLoadBalancingonSecondaryIpconfigs -ProviderNamespace Microsoft.Network
-
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
-```
-
-Führen Sie die restlichen Schritte erst aus, nachdem nach Ausführen des Befehls ```Get-AzureRmProviderFeature``` die folgende Ausgabe angezeigt wird:
-        
-```powershell
-FeatureName                            ProviderName      RegistrationState
------------                            ------------      -----------------      
-AllowLoadBalancingOnSecondaryIpConfigs Microsoft.Network Registered       
-AllowMultipleIpConfigurationsPerNic    Microsoft.Network Registered       
-```
-        
->[!NOTE] 
->Dies kann einige Minuten dauern.
 
 ## <a name="steps-to-load-balance-on-multiple-ip-configurations"></a>Schritte für den Lastenausgleich bei Konfigurationen mit mehreren IP-Adressen
 
 Führen Sie die folgenden Schritte aus, um das in diesem Artikel beschriebene Szenario umzusetzen:
 
-1. [Installieren und konfigurieren Sie die Azure CLI anhand der Schritte im verlinkten Artikel](../xplat-cli-install.md), und melden Sie sich dann an Ihrem Azure-Konto an.
+1. [Installieren und konfigurieren Sie die Azure CLI anhand der Schritte im verlinkten Artikel](../cli-install-nodejs.md), und melden Sie sich dann an Ihrem Azure-Konto an.
 2. [Erstellen Sie eine Ressourcengruppe](../virtual-machines/virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-resource-groups-and-choose-deployment-locations) mit dem Namen *contosofabrikam*, wie oben beschrieben.
 
     ```azurecli
@@ -154,4 +126,8 @@ Führen Sie die folgenden Schritte aus, um das in diesem Artikel beschriebene Sz
     ```
 
 13. Abschließend müssen Sie DNS-Ressourceneinträge konfigurieren, um auf die entsprechende Front-End-IP-Adresse des Lastenausgleichs zu verweisen. Sie können Ihre Domänen in Azure DNS hosten. Weitere Informationen zur Verwendung von Azure DNS mit Lastenausgleich finden Sie unter [Verwenden von Azure DNS mit anderen Azure-Diensten](../dns/dns-for-azure-services.md).
+
+## <a name="next-steps"></a>Nächste Schritte
+- Erfahren Sie in [Verwenden von Lastenausgleichsdiensten in Azure](../traffic-manager/traffic-manager-load-balancing-azure.md), wie Sie Lastenausgleichsdienste in Azure kombinieren.
+- Erfahren Sie in [Log Analytics für den Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md), wie Sie in Azure verschiedene Protokolltypen verwenden, um den Load Balancer zu verwalten und eventuelle Fehler zu beheben.
 

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 10/12/2016
 ms.author: yuaxu
 translationtype: Human Translation
-ms.sourcegitcommit: f6989f65f80027be7803a889c0a87f6afbae150d
-ms.openlocfilehash: 703ab64e96894df6c974fd441b737568fb905004
-ms.lasthandoff: 12/13/2016
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: f1fe97c6b3e2d28b7e17d035bc7e3ecced8a0d0f
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -185,7 +185,7 @@ Wenn das Back-End per FCM konfiguriert wurde, können Sie dem Client für die Re
             }
         }
 
-    Beachten Sie, dass bei der Registrierung der Vorlage der "messageParam"-Parameter in diesem Code verwendet wird.
+    Beachten Sie, dass dieser Code den `messageParam`-Parameter in der Vorlagenregistrierung verwendet.
 12. Fügen Sie den folgenden Code hinzu, mit dem **OnMessage**implementiert wird:
 
         protected override void OnMessage(Context context, Intent intent)

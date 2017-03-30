@@ -11,45 +11,45 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 03/15/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 3203358dce9cba95d325ec786e7ba12dd45f5ca1
-ms.openlocfilehash: f2cd7f0882f31de5f4bb99f772c38a0fff28cd59
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: f32f61824de6a0195fc57b8cb0d73a89c7a06067
+ms.lasthandoff: 03/16/2017
 
 
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>End-to-End-Problembehandlung mit Azure Storage-Metriken und -Protokollen sowie AzCopy und Message Analyzer
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../includes/storage-selector-portal-e2e-troubleshooting.md)]
 
-## <a name="overview"></a>Übersicht
 Die Diagnose und das Beheben von Problemen ist eine wichtige Fähigkeit für die Erstellung und den Support von Clientanwendungen mit Microsoft Azure-Speicher. Aufgrund der dezentralen Art einer Azure-Anwendung kann sich die Diagnose und Behebung von Fehlern und Leistungsproblemen als komplexer erweisen als in herkömmlichen Umgebungen.
 
-In diesem Lernprogramm wird veranschaulicht, wie Clients bestimmte Fehler identifizieren, die sich möglicherweise auf die Leistung auswirken, und wie die End-to-End-Problembehandlung mithilfe von Tools von Microsoft und des Azure-Speichers zur Optimierung der Clientanwendung funktioniert.
+In diesem Tutorial wird veranschaulicht, wie bestimmte Fehler identifiziert werden, die sich möglicherweise auf die Leistung auswirken, und wie die End-to-End-Problembehandlung mithilfe von Tools von Microsoft und Azure Storage zur Optimierung der Clientanwendung funktioniert.
 
 Dieses Lernprogramm bietet eine praktische Beschreibung eines Szenarios der End-to-End-Problembehandlung. Ein detailliertes konzeptionelles Handbuch für die Problembehandlung von Azure-Speicheranwendungen finden Sie unter [Überwachung, Diagnose und Problembehandlung in Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md).
 
 ## <a name="tools-for-troubleshooting-azure-storage-applications"></a>Tools zur Problembehandlung von Azure-Speicheranwendungen
 Um Probleme in Clientanwendungen mit Microsoft Azure-Speicher zu beheben, können Sie eine Kombination verschiedener Tools verwenden, um zu ermitteln, wann ein Problem aufgetreten ist und was die Ursache des Problems sein kann. Zu diesen Tools zählen:
 
-* **Azure-Speicheranalyse**. [Azure-Speicheranalyse](http://msdn.microsoft.com/library/azure/hh343270.aspx) bietet Metriken und Protokolle für den Azure-Speicher.
+* **Azure-Speicheranalyse**. [Azure-Speicheranalyse](/rest/api/storageservices/fileservices/Storage-Analytics) bietet Metriken und Protokolle für den Azure-Speicher.
   
-  * **Speichermetriken** zeichnet Transaktions- und Kapazitätsmetriken für das Speicherkonto auf. Mithilfe von Metriken können Sie die Leistung Ihrer Anwendung anhand einer Vielzahl verschiedener Messwerte bestimmen. Weitere Informationen zu den Arten der von der Speicheranalyse erfassten Metriken finden Sie unter [Schema der Tabellen für Speicheranalysemetriken](http://msdn.microsoft.com/library/azure/hh343264.aspx) .
-  * **Speicherprotokollierung** erfasst jede Anfrage an die Azure-Speicherdienste in einem serverseitigen Protokoll. Das Protokoll erfasst ausführliche Daten für jede Anfrage, einschließlich des ausgeführten Vorgangs, des Status des Vorgangs und der Latenzinformationen. Weitere Informationen zu den Anfrage- und Antwortdaten, die von der Speicheranalyse in die Protokolle geschrieben werden, finden Sie unter [Protokollformat der Speicheranalyse](http://msdn.microsoft.com/library/azure/hh343259.aspx) .
+  * **Speichermetriken** zeichnet Transaktions- und Kapazitätsmetriken für das Speicherkonto auf. Mithilfe von Metriken können Sie die Leistung Ihrer Anwendung anhand einer Vielzahl verschiedener Messwerte bestimmen. Weitere Informationen zu den Arten der von der Speicheranalyse erfassten Metriken finden Sie unter [Schema der Tabellen für Speicheranalysemetriken](/rest/api/storageservices/fileservices/Storage-Analytics-Metrics-Table-Schema) .
+  * **Speicherprotokollierung** erfasst jede Anfrage an die Azure-Speicherdienste in einem serverseitigen Protokoll. Das Protokoll erfasst ausführliche Daten für jede Anfrage, einschließlich des ausgeführten Vorgangs, des Status des Vorgangs und der Latenzinformationen. Weitere Informationen zu den Anfrage- und Antwortdaten, die von der Speicheranalyse in die Protokolle geschrieben werden, finden Sie unter [Protokollformat der Speicheranalyse](/rest/api/storageservices/fileservices/Storage-Analytics-Log-Format) .
 
 > [!NOTE]
 > Für Speicherkonten mit dem Replikationstyp „Zonenredundanter Speicher (ZRS)“ ist zu diesem Zeitpunkt die Metrik- oder Protokollierungsfunktion nicht aktiviert. 
 > 
 > 
 
-* **Azure-Portal**. Sie können die Protokollierung und Metriken für das Speicherkonto im [Azure-Portal](https://portal.azure.com)konfigurieren. Sie können auch Diagramme und Grafiken anzeigen, die darstellen, welche Leistung die Anwendung über einen gewissen Zeitraum hinweg erbringt, und Warnungen konfigurieren, die Sie benachrichtigen, wenn die Leistung bezüglich einer bestimmten Metrik von den Erwartungen abweicht.
+* **Azure-Portal**. Sie können die Protokollierung und Metriken für das Speicherkonto im [Azure-Portal](https://portal.azure.com) konfigurieren. Sie können auch Diagramme und Grafiken anzeigen, die darstellen, welche Leistung die Anwendung über einen gewissen Zeitraum hinweg erbringt, und Warnungen konfigurieren, die Sie benachrichtigen, wenn die Leistung bezüglich einer bestimmten Metrik von den Erwartungen abweicht.
   
-    Informationen zum Konfigurieren der Überwachung im Azure-Portal finden Sie unter [Überwachen eines Speicherkontos im Azure-Portal](storage-monitor-storage-account.md) .
+    Informationen zum Konfigurieren der Überwachung im Azure-Portal finden Sie unter [Überwachen eines Speicherkontos im Azure-Portal](storage-monitor-storage-account.md).
 * **AzCopy**. Serverprotokolle für den Azure-Speicher werden als Blobs gespeichert, damit Sie AzCopy verwenden können, um die Protokoll-Blobs für die Analyse mithilfe von Microsoft Message Analyzer in ein lokales Verzeichnis zu kopieren. Weitere Informationen zu AzCopy finden Sie unter [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md) .
 * **Microsoft Message Analyzer**. Message Analyzer ist ein Tool, das Protokolldateien in einem grafischen Format anzeigt, das es Ihnen erleichtert, Protokolldaten zu filtern, zu durchsuchen und zu gruppieren und so nützliche Zusammenstellungen für die Analyse von Fehlern und Leistungsproblemen zu erhalten. Weitere Informationen zu Message Analyzer finden Sie unter [Microsoft Message Analyzer Operating Guide](http://technet.microsoft.com/library/jj649776.aspx) (in englischer Sprache).
 
 ## <a name="about-the-sample-scenario"></a>Informationen zum Beispielszenario
-Für dieses Lernprogramm wird ein Szenario untersucht, in dem Metriken des Azure-Speichers für eine Anwendung, die den Azure-Speicher aufruft, eine niedrige prozentuale Erfolgsrate anzeigen. Die Metrik zur niedrigen prozentualen Erfolgsrate (im **Azure-Portal** und den Metrikentabellen als [PercentSuccess](https://portal.azure.com) angezeigt) erfasst Vorgänge, die zwar erfolgreich waren, aber einen HTTP-Statuscode über 299 zurückgeben. In den serverseitigen Speicher-Protokollierungsdateien sind diese Vorgänge mit dem Transaktionsstatus **ClientOtherErrors**erfasst. Ausführliche Informationen zur Metrik zur niedrigen prozentualen Erfolgsrate finden Sie unter [Metriken zeigen niedrigen PercentSuccess an, oder Analyse-Protokolleinträge enthalten Vorgänge mit Transaktionsstatus "ClientOtherErrors"](storage-monitoring-diagnosing-troubleshooting.md#metrics-show-low-percent-success).
+Für dieses Lernprogramm wird ein Szenario untersucht, in dem Metriken des Azure-Speichers für eine Anwendung, die den Azure-Speicher aufruft, eine niedrige prozentuale Erfolgsrate anzeigen. Die Metrik zur niedrigen prozentualen Erfolgsrate (im [Azure-Portal](https://portal.azure.com) und den Metrikentabellen als **PercentSuccess** angezeigt) erfasst Vorgänge, die zwar erfolgreich waren, aber einen HTTP-Statuscode über 299 zurückgeben. In den serverseitigen Speicher-Protokollierungsdateien sind diese Vorgänge mit dem Transaktionsstatus **ClientOtherErrors**erfasst. Ausführliche Informationen zur Metrik zur niedrigen prozentualen Erfolgsrate finden Sie unter [Metriken zeigen niedrigen PercentSuccess an, oder Analyse-Protokolleinträge enthalten Vorgänge mit Transaktionsstatus "ClientOtherErrors"](storage-monitoring-diagnosing-troubleshooting.md#metrics-show-low-percent-success).
 
 Azure-Speichervorgänge geben möglicherweise als Teil ihrer normalen Funktionalität HTTP-Statuscodes zurück, die höher sind als 299. Diese Fehler zeigen jedoch in einigen Fällen an, dass Sie Ihre Clientanwendung optimieren können, um eine bessere Leistung zu erzielen.
 
@@ -172,14 +172,16 @@ Erfassen und speichern Sie für das Lernprogramm zunächst eine Netzwerkablaufve
 Weitere Informationen finden Sie unter [Using the Network Tracing Features](http://technet.microsoft.com/library/jj674819.aspx) (in englischer Sprache) auf Technet.
 
 ## <a name="review-metrics-data-in-the-azure-portal"></a>Überprüfen der Metrikdaten im Azure-Portal
-Sobald die Anwendung über einen bestimmten Zeitraum hinweg ausgeführt wurde, können Sie die Metrikdiagramme überprüfen, die im [Azure-Portal](https://portal.azure.com) zur Untersuchung der Dienstleistung angezeigt werden. Zunächst navigieren Sie zu Ihrem Speicherkonto im Azure-Portal und fügen ein Diagramm für die Metrik **Prozentsatz erfolgreich** hinzu.
+Sobald die Anwendung über einen bestimmten Zeitraum hinweg ausgeführt wurde, können Sie die Metrikdiagramme überprüfen, die im [Azure-Portal](https://portal.azure.com) zur Untersuchung der Dienstleistung angezeigt werden.
 
-Im Azure-Portal wird nun **Prozentsatz erfolgreich** im Überwachungsdiagramm neben sämtlichen anderen Metriken angezeigt, die Sie möglicherweise hinzugefügt haben. Im Szenario, das wir im Folgenden durch die Analyse der Protokolle in Message Analyzer untersuchen, liegt die prozentuale Erfolgsrate unter 100 %.
+Navigieren Sie zunächst im Azure-Portal zum Speicherkonto. Standardmäßig wird ein Überwachungsdiagramm mit der Metrik **Prozentsatz erfolgreich** auf dem Blatt für das Konto angezeigt. Wenn Sie das Diagramm zuvor bearbeitet haben, um andere Metriken anzuzeigen, fügen Sie die Metrik **Prozentsatz erfolgreich** hinzu.
 
-Weitere Informationen zum Hinzufügen von Metriken auf der Seite "Überwachen" finden Sie unter [Hinzufügen von Metriken zur Metrikentabelle](storage-monitor-storage-account.md#how-to-add-metrics-to-the-metrics-table).
+Im Überwachungsdiagramm wird nun **Prozentsatz erfolgreich** neben sämtlichen anderen Metriken angezeigt, die Sie möglicherweise hinzugefügt haben. Im Szenario, das wir im Folgenden durch die Analyse der Protokolle in Message Analyzer untersuchen, liegt die prozentuale Erfolgsrate unter 100 %.
+
+Weitere Informationen zum Hinzufügen und Anpassen von Metrikdiagrammen finden Sie unter [Anpassen von Metrikdiagrammen](storage-monitor-storage-account.md#customize-metrics-charts).
 
 > [!NOTE]
-> Es dauert einige Zeit, bis die Metrikdaten im Azure-Portal angezeigt werden, nachdem Sie die Speichermetriken aktiviert haben. Dies liegt daran, dass stündliche Metriken für die vergangene Stunde dort erst angezeigt werden, wenn die Stunde vergangen ist. Darüber hinaus werden Minutenmetriken derzeit nicht im Azure-Portal angezeigt. Je nach Zeitpunkt der Metrikaktivierung kann es also bis zu zwei Stunden dauern, bis die Metrikdaten angezeigt werden.
+> Es dauert einige Zeit, bis die Metrikdaten im Azure-Portal angezeigt werden, nachdem Sie die Speichermetriken aktiviert haben. Dies liegt daran, dass stündliche Metriken für die vergangene Stunde im Azure-Portal erst angezeigt werden, wenn die Stunde vergangen ist. Darüber hinaus werden Minutenmetriken derzeit nicht im Azure-Portal angezeigt. Je nach Zeitpunkt der Metrikaktivierung kann es also bis zu zwei Stunden dauern, bis die Metrikdaten angezeigt werden.
 > 
 > 
 
@@ -372,8 +374,3 @@ Weitere Informationen zur Problembehandlung in End-to-End-Szenarien im Azure-Spe
 * [Überwachen eines Speicherkontos im Azure-Portal](storage-monitor-storage-account.md)
 * [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md)
 * [Microsoft Message Analyzer Operating Guide (in englischer Sprache)](http://technet.microsoft.com/library/jj649776.aspx)
-
-
-<!--HONumber=Jan17_HO4-->
-
-

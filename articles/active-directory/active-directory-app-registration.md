@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 11/30/2016
 ms.author: priyamo
 translationtype: Human Translation
-ms.sourcegitcommit: bf1b8783ccbc3b3e3185eb10c7f772b58352aab7
-ms.openlocfilehash: 073940bb607b953af324d784a45958977e1af3a2
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 006ebbbc3f6f745f60c5fc6646649097e144beaf
+ms.lasthandoff: 03/17/2017
 
 ---
 
@@ -35,7 +36,7 @@ Sie können Ihre Anwendung mithilfe des Azure-Portals beim Azure Active Director
 
 ## <a name="update-application-settings-from-the-azure-portal"></a>Aktualisieren von Anwendungseinstellungen im Azure-Portal
 
-Mit dem Azure-Portal können Sie einfach die Einstellungen einer vorhandenen Anwendung ändern. Sie können beispielsweise eine Antwort-URL konfigurieren, unter der Azure AD Tokenantworten ausgibt. Konfigurieren Sie ggf. auch Berechtigungen für andere Anwendungen, beispielsweise um Ihrer Anwendung den Zugriff auf die MS Graph-API zu ermöglichen. Alle diese Schritte können Sie über die Seite mit den Anwendungseinstellungen ausführen.
+Mit dem Azure-Portal können Sie einfach die Einstellungen einer vorhandenen Anwendung ändern. Sie können beispielsweise eine Antwort-URL konfigurieren, unter der Azure AD Tokenantworten ausgibt. Konfigurieren Sie gegebenenfalls auch Berechtigungen für andere Anwendungen, beispielsweise um Ihrer Anwendung den Zugriff auf die Microsoft Graph-API zu ermöglichen. Alle diese Schritte können Sie über die Seite mit den Anwendungseinstellungen ausführen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 2. Wählen Sie Ihren Azure AD-Mandanten aus, indem Sie in der oberen rechten Ecke der Seite Ihr Konto wählen.
@@ -44,7 +45,7 @@ Mit dem Azure-Portal können Sie einfach die Einstellungen einer vorhandenen Anw
   * Auf der Seite **Eigenschaften** können Sie die allgemeine Informationen für die Anwendung ändern. Dazu gehören Anwendungsname, Anmelde-URL und Abmelde-URL.
   * Auf der Seite **Antwort-URLs** können Sie eine Antwort-URL hinzufügen, an die Azure AD Tokenantworten sendet.
   * Auf der Seite **Besitzer** können Sie Anwendungsbesitzer hinzufügen.
-  * Auf der Seite **Berechtigungen** können Sie Berechtigungen für die App konfigurieren. Beispiel: Klicken Sie zum Zugreifen auf die MS Graph-API auf **Hinzufügen**, und wählen Sie in der API-Auswahl **Microsoft Graph** aus. Wählen Sie anschließend die erforderliche Berechtigung, z.B. **Verzeichnisdaten lesen**.
+  * Auf der Seite **Berechtigungen** können Sie Berechtigungen für die App konfigurieren. Beispiel: Klicken Sie zum Zugreifen auf die Microsoft Graph-API auf **Hinzufügen**, und wählen Sie in der API-Auswahl **Microsoft Graph** aus. Wählen Sie anschließend die erforderliche Berechtigung aus, z.B. **Verzeichnisdaten lesen**.
   * Auf der Seite **Schlüssel** können Sie Anwendungsgeheimnisse hinzufügen. Das Geheimnis wird nur einmal direkt nach der Erstellung angezeigt. Kopieren Sie es daher zur späteren Verwendung.
 
 ## <a name="use-the-inline-manifest-editor"></a>Verwenden des Inline-Manifest-Editors
@@ -61,9 +62,4 @@ Mithilfe des Inline-Manifest-Editors können Sie bestimmte Anwendungseigenschaft
 
 1. In den [Schnellstarts](active-directory-developers-guide.md) finden Sie ausführliche Vorgehensweisen für Anwendungen, die die Authentifizierung mithilfe von Azure AD ausführen.
 2. Sehen Sie sich die vollständige Liste der Codebeispiele auf [Github](https://github.com/azure-samples) an.
-
-
-
-<!--HONumber=Dec16_HO4-->
-
 

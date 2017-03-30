@@ -15,29 +15,30 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2017
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ae4e75c7ac318a414672cf791bb35d1615f45dea
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: deed3fbd7cd27f54767ae9b26c27c1e1a0106208
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="views-in-operations-management-suite-oms-management-solutions-preview"></a>Ansichten in Verwaltungslösungen der Operations Management Suite (OMS) (Preview)
 > [!NOTE]
 > Dies ist die vorläufige Dokumentation für das Erstellen von Verwaltungslösungen in der OMS, die sich derzeit in der Vorschau befinden. Jedes unten beschriebene Schema kann sich ändern.    
-> 
-> 
+>
+>
 
 [Verwaltungslösungen in der Operations Management Suite (OMS)](operations-management-suite-solutions.md) enthalten in der Regel eine oder mehrere Ansichten zum Visualisieren von Daten.  Dieser Artikel beschreibt die Vorgehensweise beim Exportieren einer Ansicht, die vom [Ansicht-Designer](../log-analytics/log-analytics-view-designer.md) erstellt und in einer Verwaltungslösung eingeschlossen wurde.  
 
 > [!NOTE]
-> Die Beispiele in diesem Artikel verwenden Parameter und Variablen, die entweder erforderlich sind oder für Verwaltungslösungen gelten und unter [Creating management solutions in Operations Management Suite (OMS) (Erstellen von Verwaltungslösungen in der Operations Management Suite (OMS))](operations-management-suite-solutions-creating.md) beschrieben sind. 
-> 
-> 
+> Die Beispiele in diesem Artikel verwenden Parameter und Variablen, die entweder erforderlich sind oder für Verwaltungslösungen gelten und unter [Creating management solutions in Operations Management Suite (OMS) (Erstellen von Verwaltungslösungen in der Operations Management Suite (OMS))](operations-management-suite-solutions-creating.md) beschrieben sind.
+>
+>
 
 ## <a name="prerequisites"></a>Voraussetzungen
 In diesem Artikel wird davon ausgegangen, dass Sie schon mit der [Erstellung einer Verwaltungslösung](operations-management-suite-solutions-creating.md) und der Struktur einer Lösungsdatei vertraut sind.
 
 ## <a name="overview"></a>Übersicht
-Um eine Ansicht in eine Verwaltungslösung aufzunehmen, erstellen Sie dafür eine **Ressource** in der [Lösungsdatei](operations-management-suite-solutions-creating.md).  Die JSON, die die detaillierte Konfiguration der Ansicht beschreibt, ist normalerweise sehr komplex und nicht etwas, das ein typischer Lösungsautor manuell erstellen könnte.  Die am häufigsten verwendete Methode ist die Erstellung der Ansicht mit den [Ansicht-Designer](../log-analytics/log-analytics-view-designer.md), diese zu exportieren, und dann deren ausführliche Konfiguration der Lösung hinzuzufügen. 
+Um eine Ansicht in eine Verwaltungslösung aufzunehmen, erstellen Sie dafür eine **Ressource** in der [Lösungsdatei](operations-management-suite-solutions-creating.md).  Die JSON, die die detaillierte Konfiguration der Ansicht beschreibt, ist normalerweise sehr komplex und nicht etwas, das ein typischer Lösungsautor manuell erstellen könnte.  Die am häufigsten verwendete Methode ist die Erstellung der Ansicht mit den [Ansicht-Designer](../log-analytics/log-analytics-view-designer.md), diese zu exportieren, und dann deren ausführliche Konfiguration der Lösung hinzuzufügen.
 
 Die grundlegenden Schritte zum Hinzufügen einer Ansicht zu einer Lösung sind wie folgt.  Jeder Schritt wird in den nachstehenden Abschnitten ausführlicher beschrieben.
 
@@ -46,7 +47,7 @@ Die grundlegenden Schritte zum Hinzufügen einer Ansicht zu einer Lösung sind w
 3. Hinzufügen der Anzeigedetails
 
 ## <a name="export-the-view-to-a-file"></a>Exportieren der Ansicht in eine Datei
-Führen Sie die Schritte unter [Log Analytics View Designer (Log Analytics-Ansicht-Designer)](../log-analytics/log-analytics-view-designer.md), um eine Ansicht in eine Datei zu exportieren.  Die exportierte Datei wird im JSON-Format mit den gleichen [Elementen wie die der Lösungsdatei](operations-management-suite-solutions-creating.md#management-solution-files) dargestellt.  
+Führen Sie die Schritte unter [Log Analytics View Designer (Log Analytics-Ansicht-Designer)](../log-analytics/log-analytics-view-designer.md), um eine Ansicht in eine Datei zu exportieren.  Die exportierte Datei wird im JSON-Format mit den gleichen [Elementen wie die der Lösungsdatei](operations-management-suite-solutions-solution-file.md) dargestellt.  
 
 Das Element **resources** (Ressourcen) der Ansichtsdatei erhält eine Ressource mit einem Typ **Microsoft.OperationalInsights/workspaces**, der den OMS-Arbeitsbereich darstellt.  Dieses Element erhält ein Unterelement mit einem Typ **views** (Ansichten), der die Ansicht darstellt und die ausführliche Konfiguration enthält.  Kopieren Sie die Details dieses Elements, und kopieren Sie diese dann in Ihre Lösung.
 
@@ -69,11 +70,11 @@ Fügen Sie die folgende Ansichtsressource zum Element **resources** (Ressourcen)
             "Author": "[variables('ViewAuthor')]",
             "Source": "Local",
             "Dashboard": ,
-            "OverviewTile": 
+            "OverviewTile":
         }
     }
 
-Fügen Sie die folgenden Variablen auf die [Variablen](operations-management-suite-solutions-creating.md#variables) Element der Lösung und Ersetzen Sie die Werte für Ihre Lösung.
+Fügen Sie die folgenden Variablen dem variables-Element der Projektmappendatei hinzu, und ersetzen Sie die Werte durch die für Ihre Lösung.
 
     "LogAnalyticsApiVersion": "2015-11-01-preview",
     "ViewAuthor": "Your name."
@@ -91,7 +92,7 @@ Beachten Sie, dass Sie die gesamte Ansichtsressource aus Ihrer exportierten Ansi
 * Variablen sollten in der Lösung definiert und in den entsprechenden Eigenschaften verwendet werden.
 
 ## <a name="add-the-view-details"></a>Hinzufügen der Ansichtsdetails
-Die Ansichtsressource in der exportierten Ansichtsdatei wird zwei Elemente im Element **properties** (Eigenschaften) namens **Dashboard** und **OverviewTile** enthalten, die die ausführliche Konfiguration der Ansicht enthalten.  Kopieren Sie diese beiden Elemente und deren Inhalte in das **properties**-Element der Ansichtsressource in Ihrer Lösungsdatei. 
+Die Ansichtsressource in der exportierten Ansichtsdatei wird zwei Elemente im Element **properties** (Eigenschaften) namens **Dashboard** und **OverviewTile** enthalten, die die ausführliche Konfiguration der Ansicht enthalten.  Kopieren Sie diese beiden Elemente und deren Inhalte in das **properties**-Element der Ansichtsressource in Ihrer Lösungsdatei.
 
 ## <a name="example"></a>Beispiel
 Im folgenden Beispiel wird z.B. eine einfache Lösungsdatei mit einer Ansicht gezeigt.  Aus Platzgründen werden Auslassungspunkte (...) für die Inhalte der Elemente **Dashboard** und **OverviewTile** angezeigt.
@@ -179,10 +180,4 @@ Im folgenden Beispiel wird z.B. eine einfache Lösungsdatei mit einer Ansicht ge
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie ausführlich, wie Sie [Verwaltungslösungen](operations-management-suite-solutions-creating.md) erstellen.
 * Einschließen von [Automations-Runbooks in Ihrer Verwaltungslösung](operations-management-suite-solutions-resources-automation.md).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

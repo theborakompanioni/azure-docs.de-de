@@ -80,7 +80,8 @@ Verwenden Sie zum Erstellen eines Analyseauftrags die Stream Analytics-API für 
    
         using System;
         using System.Configuration;
-        using System.Threading;
+        using System.Threading.Tasks;
+        
         using Microsoft.Azure;
         using Microsoft.Azure.Management.StreamAnalytics;
         using Microsoft.Azure.Management.StreamAnalytics.Models;
@@ -88,40 +89,21 @@ Verwenden Sie zum Erstellen eines Analyseauftrags die Stream Analytics-API für 
 2. Fügen Sie eine Authentifizierungshilfsmethode hinzu:
 
    ```   
-   public static string GetAuthorizationHeader()
+   private static async Task<string> GetAuthorizationHeader()
    {
-   
-       AuthenticationResult result = null;
-       var thread = new Thread(() =>
-       {
-           try
-           {
-               var context = new AuthenticationContext(
-                   ConfigurationManager.AppSettings["ActiveDirectoryEndpoint"] +
-                   ConfigurationManager.AppSettings["ActiveDirectoryTenantId"]);
-   
-               result = context.AcquireToken(
-                   resource: ConfigurationManager.AppSettings["WindowsManagementUri"],
-                   clientId: ConfigurationManager.AppSettings["AsaClientId"],
-                   redirectUri: new Uri(ConfigurationManager.AppSettings["RedirectUri"]),
-                   promptBehavior: PromptBehavior.Always);
-           }
-           catch (Exception threadEx)
-           {
-               Console.WriteLine(threadEx.Message);
-           }
-       });
-   
-       thread.SetApartmentState(ApartmentState.STA);
-       thread.Name = "AcquireTokenThread";
-       thread.Start();
-       thread.Join();
-   
-       if (result != null)
-       {
-           return result.AccessToken;
-       }
-   
+       var context = new AuthenticationContext(
+           ConfigurationManager.AppSettings["ActiveDirectoryEndpoint"] +
+           ConfigurationManager.AppSettings["ActiveDirectoryTenantId"]);
+
+        AuthenticationResult result = await context.AcquireTokenASync(
+           resource: ConfigurationManager.AppSettings["WindowsManagementUri"],
+           clientId: ConfigurationManager.AppSettings["AsaClientId"],
+           redirectUri: new Uri(ConfigurationManager.AppSettings["RedirectUri"]),
+           promptBehavior: PromptBehavior.Always);
+
+        if (result != null)
+            return result.AccessToken;
+
        throw new InvalidOperationException("Failed to acquire token");
    }
    ```  
@@ -138,10 +120,9 @@ Fügen Sie den folgenden Code am Anfang der Methode **Main** hinzu:
     string streamAnalyticsTransformationName = "<YOUR JOB TRANSFORMATION NAME>";
 
     // Get authentication token
-    TokenCloudCredentials aadTokenCredentials =
-        new TokenCloudCredentials(
-            ConfigurationManager.AppSettings["SubscriptionId"],
-            GetAuthorizationHeader());
+    TokenCloudCredentials aadTokenCredentials = new TokenCloudCredentials(
+        ConfigurationManager.AppSettings["SubscriptionId"],
+        GetAuthorizationHeader().Result);
 
     // Create Stream Analytics management client
     StreamAnalyticsManagementClient client = new StreamAnalyticsManagementClient(aadTokenCredentials);
@@ -301,8 +282,6 @@ Der folgende Beispielcode startet einen Stream Analytics-Auftrag mit der benutze
 
     LongRunningOperationResponse jobStartResponse = client.StreamingJobs.Start(resourceGroupName, streamAnalyticsJobName, jobStartParameters);
 
-
-
 ## <a name="stop-a-stream-analytics-job"></a>Beenden eines Stream Analytics-Auftrags
 Sie können einen laufenden Stream Analytics-Auftrag beenden, indem Sie die Methode **Stop** aufrufen.
 
@@ -314,7 +293,6 @@ Die Methode **Delete** löscht den Auftrag sowie die zugrunde liegenden Unterres
 
     // Delete a Stream Analytics job
     LongRunningOperationResponse jobDeleteResponse = client.StreamingJobs.Delete(resourceGroupName, streamAnalyticsJobName);
-
 
 ## <a name="get-support"></a>Support
 Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).

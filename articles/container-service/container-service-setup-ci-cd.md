@@ -17,9 +17,9 @@ ms.workload: na
 ms.date: 11/14/2016
 ms.author: johnsta
 translationtype: Human Translation
-ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
-ms.openlocfilehash: c226d1eecbda09f4538f37d830ce68064e8ce77b
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 65fc37a1fd1d1d0149b98767117f8faafb5dcd2b
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -288,6 +288,7 @@ Wenn Sie die Builddefinition in VSTS öffnen, sehen Sie ungefähr Folgendes:
     ```
 
     * Als Bezeichnungswert können Sie entweder die URL des vollqualifizierten Domänennamens (Fully Qualified Domain Name, FQDN) des ACS-Agents oder eine benutzerdefinierte Domäne (z.B. „app.contoso.com“) angeben. Führen Sie zum Ermitteln des FQDN Ihres ACS-Agents den Befehl `az acs list` aus, und überprüfen Sie die Eigenschaft für `agentPoolProfiles.fqdn`. Beispiel: `myacsagents.westus.cloudapp.azure.com`.
+    * Die Beispiel-App lauscht in der Standardeinstellung an Port 80. Benutzer, deren Docker-Anwendungen an anderen Ports lauschen, z.B. an `port 8080` oder `443`, fügen die Portnummer an den vollqualifizierten Domänennamen an. Beispiel: `myacsagents.westus.cloudapp.azure.com:8080`. Wenn Sie versuchen, von außerhalb auf die Anwendung zuzugreifen, müssen Sie jedoch Port 80 abfragen.
     * Diese Einstellungen folgen der Dateibenennungskonvention „docker-compose.env.*Umgebungsname*.yml“ und betreffen nur die genannte Umgebung (in diesem Fall die Umgebung *Produktion*). Überprüfen Sie die Releasedefinition in VSTS: Jede Bereitstellungsaufgabe der Umgebung ist zum Lesen aus einer anhand dieser Konvention benannten Docker-Compose-Datei konfiguriert.
 
 1. Führen Sie einen Commit aus, und übertragen Sie die Datei per Push an das Masterquell-Repository, um einen weiteren Build zu starten.

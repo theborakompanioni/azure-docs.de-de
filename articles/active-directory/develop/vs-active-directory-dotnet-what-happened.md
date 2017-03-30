@@ -12,11 +12,12 @@ ms.workload: web
 ms.tgt_pltfrm: vs-what-happened
 ms.devlang: na
 ms.topic: article
-ms.date: 11/18/2016
+ms.date: 03/01/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: f3f8292eb505c73b5fda86499581fe85ad3f8e47
-ms.openlocfilehash: 298efeeedb6766952b16cc18f59d7e11a4dc440a
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 72cd94ba16cb4fe234c898b093c7de6a08f71239
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -155,11 +156,7 @@ Die folgenden Konfigurationsabschnitte und eine Verbindungszeichenfolge wurden h
 ### <a name="your-azure-active-directory-app-was-updated"></a>Ihre Azure Active Directory-App (AD) wurde aktualisiert
 Ihre Azure Active Directory-App wurde aktualisiert und enthält nun die Berechtigung *Verzeichnis lesen*. Außerdem wurde ein zusätzlicher Schlüssel erstellt, der als *ida:ClientSecret* in der Datei **web.config** verwendet wird.
 
-[Weitere Informationen zu Azure Active Directory](https://azure.microsoft.com/services/active-directory/)
-
-
-
-
-<!--HONumber=Jan17_HO5-->
+## <a name="next-steps"></a>Nächste Schritte
+- [Weitere Informationen zu Azure Active Directory](https://azure.microsoft.com/services/active-directory/)
 
 

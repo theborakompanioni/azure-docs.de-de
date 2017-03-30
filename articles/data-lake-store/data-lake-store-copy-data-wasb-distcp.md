@@ -28,7 +28,7 @@ ms.lasthandoff: 03/07/2017
 >
 >
 
-Nachdem Sie einen HDInsight-Cluster erstellt haben, der Zugriff auf ein Data Lake Store-Konto besitzt, können Sie Hadoop-Ökosystemtools wie Distcp zum Kopieren von Daten **** aus einem HDInsight-Clusterspeicher (WASB) in ein Data Lake Store-Konto (und umgekehrt) verwenden. Dieser Artikel enthält Anweisungen zur Vorgehensweise.
+Nachdem Sie einen HDInsight-Cluster erstellt haben, der Zugriff auf ein Data Lake Store-Konto besitzt, können Sie Hadoop-Ökosystemtools wie Distcp zum Kopieren von Daten **aus** einem HDInsight-Clusterspeicher (WASB) in ein Data Lake Store-Konto (und umgekehrt) verwenden. Dieser Artikel enthält Anweisungen zur Vorgehensweise.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie mit diesem Artikel beginnen können, benötigen Sie Folgendes:
@@ -101,7 +101,7 @@ Wenn andere Anwendungen Arbeitsspeicher verwenden, können Sie festlegen, dass f
 
 ### <a name="copying-large-datasets"></a>Kopieren umfangreicher Datasets
 
-Wenn das zu verschiebende Dataset sehr groß ist (beispielsweise >&1; TB) oder Sie über zahlreiche unterschiedliche Ordner verfügen, empfiehlt sich unter Umständen die Verwendung mehrerer DistCp-Aufträge. Dadurch ergibt sich zwar wahrscheinlich kein Leistungsgewinn, die Aufträge werden jedoch verteilt, sodass im Falle eines Fehlers bei einem Auftrag nicht das gesamte Projekt, sondern lediglich der betroffene Auftrag neu gestartet werden muss.
+Wenn das zu verschiebende Dataset sehr groß ist (beispielsweise > 1 TB) oder Sie über zahlreiche unterschiedliche Ordner verfügen, empfiehlt sich unter Umständen die Verwendung mehrerer DistCp-Aufträge. Dadurch ergibt sich zwar wahrscheinlich kein Leistungsgewinn, die Aufträge werden jedoch verteilt, sodass im Falle eines Fehlers bei einem Auftrag nicht das gesamte Projekt, sondern lediglich der betroffene Auftrag neu gestartet werden muss.
 
 ### <a name="limitations"></a>Einschränkungen
 

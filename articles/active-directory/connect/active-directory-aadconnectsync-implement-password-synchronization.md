@@ -12,12 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/13/2017
+ms.date: 03/21/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 64b6447608ecdd9bdd2b307f4bff2cae43a4b13f
-ms.openlocfilehash: cff066ff2943443749ee8eb2ef71c7ca93bb829c
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 946f135e832667ad6e32743be2b07b4f86cd1cae
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -67,10 +67,29 @@ Das Feature der Kennwortsynchronisierung versucht automatisch, fehlerhafte Synch
 Die Synchronisierung eines Kennworts hat keinen Einfluss auf den derzeit angemeldeten Benutzer.
 Wenn eine synchronisierte Kennwortänderung durchgeführt wird, während Sie an einem Clouddienst angemeldet sind, wirkt sich dies nicht direkt auf Ihre aktuelle Clouddienstsitzung aus. Wenn aber für den Clouddienst eine erneute Authentifizierung erforderlich ist, müssen Sie Ihr neues Kennwort angeben.
 
+Ein Nachteil ist, dass ein Benutzer seine Unternehmensanmeldeinformationen ein zweites Mal eingeben muss, um sich bei Azure AD zu authentifizieren, und zwar unabhängig davon, ob er bei seinem Unternehmensnetzwerk angemeldet ist. Dieses Verhalten kann jedoch minimiert werden, wenn der Benutzer bei der Anmeldung „Angemeldet bleiben“ aktiviert. Dadurch wird ein Sitzungscookie festgelegt, das die Authentifizierung für einen kurzen Zeitraum umgeht. Die Einstellung „Angemeldet bleiben“ kann vom Azure Active Directory-Administrator aktiviert oder deaktiviert werden.
+
 > [!NOTE]
-> Die Kennwortsynchronisierung wird nur für Objekttyp-Benutzer in Active Directory unterstützt. Sie wird vom iNetOrgPerson-Objtktyp nicht unterstützt.
->
->
+> Die Kennwortsynchronisierung wird nur für Objekttyp-Benutzer in Active Directory unterstützt. Sie wird vom iNetOrgPerson-Objektyp nicht unterstützt.
+
+### <a name="detailed-description-of-how-password-synchronization-works"></a>Ausführliche Beschreibung der Funktionsweise der Kennwortsynchronisierung
+Nachfolgend wird ausführlich beschrieben, wie die Kennwortsynchronisierung zwischen Active Directory und Azure Active Directory funktioniert.
+
+![Detaillierter Kennwortfluss](./media/active-directory-aadconnectsync-implement-password-synchronization/arch3.png)
+
+
+1. Der Kennwortsynchronisierungs-Agent auf dem AD Connect-Server fordert alle zwei Minuten gespeicherte Kennworthashes (das Attribut „unicodePwd“) von einem Domänencontroller über das standardmäßige Replikationsprotokoll [MS-DRSR](https://msdn.microsoft.com/library/cc228086.aspx) an, um Daten zwischen den Domänencontrollern zu synchronisieren. Das Dienstkonto muss die AD-Berechtigungen „Verzeichnisänderungen replizieren“ und „Verzeichnisänderungen replizieren: Alle“ haben (die bei der Installation standardmäßig erteilt werden), um die Kennworthashes abzurufen.
+2. Vor dem Senden verschlüsselt der Domänencontroller den MD4-Kennworthash mithilfe eines Schlüssels, bei dem es sich um einen [MD5](http://www.rfc-editor.org/rfc/rfc1321.txt)-Hash des RPC-Sitzungsschlüssel und einen Salt-Wert handelt. Anschließend wird das Ergebnis über RPC an den Kennwortsynchronisierungs-Agent gesendet. Der Domänencontroller übergibt auch mithilfe des Replikationsprotokolls des Domänencontrollers den Salt-Wert an den Synchronisierungs-Agent, damit der Agent den Umschlag entschlüsseln kann.
+3.    Sobald der Kennwortsynchronisierungs-Agent über den verschlüsselten Umschlag verfügt, verwendet er [MD5CryptoServiceProvider](https://msdn.microsoft.com/library/System.Security.Cryptography.MD5CryptoServiceProvider.aspx) und den Salt-Wert, um einen Schlüssel zum Rückentschlüsseln der empfangenen Daten in ihr ursprüngliches MD4-Format zu generieren. Zu keinem Zeitpunkt verfügt der Kennwortsynchronisierungs-Agent über Zugriff auf das unverschlüsselte Kennwort. Die Nutzung von MD5 durch den Kennwortsynchronisierungs-Agent dient ausschließlich zur Kompatibilität des Replikationsprotokolls mit dem Domänencontroller und erfolgt nur lokal zwischen dem Domänencontroller und dem Kennwortsynchronisierungs-Agent.
+4.    Der Kennwortsynchronisierungs-Agent erweitert den binären 16-Byte-Kennworthash auf 64 Bytes, indem zunächst der Hash in eine hexadezimale 32-Byte-Zeichenfolge umgewandelt wird, die anschließend mithilfe der UTF-16-Codierung wieder in das Binärformat konvertiert wird.
+5.    Der Kennwortsynchronisierungs-Agent fügt der 64-Byte-Binärdatei einen Salt-Wert (der Länge 10 Byte) hinzu, um den ursprünglichen Hash weiter zu schützen.
+6.    Der Kennwortsynchronisierungs-Agent kombiniert anschließend den MD4-Hash mit dem Salt-Wert und gibt das Ergebnis in die [PBKDF2](https://www.ietf.org/rfc/rfc2898.txt)-Funktion ein, wozu 1.000 Iterationen des mit [HMAC-SHA256](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx) verschlüsselten Hashalgorithmus verwendet werden.
+Azure AD 
+7.    Der Kennwortsynchronisierungs-Agent verwendet den resultierenden 32-Byte-Hash, mit dem (für die Verwendung durch Azure AD) der Salt-Wert und die Anzahl der SHA256-Iterationen verkettet werden. Anschließend wird die Zeichenfolge aus AD Connect über SSL an Azure AD übertragen.</br> 
+8.    Wenn ein Benutzer versucht, sich bei Azure AD anzumelden, und sein Kennwort eingibt, durchläuft das Kennwort denselben aus MD4+Salt+PBKDF2+HMAC-SHA256 bestehenden Prozess. Wenn der resultierende Hash dem in Azure AD gespeicherten Hash entspricht, hat der Benutzer das richtige Kennwort eingegeben, woraufhin er authentifiziert wird. 
+
+>[!Note] 
+>Der ursprüngliche MD4-Hash wird nicht an Azure AD übertragen. Stattdessen wird der SHA256-Hash des ursprünglichen MD4-Hashes übertragen. Daher kann der Hash, wenn er in Azure AD gespeichert ist, nicht für einen lokalen Pass-the-Hash-Angriff verwendet werden.
 
 ### <a name="how-password-synchronization-works-with-azure-ad-domain-services"></a>So funktioniert die Kennwortsynchronisierung mit Azure AD-Domänendiensten
 Sie können die Kennwortsynchronisierung auch dazu verwenden, Ihre lokalen Kennwörter mit den [Azure AD-Domänendiensten](../../active-directory-domain-services/active-directory-ds-overview.md)zu synchronisieren. Dieses Szenario ermöglicht es den Azure AD-Domänendiensten, Ihre Benutzer in der Cloud mit allen Methoden zu authentifizieren, die auch in Ihrem lokalen Active Directory zur Verfügung stehen. Dieses Szenario ähnelt der Verwendung des Active Directory-Migrationsprogramms in einer lokalen Umgebung.
@@ -78,7 +97,11 @@ Sie können die Kennwortsynchronisierung auch dazu verwenden, Ihre lokalen Kennw
 ### <a name="security-considerations"></a>Sicherheitshinweise
 Beim Synchronisieren von Kennwörtern wird die Nur-Text-Version Ihres Kennworts gegenüber dem Kennwortsynchronisierungsfeature, Azure AD oder einem der zugehörigen Dienste nicht offengelegt.
 
-Darüber hinaus besteht keine Notwendigkeit, dass das Kennwort in der lokalen Active Directory-Instanz in einem Format mit umkehrbarer Verschlüsselung gespeichert wird. Ein Digest des Active Directory-Kennworthashs wird zur Übertragung zwischen dem lokalen Active Directory und Azure Active Directory verwendet. Der Digest des Kennworthashs kann nicht für den Zugriff auf Ressourcen in Ihrer lokalen Umgebung verwendet werden.
+Die Authentifizierung von Benutzern erfolgt im Abgleich mit Azure AD und nicht mit dem eigenen Active Directory der Organisation. Wenn Ihre Organisation Bedenken dahingehend hat, dass Kennwortdaten die lokale Umgebung verlassen, berücksichtigen Sie die Tatsache, dass die in Azure AD gespeicherten SHA256-Kennwortdaten (ein Hash des ursprünglichen MD4-Hashes) wesentlich sichererer als die in Active Directory gespeicherten Daten sind. Da dieser SHA256-Hash darüber hinaus nicht entschlüsselt werden kann, lässt er sich nicht in die Active Directory-Umgebung der Organisation zurückübertragen, um in einem Pass-the-Hash-Angriff als gültiges Benutzerkennwort vorgelegt zu werden.
+
+
+
+
 
 ### <a name="password-policy-considerations"></a>Überlegungen zur Kennwortrichtlinie
 Es gibt zwei Arten von Kennwortrichtlinien, die von der Aktivierung der Kennwortsynchronisierung betroffen sind:
@@ -91,12 +114,13 @@ Wenn Sie die Kennwortsynchronisierung aktivieren, setzen die Kennwortkomplexitä
 
 > [!NOTE]
 > Kennwörter für Benutzer, die direkt in der Cloud erstellt werden, unterliegen auch weiterhin in der Cloud definierten Kennwortrichtlinien.
->
->
 
 **Password expiration policy**  
 Wenn sich ein Benutzer im Bereich der Kennwortsynchronisierung befindet, wird das Cloudkontokennwort auf „*Läuft nie ab*“ festgelegt.
+
 Sie können sich mit einem synchronisierten Kennwort, das in der lokalen Umgebung abgelaufen ist, weiterhin bei Ihren Clouddiensten anmelden. Ihr Cloudkennwort wird aktualisiert, wenn Sie das Kennwort in der lokalen Umgebung das nächste Mal ändern.
+
+**Kontoablauf** Wenn Ihre Organisation im Rahmen der Verwaltung von Benutzerkonten das „AccountExpires“-Attribut verwendet, beachten Sie, dass dieses Attribut nicht in Azure AD synchronisiert wird. Deshalb bleibt ein abgelaufenes AD-Konto in einer für die Kennwortsynchronisierung konfigurierten Umgebung in Azure AD weiter aktiv. Wenn ein Konto abgelaufen ist, wird eine Workflowaktion empfohlen, die ein PowerShell-Skript zum Deaktivieren des Azure AD-Kontos des Benutzers auslöst. Wenn umgekehrt das Konto aktiviert ist, muss Azure AD aktiviert werden.
 
 ### <a name="overwriting-synchronized-passwords"></a>Überschreiben synchronisierter Kennwörter
 Ein Administrator kann Ihr Kennwort mithilfe von Windows PowerShell manuell zurücksetzen.
@@ -104,6 +128,24 @@ Ein Administrator kann Ihr Kennwort mithilfe von Windows PowerShell manuell zur�
 In diesem Fall überschreibt das neue Kennwort Ihr synchronisiertes Kennwort, und alle in der Cloud definierten Kennwortrichtlinien gelten für das neue Kennwort.
 
 Wenn Sie das lokale Kennwort erneut ändern, wird das neue Kennwort mit der Cloud synchronisiert, und das manuell aktualisierte Kennwort wird überschrieben.
+
+Die Synchronisierung eines Kennworts hat keinen Einfluss auf den derzeit angemeldeten Azure-Benutzer. Wenn eine synchronisierte Kennwortänderung durchgeführt wird, während Sie an einem Clouddienst angemeldet sind, wirkt sich dies nicht direkt auf Ihre aktuelle Clouddienstsitzung aus. Durch die Einstellung „Angemeldet bleiben“ wird die Dauer dieser Differenz verlängert. Wenn für den Clouddienst eine erneute Authentifizierung erforderlich ist, müssen Sie Ihr neues Kennwort angeben.
+
+### <a name="additional-advantages"></a>Zusätzliche Vorteile
+
+- Im Allgemeinen ist die Synchronisierung von Kennwörtern einfacher zu implementieren als ein Verbunddienst. Sie erfordert keine zusätzliche Server und beseitigt die Abhängigkeit von einem hoch verfügbaren Verbunddienst zum Authentifizieren von Benutzern. 
+- Die Synchronisierung von Kennwörtern kann auch zusätzlich zum Verbund aktiviert werden, damit sie als Ausweichlösung verwendet werden kann, sollte der Verbunddienst ausfallen.
+
+
+
+
+
+
+
+
+
+
+
 
 ## <a name="enabling-password-synchronization"></a>Aktivieren der Kennwortsynchronisierung
 Die Kennwortsynchronisierung wird automatisch aktiviert, wenn Sie Azure AD Connect mit den **Expresseinstellungen**installieren. Weitere Informationen finden Sie unter [Erste Schritte mit Azure AD Connect mit Expresseinstellungen](active-directory-aadconnect-get-started-express.md).

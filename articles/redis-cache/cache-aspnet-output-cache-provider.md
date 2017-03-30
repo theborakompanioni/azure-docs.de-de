@@ -15,9 +15,9 @@ ms.workload: tbd
 ms.date: 02/14/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 70341f4a14ee807a085931c3480a19727683e958
-ms.openlocfilehash: ce0f2ddb42e19ee33767878797188e924f5cd1e9
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: 845f25637a0e48460fc76c1ee36060274b3cec38
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -27,15 +27,15 @@ Der Redis-Ausgabecacheanbieter ist ein prozessunabhängiger Speichermechanismus 
 Zum Verwenden des Redis-Ausgabecacheanbieters konfigurieren Sie zunächst den Cache. Danach konfigurieren Sie Ihre ASP.NET-Anwendung mithilfe des Redis-Ausgabecacheanbieter-NuGet-Pakets. In diesem Thema wird erläutert, wie Sie Ihre Anwendung für die Verwendung des Redis-Ausgabecacheanbieters konfigurieren. Informationen über das Erstellen und Konfigurieren einer Azure Redis Cache-Instanz finden Sie unter [Erstellen eines Caches](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).
 
 ## <a name="store-aspnet-page-output-in-the-cache"></a>Speichern der ASP.NET-Seitenausgabe im Cache
-Um eine Clientanwendung in Visual Studio mithilfe des NuGet-Pakets mit dem Redis-Ausgabecacheanbieter zu konfigurieren, klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt und wählen **NuGet-Pakete verwalten** aus.
+Klicken Sie zum Konfigurieren einer Clientanwendung in Visual Studio mit dem Redis Cache-Sitzungszustands-NuGet-Paket im Menü **Extras** auf **NuGet-Paket-Manager** > **Paket-Manager-Konsole**.
 
-![Azure Redis Cache – NuGet-Pakete verwalten](./media/cache-aspnet-output-cache-provider/redis-cache-manage-nuget-menu.png)
+Führen Sie im Fenster `Package Manager Console` den folgenden Befehl aus.
+    
+```
+Install-Package Microsoft.Web.RedisOutputCacheProvider
+```
 
-Geben Sie **RedisOutputCacheProvider** in das Suchfeld ein, wählen Sie in den Suchergebnissen das Paket aus, und klicken Sie auf **Installieren**.
-
-![Azure Redis Cache – Ausgabecacheanbieter](./media/cache-aspnet-output-cache-provider/redis-cache-page-output-provider.png)
-
-Das Redis-Ausgabecacheanbieter-NuGet-Paket steht in einer Abhängigkeitsbeziehung zum Paket „StackExchange.Redis.StrongName“. Wenn das Paket „StackExchange.Redis.StrongName“ nicht in Ihrem Projekt vorhanden ist, wird es installiert.
+Das Redis-Ausgabecacheanbieter-NuGet-Paket steht in einer Abhängigkeitsbeziehung zum Paket „StackExchange.Redis.StrongName“. Wenn das Paket „StackExchange.Redis.StrongName“ nicht in Ihrem Projekt vorhanden ist, wird es installiert. Weitere Informationen zum Redis-Ausgabecacheanbieter-NuGet-Paket finden Sie auf der NuGet-Seite [RedisOutputCacheProvider](https://www.nuget.org/packages/Microsoft.Web.RedisOutputCacheProvider/).
 
 >[!NOTE]
 >Neben dem Paket „StackExchange.Redis.StrongName“ mit starkem Namen gibt es zudem noch das Paket „StackExchange.Redis“ als Version ohne starken Namen. Wenn in Ihrem Projekt die Version „StackExchange.Redis“ ohne starken Namen verwendet wird, müssen Sie sie deinstallieren. Andernfalls treten Namenskonflikte in Ihrem Projekt auf. Weitere Informationen über diese Pakete finden Sie unter [Konfigurieren der .NET-Cacheclients](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients).

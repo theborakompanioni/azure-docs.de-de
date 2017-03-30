@@ -12,12 +12,12 @@ ms.service: app-service-web
 ms.workload: web
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2017
+ms.date: 03/20/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: a28bb7b8d30ebe6589dfb792e9294a180544569f
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 115749f29d73efdb81f491d9f31687b097f6d270
+ms.lasthandoff: 03/21/2017
 
 ---
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 03/11/2017
 
 Dieses Skriptbeispiel erstellt eine Web-App und die zugehörigen Ressourcen in App Service und bindet dann das SSL-Zertifikat eines benutzerdefinierten Domänennamens an die App. 
 
-Stellen Sie vor dem Ausführen dieses Skripts Folgendes sicher:
+Installieren Sie bei Bedarf die Azure-Befehlszeilenschnittstelle anhand der Anleitung im [Azure CLI-Installationshandbuch](https://docs.microsoft.com/cli/azure/install-azure-cli). Stellen Sie darüber hinaus Folgendes sicher:
 
 - Eine Verbindung mit Azure wurde mit dem Befehl `az login` hergestellt.
 - Sie haben Zugriff auf die Seite „DNS-Konfiguration“ der Domänenregistrierungsstelle.

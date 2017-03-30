@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 03/13/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: eb77dd2aaaeced8c71c2c89937f7f1cc10c7b292
+ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
+ms.openlocfilehash: 165e4394d21a0202a320a8697360b715517bc7a2
 ms.lasthandoff: 03/15/2017
 
 
@@ -50,13 +50,7 @@ Die folgende Tabelle hilft Ihnen bei der Entscheidung, wenn Sie zwischen verschi
 
 ## <a name="billing"></a>Abrechnung
 
-Bei reservierten Einheiten für Medien werden die tatsächlich genutzten Minuten in Rechnung gestellt. Im Folgenden finden Sie ein detaillierteres Beispiel. Joe besaß anfangs null reservierte Einheiten für Medien. An einem bestimmten Tag richtet er um 10 Uhr morgens zwei reservierte Einheiten vom Typ S1 in seinem Konto ein. Nachmittags treffen weitere Filme ein, daher ändert Joe um 13:15 Uhr sein Konto so, dass jetzt vier reservierte Einheiten vom Typ S3 verwendet werden. Alle Videos werden bis 16 Uhr verarbeitet. Danach deaktiviert Joe die reservierten Einheiten in seinem Konto (indem er die Anzahl von reservierten Einheiten auf Null festlegt). Die Nutzung wird wie folgt berechnet.
-
-Reservierte Einheiten für Medien (S1): 2 Einheiten x 3,25 Stunden (10:00 bis 13:15 Uhr) x 0,02 USD/Std. = 0,13 USD Reservierte Einheiten für Medien (S31): 4 Einheiten x 2,75 Stunden (13:15 bis 16=00 Uhr) x 0,08 USD/Std. = 0,88 USD
-
-Joes Gesamtkosten für die Nutzung von reservierten Einheiten für Medien an diesem Tag betragen also&0;,13 USD +&0;,88 USD =&1;,01 USD Im Gegensatz zu reservierten Einheiten für Medien erfolgt die Abrechnung für Streamingeinheiten auf Grundlage der höchsten Anzahl von Streamingeinheiten, die am jeweiligen Tag bereitgestellt werden (hoher Grenzwert).
-
-Weitere Informationen finden Sie auf der Seite mit [Media Services-Preisen](https://azure.microsoft.com/pricing/details/media-services/). Der Abschnitt mit häufig gestellten Fragen enthält ausführliche Erläuterungen.  
+Bei reservierten Einheiten für Medien werden die tatsächlich genutzten Minuten in Rechnung gestellt. Eine ausführliche Erläuterung finden Sie im Abschnitt mit den häufig gestellten Fragen auf der Seite [Media Services – Preise](https://azure.microsoft.com/pricing/details/media-services/).   
 
 ## <a name="quotas-and-limitations"></a>Kontingente und Einschränkungen
 Informationen zu Kontingenten und Einschränkungen sowie zum Öffnen von Supporttickets finden Sie unter [Kontingente und Einschränkungen](media-services-quotas-and-limitations.md).

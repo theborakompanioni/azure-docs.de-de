@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2016
+ms.date: 03/20/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 0a711ee4118973b21d47f1c3e63301f0dfac879d
-ms.openlocfilehash: b746462e382cb5c065417940a80b00c31f440e9b
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 1dd817c9b3160c47463a3a88380d550d127d898e
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -34,11 +35,8 @@ Geben Sie Ihre Frage ein, und sie wird umgehend beantwortet!
 ## <a name="dont-see-the-live-chat-icon"></a>Wird das Live-Chat-Symbol nicht angezeigt?
 Der Livechat wird von Mitgliedern des Machine Learning-Teams betreut. Wenn Sie das Live-Chat-Symbol nicht sehen, liegt es daran, dass das Team aktuell nicht erreichbar ist, z.B. weil Sie es außerhalb der Geschäftszeiten versuchen. 
 
+Im [Machine Learning-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning) können Sie immer Fragen stellen. Dort können diese von Mitgliedern des Machine Learning-Teams und anderen sachkundigen Datenanalysten und Entwicklern beantwortet werden.
+
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

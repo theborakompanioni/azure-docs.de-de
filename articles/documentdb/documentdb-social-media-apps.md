@@ -13,12 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 03/17/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: fba82c5c826da7d1912814b61c5065ca7f726011
-ms.openlocfilehash: 238c74c020625006384a1b31aef320e1346d9ac4
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: a49021d7887ee91da902e5c3dea8cbc6cb3de29d
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -219,6 +219,27 @@ Nun, da ich Ihr Interesse geweckt habe, glauben Sie wahrscheinlich, dass Sie ein
 Um diese Machine Learning-Szenarien zu realisieren, können wir [Azure Data Lake](https://azure.microsoft.com/services/data-lake-store/) zum Erfassen der Informationen aus verschiedenen Quellen und [U-SQL](https://azure.microsoft.com/documentation/videos/data-lake-u-sql-query-execution/) verwenden, um die Informationen zu verarbeiten und eine Ausgabe zu generieren, die von Azure Machine Learning verarbeitet werden kann.
 
 Eine andere Option ist die Verwendung von [Microsoft Cognitive Services](https://www.microsoft.com/cognitive-services) zum Analysieren unserer Benutzerinhalte. Wir können sie nicht nur besser verstehen (durch die Analyse ihrer Texte mit der [Textanalyse-API](https://www.microsoft.com/cognitive-services/en-us/text-analytics-api)), sondern auch unerwünschte oder nicht jugendfreie Inhalte erkennen und mithilfe der [Maschinelles Sehen-API](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api) entsprechend agieren. Die Cognitive Services bieten zahlreiche Standardlösungen, für deren Nutzung keinerlei Machine Learning-Kenntnisse erforderlich sind.
+
+## <a name="a-planet-scale-social-experience"></a>Eine soziale Erfahrung im globalen Maßstab
+Es gibt ein letztes, aber wichtiges Thema, das angesprochen werden muss : **Skalierbarkeit**. Beim Entwerfen einer Architektur ist es wichtig, dass jede Komponente unabhängig skalierbar sein muss, entweder, weil wir mehr Daten verarbeiten müssen oder weil wir einen geografisch größeren Bereich abdecken möchten (oder beides!). Glücklicherweise gestaltet sich eine so komplexe Aufgabe mit DocumentDB ähnlich einfach wie der **schlüsselfertige** Bezug eines Hauses.
+
+DocumentDB unterstützt ohne Konfiguration [dynamische Partitionierung](https://azure.microsoft.com/blog/10-things-to-know-about-documentdb-partitioned-collections/) durch automatisches Erstellen von Partitionen auf der Grundlage eines angegebenen **Partitionsschlüssels** (der als eins der Attribute in Ihren Dokumenten definiert ist). Das Definieren des richtigen Partitionsschlüssels muss zur Entwurfszeit unter Berücksichtigung der verfügbaren [bewährten Methoden](documentdb-partition-data.md#designing-for-partitioning) erfolgen; im Fall von sozialen Anwendungen muss Ihre Partitionierungsstrategie an der Art Ihrer Abfragen (Lesevorgänge sollten möglichst innerhalb der gleichen Partition erfolgen) und Schreibvorgänge (Vermeidung von „Hot Spots“ durch Verteilen von Schreibvorgängen auf mehrere Partitionen) ausgerichtet sein. Einige Optionen dafür sind: Partitionen auf der Grundlage eines temporalen Schlüssels (Tag/Monat/Woche), nach Inhaltskategorie, nach geografischer Region, nach Benutzer; es hängt wirklich ganz davon ab, wie Sie die Daten abfragen und in Ihrer sozialen Anwendung anzeigen. 
+
+Ein erwähnenswerter interessanter Punkt ist, dass DocumentDB Ihre Abfragen (einschließlich [Aggregaten](https://azure.microsoft.com/blog/planet-scale-aggregates-with-azure-documentdb/)) transparent über alle Ihre Partitionen ausführt; bei wachsendem Datenbestand brauchen Sie keinerlei Logik hinzuzufügen.
+
+Im Lauf der Zeit werden der Datenverkehr und der Ressourcenverbrauch (in [RUs](documentdb-request-units.md) (Request Units, Anforderungseinheiten) gemessen) irgendwann zunehmen. Mit wachsender Benutzerbasis erfolgen mehr Lese- und Schreibvorgänge, und Ihre Benutzer werden mehr Inhalte erstellen und lesen; die Möglichkeit zum **Skalieren des Durchsatzes** ist essenziell. Das Erhöhen Ihrer RUs ist sehr einfach, es kann mit einigen Klicks im Azure-Portal oder durch [Ausgeben von Befehlen über die API](https://docs.microsoft.com/rest/api/documentdb/replace-an-offer) erfolgen.
+
+![Vertikales Skalieren und Definieren eines Partitionsschlüssels](./media/documentdb-social-media-apps/social-media-apps-scaling.png)
+
+Was geschieht, wenn sich die Situation positiv entwickelt, und Benutzer aus einer anderen Region, einem anderen Land oder von einem anderen Kontinent auf Ihre Plattform aufmerksam werden und beginnen, sie zu verwenden – welche Überraschung!
+
+Aber Moment mal... Sie stellen bald fest, dass die Benutzerfreundlichkeit Ihrer Plattform für sie nicht optimal ist; sie sind zu weit von Ihrer Betriebsregion entfernt, sodass unmögliche Wartezeiten auftreten, und Sie möchten diese Benutzer nicht verlieren. Wenn es doch nur eine einfache Möglichkeit zum **Erweitern Ihrer globalen Reichweite** gäbe... aber es gibt sie!
+
+Mithilfe von DocumentDB können Sie [Ihre Daten global replizieren](documentdb-portal-global-replication.md), das auch noch transparent und mit nur ein paar Mausklicks; und die Auswahl der verfügbaren Regionen erfolgt automatisch anhand des [Clientcodes](documentdb-developing-with-multiple-regions.md). Dies bedeutet zugleich, dass Sie mit [mehreren Failoverregionen](documentdb-regional-failovers.md) arbeiten können. 
+
+Wenn Sie Ihre Daten global replizieren, müssen Sie zugleich sicherstellen, dass dies allen Ihren Kunden zugute kommt. Wenn Sie ein Web-Front-End verwenden oder von mobilen Clients aus auf APIs zugreifen, können Sie [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) bereitstellen und Ihren Azure App Service in allen gewünschten Regionen klonen; verwenden Sie eine [Leistungskonfiguration](../app-service-web/web-sites-traffic-manager.md) zur Unterstützung Ihrer erweiterten globalen Abdeckung. Wenn Ihre Clients auf Ihr Frontend oder Ihre APIs zugreifen, werden sie zum nächstgelegenen App Service geroutet, der seinerseits eine Verbindung mit dem lokalen DocumentDB-Replikat herstellt.
+
+![Hinzufügen von globaler Abdeckung zu Ihrer sozialen Plattform](./media/documentdb-social-media-apps/social-media-apps-global-replicate.png)
 
 ## <a name="conclusion"></a>Zusammenfassung
 Dieser Artikel soll die alternative, vollständige Erstellung sozialer Netzwerke in Azure beleuchten. Diese bietet kostengünstige Dienste und hervorragende Ergebnisse, da sie die Verwendung einer mehrstufigen Speicherlösung und „Leiter“-Datenverteilung begünstigt.

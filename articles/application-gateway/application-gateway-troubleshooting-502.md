@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 12/16/2016
 ms.author: amsriva
 translationtype: Human Translation
-ms.sourcegitcommit: ce40a93372205a4b7c6b0c753ebf30c2b3d51d7a
-ms.openlocfilehash: 86cd149d351cc957577d213d77db732bd5e16658
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: cacc20da7945421f31ce69a9c0b34056c009d9e7
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -33,6 +34,9 @@ Nach dem Konfigurieren einer Azure Application Gateway-Instanz tritt bei Benutze
 * Virtuelle Back-End-Computer oder Instanzen der VM-Skalierungsgruppe reagieren nicht auf die standardmäßige Integritätsüberprüfung.
 * Benutzerdefinierte Integritätsüberprüfungen sind ungültig oder nicht korrekt konfiguriert.
 * Bei der Anforderung tritt ein Timeout auf, oder es liegen Verbindungsprobleme bei Benutzeranforderungen vor.
+
+> [!note]
+> Application Gateway behält den eingehenden Hostheader bei und sendet den gleichen Header an das Back-End. Wenn für das Back-End ein anderer Header erforderlich ist, funktioniert dies nicht. Wenn das Back-End mehrinstanzenfähig ist und End-to-End-SSL aktiviert ist, erwartet das Back-End den Servernamen in der SNI-Erweiterung. Application Gateway sendet derzeit in End-to-End-SSL-Szenarien keine SNI-Header in Back-End-Anforderungen, dies würde Probleme bei Tests und Datenpfaden verursachen.
 
 ## <a name="empty-backendaddresspool"></a>Leerer Back-End-Adresspool
 
@@ -150,10 +154,5 @@ Mit Application Gateway können Benutzer diese Einstellung über das BackendHttp
 ## <a name="next-steps"></a>Nächste Schritte
 
 Sollte sich das Problem mit den oben genannten Schritten nicht beheben lassen, erstellen Sie ein [Supportticket](https://azure.microsoft.com/support/options/).
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

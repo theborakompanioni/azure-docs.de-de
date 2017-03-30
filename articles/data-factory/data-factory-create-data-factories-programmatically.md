@@ -69,16 +69,18 @@ Sie können Azure Data Factorys mithilfe des Data Factory .NET SDK programmgeste
 5. Fügen Sie die folgenden **using** -Anweisungen zur Quelldatei (Program.cs) im Projekt hinzu.
 
     ```csharp
-    using System.Threading;
     using System.Configuration;
     using System.Collections.ObjectModel;
+    using System.Threading;
+    using System.Threading.Tasks;
 
+    using Microsoft.Azure;
     using Microsoft.Azure.Management.DataFactories;
     using Microsoft.Azure.Management.DataFactories.Models;
     using Microsoft.Azure.Management.DataFactories.Common.Models;
 
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
-    using Microsoft.Azure;
+
     ```
 6. Fügen Sie folgenden Code, mit dem eine Instanz der **DataPipelineManagementClient**-Klasse erstellt wird, der **Main**-Methode hinzu. Sie verwenden dieses Objekt, um eine Data Factory, einen verknüpften Dienst, Eingabe- und Ausgabedatasets sowie eine Pipeline zu erstellen. Außerdem dient das Objekt zum Überwachen von Datenslices eines Datasets zur Laufzeit.
 
@@ -87,10 +89,9 @@ Sie können Azure Data Factorys mithilfe des Data Factory .NET SDK programmgeste
     string resourceGroupName = "resourcegroupname";
     string dataFactoryName = "APITutorialFactorySP";
     
-    TokenCloudCredentials aadTokenCredentials =
-        new TokenCloudCredentials(
+    TokenCloudCredentials aadTokenCredentials = new TokenCloudCredentials(
             ConfigurationManager.AppSettings["SubscriptionId"],
-            GetAuthorizationHeader());
+        GetAuthorizationHeader().Result);
     
     Uri resourceManagerUri = new Uri(ConfigurationManager.AppSettings["ResourceManagerEndpoint"]);
     
@@ -111,7 +112,7 @@ Sie können Azure Data Factorys mithilfe des Data Factory .NET SDK programmgeste
             {
                 Name = dataFactoryName,
                 Location = "westus",
-                Properties = new DataFactoryProperties() { }
+                Properties = new DataFactoryProperties()
             }
         }
     );
@@ -250,7 +251,8 @@ Sie können Azure Data Factorys mithilfe des Data Factory .NET SDK programmgeste
                         Name = "BlobToBlob",
                         Inputs = new List<ActivityInput>()
                         {
-                            new ActivityInput() {
+                            new ActivityInput()
+                {
                                 Name = Dataset_Source
                             }
                         },
@@ -280,36 +282,17 @@ Sie können Azure Data Factorys mithilfe des Data Factory .NET SDK programmgeste
 11. Fügen Sie die folgende Hilfsmethode, die von der **Main**-Methode verwendet wird, der **Program**-Klasse hinzu. Diese Methode öffnet ein Dialogfeld, in dem Sie den **Benutzernamen** und das **Kennwort** bereitstellen können, mit denen Sie sich beim Azure-Portal anmelden.
 
     ```csharp
-    public static string GetAuthorizationHeader()
+    public static async Task<string> GetAuthorizationHeader()
     {
-        AuthenticationResult result = null;
-        var thread = new Thread(() =>
-        {
-            try
-            {
-                var context = new AuthenticationContext(ConfigurationManager.AppSettings["ActiveDirectoryEndpoint"] + ConfigurationManager.AppSettings["ActiveDirectoryTenantId"]);
-
-                result = context.AcquireToken(
-                    resource: ConfigurationManager.AppSettings["WindowsManagementUri"],
-                    clientId: ConfigurationManager.AppSettings["AdfClientId"],
-                    redirectUri: new Uri(ConfigurationManager.AppSettings["RedirectUri"]),
-                    promptBehavior: PromptBehavior.Always);
-            }
-            catch (Exception threadEx)
-            {
-                Console.WriteLine(threadEx.Message);
-            }
-        });
-
-        thread.SetApartmentState(ApartmentState.STA);
-        thread.Name = "AcquireTokenThread";
-        thread.Start();
-        thread.Join();
+        var context = new AuthenticationContext(ConfigurationManager.AppSettings["ActiveDirectoryEndpoint"] + ConfigurationManager.AppSettings["ActiveDirectoryTenantId"]);
+        AuthenticationResult result = await context.AcquireTokenAsync(
+            resource: ConfigurationManager.AppSettings["WindowsManagementUri"],
+            clientId: ConfigurationManager.AppSettings["AdfClientId"],
+            redirectUri: new Uri(ConfigurationManager.AppSettings["RedirectUri"]),
+            promptBehavior: PromptBehavior.Always);
 
         if (result != null)
-        {
             return result.AccessToken;
-        }
 
         throw new InvalidOperationException("Failed to acquire token");
     }
@@ -359,14 +342,13 @@ Sie können Azure Data Factorys mithilfe des Data Factory .NET SDK programmgeste
     Console.ReadKey();
     
     var datasliceRunListResponse = client.DataSliceRuns.List(
-            resourceGroupName,
-            dataFactoryName,
-            Dataset_Destination,
-            new DataSliceRunListParameters()
-            {
-                DataSliceStartTime = PipelineActivePeriodStartTime.ConvertToISO8601DateTimeString()
-            }
-        );
+        resourceGroupName,
+        dataFactoryName,
+        Dataset_Destination,
+        new DataSliceRunListParameters()
+        {
+            DataSliceStartTime = PipelineActivePeriodStartTime.ConvertToISO8601DateTimeString()
+        });
     
     foreach (DataSliceRun run in datasliceRunListResponse.DataSliceRuns)
     {
@@ -409,12 +391,18 @@ Der obige Beispielcode in der exemplarischen Vorgehensweise startet ein Dialogfe
 Erstellen Sie die GetAuthorizationHeaderNoPopup-Methode.
 
 ```csharp
-public static string GetAuthorizationHeaderNoPopup()
+public static async Task<string> GetAuthorizationHeaderNoPopup()
 {
     var authority = new Uri(new Uri("https://login.windows.net"), ConfigurationManager.AppSettings["ActiveDirectoryTenantId"]);
     var context = new AuthenticationContext(authority.AbsoluteUri);
-    var credential = new ClientCredential(ConfigurationManager.AppSettings["AdfClientId"], ConfigurationManager.AppSettings["AdfClientSecret"]);
-    AuthenticationResult result = context.AcquireTokenAsync(ConfigurationManager.AppSettings["WindowsManagementUri"], credential).Result;
+    var credential = new ClientCredential(
+        ConfigurationManager.AppSettings["AdfClientId"],
+    ConfigurationManager.AppSettings["AdfClientSecret"]);
+    
+    AuthenticationResult result = await context.AcquireTokenAsync(
+        ConfigurationManager.AppSettings["WindowsManagementUri"],
+    credential);
+
     if (result != null)
         return result.AccessToken;
 
@@ -428,7 +416,7 @@ Ersetzen Sie in der **Main**-Funktion den Aufruf **GetAuthorizationHeader** durc
 TokenCloudCredentials aadTokenCredentials =
     new TokenCloudCredentials(
     ConfigurationManager.AppSettings["SubscriptionId"],
-    GetAuthorizationHeaderNoPopup());
+    GetAuthorizationHeaderNoPopup().Result);
 ```
 
 Hier wird gezeigt, wie Sie die Active Directory-Anwendung und den Dienstprinzipal erstellen und ihn anschließend der Rolle „Mitwirkender von Data Factory“ zuweisen:

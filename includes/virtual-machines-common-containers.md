@@ -146,8 +146,8 @@ Docker in Microsoft Azure:
 
 * [Docker-VM-Erweiterung für Linux auf Azure](../articles/virtual-machines/virtual-machines-linux-dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Benutzerhandbuch für die Azure-Docker-VM-Erweiterung](https://github.com/Azure/azure-docker-extension/blob/master/README.md)
-* [Verwenden der Docker-VM-Erweiterung aus der Azure-Befehlszeilenschnittstelle (Azure-CLI)](../articles/virtual-machines/virtual-machines-linux-classic-cli-use-docker.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
-* [Verwenden der Docker-VM-Erweiterung über das Azure-Portal](../articles/virtual-machines/virtual-machines-linux-classic-portal-use-docker.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+* [Verwenden der Docker-VM-Erweiterung aus der Azure-Befehlszeilenschnittstelle (Azure-CLI)](../articles/virtual-machines/linux/classic/cli-use-docker.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+* [Verwenden der Docker-VM-Erweiterung über das Azure-Portal](../articles/virtual-machines/linux/classic/portal-use-docker.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 * [Verwenden von "docker-machine" auf Azure](../articles/virtual-machines/virtual-machines-linux-docker-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Verwenden von Docker mit Swarm auf Azure](../articles/virtual-machines/virtual-machines-linux-docker-swarm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Erste Schritte mit Docker und Compose auf Azure](../articles/virtual-machines/virtual-machines-linux-docker-compose-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -193,8 +193,3 @@ Informieren Sie sich über [Docker](https://www.docker.com) und [Windows-Contain
 [microservices]: http://martinfowler.com/articles/microservices.html
 [microservice]: http://martinfowler.com/articles/microservices.html
 <!--Image references-->
-
-
-<!--HONumber=Feb17_HO3-->
-
-

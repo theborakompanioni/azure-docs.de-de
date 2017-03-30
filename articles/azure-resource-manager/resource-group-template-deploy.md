@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/10/2017
+ms.date: 03/15/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 5b8b293b5b37365088a3df55581be7b7bf76691c
-ms.openlocfilehash: 7bc3421e00215ca4629ea11811c98e581377b24a
-ms.lasthandoff: 01/18/2017
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: ea42f634fabbbaf13f0d97c71a9cb8d1d8102dea
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -32,103 +32,64 @@ ms.lasthandoff: 01/18/2017
 
 In diesem Thema wird erläutert, wie Ihre Anwendung mit Azure PowerShell und Resource Manager-Vorlagen in Azure bereitgestellt wird. Ihre Vorlage kann entweder eine lokale Datei oder eine externe Datei sein, die über einen URI verfügbar ist. Wenn sich Ihre Vorlage in einem Speicherkonto befindet, können Sie den Zugriffs auf die Vorlage beschränken und ein SAS-Token (Shared Access Signature) während der Bereitstellung angeben.
 
-> [!TIP]
-> Hilfe zum Beheben eines Fehlers während der Bereitstellung finden Sie unter:
-> 
-> * [Anzeigen von Bereitstellungsvorgängen](resource-manager-deployment-operations.md). Erfahren Sie, wie Sie Informationen zum Beheben von Fehlern abrufen.
-> * [Beheben von häufigen Fehlern beim Bereitstellen von Ressourcen in Azure mit Azure Resource Manager](resource-manager-common-deployment-errors.md). Hier erfahren Sie, wie Sie häufig auftretende Bereitstellungsfehler beheben.
-> 
-> 
+## <a name="deploy"></a>Bereitstellen
+* Verwenden Sie die folgenden Befehle beim Bereitstellen einer lokalen Vorlage mit Inlineparametern, um schnell mit der Bereitstellung zu beginnen:
 
-## <a name="quick-steps-to-deployment"></a>Schnelle Schritte zur Bereitstellung
-Verwenden Sie die folgenden Befehle, um schnell mit der Bereitstellung zu beginnen:
+  ```powershell
+  Login-AzureRmAccount
+  Set-AzureRmContext -SubscriptionID {your-subscription-ID}
+  New-AzureRmResourceGroup -Name ExampleGroup -Location "South Central US"
+  New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile c:\MyTemplates\storage.json -storageNamePrefix contoso -storageSKU Standard_GRS
+  ```
 
-```powershell
-New-AzureRmResourceGroup -Name ExampleResourceGroup -Location "West US"
-New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile c:\MyTemplates\example.json -TemplateParameterFile c:\MyTemplates\example.params.json
-```
+  Die Bereitstellung kann einige Minuten dauern. Wenn sie abgeschlossen ist, wird eine Nachricht mit dem Ergebnis angezeigt:
 
-Diese Befehle dienen zum Erstellen einer Ressourcengruppe und Bereitstellen einer Vorlage für diese Ressourcengruppe. Die Vorlagen- und Parameterdatei sind lokale Dateien. Wenn das für Sie funktioniert, haben Sie alles, was Sie zum Bereitstellen von Ressourcen brauchen. Es stehen Ihnen allerdings mehr Optionen für das Angeben der bereitzustellenden Ressourcen zur Verfügung. Im restlichen Artikel werden alle Optionen beschrieben, die Ihnen während der Bereitstellung zur Verfügung stehen. 
+  ```powershell
+  ProvisioningState       : Succeeded
+  ```
+
+* Das `Set-AzureRmContext`-Cmdlet wird nur benötigt, wenn Sie ein anderes Abonnement als Ihr Standardabonnement verwenden möchten. Verwenden Sie Folgendes, um alle Abonnements und die dazugehörigen IDs anzuzeigen:
+
+  ```powershell
+  Get-AzureRmSubscription
+  ```
+
+* Verwenden Sie zum Bereitstellen einer externen Vorlage den **TemplateUri**-Parameter:
+
+  ```powershell
+  New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateUri https://raw.githubusercontent.com/exampleuser/MyTemplates/master/storage.json -storageNamePrefix contoso -storageSKU Standard_GRS
+  ```
+
+* Um die Parameterwerte in einer Datei zu übergeben, verwenden Sie den **TemplateParameterFile**-Parameter:
+
+  ```powershell
+  New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile c:\MyTemplates\storage.json -TemplateParameterFile c:\MyTemplates\storage.parameters.json
+  ```
+
+  Die Parameterdatei muss im folgenden Format vorliegen:
+
+   ```json
+   {
+     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+     "contentVersion": "1.0.0.0",
+     "parameters": {
+        "storageNamePrefix": {
+            "value": "contoso"
+        },
+        "storageSKU": {
+            "value": "Standard_GRS"
+        }
+     }
+   }
+   ```
 
 [!INCLUDE [resource-manager-deployments](../../includes/resource-manager-deployments.md)]
 
-## <a name="deploy"></a>Bereitstellen
-1. Melden Sie sich beim Azure-Konto an.
+Nutzen Sie zur Verwendung des vollständigen Modus den **Mode**-Parameter:
 
-   ```powershell
-   Login-AzureRmAccount
-   ```
-
-    Es wird eine Zusammenfassung Ihres Kontos zurückgegeben.
-    
-   ```powershell
-   Environment           : AzureCloud
-   Account               : someone@example.com
-   TenantId              : {guid}
-   SubscriptionId        : {guid}
-   SubscriptionName      : Example Subscription
-   CurrentStorageAccount :
-   ```
-
-2. Wenn Sie über mehrere Abonnements verfügen, geben Sie die Abonnement-ID ein, die Sie mit dem Befehl **Set-AzureRmContext** für die Bereitstellung verwenden möchten. 
-   
-   ```powershell
-   Set-AzureRmContext -SubscriptionID <YourSubscriptionId>
-   ```
-3. Wenn Sie eine Vorlage bereitstellen, müssen Sie eine Ressourcengruppe angeben, die die bereitgestellten Ressourcen enthält. Wenn es bereits eine Ressourcengruppe gibt, in der die Bereitstellung erfolgen soll, können Sie diesen Schritt überspringen und diese Ressourcengruppe nutzen. 
-   
-     Geben Sie zum Erstellen einer Ressourcengruppe einen Namen und Speicherort für diese an. Sie geben einen Standort für die Ressourcengruppe an, da diese Metadaten zu den Ressourcen speichert. Aus Compliance-Gründen sollten Sie angeben, wo diese Metadaten gespeichert werden. Im Allgemeinen wird die Angabe eines Standorts empfohlen, an dem sich der Großteil Ihrer Ressourcen befindet. Durch die Verwendung des gleichen Standorts können Sie die Vorlage vereinfachen.
-   
-   ```powershell
-   New-AzureRmResourceGroup -Name ExampleResourceGroup -Location "West US"
-   ```
-   
-     Es wird eine Zusammenfassung der neuen Ressourcengruppe zurückgegeben.
-4. Vor dem Ausführen der Bereitstellung können Sie Ihre Bereitstellungseinstellungen überprüfen. Das Cmdlet **Test-AzureRmResourceGroupDeployment** ermöglicht Ihnen, Probleme zu finden, bevor tatsächlich Ressourcen erstellt werden. Im folgenden Beispiel wird veranschaulicht, wie eine Bereitstellung überprüft wird.
-   
-   ```powershell
-   Test-AzureRmResourceGroupDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile <PathToTemplate>
-   ```
-5. Führen Sie zum Bereitstellen von Ressourcen in der Ressourcengruppe den Befehl **New-AzureRmResourceGroupDeployment** aus, und geben Sie die erforderlichen Parameter ein. Die Parameter enthalten den Namen der Bereitstellung, den Namen der Ressourcengruppe, den Pfad oder die URL der Vorlage und alle anderen für Ihr Szenario erforderlichen Parameter. Wenn der Parameter **Mode** nicht angegeben wurde, wird der Standardwert **Incremental** verwendet. Legen Sie zum Ausführen einer vollständigen Bereitstellung **Mode** auf **Complete** fest. Seien Sie bei Wahl des Modus „Complete“ vorsichtig, da Sie versehentlich Ressourcen löschen können, die nicht in Ihrer Vorlage enthalten sind.
-   
-     Verwenden Sie zum Bereitstellen einer lokalen Vorlage den **TemplateFile**-Parameter:
-   
-   ```powershell
-   New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile c:\MyTemplates\example.json
-   ```
-   
-     Verwenden Sie zum Bereitstellen einer externen Vorlage den **TemplateUri**-Parameter:
-   
-   ```powershell
-   New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateUri https://raw.githubusercontent.com/exampleuser/MyTemplates/master/example.json
-   ```
-   
-     Die vorherigen beiden Beispiele enthalten keine Parameterwerte. Im Abschnitt [Parameter](#parameters) erfahren Sie mehr über die Optionen zum Übergeben von Parameterwerten. Vorerst werden Sie aufgefordert, Parameterwerte mit der folgenden Syntax anzugeben:
-
-   ```powershell  
-   cmdlet New-AzureRmResourceGroupDeployment at command pipeline position 1
-   Supply values for the following parameters:
-   (Type !? for Help.)
-   firstParameter: <type here>
-   ```
-     
-     Nachdem die Ressourcen bereitgestellt wurden, wird eine Zusammenfassung der Bereitstellung angezeigt. Die Zusammenfassung enthält die Angabe **ProvisioningState**, die bestimmt, ob die Bereitstellung erfolgreich war.
-
-   ```powershell   
-   DeploymentName    : ExampleDeployment
-   ResourceGroupName : ExampleResourceGroup
-   ProvisioningState : Succeeded
-   Timestamp         : 4/14/2015 7:00:27 PM
-   Mode              : Incremental
-   ```
-      
-6. Wenn Sie zusätzliche Informationen zur Bereitstellung protokollieren möchten, die Ihnen möglicherweise bei der Behebung von Bereitstellungsfehlern helfen können, verwenden Sie den Parameter **DeploymentDebugLogLevel**. Sie können angeben, dass der Anforderungsinhalt, der Antwortinhalt oder beide beim Bereitstellungsvorgang protokolliert werden.
-   
-   ```powershell
-   New-AzureRmResourceGroupDeployment -Name ExampleDeployment -DeploymentDebugLogLevel All -ResourceGroupName ExampleResourceGroup -TemplateFile <PathOrLinkToTemplate>
-   ```
-   
-     Weitere Informationen zur Verwendung dieses Debuginhalts zum Beheben von Bereitstellungsproblemen finden Sie unter [Anzeigen von Bereitstellungsvorgängen](resource-manager-deployment-operations.md).
+```powershell
+New-AzureRmResourceGroupDeployment -Mode Complete -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile c:\MyTemplates\storage.json 
+```
 
 ## <a name="deploy-private-template-with-sas-token"></a>Bereitstellen einer privaten Vorlage mit SAS-Token
 Sie können Ihre Vorlagen einem Speicherkonto hinzufügen und sie während der Bereitstellung mit einem SAS-Token verknüpfen.
@@ -139,90 +100,164 @@ Sie können Ihre Vorlagen einem Speicherkonto hinzufügen und sie während der B
 > 
 
 ### <a name="add-private-template-to-storage-account"></a>Hinzufügen einer privaten Vorlage zum Speicherkonto
-Führen Sie die folgenden Schritte aus, um ein Speicherkonto für Vorlagen einzurichten:
-
-1. Erstellen Sie eine Ressourcengruppe.
+Mit dem folgenden Beispiel wird ein privater Speicherkontocontainer eingerichtet und eine Vorlage hochgeladen:
    
-   ```powershell
-   New-AzureRmResourceGroup -Name ManageGroup -Location "West US"
-   ```
-2. Erstellen Sie ein Speicherkonto. Der Name des Speicherkontos muss innerhalb von Azure eindeutig sein. Geben Sie deshalb Ihren eigenen Namen für das Konto an.
-   
-   ```powershell
-   New-AzureRmStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates -Type Standard_LRS -Location "West US"
-   ```
-3. Legen Sie das aktuelle Speicherkonto fest.
-   
-   ```powershell
-   Set-AzureRmCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates
-   ```
-4. Erstellen Sie einen Container. Die Berechtigung ist auf **Off** festgelegt, was bedeutet, dass nur der Besitzer Zugriff auf den Container hat.
-   
-   ```powershell
-   New-AzureStorageContainer -Name templates -Permission Off
-   ```
-5. Fügen Sie Ihre Vorlage dem Container hinzu.
-   
-   ```powershell
-   Set-AzureStorageBlobContent -Container templates -File c:\Azure\Templates\azuredeploy.json
-   ```
+```powershell
+New-AzureRmResourceGroup -Name ManageGroup -Location "South Central US"
+New-AzureRmStorageAccount -ResourceGroupName ManageGroup -Name {your-unique-name} -Type Standard_LRS -Location "West US"
+Set-AzureRmCurrentStorageAccount -ResourceGroupName ManageGroup -Name {your-unique-name}
+New-AzureStorageContainer -Name templates -Permission Off
+Set-AzureStorageBlobContent -Container templates -File c:\MyTemplates\storage.json
+```
 
 ### <a name="provide-sas-token-during-deployment"></a>Bereitstellen eines SAS-Tokens während der Bereitstellung
-Rufen Sie zum Bereitstellen einer privaten Vorlage in einem Speicherkonto ein SAS-Token ab, und fügen Sie es dem URI für die Vorlage hinzu.
-
-1. Wenn Sie das aktuelle Speicherkonto geändert haben, legen Sie das aktuelle Speicherkonto auf dasjenige mit Ihren Vorlagen fest.
+Generieren Sie zum Bereitstellen einer privaten Vorlage in einem Speicherkonto ein SAS-Token, und fügen Sie es dem URI für die Vorlage hinzu. Legen Sie die Ablaufzeit so fest, dass ausreichend Zeit für die Bereitstellung bleibt.
    
-   ```powershell
-   Set-AzureRmCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates
-   ```
-2. Erstellen Sie ein SAS-Token mit Leseberechtigungen und Ablaufzeit, um den Zugriff einzuschränken. Rufen Sie den vollständigen URI der Vorlage einschließlich SAS-Token ab.
-   
-   ```powershell
-   $templateuri = New-AzureStorageBlobSASToken -Container templates -Blob azuredeploy.json -Permission r -ExpiryTime (Get-Date).AddHours(2.0) -FullUri
-   ```
-3. Stellen Sie die Vorlage durch Angabe des URI bereit, der das SAS-Token enthält.
-   
-   ```powershell
-   New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleResourceGroup -TemplateUri $templateuri
-   ```
+```powershell
+Set-AzureRmCurrentStorageAccount -ResourceGroupName ManageGroup -Name {your-unique-name}
+$templateuri = New-AzureStorageBlobSASToken -Container templates -Blob storage.json -Permission r -ExpiryTime (Get-Date).AddHours(2.0) -FullUri
+New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateUri $templateuri
+```
 
 Ein Beispiel der Verwendung eines SAS-Tokens mit verknüpften Vorlagen finden Sie unter [Verwenden von verknüpften Vorlagen mit Azure Resource Manager](resource-group-linked-templates.md).
 
 ## <a name="parameters"></a>Parameter
-
-Sie haben die folgenden Möglichkeiten zum Angeben der Parameterwerte: 
    
-- Inlineparameter. Beziehen Sie Namen einzelner Parameter in das Cmdlet ein (z.B. **-MeinParametername**.)
-
-   ```powershell   
-   New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile <PathToTemplate> -myParameterName "parameterValue"
-   ```
-- Parameterobjekt. Beziehen Sie den **-TemplateParameterObject**-Parameter ein.
-
-   ```powershell   
-   $parameters = @{"<ParameterName>"="<Parameter Value>"}
-   New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile <PathToTemplate> -TemplateParameterObject $parameters
-   ```
-- Lokale Parameterdatei. Beziehen Sie den **-TemplateParameterFile**-Parameter ein.
-
-   ```powershell   
-   New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile <PathToTemplate> -TemplateParameterFile c:\MyTemplates\example.params.json
-   ```
-- Externe Parameterdatei. Beziehen Sie den **-TemplateParameterUri**-Parameter ein.
-
-   ```powershell   
-   New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateUri <LinkToTemplate> -TemplateParameterUri https://raw.githubusercontent.com/exampleuser/MyTemplates/master/example.params.json
-   ```
-      
-[!INCLUDE [resource-manager-parameter-file](../../includes/resource-manager-parameter-file.md)] 
-
 Sollte Ihre Vorlage einen Parameter enthalten, der den gleichen Namen besitzt wie einer der Parameter des PowerShell-Befehls, werden Sie zur Eingabe eines Werts für diesen Parameter aufgefordert. Azure PowerShell zeigt den Parameter aus Ihrer Vorlage mit dem Postfix **FromTemplate** an. Beispiel: Ein Parameter namens **ResourceGroupName** in Ihrer Vorlage verursacht einen Konflikt mit dem Parameter **ResourceGroupName** im Cmdlet [New-AzureRmResourceGroupDeployment](https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.3.0/new-azurermresourcegroupdeployment). Sie werden zur Eingabe eines Werts für **ResourceGroupNameFromTemplate** aufgefordert. Im Allgemeinen sollten Sie diese Verwirrung vermeiden, indem Sie Parametern nicht dieselben Namen wie Parametern für Bereitstellungsvorgänge geben.
-
-## <a name="parameter-precedence"></a>Parameterrangfolge
 
 Sie können Inlineparameter und eine lokale Parameterdatei im selben Bereitstellungsvorgang verwenden. Sie können beispielsweise einige Werte in der lokalen Parameterdatei angeben und weitere Werte während der Bereitstellung inline hinzufügen. Wenn Sie Werte für einen Parameter sowohl in der lokalen Parameterdatei als auch inline bereitstellen, haben die Inlinewerte Vorrang.
 
 Bei Verwendung einer externen Parameterdatei können Sie jedoch keine anderen Werte (weder inline noch aus einer lokalen Datei) übergeben. Wenn Sie eine Parameterdatei im Parameter **TemplateParameterUri** angeben, werden alle Inlineparameter ignoriert. Stellen Sie alle Parameterwerte in der externen Datei bereit. Wenn Ihre Vorlage einen vertraulichen Wert enthält, der nicht in die Parameterdatei aufgenommen werden kann, fügen Sie diesen Wert einem Schlüsseltresor hinzu. Alternativ können Sie alle Parameterwerte dynamisch inline bereitstellen.
+
+## <a name="debug"></a>Debuggen
+
+Wenn Sie zusätzliche Informationen zur Bereitstellung protokollieren möchten, die Ihnen möglicherweise bei der Behebung von Bereitstellungsfehlern helfen können, verwenden Sie den Parameter **DeploymentDebugLogLevel**. Sie können angeben, dass der Anforderungsinhalt, der Antwortinhalt oder beide beim Bereitstellungsvorgang protokolliert werden.
+   
+```powershell
+New-AzureRmResourceGroupDeployment -Name ExampleDeployment -DeploymentDebugLogLevel All -ResourceGroupName ExampleGroup -TemplateFile storage.json
+```
+
+Verwenden Sie zum Abrufen der Details zu einem fehlerhaften Bereitstellungsvorgang Folgendes:
+
+```powershell
+(Get-AzureRmResourceGroupDeploymentOperation -DeploymentName ExampleDeployment -ResourceGroupName ExampleGroup).Properties | Where-Object ProvisioningState -eq Failed
+```
+
+Tipps zum Beheben gängiger Azure-Bereitstellungsfehler finden Sie unter [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](resource-manager-common-deployment-errors.md).
+
+## <a name="complete-deployment-script"></a>Vollständiges Bereitstellungsskript
+
+Im folgenden Beispiel wird das PowerShell-Skript für die Bereitstellung einer Vorlage gezeigt, die über die Funktion [Vorlage exportieren](resource-manager-export-template.md) generiert wird:
+
+```powershell
+<#
+ .SYNOPSIS
+    Deploys a template to Azure
+
+ .DESCRIPTION
+    Deploys an Azure Resource Manager template
+
+ .PARAMETER subscriptionId
+    The subscription id where the template will be deployed.
+
+ .PARAMETER resourceGroupName
+    The resource group where the template will be deployed. Can be the name of an existing or a new resource group.
+
+ .PARAMETER resourceGroupLocation
+    Optional, a resource group location. If specified, will try to create a new resource group in this location. If not specified, assumes resource group is existing.
+
+ .PARAMETER deploymentName
+    The deployment name.
+
+ .PARAMETER templateFilePath
+    Optional, path to the template file. Defaults to template.json.
+
+ .PARAMETER parametersFilePath
+    Optional, path to the parameters file. Defaults to parameters.json. If file is not found, will prompt for parameter values based on template.
+#>
+
+param(
+ [Parameter(Mandatory=$True)]
+ [string]
+ $subscriptionId,
+
+ [Parameter(Mandatory=$True)]
+ [string]
+ $resourceGroupName,
+
+ [string]
+ $resourceGroupLocation,
+
+ [Parameter(Mandatory=$True)]
+ [string]
+ $deploymentName,
+
+ [string]
+ $templateFilePath = "template.json",
+
+ [string]
+ $parametersFilePath = "parameters.json"
+)
+
+<#
+.SYNOPSIS
+    Registers RPs
+#>
+Function RegisterRP {
+    Param(
+        [string]$ResourceProviderNamespace
+    )
+
+    Write-Host "Registering resource provider '$ResourceProviderNamespace'";
+    Register-AzureRmResourceProvider -ProviderNamespace $ResourceProviderNamespace;
+}
+
+#******************************************************************************
+# Script body
+# Execution begins here
+#******************************************************************************
+$ErrorActionPreference = "Stop"
+
+# sign in
+Write-Host "Logging in...";
+Login-AzureRmAccount;
+
+# select subscription
+Write-Host "Selecting subscription '$subscriptionId'";
+Select-AzureRmSubscription -SubscriptionID $subscriptionId;
+
+# Register RPs
+$resourceProviders = @();
+if($resourceProviders.length) {
+    Write-Host "Registering resource providers"
+    foreach($resourceProvider in $resourceProviders) {
+        RegisterRP($resourceProvider);
+    }
+}
+
+#Create or check for existing resource group
+$resourceGroup = Get-AzureRmResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue
+if(!$resourceGroup)
+{
+    Write-Host "Resource group '$resourceGroupName' does not exist. To create a new resource group, please enter a location.";
+    if(!$resourceGroupLocation) {
+        $resourceGroupLocation = Read-Host "resourceGroupLocation";
+    }
+    Write-Host "Creating resource group '$resourceGroupName' in location '$resourceGroupLocation'";
+    New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation
+}
+else{
+    Write-Host "Using existing resource group '$resourceGroupName'";
+}
+
+# Start the deployment
+Write-Host "Starting deployment...";
+if(Test-Path $parametersFilePath) {
+    New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile $templateFilePath -TemplateParameterFile $parametersFilePath;
+} else {
+    New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile $templateFilePath;
+}
+``` 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Ein Beispiel für die Bereitstellung von Ressourcen über die .NET-Clientbibliothek finden Sie unter [Bereitstellen von Ressourcen mithilfe von .NET-Bibliotheken und einer Vorlage](../virtual-machines/virtual-machines-windows-csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

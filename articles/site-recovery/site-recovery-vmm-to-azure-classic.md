@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 02/06/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 67b4861ac564565b2a36932ae15141a1e1f56035
-ms.openlocfilehash: d315c5ed186c24236c860df1ad1b79d55c9a4d57
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: e2e09cdabd323575c0da6797c9eb2564572629f1
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -219,7 +219,7 @@ Nachdem Sie den VMM-Server registriert haben, können Sie Schutzeinstellungen f�
 4. Wählen Sie unter **Speicherkonto** das Azure-Speicherkonto aus, das Sie für die Replikation verwenden.
 5. Legen Sie für **Gespeicherte Daten verschlüsseln** die Option **Aus** fest. Diese Einstellung gibt an, dass die Daten während der Replikation zwischen dem lokalen Standort und Azure verschlüsselt werden sollen.
 6. Lassen Sie unter **Kopierhäufigkeit** die Standardeinstellung stehen. Dieser Wert gibt an, wie oft die Daten zwischen dem Quell- und dem Zielspeicherort synchronisiert werden sollen.
-7. Lassen Sie unter **Wiederherstellungspunkte beibehalten für**die Standardeinstellung stehen. Wenn die Standardeinstellung&0; (Null) aktiviert ist, wird nur der letzte Wiederherstellungspunkt für einen primären virtuellen Computer auf einem Replikathostserver gespeichert.
+7. Lassen Sie unter **Wiederherstellungspunkte beibehalten für**die Standardeinstellung stehen. Wenn die Standardeinstellung 0 (Null) aktiviert ist, wird nur der letzte Wiederherstellungspunkt für einen primären virtuellen Computer auf einem Replikathostserver gespeichert.
 8. Lassen Sie unter **Häufigkeit von anwendungskonsistenten Momentaufnahmen**die Standardeinstellung stehen. Dieser Wert gibt an, wie oft Momentaufnahmen erstellt werden. Momentaufnahmen verwenden VSS (Volume Shadow Copy Service, Volumenschattenkopie-Dienst), um sicherzustellen, dass Anwendungen zum Zeitpunkt der Momentaufnahme konsistent sind.  Wenn Sie einen Wert festlegen möchten, stellen Sie sicher, dass er geringer als die Anzahl der konfigurierten zusätzlichen Wiederherstellungspunkte ist.
 9. Geben Sie unter **Startzeit für Replikation**an, wann die erste Datenreplikation an Azure starten sollte. Die Zeitzone auf dem Hyper-V-Hostserver wird verwendet. Es wird empfohlen, die erste Replikation außerhalb der Spitzenzeiten zu planen.
 
@@ -274,7 +274,7 @@ Nach der korrekten Konfiguration von Servern, Clouds und Netzwerken können Sie 
     ![Überprüfen des virtuellen Computers](./media/site-recovery-vmm-to-azure-classic/vm-properties.png)
 2. Auf der Registerkarte **Konfigurieren** unter den Eigenschaften des virtuellen Computers können die unten angegebenen Netzwerkeigenschaften geändert werden.
 
-* **Anzahl von Netzwerkadaptern auf dem virtuellen Zielcomputer:** Die Anzahl von Netzwerkadaptern hängt von der Größe ab, die Sie für den virtuellen Zielcomputer angeben. Überprüfen Sie in den [Spezifikationen für virtuelle Computer](../virtual-machines/virtual-machines-linux-sizes.md#size-tables) , wie viele Adapter von virtuellen Computern einer bestimmten Größe unterstützt werden. Wenn Sie die Größe für einen virtuellen Computer ändern und die Einstellungen speichern, wird die Anzahl von Netzwerkadaptern beim nächsten Öffnen der Seite **Konfigurieren** geändert. Die Anzahl der Netzwerkadapter der virtuellen Zielmaschinen entspricht der Mindestzahl an Netzwerkadaptern auf virtuellen Quellmaschinen und der Höchstzahl an Netzwerkadaptern, die von der ausgewählten Größe der virtuellen Maschine unterstützt werden:
+* **Anzahl von Netzwerkadaptern auf dem virtuellen Zielcomputer:** Die Anzahl von Netzwerkadaptern hängt von der Größe ab, die Sie für den virtuellen Zielcomputer angeben. Überprüfen Sie in den [Spezifikationen für virtuelle Computer](../virtual-machines/virtual-machines-linux-sizes.md) , wie viele Adapter von virtuellen Computern einer bestimmten Größe unterstützt werden. Wenn Sie die Größe für einen virtuellen Computer ändern und die Einstellungen speichern, wird die Anzahl von Netzwerkadaptern beim nächsten Öffnen der Seite **Konfigurieren** geändert. Die Anzahl der Netzwerkadapter der virtuellen Zielmaschinen entspricht der Mindestzahl an Netzwerkadaptern auf virtuellen Quellmaschinen und der Höchstzahl an Netzwerkadaptern, die von der ausgewählten Größe der virtuellen Maschine unterstützt werden:
 
   * Wenn die Anzahl der Netzwerkkarten des Quellcomputers maximal der Anzahl der Netzwerkkarten entspricht, die für die Größe des Zielcomputers zulässig ist, hat der Zielcomputer die gleiche Anzahl von Netzwerkkarten wie der Quellcomputer.
   * Wenn die Anzahl der Netzwerkadapter für den virtuellen Quellcomputer die maximal zulässige Anzahl für die Größe des Zielcomputers übersteigt, wird die Anzahl verwendet, die maximal für die Größe des Zielcomputers zulässig ist.

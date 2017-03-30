@@ -12,12 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2017
+ms.date: 03/17/2017
 ms.author: johnkem; magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 5675a65e3b48e39f44dc320b7b87910ab759b764
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: be27a3541caa1620af432dcff438f70cb9b1074b
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -52,7 +52,7 @@ Diagnoseprotokolle für computefremde Ressourcen werden mithilfe von Diagnoseein
 * Wohin Diagnoseprotokolle gesendet werden sollen (Speicherkonto, Event Hubs und/oder OMS Log Analytics)
 * Welche Protokollkategorien gesendet werden sollen
 * Wie lange die einzelnen Protokollkategorien in einem Speicherkonto beibehalten werden sollen
-    - Wenn für die Beibehaltungsdauer&0; Tage festgelegt sind, bedeutet dies, dass Protokolle unbegrenzt beibehalten werden. Andernfalls kann als Wert die Anzahl von Tagen (1 bis 2.147.483.647) festgelegt werden.
+    - Wenn für die Beibehaltungsdauer 0 Tage festgelegt sind, bedeutet dies, dass Protokolle unbegrenzt beibehalten werden. Andernfalls kann als Wert die Anzahl von Tagen (1 bis 2.147.483.647) festgelegt werden.
     - Wenn Aufbewahrungsrichtlinien festgelegt werden, aber das Speichern von Protokollen in einem Speicherkonto deaktiviert ist (etwa, wenn nur die Event Hubs- oder die OMS-Option aktiviert ist), werden die Aufbewahrungsrichtlinien ignoriert.
     - Aufbewahrungsrichtlinien werden pro Tag angewendet, sodass Protokolle am Ende eines Tages (UTC) ab dem Tag, der nun außerhalb der Aufbewahrungsrichtlinie liegt, gelöscht werden. Beispiel: Wenn Sie eine Aufbewahrungsrichtlinie für einen Tag verwenden, werden heute am Anfang des Tages die Protokolle von vorgestern gelöscht.
 
@@ -199,8 +199,10 @@ Das Schema für Diagnoseprotokolle variiert abhängig von der Ressource und der 
 ## <a name="supported-log-categories-per-resource-type"></a>Unterstützte Protokollkategorien pro Ressourcentyp
 |Ressourcentyp|Kategorie|Anzeigename der Kategorie|
 |---|---|---|
+|Microsoft.ApiManagement/service|GatewayLogs|Protokolle im Zusammenhang mit dem ApiManagement-Gateway|
 |Microsoft.Automation/automationAccounts|JobLogs|Auftragsprotokolle|
 |Microsoft.Automation/automationAccounts|JobStreams|Auftragsdatenströme|
+|Microsoft.Automation/automationAccounts|DscNodeStatus|DSC-Knotenstatus|
 |Microsoft.Batch/batchAccounts|ServiceLog|Dienstprotokolle|
 |Microsoft.DataLakeAnalytics/accounts|Audit|Überwachungsprotokolle|
 |Microsoft.DataLakeAnalytics/accounts|Requests|Anforderungsprotokolle|
@@ -208,16 +210,19 @@ Das Schema für Diagnoseprotokolle variiert abhängig von der Ressource und der 
 |Microsoft.DataLakeStore/accounts|Requests|Anforderungsprotokolle|
 |Microsoft.EventHub/namespaces|ArchiveLogs|Archivprotokolle|
 |Microsoft.EventHub/namespaces|OperationalLogs|Betriebsprotokolle|
+|Microsoft.EventHub/namespaces|AutoScaleLogs|Protokolle zur automatischen Skalierung|
 |Microsoft.KeyVault/vaults|AuditEvent|Überwachungsprotokolle|
 |Microsoft.Logic/workflows|WorkflowRuntime|Diagnoseereignisse zur Workflowlaufzeit|
 |Microsoft.Logic/integrationAccounts|IntegrationAccountTrackingEvents|Integrationskonto –Nachverfolgen von Ereignissen|
 |Microsoft.Network/networksecuritygroups|NetworkSecurityGroupEvent|Ereignis der Netzwerksicherheitsgruppe|
 |Microsoft.Network/networksecuritygroups|NetworkSecurityGroupRuleCounter|Regelzähler der Netzwerksicherheitsgruppe|
+|Microsoft.Network/networksecuritygroups|NetworkSecurityGroupFlowEvent|Regelflussereignis der Netzwerksicherheitsgruppe|
 |Microsoft.Network/loadBalancers|LoadBalancerAlertEvent|Load Balancer-Warnereignisse|
 |Microsoft.Network/loadBalancers|LoadBalancerProbeHealthStatus|Integritätsstatus der Load Balancer-Stichprobe|
 |Microsoft.Network/applicationGateways|ApplicationGatewayAccessLog|Application Gateway-Zugriffsprotokoll|
 |Microsoft.Network/applicationGateways|ApplicationGatewayPerformanceLog|Application Gateway-Leistungsprotokoll|
 |Microsoft.Network/applicationGateways|ApplicationGatewayFirewallLog|Application Gateway-Firewallprotokoll|
+|Microsoft.Network/expressRouteCircuits|GWMCountersTable|Tabelle der GWM-Leistungsindikatoren|
 |Microsoft.Search/searchServices|OperationLogs|Vorgangsprotokolle|
 |Microsoft.ServerManagement/nodes|RequestLogs|Anforderungsprotokolle|
 |Microsoft.ServiceBus/namespaces|OperationalLogs|Betriebsprotokolle|

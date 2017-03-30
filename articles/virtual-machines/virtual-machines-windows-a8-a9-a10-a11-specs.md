@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/21/2016
+ms.date: 03/14/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 58e8474a9cafdad06c2968a7317e0c30474b5069
-ms.openlocfilehash: 5021a0aa554978fbb5543024400986715227de0b
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: 32045a9b6be130dca4680b1990808d2b22be4432
+ms.lasthandoff: 03/16/2017
 
 
 ---
 # <a name="about-h-series-and-compute-intensive-a-series-vms-for-windows"></a>Informationen zu virtuellen Computern der H-Reihe und der rechenintensiven A-Reihe für Windows
-Hier finden Sie Hintergrundinformationen und einige Überlegungen zur Verwendung der neueren H-Reihe von Azure und der älteren Instanzen A8, A9, A10 und A11, die auch als *rechenintensive* Instanzen bezeichnet werden. Dieser Artikel konzentriert sich auf das Verwenden dieser Instanzen für virtuelle Windows-Computer. Dieser Artikel ist auch für [virtuelle Linux-Computer](virtual-machines-linux-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) verfügbar.
+Hier finden Sie Hintergrundinformationen und einige Überlegungen zur Verwendung der neueren H-Reihe von Azure und der älteren Instanzen A8, A9, A10 und A11, die auch als *rechenintensive* Instanzen bezeichnet werden. Dieser Artikel konzentriert sich auf das Verwenden dieser Instanzen für virtuelle Windows-Computer. Sie können sie auch für [Linux-VMs](virtual-machines-linux-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) verwenden.
 
 Informationen zu grundlegenden Spezifikationen, Speicherkapazitäten und Details zu den Datenträgern finden Sie unter [Größen für virtuelle Computer](virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
@@ -37,22 +37,23 @@ RDMA-fähige müssen Instanzen folgende Anforderungen erfüllen, um auf das Azur
   
   * **Virtuelle Computer** : Windows Server 2012 R2, Windows Server 2012
   * **Clouddienste** : Gastbetriebssystemfamilie Windows Server 2012 R2, Windows Server 2012 oder Windows Server 2008 R2
+
+    > [!NOTE]
+    > Windows Server 2016 unterstützt derzeit keine RDMA-Verbindungen in Azure.
+    >
+    
 * **MPI** : Microsoft MPI (MS-MPI) 2012 R2 oder höher, Intel MPI Library 5.x
 
   Unterstützte MPI-Implementierungen verwenden die Microsoft Network Direct-Schnittstelle für die Kommunikation zwischen Instanzen. 
-* **HpcVmDrivers-VM-Erweiterung**: Auf RDMA-fähigen virtuellen Computern muss die HpcVmDrivers-Erweiterung hinzugefügt werden, um Windows-Netzwerkgerätetreiber zu installieren, die für RDMA-Verbindungen benötigt werden. (In einigen Bereitstellungen von A8- und A9-Instanzen wird die Erweiterung HpcVmDrivers automatisch hinzugefügt.) Wenn Sie die VM-Erweiterung einem virtuellen Computer hinzufügen müssen, können Sie dazu [Azure PowerShell](/powershell/azureps-cmdlets-docs)-Cmdlets für Azure Resource Manager verwenden.
+* **HpcVmDrivers-VM-Erweiterung**: Auf RDMA-fähigen virtuellen Computern muss die HpcVmDrivers-Erweiterung hinzugefügt werden, um Windows-Netzwerkgerätetreiber zu installieren, die für RDMA-Verbindungen benötigt werden. (In bestimmten Bereitstellungen von A8- und A9-Instanzen wird die Erweiterung HpcVmDrivers automatisch hinzugefügt.) Wenn Sie die VM-Erweiterung einem virtuellen Computer hinzufügen müssen, können Sie dazu [Azure PowerShell](/powershell/azureps-cmdlets-docs)-Cmdlets verwenden. 
 
-  So erhalten Sie Informationen zur neuesten HpcVmDrivers-Erweiterung:
+  
+  So installieren Sie z.B. die neueste Version (1.1) der HpcVMDrivers-Erweiterung auf einem vorhandenen, RDMA-fähigen virtuellen Computer namens myVM im Resource Manager-Bereitstellungsmodell:
 
-  ```PowerShell
-  Get-AzureVMAvailableExtension -ExtensionName  "HpcVmDrivers"
-  ```
-
-  So installieren Sie die neueste Version (1.1) der HpcVMDrivers-Erweiterung auf einem vorhandenen, RDMA-fähigen virtuellen Computer namens „myVM“:
   ```PowerShell
   Set-AzureRmVMExtension -ResourceGroupName "myResourceGroup" -Location "westus" -VMName "myVM" -ExtensionName "HpcVmDrivers" -Publisher "Microsoft.HpcCompute" -Type "HpcVmDrivers" -TypeHandlerVersion "1.1"
   ```
-  Weitere Informationen finden Sie unter [Verwalten von Erweiterungen für virtuelle Computer](virtual-machines-windows-classic-manage-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Erweiterungen für virtuelle Computer können auch im Rahmen des [klassischen Bereitstellungsmodells](virtual-machines-windows-classic-manage-extensions.md) verwendet werden.
+  Weitere Informationen finden Sie unter [Erweiterungen und Features für virtuelle Computer](virtual-machines-windows-extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Erweiterungen können auch für virtuelle Computer verwendet werden, die mit dem [klassischen Bereitstellungsmodell](virtual-machines-windows-classic-manage-extensions.md) bereitgestellt wurden.
 
 
 ## <a name="considerations-for-hpc-pack-and-windows"></a>Überlegungen zu HPC Pack und Windows

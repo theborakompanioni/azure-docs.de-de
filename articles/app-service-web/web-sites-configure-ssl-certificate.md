@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 08/08/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: 46ffa25ff6f90c898b958ee6c5b2c47219c468ab
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: f7a2066f43219e8748b5c5356ff6c81535b7842a
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/17/2017
 
 In diesem Artikel erfahren Sie, wie Sie HTTPS für Web-Apps, Back-Ends für mobile Apps oder API-Apps, die einen benutzerdefinierten Domänennamen verwenden, in [Azure App Service](../app-service/app-service-value-prop-what-is.md) aktivieren. Es wird nur die Serverauthentifizierung behandelt. Wenn Sie gegenseitige Authentifizierung (einschließlich Clientauthentifizierung) benötigen, finden Sie entsprechende Informationen unter [Konfigurieren der gegenseitigen TLS-Authentifizierung für eine Web-App](app-service-web-configure-tls-mutual-auth.md).
 
-Um mit HTTPS eine App zu sichern, die einen benutzerdefinierten Domänennamen hat, fügen Sie ein Zertifikat für diesen Domänennamen hinzu. Standardmäßig schützt Azure die **\*.azurewebsites.net**-Platzhalterdomäne mit einem einzigen SSL-Zertifikat, damit Ihre Clients bereits unter **https://*&lt;App-Name>*azurewebsites.net** auf Ihre App zugreifen können. Aber wenn Sie eine benutzerdefinierte Domäne verwenden möchten, z.B. **contoso.com**, **www.contoso.com** und **\*.contoso.com**, kann das Standardzertifikat diese nicht sichern. Darüber hinaus ist das Standardzertifikat wie alle [Platzhalterzertifikate](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/) nicht so sicher wie die Verwendung einer benutzerdefinierten Domäne und eines Zertifikats für diese benutzerdefinierte Domäne.   
+Um mit HTTPS eine App zu sichern, die einen benutzerdefinierten Domänennamen hat, fügen Sie ein Zertifikat für diesen Domänennamen hinzu. Standardmäßig schützt Azure die **\*.azurewebsites.net**-Platzhalterdomäne mit einem einzigen SSL-Zertifikat, damit Ihre Clients bereits unter **https://*&lt;App-Name>*azurewebsites.net**auf Ihre App zugreifen können. Aber wenn Sie eine benutzerdefinierte Domäne verwenden möchten, z.B.**contoso.com**,**www.contoso.com**und **\*.contoso.com**, kann das Standardzertifikat diese nicht sichern. Darüber hinaus ist das Standardzertifikat wie alle [Platzhalterzertifikate](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/) nicht so sicher wie die Verwendung einer benutzerdefinierten Domäne und eines Zertifikats für diese benutzerdefinierte Domäne.   
 
 > [!NOTE]
 > Hilfe erhalten Sie jederzeit in den [Azure-Foren](https://azure.microsoft.com/support/forums/)von den Azure-Experten. Wenn Sie persönlicheren Support wünschen, rufen Sie den [Azure-Support](https://azure.microsoft.com/support/options/) auf, und klicken Sie auf **Support erhalten**.
@@ -439,8 +439,12 @@ Bevor Sie fortfahren, lesen Sie den Abschnitt [Was Sie alles benötigen](#bkmk_d
    
     ![Bild von SSL-Bindungen einfügen](./media/web-sites-configure-ssl-certificate/sslbindings.png)
    
-       •    IP based SSL associates a certificate with a domain name by mapping the dedicated public IP address of the server to the domain name. This requires each domain name (contoso.com, fabricam.com, etc.) associated with your service to have a dedicated IP address. This is the traditional          method of associating SSL certificates with a web server.
-       •    SNI based SSL is an extension to SSL and **[Transport Layer Security](http://en.wikipedia.org/wiki/Transport_Layer_Security)** (TLS) that allows multiple domains to share the same IP address, with separate security certificates for each domain. Most modern browsers (including Internet Explorer, Chrome, Firefox and Opera) support SNI, however older browsers may not support SNI. For more information on SNI, see the **[Server Name Indication](http://en.wikipedia.org/wiki/Server_Name_Indication)** article on Wikipedia.
+    > [!NOTE] 
+    > Bei **IP-basiertem SSL** wird ein Zertifikat mit einem Domänennamen verknüpft, indem die dedizierte öffentliche IP-Adresse des Servers dem Domänennamen zugeordnet wird. Voraussetzung dafür ist, dass jeder mit Ihrem Dienst verknüpfte Domänenname (contoso.com, fabricam.com usw.) eine dedizierte IP-Adresse hat. Dies ist die herkömmliche Methode der Verknüpfung von SSL-Zertifikaten mit einem Webserver.  
+    >
+    > **SNI-basiertes SSL** ist eine Erweiterung für SSL und **[Transport Layer Security](http://en.wikipedia.org/wiki/Transport_Layer_Security)** (TLS). Dabei können mehrere Domänen die gleiche IP-Adresse gemeinsam nutzen, während jede Domäne über eigene Sicherheitszertifikate verfügt. Die meisten modernen Browser (einschließlich Internet Explorer, Chrome, Firefox und Opera) unterstützen SNI, ältere Browser hingegen möglicherweise nicht. Weitere Informationen zu SNI finden Sie im Wikipedia-Artikel **[Server Name Indication](http://en.wikipedia.org/wiki/Server_Name_Indication)** (Servernamensanzeige).
+    > 
+
 9. Klicken Sie auf **Bindung hinzufügen** , um die Änderungen zu speichern und SSL zu aktivieren.
 
 ## <a name="step-3-change-your-domain-name-mapping-ip-based-ssl-only"></a>Schritt 3: Ändern Sie Ihre Domänennamenzuordnung (nur IP-basiertes SSL).

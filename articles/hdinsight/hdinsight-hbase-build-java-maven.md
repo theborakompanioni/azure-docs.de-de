@@ -15,9 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2017
 ms.author: larryfr
+ROBOTS: NOINDEX
 translationtype: Human Translation
-ms.sourcegitcommit: b829f21dbc212cd951f5e417ad56f7eb724a9d56
-ms.openlocfilehash: 51a9ebdee38c14eb3dc1148070004e6792369b39
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: e7a2fef8860984c2e4e3749202868940b836ca9f
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -32,7 +34,7 @@ Erfahren Sie, wie Sie eine [Apache HBase](http://hbase.apache.org/) -Anwendung i
 ## <a name="requirements"></a>Anforderungen
 * [Java-Plattform JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 7 oder höher
 * [Maven](http://maven.apache.org/)
-* [Ein Windows-basierter HDInsight-Cluster mit HBase](hdinsight-hbase-tutorial-get-started.md#create-hbase-cluster)
+* Ein Windows-basierter HDInsight-Cluster mit HBase
 
     > [!NOTE] 
     > Die Schritte in diesem Dokument wurden mit HDInsight-Clustern der Versionen 3.2 und 3.3 getestet. Die Standardwerte in den Beispielen gelten für einen Cluster mit HDInsight 3.3.
@@ -616,10 +618,5 @@ Ersetzen Sie **hdinsightclustername** durch den Namen Ihres HDInsight-Clusters.
 ## <a name="troubleshooting"></a>Problembehandlung
 ### <a name="no-results-or-unexpected-results-when-using-start-hbaseexample"></a>Keine oder unerwartete Ergebnisse bei Verwenden von "Start-HBaseExample"
 Verwenden Sie den Parameter `-showErr` , wenn Sie den Standardfehler (STDERR) sehen möchten, der während der Ausführung des Auftrags erzeugt wurde.
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

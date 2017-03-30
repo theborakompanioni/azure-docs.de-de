@@ -16,19 +16,19 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: e5362b32a0f93433c77c27a6fc116960c45404f9
-ms.openlocfilehash: 8e4068428b814265140b76905bc7f90d9e88f94b
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: eb8b5b66b1cdb7bc7e588292ec714c30e3607bf6
+ms.lasthandoff: 03/21/2017
 
 ---
 
 # <a name="create-a-vm-with-wordpress"></a>Erstellen eines virtuellen Computers mit WordPress
 
-Dieses Skript erstellt einen virtuellen Azure-Computer und verwendet anschließend die benutzerdefinierte Azure-VM-DSC-Skripterweiterung, um WordPress zu installieren. Nachdem das Skript ausgeführt wurde, kann unter `http://<public IP of VM>/wordpress` auf die WordPress-Konfigurationswebsite zugegriffen werden. 
+Dieses Skript erstellt einen virtuellen Azure-Computer und verwendet anschließend die benutzerdefinierte Azure-VM-DSC-Skripterweiterung, um WordPress zu installieren. Nach dem Ausführen des Skripts können Sie die WordPress-Konfigurationswebsite unter `http://<public IP of VM>/wordpress` aufrufen. 
+
+Installieren Sie bei Bedarf die Azure-Befehlszeilenschnittstelle anhand der Anleitung im [Azure CLI-Installationshandbuch](https://docs.microsoft.com/cli/azure/install-azure-cli), und führen Sie dann `az login` aus, um eine Verbindung mit Azure herzustellen.
 
 Dieses Beispiel wird in einer Bash-Shell ausgeführt. Optionen zum Ausführen von Azure CLI-Skripts auf einem Windows-Client finden Sie unter [Verwenden der Azure CLI unter Windows](../virtual-machines-windows-cli-options.md).
-
-Stellen Sie vor dem Ausführen dieses Skripts sicher, dass über den Befehl `az login` eine Verbindung mit Azure hergestellt wurde.
 
 ## <a name="sample-script"></a>Beispielskript
 
@@ -36,7 +36,7 @@ Stellen Sie vor dem Ausführen dieses Skripts sicher, dass über den Befehl `az 
 
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung 
 
-Nach Ausführung des Skriptbeispiels können mit dem folgenden Befehl die Ressourcengruppe, die VM und alle zugehörigen Ressourcen entfernt werden.
+Führen Sie den folgenden Befehl aus, um die Ressourcengruppe, den virtuellen Computer und alle zugehörigen Ressourcen zu entfernen.
 
 ```azurecli
 az group delete --name myResourceGroup

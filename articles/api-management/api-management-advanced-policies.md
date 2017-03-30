@@ -15,24 +15,27 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
-ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: bfadac7b34eca2ef1f9bcabc6e267ca9572990b8
+ms.lasthandoff: 03/18/2017
 
 ---
 # <a name="api-management-advanced-policies"></a>API Management – Erweiterte Richtlinien
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
   
-##  <a name="a-nameadvancedpoliciesa-advanced-policies"></a><a name="AdvancedPolicies"></a> Erweiterte Richtlinien  
+##  <a name="AdvancedPolicies"></a> Erweiterte Richtlinien  
   
 -   [Ablaufsteuerung](api-management-advanced-policies.md#choose) – Bedingte Anwendung von Richtlinienanweisungen basierend auf den Ergebnissen der Auswertung von booleschen [Ausdrücken](api-management-policy-expressions.md)  
   
 -   [Anforderung weiterleiten](#ForwardRequest) – Leitet die Anforderung an den Back-End-Dienst.  
   
--   [Protokoll an Event Hub](#log-to-eventhub) – Sendet Nachrichten im angegebenen Format an einen von einem Protokollierungstool definierten Event Hub.  
+-   [Protokoll an Event Hub](#log-to-eventhub) – Sendet Nachrichten im angegebenen Format an einen von einem Protokollierungstool definierten Event Hub. 
+
+-   [Modellantwort](#mock-response) – bricht die Pipelineausführung ab und gibt die Modellantwort unmittelbar an den Aufrufer zurück.
   
 -   [Wiederholen](#Retry) – Wiederholt die Ausführung der eingeschlossenen Richtlinienanweisungen, falls und bis die Bedingung erfüllt ist. Die Ausführung wird mit den angegebenen Zeitintervallen und bis zur angegebenen Anzahl der Wiederholungsversuche wiederholt.  
   
--   [Zurückgegebene Antwort](#ReturnResponse) – Bricht die Pipeline-Ausführung ab und gibt die angegebene Antwort unmittelbar an den Aufrufer zurück.  
+-   [Zurückgegebene Antwort](#ReturnResponse) – bricht die Pipeline-Ausführung ab und gibt die angegebene Antwort unmittelbar an den Aufrufer zurück.  
   
 -   [Unidirektionale Anforderung senden](#SendOneWayRequest) – sendet eine Anforderung an die angegebene URL, ohne auf eine Antwort zu warten.  
   
@@ -48,10 +51,10 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 -   [Warten](#Wait) – Wartet darauf, dass eingeschlossene Richtlinien für [Send request](api-management-advanced-policies.md#SendRequest) (Sendeanforderung), [Get value from cache](api-management-caching-policies.md#GetFromCacheByKey) (Wert aus dem Cache abrufen) oder [Control flow](api-management-advanced-policies.md#choose) (Ablaufsteuerung) abgeschlossen werden, bevor der Vorgang fortgesetzt wird.  
   
-##  <a name="a-namechoosea-control-flow"></a><a name="choose"></a> Ablaufsteuerung  
+##  <a name="choose"></a> Ablaufsteuerung  
  Mit der Richtlinie `choose` werden eingeschlossene Richtlinienanweisungen basierend auf dem Ergebnis der Auswertung von booleschen Ausdrücken angewendet. Dies ähnelt „if-then-else“ oder einem Switchkonstrukt in einer Programmiersprache.  
   
-###  <a name="a-namechoosepolicystatementa-policy-statement"></a><a name="ChoosePolicyStatement"></a> Richtlinienanweisung  
+###  <a name="ChoosePolicyStatement"></a> Richtlinienanweisung  
   
 ```xml  
 <choose>   
@@ -71,7 +74,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 ### <a name="examples"></a>Beispiele  
   
-####  <a name="a-namechooseexamplea-example"></a><a name="ChooseExample"></a> Beispiel  
+####  <a name="ChooseExample"></a> Beispiel  
  Das folgende Beispiel enthält eine [set-variable](api-management-advanced-policies.md#set-variable)-Richtlinie und zwei Ablaufsteuerungsrichtlinien.  
   
  Die „set-variable“-Richtlinie befindet sich im Abschnitt für den eingehenden Datenverkehr und erstellt eine boolesche `isMobile`-[Kontext](api-management-policy-expressions.md#ContextVariables)variable, die auf „true“ festgelegt ist, wenn der `User-Agent`-Anforderungsheader den Text `iPad` oder `iPhone` enthält.  
@@ -142,14 +145,14 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 |---------------|-----------------|--------------|  
 |condition="boolescher Ausdruck &#124; boolesche Konstante"|Der boolesche Ausdruck bzw. die Konstante, der bzw. die ausgewertet werden soll, wenn die enthaltende `when`-Richtlinienanweisung ausgewertet wird.|Ja|  
   
-###  <a name="a-namechooseusagea-usage"></a><a name="ChooseUsage"></a> Verwendung  
+###  <a name="ChooseUsage"></a> Verwendung  
  Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
   
 -   **Richtlinienabschnitte:** inbound, outbound, backend, on-error  
   
 -   **Richtlinienbereiche:** alle Bereiche  
   
-##  <a name="a-nameforwardrequesta-forward-request"></a><a name="ForwardRequest"></a> Anforderung weiterleiten  
+##  <a name="ForwardRequest"></a> Anforderung weiterleiten  
  Mit der `forward-request`-Richtlinie wird die eingehende Anforderung an den Back-End-Dienst weitergeleitet, der im Anforderungs[kontext](api-management-policy-expressions.md#ContextVariables) angegeben ist. Die Back-End-Dienst-URL ist in den API-[Einstellungen](https://azure.microsoft.com/documentation/articles/api-management-howto-create-apis/#configure-api-settings) angegeben und kann mit der Richtlinie [Back-End-Dienst festlegen](api-management-transformation-policies.md) geändert werden.  
   
 > [!NOTE]
@@ -260,7 +263,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 -   **Richtlinienbereiche:** alle Bereiche  
   
-##  <a name="a-namelog-to-eventhuba-log-to-event-hub"></a><a name="log-to-eventhub"></a> Protokoll an Event Hub  
+##  <a name="log-to-eventhub"></a> Protokoll an Event Hub  
  Mit der `log-to-eventhub`-Richtlinie werden Nachrichten im angegebenen Format an ein von einem Protokollierungstool definiertes Nachrichtenziel gesendet. Wie anhand des Namens bereits erkennbar ist, wird diese Richtlinie zum Speichern von ausgewählten Anforderungs- oder Antwortkontextinformationen für die Online- oder Offlineanalyse verwendet.  
   
 > [!NOTE]
@@ -310,8 +313,50 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 -   **Richtlinienabschnitte:** inbound, outbound, backend, on-error  
   
 -   **Richtlinienbereiche:** alle Bereiche  
+
+##  <a name="mock-response"></a> Modellantwort  
+Die `mock-response` wird, wie der Name impliziert, dazu verwendet, APIs und Vorgänge zu modellieren. Sie bricht die normale Pipelineausführung ab und gibt die Modellantwort an den Aufrufer zurück. Die Richtlinie versucht immer, möglichst realitätsnahe Antworten zurückgeben. Sie bevorzugt dabei Beispiele für Antwortinhalte, soweit verfügbar. Sie generiert Beispielantworten aus Schemas, sofern Schemas bereitgestellt werden, Beispiele hingegen nicht. Wenn weder Beispiele noch Schemas gefunden wurden, werden Antworten ohne Inhalt zurückgegeben.
   
-##  <a name="a-nameretrya-retry"></a><a name="Retry"></a> Wiederholen  
+### <a name="policy-statement"></a>Richtlinienanweisung  
+  
+```xml  
+<mock-response status-code="code" content-type="media type"/>  
+  
+```  
+  
+### <a name="examples"></a>Beispiele  
+  
+```xml  
+<!-- Returns 200 OK status code. Content is based on an example or schema, if provided for this 
+status code. First found content type is used. If no example or schema is found, the content is empty. -->
+<mock-response/>
+
+<!-- Returns 200 OK status code. Content is based on an example or schema, if provided for this 
+status code and media type. If no example or schema found, the content is empty. -->
+<mock-response status-code='200' content-type='application/json'/>  
+```  
+  
+### <a name="elements"></a>Elemente  
+  
+|Element|Beschreibung|Erforderlich|  
+|-------------|-----------------|--------------|  
+|mock-response|Stammelement|Ja|  
+  
+### <a name="attributes"></a>Attribute  
+  
+|Attribut|Beschreibung|Erforderlich|Standard|  
+|---------------|-----------------|--------------|--------------|  
+|status-code|Gibt den Statuscode der Antwort an und wird verwendet, um ein passendes Beispiel oder Schema auszuwählen|Nein|200|  
+|Inhaltstyp|Gibt den Headerwert `Content-Type` für die Antwort an und wird verwendet, um ein passendes Beispiel oder Schema auszuwählen|Nein|Keine|  
+  
+### <a name="usage"></a>Verwendung  
+ Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
+  
+-   **Richtlinienabschnitte:** inbound, outbound, on-error  
+  
+-   **Richtlinienbereiche:** alle Bereiche
+
+##  <a name="Retry"></a> Wiederholen  
  Die `retry`-Richtlinie führt ihre untergeordneten Richtlinien einmal aus und versucht dann, die Ausführung zu wiederholen, bis `condition` für die Wiederholung `false` lautet oder der Wert unter `count` ausgeschöpft ist.  
   
 ### <a name="policy-statement"></a>Richtlinienanweisung  
@@ -376,7 +421,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 -   **Richtlinienbereiche:** alle Bereiche  
   
-##  <a name="a-namereturnresponsea-return-response"></a><a name="ReturnResponse"></a> Rückantwort  
+##  <a name="ReturnResponse"></a> Rückantwort  
  Mit der `return-response`-Richtlinie wird die Pipelineausführung abgebrochen und entweder eine Standardantwort oder eine benutzerdefinierte Antwort an den Aufrufer zurückgegeben. Die Standardantwort ist `200 OK` ohne Text. Die benutzerdefinierte Antwort kann über eine Kontextvariable oder Richtlinienanweisungen angegeben werden. Bei Angabe von beidem wird die in der Kontextvariablen enthaltene Antwort von den Richtlinienanweisungen geändert, bevor sie an den Aufrufer zurückgegeben wird.  
   
 ### <a name="policy-statement"></a>Richtlinienanweisung  
@@ -424,7 +469,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 -   **Richtlinienbereiche:** alle Bereiche  
   
-##  <a name="a-namesendonewayrequesta-send-one-way-request"></a><a name="SendOneWayRequest"></a> Unidirektionale Anforderung senden  
+##  <a name="SendOneWayRequest"></a> Unidirektionale Anforderung senden  
  Die `send-one-way-request`-Richtlinie sendet die bereitgestellte Anforderung an die angegebene URL, ohne auf eine Antwort zu warten.  
   
 ### <a name="policy-statement"></a>Richtlinienanweisung  
@@ -483,7 +528,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 |Attribut|Beschreibung|Erforderlich|Standard|  
 |---------------|-----------------|--------------|-------------|  
 |mode="string"|Bestimmt, ob dies eine neue Anforderung oder eine Kopie der aktuellen Anforderung ist. Im Ausgangsmodus wird der Anforderungstext durch „mode=copy“ nicht initialisiert.|Nein|Neu|  
-|Name|Gibt den Namen des festzulegenden Headers an.|Ja|N/V|  
+|Name|Gibt den Namen des festzulegenden Headers an.|Ja|–|  
 |exists-action|Gibt die auszuführende Aktion an, wenn ein Header bereits angegeben wurde. Dieses Attribut muss einen der folgenden Werte aufweisen.<br /><br /> – override – Ersetzt den Wert des vorhandenen Headers.<br />– skip – Ersetzt den vorhandenen Headerwert nicht.<br />– append – Fügt den Wert an den vorhandenen Headerwert an.<br />– delete – Entfernt den Header aus der Anforderung.<br /><br /> Bei `override` führt die Auflistung mehrerer Einträge mit demselben Namen dazu, dass der Header gemäß aller Einträge festgelegt wird (die mehrfach aufgeführt sind); nur die aufgelisteten Werte werden im Ergebnis festgelegt.|Nein|override|  
   
 ### <a name="usage"></a>Verwendung  
@@ -493,7 +538,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 -   **Richtlinienbereiche:** alle Bereiche  
   
-##  <a name="a-namesendrequesta-send-request"></a><a name="SendRequest"></a> Anforderung senden  
+##  <a name="SendRequest"></a> Anforderung senden  
  Die `send-request`-Richtlinie sendet die bereitgestellte Anforderung an die angegebene URL und wartet nicht länger, als durch den Zeitüberschreitungswert festgelegt ist.  
   
 ### <a name="policy-statement"></a>Richtlinienanweisung  
@@ -575,16 +620,16 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 -   **Richtlinienbereiche:** alle Bereiche  
   
-##  <a name="a-nameset-variablea-set-variable"></a><a name="set-variable"></a> Variable festlegen  
+##  <a name="set-variable"></a> Variable festlegen  
  Mit der `set-variable`-Richtlinie wird eine [Kontext](api-management-policy-expressions.md#ContextVariables)variable deklariert und einem Wert zugewiesen, der über einen [Ausdruck](api-management-policy-expressions.md) oder ein Zeichenfolgenliteral angegeben wird. Wenn der Ausdruck ein Literal enthält, wird die Konvertierung in eine Zeichenfolge durchgeführt, und der Typ des Werts lautet `System.String`.  
   
-###  <a name="a-nameset-variablepolicystatementa-policy-statement"></a><a name="set-variablePolicyStatement"></a> Richtlinienanweisung  
+###  <a name="set-variablePolicyStatement"></a> Richtlinienanweisung  
   
 ```xml  
 <set-variable name="variable name" value="Expression | String literal" />  
 ```  
   
-###  <a name="a-nameset-variableexamplea-example"></a><a name="set-variableExample"></a> Beispiel  
+###  <a name="set-variableExample"></a> Beispiel  
  Im folgenden Beispiel wird eine set-variable-Richtlinie im Abschnitt für den eingehenden Datenverkehr veranschaulicht. Diese „set-variable“-Richtlinie erstellt eine boolesche `isMobile`-[Kontext](api-management-policy-expressions.md#ContextVariables)variable, die auf „true“ festgelegt ist, wenn der `User-Agent`-Anforderungsheader den Text `iPad` oder `iPhone` enthält.  
   
 ```xml  
@@ -611,7 +656,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 -   **Richtlinienbereiche:** alle Bereiche  
   
-###  <a name="a-nameset-variableallowedtypesa-allowed-types"></a><a name="set-variableAllowedTypes"></a> Zulässige Typen  
+###  <a name="set-variableAllowedTypes"></a> Zulässige Typen  
  Ausdrücke, die in der `set-variable`-Richtlinie verwendet werden, müssen einen der folgenden einfachen Typen zurückgeben.  
   
 -   System.Boolean  
@@ -676,7 +721,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 -   System.DateTime?  
   
-##  <a name="a-namesetrequestmethoda-set-request-method"></a><a name="SetRequestMethod"></a> Anforderungsmethode festlegen  
+##  <a name="SetRequestMethod"></a> Anforderungsmethode festlegen  
  Mit der `set-method`-Richtlinie können Sie die HTTP-Anforderungsmethode für eine Anforderung ändern.  
   
 ### <a name="policy-statement"></a>Richtlinienanweisung  
@@ -728,7 +773,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 -   **Richtlinienbereiche:** alle Bereiche  
   
-##  <a name="a-namesetstatusa-set-status-code"></a><a name="SetStatus"></a> Statuscode festlegen  
+##  <a name="SetStatus"></a> Statuscode festlegen  
  Mit der `set-status`-Richtlinie wird der HTTP-Statuscode auf den angegebenen Wert festgelegt.  
   
 ### <a name="policy-statement"></a>Richtlinienanweisung  
@@ -775,7 +820,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 -   **Richtlinienbereiche:** alle Bereiche  
   
-##  <a name="a-nametracea-trace"></a><a name="Trace"></a> Ablaufverfolgung  
+##  <a name="Trace"></a> Ablaufverfolgung  
  Mit der `trace`-Richtlinie wird der Ausgabe für den [API-Inspektor](https://azure.microsoft.com/en-us/documentation/articles/api-management-howto-api-inspector/) eine Zeichenfolge hinzugefügt. Die Richtlinie wird nur ausgeführt, wenn die Ablaufverfolgung ausgelöst wird, d.h. der `Ocp-Apim-Trace`-Anforderungsheader ist vorhanden und auf `true` festgelegt, und der `Ocp-Apim-Subscription-Key`-Anforderungsheader ist vorhanden und enthält einen gültigen Schlüssel, der dem Administratorkonto zugeordnet ist.  
   
 ### <a name="policy-statement"></a>Richtlinienanweisung  
@@ -798,7 +843,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 |Attribut|Beschreibung|Erforderlich|Standard|  
 |---------------|-----------------|--------------|-------------|  
-|Quelle|Das Zeichenfolgenliteral ist für die Ablaufverfolgungsanzeige aussagekräftig und gibt die Quelle der Nachricht an.|Ja|–|  
+|Quelle|Das Zeichenfolgenliteral ist für die Ablaufverfolgungsanzeige aussagekräftig und gibt die Quelle der Nachricht an.|Ja|N/V|  
   
 ### <a name="usage"></a>Verwendung  
  Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
@@ -807,7 +852,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 -   **Richtlinienbereiche:** alle Bereiche  
   
-##  <a name="a-namewaita-wait"></a><a name="Wait"></a> Warten  
+##  <a name="Wait"></a> Warten  
  Bei der `wait`-Richtlinie werden die unmittelbar untergeordneten Richtlinien parallel ausgeführt, und es wird gewartet, bis entweder alle oder keine unmittelbar untergeordneten Richtlinien abgeschlossen sind, bevor sie selbst abgeschlossen wird. Die wait-Richtlinie kann [Send request](api-management-advanced-policies.md#SendRequest) (Anforderung senden), [Get value from cache](api-management-caching-policies.md#GetFromCacheByKey) (Wert aus dem Cache abrufen) und [Control flow](api-management-advanced-policies.md#choose) (Ablaufsteuerung) als unmittelbar untergeordnete Richtlinien enthalten.  
   
 ### <a name="policy-statement"></a>Richtlinienanweisung  
@@ -878,9 +923,4 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 Weitere Informationen zur Verwendung von Richtlinien finden Sie unter:
 -    [Richtlinien in Azure API Management](api-management-howto-policies.md) 
 -    [Richtlinienausdrücke](api-management-policy-expressions.md)
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

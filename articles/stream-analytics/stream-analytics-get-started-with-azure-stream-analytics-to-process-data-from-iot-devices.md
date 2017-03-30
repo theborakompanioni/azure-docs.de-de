@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 01/24/2017
+ms.date: 03/28/2017
 ms.author: jeffstok
 translationtype: Human Translation
 ms.sourcegitcommit: 9afd26024d2aa0d3d732ddc6f54e591715afca69
 ms.openlocfilehash: 9624405d8bc454e886e8011c1cb4920fdf7e0640
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -118,10 +119,5 @@ Hier verwenden wir den Verknüpfungsvorgang **LEFT OUTER** für den gleichen Dat
 
 ## <a name="conclusion"></a>Zusammenfassung
 In diesem Tutorial erfahren Sie, wie Sie verschiedene Abfragen in der Stream Analytics-Abfragesprache schreiben und die Ergebnisse im Browser anzeigen. Dies ist aber erst der Anfang. Mit Stream Analytics haben Sie noch viele weitere Möglichkeiten. Stream Analytics unterstützt verschiedenste Ein- und Ausgaben und kann sogar Funktionen in Azure Machine Learning nutzen. Dies macht Stream Analytics zu einem zuverlässigen Tool für die Datenstromanalyse. Weitere Informationen zu Stream Analytics finden Sie in unserem [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/stream-analytics/). Weitere Informationen zum Schreiben von Abfragen finden Sie im Artikel zu [gängigen Abfragemustern](stream-analytics-stream-analytics-query-patterns.md).
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

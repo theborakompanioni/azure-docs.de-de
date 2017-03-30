@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 01/24/2017
+ms.date: 03/28/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 20880eccbf28cabfb594bb8129cb0a5a3beeb224
-ms.openlocfilehash: e62e4f6c208f5506108b2ef5f6c1aabe43f086a2
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: ed5589600f536b92312317e97a8fb375869e35ef
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -34,18 +35,15 @@ Nachstehen sind einige der DocumentDB-Sammlungsoptionen beschrieben.
 ## <a name="tune-consistency-availability-and-latency"></a>Optimieren von Konsistenz, Verfügbarkeit und Latenz
 Entsprechend Ihren Anwendungsanforderungen lässt DocumentDB das Optimieren der Datenbank und Sammlungen zu und wählt Kompromisse zwischen Konsistenz, Verfügbarkeit und Latenz. Abhängig von den Lesekonsistenzebenen, die Ihr Szenario hinsichtlich Lese- und Schreiblatenz benötigt, können Sie in Ihrem Datenbankkonto eine Konsistenzebene wählen. Außerdem aktiviert DocumentDB für jeden CRUD-Vorgang in Ihrer Sammlung die synchrone Indizierung. Dies ist eine andere nützliche Option zum Steuern der Schreib-/Leseleistung in DocumentDB. Weitere Informationen zu diesem Thema finden Sie im Artikel [Ändern der Datenbank- und Abfragekonsistenzebenen](../documentdb/documentdb-consistency-levels.md) .
 
-## <a name="choose-a-performance-level"></a>Auswählen einer Leistungsebene
-DocumentDB-Sammlungen können auf drei Leistungsstufen (S1, S2 oder S3) erstellt werden, die den verfügbaren Durchsatz für CRUD-Vorgänge für diese Sammlung bestimmen. Darüber hinaus wird die Leistung von den Indizierungs-/Konsistenzebenen Ihrer Sammlung beeinflusst. [In diesem Artikel](../documentdb/documentdb-performance-levels.md) finden Sie grundlegende Informationen zu diesen Leistungsebenen.
-
 ## <a name="upserts-from-stream-analytics"></a>Einfügen/Aktualisieren über Stream Analytics
 Die Stream Analytics-Integration mit DocumentDB ermöglicht das Einfügen oder Aktualisieren von Datensätzen in Ihrer DocumentDB-Sammlung auf der Grundlage einer angegebenen Dokument-ID-Spalte. Dies wird auch als *Upsert*(Kunstwort aus Update und Insert) bezeichnet.
 
 Stream Analytics nutzt einen optimistischen Upsert-Ansatz, bei dem Aktualisierungen nur erfolgen, wenn eine Einfügung aufgrund eines Dokument-ID-Konflikts keinen Erfolg hat. Diese Aktualisierung wird von Stream Analytics mit einem PATCH-Befehl ausgeführt. Dadurch sind Teilaktualisierungen des Dokuments möglich, was bedeutet, dass das Hinzufügen neuer Eigenschaften oder Austauschen einer vorhandenen Eigenschaft schrittweise erfolgt. Beachten Sie, dass Änderungen der Werte von Arrayeigenschaften in Ihrem JSON-Dokument dazu führen, dass das gesamte Array überschrieben wird, d. h. nicht zusammengeführt wird.
 
 ## <a name="data-partitioning-in-documentdb"></a>Partitionieren von Daten in DocumentDB
-Partitionierte DocumentDB-Sammlungen werden jetzt unterstützt und für die Partitionierung Ihrer Daten empfohlen. 
+Für die Partitionierung Ihrer Daten werden [partitionierte DocumentDB-Sammlungen](../documentdb/documentdb-partition-data.md#single-partition-and-partitioned-collections) empfohlen. 
 
-Bei einzelnen DocumentDB-Sammlungen können Sie Ihre Daten weiterhin auf der Grundlage der Abfragemuster und Leistungsanforderungen Ihrer Anwendung partitionieren. Jede Sammlung kann (maximal) bis zu 10 GB Daten enthalten. Derzeit besteht keine Möglichkeit, eine Sammlung zentral hochzuskalieren (oder überlaufen zu lassen). Für eine horizontale Skalierung ermöglicht Stream Analytics das Schreiben mehrerer Sammlungen mit einem gegebenen Präfix (siehe die nachfolgenden Nutzungsdetails). Stream Analytics verwendet die konsistente [HashPartitionResolver](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.partitioning.hashpartitionresolver.aspx)-Strategie basierend auf der vom Benutzer angegebenen „PartitionKey“-Spalte, um die Ausgabedatensätze zu partitionieren. Die Anzahl der Sammlungen mit dem angegebenen Präfix zur Startzeit des Streamingauftrags wird als Anzahl der Ausgabepartitionen verwendet, in der Auftrag parallel schreibt (DocumentDB-Sammlungen = Ausgabepartitionen). Für eine einzelne S3-Sammlung mit verzögerter Indizierung, in die nur Einfügungen erfolgen, kann ein Schreibdurchsatz von 0,4 MB/s erwartet werden. Mithilfe mehrerer Sammlungen können Sie einen höheren Durchsatz und eine höhere Kapazität ermöglichen.
+Bei einzelnen DocumentDB-Sammlungen können Sie Ihre Daten in Stream Analytics weiterhin auf der Grundlage der Abfragemuster und Leistungsanforderungen Ihrer Anwendung partitionieren. Jede Sammlung kann (maximal) bis zu 10 GB Daten enthalten. Derzeit besteht keine Möglichkeit, eine Sammlung zentral hochzuskalieren (oder überlaufen zu lassen). Für eine horizontale Skalierung ermöglicht Stream Analytics das Schreiben mehrerer Sammlungen mit einem gegebenen Präfix (siehe die nachfolgenden Nutzungsdetails). Stream Analytics verwendet die konsistente [HashPartitionResolver](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.partitioning.hashpartitionresolver.aspx)-Strategie basierend auf der vom Benutzer angegebenen „PartitionKey“-Spalte, um die Ausgabedatensätze zu partitionieren. Die Anzahl der Sammlungen mit dem angegebenen Präfix zur Startzeit des Streamingauftrags wird als Anzahl der Ausgabepartitionen verwendet, in der Auftrag parallel schreibt (DocumentDB-Sammlungen = Ausgabepartitionen). Für eine einzelne Sammlung mit verzögerter Indizierung, in die nur Einfügungen erfolgen, kann ein Schreibdurchsatz von 0,4 MB/s erwartet werden. Mithilfe mehrerer Sammlungen können Sie einen höheren Durchsatz und eine höhere Kapazität ermöglichen.
 
 Wenn Sie beabsichtigen, die Anzahl der Partitionen künftig zu erhöhen, müssen Sie den Auftrag beenden, die Daten in Ihren vorhandenen Sammlungen in neuen Sammlungen neu partitionieren und dann den Stream Analytics-Auftrag neu starten. Weitere Informationen zum Verwenden von „PartitionResolver“ und Neupartitionierung sowie Beispielcode werden in einem Folgeartikel enthalten sein. Der Artikel [Partitionieren und Skalieren von Daten in DocumentDB](../documentdb/documentdb-partition-data.md) enthält auch entsprechende Details.
 
@@ -68,11 +66,6 @@ Partitionierte Sammlung | Mehrere Sammlungen mit einer einzelnen Partition
 * **Muster für Sammlungsnamen**: Der Sammlungsname oder das Muster für die zu verwendenden Sammlungen. Das Sammlungsnamenformat kann mit dem optionalen Token {partition} gebildet werden, wobei Partitionen bei 0 beginnen. Im Folgenden finden Sie Beispiele gültiger Eingaben:  
   1\) MyCollection – Eine Sammlung mit dem Namen „MyCollection“ muss vorhanden sein.  
   2\) MyCollection{partition} – Solche Auflistungen müssen vorhanden sein: „MyCollection0“, „MyCollection1“, „MyCollection2“ usw.  
-* **Partitionsschlüssel**: Optional. Nur erforderlich, wenn Sie im Muster Ihres Sammlungsnamens ein {partition}-Token verwenden. Der Name des Felds in Ausgabeereignissen, in dem der Schlüssel zur sammlungsübergreifenden Partitionierung der Ausgabe angegeben wird. Für die Ausgabe einer einzelnen Sammlung kann eine beliebige Ausgabespalte wie „PartitionId“ verwendet werden.  
+* **Partitionsschlüssel**: Optional. Nur erforderlich, wenn Sie im Muster Ihres Sammlungsnamens ein {partition}-Token verwenden. Der Name des Felds in Ausgabeereignissen, das zur Angabe des Schlüssels für die Partitionierung der Ausgabe über Sammlungen hinweg verwendet wird. Für die Ausgabe einer einzelnen Sammlung kann eine beliebige Ausgabespalte wie „PartitionId“ verwendet werden.  
 * **Dokument-ID** : Optional. Der Name des Felds in Ausgabeereignissen, das zur Angabe des Primärschlüssels verwendet wird, auf dem Einfüge- und Aktualisierungsvorgänge basieren.  
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

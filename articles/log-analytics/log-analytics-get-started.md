@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 02/08/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: f75386f970aeb5694d226cfcd569b8c04a253191
-ms.openlocfilehash: 0f418af5728b6a156ebc72fb99a3d16d559654ed
-ms.lasthandoff: 02/10/2017
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: 634b4c99b746ad0b8b3238e11b3c305d2cf7082f
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -27,7 +27,7 @@ Azure Log Analytics ist im Handumdrehen eingerichtet und unterstützt Sie bei de
 Dieser Artikel ist als Einführung in Log Analytics konzipiert und führt Sie im Rahmen eines kurzen Tutorials durch eine einfache Bereitstellung in Azure, damit Sie den Dienst verwenden können. Der logische Container, in dem Ihre Verwaltungsdaten in Azure gespeichert werden, wird als Arbeitsbereich bezeichnet. Nachdem Sie sich mit diesen Informationen vertraut gemacht und Ihre eigene Auswertung abgeschlossen haben, können Sie den Auswertungsarbeitsbereich entfernen. Da es sich bei diesem Artikel um ein Tutorial handelt, werden darin keine geschäftlichen Anforderungen, Planungsinformationen oder Architekturaspekte behandelt.
 
 >[!NOTE]
->Falls Sie die Microsoft Azure Government-Cloud verwenden, lesen Sie stattdessen die [Dokumentation zu Azure Government-Überwachung und -Verwaltung](https://review.docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#log-analytics).
+>Falls Sie die Microsoft Azure Government-Cloud verwenden, lesen Sie stattdessen die [Dokumentation zu Azure Government-Überwachung und -Verwaltung](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#log-analytics).
 
 Hier sehen Sie einen kurzen Überblick über die ersten Schritte:
 

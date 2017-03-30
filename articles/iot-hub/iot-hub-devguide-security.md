@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 01/04/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: efd7aab21a9899ed0f56ffeeda362a61d69ffdc9
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 1345af54729f278229c98e596d0d213331c2faaf
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -293,7 +293,7 @@ Sie können ein beliebiges X.509-Zertifikat zum Authentifizieren eines Geräts b
 
 * **Ein vorhandenes X.509-Zertifikat**. Einem Gerät ist möglicherweise bereits ein X.509-Zertifikat zugeordnet. Das Gerät kann dieses Zertifikat für die Authentifizierung bei IoT Hub verwenden.
 * **Ein selbst generiertes und selbstsigniertes X.509-Zertifikat**. Ein Gerätehersteller oder interner Bereitsteller kann diese Zertifikate generieren und den entsprechenden privaten Schlüssel (und das Zertifikat) auf dem Gerät speichern. Sie können dafür Tools wie etwa [OpenSSL][lnk-openssl] und das Windows-Hilfsprogramm [SelfSignedCertificate][lnk-selfsigned] verwenden.
-* **Ein von einer Zertifizierungsstelle signiertes X.509-Zertifikat**. Sie können auch ein von einer Zertifizierungsstelle generiertes und signiertes X.509-Zertifikat verwenden, um ein Gerät zu identifizieren und das Gerät bei IoT Hub zu authentifizieren.
+* **Ein von einer Zertifizierungsstelle signiertes X.509-Zertifikat**. Sie können auch ein von einer Zertifizierungsstelle generiertes und signiertes X.509-Zertifikat verwenden, um ein Gerät zu identifizieren und das Gerät bei IoT Hub zu authentifizieren. IoTHub überprüft lediglich, ob der verwendete Fingerabdruck dem konfigurierten Fingerabdruck entspricht. Die Zertifikatkette wird dagegen nicht überprüft.
 
 Ein Gerät verwendet entweder ein X.509-Zertifikat oder ein Sicherheitstoken für die Authentifizierung, aber nicht beides.
 

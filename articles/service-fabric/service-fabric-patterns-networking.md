@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 3021ebbe88705b0c5a1691a45ed0ba400af6dd34
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: 0753fb3a4b08b3bda9da1f5a31c577b354197588
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -33,7 +33,7 @@ Service Fabric wird in einer standardmäßigen VM-Skalierungsgruppe ausgeführt.
 
 Service Fabric unterscheidet sich in einem Aspekt von anderen Netzwerkfeatures. Das [Azure-Portal](https://portal.azure.com) verwendet intern den Service Fabric-Ressourcenanbieter, um Informationen über Knoten und Anwendungen von einem Cluster abzurufen. Der Service Fabric-Ressourcenanbieter erfordert öffentlich zugänglichen eingehenden Zugriff auf den HTTP-Gatewayport (standardmäßig Port 19080) auf dem Verwaltungsendpunkt. [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) verwendet den Verwaltungsendpunkt zur Verwaltung Ihres Clusters. Der Service Fabric-Ressourcenanbieter verwendet diesen Port außerdem zur Abfrage von Informationen über Ihren Cluster, um sie im Azure-Portal anzuzeigen. 
 
-Wenn vom Service Fabric-Ressourcenanbieter aus kein Zugriff auf Port 190980 möglich ist, wird eine Meldung wie *Knoten nicht gefunden* im Portal angezeigt, und die Liste Ihrer Knoten und Anwendungen ist leer. Wenn Sie Ihren Cluster im Azure-Portal anzeigen möchten, muss Ihr Lastenausgleich eine öffentliche IP-Adresse bereitstellen, und Ihre Netzwerksicherheitsgruppe muss über Port 19080 eingehenden Datenverkehr zulassen. Wenn Ihr Setup diese Anforderungen nicht erfüllt, zeigt das Azure-Portal den Status Ihres Clusters nicht an.
+Wenn vom Service Fabric-Ressourcenanbieter aus kein Zugriff auf Port 19080 möglich ist, wird eine Meldung wie *Knoten nicht gefunden* im Portal angezeigt, und die Liste Ihrer Knoten und Anwendungen ist leer. Wenn Sie Ihren Cluster im Azure-Portal anzeigen möchten, muss Ihr Lastenausgleich eine öffentliche IP-Adresse bereitstellen, und Ihre Netzwerksicherheitsgruppe muss über Port 19080 eingehenden Datenverkehr zulassen. Wenn Ihr Setup diese Anforderungen nicht erfüllt, zeigt das Azure-Portal den Status Ihres Clusters nicht an.
 
 ## <a name="templates"></a>Vorlagen
 

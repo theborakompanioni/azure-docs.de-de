@@ -16,9 +16,9 @@ ms.date: 02/27/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: dc4a28b64620ecc4829d614b9a3c9e1939fd0063
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: c187467e8af7503ea22c5953417d8282be97856c
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -91,6 +91,7 @@ Alle Lösungen in der folgenden Tabelle sind im Azure-Portal und im Lösungskata
 | [Container](log-analytics-containers.md)                                                  | <ul><li>Insight&nbsp;&&nbsp;Analytics</li><li>Log Analytics</li></ul>     | Kostenlos<br> Standard<br> Premium&nbsp;(OMS)<br> Pro&nbsp;GB&nbsp;(eigenständig)<br> Pro&nbsp;Knoten&nbsp;(OMS)     | |
 | HDInsight HBase-Überwachung <br>(Vorschau)                                                     | <ul><li>Insight&nbsp;&&nbsp;Analytics</li><li>Log Analytics</li></ul>     | Kostenlos<br> Standard<br> Premium&nbsp;(OMS)<br> Pro&nbsp;GB&nbsp;(eigenständig)<br> Pro&nbsp;Knoten&nbsp;(OMS)     | |
 | [Key Vault-Analysen](log-analytics-azure-key-vault.md)                      | <ul><li>Insight&nbsp;&&nbsp;Analytics</li><li>Log Analytics</li></ul>     | Kostenlos<br> Standard<br> Premium&nbsp;(OMS)<br> Pro&nbsp;GB&nbsp;(eigenständig)<br> Pro&nbsp;Knoten&nbsp;(OMS)     | |
+| Logic Apps B2B                      | <ul><li>Insight&nbsp;&&nbsp;Analytics</li><li>Log Analytics</li></ul>     | Kostenlos<br> Standard<br> Premium&nbsp;(OMS)<br> Pro&nbsp;GB&nbsp;(eigenständig)<br> Pro&nbsp;Knoten&nbsp;(OMS)     | |
 | [Bewertung von Schadsoftware](log-analytics-malware.md)                                             | <ul><li>Sicherheit und Compliance</li></ul>                                    | Kostenlos<br> Pro&nbsp;Knoten&nbsp;(OMS)                                                                               | |
 | [Netzwerkleistungsmonitor](log-analytics-network-performance-monitor.md) <br>(Vorschau)    | <ul><li>Insight & Analytics</li></ul>                                     | Kostenlos<br> Pro&nbsp;Knoten&nbsp;(OMS)                                                                         | |
 | Office 365-Analysen <br>(Vorschau)                                                        | <ul><li>Insight&nbsp;&&nbsp;Analytics</li><li>Log Analytics</li></ul>     | Kostenlos<br> Standard<br> Premium&nbsp;(OMS)<br> Pro&nbsp;GB&nbsp;(eigenständig)<br> Pro&nbsp;Knoten&nbsp;(OMS)     | |
@@ -103,7 +104,8 @@ Alle Lösungen in der folgenden Tabelle sind im Azure-Portal und im Lösungskata
 | [SurfaceHub](log-analytics-surface-hubs.md)                                                    | <ul><li>Insight&nbsp;&&nbsp;Analytics</li><li>Log Analytics</li></ul>     | Kostenlos<br> Standard<br> Premium&nbsp;(OMS)<br> Pro&nbsp;GB&nbsp;(eigenständig)<br> Pro&nbsp;Knoten&nbsp;(OMS)     | |
 | [System Center Operations Manager-Bewertung](log-analytics-scom-assessment.md) <br>(Vorschau) | <ul><li>Insight & Analytics</li><li>Log Analytics</li></ul>         | Kostenlos<br> Standard<br> Premium&nbsp;(OMS)<br> Pro&nbsp;GB&nbsp;(eigenständig)<br> Pro&nbsp;Knoten&nbsp;(OMS)     | |
 | Updateverwaltung                                                                               | <ul><li>Automation & Control</li></ul>                                    | Kostenlos<br> Pro&nbsp;Knoten&nbsp;(OMS)                                                                            | Erfordert die Verknüpfung Ihres Log Analytics-Arbeitsbereichs mit einem Automation-Konto |
-| [Upgradeanalysen](https://technet.microsoft.com/itpro/windows/deploy/manage-windows-upgrades-with-upgrade-analytics) <br>(Vorschau)                                                             | <ul><li>Insight&nbsp;&&nbsp;Analytics</li><li>Log Analytics</li></ul>     | Kostenlos<br> Standard<br> Premium&nbsp;(OMS)<br> Pro&nbsp;GB&nbsp;(eigenständig)<br> Pro&nbsp;Knoten&nbsp;(OMS)     | Keine Gebühr für Daten oder Knoten |
+| [Update Compliance](https://technet.microsoft.com/en-us/itpro/windows/manage/update-compliance-get-started) <br>(Vorschau)                                                             | <ul><li>Insight&nbsp;&&nbsp;Analytics</li><li>Log Analytics</li></ul>     | Kostenlos<br> Standard<br> Premium&nbsp;(OMS)<br> Pro&nbsp;GB&nbsp;(eigenständig)<br> Pro&nbsp;Knoten&nbsp;(OMS)     | Keine Gebühr für Daten oder Knoten |
+| [Upgrade Readiness](https://technet.microsoft.com/itpro/windows/deploy/manage-windows-upgrades-with-upgrade-readiness)                                                             | <ul><li>Insight&nbsp;&&nbsp;Analytics</li><li>Log Analytics</li></ul>     | Kostenlos<br> Standard<br> Premium&nbsp;(OMS)<br> Pro&nbsp;GB&nbsp;(eigenständig)<br> Pro&nbsp;Knoten&nbsp;(OMS)     | Keine Gebühr für Daten oder Knoten |
 | [VMware-Überwachung](log-analytics-vmware.md) <br>(Vorschau)                                 | <ul><li>Insight&nbsp;&&nbsp;Analytics</li><li>Log Analytics</li></ul>     | Kostenlos<br> Standard<br> Premium&nbsp;(OMS)<br> Pro&nbsp;GB&nbsp;(eigenständig)<br> Pro&nbsp;Knoten&nbsp;(OMS)     | |
 | Wire Data 2.0<br>(Vorschau)                                                                   | <ul><li>Insight & Analytics</li></ul>                                      | Kostenlos<br> Pro&nbsp;Knoten&nbsp;(OMS)                                                                         | Verfügbar in den Regionen „USA, Osten“ und „Europa, Westen“ |
 

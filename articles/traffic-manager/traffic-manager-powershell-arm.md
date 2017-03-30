@@ -1,5 +1,5 @@
 ---
-title: "Unterstützung des Azure Resource Manager für Traffic Manager | Microsoft Docs"
+title: Verwenden von PowerShell zum Verwalten von Traffic Manager in Azure | Microsoft Docs
 description: "Verwenden von PowerShell für Traffic Manager mit Azure Resource Manager"
 services: traffic-manager
 documentationcenter: na
@@ -11,15 +11,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/11/2016
+ms.date: 03/16/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
-ms.openlocfilehash: f97ba8ebc940d4b3eec5d2610503f8a86af8dbe2
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: c2fb44817f168eee8303d0c07473f043ae30d350
+ms.lasthandoff: 03/18/2017
 
 ---
 
-# <a name="azure-resource-manager-support-for-azure-traffic-manager"></a>Unterstützung des Azure Resource Manager für Azure Traffic Manager
+# <a name="using-powershell-to-manage-traffic-manager"></a>Verwenden von PowerShell zum Verwalten von Traffic Manager
 
 Azure Resource Manager ist die bevorzugte Verwaltungsschnittstelle für Dienste in Azure. Azure Traffic Manager-Profile können mithilfe von APIs und Tools auf Basis von Azure Resource Manager verwaltet werden.
 
@@ -30,23 +31,6 @@ Azure Traffic Manager wird mithilfe einer Reihe von Einstellungen, dem sogenannt
 Jedes Traffic Manager-Profil wird durch eine Ressource vom Typ „TrafficManagerProfiles“ dargestellt. Auf der REST-API-Ebene lautet der URI für jedes Profil wie folgt:
 
     https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/trafficManagerProfiles/{profile-name}?api-version={api-version}
-
-## <a name="comparison-with-the-azure-traffic-manager-classic-api"></a>Vergleich mit der klassischen Azure Traffic Manager-API
-
-Die Azure Resource Manager-Unterstützung für Traffic Manager verwendet eine andere Terminologie als das klassische Bereitstellungsmodell. Die folgende Tabelle zeigt die Unterschiede zwischen den Resource Manager- und den klassischen Begriffen:
-
-| Resource Manager-Begriff | Klassischer Begriff |
-| --- | --- |
-| Datenverkehrsrouting-Methode |Lastenausgleichsmethode |
-| Prioritätsmethode |Failover-Methode |
-| Gewichtete Methode |Roundrobin-Methode |
-| Leistungsmethode |Leistungsmethode |
-
-Die Änderung der Terminologie wurde aufgrund von Kundenfeedback eingeführt, um die Klarheit zu verbessern und Missverständnisse zu reduzieren. Es gibt keinen Unterschied in der Funktionalität.
-
-## <a name="limitations"></a>Einschränkungen
-
-Traffic Manager-Endpunkte, die auf einen Endpunkt vom Typ „AzureEndpoints“ für eine Web-App verweisen, können nur auf den standardmäßigen, für die Produktion verwendeten [Web-App-Slot](../app-service-web/web-sites-staged-publishing.md) verweisen. Benutzerdefinierte Slots werden nicht unterstützt. Um dieses Problem zu umgehen, können benutzerdefinierte Slots so konfiguriert werden, dass sie den Typ „ExternalEndpoints“ verwenden.
 
 ## <a name="setting-up-azure-powershell"></a>Einrichten von Azure PowerShell
 
@@ -127,11 +111,10 @@ In allen drei Fällen können Endpunkte auf zwei Arten hinzugefügt werden:
 
 ## <a name="adding-azure-endpoints"></a>Hinzufügen von Azure-Endpunkten
 
-Azure-Endpunkte verweisen auf in Azure gehostete Dienste. Es werden drei Arten von Azure-Endpunkten unterstützt:
+Azure-Endpunkte verweisen auf in Azure gehostete Dienste. Zwei Arten von Azure-Endpunkten werden unterstützt:
 
 1. Azure-Web-Apps 
-2. „Klassische“ Clouddienste (die entweder einen PaaS-Dienst oder virtuelle IaaS-Computer enthalten können)
-3. Azure-PublicIpAddress-Ressourcen (die an einen Load Balancer oder an die Netzwerkkarte eines virtuellen Computers angefügt werden können). Der PublicIpAddress-Ressource muss ein DNS-Name zugewiesen werden, damit sie in Traffic Manager verwendet werden kann.
+2. Azure-PublicIpAddress-Ressourcen (die an einen Load Balancer oder an die Netzwerkkarte eines virtuellen Computers angefügt werden können). Der PublicIpAddress-Ressource muss ein DNS-Name zugewiesen werden, damit sie in Traffic Manager verwendet werden kann.
 
 In jedem Fall gilt Folgendes:
 
@@ -152,17 +135,7 @@ $webapp2 = Get-AzureRMWebApp -Name webapp2
 Add-AzureRmTrafficManagerEndpointConfig -EndpointName webapp2ep -TrafficManagerProfile $profile -Type AzureEndpoints -TargetResourceId $webapp2.Id -EndpointStatus Enabled
 Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $profile
 ```
-
-### <a name="example-2-adding-a-classic-cloud-service-endpoint-using-new-azurermtrafficmanagerendpoint"></a>Beispiel 2: Hinzufügen eines klassischen Clouddienstendpunkts mithilfe von `New-AzureRmTrafficManagerEndpoint`
-
-In diesem Beispiel wird einem Traffic Manager-Profil ein „klassischer“ Clouddienst-Endpunkt hinzugefügt. In diesem Beispiel haben wir das Profil mit den Profil- und Ressourcengruppennamen angegeben, anstatt ein Profilobjekt zu übergeben. Beide Verfahren werden unterstützt.
-
-```powershell
-$cloudService = Get-AzureRmResource -ResourceName MyCloudService -ResourceType "Microsoft.ClassicCompute/domainNames" -ResourceGroupName MyCloudService
-New-AzureRmTrafficManagerEndpoint -Name MyCloudServiceEndpoint -ProfileName MyProfile -ResourceGroupName MyRG -Type AzureEndpoints -TargetResourceId $cloudService.Id -EndpointStatus Enabled
-```
-
-### <a name="example-3-adding-a-publicipaddress-endpoint-using-new-azurermtrafficmanagerendpoint"></a>Beispiel 3: Hinzufügen eines publicIpAddress-Endpunkts mit `New-AzureRmTrafficManagerEndpoint`
+### <a name="example-2-adding-a-publicipaddress-endpoint-using-new-azurermtrafficmanagerendpoint"></a>Beispiel 2: Hinzufügen eines publicIpAddress-Endpunkts mit `New-AzureRmTrafficManagerEndpoint`
 
 In diesem Beispiel wird eine Ressource für eine öffentliche IP-Adresse zum Traffic Manager-Profil hinzugefügt. Für die öffentliche IP-Adresse muss ein DNS-Name konfiguriert sein. Sie kann an die Netzwerkkarte eines virtuellen Computers oder an einen Load Balancer gebunden sein.
 
@@ -339,9 +312,4 @@ Get-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG | Remov
 [Traffic Manager-Überwachung](traffic-manager-monitoring.md)
 
 [Leistungsüberlegungen zu Traffic Manager](traffic-manager-performance-considerations.md)
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 
