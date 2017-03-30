@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/17/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: bb4188bed4839aea6d19c49a8f0e6d154a343ec1
-ms.openlocfilehash: e0f77f88ee91b263c49a148197e418fdf64cca0b
+ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
+ms.openlocfilehash: 9702f179a65754be88646987f868385b02a9f2d7
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -483,7 +484,7 @@ Wenn Sie mehrere Dateien (file.txt, file2.txt, file3.txt) mit dem gleichen Inhal
 
 Die Ausgabedatei enthält jetzt drei Zeilen, jeweils eine für jede Datei (Blob) in dem Ordner, der dem Slice (2015-11-16-00) zugeordnet ist.
 
-Bei jeder Aktivitätsausführung wird eine Aufgabe erstellt. In diesem Beispiel ist nur eine Aktivität in der Pipeline vorhanden. Wenn ein Slice von der Pipeline verarbeitet wird, führt die benutzerdefinierte Aktivität Azure Batch aus, um den Slice zu verarbeiten. Da es sich um&5; Slices handelt (jedes Segment kann mehrere Blobs oder Dateien haben), werden&5; Aufgaben in Azure Batch erstellt. Wird eine Aufgabe mit Batch ausgeführt, so wird tatsächlich die benutzerdefinierte Aktivität ausgeführt.
+Bei jeder Aktivitätsausführung wird eine Aufgabe erstellt. In diesem Beispiel ist nur eine Aktivität in der Pipeline vorhanden. Wenn ein Slice von der Pipeline verarbeitet wird, führt die benutzerdefinierte Aktivität Azure Batch aus, um den Slice zu verarbeiten. Da es sich um 5 Slices handelt (jedes Segment kann mehrere Blobs oder Dateien haben), werden 5 Aufgaben in Azure Batch erstellt. Wird eine Aufgabe mit Batch ausgeführt, so wird tatsächlich die benutzerdefinierte Aktivität ausgeführt.
 
 Die folgende exemplarische Vorgehensweise enthält weitere Details.
 
@@ -525,7 +526,7 @@ In diesem Schritt erstellen Sie einen verknüpften Dienst für Ihr **Azure Batch
 
    1. Ersetzen Sie **Kontoname** mit dem Namen Ihres Azure Batch-Kontos.
    2. Ersetzen Sie **Zugriffsschlüssel** durch den Zugriffsschlüssel des Azure Batch-Kontos.
-   3. Geben Sie die ID des Pools für die **poolName**-Eigenschaft** ein.** Für diese Eigenschaft können Sie entweder den Poolnamen oder die Pool-ID eingeben.
+   3. Geben Sie die ID des Pools für die **poolName**-Eigenschaft**ein.** Für diese Eigenschaft können Sie entweder den Poolnamen oder die Pool-ID eingeben.
    4. Geben Sie die Batch-URI für die JSON-Eigenschaft **batchUri** ein.
 
       > [!IMPORTANT]
@@ -762,7 +763,7 @@ In diesem Schritt testen Sie die Pipeline durch Ablegen von Dateien in die Einga
 2. Doppelklicken Sie in der Diagrammansicht auf das Eingabedataset **inputDataset**.
 
    ![](./media/data-factory-data-processing-using-batch/image11.png)
-3. Daraufhin sollte das Blatt **InputDataset** mit allen&5; Slices bereit ein. Beachten Sie die **SLICE STARTZEIT** und **SLICE-ENDZEIT** für jeden Slice.
+3. Daraufhin sollte das Blatt **InputDataset** mit allen 5 Slices bereit ein. Beachten Sie die **SLICE STARTZEIT** und **SLICE-ENDZEIT** für jeden Slice.
 
    ![](./media/data-factory-data-processing-using-batch/image12.png)
 4. Klicken Sie in der **Diagrammansicht** auf **OutputDataset**.
@@ -891,10 +892,10 @@ Sie können dieses Beispiel erweitern, um mehr über Azure Data Factory und Azur
 ### <a name="next-steps-consume-the-data"></a>Nächste Schritte: Nutzung der Daten
 Nachdem Sie Daten verarbeitet haben, können Sie sie mit Online-Tools wie **Microsoft Power BI**nutzen. Hier erfahren Sie mehr über Power BI und die Verwendung in Azure:
 
-* [Untersuchen eines Datasets in Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-service-get-data/)
-* [Erste Schritte mit Power BI Desktop](https://powerbi.microsoft.com/en-us/documentation/powerbi-desktop-getting-started/)
-* [Aktualisieren von Daten in Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-refresh-data/)
-* [Azure und Power BI – grundlegende Übersicht](https://powerbi.microsoft.com/en-us/documentation/powerbi-azure-and-power-bi/)
+* [Untersuchen eines Datasets in Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-data/)
+* [Erste Schritte mit Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/)
+* [Aktualisieren von Daten in Power BI](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/)
+* [Azure und Power BI – grundlegende Übersicht](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
 
 ## <a name="references"></a>Referenzen
 * [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/)
@@ -911,9 +912,4 @@ Nachdem Sie Daten verarbeitet haben, können Sie sie mit Online-Tools wie **Micr
 
 [batch-explorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
 [batch-explorer-walkthrough]: http://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

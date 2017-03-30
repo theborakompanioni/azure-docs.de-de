@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 51aabf4938714c597ae0cfb2ec524f326b6e355a
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 8ec4e8699eb2f2e060db264634b04abfacf40e34
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -28,7 +28,7 @@ ms.lasthandoff: 03/21/2017
 Sie können die Bereitstellung Ihrer Web-App, Ihres mobilen Back-Ends oder Ihrer API-App in [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) in einem separaten Bereitstellungsslot anstelle des Standardproduktionsslots vornehmen, wenn die Ausführung im App Service-Plan **Standard** oder **Premium** erfolgt. Bereitstellungsslots sind tatsächlich aktive Apps mit eigenen Hostnamen. Elemente für App-Inhalte und -Konfigurationen können zwischen zwei Bereitstellungsslots, einschließlich des Produktionsslots, ausgetauscht werden. Die Bereitstellung von Anwendungen in einem Bereitstellungsslot hat die folgenden Vorteile:
 
 * Sie können App-Änderungen in einem Stagingbereitstellungsslot überprüfen, bevor Sie die App in den Produktionsslot überführen.
-* Indem Sie eine App zuerst in einem Slot bereitstellen und sie dann in den Produktionsslot überführen, stellen Sie sicher, dass alle Instanzen erst nach einer Anlaufzeit in den Produktionsslot übernommen werden. Dadurch vermeiden Sie Ausfallzeiten bei der Bereitstellung der App. Die Verkehrsweiterleitung ist nahtlos, und es werden keine Anfragen aufgrund von Überführungsoperationen fallengelassen. Dieser gesamte Workflow kann durch Konfigurieren von [Automatisch tauschen](#configure-auto-swap-for-your-web-app) automatisiert werden, wenn keine Überprüfung vor dem Austauschen erforderlich ist.
+* Indem Sie eine App zuerst in einem Slot bereitstellen und sie dann in den Produktionsslot überführen, stellen Sie sicher, dass alle Instanzen erst nach einer Anlaufzeit in den Produktionsslot übernommen werden. Dadurch vermeiden Sie Ausfallzeiten bei der Bereitstellung der App. Die Verkehrsweiterleitung ist nahtlos, und es werden keine Anfragen aufgrund von Überführungsoperationen fallengelassen. Dieser gesamte Workflow kann durch Konfigurieren von [Automatisch tauschen](#Auto-Swap) automatisiert werden, wenn keine Überprüfung vor dem Austauschen erforderlich ist.
 * Nach der Überführung enthält der Slot mit der vorherigen Staging-App die vorherige Produktions-App. Wenn die in den Produktionsslot überführten Änderungen nicht Ihren Erwartungen entsprechen, können Sie denselben Austausch sofort noch einmal vornehmen, um die "letzte als gut befundene Website" zurückzuerhalten.
 
 Jeder App Service-Planmodus unterstützt eine andere Anzahl von Bereitstellungsslots. Informationen zum Herausfinden, wie viele Slots Ihr App-Modus unterstützt, finden Sie unter [App-Service-Preisdetails](https://azure.microsoft.com/pricing/details/app-service/).
@@ -130,6 +130,8 @@ Bei Verwendung der Option **Mit Vorschau austauschen** (siehe [Austauschen von B
 Sie können eine Vorschau anzeigen, wie genau sich die App mit der Konfiguration des Zielslot verhält. Nach Abschluss der Überprüfung schließen Sie den Austausch in einem gesonderten Schritt ab. Dieser Schritt hat den zusätzlichen Vorteil, dass der Quellslot bereits mit der gewünschten Konfiguration vorbereitet ist, sodass auf den Clients keine Ausfallzeiten anfallen.  
 
 Beispiele für Azure PowerShell-Cmdlets für den mehrstufigen Austausch sind im Abschnitt „Azure-PowerShell-Cmdlets für Bereitstellungsslots“ enthalten.
+
+<a name="Auto-Swap"></a>
 
 ## <a name="configure-auto-swap"></a>Konfigurieren des automatischen Austauschs
 Das Feature „Automatisch tauschen“ rationalisiert DevOps-Szenarien, bei denen Ihre App ständig ohne Kaltstarts und ohne Ausfallzeiten für Endkunden der App bereitgestellt werden soll. Wenn ein Bereitstellungsslot in der Produktion für „Automatisch tauschen“ konfiguriert wurde, überführt App Service bei jeder Codeaktualisierung die App per Push in die Produktion, nachdem sie bereits im Slot vorbereitet wurde.

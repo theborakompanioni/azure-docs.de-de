@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/16/2017
+ms.date: 03/29/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: c27b6ed05faa5d9c408e6812d4ecbb8e0e2bbbab
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 6d048b73528d1812f1be9585d30812ca4aeaa397
+ms.lasthandoff: 03/30/2017
 
 ---
 
@@ -25,7 +25,6 @@ ms.lasthandoff: 03/17/2017
 Mit Microsoft Azure Traffic Manager können Sie steuern, wie Datenverkehr im Netzwerk auf Anwendungsbereitstellungen in verschiedenen Rechenzentren verteilt wird. Sie konfigurieren jede Anwendungsbereitstellung in Traffic Manager als „Endpunkt“. Wenn Traffic Manager eine DNS-Anforderung empfängt, wählt er einen verfügbaren Endpunkt, der in der DNS-Antwort zurückgegeben wird. Traffic Manager trifft die Auswahl nach dem aktuellen Endpunktstatus und der Methode für das Datenverkehrsrouting. Weitere Informationen finden Sie unter [Funktionsweise von Traffic Manager](traffic-manager-how-traffic-manager-works.md).
 
 Es gibt drei Arten von Endpunkten, die von Traffic Manager unterstützt werden:
-
 * **Azure-Endpunkte** werden für Dienste verwendet, die unter Azure gehostet werden.
 * **Externe Endpunkte** werden für außerhalb von Azure gehostete Dienste verwendet – entweder lokal oder über einen anderen Hostinganbieter.
 * **Geschachtelte Endpunkte** werden zum Kombinieren von Traffic Manager-Profilen verwendet, um flexiblere Schemas für das Routing von Datenverkehr zu erstellen. So können die Anforderungen von größeren und komplexeren Bereitstellungen erfüllt werden.
@@ -54,7 +53,7 @@ Externe Endpunkte werden für Dienste außerhalb von Azure verwendet. Beispielsw
 * Erweitern Sie eine vorhandene lokale Anwendung zur Reduzierung der Anwendungslatenz für Benutzer auf der ganzen Welt auf zusätzliche geografische Standorte in Azure. Weitere Informationen finden Sie unter [Traffic Manager Leistungsdatenverkehrrouting](traffic-manager-routing-methods.md#performance-traffic-routing-method).
 * Verwenden Sie Azure zum Bereitstellen zusätzlicher Kapazität für eine vorhandene lokale Anwendung, entweder fortlaufend oder als „Burst-to-Cloud“ für Spitzenlasten.
 
-In bestimmten Fällen ist es hilfreich, externe Endpunkte zum Verweisen auf Azure-Dienste zu verwenden (Beispiele unter [Häufig gestellte Fragen](#faq)). Die Integritätsprüfungen werden dann mit der Rate der Azure-Endpunkte berechnet, nicht mit der Rate der externen Endpunkte. Wenn Sie den zugrunde liegenden Dienst beenden oder löschen, werden die entsprechenden Integritätsprüfungen im Gegensatz zu Azure-Endpunkten aber weiter berechnet, bis Sie den Endpunkt in Traffic Manager deaktivieren oder löschen.
+In bestimmten Fällen ist es hilfreich, externe Endpunkte zum Verweisen auf Azure-Dienste zu verwenden (Beispiele unter [Häufig gestellte Fragen](traffic-manager-faqs.md#traffic-manager-endpoints)). Die Integritätsprüfungen werden dann mit der Rate der Azure-Endpunkte berechnet, nicht mit der Rate der externen Endpunkte. Wenn Sie den zugrunde liegenden Dienst beenden oder löschen, werden die entsprechenden Integritätsprüfungen im Gegensatz zu Azure-Endpunkten aber weiter berechnet, bis Sie den Endpunkt in Traffic Manager deaktivieren oder löschen.
 
 ## <a name="nested-endpoints"></a>Geschachtelte Endpunkte
 
@@ -66,7 +65,7 @@ Es gelten noch einige zusätzliche Aspekte in Bezug auf die Konfiguration von We
 
 1. Nur Web-Apps mit der SKU „Standard“ oder höher können mit Traffic Manager verwendet werden. Der Versuch, eine Web App mit einer niedrigeren SKU hinzuzufügen, löst einen Fehler aus. Das Herabstufen der SKU einer vorhandenen Web-App führt dazu, dass Traffic Manager keinen Datenverkehr mehr an diese Web-App sendet.
 2. Wenn ein Endpunkt eine HTTP-Anforderung empfängt, wird der „Hostheader“ in der Anforderung verwendet, um zu bestimmen, welche Web-App die Anforderung verarbeiten soll. Der Hostheader enthält den DNS-Namen zum Initiieren der Anforderung, z.B. „contosoapp.azurewebsites.net“. Um einen anderen DNS-Namen mit Ihrer Web-App verwenden zu können, muss der DNS-Name als benutzerdefinierter Domänenname für die App registriert sein. Wenn ein Web-App-Endpunkt als Azure-Endpunkt hinzugefügt wird, wird der DNS-Name des Traffic Manager-Profils automatisch für die App registriert. Diese Registrierung wird automatisch entfernt, wenn der Endpunkt gelöscht wird.
-3. Jedes Traffic Manager-Profil kann maximal einen Web-App-Endpunkt aus jeder Azure-Region aufweisen. Zur Umgehung dieser Einschränkung können Sie eine Web-App als externen Endpunkt konfigurieren. Weitere Informationen finden Sie in den [häufig gestellten Fragen](#faq).
+3. Jedes Traffic Manager-Profil kann maximal einen Web-App-Endpunkt aus jeder Azure-Region aufweisen. Zur Umgehung dieser Einschränkung können Sie eine Web-App als externen Endpunkt konfigurieren. Weitere Informationen finden Sie in den [häufig gestellten Fragen](traffic-manager-faqs.md#traffic-manager-endpoints).
 
 ## <a name="enabling-and-disabling-endpoints"></a>Aktivieren und Deaktivieren von Endpunkten
 

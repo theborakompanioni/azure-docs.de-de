@@ -16,9 +16,9 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 60bcd02d24e2084b9020ce56ef6a9f8268c6b1b5
-ms.openlocfilehash: 5da07683a4ca9fe1751debc163a0a5a595b6f82b
-ms.lasthandoff: 02/11/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 752dcb97101f4a8288125e3e41167095620d130f
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 02/11/2017
 Die folgenden Schritte veranschaulichen, wie Sie eine SQL-Datenbank über das [Azure-Portal](https://portal.azure.com) auf den gleichen oder einen anderen Server kopieren. 
 
 > [!NOTE]
-> Sie können eine SQL-Datenbank auch über [PowerShell](sql-database-copy-powershell.md) oder [Transact-SQL](sql-database-copy-transact-sql.md) kopieren.
+> Sie können eine SQL-Datenbank auch über [PowerShell](scripts/sql-database-copy-database-to-new-server-powershell.md) oder [Transact-SQL](sql-database-copy-transact-sql.md) kopieren.
 >
 
 Zum Kopieren einer SQL-Datenbank benötigen Sie Folgendes:
@@ -70,8 +70,7 @@ Informationen zum Auflösen von Anmeldungen, nachdem der Kopiervorgang abgeschlo
 * [SQL-Datenbank-Dokumentation](https://azure.microsoft.com/documentation/services/sql-database/)
 
 <!--Image references-->
-[1]: ./media/sql-database-copy-portal/copy.png
-[2]: ./media/sql-database-copy-portal/copy-ok.png
+
 [3]: ./media/sql-database-copy-portal/copy-notification.png
 [4]: ./media/sql-database-copy-portal/monitor-copy.png
 

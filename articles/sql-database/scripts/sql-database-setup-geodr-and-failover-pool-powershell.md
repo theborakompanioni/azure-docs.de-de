@@ -17,9 +17,9 @@ ms.workload: database
 ms.date: 03/07/2017
 ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: 9b7709901579260e3fe15e36af3fae95bd3e6132
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: ccb5b0545dd8b0eea47b17a06e18e4ae63024ea3
+ms.lasthandoff: 03/30/2017
 
 ---
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 03/10/2017
 
 Dieses PowerShell-Beispielskript konfiguriert die aktive Georeplikation für eine in einem Pool für elastische Datenbanken enthaltene Datenbank und führt ein Failover zum sekundären Replikat aus.
 
-Stellen Sie vor dem Ausführen dieses Skripts sicher, dass über das Cmdlet `Add-AzureRmAccount` eine Verbindung mit Azure hergestellt wurde.
+[!INCLUDE [sample-cli-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ## <a name="sample-scripts"></a>Beispielskripts
 

@@ -16,8 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 4f7527119f0e0955303858a52b638f6dbf483267
-ms.openlocfilehash: 084200ba25f0eb213100c638d164441c2618efe0
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 8f85a4cee6a59316eb5c321007b5b9d562c71302
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -37,7 +38,7 @@ Um „ReportViewer“ in Ihre Microsoft Azure-Website zu integrieren, müssen Si
 * **Veröffentlichen** der ASP.NET-Webanwendung in Azure
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Lesen Sie den Abschnitt "Allgemeine Empfehlungen und bewährte Methoden" in [SQL Server-Business Intelligence auf virtuellen Azure-Computern](virtual-machines-windows-classic-ps-sql-bi.md).
+Lesen Sie den Abschnitt "Allgemeine Empfehlungen und bewährte Methoden" in [SQL Server-Business Intelligence auf virtuellen Azure-Computern](../classic/ps-sql-bi.md).
 
 > [!NOTE]
 > ReportViewer-Steuerelemente werden mit Visual Studio Standard Edition oder höher geliefert. Wenn Sie die Web Developer Express Edition verwenden, müssen Sie die [MICROSOFT REPORT VIEWER 2012 RUNTIME](https://www.microsoft.com/download/details.aspx?id=35747) installieren, damit Sie die ReportViewer-Laufzeitfunktionen verwenden können.
@@ -89,13 +90,8 @@ Anleitungen zum Veröffentlichen einer ASP.NET Web-Anwendung in Azure finden Sie
 ## <a name="resources"></a>Ressourcen
 [Microsoft-Berichte](http://go.microsoft.com/fwlink/?LinkId=205399)
 
-[SQL Server-Business Intelligence auf virtuellen Azure-Computern](virtual-machines-windows-classic-ps-sql-bi.md)
+[SQL Server-Business Intelligence auf virtuellen Azure-Computern](../classic/ps-sql-bi.md)
 
-[Verwenden von PowerShell zum Erstellen einer Azure-VM mit einem Berichtsserver im einheitlichen Modus](virtual-machines-windows-classic-ps-sql-report.md)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
+[Verwenden von PowerShell zum Erstellen einer Azure-VM mit einem Berichtsserver im einheitlichen Modus](../classic/ps-sql-report.md)
 
 

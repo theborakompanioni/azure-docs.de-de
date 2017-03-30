@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 02/27/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 86ba122b406d8a3d633184982fbacab078d7c0d1
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 6195b80037762a7f71eee9138c765e4d342acd5f
+ms.lasthandoff: 03/28/2017
 
 
 ---
 # <a name="do-you-need-help-with-myapps"></a>Benötigen Sie Hilfe zu MyApps?
 
-Wahrscheinlich haben Sie diese Seite aufgerufen, weil Sie leider bei der Nutzung des MyApps-Portals auf ein Problem gestoßen sind. In manchen Fällen ist es erforderlich, dass Sie sich an den Helpdesk oder Ihren Administrator wenden, um ein Problem zu beheben, doch in diesem Thema zeigen wir Ihnen Schritte zu häufig gestellten Fragen, die Sie zunächst selbst ausprobieren können. 
+Wahrscheinlich haben Sie diese Seite aufgerufen, weil Sie leider bei der Nutzung des MyApps-Portals auf ein Problem gestoßen sind. In manchen Fällen ist es erforderlich, dass Sie sich an den Helpdesk oder Ihren Administrator wenden, um ein Problem zu beheben, doch in diesem Thema zeigen wir Ihnen Schritte zu häufig gestellten Fragen, die Sie zunächst selbst ausprobieren können.
 
-Wenn Sie Hilfe im Zusammenhang mit der Kennwortverwaltung suchen, könnten Sie [hier](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password) eine Antwort finden.
-  
+Wenn Sie Hilfe im Zusammenhang mit der Kennwortverwaltung suchen, könnten Sie [hier](active-directory-passwords-update-your-own-password.md#reset-your-password) eine Antwort finden.
+
 
 ## <a name="what-is-the-myapps-portal"></a>Was ist das MyApps-Portal?
 
@@ -35,9 +35,9 @@ MyApps ist ein Webportal, über das Sie folgende Aufgaben ausführen können:
 
 - Verwalten und Starten cloudbasierter Anwendungen
 - Verwalten von Gruppenmitgliedschaften
-- Verwalten von Profileinstellungen 
+- Verwalten von Profileinstellungen
 
-![Anpassung des Zugriffsbereichs][1] 
+![Anpassung des Zugriffsbereichs][1]
 
 
 
@@ -49,7 +49,7 @@ MyApps ist ein Webportal, über das Sie folgende Aufgaben ausführen können:
 3.    Geben Sie Ihr altes Kennwort ein, geben Sie Ihr neues Kennwort ein, und bestätigen Sie das neue Kennwort.
 4.    Klicken Sie auf **Senden**.
 
-Ausführlichere Informationen finden Sie unter [Aktualisieren Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password).
+Ausführlichere Informationen finden Sie unter [Aktualisieren Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md#reset-your-password).
 
 
 ## <a name="how-do-i-setup-password-reset"></a>Wie richte ich die Kennwortzurücksetzung ein?
@@ -58,7 +58,7 @@ Ausführlichere Informationen finden Sie unter [Aktualisieren Ihres eigenen Kenn
 2.    Klicken Sie unter **Konto verwalten** auf **Self-Service-Kennwortzurücksetzung einrichten**.
 3.    Führen Sie die im Dialogfeld angegebenen Schritte aus, und übermitteln Sie die Daten.
 
-Ausführlichere Informationen finden Sie unter [Zurücksetzen des Kennworts](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password).
+Ausführlichere Informationen finden Sie unter [Zurücksetzen des Kennworts](active-directory-passwords-update-your-own-password.md#reset-your-password).
 
 
 ## <a name="how-can-i-add-a-new-app"></a>Wie kann ich eine neue App hinzufügen?
