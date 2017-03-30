@@ -1,6 +1,6 @@
 ---
 title: Erstellen eines virtuellen Computers aus einer generalisierten VHD | Microsoft Docs
-description: Erfahren Sie, wie Sie einen virtuellen Windows-Computer aus einem generalisierten VHD-Image mit Azure PowerShell im Resource Manager-Bereitstellungsmodell erstellen.
+description: Erfahren Sie, wie Sie einen virtuellen Windows-Computer aus einem generalisierten VHD-Image in einem Speicherkonto mit Azure PowerShell erstellen.
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -13,20 +13,22 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 03/21/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: cb7f3a1bf44a18141294ab03677f7e733177c1b8
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: 12832620d94226b6cfe391471c22fad2d1e3cf7e
+ms.lasthandoff: 03/22/2017
 
 
 ---
-# <a name="create-a-vm-from-a-generalized-vhd-image"></a>Erstellen eines virtuellen Computers aus einem generalisierten VHD-Image
-Auf einem generalisierten VHD-Image wurden alle Ihre persönlichen Kontoinformationen mit [Sysprep](virtual-machines-windows-generalize-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) entfernt. Sie können eine generalisierte virtuelle Festplatte erstellen, indem Sie Sysprep auf einem lokalen virtuellen Computer ausführen, dann [die VHD in Azure hochladen](virtual-machines-windows-upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) oder Sysprep auf einem virtuellen Azure-VM ausführen und dann [die VHD kopieren](virtual-machines-windows-vhd-copy.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+# <a name="create-a-vm-from-a-generalized-vhd-image-in-a-storage-account"></a>Erstellen eines virtuellen Computers aus einem generalisierten VHD-Image in einem Speicherkonto 
 
-Informationen darüber, wie Sie einen virtuellen Computer aus einer speziellen VHD erstellen, finden Sie unter [Einen virtuellen Computer aus einer speziellen VHD erstellen](virtual-machines-windows-create-vm-specialized.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+In diesem Thema wird das Erstellen eines virtuellen Computers aus einem generalisierten, nicht verwalteten Datenträger in einem Speicherkonto beschrieben. Auf einem generalisierten VHD-Image wurden alle Ihre persönlichen Kontoinformationen mit [Sysprep](virtual-machines-windows-generalize-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) entfernt. Sie können eine generalisierte virtuelle Festplatte erstellen, indem Sie Sysprep auf einem lokalen virtuellen Computer ausführen, dann [die VHD in Azure hochladen](virtual-machines-windows-upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) oder Sysprep auf einem virtuellen Azure-VM ausführen und dann [die VHD kopieren](virtual-machines-windows-vhd-copy.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-Die schnellste Möglichkeit, einen virtuellen Computer aus einer generalisierten VHD zu erstellen, ist die Verwendung einer [Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image). 
+Informationen darüber, wie Sie einen virtuellen Computer aus einer speziellen VHD in einem Speicherkonto erstellen, finden Sie unter [Erstellen eines virtuellen Computers aus einer speziellen VHD](virtual-machines-windows-create-vm-specialized.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+
+Informationen zum Verwenden von Managed Disks anstelle von Datenträgern in einem Speicherkonto finden Sie unter [Erstellen eines verwalteten VM-Images](virtual-machines-windows-capture-image-resource.md) und [Erstellen eines virtuellen Computers aus einem verwalteten Image](virtual-machines-windows-create-vm-generalized-managed.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Wenn Sie eine von einem lokalen virtuellen Computer hochgeladene VHD verwenden möchten, z. B. eine mit Hyper-V erstellte, stellen Sie sicher, dass Sie den Anweisungen [Vorbereiten einer Windows-VHD für das Hochladen in Azure](virtual-machines-windows-prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) folgen. 
@@ -34,6 +36,7 @@ Wenn Sie eine von einem lokalen virtuellen Computer hochgeladene VHD verwenden m
 Hochgeladene VHDs und vorhandene Azure-VM-VHDs müssen generalisiert werden, bevor Sie mit dieser Methode einen virtuellen Computer erstellen können. Weitere Informationen finden Sie unter [Generalize a Windows virtual machine using Sysprep (Generalisieren eines virtuellen Windows-Computers mit Sysprep)](virtual-machines-windows-generalize-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 
 ## <a name="set-the-uri-of-the-vhd"></a>Festlegen des URI der virtuellen Festplatte
+
 Der URI für die zu verwendende virtuelle Festplatte liegt in folgendem Format vor: https://**mystorageaccount**.blob.core.windows.net/**mycontainer**/**MyVhdName**.vhd. In diesem Beispiel befindet sich die virtuelle Festplatte mit dem Namen **myVHD** im Speicherkonto **mystorageaccount** im Container **mycontainer**.
 
 ```powershell
@@ -171,10 +174,5 @@ Anschließend müsste der neu erstellte virtuelle Computer im [Azure-Portal](htt
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen zum Verwalten des neuen virtuellen Computers mit Azure PowerShell finden Sie unter [Verwalten von virtuellen Computern mit Azure Resource Manager und PowerShell](virtual-machines-windows-ps-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

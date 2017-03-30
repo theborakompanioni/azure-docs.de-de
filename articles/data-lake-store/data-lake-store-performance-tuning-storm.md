@@ -15,9 +15,9 @@ ms.workload: big-data
 ms.date: 12/19/2016
 ms.author: stewu
 translationtype: Human Translation
-ms.sourcegitcommit: 787ef52580f5f8bfc51229787c5594883cef3a77
-ms.openlocfilehash: a41548557a91ff91f2496e371dd285977861ab69
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 1dfa93643f45a96ded3fd022aa8b1c71d487acb4
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -125,7 +125,7 @@ Während der Topologieausführung können Sie sie über die Storm-Benutzeroberfl
 Hier sind einige gängige Problembehandlungsszenarien aufgeführt:
 * **Für viele Tupel treten Timeouts auf**: Sehen Sie sich die einzelnen Knoten der Topologie an, um zu ermitteln, wo sich der Engpass befindet. Der häufigste Grund ist, dass die Bolts nicht mit den Spouts mithalten können. Dies führt dazu, dass Tupel die internen Puffer verstopfen, während sie auf ihre Verarbeitung warten. Sie können erwägen, den Wert für die Zeitüberschreitung zu erhöhen oder die Anzahl von maximal ausstehenden Spouts zu verringern.
 
-* **Lange Wartezeit für die Ausführung des Gesamtprozesses, aber eine kurze Wartezeit für den Boltprozess**: In diesem Fall werden die Tupel ggf. nicht schnell genug verarbeitet. Überprüfen Sie, ob eine ausreichende Zahl von Bestätigungseinheiten („Ackers“) vorhanden ist. Eine andere Möglichkeit besteht darin, dass sie sich zu lange in der Warteschlange befinden, bevor die Bolts mit der Verarbeitung beginnen. Verringern Sie die maximale Anzahl von ausstehenden Spouts.
+* **Lange Wartezeit für die Ausführung des Gesamtprozesses, aber eine kurze Wartezeit für den Boltprozess**: In diesem Fall ist es möglich, dass die Tupel nicht schnell genug bestätigt werden. Überprüfen Sie, ob eine ausreichende Anzahl von Bestätigungseinheiten vorhanden ist. Eine andere Möglichkeit besteht darin, dass sie sich zu lange in der Warteschlange befinden, bevor die Bolts mit der Verarbeitung beginnen. Verringern Sie die maximale Anzahl von ausstehenden Spouts.
 
 * **Lange Wartezeit für die Boltausführung**: Dies bedeutet, dass die execute()-Methode Ihres Bolts zu lange dauert. Optimieren Sie den Code, oder sehen Sie sich die Schreibgrößen und das Leerungsverhalten an.
 

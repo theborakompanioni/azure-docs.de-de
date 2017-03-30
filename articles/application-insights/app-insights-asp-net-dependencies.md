@@ -1,22 +1,22 @@
 ---
-title: "Abhängigkeitsüberwachung in Application Insights"
+title: "Abhängigkeitsnachverfolgung in Azure Application Insights | Microsoft Docs"
 description: "Analysieren Sie die Auslastung, Verfügbarkeit und Leistung Ihrer lokalen oder Microsoft Azure-Webanwendung mit Application Insights."
 services: application-insights
 documentationcenter: .net
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: d15c4ca8-4c1a-47ab-a03d-c322b4bb2a9e
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 10/28/2016
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
-ms.openlocfilehash: f0cbb7f78d73c6f39dc4e8a2227b144e8a49c83a
-ms.lasthandoff: 02/02/2017
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: 35817adde713995ec82eead033f058ee109bf900
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -34,6 +34,8 @@ Der standardmäßig verfügbare Abhängigkeitsmonitor meldet derzeit Aufrufe an 
   * Azure DocumentDb, Tabelle, Blobspeicher und Warteschlange
 * Webseiten
   * AJAX-Aufrufe
+
+Überwachen funktioniert mit der [Bytecodeinstrumentierung](https://msdn.microsoft.com/library/z9z62c29.aspx) um ausgewählte Methoden. Der Leistungsaufwand ist minimal.
 
 Mit [TrackDependency-API](app-insights-api-custom-events-metrics.md#trackdependency)können Sie auch eigene SDK-Aufrufe zum Überwachen anderer Abhängigkeiten schreiben, sowohl in Client- als auch Servercode.
 
@@ -82,7 +84,7 @@ Klicken Sie sich durch die Abhängigkeitsdiagramme oder die Tabellenelemente, um
 ## <a name="ajax-calls"></a>AJAX-Aufrufe
 Das Blatt „Browser“ zeigt die Dauer und Fehlerquote von AJAX-Aufrufen durch [JavaScript auf Ihren Webseiten](app-insights-javascript.md) an. Sie werden als Abhängigkeiten angezeigt.
 
-## <a name="a-namediagnosisa-diagnose-slow-requests"></a><a name="diagnosis"></a>Diagnostizieren langsamer Anforderungen
+## <a name="diagnosis"></a>Diagnostizieren langsamer Anforderungen
 Jedes Anforderungsereignis bezieht sich auf Abhängigkeitsaufrufe, Ausnahmen und andere Ereignisse, die nachverfolgt werden, während Ihre App die Anforderung verarbeitet. Wenn einige Anforderungen also eine schlechte Leistung zeigen, können Sie herausfinden, ob es an langsamen Antworten einer Abhängigkeit liegt.
 
 Wir sehen uns nun ein Beispiel dazu an.
@@ -202,6 +204,10 @@ Wenn Sie das Standardmodul für die Nachverfolgung von Abhängigkeiten deaktivie
 * Führen Sie ein Upgrade auf die neueste Version des SDK durch. Wenn Ihre Version von .NET niedriger als 4.6. ist:
   * IIS-Host: Installieren Sie den [Application Insights-Agent](app-insights-monitor-performance-live-website-now.md) auf den Hostservern.
   * Azure-Web-App: Öffnen Sie die Schaltfläche „Application Insights“ in der Systemsteuerung der Web-App, und installieren Sie Application Insights.
+
+## <a name="video"></a>Video
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Exceptions](app-insights-asp-net-exceptions.md)

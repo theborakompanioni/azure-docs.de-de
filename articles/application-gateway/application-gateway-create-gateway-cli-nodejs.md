@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: edc6b5f7a90babaa1f50b14f40eaed1e8582cd2e
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: f550ec9a8d254378d165f0c842459fd50ade7945
+ms.openlocfilehash: 9ea999ea483543beda8d258f58dc8fba479aa603
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -38,7 +38,7 @@ Azure Application Gateway verwendet einen Load Balancer auf der Schicht 7 (Anwe
 
 ## <a name="prerequisite-install-the-azure-cli"></a>Voraussetzung: Installieren der Azure-Befehlszeilenschnittstelle
 
-Um die Schritte in diesem Artikel ausführen zu können, müssen Sie [die Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows (Azure CLI) installieren](../cli-install-nodejs.md) und sich [bei Azure anmelden](../xplat-cli-connect.md). 
+Um die Schritte in diesem Artikel ausführen zu können, müssen Sie [die Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows (Azure CLI) installieren](../xplat-cli-install.md) und sich [bei Azure anmelden](../xplat-cli-connect.md). 
 
 > [!NOTE]
 > Wenn Sie über kein Azure-Konto verfügen, müssen Sie eines erstellen. Sie können sich [hier](../active-directory/sign-up-organization.md)für eine kostenlose Testversion registrieren.

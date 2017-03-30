@@ -1,106 +1,75 @@
-# Übersicht
-## [Integration in Azure AD](active-directory-how-to-integrate.md)
-## [Authentifizierungsszenarien](active-directory-authentication-scenarios.md)
-## [Graph-API](active-directory-graph-api.md)
-## [Authentifizierungsbibliotheken](active-directory-authentication-libraries.md)
-## [Authentifizierungsprotokolle](active-directory-authentication-protocols.md)
-## [App- und Dienstprinzipalobjekte](active-directory-application-objects.md)
-## [Entwicklerhandbuch](active-directory-developers-guide.md)
-## [Implizite OAuth2-Gewährung](active-directory-dev-understanding-oauth2-implicit-grant.md)
-## [Anwendungen in Azure AD](active-directory-how-applications-are-added.md)
-
-# Erste Schritte
+# [Übersicht](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)
+# Schnellstarts
 ## Mobile Apps und PC-Apps
-### [iOS](active-directory-devquickstarts-ios.md)
-### [Android](active-directory-devquickstarts-android.md)
-### [Windows Phone](active-directory-devquickstarts-windowsphone.md)
-### [.Net](active-directory-devquickstarts-dotnet.md)
-### [Windows Store](active-directory-devquickstarts-windowsstore.md)
-### [Xamarin](active-directory-devquickstarts-xamarin.md)
-### [Cordova](active-directory-devquickstarts-cordova.md)
-### [OAuth](active-directory-protocols-oauth-code.md)
+### [iOS](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devquickstarts-ios)
+### [Android](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devquickstarts-android)
+### [WP](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devquickstarts-windowsphone)
+### [.NET](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devquickstarts-dotnet)
+### [Windows Store](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devquickstarts-windowsstore)
+### [Xamarin](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devquickstarts-xamarin)
+### [Cordova](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devquickstarts-cordova)
 ## Web-Apps
-### [.NET](active-directory-devquickstarts-webapp-dotnet.md)
-### [Java](active-directory-devquickstarts-webapp-java.md)
-### [AngularJS](active-directory-devquickstarts-angular.md)
-### [NodeJS](active-directory-devquickstarts-openidconnect-nodejs.md)
-### [OpenID Connect](active-directory-protocols-openid-connect-code.md)
-### [Java-Befehlszeile](active-directory-devquickstarts-headless-java.md)
+### [.NET](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devquickstarts-webapp-dotnet)
+### [Java](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devquickstarts-webapp-java)
+### [Angular JS](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devquickstarts-angular)
+### [NodeJS](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devquickstarts-openidconnect-nodejs)
+### [OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code)
+### [Java-Befehlszeile](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devquickstarts-headless-java)
 ## Web-API
-### [Web-API und .NET](active-directory-devquickstarts-webapi-dotnet.md)
-### [NodeJS](active-directory-devquickstarts-webapi-nodejs.md)
-## [Graph-API](active-directory-graph-api-quickstart.md)
-
-# Anleitung
-## [Einrichten eines Mandanten](active-directory-howto-tenant.md)
-## [Anmelden von Azure AD-Benutzern](active-directory-devhowto-multi-tenant-overview.md)
-## [Integrieren von Apps](active-directory-integrating-applications.md)
-## Aktivieren von SSO
-### [Android](active-directory-sso-android.md)
-### [iOS](active-directory-sso-ios.md)
-## [Zertifizieren von AppSource](active-directory-devhowto-appsource-certified.md)
-## [Auflisten der App im Katalog](active-directory-app-gallery-listing.md)
-## [Grundlegendes zum App-Manifest](active-directory-application-manifest.md)
-## [Authentifizieren von Webbenutzern](active-directory-java-authenticate-users-access-control-eclipse.md)
-## Verwenden von SAML
-### [Anzeigen der von Access Control zurückgegebenen SAML-Daten](active-directory-java-view-saml-returned-by-access-control.md)
-### [Azure AD und SAML](active-directory-saml-protocol-reference.md)
-### [Anpassen von Ansprüchen](active-directory-saml-claims-customization.md)
-### [Debuggen von SAML-basierten SSO](active-directory-saml-debugging.md)
-## [Verwenden des Signaturschlüssel-Rollovers](active-directory-signing-key-rollover.md)
-
-
-## Verwenden des V2-Endpunkts
-### [Übersicht](active-directory-appmodel-v2-overview.md)
-### [Was ist an V2 anders?](active-directory-v2-compare.md)
-### [Authentifizierungsbibliotheken](active-directory-v2-libraries.md)
-### [App-Typen](active-directory-v2-flows.md)
-### [Einschränkungen](active-directory-v2-limitations.md)
-### [Umfang](active-directory-v2-scopes.md)
-### [Registrierungsportal](active-directory-v2-registration-portal.md)
-### [Tokenreferenz](active-directory-v2-tokens.md)
-### Protokolle
-#### [OAuth 2.0-Clientanmeldeinformationen](active-directory-v2-protocols-oauth-client-creds.md)
-#### [OAuth 2.0 und OpenID](active-directory-v2-protocols.md)
-#### [Neueste Updates](active-directory-v2-preview-oidc-changes.md)
-### Mobile App
-#### [iOS](active-directory-v2-devquickstarts-ios.md)
-#### [Windows Phone](active-directory-v2-devquickstarts-wpf.md)
-#### [Android](active-directory-v2-devquickstarts-android.md)
-### Web-Apps und -APIs
-#### [AngularJS mit NodeJS](active-directory-v2-devquickstarts-angular-node.md)
-#### [AngularJS mit .NET](active-directory-v2-devquickstarts-angular-dotnet.md)
-#### [.NET-Web-App](active-directory-v2-devquickstarts-dotnet-web.md)
-#### [NodeJS-Web-App](active-directory-v2-devquickstarts-node-web.md)
-#### [.NET API](active-directory-v2-devquickstarts-dotnet-api.md)
-#### [NodeJS-API](active-directory-v2-devquickstarts-node-api.md)
-#### [Aufrufen einer Web-API](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md)
-### Direktes Integrieren mit Protokollen
-#### [Registrieren einer App](active-directory-v2-app-registration.md)
-#### [OpenID Connect](active-directory-v2-protocols-oidc.md)
-#### [Impliziter Flow](active-directory-v2-protocols-implicit.md)
-#### [OAuth 2.0-Autorisierungscode](active-directory-v2-protocols-oauth-code.md)
-#### [OAuth 2.0-Clientanmeldeinformationen](active-directory-v2-protocols-oauth-client-creds.md)
-#### [Bedienen von Dienstaufrufen](active-directory-protocols-oauth-service-to-service.md)
-
+### [Web-API und .NET](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devquickstarts-webapi-dotnet)
+### [NodeJS](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devquickstarts-webapi-nodejs)
+# Anleitungen
+## [Authentifizierungsmuster](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-scenarios#basics-of-authentication-in-azure-ad)
+### [Systemeigene Apps](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-scenarios#native-application-to-web-api)
+### [Web-Apps](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-scenarios#web-application-to-web-api)
+### [Web-API](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-scenarios#web-application-to-web-api)
+### [Einseitige App](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-scenarios#single-page-application-spa)
+## [Implizite OAuth 2.0-Gewährung](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-understanding-oauth2-implicit-grant)
+## [Anmelden von Azure AD-Benutzern](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)
+## [Aktivieren von SSO unter Android](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-android)
+## [Aktivieren von SSO unter iOS](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-ios)
+## [Zertifizieren von AppSource](http://docs.microsoft.com/azure/active-directory/active-directory-devhowto-appsource-certified)
+## [Auflisten der App im Katalog](http://docs.microsoft.com/azure/active-directory/active-directory-app-gallery-listing)
+## [Grundlegendes zum Manifest](http://docs.microsoft.com/azure/active-directory/active-directory-application-manifest)
+## Arbeiten mit SAML
+### [Anzeigen der von Access Control zurückgegebenen SAML-Daten] (https://docs.microsoft.com/azure/active-directory/develop/active-directory-java-view-saml-returned-by-access-control)
+### [AzureAD und SAML] (https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-protocol-reference)
+### [Anpassen von Ansprüchen] (https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization)
+### [Debuggen von SAML-basierten SSO] (https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)
 ## Arbeiten mit Visual Studio
-### [Erste Schritte mit .NET](vs-active-directory-dotnet-getting-started.md)
-### [Was ist mit meinem MVC-Projekt passiert?](vs-active-directory-dotnet-what-happened.md)
-### [Fehler während der Authentifizierungserkennung](vs-active-directory-error.md)
-### [Erste Schritte mit WebApi](vs-active-directory-webapi-getting-started.md)
-### [Was ist mit meinem WebApi-Projekt passiert?](vs-active-directory-webapi-what-happened.md)
-
-
+### [Erste Schritte mit Azure Active Directory und verbundenen Visual Studio-Diensten (MVC-Projekte)] (https://docs.microsoft.com/azure/active-directory/develop/vs-active-directory-dotnet-getting-started)
+### [Was ist mit meinem MVC-Projekt passiert?] (verbundene Visual Studio-Dienste für Azure Active Directory)?] (https://docs.microsoft.com/azure/active-directory/develop/vs-active-directory-dotnet-what-happened
+### [Fehler während der Authentifizierungserkennung] (https://docs.microsoft.com/azure/active-directory/develop/vs-active-directory-error)
+### [Erste Schritte mit WebApi] (https://docs.microsoft.com/azure/active-directory/develop/vs-active-directory-webapi-getting-started)
+### [Was ist mit dem WebApi-Projekt passiert?] (https://docs.microsoft.com/azure/active-directory/develop/vs-active-directory-webapi-what-happened)
+## v2.0-Endpunkt
+### Schnellstarts
+#### Mobile App
+#### [iOS](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-devquickstarts-ios)
+#### [Windows Phone](http://docs.microsoft.com/azure/active-directory/active-directory-v2-devquickstarts-wpf)
+#### [Android](http://docs.microsoft.com/azure/active-directory/active-directory-v2-devquickstarts-android)
+#### Web-Apps und -APIs
+#### [AngularJS mit Node JS](http://docs.microsoft.com/azure/active-directory/active-directory-v2-devquickstarts-angular-node)
+#### [Angular JS mit .NET](http://docs.microsoft.com/azure/active-directory/active-directory-v2-devquickstarts-angular-dotnet)
+#### [.NET-Web-App](http://docs.microsoft.com/azure/active-directory/active-directory-v2-devquickstarts-dotnet-web)
+#### [.NET-Web-API](http://docs.microsoft.com/azure/active-directory/active-directory-v2-devquickstarts-dotnet-api)
+#### [NodeJS-API](http://docs.microsoft.com/azure/active-directory/active-directory-v2-devquickstarts-node-api)
+#### [NodeJS-Web-App](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-devquickstarts-node-web)
+### Anleitungen
+#### [App-Typen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-flows)
+#### Einschränkungen
+#### [Registrieren einer App](http://docs.microsoft.com/azure/active-directory/active-directory-v2-app-registration)
 # Referenz
-## [Glossar](active-directory-dev-glossary.md)
-## [Brandingrichtlinien](active-directory-branding-guidelines.md)
-## [Codebeispiele](active-directory-code-samples.md)
-## [Verbundmetadaten](active-directory-federation-metadata.md)
-## [Einmaliges Anmelden](active-directory-single-sign-on-protocol-reference.md)
-## [Einmaliges Abmelden](active-directory-single-sign-out-protocol-reference.md)
-## [Token und Ansprüche](active-directory-token-and-claims.md)
-
-
-<!--HONumber=Jan17_HO3-->
-
-
+## [Auth-Bibliotheken](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)
+## [App- und Dienstprinzipalobjekte](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-objects)
+## [OAuth](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code)
+## v2.0-Endpunkt
+### [Bereiche](http://docs.microsoft.com/azure/active-directory/active-directory-v2-scopes)
+### [Tokenreferenz](http://docs.microsoft.com/azure/active-directory/active-directory-v2-tokens)
+### [OpenID Connect](http://docs.microsoft.com/azure/active-directory/active-directory-v2-protocols-oidc)
+### [Impliziter Flow](http://docs.microsoft.com/azure/active-directory/active-directory-v2-protocols-implicit)
+### [OAuth 2.0-Autorisierungscodefluss](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols-oauth-code)
+### [OAuth 2.0-Clientanmeldeinformationen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols-oauth-client-creds)
+### [OAuth 2.0 und OpenID](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols)
+### [Bedienen von Dienstaufrufen](http://docs.microsoft.com/azure/active-directory/active-directory-protocols-oauth-service-to-service)
+# [Beispiele](https://docs.microsoft.com/azure/active-directory/develop/active-directory-code-samples)

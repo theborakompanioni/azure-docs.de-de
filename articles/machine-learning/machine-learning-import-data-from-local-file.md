@@ -13,12 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2016
+ms.date: 03/20/2017
 ms.author: garye;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: fa3de6226b59c4f80e71c55a0aad20c19693642d
-ms.openlocfilehash: ffb12a5a999372951827d31e7e24c6b38473cb35
-ms.lasthandoff: 01/28/2017
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 18010864160ceb2d76aea37196e6944bbe426457
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -35,6 +35,8 @@ Sie können wie folgt Daten von einer lokalen Festplatte importieren:
 3. Navigieren Sie im Dialogfeld **Upload a new dataset** zu der Datei, die Sie hochladen möchten.
 4. Geben Sie einen Namen ein, identifizieren Sie den Datentyp, und geben Sie optional eine Beschreibung ein. Eine Beschreibung wird empfohlen: Damit können Sie beliebige Merkmale der Daten erfassen, die Sie bei zukünftiger Nutzung der Daten berücksichtigen möchten.
 5. Mit dem Kontrollkästchen **This is the new version of an existing dataset** können Sie ein vorhandenes Dataset mit neuen Daten aktualisieren. Aktivieren Sie einfach dieses Kontrollkästchen, und geben Sie dann den Namen eines vorhandenen Datasets ein.
+
+![Hochladen eines neuen Datasets](media/machine-learning-import-data-from-local-file/upload-dataset.png)
 
 Während des Uploads wird eine Meldung angezeigt, dass die Datei hochgeladen wird. Die Dauer für das Hochladen hängt von der Größe Ihrer Daten und der Geschwindigkeit der Verbindung mit dem Dienst ab. Wenn Sie wissen, dass das Hochladen der Datei eine lange Zeit dauern kann, können Sie andere Dinge in Machine Learning Studio erledigen, während Sie warten. Wenn Sie den Browser schließen, tritt jedoch beim Hochladen der Daten ein Fehler auf.
 

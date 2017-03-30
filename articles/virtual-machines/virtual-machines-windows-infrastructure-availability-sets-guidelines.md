@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 03/17/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: c3aca63e0810e97cee58d145423d6b3f5edabeb4
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: fef58c8f32eb42b8497615b7f3d2d63bad4804fb
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -43,7 +43,7 @@ Aufgaben:
 ## <a name="availability-sets"></a>Verfügbarkeitsgruppen
 In Azure können virtuelle Computer (VMs) in einer logischen Gruppierung, die als Verfügbarkeitsgruppe bezeichnet wird, platziert werden. Wenn Sie virtuelle Computer innerhalb einer Verfügbarkeitsgruppe erstellen, verteilt die Azure-Plattform die Platzierung der virtuellen Computer über die zugrunde liegende Infrastruktur. Bei einer geplanten Wartung der Azure-Plattform oder einem Fehler der zugrunde liegenden Hardware/Infrastruktur wird mithilfe von Verfügbarkeitsgruppen sichergestellt, dass mindestens ein virtueller Computer weiterhin ausgeführt wird.
 
-Anwendungen sollten sich nicht auf einem einzelnen virtuellen Computer befinden. Eine Verfügbarkeitsgruppe, die einen einzelnen virtuellen Computer enthält, bietet keinen Schutz vor geplanten und ungeplanten Ereignissen innerhalb der Azure Platform. Die [Azure-SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines) erfordert mindestens zwei virtuelle Computer in einer Verfügbarkeitsgruppe, um die Verteilung der virtuellen Computer in der zugrunde liegenden Infrastruktur zu ermöglichen.
+Anwendungen sollten sich nicht auf einem einzelnen virtuellen Computer befinden. Eine Verfügbarkeitsgruppe, die einen einzelnen virtuellen Computer enthält, bietet keinen Schutz vor geplanten und ungeplanten Ereignissen innerhalb der Azure Platform. Die [Azure-SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines) erfordert mindestens zwei virtuelle Computer in einer Verfügbarkeitsgruppe, um die Verteilung der virtuellen Computer in der zugrunde liegenden Infrastruktur zu ermöglichen. Bei Verwendung von [Azure Storage Premium](../storage/storage-premium-storage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) gilt die Azure-SLA für einen einzelnen virtuellen Computer.
 
 Die zugrunde liegende Infrastruktur in Azure ist in mehrere Hardwarecluster unterteilt. Jeder Hardwarecluster kann einen Bereich von VM-Größen unterstützen. Eine Verfügbarkeitsgruppe kann zu einem Zeitpunkt nur auf einem einzelnen Hardwarecluster gehostet werden. Der Bereich der VM-Größen, die in einer einzelnen Verfügbarkeitsgruppe vorhanden sein können, ist deshalb auf den Bereich der VM-Größen beschränkt, die vom Hardwarecluster unterstützt werden. Der Hardwarecluster für die Verfügbarkeitsgruppe wird ausgewählt, wenn der erste virtuelle Computer in der Verfügbarkeitsgruppe bereitgestellt wird, oder wenn der erste virtuelle Computer in einer Verfügbarkeitsgruppe gestartet wird, bei der sich derzeit alle virtuellen Computer im Zustand „Beendet (Zuordnung aufgehoben)“ befinden. Der folgende PowerShell-Befehl kann verwendet werden, um den Bereich der VM-Größen zu bestimmen, der für eine Verfügbarkeitsgruppe verfügbar ist: „Get-AzureRmVMSize -ResourceGroupName \<string\> -AvailabilitySetName \<string\>“
 
@@ -51,9 +51,9 @@ Jeder Hardwarecluster ist in mehrere Updatedomänen und Fehlerdomänen unterteil
 
 Beim Entwerfen der Anwendungsinfrastruktur sollten Sie auch die Anwendungsebenen planen, die Sie verwenden möchten. Gruppieren Sie virtuelle Computer, die demselben Zweck dienen, in einer Verfügbarkeitsgruppe, z.B. in einer Verfügbarkeitsgruppe für virtuelle Front-End-Computer mit IIS. Erstellen Sie eine separate Verfügbarkeitsgruppe für Ihre virtuellen Back-End-Computer mit SQL Server. Dadurch soll gewährleistet werden, dass jede Komponente der Anwendung durch eine Verfügbarkeitsgruppe geschützt ist und mindestens eine Instanz immer ausgeführt wird.
 
-Lastenausgleichsmodule können vor jeder Anwendungsebene zusammen mit einer Verfügbarkeitsgruppe genutzt werden und sicherstellen, dass der Datenverkehr immer an eine aktive Instanz weitergeleitet werden kann. Ohne ein Lastenausgleichsmodul werden Ihre virtuellen Computer möglicherweise während einer geplanten und ungeplanten Wartung weiter ausgeführt, Ihre Endbenutzer können aber möglicherweise die Probleme nicht beheben, wenn der primäre virtuelle Computer nicht verfügbar ist.
+Lastenausgleichsmodule können vor jeder Anwendungsebene zusammen mit einer Verfügbarkeitsgruppe genutzt werden und sicherstellen, dass der Datenverkehr immer an eine aktive Instanz weitergeleitet werden kann. Ohne einen Load Balancer werden Ihre virtuellen Computer möglicherweise während einer geplanten und ungeplanten Wartung weiter ausgeführt, Ihre Endbenutzer können aber möglicherweise die Probleme nicht beheben, wenn der primäre virtuelle Computer nicht verfügbar ist.
 
-Entwerfen Sie Ihre Anwendung für hohe Verfügbarkeit auf Speicherebene. Verwenden Sie als bewährte Methode mehrere Speicherkonten für jeden virtuellen Computer in einer Verfügbarkeitsgruppe. Alle Datenträger (Betriebssystem und Daten) sollten einem virtuellen Computer im selben Speicherkonto zugeordnet sein. Beachten Sie die [Grenzwerte](../storage/storage-scalability-targets.md) des Speicherkontos, wenn Sie einem Speicherkonto weitere VHDs hinzufügen.
+Wenn Sie nicht verwaltete Datenträger verwenden, entwerfen Sie Ihre Anwendung für hohe Verfügbarkeit auf Speicherebene. Verwenden Sie als bewährte Methode mehrere Speicherkonten für jeden virtuellen Computer in einer Verfügbarkeitsgruppe. Alle Datenträger (Betriebssystem und Daten) sollten einem virtuellen Computer im selben Speicherkonto zugeordnet sein. Beachten Sie die [Grenzwerte](../storage/storage-scalability-targets.md) des Speicherkontos, wenn Sie einem Speicherkonto weitere VHDs hinzufügen. Bei [Azure Managed Disks](../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) wird die Verteilung der zugrunde liegenden Datenträger für Sie übernommen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [!INCLUDE [virtual-machines-windows-infrastructure-guidelines-next-steps](../../includes/virtual-machines-windows-infrastructure-guidelines-next-steps.md)]

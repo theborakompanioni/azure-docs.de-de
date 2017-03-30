@@ -16,9 +16,9 @@ ms.workload: infrastructure
 ms.date: 03/14/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 623eda189cf3fd08a17417df65485a3717f88ace
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: a05059a51113ccaf71b735b1b32a0f3fb7411282
+ms.lasthandoff: 03/21/2017
 
 ---
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 03/15/2017
 
 Dieses Skript erstellt eine Azure-VM, installiert den OMS-Agent (Operations Management Suite) und registriert das System bei einem OMS-Arbeitsbereich. Nach Ausführung des Skripts wird der virtuelle Computer in der OMS-Konsole angezeigt.
 
-Stellen Sie vor dem Ausführen dieses Skripts sicher, dass über den Befehl `Login-AzureRmAccount` eine Verbindung mit Azure hergestellt wurde. Auch die OMS-Arbeitsbereichs-ID und der Arbeitsbereichsschlüssel im Skript müssen aktualisiert werden.
+Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/), und führen Sie dann `Login-AzureRmAccount` aus, um eine Verbindung mit Azure herzustellen. Außerdem müssen Sie die OMS-Arbeitsbereichs-ID und den Arbeitsbereichsschlüssel aktualisieren.
 
 ## <a name="sample-script"></a>Beispielskript
 
@@ -34,7 +34,7 @@ Stellen Sie vor dem Ausführen dieses Skripts sicher, dass über den Befehl `Log
 
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung 
 
-Nach Ausführung des Skriptbeispiels können mit dem folgenden Befehl die Ressourcengruppe, die VM und alle zugehörigen Ressourcen entfernt werden.
+Führen Sie den folgenden Befehl aus, um die Ressourcengruppe, den virtuellen Computer und alle zugehörigen Ressourcen zu entfernen.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup

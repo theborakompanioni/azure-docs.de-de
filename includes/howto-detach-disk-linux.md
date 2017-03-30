@@ -29,7 +29,7 @@ Bevor Sie einen Datenträger von einer VM trennen können, müssen Sie die LUN-N
 3. Notieren Sie sich die LUN **Logical Unit Number (logische Gerätenummer)** des Datenträgers, den Sie trennen möchten.
 
 ## <a name="remove-operating-system-references-to-the-disk"></a>Entfernen von Betriebssystemverweisen auf den Datenträger
-Bevor Sie den Datenträger vom Linux-Gast trennen, müssen Sie sicherstellen, dass keine Partition auf dem Datenträger verwendet wird. Stellen Sie sicher, dass das Betriebssystem nicht versucht, die Datenträger nach dem Neustart erneut einzubinden. Mit diesen Schritten wird die Konfiguration rückgängig gemacht, die Sie beim [Anfügen](../articles/virtual-machines/virtual-machines-linux-classic-attach-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json) des Datenträgers vermutlich vorgenommen haben.
+Bevor Sie den Datenträger vom Linux-Gast trennen, müssen Sie sicherstellen, dass keine Partition auf dem Datenträger verwendet wird. Stellen Sie sicher, dass das Betriebssystem nicht versucht, die Datenträger nach dem Neustart erneut einzubinden. Mit diesen Schritten wird die Konfiguration rückgängig gemacht, die Sie beim [Anfügen](../articles/virtual-machines/linux/classic/attach-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json) des Datenträgers vermutlich vorgenommen haben.
 
 1. Verwenden Sie den Befehl `lsscsi`, um die Datenträger-ID zu ermitteln. `lsscsi` kann entweder über `yum install lsscsi` (für auf Red Hat basierende Distributionen) oder über `apt-get install lsscsi` (für auf Debian basierende Distributionen) installiert werden. Sie finden die gesuchte Datenträger-ID, indem Sie die LUN (Logical Unit Number, logische Gerätenummer) verwenden. Die letzte Zahl im Tupel in jeder Zeile ist die LUN. Im folgenden Beispiel zu `lsscsi` wird die Zuordnung über LUN 0 mit */dev/sdc* durchgeführt.
 
@@ -111,9 +111,4 @@ Nachdem Sie die LUN-Nummer des Datenträgers ermittelt und die Betriebssystemver
     ```
 
 Der getrennte Datenträger verbleibt im Speicher, ist jedoch nicht mehr an einen virtuellen Computer angefügt.
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

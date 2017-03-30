@@ -97,7 +97,7 @@ In diesem Abschnitt erstellen Sie eine Java-Konsolen-App, die C2D-Nachrichten an
     <dependency>
       <groupId>com.microsoft.azure.sdk.iot</groupId>
       <artifactId>iot-service-client</artifactId>
-      <version>1.2.16</version>
+      <version>1.2.17</version>
     </dependency>
     ```
 

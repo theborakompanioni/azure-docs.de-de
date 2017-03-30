@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2016
+ms.date: 03/14/2017
 ms.author: mithal;garye
 translationtype: Human Translation
-ms.sourcegitcommit: 66fb3dc316ce25aea4dff4add5c25b7f0f56ad7a
-ms.openlocfilehash: 86f8b18e06fdc5a24797b0c90f09f0e053e4569c
-ms.lasthandoff: 01/31/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: d109c50be94a227efd39f151c01070a8e30b237d
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -25,7 +25,7 @@ ms.lasthandoff: 01/31/2017
 Das **Cheat Sheet für eine automatisierte Datenpipeline für Microsoft Azure Machine Learning** hilft Ihnen bei der Navigation durch die Technologie, mit deren Hilfe Sie Ihre Daten an Ihren Machine Learning-Webdienst senden können, in dem sie von Ihrem Predictive Analytics-Modell bewertet werden.
 
 Je nachdem, ob Ihre Daten lokal oder in der Cloud gespeichert sind oder per Echtzeitstreaming übermittelt werden, stehen verschiedene Mechanismen zur Verfügung, um die Daten zur Bewertung an Ihren Webdienstendpunkt zu senden.
-Dieses Cheat Sheet führt Sie durch die Entscheidungen, die Sie treffen müssen, und bietet Links zu Artikeln, die Sie bei der Entwicklung Ihrer Lösung unterstützen.
+Dieses Cheat Sheet führt Sie durch die Entscheidungen, die Sie treffen müssen, und enthält Links zu Artikeln, die bei der Entwicklung Ihrer Lösung helfen können.
 
 ## <a name="download-the-machine-learning-automated-data-pipeline-cheat-sheet"></a>Herunterladen des Cheat Sheets für eine automatisierte Datenpipeline für Machine Learning
 Nachdem Sie das Cheat Sheet heruntergeladen haben, können Sie es im Tabloid-Format (11 x 17 Zoll) ausdrucken.

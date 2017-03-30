@@ -1,6 +1,6 @@
 ---
-title: Erstellen eines Azure-Projekts mit Visual Studio | Microsoft Docs
-description: Erstellen eines Azure-Projekts mit Visual Studio
+title: Erstellen eines Azure-Clouddienstprojekts mit Visual Studio | Microsoft Docs
+description: Erfahren Sie, wie Sie ein Azure-Clouddienstprojekt mit Visual Studio erstellen.
 services: visual-studio-online
 documentationcenter: na
 author: TomArcher
@@ -12,52 +12,50 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/11/2016
+ms.date: 03/21/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d933117cf513436e04c79a335998f2ddba848dc4
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: b1870b5db6e194f61d2f8b526e0c81b4d46699e4
+ms.lasthandoff: 03/22/2017
 
 
 ---
-# <a name="creating-an-azure-project-with-visual-studio"></a>Erstellen eines Azure-Projekts mit Visual Studio
-Die Azure Tools für Visual Studio stellen eine Vorlage zur Verfügung, mit der Sie einen Clouddienst für Azure erstellen können. Die Tools unterstützen Sie außerdem beim Konfigurieren, Debuggen und Bereitstellen des Clouddiensts in Azure.
+# <a name="creating-an-azure-cloud-service-project-with-visual-studio"></a>Erstellen eines Azure-Clouddienstprojekts mit Visual Studio
+Die Azure Tools für Visual Studio umfassen eine Projektvorlage, mit der Sie einen Azure-Clouddienst erstellen können. Nach der Erstellung des Projekts können Sie den Clouddienst mit Visual Studio in Azure konfigurieren, debuggen und bereitstellen.
 
-Eine Azure-Clouddienstlösung enthält die folgenden Projekttypen:
+## <a name="steps-to-create-an-azure-cloud-service-project-in-visual-studio"></a>Schritte zum Erstellen eines Azure-Clouddienstprojekts in Visual Studio
+In diesem Abschnitt wird das Erstellen eines Azure-Clouddienstprojekts in Visual Studio mit einem oder mehreren Webrollen erläutert.  
 
-* **Azure-Projekt**
-  
-    Das Azure-Projekt weist Zuordnungen zu den Rollenprojekten in der Projektmappe auf. Es schließt auch die Dienstdefinition und die Dienstkonfigurationsdateien ein. Die Dienstdefinitionsdatei definiert die Laufzeiteinstellungen für Ihre Anwendung, u. a. erforderliche Rollen, Endpunkte und Größe des virtuellen Computers. Die Dienstkonfigurationsdatei konfiguriert, wie viele Instanzen einer Rolle ausgeführt werden, und die Werte der für eine Rolle definierten Einstellungen. Weitere Informationen zu diesen Einstellungen finden Sie unter [Gewusst wie: Konfigurieren der Rollen für eine Azure Cloud Services-Instanz mit Visual Studio](vs-azure-tools-configure-roles-for-cloud-service.md).
-* **Webrollenprojekt**
-  
-    Eine Workerrolle führt die Hintergrundverarbeitung aus. Eine Workerrolle kann mit Speicherdiensten und anderen internetbasierten Diensten kommunizieren. Eine Workerrolle kann eine beliebige Anzahl von HTTP-, HTTPS- oder TCP-Endpunkten aufweisen.
-  
-  * **ASP.NET-Webrolle**zum Erstellen einer ASP.NET-Anwendung mit einem Web-Front-End
-  * **ASP.NET MVC5-Webrolle**
-  * **ASP.NET MVC4-Webrolle**
-  * **ASP.NET MVC3-Webrolle**
-  * **Webrolle für WCF-Dienst**zum Erstellen eines WCF-Diensts
-  * **Webrolle für Silverlight Business Application** (erfordert Visual Studio 2012)
-* **Cacheworkerrolle**
-  
-    Eine Rolle, die einen dedizierten Cache für Ihre Anwendung bereitstellt.
-* **Workerrolle mit Service Bus-Warteschlange**
-  
-    Eine Service Bus-Warteschlange bietet Message Queueing-Funktionen für die Kommunikation mit dem Arbeitsprozess. Weitere Informationen finden Sie unter [Verwenden von Service Bus-Warteschlangen](http://go.microsoft.com/fwlink/?LinkId=260560).
+1. Starten Sie Visual Studio als Administrator.
 
-## <a name="to-create-an-azure-cloud-service-project-in-visual-studio"></a>So erstellen Sie ein Azure-Clouddienstprojekt in Visual Studio
-1. Starten Sie Microsoft Visual Studio als Administrator.
-2. Wählen Sie auf der Menüleiste **Datei**, **Neu**, **Projekt** aus.
-3. Wählen Sie im Bereich **Projekttypen** in den Projektvorlagenknoten „Visual C#“ oder „Visual Basic“ **Cloud** aus.
-4. Wählen Sie im Bereich **Vorlagen** die Option **Azure Cloud Service** aus.
-5. Geben Sie an, mit welcher Version von .NET Framework Sie das Projekt entwickeln möchten.
-6. Geben Sie einen Namen und Speicherort für das Projekt und einen Namen für die Projektmappe ein. Klicken Sie auf die Schaltfläche **OK** .
-7. Wählen Sie im Dialogfeld **Neues Azure-Projekt** die Rollen aus, die Sie hinzufügen möchten, und klicken Sie auf die Schaltfläche mit dem nach rechts zeigenden Pfeil, um sie der Projektmappe hinzuzufügen. Sie können so viele Rollen wie benötigt hinzufügen.
-8. Um eine Rolle umzubenennen, die dem Projekt hinzugefügt wurde, zeigen Sie im Dialogfeld **Neues Azure-Projekt** mit dem Mauszeiger auf die Rolle und klicken rechts neben der Rolle auf das Symbol **Umbenennen**. Sie können auch eine Rolle innerhalb der Projektmappe umbenennen, nachdem sie hinzugefügt wurde.
+1. Wählen Sie im Hauptmenü die Optionen **Datei** > **Neu** > **Projekt** aus.
 
+1. Wählen Sie **Cloud** in den Projektvorlagenknoten „Visual C#“ oder „Visual Basic“ und dann **Azure-Clouddienst** in der Liste der Vorlagen aus.
 
+    ![Neuer Azure-Clouddienst](./media/vs-azure-tools-azure-project-create/new-project-wizard-for-cloud-service.png)
 
+1. Geben Sie an, mit welcher Version von .NET Framework Sie das Projekt entwickeln möchten.
 
-<!--HONumber=Nov16_HO3-->
+1. Geben Sie einen Namen und Speicherort für das Projekt und einen Namen für die Projektmappe ein. 
 
+1. Klicken Sie auf **OK**.
+
+1. Wählen Sie im Dialogfeld **Neuer Clouddienst** die Rollen aus, die Sie hinzufügen möchten, und klicken Sie auf die Schaltfläche mit dem Pfeil nach rechts, um sie der Projektmappe hinzuzufügen.
+
+    ![Auswählen neuer Azure-Clouddienstrollen](./media/vs-azure-tools-azure-project-create/new-cloud-service.png)
+
+1. Um eine Rolle umzubenennen, die Sie hinzugefügt haben, zeigen Sie im Dialogfeld **Neuer Clouddienst** mit dem Mauszeiger auf die Rolle, und wählen Sie im Kontextmenü die Option **Umbenennen** aus. Sie können eine Rolle auch in der Projektmappe umbenennen (im **Projektmappen-Explorer**), nachdem sie hinzugefügt wurde.
+
+    ![Umbenennen einer Azure Clouddienstrolle](./media/vs-azure-tools-azure-project-create/new-cloud-service-rename.png)
+
+Das Visual Studio-Azure-Projekt weist Zuordnungen zu den Rollenprojekten in der Projektmappe auf. Das Projekt enthält zudem die *Dienstdefinitionsdatei* und die *Dienstkonfigurationsdatei*:
+
+- **Dienstdefinitionsdatei:** Definiert die Laufzeiteinstellungen für Ihre Anwendung, u.a. erforderliche Rollen, Endpunkte und Größe des virtuellen Computers. 
+- **Dienstkonfigurationsdatei:** Konfiguriert, wie viele Instanzen einer Rolle ausgeführt werden, und die Werte der für eine Rolle definierten Einstellungen. 
+
+Weitere Informationen zu diesen Dateien finden Sie unter [Konfigurieren der Rollen für einen Azure-Clouddienst mit Visual Studio](vs-azure-tools-configure-roles-for-cloud-service.md).
+
+## <a name="next-steps"></a>Nächste Schritte
+- [Verwalten von Rollen in Azure-Clouddienstprojekten mit Visual Studio](./vs-azure-tools-cloud-service-project-managing-roles.md)
 

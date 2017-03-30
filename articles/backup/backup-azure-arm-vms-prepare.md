@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 2/7/2017
 ms.author: markgal;trinadhk;
 translationtype: Human Translation
-ms.sourcegitcommit: d7a2b9c13b2c3372ba2e83f726c7bf5cc7e98c02
-ms.openlocfilehash: 5d68b7f1f57da07685c27d592620c1785269f9d8
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 27d8da9df87dc5e93272be0bb6584e90971fb461
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -44,8 +44,9 @@ Bevor Sie einen mit Resource Manager bereitgestellten virtuellen Computer (VM) s
 * Wählen Sie ein Szenario aus, definieren Sie die Sicherungsrichtlinie, und definieren Sie die zu schützenden Elemente.
 * Überprüfen Sie die Installation des VM-Agents auf dem virtuellen Computer.
 * Überprüfen Sie die Netzwerkverbindung.
+* Wenn Sie für virtuelle Linux-Computer die Sicherungsumgebung für anwendungskonsistente Sicherungen anpassen möchten, führen Sie die [Schritte zum Konfigurieren von Skripts vor und nach der Momentaufnahme](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent) aus.
 
-Wenn Sie bereits wissen, dass diese Bedingungen in Ihrer Umgebung erfüllt sind, fahren Sie mit dem Artikel [Sichern von virtuellen Azure-Computern](backup-azure-vms.md)fort. Wenn Sie beliebige dieser Voraussetzungen einrichten oder überprüfen möchten, führt dieser Artikel Sie durch die Schritte zum Vorbereiten der jeweiligen Voraussetzung.
+Wenn Sie wissen, dass diese Bedingungen in Ihrer Umgebung bereits erfüllt sind, fahren Sie mit dem Artikel [Sichern von virtuellen Azure-Computern](backup-azure-vms.md)fort. Wenn Sie beliebige dieser Voraussetzungen einrichten oder überprüfen möchten, führt dieser Artikel Sie durch die Schritte zum Vorbereiten der jeweiligen Voraussetzung.
 
 ##<a name="supported-operating-system-for-backup"></a>Unterstütztes Betriebssystem für die Sicherung
  * **Linux**: Azure Backup unterstützt eine [Liste von Verteilungen, die von Azure unterstützt werden](../virtual-machines/virtual-machines-linux-endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Ausnahme: CoreOS Linux. _Andere Bring-Your-Own-Linux-Distributionen sollten ebenfalls funktionieren, sofern der VM-Agent auf dem virtuellen Computer verfügbar ist und Python unterstützt wird. Wir empfehlen diese Distributionen jedoch nicht für die Sicherung._

@@ -87,7 +87,7 @@ Hintergrundinformationen finden Sie in der [Einführung in Azure Container Servi
         > [!NOTE]
         > Die Unterstützung von Windows-Containern befindet sich für Kubernetes-Cluster in der Vorschauphase. Bei DC/OS- und Swarm-Clustern werden in Azure Container Service derzeit nur Linux-Agents unterstützt.
 
-    * **Agent-Anmeldeinformationen**: Geben Sie bei Verwendung des Windows-Betriebssystems einen Administratorbenutzernamen** **und ein Administratorkennwort** **für die virtuellen Agent-Computer ein. 
+    * **Agent-Anmeldeinformationen**: Geben Sie bei Verwendung des Windows-Betriebssystems einen **Administratorbenutzernamen** und ein **Administratorkennwort** für die virtuellen Agent-Computer ein. 
 
     ![Agent-Konfiguration](media/container-service-deployment/acs-portal5.png)  <br />
 

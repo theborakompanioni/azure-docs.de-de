@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: a7cf17e7c84ca6ec69b8a88b78bb0bbc91db0b5b
-ms.openlocfilehash: 30248b5f00aaf2d81db79b5a690760f816384723
-ms.lasthandoff: 12/28/2016
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: d6695b0c40f56093e8701dfe6394143268114453
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -129,7 +129,7 @@ Um diesen Fehler zu beheben, aktivieren Sie diese Anwendung, und versuchen Sie d
 ## <a name="users-are-unable-to-sign-in-to-the-azure-ad-domain-services-managed-domain"></a>Benutzer können sich nicht bei der verwalteten Domäne der Azure AD Domain Services anmelden
 Falls sich mindestens ein Benutzer innerhalb Ihres Azure AD-Mandanten nicht bei der neu erstellten verwalteten Domäne anmelden kann, führen Sie die folgenden Problembehandlungsschritte aus:
 
-* **Anmeldung unter Verwendung des UPN-Formats**: Versuchen Sie, sich unter Verwendung des UPN-Formats (z.B. 'joeuser@contoso.com')) statt mit dem SAMAccountName-Format (CONTOSO\joeuser) anzumelden. Der SAMAccountName wird möglicherweise automatisch für Benutzer generiert, deren UPN-Präfix übermäßig lang ist oder deren Präfix mit dem eines anderen Benutzers in der verwalteten Domäne übereinstimmt. Das UPN-Format ist innerhalb eines Azure AD-Mandanten garantiert eindeutig.
+* **Anmeldung unter Verwendung des UPN-Formats:** Versuchen Sie, sich unter Verwendung des UPN-Formats (z.B. „joeuser@contoso.com“) statt mit dem SAMAccountName-Format (CONTOSO\joeuser) anzumelden. Der SAMAccountName wird möglicherweise automatisch für Benutzer generiert, deren UPN-Präfix übermäßig lang ist oder deren Präfix mit dem eines anderen Benutzers in der verwalteten Domäne übereinstimmt. Das UPN-Format ist innerhalb eines Azure AD-Mandanten garantiert eindeutig.
 
 > [!NOTE]
 > Es wird empfohlen, das UPN-Format zu verwenden, um sich bei der verwalteten Azure AD Domain Services-Domäne anzumelden.
@@ -137,7 +137,7 @@ Falls sich mindestens ein Benutzer innerhalb Ihres Azure AD-Mandanten nicht bei 
 >
 
 * Stellen Sie sicher, dass Sie die [Aktivierung der Kennwortsynchronisierung](active-directory-ds-getting-started-password-sync.md) in Übereinstimmung mit den Schritten durchgeführt haben, die im Leitfaden zu den ersten Schritten angegeben sind.
-* **Externe Konten:** Stellen Sie sicher, dass das betroffene Benutzerkonto kein externes Konto im Azure AD-Mandanten ist. Beispiele für externe Konten sind Microsoft-Konten (z.B. 'joe@live.com')) oder Benutzerkonten aus einem externen Azure AD-Verzeichnis. Da die Azure AD Domain Services nicht über Anmeldeinformationen für diese Benutzerkonten verfügen, können sich diese Benutzer nicht an der verwalteten Domäne anmelden.
+* **Externe Konten:** Stellen Sie sicher, dass das betroffene Benutzerkonto kein externes Konto im Azure AD-Mandanten ist. Beispiele für externe Konten sind Microsoft-Konten (z.B. „joe@live.com“) oder Benutzerkonten aus einem externen Azure AD-Verzeichnis. Da die Azure AD Domain Services nicht über Anmeldeinformationen für diese Benutzerkonten verfügen, können sich diese Benutzer nicht an der verwalteten Domäne anmelden.
 * **Synchronisierte Konten** : Falls die betroffenen Benutzerkonten über ein lokales Verzeichnis synchronisiert werden, prüfen Sie Folgendes:
 
   * Sie haben die [neueste empfohlene Version von Azure AD Connect](https://www.microsoft.com/en-us/download/details.aspx?id=47594) bereitgestellt bzw. das Update darauf durchgeführt.
@@ -151,6 +151,8 @@ Falls sich mindestens ein Benutzer innerhalb Ihres Azure AD-Mandanten nicht bei 
 
 ## <a name="users-removed-from-your-azure-ad-tenant-are-not-removed-from-your-managed-domain"></a>Aus Ihrem Azure AD-Mandanten entfernte Benutzer werden nicht aus Ihrer verwalteten Domäne entfernt
 Azure AD schützt Sie vor dem versehentlichen Löschen von Benutzerobjekten. Wenn Sie ein Benutzerkonto aus Ihrem Azure AD-Mandanten löschen, wird das zugehörige Benutzerobjekt in den Papierkorb verschoben. Wenn dieser Löschvorgang mit Ihrer verwalteten Domäne synchronisiert wird, wird das zugehörige Benutzerkonto als deaktiviert markiert. Dieses Feature unterstützt Sie dabei, das Benutzerkonto zu einem späteren Zeitpunkt wiederherzustellen oder den Löschvorgang rückgängig zu machen.
+
+Das Benutzerkonto behält in Ihrer verwalteten Domäne auch dann den deaktivierten Status bei, wenn Sie im Azure AD-Verzeichnis ein Benutzerkonto mit demselben UPN neu erstellen. Um das Benutzerkonto aus Ihrer verwalteten Domäne zu entfernen, müssen Sie die Löschung aus Ihrem Azure AD-Mandanten erzwingen.
 
 Um das Benutzerkonto vollständig aus Ihrer verwalteten Domäne zu entfernen, löschen Sie den Benutzer dauerhaft aus Ihrem Azure AD-Mandanten. Verwenden Sie hierzu das PowerShell-Cmdlet „Remove-MsolUser“ mit der Option „-RemoveFromRecycleBin“, wie in diesem [MSDN-Artikel](https://msdn.microsoft.com/library/azure/dn194132.aspx) beschrieben.
 

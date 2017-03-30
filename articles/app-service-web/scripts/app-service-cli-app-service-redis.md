@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: web
-ms.date: 02/21/2017
+ms.date: 03/20/2017
 ms.author: cfowler
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 59edaf18f48c19a590072d7a04bdf4f7ad9d0eae
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 043b1e90085a63c852e428ec25fa96e37eccb203
+ms.lasthandoff: 03/21/2017
 
 ---
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 03/11/2017
 
 In diesem Szenario erfahren Sie, wie Sie einen Redis-Cache und eine Azure-Web-App erstellen. Anschließend verknüpfen Sie den Redis-Cache mithilfe von App-Einstellungen mit der Web-App.
 
-Stellen Sie vor dem Ausführen dieses Skripts sicher, dass über den Befehl `az login` eine Verbindung mit Azure hergestellt wurde.
+Installieren Sie bei Bedarf die Azure-Befehlszeilenschnittstelle anhand der Anleitung im [Azure CLI-Installationshandbuch](https://docs.microsoft.com/cli/azure/install-azure-cli), und führen Sie dann `az login` aus, um eine Verbindung mit Azure herzustellen.
 
 Dieses Beispiel wird in einer Bash-Shell ausgeführt. Optionen zum Ausführen von Azure CLI-Skripts auf einem Windows-Client finden Sie unter [Verwenden der Azure CLI unter Windows](../../virtual-machines/virtual-machines-windows-cli-options.md).
 

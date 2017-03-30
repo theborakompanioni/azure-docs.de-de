@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 02/02/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 7196b4eddc8a00cf2c15e8d8447ef8381db738a3
-ms.openlocfilehash: a1ef4ccb6546f011c405a98cab3cae514de813ea
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
+ms.openlocfilehash: 39824fa66dee9f1bd57687e59ece97f4f4636b7d
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -97,7 +97,7 @@ In diesem Schritt erstellen Sie zwei verknüpfte Dienste: **AzureStorageLinkedSe
 4. Speichern Sie die Datei **AzureSqlLinkedService1.json** . 
 
 > [!NOTE]
-> Details zu JSON-Eigenschaften finden Sie unter [Verschieben von Daten in und aus Azure SQL-Datenbank mithilfe von Azure Data Factory](data-factory-azure-sql-connector.md#azure-sql-linked-service-properties) .
+> Details zu JSON-Eigenschaften finden Sie unter [Verschieben von Daten in und aus Azure SQL-Datenbank mithilfe von Azure Data Factory](data-factory-azure-sql-connector.md#linked-service-properties) .
 > 
 > 
 
@@ -169,7 +169,7 @@ In diesem Schritt erstellen Sie ein Dataset namens **InputDataset**, das auf ein
     ```
             
 > [!NOTE]
-> Details zu JSON-Eigenschaften finden Sie unter [Verschieben von Daten in einen und aus einem Azure-Blob mithilfe von Azure Data Factory](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) .
+> Details zu JSON-Eigenschaften finden Sie unter [Verschieben von Daten in einen und aus einem Azure-Blob mithilfe von Azure Data Factory](data-factory-azure-blob-connector.md#dataset-properties) .
 > 
 > 
 
@@ -216,7 +216,7 @@ In diesem Schritt erstellen Sie ein Ausgabedataset namens **OutputDataset**. Die
    * Die Verfügbarkeit (**availability**) ist auf **hourly**, (**frequency** auf **hour** und **interval** auf **1**) festgelegt.  Der Data Factory-Dienst generiert in der Tabelle **emp** in der Azure SQL-Datenbank stündlich einen Ausgabedatenslice.
 
 > [!NOTE]
-> Details zu JSON-Eigenschaften finden Sie unter [Verschieben von Daten in und aus Azure SQL-Datenbank mithilfe von Azure Data Factory](data-factory-azure-sql-connector.md#azure-sql-linked-service-properties) .
+> Details zu JSON-Eigenschaften finden Sie unter [Verschieben von Daten in und aus Azure SQL-Datenbank mithilfe von Azure Data Factory](data-factory-azure-sql-connector.md#linked-service-properties) .
 > 
 > 
 

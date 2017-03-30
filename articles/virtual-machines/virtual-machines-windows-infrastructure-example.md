@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 03/17/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
-ms.openlocfilehash: b01825022189722c9c0d396984a1a369a5d57584
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 7471fa4c73c8aef11bf81cb652cd2bce77ac5420
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -48,7 +48,7 @@ Der Entwurf muss Folgendes umfassen:
 
 * Ein Azure-Abonnement und -Konto
 * Eine einzelne Ressourcengruppe
-* Speicherkonten
+* Azure Managed Disks
 * Ein virtuelles Netzwerk mit zwei Subnetzen
 * Verfügbarkeitsgruppen für die virtuellen Computer mit gleichen Rollen
 * Virtuelle Computer
@@ -57,8 +57,6 @@ Alle oben aufgeführten Elemente werden anhand der folgenden Namenskonventionen 
 
 * Adventure Works Cycles verwendet **[IT-Workload]-[Standort]-[Azure-Ressource]** als Präfix.
   * In diesem Beispiel ist **azos** (Azure-Onlineshop) der Name der IT-Workload und **use** (USA, Osten 2) der Standort.
-* Speicherkonten folgen der Konvention „adventureazosusesa**[Beschreibung]**“.
-  * Zur Eindeutigkeit wurde „adventure“ zum Präfix hinzugefügt. Speicherkontennamen dürfen keine Bindestriche enthalten.
 * Virtuelle Netzwerke folgen der Konvention „AZOS-USE-VN**[Nummer]**“.
 * Verfügbarkeitsgruppen folgen der Konvention „azos-use-as-**[Rolle]**“.
 * Die Namen der virtuellen Computer folgen der Konvention „azos-use-vm-**[VM-Name]**“.
@@ -66,11 +64,11 @@ Alle oben aufgeführten Elemente werden anhand der folgenden Namenskonventionen 
 ## <a name="azure-subscriptions-and-accounts"></a>Azure-Abonnements und -Konten
 Adventure Works Cycles verwendet das Enterprise-Abonnement mit dem Namen „Adventure Works-Enterprise-Abonnement“ zur Abrechnung dieser IT-Workload.
 
-## <a name="storage-accounts"></a>Speicherkonten
-Adventure Works Cycles hat festgestellt, dass zwei Speicherkonten erforderlich sind:
+## <a name="storage"></a>Speicher
+Adventure Works Cycles bestimmt, dass Azure Managed Disks verwendet werden soll. Beim Erstellen der virtuellen Computer werden beide verfügbaren Speicherebenen verwendet:
 
-* **adventureazosusesawebapp** für den Standardspeicher der Webserver, Anwendungsserver und Domänencontroller und deren Datenträger
-* **adventureazosusesasql** für den Premium-Speicher der virtuellen SQL Server-Computer und deren Datenträger
+* **Storage Standard** für Webserver, Anwendungsserver und Domänencontroller und deren Datenträger
+* **Storage Premium** für virtuelle SQL Server-Computer und deren Datenträger
 
 ## <a name="virtual-network-and-subnets"></a>Virtuelles Netzwerk und Subnetze
 Da das virtuelle Netzwerk keine permanente Verbindung mit dem lokalen Netzwerk von Adventure Work Cycles benötigt, fiel die Entscheidung auf ein virtuelles Netzwerk auf ausschließlicher Cloudbasis.
@@ -114,7 +112,7 @@ Die resultierende Konfiguration sieht folgendermaßen aus.
 Diese Konfiguration umfasst:
 
 * Ein virtuelles Netzwerk auf ausschließlicher Cloudbasis mit zwei Subnetzen (Front-End- und Back-End)
-* Zwei Speicherkonten
+* Azure Managed Disks mit Standard- und Premium-Datenträgern
 * Vier Verfügbarkeitsgruppen, eine für jede Ebene des Onlineshops
 * Die virtuellen Computer für die vier Ebenen
 * Eine externe Lastenausgleichsgruppe für HTTPS-basierten Webdatenverkehr aus dem Internet an die Webserver

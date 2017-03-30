@@ -17,9 +17,9 @@ ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
-ms.openlocfilehash: cd3e6c548fd1f7dccaf478d3324efc8d768e3064
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 6e2bb0e228aa28c79969cba07352061abbb47951
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -187,14 +187,13 @@ Führen Sie das Skript aus, nachdem sie es heruntergeladen und angepasst haben, 
 1. Speichern Sie Ihr Skript, und führen Sie es an der **PowerShell**-Eingabeaufforderung oder in **PowerShell ISE** aus. Anfänglich wird die folgende Ausgabe angezeigt.
 
         OperationDescription    OperationId                          OperationStatus
-        --------------------    -----------                          ---------------
-        New-AzureService        xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded      
-        New-AzureStorageAccount xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded      
 
+        New-AzureService        xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded
+        New-AzureStorageAccount xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded
+        
         WARNING: No deployment found in service: 'IaaSStory-Backend'.
-2. Tragen Sie bei der Aufforderung die Anmeldeinformationen ein, und klicken Sie auf **OK**. Die nachfolgende Ausgabe wird angezeigt.
+2. Tragen Sie bei der Aufforderung die Anmeldeinformationen ein, und klicken Sie auf **OK**. Die folgende Ausgabe wird zurückgegeben.
 
         New-AzureVM             xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded
         New-AzureVM             xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded
-
 

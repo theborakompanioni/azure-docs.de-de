@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/22/2017
+ms.date: 03/17/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: a4b067e732bccb01faa96f23dbfd2ed65b7711a0
-ms.openlocfilehash: 62326da2e801a7c6e01d29e2298bd3552f331647
-ms.lasthandoff: 02/03/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: a27ec9e1ebfde3493e41c493b85c0dc7f0ada2a0
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -33,17 +33,13 @@ Data Factory unterstützt das Herstellen einer Verbindung mit lokalen Oracle-Dat
 ## <a name="supported-versions-and-installation"></a>Unterstützte Versionen und Installation
 Connector für Oracle unterstützen zwei Treiberversionen:
 
-- **Microsoft-Treiber für Oracle**, der ab Version 2.7 als Bündel mit dem Datenverwaltungsgateway bereitgestellt wird. Die Verwendung dieses Treibers wird **empfohlen**. Mit diesem Treiber müssen Sie nur das Gateway für die Verbindung mit Oracle installieren, und das Kopieren funktioniert ebenfalls besser. Oracle Database Version 10g Release 2 und höher werden unterstützt.
+- **Microsoft-Treiber für Oracle**, der ab Version 2.7 als Bündel mit dem Datenverwaltungsgateway bereitgestellt wird. Die Verwendung dieses Treibers wird **empfohlen**. Sie müssen neben dem Gateway für die Verbindung mit Oracle nichts weiter installieren, und das Kopieren funktioniert ebenfalls besser. Oracle Database Version 10g Release 2 und höher werden unterstützt.
 
     > [!NOTE]
     > Derzeit unterstützt der Microsoft-Treiber für Oracle nur das Kopieren von Daten aus Oracle, nicht jedoch das Schreiben in Oracle. Beachten Sie, dass die Funktion zum Testen der Verbindung auf der Registerkarte für die Datenverwaltungsgateway-Diagnose diesen Treiber nicht unterstützt. Alternativ können Sie den Assistenten zum Kopieren verwenden, um die Konnektivität zu überprüfen.
     >
 
-- **Oracle Data Provider für .NET:** Sie können auch Oracle Data Provider zum Kopieren von Daten aus/in Oracle verwenden. Diese Komponente ist in [Oracle Data Access Components (ODAC) für Windows](http://www.oracle.com/technetwork/topics/dotnet/downloads/)enthalten. Installieren Sie die geeignete Version (32/64 Bit) auf dem Computer, auf dem das Gateway installiert ist. [Oracle Data Provider .NET 12.1](http://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) kann auf Oracle Database 10g, Version 2 oder höher, zugreifen.
-
-    Wenn Sie „XCopy Installation“ auswählen, führen Sie die Schritte in der Datei „Readme.htm“ aus. Es wird empfohlen, das Installationsprogramm mit Benutzeroberfläche (also nicht die XCopy-Variante) auszuwählen.
-
-    Starten Sie nach der Installation des Anbieters den Hostdienst des Datenverwaltungsgateways auf Ihrem Computer mithilfe des Applets „Dienste“ oder Datenverwaltungsgateway-Konfigurations-Managers **neu**.  
+- **Oracle-Datenanbieter für .NET:** Datenverwaltungsgateway, Version 2.7 oder höher, enthält diese Komponente, sodass Sie keine separate Installation durchführen müssen. Wenn Sie ein Gateway mit einer niedrigeren Version als 2.7 verwenden, sollten Sie die neueste Version des Gateways von [hier](https://www.microsoft.com/download/details.aspx?id=39717) installieren. Sie finden die Version des Gateways auf der Hilfeseite des Datenverwaltungsgateway-Konfigurations-Managers (Suchen Sie nach „Datenverwaltungsgateway“).
 
 ## <a name="copy-data-wizard"></a>Assistent zum Kopieren von Daten
 Die einfachste Art, eine Pipeline zu erstellen, mit der Daten aus einer Oracle-Datenbank in einen der unterstützten Senkendatenspeicher kopiert werden (oder umgekehrt), ist die Verwendung des Assistenten zum Kopieren von Daten. Unter [Tutorial: Erstellen einer Pipeline mit dem Assistenten zum Kopieren](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
@@ -416,7 +412,7 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 | --- | --- | --- |
 | type |Die "type"-Eigenschaft muss auf **OnPremisesOracle** |Ja |
 | driverType | Legen Sie fest, welcher Treiber für das Kopieren von Daten aus/in Oracle Database verwendet wird. Zulässige Werte sind **Microsoft** oder **ODP** (Standard). Details zu den Treibern finden Sie unter [Unterstützte Versionen und Installation](#supported-versions-and-installation). | Nein |
-| connectionString | Geben Sie Informationen, die zur Verbindung mit der Oracle Databaseinstanz erforderlich sind, für die Eigenschaft "connectionString" an. Hier einige Beispiele. | Ja |
+| connectionString | Geben Sie Informationen, die zur Verbindung mit der Oracle Databaseinstanz erforderlich sind, für die Eigenschaft "connectionString" an. | Ja |
 | gatewayName | Der Name des Gateways, das zum Herstellen einer Verbindung mit dem lokalen Oracle-Server verwendet wird. |Ja |
 
 Ausführliche Informationen zum Festlegen von Anmeldeinformationen für eine lokale Oracle-Datenquelle finden Sie unter [Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway](data-factory-move-data-between-onprem-and-cloud.md).
@@ -470,14 +466,14 @@ Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Akt
 >
 >
 
-Eigenschaften im Abschnitt „typeProperties“ der Aktivität können dagegen je nach Aktivitätstyp variieren. Für die Kopieraktivität variieren die Eigenschaften je nach Art der Quellen und Senken.
+Eigenschaften im Abschnitt typeProperties der Aktivität können dagegen je nach Aktivitätstyp variieren. Für die Kopieraktivität variieren die Eigenschaften je nach Art der Quellen und Senken.
 
 ### <a name="oraclesource"></a>OracleSource
 Wenn bei der Kopieraktivität eine Quelle vom Typ **OracleSource** verwendet wird, sind im Abschnitt **typeProperties** folgende Eigenschaften verfügbar:
 
 | Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
-| oracleReaderQuery |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |SQL-Abfragezeichenfolge. Beispiel: select * from MyTable <br/><br/>Falls nicht angegeben, die SQL-Anweisung, die ausgeführt wird: select * from MyTable |Nein (wenn **tableName** von **Dataset** angegeben ist) |
+| oracleReaderQuery |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |SQL-Abfragezeichenfolge. Beispiel: select *from MyTable <br/><br/>Falls nicht angegeben, die SQL-Anweisung, die ausgeführt wird: select* from MyTable |Nein (wenn **tableName** von **Dataset** angegeben ist) |
 
 ### <a name="oraclesink"></a>OracleSink
 **OracleSink** unterstützt die folgenden Eigenschaften:

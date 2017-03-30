@@ -2,7 +2,7 @@
 Erstellen Sie einen IoT-Hub, mit dem Ihre simulierte Geräte-App verbunden werden kann. Die folgenden Schritte veranschaulichen, wie Sie diese Aufgabe mit dem Azure-Portal ausführen.
 
 1. Melden Sie sich beim [Azure-Portal][lnk-portal] an.
-2. Klicken Sie auf der Navigationsleiste auf **Neu** > **Internet der Dinge ** > **IoT Hub**.
+2. Klicken Sie auf der Navigationsleiste auf **Neu** > **Internet der Dinge** > **IoT Hub**.
    
     ![Navigationsleiste im Azure-Portal][1]
 3. Wählen Sie auf dem Blatt **IoT Hub** die gewünschte Konfiguration für Ihren IoT Hub.
@@ -35,8 +35,3 @@ Erstellen Sie einen IoT-Hub, mit dem Ihre simulierte Geräte-App verbunden werde
 [lnk-portal]: https://portal.azure.com/
 [lnk-pricing]: https://azure.microsoft.com/pricing/details/iot-hub/
 [lnk-access-control]: ../articles/iot-hub/iot-hub-devguide-security.md
-
-
-<!--HONumber=Dec16_HO3-->
-
-

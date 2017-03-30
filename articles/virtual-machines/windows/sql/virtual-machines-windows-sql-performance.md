@@ -16,8 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 01/09/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 407b189af12116d633ed505facf4bcfde9be5822
-ms.openlocfilehash: 609f2a06b1091a61cd95c54ea9f62888e11f16c1
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 7cf81f2081e7927e4d68b7d0c8ca185f891fdc8d
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -82,8 +83,8 @@ Das temporäre Laufwerk auf virtuellen Computern der D-Serie, Dv2-Serie und G-Se
 Für virtuelle Computer, die Storage Premium unterstützen (DS-Serie, DSv2-Serie und GS-Serie), sollten Sie TempDB auf einem Datenträger speichern, der Storage Premium mit aktiviertem Lesecache unterstützt. Es gibt eine Ausnahme von dieser Empfehlung: Wenn die „tempdb“-Auslastung schreibintensiv ist, können Sie eine höhere Leistung erzielen, indem Sie „tempdb“ auf dem lokalen Laufwerk **D:** speichern, das für diese Computergrößen auch SSD-basiert ist.
 
 ### <a name="data-disks"></a>Datenträger
-* **Verwenden Sie Datenträger für Daten- und Protokolldateien:** Verwenden Sie mindestens 2 [P30-Datenträger](../../../storage/storage-premium-storage.md#premium-storage-scalability-and-performance-targets) in Storage Premium, wobei sich auf einem Datenträger die Protokolldateien und auf dem anderen die Datendateien und „tempdb“ befinden.
-* **Datenträgerstriping**: Für einen höheren Durchsatz können Sie zusätzliche Datenträger für Daten hinzufügen und Datenträgerstriping verwenden. Um die Anzahl der Datenträger für Daten zu bestimmen, müssen Sie die Anzahl der für Ihre Daten- und Protokolldatei-Datenträger verfügbaren IOPS analysieren. Diese Informationen finden Sie in den Tabellen zu IOPS pro [Größe des virtuellen Computers](../../virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) und Datenträgergröße in folgendem Artikel: [Verwenden von Storage Premium für Datenträger](../../../storage/storage-premium-storage.md). Verwenden Sie die folgenden Richtlinien:
+* **Verwenden Sie Datenträger für Daten- und Protokolldateien:** Verwenden Sie mindestens 2 [P30-Datenträger](../../../storage/storage-premium-storage.md#premium-storage-scalability-and-performance-targets) in Storage Premium, wobei sich auf einem Datenträger die Protokolldateien und auf dem anderen die Datendateien und „tempdb“ befinden. Jeder Storage Premium-Datenträger stellt je nach Größe eine Reihe von IOPS und Bandbreiten (MB/s) bereit, wie im folgenden Artikel beschrieben: [Verwenden von Storage Premium für Datenträger](../../../storage/storage-premium-storage.md). 
+* **Datenträgerstriping**: Für einen höheren Durchsatz können Sie zusätzliche Datenträger für Daten hinzufügen und Datenträgerstriping verwenden. Um die Anzahl der Datenträger zu ermitteln, müssen Sie die Anzahl der IOPS und die Bandbreite analysieren, die für die Protokolldateien und für Ihre Daten und die TempDB-Dateien erforderlich sind. Beachten Sie, dass verschiedene VM-Größen über unterschiedliche Grenzwerte für die unterstützte Anzahl der IOPS und die Bandbreiten verfügen. Informationen finden Sie in den Tabellen zu IOPS pro [Größe des virtuellen Computers](../../virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Verwenden Sie die folgenden Richtlinien:
 
   * Verwenden Sie [Speicherplätze](https://technet.microsoft.com/library/hh831739.aspx)für Windows 8 und Windows Server 2012 oder höher. Legen Sie die Stripesetgröße für OLTP-Workloads auf 64 KB und für Data Warehousing-Workloads auf 256 KB fest, um Leistungseinbußen durch falsche Partitionsausrichtung zu vermeiden. Legen Sie außerdem Anzahl der Spalten = Anzahl der physischen Datenträger fest. Um einen Speicherplatz mit mehr als 8 Datenträgern zu konfigurieren, müssen Sie PowerShell (nicht die Server-Manager-Benutzeroberfläche) verwenden, um die Anzahl der Spalten explizit so festzulegen, dass sie der Anzahl der Datenträger entspricht. Weitere Informationen zum Konfigurieren von [Speicherplätzen](https://technet.microsoft.com/library/hh831739.aspx) finden Sie unter [Speicherplatz-Cmdlets in Windows PowerShell](https://technet.microsoft.com/library/jj851254.aspx).
   * Für Windows 2008 R2 oder früher können Sie dynamische Datenträger (Betriebssystem-Stripesetvolumes) verwenden, und die Stripesetgröße ist immer 64 KB. Beachten Sie, dass diese Option seit Windows 8 / Windows Server 2012 veraltet ist. Informationen hierzu finden Sie in der Supporterklärung unter [Virtual Disk Service is transitioning to Windows Storage Management API](https://msdn.microsoft.com/library/windows/desktop/hh848071.aspx)(Übergang des Diensts für virtuelle Datenträger in die Windows-Speicherverwaltungs-API, in englischer Sprache).
@@ -134,9 +135,4 @@ Ausführliche Informationen zu SQL Server und Storage Premium finden Sie im Arti
 Best Practices für die Sicherheit finden Sie unter [Sicherheitsüberlegungen für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-security.md).
 
 Weitere Themen zu virtuellen SQL Server-Computern finden Sie unter [Übersicht zu SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-server-iaas-overview.md).
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

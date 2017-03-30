@@ -12,26 +12,20 @@ ms.service: app-service-web
 ms.workload: web
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2017
+ms.date: 03/20/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: 5f3bf8087fa6601ae410d6db907471fd6faa2742
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: f4729e9daf788220358e7cca2508c820a1f2006a
+ms.lasthandoff: 03/21/2017
 
 ---
 
 # <a name="upload-files-to-a-web-app-using-ftp"></a>Hochladen von Dateien in eine Web-App mithilfe von FTP
 
-Dieses Skriptbeispiel führt Folgendes über Azure PowerShell aus: 
+Dieses Beispielskript erstellt eine Web-App in App Service mit den zugehörigen Ressourcen und stellt dann Ihren Web-App-Code über FTP (mit [WebClient.UploadFile()](https://msdn.microsoft.com/library/ms144229.aspx)) bereit.
 
-* Erstellt eine Web-App im Azure App Service der Azure-Region „Europa, Westen“.
-* Ruft die FTP-Verbindungsinformationen von einer Web-App ab.
-* Stellt Web-App-Code mithilfe von FTP bereit (über [WebClient.UploadFile()](https://msdn.microsoft.com/library/ms144229.aspx)).
-
-## <a name="prerequisites"></a>Voraussetzungen
-
-* Führen Sie `Login-AzureRmAccount` aus, um sich bei Azure anzumelden.
+Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/), und führen Sie dann `Login-AzureRmAccount` aus, um eine Verbindung mit Azure herzustellen.
 
 ## <a name="sample-script"></a>Beispielskript
 
@@ -39,7 +33,7 @@ Dieses Skriptbeispiel führt Folgendes über Azure PowerShell aus:
 
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung 
 
-Nach Ausführung des Skriptbeispiels können mit dem folgenden Befehl die Ressourcengruppe, die Web-App und alle zugehörigen Ressourcen entfernt werden.
+Nach dem Ausführen des Skriptbeispiels können mit dem folgenden Befehl die Ressourcengruppe, die Web-App und alle zugehörigen Ressourcen entfernt werden.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name $webappname -Force

@@ -1,9 +1,9 @@
 ---
 title: "Schützen webbasierter und mobiler PaaS-Anwendungen mit SQL-Datenbank und SQL Data Warehouse | Microsoft-Dokumentation"
-description: " Weitere Informationen zu den empfohlenen Vorgehensweisen im Hinblick auf die Sicherheit bei Azure SQL-Datenbank und SQL Data Warehouse zum Schutz Ihrer webbasierten und mobilen PaaS-Anwendungen. "
+description: " Erfahren Sie etwas zu den Best Practices im Hinblick auf die Sicherheit bei Azure SQL-Datenbank und SQL Data Warehouse zum Schutz Ihrer webbasierten und mobilen PaaS-Anwendungen. "
 services: security
 documentationcenter: na
-author: TerryLanfear
+author: techlake
 manager: MBaldwin
 editor: 
 ms.assetid: 
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/31/2017
+ms.date: 03/21/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: b3db1281bbd37fcfbec54bdeb998e6338bb08369
-ms.openlocfilehash: 39f841c0f3c8bed1bd640dfd644a58a764422aff
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: be00c1427d57b96506ec8b0ac881b7c1bd09e4de
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -91,9 +92,4 @@ Dieser Artikel stellt eine Sammlung empfohlener Vorgehensweisen im Hinblick auf 
 
 - [Schützen von PaaS-Bereitstellungen](security-paas-deployments.md)
 - [Securing PaaS web and mobile applications using Azure App Services](security-paas-applications-using-app-services.md) (Schützen webbasierter und mobiler PaaS-Anwendungen mit Azure App Services)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

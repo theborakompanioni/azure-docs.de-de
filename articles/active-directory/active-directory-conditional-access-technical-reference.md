@@ -1,7 +1,7 @@
 ---
 title: Technische Referenz zum bedingten Azure Active Directory-Zugriff | Microsoft-Dokumentation
 description: "Mit der bedingten Zugriffssteuerung überprüft Azure Active Directory die besonderen Bedingungen, die Sie beim Authentifizieren des Benutzers und vor dem Gewähren des Zugriffs auf die Anwendung auswählen. Nachdem diese Bedingungen erfüllt sind, wird der Benutzer authentifiziert und erhält Zugriff auf die Anwendung."
-services: active-directory
+services: active-directory.
 documentationcenter: 
 author: MarkusVi
 manager: femila
@@ -11,7 +11,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/01/2017
+ms.date: 03/28/2017
 ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: 4296bbc7123f6571ad564351612864a6315d8abf
@@ -21,7 +21,9 @@ ms.lasthandoff: 03/02/2017
 
 ---
 # <a name="azure-active-directory-conditional-access-technical-reference"></a>Technische Referenz zum bedingten Azure Active Directory-Zugriff
+
 ## <a name="services-enabled-with-conditional-access"></a>Dienste mit aktiviertem bedingtem Zugriff
+
 Bedingte Zugriffsregeln werden über verschiedene Arten von Azure AD-Anwendungen hinweg unterstützt. Diese Liste enthält:
 
 
@@ -36,6 +38,13 @@ Bedingte Zugriffsregeln werden über verschiedene Arten von Azure AD-Anwendungen
 * Microsoft Power BI 
 * Kennwort-SSO-Anwendungen aus dem Azure AD-Anwendungskatalog
 * Visual Studio Online
+
+
+
+
+
+
+
 
 
 ## <a name="enable-access-rules"></a>Aktivieren von Zugriffsregeln

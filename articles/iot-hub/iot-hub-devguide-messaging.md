@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 01/31/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 2fb6f4d8330eb62e01af318277bc0e90aee039e0
-ms.openlocfilehash: d3c4d1a91615957764552a985e0dfeba7c10a927
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: e9e1649e4329d10ca8b87c730ad8c6beb3be818f
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -290,10 +290,9 @@ In der folgenden Tabelle werden die Systemeigenschaften in IoT Hub-Nachrichten a
 | --- | --- |
 | MessageId |Eine vom Benutzer festgelegte Kennung für die Nachricht; wird für Anforderung-Antwort-Muster verwendet. Format: Eine Zeichenfolge mit Berücksichtigung von Klein-/Großschreibung (bis zu 128 Zeichen lang), die aus alphanumerischen ASCII-Zeichen (7 Bit) + `{'-', ':',’.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`besteht. |
 | Sequenznummer |Eine Nummer (für jede Gerätewarteschlange eindeutig), die jeder C2D-Nachricht von IoT Hub zugewiesen wird |
-| To
- |Ein Ziel, das in [C2D][lnk-c2d]-Nachrichten angegeben wird. |
+| To |Ein Ziel, das in [C2D][lnk-c2d]-Nachrichten angegeben wird. |
 | ExpiryTimeUtc |Datum und Uhrzeit des Nachrichtenablaufs. |
-| EnqueuedTime |Datum und Uhrzeit des Empfangs der Nachricht durch IoT Hub. |
+| EnqueuedTime |Datum und Uhrzeit des Empfangs der [C2D][lnk-c2d]-Nachricht durch IoT Hub. |
 | CorrelationId |Eine Zeichenfolgeneigenschaft in einer Antwortnachricht, die normalerweise die Nachrichten-ID der Anforderung im Anforderung-Antwort-Muster enthält. |
 | UserId |Eine ID zum Festlegen des Ursprungs von Nachrichten. Wenn IoT Hub Nachrichten generiert, wird diese Eigenschaft auf `{iot hub name}`festgelegt. |
 | Ack |Ein Feedbacknachrichtengenerator. Diese Eigenschaft wird in C2D-Nachrichten verwendet, um IoT Hub anzuweisen, als Ergebnis der Nachrichtenverarbeitung durch das Gerät Feedbacknachrichten zu generieren. Mögliche Werte: **Kein** (Standardeinstellung): Es wird keine Feedbacknachricht generiert. **Positiv**: Es wird eine Feedbacknachricht empfangen, wenn die Nachricht abgeschlossen wurde. **Negativ**: Es wird eine Feedbacknachricht empfangen, wenn die Nachricht ohne vollständige Verarbeitung durch das Gerät abgelaufen ist (oder die maximale Anzahl von Zustellversuchen erreicht wurde). **Voll**: Feedback wird sowohl bei erfolgreicher als auch nicht erfolgreicher Nachrichtenverarbeitung generiert. Weitere Informationen finden Sie unter [Nachrichtenfeedback][lnk-feedback]. |
@@ -348,7 +347,7 @@ Geräte können mit IoT Hub in Azure über verschiedene Protokolle kommunizieren
 Nachdem Sie einen IoT Hub in einer Azure-Region erstellt haben, behält er seine IP-Adresse für die gesamte Lebensdauer bei. Wenn der IoT Hub von Microsoft jedoch in eine andere Skalierungseinheit verschoben wird, wird ihm eine neue IP-Adresse zugewiesen, um die Dienstqualität zu gewährleisten.
 
 ## <a name="notes-on-mqtt-support"></a>Hinweise zur MQTT-Unterstützung
-IoT Hub implementiert die MQTT-Protokollversion&3;.1.1 mit den folgenden Einschränkungen und einem bestimmten Verhalten:
+IoT Hub implementiert die MQTT-Protokollversion 3.1.1 mit den folgenden Einschränkungen und einem bestimmten Verhalten:
 
 * **QoS 2 wird nicht unterstützt**. Wenn eine Geräte-App eine Nachricht mit **QoS 2**veröffentlicht, schließt IoT Hub die Netzwerkverbindung. Wenn eine Geräte-App ein Thema mit **QoS 2** abonniert, gewährt IoT Hub im **SUBACK**-Paket maximal die QoS-Ebene 1.
 * **Beibehaltungsnachrichten werden nicht beständig speichert**. Wenn eine Geräte-App eine Nachricht mit auf 1 festgelegtem RETAIN-Flag veröffentlicht, fügt IoT Hub der Nachricht die Anwendungseigenschaft **x-opt-retain** hinzu. In diesem Fall speichert IoT Hub die Beibehaltungsnachricht nicht beständig, sondern übergibt sie an die Back-End-App.
@@ -437,3 +436,4 @@ Wenn Sie einige der in diesem Artikel beschriebenen Konzepte ausprobieren möcht
 [lnk-c2d-tutorial]: iot-hub-csharp-csharp-c2d.md
 [lnk-d2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
 [lnk-event-hub-partitions]: ../event-hubs/event-hubs-what-is-event-hubs.md#partitions
+

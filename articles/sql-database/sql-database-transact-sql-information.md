@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 03/03/2017
+ms.date: 03/17/2017
 ms.author: rickbyh
 translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: 78ed4e170c4c296ae78b79c553228d8ea11c0f49
-ms.lasthandoff: 03/04/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 9716975994d1ab3b7cf63efc6480efcd48eb67bb
+ms.lasthandoff: 03/18/2017
 
 
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>Auflösen von Transact-SQL-Unterschieden während der Migration zur SQL-Datenbank   
-Beim [Migrieren der Datenbank](sql-database-cloud-migrate.md) von SQL Server zu Azure SQL-Server stellen Sie möglicherweise fest, dass die Datenbank einige Umstrukturierungen erfordert, bevor SQL Server migriert werden kann. Dieses Thema enthält Anleitungen, die Ihnen sowohl bei der Durchführung dieser Umstrukturierung als auch beim Verstehen der Gründe helfen, warum diese Umstrukturierung notwendig ist. 
+Beim [Migrieren der Datenbank](sql-database-cloud-migrate.md) von SQL Server zu Azure SQL-Server stellen Sie möglicherweise fest, dass die Datenbank einige Umstrukturierungen erfordert, bevor SQL Server migriert werden kann. Dieses Thema enthält Anleitungen, die Ihnen sowohl bei der Durchführung dieser Umstrukturierung als auch beim Verstehen der Gründe helfen, warum diese Umstrukturierung notwendig ist. Verwenden Sie zum Erkennen von Kompatibilitätsproblemen den [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595).
 
 ## <a name="overview"></a>Übersicht
 Die meisten Transact-SQL-Funktionen, die von Anwendungen verwendet werden, werden in Microsoft SQL Server und in der Azure SQL-Datenbank unterstützt. Die zentralen SQL-Komponenten wie z.B. Datentypen, Operatoren, Zeichenfolgen-, Arithmetik-, logische und Cursorfunktionen funktionieren in SQL Server und in der SQL-Datenbank gleich. Es gibt jedoch einige T-SQL-Unterschiede zwischen Elementen der Datendefinitionssprache (Data Definition Language, DDL) und der Datenbearbeitungssprache (Data Manipulation Language, DML), die dazu führen, dass T-SQL-Anweisungen und -Abfragen nur teilweise unterstützt werden (mehr dazu weiter unten in diesem Thema).

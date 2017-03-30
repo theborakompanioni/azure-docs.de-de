@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 8c61c70f-fe7f-4f0f-a4ab-0cccee5668c9
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,8 +17,9 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 59f072c7a8272fc04e1d662c0ab17e7ee4500fa6
-ms.openlocfilehash: 382b4929f0587906bd7256380cae4eb641f108bb
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 3f5b7409c5245ee975b0208f812668a0c35ff1c3
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -187,7 +189,7 @@ Nachdem Ihre Daten als Hive-Tabelle gespeichert wurden, können wir im nächsten
 
    ![SQL-Abfrageausgabe](./media/hdinsight-apache-spark-custom-library-website-log-analysis/sql.output.png "SQL-Abfrageausgabe")
 
-   Weitere Informationen zur `%%sql` -Magic sowie anderen für den PySpark-Kernel verfügbaren Magics finden Sie unter [Verfügbare Kernels für Jupyter Notebooks mit Spark-Clustern unter HDInsight](hdinsight-apache-spark-jupyter-notebook-kernels.md#choose-between-the-kernels).
+   Weitere Informationen zur `%%sql`-Magic finden Sie unter [Mit %%sql-Magic unterstützte Parameter](hdinsight-apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
 7. Sie können nun Matplotlib verwenden, eine Bibliothek zur Visualisierung von Daten, um eine Grafik zu erstellen. Da die Grafik aus dem lokal gespeicherten **averagetime**-Dataframe erstellt werden muss, muss der Codeausschnitt mit der `%%local`-Magic beginnen. Dadurch wird sichergestellt, dass der Code lokal auf dem Jupyter-Server ausgeführt wird.
 
        %%local
@@ -203,7 +205,7 @@ Nachdem Ihre Daten als Hive-Tabelle gespeichert wurden, können wir im nächsten
    ![Matplotlib-Ausgabe](./media/hdinsight-apache-spark-custom-library-website-log-analysis/hdi-apache-spark-web-log-analysis-plot.png "Matplotlib-Ausgabe")
 8. Nach Ausführen der Anwendung empfiehlt es sich, das Notebook herunterzufahren, um die Ressourcen freizugeben. Klicken Sie hierzu im Menü **Datei** des Notebooks auf die Option zum **Schließen und Anhalten**. Dadurch wird das Notebook heruntergefahren und geschlossen.
 
-## <a name="a-nameseealsoasee-also"></a><a name="seealso"></a>Weitere Informationen
+## <a name="seealso"></a>Weitere Informationen
 * [Übersicht: Apache Spark in Azure HDInsight](hdinsight-apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Szenarios
@@ -227,9 +229,4 @@ Nachdem Ihre Daten als Hive-Tabelle gespeichert wurden, können wir im nächsten
 ### <a name="manage-resources"></a>Verwalten von Ressourcen
 * [Verwalten von Ressourcen für den Apache Spark-Cluster in Azure HDInsight](hdinsight-apache-spark-resource-manager.md)
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight(Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)](hdinsight-apache-spark-job-debugging.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

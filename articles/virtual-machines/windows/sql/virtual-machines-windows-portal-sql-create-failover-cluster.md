@@ -14,11 +14,12 @@ ms.custom: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 01/11/2017
+ms.date: 03/17/2017
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: b84e07b26506149cf9475491b32b9ff3ea9ae80d
-ms.openlocfilehash: 4d078c3307c5f1a567f580ae5baaa21fa915e90a
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 6f0fe474787efc15db5c75266cde369725832aab
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -33,10 +34,10 @@ Im folgenden Diagramm ist die vollständige Lösung auf virtuellen Azure-Compute
 
 In der obigen Abbildung ist Folgendes zu sehen:
 
-- Zwei virtuelle Azure-Computer in einem Windows Server-Failovercluster (WSFC). Wenn sich ein virtueller Computer in einem WSFC befindet, wird dies auch als *Clusterknoten* bzw. als *Knoten* bezeichnet.
+- Zwei virtuelle Azure-Computer in einem Windows-Failovercluster. Wenn sich ein virtueller Computer in einem Failovercluster befindet, wird dies auch als *Clusterknoten* bzw. als *Knoten* bezeichnet.
 - Jeder virtuelle Computer verfügt mindestens über zwei Datenträger für Daten.
 - S2D synchronisiert die Daten auf dem Datenträger und stellt den synchronisierten Speicher als Speicherpool dar. 
-- Der Speicherpool stellt ein freigegebenes Clustervolume (CSV) für den WSFC dar.
+- Der Speicherpool stellt ein freigegebenes Clustervolume (CSV) für den Failovercluster dar.
 - Die SQL Server-FCI-Clusterrolle verwendet das CSV für die Datenträger für Daten. 
 - Ein Azure Load Balancer für die IP-Adresse der SQL Server-Failoverclusterinstanz.
 - Eine Azure-Verfügbarkeitsgruppe enthält alle Ressourcen.
@@ -76,11 +77,11 @@ Bevor Sie die Anweisungen in diesem Artikel befolgen, sollten Sie über Folgende
 - Ein Konto mit der Berechtigung zum Erstellen von Objekten auf dem virtuellen Azure-Computer
 - Ein virtuelles Azure-Netzwerk und ein Subnetz mit einem ausreichend großen IP-Adressraum für die folgenden Komponenten:
    - Beide virtuellen Computer
-   - Die WSFC-IP-Adresse
+   - Die IP-Adresse des Failoverclusters
    - Eine IP-Adresse für jede FCI
 - DNS-Konfiguration im Azure-Netzwerk mit Verweis auf die Domänencontroller 
 
-Wenn diese Voraussetzungen erfüllt sind, können Sie mit dem Erstellen Ihres WSFC fortfahren. Der erste Schritt ist die Erstellung der virtuellen Computer. 
+Wenn diese Voraussetzungen erfüllt sind, können Sie mit dem Erstellen Ihres Failoverclusters fortfahren. Der erste Schritt ist die Erstellung der virtuellen Computer. 
 
 ## <a name="step-1-create-virtual-machines"></a>Schritt 1: Erstellen von virtuellen Computern
 
@@ -135,9 +136,9 @@ Wenn diese Voraussetzungen erfüllt sind, können Sie mit dem Erstellen Ihres WS
       - **{BYOL} SQL Server 2016 Standard unter Windows Server Datacenter 2016** 
    
    >[!IMPORTANT]
-   >Entfernen Sie nach dem Erstellen des virtuellen Computers die vorinstallierte eigenständige SQL Server-Instanz. Sie verwenden die vorinstallierten SQL Server-Medien, um die SQL Server-FCI nach der WSFC- und S2D-Konfiguration zu erstellen. 
+   >Entfernen Sie nach dem Erstellen des virtuellen Computers die vorinstallierte eigenständige SQL Server-Instanz. Sie verwenden die vorinstallierten SQL Server-Medien, um die SQL Server-FCI nach der Konfiguration von Failovercluster und S2D zu erstellen. 
 
-   Alternativ dazu können Sie auch Azure Marketplace-Images verwenden, die nur das Betriebssystem enthalten. Wählen Sie ein Image vom Typ **Windows Server 2016 Datacenter**, und installieren Sie die SQL Server-FCI, nachdem Sie die WSFC- und S2D-Konfiguration durchgeführt haben. Dieses Image enthält keine SQL Server-Installationsmedien. Speichern Sie die Installationsmedien an einem Speicherort, an dem Sie die SQL Server-Installation für jeden Server ausführen können.
+   Alternativ dazu können Sie auch Azure Marketplace-Images verwenden, die nur das Betriebssystem enthalten. Wählen Sie ein Image vom Typ **Windows Server 2016 Datacenter** aus, und installieren Sie die SQL Server-FCI, nachdem Sie die Konfiguration von Failovercluster und S2D durchgeführt haben. Dieses Image enthält keine SQL Server-Installationsmedien. Speichern Sie die Installationsmedien an einem Speicherort, an dem Sie die SQL Server-Installation für jeden Server ausführen können.
 
 1. Stellen Sie eine Verbindung mit jedem virtuellen Computer per RDP her, nachdem Ihre virtuellen Computer von Azure erstellt wurden. 
 
@@ -179,15 +180,15 @@ Wenn diese Voraussetzungen erfüllt sind, können Sie mit dem Erstellen Ihres WS
 
 1. [Fügen Sie die virtuellen Computer Ihrer bereits vorhandenen Domäne hinzu](virtual-machines-windows-portal-sql-availability-group-prereq.md#joinDomain).
 
-Nachdem die virtuellen Computer erstellt und konfiguriert wurden, können Sie den WSFC konfigurieren.
+Nachdem die virtuellen Computer erstellt und konfiguriert wurden, können Sie den Failovercluster konfigurieren.
 
-## <a name="step-2-configure-the-windows-server-failover-cluster-wsfc-with-s2d"></a>Schritt 2: Konfigurieren des Windows Server-Failoverclusters (WSFC) mit S2D
+## <a name="step-2-configure-the-windows-failover-cluster-with-s2d"></a>Schritt 2: Konfigurieren des Windows-Failoverclusters mit S2D
 
-Im nächsten Schritt konfigurieren Sie den WSFC mit S2D. In diesem Schritt führen Sie die folgenden untergeordneten Schritte aus:
+Im nächsten Schritt konfigurieren Sie den Failovercluster mit S2D. In diesem Schritt führen Sie die folgenden untergeordneten Schritte aus:
 
 1. Hinzufügen des Windows-Failoverclusteringfeatures
 1. Überprüfen des Clusters
-1. Erstellen des WSFC
+1. Erstellen des Failoverclusters
 1. Erstellen des Cloudzeugen
 1. Hinzufügen von Speicher
 
@@ -240,34 +241,34 @@ Führen Sie zum Validieren des Clusters mit PowerShell das folgende Skript in ei
    Test-Cluster –Node ("<node1>","<node2>") –Include "Storage Spaces Direct", "Inventory", "Network", "System Configuration"
    ```
 
-Erstellen Sie nach dem Validieren des Clusters den WSFC.
+Erstellen Sie nach dem Validieren des Clusters den Failovercluster.
 
-### <a name="create-the-wsfc"></a>Erstellen des WSFC
+### <a name="create-the-failover-cluster"></a>Erstellen des Failoverclusters
 
-In diesem Leitfaden wird auf den Abschnitt [Erstellen eines Clusters](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-32-create-a-cluster) Bezug genommen.
+In diesem Leitfaden wird auf den Abschnitt [Erstellen des Failoverclusters](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-32-create-a-cluster) Bezug genommen.
 
-Sie benötigen Folgendes, um den WSFC zu erstellen: 
+Für das Erstellen des Failoverclusters benötigen Sie Folgendes: 
 - Die Namen der virtuellen Computer, die zu Clusterknoten werden 
-- Einen Namen für den WSFC (gültiger Name) 
-- IP-Adresse für den WSFC. Sie können eine IP-Adresse verwenden, die nicht in demselben virtuellen Azure-Netzwerk und Subnetz wie die Clusterknoten genutzt wird. 
+- Einen Namen für den Failovercluster
+- Eine IP-Adresse für den Failovercluster. Sie können eine IP-Adresse verwenden, die nicht in demselben virtuellen Azure-Netzwerk und Subnetz wie die Clusterknoten genutzt wird. 
 
-Mit dem folgenden PowerShell-Code wird ein WSFC erstellt. Aktualisieren Sie das Skript mit den Namen der Knoten (Namen virtueller Computer) und einer verfügbaren IP-Adresse aus dem Azure VNET: 
+Mit dem folgenden PowerShell-Code wird ein Failovercluster erstellt. Aktualisieren Sie das Skript mit den Namen der Knoten (Namen virtueller Computer) und einer verfügbaren IP-Adresse aus dem Azure VNET: 
 
 ```PowerShell
-New-Cluster -Name <WSFC-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage
+New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage
 ```   
 
 ### <a name="create-a-cloud-witness"></a>Erstellen eines Cloudzeugen
 
 Ein Cloudzeuge ist eine neue Art von Clusterquorumzeuge, der in einem Azure Storage Blob gespeichert wird. Es ist dann nicht erforderlich, eine separate VM als Host für eine Zeugenfreigabe zu verwenden.
 
-1. [Erstellen Sie einen Cloudzeugen für den WSFC](http://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness). 
+1. [Erstellen Sie einen Cloudzeugen für den Failovercluster](http://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness). 
 
 1. Erstellen Sie einen Blobcontainer. 
 
 1. Speichern Sie die Zugriffsschlüssel und die Container-URL.
 
-1. Konfigurieren Sie den WSFC-Clusterquorumzeugen. Siehe [Konfigurieren des Quorumzeugen auf der Benutzeroberfläche].(http://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness)
+1. Konfigurieren Sie den Failovercluster-Quorumzeugen. Siehe [Konfigurieren des Quorumzeugen auf der Benutzeroberfläche].(http://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness)
 
 ### <a name="add-storage"></a>Hinzufügen von Speicher
 
@@ -297,13 +298,13 @@ Die Datenträger für S2D müssen leer sein und dürfen keine Partitionen oder a
 
    ![ClusterSharedVolume](./media/virtual-machines-windows-portal-sql-create-failover-cluster/15-cluster-shared-volume.png)
 
-## <a name="step-3-test-wsfc-failover"></a>Schritt 3: Testen des WSFC-Failovers
+## <a name="step-3-test-failover-cluster-failover"></a>Schritt 3: Testen eines Failovers mit dem Failovercluster
 
-Überprüfen Sie im Failovercluster-Manager, ob Sie die Speicherressource auf den anderen Clusterknoten verschieben können. Wenn Sie mit dem **Failovercluster-Manager** eine Verbindung mit dem WSFC herstellen und den Speicher von einem Knoten auf den anderen verschieben können, sind Sie bereit zum Konfigurieren der FCI. 
+Überprüfen Sie im Failovercluster-Manager, ob Sie die Speicherressource auf den anderen Clusterknoten verschieben können. Wenn Sie mit dem **Failovercluster-Manager** eine Verbindung mit dem Failovercluster herstellen und den Speicher von einem Knoten auf den anderen verschieben können, sind Sie bereit zum Konfigurieren der FCI. 
 
 ## <a name="step-4-create-sql-server-fci"></a>Schritt 4: Erstellen der SQL Server-FCI
 
-Nachdem Sie den WSFC und alle Clusterkomponenten konfiguriert haben, einschließlich des Speichers, können Sie die SQL Server-FCI erstellen. 
+Nachdem Sie den Failovercluster und alle Clusterkomponenten konfiguriert haben, einschließlich des Speichers, können Sie die SQL Server-FCI erstellen. 
 
 1. Stellen Sie die Verbindung mit dem ersten virtuellen Computer per RDP her. 
 
@@ -468,15 +469,10 @@ Auf virtuellen Azure-Computern wird Microsoft Distributed Transaction Coordinato
 
 [Einrichten von S2D mit Remotedesktop (Azure)](http://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-storage-spaces-direct-deployment) 
 
-[Zusammengeführte Lösung unter Verwendung von „Direkte Speicherplätze“ in Windows Server&2016;](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct)
+[Zusammengeführte Lösung unter Verwendung von „Direkte Speicherplätze“ in Windows Server 2016](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct)
 
-[„Direkte Speicherplätze“ in Windows Server&2016;](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview)
+[„Direkte Speicherplätze“ in Windows Server 2016](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview)
 
 [SQL Server support for S2D](https://blogs.technet.microsoft.com/dataplatforminsider/2016/09/27/sql-server-2016-now-supports-windows-server-2016-storage-spaces-direct/) (SQL Server-Unterstützung für S2D)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

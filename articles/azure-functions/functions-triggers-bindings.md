@@ -17,9 +17,9 @@ ms.workload: na
 ms.date: 01/23/2017
 ms.author: chrande
 translationtype: Human Translation
-ms.sourcegitcommit: b7ea1e3a72a9dc6f4f9ca9d2d9d6f8c9b1564972
-ms.openlocfilehash: 947f1f5e6d9bebe6708e6d29d3b71efc09573537
-ms.lasthandoff: 01/30/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: a56d71d437814ed08b2e0a05d9acc8448f6b9ae5
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -33,7 +33,7 @@ Ausführliche Informationen zum Arbeiten mit einem bestimmten Trigger- oder Bind
 | --- | --- | --- | --- |  
 | [HTTP/Webhook](functions-bindings-http-webhook.md) | [Zeitgeber](functions-bindings-timer.md) | [Mobile Apps](functions-bindings-mobile-apps.md) | [Service Bus](functions-bindings-service-bus.md)  |  
 | [DocumentDB](functions-bindings-documentdb.md) |  [Storage Blob](functions-bindings-storage-blob.md) | [Speicherwarteschlange](functions-bindings-storage-queue.md) |  [Storage-Tabelle](functions-bindings-storage-table.md) |  
-| [Event Hubs](functions-bindings-event-hubs.md) | [Notification Hubs](functions-bindings-notification-hubs.md) | [Twilio](functions-bindings-twilio.md) |   
+| [Event Hubs](functions-bindings-event-hubs.md) | [Notification Hubs](functions-bindings-notification-hubs.md) | [SendGrid](functions-bindings-sendgrid.md) | [Twilio](functions-bindings-twilio.md) |   
 | | | | |  
 
 In diesen Artikeln wird davon ausgegangen, dass Sie die [Entwicklerreferenz zu Azure Functions](functions-reference.md) sowie die Referenzartikel zu [C#](functions-reference-csharp.md), [F#](functions-reference-fsharp.md) bzw. [Node.js](functions-reference-node.md) für Entwickler gelesen haben.

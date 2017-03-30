@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 01/27/2017
+ms.date: 03/16/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 36b3eab758d006710467d23a30f889b605df1583
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: dd6e6184dd755ea356cae1c4d50a2b7ba39da9fb
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -56,6 +56,14 @@ ms.lasthandoff: 03/07/2017
 
 ## <a name="release-notes"></a>Versionshinweise
 
+### <a name="1.11.0"/>1.11.0</a>
+* Unterstützung für Aggregationsabfragen (COUNT, MIN, MAX, SUM und AVG) wurde hinzugefügt.
+* Die Option zum Steuern des Parallelitätsgrads für partitionsübergreifende Abfragen wurde hinzugefügt.
+* Die Option zum Deaktivieren der SSL-Überprüfung bei der Ausführung für den DocumentDB-Emulator wurde hinzugefügt.
+* Minimaler Durchsatz für partitionierte Sammlungen wurde von 10.100 RU/s auf 2.500 RU/s gesenkt.
+* Fehler beim Fortsetzungstoken für Sammlung mit einer Partition wurde behoben (GitHub 107).
+* Fehler bei executeStoredProcedure bei der Verarbeitung von 0 als einzelner Parameter wurde behoben (GitHub 155).
+
 ### <a name="1.10.2"/>1.10.2</a>
 * Fehler bei Benutzer-Agent-Header zum Einbeziehen der SDK-Version wurde behoben.
 * Kleinere Codebereinigung.
@@ -89,13 +97,13 @@ ms.lasthandoff: 03/07/2017
 * Problem mit „hashParitionResolver resolveForRead()“ behoben: Bei einem nicht angegebenen Partitionsschlüssel wurde eine Ausnahme ausgelöst, anstatt eine Liste aller registrierten Links zurückgegeben.
 
 ### <a name="1.5.4"/>1.5.4</a>
-* Behebt Problem [Nr.&100;](https://github.com/Azure/azure-documentdb-node/issues/100) – Dedizierter HTTPS-Agent: Vermeidung des Änderns des globalen Agents für DocumentDB-Zwecke. Verwenden Sie einen dedizierten-Agent für alle Anforderungen der Bibliothek.
+* Behebt Problem [Nr. 100](https://github.com/Azure/azure-documentdb-node/issues/100) – Dedizierter HTTPS-Agent: Vermeidung des Änderns des globalen Agents für DocumentDB-Zwecke. Verwenden Sie einen dedizierten-Agent für alle Anforderungen der Bibliothek.
 
 ### <a name="1.5.3"/>1.5.3</a>
-* Behebt Problem [Nr.&81;](https://github.com/Azure/azure-documentdb-node/issues/81) : Ordnungsgemäße Behandlung von Bindestrichen in Medien-IDs.
+* Behebt Problem [Nr. 81](https://github.com/Azure/azure-documentdb-node/issues/81) : Ordnungsgemäße Behandlung von Bindestrichen in Medien-IDs.
 
 ### <a name="1.5.2"/>1.5.2</a>
-* Behebt Problem [Nr.&95;](https://github.com/Azure/azure-documentdb-node/issues/95) : Warnung des EventEmitter-Listeners bei Arbeitsspeicherverlusten.
+* Behebt Problem [Nr. 95](https://github.com/Azure/azure-documentdb-node/issues/95) : Warnung des EventEmitter-Listeners bei Arbeitsspeicherverlusten.
 
 ### <a name="1.5.1"/>1.5.1</a>
 * Behebt Problem [92](https://github.com/Azure/azure-documentdb-node/issues/90) : Umbenennung des Ordners „Hash“ in „hash“ für Systeme, bei denen die Groß-/Kleinschreibung beachtet wird.
@@ -150,6 +158,7 @@ Anforderungen von DocumentDB mithilfe eines deaktivierten SDK werden vom Dienst 
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [1.11.0](#1.11.0) |16. März 2017 |--- |
 | [1.10.2](#1.10.2) |27. Januar 2017 |--- |
 | [1.10.1](#1.10.1) |22. Dezember 2016 |--- |
 | [1.10.0](#1.10.0) |3. Oktober 2016 |--- |

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/07/2017
 ms.author: saeeda
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 84f5ba5b3836f8524aafd9ca5e30978cc2702c1f
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 992bbf513ac87b0d955f9dc4b27984ef03050b83
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -40,18 +40,18 @@ Bevor Sie Azure AD B2C verwenden können, müssen Sie ein Verzeichnis oder einen
 ## <a name="create-an-application"></a>Erstellen einer Anwendung
 Als Nächstes müssen Sie in Ihrem B2C-Verzeichnis eine App erstellen. Durch die App-Registrierung werden Azure AD die Informationen bereitgestellt, die für die sichere Kommunikation mit Ihrer App erforderlich sind. Befolgen Sie zum Erstellen einer Mobile App [diese Anweisungen](active-directory-b2c-app-registration.md). Führen Sie folgende Schritte aus:
 
-* Binden Sie ein **mobiles Gerät** in die Anwendung ein.
+* Fügen Sie einen **nativen Client** in die Anwendung ein.
 * Kopieren Sie die **Anwendungs-ID** , die Ihrer App zugewiesen ist. Diese GUID benötigen Sie später noch.
 * Richten Sie eine **Umleitungs-URI** mit einem benutzerdefinierten Schema ein (z.B. com.onmicrosoft.fabrikamb2c.exampleapp://oauth/redirect). Diese URI benötigen Sie später noch.
 
 [!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
 ## <a name="create-your-policies"></a>Erstellen der Richtlinien
-In Azure AD B2C wird jede Benutzererfahrung durch eine [Richtlinie](active-directory-b2c-reference-policies.md)definiert. Diese App enthält eine kombinierte Identitätsoberfläche für die Anmeldung und Registrierung. Sie müssen diese Richtlinie wie im [Artikel mit Richtlinienreferenzen](active-directory-b2c-reference-policies.md#create-a-sign-up-policy) beschrieben erstellen. Achten Sie beim Erstellen der Richtlinie auf Folgendes:
+In Azure AD B2C wird jede Benutzererfahrung durch eine [Richtlinie](active-directory-b2c-reference-policies.md)definiert. Diese App enthält eine kombinierte Identitätsoberfläche für die Anmeldung und Registrierung. Erstellen Sie diese Richtlinie wie im [Artikel zur Richtlinienreferenz](active-directory-b2c-reference-policies.md#create-a-sign-up-policy) beschrieben. Achten Sie beim Erstellen der Richtlinie auf Folgendes:
 
-* Wählen Sie den **Anzeigenamen** und die Registrierungsattribute in der Richtlinie aus.
-* Wählen Sie den **Anzeigenamen** und die **Objekt-ID** als Anwendungsansprüche in jeder Richtlinie aus. Sie können auch andere Ansprüche auswählen.
-* Notieren Sie sich die **Namen** der einzelnen Richtlinien nach ihrer Erstellung. Sie müssen das Präfix `b2c_1_`aufweisen.  Sie benötigen den Richtliniennamen später noch.
+* Wählen Sie unter **Registrierungsattribute** das Attribut **Anzeigename** aus.  Sie können auch andere Attribute auswählen.
+* Wählen Sie unter **Anwendungsansprüche** die Ansprüche **Anzeigename** und **Objekt-ID des Benutzers** aus. Sie können auch andere Ansprüche auswählen.
+* Notieren Sie sich die **Namen** der einzelnen Richtlinien nach ihrer Erstellung. Dem Namen der Richtlinie wird beim Speichern der Richtlinie das Präfix `b2c_1_` vorangestellt.  Sie benötigen den Richtliniennamen später noch.
 
 [!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
@@ -128,12 +128,13 @@ appDelegate.currentAuthorizationFlow =
 
 Um Ihre Anwendung zum Verarbeiten der Umleitung an den URI mit dem benutzerdefinierten Schema einzurichten, müssen Sie die Liste der URL-Schemas in der Datei „Info.plist“ aktualisieren:
 * Öffnen Sie die Datei „Info.plist“.
-* Zeigen Sie auf eine Zeile wie „Bundle creator OS Type Code“, und klicken Sie auf das \+-Symbol.
+* Zeigen Sie mit dem Mauszeiger auf eine Zeile wie „Bundle OS Type Code“, und klicken Sie auf das Symbol \+.
 * Nennen Sie die neue Zeile „URL types“.
-* Klicken Sie auf den Pfeil links neben „URL types“.
-* Nennen Sie den Wert in „Item 0“ in „URL Schemes“ um.
-* Bearbeiten Sie den Wert von „Item 0“ unter „URL Schemes“, und legen Sie den Wert für das eindeutige Schema Ihres Anwendungsverzeichnisses fest.  Beim Erstellen des Objekts „OIDAuthorizationRequest“ muss das Schema mit der Umleitungs-URL übereinstimmen.
-* In diesem Beispiel haben wir das Schema „com.onmicrosoft.fabrikamb2c.exampleapp“ verwendet.
+* Klicken Sie auf den Pfeil links neben „URL types“, um die Struktur zu öffnen.
+* Klicken Sie auf den Pfeil links neben „Item 0“, um die Struktur zu öffnen.
+* Benennen Sie das erste Element unterhalb von „Item 0“ in „URL Schemes“ um.
+* Klicken Sie auf den Pfeil links neben „URL Schemes“, um die Struktur zu öffnen.
+* In der Spalte „Value“ befindet sich links neben „Item 0“ unterhalb von „URL Schemes“ ein leeres Feld.  Legen Sie den Wert auf das eindeutige Schema Ihrer Anwendung fest.  Der Wert muss mit dem in der Umleitungs-URL beim Erstellen des OIDAuthorizationRequest-Objekts verwendeten Schema übereinstimmen.  In diesem Beispiel haben wir das Schema „com.onmicrosoft.fabrikamb2c.exampleapp“ verwendet.
 
 Informationen zum restlichen Prozess finden Sie im [AppAuth Handbuch](https://openid.github.io/AppAuth-iOS/). Sehen Sie sich [unser Beispiel](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c) für die ersten Schritte mit einer funktionsfähigen App an. Folgen Sie den Anweisungen in der Datei [README.md](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c/blob/master/README.md) aus, um Ihre eigene Azure AD B2C-Konfiguration einzugeben.
 

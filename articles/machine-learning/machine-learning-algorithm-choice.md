@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 12/12/2016
+ms.date: 03/14/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 265bb284d23e42c16c84a718c402b1bc6f6a30f9
-ms.openlocfilehash: c5521c3a02e36fa388e4da90faf4d8b9fa219356
-ms.lasthandoff: 12/19/2016
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 720822c4a6a2b236ca772016c647827050e27d44
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -34,12 +34,12 @@ In diesem Artikel werden Sie durch seine Verwendung geführt.
 > 
 > 
 
-Dieses Cheat Sheet richtet sich an eine ganz bestimmte Zielgruppe: einen unerfahrenen Datenanalysten mit Machine Learning-Kenntnissen auf Studentenniveau, der einen Algorithmus für den Einstieg in Azure Machine Learning Studio auswählen möchte. Dies bedeutet, dass einige Verallgemeinerungen und Vereinfachungen getroffen werden, Sie aber dennoch auf dem richtigen Weg sein werden. Dies bedeutet außerdem, dass hier zahlreiche Algorithmen nicht aufgeführt sind. Der Satz verfügbarer Methoden in Azure Machine Learning wächst stetig, und sobald er vollständiger ist, werden wir einen neuen hinzufügen.
+Dieses Cheat Sheet richtet sich an eine ganz bestimmte Zielgruppe: einen unerfahrenen Datenanalysten mit Machine Learning-Kenntnissen auf Studentenniveau, der einen Algorithmus für den Einstieg in Azure Machine Learning Studio auswählen möchte. Dies bedeutet, dass einige Verallgemeinerungen und Vereinfachungen getroffen werden, Sie aber dennoch auf dem richtigen Weg sind. Dies bedeutet außerdem, dass hier zahlreiche Algorithmen nicht aufgeführt sind. Der Satz verfügbarer Methoden in Azure Machine Learning wächst stetig, und sobald er vollständiger ist, werden wir einen neuen hinzufügen.
 
 Diese Empfehlungen sind eine Zusammenstellung aus Feedback und Tipps von zahlreichen Datenanalysten und Machine Learning-Experten. Wir konnten uns nicht bei allem einigen, aber ich habe versucht, unsere Meinung zu einem groben Konsens zu vereinheitlichen. Die meisten Aussagen bei abweichenden Meinungen beginnen mit "Es hängt davon ab...".
 
 ### <a name="how-to-use-the-cheat-sheet"></a>Verwenden des Cheat Sheets
-Die Pfad- und Algorithmusbezeichnungen in den Diagrammen sind wie folgt zu lesen: „Für *&lt;Pfadbezeichnung&gt;* verwenden Sie *&lt;Algorithmus&gt;*“. Beispiel: „Für *Geschwindigkeit* verwenden Sie *Logistische Regression mit zwei Klassen*“. Manchmal ist mehr als eine Verzweigung gültig.
+Die Pfad- und Algorithmusbezeichnungen in den Diagrammen sind wie folgt zu lesen: „Für *&lt;Pfadbezeichnung&gt;* verwenden Sie *&lt;Algorithmus&gt;*“. Beispiel: „Für *Geschwindigkeit* verwenden Sie *Logistische Regression mit zwei Klassen*“. Manchmal sind mehrere Verzweigungen gültig.
 Manchmal ist keine davon eine optimale Lösung. Sie dienen als Faustregelempfehlungen. Machen Sie sich also keine Sorgen über ihre Exaktheit.
 Einige Datenanalysten, mit denen ich gesprochen habe, haben mir gesagt, dass die einzige sichere Methode zum Herausfinden des idealen Algorithmus darin besteht, alle auszuprobieren.
 
@@ -52,9 +52,9 @@ Es folgt ein Beispiel aus dem [Cortana Intelligence-Katalog](http://gallery.cort
 
 ## <a name="flavors-of-machine-learning"></a>Ausprägungen des maschinellen Lernens
 ### <a name="supervised"></a>Beaufsichtigt
-Algorithmen zum beaufsichtigten Lernen treffen Vorhersagen auf Grundlage eines Satzes von Beispielen. Beispielsweise können historische Aktienkurse herangezogen werden, um Vermutungen über zukünftige Preise abzugeben. Jedes für das Training verwendete Beispiel wird mit dem Wert der von Interesse ist, bezeichnet – in diesem Fall dem Aktienkurs. Ein Algorithmus zum beaufsichtigten Lernen sucht nach Mustern in diesen Wertebezeichnungen. Er kann alle Informationen verwenden, die relevant sein könnten – den Wochentag, die Jahreszeit, die Finanzdaten des Unternehmens, den Branchentyp, das Vorhandensein von störenden geopolitischen Ereignisse – und jeder Algorithmus sucht nach anderen Arten von Mustern. Nachdem der Algorithmus das beste Muster gefunden hat, das ihm möglich ist, verwendet er dieses Muster, um Vorhersagen für bezeichnungslose Testdaten zu treffen – die Preise von morgen.
+Algorithmen zum beaufsichtigten Lernen treffen Vorhersagen auf Grundlage eines Satzes von Beispielen. Beispielsweise können historische Aktienkurse herangezogen werden, um Vermutungen über zukünftige Preise abzugeben. Jedes für das Training verwendete Beispiel wird mit dem Wert der von Interesse ist, bezeichnet – in diesem Fall dem Aktienkurs. Ein Algorithmus zum beaufsichtigten Lernen sucht nach Mustern in diesen Wertebezeichnungen. Er kann alle Informationen verwenden, die relevant sein könnten – den Wochentag, die Jahreszeit, die Finanzdaten des Unternehmens, den Branchentyp, das Vorhandensein störender geopolitischer Ereignisse – und jeder Algorithmus sucht nach anderen Arten von Mustern. Nachdem der Algorithmus das beste Muster gefunden hat, das ihm möglich ist, verwendet er dieses Muster, um Vorhersagen für bezeichnungslose Testdaten zu treffen – die Preise von morgen.
 
-Dies ist eine häufige und nützliche Verwendung für das maschinelle Lernen. Mit einer Ausnahme sind alle Module in Azure Machine Learning Algorithmen zum beaufsichtigten Lernen. Es gibt mehrere spezifische Typen beaufsichtigten Lernens, die in Azure Machine Learning repräsentiert werden: Klassifizierung, Regression und Erkennung von Anomalien.
+Beaufsichtigtes Lernen ist eine häufige und nützliche Verwendung für das maschinelle Lernen. Mit einer Ausnahme sind alle Module in Azure Machine Learning Algorithmen zum beaufsichtigten Lernen. Es gibt mehrere spezifische Typen beaufsichtigten Lernens, die in Azure Machine Learning repräsentiert werden: Klassifizierung, Regression und Erkennung von Anomalien.
 
 * **Klassifizierung**. Wenn die Daten zur Vorhersage einer Kategorie verwendet werden, wird beaufsichtigtes Lernen auch als Klassifizierung bezeichnet. Dies ist der Fall, wenn ein Bild als ein Bild einer "Katze" oder eines "Hundes" eingeordnet wird. Wenn es nur zwei Auswahlmöglichkeiten gibt, wird dies als **zweiklassige** oder **binomiale Klassifizierung** bezeichnet. Wenn es mehr Kategorien gibt, z. B. beim Vorhersagen des Gewinners des NCAA March Madness-Turniers, ist dieses Problem als **mehrklassige Klassifizierung** bekannt.
 * **Regression**. Wenn ein Wert vorhergesagt wird, wie bei Aktienkursen, wird beaufsichtigtes Lernen als Regression bezeichnet.
@@ -82,7 +82,7 @@ Linear Regressionsalgorithmen gehen davon aus, dass Datentrends einer geraden Li
 
 ![Nicht lineare Klassengrenze][1]
 
-***Nicht lineare Klassengrenze*** * – Die Verwendung eines linearen Klassifizierungsalgorithmus würde zu einer verringerten Genauigkeit führen.*
+***Nicht lineare Klassengrenze*** *– Die Verwendung eines linearen Klassifizierungsalgorithmus würde zu einer verringerten Genauigkeit führen.*
 
 ![Daten mit einem nicht linearen Trend][2]
 
@@ -122,17 +122,17 @@ Einige Lernalgorithmen treffen bestimmte Annahmen über die Struktur der Daten o
 | [Neuronales Netzwerk](https://msdn.microsoft.com/library/azure/dn906030.aspx) |● | | |9 |[Zusätzliche Anpassung möglich](http://go.microsoft.com/fwlink/?LinkId=402867) |
 | [one-v-all](https://msdn.microsoft.com/library/azure/dn905887.aspx) |- |- |- |- |Siehe die Eigenschaften der ausgewählten zweiklassigen Methode |
 | **Regression** | | | | | |
-| [linear ](https://msdn.microsoft.com/library/azure/dn905978.aspx) | |● |● |4 | |
+| [linear](https://msdn.microsoft.com/library/azure/dn905978.aspx) | |● |● |4 | |
 | [Bayesian linear](https://msdn.microsoft.com/library/azure/dn906022.aspx) | |○ |● |2 | |
 | [Decision Forest (Entscheidungswald)](https://msdn.microsoft.com/library/azure/dn905862.aspx) |● |○ | |6 | |
 | [Boosted Decision Tree (Verstärkter Entscheidungsbaum)](https://msdn.microsoft.com/library/azure/dn905801.aspx) |● |○ | |5 |Hoher Speicherbedarf |
 | [fast forest quantile](https://msdn.microsoft.com/library/azure/dn913093.aspx) |● |○ | |9 |Verteilungen anstelle von Punktvorhersagen |
 | [Neuronales Netzwerk](https://msdn.microsoft.com/library/azure/dn905924.aspx) |● | | |9 |[Zusätzliche Anpassung möglich](http://go.microsoft.com/fwlink/?LinkId=402867) |
-| [Poisson ](https://msdn.microsoft.com/library/azure/dn905988.aspx) | | |● |5 |Technically log-linear. Für die Vorhersage von Anzahlen |
+| [Poisson](https://msdn.microsoft.com/library/azure/dn905988.aspx) | | |● |5 |Technically log-linear. Für die Vorhersage von Anzahlen |
 | [ordinal](https://msdn.microsoft.com/library/azure/dn906029.aspx) | | | |0 |Für die Vorhersage von Rangreihenfolgen |
 | **Anomalieerkennung** | | | | | |
 | [Support Vector Machine (Stützvektormethode)](https://msdn.microsoft.com/library/azure/dn913103.aspx) |○ |○ | |2 |Besonders für große Featuresätze geeignet |
-| [PCA-basierte Erkennung von Anomalien ](https://msdn.microsoft.com/library/azure/dn913102.aspx) | |○ |● |3 | |
+| [PCA-basierte Erkennung von Anomalien](https://msdn.microsoft.com/library/azure/dn913102.aspx) | |○ |● |3 | |
 | [K-Means](https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/) | |○ |● |4 |Clusteringalgorithmus |
 
 **Algorithmuseigenschaften:**
@@ -164,7 +164,7 @@ Decision Forests (Entscheidungswälder; [Regression](https://msdn.microsoft.com/
 
 ***Ein Entscheidungsbaum unterteilt einen Merkmalsraum in Bereiche mit grob einheitlichen Werten***
 
-Da ein Merkmalsraum in beliebig kleine Bereiche unterteilt werden kann, kann man sich leicht vorstellen, ihn so fein zu unterteilen, dass jeder Bereich einen Datenpunkt enthält – ein extremes Beispiel für Überanpassung. Um dies zu vermeiden, wird ein großer Satz von Bäumen erzeugt, wobei besondere mathematische Sorgfalt darauf verwendet wird, dass die Bäume nicht korreliert sind. Der Durchschnitt dieses "Entscheidungswalds" (Decision Forest) ist ein Baum, der eine Überanpassung vermeidet. Entscheidungswälder können sehr speicherintensiv sein. Entscheidungsdschungel sind eine Variante, die weniger Speicher verbraucht, auf Kosten einer etwas längeren Trainingsdauer.
+Da ein Merkmalsraum in beliebig kleine Bereiche unterteilt werden kann, ist es gut vorstellbar, ihn so fein zu unterteilen, dass jeder Bereich einen Datenpunkt enthält. Dies ist ein extremes Beispiel für Überanpassung. Um dies zu vermeiden, wird ein großer Satz von Bäumen erzeugt, wobei besondere mathematische Sorgfalt darauf verwendet wird, dass die Bäume nicht korreliert sind. Der Durchschnitt dieses "Entscheidungswalds" (Decision Forest) ist ein Baum, der eine Überanpassung vermeidet. Entscheidungswälder können sehr speicherintensiv sein. Entscheidungsdschungel sind eine Variante, die weniger Speicher verbraucht, auf Kosten einer etwas längeren Trainingsdauer.
 
 Verstärkte Entscheidungsbäume (Boosted Decision Trees) vermeiden eine Überanpassung, indem sie einschränken, wie oft sie unterteilen können und wie wenige Datenpunkte in jedem Bereich zulässig sind. Der Algorithmus erstellt eine Sequenz von Bäumen, in der jeder lernt, den vom vorherigen Baum übrig gebliebenen Fehler zu kompensieren. Das Ergebnis ist ein sehr genauer Lerner, der dazu neigt, sehr viel Arbeitsspeicher zu verwenden. Die vollständige technische Beschreibung finden Sie im [Originalartikel von Friedman](http://www-stat.stanford.edu/~jhf/ftp/trebst.pdf).
 
@@ -188,7 +188,7 @@ Support Vector Maschines (SVMs) finden die Grenze, die Klassen mit maximalem Abs
 
 ***Eine typische Normale Support Vector Machine-Klassengrenze maximiert den Abstand, der zwei Klassen trennt.***
 
-Ein weiteres Produkt von Microsoft Research, die [Two-Class Locally Deep SVM](https://msdn.microsoft.com/library/azure/dn913070.aspx) (zweiklassige lokal tiefe SVM), ist eine nicht lineare Variante der SVM, die den größten Teil der Geschwindigkeit und Speichereffizienz der linearen Version erhält. Sie eignet sich optimal für Fälle, in denen die Ergebnisse des linearen Ansatzes nicht genau genug sind. Die Entwickler haben sie schnell gehalten, indem sie das Problem in eine Reihe von kleineren linearen SVM-Problemen aufgebrochen haben. Ausführliche Informationen, wie sie das geschafft haben, finden Sie in der [vollständigen Beschreibung](http://research.microsoft.com/um/people/manik/pubs/Jose13.pdf) .
+Ein weiteres Produkt von Microsoft Research, die [Two-Class Locally Deep SVM](https://msdn.microsoft.com/library/azure/dn913070.aspx) (zweiklassige lokal tiefe SVM), ist eine nicht lineare Variante der SVM, die den größten Teil der Geschwindigkeit und Speichereffizienz der linearen Version erhält. Sie eignet sich optimal für Fälle, in denen die Ergebnisse des linearen Ansatzes nicht genau genug sind. Die Entwickler haben sie schnell gehalten, indem sie das Problem in eine Reihe von kleineren linearen SVM-Problemen aufgeteilt haben. Ausführliche Informationen, wie sie das geschafft haben, finden Sie in der [vollständigen Beschreibung](http://research.microsoft.com/um/people/manik/pubs/Jose13.pdf) .
 
 Unter Verwendung einer raffinierten Erweiterung der nicht linearen SVMs zieht die [einklassige SVM](https://msdn.microsoft.com/library/azure/dn913103.aspx) eine Grenze, die das gesamte Dataset eng umreißt. Sie eignet sich gut für die Erkennung von Anomalien. Alle neuen Datenpunkte, die weit außerhalb dieser Grenze liegen, sind ungewöhnlich genug, um beachtenswert zu sein.
 
@@ -199,8 +199,12 @@ Beachten Sie, dass diese voraussetzen, dass die Daten durch eine gerade Linie au
 Rein historisch sei darauf hingewiesen, dass Bayes' Point Machines bei Microsoft Research entwickelt wurden. Ihnen liegt einige außergewöhnlich schöne theoretische Arbeit zugrunde. Der interessierte Student sei auf den [Originalartikel in JMLR](http://jmlr.org/papers/volume1/herbrich01a/herbrich01a.pdf) und einen [aufschlussreichen Blog von Chris Bishop](http://blogs.technet.com/b/machinelearning/archive/2014/10/30/embracing-uncertainty-probabilistic-inference.aspx) verwiesen.
 
 ### <a name="specialized-algorithms"></a>Spezialisierte Algorithmen
-Wenn Sie ein sehr spezielles Ziel haben, könnten Sie Glück haben. In der Sammlung von Azure Machine Learning gibt es Algorithmen, die auf Rangvorhersage spezialisiert sind ([Ordinal-Regression](https://msdn.microsoft.com/library/azure/dn906029.aspx)), auf Anzahlvorhersage ([Poisson-Regression](https://msdn.microsoft.com/library/azure/dn905988.aspx)) und auf das Erkennen von Anomalien (einer basierend auf [Principal Components Analysis](https://msdn.microsoft.com/library/azure/dn913102.aspx) und einer basierend auf [Support Vector Machines](https://msdn.microsoft.com/library/azure/dn913103.aspx)).
-Und es gibt auch einen einzelnen Clustering-Algorithmus ([K-Means](https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/)).
+Wenn Sie ein sehr spezielles Ziel haben, könnten Sie Glück haben. In der Sammlung von Azure Machine Learning gibt es Algorithmen mit verschiedenen Spezialisierungen:
+
+- Rangvorhersage ([Ordinal-Regression](https://msdn.microsoft.com/library/azure/dn906029.aspx))
+- Anzahlvorhersage ([Poisson-Regression](https://msdn.microsoft.com/library/azure/dn905988.aspx))
+- Erkennung von Anomalien (ein Algorithmus basierend auf [Principal Components Analysis](https://msdn.microsoft.com/library/azure/dn913102.aspx) und einer basierend auf [Support Vector Machines](https://msdn.microsoft.com/library/azure/dn913103.aspx))
+- Clustering ([K-Means](https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/))
 
 ![PCA-basierte Erkennung von Anomalien][8]
 
@@ -208,7 +212,7 @@ Und es gibt auch einen einzelnen Clustering-Algorithmus ([K-Means](https://msdn.
 
 ![Mittels K-Means gruppiertes Dataset][9]
 
-***Ein Dataset wird mithilfe von K-Means in 5 Cluster gruppiert***
+***Ein Dataset wird mithilfe von K-Means in fünf Cluster gruppiert***
 
 Es gibt auch einen [mehrklassigen One-vs-All-Ensemble-Klassifizierer](https://msdn.microsoft.com/library/azure/dn905887.aspx), der das N-klassige Klassifizierungsproblem in N-1 zweiklassige Klassifizierungsprobleme aufteilt. Genauigkeit, Trainingsdauer und Linearitätseigenschaften werden von den verwendeten zweiklassigen Klassifizierern bestimmt.
 
@@ -218,7 +222,7 @@ Es gibt auch einen [mehrklassigen One-vs-All-Ensemble-Klassifizierer](https://ms
 
 Azure Machine Learning umfasst außerdem Zugriff auf ein leistungsfähiges Machine Learning-Framework namens [Vowpal Wabbit](https://msdn.microsoft.com/library/azure/8383eb49-c0a3-45db-95c8-eb56a1fef5bf).
 VW widersetzt sich einer Kategorisierung, weil es sowohl Klassifizierungs- als auch Regressionsprobleme lernen und sogar von teilweise bezeichnungslosen Daten lernen kann. Sie können es so konfigurieren, dass es jeden einer Anzahl von Lernalgorithmen, Verlustfunktionen und Optimierungsalgorithmen verwendet. Es wurde von Grund auf unter den Aspekten Effizienz, Parallelität und extreme Schnelligkeit entwickelt. Es verarbeitet unglaublich große Merkmalsgruppen, ohne einen nennenswerten Aufwand zu zeigen.
-Begonnen und geleitet von John Langford bei Microsoft Research, ist VW ein Formel&1;-Wagen in einem Feld aus Stockcar-Algorithmen. Nicht jedes Problem eignet sich für den Einsatz von VW, aber wenn sich Ihres eignet, kann es durchaus den zeitlichen Aufwand lohnen, sich mit der Schnittstelle auseinanderzusetzen. Es steht auch als [eigenständiger Open Source-Code](https://github.com/JohnLangford/vowpal_wabbit) in mehreren Sprachen zur Verfügung.
+Begonnen und geleitet von John Langford bei Microsoft Research, ist VW ein Formel 1-Wagen in einem Feld aus Stockcar-Algorithmen. Nicht jedes Problem eignet sich für den Einsatz von VW, aber wenn sich Ihres eignet, kann es durchaus den zeitlichen Aufwand lohnen, sich mit der Schnittstelle auseinanderzusetzen. Es steht auch als [eigenständiger Open Source-Code](https://github.com/JohnLangford/vowpal_wabbit) in mehreren Sprachen zur Verfügung.
 
 ## <a name="more-help-with-algorithms"></a>Weitere Hilfe zu Algorithmen
 * Eine herunterladbare Infografik, die Algorithmen beschreibt und Beispiele enthält, finden Sie unter [Herunterladbare Infografik: Grundlagen des maschinellen Lernens mit Algorithmusbeispielen](machine-learning-basics-infographic-with-algorithm-examples.md).

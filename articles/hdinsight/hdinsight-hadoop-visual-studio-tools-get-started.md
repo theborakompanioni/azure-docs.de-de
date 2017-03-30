@@ -119,7 +119,7 @@ Zum Erstellen einer Hive-Tabelle können Sie die Benutzeroberfläche oder Hive-A
 
 **So erstellen Sie eine Hive-Tabelle**
 
-1. Erweitern Sie in ** Server-Explorer** nacheinander **Azure** > **HDInsight-Cluster** > einen HDInsight-Cluster > **Hive-Datenbanken**. Klicken Sie mit der rechten Maustaste auf **Standard**, und klicken Sie dann auf **Tabelle erstellen**.
+1. Erweitern Sie in **Server-Explorer** nacheinander **Azure** > **HDInsight-Cluster** > einen HDInsight-Cluster > **Hive-Datenbanken**. Klicken Sie mit der rechten Maustaste auf **Standard**, und klicken Sie dann auf **Tabelle erstellen**.
 2. Konfigurieren Sie die Tabelle.
 3. Klicken Sie auf **Tabelle erstellen** , um den Auftrag zum Erstellen der neuen Hive-Tabelle zu übermitteln.
    

@@ -1,5 +1,5 @@
 ---
-title: Intelligente Erkennung in Application Insights | Microsoft Docs
+title: Intelligente Erkennung in Azure Application Insights | Microsoft Docs
 description: "Application Insights führt eine automatische umfassende Analyse Ihrer App-Telemetrie durch und warnt Sie vor potenziellen Problemen."
 services: application-insights
 documentationcenter: windows
@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 10/31/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 63c901529b81c75f46f1b21219054817c148063a
-ms.openlocfilehash: 30124e697af5f7560e8070ce43c5a985bd2c403b
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: fe2596a7fed52118425c612ebf50c01134928bf6
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -47,6 +48,10 @@ Es gibt drei Arten der Erkennung:
 
 (Über die Hilfelinks in den jeweiligen Benachrichtigungen gelangen Sie zu den relevanten Artikeln.)
 
+## <a name="video"></a>Video
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
+
 ## <a name="next-steps"></a>Nächste Schritte
 Mit den folgenden Diagnosetools können Sie die Telemetrie Ihrer App untersuchen:
 
@@ -58,10 +63,5 @@ Die intelligente Erkennungen erfolgt vollkommen automatisch. Vielleicht möchten
 
 * [Einrichten von Warnungen in Application Insights](app-insights-alerts.md)
 * [Verfügbarkeitswebtests](app-insights-monitor-web-app-availability.md) 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

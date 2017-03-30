@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 11/25/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: c81b83143afaab3acf625dc98269b35973185d77
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 236d38fcda90643992f66c9b2f4d92180e4463f5
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -38,9 +38,14 @@ Die folgende Liste enthält wichtige DevTest Labs-Konzepte und Definitionen:
 Ein Lab ist die Infrastruktur, die eine Gruppe von Ressourcen wie z.B. virtuelle Computer (VMs) umfasst, mit der Sie diese Ressourcen besser verwalten können, indem Sie Einschränkungen und Kontingente angeben.
 
 ## <a name="virtual-machine"></a>Virtueller Computer
-Ein virtueller Azure-Computer ist eine von mehreren [bedarfsgesteuerten, skalierbaren Computerressourcen](https://docs.microsoft.com/en-us/azure/app-service-web/choose-web-site-cloud-service-vm), die von Azure angeboten werden. Virtuelle Azure-Computer bieten Ihnen flexible Virtualisierungsmöglichkeiten, ohne dass Sie für die Ausführung physische Hardware erwerben und verwalten müssen. Allerdings müssen Sie den virtuellen Computer weiterhin warten, indem Sie bestimmte Aufgaben ausführen, z.B. Konfigurieren, Patchen und Installieren der Software, die auf ihm ausgeführt wird.
+Ein virtueller Azure-Computer ist eine von mehreren [bedarfsgesteuerten, skalierbaren Computerressourcen](https://docs.microsoft.com/azure/app-service-web/choose-web-site-cloud-service-vm), die von Azure angeboten werden. Virtuelle Azure-Computer bieten Ihnen flexible Virtualisierungsmöglichkeiten, ohne dass Sie für die Ausführung physische Hardware erwerben und verwalten müssen. Allerdings müssen Sie den virtuellen Computer weiterhin warten, indem Sie bestimmte Aufgaben ausführen, z.B. Konfigurieren, Patchen und Installieren der Software, die auf ihm ausgeführt wird.
 
-Im Artikel [Übersicht über virtuelle Windows-Computer in Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-windows-overview) erfahren Sie, was Sie vor der Erstellung eines virtuellen Computers berücksichtigen sollten und wie Sie ihn erstellen und verwalten.
+Im Artikel [Übersicht über virtuelle Windows-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-overview) erfahren Sie, was Sie vor der Erstellung eines virtuellen Computers berücksichtigen sollten und wie Sie ihn erstellen und verwalten.
+
+## <a name="claimable-vm"></a>Anforderbarer virtueller Computer
+Ein anforderbarer virtueller Azure-Computer ist ein virtueller Computer, der für jeden Benutzer mit Berechtigungen im Lab zur Verwendung verfügbar ist. Ein Lab-Administrator kann virtuelle Computer mit bestimmten Basisimages und Artefakten vorbereiten und in einem freigegebenen Pool speichern. Ein Lab-Benutzer kann dann einen funktionierenden virtuellen Computer aus dem Pool anfordern, wenn er einen Computer mit dieser spezifischen Konfiguration benötigt.
+
+Ein anforderbarer virtueller Computer wird anfänglich keinem bestimmten Benutzer zugewiesen, er wird jedoch in der Liste jedes Benutzers unter „Claimable virtual machines“ (Anforderbare virtuelle Computer) angezeigt. Nachdem ein virtueller Computer von einem Benutzer angefordert wurde, wird er in dessen Bereich „My virtual machines“ (Meine virtuellen Computer) verschoben und kann von keinem anderen Benutzer mehr angefordert werden.
 
 ## <a name="environment"></a>Environment
 In DevTest Labs bezieht sich eine Umgebung auf eine Sammlung von Azure-Ressourcen in einem Lab. In [diesem Blogeintrag](https://blogs.msdn.microsoft.com/devtestlab/2016/11/16/connect-2016-news-for-azure-devtest-labs-azure-resource-manager-template-based-environments-vm-auto-shutdown-and-more/) erfahren Sie, wie Sie auf der Grundlage von Azure Resource Manager-Vorlagen Umgebungen mit mehreren virtuellen Computern erstellen.
@@ -89,7 +94,7 @@ Da Bereiche hierarchisch sind, gelten die Berechtigungen, die einem Benutzer fü
 ## <a name="arm-templates"></a>ARM-Vorlagen
 Alle in diesem Artikel besprochenen Konzepte können mithilfe von Vorlagen für Azure Resource Manager (ARM) konfiguriert werden. Mit ARM-Vorlagen können Sie die Infrastruktur/Konfiguration Ihrer Azure-Lösung definieren und wiederholt in einem konsistenten Zustand bereitstellen.
 
-[ARM-Vorlagen](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates#template-format) beschreibt die Struktur einer Azure Resource Manager-Vorlage und die Eigenschaften, die in den verschiedenen Abschnitten einer Vorlage verfügbar sind.
+[ARM-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates#template-format) beschreibt die Struktur einer Azure Resource Manager-Vorlage und die Eigenschaften, die in den verschiedenen Abschnitten einer Vorlage verfügbar sind.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

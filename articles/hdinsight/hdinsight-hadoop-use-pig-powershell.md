@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/19/2017
+ms.date: 03/21/2017
 ms.author: larryfr
-ms.custom: H1Hack27Feb2017
+ms.custom: H1Hack27Feb2017,hdinsightactive
 translationtype: Human Translation
-ms.sourcegitcommit: cfaade8249a643b77f3d7fdf466eb5ba38143f18
-ms.openlocfilehash: a795f7a8dbb02ad29c517dca6ab06575a8d48bf9
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: b4f2f1195887d8b64599e82334ab36b21eef1d1d
+ms.lasthandoff: 03/22/2017
 
 ---
 # <a name="use-azure-powershell-to-run-pig-jobs-with-hdinsight"></a>Ausführen von Pig-Aufträgen in HDInsight mithilfe von Azure PowerShell
@@ -57,60 +57,14 @@ Die folgenden Cmdlets werden zum Ausführen der Pig-Aufträge in einem HDInsight
 Die folgenden Schritte veranschaulichen, wie diese Cmdlets zum Ausführen eines Auftrags auf dem HDInsight-Cluster verwendet werden.
 
 1. Speichern Sie den folgenden Code mithilfe eines Editors als **pigjob.ps1**.
-   
-        # Login to your Azure subscription
-        # Is there an active Azure subscription?
-        $sub = Get-AzureRmSubscription -ErrorAction SilentlyContinue
-        if(-not($sub))
-        {
-            Add-AzureRmAccount
-        }
 
-        # Get cluster info
-        $clusterName = Read-Host -Prompt "Enter the HDInsight cluster name"
-        $creds=Get-Credential -Message "Enter the login for the cluster"
-
-        #Store the Pig Latin into $QueryString
-        $QueryString =  "LOGS = LOAD 'wasb:///example/data/sample.log';" +
-        "LEVELS = foreach LOGS generate REGEX_EXTRACT(`$0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;" +
-        "FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;" +
-        "GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;" +
-        "FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;" +
-        "RESULT = order FREQUENCIES by COUNT desc;" +
-        "DUMP RESULT;"
-
-        #Create a new HDInsight Pig Job definition
-        $pigJobDefinition = New-AzureRmHDInsightPigJobDefinition `
-            -Query $QueryString `
-            -Arguments "-w"
-
-        # Start the Pig job on the HDInsight cluster
-        Write-Host "Start the Pig job ..." -ForegroundColor Green
-        $pigJob = Start-AzureRmHDInsightJob `
-            -ClusterName $clusterName `
-            -JobDefinition $pigJobDefinition `
-            -HttpCredential $creds
-
-        # Wait for the Pig job to complete
-        Write-Host "Wait for the Pig job to complete ..." -ForegroundColor Green
-        Wait-AzureRmHDInsightJob `
-            -ClusterName $clusterName `
-            -JobId $pigJob.JobId `
-            -HttpCredential $creds
-
-        # Display the output of the Pig job.
-        Write-Host "Display the standard output ..." -ForegroundColor Green
-        Get-AzureRmHDInsightJobOutput `
-            -ClusterName $clusterName `
-            -JobId $pigJob.JobId `
-            -HttpCredential $creds
-
+    [!code-powershell[main](../../powershell_scripts/hdinsight/use-pig/use-pig.ps1?range=5-51)]
 
 1. Öffnen Sie eine neue Windows PowerShell-Eingabeaufforderung. Navigieren Sie zum Speicherort der Datei **pigjob.ps1** , und verwenden Sie folgenden Befehl zum Ausführen des Skripts:
    
         .\pigjob.ps1
    
-    Sie werden zunächst dazu aufgefordert, sich bei Ihrem Azure-Abonnement anzumelden. Außerdem werden Sie aufgefordert, den HTTPS-/Administratorkontonamen und das Kennwort für den HDInsight-Cluster bereitzustellen.
+    Sie werden aufgefordert, sich bei Ihrem Azure-Abonnement anzumelden. Außerdem werden Sie aufgefordert, den Namen und das Kennwort für das HTTPS/Administratorkonto für den HDInsight-Cluster einzugeben.
 
 2. Nachdem der Auftrag abgeschlossen ist, muss er Informationen zurückgeben, die folgendem Text ähneln:
    

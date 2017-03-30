@@ -17,6 +17,7 @@ ms.author: billmath
 translationtype: Human Translation
 ms.sourcegitcommit: 28b5da6098316f8fbe84966e0dac88f5b7d2cb1d
 ms.openlocfilehash: bf7dd55be2b0e6ae43fc148ff36d8d2141a2f12b
+ms.lasthandoff: 12/20/2016
 
 
 ---
@@ -45,7 +46,7 @@ Gehen Sie folgendermaßen vor, um die Verwendung des Geräterückschreibens vorz
 1. Starten Sie auf dem Computer, auf dem Azure AD Connect installiert ist, PowerShell im erweiterten Modus.
 2. Wenn das Active Directory-PowerShell-Modul nicht installiert ist, installieren Sie es mit dem folgenden Befehl:
    
-   `Install-WindowsFeature –Name AD-Domain-Services –IncludeManagementTools`
+   `Add-WindowsFeature RSAT-AD-PowerShell`
 3. Wenn das Azure Active Directory-Modul für PowerShell nicht installiert ist, laden Sie es unter [Azure Active Directory-Modul für Windows PowerShell (64-Bit-Version)](http://go.microsoft.com/fwlink/p/?linkid=236297)herunter und installieren es. Diese Komponente weist eine Abhängigkeit von Anmelde-Assistenten auf, der mit Azure AD Connect installiert wird.
 4. Führen Sie mit Enterprise-Administratoranmeldeinformationen die folgenden Befehle aus, und beenden Sie dann PowerShell.
    
@@ -138,10 +139,5 @@ Zuerst die wichtigen Dinge:
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

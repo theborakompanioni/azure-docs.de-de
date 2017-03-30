@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: brandwe
 translationtype: Human Translation
-ms.sourcegitcommit: 9cd676554542e4effef54790bf9095c5b7a8f75b
-ms.openlocfilehash: 51913b5e0d43514f50f2d51500f2149438d87045
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 4e6d859ee621a730e0d2c1062d3a31e7c053e798
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -50,8 +51,8 @@ Damit Ihre Anwendung Benutzer authentifizieren kann, müssen Sie zunächst in Ih
 5. Folgen Sie den Bildschirmaufforderungen, und erstellen Sie eine neue **Webanwendung und/oder Web-API**.
   * Am **Namen** der Anwendung sollten die Endbenutzer die Funktion der Anwendung ablesen können.
   * Die **Anmelde-URL** ist die Basis-URL Ihrer Anwendung.  Der Standardwert des Gerüsts lautet `http://localhost:8080/adal4jsample/`.
-  * Die **App-ID-URI** ist eine eindeutige Kennung für die Anwendung.  Üblicherweise wird `https://<tenant-domain>/<app-name>` verwendet, zum Beispiel: `http://localhost:8080/adal4jsample/`
-6. Nach Abschluss der Registrierung weist AAD Ihrer App eine eindeutige Anwendungs-ID zu.  Diesen Wert benötigen Sie in den nächsten Abschnitten. Daher sollten Sie ihn von der Registerkarte „Anwendung“ kopieren.
+6. Nach Abschluss der Registrierung weist AAD Ihrer App eine eindeutige Anwendungs-ID zu.  Diesen Wert benötigen Sie in den nächsten Abschnitten, kopieren Sie ihn also aus der Registerkarte „Anwendung“.
+7. Aktualisieren Sie auf der Seite **Einstellungen** -> **Eigenschaften** für Ihre Anwendung den App-ID-URI. Die **App-ID-URI** ist eine eindeutige Kennung für die Anwendung.  Üblicherweise wird `https://<tenant-domain>/<app-name>` verwendet, z.B. `http://localhost:8080/adal4jsample/`.
 
 Erstellen Sie im Portal für Ihre App auf der Seite **Einstellungen** einen **Schlüssel** für Ihre Anwendung, und notieren Sie ihn.  Sie benötigen ihn später.
 
@@ -267,10 +268,5 @@ Glückwunsch! Sie haben nun eine funktionierende Java-Anwendung, die Benutzer au
 Als Referenz stellen wir das vollständige Beispiel (ohne Ihre Konfigurationswerte) [hier als ZIP-Datei bereit](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect/archive/complete.zip). Sie können es alternativ aus GitHub klonen:
 
 ```git clone --branch complete https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect.git```
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

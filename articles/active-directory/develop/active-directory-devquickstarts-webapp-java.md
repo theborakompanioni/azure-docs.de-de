@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/01/2017
 ms.author: brandwe
 translationtype: Human Translation
-ms.sourcegitcommit: ade6b7d9fa195ebea8f8587b01e4cc0ba71a0a83
-ms.openlocfilehash: fa5c367d7b8f46349b4bdc1de2af35050329a650
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: a20017a63ebed745e2d101d556e93594325533dc
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -49,8 +49,8 @@ Um die App für die Authentifizierung von Benutzern einzurichten, registrieren S
 5. Folgen Sie den Bildschirmaufforderungen, und erstellen Sie eine **Webanwendung und/oder Web-API**.
   * **Name** enthält eine Beschreibung der App für Benutzer.
   * **Anmelde-URL** ist die Basis-URL der App. Die Standard-URL des Gerüsts lautet „http://localhost:8080/adal4jsample/“.
-  * **App-ID-URI** ist ein eindeutiger Bezeichner der App. Die Benennungskonvention lautet `https://<tenant-domain>/<app-name>` (z.B. `http://localhost:8080/adal4jsample/`).
 6. Nach Abschluss der Registrierung weist Azure AD der App eine eindeutige Anwendungs-ID zu. Kopieren Sie den Wert von der App-Seite, um ihn in den nächsten Abschnitten zu verwenden.
+7. Aktualisieren Sie auf der Seite **Einstellungen** -> **Eigenschaften** für Ihre Anwendung den App-ID-URI. Der **App-ID-URI** ist ein eindeutiger Bezeichner der App. Die Benennungskonvention lautet `https://<tenant-domain>/<app-name>` (z.B. `http://localhost:8080/adal4jsample/`).
 
 Wenn Sie sich im Portal der App befinden, erstellen und kopieren Sie auf der Seite **Einstellungen** einen Schlüssel für die App. Sie benötigen den Schlüssel in Kürze.
 

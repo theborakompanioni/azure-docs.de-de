@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/21/2016
+ms.date: 03/14/2017
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 17de66693661e56e9b456581c97a47cfb91cd886
-ms.openlocfilehash: bf08cc7ebb56aaf77c1718545ed4374f47933975
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 2dc56240894666b2fa24baf4902c3097e97d656e
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -30,7 +31,7 @@ Hier erfahren Sie, wie Sie in Azure einen Linux RDMA-Cluster mit [virtuellen Com
 ## <a name="cluster-deployment-options"></a>Optionen für die Clusterbereitstellung
 Mit den folgenden Methoden können Sie einen Linux RDMA-Cluster mit oder ohne Auftragsplanung erstellen.
 
-* **Azure CLI-Skripts:** Erstellen Sie mithilfe der [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) (Command-Line Interface, CLI) ein Skript zur Bereitstellung eines Clusters mit RDMA-fähigen virtuellen Computern (wie weiter unten in diesem Artikel gezeigt). Da Clusterknoten im Rahmen des klassischen Bereitstellungsmodells im Dienstverwaltungsmodus der Befehlszeilenschnittstelle seriell erstellt werden, kann die Bereitstellung einer großen Anzahl von Serverknoten mehrere Minuten dauern. Um die RDMA-Netzwerkverbindung im Rahmen des klassischen Bereitstellungsmodells aktivieren zu können, müssen die virtuellen Computer im gleichen Clouddienst bereitgestellt werden.
+* **Azure CLI-Skripts:** Erstellen Sie mithilfe der [Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md) (Command-Line Interface, CLI) ein Skript zur Bereitstellung eines Clusters mit RDMA-fähigen virtuellen Computern (wie weiter unten in diesem Artikel gezeigt). Da Clusterknoten im Rahmen des klassischen Bereitstellungsmodells im Dienstverwaltungsmodus der Befehlszeilenschnittstelle seriell erstellt werden, kann die Bereitstellung einer großen Anzahl von Serverknoten mehrere Minuten dauern. Um die RDMA-Netzwerkverbindung im Rahmen des klassischen Bereitstellungsmodells aktivieren zu können, müssen die virtuellen Computer im gleichen Clouddienst bereitgestellt werden.
 * **Azure Resource Manager-Vorlagen**: Sie können auch das Resource Manager-Bereitstellungsmodell verwenden, um einen Cluster mit RDMA-fähigen virtuellen Computern bereitzustellen, der eine Verbindung mit dem RDMA-Netzwerk herstellt. Sie können [eine eigene Vorlage erstellen](../resource-group-authoring-templates.md) oder in den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/) nach Vorlagen von Microsoft oder der Community suchen, um die gewünschte Lösung bereitzustellen. Ressourcen-Manager-Vorlagen stellen eine schnelle und zuverlässige Möglichkeit zum Bereitstellen eines Linux-Clusters dar. Um die RDMA-Netzwerkverbindung im Rahmen des Resource Manager-Bereitstellungsmodells aktivieren zu können, müssen die virtuellen Computer in der gleichen Verfügbarkeitsgruppe bereitgestellt werden.
 * **HPC Pack**: Erstellen Sie in Azure einen Microsoft HPC Pack-Cluster, und fügen Sie RDMA-fähige Computeknoten hinzu, auf denen eine unterstützte Linux-Distribution für den Zugriff auf das RDMA-Netzwerk ausgeführt wird. Weitere Informationen finden Sie unter [Erste Schritte mit Linux-Computeknoten in einem HPC Pack-Cluster in Azure](virtual-machines-linux-classic-hpcpack-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
 
@@ -38,7 +39,7 @@ Mit den folgenden Methoden können Sie einen Linux RDMA-Cluster mit oder ohne Au
 Die folgenden Schritte zeigen, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle über den Azure Marketplace einen virtuellen HPC-Computer unter SUSE Linux Enterprise Server (SLES) 12 SP1 bereitstellen, den virtuellen Computer anpassen und ein benutzerdefiniertes VM-Image erstellen. Mit dem Image können Sie dann ein Skript für die Bereitstellung eines Clusters mit RDMA-fähigen virtuellen Computern erstellen.
 
 > [!TIP]
-> Ein Cluster mit RDMA-fähigen virtuellen Computern, die auf anderen unterstützten HPC-Images aus dem Azure Marketplace basieren, kann auf ganz ähnliche Weise bereitgestellt werden. Auf Abweichungen bei den Schritten wird ggf. hingewiesen. Intel MPI ist beispielsweise nicht in allen Images enthalten und konfiguriert. Und wenn Sie anstelle eines virtuellen HPC-Computers unter SLES 12 SP1 einen virtuellen HPC-Computer unter SLES 12 bereitstellen, müssen Sie die RDMA-Treiber aktualisieren. Weitere Informationen hierzu finden Sie unter [Informationen zu den rechenintensiven A8-, A9-, A10- und A11-Instanzen](virtual-machines-linux-a8-a9-a10-a11-specs.md#rdma-driver-updates-for-sles-12).
+> Ein Cluster mit RDMA-fähigen virtuellen Computern, die auf anderen CentOS-basierten HPC-Images aus dem Azure Marketplace basieren, kann auf ganz ähnliche Weise bereitgestellt werden. Auf Abweichungen bei den Schritten wird ggf. hingewiesen. 
 >
 >
 
@@ -47,7 +48,7 @@ Die folgenden Schritte zeigen, wie Sie mithilfe der Azure-Befehlszeilenschnittst
 * **Azure-Abonnement**: Falls Sie über kein Abonnement verfügen, können Sie in wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/free/) einrichten. Bei größeren Clustern empfiehlt sich die Verwendung eines Abonnements mit nutzungsbasierter Bezahlung oder einer anderen Kaufoption.
 * **Verfügbare VM-Größen**: Derzeit sind folgende Instanzgrößen für RDMA geeignet: H16r, H16mr, A8 und A9. Informationen zur Verfügbarkeit in den Azure-Regionen finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/) .
 * **Kernnutzungskontingent**: Zur Bereitstellung eines Clusters mit rechenintensiven virtuellen Computern ist unter Umständen eine Erhöhung des Kontingents für Kerne erforderlich. Beispielsweise benötigen Sie mindestens 128 Kerne, wenn Sie, wie in diesem Artikel dargestellt, acht A9-VMs bereitstellen möchten. Möglicherweise ist bei Ihrem Abonnement auch die Anzahl von Kernen beschränkt, die in bestimmten VM-Größenkategorien bereitgestellt werden können. In diesem Fall können Sie kostenlos [eine Anfrage an den Onlinekundensupport richten](../azure-supportability/how-to-create-azure-support-request.md) und eine Erhöhung des Kontingents anfordern.
-* **Azure CLI**: [Installieren](../xplat-cli-install.md) Sie die Azure-Befehlszeilenschnittstelle, und [stellen Sie auf dem Clientcomputer eine Verbindung mit dem Azure-Abonnement her](../xplat-cli-connect.md).
+* **Azure CLI**: [Installieren](../cli-install-nodejs.md) Sie die Azure-Befehlszeilenschnittstelle, und [stellen Sie auf dem Clientcomputer eine Verbindung mit dem Azure-Abonnement her](../xplat-cli-connect.md).
 
 ### <a name="provision-an-sles-12-sp1-hpc-vm"></a>Bereitstellen eines virtuellen HPC-Computers unter SLES 12 SP1
 Führen Sie nach der Anmeldung bei Azure über die Azure-Befehlszeilenschnittstelle den Befehl `azure config list` aus, um sicherzustellen, dass der Dienstverwaltungsmodus verwendet wird. Wenn nicht, aktivieren Sie den Modus durch Ausführen dieses Befehls:
@@ -74,7 +75,7 @@ Stellen Sie einen RDMA-fähigen virtuellen Computer mit einem SLES 12 SP1-HPC-Im
 Hierbei gilt:
 
 * Die Größe (in diesem Beispiel A9) ist eine der RDMA-fähigen VM-Größen.
-* Die externe SSH-Portnummer (in diesem Beispiel der SSH-Standardwert&22;) ist eine beliebige gültige Portnummer. Die interne SSH-Portnummer ist auf 22 festgelegt.
+* Die externe SSH-Portnummer (in diesem Beispiel der SSH-Standardwert 22) ist eine beliebige gültige Portnummer. Die interne SSH-Portnummer ist auf 22 festgelegt.
 * Ein neuer Clouddienst wird in der durch den Standort festgelegten Azure-Region erstellt. Geben Sie einen Ort an, an dem die gewählte VM-Größe verfügbar ist.
 * Für kostenpflichtigen SUSE Priority Support kann der Name des SLES 12 SP1-Images eine dieser beiden Varianten sein: 
 
@@ -122,7 +123,7 @@ Nach Abschluss der VM-Bereitstellung stellen Sie mithilfe der externen IP-Adress
 
         cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 
-    Bearbeiten oder erstellen Sie im Verzeichnis „~/.ssh“ die Datei „config“. Geben Sie den IP-Adressbereich des privaten Netzwerks an, das Sie in Azure verwenden möchten (in diesem Beispiel:&10;.32.0.0/16):
+    Bearbeiten oder erstellen Sie im Verzeichnis „~/.ssh“ die Datei „config“. Geben Sie den IP-Adressbereich des privaten Netzwerks an, das Sie in Azure verwenden möchten (in diesem Beispiel: 10.32.0.0/16):
 
         host 10.32.0.*
         StrictHostKeyChecking no
@@ -379,9 +380,4 @@ In einem funktionierenden Cluster mit zwei Knoten sieht die Ausgabe in etwa wie 
 * Stellen Sie Ihre Linux-MPI-Anwendungen im Linux-Cluster bereit, und führen Sie sie aus.
 * Anleitungen zu Intel MPI finden Sie in der [Dokumentation zu Intel MPI Library](https://software.intel.com/en-us/articles/intel-mpi-library-documentation/) .
 * Verwenden Sie eine [Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/intel-lustre-clients-on-centos) , um einen Intel Lustre-Cluster unter Verwendung eines CentOS-basierten HPC-Images zu erstellen. Weitere Informationen finden Sie unter [Bereitstellen von Intel Cloud Edition für Lustre in Microsoft Azure](https://blogs.msdn.microsoft.com/arsen/2015/10/29/deploying-intel-cloud-edition-for-lustre-on-microsoft-azure/).
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

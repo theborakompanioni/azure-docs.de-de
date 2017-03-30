@@ -62,7 +62,7 @@ Wenn kein Zugriff auf die Anwendung möglich ist, überprüfen Sie die folgenden
 
 Verwenden Sie bei Windows- und Linux-basierten virtuellen Computern den Befehl **netstat -a** , um die aktiven Überwachungsports anzuzeigen. Überprüfen Sie die Ausgabe für die erwarteten Ports, die die Anwendung überwachen soll. Starten Sie die Anwendung neu, oder konfigurieren Sie sie so, dass die erwarteten Ports nach Bedarf verwendet werden, und versuchen Sie erneut, lokal auf die Anwendung zuzugreifen.
 
-## <a name="a-idstep2astep-2-access-application-from-another-vm-in-the-same-virtual-network"></a><a id="step2"></a>Schritt 2: Zugreifen auf die Anwendung von einem anderen virtuellen Computer im gleichen virtuellen Netzwerk
+## <a id="step2"></a>Schritt 2: Zugreifen auf die Anwendung von einem anderen virtuellen Computer im gleichen virtuellen Netzwerk
 Versuchen Sie, von einer anderen VM im gleichen virtuellen Netzwerk auf die Anwendung zuzugreifen. Verwenden Sie dazu den VM-Hostnamen oder die von Azure zugewiesene öffentliche, private oder Anbieter-IP-Adresse. Verwenden Sie für mithilfe des klassischen Bereitstellungsmodells erstellte virtuelle Computer nicht die öffentliche IP-Adresse des Clouddiensts.
 
 ![Anwendung von einer anderen VM starten](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access3.png)
@@ -82,7 +82,7 @@ Wenn kein Zugriff auf die Anwendung möglich ist, überprüfen Sie die folgenden
 
 Verwenden Sie auf einem Windows-basierten virtuellen Computer die Windows-Firewall mit erweiterter Sicherheit, um zu bestimmen, ob die Firewallregeln den eingehenden und ausgehenden Datenverkehr der Anwendung ausschließen.
 
-## <a name="a-idstep3astep-3-access-application-from-outside-the-virtual-network"></a><a id="step3"></a>Schritt 3: Zugreifen auf die Anwendung von einem Computer außerhalb des virtuellen Netzwerks
+## <a id="step3"></a>Schritt 3: Zugreifen auf die Anwendung von einem Computer außerhalb des virtuellen Netzwerks
 Versuchen Sie, von einem Computer, der sich nicht im gleichen Netzwerk wie der virtuelle Computer befindet, auf dem die Anwendung ausgeführt wird, auf die Anwendung zuzugreifen. Verwenden Sie ein anderes Netzwerk als der ursprüngliche Clientcomputer.
 
 ![Anwendung von einem Computer außerhalb des virtuellen Netzwerks starten](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access4.png)
@@ -95,7 +95,7 @@ Wenn kein Zugriff auf die Anwendung möglich ist, überprüfen Sie die folgenden
   
   * Stellen Sie sicher, dass die Endpunktkonfiguration für den virtuellen Computer eingehenden Datenverkehr zulässt, insbesondere das Protokoll (TCP oder UDP) und die öffentlichen und privaten Portnummern.
   * Stellen Sie sicher, dass die Zugriffssteuerungslisten (Access Control Lists, ACLs) auf dem Endpunkt aus dem Internet eingehenden Datenverkehr nicht verhindern.
-  * Weitere Informationen finden Sie unter [Einrichten von Endpunkten für einen virtuellen Computer](../articles/virtual-machines/virtual-machines-windows-classic-setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+  * Weitere Informationen finden Sie unter [Einrichten von Endpunkten für einen virtuellen Computer](../articles/virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 * Bei virtuellen Computern, die mit dem Resource Manager-Bereitstellungsmodell erstellt wurden:
   
   * Stellen Sie sicher, dass die Konfiguration der eingehenden NAT-Regel für den virtuellen Computer eingehenden Datenverkehr zulässt, insbesondere das Protokoll (TCP oder UDP) und die öffentlichen und privaten Portnummern.
@@ -118,9 +118,4 @@ Wenn Sie auf die Anwendung zugreifen können, stellen Sie sicher, dass Ihre Inte
 [Behandeln von Problemen mit Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](../articles/virtual-machines/virtual-machines-windows-troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 [Behandeln von Problemen mit Secure Shell (SSH)-Verbindungen mit einem Linux-basierten virtuellen Azure-Computer](../articles/virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/01/2017
+ms.date: 03/10/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: b8f354b34e1a3a581dd2e41df4b80cbdbcd9a705
-ms.openlocfilehash: 3033df7c69a1c4211c906c6f3bdcd7868dedde13
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: fb61a2d622b0d829a134b6ce5dfef6e9fb44fa1e
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -148,43 +148,31 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
     
     d. Klicken Sie auf **OK**.
 
-6. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Neues Zertifikat erstellen**.
-
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_06.png)     
-
-7. Klicken Sie im Dialogfeld **Neues Zertifikat erstellen** auf das Kalendersymbol, und wählen Sie ein **Ablaufdatum** aus. Klicken Sie auf die Schaltfläche **Speichern**.
-
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-officespace-tutorial/tutorial_general_300.png)
-
-8. Wählen Sie im Abschnitt **SAML-Signaturzertifikat** die Option **Neues Zertifikat aktivieren**, und klicken Sie auf die Schaltfläche **Speichern**.
-
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_07.png)
-
-9. Klicken Sie im Popupfenster **Rolloverzertifikat** auf **OK**.
-
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-officespace-tutorial/tutorial_general_400.png)
-
-10. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+6. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_08.png) 
 
-11. Klicken Sie im Abschnitt mit der **OfficeSpace Software-Konfiguration** auf **OfficeSpace Software konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen.
+7. Klicken Sie auf **Speichern**.
+
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-officespace-tutorial/tutorial_general_400.png)
+
+8. Klicken Sie im Abschnitt mit der **OfficeSpace Software-Konfiguration** auf **OfficeSpace Software konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_09.png) 
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_10.png)
 
-12. Melden Sie sich in einem anderen Webbrowserfenster beim OfficeSpace Software-Mandanten als Administrator an.
+9. Melden Sie sich in einem anderen Webbrowserfenster beim OfficeSpace Software-Mandanten als Administrator an.
 
-13. Navigieren Sie zu **Einstellungen**, und klicken Sie auf **Connectors**.
+10. Navigieren Sie zu **Einstellungen**, und klicken Sie auf **Connectors**.
 
     ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_002.png)
 
-14. Klicken Sie auf **SAML-Autorisierung**.
+11. Klicken Sie auf **SAML-Authentifizierung**.
 
     ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_003.png)
 
-15. Führen Sie im Abschnitt **SAML-Autorisierung** die folgenden Schritte aus:
+12. Führen Sie im Abschnitt für die **SAML-Authentifizierung** die folgenden Schritte aus:
 
     ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_004.png)
 

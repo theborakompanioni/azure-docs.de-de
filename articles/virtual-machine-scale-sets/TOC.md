@@ -3,22 +3,21 @@
 
 # Erste Schritte
 ## [Bereitstellen einer Skalierungsgruppe im Portal](virtual-machine-scale-sets-portal-create.md)
-## [Bereitstellen einer Skalierungsgruppe mit der Azure-Befehlszeilenschnittstelle](virtual-machine-scale-sets-linux-create-cli.md)
-## [Bereitstellen einer einfachen Skalierungsgruppe mithilfe einer Resource Manager-Vorlage](virtual-machine-scale-sets-mvss-start.md)
+## [Bereitstellen einer Skalierungsgruppe mit PowerShell oder der Azure CLI](virtual-machine-scale-sets-create.md)
 
 # Anleitung
 ## Planen und Entwerfen
 ### [Überlegungen zum Entwurf](virtual-machine-scale-sets-design-overview.md)
-## Schreiben von Skalierungsgruppenvorlagen in
-### [Bereitstellen einer einfachen Skalierungsgruppe](virtual-machine-scale-sets-mvss-start.md)
-### [Bereitstellen einer Skalierungsgruppe in einem vorhandenen virtuellen Netzwerk](virtual-machine-scale-sets-mvss-existing-vnet.md)
+
+## Erstellen einer Vorlage
+### [Informationen zu Skalierungsgruppenvorlagen](virtual-machine-scale-sets-mvss-start.md)
+### [Hinzufügen eines virtuellen Netzwerks](virtual-machine-scale-sets-mvss-existing-vnet.md)
 
 ## Bereitstellen
-### [Skalierungsgruppe unter Verwendung des Portals](virtual-machine-scale-sets-portal-create.md)
+### [Erstellen mit dem Portal](virtual-machine-scale-sets-portal-create.md)
+### [Erstellen mit Visual Studio](virtual-machine-scale-sets-vs-create.md)
+### [Erstellen mit PowerShell oder der Azure CLI](virtual-machine-scale-sets-create.md)
 ### [Skalierungsgruppe mit verwalteten Datenträgern](virtual-machine-scale-sets-managed-disks.md)
-### [Skalierungsgruppe unter Verwendung von Visual Studio](virtual-machine-scale-sets-vs-create.md)
-### [Skalierungsgruppe unter Verwendung von PowerShell](virtual-machine-scale-sets-windows-create.md)
-### [Skalierungsgruppe mit der Azure-Befehlszeilenschnittstelle](virtual-machine-scale-sets-linux-create-cli.md)
 ### [Linux-Skalierungsgruppe mit automatischer Skalierung](virtual-machine-scale-sets-linux-autoscale.md)
 ### [Windows-Skalierungsgruppe mit automatischer Skalierung](virtual-machine-scale-sets-windows-autoscale.md)
 ### [Anwendungen in Skalierungsgruppen](virtual-machine-scale-sets-deploy-app.md)

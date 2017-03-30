@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2017
+ms.date: 03/17/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
-ms.openlocfilehash: b86bfcbd8b49dfcf383c48d57f237f2433bf20d6
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 997a5e5db9abdd92c3717d9eb10ff01b2bb40a9f
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -98,7 +98,7 @@ Falls ein virtueller Computer aus einer VHD-Imagedatei erstellt wird, die bereit
 Es wird empfohlen, für den virtuellen Azure-Computer und das zugrunde liegende Betriebssystem den gleichen Computernamen zu verwenden.
 
 ## <a name="storage-account-names"></a>Speicherkontonamen
-Für die Benennung von Speicherkonten gelten spezielle Regeln. Sie können nur Kleinbuchstaben und Zahlen verwenden. Weitere Informationen finden Sie unter [Erstellen eines Speicherkontos](../storage/storage-create-storage-account.md#create-a-storage-account). Darüber hinaus sollte der Namen des Speicherkontos in Kombination mit „core.windows.net“ ein global gültiger und eindeutiger DNS-Name sein. Wenn beispielsweise das Speicherkonto den Namen "meinspeicherkonto" besitzt, sollten die folgenden resultierenden DNS-Namen eindeutig sein:
+Dieser Abschnitt gilt nicht für [Azure Managed Disks](../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), da Sie kein separates Speicherkonto erstellen. Bei nicht verwalteten Datenträgern gelten für die Benennung von Speicherkonten spezielle Regeln. Sie können nur Kleinbuchstaben und Zahlen verwenden. Weitere Informationen finden Sie unter [Erstellen eines Speicherkontos](../storage/storage-create-storage-account.md#create-a-storage-account). Darüber hinaus sollte der Namen des Speicherkontos in Kombination mit „core.windows.net“ ein global gültiger und eindeutiger DNS-Name sein. Wenn beispielsweise das Speicherkonto den Namen "meinspeicherkonto" besitzt, sollten die folgenden resultierenden DNS-Namen eindeutig sein:
 
 * meinspeicherkonto.blob.core.windows.net
 * meinspeicherkonto.table.core.windows.net

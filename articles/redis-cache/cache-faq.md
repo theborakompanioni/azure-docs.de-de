@@ -12,12 +12,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2017
+ms.date: 03/21/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 705e64d52d796ae861465f71de397d11bf14086e
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: afdbd737be96acbcf2883c644bfbbb741fe94179
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -134,7 +134,7 @@ Aus dieser Tabelle können folgende Schlussfolgerungen gezogen werden:
 * Mit dem Redis-Clustering steigt der Durchsatz linear, je mehr Shards (Knoten) Sie im Cluster verwenden. Wenn Sie beispielsweise einen P4-Cluster mit 10 Shards erstellen, beträgt der verfügbare Durchsatz 250.000 × 10 = 2,5 Millionen RPS.
 * Der Durchsatz für größere Schlüsselgrößen ist im Premium-Tarif höher als im Standard-Tarif.
 
-| Tarif | Größe | CPU-Kerne | Verfügbare Bandbreite | 1 KB Schlüsselgröße |
+| Tarif | Größe | CPU-Kerne | Verfügbare Bandbreite | 1 KB Wertgröße |
 | --- | --- | --- | --- | --- |
 | **Standard-Cachegröße** | | |**Megabits pro Sekunde (MBit/s)/Megabyte pro Sekunde (MB/s)** |**Anforderungen pro Sekunde (RPS)** |
 | C0 |250 MB |Shared

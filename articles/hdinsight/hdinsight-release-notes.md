@@ -9,6 +9,7 @@ author: nitinme
 tags: azure-portal
 ms.assetid: a363e5f6-dd75-476a-87fa-46beb480c1fe
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,9 +17,9 @@ ms.topic: article
 ms.date: 2/28/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: de252e1d2945f236a4192c5737ed8ec88a6f7444
-ms.openlocfilehash: da5929df1e5db0acae41d757a7e7272014bf9dee
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 7a9e23e8d06bc73855058242cdebd315c9d4d243
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -75,7 +76,7 @@ Die vollständigen Versionsnummern für mit dieser Version bereitgestellte Windo
 * R Server 8.0.5: Diese Version dient hauptsächlich der Fehlerbehebung. Weitere Informationen finden Sie in den [Versionsanmerkungen zu R Server](https://msdn.microsoft.com/microsoft-r/notes/r-server-notes) .
 * AzureML-Paket auf dem Edgeknoten: [Dieses R-Paket](https://cran.r-project.org/web/packages/AzureML/vignettes/getting_started.html) ermöglicht das Veröffentlichen und Nutzen von R-Modellen als Azure ML-Webdienst.  Weitere Informationen finden Sie im Abschnitt [Operationalisieren eines Modells](hdinsight-hadoop-r-server-overview.md#operationalize-a-model) des Artikels [Übersicht über R Server in HDInsight](hdinsight-hadoop-r-server-overview.md).
 * Linux-Abhängigkeiten der [100 populärsten R-Pakete](https://github.com/metacran/cranlogs): Diese Linux-Paketabhängigkeiten sind jetzt vorinstalliert.
-* Option zur Verwendung des CRAN-Repositorys beim Hinzufügen von R-Paketen zu Datenknoten. Weitere Informationen finden Sie im Abschnitt [Installieren von R-Paketen](hdinsight-hadoop-r-server-get-started.md#install-r-packages) des Artikels [Erste Schritte mit R Server in HDInsight](hdinsight-hadoop-r-server-get-started.md).
+* Option zur Verwendung des CRAN-Repositorys beim Hinzufügen von R-Paketen zu Datenknoten. Weitere Informationen finden Sie im Artikel [Erste Schritte mit R Server in HDInsight](hdinsight-hadoop-r-server-get-started.md).
 * Verbesserte Zuverlässigkeit der R Server-Bereitstellung beim Erstellen von Clustern.
 
 ## <a name="notes-for-08012016-release-of-hdinsight"></a>Hinweise zur HDInsight-Version vom 01.08.2016
@@ -146,7 +147,7 @@ Diese Version enthält die folgenden Updates.
 
 | Titel | Beschreibung | Betroffener Bereich (z. B. Dienst, Komponente oder SDK) | Clustertyp (z.B. Spark, Hadoop, HBase oder Storm) | JIRA (falls zutreffend) |
 | --- | --- | --- | --- | --- |
-| [HDInsight-Tools für IntelliJ](hdinsight-apache-spark-intellij-tool-plugin.md) |Das IntelliJ IDEA-Plug-In für HDInsight Spark-Cluster ist jetzt in das Azure-Toolkit für IntelliJ integriert. Es unterstützt die Azure SDK-Version&2;.9.1, neuesten Java SDKs und bietet alle Features des eigenständigen HDInsight-Plug-Ins für IntelliJ. |Tools |Spark |N/V |
+| [HDInsight-Tools für IntelliJ](hdinsight-apache-spark-intellij-tool-plugin.md) |Das IntelliJ IDEA-Plug-In für HDInsight Spark-Cluster ist jetzt in das Azure-Toolkit für IntelliJ integriert. Es unterstützt die Azure SDK-Version 2.9.1, neuesten Java SDKs und bietet alle Features des eigenständigen HDInsight-Plug-Ins für IntelliJ. |Tools |Spark |N/V |
 | [HDInsight-Tools für Eclipse](hdinsight-apache-spark-eclipse-tool-plugin.md) |Das Azure-Toolkit für Eclipse unterstützt nun HDInsight Spark-Cluster. Es bietet die folgenden Features. <ul><li>Müheloses Erstellen und Schreiben einer Spark-Anwendung in Scala und Java mit erstklassiger Erstellungsunterstützung für IntelliSense, automatische Formatierung, Fehlerüberprüfung usw.</li><li>Lokales Testen der Spark-Anwendung.</li><li>Übermitteln von Aufträgen an HDInsight Spark-Cluster und Abrufen der Ergebnisse.</li><li>Anmelden bei Azure und Zugreifen auf alle Spark-Cluster, die Ihren Azure-Abonnements zugeordnet sind.</li><li>Wechseln zu allen zugeordneten Speicherressourcen Ihres HDInsight Spark-Clusters.</li></ul> |Tools |Spark |N/V |
 
 Ab dieser Version wurde die Patchingrichtlinie für Gastbetriebssysteme für Linux-basierte HDInsight-Cluster geändert. Ziel der neuen Richtlinie ist es, die aufgrund von Patching erforderlichen Neustarts erheblich zu reduzieren. Im Rahmen der neuen Richtlinie werden Patches für virtuelle Computer in Linux-Clustern weiterhin jeden Montag oder Donnerstag ab 0:00 Uhr UTC schrittweise auf allen Knoten in jedem Cluster aufgespielt. Die einzelnen virtuellen Computer werden jedoch nur noch maximal alle 30 Tage aufgrund von Patchingvorgängen für das Gastbetriebssystem neu gestartet. Auch der erste Neustart eines neu erstellten Clusters erfolgt nicht früher als 30 Tage nach Erstellungsdatum des Clusters.
@@ -1288,7 +1289,7 @@ Weitere Informationen zu den Konfigurationseinstellungen des Arbeitsspeichers, d
 
 Anmerkung zur Azure PowerShell- und HDInsight SDK-Fehlermeldung: „*Cluster ist nicht für den Zugriff auf HTTP-Dienste konfiguriert*“:
 
-* Dieser Fehler ist ein bekanntes [Kompatibilitätsproblem](https://social.msdn.microsoft.com/Forums/azure/a7de016d-8de1-4385-b89e-d2e7a1a9d927/hdinsight-powershellsdk-error-cluster-is-not-configured-for-http-services-access?forum=hdinsight), das auftritt, wenn sich die Version von HDInsight SDK oder Azure PowerShell von der Clusterversion unterscheidet. Alle ab dem 15.8.2014 erstellten Cluster unterstützen die neue Bereitstellungsfunktion für virtuelle Netzwerke. Diese Funktion wird jedoch von älteren Versionen von HDInsight SDK oder Azure PowerShell nicht korrekt interpretiert. Das Resultat ist ein Fehler bei der Übermittlung mancher Aufträge. Wenn Sie Aufträge mit HDInsight SDK-APIs oder Azure PowerShell-Cmdlets übermitteln (**Use-AzureRmHDInsightCluster** oder **Invoke-AzureRmHDInsightHiveJob**), können diese Vorgänge mit der Fehlermeldung „<clustername>Cluster * wurde nicht für Zugriff auf HTTP-Dienste konfiguriert*“ misslingen. Oder Sie erhalten (abhängig vom Vorgang) andere Fehlermeldungen, z.B. „*Es kann keine Verbindung mit dem Cluster hergestellt werden*“.
+* Dieser Fehler ist ein bekanntes [Kompatibilitätsproblem](https://social.msdn.microsoft.com/Forums/azure/a7de016d-8de1-4385-b89e-d2e7a1a9d927/hdinsight-powershellsdk-error-cluster-is-not-configured-for-http-services-access?forum=hdinsight), das auftritt, wenn sich die Version von HDInsight SDK oder Azure PowerShell von der Clusterversion unterscheidet. Alle ab dem 15.8.2014 erstellten Cluster unterstützen die neue Bereitstellungsfunktion für virtuelle Netzwerke. Diese Funktion wird jedoch von älteren Versionen von HDInsight SDK oder Azure PowerShell nicht korrekt interpretiert. Das Resultat ist ein Fehler bei der Übermittlung mancher Aufträge. Wenn Sie Aufträge mit HDInsight SDK-APIs oder Azure PowerShell-Cmdlets übermitteln (**Use-AzureRmHDInsightCluster** oder **Invoke-AzureRmHDInsightHiveJob**), können diese Vorgänge mit der Fehlermeldung „<clustername>Cluster *wurde nicht für Zugriff auf HTTP-Dienste konfiguriert*“ misslingen. Oder Sie erhalten (abhängig vom Vorgang) andere Fehlermeldungen, z.B. „*Es kann keine Verbindung mit dem Cluster hergestellt werden*“.
 * Diese Kompatibilitätsprobleme sind in den neuesten Versionen von HDInsight SDK und Azure PowerShell behoben. Sie sollten daher das HDInsight SDK auf Version 1.3.1.6 oder eine neuere Version und die Azure PowerShell-Tools auf Version 0.8.8 oder eine neuere Version aktualisieren. Sie erhalten das neueste HDInsight SDK über [NuGet](http://nuget.codeplex.com/wikipage?title=Getting%20Started) und die Azure PowerShell-Tools unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
 
 ## <a name="notes-for-9122014-release-of-hdinsight-31"></a>Hinweise für die HDInsight-Version 3.1 vom 12.9.2014

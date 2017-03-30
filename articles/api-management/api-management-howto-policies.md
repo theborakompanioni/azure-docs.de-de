@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
-ms.openlocfilehash: 3d78af41bbe13bcec9336452110a857d114ad006
-ms.lasthandoff: 12/20/2016
+ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
+ms.openlocfilehash: 7c1f235343074ec11c635097f2b094a10f3fe781
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -119,7 +119,7 @@ Richtlinienbereiche werden in der folgenden Reihenfolge ausgewertet.
 3. API-Bereich
 4. Vorgangsbereich
 
-Die Anweisungen in diesen Bereichen werden entsprechend der Platzierung des `base`-Elements ausgewertet, sofern es vorhanden ist.
+Die Anweisungen in diesen Bereichen werden entsprechend der Platzierung des `base`-Elements ausgewertet, sofern es vorhanden ist. Eine globale Richtlinie besitzt keine übergeordnete Richtlinie, und die Verwendung des `<base>`-Elements in der Richtlinie hat keinerlei Auswirkung.
 
 Wenn Sie z. B. eine Richtlinie auf der globalen Ebene und eine Richtlinie für eine API konfiguriert haben, dann werden immer beide Richtlinien angewendet, wenn diese API aufgerufen wird. API Management ermöglicht eine deterministische Festlegung der Reihenfolge kombinierter Richtlinienanweisungen über das Basiselement. 
 
@@ -133,11 +133,9 @@ Wenn Sie z. B. eine Richtlinie auf der globalen Ebene und eine Richtlinie für 
 </policies>
 ```
 
-In der obigen Beispiel-Richtliniendefinition wird die `cross-domain`-Anweisung vor allen übergeordneten Richtlinien ausgeführt, auf die wiederum die `find-and-replace`-Richtlinie folgt.
+In der obigen Beispiel-Richtliniendefinition wird die `cross-domain`-Anweisung vor allen übergeordneten Richtlinien ausgeführt, auf die wiederum die `find-and-replace`-Richtlinie folgt. 
 
-Wenn in einer Richtlinienanweisung dieselbe Richtlinie zweimal angezeigt wird, wird die zuletzt ausgewertete Richtlinie angewendet. Auf diese Weise können Sie Richtlinien außer Kraft setzen, die in einem übergeordneten Bereich definiert sind. Um die Richtlinien im aktuellen Bereich im Richtlinien-Editor anzuzeigen, klicken Sie auf **Recalculate effective policy for selected scope**.
-
-Beachten Sie, dass eine globale Richtlinie über keine übergeordnete Richtlinie verfügt und dass daher die Verwendung des `<base>` -Elements in der Richtlinie keinerlei Auswirkung hat. 
+Um die Richtlinien im aktuellen Bereich im Richtlinien-Editor anzuzeigen, klicken Sie auf **Recalculate effective policy for selected scope**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sehen Sie sich das folgende Video zu Richtlinienausdrücken an.

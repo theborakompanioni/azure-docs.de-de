@@ -13,12 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2016
+ms.date: 03/14/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 9e738c4e5f43ae6c939f7c6da90c258498943e73
-ms.openlocfilehash: 18bb55a638b998dec0182a61a95c4bbde80bb0d3
-ms.lasthandoff: 12/14/2016
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 2cf4f498a107b8c6085489723ae946b119bb6244
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -28,7 +28,7 @@ Mithilfe des **Cheat Sheet für Algorithmen für Microsoft Azure Machine Learnin
 [Azure Machine Learning Studio](https://studio.azureml.net/) bietet eine umfangreiche Bibliothek von Algorithmen der Typen ***Regression***, ***Klassifizierung***, ***Clustering*** und ***Erkennung von Anomalien***. Jede ist speziell auf eine andere Art von Machine Learning-Problem ausgelegt.
 
 ## <a name="download-machine-learning-algorithm-cheat-sheet"></a>Herunterladen: Cheat Sheet für Machine Learning-Algorithmen
-**Das Cheat Sheet hier herunterladen:[ Cheat Sheet für Microsoft Azure Machine Learning-Algorithmen (28 x&43; cm) (in englischer Sprache)](http://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet-v6.pdf)**
+**Das Cheat Sheet hier herunterladen:[ Cheat Sheet für Microsoft Azure Machine Learning-Algorithmen (28 x 43 cm) (in englischer Sprache)](http://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet-v6.pdf)**
 
 ![Machine Learning Cheat Sheet für Algorithmen: Wie wähle ich einen Algorithmus für maschinelles Lernen aus?][cheat-sheet]
 
@@ -54,11 +54,11 @@ Sie können das Cheat Sheet für Machine Learning-Algorithmen im Kleinformat her
 
 * Die Vorschläge in diesem Cheat Sheet für Algorithmen stellen nur grobe Richtlinien dar. Einige können leicht abgeändert werden und andere sogar stark überarbeitet. Sie dienen lediglich als Ausgangspunkt und Anregung. Sie sollten auch direkte Vergleiche zwischen verschiedenen Algorithmen mit Ihren Daten durchführen. Es gibt keinen Ersatz für das grundsätzliche Verständnis der einzelnen Algorithmen und des Systems, das Ihre Daten generiert hat.
 
-* Jeder Algorithmus für maschinelles Lernen hat seinen eigenen Stil oder *induktiven Bias*. Für ein bestimmtes Problem können verschiedene Algorithmen geeignet sein, aber ein Algorithmus passt möglicherweise besser als andere. Es ist jedoch nicht immer schon im Vorfeld klar, welches der beste Algorithmus ist. In diesen Fällen werden im Cheat Sheet mehrere Algorithmen zusammen angegeben. Eine geeignete Strategie bestünde darin, einen Algorithmus zu testen und bei nicht zufriedenstellenden Ergebnissen einen anderen zu versuchen. Es folgt ein Beispiel aus dem [Cortana Intelligence-Katalog](http://gallery.cortanaintelligence.com/). Dabei handelt es sich um ein Experiment, mit dem mehrere Algorithmen auf dieselben Daten angewendet und die Ergebnisse verglichen werden: [Vergleichen von Multiklassen-Klassifizierungen: Buchstabenerkennung](http://gallery.cortanaintelligence.com/Details/a635502fc98b402a890efe21cec65b92).
+* Jeder Algorithmus für maschinelles Lernen hat seinen eigenen Stil oder *induktiven Bias*. Für ein bestimmtes Problem können verschiedene Algorithmen geeignet sein, aber ein Algorithmus passt möglicherweise besser als andere. Es ist jedoch nicht immer schon im Vorfeld klar, welches der am besten geeignete Algorithmus ist. In diesen Fällen werden im Cheat Sheet mehrere Algorithmen zusammen angegeben. Eine geeignete Strategie bestünde darin, einen Algorithmus zu testen und bei nicht zufriedenstellenden Ergebnissen einen anderen zu versuchen. Es folgt ein Beispiel aus dem [Cortana Intelligence-Katalog](http://gallery.cortanaintelligence.com/). Dabei handelt es sich um ein Experiment, mit dem mehrere Algorithmen auf dieselben Daten angewendet und die Ergebnisse verglichen werden: [Vergleichen von Multiklassen-Klassifizierungen: Buchstabenerkennung](http://gallery.cortanaintelligence.com/Details/a635502fc98b402a890efe21cec65b92).
 
 * Es gibt drei Arten von maschinellem Lernen: **beaufsichtigtes Lernen**, **unbeaufsichtigtes Lernen** und **vertiefendes Lernen**.
 
-  * Beim **beaufsichtigten Lernen** wird jeder Datenpunkt bezeichnet oder einer Kategorie oder einem Wert zugeordnet.  Ein Beispiel für eine Kategoriebezeichnung ist die Zuordnung eines Bildes zu "Katze" oder "Hund".  Ein Beispiel für eine Wertbezeichnung ist der Verkaufspreis für ein gebrauchtes Auto. Ziel beim beaufsichtigten Lernen ist es, viele bezeichnete Beispiele wie diese zu untersuchen und dann Vorhersagen zu zukünftigen Datenpunkten zu treffen– z. B., um neue Fotos mit dem richtigen Tier zu identifizieren oder präzise Verkaufspreise für gebrauchte PKW festzulegen. Dies ist eine häufige und nützliche Verwendung für das maschinelle Lernen. Alle Module in Azure Machine Learning sind Algorithmen zum beaufsichtigten Lernen, mit Ausnahme von [K-Means-Clustering][k-means-clustering].
+  * Beim **beaufsichtigten Lernen** wird jeder Datenpunkt bezeichnet oder einer Kategorie oder einem Wert zugeordnet.  Ein Beispiel für eine Kategoriebezeichnung ist die Zuordnung eines Bildes zu "Katze" oder "Hund".  Ein Beispiel für eine Wertbezeichnung ist der Verkaufspreis für ein gebrauchtes Auto. Ziel beim beaufsichtigten Lernen ist es, viele bezeichnete Beispiele wie diese zu untersuchen und dann Vorhersagen zu zukünftigen Datenpunkten zu treffen. Zum Beispiel, um neue Fotos mit dem richtigen Tier zu identifizieren oder präzise Verkaufspreise für gebrauchte Pkw festzulegen. Dies ist eine häufige und nützliche Verwendung für das maschinelle Lernen. Alle Module in Azure Machine Learning sind Algorithmen zum beaufsichtigten Lernen, mit Ausnahme von [K-Means-Clustering][k-means-clustering].
 
   * Beim **unbeaufsichtigten Lernen** sind Datenpunkten keine Bezeichnungen zugeordnet. Stattdessen besteht das Ziel von Algorithmen zum unbeaufsichtigten Lernen im Organisieren der Daten in einer bestimmten Form oder in der Beschreibung ihrer Struktur. Dies kann das Gruppieren in Clustern bedeuten, wie bei K-Means, oder das Suchen nach unterschiedlichen Möglichkeiten zur Darstellung komplexer Daten in einfacherer Form.
 
@@ -70,7 +70,7 @@ Sie können das Cheat Sheet für Machine Learning-Algorithmen im Kleinformat her
 
 * Das Klassifizieren von Daten in mehr als zwei Kategorien kann entweder mithilfe einer inhärenten Multiklassen-Klassifizierung oder durch Kombination eines Satzes von Zweiklassen-Klassifizierungen in einem **Ensemble** durchgeführt werden. Bei der Vorgehensweise mithilfe eines Ensembles gibt es für jede Klasse eine separate Zweiklassen-Klassifizierung, die jeweils die Daten in zwei Kategorien unterteilen: „diese Klasse“ und „nicht diese Klasse“. Diese Klassifizierungen stimmen dann praktisch für die richtige Zuordnung des Datenpunkts ab. Dies ist das Prinzip hinter [One-vs-All Multiclass][one-vs-all-multiclass].
 
-* Bei mehreren Methoden, einschließlich logistischer Regression und Bayes Point Machines, wird von **linearen Klassengrenzen** ausgegangen, d.h., dass die Grenzen zwischen den Klassen annähernd gerade Linien (oder Hyperebenen im allgemeineren Fall) sind. Oftmals kennen Sie Ihre Daten erst, nachdem Sie versucht haben, sie aufzuteilen, dies kann aber i. d. R. gut mit einer Visualisierung im Voraus erlernt werden. Wenn die Klassengrenzen sehr unregelmäßig sind, sollten Sie weiterhin Entscheidungsstrukturen, Decision Jungles, Support Vector Machines (SVM, Stützvektormethode) oder neuronale Netze verwenden.
+* Bei mehreren Methoden, einschließlich logistischer Regression und Bayes Point Machines, wird von **linearen Klassengrenzen** ausgegangen. Das heißt, dass die Grenzen zwischen den Klassen annähernd gerade Linien (oder Hyperebenen im allgemeineren Fall) sind. Oftmals kennen Sie Ihre Daten erst, nachdem Sie versucht haben, sie aufzuteilen, dies kann aber i. d. R. gut mit einer Visualisierung im Voraus erlernt werden. Wenn die Klassengrenzen sehr unregelmäßig sind, sollten Sie weiterhin Entscheidungsstrukturen, Decision Jungles, Support Vector Machines (SVM, Stützvektormethode) oder neuronale Netze verwenden.
 
 * Sie können neuronale Netze mit kategorischen Variablen verwenden, indem Sie eine **Platzhaltervariable** für jede Kategorie erstellen und auf „1“ festlegen, wenn die Kategorie gilt, bzw. auf „0“, wenn sie nicht zutrifft.
 

@@ -1,7 +1,7 @@
 ---
 
 title: "Wie fügen Azure Active Directory-Administratoren B2B-Zusammenarbeitsbenutzer hinzu? | Microsoft Docs"
-description: "Die Azure Active Directory B2B-Zusammenarbeit ermöglicht es Administratoren, Benutzer aus Partnerorganisationen zu Azure AD hinzuzufügen, um ihnen Zugriff auf die unternehmenseigenen Anwendungen zu gewähren."
+description: "Ein Administrator kann Ihrer Azure AD-Instanz Gastbenutzer über eine Partnerorganisation unter Verwendung der Azure Active Directory B2B-Zusammenarbeit hinzufügen."
 services: active-directory
 documentationcenter: 
 author: sasubram
@@ -14,12 +14,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/18/2017
+ms.date: 03/15/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: a4e25c0dab34f0977b4511046ad53f4c0b409990
-ms.openlocfilehash: 830cc28cdd5ca523c43cf1fa9cdff5131727d71f
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 7f33165141f31c1b495313f2da0d6e4681bdf8f2
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -52,7 +52,7 @@ Sie können die Profilseite eines B2B-Zusammenarbeitsbenutzers öffnen und erneu
 
 ![Erneutes Senden einer Einladung](./media/active-directory-b2b-admin-add-users/resend-invitation.png)
 
-> ![HINWEIS] Mit diesem Vorgang wird erneut eine Einladung vom angemeldeten Benutzer gesendet, wodurch der Benutzer in das Verzeichnis eingeladen wird, auch wenn die ursprüngliche Einladung für eine bestimmte App oder Gruppe galt.
+> ![HINWEIS] Beim erneuten Senden von Einladungen wird die entsprechende Einladung vom angemeldeten Benutzer an einzelne Benutzer gesendet, auch wenn die ursprüngliche Einladung an eine bestimmte App oder Gruppe gesendet wurde.
 
 
 ## <a name="related-articles"></a>Verwandte Artikel

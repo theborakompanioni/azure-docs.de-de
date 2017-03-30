@@ -15,8 +15,9 @@ ms.topic: get-started-article
 ms.date: 01/17/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 4b29fd1c188c76a7c65c4dcff02dc9efdf3ebaee
-ms.openlocfilehash: cc25d521b4de64643c8920d45ec9aa6c07b94302
+ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
+ms.openlocfilehash: 977fcf74c86e2ab312d99b3f1821cfb7efbe9745
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -313,7 +314,7 @@ Erstellen Sie eine JSON-Datei namens **ADFCopyTutorialARM-Parameters.json** mit 
 1. Starten Sie **Azure PowerShell** , und führen Sie den folgenden Befehl aus:
    * Führen Sie den folgenden Befehl aus, und geben Sie den Benutzernamen und das Kennwort ein, den bzw. das Sie bei der Anmeldung beim Azure-Portal verwendet haben:
     ```PowerShell
-    Login-AzureRmAccount    
+    Login-AzureRmAccount       
     ```  
    * Führen Sie den folgenden Befehl aus, um alle Abonnements für dieses Konto anzuzeigen:
     ```PowerShell
@@ -408,7 +409,7 @@ In diesem Abschnitt geben Sie Name und Schlüssel Ihres Azure Storage-Kontos an.
 Die Verbindungszeichenfolge (connectionString) enthält die Parameter „storageAccountName“ und „storageAccountKey“. Die Werte für diese Parameter werden mithilfe einer Konfigurationsdatei übergeben. In der Definition werden außerdem die in der Vorlage definierten Variablen „azureStorageLinkedService“ und „dataFactoryName“ verwendet. 
 
 #### <a name="azure-sql-database-linked-service"></a>Mit Azure SQL-Datenbank verknüpfter Dienst
-In diesem Abschnitt geben Sie den Namen der Azure SQL Server-Instanz, den Datenbanknamen, den Benutzernamen und das Benutzerkennwort an. Informationen zu JSON-Eigenschaften zum Definieren eines mit Azure SQL verknüpften Diensts finden Sie unter [Mit Azure SQL verknüpfter Dienst](data-factory-azure-sql-connector.md#azure-sql-linked-service-properties).  
+In diesem Abschnitt geben Sie den Namen der Azure SQL Server-Instanz, den Datenbanknamen, den Benutzernamen und das Benutzerkennwort an. Informationen zu JSON-Eigenschaften zum Definieren eines mit Azure SQL verknüpften Diensts finden Sie unter [Mit Azure SQL verknüpfter Dienst](data-factory-azure-sql-connector.md#linked-service-properties).  
 
 ```json
 {
@@ -431,7 +432,7 @@ In diesem Abschnitt geben Sie den Namen der Azure SQL Server-Instanz, den Datenb
 Die Verbindungszeichenfolge (connectionString) enthält die Parameter „sqlServerName“, „databaseName“, „sqlServerUserName“ und „sqlServerPassword“, deren Werte mithilfe einer Konfigurationsdatei übergeben werden. In der Definition werden außerdem folgende Variablen aus der Vorlage verwendet: „azureSqlLinkedServiceName“ und „dataFactoryName“.
 
 #### <a name="azure-blob-dataset"></a>Azure-Blobdataset
-In diesem Abschnitt geben Sie den Blobcontainer, den Ordner und die Datei mit den Eingabedaten an. Informationen zu JSON-Eigenschaften zum Definieren eines Azure-Blobdatasets finden Sie unter [Eigenschaften des Dataset-Typs „Azure-Blob“](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties). 
+In diesem Abschnitt geben Sie den Blobcontainer, den Ordner und die Datei mit den Eingabedaten an. Informationen zu JSON-Eigenschaften zum Definieren eines Azure-Blobdatasets finden Sie unter [Eigenschaften des Dataset-Typs „Azure-Blob“](data-factory-azure-blob-connector.md#dataset-properties). 
 
 ```json
 {
@@ -473,7 +474,7 @@ In diesem Abschnitt geben Sie den Blobcontainer, den Ordner und die Datei mit de
 ```
 
 #### <a name="azure-sql-dataset"></a>Azure SQL-Dataset
-In diesem Abschnitt geben Sie den Namen der Tabelle in Azure SQL-Datenbank an, die die kopierten Daten aus Azure Blob Storage enthält. Informationen zu JSON-Eigenschaften zum Definieren eines Azure SQL-Datasets finden Sie unter [Eigenschaften des Dataset-Typs „Azure SQL“](data-factory-azure-sql-connector.md#azure-sql-dataset-type-properties). 
+In diesem Abschnitt geben Sie den Namen der Tabelle in Azure SQL-Datenbank an, die die kopierten Daten aus Azure Blob Storage enthält. Informationen zu JSON-Eigenschaften zum Definieren eines Azure SQL-Datasets finden Sie unter [Eigenschaften des Dataset-Typs „Azure SQL“](data-factory-azure-sql-connector.md#dataset-properties). 
 
 ```json
 {
@@ -591,8 +592,3 @@ Mit der Vorlage können auch wiederholte Aufgaben durchgeführt werden. Angenomm
 | [Pipelines](data-factory-create-pipelines.md) |Dieser Artikel enthält Informationen zu Pipelines und Aktivitäten in Azure Data Factory. |
 | [Datasets](data-factory-create-datasets.md) |Dieser Artikel enthält Informationen zu Datasets in Azure Data Factory. |
 | [Planung und Ausführung](data-factory-scheduling-and-execution.md) |In diesem Artikel werden die Planungs- und Ausführungsaspekte des Azure Data Factory-Anwendungsmodells erläutert. |
-
-
-<!--HONumber=Feb17_HO1-->
-
-

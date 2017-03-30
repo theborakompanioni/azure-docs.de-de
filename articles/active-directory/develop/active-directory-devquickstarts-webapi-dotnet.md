@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: e2e1c68b83e9b9ec5a3865e89a98b80cf59cdfad
-ms.openlocfilehash: 038b862a355310d264dacb4c619fb6558a0edffc
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: b028a75836f7c762431bfb9e3fc30822b7dee885
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -54,9 +54,10 @@ Zum Schutz Ihrer Anwendung müssen Sie in Ihrem Mandanten zunächst eine Anwendu
 5. Folgen Sie den Bildschirmaufforderungen, und erstellen Sie eine neue **Webanwendung und/oder Web-API**.
   * **Name**: Beschreibt die Anwendung für Benutzer. Geben Sie **TodoListService** ein.
   * Der **Umleitungs-URI** ist eine Kombination aus einem Schema und einer Zeichenfolge, die Azure AD für die Rückgabe der von der Anforderung angeforderten Token verwendet. Geben Sie hier `https://localhost:44321/` ein.
-  * Geben Sie in **AppID-URI** einen mandantenspezifischen Bezeichner ein. Geben Sie z. B. Folgendes ein: `https://contoso.onmicrosoft.com/TodoListService`.
-  
-6. Speichern Sie die Konfiguration. Lassen Sie das Portal geöffnet, da Sie in Kürze auch Ihre Clientanwendung registrieren müssen.
+
+6. Aktualisieren Sie auf der Seite **Einstellungen** -> **Eigenschaften** für Ihre Anwendung den App-ID-URI. Geben Sie einen mandantenspezifischen Bezeichner ein. Geben Sie z. B. Folgendes ein: `https://contoso.onmicrosoft.com/TodoListService`.
+
+7. Speichern Sie die Konfiguration. Lassen Sie das Portal geöffnet, da Sie in Kürze auch Ihre Clientanwendung registrieren müssen.
 
 ## <a name="step-2-set-up-the-app-to-use-the-owin-authentication-pipeline"></a>Schritt 2: Konfigurieren der App für die Verwendung der OWIN-Authentifizierungspipeline
 Um eingehende Anforderungen und Token zu überprüfen, müssen Sie Ihre Anwendung für die Kommunikation mit Azure AD einrichten.

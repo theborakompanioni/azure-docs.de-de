@@ -1,22 +1,23 @@
 ---
 title: "Schützen von PaaS-Bereitstellungen | Microsoft-Dokumentation"
-description: " Informieren Sie sich über die Sicherheitsvorteile von PaaS im Vergleich zu anderen Clouddienstmodellen, und machen Sie sich mit empfohlenen Vorgehensweisen für den Schutz Ihrer Azure-PaaS-Bereitstellung vertraut.. "
+description: " Informieren Sie sich über die Sicherheitsvorteile von PaaS im Vergleich zu anderen Clouddienstmodellen, und machen Sie sich mit empfohlenen Vorgehensweisen für den Schutz Ihrer Azure-PaaS-Bereitstellung vertraut. "
 services: security
 documentationcenter: na
-author: TerryLanfear
+author: techlake
 manager: MBaldwin
-editor: 
+editor: techlake
 ms.assetid: 
 ms.service: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/31/2017
+ms.date: 03/21/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: b3db1281bbd37fcfbec54bdeb998e6338bb08369
-ms.openlocfilehash: c20e0187f7bf6247e4a685c642edfc62303d4ef5
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: f218fe7e59e46683b544fd83bfea505b7cbe2d59
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -110,9 +111,4 @@ In diesem Artikel standen die Sicherheitsvorteile einer Azure-PaaS-Bereitstellun
 [2]: ./media/security-paas-deployments/responsibility-zones.png
 [3]: ./media/security-paas-deployments/advantages-of-paas.png
 [4]: ./media/security-paas-deployments/identity-perimeter.png
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

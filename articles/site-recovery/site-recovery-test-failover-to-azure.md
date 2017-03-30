@@ -15,9 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 2/15/2017
 ms.author: pratshar
 translationtype: Human Translation
-ms.sourcegitcommit: e2d464c1c70be0bd7d5551c7f76f02b10c20b9ed
-ms.openlocfilehash: e5c42a574b22278586500048efd5b813d64dd4b7
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: dcb259f04f2b0b1aeec10699b4e7b739ac0926ba
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -58,7 +58,7 @@ Hier erfahren Sie, wie Sie ein Test-Failover für einen Wiederherstellungsplan d
 
 
 > [!TIP]
-> Site Recovery versucht, virtuelle Testcomputer in einem Subnetz mit demselben Namen und derselben IP zu erstellen, die in den Einstellungen des virtuellen Computers unter **Compute und Netzwerk** angegeben sind. Wenn das Subnetz mit demselben Namen nicht im virtuellen Azure-Netzwerk für das Testfailover verfügbar ist, wird ein virtueller Testcomputer im ersten Subnetz (in alphabetischer Reihenfolge) erstellt. Wenn dieselbe IP-Adresse nicht im Subnetz verfügbar ist, erhält der virtuelle Computer eine andere verfügbare IP-Adresse im Subnetz. 
+> Site Recovery versucht, virtuelle Testcomputer in einem Subnetz mit demselben Namen und derselben IP zu erstellen, die in den Einstellungen des virtuellen Computers unter **Compute und Netzwerk** angegeben sind. Wenn das Subnetz mit demselben Namen nicht im virtuellen Azure-Netzwerk für das Testfailover verfügbar ist, wird ein virtueller Testcomputer im ersten Subnetz (in alphabetischer Reihenfolge) erstellt. Wenn die Ziel-IP Teil des ausgewählten Subnetzes ist, versucht Site Recovery, die Testfailover-VM mit der Ziel-IP zu erstellen. Wenn die Ziel-IP nicht Teil des ausgewählten Subnetzes ist, wird die Testfailover-VM mit einer beliebigen verfügbaren IP im ausgewählten Subnetz erstellt. 
 >
 >
 

@@ -14,11 +14,11 @@
 ## Erstellen von Vorlagen
 ### [Bewährte Methoden für Vorlagen](resource-manager-template-best-practices.md)
 ### [Vorlagenabschnitte](resource-group-authoring-templates.md)
-### [Vorlagenfunktionen](resource-group-template-functions.md)
 ### [Definieren der Abhängigkeit zwischen Ressourcen](resource-group-define-dependencies.md)
+### [Standort festlegen](resource-manager-template-location.md)
+### [Tags zuweisen](resource-manager-template-tags.md)
 ### [Festlegen von Name und Typ der untergeordneten Ressource](resource-manager-template-child-resource.md)
 ### [Erstellen mehrerer Instanzen des Ressourcentyps](resource-group-create-multiple.md)
-### [Übergeben sicherer Werte während der Bereitstellung](resource-manager-keyvault-parameter.md)
 ### [Verknüpfen mit anderen Vorlagen](resource-group-linked-templates.md)
 ### [Freigeben des Status für verknüpfte Vorlagen](best-practices-resource-manager-state.md)
 ### [Muster für das Entwerfen von Vorlagen](best-practices-resource-manager-design-templates.md)
@@ -28,6 +28,7 @@
 ### [Portal](resource-group-template-deploy-portal.md)
 ### [REST-API](resource-group-template-deploy-rest.md)
 ### [Continuous Integration in Visual Studio Team Services](../vs-azure-tools-resource-groups-ci-in-vsts.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [Übergeben sicherer Werte während der Bereitstellung](resource-manager-keyvault-parameter.md)
 ## Verwalten
 ### [PowerShell](powershell-azure-resource-manager.md)
 ### [Azure-Befehlszeilenschnittstelle](xplat-cli-azure-resource-manager.md)
@@ -56,6 +57,7 @@
 ### [Bereitstellungsvorgänge anzeigen](resource-manager-deployment-operations.md)
 
 # Referenz
+## [Vorlagenfunktionen](resource-group-template-functions.md)
 ## [PowerShell](/powershell/resourcemanager/azurerm.resources/v3.5.0/azurerm.resources)
 ## [Azure 2.0 CLI](/cli/azure/resource)
 ## [.NET](/dotnet/api/microsoft.azure.management.resourcemanager)
