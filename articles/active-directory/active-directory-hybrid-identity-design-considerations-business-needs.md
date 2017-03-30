@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/14/2017
+ms.date: 03/21/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 73b5a52b143d17283f677ce3181d8381db41d3c4
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: 60f1ec092635910ae8c98cc0197fdfbf358f01be
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -55,7 +56,7 @@ Außerdem müssen Sie wissen, welche Clouddienste in Ihrem Unternehmen genutzt w
 * Befindet sich diese Integration derzeit im Produktivbetrieb oder in einer Pilotphase?
 
 > [!NOTE]
-> Wenn Sie keine genaue Zuordnung all Ihrer Apps und Clouddienste haben, können Sie das Cloud App Discovery-Tool nutzen. Mit diesem Tool erhält Ihre IT-Abteilung Einblick in alle geschäftlichen und privaten Cloud-Apps in Ihrem Unternehmen. Mit diesem Modul ist es einfacher denn je, Schatten-IT in Ihrem Unternehmen zu ermitteln. Dies umfasst u. a. Einzelheiten zu Nutzungsmustern und sämtlichen Benutzern, die auf Ihre Cloudanwendungen zugreifen. Dieses Tool finden Sie unter [https://appdiscovery.azure.com](https://appdiscovery.azure.com/).
+> Wenn Sie keine genaue Zuordnung all Ihrer Apps und Clouddienste haben, können Sie das Cloud App Discovery-Tool nutzen. Mit diesem Tool erhält Ihre IT-Abteilung Einblick in alle geschäftlichen und privaten Cloud-Apps in Ihrem Unternehmen. Mit diesem Modul ist es einfacher denn je, Schatten-IT in Ihrem Unternehmen zu ermitteln. Dies umfasst u. a. Einzelheiten zu Nutzungsmustern und sämtlichen Benutzern, die auf Ihre Cloudanwendungen zugreifen. Informationen zum Einstieg finden Sie unter [Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md).
 > 
 > 
 
@@ -108,10 +109,5 @@ Sie müssen zudem die Benutzeranforderungen bewerten. Diese Bewertung ist wichti
 
 ## <a name="see-also"></a>Siehe auch
 [Überlegungen zum Entwurf – Übersicht](active-directory-hybrid-identity-design-considerations-overview.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

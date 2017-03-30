@@ -16,17 +16,17 @@ ms.workload: infrastructure
 ms.date: 03/02/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: fc02a169bf38de911401a390c3157e400ec74578
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: b62637150773bdfb48ff654675af5c4ffdd67919
+ms.lasthandoff: 03/21/2017
 
 ---
 
 # <a name="create-a-fully-configured-virtual-machine-with-powershell"></a>Erstellen einer vollständig konfigurierten VM mit PowerShell
 
-Das hier gezeigte Beispielskript erstellt eine Azure-VM mit einem Windows-Betriebssystem und zugehörigen Netzwerkressourcen. Nachdem das Skript erfolgreich ausgeführt wurde, kann über SSH auf den virtuellen Computer zugegriffen werden. 
+Dieses Skript erstellt einen virtuellen Azure-Computer mit Windows Server 2016. Nach dem Ausführen des Skripts können Sie per SSH auf den virtuellen Computer zugreifen.
 
-Stellen Sie vor dem Ausführen dieses Skripts sicher, dass über den Befehl `Login-AzureRmAccount` eine Verbindung mit Azure hergestellt wurde.
+Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/), und führen Sie dann `Login-AzureRmAccount` aus, um eine Verbindung mit Azure herzustellen.
 
 ## <a name="sample-script"></a>Beispielskript
 
@@ -34,7 +34,7 @@ Stellen Sie vor dem Ausführen dieses Skripts sicher, dass über den Befehl `Log
 
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung 
 
-Nach Ausführung des Skriptbeispiels können mit dem folgenden Befehl die Ressourcengruppe, die VM und alle zugehörigen Ressourcen entfernt werden.
+Führen Sie den folgenden Befehl aus, um die Ressourcengruppe, den virtuellen Computer und alle zugehörigen Ressourcen zu entfernen.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup

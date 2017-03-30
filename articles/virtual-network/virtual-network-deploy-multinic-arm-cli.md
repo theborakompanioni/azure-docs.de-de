@@ -9,7 +9,7 @@ editor:
 tags: azure-resource-manager
 ms.assetid: 8e906a4b-8583-4a97-9416-ee34cfa09a98
 ms.service: virtual-network
-ms.devlang: na
+ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
@@ -17,9 +17,9 @@ ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
-ms.openlocfilehash: 624f179c481448eb6c556b8cd9d90ef06d807c60
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 4f5eaf5f6ba56709b69d97c1f646f71396fd031b
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -42,126 +42,125 @@ Sie können diese Aufgabe mithilfe der Azure CLI 2.0 (dieser Artikel) oder mit d
 3. Melden Sie sich über eine Befehlsshell mit dem Befehl `az login` an.
 4. Erstellen Sie die VM, indem Sie das folgende Skript auf einem Linux- oder Mac-Computer ausführen. Das Skript erstellt eine Ressourcengruppe, ein virtuelles Netzwerk (VNET) mit zwei Subnetzen, zwei Netzwerkkarten und eine VM, an die die zwei Netzwerkkarten angefügt sind. Eine der Netzwerkkarten (NICs) ist mit einem Subnetz verbunden, und der NIC ist eine statische öffentliche und eine private IP-Adresse zugewiesen. Die andere Netzwerkkarte ist mit dem anderen Subnetz verbunden. Ihr ist eine statische private IP-Adresse und keine öffentliche IP-Adresse zugewiesen. Die Netzwerkkarte, die öffentliche IP-Adresse, das virtuelle Netzwerk und die VM-Ressourcen müssen sich alle am selben Standort und im selben Abonnement befinden. Wenngleich sich die Ressourcen nicht zwingend in derselben Ressourcengruppe befinden müssen, ist dies im folgenden Skript der Fall.
 
-    ```azurecli
-    #!/bin/sh
+```bash
+#!/bin/sh
 
-    RgName="Multi-NIC-VM"
-    Location="westus"
-    az group create --name $RgName --location $Location
+RgName="Multi-NIC-VM"
+Location="westus"
 
-    # Create a public IP address resource with a static IP address using the `--allocation-method Static` option.
-    # If you do not specify this option, the address is allocated dynamically. The address is assigned to the
-    # resource from a pool of IP adresses unique to each Azure region. 
-    # Download and view the file from https://www.microsoft.com/en-us/download/details.aspx?id=41653 that lists
-    # the ranges for each region.
+# Create a resource group.
+az group create \
+--name $RgName \
+--location $Location
 
-    PipName="PIP-WEB"
+# The address is assigned to the resource from a pool of IP adresses unique to each Azure region. 
+# Download and view the file from https://www.microsoft.com/en-us/download/details.aspx?id=41653 that lists
+# the ranges for each region.
 
-    az network public-ip create \
-    --name $PipName \
-    --resource-group $RgName \
-    --location $Location \
-    --allocation-method Static
+PipName="PIP-WEB"
+az network public-ip create \
+--name $PipName \
+--resource-group $RgName \
+--location $Location \
+--allocation-method Static
 
-    # Create a virtual network with one subnet
+# Create a virtual network with one subnet
 
-    VnetName="VNet1"
-    VnetPrefix="10.0.0.0/16"
-    VnetSubnet1Name="Front-End"
-    VnetSubnet1Prefix="10.0.0.0/24"
+VnetName="VNet1"
+VnetPrefix="10.0.0.0/16"
+VnetSubnet1Name="Front-End"
+VnetSubnet1Prefix="10.0.0.0/24"
+az network vnet create \
+--name $VnetName \
+--resource-group $RgName \
+--location $Location \
+--address-prefix $VnetPrefix \
+--subnet-name $VnetSubnet1Name \
+--subnet-prefix $VnetSubnet1Prefix
 
-    az network vnet create \
-    --name $VnetName \
-    --resource-group $RgName \
-    --location $Location \
-    --address-prefix $VnetPrefix \
-    --subnet-name $VnetSubnet1Name \
-    --subnet-prefix $VnetSubnet1Prefix
+# Create a second subnet within the VNet
 
-    # Create a second subnet within the VNet
+VnetSubnet2Name="Back-end"
+VnetSubnet2Prefix="10.0.1.0/24"
+az network vnet subnet create \
+--vnet-name $VnetName \
+--resource-group $RgName \
+--name $VnetSubnet2Name \
+--address-prefix $VnetSubnet2Prefix
 
-    VnetSubnet2Name="Back-end"
-    VnetSubnet2Prefix="10.0.1.0/24"
+# Create a network interface connected to one of the subnets. The NIC is assigned a single dynamic private and
+# public IP address by default, but you can instead, assign static addresses, or no public IP address at all.
+# You can also assign multiple private or public IP addresses to each NIC. To learn more about IP addressing
+# options for NICs, enter the az network nic create -h command.
 
-    az network vnet subnet create \
-    --vnet-name $VnetName \
-    --resource-group $RgName \
-    --name $VnetSubnet2Name \
-    --address-prefix $VnetSubnet2Prefix
+Nic1Name="NIC-FE"
+PrivateIpAddress1="10.0.0.5"
 
-    # Create a network interface connected to one of the subnets. The NIC is assigned a single dynamic private and
-    # public IP address by default, but you can instead, assign static addresses, or no public IP address at all.
-    # You can also assign multiple private or public IP addresses to each NIC. To learn more about IP addressing
-    # options for NICs, enter the `az network nic create -h` command.
+az network nic create \
+--name $Nic1Name \
+--resource-group $RgName \
+--location $Location \
+--subnet $VnetSubnet1Name \
+--vnet-name $VnetName \
+--private-ip-address $PrivateIpAddress1 \
+--public-ip-address $PipName
 
-    Nic1Name="NIC-FE"
-    PrivateIpAddress1="10.0.0.5"
+# Create a second network interface and connect it to the other subnet. Though multiple NICs attached to the same
+# VM can be connected to different subnets, the subnets must all be within the same VNet. Add additional NICs as necessary.
 
-    az network nic create \
-    --name $Nic1Name \
-    --resource-group $RgName \
-    --location $Location \
-    --subnet $VnetSubnet1Name \
-    --vnet-name $VnetName \
-    --private-ip-address $PrivateIpAddress1 \
-    --public-ip-address $PipName
+Nic2Name="NIC-BE"
+PrivateIpAddress2="10.0.1.5"
 
-    # Create a second network interface and connect it to the other subnet. Though multiple NICs attached to the same
-    # VM can be connected to different subnets, the subnets must all be within the same VNet. Add additional NICs as necessary.
+az network nic create \
+--name $Nic2Name \
+--resource-group $RgName \
+--location $Location \
+--subnet $VnetSubnet2Name \
+--vnet-name $VnetName \
+--private-ip-address $PrivateIpAddress2
 
-    Nic2Name="NIC-BE"
-    PrivateIpAddress2="10.0.1.5"
+# Create a VM and attach the two NICs.
 
-    az network nic create \
-    --name $Nic2Name \
-    --resource-group $RgName \
-    --location $Location \
-    --subnet $VnetSubnet2Name \
-    --vnet-name $VnetName \
-    --private-ip-address $PrivateIpAddress2 \
+VmName="WEB"
 
-    # Create a VM and attach the two NICs.
+# Replace the value for the following **VmSize** variable with a value from the
+# https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes article. Not all VM sizes support
+# more than one NIC, so be sure to select a VM size that supports the number of NICs you want to attach to the VM.
+# You must create the VM with at least two NICs if you want to add more after VM creation. If you create a VM with
+# only one NIC, you can't add additional NICs to the VM after VM creation, regardless of how many NICs the VM supports.
+# The VM size specified in the following variable supports two NICs.
 
-    VmName="WEB"
+VmSize="Standard_DS2"
 
-    # Replace the value for the following **VmSize** variable with a value from the
-    # https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes article. Not all VM sizes support
-    # more than one NIC, so be sure to select a VM size that supports the number of NICs you want to attach to the VM.
-    # You must create the VM with at least two NICs if you want to add more after VM creation. If you create a VM with
-    # only one NIC, you can't add additional NICs to the VM after VM creation, regardless of how many NICs the VM supports.
-    # The VM size specified in the following variable supports two NICs.
+# Replace the value for the OsImage variable value with a value for *urn* from the output returned by entering the
+# az vm image list command.
 
-    VmSize="Standard_DS2"
+OsImage="credativ:Debian:8:latest"
 
-    # Replace the value for the OsImage variable value with a value for *urn* from the output returned by entering the
-    # `az vm image list` command.
+Username="adminuser"
 
-    OsImage="credativ:Debian:8:latest"
+# Replace the following value with the path to your public key file.
 
-    Username="adminuser"
+SshKeyValue="~/.ssh/id_rsa.pub"
 
-    # Replace the following value with the path to your public key file.
+# Before executing the following command, add variable names of additional NICs you may have added to the script that
+# you want to attach to the VM. If creating a Windows VM, remove the **ssh-key-value** line and you'll be prompted for
+# the password you want to configure for the VM.
 
-    SshKeyValue="~/.ssh/id_rsa.pub"
+az vm create \
+--name $VmName \
+--resource-group $RgName \
+--image $OsImage \
+--location $Location \
+--size $VmSize \
+--nics $Nic1Name $Nic2Name \
+--admin-username $Username \
+--ssh-key-value $SshKeyValue
+```
 
-    # Before executing the following command, add variable names of additional NICs you may have added to the script that
-    # you want to attach to the VM. If creating a Windows VM, remove the **ssh-key-value** line and you'll be prompted for
-    # the password you want to configure for the VM.
-
-    az vm create \
-    --name $VmName \
-    --resource-group $RgName \
-    --image $OsImage \
-    --location $Location \
-    --size $VmSize \
-    --nics $Nic1Name $Nic2Name \
-    --admin-username $Username \
-    --ssh-key-value $SshKeyValue
-    ```
-
-    Zusätzlich zur VM mit den zwei NICs werden mit dem Skript folgende Komponenten erstellt:
-    - Ein einzelner verwalteter Premium-Datenträger. Dies ist die Standardeinstellung, aber Sie können auch einen anderen Datenträgertyp für die Erstellung auswählen. Ausführliche Informationen finden Sie im Artikel [Erstellen einer Linux-VM mithilfe der Azure CLI 2.0](../virtual-machines/virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-    - Ein virtuelles Netzwerk mit zwei Subnetzen und einer einzigen öffentlichen IP-Adresse. Alternativ können Sie ein *vorhandenes* Netzwerk, ein Subnetz, eine Netzwerkkarte oder öffentliche IP-Adressressourcen verwenden. Um zu erfahren, wie Sie vorhandene Netzwerkressourcen verwenden, statt zusätzliche Ressourcen zu erstellen, geben Sie `az vm create -h` ein.
+Zusätzlich zur VM mit den zwei NICs werden mit dem Skript folgende Komponenten erstellt:
+- Ein einzelner verwalteter Premium-Datenträger. Dies ist die Standardeinstellung, aber Sie können auch einen anderen Datenträgertyp für die Erstellung auswählen. Ausführliche Informationen finden Sie im Artikel [Erstellen einer Linux-VM mithilfe der Azure CLI 2.0](../virtual-machines/virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Ein virtuelles Netzwerk mit zwei Subnetzen und einer einzigen öffentlichen IP-Adresse. Alternativ können Sie ein *vorhandenes* Netzwerk, ein Subnetz, eine Netzwerkkarte oder öffentliche IP-Adressressourcen verwenden. Um zu erfahren, wie Sie vorhandene Netzwerkressourcen verwenden, statt zusätzliche Ressourcen zu erstellen, geben Sie `az vm create -h` ein.
 
 ## <a name = "validate"></a>Überprüfen von VM-Erstellung und NICs
 
@@ -172,12 +171,10 @@ Sie können diese Aufgabe mithilfe der Azure CLI 2.0 (dieser Artikel) oder mit d
 
 ## <a name= "clean-up"></a>Entfernen der VM und zugehöriger Ressourcen
 
-Wenn Sie eine Ressourcengruppe nur zum Ausführen der Schritte in diesem Artikel erstellt haben, können Sie alle Ressourcen entfernen, indem Sie die Ressourcengruppe mit dem Befehl `az group delete --name Multi-NIC-VM` löschen.
-
->[!WARNING]
->Vergewissern Sie sich vor dem Löschen der Ressourcengruppe, dass sich keine weiteren Ressourcen in der Ressourcengruppe befinden als die, die mithilfe des Skripts in diesem Artikel erstellt wurden. Führen Sie den Befehl `az resource list --resource-group Multi-NIC-VM` aus, um die Ressourcen in der Ressourcengruppe anzuzeigen.
-
-Es wird empfohlen, die Ressourcen zu löschen, sofern Sie die VM nicht in der Produktion verwenden möchten. Durch die VM, die öffentliche IP-Adresse und die Datenträgerressourcen werden Kosten verursacht, solange sie bereitgestellt sind.
+Es wird empfohlen, die in dieser Übung erstellten Ressourcen zu löschen, sofern Sie sie nicht in der Produktion verwenden möchten. Durch die VM, die öffentliche IP-Adresse und die Datenträgerressourcen werden Kosten verursacht, solange sie bereitgestellt sind. Führen Sie zum Entfernen der während dieser Übung erstellten Ressourcen die folgenden Schritte aus:
+1. Führen Sie den Befehl `az resource list --resource-group Multi-NIC-VM` aus, um die Ressourcen in der Ressourcengruppe anzuzeigen.
+2. Vergewissern Sie sich, dass sich keine weiteren Ressourcen in der Ressourcengruppe befinden als die, die mithilfe des Skripts in diesem Artikel erstellt wurden. 
+3. Führen Sie zum Löschen aller Ressourcen, die in dieser Übung erstellt wurden, den Befehl `az group delete --name Multi-NIC-VM` aus. Der Befehl löscht die Ressourcengruppe und alle darin enthaltenen Ressourcen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

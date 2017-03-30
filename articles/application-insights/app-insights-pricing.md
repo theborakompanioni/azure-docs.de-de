@@ -1,22 +1,22 @@
 ---
-title: "Verwalten von Preisen und Datenvolumen für Application Insights | Microsoft-Dokumentation"
+title: "Verwalten von Preisen und Datenvolumen für Azure Application Insights | Microsoft Docs"
 description: "Verwalten Sie Telemetriedatenvolumen, und überwachen Sie Kosten in Application Insights."
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: ebd0d843-4780-4ff3-bc68-932aa44185f6
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 02/17/2017
+ms.date: 03/17/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 4ccd8cbfd0f3742c14a7effd7484d65be21abb63
-ms.openlocfilehash: d4db3d7a0c860c23a3a3ddecab6f79cb6b297a02
-ms.lasthandoff: 02/18/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 3f0c890056c2ee00151ebc4cc74106368a56ba2f
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -31,7 +31,7 @@ Es gibt zwei Tarife. Der Standardtarif heißt „Basic“. Sie können sich für
 
 Wenn Sie Fragen zu den Preisen für Application Insights haben, können Sie gerne eine Frage in unserem [Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=ApplicationInsights) posten. 
 
-## <a name="the-pricing-plans"></a>Die Tarife
+## <a name="the-price-plans"></a>Die Tarife
 
 Aktuelle Preise in Ihrer Währung finden Sie auf der [Application Insights-Seite mit Preisen][pricing].
 
@@ -157,10 +157,9 @@ Verwenden Sie etwa folgende [Analytics-Abfrage](app-insights-analytics.md) , um 
 In jedem beibehaltenen Datensatz gibt `itemCount` die Anzahl ursprünglicher Datensätze an, die der Datensatz darstellt (Anzahl zuvor verworfener Datensätze + 1). 
 
 
-## <a name="transition-from-the-old-pricing-tiers"></a>Wechsel von den alten Tarifen
+## <a name="automation"></a>Automation
 
-Für vorhandene Anwendungen können noch bis Februar 2017 die alten Tarife verwendet werden. Ab diesem Zeitpunkt werden die meisten Anwendungen automatisch auf den Basic-Tarif umgestellt. Anwendungen, die den fortlaufenden Export oder den Connector für OMS Log Analytics verwenden, werden auf den Enterprise-Tarif umgestellt.
-
+Sie können mit der Azure-Ressourcenverwaltung ein Skript schreiben, um den Tarif festzulegen. [Weitere Informationen](app-insights-powershell.md#price).
 
 ## <a name="limits-summary"></a>Zusammenfassung der Grenzwerte
 [!INCLUDE [application-insights-limits](../../includes/application-insights-limits.md)]

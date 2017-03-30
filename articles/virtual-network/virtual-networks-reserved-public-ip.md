@@ -1,5 +1,5 @@
 ---
-title: Verwalten reservierter IP-Adressen (klassisch) mit PowerShell | Microsoft Docs
+title: "Verwalten reservierter Azure-IP-Adressen (klassisch) – PowerShell | Microsoft Docs"
 description: "Erfahren Sie mehr über reservierte IP-Adressen (klassisch) und wie man sie mithilfe von PowerShell verwaltet."
 services: virtual-network
 documentationcenter: na
@@ -15,19 +15,20 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: c934f78e514230958fad8b2aa9be4d2e56a3a835
-ms.openlocfilehash: 55071ffe1bcc17b2181b4c52f51d28571a2f0eff
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 276b1bcebbe3c32d6fead8ee240dd1ddfb01c872
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="reserved-ip-addresses-classic"></a>Reservierten IP-Adressen (klassisch)
 
 > [!div class="op_single_selector"]
-- [Azure-Portal](virtual-network-deploy-static-pip-arm-portal.md)
-- [PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
-- [Azure-Befehlszeilenschnittstelle](virtual-network-deploy-static-pip-arm-cli.md)
-- [Vorlage](virtual-network-deploy-static-pip-arm-template.md)
-- [PowerShell (klassisch)](virtual-networks-reserved-public-ip.md)
+> * [Azure-Portal](virtual-network-deploy-static-pip-arm-portal.md)
+> * [PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
+> * [Azure-Befehlszeilenschnittstelle](virtual-network-deploy-static-pip-arm-cli.md)
+> * [Vorlage](virtual-network-deploy-static-pip-arm-template.md)
+> * [PowerShell (klassisch)](virtual-networks-reserved-public-ip.md)
 
 In Azure fallen IP-Adressen in zwei Kategorien: dynamisch und reserviert. Öffentliche IP-Adressen, die von Azure verwaltet werden, sind standardmäßig dynamische IP-Adressen. Daher kann sich die IP-Adresse, die für einen bestimmten Clouddienst (VIP) oder zum direkten Zugreifen auf einen virtuellen Computer oder eine Rolleninstanz (ILPIP) genutzt wird, von Zeit zu Zeit ändern, wenn Ressourcen heruntergefahren oder neu zugeordnet werden.
 
@@ -164,10 +165,5 @@ Sie können eine reservierte IP einem Clouddienst auch zuordnen, indem Sie eine 
 * Informieren Sie sich über die Funktionsweise der [IP-Adressierung](virtual-network-ip-addresses-overview-classic.md) im klassischen Bereitstellungsmodell.
 * Erfahren Sie mehr zu [reservierten privaten IP-Adressen](virtual-networks-reserved-private-ip.md).
 * Erfahren Sie mehr zu [öffentlichen IP-Adressen auf Instanzebene (ILPIP)](virtual-networks-instance-level-public-ip.md).
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

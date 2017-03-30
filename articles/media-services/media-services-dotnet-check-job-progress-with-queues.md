@@ -15,42 +15,42 @@ ms.topic: article
 ms.date: 08/19/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
-ms.openlocfilehash: 876b6a81c5fba7cd9567f913860dd5bdc2391c15
-ms.lasthandoff: 02/11/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 0ddac6ef30439e6bea04d63c41662bc49309de2c
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Verwenden von Azure-Warteschlangenspeicher zum Überwachen von Media Services-Auftragsbenachrichtigungen mit .NET
-Beim Ausführen von Aufträgen ist es nützlich, deren Fortschritt verfolgen zu können. Sie können den Fortschritt überprüfen, indem Sie den Azure-Warteschlangenspeicher zur Überwachung von Media Services-Auftragsbenachrichtigungen verwenden (wie im vorliegenden Thema beschrieben) oder einen StateChanged-Ereignishandler definieren (wie in [diesem Thema](media-services-check-job-progress.md) beschrieben).  
+Beim Ausführen von Aufträgen ist es nützlich, deren Fortschritt verfolgen zu können. Sie können den Status überprüfen, indem Sie Azure Queue Storage zur Überwachung von Azure Media Services-Auftragsbenachrichtigungen verwenden (wie in diesem Artikel beschrieben). Außerdem können Sie einen **StateChanged**-Ereignishandler definieren, wie in [Überwachen des Auftragsfortschritts mit .NET](media-services-check-job-progress.md) beschrieben.  
 
-## <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications"></a>Verwenden von Azure-Warteschlangenspeicher zum Überwachen von Media Services-Auftragsbenachrichtigungen
-Microsoft Azure Media Services bietet bei der Verarbeitung von Medienaufträgen die Möglichkeit, Benachrichtigungen an [Azure Queue Storage](../storage/storage-dotnet-how-to-use-queues.md) zu übermitteln. In diesem Thema wird gezeigt, wie Sie diese Benachrichtigungen aus dem Warteschlangenspeicher abrufen.
+## <a name="use-queue-storage-to-monitor-media-services-job-notifications"></a>Verwenden von Queue Storage zum Überwachen von Media Services-Auftragsbenachrichtigungen
+Beim Verarbeiten von Medienaufträgen kann Media Services Benachrichtigungen an [Queue Storage](../storage/storage-dotnet-how-to-use-queues.md) übermitteln. In diesem Thema wird gezeigt, wie Sie diese Benachrichtigungen aus dem Warteschlangenspeicher abrufen.
 
-Auf die an den Warteschlangenspeicher übermittelten Nachrichten kann von überall auf der Welt aus zugegriffen werden. Die Benachrichtigungsarchitektur für Azure-Warteschlangen ist zuverlässig und hochgradig skalierbar. Das Abrufen des Warteschlangenspeichers wird gegenüber anderen Methoden empfohlen.
+Auf die an den Warteschlangenspeicher übermittelten Nachrichten kann von überall auf der Welt aus zugegriffen werden. Die Benachrichtigungsarchitektur von Queue Storage ist zuverlässig und hochgradig skalierbar. Das Abrufen von Nachrichten aus Queue Storage wird gegenüber anderen Methoden empfohlen.
 
-Häufig werden Media Services-Benachrichtigungen überwacht, wenn Sie ein Content Management System entwickeln, das nach Abschluss der Codierung eines Auftrags einige zusätzliche Aufgaben durchführen soll (z. B. den nächsten Schritt in einem Workflow auslösen oder Inhalte veröffentlichen).
+Häufig werden Media Services-Benachrichtigungen überwacht, wenn Sie ein Content Management System entwickeln, das nach Abschluss der Codierung eines Auftrags einige zusätzliche Aufgaben durchführen soll (z.B. den nächsten Schritt in einem Workflow auslösen oder Inhalte veröffentlichen).
 
 ### <a name="considerations"></a>Überlegungen
-Beachten Sie Folgendes beim Entwickeln von Media Services-Anwendungen, die die Azure-Speicherwarteschlange verwenden.
+Beachten Sie Folgendes beim Entwickeln von Media Services-Anwendungen, die Queue Storage verwenden:
 
-* Der Warteschlangendienst bietet keine Garantie, dass die Übermittlung nach First-in-First-out (FIFO) sortiert erfolgt. Weitere Informationen finden sie unter [Azure-Warteschlangen und Azure Service Bus-Warteschlangen – Vergleich und Gegenüberstellung](https://msdn.microsoft.com/library/azure/hh767287.aspx).
-* Azure-Speicherwarteschlangen sind kein Push-Dienst. Sie müssen die Warteschlange abfragen.
+* Queue Storage bietet keine Garantie, dass die Übermittlung nach First-in-First-out (FIFO) sortiert erfolgt. Weitere Informationen finden sie unter [Azure-Warteschlangen und Azure Service Bus-Warteschlangen – Vergleich und Gegenüberstellung](https://msdn.microsoft.com/library/azure/hh767287.aspx).
+* Queue Storage ist kein Pushdienst. Sie müssen die Warteschlange abfragen.
 * Sie können eine beliebige Anzahl von Warteschlangen verwenden. Weitere Informationen finden Sie unter [REST-API des Warteschlangendiensts](https://docs.microsoft.com/rest/api/storageservices/fileservices/Queue-Service-REST-API).
-* Azure-Speicherwarteschlangen weisen einige Einschränkungen und Besonderheiten auf, die im folgenden Artikel beschrieben werden: [Azure-Warteschlangen und Azure Service Bus-Warteschlangen – Vergleich und Gegenüberstellung](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted).
+* Queue Storage verfügt über einige Einschränkungen und Besonderheiten, die Sie berücksichtigen müssen. Diese werden unter [Azure-Warteschlangen und Azure Service Bus-Warteschlangen – Vergleich und Gegenüberstellung](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted) besprochen.
 
 ### <a name="code-example"></a>Codebeispiel
 Das Codebeispiel in diesem Abschnitt erfüllt die folgenden Aufgaben:
 
 1. Definiert die **EncodingJobMessage** -Klasse, die das Format der Benachrichtigung zuordnet. Der Code deserialisiert Nachrichten aus der Warteschlange in Objekte vom Typ **EncodingJobMessage** .
-2. Lädt die Informationen zu Media Services und Speicherkonto aus der Datei "app.config". Verwendet diese Informationen zum Erstellen des **CloudMediaContext**-Objekts und des **CloudQueue**-Objekts.
+2. Lädt die Informationen zu Media Services und Speicherkonto aus der Datei "app.config". Das Codebeispiel verwendet diese Informationen zum Erstellen des **CloudMediaContext**-Objekts und des **CloudQueue**-Objekts.
 3. Erstellt die Warteschlange, die Benachrichtigungen zum Codierungsauftrag empfängt.
 4. Erstellt den Endpunkt für Benachrichtigungen, der der Warteschlange zugeordnet ist.
 5. Fügt den Endpunkt für die Benachrichtigung an den Auftrag an und übermittelt den Codierungsauftrag. Sie können mehrere Benachrichtigungsendpunkte an einen Auftrag anfügen.
-6. In diesem Beispiel interessieren wir uns nur für die Endphasen der Auftragsverarbeitung, daher übergeben wir **NotificationJobState.FinalStatesOnly** an die **AddNew**-Methode.
+6. Übergibt **NotificationJobState.FinalStatesOnly** an die **AddNew**-Methode. (In diesem Beispiel sind wir nur am abschließenden Status der Verarbeitung des Auftrags interessiert.)
 
         job.JobNotificationSubscriptions.AddNew(NotificationJobState.FinalStatesOnly, _notificationEndPoint);
-7. Wenn Sie „NotificationJobState.All“ übergeben, sollten Sie damit alle Benachrichtigungen über Statusänderungen empfangen: „Warteschlange“ > „Geplant“ > „Verarbeitung“ > „Abgeschlossen“. Wie aber bereits erwähnt, garantiert der Azure Storage-Warteschlangendienst keine geordneten Übermittlung. Sie können die "Timestamp"-Eigenschaft (im Beispiel unten im Typ "EncodingJobMessage" definiert) zum Ordnen der Nachrichten verwenden. Es kann vorkommen, dass Sie Benachrichtigungen mehrfach erhalten. Mithilfe der "ETag"-Eigenschaft (im Typ "EncodingJobMessage" definiert) können Sie nach Duplikaten suchen. Andererseits kann es auch vorkommen, dass Statusänderungsbenachrichtigungen übersprungen werden.
+7. Wenn Sie **NotificationJobState.All** übergeben, erhalten Sie damit alle folgenden Benachrichtigungen über Statusänderungen: „Warteschlange“, „Geplant“, „Verarbeitung“ und „Abgeschlossen“. Wie aber bereits erwähnt, garantiert Queue Storage keine geordnete Übermittlung. Sie können die **Timestamp**-Eigenschaft (im Beispiel unten im Typ **EncodingJobMessage** definiert) zum Ordnen der Nachrichten verwenden. Doppelte Nachrichten sind möglich. Mithilfe der **ETag**-Eigenschaft (im Typ **EncodingJobMessage** definiert) können Sie nach Duplikaten suchen. Andererseits kann es auch vorkommen, dass Statusänderungsbenachrichtigungen ausgelassen werden.
 8. Wartet, bis der Auftrag abgeschlossen ist, indem er die Warteschlange alle zehn Sekunden überprüft. Löscht Nachrichten, nachdem sie verarbeitet wurden.
 9. Löscht die Warteschlange und den Benachrichtigungsendpunkt.
 
@@ -346,7 +346,7 @@ Das Beispiel oben generiert die folgende Ausgabe. Die Werte können variieren.
 
 
 ## <a name="next-step"></a>Nächster Schritt
-Media Services-Lernpfade ansehen
+Überprüfen Sie die Media Services-Lernpfade.
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 

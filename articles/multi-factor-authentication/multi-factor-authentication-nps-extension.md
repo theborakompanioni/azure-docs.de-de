@@ -16,9 +16,9 @@ ms.date: 02/23/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: e4ef137656c12cf6495a00450eed308ac6a8a872
-ms.openlocfilehash: 804e811c0db5f72b6764b3cb120eb5ec8898baac
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 9c587378bc8ffe43f6153c6424748e814c7a1d89
+ms.lasthandoff: 03/18/2017
 
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication---public-preview"></a>Integrieren Ihrer vorhandenen NPS-Infrastruktur in Azure Multi-Factor Authentication – Public Preview
@@ -88,7 +88,7 @@ Dieser Abschnitt enthält Überlegungen zum Entwurf und Vorschläge für erfolgr
 
 ### <a name="configurations-limitations"></a>Konfigurationseinschränkungen
 
-- Die NPS-Erweiterung ist für die Zusammenarbeit mit Ihrer vorhandenen Bereitstellung und nicht für neue Bereitstellungen vorgesehen. Aus diesem Grund bietet die NPS-Erweiterung für Azure MFA keine Tools zum Migrieren von Benutzern und Einstellungen vom MFA-Server in die Cloud.
+- Die NPS-Erweiterung ist für neue Bereitstellungen und nicht für die Zusammenarbeit mit Ihrer vorhandenen Bereitstellung vorgesehen. Aus diesem Grund bietet die NPS-Erweiterung für Azure MFA keine Tools zum Migrieren von Benutzern und Einstellungen vom MFA-Server in die Cloud.
 
 - Die NPS-Erweiterung verwendet für die Durchführung der sekundären Authentifizierung den Benutzerprinzipalnamen (User Principal Name, UPN) aus dem lokalen Active Directory zur Identifizierung des Benutzers in Azure MFA. Die Erweiterung kann nicht für die Verwendung eines anderen Bezeichners wie einer alternativen Anmelde-ID oder einem benutzerdefinierten AD-Feld (außer dem UPN) konfiguriert werden.  
 

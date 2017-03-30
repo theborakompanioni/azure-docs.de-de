@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 01/03/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
-ms.openlocfilehash: 52fe8e3ce0c9c94c918818784fd735b5a6486ed8
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: a75863878a97c1202e9b9946b0bff19261952c21
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -56,7 +56,7 @@ In der einfachsten Struktur enthält eine Vorlage die folgenden Elemente:
 Weiter unten in diesem Thema untersuchen wir die Abschnitte der Vorlage ausführlich.
 
 ## <a name="expressions-and-functions"></a>Ausdrücke und Funktionen
-Die grundlegende Syntax der Vorlage ist JSON. Allerdings erweitern Ausdrücke und Funktionen den JSON-Code, der in der Vorlage zur Verfügung steht. Mit Ausdrücken erstellen Sie Werte, die keine strikten Literalwerte sind. Ausdrücke werden in Klammern eingeschlossen (`[` und`]`) und beim Bereitstellen der Vorlage ausgewertet. Ausdrücke können an beliebiger Stelle in einem JSON-Zeichenfolgenwert auftreten und geben immer einen anderen JSON-Wert zurück. Wenn Sie ein Zeichenfolgenliteral verwenden müssen, das mit einer eckigen Klammer (`[`) beginnt, müssen Sie zwei eckige Klammern verwenden: `[[`.
+Die grundlegende Syntax der Vorlage ist JSON. Allerdings erweitern Ausdrücke und Funktionen die JSON-Werte, die in der Vorlage zur Verfügung stehen.  Ausdrücke werden innerhalb von JSON-Zeichenfolgenliteralen geschrieben, deren erstes und letztes Zeichen jeweils eine Klammer ist: `[` und `]`. Der Wert des Ausdrucks wird bei der Bereitstellung der Vorlage ausgewertet.   Trotz der Schreibweise als Zeichenfolgenliteral kann das Ergebnis der Auswertung des Ausdrucks ein anderer JSON-Typ sein, z.B. ein Array oder Integer. Dies hängt vom jeweiligen Ausdruck ab.  Wenn eine Literalzeichenfolge, die mit einer Klammer `[` beginnt, nicht als Ausdruck interpretiert werden soll, fügen Sie am Anfang der Zeichenfolge eine weitere Klammer ein: `[[`.
 
 In der Regel verwenden Sie Ausdrücke mit Funktionen, um Vorgänge zum Konfigurieren der Bereitstellung durchzuführen. Genau wie in JavaScript haben Funktionsaufrufe das Format **functionName(arg1,arg2,arg3)**. Auf Eigenschaften verweisen Sie mithilfe der Operatoren Punkt und [Index].
 

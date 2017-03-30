@@ -1,5 +1,5 @@
 ---
-title: "Steuern des Routings und von virtuellen Geräten mithilfe einer Vorlage | Microsoft Docs"
+title: "Steuern des Routings und von virtuellen Geräten in Azure – Vorlage | Microsoft Docs"
 description: "Erfahren Sie, wie Sie mithilfe einer Azure Resource Manager-Vorlage das Routing und virtuelle Geräte steuern."
 services: virtual-network
 documentationcenter: na
@@ -16,19 +16,20 @@ ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: ba7a67b8ae57da165f45bd3552a3dfac5f4ef64b
-ms.openlocfilehash: 6e6afd1088ef02fcad6126dfe6b6e3f0b4dff31d
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 344391589a926cad5d06bf8dff095a97565ca123
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="create-user-defined-routes-udr-using-a-template"></a>Erstellen benutzerdefinierter Routen (UDR) mit einer Vorlage
 
 > [!div class="op_single_selector"]
-- [PowerShell](virtual-network-create-udr-arm-ps.md)
-- [Azure-Befehlszeilenschnittstelle](virtual-network-create-udr-arm-cli.md)
-- [Vorlage](virtual-network-create-udr-arm-template.md)
-- [PowerShell (klassisch)](virtual-network-create-udr-classic-ps.md)
-- [CLI (klassisch)](virtual-network-create-udr-classic-cli.md)
+> * [PowerShell](virtual-network-create-udr-arm-ps.md)
+> * [Azure-Befehlszeilenschnittstelle](virtual-network-create-udr-arm-cli.md)
+> * [Vorlage](virtual-network-create-udr-arm-template.md)
+> * [PowerShell (klassisch)](virtual-network-create-udr-classic-ps.md)
+> * [CLI (klassisch)](virtual-network-create-udr-classic-cli.md)
 
 > [!IMPORTANT]
 > Bevor Sie mit Azure-Ressourcen arbeiten, sollten Sie wissen, dass Azure derzeit über zwei Bereitstellungsmodelle verfügt: die Bereitstellung mit dem Azure Resource Manager und die klassische Bereitstellung. Stellen Sie sicher, dass Sie die [Bereitstellungsmodelle und -tools](../azure-resource-manager/resource-manager-deployment-model.md) verstanden haben, bevor Sie mit Azure-Ressouren arbeiten. Zum Anzeigen der Dokumentation für verschiedene Tools klicken Sie auf die Registerkarten oben in diesem Artikel. Dieser Artikel gilt für das Ressourcen-Manager-Bereitstellungsmodell. 
@@ -175,7 +176,7 @@ In der verfügbaren Beispielvorlage im öffentlichen Repository wird eine Parame
 
 Führen Sie zum Bereitstellen der ARM-Vorlage mithilfe der Azure-Befehlszeilenschnittstelle die folgenden Schritte aus:
 
-1. Wenn Sie die Azure-Befehlszeilenschnittstelle noch nie verwendet haben, ziehen Sie [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) zurate, und folgen Sie den Anweisungen bis zu dem Punkt, an dem Sie Ihr Azure-Konto und Ihr Abonnement auswählen.
+1. Wenn Sie die Azure-Befehlszeilenschnittstelle noch nie verwendet haben, ziehen Sie [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md) zurate, und folgen Sie den Anweisungen bis zu dem Punkt, an dem Sie Ihr Azure-Konto und Ihr Abonnement auswählen.
 2. Führen Sie den folgenden Befehl aus, um in den Resource Manager-Modus zu wechseln:
 
     ```azurecli
@@ -406,9 +407,4 @@ Führen Sie zum Bereitstellen der ARM-Vorlage mithilfe der Azure-Befehlszeilensc
 > [!TIP]
 > Falls nicht alle Ressourcen angezeigt werden, führen Sie den Befehl `azure group deployment show` aus, um sicherzustellen, dass der Bereitstellungsstatus der Bereitstellung *Erfolgreich* lautet.
 > 
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

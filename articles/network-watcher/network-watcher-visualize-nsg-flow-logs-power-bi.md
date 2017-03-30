@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: dfb33a30cac74875281645e74339be152d8ef476
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 7cac733717b4af048e58cf3d574c5743889100c1
+ms.lasthandoff: 03/22/2017
 
 ---
 
@@ -70,7 +70,7 @@ Außerdem muss der Power BI Desktop-Client auf Ihrem Computer installiert sein, 
 
 ## <a name="understanding-the-visuals"></a>Grundlegendes zu den visuellen Elementen
 
-In der Vorlage sind Gruppen von visuellen Elementen angegeben, die dazu dienen, die Daten der NSG-Flussprotokollierung verständlich zu machen. Die folgenden Abbildungen zeigen ein Beispiel dafür, wie das Dashboard aussieht, wenn es mit Daten gefüllt wird. Im Folgenden wird jedes visuelle Element ausführlicher beschrieben. 
+In der Vorlage ist eine Gruppe von visuellen Elementen angegeben, die dazu dienen, die Daten der NSG-Flowprotokollierung verständlich zu machen. Die folgenden Abbildungen zeigen ein Beispiel dafür, wie das Dashboard aussieht, wenn es mit Daten gefüllt wird. Im Folgenden wird jedes visuelle Element ausführlicher beschrieben. 
 
 ![Power BI][5]
  
@@ -96,9 +96,9 @@ Im folgenden Balkendiagramm ist der Datenfluss nach NSG und Regel dargestellt. M
  
 In den folgenden Informationsdiagrammen werden Informationen zu den NSGs in den Protokollen, zur Anzahl von erfassten Datenflüssen im Zeitraum und das Datum des ältesten erfassten Protokolls angezeigt. Anhand dieser Informationen wissen Sie, welche NSGs protokolliert werden und in welchem Datumsbereich sich die Datenflüsse bewegen.
 
-![Infodiagramm&1;][11]
+![Infodiagramm 1][11]
 
-![Infodiagramm&2;][12]
+![Infodiagramm 2][12]
 
 Diese Vorlage enthält die folgenden Slicer, damit Sie bei Bedarf nur die Daten anzeigen können, die für Sie am interessantesten sind. Sie können nach Ressourcengruppen, NSGs und Regeln filtern. Außerdem können Sie nach 5-Tupel-Informationen, der Entscheidung und dem Zeitpunkt der Protokollerstellung filtern.
 

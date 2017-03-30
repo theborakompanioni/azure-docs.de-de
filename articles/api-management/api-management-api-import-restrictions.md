@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: apipm
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: f941f87019a667deba5ec3e5cd054d04318689db
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
+ms.openlocfilehash: ac799d66b5038c207413086b0fa71239ff2a332f
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -37,7 +37,7 @@ WSDL-Dateien werden zur Generierung von SOAP-Pass-Through-APIs verwendet oder di
 
 * **WSDL:Import**: APIs, die dieses Attribut verwenden, werden derzeit nicht unterstützt. Die Kunden sollten die importierten Elemente zu einem Dokument zusammenfassen.
 * **Mehrteilige Nachrichten**: Werden derzeit nicht unterstützt.
-* **WCF wsHttpBinding**: Für SOAP-Dienste, die mit Windows Communication Foundation erstellt wurden, sollte „basicHttpBinding - wsHttpBinding“ verwendet werden.
+* **WCF wsHttpBinding:** Für SOAP-Dienste, die mit Windows Communication Foundation erstellt wurden, sollte basicHttpBinding verwendet werden – wsHttpBinding wird nicht unterstützt.
 * **MTOM**: Dienste, die MTOM verwenden, funktionieren <em>möglicherweise</em>. Eine offizielle Unterstützung wird derzeit nicht geboten.
 * Rekursiv definierte (also beispielsweise auf ein eigenes Array verweisende) **Rekursionstypen** werden nicht unterstützt.
 

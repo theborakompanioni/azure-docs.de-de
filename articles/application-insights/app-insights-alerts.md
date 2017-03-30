@@ -1,21 +1,22 @@
 ---
-title: Einrichten von Warnungen in Application Insights | Microsoft Docs
+title: Einrichten von Warnungen in Azure Application Insights | Microsoft Docs
 description: "Legen Sie fest, dass Sie über längere Reaktionszeiten, Ausnahmen und andere Leistungs- oder Nutzungsänderungen in Ihrer Web-App informiert werden."
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: f8ebde72-f819-4ba5-afa2-31dbd49509a5
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 10/14/2016
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 41ce9b0e323c0938b6db98b99d8d687d1ed0f0ef
-ms.openlocfilehash: 2146030449c691af166d6a9b134d22d4504d7641
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 04965375fc94fc1aa8b1c48deb743bb1d0cf1c26
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -27,7 +28,7 @@ Application Insights überwacht die Live-App auf einer [Vielzahl von Plattformen
 Es gibt drei Arten von Warnungen:
 
 * **Metrikwarnungen** informieren Sie darüber, wenn eine Metrik für einen bestimmten Zeitraum einen Schwellenwert überschreitet – z.B. in Bezug auf Reaktionszeiten, Anzahl von Ausnahmen, CPU-Nutzung oder Seitenaufrufe. 
-* [**Webtests**][availability] informieren Sie, wenn Ihre Website im Internet nicht verfügbar ist oder langsam reagiert. [Weitere Informationen][availability]
+* [**Webtests**][availability] informieren Sie, wenn Ihre Website im Internet nicht verfügbar ist oder langsam reagiert. [Weitere Informationen][availability].
 * Die [**Proaktive Diagnose**](app-insights-proactive-diagnostics.md) wird automatisch konfiguriert, damit Benachrichtigungen über ungewöhnliche Leistungsmuster gesendet werden.
 
 In diesem Artikel werden Metrikwarnungen beschrieben.
@@ -47,7 +48,7 @@ In diesem Artikel werden Metrikwarnungen beschrieben.
 
 *Ich sehe keine Schaltfläche zum Hinzufügen von Benachrichtigungen.* 
 
-* Verwenden Sie ein Organisationskonto? Sie können Warnungen festlegen, wenn Sie für diese Anwendungsressource über Zugriffsberechtigungen für Besitzer oder Mitwirkende verfügen. Sehen Sie sich das Blatt „Access Control“ an. [Informationen zur Zugriffssteuerung][roles]
+* Verwenden Sie ein Organisationskonto? Sie können Warnungen festlegen, wenn Sie für diese Anwendungsressource über Zugriffsberechtigungen für Besitzer oder Mitwirkende verfügen. Sehen Sie sich das Blatt „Access Control“ an. [Erfahren Sie mehr über Access Control][roles].
 
 > [!NOTE]
 > Auf dem Blatt „Warnungen“ sehen Sie, dass bereits eine Warnung festgelegt ist: [Proaktive Diagnose](app-insights-proactive-failure-diagnostics.md). Dies ist eine automatische Benachrichtigung, die eine bestimmte Metrik überwacht, nämlich die Anforderungsfehlerrate. Sofern Sie nicht entscheiden, diese proaktive Warnung zu deaktivieren, müssen Sie also keine eigene Warnung für die Anforderungsfehlerrate festlegen. 
@@ -84,7 +85,7 @@ Das hängt von Ihrer Anwendung ab. Zunächst einmal sollten Sie nicht zu viele M
 
 Zu den gängigen Warnungen zählen Folgende:
 
-* [Browsermetriken][client], insbesondere Browser-**Seitenladezeiten**, eignen sich für Webanwendungen. Wenn Ihre Seite viele Skripts enthält, sollten Sie auf **Browserausnahmen**achten. Um diese Metriken und Warnungen zu erhalten, müssen Sie die [Webseitenüberwachung][client] einrichten.
+* [Browsermetriken][client], insbesondere **Browser-Seitenladezeiten**, eignen sich für Webanwendungen. Wenn Ihre Seite viele Skripts enthält, sollten Sie auf **Browserausnahmen**achten. Um diese Metriken und Warnungen zu erhalten, müssen Sie die [Webseitenüberwachung][client] einrichten.
 * **Serverantwortzeit** für die Serverseite von Webanwendungen. Achten Sie neben der Einrichtung von Warnungen auf diese Metrik, um festzustellen, ob sie bei hohen Anforderungsraten unverhältnismäßig stark variiert: Dies kann darauf hindeuten, dass für Ihre App nicht genügend Systemressourcen vorhanden sind. 
 * **Serverausnahmen** erfordern ein [zusätzliches Setup](app-insights-asp-net-exceptions.md), damit sie angezeigt werden.
 
@@ -93,6 +94,10 @@ Vergessen Sie nicht, dass bei der [proaktiven Fehlerquotendiagnose](app-insights
 ## <a name="automation"></a>Automation
 * [Verwenden von PowerShell zum Automatisieren der Einrichtung von Warnungen](app-insights-powershell-alerts.md)
 * [Verwenden von Webhooks zum Automatisieren der Reaktion auf Warnungen](../monitoring-and-diagnostics/insights-webhooks-alerts.md)
+
+## <a name="video"></a>Video
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="see-also"></a>Weitere Informationen
 * [Verfügbarkeitswebtests](app-insights-monitor-web-app-availability.md)
@@ -106,10 +111,5 @@ Vergessen Sie nicht, dass bei der [proaktiven Fehlerquotendiagnose](app-insights
 [platforms]: app-insights-platforms.md
 [roles]: app-insights-resources-roles-access-control.md
 [start]: app-insights-overview.md
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

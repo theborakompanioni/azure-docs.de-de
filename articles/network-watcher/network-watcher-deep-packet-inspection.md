@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 78f367de862e4fa9203cc794549abb935f117848
-ms.openlocfilehash: f7e4f1832a8edd029fcef08e295b6c79c033b664
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 62fa6a6d0cccc5545b94d4ae167f2fcc7e4cd0de
+ms.lasthandoff: 03/21/2017
 
 ---
 
@@ -55,7 +55,7 @@ Laden Sie die **CAP**-Datei aus Ihrer Paketerfassung. Sie finden diese Datei –
 
 ### <a name="step-3"></a>Schritt 3
 
-Zum Anzeigen der anfänglichen Roundtripzeit (RTT) von TCP-Konversationen betrachten wir nur die ersten beiden Pakete, die am TCP-Handshake beteiligt sind. Wir verwenden die ersten beiden Pakete im Drei-Wege-Handshake, also die Pakete [SYN] und [SYN, ACK]. Sie sind nach Flags benannt, die im TCP-Header festgelegt sind. Das letzte Handshake-Paket ([ACK]) wird in diesem Szenario nicht verwendet. Das Paket [SYN] wird vom Client gesendet. Nachdem es empfangen wurde, sendet der Server das Paket [ACK] als Bestätigung dafür, dass [SYN] vom Client empfangen wurde. Aufgrund der Tatsache, dass für die Antwort des Servers nur sehr wenig Aufwand erforderlich ist, berechnen wir den RTT-Wert wie folgt: Wir addieren die Zeit bis zum Empfang des Pakets [SYN, ACK] auf dem Client mit der Zeit, die für das Senden des Pakets [SYN] vom Client benötigt wurde.
+Zum Anzeigen der anfänglichen Roundtripzeit (RTT) von TCP-Konversationen betrachten wir nur die ersten beiden Pakete, die am TCP-Handshake beteiligt sind. Wir verwenden die ersten beiden Pakete im Drei-Wege-Handshake, also die Pakete [SYN] und [SYN, ACK]. Sie sind nach Flags benannt, die im TCP-Header festgelegt sind. Das letzte Handshake-Paket ([ACK]) wird in diesem Szenario nicht verwendet. Das Paket [SYN] wird vom Client gesendet. Nachdem es empfangen wurde, sendet der Server das Paket [ACK] als Bestätigung dafür, dass [SYN] vom Client empfangen wurde. Aufgrund der Tatsache, dass für die Antwort des Servers nur sehr wenig Aufwand erforderlich ist, berechnen wir den RTT-Wert wie folgt: Wir subtrahieren die Zeit bis zum Empfang des Pakets [SYN, ACK] auf dem Client von der Zeit, die für das Senden des Pakets [SYN] vom Client benötigt wurde.
 
 Bei Verwendung von WireShark wird dieser Wert für uns berechnet.
 

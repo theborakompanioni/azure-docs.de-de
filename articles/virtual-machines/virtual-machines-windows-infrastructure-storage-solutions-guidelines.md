@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 03/17/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
-ms.openlocfilehash: 5c1e2a2170e5373b856caf6da4b9abaea00dc09a
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: f692f98beaee16bef24bb7fbf716a9b4b8edeb6c
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -32,6 +32,7 @@ In diesem Artikel liegt das Hauptaugenmerk darauf, den Speicherbedarf und Entwur
 ## <a name="implementation-guidelines-for-storage"></a>Implementierungsrichtlinien für Speicher
 Entscheidungen:
 
+* Verwenden Sie Azure Managed Disks oder nicht verwaltete Datenträger?
 * Möchten Sie Standard- oder Premium-Speicher für Ihre Workload verwenden?
 * Benötigen Sie Datenträgerstriping, um Datenträger mit mehr als 1023 GB zu erstellen?
 * Benötigen Sie Datenträgerstriping, um eine optimale E/A-Leistung für Ihre Workload zu erreichen?
@@ -44,6 +45,8 @@ Aufgaben:
 
 ## <a name="storage"></a>Speicher
 Azure Storage ist ein wichtiger Bestandteil beim Bereitstellen und Verwalten von virtuellen Computern (VMs) und Anwendungen. Azure Storage bietet Dienste zum Speichern von Dateidaten, unstrukturierten Daten und Nachrichten und ist außerdem Teil der Infrastruktur zur Unterstützung virtueller Computer.
+
+[Azure Managed Disks](../storage/storage-managed-disks-overview.md) verwaltet die Speicherung für Sie im Hintergrund. Bei nicht verwalteten Datenträgern mussten Sie Speicherkonten für die Datenträger (VHD-Dateien) Ihrer Azure-VMs erstellen. Beim zentralen Hochskalieren mussten Sie sicherstellen, dass zusätzliche Speicherkonten erstellt wurden, um den IOPS-Speichergrenzwert für Ihre Datenträger nicht zu überschreiten. Wenn Managed Disks die Verwaltung des Speichers übernimmt, gelten für Sie die Speicherkonto-Grenzwerte (z.B. 20.000 IOPS/Konto) nicht mehr. Außerdem ist es nicht mehr erforderlich, Ihre benutzerdefinierten Images (VHD-Dateien) in mehrere Speicherkonten zu kopieren. Sie können sie an einem zentralen Ort verwalten – ein Speicherkonto pro Azure-Region – und nutzen, um Hunderte von VMs unter einem Abonnement zu erstellen. Es wird empfohlen, für neue Bereitstellungen Managed Disks zu verwenden.
 
 Es sind zwei Arten von Speicherkonten zur Unterstützung virtueller Computer verfügbar:
 
@@ -81,7 +84,9 @@ Wenn Sie Datenträgerstriping für Azure-Datenträger verwenden, beachten Sie di
 Weitere Informationen finden Sie unter [Storage Spaces – Designing for Performance](http://social.technet.microsoft.com/wiki/contents/articles/15200.storage-spaces-designing-for-performance.aspx)(in englischer Sprache).
 
 ## <a name="multiple-storage-accounts"></a>Mehrere Speicherkonten
-Beim Entwerfen Ihrer Azure Storage-Umgebung können Sie mehrere Speicherkonten verwenden, wenn sich die Anzahl der bereitgestellten virtuellen Computer erhöht. Bei diesem Ansatz werden die E/A-Vorgänge auf die zugrunde liegende Azure Storage-Infrastruktur verteilt, um die optimale Leistung für Ihre virtuellen Computer und Anwendungen zu gewährleisten. Berücksichtigen Sie beim Entwerfen der Anwendungen, die bereitgestellt werden, die E/A-Anforderungen der einzelnen virtuellen Computer, und sorgen Sie für einen Ausgleich der virtuellen Computer über Azure-Speicherkonten. Vermeiden Sie das Gruppieren aller virtuellen Computer mit hohen E/A-Anforderungen in nur einem oder zwei Speicherkonten.
+Dieser Abschnitt gilt nicht für [Azure Managed Disks](../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), da Sie keine separaten Speicherkonten erstellen. 
+
+Beim Entwerfen Ihrer Azure Storage-Umgebung für nicht verwaltete Datenträger können Sie mehrere Speicherkonten verwenden, wenn sich die Anzahl der bereitgestellten virtuellen Computer erhöht. Bei diesem Ansatz werden die E/A-Vorgänge auf die zugrunde liegende Azure Storage-Infrastruktur verteilt, um die optimale Leistung für Ihre virtuellen Computer und Anwendungen zu gewährleisten. Berücksichtigen Sie beim Entwerfen der Anwendungen, die bereitgestellt werden, die E/A-Anforderungen der einzelnen virtuellen Computer, und sorgen Sie für einen Ausgleich der virtuellen Computer über Azure-Speicherkonten. Vermeiden Sie das Gruppieren aller virtuellen Computer mit hohen E/A-Anforderungen in nur einem oder zwei Speicherkonten.
 
 Weitere Informationen zu den E/A-Funktionen verschiedener Azure Storage-Optionen und einige empfohlene Höchstwerte finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Storage](../storage/storage-scalability-targets.md).
 

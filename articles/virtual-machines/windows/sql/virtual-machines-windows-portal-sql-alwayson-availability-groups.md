@@ -13,42 +13,34 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 1/23/2017
+ms.date: 03/17/2017
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: d0910bd4e0bf50591ac83991eb2eb679bdc3cadf
-ms.openlocfilehash: 4cbe4f189f5d562edbe5d5cbb524581aa4cb66f2
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 00b81ad58f411babd9ab745dfb6f8fe85e35d663
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-automatically---resource-manager"></a>Automatisches Konfigurieren der AlwaysOn-Verfügbarkeitsgruppe auf virtuellen Azure-Computern – Resource Manager
-> [!div class="op_single_selector"]
-> * [Resource Manager: Vorlage](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
-> * [Resource Manager: manuell](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)
-> * [Klassisch: Benutzeroberfläche](../sqlclassic/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups.md)
-> * [Klassisch: PowerShell](../sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md)
-> 
-> 
 
-<br/>
+Dieses Tutorial zeigt Ihnen, wie Sie eine SQL Server-Verfügbarkeitsgruppe mit Azure-Ressourcen-Manager-VMs erstellen. Das Tutorial verwendet Azure-Blätter zum Konfigurieren einer Vorlage. Während Sie dieses Tutorial absolvieren, können Sie die Standardeinstellungen überprüfen, erforderliche Einstellungen eingeben und die Blätter im Portal aktualisieren.
 
-Dieses End-to-End-Tutorial zeigt Ihnen, wie Sie eine SQL Server-Verfügbarkeitsgruppe mit Azure-Ressourcen-Manager-VMs erstellen. Das Tutorial verwendet Azure-Blätter zum Konfigurieren einer Vorlage. Während Sie dieses Tutorial absolvieren, überprüfen Sie Standardeinstellungen, geben erforderliche Einstellungen ein und aktualisieren die Blätter im Portal.
-
-Am Ende des Tutorials besteht Ihre SQL Server-Verfügbarkeitsgruppenlösung in Azure aus folgenden Elementen:
+Im gesamten Tutorial wird eine SQL Server-Verfügbarkeitsgruppe auf Azure-VMs erstellt – einschließlich der folgenden Elemente:
 
 * Einem virtuellen Netzwerk, das mehrere Subnetze enthält, einschließlich einem Front-End- und Back-End-Subnetz
 * Zwei Domänencontroller mit einer Active Directory-Domäne (AD)
 * Zwei virtuellen SQL Server-Computern, die im Back-End-Subnetz bereitgestellt und der AD-Domäne beigetreten sind
-* Einem WSFC-Cluster aus 3 Knoten mit dem Knotenmehrheit-Quorummodell
+* Einem Failovercluster aus 3 Knoten mit dem Knotenmehrheit-Quorummodell
 * Einer Verfügbarkeitsgruppe mit zwei Replikaten einer Verfügbarkeitsdatenbank mit synchronem Commit
 
-Die folgende Abbildung ist eine grafische Darstellung der Lösung.
+In der folgenden Abbildung ist die vollständige Lösung dargestellt.
 
 ![Test Lab-Architektur für AG in Azure](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/0-EndstateSample.png)
 
 Alle Ressourcen in dieser Lösung gehören zu einer einzigen Ressourcengruppe.
 
-In diesem Tutorial wird Folgendes vorausgesetzt:
+Bevor Sie mit diesem Tutorial beginnen, sollten folgende Bedingungen erfüllt sein:
 
 * Sie besitzen bereits ein Azure-Abonnement. Falls Sie noch keines besitzen, können Sie sich für ein [Testkonto registrieren](http://azure.microsoft.com/pricing/free-trial/).
 * Sie wissen bereits, wie ein virtueller SQL Server-Computer mithilfe der GUI aus dem virtuellen Computerkatalog bereitgestellt wird. Weitere Informationen finden Sie unter [Bereitstellen eines virtuellen Computers mit SQL Server in Azure](virtual-machines-windows-portal-sql-server-provision.md)
@@ -72,50 +64,50 @@ In diesem Tutorial verwenden Sie das Azure-Portal zu folgenden Zwecken:
 Azure bietet ein Katalogimage für die gesamte Lösung. Um die Vorlage zu suchen:
 
 1. Melden Sie sich mit Ihrem Konto beim Azure-Portal an.
-2. Klicken Sie im Azure-Portal auf **+Neu**. Im Portal wird das Blatt „Neu“ geöffnet.
+2. Klicken Sie im Azure-Portal auf **+Neu**. Das Portal wird mit dem Blatt „Neu“ geöffnet.
 3. Suchen Sie auf dem Blatt „Neu“ die Option **AlwaysOn**.
    ![Suchen der AlwaysOn-Vorlage](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/16-findalwayson.png)
 4. Suchen Sie in den Suchergebnissen nach **SQL Server AlwaysOn-Cluster**.
    ![AlwaysOn-Vorlage](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/17-alwaysontemplate.png)
-5. Wählen Sie unter **Bereitstellungsmodell auswählen** die Option **Resource Manager**.
+5. Wählen Sie unter **Bereitstellungsmodell auswählen** die Option **Ressourcen-Manager** aus.
 
 ### <a name="basics"></a>Grundlagen
-Klicken Sie auf **Grundlagen** , und konfigurieren Sie Folgendes:
+Klicken Sie auf **Grundlagen**, und konfigurieren Sie die folgenden Einstellungen:
 
 * **Administratorbenutzername** ist ein Benutzerkonto mit Domänenadministratorberechtigungen und ein Mitglied der festen SQL Server-Rolle „Sysadmin“ für beide Instanzen von SQL Server. Verwenden Sie für dieses Tutorial **DomainAdmin**.
 * **Kennwort** ist das Kennwort für das Domänenadministratorkonto. Verwenden Sie ein komplexes Kennwort. Bestätigen Sie das Kennwort.
-* **Abonnement** ist das Abonnement, das von Azure für die Ausführung aller für die Verfügbarkeitsgruppe bereitgestellten Ressourcen belastet wird. Sie können ein anderes Abonnement angeben, wenn Ihr Konto über mehrere Abonnements verfügt.
-* **Ressourcengruppe** ist der Name der Gruppe, zu der alle von diesem Tutorial erstellten Azure-Ressourcen gehören sollen. Verwenden Sie für dieses Tutorial **SQL-HA-RG**. Weitere Informationen finden Sie unter (Azure-Ressourcen-Manager-Übersicht) [resource-group-overview.md/#resource-groups].
-* **Standort** ist die Azure-Region, in der die Ressourcen für dieses Tutorial erstellt werden. Wählen Sie eine Azure-Region zum Hosten der Infrastruktur.
+* **Abonnement** ist das Abonnement, das von Azure belastet wird, um alle Ressourcen auszuführen, die für die Verfügbarkeitsgruppe bereitgestellt werden. Gibt es für Ihr Konto mehrere Abonnements, können Sie ein anderes Abonnement angeben.
+* **Ressourcengruppe** ist der Name der Gruppe, zu der alle Azure-Ressourcen gehören, die über diese Vorlage erstellt werden. Verwenden Sie für dieses Tutorial **SQL-HA-RG**. Weitere Informationen finden Sie unter (Azure-Ressourcen-Manager-Übersicht) [resource-group-overview.md/#resource-groups].
+* **Standort** ist die Azure-Region, in der die Ressourcen in diesem Tutorial erstellt werden. Wählen Sie eine Azure-Region.
 
-Das Blatt **Grundlagen** sieht wie folgt aus:
+Die folgende Abbildung zeigt ein abgeschlossenes **Grundeinstellungen**-Blatt:
 
 ![Grundlagen](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/1-basics.png)
 
 * Klicken Sie auf **OK**.
 
 ### <a name="domain-and-network-settings"></a>Domänen- und Netzwerkeinstellungen
-Diese Azure-Katalog-Vorlage erstellt eine neue Domäne mit neuen Domänencontrollern. Außerdem werden ein neues Netzwerk und zwei Subnetze erstellt. Die Vorlage ermöglicht nicht das Erstellen der Server in einer vorhandenen Domäne oder einem virtuellen Netzwerk. Im nächsten Schritt werden die Domänen- und Netzwerkeinstellungen konfiguriert.
+Mit dieser Azure-Katalogvorlage werden eine Domäne und Domänencontroller erstellt. Außerdem werden mit ihr ein Netzwerk und zwei Subnetze erstellt. Die Vorlage ermöglicht nicht das Erstellen der Server in einer vorhandenen Domäne oder einem virtuellen Netzwerk. Im nächsten Schritt werden die Domänen- und Netzwerkeinstellungen konfiguriert.
 
 Überprüfen Sie auf dem Blatt **Domänen- und Netzwerkeinstellungen** die voreingestellten Werte für die Domänen- und Netzwerkeinstellungen:
 
-* **Gesamtstruktur-Stammdomänenname** ist der Domänenname, der für die AD-Domäne verwendet wird, die den Cluster hostet. Verwenden Sie für das Tutorial **contoso.com**.
-* **Name des virtuellen Netzwerks** ist der Netzwerkname für das virtuelle Azure-Netzwerk. Verwenden Sie für dieses Tutorial **autoHAVNET**.
-* **Domänencontroller-Subnetzname** ist der Name eines Teils des virtuellen Netzwerks, der den Domänencontroller hostet. Verwenden Sie für dieses Tutorial **subnet-1**. Dieses Subnetz verwendet das Adresspräfix **10.0.0.0/24**.
-* **SQL Server-Subnetzname** ist der Name eines Teils des virtuellen Netzwerks, der die SQL Server-Instanzen und den Dateifreigabenzeugen hostet. Verwenden Sie für dieses Tutorial **subnet-2**. Dieses Subnetz verwendet das Adresspräfix **10.0.1.0/26**.
+* **Gesamtstruktur-Stammdomänenname** ist der Domänenname für die AD-Domäne, die den Cluster hostet. Verwenden Sie für das Tutorial **contoso.com**.
+* **Name des virtuellen Netzwerks** ist der Netzwerkname für das virtuelle Azure-Netzwerk. Verwenden Sie **autohaVNET**.
+* **Domänencontroller-Subnetzname** ist der Name eines Teils des virtuellen Netzwerks, der den Domänencontroller hostet. Verwenden Sie **subnet-1**. Für dieses Subnetz wird das Adresspräfix **10.0.0.0/24** verwendet.
+* **SQL Server-Subnetzname** ist der Name eines Teils des virtuellen Netzwerks, der die SQL Server-Instanzen und den Dateifreigabenzeugen hostet. Verwenden Sie **subnet-2**. Für dieses Subnetz wird das Adresspräfix **10.0.1.0/26** verwendet.
 
-Weitere Informationen zu virtuellen Netzwerken in Azure finden Sie unter [Virtuelle Netzwerke im Überblick](../../../virtual-network/virtual-networks-overview.md).  
+Weitere Informationen zu virtuellen Netzwerken in Azure finden Sie unter [Virtuelle Netzwerke](../../../virtual-network/virtual-networks-overview.md).  
 
-Die **Domänen- und Netzwerkeinstellungen** sollten wie folgt aussehen:
+Die **Domänen- und Netzwerkeinstellungen** sollten wie auf der folgenden Abbildung aussehen:
 
 ![Domänen- und Netzwerkeinstellungen](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/2-domain.png)
 
-Bei Bedarf können Sie diese Werte ändern. Für dieses Tutorial verwenden wir die voreingestellten Werte.
+Bei Bedarf können Sie diese Werte ändern. Verwenden Sie für dieses Tutorial die voreingestellten Werte.
 
 * Überprüfen Sie die Einstellungen, und klicken Sie auf **OK**.
 
 ### <a name="availability-group-settings"></a>Einstellungen der Verfügbarkeitsgruppe
-Überprüfen Sie unter **Einstellungen der Verfügbarkeitsgruppe** die voreingestellten Werte für Verfügbarkeitsgruppe und Listener.
+Überprüfen Sie unter **Einstellungen der Verfügbarkeitsgruppe** die voreingestellten Werte für die Verfügbarkeitsgruppe und den Listener.
 
 * **Name der Verfügbarkeitsgruppe** ist der Name der Clusterressource für die Verfügbarkeitsgruppe. Verwenden Sie für dieses Tutorial **Contoso-ag**.
 * **Listenername der Verfügbarkeitsgruppe** wird vom Cluster und dem internen Load Balancer verwendet. Clients, die sich mit SQL Server verbinden, können diesen Namen für die Verbindung mit dem entsprechenden Replikat der Datenbank verwenden. Verwenden Sie für dieses Tutorial **Contoso-listener**.
@@ -130,7 +122,7 @@ Bei Bedarf können Sie diese Werte ändern. Verwenden Sie für dieses Tutorial d
 ### <a name="vm-size-storage-settings"></a>Größe des virtuellen Computers, Einstellungen des Speichers
 Wählen Sie unter **Größe des virtuellen Computers, Einstellungen des Speichers** eine SQL Server-VM-Größe aus, und überprüfen Sie die anderen Einstellungen.
 
-* **SQL Server-VM-Größe** ist die Größe des virtuellen Azure-Computers für beide SQL Server-Instanzen. Wählen Sie eine angemessene VM-Größe für Ihre Workload. Wenn Sie diese Umgebung für das Tutorial erstellen, verwenden Sie **DS2**. Wählen Sie für Produktionsworkloads eine VM-Größe, die die Workload unterstützen kann. Viele Produktionsworkloads benötigen mindestens **DS4** . Die Vorlage erstellt zwei virtuelle Computer dieser Größe und installiert auf jedem SQL Server. Weitere Informationen finden Sie unter [Größen für virtuelle Computer](../../virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* **SQL Server-VM-Größe** ist die Größe des virtuellen Azure-Computers für beide SQL Server-Instanzen. Wählen Sie eine angemessene VM-Größe für Ihre Workload. Wenn Sie diese Umgebung für das Tutorial erstellen, verwenden Sie **DS2**. Wählen Sie für Produktionsworkloads für den virtuellen Computer eine Größe, die den jeweiligen Workload unterstützen kann. Viele Produktionsworkloads erfordern mindestens **DS4**. Die Vorlage erstellt zwei virtuelle Computer dieser Größe und installiert auf jedem SQL Server. Weitere Informationen finden Sie unter [Größen für virtuelle Computer](../../virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 > [!NOTE]
 > Azure installiert die Enterprise Edition von SQL Server. Die Kosten hängen von der Edition und der Größe des virtuellen Computers ab. Ausführliche Informationen zu aktuellen Kosten finden Sie unter [Virtual Machines – Preise](http://azure.microsoft.com/pricing/details/virtual-machines/#Sql).
@@ -141,7 +133,7 @@ Wählen Sie unter **Größe des virtuellen Computers, Einstellungen des Speicher
 * **Dateifreigabenzeugen-VM-Größe** ist die Größe des virtuellen Computers für den Dateifreigabenzeugen. Verwenden Sie für dieses Tutorial **A1**.
 * **SQL-Speicherkonto** ist der Name des Speicherkontos, auf dem die SQL Server-Daten und Betriebssystemdatenträger gespeichert werden. Verwenden Sie für dieses Tutorial **alwaysonsql01**.
 * **DC-Speicherkonto** ist der Name des Speicherkontos für die Domänencontroller. Verwenden Sie für dieses Tutorial **alwaysondc01**.
-* **Größe des Datenträgers für SQL Server-Daten in TB** ist die Größe des SQL Server-Datenträgers in TB. Geben Sie eine Zahl von 1 bis 4 ein. Dies ist die Größe des Datenträgers, der jeder SQL Server-Instanz zugeordnet werden soll. Verwenden Sie für dieses Tutorial **1**.
+* **Größe des Datenträgers für SQL Server-Daten in TB** ist die Größe des SQL Server-Datenträgers in TB. Geben Sie eine Zahl von 1 bis 4 ein. Verwenden Sie für dieses Tutorial **1**.
 * **Speicheroptimierung** legt bestimmte Speicherkonfigurationseinstellungen basierend auf dem Workloadtyp für die SQL Server-VMs fest. Alle SQL Server-Instanzen in diesem Szenario verwenden Storage Premium, wobei der Azure-Datenträger-Hostcache als schreibgeschützt festgelegt ist. Darüber hinaus können Sie SQL Server-Einstellungen durch Auswahl einer der folgenden drei Einstellungen für die Workload optimieren:
   
   * **Allgemeine Workload** legt keine bestimmten Konfigurationseinstellungen fest.
@@ -155,9 +147,9 @@ Verwenden Sie für dieses Tutorial **Allgemeine Workload**.
 * Überprüfen Sie die Einstellungen, und klicken Sie auf **OK**.
 
 #### <a name="a-note-about-storage"></a>Ein Hinweis zum Speicher
-Weitere Optimierungen hängen von der Größe der SQL Server-Datenträger ab. Für jedes Terabyte des Datenträgers fügt Azure 1 TB Storage Premium (SSD) hinzu. Wenn ein Server 2 TB oder mehr benötigt, erstellt die Vorlage einen Speicherpool auf jeder SQL-Server-Instanz. Ein Speicherpool ist eine Form der Speichervirtualisierung, bei der mehrere Datenträger konfiguriert werden, um höhere Kapazität, Stabilität und Leistung bereitzustellen.  Die Vorlage erstellt dann einen Speicherplatz im Speicherpool und stellt diesen gegenüber dem Betriebssystem als einen einzelnen Datenspeicher dar. Die Vorlage bestimmt diesen Datenträger als Datenträger für SQL Server-Daten. Die Vorlage optimiert den Speicherpool für SQL Server mit den folgenden Einstellungen:
+Weitere Optimierungen hängen von der Größe der SQL Server-Datenträger ab. Für jedes Terabyte des Datenträgers fügt Azure 1 TB Storage Premium (SSD) hinzu. Wenn ein Server 2 TB oder mehr benötigt, erstellt die Vorlage einen Speicherpool auf jeder SQL-Server-Instanz. Ein Speicherpool ist eine Form der Speichervirtualisierung, bei der mehrere Datenträger konfiguriert werden, um höhere Kapazität, Stabilität und Leistung bereitzustellen.  Die Vorlage erstellt dann einen Speicherplatz im Speicherpool und stellt dem Betriebssystem einen einzelnen Datenträger bereit. Die Vorlage bestimmt diesen Datenträger als Datenträger für SQL Server-Daten. Die Vorlage optimiert den Speicherpool für SQL Server mit den folgenden Einstellungen:
 
-* Die Stripesetgröße ist die Interleaveeinstellung für den virtuellen Datenträger. Für Transaktionsworkloads beträgt die Einstellung 64 KB. Für Data Warehousing-Workloads beträgt die Einstellung 256 KB.
+* Die Stripesetgröße ist die Interleaveeinstellung für den virtuellen Datenträger. Für Transaktionsworkloads werden 64 KB verwendet. Für Data Warehousing-Workloads werden 256 KB verwendet.
 * Resilienz ist einfach (keine Resilienz).
 
 > [!NOTE]
@@ -177,11 +169,11 @@ Weitere Informationen zu optimalen Verfahren für die SQL Server-Konfiguration f
 ### <a name="sql-server-settings"></a>SQL Server-Einstellungen
 Überprüfen und ändern Sie unter **SQL Server-Einstellungen** das Präfix des SQL Server-VM-Namens, die SQL Server-Version, das SQL Server-Dienstkonto und -Kennwort sowie den Wartungszeitplan für automatisches SQL-Patchen.
 
-* **SQL Server-Namenspräfix** wird verwendet, um einen Namen für jede SQL Server-Instanz zu erstellen. Verwenden Sie für dieses Tutorial **Contoso-ag**. Die SQL Server-Namen sind *Contoso-ag-0* und *Contoso-ag-1*.
+* **SQL Server-Namenspräfix** wird verwendet, um einen Namen für jede SQL Server-Instanz zu erstellen. Verwenden Sie für dieses Tutorial das Präfix **sqlserver**. Entsprechend der Vorlage werden die SQL Server-VMs mit *sqlserver-0* und *sqlserver-1* benannt.
 * **SQL Server-Version** ist die Version von SQL Server. Verwenden Sie für dieses Tutorial **SQL Server 2014**. Sie können auch **SQL Server 2012** oder **SQL Server 2016** wählen.
 * **SQL Server-Dienstkonto-Benutzername** ist der Domänenkontoname für den SQL Server-Dienst. Verwenden Sie für dieses Tutorial **sqlservice**.
 * **Kennwort** ist das Kennwort für das SQL Server-Dienstkonto.  Verwenden Sie ein komplexes Kennwort. Bestätigen Sie das Kennwort.
-* **Wartungszeitplan für automatisches SQL-Patchen** gibt den Wochentag an, an dem Azure automatisch Patches für die SQL Server-Instanzen aufspielt. Geben Sie für dieses Tutorial **Sunday**ein.
+* **Wartungszeitplan für automatisches SQL-Patchen** gibt den Wochentag an, an dem Azure automatisch Patches für die SQL Server-Instanzen anwendet. Geben Sie für dieses Tutorial **Sunday**ein.
 * **Wartungsstartzeit für automatisches SQL-Patchen** ist die Uhrzeit für die Azure-Region, zu der das automatische Patchen beginnt.
 
 > [!NOTE]
@@ -207,30 +199,18 @@ Das Azure-Portal erstellt die Ressourcengruppe und alle Ressourcen.
 ![Azure-Dashboard](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/11-deploydashboard.png)
 
 ## <a name="connect-to-sql-server"></a>Herstellen einer Verbindung mit SQL Server
-Die neuen Instanzen von SQL Server werden auf virtuellen Computern ausgeführt, die nicht mit dem Internet verbunden sind. Die Domänencontroller besitzen jedoch eine Internetverbindung. Um die SQL Server-Instanzen mit Remotedesktop zu verbinden, stellen Sie zuerst eine RDP-Verbindung mit einem der Domänencontroller her. Stellen Sie von dem Domänencontroller aus eine zweite RDP-Verbindung mit der SQL Server-Instanz her.
+Die neuen Instanzen von SQL Server werden auf virtuellen Computern ausgeführt, die IP-Adressen mit Internetzugang haben. Sie können über RDP direkt auf jede SQL Server-Instanz zugreifen.
 
-Um eine RDP-Verbindung mit dem primären Domänencontroller herzustellen, gehen Sie folgendermaßen vor:
+Gehen Sie folgendermaßen vor, um eine RDP-Verbindung mit einer SQL Server-Instanz herzustellen:
 
 1. Vergewissern Sie sich am Dashboard des Azure-Portals, dass die Bereitstellung erfolgreich war.
 2. Klicken Sie auf **Ressourcen**.
-3. Klicken Sie auf dem Blatt **Ressourcen** auf **ad-primary-dc** – dies ist der Computername des virtuellen Computers für den primären Domänencontroller.
-4. Klicken Sie auf dem Blatt **ad-primary-dc** click **Verbinden**. Ihr Browser fragt, ob Sie das Remoteverbindungsobjekt öffnen oder speichern möchten. Klicken Sie auf **Öffnen**.
-   ![Verbindung mit DC herstellen](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/13-ad-primary-dc-connect.png)
+3. Klicken Sie auf dem Blatt **Ressourcen** auf **sqlserver-0**. Dies ist der Computername des virtuellen Computers für eine der SQL Server-Instanzen.
+4. Klicken Sie auf dem Blatt für **sqlserver-0** auf **Verbinden**. Ihr Browser fragt, ob Sie das Remoteverbindungsobjekt öffnen oder speichern möchten. Klicken Sie auf **Öffnen**.
 5. **Remotedesktopverbindung** werden Sie möglicherweise darauf hingewiesen, dass der Herausgeber dieser Remoteverbindung nicht identifiziert werden kann. Klicken Sie auf **Verbinden**.
-6. Die Windows-Sicherheit fordert Sie auf, zur Verbindung mit der IP-Adresse des primären Domänencontrollers Ihre Anmeldeinformationen einzugeben. Klicken Sie auf **Anderes Konto verwenden**. Geben Sie unter **Benutzername** die Zeichenfolge **contoso\DomainAdmin** ein. Dieses Konto haben Sie für den Administratorbenutzernamen ausgewählt. Verwenden Sie das komplexe Kennwort, das Sie beim Konfigurieren der Vorlage ausgewählt haben.
-7. **Remotedesktop** werden Sie möglicherweise darauf hingewiesen, dass der Remotecomputer aufgrund von Problemen mit dem Sicherheitszertifikat nicht authentifiziert werden konnte. Der Name des Sicherheitszertifikats wird angezeigt. Wenn Sie das Tutorial ausgeführt haben, lautet der Name **ad-primary-dc.contoso.com**. Klicken Sie auf **Ja**.
+6. Die Windows-Sicherheit fordert Sie auf, zur Verbindung mit der IP-Adresse des primären Domänencontrollers Ihre Anmeldeinformationen einzugeben. Klicken Sie auf **Anderes Konto verwenden**. Geben Sie unter **Benutzername** die Zeichenfolge **contoso\DomainAdmin** ein. Sie haben dieses Konto konfiguriert, als Sie den Administratorbenutzernamen in der Vorlage festgelegt haben. Verwenden Sie das komplexe Kennwort, das Sie beim Konfigurieren der Vorlage ausgewählt haben.
+7. **Remotedesktop** werden Sie möglicherweise darauf hingewiesen, dass der Remotecomputer aufgrund von Problemen mit dem Sicherheitszertifikat nicht authentifiziert werden konnte. Der Name des Sicherheitszertifikats wird angezeigt. Wenn Sie gemäß dem Tutorial vorgegangen sind, lautet der Name **sqlserver-0.contoso.com**. Klicken Sie auf **Ja**.
 
-Sie sind jetzt mit dem primären Domänencontroller verbunden. Gehen Sie folgendermaßen vor, um eine RDP-Verbindung mit der SQL Server-Instanz herzustellen:
-
-1. Öffnen Sie auf dem Domänencontroller die **Remotedesktopverbindung**.
-2. Geben Sie für **Computer**den Namen einer der SQL Server-Instanzen ein. Geben Sie für dieses Tutorial **sqlserver-0**ein.
-3. Verwenden Sie das gleiche Benutzerkonto und Kennwort wie beim Herstellen der RDP-Verbindung mit dem Domänencontroller.
-
-Sie sind jetzt über eine RDP-Verbindung mit der SQL Server-Instanz verbunden. Sie können jetzt das SQL Server-Management Studio öffnen, eine Verbindung mit der Standardinstanz von SQL Server herstellen und sicherstellen, dass die Verfügbarkeitsgruppe konfiguriert ist.
-
-
-
-
-<!--HONumber=Jan17_HO4-->
+Sie sind jetzt über eine RDP-Verbindung mit der SQL Server-Instanz verbunden. Sie können jetzt SQL Server-Management Studio öffnen, eine Verbindung mit der Standardinstanz von SQL Server herstellen und prüfen, ob die Verfügbarkeitsgruppe konfiguriert ist.
 
 

@@ -13,11 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/08/2017
+ms.date: 03/15/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: 0c05cd490ee9125f7e5182cb502db6f4e9390094
-ms.openlocfilehash: 1287a44fcf450023d4544202bd5db51dc99768ab
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 51c0f98e3d3ad09e3e6675b2692bc2a8888db9a7
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.openlocfilehash: 1287a44fcf450023d4544202bd5db51dc99768ab
 # <a name="azure-active-directory-b2b-collaboration-code-and-powershell-samples"></a>Azure Active Directory B2B-Zusammenarbeit: Code- und PowerShell-Beispiele
 
 ## <a name="code-sample"></a>Codebeispiel
-Dieses Beispiel veranschaulicht, wie Sie die Einladungs-API im reinen App-Modus aufrufen, um die Einlösungs-URL für die Ressource abzurufen, zu der Sie den B2B-Benutzer einladen möchten. Das Ziel ist es, eine benutzerdefinierte Einladungs-E-Mail zu senden. Sie erfahren, wie die E-Mail über einen HTTP-Client zusammengestellt werden kann, sodass Sie das Aussehen der E-Mail anpassen und sie über die Graph-API senden können.
+Hier wird veranschaulicht, wie Sie die Einladungs-API im reinen App-Modus aufrufen, um die Einlösungs-URL für die Ressource abzurufen, zu der Sie den B2B-Benutzer einladen möchten. Das Ziel ist es, eine benutzerdefinierte Einladungs-E-Mail zu senden. Die E-Mail kann über einen HTTP-Client zusammengestellt werden, sodass Sie das Aussehen der E-Mail anpassen und sie über die Graph-API senden können.
 
 ```
 namespace SampleInviteApp
@@ -162,9 +163,9 @@ namespace SampleInviteApp
 ```
 
 ## <a name="powershell-example"></a>PowerShell-Beispiel
-Das folgende Beispiel zeigt, wie Sie externe Benutzer per Masseneinladung zu einer Organisation einladen können. Dabei werden E-Mail-Adressen verwendet, die Sie möglicherweise in einer CSV-Datei gespeichert haben.
+Sie können externe Benutzer per Masseneinladung zu einer Organisation einladen. Dabei werden E-Mail-Adressen verwendet, die Sie in einer CSV-Datei gespeichert haben.
 
-1. Bereiten Sie die CSV-Datei vor. Erstellen Sie eine neue CSV-Datei und nennen Sie sie „invitations.csv“. In diesem Beispiel ist die Datei in „C:\data“ gespeichert. Ihre CSV-Datei könnte folgendermaßen aussehen:
+1. Bereiten Sie die CSV-Datei vor. Erstellen Sie eine neue CSV-Datei und nennen Sie sie „invitations.csv“. In diesem Beispiel ist die Datei in „C:\data“ gespeichert. Die CSV-Datei kann folgendermaßen aussehen:
 
   ```
     InvitedUserEmailAddress
@@ -189,11 +190,14 @@ Das folgende Beispiel zeigt, wie Sie externe Benutzer per Masseneinladung zu ein
     foreach ($email in $invitations) {New-AzureADMSInvitation -InvitedUserEmailAddress $email.InvitedUserEmailAddress -InviteRedirectUrl http://microsoft.com -SendInvitationMessage $true}
   ```
 
-Damit wird eine Einladung an die E-Mail-Adressen in „invitations.csv“ gesendet. Zu den weiteren Features dieses Cmdlets gehören das Einrichten von benutzerdefiniertem Text in der E-Mail-Nachricht, das Verwenden eines Anzeigenamens für den eingeladenen Benutzer, das Senden von Nachrichten an Benutzer in Kopie oder das Unterdrücken von E-Mail-Nachrichten insgesamt.
+Mit diesem Cmdlet wird eine Einladung an die E-Mail-Adressen in „invitations.csv“ gesendet. Weitere Funktionen dieses Cmdlets:
+- Benutzerdefinierter Text in der E-Mail-Nachricht
+- Einfügen eines Anzeigenamens für den eingeladenen Benutzer
+- Senden von Nachrichten an Benutzer in Kopie oder Unterdrücken sämtlicher E-Mail-Nachrichten
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Artikel zur Azure AD B2B-Zusammenarbeit:
+Weitere Artikel zur Azure AD B2B-Kollaboration:
 
 * [Was ist die Azure AD B2B-Zusammenarbeit?](active-directory-b2b-what-is-azure-ad-b2b.md)
 * [Eigenschaften von B2B-Zusammenarbeitsbenutzern](active-directory-b2b-user-properties.md)
@@ -203,11 +207,6 @@ Weitere Artikel zur Azure AD B2B-Zusammenarbeit:
 * [Konfigurieren von SaaS-Apps für die B2B-Zusammenarbeit](active-directory-b2b-configure-saas-apps.md)
 * [Benutzertoken für die B2B-Zusammenarbeit](active-directory-b2b-user-token.md)
 * [Zuordnen von Benutzeransprüchen für die B2B-Zusammenarbeit](active-directory-b2b-claims-mapping.md)
-* [Externe Office 365-Freigaben](active-directory-b2b-o365-external-user.md)
+* [Externe Office 365-Freigabe](active-directory-b2b-o365-external-user.md)
 * [Aktuelle Einschränkungen der B2B-Zusammenarbeit](active-directory-b2b-current-limitations.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

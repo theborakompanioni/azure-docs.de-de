@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/13/2016
+ms.date: 03/20/2017
 ms.author: chrande
 translationtype: Human Translation
-ms.sourcegitcommit: d405c58bf658222ceb72cc2b73e71f2ae1e1ed8d
-ms.openlocfilehash: 6b2473ef6336aea5c9a79aad78e02bcfc38b9018
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 38546a1cc3ae1696dbb37d4dd47d2d540ecd08fa
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -172,6 +172,8 @@ Um NuGet-Pakete in einer C#-Funktion zu verwenden, laden Sie die Datei *project.
 Nur .NET Framework 4.6 wird unterstützt. Stellen Sie also sicher, dass die Datei *project.json* wie hier gezeigt `net46` angibt.
 
 Beim Hochladen der Datei *project.json* erhält die Laufzeit die Pakete und fügt automatisch Verweise auf die Paketassemblys hinzu. Sie müssen keine `#r "AssemblyName"` -Direktiven hinzufügen. Fügen Sie der Datei *run.csx* einfach die erforderlichen `using`-Anweisungen hinzu, um die in den NuGet-Paketen definierten Typen zu verwenden.
+
+In der Functions-Laufzeit erfolgt die NuGet-Wiederherstellung durch Vergleichen von `project.json` und `project.lock.json`. Wenn die Datums- und Zeitstempel der Dateien nicht übereinstimmen, wird eine NuGet-Wiederherstellung ausgeführt, und NuGet lädt aktualisierte Pakete herunter. Wenn die Datums- und Zeitstempel der Dateien dagegen übereinstimmen, wird keine NuGet-Wiederherstellung ausgeführt. Aus diesem Grund sollte `project.lock.json` nicht bereitgestellt werden, da dadurch die NuGet-Wiederherstellung übersprungen wird und die Funktion nicht die erforderlichen Pakete umfasst. Um die Bereitstellung der Sperrdatei zu verhindern, fügen Sie `project.lock.json` der Datei `.gitignore` hinzu.
 
 ### <a name="how-to-upload-a-projectjson-file"></a>Hochladen einer Datei „project.json“
 1. Stellen Sie zunächst sicher, dass Ihre Funktionen-App ausgeführt wird. Öffnen Sie zu diesem Zweck Ihre Funktion im Azure-Portal. 

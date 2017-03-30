@@ -11,15 +11,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/24/2017
+ms.date: 03/20/2017
 ms.author: bwren
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: aaf5c442ef85edbc498aa2fd7815171f4701f960
-ms.openlocfilehash: 262beba30c760335aafdf903d9f5cac6b0dd9669
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: e47aacd1a188649a3b424981c20a6c2b736b2d89
+ms.lasthandoff: 03/22/2017
+
 
 ---
 
-# <a name="log-analytics-saved-searches-and-alerts-in-oms-solutions-preview"></a>In Log Analytics gespeicherte Suchen und Warnungen in OMS-Lösungen (Vorschau)
+# <a name="adding-log-analytics-saved-searches-and-alerts-to-oms-management-solution-preview"></a>Hinzufügen von gespeicherten Log Analytics-Suchen und -Warnungen in der OMS-Verwaltungslösung (Vorschau)
 
 > [!NOTE]
 > Dies ist die vorläufige Dokumentation für das Erstellen von Verwaltungslösungen in der OMS, die sich derzeit in der Vorschau befinden. Jedes unten beschriebene Schema kann sich ändern.   
@@ -35,7 +38,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie schon mit der [Erstellung ein
 
 
 ## <a name="log-analytics-workspace"></a>Log Analytics-Arbeitsbereich
-Alle Ressourcen in Log Analytics befinden sich in einem [Arbeitsbereich](../log-analytics/log-analytics-manage-access.md).  Wie unter [OMS-Arbeitsbereich und Automation-Konto](operations-management-suite-solutions-creating.md#oms-workspace-and-automation-account) beschrieben, ist der Arbeitsbereich nicht in der Verwaltungslösung enthalten, muss aber vor der Installation der Lösung vorhanden sein.  Ist es nicht verfügbar, schlägt die Installation der Lösung fehl.
+Alle Ressourcen in Log Analytics befinden sich in einem [Arbeitsbereich](../log-analytics/log-analytics-manage-access.md).  Wie unter [OMS-Arbeitsbereich und Automation-Konto](operations-management-suite-solutions.md#oms-workspace-and-automation-account) beschrieben, ist der Arbeitsbereich nicht in der Verwaltungslösung enthalten, muss aber vor der Installation der Lösung vorhanden sein.  Ist es nicht verfügbar, schlägt die Installation der Lösung fehl.
 
 Der Name des Arbeitsbereichs ist im Namen jeder Log Analytics-Ressource enthalten.  Dafür sorgt wie in diesem Beispiel einer savedsearch-Ressource der Parameter **Arbeitsbereich** in der Lösung.
 
@@ -90,7 +93,7 @@ Gespeicherte Suchressourcen sind oben beschrieben.  Die anderen Ressourcen sind 
 Eine gespeicherte Suche kann einen oder mehrere Zeitpläne aufweisen, wobei jeder Zeitplan eine separate Warnungsregel darstellt. Der Zeitplan definiert, wie oft die Suche durchgeführt wird und welches Zeitintervall für das Abrufen der Daten verwendet wird.  Zeitplanressourcen weisen den Typ `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/` und die folgende Struktur auf. 
 
     {
-      "name": "<name-of-schedule>",
+      "name": "<name-of-schedule-resource>",
       "type": "Microsoft.OperationalInsights/workspaces/savedSearches/schedules/",
       "apiVersion": "<api-version-of-resource>",
       "dependsOn": [
@@ -100,7 +103,7 @@ Eine gespeicherte Suche kann einen oder mehrere Zeitpläne aufweisen, wobei jede
         "etag": "*",               
         "interval": <schedule-interval-in-minutes>,
         "queryTimeSpan": <query-timespan-in-minutes>,
-        "enabled": <schedule-interval-in-minutes>       
+        "enabled": <schedule-enabled>       
       }
     }
 
@@ -257,7 +260,7 @@ Die Eigenschaften für Warnungsaktionsressourcen werden in den folgenden Tabelle
 
 
 
-### <a name="sample"></a>Beispiel
+## <a name="sample"></a>Beispiel
 
 Es folgt ein Beispiel für eine Lösung, die die folgenden Ressourcen enthält:
 
@@ -266,7 +269,7 @@ Es folgt ein Beispiel für eine Lösung, die die folgenden Ressourcen enthält:
 - Warnungsaktion
 - Webhookaktion
 
-Das Beispiel verwendet Variablen für [Standardlösungsparameter](operations-management-suite-solutions-creating.md#parameters), die im Gegensatz zu hartcodierten Werten in Ressourcendefinitionen häufig in einer Lösung verwendet werden.
+Das Beispiel verwendet Variablen für [Standardlösungsparameter](operations-management-suite-solutions-solution-file.md#parameters), die im Gegensatz zu hartcodierten Werten in Ressourcendefinitionen häufig in einer Lösung verwendet werden.
 
     {
         "$schema": "http://schemas.microsoft.org/azure/deploymentTemplate?api-version=2015-01-01#",
@@ -504,10 +507,5 @@ Die folgende Parameterdatei stellt Beispielwerte für diese Lösung bereit:
 ## <a name="next-steps"></a>Nächste Schritte
 * [Hinzufügen von Ansichten](operations-management-suite-solutions-resources-views.md) zu Ihrer Verwaltungslösung
 * [Hinzufügen von Automation-Runbooks und anderen Ressourcen](operations-management-suite-solutions-resources-automation.md) zu Ihrer Verwaltungslösung
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

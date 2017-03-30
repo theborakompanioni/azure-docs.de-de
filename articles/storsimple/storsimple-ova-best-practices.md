@@ -12,12 +12,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/01/2017
+ms.date: 03/15/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 48f89fd53f88f7bd757265d248e5aa6e53ae8d38
-ms.openlocfilehash: 27cfc75c90a5ba0699af0491f52747e8a1ea711a
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: f04cf73d9cb651bf97aff855bf7d19e296796e50
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -157,7 +157,7 @@ Für Ihr virtuelles Array können Sie Freigaben bereitstellen, wenn es als Datei
 Beachten Sie die folgenden bewährten Methoden, wenn Sie Freigaben oder Volumes auf Ihrem virtuellen Gerät bereitstellen:
 
 * Die Dateigrößen relativ zur bereitgestellten Größe einer mehrstufigen Freigabe können sich auf die Leistung der Anordnung in Ebenen auswirken. Das Arbeiten mit großen Dateien kann zu einer langsamen Anordnung führen. Bei der Arbeit mit großen Dateien sollte die größte Datei nach Möglichkeit kleiner als 3 % der Größe der Dateifreigabe sein.
-* Im virtuellen Array können maximal 16 Volumes/Freigaben erstellt werden. Bei lokaler Bereitstellung kann sich die Größe der Volumes bzw. Freigaben zwischen 50 GB und 2 TB bewegen. Wenn mehrere Stufen verwendet werden, müssen die Größe der Volumes bzw. Freigaben zwischen 500 GB und 20 TB liegen. 
+* Im virtuellen Array können maximal 16 Volumes/Freigaben erstellt werden. Informationen zu den Größengrenzwerten für lokal angefügte und mehrstufige Volumes/Freigaben finden Sie unter [Einschränkungen von StorSimple Virtual Array](storsimple-ova-limits.md).
 * Rechnen Sie beim Erstellen eines Volumes den erwarteten Datenverbrauch und das zukünftige Wachstum ein. Das Volumen kann nicht nachträglich vergrößert werden.
 * Nach der Erstellung des Volumes können Sie die Größe des Volumes unter StorSimple nicht mehr verringern.
 * Beim Schreiben auf ein mehrstufiges Volume unter StorSimple wird eine E/A-Drosselung durchgeführt, wenn die Volumedaten einen bestimmten Schwellenwert erreichen (relativ zum lokalen Speicherplatz, der für das Volume reserviert ist). Wenn weiter auf dieses Volume geschrieben wird, wird der E/A-Vorgang erheblich verlangsamt. Es ist zwar möglich, über die bereitgestellte Kapazität hinaus auf ein mehrstufiges Volume zu schreiben (es wird nicht aktiv verhindert, dass der Benutzer das Schreiben über die Kapazität hinaus durchführt), aber es wird eine Warnungsbenachrichtigung mit dem Hinweis angezeigt, dass die abonnierte Menge überschritten ist. Wenn die Warnung angezeigt wird, sollten Sie unbedingt Korrekturmaßnahmen ergreifen, z.B. das Löschen der Volumedaten (Volumeerweiterung wird derzeit nicht unterstützt).

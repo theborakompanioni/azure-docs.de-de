@@ -16,17 +16,17 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 07d91dfa905d22334bd051f9d5f3d936d38efc88
-ms.openlocfilehash: 9532fa1e11d3e85582d77704d1d7cb7f1230eabd
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 18ebdd5a8515988bbee8a0979a064ed2073274f4
+ms.lasthandoff: 03/21/2017
 
 ---
 
 # <a name="create-a-fully-configured-virtual-machine"></a>Erstellen einer vollständig konfigurierten VM
 
-Dieses Skript erstellt eine Azure-VM mit einem Ubuntu-Betriebssystem und zugehörigen Netzwerkressourcen. Nachdem das Skript erfolgreich ausgeführt wurde, kann über SSH auf den virtuellen Computer zugegriffen werden. 
+Dieses Skript erstellt eine Azure-VM mit einem Ubuntu-Betriebssystem. Nach dem Ausführen des Skripts können Sie per SSH auf den virtuellen Computer zugreifen.
 
-Stellen Sie vor dem Ausführen dieses Skripts sicher, dass über den Befehl `az login` eine Verbindung mit Azure hergestellt wurde.
+Installieren Sie bei Bedarf die Azure-Befehlszeilenschnittstelle anhand der Anleitung im [Azure CLI-Installationshandbuch](https://docs.microsoft.com/cli/azure/install-azure-cli), und führen Sie dann `az login` aus, um eine Verbindung mit Azure herzustellen.
 
 Dieses Beispiel wird in einer Bash-Shell ausgeführt. Optionen zum Ausführen von Azure CLI-Skripts auf einem Windows-Client finden Sie unter [Verwenden der Azure CLI unter Windows](../virtual-machines-windows-cli-options.md).
 
@@ -36,7 +36,7 @@ Dieses Beispiel wird in einer Bash-Shell ausgeführt. Optionen zum Ausführen vo
 
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung 
 
-Nach Ausführung des Skriptbeispiels können mit dem folgenden Befehl die Ressourcengruppe, die VM und alle zugehörigen Ressourcen entfernt werden.
+Führen Sie den folgenden Befehl aus, um die Ressourcengruppe, den virtuellen Computer und alle zugehörigen Ressourcen zu entfernen.
 
 ```azurecli
 az group delete --name myResourceGroup

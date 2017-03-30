@@ -12,12 +12,12 @@ ms.service: app-service-web
 ms.workload: web
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2017
+ms.date: 03/20/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: 90b4cde25330bf7c9e45142ba54ff000651de9f4
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: ec3407f54c3affc21bde4e2e6fa76a174a46159c
+ms.lasthandoff: 03/21/2017
 
 ---
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 03/10/2017
 
 Dieses Beispielskript erstellt eine Web-App in App Service mit den zugehörigen Ressourcen und stellt dann Ihren Web-App-Code über ein lokales Git-Repository bereit.
 
-Stellen Sie vor dem Ausführen dieses Skripts sicher, dass über das Cmdlet `Login-AzureRmAccount` eine Verbindung mit Azure hergestellt wurde und dass Ihr Anwendungscode in ein lokales Git-Repository übernommen wurde.
+Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/), und führen Sie dann `Login-AzureRmAccount` aus, um eine Verbindung mit Azure herzustellen. Darüber hinaus muss der Anwendungscode in einem lokalen Git-Repository committet werden.
 
 ## <a name="sample-script"></a>Beispielskript
 
@@ -33,7 +33,7 @@ Stellen Sie vor dem Ausführen dieses Skripts sicher, dass über das Cmdlet `Log
 
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung 
 
-Nach Ausführung des Skriptbeispiels können mit dem folgenden Befehl die Ressourcengruppe, die Web-App und alle zugehörigen Ressourcen entfernt werden.
+Nach dem Ausführen des Skriptbeispiels können mit dem folgenden Befehl die Ressourcengruppe, die Web-App und alle zugehörigen Ressourcen entfernt werden.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup -Force

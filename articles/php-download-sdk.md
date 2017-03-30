@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 06/01/2016
 ms.author: allclark;yaqiyang
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7bd6eddcdb20e3ea49cd29d46bb4f98d73ee9cc8
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: fd3d28b133ef8e646f5c2f1c1127f654daa61b95
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -41,7 +42,7 @@ Für die Anweisungen in diesem Thema wird vorausgesetzt, dass Sie [PHP][install-
 ## <a name="php-client-libraries-for-azure"></a>PHP-Clientbibliotheken für Azure
 Die PHP Clientbibliotheken für Azure bieten eine Schnittstelle zum Zugriff auf Azure-Funktionen wie Datenverwaltungs- und Clouddienste auf jedem Betriebssystem. Diese Bibliotheken können über Composer installiert werden.
 
-Informationen über die Verwendung der PHP-Clientbibliotheken für Azure finden Sie unter [Verwenden des Blob-Diensts][blob-service], [Verwenden des Tabellendiensts][table-service] und [Verwenden des Warteschlangendiensts][queue-service].
+Informationen zur Verwendung der PHP-Clientbibliotheken für Azure finden Sie unter [Verwenden des Blob-Diensts][blob-service], [Verwenden des Tabellenspeicherdiensts][table-service] und [Verwenden des Warteschlangendiensts][queue-service].
 
 ### <a name="install-via-composer"></a>Installation mithilfe von Composer
 1. [Installieren Sie Git][install-git].
@@ -55,7 +56,7 @@ Informationen über die Verwendung der PHP-Clientbibliotheken für Azure finden 
                 "microsoft/windowsazure": "^0.4"
             }
         }
-2. Laden Sie **[composer.phar][composer-phar]** in Ihr Projektverzeichnis herunter.
+2. Laden Sie **[composer.phar][composer-phar]** in das Stammverzeichnis Ihres Projekts herunter.
 3. Öffnen Sie eine Eingabeaufforderung, und führen Sie in Ihrem Projektverzeichnis folgenden Befehl aus
    
         php composer.phar install
@@ -65,10 +66,10 @@ Azure PowerShell ist eine Gruppe von PowerShell-Cmdlets zum Bereitstellen und Ve
 
 Die empfohlene Methode zur Installation von Azure PowerShell sowie der Azure-Emulatoren ist die Verwendung des [Microsoft-Webplattform-Installers][download-wpi]. Bitte beachten Sie, dass Sie auch noch weitere Entwicklungskomponenten wie PHP, SQL Server, die Microsoft-Treiber für SQL Server für PHP und WebMatrix installieren können.
 
-Informationen zur Verwendung von Azure finden Sie unter [Verwenden von Azure PowerShell][powershell-tools].
+Informationen zur Verwendung von Azure PowerShell finden Sie unter [Verwenden von Azure PowerShell][powershell-tools].
 
 ## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
-Die Azure-Befehlszeilenschnittstelle ist eine Gruppe von Befehlen zum Bereitstellen und Verwalten von Azure-Diensten wie Azure-Websites und virtuellen Azure-Computern. Informationen zum Installieren der Azure-Befehlszeilenschnittstelle finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](xplat-cli-install.md).
+Die Azure-Befehlszeilenschnittstelle ist eine Gruppe von Befehlen zum Bereitstellen und Verwalten von Azure-Diensten wie Azure-Websites und virtuellen Azure-Computern. Informationen zum Installieren der Azure-Befehlszeilenschnittstelle finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](cli-install-nodejs.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie im [PHP Developer Center](/develop/php/).
@@ -87,9 +88,4 @@ Weitere Informationen finden Sie im [PHP Developer Center](/develop/php/).
 [powershell-tools]: http://go.microsoft.com/fwlink/?LinkId=252718
 [php-sdk-github]: http://go.microsoft.com/fwlink/?LinkId=252719
 [install-git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

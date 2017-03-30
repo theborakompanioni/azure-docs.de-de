@@ -1,6 +1,6 @@
 ---
-title: Testen der Traffic Manager-Einstellungen | Microsoft Docs
-description: In diesem Artikel erfahren Sie, wie Sie Traffic Manager-Einstellungen testen.
+title: "Überprüfen von Azure Traffic Manager-Einstellungen | Microsoft Docs"
+description: "In diesem Artikel erfahren Sie, wie Sie Ihre Traffic Manager-Einstellungen überprüfen."
 services: traffic-manager
 documentationcenter: 
 author: kumudd
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/11/2016
+ms.date: 03/16/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 69b94c93ad3e9c9745af8485766b4237cac0062c
-ms.openlocfilehash: 713c01f1a15791ad19792bc58a2c32f8ce787720
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: aadff1806a7cb22347283143563467366e857569
+ms.lasthandoff: 03/18/2017
 
 ---
 
-# <a name="test-your-traffic-manager-settings"></a>Testen der Traffic Manager-Einstellungen
+# <a name="verify-traffic-manager-settings"></a>Überprüfen von Traffic Manager-Einstellungen
 
 Um Ihre Traffic Manager-Einstellungen zu testen, benötigen Sie mehrere Clients, die sich an verschiedenen Standorten befinden und auf denen Sie Ihre Tests ausführen können. Fahren Sie dann die Endpunkte in Ihrem Traffic Manager-Profil einzeln herunter.
 
@@ -74,9 +75,4 @@ Sie können auch kostenlose webbasierte DNS-Lookup- und Analysedienste nutzen. M
 * [Informationen zu Traffic Manager-Routingmethoden für Datenverkehr](traffic-manager-routing-methods.md)
 * [Leistungsüberlegungen zu Traffic Manager](traffic-manager-performance-considerations.md)
 * [Problembehandlung beim Status „Heruntergestuft“ in Traffic Manager](traffic-manager-troubleshooting-degraded.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 01/17/2017
 ms.author: amitsriva
 translationtype: Human Translation
-ms.sourcegitcommit: d65b354bc972c8268f1b4f072843b5bf4977a7c4
-ms.openlocfilehash: 2b37bf92ce8945996eb64477c28bea845b7df516
-ms.lasthandoff: 02/09/2017
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: 2c4b3e23c478a006b081929269ae066d00af20cd
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -26,7 +26,7 @@ ms.lasthandoff: 02/09/2017
 
 Azure bietet die Möglichkeit, Ressourcen anhand von Protokollierung und Metriken zu überwachen. Application Gateway stellt diese Funktionen mit Back-End-Integrität, Protokollierung und Metriken bereit.
 
-[**Back-End-Integrität**](#backend-health): Application Gateway bietet über das Portal sowie mithilfe von PowerShell die Möglichkeit zur Überwachung der Integrität der Server in den Back-End-Pools. Informationen zur Integrität der Back-End-Pools sind auch über die Leistungsdiagnoseprotokolle zu finden.
+[**Back-End-Integrität:**](#backend-health) Application Gateway bietet über das Portal sowie mithilfe von PowerShell die Möglichkeit zur Überwachung der Integrität der Server in den Back-End-Pools. Informationen zur Integrität der Back-End-Pools sind auch über die Leistungsdiagnoseprotokolle zu finden.
 
 [**Protokollierung**](#enable-logging-with-powershell): Die Protokollierung ermöglicht das Speichern und Nutzen von Leistungs-, Zugriffs- und anderen Protokollen von einer Ressource zu Überwachungszwecken.
 
@@ -37,7 +37,7 @@ Azure bietet die Möglichkeit, Ressourcen anhand von Protokollierung und Metrike
 Application Gateway bietet über das Portal sowie mithilfe von PowerShell oder CLI die Möglichkeit zur Überwachung der Integrität einzelner Mitglieder der Back-End-Pools. Eine Zusammenfassung der Integrität von Back-End-Pools sind auch über die Leistungsdiagnoseprotokolle zu finden. Der Back-End-Integritätsbericht gibt die Ausgabe des Application Gateway-Integritätstests an die Back-End-Instanzen wieder. Wenn der Test bestanden wurde und das Back-End Datenverkehr verarbeiten kann, gilt es als fehlerfrei; andernfalls gilt es als fehlerhaft.
 
 > [!important]
-> Wenn eine NSG in einem Application Gateway-Subnetz vorhanden ist, müssen die Portbereiche 65503 bis 65534 für die Application Gateway-Instanzen geöffnet werden.
+> Wenn eine NSG in einem Application Gateway-Subnetz vorhanden ist, muss der Portbereich 65503 bis 65534 im Application Gateway-Subnetz für die Mitglieder des Back-End-Pools geöffnet werden. Diese Ports sind erforderlich, damit die Integrität des Back-Ends erhalten bleibt.
 
 ### <a name="view-backend-health-through-the-portal"></a>Anzeigen der Back-End-Integrität über das Portal
 
@@ -316,3 +316,4 @@ Weitere Informationen zu Webhooks und deren Verwendung mit Warnungen finden Sie 
 [8]: ./media/application-gateway-diagnostics/figure8.png
 [9]: ./media/application-gateway-diagnostics/figure9.png
 [10]: ./media/application-gateway-diagnostics/figure10.png
+

@@ -1,7 +1,7 @@
 ---
 
 title: "Hinzufügen von Benutzern der B2B-Zusammenarbeit zu Azure Active Directory ohne Einladung | Microsoft-Dokumentation"
-description: "Die Azure Active Directory B2B-Zusammenarbeit ermöglicht es Information-Workern, Benutzer aus ihrer Organisationen zu Azure AD hinzuzufügen, um ihnen Zugriff auf die unternehmenseigenen Anwendungen zu gewähren."
+description: "Sie können festlegen, dass ein Gastbenutzer Ihrem Azure AD andere Gastbenutzer hinzufügen kann, ohne dass eine Einladung in der Azure Active Directory B2B-Zusammenarbeit erforderlich ist."
 services: active-directory
 documentationcenter: 
 author: sasubram
@@ -14,24 +14,25 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/10/2017
+ms.date: 03/15/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: 0eef684115f9c21ea61502a10576f74cac0ace8e
-ms.openlocfilehash: 8fa8ba169ca85c33e52eee4a7cd5b84aa4012673
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 91b9477cdb679851e7d8d2942c06999a05f64e46
+ms.lasthandoff: 03/17/2017
 
 
 ---
 
-# <a name="add-b2b-collaboration-users-without-an-invitation"></a>Hinzufügen von Benutzern der B2B-Zusammenarbeit ohne Einladung
+# <a name="add-b2b-collaboration-guest-users-without-an-invitation"></a>Hinzufügen von Gastbenutzern der B2B-Zusammenarbeit ohne Einladung
 
-Wenn der Einladende zu einer Rolle gehört, die im Verzeichnis der Partnerorganisation, aus der er Benutzer hinzufügt, über Enumerationsberechtigungen verfügt, werden die eingeladenen Benutzer zur einladenden Organisation hinzugefügt, ohne dass explizite Einladungen erforderlich sind.
+Sie können festlegen, dass ein Benutzer, z.B. ein Mitarbeiter einer Partnerorganisation, Ihrer Organisation Benutzer der Partnerorganisation hinzufügen kann, ohne dass dazu Einladungen erforderlich sind. Dazu müssen Sie dem entsprechenden Benutzer lediglich in dem Verzeichnis, das Sie für die Partnerorganisation verwenden, Enumerationsberechtigungen zuweisen. 
 
-Im folgenden Szenario ist dies besonders hilfreich:
+Die Erteilung dieser Berechtigungen empfiehlt sich in den folgenden Fällen:
 
 1. Ein Benutzer in der Hostorganisation (z.B. WoodGrove) lädt einen Benutzer aus der Partnerorganisation (z.B. Sam@litware.com) als Gast ein.
 2. Der Administrator der Hostorganisation legt Richtlinien fest, die es Sam erlauben, weitere Benutzer aus der Partnerorganisation (Litware) zu identifizieren und hinzuzufügen.
-3. Jetzt kann Sam weitere Benutzer von Litware zum Verzeichnis sowie zu den Gruppen und Anwendungen von WoodGrove hinzufügen, ohne dass Einladungen eingelöst werden müssen. Wenn Sam über entsprechende Enumerationsberechtigungen in Litware verfügt, erfolgt dies automatisch.
+3. Jetzt kann Sam dem Verzeichnis sowie den Gruppen und Anwendungen von WoodGrove weitere Benutzer von Litware hinzufügen, ohne dass Einladungen eingelöst werden müssen. Wenn Sam über entsprechende Enumerationsberechtigungen in Litware verfügt, erfolgt dies automatisch.
 
 ### <a name="next-steps"></a>Nächste Schritte
 
@@ -48,9 +49,3 @@ Weitere Artikel zur Azure AD B2B-Kollaboration:
 * [Azure Active Directory B2B-Zusammenarbeit: API und Anpassung](active-directory-b2b-api.md)
 * [Multi-Factor Authentication für Benutzer der B2B-Zusammenarbeit](active-directory-b2b-mfa-instructions.md)
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
-

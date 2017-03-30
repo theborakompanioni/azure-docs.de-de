@@ -16,17 +16,17 @@ ms.workload: infrastructure
 ms.date: 03/02/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: a73e26d50fc314fcfff31cef591abcdd62ca5f44
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: ef84d2893bc58b919d7724ce261bc90b44129ed4
+ms.lasthandoff: 03/21/2017
 
 ---
 
 # <a name="create-a-fully-configured-virtual-machine-with-powershell"></a>Erstellen einer vollständig konfigurierten VM mit PowerShell
 
-Dieses Skript erstellt eine Azure-VM mit einem Ubuntu-Betriebssystem und zugehörigen Netzwerkressourcen. Nachdem das Skript erfolgreich ausgeführt wurde, kann über SSH auf den virtuellen Computer zugegriffen werden. 
+Dieses Skript erstellt eine Azure-VM mit einem Ubuntu-Betriebssystem. Nach dem Ausführen des Skripts können Sie per SSH auf den virtuellen Computer zugreifen.
 
-Stellen Sie vor dem Ausführen dieses Skripts sicher, dass über den Befehl `Login-AzureRmAccount` eine Verbindung mit Azure hergestellt wurde. Darüber hinaus muss ein öffentlicher SSH-Schlüssel mit dem Namen `id_rsa.pub` im SSH-Verzeichnis Ihres Benutzerprofils gespeichert werden.
+Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/), und führen Sie dann `Login-AzureRmAccount` aus, um eine Verbindung mit Azure herzustellen. Darüber hinaus benötigen Sie einen öffentlichen SSH-Schlüssel mit dem Namen `id_rsa.pub` im Verzeichnis „.ssh“ Ihres Benutzerprofils.
 
 ## <a name="sample-script"></a>Beispielskript
 
@@ -34,7 +34,7 @@ Stellen Sie vor dem Ausführen dieses Skripts sicher, dass über den Befehl `Log
 
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung 
 
-Nach Ausführung des Skriptbeispiels können mit dem folgenden Befehl die Ressourcengruppe, die VM und alle zugehörigen Ressourcen entfernt werden.
+Führen Sie den folgenden Befehl aus, um die Ressourcengruppe, den virtuellen Computer und alle zugehörigen Ressourcen zu entfernen.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup

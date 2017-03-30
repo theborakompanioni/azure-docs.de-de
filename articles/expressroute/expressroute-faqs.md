@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/13/2017
+ms.date: 03/17/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 0df7bba472daf2c499f3ccff1296b8a9ee8ab89d
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 31a267963199518ed6db4610830062099ed0dde4
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -52,27 +52,25 @@ Auf der Seite [Vereinbarungen zum Servicelevel (SLAs) für ExpressRoute](https:/
 ## <a name="supported-services"></a>Unterstützte Dienste
 ExpressRoute unterstützt [drei Routingdomänen](expressroute-circuit-peerings.md) für verschiedene Arten von Diensten.
 
-Privates Peering
+### <a name="private-peering"></a>Privates Peering
 * Virtuelle Netzwerke, einschließlich aller virtuellen Computer und Clouddienste
 
-Öffentliches Peering
-* Die meisten Azure-Dienste mit einigen Ausnahmen (siehe unten)
+### <a name="public-peering"></a>Öffentliches Peering
 * Power BI
 * Dynamics 365 for Operations (früher als Dynamics AX Online bekannt)
+* Die meisten Azure-Dienste mit einigen Ausnahmen (siehe unten)
+  * CDN
+  * Visual Studio Team Services-Auslastungstests
+  * Multi-Factor Authentication
+  * Traffic Manager
 
-Microsoft-Peering
+### <a name="microsoft-peering"></a>Microsoft-Peering
 * [Office 365](http://aka.ms/ExpressRouteOffice365)
 * Die meisten Dynamics 365-Dienste (früher als CRM Online bekannt)
   * Dynamics 365 for Sales
   * Dynamics 365 for Customer Service
   * Dynamics 365 for Field Service
   * Dynamics 365 for Project Service
-
-Die folgenden Azure-Dienste werden in ExpressRoute nicht unterstützt
-* CDN
-* Visual Studio Team Services-Auslastungstests
-* Multi-Factor Authentication
-* Traffic Manager
 
 ## <a name="data-and-connections"></a>Daten und Verbindungen
 ### <a name="are-there-limits-on-the-amount-of-data-that-i-can-transfer-using-expressroute"></a>Gibt es Limits hinsichtlich der Datenmenge, die ich mithilfe von ExpressRoute übertragen kann?
@@ -177,9 +175,10 @@ Die folgenden Schritte helfen Azure dabei, die Aktivierungsanforderung zu erkenn
 
 1. Richten Sie für die ExpressRoute-Verbindung öffentliches Peering ein.
 2. Führen Sie ein DNS-Lookup durch, und suchen Sie die IP-Adresse von **kms.core.windows.net**
-3. Führen Sie eines der beiden folgenden Elemente aus, damit der Schlüsselverwaltungsdienst erkennt, dass die Aktivierungsanforderung von Azure stammt und die Anforderung berücksichtigt.
+3. Führen Sie eines der drei folgenden Elemente aus, damit der Schlüsselverwaltungsdienst erkennt, dass die Aktivierungsanforderung von Azure stammt und die Anforderung berücksichtigt.
    * Leiten Sie in Ihrem lokalen Netzwerk den Datenverkehr für die IP-Adresse (abgerufen in Schritt 2) über das öffentliche Peering zurück an Azure.
    * Fordern Sie Ihren Netzwerkdienstanbieter auf, den Datenverkehr über das öffentliche Peering wieder an Azure zurückzuleiten.
+   * Erstellen Sie eine benutzerdefinierte Route, die auf diese IP-Adresse verweist und als nächsten Hop das Internet hat, und wenden Sie sie auf die Subnetze an, in denen sich diese virtuellen Computer befinden.
 
 ### <a name="can-i-change-the-bandwidth-of-an-expressroute-circuit"></a>Kann ich die Bandbreite einer ExpressRoute-Verbindung ändern?
 Ja, Sie können versuchen, die Bandbreite Ihrer ExpressRoute-Verbindung im Azure-Portal oder mithilfe von PowerShell zu ändern. Wenn auf dem physischen Port, auf dem die Verbindung erstellt wurde, Kapazität verfügbar ist, ist die Änderung erfolgreich. Wenn die Änderung fehlschlägt, bedeutet dies, dass die Kapazität auf dem aktuellen Port nicht ausreicht und dass Sie eine neue ExpressRoute-Verbindung mit der höheren Bandbreite erstellen müssen. Es kann aber auch bedeuten, dass an dem Standort keine zusätzliche Kapazität verfügbar ist. In dem Fall können Sie die Bandbreite nicht erhöhen. Wenden Sie sich auch an Ihren Konnektivitätsanbieter, um sicherzustellen, dass er die Drosselungen in seinen Netzwerken aktualisiert, damit die Erhöhung der Bandbreite unterstützt wird. Sie können Bandbreite Ihrer ExpressRoute-Verbindung jedoch nicht verringern. Stattdessen müssen Sie eine neue ExpressRoute-Verbindung mit der geringeren Bandbreite erstellen und die alte Verbindung löschen.
@@ -192,7 +191,7 @@ Sie können die Bandbreite der ExpressRoute-Verbindung mithilfe der API zum Aktu
 ExpressRoute Premium ist eine Sammlung der unten aufgeführten Features.
 
 * Erhöhung des Grenzwerts für Routingtabellen von 4.000 auf 10.000 Routen für privates Peering.
-* Größere Anzahl an VNets, die mit der ExpressRoute-Verbindung verbunden werden können. (Der Standardwert ist&10;.) Weitere Details finden Sie in der Tabelle unten.
+* Größere Anzahl an VNets, die mit der ExpressRoute-Verbindung verbunden werden können. (Der Standardwert ist 10.) Weitere Details finden Sie in der Tabelle unten.
 * Globale Konnektivität über das Microsoft-Kernnetzwerk. Jetzt können Sie ein VNet in einer geopolitischen Region mit einer ExpressRoute-Verbindung in einer anderen Region verknüpfen. **Beispiel:** Sie können ein in Westeuropa erstelltes VNet mit einer ExpressRoute-Verbindung verknüpfen, die im Silicon Valley erstellt wurde. **Anderes Beispiel**: Beim öffentlichen Peering werden Präfixe anderer geopolitischer Regionen so angekündigt, dass Sie sich z.B. von einer Verbindung im Silicon Valley ausgehend mit SQL Azure in der Region „Europa, Westen“ verbinden können.
 * Verbindung mit Office 365-Diensten und CRM Online.
 

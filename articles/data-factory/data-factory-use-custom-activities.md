@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/01/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 3893c98ed72ee7b4ed5aa879047293285e9af071
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: b4b0a8139b69a31e4af40e1f8231d4d7772fee0b
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -498,7 +498,7 @@ In diesem Schritt erstellen Sie Datasets zur Darstellung von Eingabe- und Ausgab
     }
     ```
 
-   Im weiteren Verlauf dieser exemplarischen Vorgehensweise wird eine Pipeline mit der Startzeit „2016-11-16T00:00:00Z“ und der Endzeit „2016-11-16T05:00:00Z“ erstellt. Sie ist so eingerichtet, dass Daten stündlich erstellt werden, wodurch sich fünf Eingabe-/Ausgabeslices (zwischen **00**:00:00 und **05**:00:00) ergeben.
+   Im weiteren Verlauf dieser exemplarischen Vorgehensweise wird eine Pipeline mit der Startzeit „2016-11-16T00:00:00Z“ und der Endzeit „2016-11-16T05:00:00Z“ erstellt. Sie ist so eingerichtet, dass Daten stündlich erstellt werden, sodass sich fünf Eingabe-/Ausgabeslices (zwischen **00**:00:00 und **05**:00:00) ergeben.
 
    Die **Häufigkeit** und das **Intervall** für das Eingabedataset ist auf **Hour** und **1** festgelegt, was bedeutet, dass der Eingabeslice stündlich verfügbar ist. In diesem Beispiel nehmen wir die gleiche Datei (file.txt) im Eingabeordner.
 

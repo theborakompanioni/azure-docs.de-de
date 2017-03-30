@@ -15,8 +15,9 @@ ms.workload: infrastructure
 ms.date: 10/25/2016
 ms.author: v-livech
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: 9cc4fcb68148ef64829fff6135449a3c0efb75d0
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: f5f611ce6944d37e0afcc9a14fa79d0356d55347
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -47,10 +48,10 @@ Beim Erstellen eines virtuellen Computers (VM, Virtual Machine) im Azure-Portal 
 
 * [Erstellen eines vollständig qualifizierten Domänennamens im Azure-Portal](virtual-machines-linux-portal-create-fqdn.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-## <a name="virtual-nics"></a>Virtuelle NICs
+## <a name="network-interfaces"></a>Netzwerkschnittstellen
 Eine Netzwerkschnittstelle (NIC) ist eine Verbindung zwischen einem virtuellen Computer (VM) und dem zugrunde liegenden Softwarenetzwerk. In diesem Artikel wird erläutert, was eine Netzwerkschnittstelle ist und wie sie im Azure Resource Manager-Bereitstellungsmodell verwendet wird.
 
-* [Netzwerkschnittstellen](../virtual-network/virtual-network-network-interface-overview.md)
+* [Virtuelle Netzwerkschnittstellen](../virtual-network/virtual-network-network-interface.md)
 
 ## <a name="virtual-nics-and-dns-labeling"></a>Virtuelle NICs und DNS-Bezeichnung
 Wenn Sie einen Server haben, der persistent sein muss, aber dieser Server häufig umkonfiguriert und bereitgestellt wird, können Sie die DNS-Bezeichnung der NIC als persistenten Namen im VNet verwenden.  Mit den folgenden Schritten richten Sie eine dauerhaft benannte NIC mit einer statischen IP-Adresse ein.
@@ -66,10 +67,5 @@ Ein virtuelles Netzwerkgateway dient zum Senden von Netzwerkdatenverkehr zwische
 Ein Azure Load Balancer ist ein Layer-4-Load Balancer (TCP, UDP). Der Load Balancer sorgt für hohe Verfügbarkeit, indem er eingehenden Datenverkehr zwischen funktionierenden Dienstinstanzen in Clouddiensten oder auf virtuelle Computer verteilt, die in einer Gruppe für den Lastenausgleich definiert wurden. Der Azure Load Balancer kann diese Dienste auch auf mehreren Ports, mehreren IP-Adressen oder beidem leisten.
 
 * [Erstellen eines internen Load Balancers mithilfe der Azure-Befehlszeilenschnittstelle](../load-balancer/load-balancer-get-started-internet-arm-cli.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

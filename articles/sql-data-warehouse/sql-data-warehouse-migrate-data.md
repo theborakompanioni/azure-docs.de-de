@@ -15,8 +15,9 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2966177f7dd36c5b25b29ad238aa5bcef52f3b52
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 7835797bc353a64c934b362c31fdcd9b448aca34
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -26,18 +27,17 @@ Daten können aus unterschiedlichen Quellen und mithilfe verschiedener Tools in 
 In diesem Artikel werden zunächst einfache Migrationsszenarien der ADF-Kopieraktivität sowie von SSIS und bcp erörtert. Dann wird detaillierter erläutert, wie die Migration optimiert werden kann.
 
 ## <a name="azure-data-factory-adf-copy"></a>Azure Data Factory (ADF)-Kopieraktivität
-Die [ADF-Kopieraktivität][ADF-Kopieraktivität] gehört zu [Azure Data Factory][Azure Data Factory]. Mithilfe der ADF-Kopieraktivität können Sie Ihre Daten in Flatfiles im lokalen Speicher, in Remoteflatfiles im Azure-Blob-Speicher oder direkt in SQL Data Warehouse exportieren.
+Die [ADF-Kopieraktivität][ADF Copy] ist Teil von [Azure Data Factory][Azure Data Factory]. Mithilfe der ADF-Kopieraktivität können Sie Ihre Daten in Flatfiles im lokalen Speicher, in Remoteflatfiles im Azure-Blob-Speicher oder direkt in SQL Data Warehouse exportieren.
 
-Wenn sich Ihre Daten in Flatfiles befinden, müssen Sie sie zuerst in den Azure-Blobspeicher übertragen. Erst dann können Sie sie in SQL Data Warehouse laden. Nachdem die Daten in den Azure-Blobspeicher übertragen wurden, können Sie erneut die [ADF-Kopieraktivität][ADF-Kopieraktivität] verwenden, um die Daten nach SQL Data Warehouse zu übertragen.
+Wenn sich Ihre Daten in Flatfiles befinden, müssen Sie sie zuerst in den Azure-Blobspeicher übertragen. Erst dann können Sie sie in SQL Data Warehouse laden. Nachdem die Daten in Azure Blob Storage übertragen wurden, können Sie sie dann wieder mithilfe der [ADF-Kopieraktivität][ADF Copy] in SQL Data Warehouse übertragen.
 
 Auch PolyBase stellt eine leistungsstarke Möglichkeit zum Laden der Daten dar. Allerdings bedeutet dies, dass statt einem zwei Tools verwendet werden. Wenn Ihr Schwerpunkt auf der besten Leistung liegt, sollten Sie PolyBase verwenden. Wenn Sie nur ein Tool verwenden möchten (und die Daten nicht allzu umfangreich sind), ist ADF die beste Lösung für Sie.
 
-> [!NOTE]
-> Für PolyBase müssen die Datendateien mit UTF-8 codiert sein. Dies ist die Standardcodierung der ADF-Kopieraktivität, sodass keine Änderungen vorgenommen werden müssen. Es gilt lediglich zu beachten, dass das Standardverhalten der ADF-Kopieraktivität nicht geändert wird.
+
 > 
 > 
 
-Lesen Sie diesen Artikel: [Azure Data Factory Editor – Beispiele][Azure Data Factory Editor – Beispiele].
+Lesen Sie diesen Artikel: [Azure Data Factory – Beispiele][ADF samples].
 
 ## <a name="integration-services"></a>Integration Services
 Integration Services (SSIS) ist ein leistungsfähiges und flexibles ETL-Tool (Extrahieren Transformieren und Laden), das komplexe Workflows, Datentransformation und verschiedene Optionen zum Laden von Daten unterstützt. Mit SSIS können Sie Daten in Azure oder als Teil einer größeren Migration übertragen.
@@ -47,7 +47,7 @@ Integration Services (SSIS) ist ein leistungsfähiges und flexibles ETL-Tool (Ex
 > 
 > 
 
-SSIS stellt eine Verbindung mit SQL Data Warehouse her. Die Verbindungsherstellung entspricht der mit einer SQL Server-Bereitstellung. Für die Verbindungen muss jedoch ein ADO.NET-Verbindungs-Manager verwendet werden. Zudem sollten Sie darauf achten, dass die Einstellung "Sofern verfügbar, Masseneinfügung verwenden" konfiguriert ist, um den Durchsatz zu maximieren. Weitere Informationen zu dieser Eigenschaft finden Sie im Artikel zum [ADO.NET-Zieladapter][ADO.NET-Zieladapter].
+SSIS stellt eine Verbindung mit SQL Data Warehouse her. Die Verbindungsherstellung entspricht der mit einer SQL Server-Bereitstellung. Für die Verbindungen muss jedoch ein ADO.NET-Verbindungs-Manager verwendet werden. Zudem sollten Sie darauf achten, dass die Einstellung "Sofern verfügbar, Masseneinfügung verwenden" konfiguriert ist, um den Durchsatz zu maximieren. Weitere Informationen zu dieser Eigenschaft finden Sie in dem Artikel zum [ADO.NET-Zieladapter][ADO.NET destination adapter].
 
 > [!NOTE]
 > Die Verbindungsherstellung mit Azure SQL Data Warehouse mithilfe von OLEDB wird nicht unterstützt.
@@ -56,7 +56,7 @@ SSIS stellt eine Verbindung mit SQL Data Warehouse her. Die Verbindungsherstellu
 
 Darüber hinaus besteht immer die Möglichkeit, dass ein Paket aufgrund von Drosselung oder Netzwerkproblemen fehlschlagen kann. Entwerfen Sie die Pakete so, dass sie zum Zeitpunkt des Fehlers fortgesetzt werden können, ohne dass die vor dem Fehler abgeschlossenen Arbeitsschritte erneut ausgeführt werden müssen.
 
-Weitere Informationen finden Sie in der [SSIS-Dokumentation][SSIS-Dokumentation].
+Weitere Informationen finden Sie in der [SSIS-Dokumentation][SSIS documentation].
 
 ## <a name="bcp"></a>bcp
 bcp ist ein Befehlszeilenprogramm, das für den Import und Export von Flatfiledaten entwickelt wurde. Einige Transformationen können während des Datenexports durchgeführt werden. Zum Durchführen einfacher Transformationen können Sie die Daten mit einer Abfrage auswählen und transformieren. Nach dem Export können die Flatfiles dann direkt in das Ziel in der SQL Data Warehouse-Datenbank geladen werden.
@@ -74,12 +74,11 @@ bcp bietet folgende Vorteile:
 bcp weist folgende Einschränkungen auf:
 
 * bcp funktioniert nur mit tabellarischen Flatfiles. Für Dateien im XML- oder JSON-Format kann es z. B. nicht verwendet werden.
-* bcp unterstützt den Export in das Format UTF-8 nicht. Dies verhindert möglicherweise die Verwendung von PolyBase für mithilfe von bcp exportierte Daten.
 * Die Funktionen für die Datentransformation beschränken sich auf den Export und sind relativ einfach.
 * bcp bietet keine Stabilität beim Laden von Daten über das Internet. Jede Instabilität im Netzwerk kann daher zu Fehlern beim Laden führen.
 * bcp stützt sich auf das in der Zieldatenbank vor dem Laden vorhandene Schema.
 
-Weitere Informationen finden Sie unter [Load data with bcp][Load data with bcp].
+Weitere Informationen finden Sie unter [Verwenden von bcp zum Laden von Daten in SQL Data Warehouse][Use bcp to load data into SQL Data Warehouse].
 
 ## <a name="optimizing-data-migration"></a>Optimieren der Datenmigration
 Ein SQLDW-Datenmigrationsprozess kann wirksam in drei separate Schritte unterteilt werden:
@@ -98,14 +97,9 @@ Betrachten wir diese Schritte zunächst in der umgekehrten Reihenfolge: Daten k�
 3. Speicherort der Datendateien
 
 ### <a name="encoding"></a>Codieren
-Für PolyBase müssen Datendateien mit UTF-8 codiert sein. Dies bedeutet, dass Ihre Daten beim Export dieser Anforderung entsprechen müssen. Wenn die Daten nur einfache ASCII-Zeichen (keine erweiterten ASCII-Zeichen) enthalten, werden diese direkt dem UTF-8-Standard zugeordnet, und Sie müssen sich keine größeren Gedanken über die Codierung machen. Wenn die Daten jedoch Sonderzeichen wie z. B. Umlaute, Akzente oder Symbole enthalten oder nicht lateinische Sprachen unterstützen, müssen Sie sicherstellen, dass die Exportdateien ordnungsgemäß UTF-8-codiert sind.
+Für PolyBase müssen Datendateien mit UTF-8 oder UTF-16FE codiert sein. 
 
-> [!NOTE]
-> bcp unterstützt den Export von Daten in das Format UTF-8 nicht. Daher ist es am besten, die Daten mithilfe von Integration Services oder der ADF-Kopieraktivität zu exportieren. Es soll auch darauf hingewiesen werden, dass die UTF-8 Bytereihenfolge-Marke (Byte Order Mark, BOM) in der Datendatei nicht erforderlich ist.
-> 
-> 
 
-Alle Dateien, die mit UTF-16 codiert sind, müssen ***vor*** der Datenübertragung neu geschrieben werden.
 
 ### <a name="format-of-data-files"></a>Format der Datendateien
 PolyBase erfordert das feste Zeilenabschlusszeichen "\n" oder einen Zeilenvorschub. Ihre Datendateien müssen diesem Standard entsprechen. Für Zeichenfolgen- oder Spaltenabschlusszeichen gibt es keine Einschränkungen.
@@ -123,7 +117,7 @@ Einer der langsamsten Schritte bei der Datenmigration ist die Übertragung der D
 Glücklicherweise stehen mehrere Optionen zur Verbesserung der Geschwindigkeit und Stabilität dieses Vorgangs zur Verfügung:
 
 ### <a name="expressrouteexpressroute"></a>[ExpressRoute][ExpressRoute]
-Beispielsweise können Sie [ExpressRoute][ExpressRoute] verwenden, um die Übertragung von Daten zu beschleunigen. [ExpressRoute][ExpressRoute] stellt Ihnen eine bereits vorhandene private Verbindung mit Azure zur Verfügung, d.h., die Verbindung erfolgt nicht über das öffentliche Internet. Dieser Schritt ist keineswegs unbedingt erforderlich. Dadurch verbessert sich jedoch der Durchsatz bei der Übertragung von Daten in Azure von einem Standort vor Ort oder in der Nähe.
+Beispielsweise können Sie [ExpressRoute][ExpressRoute] verwenden, um die Übertragung zu beschleunigen. [ExpressRoute][ExpressRoute] stellt Ihnen eine bereits vorhandene private Verbindung mit Azure zur Verfügung, d.h., die Verbindung erfolgt nicht über das öffentliche Internet. Dieser Schritt ist keineswegs unbedingt erforderlich. Dadurch verbessert sich jedoch der Durchsatz bei der Übertragung von Daten in Azure von einem Standort vor Ort oder in der Nähe.
 
 Die Verwendung von [ExpressRoute][ExpressRoute] bietet folgende Vorteile:
 
@@ -132,9 +126,9 @@ Die Verwendung von [ExpressRoute][ExpressRoute] bietet folgende Vorteile:
 3. Niedrigere Netzwerklatenz
 4. Höhere Netzwerksicherheit
 
-[ExpressRoute][ExpressRoute] erweist sich nicht nur bei der Migration, sondern auch bei einer Reihe weiterer Szenarios als vorteilhaft.
+[ExpressRoute][ExpressRoute] erweist sich nicht nur bei der Migration, sondern auch bei einer Reihe verschiedener Szenarien als vorteilhaft.
 
-Interessiert? Weitere Informationen und Preise finden Sie in der [ExpressRoute-Dokumentation][ExpressRoute-Dokumentation].
+Interessiert? Weitere Informationen und Preise finden Sie in der [ExpressRoute-Dokumentation][ExpressRoute documentation].
 
 ### <a name="azure-import-and-export-service"></a>Azure Import/Export-Dienst
 Der Azure Import/Export-Dienst ist ein Datenübertragungsprozess zur Übertragung umfangreicher (GB++) und sehr umfangreicher (TB++) Datenmengen in Azure. Dabei werden Ihre Daten auf Datenträger geschrieben und an ein Azure-Rechenzentrum versendet. Der Inhalt der Datenträger wird dann in Ihrem Auftrag in Azure-Blobspeicher geladen.
@@ -152,7 +146,7 @@ Allgemeine Übersicht über den Import- und Exportprozess:
 ### <a name="azcopyazcopy-utility"></a>[AZCopy][AZCopy]-Hilfsprogramm
 Das Hilfsprogramm [AZCopy][AZCopy] eignet sich hervorragend zum Übertragen Ihrer Daten in Azure-Speicherblobs. Es ist für die Übertragung kleiner (MB++) bis sehr umfangreicher (GB++) Datenmengen konzipiert. [AZCopy] bietet zudem einen hohen stabilen Durchsatz beim Übertragen von Daten in Azure und ist daher eine gute Wahl für die Datenübertragung. Nach dem Übertragen können Sie die Daten mithilfe von PolyBase in SQL Data Warehouse laden. Sie können AZCopy mit dem Task "Prozess ausführen" auch in Ihre SSIS-Pakete integrieren.
 
-Zur Verwendung von AZCopy müssen Sie dieses Programm zunächst herunterladen und installieren. Es ist eine [Produktionsversion][Produktionsversion] und eine [Vorschauversion][Vorschauversion] verfügbar.
+Zur Verwendung von AZCopy müssen Sie dieses Programm zunächst herunterladen und installieren. Es sind eine [Produktionsversion][production version] und eine [Vorschauversion][preview version] verfügbar.
 
 Eine Datei können Sie mit einem Befehl wie dem folgenden aus Ihrem Dateisystem hochladen:
 
@@ -172,10 +166,7 @@ Die vollständige Dokumentation finden Sie hier: [AZCopy][AZCopy].
 ## <a name="optimizing-data-export"></a>Optimieren des Datenexports
 Neben dem Sicherstellen, dass der Export den von PolyBase vorgegebenen Anforderungen entspricht, können Sie den gesamten Prozess durch die Optimierung des Datenexports weiter verbessern.
 
-> [!NOTE]
-> Da die Daten für PolyBase im Format UTF-8 codiert sein müssen, ist es unwahrscheinlich, dass Sie den Export der Daten mit bcp durchführen. bcp unterstützt die Ausgabe von Datendateien in UTF-8 nicht. SSIS oder die ADF-Kopieraktivität eignen sich weitaus besser für diesen Datenexport.
-> 
-> 
+
 
 ### <a name="data-compression"></a>Datenkomprimierung
 PolyBase kann die mit GZip komprimierten Daten lesen. Wenn Sie Ihre Daten in GZip-Dateien komprimieren können, minimieren Sie die Menge der über das Netzwerk übertragenen Daten.
@@ -185,24 +176,24 @@ Die Unterteilung großer Tabellen in mehrere Dateien verbessert nicht nur die Ex
 
 PolyBase unterstützt auch eine Funktion zum "rekursiven Ordnerdurchlauf". Mit dieser Funktion können Sie die Organisation der exportierten Daten weiter verbessern und so die Datenverwaltung optimieren.
 
-Weitere Informationen zum Laden von Daten mit PolyBase finden Sie unter [Load data with bcp][Load data with bcp].
+Weitere Informationen zum Laden von Daten mit PolyBase finden Sie unter [Verwenden von PolyBase zum Laden von Daten in SQL Data Warehouse][Use PolyBase to load data into SQL Data Warehouse].
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zur Migration finden Sie unter [Migrieren Ihrer Lösung nach SQL Data Warehouse][Migrieren Ihrer Lösung nach SQL Data Warehouse].
-Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][Entwicklungsübersicht].
+Weitere Informationen zur Migration finden Sie unter [Migrieren Ihrer Lösung zu SQL Data Warehouse][Migrate your solution to SQL Data Warehouse].
+Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][development overview].
 
 <!--Image references-->
 
 <!--Article references-->
 [AZCopy]: ../storage/storage-use-azcopy.md
-[ADF-Kopieraktivität]: ../data-factory/data-factory-data-movement-activities.md 
-[Azure Data Factory Editor – Beispiele]: ../data-factory/data-factory-samples.md
-[ADF-Kopieraktivität – Beispiele]: ../data-factory/data-factory-copy-activity-tutorial-using-visual-studio.md
-[Entwicklungsübersicht]: sql-data-warehouse-overview-develop.md
-[Migrieren Ihrer Lösung nach SQL Data Warehouse]: sql-data-warehouse-overview-migrate.md
-[Entwicklungsübersicht für SQL Data Warehouse]: sql-data-warehouse-overview-develop.md
-[Load data with bcp]: sql-data-warehouse-load-with-bcp.md
-[Load data with bcp]: sql-data-warehouse-get-started-load-with-polybase.md
+[ADF Copy]: ../data-factory/data-factory-data-movement-activities.md 
+[ADF samples]: ../data-factory/data-factory-samples.md
+[ADF Copy examples]: ../data-factory/data-factory-copy-activity-tutorial-using-visual-studio.md
+[development overview]: sql-data-warehouse-overview-develop.md
+[Migrate your solution to SQL Data Warehouse]: sql-data-warehouse-overview-migrate.md
+[SQL Data Warehouse development overview]: sql-data-warehouse-overview-develop.md
+[Use bcp to load data into SQL Data Warehouse]: sql-data-warehouse-load-with-bcp.md
+[Use PolyBase to load data into SQL Data Warehouse]: sql-data-warehouse-get-started-load-with-polybase.md
 
 
 <!--MSDN references-->
@@ -210,15 +201,10 @@ Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][Entw
 <!--Other Web references-->
 [Azure Data Factory]: http://azure.microsoft.com/services/data-factory/
 [ExpressRoute]: http://azure.microsoft.com/services/expressroute/
-[ExpressRoute-Dokumentation]: http://azure.microsoft.com/documentation/services/expressroute/
+[ExpressRoute documentation]: http://azure.microsoft.com/documentation/services/expressroute/
 
-[Produktionsversion]: http://aka.ms/downloadazcopy/
-[Vorschauversion]: http://aka.ms/downloadazcopypr/
-[ADO.NET-Zieladapter]: https://msdn.microsoft.com/library/bb934041.aspx
-[SSIS-Dokumentation]: https://msdn.microsoft.com/library/ms141026.aspx
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+[production version]: http://aka.ms/downloadazcopy/
+[preview version]: http://aka.ms/downloadazcopypr/
+[ADO.NET destination adapter]: https://msdn.microsoft.com/library/bb934041.aspx
+[SSIS documentation]: https://msdn.microsoft.com/library/ms141026.aspx
 

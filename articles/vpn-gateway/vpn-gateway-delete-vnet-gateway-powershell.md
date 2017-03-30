@@ -1,5 +1,5 @@
 ---
-title: "Löschen eines Gateways des virtuellen Netzwerks: PowerShell: Azure Resource Manager | Microsoft-Dokumentation"
+title: "Löschen eines Gateways des virtuellen Netzwerks: PowerShell: Azure Resource Manager | Microsoft Docs"
 description: "Löschen Sie ein Gateway des virtuellen Netzwerks mit PowerShell im Resource Manager-Bereitstellungsmodell."
 services: vpn-gateway
 documentationcenter: na
@@ -13,16 +13,21 @@ ms.devlang: na
 ms.topic: 
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/13/2017
+ms.date: 03/20/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 523166a2dc509f13f62aef0e83799849a04d7efb
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 3032b09d06a103f9cd915e3803355199243488f9
+ms.lasthandoff: 03/21/2017
 
 
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell"></a>Löschen eines Gateways des virtuellen Netzwerks mit PowerShell
+> [!div class="op_single_selector"]
+> * [Resource Manager – PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
+> * [Klassisch – PowerShell](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
+>
+>
 
 Sie können zwischen ein paar unterschiedlichen Ansätzen wählen, wenn Sie ein Gateway des virtuellen Netzwerks für eine VPN-Gatewaykonfiguration löschen möchten.
 
@@ -48,8 +53,6 @@ Wenn Sie über mehrere Abonnements verfügen, geben Sie das Abonnement an, das S
 
     Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
 
-
-
 ##<a name="S2S"></a>Löschen eines Site-to-Site-VPN-Gateways
 
 Um ein Gateway des virtuellen Netzwerks für eine S2S-Konfiguration zu löschen, müssen Sie zunächst jede Ressource löschen, die zu dem Gateway des virtuellen Netzwerks gehört. Ressourcen müssen aufgrund von Abhängigkeiten in einer bestimmten Reihenfolge gelöscht werden. Bei der Arbeit mit den folgenden Beispielen müssen einige der Werte speziell aufgerufen werden, während andere Werte ein Ergebnis der Ausgabe sind. Wir verwenden die folgenden spezifischen Werte in den Beispielen zu Demonstrationszwecken:
@@ -58,6 +61,7 @@ VNet-Name: VNet1<br>
 Ressourcengruppenname: RG1<br>
 Name des Gateways des virtuellen Netzwerks: GW1<br>
 
+Die folgenden Schritte gelten für das Resource Manager-Bereitstellungsmodell.
 
 ###<a name="1-get-the-virtual-network-gateway-that-you-want-to-delete"></a>1. Rufen Sie das Gateway des virtuellen Netzwerks ab, das Sie löschen möchten.
 
@@ -85,6 +89,11 @@ Sie werden möglicherweise aufgefordert, das Löschen der einzelnen lokalen Netz
 ###<a name="6-delete-the-virtual-network-gateway"></a>6. Löschen Sie das Gateway des virtuellen Netzwerks.
 Sie werden möglicherweise aufgefordert, das Löschen des Gateways zu bestätigen.
 
+>[!NOTE]
+> Wenn Sie neben der S2S-Konfiguration noch über eine P2S-Konfiguration für dieses VNET verfügen, werden automatisch alle P2S-Clients ohne Warnung getrennt, wenn Sie das Gateway des virtuellen Netzwerks löschen.
+>
+>
+
     Remove-AzureRmVirtualNetworkGateway -Name "GW1" -ResourceGroupName "RG1"
 
 ###<a name="7-get-the-ip-configurations-of-the-virtual-network-gateway"></a>7. Rufen Sie die IP-Konfigurationen des Gateways des virtuellen Netzwerks ab.
@@ -100,7 +109,7 @@ Wenn das Gateway des virtuellen Netzwerks aktiv/aktiv war, sehen Sie zwei öffen
 
     $PubIP | foreach-object {remove-azurermpublicIpAddress -Name $_.Name -ResourceGroupName "RG1"}
 
-###<a name="10-delete-the-gateway-subnet"></a>10. Löschen Sie das Gatewaysubnetz.
+###<a name="10-delete-the-gateway-subnet-and-set-the-configuration"></a>10. Löschen Sie das Gatewaysubnetz, und legen Sie die Konfiguration fest.
 
     $GWSub = Get-AzureRmVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet"
     Set-AzureRmVirtualNetwork -VirtualNetwork $GWSub
@@ -113,6 +122,7 @@ VNet-Name: VNet1<br>
 Ressourcengruppenname: RG1<br>
 Name des Gateways des virtuellen Netzwerks: GW1<br>
 
+Die folgenden Schritte gelten für das Resource Manager-Bereitstellungsmodell.
 
 ###<a name="1-get-the-virtual-network-gateway-that-you-want-to-delete"></a>1. Rufen Sie das Gateway des virtuellen Netzwerks ab, das Sie löschen möchten.
 
@@ -141,15 +151,19 @@ Sie werden möglicherweise aufgefordert, das Löschen der einzelnen Verbindungen
     $ConnsL | ForEach-Object {Remove-AzureRmVirtualNetworkGatewayConnection -Name $_.name -ResourceGroupName $_.ResourceGroupName}
     $ConnsR | ForEach-Object {Remove-AzureRmVirtualNetworkGatewayConnection -Name $_.name -ResourceGroupName $_.ResourceGroupName}
 
-
 ###<a name="5-delete-the-virtual-network-gateway"></a>5. Löschen Sie das Gateway des virtuellen Netzwerks.
 Sie werden möglicherweise aufgefordert, das Löschen des Gateways des virtuellen Netzwerks zu bestätigen.
+
+>[!NOTE]
+> Wenn Sie neben der V2V-Konfiguration noch über P2S-Konfigurationen für Ihre VNETs verfügen, werden automatisch alle P2S-Clients ohne Warnung getrennt, wenn Sie das Gateway des virtuellen Netzwerks löschen.
+>
+>
 
     Remove-AzureRmVirtualNetworkGateway -Name "GW1" -ResourceGroupName "RG1"
 
 ###<a name="6-get-the-ip-configurations-of-the-virtual-network-gateway"></a>6. Rufen Sie die IP-Konfigurationen des Gateways des virtuellen Netzwerks ab.
 
-    $GWIpConfigs = $GW.IpConfigurations
+    $GWIpConfigs = $Gateway.IpConfigurations
 
 ###<a name="7-get-the-list-of-public-ip-addresses-used-for-this-virtual-network-gateway"></a>7. Rufen Sie die Liste der öffentlichen IP-Adressen ab, die für dieses Gateway des virtuellen Netzwerks verwendet werden. 
 Wenn das Gateway des virtuellen Netzwerks aktiv/aktiv war, sehen Sie zwei öffentliche IP-Adressen.
@@ -161,16 +175,60 @@ Sie werden möglicherweise aufgefordert, das Löschen der öffentlichen IP-Adres
 
     $PubIP | foreach-object {remove-azurermpublicIpAddress -Name $_.Name -ResourceGroupName "<NameOfResourceGroup1>"}
 
-###<a name="9-delete-the-gateway-subnet"></a>9. Löschen Sie das Gatewaysubnetz.
+###<a name="9-delete-the-gateway-subnet-and-set-the-configuration"></a>9. Löschen Sie das Gatewaysubnetz, und legen Sie die Konfiguration fest.
  
     $GWSub = Get-AzureRmVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet"
     Set-AzureRmVirtualNetwork -VirtualNetwork $GWSub
 
+##<a name="deletep2s"></a>Löschen eines Punkt-zu-Site-VPN-Gateways
+
+Um ein Gateway des virtuellen Netzwerks für eine P2S-Konfiguration zu löschen, müssen Sie zunächst jede Ressource löschen, die zu dem Gateway des virtuellen Netzwerks gehört. Ressourcen müssen aufgrund von Abhängigkeiten in einer bestimmten Reihenfolge gelöscht werden. Bei der Arbeit mit den folgenden Beispielen müssen einige der Werte speziell aufgerufen werden, während andere Werte ein Ergebnis der Ausgabe sind. Wir verwenden die folgenden spezifischen Werte in den Beispielen zu Demonstrationszwecken:
+
+VNet-Name: VNet1<br>
+Ressourcengruppenname: RG1<br>
+Name des Gateways des virtuellen Netzwerks: GW1<br>
+
+Die folgenden Schritte gelten für das Resource Manager-Bereitstellungsmodell.
+
+
+>[!NOTE]
+> Wenn Sie das VPN-Gateway löschen, werden alle verbundenen Clients ohne Warnung vom VNET getrennt.
+>
+>
+
+###<a name="1-get-the-virtual-network-gateway-that-you-want-to-delete"></a>1. Rufen Sie das Gateway des virtuellen Netzwerks ab, das Sie löschen möchten.
+
+    $Gateway=get-azurermvirtualnetworkgateway -Name "GW1" -ResourceGroupName "RG1"
+
+###<a name="2-delete-the-virtual-network-gateway"></a>2. Löschen Sie das Gateway des virtuellen Netzwerks.
+Sie werden möglicherweise aufgefordert, das Löschen des Gateways des virtuellen Netzwerks zu bestätigen.
+
+    Remove-AzureRmVirtualNetworkGateway -Name "GW1" -ResourceGroupName "RG1"
+
+###<a name="3-get-the-ip-configurations-of-the-virtual-network-gateway"></a>3. Rufen Sie die IP-Konfigurationen des Gateways des virtuellen Netzwerks ab.
+
+    $GWIpConfigs = $Gateway.IpConfigurations
+
+###<a name="4-get-the-list-of-public-ip-addresses-used-for-this-virtual-network-gateway"></a>4. Rufen Sie die Liste der öffentlichen IP-Adressen ab, die für dieses Gateway des virtuellen Netzwerks verwendet werden. 
+Wenn das Gateway des virtuellen Netzwerks aktiv/aktiv war, sehen Sie zwei öffentliche IP-Adressen.
+
+    $PubIP=Get-AzureRmPublicIpAddress | where-object {$_.Id -In $GWIpConfigs.PublicIpAddress.Id}
+
+###<a name="5-delete-the-public-ips"></a>5. Löschen Sie die öffentlichen IP-Adressen.
+Sie werden möglicherweise aufgefordert, das Löschen der öffentlichen IP-Adresse zu bestätigen.
+
+    $PubIP | foreach-object {remove-azurermpublicIpAddress -Name $_.Name -ResourceGroupName "<NameOfResourceGroup1>"}
+
+###<a name="6-delete-the-gateway-subnet-and-set-the-configuration"></a>6. Löschen Sie das Gatewaysubnetz, und legen Sie die Konfiguration fest.
+ 
+    $GWSub = Get-AzureRmVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet"
+    Set-AzureRmVirtualNetwork -VirtualNetwork $GWSub
 
 ##<a name="delete"></a>Löschen eines VPN-Gateways durch Löschen der Ressourcengruppe
 
 Wenn Sie Ihre bestehenden Ressourcen nicht behalten müssen und neu beginnen möchten, können Sie eine gesamte Ressourcengruppe löschen. Sie lernen hier eine schnelle Möglichkeit kennen, alles zu entfernen. Wenn Sie eine gesamte Ressourcengruppe löschen, können Sie nicht im einzelnen auswählen, welche Ressourcen Sie löschen möchten. Stellen Sie also sicher, dass Sie dies wirklich wünschen, bevor Sie dem Beispiel folgen.
 
+Die folgenden Schritte gelten für das Resource Manager-Bereitstellungsmodell.
 
 ### <a name="1-get-a-list-of-all-the-resource-groups-in-your-subscription"></a>1. Rufen Sie eine Liste aller Ressourcengruppen in Ihrem Abonnement auf.
 
@@ -182,7 +240,6 @@ Wählen Sie die Ressourcengruppe aus, die Sie löschen möchten, und zeigen Sie 
 
 ### <a name="3-verify-the-resources-in-the-list"></a>3. Überprüfen Sie die Ressourcen in der Liste.
 Wenn die Liste zurückgegeben wird, sehen Sie sie durch, um sicherzustellen, dass Sie sowohl alle Ressourcen in der Ressourcengruppe als auch die Ressourcengruppe selbst löschen möchten. 
-
 
 ### <a name="4-delete-the-resource-group-and-resources"></a>4. Löschen Sie die Ressourcengruppe und die Ressourcen.
 Um die Ressourcengruppe und alle darin enthaltenen Ressourcen zu löschen, ändern Sie das Beispiel, und führen Sie es aus.

@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/15/2016
+ms.date: 03/20/2017
 ms.author: bryanla
 translationtype: Human Translation
-ms.sourcegitcommit: 186541bee40ada7fc9e6be31d6b989e9bd34e0d1
-ms.openlocfilehash: acc585d139e91b4954658fb061587a69e701bbe2
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 1d65d5292d51c58b92f68dd469bf1eb0ccdc47ca
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -86,7 +87,7 @@ Gemäß Definition des [OAuth2-Autorisierungsframeworks][OAuth2-Role-Def] eine A
 Eine Clientanwendung fordert eine [Autorisierung](#authorization) von einem Ressourcenbesitzer an, um an einer [OAuth2-Autorisierungsgewährung](#authorization-grant) teilzunehmen, und greift ggf. im Auftrag des Ressourcenbesitzers auf APIs/Daten zu. Das OAuth2-Autorisierungsframework [definiert zwei Arten von Clients][OAuth2-Client-Types]: „vertraulich“ und „öffentlich“ – abhängig davon, ob der Client die Vertraulichkeit seiner Anmeldeinformationen gewährleisten kann. Anwendungen können einen auf einem Webserver ausgeführten [Webclient (vertraulich)](#web-client), einen auf einem Gerät installierten [nativen Client (öffentlich)](#native-client) oder einen im Browser eines Geräts ausgeführten [Benutzer-Agent-basierten Client (öffentlich)](#user-agent-based-client) implementieren.
 
 ## <a name="consent"></a>Zustimmung
-Der Prozess, bei dem ein [Ressourcenbesitzer](#resource-owner) eine [Clientanwendung](#client-application) autorisiert und ihr spezifische [Berechtigungen](#permissions) für den Zugriff auf geschützte Ressourcen (im Auftrag der Ressourcenbesitzers) erteilt. Abhängig von den vom Client angeforderten Berechtigungen wird die Zustimmung eines Administrators oder Benutzers angefordert, um den Zugriff auf die entsprechenden Organisationsdaten/individuellen Daten zuzulassen. In einem Szenario mit [mehreren Mandanten](#multi-tenant-application) wird der [Dienstprinzipal](#service-principal-object) der Anwendung auch im Mandanten des zustimmenden Benutzers erfasst.
+Der Vorgang, bei dem ein [Ressourcenbesitzer](#resource-owner) einer [Clientanwendung](#client-application) durch spezifische [Berechtigungen](#permissions) die Autorisierung für den Zugriff auf geschützte Ressourcen (im Auftrag des Ressourcenbesitzers) gewährt. Abhängig von den vom Client angeforderten Berechtigungen wird die Zustimmung eines Administrators oder Benutzers angefordert, um den Zugriff auf die entsprechenden Organisationsdaten oder individuellen Daten zuzulassen. In einem Szenario mit [mehreren Mandanten](#multi-tenant-application) wird der [Dienstprinzipal](#service-principal-object) der Anwendung auch im Mandanten des zustimmenden Benutzers erfasst.
 
 ## <a name="id-token"></a>ID-Token
 Ein vom [Autorisierungsendpunkt](#authorization-endpoint) eines [Autorisierungsservers](#authorization-server) bereitgestelltes [OpenID Connect][OpenIDConnect-ID-Token]-[Sicherheitstoken](#security-token) mit [Ansprüchen](#claim) in Verbindung mit der Authentifizierung eines Endbenutzers vom Typ [Ressourcenbesitzer](#resource-owner). ID-Token werden genau wie Zugriffstoken als digital signiertes [JSON Web Token (JWT)][JWT] dargestellt. Im Gegensatz zu einem Zugriffstoken werden die Ansprüche eines ID-Tokens allerdings nicht im Zusammenhang mit dem Zugriff auf Ressourcen und speziell mit der Zugriffssteuerung verwendet.
@@ -94,7 +95,7 @@ Ein vom [Autorisierungsendpunkt](#authorization-endpoint) eines [Autorisierungss
 Ausführlichere Informationen finden Sie in der [Azure AD-Tokenreferenz][AAD-Tokens-Claims].
 
 ## <a name="multi-tenant-application"></a>Mehrinstanzenfähige Anwendung
-Eine [Clientanwendung](#client-application), die Anmeldung und [Zustimmung](#consent) von Benutzern in beliebigen Azure AD-[Mandanten](#tenant) ermöglicht, auch auf anderen Mandanten als dem, auf dem der Client registriert ist. Im Gegensatz dazu ermöglicht eine als einzelner Mandant registrierte Anwendung nur Anmeldungen über Benutzerkonten, die unter dem gleichen Mandanten bereitgestellt wurden, bei dem auch die Anwendung registriert ist. [Native Clientanwendungen](#native-client) sind standardmäßig mehrinstanzenfähig. Bei [Webclient](#web-client)anwendungen kann es sich um Anwendungen mit einem einzelnen Mandanten oder um mehrinstanzenfähige Anwendungen handeln.
+Eine Anwendung, die Anmeldung und [Zustimmung](#consent) von Benutzern in beliebigen Azure AD-[Mandanten](#tenant) ermöglicht, auch auf anderen Mandanten als dem, auf dem der Client registriert ist. [Native Clientanwendungen](#native-client) sind standardmäßig mehrinstanzenfähig. Bei [Webclientanwendungen](#web-client) und [Webressourcen-/API-Anwendungen](#resource-server) kann es sich um Anwendungen mit einem einzelnen Mandanten oder um mehrinstanzenfähige Anwendungen handeln. Im Gegensatz dazu ermöglicht eine als einzelner Mandant registrierte Webanwendung nur Anmeldungen über Benutzerkonten, die unter dem gleichen Mandanten bereitgestellt wurden, bei dem auch die Anwendung registriert ist.
 
 Ausführlichere Informationen finden Sie unter [Anmelden von Azure Active Directory-Benutzern (AD) mit dem mehrinstanzenfähigen Anwendungsmuster][AAD-Multi-Tenant-Overview].
 
@@ -104,12 +105,12 @@ Eine Art von [Clientanwendung](#client-application) , die nativ auf einem Gerät
 ## <a name="permissions"></a>Berechtigungen
 Eine [Clientanwendung](#client-application) erhält Zugriff auf einen [Ressourcenserver](#resource-server), indem sie Berechtigungsanforderungen deklariert. Zwei Arten sind verfügbar:
 
-* Delegierte Berechtigungen: Fordern [bereichsbasierten](#scopes) Zugriff unter der delegierten Autorisierung des angemeldeten [Ressourcenbesitzers](#resource-owner) an und werden der Ressource zur Laufzeit als [SCP-Ansprüche](#claim) im [Zugriffstoken](#access-token) des Clients präsentiert.
-* Anwendungsberechtigungen: Fordern [rollenbasierten](#roles) Zugriff für die Anmeldeinformationen/Identität der Anwendung an und werden der Ressource zur Laufzeit als [Rollenansprüche](#claim) im Zugriffstoken des Clients präsentiert.
+* Delegierte Berechtigungen: Geben [bereichsbasierten](#scopes) Zugriff mit der delegierten Autorisierung des angemeldeten [Ressourcenbesitzers](#resource-owner) an und werden der Ressource zur Laufzeit als [SCP-Ansprüche](#claim) im [Zugriffstoken](#access-token) des Clients präsentiert.
+* Anwendungsberechtigungen: Geben [rollenbasierten](#roles) Zugriff mit den Anmeldeinformationen und der Identität der Anwendung an und werden der Ressource zur Laufzeit als [Rollenansprüche](#claim) im Zugriffstoken des Clients präsentiert.
 
 Darüber hinaus werden sie im Rahmen des [Zustimmungsprozesses](#consent) verwendet, um dem Administrator oder Ressourcenbesitzer die Möglichkeit zu geben, den Clientzugriff auf Ressourcen in seinem Mandanten zu gewähren oder zu verweigern.
 
-Berechtigungsanforderungen werden im [Azure-Portal][AZURE-portal] unter „Einstellungen“ auf der Registerkarte „Anwendungen“ unter „Erforderliche Berechtigungen“ konfiguriert. Hier wählen Sie die gewünschten delegierten Berechtigungen sowie die gewünschten Anwendungsberechtigungen aus (für Letzteres ist die globale Administratorrolle erforderlich). Da ein [öffentlicher Client](#client-application) keine Anmeldeinformationen verwalten kann, kann er nur delegierte Berechtigungen anfordern. Ein [vertraulicher Client](#client-application) kann dagegen sowohl delegierte Berechtigungen als auch Anwendungsberechtigungen anfordern. Das [Anwendungsobjekt](#application-object) des Clients speichert die deklarierten Berechtigungen in der [requiredResourceAccess-Eigenschaft][AAD-Graph-App-Entity].
+Berechtigungsanforderungen werden im [Azure-Portal][AZURE-portal] unter „Einstellungen“ auf der Registerkarte „Anwendungen“ unter „Erforderliche Berechtigungen“ konfiguriert. Hier wählen Sie die gewünschten delegierten Berechtigungen sowie die gewünschten Anwendungsberechtigungen aus (für Letzteres ist die globale Administratorrolle erforderlich). Da ein [öffentlicher Client](#client-application) die Anmeldeinformationen nicht sicher verwalten kann, kann er nur delegierte Berechtigungen anfordern. Ein [vertraulicher Client](#client-application) kann dagegen sowohl delegierte Berechtigungen als auch Anwendungsberechtigungen anfordern. Das [Anwendungsobjekt](#application-object) des Clients speichert die deklarierten Berechtigungen in der [requiredResourceAccess-Eigenschaft][AAD-Graph-App-Entity].
 
 ## <a name="resource-owner"></a>Ressourcenbesitzers
 Gemäß Definition des [OAuth2-Autorisierungsframeworks][OAuth2-Role-Def] eine Entität, die Zugriff auf eine geschützte Ressource gewähren kann. Handelt es sich bei dem Ressourcenbesitzer um eine Person, wird er als Endbenutzer bezeichnet. Wenn also beispielsweise eine [Clientanwendung](#client-application) über die [Microsoft Graph-API][Microsoft-Graph] auf das Postfach eines Benutzers zugreifen möchte, benötigt sie die Berechtigung des Ressourcenbesitzers für das Postfach.
@@ -175,7 +176,7 @@ Eine Art von [Clientanwendung](#client-application) , die sämtlichen Code auf e
 ## <a name="next-steps"></a>Nächste Schritte
 Das [Entwicklerhandbuch zu Azure Active Directory][AAD-Dev-Guide] ist das Portal für alle relevanten Themen rund um die Azure AD-Entwicklung und enthält unter anderem eine Übersicht über die [Anwendungsintegration][AAD-How-To-Integrate] sowie grundlegende Informationen zur [Authentifizierung in Azure AD und Authentifizierungsszenarien für Azure AD][AAD-Auth-Scenarios].
 
-Verwenden Sie den folgenden Disqus-Kommentarabschnitt, um uns Feedback zu senden und uns bei der Verbesserung unserer Inhalte zu unterstützen.
+Senden Sie uns im folgenden Abschnitt für Kommentare Ihr Feedback, und unterstützen Sie uns bei der Verbesserung unserer Inhalte. Dabei sind Anregungen für neue Definitionen oder zur Aktualisierung bereits vorhandener Definitionen willkommen.
 
 <!--Image references-->
 
@@ -208,9 +209,4 @@ Verwenden Sie den folgenden Disqus-Kommentarabschnitt, um uns Feedback zu senden
 [OpenIDConnect]: http://openid.net/specs/openid-connect-core-1_0.html
 [OpenIDConnect-AuthZ-Endpoint]: http://openid.net/specs/openid-connect-core-1_0.html#AuthorizationEndpoint
 [OpenIDConnect-ID-Token]: http://openid.net/specs/openid-connect-core-1_0.html#IDToken
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

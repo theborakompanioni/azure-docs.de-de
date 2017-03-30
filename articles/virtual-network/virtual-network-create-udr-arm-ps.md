@@ -1,5 +1,5 @@
 ---
-title: "Steuern des Routings und von virtuellen Geräten mithilfe von PowerShell | Microsoft Docs"
+title: "Steuern des Routings und von virtuellen Geräten in Azure – PowerShell | Microsoft Docs"
 description: "Erfahren Sie, wie Sie das Routing und virtuelle Geräte mit PowerShell steuern."
 services: virtual-network
 documentationcenter: na
@@ -16,19 +16,20 @@ ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: ba7a67b8ae57da165f45bd3552a3dfac5f4ef64b
-ms.openlocfilehash: 634e303d7052b35b478b15ff1a27220853bed5de
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 3ab24f193c74449ae7414b4ea0675c0aae0211f4
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="create-user-defined-routes-udr-using-powershell"></a>Erstellen von benutzerdefinierten Routen (UDR) mit einer Vorlage
 
 > [!div class="op_single_selector"]
-- [PowerShell](virtual-network-create-udr-arm-ps.md)
-- [Azure-Befehlszeilenschnittstelle](virtual-network-create-udr-arm-cli.md)
-- [Vorlage](virtual-network-create-udr-arm-template.md)
-- [PowerShell (klassisch)](virtual-network-create-udr-classic-ps.md)
-- [CLI (klassisch)](virtual-network-create-udr-classic-cli.md)
+> * [PowerShell](virtual-network-create-udr-arm-ps.md)
+> * [Azure-Befehlszeilenschnittstelle](virtual-network-create-udr-arm-cli.md)
+> * [Vorlage](virtual-network-create-udr-arm-template.md)
+> * [PowerShell (klassisch)](virtual-network-create-udr-classic-ps.md)
+> * [CLI (klassisch)](virtual-network-create-udr-classic-cli.md)
 
 
 [!INCLUDE [virtual-network-create-udr-intro-include.md](../../includes/virtual-network-create-udr-intro-include.md)]
@@ -272,10 +273,5 @@ Führen Sie zum Aktivieren der IP-Weiterleitung in der von **FW1**verwendeten Ne
         EnableIPForwarding   : True
         NetworkSecurityGroup : null
         Primary              : True
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

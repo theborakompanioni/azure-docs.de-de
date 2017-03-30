@@ -12,18 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/13/2016
+ms.date: 03/22/2017
 ms.author: darosa;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: ca66a344ea855f561ead082091c6941540b1839d
-ms.openlocfilehash: 7f5652aa39d6681b4a96cac00daac904dce2e537
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 95a927d8c2fbfbcb6aa663985d078d5146c489aa
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="azure-event-hubs-archive"></a>Azure Event Hubs Archive
-Azure Event Hubs Archive ermöglicht Ihnen das automatische Streaming von Daten in Ihren Event Hubs an ein Blobspeicherkonto Ihrer Wahl. Für mehr Flexibilität ist dabei die Angabe eines beliebigen Zeit- oder Größenintervalls möglich. Das Einrichten von Archive geht schnell, für das Ausführen fallen keine Verwaltungskosten an, und die Skalierung erfolgt automatisch mit den [Durchsatzeinheiten](event-hubs-what-is-event-hubs.md#capacity) Ihrer Event Hubs. Event Hubs Archive bietet die einfachste Möglichkeit zum Laden von Streamingdaten in Azure und ermöglicht Ihnen, sich auf die Datenverarbeitung anstatt die Datenerfassung zu konzentrieren.
+Azure Event Hubs Archive ermöglicht Ihnen das automatische Streaming von Daten in Ihren Event Hubs an ein Blobspeicherkonto Ihrer Wahl. Für mehr Flexibilität ist dabei die Angabe eines beliebigen Zeit- oder Größenintervalls möglich. Das Einrichten von Archive geht schnell, für das Ausführen fallen keine Verwaltungskosten an, und die Skalierung erfolgt automatisch mit den [Event Hub-Durchsatzeinheiten](event-hubs-what-is-event-hubs.md#capacity). Event Hubs Archive bietet die einfachste Möglichkeit zum Laden von Streamingdaten in Azure und ermöglicht Ihnen, sich auf die Datenverarbeitung anstatt die Datenerfassung zu konzentrieren.
 
-Azure Event Hubs Archive ermöglicht Ihnen das Verarbeiten von Echtzeit-Pipelines und batchbasierten Pipelines für den gleichen Stream. Dadurch können Sie Lösungen erstellen, die sich im Laufe der Zeit parallel zu Ihren Anforderungen erweitern lassen. Ob Sie derzeit batchbasierte Systeme mit Blick auf zukünftige Echtzeitverarbeitung erstellen oder einer vorhandenen Echtzeitlösung effiziente kalte Daten hinzufügen möchten – Event Hubs Archive macht das Arbeiten mit Streamingdaten einfacher.
+Event Hubs Archive ermöglicht Ihnen das Verarbeiten von Echtzeitpipelines und batchbasierten Pipelines für den gleichen Stream. Dadurch können Sie Lösungen erstellen, die sich im Laufe der Zeit parallel zu Ihren Anforderungen erweitern lassen. Ob Sie derzeit batchbasierte Systeme mit Blick auf zukünftige Echtzeitverarbeitung erstellen oder einer vorhandenen Echtzeitlösung effiziente kalte Daten hinzufügen möchten – Event Hubs Archive macht das Arbeiten mit Streamingdaten einfacher.
 
 ## <a name="how-event-hubs-archive-works"></a>Azure Event Hubs Archive – Funktionsweise
 Event Hubs ist ein beständiger Puffer mit zeitbasierter Speicherung für Telemetrieeingänge, vergleichbar mit einem verteilten Protokoll. Der Schlüssel zur Skalierung in Event Hubs ist das [partitionierte Consumermodell](event-hubs-what-is-event-hubs.md#partitions). Jede Partition ist ein unabhängiges Datensegment und wird unabhängig genutzt. Mit der Zeit werden diese Daten basierend auf der konfigurierbaren Beibehaltungsdauer ersetzt. Daher kann ein Event Hub nie „zu voll“ werden.
@@ -33,30 +34,30 @@ Mit Event Hubs Archive können Sie Ihr eigenes Azure Blob-Speicherkonto und Cont
 Archivierte Daten werden im [Apache Avro][Apache Avro]-Format geschrieben. Dabei handelt es sich um ein kompaktes, schnelles, binäres Format, das umfangreiche Datenstrukturen mit Inlineschema bietet. Dieses Format wird im Hadoop-Ökosystem sowie von Stream Analytics und Azure Data Factory häufig verwendet. Weitere Informationen zum Arbeiten mit Avro finden Sie weiter unten in diesem Artikel.
 
 ### <a name="archive-windowing"></a>Archiv-Windowing
-Event Hubs Archive ermöglicht Ihnen das Einrichten eines Fensters zur Steuerung der Archivierung. Dieses Fenster ist eine Konfiguration mit Mindestgröße und -zeit, für die das FIFO-Prinzip gilt, d. h . der erste Auslöser, der auftritt, führt zu einem Archivvorgang. Wenn Sie ein Archivfenster mit 15 Minuten/100 MB haben und 1 MB/s senden, das Größenfenstergröße vor dem Zeitfenster ausgelöst. Jede Partition wird unabhängig archiviert und schreibt zum Archivierungszeitpunkt einen abgeschlossenen Blockblob. Dieser wird nach dem Zeitpunkt benannt, zu dem das Archivintervall aufgetreten ist. Die Namenskonvention lautet wie folgt:
+Event Hubs Archive ermöglicht Ihnen das Einrichten eines Fensters zur Steuerung der Archivierung. Dieses Fenster ist eine Konfiguration mit Mindestgröße und -zeit, für die das FIFO-Prinzip gilt, d.h., der erste Trigger, der auftritt, führt zu einem Archivvorgang. Wenn Sie ein Archivfenster mit 15 Minuten und mit 100 MB haben und 1 MB/s senden, wird das Größenfenster vor dem Zeitfenster ausgelöst. Jede Partition wird unabhängig archiviert und schreibt zum Archivierungszeitpunkt einen abgeschlossenen Blockblob. Dieser wird nach dem Zeitpunkt benannt, zu dem das Archivintervall aufgetreten ist. Die Namenskonvention lautet wie folgt:
 
 ```
 [Namespace]/[EventHub]/[Partition]/[YYYY]/[MM]/[DD]/[HH]/[mm]/[ss]
 ```
 
 ### <a name="scaling-to-throughput-units"></a>Skalierung auf Durchsatzeinheiten
-Der Datenverkehr von Event Hubs wird von [Durchsatzeinheiten](event-hubs-what-is-event-hubs.md#capacity) gesteuert. Eine einzelne Durchsatzeinheit lässt eingehenden Datenverkehr von 1 MB pro Sekunde oder 1.000 Ereignisse pro Sekunde und die doppelte Menge an ausgehendem Datenverkehr zu. Event Hubs Standard kann mit 1 bis 20 Durchsatzeinheiten konfiguriert werden, und über eine [Supportanfrage][support request] für eine Kontingenterhöhung können weitere Einheiten erworben werden. Bei Überschreitung der erworbenen Durchsatzeinheiten wird die Nutzung gedrosselt. Event Hubs Archive kopiert Daten direkt aus dem internen Event Hubs-Speicher. Dabei werden Durchsatzeinheitkontingente für ausgehenden Datenverkehr umgangen und stattdessen für andere Verarbeitungsreader wie Stream Analytics oder Spark verwendet.
+Der Datenverkehr von Event Hubs wird von [Durchsatzeinheiten](event-hubs-what-is-event-hubs.md#capacity) gesteuert. Eine einzelne Durchsatzeinheit lässt eingehenden Datenverkehr von 1 MB pro Sekunde oder 1.000 Ereignisse pro Sekunde und die doppelte Menge an ausgehendem Datenverkehr zu. Event Hubs Standard kann mit 1 bis 20 Durchsatzeinheiten konfiguriert werden, und über eine [Supportanfrage][support request] für eine Kontingenterhöhung können weitere Einheiten erworben werden. Bei Überschreitung der erworbenen Durchsatzeinheiten wird die Nutzung gedrosselt. Event Hubs Archive kopiert Daten direkt aus dem internen Event Hubs-Speicher. Dabei werden Durchsatzeinheitenkontingente für ausgehenden Datenverkehr umgangen und stattdessen für andere Verarbeitungsreader wie Stream Analytics oder Spark verwendet.
 
 Nach der Konfiguration wird Event Hubs Archive automatisch ausgeführt, sobald Sie das erste Ereignis senden. Die Ausführung wird ununterbrochen fortgesetzt. Damit Ihre Downstreamverarbeitung leichter erkennt, dass der Prozess ausgeführt wird, schreibt Event Hubs leere Dateien, wenn keine Daten vorhanden sind. Dies sorgt für einen vorhersagbaren Rhythmus und Marker, die als Feed für Ihre Batchprozessoren fungieren.
 
 ## <a name="setting-up-event-hubs-archive"></a>Einrichten von Event Hubs Archive
-Event Hubs Archive kann zum Zeitpunkt der Erstellung von Event Hub über das Portal oder Azure Resource Manager konfiguriert werden. Sie aktivieren Archive einfach durch Klicken auf die Schaltfläche **Ein** . Konfigurieren Sie ein Speicherkonto und Container durch Klicken auf den Abschnitt **Container** des Blatts. Da Event Hubs Archive die Dienst-zu-Dienst-Authentifizierung mit Speicher verwendet, müssen Sie keine Speicherverbindungszeichenfolge angeben. Die Ressourcenauswahl wählt automatisch den Ressourcen-URI für Ihr Speicherkonto. Wenn Sie Azure Resource Manager verwenden, müssen Sie diesen URI explizit als Zeichenfolge angeben.
+Sie können Archive zum Zeitpunkt der Erstellung der Event Hubs-Instanz über das Portal oder mit Azure Resource Manager konfigurieren. Sie aktivieren Archive einfach durch Klicken auf die Schaltfläche **Ein** . Konfigurieren Sie ein Speicherkonto und Container durch Klicken auf den Abschnitt **Container** des Blatts. Da Event Hubs Archive die Dienst-zu-Dienst-Authentifizierung mit Speicher verwendet, müssen Sie keine Speicherverbindungszeichenfolge angeben. Die Ressourcenauswahl wählt automatisch den Ressourcen-URI für Ihr Speicherkonto. Wenn Sie Azure Resource Manager verwenden, müssen Sie diesen URI explizit als Zeichenfolge angeben.
 
 Das Standadzeitfenster beträgt fünf Minuten. Der Mindestwert ist 1, der Höchstwert 15. Für das **Größenfenster** gilt ein Bereich von 10 bis 500 MB.
 
 ![][1]
 
 ## <a name="adding-archive-to-an-existing-event-hub"></a>Hinzufügen von Archive zu einem vorhandenen Event Hub
-Archive können auf vorhandenen Event Hubs konfiguriert werden, die sich in einem Event Hubs-Namespace befinden. Das Feature ist für ältere **Messaging**-Namespaces oder Namespaces vom Typ **Gemischt** nicht verfügbar. Klicken Sie zum Aktivieren von Archive auf einem vorhandenen Event Hub oder zum Ändern der Archive-Einstellungen auf Ihren Namespace, um das Blatt **Zusammenfassung** zu laden. Anschließend klicken Sie auf den Event Hub, den Sie aktivieren bzw. dessen Archive-Einstellung Sie ändern möchten. Klicken Sie abschließend auf den Abschnitt **Eigenschaften** des geöffneten Blatts, wie in der folgenden Abbildung dargestellt.
+Archive kann auf vorhandenen Event Hubs-Instanzen konfiguriert werden, die sich in einem Event Hubs-Namespace befinden. Das Feature ist für ältere **Messaging**-Namespaces oder Namespaces vom Typ **Gemischt** nicht verfügbar. Klicken Sie zum Aktivieren von Archive auf einem vorhandenen Event Hub oder zum Ändern der Archive-Einstellungen auf Ihren Namespace, um das Blatt **Zusammenfassung** zu laden. Anschließend klicken Sie auf den Event Hub, den Sie aktivieren bzw. dessen Archive-Einstellung Sie ändern möchten. Klicken Sie abschließend auf den Abschnitt **Eigenschaften** des geöffneten Blatts, wie in der folgenden Abbildung dargestellt.
 
 ![][2]
 
-Sie können Event Hubs Archive auch über Azure Resource Manager-Vorlagen konfigurieren. Weitere Informationen dazu finden Sie in [diesem Artikel](event-hubs-resource-manager-namespace-event-hub-enable-archive.md).
+Sie können Event Hubs Archive auch über Azure Resource Manager-Vorlagen konfigurieren. [hier finden Sie weitere Informationen](event-hubs-resource-manager-namespace-event-hub-enable-archive.md)
 
 ## <a name="exploring-the-archive-and-working-with-avro"></a>Erkunden des Archivs und Arbeiten mit Avro
 Nach der Konfiguration erstellt Event Hubs Archive im Azure-Speicherkonto Dateien und Container, die im konfigurierten Zeitfenster bereitgestellt werden. Sie können diese Dateien mit einem beliebigen Tool wie beispielsweise [Azure-Speicher-Explorer][Azure Storage Explorer] anzeigen. Sie können die Dateien zur Bearbeitung lokal herunterladen.
@@ -97,7 +98,7 @@ Für eine erweiterte Verarbeitung laden Sie Avro herunter und installieren es f�
 Apache Avro bietet vollständige Anleitungen für die ersten Schritte mit [Java][Java] und [Python][Python]. Lesen Sie auch den Artikel zu den [ersten Schritten mit Event Hubs Archive](event-hubs-archive-python.md) .
 
 ## <a name="how-event-hubs-archive-is-charged"></a>Event Hubs Archive – Abrechnung
-Die Gebühren für Event Hubs Archive werden ähnlich wie für Durchsatzeinheiten auf Stundenbasis erhoben. Die Gebühr ist direkt proportional zur Anzahl der Durchsatzeinheiten, die für den Namespace erworben werden. Event Hubs Archive wird parallel zu Durchsatzeinheiten erhöht und verringert, um eine übereinstimmende Leistung zu bieten. Die Messwerte werden zusammen ermittelt. Die Gebühren für Event Hubs Archive betragen 0,10 US-Dollar pro Stunde und Durchsatzeinheit. Während des Vorschauzeitraums wird ein Rabatt von 50 % angeboten.
+Die Gebühren für Event Hubs Archive werden ähnlich wie für Durchsatzeinheiten auf Stundenbasis erhoben. Die Gebühr ist direkt proportional zur Anzahl der Durchsatzeinheiten, die für den Namespace erworben werden. Event Hubs Archive wird parallel zu Durchsatzeinheiten erhöht und verringert, um eine übereinstimmende Leistung zu bieten. Die Verbrauchseinheiten treten zusammen auf. Die Gebühren für Event Hubs Archive betragen 0,10 US-Dollar pro Stunde und Durchsatzeinheit. Während des Vorschauzeitraums wird ein Rabatt von 50 % angeboten.
 
 Event Hubs Archive ist die einfachste Möglichkeit zum Laden von Daten in Azure. Mithilfe von Azure Data Lake, Azure Data Factory und Azure HDInsight können Sie Batchverarbeitung und andere Analysen Ihrer Wahl mit vertrauten Tools und Plattformen jeder Größenordnung durchführen.
 
@@ -120,9 +121,4 @@ Weitere Informationen zu Event Hubs finden Sie unter den folgenden Links:
 [Event Hubs overview]: event-hubs-what-is-event-hubs.md
 [sample application that uses Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
 [Scale out Event Processing with Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

@@ -10,12 +10,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2017
+ms.date: 03/20/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 938f325e2cd4dfc1a192256e033aabfc39b85dac
-ms.openlocfilehash: 6bb1f31407f9af67e699bd110ee528dddee1a70f
-ms.lasthandoff: 02/14/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 4f10e5a8200af870e0adb8977b9c68b9998a6de7
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -41,7 +41,7 @@ Das Senden von Daten an Ihre Datenquelle ist einfach.
 Die Häufigkeit des Hochladens und Geschwindigkeit, mit der die Daten für Abfragen verfügbar sein sollen, legen Sie fest. Es ist effizienter, Daten in größeren Blöcken hochzuladen, die aber nicht größer als 1 GB sein sollten.
 
 > [!NOTE]
-> *Haben Sie viele zu analysierende Datenquellen?* [*Erwägen Sie den Einsatz von *logstash* zum Übertragen Ihrer Daten in Application Insights.*](https://github.com/Microsoft/logstash-output-application-insights)
+> *Haben Sie viele zu analysierende Datenquellen?* [*Erwägen Sie den Einsatz von*logstash*zum Übertragen Ihrer Daten in Application Insights.*](https://github.com/Microsoft/logstash-output-application-insights)
 > 
 
 ## <a name="before-you-start"></a>Vorbereitung
@@ -68,24 +68,34 @@ Anforderungen:
 ## <a name="define-your-schema"></a>Definieren des Schemas
 
 Bevor Sie Daten importieren können, müssen Sie eine *Datenquelle* definieren, die das Schema Ihrer Daten angibt.
+Sie können bis zu 50 Datenquellen in einer einzelnen Application Insights-Ressource haben.
 
 1. Starten Sie den Datenquellen-Assistenten.
 
     ![Hinzufügen einer neuen Datenquelle](./media/app-insights-analytics-import/add-new-data-source.png)
 
-2. Laden Sie eine Beispieldatendatei hoch. (Optional, wenn Sie eine Schemadefinition hochladen.)
+    Geben Sie einen Namen für die neue Datenquelle an.
 
-    Die erste Zeile der Beispieldaten kann Spaltenüberschriften enthalten. (Sie können die Feldnamen im nächsten Schritt ändern.)
+2. Definieren Sie das Format der Dateien, die Sie hochladen möchten.
 
-    Die Beispieldaten sollten mindestens 10 Zeilen enthalten.
+    Sie können das Format manuell definieren oder eine Beispieldatei hochladen.
 
-3. Überprüfen Sie das vom Assistenten verwendete Schema. Leitet es die Typen aus einem Beispiel ab, so müssen Sie die abgeleiteten Spaltentypen vermutlich anpassen.
+    Wenn die Datei das CSV-Format aufweist, kann es sich bei der ersten Zeile der Beispieldaten um Spaltenüberschriften handeln. Sie können die Feldnamen im nächsten Schritt ändern.
 
-   (Optional.) Laden Sie eine Schemadefinition hoch. Sehen Sie sich hierzu das folgende Format an.
+    Die Beispieldaten sollten mindestens 10 Zeilen oder Datensätze enthalten.
 
-4. Wählen Sie einen Zeitstempel aus. Alle Daten in Analytics müssen ein Zeitstempelfeld aufweisen. Es muss den Typ `datetime` haben, jedoch nicht als „timestamp“ benannt sein. Wenn Ihre Daten eine Spalte mit einer Datums- und Uhrzeitangabe im ISO-Format aufweisen, wählen Sie diese als Zeitstempelspalte. Wählen Sie andernfalls „gemäß Dateneingang“, woraufhin der Importvorgang ein Zeitstempelfeld hinzufügt.
+    Spalten- und Feldnamen müssen alphanumerische Namen (ohne Leer- oder Satzzeichen) sein.
 
-    ![Überprüfen des Schemas](./media/app-insights-analytics-import/data-source-review-schema.png)
+    ![Hochladen einer Beispieldatendatei](./media/app-insights-analytics-import/sample-data-file.png)
+
+
+3. Überprüfen Sie das vom Assistenten verwendete Schema. Leitet es die Typen aus einem Beispiel ab, müssen Sie die abgeleiteten Spaltentypen möglicherweise anpassen.
+
+    ![Überprüfen des abgeleiteten Schemas](./media/app-insights-analytics-import/data-source-review-schema.png)
+
+ * (Optional.) Laden Sie eine Schemadefinition hoch. Sehen Sie sich hierzu das folgende Format an.
+
+ * Wählen Sie einen Zeitstempel aus. Alle Daten in Analytics müssen ein Zeitstempelfeld aufweisen. Es muss den Typ `datetime` haben, jedoch nicht als „timestamp“ benannt sein. Wenn Ihre Daten eine Spalte mit einer Datums- und Uhrzeitangabe im ISO-Format aufweisen, wählen Sie diese als Zeitstempelspalte. Wählen Sie andernfalls „gemäß Dateneingang“, woraufhin der Importvorgang ein Zeitstempelfeld hinzufügt.
 
 5. Erstellen Sie die Datenquelle.
 
@@ -133,6 +143,9 @@ Sie können den folgenden Vorgang manuell ausführen oder ein automatisiertes Sy
 
  * Blobs können eine maximale unkomprimierte Größe bis zu 1 GB haben. Große Blobs mit Hunderten von MB sind aus Leistungssicht ideal.
  * Sie können Blobs mit Gzip komprimieren, um die Hochladezeit und Latenz der Daten zu verbessern, die zum Abfragen verfügbar sein sollen. Verwenden Sie die Dateierweiterung `.gz`.
+ * Es wird empfohlen, ein separates Speicherkonto für diesen Zweck zu verwenden, um zu vermeiden, dass Aufrufe von anderen Diensten zu Leistungseinbußen führen.
+ * Wenn sehr häufig Daten gesendet werden (jeweils nach wenigen Sekunden), wird empfohlen, zur Verbesserung der Leistung mehrere Speicherkonten zu verwenden.
+
  
 2. [Erstellen Sie einen SAS-Schlüssel (Shared Access Signature) für das Blob](../storage/storage-dotnet-shared-access-signature-part-2.md). Der Schlüssel muss eine Gültigkeitsdauer von einem Tag haben und Lesezugriff bieten.
 3. Erstellen Sie einen REST-Aufruf zum Benachrichtigen von Application Insights, dass Daten warten.
@@ -181,6 +194,7 @@ Die Daten stehen nach wenigen Minuten in Analytics zur Verfügung.
  * Der Datenquellenname ist falsch.
 
 Ausführlichere Informationen sind in der zurückgegebenen Fehlermeldung verfügbar.
+
 
 ## <a name="sample-code"></a>Beispielcode
 

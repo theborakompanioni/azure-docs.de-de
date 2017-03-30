@@ -1,6 +1,6 @@
 ---
 title: "Überwachung eines Azure Active Directory B2B-Zusammenarbeitsbenutzers und Berichterstellung | Microsoft-Dokumentation"
-description: Die Eigenschaften von Benutzern der Azure Active Directory B2B-Zusammenarbeit sind konfigurierbar.
+description: "Die Eigenschaften für Gastbenutzer sind in der Azure Active Directory B2B-Zusammenarbeit konfigurierbar."
 services: active-directory
 documentationcenter: 
 author: sasubram
@@ -13,19 +13,19 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/18/2017
+ms.date: 03/15/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: a4e25c0dab34f0977b4511046ad53f4c0b409990
-ms.openlocfilehash: fd2fe0046d0709bc4527cb680795610daae01a87
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 867a1c8dda37815663fa3fb095351fa3854a52cc
+ms.lasthandoff: 03/17/2017
 
 
 ---
 
 
 # <a name="auditing-and-reporting-a-b2b-collaboration-user"></a>Überwachung eines B2B-Zusammenarbeitsbenutzers und Berichterstellung
-Für Gastbenutzer können Sie in dieser Vorschau die gleichen Überwachungsfunktionen einrichten wie für Mitglieder. Hier sehen Sie ein Beispiel der Einladung und des Einlösungsverlaufs des Benutzers „Sam Oogle“, der vor Kurzem eingeladen wurde:
+Für Gastbenutzer können Sie in dieser Vorschau vergleichbare Überwachungsfunktionen einrichten wie für Mitglieder. Hier sehen Sie ein Beispiel für die Einladung und den Einlösungsverlauf des eingeladenen Benutzers „Sam Oogle“:
 
 ![Überwachungsprotokoll](./media/active-directory-b2b-auditing-and-reporting/audit-log.png)
 
@@ -33,7 +33,7 @@ Sie können für jedes dieser Ereignisse weitere Details anzeigen. Sehen wir uns
 
 ![Aktivitätsdetails](./media/active-directory-b2b-auditing-and-reporting/activity-details.png)
 
-Sie können diese Protokolle auch aus Azure AD exportieren und ein Berichterstellungstool Ihrer Wahl verwenden, um benutzerdefinierte Berichte zu erhalten.
+Sie können diese Protokolle auch aus Azure AD exportieren und ein Berichterstellungstool Ihrer Wahl verwenden, um benutzerdefinierte Berichte zu erstellen.
 
 ### <a name="next-steps"></a>Nächste Schritte
 

@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/18/2017
+ms.date: 03/18/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 1f6ce516629fd32b5efabce8682b45a3e575eaab
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 4bfd76a00ba694096ef0b045b14beb757ba0809f
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -89,6 +89,12 @@ Anhand des Feedbacks der Benutzer wurde die öffentliche Vorschau der B2B-Zusamm
 * Bereitstellen von PowerShell-Unterstützung für B2B-Zusammenarbeit
 
 * Bereitstellen von Überwachungs- und Berichtsfunktionen
+
+## <a name="help-us-shape-your-features"></a>Unterstützung bei der Entwicklung der Features
+ 
+Ihr Feedback zur Verbesserung der B2B-Zusammenarbeit nehmen wir sehr ernst. Werden Sie Teil der [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B/bd-p/AzureAD_B2b): Posten Sie Diskussionsbeiträge, teilen Sie uns Ihre Benutzerszenarien und bewährten Methoden mit, und lassen Sie uns wissen, was Ihnen an der Azure AD B2B-Zusammenarbeit gefällt.
+ 
+Senden Sie uns zudem über die Website [B2B Collaboration Ideas](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B-Ideas/idb-p/AzureAD_B2B_Ideas) Ihre Anregungen und Ideen, und stimmen Sie für zukünftige Features ab.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

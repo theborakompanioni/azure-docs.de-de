@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: brandwe
 translationtype: Human Translation
-ms.sourcegitcommit: 682f6d0919df20cd3643abf04e1d5192be116399
-ms.openlocfilehash: f20c2c2c37692d439ca8e023cf9d5a48cd42c973
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 707bb2b7cd9796e0e05234aa08002bbc1820f871
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -70,11 +70,11 @@ Gehen Sie wie folgt vor, um eine Anwendung zu erstellen:
 
       * Die **Anmelde-URL** ist die Basis-URL Ihrer Anwendung.  Die Standard-URL des Beispielcodes lautet `https://localhost:8080`.
 
-      * Die **App-ID-URI** ist eine eindeutige Kennung für die Anwendung. Standardmäßig wird `https://<tenant-domain>/<app-name>` verwendet, z.B.: `https://contoso.onmicrosoft.com/my-first-aad-app`.
-
 6. Nach Abschluss der Registrierung weist Azure AD Ihrer App eine eindeutige Anwendungs-ID zu. Diesen Wert benötigen Sie in den nächsten Abschnitten. Daher sollten Sie ihn von der Anwendungsseite kopieren.
 
-7. Erstellen Sie auf der Seite **Einstellungen** einen **Schlüssel** für Ihre Anwendung, und kopieren Sie ihn an einen zugänglichen Ort. Sie benötigen ihn in Kürze.
+7. Aktualisieren Sie auf der Seite **Einstellungen** -> **Eigenschaften** für Ihre Anwendung den App-ID-URI. Die **App-ID-URI** ist eine eindeutige Kennung für die Anwendung. Standardmäßig wird `https://<tenant-domain>/<app-name>` verwendet, z.B. `https://contoso.onmicrosoft.com/my-first-aad-app`.
+
+8. Erstellen Sie auf der Seite **Einstellungen** einen **Schlüssel** für Ihre Anwendung, und kopieren Sie ihn an einen zugänglichen Ort. Sie benötigen ihn in Kürze.
 
 ## <a name="step-3-download-nodejs-for-your-platform"></a>Schritt 3: Herunterladen von „Node.js“ für Ihre Plattform
 Für die Verwendung dieses Beispiels benötigen Sie eine funktionsfähige Installation von Node.js.

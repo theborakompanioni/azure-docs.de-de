@@ -12,12 +12,12 @@ ms.service: app-service-web
 ms.workload: web
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2017
+ms.date: 03/20/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: 9b6429027a0d9f95ddced8b6616693ac2959a014
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: b6b82aa6f129a008091e4abc1798b9b5d402c28e
+ms.lasthandoff: 03/21/2017
 
 ---
 
@@ -25,9 +25,9 @@ ms.lasthandoff: 03/10/2017
 
 Dieses Beispielskript erstellt eine Web-App in App Service mit den zugehörigen Ressourcen und richtet dann Continuous Deployment über ein GitHub-Repository ein. Informationen zur GitHub-Bereitstellung ohne Continuous Deployment finden Sie unter [Erstellen einer Web-App und Bereitstellen von Code über GitHub](app-service-powershell-deploy-github.md).
 
-Stellen Sie vor dem Ausführen dieses Skripts Folgendes sicher:
+Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/). Stellen Sie darüber hinaus Folgendes sicher:
 
-- Eine Verbindung mit Azure wurde mit dem Cmdlet `Login-AzureRmAccount` hergestellt.
+- Eine Verbindung mit Azure wurde mit dem Befehl `az login` hergestellt.
 - Der Anwendungscode befindet sich in einem öffentlichen oder privaten GitHub-Repository, das Sie besitzen.
 - Sie haben [ein Zugriffstoken in Ihrem GitHub-Konto erstellt](https://help.github.com/articles/creating-an-access-token-for-command-line-use/).
 
@@ -37,7 +37,7 @@ Stellen Sie vor dem Ausführen dieses Skripts Folgendes sicher:
 
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung 
 
-Nach Ausführung des Skriptbeispiels können mit dem folgenden Befehl die Ressourcengruppe, die Web-App und alle zugehörigen Ressourcen entfernt werden.
+Nach dem Ausführen des Skriptbeispiels können mit dem folgenden Befehl die Ressourcengruppe, die Web-App und alle zugehörigen Ressourcen entfernt werden.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup -Force
