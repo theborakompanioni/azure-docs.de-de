@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 7/3/2017
 ms.author: giladm
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 6b5b357c996f5c4642e61b09c5a7e5e0ec6a93c7
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: fdb80e3379adfa9d65d6e5891cb701cee86eb1b9
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -42,8 +42,8 @@ Die Überwachung von SQL-Datenbank bietet folgende Möglichkeiten:
 
 Es gibt zwei **Überwachungsmethoden**:
 
-* **Blobüberwachung**: Protokolle werden in Azure Blob Storage geschrieben. Dies ist eine neuere Überwachungsmethode, die eine **höhere Leistung** bietet, eine **detailliertere Überwachung auf Objektebene** unterstützt und **kostengünstiger** ist.
-* **Tabellenüberwachung**: Protokolle werden in Azure Table Storage geschrieben.
+* **Blobüberwachung**: Protokolle werden in Azure Blob Storage geschrieben. Dies ist eine neuere Überwachungsmethode, die eine **höhere Leistung** bietet, eine **detailliertere Überwachung auf Objektebene** unterstützt und **kostengünstiger** ist. Blobüberwachung wird in Zukunft die Tabellenüberwachung ersetzen.
+* **Tabellenüberwachung (veraltet):** Protokolle werden in Azure Table Storage geschrieben.
 
 > [!IMPORTANT]
 > Die Einführung der neuen Blobüberwachung bedeutet eine wichtige Änderung bei der Vererbung der Serverüberwachungsrichtlinie von der Datenbank. Weitere Details finden Sie im Abschnitt [Unterschiede für Blobs/Tabellen bei der Vererbung der Serverüberwachungsrichtlinie](#subheading-8).
@@ -79,7 +79,7 @@ Der folgende Abschnitt beschreibt die Konfiguration der Überwachung über das A
 7. Nachdem Sie Ihre Überwachungseinstellungen konfiguriert haben, können Sie das neue Feature **Bedrohungserkennung** (Vorschau) aktivieren und die E-Mail-Konten konfigurieren, an die Sicherheitswarnungen gesendet werden sollen. Mit der Bedrohungserkennung können Sie proaktive Warnungen bei anomalen Datenbankaktivitäten erhalten, die auf mögliche Sicherheitsbedrohungen hinweisen können. Weitere Informationen finden Sie unter [Erste Schritte mit der Bedrohungserkennung](sql-database-threat-detection-get-started.md).
 8. Klicken Sie auf **Speichern**.
 
-### <a id="subheading-2-2">Tabellenüberwachung</a>
+### <a id="subheading-2-2">Tabellenüberwachung</a> (veraltet)
 
 > Überprüfen Sie vor der Einrichtung der **Tabellenüberwachung**, ob Sie einen [„kompatiblen Client“](sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md) verwenden. Falls Sie strikte Firewalleinstellungen haben, beachten Sie außerdem, dass der [IP-Endpunkt Ihrer Datenbank geändert wird](sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md), wenn Sie die Tabellenüberwachung aktivieren.
 
@@ -119,7 +119,7 @@ Der folgende Abschnitt beschreibt die Konfiguration der Überwachung über das A
     > <br><br>
     > Andernfalls **wird empfohlen, die Blobüberwachung nur auf Serverebene zu aktivieren** und die Überwachung auf Datenbankebene für alle Datenbanken deaktiviert zu lassen.
 
-###<a name="atable-auditinga"></a><a>Tabellenüberwachung</a>
+###<a name="atable-auditinga-deprecated"></a><a>Tabellenüberwachung</a> (veraltet)
 
 Wenn **die Tabellenüberwachung auf Serverebene aktiviert ist**, gilt diese nur für die Datenbank, wenn auf dem Datenbankblatt das Kontrollkästchen „Einstellungen vom Server erben“ aktiviert ist (Dies ist für alle vorhandenen und neu erstellten Datenbanken standardmäßig aktiviert).
 
@@ -169,7 +169,7 @@ Es gibt verschiedene Methoden zum Anzeigen von Blobüberwachungsprotokollen:
 
 3. Wir haben eine **Beispielanwendung** erstellt, die in Azure ausgeführt wird und öffentliche OMS-APIs verwendet, um SQL-Überwachungsprotokolle für die Nutzung über das OMS-Dashboard per Push an OMS zu übertragen (Weitere Informationen finden Sie [hier](https://github.com/Microsoft/Azure-SQL-DB-auditing-OMS-integration)).
 
-### <a id="subheading-3-2">Tabellenüberwachung</a>
+### <a id="subheading-3-2">Tabellenüberwachung</a> (veraltet)
 Protokolle der Tabellenüberwachung werden als Sammlung von Azure-Speichertabellen mit dem Präfix **SQLDBAuditLogs** gespeichert.
 
 Weitere Informationen zum Format der Protokolle für die Tabellenüberwachung finden Sie unter [Formatreferenz für Tabellenüberwachungsprotokolle (DOC-Datei zum Herunterladen)](http://go.microsoft.com/fwlink/?LinkId=506733).
@@ -245,7 +245,7 @@ Sie können die Überwachung in Azure SQL-Datenbank auch mit den folgenden Autom
    * [Abrufen einer Richtlinie für die Überwachung von Datenbankblobs](https://msdn.microsoft.com/library/azure/mt695938.aspx)
    * [Abrufen einer Richtlinie für die Überwachung von Serverblobs](https://msdn.microsoft.com/library/azure/mt771860.aspx)
    * [Abrufen des Ergebnisses eines Überwachungsvorgangs für Serverblobs](https://msdn.microsoft.com/library/azure/mt771862.aspx)
-3. **REST-API – Tabellenüberwachung**
+3. **REST-API – Tabellenüberwachung (veraltet)**
 
    * [Erstellen oder Aktualisieren einer Richtlinie für die Überwachung von Datenbanken](https://msdn.microsoft.com/library/azure/mt604471.aspx)
    * [Erstellen oder Aktualisieren einer Richtlinie für die Überwachung von Servern](https://msdn.microsoft.com/library/azure/mt604383.aspx)

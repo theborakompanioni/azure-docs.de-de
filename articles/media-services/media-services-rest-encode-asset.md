@@ -1,5 +1,5 @@
 ---
-title: Codieren eines Medienobjekts mit Media Encoder Standard | Microsoft Docs
+title: Codieren eines Azure-Medienobjekts mit Media Encoder Standard | Microsoft Docs
 description: "Erfahren Sie, wie Sie Medieninhalte in Media Services mithilfe von Media Encoder Standard codieren können. Die Codebeispiele basieren auf der REST-API."
 services: media-services
 documentationcenter: 
@@ -15,50 +15,50 @@ ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
-ms.openlocfilehash: 6a0fcc28a3eadaba6bb28d23ab1f4632bea60652
-ms.lasthandoff: 02/11/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 4e56b8d97a650813dcea1fde9d74ddc29154605d
+ms.lasthandoff: 03/18/2017
 
 
 ---
-# <a name="how-to-encode-an-asset-using-media-encoder-standard"></a>Codieren eines Medienobjekts mit Media Encoder Standard
+# <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Codieren eines Medienobjekts mit Media Encoder Standard
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-encode-with-media-encoder-standard.md)
 > * [REST](media-services-rest-encode-asset.md)
 > * [Portal](media-services-portal-encode.md)
-> 
-> 
+>
+>
 
 ## <a name="overview"></a>Übersicht
-Um digitale Videos über das Internet zu übermitteln, müssen Sie die Medien komprimieren. Digitale Videodateien sind sehr umfangreich und möglicherweise zu groß, um sie über das Internet zu übermitteln oder auf den Geräten Ihrer Kunden ordnungsgemäß wiederzugeben. Bei der Codierung werden Video- und Audiodaten komprimiert, damit Ihre Kunden Ihre Medien anzeigen können.
+Um digitale Videos über das Internet zu übermitteln, müssen Sie die Medien komprimieren. Digitale Videodateien sind umfangreich und möglicherweise zu groß, um sie über das Internet zu übermitteln oder auf den Geräten Ihrer Kunden ordnungsgemäß wiederzugeben. Bei der Codierung werden Video- und Audiodaten komprimiert, damit Ihre Kunden Ihre Medien anzeigen können.
 
-Die Codierung ist einer der häufigsten Verarbeitungsvorgänge in Media Services. Sie erstellen Codierungsaufträge, um Mediendateien von einer Codierung in eine andere zu konvertieren. Zum Codieren können Sie den in Media Services integrierten Encoder (Media Encoder Standard) verwenden. Außerdem können Sie Codierer von Media Services-Partnern verwenden. Externe Codierer finden Sie im Azure Marketplace. Sie können Details zu Codierungsaufgaben angeben, indem Sie für Ihren Encoder vordefinierte Zeichenfolgen oder vordefinierte Konfigurationsdateien verwenden. Welche Arten von Voreinstellungen verfügbar sind, erfahren Sie unter [Aufgabenvoreinstellungen für Media Encoder Standard](http://msdn.microsoft.com/library/mt269960).
+Die Codierung ist einer der häufigsten Verarbeitungsvorgänge in Azure Media Services. Sie erstellen Codierungsaufträge, um Mediendateien von einer Codierung in eine andere zu konvertieren. Zum Codieren können Sie den in Media Services integrierten Encoder (Media Encoder Standard) verwenden. Sie können auch einen Encoder von einem Media Services-Partner verwenden. Drittanbieter-Encoder sind über den Azure Marketplace erhältlich. Sie können Details zu Codierungsaufgaben angeben, indem Sie für Ihren Encoder vordefinierte Zeichenfolgen oder vordefinierte Konfigurationsdateien verwenden. Welche Arten von Voreinstellungen verfügbar sind, erfahren Sie unter [Aufgabenvoreinstellungen für Media Encoder Standard](http://msdn.microsoft.com/library/mt269960).
 
 Je nach Art der Verarbeitung, die Sie durchführen möchten, können einem Auftrag eine oder mehrere Aufgaben zugeordnet sein. Sie haben zwei Möglichkeiten, um über die REST-API Aufträge und die zugehörigen Aufgaben zu erstellen:
 
-* Aufgaben können inline über Aufgabennavigationseigenschaft in Auftragsentitäten oder
-* durch OData-Batchverarbeitung definiert werden.
+* Aufgaben können inline über Navigationseigenschaft „Tasks“ in Auftragsentitäten definiert werden.
+* Verwenden Sie OData-Batchverarbeitung.
 
-Es wird empfohlen, Zwischendateien immer in einen MP4-Satz mit adaptiver Bitrate zu codieren und anschließend mithilfe der [dynamischen Paketerstellung](media-services-dynamic-packaging-overview.md)in das gewünschte Format zu konvertieren.
+Wir empfehlen, Zwischendateien immer in einen MP4-Satz mit adaptiver Bitrate zu codieren und anschließend mithilfe der [dynamischen Paketerstellung](media-services-dynamic-packaging-overview.md) in das gewünschte Format zu konvertieren.
 
 Wenn Ihr Ausgabemedienobjekt speicherverschlüsselt ist, müssen Sie die Übermittlungsrichtlinien für Medienobjekte konfigurieren. Weitere Informationen finden Sie unter [Konfigurieren von Übermittlungsrichtlinien für Medienobjekte](media-services-rest-configure-asset-delivery-policy.md).
 
 > [!NOTE]
 > Bevor Sie mit dem Verweisen auf Medienprozessoren beginnen, stellen Sie sicher, dass Sie über die richtige Medienprozessor-ID verfügen. Weitere Informationen finden Sie unter [Abrufen von Medienprozessoren](media-services-rest-get-media-processor.md).
-> 
-> 
+>
+>
 
 ## <a name="create-a-job-with-a-single-encoding-task"></a>Erstellen eines Auftrags mit einer einzelnen Codierungsaufgabe
 > [!NOTE]
 > Beim Verwenden der Media Services REST-API gelten die folgenden Überlegungen:
-> 
+>
 > Wenn Sie in Media Services auf Entitäten zugreifen, müssen Sie bestimmte Headerfelder und Werte in Ihren HTTP-Anforderungen festlegen. Weitere Informationen finden Sie unter [Installation für die Entwicklung mit der Media Services-REST-API](media-services-rest-how-to-use.md).
-> 
+>
 > Nach der erfolgreichen Verbindung mit „https://media.windows.net“ erhalten Sie eine 301 Redirect-Antwort, in der ein anderer Media Services-URI angegeben ist. Entsprechend der Beschreibung unter [Herstellen einer Verbindung mit einem Media Services-Konto über die Media Services-REST-API](media-services-rest-connect-programmatically.md)müssen Sie nachfolgende Aufrufe an den neuen URI senden.
-> 
-> Wenn Sie JSON verwenden und angeben, dass das Schlüsselwort **__metadata** in der Anforderung verwendet werden soll (z. B. für Verweise auf ein verknüpftes Objekt), MÜSSEN Sie den **Accept**-Header auf das [ausführliche JSON-Format](http://www.odata.org/documentation/odata-version-3-0/json-verbose-format/) festlegen: Accept: application/json;odata=verbose.
-> 
-> 
+>
+> Wenn Sie JSON verwenden und angeben, dass das Schlüsselwort **__metadata** in der Anforderung verwendet werden soll (z.B. für Verweise auf ein verknüpftes Objekt), müssen Sie den **Accept**-Header auf das [ausführliche JSON-Format](http://www.odata.org/documentation/odata-version-3-0/json-verbose-format/) festlegen: Accept: application/json;odata=verbose.
+>
+>
 
 Das folgende Beispiel zeigt, wie Sie einen Auftrag mit einer Aufgabe erstellen und bereitstellen, die für die Codierung eines Videos mit einer bestimmten Auflösung und Qualität konfiguriert wurde. Bei der Codierung mit Media Encoder Standard können Sie die [hier](http://msdn.microsoft.com/library/mt269960)angegebenen Voreinstellungen für die Aufgabenkonfiguration verwenden.
 
@@ -80,7 +80,7 @@ Antwort:
 
     HTTP/1.1 201 Created
 
-    . . . 
+    . . .
 
 ### <a name="set-the-output-assets-name"></a>Festlegen des Namens des Ausgabemedienobjekts
 Im folgenden Beispiel wird gezeigt, wie das AssetName-Attribut festgelegt wird:
@@ -88,23 +88,23 @@ Im folgenden Beispiel wird gezeigt, wie das AssetName-Attribut festgelegt wird:
     { "TaskBody" : "<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset assetName=\"CustomOutputAssetName\">JobOutputAsset(0)</outputAsset></taskBody>"}
 
 ## <a name="considerations"></a>Überlegungen
-* TaskBody-Eigenschaften MÜSSEN literalen XML-Code verwenden, um die Anzahl der von der Aufgabe verwendeten Eingabe- oder Ausgabemedienobjekte zu definieren. Das Thema „Aufgabe“ enthält die XML-Schemadefinition für den XML-Code.
+* TaskBody-Eigenschaften müssen literale XML-Elemente verwenden, um die Anzahl der vom Task verwendeten Eingabe- oder Ausgabemedienobjekte zu definieren. Das Thema „Aufgabe“ enthält die XML-Schemadefinition für den XML-Code.
 * In der "TaskBody"-Definition muss jeder interne Wert für <inputAsset> und <outputAsset> als "JobInputAsset(value)" oder "JobOutputAsset(value)" festgelegt werden.
 * Eine Aufgabe kann mehrere Ausgabemedienobjekte besitzen. Ein JobOutputAsset(x)-Objekt kann nur ein Mal als Ausgabe einer Aufgabe in einem Auftrag verwendet werden.
 * Sie können JobInputAsset oder JobOutputAsset als Eingabemedienobjekt einer Aufgabe angeben.
 * Aufgaben dürfen keine Schleife bilden.
-* Der Value-Parameter, den Sie an JobInputAsset oder JobOutputAsset übergeben, stellt den Indexwert für ein Medienobjekt dar. Die tatsächlichen Medienobjekte werden in den Navigationseigenschaften InputMediaAssets und OutputMediaAssets für die Auftragsentitätsdefinition definiert. 
-* Da Media Services als Grundlage OData v3 verwendet, wird auf die einzelnen Medienobjekte in den Navigationseigenschaftenauflistungen InputMediaAssets und OutputMediaAssets durch das Name-Wert-Paar „__metadata: uri“ verwiesen.
+* Der Value-Parameter, den Sie an JobInputAsset oder JobOutputAsset übergeben, stellt den Indexwert für ein Medienobjekt dar. Die tatsächlichen Medienobjekte werden in den Navigationseigenschaften „InputMediaAssets“ und „OutputMediaAssets“ für die Auftragsentitätsdefinition definiert.
+* Da Media Services als Grundlage OData v3 verwendet, wird auf die einzelnen Medienobjekte in den InputMediaAssets- und OutputMediaAssets-Navigationseigenschaftensammlungen durch das Name-Wert-Paar „__metadata : uri“ verwiesen.
 * InputMediaAssets ist mindestens einem Medienobjekt zugeordnet, das Sie in Media Services erstellt haben. OutputMediaAssets werden vom System erstellt. Sie verweisen nicht auf ein vorhandenes Medienobjekt.
-* OutputMediaAssets können mithilfe des assetName-Attributs benannt werden. Wenn dieses Attribut nicht vorhanden ist, wird als Name von OutputMediaAsset der interne Textwert des <outputAsset>-Elements mit dem Wert des Auftragsnamens oder der Auftrags-ID (falls die Name-Eigenschaft nicht definiert ist) als Suffix verwendet. Wenn Sie für assetName z. B. den Wert „Sample“ festlegen, wird die Name-Eigenschaft von OutputMediaAsset auf „Sample“ festgelegt. Wenn Sie jedoch keinen Wert für assetName festgelegt haben, der Auftragsname jedoch auf NewJob festgelegt wurde, wird OutputMediaAsset der Name JobOutputAsset(Wert)_NewJob zugewiesen. 
+* OutputMediaAssets können mithilfe des assetName-Attributs benannt werden. Wenn dieses Attribut nicht vorhanden ist, wird als Name von „OutputMediaAsset“ der interne Textwert des <outputAsset>-Elements mit dem Wert des Auftragsnamens oder der Auftrags-ID (falls die „Name“-Eigenschaft nicht definiert ist) als Suffix verwendet. Wenn Sie für assetName z.B. den Wert „Sample“ festlegen, wird die Name-Eigenschaft von OutputMediaAsset auf „Sample“ festgelegt. Wenn Sie jedoch keinen Wert für assetName festgelegt haben, der Auftragsname jedoch auf „NewJob“ festgelegt wurde, wird OutputMediaAsset der Name „JobOutputAsset(Wert)_NewJob“ zugewiesen.
 
 ## <a name="create-a-job-with-chained-tasks"></a>Erstellen eines Auftrags mit verketteten Aufgaben
 In zahlreichen Anwendungsszenarien möchten Entwickler eine Reihe von Verarbeitungsaufgaben erstellen. In Media Services können Sie eine Reihe verketteter Aufgaben erstellen. In jeder Aufgabe können verschiedene Verarbeitungsschritte ausgeführt und unterschiedliche Medienprozessoren verwendet werden. Innerhalb der verketteten Aufgaben kann ein Medienobjekt von einer Aufgabe an eine andere übergeben werden, sodass eine lineare Aufgabensequenz auf das Medienobjekt angewendet wird. In einem Auftrag ausgeführte Aufgaben müssen jedoch nicht sequenziell sein. Beim Erstellen einer verketteten Aufgabe werden die verketteten **ITask**-Objekte in einem einzelnen **IJob-Objekt** erstellt.
 
 > [!NOTE]
 > Die Aufgabenanzahl ist derzeit auf 30 Aufgaben pro Auftrag begrenzt. Wenn Sie mehr als 30 Aufgaben verketten müssen, erstellen Sie mehrere Aufträge, um die Aufgaben zu verteilen.
-> 
-> 
+>
+>
 
     POST https://media.windows.net/api/Jobs HTTP/1.1
     Content-Type: application/json;odata=verbose
@@ -206,10 +206,10 @@ Das folgende Beispiel zeigt die Verwendung von OData-Batchverarbeitung zum Erste
 
 
 
-## <a name="create-a-job-using-a-jobtemplate"></a>Erstellen eines Auftrags mithilfe einer JobTemplate
-Bei der Verarbeitung von mehreren Medienobjekten, die einen gemeinsamen Satz von Aufgaben verwenden, eignen sich JobTemplates zum Festlegen der Standardaufgabenvorgaben, der Reihenfolge von Aufgaben usw.
+## <a name="create-a-job-by-using-a-jobtemplate"></a>Erstellen eines Auftrags mithilfe einer JobTemplate
+Bei der Verarbeitung mehrerer Medienobjekte unter Verwendung eines gemeinsamen Satzes von Aufgaben verwenden Sie eine JobTemplate zum Festlegen der Standardaufgabenvorgaben oder der Aufgabenreihenfolge.
 
-Das folgende Beispiel zeigt, wie eine JobTemplate mit einer inline definierten TaskTemplate erstellt wird. Die TaskTemplate verwendet Media Encoder Standard als MediaProcessor zum Codieren der Assetdatei. Es können jedoch auch andere MediaProcessors verwendet werden. 
+Das folgende Beispiel zeigt, wie eine JobTemplate mit einer inline definierten TaskTemplate erstellt wird. Die TaskTemplate verwendet Media Encoder Standard als MediaProcessor zum Codieren der Medienobjektdatei. Es können jedoch auch andere MediaProcessors verwendet werden.
 
     POST https://media.windows.net/API/JobTemplates HTTP/1.1
     Content-Type: application/json;odata=verbose
@@ -226,8 +226,8 @@ Das folgende Beispiel zeigt, wie eine JobTemplate mit einer inline definierten T
 
 > [!NOTE]
 > Im Gegensatz zu anderen Media Services-Entitäten müssen Sie eine neue GUID für jede TaskTemplate definieren und diese in der TaskTemplateId- und ID-Eigenschaft im Anforderungstext platzieren. Das Inhaltsidentifikationsschema muss das unter "Identifizieren von Azure Media Services-Entitäten" beschriebene Schema befolgen. Darüber hinaus können JobTemplates nicht aktualisiert werden. Stattdessen müssen Sie eine neue Vorlage mit Ihren aktualisierten Änderungen erstellen.
-> 
-> 
+>
+>
 
 Im Erfolgsfall wird die folgende Antwort zurückgegeben:
 
@@ -255,7 +255,7 @@ Im Erfolgsfall wird die folgende Antwort zurückgegeben:
 
     HTTP/1.1 201 Created
 
-    . . . 
+    . . .
 
 
 
@@ -266,9 +266,8 @@ Im Erfolgsfall wird die folgende Antwort zurückgegeben:
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
-Sie sind nun in der Lage, einen Auftrag zur Codierung von Medienobjekten zu erstellen und können mit dem Thema [How To Check Job Progress with Media Services](media-services-rest-check-job-progress.md) (Prüfen des Auftragsfortschritts mit Mediendiensten, in englischer Sprache) fortfahren.
+Sie sind nun in der Lage, einen Auftrag zur Codierung von Medienobjekten zu erstellen und können mit dem Thema [Prüfen des Auftragsfortschritts mit Media Services](media-services-rest-check-job-progress.md) fortfahren.
 
 ## <a name="see-also"></a>Weitere Informationen
 [Abrufen von Medienprozessoren](media-services-rest-get-media-processor.md)
-
 

@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: brandwe
 translationtype: Human Translation
-ms.sourcegitcommit: f9809095128d0069d076d18486cae05b65498fa8
-ms.openlocfilehash: bde8ef9c4f51c38f8e5b41857be02ade43260824
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 9ae8852c02361ff11c302f86cb5c53e01a48068a
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -57,13 +58,14 @@ In diesem Schritt registrieren Sie die Web-API, die Sie lokal zum Testen dieses 
 Es wird davon ausgegangen, dass Sie die zuvor erwähnte TODO-REST-API registrieren. Dies funktioniert allerdings für alle Web-APIs, die Sie mit Azure Active Directory schützen möchten.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
-2. Klicken Sie auf der oberen Leiste auf Ihr Konto. Wählen Sie in der Verzeichnisliste** **den Azure AD-Mandanten aus, bei dem Sie Ihre Anwendung registrieren möchten.
+2. Klicken Sie auf der oberen Leiste auf Ihr Konto. Wählen Sie in der **Verzeichnis** den Azure AD-Mandanten aus, bei dem Sie Ihre Anwendung registrieren möchten.
 3. Klicken Sie im linken Bereich auf **Weitere Dienste**, und wählen Sie **Azure Active Directory** aus.
 4. Klicken Sie auf **App-Registrierungen**, und wählen Sie **Hinzufügen** aus.
 5. Geben Sie einen Anzeigenamen für die Anwendung ein, z.B. **TodoListService**, wählen Sie **Webanwendung und/oder Web-API** aus, und klicken Sie auf **Weiter**.
 6. Geben Sie als Anmelde-URL die Basis-URL für das Beispiel ein. Standardmäßig ist dies `https://localhost:8080`.
-7. Geben Sie als App-ID-URI `https://<your_tenant_name>/TodoListService` ein. Ersetzen Sie `<your_tenant_name>` durch den Namen des Azure AD-Mandanten. Klicken Sie auf **OK**, um die Registrierung abzuschließen.
+7. Klicken Sie auf **OK**, um die Registrierung abzuschließen.
 8. Wechseln Sie jetzt im Azure-Portal zur Anwendungsseite, suchen Sie den Wert der Anwendungs-ID, und notieren Sie ihn. Sie benötigen ihn später für die Konfiguration Ihrer Anwendung.
+9. Aktualisieren Sie auf der Seite **Einstellungen** -> **Eigenschaften** den App-ID-URI: Geben Sie `https://<your_tenant_name>/TodoListService` ein. Ersetzen Sie `<your_tenant_name>` durch den Namen des Azure AD-Mandanten.
 
 ## <a name="step-3-register-the-sample-android-native-client-application"></a>Schritt 3: Registrieren der systemeigenen Android-Beispiel-Clientanwendung
 Sie müssen Ihre Webanwendung in diesem Beispiel registrieren. Nur so kann die Anwendung mit der eben registrierten Web-API kommunizieren. Azure AD verweigert Ihrer Anwendung sogar die Anforderung einer Anmeldung, wenn sie nicht registriert ist. Dies ist Teil der Sicherheit dieses Modells.
@@ -74,7 +76,7 @@ Es wird davon ausgegangen, dass Sie die zuvor erwähnte Beispielanwendung regist
 > Sie könnten sich fragen, warum Sie eine Anwendung und eine Web-API auf einem Mandanten bereitstellen. Wie Sie vielleicht schon vermuten, können Sie eine App erstellen, von der auf eine externe API zugegriffen wird, die von einem anderen Mandanten aus in Azure AD registriert wurde. Wenn Sie dies tun, werden Ihre Kunden aufgefordert, der Verwendung der API in der Anwendung zuzustimmen. Die Active Directory Authentication Library für iOS führt diese Zustimmung für Sie durch. Wenn wir uns mit den erweiterten Funktionen beschäftigen, werden Sie feststellen, dass dies ein wichtiger Teil der Aufgaben ist, die für den Zugriff auf die Suite der Microsoft-APIs von Azure und Office sowie anderer Dienstanbieter erforderlich sind. Da Sie aber nun sowohl Ihre Web-API als auch Ihre Anwendung unter dem gleichen Mandanten registriert haben, wird Ihnen keine Aufforderung zur Zustimmung angezeigt. Dies ist eher die Regel, wenn Sie eine Anwendung nur für Ihr eigenes Unternehmen entwickeln.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
-2. Klicken Sie auf der oberen Leiste auf Ihr Konto. Wählen Sie in der Verzeichnisliste** **den Azure AD-Mandanten aus, bei dem Sie Ihre Anwendung registrieren möchten.
+2. Klicken Sie auf der oberen Leiste auf Ihr Konto. Wählen Sie in der **Verzeichnis** den Azure AD-Mandanten aus, bei dem Sie Ihre Anwendung registrieren möchten.
 3. Klicken Sie im linken Bereich auf **Weitere Dienste**, und wählen Sie **Azure Active Directory** aus.
 4. Klicken Sie auf **App-Registrierungen**, und wählen Sie **Hinzufügen** aus.
 5. Geben Sie einen Anzeigenamen für die Anwendung ein, z.B. **TodoListClient-Android**, wählen Sie **Systemeigene Clientanwendung** aus, und klicken Sie auf **Weiter**.
@@ -384,9 +386,4 @@ ADAL, Version 1.1.0, unterstützt ein NTLM-Dialogfeld, das über das onReceivedH
 Informationen zum Aktivieren von App-übergreifendem SSO unter Android mit ADAL finden Sie [hier](active-directory-sso-android.md).  
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

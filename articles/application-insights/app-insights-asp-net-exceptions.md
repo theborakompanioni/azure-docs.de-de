@@ -1,22 +1,22 @@
 ---
-title: Diagnostizieren von Fehlern und Ausnahmen in Web-Apps mit Azure Application Insights | Microsoft-Dokumentation
+title: Diagnostizieren von Fehlern und Ausnahmen in Web-Apps mit Azure Application Insights | Microsoft Docs
 description: Erfassen von Ausnahmen von ASP.NET-Apps zusammen mit der Anforderungstelemetrie.
 services: application-insights
 documentationcenter: .net
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: d1e98390-3ce4-4d04-9351-144314a42aa2
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
-ms.openlocfilehash: c4a20fe310d9a70bb3a954bd936daf6f3d432db9
-ms.lasthandoff: 02/02/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 2f046ff687985a5c4f83ca7236ce832b4c81ea6e
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -50,31 +50,25 @@ Beachten Sie, dass Sie den Bericht so filtern können, dass nur Ausnahmen angeze
 *Es werden keine Ausnahmen angezeigt? Informationen hierzu finden Sie unter [Erfassen von Ausnahmen](#exceptions).*
 
 Klicken Sie auf einen Ausnahmebericht, um dessen Stapelüberwachung anzuzeigen.
+Klicken Sie in der Stapelüberwachung auf einen Zeilenverweis, um die entsprechende Codedatei zu öffnen.  
 
-![Klicken Sie sich durch eine Ausnahme.](./media/app-insights-asp-net-exceptions/35.png)
+Beachten Sie, dass CodeLens im Code Daten zu den Ausnahmen anzeigt:
 
-Klicken Sie in der Stapelüberwachung auf einen Zeilenverweis, um die entsprechende Datei zu öffnen.  
+![CodeLens-Benachrichtigung über Ausnahmen.](./media/app-insights-asp-net-exceptions/35.png)
 
 ## <a name="diagnosing-failures-using-the-azure-portal"></a>Diagnostizieren von Fehlern im Azure-Portal
 In der Application Insights-Übersicht Ihrer App zeigt die Kachel „Fehler“ Ihnen Diagramme mit Ausnahmen und Fehlern bei HTTP-Anforderungen zusammen mit einer Liste der Anforderungs-URLs an, die die häufigsten Fehler verursachen.
 
 ![Wählen Sie „Einstellungen > Fehler“ aus.](./media/app-insights-asp-net-exceptions/012-start.png)
 
-Klicken Sie in der Liste auf einen der fehlerhaften Anforderungstypen, um zu einzelnen Vorkommen des Fehlers gelangen. Klicken Sie von dort aus auf die Ausnahmen oder die diesen zugeordneten Ablaufverfolgungsdaten:
+Klicken Sie in der Liste auf einen der Ausnahmetypen mit Fehlern, um zu den einzelnen Vorkommen der Ausnahme zu gelangen. Dort können Sie die Details und die Stapelüberwachung einsehen:
 
 ![Wählen Sie eine Instanz einer fehlerhaften Anforderung aus, und rufen Sie unter Ausnahmedetails die Instanzen der Ausnahme ab.](./media/app-insights-asp-net-exceptions/030-req-drill.png)
 
-**Alternativ** können Sie von der Liste der Ausnahmen ausgehen, die Sie weiter unten auf dem Blatt "Fehler" finden. Klicken Sie weiter, bis schließlich einzelne Ausnahmen angezeigt werden.
-
-![Drillthrough](./media/app-insights-asp-net-exceptions/040-exception-drill.png)
+**Alternativ** können Sie in der Liste der Anforderungen beginnen und nach zugehörigen Ausnahmen suchen.
 
 *Es werden keine Ausnahmen angezeigt? Informationen hierzu finden Sie unter [Erfassen von Ausnahmen](#exceptions).*
 
-Von dort aus können Sie sich die Stapelüberwachung und detaillierte Eigenschaften der einzelnen Ausnahmen anzeigen und zugehörige Protokollablaufverfolgungs- oder andere Ereignisse finden.
-
-![Drillthrough](./media/app-insights-asp-net-exceptions/050-exception-properties.png)
-
-[Erfahren Sie mehr über die Diagnosesuche](app-insights-diagnostic-search.md).
 
 ## <a name="custom-tracing-and-log-data"></a>Benutzerdefinierte Ablaufverfolgung und Protokolldaten
 Um spezifische Diagnosedaten für Ihre App zu erhalten, können Sie Code zum Senden Ihrer eigenen Telemetriedaten einfügen. Diese werden in der Diagnosesuche neben der Anforderung, der Seitenansicht und anderen automatisch erfassten Daten angezeigt.
@@ -104,7 +98,7 @@ Anforderungsdetails enthalten nicht die Daten, die in einem POST-Aufruf an Ihre 
 
 ![Drillthrough](./media/app-insights-asp-net-exceptions/060-req-related.png)
 
-## <a name="a-nameexceptionsa-capturing-exceptions-and-related-diagnostic-data"></a><a name="exceptions"></a> Erfassen von Ausnahmen und zugehörigen Diagnosedaten
+## <a name="exceptions"></a> Erfassen von Ausnahmen und zugehörigen Diagnosedaten
 Zunächst werden im Portal nicht alle Ausnahmen angezeigt, die in Ihrer App zu Fehlern führen. Sie sehen alle Browserausnahmen (bei Verwendung des [JavaScript-SDK](app-insights-javascript.md) in Ihren Webseiten). Die meisten Serverausnahmen werden jedoch von IIS abgefangen, und Sie müssen ein wenig Code schreiben, um sie anzuzeigen.
 
 Sie können:
@@ -437,6 +431,10 @@ Wenn Sie den [Application Insights-Agent auf Ihrem Server installiert haben](app
 .NET Framework berechnet die Rate, indem die Anzahl von Ausnahmen innerhalb eines Intervalls gezählt und diese durch die Länge des Intervalls geteilt wird.
 
 Beachten Sie, dass sich der Wert von der Anzahl der "Ausnahmen" unterscheidet, die vom Application Insights-Portal durch Zählen von TrackException-Meldungen berechnet wird. Die Samplingintervalle sind unterschiedlich, und das SDK sendet keine TrackException-Meldungen für alle behandelten und nicht behandelten Ausnahmen.
+
+## <a name="video"></a>Video
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player] 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Überwachen von REST, SQL und anderen Aufrufen von Abhängigkeiten](app-insights-asp-net-dependencies.md)

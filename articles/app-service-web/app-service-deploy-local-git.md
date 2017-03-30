@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 06/13/2016
 ms.author: dariagrigoriu
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: 5842188b5d0a66436db7ab0f6b85bf14b4759c50
-ms.lasthandoff: 01/20/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 657554ee3929572632dc007d1a6500e59e2a6b97
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -37,7 +37,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 > 
 > 
 
-## <a name="a-namestep1astep-1-create-a-local-repository"></a><a name="Step1"></a>Schritt 1: Erstellen eines lokalen Repositorys
+## <a name="Step1"></a>Schritt 1: Erstellen eines lokalen Repositorys
 Führen Sie die folgenden Aufgaben durch, um ein neues Git-Repository zu erstellen.
 
 1. Starten Sie eine Befehlszeile wie **GitBash** (Windows) oder **Bash** (Unix Shell). Auf OS X-Systemen können Sie auf die Befehlszeile über die **Terminal** -Anwendung zugreifen.
@@ -46,7 +46,7 @@ Führen Sie die folgenden Aufgaben durch, um ein neues Git-Repository zu erstell
    
         git init
 
-## <a name="a-namestep2astep-2-commit-your-content"></a><a name="Step2"></a>Schritt 2: Ausführen eines Commits für die Inhalte
+## <a name="Step2"></a>Schritt 2: Ausführen eines Commits für die Inhalte
 App Service unterstützt in verschiedenen Programmiersprachen erstellte Anwendungen. 
 
 1. Wenn das Repository bereits Inhalt enthält, überspringen Sie diesen Punkt, und fahren Sie mit Punkt 2 weiter unten fort. Enthält Ihr Repository noch keinen Inhalt, nehmen Sie ihn einfach wie folgt mit einer statischen HTML-Datei auf: 
@@ -60,7 +60,7 @@ App Service unterstützt in verschiedenen Programmiersprachen erstellte Anwendun
    
         git commit -m "Hello Azure App Service"
 
-## <a name="a-namestep3astep-3-enable-the-app-service-app-repository"></a><a name="Step3"></a>Schritt 3: Aktivieren des App Service-App-Repositorys
+## <a name="Step3"></a>Schritt 3: Aktivieren des App Service-App-Repositorys
 Führen Sie die folgenden Schritte durch, um ein Git-Repository für Ihre App Service-App zu aktivieren.
 
 1. Melden Sie sich beim [Azure-Portal]an.
@@ -71,7 +71,7 @@ Führen Sie die folgenden Schritte durch, um ein Git-Repository für Ihre App Se
    
     ![](./media/app-service-deploy-local-git/deployment_credentials.png)
 
-## <a name="a-namestep4astep-4-deploy-your-project"></a><a name="Step4"></a>Schritt 4: Bereitstellen des Projekts
+## <a name="Step4"></a>Schritt 4: Bereitstellen des Projekts
 Führen Sie die folgenden Schritte durch, um Ihre App mit einem lokalen Git in App Service zu veröffentlichen:
 
 1. Klicken Sie im Azure-Portal auf dem Blatt Ihrer App für die **Git-URL** auf **Einstellungen > Eigenschaften**.
@@ -97,7 +97,7 @@ Führen Sie die folgenden Schritte durch, um Ihre App mit einem lokalen Git in A
     ![](./media/app-service-deploy-local-git/deployment_history.png)
 6. Klicken Sie oben auf dem App-Blatt auf die Schaltfläche **Durchsuchen** , um zu überprüfen, ob die Inhalte bereitgestellt wurden. 
 
-## <a name="a-namestep5atroubleshooting"></a><a name="Step5"></a>Problembehandlung
+## <a name="Step5"></a>Problembehandlung
 Die folgenden Fehler und Probleme treten häufiger auf, wenn Git zum Veröffentlichen in einer App Service-App in Azure verwendet wird:
 
 - - -
@@ -133,6 +133,15 @@ Die folgenden Fehler und Probleme treten häufiger auf, wenn Git zum Veröffentl
     git push azure master
 
 - - -
+**Symptom:** Fehler bei RPC; Ergebnis = 22, HTTP-Code = 502.
+
+**Ursache:** Dieser Fehler kann auftreten, wenn Sie versuchen, ein großes Git-Repository über HTTPS mithilfe von Push zu übertragen.
+
+**Lösung:** Ändern Sie die Git-Konfiguration auf dem lokalen Computer, sodass der postBuffer größer ist.
+
+    git config --global http.postBuffer 524288000
+
+- - -
 **Symptom**: Fehler – Änderungen an Remote-Repository vorgenommen, die Web-App wurde jedoch nicht aktualisiert.
 
 **Ursache**: Dieser Fehler kann auftreten, wenn Sie eine Node.js-App mit einer Datei „package.json“ bereitstellen, die zusätzliche erforderliche Module angibt.
@@ -147,12 +156,12 @@ Die folgenden Fehler und Probleme treten häufiger auf, wenn Git zum Veröffentl
       OR
   * npm ERR! [modulename@version] preinstall: \`make || gmake\`
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+## <a name="additional-resources"></a>Weitere Ressourcen
 * [Git-Dokumentation](http://git-scm.com/documentation)
 * [Project Kudu documentation](https://github.com/projectkudu/kudu/wiki)
 * [Kontinuierliche Bereitstellung in Azure App Service](app-service-continuous-deployment.md)
 * [Verwenden von PowerShell für Azure](/powershell/azureps-cmdlets-docs)
-* [Verwenden der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md)
+* [Verwenden der Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md)
 
 [Azure App Service]: https://azure.microsoft.com/documentation/articles/app-service-changes-existing-services/
 [Azure Developer Center]: http://www.windowsazure.com/en-us/develop/overview/

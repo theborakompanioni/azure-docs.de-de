@@ -14,11 +14,12 @@ ms.custom: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 01/10/2017
+ms.date: 03/17/2017
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: 5e41a20f563eab6b236eaa6eaf0ce1d20ebfa493
-ms.openlocfilehash: d8982dda38df92c94e7dac4b5a1cf451bab3a5ce
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 81de52ac95aaf1b6d02572a70a4c1a84fb541401
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -89,7 +90,7 @@ Wenn die Voraussetzungen erfüllt sind, müssen Sie zunächst einen Windows Serv
 3. Wählen Sie **Statische IP-Adresse** aus, und geben Sie im Textfeld für die Adresse eine verfügbare Adresse aus dem Subnetz an, in dem sich die SQL Server-Instanz befindet. Klicken Sie dann auf **OK**.
 4. Klicken Sie im Abschnitt **Hauptressourcen des Clusters** mit der rechten Maustaste auf den Clusternamen, und klicken Sie anschließend auf **Online schalten**. Warten Sie dann, bis beide Ressourcen online sind. Wenn die Clusternamensressource online ist, aktualisiert sie den DC-Server mit einem neuen AD-Computerkonto. Verwenden Sie dieses AD-Konto zum späteren Ausführen des Clusterdiensts der Verfügbarkeitsgruppe.
 
-### <a name="a-nameaddnodeaadd-the-other-sql-server-to-cluster"></a><a name="addNode"></a>Hinzufügen der anderen SQL Server-Instanz zum Cluster
+### <a name="addNode"></a>Hinzufügen der anderen SQL Server-Instanz zum Cluster
 
 Fügen Sie die andere SQL Server-Instanz dem Cluster hinzu.
 
@@ -130,7 +131,7 @@ In diesem Beispiel erstellt der Windows-Cluster mithilfe einer Dateifreigabe ein
 
    ![Neue Freigabe](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/48-newshare.png)
 
-   Erstellen Sie mithilfe des Assistenten zum Erstellen von Ordnerfreigaben** **eine Freigabe.
+   Erstellen Sie mithilfe des Assistenten zum Erstellen von Ordnerfreigaben****eine Freigabe.
 
 1. Klicken Sie unter **Ordnerpfad** auf **Durchsuchen**, und navigieren Sie zu einem Pfad für den freigegebenen Ordner, oder erstellen Sie einen Pfad. Klicken Sie auf **Weiter**.
 
@@ -160,7 +161,7 @@ Legen Sie als Nächstes das Clusterquorum fest.
 
    ![Neue Freigabe](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/52-configurequorum.png)
 
-1. Klicken Sie im Assistenten zum Konfigurieren des Clusterquorums** **auf **Weiter**.
+1. Klicken Sie im Assistenten zum Konfigurieren des Clusterquorums****auf **Weiter**.
 
 1. Wählen Sie unter **Quorumkonfigurationsoption auswählen** die Option **Quorumzeugen auswählen** aus, und klicken Sie anschließend auf **Weiter**.
 
@@ -222,7 +223,7 @@ Repeat these steps on the second SQL Server.
 7. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf **Datenbanken**, und klicken Sie anschließend auf **Neue Datenbank**.
 8. Geben Sie unter **Datenbankname** den Namen **MyDB1** ein, und klicken Sie dann auf **OK**.
 
-### <a name="a-namebackupsharea-create-a-backup-share"></a><a name="backupshare"></a> Erstellen einer Sicherungsfreigabe
+### <a name="backupshare"></a> Erstellen einer Sicherungsfreigabe
 
 1. Klicken Sie auf dem ersten SQL Server unter **Server-Manager** auf **Tools**. Öffnen Sie **Computerverwaltung**.
 
@@ -232,7 +233,7 @@ Repeat these steps on the second SQL Server.
 
    ![Neue Freigabe](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/48-newshare.png)
 
-   Erstellen Sie mithilfe des Assistenten zum Erstellen von Ordnerfreigaben** **eine Freigabe.
+   Erstellen Sie mithilfe des Assistenten zum Erstellen von Ordnerfreigaben****eine Freigabe.
 
 1. Klicken Sie unter **Ordnerpfad** auf **Durchsuchen**, und navigieren Sie zu einem Pfad für den freigegebenen Ordner der Datenbanksicherung, oder erstellen Sie einen Pfad. Klicken Sie auf **Weiter**.
 
@@ -295,7 +296,7 @@ Nun können Sie eine Verfügbarkeitsgruppe konfigurieren. Gehen Sie dazu wie fol
 
     ![Assistent für neue Verfügbarkeitsgruppen, anfängliche Datensynchronisierung auswählen](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/66-endpoint.png)
 
-8. Wählen Sie auf der Seite **Anfängliche Datensynchronisierung auswählen** die Option **Vollständig** aus, und geben Sie einen freigegebenen Netzwerkpfad an. Verwenden Sie für den Speicherort die [zuvor erstellte Sicherungsfreigabe](#backupshare). In diesem Beispiel: **\\\\\<Erste SQL Server-Instanz\>\Backup\**. Klicken Sie auf **Weiter**.
+8. Wählen Sie auf der Seite **Anfängliche Datensynchronisierung auswählen** die Option **Vollständig** aus, und geben Sie einen freigegebenen Netzwerkpfad an. Verwenden Sie für den Speicherort die [zuvor erstellte Sicherungsfreigabe](#backupshare). In diesem Beispiel: **\\\\\<Erste SQL Server-Instanz\>\Backup\**. Klicken Sie auf**Weiter**.
 
    >[!NOTE]
    >Zur vollständigen Synchronisierung wird die Datenbank der ersten SQL Server-Instanz vollständig gesichert und in der zweiten Instanz wiederhergestellt. Bei umfangreichen Datenbanken wird von einer vollständigen Synchronisierung abgeraten, da sie sehr lange dauern kann. Sie können den Vorgang beschleunigen, indem Sie die Datenbank manuell sichern und mit `NO RECOVERY` wiederherstellen. Falls die Datenbank bereits vor dem Konfigurieren der Verfügbarkeitsgruppe mit `NO RECOVERY` in der zweiten SQL Server-Instanz wiederhergestellt wurde, wählen Sie **Nur verknüpfen** aus. Wenn Sie die Sicherung erst nach dem Konfigurieren der Verfügbarkeitsgruppe erstellen möchten, wählen Sie **Anfängliche Datensynchronisierung überspringen** aus.
@@ -331,7 +332,7 @@ Nun können Sie eine Verfügbarkeitsgruppe konfigurieren. Gehen Sie dazu wie fol
    ![Verfügbarkeitsgruppe im Failovercluster-Manager](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/80-clustermanager.png)
 
    > [!WARNING]
-   > Versuchen Sie nicht, über den Failovercluster-Manager ein Failover für die Verfügbarkeitsgruppe durchzuführen. Alle Failovervorgänge sollten aus dem **AlwaysOn-Dashboard** in SSMS ausgeführt werden. Weitere Informationen finden Sie unter [Einschränkungen für die Verwendung des WSFC-Failovercluster-Managers mit Verfügbarkeitsgruppen](https://msdn.microsoft.com/library/ff929171.aspx).
+   > Versuchen Sie nicht, über den Failovercluster-Manager ein Failover für die Verfügbarkeitsgruppe durchzuführen. Alle Failovervorgänge sollten aus dem **AlwaysOn-Dashboard** in SSMS ausgeführt werden. Weitere Informationen finden Sie unter [Restrictions on Using The Failover Cluster Manager with Availability Groups](https://msdn.microsoft.com/library/ff929171.aspx) (Einschränkungen für die Verwendung des Failovercluster-Managers mit Verfügbarkeitsgruppen).
     >
 
 Sie verfügen nun über eine Verfügbarkeitsgruppe mit Replikaten in zwei Instanzen von SQL Server. Sie können die Verfügbarkeitsgruppe zwischen Instanzen verschieben. Sie können noch keine Verbindung mit der Verfügbarkeitsgruppe herstellen, da Sie über keinen Listener verfügen. Auf virtuellen Azure-Computern wird für den Listener ein Lastenausgleich benötigt. Im nächsten Schritt wird der Lastenausgleich in Azure erstellt.
@@ -433,7 +434,7 @@ Zum Konfigurieren des Lastenausgleichs müssen Sie einen Back-End-Pool und einen
 
 1. Klicken Sie auf **OK**, um die Lastenausgleichsregeln festzulegen.
 
-## <a name="a-nameconfigure-listenera-configure-the-listener"></a><a name="configure-listener"></a> Konfigurieren des Listeners
+## <a name="configure-listener"></a> Konfigurieren des Listeners
 
 Als Nächstes muss ein Verfügbarkeitsgruppenlistener für den Failovercluster konfiguriert werden.
 
@@ -454,7 +455,7 @@ Legen Sie in SQL Server Management Studio den Listenerport fest.
 
 1. Jetzt sollte der Listenername angezeigt werden, den Sie im Failovercluster-Manager erstellt haben. Klicken Sie mit der rechten Maustaste auf den Listenernamen, und klicken Sie auf **Eigenschaften**.
 
-1. Geben Sie im Feld **Port** die Portnummer für den Verfügbarkeitsgruppenlistener an. Verwenden Sie dabei den zuvor verwendeten Wert für „$EndpointPort“ (Standardwert:&1433;). Klicken Sie anschließend auf **OK**.
+1. Geben Sie im Feld **Port** die Portnummer für den Verfügbarkeitsgruppenlistener an. Verwenden Sie dabei den zuvor verwendeten Wert für „$EndpointPort“ (Standardwert: 1433). Klicken Sie anschließend auf **OK**.
 
 Sie verfügen nun über eine SQL Server-Verfügbarkeitsgruppe auf virtuellen Azure-Computern im Azure Resource Manager-Modus.
 
@@ -502,9 +503,4 @@ Die sqlcmd-Verbindung wird automatisch mit der SQL Server-Instanz hergestellt, d
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Hinzufügen einer IP-Adresse zu einem Lastenausgleich für eine zweite Verfügbarkeitsgruppe](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md#Add-IP)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

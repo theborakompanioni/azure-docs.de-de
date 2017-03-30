@@ -64,7 +64,7 @@ Erstellen Sie zuerst schnell eine standardmäßige Sails.js-App in Ihrer Entwick
         cd <app_name>
         sails lift
 
-    Stellen Sie sicher, dass Sie zur Standardstartseite unter „http://localhost:1377“ navigieren können.
+    Stellen Sie sicher, dass Sie zur Standardstartseite unter „ http://localhost:1377 “ navigieren können.
 
 1. Aktivieren Sie als Nächstes die Protokollierung für Azure. Erstellen Sie in Ihrem Stammverzeichnis die Datei `iisnode.yml`, und fügen Sie ihr die folgenden beiden Zeilen hinzu:
 

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 11/28/2016
 ms.author: trinadhk;markgal
 translationtype: Human Translation
-ms.sourcegitcommit: e4d94d3f9736378d93e93be6645ed04ade763ca3
-ms.openlocfilehash: d64ca980b82e279e446d2ea279124ae3f54b0f49
-ms.lasthandoff: 12/09/2016
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: f8cb0030290d200ab79e340b9b0fe8f5765d49f0
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -96,7 +96,7 @@ Im vorherigen Verfahren haben Sie das Tresor-Dashboard geöffnet. So öffnen Sie
    * Beenden des Schutzes virtueller Computer <br\>
    * Fortsetzen des Schutzes eines virtuellen Computers <br\>
    * Löschen von Sicherungsdaten (oder eines Wiederherstellungspunkts) <br\>
-   * [Wiederherstellen einer Sicherung (oder eines Wiederherstellungspunkts)](backup-azure-arm-restore-vms.md#restore-a-recovery-point) <br\>
+   * [Wiederherstellen von Sicherungsdatenträgern](backup-azure-arm-restore-vms.md#restore-backed-up-disks)  <br\>
 
 Für die folgenden Verfahren ist der Startpunkt das Dashboard für die Tresorelemente.
 

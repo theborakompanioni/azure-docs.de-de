@@ -18,9 +18,9 @@ ms.date: 03/14/2017
 ms.author: dariagrigoriu, glenga
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 9b5dabe5e27e68a4a9f140d4f07131caf7306e32
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: 4eb138348686e9d7befe4d5433d174374977c2a1
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -38,7 +38,7 @@ Wenn Sie eine Funktionen-App erstellen, müssen Sie einen Hostingplan für die i
 
 ### <a name="consumption-plan"></a>Verbrauchsplan
 
-Im **Verbrauchsplan** werden Ihre Funktionen-Apps einer Verarbeitungsinstanz zugewiesen. Bei Bedarf werden Instanzen dynamisch hinzugefügt oder entfernt. Darüber hinaus werden Ihre Funktionen parallel ausgeführt. Dadurch wird die Gesamtzeit minimiert, die für die Verarbeitung von Anforderungen benötigt wird. Die Ausführungsdauer für jede Funktion wird von der enthaltenden Funktionen-App aggregiert. Die Kosten basieren auf der Arbeitsspeichergröße und der Gesamtausführungsdauer aller Funktionen in einer Funktionen-App, gemessen in Gigabytesekunden. Dies ist eine hervorragende Möglichkeit, wenn Sie nur von Zeit zu Zeit Rechenleistung benötigen oder die Laufzeiten Ihrer Aufträge in der Regel sehr kurz sind, da Sie nur dann für Serverressourcen bezahlen, wenn diese auch tatsächlich genutzt werden. Der nächste Abschnitt enthält Details zur Funktionsweise des Verbrauchsplans.
+Im **Verbrauchsplan** werden Ihre Funktionen-Apps einer Verarbeitungsinstanz zugewiesen. Bei Bedarf werden Instanzen dynamisch hinzugefügt oder entfernt. Darüber hinaus werden Ihre Funktionen parallel ausgeführt. Dadurch wird die Gesamtzeit minimiert, die für die Verarbeitung von Anforderungen benötigt wird. Die Ausführungsdauer für jede Funktion wird von der enthaltenden Funktionen-App aggregiert. Die Kosten basieren auf der Arbeitsspeichergröße und der Gesamtausführungsdauer aller Funktionen in einer Funktionen-App. Verwenden Sie einen Verbrauchsplan bei zeitweiligen Computeanforderungen oder wenn die Ausführungszeiten für Aufträge kurz sind. Mit diesem Plan zahlen Sie nur für Computeressourcen, wenn diese auch tatsächlich genutzt werden. Der nächste Abschnitt enthält Details zur Funktionsweise des Verbrauchsplans.
 
 ### <a name="app-service-plan"></a>App Service-Plan
 
@@ -46,23 +46,23 @@ In einem **App Service-Plan** werden Ihre Funktionen-Apps auf dedizierten virtue
 
 ## <a name="how-the-consumption-plan-works"></a>Funktionsweise des Verbrauchsplans
 
-Der Verbrauchsplan skaliert CPU- und Arbeitsspeicherressourcen automatisch, indem basierend auf den Laufzeitanforderungen der Funktionen in der Funktionen-App weitere Verarbeitungsinstanzen hinzugefügt werden. Jeder Verarbeitungsinstanz der Funktionen-App werden bis zu 1,5 GB Arbeitsspeicherressourcen zugewiesen.
+Der Verbrauchsplan skaliert CPU- und Arbeitsspeicherressourcen automatisch, indem basierend auf den in der Funktionen-App ausgeführten Funktionen weitere Verarbeitungsinstanzen hinzugefügt werden. Jeder Verarbeitungsinstanz der Funktionen-App werden bis zu 1,5 GB Arbeitsspeicherressourcen zugewiesen.
 
 Wenn bei der Ausführung eines Verbrauchsplans eine App-Funktion im Leerlauf ist, kann es möglicherweise bis zu 10 Minuten dauern, bis neue Blobs erstellt werden. Sobald die Funktionen-App ausgeführt wird, werden die Blobs schneller verarbeitet. Um diese anfängliche Verzögerung zu vermeiden, verwenden Sie entweder einen regulären App Service-Plan mit aktivierter Always On-Option oder einen anderen Mechanismus, um die Blobverarbeitung auszulösen, z.B. eine Warteschlangennachricht mit dem Blobnamen. 
 
-Beim Erstellen einer Funktionen-App müssen Sie ein allgemeines Azure Storage-Konto erstellen oder verknüpfen, das Blob-, Warteschlangen- und Tabellenspeicher unterstützt. Intern verwendet Azure Functions Azure Storage für Vorgänge wie das Verwalten von Triggern und Ausführungen von Protokollierfunktionen. Manche Speicherkonten unterstützen keine Warteschlangen und Tabellen, wie z.B. reine Blobspeicherkonten (darunter Storage Premium) und allgemeine Speicherkonten mit Replikation von ZRS. Diese Konten werden aus dem Blatt „Speicherkonto“ herausgefiltert, wenn eine neue Funktionen-App erstellt wird.
+Beim Erstellen einer Funktionen-App müssen Sie ein allgemeines Azure Storage-Konto erstellen oder verknüpfen, das Blob-, Warteschlangen- und Tabellenspeicher unterstützt. Intern verwendet Azure Functions Azure Storage für Vorgänge wie das Verwalten von Triggern und Ausführungen von Protokollierfunktionen. Manche Speicherkonten unterstützen keine Warteschlangen und Tabellen, wie z.B. reine Blobspeicherkonten (darunter Storage Premium) und allgemeine Speicherkonten mit Replikation von ZRS. Diese Konten werden aus dem Blatt „Speicherkonto“ herausgefiltert, wenn eine Funktionen-App erstellt wird.
 
-Wenn der verbrauchsbasierte Hostingplan verwendet wird, wird der Inhalt von Funktionen-Apps (z.B. Funktionscodedateien und Bindungskonfigurationen) in Azure Files-Freigaben auf dem Hauptspeicherkonto gespeichert. Wenn Sie das Hauptspeicherkonto löschen, wird dieser Inhalt ebenfalls gelöscht und kann nicht wiederhergestellt werden.
+Wenn der verbrauchsbasierte Hostingplan verwendet wird, wird der Inhalt von Funktionen-Apps (z.B. Funktionscodedateien und Bindungskonfigurationen) in Azure Files-Freigaben im Hauptspeicherkonto gespeichert. Wenn Sie das Hauptspeicherkonto löschen, wird dieser Inhalt ebenfalls gelöscht und kann nicht wiederhergestellt werden.
 
 Weitere Informationen zu Typen von Speicherkonten finden Sie unter [Einführung in die Azure Storage-Dienste] (../storage/storage-introduction.md#introducing-the-azure-storage-services).
 
 ### <a name="runtime-scaling"></a>Laufzeitskalierung
 
-Funktionen verwenden einen Skalierungscontroller, um Computeanforderungen basierend auf den konfigurierten Triggern zu bewerten und zu entscheiden, wann horizontal hoch- oder herunterskaliert werden soll. Der Skalierungscontroller verarbeitet kontinuierlich Hinweise auf Arbeitsspeicheranforderungen und triggerspezifische Datenpunkte. Im Fall eines Triggers für Azure Queue Storage beispielsweise umfassen die Datenpunkte die Länge der Warteschlange und die Uhrzeit des ältesten Eintrags in der Warteschlange.
+Funktionen verwenden einen Skalierungscontroller, um Computeanforderungen basierend auf den konfigurierten Triggern zu bewerten und zu entscheiden, wann horizontal hoch- oder herunterskaliert werden soll. Der Skalierungscontroller verarbeitet kontinuierlich Hinweise auf Arbeitsspeicheranforderungen und triggerspezifische Datenpunkte. Bei Verwendung eines Triggers für Azure Queue Storage beispielsweise umfassen die Datenpunkte die Länge der Warteschlange und die Uhrzeit des ältesten Eintrags in der Warteschlange.
 
 ![](./media/functions-scale/central-listener.png)
 
-Die Skalierungseinheit ist die Funktionen-App. Horizontales Hochskalieren bedeutet in diesem Fall, weitere Instanzen einer Funktionen-App hinzuzufügen. Umgekehrt werden bei abnehmenden Computeanforderungen Instanzen der Funktionen-App entfernt. Die Anzahl der Instanzen wird schließlich vertikal auf null herunterskaliert, wenn keine ausgeführt werden. 
+Die Skalierungseinheit ist die Funktionen-App. Horizontales Hochskalieren bedeutet in diesem Fall, weitere Instanzen einer Funktionen-App hinzuzufügen. Umgekehrt werden bei abnehmenden Computeanforderungen Instanzen der Funktionen-App entfernt. Die Anzahl der Instanzen wird schließlich zentral auf null herunterskaliert, wenn keine Funktionen ausgeführt werden. 
 
 ### <a name="billing-model"></a>Abrechnungsmodell
 

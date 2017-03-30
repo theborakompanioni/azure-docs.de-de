@@ -1,6 +1,6 @@
 ---
 title: Verwenden von Windows-Clientimages in Azure | Microsoft Docs
-description: "Nutzen von Visual Studio-Abonnementvorteilen zum Bereitstellen von Windows 7/8/10 in Azure für Entwicklungs-/Testszenarien"
+description: "Verwenden von Visual Studio-Abonnementvorteilen zum Bereitstellen von Windows 7, Windows 8 oder Windows 10 in Azure für Entwicklungs-/Testszenarien"
 services: virtual-machines-windows
 documentationcenter: 
 author: iainfoulds
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/28/2016
+ms.date: 03/14/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 568bd06d1dfd0e253b960dcf2fb5409a390da91b
-ms.openlocfilehash: 2116abf974974c285d94d673b6a614360edbc593
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: f0ca7996e52a9b295fff571a270c60520f58101e
+ms.lasthandoff: 03/16/2017
 
 
 ---
-# <a name="using-windows-client-in-azure-for-devtest-scenarios"></a>Verwendung des Windows-Clients in Azure für Entwicklungs-/Testszenarien
+# <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Verwenden des Windows-Clients in Azure für Entwicklungs-/Testszenarien
 Sie können Windows 7, Windows 8 oder Windows 10 in Azure für Entwicklungs-/Testszenarien verwenden, sofern Sie über ein entsprechendes Visual Studio-Abonnement (früher MSDN) verfügen. Dieser Artikel beschreibt die erforderlichen Berechtigungen für die Ausführung des Windows-Clients in Azure und die Verwendung von Images aus dem Azure-Katalog.
 
 ## <a name="subscription-eligibility"></a>Abonnementberechtigung
@@ -55,10 +56,5 @@ Sie können die Angebots-ID auch auf der [Registerkarte „Abonnements“](http:
 
 ## <a name="next-steps"></a>Nächste Schritte
 Jetzt können Sie Ihre VMs mit [PowerShell](virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), [Resource Manager-Vorlagen](virtual-machines-windows-ps-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) oder [Visual Studio](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) bereitstellen.
-
-
-
-
-<!--HONumber=Nov16_HO5-->
 
 

@@ -16,9 +16,9 @@ ms.date: 03/14/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 67d817c04672979ec8af8a540c5a63eb4df9bf6a
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: ed0910e4843ab8ab80dae1c16b15487d92017e24
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -341,7 +341,7 @@ Ergebnisse:
 > 
 > 
 
-Wenn eine Anwendung, die eine Sammlung mit nur einer Partition verwendet, einen höheren Durchsatz (>&10;.000 RU/s) oder mehr Speicher (>&10; GB) benötigt, können Sie mit dem [DocumentDB-Datenmigrationstool](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d) die Daten aus der Sammlung mit nur einer Partition zu einer partitionierten Sammlung migrieren. 
+Wenn eine Anwendung, die eine Sammlung mit nur einer Partition verwendet, einen höheren Durchsatz (> 10.000 RU/s) oder mehr Speicher (> 10 GB) benötigt, können Sie mit dem [DocumentDB-Datenmigrationstool](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d) die Daten aus der Sammlung mit nur einer Partition zu einer partitionierten Sammlung migrieren. 
 
 So führen Sie eine Migration aus einer Sammlung mit nur einer Partition in eine partitionierte Sammlung durch
 

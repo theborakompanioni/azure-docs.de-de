@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 02/14/2017
+ms.date: 03/22/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 70341f4a14ee807a085931c3480a19727683e958
-ms.openlocfilehash: 34e54378a8626e36fd56ef3fe52f0748a3fec2a2
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: 56a55bc10c9cf16751c713da302dcd59362ab80f
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -27,18 +27,18 @@ Azure Redis Cache stellt einen Sitzungszustandsanbieter bereit, mit dem Sie den 
 Im praktischen Einsatz von Cloud-Apps lässt sich das Speichern von Zustandsinformationen für eine Benutzersitzung oft nicht vermeiden. Allerdings beeinträchtigen einige Herangehensweisen die Leistung und Skalierbarkeit stärker als andere. Wenn Sie einen Sitzungszustand speichern müssen, ist es am besten, die Menge der Zustandsinformationen niedrig zu halten und sie in Cookies zu speichern. Wenn das nicht umsetzbar ist, besteht die nächstbeste Lösung darin, den ASP.NET-Sitzungszustand mit einem Anbieter für verteilten In-Memory-Cache zu verwenden. Die schlechteste Lösung im Hinblick auf Leistung und Skalierbarkeit wäre es, einen datenbankbasierten Sitzungszustandsanbieter zu verwenden. Dieses Thema bietet einen Leitfaden zum Verwenden des ASP.NET-Sitzungszustandsanbieters für Azure Redis Cache. Informationen zu anderen Optionen für den Sitzungszustand finden Sie unter [Optionen für den ASP.NET-Sitzungszustand](#aspnet-session-state-options).
 
 ## <a name="store-aspnet-session-state-in-the-cache"></a>Speichern des ASP.NET-Sitzungsstatus im Cache
-Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt und wählen Sie **NuGet-Pakete verwalten** aus, um eine Clientanwendung in Visual Studio mithilfe des Redis Cache Sitzungszustands-NuGet-Pakets zu konfigurieren.
+Klicken Sie zum Konfigurieren einer Clientanwendung in Visual Studio mit dem Redis Cache-Sitzungszustands-NuGet-Paket im Menü **Extras** auf **NuGet-Paket-Manager** > **Paket-Manager-Konsole**.
 
-![Azure Redis Cache – NuGet-Pakete verwalten](./media/cache-aspnet-session-state-provider/redis-cache-manage-nuget-menu.png)
-
-Geben Sie **RedisSessionStateProvider** in das Suchfeld ein, wählen Sie in den Suchergebnissen das Paket aus, und klicken Sie auf **Installieren**.
+Führen Sie im Fenster `Package Manager Console` den folgenden Befehl aus.
+    
+```
+Install-Package Microsoft.Web.RedisSessionStateProvider
+```
 
 > [!IMPORTANT]
-> Wenn Sie das Clusteringfeature aus dem Premium-Tarif verwenden, müssen Sie [RedisSessionStateProvider](https://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider) 2.0.1 oder höher verwenden. Andernfalls wird eine Ausnahme ausgelöst. Der Wechsel zu Version 2.0.1 oder einer höheren Version stellt eine grundlegende Änderung dar. Weitere Informationen finden Sie unter [Details zur grundlegenden Änderung von Version 2.0.0](https://github.com/Azure/aspnet-redis-providers/wiki/v2.0.0-Breaking-Change-Details).
+> Wenn Sie das Clusteringfeature aus dem Premium-Tarif verwenden, müssen Sie [RedisSessionStateProvider](https://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider) 2.0.1 oder höher verwenden. Andernfalls wird eine Ausnahme ausgelöst. Der Wechsel zu Version 2.0.1 oder einer höheren Version stellt eine grundlegende Änderung dar. Weitere Informationen finden Sie unter [Details zur grundlegenden Änderung von Version 2.0.0](https://github.com/Azure/aspnet-redis-providers/wiki/v2.0.0-Breaking-Change-Details). Zum Zeitpunkt dieser Artikelüberarbeitung ist die aktuelle Version dieses Pakets 2.2.3.
 > 
 > 
-
-![Azure Redis Cache – Sitzungszustandsanbieter](./media/cache-aspnet-session-state-provider/redis-cache-session-state-provider.png)
 
 Das Redis-Sitzungszustandsanbieter-NuGet-Paket steht in einer Abhängigkeitsbeziehung zum Paket „StackExchange.Redis.StrongName“. Wenn das Paket „StackExchange.Redis.StrongName“ nicht in Ihrem Projekt vorhanden ist, wird es installiert.
 

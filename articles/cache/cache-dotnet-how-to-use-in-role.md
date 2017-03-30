@@ -12,13 +12,13 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/13/2017
+ms.date: 03/17/2017
 ms.author: sdanie
+ROBOTS: NOINDEX
 translationtype: Human Translation
-ms.sourcegitcommit: ec9e12667bc82043fbdc0b3f113533cf518f39be
-ms.openlocfilehash: 9593f49d98794e72728e0683e34a407e39144a5d
-ms.lasthandoff: 01/21/2017
-
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: e8347c21610118af4ebaa80b24edd0838bc58cf8
+ms.lasthandoff: 03/18/2017
 
 ---
 # <a name="how-to-use-in-role-cache-for-azure-cache"></a>Verwenden des In-Role Caches (Azure Cache)
@@ -40,7 +40,7 @@ In-Role Caches bieten eine Caching-Schicht für Azure-Anwendungen. Das Caching e
 * Zwischenspeichern beliebiger serialisierbarer verwalteter Objekte, z. B. CLR-Objekte, Zeilen, XML und Binärdaten
 * Konsistentes Entwicklungsmodell für Azure und Windows Server AppFabric
 
-In-Role Cache stellt eine Möglichkeit zum Durchführen von Cachingaktionen bereit, indem ein Teil des Arbeitsspeichers der virtuellen Maschinen verwendet wird, in denen die Rolleninstanzen Ihrer Azure-Clouddienste (auch als gehostete Dienste bekannt) gehostet werden. Dadurch erhalten Sie eine höhere Flexibilität bei der Bereitstellung, die Caches können sehr groß sein und es gibt keine Cache-spezifischen Beschränkungen.
+In-Role Cache stellt eine Möglichkeit zum Durchführen von Cachingaktionen bereit, indem ein Teil des Arbeitsspeichers der virtuellen Maschinen verwendet wird, in denen die Rolleninstanzen Ihrer Azure-Clouddienste (auch als gehostete Dienste bekannt) gehostet werden. Dadurch erhalten Sie eine höhere Flexibilität bei der Bereitstellung, die Caches können sehr groß sein, und es gibt keine cachespezifischen Kontingentbeschränkungen.
 
 > [!IMPORTANT]
 > Ab Azure SDK 2.6 verwendet In-Role Cache das Microsoft Azure Storage SDK, Version 4.3. In früheren Versionen des Azure SDK verwendete In-Role Cache das Azure Storage SDK 1.7. Anwendungen, die In-Role Cache mit Azure SDK-Versionen vor 2.6 verwenden, sollten zu Azure SDK 2.6 migriert werden, bevor Azure Storage Version 2011-08-18 am 1. August 2016 außer Betrieb gesetzt wird. Weitere Informationen finden Sie unter [Versionshinweise zu Azure SDK 2.6 – In-Role Cache](../app-service-web/azure-sdk-dotnet-release-notes-2-6.md#in-role-cache-updates) und [Aktualisierung bezüglich der Entfernung der Version Microsoft Azure Storage: Verlängerung bis 2016](http://blogs.msdn.com/b/windowsazurestorage/archive/2015/10/19/microsoft-azure-storage-service-version-removal-update-extension-to-2016.aspx).
@@ -139,7 +139,7 @@ Sobald der Cachecluster konfiguriert wurde, können Sie die Cacheclients konfigu
 <a name="NuGet"></a>
 
 ## <a name="configure-the-cache-clients"></a>Konfigurieren der Cacheclients
-Um auf einen In-Role Cache zugreifen zu können, müssen die Clients in der gleichen Bereitstellung konfiguriert werden. Handelt es sich bei dem Cachecluster um einen dedizierten Rollencachecluster, sind die Clients in der Bereitstellung andere Rollen. Handelt es sich bei dem Cachecluster um einen zusammengestellten Rollencachecluster, können die Clients entweder die anderen Rollen in der Bereitstellung oder die Rollen selbst sein, die den Cachecluster hosten. Es wird ein NuGet-Paket bereitgestellt, das für die Konfiguration der einzelnen Clientrollen, die auf den Cache zugreifen, verwendet werden kann. Klicken Sie zum Konfigurieren einer Rolle für den Zugriff auf einen Cachecluster mithilfe des Caching NuGet-Pakets mit der rechten Maustaste im **Projektmappen-Explorer** auf das Rollenprojekt, und wählen Sie **NuGet-Pakete verwalten** aus. 
+Um auf einen In-Role Cache zugreifen zu können, müssen sich die Clients in der gleichen Bereitstellung befinden. Handelt es sich bei dem Cachecluster um einen dedizierten Rollencachecluster, sind die Clients in der Bereitstellung andere Rollen. Handelt es sich bei dem Cachecluster um einen zusammengestellten Rollencachecluster, können die Clients entweder die anderen Rollen in der Bereitstellung oder die Rollen selbst sein, die den Cachecluster hosten. Es wird ein NuGet-Paket bereitgestellt, das für die Konfiguration der einzelnen Clientrollen, die auf den Cache zugreifen, verwendet werden kann. Klicken Sie zum Konfigurieren einer Rolle für den Zugriff auf einen Cachecluster mithilfe des Caching NuGet-Pakets mit der rechten Maustaste im **Projektmappen-Explorer** auf das Rollenprojekt, und wählen Sie **NuGet-Pakete verwalten** aus. 
 
 ![RoleCache4][RoleCache4]
 

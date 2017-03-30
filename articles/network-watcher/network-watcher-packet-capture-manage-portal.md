@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: d2a65104743d9497debdc85c134fd1a06114c514
-ms.openlocfilehash: f7739d38822d9cb57bc47f1c33f48045e5e97406
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 590d2c39e295e2f855910b00e0302f01d96de8dc
+ms.lasthandoff: 03/18/2017
 
 ---
 
@@ -87,7 +87,7 @@ Folgende Eigenschaften können für eine Paketerfassung definiert werden:
 - **Speicherkonten**: Das ausgewählte Speicherkonto, unter dem die Paketerfassung gespeichert wird. Der Standardspeicherort ist „https://{Name des Speicherkontos}.blob.core.windows.net/network-watcher-logs/subscriptions/{Abonnement-ID}/resourcegroups/{Name der Ressourcengruppe}/providers/microsoft.compute/virtualmachines/{Name des virtuellen Computers}/{JJ}/{MM}/{TT}/packetcapture_{HH}_{MM}_{SS}_{XXX}.cap“. (Nur aktiviert, wenn **Storage** ausgewählt ist.)
 - **Lokaler Dateipfad**: Der lokale Dateipfad auf einem virtuellen Computer zum Speichern der Paketerfassung. (Nur aktiviert, wenn **Datei** ausgewählt ist.) Ein gültiger Pfad muss angegeben werden.
 - **Maximale Anzahl von Bytes pro Paket**: Die Anzahl von Bytes aus jedem Paket, die erfasst werden. Wenn keine Angabe erfolgt, werden alle Bytes erfasst.
-- **Maximale Anzahl von Bytes pro Sitzung**: Die Gesamtzahl der erfassten Bytes, nachdem die Paketerfassung beendet wurde.
+- **Maximale Anzahl von Bytes pro Sitzung:** Die Gesamtanzahl der erfassten Bytes. Nachdem der Wert erreicht wurde, wird die Paketerfassung beendet.
 - **Zeitlimit (Sekunden)**: Legt ein Zeitlimit für die Beendigung der Paketerfassung fest. Der Standardwert ist 1.800 Sekunden.
 
 > [!NOTE]

@@ -12,33 +12,23 @@ ms.service: app-service-web
 ms.workload: web
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2017
+ms.date: 03/20/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: ab4be9d9a03001789bed90e58d62fe1891608823
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 8d9e90cc43df74968c7b9dc30d268f3e6228adcc
+ms.lasthandoff: 03/21/2017
 
 ---
 
 
 # <a name="create-a-web-app-with-deployment-from-github"></a>Erstellen einer Web-App mit Bereitstellung über GitHub
 
-Dieses Beispielskript führt Folgendes über Azure CLI 2.0 aus:
+Dieses Beispielskript erstellt eine Web-App in App Service mit den zugehörigen Ressourcen und stellt dann Ihren Web-App-Code über ein öffentliches GitHub-Repository bereit (ohne Continuous Deployment). Informationen zur GitHub-Bereitstellung mit Continuous Deployment finden Sie unter [Erstellen einer Web-App mit Continuous Deployment über GitHub](app-service-cli-continuous-deployment-github.md).
 
-* Erstellt eine Web-App im Azure App Service der Azure-Region „Europa, Westen“.
-* Stellt Ihren Web-App-Code über GitHub bereit.
-* Zeigt die bereitgestellte Azure-Web-App im Browser an.
+Installieren Sie bei Bedarf die Azure-Befehlszeilenschnittstelle anhand der Anleitung im [Azure CLI-Installationshandbuch](https://docs.microsoft.com/cli/azure/install-azure-cli), und führen Sie dann `az login` aus, um eine Verbindung mit Azure herzustellen. Darüber hinaus benötigen Sie eine Verknüpfung mit dem GitHub-Repository, das den Code der Web-App enthält.
 
-## <a name="prerequisites"></a>Voraussetzungen
-
-* Führen Sie `az login` aus, um sich bei Azure anzumelden.
-* Fügen Sie Ihren Web-App-Code in ein GitHub-Repository ein.
-
-> [!NOTE]
-> Wenn Sie ein öffentliches GitHub-Repository verwenden, das Sie nicht besitzen, stellt App Service Code aus diesem Repository bereit, kann aber nicht den SSH-Schlüssel und die Webhooks einrichten, der/die für Continuous Deployment erforderlich ist/sind.
->
->
+Dieses Beispiel wird in einer Bash-Shell ausgeführt. Optionen zum Ausführen von Azure CLI-Skripts auf einem Windows-Client finden Sie unter [Verwenden der Azure CLI unter Windows](../../virtual-machines/virtual-machines-windows-cli-options.md).
 
 ## <a name="create-app-sample"></a>Erstellen eines App-Beispiels
 

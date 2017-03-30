@@ -13,11 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/09/2017
+ms.date: 03/15/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: a4e59dfa8a098f63c3173176c4d2675d6a59af00
-ms.openlocfilehash: 235b551a716b68c40cc4fe346cc5903d47e6ea74
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 6f487e2e8f368240339ef5e0015c85591522e49a
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -75,28 +76,29 @@ Die API bietet die folgenden Funktionen:
 Die API kann in folgenden Autorisierungsmodi ausgeführt werden:
 
 ### <a name="app--user-mode"></a>Modus „App und Benutzer“
-In diesem Modus benötigt der Benutzer der API die Berechtigungen, B2B-Einladungen zu erstellen.
+In diesem Modus benötigt der jeweilige Benutzer der API die Berechtigungen, B2B-Einladungen zu erstellen.
 
 ### <a name="app-only-mode"></a>Reiner App-Modus
 Im reinen App-Modus benötigt die App die Berechtigungsbereiche „User.ReadWrite.All“ oder „Directory.ReadWrite.All“, damit die Einladung erfolgreich ist.
-Weitere Informationen finden Sie hier: https://graph.microsoft.io/en-us/docs/authorization/permission_scopes
+
+Weitere Informationen finden Sie unter https://graph.microsoft.io/docs/authorization/permission_scopes.
 
 
 ## <a name="powershell"></a>PowerShell
-Sie können jetzt PowerShell verwenden, um externe Benutzer ganz einfach in eine Organisation einzuladen und dieser hinzuzufügen. Erstellen Sie einfach mit dem folgenden Cmdlet eine neue Einladung.
+Sie können jetzt PowerShell verwenden, um externe Benutzer ganz einfach in eine Organisation einzuladen und dieser hinzuzufügen. Erstellen Sie eine Einladung mit dem Cmdlet:
 
 ```
 New-AzureADMSInvitation
 ```
 
-Verwenden Sie die folgenden Optionen:
+Sie können die folgenden Optionen verwenden:
 
 * -InvitedUserDisplayName
 * -InvitedUserEmailAddress
 * -SendInvitationMessage
 * -InvitedUserMessageInfo
 
-Die Beschreibungen folgen der Referenz für die Einladungs-API unter [https://graph.microsoft.io/en-us/docs/api-reference/beta/resources/invitation](https://graph.microsoft.io/en-us/docs/api-reference/beta/resources/invitation).
+Zudem können Sie sich die Referenz für die Einladungs-API unter [https://graph.microsoft.io/en-us/docs/api-reference/beta/resources/invitation](https://graph.microsoft.io/en-us/docs/api-reference/beta/resources/invitation) ansehen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -113,9 +115,4 @@ Weitere Artikel zur Azure AD B2B-Kollaboration:
 * [Multi-Factor Authentication für Benutzer der B2B-Zusammenarbeit](active-directory-b2b-mfa-instructions.md)
 * [Hinzufügen von Benutzern der B2B-Zusammenarbeit ohne Einladung](active-directory-b2b-add-user-without-invite.md)
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

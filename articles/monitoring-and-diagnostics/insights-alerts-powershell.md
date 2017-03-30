@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 10/20/2016
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: 8c9c9dea1248205aa6303e11e1166d5d38786c1b
-ms.openlocfilehash: 0a6a6e5b76e03eba113600b5be558daa8c924f0f
+ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
+ms.openlocfilehash: 62faba3827e9fc33e9788cd2d487adf04d760791
+ms.lasthandoff: 03/15/2017
 
 
 ---
-# <a name="create-alerts-in-azure-monitor-for-azure-services---cross-platform-cli"></a>Erstellen von Warnungen in Azure Monitor für Azure-Dienste – plattformübergreifende Befehlszeilenschnittstelle 
+# <a name="create-alerts-in-azure-monitor-for-azure-services---powershell"></a>Erstellen von Warnungen in Azure Monitor für Azure-Dienste – PowerShell 
 > [!div class="op_single_selector"]
 > * [Portal](insights-alerts-portal.md)
 > * [PowerShell](insights-alerts-powershell.md)
@@ -146,9 +147,4 @@ Um weitere Informationen zu erhalten, geben Sie ```Get-Help``` und dann den Powe
 * Erfahren Sie mehr zu [Azure Automation-Runbooks](../automation/automation-starting-a-runbook.md).
 * Verschaffen Sie sich einen [Überblick über das Sammeln von Diagnoseprotokollen](monitoring-overview-of-diagnostic-logs.md) , um detaillierte Hochfrequenzmetriken für Ihren Dienst zu erfassen.
 * Verschaffen Sie sich einen Überblick über das [Sammeln von Dienstmetriken](insights-how-to-customize-monitoring.md) , um sicherzustellen, dass Ihr Dienst verfügbar und reaktionsfähig ist.
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

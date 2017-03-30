@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: genli
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 62d2cd990bff4ffc982eef507ad69c68c00a65ab
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 7f719fb38709f4bb7083b7f21a5979f7e0588d0f
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -47,7 +47,7 @@ Dieser Artikel beschreibt allgemeine Probleme im Zusammenhang mit Microsoft Azur
 * [Zeitweiliger E/A-Fehler „Host nicht verfügbar“ (Fehler 112) bei vorhandenen Dateifreigaben, oder die Shell hängt beim Ausführen von Listenbefehlen auf dem Einbindungspunkt](#errorhold)
 * [Einbindungsfehler 115 beim Versuch, Azure Files auf der Linux-VM einzubinden](#error15)
 * [In der Azure-Dateifreigabe auf der Linux-VM treten Probleme mit langsamer Leistung auf](#delayproblem)
-
+* [Einbindungsfehler (11): Ressource beim Einbinden von Ubuntu-Kerneln ab Version 4.8 vorübergehend nicht verfügbar](#ubuntumounterror)
 
 <a id="quotaerror"></a>
 
@@ -271,6 +271,14 @@ dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=10
 
 Wenn die Optionen „cache=strict“ oder „serverino“ nicht vorhanden sind, heben Sie die Bereitstellung von Azure Files aus, und stellen Sie sie wieder her, indem Sie den „mount“-Befehl aus der [Dokumentation](https://docs.microsoft.com/en-us/azure/storage/storage-how-to-use-files-linux#mount-the-file-share) ausführen und erneut überprüfen, dass der Eintrag „/etc/fstab“ die korrekten Optionen besitzt.
 
+<a id="ubuntumounterror"></a>
+## <a name="mount-error11-resource-temporarily-unavailable-when-mounting-to-ubuntu-48-kernel"></a>Einbindungsfehler (11): Ressource beim Einbinden von Ubuntu-Kerneln ab Version 4.8 vorübergehend nicht verfügbar
+
+### <a name="cause"></a>Ursache
+Bekanntes Problem in Ubuntu 16.10 (mit Kernelversion 4.8), bei dem der Client angibt, Verschlüsselung zu unterstützen, obwohl dies nicht zutrifft. 
+
+### <a name="solution"></a>Lösung
+Geben Sie bis zur Behebung des Problems in Ubuntu 16.10 die Einbindungsoption „vers=2.1“ an, oder verwenden Sie Ubuntu 16.04.
 ## <a name="learn-more"></a>Weitere Informationen
 * [Erste Schritte mit Azure File Storage unter Windows](storage-dotnet-how-to-use-files.md)
 * [Verwenden von Azure File Storage unter Linux](storage-how-to-use-files-linux.md)

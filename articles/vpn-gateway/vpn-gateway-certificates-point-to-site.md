@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/14/2017
+ms.date: 03/20/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: cb66edd0c0ff1f0b78232233719dd44329584c78
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 20fb95341d6240b883e711cf771c33f6d8978cb9
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -89,7 +89,7 @@ Wenn Sie zusätzliche Clientzertifikate erstellen oder nicht die gleiche PowerSh
 2. Suchen Sie den Antragstellernamen in der zurückgegebenen Liste, und kopieren Sie den Fingerabdruck, der sich daneben in einer Textdatei befindet. Im folgenden Beispiel sind zwei Zertifikate vorhanden. Der CN-Name ist der Name des selbstsignierten Stammzertifikats, aus dem Sie ein untergeordnetes Zertifikat generieren möchten. In diesem Fall P2SRootCert.
 
         Thumbprint                                Subject
-        ----------                                -------
+
         AED812AD883826FF76B4D1D5A77B3C08EFA79F3F  CN=P2SChildCert4
         7181AA8C1B4D34EEDB2F3D3BEC5839F3FE52D655  CN=P2SRootCert
 
@@ -117,7 +117,7 @@ Wenn Sie ein Clientzertifikat generieren, wird es automatisch auf dem Computer i
 
 1. Um ein Clientzertifikat zu exportieren, öffnen Sie **certmgr.msc**. Die Clientzertifikate, die Sie generiert haben, befinden sich standardmäßig in „Certificates - Current User\Personal\Certificates“. Klicken Sie mit der rechten Maustaste auf das Clientzertifikat, das Sie exportieren möchten, klicken Sie auf **Alle Aufgaben** und anschließend auf **Exportieren**. Dadurch wird der **Zertifikatexport-Assistent**geöffnet.
 2. Klicken Sie im Assistenten auf **Weiter**, wählen Sie **Ja, privaten Schlüssel exportieren** aus, und klicken Sie dann auf **Weiter**.
-3. Auf der Seite **Format der zu exportierenden Datei** können Sie die Standardwerte übernehmen. Klicken Sie auf **Weiter**. 
+3. Übernehmen Sie auf der Seite **Format der zu exportierenden Datei** die Standardwerte. Stellen Sie sicher, dass die Option „Wenn möglich, alle Zertifikate im Zertifizierungspfad einbeziehen“ aktiviert ist. Klicken Sie auf **Weiter**.
 4. Auf der Seite **Sicherheit** müssen Sie den privaten Schlüssel schützen. Wenn Sie ein Kennwort verwenden möchten, müssen Sie sich das für dieses Zertifikat festgelegte Kennwort unbedingt merken oder notieren. Klicken Sie auf **Weiter**.
 5. Wählen Sie unter **Zu exportierende Datei** die Option **Durchsuchen** aus, um zu dem Speicherort zu wechseln, an den das Zertifikat exportiert werden soll. Geben Sie unter **Dateiname**einen Namen für die Zertifikatdatei ein. Klicken Sie auf **Weiter**.
 6. Klicken Sie auf **Fertig stellen** , um das Zertifikat zu exportieren.    

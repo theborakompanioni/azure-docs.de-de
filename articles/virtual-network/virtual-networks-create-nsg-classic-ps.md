@@ -1,5 +1,5 @@
 ---
-title: Erstellen von NSGs im klassischen Modus mithilfe von PowerShell | Microsoft Docs
+title: "Erstellen von Netzwerksicherheitsgruppen (klassisch) in Azure – PowerShell | Microsoft Docs"
 description: Hier erfahren Sie, wie Sie NSGs im klassischen Modus mithilfe von PowerShell erstellen und bereitstellen.
 services: virtual-network
 documentationcenter: na
@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 3fe204c09eebf7d254a1bf2bb130e2d3498b6b45
-ms.openlocfilehash: 460d989a75edab35950089ccc2aac5347c5c1a48
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: cf202a605e5141e7d1fd54790bf6597617c9b97c
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -44,10 +45,11 @@ Führen Sie zum Erstellen einer NSG mit dem Namen **NSG-FrontEnd** basierend auf
             -Label "Front end subnet NSG"
    
     Erwartete Ausgabe:
-   
+
         Name         Location   Label               
-        ----         --------   -----               
+        
         NSG-FrontEnd West US     Front end subnet NSG
+
 3. Erstellen Sie eine Sicherheitsregel, die den Zugriff über das Internet auf Port 3389 zulässt.
    
         Get-AzureNetworkSecurityGroup -Name "NSG-FrontEnd" `
@@ -67,7 +69,7 @@ Führen Sie zum Erstellen einer NSG mit dem Namen **NSG-FrontEnd** basierend auf
    
                    Name                 Priority  Action   Source Address  Source Port   Destination      Destination    Protocol
                                                            Prefix          Range         Address Prefix   Port Range             
-                   ----                 --------  ------   --------------- ------------- ---------------- -------------- --------
+                   
                    rdp-rule             100       Allow    INTERNET        *             *                3389           TCP     
                    ALLOW VNET INBOUND   65000     Allow    VIRTUAL_NETWORK *             VIRTUAL_NETWORK  *              *       
                    ALLOW AZURE LOAD     65001     Allow    AZURE_LOADBALAN *             *                *              *       
@@ -78,7 +80,7 @@ Führen Sie zum Erstellen einer NSG mit dem Namen **NSG-FrontEnd** basierend auf
 
                    Name                 Priority  Action   Source Address  Source Port   Destination      Destination    Protocol
                                                            Prefix          Range         Address Prefix   Port Range             
-                   ----                 --------  ------   --------------- ------------- ---------------- -------------- --------
+                   
                    ALLOW VNET OUTBOUND  65000     Allow    VIRTUAL_NETWORK *             VIRTUAL_NETWORK  *              *       
                    ALLOW INTERNET       65001     Allow    *               *             INTERNET         *              *       
                    OUTBOUND                                                                                                      
@@ -103,7 +105,7 @@ Führen Sie zum Erstellen einer NSG mit dem Namen **NSG-FrontEnd** basierend auf
 
                    Name                 Priority  Action   Source Address  Source Port   Destination      Destination    Protocol
                                                            Prefix          Range         Address Prefix   Port Range             
-                   ----                 --------  ------   --------------- ------------- ---------------- -------------- --------
+                   
                    rdp-rule             100       Allow    INTERNET        *             *                3389           TCP     
                    web-rule             200       Allow    INTERNET        *             *                80             TCP     
                    ALLOW VNET INBOUND   65000     Allow    VIRTUAL_NETWORK *             VIRTUAL_NETWORK  *              *       
@@ -116,7 +118,7 @@ Führen Sie zum Erstellen einer NSG mit dem Namen **NSG-FrontEnd** basierend auf
 
                    Name                 Priority  Action   Source Address  Source Port   Destination      Destination    Protocol
                                                            Prefix          Range         Address Prefix   Port Range             
-                   ----                 --------  ------   --------------- ------------- ---------------- -------------- --------
+                   
                    ALLOW VNET OUTBOUND  65000     Allow    VIRTUAL_NETWORK *             VIRTUAL_NETWORK  *              *       
                    ALLOW INTERNET       65001     Allow    *               *             INTERNET         *              *       
                    OUTBOUND                                                                                                      
@@ -131,7 +133,7 @@ Führen Sie zum Erstellen einer NSG mit dem Namen **NSG-FrontEnd** basierend auf
     Erwartete Ausgabe:
    
         Name        Location   Label              
-        ----        --------   -----              
+        
         NSG-BackEnd West US    Back end subnet NSG
 2. Erstellen Sie eine Sicherheitsregel, die den Zugriff aus dem Front-End-Subnetz auf Port 1433 zulässt (von SQL Server verwendeter Standardport).
    
@@ -152,7 +154,7 @@ Führen Sie zum Erstellen einer NSG mit dem Namen **NSG-FrontEnd** basierend auf
    
                    Name                 Priority  Action   Source Address  Source Port   Destination      Destination    Protocol
                                                            Prefix          Range         Address Prefix   Port Range             
-                   ----                 --------  ------   --------------- ------------- ---------------- -------------- --------
+                   
                    fe-rule              100       Allow    192.168.1.0/24  *             *                1433           TCP     
                    ALLOW VNET INBOUND   65000     Allow    VIRTUAL_NETWORK *             VIRTUAL_NETWORK  *              *       
                    ALLOW AZURE LOAD     65001     Allow    AZURE_LOADBALAN *             *                *              *       
@@ -163,7 +165,7 @@ Führen Sie zum Erstellen einer NSG mit dem Namen **NSG-FrontEnd** basierend auf
 
                    Name                 Priority  Action   Source Address  Source Port   Destination      Destination    Protocol
                                                            Prefix          Range         Address Prefix   Port Range             
-                   ----                 --------  ------   --------------- ------------- ---------------- -------------- --------
+                   
                    ALLOW VNET OUTBOUND  65000     Allow    VIRTUAL_NETWORK *             VIRTUAL_NETWORK  *              *       
                    ALLOW INTERNET       65001     Allow    *               *             INTERNET         *              *       
                    OUTBOUND                                                                                                      
@@ -188,7 +190,7 @@ Führen Sie zum Erstellen einer NSG mit dem Namen **NSG-FrontEnd** basierend auf
    
                    Name                 Priority  Action   Source Address  Source Port   Destination      Destination    Protocol
                                                            Prefix          Range         Address Prefix   Port Range             
-                   ----                 --------  ------   --------------- ------------- ---------------- -------------- --------
+                   
                    fe-rule              100       Allow    192.168.1.0/24  *             *                1433           TCP     
                    ALLOW VNET INBOUND   65000     Allow    VIRTUAL_NETWORK *             VIRTUAL_NETWORK  *              *       
                    ALLOW AZURE LOAD     65001     Allow    AZURE_LOADBALAN *             *                *              *       
@@ -199,15 +201,10 @@ Führen Sie zum Erstellen einer NSG mit dem Namen **NSG-FrontEnd** basierend auf
 
                    Name                 Priority  Action   Source Address  Source Port   Destination      Destination    Protocol
                                                            Prefix          Range         Address Prefix   Port Range             
-                   ----                 --------  ------   --------------- ------------- ---------------- -------------- --------
+                   
                    block-internet       200       Deny     *               *             INTERNET         *              *       
                    ALLOW VNET OUTBOUND  65000     Allow    VIRTUAL_NETWORK *             VIRTUAL_NETWORK  *              *       
                    ALLOW INTERNET       65001     Allow    *               *             INTERNET         *              *       
                    OUTBOUND                                                                                                      
                    DENY ALL OUTBOUND    65500     Deny     *               *             *                *              *   
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

@@ -14,11 +14,12 @@ ms.custom: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 01/10/2017
+ms.date: 03/17/2017
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: 4326cc342088ff16a72b8c460245bda1f2cd17c9
-ms.openlocfilehash: 3e0c58af3566ea443efaa012495e5b736fafb46d
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 96f42929c3f4d0ccf4f2f1fbc206dddd90d6d3d1
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -296,7 +297,7 @@ Nach dem Neustart des primären Domänencontrollers können Sie den zweiten Dom�
 
 Nachdem der Server die Änderungen an der Konfiguration abgeschlossen hat, starten Sie den Server neu. 
 
-### <a name="a-namedomainaccountsa-configure-domain-accounts"></a><a name=DomainAccounts></a> Konfigurieren von Domänenkonten
+### <a name=DomainAccounts></a> Konfigurieren von Domänenkonten
 
 In den nächsten Schritten werden die Active Directory-Konten (AD) konfiguriert. Die folgende Tabelle zeigt die Konten:
 
@@ -310,7 +311,7 @@ Führen Sie zum Erstellen jedes Kontos die folgenden Schritte aus.
 1. Melden Sie sich wieder am Computer **ad-primary-dc** an.
 2. Wählen Sie im **Server-Manager** die Option **Tools** aus, und klicken Sie dann auf **Active Directory-Verwaltungscenter**.   
 3. Wählen Sie **corp (local)** im linken Bereich.
-4. Wählen Sie rechts im Aufgabenbereich** **die Option **Neu** aus, und klicken Sie dann auf **Benutzer**. 
+4. Wählen Sie rechts im Aufgabenbereich****die Option **Neu** aus, und klicken Sie dann auf **Benutzer**. 
    ![Active Directory-Verwaltungscenter](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/29-addcnewuser.png)
 
    >[!TIP]
@@ -320,7 +321,7 @@ Führen Sie zum Erstellen jedes Kontos die folgenden Schritte aus.
 6. Wiederholen Sie die vorherigen Schritte für jedes der drei Konten. 
 
 ### <a name="grant-required-permissions-to-the-installation-account"></a>Erteilen der erforderlichen Berechtigungen für das Installationskonto
-1. Wählen Sie im **Active Directory-Verwaltungscenter** im linken Bereich die Option **corp (lokal)** aus. Klicken Sie dann rechts im Aufgabenbereich** **auf **Eigenschaften**.
+1. Wählen Sie im **Active Directory-Verwaltungscenter** im linken Bereich die Option **corp (lokal)** aus. Klicken Sie dann rechts im Aufgabenbereich****auf **Eigenschaften**.
    
     ![Eigenschaften des Benutzers CORP](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/31-addcproperties.png)
 8. Wählen Sie **Erweiterungen** aus, und klicken Sie auf der Registerkarte **Sicherheit** auf die Schaltfläche **Erweitert**.
@@ -337,7 +338,7 @@ Nachdem Sie nun die Konfiguration von Active Directory und den Benutzerobjekten 
 
 ## <a name="create-sql-servers"></a>Erstellen von SQL Server-Computern
 ### <a name="create-and-configure-the-sql-server-vms"></a>Erstellen und Konfigurieren der virtuellen SQL Server-Computer
-Im nächsten Schritt werden drei virtuelle Computer erstellt: zwei virtuelle SQL Server-Computer und ein WSFC-Clusterknoten. Kehren Sie zum Erstellen dieser virtuellen Computer jeweils zur Ressourcengruppe **SQL-HA-RG** zurück, klicken Sie auf **Hinzufügen**, suchen Sie nach dem entsprechenden Katalogelement (**Virtueller Computer**), und klicken Sie dann auf **Aus Katalog**. Verwenden Sie die Informationen in der folgenden Tabelle, die Sie bei der Erstellung der virtuellen Computer unterstützen:
+Im nächsten Schritt werden drei virtuelle Computer erstellt: zwei virtuelle SQL Server-Computer und ein virtueller Computer für einen zusätzlichen Clusterknoten. Kehren Sie zum Erstellen dieser virtuellen Computer jeweils zur Ressourcengruppe **SQL-HA-RG** zurück, klicken Sie auf **Hinzufügen**, suchen Sie nach dem entsprechenden Katalogelement (**Virtueller Computer**), und klicken Sie dann auf **Aus Katalog**. Verwenden Sie die Informationen in der folgenden Tabelle, die Sie bei der Erstellung der virtuellen Computer unterstützen:
 
 | Seite | VM1 | VM2 | VM3 |
 | --- | --- | --- | --- |
@@ -377,7 +378,7 @@ Sobald die drei virtuellen Computer vollständig bereitgestellt wurden, müssen 
 
 Wiederholen Sie diese Schritte für alle Server.
 
-### <a name="a-namejoindomainajoin-the-servers-to-the-domain"></a><a name="joinDomain"></a>Fügen Sie die Server der Domäne hinzu.
+### <a name="joinDomain"></a>Fügen Sie die Server der Domäne hinzu.
 
 Sie können den virtuellen Computer jetzt zu **corp.contoso.com**beitreten lassen. Führen Sie Folgendes für beide SQL Server-Instanzen und den Dateifreigabe-Zeugenserver aus: 
 
@@ -408,7 +409,7 @@ Fügen Sie nach dem Neustart aller virtuellen Computer als Mitglied der Domäne 
 7. Klicken Sie auf **OK**, um das Dialogfeld **Administratoreigenschaften** zu schließen.
 8. Wiederholen Sie die oben genannten Schritte für **sqlserver-1** und **cluster-fsw**.
 
-### <a name="a-namesetserviceaccountaset-the-sql-server-service-accounts"></a><a name="setServiceAccount"></a>Festlegen der SQL Server-Dienstkonten
+### <a name="setServiceAccount"></a>Festlegen der SQL Server-Dienstkonten
 
 Legen Sie auf jeder SQL Server-Instanz das SQL Server-Dienstkonto fest. Verwenden Sie die Konten, die Sie beim [Konfigurieren der Domänenkonten](#DomainAccounts) erstellt haben.
 
@@ -426,7 +427,7 @@ Für SQL Server-Verfügbarkeitsgruppen muss jede SQL Server-Instanz als Domänen
 
 Verwenden Sie das Installationskonto, um die Verfügbarkeitsgruppe zu konfigurieren. Dieses Konto muss auf jeder SQL Server-Instanz ein Mitglied der festen Serverrolle **sysadmin** sein. Mit folgenden Schritten erstellen Sie eine Anmeldung für das Installationskonto:
 
-1. Stellen Sie mithilfe des * \<MachineName\>\DomainAdmin*-Kontos eine RDP-Verbindung mit dem Server her.
+1. Stellen Sie mithilfe des *\<MachineName\>\DomainAdmin*-Kontos eine RDP-Verbindung mit dem Server her.
 
 1. Öffnen Sie SQL Server Management Studio, und stellen Sie eine Verbindung mit der lokalen SQL Server-Instanz her. 
 
@@ -434,7 +435,7 @@ Verwenden Sie das Installationskonto, um die Verfügbarkeitsgruppe zu konfigurie
 
 1. Klicken Sie mit der rechten Maustaste auf **Anmeldungen**. Klicken Sie auf **Neue Anmeldung...**.
 
-1. Klicken Sie in **Anmeldung – Neu** auf **Suchen... **.
+1. Klicken Sie in **Anmeldung – Neu** auf **Suchen...**.
 
 1. Klicken Sie auf **Standorte...**.
 
@@ -470,7 +471,7 @@ Für die Lösung müssen die folgenden TCP-Ports in der Firewall geöffnet sein:
 
 - **SQL Server**<br/>
    Port 1433 für eine Standardinstanz von SQL Server. 
-- ** Azure Load Balancer-Test**<br/>
+- **Azure Load Balancer-Test**<br/>
    Ein beliebiger verfügbarer Port. Für Beispiele wird häufig 59999 verwendet.
 - **Datenbankspiegelungs-Endpunkt** <br/>
    Ein beliebiger verfügbarer Port. Für Beispiele wird häufig 5022 verwendet. 
@@ -506,9 +507,4 @@ Wiederholen Sie diese Schritte auf der zweiten SQL Server-Instanz in gleicher We
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Create SQL Server Always On Availability Group on Azure Virtual Machines](virtual-machines-windows-portal-sql-availability-group-tutorial.md) (Erstellen der SQL Server AlwaysOn-Verfügbarkeitsgruppe auf virtuellen Azure-Computern)
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

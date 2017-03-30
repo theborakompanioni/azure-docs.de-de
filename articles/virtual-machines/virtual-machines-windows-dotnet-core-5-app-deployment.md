@@ -17,9 +17,9 @@ ms.date: 11/21/2016
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
-ms.openlocfilehash: 495ee4a14e779099f828db0c08068bc3772cd7d4
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: 2d60af167b8d7805e6f01264de84fb1351d85f98
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -120,6 +120,46 @@ Beachten Sie, dass das Skript im folgenden JSON-Code in GitHub gespeichert ist. 
   }
 }
 ```
+
+Wie bereits erwähnt, ist es auch möglich, Ihre benutzerdefinierten Skripts in Azure Blob Storage zu speichern. Es gibt zwei Optionen für das Speichern der Skriptressourcen in Blob Storage: Sie können den Container/das Skript öffentlich machen und die oben beschriebene Vorgehensweise wählen, oder Sie belassen sie im privaten Blobspeicher – in diesem Fall müssen Sie storageAccountName und storageAccountKey in der Ressourcendefinition der CustomScriptExtension angeben.
+
+Im folgenden Beispiel sind wir noch einen Schritt weiter gegangen. Es ist zwar möglich, Speicherkontonamen und -schlüssel während der Bereitstellung als Parameter oder Variablen anzugeben, Resource Manager-Vorlagen stellen jedoch die `listKeys`-Funktion bereit, mit der Sie den Speicherkontoschlüssel programmgesteuert zum Zeitpunkt der Bereitstellung abrufen und in die Vorlage einfügen können.
+
+In der Beispielressourcendefinition CustomScriptExtension unten wurde das benutzerdefinierte Skript bereits in das Azure Storage-Konto `mystorageaccount9999` hochgeladen, das in einer anderen Ressourcengruppe (`mysa999rgname`) enthalten ist. Wenn wir eine Vorlage mit dieser Ressource bereitstellen, ruft die `listKeys`-Funktion programmgesteuert den Speicherkontoschlüssel für das Speicherkonto `mystorageaccount9999` in der Ressourcengruppe `mysa999rgname` ab und fügt ihn für uns in die Vorlage ein.
+
+```json
+{
+  "apiVersion": "2015-06-15",
+  "type": "extensions",
+  "name": "config-app",
+  "location": "[resourceGroup().location]",
+  "dependsOn": [
+    "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'),copyindex())]",
+    "[variables('musicstoresqlName')]"
+  ],
+  "tags": {
+    "displayName": "config-app"
+  },
+  "properties": {
+    "publisher": "Microsoft.Compute",
+    "type": "CustomScriptExtension",
+    "typeHandlerVersion": "1.7",
+    "autoUpgradeMinorVersion": true,
+    "settings": {
+      "fileUris": [
+        "https://mystorageaccount9999.blob.core.windows.net/container/configure-music-app.ps1"
+      ]
+    },
+    "protectedSettings": {
+      "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 -user ',parameters('adminUsername'),' -password ',parameters('adminPassword'),' -sqlserver ',variables('musicstoresqlName'),'.database.windows.net')]",
+      "storageAccountName": "mystorageaccount9999",
+      "storageAccountKey": "[listKeys(resourceId('mysa999rgname','Microsoft.Storage/storageAccounts', mystorageaccount9999), '2015-06-15').key1]"
+    }
+  }
+}
+```
+
+Der Hauptvorteil dieses Ansatzes ist, dass Sie die Vorlage oder die Bereitstellungsparameter bei einem geänderten Speicherkontoschlüssel nicht ändern müssen.
 
 Weitere Informationen zum Verwenden der benutzerdefinierten Skripterweiterung finden Sie unter [Verwenden der benutzerdefinierten Skripterweiterung für virtuelle Linux-Computer mit Azure Resource Manager-Vorlagen](virtual-machines-windows-extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

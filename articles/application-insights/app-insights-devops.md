@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 9f837ea815fdd3ea47608dc36029c35e92eda0ae
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: f6c8c895f406187f2bc525a60ca7e53f12e99d77
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -164,6 +164,10 @@ Wenn eine Warnung ausgelöst wird, kann Application Insights automatisch ein Arb
 * Leistung: Die Auswirkungen sind sehr gering. Die Telemetrie wird in Batches verarbeitet.
 * [Support:](app-insights-get-dev-support.md) Profitieren Sie vom Azure-Supportprogramm. In den intensiv genutzten Foren beantworten Entwickler Ihre Fragen. Zudem können wir Ihnen auch individuelle Hilfe bieten.
 * [Preise:](app-insights-pricing.md) Sie können mit einer kostenlosen Version beginnen und diese beibehalten, solange Ihre Datenvolumen gering sind.
+
+## <a name="video"></a>Video
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="next-steps"></a>Nächste Schritte
 Die ersten Schritte mit Application Insights sind ganz einfach. Dies sind die wichtigsten Optionen:

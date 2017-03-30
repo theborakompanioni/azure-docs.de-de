@@ -17,8 +17,9 @@ ms.workload: na
 ms.date: 03/04/2016
 ms.author: cfowler
 translationtype: Human Translation
-ms.sourcegitcommit: 385eb87ec32f5f605b28cc8c76b1c89c7e90bfec
-ms.openlocfilehash: 09ec6d1aae5dc893e92b7c4ca1c30a251d02443d
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: e00d453e9ae34cafb5ce753f63c253e954d6b09a
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -64,6 +65,7 @@ Der lokale Cache wird für jede Web-App über die folgende App-Einstellung aktiv
 <a name="Configure-Local-Cache-ARM"></a>
 
 ```
+
 ...
 
 {
@@ -73,7 +75,8 @@ Der lokale Cache wird für jede Web-App über die folgende App-Einstellung aktiv
     "dependsOn": [
         "[resourceId('Microsoft.Web/sites/', variables('siteName'))]"
     ],
-    "properties": {
+
+"properties": {
         "WEBSITE_LOCAL_CACHE_OPTION": "Always",
         "WEBSITE_LOCAL_CACHE_SIZEINMB": "300"
     }
@@ -110,8 +113,6 @@ Bei Verwendung des lokalen Caches sehen Ihre Protokolle und Datenordner etwas an
 ### <a name="i-have-local-cache-enabled-but-my-web-app-still-gets-restarted-why-is-that-i-thought-local-cache-helped-with-frequent-app-restarts"></a>Ich habe den lokalen Cache aktiviert, aber meine Web-App wird weiterhin neu gestartet. Warum? Ich dachte, durch den lokalen Cache werden App-Neustarts verringert.
 Der lokale Cache trägt dazu bei, speicherbezogene Neustarts von Web-Apps zu vermeiden. Ihre Web-App kann jedoch aufgrund von geplanten Upgrades der VM-Infrastruktur weiterhin neu gestartet werden. Die App sollte bei aktiviertem lokalen Cache insgesamt jedoch seltener neu gestartet werden.
 
-
-
-<!--HONumber=Feb17_HO2-->
-
+### <a name="does-local-cache-exclude-any-directories-from-being-copied-to-the-faster-local-drive"></a>Gibt es Verzeichnisse, die für den lokalen Cache nicht auf das schnellere lokale Laufwerk kopiert werden?
+Bei dem Schritt, in dem der Speicherinhalt kopiert wird, werden alle Ordner mit dem Namen „repository“ ausgeschlossen. Dies hilft bei Szenarien, in denen eine Website ein Quellcodeverwaltungs-Repository enthält, das für den täglichen Betrieb der Web-App möglicherweise nicht benötigt wird. 
 

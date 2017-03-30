@@ -14,20 +14,20 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/27/2017
+ms.date: 03/15/2017
 ms.author: sasubram
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 58768cd59a922483bcb37797a6dcd515d159ef4c
-ms.openlocfilehash: f0d8eaef0933a43d5eefb06b1444e74fa5f5b3eb
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: e816349ea971c997f655b4d51672dba666bc3e89
+ms.lasthandoff: 03/17/2017
 
 
 ---
 
 # <a name="grant-permissions-to-users-from-partner-organizations-in-your-azure-active-directory-tenant"></a>Gewähren von Berechtigungen für Benutzer von Partnerorganisationen in Ihrem Azure Active Directory-Mandanten
 
-Die Benutzer der Azure Active Directory B2B-Zusammenarbeit werden als Gastbenutzer zum Verzeichnis hinzugefügt, und die Gastberechtigungen im Verzeichnis sind standardmäßig eingeschränkt. Allerdings ist es in Ihrem Unternehmen möglicherweise erforderlich, dass einige Gastbenutzer Rollen mit höheren Berechtigungen in Ihrer Organisation übernehmen. Um dieses Szenario zu unterstützen, können Gastbenutzer je nach Anforderungen Ihrer Organisation zu jeder gewünschten Rolle hinzugefügt werden.
+Die Benutzer der Azure Active Directory (Azure AD) B2B-Zusammenarbeit werden dem Verzeichnis als Gastbenutzer hinzugefügt, und die Gastberechtigungen im Verzeichnis sind standardmäßig eingeschränkt. Allerdings ist es in Ihrem Unternehmen möglicherweise erforderlich, dass einige Gastbenutzer Rollen mit höheren Berechtigungen in Ihrer Organisation übernehmen. Zur Unterstützung von Rollen mit höheren Berechtigungen können Gastbenutzer je nach Anforderungen Ihrer Organisation jeder gewünschten Rolle hinzugefügt werden.
 
 ## <a name="default-role"></a>Standardrolle
 

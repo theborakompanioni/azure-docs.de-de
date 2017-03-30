@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 08/11/2016
 ms.author: chkuhtz
 translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
-ms.openlocfilehash: e9ffa674363b250a5e286c6e34200fa2b3323173
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: d9e88b859020be2a96a57a01e5624052ed134b64
+ms.lasthandoff: 03/21/2017
 
 ---
 
@@ -95,7 +96,7 @@ Das folgende Diagramm veranschaulicht diese Konfiguration:
 
 In diesem Szenario hat jede VM im Back-End-Pool drei Netzwerkschnittstellen:
 
-* DIP: eine mit der VM verknüpfte virtuelle NIC (NIC-Ressource von Azure)
+* DIP: eine mit der VM verknüpfte virtuelle NIC (IP-Konfiguration der NIC-Ressource von Azure)
 * VIP1: eine Loopback-Schnittstelle im Gastbetriebssystem, die mit der IP-Adresse von VIP1 konfiguriert ist
 * VIP2: eine Loopback-Schnittstelle im Gastbetriebssystem, die mit der IP-Adresse von VIP2 konfiguriert ist
 
@@ -135,9 +136,4 @@ Der Floating IP-Regeltyp bildet die Grundlage für mehrere Load Balancer-Konfigu
 * Bei der Floating IP-Regel muss die Anwendung die DIP für ausgehende Datenflüsse verwenden. Wenn Ihre Anwendung an die VIP-Adresse gebunden ist, die an der Loopback-Schnittstelle im Gastbetriebssystem konfiguriert ist, ist SNAT nicht verfügbar, um den ausgehenden Datenfluss umzuschreiben, und der Datenfluss schlägt fehl.
 * Öffentliche IP-Adressen haben Auswirkungen auf die Abrechnung. Weitere Informationen finden Sie unter [Preise für IP-Adressen](https://azure.microsoft.com/pricing/details/ip-addresses/)
 * Es gelten Grenzwerte für Abonnements. Weitere Informationen finden Sie unter [Einschränkungen für Dienste](../azure-subscription-service-limits.md#networking-limits) .
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

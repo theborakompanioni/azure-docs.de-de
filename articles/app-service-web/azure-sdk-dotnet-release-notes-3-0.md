@@ -14,9 +14,9 @@ ms.workload: integration
 ms.date: 03/07/2017
 ms.author: juliako;mikhegn
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: a3780d296548f4e00841563c65a99fb88ce047fe
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: dea4a174aaf3727d66e9d69d32d433ff24e0d06d
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -28,7 +28,7 @@ Dieses Thema enthält die Versionshinweise für Version 3.0 des Azure SDK für .
 
 Herausgabedatum: 07.03.2017
  
-Mit dieser Version wurden keine grundlegenden Änderungen für das Azure SDK 3.0 eingeführt. Es ist auch kein Upgradevorgang erforderlich, um dieses SDK mit vorhandenen Clouddienstprojekten nutzen zu können.
+Mit dieser Version wurden keine grundlegenden Änderungen für das Azure SDK 3.0 eingeführt. Es ist auch kein Upgradevorgang erforderlich, um dieses SDK mit vorhandenen Clouddienstprojekten nutzen zu können. Um die Verwendung des Azure SDK 3.0 ohne einen Upgradevorgang zu ermöglichen, wird das Azure SDK 3.0 in dieselben Verzeichnisse wie das Azure SDK 2.9 installiert. Bei den meisten Komponenten wurde die Hauptversion seit 2.9 nicht geändert, sondern lediglich die Buildnummer aktualisiert.
 
 ## <a name="visual-studio-2017-rtw"></a>Visual Studio 2017 RTW
 

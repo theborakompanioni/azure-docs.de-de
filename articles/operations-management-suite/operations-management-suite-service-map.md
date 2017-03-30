@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 11/22/2016
 ms.author: daseidma;bwren;dairwin
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: d616a8574d2087be66bc10dfdf3bf6f5a14c11fd
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: aca6cd69647406d0140d8b0d0cba8e4690b04ae1
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -199,7 +199,7 @@ Datensätze des Typs **ServiceMapComputer_CL** enthalten Bestandsdaten für Serv
 | DnsNames_s | Array von DNS-Namen |
 | OperatingSystemFamily_s | Windows oder Linux |
 | OperatingSystemFullName_s | vollständiger Name des Betriebssystems  |
-| Bitness_s | Bitanzahl des Computers (32 Bit oder&64; Bit) |
+| Bitness_s | Bitanzahl des Computers (32 Bit oder 64 Bit) |
 | PhysicalMemory_d | Physischer Speicher in MB |
 | Cpus_d | Anzahl der CPUs |
 | CpuSpeed_d | CPU-Geschwindigkeit in MHz|
@@ -271,7 +271,7 @@ Type=ServiceMapComputer_CL OperatingSystemFullName_s = \*CentOS\* | Distinct Com
 
 
 ## <a name="rest-api"></a>REST-API
-Alle Server-, Prozess- und Abhängigkeitsdaten in Service Map stehen über die [Service Map-REST-API](https://docs.microsoft.com/en-us/rest/api/servicemap/) zur Verfügung.
+Alle Server-, Prozess- und Abhängigkeitsdaten in Service Map stehen über die [Service Map-REST-API](https://docs.microsoft.com/rest/api/servicemap/) zur Verfügung.
 
 
 ## <a name="diagnostic-and-usage-data"></a>Diagnose- und Nutzungsdaten
@@ -282,6 +282,10 @@ Weitere Informationen zur Sammlung und Nutzung von Daten finden Sie in den [Date
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie mehr über [Protokollsuchvorgänge](../log-analytics/log-analytics-log-searches.md) in Log Analytics, um Daten abzurufen, die von Service Map gesammelt wurden.
+
+
+## <a name="troubleshooting"></a>Problembehandlung
+- Weitere Informationen finden Sie im [Abschnitt zur Problembehandlung der Konfigurationsdokumentation für Service Map](operations-management-suite-service-map-configure.md#troubleshooting).
 
 
 ## <a name="feedback"></a>Feedback

@@ -12,12 +12,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 03/08/2017
+ms.date: 03/21/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: ec49b8784eb9b18135c5f7ec7242a2468ac87e50
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: a545925bdade693f4db7db45228188dae7e5ff38
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -32,7 +32,7 @@ Update 4 kann auf alle StorSimple-Geräte angewendet werden, auf denen die GA-Ve
 Lesen Sie vor der Bereitstellung des Updates in Ihrer StorSimple-Lösung die Informationen in den Versionsanmerkungen sorgfältig durch.
 
 > [!IMPORTANT]
-> * Update 4 beinhaltet Updates für Gerätesoftware, USM-Firmware, LSI-Treiber und -Firmware, Datenträgerfirmware, Storport und Spaceport, Sicherheit und andere Betriebssysteme. Es dauert ungefähr 4 Stunden, dieses Update zu installieren. Wir empfehlen Ihnen die Anwendung dieses Updates, um Ihr Gerät auf dem neuesten Stand zu halten. 
+> * Update 4 beinhaltet Updates für Gerätesoftware, USM-Firmware, LSI-Treiber und -Firmware, Datenträgerfirmware, Storport und Spaceport, Sicherheit und andere Betriebssysteme. Es dauert ungefähr 4 Stunden, dieses Update zu installieren. Ein Firmwareupdate auf dem Datenträger ist ein Update, das zu einer Unterbrechung und zu einer Ausfallzeit Ihres Geräts führt. Wir empfehlen Ihnen die Anwendung von Update 4, um Ihr Gerät auf dem neuesten Stand zu halten. 
 > * Bei neuen Versionen werden Updates möglicherweise nicht sofort angezeigt, da diese in mehreren Phasen bereitgestellt werden. Warten Sie einige Tage, und suchen Sie dann erneut nach Updates, da diese bald verfügbar werden.
 
 ## <a name="whats-new-in-update-4"></a>Neuerungen in Update 4
@@ -49,7 +49,7 @@ Die folgenden wichtigen Verbesserungen und Fehlerbehebungen wurden in Update 4 v
 
     Alle Wiederherstellungsvorgänge sind jetzt Heatmap-basierte Wiederherstellungsvorgänge. Weitere Informationen zum Abfragen und Stornieren Heatmap-basierter Wiederherstellungs- und Aktivierungsaufträge finden Sie unter [HCS-Cmdlets in Windows PowerShell](https://technet.microsoft.com/library/dn688168.aspx).
 
-* **StorSimple-Diagnosetool:** In Update 4 wird ein StorSimple-Diagnosetool veröffentlicht, das eine einfache Diagnose und Behebung von Problemen im Zusammenhang mit der Integrität von System, Netzwerk, Leistung und Hardwarekomponenten ermöglicht. Dieses Tool wird über Windows PowerShell für StorSimple ausgeführt. 
+* **StorSimple-Diagnosetool:** In Update 4 wird ein StorSimple-Diagnosetool veröffentlicht, das eine einfache Diagnose und Behebung von Problemen im Zusammenhang mit der Integrität von System, Netzwerk, Leistung und Hardwarekomponenten ermöglicht. Dieses Tool wird über Windows PowerShell für StorSimple ausgeführt. Weitere Informationen finden Sie unter [Beheben von Problemen mit dem StorSimple-Diagnosetool](storsimple-8000-diagnostics.md).
 
 * **UI-basiertes StorSimple-Migrationstool:** Vor dieser Version mussten die Benutzer aufgrund der Datenmigration der 5000-7000-Serie einen Teil des Migrationsworkflows mithilfe der Azure PowerShell-Schnittstelle ausführen. In dieser Version steht ein einfach zu bedienendes benutzeroberflächenbasiertes StorSimple-Migrationstool zur Unterstützung bereit, um denselben Workflow zu erleichtern. Dieses Tool lässt auch die Konsolidierung der Wiederherstellungsbuckets zu. 
 
@@ -59,7 +59,7 @@ Die folgenden wichtigen Verbesserungen und Fehlerbehebungen wurden in Update 4 v
 
 * **Aktualisieren von Änderungen:** In dieser Version wurden Fehler im Zusammenhang mit Aktualisierungsfehlern behoben.
 
-* **Warnung bei Datenträgerfehlern:** Eine neue Warnung, die den Benutzer auf bevorstehende Datenträgerfehler hinweist, wurde in dieser Version hinzugefügt. Wenn diese Warnung auftritt, wenden Sie sich an den Microsoft-Support, damit ein Ersatzdatenträger bereitgestellt wird.
+* **Warnung bei Datenträgerfehlern:** Eine neue Warnung, die den Benutzer auf bevorstehende Datenträgerfehler hinweist, wurde in dieser Version hinzugefügt. Wenn diese Warnung auftritt, wenden Sie sich an den Microsoft-Support, damit ein Ersatzdatenträger bereitgestellt wird. Weitere Informationen finden Sie unter [Hardwarewarnungen auf dem StorSimple-Gerät](storsimple-manage-alerts.md#hardware-alerts).
 
 * **Änderungen am Controlleraustausch:** Ein Cmdlet, das dem Benutzer das Abfragen des Status des Controlleraustauschvorgangs ermöglicht, wurde in dieser Version hinzugefügt. Weitere Informationen finden Sie unter [HCS-Cmdlets in Windows PowerShell](https://technet.microsoft.com/library/dn688168.aspx).
 

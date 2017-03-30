@@ -1,6 +1,6 @@
 ---
-title: Installieren von Mobility Service (VMware/physisch in Azure) | Microsoft-Dokumentation
-description: "Dieser Artikel beschreibt, wie der Mobility Service-Agent auf Ihren lokalen Computern installiert wird, um sie zu schützen."
+title: Installieren von Mobility Service (VMware oder physisch in Azure) | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie den Mobility Service-Agent zum Schutz Ihrer lokalen Computer installieren.
 services: site-recovery
 documentationcenter: 
 author: AnoopVasudavan
@@ -15,67 +15,66 @@ ms.workload: backup-recovery
 ms.date: 2/20/2017
 ms.author: anoopkv
 translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: 7e82ac74a8aef4e3cc8aff4dea3c572dcb9d9c40
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 79beda244007649253fb7130f0403f587fcf76bf
+ms.lasthandoff: 03/21/2017
 
 ---
 
-# <a name="installing-mobility-service-vmwarephysical-to-azure"></a>Installieren von Mobility Service (VMware/physisch in Azure)
-Mobility Service muss auf jedem Computer (VMware-VM oder physischer Server) bereitgestellt werden, den Sie in Azure replizieren möchten. Er erfasst die Datenschreibvorgänge auf dem Computer und sendet sie an den Prozessserver. Mobility Service kann mit den folgenden Methoden auf Servern bereitgestellt werden, die Schutz erfordern
+# <a name="install-mobility-service-vmware-or-physical-to-azure"></a>Installieren von Mobility Service (VMware oder physisch in Azure)
+Azure Site Recovery Mobility Service erfasst Datenschreibvorgänge auf einem Computer und leitet sie dann an den Prozessserver weiter. Stellen Sie Mobility Service auf jedem Computer (VMware-VM oder physischer Server) bereit, den Sie in Azure replizieren möchten. Sie können die Mobility Service auf den Servern bereitstellen, die Sie mithilfe der folgenden Methoden schützen möchten:
 
 
-1. [Installieren von Mobility Service mit Softwarebereitstellungstools wie System Center Configuration Manager](site-recovery-install-mobility-service-using-sccm.md)
-2. [Installieren von Mobility Service mit Azure Automation und der Konfiguration des gewünschten Zustands (Desired State Configuration, DSC)](site-recovery-automate-mobility-service-install.md)
-3. [Manuelles Installieren von Mobility Service mithilfe der grafischen Benutzeroberfläche (Graphical User Interface, GUI)](site-recovery-vmware-to-azure-install-mob-svc.md#install-mobility-service-manually-using-the-graphical-user-interface)
-4. [Manuelles Installieren von Mobility Service über die Befehlszeile](site-recovery-vmware-to-azure-install-mob-svc.md#install-mobility-service-manually-using-command-line)
-5. [Installieren von Mobility Service mithilfe der Pushinstallation in Azure Site Recovery](site-recovery-vmware-to-azure-install-mob-svc.md#install-mobility-service-using-push-install-from-azure-site-recovery)
+* [Installieren von Mobility Service mit Softwarebereitstellungstools wie System Center Configuration Manager](site-recovery-install-mobility-service-using-sccm.md)
+* [Installieren von Mobility Service mit Azure Automation-Konfiguration für den gewünschten Zustand (Desired State Configuration, DSC)](site-recovery-automate-mobility-service-install.md)
+* [Manuelles Installieren von Mobility Service mithilfe der grafischen Benutzeroberfläche (Graphical User Interface, GUI)](site-recovery-vmware-to-azure-install-mob-svc.md#install-mobility-service-manually-by-using-the-gui)
+* [Manuelles Installieren von Mobility Service über eine Eingabeaufforderung](site-recovery-vmware-to-azure-install-mob-svc.md#install-mobility-service-manually-at-a-command-prompt)
+* [Installieren von Mobility Service mithilfe der Pushinstallation in Azure Site Recovery](site-recovery-vmware-to-azure-install-mob-svc.md#install-mobility-service-by-push-installation-from-azure-site-recovery)
 
 
 >[!IMPORTANT]
-> Ab Version 9.7.0.0 wird mit dem Mobility Service-Installationsprogramm auf virtuellen Windows-Computern auch der jeweils neueste verfügbare [Azure-VM-Agent](../virtual-machines/virtual-machines-windows-extensions-features.md#azure-vm-agent) installiert. Dadurch wird sichergestellt, dass bei einem Failover für den Computer in Azure diese für die Verwendung von VM-Erweiterungen erforderliche Voraussetzung erfüllt wird.
+> Ab Version 9.7.0.0 wird mit dem Mobility Service-Installationsprogramm auf virtuellen Windows-Computern (VMs) auch der jeweils neueste verfügbare [Azure-VM-Agent](../virtual-machines/virtual-machines-windows-extensions-features.md#azure-vm-agent) installiert. Wenn ein Computer ein Failover zu Azure ausführt, erfüllt der Computer die Agent-Installationsvoraussetzungen für die Verwendung beliebiger VM-Erweiterungen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Führen Sie diese erforderlichen Schritte vor dem Beginn der Mobility Service-Installation manuell auf Ihren Servern aus.
-1. Melden Sie sich bei Ihrem Konfigurationsserver an, und öffnen Sie eine Eingabeaufforderung mit Administratorberechtigungen.
-2. Wechseln Sie in den Ordner „bin“, und erstellen Sie eine Passphrasedatei.
+Führen Sie diese erforderlichen Schritte aus, bevor Sie Mobility Service manuell auf Ihrem Server installieren:
+1. Melden Sie sich bei Ihrem Konfigurationsserver an, und öffnen Sie ein Eingabeaufforderungsfenster als Administrator.
+2. Wechseln Sie in das Verzeichnis „bin“, und erstellen Sie dann eine Passphrasedatei:
 
-  ```
-  cd %ProgramData%\ASR\home\svsystems\bin
-  genpassphrase.exe -v > MobSvc.passphrase
-  ```
-3. Speichern Sie diese Datei an einem sicheren Ort, da wir sie während der Mobility Service-Installation verwenden müssen.
-4. Die Mobility Service-Installationsprogramme für die unterstützten Betriebssysteme finden Sie in folgendem Verzeichnis:     
+    ```
+    cd %ProgramData%\ASR\home\svsystems\bin
+    genpassphrase.exe -v > MobSvc.passphrase
+    ```
+3. Speichern Sie die Passphrase an einem sicheren Speicherort. Sie verwenden die Datei während der Installation von Mobility Service.
+4. Die Mobility Service-Installationsprogramme für alle unterstützten Betriebssysteme befinden sich im Ordner „%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository“.
 
-  `%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository`
-
-#### <a name="mobility-service-installer-to-operating-system-mapping"></a>Zuordnung von Mobility Service-Installationsprogrammen zu Betriebssystemen
+### <a name="mobility-service-installer-to-operating-system-mapping"></a>Zuordnung von Mobility Service-Installationsprogrammen zu Betriebssystemen
 
 | Vorlagenname des Installationsprogramms| Betriebssystem |
 |---|--|
-|Microsoft-ASR\_UA\*Windows\*release.exe | Windows Server 2008 R2 (64 Bit) SP1</br> Windows Server 2012 (64 Bit) </br> Windows Server 2012 R2 (64 Bit) |
-|Microsoft-ASR\_UA\*RHEL6-64*release.tar.gz| RHEL 6.4, 6.5, 6.6, 6.7, 6.8 (nur 64 Bit) </br> CentOS 6.4, 6.5, 6.6, 6.7. 6.8 (nur&64; Bit) |
+|Microsoft-ASR\_UA\*Windows\*release.exe | Windows Server 2008 R2 SP1 (64 Bit) </br> Windows Server 2012 (64 Bit) </br> Windows Server 2012 R2 (64 Bit) |
+|Microsoft-ASR\_UA\*RHEL6-64*release.tar.gz| Red Hat Enterprise Linux (RHEL) 6.4, 6.5, 6.6, 6.7, 6.8 (nur 64 Bit) </br> CentOS 6.4, 6.5, 6.6, 6.7, 6.8 (nur 64 Bit) |
 |Microsoft-ASR\_UA\*SLES11-SP3-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP3 (nur 64 Bit)|
 |Microsoft-ASR_UA\*OL6-64\*release.tar.gz | Oracle Enterprise Linux 6.4, 6.5 (nur 64 Bit)|
 
 
-## <a name="install-mobility-service-manually-using-the-graphical-user-interface"></a>Manuelles Installieren von Mobility Service mithilfe der grafischen Benutzeroberfläche
+## <a name="install-mobility-service-manually-by-using-the-gui"></a>Manuelles Installieren von Mobility Service über die grafische Benutzeroberfläche (GUI)
 
 >[!NOTE]
-> Die Installation über die grafische Benutzeroberfläche wird nur für Microsoft Windows-Betriebssysteme unterstützt.
+> Die GUI-basierte Installation funktioniert nur mit Windows-Betriebssystemen.
 
 [!INCLUDE [site-recovery-install-mob-svc-gui](../../includes/site-recovery-install-mob-svc-gui.md)]
 
-## <a name="install-mobility-service-manually-using-command-line"></a>Manuelles Installieren von Mobility Service über die Befehlszeile
-### <a name="command-line-based-install-on-windows-computers"></a>Installation über die Befehlszeile auf Windows-Computern
+## <a name="install-mobility-service-manually-at-a-command-prompt"></a>Manuelles Installieren von Mobility Service über eine Eingabeaufforderung
+
+### <a name="command-line-installation-on-a-windows-computer"></a>Befehlszeileninstallation auf einem Windows-Computer
 [!INCLUDE [site-recovery-install-mob-svc-win-cmd](../../includes/site-recovery-install-mob-svc-win-cmd.md)]
 
-### <a name="command-line-based-install-on-linux-computers"></a>Installation über die Befehlszeile auf Linux-Computern
+### <a name="command-line-installation-on-a-linux-computer"></a>Befehlszeileninstallation auf einem Linux-Computer
 [!INCLUDE [site-recovery-install-mob-svc-lin-cmd](../../includes/site-recovery-install-mob-svc-lin-cmd.md)]
 
 
-## <a name="install-mobility-service-using-push-install-from-azure-site-recovery"></a>Installieren von Mobility Service mithilfe der Pushinstallation in Azure Site Recovery
-Um die Pushinstallation von Mobility Service mithilfe von Azure Site Recovery auszuführen, müssen Sie sicherstellen, dass auf allen Zielcomputern die folgenden Voraussetzungen erfüllt sind.
+## <a name="install-mobility-service-by-push-installation-from-azure-site-recovery"></a>Installieren von Mobility Service mithilfe der Pushinstallation in Azure Site Recovery
+Um eine Pushinstallation von Mobility Service mithilfe von Site Recovery auszuführen, müssen alle Zielcomputer die folgenden Voraussetzungen erfüllen.
 
 [!INCLUDE [site-recovery-prepare-push-install-mob-svc-win](../../includes/site-recovery-prepare-push-install-mob-svc-win.md)]
 
@@ -83,27 +82,27 @@ Um die Pushinstallation von Mobility Service mithilfe von Azure Site Recovery au
 
 
 > [!NOTE]
-Nach der Installation von Mobility Service können Sie die Schaltfläche **+Replizieren** im Azure-Portal verwenden, um den Schutz für diese virtuellen Computer zu aktivieren.
+Nachdem Mobility Service installiert wurde, klicken Sie im Azure-Portal auf die Schaltfläche **Replizieren**, um den Schutz dieser virtuellen Computer zu starten.
 
-## <a name="uninstall-mobility-service-on-windows-servers"></a>Deinstallieren von Mobility Service auf Windows-Servern
-Es gibt zwei Möglichkeiten, wie Sie Mobility Service auf einem Windows-Server deinstallieren können
+## <a name="uninstall-mobility-service-on-a-windows-server-computer"></a>Deinstallieren von Mobility Service auf einem Windows Server-Computer
+Verwenden Sie eine der folgenden Methoden, um Mobility Service auf einem Windows Server-Computer zu deinstallieren.
 
-### <a name="uninstall-using-graphical-user-interface"></a>Deinstallieren mithilfe der grafischen Benutzeroberfläche
-1. Öffnen Sie „Systemsteuerung“ > „Programme“
-2. Wählen Sie **Microsoft Azure Site Recovery Mobility Service/Masterzielserver** aus, und klicken Sie auf „Deinstallieren“.
+### <a name="uninstall-by-using-the-gui"></a>Deinstallieren mithilfe der grafischen Benutzeroberfläche (GUI)
+1. Wählen Sie in der Systemsteuerung **Programme** aus.
+2. Wählen Sie **Microsoft Azure Site Recovery Mobility Service/Masterzielserver** und dann **Deinstallieren** aus.
 
-### <a name="uninstall-using-command-line"></a>Deinstallieren mithilfe der Befehlszeile
-1. Öffnen Sie eine Administratoreingabeaufforderung
-2. Führen Sie den folgenden Befehl zum Deinstallieren von Mobility Service aus.
+### <a name="uninstall-at-a-command-prompt"></a>Deinstallieren über die Eingabeaufforderung
+1. Öffnen Sie ein Eingabeaufforderungsfenster als ein Administrator.
+2. Führen Sie zum Deinstallieren von Mobility Service den folgenden Befehl aus:
 
 ```
 MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
 ```
 
-## <a name="uninstall-mobility-service-on-linux-computers"></a>Deinstallieren von Mobility Service auf Linux-Computern
-1. Melden Sie sich als **Root-Benutzer** auf dem Linux-Server an
-2. Navigieren Sie in einem **Terminal** zu /user/local/ASR
-3. Führen Sie den folgenden Befehl zum Deinstallieren von Mobility Service aus
+## <a name="uninstall-mobility-service-on-a-linux-computer"></a>Deinstallieren von Mobility Service auf einem Linux-Computer
+1. Melden Sie sich auf dem Linux-Server als ein **Root**-Benutzer an.
+2. Navigieren Sie in einem Terminal zu „/user/local/ASR“.
+3. Führen Sie zum Deinstallieren von Mobility Service den folgenden Befehl aus:
 
 ```
 uninstall.sh -Y

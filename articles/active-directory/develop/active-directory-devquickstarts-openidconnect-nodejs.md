@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: brandwe
 translationtype: Human Translation
-ms.sourcegitcommit: 7950cc1df19ddf0a5d12ff8cba8615bb920e58ba
-ms.openlocfilehash: 37666c8c2e1214f8754375efab1f8e6020dbb2e8
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 27f9c5a18b85c0cc2f918ccefeb063f58cc967c6
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -57,9 +57,8 @@ Die fertige Anwendung wird außerdem am Ende dieses Lernprogramms bereitgestellt
 
   * Die **Anmelde-URL** ist die Basis-URL Ihrer Anwendung.  Der Standardwert des Gerüsts lautet `http://localhost:3000/auth/openid/return``.
 
-  * Die **App-ID-URI** ist eine eindeutige Kennung für die Anwendung. Üblicherweise wird das Format `https://<tenant-domain>/<app-name>` verwendet, z. B.: `https://contoso.onmicrosoft.com/my-first-aad-app`.
-
 6. Nach Abschluss der Registrierung weist Azure AD Ihrer App eine eindeutige Anwendungs-ID zu. Diesen Wert benötigen Sie in den nächsten Abschnitten. Daher sollten Sie ihn von der Anwendungsseite kopieren.
+7. Aktualisieren Sie auf der Seite **Einstellungen** -> **Eigenschaften** für Ihre Anwendung den App-ID-URI. Die **App-ID-URI** ist eine eindeutige Kennung für die Anwendung. Üblicherweise wird das Format `https://<tenant-domain>/<app-name>` verwendet, z. B.: `https://contoso.onmicrosoft.com/my-first-aad-app`.
 
 ## <a name="step-2-add-prerequisites-to-your-directory"></a>Schritt 2: Hinzufügen von Voraussetzungen zu Ihrem Verzeichnis
 1. Wechseln Sie über die Befehlszeile vom Verzeichnis auf Ihren Stammordner, wenn dies noch nicht der Fall ist, und führen Sie dann die folgenden Befehle aus:

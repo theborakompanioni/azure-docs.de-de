@@ -16,29 +16,37 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: guybo
 translationtype: Human Translation
-ms.sourcegitcommit: f13545d753690534e0e645af67efcf1b524837eb
-ms.openlocfilehash: dad27b11b5f02ed41826b82882cc5089eb69cb04
-ms.lasthandoff: 02/09/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 9a92490239f22bd4c57c902ac53898aff1adf530
+ms.lasthandoff: 03/17/2017
 
 
 ---
 # <a name="deploy-an-app-on-virtual-machine-scale-sets"></a>Bereitstellen einer App in Skalierungsgruppen für virtuelle Computer
 Eine Anwendung, die in einer VM-Skalierungsgruppe ausgeführt wird, wird normalerweise auf drei verschiedene Arten bereitgestellt:
 
-* Installieren Sie neue Software auf einem Plattformimage zum Zeitpunkt der Bereitstellung. Ein Plattformimage ist in diesem Kontext ein Betriebssystemimage aus dem Azure Marketplace, z.B. Ubuntu 16.04, Windows Server 2012 R2 usw.
+* Installieren neuer Software auf einem Plattformimage zum Zeitpunkt der Bereitstellung
+* Erstellen eines benutzerdefinierten VM-Images, das das Betriebssystem und die Anwendung in einer einzelnen VHD enthält
+* Bereitstellen einer Plattform oder eines benutzerdefinierten Images als Containerhost und der App als ein oder mehrere Container
 
-Sie können neue Software mithilfe einer [VM-Erweiterung](../virtual-machines/virtual-machines-windows-extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) auf einem Plattformimage installieren. Eine VM-Erweiterung ist eine Software, die ausgeführt wird, wenn ein virtueller Computer bereitgestellt wird. Sie können beliebigen Code zum Zeitpunkt der Bereitstellung ausführen, indem Sie eine benutzerdefinierte Skripterweiterung verwenden. [Hier](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-lapstack-autoscale) ist ein Beispiel für eine Azure Resource Manager-Vorlage mit zwei VM-Erweiterungen: eine benutzerdefinierte Linux-Skripterweiterung zum Installieren von Apache und PHP sowie eine Diagnoseerweiterung zum Ausgeben von Leistungsdaten, die von der automatischen Skalierung in Azure verwendet werden.
+## <a name="install-new-software-on-a-platform-image-at-deployment-time"></a>Installieren neuer Software auf einem Plattformimage zum Zeitpunkt der Bereitstellung
+Ein Plattformimage ist in diesem Kontext ein Betriebssystemimage aus dem Azure Marketplace, z.B. Ubuntu 16.04, Windows Server 2012 R2 usw.
+
+Sie können neue Software mithilfe einer [VM-Erweiterung](../virtual-machines/virtual-machines-windows-extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) auf einem Plattformimage installieren. Eine VM-Erweiterung ist eine Software, die ausgeführt wird, wenn ein virtueller Computer bereitgestellt wird. Sie können beliebigen Code zum Zeitpunkt der Bereitstellung ausführen, indem Sie eine benutzerdefinierte Skripterweiterung verwenden. [Hier](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale) ist ein Beispiel für eine Azure Resource Manager-Vorlage, die mithilfe einer [Azure-DSC-Erweiterung (Desired State Configuration)](virtual-machine-scale-sets-dsc.md) IIS und eine .NET-MVC-Anwendung installiert, die in die automatische Skalierung von Azure integriert ist.
 
 Ein Vorteil dieses Ansatzes ist die Trennung von Anwendungscode und Betriebssystem, und Ihre Anwendung kann separat verwaltet werden. Natürlich bedeutet dies, dass auch mehr „bewegliche Teile“ vorhanden sind, und die Dauer der VM-Bereitstellung verlängert sich möglicherweise, wenn das Skript viel herunterladen und konfigurieren muss.
 
-**Wenn Sie vertrauliche Informationen im Befehl der benutzerdefinierten Skripterweiterung übergeben (z.B. ein Kennwort), müssen Sie den `commandToExecute` im `protectedSettings`-Attribut der benutzerdefinierten Skripterweiterung angeben, nicht im `settings`-Attribut.**
+>[!NOTE]
+>Wenn Sie vertrauliche Informationen im Befehl der benutzerdefinierten Skripterweiterung übergeben (z.B. ein Kennwort), müssen Sie den `commandToExecute` im `protectedSettings`-Attribut der benutzerdefinierten Skripterweiterung angeben, nicht im `settings`-Attribut.
 
-* Erstellen Sie ein benutzerdefiniertes VM-Image, das das Betriebssystem und die Anwendung in einer einzelnen VHD enthält. Hier besteht die Skalierungsgruppe aus einer Gruppe von VMs, die aus einem von Ihnen erstellten Image kopiert wird, das Sie verwalten müssen. Dieser Ansatz erfordert keine zusätzliche Konfiguration zum Zeitpunkt der VM-Bereitstellung. In der Version `2016-03-30` der VM-Skalierungsgruppen (und in früheren Versionen) sind die Betriebssystemdatenträger für die VMs in der Skalierungsgruppe allerdings auf ein einzelnes Speicherkonto beschränkt. Folglich können Sie höchstens 40 VMs in einer Skalierungsgruppe verwenden, im Unterschied zum Höchstwert von 100 VM pro Skalierungsgruppe für Plattformimages. Weitere Details finden Sie unter [Entwerfen von VM-Skalierungsgruppen für die Skalierung](virtual-machine-scale-sets-design-overview.md).
+## <a name="create-a-custom-vm-image-that-includes-both-the-os-and-the-application-in-a-single-vhd"></a>Erstellen eines benutzerdefinierten VM-Images, das das Betriebssystem und die Anwendung in einer einzelnen VHD enthält 
+Hier besteht die Skalierungsgruppe aus einer Gruppe von VMs, die aus einem von Ihnen erstellten Image kopiert wird, das Sie verwalten müssen. Dieser Ansatz erfordert keine zusätzliche Konfiguration zum Zeitpunkt der VM-Bereitstellung. In der Version `2016-03-30` der VM-Skalierungsgruppen (und in früheren Versionen) sind die Betriebssystemdatenträger für die VMs in der Skalierungsgruppe allerdings auf ein einzelnes Speicherkonto beschränkt. Folglich können Sie höchstens 40 VMs in einer Skalierungsgruppe verwenden, im Unterschied zum Höchstwert von 100 VM pro Skalierungsgruppe für Plattformimages. Weitere Details finden Sie unter [Entwerfen von VM-Skalierungsgruppen für die Skalierung](virtual-machine-scale-sets-design-overview.md).
 
-    >[!NOTE]
-    >Die VM-Skalierungsgruppen-API mit der Version `2016-04-30-preview` unterstützt das Verwenden von Azure Managed Disks für den Betriebssystem-Datenträger und alle zusätzlichen Datenträger. Weitere Informationen finden Sie unter [Übersicht über Azure Managed Disks](../storage/storage-managed-disks-overview.md) und [Verwenden angefügter Datenträger](virtual-machine-scale-sets-attached-disks.md). 
+>[!NOTE]
+>Die VM-Skalierungsgruppen-API mit der Version `2016-04-30-preview` unterstützt das Verwenden von Azure Managed Disks für den Betriebssystem-Datenträger und alle zusätzlichen Datenträger. Weitere Informationen finden Sie unter [Übersicht über Azure Managed Disks](../storage/storage-managed-disks-overview.md) und [Verwenden angefügter Datenträger](virtual-machine-scale-sets-attached-disks.md). 
 
-* Stellen Sie eine Plattform oder ein benutzerdefiniertes Image bereit, bei der bzw. dem es sich im Grunde um einen Containerhost handelt, und installieren Sie die Anwendung als einen oder mehrere Container, die Sie mit einem Orchestrator oder einem Tool für die Konfigurationsverwaltung verwalten. Das Schöne an diesem Ansatz ist, dass Sie Ihre Cloudinfrastruktur von der Anwendungsebene abstrahiert haben und beides separat verwalten können.
+## <a name="deploy-a-platform-or-a-custom-image-as-a-container-host-and-your-app-as-one-or-more-containers"></a>Bereitstellen einer Plattform oder eines benutzerdefinierten Images als Containerhost und der App als ein oder mehrere Container
+Eine Plattform oder ein benutzerdefiniertes Image ist im Grunde ein Containerhost, Sie können Ihre Anwendung also als ein oder mehrere Container installieren.  Sie verwalten Ihre Anwendungscontainer mit einem Orchestrierungs- oder Konfigurationsverwaltungstool. Das Schöne an diesem Ansatz ist, dass Sie Ihre Cloudinfrastruktur von der Anwendungsebene abstrahiert haben und beides separat verwalten können.
 
 ## <a name="what-happens-when-a-vm-scale-set-scales-out"></a>Was geschieht, wenn eine VM-Skalierungsgruppe horizontal hochskaliert wird?
 Wenn Sie einer Skalierungsgruppe VMs hinzufügen, indem Sie die Kapazität erhöhen (manuell oder durch automatische Skalierung), wird die Anwendung automatisch installiert. Wenn z.B. Erweiterungen für die Skalierungsgruppe definiert wurden, werden sie auf einer neuen VM jedes Mal ausgeführt, wenn sie erstellt wird. Wenn die Skalierungsgruppe auf einem benutzerdefinierten Image basiert, ist jede neue VM eine Kopie des benutzerdefinierten Quellimages. Wenn es sich bei den Skalierungsgruppen-VMs um Containerhosts handelt, könnten Sie Startcode zum Laden der Container in einer benutzerdefinierten Skripterweiterung verwenden. Alternativ kann eine Erweiterung einen Agent installieren, der bei einem Clusterorchestrator (z.B. Azure Container Service) registriert wird.

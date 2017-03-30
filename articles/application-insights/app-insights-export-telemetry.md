@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 02/23/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 14627391a5df562a70737a71f41fe7cb934c9062
-ms.openlocfilehash: 54f579e5806a2fa5bd4ceace8a8ab46509b4be1e
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: a06d97216373ddc6a35160e6226b8eee8df52d27
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -27,22 +27,22 @@ Bei Verwendung des fortlaufenden Exports können zusätzliche Gebühren anfallen
 
 Bevor Sie den fortlaufenden Export einrichten, sollten Sie folgende Alternativen zu dieser Vorgehensweise prüfen:
 
-* [Die Schaltfläche „Exportieren“](app-insights-metrics-explorer.md#export-to-excel) ganz oben in einem Blatt „Metriken“ oder „Suche“, mit der Sie Tabellen und Diagramme in ein Excel-Arbeitsblatt übertragen können. 
+* Über die Schaltfläche „Exportieren“ ganz oben auf dem Blatt „Metriken“ oder „Suche“ können Sie Tabellen und Diagramme in ein Excel-Arbeitsblatt übertragen.
 
 * [Analytics](app-insights-analytics.md) bietet eine leistungsstarke Abfragesprache für Telemetriedaten. Das Exportieren von Ergebnissen ist auch möglich.
 * Wenn Sie [Ihre Daten in Power BI untersuchen](app-insights-export-power-bi.md)möchten, benötigen Sie dazu keinen fortlaufenden Export.
-* Mit dem [REST-API für Datenzugriff](https://dev.applicationinsights.io/) können Sie programmgesteuert auf Ihre Telemetriedaten zugreifen. 
+* Mit dem [REST-API für Datenzugriff](https://dev.applicationinsights.io/) können Sie programmgesteuert auf Ihre Telemetriedaten zugreifen.
 
-Nachdem Ihre Daten vom Fortlaufende Export in den Speicher kopiert wurden (wo sie beliebig lange bleiben können), sind sie für die übliche [Aufbewahrungsdauer](app-insights-data-retention-privacy.md)auch noch in Application Insights verfügbar. 
+Nachdem Ihre Daten vom Fortlaufende Export in den Speicher kopiert wurden (wo sie beliebig lange bleiben können), sind sie für die übliche [Aufbewahrungsdauer](app-insights-data-retention-privacy.md)auch noch in Application Insights verfügbar.
 
 ## <a name="setup"></a> Erstellen eines fortlaufenden Exports
-1. Öffnen Sie in der Application Insights-Ressource für Ihre App die Option „Fortlaufender Export“, und klicken Sie auf **Hinzufügen**: 
+1. Öffnen Sie in der Application Insights-Ressource für Ihre App die Option „Fortlaufender Export“, und klicken Sie auf **Hinzufügen**:
 
     ![Führen Sie einen Bildlauf nach unten aus, und klicken Sie auf "Fortlaufender Export".](./media/app-insights-export-telemetry/01-export.png)
 
 2. Wählen Sie die Telemetriedatentypen aus, die Sie exportieren möchten.
 
-3. Erstellen oder wählen Sie ein [Azure-Speicherkonto](../storage/storage-introduction.md), in dem Sie die Daten speichern möchten. 
+3. Erstellen oder wählen Sie ein [Azure-Speicherkonto](../storage/storage-introduction.md), in dem Sie die Daten speichern möchten.
 
     > [!Warning]
     > Der Speicherort wird standardmäßig auf die gleiche geografische Region festgelegt, in der sich auch Ihre Application Insights-Ressource befindet. Wenn Sie die Daten in einer anderen Region speichern, fallen möglicherweise Übertragungsgebühren an.
@@ -53,7 +53,7 @@ Nachdem Ihre Daten vom Fortlaufende Export in den Speicher kopiert wurden (wo si
 
     ![Klicken Sie auf "Ereignistypen auswählen".](./media/app-insights-export-telemetry/create-container.png)
 
-Nachdem Sie Ihren Exportvorgang erstellt haben, geht es gleich los. Sie erhalten nur Daten, die nach dem Erstellen des Exportvorgangs eingehen. 
+Nachdem Sie Ihren Exportvorgang erstellt haben, geht es gleich los. Sie erhalten nur Daten, die nach dem Erstellen des Exportvorgangs eingehen.
 
 Es kann etwa eine Stunde dauern, bis Daten im Speicher angezeigt werden.
 
@@ -73,18 +73,18 @@ Um den Export dauerhaft zu beenden, löschen Sie ihn. Dabei werden Ihre Daten ni
 * Zum Ergänzen oder Ändern von Exporten benötigen Sie das Zugriffsrecht "Besitzer", "Mitwirkender" oder "Application Insights-Mitwirkender". [Weitere Informationen zu Rollen][roles].
 
 ## <a name="analyze"></a> Welche Ereignisse werden abgerufen?
-Bei den exportierten Daten handelt es sich um die Telemetrierohdaten, die wir von Ihrer Anwendung empfangen. Wir fügen allerdings Standortdaten hinzu, die wir anhand der Client-IP-Adresse berechnen. 
+Bei den exportierten Daten handelt es sich um die Telemetrierohdaten, die wir von Ihrer Anwendung empfangen. Wir fügen allerdings Standortdaten hinzu, die wir anhand der Client-IP-Adresse berechnen.
 
 Daten, die während der [Stichprobenerstellung](app-insights-sampling.md) verworfen wurden, werden nicht in die exportierten Daten aufgenommen.
 
 Andere berechnete Metriken sind nicht enthalten. Wir exportieren z. B. nicht die durchschnittliche CPU-Auslastung, doch wir exportieren die rohen Telemetriedaten, anhand derer der Durchschnitt berechnet wird.
 
-Die Daten umfassen außerdem die Ergebnisse von [Verfügbarkeitswebtests](app-insights-monitor-web-app-availability.md), die Sie eingerichtet haben. 
+Die Daten umfassen außerdem die Ergebnisse von [Verfügbarkeitswebtests](app-insights-monitor-web-app-availability.md), die Sie eingerichtet haben.
 
 > [!NOTE]
 > **Stichproben** Wenn Ihre Anwendung große Datenmengen sendet, wird möglicherweise das Stichprobenfeature verwendet und sendet nur einen Teil der Telemetriedaten. [Erfahren Sie mehr über das Erstellen von Stichproben.](app-insights-sampling.md)
-> 
-> 
+>
+>
 
 ## <a name="get"></a> Untersuchen der Daten
 Sie können den Speicher direkt im Portal überprüfen. Klicken Sie auf **Durchsuchen**, wählen Sie das Speicherkonto aus, und öffnen Sie dann **Container**.
@@ -101,7 +101,7 @@ Hier ist die Form des Pfads:
 
     $"{applicationName}_{instrumentationKey}/{type}/{blobDeliveryTimeUtc:yyyy-MM-dd}/{ blobDeliveryTimeUtc:HH}/{blobId}_{blobCreationTimeUtc:yyyyMMdd_HHmmss}.blob"
 
-Hierbei gilt: 
+Hierbei gilt:
 
 * `blobCreationTimeUtc` ist die Uhrzeit, zu der das Blob im internen Stagingspeicher erstellt wurde.
 * `blobDeliveryTimeUtc` ist die Uhrzeit, zu der das Blob in den Zielspeicher für den Export kopiert wird.
@@ -144,10 +144,10 @@ Im kleinen Rahmen können Sie Code zum Aufteilen Ihrer Daten schreiben, sie in e
 Ein umfangreicheres Codebeispiel finden Sie unter [Verwenden einer Workerrolle][exportasa].
 
 ## <a name="delete"></a>Löschen der alten Daten
-Beachten Sie, dass Sie für die Verwaltung Ihrer Speicherkapazität und das Löschen der alten Daten nach Bedarf verantwortlich sind. 
+Beachten Sie, dass Sie für die Verwaltung Ihrer Speicherkapazität und das Löschen der alten Daten nach Bedarf verantwortlich sind.
 
 ## <a name="if-you-regenerate-your-storage-key"></a>Wenn Sie Ihren Speicherschlüssel erneut generieren...
-Wenn Sie den Schlüssel zu Ihrem Speicher ändern, funktioniert der fortlaufende Export nicht mehr. In Ihrem Azure-Konto wird eine Benachrichtigung angezeigt. 
+Wenn Sie den Schlüssel zu Ihrem Speicher ändern, funktioniert der fortlaufende Export nicht mehr. In Ihrem Azure-Konto wird eine Benachrichtigung angezeigt.
 
 Öffnen Sie das Blatt "Fortlaufender Export", und bearbeiten Sie den Export. Bearbeiten Sie das Exportziel, aber lassen Sie den gleichen Speicher ausgewählt. Klicken Sie auf "OK", um zu bestätigen.
 
@@ -164,29 +164,29 @@ Bei größeren Dimensionen sollten Sie [HDInsight](https://azure.microsoft.com/s
 
 ## <a name="q--a"></a>Fragen und Antworten
 * *Ich möchte aber nur ein Diagramm einmalig herunterladen.*  
-  
-    Das ist kein Problem. Klicken Sie oben im Blatt auf [Daten exportieren](app-insights-metrics-explorer.md#export-to-excel).
+
+    Das ist kein Problem. Klicken Sie oben im Blatt auf **Daten exportieren**.
 * *Ich habe einen Export eingerichtet, aber es sind keine Daten im meinem Speicher.*
-  
+
     Hat Application Insights Telemetriedaten aus Ihrer App empfangen, seit Sie den Export eingerichtet haben? Sie erhalten nur neue Daten.
 * *Ich habe versucht, einen Export einrichten, aber der Zugriff wurde verweigert.*
-  
+
     Wenn das Konto im Besitz Ihrer Organisation ist, müssen Sie der Gruppe "Besitzer" oder "Mitwirkende" angehören.
-* *Kann ich Daten direkt in meinen eigenen lokalen Datenspeicher exportieren?* 
-  
+* *Kann ich Daten direkt in meinen eigenen lokalen Datenspeicher exportieren?*
+
     Nein, leider nicht. Unser Exportmodul funktioniert zurzeit nur mit Azure-Speicher.  
-* *Gibt es Begrenzung der Menge von Daten, die im Speicher abgelegt werden können?* 
-  
+* *Gibt es Begrenzung der Menge von Daten, die im Speicher abgelegt werden können?*
+
     Nein. Wir übertragen Daten immer weiter, bis Sie den Export löschen. Wir hören auf, wenn wir uns den Grenzwerten Ihres Blobspeichers nähern, der aber ziemlich groß ist. Es liegt an Ihnen, wie viel Speicher Sie belegen.  
 * *Wie viele Blobs sollten im Speicher angezeigt werden?*
-  
-  * Für jeden Datentyp, den Sie zum Exportieren ausgewählt haben, wird jede Minute ein neues Blob erstellt (falls Daten verfügbar sind). 
+
+  * Für jeden Datentyp, den Sie zum Exportieren ausgewählt haben, wird jede Minute ein neues Blob erstellt (falls Daten verfügbar sind).
   * Darüber hinaus werden weitere Partitionseinheiten für Anwendungen mit hohem Datenverkehr zugeordnet. In diesem Fall erstellt jede Einheit jede Minute ein Blob.
 * *Ich habe den Schlüssel zu meinem Speicher neu generiert oder den Namen des Containers geändert, und jetzt funktioniert der Export nicht mehr.*
-  
+
     Bearbeiten Sie den Export, und öffnen Sie das Blatt "Exportziel". Lassen Sie denselben Speicher wie zuvor ausgewählt, und klicken Sie auf "OK", um zu bestätigen. Der Export wird neu gestartet. Wenn die Änderung in den vergangenen Tagen erfolgt ist, gehen keine Daten verloren.
 * *Kann ich den Export anhalten?*
-  
+
     Ja. Klicken Sie auf „Deaktivieren“.
 
 ## <a name="code-samples"></a>Codebeispiele
@@ -200,6 +200,4 @@ Bei größeren Dimensionen sollten Sie [HDInsight](https://azure.microsoft.com/s
 [exportcode]: app-insights-code-sample-export-telemetry-sql-database.md
 [exportasa]: app-insights-code-sample-export-sql-stream-analytics.md
 [roles]: app-insights-resources-roles-access-control.md
-
-
 

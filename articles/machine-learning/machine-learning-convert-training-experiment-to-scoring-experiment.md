@@ -12,19 +12,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2016
+ms.date: 03/20/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 66fb3dc316ce25aea4dff4add5c25b7f0f56ad7a
-ms.openlocfilehash: 1ed2ee17e6b4d0256707bc63ac450b33ad9ef162
-ms.lasthandoff: 01/31/2017
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: db91a464843a7c2dc5460f12f7f306972d3a7da8
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="convert-a-machine-learning-training-experiment-to-a-predictive-experiment"></a>Konvertieren eines Machine Learning-Trainingsexperiments in ein Vorhersageexperiment
 Azure Machine Learning ermöglicht es Ihnen, Vorhersageanalyselösungen zu erstellen, zu testen und bereitzustellen .
 
-Sobald Sie ein *Trainingsexperiment* zum Trainieren Ihres Vorhersageanalysemodells erstellt und durchlaufen haben und bereit sind, dieses zum Bewerten neuer Daten zu verwenden, müssen Sie das Experiment vorbereiten und für die Bewertung optimieren. Sie können dieses *Vorhersageexperiment* dann als Azure-Webdienst bereitstellen, damit Benutzer Daten an Ihr Modell senden und dessen Vorhersagen abrufen können.
+Sobald Sie ein *Trainingsexperiment* zum Trainieren Ihres Vorhersageanalysemodells erstellt und durchlaufen haben und bereit sind, dieses zum Bewerten neuer Daten zu verwenden, müssen Sie das Experiment vorbereiten und für die Bewertung optimieren. Sie können dieses *Vorhersageexperiment* dann als Azure-Webdienst operationalisieren, damit Benutzer Daten an Ihr Modell senden und dessen Vorhersagen abrufen können.
 
 Durch die Konvertierung in ein Vorhersageexperiment wird das trainierte Modell darauf vorbereitet, als Webdienst bereitgestellt zu werden. Benutzer des Webdiensts senden Eingabedaten an das Modell, und das Modell sendet Vorhersageergebnisse zurück. Während der Konvertierung in ein Vorhersageexperiment sollten Sie daher berücksichtigen, wie das Modell aus Ihrer Sicht erwartungsgemäß von anderen Benutzern verwendet wird.
 
@@ -40,7 +40,7 @@ Der Prozess der Konvertierung eines Trainingsexperiments in ein Vorhersageexperi
 Nachdem Sie das Experiment ausgeführt haben (mit der Schaltfläche **RUN** am unteren Rand der Experimentbereichs), führen Sie mit der Schaltfläche **Set Up Web Service** (wählen Sie die Option **Predictive Web Service**) die drei Schritte zum Konvertieren Ihres Trainingsexperiment in ein Vorhersageexperiment durch:
 
 1. Dabei wird das trainierte Modell als Modul im Abschnitt **Trained Models** der Modulpalette (links neben dem Experimentbereich) gespeichert, und anschließend werden der Machine Learning-Algorithmus und die [Train Model][train-model]-Module durch das gespeicherte Modell ersetzt.
-2. Module, die offensichtlich nicht erforderlich sind, werden entfernt. In unserem Beispiel gehören dazu die Module [Split Data][split], zweites [Score Model][score-model] und [Evaluate Model][evaluate-model].
+2. Module, die offensichtlich nicht erforderlich sind, werden entfernt. In unserem Beispiel gehören dazu die Module [Split Data][split], zweites<sup></sup> [Score Model][score-model] und [Evaluate Model][evaluate-model].
 3. Webdiensteingabe- und -ausgabemodule werden erstellt und in den Standardpositionen Ihres Experiments eingefügt.
 
 Das folgende Experiment trainiert z. B. ein Boosted Decision Tree-Zwei-Klassen-Modell mit Beispiel-Erhebungsdaten:
@@ -58,7 +58,7 @@ Wenn Sie dieses Trainingsexperiment in ein Vorhersageexperiment konvertieren, we
   
     In diesem Beispiel können etwa im Beispiel-DataSet Werte fehlen und Spalten enthalten sein, die zum Trainieren des Modells nicht benötigt werden. Das Modul [Clean Missing Data][clean-missing-data] wurde zur Behandlung fehlender Werte hinzugefügt, und das Modul [Select Columns in Dataset][select-columns] wurde eingeschlossen, um diese zusätzlichen Spalten vom Datenfluss auszuschließen. Wenn Sie wissen, dass in den zum Bewerten durch den Webdienst übermittelten Daten keine Werte fehlen, können Sie das Modul [Clean Missing Data][clean-missing-data] entfernen. Da das Modul [Select Columns in Dataset][select-columns] beim Festlegen der bewerteten Features hilft, muss dieses Modul beibehalten werden.
 * **Train** – Diese Module werden zum Trainieren des Modells verwendet. Wenn Sie auf **Webdienst einrichten** klicken, werden diese Module durch ein einzelnes „Trained Model“-Modul ersetzt. Dieses neue Modul wird im Abschnitt **Trained Models** der Modulpalette gespeichert.
-* **Score** – In diesem Beispiel wird das Modul "Split" zum Unterteilen des Datenstroms in einen Satz von Testdaten und Trainingsdaten verwendet. Da dies im Vorhersageexperiment nicht erforderlich ist, kann das Modul entfernt werden. Das zweite Modul [Score Model][score-model] und das Modul [Evaluate Model][evaluate-model] werden verwendet, um Ergebnisse aus den Testdaten zu vergleichen, und werden daher im Vorhersageexperiment ebenfalls nicht benötigt. Das verbleibende Modul [Score Model][score-model] ist jedoch erforderlich, um über den Webdienst ein Bewertungsergebnis zurückzugeben.
+* **Score** – In diesem Beispiel wird das Modul [Split Data][split] zum Unterteilen des Datenstroms in einen Satz von Testdaten und Trainingsdaten verwendet. Da dies im Vorhersageexperiment nicht erforderlich ist, kann das Modul entfernt werden. Ebenso werden das zweite Modul<sup></sup> [Score Model][score-model] und das Modul [Evaluate Model][evaluate-model] verwendet, um Ergebnisse aus den Testdaten zu vergleichen, und werden daher im Vorhersageexperiment ebenfalls nicht benötigt. Das verbleibende Modul [Score Model][score-model] ist jedoch erforderlich, um über den Webdienst ein Bewertungsergebnis zurückzugeben.
 
 So sieht das Beispiel nach dem Klicken auf **Webdienst einrichten**aus:
 

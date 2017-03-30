@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/31/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: c8e130f8adbad040fd06fde89156ca6201d18ea6
-ms.openlocfilehash: 5d85602de4eb4cd4ddadc31a83dac34d3487f54d
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: cd4de75743ee46bb07aec2cf23fa7687f4f20f43
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -119,6 +119,8 @@ Derzeit ermöglichen die folgenden Dienste das Verschieben in eine neue Ressourc
 > [!NOTE] 
 > Derzeit kann ein virtuelles Netzwerk mit VPN Gateway erst verschoben werden, wenn das Gateway vorübergehend entfernt wurde. Nach dem Entfernen kann das virtuelle Netzwerk verschoben und das Gateway erstellt werden.
 >
+> Derzeit kann ein mittels Peering verknüpftes virtuelles Netzwerk erst verschoben werden, nachdem das VNET-Peering deaktiviert wurde. Nach der Deaktivierung kann das virtuelle Netzwerk verschoben und das VNET-Peering wieder aktiviert werden.
+>
  
 ## <a name="services-that-do-not-enable-move"></a>Dienste, die keine Verschiebung ermöglichen
 Die folgenden Dienste ermöglichen das Verschieben einer Ressource derzeit nicht:
@@ -134,6 +136,7 @@ Die folgenden Dienste ermöglichen das Verschieben einer Ressource derzeit nicht
 * Recovery Services-Tresor – verschieben Sie außerdem nicht die dem Recovery Services-Tresor zugeordneten Compute-, Netzwerk- und Speicherressourcen. Siehe [Einschränkungen von Recovery Services](#recovery-services-limitations).
 * Sicherheit
 * Virtuelle Computer mit in Schlüsseltresor gespeichertem Zertifikat
+* Virtual Machines mit Managed Disks
 * Skalierungsgruppen für virtuelle Computer
 * Virtual Networks (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
 * VPN Gateway

@@ -17,6 +17,7 @@ ms.author: mfussell
 translationtype: Human Translation
 ms.sourcegitcommit: f7edee399717ecb96fb920d0a938da551101c9e1
 ms.openlocfilehash: 469f37362fa0ebe39367a66df8a27e71e762a9d5
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -172,7 +173,7 @@ Fügen Sie in der PowerShell-Datei Folgendes ein, um eine Systemumgebungsvariabl
 ## <a name="use-console-redirection-for-local-debugging"></a>Verwenden der Konsolenumleitung für das lokale Debuggen
 Gelegentlich ist es hilfreich, die Konsolenausgabe der Ausführung eines Skripts zum Debuggen auszuwerten. Zu diesem Zweck können Sie eine Richtlinie zur Konsolenumleitung festlegen, die die Ausgabe in eine Datei schreibt. Die Dateiausgabe wird in den Anwendungsordner **log** auf dem Knoten geschrieben, auf dem die Anwendung bereitgestellt und ausgeführt wird. (Siehe obiges Beispiel.)
 
-> [!NOTE]
+> [!WARNING]
 > Verwenden Sie die Richtlinie zur Konsolenumleitung nie in einer Anwendung, die in der Produktionsumgebung bereitgestellt wurde, da sich dies auf das Anwendungsfailover auswirken kann. Verwenden Sie diese *nur* für die lokale Entwicklung und das Debuggen.  
 > 
 > 
@@ -379,9 +380,4 @@ Im folgenden Anwendungsmanifest sind viele unterschiedliche Einstellungen enthal
 * [Bereitstellen von Anwendungen](service-fabric-deploy-remove-applications.md)
 
 [image1]: ./media/service-fabric-application-runas-security/copy-to-output.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

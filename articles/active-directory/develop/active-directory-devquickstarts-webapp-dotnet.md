@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: 4094759caba015b9d609b616d5099a6e109bf1d4
-ms.openlocfilehash: 6ac0c3b2893b96f93bf2aeadd61b263654957477
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 43ba592b6294a9a75a20dacd81953a77c241b89f
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -46,8 +46,8 @@ Um die App für die Authentifizierung von Benutzern einzurichten, registrieren S
 5. Folgen Sie den Bildschirmaufforderungen zum Erstellen einer neuen **Webanwendung und/oder Web-API**.
   * **Name** enthält eine Beschreibung der App für Benutzer.
   * **Anmelde-URL** ist die Basis-URL der App. Die Standard-URL des Gerüsts lautet „https://localhost:44320/“.
-  * **App-ID-URI** ist ein eindeutiger Bezeichner der App. Die Benennungskonvention lautet `https://<tenant-domain>/<app-name>` (z.B. `https://contoso.onmicrosoft.com/my-first-aad-app`).
 6. Nach Abschluss der Registrierung weist Azure AD der App eine eindeutige Anwendungs-ID zu. Kopieren Sie den Wert von der App-Seite, um ihn in den nächsten Abschnitten zu verwenden.
+7. Aktualisieren Sie auf der Seite **Einstellungen** -> **Eigenschaften** für Ihre Anwendung den App-ID-URI. Der **App-ID-URI** ist ein eindeutiger Bezeichner der App. Die Benennungskonvention lautet `https://<tenant-domain>/<app-name>` (z.B. `https://contoso.onmicrosoft.com/my-first-aad-app`).
 
 ## <a name="step-2-set-up-the-app-to-use-the-owin-authentication-pipeline"></a>Schritt 2: Konfigurieren der App für die Verwendung der OWIN-Authentifizierungspipeline
 In diesem Schritt konfigurieren Sie die OWIN-Middleware für die Verwendung des Authentifizierungsprotokolls OpenID Connect. Mithilfe von OWIN können Sie An- und Abmeldeanforderungen erstellen, Benutzersitzungen verwalten, Benutzerinformationen abrufen usw.
@@ -73,7 +73,7 @@ In diesem Schritt konfigurieren Sie die OWIN-Middleware für die Verwendung des 
      }
      ```
 
-4. Öffnen Sie die Datei „App_Start\Startup.Auth.cs“, und implementieren Sie anschließend die **ConfigureAuth(...) **-Methode. Die Parameter, die Sie in *OpenIDConnectAuthenticationOptions* bereitstellen, dienen als Koordinaten für die App zur Kommunikation mit Azure AD. Außerdem müssen Sie die Cookie-Authentifizierung einrichten, da die Middleware OpenID Connect im Hintergrund Cookies verwendet.
+4. Öffnen Sie die Datei „App_Start\Startup.Auth.cs“, und implementieren Sie anschließend die **ConfigureAuth(...)**-Methode. Die Parameter, die Sie in *OpenIDConnectAuthenticationOptions* bereitstellen, dienen als Koordinaten für die App zur Kommunikation mit Azure AD. Außerdem müssen Sie die Cookie-Authentifizierung einrichten, da die Middleware OpenID Connect im Hintergrund Cookies verwendet.
 
      ```C#
      public void ConfigureAuth(IAppBuilder app)

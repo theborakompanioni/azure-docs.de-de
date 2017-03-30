@@ -11,17 +11,17 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 03/17/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
-ms.openlocfilehash: 9fc886d9ce69c1ca3d7a981d5eeb276c09cc245e
-ms.lasthandoff: 01/25/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 3ad42c2f982446445402f176ff913833e01c42d6
+ms.lasthandoff: 03/18/2017
 
 
 ---
-# <a name="create-application-insights-resources-using-powershell"></a>Erstellen von Application Insights-Ressourcen mithilfe von PowerShell
-In diesem Artikel wird beschrieben, wie eine [Application Insights](app-insights-overview.md)-Ressource automatisch in Azure erstellt wird. Dies kann z. B. als Teil eines Buildvorgangs erfolgen. Zusammen mit der grundlegenden Application Insights-Ressource können Sie [Verfügbarkeitswebtests](app-insights-monitor-web-app-availability.md) erstellen, [Warnungen einrichten](app-insights-alerts.md) und andere Azure-Ressourcen erstellen.
+#  <a name="create-application-insights-resources-using-powershell"></a>Erstellen von Application Insights-Ressourcen mithilfe von PowerShell
+Dieser Artikel beschreibt, wie Sie die Erstellung und Aktualisierung von [Application Insights](app-insights-overview.md)-Ressourcen mit der Azure-Ressourcenverwaltung automatisieren können. Dies kann z. B. als Teil eines Buildvorgangs erfolgen. Zusammen mit der grundlegenden Application Insights-Ressource können Sie [Verfügbarkeitswebtests](app-insights-monitor-web-app-availability.md) erstellen, [Warnungen](app-insights-alerts.md) einrichten, das [Preisschema](app-insights-pricing.md) festlegen und andere Azure-Ressourcen erstellen.
 
 Im Wesentlichen werden diese Ressourcen mit JSON-Vorlagen für den [Azure Resource Manager](../azure-resource-manager/powershell-azure-resource-manager.md) erstellt. Die Vorgehensweise lässt sich wie folgt zusammenfassen: Sie laden die JSON-Definitionen vorhandener Ressourcen herunter, parametrisieren bestimmte Werte, z. B. Namen, und führen dann die Vorlage immer aus, wenn Sie eine neue Ressource erstellen möchten. Sie können mehrere Ressourcen zusammenfassen und in einem Durchgang erstellen, z. B. einen App-Monitor mit Verfügbarkeitstests, Warnungen und Speicher für fortlaufenden Export. Einige Parametrisierungen weisen Besonderheiten auf, die hier erläutert werden.
 
@@ -37,106 +37,118 @@ Installieren Sie das Azure PowerShell-Modul auf dem Computer, auf dem die Skript
 Erstellen Sie eine neue JSON-Datei, in diesem Beispiel die Datei `template1.json` . Kopieren Sie den folgenden Inhalt in die Datei:
 
 ```JSON
-{
-          "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "parameters": {
+    {
+        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {
             "appName": {
-              "type": "string",
-              "metadata": {
-                "description": "Enter the application name."
-              }
+                "type": "string",
+                "metadata": {
+                    "description": "Enter the application name."
+                }
             },
-            "applicationType": {
-              "type": "string",
-              "defaultValue": "ASP.NET web application",
-              "allowedValues": [ "ASP.NET web application", "Java web application", "HockeyApp bridge application", "Other (preview)" ],
-              "metadata": {
-                "description": "Enter the application type."
-              }
+            "appType": {
+                "type": "string",
+                "defaultValue": "web",
+                "allowedValues": [
+                    "web",
+                    "java",
+                    "HockeyAppBridge",
+                    "other"
+                ],
+                "metadata": {
+                    "description": "Enter the application type."
+                }
             },
             "appLocation": {
-              "type": "string",
-              "defaultValue": "East US",
-              "allowedValues": [ "South Central US", "West Europe", "East US", "North Europe" ],
-              "metadata": {
-                "description": "Enter the application location."
-              }
+                "type": "string",
+                "defaultValue": "East US",
+                "allowedValues": [
+                    "South Central US",
+                    "West Europe",
+                    "East US",
+                    "North Europe"
+                ],
+                "metadata": {
+                    "description": "Enter the application location."
+                }
             },
             "priceCode": {
-              "type": "int",
-              "defaultValue": 1,
-              "allowedValues": [ 1, 2 ],
-              "metadata": {"description": "1 = Basic, 2 = Enterprise"}
+                "type": "int",
+                "defaultValue": 1,
+                "allowedValues": [
+                    1,
+                    2
+                ],
+                "metadata": {
+                    "description": "1 = Basic, 2 = Enterprise"
+                }
             },
             "dailyQuota": {
-              "type": "int",
-              "defaultValue": 100,
-              "minValue": 1,
-              "metadata": {
-                "description": "Enter daily quota in GB."
-              }
+                "type": "int",
+                "defaultValue": 100,
+                "minValue": 1,
+                "metadata": {
+                    "description": "Enter daily quota in GB."
+                }
             },
             "dailyQuotaResetTime": {
-              "type": "int",
-              "defaultValue": 24,
-              "metadata": {
-                "description": "Enter daily quota reset hour in UTC (0 to 23). Values outside the range will get a random reset hour."
-              }
+                "type": "int",
+                "defaultValue": 24,
+                "metadata": {
+                    "description": "Enter daily quota reset hour in UTC (0 to 23). Values outside the range will get a random reset hour."
+                }
             },
             "warningThreshold": {
-              "type": "int",
-              "defaultValue": 90,
-              "minValue": 1,
-              "maxValue": 100,
-              "metadata": {
-                "description": "Enter the % value of daily quota after which warning mail to be sent. "
-              }
-            }
-          },
-
-         "variables": {
-           "priceArray": [ "Basic", "Application Insights Enterprise" ],
-           "pricePlan": "[take(variables('priceArray'),parameters('priceCode'))]",
-           "billingplan": "[concat(parameters('appName'),'/', variables('pricePlan')[0])]"
-          },
-
-          "resources": [
-            {
-              "apiVersion": "2014-08-01",
-              "location": "[parameters('appLocation')]",
-              "name": "[parameters('appName')]",
-              "type": "microsoft.insights/components",
-              "properties": {
-                "Application_Type": "[parameters('applicationType')]",
-                "ApplicationId": "[parameters('appName')]",
-                "Name": "[parameters('appName')]",
-                "Flow_Type": "Redfield",
-                "Request_Source": "ARMAIExtension"
-              }
-            },
-            {
-              "name": "[variables('billingplan')]",
-              "type": "microsoft.insights/components/CurrentBillingFeatures",
-              "location": "[parameters('appLocation')]",
-              "apiVersion": "2015-05-01",
-              "dependsOn": [
-                "[resourceId('microsoft.insights/components', parameters('appName'))]"
-              ],
-              "properties": {
-                "CurrentBillingFeatures": "[variables('pricePlan')]",
-                "DataVolumeCap": {
-                  "Cap": "[parameters('dailyQuota')]",
-                  "WarningThreshold": "[parameters('warningThreshold')]",
-                  "ResetTime": "[parameters('dailyQuotaResetTime')]"
+                "type": "int",
+                "defaultValue": 90,
+                "minValue": 1,
+                "maxValue": 100,
+                "metadata": {
+                    "description": "Enter the % value of daily quota after which warning mail to be sent. "
                 }
-              }
+            }
+        },
+        "variables": {
+            "priceArray": [
+                "Basic",
+                "Application Insights Enterprise"
+            ],
+            "pricePlan": "[take(variables('priceArray'),parameters('priceCode'))]",
+            "billingplan": "[concat(parameters('appName'),'/', variables('pricePlan')[0])]"
+        },
+        "resources": [
+            {
+                "type": "microsoft.insights/components",
+                "kind": "[parameters('appType')]",
+                "name": "[parameters('appName')]",
+                "apiVersion": "2014-04-01",
+                "location": "[parameters('appLocation')]",
+                "tags": {},
+                "properties": {
+                    "ApplicationId": "[parameters('appName')]"
+                },
+                "dependsOn": []
             },
-
-          "__comment":"web test, alert, and any other resources go here"
-          ]
-        }
-
+            {
+                "name": "[variables('billingplan')]",
+                "type": "microsoft.insights/components/CurrentBillingFeatures",
+                "location": "[parameters('appLocation')]",
+                "apiVersion": "2015-05-01",
+                "dependsOn": [
+                    "[resourceId('microsoft.insights/components', parameters('appName'))]"
+                ],
+                "properties": {
+                    "CurrentBillingFeatures": "[variables('pricePlan')]",
+                    "DataVolumeCap": {
+                        "Cap": "[parameters('dailyQuota')]",
+                        "WarningThreshold": "[parameters('warningThreshold')]",
+                        "ResetTime": "[parameters('dailyQuotaResetTime')]"
+                    }
+                }
+            }
+        ]
+    }
 ```
 
 
@@ -161,20 +173,26 @@ Erstellen Sie eine neue JSON-Datei, in diesem Beispiel die Datei `template1.json
 
 Sie können noch weitere Parameter hinzufügen. Die entsprechenden Beschreibungen finden Sie im Abschnitt „Parameter“ der Vorlage.
 
-## <a name="enterprise-price-plan"></a>Enterprise-Preisplan
+<a id="price"></a>
+## <a name="set-the-price-plan"></a>Festlegen des Tarifs
+
+Sie können den [Tarif](app-insights-pricing.md) festlegen.
 
 Gehen Sie wie folgt vor, um mit der obigen Vorlage eine App-Ressource mit dem Enterprise-Preisplan zu erstellen:
 
 ```PS
-   
-
         New-AzureRmResourceGroupDeployment -ResourceGroupName Fabrikam `
                -TemplateFile .\template1.json `
                -priceCode 2 `
                -appName myNewApp
 ```
 
-* Wenn Sie nur den Standardpreisplan „Basic“ verwenden möchten, können Sie die Preisplanressource aus der Vorlage löschen.
+|priceCode|Tarif|
+|---|---|
+|1|Basic|
+|2|Enterprise|
+
+* Wenn Sie nur den Standardtarif „Basic“ verwenden möchten, können Sie die Ressource CurrentBillingFeatures aus der Vorlage löschen.
 
 
 ## <a name="to-get-the-instrumentation-key"></a>So rufen Sie den Instrumentierungsschlüssel ab

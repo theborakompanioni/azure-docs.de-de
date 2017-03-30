@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/09/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 6fda4b6e77104b6022b86010b53b46ae5df1b82e
-ms.openlocfilehash: 937b22dd9ad26211b006326b39cafe9c5da4e8bd
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 53f5eefd9223fecefa184c612633d7a455fe15bf
+ms.lasthandoff: 03/18/2017
 
 ---
 
@@ -26,17 +26,17 @@ ms.lasthandoff: 02/27/2017
 
 Wenn Sie in Azure über vorhandene Linux-VMs verfügen, für die nicht verwaltete Datenträger in Speicherkonten verwendet werden, und für diese VMs die Verwendung von verwalteten Datenträgern (Managed Disks) möglich sein soll, können Sie die VMs konvertieren. Bei diesem Prozess werden sowohl der Betriebssystemdatenträger als auch alle anderen angefügten Datenträger konvertiert. Da für den Konvertierungsprozess ein Neustart der VM erforderlich ist, sollten Sie die Migration Ihrer VMs während eines bereits vorhandenen Wartungsfensters durchführen. Der Migrationsprozess kann nicht rückgängig gemacht werden. Testen Sie den Migrationsprozess, indem Sie einen virtuellen Testcomputer migrieren, bevor Sie die Migration in der Produktion durchführen.
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > Bei der Konvertierung heben Sie die Zuordnung der VM auf. Die VM erhält eine neue IP-Adresse, wenn sie nach der Konvertierung gestartet wird. Verwenden Sie eine reservierte IP, wenn eine Abhängigkeit von einer festen IP-Adresse besteht.
 
 Sie können einen nicht verwalteten Datenträger nicht in einen verwalteten Datenträger konvertieren, wenn der nicht verwaltete Datenträger sich in einem Speicherkonto befindet, das mithilfe von [Azure Storage Service Encryption (SSE)](../storage/storage-service-encryption.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) verschlüsselt ist oder vorher einmal verschlüsselt war. Die folgenden Schritte beschreiben, wie Sie nicht verwaltete Datenträger konvertieren, die sich in einem verschlüsselten Speicherkonto befinden bzw. befanden:
 
-- [Kopieren Sie die virtuelle Festplatte (VHD)](virtual-machines-linux-copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#unmanaged-disks) mit [az storage blob copy start](/cli/azure/storage/blob/copy#start) in ein Speicherkonto, das nie für Azure Storage Service Encryption aktiviert war.
+- Kopieren Sie die virtuelle Festplatte (VHD) mit [az storage blob copy start](/cli/azure/storage/blob/copy#start) in ein Speicherkonto, das nie für Azure Storage Service Encryption aktiviert wurde.
 - Erstellen Sie einen virtuellen Computer, der verwaltete Datenträger verwendet, und geben Sie diese VHD-Datei während der Erstellung mit [az vm create](/cli/azure/vm#create) an. Alternativ dazu:
 - Fügen Sie die kopierte VHD mit [az vm disk attach](/cli/azure/vm/disk#attach) an einen ausgeführten virtuellen Computer mit verwalteten Datenträgern an.
 
 ## <a name="convert-vm-to-azure-managed-disks"></a>Konvertieren einer VM in Azure Managed Disks
-In diesem Abschnitt wird beschrieben, wie Sie für Ihre vorhandenen Azure-VMs die Konvertierung von nicht verwalteten Datenträgern in verwaltete Datenträger durchführen. Sie können diesen Prozess verwenden, um die Konvertierung von nicht verwalteten Premium-Datenträgern (SSD) in verwaltete Premium-Datenträger oder von nicht verwalteten Standard-Datenträgern (HDD) in verwaltete Standard-Datenträger durchzuführen. 
+In diesem Abschnitt wird beschrieben, wie Sie für Ihre vorhandenen Azure-VMs die Konvertierung von nicht verwalteten Datenträgern in verwaltete Datenträger durchführen. Sie können diesen Prozess verwenden, um die Konvertierung von nicht verwalteten Premium-Datenträgern (SSD) in verwaltete Premium-Datenträger oder von nicht verwalteten Standard-Datenträgern (HDD) in verwaltete Standard-Datenträger durchzuführen.
 
 > [!IMPORTANT]
 > Nach Abschluss des folgenden Verfahrens ist ein einzelnes Blockblob vorhanden, das im vhds-Standardcontainer verbleibt. Der Name der Datei lautet „VMName.xxxxxxx.status“. Achten Sie darauf, dass Sie dieses verbleibende Statusobjekt nicht löschen. Dieser Vorgang wird in Zukunft ggf. noch weiter verbessert.
