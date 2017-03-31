@@ -16,8 +16,9 @@ ms.workload: big-compute
 ms.date: 08/25/2016
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 45a45b616b4de005da66562c69eef83f2f48cc79
-ms.openlocfilehash: 21ec1f15dc7055cdd3b281216abfbac8554abad0
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: c8b8b6af19a347804563b091760b18dfc47aa503
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -91,7 +92,7 @@ Das HPC Pack-IaaS-Bereitstellungsskript ist eine weitere vielseitige Bereitstel
 
 **Erstellen der Konfigurationsdatei**
 
- Das HPC Pack-IaaS-Bereitstellungsskript verwendet als Eingabe eine XML-Konfigurationsdatei mit der Beschreibung der Infrastruktur des HPC-Clusters. Geben Sie in der folgenden Beispielkonfigurationsdatei Werte für Ihre Umgebung ein, um einen Cluster mit einem Haupt- und 18 Serverknoten bereitzustellen, die auf der Grundlage des Serverknotenimage mit Microsoft Excel erstellt werden. Weitere Informationen zur Konfigurationsdatei finden Sie in der Datei „Manual.rtf“ im Skriptordner und unter [Erstellen eines HPC-Clusters mit dem HPC Pack-IaaS-Bereitstellungsskript](virtual-machines-windows-classic-hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+ Das HPC Pack-IaaS-Bereitstellungsskript verwendet als Eingabe eine XML-Konfigurationsdatei mit der Beschreibung der Infrastruktur des HPC-Clusters. Geben Sie in der folgenden Beispielkonfigurationsdatei Werte für Ihre Umgebung ein, um einen Cluster mit einem Haupt- und 18 Serverknoten bereitzustellen, die auf der Grundlage des Serverknotenimage mit Microsoft Excel erstellt werden. Weitere Informationen zur Konfigurationsdatei finden Sie in der Datei „Manual.rtf“ im Skriptordner und unter [Erstellen eines HPC-Clusters mit dem HPC Pack-IaaS-Bereitstellungsskript](windows/classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -355,9 +356,4 @@ Für die SOA-Clientanwendung muss lediglich der Hauptname auf den vollständigen
 [run]: ./media/virtual-machines-windows-excel-cluster-hpcpack/run.png
 [endpoint]: ./media/virtual-machines-windows-excel-cluster-hpcpack/endpoint.png
 [udf]: ./media/virtual-machines-windows-excel-cluster-hpcpack/udf.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

@@ -15,8 +15,9 @@ ms.workload: infrastructure
 ms.date: 02/08/2016
 ms.author: kmouss
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 4b1e6d375b3ab0e33e747b5ccf3cec9dd06fe484
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 1f15a77304ccf4fdef995d216817363fbf3f6e73
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -48,15 +49,10 @@ So aktivieren Sie die Überwachung für eine Azure-VM.
 
 [Azure.Note] Sie können von Version 2.0 zu neueren Versionen wechseln, wenn diese verfügbar werden. 
 
-Weitere Informationen zur Konfiguration von Überwachungsmetriken und Beispielen finden Sie im Dokument **[Verwenden der Linux-Diagnoseerweiterung zur Überwachung der Leistungs- und Diagnosedaten einer Linux-VM](virtual-machines-linux-classic-diagnostic-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
+Weitere Informationen zur Konfiguration von Überwachungsmetriken und Beispielen finden Sie im Dokument **[Verwenden der Linux-Diagnoseerweiterung zur Überwachung der Leistungs- und Diagnosedaten einer Linux-VM](linux/classic/diagnostic-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
 
 <!--Image references-->
 [1]: ./media/virtual-machines-linux-vm-monitoring/portal-enable-disable.png
 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

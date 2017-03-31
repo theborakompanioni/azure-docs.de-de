@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 334819e0819206d1bd928c0861b25cc59dd29fa7
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: e4e9e16c62ab1262021d1a719f5aa15d936f4843
+ms.lasthandoff: 03/28/2017
 
 
 ---
 # <a name="how-to-get-operational-insights-with-password-management-reports"></a>Operative Einblicke durch Berichte zur Kennwortverwaltung
 > [!IMPORTANT]
-> **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password).
+> **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md#reset-your-password).
 >
 >
 
@@ -94,10 +94,10 @@ In der Überwachungsereigniskategorie **Self-Service-Kennwortverwaltung** werden
 * [**Reset password (self-service)**](#activity-type-reset-password-self-service) (Kennwort zurücksetzen (Self-Service)): Gibt an, dass ein Benutzer sein Kennwort über das [Azure AD-Kennwortzurücksetzungsportal](https://passwordreset.microsoftonline.com) zurückgesetzt hat.
 * [**Self serve password reset flow activity progress**](#activity-type-self-serve-password-reset-flow-activity-progress) (Aktivitätsstatus des Self-Service-Kennwortzurücksetzungsablaufs): Gibt die einzelnen Schritte an, die ein Benutzer im Rahmen des Kennwortzurücksetzungsprozesses durchläuft (beispielsweise ein bestimmtes Authentifizierungsgate für die Kennwortzurücksetzung).
 * [**Unlock user account (self-service)**](#activity-type-unlock-user-account-self-service) (Benutzerkonto entsperren (Self-Service)): Gibt an, dass ein Benutzer sein Active Directory-Konto über das [Azure AD-Kennwortzurücksetzungsportal](https://passwordreset.microsoftonline.com) mithilfe des Features [AD account unlock without reset](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-passwords-customize#allow-users-to-unlock-accounts-without-resetting-their-password) (AD-Kontoentsperrung ohne Zurücksetzen) entsperrt hat.
-* [**User registered for self-service password reset**](#activity-type-user-registered-for-self-service-password-reset) (Für Self-Service-Kennwortzurücksetzung registrierter Benutzer): Gibt an, dass ein Benutzer alle erforderlichen Informationen registriert hat, um sein Kennwort gemäß der aktuellen Mandanten-Kennwortzurücksetzungsrichtlinie zurücksetzen zu können. 
+* [**User registered for self-service password reset**](#activity-type-user-registered-for-self-service-password-reset) (Für Self-Service-Kennwortzurücksetzung registrierter Benutzer): Gibt an, dass ein Benutzer alle erforderlichen Informationen registriert hat, um sein Kennwort gemäß der aktuellen Mandanten-Kennwortzurücksetzungsrichtlinie zurücksetzen zu können.
 
 ### <a name="activity-type-blocked-from-self-service-password-reset"></a>Aktivitätstyp: „Blocked from self-service password reset“ (Von Self-Service-Kennwortzurücksetzung ausgeschlossen)
-In der folgenden Liste werden die Details dieser Aktivität erläutert: 
+In der folgenden Liste werden die Details dieser Aktivität erläutert:
 
 * **Beschreibung der Aktivität:** Gibt an, dass ein Benutzer in den letzten 24 Stunden mehr als fünfmal versucht hat, ein Kennwort zurückzusetzen, ein bestimmtes Gate zu verwenden oder eine Telefonnummer zu bestätigen.
 * **Actor der Aktivität:** Der Benutzer, dessen weitere Zurücksetzungsvorgänge gedrosselt wurden. Hierbei kann es sich um einen Endbenutzer oder um einen Administrator handeln.
@@ -107,7 +107,7 @@ In der folgenden Liste werden die Details dieser Aktivität erläutert:
 * **Ursache für Aktivitätsstatusfehler:** nicht zutreffend
 
 ### <a name="activity-type-change-password-self-service"></a>Aktivitätstyp: „Change password (self-service)“ (Kennwort ändern (Self-Service))
-In der folgenden Liste werden die Details dieser Aktivität erläutert: 
+In der folgenden Liste werden die Details dieser Aktivität erläutert:
 
 * **Beschreibung der Aktivität:** Gibt an, dass ein Benutzer ein Kennwort geändert hat (entweder freiwillig oder weil das Kennwort abgelaufen ist).
 * **Actor der Aktivität:** Der Benutzer, der sein Kennwort geändert hat. Hierbei kann es sich um einen Endbenutzer oder um einen Administrator handeln.
@@ -115,11 +115,11 @@ In der folgenden Liste werden die Details dieser Aktivität erläutert:
 * **Zulässige Statuswerte der Aktivität**
  * _Erfolgreich:_ Gibt an, dass ein Benutzer sein Kennwort geändert hat.
  * _Fehler:_ Gibt an, dass ein Benutzer sein Kennwort nicht ändern konnte. Durch Klicken auf die Zeile können Sie die Kategorie **Activity Status Reason** (Grund für den Aktivitätsstatus) anzeigen, um mehr über die Fehlerursache zu erfahren.
-* **Ursache für Aktivitätsstatusfehler** - 
+* **Ursache für Aktivitätsstatusfehler** -
  * _FuzzyPolicyViolationInvalidPassword:_ Das vom Benutzer gewählte Kennwort wurde durch die Erkennung nicht zulässiger Kennwörter von Microsoft automatisch blockiert, da es zu allgemein oder besonders unsicher war.
 
 ### <a name="activity-type-reset-password-by-admin"></a>Aktivitätstyp: „Reset password (by admin)“ (Kennwort zurücksetzen (durch Administrator))
-In der folgenden Liste werden die Details dieser Aktivität erläutert: 
+In der folgenden Liste werden die Details dieser Aktivität erläutert:
 
 * **Beschreibung der Aktivität:** Gibt an, dass ein Administrator im Auftrag eines Benutzers ein Kennwort über das Azure-Portal zurückgesetzt hat.
 * **Actor der Aktivität:** Der Administrator, der das Kennwort im Auftrag eines anderen Benutzers oder Administrators zurückgesetzt hat. Hierbei muss es sich um einen globalen Administrator, um einen Kennwortadministrator, um einen Benutzeradministrator oder um einen Helpdeskadministrator handeln.
@@ -129,7 +129,7 @@ In der folgenden Liste werden die Details dieser Aktivität erläutert:
  * _Fehler:_ Gibt an, dass ein Administrator das Kennwort eines Benutzers nicht ändern konnte. Durch Klicken auf die Zeile können Sie die Kategorie **Activity Status Reason** (Grund für den Aktivitätsstatus) anzeigen, um mehr über die Fehlerursache zu erfahren.
 
 ### <a name="activity-type-reset-password-self-service"></a>Aktivitätstyp: „Reset password (self-service)“ (Kennwort zurücksetzen (Self-Service))
-In der folgenden Liste werden die Details dieser Aktivität erläutert: 
+In der folgenden Liste werden die Details dieser Aktivität erläutert:
 
 * **Beschreibung der Aktivität:** Gibt an, dass ein Benutzer sein Kennwort über das [Azure AD-Kennwortzurücksetzungsportal](https://passwordreset.microsoftonline.com) zurückgesetzt hat.
 * **Actor der Aktivität:** Der Benutzer, der sein Kennwort zurückgesetzt hat. Hierbei kann es sich um einen Endbenutzer oder um einen Administrator handeln.
@@ -137,11 +137,11 @@ In der folgenden Liste werden die Details dieser Aktivität erläutert:
 * **Zulässige Statuswerte der Aktivität**
  * _Erfolgreich:_ Gibt an, dass ein Benutzer sein eigenes Kennwort zurückgesetzt hat.
  * _Fehler:_ Gibt an, dass ein Benutzer sein eigenes Kennwort nicht zurücksetzen konnte. Durch Klicken auf die Zeile können Sie die Kategorie **Activity Status Reason** (Grund für den Aktivitätsstatus) anzeigen, um mehr über die Fehlerursache zu erfahren.
-* **Ursache für Aktivitätsstatusfehler** - 
+* **Ursache für Aktivitätsstatusfehler** -
  * _FuzzyPolicyViolationInvalidPassword:_ Das vom Administrator gewählte Kennwort wurde durch die Erkennung nicht zulässiger Kennwörter von Microsoft automatisch blockiert, da es zu allgemein oder besonders unsicher war.
 
 ### <a name="activity-type-self-serve-password-reset-flow-activity-progress"></a>Aktivitätstyp: „Self serve password reset flow activity progress“ (Aktivitätsstatus des Self-Service-Kennwortzurücksetzungsablaufs)
-In der folgenden Liste werden die Details dieser Aktivität erläutert: 
+In der folgenden Liste werden die Details dieser Aktivität erläutert:
 
 * **Beschreibung der Aktivität:** Gibt die einzelnen Schritte an, die ein Benutzer im Rahmen des Kennwortzurücksetzungsprozesses durchläuft (beispielsweise ein bestimmtes Authentifizierungsgate für die Kennwortzurücksetzung).
 * **Actor der Aktivität:** Der Benutzer, der einen Teil des Kennwortzurücksetzungsablaufs ausgeführt hat. Hierbei kann es sich um einen Endbenutzer oder um einen Administrator handeln.
@@ -153,7 +153,7 @@ In der folgenden Liste werden die Details dieser Aktivität erläutert:
  * Eine Tabelle mit allen zulässigen Statusgründen für die Zurücksetzungsaktivität finden Sie [weiter unten](#allowed-values-for-details-column).
 
 ### <a name="activity-type-unlock-user-account-self-service"></a>Aktivitätstyp: „Unlock user account (self-service)“ (Benutzerkonto entsperren (Self-Service))
-In der folgenden Liste werden die Details dieser Aktivität erläutert: 
+In der folgenden Liste werden die Details dieser Aktivität erläutert:
 
 * **Beschreibung der Aktivität:** Gibt an, dass ein Benutzer sein Active Directory-Konto über das [Azure AD-Kennwortzurücksetzungsportal](https://passwordreset.microsoftonline.com) mithilfe des Features [AD account unlock without reset](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-passwords-customize#allow-users-to-unlock-accounts-without-resetting-their-password) (AD-Kontoentsperrung ohne Zurücksetzen) entsperrt hat.
 * **Actor der Aktivität:** Der Benutzer, der sein Konto entsperrt hat, ohne das Kennwort zurückzusetzen. Hierbei kann es sich um einen Endbenutzer oder um einen Administrator handeln.
@@ -163,13 +163,13 @@ In der folgenden Liste werden die Details dieser Aktivität erläutert:
  * _Fehler:_ Gibt an, dass ein Benutzer sein Konto nicht entsperren konnte. Durch Klicken auf die Zeile können Sie die Kategorie **Activity Status Reason** (Grund für den Aktivitätsstatus) anzeigen, um mehr über die Fehlerursache zu erfahren.
 
 ### <a name="activity-type-user-registered-for-self-service-password-reset"></a>Aktivitätstyp: „User registered for self-service password reset“ (Für Self-Service-Kennwortzurücksetzung registrierter Benutzer)
-In der folgenden Liste werden die Details dieser Aktivität erläutert: 
+In der folgenden Liste werden die Details dieser Aktivität erläutert:
 
-* **Beschreibung der Aktivität:**: Gibt an, dass ein Benutzer alle erforderlichen Informationen registriert hat, um sein Kennwort gemäß der aktuellen Mandanten-Kennwortzurücksetzungsrichtlinie zurücksetzen zu können. 
+* **Beschreibung der Aktivität:**: Gibt an, dass ein Benutzer alle erforderlichen Informationen registriert hat, um sein Kennwort gemäß der aktuellen Mandanten-Kennwortzurücksetzungsrichtlinie zurücksetzen zu können.
 * **Actor der Aktivität:** Der Benutzer, der sich für die Kennwortzurücksetzung registriert hat. Hierbei kann es sich um einen Endbenutzer oder um einen Administrator handeln.
 * **Ziel der Aktivität:** Der Benutzer, der sich für die Kennwortzurücksetzung registriert hat. Hierbei kann es sich um einen Endbenutzer oder um einen Administrator handeln.
 * **Zulässige Statuswerte der Aktivität**
- * _Erfolgreich:_ Gibt an, dass sich ein Benutzer gemäß aktueller Richtlinie für die Kennwortzurücksetzung registriert hat. 
+ * _Erfolgreich:_ Gibt an, dass sich ein Benutzer gemäß aktueller Richtlinie für die Kennwortzurücksetzung registriert hat.
  * _Fehler:_ Gibt an, dass sich ein Benutzer nicht für die Kennwortzurücksetzung registrieren konnte. Durch Klicken auf die Zeile können Sie die Kategorie **Activity Status Reason** (Grund für den Aktivitätsstatus) anzeigen, um mehr über die Fehlerursache zu erfahren. Das bedeutet nicht, dass ein Benutzer sein eigenes Kennwort nicht zurücksetzen kann, sondern lediglich, dass er den Registrierungsprozess nicht abgeschlossen hat. Wenn das Konto des Benutzers korrekte Daten (beispielsweise eine noch nicht bestätigte Telefonnummer) enthält, können diese trotzdem zum Zurücksetzen des Kennworts verwendet werden, auch wenn die Telefonnummer noch nicht bestätigt wurde. Weitere Informationen finden Sie unter [Was geschieht bei Registrierung eines Benutzers?](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-learn-more#what-happens-when-a-user-registers).
 
 ## <a name="how-to-retrieve-password-management-events-from-the-azure-ad-reports-and-events-api"></a>Abrufen von Kennwortverwaltungsereignissen von der API für Azure AD-Berichte und -Ereignisse
@@ -184,7 +184,7 @@ Nachdem Sie über ein funktionierendes Skript verfügen, sollten Sie sich als N�
 * [SsprRegistrationActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprRegistrationActivityEvent): Listet die Spalten auf, die für Ereignisse zum Registrieren der Kennwortzurücksetzung verfügbar sind.
 
 ### <a name="reporting-api-data-retrieval-limitations"></a>Datenabrufeinschränkungen der Reporting-API
-Derzeit ruft die API für Azure AD-Berichte und -Ereignisse bis zu **75.000 Einzelereignisse** vom Typ [SsprActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent) und [SsprRegistrationActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprRegistrationActivityEvent) aus den **letzten 30 Tagen** ab. 
+Derzeit ruft die API für Azure AD-Berichte und -Ereignisse bis zu **75.000 Einzelereignisse** vom Typ [SsprActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent) und [SsprRegistrationActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprRegistrationActivityEvent) aus den **letzten 30 Tagen** ab.
 
 Wenn Sie weiter zurückliegende Daten abrufen oder speichern möchten, sollten Sie sie in einer externen Datenbank speichern und mithilfe der API die resultierenden Deltas abfragen. Dabei hat sich Folgendes bewährt: Beginnen Sie mit dem Abrufen der Daten, wenn in Ihrer Organisation ein Prozess zur Registrierung für die Kennwortzurücksetzung gestartet wird, speichern Sie die Daten extern, und verfolgen Sie ab diesem Punkt die Deltas nach.
 
@@ -300,7 +300,7 @@ Nachfolgend finden Sie die Liste der Ergebnistypen, die Sie im Bericht zur Aktiv
 ## <a name="next-steps"></a>Nächste Schritte
 Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortzurücksetzung für Azure AD:
 
-* **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password).
+* **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md#reset-your-password).
 * [**Funktionsweise**](active-directory-passwords-how-it-works.md) – Erfahren Sie mehr über die sechs verschiedenen Komponenten des Diensts und deren Funktionen.
 * [**Erste Schritte**](active-directory-passwords-getting-started.md) – Erfahren Sie, wie Sie Benutzern das Zurücksetzen und Ändern ihrer Cloud- oder lokalen Kennwörter erlauben.
 * [**Anpassen**](active-directory-passwords-customize.md) – Erfahren Sie, wie Sie das Aussehen und Verhalten des Diensts an die Anforderungen Ihrer Organisation anpassen.

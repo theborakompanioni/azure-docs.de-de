@@ -15,8 +15,9 @@ ms.workload: multiple
 ms.date: 11/11/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 9b2d456d8dba33af224ea147f5f8ec49ba7397f9
-ms.openlocfilehash: d82984d87d6517ce429ca887436b88995ede997b
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: f79068d5d1bb28762640545ebf13784b7070440e
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -37,7 +38,7 @@ Sie benötigen das Azure SDK nicht, um die Skripts für Webprojekte zu generiere
 Für die Arbeit mit PowerShell in Visual Studio für die Azure-Entwicklung stehen weitere Tools und Ressourcen zur Verfügung. Weitere Informationen finden Sie unter [PowerShell-Tools für Visual Studio](http://go.microsoft.com/fwlink/?LinkId=404012).
 
 ## <a name="generating-the-publish-scripts"></a>Generieren der Veröffentlichungsskripts
-Sie können die Veröffentlichungsskripts für einen virtuellen Computer generieren, der Ihre Website hostet, wenn Sie ein neues Projekt anhand [dieser Anweisungen](virtual-machines/virtual-machines-windows-classic-web-app-visual-studio.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) erstellen. Sie können auch [Veröffentlichungsskripts für Web-Apps in Azure App Service generieren](app-service-web/web-sites-dotnet-get-started.md).
+Sie können die Veröffentlichungsskripts für einen virtuellen Computer generieren, der Ihre Website hostet, wenn Sie ein neues Projekt anhand [dieser Anweisungen](virtual-machines/windows/classic/web-app-visual-studio.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) erstellen. Sie können auch [Veröffentlichungsskripts für Web-Apps in Azure App Service generieren](app-service-web/web-sites-dotnet-get-started.md).
 
 ## <a name="scripts-that-visual-studio-generates"></a>Von Visual Studio generierte Skripts
 Visual Studio generiert einen Ordner auf Projektebene namens **PublishScripts** , der zwei Windows PowerShell-Dateien enthält: ein Veröffentlichungsskript für Ihren virtuellen Computer oder die Website und ein Modul mit Funktionen, die Sie in den Skripts verwenden können. Visual Studio generiert außerdem eine Datei im JSON-Format, die die Details des von Ihnen bereitgestellten Projekts angibt.
@@ -343,9 +344,4 @@ Wenn Sie Hilfe zu Funktionen abrufen möchten, können Sie an der Windows PowerS
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur PowerShell-Skripterstellung finden Sie unter [Skripterstellung mit Windows PowerShell](https://technet.microsoft.com/library/bb978526.aspx). Weitere Azure PowerShell-Skripts finden Sie im [Script Center](https://azure.microsoft.com/documentation/scripts/).
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

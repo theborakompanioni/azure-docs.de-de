@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/22/2017
 ms.author: carlasab
 translationtype: Human Translation
-ms.sourcegitcommit: b828859cb059e626878b5cb2a2839a76f10de9c9
-ms.openlocfilehash: c40b9cbccba1789e5ee9045d83c39169bb5d2663
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 789e1eabcd284c17c5728156cf185d2ca168f0eb
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -36,7 +36,7 @@ Die primären Migrationsmethoden sind:
 * Trennen und anschließendes Kopieren der Daten-und Protokolldateien in einen Azure-Blob-Speicher, dann Verbinden mit SQL Server in der Azure-VM über URL
 * Konvertieren eines lokalen physischen Computers in Hyper-V-VHD, Hochladen in einen Azure-Blob-Speicher und anschließendes Bereitstellen als neue VM mithilfe des hochgeladenen VHD
 * Versenden einer Festplatte mithilfe des Windows-Import/Export-Diensts
-* Bei einer lokalen AlwaysOn-Bereitstellung: Verwenden des [Assistenten zum Hinzufügen von Azure-Replikaten](../sqlclassic/virtual-machines-windows-classic-sql-onprem-availability.md) , um ein Replikat in Azure zu erstellen, und Durchführen eines Failovers, bei dem Benutzer auf die Azure-Datenbankinstanz verwiesen werden
+* Bei einer lokalen AlwaysOn-Bereitstellung: Verwenden des [Assistenten zum Hinzufügen von Azure-Replikaten](../classic/sql-onprem-availability.md) , um ein Replikat in Azure zu erstellen, und Durchführen eines Failovers, bei dem Benutzer auf die Azure-Datenbankinstanz verwiesen werden
 * Verwenden der SQL Server- [Transaktionsreplikation](https://msdn.microsoft.com/library/ms151176.aspx) , um die Azure SQL Server-Instanz als Abonnenten zu konfigurieren, und anschließendes Deaktivieren der Replikation, um Benutzer auf die Azure-Datenbankinstanz zu verweisen
 
 > [!TIP]
@@ -61,7 +61,7 @@ In der folgenden Tabelle werden alle primären Migrationsmethoden aufgeführt, u
 | [Trennen und anschließendes Kopieren der Daten- und Protokolldateien in einen Azure Blob-Speicher, dann Anschließen an den SQL Server auf dem virtuellen Azure-Computer über URL](#detach-and-copy-to-url-and-attach-from-url) |SQL Server 2005 oder höher |SQL Server 2014 oder höher |[Azure VM-Speichergrenze](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) |Verwenden Sie diese Methode, wenn Sie planen, [diese Dateien mithilfe des Azure Blob-Speicherdiensts zu speichern](https://msdn.microsoft.com/library/dn385720.aspx) und sie mit SQL Server in einer Azure-VM zu verbinden, insbesondere bei sehr großen Datenbanken. |
 | [Konvertieren eines lokalen physischen Computers in Hyper-V-VHD, Hochladen in einen Azure-Blob-Speicher und anschließendes Bereitstellen als neuen virtuellen Computer mithilfe des hochgeladenen VHD](#convert-to-vm-and-upload-to-url-and-deploy-as-new-vm) |SQL Server 2005 oder höher |SQL Server 2005 oder höher |[Azure VM-Speichergrenze](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) |Verwenden Sie diese Methode, wenn Sie [Ihre eigene SQL Server-Lizenz mitbringen](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md) und eine Datenbank migrieren, die unter einer älteren Version von SQL Server ausgeführt wird oder wenn Sie System- und Benutzerdatenbanken gemeinsam als Teil der Migration von Datenbanken migrieren, die von anderen Benutzer- und/oder Systemdatenbanken abhängig sind. |
 | [Versenden einer Festplatte mithilfe des Windows-Import-Export-Diensts](#ship-hard-drive) |SQL Server 2005 oder höher |SQL Server 2005 oder höher |[Azure VM-Speichergrenze](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) |Verwenden Sie den [Windows-Import/Export-Dienst](../../../storage/storage-import-export-service.md) , wenn das manuelle Kopieren zu langsam ist (etwa bei sehr großen Datenbanken). |
-| [Verwenden des Assistenten zum Hinzufügen von Azure-Replikaten](../sqlclassic/virtual-machines-windows-classic-sql-onprem-availability.md) |SQL Server 2012 oder höher |SQL Server 2012 oder höher |[Azure VM-Speichergrenze](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) |Beschränkt Ausfallzeiten auf ein Mindestmaß, Verwendung bei einer lokalen AlwaysOn-Bereitstellung |
+| [Verwenden des Assistenten zum Hinzufügen von Azure-Replikaten](../classic/sql-onprem-availability.md) |SQL Server 2012 oder höher |SQL Server 2012 oder höher |[Azure VM-Speichergrenze](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) |Beschränkt Ausfallzeiten auf ein Mindestmaß, Verwendung bei einer lokalen AlwaysOn-Bereitstellung |
 | [Verwenden der SQL Server-Transaktionsreplikation](https://msdn.microsoft.com/library/ms151176.aspx) |SQL Server 2005 oder höher |SQL Server 2005 oder höher |[Azure VM-Speichergrenze](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) |Verwendung zum Beschränken der Ausfallzeiten auf ein Mindestmaß, wenn keine lokale AlwaysOn-Bereitstellung vorliegt |
 
 ## <a name="backup-and-restore"></a>Sichern und Wiederherstellen

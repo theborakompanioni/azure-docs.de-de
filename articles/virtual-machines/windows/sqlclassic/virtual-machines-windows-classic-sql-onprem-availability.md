@@ -16,8 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 07/12/2016
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
-ms.openlocfilehash: d96140483edffb1f94add16598bf0dc0a85dd6da
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 38728a20527be060e63d2dbdea923263b3d6c7fa
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -84,16 +85,11 @@ In diesem Abschnitt erfahren Sie, wie Sie mit dem **Assistenten zum Hinzufügen 
 > 
 
 ## <a name="create-an-availability-group-listener"></a>Erstellen eines Listeners für eine Verfügbarkeitsgruppe
-Nach dem Erstellen der Verfügbarkeitsgruppe sollten Sie einen Listener für Clientverbindungen mit den Replikaten erstellen. Listener leiten eingehende Verbindungen entweder an das primäre oder an ein schreibgeschütztes sekundäres Replikat weiter. Weitere Informationen zu Listenern finden Sie unter [Konfigurieren eines ILB-Listeners für Always On-Verfügbarkeitsgruppen in Azure](virtual-machines-windows-classic-ps-sql-int-listener.md).
+Nach dem Erstellen der Verfügbarkeitsgruppe sollten Sie einen Listener für Clientverbindungen mit den Replikaten erstellen. Listener leiten eingehende Verbindungen entweder an das primäre oder an ein schreibgeschütztes sekundäres Replikat weiter. Weitere Informationen zu Listenern finden Sie unter [Konfigurieren eines ILB-Listeners für Always On-Verfügbarkeitsgruppen in Azure](../classic/ps-sql-int-listener.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Über die Verwendung des **Assistenten zum Hinzufügen von Azure-Replikaten** zum Erweitern Ihrer AlwaysOn-Verfügbarkeitsgruppe in Azure hinaus können Sie auch einen Teil Ihrer SQL Server-Workloads vollständig nach Azure auslagern. Informationen zum Einstieg finden Sie unter [Bereitstellen eines virtuellen Computers mit SQL Server in Azure](../sql/virtual-machines-windows-portal-sql-server-provision.md).
 
 Weitere Informationen zum Ausführen von SQL Server auf virtuellen Azure-Computern finden Sie unter [SQL Server auf virtuellen Azure-Computern](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

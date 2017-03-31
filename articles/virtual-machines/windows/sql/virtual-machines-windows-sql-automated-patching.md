@@ -16,15 +16,16 @@ ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
-ms.openlocfilehash: b092b8a746f4f94add9727dc17c6b8fc198b6404
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: c48e23c1904d824ce2360f83c9df9c8e17d6200a
+ms.lasthandoff: 03/25/2017
 
 
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-resource-manager"></a>Automatisiertes Patchen für SQL Server auf virtuellen Azure-Computern (Resource Manager)
 > [!div class="op_single_selector"]
 > * [Ressourcen-Manager](virtual-machines-windows-sql-automated-patching.md)
-> * [Klassisch](../sqlclassic/virtual-machines-windows-classic-sql-automated-patching.md)
+> * [Klassisch](../classic/sql-automated-patching.md)
 > 
 > 
 
@@ -32,7 +33,7 @@ Beim automatisierten Patchen wird ein Wartungsfenster für einen virtuellen Azur
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-Den Artikel zum klassischen Bereitstellungsmodell finden Sie unter [Automatisiertes Patchen für SQL Server auf virtuellen Azure-Computern (klassisch)](../sqlclassic/virtual-machines-windows-classic-sql-automated-patching.md).
+Den Artikel zum klassischen Bereitstellungsmodell finden Sie unter [Automatisiertes Patchen für SQL Server auf virtuellen Azure-Computern (klassisch)](../classic/sql-automated-patching.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Beachten Sie bei der Verwendung des automatisierten Patchens die folgenden Voraussetzungen:
@@ -126,10 +127,5 @@ Führen Sie zum Deaktivieren des automatisierten Patchens das gleiche Skript ohn
 Informationen zu anderen verfügbaren Automatisierungsaufgaben finden Sie unter [SQL Server-Agent-Erweiterung für virtuelle SQL Server-Computer (klassisch)](virtual-machines-windows-sql-server-agent-extension.md).
 
 Ausführlichere Informationen zur Ausführung von SQL Server auf virtuellen Azure-Computern finden Sie unter [Übersicht zu SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-server-iaas-overview.md).
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

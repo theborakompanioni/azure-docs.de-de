@@ -16,16 +16,16 @@ ms.workload: iaas-sql-server
 ms.date: 03/01/2017
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
-ms.openlocfilehash: 8e59988f24748a82d4e143295bab9bdaa65cf8e4
-ms.lasthandoff: 01/11/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: d09d2b869606995d227aa485a85acd67c18ee4e5
+ms.lasthandoff: 03/25/2017
 
 
 ---
 # <a name="configure-an-ilb-listener-for-always-on-availability-groups-in-azure"></a>Konfigurieren eines ILB-Listeners für AlwaysOn-Verfügbarkeitsgruppen in Azure
 > [!div class="op_single_selector"]
-> * [Interner Listener](virtual-machines-windows-classic-ps-sql-int-listener.md)
-> * [Externer Listener](virtual-machines-windows-classic-ps-sql-ext-listener.md)
+> * [Interner Listener](../classic/ps-sql-int-listener.md)
+> * [Externer Listener](../classic/ps-sql-ext-listener.md)
 > 
 > 
 
@@ -37,18 +37,18 @@ In diesem Thema erfahren Sie, wie Sie mit dem **internen Load Balancer (ILB)**ei
 
 Informationen zum Konfigurieren eines ILB-Listeners für eine Always On-Verfügbarkeitsgruppe im Resource Manager-Modell finden Sie unter [Konfigurieren eines internen Load Balancers für eine Always On-Verfügbarkeitsgruppe in Azure](../sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md).
 
-Ihre Verfügbarkeitsgruppe kann Replikate enthalten, die ausschließlich lokal, ausschließlich in Azure oder sowohl lokal als auch in Azure verfügbar sind (Hybridkonfigurationen). Azure-Replikate können sich innerhalb derselben Region oder in mehreren Regionen befinden, wobei mehrere virtuelle Netzwerke (VNets) verwendet werden. Bei den nachfolgenden Schritten wird davon ausgegangen, dass bereits eine [Verfügbarkeitsgruppe konfiguriert wurde](virtual-machines-windows-classic-portal-sql-alwayson-availability-groups.md), Sie jedoch noch keinen Listener konfiguriert haben.
+Ihre Verfügbarkeitsgruppe kann Replikate enthalten, die ausschließlich lokal, ausschließlich in Azure oder sowohl lokal als auch in Azure verfügbar sind (Hybridkonfigurationen). Azure-Replikate können sich innerhalb derselben Region oder in mehreren Regionen befinden, wobei mehrere virtuelle Netzwerke (VNets) verwendet werden. Bei den nachfolgenden Schritten wird davon ausgegangen, dass bereits eine [Verfügbarkeitsgruppe konfiguriert wurde](../classic/portal-sql-alwayson-availability-groups.md), Sie jedoch noch keinen Listener konfiguriert haben.
 
 ## <a name="guidelines-and-limitations-for-internal-listeners"></a>Richtlinien und Einschränkungen für interne Listener
 Beachten Sie die folgenden Richtlinien, die für Verfügbarkeitsgruppenlistener in Azure bei Verwendung des internen Lastenausgleichs gelten:
 
 * Der Verfügbarkeitsgruppenlistener wird unter Windows Server 2008 R2, Windows Server 2012 und Windows Server 2012 R2 unterstützt.
-* Da der Lister mit dem internen Load Balancer (ILB) konfiguriert wird und nur ein ILB pro Clouddienst vorhanden ist, wird pro Clouddienst maximal ein Verfügbarkeitsgruppenlistener unterstützt. Es ist jedoch möglich, mehrere externe Listener zu erstellen. Weitere Informationen finden Sie unter [Konfigurieren eines externen Listeners für Always On-Verfügbarkeitsgruppen in Azure](virtual-machines-windows-classic-ps-sql-ext-listener.md).
+* Da der Lister mit dem internen Load Balancer (ILB) konfiguriert wird und nur ein ILB pro Clouddienst vorhanden ist, wird pro Clouddienst maximal ein Verfügbarkeitsgruppenlistener unterstützt. Es ist jedoch möglich, mehrere externe Listener zu erstellen. Weitere Informationen finden Sie unter [Konfigurieren eines externen Listeners für Always On-Verfügbarkeitsgruppen in Azure](../classic/ps-sql-ext-listener.md).
 
 ## <a name="determine-the-accessibility-of-the-listener"></a>Festlegen des Zugriffs auf den Listener
 [!INCLUDE [ag-listener-accessibility](../../../../includes/virtual-machines-ag-listener-determine-accessibility.md)]
 
-Der Schwerpunkt dieses Artikels liegt auf dem Erstellen eines Listeners, der den **internen Load Balancer**verwendet. Wenn Sie einen öffentlichen/externen Listener benötigen, finden Sie die entsprechenden Schritte im Artikel zum Einrichten eines [externen Listeners](virtual-machines-windows-classic-ps-sql-ext-listener.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+Der Schwerpunkt dieses Artikels liegt auf dem Erstellen eines Listeners, der den **internen Load Balancer**verwendet. Wenn Sie einen öffentlichen/externen Listener benötigen, finden Sie die entsprechenden Schritte im Artikel zum Einrichten eines [externen Listeners](../classic/ps-sql-ext-listener.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 ## <a name="create-load-balanced-vm-endpoints-with-direct-server-return"></a>Erstellen von VM-Endpunkten mit Lastenausgleich und Direct Server Return
 Sie müssen für ILB zunächst den internen Load Balancer einrichten. Verwenden Sie zu diesem Zweck das folgende Skript.

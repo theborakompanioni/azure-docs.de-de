@@ -17,9 +17,9 @@ ms.workload: big-data
 ms.date: 02/17/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 31821203c18f1310c6a781bd28022efd3da7f03d
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: bc047ba2aacbbea6d47d3870ee70d9d9a068f83a
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -149,7 +149,7 @@ Mit [Azure Resource Manager](../azure-resource-manager/resource-group-overview.m
 Während der Clustererstellung ermöglichen die HDInsight-Cluster Ihnen das Konfigurieren von zwei Benutzerkonten:
 
 * HTTP-Benutzer: Der Standardbenutzername lautet *admin*. Für ihn gilt im Azure-Portal die Standardkonfiguration. Er wird auch als „Clusterbenutzer“ bezeichnet.
-* SSH-Benutzer (Linux-Cluster). Wird verwendet, um die Verbindung mit dem Cluster per SSH herzustellen. Sie können zusätzliche SSH-Benutzerkonten erstellen, nachdem der Cluster erstellt wurde, indem Sie die Schritte unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md) oder [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Windows](hdinsight-hadoop-linux-use-ssh-unix.md) ausführen.
+* SSH-Benutzer (Linux-Cluster). Wird verwendet, um die Verbindung mit dem Cluster per SSH herzustellen. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
 
   > [!NOTE]
   > Für Windows-basierte Cluster können Sie einen RDP-Benutzer erstellen, um eine Verbindung mit dem Cluster per RDP herzustellen.
@@ -212,30 +212,30 @@ Im klassischen Bereitstellungsmodell unterscheiden sich einige VM-Größen in Po
 * Standard_A3 ist „Groß“
 * Standard_A4 ist „Extragroß“
 
-| Größe | CPU-Kerne | Arbeitsspeicher | Netzwerkkarten (max.) | Max. Datenträgergröße | Maximal Datenträger (jeweils&1023; GB) | Max. IOPS (500 pro Datenträger) |
+| Größe | CPU-Kerne | Arbeitsspeicher | Netzwerkkarten (max.) | Max. Datenträgergröße | Maximal Datenträger (jeweils 1023 GB) | Max. IOPS (500 pro Datenträger) |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_A3\Groß |4 |7 GB |2 |Temporär = 285 GB |8 |8 x&500; |
-| Standard_A4\ExtraGroß |8 |14 GB |4 |Temporär = 605 GB |16 |16 x&500; |
-| Standard_A6 |4 |28 GB |2 |Temporär = 285 GB |8 |8 x&500; |
-| Standard_A7 |8 |56 GB |4 |Temporär = 605 GB |16 |16 x&500; |
+| Standard_A3\Groß |4 |7 GB |2 |Temporär = 285 GB |8 |8 x 500 |
+| Standard_A4\ExtraGroß |8 |14 GB |4 |Temporär = 605 GB |16 |16 x 500 |
+| Standard_A6 |4 |28 GB |2 |Temporär = 285 GB |8 |8 x 500 |
+| Standard_A7 |8 |56 GB |4 |Temporär = 605 GB |16 |16 x 500 |
 
 #### <a name="standard-tier-d-series"></a>Standard-Ebene: D-Serie
-| Größe | CPU-Kerne | Arbeitsspeicher | Netzwerkkarten (max.) | Max. Datenträgergröße | Maximal Datenträger (jeweils&1023; GB) | Max. IOPS (500 pro Datenträger) |
+| Größe | CPU-Kerne | Arbeitsspeicher | Netzwerkkarten (max.) | Max. Datenträgergröße | Maximal Datenträger (jeweils 1023 GB) | Max. IOPS (500 pro Datenträger) |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_D3 |4 |14 GB |4 |Temporär (SSD) =&200; GB |8 |8 x&500; |
-| Standard_D4 |8 |28 GB |8 |Temporär (SSD) =&400; GB |16 |16 x&500; |
-| Standard_D12 |4 |28 GB |4 |Temporär (SSD) =&200; GB |8 |8 x&500; |
-| Standard_D13 |8 |56 GB |8 |Temporär (SSD) =&400; GB |16 |16 x&500; |
-| Standard_D14 |16 |112 GB |8 |Temporär (SSD) =&800; GB |32 |32 x&500; |
+| Standard_D3 |4 |14 GB |4 |Temporär (SSD) = 200 GB |8 |8 x 500 |
+| Standard_D4 |8 |28 GB |8 |Temporär (SSD) = 400 GB |16 |16 x 500 |
+| Standard_D12 |4 |28 GB |4 |Temporär (SSD) = 200 GB |8 |8 x 500 |
+| Standard_D13 |8 |56 GB |8 |Temporär (SSD) = 400 GB |16 |16 x 500 |
+| Standard_D14 |16 |112 GB |8 |Temporär (SSD) = 800 GB |32 |32 x 500 |
 
 #### <a name="standard-tier-dv2-series"></a>Standard-Ebene: Dv2-Serie
-| Größe | CPU-Kerne | Arbeitsspeicher | Netzwerkkarten (max.) | Max. Datenträgergröße | Maximal Datenträger (jeweils&1023; GB) | Max. IOPS (500 pro Datenträger) |
+| Größe | CPU-Kerne | Arbeitsspeicher | Netzwerkkarten (max.) | Max. Datenträgergröße | Maximal Datenträger (jeweils 1023 GB) | Max. IOPS (500 pro Datenträger) |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_D3_v2 |4 |14 GB |4 |Temporär (SSD) =&200; GB |8 |8 x&500; |
-| Standard_D4_v2 |8 |28 GB |8 |Temporär (SSD) =&400; GB |16 |16 x&500; |
-| Standard_D12_v2 |4 |28 GB |4 |Temporär (SSD) =&200; GB |8 |8 x&500; |
-| Standard_D13_v2 |8 |56 GB |8 |Temporär (SSD) =&400; GB |16 |16 x&500; |
-| Standard_D14_v2 |16 |112 GB |8 |Temporär (SSD) =&800; GB |32 |32 x&500; |
+| Standard_D3_v2 |4 |14 GB |4 |Temporär (SSD) = 200 GB |8 |8 x 500 |
+| Standard_D4_v2 |8 |28 GB |8 |Temporär (SSD) = 400 GB |16 |16 x 500 |
+| Standard_D12_v2 |4 |28 GB |4 |Temporär (SSD) = 200 GB |8 |8 x 500 |
+| Standard_D13_v2 |8 |56 GB |8 |Temporär (SSD) = 400 GB |16 |16 x 500 |
+| Standard_D14_v2 |16 |112 GB |8 |Temporär (SSD) = 800 GB |32 |32 x 500 |
 
 Überlegungen zur Bereitstellung, die Sie im Hinblick auf die Verwendung dieser Ressourcen berücksichtigen sollten, finden Sie unter [Größen für virtuelle Computer](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Informationen zu den Preisen der unterschiedlichen Größen finden Sie unter [HDInsight-Preise](https://azure.microsoft.com/pricing/details/hdinsight).   
 

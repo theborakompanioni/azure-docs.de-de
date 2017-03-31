@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 310cb63756806c8fab208c47bce6c7292ea5e5d7
-ms.openlocfilehash: 61e8a49475129486505111bd595f98af955ed809
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: efd70d9843f3d8db0c2396c79eacb230fcdfa467
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -37,9 +38,9 @@ Führen Sie diese Schritte zum Erstellen eines Images auf Grundlage eines Azure-
     Weitere Informationen finden Sie unter [Erstellen eines virtuellen Windows Server-Computers](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 2. Stellen Sie eine Verbindung mit dem virtuellen Computer her. Installieren und konfigurieren Sie dann die Apps, die Sie über RemoteApp freigeben möchten. Führen Sie alle weiteren von den Apps benötigten Windows-Konfigurationen aus.
    
-    Weitere Informationen finden Sie unter [Anmelden bei einem virtuellen Computer, auf dem Windows Server ausgeführt wird](../virtual-machines/virtual-machines-windows-classic-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+    Weitere Informationen finden Sie unter [Anmelden bei einem virtuellen Computer, auf dem Windows Server ausgeführt wird](../virtual-machines/windows/classic/connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 3. Wenn Sie eines der "Windows Server Remote Desktop Session Host"-Images verwenden, können Sie mit dem enthaltenen Validierungsskript sicherstellen, dass Ihr virtueller Computer die Voraussetzungen für RemoteApp erfüllt. Doppelklicken Sie zur Ausführung des Skripts auf dem Desktop auf **ValidateRemoteAppImage** . Stellen Sie sicher, dass alle vom Skript gemeldeten Fehler behoben wurden, bevor Sie mit dem nächsten Schritt fortfahren.
-4. Führen Sie Sysprep mit "/generalize" aus, und erfassen Sie das Image. Weitere Informationen hierzu finden Sie unter [Erfassen eines virtuellen Windows-Computers, um ihn als Vorlage zu verwenden](../virtual-machines/virtual-machines-windows-classic-capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+4. Führen Sie Sysprep mit "/generalize" aus, und erfassen Sie das Image. Weitere Informationen hierzu finden Sie unter [Erfassen eines virtuellen Windows-Computers, um ihn als Vorlage zu verwenden](../virtual-machines/windows/classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 ## <a name="import-the-image-into-the-azure-remoteapp-image-library"></a>Importieren von Images in die Azure RemoteApp-Imagebibliothek
 Führen Sie diese Schritte aus, um das neue Image in Azure RemoteApp zu importieren:
@@ -58,10 +59,5 @@ Führen Sie diese Schritte aus, um das neue Image in Azure RemoteApp zu importie
 > 
 
 Sie können jetzt Ihre neue Sammlung erstellen – je nach Anforderung entweder eine [Cloudsammlung](remoteapp-create-cloud-deployment.md) oder eine [Hybridsammlung](remoteapp-create-hybrid-deployment.md).
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

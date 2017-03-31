@@ -16,19 +16,20 @@ ms.workload: iaas-sql-server
 ms.date: 01/17/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
-ms.openlocfilehash: 73032c8ed1f74139f5998ad24f5a9e9861c1e990
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 69e3172b1eac844863f51997f3061619f50b68da
+ms.lasthandoff: 03/25/2017
 
 
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-classic"></a>Automatisiertes Patchen für SQL Server auf virtuellen Azure-Computern (klassisch)
 > [!div class="op_single_selector"]
 > * [Ressourcen-Manager](../sql/virtual-machines-windows-sql-automated-patching.md)
-> * [Klassisch](virtual-machines-windows-classic-sql-automated-patching.md)
+> * [Klassisch](../classic/sql-automated-patching.md)
 > 
 > 
 
-Beim automatisierten Patchen wird ein Wartungsfenster für einen virtuellen Azure-Computer mit SQL Server eingerichtet. Automatische Updates können nur während dieses Wartungsfensters installiert werden. Dadurch wird bei SQL Server sichergestellt, dass Systemupdates und alle erforderlichen Neustarts zum bestmöglichen Zeitpunkt für die Datenbank stattfinden. Das automatisierte Patchen basiert auf der [Erweiterung für den SQL Server-IaaS-Agent](virtual-machines-windows-classic-sql-server-agent-extension.md).
+Beim automatisierten Patchen wird ein Wartungsfenster für einen virtuellen Azure-Computer mit SQL Server eingerichtet. Automatische Updates können nur während dieses Wartungsfensters installiert werden. Dadurch wird bei SQL Server sichergestellt, dass Systemupdates und alle erforderlichen Neustarts zum bestmöglichen Zeitpunkt für die Datenbank stattfinden. Das automatisierte Patchen basiert auf der [Erweiterung für den SQL Server-IaaS-Agent](../classic/sql-server-agent-extension.md).
 
 > [!IMPORTANT] 
 > Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager- und klassische Bereitstellung](../../../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells. Die Resource Manager-Version dieses Artikels finden Sie unter [Automatisiertes Patchen für SQL Server auf virtuellen Azure-Computern (Resource Manager)](../sql/virtual-machines-windows-sql-automated-patching.md).
@@ -53,7 +54,7 @@ Beachten Sie bei der Verwendung des automatisierten Patchens die folgenden Vorau
 
 **Erweiterung für SQL Server-IaaS:**
 
-* [Installieren der Erweiterung für SQL Server-IaaS](virtual-machines-windows-classic-sql-server-agent-extension.md)
+* [Installieren der Erweiterung für SQL Server-IaaS](../classic/sql-server-agent-extension.md)
 
 ## <a name="settings"></a>Einstellungen
 In der folgenden Tabelle werden die Optionen beschrieben, die für das automatisierte Patchen konfiguriert werden können. Bei klassischen virtuellen Computern muss PowerShell zum Konfigurieren dieser Einstellungen verwendet werden.
@@ -87,13 +88,8 @@ Die Installation und Konfiguration des SQL Server-IaaS-Agents kann mehrere Minut
 Führen Sie zum Deaktivieren des automatisierten Patchens das gleiche Skript ohne den Parameter „-Enable“ für „New-AzureVMSqlServerAutoPatchingConfig“ aus. Wie bei der Installation kann auch das Deaktivieren des automatisierten Patchens mehrere Minuten dauern.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informationen zu anderen verfügbaren Automatisierungsaufgaben finden Sie unter [SQL Server-Agent-Erweiterung für virtuelle SQL Server-Computer (klassisch)](virtual-machines-windows-classic-sql-server-agent-extension.md).
+Informationen zu anderen verfügbaren Automatisierungsaufgaben finden Sie unter [SQL Server-Agent-Erweiterung für virtuelle SQL Server-Computer (klassisch)](../classic/sql-server-agent-extension.md).
 
 Ausführlichere Informationen zur Ausführung von SQL Server auf virtuellen Azure-Computern finden Sie unter [Übersicht zu SQL Server auf virtuellen Azure-Computern](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

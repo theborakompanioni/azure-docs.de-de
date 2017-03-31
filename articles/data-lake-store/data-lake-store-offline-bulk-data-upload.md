@@ -15,8 +15,9 @@ ms.workload: big-data
 ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 4c0b60afdc95a44dc5fdb0e43605e8bb079278e5
-ms.openlocfilehash: b2dcf4e0e5cc8e2c594357495635889a2e3645bd
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: dae5491962b22453c517da35539ce09463d8802d
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -53,7 +54,7 @@ Befolgen Sie die Anweisungen unter [Verwenden des Azure Import/Export-Diensts](.
 1. Verwenden Sie eine Festplatte, die die Anforderung zur Verwendung mit dem Azure Import/Export-Dienst erfüllt.
 2. Bestimmen Sie ein Azure-Speicherkonto, in das die Daten kopiert werden, nachdem die Festplatte an das Azure-Rechenzentrum gesendet wurde.
 3. Verwenden Sie das [Azure Import/Export-Tool](http://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409) (ein Befehlszeilenprogramm). Nachfolgend finden Sie einen Codeausschnitt als Beispiel für die Verwendung des Tools.
-   
+
     ````
     WAImportExport PrepImport /sk:<StorageAccountKey> /t: <TargetDriveLetter> /format /encrypt /logdir:e:\myexportimportjob\logdir /j:e:\myexportimportjob\journal1.jrn /id:myexportimportjob /srcdir:F:\demo\ExImContainer /dstdir:importcontainer/vf1/
     ````
@@ -187,7 +188,7 @@ In diesem Abschnitt sind die JSON-Definitionen angegeben, die Sie zum Erstellen 
     }
 }
 ````
-Weitere Informationen finden Sie unter [Verschieben von Daten in und aus Azure Data Lake Store mithilfe von Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md#sample-copy-data-from-azure-blob-to-azure-data-lake-store).
+Weitere Informationen finden Sie unter [Verschieben von Daten in und aus Azure Data Lake Store mithilfe von Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md#example-copy-data-from-azure-blob-to-azure-data-lake-store).
 
 ## <a name="reconstruct-the-data-files-in-azure-data-lake-store"></a>Wiederherstellen der Datendateien in Azure Data Lake Store
 Wir haben eine Datei mit einer Größe von 319GB verwendet und sie in kleinere Dateien aufgeteilt, sodass sie mithilfe des Azure Import/Export-Diensts übertragen werden konnte. Da die Daten nun in Azure Data Lake Store gespeichert sind, kann die Datei in ihrer ursprünglichen Größe wiederhergestellt werden. Dazu können die folgenden Azure PowerShell-Cmdlets verwendet werden.
@@ -211,10 +212,4 @@ Join-AzureRmDataLakeStoreItem -AccountName "<adls_account_name" -Paths "/importe
 * [Sichern von Daten in Data Lake-Speicher](data-lake-store-secure-data.md)
 * [Verwenden von Azure Data Lake Analytics mit Data Lake-Speicher](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Verwenden von Azure HDInsight mit Data Lake-Speicher](data-lake-store-hdinsight-hadoop-use-portal.md)
-
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

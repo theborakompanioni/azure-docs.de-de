@@ -16,15 +16,15 @@ ms.date: 02/28/2017
 ms.author: joflore
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: fe83b1df8cc539e94e9541304584640a00551504
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 24c94f80afdb3d3330a835fae2f77ecb213a9ae5
+ms.lasthandoff: 03/28/2017
 
 
 ---
 # <a name="how-password-management-works-in-azure-active-directory"></a>Funktionsweise der Kennwortverwaltung in Azure Active Directory
 > [!IMPORTANT]
-> **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password).
+> **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md#reset-your-password).
 
 Die Kennwortverwaltung in Azure Active Directory (Azure AD) setzt sich aus folgenden logischen Komponenten zusammen:
 
@@ -116,7 +116,7 @@ Weitere Informationen zu Azure AD Connect finden Sie unter [Herstellen einer Ver
 
 Weitere Informationen finden Sie auf den folgenden Seiten zur Azure AD-Kennwortzurücksetzung:
 
-* **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Falls ja, erfahren Sie [hier](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password), wie Sie Ihr eigenes Kennwort ändern und zurücksetzen.
+* **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Falls ja, erfahren Sie [hier](active-directory-passwords-update-your-own-password.md#reset-your-password), wie Sie Ihr eigenes Kennwort ändern und zurücksetzen.
 * [**Erste Schritte:**](active-directory-passwords-getting-started.md) Hier erfahren Sie, wie Sie Benutzern das Zurücksetzen und Ändern ihrer cloudbasierten oder lokalen Kennwörter ermöglichen.
 * [**Anpassen:**](active-directory-passwords-customize.md) Hier erfahren Sie, wie Sie das Erscheinungsbild und das Verhalten des Diensts auf die Anforderungen Ihrer Organisation abstimmen.
 * [**Best Practices:**](active-directory-passwords-best-practices.md) Hier erfahren Sie, wie Sie Kennwörter in Ihrer Organisation schnell bereitstellen und effektiv verwalten.

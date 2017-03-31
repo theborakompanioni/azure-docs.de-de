@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
-ms.openlocfilehash: 0de0590c1cf5c71a7174fdcca84847b378aa40f8
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: dca6f5189693fc98cec4f92eac81b6985e691889
+ms.lasthandoff: 03/28/2017
 
 
 ---
 # <a name="learn-more-about-password-management"></a>Weitere Informationen zur Kennwortverwaltung
 > [!IMPORTANT]
-> **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password).
+> **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md#reset-your-password).
 >
 >
 
@@ -120,7 +120,7 @@ Im folgenden Abschnitt erfahren Sie, welche Szenarien für welche Versionen der 
 ### <a name="supported-clients"></a>Unterstützte Clients
 Es empfiehlt sich, das automatische Update von Azure AD Connect zu verwenden oder die neueste Version des [Azure AD Connect](connect/active-directory-aadconnect.md#install-azure-ad-connect) zu installieren, wenn Sie das Kennwortrückschreiben verwenden möchten.
 
-* **DirSync (beliebige Version > 1.0.6862)** - _NICHT UNTERSTÜTZT:_ Unterstützt nur grundlegende Rückschreibfunktionen und wird von der Produktgruppe nicht mehr unterstützt. 
+* **DirSync (beliebige Version > 1.0.6862)** - _NICHT UNTERSTÜTZT:_ Unterstützt nur grundlegende Rückschreibfunktionen und wird von der Produktgruppe nicht mehr unterstützt.
 * **Azure AD Sync** - _VERALTET:_ Unterstützt nur grundlegende Rückschreibfunktionen, und es stehen keine Kontoentsperrfunktionen, keine umfangreiche Protokollierung und keine Verbesserungen bei der Zuverlässigkeit aus Azure AD Connect zur Verfügung. Daher empfehlen wir **dringend** ein Upgrade.
 * **Azure AD Connect** - _VOLLSTÄNDIG UNTERSTÜTZT:_ Unterstützt alle Rückschreibfunktionen. Führen Sie ein Upgrade auf die neueste Version aus, um von den besten neuen Features sowie von höchstmöglicher Stabilität/Zuverlässigkeit zu profitieren.
 
@@ -132,7 +132,7 @@ Zur Verwendung des Kennwortrückschreibens muss in Ihrem Mandanten eine der folg
 * **Enterprise Mobility Suite:** Uneingeschränkte Verwendung des Kennwortrückschreibens
 * **Enterprise Cloud Suite:** Uneingeschränkte Verwendung des Kennwortrückschreibens
 
-Mit einem Office 365-Lizenzierungsplan kann das Kennwortrückschreiben nicht verwendet werden. Dies gilt sowohl für Testversionen als auch für kostenpflichtige Versionen. Zur Verwendung des Features ist ein Upgrade auf einen der oben aufgeführten Pläne erforderlich. 
+Mit einem Office 365-Lizenzierungsplan kann das Kennwortrückschreiben nicht verwendet werden. Dies gilt sowohl für Testversionen als auch für kostenpflichtige Versionen. Zur Verwendung des Features ist ein Upgrade auf einen der oben aufgeführten Pläne erforderlich.
 
 Eine Aktivierung des Kennwortrückschreibens für eine der Office 365-SKUs ist nicht geplant.
 
@@ -166,7 +166,7 @@ Kennwörter werden in folgenden Szenarien nicht zurückgeschrieben:
 * **Nicht unterstützte Vorgänge für Administratoren**
  * Jegliche durch einen Administrator initiierte Endbenutzer-Kennwortzurücksetzung über das [Office-Verwaltungsportal](https://portal.office.com)
  * Jegliche durch einen Administrator initiierte Endbenutzer-Kennwortzurücksetzung mithilfe von PowerShell v1, v2 oder der Azure AD-Graph-API
- 
+
 Wir arbeiten zwar daran, diese Einschränkungen zu entfernen, ein genauer Zeitplan steht jedoch noch nicht fest.
 
 ## <a name="password-writeback-security-model"></a>Sicherheitsmodell für die Kennwortrückschreibung
@@ -180,9 +180,9 @@ Die Kennwortrückschreibung ist ein äußerst sicherer und zuverlässiger Dienst
 ### <a name="password-writeback-encryption-details"></a>Verschlüsselungsdetails für das Kennwortrückschreiben
 In diesem Abschnitt erfahren Sie, welche Verschlüsselungsschritte eine vom Benutzer übermittelte Kennwortzurücksetzungsanforderung vor dem Erreichen Ihrer lokalen Umgebung durchläuft, um ein Höchstmaß an Dienstzuverlässigkeit und Sicherheit zu gewährleisten.
 
-* **Schritt 1: Kennwortverschlüsselung mit 2048-Bit-RSA-Schlüssel:** Wenn ein Benutzer ein zurückzuschreibendes Kennwort an die lokale Umgebung übermittelt, wird zunächst das eigentliche Kennwort mit einem 2048-Bit-RSA-Schlüssel verschlüsselt. 
+* **Schritt 1: Kennwortverschlüsselung mit 2048-Bit-RSA-Schlüssel:** Wenn ein Benutzer ein zurückzuschreibendes Kennwort an die lokale Umgebung übermittelt, wird zunächst das eigentliche Kennwort mit einem 2048-Bit-RSA-Schlüssel verschlüsselt.
 
-* **Schritt 2: Verschlüsselung auf Paketebene mit AES-GCM:** Als Nächstes wird das gesamte Paket (bestehend aus Kennwort und den erforderlichen Metadaten) mithilfe von AES-GCM verschlüsselt. So wird verhindert, dass jemand mit direktem Zugriff auf den zugrunde liegenden ServiceBus-Kanal den Inhalt anzeigen und/oder manipulieren kann. 
+* **Schritt 2: Verschlüsselung auf Paketebene mit AES-GCM:** Als Nächstes wird das gesamte Paket (bestehend aus Kennwort und den erforderlichen Metadaten) mithilfe von AES-GCM verschlüsselt. So wird verhindert, dass jemand mit direktem Zugriff auf den zugrunde liegenden ServiceBus-Kanal den Inhalt anzeigen und/oder manipulieren kann.
 
 * **Schritt 3: Abwicklung der gesamten Kommunikation über TLS/SSL:** Darüber hinaus wird die gesamte Kommunikation mit ServiceBus über einen TLS/SSL-Kanal abgewickelt. Dadurch wird der Inhalt vor nicht autorisierten Dritten geschützt.
 
@@ -623,13 +623,13 @@ Das Zurücksetzen und Ändern von Kennwörtern wird von allen B2B-Konfiguratione
 1. **Benutzer aus einer Partnerorganisation mit einem vorhandenen Azure AD-Mandanten:** Falls die Organisation, mit der Sie eine Partnerschaft eingegangen sind, über einen Azure AD-Mandanten verfügt, **respektieren wir die in diesem Mandanten aktivierten Kennwortzurücksetzungsrichtlinien**. Für die Kennwortzurücksetzung muss die Partnerorganisation lediglich sicherstellen, dass die Self-Service-Kennwortzurücksetzung von Azure AD aktiviert ist. Für Office 365-Kunden fallen dadurch keine zusätzlichen Gebühren an. Eine entsprechende Anleitung finden Sie unter [Erste Schritte mit der Kennwortverwaltung](https://azure.microsoft.com/documentation/articles/active-directory-passwords-getting-started/#enable-users-to-reset-or-change-their-aad-passwords).
 2. **Benutzer, die sich mit der [Self-Service-Registrierung](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-signup) registriert haben:** Wenn die Organisation, mit der Sie eine Partnerschaft eingegangen sind, das [Self-Service-Registrierungsfeature](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-signup) verwendet, um auf einen Mandanten zuzugreifen, steht eine vorgefertigte Zurücksetzung unter Verwendung der E-Mail-Adresse zur Verfügung, mit der die Registrierung erfolgt ist.
 3. **B2B-Benutzer:** Alle neuen B2B-Benutzer, die mithilfe der neuen [Azure AD-B2B-Funktionen](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) erstellt werden, können ihre Kennwörter standardmäßig unter Verwendung der E-Mail-Adresse zurücksetzen, mit der sie sich im Rahmen des Einladungsprozesses registriert haben.
- 
+
 Navigieren Sie zum Testen dieser Optionen mit einem dieser Partnerbenutzer zu „http://passwordreset.microsoftonline.com“.  Sofern keine alternative E-Mail-Adresse und keine E-Mail-Adresse für die Authentifizierung definiert sind, funktioniert die Kennwortzurücksetzung wie erwartet.  Weitere Informationen zu den Daten, die bei der Self-Service-Kennwortzurücksetzung verwendet werden, finden Sie unter [Welche Daten werden bei der Kennwortzurücksetzung verwendet?](https://azure.microsoft.com/en-us/documentation/articles/active-directory-passwords-learn-more/#what-data-is-used-by-password-reset).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortzurücksetzung für Azure AD:
 
-* **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password).
+* **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md#reset-your-password).
 * [**Funktionsweise**](active-directory-passwords-how-it-works.md) – Erfahren Sie mehr über die sechs verschiedenen Komponenten des Diensts und deren Funktionen.
 * [**Erste Schritte**](active-directory-passwords-getting-started.md) – Erfahren Sie, wie Sie Benutzern das Zurücksetzen und Ändern ihrer Cloud- oder lokalen Kennwörter erlauben.
 * [**Anpassen**](active-directory-passwords-customize.md) – Erfahren Sie, wie Sie das Aussehen und Verhalten des Diensts an die Anforderungen Ihrer Organisation anpassen.

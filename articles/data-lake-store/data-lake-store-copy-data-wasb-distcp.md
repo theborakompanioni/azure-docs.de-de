@@ -15,9 +15,9 @@ ms.workload: big-data
 ms.date: 03/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 1e66ce0af4d3d33b584f9f3a881c34aa04e783b7
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 12aea210308636677ba2905887ddd24dc5c35238
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -44,7 +44,7 @@ Bevor Sie mit diesem Artikel beginnen können, benötigen Sie Folgendes:
 
 Ein HDInsight-Cluster enthält das Distcp-Dienstprogramm, das zum Kopieren von Daten aus verschiedenen Quellen in einen HDInsight-Cluster verwendet werden kann. Wenn Sie den HDInsight-Cluster so konfiguriert haben, dass er den Data Lake-Speicher als zusätzlichen Speicher verwendet, kann das Distcp-Dienstprogramm ebenfalls direkt zum Kopieren von Daten in ein bzw. aus einem Data Lake-Speicherkonto genutzt werden. In diesem Abschnitt wird die Verwendung des Distcp-Dienstprogramms erläutert.
 
-1. Verwenden Sie SSH auf Ihrem Desktop, um eine Verbindung mit dem Cluster herzustellen. Informationen hierzu finden Sie unter [Verbinden mit einem Linux-basierten HDInsight-Cluster](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md#connect). Führen Sie die Befehle von der SSH-Eingabeaufforderung aus.
+1. Verwenden Sie SSH auf Ihrem Desktop, um eine Verbindung mit dem Cluster herzustellen. Informationen hierzu finden Sie unter [Verbinden mit einem Linux-basierten HDInsight-Cluster](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md). Führen Sie die Befehle von der SSH-Eingabeaufforderung aus.
 
 2. Überprüfen Sie, ob Sie auf die Azure Storage-Blobs (WASB) zugreifen können. Führen Sie den folgenden Befehl aus:
 

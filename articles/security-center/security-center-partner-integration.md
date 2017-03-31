@@ -12,11 +12,12 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/01/2016
+ms.date: 03/30/2017
 ms.author: yurid
 translationtype: Human Translation
 ms.sourcegitcommit: 5001cd47b6ee51967d1286414ccefedd8e7e7813
 ms.openlocfilehash: 095b5c9d1a888a4061450234f80c52c5834fbf53
+ms.lasthandoff: 12/02/2016
 
 
 ---
@@ -56,7 +57,7 @@ Basierend auf der Konfiguration der Azure-Umgebung und der von Ihnen festgelegte
 
 Nach der Bereitstellung einer Partnerlösung können Sie Informationen zur Integrität der Lösung anzeigen und über die Kachel für die Partnerlösung auf dem Security Center-Hauptdashboard allgemeine Verwaltungsaufgaben ausführen. Weitere Informationen zum Verwalten von Partnerlösungen in Security Center finden Sie unter [Überwachen von Partnerlösungen mit Azure Security Center](security-center-partner-solutions.md).
 
-![Partnerintegration](./media/security-center-partner-integration/security-center-partner-integration-fig1.png)
+![Partnerintegration](./media/security-center-partner-integration/security-center-partner-integration-fig1-new.png)
 
 
 ## <a name="see-also"></a>Weitere Informationen
@@ -69,9 +70,4 @@ In diesem Dokument haben Sie erfahren, wie Sie eine Partnerlösung in Azure Secu
 * [Überwachen von Partnerlösungen mit Azure Security Center:](security-center-partner-solutions.md) Erfahren Sie, wie der Integritätsstatus Ihrer Partnerlösungen überwacht wird.
 * [Azure Security Center – Häufig gestellte Fragen:](security-center-faq.md) Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
 * [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Azure-Sicherheit und -Compliance.
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

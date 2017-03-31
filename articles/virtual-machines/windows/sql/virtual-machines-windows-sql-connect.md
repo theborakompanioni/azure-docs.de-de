@@ -15,16 +15,16 @@ ms.workload: iaas-sql-server
 ms.date: 02/28/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
-ms.openlocfilehash: 699d0c37adb9618827b6b39d74d09c2f9ba92913
-ms.lasthandoff: 01/11/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 37b0abfa38282d7e8789ba5687f0937a60262464
+ms.lasthandoff: 03/25/2017
 
 
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure-resource-manager"></a>Verbinden mit SQL Server-Instanzen auf virtuellen Azure-Maschinen (Ressourcen-Manager)
 > [!div class="op_single_selector"]
 > * [Ressourcen-Manager](virtual-machines-windows-sql-connect.md)
-> * [Klassisch](../sqlclassic/virtual-machines-windows-classic-sql-connect.md)
+> * [Klassisch](../classic/sql-connect.md)
 > 
 > 
 
@@ -33,7 +33,7 @@ Dieses Thema beschreibt, wie eine Verbindung mit einer SQL Server-Instanz herges
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-Den Artikel zum klassischen Bereitstellungsmodell finden Sie unter [Herstellen einer Verbindung mit einem virtuellen SQL Server-Computer in Azure (klassische Bereitstellung)](../sqlclassic/virtual-machines-windows-classic-sql-connect.md).
+Den Artikel zum klassischen Bereitstellungsmodell finden Sie unter [Herstellen einer Verbindung mit einem virtuellen SQL Server-Computer in Azure (klassische Bereitstellung)](../classic/sql-connect.md).
 
 Eine vollständige exemplarische Vorgehensweise, die Bereitstellung und Konnektivität behandelt, finden Sie unter [Bereitstellen eines virtuellen SQL Server-Computers in Azure](virtual-machines-windows-portal-sql-server-provision.md).
 

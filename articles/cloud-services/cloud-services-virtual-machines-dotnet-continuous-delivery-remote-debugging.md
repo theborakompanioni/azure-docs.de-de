@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 11/18/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
-ms.openlocfilehash: bd0768b9d46c12c38ecd530ccef8397d1b595d8d
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: d011223dbb1ad7b5752875e94a4822be1b6cbe6e
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -45,7 +45,7 @@ Sie können mithilfe folgender Schritte das Remotedebuggen in Azure, für Cloudd
 6. Importieren Sie das Zertifikat (PFX-Datei) auf den Computer, auf dem Visual Studio mit Azure SDK für .NET installiert ist. Vergewissern Sie sich, dass als Importziel der `CurrentUser\My`-Zertifikatspeicher verwendet wird. Andernfalls tritt beim Anfügen an den Debugger in Visual Studio ein Fehler auf.
 
 ## <a name="enabling-remote-debugging-for-virtual-machines"></a>Aktivieren von Remotedebuggen für virtuelle Computer
-1. Erstellen Sie einen virtuellen Azure-Computer. Informationen finden Sie unter [Erstellen Ihres ersten virtuellen Windows-Computers im Azure-Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) oder [Erstellen und Verwalten virtueller Windows-Computer in Visual Studio](../virtual-machines/virtual-machines-windows-classic-manage-visual-studio.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+1. Erstellen Sie einen virtuellen Azure-Computer. Informationen finden Sie unter [Erstellen Ihres ersten virtuellen Windows-Computers im Azure-Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) oder [Erstellen und Verwalten virtueller Windows-Computer in Visual Studio](../virtual-machines/windows/classic/manage-visual-studio.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 2. Sehen Sie sich auf der [klassischen Azure-Portalseite](http://go.microsoft.com/fwlink/p/?LinkID=269851)das Dashboard des virtuellen Computers an, um den **RDP-ZERTIFIKATFINGERABDRUCK**des virtuellen Computers anzuzeigen. Dieser Wert wird für den `ServerThumbprint` -Wert in der Erweiterungskonfiguration verwendet.
 3. Erstellen Sie ein Clientzertifikat, wie in [Übersicht über Zertifikate für Azure Cloud Services](cloud-services-certs-create.md) gezeigt (behalten Sie die .pfx-Datei und den RDP-Zertifikatfingerabdruck bei).
 4. Installieren Sie Azure PowerShell (ab Version 0.7.4) wie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs)beschrieben.

@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 35efe2a6a7a1ea1285a8df26f18de0d425b7c48d
-ms.openlocfilehash: 02a1ba7f2861271ae3b0e2e06bde1b2cd03a378f
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
+ms.openlocfilehash: 9a6f42e9b7b737e9316dcc1ff39ea532c4b923c5
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -55,7 +55,7 @@ Vor dem Starten dieses Szenarios müssen die folgenden Voraussetzungen erfüllt 
 
 ### <a name="create-the-runbook"></a>Erstellen des Runbooks
 
-Der erste Schritt zum Konfigurieren des Beispiels ist die Erstellung des Runbooks. In diesem Beispiel wird ein ausführendes Konto verwendet. Informationen zu ausführenden Konten finden Sie unter [Authentifizieren von Runbooks mit der Azure-Option „Ausführendes Konto“](../automation/automation-sec-configure-azure-runas-account.md#create-a-new-automation-account-from-the-azure-portal).
+Der erste Schritt zum Konfigurieren des Beispiels ist die Erstellung des Runbooks. In diesem Beispiel wird ein ausführendes Konto verwendet. Informationen zu ausführenden Konten finden Sie unter [Authentifizieren von Runbooks mit der Azure-Option „Ausführendes Konto“](../automation/automation-sec-configure-azure-runas-account.md#create-an-automation-account-from-the-azure-portal).
 
 ### <a name="step-1"></a>Schritt 1
 
@@ -191,17 +191,4 @@ Nachdem Sie sich darüber informiert haben, wie Sie die Network Watcher-Problemb
 [8]: ./media/network-watcher-monitor-with-azure-automation/figure8.png
 [9]: ./media/network-watcher-monitor-with-azure-automation/figure9.png
 [10]: ./media/network-watcher-monitor-with-azure-automation/figure10.png
-
-
-
-
-
-
-
-
-
-
-
-
-
 

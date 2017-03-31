@@ -17,9 +17,9 @@ ms.date: 11/16/2016
 ms.author: syamk
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 839f8c8669c06e22635b68018d816a669aec895b
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: af8e53d7cc074bf669b967014223ee88476d1686
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -77,7 +77,7 @@ In der folgenden Tabelle sind die verschiedenen Konsistenzgarantien entsprechend
 | **Konsistente Präfixgarantie** |Ja |Ja |Ja |Ja |
 | **Monotone Lesevorgänge** |Ja |Ja, in Regionen außerhalb des „Veraltungsfensters“ und durchweg innerhalb einer Region. |Ja, für die angegebene Sitzung |Nein |
 | **Monotone Schreibvorgänge** |Ja |Ja |Ja |Ja |
-| **Lesen der eigenen Schreibvorgänge** |Ja |Ja |Ja (in der Region des Schreibvorgangs) |Nein |
+| **Lesen der eigenen Schreibvorgänge** |Ja |Ja (in der Region des Schreibvorgangs) | Ja |Nein |
 
 ## <a name="configuring-the-default-consistency-level"></a>Konfigurieren der Standardkonsistenzebene
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com/)in der Navigationsleiste auf **DocumentDB (NoSQL)**.

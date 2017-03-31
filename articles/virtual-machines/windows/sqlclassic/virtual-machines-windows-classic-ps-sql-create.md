@@ -16,8 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 02/02/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 7402249aa87ffe985ae13f28a701e22af3afd450
-ms.openlocfilehash: 38fd2e8fce99762cb7c6b6fb160f23a786fb0532
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 4d2799b8eecc6f4d733f0e29129df4fed0507959
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -102,7 +103,7 @@ Erstellen Sie schließlich den virtuellen Computer PowerShell:
         New-AzureVM –ServiceName $svcname -VMs $vm1
 
 > [!NOTE]
-> Zusätzliche Erläuterungen sowie Konfigurationsoptionen finden Sie im Abschnitt **Erstellen des Befehlssatzes** in [Verwenden von Azure PowerShell zum Erstellen und Vorabkonfigurieren Windows-basierter virtueller Computer](../../virtual-machines-windows-classic-create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+> Zusätzliche Erläuterungen sowie Konfigurationsoptionen finden Sie im Abschnitt **Erstellen des Befehlssatzes** in [Verwenden von Azure PowerShell zum Erstellen und Vorabkonfigurieren Windows-basierter virtueller Computer](../classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 > 
 > 
 
@@ -155,17 +156,12 @@ Das folgende Skript ist ein Beispiel für ein vollständiges Skript, das einen v
 Nachdem Sie sich über Remotedesktop bei dem Computer angemeldet haben, konfigurieren Sie SQL Server entsprechend den Anleitungen unter [Schritte zum Konfigurieren von SQL Server-Konnektivität in einer Azure-VM](virtual-machines-windows-classic-sql-connect.md#steps-for-configuring-sql-server-connectivity-in-an-azure-vm).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Anleitungen zur Bereitstellung von virtuellen Computern mit PowerShell finden Sie in der [Dokumentation über virtuelle Computer](../../virtual-machines-windows-classic-create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Weitere Skripts im Zusammenhang mit SQL Server und Storage Premium finden Sie unter [Verwenden von Azure Premium-Speicher mit SQL Server auf virtuellen Computern](virtual-machines-windows-classic-sql-server-premium-storage.md).
+Weitere Anleitungen zur Bereitstellung von virtuellen Computern mit PowerShell finden Sie in der [Dokumentation über virtuelle Computer](../classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Weitere Skripts im Zusammenhang mit SQL Server und Storage Premium finden Sie unter [Verwenden von Azure Premium-Speicher mit SQL Server auf virtuellen Computern](../classic/sql-server-premium-storage.md).
 
 In vielen Fällen ist der nächste Schritt, die Datenbanken auf diese neue SQL Server-VM zu migrieren. Anleitungen zur Datenbankmigration finden Sie unter [Migrieren einer Datenbank zu SQL Server auf einer Azure-VM](../sql/virtual-machines-windows-migrate-sql.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
 
 Wenn Sie auch wissen möchten, wie Sie das Azure-Portal zum Erstellen von virtuellen SQL-Computern verwenden können, lesen Sie [Bereitstellen eines virtuellen Computers mit SQL Server im Azure-Portal](../sql/virtual-machines-windows-portal-sql-server-provision.md). Beachten Sie, dass das Tutorial, das Sie durch das Portal führt, die VMs mithilfe des empfohlenen Resource Manager-Modells anstelle des klassischen, in diesem PowerShell-Thema verwendeten Modells erstellt.
 
 Zusätzlich zu diesen Ressourcen wird empfohlen, dass Sie sich die [anderen Themen im Zusammenhang mit Ausführen von SQL Server auf virtuellen Azure Computern](../sql/virtual-machines-windows-sql-server-iaas-overview.md)ansehen.
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

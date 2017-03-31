@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/01/2016
+ms.date: 03/30/2017
 ms.author: yurid
 translationtype: Human Translation
 ms.sourcegitcommit: 5001cd47b6ee51967d1286414ccefedd8e7e7813
 ms.openlocfilehash: 6af6c10cef317453131197db74a9380518afadf0
+ms.lasthandoff: 12/02/2016
 
 
 ---
@@ -58,10 +59,5 @@ In diesem Dokument haben Sie erfahren, wie Daten in OMS verwaltet und geschützt
 * [Operations Management Suite (OMS) – Übersicht](operations-management-suite-overview.md)
 * [Überwachen von und Reagieren auf Sicherheitswarnungen in der Sicherheits- und Überwachungslösung von Operations Management Suite](oms-security-responding-alerts.md)
 * [Überwachen von Ressourcen in der Sicherheits- und Überwachungslösung von Operations Management Suite](oms-security-monitoring-resources.md)
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

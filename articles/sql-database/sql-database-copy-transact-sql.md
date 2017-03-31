@@ -16,9 +16,9 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 60bcd02d24e2084b9020ce56ef6a9f8268c6b1b5
-ms.openlocfilehash: 3ade1f2850b2a67f68e8a4a7f519b7dc7ba1de10
-ms.lasthandoff: 02/11/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: e8d71d7b6b4302f177732381ad19e6a645bc5474
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 02/11/2017
 Die folgenden Schritte veranschaulichen, wie Sie eine SQL-Datenbank mit Transact-SQL auf den gleichen oder einen anderen Server kopieren. Beim Kopieren der Datenbank wird die Anweisung [CREATE DATABASE](https://msdn.microsoft.com/library/ms176061.aspx) verwendet. 
 
 > [!NOTE]
-> Sie können eine SQL-Datenbank auch über das [Azure-Portal](sql-database-copy-portal.md) oder [PowerShell](sql-database-copy-powershell.md) kopieren.
+> Sie können eine SQL-Datenbank auch über das [Azure-Portal](sql-database-copy-portal.md) oder [PowerShell](scripts/sql-database-copy-database-to-new-server-powershell.md) kopieren.
 >
 
 Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benötigen Sie Folgendes:

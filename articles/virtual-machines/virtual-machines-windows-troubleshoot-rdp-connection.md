@@ -17,9 +17,9 @@ ms.topic: support-article
 ms.date: 02/09/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 9ca20f34d812e15a7f1e6f5dd032ec05c464046d
-ms.openlocfilehash: 53920a551e24f29274133315b463c6c69605da10
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 19247b7d8333e8bd73d33a7838e99180369b8681
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -216,7 +216,7 @@ Versuchen Sie nach jedem Problembehandlungsschritt, die Verbindung mit dem virtu
    
    ![Überprüfen der Cloud Services-Endpunkte im Azure-Portal](./media/virtual-machines-windows-troubleshoot-rdp-connection/classic-verify-cloud-services-endpoints.png)
    
-   Sollte kein Endpunkt vorhanden sein, der RDP-Datenverkehr zulässt, [erstellen Sie einen Cloud Services-Endpunkt](virtual-machines-windows-classic-setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Lassen Sie TCP für den privaten Port 3389 zu.
+   Sollte kein Endpunkt vorhanden sein, der RDP-Datenverkehr zulässt, [erstellen Sie einen Cloud Services-Endpunkt](windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Lassen Sie TCP für den privaten Port 3389 zu.
 3. **Überprüfen Sie die Startdiagnose des virtuellen Computers.** In diesem Problembehandlungsschritt wird anhand der Konsolenprotokolle des virtuellen Computers ermittelt, ob der virtuelle Computer ein Problem meldet. Da die Startdiagnose nicht bei allen virtuellen Computern aktiviert ist, handelt es sich hierbei ggf. um einen optionalen Problembehandlungsschritt.
    
     Spezifische Problembehandlungsschritte werden in diesem Artikel nicht behandelt, deuten aber möglicherweise auf ein größeres Problem hin, das die RDP-Verbindung beeinträchtigt. Weitere Informationen zum Überprüfen der Konsolenprotokolle des virtuellen Computers sowie einen Screenshot finden Sie unter [Boot Diagnostics for Virtual Machines v2](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/) (Startdiagnose für virtuelle Computer v2).

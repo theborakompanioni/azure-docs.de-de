@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 03/03/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: 3e166b82e547975a5d44465231da057a9465f81c
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
+ms.openlocfilehash: 5cfbd39d2f66fb6632495eb7cd789ed39b0cc309
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -34,7 +34,7 @@ Automation kann Runbookauftragsstatus und Auftragsdatenströme an Ihren Microsof
 Zum Senden Ihrer Automation-Protokolle an Log Analytics benötigen Sie:
 
 1. Die [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)-Version von November 2016 (v2.3.0) oder höher.
-2. Einen Log Analytics-Arbeitsbereich Weitere Informationen finden Sie unter [Erste Schritte mit Log Analytics](../log-analytics/log-analytics-get-started.md). 
+2. Einen Log Analytics-Arbeitsbereich Weitere Informationen finden Sie unter [Erste Schritte mit Log Analytics](../log-analytics/log-analytics-get-started.md).
 3. Die Ressourcen-ID für Ihr Azure Automation-Konto
 
 Um die Ressourcen-ID für Ihr Azure Automation-Konto und Ihren Log Analytics-Arbeitsbereich zu suchen, führen Sie den folgenden PowerShell-Befehl aus:
@@ -68,13 +68,13 @@ Wenn Sie den *Namen* Ihres Automation-Kontos suchen müssen, wählen Sie im Azur
 Switch ($Environment)
    {
        "AzureCloud" {Login-AzureRmAccount}
-       "AzureUSGovernment" {Login-AzureRmAccount -EnvironmentName AzureUSGovernment} 
+       "AzureUSGovernment" {Login-AzureRmAccount -EnvironmentName AzureUSGovernment}
    }
 
 # if you have one Log Analytics workspace you can use the following command to get the resource id of the workspace
 $workspaceId = (Get-AzureRmOperationalInsightsWorkspace).ResourceId
 
-$automationAccountId = "/SUBSCRIPTIONS/ec11ca60-1234-491e-5678-0ea07feae25c/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.AUTOMATION/ACCOUNTS/DEMO" 
+$automationAccountId = "/SUBSCRIPTIONS/ec11ca60-1234-491e-5678-0ea07feae25c/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.AUTOMATION/ACCOUNTS/DEMO"
 
 Set-AzureRmDiagnosticSetting -ResourceId $automationAccountId -WorkspaceId $workspaceId -Enabled $true
 
@@ -100,12 +100,12 @@ Zum Sicherstellen, dass Ihr Automation-Konto Protokolle an Ihren Log Analytics-A
 Switch ($Environment)
    {
        "AzureCloud" {Login-AzureRmAccount}
-       "AzureUSGovernment" {Login-AzureRmAccount -EnvironmentName AzureUSGovernment} 
+       "AzureUSGovernment" {Login-AzureRmAccount -EnvironmentName AzureUSGovernment}
    }
 # if you have one Log Analytics workspace you can use the following command to get the resource id of the workspace
 $workspaceId = (Get-AzureRmOperationalInsightsWorkspace).ResourceId
 
-$automationAccountId = "/SUBSCRIPTIONS/ec11ca60-1234-491e-5678-0ea07feae25c/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.AUTOMATION/ACCOUNTS/DEMO" 
+$automationAccountId = "/SUBSCRIPTIONS/ec11ca60-1234-491e-5678-0ea07feae25c/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.AUTOMATION/ACCOUNTS/DEMO"
 
 Get-AzureRmDiagnosticSetting -ResourceId $automationAccountId
 ```
@@ -116,7 +116,7 @@ Get-AzureRmDiagnosticSetting -ResourceId $automationAccountId
 
 
 ## <a name="log-analytics-records"></a>Log Analytics-Datensätze
-Die Diagnose von Azure Automation erstellt zwei Typen von Datensätzen in Log Analytics. 
+Die Diagnose von Azure Automation erstellt zwei Typen von Datensätzen in Log Analytics.
 
 ### <a name="job-logs"></a>Auftragsprotokolle
 | Eigenschaft | Beschreibung |
@@ -176,7 +176,7 @@ Zum Erstellen einer Warnungsregel erstellen Sie zunächst eine Protokollsuche f�
 2. Erstellen Sie eine Protokollsuchabfrage für die Warnung, indem Sie folgenden Suchtext in das Abfragefeld eingeben: `Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category=JobLogs (ResultType=Failed OR ResultType=Suspended)` Sie können auch nach dem Runbook-Namen gruppieren, indem Sie folgende Abfrage verwenden: `Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category=JobLogs (ResultType=Failed OR ResultType=Suspended) | measure Count() by RunbookName_s`   
 
    Wenn Sie Protokolle von mehreren Automation-Konten oder Abonnements in Ihrem Arbeitsbereich eingerichtet haben, können Sie Ihre Warnungen nach Abonnement oder Automation-Konto gruppieren.  Der Name des Automation-Kontos kann vom Ressourcenfeld in der JobLogs-Suche abgeleitet werden.  
-3. Klicken Sie oben auf der Seite auf **Warnung**, um den Bildschirm **Warnungsregel hinzufügen** zu öffnen. Weitere Informationen zu den Konfigurationsoptionen für Warnungen finden Sie unter [Warnungen in Log Analytics](../log-analytics/log-analytics-alerts.md#creating-alert-rules).
+3. Klicken Sie oben auf der Seite auf **Warnung**, um den Bildschirm **Warnungsregel hinzufügen** zu öffnen. Weitere Informationen zu den Konfigurationsoptionen für Warnungen finden Sie unter [Warnungen in Log Analytics](../log-analytics/log-analytics-alerts.md#alert-rules).
 
 ### <a name="find-all-jobs-that-have-completed-with-errors"></a>Durchführen einer Suche nach allen Aufträgen, die mit Fehlern abgeschlossen wurden
 Neben dem Erstellen von Warnungen für Fehler können Sie auch ermitteln, wenn ein Runbook-Auftrag einen Fehler ohne Abbruch aufweist. In diesen Fällen erzeugt PowerShell einen Fehlerdatenstrom, die Fehler ohne Abbruch verursachen jedoch kein Anhalten oder Fehlschlagen Ihres Auftrags.    

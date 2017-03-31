@@ -16,8 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 01/17/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 7402249aa87ffe985ae13f28a701e22af3afd450
-ms.openlocfilehash: 7706fd453ef8be4ebe65b65da643ec38b7c18433
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 218d7dcf14ebbb28ac043e50e6f9248ecb942aaa
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -31,7 +32,7 @@ ms.openlocfilehash: 7706fd453ef8be4ebe65b65da643ec38b7c18433
 ## <a name="overview"></a>Übersicht
 In diesem Tutorial erfahren Sie, wie Sie einen virtuellen Azure-Computer im Rahmen des Bereitstellungsmodells **Azure Resource Manager** mithilfe von Azure PowerShell-Cmdlets erstellen. Zu diesem Zweck erstellen wir in diesem Tutorial einen einzelnen virtuellen Computer mit einem einzelnen Laufwerk. Als Grundlage dient dabei ein Image aus dem SQL-Katalog. Außerdem erstellen wir neue Anbieter für die Speicher-, Netzwerk- und Compute-Ressourcen, die von dem virtuellen Computer verwendet werden. Falls Sie bereits über Anbieter für diese Ressourcen verfügen, können Sie stattdessen diese Anbieter verwenden.
 
-Die klassische Version dieses Themas finden Sie unter [Erstellen eines virtuellen Computers mit SQL Server in Azure PowerShell (klassisch)](../sqlclassic/virtual-machines-windows-classic-ps-sql-create.md).
+Die klassische Version dieses Themas finden Sie unter [Erstellen eines virtuellen Computers mit SQL Server in Azure PowerShell (klassisch)](../classic/ps-sql-create.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Für dieses Tutorial benötigen Sie Folgendes:
@@ -190,7 +191,7 @@ Führen Sie das folgende Cmdlet aus, und geben Sie im Windows PowerShell-Fenster
     $Credential = Get-Credential -Message "Type the name and password of the local administrator account."
 
 ### <a name="set-the-operating-system-properties-for-the-virtual-machine"></a>Festlegen der Betriebssystemeigenschaften für den virtuellen Computer
-Nun können wir die Betriebssystemeigenschaften des virtuellen Computers festlegen. Hierzu legen wir mithilfe des Cmdlets [Set-AzureRmVMOperatingSystem](https://msdn.microsoft.com/library/mt603843.aspx) die Art des Betriebssystems auf Windows fest, machen die Installation des [Agents für virtuelle Computer](../../virtual-machines-windows-classic-agents-and-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) erforderlich, geben an, dass das Cmdlet automatische Aktualisierungen ermöglicht, und legen den Namen des virtuellen Computers, den Computernamen und die Anmeldeinformationen mithilfe der zuvor initialisierten Variablen fest.
+Nun können wir die Betriebssystemeigenschaften des virtuellen Computers festlegen. Hierzu legen wir mithilfe des Cmdlets [Set-AzureRmVMOperatingSystem](https://msdn.microsoft.com/library/mt603843.aspx) die Art des Betriebssystems auf Windows fest, machen die Installation des [Agents für virtuelle Computer](../classic/agents-and-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) erforderlich, geben an, dass das Cmdlet automatische Aktualisierungen ermöglicht, und legen den Namen des virtuellen Computers, den Computernamen und die Anmeldeinformationen mithilfe der zuvor initialisierten Variablen fest.
 
 Führen Sie das folgende Cmdlet aus, um die Betriebssystemeigenschaften für Ihren virtuellen Computer festzulegen:
 
@@ -295,10 +296,5 @@ Das folgende Skript enthält das vollständige PowerShell-Skript für dieses Tut
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nach Erstellung des virtuellen Computers können Sie über RDP eine Verbindung mit dem virtuellen Computer herstellen und die Konnektivität einrichten. Weitere Informationen finden Sie unter [Verbinden mit SQL Server-Instanzen auf virtuellen Azure-Maschinen (Ressourcen-Manager)](virtual-machines-windows-sql-connect.md).
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

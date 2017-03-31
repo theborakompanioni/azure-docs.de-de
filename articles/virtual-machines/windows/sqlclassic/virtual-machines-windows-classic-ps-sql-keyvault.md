@@ -17,15 +17,15 @@ ms.date: 02/17/2017
 ms.author: jroth
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: e0950a5c2c7d40751664c0c5a60facef68a79b2a
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 2a9ac5763bb934bd0646e47c3936f7bdd0d603b1
+ms.lasthandoff: 03/25/2017
 
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-classic"></a>Konfigurieren der Azure Key Vault-Integration für SQL Server auf Azure Virtual Machines (klassisch)
 > [!div class="op_single_selector"]
 > * [Ressourcen-Manager](../sql/virtual-machines-windows-ps-sql-keyvault.md)
-> * [Klassisch](virtual-machines-windows-classic-ps-sql-keyvault.md)
+> * [Klassisch](../classic/ps-sql-keyvault.md)
 > 
 > 
 
@@ -45,7 +45,7 @@ Wenn diese Funktion aktiviert ist, wird der SQL Server-Connector automatisch akt
 Verwenden Sie PowerShell zum Konfigurieren der Azure-Schlüsseltresor-Integration. Die folgenden Abschnitte enthalten eine Übersicht über die erforderlichen Parameter sowie ein PowerShell-Beispielskript.
 
 ### <a name="install-the-sql-server-iaas-extension"></a>Installieren der Erweiterung für SQL Server-IaaS
-[Installieren Sie zunächst die Erweiterung für SQL Server-IaaS.](virtual-machines-windows-classic-sql-server-agent-extension.md)
+[Installieren Sie zunächst die Erweiterung für SQL Server-IaaS.](../classic/sql-server-agent-extension.md)
 
 ### <a name="understand-the-input-parameters"></a>Grundlegendes zu den Eingabeparametern
 In der folgenden Tabelle sind die Parameter aufgeführt, die zum Ausführen des PowerShell-Skripts im nächsten Abschnitt erforderlich sind.

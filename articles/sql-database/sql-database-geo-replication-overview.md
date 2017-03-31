@@ -16,9 +16,9 @@ ms.workload: NA
 ms.date: 09/26/2016
 ms.author: sashan
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: 26eac30a08db2e224f9e9018817a18c3a4405b7f
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: bd3aea04266baebbba1b953d5a2b7c4b2fb41a87
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -33,7 +33,7 @@ Mit der aktiven Georeplikation können Sie bis zu vier lesbare sekundäre Datenb
 
 Falls Ihre primäre Datenbank aus irgendeinem Grund ausfällt oder einfach offline geschaltet werden muss, können Sie ein *Failover* auf eine der sekundären Datenbanken durchführen. Wenn das Failover auf eine sekundäre Datenbank aktiviert ist, werden alle anderen sekundären Datenbanken automatisch mit der neuen primären Datenbank verknüpft.
 
-Das Failover auf eine sekundäre Datenbank können Sie auf folgende Weise ausführen: im [Azure-Portal](sql-database-geo-replication-failover-portal.md), mit [PowerShell](sql-database-geo-replication-failover-powershell.md), mit [Transact-SQL](sql-database-geo-replication-failover-transact-sql.md), mit der [REST-API – Planned Failover](https://msdn.microsoft.com/ibrary/azure/mt575007.aspx) oder mit der [REST-API – Unplanned Failover](https://msdn.microsoft.com/library/azure/mt582027.aspx).
+Das Failover auf eine sekundäre Datenbank können Sie auf folgende Weise ausführen: im [Azure-Portal](sql-database-geo-replication-failover-portal.md), mit [PowerShell](scripts/sql-database-setup-geodr-and-failover-database-powershell.md), mit [Transact-SQL](sql-database-geo-replication-failover-transact-sql.md), mit der [REST-API – Planned Failover](https://msdn.microsoft.com/library/mt575007.aspx) oder mit der [REST-API – Unplanned Failover](https://msdn.microsoft.com/library/mt582027.aspx).
 
 Stellen Sie nach dem Failover sicher, dass die Authentifizierungsanforderungen für Ihren Server und Ihre Datenbank auf der neuen primären konfiguriert sind. Weitere Informationen finden Sie unter [Verwalten der Sicherheit der Azure SQL-Datenbank nach der Notfallwiederherstellung](sql-database-geo-replication-security-config.md).
 
@@ -107,10 +107,10 @@ Wie bereits zuvor erwähnt, kann die aktive Georeplikation auch programmgesteuer
 ### <a name="powershell"></a>PowerShell
 | Cmdlet | Beschreibung |
 | --- | --- |
-| [Get-AzureRmSqlDatabase](https://msdn.microsoft.com/en-us/library/azure/mt603648.aspx) |Ruft mindestens eine Datenbank ab. |
+| [Get-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt603648.aspx) |Ruft mindestens eine Datenbank ab. |
 | [New-AzureRmSqlDatabaseSecondary](https://msdn.microsoft.com/library/mt603689.aspx) |Erstellt eine sekundäre Datenbank für eine vorhandene Datenbank und startet die Datenreplikation. |
-| [Set-AzureRmSqlDatabaseSecondary](https://msdn.microsoft.com/en-us/library/mt619393.aspx) |Erklärt die sekundäre Datenbank zur primären und wechselt zu ihr – dadurch wird das Failover gestartet. |
-| [Remove-AzureRmSqlDatabaseSecondary](https://msdn.microsoft.com/en-us/library/mt603457.aspx) |Beendet die Datenreplikation zwischen einer SQL-Datenbank und der angegebenen sekundären Datenbank. |
+| [Set-AzureRmSqlDatabaseSecondary](https://msdn.microsoft.com/library/mt619393.aspx) |Erklärt die sekundäre Datenbank zur primären und wechselt zu ihr – dadurch wird das Failover gestartet. |
+| [Remove-AzureRmSqlDatabaseSecondary](https://msdn.microsoft.com/library/mt603457.aspx) |Beendet die Datenreplikation zwischen einer SQL-Datenbank und der angegebenen sekundären Datenbank. |
 | [Get-AzureRmSqlDatabaseReplicationLink](https://msdn.microsoft.com/library/mt619330.aspx) |Ruft die Georeplikationsverknüpfungen zwischen einer Azure SQL-Datenbank und einer Ressourcengruppe oder einer SQL Server-Instanz ab. |
 |  | |
 
@@ -119,7 +119,7 @@ Wie bereits zuvor erwähnt, kann die aktive Georeplikation auch programmgesteuer
 | --- | --- |
 | [Create or Update Database (createMode=Restore)](https://msdn.microsoft.com/library/azure/mt163685.aspx) |Erstellt oder aktualisiert eine primäre oder sekundäre Datenbank oder stellt diese wieder her. |
 | [Get Create or Update Database Status](https://msdn.microsoft.com/library/azure/mt643934.aspx) |Ruft den Status während eines Erstellungsvorgangs ab. |
-| [Set Secondary Database as Primary (Planned Failover)](https://msdn.microsoft.com/ibrary/azure/mt575007.aspx) |Stuft eine sekundäre Datenbank in einer Georeplikationspartnerschaft zur neuen primären Datenbank hoch. |
+| [Set Secondary Database as Primary (Planned Failover)](https://msdn.microsoft.com/library/azure/mt575007.aspx) |Stuft eine sekundäre Datenbank in einer Georeplikationspartnerschaft zur neuen primären Datenbank hoch. |
 | [Set Secondary Database as Primary (Unplanned Failover)](https://msdn.microsoft.com/library/azure/mt582027.aspx) |Erzwingt ein Failover zur sekundären Datenbank und legt die sekundäre Datenbank als primäre fest. |
 | [Get Replication Links](https://msdn.microsoft.com/library/azure/mt600929.aspx) |Ruft alle Replikationsverknüpfungen für eine angegebene SQL-Datenbank in einer Georeplikationspartnerschaft ab. Es werden die Informationen abgerufen, die in der Katalogsicht „sys.geo_replication_links“ sichtbar sind. |
 | [Get Replication Link](https://msdn.microsoft.com/library/azure/mt600778.aspx) |Ruft eine spezifische Replikationsverknüpfung für eine angegebene SQL-Datenbank in einer Georeplikationspartnerschaft ab. Es werden die Informationen abgerufen, die in der Katalogsicht „sys.geo_replication_links“ sichtbar sind. |
