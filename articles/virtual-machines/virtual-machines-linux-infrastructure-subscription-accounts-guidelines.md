@@ -50,19 +50,19 @@ Für die Arbeit mit Azure benötigen Sie mindestens ein Azure-Abonnement. Ressou
 
 Aufgrund der maximal zwei Hierarchieebenen für die Konto-/Abonnement-Beziehung ist es wichtig, die Benennungskonvention für Konten und Abonnements an die Abrechnungsanforderungen anzupassen. Wenn z.B. ein globales Unternehmen Azure verwendet, nutzt dieses pro Region möglicherweise ein Konto, und die Abonnements werden auf Regionsebene verwaltet:
 
-![](./media/virtual-machines-common-infrastructure-service-guidelines/sub01.png)
+![](windows/media/virtual-machines-common-infrastructure-service-guidelines/sub01.png)
 
 Sie können beispielsweise die folgende Struktur verwenden:
 
-![](./media/virtual-machines-common-infrastructure-service-guidelines/sub02.png)
+![](windows/media/virtual-machines-common-infrastructure-service-guidelines/sub02.png)
 
 Wenn sich eine Region dazu entscheidet, mehr als ein Abonnement einer bestimmten Gruppe zuzuordnen, sollte die Benennungskonvention eine Methode enthalten, mit der die zusätzlichen Daten entweder im Kontonamen oder im Abonnementnamen codiert werden. Diese Organisation ermöglicht Abrechnungsdaten, mit denen die neuen Hierarchieebenen bei den Abrechnungsberichten generiert werden:
 
-![](./media/virtual-machines-common-infrastructure-service-guidelines/sub03.png)
+![](windows/media/virtual-machines-common-infrastructure-service-guidelines/sub03.png)
 
 Die Organisation kann wie im folgenden Beispiel aussehen:
 
-![](./media/virtual-machines-common-infrastructure-service-guidelines/sub04.png)
+![](windows/media/virtual-machines-common-infrastructure-service-guidelines/sub04.png)
 
 Wir stellen ausführliche Abrechnungen in einer herunterladbaren Datei für einzelne Konten oder für alle Konten in einem Enterprise Agreement zur Verfügung.
 

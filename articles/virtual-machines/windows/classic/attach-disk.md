@@ -68,7 +68,7 @@ Folgen Sie den Anweisungen zum Anfügen eines [neuen](#option-1-attach-a-new-dis
 1. Stellen Sie eine Verbindung mit dem virtuellen Computer her. Anweisungen dazu finden Sie unter [Gewusst wie: Herstellen einer Verbindung mit einem virtuellen Azure-Computer unter Windows und Anmelden auf diesem Computer](../../virtual-machines-windows-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 2. Öffnen Sie den **Server-Manager**, nachdem Sie sich auf dem virtuellen Computer angemeldet haben. Klicken Sie im linken Bereich auf **Datei- und Speicherdienste**.
 
-    ![Server-Manager öffnen](./media/attach-disk/fileandstorageservices.png)
+    ![Server-Manager öffnen](../media/attach-disk-portal/fileandstorageservices.png)
 
 3. Wählen Sie **Datenträger** aus.
 4. Im Abschnitt **Datenträger** werden die Datenträger aufgelistet. In den meisten Fällen verfügt ein virtueller Computer über die Datenträger 0, 1 und 2. Datenträger 0 ist der Betriebssystemdatenträger. Bei Datenträger 1 handelt es sich um den temporären Datenträger, und Datenträger 2 ist der Datenträger, den Sie gerade an den virtuellen Computer angefügt haben. Für den Datenträger für Daten wird die Partition als **Unbekannt** aufgeführt.

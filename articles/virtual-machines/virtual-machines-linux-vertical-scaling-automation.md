@@ -69,7 +69,7 @@ Die Runbooks, die zur vertikalen Skalierung Ihres virtuellen Computers benötigt
 
 Die nachfolgende Abbildung zeigt, welche Runbooks importiert werden müssen:
 
-![Importieren von Runbooks](./media/virtual-machines-vertical-scaling-automation/scale-runbooks.png)
+![Importieren von Runbooks](./windows/media/vertical-scaling-automation/scale-runbooks.png)
 
 ## <a name="add-a-webhook-to-your-runbook"></a>Hinzufügen eines Webhooks zu Ihrem Runbook
 Nachdem Sie die Runbooks importiert haben, müssen Sie einen Webhook zum Runbook hinzufügen, damit es über eine Warnung von einem virtuellen Computer ausgelöst werden kann. Ausführliche Informationen zum Erstellen eines Webhooks für Ihr Runbook finden Sie hier:
@@ -88,8 +88,8 @@ Stellen Sie sicher, dass Sie den Webhook kopieren, bevor Sie das Dialogfeld für
 7. Wählen Sie den Zeitraum aus, in dem der Überwachungsdienst auf die Bedingung und die Schwellenwerte aus den Schritten 5 und 6 prüft.
 8. Fügen Sie den Webhook ein, den Sie im vorherigen Abschnitt kopiert haben.
 
-![Hinzufügen einer Warnung zu VM 1](./media/virtual-machines-vertical-scaling-automation/add-alert-webhook-1.png)
+![Hinzufügen einer Warnung zu VM 1](./windows/media/vertical-scaling-automation/add-alert-webhook-1.png)
 
-![Hinzufügen einer Warnung zu VM 2](./media/virtual-machines-vertical-scaling-automation/add-alert-webhook-2.png)
+![Hinzufügen einer Warnung zu VM 2](./windows/media/vertical-scaling-automation/add-alert-webhook-2.png)
 
 
