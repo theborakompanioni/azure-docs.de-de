@@ -13,11 +13,12 @@ ms.topic: get-started-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/01/2016
+ms.date: 03/30/2017
 ms.author: yurid
 translationtype: Human Translation
 ms.sourcegitcommit: 5001cd47b6ee51967d1286414ccefedd8e7e7813
 ms.openlocfilehash: 888b9786de8302ccd2e11f271aa417bcbcc2620b
+ms.lasthandoff: 12/02/2016
 
 
 ---
@@ -183,10 +184,5 @@ In diesem Dokument wurde die Sicherheits- und Überwachungslösung von OMS vorge
 * [Operations Management Suite (OMS) – Übersicht](operations-management-suite-overview.md)
 * [Überwachen von und Reagieren auf Sicherheitswarnungen in der Sicherheits- und Überwachungslösung von Operations Management Suite](oms-security-responding-alerts.md)
 * [Überwachen von Ressourcen in der Sicherheits- und Überwachungslösung von Operations Management Suite](oms-security-monitoring-resources.md)
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

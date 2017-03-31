@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
-ms.openlocfilehash: f6bc08230384b637f6b7b83fe32915ab09647d37
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 8b32aa77e1dbe18076d73e10914b59be107c3588
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -135,7 +135,7 @@ Diese Topologie wurde mithilfe von [Leiningen](http://leiningen.org) erstellt, u
 * **src/wordcount/core.clj**: Diese Datei enthält die Topologiedefinition. Auf die Datei wird in **project.clj** verwiesen. Weitere Informationen zur Verwendung von Clojure zum Definieren einer Storm-Topologie finden Sie unter [Clojure DSL](https://storm.apache.org/documentation/Clojure-DSL.html).
 
 ### <a name="build-and-run-the-project"></a>Erstellen und Ausführen des Projekts
-Verwenden Sie den folgenden Befehl, um das **Projekt zu erstellen und lokal auszuführen **:
+Verwenden Sie den folgenden Befehl, um das **Projekt zu erstellen und lokal auszuführen**:
 
     lein clean, run
 
@@ -157,10 +157,8 @@ Gehen Sie wie folgt vor, um **ein Uberjar zu erstellen und in HDInsight bereitzu
              scp wordcount-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:wordcount-1.0-SNAPSHOT.jar
         
          Ersetzen Sie USERNAME durch einen SSH-Benutzer für Ihren Cluster und CLUSTERNAME durch den Namen Ihres HDInsight-Clusters.
-     2. Nachdem die Datei in den Cluster kopiert wurde, stellen Sie über SSH eine Verbindung mit dem Cluster her, und übermitteln Sie den Auftrag. Informationen zur Verwendung von SSH mit HDInsight finden Sie in den folgenden Artikeln:
-        
-        * [Verwenden von SSH mit Linux-basiertem HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md)
-        * [Verwenden von SSH mit Linux-basiertem HDInsight unter Windows](hdinsight-hadoop-linux-use-ssh-windows.md)
+     2. Nachdem die Datei in den Cluster kopiert wurde, stellen Sie über SSH eine Verbindung mit dem Cluster her, und übermitteln Sie den Auftrag. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
+     
      3. Führen Sie nach dem Herstellen der Verbindung den folgenden Befehl aus, um die Topologie zu starten:
         
              storm jar wordcount-1.0-SNAPSHOT.jar wordcount.core wordcount

@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 03/06/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: c6c92f0d357909921a9f3ee2f484ff355ddde0be
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: ef28ca0a43d7e07fa87d5afdd3f0428f28a310f0
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -49,7 +49,7 @@ Für jede VM-Erweiterung gilt möglicherweise ein eigener Satz Voraussetzungen. 
 
 Der Azure VM-Agent verwaltet Interaktionen zwischen einem virtuellen Azure-Computer und dem Azure Fabric Controller. Der VM-Agent ist für viele funktionale Aspekte in Bezug auf die Bereitstellung und Verwaltung virtueller Azure-Computer verantwortlich. Dies umfasst auch das Ausführen von VM-Erweiterungen. Der Azure-VM-Agent ist in Images aus dem Azure Marketplace vorinstalliert und kann manuell auf unterstützten Betriebssystemen installiert werden.
 
-Informationen zu unterstützten Betriebssystemen und Installationshinweise finden Sie unter [Informationen zum Agent und zu Erweiterungen für virtuelle Computer](virtual-machines-linux-classic-agents-and-extensions.md).
+Informationen zu unterstützten Betriebssystemen und Installationshinweise finden Sie unter [Informationen zum Agent und zu Erweiterungen für virtuelle Computer](linux/classic/agents-and-extensions.md).
 
 ## <a name="discover-vm-extensions"></a>Ermitteln von VM-Erweiterungen
 

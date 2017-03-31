@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/09/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: a31a1b7909ea7440780c9a7af4cb908c9aa6a449
-ms.openlocfilehash: 3ad511b55e33653ea0cf7df2c885d27c1c07441d
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: eb53ed852b6175fbc7faea44a243e8c7d5ce1753
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -130,7 +131,7 @@ Die folgenden Azure Virtual Network-Technologien ermöglichen den Schutz der Kom
 * [**Benutzerdefiniertes Routing**](../virtual-network/virtual-networks-udr-overview.md): Sie können das Routing von Paketen über ein virtuelles Gerät steuern, indem Sie benutzerdefinierte Routen erstellen, die festlegen, dass der nächste Hop für Pakete, die an ein bestimmtes Subnetz gesendet werden, an ein virtuelles Netzwerksicherheitsgerät erfolgen soll.
 * [**IP-Weiterleitung**](../virtual-network/virtual-networks-udr-overview.md): Ein virtuelles Netzwerksicherheitsgerät muss eingehenden Datenverkehr empfangen können, der nicht an das Gerät selbst adressiert ist. Aktivieren Sie die IP-Weiterleitung für einen virtuellen Computer, damit dieser an andere Ziele gerichteten Datenverkehr empfangen kann.
 * [**Tunnelerzwingung**](../vpn-gateway/vpn-gateway-about-forced-tunneling.md): Über die Tunnelerzwingung können Sie den gesamten Internetdatenverkehr, der von Ihren virtuellen Computern in einem virtuellen Netzwerk generiert wird, zur Überprüfung und Überwachung über einen Site-to-Site-VPN-Tunnel an Ihren lokalen Standort umleiten.
-* [**Endpunkt-ACLs**](../virtual-machines/virtual-machines-windows-classic-setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json): Mithilfe von Endpunkt-ACLs können Sie steuern, für welche Computer eingehende Verbindungen aus dem Internet mit einem virtuellen Computer in Ihrem virtuellen Netzwerk zulässig sind.
+* [**Endpunkt-ACLs**](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json): Mithilfe von Endpunkt-ACLs können Sie steuern, für welche Computer eingehende Verbindungen aus dem Internet mit einem virtuellen Computer in Ihrem virtuellen Netzwerk zulässig sind.
 * [**Partnerlösungen zur Netzwerksicherheit**](https://azure.microsoft.com/marketplace/): Im Azure Marketplace steht eine Reihe von Partnerlösungen zur Netzwerksicherheit zur Verfügung.
 
 ### <a name="how-azure-implements-virtual-networks-and-firewalls"></a>Implementierung virtueller Netzwerke und Firewalls in Azure
@@ -147,7 +148,7 @@ Wenn Azure die Daten eines Kunden im Zuge des normalen Betriebs oder bei einem N
 ## <a name="secure-remote-access"></a>Sicherer Remotezugriff
 In der Cloud gespeicherte Daten müssen ausreichende Schutzvorrichtungen aktiviert haben, um Exploits zu verhindern und bei der Übertragung die Vertraulichkeit und Integrität zu wahren. Dies schließt die Netzwerksteuerfunktionen ein, die mit den richtlinienbasierten, überprüfbaren Mechanismen zur Identitäts- und Zugriffsverwaltung einer Organisation einhergehen.
 
-Die integrierte Kryptografietechnologie ermöglicht Ihnen das Verschlüsseln der Kommunikation innerhalb von und zwischen Bereitstellungen, zwischen Azure-Regionen und von Azure zu lokalen Datencentern. Der Administratorzugriff auf virtuelle Computer über [Remotedesktopsitzungen](../virtual-machines/virtual-machines-windows-classic-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json), [Windows PowerShell-Remotesitzungen](http://blogs.technet.com/b/heyscriptingguy/archive/2013/09/07/weekend-scripter-remoting-the-cloud-with-windows-azure-and-powershell.aspx) und das Azure-Portal wird immer verschlüsselt.
+Die integrierte Kryptografietechnologie ermöglicht Ihnen das Verschlüsseln der Kommunikation innerhalb von und zwischen Bereitstellungen, zwischen Azure-Regionen und von Azure zu lokalen Datencentern. Der Administratorzugriff auf virtuelle Computer über [Remotedesktopsitzungen](../virtual-machines/windows/classic/connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json), [Windows PowerShell-Remotesitzungen](http://blogs.technet.com/b/heyscriptingguy/archive/2013/09/07/weekend-scripter-remoting-the-cloud-with-windows-azure-and-powershell.aspx) und das Azure-Portal wird immer verschlüsselt.
 
 Um Ihr lokales Datencenter sicher auf die Cloud zu erweitern, bietet Azure sowohl [Site-to-Site-VPN](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md) als auch [Point-to-Site-VPN](../vpn-gateway/vpn-gateway-point-to-site-create.md) sowie dedizierte Verknüpfungen über [ExpressRoute](../expressroute/expressroute-introduction.md) (Verbindungen mit Azure Virtual Networks über VPN sind verschlüsselt).
 
@@ -194,9 +195,4 @@ Azure verfügt über Sicherheitskontrollen, um die Bedrohungsabwehr zu implement
 [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx)
 
 [Active Directory-Blog](http://blogs.technet.com/b/ad/)
-
-
-
-<!--HONumber=Nov16_HO4-->
-
 

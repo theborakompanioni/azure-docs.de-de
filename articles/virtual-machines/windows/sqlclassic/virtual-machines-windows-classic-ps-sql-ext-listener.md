@@ -16,15 +16,16 @@ ms.workload: iaas-sql-server
 ms.date: 11/28/2016
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
-ms.openlocfilehash: 64d3f55445c82bf2be3ca8e64d7ea5d19e70310b
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: d9138b17e54aa1c4bf1982b09d3d0ad10e936d4c
+ms.lasthandoff: 03/25/2017
 
 
 ---
 # <a name="configure-an-external-listener-for-always-on-availability-groups-in-azure"></a>Konfigurieren eines externen Listeners für AlwaysOn-Verfügbarkeitsgruppen in Azure
 > [!div class="op_single_selector"]
-> * [Interner Listener](virtual-machines-windows-classic-ps-sql-int-listener.md)
-> * [Externer Listener](virtual-machines-windows-classic-ps-sql-ext-listener.md)
+> * [Interner Listener](../classic/ps-sql-int-listener.md)
+> * [Externer Listener](../classic/ps-sql-ext-listener.md)
 > 
 > 
 
@@ -33,7 +34,7 @@ In diesem Thema erfahren Sie, wie Sie einen Listener für eine AlwaysOn-Verfügb
 > [!IMPORTANT] 
 > Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager- und klassische Bereitstellung](../../../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells.
 
-Ihre Verfügbarkeitsgruppe kann Replikate enthalten, die ausschließlich lokal, ausschließlich in Azure oder sowohl lokal als auch in Azure verfügbar sind (Hybridkonfigurationen). Azure-Replikate können sich innerhalb derselben Region oder in mehreren Regionen befinden, wobei mehrere virtuelle Netzwerke (VNets) verwendet werden. Bei den nachfolgenden Schritten wird davon ausgegangen, dass bereits eine [Verfügbarkeitsgruppe konfiguriert wurde](virtual-machines-windows-classic-portal-sql-alwayson-availability-groups.md), Sie jedoch noch keinen Listener konfiguriert haben.
+Ihre Verfügbarkeitsgruppe kann Replikate enthalten, die ausschließlich lokal, ausschließlich in Azure oder sowohl lokal als auch in Azure verfügbar sind (Hybridkonfigurationen). Azure-Replikate können sich innerhalb derselben Region oder in mehreren Regionen befinden, wobei mehrere virtuelle Netzwerke (VNets) verwendet werden. Bei den nachfolgenden Schritten wird davon ausgegangen, dass bereits eine [Verfügbarkeitsgruppe konfiguriert wurde](../classic/portal-sql-alwayson-availability-groups.md), Sie jedoch noch keinen Listener konfiguriert haben.
 
 ## <a name="guidelines-and-limitations-for-external-listeners"></a>Richtlinien und Einschränkungen für externe Listener
 Beachten Sie die folgenden Richtlinien für den Verfügbarkeitsgruppenlistener in Azure, wenn Sie die Bereitstellung mit der öffentlichen VIP-Adresse des Clouddiensts vornehmen:
@@ -47,7 +48,7 @@ Beachten Sie die folgenden Richtlinien für den Verfügbarkeitsgruppenlistener i
 ## <a name="determine-the-accessibility-of-the-listener"></a>Festlegen des Zugriffs auf den Listener
 [!INCLUDE [ag-listener-accessibility](../../../../includes/virtual-machines-ag-listener-determine-accessibility.md)]
 
-Der Schwerpunkt dieses Artikels liegt auf dem Erstellen eines Listeners, der den **externen Lastenausgleich**verwendet. Sie finden einen Listener, der privat für das virtuelle Netzwerk eingesetzt wird, in der Version dieses Artikels, in der die Schritte zum Einrichten eines [Listeners mit ILB](virtual-machines-windows-classic-ps-sql-int-listener.md) erläutert werden.
+Der Schwerpunkt dieses Artikels liegt auf dem Erstellen eines Listeners, der den **externen Lastenausgleich**verwendet. Sie finden einen Listener, der privat für das virtuelle Netzwerk eingesetzt wird, in der Version dieses Artikels, in der die Schritte zum Einrichten eines [Listeners mit ILB](../classic/ps-sql-int-listener.md) erläutert werden.
 
 ## <a name="create-load-balanced-vm-endpoints-with-direct-server-return"></a>Erstellen von VM-Endpunkten mit Lastenausgleich und Direct Server Return
 Der externe Lastenausgleich verwendet die öffentliche virtuelle IP-Adresse des Clouddiensts, der Ihre virtuellen Computer hostet. In diesem Fall müssen Sie den Lastenausgleich also nicht erstellen oder konfigurieren.
@@ -132,10 +133,5 @@ Wenn sich die AlwaysOn-Replikate in unterschiedlichen Subnetzen befinden, müsse
 
 ## <a name="next-steps"></a>Nächste Schritte
 [!INCLUDE [Listener-Next-Steps](../../../../includes/virtual-machines-ag-listener-next-steps.md)]
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/27/2017
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 51338924f5c8eff4234c7d57f7efc0619316bb38
-ms.openlocfilehash: 157a5130755f2092d044f3361e4fb5bc3a7a1053
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 7891fbd326340ed102f885e84993ef987e044023
+ms.lasthandoff: 03/25/2017
 
 ---
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 02/28/2017
 Bedingungen können für eine Clouddienst-Workerrolle festgelegt werden, die ein horizontales Herunter- oder Hochskalieren auslösen. Die Bedingungen für die Rolle können auf der CPU, dem Datenträger oder der Netzwerklast der Rolle basieren. Sie können auch eine Bedingung basierend auf einer Nachrichtenwarteschlange oder der Metrik einer anderen mit Ihrem Abonnement verknüpften Azure-Ressource festlegen.
 
 > [!NOTE]
-> Dieser Artikel konzentriert sich auf Clouddienst-Webrollen und -Workerrollen. Wenn Sie einen virtuellen Computer (klassisch) direkt erstellen, wird er in einem Clouddienst gehostet. Sie können einen standardmäßigen virtuellen Computer skalieren, indem Sie ihn einer [Verfügbarkeitsgruppe](../virtual-machines/virtual-machines-windows-classic-configure-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) zuordnen und manuell aktivieren oder deaktivieren.
+> Dieser Artikel konzentriert sich auf Clouddienst-Webrollen und -Workerrollen. Wenn Sie einen virtuellen Computer (klassisch) direkt erstellen, wird er in einem Clouddienst gehostet. Sie können einen standardmäßigen virtuellen Computer skalieren, indem Sie ihn einer [Verfügbarkeitsgruppe](../virtual-machines/windows/classic/configure-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) zuordnen und manuell aktivieren oder deaktivieren.
 
 ## <a name="considerations"></a>Überlegungen
 Folgendes ist allerdings zu beachten, bevor die Skalierung einer Anwendung konfiguriert wird:

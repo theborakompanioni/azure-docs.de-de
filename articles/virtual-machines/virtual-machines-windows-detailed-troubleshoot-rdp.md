@@ -1,5 +1,5 @@
 ---
-title: "Detaillierte Problembehandlung für Remotedesktopverbindungen | Microsoft Docs"
+title: "Ausführliche Problembehandlung für Remotedesktops in Azure | Microsoft Docs"
 description: Hier finden Sie detaillierte Informationen zur Behandlung von Remotedesktopfehlern, bei denen keine Remotedesktopverbindung mit virtuellen Windows-Computern in Azure hergestellt werden kann.
 services: virtual-machines-windows
 documentationcenter: 
@@ -7,19 +7,19 @@ author: iainfoulds
 manager: timlt
 editor: 
 tags: top-support-issue,azure-service-management,azure-resource-manager
-keywords: >
-  cannot connect to remote desktop, troubleshoot remote desktop, remote desktop cannot connect, remote desktop errors, remote desktop troubleshooting, remote desktop problems
+keywords: "keine Verbindung mit Remotedesktop, Problembehandlung für Remotedesktop, Remotedesktop kann keine Verbindung herstellen, Remotedesktopfehler, Remotedesktop Problembehandlung, Probleme mit Remotedesktop"
 ms.assetid: 9da36f3d-30dd-44af-824b-8ce5ef07e5e0
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: support-article
-ms.date: 09/27/2016
+ms.date: 12/20/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 1f42e8f320e061fed8428b7ef88f3cb5247b81a2
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: 35dbfaa1cdc274fb2c1fcb3afc68547ffefe80ab
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -28,8 +28,6 @@ Dieser Artikel enthält ausführliche schrittweise Anleitungen zur Diagnose und 
 
 > [!IMPORTANT]
 > Um allgemeine Remotedesktopfehler als Ursache auszuschließen, lesen Sie zunächst den Artikel zur [grundlegenden Problembehandlung für Remotedesktop](virtual-machines-windows-troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), bevor Sie mit dieser Problembehandlung fortfahren.
-> 
-> 
 
 Es kann vorkommen, dass Sie eine Remotedesktop-Fehlermeldung erhalten, die keiner der spezifischen Fehlermeldungen ähnelt, die im Artikel zur [grundlegenden Problembehandlung für Remotedesktop](virtual-machines-windows-troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) beschrieben sind. Führen Sie in diesem Fall die folgenden Schritte aus, um zu ermitteln, warum der RDP-Client (Remotedesktop) keine Verbindung mit dem RDP-Dienst auf dem virtuellen Azure-Computer herstellen kann.
 
@@ -110,7 +108,7 @@ Wenn Sie mit einem virtuellen Computer im gleichen Clouddienst oder virtuellen N
 * Die Endpunktkonfiguration für den Remotedesktop-Datenverkehr auf der Ziel-VM: der private TCP-Port des Endpunkts muss mit dem TCP-Port übereinstimmen, den der Remotedesktop-Dienst der VM überwacht (standardmäßig 3389).
 * Die ACL für den Endpunkt des Remotedesktop-Datenverkehrs auf der Ziel-VM: In ACLs können Sie anhand der Quell-IP-Adresse angeben, ob eingehender Datenverkehr aus dem Internet zugelassen oder verweigert wird. Falsch konfigurierte ACLs können verhindern, dass die Remotedesktop-Datenverkehr zum Endpunkt gelangt. Überprüfen Sie die ACLs, um sicherzustellen, dass eingehender Verkehr von den öffentlichen IP-Adressen des Proxy- oder eines anderen Edgeservers zugelassen wird. Weitere Informationen finden Sie unter [Was ist eine Endpunkt-Zugriffssteuerungsliste (Access Control List, ACL)?](../virtual-network/virtual-networks-acl.md)
 
-Um den Endpunkt als Problemquelle auszuschließen, entfernen Sie den aktuellen Endpunkt und erstellen Sie einen neuen Endpunkt. Wählen Sie einen zufälligen Port im Bereich von 49152 bis 65535 für die externe Portnummer aus. Weitere Informationen finden Sie unter [Einrichten von Endpunkten für einen virtuellen Computer](virtual-machines-windows-classic-setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+Um den Endpunkt als Problemquelle auszuschließen, entfernen Sie den aktuellen Endpunkt und erstellen Sie einen neuen Endpunkt. Wählen Sie einen zufälligen Port im Bereich von 49152 bis 65535 für die externe Portnummer aus. Weitere Informationen finden Sie unter [Einrichten von Endpunkten für einen virtuellen Computer](windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 ## <a name="source-4-network-security-groups"></a>Quelle 4: Netzwerksicherheitsgruppen
 Netzwerksicherheitsgruppen ermöglichen Ihnen eine präzisere Steuerung des zulässigen eingehenden und ausgehenden Datenverkehrs. Sie können Regeln erstellen, die mehrere Subnetze und Clouddienste in einem virtuellen Azure-Netzwerk umfassen. Überprüfen Sie die Regeln der Netzwerksicherheitsgruppe, um sicherzustellen, dass Remotedesktop-Datenverkehr aus dem Internet zugelassen wird:
@@ -127,7 +125,7 @@ Weitere Informationen finden Sie unter [Was ist eine Netzwerksicherheitsgruppe (
 ## <a name="source-5-windows-based-azure-vm"></a>Quelle 5: Windows-basierter virtueller Azure-Computer
 ![](./media/virtual-machines-windows-detailed-troubleshoot-rdp/tshootrdp_5.png)
 
-Verwenden Sie das [Azure IaaS-Diagnosepaket (Windows)](https://home.diagnostics.support.microsoft.com/SelfHelp?knowledgebaseArticleFilter=2976864) , um zu überprüfen, ob der virtuelle Azure-Computer selbst die Fehlerquelle ist. Wenn das Problem **RDP-Verbindung mit einem virtuellen Azure-Computer (Neustart erforderlich)** mit diesem Diagnosepaket nicht behoben werden kann, führen Sie die Schritte in [diesem Artikel](virtual-machines-windows-reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) aus. In diesem Artikel wird der Remotedesktopdienst auf dem virtuellen Computer zurückgesetzt:
+Befolgen Sie die Anweisungen in [diesem Artikel](virtual-machines-windows-reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). In diesem Artikel wird der Remotedesktopdienst auf dem virtuellen Computer zurückgesetzt:
 
 * Die Windows-Firewall-Standardregel "Remotedesktop" (TCP-Port 3389) wird aktiviert.
 * Remotedesktopverbindungen werden aktiviert, indem der HKLM\System\CurrentControlSet\Control\Terminal Server\fDenyTSConnections-Registrierungswert auf 0 festgelegt wird.
@@ -141,7 +139,7 @@ Versuchen Sie erneut, die Verbindung von Ihrem Computer aus herzustellen. Wenn S
 
 Bei virtuellen Computern, die mit dem klassischen Bereitstellungsmodell erstellt wurden, können Sie eine Azure PowerShell-Remotesitzung auf dem virtuellen Azure-Computer nutzen. Zunächst müssen Sie ein Zertifikat für den Clouddienst installieren, der als Host des virtuellen Computers fungiert. Navigieren Sie zu [Configure Secure Remote PowerShell Access to Azure Virtual Machines](http://gallery.technet.microsoft.com/scriptcenter/Configures-Secure-Remote-b137f2fe) (Konfigurieren des sicheren PowerShell-Remotezugriffs auf virtuelle Azure-Computer), und laden Sie die Skriptdatei **InstallWinRMCertAzureVM.ps1** auf Ihren lokalen Computer herunter.
 
-Installieren Sie dann Azure PowerShell, sofern noch nicht geschehen. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
+Installieren Sie dann Azure PowerShell, sofern noch nicht geschehen. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
 
 Als Nächstes öffnen Sie eine Azure PowerShell-Eingabeaufforderung, und ändern Sie den aktuellen Ordner in den Speicherort der Skriptdatei **InstallWinRMCertAzureVM.ps1**. Um ein Azure PowerShell-Skript auszuführen, müssen Sie die richtige Ausführungsrichtlinie festlegen. Führen Sie den Befehl **Get-ExecutionPolicy** aus, um die aktuelle Richtlinienebene zu ermitteln. Weitere Informationen zum Festlegen der geeigneten Ebene finden Sie unter [Set-ExecutionPolicy](https://technet.microsoft.com/library/hh849812.aspx).
 
@@ -169,7 +167,7 @@ Nachdem Sie gültige Administratoranmeldeinformationen eingegeben haben, sollte 
 Den ersten Teil dieser Eingabeaufforderung stellt der Name Ihres Clouddiensts dar, der die Ziel-VM enthält, z.B. „cloudservice4testing.cloudapp.net“. Sie können nun Azure PowerShell-Befehle für diesen Clouddienst eingeben, um die genannten Probleme zu untersuchen und Korrekturen an der Konfiguration vorzunehmen.
 
 ### <a name="to-manually-correct-the-remote-desktop-services-listening-tcp-port"></a>So korrigieren Sie manuell den TCP-Port, der von den Remotedesktopdiensten überwacht wird
-Wenn Sie das [Azure IaaS-Diagnosepaket (Windows)](https://home.diagnostics.support.microsoft.com/SelfHelp?knowledgebaseArticleFilter=2976864) für das Problem **RDP-Verbindung mit einer Azure-VM (Neustart erforderlich)** nicht ausführen können, führen Sie an der Eingabeaufforderung der Azure PowerShell-Sitzung den folgenden Befehl aus:
+Führen Sie an der Eingabeaufforderung der Azure PowerShell-Remotesitzung den folgenden Befehl aus.
 
     Get-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" -Name "PortNumber"
 
@@ -188,19 +186,12 @@ Beenden Sie die Azure PowerShell-Remotesitzung mit dem folgenden Befehl.
 Überprüfen Sie, ob der Remotedesktop-Endpunkt für den virtuellen Azure-Computer auch den TCP-Port 3398 als internen Port verwendet. Starten Sie den virtuellen Azure-Computer neu und versuchen Sie erneut, die Remotedesktopverbindung herzustellen.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
-[Azure IaaS (Windows) und Diagnoseprogramme](https://home.diagnostics.support.microsoft.com/SelfHelp?knowledgebaseArticleFilter=2976864)
-
 [Zurücksetzen eines Kennworts oder des Remotedesktopdiensts für virtuelle Windows-Computer](virtual-machines-windows-reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-[Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md)
+[Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs)
 
 [Behandeln von Problemen mit Secure Shell (SSH)-Verbindungen mit einem Linux-basierten virtuellen Azure-Computer](virtual-machines-linux-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 [Problembehandlung beim Zugriff auf eine Anwendung, die auf einem virtuellen Azure-Computer ausgeführt wird](virtual-machines-linux-troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

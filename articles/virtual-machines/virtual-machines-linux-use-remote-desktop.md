@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 03/07/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: ff0c1a4f06888c09d31ac65caf75b3d9544e57f9
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 1b8ad526ee59bd1547cbd7f4a208720fb6557fc2
+ms.lasthandoff: 03/27/2017
 
 
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Installieren und Konfigurieren von Remotedesktop zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer in Azure
-Virtuelle Linux-Computer (Linux-VMs) in Azure werden normalerweise von der Befehlszeile aus mithilfe einer SSH-Verbindung (Secure Shell) verwaltet. Wenn Sie erst in Linux einsteigen oder schnell eine Fehlerbehandlung durchführen müssen, ist die Verwendung von Remotedesktop unter Umständen einfacher. Dieser Artikel erläutert im Detail die Installation und Konfiguration von Desktopumgebung ([XFCE](https://www.xfce.org)) und Remotedesktop ([XRDP](http://www.xrdp)) für Ihren virtuellen Linux-Computer mithilfe des Resource Manager-Bereitstellungsmodells. Ferner können Sie [diese Schritte für virtuelle Computer auch mit dem klassischen Bereitstellungsmodell ausführen](virtual-machines-linux-classic-remote-desktop.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
+Virtuelle Linux-Computer (Linux-VMs) in Azure werden normalerweise von der Befehlszeile aus mithilfe einer SSH-Verbindung (Secure Shell) verwaltet. Wenn Sie erst in Linux einsteigen oder schnell eine Fehlerbehandlung durchführen müssen, ist die Verwendung von Remotedesktop unter Umständen einfacher. Dieser Artikel erläutert im Detail die Installation und Konfiguration von Desktopumgebung ([XFCE](https://www.xfce.org)) und Remotedesktop ([XRDP](http://www.xrdp)) für Ihren virtuellen Linux-Computer mithilfe des Resource Manager-Bereitstellungsmodells. Ferner können Sie [diese Schritte für virtuelle Computer auch mit dem klassischen Bereitstellungsmodell ausführen](linux/classic/remote-desktop.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
 
 
 ## <a name="prerequisites"></a>Voraussetzungen

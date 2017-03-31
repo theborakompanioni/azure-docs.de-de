@@ -106,7 +106,7 @@ Um die Konfiguration Ihrer lokalen Einstellungen hinzuzufügen, gehen Sie wie fo
              "https://localhost:3000"
          ],
 
-    Ersetzen Sie die URLs mit den URLs Ihres Diensts.  Beispiele hierfür sind „http://localhost:3000“ (für den Node.js-Beispieldienst) oder „http://localhost:4400“ (für den Ripple-Dienst).  Diese URLs sind jedoch nur Beispiele – Ihre Situation kann auch für die Dienste, die im Beispiel dargestellt sind, ganz anders sein.
+    Ersetzen Sie die URLs mit den URLs Ihres Diensts.  Beispiele hierfür sind „ http://localhost:3000 “ (für den Node.js-Beispieldienst) oder „ http://localhost:4400 “ (für den Ripple-Dienst).  Diese URLs sind jedoch nur Beispiele – Ihre Situation kann auch für die Dienste, die im Beispiel dargestellt sind, ganz anders sein.
 8. Klicken Sie in der oberen rechten Ecke des Bildschirms auf die Schaltfläche **Lesen/Schreiben** .
 9. Klicken Sie auf die grüne Schaltfläche **PUT** .
 

@@ -16,9 +16,9 @@ ms.workload: NA
 ms.date: 11/02/2016
 ms.author: sashan
 translationtype: Human Translation
-ms.sourcegitcommit: f234e50d194c1b8b8deed8282a6ab1250b53d075
-ms.openlocfilehash: 3fd8bda40daa09d1b5d4294382b523d41173b8cb
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 8323aa27c93c1c460b31f7f7c822644f5eee929a
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -89,7 +89,7 @@ Sobald Sie die LTR-Richtlinie einer Datenbank mithilfe des Azure-Portals oder de
 
 - Datenbanksicherungen sind ein wesentlicher Bestandteil jeder Strategie für Geschäftskontinuität und Notfallwiederherstellung, da Ihre Daten vor versehentlichen Beschädigungen und Löschungen geschützt werden. Weitere Informationen zu den anderen Geschäftskontinuitätslösungen von Azure SQL-Datenbank finden Sie unter [Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank](sql-database-business-continuity.md).
 - Informationen zur Wiederherstellung des Zustands zu einem bestimmten Zeitpunkt über das Azure-Portal finden Sie unter [Wiederherstellen des Zustands einer Azure SQL-Datenbank zu einem früheren Zeitpunkt über das Azure-Portal](sql-database-point-in-time-restore-portal.md).
-- Informationen zur Wiederherstellung des Zustands zu einem bestimmten Zeitpunkt mithilfe von PowerShell finden Sie unter [Wiederherstellen des Zustands einer Azure SQL-Datenbank zu einem früheren Zeitpunkt mit PowerShell](sql-database-point-in-time-restore-powershell.md).
+- Informationen zur Wiederherstellung des Zustands zu einem bestimmten Zeitpunkt mithilfe von PowerShell finden Sie unter [Wiederherstellen des Zustands einer Azure SQL-Datenbank zu einem früheren Zeitpunkt mit PowerShell](scripts/sql-database-restore-database-powershell.md).
 - Informationen zum Konfigurieren, Verwalten und Wiederherstellen der langfristigen Aufbewahrung automatisierter Sicherungen in einem Azure Recovery Services-Tresor im Azure-Portal finden Sie unter [Verwalten der langfristigen Aufbewahrung von Datenbanksicherungen über das Azure-Portal](sql-database-manage-long-term-backup-retention-portal.md).
 - Informationen zum Konfigurieren, Verwalten und Wiederherstellen der langfristigen Aufbewahrung automatisierter Sicherungen in einem Azure Recovery Services-Tresor mit PowerShell finden Sie unter [Verwalten der langfristigen Aufbewahrung von Datenbanksicherungen mit PowerShell](sql-database-manage-long-term-backup-retention-powershell.md).
 

@@ -16,9 +16,9 @@ ms.tgt_pltfrm: NA
 ms.date: 12/22/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: f234e50d194c1b8b8deed8282a6ab1250b53d075
-ms.openlocfilehash: d055e40305b277338ae85e8d6c53d3d76a78d235
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: fa4cf56c10f885a2fd4b62e08a369a51d1280ab3
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -91,10 +91,6 @@ Weitere Informationen zur langfristigen Aufbewahrung von Sicherungen finden Sie 
 14. Klicken Sie auf **Speichern**, um die langfristige Sicherungsaufbewahrung anhand der neuen Richtlinie für den von Ihnen konfigurierten Azure Recovery Services-Tresor zu aktivieren.
 
    ![Aufbewahrungsrichtlinie definieren](./media/sql-database-get-started-backup-recovery/enable-long-term-retention.png)
-
-14. Öffnen Sie nach dem Aktivieren der langfristigen Sicherungsaufbewahrung das Blatt **Recovery Services-Tresor** (wechseln Sie zu **Alle Ressourcen**, und wählen Sie den Tresor in der Liste der Ressourcen für Ihr Abonnement aus).
-
-   ![Recovery Services-Tresors anzeigen](./media/sql-database-get-started-backup-recovery/view-recovery-services-vault.png)
 
 
 ## <a name="restore-from-long-term-backup-retention-using-the-azure-portal"></a>Wiederherstellen langfristig aufbewahrter Sicherungen über das Azure-Portal

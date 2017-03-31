@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: e801d966e7461be7ec6101941c7b70912ad8c403
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 62e9f34216f25bc1feab3bc76f78a9c1ab07ab9c
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -59,7 +59,7 @@ Nach dem Hinzufügen eines Angebots müssen Sie Ihre SKUs definieren und angeben
 3. Erwerben Sie die genehmigten Versionen von Windows Server über die vorgeschlagenen Links, wenn Sie mit Windows-basierten SKUs arbeiten.
 
 ## <a name="2-create-an-azure-compatible-vhd-linux-based"></a>2. Erstellen einer Azure-kompatiblen VHD (Linux-basiert)
-Im Mittelpunkt dieses Abschnitts stehen bewährte Methoden zum Erstellen eines Linux-basierten VM-Images für den Azure Marketplace. Eine schrittweise exemplarische Vorgehensweise finden Sie in der folgenden Dokumentation: [Erstellen und Hochladen einer virtuellen Festplatte, die das Linux-Betriebssystem enthält](../virtual-machines/virtual-machines-linux-classic-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
+Im Mittelpunkt dieses Abschnitts stehen bewährte Methoden zum Erstellen eines Linux-basierten VM-Images für den Azure Marketplace. Eine schrittweise exemplarische Vorgehensweise finden Sie in der folgenden Dokumentation: [Erstellen und Hochladen einer virtuellen Festplatte, die das Linux-Betriebssystem enthält](../virtual-machines/linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
 
 ## <a name="3-create-an-azure-compatible-vhd-windows-based"></a>3. Erstellen einer Azure-kompatiblen VHD (Windows-basiert)
 Im Mittelpunkt dieses Abschnitts stehen die Schritte zum Erstellen einer SKU auf Basis von Windows Server für den Azure Marketplace.
@@ -175,7 +175,7 @@ Alle Images im Azure Marketplace müssen allgemein wiederverwendbar sein. Anders
 
         sysprep.exe /generalize /oobe /shutdown
 
-  Anleitungen zur Systemvorbereitung des Betriebssystems mit „sysprep“ finden Sie in Schritt&1; des folgenden MSDN-Artikels: [Erstellen und Hochladen einer Windows Server-VHD nach Azure](../virtual-machines/virtual-machines-windows-classic-createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+  Anleitungen zur Systemvorbereitung des Betriebssystems mit „sysprep“ finden Sie in Schritt 1 des folgenden MSDN-Artikels: [Erstellen und Hochladen einer Windows Server-VHD nach Azure](../virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 ## <a name="4-deploy-a-vm-from-your-vhds"></a>4. Bereitstellen eines virtuellen Computers auf Basis der VHDs
 Nachdem Sie Ihre VHDs (generalisierte Betriebssystem-VHD und null oder mehr Datenträger-VHDs) in ein Azure-Speicherkonto hochgeladen haben, können Sie sie als Benutzer-VM-Image registrieren. Anschließend können Sie das Image testen. Beachten Sie Folgendes: Da Ihre Betriebssystem-VHD generalisiert wurde, können Sie den virtuellen Computer nicht direkt bereitstellen, indem Sie die VHD-URL angeben.

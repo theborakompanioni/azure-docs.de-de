@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/08/2017
+ms.date: 03/28/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 3051ed0385b81892b8495e83817ed8255dbce8cd
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
+ms.openlocfilehash: 244ca634cfd47ee37e3845380ac05dc68d406621
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -70,7 +70,6 @@ Veröffentlicht: März 2017
       ``'C:\Users\cstpopovaz\AppData\Local\Temp\2\e2c9d9b0-0d8a-4409-b059-dceeb900a2b3\b9bedcc0-88ac-454c-8c69-7d6ea1c41d17\cfg.config\cloneconfig.xml'. ``
 
 * LDAP (generisch):
- * Fehler vom Typ „Wasserzeichen für SQL (generisch): Mehrwertiges Attribut für Deltaimport nicht importiert“ behoben
  * Für den GLDAP-Connector sind in AD LDS nicht alle Attribute sichtbar
  * Fehler im Assistenten, wenn für das LDAP-Verzeichnisschema keine UPN-Attribute erkannt werden
  * Deltaimporte schlagen mit Ermittlungsfehlern fehl, die während des vollständigen Imports nicht vorhanden sind, wenn das „objectclass“-Attribut nicht ausgewählt ist
@@ -79,6 +78,7 @@ LDAP MA (generisch) entspricht. Es wurden nur Objekte der RootDSE-Partition ange
 
 
 * SQL (generisch):
+ * Fehler vom Typ „Wasserzeichen für SQL (generisch): Mehrwertiges Attribut für Deltaimport nicht importiert“ behoben
  * Beim Exportieren von gelöschten/hinzugefügten Werten von mehrwertigen Attributen werden diese in der Datenquelle nicht gelöscht/hinzugefügt.  
 
 

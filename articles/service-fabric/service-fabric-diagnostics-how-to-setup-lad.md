@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 03/02/2017
 ms.author: subramar
 translationtype: Human Translation
-ms.sourcegitcommit: c9730b553e59d12b8720bbf3a06cc956912e27de
-ms.openlocfilehash: 37063d35e76d03a84f6e4451c2f6c363704607f2
-ms.lasthandoff: 01/12/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 46b62b0ebc5b81241815e3b5b4fa3fe275b88af1
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -39,7 +39,7 @@ Zum Sammeln von Protokollen muss zunächst die Diagnoseerweiterung auf allen VMs
 
 Wenn Sie die Diagnoseerweiterung im Rahmen der Clustererstellung für die im Cluster enthaltenen virtuellen Computer bereitstellen möchten, legen Sie **Diagnose** auf **Ein** fest. Nach der Erstellung des Clusters können Sie diese Einstellung nicht im Portal ändern.
 
-Konfigurieren Sie dann die Linux-Azure-Diagnose (LAD) so, dass sie die Dateien erfasst und in Ihrem Speicherkonto ablegt. Dieser Prozess wird im Artikel [Verwenden der Linux-Diagnoseerweiterung zur Überwachung der Leistungs- und Diagnosedaten einer Linux-VM](../virtual-machines/virtual-machines-linux-classic-diagnostic-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json) als drittes Szenario („Hochladen eigener Protokolldateien“) beschrieben. Befolgen Sie diesen Prozess, um Zugriff auf die Ablaufverfolgungen zu erhalten. Sie können die Ablaufverfolgungsdaten in ein Visualisierungstool Ihrer Wahl hochladen.
+Konfigurieren Sie dann die Linux-Azure-Diagnose (LAD) so, dass sie die Dateien erfasst und in Ihrem Speicherkonto ablegt. Dieser Prozess wird im Artikel [Verwenden der Linux-Diagnoseerweiterung zur Überwachung der Leistungs- und Diagnosedaten einer Linux-VM](../virtual-machines/linux/classic/diagnostic-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json) als drittes Szenario („Hochladen eigener Protokolldateien“) beschrieben. Befolgen Sie diesen Prozess, um Zugriff auf die Ablaufverfolgungen zu erhalten. Sie können die Ablaufverfolgungsdaten in ein Visualisierungstool Ihrer Wahl hochladen.
 
 Die Diagnoseerweiterung kann auch mithilfe von Azure Resource Manager bereitgestellt werden. Die Dokumentation für Windows-Cluster finden Sie unter [Sammeln von Protokollen mit Azure-Diagnose](service-fabric-diagnostics-how-to-setup-wad.md). Für Linux wird ein ähnlicher Prozess verwendet.
 
@@ -48,6 +48,6 @@ Sie können auch die Operations Management Suite verwenden, wie unter [Operation
 Nach Abschluss der Konfiguration überwacht der LAD-Agent die angegebenen Protokolldateien. Sobald bei einer Datei eine neue Zeile hinzukommt, erstellt der Agent einen Syslog-Eintrag, der an den von Ihnen angegebenen Speicher gesendet wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Ausführlichere Informationen zu relevanten Ereignissen für die Problembehandlung finden Sie in der [LTTng-Dokumentation](http://lttng.org/docs) sowie unter [Verwenden der Linux-Diagnoseerweiterung zur Überwachung der Leistungs- und Diagnosedaten einer Linux-VM](../virtual-machines/virtual-machines-linux-classic-diagnostic-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
+Ausführlichere Informationen zu relevanten Ereignissen für die Problembehandlung finden Sie in der [LTTng-Dokumentation](http://lttng.org/docs) sowie unter [Verwenden der Linux-Diagnoseerweiterung zur Überwachung der Leistungs- und Diagnosedaten einer Linux-VM](../virtual-machines/linux/classic/diagnostic-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
 
 

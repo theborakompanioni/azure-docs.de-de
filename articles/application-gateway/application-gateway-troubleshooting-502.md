@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 12/16/2016
 ms.author: amsriva
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: cacc20da7945421f31ce69a9c0b34056c009d9e7
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: d61e50b7440dcd107df3e5dd085a36b149779553
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -34,9 +34,6 @@ Nach dem Konfigurieren einer Azure Application Gateway-Instanz tritt bei Benutze
 * Virtuelle Back-End-Computer oder Instanzen der VM-Skalierungsgruppe reagieren nicht auf die standardmäßige Integritätsüberprüfung.
 * Benutzerdefinierte Integritätsüberprüfungen sind ungültig oder nicht korrekt konfiguriert.
 * Bei der Anforderung tritt ein Timeout auf, oder es liegen Verbindungsprobleme bei Benutzeranforderungen vor.
-
-> [!note]
-> Application Gateway behält den eingehenden Hostheader bei und sendet den gleichen Header an das Back-End. Wenn für das Back-End ein anderer Header erforderlich ist, funktioniert dies nicht. Wenn das Back-End mehrinstanzenfähig ist und End-to-End-SSL aktiviert ist, erwartet das Back-End den Servernamen in der SNI-Erweiterung. Application Gateway sendet derzeit in End-to-End-SSL-Szenarien keine SNI-Header in Back-End-Anforderungen, dies würde Probleme bei Tests und Datenpfaden verursachen.
 
 ## <a name="empty-backendaddresspool"></a>Leerer Back-End-Adresspool
 
@@ -109,7 +106,7 @@ Stellen Sie sicher, dass die Instanzen fehlerfrei sind und die Anwendung ordnung
 * Falls im BackendHttpSetting-Element nicht der Port 80 angegeben ist, muss die Standardwebsite so konfiguriert werden, dass sie am angegebenen Port lauscht.
 * Der Aufruf von „http://127.0.0.1:port“ sollte den HTTP-Ergebniscode 200 zurückgeben. Dieser muss innerhalb des Timeoutzeitraums von 30 Sekunden zurückgegeben werden.
 * Vergewissern Sie sich, dass der konfigurierte Port geöffnet ist und dass eingehender oder ausgehender Datenverkehr am konfigurierten Port nicht durch Firewallregeln oder Azure-Netzwerksicherheitsgruppen blockiert wird.
-* Stellen Sie bei Verwendung klassischer virtueller Azure-Computer sowie bei Verwendung des Clouddiensts mit FQDN oder öffentlicher IP-Adresse außerdem sicher, dass der entsprechende [Endpunkt](../virtual-machines/virtual-machines-windows-classic-setup-endpoints.md?toc=%2fazure%2fapplication-gateway%2ftoc.json) geöffnet ist.
+* Stellen Sie bei Verwendung klassischer virtueller Azure-Computer sowie bei Verwendung des Clouddiensts mit FQDN oder öffentlicher IP-Adresse außerdem sicher, dass der entsprechende [Endpunkt](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fapplication-gateway%2ftoc.json) geöffnet ist.
 * Falls der virtuelle Computer über Azure Resource Manager konfiguriert wurde und sich außerhalb des virtuellen Netzwerks befindet, in dem Application Gateway bereitgestellt ist, muss für den Zugriff auf den gewünschten Port eine [Netzwerksicherheitsgruppe](../virtual-network/virtual-networks-nsg.md) konfiguriert werden.
 
 ## <a name="problems-with-custom-health-probe"></a>Probleme mit einer benutzerdefinierten Integritätsüberprüfung

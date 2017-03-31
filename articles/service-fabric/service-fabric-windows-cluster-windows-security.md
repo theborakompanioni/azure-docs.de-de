@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 01/17/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 6294a6fac8748f70c807df76feb425cb627bf4c3
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
+ms.openlocfilehash: b8842047351da6fdb547e0b09492b89fad962bee
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -29,8 +29,56 @@ Um nicht autorisierten Zugriff auf einen Service Fabric-Cluster zu verhindern, m
 >
 >
 
-## <a name="configure-windows-security"></a>Konfigurieren der Windows-Sicherheit  
-Die Beispielkonfigurationsdatei *ClusterConfig.Windows.JSON*, die mit dem Paket [Microsoft.Azure.ServiceFabric.WindowsServer.<version>.zip](http://go.microsoft.com/fwlink/?LinkId=730690) für den eigenständigen Cluster heruntergeladen wurde, enthält eine Vorlage zum Konfigurieren der Windows-Sicherheit. Die Windows-Sicherheit wird im Abschnitt **Eigenschaften** konfiguriert:
+## <a name="configure-windows-security-using-gmsa"></a>Konfigurieren der Windows-Sicherheit mithilfe von gMSA  
+Die Beispielkonfigurationsdatei *ClusterConfig.gMSA.Windows.MultiMachine.JSON*, die mit dem Paket [Microsoft.Azure.ServiceFabric.WindowsServer<version>.zip](http://go.microsoft.com/fwlink/?LinkId=730690) für den eigenständigen Cluster heruntergeladen wurde, enthält eine Vorlage zum Konfigurieren der Windows-Sicherheit mithilfe eines [gruppenverwalteten Dienstkontos (Group Managed Service Account, gMSA)](https://technet.microsoft.com/library/hh831782.aspx):  
+
+```  
+"security": {  
+            "ServerCredentialType": "Windows",  
+            "WindowsIdentities": {  
+                "ClustergMSAIdentity": "accountname@fqdn"  
+                "ClusterSPN": "fqdn"  
+                "ClientIdentities": [  
+                    {  
+                        "Identity": "domain\\username",  
+                        "IsAdmin": true  
+                    }  
+                ]  
+            }  
+        }  
+```  
+  
+| **Konfigurationseinstellung** | **Beschreibung** |  
+| --- | --- |  
+| WindowsIdentities |Enthält die Cluster und Clientidentitäten. |  
+| ClustergMSAIdentity |Konfiguriert die Knoten-zu-Knoten-Sicherheit. Ein gruppenverwaltetes Dienstkonto. |  
+| ClusterSPN |Vollqualifizierter Domänen-SPN für gMSA-Konto.|  
+| ClientIdentities |Konfiguriert die Client-zu-Knoten-Sicherheit. Ein Array mit Clientbenutzerkonten. |  
+| Identity |Die Clientidentität, ein Domänenbenutzer. |  
+| IsAdmin |„true“ gibt an, dass der Domänenbenutzer über Administratorclientzugriff verfügt, und „false“ gibt an, dass Benutzerclientzugriff besteht. |  
+  
+Die [Knoten-zu-Knoten-Sicherheit](service-fabric-cluster-security.md#node-to-node-security) wird durch Festlegen von **ClustergMSAIdentity** konfiguriert, wenn Service Fabric in einem gMSA ausgeführt werden muss. Um Vertrauensstellungen zwischen Knoten erstellen zu können, müssen die Knoten über das Vorhandensein des jeweils anderen Knotens informiert sein. Dies kann auf zwei Arten erreicht werden: Geben Sie das gruppenverwaltete Dienstkonto an, das alle Knoten im Cluster enthält, oder geben Sie die Domänencomputergruppe an, die alle Knoten im Cluster enthält. Wir empfehlen Ihnen dringend, den Ansatz der [gruppenverwalteten Dienstkonten](https://technet.microsoft.com/library/hh831782.aspx) zu verwenden. Dies gilt besonders für größere Cluster (mehr als zehn Knoten) oder für Cluster, die sich voraussichtlich vergrößern oder verkleinern.  
+Für diesen Ansatz ist keine Erstellung einer Domänengruppe erforderlich, für die Clusteradministratoren die Zugriffsrechte zum Hinzufügen und Entfernen von Mitgliedern gewährt wurden. Diese Konten sind auch nützlich für die automatische Kennwortverwaltung. Weitere Informationen finden Sie unter [Erste Schritte mit gruppenverwalteten Dienstkonten](http://technet.microsoft.com/library/jj128431.aspx).  
+ 
+Die [Client-zu-Knoten-Sicherheit](service-fabric-cluster-security.md#client-to-node-security) wird mit **ClientIdentities** konfiguriert. Um die Vertrauensstellung zwischen einem Client und dem Cluster herzustellen, müssen Sie den Cluster so konfigurieren, dass ermittelt werden kann, welche Clientidentitäten vertrauenswürdig sind. Dies ist auf zwei Arten möglich: Geben Sie die Domänengruppenbenutzer oder die Domänenknotenbenutzer an, die eine Verbindung herstellen können. Service Fabric unterstützt zwei unterschiedliche Zugriffsberechtigungstypen für Clients, die mit einem Service Fabric-Cluster verbunden sind: Administrator und Benutzer. Die Zugriffssteuerung ermöglicht es dem Clusteradministrator, den Zugriff auf bestimmte Arten von Clustervorgängen für verschiedene Gruppen von Benutzern einzuschränken, wodurch die Sicherheit des Clusters erhöht wird.  Administratoren haben vollständigen Zugriff auf Verwaltungsfunktionen (einschließlich Lese-/Schreibzugriff). Benutzer haben standardmäßig nur Lesezugriff auf Verwaltungsfunktionen (z. B. Abfragefunktionen) sowie die Möglichkeit, Anwendungen und Dienste aufzulösen. Weitere Informationen zur Zugriffssteuerung finden Sie unter [Rollenbasierte Zugriffssteuerung für Service Fabric-Clients](service-fabric-cluster-security-roles.md).  
+ 
+Im folgenden Beispielabschnitt zur **Sicherheit** wird die Windows-Sicherheit mithilfe eines gruppenverwalteten Dienstkontos konfiguriert und angegeben, dass die Computer im Dienstkonto *ServiceFabric/clusterA.contoso.com* Teil des Clusters sind und dass *CONTOSO\usera* über Administratorclientzugriff verfügt:  
+  
+```  
+"security": {  
+    "WindowsIdentities": {  
+        "ClustergMSAIdentity" : "ServiceFabric.clusterA.contoso.com",  
+        "ClusterSPN" : "clusterA.contoso.com",  
+        "ClientIdentities": [{  
+            "Identity": "CONTOSO\\usera",  
+            "IsAdmin": true  
+        }]  
+    }  
+}  
+```  
+  
+## <a name="configure-windows-security-using-a-machine-group"></a>Konfigurieren der Windows-Sicherheit mithilfe einer Computergruppe  
+Die Beispielkonfigurationsdatei *ClusterConfig.Windows.MultiMachine.JSON*, die mit dem Paket [Microsoft.Azure.ServiceFabric.WindowsServer<version>.zip](http://go.microsoft.com/fwlink/?LinkId=730690) für den eigenständigen Cluster heruntergeladen wurde, enthält eine Vorlage zum Konfigurieren der Windows-Sicherheit.  Die Windows-Sicherheit wird im Abschnitt **Eigenschaften** konfiguriert: 
 
 ```
 "security": {
@@ -48,7 +96,7 @@ Die Beispielkonfigurationsdatei *ClusterConfig.Windows.JSON*, die mit dem Paket 
 
 | **Konfigurationseinstellung** | **Beschreibung** |
 | --- | --- |
-| ClusterCredentialType |Legen Sie den Wert *Windows* fest, um Windows-Sicherheit zu aktivieren. |
+| ClusterCredentialType |**ClusterCredentialType** ist auf *Windows* festgelegt, wenn ClusterIdentity den Namen einer Active Directory-Computergruppe angibt. |  
 | ServerCredentialType |Legen Sie den Wert *Windows* fest, um Windows-Sicherheit für Clients zu aktivieren.<br /><br />Dies weist darauf hin, dass die Clients des Clusters und der Cluster selbst in einer Active Directory-Domäne ausgeführt werden. |  
 | WindowsIdentities |Enthält die Cluster und Clientidentitäten. |  
 | ClusterIdentity |Verwenden Sie einen Computergruppennamen – „Domäne\Computergruppe“ – um Knoten-zu-Knoten-Sicherheit zu konfigurieren. |  
@@ -56,7 +104,7 @@ Die Beispielkonfigurationsdatei *ClusterConfig.Windows.JSON*, die mit dem Paket 
 | Identity |Fügen Sie den Domänenbenutzer – „Domäne\Benutzername“ – für die Identität des Clients hinzu. |  
 | IsAdmin |Legen Sie den Wert „true“ fest, um anzugeben, dass der Domänenbenutzer über Administratorclientzugriff verfügt, oder „false“ für Benutzerclientzugriff. |  
 
-[Knoten-zu-Knoten-Sicherheit](service-fabric-cluster-security.md#node-to-node-security) wird mithilfe von **ClusterIdentity** konfiguriert. Um Vertrauensstellungen zwischen Knoten erstellen zu können, müssen die Knoten über das Vorhandensein des jeweils anderen Knotens informiert sein. Damit diese Information vorhanden ist, erstellen Sie eine Domänengruppe, die alle Knoten im Cluster enthält. Dieser Gruppenname muss in **ClusterIdentity** angegeben werden. Weitere Informationen finden Sie unter [How to Create a Group in Active Directory (Erstellen einer Gruppe in Active Directory)](https://msdn.microsoft.com/library/aa545347(v=cs.70).aspx).  
+Die [Knoten-zu-Knoten-Sicherheit](service-fabric-cluster-security.md#node-to-node-security) wird durch Festlegen von **ClusterIdentity** konfiguriert, wenn Sie eine Computergruppe in einer Active Directory-Domäne verwenden möchten. Weitere Informationen finden Sie unter [Erstellen einer Computergruppe in Active Directory](https://msdn.microsoft.com/library/aa545347(v=cs.70).aspx).
 
 [Client-zu-Knoten-Sicherheit](service-fabric-cluster-security.md#client-to-node-security) wird mit **ClientIdentities** konfiguriert. Um die Vertrauensstellung zwischen einem Client und dem Cluster herzustellen, müssen Sie den Cluster so konfigurieren, dass ermittelt werden kann, welche Clientidentitäten vertrauenswürdig sind. Sie können Vertrauensstellungen auf zwei verschiedene Arten erstellen:
 

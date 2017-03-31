@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 3/12/2017
 ms.author: markgal;trinadhk;
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: b64978da0513ac5daf8e7c4699cf6e3501d63fd9
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 1dc2883056eab9764cda674b42fa40c517550ccd
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -190,7 +190,7 @@ Akzeptieren Sie nach der Eingabe der erforderlichen Werte die *Geschäftsbedingu
    ![Übermitteln der Vorlagenbereitstellung](./media/backup-azure-arm-restore-vms/submitting-template.png)
 
 ## <a name="post-restore-steps"></a>Schritte nach der Wiederherstellung
-* Bei Verwendung einer Cloud-Init-basierten Linux-Verteilung wie etwa Ubuntu wird das Kennwort aus Sicherheitsgründen nach der Wiederherstellung blockiert. Verwenden Sie zum [Zurücksetzen des Kennworts](../virtual-machines/virtual-machines-linux-classic-reset-access.md)die VMAccess-Erweiterung auf dem wiederhergestellten virtuellen Computer. Es wird empfohlen, SSH-Schlüssel für diese Verteilungen zu verwenden, um das Zurücksetzen des Kennworts nach der Wiederherstellung zu vermeiden.
+* Bei Verwendung einer Cloud-Init-basierten Linux-Verteilung wie etwa Ubuntu wird das Kennwort aus Sicherheitsgründen nach der Wiederherstellung blockiert. Verwenden Sie zum [Zurücksetzen des Kennworts](../virtual-machines/linux/classic/reset-access.md)die VMAccess-Erweiterung auf dem wiederhergestellten virtuellen Computer. Es wird empfohlen, SSH-Schlüssel für diese Verteilungen zu verwenden, um das Zurücksetzen des Kennworts nach der Wiederherstellung zu vermeiden.
 * Erweiterungen, die während der Konfiguration der Sicherung vorhanden waren, werden zwar installiert, aber nicht aktiviert. Installieren Sie Erweiterungen neu, wenn Probleme auftreten. 
 * Wenn die gesicherte VM über eine statische IP-Adresse verfügt, erhält die wiederhergestellte VM eine dynamische IP-Adresse, um Konflikte beim Erstellen wiederhergestellter virtueller Computer zu vermeiden. Erfahren Sie mehr über das [Hinzufügen einer statischen IP-Adresse für wiederhergestellte virtuelle Computer](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm).
 * Für wiederhergestellte virtuelle Computer ist kein Verfügbarkeitswert festgelegt. Es wird empfohlen, die Option zur Datenträgerwiederherstellung zu verwenden und [Verfügbarkeitsgruppen hinzuzufügen](../virtual-machines/virtual-machines-windows-create-availability-set.md#use-powershell-to-create-an-availability-set), wenn Sie einen virtuellen Computer mithilfe von PowerShell oder Vorlagen aus wiederhergestellten Datenträgern erstellen. 

@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/22/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 59798ae9412a7550c94f8fa67c39f504aad8d00c
-ms.openlocfilehash: 3867c57d40a218c80403578d30cb999bf9f6cd38
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 96137d49d3caa0444400edcfcfaa097dc71ba8e3
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -76,7 +76,7 @@ foreach($vmInfo in $avSet.VirtualMachinesReferences)
 ## <a name="convert-existing-azure-vms-to-managed-disks-of-the-same-storage-type"></a>Migrieren vorhandener virtueller Azure-Computer zur Verwendung verwalteter Datenträger desselben Speichertyps
 
 > [!IMPORTANT]
-> Nach Abschluss des folgenden Verfahrens ist ein einzelnes Blob vorhanden, das im /vhds-Standardcontainer verbleibt. Der Name der Datei lautet „VMName.xxxxxxx.status“. Diese Datei wird von Azure nur erstellt, wenn Sie [VM-Erweiterungen](virtual-machines-windows-classic-agents-and-extensions.md) auf dem virtuellen Computer installiert haben. Achten Sie darauf, dass Sie dieses verbleibende Statusobjekt nicht löschen. Dieses Problem wird in Kürze behoben sein.
+> Nach Abschluss des folgenden Verfahrens ist ein einzelnes Blob vorhanden, das im /vhds-Standardcontainer verbleibt. Der Name der Datei lautet „VMName.xxxxxxx.status“. Diese Datei wird von Azure nur erstellt, wenn Sie [VM-Erweiterungen](windows/classic/agents-and-extensions.md) auf dem virtuellen Computer installiert haben. Achten Sie darauf, dass Sie dieses verbleibende Statusobjekt nicht löschen. Dieses Problem wird in Kürze behoben sein.
 
 In diesem Abschnitt wird beschrieben, wie Sie Ihre vorhandenen virtuellen Azure-Computer aus nicht verwalteten Datenträgern in Speicherkonten in verwaltete Datenträger konvertieren, wenn Sie denselben Speichertyp verwenden. Sie können diesen Prozess verwenden, um von nicht verwalteten Premium-Datenträgern (SDD) auf verwaltete Premium-Datenträger oder von nicht verwalteten Standard-Datenträgern (HDD) auf verwaltete Standard-Datenträger umzustellen. 
 

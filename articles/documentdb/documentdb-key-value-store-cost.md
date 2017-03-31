@@ -17,8 +17,9 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: acomet
 translationtype: Human Translation
-ms.sourcegitcommit: faf363eb5848752b27faacd971867391b6393337
-ms.openlocfilehash: 1a693477a51a05fb28e7c4772aeee77fd0c4e1dd
+ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
+ms.openlocfilehash: 4d6ea897ec24ab9cbf5c131cd4629f45447f1460
+ms.lasthandoff: 03/29/2017
 
 ---
 
@@ -30,7 +31,7 @@ In diesem Artikel werden die Kosten von DocumentDB für einfache Schreib- und Le
 
 ## <a name="why-we-use-request-units-rus"></a>Gründe für die Verwendung von Anforderungseinheiten (Request Units, RUs)
 
-Die DocumentDB-Leistung basiert auf der Menge der für die Partition bereitgestellten [Anforderungseinheiten](documentdb-programming.md) (RU). Die Bereitstellung erfolgt mit einer zweiten Granularität und wird in RUs pro Sekunde erworben ([nicht zu verwechseln mit der stündlichen Abrechnung](https://azure.microsoft.com/pricing/details/documentdb/)). Betrachten Sie RUs als eine Währung, die die Bereitstellung des für die Anwendung erforderlichen Durchsatzes vereinfacht. Unsere Kunden müssen nicht zwischen Lese- und Schreibkapazitätseinheiten differenzieren. Das einzelne Währungsmodell der RUs sorgt für die nötige Effizienz, um die bereitgestellte Kapazität zwischen Lese- und Schreibvorgängen aufzuteilen. Dieses bereitgestellte Kapazitätsmodell ermöglicht dem Dienst, einen vorhersagbaren und konsistenten Durchsatz, garantiert niedrige Latenz und hohe Verfügbarkeit zu bieten. Schließlich verwenden wir RUs für Durchsatzmodelle, doch jede bereitgestellte RU verfügt auch über eine definierte Menge von Ressourcen (Arbeitsspeicher, Kern). RU/Sekunde ist nicht nur ein IOPS-Wert.
+Die DocumentDB-Leistung basiert auf der Menge der für die Partition bereitgestellten [Anforderungseinheiten](documentdb-request-units.md) (RU). Die Bereitstellung erfolgt mit einer zweiten Granularität und wird in RUs pro Sekunde erworben ([nicht zu verwechseln mit der stündlichen Abrechnung](https://azure.microsoft.com/pricing/details/documentdb/)). Betrachten Sie RUs als eine Währung, die die Bereitstellung des für die Anwendung erforderlichen Durchsatzes vereinfacht. Unsere Kunden müssen nicht zwischen Lese- und Schreibkapazitätseinheiten differenzieren. Das einzelne Währungsmodell der RUs sorgt für die nötige Effizienz, um die bereitgestellte Kapazität zwischen Lese- und Schreibvorgängen aufzuteilen. Dieses bereitgestellte Kapazitätsmodell ermöglicht dem Dienst, einen vorhersagbaren und konsistenten Durchsatz, garantiert niedrige Latenz und hohe Verfügbarkeit zu bieten. Schließlich verwenden wir RUs für Durchsatzmodelle, doch jede bereitgestellte RU verfügt auch über eine definierte Menge von Ressourcen (Arbeitsspeicher, Kern). RU/Sekunde ist nicht nur ein IOPS-Wert.
 
 Als global verteiltes Datenbanksystem ist DocumentDB der einzige Azure-Dienst, der außer zur hohen Verfügbarkeit eine SLA zu Latenz, Durchsatz und Konsistenz bietet. Der Durchsatz, den Sie bereitstellen, wird auf jede der Regionen angewendet, die Ihrem DocumentDB-Datenbankkonto zugeordnet ist. Für Lesevorgänge bietet DocumentDB mehrere klar definierte [Konsistenzebenen](documentdb-consistency-levels.md), zwischen denen Sie wählen können. 
 
@@ -50,14 +51,9 @@ Wenn Sie 1.000 RUs/Sekunde bereitstellen, ergibt dies 3,6 Mio. RUs/Stunde und ko
 |1 KB|$0.022|$0.111|
 |100 KB|$0.222|$1.111|
 
-Die meisten grundlegenden Blob- oder Objektspeicherdienste berechnen Gebühren von&0;,40 US-Dollar pro Million Lesetransaktionen und&5; US-Dollar pro Million Schreibtransaktionen. Bei optimaler Nutzung kann DocumentDB bis zu 98% günstiger sein als diese anderen Lösungen (für Transaktionen von 1KB).
+Die meisten grundlegenden Blob- oder Objektspeicherdienste berechnen Gebühren von 0,40 US-Dollar pro Million Lesetransaktionen und 5 US-Dollar pro Million Schreibtransaktionen. Bei optimaler Nutzung kann DocumentDB bis zu 98% günstiger sein als diese anderen Lösungen (für Transaktionen von 1KB).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Bleiben Sie auf dem Laufenden, was neue Artikel zum Optimieren der DocumentDB-Ressourcenbereitstellung betrifft. In der Zwischenzeit laden wir Sie ein, unseren [RU-Rechner](https://www.documentdb.com/capacityplanner) zu nutzen.
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

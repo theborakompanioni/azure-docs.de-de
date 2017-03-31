@@ -8,6 +8,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 9e57fcca-e26c-479d-a745-7b80a9290447
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,8 +16,9 @@ ms.topic: article
 ms.date: 02/09/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 7af856e32064f16e7cb1083432d4d5715cef6e3a
-ms.openlocfilehash: dbffb88020cf53eb59b98eb80e12a47bc17c5708
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: a5fbd7cd4b57b1bd54c5483fc39733cfd3a8dcca
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -87,10 +89,8 @@ SSH-Tunneling ist die einzige Möglichkeit für den Zugriff auf Hue auf dem Clus
 
 2. Sobald Sie einen SSH-Tunnel erstellt und Ihren Browser für den Proxydatenverkehr konfiguriert haben, müssen Sie den Hostnamen des primären Hauptknotens ermitteln. Dazu können Sie an Port 22 eine SSH-Verbindung mit dem Cluster herstellen. Beispiel: `ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`. Dabei steht **USERNAME** für den SSH-Benutzernamen und **CLUSTERNAME** für den Namen Ihres Clusters.
 
-    Weitere Informationen zur Verwendung von SSH finden Sie in den folgenden Dokumenten:
+    Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-   * [Verwenden von SSH mit HDInsight (Hadoop) unter Windows, Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md)
-   * [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Windows](hdinsight-hadoop-linux-use-ssh-windows.md)
 3. Verwenden Sie nach erfolgter Verbindungsherstellung den folgenden Befehl, um den vollqualifizierten Domänennamen des primären Hauptknotens abzurufen:
 
         hostname -f
@@ -154,9 +154,4 @@ SSH-Tunneling ist die einzige Möglichkeit für den Zugriff auf Hue auf dem Clus
 [powershell-install-configure]: install-configure-powershell-linux.md
 [hdinsight-provision]: hdinsight-provision-clusters-linux.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

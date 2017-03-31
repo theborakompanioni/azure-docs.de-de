@@ -53,7 +53,7 @@ Die Verwendung von Ressourcengruppen bietet Flexibilität beim Entwurf der virtu
 ### <a name="cloud-only-virtual-networks"></a>Rein cloudbasierte virtuelle Netzwerke
 Wenn lokale Benutzer und Computer nicht kontinuierlich mit virtuellen Computern im virtuellen Azure-Netzwerk verbunden sein müssen, wird der Entwurf Ihres virtuellen Netzwerks geradlinig ausfallen:
 
-![Grundlegendes Diagramm eines rein cloudbasierten virtuellen Netzwerks](./media/virtual-machines-common-infrastructure-service-guidelines/vnet01.png)
+![Grundlegendes Diagramm eines rein cloudbasierten virtuellen Netzwerks](windows/media/infrastructure-networking-guidelines/vnet01.png)
 
 Dieser Ansatz eignet sich normalerweise für Internetworkloads, wie z. B. Internetwebserver. Sie können diese virtuellen Computer mit SSH oder Punkt-zu-Standort-VPN-Verbindungen verwalten.
 
@@ -62,7 +62,7 @@ Da sie nicht mit Ihrem lokalen Netzwerk verbunden sind, können auf Azure beschr
 ### <a name="cross-premises-virtual-networks"></a>Standortübergreifende virtuelle Netzwerke
 Wenn lokale Benutzer und Computer nicht kontinuierlich mit virtuellen Computern im virtuellen Azure-Netzwerk verbunden sein müssen, erstellen Sie ein standortübergreifendes virtuelles Netzwerk. Verbinden Sie das virtuelle Netzwerk über eine ExpressRoute- oder Standort-zu-Standort-VPN-Verbindung mit Ihrem lokalen Netzwerk.
 
-![Diagramm eines standortübergreifenden virtuellen Netzwerks](./media/virtual-machines-common-infrastructure-service-guidelines/vnet02.png)
+![Diagramm eines standortübergreifenden virtuellen Netzwerks](windows/media/infrastructure-networking-guidelines/vnet02.png)
 
 In dieser Konfiguration stellt das virtuelle Azure-Netzwerk im Grunde eine cloudbasierte Erweiterung des lokalen Netzwerks dar.
 

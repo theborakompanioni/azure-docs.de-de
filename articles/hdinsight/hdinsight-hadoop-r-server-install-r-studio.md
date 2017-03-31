@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 02/28/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 2df17cddf629cb72b7fa4d590dfaa69311c96aa4
-ms.openlocfilehash: 8a73f04b0b2d6e308f7b2888ef14d48c50c13ce1
-ms.lasthandoff: 01/10/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 970419650e1d3e22637733fdb4fba72ff27f5339
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -36,7 +36,7 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe eines benutzerdefinierten Skrip
 > 
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* Einen Azure HDInsight-Cluster, auf dem R Server installiert ist. Anweisungen finden Sie unter [Erste Schritte mit R Server in HDInsight (Vorschau)](hdinsight-hadoop-r-server-get-started.md).
+* Einen Azure HDInsight-Cluster, auf dem R Server installiert ist. Anweisungen finden Sie unter [Erste Schritte mit R Server in HDInsight](hdinsight-hadoop-r-server-get-started.md).
 * Einen SSH-Client. Für Linux- und Unix-Distributionen oder Macintosh OS X steht der Befehl `ssh` über das Betriebssystem zur Verfügung. Für Windows empfehlen wir [Cygwin](http://www.redhat.com/services/custom/cygwin/) mit der Option [OpenSSH](https://www.youtube.com/watch?v=CwYSvvGaiWU) oder [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).  
 
 ## <a name="install-rstudio-on-the-cluster-using-a-custom-script"></a>Installieren von RStudio auf dem Cluster mit einem benutzerdefinierten Skript
@@ -44,10 +44,8 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe eines benutzerdefinierten Skrip
 
    * Hauptknoten `CLUSTERNAME-ssh.azurehdinsight.net`
    * Edgeknoten `CLUSTERNAME-ed-ssh.azurehdinsight.net` 
-2. Greifen Sie unter Verwendung des obigen Namensmusters per SSH auf den Edgeknoten des Clusters zu. 
+2. Greifen Sie unter Verwendung des obigen Namensmusters per SSH auf den Edgeknoten des Clusters zu. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-   * Wenn Sie die Verbindung von einem Linux-Client aus herstellen, finden Sie weitere Informationen unter [Verbinden mit einem Linux-basierten HDInsight-Cluster](hdinsight-hadoop-linux-use-ssh-unix.md).
-   * Wenn Sie die Verbindung von einem Windows-Client aus herstellen, finden Sie weitere Informationen unter [Verbinden mit einem Linux-basierten HDInsight-Cluster unter Verwendung von PuTTY](hdinsight-hadoop-linux-use-ssh-windows.md).
 3. Legen Sie sich nach der Verbindungsherstellung als Root-Benutzer im Cluster fest. Verwenden Sie in der SSH-Sitzung den folgenden Befehl:
 
         sudo su -
@@ -81,7 +79,7 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe eines benutzerdefinierten Skrip
        Ersetzen Sie **USERNAME** durch einen SSH-Benutzer für Ihren HDInsight-Cluster und **CLUSTERNAME** durch den Namen des HDInsight-Clusters. Durch Hinzufügen von `-i id_rsa_key` können Sie anstelle eines Kennworts auch einen SSH-Schlüssel verwenden.        
    * Bei Verwendung eines Windows-Clients mit PuTTY:
 
-     1. Öffnen Sie PuTTY, und geben Sie die Verbindungsinformationen ein. Wenn Sie nicht mit PuTTY vertraut sind, finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Windows](hdinsight-hadoop-linux-use-ssh-windows.md) Informationen für die Verwendung mit HDInsight.
+     1. Öffnen Sie PuTTY, und geben Sie die Verbindungsinformationen ein.
      2. Erweitern Sie auf der linken Seite des Dialogfelds im Abschnitt **Category** erst **Connection**, dann **SSH**, und wählen Sie anschließend **Tunnels** aus.
      3. Geben Sie die folgenden Informationen in das Formular **Options controlling SSH port forwarding** ein:
 

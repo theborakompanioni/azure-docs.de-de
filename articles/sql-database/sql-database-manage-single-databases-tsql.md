@@ -16,14 +16,15 @@ ms.tgt_pltfrm: NA
 ms.date: 02/06/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 38c53d6f1a2635afbba199e6f0a2adb23abb6a3a
-ms.openlocfilehash: fcf8326edc2ff84d274f7c4dadeae1fbe2595349
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 951c88124219a6962f655b91275aec64c716b1cd
+ms.lasthandoff: 03/28/2017
 
 
 ---
 # <a name="create-and-manage-single-azure-sql-databases-with-transact-sql"></a>Erstellen und Verwalten einzelner Azure SQL-Datenbanken mit Transact-SQL
 
-Sie können einzelne Azure SQL-Datenbanken mit dem [Azure-Portal](https://portal.azure.com/), mit PowerShell, Transact-SQL, der REST-API oder C# erstellen und verwalten. In diesem Thema wird die Verwendung des Azure-Portals erläutert. Informationen zur Verwendung von PowerShell finden Sie unter [Erstellen und Verwalten einzelner Azure SQL-Datenbanken mit PowerShell](sql-database-manage-single-databases-powershell.md). Informationen zur Verwendung von Transact-SQL finden Sie unter [Erstellen und Verwalten einzelner Azure SQL-Datenbanken mit Transact-SQL](sql-database-manage-single-databases-tsql.md). 
+Sie können einzelne Azure SQL-Datenbanken mit dem [Azure-Portal](https://portal.azure.com/), mit PowerShell, Transact-SQL, der REST-API oder C# erstellen und verwalten. In diesem Thema wird die Verwendung des Azure-Portals erläutert. Informationen zur Verwendung von PowerShell finden Sie unter [Erstellen und Verwalten einzelner Azure SQL-Datenbanken mit PowerShell](scripts/sql-database-create-and-configure-database-powershell.md). Informationen zur Verwendung von Transact-SQL finden Sie unter [Erstellen und Verwalten einzelner Azure SQL-Datenbanken mit Transact-SQL](sql-database-manage-single-databases-tsql.md). 
 
 ## <a name="create-an-azure-sql-database-using-transact-sql-in-sql-server-management-studio"></a>Erstellen einer Azure SQL-Datenbank mit Transact-SQL in SQL Server Management Studio
 
@@ -53,9 +54,4 @@ So erstellen Sie eine SQL-Datenbank mit Transact-SQL in SQL Server Management St
 * Informationen zum Ausführen von Verwaltungsaufgaben mithilfe von SQL Server Management Studio finden Sie unter [Verwalten einer Azure SQL-Datenbank mit SQL Server Management Studio](sql-database-manage-azure-ssms.md).
 * Informationen zum SQL-Datenbank-Dienst finden Sie unter [Was ist SQL Database? Einführung in SQL-Datenbank](sql-database-technical-overview.md). 
 * Informationen zu Azure-Datenbankservern und Datenbankfeatures finden Sie unter [Funktionen von Azure SQL-Datenbank](sql-database-features.md).
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

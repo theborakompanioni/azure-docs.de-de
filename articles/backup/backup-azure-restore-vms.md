@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 10/31/2016
 ms.author: trinadhk; jimpark;
 translationtype: Human Translation
-ms.sourcegitcommit: 7de8d98f24ea01012b8fa3a326e1d4ad3f04099a
-ms.openlocfilehash: 186929c1193f63ecda6fd4851bb66c8430ab99ab
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 64557a71f30762befe07616c3d274a621f22e235
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -92,10 +92,10 @@ Nach dem Abschluss des Wiederherstellungsvorgangs wird dieser auf der Registerka
 
 ![Wiederherstellungsauftrag abgeschlossen](./media/backup-azure-restore-vms/restore-job-complete.png)
 
-Nach dem Wiederherstellen des virtuellen Computers müssen Sie möglicherweise die auf dem ursprünglichen virtuellen Computer vorhandenen Erweiterungen neu installieren und für den virtuellen Computer im Azure-Portal [die Endpunkte ändern](../virtual-machines/virtual-machines-windows-classic-setup-endpoints.md) .
+Nach dem Wiederherstellen des virtuellen Computers müssen Sie möglicherweise die auf dem ursprünglichen virtuellen Computer vorhandenen Erweiterungen neu installieren und für den virtuellen Computer im Azure-Portal [die Endpunkte ändern](../virtual-machines/windows/classic/setup-endpoints.md) .
 
 ## <a name="post-restore-steps"></a>Schritte nach der Wiederherstellung
-Bei Verwendung einer Cloud-Init-basierten Linux-Verteilung wie etwa Ubuntu wird das Kennwort aus Sicherheitsgründen nach der Wiederherstellung blockiert. Verwenden Sie zum [Zurücksetzen des Kennworts](../virtual-machines/virtual-machines-linux-classic-reset-access.md)die VMAccess-Erweiterung auf dem wiederhergestellten virtuellen Computer. Es wird empfohlen, SSH-Schlüssel für diese Verteilungen zu verwenden, um das Zurücksetzen des Kennworts nach der Wiederherstellung zu vermeiden. 
+Bei Verwendung einer Cloud-Init-basierten Linux-Verteilung wie etwa Ubuntu wird das Kennwort aus Sicherheitsgründen nach der Wiederherstellung blockiert. Verwenden Sie zum [Zurücksetzen des Kennworts](../virtual-machines/linux/classic/reset-access.md)die VMAccess-Erweiterung auf dem wiederhergestellten virtuellen Computer. Es wird empfohlen, SSH-Schlüssel für diese Verteilungen zu verwenden, um das Zurücksetzen des Kennworts nach der Wiederherstellung zu vermeiden. 
 
 ## <a name="backup-for-restored-vms"></a>Sicherung für wiederhergestellte virtuelle Computer
 Wenn Sie den virtuellen Computer unter dem gleichen Clouddienst mit dem gleichen Namen wie die ursprünglich gesicherte VM wiederhergestellt haben, wird die VM nach der Wiederherstellung weiterhin gesichert. Wenn Sie entweder die VM unter einem anderen Clouddienst wiederhergestellt oder einen anderen Namen für die wiederhergestellte VM angegeben haben, wird sie als neue VM behandelt, und Sie müssen die Sicherung für die wiederhergestellte VM einrichten.

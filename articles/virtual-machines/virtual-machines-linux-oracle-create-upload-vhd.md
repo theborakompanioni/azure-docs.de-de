@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/23/2017
 ms.author: szark
 translationtype: Human Translation
-ms.sourcegitcommit: 106a6f5f44882fd80f7d92f392dbe4bc71004a4f
-ms.openlocfilehash: 8610582803d65d6118cbc2a2c3bc29c50405a26a
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 6a02baabc4b11d80cebfd8c65fc95006716e5d98
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -184,6 +184,6 @@ Die Vorbereitung eines virtuellen Oracle Linux 7-Computers für Azure entspricht
 15. Klicken Sie im Hyper-V-Manager auf **Aktion > Herunterfahren**. Ihre Linux-VHD kann nun in Azure hochgeladen werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nun können Sie mit Ihrer Oracle Linux-VHD-Datei neue virtuelle Computer in Azure erstellen. Wenn Sie die VHD-Datei zum ersten Mal in Azure hochladen, führen Sie die Schritte 2 und 3 in [Erstellen und Hochladen einer virtuellen Festplatte, die das Linux-Betriebssystem enthält](virtual-machines-linux-classic-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)aus.
+Nun können Sie mit Ihrer Oracle Linux-VHD-Datei neue virtuelle Computer in Azure erstellen. Wenn Sie die VHD-Datei zum ersten Mal in Azure hochladen, führen Sie die Schritte 2 und 3 in [Erstellen und Hochladen einer virtuellen Festplatte, die das Linux-Betriebssystem enthält](linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)aus.
 
 

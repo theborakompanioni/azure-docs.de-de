@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 06/30/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 5f61a5422fc36b2468585e601823f292680142ec
-ms.lasthandoff: 11/17/2016
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 94c4929c84a671eca210a0e6b53eda5019cc0951
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -81,7 +81,7 @@ Mit diesen Anleitungen können Sie mit Azure-Ressourcen arbeiten, vor allem mit 
 
 * [Erstellen, Öffnen und Veröffentlichen von Clouddienstprojekten](cloud-services/cloud-services-dotnet-get-started.md)
 * [Erstellen von Bereitstellungspaketen für Clouddienstprojekte](http://msdn.microsoft.com/library/ff683672.aspx)
-* [Erstellen von virtuellen Azure-Computern während der Erstellung neuer Webprojekte](virtual-machines/virtual-machines-windows-classic-web-app-visual-studio.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* [Erstellen von virtuellen Azure-Computern während der Erstellung neuer Webprojekte](virtual-machines/windows/classic/web-app-visual-studio.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 * [Erstellen von PowerShell-Skripts während der Erstellung neuer virtueller Computer](http://msdn.microsoft.com/library/dn642480.aspx)
 * [Anzeigen und Verwalten von Einstellungen für Clouddienstprojekte in Projekteigenschaftsfenstern in Visual Studio](http://msdn.microsoft.com/library/ee405486.aspx)
 * Anzeigen und Verwalten von [Clouddiensten](http://msdn.microsoft.com/library/ff683675.aspx), [virtuellen Computern](http://msdn.microsoft.com/library/jj131259.aspx) und [Service Bus](http://msdn.microsoft.com/library/jj149828.aspx) im Server Explorer.

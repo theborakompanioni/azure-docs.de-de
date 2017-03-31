@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 891d950c7d4984b39f2e03af3d0f66af5594a348
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 66ddcea180395b830cdb5310446e1dbc02e7d784
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -28,7 +29,7 @@ Eine Endpunkt-Zugriffssteuerungsliste (ACL) trägt zur Verbesserung der Sicherhe
 > 
 > 
 
-ACLs können mithilfe von PowerShell sowie über das Verwaltungsportal konfiguriert werden. Informationen zum Konfigurieren von Netzwerk-ACLs mittels PowerShell finden Sie unter [Verwalten von Zugriffssteuerungslisten (ACLs) für Endpunkte mithilfe von PowerShell](virtual-networks-acl-powershell.md). Informationen zum Konfigurieren von Netzwerk-ACLs mithilfe des Verwaltungsportals finden Sie unter [Einrichten von Endpunkten für einen virtuellen Computer](../virtual-machines/virtual-machines-windows-classic-setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+ACLs können mithilfe von PowerShell sowie über das Verwaltungsportal konfiguriert werden. Informationen zum Konfigurieren von Netzwerk-ACLs mittels PowerShell finden Sie unter [Verwalten von Zugriffssteuerungslisten (ACLs) für Endpunkte mithilfe von PowerShell](virtual-networks-acl-powershell.md). Informationen zum Konfigurieren von Netzwerk-ACLs mithilfe des Verwaltungsportals finden Sie unter [Einrichten von Endpunkten für einen virtuellen Computer](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 Netzwerk-ACLs bieten folgende Möglichkeiten:
 
@@ -90,10 +91,5 @@ Netzwerk-ACLs können für einen Endpunkt eines Satzes mit Lastenausgleich (LB-S
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Verwalten von Zugriffssteuerungslisten (Access Control Lists, ACLs) für Endpunkte mithilfe von PowerShell](virtual-networks-acl-powershell.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -17,9 +17,9 @@ ms.date: 03/14/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: 32045a9b6be130dca4680b1990808d2b22be4432
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 1ab628ff6e7e8ed23c2c3b733907500dc6d4dde7
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -53,18 +53,18 @@ RDMA-fähige müssen Instanzen folgende Anforderungen erfüllen, um auf das Azur
   ```PowerShell
   Set-AzureRmVMExtension -ResourceGroupName "myResourceGroup" -Location "westus" -VMName "myVM" -ExtensionName "HpcVmDrivers" -Publisher "Microsoft.HpcCompute" -Type "HpcVmDrivers" -TypeHandlerVersion "1.1"
   ```
-  Weitere Informationen finden Sie unter [Erweiterungen und Features für virtuelle Computer](virtual-machines-windows-extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Erweiterungen können auch für virtuelle Computer verwendet werden, die mit dem [klassischen Bereitstellungsmodell](virtual-machines-windows-classic-manage-extensions.md) bereitgestellt wurden.
+  Weitere Informationen finden Sie unter [Erweiterungen und Features für virtuelle Computer](virtual-machines-windows-extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Erweiterungen können auch für virtuelle Computer verwendet werden, die mit dem [klassischen Bereitstellungsmodell](windows/classic/manage-extensions.md) bereitgestellt wurden.
 
 
 ## <a name="considerations-for-hpc-pack-and-windows"></a>Überlegungen zu HPC Pack und Windows
 [Microsoft HPC Pack](https://technet.microsoft.com/library/jj899572.aspx), die kostenlose HPC-Cluster- und Auftragsverwaltungslösung von Microsoft, ist für die Verwendung der rechenintensiven Instanzen mit Windows Server nicht erforderlich. Sie stellt jedoch ein Option zum Erstellen eines Computeclusters in Azure zum Ausführen Windows-basierter MPI-Anwendungen und anderer HPC-Workloads dar. HPC Pack 2012 R2 und neuere Versionen enthalten eine Laufzeitumgebung für MS-MPI, die das Azure RDMA-Netzwerk bei der Bereitstellung auf RDMA-fähigen virtuellen Computern verwendet.
 
-Weitere Informationen und Prüflisten zur Verwendung rechenintensiver Instanzen mit HPC Pack unter Windows Server finden Sie unter [Einrichten eines Windows RDMA-Clusters mit HPC Pack zum Ausführen von MPI-Anwendungen](virtual-machines-windows-classic-hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+Weitere Informationen und Prüflisten zur Verwendung rechenintensiver Instanzen mit HPC Pack unter Windows Server finden Sie unter [Einrichten eines Windows RDMA-Clusters mit HPC Pack zum Ausführen von MPI-Anwendungen](windows/classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Ausführliche Informationen zur Verfügbarkeit und Preisgestaltung der rechenintensiven Größen finden Sie unter [Virtuelle Computer – Preise](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows) sowie unter [Cloud Services – Preise](https://azure.microsoft.com/pricing/details/cloud-services/).
 * Informationen zu Speicherkapazitäten und Details zu den Datenträgern finden Sie unter [Größen für virtuelle Computer](virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* Informationen zu den ersten Schritten bei der Bereitstellung und Verwendung rechenintensiver Instanzen mit HPC Pack unter Windows finden Sie unter [Einrichten eines Windows RDMA-Clusters mit HPC Pack zum Ausführen von MPI-Anwendungen](virtual-machines-windows-classic-hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+* Informationen zu den ersten Schritten bei der Bereitstellung und Verwendung rechenintensiver Instanzen mit HPC Pack unter Windows finden Sie unter [Einrichten eines Windows RDMA-Clusters mit HPC Pack zum Ausführen von MPI-Anwendungen](windows/classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 * Informationen zur Verwendung rechenintensiver Instanzen zum Ausführen von MPI-Anwendungen mit Azure Batch finden Sie unter [Verwendung von Tasks mit mehreren Instanzen zum Ausführen von MPI-Anwendungen (Message Passing Interface) in Azure Batch](../batch/batch-mpi.md).
 
 

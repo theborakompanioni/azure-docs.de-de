@@ -17,9 +17,9 @@ ms.topic: article
 ms.date: 01/17/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: ccd1dffda19718a434fc09bb74a536714799740a
-ms.openlocfilehash: e270f3dfdaf248ed40d539fa1d2e69a3930d03c6
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 2214315f084aec80986fe30ebcaff6813162c5f8
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -81,10 +81,7 @@ Sie müssen mit der Indizierung von Solr mit einigen Datendateien beginnen. Sie 
    
         ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
    
-    Weitere Informationen zur Verwendung von SSH mit HDInsight finden Sie in den folgenden Artikeln:
-   
-   * [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md)
-   * [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Windows](hdinsight-hadoop-linux-use-ssh-windows.md)
+    Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
      
      > [!IMPORTANT]
      > Die späteren Schritte in diesem Dokument verwenden einen SSL-Tunnel, um mit der Solr-Webbenutzeroberfläche eine Verbindung herzustellen. Um diese Schritte ausführen zu können, müssen Sie einen SSL-Tunnel einrichten, und Ihren Browser dann zu dessen Verwendung einrichten.
@@ -173,10 +170,8 @@ Wenn Sie einen SSH-Tunnel eingerichtet haben, gehen Sie folgendermaßen vor, um 
    
    1. Verwenden Sie SSH zum Herstellen einer Verbindung mit dem Cluster an Port 22. Beispiel: `ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`. Dabei steht **USERNAME** für den SSH-Benutzernamen und **CLUSTERNAME** für den Namen Ihres Clusters.
       
-       Weitere Informationen zur Verwendung von SSH finden Sie in den folgenden Dokumenten:
-      
-      * [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md)
-      * [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Windows](hdinsight-hadoop-linux-use-ssh-windows.md)
+       Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
+
    2. Verwenden Sie den folgenden Befehl, um den vollqualifizierten Hostnamen abzurufen:
       
            hostname -f

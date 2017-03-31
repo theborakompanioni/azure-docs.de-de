@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 2/7/2017
 ms.author: markgal;trinadhk;
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 27d8da9df87dc5e93272be0bb6584e90971fb461
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: c059d39840ae268da647cffd2bfcb937f006356a
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -175,7 +175,7 @@ Nachdem die Sicherung erfolgreich aktiviert wurde, wird die Sicherungsrichtlinie
 Wenn Sie Probleme beim Registrieren des virtuellen Computers haben, prüfen Sie die folgenden Informationen zum Installieren des VM-Agents und zu Netzwerkverbindungen. Die folgenden Informationen sind wahrscheinlich nicht erforderlich, wenn Sie in Azure erstellte virtuelle Computer schützen möchten. Wenn Sie jedoch Ihren virtuellen Computer zu Azure migriert haben, ist es wichtig, dass Sie den VM-Agent ordnungsgemäß installiert haben und dass Ihr virtueller Computer mit dem virtuellen Netzwerk kommunizieren kann.
 
 ## <a name="install-the-vm-agent-on-the-virtual-machine"></a>Installieren des VM-Agents auf dem virtuellen Computer
-Der Azure VM-Agent muss auf dem virtuellen Azure-Computer installiert werden, damit die Sicherungserweiterung funktioniert. Wenn Ihr virtueller Computer aus dem Azure-Katalog erstellt wurde, ist der VM-Agent auf dem virtuellen Computer bereits vorhanden. Diese Informationen gelten für Szenarien, in denen Sie *keinen* virtuellen Computer verwenden, der über den Azure-Katalog erstellt wurde (wenn Sie also beispielsweise einen virtuellen Computer aus einem lokalen Rechenzentrum migriert haben). In diesem Fall muss der VM-Agent installiert werden, um den virtuellen Computer zu schützen. Erfahren Sie mehr über den [VM-Agent](../virtual-machines/virtual-machines-windows-classic-agents-and-extensions.md#azure-vm-agents-for-windows-and-linux).
+Der Azure VM-Agent muss auf dem virtuellen Azure-Computer installiert werden, damit die Sicherungserweiterung funktioniert. Wenn Ihr virtueller Computer aus dem Azure-Katalog erstellt wurde, ist der VM-Agent auf dem virtuellen Computer bereits vorhanden. Diese Informationen gelten für Szenarien, in denen Sie *keinen* virtuellen Computer verwenden, der über den Azure-Katalog erstellt wurde (wenn Sie also beispielsweise einen virtuellen Computer aus einem lokalen Rechenzentrum migriert haben). In diesem Fall muss der VM-Agent installiert werden, um den virtuellen Computer zu schützen. Erfahren Sie mehr über den [VM-Agent](../virtual-machines/windows/classic/agents-and-extensions.md#azure-vm-agents-for-windows-and-linux).
 
 Falls beim Sichern des virtuellen Azure-Computers Probleme auftreten, müssen Sie sicherstellen, dass der Azure VM-Agent auf dem virtuellen Computer korrekt installiert ist (s. Tabelle unten). Die folgende Tabelle enthält weitere Informationen zum VM-Agent für virtuelle Windows- und Linux-Computer.
 

@@ -16,8 +16,9 @@ ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 3d8300bbb54bd88e6ff3844208ec5d5fa25c5e8d
-ms.openlocfilehash: d935f45f87558dd7f9838ad3b370de0d9a7870a1
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 84d909b3eaa17cb4a1b8a4465615001896000dca
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -25,7 +26,7 @@ ms.openlocfilehash: d935f45f87558dd7f9838ad3b370de0d9a7870a1
 Verwenden Sie ein [Microsoft HPC Pack 2012 R2-Image für einen virtuellen Computer](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/) aus Azure Marketplace und das Azure-Portal, um den Hauptknoten eines HPC-Clusters zu erstellen. Das HPC Pack-VM-Image basiert auf Windows Server 2012 R2 Datacenter mit vorinstalliertem HPC Pack 2012 R2 Update 3. Verwenden Sie diesen Hauptknoten für eine Proof of Concept-Bereitstellung von HPC Pack in Azure. Sie können dem Cluster dann Computeknoten zum Ausführen von HPC-Workloads hinzufügen.
 
 > [!TIP]
-> Um einen vollständigen HPC Pack 2012 R2-Cluster in Azure bereitzustellen, der den Hauptknoten und Serverknoten enthält, sollten Sie eine automatisierte Methode verwenden. Zu den Optionen gehören das [HPC Pack-IaaS-Bereitstellungsskript](virtual-machines-windows-classic-hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) und Resource Manager-Vorlagen wie der [HPC Pack-Cluster für Windows-Workloads](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterwindowscn/). Resource Manager-Vorlagen stehen auch für [Microsoft HPC Pack 2016-Cluster](https://github.com/MsHpcPack/HPCPack2016/tree/master/newcluster-templates) zur Verfügung. 
+> Um einen vollständigen HPC Pack 2012 R2-Cluster in Azure bereitzustellen, der den Hauptknoten und Serverknoten enthält, sollten Sie eine automatisierte Methode verwenden. Zu den Optionen gehören das [HPC Pack-IaaS-Bereitstellungsskript](windows/classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) und Resource Manager-Vorlagen wie der [HPC Pack-Cluster für Windows-Workloads](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterwindowscn/). Resource Manager-Vorlagen stehen auch für [Microsoft HPC Pack 2016-Cluster](https://github.com/MsHpcPack/HPCPack2016/tree/master/newcluster-templates) zur Verfügung. 
 > 
 > 
 
@@ -75,15 +76,10 @@ Es folgen allgemeine Schritte zur Verwendung des Azure-Portals zum Erstellen ein
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Sie können jetzt mit dem Hauptknoten Ihres HPC Pack-Clusters arbeiten. Starten Sie z.B. den HPC-Cluster-Manager, und führen Sie die [Aufgabenliste für die Bereitstellung](https://technet.microsoft.com/library/jj884141.aspx) aus.
-* Wenn Sie die Clustercomputekapazität bedarfsgesteuert heraufsetzen möchten, fügen Sie [Azure-Burstknoten](virtual-machines-windows-classic-hpcpack-cluster-node-burst.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) in einem Clouddienst hinzu. 
+* Wenn Sie die Clustercomputekapazität bedarfsgesteuert heraufsetzen möchten, fügen Sie [Azure-Burstknoten](windows/classic/hpcpack-cluster-node-burst.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) in einem Clouddienst hinzu. 
 * Führen Sie eine Test-Workload auf dem Cluster aus. Ein Beispiel hierzu finden Sie im [Leitfaden für die ersten Schritte](https://technet.microsoft.com/library/jj884144)von HPC Pack.
 
 <!--Image references-->
 [headnode]: ./media/virtual-machines-windows-hpcpack-cluster-headnode/headnode.png
 [marketplace]: ./media/virtual-machines-windows-hpcpack-cluster-headnode/marketplace.png
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

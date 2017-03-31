@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 02/17/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 110f3aa9ce4848c9350ea2e560205aa762decf7a
-ms.openlocfilehash: 85f56e223210f14615f7e4e1c87e35111b238aac
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: fcca957dc365d8c38b5a08991939860c5af96813
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -46,11 +46,7 @@ Azure Event Hubs ermöglichen Ihnen die Verarbeitung sehr großer Datenmengen au
   > [!NOTE]
   > Der Editor oder die IDE verfügen möglicherweise über bestimmte Funktionen für die Arbeit mit Maven, die in diesem Dokument nicht behandelt werden. Informationen zu den Funktionen der Bearbeitungsumgebung finden Sie in der Dokumentation für das von Ihnen verwendete Produkt.
   
-  * Einen SSH-Client. Weitere Informationen finden Sie in den folgenden Dokumenten:
-    
-    * [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix, OS X und Bash unter Windows 10](hdinsight-hadoop-linux-use-ssh-unix.md).
-
-    * [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Windows mit PuTTY](hdinsight-hadoop-linux-use-ssh-windows.md).
+  * Einen SSH-Client. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 * Ein SCP-Client. Der Befehl `scp` wird auf allen Linux-, Unix- und OS X-Systemen bereitgestellt (einschließlich Bash unter Windows 10). Für Windows-Systeme, die den Befehl `scp` nicht enthalten, wird PSCP empfohlen. PSCP steht über die [PuTTY-Downloadseite](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) zur Verfügung.
 

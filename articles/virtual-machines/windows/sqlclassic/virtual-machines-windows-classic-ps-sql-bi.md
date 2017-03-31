@@ -16,8 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 4f7527119f0e0955303858a52b638f6dbf483267
-ms.openlocfilehash: 60bd5469b4d22bac87e8794bcb6e1d3713645415
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 90e443fe69afdda8786dd00ffb32e9680a476cd4
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -97,7 +98,7 @@ In der folgenden Tabelle sind die Business Intelligence-Features zusammengefasst
   * Die Laufwerk-Cacherichtlinie für das Standardlaufwerk **C:**ist für die Verwendung von Daten nicht optimal.
   * Das Laufwerk **D:** ist ein temporäres Laufwerk, das hauptsächlich für die Auslagerungsdatei verwendet wird. Das Laufwerk **D:** wird nicht beibehalten und nicht in Blob Storage gespeichert. Bei Verwaltungsaufgaben, z.B. einer Änderung der Größe des virtuellen Computers, wird das Laufwerk **D:** zurückgesetzt. Es wird empfohlen, das Laufwerk **D:** **NICHT** für Datenbankdateien zu verwenden, einschließlich „tempdb“.
     
-    Weitere Informationen zum Erstellen und Anfügen von Datenträgern finden Sie unter [Anfügen eines Datenträgers an einen virtuellen Computer](../../virtual-machines-windows-classic-attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+    Weitere Informationen zum Erstellen und Anfügen von Datenträgern finden Sie unter [Anfügen eines Datenträgers an einen virtuellen Computer](../classic/attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 * Beenden oder deinstallieren Sie Dienste, die Sie nicht verwenden möchten. Beenden oder deinstallieren Sie beispielsweise Analysis Services und SQL Server Integration Services, falls der virtuelle Computer nur für Reporting Services verwendet wird. Die folgende Abbildung enthält ein Beispiel für die Dienste, die standardmäßig gestartet werden.
   
     ![SQL Server-Dienste](./media/virtual-machines-windows-classic-ps-sql-bi/IC650107.gif)
@@ -138,7 +139,7 @@ Analysis Services, Reporting Services, SQL Server-Datenbankmodul und Datenquelle
 Das Image für SQL Server im Katalog mit den virtuellen Computern enthält eine Installation von Reporting Services – Einheitlicher Modus. Der Berichtsserver ist aber nicht konfiguriert. Mit den Schritten in diesem Abschnitt wird der Reporting Services-Berichtsserver konfiguriert. Ausführlichere Informationen zur Konfiguration des einheitlichen Modus der Reporting Services finden Sie unter [Installieren des Reporting Services-Berichtsservers im einheitlichen Modus](https://msdn.microsoft.com/library/ms143711.aspx).
 
 > [!NOTE]
-> Ähnliche Inhalte, bei denen Windows PowerShell-Skripts zum Konfigurieren des Berichtsservers verwendet werden, finden Sie unter [Verwenden von PowerShell zum Erstellen einer Azure-VM mit einem Berichtsserver im einheitlichen Modus](virtual-machines-windows-classic-ps-sql-report.md).
+> Ähnliche Inhalte, bei denen Windows PowerShell-Skripts zum Konfigurieren des Berichtsservers verwendet werden, finden Sie unter [Verwenden von PowerShell zum Erstellen einer Azure-VM mit einem Berichtsserver im einheitlichen Modus](../classic/ps-sql-report.md).
 
 ### <a name="connect-to-the-virtual-machine-and-start-the-reporting-services-configuration-manager"></a>Herstellen einer Verbindung mit dem virtuellen Computer und Starten des Konfigurations-Managers für Reporting Services
 Es gibt zwei allgemeine Workflows zum Herstellen einer Verbindung mit einem virtuellen Azure-Computer:
@@ -242,7 +243,7 @@ In der folgende Tabelle sind einige der Optionen zusammengefasst, mit denen vorh
   
   1. Erstellen Sie eine VHD-Festplatte auf dem lokalen Computer, der die Berichte enthält.
   2. Erstellen Sie ein Verwaltungszertifikat, und installieren Sie es.
-  3. Laden Sie die VHD-Datei mit dem Cmdlet "Add-AzureVHD" nach Azure hoch ( [Erstellen und Hochladen einer Windows Server-VHD nach Azure](../../virtual-machines-windows-classic-createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)).
+  3. Laden Sie die VHD-Datei mit dem Cmdlet "Add-AzureVHD" nach Azure hoch ( [Erstellen und Hochladen einer Windows Server-VHD nach Azure](../classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)).
   4. Fügen Sie den Datenträger an den virtuellen Computer an.
 
 ## <a name="install-other-sql-server-services-and-features"></a>Installieren anderer SQL Server-Dienste und -Features
@@ -322,7 +323,7 @@ In diesem Abschnitt werden die zu erstellenden Microsoft Azure Virtual Machine-E
 
 Weitere Informationen zum Erstellen von Endpunkten finden Sie hier:
 
-* Erstellen von Endpunkten:[Einrichten von Endpunkten für einen virtuellen Computer](../../virtual-machines-windows-classic-setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+* Erstellen von Endpunkten:[Einrichten von Endpunkten für einen virtuellen Computer](../classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 * SQL Server: Abschnitt "Konfigurationsschritte zum Verbinden des virtuellen Computers mit SQL Server Management Studio" unter [Bereitstellen eines virtuellen Computers mit SQL Server auf Azure](../sql/virtual-machines-windows-portal-sql-server-provision.md)
 
 Im folgenden Diagramm sind die Ports dargestellt, die in der Firewall des virtuellen Computers geöffnet werden müssen, um den Remotezugriff auf die Funktionen und Komponenten auf dem virtuellen Computer zu ermöglichen.
@@ -334,7 +335,7 @@ Im folgenden Diagramm sind die Ports dargestellt, die in der Firewall des virtue
 * [Übersicht zu SQL Server auf virtuellen Azure-Computern](../sql/virtual-machines-windows-sql-server-iaas-overview.md)
 * [Virtuelle Computer](https://azure.microsoft.com/documentation/services/virtual-machines/)
 * [Bereitstellen eines virtuellen Computers mit SQL Server auf Azure](../sql/virtual-machines-windows-portal-sql-server-provision.md)
-* [Anfügen eines Datenträgers an einen virtuellen Computer](../../virtual-machines-windows-classic-attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* [Anfügen eines Datenträgers an einen virtuellen Computer](../classic/attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 * [Migrieren einer Datenbank zu SQL Server auf einer Azure-VM](../sql/virtual-machines-windows-migrate-sql.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)
 * [Bestimmen des Servermodus einer Analysis Services-Instanz](https://msdn.microsoft.com/library/gg471594.aspx)
 * [Mehrdimensionale Modellierung (Adventure Works-Tutorial)](https://technet.microsoft.com/library/ms170208.aspx)
@@ -346,10 +347,5 @@ Im folgenden Diagramm sind die Ports dargestellt, die in der Firewall des virtue
 
 ### <a name="community-content"></a>Community-Inhalte
 * [Verwalten von Azure SQL-Datenbank mit PowerShell](http://blogs.msdn.com/b/windowsazure/archive/2013/02/07/windows-azure-sql-database-management-with-powershell.aspx)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

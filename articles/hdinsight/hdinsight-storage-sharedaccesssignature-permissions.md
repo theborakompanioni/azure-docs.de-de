@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 02/28/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
-ms.openlocfilehash: b4de2d04c331ac608c77057613276ac8f85ec600
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 510a96051d3f650f5451eb46bbc8263a3393432e
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -195,10 +195,7 @@ Um sicherzustellen, dass der Zugriff eingeschränkt wird, verwenden Sie die folg
 * Nutzen Sie für **Windows-basierte** -Cluster Remotedesktop zur Verbindung mit dem Cluster. Weitere Informationen finden Sie unter [Connect to HDInsight using RDP (Herstellen einer Verbindung mit HDInsight mithilfe von RDP)](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp).
   
     Nachdem die Verbindung aufgebaut wurde, verwenden Sie das Symbol **Hadoop-Befehlszeile** auf dem Desktop, um eine Eingabeaufforderung zu öffnen.
-* Verwenden Sie für **Linux-basierte** -Cluster SSH zur Verbindung mit dem Cluster. Informationen zur Verwendung von SSH mit Linux-basierten Clustern finden Sie in den folgenden Dokumenten:
-  
-  * [Verwenden von SSH mit HDInsight (Hadoop) unter Bash on Windows 10, Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md)
-  * [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Windows mit PuTTY](hdinsight-hadoop-linux-use-ssh-windows.md)
+* Verwenden Sie für **Linux-basierte** -Cluster SSH zur Verbindung mit dem Cluster. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 Nachdem die Verbindung mit dem Cluster hergestellt wurde, befolgen Sie die folgenden Schritte zum Überprüfen, ob Sie Elemente im SAS-Speicherkonto ausschließlich lesen und auflisten können:
 

@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/02/2017
 ms.author: szark
 translationtype: Human Translation
-ms.sourcegitcommit: 7e77858b36d07049333422d4454c29a9e1acb748
-ms.openlocfilehash: bdec7eb0b32cd8853dc01791466abf48c61a5fe8
-ms.lasthandoff: 02/04/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 465c24cf16f52ee068c875ac7d8ce8b4ebec4a1a
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -132,7 +132,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie bereits ein Ubuntu-Linux-Betr
 9. Klicken Sie im Hyper-V-Manager auf **Aktion > Herunterfahren**. Ihre Linux-VHD kann nun in Azure hochgeladen werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Sie können jetzt mit Ihrer Ubuntu-Linux-VHD-Datei neue virtuelle Azure-Computer in Azure erstellen. Wenn Sie die VHD-Datei zum ersten Mal in Azure hochladen, führen Sie die Schritte 2 und 3 in [Erstellen und Hochladen einer virtuellen Festplatte, die das Linux-Betriebssystem enthält](virtual-machines-linux-classic-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)aus.
+Sie können jetzt mit Ihrer Ubuntu-Linux-VHD-Datei neue virtuelle Azure-Computer in Azure erstellen. Wenn Sie die VHD-Datei zum ersten Mal in Azure hochladen, führen Sie die Schritte 2 und 3 in [Erstellen und Hochladen einer virtuellen Festplatte, die das Linux-Betriebssystem enthält](linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)aus.
 
 ## <a name="references"></a>Referenzen
 Ubuntu HardWare Enablement-Kernel (HWE)

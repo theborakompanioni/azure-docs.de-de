@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 02/28/2017
 ms.author: kyliel
 translationtype: Human Translation
-ms.sourcegitcommit: 24410a07995d5ac813b2bf4cdeed320c72ce7e06
-ms.openlocfilehash: 7845b552bd1360927eae414f57fefbd74ac0b7f7
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: d0fc5de34f7d9e5a607495eb97d9e35dc9eb21f9
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -110,7 +110,7 @@ Die Erweiterung [CustomScript](https://github.com/Azure/azure-linux-extensions/t
 
 ## <a name="authentication-user-names-passwords-and-ssh-keys"></a>Authentifizierung: Benutzernamen, Kennwörter und SSH-Schlüssel
 Wenn Sie im Azure-Portal einen virtuellen FreeBSD-Computer erstellen, müssen einen Benutzernamen, ein Kennwort oder einen öffentlichen SSH-Schlüssel angeben.
-Benutzernamen für die Bereitstellung einer FreeBSD-VM in Azure dürfen nicht mit Namen von Systemkonten (UID <&100;) übereinstimmen, die bereits auf dem virtuellen Computer vorhanden sind (Beispiel: root).
+Benutzernamen für die Bereitstellung einer FreeBSD-VM in Azure dürfen nicht mit Namen von Systemkonten (UID < 100) übereinstimmen, die bereits auf dem virtuellen Computer vorhanden sind (Beispiel: root).
 Derzeit wird nur der RSA SSH-Schlüssel unterstützt. Mehrzeilige SSH-Schlüssel müssen mit `---- BEGIN SSH2 PUBLIC KEY ----` beginnen und mit `---- END SSH2 PUBLIC KEY ----` enden.
 
 ## <a name="obtaining-superuser-privileges"></a>Erlangen von Superuser-Berechtigungen
@@ -128,5 +128,5 @@ Der [Azure VM-Gast-Agent](https://github.com/Azure/WALinuxAgent/) mit der Versio
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Wechseln Sie zum [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd110/) , um eine FreeBSD-VM zu erstellen.
-* Wenn Sie Ihre eigene FreeBSD-VHD in Azure aufnehmen möchten, finden Sie relevante Informationen unter [Erstellen und Hochladen einer FreeBSD-VHD in Azure](./virtual-machines-linux-classic-freebsd-create-upload-vhd.md).
+* Wenn Sie Ihre eigene FreeBSD-VHD in Azure aufnehmen möchten, finden Sie relevante Informationen unter [Erstellen und Hochladen einer FreeBSD-VHD in Azure](linux/classic/freebsd-create-upload-vhd.md).
 
