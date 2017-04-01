@@ -12,15 +12,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 03/24/2017
 ms.author: fashah;garye;bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: ba61d00f277af579c87a130336ead9879b82a6de
 ms.openlocfilehash: 0678c47b28cff54986b79b901c7d2a92136610fc
+ms.lasthandoff: 12/13/2016
 
 
 ---
-# <a name="a-nameheadingaprocess-azure-blob-data-with-advanced-analytics"></a><a name="heading"></a>Verarbeiten von Azure-Blobdaten mit erweiterter Analyse
+# <a name="heading"></a>Verarbeiten von Azure-Blobdaten mit erweiterter Analyse
 In diesem Dokument werden das Durchsuchen von Daten und Generieren von Funktionen aus Daten in einem Azure-Blobspeicher beschrieben. 
 
 ## <a name="load-the-data-into-a-pandas-data-frame"></a>Laden der Daten in ein Pandas-DataFrame
@@ -50,7 +51,7 @@ Um ein Dataset zu untersuchen und zu bearbeiten, muss es aus der Blobquelle in e
 
 Sie können nun die Daten durchsuchen und Funktionen mit diesem DataSet generieren.
 
-## <a name="a-nameblob-dataexplorationadata-exploration"></a><a name="blob-dataexploration"></a>Durchsuchen von Daten
+## <a name="blob-dataexploration"></a>Durchsuchen von Daten
 Hier sind einige Beispiele für Möglichkeiten zum Durchsuchen von Daten mithilfe von Pandas:
 
 1. Überprüfen der Anzahl von Zeilen und Spalten: 
@@ -95,10 +96,10 @@ Hier sind einige Beispiele für Möglichkeiten zum Durchsuchen von Daten mithilf
         #correlation between column_a and column_b
         dataframe_blobdata[['<column_a>', '<column_b>']].corr()
 
-## <a name="a-nameblob-featuregenafeature-generation"></a><a name="blob-featuregen"></a>Generieren von Funktionen
+## <a name="blob-featuregen"></a>Generieren von Funktionen
 Sie können Funktionen wie folgt mithilfe von Python generieren:
 
-### <a name="a-nameblob-countfeatureaindicator-value-based-feature-generation"></a><a name="blob-countfeature"></a>Indikatorwertbasiertes Generieren von Funktionen
+### <a name="blob-countfeature"></a>Indikatorwertbasiertes Generieren von Funktionen
 Kategorische Funktionen können wie folgt erstellt werden:
 
 1. Untersuchen Sie die Verteilung der Kategoriespalte:
@@ -117,7 +118,7 @@ Kategorische Funktionen können wie folgt erstellt werden:
         #Remove the original column rate_code in df1_with_dummy
         dataframe_blobdata_with_identity.drop('<categorical_column>', axis=1, inplace=True)
 
-### <a name="a-nameblob-binningfeatureabinning-feature-generation"></a><a name="blob-binningfeature"></a>Gruppenbasierte Funktionsgenerierung
+### <a name="blob-binningfeature"></a>Gruppenbasierte Funktionsgenerierung
 Zum Generieren von klassifizierten Funktionen gehen Sie wie folgt vor:
 
 1. Fügen Sie eine Folge von Spalten zum Klassifizieren einer numerischen Spalte hinzu:
@@ -131,7 +132,7 @@ Zum Generieren von klassifizierten Funktionen gehen Sie wie folgt vor:
    
         dataframe_blobdata_with_bin_bool = dataframe_blobdata.join(dataframe_blobdata_bin_bool)    
 
-## <a name="a-namesql-featuregenawriting-data-back-to-azure-blob-and-consuming-in-azure-machine-learning"></a><a name="sql-featuregen"></a>Zurückschreiben von Daten in das Azure-Blob und Verwenden in Azure Machine Learning
+## <a name="sql-featuregen"></a>Zurückschreiben von Daten in das Azure-Blob und Verwenden in Azure Machine Learning
 Nachdem Sie die Daten untersucht und die erforderlichen Funktionen erstellt haben, können Sie die Daten (als Stichproben oder über Funktionen) mithilfe der folgenden Schritte in ein Azure-Blob hochladen und in Azure Machine Learning verwenden. Beachten Sie, dass in Azure Machine Learning Studio ebenfalls weitere Funktionen erstellt werden können. 
 
 1. Schreiben Sie den DataFrame in eine lokale Datei:
@@ -167,10 +168,5 @@ Nachdem Sie die Daten untersucht und die erforderlichen Funktionen erstellt habe
 
 <!-- Module References -->
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

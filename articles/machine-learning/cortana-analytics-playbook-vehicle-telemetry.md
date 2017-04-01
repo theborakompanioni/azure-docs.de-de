@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 03/24/2017
 ms.author: bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: f497366f8e66ba79b0e5978fde54d0b33048aa8d
 ms.openlocfilehash: 3467c5549381f1354987fead424646afe847739c
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -57,10 +58,5 @@ Diese Lösung greift auf die folgenden zwei unterschiedlichen **Datenquellen**zu
 
 * **Simulierte Fahrzeugsignale und -diagnose:**Ein Fahrzeugtelematiksimulator gibt Diagnoseinformationen und Signale aus, die dem Zustand des Fahrzeugs und dem Fahrverhalten zu einem bestimmten Zeitpunkt entsprechen. 
 * **Fahrzeugkatalog:**Der Fahrzeugkatalog ist ein Referenzdataset mit der Fahrgestellnummer zur Modellierung der Zuordnung.
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

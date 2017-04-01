@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 03/24/2017
 ms.author: bradsev;garye
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: b6751bf2367ca849f35c81a7857b4f85d75ef6a2
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -57,10 +58,10 @@ Um ein DataSet zu untersuchen und zu bearbeiten, muss es aus der Blobquelle in e
 
 Sie können nun die Daten durchsuchen und Funktionen mit diesem DataSet generieren.
 
-## <a name="a-nameblob-featuregenafeature-generation"></a><a name="blob-featuregen"></a>Generieren von Funktionen
+## <a name="blob-featuregen"></a>Generieren von Funktionen
 In den nächsten beiden Abschnitten wird veranschaulicht, wie kategorische Features mit Indikatorwerten und Klassifizierungsfeatures mithilfe von Python-Skripts generiert werden.
 
-### <a name="a-nameblob-countfeatureaindicator-value-based-feature-generation"></a><a name="blob-countfeature"></a>Indikatorwertbasiertes Generieren von Funktionen
+### <a name="blob-countfeature"></a>Indikatorwertbasiertes Generieren von Funktionen
 Kategorische Funktionen können wie folgt erstellt werden:
 
 1. Untersuchen Sie die Verteilung der Kategoriespalte:
@@ -79,7 +80,7 @@ Kategorische Funktionen können wie folgt erstellt werden:
         #Remove the original column rate_code in df1_with_dummy
         dataframe_blobdata_with_identity.drop('<categorical_column>', axis=1, inplace=True)
 
-### <a name="a-nameblob-binningfeatureabinning-feature-generation"></a><a name="blob-binningfeature"></a>Gruppenbasierte Funktionsgenerierung
+### <a name="blob-binningfeature"></a>Gruppenbasierte Funktionsgenerierung
 Zum Generieren von klassifizierten Funktionen gehen Sie wie folgt vor:
 
 1. Fügen Sie eine Folge von Spalten zum Klassifizieren einer numerischen Spalte hinzu:
@@ -93,7 +94,7 @@ Zum Generieren von klassifizierten Funktionen gehen Sie wie folgt vor:
    
         dataframe_blobdata_with_bin_bool = dataframe_blobdata.join(dataframe_blobdata_bin_bool)
 
-## <a name="a-namesql-featuregenawriting-data-back-to-azure-blob-and-consuming-in-azure-machine-learning"></a><a name="sql-featuregen"></a>Zurückschreiben von Daten in das Azure-Blob und Verwenden in Azure Machine Learning
+## <a name="sql-featuregen"></a>Zurückschreiben von Daten in das Azure-Blob und Verwenden in Azure Machine Learning
 Nachdem Sie die Daten untersucht und die erforderlichen Funktionen erstellt haben, können Sie die Daten (als Stichproben oder über Funktionen) mithilfe der folgenden Schritte in ein Azure-Blob hochladen und in Azure Machine Learning verwenden. Beachten Sie, dass in Azure Machine Learning Studio ebenfalls weitere Funktionen erstellt werden können.
 
 1. Schreiben Sie den DataFrame in eine lokale Datei:
@@ -123,10 +124,5 @@ Nachdem Sie die Daten untersucht und die erforderlichen Funktionen erstellt habe
 3. Die Daten können nun wie im folgenden Screenshot gezeigt mit dem [Import Data](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) -Modul von Azure Machine Learning aus dem Blob gelesen werden:
 
 ![Reader-Blob](./media/machine-learning-data-science-process-data-blob/reader_blob.png)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

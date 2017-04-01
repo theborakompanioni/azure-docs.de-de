@@ -26,8 +26,6 @@ ms.lasthandoff: 03/29/2017
 
 Das Gewinnen von eingehenden Erkenntnissen zu Ihrer Netzwerkleistung ist von entscheidender Bedeutung, damit Sie für Ihre Kunden zuverlässige Dienste bereitstellen können. Daher ist es wichtig, Netzwerkausfälle schnell zu erkennen und Korrekturmaßnahmen einzuleiten, um eine Lösung für die Ausfallsituation zu finden. Mit Azure Automation können Sie eine Aufgabe auf programmgesteuerte Weise mithilfe von Runbooks implementieren und ausführen. Azure Automation schafft die Voraussetzungen für die Durchführung einer fortlaufenden und proaktiven Netzwerküberwachung und die Verwendung von Warnungen.
 
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
-
 ## <a name="scenario"></a>Szenario
 
 Das Szenario in der folgenden Abbildung ist eine Multi-Tier-Anwendung mit lokaler Verbindung, die über ein VPN Gateway und einen Tunnel hergestellt wird. Zur Erzielung einer hohen Anwendungsleistung muss sichergestellt werden, dass das VPN Gateway betriebsbereit ist und ausgeführt wird.

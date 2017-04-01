@@ -34,8 +34,6 @@ Durch den Einsatz von Network Watcher, Warnungen und Functions im Azure-Ökosyst
 In diesem Beispiel werden von Ihrer VM ungewöhnlich viele TCP-Segmente gesendet, und Sie möchten dazu eine Warnung erhalten. Als Beispiel werden TCP-Segmente verwendet, aber Sie können eine beliebige Warnungsbedingung nutzen. Bei einer Warnung möchten Sie über Paketebenendaten verfügen, um zu verstehen, warum es zu einem Anstieg der Kommunikation gekommen ist. Sie können dann Maßnahmen einleiten, um die reguläre Kommunikation des Computers wiederherzustellen.
 Bei diesem Szenario wird angenommen, dass Sie über eine vorhandene Instanz von Network Watcher und eine Ressourcengruppe mit einem gültigen virtuellen Computer verfügen, der genutzt werden kann.
 
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
-
 ## <a name="scenario"></a>Szenario
 
 Zur Automatisierung dieses Prozesses erstellen und verbinden wir eine Warnung auf unserer VM, die ausgelöst wird, wenn der Vorfall eintritt, sowie eine Azure-Funktion für den Aufruf von Network Watcher.
