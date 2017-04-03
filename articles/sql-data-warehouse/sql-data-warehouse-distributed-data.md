@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: tables
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
 ms.sourcegitcommit: 2548f779767635865daf790d301d86feff573a29
 ms.openlocfilehash: 195b78a7f634d01f228c90efb34763e4175708ac
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -62,7 +64,7 @@ Eine Verteilung ist die Basiseinheit zum Speichern von verteilten Daten und Vera
 ### <a name="can-i-view-the-compute-nodes"></a>Kann ich die Computeknoten anzeigen?
 Jeder Computeknoten verfügt über eine Knoten-ID und ist in den Systemsichten von SQL Data Warehouse und Parallel Data Warehouse sichtbar.  Sie können die Computeknoten anzeigen, indem Sie in den Systemsichten, deren Namen mit „sys.pdw_nodes“ beginnen, nach der Spalte „node_id“ suchen. Eine Liste mit den Systemsichten finden Sie in der [Übersicht über die MPP-Systemsichten](sql-data-warehouse-reference-tsql-statements.md).
 
-## <a name="a-namereplicatedareplicated-tables-for-parallel-data-warehouse"></a><a name="Replicated"></a>Replizierte Tabellen für Parallel Data Warehouse
+## <a name="Replicated"></a>Replizierte Tabellen für Parallel Data Warehouse
 Gilt für: Parallel Data Warehouse
 
 Zusätzlich zur Verwendung von verteilten Tabellen verfügt Parallel Data Warehouse auch über eine Option zum Replizieren von Tabellen. Eine *replizierte Tabelle* ist eine Tabelle, die vollständig auf jedem Computeknoten gespeichert wird. Bei der Replikation einer Tabelle ist es nicht mehr nötig, die Tabellenzeilen zwischen Computeknoten zu übertragen, bevor die Tabelle in einer Verknüpfung oder Aggregation verwendet wird. Für die Replikation von Tabellen sind nur kleine Tabellen geeignet, weil mehr Speicherplatz zum Speichern der vollständigen Tabelle auf jedem Computeknoten erforderlich ist.  
@@ -73,10 +75,5 @@ Im folgenden Diagramm ist eine replizierte Tabelle dargestellt, die auf jedem Co
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen zur effektiven Nutzung von verteilten Tabellen finden Sie unter [Verteilen von Tabellen in SQL Data Warehouse](sql-data-warehouse-tables-distribute.md).  
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 
