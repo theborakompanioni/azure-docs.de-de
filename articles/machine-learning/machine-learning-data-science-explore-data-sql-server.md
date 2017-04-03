@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 03/24/2017
 ms.author: bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 1654c100c1c57b04a61cf2b9d2cf37d58cec1870
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -32,7 +33,7 @@ Das folgende **Menü** enthält Links zu den Themen, in denen die Verwendung die
 > 
 > 
 
-## <a name="a-namesql-dataexplorationaexplore-sql-data-with-sql-scripts"></a><a name="sql-dataexploration"></a>Durchsuchen von SQL-Daten mit SQL-Skripts
+## <a name="sql-dataexploration"></a>Durchsuchen von SQL-Daten mit SQL-Skripts
 Hier finden Sie einige SQL-Beispielskripts, die zum Durchsuchen von Daten auf einem SQL Server verwendet werden können.
 
 1. Abrufen der Anzahl der Vorkommen pro Tag:
@@ -53,7 +54,7 @@ Hier finden Sie einige SQL-Beispielskripts, die zum Durchsuchen von Daten auf ei
 > 
 > 
 
-## <a name="a-namepythonaexplore-sql-data-with-python"></a><a name="python"></a>Durchsuchen von SQL-Daten mit Python
+## <a name="python"></a>Durchsuchen von SQL-Daten mit Python
 Die Verwendung von Python zum Durchsuchen von Daten und zum Generieren von Funktionen mit Daten in SQL Server ähnelt der Datenverarbeitung in Azure-Blobs mit Python, die unter [Verarbeiten von Azure-Blobdaten in Ihrer Data Science-Umgebung](machine-learning-data-science-process-data-blob.md)beschrieben ist. Die Daten müssen aus der Datenbank in ein Pandas-DataFrame geladen werden, um dann weiter verarbeitet werden zu können. In diesem Abschnitt werden das Herstellen einer Verbindung mit der Datenbank und das Laden der Daten in den DataFrame beschrieben.
 
 Das folgende Format für die Verbindungszeichenfolge kann verwendet werden, um aus Python mit „pyodbc“ eine Verbindung mit einer SQL Server-Datenbank herzustellen (ersetzen Sie „servername“, „dbname“, „username“ und „password“ durch Ihre Daten):
@@ -71,10 +72,5 @@ Sie können nun mit dem Pandas-DataFrame arbeiten. Die Vorgehensweise wird im Th
 
 ## <a name="cortana-analytics-process-in-action-example"></a>Beispiel: Cortana-Analyseprozess (CAP) in Aktion
 Eine lückenlose exemplarische Vorgehensweise zur Verwendung des Team Data Science-Prozesses mit einem öffentlichen Dataset finden Sie unter [Der Team Data Science-Prozess in Aktion: Verwenden von SQL Server](machine-learning-data-science-process-sql-walkthrough.md).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

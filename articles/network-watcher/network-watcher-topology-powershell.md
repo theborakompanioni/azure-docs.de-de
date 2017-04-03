@@ -31,8 +31,6 @@ ms.lasthandoff: 03/22/2017
 Das Topologiefeature von Network Watcher bietet eine visuelle Darstellung der Netzwerkressourcen in einem Abonnement. Im Portal wird Ihnen diese Visualisierung automatisch angezeigt. Die der Topologieansicht im Portal zugrunde liegenden Informationen können mit PowerShell abgerufen werden.
 Diese Funktion verleiht den Topologieinformationen Flexibilität, da die Daten von anderen Tools zur Visualisierung genutzt werden können.
 
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
-
 Die Verbindung wird durch zwei Beziehungen umgesetzt.
 
 - **Einschlussbeziehung** – Beispiel: VNet enthält ein Subnetz mit einer NIC.

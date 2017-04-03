@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 03/24/2017
 ms.author: bradsev;paulsh
 translationtype: Human Translation
 ms.sourcegitcommit: d0075eec26c2131f2019e7aca4c00d2d63cc976b
 ms.openlocfilehash: 80051996b0c39c53da63dc6b7bc75c869f692575
+ms.lasthandoff: 01/06/2017
 
 
 ---
@@ -530,9 +531,4 @@ Sie können für die Abfrage auch Squirrel SQL nutzen. Die Schritte für Postgre
 Eine Übersicht zu Themen, die Sie durch die Aufgaben führen, die den Data Science-Prozess in Azure umfassen, finden Sie unter [Team Data Science-Prozess (TDSP)](http://aka.ms/datascienceprocess).
 
 Eine Beschreibung der anderen exemplarischen End-to-End-Vorgehensweisen, in denen die Schritte im Team Data Science-Prozess für bestimmte Szenarien veranschaulicht werden, finden Sie unter [Exemplarische Vorgehensweisen für den Team Data Science-Prozess](data-science-process-walkthroughs.md). Die exemplarischen Vorgehensweisen zeigen auch, wie Cloud- und lokale Tools und Dienste in einem Workflow oder einer Pipeline zum Erstellen einer intelligenten Anwendung kombiniert werden.
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

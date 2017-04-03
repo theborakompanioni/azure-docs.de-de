@@ -27,8 +27,6 @@ Mit Datenflussprotokollen von Netzwerksicherheitsgruppen können Sie Information
 
 Es kann schwierig sein, Erkenntnisse zu Datenflussprotokoll-Daten zu gewinnen, indem die Protokolldateien manuell durchsucht werden. In diesem Artikel stellen wir eine Lösung vor, mit der Sie Ihre aktuellen Datenflussprotokolle visualisieren und sich über den Datenverkehr in Ihrem Netzwerk informieren können.
 
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
-
 ## <a name="scenario"></a>Szenario
 
 Im folgenden Szenario verbinden wir Power BI Desktop mit dem Speicherkonto, das wir als Senke für unsere Daten der NSG-Datenflussprotokollierung konfiguriert haben. Nachdem wir eine Verbindung mit unserem Speicherkonto hergestellt haben, lädt Power BI die Protokolle herunter und analysiert sie, um eine visuelle Darstellung des Datenverkehrs zu erzeugen, der von den Netzwerksicherheitsgruppen protokolliert wird.

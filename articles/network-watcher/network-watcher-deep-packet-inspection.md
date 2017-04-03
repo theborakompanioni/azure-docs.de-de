@@ -31,8 +31,6 @@ Im Artikel werden einige vorkonfigurierte Szenarien einer zuvor durchgeführten 
 
 Es wird davon ausgegangen, dass Sie bereits eine Paketerfassung für einen virtuellen Computer durchgeführt haben. Informationen dazu, wie Sie eine Paketerfassung erstellen, finden Sie unter [Verwalten von Paketerfassungen mit Azure Network Watcher über das Portal](network-watcher-packet-capture-manage-portal.md). Informationen zur Vorgehensweise mit REST finden Sie unter [Manage packet captures with Azure Network Watcher using Azure REST API](network-watcher-packet-capture-manage-rest.md) (Verwalten von Paketerfassungen mit Azure Network Watcher per Azure-REST-API).
 
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
-
 ## <a name="scenario"></a>Szenario
 
 In diesem Szenario führen Sie Folgendes durch:

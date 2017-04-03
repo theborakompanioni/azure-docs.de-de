@@ -12,15 +12,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2016
+ms.date: 03/24/2017
 ms.author: fashah;garye;bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: a6bc79b2cb5b73109cddd6cf57caeba754b52e2e
 ms.openlocfilehash: 7873ad084c9d77eea556ae3fec846bebd4c99ebd
+ms.lasthandoff: 02/11/2017
 
 
 ---
-# <a name="a-nameheadingasample-data-in-azure-blob-storage"></a><a name="heading"></a>Datenstichproben im Azure-Blob-Speicher
+# <a name="heading"></a>Datenstichproben im Azure-Blob-Speicher
 Dieses Dokument behandelt das Erstellen von Stichproben aus Daten im Azure Blob-Speicher durch programmgesteuertes Herunterladen, um dann mit Prozeduren in Python-Code Stichproben zu erstellen.
 
 Das nachstehende **Menü** enthält Links zu Themen, die beschreiben, wie Datenstichproben aus verschiedenen Speicherumgebungen erstellt werden. 
@@ -68,7 +69,7 @@ Dieser Stichprobentask ist ein Schritt im [Team Data Science-Prozess (TDSP)](htt
 
 Sie können nun mit dem DataFrame von oben mit der 1-%-Stichprobe weitere Datensuchvorgänge durchführen und Funktionen verarbeiten.
 
-## <a name="a-nameheadingaupload-data-and-read-it-into-azure-machine-learning"></a><a name="heading"></a>Hochladen von Daten und Einlesen in Azure Machine Learning
+## <a name="heading"></a>Hochladen von Daten und Einlesen in Azure Machine Learning
 Mit dem folgenden Beispielcode können Sie ein Downsampling der Daten durchführen und diese direkt in Azure Machine Learning verwenden:
 
 1. Schreiben Sie den DataFrame in eine lokale Datei:
@@ -100,10 +101,5 @@ Mit dem folgenden Beispielcode können Sie ein Downsampling der Daten durchführ
 3. Lesen Sie die Daten wie in der folgenden Abbildung dargestellt mit dem Azure Machine Learning-Modul [Import Data](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) aus dem Azure-Blob:
 
 ![Reader-Blob](./media/machine-learning-data-science-sample-data-blob/reader_blob.png)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

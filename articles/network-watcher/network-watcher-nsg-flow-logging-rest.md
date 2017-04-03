@@ -33,8 +33,6 @@ ms.lasthandoff: 03/01/2017
 
 Flowprotokolle für Netzwerksicherheitsgruppen sind ein Network Watcher-Feature, mit dem Sie Informationen zu ein- und ausgehendem IP-Datenverkehr über eine Netzwerksicherheitsgruppe anzeigen können. Diese Flowprotokolle sind im JSON-Format geschrieben und zeigen ausgehende und eingehende Datenflüsse pro Regel, die NIC, auf die sich der Datenfluss bezieht, 5-Tupel-Informationen über den Datenfluss (Quell-/Ziel-IP, Quell-/Zielport, Protokoll) und Informationen zu zugelassenem oder verweigertem Datenverkehr.
 
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
-
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 ARMclient dient zum Aufrufen der REST-API mithilfe von PowerShell. Sie finden ARMClient auf chocolatey unter [ARMClient auf Chocolatey](https://chocolatey.org/packages/ARMClient).

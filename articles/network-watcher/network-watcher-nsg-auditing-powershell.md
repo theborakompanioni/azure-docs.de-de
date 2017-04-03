@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 78f367de862e4fa9203cc794549abb935f117848
+ms.sourcegitcommit: d60b1d44844c449e0f66dc0107a25531569d097b
 ms.openlocfilehash: a91da330e677c85f16f6f4e506613576b6507d7c
-ms.lasthandoff: 02/22/2017
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -33,8 +33,6 @@ Wenn Sie mit Netzwerksicherheitsgruppen nicht vertraut sind, informieren Sie sic
 In diesem Szenario vergleichen Sie eine bekannte gute Grundlage mit den für einen virtuellen Computer zurückgegebenen Ergebnissen der Sicherheitsgruppenansicht.
 
 Dieses Szenario setzt voraus, dass Sie die Schritte unter [Erstellen einer Network Watcher-Instanz](network-watcher-create.md) bereits ausgeführt haben, um eine Network Watcher-Instanz zu erstellen. Ferner wird davon ausgegangen, dass eine Ressourcengruppe mit einem gültigen virtuellen Computer vorhanden ist und verwendet werden kann.
-
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
 
 ## <a name="scenario"></a>Szenario
 
