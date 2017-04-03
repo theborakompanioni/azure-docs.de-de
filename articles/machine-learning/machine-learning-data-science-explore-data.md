@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 03/24/2017
 ms.author: bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: e85ccd42c743bb38c70ddf233b1e448771db7092
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -31,10 +32,5 @@ Dieses Dokument beschreibt die Vorgehensweise beim Untersuchen von Daten in vier
 Das folgende **Menü** enthält Links zu den Themen, in denen die Verwendung dieser Tools zum Untersuchen von Daten aus verschiedenen Speicherumgebungen beschrieben wird. 
 
 [!INCLUDE [cap-explore-data-selector](../../includes/cap-explore-data-selector.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

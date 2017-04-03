@@ -27,8 +27,6 @@ NSG-Datenflussprotokolle (Netzwerksicherheitsgruppen) enthalten Informationen f�
 
 Die manuelle Analyse und Auswertung dieser Datenflussprotokolle kann schwierig sein. Es gibt jedoch mehrere Open-Source-Tools, die zur Visualisierung dieser Daten beitragen können. In diesem Artikel wird eine Lösung für Visualisierung dieser Protokolle mit dem Elastic Stack bereitgestellt, mit der Sie Ihre Datenflussprotokolle schnell in einem Kibana-Dashboard indizieren und visualisieren können.
 
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
-
 ## <a name="scenario"></a>Szenario
 
 In diesem Artikel richten wir eine Lösung ein, mit der Sie die Datenflussprotokolle von Netzwerksicherheitsgruppen mithilfe des Elastic Stack visualisieren können.  Eine Logstash-Eingangs-Plug-In ruft die Datenflussprotokolle direkt aus dem für die Datenflussprotokolle konfigurierten Speicherblob ab. Anschließend werden die Datenflussprotokolle mit dem Elastic Stack indiziert und für das Erstellen eines Kibana-Dashboards verwendet, mit dem die Informationen visualisiert werden.

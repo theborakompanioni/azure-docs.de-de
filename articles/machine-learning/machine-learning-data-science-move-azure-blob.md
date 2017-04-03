@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 03/24/2017
 ms.author: bradsev;sachouks
 translationtype: Human Translation
 ms.sourcegitcommit: 9b32c0d9c3bc19a187873eebd6ab21036ee06db8
 ms.openlocfilehash: 1e773a1332d14109e9f50fb7db17528d061a98f2
+ms.lasthandoff: 12/06/2016
 
 
 ---
@@ -48,10 +49,5 @@ In diesem Dokument wird davon ausgegangen, dass Sie über ein Azure-Abonnement, 
 
 * Informationen zum Einrichten eines Azure-Abonnements finden Sie unter [Kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/).
 * Anleitungen zum Erstellen eines Speicherkontos und zum Abrufen von Konto- und Schlüsselinformationen finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md).
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

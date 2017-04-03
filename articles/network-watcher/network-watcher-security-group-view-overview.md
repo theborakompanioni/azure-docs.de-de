@@ -29,8 +29,6 @@ Einen weiter gefassten Anwendungsfall stellt die Sicherheitskonformität und Üb
 
 Im Portal werden die Regeln nach Gültigkeit, Subnetz, Netzwerkschnittstelle und Standard unterteilt. Dies bietet einen einfachen Einblick in die Regeln, die auf einen virtuellen Computer angewendet werden. Über eine Downloadschaltfläche können sämtliche Sicherheitsregeln unabhängig von der Registerkarte in eine CSV-Datei heruntergeladen werden.
 
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
-
 ![Sicherheitsgruppenansicht][1]
 
 Es können Regeln ausgewählt werden. Damit wird dann ein neues Blatt geöffnet, auf dem die Netzwerksicherheitsgruppe und die Quell- und Zielpräfixe angezeigt werden. Sie können von diesem Blatt aus direkt zu der Ressource der Netzwerksicherheitsgruppe navigieren.

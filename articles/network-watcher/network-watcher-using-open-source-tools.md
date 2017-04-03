@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 05fb0b7e80684737277626c12468ca9c754a0ac9
+ms.sourcegitcommit: 50d82847fb629880f298f79f9ab791a13836f01c
 ms.openlocfilehash: e27bb694d0cbcf1ff7c9d8ca4682a79c8b5c5cb1
-ms.lasthandoff: 02/22/2017
+ms.lasthandoff: 03/31/2017
 
 ---
 
@@ -26,8 +26,6 @@ ms.lasthandoff: 02/22/2017
 Paketerfassungen enthalten Netzwerkdaten, die Ihnen das Durchführen von Maßnahmen zur Netzwerkforensik und eingehende Paketuntersuchungen ermöglichen. Sie können viele verschiedene Open Source-Tools zum Analysieren von Paketerfassungen verwenden, um Erkenntnisse zu Ihrem Netzwerk zu gewinnen. Ein Open Source-Tool dieser Art, mit dem die Paketerfassung visualisiert werden kann, ist CapAnalysis. Die Visualisierung von Paketerfassungsdaten ist eine nützliche Möglichkeit, um sich schnell einen Überblick über Muster und Anomalien in Ihrem Netzwerk zu verschaffen. Außerdem ist es mit Visualisierungen möglich, Erkenntnisse dieser Art auf einfache Weise zu teilen.
 
 Mit Network Watcher von Azure können Sie diese wertvollen Daten erfassen, indem Sie im Netzwerk Paketerfassungen durchführen. Dieser Artikel enthält eine exemplarische Vorgehensweise dazu, wie Sie Erkenntnisse aus Paketerfassungen visualisieren und gewinnen, indem Sie CapAnalysis mit Network Watcher verwenden.
-
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
 
 ## <a name="scenario"></a>Szenario
 
