@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 03/24/2017
 ms.author: huvalo;bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: 045e40bccad59586987c0a18253dafff2f955a93
 ms.openlocfilehash: ea5005e7cff775c798b030748324781ef7dcfe7d
+ms.lasthandoff: 12/06/2016
 
 
 ---
@@ -32,7 +33,7 @@ Dieses Thema enthält Anweisungen zu:
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-## <a name="a-nameprerequisitesaprerequisites"></a><a name="prerequisites"></a>Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 Die Python-Clientbibliothek wurde in den folgenden Umgebungen getestet:
 
 * Windows, Mac und Linux
@@ -46,7 +47,7 @@ Es besteht eine Abhängigkeit von folgenden Paketen:
 
 Es empfiehlt sich, eine Python-Distribution wie z.B. [Anaconda](http://continuum.io/downloads#all) oder [Canopy](https://store.enthought.com/downloads/) zu verwenden, die aus Python, IPython stammt und mit den drei oben aufgeführten Paketen geliefert und installiert wird. Obwohl IPython nicht unbedingt erforderlich ist, ist es eine optimale Umgebung für die interaktive Bearbeitung und Visualisierung von Daten.
 
-### <a name="a-nameinstallationahow-to-install-the-azure-machine-learning-python-client-library"></a><a name="installation"></a>Installation der Azure Machine Learning Python-Clientbibliothek
+### <a name="installation"></a>Installation der Azure Machine Learning Python-Clientbibliothek
 Außerdem muss die Azure Machine Learning Python-Clientbibliothek zum Ausführen der Aufgaben in diesem Thema installiert sein. Es ist über [Python Package Index](https://pypi.python.org/pypi/azureml)verfügbar. Um es in Ihrer Python-Umgebung zu installieren, führen Sie den folgenden Befehl Ihrer lokalen Python-Umgebung aus:
 
     pip install azureml
@@ -60,12 +61,12 @@ Wenn Sie Git auf Ihrem Computer installiert haben, können Sie mit Pip direkt vo
     pip install git+https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python.git
 
 
-## <a name="a-namedatasetaccessause-studio-code-snippets-to-access-datasets"></a><a name="datasetAccess"></a>Verwenden von Studio Codeausschnitten, um auf Datasets zuzugreifen
+## <a name="datasetAccess"></a>Verwenden von Studio Codeausschnitten, um auf Datasets zuzugreifen
 Mit der Python-Clientbibliothek erhalten Sie programmgesteuerten Zugriff auf Ihre vorhandenen Datasets aus durchgeführten Experimenten.
 
 Von der Studio Web-Schnittstelle können Sie Codeausschnitte generieren, die alle notwendigen Informationen zum Laden und Deserialisieren von Datasets als Pandas DataFrame-Objekte auf Ihrem Standortcomputer enthalten.
 
-### <a name="a-namesecurityasecurity-for-data-access"></a><a name="security"></a>Sicherheit für den Datenzugriff
+### <a name="security"></a>Sicherheit für den Datenzugriff
 Die von Studio bereitgestellten Codeausschnitte zur Verwendung mit Python-Clientbibliotheken umfassen Ihre Arbeitsbereichs-ID und Authentifizierungstoken. Diese bieten vollständigen Zugriff auf den Arbeitsbereich und müssen wie ein Kennwort geschützt werden.
 
 Aus Sicherheitsgründen ist die Codeausschnitt-Funktionalität nur für Benutzer verfügbar, deren Rolle als **Besitzer** für den Arbeitsbereich eingestellt ist. Die Rolle wird in Azure Machine Learning Studio auf der Seite **BENUTZER** unter **Einstellungen** angezeigt.
@@ -86,7 +87,7 @@ Wenn Entwickler die Arbeitsplatz-ID und das Autorisierungstoken abgerufen haben,
 
 Autorisierungstoken werden auf der Seite **AUTORISIERUNGSTOKEN** unter **EINSTELLUNGEN** verwaltet. Sie können sie erneut generieren, aber dieses Verfahren hebt den Zugriff auf das vorherige Token auf.
 
-### <a name="a-nameaccessingdatasetsaaccess-datasets-from-a-local-python-application"></a><a name="accessingDatasets"></a>Zugriff auf Datasets aus einer lokalen Python-Anwendung
+### <a name="accessingDatasets"></a>Zugriff auf Datasets aus einer lokalen Python-Anwendung
 1. Klicken Sie in Machine Learning Studio auf der Navigationsleiste auf der linken Seite auf **DATASETS** .
 2. Wählen Sie das Dataset, auf das Sie zugreifen möchten. Wählen Sie eines der Datasets aus der Liste **MEINE DATASETS** oder aus der Liste **BEISPIELE** aus.
 3. Klicken Sie auf der unteren Symbolleiste auf **Datenzugriffscode generieren**. Diese Schaltfläche ist deaktiviert, wenn die Daten ein mit der Python-Clientbibliothek nicht kompatibles Format haben.
@@ -99,7 +100,7 @@ Autorisierungstoken werden auf der Seite **AUTORISIERUNGSTOKEN** unter **EINSTEL
    
     ![Notizbuch][ipython-dataset]
 
-## <a name="a-nameaccessingintermediatedatasetsaaccess-intermediate-datasets-from-machine-learning-experiments"></a><a name="accessingIntermediateDatasets"></a>Zugriff auf Zwischen-Datasets von Machine Learning-Experimenten
+## <a name="accessingIntermediateDatasets"></a>Zugriff auf Zwischen-Datasets von Machine Learning-Experimenten
 Nachdem ein Experiment in Machine Learning Studio ausgeführt wurde, ist es möglich, von den Ausgabeknoten der Module auf die Zwischen-Datasets zuzugreifen. Zwischen-Datasets sind Daten, die für Zwischenschritte erstellt und verwendet wurden, wenn ein Modell-Werkzeug ausgeführt wurde.
 
 Auf Zwischen-Datasets kann zugegriffen werden, solange das Datenformat mit der Python-Clientbibliothek kompatibel ist.
@@ -143,7 +144,7 @@ Die folgenden Schritte zeigen ein Beispiel, das ein Experiment erstellt, dieses 
     
     ![Histogramm][ipython-histogram]
 
-## <a name="a-nameclientapisause-the-machine-learning-python-client-library-to-access-read-create-and-manage-datasets"></a><a name="clientApis"></a>Verwenden Sie die Machine Learning Python-Clientbibliothek, um auf Datasets zuzugreifen, diese zu lesen, zu erstellen und zu verwalten.
+## <a name="clientApis"></a>Verwenden Sie die Machine Learning Python-Clientbibliothek, um auf Datasets zuzugreifen, diese zu lesen, zu erstellen und zu verwalten.
 ### <a name="workspace"></a>Arbeitsbereich
 Der Arbeitsbereich ist der Einstiegspunkt für die Python-Clientbibliothek. Geben Sie zum Erstellen einer Instanz die `Workspace` Klasse mit Ihrer Arbeitsbereich-ID und Ihrem Autorisierungstoken an:
 
@@ -334,10 +335,5 @@ Wenn Ihre Daten bereits serialisiert sind, verwenden Sie `update_from_raw_data` 
 <!-- Module References -->
 [convert-to-csv]: https://msdn.microsoft.com/library/azure/faa6ba63-383c-4086-ba58-7abf26b85814/
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 03/24/2017
 ms.author: bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: e1563db23e687f772eaff2e90ce9853c9d8b87de
 ms.openlocfilehash: f87df28a5a44b7ab3c1d9a48d43c8d1354c48830
+ms.lasthandoff: 11/23/2016
 
 
 ---
@@ -196,10 +197,5 @@ Mit den folgenden Schritten können Sie noch mehr lernen und entdecken.
 * Lesen Sie den Artikel [Zehn Dinge, die Sie mit der Data Science Virtual Machine machen können](http://aka.ms/dsvmtenthings)
 * Erfahren Sie, wie Sie mithilfe des [Team Data Science-Prozesses](https://azure.microsoft.com/documentation/learning-paths/data-science-process/)vollständige Analyselösungen systematisch erstellen.
 * Öffnen Sie den [Cortana Intelligence-Katalog](http://gallery.cortanaintelligence.com) , um Beispiele der Cortana Intelligence Suite für die Bereiche Machine Learning und Datenanalyse zu erhalten. Wir haben auch ein Symbol im **Startmenü** und auf dem Desktop der virtuellen Maschine dieser Galerie bereitgestellt.
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 

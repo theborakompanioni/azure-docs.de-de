@@ -29,8 +29,6 @@ Die IP-Datenflussüberprüfung nutzt als Ziel eine Netzwerkschnittstelle eines v
 
 Es muss in jeder Region, in der Sie die IP-Datenflussüberprüfung ausführen möchten, eine Instanz von Network Watcher erstellt werden. Network Watcher ist ein regionaler Dienst, der nur für Ressourcen in derselben Region ausgeführt werden kann. Dies hat jedoch keine Auswirkungen auf die Ergebnisse der IP-Datenflussüberprüfung, da trotzdem die Route zurückgegeben wird, die der Netzwerkschnittstelle zugeordnet ist.
 
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
-
 ![1][1]
 
 ## <a name="next-steps"></a>Nächste Schritte

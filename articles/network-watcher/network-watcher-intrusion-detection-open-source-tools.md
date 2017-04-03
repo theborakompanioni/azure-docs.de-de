@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: a1199ae3eccc5268006587fa47f2ca4fad362bdc
+ms.sourcegitcommit: d60b1d44844c449e0f66dc0107a25531569d097b
 ms.openlocfilehash: 82d5e525859ebe03b152c63e4debbae469049c12
-ms.lasthandoff: 02/24/2017
+ms.lasthandoff: 03/31/2017
 
 ---
 
@@ -26,8 +26,6 @@ ms.lasthandoff: 02/24/2017
 Paketerfassungen sind eine wichtige Komponente zum Implementieren von Systemen zur Erkennung von Netzwerkangriffen (Intrusion Detection Systems, IDS) und Durchführen der Sicherheitsüberwachung für Netzwerke (Network Security Monitoring, NSM). Es gibt mehrere Open Source-Tools für den IDS-Bereich, mit denen Paketerfassungen verarbeitet werden können und nach Signaturen von möglichen Netzwerkangriffen und schädlichen Aktivitäten gesucht werden kann. Mit den von Network Watcher bereitgestellten Paketerfassungen können Sie Ihr Netzwerk im Hinblick auf schädliche Eindringversuche oder Sicherheitsrisiken analysieren.
 
 Ein Open Source-Tool dieser Art ist Suricata. Es handelt sich um ein IDS-Modul, bei dem Regelsätze zum Überwachen von Netzwerkdatenverkehr verwendet und Warnungen ausgelöst werden, wenn verdächtige Ereignisse eintreten. Suricata verfügt über ein Multithread-Modul, mit dem Analysen des Netzwerkdatenverkehrs mit erhöhter Geschwindigkeit und Effizienz durchgeführt werden können. Weitere Details zu Suricata und seinen Funktionen finden Sie auf der entsprechenden Website unter „https://suricata-ids.org/“.
-
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
 
 ## <a name="scenario"></a>Szenario
 

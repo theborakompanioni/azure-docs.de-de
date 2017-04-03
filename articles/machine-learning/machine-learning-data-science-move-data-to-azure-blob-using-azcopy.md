@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 03/24/2017
 ms.author: bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: 9b32c0d9c3bc19a187873eebd6ab21036ee06db8
 ms.openlocfilehash: 1acc98f9688ced2e1cf177a881b28ce98c0bff9e
+ms.lasthandoff: 12/06/2016
 
 
 ---
@@ -88,10 +89,5 @@ Verwenden Sie zum Übertragen von Blobs zwischen Azure-Containern den folgenden 
 > 3. Sie können mit dem **/Source** -Parameter keine *bestimmte Blobdatei* für das Herunterladen angeben. Um eine bestimmte Datei herunterzuladen, geben Sie den Blobdateinamen mithilfe des */Pattern* -Parameters an. **/S** -Parameter kann verwendet werden, damit AzCopy rekursiv nach einem Dateinamensmuster sucht. Ohne den „/Pattern“-Parameter lädt AzCopy alle Dateien in diesem Verzeichnis herunter.
 > 
 > 
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 
