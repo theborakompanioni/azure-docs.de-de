@@ -16,15 +16,15 @@ ms.topic: get-started-article
 ms.date: 03/08/2017
 ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: ee46da891ab50a64c649b0370cb9231dd3448ea1
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: c2c46637ccccd01c1c3056d6a25ef605cfd68f2d
+ms.lasthandoff: 03/28/2017
 
 
 ---
 # <a name="getting-started-with-password-management"></a>Erste Schritte mit der Kennwortverwaltung
 > [!IMPORTANT]
-> **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)weiter.
+> **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md#reset-your-password)weiter.
 >
 >
 
@@ -375,7 +375,7 @@ Nun, da Sie das Azure AD Connect-Tool heruntergeladen haben, können Sie das Zur
 #### <a name="to-enable-password-writeback-using-windows-powershell"></a>So aktivieren Sie das Zurückschreiben von Kennwörtern mithilfe von Windows PowerShell
 1. Öffnen Sie auf Ihrem **Computer für die Verzeichnissynchronisierung** ein neues **Windows PowerShell-Fenster mit erhöhten Rechten**.
 2. Wenn das Modul nicht bereits geladen ist, geben Sie den `import-module ADSync`-Befehl ein, um die Azure AD Connect-Cmdlets in Ihre aktuelle Sitzung zu laden.
-3. Rufen Sie eine Liste mit den Azure AD-Connectors in Ihrem System ab, indem Sie das `Get-ADSyncConnector`-Cmdlet ausführen und die Ergebnisse in `$aadConnectorName` speichern, z.B. `$connectors = Get-ADSyncConnector|where-object {$\_.name -like "\*AAD"}`.
+3. Rufen Sie eine Liste mit den Azure AD-Connectors in Ihrem System ab, indem Sie das `Get-ADSyncConnector`-Cmdlet ausführen und die Ergebnisse in `$aadConnectorName` speichern, z.B. `$aadConnectorName = Get-ADSyncConnector|where-object {$_.name -like "*AAD"}`.
 4. Rufen Sie den aktuellen Status der Rückschreibung für den aktuellen Connector ab, indem Sie das folgende Cmdlet ausführen: `Get-ADSyncAADPasswordResetConfiguration –Connector $aadConnectorName.name`
 5. Aktivieren Sie das Zurückschreiben von Kennwörtern, indem Sie dieses Cmdlet ausführen: `Set-ADSyncAADPasswordResetConfiguration –Connector $aadConnectorName.name –Enable $true`
 
@@ -399,9 +399,9 @@ Nachdem Sie das Kennwortrückschreiben aktiviert haben, müssen Sie sicherstelle
 
 #### <a name="why-do-i-need-to-do-this"></a>Weshalb ist dieser Schritt erforderlich?
 
-Damit das Kennwortrückschreiben korrekt funktioniert, muss der Computer, auf dem Azure AD Connect ausgeführt wird, ausgehende HTTPS-Verbindungen mit **.servicebus.windows.net* und bestimmten von Azure verwendeten IP-Adressen herstellen können. Diese IP-Adressen sind in der Liste [Microsoft Azure Datacenter IP Ranges](https://www.microsoft.com/download/details.aspx?id=41653) (IP-Adressbereiche für Microsoft Azure-Datencenter) definiert.
+Damit das Kennwortrückschreiben richtig funktioniert, muss der Computer, auf dem Azure AD Connect ausgeführt wird, mit dem Dienst zum Zurücksetzen des Kennworts und mit Azure Service Bus kommunizieren können.
 
-Azure AD Connect-Tool ab **1.1.443.0** (neueste Version):
+Für das Azure AD Connect-Tool **1.1.443.0** und höher:
 
 - Die neueste Version des Azure AD Connect-Tools benötigt **ausgehenden HTTPS-Zugriff** auf Folgendes:
     - *passwordreset.microsoftonline.com*
@@ -421,7 +421,7 @@ Für die Azure AD Connect-Toolversionen **1.0.8667.0** bis **1.1.380.0** gilt Fo
         - Bei dieser Konfiguration müssen Sie sicherstellen, dass Ihre Netzwerkgeräte wöchentlich mit den aktuellen IP-Adressen aus der Liste der IP-Adressbereiche für Microsoft Azure-Datencenter aktualisiert werden, damit das Kennwortrückschreiben korrekt funktioniert. Diese IP-Adressbereiche stehen als XML-Datei zur Verfügung, die jeden Mittwoch (Pacific Time) aktualisiert wird und am folgenden Montag (Pacific Time) in Kraft tritt.
     - Erforderliche Schritte:
         - Lassen Sie alle ausgehenden HTTPS-Verbindungen mit *.servicebus.windows.net zu.
-        - Lassen Sie alle ausgehenden HTTPS-Verbindungen mit allen IP-Adressen in der Liste der IP-Adressbereiche für Microsoft Azure-Datencenter zu, und aktualisieren Sie diese Konfiguration wöchentlich.
+        - Lassen Sie alle ausgehenden HTTPS-Verbindungen mit allen IP-Adressen in der Liste der IP-Adressbereiche für Microsoft Azure-Datencenter zu, und aktualisieren Sie diese Konfiguration wöchentlich. Die Liste ist [hier](https://www.microsoft.com/download/details.aspx?id=41653) als Download verfügbar.
 
 > [!NOTE]
 > Wenn Sie das Kennwortrückschreiben gemäß den obigen Anweisungen konfiguriert haben und keine Fehler im Azure AD Connect-Ereignisprotokoll angezeigt werden, aber beim Testen Verbindungsfehler auftreten, blockiert möglicherweise ein Netzwerkgerät in Ihrer Umgebung HTTPS-Verbindungen mit IP-Adressen. Während eine Verbindung mit *https://*.servicebus.windows.net* zulässig ist, kann beispielsweise eine Verbindung mit einer bestimmten IP-Adresse innerhalb dieses Bereichs blockiert sein. Um dieses Problem zu beheben, müssen Sie entweder Ihre Netzwerkumgebung zum Zulassen aller ausgehenden HTTPS-Verbindungen über Port 443 mit beliebigen URLs oder IP-Adressen konfigurieren (Option 1 oben) oder in Zusammenarbeit mit Ihrem Netzwerkteam explizit nur HTTPS-Verbindungen mit bestimmten IP-Adressen zulassen (Option 2 oben).
@@ -436,7 +436,7 @@ Für die Azure AD Connect-Toolversionen **1.0.8667.0** bis **1.1.380.0** gilt Fo
 
 Nachdem die Netzwerkgeräte konfiguriert wurden, starten Sie den Computer neu, auf dem das Azure AD Connect-Tool ausgeführt wird.
 
-#### <a name="idle-connections-on-azure-ad-connect-114430-and-up"></a>Leerlaufverbindungen in Azure AD Connect (ab&1;.1.443.0)
+#### <a name="idle-connections-on-azure-ad-connect-114430-and-up"></a>Leerlaufverbindungen in Azure AD Connect (ab 1.1.443.0)
 Das Azure AD Connect-Tool sendet regelmäßig Pings/Keep-Alives an ServiceBus-Endpunkte, um die Verbindungen aufrechtzuerhalten. Falls das Tool erkennt, dass zu viele Verbindungen getrennt werden, verkürzt es automatisch das Pingintervall für den Endpunkt. Das kleinstmögliche Pingintervall beträgt 60 Sekunden. **Wir empfehlen jedoch dringend, bei Proxys/Firewalls Leerlaufverbindungen mit einer Dauer von mindestens zwei bis drei Minuten zuzulassen.** \*Bei älteren Versionen wird ein Zeitraum von mindestens vier Minuten empfohlen.
 
 ### <a name="step-4-set-up-the-appropriate-active-directory-permissions"></a>Schritt 4: Einrichten der geeigneten Active Directory-Berechtigungen
@@ -495,7 +495,7 @@ Jetzt, da das Zurückschreiben von Kennwörtern aktiviert ist, können Sie die o
 ## <a name="next-steps"></a>Nächste Schritte
 Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortzurücksetzung für Azure AD:
 
-* **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password).
+* **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md#reset-your-password).
 * [**Funktionsweise**](active-directory-passwords-how-it-works.md) – Erfahren Sie mehr über die sechs verschiedenen Komponenten des Diensts und deren Funktionen.
 * [**Anpassen**](active-directory-passwords-customize.md) – Erfahren Sie, wie Sie das Aussehen und Verhalten des Diensts an die Anforderungen Ihrer Organisation anpassen.
 * [**Best Practices**](active-directory-passwords-best-practices.md) – Erfahren Sie, wie Sie Kennwörter in Ihrer Organisation schnell bereitstellen und effektiv verwalten.

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 03/06/2017
+ms.date: 03/23/2017
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 35e193a49aac7e3aaf91e2a4798b6eeed8377aae
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: c8a915055318697ade229837653df4c105279299
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -47,6 +47,8 @@ Folgende Themen werden behandelt:
 * Löschen der Datenbank
 
 Sie haben nicht genügend Zeit? Keine Sorge! Die vollständige Lösung ist auf [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-core-getting-started)verfügbar. Im Abschnitt [Abrufen der vollständigen Lösung](#GetSolution) finden Sie eine Kurzanleitung.
+
+Möchten Sie mit dem DocumentDB .NET Core SDK eine Xamarin iOS-, Android- oder Forms-Anwendung erstellen? Informationen hierzu finden Sie unter [Erstellen von mobilen Anwendungen mit Xamarin und Azure DocumentDB](documentdb-mobile-apps-with-xamarin.md).
 
 Bitte verwenden Sie nach Abschluss des Lernprogramms die Abstimmungsschaltflächen am Anfang oder Ende dieser Seite, um uns Ihre Meinung mitzuteilen. Wenn wir mit Ihnen Kontakt aufnehmen sollen, können Sie Ihre E-Mail-Adresse im Kommentar hinterlassen.
 
@@ -589,6 +591,7 @@ Um die Verweise auf das DocumentDB .NET Core SDK in Visual Studio wiederherzuste
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Möchten Sie ein komplexeres ASP.NET MVC-NoSQL-Tutorial ausführen? Siehe: [Erstellen einer Webanwendung mit ASP.NET MVC unter Verwendung von DocumentDB](documentdb-dotnet-application.md).
+* Möchten Sie mit dem DocumentDB .NET Core SDK eine Xamarin iOS-, Android- oder Forms-Anwendung entwickeln? Informationen hierzu finden Sie unter [Erstellen von mobilen Anwendungen mit Xamarin und Azure DocumentDB](documentdb-mobile-apps-with-xamarin.md).
 * Möchten Sie Skalierungs- und Leistungstests mit DocumentDB durchführen? Siehe: [Leistungs- und Skalierungstests mit Azure DocumentDB](documentdb-performance-testing.md)
 * Sie erfahren, wie Sie ein [DocumentDB-Konto überwachen](documentdb-monitor-accounts.md).
 * Fragen Sie unser Beispieldataset im [Query Playground](https://www.documentdb.com/sql/demo)ab.

@@ -1,19 +1,19 @@
-In diesem Artikel werden verschiedene bewährte Methoden zur Ausführung einer Windows-VM in Azure beschrieben. Dabei geht es vor allem um Skalierbarkeit, Verfügbarkeit, Verwaltbarkeit und Sicherheit. 
+In diesem Artikel werden verschiedene bewährte Methoden zur Ausführung einer Windows-VM in Azure beschrieben. Dabei geht es vor allem um Skalierbarkeit, Verfügbarkeit, Verwaltbarkeit und Sicherheit.
 
 > [!NOTE]
 > Azure bietet zwei verschiedene Bereitstellungsmodelle: [Azure Resource Manager][resource-manager-overview] und klassisch. In diesem Artikel wird Resource Manager verwendet, der von Microsoft für neue Bereitstellungen empfohlen wird.
-> 
-> 
+>
+>
 
-Wir raten davon ab, für unternehmenskritische Workloads nur eine VM zu verwenden, weil so eine einzelne Fehlerquelle („Single Point of Failure“) entsteht. Stellen Sie mehrere VMs in einer [Verfügbarkeitsgruppe][availability-set] bereit, um eine höhere Verfügbarkeit zu erzielen. Weitere Informationen finden Sie unter [Ausführen mehrerer VMs in Azure][multi-vm]. 
+Wir raten davon ab, für unternehmenskritische Workloads nur eine VM zu verwenden, weil so eine einzelne Fehlerquelle („Single Point of Failure“) entsteht. Stellen Sie mehrere VMs in einer [Verfügbarkeitsgruppe][availability-set] bereit, um eine höhere Verfügbarkeit zu erzielen. Weitere Informationen finden Sie unter [Ausführen mehrerer VMs in Azure][multi-vm].
 
 ## <a name="architecture-diagram"></a>Architekturdiagramm
 
 Die Bereitstellung einer einzelnen VM in Azure umfasst mehr „bewegliche Teile“ als die VM selbst. Es sind Compute-, Netzwerk- und Speicherelemente vorhanden.
 
 > Ein Visio-Dokument, in dem dieses Architekturdiagramm enthalten ist, steht im [Microsoft Download Center][visio-download] zum Herunterladen zur Verfügung. Dieses Diagramm befindet sich auf der Seite „Compute – einzelne VM“.
-> 
-> 
+>
+>
 
 ![[0]][0]
 
@@ -30,11 +30,11 @@ Die Bereitstellung einer einzelnen VM in Azure umfasst mehr „bewegliche Teile�
 
 ## <a name="recommendations"></a>Recommendations
 
-Die folgenden Empfehlungen gelten für die meisten Szenarios. Sofern Sie keine besonderen Anforderungen haben, die Vorrang haben, sollten Sie diese Empfehlungen befolgen. 
+Die folgenden Empfehlungen gelten für die meisten Szenarios. Sofern Sie keine besonderen Anforderungen haben, die Vorrang haben, sollten Sie diese Empfehlungen befolgen.
 
 ### <a name="vm-recommendations"></a>Empfehlungen für virtuelle Computer
 
-In Azure werden viele verschiedene VM-Größen angeboten. Wir raten aber zur DS- und GS-Serie, da für diese Computergrößen [Storage Premium][premium-storage] unterstützt wird. Wählen Sie eine dieser Computergrößen, falls bei Ihnen nicht eine spezielle Workload erforderlich ist, z.B. High Performance Computing. Ausführliche Informationen finden Sie unter [Größen virtueller Computer][virtual-machine-sizes]. 
+In Azure werden viele verschiedene VM-Größen angeboten. Wir raten aber zur DS- und GS-Serie, da für diese Computergrößen [Storage Premium][premium-storage] unterstützt wird. Wählen Sie eine dieser Computergrößen, falls bei Ihnen nicht eine spezielle Workload erforderlich ist, z.B. High Performance Computing. Ausführliche Informationen finden Sie unter [Größen virtueller Computer][virtual-machine-sizes].
 
 Starten Sie beim Verschieben einer vorhandenen Workload in Azure mit der VM-Größe, die Ihren lokalen Servern am ehesten entspricht. Messen Sie dann die Leistung Ihres tatsächlichen Workloads hinsichtlich CPU, Arbeitsspeicher und Datenträger-IOPS (E/A-Vorgänge pro Sekunde), und passen Sie die Größe bei Bedarf an. Wenn Sie mehrere Netzwerkschnittstellenkarten für Ihre VM benötigen, sollten Sie sich darüber im Klaren sein, dass die maximale Anzahl von Netzwerkkarten eine Funktion der [VM-Größe][vm-size-tables] ist.   
 
@@ -48,9 +48,9 @@ Informationen zur Auswahl eines veröffentlichten VM-Image finden Sie unter [Nav
 
 ### <a name="disk-and-storage-recommendations"></a>Empfehlungen für Datenträger und Speicher
 
-Für eine optimale E/A-Leistung empfehlen wir [Storage Premium][premium-storage] zum Speichern von Daten auf SSDs (Solid State Drives). Die Kosten basieren auf der Größe des bereitgestellten Datenträgers. IOPS und Durchsatz richten sich ebenfalls nach der Datenträgergröße. Berücksichtigen Sie beim Bereitstellen eines Datenträgers also alle drei Faktoren (Kapazität, IOPS und Durchsatz). 
+Für eine optimale E/A-Leistung empfehlen wir [Storage Premium][premium-storage] zum Speichern von Daten auf SSDs (Solid State Drives). Die Kosten basieren auf der Größe des bereitgestellten Datenträgers. IOPS und Durchsatz richten sich ebenfalls nach der Datenträgergröße. Berücksichtigen Sie beim Bereitstellen eines Datenträgers also alle drei Faktoren (Kapazität, IOPS und Durchsatz).
 
-Erstellen Sie separate Azure Storage-Konten für jeden virtuellen Computer, auf denen die virtuellen Festplatten (VHDs) gespeichert werden, um die IOPS-Grenzwerte für Storage-Konten zu vermeiden. 
+Erstellen Sie separate Azure Storage-Konten für jeden virtuellen Computer, auf denen die virtuellen Festplatten (VHDs) gespeichert werden, um die IOPS-Grenzwerte für Storage-Konten zu vermeiden.
 
 Fügen Sie einen oder mehrere Datenträger hinzu. Wenn Sie eine neue virtuelle Festplatte (VHD) erstellen, ist sie nicht formatiert. Melden Sie sich an der VM an, um den Datenträger zu formatieren. Wenn Sie über eine große Zahl von Datenträgern verfügen, sollten Sie sich über die E/A-Grenzwerte des Speicherkontos bewusst sein. Weitere Informationen finden Sie unter [Grenzwerte für Datenträger virtueller Computer][vm-disk-limits].
 
@@ -71,15 +71,15 @@ Fügen Sie zum Aktivieren von RDP eine NSG-Regel hinzu, die eingehenden Datenver
 
 ## <a name="scalability-considerations"></a>Überlegungen zur Skalierbarkeit
 
-Sie können eine VM zentral hoch- oder herunterskalieren, indem Sie die [VM-Größe ändern][vm-resize]. Um horizontal zu skalieren, platzieren Sie zwei oder mehr VMs in einer Verfügbarkeitsgruppe hinter einem Load Balancer. Weitere Informationen finden Sie unter [Running multiple VMs on Azure for scalability and availability][multi-vm] (Ausführen mehrerer VMs in Azure zur Steigerung von Skalierbarkeit und Verfügbarkeit).
+Sie können eine VM zentral hoch- oder herunterskalieren, indem Sie die [VM-Größe ändern](../articles/virtual-machines/virtual-machines-windows-sizes.md). Um horizontal zu skalieren, platzieren Sie zwei oder mehr VMs in einer Verfügbarkeitsgruppe hinter einem Load Balancer. Weitere Informationen finden Sie unter [Running multiple VMs on Azure for scalability and availability][multi-vm] (Ausführen mehrerer VMs in Azure zur Steigerung von Skalierbarkeit und Verfügbarkeit).
 
 ## <a name="availability-considerations"></a>Überlegungen zur Verfügbarkeit
 
-Stellen Sie mehrere VMs in einer Verfügbarkeitsgruppe bereit, um eine höhere Verfügbarkeit zu erzielen. Dies führt auch zu einer Erhöhung der [Vereinbarung zum Servicelevel][vm-sla] (SLA). 
+Stellen Sie mehrere VMs in einer Verfügbarkeitsgruppe bereit, um eine höhere Verfügbarkeit zu erzielen. Dies führt auch zu einer Erhöhung der [Vereinbarung zum Servicelevel][vm-sla] (SLA).
 
 Ihr virtueller Computer kann von einer [geplanten Wartung][planned-maintenance] oder [ungeplanten Wartung][manage-vm-availability] betroffen sein. Sie können [VM-Neustartprotokolle][reboot-logs] verwenden, um zu ermitteln, ob ein VM-Neustart durch einen geplanten Wartungsvorgang verursacht wurde.
 
-VHDs werden in [Azure-Speicher][azure-storage] gespeichert, und der Azure-Speicher wird repliziert, um Dauerhaftigkeit und Verfügbarkeit sicherzustellen. 
+VHDs werden in [Azure-Speicher][azure-storage] gespeichert, und der Azure-Speicher wird repliziert, um Dauerhaftigkeit und Verfügbarkeit sicherzustellen.
 
 Als Schutz vor versehentlichen Datenverlusten während des normalen Betriebs (z.B. aufgrund eines Benutzerfehlers) sollten Sie auch Point-in-Time-Sicherungen implementieren, indem Sie [Blobmomentaufnahmen][blob-snapshot] oder ein anderes Tool verwenden.
 
@@ -107,7 +107,7 @@ Sie können die Zuordnung des virtuellen Computers auch mit der Schaltfläche **
 
 **Löschen einer VM.** Wenn Sie eine VM löschen, werden die VHDs nicht gelöscht. Dies bedeutet, dass Sie die VM problemlos löschen können, ohne dass Daten verloren gehen. Allerdings wird Ihnen der Speicherplatz weiter in Rechnung gestellt. Um die VHD zu löschen, löschen Sie die Datei aus dem [Blobspeicher][blob-storage].
 
-Zur Verhinderung des versehentlichen Löschens verwenden Sie eine [Ressourcensperre][resource-lock], um die gesamte Ressourcengruppe oder einzelne Ressourcen, z.B. den virtuellen Computer, zu sperren. 
+Zur Verhinderung des versehentlichen Löschens verwenden Sie eine [Ressourcensperre][resource-lock], um die gesamte Ressourcengruppe oder einzelne Ressourcen, z.B. den virtuellen Computer, zu sperren.
 
 ## <a name="security-considerations"></a>Sicherheitshinweise
 
@@ -121,8 +121,8 @@ Verwenden Sie [Azure Security Center][security-center], um sich eine zentrale Ü
 
 > [!NOTE]
 > Die RBAC schränkt nicht die Aktionen eines Benutzers ein, der bei einer VM angemeldet ist. Diese Berechtigungen werden vom Kontotyp im Gastbetriebssystem bestimmt.   
-> 
-> 
+>
+>
 
 Führen Sie zum Zurücksetzen des lokalen Administratorkennworts den Azure-CLI-Befehl `vm reset-access` aus.
 
@@ -132,16 +132,16 @@ azure vm reset-access -u <user> -p <new-password> <resource-group> <vm-name>
 
 Verwenden Sie [Überwachungsprotokolle][audit-logs], um Bereitstellungsaktionen und andere VM-Ereignisse anzuzeigen.
 
-**Datenverschlüsselung.** Ziehen Sie [Azure Disk Encryption][disk-encryption] in Betracht, wenn Sie die Datenträger für Betriebssystem und Daten verschlüsseln müssen. 
+**Datenverschlüsselung.** Ziehen Sie [Azure Disk Encryption][disk-encryption] in Betracht, wenn Sie die Datenträger für Betriebssystem und Daten verschlüsseln müssen.
 
 ## <a name="solution-deployment"></a>Bereitstellung von Lösungen
 
-Eine Bereitstellung für diese Referenzarchitektur ist auf [GitHub][github-folder] verfügbar. Sie enthält ein VNet, eine NSG und einen einzelnen virtuellen Computer. Um die Architektur bereitzustellen, gehen Sie folgendermaßen vor: 
+Eine Bereitstellung für diese Referenzarchitektur ist auf [GitHub][github-folder] verfügbar. Sie enthält ein VNet, eine NSG und einen einzelnen virtuellen Computer. Um die Architektur bereitzustellen, gehen Sie folgendermaßen vor:
 
 1. Klicken Sie mit der rechten Maustaste auf die Schaltfläche unten, und wählen Sie entweder „Link in neuer Registerkarte öffnen“ oder „Link in neuem Fenster öffnen“.  
    [![Bereitstellen in Azure](../articles/guidance/media/blueprints/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Freference-architectures%2Fmaster%2Fguidance-compute-single-vm%2Fazuredeploy.json)
-2. Nachdem der Link im Azure-Portal geöffnet wurde, müssen Sie Werte für einige Einstellungen eingeben: 
-   
+2. Nachdem der Link im Azure-Portal geöffnet wurde, müssen Sie Werte für einige Einstellungen eingeben:
+
    * Der Name der **Ressourcengruppe** ist bereits in der Parameterdatei definiert. Wählen Sie also **Neu erstellen**, und geben Sie im Textfeld `ra-single-vm-rg` ein.
    * Wählen Sie im Dropdownfeld **Standort** die Region aus.
    * Lassen Sie die Textfelder für den **Vorlagenstamm-URI** bzw. **Parameterstamm-URI** unverändert.
@@ -151,10 +151,10 @@ Eine Bereitstellung für diese Referenzarchitektur ist auf [GitHub][github-folde
 3. Warten Sie, bis die Bereitstellung abgeschlossen ist.
 4. Die Parameterdateien enthalten einen hartcodierten Administratorbenutzernamen und das dazugehörige Kennwort, und es wird dringend empfohlen, beides sofort zu ändern. Klicken Sie im Azure-Portal auf den virtuellen Computer mit dem Namen `ra-single-vm0 `. Klicken Sie auf dem Blatt **Support + Problembehandlung** dann auf **Kennwort zurücksetzen**. Wählen Sie im Dropdownfeld **Modus** die Option **Kennwort zurücksetzen**, und wählen Sie dann einen neuen **Benutzernamen** und ein **Kennwort** aus. Klicken Sie auf die Schaltfläche **Aktualisieren**, um den neuen Benutzernamen und das Kennwort dauerhaft zu übernehmen.
 
-Informationen zu weiteren Möglichkeiten zum Bereitstellen dieser Referenzarchitektur finden Sie in der Infodatei im GitHub-Ordner [guidance-single-vm][github-folder]. 
+Informationen zu weiteren Möglichkeiten zum Bereitstellen dieser Referenzarchitektur finden Sie in der Infodatei im GitHub-Ordner [guidance-single-vm][github-folder].
 
 ## <a name="customize-the-deployment"></a>Anpassen der Bereitstellung
-Wenn Sie die Bereitstellung an Ihre Anforderungen anpassen müssen, befolgen Sie die Anweisungen in der [Infodatei][github-folder]. 
+Wenn Sie die Bereitstellung an Ihre Anforderungen anpassen müssen, befolgen Sie die Anweisungen in der [Infodatei][github-folder].
 
 ## <a name="next-steps"></a>Nächste Schritte
 Stellen Sie zwei oder mehr VMs hinter einem Lastenausgleichsmodul bereit, um eine höhere Verfügbarkeit zu erzielen. Weitere Informationen finden Sie unter [Ausführen mehrerer VMs in Azure][multi-vm].

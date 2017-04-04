@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: eadb1f29da69e7f6fcc2c7c19ba67f4e3072c346
-ms.openlocfilehash: 7796ec3a7c65e320ca142de4d03f6de5d0698e21
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 102eab0e2e915521f8702b526dda886a2502f40b
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -66,7 +67,7 @@ Aus den folgenden Gründen empfiehlt sich das Herstellen von Verbindungen zwisch
 
 Weitere Informationen zu VNet-zu-VNet-Verbindungen finden Sie am Ende dieses Artikels unter [Informationen zu VNet-zu-VNet-Verbindungen](#faq).
 
-### <a name="a-namevaluesaexample-settings"></a><a name="values"></a>Beispieleinstellungen
+### <a name="values"></a>Beispieleinstellungen
 Sie können die Beispielkonfigurationswerte nutzen, wenn Sie diese Schritte als Übung verwenden. Als Beispiel verwenden wir mehrere Adressräume für die einzelnen VNets. Bei VNet-zu-VNet-Konfigurationen werden jedoch nicht mehrere Adressräume benötigt.
 
 **Werte für TestVNet1:**
@@ -115,18 +116,18 @@ Sie können die Beispielkonfigurationswerte nutzen, wenn Sie diese Schritte als 
   * Name: TestVNet4toTestVNet1
   * Gemeinsam verwendeter Schlüssel: Sie können den gemeinsam verwendeten Schlüssel selbst erstellen. In diesem Beispiel verwenden wir „abc123“. Wichtig: Der Wert muss beim Erstellen der Verbindung zwischen den VNets übereinstimmen.
 
-## <a name="a-namecreatvneta1-create-and-configure-testvnet1"></a><a name="CreatVNet"></a>1. Erstellen und Konfigurieren von „TestVNet1“
+## <a name="CreatVNet"></a>1. Erstellen und Konfigurieren von „TestVNet1“
 Wenn Sie bereits über ein VNet verfügen, sollten Sie überprüfen, ob die Einstellungen mit Ihrem Entwurf des VPN Gateways kompatibel sind. Achten Sie besonders auf Subnetze, die sich unter Umständen mit anderen Netzwerken überlappen. Bei überlappenden Subnetzen funktioniert die Verbindung nicht einwandfrei. Wenn Ihr VNet mit den richtigen Einstellungen konfiguriert wurde, können Sie mit den Schritten im Abschnitt [Angeben eines DNS-Servers](#dns) beginnen.
 
 ### <a name="to-create-a-virtual-network"></a>So erstellen Sie ein virtuelles Netzwerk
 [!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
-## <a name="a-namesubnetsa2-add-additional-address-space-and-create-subnets"></a><a name="subnets"></a>2. Hinzufügen weiterer Adressräume und Erstellen von Subnetzen
+## <a name="subnets"></a>2. Hinzufügen weiterer Adressräume und Erstellen von Subnetzen
 Sie können dem VNet nach dem Erstellen weitere Adressräume hinzufügen und Subnetze erstellen.
 
 [!INCLUDE [vpn-gateway-additional-address-space](../../includes/vpn-gateway-additional-address-space-include.md)]
 
-## <a name="a-namegatewaysubneta3-create-a-gateway-subnet"></a><a name="gatewaysubnet"></a>3. Erstellen eines Gatewaysubnetzes
+## <a name="gatewaysubnet"></a>3. Erstellen eines Gatewaysubnetzes
 Bevor Sie das virtuelle Netzwerk mit einem Gateway verbinden, müssen Sie das Gatewaysubnetz für das virtuelle Netzwerk erstellen, mit dem Sie eine Verbindung herstellen möchten. Erstellen Sie nach Möglichkeit ein Gatewaysubnetz mit einem CIDR-Block vom Typ „/28“ oder „/27“, damit genügend IP-Adressen für zukünftige zusätzliche Konfigurationsanforderungen zur Verfügung stehen.
 
 Wenn Sie diese Konfiguration als Übung erstellen, können Sie beim Erstellen des Gatewaysubnetzes [diese Beispieleinstellungen](#values) verwenden.
@@ -136,21 +137,21 @@ Wenn Sie diese Konfiguration als Übung erstellen, können Sie beim Erstellen de
 ### <a name="to-create-a-gateway-subnet"></a>So erstellen Sie ein Gatewaysubnetz
 [!INCLUDE [vpn-gateway-add-gwsubnet-rm-portal](../../includes/vpn-gateway-add-gwsubnet-rm-portal-include.md)]
 
-## <a name="a-namednsservera4-specify-a-dns-server-optional"></a><a name="DNSServer"></a>4. Angeben eines DNS-Servers (optional)
-Wenn Sie für virtuelle Computer, die in Ihren VNets bereitgestellt werden, die Namensauflösung verwenden möchten, müssen Sie einen DNS-Server angeben.
+## <a name="DNSServer"></a>4. Angeben eines DNS-Servers (optional)
+DNS ist für VNet-zu-VNet-Verbindungen nicht erforderlich. Wenn Sie für Ressourcen, die in Ihren virtuellen Netzwerken bereitgestellt werden, die Namensauflösung verwenden möchten, müssen Sie aber einen DNS-Server angeben. Diese Einstellung bietet die Möglichkeit, den DNS-Server anzugeben, den Sie zur Namensauflösung für dieses virtuelle Netzwerk verwenden möchten. Mit dieser Einstellung wird kein DNS-Server erstellt.
 
 [!INCLUDE [vpn-gateway-add-dns-rm-portal](../../includes/vpn-gateway-add-dns-rm-portal-include.md)]
 
-## <a name="a-namevnetgatewaya5-create-a-virtual-network-gateway"></a><a name="VNetGateway"></a>5. Erstellen eines Gateways für das virtuelle Netzwerk
+## <a name="VNetGateway"></a>5. Erstellen eines Gateways für das virtuelle Netzwerk
 In diesem Schritt erstellen Sie das virtuelle Netzwerkgateway für Ihr VNet. Dieser Schritt kann bis zu 45 Minuten dauern. Falls Sie diese Konfiguration zu Übungszwecken erstellen, können Sie die [Beispieleinstellungen](#values) verwenden.
 
 ### <a name="to-create-a-virtual-network-gateway"></a>So erstellen Sie ein Gateway für das virtuelle Netzwerk
 [!INCLUDE [vpn-gateway-add-gw-rm-portal](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 
-## <a name="a-namecreatetestvnet4a6-create-and-configure-testvnet4"></a><a name="CreateTestVNet4"></a>6. Erstellen und Konfigurieren von „TestVNet4“
+## <a name="CreateTestVNet4"></a>6. Erstellen und Konfigurieren von „TestVNet4“
 Nachdem Sie „TestVNet1“ konfiguriert haben, erstellen Sie „TestVNet4“. Wiederholen Sie hierzu die vorherigen Schritte mit den Werten von „TestVNet4“. Sie können mit dem Konfigurieren von „TestVNet4“ beginnen, auch wenn die Erstellung des virtuellen Netzwerkgateways für „TestVNet1“ noch nicht abgeschlossen ist. Achten Sie bei Verwendung eigener Werte darauf, dass sich die Adressräume nicht mit anderen VNets überschneiden, mit denen Sie eine Verbindung herstellen möchten.
 
-## <a name="a-nametestvnet1connectiona7-configure-the-testvnet1-connection"></a><a name="TestVNet1Connection"></a>7. Konfigurieren der TestVNet1-Verbindung
+## <a name="TestVNet1Connection"></a>7. Konfigurieren der TestVNet1-Verbindung
 Nach Abschluss der Vorgänge für die virtuellen Netzwerkgateways für „TestVNet1“ und „TestVNet4“ können Sie die Verbindungen für das virtuelle Netzwerkgateway erstellen. In diesem Abschnitt erstellen Sie eine Verbindung von „VNet1“ zu „VNet4“.
 
 1. Navigieren Sie unter **Alle Ressourcen** zum virtuellen Netzwerkgateway für Ihr VNet. Beispiel: **TestVNet1GW**. Klicken Sie auf **TestVNet1GW**, um das Blatt für das virtuelle Netzwerkgateway zu öffnen.
@@ -172,10 +173,10 @@ Nach Abschluss der Vorgänge für die virtuellen Netzwerkgateways für „TestVN
     ![Gemeinsam verwendeter Schlüssel](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/sharedkey.png "Gemeinsam verwendeter Schlüssel")
 10. Klicken Sie am unteren Rand des Blatts auf **OK**, um die vorgenommenen Änderungen zu speichern.
 
-## <a name="a-nametestvnet4connectiona8-configure-the-testvnet4-connection"></a><a name="TestVNet4Connection"></a>8. Konfigurieren der TestVNet4-Verbindung
+## <a name="TestVNet4Connection"></a>8. Konfigurieren der TestVNet4-Verbindung
 Als Nächstes erstellen Sie eine Verbindung von „TestVNet4“ zu „TestVNet1“. Verwenden Sie die gleiche Methode wie beim Erstellen der Verbindung von „TestVNet1“ zu „TestVNet4“. Verwenden Sie den gleichen gemeinsam verwendeten Schlüssel.
 
-## <a name="a-nameverifyconnectiona9-verify-your-connection"></a><a name="VerifyConnection"></a>9. Überprüfen der Verbindung
+## <a name="VerifyConnection"></a>9. Überprüfen der Verbindung
 Überprüfen Sie die Verbindung. Führen Sie für jedes virtuelle Netzwerkgateway folgende Schritte aus:
 
 1. Navigieren Sie zum Blatt für das virtuelle Netzwerkgateway. Beispiel: **TestVNet4GW**. 
@@ -189,16 +190,11 @@ Wenn Sie auf eine der Verbindungen doppelklicken, erhalten Sie weitere Informati
 
 ![Zusammenfassung](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/essentials.png "Zusammenfassung")
 
-## <a name="a-namefaqavnet-to-vnet-considerations"></a><a name="faq"></a>Informationen zu VNet-zu-VNet-Verbindungen
+## <a name="faq"></a>Informationen zu VNet-zu-VNet-Verbindungen
 Zeigen Sie die Details zu den häufig gestellten Fragen an, um zusätzliche Informationen zu VNet-zu-VNet-Verbindungen zu erhalten.
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-vnet-vnet-faq-include.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Weitere Informationen finden Sie unter [Dokumentation zu Virtual Machines](https://docs.microsoft.com/azure/#pivot=services&panel=Compute) .
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 
