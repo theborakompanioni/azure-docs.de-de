@@ -12,12 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-/ms.date: 3/8/2017
+ms.date: 03/27/2017
 ms.author: renash
 translationtype: Human Translation
-ms.sourcegitcommit: 4e81088857c0e9cacaf91342227ae63080fc90c5
-ms.openlocfilehash: 780066b1e71d967c64da0a1c1a284ffd5d1b7481
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: fcdeac53c79551000b48a47a1afc65e082bcc692
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -46,7 +46,7 @@ Dieses Video veranschaulicht das Erstellen und Verwenden von Azure-Dateifreigabe
 ## <a name="about-this-tutorial"></a>Informationen zu diesem Lernprogramm
 In diesem Lernprogramm für die ersten Schritte veranschaulichen wir die Grundlagen der Verwendung des Microsoft Azure-Dateispeichers. In diesem Lernprogramm wird Folgendes beschrieben:
 
-* Verwenden des Azure-Portals oder von PowerShell, um die Erstellung einer neuen Azure-Dateifreigabe, das Hinzufügen eines Verzeichnisses, das Hochladen einer lokalen Datei in die Freigabe und das Auflisten der Dateien in dem Verzeichnis zu veranschaulichen
+* Verwenden des Azure-Portals oder von PowerShell, um das Erstellen einer neuen Azure-Dateifreigabe, das Hinzufügen eines Verzeichnisses, das Hochladen einer lokalen Datei in die Freigabe und das Auflisten der Dateien in dem Verzeichnis zu veranschaulichen
 * Bereitstellen der Dateifreigabe. Dabei wird genau wie bei der Bereitstellung einer SMB-Freigabe vorgegangen.
 * Verwenden Sie die Azure Storage-Clientbibliothek für .NET, um aus einer lokalen Anwendung auf die Dateifreigabe zuzugreifen. Sie erstellen eine Konsolenanwendung und führen diese Aktionen mit der Dateifreigabe aus:
   * Schreiben Sie den Inhalt einer Datei in der Freigabe in das Konsolenfenster.
@@ -211,8 +211,8 @@ Wenn ein Client auf den Dateispeicher zugreift, richtet sich die verwendete SMB-
 ### <a name="mount-the-file-share-from-an-azure-virtual-machine-running-windows"></a>Einbinden der Dateifreigabe über einen virtuellen Azure-Computer unter Windows
 Um zu veranschaulichen, wie eine Azure-Dateifreigabe eingebunden wird, erstellen wir nun einen virtuellen Azure-Computer unter Windows und greifen zum Einbinden der Freigabe remote darauf zu.
 
-1. Erstellen Sie zunächst einen neuen virtuellen Azure-Computer, indem Sie die Anweisungen unter [Erstellen eines virtuellen Windows-Computers im Azure-Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)befolgen.
-2. Stellen Sie als Nächstes eine Remoteverbindung mit dem virtuellen Computer her, indem Sie die Anweisungen unter [Anmelden bei einem virtuellen Windows-Computer über das Azure-Portal](../virtual-machines/virtual-machines-windows-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)befolgen.
+1. Erstellen Sie zunächst einen neuen virtuellen Azure-Computer, indem Sie die Anweisungen unter [Erstellen eines virtuellen Windows-Computers im Azure-Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) befolgen.
+2. Stellen Sie als Nächstes eine Remoteverbindung mit dem virtuellen Computer her, indem Sie die Anweisungen unter [Anmelden bei einem virtuellen Windows-Computer über das Azure-Portal](../virtual-machines/virtual-machines-windows-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) befolgen.
 3. Öffnen Sie ein PowerShell-Fenster auf dem virtuellen Computer.
 
 ### <a name="persist-your-storage-account-credentials-for-the-virtual-machine"></a>Fortbestehen der Anmeldeinformationen Ihres Speicherkontos für den virtuellen Computer
@@ -264,17 +264,29 @@ Um die Dateifreigabe über einen lokalen Client bereitzustellen, müssen Sie zue
 Zum Schreiben von Code, mit dem Dateispeicher aufgerufen wird, können Sie Speicherclientbibliotheken für .NET und Java oder die Azure Storage-REST-API verwenden. Das Beispiel in diesem Abschnitt veranschaulicht, wie Sie mit einer Dateifreigabe arbeiten, indem Sie die [Azure Storage-Clientbibliothek für .NET](https://msdn.microsoft.com/library/mt347887.aspx) über eine einfache Konsolenanwendung verwenden, die auf dem Desktop ausgeführt wird.
 
 ### <a name="create-the-console-application-and-obtain-the-assembly"></a>Erstellen der Konsolenanwendung und Erhalten der Assembly
-So erstellen Sie eine neue Konsolenanwendung in Visual Studio und installieren das NuGet-Paket mit der Clientbibliothek von Azure Storage:
+Erstellen Sie in Visual Studio eine neue Windows-Konsolenanwendung. In den folgenden Schritten wird veranschaulicht, wie Sie eine Konsolenanwendung in Visual Studio 2017 erstellen. Die Schritte in anderen Versionen von Visual Studio sind aber ähnlich.
 
-1. Wählen Sie in Visual Studio **Datei > Neues Projekt**, und wählen Sie dann **Windows > Konsolenanwendung** aus der Liste der Visual C#-Vorlagen aus.
-2. Stellen Sie einen Namen für die Konsolenanwendung bereit, und klicken Sie dann auf **OK**.
-3. Nachdem Ihr Projekt erstellt wurde, klicken Sie mit der rechten Maustaste im Projektmappen-Explorer auf das Projekt und wählen **NuGet-Pakete verwalten**aus. Suchen Sie online nach „WindowsAzure.Storage“, und klicken Sie auf **Installieren** , um das Azure Storage-Clientbibliothek für .NET-Paket und die zugehörigen Abhängigkeiten zu installieren.
+1. Wählen Sie **Datei** > **Neu** > **Projekt**.
+2. Wählen Sie **Installiert** > **Vorlagen** > **Visual C#** > **Klassischer Windows-Desktop**.
+3. Wählen Sie **Konsolen-App (.NET Framework)**.
+4. Geben Sie im Feld **Name:** einen Namen für Ihre Anwendung ein.
+5. Klicken Sie auf **OK**.
 
-Die Codebeispiele in diesem Artikel verwenden auch die [Microsoft Azure Configuration Manage-Bibliothek](https://msdn.microsoft.com/library/azure/mt634646.aspx) zum Abrufen der Speicherverbindungszeichenfolge von einer app.config-Datei in der Konsolenanwendung. Mit Azure Configuration Manager können Sie die Verbindungszeichenfolge zur Laufzeit abrufen, unabhängig davon, ob Ihre Anwendung in Microsoft Azure oder von einer Desktop-, Mobil- oder Webanwendung ausgeführt wird.
+Alle Codebeispiele in diesem Tutorial können in der Datei `Program.cs` Ihrer Konsolenanwendung der `Main()`-Methode hinzugefügt werden.
 
-Klicken Sie zum Installieren des Azure Configuration Manager-Pakets im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und wählen Sie **NuGet-Pakete verwalten**aus. Suchen Sie online nach „ConfigurationManager“, und klicken Sie zum Installieren des Pakets auf **Installieren** .
+Sie können die Azure Storage-Clientbibliothek in jeder Art von .NET-Anwendung nutzen, z.B. einem Azure-Clouddienst oder einer Azure-Web-App, einer Desktopanwendung oder einer mobilen Anwendung. In diesem Leitfaden verwenden wir der Einfachheit halber eine Konsolenanwendung.
 
-Die Verwendung von Azure Configuration Manager ist optional. Sie können auch eine API wie die [ConfigurationManager-Klasse](https://msdn.microsoft.com/library/system.configuration.configurationmanager.aspx)von .NET Framework verwenden.
+### <a name="use-nuget-to-install-the-required-packages"></a>Verwenden von NuGet zum Installieren der erforderlichen Pakete
+Es gibt zwei Pakete, auf die Sie in Ihrem Projekt für dieses Tutorial verweisen müssen:
+
+* [Microsoft Azure Storage Client Library für .NET](https://www.nuget.org/packages/WindowsAzure.Storage/): Mit diesem Paket erhalten Sie programmgesteuerten Zugriff auf Datenressourcen in Ihrem Speicherkonto.
+* [Microsoft Azure Configuration Manager Library für .NET](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/): Mit diesem Paket wird eine Klasse zum Analysieren einer Verbindungszeichenfolge in einer Konfigurationsdatei bereitgestellt. Dies gilt unabhängig davon, wo die Anwendung ausgeführt wird.
+
+Sie können NuGet verwenden, um beide Pakete zu erhalten. Folgen Sie diesen Schritten:
+
+1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **NuGet-Pakete verwalten** aus.
+2. Suchen Sie online nach „WindowsAzure.Storage“, und klicken Sie auf **Installieren** , um die Storage Client Library und die dazugehörigen Abhängigkeiten zu installieren.
+3. Suchen Sie online nach „WindowsAzure.ConfigurationManager“, und klicken Sie auf **Installieren**, um Azure Configuration Manager zu installieren.
 
 ### <a name="save-your-storage-account-credentials-to-the-appconfig-file"></a>Speichern der Anmeldeinformationen Ihres Speicherkontos in der Datei „app.config“
 Als Nächstes speichern Sie Ihre Anmeldeinformationen in der Datei „app.config“ des Projekts. Bearbeiten Sie die Datei „app.config“ ähnlich wie im folgenden Beispiel, indem Sie `myaccount` durch den Namen Ihres Speicherkontos und `mykey` durch den Schlüssel Ihres Speicherkontos ersetzen.
@@ -296,8 +308,8 @@ Als Nächstes speichern Sie Ihre Anmeldeinformationen in der Datei „app.config
 > 
 > 
 
-### <a name="add-namespace-declarations"></a>Hinzufügen von Namespace-Deklarationen
-Öffnen Sie die Datei `program.cs` über den Projektmappen-Explorer, und fügen Sie die folgenden Namespacedeklarationen am Anfang der Datei hinzu.
+### <a name="add-using-directives"></a>Hinzufügen von using-Direktiven
+Öffnen Sie die Datei `Program.cs` über den Projektmappen-Explorer, und fügen Sie die folgenden using-Direktiven am Anfang der Datei hinzu.
 
 ```csharp
 using Microsoft.Azure; // Namespace for Azure Configuration Manager
@@ -431,7 +443,7 @@ if (share.Exists())
 }
 ```
 
-Weitere Informationen zum Erstellen und Verwenden von Shared Access Signatures finden Sie unter [Shared Access Signatures, Teil&1;: Grundlagen zum SAS-Modell](storage-dotnet-shared-access-signature-part-1.md) und [Shared Access Signatures, Teil&2;: Erstellen und Verwenden einer SAS mit Blob Storage](storage-dotnet-shared-access-signature-part-2.md).
+Weitere Informationen zum Erstellen und Verwenden von Shared Access Signatures finden Sie unter [Shared Access Signatures, Teil 1: Grundlagen zum SAS-Modell](storage-dotnet-shared-access-signature-part-1.md) und [Shared Access Signatures, Teil 2: Erstellen und Verwenden einer SAS mit Blob Storage](storage-dotnet-shared-access-signature-part-2.md).
 
 ### <a name="copy-files"></a>Kopieren von Dateien
 Ab Version 5.x der Azure Storage-Clientbibliothek können Sie eine Datei in eine andere Datei, eine Datei in ein Blob oder ein Blob in eine Datei kopieren. In den nächsten Abschnitten wird demonstriert, wie diese Kopiervorgänge programmgesteuert ausgeführt werden.
@@ -542,11 +554,11 @@ Auf gleiche Weise können Sie ein BLOB in eine Datei kopieren. Wenn das Quellobj
 ## <a name="troubleshooting-file-storage-using-metrics"></a>Problembehandlung für Dateispeicher mit Metriken
 Azure Storage Analytics unterstützt jetzt Metriken für Dateispeicher. Mit Metrikdaten können Sie Anforderungen verfolgen und Probleme diagnostizieren.
 
-Sie können Metriken für Dateispeicher über das [Azure-Portal](https://portal.azure.com)aktivieren. Sie können Metriken auch programmgesteuert aktivieren, indem Sie den Vorgang „Set File Service Properties“ über die REST API oder einen analogen Vorgang in der Speicherclientbibliothek aufrufen.
+Sie können Metriken für Dateispeicher über das [Azure-Portal](https://portal.azure.com) aktivieren. Sie können Metriken auch programmgesteuert aktivieren, indem Sie den Vorgang „Set File Service Properties“ über die REST API oder einen analogen Vorgang in der Speicherclientbibliothek aufrufen.
 
 Im folgenden Codebeispiel wird veranschaulicht, wie Sie die Storage-Clientbibliothek für .NET zum Aktivieren von Metriken für File Storage verwenden.
 
-Fügen Sie zunächst der Datei „program.cs“ zusätzlich zu den oben genannten Anweisungen die folgenden `using`-Anweisungen hinzu:
+Fügen Sie der Datei `Program.cs` zusätzlich zu den obigen Direktiven zuerst die folgenden `using`-Direktiven hinzu:
 
 ```csharp
 using Microsoft.WindowsAzure.Storage.File.Protocol;
@@ -645,7 +657,7 @@ Umfassende Unterstützung bei der Problembehandlung erhalten Sie auch im [Artike
     Für die Übertragung größerer Mengen von Dateien in den Dateispeicher empfehlen wir die Verwendung von AzCopy, Azure Powershell (Windows) oder der Azure CLI (Linux/Unix), da diese Tools für die Netzwerkübertragung optimiert sind.
 15. **Patch veröffentlicht, um das Problem einer geringen Leistung bei Azure-Dateien zu beheben**
     
-    Das Windows-Team hat kürzlich einen Patch veröffentlicht, mit dem das Problem behoben wird, dass die Leistung beim Zugreifen auf Azure Files Storage von Windows 8.1 oder Windows Server 2012 R2 zu gering ist. Weitere Informationen finden Sie im zugehörigen KB-Artikel [Slow performance when you access Azure Files Storage from Windows 8.1 or Server 2012 R2](https://support.microsoft.com/en-us/kb/3114025) (Niedrige Leistung beim Zugriff auf Azure Files Storage von Windows 8.1 oder Server 2012 R2).
+    Das Windows-Team hat kürzlich einen Patch veröffentlicht, mit dem das Problem behoben wird, dass die Leistung beim Zugreifen auf Azure Files Storage von Windows 8.1 oder Windows Server 2012 R2 zu gering ist. Weitere Informationen finden Sie im zugehörigen KB-Artikel [Slow performance when you access Azure Files Storage from Windows 8.1 or Server 2012 R2](https://support.microsoft.com/kb/3114025) (Niedrige Leistung beim Zugriff auf Azure Files Storage von Windows 8.1 oder Server 2012 R2).
 16. **Verwenden von Azure File Storage mit IBM MQ**
     
     IBM hat ein Dokument mit Anweisungen für IBM MQ-Kunden veröffentlicht, die Azure File Storage mit ihrem Dienst konfigurieren möchten. Weitere Informationen finden Sie unter [How to setup IBM MQ Multi instance queue manager with Microsoft Azure File Service](https://github.com/ibm-messaging/mq-azure/wiki/How-to-setup-IBM-MQ-Multi-instance-queue-manager-with-Microsoft-Azure-File-Service)(Gewusst wie: Einrichten des IBM MQ-Warteschlangen-Managers für mehrere Instanzen mit dem Microsoft Azure-Dateidienst).
@@ -655,9 +667,10 @@ Umfassende Unterstützung bei der Problembehandlung erhalten Sie auch im [Artike
 
 18. **Wie kann ich die serverseitige Verschlüsselung für Azure Files aktivieren?**
 
-    Die [serverseitige Verschlüsselung](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption) befindet sich derzeit in der Vorschauphase. Während der Vorschauphase kann das Feature nur für neu erstellte ARM-Speicherkonten (Azure Resource Manager) aktiviert werden.
-    Sie können dieses Feature über das Azure-Portal für Azure Resource Manager-Speicherkonten aktivieren. Die Aktivierung der Verschlüsselung für Dateispeicher mittels [Azure PowerShell](https://msdn.microsoft.com/en-us/library/azure/mt607151.aspx), [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/en-us/azure/storage/storage-azure-cli-nodejs) oder [Microsoft Azure Storage-Ressourcenanbieter-API](https://docs.microsoft.com/en-us/rest/api/storagerp/storageaccounts) steht voraussichtlich Ende Februar zur Verfügung. Für die Aktivierung dieses Features fallen keine zusätzlichen Gebühren an. Wenn Sie Storage Service Encryption für Azure-Dateispeicher aktivieren, werden Ihre Daten automatisch für Sie verschlüsselt. 
-    Informieren Sie sich ausführlicher über Storage Service Encryption. Weitere Fragen zur Vorschau können auch an ssediscussions@microsoft.com gerichtet werden.
+    Die [serverseitige Verschlüsselung](storage-service-encryption.md) für Azure Files befindet sich derzeit in der Vorschauphase. Während der Vorschauphase können Sie dieses Feature nur für neue Azure Resource Manager-Speicherkonten aktivieren, indem Sie das [Azure-Portal](https://portal.azure.com) verwenden. Für die Aktivierung dieses Features fallen keine zusätzlichen Gebühren an. Wenn Sie Storage Service Encryption für Azure-Dateispeicher aktivieren, werden Ihre Daten automatisch für Sie verschlüsselt. 
+    
+    Für die Zukunft ist geplant, dass die Aktivierung der File Storage-Verschlüsselung mit [Azure PowerShell](/powershell/resourcemanager/azurerm.storage/v2.7.0/azurerm.storage), der [Azure CLI](storage-azure-cli.md) und der [REST-API des Azure Storage-Ressourcenanbieters](/rest/api/storagerp/storageaccounts) unterstützt wird. 
+    Unter [Storage Service Encryption](storage-service-encryption.md) finden Sie weitere Informationen zur Verschlüsselung von ruhenden Daten in Azure Storage, und bei Fragen während der Vorschauphase können Sie sich per E-Mail an ssediscussions@microsoft.com wenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Azure-Dateispeicher erhalten Sie über diese Links.
@@ -670,7 +683,7 @@ Weitere Informationen zum Azure-Dateispeicher erhalten Sie über diese Links.
 * [Verwenden von Azure PowerShell mit Azure Storage](storage-powershell-guide-full.md)
 * [Verwenden von AzCopy mit Microsoft Azure Storage](storage-use-azcopy.md)
 * [Verwenden der Azure-Befehlszeilenschnittstelle mit Azure-Speicher](storage-azure-cli.md#create-and-manage-file-shares)
-* [Beheben von Problemen mit Azure File Storage](https://docs.microsoft.com/en-us/azure/storage/storage-troubleshoot-file-connection-problems)
+* [Beheben von Problemen mit Azure File Storage](https://docs.microsoft.com/azure/storage/storage-troubleshoot-file-connection-problems)
 
 ### <a name="reference"></a>Referenz
 * [Referenz zur Storage-Clientbibliothek für .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx)

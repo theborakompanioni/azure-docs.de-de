@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/06/2017
+ms.date: 03/23/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: eed360b6c996d1901b40f3d1fcf4b8ff859da573
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: 295203755487ace6193d97737be635d4a61fe337
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -79,7 +79,7 @@ Beim Definieren der Ressourcengruppe sind einige wichtige Faktoren zu beachten:
 Beim Erstellen einer Ressourcengruppe müssen Sie einen Standort für die Ressourcengruppe angeben. Vielleicht stellen Sie sich hierbei die folgende Frage: „Warum wird für eine Ressourcengruppe ein Standort benötigt? Und wenn die Ressourcen andere Standorte als die Ressourcengruppe aufweisen können, warum ist der Standort der Ressourcengruppe dann überhaupt wichtig?“ In der Ressourcengruppe werden Metadaten zu den Ressourcen gespeichert. Wenn Sie einen Standort für die Ressourcengruppe angeben, legen Sie also fest, wo die Metadaten gespeichert werden. Aus Compliance-Gründen müssen Sie unter Umständen sicherstellen, dass Ihre Daten in einer bestimmten Region gespeichert werden.
 
 ## <a name="resource-providers"></a>Ressourcenanbieter
-Jeder Ressourcenanbieter stellt einen Satz mit Ressourcen und Vorgängen für die Verwendung eines Azure-Diensts bereit. Wenn Sie beispielsweise Schlüssel und geheime Schlüssel speichern möchten, verwenden Sie den Ressourcenanbieter **Microsoft.KeyVault** . Der Ressourcenanbieter verfügt über einen Ressourcentyp namens **vaults** zum Erstellen des Schlüsseltresors und einen Ressourcentyp namens **vaults/secrets** zum Erstellen eines geheimen Schlüssels im Schlüsseltresor. 
+Jeder Ressourcenanbieter stellt einen Satz mit Ressourcen und Vorgängen für die Verwendung eines Azure-Diensts bereit. Wenn Sie beispielsweise Schlüssel und geheime Schlüssel speichern möchten, verwenden Sie den Ressourcenanbieter **Microsoft.KeyVault** . Dieser Ressourcenanbieter bietet einen Ressourcentyp mit dem Namen **vaults** zum Erstellen des Schlüsseltresors an. 
 
 Bevor Sie mit der Bereitstellung Ihrer Ressourcen beginnen, ist es ratsam, sich über die verfügbaren Ressourcenanbieter zu informieren. Wenn Sie die Namen der Ressourcenanbieter und Ressourcen kennen, können Sie besser definieren, welche Ressourcen Sie unter Azure bereitstellen möchten.
 
@@ -118,7 +118,7 @@ Weitere Informationen finden Sie unter [Anbieter, Regionen, API-Versionen und Sc
 ## <a name="template-deployment"></a>Bereitstellung von Vorlagen
 Mit dem Resource Manager können Sie eine Vorlage (im JSON-Format) erstellen, mit der die Infrastruktur und Konfiguration der Azure-Lösung definiert wird. Mit einer Vorlage können Sie die Lösung während ihres Lebenszyklus wiederholt bereitstellen und sicher sein, dass Ihre Ressourcen einheitlich bereitgestellt werden. Wenn Sie eine Lösung über das Portal erstellen, enthält sie automatisch eine Bereitstellungsvorlage. Sie müssen die Vorlage nicht völlig neu erstellen, weil Sie mit der Vorlage für Ihre Lösung beginnen und sie dann an die speziellen Anforderungen anpassen können. Sie können eine Vorlage für eine vorhandene Ressourcengruppe abrufen, indem Sie entweder den aktuellen Zustand der Ressourcengruppe exportieren oder die Vorlage anzeigen, die für eine bestimmte Bereitstellung verwendet wurde. Das Anzeigen der [exportierten Vorlage](resource-manager-export-template.md) ist hilfreich, um sich über die Vorlagensyntax zu informieren.
 
-Weitere Informationen zum Format der Vorlage und zu ihrer Erstellung finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](resource-group-authoring-templates.md) und [Resource Manager-Vorlage – Exemplarische Vorgehensweise](resource-manager-template-walkthrough.md).
+Weitere Informationen zum Format der Vorlage und zur Erstellung finden Sie unter [Erstellen Ihrer ersten Azure Resource Manager-Vorlage](resource-manager-create-first-template.md). Die JSON-Syntax für Ressourcentypen finden Sie unter [Define resources in Azure Resource Manager templates](/azure/templates/) (Definieren von Ressourcen in Azure Resource Manager-Vorlagen).
 
 Der Resource Manager verarbeitet die Vorlage wie andere Anforderungen auch (siehe Abbildung für [Einheitliche Verwaltungsebene](#consistent-management-layer)). Er analysiert die Vorlage und konvertiert deren Syntax in REST-API-Vorgänge für die entsprechenden Ressourcenanbieter. Beispielsweise kann der Resource Manager eine Vorlage mit der folgenden Ressourcendefinition empfangen:
 
@@ -333,10 +333,9 @@ Neben diesen Beispielen können Sie auch die Katalogbeispiele durchsuchen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Eine einfache Einführung in die Verwendung von Vorlagen finden Sie unter [Exportieren einer Azure Resource Manager-Vorlage aus vorhandenen Ressourcen](resource-manager-export-template.md).
-* Eine ausführlichere exemplarische Vorgehensweise zum Erstellen einer Vorlage finden Sie unter [Resource Manager-Vorlage – Exemplarische Vorgehensweise](resource-manager-template-walkthrough.md).
+* Eine ausführlichere exemplarische Vorgehensweise zur Erstellung einer Vorlage finden Sie unter [Erstellen Ihrer ersten Azure Resource Manager-Vorlage](resource-manager-create-first-template.md).
 * Grundlegende Informationen zu den Funktionen, die in einer Vorlage verwendet werden können, finden Sie unter [Vorlagenfunktionen](resource-group-template-functions.md)
 * Informationen zum Verwenden von Visual Studio mit Resource Manager finden Sie unter [Erstellen und Bereitstellen von Azure-Ressourcengruppen über Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
-* Informationen zur Verwendung von VS Code mit dem Resource Manager finden Sie unter [Verwenden von Azure Resource Manager-Vorlagen in Visual Studio Code](resource-manager-vs-code.md).
 
 Hier sehen Sie eine Videodemonstration dieser Übersicht:
 

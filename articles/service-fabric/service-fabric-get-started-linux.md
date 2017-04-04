@@ -3,7 +3,7 @@ title: Einrichten Ihrer Entwicklungsumgebung unter Linux | Microsoft Docs
 description: "Installieren Sie die Laufzeit und das SDK, und erstellen Sie einen lokalen Entwicklungscluster unter Linux. Nach Abschluss des Setups können Sie mit der Erstellung von Clientanwendungen beginnen."
 services: service-fabric
 documentationcenter: .net
-author: seanmck
+author: mani-ramaswamy
 manager: timlt
 editor: 
 ms.assetid: d552c8cd-67d1-45e8-91dc-871853f44fc6
@@ -12,12 +12,12 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/05/2017
-ms.author: seanmck
+ms.date: 03/23/2017
+ms.author: subramar
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 1e961eccbc4fb8af90c7da831429c942f92bdf79
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 516b8e517a16dd0d87e02189260166696225fbab
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -36,7 +36,7 @@ ms.lasthandoff: 03/11/2017
 ### <a name="supported-operating-system-versions"></a>Unterstützte Betriebssystemversionen
 Die folgenden Betriebssystemversionen werden bei der Entwicklung unterstützt:
 
-* Ubuntu 16.04 (Xenial Xerus)
+* Ubuntu 16.04 (**„Xenial Xerus“**)
 
 ## <a name="update-your-apt-sources"></a>Aktualisieren Ihrer apt-Quellen
 Um das SDK und das dazugehörige Laufzeitpaket über „apt-get“ installieren zu können, müssen Sie zunächst Ihre apt-Datenquellen aktualisieren.
@@ -47,7 +47,7 @@ Um das SDK und das dazugehörige Laufzeitpaket über „apt-get“ installieren 
     ```bash
     sudo sh -c 'echo "deb [arch=amd64] http://apt-mo.trafficmanager.net/repos/servicefabric/ trusty main" > /etc/apt/sources.list.d/servicefabric.list'
     ```
-3. Fügen Sie der Quellenliste das DotNet-Repository hinzu.
+3. Fügen Sie der Quellenliste das **DotNet**-Repository hinzu.
 
     ```bash
     sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
@@ -66,7 +66,7 @@ Um das SDK und das dazugehörige Laufzeitpaket über „apt-get“ installieren 
     ```bash
     sudo apt-get update
     ```
-## <a name="install-and-set-up-the-sdk"></a>Installieren und Einrichten des SDKs
+## <a name="install-and-set-up-the-sdk-for-containers-and-guest-executables"></a>Installieren und Einrichten des SDK für Container und ausführbare Gastanwendungsdateien
 Nach der Aktualisierung Ihrer Datenquellen können Sie das SDK installieren.
 
 1. Installieren Sie das Service Fabric-SDK-Paket. Sie werden aufgefordert, die Installation zu bestätigen und einem Lizenzvertrag zuzustimmen.
@@ -80,6 +80,21 @@ Nach der Aktualisierung Ihrer Datenquellen können Sie das SDK installieren.
     sudo /opt/microsoft/sdk/servicefabric/common/sdkcommonsetup.sh
     ```
 
+Nach dem Ausführen der Schritte zum Installieren des allgemeinen SDK-Pakets sollte die Erstellung von Apps mit ausführbaren Gastdateien oder Containerdiensten möglich sein, indem `yo azuresfguest` ausgeführt wird. Unter Umständen müssen Sie die Umgebungsvariable **$NODE_PATH** auf den Speicherort der Knotenmodule festlegen. 
+
+    ```bash
+    export NODE_PATH=$NODE_PATH:$HOME/.node/lib/node_modules 
+    ```
+
+Bei Verwendung der Umgebung als Stammumgebung (Root) müssen Sie die Variable ggf. mit dem folgenden Befehl festlegen:
+
+    ```bash
+    export NODE_PATH=$NODE_PATH:/root/.node/lib/node_modules 
+    ```
+
+> [!TIP]
+> Es kann hilfreich sein, diese Befehle der Datei „~/.bashrc“ hinzuzufügen, damit Sie die Umgebungsvariable nicht bei jeder Anmeldung festlegen müssen.
+>
 
 ## <a name="set-up-the-azure-cross-platform-cli"></a>Einrichten der plattformübergreifenden Azure-Befehlszeilenschnittstelle
 Die [plattformübergreifende Azure-Befehlszeilenschnittstelle][azure-xplat-cli-github] enthält Befehle für die Interaktion mit Service Fabric-Entitäten (wie etwa Cluster und Anwendungen). Sie basiert auf Node.js. [Vergewissern Sie sich daher, dass Sie Node installiert haben][install-node], bevor Sie mit den folgenden Anweisungen fortfahren:
@@ -111,6 +126,7 @@ Die [plattformübergreifende Azure-Befehlszeilenschnittstelle][azure-xplat-cli-g
 > [!NOTE]
 > Service Fabric-Befehle sind in Azure CLI 2.0 noch nicht verfügbar.
 
+
 ## <a name="set-up-a-local-cluster"></a>Einrichten eines lokalen Clusters
 Wenn alles erfolgreich installiert wurde, können Sie einen lokalen Cluster starten.
 
@@ -129,9 +145,8 @@ Nun können Sie vorgefertigte Service Fabric-Anwendungspakete oder neue, auf Gas
 > [!NOTE]
 > Eigenständige Cluster werden unter Linux nicht unterstützt. In der Vorschau werden lediglich One-Box-Cluster und Azure Linux-Cluster mit mehreren Computern unterstützt.
 >
->
 
-## <a name="install-the-java-sdk-and-eclipse-neon-plugin-optional"></a>Installieren von Java SDK und Eclipse Neon-Plug-In (optional)
+## <a name="install-the-java-sdk-optional-if-you-wish-to-use-the-java-programming-models"></a>Installieren des Java SDK (optional, falls Sie Java-Programmiermodelle nutzen möchten)
 Das Java SDK stellt die Bibliotheken und Vorlagen bereit, die zum Erstellen von Service Fabric-Diensten mit Java benötigt werden.
 
 1. Installieren Sie das Java SDK-Paket.
@@ -144,8 +159,13 @@ Das Java SDK stellt die Bibliotheken und Vorlagen bereit, die zum Erstellen von 
     ```bash
     sudo /opt/microsoft/sdk/servicefabric/java/sdkjavasetup.sh
     ```
+## <a name="install-the-eclipse-neon-plugin-optional"></a>Installieren des Eclipse Neon-Plug-Ins (optional)
 
-Das Eclipse-Plug-In für Service Fabric können Sie über die **Eclipse-IDE für Java-Entwickler** installieren.
+Das Eclipse-Plug-In für Service Fabric können Sie über die **Eclipse-IDE für Java-Entwickler** installieren. Sie können Eclipse verwenden, um zusätzlich zu Service Fabric-Java-Anwendungen Anwendungen mit ausführbarer Gastanwendungsdatei und Containeranwendungen für Service Fabric zu erstellen.
+
+> [!NOTE]
+> Die Installation des Java SDK ist eine Voraussetzung für die Verwendung des Eclipse-Plug-Ins. Dies gilt auch, wenn Sie es nur zum Erstellen und Bereitstellen von ausführbaren Gastanwendungsdateien und Containeranwendungen verwenden.
+>
 
 1. Stellen Sie in Eclipse sicher, dass Sie die aktuellen Versionen von Eclipse **Neon** und Buildship (1.0.17 oder höher) installiert haben. Die Version der installierten Komponenten können Sie unter **Hilfe > Installationsdetails** ermitteln. Eine Aktualisierungsanleitung für Buildship finden Sie [hier][buildship-update].
 2. Wählen Sie zum Installieren des Service Fabric-Plug-Ins **Hilfe > Neue Software installieren...** aus.
@@ -155,11 +175,12 @@ Das Eclipse-Plug-In für Service Fabric können Sie über die **Eclipse-IDE für
 5. Wählen Sie das Service Fabric-Plug-In aus, und klicken Sie auf „Weiter“.
 6. Fahren Sie mit der Installation fort, und akzeptieren Sie den Endbenutzer-Lizenzvertrag.
 
-Falls Sie das Service Fabric-Eclipse-Plug-In bereits installiert haben, sollten Sie sicherstellen, dass es sich um die aktuelle Version handelt. Unter ``Help => Installation Details`` können Sie prüfen, ob weitere Updates möglich sind. Suchen Sie in der Liste der installierten Plug-Ins nach „Service Fabric“, und klicken Sie auf „Aktualisieren“. Falls ein ausstehendes Update vorhanden ist, wird es abgerufen und installiert.
+Falls Sie das Service Fabric-Eclipse-Plug-In bereits installiert haben, sollten Sie sicherstellen, dass es sich um die aktuelle Version handelt. Sie können dies überprüfen, indem Sie ``Help => Installation Details`` auswählen und in der Liste mit den installierten Plug-Ins nach Service Fabric suchen. Wählen Sie die Option zum Aktualisieren, falls eine neuere Version verfügbar ist. 
 
-Ausführlichere Informationen zur Verwendung des Service Fabric Eclipse-Plug-In zum Entwerfen, Erstellen, Bereitstellen und Aktualisieren einer Service Fabric-Java-Anwendung finden Sie in unserem ausführlichen Leitfaden mit den [ersten Schritte mit Eclipse für Service Fabric](service-fabric-get-started-eclipse.md).
+Weitere Informationen finden Sie unter [Erste Schritte mit Eclipse für Service Fabric](service-fabric-get-started-eclipse.md).
 
-## <a name="install-the-net-core-sdk-optional"></a>Installieren des .NET Core SDKs (optional)
+
+## <a name="install-the-net-core-sdk-optional-if-you-wish-to-use-the-net-core-programming-models"></a>Installieren des .NET Core SDK (optional, falls Sie die .NET Core-Programmiermodelle verwenden möchten)
 Das .NET Core SDK stellt die Bibliotheken und Vorlagen bereit, die zum Erstellen von Service Fabric-Diensten mit plattformübergreifendem .NET Core benötigt werden.
 
 1. Installieren Sie das .NET Core SDK-Paket.
@@ -180,10 +201,11 @@ Führen Sie zum Aktualisieren auf die aktuelle SDK- und Laufzeitversion die folg
 
    ```bash
    sudo apt-get update
-   sudo apt-get install servicefabric, servicefabricsdkcommon, servicefabricsdkcsharp, servicefabricsdkjava
+   sudo apt-get install servicefabric servicefabricsdkcommon servicefabricsdkcsharp servicefabricsdkjava
    ```
 
-Navigieren Sie zum Aktualisieren der CLI zum Verzeichnis, in dem Sie die CLI geklont haben, und führen Sie zum Aktualisieren `git pull` aus.
+Navigieren Sie zum Aktualisieren der CLI zum Verzeichnis, in dem Sie die CLI geklont haben, und führen Sie zum Aktualisieren `git pull` aus.  Falls für die Aktualisierung weitere Schritte erforderlich sind, sind sie in den Versionsinformationen angegeben. 
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Erstellen und Bereitstellen Ihrer ersten Service Fabric-Java-Anwendung unter Linux mithilfe von Yeoman](service-fabric-create-your-first-linux-application-with-java.md)
@@ -191,6 +213,7 @@ Navigieren Sie zum Aktualisieren der CLI zum Verzeichnis, in dem Sie die CLI gek
 * [Erstellen der ersten Java-Anwendung unter Linux](service-fabric-create-your-first-linux-application-with-csharp.md)
 * [Prepare your development environment on OSX (Vorbereiten Ihrer Entwicklungsumgebung unter OSX)](service-fabric-get-started-mac.md)
 * [Verwalten von Service Fabric-Anwendungen mit der Azure-CLI](service-fabric-azure-cli.md)
+* [Unterschiede zwischen Service Fabric unter Linux (Vorschau) und Windows (allgemein verfügbar)](service-fabric-linux-windows-differences.md)
 
 <!-- Links -->
 

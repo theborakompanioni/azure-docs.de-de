@@ -9,16 +9,17 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 4d6a2658-6b19-4268-95ee-822890f5a33a
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/09/2017
+ms.date: 03/22/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: bdc00541e55ea68f0b18456f8fa1a1ac51116d69
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 21d8dff230e045607b70013f4eabf1bfe8ec3993
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -64,7 +65,7 @@ Beim folgenden Verfahren wird eine Azure Resource Manager-Vorlage verwendet, um 
 > 
 
 ## <a name="create-tables-and-insert-data"></a>Erstellen von Tabellen und Einfügen von Daten
-Sie können SSH verwenden, um eine Verbindung mit HBase-Clustern herzustellen, und dann mit HBase Shell HBase-Tabellen erstellen, Daten einfügen und Daten abfragen. Informationen zur Verwendung von SSH finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix und OS X](hdinsight-hadoop-linux-use-ssh-unix.md) und [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Windows](hdinsight-hadoop-linux-use-ssh-windows.md).
+Sie können SSH verwenden, um eine Verbindung mit HBase-Clustern herzustellen, und dann mit HBase Shell HBase-Tabellen erstellen, Daten einfügen und Daten abfragen. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 Den meisten Benutzern werden die Daten im Tabellenformat angezeigt:
 
@@ -223,6 +224,11 @@ Sie können Daten in HBase-Tabellen mit Hive abfragen. In diesem Abschnitt erste
         -v
 
 Weitere Informationen zu HBase-REST finden Sie im [Referenzleitfaden zu Apache HBase](https://hbase.apache.org/book.html#_rest).
+
+>
+> [!NOTE]
+> Thrift wird von HBase in HDInsight nicht unterstützt.
+>
 
 ## <a name="check-cluster-status"></a>Überprüfen des Clusterstatus
 HBase in HDInsight wird mit einer Web-Benutzeroberfläche ausgeliefert, über die Cluster überwacht werden können. In dieser Web-Benutzeroberfläche können Sie Statistiken und Informationen zu Regionen anfordern.

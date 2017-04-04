@@ -22,7 +22,7 @@ ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="deploy-an-azure-virtual-machine-using-c"></a>Bereitstellen eines virtuellen Azure-Computers mit C# #
+# <a name="deploy-an-azure-virtual-machine-using-c"></a>Bereitstellen eines virtuellen Azure-Computers mit C## #
 
 In diesem Artikel wird gezeigt, wie Sie C# zum Erstellen eines virtuellen Azure-Computers und unterstützender Ressourcen verwenden.
 
@@ -566,9 +566,9 @@ Da in Azure die genutzten Ressourcen in Rechnung gestellt werden, empfiehlt es s
 
 1. Klicken Sie zum Ausführen der Konsolenanwendung in Visual Studio auf **Starten** , und melden Sie sich dann bei Azure AD mit demselben Benutzernamen und Kennwort an, die Sie für Ihr Abonnement verwenden.
 
-2. Wenn der Status *Erfolgreich* angezeigt wird, drücken Sie die EINGABETASTE****. 
+2. Wenn der Status *Erfolgreich* angezeigt wird, drücken Sie die **EINGABETASTE**. 
    
-3. Nach dem Erstellen des virtuellen Computers und vor dem Drücken der EINGABETASTE**** zum Löschen der Ressourcen können Sie sich ein paar Minuten Zeit nehmen, die Ressourcen im Azure-Portal zu überprüfen.
+3. Nach dem Erstellen des virtuellen Computers und vor dem Drücken der **EINGABETASTE** zum Löschen der Ressourcen können Sie sich ein paar Minuten Zeit nehmen, die Ressourcen im Azure-Portal zu überprüfen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Nutzen Sie die Vorteile der Erstellung eines virtuellen Computers per Vorlage, indem Sie sich die Informationen unter [Bereitstellen eines virtuellen Azure-Computers mit C# und einer Resource Manager-Vorlage](virtual-machines-windows-csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)durchlesen.

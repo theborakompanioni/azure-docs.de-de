@@ -12,14 +12,14 @@ ms.service: sql-database
 ms.custom: quick start
 ms.workload: data-management
 ms.tgt_pltfrm: na
-ms.devlang: cli
+ms.devlang: azurecli
 ms.topic: hero-article
 ms.date: 03/13/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: f1e07d232328c35a43497c5a0ed6661a4277423d
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 3d642447526c5562ae3bfad5e4a4592e33e766aa
+ms.lasthandoff: 03/25/2017
 
 ---
 
@@ -63,18 +63,18 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
     -n AllowYourIp --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
 ```
 
-## <a name="create-a-database-in-the-server"></a>Erstellen einer Datenbank auf dem Server
+## <a name="create-a-database-in-the-server-with-sample-data"></a>Erstellen einer Datenbank auf dem Server mit Beispieldaten
 
-Erstellen Sie mit dem Befehl [az sql db create](/cli/azure/sql/db#create) auf dem Server eine Datenbank mit der [Leistungsstufe „S0“](sql-database-service-tiers.md). Im folgenden Beispiel wird eine leere Datenbank mit dem Namen `mySampleDatabase` erstellt. Ersetzen Sie ggf. diesen vordefinierten Wert.
+Erstellen Sie mit dem Befehl [az sql db create](/cli/azure/sql/db#create) auf dem Server eine Datenbank mit der [Leistungsstufe „S0“](sql-database-service-tiers.md). Im folgenden Beispiel wird eine Datenbank mit dem Namen `mySampleDatabase` erstellt, und die AdventureWorksLT-Beispieldaten werden in diese Datenbank geladen. Ersetzen Sie diese vordefinierten Werte wie gewünscht (andere Schnellstarts in dieser Sammlung bauen auf den Werten dieses Schnellstarts auf).
 
 ```azurecli
 az sql db create --resource-group myResourceGroup --server $servername \
-    --name mySampleDatabase --service-objective S0
+    --name mySampleDatabase --sample-name AdventureWorksLT --service-objective S0
 ```
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Die **Verbinden mit**-Schnellstarts in dieser Sammlung und die Tutorials der Tutorialsammlung bauen auf diesem Schnellstart auf. Wenn Sie planen, mit den nachfolgenden Schnellstarts oder Tutorials fortzufahren, sollten Sie die in diesem Schnellstart erstellten Ressourcen nicht bereinigen. Falls Sie nicht fortfahren möchten, können Sie den folgenden Befehl ausführen, um alle erstellten Ressourcen dieses Schnellstarts zu löschen.
+Andere Schnellstarts dieser Sammlung bauen auf diesem Schnellstart auf. Wenn Sie planen, mit den nachfolgenden Schnellstarts oder Tutorials fortzufahren, sollten Sie die in diesem Schnellstart erstellten Ressourcen nicht bereinigen. Falls Sie nicht fortfahren möchten, können Sie den folgenden Befehl ausführen, um alle erstellten Ressourcen dieses Schnellstarts zu löschen.
 
 ```azurecli
 az group delete --name myResourceGroup

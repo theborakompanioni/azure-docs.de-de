@@ -5,7 +5,7 @@ services: container-registry
 documentationcenter: 
 author: stevelas
 manager: balans
-editor: dlepow
+editor: cristyg
 tags: 
 keywords: 
 ms.assetid: 64fbe43f-fdde-4c17-a39a-d04f2d6d90a1
@@ -18,21 +18,17 @@ ms.date: 11/14/2016
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 0433e22dc7722ef9c8edfaf949dbd9a9d8645e67
-ms.openlocfilehash: e778c09991da73cd5064532119d92bff36f0a00e
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: b6c26f28aa1e574ba3aabe53eda359cb6bf2edcc
+ms.lasthandoff: 03/27/2017
 
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Pushübertragung des ersten Images an eine private Containerregistrierung mit der Docker CLI
-Eine Azure-Containerregistrierung speichert und verwaltet private [Docker](http://hub.docker.com)-Containerimages. Dies ähnelt der Art und Weise, wie [Docker Hub](https://hub.docker.com/) öffentliche Docker-Images speichert. Für Ihre Containerregistrierung verwenden Sie die [Docker-Befehlszeilenschnittstelle](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) für die Vorgänge [Anmeldung](https://docs.docker.com/engine/reference/commandline/login/), [Push](https://docs.docker.com/engine/reference/commandline/push/), [Pull](https://docs.docker.com/engine/reference/commandline/pull/) und andere Vorgänge. 
+Eine Azure-Containerregistrierung speichert und verwaltet private [Docker](http://hub.docker.com)-Containerimages. Dies ähnelt der Art und Weise, wie [Docker Hub](https://hub.docker.com/) öffentliche Docker-Images speichert. Für Ihre Containerregistrierung verwenden Sie die [Docker-Befehlszeilenschnittstelle](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) für die Vorgänge [Anmeldung](https://docs.docker.com/engine/reference/commandline/login/), [Push](https://docs.docker.com/engine/reference/commandline/push/), [Pull](https://docs.docker.com/engine/reference/commandline/pull/) und andere Vorgänge.
 
 Weitere Hintergrundinformationen und Konzepte finden Sie in der [Übersicht](container-registry-intro.md).
 
 
-> [!NOTE]
-> Die Containerregistrierung befindet sich derzeit in der Vorschauphase.
-> 
-> 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * **Azure-Containerregistrierung**: Erstellen Sie in Ihrem Azure-Abonnement eine Containerregistrierung. Verwenden Sie beispielsweise das [Azure-Portal](container-registry-get-started-portal.md) oder [Azure CLI 2.0](container-registry-get-started-azure-cli.md).
@@ -41,17 +37,17 @@ Weitere Hintergrundinformationen und Konzepte finden Sie in der [Übersicht](con
 ## <a name="log-in-to-a-registry"></a>Anmelden an einer Registrierung
 Führen Sie `docker login` aus, um sich mit Ihren [Registrierungsanmeldeinformationen](container-registry-authentication.md) an der Containerregistrierung anzumelden.
 
-Im folgenden Beispiel werden die ID und das Kennwort eines Azure Active Directory-[Dienstprinzipals](../active-directory/active-directory-application-objects.md) übergeben. Angenommen, Sie haben Ihrer Registrierung für ein Automatisierungsszenario einen Dienstprinzipal zugewiesen. 
+Im folgenden Beispiel werden die ID und das Kennwort eines Azure Active Directory-[Dienstprinzipals](../active-directory/active-directory-application-objects.md) übergeben. Angenommen, Sie haben Ihrer Registrierung für ein Automatisierungsszenario einen Dienstprinzipal zugewiesen.
 
 ```
-docker login myregistry-contoso.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
+docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
 ```
 
 > [!TIP]
-> Stellen Sie sicher, dass Sie den vollqualifizierten Registrierungsnamen angeben (nur Kleinbuchstaben). In diesem Beispiel lautet er `myregistry-contoso.azurecr.io`.
+> Stellen Sie sicher, dass Sie den vollqualifizierten Registrierungsnamen angeben (nur Kleinbuchstaben). In diesem Beispiel lautet er `myregistry.azurecr.io`.
 
 ## <a name="steps-to-pull-and-push-an-image"></a>Schritte für die Pull- und Pushübertragung eines Image
-Im folgenden Beispiel wird ein Nginx-Image aus der öffentlichen Docker Hub-Registrierung heruntergeladen, für Ihre private Azure-Containerregistrierung gekennzeichnet, per Pushvorgang an Ihre Registrierung übertragen und dann per Pullvorgang zurückübertragen.
+Im folgenden Beispiel wird das Nginx-Image aus der öffentlichen Docker Hub-Registrierung heruntergeladen, für Ihre private Azure-Containerregistrierung gekennzeichnet, per Pushvorgang an Ihre Registrierung übertragen und dann per Pullvorgang zurückübertragen.
 
 **1. Übertragen des offiziellen Docker-Image per Pullvorgang für Nginx**
 
@@ -62,7 +58,7 @@ docker pull nginx
 ```
 **2. Starten des Nginx-Containers**
 
-Mit dem folgenden Befehl wird der lokale Nginx-Container interaktiv gestartet (zum Anzeigen der Ausgabe von Nginx), und über Port 8080 wird gelauscht. Wenn die Ausführung des Containers beendet wird, wird er hierbei entfernt.
+Mit dem folgenden Befehl wird der lokale Nginx-Container interaktiv über Port 8080 gestartet, damit Sie die Ausgabe von Nginx verfolgen können. Wenn die Ausführung des Containers beendet wird, wird er hierbei entfernt.
 
 ```
 docker run -it --rm -p 8080:80 nginx
@@ -79,42 +75,45 @@ Drücken Sie [STRG]+[C], um den ausgeführten Container zu beenden.
 Mit dem folgenden Befehl wird ein Alias des Image mit einem vollqualifizierten Pfad zur Registrierung erstellt. In diesem Beispiel wird der `samples`-Namespace angegeben, um den Stamm der Registrierung nicht zu überladen.
 
 ```
-docker tag nginx myregistry-exp.azurecr.io/samples/nginx
+docker tag nginx myregistry.azurecr.io/samples/nginx
 ```  
 
 **4. Übertragen des Image an Ihre Registrierung per Pushvorgang**
 
 ```
-docker push myregistry-contoso.azurecr.io/samples/nginx
-``` 
+docker push myregistry.azurecr.io/samples/nginx
+```
 
 **5. Übertragen des Image aus Ihrer Registrierung per Pullvorgang**
 
 ```
-docker pull myregistry-contoso.azurecr.io/samples/nginx
-``` 
+docker pull myregistry.azurecr.io/samples/nginx
+```
 
 **6. Starten des Nginx-Containers aus der Registrierung**
 
 ```
-docker run -it --rm -p 8080:80 myregistry-exp.azurecr.io/samples/nginx
+docker run -it --rm -p 8080:80 myregistry.azurecr.io/samples/nginx
 ```
 
 Navigieren Sie zu [http://localhost:8080](http://localhost:8080), um den ausgeführten Container anzuzeigen.
 
 Drücken Sie [STRG]+[C], um den ausgeführten Container zu beenden.
 
-**6. Entfernen des Image**
+**7. (Optional) Entfernen des Image**
 
 ```
-docker rmi myregistry-contoso.azurecr.io/samples/nginx
+docker rmi myregistry.azurecr.io/samples/nginx
 ```
 
+##<a name="concurrent-limits"></a>Grenzwerte für Parallelität
+In einigen Szenarien kann die parallele Ausführung von Aufrufen zu Fehlern führen. Die folgende Tabelle enthält die Grenzwerte für parallele Aufrufe mit Push- und Pullvorgängen in der Azure-Containerregistrierung:
 
+| Vorgang  | Begrenzung                                  |
+| ---------- | -------------------------------------- |
+| PULL       | Bis zu zehn parallele Pullvorgänge pro Registrierung |
+| PUSH       | Bis zu fünf parallele Pushvorgänge pro Registrierung |
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie sich mit den Grundlagen vertraut gemacht haben, können Sie mit der Verwendung Ihrer Registrierung beginnen! Beginnen Sie beispielsweise, indem Sie Containerimages in einem [Azure Container Service](https://azure.microsoft.com/documentation/services/container-service/)-Cluster bereitstellen.
-
-
-
 

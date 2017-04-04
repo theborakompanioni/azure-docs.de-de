@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Service Bus-Themen mit .NET | Microsoft Docs
+title: Verwenden von Azure Service Bus-Themen mit .NET | Microsoft-Dokumentation
 description: "Erfahren Sie mehr zur Verwendung von Service Bus-Themen und -Abonnements mit .NET in Azure. Die Codebeispiele wurden für .NET-Anwendungen geschrieben."
 services: service-bus-messaging
 documentationcenter: .net
@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: get-started-article
-ms.date: 12/21/2016
+ms.date: 03/23/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: add228c8a24fbd36ab05f55570abf1374f519822
-ms.openlocfilehash: 9927de3bba251a2cc135657f00b789c7522fc05c
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: bec18e91ef8798a791d4b1fe93bd529593197e01
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -33,10 +34,10 @@ In diesem Artikel erfahren Sie, wie Sie Service Bus-Themen und -Abonnements verw
 Wenn Sie eine Anwendung erstellen, die den Servicebus verwendet, müssen Sie zu der Servicebus-Assembly eine Referenz hinzufügen und die zugehörigen Namespaces einbinden. Die einfachste Möglichkeit besteht hierbei darin, das entsprechende [NuGet](https://www.nuget.org)-Paket herunterzuladen.
 
 ## <a name="get-the-service-bus-nuget-package"></a>Abrufen des NuGet-Pakets "Service Bus"
-Das [NuGet-Paket „Service Bus “](https://www.nuget.org/packages/WindowsAzure.ServiceBus) stellt die einfachste Möglichkeit zum Abrufen der Service Bus-API und zum Konfigurieren der Anwendung mit allen erforderlichen Service Bus-Abhängigkeiten dar. Gehen Sie wie folgt vor, um das NuGet-Paket „Service Bus“ in Ihrem Projekt zu installieren:
+Das [NuGet-Paket „Service Bus “](https://www.nuget.org/packages/WindowsAzure.ServiceBus) stellt die einfachste Möglichkeit zum Konfigurieren der Anwendung mit allen erforderlichen Service Bus-Abhängigkeiten dar. Gehen Sie wie folgt vor, um das NuGet-Paket „Service Bus“ in Ihrem Projekt zu installieren:
 
-1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **Verweise**, und klicken Sie dann auf **NuGet-Pakete verwalten**.
-2. Suchen Sie nach „Service Bus“, und wählen Sie das Element **Microsoft Azure Service Bus** aus. Klicken Sie auf **Installieren**, um die Installation durchzuführen. Schließen Sie danach das folgende Dialogfeld:
+1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **Verweise**, und klicken Sie anschließend auf **NuGet-Pakete verwalten**.
+2. Klicken Sie auf **Durchsuchen**, suchen Sie nach „Azure Service Bus“, und wählen Sie dann den Eintrag **Microsoft Azure Service Bus**. Klicken Sie auf **Installieren**, um die Installation abzuschließen. Schließen Sie anschließend das Dialogfeld:
    
    ![][7]
 
@@ -97,7 +98,7 @@ Bei der Verwendung von Websites oder virtuellen Computern wird empfohlen, das .N
 Verwenden Sie die aus dem [Azure-Portal][Azure portal] abgerufenen SAS-Namenswerte und -Schlüsselwerte. Dieses Verfahren wurde weiter oben beschrieben.
 
 ## <a name="create-a-topic"></a>Erstellen eines Themas
-Verwaltungsvorgänge für Service Bus-Themen und -Abonnements können über die [NamespaceManager](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.namespacemanager)-Klasse durchgeführt werden. Diese Klasse stellt Methoden zum Erstellen, Aufzählen und Löschen von Themen zur Verfügung.
+Verwaltungsvorgänge für Service Bus-Themen und -Abonnements können über die [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager)-Klasse durchgeführt werden. Diese Klasse stellt Methoden zum Erstellen, Aufzählen und Löschen von Themen zur Verfügung.
 
 Im folgenden Beispiel wird ein `NamespaceManager`-Objekt mit der Azure-Klasse `CloudConfigurationManager` mit einer Verbindungszeichenfolge erstellt, die aus der Basisadresse eines Service Bus-Namespace und den entsprechenden SAS-Anmeldeinformationen mit Berechtigungen für dessen Verwaltung besteht. Diese Verbindungszeichenfolge weist die folgende Form auf:
 
@@ -121,7 +122,7 @@ if (!namespaceManager.TopicExists("TestTopic"))
 }
 ```
 
-Es gibt Überladungen der [CreateTopic](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.namespacemanager)-Methode, die es Ihnen ermöglichen, die Eigenschaften des Themas zu optimieren. So können Sie beispielsweise den Standardwert für die TTL (Time-to-live, Lebensdauer) festlegen, der auf an das Thema gesendete Nachrichten angewendet wird. Diese Einstellungen werden mithilfe der [TopicDescription](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.topicdescription)-Klasse angewendet. Das folgende Beispiel zeigt, wie ein Thema namens **TestTopic** mit einer Maximalgröße von 5 GB und einer Standard-Nachrichten-TTL von 1 Minute erstellt wird.
+Es gibt Überladungen der [CreateTopic](/dotnet/api/microsoft.servicebus.namespacemanager)-Methode, die es Ihnen ermöglichen, die Eigenschaften des Themas zu optimieren. So können Sie beispielsweise den Standardwert für die TTL (Time-to-live, Lebensdauer) festlegen, der auf an das Thema gesendete Nachrichten angewendet wird. Diese Einstellungen werden mithilfe der [TopicDescription](/dotnet/api/microsoft.servicebus.messaging.topicdescription)-Klasse angewendet. Das folgende Beispiel zeigt, wie ein Thema namens **TestTopic** mit einer Maximalgröße von 5 GB und einer Standard-Nachrichten-TTL von 1 Minute erstellt wird.
 
 ```csharp
 // Configure Topic Settings.
@@ -143,12 +144,12 @@ if (!namespaceManager.TopicExists("TestTopic"))
 ```
 
 > [!NOTE]
-> Sie können die [TopicExists](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.namespacemanager#Microsoft_ServiceBus_NamespaceManager_TopicExists_System_String_)-Methode in [NamespaceManager](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.namespacemanager)-Objekten verwenden, um zu prüfen, ob ein Thema mit einem bestimmten Namen innerhalb eines Namespace bereits vorhanden ist.
+> Sie können die [TopicExists](/dotnet/api/microsoft.servicebus.namespacemanager#Microsoft_ServiceBus_NamespaceManager_TopicExists_System_String_)-Methode in [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager)-Objekten verwenden, um zu prüfen, ob ein Thema mit einem bestimmten Namen innerhalb eines Namespace bereits vorhanden ist.
 > 
 > 
 
 ## <a name="create-a-subscription"></a>Erstellen eines Abonnements
-Sie können auch Themenabonnements mithilfe der [NamespaceManager](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.namespacemanager)-Klasse erstellen. Abonnements werden benannt und können einen optionalen Filter aufweisen, der die Nachrichten einschränkt, die an die virtuelle Warteschlange des Abonnements übergeben werden.
+Sie können auch Themenabonnements mithilfe der [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager)-Klasse erstellen. Abonnements werden benannt und können einen optionalen Filter aufweisen, der die Nachrichten einschränkt, die an die virtuelle Warteschlange des Abonnements übergeben werden.
 
 > [!IMPORTANT]
 > Damit Nachrichten von einem Abonnement empfangen werden können, müssen Sie das Abonnement erstellen, bevor Sie Nachrichten an das Thema senden. Sind für ein Thema keine Abonnements vorhanden, verwirft das Thema die Nachrichten.
@@ -203,9 +204,9 @@ namespaceManager.CreateSubscription("TestTopic",
 Wenn eine Nachricht an `TestTopic` gesendet wird, wird diese nun stets an die Empfänger des Themenabonnements **AllMessages** zugestellt. Sie wird selektiv an die Empfänger der Themenabonnements **HighMessages** und **LowMessages** zugestellt (je nach Inhalt der Nachricht).
 
 ## <a name="send-messages-to-a-topic"></a>Senden von Nachrichten an ein Thema
-Um eine Nachricht an ein Service Bus-Thema zu senden, erstellt die Anwendung ein [TopicClient](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.topicclient)-Objekt mithilfe der Verbindungszeichenfolge.
+Um eine Nachricht an ein Service Bus-Thema zu senden, erstellt die Anwendung ein [TopicClient](/dotnet/api/microsoft.servicebus.messaging.topicclient)-Objekt mithilfe der Verbindungszeichenfolge.
 
-Der folgende Code veranschaulicht, wie ein [TopicClient](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.topicclient)-Objekt für das **TestTopic**-Thema erstellt wird, das Sie gerade mit dem Aufruf der [CreateFromConnectionString](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicebus.messaging.topicclient#Microsoft_ServiceBus_Messaging_TopicClient_CreateFromConnectionString_System_String_System_String_)-API erstellt haben.
+Der folgende Code veranschaulicht, wie ein [TopicClient](/dotnet/api/microsoft.servicebus.messaging.topicclient)-Objekt für das **TestTopic**-Thema erstellt wird, das Sie gerade mit dem Aufruf der [CreateFromConnectionString](/dotnet/api/microsoft.servicebus.messaging.topicclient#Microsoft_ServiceBus_Messaging_TopicClient_CreateFromConnectionString_System_String_System_String_)-API erstellt haben.
 
 ```csharp
 string connectionString =
@@ -217,9 +218,9 @@ TopicClient Client =
 Client.Send(new BrokeredMessage());
 ```
 
-An Service Bus-Themen gesendete Nachrichten sind Instanzen der [BrokeredMessage](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)-Klasse. **BrokeredMessage**-Objekte verfügen über einen Satz von Standardeigenschaften (z.B. [Label](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Label) und [TimeToLive](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_TimeToLive)), ein Wörterbuch, in dem benutzerdefinierte anwendungsspezifische Eigenschaften enthalten sind, sowie einen Bestand beliebiger Anwendungsdaten. Eine Anwendung kann den Textkörper der Nachricht festlegen, indem ein beliebiges serialisierbares Objekt an den Konstruktor des **BrokeredMessage**-Objekts übergeben wird. Der entsprechende **DataContractSerializer** wird dann zum Serialisieren des Objekts verwendet. Alternativ kann ein **System.IO.Stream**-Objekt zur Verfügung gestellt werden.
+An Service Bus-Themen gesendete Nachrichten sind Instanzen der [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)-Klasse. **BrokeredMessage**-Objekte verfügen über einen Satz von Standardeigenschaften (z.B. [Label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Label) und [TimeToLive](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_TimeToLive)), ein Wörterbuch, in dem benutzerdefinierte anwendungsspezifische Eigenschaften enthalten sind, sowie einen Bestand beliebiger Anwendungsdaten. Eine Anwendung kann den Textkörper der Nachricht festlegen, indem ein beliebiges serialisierbares Objekt an den Konstruktor des **BrokeredMessage**-Objekts übergeben wird. Der entsprechende **DataContractSerializer** wird dann zum Serialisieren des Objekts verwendet. Alternativ kann ein **System.IO.Stream**-Objekt zur Verfügung gestellt werden.
 
-Das folgende Beispiel zeigt, wie fünf Testnachrichten an das **TestTopic**-/[TopicClient](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.topicclient)-Objekt gesendet werden, das im vorherigen Codebeispiel abgerufen wurde. Beachten Sie, dass der Wert der [MessageId](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId)-Eigenschaft jeder Nachricht gemäß der Iteration der Schleife variiert (auf diese Weise wird bestimmt, welche Abonnements die Nachricht erhalten).
+Das folgende Beispiel zeigt, wie fünf Testnachrichten an das **TestTopic**-/[TopicClient](/dotnet/api/microsoft.servicebus.messaging.topicclient)-Objekt gesendet werden, das im vorherigen Codebeispiel abgerufen wurde. Beachten Sie, dass der Wert der [MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId)-Eigenschaft jeder Nachricht gemäß der Iteration der Schleife variiert (auf diese Weise wird bestimmt, welche Abonnements die Nachricht erhalten).
 
 ```csharp
 for (int i=0; i<5; i++)
@@ -238,13 +239,13 @@ for (int i=0; i<5; i++)
 Service Bus-Themen unterstützen eine maximale Nachrichtengröße von 256 KB im [Standard-Tarif](service-bus-premium-messaging.md) und 1 MB im [Premium-Tarif](service-bus-premium-messaging.md). Der Header, der die standardmäßigen und benutzerdefinierten Anwendungseigenschaften enthält, kann eine maximale Größe von 64 KB haben. Es gibt keine Beschränkung für die Anzahl der Nachrichten, die ein Thema enthält. Es gibt jedoch eine Obergrenze für die Gesamtgröße der Nachrichten eines Themas. Die Themengröße wird bei der Erstellung definiert. Die Obergrenze beträgt 5 GB. Wenn Partitionierung aktiviert ist, ist die Obergrenze höher. Weitere Informationen finden Sie unter [Partitionierte Nachrichtenentitäten](service-bus-partitioning.md).
 
 ## <a name="how-to-receive-messages-from-a-subscription"></a>Empfangen von Nachrichten aus einem Abonnement
-Die empfohlene Möglichkeit, Nachrichten aus einem Abonnement zu empfangen, besteht in der Verwendung eines [SubscriptionClient](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptionclient)-Objekts. **SubscriptionClient**-Objekte können in zwei unterschiedlichen Modi verwendet werden: [*ReceiveAndDelete* und *PeekLock*](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode). **PeekLock** ist die Standardeinstellung.
+Die empfohlene Möglichkeit, Nachrichten aus einem Abonnement zu empfangen, besteht in der Verwendung eines [SubscriptionClient](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient)-Objekts. **SubscriptionClient**-Objekte können in zwei unterschiedlichen Modi verwendet werden: [*ReceiveAndDelete* und *PeekLock*](/dotnet/api/microsoft.servicebus.messaging.receivemode). **PeekLock** ist die Standardeinstellung.
 
 Bei Verwendung des **ReceiveAndDelete**-Modus ist der Nachrichtenempfang ein Single-Shot-Vorgang. Dies bedeutet: Wenn Service Bus eine Leseanforderung für eine Nachricht in einem Abonnement erhält, wird die Nachricht als verarbeitet gekennzeichnet und an die Anwendung zurückgesendet. Der **ReceiveAndDelete**-Modus ist das einfachste Modell. Es wird am besten für Szenarios eingesetzt, bei denen es eine Anwendung tolerieren kann, wenn eine Nachricht bei Auftreten eines Fehlers nicht verarbeitet wird. Um dieses Verfahren zu verstehen, stellen Sie sich ein Szenario vor, in dem der Consumer die Empfangsanforderung ausstellt und dann abstürzt, bevor diese verarbeitet wird. Da die Nachricht von Service Bus als verarbeitet gekennzeichnet wurde, wird die vor dem Absturz verarbeitete Nachricht nicht berücksichtigt, wenn die Anwendung neu gestartet und die Verarbeitung von Nachrichten wieder aufgenommen wird.
 
-Im **PeekLock**-Modus (dem Standardmodus) ist der Empfangsprozess ein Vorgang mit zwei Phasen, der die Unterstützung von Anwendungen ermöglicht, die fehlende Nachrichten nicht tolerieren können. Wenn Service Bus eine Anfrage erhält, ermittelt der Dienst die nächste zu verarbeitende Nachricht, sperrt diese, um zu verhindern, dass andere Consumer sie erhalten, und sendet sie dann zurück an die Anwendung. Nachdem die Anwendung die Verarbeitung der Nachricht abgeschlossen hat (oder sie zwecks zukünftiger Verarbeitung zuverlässig gespeichert hat), führt sie die zweite Phase des Empfangsprozesses per Aufruf von [Complete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete) für die empfangene Nachricht durch. Wenn der Service Bus den **Complete**-Aufruf erkennt, markiert er die Nachricht als verwendet und entfernt sie aus dem Abonnement.
+Im **PeekLock**-Modus (dem Standardmodus) ist der Empfangsprozess ein Vorgang mit zwei Phasen, der die Unterstützung von Anwendungen ermöglicht, die fehlende Nachrichten nicht tolerieren können. Wenn Service Bus eine Anfrage erhält, ermittelt der Dienst die nächste zu verarbeitende Nachricht, sperrt diese, um zu verhindern, dass andere Consumer sie erhalten, und sendet sie dann zurück an die Anwendung. Nachdem die Anwendung die Verarbeitung der Nachricht abgeschlossen hat (oder sie zwecks zukünftiger Verarbeitung zuverlässig gespeichert hat), führt sie die zweite Phase des Empfangsprozesses per Aufruf von [Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete) für die empfangene Nachricht durch. Wenn der Service Bus den **Complete**-Aufruf erkennt, markiert er die Nachricht als verwendet und entfernt sie aus dem Abonnement.
 
-Das folgende Beispiel zeigt, wie Nachrichten mit dem Standardmodus **PeekLock** empfangen und verarbeitet werden können. Zum Angeben eines anderen [ReceiveMode](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode)-Werts können Sie eine andere Überladung für [CreateFromConnectionString](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptionclient#Microsoft_ServiceBus_Messaging_SubscriptionClient_CreateFromConnectionString_System_String_System_String_System_String_Microsoft_ServiceBus_Messaging_ReceiveMode_) verwenden. Dieses Beispiel verwendet den [OnMessage](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptionclient#Microsoft_ServiceBus_Messaging_SubscriptionClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__Microsoft_ServiceBus_Messaging_OnMessageOptions_)-Rückruf zum Verarbeiten von Nachrichten, während diese im **HighMessages**-Abonnement eintreffen.
+Das folgende Beispiel zeigt, wie Nachrichten mit dem Standardmodus **PeekLock** empfangen und verarbeitet werden können. Zum Angeben eines anderen [ReceiveMode](/dotnet/api/microsoft.servicebus.messaging.receivemode)-Werts können Sie eine andere Überladung für [CreateFromConnectionString](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient#Microsoft_ServiceBus_Messaging_SubscriptionClient_CreateFromConnectionString_System_String_System_String_System_String_Microsoft_ServiceBus_Messaging_ReceiveMode_) verwenden. Dieses Beispiel verwendet den [OnMessage](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient#Microsoft_ServiceBus_Messaging_SubscriptionClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__Microsoft_ServiceBus_Messaging_OnMessageOptions_)-Rückruf zum Verarbeiten von Nachrichten, während diese im **HighMessages**-Abonnement eintreffen.
 
 ```csharp
 string connectionString =
@@ -281,14 +282,14 @@ Client.OnMessage((message) =>
 }, options);
 ```
 
-Das folgende Beispiel konfiguriert den [OnMessage](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptionclient#Microsoft_ServiceBus_Messaging_SubscriptionClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__Microsoft_ServiceBus_Messaging_OnMessageOptions_)-Rückruf mithilfe eines [OnMessageOptions](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.onmessageoptions)-Objekts. [AutoComplete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.onmessageoptions#Microsoft_ServiceBus_Messaging_OnMessageOptions_AutoComplete) ist auf **false** festgelegt, um die manuelle Steuerung für den Aufruf [Complete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete) für die empfangene Nachricht zu aktivieren. [AutoRenewTimeout](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.onmessageoptions#Microsoft_ServiceBus_Messaging_OnMessageOptions_AutoRenewTimeout) ist auf „1 Minute“ festgelegt. Der Client wartet also bis zu eine Minute lang, bevor das Feature für die automatische Verlängerung beendet wird und der Client einen neuen Aufruf durchführt, um das Vorhandensein von Nachrichten zu prüfen. Dieser Eigenschaftswert verringert die Anzahl der kostenpflichtigen Aufrufe des Clients, bei denen keine Nachrichten abgerufen werden.
+Das folgende Beispiel konfiguriert den [OnMessage](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient#Microsoft_ServiceBus_Messaging_SubscriptionClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__Microsoft_ServiceBus_Messaging_OnMessageOptions_)-Rückruf mithilfe eines [OnMessageOptions](/dotnet/api/microsoft.servicebus.messaging.onmessageoptions)-Objekts. [AutoComplete](/dotnet/api/microsoft.servicebus.messaging.onmessageoptions#Microsoft_ServiceBus_Messaging_OnMessageOptions_AutoComplete) ist auf **false** festgelegt, um die manuelle Steuerung für den Aufruf [Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete) für die empfangene Nachricht zu aktivieren. [AutoRenewTimeout](/dotnet/api/microsoft.servicebus.messaging.onmessageoptions#Microsoft_ServiceBus_Messaging_OnMessageOptions_AutoRenewTimeout) ist auf „1 Minute“ festgelegt. Der Client wartet also bis zu eine Minute lang, bevor das Feature für die automatische Verlängerung beendet wird und der Client einen neuen Aufruf durchführt, um das Vorhandensein von Nachrichten zu prüfen. Dieser Eigenschaftswert verringert die Anzahl der kostenpflichtigen Aufrufe des Clients, bei denen keine Nachrichten abgerufen werden.
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Behandeln von Anwendungsabstürzen und nicht lesbaren Nachrichten
-Service Bus stellt Funktionen zur Verfügung, die Sie bei der ordnungsgemäßen Behandlung von Fehlern in der Anwendung oder bei Problemen beim Verarbeiten einer Nachricht unterstützen. Wenn eine empfangene Anwendung eine Nachricht aus einem beliebigen Grund nicht verarbeiten kann, kann sie die [Abandon](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Abandon_System_Collections_Generic_IDictionary_System_String_System_Object__)-Methode für die empfangene Nachricht aufrufen (anstatt der [Complete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete)-Methode). Dies führt dazu, dass Service Bus die Nachricht innerhalb des Abonnements entsperrt und verfügbar macht, damit sie erneut empfangen werden kann, und zwar entweder durch dieselbe verarbeitende Anwendung oder durch eine andere verarbeitende Anwendung.
+Service Bus stellt Funktionen zur Verfügung, die Sie bei der ordnungsgemäßen Behandlung von Fehlern in der Anwendung oder bei Problemen beim Verarbeiten einer Nachricht unterstützen. Wenn eine empfangene Anwendung eine Nachricht aus einem beliebigen Grund nicht verarbeiten kann, kann sie die [Abandon](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Abandon_System_Collections_Generic_IDictionary_System_String_System_Object__)-Methode für die empfangene Nachricht aufrufen (anstatt der [Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete)-Methode). Dies führt dazu, dass Service Bus die Nachricht innerhalb des Abonnements entsperrt und verfügbar macht, damit sie erneut empfangen werden kann, und zwar entweder durch dieselbe verarbeitende Anwendung oder durch eine andere verarbeitende Anwendung.
 
 Zudem wird einer im Abonnement gesperrten Anwendung ein Zeitlimit zugeordnet. Wenn die Anwendung die Nachricht vor Ablauf des Sperrzeitlimits nicht verarbeiten kann (zum Beispiel wenn die Anwendung abstürzt) entsperrt Service Bus die Nachricht automatisch und macht sie verfügbar, um erneut empfangen zu werden.
 
-Falls die Anwendung nach der Verarbeitung der Nachricht – aber vor Ausgabe der [Complete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete)-Anforderung – abstürzt, wird die Nachricht wieder an die Anwendung zugestellt, wenn diese neu gestartet wird. Dies wird häufig als *At Least Once Processing* (Verarbeitung mindestens einmal) bezeichnet und bedeutet, dass jede Nachricht mindestens einmal verarbeitet wird, wobei dieselbe Nachricht in bestimmten Situationen unter Umständen erneut zugestellt wird. Wenn eine doppelte Verarbeitung im betreffenden Szenario nicht geeignet ist, sollten Anwendungsentwickler ihrer Anwendung zusätzliche Logik für den Umgang mit der Übermittlung doppelter Nachrichten hinzufügen. Dies wird häufig durch die Verwendung der [MessageId](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) -Eigenschaft der Nachricht erzielt, die über mehrere Zustellungsversuche hinweg konstant bleibt.
+Falls die Anwendung nach der Verarbeitung der Nachricht – aber vor Ausgabe der [Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete)-Anforderung – abstürzt, wird die Nachricht wieder an die Anwendung zugestellt, wenn diese neu gestartet wird. Dies wird häufig als *At Least Once Processing* (Verarbeitung mindestens einmal) bezeichnet und bedeutet, dass jede Nachricht mindestens einmal verarbeitet wird, wobei dieselbe Nachricht in bestimmten Situationen unter Umständen erneut zugestellt wird. Wenn eine doppelte Verarbeitung im betreffenden Szenario nicht geeignet ist, sollten Anwendungsentwickler ihrer Anwendung zusätzliche Logik für den Umgang mit der Übermittlung doppelter Nachrichten hinzufügen. Dies wird häufig durch die Verwendung der [MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) -Eigenschaft der Nachricht erzielt, die über mehrere Zustellungsversuche hinweg konstant bleibt.
 
 ## <a name="delete-topics-and-subscriptions"></a>Löschen von Themen und Abonnements
 Das folgende Beispiel zeigt, wie das Thema **TestTopic** aus dem **HowToSample**-Dienstnamespace gelöscht wird.
@@ -319,13 +320,8 @@ Nachdem Sie nun mit den Grundlagen der Service Bus-Themen und -Abonnements vertr
 
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [Topic filters sample]: https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/TopicFilters
-[SqlFilter]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sqlfilter
-[SqlFilter.SqlExpression]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sqlfilter#Microsoft_ServiceBus_Messaging_SqlFilter_SqlExpression
+[SqlFilter]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter
+[SqlFilter.SqlExpression]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter#Microsoft_ServiceBus_Messaging_SqlFilter_SqlExpression
 [Service Bus brokered messaging .NET tutorial]: service-bus-brokered-tutorial-dotnet.md
 [Azure samples]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 
