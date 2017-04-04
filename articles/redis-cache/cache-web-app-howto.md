@@ -12,12 +12,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 03/21/2017
+ms.date: 03/27/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: 5e7520f8a023cd5feb8401483161e7296a413b02
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: 02e30f7fcbe0782528460b542a75f1d11c7286a1
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -31,7 +31,7 @@ ms.lasthandoff: 03/22/2017
 > 
 > 
 
-In diesem Tutorial wird erläutert, wie Sie mithilfe von Visual Studio 2015 eine ASP.NET-Webanwendung erstellen und für eine Web-App in Azure App Service bereitstellen. Die Beispielanwendung zeigt eine Teamstatistik aus einer Datenbank an und veranschaulicht verschiedene Möglichkeiten zum Speichern und Abrufen von Daten aus dem Cache mithilfe von Azure Redis Cache. Nach Abschluss des Tutorials verfügen Sie über eine funktionsfähige Web-App, die Lese- und Schreibvorgänge in einer Datenbank durchführt, mit Azure Redis Cache optimiert ist und in Azure gehostet wird.
+In diesem Tutorial wird erläutert, wie Sie mithilfe von Visual Studio 2017 eine ASP.NET-Webanwendung erstellen und für eine Web-App in Azure App Service bereitstellen. Die Beispielanwendung zeigt eine Teamstatistik aus einer Datenbank an und veranschaulicht verschiedene Möglichkeiten zum Speichern und Abrufen von Daten aus dem Cache mithilfe von Azure Redis Cache. Nach Abschluss des Tutorials verfügen Sie über eine funktionsfähige Web-App, die Lese- und Schreibvorgänge in einer Datenbank durchführt, mit Azure Redis Cache optimiert ist und in Azure gehostet wird.
 
 Sie lernen Folgendes:
 
@@ -57,7 +57,7 @@ Sie benötigen ein Azure-Konto, um das Tutorial durchführen zu können. Sie kö
 ### <a name="visual-studio-2017-with-the-azure-sdk-for-net"></a>Visual Studio 2017 mit dem Azure SDK für .NET
 Das Tutorial wurde für Visual Studio 2017 mit dem [Azure SDK für .NET](https://www.visualstudio.com/news/releasenotes/vs2017-relnotes#azuretools) geschrieben. Das Azure SDK 2.9.5 ist im Visual Studio-Installer enthalten.
 
-Wenn Sie Visual Studio 2015 haben, können Sie das Tutorial mit dem [Azure-SDK für .NET](../dotnet-sdk.md) 2.8.2 oder höher durcharbeiten. Das aktuelle Azure SDK für Visual Studio 2015 können Sie [hier](http://go.microsoft.com/fwlink/?linkid=518003) herunterladen. Visual Studio&2015; wird automatisch mit dem SDK installiert, wenn das Programm noch nicht vorhanden ist. Einige Bildschirme unterscheiden sich unter Umständen von den Abbildungen in diesem Tutorial.
+Wenn Sie Visual Studio 2015 haben, können Sie das Tutorial mit dem [Azure-SDK für .NET](../dotnet-sdk.md) 2.8.2 oder höher durcharbeiten. Das aktuelle Azure SDK für Visual Studio 2015 können Sie [hier](http://go.microsoft.com/fwlink/?linkid=518003) herunterladen. Visual Studio 2015 wird automatisch mit dem SDK installiert, wenn das Programm noch nicht vorhanden ist. Einige Bildschirme unterscheiden sich unter Umständen von den Abbildungen in diesem Tutorial.
 
 Bei Verwendung von Visual Studio 2013 können Sie [das aktuelle Azure SDK für Visual Studio 2013 herunterladen](http://go.microsoft.com/fwlink/?LinkID=324322). Einige Bildschirme unterscheiden sich unter Umständen von den Abbildungen in diesem Tutorial.
 
@@ -248,7 +248,7 @@ Weitere Informationen zu diesem Paket finden Sie auf der [EntityFramework](https
         url: "{controller}/{action}/{id}",
         defaults: new { controller = "Teams", action = "Index", id = UrlParameter.Optional }
     );
-```
+    ```
 
 
 ### <a name="configure-the-views"></a>Konfigurieren der Ansichten

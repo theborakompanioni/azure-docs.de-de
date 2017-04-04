@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
-ms.openlocfilehash: 071ef9c0784bdb24c7d29f49c36aee2271f4b524
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
+ms.openlocfilehash: 81c9313635f382252550a4c0dcc7a707e9f365fb
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -160,7 +160,7 @@ Sie haben zwar ein VNet und zwei virtuelle Computer erstellt, das Azure-Portal h
 
     ![Inhalt der Ressourcengruppe](./media/virtual-network-get-started-vnet-subnet/resource-group-contents.png)
 
-Weitere Informationen zu virtuellen Computern, Datenträgern und Speicherkonten finden Sie in den Artikeln [Übersicht über virtuelle Windows-Computer in Azure](../virtual-machines/virtual-machines-windows-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [Informationen zu Datenträgern und VHDs für Azure-Windows-VMs](../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und [Einführung in Microsoft Azure Storage](../storage/storage-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Sie sehen die beiden Standard-NSGs, die das Portal für Sie erstellt hat. Außerdem sehen Sie, dass das Portal zwei Netzwerkschnittstellen (NICs) als Ressourcen erstellt hat. Mithilfe einer Netzwerkschnittstelle kann ein virtueller Computer über das VNet eine Verbindung mit anderen Ressourcen herstellen. Weitere Informationen zu Netzwerkschnittstellen finden Sie im Artikel [Was sind Netzwerkschnittstellen?](virtual-network-network-interface-overview.md). Das Portal hat auch eine öffentliche IP-Adressressource erstellt. Bei öffentlichen IP-Adressen handelt es sich um eine Einstellung für eine öffentliche IP-Adressressource. Weitere Informationen zu öffentlichen IP-Adressen finden Sie im [Artikel zu IP-Adressen](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses).
+Weitere Informationen zu virtuellen Computern, Datenträgern und Speicherkonten finden Sie in den Artikeln [Übersicht über virtuelle Windows-Computer in Azure](../virtual-machines/virtual-machines-windows-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [Informationen zu Datenträgern und VHDs für Azure-Windows-VMs](../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und [Einführung in Microsoft Azure Storage](../storage/storage-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Sie sehen die beiden Standard-NSGs, die das Portal für Sie erstellt hat. Außerdem sehen Sie, dass das Portal zwei Netzwerkschnittstellen (NICs) als Ressourcen erstellt hat. Mithilfe einer Netzwerkschnittstelle kann ein virtueller Computer über das VNet eine Verbindung mit anderen Ressourcen herstellen. Weitere Informationen zu Netzwerkschnittstellen finden Sie im Artikel [Was sind Netzwerkschnittstellen?](virtual-network-network-interface.md). Das Portal hat auch eine öffentliche IP-Adressressource erstellt. Bei öffentlichen IP-Adressen handelt es sich um eine Einstellung für eine öffentliche IP-Adressressource. Weitere Informationen zu öffentlichen IP-Adressen finden Sie im [Artikel zu IP-Adressen](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses).
 
 ## <a name="connect-to-from-vms"></a>Herstellen einer Verbindung mit den virtuellen Computern
 
@@ -240,7 +240,7 @@ Die ausgehende Internetverbindung wird zugelassen, da standardmäßig jeglicher 
 
 Führen Sie die folgenden Schritte aus, um alle Ressourcen zu löschen, die in diesem Artikel erstellt wurden:
 
-1. Führen Sie die Schritte 1 bis 3 des Abschnitts [Überprüfen der Ressourcen](#review) in diesem Artikel aus, um die in diesem Artikel erstellte Ressourcengruppe „MyRG“ anzuzeigen. Sehen Sie sich noch einmal die Ressourcen in der Ressourcengruppe an. Sofern Sie die Ressourcengruppe „MyRG“ gemäß den beschriebenen Schritten erstellt haben, werden die 12 Ressourcen aus der Abbildung zu Schritt 4 angezeigt.
+1. Führen Sie die Schritte 1 bis 3 des Abschnitts [Überprüfen der Ressourcen](#review) in diesem Artikel aus, um die in diesem Artikel erstellte Ressourcengruppe „MyRG“ anzuzeigen. Sehen Sie sich noch einmal die Ressourcen in der Ressourcengruppe an. Sofern Sie die Ressourcengruppe „MyRG“ gemäß den beschriebenen Schritten erstellt haben, werden die zwölf Ressourcen aus der Abbildung zu Schritt 4 angezeigt.
 2. Klicken Sie auf dem Blatt „MyRG“ auf die Schaltfläche **Löschen**.
 3. Zur Bestätigung des Löschvorgangs werden Sie vom Portal zur Eingabe des Ressourcengruppennamens aufgefordert. Sollte es sich bei den angezeigten Ressourcen nicht um Ressourcen handeln, die in Schritt 4 des Abschnitts [Überprüfen der Ressourcen](#review) in diesem Artikel zu sehen sind, klicken Sie auf **Abbrechen**. Sofern nur die 12 Ressourcen vorhanden sind, die Sie im Rahmen dieses Artikels erstellt haben, geben Sie den Ressourcengruppennamen *MyRG* ein, und klicken Sie anschließend auf **Löschen**. Da beim Löschen einer Ressourcengruppe alle Ressourcen innerhalb der Ressourcengruppe gelöscht werden, überprüfen Sie vor dem Löschen immer den Inhalt der Ressourcengruppe. Das Portal löscht zuerst alle in der Ressourcengruppe enthaltenen Ressourcen und anschließend die Ressourcengruppe selbst. Dieser Vorgang dauert einige Minuten.
 
@@ -250,7 +250,7 @@ In dieser Übung haben Sie ein VNet und zwei virtuelle Computer erstellt. Bei de
 
 - [Virtuelle Netzwerke](virtual-networks-overview.md)
 - [Öffentliche IP-Adressen](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)
-- [Netzwerkschnittstellen](virtual-network-network-interface-overview.md)
+- [Netzwerkschnittstellen](virtual-network-network-interface.md)
 - [Netzwerksicherheitsgruppen](virtual-networks-nsg.md)
 - [Virtuelle Computer](../virtual-machines/virtual-machines-windows-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 

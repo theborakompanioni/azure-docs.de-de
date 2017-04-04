@@ -12,11 +12,13 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
+ms.custom: security
 ms.date: 10/31/2016
 ms.author: rortloff;barbkess
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 3750e2875935d2753a819ef8ce540009417d19b5
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -39,10 +41,5 @@ Eine unvollständige Liste der kompatiblen Clients:
 * Tedious (for Node.JS)
 
 **Anmerkung:** Die oben genannte Änderung des vollqualifizierten Domänennamens des Servers kann sich auch als nützlich erweisen bei der Anwendung einer Richtlinie für die Überwachung auf SQL Server-Ebene, ohne dass ein Konfigurationsschritt in jeder Datenbank ausgeführt werden muss (temporäre Minderung).     
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

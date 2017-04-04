@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: tables
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: b2b99ec031ea26b4ab19e7327da035788661a0a8
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -494,9 +496,4 @@ Weitere Informationen finden Sie bei MSDN unter [DBCC SHOW_STATISTICS][DBCC SHOW
 [UPDATE STATISTICS]: https://msdn.microsoft.com/library/ms187348.aspx
 
 <!--Other Web references-->  
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: tables
 ms.date: 07/12/2016
 ms.author: jrj;barbkess;sonyama
 translationtype: Human Translation
 ms.sourcegitcommit: f1a24e4ee10593514f44d83ad5e9a46047dafdee
 ms.openlocfilehash: f132af2966e2ac59e77dc0fa8113eb83089c68dd
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -321,9 +323,4 @@ Weitere Informationen finden Sie in den Artikeln [Übersicht über Tabellen][Ove
 [clustered columnstore indexes]: https://msdn.microsoft.com/library/gg492088.aspx
 
 <!--Other Web references-->
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

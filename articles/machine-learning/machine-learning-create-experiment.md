@@ -13,11 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 12/14/2016
+ms.date: 03/20/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: de2c52f8db5445e3e2eee62f673109f6d38cffa0
-ms.openlocfilehash: c58ee1c07e454a711ab0d6365a5cd432b0d939c8
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 0539e9d04c61d35de56a29d350c07654c095c576
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -26,20 +27,20 @@ ms.openlocfilehash: c58ee1c07e454a711ab0d6365a5cd432b0d939c8
 
 Wenn Sie **Azure Machine Learning Studio** noch nie zuvor verwendet haben, hilft Ihnen dieses Tutorial.
 
-In diesem Tutorial wird erläutert, wie Sie Studio zum ersten Mal zum Erstellen eines Experiments mit maschinellem Lernen verwenden. Dieses Experiment testet ein analytisches Modell, das den Preis eines Autos anhand von verschiedenen Variablen wie Marke und technische Angaben prognostiziert.
+In diesem Tutorial wird erläutert, wie Sie Studio zum ersten Mal zum Erstellen eines Experiments mit maschinellem Lernen verwenden. Dieses Experiment testet ein Analysemodell, das den Preis eines Autos anhand von verschiedenen Variablen wie Marke und technischen Angaben prognostiziert.
 
 > [!NOTE]
-> Dieses Tutorial zeigt Ihnen die Grundlagen darüber, wie Sie Module per Drag & Drop in Ihr Experiment aufnehmen, sie miteinander verbinden, das Experiment ausführen und die Ergebnisse anzeigen. Die Themen „maschinelles Lernen“ oder die Frage, wie die über 100 integrierten Algorithmen und die in Studio enthaltenen Module zur Datenbearbeitung verwendet werden, werden hier nicht erörtert.
+> Dieses Tutorial vermittelt Ihnen die Grundlagen dazu, wie Sie Module per Drag & Drop in Ihr Experiment aufnehmen, sie miteinander verbinden, das Experiment ausführen und die Ergebnisse anzeigen. Die Themen „maschinelles Lernen“ oder die Frage, wie die über 100 integrierten Algorithmen und die in Studio enthaltenen Module zur Datenbearbeitung verwendet werden, werden hier nicht erörtert.
 >
 >Wenn dies Ihre erste Berührung mit maschinellem Lernen ist, stellt die Videoreihe [Data Science für Einsteiger](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md) möglicherweise einen guten Start dar. Diese Videoreihe bietet eine gute Einführung in das maschinelle Lernen und verwendet alltägliche Sprache und Konzepte.
 >
 >Wenn Sie bereits mit maschinellem Lernen vertraut sind, aber weitere allgemeine Informationen zu Machine Learning Studio und den darin enthaltenen Algorithmen für maschinelles Lernen wünschen, finden Sie nachstehend einige gute Ressourcen:
 >
 - [Was ist Machine Learning Studio?](machine-learning-what-is-ml-studio.md) - Hierbei handelt es sich um eine allgemeine Übersicht über Studio.
-- [Grundlagen des maschinellen Lernens mit Algorithmusbeispielen](machine-learning-basics-infographic-with-algorithm-examples.md) – Diese Infografik ist hilfreich, wenn Sie mehr über die verschiedenen Algorithmustypen für maschinelles Lernen in Machine Learning Studio erfahren möchten.
-- [Machine Learning Guide (Machine Learning-Handbuch)](https://gallery.cortanaintelligence.com/Tutorial/Machine-Learning-Guide-1) – Diese Anleitung enthält ähnliche Informationen wie die oben genannte Infografik, jedoch in einem interaktiven Format.
-- [Machine Learning-Cheat Sheet für Algorithmen](machine-learning-algorithm-cheat-sheet.md) und [Auswählen von Algorithmen für Microsoft Azure Machine Learning](machine-learning-algorithm-choice.md) – Dieses herunterladbare Poster und der zugehörige Artikel besprechen Studio-Algorithmen im Detail.
-- [Machine Learning Studio: Algorithm and Module Help (Machine Learning Studio: Hilfe zu Algorithmen und Modulen)](https://msdn.microsoft.com/library/azure/dn905974.aspx) - Dies ist die vollständige Referenz zu allen Studio-Modulen, einschließlich der Machine Learning-Algorithmen.
+- [Grundlagen des maschinellen Lernens mit Beispielalgorithmen](machine-learning-basics-infographic-with-algorithm-examples.md): Diese Infografik ist hilfreich, wenn Sie mehr über die verschiedenen Algorithmustypen für maschinelles Lernen in Machine Learning Studio erfahren möchten.
+- [Machine Learning Guide (Machine Learning-Handbuch)](https://gallery.cortanaintelligence.com/Tutorial/Machine-Learning-Guide-1): Diese Anleitung enthält ähnliche Informationen wie die oben genannte Infografik, jedoch in einem interaktiven Format.
+- [Machine Learning-Cheat Sheet für Algorithmen](machine-learning-algorithm-cheat-sheet.md) und [Auswählen von Algorithmen für Microsoft Azure Machine Learning](machine-learning-algorithm-choice.md): Dieses herunterladbare Poster und der zugehörige Artikel besprechen Studio-Algorithmen im Detail.
+- [Machine Learning Studio: Algorithm and Module Help (Machine Learning Studio: Hilfe zu Algorithmen und Modulen)](https://msdn.microsoft.com/library/azure/dn905974.aspx): Dies ist die vollständige Referenz zu allen Studio-Modulen, einschließlich der Machine Learning-Algorithmen.
 
 <!-- -->
 
@@ -52,11 +53,11 @@ Mit Machine Learning Studio ist es einfach, ein Experiment einzurichten, indem S
 Mithilfe eines interaktiven, visuellen Arbeitsbereiches platzieren Sie ***Datasets*** und ***Analysemodule*** per Drag & Drop in einem interaktiven Bereich. Anschließend verbinden Sie sie zu einem ***Experiment***, das Sie in Machine Learning Studio ausführen.
 Sie ***erstellen ein Modell***, ***trainieren*** und ***bewerten und testen es***.
 
-Sie können Ihren Modellentwurf durchlaufen und dabei das Experiment bearbeiten und es ausführen, bis sie die Ergebnisse erhalten, die Sie suchen. Wenn Ihr Modell bereit ist, können Sie es als ***Webdienst*** veröffentlichen, damit andere Benutzer ihm neue Daten zusenden können und im Gegenzug Vorhersagen erhalten.
+Sie können Ihren Modellentwurf durchlaufen und dabei das Experiment bearbeiten und es ausführen, bis Sie die Ergebnisse erhalten, die Sie suchen. Wenn Ihr Modell bereit ist, können Sie es als ***Webdienst*** veröffentlichen, damit andere Benutzer ihm neue Daten zusenden können und im Gegenzug Vorhersagen erhalten.
 
 ## <a name="open-machine-learning-studio"></a>Öffnen von Machine Learning Studio
 
-Wechseln Sie zu [https://studio.azureml.net](https://studio.azureml.net), um Ihre ersten Schritte mit Studio zu tätigen. Wenn Sie sich zuvor schon einmal bei Machine Learning Studio angemeldet haben, klicken Sie einfach auf **Sign In** (Anmelden). Klicken Sie andernfalls auf **Sign up here** (Registrieren Sie sich hier), und wählen Sie zwischen der kostenlosen oder der kostenpflichtige Option aus.
+Wechseln Sie zu [https://studio.azureml.net](https://studio.azureml.net), um Ihre ersten Schritte mit Studio zu tätigen. Wenn Sie sich zuvor schon einmal bei Machine Learning Studio angemeldet haben, klicken Sie einfach auf **Sign In** (Anmelden). Andernfalls klicken Sie auf **Sign up here** (Registrieren Sie sich hier), und wählen Sie zwischen der kostenlosen und der kostenpflichtigen Option aus.
 
 ![Melden Sie sich bei Azure Machine Learning Studio an.][sign-in-to-studio]
 <br/>
@@ -88,8 +89,8 @@ In diesem Tutorial für maschinelles Lernen wird anhand von fünf grundlegenden 
 ## <a name="step-1-get-data"></a>Schritt 1: Bereitstellen von Daten
 
 Die Grundvoraussetzung für maschinelles Lernen sind Daten.
-Machine Learning Studio enthält bereits einige Beispieldatasets, unter denen Sie verwenden können. Alternativ können Sie Daten aus vielen Quellen importieren. Für dieses Beispiel verwenden wir das Beispieldataset **Automobile price data (Raw)** (Automobilpreisdaten (roh)), das in Ihrem Arbeitsbereich zu finden ist.
-Dieses Dataset enthält Einträge für eine Reihe verschiedener Automobile, einschließlich Informationen wie Marke, Modell, technischen Angaben und Preis.
+Machine Learning Studio enthält bereits einige Beispieldatasets, die Sie verwenden können. Alternativ können Sie Daten aus vielen Quellen importieren. Für dieses Beispiel verwenden wir das Beispieldataset **Automobile price data (Raw)** (Automobilpreisdaten (roh)), das in Ihrem Arbeitsbereich zu finden ist.
+Dieses Dataset enthält Einträge für eine Reihe verschiedener Automobile, einschließlich Informationen wie Marke, Modell, technische Angaben und Preis.
 
 Hier wird erklärt, wie Sie das Dataset in Ihr Experiment importieren.
 
@@ -159,7 +160,10 @@ Zunächst fügen wir ein Modul hinzu, das die Spalte **normalized-losses** (norm
     ***Der Eigenschaftenbereich zeigt an, dass die Spalte „normalized-losses“ ausgeschlossen wurde.***
 
     > [!TIP]
-    > Sie können einen Kommentar zu einem Modul eingeben, indem Sie auf das Modul doppelklicken und Text eingeben. Auf diese Weise können Sie mit einem Blick sehen, welche Funktion das Modul in Ihrem Experiment erfüllt. Doppelklicken Sie in diesem Fall auf das Modul [Select Columns in Dataset][select-columns], und geben Sie den Kommentar „normalized-losses ausschließen“ ein.
+    Sie können einen Kommentar zu einem Modul eingeben, indem Sie auf das Modul doppelklicken und Text eingeben. Auf diese Weise können Sie mit einem Blick sehen, welche Funktion das Modul in Ihrem Experiment erfüllt. Doppelklicken Sie in diesem Fall auf das Modul [Select Columns in Dataset][select-columns], und geben Sie den Kommentar „normalized-losses ausschließen“ ein.
+    >
+    >
+
 
     ![Doppelklicken Sie auf ein Modul, um einen Kommentar hinzuzufügen.][add-comment]
     <br/>
@@ -190,7 +194,7 @@ Nach der Bereinigung der Daten können wir nun angeben, welche Funktionen wir im
 
 Bei Machine Learning versteht man unter *Funktionen* einzeln messbare Eigenschaften des untersuchten Gesamtobjekts. In unserem DataSet stellt jede Zeile ein Automobil dar, und jede Spalte ist eine Funktion dieses Automobils.
 
-Einen guten Satz von Funktionen für die Erstellung eines Vorhersagemodells finden Sie durch Ausprobieren und Kenntnisse des zu lösenden Problems. Manche Funktionen eignen sich besser für die Vorhersage des Ziels als andere. Darüber hinaus weisen einige Funktionen über eine starke Korrelation mit anderen Funktionen auf und können entfernt werden. So stehen „city-mpg“ und „highway-mpg“ z.B. in enger Beziehung. Wir können also eines behalten und das andere ohne bedeutende Auswirkungen auf die Vorhersage entfernen.
+Einen guten Satz von Funktionen für die Erstellung eines Vorhersagemodells finden Sie durch Ausprobieren und Kenntnisse des zu lösenden Problems. Manche Funktionen eignen sich besser für die Vorhersage des Ziels als andere. Darüber hinaus weisen einige Funktionen eine starke Korrelation mit anderen Funktionen auf und können entfernt werden. So stehen „city-mpg“ und „highway-mpg“ z.B. in enger Beziehung. Wir können also eines behalten und das andere ohne bedeutende Auswirkungen auf die Vorhersage entfernen.
 
 Wir werden ein Modell erstellen, das eine Teilmenge der Funktionen in unserem Datensatz verwendet. Sie können später jederzeit andere Funktionen auswählen, das Experiment erneut ausführen und versuchen, bessere Ergebnisse zu erhalten. Hier probieren wir vorerst die folgenden Funktionen aus:
 
@@ -201,7 +205,7 @@ Wir werden ein Modell erstellen, das eine Teilmenge der Funktionen in unserem Da
 
     ![Verbinden Sie das Modul „Select Columns in Dataset“ mit dem Moduls „Clean Missing Data“.][connect-clean-to-select]
     <br/>
-    ***Verbinden Sie das Modul „Select Columns in Dataset“ mit dem Moduls „Clean Missing Data“.***
+    ***Verbinden Sie das Modul „Select Columns in Dataset“ mit dem Modul „Clean Missing Data“.***
 
 2. Doppelklicken Sie auf das Modul, und geben Sie "Select features for prediction" ein.
 
@@ -217,7 +221,7 @@ Wir werden ein Modell erstellen, das eine Teilmenge der Funktionen in unserem Da
     <br/>
     ***Wählen Sie die Spalten (Funktionen) aus, die in die Vorhersage einbezogen werden sollen.***
 
-Hierdurch wird ein gefiltertes Dataset mit nur den Funktionen erstellt, die wir dem lernenden Algorithmus übergeben möchten, den wir im nächsten Schritt verwenden werden. Sie können den Vorgang später jederzeit mit einer anderen Auswahl an Funktionen wiederholen.
+Hierdurch wird ein gefiltertes Dataset erstellt, das nur diejenigen Funktionen enthält, die wir dem im nächsten Schritt verwendeten Lernalgorithmus übergeben möchten. Sie können den Vorgang später jederzeit mit einer anderen Auswahl an Funktionen wiederholen.
 
 ## <a name="step-4-choose-and-apply-a-learning-algorithm"></a>Schritt 4: Auswählen und Anwenden eines Lernalgorithmus
 
@@ -231,7 +235,7 @@ Da wir einen Preis vorhersagen möchten (also eine Zahl), verwenden wir einen Re
 > [!TIP]
 > Wenn Sie mehr zu den verschiedenen Algorithmustypen für maschinelles Lernen und dazu erfahren möchten, wann Sie sie verwenden sollten, können Sie sich das erste Video in der Reihe „Data Science für Einsteiger“ ansehen: [Die 5 Fragen, die Data Science beantwortet](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md). Sie können sich auch die Infografik [Grundlagen des maschinellen Lernens mit Algorithmusbeispielen](machine-learning-basics-infographic-with-algorithm-examples.md) oder das [Machine Learning-Cheat Sheet für Algorithmen](machine-learning-algorithm-cheat-sheet.md) ansehen.
 
-Wir trainieren das Modell, indem wir einen Datensatz mit dem Preis einspeisen. Das Modell überprüft die Daten und sucht nach Korrelationen zwischen den Funktionen eines Automobils und seinem Preis. Anschließend testen wir das Modell: Wir geben einen Satz von Funktionen für bekannte Automobile ein, und testen, wie zutreffend das Modell den bekannten Preis vorhersagt.
+Wir trainieren das Modell, indem wir einen Datensatz mit dem Preis einspeisen. Das Modell überprüft die Daten und sucht nach Korrelationen zwischen den Funktionen eines Automobils und seinem Preis. Anschließend testen wir das Modell: Wir geben einen Satz von Funktionen für bekannte Automobile ein und testen, wie exakt das Modell den bekannten Preis vorhersagt.
 
 Wir verwenden unsere Daten sowohl für das Trainieren als auch das Testen des Modells, indem die Daten in separate Trainings- und Testdatasets aufgeteilt werden.
 
@@ -377,9 +381,4 @@ Sie möchten mehr erfahren? Eine umfassendere und ausführlichere exemplarische 
 [score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
 [train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

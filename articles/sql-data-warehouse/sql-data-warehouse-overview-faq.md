@@ -48,7 +48,7 @@ F: Ich habe einen Funktionswunsch. Wie kann ich diesen übermitteln?
 
 A: Wenn Sie einen Funktionswunsch haben, können Sie ihn über die Seite [UserVoice] einsenden.
 
-F: Wo finde ich Informationen zu einer bestimmten Vorgehensweise?
+F: Wo finde ich Informationen zu x?
 
 A: Wenn Sie Hilfe bei der Entwicklung mit SQL Data Warehouse benötigen, können Sie Fragen auf der Seite [Stack Overflow] stellen. 
 
