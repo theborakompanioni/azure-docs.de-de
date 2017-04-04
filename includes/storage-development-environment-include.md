@@ -2,30 +2,36 @@
 Richten Sie als Nächstes Ihre Entwicklungsumgebung in Visual Studio ein, damit Sie die Codebeispiele dieser Anleitung ausprobieren können.
 
 ### <a name="create-a-windows-console-application-project"></a>Erstellen eines Windows-Konsolenanwendungsprojekts
-Erstellen Sie wie unten gezeigt in Visual Studio eine neue Windows-Konsolenanwendung:
+Erstellen Sie in Visual Studio eine neue Windows-Konsolenanwendung. In den folgenden Schritten wird veranschaulicht, wie Sie eine Konsolenanwendung in Visual Studio 2017 erstellen. Die Schritte in anderen Versionen von Visual Studio sind aber ähnlich.
 
-![Erstellen einer Windows-Konsolenanwendung](./media/storage-development-environment-include/storage-development-environment-include-1.png)
+1. Wählen Sie **Datei** > **Neu** > **Projekt**.
+2. Wählen Sie **Installiert** > **Vorlagen** > **Visual C#** > **Klassischer Windows-Desktop**.
+3. Wählen Sie **Konsolen-App (.NET Framework)**.
+4. Geben Sie im Feld **Name:** einen Namen für Ihre Anwendung ein.
+5. Klicken Sie auf **OK**.
 
-Alle Codebeispiele in diesem Tutorial können in Ihrer Konsolenanwendung der **Main()**-Methode in `program.cs` hinzugefügt werden.
+![Dialogfeld für die Projekterstellung in Visual Studio](./media/storage-development-environment-include/storage-development-environment-include-1.png)
 
-Die Azure Storage Client Library kann mit einer beliebigen Art von .NET-Anwendung verwendet werden – beispielsweise mit einem Azure-Clouddienst, mit einer Azure-Web-App, mit einer Desktopanwendung oder mit einer mobilen Anwendung. In diesem Leitfaden verwenden wir der Einfachheit halber eine Konsolenanwendung.
+Alle Codebeispiele in diesem Tutorial können in der Datei `Program.cs` Ihrer Konsolenanwendung der `Main()`-Methode hinzugefügt werden.
+
+Sie können die Azure Storage-Clientbibliothek in jeder Art von .NET-Anwendung nutzen, z.B. einem Azure-Clouddienst oder einer Azure-Web-App, einer Desktopanwendung oder einer mobilen Anwendung. In diesem Leitfaden verwenden wir der Einfachheit halber eine Konsolenanwendung.
 
 ### <a name="use-nuget-to-install-the-required-packages"></a>Verwenden von NuGet zum Installieren der erforderlichen Pakete
-Es gibt zwei Pakete, die Sie für Ihr Projekt installieren müssen, um dieses Tutorial durcharbeiten zu können:
+Es gibt zwei Pakete, auf die Sie in Ihrem Projekt für dieses Tutorial verweisen müssen:
 
 * [Microsoft Azure Storage Client Library für .NET](https://www.nuget.org/packages/WindowsAzure.Storage/): Mit diesem Paket erhalten Sie programmgesteuerten Zugriff auf Datenressourcen in Ihrem Speicherkonto.
-* [Microsoft Azure Configuration Manager Library für .NET](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/): Mit diesem Paket wird eine Klasse zum Analysieren einer Verbindungszeichenfolge aus einer Konfigurationsdatei bereitgestellt. Dies gilt unabhängig davon, wo die Anwendung ausgeführt wird.
+* [Microsoft Azure Configuration Manager Library für .NET](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/): Mit diesem Paket wird eine Klasse zum Analysieren einer Verbindungszeichenfolge in einer Konfigurationsdatei bereitgestellt. Dies gilt unabhängig davon, wo die Anwendung ausgeführt wird.
 
 Sie können NuGet verwenden, um beide Pakete zu erhalten. Folgen Sie diesen Schritten:
 
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **NuGet-Pakete verwalten** aus.
 2. Suchen Sie online nach „WindowsAzure.Storage“, und klicken Sie auf **Installieren** , um die Storage Client Library und die dazugehörigen Abhängigkeiten zu installieren.
-3. Suchen Sie online nach „ConfigurationManager“, und klicken Sie auf **Installieren** , um Azure Configuration Manager zu installieren.
+3. Suchen Sie online nach „WindowsAzure.ConfigurationManager“, und klicken Sie auf **Installieren**, um Azure Configuration Manager zu installieren.
 
 > [!NOTE]
 > Das Storage Client Library-Paket ist auch im [Azure SDK für .NET](https://azure.microsoft.com/downloads/)enthalten. Wir empfehlen Ihnen aber die Installation der Storage Client Library über NuGet, um sicherzustellen, dass Sie immer über die aktuelle Version der Clientbibliothek verfügen.
 > 
-> Die ODataLib-Abhängigkeiten in der Speicherclientbibliothek für .NET werden durch die ODataLib-Pakete (Version 5.0.2 und höher), die über NuGet verfügbar sind, und nicht durch WCF Data Services aufgelöst. Die ODataLib-Bibliotheken können direkt heruntergeladen werden, oder es wird über Ihr Codeprojekt durch NuGet darauf verwiesen. Die spezifischen ODataLib-Pakete, die von der Speicherclientbibliothek verwendet werden, lauten [OData](http://nuget.org/packages/Microsoft.Data.OData/5.0.2), [Edm](http://nuget.org/packages/Microsoft.Data.Edm/5.0.2) und [Spatial](http://nuget.org/packages/System.Spatial/5.0.2). Diese Bibliotheken werden von Azure-Tabellenspeicherklassen verwendet und sind erforderliche Abhängigkeiten für die Programmierung mit der Speicherclientbibliothek.
+> Die ODataLib-Abhängigkeiten in der Storage Client Library für .NET werden mit den ODataLib-Paketen aufgelöst, die unter NuGet verfügbar sind (nicht unter WCF Data Services). Die ODataLib-Bibliotheken können direkt heruntergeladen werden, oder es wird über Ihr Codeprojekt durch NuGet darauf verwiesen. Die spezifischen ODataLib-Pakete, die von der Speicherclientbibliothek verwendet werden, lauten [OData](http://nuget.org/packages/Microsoft.Data.OData/), [Edm](http://nuget.org/packages/Microsoft.Data.Edm/) und [Spatial](http://nuget.org/packages/System.Spatial/). Diese Bibliotheken werden von Azure-Tabellenspeicherklassen verwendet und sind erforderliche Abhängigkeiten für die Programmierung mit der Speicherclientbibliothek.
 > 
 > 
 
@@ -33,7 +39,7 @@ Sie können NuGet verwenden, um beide Pakete zu erhalten. Folgen Sie diesen Schr
 Es gibt für die Ausführung der Beispiele in diesem Leitfaden zwei Umgebungsoptionen:
 
 * Sie können den Code über ein Azure Storage-Konto in der Cloud ausführen. 
-* Sie können den Code über den Azure-Speicheremulator ausführen. Der Speicheremulator ist eine lokale Umgebung, in der ein Azure Storage-Konto in der Cloud emuliert wird. Der Emulator ist eine kostenlose Option zum Testen und Debuggen von Code, während sich Ihre Anwendung in der Entwicklung befindet. Für den Emulator wird ein bekanntes Konto mit Schlüssel verwendet. Weitere Informationen finden Sie unter [Einsatz des Azure-Speicheremulators für Entwicklung und Tests](../articles/storage/storage-use-emulator.md)
+* Sie können den Code über den Azure-Speicheremulator ausführen. Der Speicheremulator ist eine lokale Umgebung, in der ein Azure Storage-Konto in der Cloud emuliert wird. Der Emulator ist eine kostenlose Option zum Testen und Debuggen von Code, während sich Ihre Anwendung in der Entwicklung befindet. Für den Emulator wird ein bekanntes Konto mit Schlüssel verwendet. Weitere Informationen finden Sie unter [Einsatz des Azure-Speicheremulators für Entwicklung und Tests](../articles/storage/storage-use-emulator.md).
 
 Wenn Sie ein Speicherkonto in der Cloud verwenden möchten, müssen Sie den primären Zugriffsschlüssel für Ihr Speicherkonto aus dem Azure-Portal kopieren. Weitere Informationen finden Sie unter [Anzeigen und Kopieren von Speicherzugriffsschlüsseln](../articles/storage/storage-create-storage-account.md#view-and-copy-storage-access-keys).
 
@@ -59,9 +65,9 @@ Weitere Informationen zu Verbindungszeichenfolgen finden Sie unter [Konfiguriere
     <startup> 
         <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5.2" />
     </startup>
-      <appSettings>
+    <appSettings>
         <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key" />
-      </appSettings>
+    </appSettings>
 </configuration>
 ```
 
@@ -76,9 +82,4 @@ Wenn Sie den Speicheremulator verwenden möchten, können Sie eine Verknüpfung 
 ```xml
 <add key="StorageConnectionString" value="UseDevelopmentStorage=true;" />
 ```
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -14,7 +14,3 @@ Vergewissern Sie sich, dass Sie bereits wie [hier][namespace-how-to] gezeigt ein
 6. Klicken Sie im unteren Bereich des Blatts auf **Erstellen**.
 
 [namespace-how-to]: ../articles/service-bus-relay/relay-create-namespace-portal.md 
-
-<!--HONumber=Feb17_HO1-->
-
-

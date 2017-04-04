@@ -5,12 +5,12 @@ services: container-registry
 documentationcenter: 
 author: stevelas
 manager: balans
-editor: dlepow
+editor: cristyg
 tags: 
 keywords: 
 ms.assetid: 29e20d75-bf39-4f7d-815f-a2e47209be7d
 ms.service: container-registry
-ms.devlang: na
+ms.devlang: azurecli
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
@@ -18,9 +18,9 @@ ms.date: 03/03/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 6ef43ed43358357c94460a27d3e2b2c8530b6c54
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: e37a3194bb65ccf3bb6168a2f456902a9c48edc5
+ms.lasthandoff: 03/28/2017
 
 ---
 # <a name="create-a-private-docker-container-registry-using-the-azure-cli-20"></a>Erstellen einer privaten Docker-Containerregistrierung mit der Azure CLI 2.0
@@ -30,32 +30,28 @@ Verwenden Sie Befehle von [Azure-CLI 2.0](https://github.com/Azure/azure-cli), u
 * Hintergrundinformationen und Konzepte finden Sie in der [Übersicht](container-registry-intro.md).
 * Übergeben Sie den Parameter `-h` für einen beliebigen Befehl, um Hilfe zu CLI-Befehlen für die Containerregistrierung (`az acr`-Befehle) zu erhalten.
 
-> [!NOTE]
-> Die Containerregistrierung befindet sich derzeit in der Vorschauphase.
-> 
-> 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * **Azure CLI 2.0**: Informationen zur Installation und zu den ersten Schritten mit der CLI 2.0 finden Sie in der [Installationsanleitung](/cli/azure/install-azure-cli). Melden Sie sich an Ihrem Azure-Abonnement an, indem Sie `az login` ausführen. Weitere Informationen finden Sie unter [Get started with CLI 2.0](/cli/azure/get-started-with-azure-cli) (Erste Schritte mit der CLI 2.0).
-* **Ressourcengruppe**: Erstellen Sie eine [Ressourcengruppe](../azure-resource-manager/resource-group-overview.md#resource-groups), bevor Sie eine Containerregistrierung erstellen, oder verwenden Sie eine vorhandene Ressourcengruppe. Stellen Sie sicher, dass sich die Ressourcengruppe an einem Standort befindet, für den der Containerregistrierungsdienst [verfügbar](https://azure.microsoft.com/regions/services/) ist. Informationen zum Erstellen einer Ressourcengruppe mit der CLI 2.0 finden Sie in der [Referenz zu CLI 2.0](/cli/azure/group). 
+* **Ressourcengruppe**: Erstellen Sie eine [Ressourcengruppe](../azure-resource-manager/resource-group-overview.md#resource-groups), bevor Sie eine Containerregistrierung erstellen, oder verwenden Sie eine vorhandene Ressourcengruppe. Stellen Sie sicher, dass sich die Ressourcengruppe an einem Standort befindet, für den der Containerregistrierungsdienst [verfügbar](https://azure.microsoft.com/regions/services/) ist. Informationen zum Erstellen einer Ressourcengruppe mit der CLI 2.0 finden Sie in der [Referenz zu CLI 2.0](/cli/azure/group).
 * **Speicherkonto** (optional): Erstellen Sie ein standardmäßiges Azure-[Speicherkonto](../storage/storage-introduction.md) zum Sichern der Containerregistrierung an demselben Standort. Wenn Sie beim Erstellen einer Registrierung mit `az acr create` kein Speicherkonto angeben, führt der Befehl dies für Sie durch. Informationen zum Erstellen eines Speicherkontos mit der CLI 2.0 finden Sie in der [Referenz zu CLI 2.0](/cli/azure/storage/account). Storage Premium wird derzeit nicht unterstützt.
-* **Dienstprinzipal** (optional): Wenn Sie mit der CLI eine Registrierung erstellen, wird der Zugriff standardmäßig nicht eingerichtet. Je nach Ihren Anforderungen können Sie einen vorhandenen Azure Active Directory-Dienstprinzipal einer Registrierung zuweisen (oder einen neuen erstellen und zuweisen) oder das Administratorbenutzerkonto der Registrierung aktivieren. Informationen hierzu finden Sie in den Abschnitten weiter unten in diesem Artikel. Weitere Informationen zum Zugreifen auf die Registrierung finden Sie unter [Authenticate with the container registry](container-registry-authentication.md) (Authentifizieren bei der Containerregistrierung). 
+* **Dienstprinzipal** (optional): Wenn Sie mit der CLI eine Registrierung erstellen, wird der Zugriff standardmäßig nicht eingerichtet. Je nach Ihren Anforderungen können Sie einen vorhandenen Azure Active Directory-Dienstprinzipal einer Registrierung zuweisen (oder einen neuen erstellen und zuweisen) oder das Administratorbenutzerkonto der Registrierung aktivieren. Informationen hierzu finden Sie in den Abschnitten weiter unten in diesem Artikel. Weitere Informationen zum Zugreifen auf die Registrierung finden Sie unter [Authenticate with the container registry](container-registry-authentication.md) (Authentifizieren bei der Containerregistrierung).
 
 ## <a name="create-a-container-registry"></a>Erstellen einer Containerregistrierung
-Führen Sie den Befehl `az acr create` aus, um eine Containerregistrierung zu erstellen. 
+Führen Sie den Befehl `az acr create` aus, um eine Containerregistrierung zu erstellen.
 
 > [!TIP]
-> Geben Sie beim Erstellen einer Registrierung einen global eindeutigen Namen einer Domäne der obersten Ebene an, der nur Buchstaben und Zahlen enthält. Der Registrierungsname in den Beispielen lautet `myRegistry`. Ersetzen Sie ihn durch einen eigenen eindeutigen Namen. 
-> 
-> 
+> Geben Sie beim Erstellen einer Registrierung einen global eindeutigen Namen einer Domäne der obersten Ebene an, der nur Buchstaben und Zahlen enthält. Der Registrierungsname in den Beispielen lautet `myRegistry1`. Ersetzen Sie ihn durch einen eigenen eindeutigen Namen.
+>
+>
 
-Im folgenden Befehl werden die minimal erforderlichen Parameter zum Erstellen der Containerregistrierung `myRegistry` in der Ressourcengruppe `myResourceGroup` für den Standort „USA, Süden-Mitte“ verwendet:
+Im folgenden Befehl werden die minimal erforderlichen Parameter zum Erstellen der Containerregistrierung `myRegistry1` in der Ressourcengruppe `myResourceGroup` für den Standort „USA, Süden-Mitte“ verwendet:
 
 ```azurecli
-az acr create -n myRegistry -g myResourceGroup -l southcentralus
+az acr create -n myRegistry1 -g myResourceGroup -l southcentralus
 ```
 
-* `--storage-account-name` oder `-s` sind optional. Wenn nichts angegeben ist, wird ein Speicherkonto mit einem zufälligen Namen in der angegebenen Ressourcengruppe erstellt.
+* `--storage-account-name` ist optional. Wenn nichts angegeben ist, wird in der angegebenen Ressourcengruppe ein Speicherkonto mit einem Namen erstellt, der aus dem Registrierungsnamen und einem Zeitstempel besteht.
 
 Die Ausgabe sieht in etwa wie folgt aus:
 
@@ -64,8 +60,8 @@ Die Ausgabe sieht in etwa wie folgt aus:
 
 Beachten Sie besonders Folgendes:
 
-* `id`: Der Bezeichner für die Registrierung in Ihrem Abonnement, den Sie benötigen, wenn Sie einen Dienstprinzipal zuweisen möchten. 
-* `loginServer`: Der vollqualifizierte Name, den Sie zum [Anmelden an der Registrierung](container-registry-authentication.md) angeben. In diesem Beispiel lautet der Name `myregistry-contoso.exp.azurecr.io` (nur Kleinbuchstaben).
+* `id`: Der Bezeichner für die Registrierung in Ihrem Abonnement, den Sie benötigen, wenn Sie einen Dienstprinzipal zuweisen möchten.
+* `loginServer`: Der vollqualifizierte Name, den Sie zum [Anmelden an der Registrierung](container-registry-authentication.md) angeben. In diesem Beispiel lautet der Name `myregistry1.exp.azurecr.io` (nur Kleinbuchstaben).
 
 ## <a name="assign-a-service-principal"></a>Zuweisen eines Dienstprinzipals
 Verwenden Sie die Befehle der CLI 2.0, um einen Azure Active Directory-Dienstprinzipal einer Registrierung zuzuweisen. Dem Dienstprinzipal wird in diesen Beispielen die Rolle „Besitzer“ zugewiesen, aber Sie können bei Bedarf auch [andere Rollen](../active-directory/role-based-access-control-configure.md) zuweisen.
@@ -74,7 +70,7 @@ Verwenden Sie die Befehle der CLI 2.0, um einen Azure Active Directory-Dienstpri
 Im folgenden Befehl wird einem neuen Dienstprinzipal über die Rolle „Besitzer“ der Zugriff auf den Registrierungsbezeichner zugewiesen, der mit dem Parameter `--scopes` übergeben wird. Geben Sie mit dem Parameter `--password` ein sicheres Kennwort an.
 
 ```azurecli
-az ad sp create-for-rbac --scopes /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myresourcegroup/providers/Microsoft.ContainerRegistry/registries/myregistry --role Owner --password myPassword
+az ad sp create-for-rbac --scopes /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myresourcegroup/providers/Microsoft.ContainerRegistry/registries/myregistry1 --role Owner --password myPassword
 ```
 
 
@@ -83,7 +79,7 @@ az ad sp create-for-rbac --scopes /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx
 Wenn Sie bereits über einen Dienstprinzipal verfügen und dafür über die Rolle „Besitzer“ Zugriff auf die Registrierung zuweisen möchten, können Sie einen ähnlichen Befehl wie im folgenden Beispiel ausführen. Sie übergeben die Dienstprinzipal-App-ID mit dem Parameter `--assignee`:
 
 ```azurecli
-az role assignment create --scope /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myresourcegroup/providers/Microsoft.ContainerRegistry/registries/myregistry --role Owner --assignee myAppId
+az role assignment create --scope /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myresourcegroup/providers/Microsoft.ContainerRegistry/registries/myregistry1 --role Owner --assignee myAppId
 ```
 
 
@@ -93,21 +89,21 @@ Ein Administratorkonto wird automatisch für jede Containerregistrierung erstell
 
 ### <a name="obtain-admin-user-credentials"></a>Abrufen von Administratorbenutzer-Anmeldeinformationen
 ```azurecli
-az acr credential show -n myRegistry
+az acr credential show -n myRegistry1
 ```
 
 ### <a name="enable-admin-user-for-an-existing-registry"></a>Aktivieren des Administratorbenutzers für eine vorhandene Registrierung
 ```azurecli
-az acr update -n myRegistry --admin-enabled true
+az acr update -n myRegistry1 --admin-enabled true
 ```
 
 ### <a name="disable-admin-user-for-an-existing-registry"></a>Deaktivieren des Administratorbenutzers für eine vorhandene Registrierung
 ```azurecli
-az acr update -n myRegistry --admin-enabled false
+az acr update -n myRegistry1 --admin-enabled false
 ```
 
 ## <a name="list-images-and-tags"></a>Auflisten von Images und Tags
-Verwenden Sie die CLI-Befehle vom Typ `az acr`, um die Images und Tags in einem Repository abzufragen. 
+Verwenden Sie die CLI-Befehle vom Typ `az acr`, um die Images und Tags in einem Repository abzufragen.
 
 > [!NOTE]
 > Derzeit wird der Befehl `docker search` zum Abfragen von Images und Tags für die Containerregistrierung nicht unterstützt.
@@ -117,17 +113,16 @@ Verwenden Sie die CLI-Befehle vom Typ `az acr`, um die Images und Tags in einem 
 Im folgenden Beispiel sind die Repositorys in einer Registrierung im JSON-Format (JavaScript Object Notation) aufgelistet:
 
 ```azurecli
-az acr repository list -n myRegistry -o json
+az acr repository list -n myRegistry1 -o json
 ```
 
 ### <a name="list-tags"></a>Auflisten von Tags
 Im folgenden Beispiel sind die Tags im Repository **samples/nginx** im JSON-Format aufgelistet:
 
 ```azurecli
-az acr repository show-tags -n myRegistry --repository samples/nginx -o json
+az acr repository show-tags -n myRegistry1 --repository samples/nginx -o json
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Freigeben Ihres ersten Image mit der Docker CLI](container-registry-get-started-docker-cli.md)
-
 

@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 12/27/2016
 ms.author: saysa
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: fc73eedae7ec9664da714567f47a543e625cd023
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: e5d14eb0a656d67030f4c0d3d510aec0e9cafae7
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -34,21 +34,24 @@ Sie können Service Fabric-Anwendungen für die Ausführung in Linux-Clustern un
 ## <a name="prerequisites"></a>Voraussetzungen
 Service Fabric wird nicht nativ unter OS X ausgeführt. Für die Verwendung eines lokalen Service Fabric-Clusters stellen wir einen vorkonfigurierten virtuellen Ubuntu-Computer mit Vagrant und VirtualBox bereit. Bevor Sie beginnen, benötigen Sie Folgendes:
 
-* [Vagrant (mindestens Version&1;.8.4)](http://www.vagrantup.com/downloads.html)
+* [Vagrant (mindestens Version 1.8.4)](http://www.vagrantup.com/downloads.html)
 * [VirtualBox](http://www.virtualbox.org/wiki/Downloads)
 
 >[!NOTE]
->  Sie müssen Versionen von Vagrant und VirtualBox verwenden, die sich gegenseitig unterstützen. Vagrant kann mit einer nicht unterstützten Version von VirtualBox möglicherweise nicht einwandfrei ausgeführt werden.
+> Sie müssen Versionen von Vagrant und VirtualBox verwenden, die sich gegenseitig unterstützen. Vagrant kann mit einer nicht unterstützten Version von VirtualBox möglicherweise nicht einwandfrei ausgeführt werden.
 >
 
 ## <a name="create-the-local-vm"></a>Erstellen des lokalen virtuellen Computers
 Führen Sie die folgenden Schritte aus, um den lokalen virtuellen Computer mit einem Service Fabric-Cluster mit fünf Knoten zu erstellen:
 
-1. Klonen Sie das **Vagrantfile**-Repository:
+1. Klonen des Repositorys `Vagrantfile`
 
     ```bash
     git clone https://github.com/azure/service-fabric-linux-vagrant-onebox.git
     ```
+    Mit diesen Schritten wird die Datei `Vagrantfile` mit der VM-Konfiguration und dem Downloadort der VM bereitgestellt.
+
+   
 2. Navigieren Sie zum lokalen Klon des Repositorys:
 
     ```bash
@@ -61,7 +64,7 @@ Führen Sie die folgenden Schritte aus, um den lokalen virtuellen Computer mit e
    * 3 GB zugeordneter Arbeitsspeicher
    * Privates Hostnetzwerk (konfiguriert mit der IP-Adresse 192.168.50.50, um Pass-Through-Datenverkehr des Mac-Hosts zu ermöglichen)
 
-     Sie können diese Einstellungen ändern oder die Konfiguration des virtuellen Computers über Vagrantfile ergänzen. Eine Liste mit allen Konfigurationsoptionen finden Sie in der [Vagrant-Dokumentation](http://www.vagrantup.com/docs) .
+     Sie können diese Einstellungen ändern oder die Konfiguration des virtuellen Computers über `Vagrantfile` ergänzen. Eine Liste mit allen Konfigurationsoptionen finden Sie in der [Vagrant-Dokumentation](http://www.vagrantup.com/docs) .
 4. Erstellen des virtuellen Computers
 
     ```bash
@@ -72,19 +75,24 @@ Führen Sie die folgenden Schritte aus, um den lokalen virtuellen Computer mit e
 
     ![Start der Clustereinrichtung nach Bereitstellung des virtuellen Computers][cluster-setup-script]
 
+>[!TIP]
+> Falls der Download der VM sehr lange dauert, können Sie sie per wget oder curl oder über einen Browser herunterladen, indem Sie zu dem Link navigieren, der unter **config.vm.box_url** in der Datei `Vagrantfile` angegeben ist. Nachdem Sie den Download an den lokalen Speicherort durchgeführt haben, können Sie die Datei `Vagrantfile` so bearbeiten, dass darin auf den lokalen Pfad verwiesen wird, an den Sie das Image heruntergeladen haben. Wenn Sie das Image beispielsweise nach „/home/users/test/azureservicefabric.tp8.box“ heruntergeladen haben, legen Sie **config.vm.box_url** auf diesen Pfad fest.
+>
+
 5. Vergewissern Sie sich, dass der Cluster ordnungsgemäß eingerichtet wurde, indem Sie unter http://192.168.50.50:19080/Explorer zu Service Fabric Explorer navigieren (vorausgesetzt, Sie haben die standardmäßige IP-Adresse des privaten Netzwerks beibehalten).
 
     ![Service Fabric Explorer auf dem Host-Mac][sfx-mac]
 
 ## <a name="install-the-service-fabric-plugin-for-eclipse-neon"></a>Installieren des Service Fabric-Plug-Ins für Eclipse Neon
 
-Service Fabric bietet ein Plug-In für die **Eclipse Neon-IDE für Java**, das die Erstellung und Bereitstellung von Java-Diensten vereinfachen kann. Sie können die Installationsschritte in dieser allgemeinen [Dokumentation](service-fabric-get-started-eclipse.md#install-or-update-service-fabric-plugin-on-eclipse-neon) zur Installation und Aktualisierung des Service Fabric-Plug-Ins für Eclipse ausführen.
+Service Fabric umfasst ein Plug-In für die **Eclipse Neon-IDE für Java**, das die Erstellung und Bereitstellung von Java-Diensten vereinfachen kann. Sie können die Installationsschritte in dieser allgemeinen [Dokumentation](service-fabric-get-started-eclipse.md#install-or-update-the-service-fabric-plug-in-in-eclipse-neon) zur Installation und Aktualisierung des Service Fabric-Plug-Ins für Eclipse ausführen.
 
 ## <a name="using-service-fabric-eclipse-plugin-on-mac"></a>Verwenden des Service Fabric-Plug-Ins für Eclipse unter Mac
 
-Vergewissern Sie sich, dass Sie die Schritte in der [Dokumentation zum Service Fabric-Plug-Ins für Eclipse](service-fabric-get-started-eclipse.md) ausgeführt haben. Die Schritte zum Entwickeln, Erstellen und Bereitstellen einer Service Fabric-Java-Anwendung mithilfe eines Vagrant-Gastcontainers auf einem Mac-Host ist größtenteils identisch mit der allgemeinen-Dokumentation, abgesehen von einigen unten aufgeführten Punkten, die Sie beachten müssen.
-* Da Ihre Service Fabric-Java-Anwendung erfordert, dass die Service Fabric-Bibliotheken erfolgreich erstellt werden, muss das Eclipse-Projekt in einem freigegebenen Pfad erstellt werden. Der Inhalt unter dem Pfad auf dem Host, auf dem sich die ``Vagrantfile`` befindet, wird standardmäßig für den ``/vagrant``-Pfad auf dem Gast freigegeben.
-* Einfach ausgedrückt: Wenn sich die ``Vagrantfile`` unter einem Pfad befindet, z.B. ``~/home/john/allprojects/``, müssen Sie Ihr Service Fabric-Projekt ``MyActor`` am Speicherort ``~/home/john/allprojects/MyActor`` erstellen, und der Pfad zu Ihrem Eclipse-Arbeitsbereich wäre ``~/home/john/allprojects``.
+Vergewissern Sie sich, dass Sie die Schritte in der [Dokumentation zum Service Fabric-Plug-Ins für Eclipse](service-fabric-get-started-eclipse.md) ausgeführt haben. Die Schritte zum Entwickeln, Erstellen und Bereitstellen einer Service Fabric-Java-Anwendung mithilfe eines Vagrant-Gastcontainers auf einem Mac-Host ist größtenteils identisch mit der allgemeinen-Dokumentation, abgesehen von den folgenden Punkten:
+
+* Da die Service Fabric-Bibliotheken für Ihre Service Fabric-Java-Anwendung erforderlich sind, muss das Eclipse-Projekt unter einem freigegebenen Pfad erstellt werden. Der Inhalt unter dem Pfad auf dem Host, auf dem sich die ``Vagrantfile`` befindet, wird standardmäßig für den ``/vagrant``-Pfad auf dem Gast freigegeben.
+* Wenn sich die ``Vagrantfile`` unter einem Pfad befindet, z.B. ``~/home/john/allprojects/``, müssen Sie Ihr Service Fabric-Projekt ``MyActor`` am Speicherort ``~/home/john/allprojects/MyActor`` erstellen, und der Pfad zu Ihrem Eclipse-Arbeitsbereich wäre ``~/home/john/allprojects``.
 
 ## <a name="next-steps"></a>Nächste Schritte
 <!-- Links -->

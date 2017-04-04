@@ -12,11 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 03/31/2017
 ms.author: luisca
+ROBOTS: NOINDEX, NOFOLLOW
+redirect_url: machine-learning-datamarket-deprecation
 translationtype: Human Translation
 ms.sourcegitcommit: 9ac2a1bf5987fc6fc30e20a1b4a10340eeed3825
 ms.openlocfilehash: 15cf891b9c31e1f2e2b108e631f32883ce2f36a7
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -136,10 +139,5 @@ Der technische Support ist auf der Website des [Microsoft Azure-Supports](https:
 **Wo finde ich die Nutzungsbedingungen?**
 
 [Microsoft Azure Machine Learning Recommendations API Terms of Service](https://datamarket.azure.com/dataset/amla/recommendations#terms)(in englischer Sprache).
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

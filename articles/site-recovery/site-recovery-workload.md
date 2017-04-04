@@ -15,9 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 02/06/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 0c56a74e43b989a32b10a878cec16cce0f972a9f
-ms.openlocfilehash: 63c0397b6e737038fb7758d2749ae82d1485d45d
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 34a9d187eecec185e2b8d6977baea267ca9e60e5
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -130,6 +130,19 @@ Verwenden Sie Site Recovery wie folgt zum Schützen Ihrer SAP-Bereitstellung:
 * Vereinfachen Sie Entwicklung und Tests von SAP-Anwendungen, indem Sie für Test- und Debugzwecke eine der Produktionsversion ähnliche Kopie bedarfsgesteuert erstellen.
 
 [Erfahren Sie mehr](http://aka.ms/asr-sap) über das Schützen von SAP.
+
+## <a name="protect-iis"></a>Schützen von IIS
+Verwenden Sie Site Recovery wie folgt zum Schützen Ihrer IIS-Bereitstellung:
+
+Azure Site Recovery stellt die Notfallwiederherstellung bereit, indem die kritischen Komponenten in Ihrer Umgebung an einem „kalten“ Remotestandort oder in einer öffentlichen Cloud wie Microsoft Azure repliziert werden. Da der virtuelle Computer mit dem Webserver und der Datenbank am Wiederherstellungsstandort repliziert werden, ist es nicht erforderlich, Konfigurationsdateien oder Zertifikate separat zu sichern. Die Anwendungszuordnungen und Bindungen sind von Umgebungsvariablen abhängig, die nach dem Failover geändert werden. Sie können mithilfe von Skripts aktualisiert werden, die in die Pläne für die Notfallwiederherstellung integriert sind. Virtuelle Computer werden am Wiederherstellungsstandort nur bei einem Failover genutzt. Außerdem werden Sie von Azure Site Recovery beim Orchestrieren des End-to-End-Failovers unterstützt, indem die folgenden Funktionen bereitgestellt werden:
+
+-    Sequenzieren des Herunterfahrens und Startens von virtuellen Computern auf verschiedenen Ebenen
+-    Hinzufügen von Skripts zum Zulassen des Updates von Anwendungsabhängigkeiten und Bindungen auf den virtuellen Computern nach dem Starten (Die Skripts können auch verwendet werden, um den DNS-Server so zu aktualisieren, dass er auf den Wiederherstellungsstandort zeigt.)
+-    Zuordnen von IP-Adressen zu virtuellen Computern vor dem Failover, indem primäre Netzwerke und Wiederherstellungsnetzwerke zugeordnet werden und so Skripts verwendet werden, die nach dem Failover nicht aktualisiert werden müssen
+-    Ermöglichen eines Failovers mit einem Klick für mehrere Webanwendungen auf den Webservern, um im Notfall Verwirrung zu vermeiden
+-    Ermöglichen von Tests des Wiederherstellungsplans in einer isolierten Umgebung für Notfallwiederherstellungsübungen
+
+[Hier finden Sie weitere Informationen](https://aka.ms/asr-iis) zum Schützen einer IIS-Webfarm.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Überprüfen der Voraussetzungen](site-recovery-prereq.md) 

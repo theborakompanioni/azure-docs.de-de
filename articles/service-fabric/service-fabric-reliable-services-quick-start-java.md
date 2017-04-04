@@ -2,7 +2,7 @@
 title: "Erstellen Ihres ersten zuverlässigen Azure-Microservice in Java | Microsoft-Dokumentation"
 description: "Einführung in das Erstellen einer Microsoft Azure Service Fabric-Anwendung mit zustandslosen und zustandsbehafteten Diensten."
 services: service-fabric
-documentationcenter: .net
+documentationcenter: java
 author: vturecek
 manager: timlt
 editor: 
@@ -17,6 +17,7 @@ ms.author: vturecek
 translationtype: Human Translation
 ms.sourcegitcommit: cf8f717d5343ae27faefdc10f81b4feaccaa53b9
 ms.openlocfilehash: 5a29d6838af7f3952ad96158e5962b17c0f4cb6b
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -168,9 +169,4 @@ Dadurch wird ein Service Fabric-Anwendungspaket generiert, das mithilfe der Serv
 ```bash
 $ ./install.sh
 ```
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 
