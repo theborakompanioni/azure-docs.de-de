@@ -137,8 +137,7 @@ Aus dieser Tabelle können folgende Schlussfolgerungen gezogen werden:
 | Tarif | Größe | CPU-Kerne | Verfügbare Bandbreite | 1 KB Wertgröße |
 | --- | --- | --- | --- | --- |
 | **Standard-Cachegröße** | | |**Megabits pro Sekunde (MBit/s)/Megabyte pro Sekunde (MB/s)** |**Anforderungen pro Sekunde (RPS)** |
-| C0 |250 MB |Shared
- |5 / 0,625 |600 |
+| C0 |250 MB |Shared |5 / 0,625 |600 |
 | C1 |1 GB |1 |100 / 12,5 |12.200 |
 | C2 |2,5 GB |2 |200 / 25 |24.000 |
 | C3 |6 GB |4 |400 / 50 |49.000 |
