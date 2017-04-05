@@ -27,7 +27,7 @@ ms.lasthandoff: 03/30/2017
 
 Dieses PowerShell-Beispielskript konfiguriert die aktive Georeplikation für eine in einem Pool für elastische Datenbanken enthaltene Datenbank und führt ein Failover zum sekundären Replikat aus.
 
-[!INCLUDE [sample-cli-install](../../../includes/sample-powershell-install-no-ssh.md)]
+[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ## <a name="sample-scripts"></a>Beispielskripts
 

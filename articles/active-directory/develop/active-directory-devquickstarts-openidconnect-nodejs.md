@@ -209,8 +209,9 @@ Passport verwendet ein ähnliches Muster für alle Strategien (Twitter, Facebook
 
 6. Finally, let's add the routes that hand off the actual sign-in requests to the `passport-azure-ad` engine:
 
-```JavaScript
-
+       
+       ```JavaScript
+ 
         // Our Auth routes (section 3)
 
         // GET /auth/openid
