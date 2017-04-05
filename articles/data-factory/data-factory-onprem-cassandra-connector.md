@@ -15,51 +15,101 @@ ms.topic: article
 ms.date: 02/09/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: af15b530dd512873e4534fb61d276c8c8c3a196a
-ms.openlocfilehash: 7b7d3b87e1285993d744e74d01f5192732b70e77
-ms.lasthandoff: 02/10/2017
+ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
+ms.openlocfilehash: 6a48c11508bdc7f6f6fbfe4a504172f9944c93c0
+ms.lasthandoff: 03/29/2017
 
 
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Verschieben von Daten aus einer lokalen Cassandra-Datenbank mit Azure Data Factory
-In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in einer Azure Data Factory verwenden, um Daten aus einer lokalen Cassandra-Datenbank in einen Datenspeicher zu kopieren, der im Abschnitt [Unterstützte Quellen und Senken](data-factory-data-movement-activities.md#supported-data-stores-and-formats) in der Spalte „Senke“ aufgeführt ist. Dieser Artikel baut auf dem Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht über die Datenverschiebung mit der Kopieraktivität sowie über unterstützte Datenspeicherkombinationen enthält.
+Dieser Artikel beschreibt, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einer lokalen Cassandra-Datenbank zu verschieben. Dieser Artikel baut auf dem Artikel zu [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit der Kopieraktivität bietet.
 
-Data Factory unterstützt derzeit nur das Verschieben von Daten aus einer Cassandra-Datenbank in [unterstützte Senkendatenspeicher](data-factory-data-movement-activities.md#supported-data-stores-and-formats), aber nicht das Verschieben von Daten aus anderen Datenspeichern in eine Cassandra-Datenbank.
+Sie können Daten aus einem lokalen Cassandra-Datenspeicher in beliebige unterstützte Senkendatenspeicher kopieren. Eine Liste der Datenspeicher, die als Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Data Factory unterstützt derzeit nur das Verschieben von Daten aus einem Cassandra-Datenspeicher in andere Datenspeicher, aber nicht das Verschieben von Daten aus anderen Datenspeichern in einen Cassandra-Datenspeicher. 
 
 ## <a name="supported-versions"></a>Unterstützte Versionen
-Dieser Cassandra-Connector unterstützt Cassandra, Version 2.X.
+Der Cassandra-Connector unterstützt die folgenden Versionen von Cassandra: 2.X.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Damit der Azure Data Factory-Dienst eine Verbindung mit Ihrer lokalen Cassandra-Datenbank herstellen kann, muss Folgendes installiert werden:
+Damit der Azure Data Factory-Dienst imstande ist, eine Verbindung mit Ihrer lokalen Cassandra-Datenbank herzustellen, müssen Sie das Datenverwaltungsgateway auf dem Computer installieren, der die Datenbank hostet, oder auf einem separaten Computer, um zu vermeiden, dass der Computer mit der Datenbank um Ressourcen konkurriert. Das Datenverwaltungsgateway ist eine Clientkomponente, die lokale Datenquellen sicher und verwaltet mit Clouddiensten verbindet. Im Artikel [Datenverwaltungsgateway](data-factory-data-management-gateway.md) finden Sie Einzelheiten zum Datenverwaltungsgateway. Schritt-für-Schritt-Anweisungen zum Einrichten des Gateways für eine Datenpipeline zum Verschieben von Daten finden Sie unter [Verschieben von Daten zwischen lokalen Standorten und Cloud](data-factory-move-data-between-onprem-and-cloud.md).
 
-* Datenverwaltungsgateway 2.0 oder höher auf dem Computer, der die Datenbank hostet, oder auf einem separaten Computer, um zu vermeiden, dass der Computer mit der Datenbank um Ressourcen konkurriert. Datenverwaltungsgateway ist eine Software, die lokale Datenquellen mit Cloud-Diensten auf sichere, verwaltete Weise verbindet. Weitere Informationen zum Datenverwaltungsgateway finden Sie im Artikel [Verschieben von Daten zwischen lokalen Quellen und der Cloud](data-factory-move-data-between-onprem-and-cloud.md) .
+Sie müssen das Gateway verwenden, um Verbindungen mit einer Cassandra-Datenbank herzustellen, sogar wenn die Datenbank in der Cloud gehostet ist, beispielsweise auf einem virtuellen Azure IaaS-Computers. Das Gateway kann auf dem gleichen virtuellen Computer wie die Datenbank oder auf einem anderen virtuellen Computer installiert sein, solange das Gateway eine Verbindung mit der Datenbank herstellen kann.  
 
-    Beim Installieren des Gateways wird automatisch ein Microsoft Cassandra-ODBC-Treiber installiert, der zum Herstellen einer Verbindung mit der Cassandra-Datenbank verwendet wird.
+Beim Installieren des Gateways wird automatisch ein Microsoft Cassandra-ODBC-Treiber installiert, der zum Herstellen einer Verbindung mit der Cassandra-Datenbank verwendet wird. Aus diesem Grund müssen Sie beim Kopieren von Daten aus der Cassandra-Datenbank manuell keine Treiber auf dem Gatewaycomputer installieren. 
 
 > [!NOTE]
 > Unter [Problembehandlung bei Gateways](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) finden Sie Tipps zur Behandlung von Verbindungs- bzw. Gatewayproblemen.
->
->
 
-## <a name="copy-data-wizard"></a>Assistent zum Kopieren von Daten
-Die einfachste Art, eine Pipeline zu erstellen, mit der Daten aus einer Cassandra-Datenbank in einen der unterstützten Senkendatenspeicher kopiert werden, ist die Verwendung des Assistenten zum Kopieren von Daten. Unter [Tutorial: Erstellen einer Pipeline mit dem Assistenten zum Kopieren](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
+## <a name="getting-started"></a>Erste Schritte
+Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools/APIs aus einem lokalen Cassandra-Datenspeicher verschiebt. 
 
-Das folgende Beispiel stellt JSON-Beispieldefinitionen bereit, die Sie zum Erstellen einer Pipeline mit dem [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder mit [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Darin wird veranschaulicht, wie Sie Daten aus einer Cassandra-Datenbank in Azure Blob Storage kopieren. Daten können jedoch auch mithilfe der Kopieraktivität in Azure Data Factory in eine beliebige der [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) aufgeführten Senken kopiert werden.   
+- Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Unter [Tutorial: Erstellen einer Pipeline mit dem Assistenten zum Kopieren](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten. 
+- Sie können auch die folgenden Tools für das Erstellen einer Pipeline verwenden: **Azure-Portal**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlagen**, **.NET-API** und **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können. 
 
-## <a name="sample-copy-data-from-cassandra-to-blob"></a>Beispiel: Kopieren von Daten aus Cassandra in ein Blob
-Im Beispiel werden stündlich Daten aus einer Cassandra-Datenbank in ein Azure-Blob kopiert. Die bei diesen Beispielen verwendeten JSON-Eigenschaften werden in den Abschnitten beschrieben, die auf die Beispiele folgen. Daten können mithilfe der Kopieraktivität in Azure Data Factory direkt in die im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md#supported-data-stores-and-formats) aufgeführten Senken kopiert werden.
+Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden Schritte aus, um eine Pipeline zu erstellen, die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher verschiebt:
 
-* Einen verknüpften Dienst des Typs [OnPremisesCassandra](#onpremisescassandra-linked-service-properties)
-* Einen verknüpften Dienst des Typs [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service)
-* Ein [Eingabedataset](data-factory-create-datasets.md) des Typs [CassandraTable](#cassandratable-properties)
-* Ein [Ausgabedataset](data-factory-create-datasets.md) des Typs [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties)
-* Eine [Pipeline](data-factory-create-pipelines.md) mit Kopieraktivität, die [CassandraSource](#cassandrasource-type-properties) und [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) verwendet
+1. Erstellen Sie **verknüpfte Dienste** zum Verknüpfen von Eingabe- und Ausgabedatenspeichern mit Ihrer Data Factory.
+2. Erstellen Sie **Datasets** zur Darstellung von Eingabe- und Ausgabedaten für den Kopiervorgang. 
+3. Erstellen Sie eine **Pipeline** mit einer Kopieraktivität, die ein Dataset als Eingabe und ein Dataset als Ausgabe akzeptiert. 
 
-**Verknüpfter Cassandra-Dienst**
+Wenn Sie den Assistenten verwenden, werden automatisch JSON-Definitionen für diese Data Factory-Entitäten (verknüpfte Dienste, Datasets und die Pipeline) erstellt. Bei Verwendung von Tools und APIs (mit Ausnahme der .NET-API) definieren Sie diese Data Factory-Entitäten im JSON-Format.  Ein Beispiel mit JSON-Definitionen für Data Factory-Entitäten, die zum Kopieren von Daten aus einem lokalen Cassandra-Datenspeicher verwendet werden, finden Sie in diesem Artikel im Abschnitt [JSON-Beispiel: Kopieren von Daten aus Cassandra in ein Azure-Blob](#json-example-copy-data-from-cassandra-to-azure-blob). 
 
-In diesem Beispiel wird der verknüpfte **Cassandra** -Dienst verwendet. Der Abschnitt [Verknüpfter Cassandra-Dienst](#onpremisescassandra-linked-service-properties) enthält eine Liste mit den Eigenschaften, die von diesem verknüpften Dienst unterstützt werden.  
+Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für Cassandra-Datenspeicher verwendet werden:
 
-```JSON
+## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
+Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die speziell für den verknüpften Cassandra-Dienst gelten.
+
+| Eigenschaft | Beschreibung | Erforderlich |
+| --- | --- | --- |
+| type |Die type-Eigenschaft muss auf **OnPremisesCassandra** |Ja |
+| host |Mindestens eine IP-Adresse oder ein Hostname von Cassandra-Servern.<br/><br/>Geben Sie eine durch Trennzeichen getrennte Liste mit IP-Adressen oder Hostnamen an, um gleichzeitig mit allen Servern Verbindungen herzustellen. |Ja |
+| port |Der TCP-Port, den der Cassandra-Server verwendet, um auf Clientverbindungen zu lauschen. |Nein. Standardwert: 9042 |
+| authenticationType |Basic (Standard) oder Anonymous (Anonym) |Ja |
+| username |Geben Sie einen Benutzernamen für das Benutzerkonto an. |Ja, wenn authenticationType auf „Basic“ (Standard) festgelegt ist. |
+| password |Geben Sie ein Kennwort für das Benutzerkonto an. |Ja, wenn authenticationType auf „Basic“ (Standard) festgelegt ist. |
+| gatewayName |Der Name des Gateways, das zum Herstellen der Verbindung mit der lokalen Cassandra-Datenbank verwendet wird. |Ja |
+| encryptedCredential |Anmeldeinformationen, die vom Gateway verschlüsselt werden. |Nein |
+
+## <a name="dataset-properties"></a>Dataset-Eigenschaften
+Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie „structure“, „availability“ und „policy“ des JSON-Codes eines Datasets sind bei allen Dataset-Typen (Azure SQL, Azure-Blob, Azure-Tabelle usw.) ähnlich.
+
+Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt „typeProperties“ für ein Dataset des Typs **CassandraTable** hat die folgenden Eigenschaften:
+
+| Eigenschaft | Beschreibung | Erforderlich |
+| --- | --- | --- |
+| keyspace |Name des Keyspace oder Schemas in der Cassandra-Datenbank. |Ja (wenn **query** für **CassandraSource** nicht definiert ist). |
+| tableName |Name der Tabelle in der Cassandra-Datenbank. |Ja (wenn **query** für **CassandraSource** nicht definiert ist). |
+
+## <a name="copy-activity-properties"></a>Eigenschaften der Kopieraktivität
+Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md). Eigenschaften wie Name, Beschreibung, Eingabe- und Ausgabetabellen und Richtlinie sind für alle Arten von Aktivitäten verfügbar.
+
+Eigenschaften im Abschnitt typeProperties der Aktivität können dagegen je nach Aktivitätstyp variieren. Für die Kopieraktivität variieren die Eigenschaften je nach Art der Quellen und Senken.
+
+Bei einer Quelle des Typs **SqlDWSource**sind im Abschnitt „typeProperties“ folgende Eigenschaften verfügbar:
+
+| Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
+| --- | --- | --- | --- |
+| query |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |SQL-92-Abfrage oder CQL-Abfrage. Weitere Informationen finden Sie in der [Referenz zu CQL](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>Geben Sie beim Verwenden der SQL-Abfrage **keyspace name.table name** für die Tabelle an, die Sie abfragen möchten. |Nein (wenn tableName und keyspace im Dataset definiert sind) |
+| consistencyLevel |Mit der Konsistenzebene (consistencyLevel) wird angegeben, wie viele Replikate auf eine Leseanforderung reagieren müssen, bevor Daten an die Clientanwendung zurückgegeben werden. Cassandra überprüft die angegebene Anzahl von Replikaten auf Daten, um die Leseanforderung zu erfüllen. |ONE, TWO, THREE, QUORUM, ALL, LOCAL_QUORUM, EACH_QUORUM, LOCAL_ONE. Ausführliche Informationen finden Sie unter [Configuring data consistency](http://docs.datastax.com/en//cassandra/2.0/cassandra/dml/dml_config_consistency_c.html) (Konfigurieren der Datenkonsistenz). |Nein. Der Standardwert ist ONE. |
+
+## <a name="json-example-copy-data-from-cassandra-to-azure-blob"></a>JSON-Beispiel: Kopieren von Daten aus Cassandra in ein Azure-Blob
+Dieses Beispiel stellt JSON-Beispieldefinitionen bereit, die Sie zum Erstellen einer Pipeline mit dem [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder mit [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Es wird gezeigt, wie Sie Daten aus einer lokalen Cassandra-Datenbank in eine Azure Blob Storage-Instanz kopieren. Daten können jedoch auch mithilfe der Kopieraktivität in Azure Data Factory in eine beliebige der [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) aufgeführten Senken kopiert werden.
+
+> [!IMPORTANT]
+> Dieses Beispiel enthält JSON-Codeausschnitte. Eine schrittweise Anleitung zum Erstellen der Data Factory ist nicht enthalten. Einen Artikel mit schrittweisen Anleitungen finden Sie unter [Verschieben von Daten zwischen lokalen Standorten und Cloud](data-factory-move-data-between-onprem-and-cloud.md) .
+
+Das Beispiel enthält die folgenden Data Factory-Entitäten:
+
+* Einen verknüpften Dienst des Typs [OnPremisesCassandra](#linked-service-properties)
+* Einen verknüpften Dienst des Typs [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)
+* Ein [Eingabedataset](data-factory-create-datasets.md) des Typs [CassandraTable](#dataset-properties)
+* Ein [Ausgabedataset](data-factory-create-datasets.md) des Typs [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)
+* Eine [Pipeline](data-factory-create-pipelines.md) mit Kopieraktivität, die [CassandraSource](#copy-activity-properties) und [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) verwendet
+
+**Mit Cassandra verknüpfter Dienst:**
+
+In diesem Beispiel wird der verknüpfte **Cassandra** -Dienst verwendet. Der Abschnitt [Verknüpfter Cassandra-Dienst](#linked-service-properties) enthält eine Liste mit den Eigenschaften, die von diesem verknüpften Dienst unterstützt werden.  
+
+```json
 {
     "name": "CassandraLinkedService",
     "properties":
@@ -78,9 +128,9 @@ In diesem Beispiel wird der verknüpfte **Cassandra** -Dienst verwendet. Der Abs
 }
 ```
 
-**Mit Azure Storage verknüpfter Dienst**
+**Mit Azure Storage verknüpfter Dienst:**
 
-```JSON
+```json
 {
     "name": "AzureStorageLinkedService",
     "properties": {
@@ -92,9 +142,9 @@ In diesem Beispiel wird der verknüpfte **Cassandra** -Dienst verwendet. Der Abs
 }
 ```
 
-**Cassandra-Eingabedataset**
+**Cassandra-Eingabedataset:**
 
-```JSON
+```json
 {
     "name": "CassandraInput",
     "properties": {
@@ -122,11 +172,11 @@ In diesem Beispiel wird der verknüpfte **Cassandra** -Dienst verwendet. Der Abs
 
 Durch Festlegen von **external** auf **true** wird dem Data Factory-Dienst mitgeteilt, dass das Dataset für die Data Factory extern ist und nicht durch eine Aktivität in der Data Factory erzeugt wird.
 
-**Azure-Blob-Ausgabedataset**
+**Azure-Blob-Ausgabedataset:**
 
 Daten werden stündlich in ein neues Blob geschrieben ("frequency": "hour", "interval": 1).
 
-```JSON
+```json
 {
     "name": "AzureBlobOutput",
     "properties":
@@ -146,13 +196,13 @@ Daten werden stündlich in ein neues Blob geschrieben ("frequency": "hour", "int
 }
 ```
 
-**Pipeline mit Kopieraktivität**
+**Kopieraktivität in einer Pipeline mit einer Cassandra-Quelle und einer Blobsenke:**
 
 Die Pipeline enthält eine Kopieraktivität, die für die Verwendung der Ein- und Ausgabedatasets und für eine stündliche Ausführung konfiguriert ist. In der JSON-Definition der Pipeline ist der Typ **source** auf **CassandraSource** und der Typ **sink** auf **BlobSink** festgelegt.
 
-Unter [RelationalSource-Typeigenschaften](#cassandrasource-type-properties) finden Sie die Liste der Eigenschaften, die von RelationalSource unterstützt werden.
+Unter [RelationalSource-Typeigenschaften](#copy-activity-properties) finden Sie die Liste der Eigenschaften, die von RelationalSource unterstützt werden.
 
-```JSON
+```json
 {  
     "name":"SamplePipeline",
     "properties":{  
@@ -199,42 +249,6 @@ Unter [RelationalSource-Typeigenschaften](#cassandrasource-type-properties) find
     }
 }
 ```
-
-## <a name="onpremisescassandra-linked-service-properties"></a>Eigenschaften des verknüpften OnPremisesCassandra-Diensts
-Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die speziell für den verknüpften Cassandra-Dienst gelten.
-
-| Eigenschaft | Beschreibung | Erforderlich |
-| --- | --- | --- |
-| type |Die type-Eigenschaft muss auf **OnPremisesCassandra** |Ja |
-| host |Mindestens eine IP-Adresse oder ein Hostname von Cassandra-Servern.<br/><br/>Geben Sie eine durch Trennzeichen getrennte Liste mit IP-Adressen oder Hostnamen an, um gleichzeitig mit allen Servern Verbindungen herzustellen. |Ja |
-| port |Der TCP-Port, den der Cassandra-Server verwendet, um auf Clientverbindungen zu lauschen. |Nein. Standardwert: 9042 |
-| authenticationType |Basic (Standard) oder Anonymous (Anonym) |Ja |
-| username |Geben Sie einen Benutzernamen für das Benutzerkonto an. |Ja, wenn authenticationType auf „Basic“ (Standard) festgelegt ist. |
-| password |Geben Sie ein Kennwort für das Benutzerkonto an. |Ja, wenn authenticationType auf „Basic“ (Standard) festgelegt ist. |
-| gatewayName |Der Name des Gateways, das zum Herstellen der Verbindung mit der lokalen Cassandra-Datenbank verwendet wird. |Ja |
-| encryptedCredential |Anmeldeinformationen, die vom Gateway verschlüsselt werden. |Nein |
-
-## <a name="cassandratable-properties"></a>CassandraTable-Eigenschaften
-Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie „structure“, „availability“ und „policy“ des JSON-Codes eines Datasets sind bei allen Dataset-Typen (Azure SQL, Azure-Blob, Azure-Tabelle usw.) ähnlich.
-
-Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt „typeProperties“ für ein Dataset des Typs **CassandraTable** hat die folgenden Eigenschaften:
-
-| Eigenschaft | Beschreibung | Erforderlich |
-| --- | --- | --- |
-| keyspace |Name des Keyspace oder Schemas in der Cassandra-Datenbank. |Ja (wenn **query** für **CassandraSource** nicht definiert ist). |
-| tableName |Name der Tabelle in der Cassandra-Datenbank. |Ja (wenn **query** für **CassandraSource** nicht definiert ist). |
-
-## <a name="cassandrasource-type-properties"></a>Eigenschaften des Typs CassandraSource
-Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md). Eigenschaften wie Name, Beschreibung, Eingabe- und Ausgabetabellen und Richtlinie sind für alle Arten von Aktivitäten verfügbar.
-
-Eigenschaften im Abschnitt „typeProperties“ der Aktivität können dagegen je nach Aktivitätstyp variieren. Für die Kopieraktivität variieren die Eigenschaften je nach Art der Quellen und Senken.
-
-Bei einer Quelle des Typs **SqlDWSource**sind im Abschnitt „typeProperties“ folgende Eigenschaften verfügbar:
-
-| Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
-| --- | --- | --- | --- |
-| query |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |SQL-92-Abfrage oder CQL-Abfrage. Weitere Informationen finden Sie in der [Referenz zu CQL](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>Geben Sie beim Verwenden der SQL-Abfrage **keyspace name.table name** für die Tabelle an, die Sie abfragen möchten. |Nein (wenn tableName und keyspace im Dataset definiert sind) |
-| consistencyLevel |Mit der Konsistenzebene (consistencyLevel) wird angegeben, wie viele Replikate auf eine Leseanforderung reagieren müssen, bevor Daten an die Clientanwendung zurückgegeben werden. Cassandra überprüft die angegebene Anzahl von Replikaten auf Daten, um die Leseanforderung zu erfüllen. |ONE, TWO, THREE, QUORUM, ALL, LOCAL_QUORUM, EACH_QUORUM, LOCAL_ONE. Ausführliche Informationen finden Sie unter [Configuring data consistency](http://docs.datastax.com/en//cassandra/2.0/cassandra/dml/dml_config_consistency_c.html) (Konfigurieren der Datenkonsistenz). |Nein. Der Standardwert ist ONE. |
 
 ### <a name="type-mapping-for-cassandra"></a>Typzuordnung für Cassandra
 | Cassandra-Typ | .NET-basierter Typ |
@@ -320,9 +334,11 @@ Die folgenden Tabellen enthalten die virtuellen Tabellen, in denen die Daten aus
 | 3 |Eine  |
 | 3 |E |
 
-[!INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
+## <a name="map-source-to-sink-columns"></a>Zuordnen von Quell- zur Senkenspalten
+Weitere Informationen zum Zuordnen von Spalten im Quelldataset zu Spalten im Senkendataset finden Sie unter [Zuordnen von Datasetspalten in Azure Data Factory](data-factory-map-columns.md).
 
-[!INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
+## <a name="repeatable-read-from-relational-sources"></a>Wiederholbare Lesevorgänge aus relationalen Quellen
+Beim Kopieren von Daten aus relationalen Datenspeichern müssen Sie die Wiederholbarkeit berücksichtigen, um unbeabsichtigte Ergebnisse zu vermeiden. Sie können einen Slice in Azure Data Factory manuell erneut ausführen. Sie können auch eine Wiederholungsrichtlinie für ein Dataset konfigurieren, sodass ein Slice erneut ausgeführt wird, wenn ein Fehler auftritt. Wenn ein Slice erneut ausgeführt wird, müssen Sie sicherstellen, dass dieselben Daten gelesen werden – egal wie oft ein Slice ausgeführt wird. Weitere Informationen finden Sie unter [Wiederholbare Lesevorgänge aus relationalen Quellen](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
 ## <a name="performance-and-tuning"></a>Leistung und Optimierung
 Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
