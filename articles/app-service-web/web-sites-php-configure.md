@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 5ea7095e12b6194556d3cd0baa43ccfed1e087ee
-ms.openlocfilehash: 3adbef0d22673d6cd872f583903d0c73469d4fa1
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: b62ee732f1730e8934443fb4320327e64d110833
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -28,9 +28,9 @@ In diesem Leitfaden erfahren Sie, wie Sie die integrierte PHP-Laufzeit für Web-
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## <a name="how-to-change-the-built-in-php-version"></a>Vorgehensweise: Ändern der integrierten PHP-Version
-PHP 5.4 ist standardmäßig installiert und kann sofort verwendet werden, wenn Sie eine App Service-Web-App erstellen. Die beste Möglichkeit, um die verfügbare Versionsrevision, die Standardkonfiguration und die aktivierten Erweiterungen anzuzeigen, ist die Bereitstellung eines Skripts, das die Funktion [phpinfo()] abruft.
+PHP 5.5 ist standardmäßig installiert und kann sofort verwendet werden, wenn Sie eine App Service-Web-App erstellen. Die beste Möglichkeit, um die verfügbare Versionsrevision, die Standardkonfiguration und die aktivierten Erweiterungen anzuzeigen, ist die Bereitstellung eines Skripts, das die Funktion [phpinfo()] abruft.
 
-PHP 5.5 und PHP 5.6 sind ebenfalls verfügbar, aber nicht standardmäßig aktiviert. Gehen Sie folgendermaßen vor, um die PHP-Version zu aktualisieren:
+PHP 5.6 und PHP 7.0 sind ebenfalls verfügbar, aber nicht standardmäßig aktiviert. Gehen Sie folgendermaßen vor, um die PHP-Version zu aktualisieren:
 
 ### <a name="azure-portal"></a>Azure-Portal
 1. Navigieren Sie im [Azure Portal](https://portal.azure.com) zu Ihrer Web-App, und klicken Sie auf die Schaltfläche **Einstellungen** .
@@ -49,7 +49,7 @@ PHP 5.5 und PHP 5.6 sind ebenfalls verfügbar, aber nicht standardmäßig aktivi
         PS C:\> Login-AzureRmAccount
 2. Legen Sie die PHP-Version für die Web-App fest.
    
-        PS C:\> Set-AzureWebsite -PhpVersion {5.4 | 5.5 | 5.6} -Name {app-name}
+        PS C:\> Set-AzureWebsite -PhpVersion {5.5 | 5.6 | 7.0} -Name {app-name}
 3. Die PHP-Version ist jetzt festgelegt. Sie können diese Einstellungen bestätigen:
    
         PS C:\> Get-AzureWebsite -Name {app-name} | findstr PhpVersion
@@ -62,7 +62,7 @@ Um die Azure-Befehlszeilenschnittstelle verwenden zu können, muss **Node.js** a
         azure login
 2. Legen Sie die PHP-Version für die Web-App fest.
    
-        azure site set --php-version {5.4 | 5.5 | 5.6} {app-name}
+        azure site set --php-version {5.5 | 5.6 | 7.0} {app-name}
 
 3. Die PHP-Version ist jetzt festgelegt. Sie können diese Einstellungen bestätigen:
    
@@ -110,7 +110,7 @@ Wie im vorherigen Anschnitt angegeben ist die Standardkonfiguration die beste M�
 
 ### <a name="configure-via-ini-settings"></a>Konfigurieren über ini-Einstellungen
 1. Fügen Sie ein `ext`-Verzeichnis zum `d:\home\site`-Verzeichnis hinzu.
-2. Legen Sie Dateien mit der Erweiterung `.dll` im Verzeichnis `ext` ab (zum Beispiel `php_mongo.dll` und `php_xdebug.dll`). Stellen Sie sicher, dass die Erweiterungen mit der Standardversion von PHP kompatibel sind (welche zu diesem Zeitpunkt PHP 5.4 ist) und kompatibel mit VC9 sowie nicht threadsicher (non-thread-safe, nts) sind.
+2. Legen Sie Dateien mit der Erweiterung `.dll` im Verzeichnis `ext` ab (zum Beispiel `php_xdebug.dll`). Stellen Sie sicher, dass die Erweiterungen mit der Standardversion von PHP und mit VC9 kompatibel sowie nicht threadsicher (non-thread-safe, nts) sind.
 3. Hinzufügen einer App-Einstellung zu Ihrer Web-App mit Schlüssel `PHP_INI_SCAN_DIR` und Wert `d:\home\site\ini`
 4. Erstellen Sie in `d:\home\site\ini` eine `ini`-Datei namens `extensions.ini`.
 5. Fügen Sie der `extensions.ini` -Datei Konfigurationseinstellungen hinzu, und verwenden Sie dieselbe Syntax wie für eine php.ini-Datei. Wenn Sie beispielsweise die MongoDB- und XDebug-Erweiterungen aktivieren möchten, würde Ihre `extensions.ini` -Datei diesen Text enthalten:
@@ -122,7 +122,7 @@ Wie im vorherigen Anschnitt angegeben ist die Standardkonfiguration die beste M�
 
 ### <a name="configure-via-app-setting"></a>Konfigurieren über App-Einstellungen
 1. Fügen Sie dem Stammverzeichnis das Verzeichnis `bin` hinzu.
-2. Legen Sie Dateien mit der Erweiterung `.dll` im Verzeichnis `bin` ab (zum Beispiel `php_mongo.dll`). Stellen Sie sicher, dass die Erweiterungen mit der Standardversion von PHP kompatibel sind (welche zu diesem Zeitpunkt PHP 5.4 ist) und kompatibel mit VC9 sowie nicht threadsicher (non-thread-safe, nts) sind.
+2. Legen Sie Dateien mit der Erweiterung `.dll` im Verzeichnis `bin` ab (zum Beispiel `php_xdebug.dll`). Stellen Sie sicher, dass die Erweiterungen mit der Standardversion von PHP und mit VC9 kompatibel sowie nicht threadsicher (non-thread-safe, nts) sind.
 3. Stellen Sie Ihre Web-App bereit.
 4. Navigieren Sie im Azure-Portal zu Ihrer Web-App, und klicken Sie auf die Schaltfläche **Einstellungen** .
    

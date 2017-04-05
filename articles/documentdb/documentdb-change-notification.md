@@ -2,8 +2,9 @@
 redirect_url: https://docs.microsoft.com/azure/documentdb/documentdb-change-feed-hl7-fhir-logic-apps
 ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 0b93e0cd71add8bad86c2b3c0023b524bc4f621a
-ms.openlocfilehash: 1e44ae2341257df6ac367db83947178918016430
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 1b5ec3cb1c2aba86570c6f1753d9142c0d0349ce
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -733,7 +734,7 @@ Im letzten Schritt senden Sie eine E-Mail-Benachrichtigung.
 
 In dieser Aktion senden Sie eine E-Mail-Benachrichtigung.  Sie verwenden [SendGrid](https://sendgrid.com/marketing/sendgrid-services?cvosrc=PPC.Bing.sendgrib&cvo_cid=SendGrid%20-%20US%20-%20Brand%20-%20&mc=Paid%20Search&mcd=BingAds&keyword=sendgrib&network=o&matchtype=e&mobile=&content=&search=1&utm_source=bing&utm_medium=cpc&utm_term=%5Bsendgrib%5D&utm_content=%21acq%21v2%2134335083397-8303227637-1649139544&utm_campaign=SendGrid+-+US+-+Brand+-+%28English%29).   
 
-Der Code hierfür wurde mithilfe einer Vorlage für Logik-App und SendGrid generiert, die im [101-logic-app-sendgrid-Github-Repository](https://github.com/Azure/azure-quickstart-templates/tree/master/101-logic-app-sendgrid)enthalten ist.
+Der Code hierfür wurde mithilfe einer Vorlage für Logik-App und SendGrid generiert, die im [GitHub-Repository 101-logic-app-sendgrid](https://github.com/Azure/azure-quickstart-templates/tree/master/101-logic-app-sendgrid) enthalten ist.
 
 Der HTTP-Vorgang ist ein POST-Vorgang. 
 
@@ -873,7 +874,7 @@ Die folgende Abbildung zeigt die Designeransicht.
 
 ```
 
-Der Trigger wird für eine Serie von&24; Stunden festgelegt. Die Aktion ist ein HTTP-POST, wobei die Rückruf-URL für die Haupt-Logik-App verwendet wird. Der Text enthält die Parameter, die im JSON-Schema angegeben werden. 
+Der Trigger wird für eine Serie von 24 Stunden festgelegt. Die Aktion ist ein HTTP-POST, wobei die Rückruf-URL für die Haupt-Logik-App verwendet wird. Der Text enthält die Parameter, die im JSON-Schema angegeben werden. 
 
 #### <a name="operations"></a>Vorgänge
 ##### <a name="request"></a>Anforderung
@@ -1111,13 +1112,8 @@ In dieser exemplarischen Vorgehensweise haben Sie Folgendes gelernt:
 Der springende Punkt ist, vorauszuplanen und den Workflow im Modell darzustellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Bitte verwenden Sie den Logik-App-Code, den Sie bei [Github](https://github.com/HEDIDIN/DocDbNotifications)herunterladen können. Ich lade Sie ein, an der Anwendung weiterzuarbeiten und Änderungen an das Repository zu senden. 
+Verwenden Sie den Logik-App-Code, den Sie bei [GitHub](https://github.com/HEDIDIN/DocDbNotifications) herunterladen können. Ich lade Sie ein, an der Anwendung weiterzuarbeiten und Änderungen an das Repository zu senden. 
 
 Weitere Informationen zu DocumentDB finden Sie im [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/documentdb/).
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

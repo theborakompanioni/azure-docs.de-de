@@ -1,6 +1,6 @@
 ---
 title: Einrichten des Azure Import/Export-Tools | Microsoft-Dokumentation
-description: "Es wird beschrieben, wie Sie das Tool für die Laufwerkvorbereitung und Reparatur für den Import/Export-Dienst von Azure einrichten."
+description: "Es wird beschrieben, wie Sie das Tool für die Laufwerkvorbereitung und Reparatur für den Azure Import/Export-Dienst einrichten."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -15,15 +15,16 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 41bc5585f3d9dea2a08dc8a6bc1e4fdf9f0c8fc4
-ms.openlocfilehash: cc7107ce89c063ae69184039893d9c28c912db08
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 2aebded82fcf67bf9ad4a00a703e62eb12e2370c
+ms.lasthandoff: 03/30/2017
 
 
 ---
 
 # <a name="setting-up-the-azure-importexport-tool"></a>Einrichten des Azure Import/Export-Tools
 
-Das Import/Export-Tool von Microsoft Azure ist das Tool für die Laufwerkvorbereitung und Reparatur, das Sie für den Microsoft Azure Import/Export-Dienst verwenden können. Sie können das Tool für die folgenden Funktionen verwenden:
+Das Microsoft Azure Import/Export-Tool ist das Tool für die Laufwerkvorbereitung und Reparatur, das Sie für den Microsoft Azure Import/Export-Dienst verwenden können. Sie können das Tool für die folgenden Funktionen verwenden:
 
 * Vor dem Erstellen eines Importauftrags können Sie dieses Tool zum Kopieren von Daten auf die Laufwerke verwenden, die Sie an ein Azure-Rechenzentrum senden.
 * Nach Abschluss eines Importauftrags können Sie dieses Tool zum Reparieren von Blobs verwenden, die beschädigt sind, fehlen oder in Konflikt mit anderen Blobs stehen.
@@ -74,7 +75,7 @@ Das Azure Import/Export-Tool besteht aus den folgenden Dateien:
 Führen Sie das Tool ohne Parameter aus, um die Hilfe für den Befehl anzuzeigen:
 
 ```
-WAImportExport, a client tool for Windows Azure Import/Export Service. Microsoft (c) 2013
+WAImportExport, a client tool for Windows Azure Import/Export service. Microsoft (c) 2013
 
 
 Copy directories and/or files with a new copy session:
@@ -177,7 +178,7 @@ Parameters:
     /ExportBlobListFile:<ExportBlobListFile>
         - Required. Path to the XML file containing list of blob paths or blob path
           prefixes for the blobs to be exported. The file format is the same as the
-          blob list blob format in the Put Job operation of the Import/Export Service
+          blob list blob format in the Put Job operation of the Import/Export service
           REST API.
     /DriveSize:<DriveSize>
         - Required. Size of drives to be used for export. For example, 500GB, 1.5TB.
@@ -223,9 +224,4 @@ Examples:
 * [Reparieren eines Importauftrags](storage-import-export-tool-repairing-an-import-job-v1.md)
 * [Reparieren eines Exportauftrags](storage-import-export-tool-repairing-an-export-job-v1.md)
 * [Behandeln von Problemen mit dem Azure Import/Export-Tool](storage-import-export-tool-troubleshooting-v1.md)
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 08/22/2016
 ms.author: stefsch
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 8a1271acd3d9132048de39173e43c805a372c909
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 687475fae0c90713c15e8abbb92b71059eae81c0
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -96,9 +97,4 @@ Die Azure-Website mit Resource Manager-Schnellstartvorlagen umfasst eine Vorlage
 <!-- LINKS -->
 
 <!-- IMAGES -->
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

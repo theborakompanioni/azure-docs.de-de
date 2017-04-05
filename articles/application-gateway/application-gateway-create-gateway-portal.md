@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 12/12/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: e20f7349f30c309059c2867d7473fa6fdefa9b61
-ms.openlocfilehash: f7036e8e629e78c5346688556a5aa5794bde3955
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 9edaa7a101ae0e1a395491999854ee7009fb69cd
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -30,7 +31,10 @@ ms.openlocfilehash: f7036e8e629e78c5346688556a5aa5794bde3955
 > * [Azure Resource Manager-Vorlage](application-gateway-create-gateway-arm-template.md)
 > * [Azure-Befehlszeilenschnittstelle](application-gateway-create-gateway-cli.md)
 
-Azure Application Gateway verwendet einen Load Balancer auf der Schicht 7 (Anwendungsschicht). Das Application Gateway ermöglicht ein Failover sowie schnelles Routing von HTTP-Anforderungen zwischen verschiedenen Servern in der Cloud und der lokalen Umgebung. Application Gateway bietet zahlreiche Application Delivery Controller-Funktionen (ADC), u.a. HTTP-Lastenausgleich, cookiebasierte Sitzungsaffinität, SSL-Auslagerung (Secure Sockets Layer), benutzerdefinierte Integritätstests und Unterstützung für mehrere Websites. Eine vollständige Liste der unterstützten Features finden Sie unter [Übersicht über Application Gateway](application-gateway-introduction.md).
+Azure Application Gateway verwendet einen Load Balancer auf der Schicht 7 (Anwendungsschicht). Das Application Gateway ermöglicht ein Failover sowie schnelles Routing von HTTP-Anforderungen zwischen verschiedenen Servern in der Cloud und der lokalen Umgebung.
+Application Gateway bietet zahlreiche Application Delivery Controller-Funktionen (ADC), u.a. HTTP-Lastenausgleich, cookiebasierte Sitzungsaffinität, SSL-Auslagerung (Secure Sockets Layer), benutzerdefinierte Integritätstests und Unterstützung für mehrere Websites.
+
+Eine vollständige Liste der unterstützten Features finden Sie unter [Übersicht über Application Gateway](application-gateway-introduction.md).
 
 ## <a name="scenario"></a>Szenario
 
@@ -47,8 +51,6 @@ Dieses Szenario umfasst Folgendes:
 
 > [!IMPORTANT]
 > Zusätzliche Konfigurationsschritte für das Anwendungsgateway (u.a. benutzerdefinierte Integritätstests, Back-End-Pool-Adressen und zusätzlichen Regeln) werden nicht während der Erstbereitstellung, sondern nach der Konfiguration des Anwendungsgateways ausgeführt.
-> 
-> 
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -58,7 +60,7 @@ Für Azure Application Gateway ist ein eigenes Subnetz erforderlich. Stellen Sie
 
 ### <a name="step-1"></a>Schritt 1
 
-Navigieren Sie zum Azure-Portal, klicken Sie auf **Neu** > **Netzwerk** > ** Application Gateway**.
+Navigieren Sie zum Azure-Portal, klicken Sie auf **Neu** > **Netzwerk** > **Application Gateway**.
 
 ![Erstellen eines Anwendungsgateways][1]
 
@@ -70,7 +72,7 @@ Folgende Informationen werden für die Grundeinstellungen benötigt:
 
 * **Name** : der Name für das Anwendungsgateway.
 * **Ebene:** Diese Einstellung ist die Dienstebene für das Anwendungsgateway. Es stehen zwei Ebenen zur Auswahl: **WAF** und **Standard**. Mit der Ebene „WAF“ wird die Firewallfunktion für die Webanwendung aktiviert.
-* **SKU-Größe**: Diese Einstellung gibt die Größe des Anwendungsgateways an. Sie haben die Wahl zwischen drei Größen: **klein**, **mittel** und **groß**. Die Größe „Klein“ ist in Verbindung mit der Ebene „WAF“ nicht verfügbar.
+* **SKU-Größe:** Diese Einstellung gibt die Größe des Anwendungsgateways an. Sie haben die Wahl zwischen drei Größen: **Klein**, **Mittel** und **Groß**. Die Größe „Klein“ ist in Verbindung mit der Ebene „WAF“ nicht verfügbar.
 * **Anzahl von Instanzen**: Die Anzahl von Instanzen. Dieser Wert muss eine Zahl zwischen 2 und 10 sein.
 * **Ressourcengruppe**: Die Ressourcengruppe, zu der das Anwendungsgateway gehört. Hierbei kann es sich um eine vorhandene oder um eine neue Ressourcengruppe handeln.
 * **Standort**: Die Region für das Anwendungsgateway. Dieser Standort ist mit dem Standort der Ressourcengruppe identisch. Der Standort ist wichtig, da das virtuelle Netzwerk und die öffentliche IP-Adresse den gleichen Standort wie das Gateway aufweisen müssen.
@@ -151,19 +153,49 @@ Mit diesen Schritten wird ein einfaches Anwendungsgateway mit Standardeinstellun
 
 Nachdem das Anwendungsgateway erstellt wurde, müssen die Systeme, die die mit einem Lastenausgleich zu versehende Anwendung hosten, weiter dem Anwendungsgateway hinzugefügt werden. Die IP-Adressen oder FQDN-Werte dieser Server werden den Back-End-Adresspools hinzugefügt.
 
-### <a name="step-1"></a>Schritt 1
+### <a name="ip-address-or-fqdn"></a>IP-Adresse oder FQDN
+
+#### <a name="step-1"></a>Schritt 1
 
 Klicken Sie auf das Anwendungsgateway, das Sie erstellt haben, und dann auf **Back-End-Pools**. Wählen Sie den aktuellen Back-End-Pool aus.
 
 ![Application Gateway-Back-End-Pools][11]
 
-### <a name="step-2"></a>Schritt 2
+#### <a name="step-2"></a>Schritt 2
 
-Fügen Sie die IP-Adressen oder FQDN-Werte in die Textfelder ein, und klicken Sie auf **Speichern**.
+Klicken Sie auf **Ziel hinzufügen**, um IP-Adressen von FQDN-Werten hinzuzufügen.
+
+![Application Gateway-Back-End-Pools][11-1]
+
+#### <a name="step-3"></a>Schritt 3
+
+Nachdem alle Back-End-Werte eingegeben wurden, klicken Sie auf **Speichern**.
 
 ![Hinzufügen von Werten zu Application Gateway-Back-End-Pools][12]
 
 Mit dieser Aktion werden die Werte im Back-End-Pool gespeichert. Sobald das Anwendungsgateway aktualisiert wurde, wird in das Anwendungsgateway eingehender Datenverkehr zu den Back-End-Adressen weitergeleitet, die in diesem Schritt hinzugefügt wurden.
+
+### <a name="virtual-machine-and-nic"></a>Virtueller Computer und NIC
+
+Sie können auch Netzwerkkarten virtueller Computer als Back-End-Poolmitglieder hinzufügen. In der Dropdownliste stehen nur virtuelle Computer im gleichen virtuellen Netzwerk wie das Anwendungsgateway zur Auswahl.
+
+#### <a name="step-1"></a>Schritt 1
+
+Klicken Sie auf das Anwendungsgateway, das Sie erstellt haben, und dann auf **Back-End-Pools**. Wählen Sie den aktuellen Back-End-Pool aus.
+
+![Application Gateway-Back-End-Pools][11]
+
+#### <a name="step-2"></a>Schritt 2
+
+Klicken Sie auf **Ziel hinzufügen**, um neue Back-End-Poolmitglieder hinzuzufügen. Wählen Sie in den Dropdownfeldern einen virtuellen Computer und eine Netzwerkkarte aus.
+
+![Hinzufügen von Netzwerkkarten zu Application Gateway-Back-End-Pools][13]
+
+#### <a name="step-3"></a>Schritt 3
+
+Klicken Sie zum Abschluss des Vorgangs auf **Speichern**, um die Netzwerkkarten als Back-End-Mitglieder zu speichern.
+
+![Speichern von Netzwerkkarten in Application Gateway-Back-End-Pools][14]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -187,11 +219,9 @@ Informieren Sie sich über das Schützen von Anwendungen per [Web Application Fi
 [9]: ./media/application-gateway-create-gateway-portal/figure9.png
 [10]: ./media/application-gateway-create-gateway-portal/figure10.png
 [11]: ./media/application-gateway-create-gateway-portal/figure11.png
+[11-1]: ./media/application-gateway-create-gateway-portal/figure11-1.png
 [12]: ./media/application-gateway-create-gateway-portal/figure12.png
+[13]: ./media/application-gateway-create-gateway-portal/figure13.png
+[14]: ./media/application-gateway-create-gateway-portal/figure14.png
 [scenario]: ./media/application-gateway-create-gateway-portal/scenario.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

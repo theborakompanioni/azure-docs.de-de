@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: aad6bcd3eb704f090156d2ace80d2540a9543bd7
-ms.lasthandoff: 12/28/2016
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 9f8d21f6964d26a2e17e31d1f2947e7eb07c177d
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -33,7 +33,7 @@ ms.lasthandoff: 12/28/2016
 Dieser Artikel veranschaulicht, wie Sie einen virtuellen Computer unter Windows Server 2012 R2 über das klassische Azure-Portal in eine durch Azure AD-Domänendienste verwaltete Domäne einbinden.
 
 ## <a name="step-1-create-the-windows-server-virtual-machine"></a>Schritt 1: Erstellen des virtuellen Windows Server-Computers
-Folgen Sie den Anweisungen im Tutorial [Erstellen eines virtuellen Computers unter Windows im klassischen Azure-Portal](../virtual-machines/virtual-machines-windows-classic-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Achten Sie darauf, dass dieser neu erstellte virtuelle Computer dem virtuellen Netzwerk hinzugefügt wird, in dem Sie auch die Azure AD-Domänendienste aktiviert haben. Der virtuelle Computer kann nicht über die Option „Schnellerfassung“ in ein virtuelles Netzwerk eingebunden werden. Sie müssen daher die Option „Aus Katalog“ verwenden, um den virtuellen Computer zu erstellen.
+Folgen Sie den Anweisungen im Tutorial [Erstellen eines virtuellen Computers unter Windows im klassischen Azure-Portal](../virtual-machines/windows/classic/tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Achten Sie darauf, dass dieser neu erstellte virtuelle Computer dem virtuellen Netzwerk hinzugefügt wird, in dem Sie auch die Azure AD-Domänendienste aktiviert haben. Der virtuelle Computer kann nicht über die Option „Schnellerfassung“ in ein virtuelles Netzwerk eingebunden werden. Sie müssen daher die Option „Aus Katalog“ verwenden, um den virtuellen Computer zu erstellen.
 
 Führen Sie die folgenden Schritte durch, um einen virtuellen Windows-Computer zu erstellen, der in das virtuelle Netzwerk eingebunden wird, in dem Sie die Azure Active Directory-Domänendienste aktiviert haben:
 
@@ -91,7 +91,7 @@ Führen Sie die folgenden Schritte aus, um den virtuellen Windows Server-Compute
     ![Anmeldeinformationen für den Domänenbeitritt angeben](./media/active-directory-domain-services-admin-guide/join-domain-system-properties-specify-credentials.png)
 6. Sie können Anmeldeinformationen auf eine der folgenden Arten eingeben:
 
-   * UPN-Format: Hierbei handelt es sich um das UPN-Suffix für das Benutzerkonto, wie in Azure AD konfiguriert. Das UPN-Suffix des Benutzers „bob“ in diesem Beispiel lautet „bob@domainservicespreview.onmicrosoft.com“.
+   * UPN-Format: Hierbei handelt es sich um das UPN-Suffix für das Benutzerkonto, wie in Azure AD konfiguriert. In diesem Beispiel ist „bob@domainservicespreview.onmicrosoft.com“ das UPN-Suffix des Benutzers „Bob“.
    * SAMAccountName-Format: Sie können den Kontonamen im Format „SAMAccountName“ angeben. Der Benutzer „bob“ würde in diesem Beispiel „CONTOSO100\bob“ eingeben.
 
      > [!NOTE]
@@ -119,10 +119,10 @@ Führen Sie folgende Schritte aus, wenn Probleme mit Anmeldeinformationen auftre
 * Verwenden Sie das UPN-Format für die Angabe von Anmeldeinformationen. Der „SAMAccountName“ für Ihr Konto wird möglicherweise automatisch generiert, wenn mehrere Benutzer in Ihrem Mandanten das gleiche UPN-Präfix verwenden oder wenn Ihr UPN-Präfix übermäßig lang ist. Das Format „SAMAccountName“ für Ihr Konto ist möglicherweise anders als Sie erwarten bzw. unterscheidet sich von dem, was Sie in Ihrer lokalen Domäne verwenden.
 * Verwenden Sie die Anmeldeinformationen eines Benutzerkontos, das der Gruppe „AAD DC Administratoren“ angehört, um der verwalteten Domäne Computer hinzuzufügen.
 * Stellen Sie sicher, dass Sie die [Aktivierung der Kennwortsynchronisierung](active-directory-ds-getting-started-password-sync.md) in Übereinstimmung mit den Schritten durchgeführt haben, die im Leitfaden zu den ersten Schritten angegeben sind.
-* Verwenden Sie den UPN des Benutzers bei der Anmeldung exakt so, wie er in Azure AD konfiguriert ist (Beispiel: 'bob@domainservicespreview.onmicrosoft.com')).
+* Verwenden Sie den UPN des Benutzers bei der Anmeldung exakt so, wie er in Azure AD konfiguriert ist (z.B. „bob@domainservicespreview.onmicrosoft.com“).
 * Stellen Sie sicher, dass Sie lange genug warten, damit die Kennwortsynchronisierung abgeschlossen ist, wie im Leitfaden „Erste Schritte“ angegeben.
 
 ## <a name="related-content"></a>Verwandte Inhalte
-* [Azure AD-Domänendienste – Leitfaden zu den ersten Schritten](active-directory-ds-getting-started.md)
+* [Erste Schritte mit Azure AD Domain Services](active-directory-ds-getting-started.md)
 * [Verwalten einer durch Azure AD-Domänendienste verwalteten Domäne](active-directory-ds-admin-guide-administer-domain.md)
 

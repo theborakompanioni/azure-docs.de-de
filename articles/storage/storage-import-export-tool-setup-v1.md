@@ -1,6 +1,6 @@
 ---
-title: Einrichten des Azure Import/Export-Tools, Version&1; | Microsoft Docs
-description: "Erfahren Sie, wie Sie das Tool für die Laufwerkvorbereitung und -reparatur für Azure Import/Export einrichten."
+title: Einrichten des Azure Import/Export-Tools (V1) | Microsoft-Dokumentation
+description: "Es wird beschrieben, wie Sie das Tool für die Laufwerkvorbereitung und Reparatur für den Azure Import/Export-Dienst einrichten. Dies bezieht sich auf V1 des Import/Export-Tools."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 9aca8aad3f268bf21f3bad9fa22821f5d825f99d
-ms.openlocfilehash: 2d30d0da6055a66b60ed5a836dd897a87d564237
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 39d7e9a71a290ace6f6f4caf48f1ec5e46fe9a48
+ms.lasthandoff: 03/30/2017
 
 
 ---
 
 # <a name="setting-up-the-azure-importexport-tool"></a>Einrichten des Azure Import/Export-Tools
-Das Import/Export-Tool von Microsoft Azure ist das Tool für die Laufwerkvorbereitung und Reparatur, das Sie für den Microsoft Azure Import/Export-Dienst verwenden können. Sie können das Tool für die folgenden Funktionen verwenden:  
+Das Microsoft Azure Import/Export-Tool ist das Tool für die Laufwerkvorbereitung und Reparatur, das Sie für den Microsoft Azure Import/Export-Dienst verwenden können. Sie können das Tool für die folgenden Funktionen verwenden:  
   
 -   Vor dem Erstellen eines Importauftrags können Sie dieses Tool zum Kopieren von Daten auf die Laufwerke verwenden, die Sie an ein Windows Azure-Rechenzentrum senden.  
   
@@ -84,7 +84,7 @@ Wenn Sie versuchen, einen Import zu reparieren, der teilweise nicht erfolgreich 
  Führen Sie das Tool ohne Parameter aus, um die Hilfe für den Befehl anzuzeigen:  
   
 ```  
-WAImportExport, a client tool for Microsoft Azure Import/Export Service. Microsoft (c) 2013, 2014  
+WAImportExport, a client tool for Microsoft Azure Import/Export service. Microsoft (c) 2013, 2014  
   
 Copy a Directory:  
     WAImportExport.exe PrepImport  
@@ -200,7 +200,7 @@ Parameters:
     /ExportBlobListFile:<ExportBlobListFile>  
         - Required. Path to the XML file containing list of blob paths or blob path  
           prefixes for the blobs to be exported. The file format is the same as the  
-          blob list blob format in the Put Job operation of the Import/Export Service  
+          blob list blob format in the Put Job operation of the Import/Export service  
           REST API.  
     /DriveSize:<DriveSize>  
         - Required. Size of drives to be used for export. For example, 500GB, 1.5TB.  
@@ -254,11 +254,12 @@ Examples:
         es\drama /dstdir:movies/drama/ /skipwrite
 ```  
   
-## <a name="see-also"></a>Weitere Informationen  
- [Vorbereiten von Festplatten für einen Importauftrag](storage-import-export-tool-preparing-hard-drives-import-v1.md)   
- [Anzeigen einer Vorschau der Laufwerknutzung für einen Exportauftrag](storage-import-export-tool-previewing-drive-usage-export-v1.md)   
- [Überprüfen des Auftragsstatus mit Kopierprotokolldateien](storage-import-export-tool-reviewing-job-status-v1.md)   
- [Reparieren eines Importauftrags](storage-import-export-tool-repairing-an-import-job-v1.md)   
- [Reparieren eines Exportauftrags](storage-import-export-tool-repairing-an-export-job-v1.md)   
- [Behandeln von Problemen mit dem Azure Import/Export-Tool](storage-import-export-tool-troubleshooting-v1.md)
+## <a name="next-steps"></a>Nächste Schritte
+
+* [Vorbereiten von Festplatten für einen Importauftrag](storage-import-export-tool-preparing-hard-drives-import-v1.md)   
+* [Anzeigen einer Vorschau der Laufwerknutzung für einen Exportauftrag](storage-import-export-tool-previewing-drive-usage-export-v1.md)   
+* [Überprüfen des Auftragsstatus mit Protokollkopiedateien](storage-import-export-tool-reviewing-job-status-v1.md)   
+* [Reparieren eines Importauftrags](storage-import-export-tool-repairing-an-import-job-v1.md)   
+* [Reparieren eines Exportauftrags](storage-import-export-tool-repairing-an-export-job-v1.md)   
+* [Behandeln von Problemen mit dem Azure Import/Export-Tool](storage-import-export-tool-troubleshooting-v1.md)
 

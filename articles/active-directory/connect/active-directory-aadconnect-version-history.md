@@ -15,9 +15,9 @@ ms.workload: identity
 ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 7e16fa749389ab876ae413e2ffef7713ed22adac
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
+ms.openlocfilehash: d89135c8f3d5011d7549158a29050e3569defbcc
+ms.lasthandoff: 03/23/2017
 
 
 ---
@@ -54,6 +54,9 @@ Passthrough-Authentifizierung
 * Ein Problem wurde behoben, durch das der Azure AD Connect-Assistent fehlschlägt, wenn die Pass-Through-Authentifizierung ausgewählt wird, aber die Registrierung des Connectors fehlschlägt.
 * Ein Problem wurde behoben, durch das der Azure AD Connect-Assistent Überprüfungen der gewählten Anmeldemethode umgeht, wenn Desktop SSO aktiviert ist.
 
+Kennwortzurücksetzung
+* Es wurde ein Fehler behoben, der dazu führte, dass der Azure AD Connect-Server nicht versuchte, die Verbindung wiederherzustellen, wenn die Verbindung durch eine Firewall oder einen Proxy beendet wurde.
+
 **Neue Features/Verbesserungen:**
 
 Azure AD Connect-Synchronisierung
@@ -65,6 +68,10 @@ AD FS-Verwaltung
 * Die Unterstützung für die Verwaltung von AD FS 2016 wird jetzt unterstützt.
 * Sie können jetzt bei der Installation von AD FS vorhandene gruppenverwaltete Dienstkonten angeben.
 * Sie können jetzt SHA-256 als Signaturhashalgorithmus für die Azure AD-Vertrauensstellung der vertrauenden Seite konfigurieren.
+
+Kennwortzurücksetzung
+* Es wurden Verbesserungen vorgenommen, damit das Produkt auch in Umgebungen mit strengeren Firewallregeln ausgeführt werden kann.
+* Verbesserte Zuverlässigkeit der Verbindung mit Azure Service Bus
 
 ## <a name="113800"></a>1.1.380.0
 Veröffentlichung: Dezember 2016

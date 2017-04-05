@@ -11,12 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 3/07/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 67c859ca7cb88c4b03b605330391856a150323dd
-ms.openlocfilehash: 6f60c803ae0f6d32f79611aced40bef3ea87173b
-ms.lasthandoff: 12/06/2016
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 06debc64a44b58b8cb1fb50aa8af27f22a61d086
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -27,7 +27,7 @@ In diesem Tutorial erfahren Sie, wie Sie TiViTz in Azure Active Directory (Azure
 Diese Integration bietet folgende Vorteile:
 
 - Sie können in Azure AD steuern, wer Zugriff auf TiViTz haben soll.
-- Sie können es Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei TiViTz anzumelden (Single Sign-On, SSO; einmaliges Anmelden).
+- Sie können Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei TiViTz anzumelden (einmaliges Anmelden, SSO).
 - Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
@@ -37,27 +37,25 @@ Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unte
 Um die Azure AD-Integration mit TiViTz konfigurieren zu können, benötigen Sie Folgendes:
 
 - Ein Azure AD-Abonnement
-- Ein SSO-fähiges TiViTz-Abonnement
+- Ein TiViTz-Abonnement, für das einmaliges Anmelden aktiviert ist
 
-
-> [!NOTE]
-> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
-
+>[!NOTE]
+>Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
+>
 
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
 - Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
-
+- Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
 1. Hinzufügen von TiViTz über den Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+2. Konfigurieren und Testen des einmaligen Anmeldens (SSO) von Azure AD
 
 
-## <a name="adding-tivitz-from-the-gallery"></a>Hinzufügen von TiViTz über den Katalog
+## <a name="add-tivitz-from-the-gallery"></a>Hinzufügen von TiViTz aus dem Katalog
 Zum Konfigurieren der Integration von TiViTz in Azure AD müssen Sie TiViTz über den Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
 **Führen Sie die folgenden Schritte aus, um TiViTz über den Katalog hinzuzufügen:**
@@ -88,26 +86,24 @@ Zum Konfigurieren der Integration von TiViTz in Azure AD müssen Sie TiViTz übe
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-tivitz-tutorial/tutorial_tivitz_0001.png)
 
+##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden (SSO) von Azure AD mit TiViTz basierend auf einem Testbenutzer mit dem Namen Britta Simon.
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei TiViTz mithilfe eines Testbenutzers namens Britta Simon.
+Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in TiViTz als Entsprechung zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in TiViTz muss eine Linkbeziehung eingerichtet werden.
 
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in TiViTz als Gegenpart zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in TiViTz muss eine Linkbeziehung eingerichtet werden.
-
-Diese Linkbeziehung wird hergestellt, indem Sie den** **Benutzernamen in Azure AD dem** **Benutzernamen in TiViTz zuweisen.
+Diese Linkbeziehung wird hergestellt, indem Sie den****Benutzernamen in Azure AD dem****Benutzernamen in TiViTz zuweisen.
 
 Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit TiViTz zu konfigurieren und zu testen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 3. **[Erstellen eines TiViTz-Testbenutzers](#creating-a-tivitz-test-user)**, um in TiViTz einen Gegenpart von Britta Simon zu erhalten, der mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** – um Britta Simon für das einmalige Anmelden in Azure AD zu aktivieren.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im klassischen Portal und konfigurieren es in Ihrer TiViTz-Anwendung.
-
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden (SSO) von Azure AD im klassischen Portal und konfigurieren das einmalige Anmelden in Ihrer TiViTz-Anwendung.
 
 **Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit TiViTz die folgenden Schritte aus:**
 
@@ -122,15 +118,13 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im klas
 3. Führen Sie auf der Dialogseite **App-Einstellungen konfigurieren** die folgenden Schritte aus:
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-tivitz-tutorial/tutorial_tivitz_03.png)
+ 1. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<company name>.o365.tivitz.com/`
+ 2. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://<company name>.o365.tivitz.com/`
+ 3. Klicken Sie auf **Weiter**.
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<company name>.o365.tivitz.com/`
-
-    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://<company name>.o365.tivitz.com/`
-
-    c. Klicken Sie auf **Weiter**.
-
-    > [!NOTE] 
-    > Hinweis: Hierbei handelt es sich um Beispielwerte. Die Werte müssen durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner ersetzt werden. Wenden Sie sich an das [Supportteam von TiViTz](emaiLto:info@tivitz.com), um diese Werte zu erhalten.
+     >[!NOTE] 
+     >Hinweis: Hierbei handelt es sich um Beispielwerte. Die Werte müssen durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner ersetzt werden. Wenden Sie sich an das [Supportteam von TiViTz](emaiLto:info@tivitz.com), um diese Werte zu erhalten.
+     >
 
 4. Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für TiViTz** auf **Metadaten herunterladen**, und speichern Sie die Datei auf Ihrem Computer:
 
@@ -147,7 +141,7 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im klas
     ![Azure AD – einmaliges Anmelden][11]
 
 
-### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im klassischen Azure-Portal.
 
 ![Azure AD-Benutzer erstellen][20]
@@ -171,26 +165,18 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-tivitz-tutorial/create_aaduser_05.png) 
-
-    a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
-
-    b. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
-
-    c. Klicken Sie auf **Weiter**.
+ 1. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
+ 2. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
+ 3. Klicken Sie auf **Weiter**.
 
 6.  Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-tivitz-tutorial/create_aaduser_06.png) 
-
-    a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
-
-    b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
-
-    c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
-
-    d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
-
-    e. Klicken Sie auf **Weiter**.
+ 1. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
+ 2. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
+ 3. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
+ 4. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
+ 5. Klicken Sie auf **Weiter**.
 
 7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
 
@@ -199,24 +185,19 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-tivitz-tutorial/create_aaduser_08.png) 
+ 1. Notieren Sie den Wert von **Neues Kennwort**.
+ 2. Klicken Sie auf **Fertig stellen**.   
 
-    a. Notieren Sie den Wert von **Neues Kennwort**.
-
-    b. Klicken Sie auf **Fertig stellen**.   
-
-
-
-### <a name="creating-a-tivitz-test-user"></a>Erstellen eines TiViTz-Testbenutzers
+### <a name="create-a-tivitz-test-user"></a>Erstellen eines TiViTz-Testbenutzers
 
 In diesem Abschnitt wird in TiViTz ein Benutzer namens Britta Simon erstellt. TiViTz unterstützt die standardmäßig aktivierte Just-in-Time-Bereitstellung.
 
 Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Sollte noch kein Benutzer vorhanden sein, wird beim Zugreifen auf TiViTz ein neuer Benutzer erstellt.
 
-> [!NOTE]
-> Setzen Sie sich mit dem [Supportteam von TiViTz](emaiLto:info@tivitz.com) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
+>[!NOTE]
+>Setzen Sie sich mit dem [Supportteam von TiViTz](emaiLto:info@tivitz.com) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
 
-
-### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf TiViTz gewähren.
 
@@ -242,14 +223,11 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
     
     ![Benutzer zuweisen][205]
 
-
-
-### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „TiViTz“ klicken, sollten Sie automatisch bei Ihrer TiViTz-Anwendung angemeldet werden.
-
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

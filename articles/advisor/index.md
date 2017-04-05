@@ -13,9 +13,9 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: 697bedb4f6ca8ee609247c8d869d7872333e5a62
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: ce00af5e7382a3d6e80903711bac86ca88191cff
+ms.lasthandoff: 03/31/2017
 
 ---
 # <a name="azure-advisor-documentation"></a>Azure Advisor-Dokumentation
@@ -35,6 +35,24 @@ Bei Azure Advisor handelt es sich um einen personalisierten Cloudberater, der Si
                     </div>
                     <div class="cardText">
                         <h3>Informationen zu Azure Advisor</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="https://azure.microsoft.com/en-us/resources/videos/index/?services=advisor">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/video-library.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Azure-Ratgeber – Videobibliothek</h3>
                     </div>
                 </div>
             </div>

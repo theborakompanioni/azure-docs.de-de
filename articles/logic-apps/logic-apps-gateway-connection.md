@@ -15,9 +15,9 @@ ms.workload: integration
 ms.date: 07/05/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: ce0be184fe11a7e5873639d79961e98de730ec86
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: ef7df25d8080cae41235dffb287906508d4a652d
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -58,6 +58,10 @@ Führen Sie (sofern noch nicht geschehen) diese Schritte aus, um [das lokale Dat
 
 Nach der Installation des Gateways müssen Sie es Ihrem Azure-Abonnement zuordnen.
 
+> [!IMPORTANT] 
+> Stellen Sie sicher, dass die Gatewayressource in derselben Azure-Region wie die Logik-App erstellt wird. Wenn Sie sie nicht in derselben Region bereitstellen, kann in der Logik-App nicht auf die Ressource zugegriffen werden. 
+> 
+
 1. Melden Sie sich mit der Geschäfts-, Schul- oder Uni-E-Mail-Adresse, die Sie bei der Installation des Gateways verwendet haben, bei Azure an.
 2. Wählen Sie **Neu**.
 3. Suchen Sie das **Lokale Datengateway**, und wählen sie es aus.
@@ -80,6 +84,11 @@ Da Ihr Azure-Abonnement jetzt einer Instanz des lokalen Datengateways zugeordnet
 4. Klicken Sie auf **Erstellen**, um die Verbindung zu erstellen.
 
 Ihre Verbindung ist jetzt für die Verwendung durch Ihre Logik-App konfiguriert.
+
+## <a name="data-gateway-connection-modifications"></a>Änderungen der Datengatewayverbindung
+Nachdem Sie die Datengatewayverbindung der Logik-App hinzugefügt haben, müssen Sie sie möglicherweise ändern, um die spezifischen Einstellungen für diese Verbindung anzupassen. Die Verbindung wird an einer der folgenden beiden Stellen angezeigt:
+* Auf dem Hauptblatt für die Logik-App sollte im Abschnitt „Entwicklungstools“ ein Bereich für API-Verbindungen angezeigt werden. Wenn Sie diesen Bereich auswählen, werden alle API-Verbindungen angezeigt, die der Logik-App zugeordnet sind. Eine davon ist die Datengatewayverbindung. Wenn Sie sie auswählen, können Sie dann die der Verbindung zugeordneten Einstellungen anzeigen und ändern.
+* Durch Auswählen des Hauptblatts „API-Verbindungen“ werden alle API-Verbindungen im Abonnement angezeigt. In dieser Liste ist auch die Datengatewayverbindung aufgeführt. Wenn Sie sie auswählen, können Sie die der Verbindung zugeordneten Einstellungen anzeigen und ändern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

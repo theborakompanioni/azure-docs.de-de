@@ -1,92 +1,92 @@
 ---
-title: Virtuelle Azure-Netzwerke | Microsoft Docs
-description: Weitere Informationen zu virtuellen Netzwerken in Azure
+title: Virtuelles Azure-Netzwerk | Microsoft-Dokumentation
+description: "Enthält Informationen zu den Konzepten und Features des virtuellen Azure-Netzwerks (Azure Virtual Network)."
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
-editor: tysonn
+manager: timlt
+editor: 
+tags: azure-resource-manager
 ms.assetid: 9633de4b-a867-4ddf-be3c-a332edf02e24
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/15/2016
+ms.date: 03/23/2017
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 75c5b8d3d8c8f389b8cee7d5d304b6e9704252fc
-ms.openlocfilehash: a57805510d5e84fcdc6c4521ae9443ec72de59e1
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 186b8331d2fcfc16bd41eb08badb200e2abf9e30
+ms.lasthandoff: 03/25/2017
 
 
 ---
-# <a name="virtual-networks"></a>Virtuelle Netzwerke
-Ein virtuelles Azure-Netzwerk (VNet) ist eine Darstellung Ihres eigenen Netzwerks in der Cloud.  Es ist eine logische Isolierung von der Azure-Cloud für Ihr Abonnement. Sie können die IP-Adressblöcke, DNS-Einstellungen, Sicherheitsrichtlinien und Routentabellen in diesem Netzwerk vollständig steuern. Außerdem können Sie Ihr VNet in Subnetze segmentieren und virtuelle Azure IaaS-Maschinen (VMs) und/oder [Cloud-Dienste (PaaS-Instanzen)](../cloud-services/cloud-services-choose-me.md)starten. Zudem können Sie das virtuelle Netzwerk mit einer der [Konnektivitätsoptionen](../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site-connections) in Azure mit Ihrem lokalen Netzwerk verbinden. Im Wesentlichen können Sie Ihr Netzwerk mit vollständiger Kontrolle über IP-Adressblöcke auf Azure ausdehnen und von der Azure-Skalierung auf Unternehmensebene profitieren.
+# <a name="azure-virtual-network"></a>Virtuelles Azure-Netzwerk
 
-Die unten stehende Abbildung zeigt ein vereinfachtes lokales Netzwerk und ermöglicht ein besseres Verständnis von VNets.
+Mit dem Dienst für das virtuelle Azure-Netzwerk (Azure Virtual Network) können Sie Azure-Ressourcen über virtuelle Netzwerke (VNets) sicher miteinander verbinden. Ein VNet ist eine Darstellung Ihres eigenen Netzwerks in der Cloud. Bei einem VNet handelt es sich um eine logische Isolation von der dedizierten Azure-Cloud für Ihr Abonnement. Sie können VNets auch mit Ihrem lokalen Netzwerk verbinden. In der folgenden Abbildung sind einige Funktionen des Diensts für virtuelle Azure-Netzwerke dargestellt:
 
-![Lokales Netzwerk](./media/virtual-networks-overview/figure01.png)
+![Netzwerkdiagramm](./media/virtual-networks-overview/virtual-network-overview.png)
 
-Die obige Abbildung zeigt ein lokales Netzwerk, das über einen Router mit dem öffentlichen Internet verbunden ist. Sie sehen auch eine Firewall zwischen dem Router und einer DMZ, die einen DNS-Server und eine Webserverfarm hostet. Für den Lastenausgleich der Webserverfarm wird ein Hardware-Load Balander verwendet, der über das Internet zugänglich ist und Ressourcen aus dem internen Subnetz nutzt. Das interne Subnetz ist zudem durch eine weitere Firewall von der DMZ getrennt und hostet Active Directory-Domänencontrollerserver, Datenbankserver sowie Anwendungsserver.
+Sie können jeweils auf eine der folgenden Funktionen klicken, um weitere Informationen dazu anzuzeigen:
+- **[Isolation:](#isolation)** VNets sind voneinander isoliert. Sie können separate VNets für Entwicklung, Tests und Produktion erstellen, die die gleichen CIDR-Adressblöcke verwenden. Im Gegensatz dazu können Sie mehrere VNets erstellen, für die unterschiedliche CIDR-Adressblöcke verwendet werden, und die Netzwerke verbinden. Sie können ein VNet in mehrere Subnetze segmentieren. Azure ermöglicht die interne Namensauflösung für VMs und Cloud Services-Rolleninstanzen, die mit einem VNet verbunden sind. Sie können ein VNet optional so konfigurieren, dass Ihre eigenen DNS-Server verwendet werden, anstatt die interne Namensauflösung von Azure zu nutzen.
+- **[Internetkonnektivität:](#internet)** Für alle Azure Virtual Machines (VMs) und Cloud Services-Rolleninstanzen, die mit einem VNet verbunden sind, besteht standardmäßig Zugriff auf das Internet. Bei Bedarf können Sie auch den Zugriff in eingehender Richtung auf bestimmte Ressourcen ermöglichen.
+- **[Konnektivität von Azure-Ressourcen:](#within-vnet)** Azure-Ressourcen, z.B. Cloud Services und VMs, können mit demselben VNet verbunden werden. Für die Verbindung miteinander können für die Ressourcen auch dann private IP-Adressen verwendet werden, wenn sie sich in unterschiedlichen Subnetzen befinden. Azure verfügt über Standardrouting zwischen Subnetzen, VNets und lokalen Netzwerken, sodass Sie keine Routen konfigurieren und verwalten müssen.
+- **[VNet-Konnektivität:](#connect-vnets)** VNets können miteinander verbunden werden, sodass Ressourcen, für die eine Verbindung mit einem VNet besteht, mit Ressourcen in einem anderen VNet kommunizieren können.
+- **[Lokale Konnektivität:](#connect-on-premises)** VNets können mit lokalen Netzwerken verbunden werden, indem private Netzwerkverbindungen zwischen Ihrem Netzwerk und Azure oder Site-to-Site-VPN-Verbindungen über das Internet verwendet werden.
+- **[Filterung von Datenverkehr:](#filtering)** Netzwerkdatenverkehr von VM- und Cloud Services-Rolleninstanzen kann in eingehender und ausgehender Richtung nach IP-Quelladresse und -port, IP-Zieladresse und -port und Protokoll gefiltert werden.
+- **[Routing:](#routing)** Sie können das Standardrouting von Azure optional außer Kraft setzen, indem Sie Ihre eigenen Routen konfigurieren oder BGP-Routen über ein Netzwerkgateway verwenden.
 
-Das gleiche Netzwerk kann wie in der folgenden Abbildung dargestellt in Azure gehostet werden.
+## <a name = "isolation"></a>Netzwerkisolation und -segmentierung
 
-![Virtuelles Azure-Netzwerk](./media/virtual-networks-overview/figure02.png)
+Sie können in jedem Azure-Abonnement und jeder Azure-Region mehrere VNets implementieren. Jedes VNet ist von anderen VNets isoliert. Für jedes VNet ist Folgendes möglich:
+- Geben Sie einen benutzerdefinierten privaten IP-Adressraum ein, indem Sie öffentliche und private Adressen (RFC 1918) verwenden. Azure weist Ressourcen, die mit dem VNet verbunden sind, eine private IP-Adresse aus dem von Ihnen zugewiesenen Adressraum zu.
+- Segmentieren Sie das VNet in mindestens ein Subnetz, und ordnen Sie jedem Subnetz einen Teil des VNet-Adressraums zu.
+- Verwenden Sie die in Azure enthaltene Namensauflösung, oder geben Sie Ihren eigenen DNS-Server an, der für die mit einem VNet verbundenen Ressourcen genutzt werden kann. Weitere Informationen zur Namensauflösung in VNets finden Sie im Artikel [Namensauflösung für virtuelle Computer und Clouddienste](virtual-networks-name-resolution-for-vms-and-role-instances.md).
 
-Die Azure-Infrastruktur übernimmt die Rolle des Routers und lässt ohne jeglichen Konfigurationsbedarf den Zugriff auf Ihr VNet über das öffentliche Internet zu. Firewalls können durch Netzwerksicherheitsgruppen ersetzt werden, die auf jedes einzelne Subnetz angewendet werden. Physische Load Balancer werden durch Load Balancer mit Internetzugriff und interne Load Balancer in Azure ersetzt.
+## <a name = "internet"></a>Herstellen einer Verbindung mit dem Internet
+Alle Ressourcen, die mit einem VNet verbunden sind, verfügen standardmäßig über Internetkonnektivität in ausgehender Richtung. Die private IP-Adresse der Ressource wird von der Azure-Infrastruktur per SNAT-Vorgang (Source Network Address Translated) in eine öffentliche IP-Adresse übersetzt. Weitere Informationen zur Internetkonnektivität in ausgehender Richtung finden Sie im Artikel [Grundlegendes zu ausgehenden Verbindungen in Azure](..\load-balancer\load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json#standalone-vm-with-no-instance-level-public-ip-address). Sie können die Standardkonnektivität ändern, indem Sie das benutzerdefinierte Routing und die Filterung von Datenverkehr implementieren.
 
-> [!NOTE]
-> In Azure stehen zwei Bereitstellungsmodi zur Auswahl: klassisch (auch bekannt als Dienstverwaltung) und Azure-Ressourcen-Manager (ARM). Klassische VNets können einer Affinitätsgruppe hinzugefügt oder als regionales VNet erstellt werden. Wenn Sie ein VNet in einer Affinitätsgruppe haben, wird die [Migration zu einem regionalen VNet](virtual-networks-migrate-to-regional-vnet.md)empfohlen.
->
+Um über das Internet in eingehender Richtung mit Azure-Ressourcen bzw. in ausgehender Richtung ohne SNAT über das Internet kommunizieren zu können, muss einer Ressource eine öffentliche IP-Adresse zugewiesen sein. Weitere Informationen zu öffentlichen IP-Adressen finden Sie im Artikel [Öffentliche IP-Adressen](virtual-network-public-ip-address.md).
 
-## <a name="benefits"></a>Vorteile
-* **Isolation**. VNets sind vollständig voneinander isoliert. Daher können Sie separate Netzwerke für Entwicklung, Tests und Produktion erstellen, die die gleichen CIDR-Adressblöcke verwenden.
-* **Zugriff auf das öffentliche Internet**. Alle IaaS-VMs und PaaS-Rolleninstanzen in einem VNet können standardmäßig auf das öffentliche Internet zugreifen. Der Zugriff kann mithilfe von Netzwerksicherheitsgruppen gesteuert werden.
-* **Zugriff auf VMs im VNet**. PaaS-Rolleninstanzen und IaaS-VMs können im selben virtuellen Netzwerk gestartet werden und über private IP-Adressen eine Verbindung miteinander herstellen (auch, wenn sie sich in unterschiedlichen Subnetzen befinden), ohne dass dafür ein Gateway konfiguriert oder öffentliche IP-Adressen verwendet werden müssen.
-* **Namensauflösung**. Azure bietet eine [interne Namensauflösung](virtual-networks-name-resolution-for-vms-and-role-instances.md) für die im VNet bereitgestellten IaaS-VMs und PaaS-Rolleninstanzen. Sie können auch eigene DNS-Server bereitstellen und das VNet zur Verwendung dieser Server konfigurieren.
-* **Sicherheit**. Der ein- und ausgehende Datenverkehr der virtuellen Maschinen und PaaS-Rolleninstanzen in einem VNet kann mit Netzwerksicherheitsgruppen gesteuert werden.
-* **Konnektivität**. VNETs können mithilfe von Netzwerkgateways oder VNET-Peering verbunden werden. VNETs können über Site-to-Site-VPN-Netzwerke oder Azure ExpressRoute mit lokalen Rechenzentren verbunden werden. Weitere Informationen zu Site-to-Site-VPN-Konnektivität finden Sie unter [Informationen zu VPN-Gateways](../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site-connections). Weitere Informationen zu ExpressRoute finden Sie unter [ExpressRoute – Technische Übersicht](../expressroute/expressroute-introduction.md). Weitere Informationen zu VNET-Peering finden Sie unter [VNET-Peering](virtual-network-peering-overview.md).
+## <a name="within-vnet"></a>Verbinden von Azure-Ressourcen
+Sie können mehrere Azure-Ressourcen mit einem VNet verbinden, z.B. virtuelle Computer (VMs), Cloud Services, App Service-Umgebungen und VM-Skalierungsgruppen. VMs stellen Verbindungen mit einem Subnetz in einem VNet über eine Netzwerkschnittstelle (NIC) her. Weitere Informationen zu NICs finden Sie im Artikel [Netzwerkschnittstellen](virtual-network-network-interface.md).
 
-  > [!NOTE]
-  > Vor der Bereitstellung von IaaS-VMs oder PaaS-Rolleninstanzen in Ihrer Azure-Umgebung müssen Sie ein VNet erstellen. ARM-basierte VMs erfordern ein VNet, und wenn Sie kein vorhandenes VNet angeben, erstellt Azure ein Standard-VNet, bei dem möglicherweise ein CIDR-Adressblockkonflikt mit Ihrem lokalen Netzwerk vorliegt. Wenn dies der Fall ist, ist es nicht möglich, das VNet mit Ihrem lokalen Netzwerk zu verbinden.
-  >
+## <a name="connect-vnets"></a>Herstellen einer Verbindung mit virtuellen Netzwerken
 
-## <a name="subnets"></a>Subnetze
-Ein Subnetz ist ein Bereich von IP-Adressen im VNet. Sie können ein VNet aus Organisations- und Sicherheitsgründen in mehrere Subnetze unterteilen. VMs und PaaS-Rolleninstanzen, die in (denselben oder unterschiedlichen) Subnetzen in einem VNet bereitgestellt werden, können ohne zusätzliche Konfiguration miteinander kommunizieren. Sie können auch Routentabellen und NSGs zu einem Subnetz konfigurieren.
+Sie können VNets miteinander verbinden, sodass Ressourcen, für die eine Verbindung mit einem der VNets besteht, darüber miteinander kommunizieren können. Nutzen Sie eine der folgenden Optionen (oder beide), um VNets miteinander zu verbinden:
+- **Peering:** Hierdurch wird ermöglicht, dass Ressourcen, die mit unterschiedlichen Azure-VNets desselben Azure-Standorts verbunden sind, miteinander kommunizieren können. Die Bandbreite und Wartezeit für die VNets entspricht den Werten, die gelten, wenn die Ressourcen mit demselben VNet verbunden sind. Weitere Informationen zum Peering finden Sie im Artikel [Peering in virtuellen Netzwerken](virtual-network-peering-overview.md).
+- **VNet-zu-VNet-Verbindung:** Hierbei können Ressourcen, für die eine Verbindung mit unterschiedlichen Azure-VNets besteht, an demselben oder verschiedenen Azure-Standorten verbunden werden. Im Gegensatz zum Peering ist die Bandbreite zwischen VNets beschränkt, da der Datenverkehr über ein Azure VPN Gateway fließen muss. Weitere Informationen zum Verbinden von VNets mit einer VNet-zu-VNet-Verbindung finden Sie im Artikel [Konfigurieren von VNet-zu-VNet-Verbindungen](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-## <a name="ip-addresses"></a>IP-Adressen
-Es gibt zwei Arten von IP-Adressen, die Ressourcen in Azure zugewiesen werden: *öffentliche* und *private*. Mit öffentlichen IP-Adressen können Azure-Ressourcen mit dem Internet und anderen öffentlichen Azure-Diensten wie [Azure Redis Cache](https://azure.microsoft.com/services/cache/) und [Azure Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/) kommunizieren. Private IP-Adressen ermöglichen die Kommunikation zwischen Ressourcen in einem virtuellen Netzwerk sowie zwischen per VPN verbundenen Ressourcen ohne Verwendung von über das Internet zugänglichen IP-Adressen.
+## <a name="connect-on-premises"></a>Herstellen einer Verbindung mit einem lokalen Netzwerk
 
-Weitere Informationen zu IP-Adressen in Azure finden Sie unter [IP-Adressen im virtuellen Netzwerk](virtual-network-ip-addresses-overview-arm.md)
+Sie können Ihr lokales Netzwerk mit einem VNet verbinden, indem Sie eine Kombination der folgenden Optionen verwenden:
+- **Point-to-Site-VPN (Virtual Private Network):** Wird zwischen einem einzelnen PC Ihres Netzwerks und dem VNet eingerichtet. Dieser Verbindungstyp ist gut geeignet, wenn Azure noch neu für Sie ist, oder wenn Sie ein Entwickler sind, da keine oder nur sehr geringe Änderungen Ihres vorhandenen Netzwerks erforderlich sind. Für die Verbindung wird das SSTP-Protokoll verwendet, um zwischen dem PC und dem VNet eine verschlüsselte Kommunikation über das Internet zu ermöglichen. Die Dauer der Wartezeit für ein Point-to-Site-VPN ist unvorhersehbar und verschlüsselt, weil der Datenverkehr über das Internet übertragen wird.
+- **Site-to-Site-VPN:** Wird zwischen Ihrem VPN-Gerät und einem Azure VPN Gateway eingerichtet. Bei diesem Verbindungstyp können alle lokalen Ressourcen, die von Ihnen autorisiert werden, auf ein VNet zugreifen. Die Verbindung ist ein IPSec/IKE-VPN, mit dem die verschlüsselte Kommunikation über das Internet zwischen Ihrem lokalen Gerät und dem Azure VPN Gateway ermöglicht wird. Die Dauer der Wartezeit für eine Site-to-Site-Verbindung ist unvorhersehbar, da der Datenverkehr über das Internet übertragen wird.
+- **Azure ExpressRoute:** Wird zwischen Ihrem Netzwerk und Azure über einen ExpressRoute-Partner eingerichtet. Diese Verbindung ist privat. Der Datenverkehr wird nicht über das Internet übertragen. Die Dauer der Wartezeit für eine ExpressRoute-Verbindung ist vorhersehbar, da der Datenverkehr nicht über das Internet verläuft und nicht verschlüsselt ist.
 
-## <a name="azure-load-balancers"></a>Azure-Load Balancer
-Virtuelle Maschinen und Clouddienste in einem virtuellen Netzwerk können über Azure Load Balancer für das Internet verfügbar gemacht werden. Bei internen Branchenanwendungen ist der Lastenausgleich nur über einen internen Load Balancer möglich.
+Weitere Informationen zu allen vorherigen Verbindungsoptionen finden Sie im Artikel [Diagramme zur Verbindungstopologie](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#a-namediagramsaconnection-topology-diagrams).
 
-* **Externer Load Balancer**. Mit einem externen Load Balancer können Sie hohe Verfügbarkeit für IaaS-VMs und PaaS-Rolleninstanzen bereitstellen, auf die über das öffentliche Internet zugegriffen wird.
-* **Interner Load Balancer**. Mit einem internen Load Balancer können Sie hohe Verfügbarkeit für IaaS-VMs und PaaS-Rolleninstanzen bereitstellen, auf die von anderen Diensten in Ihrem VNet zugegriffen wird.
+## <a name="filtering"></a>Filterung des Netzwerkdatenverkehrs
+<!---Get confirmation that a UDR on the gateway subnet is supported. Need to provide some additional info as to the key differences between the two options.--->
 
-Weitere Informationen zum Lastenausgleich in Azure finden Sie unter [Übersicht über Load Balancer](../load-balancer/load-balancer-overview.md).
+Sie können den Netzwerkdatenverkehr zwischen Subnetzen filtern, indem Sie eine oder beide folgenden Optionen verwenden:
+- **Netzwerksicherheitsgruppen (NSG):** Jede Netzwerksicherheitsgruppe kann mehrere Sicherheitsregeln für die eingehende und ausgehende Richtung enthalten, mit denen Sie Datenverkehr nach IP-Adresse, Port und Protokoll für die Quelle und das Ziel filtern können. Sie können eine NSG auf jede Netzwerkschnittstelle einer VM anwenden. Außerdem können Sie eine NSG auf das Subnetz anwenden, mit dem eine Netzwerkschnittstelle oder eine andere Azure-Ressource verbunden ist. Weitere Informationen zu NSGs finden Sie im Artikel [Steuern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](virtual-networks-nsg.md).
+- **Virtuelle Netzwerkgeräte:** Ein virtuelles Netzwerkgerät (Network Virtual Appliance, NVA) ist eine VM, auf der Software für eine Netzwerkfunktion ausgeführt wird, z.B. eine Firewall. In [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances) können Sie eine Liste mit verfügbaren NVAs anzeigen. Es sind auch NVAs verfügbar, die eine WAN-Optimierung und andere Funktionen für den Netzwerkdatenverkehr ermöglichen. NVAs werden normalerweise mit benutzerdefinierten oder BGP-Routen verwendet. Darüber hinaus können Sie eine NVA zum Filtern von Datenverkehr zwischen VNets verwenden.
 
-## <a name="network-security-groups-nsg"></a>Netzwerksicherheitsgruppen
-Sie können Netzwerksicherheitsgruppen zum Steuern des ein- und ausgehenden Zugriffs auf NICs, VMs und Subnetze erstellen. Eine Netzwerksicherheitsgruppe enthält eine oder mehrere Regeln, die basierend auf IP-Quelladresse, Quellport, IP-Zieladresse und Zielport bestimmen, ob Datenverkehr zugelassen oder verweigert wird. Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter [Was ist eine Netzwerksicherheitsgruppe?](virtual-networks-nsg.md).
+## <a name="routing"></a>Weiterleiten von Netzwerkdatenverkehr
 
-## <a name="virtual-appliances"></a>Virtuelle Geräte
-Ein virtuelles Gerät ist eine andere VM in Ihrem VNet, die eine softwarebasierte Gerätefunktion ausführt, z. B. eine Firewall, WAN-Optimierung oder Angriffserkennung. Sie können eine Route in Azure erstellen, um den Datenverkehr Ihres VNets über ein virtuelles Gerät weiterzuleiten und dessen Funktionen zu nutzen.
-
-Netzwerksicherheitsgruppen können z. B. verwendet werden, um Sicherheit für das VNet bereitzustellen. Allerdings bieten Netzwerksicherheitsgruppen eine Layer 4-Zugriffssteuerungsliste (ACL) für ein- und ausgehende Pakete. Wenn Sie ein Layer 7-Sicherheitsmodell verwenden möchten, müssen Sie ein Firewallgerät einsetzen.
-
-Virtuelle Geräte sind von [benutzerdefinierten Routen und IP-Weiterleitung](virtual-networks-udr-overview.md)abhängig.
-
-## <a name="limits"></a>Grenzen
-Die Anzahl zulässiger virtueller Netzwerke in einem Abonnement ist begrenzt. Weitere Informationen finden Sie unter [Azure-Netzwerkbeschränkungen](../azure-subscription-service-limits.md#networking-limits).
+Azure erstellt Routentabellen, über die Ressourcen, die mit einem beliebigen Subnetz in einem beliebigen VNet verbunden sind, standardmäßig kommunizieren können. Sie können eine oder beide der folgenden Optionen implementieren, um die von Azure erstellten Standardrouten außer Kraft zu setzen:
+- **Benutzerdefinierte Routen:** Sie können benutzerdefinierte Routentabellen mit Routen erstellen, über die gesteuert wird, wohin der Datenverkehr für die einzelnen Subnetze geleitet wird. Weitere Informationen zu benutzerdefinierten Routen finden Sie im Artikel [Benutzerdefinierte Routen und IP-Weiterleitung](virtual-networks-udr-overview.md).
+- **BGP-Routen:** Wenn Sie Ihr VNet über ein Azure VPN Gateway oder eine ExpressRoute-Verbindung mit dem lokalen Netzwerk verbinden, können Sie die BGP-Routen für Ihre VNets übernehmen.
 
 ## <a name="pricing"></a>Preise
-Für die Verwendung virtueller Netzwerke in Azure fallen keine Zusatzkosten an. Für die im VNET gestarteten Computerinstanzen werden die unter [Virtual Machines – Preise](https://azure.microsoft.com/pricing/details/virtual-machines/)aufgeführten Standardpreise berechnet. Für die im VNet verwendeten [VPN-Gateways](https://azure.microsoft.com/pricing/details/vpn-gateway/) und [öffentlichen IP-Adressen](https://azure.microsoft.com/pricing/details/ip-addresses/) werden ebenfalls die Standardpreise berechnet.
+
+Für virtuelle Netzwerke, Subnetze, Routentabellen oder Netzwerksicherheitsgruppen werden keine Gebühren berechnet. Für Internetbandbreite in ausgehender Richtung, öffentliche IP-Adressen, Peering in virtuellen Netzwerken, VPN Gateways und ExpressRoute werden jeweils eigene Preisstrukturen verwendet. Weitere Informationen hierzu finden Sie auf den Preisseiten zu [virtuellen Netzwerken](https://azure.microsoft.com/pricing/details/virtual-network), [VPN Gateway](https://azure.microsoft.com/pricing/details/vpn-gateway) und [ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute).
+
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Erstellen eines VNets](virtual-networks-create-vnet-arm-pportal.md) und von Subnetzen
-* [Erstellen einer VM in einem VNet](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
-* Weitere Informationen zu [Netzwerksicherheitsgruppen](virtual-networks-nsg.md)
-* Weitere Informationen zu [benutzerdefinierten Routen und IP-Weiterleitung](virtual-networks-udr-overview.md)
+
+- Erstellen Sie Ihr erstes VNet, und verbinden Sie einige VMs damit, indem Sie die Schritte des Artikels [Erstellen Ihres ersten virtuellen Netzwerks](virtual-network-get-started-vnet-subnet.md) ausführen.
+- Erstellen Sie eine Point-to-Site-Verbindung mit einem VNet, indem Sie die Schritte im Artikel [Konfigurieren einer Point-to-Site-Verbindung mit einem VNet über das Azure-Portal](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ausführen.
 

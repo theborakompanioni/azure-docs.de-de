@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 11/28/2016
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: a2dec2daa4be60a4a53a98164265171bf898cafb
-ms.openlocfilehash: 7f03d376b1785637261b58fc34a0f0e1c1e25f5f
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: b478251715076a254fe87abee1d709f47e2b3886
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -65,12 +66,11 @@ Nachdem Remotedesktop für die Rollen aktiviert wurde, können Sie direkt im Azu
 
 4. Klicken Sie auf **Öffnen** und dann auf **Verbinden**, um die Remotedesktopverbindung zu starten.
 
-## <a name="next-steps"></a>Nächste Schritte
+>[!NOTE]
+> Wenn Ihr Clouddienst durch eine NSG geschützt wird, müssen Sie möglicherweise eine Regel erstellen, um Port **20000** zu öffnen.
+
+## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 [Konfigurieren von Clouddiensten](cloud-services-how-to-configure.md)
-
-
-
-<!--HONumber=Nov16_HO5-->
-
+[Häufig gestellte Fragen zu Clouddiensten– Remotedesktop](cloud-services-faq.md#remote-desktop)
 

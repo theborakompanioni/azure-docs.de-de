@@ -16,9 +16,9 @@
 ### [Hinzufügen von benutzerdefiniertem Code mit Azure Functions](logic-apps-azure-functions.md)
 ### [Schleifen, Bereiche und Auflösen von Datenbatches](logic-apps-loops-and-scopes.md)
 ### [Erstellen von Logik-App-Definitionen](logic-apps-author-definitions.md)
+### [Aufrufen, Auslösen oder Schachteln von Logik-Apps](logic-apps-http-endpoint.md)
 ### [Erstellen einer benutzerdefinierten API zur Verwendung mit Logik-Apps](logic-apps-create-api-app.md)
 ### [Aufrufen benutzerdefinierter APIs für Logik-Apps](logic-apps-custom-hosted-api.md)
-### [Aufrufen von Logik-App-Endpunkten als Trigger](logic-apps-http-endpoint.md)
 ### [Behandeln von Fehlern und Ausnahmen](logic-apps-exception-handling.md)
 ### [Behandeln von Inhaltstypen](logic-apps-content-type.md)
 ### [Sichern Ihrer Logik-Apps](logic-apps-securing-a-logic-app.md)
@@ -47,6 +47,7 @@
 ### [X12-Unternehmensintegration](logic-apps-enterprise-integration-x12.md)
 ### [X12-Codierung](logic-apps-enterprise-integration-x12-encode.md)
 ### [X12-Decodierung](logic-apps-enterprise-integration-x12-decode.md)
+### [Notfallwiederherstellung](logic-apps-enterprise-integration-b2b-business-continuity.md)
 
 ## Zugriff auf lokale Daten
 ### [Herstellen einer Verbindung mit lokalen Daten](logic-apps-gateway-connection.md)
@@ -69,6 +70,7 @@
 
 ## Beispiele, Szenarien und exemplarische Vorgehensweisen
 ### [Übersicht](logic-apps-examples-and-scenarios.md)
+### [Erstellen eines serverlosen sozialen Dashboards](logic-apps-scenario-social-serverless.md)
 ### [Aufrufen von Logik-Apps mit Azure Functions](logic-apps-scenario-function-sb-trigger.md)
 ### [Hinzufügen der Fehler- und Ausnahmebehandlung](logic-apps-scenario-error-and-exception-handling.md)
 ### [B2B-Verarbeitung](logic-apps-enterprise-integration-b2b.md)

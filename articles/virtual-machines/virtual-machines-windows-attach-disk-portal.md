@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 11/28/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: b84e07b26506149cf9475491b32b9ff3ea9ae80d
-ms.openlocfilehash: 40375aa411920f966aa6923f0899ca2f88a9ed39
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 88956ec33009bfd6ce5047085f6d7512d951edee
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -30,6 +31,7 @@ In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal neue und vorh
 * Bei einem bereits vorhandenen Datenträger muss die VHD-Datei in einem Azure-Speicherkonto verfügbar sein. Sie können eine bereits vorhandene VHD verwenden, die noch nicht an einen anderen virtuellen Computer angefügt wurde, oder eine eigene VHD-Datei in das Speicherkonto hochladen.
 
 Sie können auch [einen Datenträger mithilfe von PowerShell anfügen](virtual-machines-windows-attach-disk-ps.md).
+
 
 
 ## <a name="find-the-virtual-machine"></a>Suchen des virtuellen Computers
@@ -54,7 +56,7 @@ Folgen Sie den Anweisungen zum Anfügen eines [neuen](#option-1-attach-a-new-dis
 1. Stellen Sie eine Verbindung mit dem virtuellen Computer her. Anweisungen dazu finden Sie unter [Gewusst wie: Herstellen einer Verbindung mit einem virtuellen Azure-Computer unter Windows und Anmelden auf diesem Computer](virtual-machines-windows-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 2. Öffnen Sie den **Server-Manager**, nachdem Sie sich auf dem virtuellen Computer angemeldet haben. Klicken Sie im linken Bereich auf **Datei- und Speicherdienste**.
    
-    ![Server-Manager öffnen](./media/virtual-machines-windows-classic-attach-disk/fileandstorageservices.png)
+    ![Server-Manager öffnen](./windows/classic/media/attach-disk/fileandstorageservices.png)
 3. Erweitern Sie das Menü, und wählen Sie **Datenträger**.
 4. Im Abschnitt **Datenträger** werden die Datenträger aufgelistet. In den meisten Fällen sind darin Datenträger 0, Datenträger 1 und Datenträger 2 enthalten. Datenträger 0 ist der Betriebssystemdatenträger. Bei Datenträger 1 handelt es sich um den temporären Datenträger, und Datenträger 2 ist der Datenträger, den Sie gerade an den virtuellen Computer angefügt haben. Für den neuen Datenträger wird die Partition als **Unbekannt** aufgelistet. Klicken Sie mit der rechten Maustaste auf den Datenträger, und wählen Sie **Initialisieren** aus.
 5. Sie werden darüber informiert, dass alle Daten gelöscht werden, wenn der Datenträger initialisiert wird. Klicken Sie auf **Ja** , um die Warnung zu bestätigen und den Datenträger zu initialisieren. Wenn dieser Vorgang abgeschlossen ist, wird die Partition als **GPT** aufgeführt. Klicken Sie erneut mit der rechten Maustaste auf den Datenträger, und wählen Sie **Neues Volume**.
@@ -91,13 +93,14 @@ Wenn „0“ zurückgegeben wird, ist TRIM ordnungsgemäß aktiviert. Wenn „1�
 ```
 fsutil behavior set DisableDeleteNotify 0
 ```
+                
+Nach dem Löschen von Daten vom Datenträger können Sie sicherstellen, dass die TRIM-Vorgänge ordnungsgemäß geleert werden, indem Sie die Defragmentierung mit TRIM ausführen:
+
+```
+defrag.exe <volume:> -l
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Wenn Ihre Anwendung das Laufwerk „D:“ für die Datenspeicherung verwenden muss, können Sie [den Laufwerkbuchstaben des temporären Windows-Datenträgers ändern](virtual-machines-windows-classic-change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
-
-
-
-
-<!--HONumber=Feb17_HO3-->
+Wenn Ihre Anwendung das Laufwerk „D:“ für die Datenspeicherung verwenden muss, können Sie [den Laufwerkbuchstaben des temporären Windows-Datenträgers ändern](virtual-machines-windows-change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 

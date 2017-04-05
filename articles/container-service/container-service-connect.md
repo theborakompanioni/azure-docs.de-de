@@ -18,9 +18,9 @@ ms.date: 03/01/2017
 ms.author: rogardle
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 25a35912b72f7f44b83ccd49f298b44665318418
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 3dfa2c56dd6d3e0fe7757995d284cebe172eabc4
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -35,7 +35,7 @@ Für DC/OS und Docker Swarm müssen Sie einen SSH-Tunnel (Secure Shell) zu einem
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein Kubernetes-, DC/OS- oder Swarm-Cluster, der [in Azure Container Service bereitgestellt wurde](container-service-deployment.md).
-* SSH-RSA-Datei mit passendem privatem Schlüssel für den öffentlichen Schlüssel, der dem Cluster während der Bereitstellung hinzugefügt wurde. Bei diesen Befehlen wird vorausgesetzt, dass sich der private SSH-Schlüssel auf Ihrem Computer unter `$HOME/.ssh/id_rsa` befindet. Weitere Informationen finden Sie in der Anleitung für [OS X und Linux](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md) bzw. [Windows](../virtual-machines/virtual-machines-linux-ssh-from-windows.md). Wenn die SSH-Verbindung nicht funktioniert, müssen Sie ggf. [Ihre SSH-Schlüssel zurücksetzen](../virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md).
+* SSH-RSA-Datei mit passendem privatem Schlüssel für den öffentlichen Schlüssel, der dem Cluster während der Bereitstellung hinzugefügt wurde. Bei diesen Befehlen wird vorausgesetzt, dass sich der private SSH-Schlüssel auf Ihrem Computer unter `$HOME/.ssh/id_rsa` befindet. Weitere Informationen finden Sie in der Anleitung für [OS X und Linux](../virtual-machines/linux/mac-create-ssh-keys.md) bzw. [Windows](../virtual-machines/linux/ssh-from-windows.md). Wenn die SSH-Verbindung nicht funktioniert, müssen Sie ggf. [Ihre SSH-Schlüssel zurücksetzen](../virtual-machines/linux/troubleshoot-ssh-connection.md).
 
 ## <a name="connect-to-a-kubernetes-cluster"></a>Herstellen einer Verbindung mit einem Kubernetes-Cluster
 

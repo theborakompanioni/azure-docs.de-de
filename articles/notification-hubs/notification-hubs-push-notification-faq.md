@@ -13,43 +13,42 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 10/03/2016
+ms.date: 01/19/2017
 ms.author: yuaxu
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 7f76f8786bf08e4aacc63758260202fe7e1a832f
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 9f0e7f071f1aa8fdd95c4959eae884afc60644e9
+ms.lasthandoff: 03/25/2017
 
 
 ---
 # <a name="push-notifications-with-azure-notification-hubs---frequently-asked-questions"></a>Pushbenachrichtigungen bei Azure Notification Hubs – häufig gestellte Fragen (FAQs)
 ## <a name="general"></a>Allgemein
-### <a name="1----what-is-the-price-model-for-notification-hubs"></a>1.    Welches Preismodell gilt für Notification Hubs?
-Notification Hubs werden mit drei Tarifen angeboten:
+### <a name="0--what-is-the-resource-structure-of-notification-hubs"></a>0.  Wie ist die Ressourcenstruktur von Notification Hubs aufgebaut?
 
-* **Free**: Sie erhalten bis zu einer Million Push-Benachrichtigungen pro Monat.
-* **Basic**: Sie erhalten 10 Millionen Push-Benachrichtigungen pro Monat Baseline, inklusive Optionen, das Kontingent zu vergrößern.
-* **Standard**: Sie erhalten 10 Millionen Push-Benachrichtigungen pro Monatsabonnement als Baseline, inklusive Optionen, das Kontingent zu vergrößern sowie umfangreiche Telemetriefunktionen.
+Notification Hubs umfasst zwei Ressourcenebenen: Hubs und Namespaces. Ein Hub ist eine zentrale Ressource für Pushbenachrichtigungen, die plattformübergreifende Push-Informationen einer App enthalten kann. Ein Namespace ist eine Sammlung von Hubs in einem Bereich.
 
-Die neuesten Informationen finden Sie auf der Seite [Notification Hubs – Preise] . Die Preise werden auf Abonnementebene berechnet und basieren auf der Anzahl von Pushbenachrichtigungen, sodass es keine Rolle spielt, über wie viele Namespaces oder Notification Hubs Sie in Ihrem Azure-Abonnement verfügen.
+Allgemein wird empfohlen, einem Namespace eine App zuzuordnen. Ein Namespace kann einen Produktionshub enthalten, der mit Ihrer Produktions-App zusammenarbeitet, einen Test-Hub, der mit Ihrer Test-App zusammenarbeitet etc.
 
-**Free** wird zu Entwicklungszwecken und ohne SLA-Garantie angeboten. Auch wenn dieser Tarif möglicherweise einen guten Ausgangspunkt darstellt, wenn Sie die Funktionen von Pushbenachrichtigungen über Azure Notification Hubs kennenlernen möchten, ist er vermutlich nicht die beste Wahl für mittlere bis große Anwendungen.
+### <a name="1--what-is-the-price-model-for-notification-hubs"></a>1.  Welches Preismodell gilt für Notification Hubs?
+Die neuesten Informationen finden Sie auf der Seite [Notification Hubs – Preise]. In Notification Hubs erfolgt die Abrechnung auf Namespace-Ebene (Informationen zur Definition eines Namespace finden Sie in der Ressourcenstruktur oben). Hierfür werden drei Tarife angeboten:
 
-Die Tarife **Basic** & **Standard** werden zur Verwendung in der Produktion angeboten, wobei die folgenden Funktionen beim Tarif *Standard* aktiviert sind:
+* **Free** – Dieser Tarif ist ein guter Ausgangspunkt, um Pushfunktionen zu testen, die nicht für Produktions-Apps empfohlen werden. Pro Namespace sind monatlich 500 Geräte und 1 Mio. Pushvorgänge ohne SLA-Garantie inbegriffen.
+* **Basic** – Für kleinere Produktions-Apps wird dieser Tarif oder der Tarif „Standard“ empfohlen. Pro Namespace sind monatlich 200.000 Geräte und 10 Mio. Pushvorgänge Baseline, inklusive Optionen zur Steigerung des Kontingents, inbegriffen.
+* **Standard** – Dieser Tarif wird für mittelgroße bis große Produktions-Apps empfohlen. Pro Namespace sind monatlich 10 Mio. Geräte und 10 Mio. Pushvorgänge Baseline, inklusive Optionen zur Steigerung des Kontingents, sowie umfangreiche Telemetriefunktionen inbegriffen.
 
-* *Umfangreiche Telemetrie:* Notification Hubs bieten eine Reihe von Funktionen zum Exportieren der Telemetriedaten sowie Informationen zur Registrierung von Pushbenachrichtigungen für die Offlineansicht und -analyse.
-* *Mehrinstanzenfähigkeit:* optimal für das Erstellen einer mobilen App mit Notification Hubs zur Unterstützung mehrerer Mandanten. Dadurch können Sie die App PNS-Anmeldeinformationen (Push Notification Services) auf Notification Hubs-Namespaceebene festlegen und anschließend die Mandanten trennen, indem Sie ihnen individuelle Hubs in diesem gemeinsamen Namespace bereitstellen. Dies vereinfacht die Wartung und ermöglicht es Ihnen gleichzeitig, die SAS-Schlüssel zum Senden und Empfangen von Pushbenachrichtigungen von den Notification Hubs für jeden Mandanten getrennt zu halten und Überschneidungen zwischen Mandanten zu vermeiden.
-* *Geplanter Push:* Sie können Pushbenachrichtigungen planen, die anschließend einer Warteschlange hinzugefügt und dann gesendet werden.
-* *Massenimport:* Sie können Registrierungen in einem Massenvorgang importieren.
+Im Folgenden werden einige vorteilhafte Funktionen des Standard-Tarifs vorgestellt:
+* *Umfangreiche Telemetrie* - Notification Hubs bietet Telemetrie auf Nachrichtenbasis, um Pushanforderungen und Feedback zum Plattformbenachrichtigungssystem zwecks Debugging nachzuverfolgen.
+* *Mehrmandantenfähigkeit* – Sie können mit PNS-Anmeldeinformationen (Platform Notification System) auf Namespace-Ebene arbeiten. Hierdurch können Sie Mandanten im selben Namespace mühelos in Hubs unterteilen.
+* *Geplanter Push* – Sie können planen, dass Benachrichtigungen zu einem beliebigen Zeitpunkt gesendet werden.
 
-### <a name="2----what-is-the-notification-hubs-sla"></a>2.    Was ist die Notification Hubs-SLA?
-Für die Notification Hubs-Tarife **Basic** und **Standard** wird garantiert, dass von ordnungsgemäß konfigurierten Anwendungen zu mindestens 99,9 % der Zeit Pushbenachrichtigungen gesendet oder Registrierungsverwaltungsvorgänge für ein Notification Hub in einem unterstützten Tarif durchgeführt werden können. Weitere Informationen über die Vereinbarung zum Servicelevel finden Sie auf der Seite [SLA für Notification Hubs] .
+### <a name="2--what-is-the-notification-hubs-sla"></a>2.  Was ist die Notification Hubs-SLA?
+Für die Notification Hubs-Tarife **Basic** und **Standard** wird garantiert, dass von ordnungsgemäß konfigurierten Anwendungen zu mindestens 99,9 % der Zeit Pushbenachrichtigungen gesendet oder Registrierungsverwaltungsvorgänge für ein Notification Hub in einem unterstützten Tarif durchgeführt werden können. Weitere Informationen über die Vereinbarung zum Servicelevel finden Sie auf der Seite [SLA für Notification Hubs](https://azure.microsoft.com/support/legal/sla/notification-hubs/) .
 
 > [!NOTE]
-> Es gelten keine SLA-Garantien für die Verbindungen zwischen PNS (Platform Notification Service) und dem Gerät, da Notification Hubs von externen Plattformanbietern zum Übermitteln der Pushbenachrichtigung an das Gerät abhängig sind.
-> 
-> 
+> Da Pushbenachrichtigungen von Plattformbenachrichtigungssystemen von Drittanbietern (APNS von Apple, FCM von Google etc.) abhängig sind, wird keine SLA-Garantie für die Übermittlung derartiger Nachrichten gewährt. Nachdem Notification Hubs die Sendevorgänge batchweise an die PNS geleitet hat (mit SLA-Garantie), obliegt die Übermittlung der Pushvorgänge den PNS (ohne SLA-Garantie).
 
-### <a name="3----which-customers-are-using-notification-hubs"></a>3.    Welche Kunden verwenden Notification Hubs?
+### <a name="3--which-customers-are-using-notification-hubs"></a>3.  Welche Kunden verwenden Notification Hubs?
 Es gibt zahlreiche Kunden, die Notification Hubs verwenden, darunter beispielsweise:
 
 * Sochi 2014 – Hunderte von Interessengruppen, über 3 Millionen Geräte, mehr als 150 Millionen Benachrichtigungen in 2 Wochen gesendet. [Fallstudie - Sochi]
@@ -59,20 +58,21 @@ Es gibt zahlreiche Kunden, die Notification Hubs verwenden, darunter beispielswe
 * 7Digital – [Fallstudie – 7Digital]
 * Bing Apps – 10 Millionen Geräte, 3 Millionen Benachrichtigungen pro Tag gesendet
 
-### <a name="4-how-do-i-upgrade-or-downgrade-my-notification-hubs-to-change-my-service-tier"></a>4. Wie führe ich für meine Notification Hubs zum Ändern meiner Dienstebene ein Upgrade oder Downgrade durch?
-Klicken Sie im [klassischen Azure-Portal]auf „Service Bus“, dann auf Ihren Namespace und schließlich auf Ihren Notification Hub. Unter der Registerkarte „Skalierung“ können Sie die Dienstebene Ihrer Notification Hubs ändern.
+### <a name="4-how-do-i-upgrade-or-downgrade-my-hub-or-namespace-to-a-different-tier"></a>4. Wie stufe ich meinen Hub oder meinen Namespace auf einen anderen Tarif hoch oder herab?
+Navigieren Sie zum [Azure-Portal] und dann zu „Notification Hubs-Namespaces“ oder „Notification Hubs“. Klicken Sie auf die Ressource, die aktualisiert werden soll, und navigieren Sie in der Navigation zu „Tarif“. Sie können eine Aktualisierung auf einen beliebigen Tarif durchführen. Dabei sind einige Hinweise zu beachten:
+* Der aktualisierte Tarif gilt für *alle* Hubs in dem Namespace, mit dem Sie arbeiten.
+* Wenn Sie eine Herabstufung durchführen und Ihre Geräteanzahl das Limit des Tarifs, auf den Sie eine Herabstufung durchführen möchten, überschreiten, müssen Sie vor der Herabstufung Geräte löschen, um das Limit einzuhalten.
 
-![](./media/notification-hubs-faq/notification-hubs-classic-portal-scale.png)
 
 ## <a name="design--development"></a>Entwurf und Entwicklung
-### <a name="1----which-server-side-platforms-do-you-support"></a>1.    Welche dienstseitigen Plattformen werden unterstützt?
-Es werden SDKs und [vollständige Beispiele] für .NET, Java, PHP, Python und Node.js bereitgestellt, damit ein App-Back-End für die Kommunikation mit Notification Hubs über eine beliebige dieser Plattformen eingerichtet werden kann. Notification Hubs-APIs basieren auf REST-Schnittstellen, sodass Sie sich auch direkt an diese wenden können, wenn Sie eine zusätzliche Abhängigkeit hinzufügen möchten. Weitere Einzelheiten finden Sie auf der Seite [How to Use the Notification Hubs REST Interface] (Gewusst wie: Verwenden der Notification Hubs-REST-API).
+### <a name="1--which-server-side-platforms-do-you-support"></a>1.  Welche dienstseitigen Plattformen werden unterstützt?
+Wir stellen Server-SDKs für .NET, Java, Node.js, PHP und Python bereit. Darüber hinaus basieren die APIs von Notification Hubs auf REST-Schnittstellen, sodass Sie direkt mit REST-APIs arbeiten können, wenn Sie andere Plattformen verwenden oder weitere Abhängigkeiten vermeiden möchten. Weitere Einzelheiten finden Sie auf der Seite [NH – REST-APIs].
 
-### <a name="2----which-client-platforms-do-you-support"></a>2.    Welche Clientplattformen werden unterstützt?
-Pushbenachrichtigungen können an die Plattformen [Apple iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md), [Android](notification-hubs-android-push-notification-google-gcm-get-started.md), [Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md), [Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md), [Kindle](notification-hubs-kindle-amazon-adm-push-notification.md), [Android China (via Baidu)](notification-hubs-baidu-china-android-notifications-get-started.md), Xamarin ([iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md) & [Android](xamarin-notification-hubs-push-notifications-android-gcm.md)), [Chrome Apps](notification-hubs-chrome-push-notifications-get-started.md) und [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari) gesendet werden. Eine vollständige Liste der Tutorials mit ersten Schritten zum Senden von Pushbenachrichtigungen auf diesen Plattformen finden Sie auf der Seite [Erste Schritte mit Notification Hubs für iOS-Apps] .
+### <a name="2--which-client-platforms-do-you-support"></a>2.  Welche Clientplattformen werden unterstützt?
+Pushbenachrichtigungen können an [iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md), [Android](notification-hubs-android-push-notification-google-gcm-get-started.md), [Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md), [Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md), [Kindle](notification-hubs-kindle-amazon-adm-push-notification.md), [Android China (via Baidu)](notification-hubs-baidu-china-android-notifications-get-started.md), Xamarin ([iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md) & [Android](xamarin-notification-hubs-push-notifications-android-gcm.md)), [Chrome Apps](notification-hubs-chrome-push-notifications-get-started.md) und [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari) gesendet werden. Weitere Informationen finden Sie auf unserer Seite [Einführungen].
 
-### <a name="3----do-you-support-smsemailweb-notifications"></a>3.    Werden Benachrichtigungen per SMS/E-Mail/Web unterstützt?
-Notification Hubs wurde primär zum Senden von Benachrichtigungen an Mobile Apps mithilfe der oben aufgeführten Plattformen entwickelt. Es werden noch keine Funktionen zum Senden von E-Mail- oder SMS-Warnungen bereitgestellt, es können jedoch zusätzlich zu Notification Hubs Drittanbieterplattformen mit dieser Funktionalität integriert werden, um native Pushbenachrichtigungen unter Verwendung von [Azure Mobile Apps]zu senden.
+### <a name="3--do-you-support-smsemailweb-notifications"></a>3.  Werden Benachrichtigungen per SMS/E-Mail/Web unterstützt?
+Notification Hubs wurde primär zum Senden von Benachrichtigungen an mobile Apps entwickelt und stellt keine Funktionen zum Senden von E-Mails oder SMS bereit. Es können jedoch zusätzlich zu Notification Hubs Drittanbieterplattformen mit dieser Funktionalität integriert werden, um systemeigene Pushbenachrichtigungen unter Verwendung von [Azure Mobile Apps] zu senden.
 
 Notification Hubs stellt auch kein sofort einsatzfähiges Zustellverfahren für Browserpushbenachrichtigungen bereit. Kunden können dies implementieren, indem Sie zusätzlich zu den unterstützten serverseitigen Plattformen SignalR verwenden. Wenn Sie Benachrichtigungen an Browser-Apps in der Chrome Sandbox senden möchten, sehen Sie sich das Tutorial [Erste Schritte mit Notification Hubs für Chrome-Apps]an.
 
@@ -141,7 +141,7 @@ Wenn Sie über eine Anwendung verfügen, die weltweit eingesetzt wird, können S
 Registrierungen über das App-Back-End sind sinnvoll, wenn Sie eine Clientauthentifizierung durchführen müssen, bevor Sie die Registrierung erstellen, oder wenn Sie über Tags verfügen, die vom App-Back-End basierend auf einer bestimmten Anwendungslogik durch die App erstellt oder geändert werden müssen. Weitere Informationen finden Sie im [Leitfaden zur Back-End-Registrierung] und im [Leitfaden zur Back-End-Registrierung – 2].
 
 ### <a name="11----what-is-the-push-notification-delivery-security-model"></a>11.    Welches Sicherheitsmodell gilt für die Übermittlung von Pushbenachrichtigungen?
-Azure Notification Hubs verwendet ein [SAS-basiertes (Shared Access Signature)](../storage/storage-dotnet-shared-access-signature-part-1.md) Sicherheitsmodell. Sie können die SAS-Token auf Namespace-Stammebene oder auf der granularen Notification Hubs-Ebene verwenden. Diese SAS-Token können mit verschiedenen Authentifizierungsregeln festgelegt werden, z. B. Berechtigungen zum Senden von Nachrichten oder Berechtigungen zum Überwachen auf Benachrichtigungen usw.. Weitere Einzelheiten finden Sie im Dokument zum [Notification Hubs – Sicherheitsmodell].
+Azure Notification Hubs verwendet ein [SAS-basiertes (Shared Access Signature)](../storage/storage-dotnet-shared-access-signature-part-1.md) Sicherheitsmodell. Sie können die SAS-Token auf Namespace-Stammebene oder auf der granularen Notification Hubs-Ebene verwenden. Diese SAS-Token können mit verschiedenen Authentifizierungsregeln festgelegt werden, z. B. Berechtigungen zum Senden von Nachrichten oder Berechtigungen zum Überwachen auf Benachrichtigungen usw. Weitere Einzelheiten finden Sie im Dokument zum [Notification Hubs – Sicherheitsmodell].
 
 ### <a name="12----how-should-i-handle-sensitive-payload-in-the-push-notifications"></a>12.    Wie sollte ich sensible Daten in Pushbenachrichtigungen behandeln?
 Alle Benachrichtigungen werden über den Push Notification Service (PNS) der Plattform an die Zielgeräte übermittelt. Wenn ein Absender eine Benachrichtigung an Azure Notification Hubs sendet, werden diese Benachrichtigungen verarbeitet und an den jeweiligen PNS weitergeleitet.
@@ -198,14 +198,14 @@ Wir bieten außerdem die Möglichkeit, Telemetriedaten programmgesteuert zu expo
 
 [klassischen Azure-Portal]: https://manage.windowsazure.com
 [Notification Hubs – Preise]: http://azure.microsoft.com/pricing/details/notification-hubs/
-[SLA für Notification Hubs]: http://azure.microsoft.com/support/legal/sla/
+[Notification Hubs SLA]: http://azure.microsoft.com/support/legal/sla/
 [Fallstudie - Sochi]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=7942
 [Fallstudie – Skanska]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=5847
 [Fallstudie – Seattle Times]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=8354
 [Fallstudie – Mural.ly]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=11592
 [Fallstudie – 7Digital]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=3684
-[How to Use the Notification Hubs REST Interface]: https://msdn.microsoft.com/library/azure/dn530746.aspx
-[Erste Schritte mit Notification Hubs für iOS-Apps]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
+[NH – REST-APIs]: https://msdn.microsoft.com/library/azure/dn530746.aspx
+[NH - Getting Started Tutorials]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
 [Erste Schritte mit Notification Hubs für Chrome-Apps]: http://azure.microsoft.com/documentation/articles/notification-hubs-chrome-get-started/
 [Mobile Services Pricing]: http://azure.microsoft.com/pricing/details/mobile-services/
 [Leitfaden zur Back-End-Registrierung]: https://msdn.microsoft.com/library/azure/dn743807.aspx
@@ -216,13 +216,8 @@ Wir bieten außerdem die Möglichkeit, Telemetriedaten programmgesteuert zu expo
 [Metriken]: https://msdn.microsoft.com/library/dn458822.aspx
 [NH – Metrics sample]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/FetchNHTelemetryInExcel
 [Vorgehensweise: Massenhaftes Exportieren und Ändern von Registrierungen]: https://msdn.microsoft.com/library/dn790624.aspx
-[Azure Portal]: https://portal.azure.com
-[vollständige Beispiele]: https://github.com/Azure/azure-notificationhubs-samples
-[Azure Mobile Apps]: https://azure.microsoft.com/en-us/services/app-service/mobile/
-[App Service – Preise]: https://azure.microsoft.com/en-us/pricing/details/app-service/
-
-
-
-<!--HONumber=Feb17_HO3-->
-
+[Azure-Portal]: https://portal.azure.com
+[complete samples]: https://github.com/Azure/azure-notificationhubs-samples
+[Azure Mobile Apps]: https://azure.microsoft.com/services/app-service/mobile/
+[App Service – Preise]: https://azure.microsoft.com/pricing/details/app-service/
 

@@ -1,4 +1,4 @@
-Data Factory ist ein mehrinstanzenfähiger Dienst mit den folgenden Standardlimits, um sicherzustellen, dass Kundenabonnements vor anderen Arbeitslasten geschützt sind. Viele der Limits können problemlos für Ihr Abonnement bis zum maximalen Limit angehoben werden, indem Sie sich an den Support wenden. 
+Data Factory ist ein mehrinstanzenfähiger Dienst mit den folgenden Standardlimits, um sicherzustellen, dass Kundenabonnements vor anderen Arbeitslasten geschützt sind. Viele der Limits können problemlos für Ihr Abonnement bis zum maximalen Limit angehoben werden, indem Sie sich an den Support wenden.
 
 | **Ressource** | **Standardlimit** | **Maximales Limit** |
 | --- | --- | --- |
@@ -9,7 +9,7 @@ Data Factory ist ein mehrinstanzenfähiger Dienst mit den folgenden Standardlimi
 | Bytes pro Objekt für Pipelineobjekte <sup>1</sup> |200 KB |200 KB |
 | Bytes pro Objekt für Datasetobjekte und Objekte für verknüpfte Dienste <sup>1</sup> |100 KB |2000 KB |
 | Bedarfsgesteuerte HDInsight-Clusterkerne innerhalb eines Abonnements <sup>2</sup> |60 |[Support kontaktieren](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| Einheit für Clouddatenverschiebungen <sup>3</sup> |8 |[Support kontaktieren](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Einheit für Clouddatenverschiebungen <sup>3</sup> |32 |[Support kontaktieren](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Anzahl der Wiederholungsversuche für Ausführungen von Pipelineaktivitäten |1000 |MaxInt (32 Bit) |
 
 <sup>1</sup> Pipeline-, Dataset- und verknüpfte Dienstobjekte stellen eine logische Gruppierung Ihrer Workload dar. Limits für diese Objekte beziehen sich nicht auf die Datenmenge, die Sie mit dem Azure Data Factory-Dienst verschieben und verarbeiten können. Data Factory kann so skaliert werden, dass Petabytes an Daten verarbeitet werden können.
@@ -25,10 +25,4 @@ Data Factory ist ein mehrinstanzenfähiger Dienst mit den folgenden Standardlimi
 | Timeoutwert für Wiederholungsversuche |1 Sekunde |1 Sekunde |
 
 ### <a name="web-service-call-limits"></a>Limits für Webdienstaufrufe
-Azure Resource Manager weist Grenzwerte für API-Aufrufe auf. Sie können API-Aufrufe mit einer Rate innerhalb der [API-Limits von Azure Resource Manager](../articles/azure-subscription-service-limits.md#resource-group-limits)ausführen. 
-
-
-
-<!--HONumber=Jan17_HO2-->
-
-
+Azure Resource Manager weist Grenzwerte für API-Aufrufe auf. Sie können API-Aufrufe mit einer Rate innerhalb der [API-Limits von Azure Resource Manager](../articles/azure-subscription-service-limits.md#resource-group-limits)ausführen.

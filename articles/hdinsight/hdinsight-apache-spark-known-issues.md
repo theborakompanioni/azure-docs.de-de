@@ -9,15 +9,17 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 610c4103-ffc8-4ec0-ad06-fdaf3c4d7c10
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/18/2017
+ms.date: 03/24/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
-ms.openlocfilehash: 6c81d978e470754f5c0a737aba0437e105949099
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 2ba5f280b38622b6a0c966d76617cd5698420b92
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -26,13 +28,14 @@ ms.openlocfilehash: 6c81d978e470754f5c0a737aba0437e105949099
 In diesem Dokument werden sämtliche bekannte Probleme für die öffentliche Vorschauversion von HDInsight Spark erfasst.  
 
 ## <a name="livy-leaks-interactive-session"></a>Verlust einer interaktiven Sitzung durch Livy
-Wenn Livy neu gestartet wird, während noch eine interaktive Sitzung (von Ambari oder aufgrund eines VM-Neustarts mit Stammknoten 0) aktiv ist, geht eine interaktive Auftragssitzung verloren. Dadurch bleiben neue Aufträge unter Umständen im Zustand „Akzeptiert“ hängen und können nicht gestartet werden.
+Wenn Livy neu gestartet wird (von Ambari oder aufgrund eines VM-Neustarts mit Hauptknoten 0), während noch eine interaktive Sitzung aktiv ist, geht eine interaktive Auftragssitzung verloren. Dadurch bleiben neue Aufträge unter Umständen im Zustand „Akzeptiert“ hängen und können nicht gestartet werden.
 
 **Lösung:**
 
 Gehen Sie wie folgt vor, um das Problem zu umgehen:
 
-1. Greifen Sie per SSH auf den Stammknoten zu. Informationen für Windows-Clients finden Sie unter [Verwenden von SSH mit HDInsight (Hadoop) aus PuTTY unter Windows](hdinsight-hadoop-linux-use-ssh-windows.md), und für Linux, Unix oder OS X unter [Verwenden von SSH mit HDInsight (Hadoop) unter Windows, Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md). 
+1. Greifen Sie per SSH auf den Stammknoten zu. Informationen hierzu finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
+
 2. Führen Sie den folgenden Befehl aus, um die Anwendungs-IDs der interaktiven Aufträge zu ermitteln, die über Livy gestartet wurden. 
    
         yarn application –list
@@ -61,6 +64,14 @@ Wenn „hdiuser“ einen Auftrag mit „spark-submit“ übermittelt, tritt der 
 3. Aktualisieren Sie den Spark-Protokollspeicherort mit Ambari auf ein Verzeichnis mit 777-Berechtigungen.  
 4. Führen Sie „spark-submit“ als sudo aus.  
 
+## <a name="spark-phoenix-connector-is-not-supported"></a>Keine Unterstützung für den Spark-Phoenix-Connector
+
+Derzeit wird der Spark-Phoenix-Connector für HDInsight Spark-Cluster nicht unterstützt.
+
+**Lösung:**
+
+Sie müssen stattdessen den Spark-HBase-Connector verwenden. Anweisungen finden Sie unter [How to use Spark-HBase connector](https://blogs.msdn.microsoft.com/azuredatalake/2016/07/25/hdinsight-how-to-use-spark-hbase-connector/) (Verwenden des Spark-HBase-Connectors).
+
 ## <a name="issues-related-to-jupyter-notebooks"></a>Probleme im Zusammenhang mit Jupyter Notebooks
 Im Folgenden sind einige Probleme im Zusammenhang mit Jupyter Notebooks genannt.
 
@@ -72,7 +83,7 @@ Möglicherweise wird beim Laden von größeren Notebooks der Fehler **`Error loa
 
 **Lösung:**
 
-Wenn Sie diesen Fehler erhalten, bedeutet dies nicht, dass Ihre Daten beschädigt oder verloren sind.  Ihre Notebooks befinden sich weiterhin auf der Festplatte in `/var/lib/jupyter`, und Sie können über SSH eine Verbindung mit dem Cluster herstellen, um darauf zuzugreifen. Informationen für Windows-Clients finden Sie unter [Verwenden von SSH mit HDInsight (Hadoop) aus PuTTY unter Windows](hdinsight-hadoop-linux-use-ssh-windows.md), und für Linux, Unix oder OS X unter [Verwenden von SSH mit HDInsight (Hadoop) unter Windows, Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
+Wenn Sie diesen Fehler erhalten, bedeutet dies nicht, dass Ihre Daten beschädigt oder verloren sind.  Ihre Notebooks befinden sich weiterhin auf der Festplatte in `/var/lib/jupyter`, und Sie können über SSH eine Verbindung mit dem Cluster herstellen, um darauf zuzugreifen. Informationen hierzu finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 Sobald Sie mithilfe von SSH eine Verbindung mit dem Cluster hergestellt haben, können Sie Ihre Notebooks zur Sicherung aus Ihrem Cluster auf den lokalen Computer kopieren (mit SCP oder WinSCP), um den Verlust wichtiger Daten im Notebook zu vermeiden. Anschließend können Sie über einen SSH-Tunnel an Port 8001 eine Verbindung mit Ihrem Hauptknoten herstellen, um ohne Umweg über das Gateway auf Jupyter zuzugreifen.  Dort können die Ausgabe Ihres Notebooks löschen und es erneut speichern, um die Größe des Notebooks zu minimieren.
 
@@ -124,10 +135,5 @@ Wenn dem Spark-Cluster nicht genügend Ressourcen zur Verfügung stehen, tritt b
 ### <a name="manage-resources"></a>Verwalten von Ressourcen
 * [Verwalten von Ressourcen für den Apache Spark-Cluster in Azure HDInsight](hdinsight-apache-spark-resource-manager.md)
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight(Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)](hdinsight-apache-spark-job-debugging.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

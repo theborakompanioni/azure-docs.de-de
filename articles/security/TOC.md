@@ -33,6 +33,8 @@
 ### [Azure Security Center](../security-center/security-center-intro.md?toc=%2fazure%2fsecurity%2ftoc.json)
 ### [Einführung in die Azure-Protokollintegration](security-azure-log-integration-overview.md)
 #### [Erste Schritte mit der Azure-Protokollintegration](security-azure-log-integration-get-started.md)
+#### [Integrieren von Azure Active Directory-Überwachungsprotokollen](security-azure-log-integration-ad.md)
+#### [Integrieren von Security Center-Warnungen](security-azure-log-integration-security-center.md)
 #### [Häufig gestellte Fragen](security-azure-log-integration-faq.md)
 
 ## Identitätsverwaltung

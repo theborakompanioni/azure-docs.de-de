@@ -12,12 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2016
+ms.date: 3/17/2017
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: 0ae9ad40f2e32d56fd50c90b86339cbb458d7291
-ms.openlocfilehash: a3276c764ebb6382594cf7002e7c7e8e328862ef
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
+ms.openlocfilehash: 318ce3e14e2bbc23b180d582d81b0571d1e81d56
+ms.lasthandoff: 03/23/2017
 
 
 ---
@@ -59,9 +59,7 @@ CQhoFA
 ```
 
 ### <a name="access-tokens"></a>Zugriffstoken
-Ein Zugriffstoken ist auch eine Form von Sicherheitstoken, das Ihre App von den `authorize`- und `token`-Endpunkten von Azure AD B2C empfängt. Zugriffstoken werden auch als [JWTs](#types-of-tokens) dargestellt und enthalten Ansprüche, die Sie zur Identifizierung der Benutzer in Ihren Webdiensten und APIs verwenden können.
-
-Zugriffstoken werden signiert, aber derzeit nicht verschlüsselt. Sie weisen eine große Ähnlichkeit mit ID-Token auf.  Zugriffstoken sollten verwendet werden, um Zugriff auf Webdienste und APIs zu ermöglichen und den Benutzer in diesen Diensten zu identifizieren und zu authentifizieren.  Sie sind aber nicht mit einer Assertion der Autorisierung für diese Dienste verbunden.  Dies bedeutet Folgendes: Durch den `scp`-Anspruch in Zugriffstoken wird der Zugriff, der dem Antragsteller des Tokens gewährt wurde, nicht eingeschränkt oder auf andere Weise dargestellt.
+Ein Zugriffstoken ist auch eine Form von Sicherheitstoken, das Ihre App von den `authorize`- und `token`-Endpunkten von Azure AD B2C empfängt. Zugriffstoken werden auch als [JWTs](#types-of-tokens) dargestellt und enthalten Ansprüche, die Sie zur Identifizierung der für Ihre APIs erteilten Berechtigungen verwenden können. Zugriffstoken werden signiert, aber derzeit nicht verschlüsselt.  Zugriffstoken sollten zum Erteilen des Zugriffs auf APIs und Ressourcenserver verwendet werden. Erfahren Sie mehr zum [Verwenden von Zugriffstoken](active-directory-b2c-access-tokens.md). 
 
 Wenn Ihre API ein Zugriffstoken empfängt, muss sie die [Signatur überprüfen](#token-validation), um die Authentizität des Tokens nachzuweisen. Ihre API muss außerdem einige Ansprüche im Token überprüfen, um seine Gültigkeit zu belegen. Je nach Szenarioanforderungen können die von einer App überprüften Ansprüche variieren. Einige [allgemeine Anspruchsüberprüfungen](#token-validation) muss Ihre App aber in jedem Szenario durchführen.
 

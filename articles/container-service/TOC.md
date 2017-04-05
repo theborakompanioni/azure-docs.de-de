@@ -16,6 +16,7 @@
 ### [Lastenausgleich für DC/OS-Container](container-service-load-balancing.md)
 ### [App-/benutzerspezifischer Orchestrator in DC/OS](container-service-application-specific-marathon.md)
 ### [Hinzufügen einer Dateifreigabe](container-service-dcos-fileshare.md)
+### [Verwenden einer Azure-Containerregistrierung](container-service-dcos-acr.md)
 ### Überwachen von DC/OS
 #### [Überwachen mit ELK](container-service-monitoring-elk.md)
 #### [Überwachen mit OMS](container-service-monitoring-oms.md)
@@ -36,6 +37,7 @@
 ## Verwalten mit Docker Swarm
 ### [Docker und Docker Compose](container-service-docker-swarm.md)
 ### [Docker Swarm – Continuous Integration](container-service-docker-swarm-setup-ci-cd.md)
+## [Sichere Container](container-service-security.md)
 # Referenz
 ## [Azure CLI 2.0](/cli/azure/acs)
 ## [REST](/rest/api/compute/containerservices)
@@ -43,3 +45,4 @@
 ## [Regionale Verfügbarkeit](https://azure.microsoft.com/regions/services/)
 ## [Preise](https://azure.microsoft.com/pricing/details/container-service/)
 ## [Dienstupdates](https://azure.microsoft.com/en-us/updates/?product=container-service&updatetype=&platform=)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-container-service)

@@ -27,7 +27,7 @@ ms.lasthandoff: 03/30/2017
 
 Dieses PowerShell-Beispielskript überwacht die Leistungsmetriken einer Datenbank, skaliert sie auf eine höhere Leistungsstufe und erstellt eine Warnungsregel auf einer der Leistungsmetriken. 
 
-[!INCLUDE [sample-cli-install](../../../includes/sample-powershell-install-no-ssh.md)]
+[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ## <a name="sample-script"></a>Beispielskript
 

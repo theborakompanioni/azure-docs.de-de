@@ -12,12 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2017
+ms.date: 3/10/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 69473976eb0a9b6a0e9aa929581c0a7cf0c8d188
-ms.openlocfilehash: 49779d5d15e81a50e32b87255152d996600d23eb
-ms.lasthandoff: 12/14/2016
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: b672133e0604e35d6e398fbee4db303f70158111
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -27,7 +27,7 @@ Dieses Tutorial soll Ihnen zeigen, wie Sie FileCloud in Azure Active Directory (
 Die Integration von FileCloud in Azure AD bietet die folgenden Vorteile:
 
 * Sie können in Azure AD steuern, wer Zugriff auf FileCloud hat.
-* Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei FileCloud anzumelden (einmaliges Anmelden).
+* Sie können Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei FileCloud anzumelden (einmaliges Anmelden, SSO).
 * Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
@@ -35,28 +35,27 @@ Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unte
 ## <a name="prerequisites"></a>Voraussetzungen
 Um die Azure AD-Integration mit FileCloud konfigurieren zu können, benötigen Sie Folgendes:
 
-* Ein Azure AD-Abonnement.
+* Ein Azure AD-Abonnement
 * Ein FileCloud-Abonnement, für das einmaliges Anmelden aktiviert ist
 
-> [!NOTE]
-> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
-> 
+>[!NOTE]
+>Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden. 
 > 
 
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
 * Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-* Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
+* Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-Ziel dieses Tutorials ist es, das einmalige Anmelden von Azure AD in einer Testumgebung zu testen.
+Ziel dieses Tutorials ist es, das einmalige Anmelden (SSO) von Azure AD in einer Testumgebung zu testen.
 
 Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
 1. Hinzufügen von FileCloud aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+2. Konfigurieren und Testen des einmaligen Anmeldens (SSO) von Azure AD
 
-## <a name="adding-filecloud-from-the-gallery"></a>Hinzufügen von FileCloud aus dem Katalog
+## <a name="add-filecloud-from-the-gallery"></a>Hinzufügen von FileCloud aus dem Katalog
 Zum Konfigurieren der Integration von FileCloud in Azure AD müssen Sie FileCloud aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
 **Führen Sie die folgenden Schritte aus, um FileCloud aus dem Katalog hinzuzufügen:**
@@ -87,23 +86,23 @@ Zum Konfigurieren der Integration von FileCloud in Azure AD müssen Sie FileClou
    
     ![Auswählen der App im Katalog](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_0001.png)
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
-In diesem Abschnitt soll veranschaulicht werden, wie basierend auf einem Testbenutzer namens „Britta Simon“ das einmalige Anmelden von Azure AD in FileCloud konfiguriert und getestet werden kann.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
+In diesem Abschnitt soll anhand eines Testbenutzers namens Britta Simon veranschaulicht werden, wie das einmalige Anmelden von Azure AD in FileCloud konfiguriert und getestet werden kann.
 
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in FileCloud als Gegenbenutzer zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in FileCloud muss eine Linkbeziehung eingerichtet werden.
+Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in FileCloud als Entsprechung zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in FileCloud muss eine Linkbeziehung eingerichtet werden.
 
 Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD als **Benutzernamen** in FileCloud zuweisen.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei FileCloud müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 3. **[Erstellen eines FileCloud-Testbenutzers](#creating-a-filecloud-test-user)**, um eine Entsprechung von Britta Simon in FileCloud zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** – um Britta Simon für das einmalige Anmelden in Azure AD zu aktivieren.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** – um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
-In diesem Abschnitt aktivieren Sie im klassischen Portal das einmalige Anmelden von Azure AD und konfigurieren es in Ihrer FileCloud-Anwendung.
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden (SSO) von Azure AD im klassischen Portal und konfigurieren das einmalige Anmelden in Ihrer FileCloud-Anwendung.
 
 **Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in FileCloud die folgenden Schritte aus:**
 
@@ -118,25 +117,19 @@ In diesem Abschnitt aktivieren Sie im klassischen Portal das einmalige Anmelden 
 3. Führen Sie auf der Seite **App-Einstellungen konfigurieren** die folgenden Schritte aus, und klicken Sie anschließend auf **Weiter**:
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_04.png)
+  1. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<subdomain>.filecloudhosted.com`.
+  2. Geben Sie im Textfeld **Bezeichner** Folgendes ein: `https://<subdomain>.filecloudhosted.com/simplesaml/module.php/saml/sp/metadata.php/default-sp`.
+  3. Klicken Sie auf **Weiter**.
    
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<subdomain>.filecloudhosted.com`.
-   
-    b. Geben Sie im Textfeld **Bezeichner** Folgendes ein: `https://<subdomain>.filecloudhosted.com/simplesaml/module.php/saml/sp/metadata.php/default-sp`.
-   
-    c. Klicken Sie auf **Weiter**
-   
-    > [!NOTE]
-    > Hinweis: Die Werte müssen durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner ersetzt werden. Die entsprechenden Werte erfahren Sie vom FileCloud-Supportteam über <mailto:support@codelathe.com>.
-    > 
-    > 
+    >[!NOTE]
+    >Hinweis: Die Werte müssen durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner ersetzt werden. Die entsprechenden Werte erfahren Sie vom FileCloud-Supportteam über <mailto:support@codelathe.com>.
+    >  
 
 4. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für FileCloud** die folgenden Schritte aus, und klicken Sie dann auf **Weiter**:
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_05.png)
-   
-    a. Klicken Sie auf **Metadaten herunterladen**und speichern Sie die Datei auf Ihrem Computer.
-   
-    b. Klicken Sie auf **Weiter**.
+ 1. Klicken Sie auf **Metadaten herunterladen**und speichern Sie die Datei auf Ihrem Computer.
+ 2. Klicken Sie auf **Weiter**.
 
 5. Melden Sie sich in einem anderen Webbrowserfenster an Ihrem FileCloud-Mandanten als Administrator an.
 
@@ -170,7 +163,7 @@ In diesem Abschnitt aktivieren Sie im klassischen Portal das einmalige Anmelden 
     
     ![Azure AD – einmaliges Anmelden][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im klassischen Azure-Portal.
 
 ![Azure AD-Benutzer erstellen][20]
@@ -194,26 +187,18 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-filecloud-tutorial/create_aaduser_05.png)
-   
-    a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
-   
-    b. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
-   
-    c. Klicken Sie auf **Weiter**.
+ 1. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.  
+ 2. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein. 
+ 3. Klicken Sie auf **Weiter**.
 
 6. Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
    
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-filecloud-tutorial/create_aaduser_06.png)
-   
-    a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
-   
-    b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
-   
-    c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
-   
-    d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
-   
-    e. Klicken Sie auf **Weiter**.
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-filecloud-tutorial/create_aaduser_06.png) 
+ 1. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
+ 2. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein. 
+ 3. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein. 
+ 4. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus. 
+ 5. Klicken Sie auf **Weiter**.
 
 7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
    
@@ -221,24 +206,21 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
 8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
    
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-filecloud-tutorial/create_aaduser_08.png)
-   
-    a. Notieren Sie den Wert von **Neues Kennwort**.
-   
-    b. Klicken Sie auf **Fertig stellen**.   
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-filecloud-tutorial/create_aaduser_08.png) 
+ 1. Notieren Sie den Wert von **Neues Kennwort**.  
+ 2. Klicken Sie auf **Fertig stellen**.   
 
-### <a name="creating-a-filecloud-test-user"></a>Erstellen eines FileCloud-Testbenutzers
+### <a name="create-a-filecloud-test-user"></a>Erstellen eines FileCloud-Testbenutzers
 Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in FileCloud. FileCloud unterstützt die Just-In-Time-Bereitstellung, die standardmäßig aktiviert ist.
 
 Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf FileCloud ein neuer Benutzer erstellt. 
 
-> [!NOTE]
-> Setzen Sie sich mit dem Supportteam von FileCloud in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
-> 
+>[!NOTE]
+>Setzen Sie sich mit dem Supportteam von FileCloud in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen. 
 > 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
-Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmaligen Anmeldens mit Azure zu ermöglichen, indem sie Zugriff auf FileCloud erhält.
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmaligen Anmeldens (SSO) von Azure zu ermöglichen, indem sie Zugriff auf FileCloud erhält.
 
 ![Benutzer zuweisen][200]
 
@@ -262,8 +244,8 @@ Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmal
    
     ![Benutzer zuweisen][205]
 
-### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
-Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
+Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden (SSO) über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „FileCloud“ klicken, sollten Sie automatisch bei Ihrer FileCloud-Anwendung angemeldet werden.
 

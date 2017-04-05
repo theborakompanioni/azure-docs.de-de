@@ -27,7 +27,7 @@ ms.lasthandoff: 03/30/2017
 
 Dieses PowerShell-Beispielskript erstellt eine Kopie einer vorhandenen Datenbank auf einem neuen Server. 
 
-[!INCLUDE [sample-cli-install](../../../includes/sample-powershell-install-no-ssh.md)]
+[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ## <a name="copy-a-database-to-a-new-server"></a>Kopieren einer Datenbank auf einen neuen Server
 

@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/25/2017
 ms.author: shlo
 translationtype: Human Translation
-ms.sourcegitcommit: 6b50b65fa1ad86c8e80fff0fb92352b1be52632e
-ms.openlocfilehash: db7066fb87175caa165d741b63f9b0e3f9ed851c
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 2faab833724bf4bb3f3262517e1d724868f7524d
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -252,9 +253,4 @@ Möchten Sie beim Bereitstellen von Azure Data Factory-Entitäten mithilfe von P
 > Bisher ist es nicht möglich, Vorlagen für bestehende Data Factorys zu exportieren. Diese Funktion befindet sich jedoch in Entwicklung.
 >
 >
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

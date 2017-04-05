@@ -15,8 +15,9 @@ ms.tgt_pltfrm: na
 ms.date: 01/18/2017
 ms.author: eugenesh
 translationtype: Human Translation
-ms.sourcegitcommit: 19a652f81beacefd4a51f594f045c1f3f7063b59
-ms.openlocfilehash: b7f6c92867e3fabe07312539ec8dfd2d3525f02e
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 66e6fec16aab7764b05b616efc0fccbfb2d0595e
+ms.lasthandoff: 03/30/2017
 
 ---
 
@@ -60,10 +61,10 @@ Weitere Informationen über die API zum Erstellen einer Datenquelle finden Sie u
 Sie können die Anmeldeinformationen für die Tabelle mit einer der folgenden Methoden angeben: 
 
 - **Verbindungszeichenfolge für den Vollzugriff auf ein Speicherkonto**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>`. Sie können die Verbindungszeichenfolge über das Azure-Portal abrufen, indem Sie auf dem Blatt des Speicherkontos zu „Einstellungen“ > „Schlüssel“ (für klassische Speicherkonten) oder zu „Einstellungen“ > „Zugriffsschlüssel“ (für Azure Resource Manager-Speicherkonten) navigieren.
-- Verbindungszeichenfolge für **Shared Access Signature (SAS) für ein Speicherkonto**: `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl`. Die SAS muss über Listen- und Leseberechtigungen für Container (in diesem Fall: Tabellen) und Objekte (Tabellenzeilen) verfügen.
--  **Shared Access Signature für eine Tabelle**: `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl`. Die SAS muss über Listen- und Leseberechtigungen für die Tabelle verfügen.
+- Verbindungszeichenfolge für **Shared Access Signature (SAS) für ein Speicherkonto**: `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl`. Die SAS muss über Listen- und Leseberechtigungen für Container (in diesem Fall: Tabellen) und Objekte (Tabellenzeilen) verfügen.
+-  **Shared Access Signature für eine Tabelle**: `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r`. Die SAS muss über Abfrageberechtigungen (Lesen) für die Tabelle verfügen.
 
-Weitere Informationen zu speicherbezogenen Shared Access Signatures finden Sie unter [Verwenden von Shared Access Signatures (SAS)](../storage/storage-dotnet-shared-access-signature-part-1.md).
+Weitere Informationen zu Shared Access Signatures von Speichern finden Sie unter [Verwenden von Shared Access Signatures (SAS)](../storage/storage-dotnet-shared-access-signature-part-1.md).
 
 > [!NOTE]
 > Bei Verwendung von SAS-Anmeldeinformationen müssen Sie die Anmeldedaten für die Datenquellen in regelmäßigen Abständen mit erneuerten Signaturen aktualisieren, um den Ablauf zu verhindern. Falls SAS-Anmeldedaten ablaufen, tritt beim Indexer ein Fehler mit ungefähr folgender Fehlermeldung auf: `Credentials provided in the connection string are invalid or have expired.`.  
@@ -134,9 +135,4 @@ Um anzugeben, dass bestimmte Dokumente aus dem Index entfernt werden müssen, k�
 
 ## <a name="help-us-make-azure-search-better"></a>Helfen Sie uns bei der Verbesserung von Azure Search
 Teilen Sie uns auf unserer [UserVoice-Website](https://feedback.azure.com/forums/263029-azure-search/)mit, wenn Sie sich Features wünschen oder Verbesserungsvorschläge haben.
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

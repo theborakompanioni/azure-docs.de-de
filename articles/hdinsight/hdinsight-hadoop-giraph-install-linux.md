@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 9fcac906-8f06-4002-9fe8-473e42f8fd0f
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,9 +17,9 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 5ec4b964066687b506686709c3dc5ed5b402fbaf
-ms.openlocfilehash: 699626f24e6f66f4b149feda5eb292e64d4b6647
-ms.lasthandoff: 02/09/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: ff27749800319517a8f635530f0f16b928692575
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -31,7 +32,7 @@ In diesem Thema wird beschrieben, wie Sie Giraph mithilfe der Funktion „Skript
 > [!IMPORTANT]
 > Die Schritte in diesem Dokument erfordern einen HDInsight-Cluster mit Linux. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date).
 
-## <a name="a-namewhatisawhat-is-giraph"></a><a name="whatis"></a>Was ist Giraph?
+## <a name="whatis"></a>Was ist Giraph?
 
 [Apache Giraph](http://giraph.apache.org/) ermöglicht die Graphverarbeitung mit Hadoop und lässt sich mit Azure HDInsight nutzen. Graphen bilden Beziehungen zwischen Objekten ab, wie z. B. Verbindungen zwischen Routern in einem großen Netzwerk wie dem Internet oder Beziehungen zwischen Menschen in sozialen Netzwerken (mitunter als "Social Graph" bezeichnet). Mit der Graphverarbeitung können Sie sich Gedanken über die Beziehungen zwischen den Objekten im Diagramm machen wie etwa:
 
@@ -55,7 +56,7 @@ Dieses Skript führt folgende Aktionen aus:
 
 * Kopiert die `giraph-examples.jar`-Datei in den Standardspeicher (WASB) für den Cluster: `/example/jars/giraph-examples.jar`
 
-## <a name="a-nameinstallainstall-giraph-using-script-actions"></a><a name="install"></a>Installation von Giraph mithilfe von Skriptaktionen
+## <a name="install"></a>Installation von Giraph mithilfe von Skriptaktionen
 
 Ein Beispielskript zum Installieren von Giraph in einem HDInsight-Cluster ist an folgendem Ort verfügbar:
 
@@ -86,7 +87,7 @@ Dieser Abschnitt enthält Anweisungen zur Verwendung des Beispielskripts währen
 
 4. Setzen Sie die Erstellung des Clusters wie unter [Erstellen Linux-basierter HDInsight-Cluster](hdinsight-hadoop-create-linux-clusters-portal.md)beschrieben fort.
 
-## <a name="a-nameusegiraphahow-do-i-use-giraph-in-hdinsight"></a><a name="usegiraph"></a>Wie verwende ich Giraph in HDInsight?
+## <a name="usegiraph"></a>Wie verwende ich Giraph in HDInsight?
 
 Sobald die Clustererstellung abgeschlossen ist, gehen Sie folgendermaßen vor, um das in Giraph enthaltene Beispiel "SimpleShortestPathsComputation" auszuführen.  Dieses verwendet die grundlegende [Pregel](http://people.apache.org/~edwardyoon/documents/pregel.pdf)-Implementierung zum Ermitteln des kürzesten Pfads zwischen Objekten in einem Graph.
 
@@ -94,11 +95,7 @@ Sobald die Clustererstellung abgeschlossen ist, gehen Sie folgendermaßen vor, u
    
         ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
    
-    Weitere Informationen zur Verwendung von SSH mit HDInsight finden Sie in den folgenden Artikeln:
-   
-   * [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix, OS X oder Windows](hdinsight-hadoop-linux-use-ssh-unix.md)
-
-   * [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Windows mit PuTTY](hdinsight-hadoop-linux-use-ssh-windows.md)
+    Informationen hierzu finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 2. Verwenden Sie den folgenden Befehl, um eine neue Datei namens **tiny_graph.txt** zu erstellen:
    

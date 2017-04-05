@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 12/14/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: e982d29f76d521720eea7cbb56c5084572f4a542
-ms.openlocfilehash: 3286a6e98b52f2ce6f173f79ae69f0b86ab2179a
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 899115d213e626f17e58c2e5f01313f760f9e7f4
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -29,6 +30,9 @@ Azure Application Gateway überwacht standardmäßig die Integrität aller Resso
 ![Beispiel für einen Application Gateway-Test][1]
 
 Zusätzlich zur Nutzung der standardmäßigen Überwachung der Integritätsüberprüfung können Sie die Integritätsüberprüfung auch an die Anforderungen Ihrer Anwendung anpassen. In diesem Artikel werden sowohl standardmäßige als auch benutzerdefinierte Integritätstests behandelt.
+
+> [!NOTE]
+> Wenn ein Application Gateway-Subnetz eine NSG enthält, muss der Portbereich 65503 bis 65534 im Application Gateway-Subnetz für eingehenden Datenverkehr geöffnet werden. Diese Ports sind erforderlich, damit die Back-End-Integritäts-API verwendet werden kann.
 
 ## <a name="default-health-probe"></a>Standardmäßige Integritätsüberprüfung
 
@@ -78,9 +82,4 @@ Die folgende Tabelle enthält Definitionen der Eigenschaften eines benutzerdefin
 Nachdem Sie sich mit der Systemüberwachung von Application Gateway vertraut gemacht haben, können Sie einen [benutzerdefinierten Integritätstest](application-gateway-create-probe-portal.md) im Azure-Portal oder einen [benutzerdefinierten Integritätstest](application-gateway-create-probe-ps.md) mit PowerShell und dem Azure Resource Manager-Bereitstellungsmodell konfigurieren.
 
 [1]: ./media/application-gateway-probe-overview/appgatewayprobe.png
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

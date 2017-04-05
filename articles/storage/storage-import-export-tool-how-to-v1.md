@@ -1,6 +1,6 @@
 ---
-title: "Verwenden des Azure Import/Export-Tools – V1 | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie mit dem Import/Export-Tool Festplatten für einen Importauftrag vorbereiten sowie einen Import- oder einen Exportauftrag reparieren."
+title: Verwenden des Azure Import/Export-Tools (V1) | Microsoft-Dokumentation
+description: "Erfahren Sie, wie Sie mit dem Import/Export-Tool Festplatten für einen Importauftrag vorbereiten sowie einen Import- oder Exportauftrag reparieren."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 1/15/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: ca2d4bf2b1e1cb56910fa3ee7af6e45b6b77b450
-ms.openlocfilehash: 3a6882e52b8ad966f81de45395bf5f56d751f050
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 67bdfa8c2cd0f8314c82e2b334a3fa3a5c520c66
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -36,8 +37,6 @@ In diesen Artikeln wird erläutert, wie Sie mithilfe des Tools die folgenden Vor
 - Reparieren eines Exportauftrags 
 - Problembehandlung beim Azure Import/Export-Tool für den Fall, dass während des Vorgangs Probleme auftreten 
 
+## <a name="next-steps"></a>Nächste Schritte
 
-
-<!--HONumber=Dec16_HO3-->
-
-
+* [Einrichten des WAImportExport-Tools](storage-import-export-tool-how-to.md)

@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 590d2c39e295e2f855910b00e0302f01d96de8dc
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
+ms.openlocfilehash: c309151e3e3aa6ff235f0dee2ddf975940f34f44
+ms.lasthandoff: 03/24/2017
 
 ---
 
@@ -82,7 +82,7 @@ Folgende Eigenschaften können für eine Paketerfassung definiert werden:
 
 **Konfiguration erfassen**
 
-- **Storage**: Gibt an, ob die Paketerfassung in einem Speicherkonto gespeichert wird.
+- **Speicherkonto:** Gibt an, ob die Paketerfassung in einem Speicherkonto gespeichert wird.
 - **Datei**: Gibt an, ob eine Paketerfassung lokal auf dem virtuellen Computer gespeichert wird.
 - **Speicherkonten**: Das ausgewählte Speicherkonto, unter dem die Paketerfassung gespeichert wird. Der Standardspeicherort ist „https://{Name des Speicherkontos}.blob.core.windows.net/network-watcher-logs/subscriptions/{Abonnement-ID}/resourcegroups/{Name der Ressourcengruppe}/providers/microsoft.compute/virtualmachines/{Name des virtuellen Computers}/{JJ}/{MM}/{TT}/packetcapture_{HH}_{MM}_{SS}_{XXX}.cap“. (Nur aktiviert, wenn **Storage** ausgewählt ist.)
 - **Lokaler Dateipfad**: Der lokale Dateipfad auf einem virtuellen Computer zum Speichern der Paketerfassung. (Nur aktiviert, wenn **Datei** ausgewählt ist.) Ein gültiger Pfad muss angegeben werden.

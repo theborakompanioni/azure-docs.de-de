@@ -5,7 +5,7 @@
 Azure-VM-Erweiterungen implementieren Verhaltensweisen oder Features, mit denen andere Programme auf virtuellen Azure-Computern verwendet werden können. Die Erweiterung **WebDeployForVSDevTest** ermöglicht Visual Studio etwa die Webbereitstellung von Lösungen auf Ihrem virtuellen Azure-Computer. Sie bieten aber auch die Möglichkeit zur Interaktion mit dem virtuellen Computer, um ein anderes Verhalten zu unterstützen. So können Sie beispielsweise die VM-Zugriffserweiterungen von PowerShell, die Azure-Befehlszeilenschnittstelle und REST-Clients verwenden, um die Remotezugriffswerte auf Ihrem virtuellen Azure-Computer zurückzusetzen oder zu ändern.
 
 > [!IMPORTANT]
-> Eine vollständige, nach unterstützten Features sortierte Liste mit Erweiterungen finden Sie unter [Azure-VM-Erweiterungen](../articles/virtual-machines/virtual-machines-windows-extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Da jede VM-Erweiterung ein bestimmtes Feature unterstützt, hängt es von der Erweiterung ab, was Sie mit der Erweiterung genau machen können. Bevor Sie Ihren virtuellen Computer ändern, sollten Sie daher die Dokumentation für die VM-Erweiterung lesen, die Sie verwenden möchten. Das Entfernen einiger VM-Erweiterungen wird nicht unterstützt. Andere weisen Eigenschaften auf, die festgelegt werden können und das VM-Verhalten grundlegend ändern.
+> Eine vollständige, nach unterstützten Features sortierte Liste mit Erweiterungen finden Sie unter [Azure-VM-Erweiterungen](../articles/virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Da jede VM-Erweiterung ein bestimmtes Feature unterstützt, hängt es von der Erweiterung ab, was Sie mit der Erweiterung genau machen können. Bevor Sie Ihren virtuellen Computer ändern, sollten Sie daher die Dokumentation für die VM-Erweiterung lesen, die Sie verwenden möchten. Das Entfernen einiger VM-Erweiterungen wird nicht unterstützt. Andere weisen Eigenschaften auf, die festgelegt werden können und das VM-Verhalten grundlegend ändern.
 > 
 > 
 
@@ -105,9 +105,4 @@ Sie können die folgenden REST-APIs verwenden, um herauszufinden, ob für eine E
 > Erweiterungen können auch Konfigurationen verwenden, die mit JSON definiert sind. Wenn diese Typen von Erweiterungen verwendet werden, wird nur das **SampleConfig** -Element verwendet.
 > 
 > 
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

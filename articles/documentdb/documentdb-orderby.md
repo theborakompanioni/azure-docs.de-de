@@ -2,8 +2,9 @@
 redirect_url: https://azure.microsoft.com/services/documentdb/
 ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: d59ebef3cda36ba048b844f0cd2326fff66b4aa5
-ms.openlocfilehash: c5fc68fb25a4cb2166e0c0a72871d16c71397852
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 0ca716857733290fad4278e3be5059408bb75393
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -90,7 +91,7 @@ Hier erfahren Sie, wie Sie eine Sammlung mit der Indizierung für „Order By“
 
 
 ## <a name="samples"></a>Beispiele
-Sehen Sie sich dieses [Github-Beispielprojekt](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/Queries) an, das veranschaulicht, wie "Order By" verwendet wird, einschließlich Erstellen von Richtlinien für die Indizierung und Paging mit "Order By". Diese Beispiele sind Open-Source-basiert, und wir freuen uns, wenn Sie Pullanforderungen mit Beiträgen senden, von denen andere DocumentDB-Entwickler profitieren können. In den [Anleitungen für Beiträge](https://github.com/Azure/azure-documentdb-net/blob/master/Contributing.md) finden Sie Informationen dazu, wie Sie beitragen können.  
+Sehen Sie sich dieses [GitHub-Beispielprojekt](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/Queries) an, das veranschaulicht, wie „Order By“ verwendet wird, einschließlich Erstellung von Richtlinien für die Indizierung und Paging mit „Order By“. Diese Beispiele sind Open-Source-basiert, und wir freuen uns, wenn Sie Pullanforderungen mit Beiträgen senden, von denen andere DocumentDB-Entwickler profitieren können. In den [Anleitungen für Beiträge](https://github.com/Azure/azure-documentdb-net/blob/master/Contributing.md) finden Sie Informationen dazu, wie Sie beitragen können.  
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 **Was ist der erwartete Anforderungseinheitsverbrauch (Request Unit, RU) der "Order By"-Abfragen?**
@@ -123,17 +124,12 @@ Sie können Folgendes nicht durchführen:
 Wenn eine Fehlermeldung angezeigt wird, dass „Order By“ nicht unterstützt wird, stellen Sie sicher, dass Sie eine Version des [SDK](documentdb-sdk-dotnet.md) verwenden, die „Order By“ unterstützt. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Verwenden Sie das [Github-Beispielprojekt](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/Queries) und starten Sie die Sortierung Ihrer Daten! 
+Verzweigen Sie das [GitHub-Beispielprojekt](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/Queries), und starten Sie die Sortierung Ihrer Daten. 
 
 ## <a name="references"></a>Referenzen
 * [DocumentDB-Abfragereferenz](documentdb-sql-query.md)
 * [DocumentDB-Indizierungsrichtlinienreferenz](documentdb-indexing-policies.md)
 * [DocumentDB-SQL-Referenz](https://msdn.microsoft.com/library/azure/dn782250.aspx)
 * [DocumentDB-"Order By"-Beispiele](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/Queries)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

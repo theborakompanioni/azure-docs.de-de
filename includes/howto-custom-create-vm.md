@@ -44,6 +44,6 @@ Ein *benutzerdefinierter* virtueller Computer ist ein virtueller Computer, den S
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem der virtuelle Computer erstellt wurde, wird er automatisch gestartet. Wenn im Portal der Status "Wird ausgeführt" angezeigt wird, können Sie sich beim virtuellen Computer anmelden. Weitere Anweisungen finden Sie in den folgenden Artikeln:
 
-* [Anmelden bei einem virtuellen Computer unter Linux](../articles/virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Anmelden bei einem virtuellen Computer unter Linux](../articles/virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Anmelden bei einem virtuellen Computer, auf dem Windows Server ausgeführt wird](../articles/virtual-machines/windows/classic/connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 

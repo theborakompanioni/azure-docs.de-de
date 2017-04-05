@@ -6,7 +6,7 @@
 | [Co-Administratoren](../articles/billing-add-change-azure-subscription-administrator.md) pro Abonnement |Unbegrenzt |Unbegrenzt |
 | [Speicherkonten](../articles/storage/storage-create-storage-account.md) pro Abonnement |200 |200<sup>2</sup> |
 | [Ressourcengruppen](../articles/azure-resource-manager/resource-group-overview.md) pro Abonnement |800 |800 |
-| [Verfügbarkeitsgruppen](../articles/virtual-machines/virtual-machines-windows-manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) pro Abonnement |2000 pro Region |2000 pro Region |
+| [Verfügbarkeitsgruppen](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) pro Abonnement |2000 pro Region |2000 pro Region |
 | Ressourcen-Manager-API-Lesevorgänge |15.000 pro Stunde |15.000 pro Stunde |
 | Ressourcen-Manager-API-Schreibvorgänge |1.200 pro Stunde |1.200 pro Stunde |
 | Ressourcen-Manager-API-Anforderungsgröße |4.194.304 Bytes |4.194.304 Bytes |
@@ -24,9 +24,4 @@
 > <!-- -->
 > 
 > 
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

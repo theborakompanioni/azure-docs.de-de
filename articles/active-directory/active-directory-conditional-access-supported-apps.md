@@ -1,5 +1,5 @@
 ---
-title: "Anwendungen, die Regeln für den bedingten Zugriff in Azure Active Directory verwenden | Microsoft Docs"
+title: "Anwendungen und Browser, die Regeln für den bedingten Zugriff in Azure Active Directory verwenden | Microsoft-Dokumentation"
 description: "Mithilfe der bedingten Zugriffssteuerung führt Azure Active Directory bei der Benutzerauthentifizierung und vor dem Gewähren von Anwendungszugriff eine Überprüfung auf besondere Bedingungen durch."
 services: active-directory
 documentationcenter: 
@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/22/2017
+ms.date: 03/28/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: 6dea1af021599eb530a4feb3257238e088191d5f
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 7dc79fad1a87f015475cd2643c8bec55192b2a15
+ms.lasthandoff: 03/28/2017
 
 
 ---
-# <a name="applications-that-use-conditional-access-rules-in-azure-active-directory"></a>Anwendungen, die Regeln für den bedingten Zugriff in Azure Active Directory verwenden
+# <a name="applications-and-browsers-that-use-conditional-access-rules-in-azure-active-directory"></a>Anwendungen und Browser, die Regeln für den bedingten Zugriff in Azure Active Directory verwenden
+
 Regeln für den bedingten Zugriff werden in mit Azure Active Directory (Azure AD) verbundenen Anwendungen, in vorab integrierten SaaS-Verbundanwendungen (Software-as-a-Service), in Anwendungen mit einmaliger Anmeldung (SSO) per Kennwort sowie für Branchenanwendungen und für Anwendungen unterstützt, die den Azure AD-Anwendungsproxy verwenden. Eine detaillierte Liste der Anwendungen, für die der bedingte Zugriff verwendet werden kann, finden Sie unter [Dienste mit aktiviertem bedingtem Zugriff](active-directory-conditional-access-technical-reference.md). Der bedingte Zugriff kann sowohl für mobile Anwendungen als auch für Desktopanwendungen mit modernen Authentifizierungsverfahren verwendet werden. In diesem Artikel wird erläutert, wie der bedingte Zugriff in mobilen Apps und in Desktop-Apps funktioniert.
 
 Sie können in Anwendungen mit moderner Authentifizierung Azure AD-Anmeldeseiten verwenden. Bei Verwendung einer Anmeldeseite wird der Benutzer zur mehrstufigen Authentifizierung aufgefordert. Es wird eine Meldung angezeigt, wenn der Benutzerzugriff blockiert wird. Eine moderne Authentifizierung für das Gerät ist für die Authentifizierung bei Azure AD erforderlich, damit die gerätebasierten Richtlinien für den bedingten Zugriff ausgewertet werden.
@@ -48,7 +49,7 @@ Die folgenden Anwendungen unterstützen den bedingten Zugriff für Office 365 un
 | Office 365 SharePoint Online |Mac OS X |Outlook 2016 nur für mehrstufige Authentifizierung und Standort; geplante Unterstützung für gerätebasierte Richtlinien |
 | Office 365 Yammer |Windows 10, iOS; Unterstützung für Android geplant |Office Yammer-App |
 | Dynamics CRM |Windows 10, Windows 8.1, Windows 7, iOS, Android |Dynamics CRM-App |
-| PowerBI-Dienst |Windows 10, Windows 8.1, Windows 7 und iOS|Power BI-App (Android-App nicht unterstützt) |
+| PowerBI-Dienst |Windows 10, Windows 8.1, Windows 7, iOS, Android |Power BI-App |
 | Azure Remote-App-Dienst |Windows 10, Windows 8.1, Windows 7, iOS, Android, Mac OS X |Azure RemoteApp |
 | Alle Meine Apps-App-Dienste |Android und iOS |Alle Meine Apps-App-Dienste |
 
@@ -109,4 +110,35 @@ Durch Anwenden der folgenden drei Regeln auf die AD FS-Vertrauensstellung der ve
     c1:[Type == "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork", Value == "false"] &&
     c2:[Type == "http://schemas.microsoft.com/2012/01/requestcontext/claims/x-ms-endpoint-absolute-path", Value =~ "(/adfs/ls)|(/adfs/oauth2)"]
     => issue(Type = "http://schemas.microsoft.com/authorization/claims/permit", Value = "true");
+
+
+## <a name="supported-browsers"></a>Unterstützte Browser
+
+
+| Betriebssystem                     | Browser                 | Support |
+| :--                    | :--                      | :-:     |
+| Windows 10                 | IE, Edge                 | ![Prüfen][1] |
+| Windows 10                 | Chrome                   | In Kürze verfügbar |
+| Windows 8/8.1            | IE                       | ![Prüfen][1] |
+| Windows 7                  | IE                       | ![Prüfen][1] |
+| iOS                     | Safari                   | ![Prüfen][1] |
+| Android                | Chrome                   | ![Prüfen][1] |
+| WinPhone               | IE, Edge                 | ![Prüfen][1] |
+| Windows Server 2016    | IE, Edge                 | ![Prüfen][1] |
+| Windows Server 2012 R2 | IE                       | ![Prüfen][1] |
+| Windows Server 2008 R2     | IE                       | ![Prüfen][1] |
+| Mac OS                 | Safari                   | ![Prüfen][1] |
+| Mac OS                 | Chrome                   | In Kürze verfügbar |
+
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Weitere Informationen finden Sie unter [Bedingter Zugriff in Azure Active Directory](active-directory-conditional-access.md).
+
+
+
+<!--Image references-->
+[1]: ./media/active-directory-conditional-access-supported-apps/ic195031.png
+
+
 

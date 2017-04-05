@@ -15,9 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 2/15/2017
 ms.author: ruturajd
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: a1769a522d13926e887e82b8d26b36afb4c80b08
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
+ms.openlocfilehash: 845a950f02ba95a100ffedbb07e4d1491b22a2da
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -63,7 +63,7 @@ Nach dem Failover vom primären zum sekundären Standort sind die virtuellen Rep
 
 4. Wenn die Datenverschlüsselung für die Cloud aktiviert ist, wählen Sie unter **Verschlüsselungsschlüssel** das Zertifikat aus, das beim Aktivieren der Datenverschlüsselung im Rahmen der Anbieterinstallation auf dem VMM-Server ausgestellt wurde.
 5. Initiieren Sie das Failover. Der Fortschritt des Failovers wird auf der Registerkarte **Aufträge** angezeigt.
-6. Falls Sie die Option ausgewählt haben, mit der die Daten vor dem Failover synchronisiert werden, klicken Sie unter **Aufträge** > <planned failover job name> auf die Option zum **Abschließen des Failovers**, sobald die erste Datensynchronisierung abgeschlossen ist und Sie zum Herunterfahren der virtuellen Computer in Azure bereit sind. Dadurch wird der Azure-Computer heruntergefahren, die neuesten Änderungen werden an den lokalen virtuellen Computer übertragen, und er wird gestartet.
+6. Wenn Sie die Option zum Synchronisieren der Daten vor dem Failover aktiviert haben, klicken Sie auf **Aufträge** <Auftragsname des geplanten Failovers> **Failover abschließen**, sobald die erste Datensynchronisierung abgeschlossen ist und Sie zum Herunterfahren der virtuellen Computer in Azure bereit sind. Dadurch wird der Azure-Computer heruntergefahren, die neuesten Änderungen werden an den lokalen virtuellen Computer übertragen, und er wird gestartet.
 7. Anschließend können Sie sich bei dem virtuellen Computer anmelden und sich vergewissern, dass er wie erwartet verfügbar ist.
 8. Der Status des virtuellen Computers weist darauf hin, dass ein Commit aussteht. Klicken Sie auf **Commit** , um ein Commit für das Failover auszuführen.
 9. Klicken Sie anschließend auf **Umgekehrt replizieren** , um das Failback abzuschließen und den virtuellen Computer am primären Standort zu schützen.

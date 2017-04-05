@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
-ms.openlocfilehash: cc095b419eae7e85590cdd323a5cf3809c45452e
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 8c4c8db3cf57537dd77d33b3ded2dc24167f511f
+ms.lasthandoff: 03/25/2017
 
 ---
 
@@ -67,17 +67,29 @@ Um dieses Problem zu umgehen, wird empfohlen, eine HTTP-Umleitung zu verwenden, 
 
 Die uneingeschränkte Unterstützung von Naked-Domänen in Traffic Manager ist Teil unseres Feature-Backlogs. Sie können die Unterstützung für diese Funktionsanforderung registrieren, indem Sie [auf unserer Community-Feedbackwebsite dafür abstimmen](https://feedback.azure.com/forums/217313-networking/suggestions/5485350-support-apex-naked-domains-more-seamlessly).
 
+### <a name="does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries"></a>Berücksichtigt Traffic Manager beim Verarbeiten von DNS-Abfragen die Clientsubnetzadresse? 
+Nein, momentan berücksichtigt Traffic Manager beim Ausführen von Lookups mithilfe der geografischen und der leistungsbezogenen Routingmethode nur die Quell-IP-Adresse der empfangenen DNS-Abfrage, bei der es sich in den meisten Fällen um die IP-Adresse des DNS-Resolvers handelt.  
+Insbesondere [RFC 7871 – Client Subnet in DNS Queries](https://tools.ietf.org/html/rfc7871), über den ein [Extension Mechanism for DNS (EDNS0)](https://tools.ietf.org/html/rfc2671) bereitgestellt wird, der die Clientsubnetzadresse vom unterstützenden Resolver an die DNS-Server ermöglicht, wird in Traffic Manager zurzeit nicht unterstützt. Sie können auf der [Community-Feedbackwebsite](https://feedback.azure.com/forums/217313-networking) für die Unterstützung für diese Funktionsanforderung abstimmen.
+
 
 ## <a name="traffic-manager-geographic-traffic-routing-method"></a>Geografische Methode für das Datenverkehrsrouting in Traffic Manager
 
 ### <a name="what-are-some-use-cases-where-geographic-routing-is-useful"></a>Was sind einige Anwendungsfälle, in denen geografisches Routing nützlich ist? 
-Der geografische Routingtyp kann in jedem Szenario verwendet werden, in dem ein Azure-Kunde seine Benutzer auf der Grundlage geografischer Regionen unterscheiden muss. Ein Beispiel dafür wäre, für Benutzer aus bestimmten Regionen eine andere Benutzeroberfläche als für Benutzer aus anderen Regionen anzuzeigen. Ein weiteres Beispiel wäre die Einhaltung ortsbezogener Datenhoheitsmandate, für die es erforderlich ist, dass Benutzer aus einer bestimmten Region nur von Endpunkten in der betreffenden Region bedient werden.
+Der geografische Routingtyp kann in jedem Szenario verwendet werden, in dem ein Azure-Kunde seine Benutzer auf der Grundlage geografischer Regionen unterscheiden muss. Beispielsweise können Sie mithilfe des geografischen Routings für Benutzer aus bestimmten Regionen eine andere Benutzeroberfläche anzeigen als für Benutzer aus anderen Regionen. Ein weiteres Beispiel wäre die Einhaltung ortsbezogener Datenhoheitsmandate, für die es erforderlich ist, dass Benutzer aus einer bestimmten Region nur von Endpunkten in der betreffenden Region bedient werden.
 
 ### <a name="what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing"></a>Welche Bereiche werden von Traffic Manager für das geografische Routing unterstützt? 
 Die Landes/Regionshierarchie, die von Traffic Manager verwendet wird, finden Sie [hier](traffic-manager-geographic-regions.md). Diese Seite wird jeweils auf dem neuesten Änderungsstatus gehalten, jedoch können Sie die gleichen Informationen auch programmgesteuert mithilfe der [Azure Traffic Manager-REST-API](https://docs.microsoft.com/rest/api/trafficmanager/) abrufen. 
 
 ### <a name="how-does-traffic-manager-determine-where-a-user-is-querying-from"></a>Wie bestimmt Traffic Manager, woher die Abfrage eines Benutzers stammt? 
 Traffic Manager untersucht die IP-Quelladresse der Abfrage (dabei handelt es sich mit größter Wahrscheinlichkeit um einen lokalen DNS-Auflöser, der die Abfrage im Auftrag des Benutzers ausführt) und verwendet eine interne Zuordnung von IPs zu Regionen, um den Standort zu bestimmen. Diese Zuordnung wird fortlaufend aktualisiert, um Änderungen im Internet Rechnung zu tragen. 
+
+### <a name="is-it-guaranteed-that-traffic-manager-will-correctly-determine-the-exact-geographic-location-of-the-user-in-every-case"></a>Ist garantiert, dass Traffic Manager immer den genauen geografischen Standort des Benutzers ermittelt?
+Nein, Traffic Manager kann aus den folgenden Gründen nicht garantieren, dass die geografische Region, die aus der Quell-IP-Adresse einer DNS-Abfrage abgeleitet wird, immer dem Benutzerstandort entspricht: 
+
+- 1. Wie in der vorherigen Frage beschrieben wurde, ist die erkannte Quell-IP-Adresse die eines DNS-Resolvers, der das Lookup im Namen des Benutzers durchführt. Wenngleich der geografische Standort des DNS-Resolvers ein guter Anhaltspunkt für den geografischen Standort des Benutzers ist, kann er je nach Speicherort des DNS-Resolverdients und dem vom Kunden verwendeten spezifischen DNS-Resolverdienst abweichen. Hier ein Beispiel: Ein in Malaysia ansässiger Kunde könnte in den Geräteeinstellungen einen DNS-Resolverdienst angeben, dessen zugehöriger DNS-Server in Singapur möglicherweise ausgewählt wird, um die Abfrageauflösungen für diesen Benutzer/Dienst durchzuführen. In diesem Fall sieht Traffic Manager nur die IP-Adresse des Resolvers, die dem Standort in Singapur entspricht. Siehe hierzu auch die Frage zur Unterstützung von Clientsubnetzadressen auf dieser Seite.
+
+- 2. Traffic Manager verwendet eine interne Zuordnung zur Übersetzung der IP-Adressen in geografische Regionen. Wenngleich diese Zuordnung regelmäßig überprüft und aktualisiert wird, um ihre Genauigkeit zu erhöhen und der ständigen Weiterentwicklung des Internets Rechnung zu tragen, besteht dennoch die Möglichkeit, dass unsere Informationen den geografischen Standort nicht für alle IP-Adressen genau abbilden.
+
 
 ###  <a name="does-an-endpoint-need-to-be-physically-located-in-the-same-region-as-the-one-it-is-configured-with-for-geographic-routing"></a>Muss sich ein Endpunkt physisch in der Region befinden, für die er für geografisches Routen konfiguriert ist? 
 Nein, der Standort des Endpunkts bringt keine Einschränkungen hinsichtlich der ihm zuzuordnenden Regionen mit sich. Beispielsweise können einem Endpunkt in der Azure-Region „US-Central“ alle Benutzer aus Indien zugeleitet werden.
@@ -219,7 +231,7 @@ Die Verwendung geschachtelter Profile wirkt sich nicht negativ auf die Preise au
 
 Die Abrechnung für Traffic Manager besteht aus zwei Komponenten: Integritätsprüfungen der Endpunkte und Millionen von DNS-Abfragen.
 
-* Überprüfungen der Endpunktintegrität: Wenn ein untergeordnetes Profil als Endpunkt in einem übergeordneten Profil konfiguriert wird, fallen keine Gebühren an. Die Überwachung von Endpunkten im untergeordneten Profil wird wie üblich abgerechnet.
+* Überprüfungen der Endpunktintegrität: Wenn ein untergeordnetes Profil als Endpunkt in einem übergeordneten Profil konfiguriert wird, fallen keine Gebühren an. Die Überwachung von Endpunkten im untergeordneten Profil wird in gewohnter Weise abgerechnet.
 * DNS-Abfragen: Jede Abfrage wird nur einmal gezählt. Die Abfrage eines übergeordneten Profils, die einen Endpunkt aus einem untergeordneten Profil zurückgibt, wird nur im übergeordneten Profil gezählt.
 
 Ausführliche Informationen finden Sie auf der Seite [Traffic Manager Preise](https://azure.microsoft.com/pricing/details/traffic-manager/).

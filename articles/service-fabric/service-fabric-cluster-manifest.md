@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 2/17/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 4cde82601758c9f92ab36c692265a8b6c192cbdc
-ms.openlocfilehash: eef19d304ec63d752b6b84c78833af44ca5344d2
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
+ms.openlocfilehash: 8192f9e36ebadd41d93ec3c2fa61b05e342d5bc1
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -154,7 +154,7 @@ Im Abschnitt **nodeTypes** werden die Typen der Knoten beschrieben, die in Ihrem
 * *serviceConnectionEndpointPort* ist der Port, der von den auf einem Knoten bereitgestellten Anwendungen und Diensten verwendet wird, um mit dem Service Fabric-Client auf dem jeweiligen Knoten zu kommunizieren.
 * *httpGatewayEndpointPort* ist der Port, der vom Service Fabric Explorer zum Herstellen der Verbindung mit dem Cluster verwendet wird.
 * *ephemeralPorts* setzen die [vom Betriebssystem verwendeten dynamischen Ports](https://support.microsoft.com/kb/929851) außer Kraft. Service Fabric nutzt einen Teil davon als Anwendungsports, und die restlichen Ports sind für das Betriebssystem verfügbar. Außerdem wird dieser Bereich dem vorhandenen Bereich des Betriebssystems zugeordnet, und Sie können die in den JSON-Beispieldateien angegebenen Bereiche für alle Zwecke verwenden. Sie müssen sicherstellen, dass der Unterschied zwischen den Start- und Endports mindestens 255 beträgt. Wenn dieser Unterschied zu gering ist, kann es zu Konflikten kommen, da dieser Bereich für das Betriebssystem freigegeben ist. Zeigen Sie den konfigurierten dynamischen Portbereich an, indem Sie `netsh int ipv4 show dynamicport tcp` ausführen.
-* *applicationPorts* sind die Ports, die von den Service Fabric-Anwendungen verwendet werden. Dies sollte eine Teilmenge von *ephemeralPorts* und ausreichend sein, um die Endpunktanforderung Ihrer Anwendungen abzudecken. Service Fabric greift hierauf zurück, wenn neue Ports benötigt werden, und öffnet die Firewall für diese Ports. 
+* *applicationPorts* sind die Ports, die von den Service Fabric-Anwendungen verwendet werden. Der Portbereich der Anwendung sollte ausreichend sein, um die Endpunktanforderung Ihrer Anwendungen abzudecken. Dieser Bereich sollte vom dynamischen Portbereich auf dem Computer (dem *ephemeralPorts*-Bereich in der Konfiguration) getrennt sein.  Service Fabric greift hierauf zurück, wenn neue Ports benötigt werden, und öffnet die Firewall für diese Ports. 
 * *reverseProxyEndpointPort* ist ein optionaler Reverseproxy-Endpunkt. Weitere Informationen finden Sie unter [Service Fabric-Reverseproxy](service-fabric-reverseproxy.md). 
 
 ### <a name="log-settings"></a>Protokolleinstellungen

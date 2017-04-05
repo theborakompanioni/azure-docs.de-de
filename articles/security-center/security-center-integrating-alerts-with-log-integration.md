@@ -1,5 +1,5 @@
 ---
-title: Integrieren von Azure Security Center-Warnungen mithilfe der Azure Protokollintegration (Vorschau) | Microsoft Docs
+title: Integrieren von Azure Security Center-Warnungen mithilfe der Azure Protokollintegration | Microsoft-Dokumentation
 description: Dieser Artikel hilft beim Einstieg in die Integration von Security Center-Warnungen mithilfe der Azure-Protokollintegration.
 services: security-center
 documentationcenter: na
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/09/2016
+ms.date: 03/23/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
-ms.openlocfilehash: 32d26fa811f1b5b34981e40d20e6c941d5f08477
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: fcd14b6b0afe08db82f2b8050beaf03ece7fd212
+ms.lasthandoff: 03/24/2017
 
 
 ---
-# <a name="integrating-azure-security-center-alerts-with-azure-log-integration-preview"></a>Integrieren von Azure Security Center-Warnungen mithilfe der Azure-Protokollintegration (Vorschau)
+# <a name="integrating-azure-security-center-alerts-with-azure-log-integration"></a>Integrieren von Azure Security Center-Warnungen mithilfe der Azure-Protokollintegration
 Viele für den Sicherheitsbetrieb und die Bearbeitung von Incidents zuständige Teams nutzen eine SIEM-Lösung (Security Information and Event Management) als Ausgangspunkt für die Selektierung und Untersuchung von Sicherheitswarnungen. Mit der Azure-Protokollintegration können Kunden Security Center-Warnungen sowie von der Azure-Diagnose und Azure-Überwachungsprotokollen gesammelte Sicherheitsereignisse für den virtuellen Computer nahezu in Echtzeit mit ihrer Protokollanalyse oder SIEM-Lösung synchronisieren.
 
 Die Azure-Protokollintegration funktioniert mit HP ArcSight, Splunk, IBM QRadar sowie weiteren Lösungen.
@@ -92,9 +93,4 @@ Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 * [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md) : Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
 * [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md) : Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
 * [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Neuigkeiten und Informationen zur Azure-Sicherheit.
-
-
-
-<!--HONumber=Dec16_HO4-->
-
 

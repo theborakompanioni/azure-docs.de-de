@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 09/19/2016
 ms.author: apurvajo
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: edcb6d37eb4d82ff5928ee33cf456c3795eb8131
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: f9ff33f33a196e65f6cb7ee7f5332aacb9231f6d
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -29,7 +29,7 @@ ms.lasthandoff: 03/10/2017
 > 
 > 
 
-Standardmäßig aktiviert **[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)** über ein Platzhalterzertifikat für die Domäne *.azurewebsites.net bereits HTTPS für Ihre Web-App. Wenn Sie keine benutzerdefinierte Domäne konfigurieren möchten, können Sie das Standard-HTTPS-Zertifikat nutzen.*[Platzhalterdomänen](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates) sind jedoch generell nicht so sicher wie die Verwendung einer benutzerdefinierten Domäne mit Ihrem eigenen Zertifikat. Azure App Service bietet Ihnen jetzt eine wirklich einfache Möglichkeit, ein SSL-Zertifikat direkt vom Azure-Portal aus zu erwerben und zu verwalten, ohne das Portal verlassen zu müssen.  
+Standardmäßig aktiviert **[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)** HTTPS bereits für Ihre Web-App über ein Platzhalterzertifikat für die Domäne „*.azurewebsites.net“. Wenn Sie keine benutzerdefinierte Domäne konfigurieren möchten, können Sie das Standard-HTTPS-Zertifikat nutzen. *[Platzhalterdomänen](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates) sind jedoch generell nicht so sicher wie die Verwendung einer benutzerdefinierten Domäne mit Ihrem eigenen Zertifikat. Azure App Service bietet Ihnen jetzt eine wirklich einfache Möglichkeit, ein SSL-Zertifikat direkt vom Azure-Portal aus zu erwerben und zu verwalten, ohne das Portal verlassen zu müssen.  
 In diesem Artikel erfahren Sie, wie Sie ein SSL-Zertifikat für Ihre **[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)**-Instanz in 3 einfachen Schritten kaufen und konfigurieren können. 
 
 > [!NOTE]
@@ -87,13 +87,13 @@ In diesem Schritt erfahren Sie, wie Sie ein SSL-Zertifikat Ihrer Wahl bestellen.
 ## <a name="bkmk_StoreKeyVault"></a>Schritt 1: Speichern des Zertifikats in Azure Key Vault
 In diesem Schritt erfahren Sie, wie Sie ein SSL-Zertifikat, das Sie erworben haben, im Azure Key Vault Ihrer Wahl speichern.
 
-1. Nachdem Sie das SSL-Zertifikat erworben haben, müssen Sie manuell das Ressourcenblatt **App Service-Zertifikate** öffnen, indem Sie es erneut aufrufen (siehe Schritt 1 oben).   
+1. Nachdem Sie das SSL-Zertifikat erworben haben, müssen Sie das Ressourcenblatt **App Service-Zertifikate** manuell öffnen, indem Sie erneut danach suchen (siehe Schritt 1 oben).   
    
    ![Bild von Bereitschaft zum Speichern in KV einfügen](./media/app-service-web-purchase-ssl-web-site/ReadyKV.jpg)
    
-   Sie werden bemerken, dass der Zertifikatstatus **„Ausstehende Ausstellung“** ist, da Sie einige zusätzliche Schritte abschließen müssen, bevor Sie diese Zertifikate verwenden können.
+   Sie werden bemerken, dass der Zertifikatstatus **Ausstellung steht aus** lautet, da Sie einige zusätzliche Schritte ausführen müssen, bevor Sie diese Zertifikate verwenden können.
 2. Klicken Sie auf dem Blatt „Zertifikateigenschaften“ auf **Zertifikatkonfiguration** und dann auf **Schritt 1: Speichern**, um dieses Zertifikat in Azure Key Vault zu speichern.
-3. Klicken Sie auf dem Blatt **Key Vault-Status** auf **Key Vault-Repository**, um einen bestehenden Schlüsseltresor zum Speichern dieses Zertifikats auszuwählen, ODER auf **Neuen Schlüsseltresor erstellen**, um einen neuen Schlüsseltresor im gleichen Abonnement und in der gleichen Ressourcengruppe zu erstellen.
+3. Klicken Sie auf dem Blatt **Key Vault-Status** auf **Key Vault-Repository**, um einen bestehenden Schlüsseltresor zum Speichern dieses Zertifikats auszuwählen, ODER klicken Sie auf **Neuen Schlüsseltresor erstellen**, um einen neuen Schlüsseltresor im gleichen Abonnement und in der gleichen Ressourcengruppe zu erstellen.
    
    ![Bild vom Erstellen eines neuen KV einfügen](./media/app-service-web-purchase-ssl-web-site/NewKV.jpg)
    
@@ -173,8 +173,16 @@ Wenn Sie **IP-basiertes SSL** ausgewählt haben und Ihre benutzerdefinierte Dom�
 * Ändern Sie mit den von der Domänennamen-Registrierungsstelle bereitgestellten Tools den A-Datensatz für den benutzerdefinierten Domänennamen, sodass dieser auf die im vorherigen Schritt genannte IP-Adresse verweist.
    Sie sollten jetzt in der Lage sein, Ihre App über HTTPS:// anstelle von HTTP:// zu erreichen. Sie können damit überprüfen, ob das Zertifikat richtig konfiguriert wurde.
 
-## <a name="bkmk_Rekey"></a>Exportieren eines App Service-Zertifikats
+## <a name="bkmk_Export"></a>Exportieren eines App Service-Zertifikats
 Sie können eine lokale PFX-Kopie eines App Service-Zertifikats erstellen, sodass Sie es mit anderen Azure-Diensten verwenden können. Weitere Informationen finden Sie in **[unserem Blogbeitrag](https://blogs.msdn.microsoft.com/appserviceteam/2017/02/24/creating-a-local-pfx-copy-of-app-service-certificate/)**.
+
+## <a name="bkmk_Renew"></a>Automatisches Verlängern eines App Service-Zertifikats
+Um die Einstellungen für die automatische Verlängerung Ihres Zertifikats zu ändern oder Ihr Zertifikat manuell zu verlängern, wählen Sie einfach auf dem Blatt **Zertifikateigenschaften** die Option **Einstellungen für die automatische Verlängerung**. 
+
+
+  ![Bild vom Erstellen mit Durchsuchen einfügen](./media/app-service-web-purchase-ssl-web-site/autorenew.png)
+
+Aktivieren Sie die Option **Automatische Verlängerung**, wenn Sie Ihr Zertifikat vor Ablauf automatisch verlängern möchten. Dies ist die Standardoption. Wenn Sie Option aktiviert ist, versuchen wir, Ihr Zertifikat ab dem 90. Tag vor Ablauf zu verlängern. Wenn Sie über das Azure-Portal SSL-Bindungen für Ihre App Service-Apps erstellt haben, werden diese ebenfalls mit dem neuen Zertifikat aktualisiert, sobald dieses verfügbar ist (genauso wie im Szenario „Erneute Schlüsselerstellung und Synchronisierung“). Wenn Sie Verlängerungen manuell durchführen möchten, müssen Sie diese Einstellung deaktivieren. Sie können ein App Service-Zertifikat erst manuell verlängern, wenn es sich weniger als 90 Tage vor Ablauf befindet.
 
 ## <a name="bkmk_Rekey"></a>Erneute Schlüsselerstellung für das Zertifikat und Synchronisierung
 1. Wenn Sie jemals erneut einen Schlüssel für Ihr Zertifikat erstellen müssen, wählen Sie aus Sicherheitsgründen einfach die Option **Erstellung neuer Schlüssel und Synchronisierung** auf dem Blatt **Zertifikateigenschaften** aus. 

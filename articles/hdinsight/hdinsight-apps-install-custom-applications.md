@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: e556b29c-8176-4bc5-a90b-aa01abfd3aee
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,9 +17,9 @@ ms.workload: big-data
 ms.date: 02/22/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 44786974a86a8cef9bfbaa9ea2a131b11747b01e
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 275b1cd91347fdfcc36e0e8a6448ccd8818a507d
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -84,7 +85,7 @@ Sie können den Status der Anwendung im Azure-Portal nachverfolgen und sich so v
 3. Klicken Sie auf den Cluster, in dem Sie die Anwendung installiert haben.
 4. Klicken Sie auf dem Blatt **Einstellungen** unter der Kategorie **Allgemein** auf **Anwendungen**. Die Anwendung **Hue** wird in der Liste auf dem Blatt **Installierte Apps** angezeigt.
 5. Klicken Sie in der Liste auf **Hue** , um die Eigenschaften anzuzeigen.  
-6. Klicken Sie auf den Webseitenlink, um die Website zu überprüfen. Öffnen Sie den HTTP-Endpunkt in einem Browser, um die Weboberfläche von Hue zu überprüfen, und öffnen Sie den SSH-Endpunkt mithilfe von [PuTTY](hdinsight-hadoop-linux-use-ssh-windows.md) oder eines anderen [SSH-Clients](hdinsight-hadoop-linux-use-ssh-unix.md).
+6. Klicken Sie auf den Webseitenlink, um die Website zu überprüfen. Öffnen Sie den HTTP-Endpunkt in einem Browser, um die Weboberfläche von Hue zu überprüfen, und öffnen Sie den SSH-Endpunkt per SSH. Informationen hierzu finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="troubleshoot-the-installation"></a>Behandeln von Installationsproblemen
 Sie können den Status der Anwendungsinstallation über die Portalbenachrichtigung überprüfen. (Klicken Sie oben im Portal auf das Glockensymbol.)

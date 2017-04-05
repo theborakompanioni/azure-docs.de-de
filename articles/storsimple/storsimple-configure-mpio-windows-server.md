@@ -4,7 +4,7 @@ description: "Beschreibt, wie Sie Multipfad-E/A für Ihr StorSimple-Gerät konfi
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 879fd0f9-c763-4fa0-a5ba-f589a825b2df
 ms.service: storsimple
@@ -12,11 +12,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/17/2016
+ms.date: 03/27/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: d07d1c838d99d0de0c5b62aaf42330b447df102c
-ms.openlocfilehash: 4483a395659a09e88fc4174e622143d9acaedf61
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: 7b484c27157bd0a261adbf81d66b73a78e252955
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -126,18 +127,17 @@ Nachdem MPIO unter Windows Server konfiguriert wurde, können auf dem StorSimple
 
 > [!NOTE]
 > **Ändern Sie die Standardparameter nicht.**
-> 
-> 
+
 
 ## <a name="step-4-configure-mpio-for-high-availability-and-load-balancing"></a>Schritt 4: Konfigurieren von MPIO für hohe Verfügbarkeit und Lastenausgleich
 Für auf Multipfad basierende hohe Verfügbarkeit und Lastenausgleich müssen mehrere Sitzungen manuell hinzugefügt werden, um die verschiedenen verfügbaren Pfade zu deklarieren. Wenn beispielsweise der Host und das Gerät jeweils zwei Schnittstellen haben, die mit dem SAN verbunden sind, benötigen Sie vier Sitzungen, die mit den richtigen Pfadpermutationen konfiguriert sein müssen (wenn sich jede DATA- und Host-Schnittstelle in einem anderen IP-Subnetz befindet und nicht routingfähig ist, sind nur zwei Sitzungen erforderlich).
 
+**Es wird empfohlen, dass Sie über mindestens vier aktive parallele Sitzungen zwischen dem Gerät und dem Anwendungshost verfügen.** Dies kann erreicht werden, indem vier Netzwerkschnittstellen auf dem Windows Server-System aktiviert werden. Verwenden Sie physische Netzwerkschnittstellen oder Netzwerkvirtualisierungstechnologien auf der Hardware- oder Betriebssystemebene auf Ihrem Windows Server-Host. Mit den beiden Netzwerkschnittstellen auf dem Gerät ergibt diese Konfiguration acht Sitzungen, von denen vier aktiv (die mit dem aktiven Controller verbundenen Sitzungen) und vier passiv (die mit dem passiven Controller verbundenen Sitzungen) sind. Diese Konfiguration trägt zur Optimierung des Geräte- und Clouddurchsatzes bei.
+
 > [!IMPORTANT]
 > **Es wird nicht empfohlen, 1-GbE- und 10-GbE-Netzwerkschnittstellen zu mischen. Bei Verwendung von zwei Netzwerkschnittstellen müssen beide denselben Typ haben.**
-> 
-> 
 
-Das folgende Verfahren beschreibt, wie Sitzungen hinzugefügt werden, wenn ein StorSimple-Gerät mit zwei Netzwerkschnittstellen mit einem Host mit zwei Netzwerkschnittstellen verbunden ist.
+Das folgende Verfahren beschreibt, wie Sitzungen hinzugefügt werden, wenn ein StorSimple-Gerät mit zwei Netzwerkschnittstellen mit einem Host mit zwei Netzwerkschnittstellen verbunden ist. Damit verfügen Sie lediglich über zwei aktive Sitzungen. Führen Sie die gleichen Schritte für ein StorSimple-Gerät mit zwei Netzwerkschnittstellen aus, das mit einem Host mit vier Netzwerkschnittstellen verbunden ist. Sie müssen dann anstelle der hier beschriebenen vier Sitzungen acht Sitzungen konfigurieren.
 
 ### <a name="to-configure-mpio-for-high-availability-and-load-balancing"></a>So konfigurieren Sie MPIO für hohe Verfügbarkeit und Lastenausgleich
 1. Führen Sie eine Ermittlung des Ziels aus: Klicken Sie im Dialogfeld **Eigenschaften des iSCSI-Initiators** auf der Registerkarte **Erkennung** auf **Portal ermitteln**.
@@ -169,10 +169,5 @@ Das folgende Verfahren beschreibt, wie Sitzungen hinzugefügt werden, wenn ein S
 
 ## <a name="next-steps"></a>Nächste Schritte
 Erfahren Sie mehr zum Thema [Verwenden des StorSimple Manager-Diensts, um eine StorSimple-Gerätekonfiguration zu ändern](storsimple-modify-device-config.md).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

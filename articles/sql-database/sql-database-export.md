@@ -16,9 +16,9 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 7b96e8b144f329819596e3ff63e6febbbcc1ffb0
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: ff24360696c54091ab93e7e1c8f28d95c226bc0a
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -60,5 +60,5 @@ Wenn Sie eine Datenbank zur Archivierung oder zum Verschieben auf eine andere Pl
 
 * Eine Erläuterung des gesamten Migrationsprozesses von SQL Server-Datenbanken finden Sie unter [Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank](sql-database-cloud-migrate.md).
 * Einen Überblick über das Kopieren einer Datenbank innerhalb von Azure finden Sie unter [Kopieren einer Azure SQL-Datenbank](sql-database-copy.md).
-* Sie können Ihre Azure SQL-Datenbank innerhalb von Azure über das [Azure-Portal](sql-database-copy-portal.md), [PowerShell](sql-database-copy-powershell.md) oder [Transact-SQL](sql-database-copy-transact-sql.md) kopieren. 
+* Sie können Ihre Azure SQL-Datenbank innerhalb von Azure über das [Azure-Portal](sql-database-copy-portal.md), [PowerShell](scripts/sql-database-copy-database-to-new-server-powershell.md) oder [Transact-SQL](sql-database-copy-transact-sql.md) kopieren. 
 

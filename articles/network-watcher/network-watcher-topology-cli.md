@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 1d0136b044f6049e59fa09d824cf244cac703c45
-ms.openlocfilehash: 404e621bc1d16d15aeb705a1055ed4c2b9e251a2
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: 02add070405f3f00d3631362a2b139239d44c34d
+ms.lasthandoff: 03/28/2017
 
 ---
 
@@ -31,14 +31,14 @@ ms.lasthandoff: 02/23/2017
 Das Topologiefeature von Network Watcher bietet eine visuelle Darstellung der Netzwerkressourcen in einem Abonnement. Im Portal wird Ihnen diese Visualisierung automatisch angezeigt. Die der Topologieansicht im Portal zugrunde liegenden Informationen können mit PowerShell abgerufen werden.
 Diese Funktion verleiht den Topologieinformationen Flexibilität, da die Daten von anderen Tools zur Visualisierung genutzt werden können.
 
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
+In diesem Artikel wird die plattformübergreifende Azure CLI 1.0 verwendet, die für Windows, Mac und Linux zur Verfügung steht. Network Watcher verwendet derzeit Azure CLI 1.0 als Unterstützung für die Befehlszeilenschnittstelle.
 
 Die Verbindung wird durch zwei Beziehungen umgesetzt.
 
-- **Einschlussbeziehung** – Beispiel: VNET enthält ein Subnetz mit einer NIC.
+- **Einschlussbeziehung** – Beispiel: VNet enthält ein Subnetz mit einer NIC.
 - **Zuordnungsbeziehung** – Beispiel: Die NIC ist einem virtuellen Computer zugeordnet.
 
-Die folgende enthält Eigenschaften, die beim Abfragen der Topologie-REST-API zurückgegeben werden.
+Die folgende Liste enthält Eigenschaften, die beim Abfragen der Topologie-REST-API zurückgegeben werden.
 
 * **name**: Der Name der Ressource.
 * **id**: Der URI der Ressource.

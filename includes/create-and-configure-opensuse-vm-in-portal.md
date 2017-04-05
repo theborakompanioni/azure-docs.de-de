@@ -7,7 +7,7 @@
 5. Gehen Sie auf der ersten Seite für die **Konfiguration des virtuellen Computers** wie folgt vor:
    
    * Weisen Sie unter **Name des virtuellen Computers** einen Namen zu, z.B. „testlinuxvm“. Der Name muss zwischen 3 und 15 Zeichen enthalten, er darf nur aus Buchstaben, Zahlen und Bindestrichen bestehen und muss mit einem Buchstaben beginnen und mit einem Buchstaben oder einer Zahl enden.
-   * Überprüfen Sie den **Tarif**, und wählen Sie eine **Größe** aus. Die Ebene bestimmt, zwischen welchen Größen Sie wählen können. Die Größe wirkt sich auf seine Betriebskosten sowie auf die Konfigurationsoptionen, wie die Anzahl der Datenträger, die Sie anschließen können, aus. Ausführliche Informationen finden Sie unter [Größen für virtuelle Computer](../articles/virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+   * Überprüfen Sie den **Tarif**, und wählen Sie eine **Größe** aus. Die Ebene bestimmt, zwischen welchen Größen Sie wählen können. Die Größe wirkt sich auf seine Betriebskosten sowie auf die Konfigurationsoptionen, wie die Anzahl der Datenträger, die Sie anschließen können, aus. Ausführliche Informationen finden Sie unter [Größen für virtuelle Computer](../articles/virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
    * Geben Sie einen neuen Benutzernamen**** ein, oder übernehmen Sie den Standardnamen **azureuser**. Dieser Name wird der Sudoer-Listendatei hinzugefügt.
    * Wählen Sie aus, welche Art der **Authentifizierung** verwendet werden soll. Hinweise zu allgemeinen Kennwortrichtlinien finden Sie unter [Sichere Kennwörter](http://msdn.microsoft.com/library/ms161962.aspx).
 6. Gehen Sie auf der Seite für die **Konfiguration des virtuellen Computers** wie folgt vor:
@@ -53,8 +53,3 @@ In Abhängigkeit von dem Betriebssystem auf dem Computer, über den Sie eine Ver
 [Image1]: ./media/create-and-configure-opensuse-vm-in-portal/CreateVM.png
 
 [Image6]: ./media/create-and-configure-opensuse-vm-in-portal/putty.png
-
-
-<!--HONumber=Feb17_HO3-->
-
-

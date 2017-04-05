@@ -17,9 +17,9 @@ ms.date: 10/17/2016
 ms.author: szark
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 07ee32a293d53dd9c0e0afa5da2bac7ec146a536
-ms.openlocfilehash: c7f39a5396f0f9b6f9a577a3225ccadff1fd0dc9
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: b95d2f268548b48a1e31f2a35de8feaab251a485
+ms.lasthandoff: 03/28/2017
 
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Grundlegendes zum Azure Linux-Agent und seiner Verwendung
@@ -50,7 +50,7 @@ Der Microsoft Azure Linux-Agent (waagent) verwaltet die Bereitstellung von Linux
   * Stellt die Stabilität des Netzwerkschnittstellennamens sicher
 * **Kernel**
   
-  * Konfiguriert einen virtuellen NUMA (muss für Kernel vor Version&2;.6.37 deaktiviert werden)
+  * Konfiguriert einen virtuellen NUMA (muss für Kernel vor Version 2.6.37 deaktiviert werden)
   * Verbraucht Hyper-V-Entropie für /dev/random
   * Konfiguriert SCSI-Zeitüberschreitungen für das Stammgerät (das auch remote sein kann)
 * **Diagnose**
@@ -105,7 +105,7 @@ Der Linux-Agent erfordert zur ordnungsgemäßen Funktion bestimmte Systempakete:
 ## <a name="installation"></a>Installation
 Für die Installation und Upgrades des Azure Linux-Agents sollte nach Möglichkeit ein RPM- oder DEB-Paket aus dem Paketrepository Ihrer Verteilung installiert werden. Das Azure Linux-Agent-Paket wird von allen [unterstützten Distributionsanbietern](virtual-machines-linux-endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) in ihre jeweiligen Images und Repositorys integriert.
 
-Informationen zu erweiterten Installationsoptionen (beispielsweise zu einer quellbasierten Installation, zum Installieren an benutzerdefinierten Orten oder zur Verwendung von Präfixen) finden Sie in der Dokumentation im [Azure Linux-Agent-Repository auf Github](https://github.com/Azure/WALinuxAgent).
+Informationen zu erweiterten Installationsoptionen (beispielsweise zu einer quellbasierten Installation, zum Installieren an benutzerdefinierten Orten oder zur Verwendung von Präfixen) finden Sie in der Dokumentation im [Azure Linux-Agent-Repository auf GitHub](https://github.com/Azure/WALinuxAgent).
 
 ## <a name="command-line-options"></a>Befehlszeilenoptionen
 ### <a name="flags"></a>Kennzeichen
@@ -211,7 +211,7 @@ Ist diese Option festgelegt, führt waagent benutzerdefinierte Daten nach der Be
 
 **Provisioning.PasswordCryptId**  
 Typ: Zeichenfolge  
-Standardwert:&6;
+Standardwert: 6
 
 Algorithmus, der von Crypt zum Generieren des Kennworthashs verwendet wird.  
  1: MD5  
@@ -221,7 +221,7 @@ Algorithmus, der von Crypt zum Generieren des Kennworthashs verwendet wird.
 
 **Provisioning.PasswordCryptSaltLength**  
 Typ: Zeichenfolge  
-Standardeinstellung:&10;
+Standardeinstellung: 10
 
 Länge des Zufallssalts, das beim Generieren des Kennworthashs verwendet wird.
 
@@ -305,6 +305,6 @@ Beachten Sie, dass Cloud Ubuntu-Images für zahlreiche Konfigurationsaufgaben, d
 * Berücksichtigen Sie zum Konfigurieren des Bereitstellungspunkts und des Auslagerungsbereichs für den Ressourcendatenträger von Ubuntu-Cloud-Images die folgenden Ressourcen:
   
   * [Ubuntu-Wiki: Konfigurieren von Swap-Partitionen](http://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
-  * [Einfügen benutzerdefinierter Daten in einen virtuellen Azure-Computer](virtual-machines-windows-classic-inject-custom-data.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+  * [Einfügen benutzerdefinierter Daten in einen virtuellen Azure-Computer](windows/classic/inject-custom-data.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 

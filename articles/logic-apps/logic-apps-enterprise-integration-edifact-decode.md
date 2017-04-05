@@ -41,7 +41,7 @@ Sie benötigen Folgendes:
 
 2. Da der Connector „EDIFACT-Nachricht decodieren“ über keine Trigger verfügt, müssen Sie einen Trigger zum Starten Ihrer Logik-App hinzufügen (beispielsweise einen Anforderungstrigger). Fügen Sie im Logik-App-Designer einen Trigger hinzu, und fügen Sie anschließend Ihrer Logik-App eine Aktion hinzu.
 
-3.    Geben Sie im Suchfeld den Begriff „EDIFACT“ als Filter ein. Wählen Sie **EDIFACT-Nachricht decodieren** aus.
+3. Geben Sie im Suchfeld den Begriff „EDIFACT“ als Filter ein. Wählen Sie **EDIFACT-Nachricht decodieren** aus.
    
     ![Suchen nach EDIFACT](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage1.png)
 
@@ -56,7 +56,7 @@ Sie benötigen Folgendes:
     | Verbindungsname* |Geben Sie einen beliebigen Namen für Ihre Verbindung ein. |
     | Integrationskonto* |Geben Sie einen Namen für Ihr Integrationskonto ein. Achten Sie darauf, dass sich Ihr Integrationskonto und Ihre Logik-App am gleichen Azure-Standort befinden. |
 
-4.    Wenn Sie mit der Verbindungserstellung fertig sind, wählen Sie **Erstellen**. Ihre Verbindungsdetails sollten in etwa wie im folgenden Beispiel aussehen:
+4. Wenn Sie mit der Verbindungserstellung fertig sind, wählen Sie **Erstellen**. Ihre Verbindungsdetails sollten in etwa wie im folgenden Beispiel aussehen:
 
     ![Details des Integrationskontos](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage3.png)  
 

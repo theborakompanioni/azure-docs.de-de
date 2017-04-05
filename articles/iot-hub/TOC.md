@@ -100,9 +100,17 @@
 ### [Adafruit Feather HUZZAH ESP8266](iot-hub-arduino-huzzah-esp8266-get-started.md)
 #### [Verwalten von Cloudgerät-Nachrichten mit iothub-explorer](iot-hub-explorer-cloud-device-messaging.md)
 #### [Speichern von IoT Hub-Nachrichten im Azure-Datenspeicher](iot-hub-store-data-in-azure-table-storage.md)
+#### [Datenvisualisierung in Power BI](iot-hub-live-data-visualization-in-power-bi.md)
+#### [Datenvisualisierung mit Web-Apps](iot-hub-live-data-visualization-in-web-apps.md)
+#### [Wettervorhersage mit Azure Machine Learning](iot-hub-weather-forecast-machine-learning.md)
+
 ### [Sparkfun ESP8266 Thing Dev](iot-hub-sparkfun-esp8266-thing-dev-get-started.md)
 #### [Verwalten von Cloudgerät-Nachrichten mit iothub-explorer](iot-hub-explorer-cloud-device-messaging.md)
 #### [Speichern von IoT Hub-Nachrichten im Azure-Datenspeicher](iot-hub-store-data-in-azure-table-storage.md)
+#### [Datenvisualisierung in Power BI](iot-hub-live-data-visualization-in-power-bi.md)
+#### [Datenvisualisierung mit Web-Apps](iot-hub-live-data-visualization-in-web-apps.md)
+#### [Wettervorhersage mit Azure Machine Learning](iot-hub-weather-forecast-machine-learning.md)
+
 
 ### [Adafruit Feather M0](iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
 #### Lektion 1: Konfigurieren Ihres Geräts

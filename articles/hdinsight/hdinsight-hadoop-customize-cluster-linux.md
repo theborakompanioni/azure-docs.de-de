@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 48e85f53-87c1-474f-b767-ca772238cc13
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,9 +17,9 @@ ms.topic: article
 ms.date: 03/10/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: b615f97484033bb406022e84fbcf50f88458de3c
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 1f64380b0bd271658c0f06e01a9b013ae4e25636
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -758,11 +759,7 @@ __Lösung__: Um diesen Fehler zu beheben, stellen Sie manuell mit `ssh` eine Ver
 sudo pip install azure-storage==0.20.0
 ```
 
-Weitere Informationen zum Herstellen der Verbindung mit dem Cluster mit SSH finden Sie in den folgenden Dokumenten:
-
-* [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix, OS X oder Windows](hdinsight-hadoop-linux-use-ssh-unix.md)
-
-* [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Windows mit PuTTY](hdinsight-hadoop-linux-use-ssh-windows.md)
+Informationen zum Herstellen einer Verbindung mit dem Cluster per SSH finden Sie unter [Verwenden von SSH mit HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ### <a name="history-doesnt-show-scripts-used-during-cluster-creation"></a>Verlauf zeigt keine Skripts an, die bei der Clustererstellung verwendet wurden
 

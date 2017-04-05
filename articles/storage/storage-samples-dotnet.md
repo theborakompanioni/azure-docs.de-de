@@ -15,8 +15,9 @@ ms.workload: storage
 ms.date: 01/12/2017
 ms.author: seguler
 translationtype: Human Translation
-ms.sourcegitcommit: ae5719c60c6ed2d3467f162f3b273d5bfdcf0073
-ms.openlocfilehash: 2056597abd1d1e895b85770a5525d05c9526b71d
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: d2b6b3d9483f230ad25ae47255a4f28c1a67e064
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -83,11 +84,11 @@ Die folgende Tabelle enthält eine Übersicht über unser Beispielrepository und
 <tr> 
 <td>SAS</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs">Erste Schritte mit Blobs</a></td>
-</tr>   
+</tr>     
 <tr> 
 <td>Diensteigenschaften</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs">Erste Schritte mit Blobs</a></td>
-</tr>           
+</tr>             
 <tr> 
 <td>Snapshot Blob</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-back-up-with-incremental-snapshots/blob/master/Program.cs">Sichern von Azure-VM-Datenträgern mit inkrementellen Momentaufnahmen</a></td>
@@ -136,7 +137,7 @@ Die folgende Tabelle enthält eine Übersicht über unser Beispielrepository und
 </tr> 
 <tr> 
 <td>Clientseitige Verschlüsselung</td> 
-<td><a href="https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/EncryptionSamples/QueueGettingStarted/Program.cs">Azure Storage .NET – Clientseitige Verschlüsselung von Warteschlangen</a></td> 
+<td><a href="https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/EncryptionSamples/QueueGettingStarted/Program.cs">Azure Storage .NET – clientseitige Verschlüsselung von Warteschlangen</a></td> 
 </tr> 
 <tr> 
 <td>Erstellen von Warteschlangen</td> 
@@ -169,7 +170,7 @@ Die folgende Tabelle enthält eine Übersicht über unser Beispielrepository und
 </tr> 
 <tr> 
 <td>Löschen von Entitäten/Tabellen</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs">Erste Schritte mit Azure Table Storage in .NET</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs">Getting Started with Azure Table Storage in .NET</a> (Erste Schritte mit Azure Table Storage in .NET)</td> 
 </tr> 
 <tr> 
 <td>Einfügen/Zusammenführen/Ersetzen von Entitäten</td> 
@@ -177,15 +178,15 @@ Die folgende Tabelle enthält eine Übersicht über unser Beispielrepository und
 </tr> 
 <tr> 
 <td>Entitäten abfragen</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs">Erste Schritte mit Azure Table Storage in .NET</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs">Getting Started with Azure Table Storage in .NET</a> (Erste Schritte mit Azure Table Storage in .NET)</td> 
 </tr> 
 <tr> 
 <td>Abfragen von Tabellen</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs">Erste Schritte mit Azure Table Storage in .NET</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs">Getting Started with Azure Table Storage in .NET</a> (Erste Schritte mit Azure Table Storage in .NET)</td> 
 </tr> 
 <tr> 
 <td>Tabellen-ACL/-eigenschaften</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/AdvancedSamples.cs">Erste Schritte mit Azure Table Storage in .NET</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/AdvancedSamples.cs">Getting Started with Azure Table Storage in .NET</a> (Erste Schritte mit Azure Table Storage in .NET)</td> 
 </tr> 
 <tr> 
 <td>Entität aktualisieren</td> 
@@ -216,8 +217,4 @@ Weitere Informationen zu Beispielen für andere Sprachen:
 
 * Java: [Azure Storage-Beispiele mit Java](storage-samples-java.md)
 * Alle anderen Sprachen: [Azure Storage-Beispiele](storage-samples.md)
-
-
-<!--HONumber=Jan17_HO2-->
-
 

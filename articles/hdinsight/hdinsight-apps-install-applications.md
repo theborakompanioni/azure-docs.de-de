@@ -9,16 +9,17 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: eaf5904d-41e2-4a5f-8bec-9dde069039c2
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/06/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 8e7911a3a8080ef8fa125779aa1f6778b9655cde
-ms.openlocfilehash: 8780c193c6aa4b6b183723f88d67ac0990347d1e
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 3b2a18232a9ab8c1b587cfa4fa14ced0c3b515ba
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -101,11 +102,11 @@ Im Portal wird eine Liste mit den installierten HDInsight-Anwendungen für einen
    * Status: Status der Anwendung. 
    * Webseite: Die URL der Webanwendung, die Sie auf dem Edgeknoten bereitgestellt haben, falls vorhanden. Die Anmeldeinformationen sind mit den HTTP-Benutzeranmeldeinformationen identisch, die Sie für den Cluster konfiguriert haben.
    * HTTP-Endpunkt: Die Anmeldeinformationen sind mit den HTTP-Benutzeranmeldeinformationen identisch, die Sie für den Cluster konfiguriert haben. 
-   * SSH-Endpunkt: Sie können [SSH](hdinsight-hadoop-linux-use-ssh-unix.md) verwenden, um eine Verbindung mit dem Edgeknoten herzustellen. Die SSH-Anmeldeinformationen sind mit den SSH-Benutzeranmeldeinformationen identisch, die Sie für den Cluster konfiguriert haben.
+   * SSH-Endpunkt: Sie können SSH verwenden, um eine Verbindung mit dem Edgeknoten herzustellen. Die SSH-Anmeldeinformationen sind mit den SSH-Benutzeranmeldeinformationen identisch, die Sie für den Cluster konfiguriert haben. Informationen hierzu finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
 6. Klicken Sie zum Löschen einer Anwendung mit der rechten Maustaste darauf, und klicken Sie im Kontextmenü dann auf **Löschen** .
 
 ## <a name="connect-to-the-edge-node"></a>Herstellen einer Verbindung mit dem Edgeknoten
-Sie können per HTTP und SSH eine Verbindung mit dem Edgeknoten herstellen. Sie finden die Endpunktinformationen im [Portal](#list-installed-hdinsight-apps-and-properties). Weitere Informationen zur Verwendung von SSH finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md). 
+Sie können per HTTP und SSH eine Verbindung mit dem Edgeknoten herstellen. Sie finden die Endpunktinformationen im [Portal](#list-installed-hdinsight-apps-and-properties). Informationen hierzu finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 Die HTTP-Endpunkt-Anmeldeinformationen sind die HTTP-Benutzeranmeldeinformationen, die Sie für den HDInsight-Cluster konfiguriert haben. Die SSH-Endpunkt-Anmeldeinformationen sind die SSH-Anmeldeinformationen, die Sie für den HDInsight-Cluster konfiguriert haben.
 

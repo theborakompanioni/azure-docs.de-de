@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: c2350ae447ccebf1a6b85a563e7fa1d7c12b16d7
-ms.openlocfilehash: 01ef15db6e62443a2d34bae8bc133f21f4d874f0
-ms.lasthandoff: 11/17/2016
+ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
+ms.openlocfilehash: 06702281ab2a44641231783aa1ddad87c22095e8
+ms.lasthandoff: 03/29/2017
 
 
 ---
 # <a name="azure-data-factory---net-api-change-log"></a>Azure Data Factory – .NET-API-Änderungsprotokoll
-Dieser Artikel enthält Informationen zu Änderungen am Azure Data Factory SDK einer bestimmten Version.  [Hier](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactories)
+Dieser Artikel enthält Informationen zu Änderungen am Azure Data Factory SDK einer bestimmten Version. [Hier](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactories)
 
 ## <a name="version-4110"></a>Version 4.11.0
 Hinzugefügte Features:
@@ -35,7 +35,7 @@ Hinzugefügte Features:
   * [MongoDbCollectionDataset](https://msdn.microsoft.com/library/mt765145.aspx)
   * [AmazonS3Dataset](https://msdn.microsoft.com/library/mt765112.aspx)
 * Die folgenden Typen von Kopierquellen wurden hinzugefügt:
-  * [MongoDbSource](https://msdn.microsoft.com/en-US/library/mt765123.aspx)
+  * [MongoDbSource](https://msdn.microsoft.com/library/mt765123.aspx)
 
 ## <a name="version-4100"></a>Version 4.10.0
 * Die folgenden optionalen Eigenschaften wurden zu TextFormat hinzugefügt:
@@ -180,6 +180,6 @@ Die folgenden Klassen wurden umbenannt. Die neuen Namen entsprechen den ursprün
 * **List--** -Pipeline-API gibt nur die Zusammenfassung einer Pipeline anstatt alle Details zurück. Beispielsweise enthalten Aktivitäten in einer Pipelinezusammenfassung nur Name und Typ.
 
 ### <a name="feature-additions"></a>Hinzugefügte Features
-* Die [SqlDWSink](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsink.aspx)-Klasse unterstützt die beiden neuen Eigenschaften **SliceIdentifierColumnName** und **SqlWriterCleanupScript** zur Unterstützung einer idempotenten Kopie in Azure SQL Data Warehouse. Im Artikel [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md) finden Sie insbesondere in den Abschnitten [Mechanismus 1](data-factory-azure-sql-data-warehouse-connector.md#mechanism-1) und [Mechanismus 2](data-factory-azure-sql-data-warehouse-connector.md#mechanism-2) weitere Informationen zu diesen Eigenschaften.
+* Die [SqlDWSink](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsink.aspx)-Klasse unterstützt die beiden neuen Eigenschaften **SliceIdentifierColumnName** und **SqlWriterCleanupScript** zur Unterstützung einer idempotenten Kopie in Azure SQL Data Warehouse. Im Artikel [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md) finden Sie ausführliche Informationen zu diesen Eigenschaften.
 * Wir unterstützen jetzt im Rahmen der Kopieraktivität das Ausführen einer gespeicherten Prozedur für Azure SQL-Datenbank- und Azure SQL Data Warehouse-Datenquellen. Die Klassen [SqlSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) und [SqlDWSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) verfügen über die folgenden Eigenschaften: **SqlReaderStoredProcedureName** und **StoredProcedureParameters**. In den Artikeln [Azure SQL-Datenbank](data-factory-azure-sql-connector.md#sqlsource) und [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) auf Azure.com finden Sie ausführliche Informationen zu diesen Eigenschaften.  
 

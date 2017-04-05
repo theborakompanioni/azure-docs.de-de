@@ -21,13 +21,12 @@
 #### [HTTP- und Webhook-Bindungen](functions-bindings-http-webhook.md)
 #### [Mobile Apps-Bindungen](functions-bindings-mobile-apps.md)
 #### [Notification Hub-Ausgabebindung](functions-bindings-notification-hubs.md)
-#### [Service Bus-Trigger und -Bindungen für Warteschlangen und Themen](functions-bindings-service-bus.md)
+#### [Service Bus-Bindungen](functions-bindings-service-bus.md)
 #### [SendGrid-Bindungen](functions-bindings-sendgrid.md)
 #### Speicherbindungen
 ##### [Blobbindungen](functions-bindings-storage-blob.md)
 ##### [Warteschlangenbindungen](functions-bindings-storage-queue.md)
 ##### [Tabellenbindungen](functions-bindings-storage-table.md)
-##### [SendGrid-Bindungen](functions-bindings-sendgrid.md)
 #### [Trigger mit Timer](functions-bindings-timer.md)
 #### [Twilio-Ausgabebindung](functions-bindings-twilio.md)
 ### [Erstellen einer Funktionen-App über das Azure-Portal](functions-create-function-app-portal.md) 
@@ -35,6 +34,8 @@
 ### [Lokales Entwickeln und Debuggen](functions-run-local.md)
 ### [Bewährte Methoden für Azure Functions](functions-best-practices.md)
 ### [Verwenden von Azure Functions zum Ausführen eines geplanten Bereinigungstasks](functions-scenario-database-table-cleanup.md)
+### [Erstellen einer OpenAPI-Definition (Vorschau)](functions-api-definition-getting-started.md)
+#### [Referenz zu OpenAPI 2.0 in Functions](functions-api-definition.md)
 
 ## Verwalten
 ### [Konfigurieren der Einstellungen für eine Funktion-App](functions-how-to-use-azure-function-app-settings.md)

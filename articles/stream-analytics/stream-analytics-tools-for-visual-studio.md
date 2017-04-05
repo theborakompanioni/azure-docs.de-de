@@ -4,20 +4,21 @@ description: "Tutorial mit ersten Schritten für die Azure Stream Analytics-Tool
 keywords: Visual Studio
 documentationcenter: 
 services: stream-analytics
-author: 
-manager: 
-editor: 
+author: jeffstokes72
+manager: jhubbard
+editor: cgronlun
 ms.assetid: a473ea0a-3eaa-4e5b-aaa1-fec7e9069f20
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 02/01/2017
-ms.author: 
+ms.date: 03/28/2017
+ms.author: sujie
 translationtype: Human Translation
-ms.sourcegitcommit: 81a5678051b026a16bdae2f2eab7ead2c17f9563
-ms.openlocfilehash: 4874c52b24d9c69fa1d1648035102aaef276f944
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: d0125dda4df69279e49a9fad4dc28dcbf6368322
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -56,28 +57,28 @@ Im **Projektmappen-Explorer** wird ein Projekt namens **Maut** erstellt.
 2. Melden Sie sich bei Ihrem Azure-Konto an. 
 
 ## <a name="define-input-sources"></a>Definieren von Eingabequellen
-1.  Erweitern Sie im **Projektmappen-Explorer** den Knoten **Eingabe**, und benennen Sie **Input.json** in **EntryStream.json** um. Doppelklicken Sie auf **EntryStream.json**.
-2.  Ihr **EINGABEALIAS** sollte jetzt **EntryStream** lauten. Beachten Sie, dass der Eingabealias im Abfrageskript verwendet wird. 
-3.  Der Quelltyp ist **Datenstrom**.
-4.  Die Quelle lautet **Event Hub**.
-5.  Der Service Bus-Namespace sollte der erste **tollData**-Eintrag in der Dropdownliste sein.
-6.  Der Event Hub-Name sollte als **Eintrag** festgelegt werden.
-7.  Der Event Hub-Richtlinienname lautet **RootManageSharedAccessKey** (Standardwert).
-8.  Wählen Sie **JSON** als **Ereignisserialisierungsformat** und **UTF8** als **Codierung** aus.
+1.    Erweitern Sie im **Projektmappen-Explorer** den Knoten **Eingabe**, und benennen Sie **Input.json** in **EntryStream.json** um. Doppelklicken Sie auf **EntryStream.json**.
+2.    Ihr **EINGABEALIAS** sollte jetzt **EntryStream** lauten. Beachten Sie, dass der Eingabealias im Abfrageskript verwendet wird. 
+3.    Der Quelltyp ist **Datenstrom**.
+4.    Die Quelle lautet **Event Hub**.
+5.    Der Service Bus-Namespace sollte der erste **tollData**-Eintrag in der Dropdownliste sein.
+6.    Der Event Hub-Name sollte als **Eintrag** festgelegt werden.
+7.    Der Event Hub-Richtlinienname lautet **RootManageSharedAccessKey** (Standardwert).
+8.    Wählen Sie **JSON** als **Ereignisserialisierungsformat** und **UTF8** als **Codierung** aus.
    
    Ihre Einstellungen sehen nun folgendermaßen aus:
    
    ![Definieren von Eingabequellen](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-01.png)
    
-9.  Klicken Sie unten auf der Seite auf **Speichern**, um den Assistenten zu beenden. Sie können jetzt eine andere Eingabequelle zum Erstellen des Ausgangsdatenstroms hinzufügen. Klicken Sie mit der rechten Maustaste auf den Eingangsknoten, und klicken Sie auf **Neues Element**.
+9.    Klicken Sie unten auf der Seite auf **Speichern**, um den Assistenten zu beenden. Sie können jetzt eine andere Eingabequelle zum Erstellen des Ausgangsdatenstroms hinzufügen. Klicken Sie mit der rechten Maustaste auf den Eingangsknoten, und klicken Sie auf **Neues Element**.
    
    ![Definieren von Eingabequellen](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-02.png)
    
-10. Wählen Sie im eingeblendeten Fenster **Azure Stream Analytics Input** (Azure Stream Analytics-Eingabe), und ändern Sie den Namen in **ExitStream.json**. Klicken Sie auf **Hinzufügen**.
+10.    Wählen Sie im eingeblendeten Fenster **Azure Stream Analytics Input** (Azure Stream Analytics-Eingabe), und ändern Sie den Namen in **ExitStream.json**. Klicken Sie auf **Hinzufügen**.
    
    ![Definieren von Eingabequellen](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-03.png)
    
-11. Doppelklicken Sie im Projekt auf **ExitStream.json**, und führen Sie dieselben Schritte wie im Eingabedatenstrom aus. Geben Sie die Werte für den Event Hub-Namen wie im folgenden Screenshot ein.
+11.    Doppelklicken Sie im Projekt auf **ExitStream.json**, und führen Sie dieselben Schritte wie im Eingabedatenstrom aus. Geben Sie die Werte für den Event Hub-Namen wie im folgenden Screenshot ein.
    
    ![Definieren von Eingabequellen](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-04.png)
    
@@ -87,21 +88,21 @@ Im **Projektmappen-Explorer** wird ein Projekt namens **Maut** erstellt.
    
    Als Nächstes fügen Sie die Referenzdateneingabe für die Blobdatei hinzu, in der die Fahrzeugregistrierungsdaten enthalten sind.
    
-12. Klicken Sie mit der rechten Maustaste im Projekt auf den Knoten **Eingaben**, und gehen Sie anschließend genauso wie bei der Datenstromeingabe vor. Wählen Sie jedoch **REFERENZDATEN** anstelle von „Datenstrom“ aus. Wählen Sie als Eingabealias den Eintrag **Registrierung** aus.
+12.    Klicken Sie mit der rechten Maustaste im Projekt auf den Knoten **Eingaben**, und gehen Sie anschließend genauso wie bei der Datenstromeingabe vor. Wählen Sie jedoch **REFERENZDATEN** anstelle von „Datenstrom“ aus. Wählen Sie als Eingabealias den Eintrag **Registrierung** aus.
    
    ![Definieren von Eingabequellen](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-06.png)
    
-13. Wählen Sie das Storage-Konto aus, das **tolldata** enthält. Der Name des Containers sollte **tolldata** sein, und das **Pfadmuster** sollte **registration.json** lauten. Für diesen Dateinamen wird die Groß-/Kleinschreibung berücksichtigt, und er sollte nur Kleinbuchstaben enthalten.
-14. Klicken Sie auf **Speichern**, um den Assistenten zu beenden.
+13.    Wählen Sie das Storage-Konto aus, das **tolldata** enthält. Der Name des Containers sollte **tolldata** sein, und das **Pfadmuster** sollte **registration.json** lauten. Für diesen Dateinamen wird die Groß-/Kleinschreibung berücksichtigt, und er sollte nur Kleinbuchstaben enthalten.
+14.    Klicken Sie auf **Speichern**, um den Assistenten zu beenden.
 
 Jetzt sind alle Eingaben definiert.
 
 ## <a name="define-output"></a>Definieren der Ausgabe
-1.  Erweitern Sie im **Projektmappen-Explorer** den Knoten **Eingaben**, und doppelklicken Sie auf **Output.json**.
-2.  Legen Sie den Ausgabealias auf **Ausgabe** und anschließend den Eintrag für „Senke“ auf „SQL-Datenbank“ fest.
-2.  Geben Sie den Datenbanknamen ein: **TollDataDB**.
-3.  Geben Sie im Feld **BENUTZERNAME** den Text **tolladmin**, **123toll!** im Feld **KENNWORT** den Text und im Feld **TABELLE** **TollDataRefJoinein**.
-4.  Klicken Sie auf **Speichern**.
+1.    Erweitern Sie im **Projektmappen-Explorer** den Knoten **Eingaben**, und doppelklicken Sie auf **Output.json**.
+2.    Legen Sie den Ausgabealias auf **Ausgabe** und anschließend den Eintrag für „Senke“ auf „SQL-Datenbank“ fest.
+2.    Geben Sie den Datenbanknamen ein: **TollDataDB**.
+3.    Geben Sie im Feld **BENUTZERNAME** den Text **tolladmin**, **123toll!** im Feld **KENNWORT** den Text und im Feld **TABELLE** **TollDataRefJoinein**.
+4.    Klicken Sie auf **Speichern**.
 
 ![Definieren der Ausgabe](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-output-01.png)
  
@@ -124,9 +125,10 @@ Weitere Informationen finden Sie in den Artikeln zu [Zeitmanagement](https://msd
 
 Da Sie nun Ihre erste Azure Stream Analytics-Abfrage geschrieben haben, können Sie sie mithilfe der Beispieldatendateien testen, die in Ihrem TollApp-Ordner unter dem folgendem Pfad vorhanden sind:
 
-**..\TollApp\TollApp\Data**
+<seg>
+  **..\TollApp\TollApp\Data**</seg>
 
-Dieser Ordner enthält die folgenden Dateien: •   Entry.json •   Exit.json •   Registration.json
+Dieser Ordner enthält die folgenden Dateien: • Entry.json • Exit.json • Registration.json
 
 ## <a name="question-number-of-vehicles-entering-a-toll-booth"></a>Frage: Wie viele Fahrzeuge passieren ein Mauthäuschen?
 Doppelklicken Sie im Projekt auf „Script.asaql“, um das Skript im Editor zu öffnen, und fügen Sie das Skript im vorherigen Abschnitt in den Editor ein. Der Abfrage-Editor unterstützt Intellisense, farbige Syntaxmarkierung und Fehlermarker.
@@ -252,10 +254,5 @@ Es gibt zwei Möglichkeiten zum Exportieren eines vorhandenen Auftrags in ein Pr
 * [Stream Analytics Query Language Reference (in englischer Sprache)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/13/2016
+ms.date: 03/24/2017
 ms.author: ganesr
 translationtype: Human Translation
-ms.sourcegitcommit: 75b7cee2485d1d68fee8dcd65ade84995dcdb9be
-ms.openlocfilehash: fc5bc67fd38fe8a8c4499257a29bc0f0ec71468c
-ms.lasthandoff: 02/03/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 32b12bcb7410fcc74450422767e9d92fef38ebdc
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/03/2017
 > 
 > 
 
-Dieser Artikel unterstützt Sie beim Verknüpfen virtueller Netzwerke (VNETs) mit Azure ExpressRoute-Verbindungen über das Resource Manager-Bereitstellungsmodell und PowerShell. Virtuelle Netzwerke können Teil desselben Abonnements sein oder zu einem anderen Abonnement gehören.
+Dieser Artikel unterstützt Sie beim Verknüpfen virtueller Netzwerke (VNETs) mit Azure ExpressRoute-Verbindungen über das Resource Manager-Bereitstellungsmodell und PowerShell. Virtuelle Netzwerke können Teil desselben Abonnements sein oder zu einem anderen Abonnement gehören. In diesem Artikel erfahren Sie auch, wie eine Verknüpfung mit einem virtuellen Netzwerk aktualisiert wird. 
 
 **Informationen zu Azure-Bereitstellungsmodellen**
 
@@ -147,6 +147,18 @@ Mit dem folgenden Cmdlet können Benutzer einer Verbindung eine Verknüpfungsaut
 **Freigeben von Verbindungsautorisierungen**
 
 Sie können eine Autorisierung durch das Löschen der Verbindung freigeben, die die ExpressRoute-Verbindung mit dem virtuellen Netzwerk verknüpft.
+
+## <a name="modify-a-virtual-network-connection"></a>Ändern einer Verbindung mit einem virtuellen Netzwerk
+Sie können bestimmte Eigenschaften einer Verbindung mit einem virtuellen Netzwerk aktualisieren. 
+
+### <a name="update-the-connection-weight"></a>Aktualisieren der Verbindungsgewichtung
+Das virtuelle Netzwerk kann mit mehreren ExpressRoute-Verbindungen verbunden werden. Möglicherweise erhalten Sie von mehreren ExpressRoute-Verbindungen dasselbe Präfix. Um auszuwählen, an welche Verbindung Datenverkehr für dieses Präfix gesendet werden soll, ändern Sie die Eigenschaft *RoutingWeight* einer Verbindung. Datenverkehr wird an die Verbindung mit dem höchsten *RoutingWeight* gesendet.
+
+    $connection = Get-AzureRmVirtualNetworkGatewayConnection -Name "MyVirtualNetworkConnection" -ResourceGroupName "MyRG"
+    $connection.RoutingWeight = 100
+    Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection
+
+Der Bereich von *RoutingWeight* liegt zwischen 0 und 32.000. Der Standardwert ist 0. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen über ExpressRoute finden Sie unter [ExpressRoute – FAQ](expressroute-faqs.md).

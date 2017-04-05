@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/22/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
-ms.openlocfilehash: 4fc454a8c7974b8f53cd6621639dd5b575cc66f7
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 5c427ddbe408fc42403eb6738d1983c220e899a7
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -65,7 +65,7 @@ In diesem Artikel werden einige der am häufigsten gestellten Fragen zu Azure De
 * [Für mein Artefakt ist während der VM-Erstellung ein Fehler aufgetreten. Wie kann ich das Problem beheben?](#my-artifact-failed-during-vm-creation-how-do-i-troubleshoot-it)
 * [Warum wird mein vorhandenes virtuelles Netzwerk nicht korrekt gespeichert?](#why-isnt-my-existing-virtual-network-saving-properly)
 * [Warum erhalte ich den Fehler „Übergeordnete Ressource wurde nicht gefunden“ bei der Bereitstellung von PowerShell?](#why-do-i-get-a-parent-resource-not-found-error-when-provisioning-a-vm-from-powershell)  
-* [Wo finde ich weitere Fehlerinformationen zu Fehlern bei einer VM-Bereitstellung](#where-can-i-find-more-error-information-when-vm-deployment-is-failed)  
+* [Wo finde ich weitere Informationen zu Fehlern bei einer VM-Bereitstellung?](#where-can-i-find-more-error-information-if-a-vm-deployment-fails)  
 
 ### <a name="what-if-my-question-isnt-answered-here"></a>Was kann ich tun, wenn meine Frage hier nicht beantwortet wird?
 Wenn Ihre Frage hier nicht aufgeführt wird, informieren Sie uns, damit wir Ihnen helfen können, eine Antwort zu finden.
@@ -160,7 +160,7 @@ Das Anfügen mehrerer Datenträger an VMs wird unterstützt.
 ### <a name="if-i-want-to-use-a-windows-os-image-for-my-testing-do-i-have-to-purchase-an-msdn-subscription"></a>Wenn ich ein Windows-Betriebssystemimage für meine Tests verwenden möchte, muss ich dann ein MSDN-Abonnement erwerben?
 Wenn Sie Windows-Clientbetriebssystem-Images (Windows 7 oder höher) für Ihre Entwicklung oder Ihre Tests in Azure benötigen, müssen Sie eine dieser Optionen nutzen:
 
-- [Ein MSDN-Abonnement erwerben](https://www.visualstudio.com/products/how-to-buy-vs). 
+- [Ein MSDN-Abonnement erwerben](https://www.visualstudio.com/products/how-to-buy-vs).
 - Wenn Sie über ein Enterprise Agreement verfügen, erstellen Sie mit dem [Enterprise Dev/Test-Angebot](https://azure.microsoft.com/en-us/offers/ms-azr-0148p) ein Azure-Abonnement.
 
 Weitere Informationen zu den Azure-Gutschriften für die einzelnen MSDN-Angebote finden Sie unter [Monatliche Azure-Gutschrift für Visual Studio-Abonnenten](https://azure.microsoft.com/en-us/pricing/member-offers/msdn-benefits-details/).
@@ -219,7 +219,7 @@ Zusätzlich zum Löschen von virtuellen Computern aus Ihrem Lab im Azure-Portal 
 Artefakte sind anpassbare Elemente, die verwendet werden können, um die neuesten Komponenten oder Ihre Entwicklungstools auf einer VM bereitzustellen. Sie werden während der VM-Erstellung mit ein paar einfachen Klicks an die VM angefügt. Nach der Bereitstellung der VM wird Ihre VM von den Artefakten bereitgestellt und konfiguriert. In unserem [öffentlichen GitHub-Repository](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) ist bereits eine Reihe von Artefakten verfügbar, Sie können aber auch ganz einfach [eigene Artefakte erstellen](devtest-lab-artifact-author.md).
 
 ### <a name="how-do-i-create-a-lab-from-an-azure-resource-manager-template"></a>Wie erstelle ich ein Lab anhand einer Azure Resource Manager-Vorlage?
-Wir haben ein [Github-Repository von Azure Resource Manager-Labvorlagen](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates) vorbereitet, die Sie in vorliegender oder geänderter Form zum Erstellen benutzerdefinierter Vorlagen für Ihre Labs bereitstellen können. Jede dieser Vorlagen hat einen Link, auf den Sie klicken können, um das Lab in vorliegender Form unter Ihrem eigenen Azure-Abonnement bereitzustellen, oder Sie können die Vorlage anpassen und [mit PowerShell oder über die Azure-Befehlszeilenschnittstelle bereitstellen](../azure-resource-manager/resource-group-template-deploy.md).
+Wir haben ein [GitHub-Repository von Azure Resource Manager-Labvorlagen](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates) vorbereitet, die Sie in vorliegender oder geänderter Form zum Erstellen benutzerdefinierter Vorlagen für Ihre Labs bereitstellen können. Jede dieser Vorlagen hat einen Link, auf den Sie klicken können, um das Lab in vorliegender Form unter Ihrem eigenen Azure-Abonnement bereitzustellen, oder Sie können die Vorlage anpassen und [mit PowerShell oder über die Azure-Befehlszeilenschnittstelle bereitstellen](../azure-resource-manager/resource-group-template-deploy.md).
 
 ### <a name="why-are-my-vms-created-in-different-resource-groups-with-arbitrary-names-can-i-rename-or-modify-these-resource-groups"></a>Warum werden meine VMs in verschiedenen Ressourcengruppen mit willkürlichen Namen erstellt? Kann ich diese Ressourcengruppen umbenennen oder ändern?
 Ressourcengruppen werden auf diese Weise erstellt, damit Azure DevTest Labs die Benutzerberechtigungen und den Zugriff auf virtuelle Computer verwalten kann. Sie können einen virtuellen Computer zwar in eine andere Ressourcengruppe mit dem gewünschten Namen verschieben, dies wird jedoch nicht empfohlen. Wir arbeiten daran, diese Situation zu verbessern, um mehr Flexibilität zu ermöglichen.   
@@ -261,7 +261,7 @@ Wenn eine Ressource einer anderen übergeordnet ist, muss die übergeordnete Res
 VMs sind untergeordnete Ressourcen unter einem Lab in einer Ressourcengruppe. Wenn Sie Azure-Ressourcenvorlagen zur Bereitstellung über PowerShell verwenden, sollte der im PowerShell-Skript bereitgestellte Name der Ressourcengruppe der Name der Ressourcengruppe des Labs sein. Weitere Informationen finden Sie unter [Beheben verbreiteter Azure-Bereitstellungsfehler](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-common-deployment-errors#parentresourcenotfound).
 
 ### <a name="where-can-i-find-more-error-information-if-a-vm-deployment-fails"></a>Wo finde ich weitere Fehlerinformationen zu Fehlern bei einer VM-Bereitstellung?
-VM-Bereitstellungsfehler werden in den Aktivitätsprotokollen erfasst. Sie können die Aktivitätsprotokolle von virtuellen Labcomputern über die **Überwachungsprotokolle** oder **VM-Diagnose** auf dem VM-Blatt des Labs im Ressourcenmenü finden (das Blatt wird angezeigt, nachdem Sie den virtuellen Computer in der Liste **Meine virtuellen Computer** ausgewählt haben). 
+VM-Bereitstellungsfehler werden in den Aktivitätsprotokollen erfasst. Sie können die Aktivitätsprotokolle von virtuellen Labcomputern über die **Überwachungsprotokolle** oder **VM-Diagnose** auf dem VM-Blatt des Labs im Ressourcenmenü finden (das Blatt wird angezeigt, nachdem Sie den virtuellen Computer in der Liste **Meine virtuellen Computer** ausgewählt haben).
 
 Manchmal tritt der Bereitstellungsfehler vor dem Start der VM-Bereitstellung auf – etwa, wenn das Abonnementlimit für eine mithilfe des virtuellen Computers erstellte Ressource überschritten ist. In diesem Fall werden die Fehlerdetails in den **Aktivitätsprotokollen** der Lab-Ebene erfasst, die Sie unten in den **Konfigurations- und Richtlinieneinstellungen** finden. Weitere Informationen zum Verwenden von Aktivitätsprotokollen in finden Sie unter [Anzeigen von Aktivitätsprotokollen, um Aktionen an Ressourcen zu überwachen](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-audit).
 

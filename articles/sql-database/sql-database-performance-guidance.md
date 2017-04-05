@@ -16,9 +16,9 @@ ms.workload: data-management
 ms.date: 03/06/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: a9d496d696298d800bc40b1f3880c95f84e5f29f
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 03d38dbce86711395a967cf8bad440fd50a38631
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -27,8 +27,8 @@ Azure SQL-Datenbank bietet vier [Dienstebenen](sql-database-service-tiers.md): B
 
 > [!NOTE]
 > In diesem Artikel geht es schwerpunktmäßig um die Verbesserung der Leistung für Einzeldatenbanken in Azure SQL-Datenbank. Informationen zur Verbesserung der Leistung für elastische Pools finden Sie unter [Wo sollte ein elastischer Pool verwendet werden?](sql-database-elastic-pool-guidance.md). Beachten Sie aber, dass Sie viele Optimierungsempfehlungen in diesem Artikel auf Datenbanken in einem elastischen Pool anwenden und ähnliche Leistungsvorteile erzielen können.
-> 
-> 
+>
+>
 
 ## <a name="why-service-tiers"></a>Warum werden Dienstebenen verwendet?
 Jede Datenbankworkload kann sich zwar unterscheiden, aber der Zweck von Dienstebenen besteht darin, für verschiedene Leistungsebenen eine Vorhersagbarkeit der Leistung zu ermöglichen. Kunden mit höheren Anforderungen an Datenbankressourcen können in einer dedizierteren Computingumgebung arbeiten.
@@ -58,7 +58,7 @@ Jeder Dienstebene und Leistungsebene sind verschiedene Beschränkungen und Leist
 [!INCLUDE [SQL DB service tiers table](../../includes/sql-database-service-tiers-table.md)]
 
 > [!IMPORTANT]
-> Kunden mit den Leistungsstufen P11 und P15 können bis zu 4TB Speicher ohne Aufpreis nutzen. Diese 4-TB-Option ist derzeit in folgenden Regionen in der Public Preview verfügbar: USA, Osten 2; USA, Westen; Europa, Westen; Asien, Südosten; Japan, Osten; Australien, Osten; Kanada, Mitte und Kanada, Osten. Aktuelle Einschränkungen finden Sie unter [Current limitations of P11 and P15 databases with 4 TB maxsize](sql-database-service-tiers.md#current-limitations-of-p11-and-p15-databases-with-4-tb-maxsize) (Aktuelle Einschränkungen bei P11- und P15-Datenbanken mit maximal 4TB).
+> Kunden mit den Leistungsstufen P11 und P15 können bis zu 4TB Speicher ohne Aufpreis nutzen. Diese 4-TB-Option ist derzeit in folgenden Regionen in der Public Preview verfügbar: USA, Osten 2; USA, Westen; Europa, Westen; Asien, Südosten; Japan, Osten; Australien, Osten; Kanada, Mitte und Kanada, Osten.
 >
 
 ### <a name="maximum-in-memory-oltp-storage"></a>Maximaler In-Memory-OLTP-Speicher
@@ -86,8 +86,8 @@ Der Dienst authentifiziert jede Anmeldung, wenn mehrere Clients die gleiche Verb
 
 > [!NOTE]
 > Diese Beschränkung gilt derzeit nicht für Datenbanken in elastischen Pools.
-> 
-> 
+>
+>
 
 ### <a name="maximum-sessions"></a>Maximale Anzahl von Sitzungen
 Um die Anzahl aktueller aktiver Sitzungen anzuzeigen, führen Sie in der SQL-Datenbank diese Transact-SQL-Abfrage aus:
@@ -105,7 +105,7 @@ Um die Anzahl aktueller aktiver Sitzungen anzuzeigen, führen Sie in der SQL-Dat
 
 Diese Abfragen geben wieder eine Anzahl zu einem bestimmten Zeitpunkt zurück. Wenn Sie im Laufe der Zeit mehrere Beispielwerte sammeln, können Sie sich am besten über Ihre Sitzungsnutzung informieren.
 
-Für die SQL-Datenbankanalyse können Sie Verlaufsstatistiken für Sitzungen abrufen, indem Sie [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) abfragen und die Spalte **active_session_count** überprüfen. 
+Für die SQL-Datenbankanalyse können Sie Verlaufsstatistiken für Sitzungen abrufen, indem Sie [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) abfragen und die Spalte **active_session_count** überprüfen.
 
 ## <a name="monitor-resource-use"></a>Überwachen der Ressourcennutzung
 
@@ -149,8 +149,8 @@ Azure SQL-Datenbank macht die verbrauchten Ressourceninformationen für jede akt
 
 > [!NOTE]
 > Sie müssen mit der **master**-Datenbank Ihres logischen SQL-Datenbankservers verbunden sein, um **sys.resource_stats** in den folgenden Beispielen abzufragen.
-> 
-> 
+>
+>
 
 Dieses Beispiel veranschaulicht, wie die Daten in dieser Sicht verfügbar gemacht werden:
 
@@ -164,14 +164,14 @@ Dieses Beispiel veranschaulicht, wie die Daten in dieser Sicht verfügbar gemach
 Das nächste Beispiel enthält unterschiedliche Möglichkeiten zum Einsatz der **sys.resource_stats**-Katalogsicht, um Informationen zur Nutzung von Ressourcen durch Ihre SQL-Datenbank zu erhalten:
 
 1. Sie können diese Abfrage ausführen, um die Ressourcennutzung der letzten Woche für die Datenbank „userdb1“ anzuzeigen:
-   
+
         SELECT *
         FROM sys.resource_stats
         WHERE database_name = 'userdb1' AND
               start_time > DATEADD(day, -7, GETDATE())
         ORDER BY start_time DESC;
 2. Um auszuwerten, wie gut Ihre Workload zur Leistungsebene passt, müssen Sie die einzelnen Aspekte der Ressourcenmetriken untersuchen: CPU, Lesevorgänge, Schreibvorgänge, Anzahl von Workern und Anzahl von Sitzungen. Hier wird von einer überarbeiteten Abfrage **sys.resource_stats** verwendet, um den Durchschnitt und die Höchstwerte dieser Ressourcenmetriken zu melden:
-   
+
         SELECT
             avg(avg_cpu_percent) AS 'Average CPU use in percent',
             max(avg_cpu_percent) AS 'Maximum CPU use in percent',
@@ -186,35 +186,35 @@ Das nächste Beispiel enthält unterschiedliche Möglichkeiten zum Einsatz der *
         FROM sys.resource_stats
         WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
 3. Mit diesen Informationen zu den Durchschnitts- und Höchstwerten der Ressourcenmetriken können Sie bewerten, wie gut Ihre Workload zur gewählten Leistungsebene passt. Normalerweise erhalten Sie mit den Durchschnittswerten aus **sys.resource_stats** eine gute Grundlage gegenüber der Zielgröße. Dies sollte Ihre primäre Messlatte sein. Beispielsweise können Sie die Standard-Dienstebene mit der Leistungsebene S2 verwenden. Die durchschnittlichen Nutzungsprozentsätze für CPU- und I/O-Lese- und -Schreibvorgänge liegen unter 40 Prozent, die durchschnittliche Anzahl von Workern unter 50 und die durchschnittliche Anzahl von Sitzungen unter 200. Für diese Workload ist unter Umständen die Leistungsebene S1 geeignet. Es ist leicht zu erkennen, ob Ihre Datenbank die Grenzen für Worker und Sitzungen einhält. Um zu ermitteln, ob eine Datenbank in Bezug auf CPU, Lesevorgänge und Schreibvorgänge zu einer niedrigeren Leistungsebene passt, dividieren Sie die DTU-Anzahl der niedrigeren Leistungsebene durch die DTU-Anzahl Ihrer aktuellen Leistungsebene und multiplizieren das Ergebnis dann mit 100:
-   
-    **S1 DTU / S2 DTU * 100 = 20 / 50* 100 = 40**
-   
+
+    **S1 DTU / S2 DTU * 100 = 20 / 50 * 100 = 40**
+
     Das Ergebnis ist der relative Leistungsunterschied zwischen den beiden Leistungsebenen als Prozentsatz. Wenn die Ressourcennutzung diese Menge nicht überschreitet, kann für Ihre Workload ggf. die niedrigere Leistungsstufe geeignet sein. Sie sollten sich aber alle Bereiche der Ressourcennutzung ansehen und den Prozentsatz dafür ermitteln, wie oft Ihre Datenbankworkload in die niedrigere Leistungsebene passt. Mit der folgenden Abfrage wird der Prozentsatz für die Eignung pro Ressourcendimension basierend auf dem in diesem Beispiel berechneten Schwellenwert von 40% ausgegeben:
-   
+
         SELECT
             (COUNT(database_name) - SUM(CASE WHEN avg_cpu_percent >= 40 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'CPU Fit Percent'
             ,(COUNT(database_name) - SUM(CASE WHEN avg_log_write_percent >= 40 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'Log Write Fit Percent'
             ,(COUNT(database_name) - SUM(CASE WHEN avg_data_io_percent >= 40 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'Physical Data IO Fit Percent'
         FROM sys.resource_stats
         WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
-   
+
     In Abhängigkeit Ihres Servicelevelziels (Service Level Objective, SLO) für die Datenbank können Sie entscheiden, ob Ihre Workload in die niedrigere Leistungsebene passt. Wenn der SLO-Wert für die Datenbankworkload 99,9 Prozent beträgt und die obige Abfrage höhere Werte als 99,9 Prozent für alle drei Ressourcendimensionen zurückgibt, ist die Wahrscheinlichkeit hoch, dass Ihre Workload für die niedrigere Leistungsebene geeignet ist.
-   
+
     Wenn Sie sich den Prozentsatz für die Eignung ansehen, erhalten Sie auch Informationen dazu, ob Sie zur nächsthöheren Leistungsebene wechseln müssen, um das Servicelevelziel zu erreichen. „userdb1“ weist beispielsweise die folgende CPU-Auslastung für die letzte Woche auf:
-   
+
    | Durchschnittlicher CPU-Prozentwert | Maximaler CPU-Prozentwert |
    | --- | --- |
    | 24,5 |100,00 |
-   
+
     Der durchschnittliche CPU-Wert beträgt ca. ein Viertel der Obergrenze der Leistungsebene. Dies würde also gut zur Leistungsebene der Datenbank passen. Der Höchstwert zeigt aber, dass die Datenbank die Obergrenze der Leistungsebene erreicht. Müssen Sie also zur nächsthöheren Leistungsebene wechseln? Prüfen Sie, wie häufig Ihre Workload 100 Prozent erreicht, und vergleichen Sie dies dann mit Ihrem Servicelevelziel für die Datenbankworkload.
-   
+
         SELECT
         (COUNT(database_name) - SUM(CASE WHEN avg_cpu_percent >= 100 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'CPU fit percent'
         ,(COUNT(database_name) - SUM(CASE WHEN avg_log_write_percent >= 100 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'Log write fit percent'
         ,(COUNT(database_name) - SUM(CASE WHEN avg_data_io_percent >= 100 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'Physical data I/O fit percent'
         FROM sys.resource_stats
         WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
-   
+
     Wenn diese Abfrage für eine der drei Ressourcendimensionen einen Wert unterhalb von 99,9 Prozent zurückgibt, können Sie entweder die Umstellung auf die nächsthöhere Leistungsebene erwägen oder Verfahren zur Anwendungsoptimierung nutzen, um die Last für die SQL-Datenbank zu reduzieren.
 4. Bei dieser Übung wird auch die projizierte zukünftige Zunahme der Workload berücksichtigt.
 
@@ -400,8 +400,8 @@ Sie sehen das Ergebnis in der Tabelle **sys.resource_stats** (zwischen der Ausf�
 
 > [!NOTE]
 > Das Volumen ist in diesem Beispiel zwar absichtlich nur sehr klein, aber die Auswirkungen von suboptimalen Parametern können beträchtlich sein, besonders für größere Datenbanken. Der Unterschied kann für die langsame und die schnelle Variante in Extremfällen zwischen dem Sekundenbereich und dem Stundenbereich liegen.
-> 
-> 
+>
+>
 
 Sie können **sys.resource_stats** überprüfen, um zu ermitteln, ob die Ressource für einen Test mehr oder weniger Ressourcen als für einen anderen Test verwendet. Beim Vergleichen von Daten sollten Sie Tests zeitlich ausreichend trennen, damit sie sich in der Ansicht **sys.resource_stats** nicht in demselben 5-Minuten-Fenster bewegen. Ziel dieser Übung ist die Minimierung der Gesamtmenge an verwendeten Ressourcen, und nicht die Minimierung der Ressourcen bei Spitzenlast. Im Allgemeinen führt eine Optimierung eines Codeabschnitts in Bezug auf die Latenz auch zu einem verringerten Ressourcenverbrauch. Stellen Sie sicher, dass die an einer Anwendung vorgenommenen Änderungen auch notwendig sind und dass die Änderungen keine negativen Auswirkungen auf die Benutzerfreundlichkeit haben, wenn Benutzer in der Anwendung Abfragehinweise verwenden.
 
@@ -412,8 +412,8 @@ Da Azure SQL-Datenbank auf normaler Hardware ausgeführt wird, gelten für eine 
 
 > [!NOTE]
 > SQL-Datenbank verfügt jetzt über eine Bibliothek als Hilfe für das Sharding. Weitere Informationen finden Sie unter [Übersicht über die Clientbibliothek für elastische Datenbanken](sql-database-elastic-database-client-library.md).
-> 
-> 
+>
+>
 
 Wenn eine Datenbank beispielsweise Kundennamen, Bestellungen und Bestelldetails enthält (wie in der herkömmlichen Northwind-Beispieldatenbank von SQL Server), können Sie diese Daten auf mehrere Datenbanken aufteilen. Hierzu wird ein Kunde mit den zugehörigen Bestellinformationen und -details gruppiert. Sie können dafür sorgen, dass die Daten des Kunden in einer Einzeldatenbank verbleiben. Bei dieser Anwendung würden unterschiedliche Kunden auf verschiedene Datenbanken verteilt werden, um eine effektive Verteilung der Last auf mehrere Datenbanken zu erreichen. Beim Sharding können Kunden nicht nur die Erreichung der Obergrenze bei der Datenbankgröße vermeiden, sondern für Azure SQL-Datenbank auch die Verarbeitung von Workloads ermöglichen, die die Obergrenzen der unterschiedlichen Leistungsebenen deutlich überschreiten, solange jede einzelne Datenbank in die DTU passt.
 
@@ -436,5 +436,4 @@ Einige Datenbankanwendungen verfügen über Workloads mit einer hohen Zahl von L
 * Weitere Informationen zu Dienstebenen finden Sie unter [SQL-Datenbankoptionen und -leistung](sql-database-service-tiers.md)
 * Weitere Informationen zu elastischen Pools finden Sie unter [Was ist ein elastischer Azure-Pool?](sql-database-elastic-pool.md).
 * Informationen zur Leistung und zu elastischen Pools finden Sie unter [Wann ein elastischer Pool in Frage kommt](sql-database-elastic-pool-guidance.md).
-
 

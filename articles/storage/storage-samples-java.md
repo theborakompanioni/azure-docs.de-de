@@ -15,8 +15,9 @@ ms.workload: storage
 ms.date: 01/12/2017
 ms.author: seguler
 translationtype: Human Translation
-ms.sourcegitcommit: ae5719c60c6ed2d3467f162f3b273d5bfdcf0073
-ms.openlocfilehash: 9a311233a6e604ccdb6ab862f11774bff7382a8d
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 98e6022062b4ef5b5c71b54a0e94775b925d216b
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -83,11 +84,11 @@ Die folgende Tabelle enthält eine Übersicht über unser Beispielrepository und
 <tr> 
 <td>SAS</td>
 <td><a href="https://github.com/Azure/azure-storage-java/blob/master/microsoft-azure-storage-test/src/com/microsoft/azure/storage/blob/SasTests.java">Beispiel für SAS-Tests</a></td>
-</tr>   
+</tr>     
 <tr> 
 <td>Diensteigenschaften</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobAdvanced.java">Erste Schritte mit dem Azure Blob-Dienst in Java</a></td>
-</tr>           
+</tr>             
 <tr> 
 <td>Snapshot Blob</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Erste Schritte mit dem Azure Blob-Dienst in Java</a></td>
@@ -132,11 +133,11 @@ Die folgende Tabelle enthält eine Übersicht über unser Beispielrepository und
 <tr> 
 <td rowspan="8"><b>Warteschlange</b></td>
 <td>Hinzufügen von Nachrichten</td> 
-<td><a href="https://github.com/Azure/azure-storage-java/blob/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage/queue/gettingstarted/QueueBasics.java">Speicherclientbibliothek für Java – Beispiele</a></td> 
+<td><a href="https://github.com/Azure/azure-storage-java/blob/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage/queue/gettingstarted/QueueBasics.java">Storage Java Client Library Samples</a> (Speicherclientbibliothek für Java – Beispiele)</td> 
 </tr> 
 <tr> 
 <td>Clientseitige Verschlüsselung</td> 
-<td><a href="https://github.com/Azure/azure-storage-java/blob/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage/encryption/queue/gettingstarted/QueueGettingStarted.java">Speicherclientbibliothek für Java – Beispiele</a></td> 
+<td><a href="https://github.com/Azure/azure-storage-java/blob/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage/encryption/queue/gettingstarted/QueueGettingStarted.java">Storage Java Client Library Samples</a> (Speicherclientbibliothek für Java – Beispiele)</td> 
 </tr> 
 <tr> 
 <td>Erstellen von Warteschlangen</td> 
@@ -173,7 +174,7 @@ Die folgende Tabelle enthält eine Übersicht über unser Beispielrepository und
 </tr> 
 <tr> 
 <td>Einfügen/Zusammenführen/Ersetzen von Entitäten</td> 
-<td><a href="https://github.com/Azure/azure-storage-java/blob/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage/table/gettingtstarted/TableBasics.java">Speicherclientbibliothek für Java – Beispiele</a></td> 
+<td><a href="https://github.com/Azure/azure-storage-java/blob/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage/table/gettingtstarted/TableBasics.java">Storage Java Client Library Samples</a> (Speicherclientbibliothek für Java – Beispiele)</td> 
 </tr> 
 <tr> 
 <td>Entitäten abfragen</td> 
@@ -189,7 +190,7 @@ Die folgende Tabelle enthält eine Übersicht über unser Beispielrepository und
 </tr> 
 <tr> 
 <td>Entität aktualisieren</td> 
-<td><a href="https://github.com/Azure/azure-storage-java/blob/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage/table/gettingtstarted/TableBasics.java">Speicherclientbibliothek für Java – Beispiele</a></td> 
+<td><a href="https://github.com/Azure/azure-storage-java/blob/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage/table/gettingtstarted/TableBasics.java">Storage Java Client Library Samples</a> (Speicherclientbibliothek für Java – Beispiele)</td> 
 </tr> 
 </tbody> 
 </table>
@@ -216,8 +217,4 @@ Weitere Informationen zu Beispielen für andere Sprachen:
 
 * .NET: [Azure Storage-Beispiele mit .NET](storage-samples-dotnet.md)
 * Alle anderen Sprachen: [Azure Storage-Beispiele](storage-samples.md)
-
-
-<!--HONumber=Jan17_HO2-->
-
 

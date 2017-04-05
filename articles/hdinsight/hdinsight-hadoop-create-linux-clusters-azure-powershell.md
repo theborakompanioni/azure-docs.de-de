@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 4208deca-d64a-45e1-8948-2673d5d7678c
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,9 +17,9 @@ ms.workload: big-data
 ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2dd64398fce3a85f92492b01951008eab31a2c3f
-ms.openlocfilehash: a566fe935da98d303f1260cbc2a2009e5702530a
-ms.lasthandoff: 02/07/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 44e418e52fc18dd22820331f7d921e789da62832
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -62,10 +63,7 @@ Für die Erstellung eines HDInsight-Clusters mithilfe von Azure PowerShell müss
 Die beiden wichtigsten Parameter, die für die Erstellung von Linux-Clustern festgelegt werden müssen, sind diejenigen zum Angeben des Betriebssystemtyps und der Details zum SSH-Benutzer:
 
 * Stellen Sie sicher, dass Sie den Parameter **-OSType** als **Linux** angeben.
-* Um SSH für Remotesitzungen mit dem Cluster zu verwenden, können Sie das SSH-Benutzerkennwort oder den öffentlichen SSH-Schlüssel angeben. Wenn Sie sowohl das SSH-Benutzerkennwort und als auch den öffentlichen SSH-Schlüssel angeben, wird der Schlüssel ignoriert. Wenn Sie den SSH-Schlüssel für Remotesitzungen verwenden möchten, müssen Sie bei der Aufforderung zur Eingabe ein leeres SSH-Kennwort angeben. Weitere Informationen zur Verwendung von SSH mit HDInsight finden Sie in den folgenden Artikeln:
-  
-  * [Verwenden von SSH mit HDInsight (Hadoop) unter Windows, Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md)
-  * [Verwenden von SSH mit HDInsight (Hadoop) aus PuTTY unter Window](hdinsight-hadoop-linux-use-ssh-windows.md)
+* Um SSH für Remotesitzungen mit dem Cluster zu verwenden, können Sie das SSH-Benutzerkennwort oder den öffentlichen SSH-Schlüssel angeben. Wenn Sie sowohl das SSH-Benutzerkennwort und als auch den öffentlichen SSH-Schlüssel angeben, wird der Schlüssel ignoriert. Wenn Sie den SSH-Schlüssel für Remotesitzungen verwenden möchten, müssen Sie bei der Aufforderung zur Eingabe ein leeres SSH-Kennwort angeben. Informationen hierzu finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 Das folgende Skript veranschaulicht das Erstellen eines neuen Clusters:
 

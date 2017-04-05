@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 2/21/2017
 ms.author: nisoneji
 translationtype: Human Translation
-ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
-ms.openlocfilehash: 33f1be6911178315752ce9c39aa1428b70db835c
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 431f73e1be45dec9aa0fe186cb22078f8d95588d
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -67,13 +67,13 @@ Das Tool verfügt über zwei Hauptphasen: die Profilerstellung und die Berichter
 
 | Serveranforderung | Beschreibung|
 |---|---|
-|Profilerstellung und Messung des Durchsatzes| <ul><li>Betriebssystem: Microsoft Windows Server 2012 R2<br>(idealerweise mindestens basierend auf [Empfohlene Größen für den Konfigurationsserver](https://aka.ms/asr-v2a-on-prem-components))</li><li>Computerkonfiguration: 8 vCPUs, 16 GB RAM, 300 GB HDD</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://developercenter.vmware.com/tool/vsphere_powercli/6.0)</li><li>[Microsoft Visual C++ Redistributable für Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>Zugriff auf Azure über das Internet von diesem Server</li><li>Azure-Speicherkonto</li><li>Administratorzugriff auf dem Server</li><li>Mindestens 100 GB freier Speicherplatz (bei 1.000 VMs mit durchschnittlich drei Datenträgern, Profilerstellung über 30 Tage)</li></ul> |
+|Profilerstellung und Messung des Durchsatzes| <ul><li>Betriebssystem: Microsoft Windows Server 2012 R2<br>(idealerweise mindestens basierend auf [Empfohlene Größen für den Konfigurationsserver](https://aka.ms/asr-v2a-on-prem-components))</li><li>Computerkonfiguration: 8 vCPUs, 16 GB RAM, 300 GB HDD</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://developercenter.vmware.com/tool/vsphere_powercli/6.0)</li><li>[Microsoft Visual C++ Redistributable für Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>Zugriff auf Azure über das Internet von diesem Server</li><li>Azure-Speicherkonto</li><li>Administratorzugriff auf dem Server</li><li>Mindestens 100 GB freier Speicherplatz (bei 1.000 VMs mit durchschnittlich drei Datenträgern, Profilerstellung über 30 Tage)</li><li>Die Einstellungen für die VMware vCenter-Statistikebene sollten auf „2“ oder „Höchste Stufe“ festgelegt werden.</li></ul>|
 | Berichterstellung | Windows-PC oder Windows-Server mit Microsoft Excel 2013 oder höher |
 | Benutzerberechtigungen | Leseberechtigung für das Benutzerkonto, das zum Zugreifen auf den VMware vCenter-Server/VMware vSphere ESXi-Host während der Profilerstellung verwendet wird |
 
 > [!NOTE]
 >
-> Mit dem Tool können nur Profile für VMs mit VMDK- und RDM-Datenträgern erstellt werden. Die Profilerstellung für VMs mit iSCSI- oder NFS-Datenträgern ist nicht möglich. Site Recovery unterstützt zwar iSCSI- und NFS-Datenträger für VMware-Server, aber da sich der Deployment Planner nicht auf dem Gast befindet und die Profilerstellung nur mithilfe von vCenter-Leistungsindikatoren durchgeführt wird, hat das Tool keinen Einblick in diese Datenträgertypen.
+>Mit dem Tool können nur Profile für VMs mit VMDK- und RDM-Datenträgern erstellt werden. Die Profilerstellung für VMs mit iSCSI- oder NFS-Datenträgern ist nicht möglich. Site Recovery unterstützt zwar iSCSI- und NFS-Datenträger für VMware-Server, aber da sich der Deployment Planner nicht auf dem Gast befindet und die Profilerstellung nur mithilfe von vCenter-Leistungsindikatoren durchgeführt wird, hat das Tool keinen Einblick in diese Datenträgertypen.
 >
 
 ## <a name="download-and-extract-the-public-preview"></a>Herunterladen und Extrahieren der öffentlichen Vorschauversion
@@ -150,12 +150,6 @@ Es wird empfohlen, die Profilerstellung für Ihre VMs mindestens 15 bis 30 Tage 
 
 Während der Profilerstellung können Sie optional den Namen eines Speicherkontos und den dazugehörigen Schlüssel übergeben, um den Durchsatz zu ermitteln, der für Site Recovery bei der Replikation vom Konfigurationsserver oder Prozessserver zu Azure erreicht werden kann. Wenn der Name des Speicherkontos und der Schlüssel während der Profilerstellung nicht übergeben werden, wird der erreichbare Durchsatz vom Tool nicht berechnet.
 
-#### <a name="example-1-profile-vms-for-30-days-and-find-the-throughput-from-on-premises-to-azure"></a>Beispiel 1: VM-Profilerstellung für 30 Tage, Ermittlung des Durchsatzes von lokal zu Azure
-```
-ASRDeploymentPlanner.exe **-Operation** StartProfiling -Directory “E:\vCenter1_ProfiledData” **-Server** vCenter1.contoso.com **-VMListFile** “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  **-NoOfDaysToProfile**  30  **-User** vCenterUser1 **-StorageAccountName**  asrspfarm1 **-StorageAccountKey** Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
-```
-
-#### <a name="example-2-profile-vms-for-15-days"></a>Beispiel 2: VM-Profilerstellung für 15 Tage
 Sie können mehrere Instanzen des Tools für verschiedene Gruppen von VMs ausführen. Stellen Sie sicher, dass die VM-Namen in den Gruppen für die Profilerstellung nicht mehr als einmal vorkommen. Wenn Sie beispielsweise Profile für zehn VMs (VM1 bis VM10) erstellt haben und nach einigen Tagen Profile für fünf weitere VMs (VM11 bis VM15) erstellen möchten, können Sie das Tool für die zweite Gruppe von VMs (VM11 bis VM15) über eine andere Befehlszeilenkonsole ausführen. Stellen Sie hierbei sicher, dass die zweite Gruppe von VMs keine Namen der VMs aus der ersten Profilerstellungsinstanz enthält, oder verwenden Sie für die zweite Ausführung ein anderes Ausgabeverzeichnis. Wenn zwei Instanzen des Tools für die Profilerstellung derselben VMs verwendet werden und dabei dasselbe Ausgabeverzeichnis genutzt wird, ist der generierte Bericht fehlerhaft.
 
 VM-Konfigurationen werden zu Beginn des Profilerstellungsvorgangs einmal erfasst und in einer Datei mit dem Namen „VMDetailList.xml“ gespeichert. Diese Informationen werden für die Berichterstellung verwendet. Alle Änderungen der VM-Konfiguration (z.B. erhöhte Anzahl von Kernen, Datenträgern oder NICs) vom Anfang bis zum Ende der Profilerstellung werden nicht erfasst. Wenn sich eine betroffene VM-Konfiguration während der Profilerstellung geändert hat, können Sie dieses Problem für die öffentliche Vorschauversion wie folgt umgehen, um bei der Berichterstellung die aktuellen VM-Details zu erhalten:
@@ -165,25 +159,27 @@ VM-Konfigurationen werden zu Beginn des Profilerstellungsvorgangs einmal erfasst
 
 Mit dem Befehl für die Profilerstellung werden im Verzeichnis der Profilerstellung mehrere Dateien generiert. Löschen Sie keine Dateien, weil sich dies auf die Berichterstellung auswirkt.
 
+#### <a name="example-1-profile-vms-for-30-days-and-find-the-throughput-from-on-premises-to-azure"></a>Beispiel 1: VM-Profilerstellung für 30 Tage, Ermittlung des Durchsatzes von lokal zu Azure
 ```
-ASRDeploymentPlanner.exe **-Operation** StartProfiling **-Directory** “E:\vCenter1_ProfiledData” **-Server** vCenter1.contoso.com **-VMListFile** “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  **-NoOfDaysToProfile**  15  -User vCenterUser1
+ASRDeploymentPlanner.exe -Operation StartProfiling -Directory “E:\vCenter1_ProfiledData” -Server vCenter1.contoso.com -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  -NoOfDaysToProfile  30  -User vCenterUser1 -StorageAccountName  asrspfarm1 -StorageAccountKey Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
+```
+
+#### <a name="example-2-profile-vms-for-15-days"></a>Beispiel 2: VM-Profilerstellung für 15 Tage
+
+```
+ASRDeploymentPlanner.exe -Operation StartProfiling -Directory “E:\vCenter1_ProfiledData” -Server vCenter1.contoso.com -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  -NoOfDaysToProfile  15  -User vCenterUser1
 ```
 
 #### <a name="example-3-profile-vms-for-1-hour-for-a-quick-test-of-the-tool"></a>Beispiel 3: VM-Profilerstellung für 1 Stunde zum schnellen Testen des Tools
 ```
-ASRDeploymentPlanner.exe **-Operation** StartProfiling **-Directory** “E:\vCenter1_ProfiledData” **-Server** vCenter1.contoso.com **-VMListFile** “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  **-NoOfDaysToProfile**  0.04  **-User** vCenterUser1
+ASRDeploymentPlanner.exe -Operation StartProfiling -Directory “E:\vCenter1_ProfiledData” -Server vCenter1.contoso.com -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  -NoOfDaysToProfile  0.04  -User vCenterUser1
 ```
 
 >[!NOTE]
 >
 >* Wenn der Server, auf dem das Tool ausgeführt wird, neu gestartet wird oder abstürzt oder wenn Sie das Tool mit STRG+C schließen, werden die Profilerstellungsdaten beibehalten. Es kann aber sein, dass die letzten 15 Minuten der Daten für die Profilerstellung fehlen. Führen Sie das Tool in diesem Fall im Profilerstellungsmodus aus, nachdem der Server neu gestartet wurde.
 >* Wenn der Name des Speicherkontos und der dazugehörige Schlüssel übergeben werden, misst das Tool den Durchsatz im letzten Schritt der Profilerstellung. Falls das Tool geschlossen wird, bevor die Profilerstellung abgeschlossen ist, wird der Durchsatz nicht berechnet. Zur Ermittlung des Durchsatzes vor dem Generieren des Berichts können Sie den GetThroughput-Vorgang über die Befehlszeilenkonsole ausführen. Andernfalls sind die Informationen zum Durchsatz nicht im Bericht enthalten.
->* Sie können mehrere Instanzen des Tools für verschiedene Gruppen von VMs ausführen. Stellen Sie sicher, dass die VM-Namen in den Gruppen für die Profilerstellung nicht mehr als einmal vorkommen. Wenn Sie beispielsweise Profile für zehn VMs (VM1 bis VM10) erstellt haben und nach einigen Tagen Profile für fünf weitere VMs (VM11 bis VM15) erstellen möchten, können Sie das Tool für die zweite Gruppe von VMs (VM11 bis VM15) über eine andere Befehlszeilenkonsole ausführen. Stellen Sie hierbei aber sicher, dass die zweite Gruppe von VMs keine Namen der VMs aus der ersten Profilerstellungsinstanz enthält, oder verwenden Sie für die zweite Ausführung ein anderes Ausgabeverzeichnis. Wenn zwei Instanzen des Tools für die Profilerstellung derselben VMs verwendet werden und dabei dasselbe Ausgabeverzeichnis genutzt wird, ist der generierte Bericht fehlerhaft.
->* Die VM-Konfiguration wird zu Beginn des Profilerstellungsvorgangs einmal erfasst und in einer Datei mit dem Namen „VMDetailList.xml“ gespeichert. Diese Informationen werden für die Berichterstellung verwendet. Alle Änderungen der VM-Konfiguration (z.B. erhöhte Anzahl von Kernen, Datenträgern oder NICs) vom Anfang bis zum Ende der Profilerstellung werden erfasst. Wenn sich eine betroffene VM-Konfiguration in der öffentlichen Vorschauversion geändert hat, können Sie die aktuellen VM-Details abrufen, indem Sie die folgende Problemumgehung verwenden:  
->  * Sichern Sie die Datei „VMdetailList.xml“, und löschen Sie die Datei an ihrem aktuellen Speicherort.  
->  * Übergeben Sie die Argumente „-User“ und „-Password“ während der Berichterstellung.  
->  
->* Mit dem Befehl für die Profilerstellung werden im Verzeichnis der Profilerstellung mehrere Dateien generiert. Löschen Sie keine Dateien, weil sich dies auf die Berichterstellung auswirkt.
+
 
 ## <a name="generate-a-report"></a>Generieren eines Berichts
 Das Tool generiert eine makrofähige Microsoft Excel-Datei (XLSM-Datei) als Berichtsausgabe, in der alle Empfehlungen für die Bereitstellung zusammengefasst sind. Der Bericht hat den Namen „DeploymentPlannerReport_<*eindeutiger numerischer Bezeichner*>.xlsm“ und wird im angegebenen Verzeichnis gespeichert.
@@ -207,36 +203,36 @@ Nach Abschluss der Profilerstellung können Sie das Tool im Berichterstellungsmo
 | -EndDate | (Optional) Das Enddatum und die Uhrzeit im Format MM-TT-JJJJ:HH:MM (24-Stunden-Format). *EndDate* muss zusammen mit *StartDate* angegeben werden. Wenn „EndDate“ angegeben ist, wird der Bericht für die Profilerstellungsdaten erstellt, die zwischen „StartDate“ und „EndDate“ erfasst wurden. |
 | -GrowthFactor | (Optional) Der Zuwachsfaktor als Prozentsatz. Der Standardwert ist 30 Prozent. |
 
-### <a name="example-1-generate-a-report-with-default-values-when-the-profiled-data-is-on-the-local-drive"></a>Beispiel 1: Berichterstellung mit Standardwerten, wenn sich die Profilerstellungsdaten auf dem lokalen Laufwerk befinden
+#### <a name="example-1-generate-a-report-with-default-values-when-the-profiled-data-is-on-the-local-drive"></a>Beispiel 1: Berichterstellung mit Standardwerten, wenn sich die Profilerstellungsdaten auf dem lokalen Laufwerk befinden
 ```
-ASRDeploymentPlanner.exe **-Operation** GenerateReport **-Server** vCenter1.contoso.com **-Directory** “\\PS1-W2K12R2\vCenter1_ProfiledData” **-VMListFile** “\\PS1-W2K12R2\vCenter1_ProfiledData\ProfileVMList1.txt”
+ASRDeploymentPlanner.exe -Operation GenerateReport -Server vCenter1.contoso.com -Directory “\\PS1-W2K12R2\vCenter1_ProfiledData” -VMListFile “\\PS1-W2K12R2\vCenter1_ProfiledData\ProfileVMList1.txt”
 ```
 
-### <a name="example-2-generate-a-report-when-the-profiled-data-is-on-a-remote-server"></a>Beispiel 2: Berichterstellung, wenn sich die Profilerstellungsdaten auf einem Remoteserver befinden
+#### <a name="example-2-generate-a-report-when-the-profiled-data-is-on-a-remote-server"></a>Beispiel 2: Berichterstellung, wenn sich die Profilerstellungsdaten auf einem Remoteserver befinden
 Sie sollten über Lese-/Schreibzugriff für das Remoteverzeichnis verfügen.
 ```
-ASRDeploymentPlanner.exe **-Operation** GenerateReport **-Server** vCenter1.contoso.com **-Directory** “\\PS1-W2K12R2\vCenter1_ProfiledData” **-VMListFile** “\\PS1-W2K12R2\vCenter1_ProfiledData\ProfileVMList1.txt”
+ASRDeploymentPlanner.exe -Operation GenerateReport -Server vCenter1.contoso.com -Directory “\\PS1-W2K12R2\vCenter1_ProfiledData” -VMListFile “\\PS1-W2K12R2\vCenter1_ProfiledData\ProfileVMList1.txt”
 ```
 
-### <a name="example-3-generate-a-report-with-a-specific-bandwidth-and-goal-to-complete-ir-within-specified-time"></a>Beispiel 3: Berichterstellung mit spezifischer Bandbreite und der Vorgabe, die erste Replikation innerhalb der angegebenen Zeit abzuschließen
+#### <a name="example-3-generate-a-report-with-a-specific-bandwidth-and-goal-to-complete-ir-within-specified-time"></a>Beispiel 3: Berichterstellung mit spezifischer Bandbreite und der Vorgabe, die erste Replikation innerhalb der angegebenen Zeit abzuschließen
 ```
-ASRDeploymentPlanner.exe **-Operation** GenerateReport **-Server** vCenter1.contoso.com **-Directory** “E:\vCenter1_ProfiledData” **-VMListFile** “E:\vCenter1_ProfiledData\ProfileVMList1.txt” **-Bandwidth** 100 **-GoalToCompleteIR** 24
-```
-
-### <a name="example-4-generate-a-report-with-a-5-percent-growth-factor-instead-of-the-default-30-percent"></a>Beispiel 4: Berichterstellung mit Zuwachsfaktor von 5 Prozent (anstelle der Standardeinstellung von 30 Prozent)
-```
-ASRDeploymentPlanner.exe **-Operation** GenerateReport **-Server** vCenter1.contoso.com **-Directory** “E:\vCenter1_ProfiledData” **-VMListFile** “E:\vCenter1_ProfiledData\ProfileVMList1.txt” **-GrowthFactor** 5
+ASRDeploymentPlanner.exe -Operation GenerateReport -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt” -Bandwidth 100 -GoalToCompleteIR 24
 ```
 
-### <a name="example-5-generate-a-report-with-a-subset-of-profiled-data"></a>Beispiel 5: Berichterstellung mit einer Teilmenge der Profilerstellungsdaten
+#### <a name="example-4-generate-a-report-with-a-5-percent-growth-factor-instead-of-the-default-30-percent"></a>Beispiel 4: Berichterstellung mit Zuwachsfaktor von 5 Prozent (anstelle der Standardeinstellung von 30 Prozent)
+```
+ASRDeploymentPlanner.exe -Operation GenerateReport -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt” -GrowthFactor 5
+```
+
+#### <a name="example-5-generate-a-report-with-a-subset-of-profiled-data"></a>Beispiel 5: Berichterstellung mit einer Teilmenge der Profilerstellungsdaten
 Es kann beispielsweise sein, dass Sie über Profilerstellungsdaten für 30 Tage verfügen und den Bericht nur für 20 Tage erstellen möchten.
 ```
-ASRDeploymentPlanner.exe **-Operation** GenerateReport **-Server** vCenter1.contoso.com **-Directory** “E:\vCenter1_ProfiledData” **-VMListFile** “E:\vCenter1_ProfiledData\ProfileVMList1.txt” **-StartDate**  01-10-2017:12:30 -**EndDate** 01-19-2017:12:30
+ASRDeploymentPlanner.exe -Operation GenerateReport -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt” -StartDate  01-10-2017:12:30 -EndDate 01-19-2017:12:30
 ```
 
-### <a name="example-6-generate-a-report-for-5-minute-rpo"></a>Beispiel 6: Berichterstellung für RPO von 5 Minuten
+#### <a name="example-6-generate-a-report-for-5-minute-rpo"></a>Beispiel 6: Berichterstellung für RPO von 5 Minuten
 ```
-ASRDeploymentPlanner.exe **-Operation** GenerateReport **-Server** vCenter1.contoso.com **-Directory** “E:\vCenter1_ProfiledData” **-VMListFile** “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  **-DesiredRPO** 5
+ASRDeploymentPlanner.exe -Operation GenerateReport -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  -DesiredRPO 5
 ```
 
 ## <a name="percentile-value-used-for-the-calculation"></a>Für die Berechnung verwendeter Perzentilwert
@@ -246,9 +242,9 @@ Für das Tool werden standardmäßig die Werte des 95. Perzentils für Lese/Schr
 
 Bei Verwendung der Werte des 95. Perzentils erhalten Sie ein genaues Bild der echten Workloadmerkmale und erzielen die beste Leistung, wenn die Workloads in Azure ausgeführt werden. Dieser Wert muss normalerweise nicht geändert werden. Falls Sie den Wert doch ändern möchten (z.B. in das 90. Perzentil), können Sie die Konfigurationsdatei *ASRDeploymentPlanner.exe.config* im Standardordner aktualisieren und speichern, um einen neuen Bericht für die vorhandenen Profilerstellungsdaten zu erstellen.
 ```
-&lsaquo;add key="WriteIOPSPercentile" value="95" /&rsaquo;>      
-&lsaquo;add key="ReadWriteIOPSPercentile" value="95" /&rsaquo;>      
-&lsaquo;add key="DataChurnPercentile" value="95" /&rsaquo;
+<add key="WriteIOPSPercentile" value="95" />      
+<add key="ReadWriteIOPSPercentile" value="95" />      
+<add key="DataChurnPercentile" value="95" />
 ```
 
 ## <a name="growth-factor-considerations"></a>Informationen zum Zuwachsfaktor
@@ -297,7 +293,7 @@ Der Durchsatz wird zu einem angegebenen Zeitpunkt gemessen. Hierbei handelt es s
 
 ### <a name="example"></a>Beispiel
 ```
-ASRDeploymentPlanner.exe **-Operation** GetThroughput **-Directory**  E:\vCenter1_ProfiledData **-VMListFile** E:\vCenter1_ProfiledData\ProfileVMList1.txt  **-StorageAccountName**  asrspfarm1 **-StorageAccountKey** by8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
+ASRDeploymentPlanner.exe -Operation GetThroughput -Directory  E:\vCenter1_ProfiledData -VMListFile E:\vCenter1_ProfiledData\ProfileVMList1.txt  -StorageAccountName  asrspfarm1 -StorageAccountKey by8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
 ```
 
 >[!NOTE]
@@ -320,7 +316,7 @@ ASRDeploymentPlanner.exe **-Operation** GetThroughput **-Directory**  E:\vCenter
 
 ![Ansicht der Profilerstellungsdaten im Deployment Planner](./media/site-recovery-deployment-planner/profiled-data-period.png)
 
-**Profiled data period** (Zeitraum der Profilerstellungsdaten): Der Zeitraum, in dem die Profilerstellung durchgeführt wurde. Standardmäßig bezieht das Tool alle Profilerstellungsdaten in die Berechnung ein, sofern der Bericht nicht nur für einen bestimmten Zeitraum erstellt wird, indem bei der Berichterstellung die Optionen „StartDate“ und „EndDate“ genutzt werden.
+**Profiled data period** (Zeitraum der Profilerstellung): Der Zeitraum, in dem die Profilerstellung durchgeführt wurde. Standardmäßig bezieht das Tool alle Profilerstellungsdaten in die Berechnung ein, sofern der Bericht nicht nur für einen bestimmten Zeitraum erstellt wird, indem bei der Berichterstellung die Optionen „StartDate“ und „EndDate“ genutzt werden.
 
 **Server Name** (Servername): Der Name oder die IP-Adresse des VMware vCenter- oder ESXi-Hosts, für dessen VMs der Bericht erstellt wird.
 
@@ -330,7 +326,7 @@ ASRDeploymentPlanner.exe **-Operation** GetThroughput **-Directory**  E:\vCenter
 
 ![Ergebnisse der Profilerstellung im Deployment Planner](./media/site-recovery-deployment-planner/profiling-overview.png)
 
-**Total Profiled Virtual Machines** (Gesamte VMs für Profilerstellung): Die Gesamtzahl der VMs, für die Profilerstellungsdaten verfügbar sind. Wenn „VMListFile“ Namen von VMs enthält, für die keine Profile erstellt wurden, werden diese VMs in der Berichterstellung nicht berücksichtigt und aus der Gesamtzahl von VMs für die Profilerstellung ausgeschlossen.
+**Total Profiled Virtual Machines** (VMs mit Profilerstellung gesamt): Die Gesamtzahl der VMs, für die Profilerstellungsdaten verfügbar sind. Wenn „VMListFile“ Namen von VMs enthält, für die keine Profile erstellt wurden, werden diese VMs in der Berichterstellung nicht berücksichtigt und aus der Gesamtzahl von VMs für die Profilerstellung ausgeschlossen.
 
 **Compatible Virtual Machines** (Kompatible virtuelle Computer): Die Anzahl von VMs, die mit Site Recovery in Azure geschützt werden können. Dies ist die Gesamtzahl von kompatiblen VMs, für die die erforderliche Netzwerkbandbreite, die Anzahl von Speicherkonten, die Anzahl von Azure-Kernen und die Anzahl von Konfigurationsservern und zusätzlichen Prozessservern berechnet werden. Die Details der einzelnen kompatiblen VMs sind im Abschnitt „Kompatible VMs“ enthalten.
 
@@ -416,7 +412,7 @@ Das Blatt „Input“ (Eingabe) enthält eine Übersicht über die VMware-Umgebu
 
 **Number of compatible virtual machines** (Anzahl von kompatiblen virtuellen Computern): Die Gesamtzahl von kompatiblen VMs, für die die erforderliche Netzwerkbandbreite, die erforderliche Anzahl von Speicherkonten, Microsoft Azure-Kerne, Konfigurationsserver und zusätzliche Prozessserver berechnet werden.
 
-**Total number of disks across all compatible virtual machines** (Gesamte Datenträger über alle kompatiblen virtuellen Computer hinweg): Die Anzahl, die als eine der Eingaben verwendet wird, um entscheiden zu können, wie viele Konfigurationsserver und zusätzliche Prozessserver in der Bereitstellung verwendet werden sollen.
+**Total number of disks across all compatible virtual machines** (Datenträger gesamt für alle kompatiblen virtuellen Computer): Die Anzahl, die als eine der Eingaben verwendet wird, um entscheiden zu können, wie viele Konfigurationsserver und zusätzliche Prozessserver in der Bereitstellung verwendet werden sollen.
 
 **Average number of disks per compatible virtual machine** (Durchschnittliche Anzahl von Datenträgern pro kompatiblem virtuellem Computer): Die durchschnittliche Anzahl von Datenträgern, die über alle kompatiblen VMs hinweg berechnet wird.
 
@@ -453,7 +449,7 @@ Das Blatt „Input“ (Eingabe) enthält eine Übersicht über die VMware-Umgebu
 **VM Name** (VM-Name): Der VM-Name oder die IP-Adresse, der bzw. die in „VMListFile“ verwendet wird, wenn ein Bericht erstellt wird. In dieser Spalte sind auch die Datenträger (VMDKs) angegeben, die an die VMs angefügt sind. Die Namen enthalten den ESXi-Hostnamen, um vCenter-VMs mit doppelten Namen oder IP-Adressen unterscheiden zu können. Der aufgeführte ESXi-Host ist der Host, auf dem die VM angeordnet wurde, als das Tool während der Profilerstellung die Ermittlung durchgeführt hat.
 
 **VM Compatibility** (VM-Kompatibilität): Mögliche Werte sind **Yes** und **Yes**\*. **Yes**\* steht für Fälle, in denen die VM für [Azure Storage Premium](https://aka.ms/premium-storage-workload) geeignet ist. Hier fällt der Datenträger mit hoher Datenänderungsrate bzw. hohem IOPS-Wert, für den das Profil erstellt wird, in die Kategorie P20 oder P30. Aufgrund der Größe des Datenträgers wird er aber auf P10 bzw. P20 heruntergestuft. Das Speicherkonto entscheidet basierend auf der Größe, welchem Storage Premium-Datenträgertyp ein Datenträger zugeordnet wird. Beispiel:
-* Bei weniger als&128; GB ist die Kategorie P10.
+* Bei weniger als 128 GB ist die Kategorie P10.
 * Bei 128 GB bis 512 GB wird die Kategorie P20 verwendet.
 * Für den Bereich 512 GB bis 1.023 GB lautet die Kategorie P30.
 
@@ -489,7 +485,7 @@ Falls ein Datenträger aufgrund seiner Workloadmerkmale in die Kategorie P20 ode
 
 **VM Compatibility** (VM-Kompatibilität): Gibt an, warum die jeweilige VM für die Verwendung mit Site Recovery nicht kompatibel ist. Die Gründe werden für jeden inkompatiblen Datenträger der VM beschrieben. Basierend auf den veröffentlichten [Speichergrenzwerten](https://aka.ms/azure-storage-scalbility-performance) können dies folgende Gründe sein:
 
-* Der Datenträger ist größer als&1;.023 GB. Azure Storage unterstützt derzeit keine Datenträger, die größer als 1 TB sind.
+* Der Datenträger ist größer als 1.023 GB. Azure Storage unterstützt derzeit keine Datenträger, die größer als 1 TB sind.
 
 * Die VM-Gesamtgröße (Replikation + TFO) übersteigt den Grenzwert für die Unterstützung von Speicherkonten (35 TB). Diese Inkompatibilität tritt normalerweise auf, wenn ein einzelner Datenträger der VM über ein Leistungsmerkmal verfügt, das den unterstützten Azure- oder Site Recovery-Grenzwert für Standardspeicher überschreitet. Hierdurch fällt die VM in die Storage Premium-Zone. Die maximal unterstützte Größe für ein Storage Premium-Konto beträgt aber 35 TB, und eine einzelne geschützte VM kann nicht über mehrere Speicherkonten hinweg geschützt werden. Beachten Sie außerdem Folgendes: Wenn ein Testfailover auf einer geschützten VM durchgeführt wird, erfolgt dies unter demselben Speicherkonto, unter dem die Replikation durchgeführt wird. Richten Sie in diesem Fall die doppelte Größe des Datenträgers ein, damit die Replikation weiter durchgeführt werden kann und gleichzeitig das Testfailover erfolgreich ist.
 * Der IOPS-Quellwert übersteigt den unterstützten IOPS-Speichergrenzwert von 5.000 pro Datenträger.
@@ -543,6 +539,7 @@ Gehen Sie wie folgt vor, um den Deployment Planner zu aktualisieren:
  * Wenn die aktuelle Version eine Fehlerbehebung für die Profilerstellung enthält, empfehlen wir Ihnen, die Profilerstellung für die aktuelle Version zu beenden und mit der neuen Version neu zu starten.
 
   >[!NOTE]
+  >
   >Übergeben Sie beim Starten der Profilerstellung mit der neuen Version den gleichen Pfad des Ausgabeverzeichnisses, damit die Profildaten vom Tool an die vorhandenen Dateien angefügt werden. Zum Erstellen des Berichts wird ein vollständiger Satz von Profilerstellungsdaten verwendet. Wenn Sie ein anderes Ausgabeverzeichnis übergeben, werden neue Dateien erstellt und alte Profilerstellungsdaten nicht zum Erstellen des Berichts verwendet.
   >
   >Jeder neue Deployment Planner ist ein kumulatives Update der ZIP-Datei. Es ist nicht erforderlich, die neuesten Dateien in den vorherigen Ordner zu kopieren. Sie können einen neuen Ordner erstellen und verwenden.

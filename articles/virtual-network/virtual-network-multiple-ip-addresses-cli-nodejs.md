@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: annahar
 translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: 62154c38b785b72181f6ee73383f84bd23caeaec
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: 9f085dfa1fe4db36d58cb976bb550a46bf241ac7
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -36,96 +36,95 @@ Sie können diese Aufgabe mithilfe der Azure CLI 1.0 (dieser Artikel) oder mit d
 
 1. Installieren und konfigurieren Sie die Azure CLI 1.0 anhand der Schritte im Artikel [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json), und melden Sie sich dann mit dem Befehl `azure-login` bei Ihrem Azure-Konto an.
 
-2. [Erstellen Sie eine Ressourcengruppe](../virtual-machines/virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-resource-groups-and-choose-deployment-locations) und anschließend ein [virtuelles Netzwerk und ein Subnetz](../virtual-machines/virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-virtual-network-and-subnet). Ändern Sie die Felder ` --address-prefixes` und `--address-prefix` in die folgenden Werte, um das in diesem Artikel skizzierte Szenario exakt einzuhalten:
+2. Erstellen Sie eine Ressourcengruppe:
+    
+    ```azurecli
+    RgName=myResourceGroup
+    Location=westcentralus
+    azure group create --name $RgName --location $Location
+    ```
+3. Erstellen Sie ein virtuelles Netzwerk:
 
-        --address-prefixes 10.0.0.0/16
-        --address-prefix 10.0.0.0/24
+    ```azurecli
+    azure network vnet create --resource-group $RgName --location $Location --name myVNet \
+    --address-prefixes 10.0.0.0/16
+    ```
+4. Erstellen Sie ein Subnetz im virtuellen Netzwerk:
 
-    >[!NOTE] 
-    >Im oben referenzierten Artikel wird Europa, Westen als Standort für die Ressourcenerstellung gewählt, aber in diesem Artikel verwenden wir die Region „USA, Westen-Mitte“. Führen Sie bitte die entsprechenden Änderungen durch.
+    ```azurecli
+    azure network vnet subnet create --name mySubnet --resource-group $RgName --vnet-name myVNet \
+    --address-prefix 10.0.0.0/24
+    ```
+    
+5. Erstellen Sie ein Speicherkonto für den virtuellen Computer. Ersetzen Sie *mystorageaccount* vor dem Ausführen des folgenden Befehls durch einen eindeutigen Namen. Der Name muss innerhalb von Azure eindeutig sein:
 
-3. [Erstellen Sie ein Speicherkonto](../virtual-machines/virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-storage-account) für Ihren virtuellen Computer.
+    ```azurecli
+    az storage account create --resource-group $RgName --location $Location --name mystorageaccount \
+    --kind Storage --sku Standard_LRS
+    ```
 
-4. Erstellen Sie NIC und die IP-Konfigurationen, die Sie der NIC zuweisen möchten. Sie können Konfigurationen je nach Bedarf hinzufügen, entfernen oder ändern. Die folgenden Konfigurationen werden in dem Szenario beschrieben:
+6. Erstellen Sie die IP-Konfigurationen und eine NIC, und weisen Sie der NIC die IP-Konfigurationen zu. Sie können Konfigurationen je nach Bedarf hinzufügen, entfernen oder ändern. Die folgenden Konfigurationen werden in dem Szenario beschrieben:
 
     **IPConfig-1**
 
     Geben Sie die folgenden Befehle ein, um die folgenden Elemente zu erstellen:
 
     - eine öffentliche IP-Adressressource mit einer statischen öffentlichen IP-Adresse
-    - eine IP-Konfiguration mit der öffentlichen IP-Adressressource und einer dynamischen privaten IP-Adresse
+    - eine NIC, der die öffentliche IP-Adresse und eine statische private IP-Adresse zugewiesen wird
+    
+    Ersetzen Sie *mypublicdns* durch einen Namen, der innerhalb des Azure-Standorts eindeutig ist.
 
-    ```bash
-    azure network public-ip create \
-    --resource-group myResourceGroup \
-    --location westcentralus \
-    --name myPublicIP \
-    --domain-name-label mypublicdns \
-    --allocation-method Static
-    ```
+      ```azurecli
+      azure network public-ip create --resource-group $RgName --location $Location --name myPublicIP1 \
+      --domain-name-label mypublicdns --allocation-method Static
+        
+      azure network nic create --resource-group $RgName --location $Location --name myNic1 \
+      --private-ip-address 10.0.0.4 --subnet-name mySubnet --subnet-vnet-name myVNet \
+      --subnet-name mySubnet --public-ip-name myPublicIP1
+      ```
 
-    > [!NOTE]
-    > Für öffentliche IP-Adressen fällt eine geringe Gebühr an. Weitere Informationen zu den Preisen finden Sie auf der Seite [Preise für IP-Adressen](https://azure.microsoft.com/pricing/details/ip-addresses) . Die Anzahl der öffentlichen IP-Adressen, die in einem Abonnement verwendet werden können, ist beschränkt. Weitere Informationen über die Einschränkungen finden Sie im Artikel zu den [Azure-Einschränkungen](../azure-subscription-service-limits.md#networking-limits) .
-
-    ```bash
-    azure network nic create \
-    --resource-group myResourceGroup \
-    --location westcentralus \
-    --subnet-vnet-name myVnet \
-    --subnet-name mySubnet \
-    --name myNic1 \
-    --public-ip-name myPublicIP
-    ```
+      > [!NOTE]
+      > Für öffentliche IP-Adressen fällt eine geringe Gebühr an. Weitere Informationen zu den Preisen finden Sie auf der Seite [Preise für IP-Adressen](https://azure.microsoft.com/pricing/details/ip-addresses) . Die Anzahl der öffentlichen IP-Adressen, die in einem Abonnement verwendet werden können, ist beschränkt. Weitere Informationen über die Einschränkungen finden Sie im Artikel zu den [Azure-Einschränkungen](../azure-subscription-service-limits.md#networking-limits) .
 
     **IPConfig-2**
 
      Geben Sie die folgenden Befehle ein, um eine neue öffentliche IP-Adressressource und eine neue IP-Konfiguration mit einer statischen öffentlichen IP-Adresse und einer statischen privaten IP-Adresse zu erstellen:
     
-    ```bash
-    azure network public-ip create \
-    --resource-group myResourceGroup \
-    --location westcentralus \
-    --name myPublicIP2 \
-    --domain-name-label mypublicdns2 \
-    --allocation-method Static
+      ```azurecli
+      azure network public-ip create --resource-group $RgName --location $Location --name myPublicIP2
+      --domain-name-label mypublicdns2 --allocation-method Static
 
-    azure network nic ip-config create \
-    --resource-group myResourceGroup \
-    --nic-name myNic1 \
-    --name IPConfig-2 \
-    --private-ip-address 10.0.0.5 \
-    --public-ip-name myPublicIP2
-    ```
+      azure network nic ip-config create --resource-group $RgName --nic-name myNic1 --name IPConfig-2
+      --private-ip-address 10.0.0.5 --public-ip-name myPublicIP2
+      ```
 
     **IPConfig-3**
 
-    Geben Sie die folgenden Befehle ein, um eine IP-Konfiguration mit einer dynamischen privaten IP-Adresse und ohne öffentliche IP-Adressen zu erstellen:
+    Geben Sie die folgenden Befehle ein, um eine IP-Konfiguration mit einer statischen privaten IP-Adresse und ohne öffentliche IP-Adresse zu erstellen:
 
-    ```bash
-    azure network nic ip-config create \
-    --resource-group myResourceGroup \
-    --nic-name myNic1 \
-    --name IPConfig-3
-    ```
+      ```azurecli
+      azure network nic ip-config create --resource-group $RgName --nic-name myNic1 --private-ip-address 10.0.0.6 \
+      --name IPConfig-3
+      ```
 
     >[!NOTE] 
     >Obwohl in diesem Artikel alle IP-Konfigurationen einer einzigen NIC zugewiesen werden, ist es auch möglich, jeder NIC in einem virtuellen Computer mehrere IP-Konfigurationen zuzuweisen. Erfahren Sie im Artikel „Erstellen eines virtuellen Computers mit mehreren Netzwerkschnittstellenkarten (NICs)“, wie Sie einen virtuellen Computer mit mehreren NICs erstellen.
 
-5. Artikel: [Erstellen der Linux-VMs](../virtual-machines/virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-the-linux-vms). Achten Sie darauf, die Eigenschaft ```  --availset-name myAvailabilitySet \ ``` zu entfernen, da sie in diesem Szenario nicht benötigt wird. Verwenden Sie basierend auf Ihrem Szenario den richtigen Standort. 
+7. Erstellen eines virtuellen Linux-Computers 
 
-    >[!WARNING] 
-    > Schritt 6 im Artikel „Erstellen eines virtuellen Computers“ wird scheitern, wenn die Größe des virtuellen Computers an dem von Ihnen gewählten Standort nicht unterstützt wird. Führen Sie den folgenden Befehl aus, um beispielsweise eine vollständige Liste der virtuellen Computer in der Region „USA, Westen-Mitte“ zu erhalten: `azure vm sizes --location westcentralus` Dieser Standortname kann Ihrem Szenario entsprechend geändert werden.
+    ```azurecli
+    az vm create --resource-group $RgName --name myVM1 --location $Location --nics myNic1 \
+    --image UbuntuLTS --ssh-key-value ~/.ssh/id_rsa.pub --admin-username azureuser
+    ```
 
     Um z.B. die Größe des virtuellen Computers auf Standard DS2 v2 zu ändern, fügen Sie einfach die Eigenschaft `--vm-size Standard_DS3_v2` zu dem Befehl `azure vm create` in Schritt 6 hinzu.
 
-6. Geben Sie den folgenden Befehl ein, um die NIC und die zugeordneten IP-Konfigurationen anzuzeigen:
+8. Geben Sie den folgenden Befehl ein, um die NIC und die zugeordneten IP-Konfigurationen anzuzeigen:
 
-    ```bash
-    azure network nic show \
-    --resource-group myResourceGroup \
-    --name myNic1
+    ```azurecli
+    azure network nic show --resource-group $RgName    --name myNic1
     ```
-7. Fügen Sie die privaten IP-Adressen dem Betriebssystem des virtuellen Computers hinzu. Führen Sie dazu die Schritte für Ihr Betriebssystem im Abschnitt [Hinzufügen von IP-Adressen zu einem VM-Betriebssystem](#os-config) in diesem Artikel aus.
+9. Fügen Sie die privaten IP-Adressen dem Betriebssystem des virtuellen Computers hinzu. Führen Sie dazu die Schritte für Ihr Betriebssystem im Abschnitt [Hinzufügen von IP-Adressen zu einem VM-Betriebssystem](#os-config) in diesem Artikel aus.
 
 ## <a name="add"></a>Hinzufügen von IP-Adressen zu einem virtuellen Computer
 
@@ -137,14 +136,11 @@ Sie können zu einer vorhandenen NIC zusätzliche private und öffentliche IP-Ad
 
     - **Hinzufügen einer privaten IP-Adresse**
     
-        Um eine private IP-Adresse zu einer NIC hinzuzufügen, müssen Sie mit dem folgenden Befehl eine IP-Konfiguration erstellen.  Wenn Sie eine dynamische private IP-Adresse hinzufügen möchten, entfernen Sie vor der Eingabe des Befehls `-PrivateIpAddress 10.0.0.7`. Wenn Sie eine statische IP-Adresse angeben, darf es sich dabei nicht um eine für das Subnetz verwendete Adresse handeln.
+        Um eine private IP-Adresse zu einer NIC hinzuzufügen, müssen Sie mit dem folgenden Befehl eine IP-Konfiguration erstellen. Bei der statischen Adresse darf es sich nicht um eine für das Subnetz verwendete Adresse handeln.
 
-        ```bash
-        azure network nic ip-config create \
-        --resource-group myResourceGroup \
-        --nic-name myNic1 \
-        --private-ip-address 10.0.0.7 \
-        --name IPConfig-4
+        ```azurecli
+        azure network nic ip-config create --resource-group myResourceGroup --nic-name myNic1 \
+        --private-ip-address 10.0.0.7 --name IPConfig-4
         ```
         Sie können so viele Konfigurationen wie benötigt erstellen. Verwenden Sie dabei eindeutige Namen für die Konfigurationen und privaten IP-Adressen (bei Konfigurationen mit statischen IP-Adressen).
 
@@ -156,83 +152,66 @@ Sie können zu einer vorhandenen NIC zusätzliche private und öffentliche IP-Ad
         > Für öffentliche IP-Adressen fällt eine geringe Gebühr an. Weitere Informationen zu den Preisen finden Sie auf der Seite [Preise für IP-Adressen](https://azure.microsoft.com/pricing/details/ip-addresses) . Die Anzahl der öffentlichen IP-Adressen, die in einem Abonnement verwendet werden können, ist beschränkt. Weitere Informationen über die Einschränkungen finden Sie im Artikel zu den [Azure-Einschränkungen](../azure-subscription-service-limits.md#networking-limits) .
         >
 
-        - **Zuordnen der Ressource zu einer neuen IP-Konfiguration**
+        **Zuordnen der Ressource zu einer neuen IP-Konfiguration**
     
-            Immer, wenn Sie in einer neuen IP-Konfiguration eine öffentliche IP-Adresse hinzufügen, müssen Sie auch eine private IP-Adresse hinzufügen, denn in jeder IP-Konfiguration muss es eine private IP-Adresse geben. Sie können entweder eine vorhandene öffentliche IP-Adressressource hinzufügen oder eine neue erstellen. Verwenden Sie den folgenden Befehl, um eine neue zu erstellen:
-    
-            ```bash
-              azure network public-ip create \
-            --resource-group myResourceGroup \
-            --location westcentralus \
-            --name myPublicIP3 \
-            --domain-name-label mypublicdns3
-            ```
+        Immer, wenn Sie in einer neuen IP-Konfiguration eine öffentliche IP-Adresse hinzufügen, müssen Sie auch eine private IP-Adresse hinzufügen, denn in jeder IP-Konfiguration muss es eine private IP-Adresse geben. Sie können entweder eine vorhandene öffentliche IP-Adressressource hinzufügen oder eine neue erstellen. Verwenden Sie den folgenden Befehl, um eine neue zu erstellen:
 
-             Um eine neue IP-Konfiguration mit einer dynamischen privaten IP-Adresse und der zugeordneten öffentlichen IP-Adressressource *myPublicIP3* zu erstellen, geben Sie den folgenden Befehl ein:
+        ```azurecli
+        azure network public-ip create --resource-group myResourceGroup --location westcentralus --name myPublicIP3 \
+        --domain-name-label mypublicdns3
+        ```
 
-            ```bash
-            azure network nic ip-config create \
-            --resource-group myResourceGroup \
-            --nic-name myNic \
-            --name IPConfig-4 \
-            --public-ip-name myPublicIP3
-            ```
+         Um eine neue IP-Konfiguration mit einer statischen privaten IP-Adresse und der zugeordneten öffentlichen IP-Adressressource *myPublicIP3* zu erstellen, geben Sie den folgenden Befehl ein:
 
-        - **Zuordnen der Ressource zu einer vorhandenen IP-Konfiguration**
+        ```azurecli
+        azure network nic ip-config create --resource-group myResourceGroup --nic-name myNic --name IPConfig-4 \
+        --private-ip-address 10.0.0.8 --public-ip-name myPublicIP3
+        ```
 
-            Eine öffentliche IP-Adressressource kann nur einer IP-Konfiguration zugeordnet werden, der noch keine öffentliche IP-Adressressource zugeordnet ist. Ob einer IP-Konfiguration eine öffentliche IP-Adresse zugeordnet ist, können Sie mithilfe des folgenden Befehls ermitteln:
+        **Zuordnen der Ressource zu einer vorhandenen IP-Konfiguration**
 
-            ```bash
-            azure network nic ip-config list \
-            --resource-group myResourceGroup \
-            --nic-name myNic1
-            ```
+        Eine öffentliche IP-Adressressource kann nur einer IP-Konfiguration zugeordnet werden, der noch keine öffentliche IP-Adressressource zugeordnet ist. Ob einer IP-Konfiguration eine öffentliche IP-Adresse zugeordnet ist, können Sie mithilfe des folgenden Befehls ermitteln:
 
-            Suchen Sie nach einer Zeile, die der folgenden Rückgabezeile für IPConfig-3 ähnelt: <br>
-            
-                Name               Provisioning state  Primary  Private IP allocation  Private IP version  Private IP address  Subnet    Public IP
-            
-                default-ip-config  Succeeded           true     Dynamic                IPv4                10.0.0.4            mySubnet  myPublicIP
-                IPConfig-2         Succeeded           false    Static                 IPv4                10.0.0.5            mySubnet  myPublicIP2
-                IPConfig-3         Succeeded           false    Dynamic                IPv4                10.0.0.6            mySubnet
+        ```azurecli
+        azure network nic ip-config list --resource-group myResourceGroup --nic-name myNic1
+        ```
 
-            Da die Spalte **Public IP** für *IpConfig-3* leer ist, ist derzeit keine öffentliche IP-Adressressource zugeordnet. Sie können IpConfig-3 eine vorhandene öffentliche IP-Adressressource zuordnen oder mit dem folgenden Befehl eine erstellen:
+        Suchen Sie nach einer Zeile, die der folgenden Rückgabezeile für IPConfig-3 ähnelt:
 
-            ```bash
-            azure network public-ip create \
-            --resource-group  myResourceGroup \
-            --location westcentralus \
-            --name myPublicIP3 \
-            --domain-name-label mypublicdns3 \
-            --allocation-method Static
-            ```
-    
-            Geben Sie den folgenden Befehl ein, um die öffentliche IP-Adressressource der vorhandenen IP-Konfiguration namens *IPConfig-3* zuzuordnen:
-    
-            ```bash
-            azure network nic ip-config set \
-            --resource-group myResourceGroup \
-            --nic-name myNic1 \
-            --name IPConfig-3 \
-            --public-ip-name myPublicIP3
-            ```
+        ```            
+        Name               Provisioning state  Primary  Private IP allocation Private IP version  Private IP address  Subnet    Public IP
+        default-ip-config  Succeeded           true     Static                IPv4                10.0.0.4            mySubnet  myPublicIP
+        IPConfig-2         Succeeded           false    Static                IPv4                10.0.0.5            mySubnet  myPublicIP2
+        IPConfig-3         Succeeded           false    Static                IPv4                10.0.0.6            mySubnet
+        ```
+          
+        Da die Spalte **Public IP** für *IpConfig-3* leer ist, ist derzeit keine öffentliche IP-Adressressource zugeordnet. Sie können IpConfig-3 eine vorhandene öffentliche IP-Adressressource zuordnen oder mit dem folgenden Befehl eine erstellen:
+
+        ```azurecli
+        azure network public-ip create --resource-group  myResourceGroup --location westcentralus \
+        --name myPublicIP3 --domain-name-label mypublicdns3 --allocation-method Static
+        ```
+
+        Geben Sie den folgenden Befehl ein, um die öffentliche IP-Adressressource der vorhandenen IP-Konfiguration namens *IPConfig-3* zuzuordnen:
+        ```azurecli
+        azure network nic ip-config set --resource-group myResourceGroup --nic-name myNic1 --name IPConfig-3 \
+        --public-ip-name myPublicIP3
+        ```
 
 3. Geben Sie den folgenden Befehl ein, um die privaten IP-Adressen und die der NIC zugewiesene öffentliche IP-Adressressource anzuzeigen:
 
-    ```bash
-    azure network nic ip-config list \
-    --resource-group myResourceGroup \
-    --nic-name myNic1
+    ```azurecli
+    azure network nic ip-config list --resource-group myResourceGroup --nic-name myNic1
     ```
 
-    Die Rückgabe sieht in etwa wie folgt aus: <br>
-
-        Name               Provisioning state  Primary  Private IP allocation  Private IP version  Private IP address  Subnet    Public IP
+      Die Rückgabe sieht in etwa wie folgt aus:
+      ```
+      Name               Provisioning state  Primary  Private IP allocation Private IP version  Private IP address  Subnet    Public IP
         
-        default-ip-config  Succeeded           true     Dynamic                IPv4                10.0.0.4            mySubnet  myPublicIP
-        IPConfig-2         Succeeded           false    Static                 IPv4                10.0.0.5            mySubnet  myPublicIP2
-        IPConfig-3         Succeeded           false    Dynamic                IPv4                10.0.0.6            mySubnet  myPublicIP3
-
+      default-ip-config  Succeeded           true     Static                IPv4                10.0.0.4            mySubnet  myPublicIP
+      IPConfig-2         Succeeded           false    Static                IPv4                10.0.0.5            mySubnet  myPublicIP2
+      IPConfig-3         Succeeded           false    Static                IPv4                10.0.0.6            mySubnet  myPublicIP3
+      ```
 4. Fügen Sie die privaten IP-Adressen hinzu, die Sie der NIC im Betriebssystem des virtuellen Computers hinzugefügt haben. Befolgen Sie dazu die Anweisungen im Abschnitt [Hinzufügen von IP-Adressen zu einem VM-Betriebssystem](#os-config) in diesem Artikel. Fügen Sie dem Betriebssystem nicht die öffentlichen IP-Adressen hinzu.
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-os-config.md](../../includes/virtual-network-multiple-ip-addresses-os-config.md)]
