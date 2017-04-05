@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 11/16/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 8dc7ea843ea316fa4659a8e6575adbfd045f7a70
-ms.openlocfilehash: c169f9ab2eead732ad0fe5579caaa1b4b015732b
-ms.lasthandoff: 01/26/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 7287cb1709b7c863cd046edfb995e23455398ec2
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -61,12 +61,39 @@ Befolgen Sie die Anweisungen im [Tutorial zum Erstellen eines Zertifikats](cloud
 ### <a name="disable-ssl-30"></a>Deaktivieren von SSL 3.0
 Um SSL 3.0 zu deaktivieren und TLS-Sicherheit zu verwenden, erstellen Sie einen Starttask, wie in diesem Blogbeitrag dokumentiert: https://azure.microsoft.com/en-us/blog/how-to-disable-ssl-3-0-in-azure-websites-roles-and-virtual-machines/.
 
-## <a name="scale-a-cloud-service"></a>Skalieren eines Clouddiensts
+### <a name="add-nosniff-to-your-website"></a>Hinzufügen von **nosniff** zu Ihrer Website
+Um zu verhindern, dass Clients die MIME-Typen abfangen, fügen Sie eine Einstellung in Ihre Datei *web.config* ein.
+
+```xml
+<configuration>
+   <system.webServer>
+      <httpProtocol>
+         <customHeaders>
+            <add name="X-Content-Type-Options" value="nosniff" />
+         </customHeaders>
+      </httpProtocol>
+   </system.webServer>
+</configuration>
+```
+
+Sie können dies auch als Einstellung in IIS hinzufügen. Verwenden Sie den folgenden Befehl und den Artikel [Gängige Starttasks](cloud-services-startup-tasks-common.md#configure-iis-startup-with-appcmdexe).
+
+```cmd
+%windir%\system32\inetsrv\appcmd set config /section:httpProtocol /+customHeaders.[name='X-Content-Type-Options',value='nosniff']
+```
+
+### <a name="customize-iis-for-a-web-role"></a>Anpassen von IIS für eine Webrolle
+Verwenden Sie das IIS-Startskript aus dem Artikel [Gängige Starttasks](cloud-services-startup-tasks-common.md#configure-iis-startup-with-appcmdexe).
+
+## <a name="scaling"></a>Skalieren
 ### <a name="i-cannot-scale-beyond-x-instances"></a>Ich kann nicht über X Instanzen hinaus skalieren
 Für Ihr Azure-Abonnement gilt ein Limit hinsichtlich der Anzahl von Kernen, die Sie verwenden können. Wenn Sie alle verfügbaren Kerne verwendet haben, können Sie nicht höher skalieren. Ein Beispiel: Wenn das Limit Ihres Abonnements bei 100 Kernen liegt, können Sie für Ihren Clouddienst 100 virtuelle Computerinstanzen der Größe A1 oder 50 virtuelle Computerinstanzen der Größe A2 einrichten.
 
-## <a name="troubleshooting"></a>Problembehandlung
+## <a name="networking"></a>Netzwerk
 ### <a name="i-cant-reserve-an-ip-in-a-multi-vip-cloud-service"></a>Ich kann keine IP in einem Clouddienst mit mehreren VIPs reservieren.
 Stellen Sie zunächst sicher, dass die Instanz des virtuellen Computers, für den Sie die IP reservieren möchten, eingeschaltet ist. Vergewissern Sie sich anschließend, dass Sie reservierte IPs für Staging- und Produktionsbereitstellungen verwenden. **nicht** , während ein Upgrade der Bereitstellung durchgeführt wird.
 
+## <a name="remote-desktop"></a>Remotedesktop
+### <a name="how-do-i-remote-desktop-when-i-have-an-nsg"></a>Wie verwende ich Remotedesktop bei einer NSG?
+Fügen Sie der NSG eine Regel hinzu, die den Port **20000** weiterleitet.
 

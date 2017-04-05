@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/29/2017
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: e29c26a7fbd25d01f2d58dc29a7fd2f34c91307b
-ms.openlocfilehash: 88203f84752d464b63ef31fc77d668cb8b3497e3
-ms.lasthandoff: 01/31/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 88c919b64513c8441ab73e2750e7ddfb12fcb63e
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -46,7 +46,7 @@ Wenn Sie mit den **NYC Taxi Trip-Daten**üben möchten, gehen Sie so vor:
 * **Entpacken** Sie alle Dateien als CSV-Dateien
 * **Laden** Sie diese Dateien in den Standardcontainer (oder einen anderen geeigneten Container) im Azure-Speicherkonto, das im Thema [Anpassen von Azure HDInsight Hadoop-Clustern für erweiterte Analyseprozesse und -technologien](machine-learning-data-science-customize-hadoop-cluster.md) erstellt wurde. Den Prozess zum Hochladen der CSV-Dateien in den Standardcontainer für das Speicherkonto finden Sie auf dieser [Seite](machine-learning-data-science-process-hive-walkthrough.md#upload).
 
-## <a name="a-namesubmitahow-to-submit-hive-queries"></a><a name="submit"></a>Übermitteln von Hive-Abfragen
+## <a name="submit"></a>Übermitteln von Hive-Abfragen
 Hive-Abfragen können folgendermaßen übermittelt werden:
 
 1. [Übermitteln von Hive-Abfragen über die Hadoop-Befehlszeile im Hauptknoten des Hadoop-Clusters](#headnode)
@@ -57,7 +57,7 @@ Hive-Abfragen sind ähnlich wie SQL-Abfragen. Als mit SQL vertrauter Benutzer fi
 
 Beim Übermitteln von Hive-Abfragen können Sie auch das Ziel der Ausgabe der Hive-Abfragen steuern. Diese kann auf den Bildschirm, in eine lokale Datei auf dem Hauptknoten oder in ein Azure-Blob erfolgen.
 
-### <a name="a-nameheadnodea-1-submit-hive-queries-through-hadoop-command-line-in-headnode-of-hadoop-cluster"></a><a name="headnode"></a> 1. Übermitteln von Hive-Abfragen über die Hadoop-Befehlszeile im Hauptknoten des Hadoop-Clusters
+### <a name="headnode"></a> 1. Übermitteln von Hive-Abfragen über die Hadoop-Befehlszeile im Hauptknoten des Hadoop-Clusters
 Wenn die Hive-Abfrage komplex ist, führt die direkte Übermittlung über den Hauptknoten des Hadoop-Clusters i. d. R. schneller zu Ergebnissen als das Senden im Hive-Editor oder über Azure PowerShell-Skripts.
 
 Melden Sie sich am Hauptknoten des Hadoop-Clusters an, öffnen Sie die Hadoop-Befehlszeile auf dem Desktop des Hauptknotens und geben Sie den Befehl `cd %hive_home%\bin` ein.
@@ -117,13 +117,13 @@ Wenn Sie den Standardcontainer des Hadoop-Clusters mit Tools wie Azure-Speicher-
 
 ![Arbeitsbereich erstellen](./media/machine-learning-data-science-move-hive-tables/output-hive-results-3.png)
 
-### <a name="a-namehive-editora-2-submit-hive-queries-with-the-hive-editor"></a><a name="hive-editor"></a> 2. Übermitteln von Hive-Abfragen mit dem Hive-Editor
+### <a name="hive-editor"></a> 2. Übermitteln von Hive-Abfragen mit dem Hive-Editor
 Sie können auch die Abfrage-Konsole (Hive-Editor) nutzen, indem Sie eine URL im Format *https://&#60;Hadoop-Clustername>.azurehdinsight.net/Home/HiveEditor* in einen Webbrowser eingeben. Sie müssen angemeldet sein, um diese Konsole anzeigen zu können, weshalb hier Ihre Hadoop-Clusteranmeldeinformationen erforderlich sind.
 
-### <a name="a-namepsa-3-submit-hive-queries-with-azure-powershell-commands"></a><a name="ps"></a> 3. Übermitteln von Hive-Abfragen mit Azure PowerShell-Befehlen
+### <a name="ps"></a> 3. Übermitteln von Hive-Abfragen mit Azure PowerShell-Befehlen
 Sie können zum Übermitteln von Hive-Abfragen auch PowerShell verwenden. Eine Anleitung hierzu finden Sie unter [Übermitteln von Hive-Aufträgen mit PowerShell](../hdinsight/hdinsight-hadoop-use-hive-powershell.md).
 
-## <a name="a-namecreate-tablesacreate-hive-database-and-tables"></a><a name="create-tables"></a>Erstellen von Hive-Datenbanken und -Tabellen
+## <a name="create-tables"></a>Erstellen von Hive-Datenbanken und -Tabellen
 Die Hive-Abfragen wurden im [GitHub-Repository](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_db_tbls_load_data_generic.hql) freigegeben und können von dort heruntergeladen werden.
 
 Mit dieser Hive-Abfrage erstellen Sie eine Hive-Tabelle.
@@ -150,19 +150,19 @@ Im Folgenden werden die Felder beschrieben, mit denen Sie die Implementierung un
 * **&#60;Speicherort>**: Azure-Speicherort zum Speichern der Daten der Hive-Tabellen. Wenn Sie *LOCATION &#60;Speicherort>* nicht angeben, werden die Datenbank und die Tabellen im Verzeichnis *hive/warehouse/* im Standardcontainer des Hive-Clusters gespeichert. Wenn Sie den Speicherort angeben möchten, muss sich dieser im Standardcontainer für die Datenbank und die Tabellen befinden. Auf diesen Speicherort muss als relativer Speicherort zum Standardcontainer des Clusters im Format *'wasb:///&#60;Verzeichnis 1>/'* oder *'wasb:///&#60;Verzeichnis 1>/&#60;Verzeichnis 2>/'* usw. verwiesen werden. Nachdem die Abfrage ausgeführt wurde, werden die relativen Verzeichnisse innerhalb des Standardcontainers erstellt.
 * **TBLPROPERTIES("skip.header.line.count"="1")**: Wenn die Datendatei einen Header enthält, müssen Sie diese Eigenschaft **am Ende** der *create table*-Abfrage einfügen. Andernfalls wird der Header als ein Datensatz in die Tabelle geladen. Wenn die Datendatei keinen Header enthält, kann dieser Konfigurationsschritt in der Abfrage ausgelassen werden.
 
-## <a name="a-nameload-dataaload-data-to-hive-tables"></a><a name="load-data"></a>Laden von Daten in Hive-Tabellen
+## <a name="load-data"></a>Laden von Daten in Hive-Tabellen
 Mit dieser Hive-Abfrage laden Sie Daten eine Hive-Tabelle.
 
     LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
 
-* **&#60;Pfad zu Blobdaten>**: Wenn sich die in die Hive-Tabelle hochzuladende Blobdatei im Standardcontainer des HDInsight Hadoop-Clusters befindet, sollte *&#60;Pfad zu Blobdaten>* das Format *'wasb:///&#60;Verzeichnis in diesem Container>/&#60;Blobdateiname>'* haben. Die Blobdatei kann sich auch in einem zusätzlichen Container des HDInsight Hadoop-Clusters befinden. In diesem Fall muss *&#60;Pfad zu Blobdaten>* das Format *'wasb://&#60;containername>@&#60;storageaccount name>.blob.core.windows.net/&#60;blob file name>'* haben.
+* **&#60;Pfad zu Blobdaten>**: Wenn sich die in die Hive-Tabelle hochzuladende Blobdatei im Standardcontainer des HDInsight Hadoop-Clusters befindet, sollte *&#60;Pfad zu Blobdaten>* das Format *'wasb:///&#60;Verzeichnis in diesem Container>/&#60;Blobdateiname>'* haben. Die Blobdatei kann sich auch in einem zusätzlichen Container des HDInsight Hadoop-Clusters befinden. In diesem Fall muss *&#60;path to blob data>* das Format *'wasb://&#60;container name>@&#60;storage account name>.blob.core.windows.net/&#60;blob file name>'* haben.
 
   > [!NOTE]
   > Die Blobdaten, die in die Hive-Tabelle hochgeladen werden sollen, müssen sich im Standard- oder einem zusätzlichen Container des Speicherkontos für den Hadoop-Cluster befinden. Andernfalls misslingt die Abfrage *LOAD DATA* , weil sie keinen Zugriff auf die Daten hat.
   >
   >
 
-## <a name="a-namepartition-orcaadvanced-topics-partitioned-table-and-store-hive-data-in-orc-format"></a><a name="partition-orc"></a>Weiterführende Themen: Partitionieren von Tabellen und Speichern von Hive-Daten im ORC-Format
+## <a name="partition-orc"></a>Weiterführende Themen: Partitionieren von Tabellen und Speichern von Hive-Daten im ORC-Format
 Wenn die Daten sehr umfangreich sind, ist ein Partitionieren der Tabelle für Abfragen, die nur wenige Partitionen der Tabelle durchsuchen müssen, sehr hilfreich. Es ist z. B. sinnvoll, die Protokolldaten einer Website nach dem Datum zu partitionieren.
 
 Neben der Partitionierung der Hive-Tabellen ist es auch vorteilhaft, die Hive-Daten im ORC-Format (Optimized Row Columnar) zu speichern. Weitere Informationen zur ORC-Formatierung finden Sie unter <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ORC#LanguageManualORC-ORCFiles" target="_blank">Das Verwenden von ORC-Dateien verbessert die Leistung, wenn Hive Daten liest, schreibt und verarbeitet</a>.
@@ -187,7 +187,7 @@ Beim Abfragen partitionierter Tabellen wird empfohlen, die Partitionierungsbedin
     from <database name>.<partitioned table name>
     where <partitionfieldname>=<partitionfieldvalue> and ...;
 
-### <a name="a-nameorcastore-hive-data-in-orc-format"></a><a name="orc"></a>Speichern von Hive-Daten im ORC-Format
+### <a name="orc"></a>Speichern von Hive-Daten im ORC-Format
 Sie können nicht direkt Daten im ORC-Speicherformat aus dem Blob in Hive-Tabellen laden. Mit den folgenden Schritten können Sie Daten aus Azure-Blobs, die im ORC-Format gespeichert sind, in Hive-Tabellen laden.
 
 Erstellen Sie die externe Tabelle **STORED AS TEXTFILE** , und laden Sie Daten aus dem Blobspeicher in die Tabelle.

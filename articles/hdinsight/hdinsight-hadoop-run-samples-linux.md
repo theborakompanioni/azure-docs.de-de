@@ -17,9 +17,9 @@ ms.topic: article
 ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
-ms.openlocfilehash: b3c56871ec23c7595d18006943be19c38d2fb5c9
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: d94e633273ef298079673c100c6edbf95dc3c96d
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -36,10 +36,7 @@ HDInsight-Cluster bieten eine Reihe von MapReduce-Beispielen, mit denen Sie sich
   > [!IMPORTANT]
   > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date).
 
-* **Einen SSH-Client**: Informationen zur Verwendung von SSH mit HDInsight finden Sie in den folgenden Artikeln:
-  
-  * [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md)
-  * [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Windows](hdinsight-hadoop-linux-use-ssh-windows.md)
+* **Einen SSH-Client:** Weitere Informationen finden Sie unter [Verwenden von SSH mit HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="the-samples"></a>Die Beispiele
 **Speicherort**: Die Beispiele befinden sich im HDInsight-Cluster in **/usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar**
@@ -77,10 +74,8 @@ HDInsight-Cluster bieten eine Reihe von MapReduce-Beispielen, mit denen Sie sich
 > 
 
 ## <a name="how-to-run-the-samples"></a>Ausführen der Beispiele
-1. Stellen Sie über SSH eine Verbindung mit HDInsight her, wie in den folgenden Artikeln beschrieben:
-   
-   * [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md)
-   * [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Windows](hdinsight-hadoop-linux-use-ssh-windows.md)
+1. Stellen Sie per SSH eine Verbindung mit HDInsight her. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
+
 2. Verwenden Sie an der Eingabeaufforderung `username@#######:~$` den folgenden Befehl zum Auflisten der Beispiele:
    
         yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar
@@ -177,7 +172,7 @@ Verwenden Sie den folgenden Befehl zum Ausführen dieses Beispiels. Dabei werden
 
 Der zurückgegebene Wert sollte etwa **3.14159155000000000000**lauten. Als Referenz: Die ersten 10 Dezimalstellen von Pi sind 3,1415926535.
 
-## <a name="10gb-greysort"></a>Greysort mit&10; GB
+## <a name="10gb-greysort"></a>Greysort mit 10 GB
 GraySort ist ein Sortierungs-Benchmark, der die Sortiergeschwindigkeit (TB/Minute) als Metrik verwendet, die beim Sortieren sehr großer Datenmengen erreicht wird (normalerweise mindestens 100 TB).
 
 Dieses Beispiel verwendet bescheidene 10 GB an Daten, um eine zügige Ausführung zu ermöglichen. Die Anwendung verwendet die MapReduce-Anwendungen von Owen O'Malley und Arun Murthy, die im Jahr 2009 den jährlichen allgemeinen ("daytona") Terabyte-Sortier-Benchmark mit einem Durchsatz von 0,578 TB/Min (100 TB in 173 Minuten) gewonnen haben. Weitere Informationen zu diesem und anderen Sortier-Benchmarks finden Sie unter [Sortbenchmark](http://sortbenchmark.org/) .
@@ -187,7 +182,7 @@ Dieses Beispiel verwendet drei Sätze von MapReduce-Programmen:
 * **TeraGen**: Ein MapReduce-Programm, das Zeilen mit zu sortierenden Daten generiert
 * **TeraSort**prüft die Eingangsdaten und verwendet MapReduce, um die Daten in eine Gesamtreihenfolge zu bringen.
   
-    TeraSort ist eine Standardsortierung mit MapReduce-Funktionen, mit Ausnahme eines eigenen Partitionierers, der eine sortierte Liste mit N-1 geprüften Schlüsseln verwendet, um den Schlüsselbereich für die einzelnen Reduce-Vorgänge zu definieren. Speziell werden alle Schlüssel mit Probe[i-1] <= Schlüssel < Probe[i] an Reduce-Vorgang i gesendet. Dadurch wird sichergestellt, dass die Ausgaben der Reduce-Vorgänge i immer kleiner sind als die Ausgabe des Reduce-Vorgangs i +&1;.
+    TeraSort ist eine Standardsortierung mit MapReduce-Funktionen, mit Ausnahme eines eigenen Partitionierers, der eine sortierte Liste mit N-1 geprüften Schlüsseln verwendet, um den Schlüsselbereich für die einzelnen Reduce-Vorgänge zu definieren. Speziell werden alle Schlüssel mit Probe[i-1] <= Schlüssel < Probe[i] an Reduce-Vorgang i gesendet. Dadurch wird sichergestellt, dass die Ausgaben der Reduce-Vorgänge i immer kleiner sind als die Ausgabe des Reduce-Vorgangs i + 1.
 * **TeraValidate**: Ein MapReduce-Programm, das die globale Sortierung der Ausgabe prüft
   
     TeraValidate erstellt eine Map pro Datei im Ausgabeverzeichnis, und jede Map stellt sicher, dass jeder Schlüssel kleiner als der vorherige oder gleich dem vorherigen Schlüssel ist. Die Map-Funktion generiert außerdem Einträge für den ersten und letzten Schlüssel der einzelnen Dateien, und die Reduce-Funktion stellt sicher, dass der erste Schlüssel von Datei i größer als der letzte Schlüssel von Datei i-1 ist. Probleme werden als Ausgabe der Reduce-Funktion zusammen mit den Schlüsseln gemeldet, die nicht in der richtigen Reihenfolge sind.

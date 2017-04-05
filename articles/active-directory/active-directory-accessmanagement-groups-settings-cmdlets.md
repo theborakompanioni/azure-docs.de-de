@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 02/10/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
-ms.openlocfilehash: 5c30f459d9fed71fede2da71306a9b48892566f3
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 0553c29e12d7cb09c8edd291d3bfb36c4fd2ffcc
+ms.lasthandoff: 03/28/2017
 
 
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen
 
-Hinweis: Dieser Inhalt gilt ausschließlich für einheitliche Gruppen, die auch als Office 365-Gruppen bezeichnet werden.
+Hinweis: Dieser Inhalt gilt ausschließlich für einheitliche Gruppen, die auch als Office 365-Gruppen bezeichnet werden. Diese Cmdlets befinden sich derzeit in der öffentlichen Vorschauphase.
 
 Office 365-Gruppeneinstellungen werden mithilfe eines „Settings“- und eines „SettingsTemplate“-Objekts konfiguriert. Anfänglich werden keine Settings-Objekte im Verzeichnis angezeigt. Dies bedeutet, dass Ihr Verzeichnis mit den Standardeinstellungen konfiguriert ist. Um die Standardeinstellungen zu ändern, müssen Sie mithilfe einer Einstellungsvorlage ein neues Einstellungsobjekt erstellen. Einstellungsvorlagen werden von Microsoft definiert. Es werden verschiedene Einstellungsvorlagen unterstützt. Zum Konfigurieren von Gruppeneinstellungen für Ihr Verzeichnis verwenden Sie die Vorlage mit dem Namen „Group.Unified“. Zum Konfigurieren von Gruppeneinstellungen für eine einzelne Gruppe verwenden Sie die Vorlage mit dem Namen „Group.Unified.Guest“. Diese Vorlage dient zum Verwalten des Gastzugriffs auf eine Gruppe. 
 
-Die Cmdlets gehören zum Azure Active Directory PowerShell V2-Modul. Weitere Informationen zu diesem Modul und eine Anleitung zum Herunterladen und Installieren des Moduls auf Ihrem Computer finden Sie unter [Azure Active Directory PowerShell, Version 2](https://docs.microsoft.com/en-us/powershell/azuread/).
+Die Cmdlets gehören zum Azure Active Directory PowerShell V2-Modul. Weitere Informationen zu diesem Modul und eine Anleitung zum Herunterladen und Installieren des Moduls auf Ihrem Computer finden Sie unter [Azure Active Directory PowerShell, Version 2](https://docs.microsoft.com/en-us/powershell/azuread/). Beachten Sie, dass sich diese Cmdlets derzeit in der öffentlichen Vorschauphase befinden. Daher müssen Sie die Vorschauversion des Moduls installieren, die Sie [hier](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.85) finden.
 
 ## <a name="create-settings-at-the-directory-level"></a>Erstellen von Einstellungen auf Verzeichnisebene
 Über diese Schritte werden auf Verzeichnisebene Einstellungen erstellt, die für alle einheitlichen Gruppen im Verzeichnis gelten.

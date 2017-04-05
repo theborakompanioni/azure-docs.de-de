@@ -1,13 +1,3 @@
-### <a name="disk-persistence"></a>Dauerhaftigkeit von Datenträgern 
-
-In der folgenden Tabelle sind die unterschiedlichen Zustände für die einzelnen Datenträger einer Azure-VM angegeben. Außerdem ist angegeben, ob die Daten in den einzelnen Zuständen beibehalten werden.
-
-| Datenträger | Starten | Beenden/<br>Zuordnung aufheben | Pause | Neu<br>starten | Herunter-<br>fahren | Löschen | Fehler | Größe ändern | 
-| ---- | ----- | ---- | ---- | ---- | ----  | ------ | ------- | ------ | 
-| Betriebssystemdatenträger | Ja | Ja  | Ja | Ja | Ja  | Nein | Nein  | Ja | 
-| RAM  | Ja | Ja | Ja | Ja | Nein   | Nein | Nein | Nein | 
-| Lokaler temporärer Datenträger | Ja | Nein | Ja | Nein | Nein  | Nein | Nein | Nein | 
-| Angefügter Datenträger | Ja | Ja | Ja | Ja | Ja  | Ja | Ja | Ja | 
 
 ## <a name="about-vhds"></a>Informationen zu VHDs
 
@@ -41,7 +31,7 @@ Storage Premium basiert auf SSDs und unterstützt Datenträger mit hoher Leistun
 
 ### <a name="unmanaged-disks"></a>Nicht verwaltete Datenträger
 
-Bei nicht verwalteten Datenträgern handelt es sich um den herkömmlichen Datenträgertyp für virtuelle Computer. Bei dieser Option erstellen Sie Ihr eigenes Speicherkonto und geben es beim Erstellen des Datenträgers an. Sie müssen darauf achten, dass Sie nicht zu viele Datenträger unter dem gleichen Speicherkonto erstellen, da Sie ansonsten unter Umständen die [Skalierbarkeitsziele](../articles/storage/storage-scalability-targets.md) des Speicherkontos (beispielsweise&20;.000 IOPS) überschreiten, was eine Drosselung der virtuellen Computer zur Folge hat. Bei nicht verwalteten Datenträgern müssen Sie herausfinden, wie Sie einzelne oder mehrere Speicherkonten optimal nutzen, um die bestmögliche Leistung für Ihre virtuellen Computer zu erzielen.
+Bei nicht verwalteten Datenträgern handelt es sich um den herkömmlichen Datenträgertyp für virtuelle Computer. Bei dieser Option erstellen Sie Ihr eigenes Speicherkonto und geben es beim Erstellen des Datenträgers an. Sie müssen darauf achten, dass Sie nicht zu viele Datenträger unter dem gleichen Speicherkonto erstellen, da Sie ansonsten unter Umständen die [Skalierbarkeitsziele](../articles/storage/storage-scalability-targets.md) des Speicherkontos (beispielsweise 20.000 IOPS) überschreiten, was eine Drosselung der virtuellen Computer zur Folge hat. Bei nicht verwalteten Datenträgern müssen Sie herausfinden, wie Sie einzelne oder mehrere Speicherkonten optimal nutzen, um die bestmögliche Leistung für Ihre virtuellen Computer zu erzielen.
 
 ### <a name="managed-disks"></a>Verwaltete Datenträger 
 

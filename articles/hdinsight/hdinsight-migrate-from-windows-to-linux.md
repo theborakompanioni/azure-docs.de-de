@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 01/13/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 1a2a08a844f1502d970cb7686d512387263d1d13
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 9a2e9b7809b00ae2b60e152bc240ab2ef775c7bf
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -67,10 +67,7 @@ Kopieren Sie anhand folgender Schritte Daten aus dem Produktionscluster in das T
 2. Folgen Sie der Anleitung im Dokument „Erstellen von Linux-basierten Hadoop-Clustern in HDInsight“, um eine neue Testumgebung zu erstellen. Bevor Sie den Cluster erstellen, wählen Sie stattdessen **Optionale Konfiguration**aus.
 3. Wählen Sie auf dem Blatt „Optionale Konfiguration“ **Verknüpfte Speicherkonten**aus.
 4. Wählen Sie **Einen Speicherschlüssel hinzufügen**aus, und wählen Sie, wenn Sie dazu aufgefordert werden, das Speicherkonto aus, das in Schritt 1 vom PowerShell-Skript zurückgegeben wurde. Klicken Sie auf jedem Blatt auf **Auswahl**. Erstellen Sie schließlich den Cluster.
-5. Nachdem der Cluster erstellt wurde, verbinden Sie sich mithilfe von **SSH** mit dem Cluster. Wenn Sie mit dem Verwenden von SSH mit HDInsight nicht vertraut sind, finden Sie weitere Informationen in einem der folgenden Dokumente:
-
-   * [Verwenden von SSH (PuTTY) mit Linux-basiertem HDInsight unter Windows](hdinsight-hadoop-linux-use-ssh-windows.md)
-   * [Verwenden von SSH mit Linux-basiertem HDInsight unter Linux, Unix, OS X und Bash unter Windows](hdinsight-hadoop-linux-use-ssh-unix.md)
+5. Nachdem der Cluster erstellt wurde, verbinden Sie sich mithilfe von **SSH** mit dem Cluster. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 6. Verwenden Sie über die SSH-Sitzung den folgenden Befehl, um Daten aus dem verknüpften Speicherkonto in das neue Standardspeicherkonto zu kopieren. Ersetzen Sie CONTAINER durch die von PowerShell zurückgegebenen Containerinformationen. Ersetzen Sie __KONTO__ durch den Kontonamen. Ersetzen Sie den Datenpfad mit dem Datendateipfad.
 
@@ -109,10 +106,7 @@ Während der Clustererstellung müssen Sie einen SSH-Benutzer und entweder ein *
 
 Es empfiehlt sich, ein Public Key-Zertifikat zu verwenden, da dies sicherer ist als ein Kennwort. Die Zertifikatsauthentifizierung funktioniert, indem ein signiertes öffentliches/privates Schlüsselpaar generiert und anschließend beim Erstellen des Clusters der öffentliche Schlüssel bereitgestellt wird. Beim Verbinden zum Server mithilfe von SSH erfolgt die Authentifizierung für die Verbindung durch den privaten Schlüssel auf dem Client.
 
-Weitere Informationen zur Verwendung von SSH mit HDInsight finden Sie in den folgenden Artikeln:
-
-* [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Windows](hdinsight-hadoop-linux-use-ssh-windows.md)
-* [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix und Mac OS X](hdinsight-hadoop-linux-use-ssh-unix.md)
+Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ### <a name="cluster-customization"></a>Clusteranpassung
 Mit Linux-basierten Clustern verwendete **Skriptaktionen** müssen in Bash-Skripts geschrieben sein. Skriptaktionen können während der Clustererstellung verwendet werden. Für Linux-basierte Cluster können sie außerdem zum Anpassen verwendet werden, sobald ein Cluster eingerichtet wurde und ausgeführt wird. Weitere Informationen finden Sie unter [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md) und [Entwickeln von Skriptaktionen mit HDInsight](hdinsight-hadoop-script-actions-linux.md).
@@ -220,8 +214,8 @@ Wenn Sie wissen, dass die Skripts keine Zeichenfolgen mit eingebetteten CR-Zeich
       hdfs dfs -put -f script.py wasbs:///path/to/script.py
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * [Erfahren Sie, wie Sie Linux-basierte HDInsight-Cluster erstellen](hdinsight-hadoop-provision-linux-clusters.md)
-* [Verbinden zu einem Linux-basierten Cluster mithilfe von SSH auf einem Windows-Client](hdinsight-hadoop-linux-use-ssh-windows.md)
-* [Verbinden zu einem Linux-basierten Cluster mithilfe von SSH auf einem Linux-, Unix- oder Mac-Client](hdinsight-hadoop-linux-use-ssh-unix.md)
+* [Verwenden von SSH für das Herstellen von Verbindungen mit HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)
 * [Verwalten eines Linux-basierten Clusters mithilfe von Ambari](hdinsight-hadoop-manage-ambari.md)
 

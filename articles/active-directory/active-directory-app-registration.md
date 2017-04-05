@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 11/30/2016
 ms.author: priyamo
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: 006ebbbc3f6f745f60c5fc6646649097e144beaf
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: d2dd84007832c56f5893f0ea9f5effcf5ec5816b
+ms.lasthandoff: 03/28/2017
 
 ---
 
@@ -61,5 +61,5 @@ Mithilfe des Inline-Manifest-Editors können Sie bestimmte Anwendungseigenschaft
 ## <a name="next-steps"></a>Nächste Schritte
 
 1. In den [Schnellstarts](active-directory-developers-guide.md) finden Sie ausführliche Vorgehensweisen für Anwendungen, die die Authentifizierung mithilfe von Azure AD ausführen.
-2. Sehen Sie sich die vollständige Liste der Codebeispiele auf [Github](https://github.com/azure-samples) an.
+2. Sehen Sie sich die vollständige Liste der Codebeispiele auf [GitHub](https://github.com/azure-samples) an.
 

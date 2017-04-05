@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/14/2017
+ms.date: 03/23/2017
 ms.author: sethm;clemensv
 translationtype: Human Translation
-ms.sourcegitcommit: 4a972b9b8b52a90f27afda98d8bdc661016d1fe1
-ms.openlocfilehash: f5fd4c6c0b8db3fe91d8b57a68fe33dcff353a59
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: a433b918f48b42d3bf7ee8ee16bd912e278a381d
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -98,7 +98,7 @@ Wenn die Websocketverbindung nicht hergestellt werden kann, weil der Pfad der Hy
 | --- | --- | --- |
 | 404 |Nicht gefunden |Der **Pfad** der Hybridverbindung ist ungültig oder die Basis-URL ist falsch formatiert. |
 | 401 |Nicht autorisiert |Das Sicherheitstoken ist nicht vorhanden, falsch formatiert oder ungültig. |
-| 403 |Verboten (403) |Das Sicherheitstoken ist für diesen Pfad für diese Aktion ungültig.. |
+| 403 |Verboten (403) |Das Sicherheitstoken ist für diesen Pfad für diese Aktion ungültig. |
 | 500 |Interner Fehler |Es ist ein Fehler im Dienst aufgetreten. |
 
 Wenn die Websocketverbindung absichtlich durch den Dienst heruntergefahren wird, nachdem sie anfangs eingerichtet wurde, erfolgt die Angabe des Grunds dafür mithilfe eines entsprechenden Websocket-Protokollfehlercodes sowie mit einer beschreibenden Fehlermeldung, die auch eine Nachverfolgungs-ID enthält. Ohne eine erkennbare Fehlerbedingung fährt der Dienst den Steuerungskanal nicht herunter. Jedes saubere Herunterfahren wird durch den Client gesteuert.
@@ -137,9 +137,6 @@ Die in der JSON-Nachricht bereitgestellte Adress-URL wird vom Listener verwendet
 
 #### <a name="accepting-the-socket"></a>Akzeptieren des Sockets
 Zum Akzeptieren erstellt der Listener eine Websocketverbindung mit der bereitgestellten Adresse.
-
-Beachten Sie, dass der Adress-URI in der Vorschauphase möglicherweise eine reine IP-Adresse verwendet und das vom Server angegebene TLS-Zertifikat die Überprüfung an dieser Adresse nicht besteht.
-Dies wird während der Vorschau behoben werden.
 
 Wenn die „accept“-Nachricht einen „Sec-WebSocket-Protocol“-Header enthält, wird erwartet, dass der Listener den Websocket nur akzeptiert, wenn er dieses Protokoll unterstützt, und dass er den Header festlegt, wenn der Websocket erstellt wird.
 
@@ -187,7 +184,7 @@ Zum Ablehnen des Sockets nimmt der Client den Adress-URI aus der accept-Nachrich
 | statusCode |Ja |Numerischer HTTP-Statuscode. |
 | statusDescription |Ja |Ein visuell lesbarer Grund für die Ablehnung. |
 
-Der resultierende URI wird dann zum Herstellen einer Websocketverbindung verwendet. Beachten Sie (wie oben bereits erwähnt), dass das TLS-Zertifikat möglicherweise nicht mit der Adresse während der Vorschau übereinstimmt, die Überprüfung also womöglich deaktiviert werden muss.
+Der resultierende URI wird dann verwendet, um eine WebSocket-Verbindung herzustellen.
 
 Wenn der Vorgang erfolgreich abgeschlossen wurde, schlägt dieser Handshake absichtlich mit dem HTTP-Fehlercode 410 fehl, da kein Websocket erstellt wurde. Wenn ein Fehler auftritt, stehen diese Optionen zur Verfügung:
 
@@ -251,7 +248,7 @@ Wenn die Websocketverbindung nicht hergestellt werden kann, weil der Pfad der Hy
 | --- | --- | --- |
 | 404 |Nicht gefunden |Der `path` der Hybridverbindung ist ungültig, oder die Basis-URL ist falsch formatiert. |
 | 401 |Nicht autorisiert |Das Sicherheitstoken ist nicht vorhanden, falsch formatiert oder ungültig. |
-| 403 |Verboten (403) |Das Sicherheitstoken ist für diesen Pfad für diese Aktion ungültig.. |
+| 403 |Verboten (403) |Das Sicherheitstoken ist für diesen Pfad für diese Aktion ungültig. |
 | 500 |Interner Fehler |Es ist ein Fehler im Dienst aufgetreten. |
 
 Wenn die Websocketverbindung absichtlich durch den Dienst heruntergefahren wird, nachdem sie anfangs eingerichtet wurde, erfolgt die Angabe des Grunds dafür mithilfe eines entsprechenden Websocket-Protokollfehlercodes sowie mit einer beschreibenden Fehlermeldung, die auch eine Nachverfolgungs-ID enthält.

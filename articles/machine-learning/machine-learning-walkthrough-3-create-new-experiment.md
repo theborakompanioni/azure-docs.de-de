@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 03/23/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: bd4a38e74ecab47071631f7e67e99c7806abd935
-ms.openlocfilehash: e8f1d55dd374608b49d4189fb47603a6ddaee3dd
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: cd410316910bce76f5c915c06e83b24c034481b7
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -55,7 +56,7 @@ Der nächste Schritt in dieser exemplarischen Vorgehensweise ist die Erstellung 
 ## <a name="prepare-the-data"></a>Vorbereiten der Daten
 Sie können die ersten 100 Datenzeilen sowie einige statistische Informationen für das ganze Dataset anzeigen: Klicken Sie hierzu auf den Ausgabeport des Datasets (den kleinen Kreis unten), und wählen Sie die Option **Visualize**.  
 
-Da die Datendatei keine Spaltenüberschriften aufweist, hat Studio allgemeine Überschriften (Col1, Col2 *usw.*) bereitgestellt. Aussagekräftige Überschriften haben keine Bedeutung für die Erstellung eines Modells, erleichtern aber die Arbeit mit den Daten im Experiment. Wenn später das Modell in einem Webdienst veröffentlicht wird, kann der Benutzer des Diensts die Spalten anhand der Überschriften auch leichter identifizieren.  
+Da die Datendatei keine Spaltenüberschriften aufweist, hat Studio allgemeine Überschriften (Col1, Col2 *usw.*) bereitgestellt. Aussagekräftige Überschriften haben keine Bedeutung für die Erstellung eines Modells, erleichtern aber die Arbeit mit den Daten im Experiment. Wenn das Modell später in einem Webdienst veröffentlicht wird, kann der Benutzer des Diensts die Spalten anhand der Überschriften auch leichter identifizieren.  
 
 Verwenden Sie das Modul [Edit Metadata][edit-metadata], um Spaltenüberschriften hinzuzufügen.
 Sie verwenden das Modul [Edit Metadata][edit-metadata] zum Ändern der Metadaten, die einem Dataset zugeordnet sind. In diesem Fall nutzen wir es, um aussagekräftigere Namen für die Spaltenüberschriften anzugeben. 
@@ -102,7 +103,8 @@ Zum Verwenden von [Edit Metadata][edit-metadata] müssen Sie zuerst die zu ände
 > 
 
 ## <a name="create-training-and-test-datasets"></a>Erstellen von Trainings- und Testdatasets
-Im nächsten Schritt des Experiments wird das Dataset in zwei separate Datasets aufgeteilt. Wir verwenden ein Dataset zum Trainieren des Modells und das andere zum Testen.
+Wir benötigen Daten zum Trainieren des Modells sowie Daten zum Testen des Modells.
+Daher wird das Dataset im nächsten Schritt des Experiments in zwei separate Datasets aufgeteilt: eines zum Trainieren des Modells und das andere zum Testen.
 
 Hierfür wird das Modul [Split Data][split] verwendet.  
 
@@ -111,7 +113,7 @@ Hierfür wird das Modul [Split Data][split] verwendet.
 2. Standardmäßig beträgt das Aufteilungsverhältnis 0,5, und der Parameter **Zufällige Aufteilung** ist festgelegt. Dies bedeutet, dass eine zufällig ausgewählte Hälfte der Daten über einen Port des Moduls [Split Data][split] und die andere Hälfte über den anderen Port ausgegeben wird. Sie können diese Parameter und den Parameter **Random seed** anpassen, um die Aufteilung zwischen Trainings- und Bewertungsdaten zu ändern. Für dieses Beispiel bleiben die Werte unverändert.
    
    > [!TIP]
-   > Die Eigenschaft **Fraction of rows in the first output dataset** bestimmt, welcher Anteil der Daten über den linken Ausgabeport ausgegeben werden. Wenn Sie z. B. ein Aufteilungsverhältnis von 0,7 festlegen, werden 70 % der Daten über den linken Port und 30 % der Daten über den rechten Port ausgegeben.  
+   > Die Eigenschaft **Fraction of rows in the first output dataset** bestimmt, welcher Anteil der Daten über den *linken* Ausgabeport ausgegeben wird. Wenn Sie z. B. ein Aufteilungsverhältnis von 0,7 festlegen, werden 70 % der Daten über den linken Port und 30 % der Daten über den rechten Port ausgegeben.  
    > 
    > 
 
@@ -119,7 +121,7 @@ Hierfür wird das Modul [Split Data][split] verwendet.
 
 Die Ausgaben des Moduls [Split Data][split] können beliebig verwendet werden. In diesem Fall wählen wir die linke Ausgabe als Trainingsdaten und die rechte Ausgabe als Testdaten.  
 
-Wie bereits erwähnt, sind die Kosten einer Fehlklassifizierung eines hohen Risikos als niedriges Risiko fünf Mal höher als die Kosten einer Fehlklassifizierung eines niedrigen Risikos als hohes Risiko. Um dies zu berücksichtigen, generieren Sie ein neues Dataset, das diese Kostenfunktion darstellt. Im neuen Dataset wird jedes Hochrisikobeispiel fünfmal repliziert, während keines der Niedrigrisikobeispiele repliziert wird.   
+Wie im [vorherigen Schritt](machine-learning-walkthrough-2-upload-data.md) erwähnt, sind die Kosten einer Fehlklassifizierung eines hohen Kreditrisikos als niedriges Risiko fünfmal höher als die Kosten einer Fehlklassifizierung eines niedrigen Kreditrisikos als hohes Risiko. Um dies zu berücksichtigen, generieren Sie ein neues Dataset, das diese Kostenfunktion darstellt. Im neuen Dataset wird jedes Hochrisikobeispiel fünfmal repliziert, während keines der Niedrigrisikobeispiele repliziert wird.   
 
 Für diese Replikation kann der R-Code verwendet werden:  
 
@@ -139,7 +141,7 @@ Für diese Replikation kann der R-Code verwendet werden:
 
     ![R-Skript im Modul „Execute R Script“][9]
 
-Wir müssen den gleichen Replikationsvorgang für jede Ausgabe des Moduls [Split Data][split] durchführen, damit die Trainings- und die Testdaten die gleiche Kostenanpassung haben. Hierfür duplizieren wir das eben erstellte Modul [Execute R Script][execute-r-script] und verbinden es mit dem anderen Ausgabeport des Moduls [Split Data][split].
+Wir müssen den gleichen Replikationsvorgang für jede Ausgabe des Moduls [Split Data][split] durchführen, damit die Trainings- und die Testdaten die gleiche Kostenanpassung haben. Dies erfolgt am einfachsten durch Duplizieren des eben erstellten Moduls [Execute R Script][execute-r-script] und durch Verbinden dieses Moduls mit dem anderen Ausgabeport des Moduls [Split Data][split].
 
 1. Klicken Sie mit der rechten Maustaste auf das Modul [Execute R Script][execute-r-script], und wählen Sie die Option **Kopieren**.
 
@@ -178,9 +180,4 @@ Weitere Informationen zum Verwenden von R-Skripts in Ihren Experimenten finden S
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
 [edit-metadata]: https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

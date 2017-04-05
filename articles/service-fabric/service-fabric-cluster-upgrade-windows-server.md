@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 02/02/2017
 ms.author: chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: eedaefeed1a704f7816e71ef7b2dddda2268a90f
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
+ms.openlocfilehash: 6196cb7fa13cf664faa72b7f5f5e0645e4402739
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -127,24 +127,16 @@ Nutzungsdetails finden Sie in den Informationen zum PowerShell-Befwehl [Start-Se
 
 #### <a name="cluster-upgrade-workflow"></a>Workflow für das Upgrade des Clusters
 
-1. Laden Sie die aktuelle Version des Pakets aus dem Dokument [Service Fabric-Cluster für Windows Server erstellen](service-fabric-cluster-creation-for-windows-server.md) herunter.
-2. Stellen Sie auf einem Computer mit Administratorzugriffsrechten auf alle Computer, die als Knoten in der Clusterkonfigurationsdatei aufgeführt sind, eine Verbindung mit dem Cluster her. Der Computer, auf dem dieses Skript ausgeführt wird, muss nicht Teil des Clusters sein.
+1. Führen Sie Get-ServiceFabricClusterUpgrade auf einem der Knoten im Cluster aus, und notieren Sie die TargetCodeVersion.
+2. Führen Sie Folgendes auf einem mit dem Internet verbundenen Computer aus, um alle mit der aktuellen Version für das Upgrade kompatiblen Versionen aufzulisten und das entsprechende Paket über die zugehörigen Downloadlinks herunterzuladen.
 
     ```powershell
 
-    ###### Connect to the cluster
-    $ClusterName= "mysecurecluster.something.com:19000"
-    $CertThumbprint= "70EF5E22ADB649799DA3C8B6A6BF7FG2D630F8F3"
-    Connect-serviceFabricCluster -ConnectionEndpoint $ClusterName -KeepAliveIntervalInSec 10 `
-        -X509Credential `
-        -ServerCertThumbprint $CertThumbprint  `
-        -FindType FindByThumbprint `
-        -FindValue $CertThumbprint `
-        -StoreLocation CurrentUser `
-        -StoreName My
+    ###### Get list of all upgrade compatible packages  
+    Get-ServiceFabricRuntimeUpgradeVersion -BaseVersion <TargetCodeVersion as noted in Step 1> 
     ```
 
-3. Kopieren Sie das heruntergeladene Paket in den Clusterimagespeicher.
+3. Stellen Sie auf einem Computer mit Administratorzugriffsrechten auf alle Computer, die als Knoten in der Clusterkonfigurationsdatei aufgeführt sind, eine Verbindung mit dem Cluster her. Der Computer, auf dem dieses Skript ausgeführt wird, muss nicht Teil des Clusters sein.
 
     ```powershell
 
@@ -155,8 +147,9 @@ Nutzungsdetails finden Sie in den Informationen zum PowerShell-Befwehl [Start-Se
     Copy-ServiceFabricClusterPackage -Code -CodePackagePath .\MicrosoftAzureServiceFabric.5.3.301.9590.cab -ImageStoreConnectionString "fabric:ImageStore"
 
     ```
+4. Kopieren Sie das heruntergeladene Paket in den Clusterimagespeicher.
 
-4. Registrieren Sie das kopierte Paket.
+5. Registrieren Sie das kopierte Paket.
 
     ```powershell
 
@@ -167,7 +160,7 @@ Nutzungsdetails finden Sie in den Informationen zum PowerShell-Befwehl [Start-Se
     Register-ServiceFabricClusterPackage -Code -CodePackagePath MicrosoftAzureServiceFabric.5.3.301.9590.cab
 
      ```
-5. Starten Sie ein Clusterupgrade auf eine verfügbare Version.
+6. Starten Sie ein Clusterupgrade auf eine verfügbare Version.
 
     ```Powershell
 
@@ -197,6 +190,13 @@ Um die Clusterkonfiguration upzugraden, führen Sie den Befehl **Start-ServiceFa
     Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
 
 ```
+
+### <a name="cluster-certificate-config-upgrade"></a>Konfigurationsupgrade für Clusterzertifikate  
+Das Clusterzertifikat wird für die Authentifizierung zwischen Clusterknoten verwendet. Daher sollte der Zertifikatrollover mit besonderer Vorsicht ausgeführt werden, da Fehler die Kommunikation zwischen den Clusterknoten blockieren könnten.  
+Technisch gesehen werden zwei Optionen unterstützt:  
+
+1. Einzelnes Zertifikatupgrade: Der Upgradepfad lautet „Zertifikat A (primär) > Zertifikat B (primär) > Zertifikat C (primär) > ...“.   
+2. Doppeltes Zertifikatupgrade: Der Upgradepfad lautet „Zertifikat A (primär) > Zertifikat A (primär) und B (sekundär) > Zertifikat B (primär) > Zertifikat B (primär) und C (sekundär) > Zertifikat C (primär) > ...“.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -11,28 +11,29 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/08/2017
+ms.date: 3/10/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 451369e21e7471180b6cd8c77d62b157d0bcddff
-ms.openlocfilehash: a4478283ef6ab949cc73322db908347a626c12d8
-ms.lasthandoff: 12/14/2016
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: da3b1e506e603b1f5e3660f31c6d939d77cd2938
+ms.lasthandoff: 03/28/2017
 
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-simplenexus"></a>Tutorial: Azure Active Directory-Integration mit SimpleNexus
 In diesem Tutorial wird die Integration von Azure und SimpleNexus erläutert.  
+
 Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 * Ein gültiges Azure-Abonnement
-* Ein SimpleNexus-Abonnement, für das einmaliges Anmelden aktiviert ist
+* Ein SimpleNexus-Abonnement, für das einmaliges Anmelden (SSO) aktiviert ist
 
 Nach Abschluss dieses Tutorials können sich die SimpleNexus zugewiesenen Azure AD-Benutzer mittels einmaliger Anmeldung auf Ihrer SimpleNexus-Unternehmenswebsite bei der Anwendung anmelden (durch den Dienstanbieter initiierte Anmeldung). Alternativ können sie den Zugriffsbereich nutzen (siehe [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md)).
 
 Das in diesem Tutorial beschriebene Szenario besteht aus den folgenden Bausteinen:
 
 1. Aktivieren der Anwendungsintegration für SimpleNexus
-2. Konfigurieren der einmaligen Anmeldung
+2. Konfigurieren des einmaligen Anmeldens (SSO) 
 3. Konfigurieren der Benutzerbereitstellung
 4. Zuweisen von Benutzern
 
@@ -41,7 +42,8 @@ Das in diesem Tutorial beschriebene Szenario besteht aus den folgenden Bausteine
 ## <a name="enabling-the-application-integration-for-simplenexus"></a>Aktivieren der Anwendungsintegration für SimpleNexus
 In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für SimpleNexus aktivieren.
 
-### <a name="to-enable-the-application-integration-for-simplenexus-perform-the-following-steps"></a>So aktivieren Sie die Anwendungsintegration für SimpleNexus:
+**So aktivieren Sie die Anwendungsintegration für SimpleNexus**
+
 1. Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
    
     ![Active Directory](./media/active-directory-saas-simplenexus-tutorial/IC700993.png "Active Directory")
@@ -68,11 +70,12 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Sim
    
     ![Simple Nexus](./media/active-directory-saas-simplenexus-tutorial/IC809578.png "Simple Nexus")
    
-## <a name="configuring-single-sign-on"></a>Konfigurieren der einmaligen Anmeldung
+## <a name="configure-single-sign-on"></a>Einmaliges Anmelden konfigurieren
 
 In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei SimpleNexus zu authentifizieren.
 
-### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>So konfigurieren Sie einmaliges Anmelden
+**So konfigurieren Sie einmaliges Anmelden**
+
 1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **SimpleNexus** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-simplenexus-tutorial/IC785896.png "Einmaliges Anmelden konfigurieren")
@@ -89,29 +92,29 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-simplenexus-tutorial/IC785899.png "Einmaliges Anmelden konfigurieren")
    
-    > [!NOTE]
-    > Das einmalige Anmelden muss vom Supportteam von SimpleNexus aktiviert werden.
-    > 
+    >[!NOTE]
+    >Das einmalige Anmelden muss vom Supportteam von SimpleNexus aktiviert werden. 
     > 
 
 5. Bestätigen Sie im klassischen Azure-Portal die Konfiguration der einmaligen Anmeldung, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-simplenexus-tutorial/IC785900.png "Einmaliges Anmelden konfigurieren")
    
-## <a name="configuring-user-provisioning"></a>Konfigurieren der Benutzerbereitstellung
+## <a name="configure-user-provisioning"></a>Benutzerbereitstellung konfigurieren
 
-Damit sich Azure AD-Benutzer bei SimpleNexus anmelden können, müssen sie in SimpleNexus bereitgestellt werden.  
+Damit sich Azure AD-Benutzer bei SimpleNexus anmelden können, müssen sie in SimpleNexus bereitgestellt werden.
+
 Im Fall von SimpleNexus ist die Bereitstellung eine manuelle Aufgabe, die vom Tenant-Administrator ausgeführt wird.
 
-> [!NOTE]
-> Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von SimpleNexus-Benutzerkonten oder mithilfe der von SimpleNexus bereitgestellten APIs erstellen.
-> 
+>[!NOTE]
+>Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von SimpleNexus-Benutzerkonten oder mithilfe der von SimpleNexus bereitgestellten APIs erstellen. 
 > 
 
-## <a name="assigning-users"></a>Zuweisen von Benutzern
+## <a name="assign-users"></a>Benutzer zuweisen
 Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
 
-### <a name="to-assign-users-to-simplenexus-perform-the-following-steps"></a>So weisen Sie SimpleNexus Benutzer zu:
+**So weisen Sie SimpleNexus Benutzer zu**
+
 1. Erstellen Sie im klassischen Azure-Portal ein Testkonto.
 2. Klicken Sie auf der Anwendungsintegrationsseite für **SimpleNexus** auf **Benutzer zuweisen**.
    

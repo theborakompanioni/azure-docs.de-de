@@ -13,20 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 03/21/2017
 ms.author: ganesr;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: ced4347baf7eca4dd8fc9cf1c8c0b451314f0ad2
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: 212de47a9cc4f2130b94ac1e622eabe0c0cb781a
+ms.lasthandoff: 03/24/2017
 
 
 ---
-# <a name="create-and-modify-an-expressroute-circuit"></a>Erstellen und Ändern einer ExpressRoute-Verbindung
+# <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>Erstellen und Ändern einer ExpressRoute-Verbindung mit PowerShell
 > [!div class="op_single_selector"]
 > * [Resource Manager – Azure-Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [Resource Manager – PowerShell](expressroute-howto-circuit-arm.md)
-> * [Klassisch – PowerShell](expressroute-howto-circuit-classic.md)
 > * [Video – Azure-Portal](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > 
 >
@@ -38,13 +37,13 @@ In diesem Artikel wird beschrieben, wie Sie eine Azure ExpressRoute-Verbindung m
 [!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## <a name="before-you-begin"></a>Voraussetzungen
-* Rufen Sie die neueste Version der Azure PowerShell-Module ab (mindestens Version 1.0). Eine Schrittanleitung zum Konfigurieren des Computers für die Verwendung der PowerShell-Module erhalten Sie auf der Seite [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
+* Sie müssen die aktuelle Version der PowerShell-Cmdlets für Azure Resource Manager installieren. Weitere Informationen finden Sie unter [Erste Schritte mit Azure PowerShell-Cmdlets](/powershell/azureps-cmdlets-docs). 
 * Lesen Sie vor Beginn der Konfiguration die Seiten zu den [Voraussetzungen](expressroute-prerequisites.md) und [Workflows](expressroute-workflows.md).
 
 
 ## <a name="create-and-provision-an-expressroute-circuit"></a>Erstellen und Bereitstellen einer ExpressRoute-Verbindung
 ### <a name="1-sign-in-to-your-azure-account-and-select-your-subscription"></a>1. Melden Sie sich bei Ihrem Azure-Konto an, und wählen Sie Ihr Abonnement aus.
-Um mit der Konfiguration zu beginnen, melden Sie sich bei Ihrem Azure-Konto an. Weitere Informationen zu PowerShell finden Sie unter [Verwenden von Windows PowerShell mit Resource Manager](../powershell-azure-resource-manager.md). Verwenden Sie die folgenden Beispiele, um eine Verbindung herzustellen:
+Um mit der Konfiguration zu beginnen, melden Sie sich bei Ihrem Azure-Konto an. Verwenden Sie die folgenden Beispiele, um eine Verbindung herzustellen:
 
     Login-AzureRmAccount
 

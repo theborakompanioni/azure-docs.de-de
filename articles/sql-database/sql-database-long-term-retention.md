@@ -17,9 +17,9 @@ ms.workload: NA
 ms.date: 12/22/2016
 ms.author: sashan
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 0cb96f97358378a723d7528e53f5c5a771e2000b
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
+ms.openlocfilehash: 768a630e1652a48fa4478ec2c25173d536ea6c09
+ms.lasthandoff: 03/23/2017
 
 
 ---
@@ -112,7 +112,7 @@ Informationen zum Entfernen von Sicherungen mit langfristiger Sicherungsaufbewah
     Antwort: Nein, der Tresor und Server müssen in der gleichen Region sein, um die Zeit für den Kopiervorgang und Gebühren für den Datenverkehr zu minimieren.
 5. Frage: Wie viele Datenbanken kann ich in einem Tresor speichern?
 
-    Antwort: Derzeit unterstützen wir nur bis zu 1000 Datenbanken pro Tresor. 
+    A: Derzeit unterstützen wir nur bis zu 1.000 Datenbanken pro Tresor. 
 6. F: Wie viele Tresore kann ich pro Abonnement erstellen?
 
     A: Sie können bis zu 25 Tresore pro Abonnement erstellen.
@@ -130,7 +130,7 @@ Informationen zum Entfernen von Sicherungen mit langfristiger Sicherungsaufbewah
     A: Ja, TDE wird unterstützt. Selbst wenn die ursprüngliche Datenbank nicht mehr vorhanden ist, können Sie die Datenbank aus dem Tresor wiederherstellen.
 11. F: Was geschieht mit den Sicherungen im Tresor, wenn mein Abonnement unterbrochen wird? 
 
-    A: Falls Ihr Abonnement unterbrochen wird, werden wir die vorhandenen Datenbanken und Sicherungen beibehalten, aber neue Sicherungen werden nicht in den Tresor kopiert. Nachdem Sie das Abonnement reaktiviert haben, setzt der Dienst das Kopieren der Sicherungen in den Tresor fort. Ihr Tresor erhält wieder Zugriff auf die Wiederherstellungsvorgänge, indem die Sicherungen genutzt werden, die vor dem Unterbrechen des Abonnements kopiert wurden. 
+    A: Falls Ihr Abonnement unterbrochen wird, werden wir die vorhandenen Datenbanken und Sicherungen beibehalten. Neue Sicherungen werden jedoch nicht in den Tresor kopiert. Nachdem Sie das Abonnement reaktiviert haben, setzt der Dienst das Kopieren der Sicherungen in den Tresor fort. Ihr Tresor erhält wieder Zugriff auf die Wiederherstellungsvorgänge, indem die Sicherungen genutzt werden, die vor dem Unterbrechen des Abonnements kopiert wurden. 
 12. Frage: Kann ich Zugriff auf die SQL-Datenbank-Sicherungsdateien erhalten, damit ich sie herunterladen/auf dem SQL Server wiederherstellen kann?
 
     Antwort: Derzeit ist dies nicht möglich.

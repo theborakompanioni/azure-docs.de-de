@@ -14,14 +14,16 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: 415e91ca2f1e47094fc8b64569b5cc29a706999a
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
+ms.openlocfilehash: 37594924f9474d225421d2b2d783a19d9295fcf8
+ms.lasthandoff: 03/29/2017
 
 
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Verschieben von Daten aus SAP HANA mithilfe von Azure Data Factory
-Dieser Artikel beschreibt, wie Sie die Kopieraktivität in einer Azure Data Factory-Pipeline verwenden können, um Daten aus SAP HANA in einen anderen Datenspeicher zu verschieben. Dieser Artikel baut auf dem Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit Kopieraktivität und unterstützten Datenspeicherkombinationen bietet. Data Factory unterstützt derzeit nur das Verschieben von Daten aus SAP HANA in andere Datenspeicher, aber nicht das Verschieben aus anderen Datenspeichern in SAP HANA.
+Dieser Artikel beschreibt, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einer lokalen SAP HANA-Instanz zu verschieben. Dieser Artikel baut auf dem Artikel zu [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit der Kopieraktivität bietet.
+
+Sie können Daten aus einem lokalen SAP HANA-Datenspeicher in beliebige unterstützte Senkendatenspeicher kopieren. Eine Liste der Datenspeicher, die als Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Data Factory unterstützt derzeit nur das Verschieben von Daten aus SAP HANA in andere Datenspeicher, aber nicht das Verschieben aus anderen Datenspeichern in SAP HANA.
 
 ## <a name="supported-versions-and-installation"></a>Unterstützte Versionen und Installation
 Dieser Connector unterstützt jede Version der SAP HANA-Datenbank. Er unterstützt das Kopieren von Daten aus HANA-Informationsmodellen (z. B. Analyse- und Berechnungssichten) und aus Zeile/Spalte-Tabellen mit SQL-Abfragen.
@@ -30,25 +32,64 @@ Um Konnektivität zur SAP HANA-Instanz zu aktivieren, installieren Sie die folge
 - **Datenverwaltungsgateway**: Der Data Factory-Dienst unterstützt das Herstellen einer Verbindung mit lokalen Datenspeichern (einschließlich SAP HANA) über eine Komponente, die als Datenverwaltungsgateway bezeichnet wird. Wenn Sie mehr zum Datenverwaltungsgateway erfahren möchten und eine schrittweise Anleitung zum Einrichten des Gateways wünschen, lesen Sie den Artikel [Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway](data-factory-move-data-between-onprem-and-cloud.md). Das Gateway ist selbst dann erforderlich, wenn SAP HANA auf einem virtuellen Azure IaaS-Computer gehostet wird. Das Gateway kann auf dem gleichen virtuellen Computer wie der Datenspeicher oder auf einem anderen virtuellen Computer installiert werden, solange das Gateway eine Verbindung mit der Datenbank herstellen kann.
 - **SAP HANA-ODBC-Treiber** auf dem Gatewaycomputer. Sie können den SAP HANA-ODBC-Treiber aus dem [SAP Software Download Center](https://support.sap.com/swdc) herunterladen. Suche Sie mit dem Schlüsselwort **SAP HANA CLIENT for Windows**. 
 
-## <a name="supported-sinks"></a>Unterstützte Senken
-Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Sie können Daten aus SAP HANA in jeden unterstützten Senkendatenspeicher verschieben. 
+## <a name="getting-started"></a>Erste Schritte
+Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools/APIs aus einem lokalen Cassandra-Datenspeicher verschiebt. 
 
-## <a name="copy-data-wizard"></a>Assistent zum Kopieren von Daten
-Die einfachste Art, eine Pipeline zu erstellen, die Daten aus SAP HANA in einen der unterstützten Senkendatenspeicher kopiert, ist die Verwendung des Assistenten zum Kopieren von Daten. Unter [Tutorial: Erstellen einer Pipeline mit dem Assistenten zum Kopieren](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
+- Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Unter [Tutorial: Erstellen einer Pipeline mit dem Assistenten zum Kopieren](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten. 
+- Sie können auch die folgenden Tools für das Erstellen einer Pipeline verwenden: **Azure-Portal**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlagen**, **.NET-API** und **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können. 
 
+Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden Schritte aus, um eine Pipeline zu erstellen, die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher verschiebt:
+
+1. Erstellen **verknüpfter Dienste** zum Verknüpfen von Eingabe- und Ausgabedatenspeichern mit Ihrer Data Factory
+2. Erstellen von **Datasets** zur Darstellung von Eingabe- und Ausgabedaten für den Kopiervorgang 
+3. Erstellen einer **Pipeline** mit einer Kopieraktivität, die ein Dataset als Eingabe und ein Dataset als Ausgabe akzeptiert 
+
+Wenn Sie den Assistenten verwenden, werden automatisch JSON-Definitionen für diese Data Factory-Entitäten (verknüpfte Diensten, Datasets und die Pipeline) erstellt. Bei Verwendung von Tools und APIs (mit Ausnahme der .NET-API) definieren Sie diese Data Factory-Entitäten im JSON-Format.  Ein Beispiel mit JSON-Definitionen für Data Factory-Entitäten, die zum Kopieren von Daten aus einer lokalen SAP HANA-Instanz verwendet werden, finden Sie in diesem Artikel im Abschnitt [JSON-Beispiel: Kopieren von Daten aus SAP HANA in ein Azure-Blob](#json-example-copy-data-from-sap-hana-to-azure-blob). 
+
+Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für SAP HANA-Datenspeicher verwendet werden:
+
+## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
+Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den mit SAP HANA verknüpften Dienst spezifisch sind.
+
+Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich
+-------- | ----------- | -------------- | --------
+server | Der Name des Servers, auf dem sich die SAP HANA-Instanz befindet. Wenn Ihr Server einen benutzerdefinierten Port verwendet, geben Sie `server:port` an. | string | Ja
+authenticationType | Die Art der Authentifizierung. | string. „Basic“ oder „Windows“ | Ja 
+username | Der Name des Benutzers, der Zugriff auf den SAP-Server hat | string | Ja
+password | Kennwort für den Benutzer | string | Ja
+gatewayName | Der Name des Gateways, das der Data Factory-Dienst zum Herstellen einer Verbindung mit der lokalen SAP HANA-Instanz verwenden soll | string | Ja
+encryptedCredential | Die verschlüsselte Zeichenfolge mit Anmeldeinformationen | string | Nein
+
+## <a name="dataset-properties"></a>Dataset-Eigenschaften
+Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie „structure“, „availability“ und „policy“ des JSON-Codes eines Datasets sind bei allen Dataset-Typen (Azure SQL, Azure-Blob, Azure-Tabelle usw.) ähnlich.
+
+Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Es sind keine typspezifischen Eigenschaften, die für das SAP HANA-Dataset des Typs **RelationalTable** unterstützt werden. 
+
+
+## <a name="copy-activity-properties"></a>Eigenschaften der Kopieraktivität
+Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md). Eigenschaften wie Name, Beschreibung, Eingabe- und Ausgabetabellen und Richtlinien sind für alle Arten von Aktivitäten verfügbar.
+
+Eigenschaften im Abschnitt **typeProperties** der Aktivität können dagegen je nach Aktivitätstyp variieren. Für die Kopieraktivität variieren die Eigenschaften je nach Art der Quellen und Senken.
+
+Wenn die Quelle bei der Kopieraktivität den Typ **RelationalSource** hat (zu dem SAP HANA gehört), sind im Abschnitt „typeProperties“ die folgenden Eigenschaften verfügbar:
+
+| Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
+| --- | --- | --- | --- |
+| query | Gibt die SQL-Abfrage an, mit der Daten aus der SAP HANA-Instanz gelesen werden. | SQL-Abfrage | Ja |
+
+## <a name="json-example-copy-data-from-sap-hana-to-azure-blob"></a>JSON-Beispiel: Kopieren von Daten aus SAP HANA in ein Azure-Blob
 Das folgende Beispiel stellt JSON-Beispieldefinitionen bereit, die Sie zum Erstellen einer Pipeline mit dem [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder mit [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. In diesem Beispiel wird gezeigt, wie Sie Daten aus einem lokalen SAP HANA-System in einen Azure-BLOB-Speicher kopieren. Daten können jedoch mithilfe der Kopieraktivität in Azure Data Factory **direkt** in die [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) aufgeführten Senken kopiert werden.  
 
 > [!IMPORTANT]
 > Dieses Beispiel enthält JSON-Codeausschnitte. Eine schrittweise Anleitung zum Erstellen der Data Factory ist nicht enthalten. Einen Artikel mit schrittweisen Anleitungen finden Sie unter [Verschieben von Daten zwischen lokalen Standorten und Cloud](data-factory-move-data-between-onprem-and-cloud.md) .
 
-## <a name="sample-copy-data-from-sap-hana-to-azure-blob"></a>Beispiel: Kopieren von Daten aus SAP HANA in Azure-Blob
 Das Beispiel enthält die folgenden Data Factory-Entitäten:
 
-1. Einen verknüpften Dienst des Typs [SapHana](#sap-hana-linked-service).
-2. Einen verknüpften Dienst des Typs [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service)
-3. Ein [Eingabedataset](data-factory-create-datasets.md) des Typs [RelationalTable](#sap-hana-dataset)
-4. Ein [Ausgabedataset](data-factory-create-datasets.md) des Typs [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties)
-5. Eine [Pipeline](data-factory-create-pipelines.md) mit Kopieraktivität, die [RelationalSource](#sap-hana-source-in-copy-activity) und [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) verwendet
+1. Einen verknüpften Dienst des Typs [SapHana](#linked-service-properties).
+2. Einen verknüpften Dienst des Typs [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)
+3. Ein [Eingabedataset](data-factory-create-datasets.md) des Typs [RelationalTable](#dataset-properties)
+4. Ein [Ausgabedataset](data-factory-create-datasets.md) des Typs [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)
+5. Eine [Pipeline](data-factory-create-pipelines.md) mit Kopieraktivität, die [RelationalSource](#copy-activity-properties) und [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) verwendet
 
 Im Beispiel werden stündlich Daten aus einer SAP HANA-Instanz in ein Azure-Blob kopiert. Die bei diesen Beispielen verwendeten JSON-Eigenschaften werden in den Abschnitten beschrieben, die auf die Beispiele folgen.
 
@@ -226,35 +267,6 @@ Die Pipeline enthält eine Kopieraktivität, die für die Verwendung der Ein- un
 ```
 
 
-## <a name="sap-hana-linked-service"></a>Mit SAP HANA verknüpfter Dienst
-Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den mit SAP HANA verknüpften Dienst spezifisch sind.
-
-Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich
--------- | ----------- | -------------- | --------
-server | Der Name des Servers, auf dem sich die SAP HANA-Instanz befindet. Wenn Ihr Server einen benutzerdefinierten Port verwendet, geben Sie `server:port` an. | string | Ja
-authenticationType | Die Art der Authentifizierung. | string. „Basic“ oder „Windows“ | Ja 
-username | Der Name des Benutzers, der Zugriff auf den SAP-Server hat | string | Ja
-password | Kennwort für den Benutzer | string | Ja
-gatewayName | Der Name des Gateways, das der Data Factory-Dienst zum Herstellen einer Verbindung mit der lokalen SAP HANA-Instanz verwenden soll | string | Ja
-encryptedCredential | Die verschlüsselte Zeichenfolge mit Anmeldeinformationen | string | Nein
-
-## <a name="sap-hana-dataset"></a>SAP HANA-Dataset
-Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie „structure“, „availability“ und „policy“ des JSON-Codes eines Datasets sind bei allen Dataset-Typen (Azure SQL, Azure-Blob, Azure-Tabelle usw.) ähnlich.
-
-Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Es sind keine typspezifischen Eigenschaften, die für das SAP HANA-Dataset des Typs **RelationalTable** unterstützt werden. 
-
-
-## <a name="sap-hana-source-in-copy-activity"></a>SAP HANA-Quelle in Kopieraktivität
-Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md). Eigenschaften wie Name, Beschreibung, Eingabe- und Ausgabetabellen und Richtlinien sind für alle Arten von Aktivitäten verfügbar.
-
-Eigenschaften im Abschnitt **typeProperties** der Aktivität können dagegen je nach Aktivitätstyp variieren. Für die Kopieraktivität variieren die Eigenschaften je nach Art der Quellen und Senken.
-
-Wenn die Quelle bei der Kopieraktivität den Typ **RelationalSource** hat (zu dem SAP HANA gehört), sind im Abschnitt „typeProperties“ die folgenden Eigenschaften verfügbar:
-
-| Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
-| --- | --- | --- | --- |
-| query | Gibt die SQL-Abfrage an, mit der Daten aus der SAP HANA-Instanz gelesen werden. | SQL-Abfrage | Ja |
-
 ### <a name="type-mapping-for-sap-hana"></a>Typzuordnung für SAP HANA
 Wie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) beschrieben, führt die Kopieraktivität automatische Typkonvertierungen von Quelltypen in Senkentypen mithilfe des folgenden aus zwei Schritten bestehenden Ansatzes durch:
 
@@ -291,9 +303,11 @@ Es gibt einige bekannte Einschränkungen, wenn Daten aus SAP HANA kopiert werden
 - VARBINARY wird nicht unterstützt.
 - Gültige Datumsangaben liegen zwischen 1899/12/30 und 9999/12/31.
 
-[!INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
-[!INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
-[!INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
+## <a name="map-source-to-sink-columns"></a>Zuordnen von Quell- zur Senkenspalten
+Weitere Informationen zum Zuordnen von Spalten im Quelldataset zu Spalten im Senkendataset finden Sie unter [Zuordnen von Datasetspalten in Azure Data Factory](data-factory-map-columns.md).
+
+## <a name="repeatable-read-from-relational-sources"></a>Wiederholbare Lesevorgänge aus relationalen Quellen
+Beim Kopieren von Daten aus relationalen Datenspeichern müssen Sie die Wiederholbarkeit berücksichtigen, um unbeabsichtigte Ergebnisse zu vermeiden. Sie können einen Slice in Azure Data Factory manuell erneut ausführen. Sie können auch eine Wiederholungsrichtlinie für ein Dataset konfigurieren, sodass ein Slice erneut ausgeführt wird, wenn ein Fehler auftritt. Wenn ein Slice erneut ausgeführt wird, müssen Sie sicherstellen, dass dieselben Daten gelesen werden – egal wie oft ein Slice ausgeführt wird. Weitere Informationen finden Sie unter [Wiederholbare Lesevorgänge aus relationalen Quellen](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
 ## <a name="performance-and-tuning"></a>Leistung und Optimierung
 Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.

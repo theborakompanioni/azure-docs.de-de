@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/25/2017
 ms.author: abnarain
 translationtype: Human Translation
-ms.sourcegitcommit: 3d66640481d8e1f96d3061077f0c97da5fa6bf4e
-ms.openlocfilehash: a0ccdffa5347c4f3cda16ec75b75da3eb3199539
-ms.lasthandoff: 02/02/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: dfa78d1773afd0094ff98a5761a771101016ee13
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -130,20 +130,25 @@ Wenn Sie den Cursor auf der Taskleiste auf das Symbol oder die Benachrichtigung 
 ### <a name="ports-and-firewall"></a>Ports und Firewall
 Zwei Firewalls müssen berücksichtigt werden: Die **Unternehmensfirewall**, die auf dem zentralen Router des Unternehmens ausgeführt wird, und die **Windows-Firewall**, die als Daemon auf dem lokalen Computer konfiguriert ist, auf dem das Gateway installiert ist.  
 
-![Firewalls](./media/data-factory-data-management-gateway/firewalls.png)
+![Firewalls](./media/data-factory-data-management-gateway/firewalls2.png)
 
 Auf Ebene der Unternehmensfirewall müssen Sie die folgenden Domänen und ausgehenden Ports konfigurieren:
 
 | Domänennamen | Ports | Beschreibung |
 | --- | --- | --- |
-| *.servicebus.windows.net |443, 80 |Listener auf Service Bus Relay per TCP (443 für Access Control-Tokenbeschaffung erforderlich) |
-| *.servicebus.windows.net |9350-9354, 5671 |Optionales Service Bus Relay per TCP |
-| *.core.windows.net |443 |HTTPS |
-| *.clouddatahub.net |443 |HTTPS |
-| graph.windows.net |443 |HTTPS |
-| login.windows.net |443 |HTTPS |
+| *.servicebus.windows.net |443, 80 |Wird für die Kommunikation mit dem Back-End für den Datenverschiebungsdienst verwendet |
+| *.core.windows.net |443 |Wird für das gestaffelte Kopieren mit einem Azure-Blob (sofern konfiguriert) verwendet|
+| *frontend.clouddatahub.net |443 |Wird für die Kommunikation mit dem Back-End für den Datenverschiebungsdienst verwendet |
+
 
 Auf Ebene der Windows-Firewall sind diese ausgehenden Ports normalerweise aktiviert. Falls nicht, können Sie die Domänen und Ports auf dem Gatewaycomputer entsprechend konfigurieren.
+
+> [!NOTE]
+> 1. Basierend auf Ihrer Datenquelle und den Senken müssen unter Umständen der Whitelist Ihrer Unternehmens-/Windows-Firewall zusätzliche Domänen und ausgehende Ports hinzufügen.
+> 2. Für einige Clouddatenbanken (z.b. [Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-database-configure-firewall-settings), [Azure Data Lake](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-secure-data#set-ip-address-range-for-data-access) usw.) müssen Sie möglicherweise der Whitelist in der Firewallkonfiguration die IP-Adresse des Gatewaycomputers hinzufügen.
+>
+>
+
 
 #### <a name="copy-data-from-a-source-data-store-to-a-sink-data-store"></a>Kopieren von Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher
 Stellen Sie sicher, dass die Firewallregeln für die Unternehmensfirewall, die Windows-Firewall auf dem Gatewaycomputer und den Datenspeicher selbst richtig aktiviert sind. Indem Sie diese Regeln aktivieren, kann das Gateway sowohl mit der Quelle als auch mit der Senke erfolgreich eine Verbindung herstellen. Aktivieren Sie die Regeln für jeden Datenspeicher, der am Kopiervorgang beteiligt ist.
@@ -152,6 +157,12 @@ Führen Sie die folgenden Schritte aus, um z. B. Daten aus **einem lokalen Daten
 
 * Lassen Sie ausgehende **TCP**-Kommunikation an Port **1433** sowohl für die Windows-Firewall als auch die Unternehmensfirewall zu.
 * Konfigurieren Sie die Firewall der Azure SQL Server-Instanz, um die IP-Adresse des Gatewaycomputers zur Liste der zulässigen IP-Adressen hinzuzufügen.
+
+> [!NOTE]
+> Wenn Ihre Firewall den ausgehenden Port 1433 nicht zulässt, kann das Gateway nicht direkt auf Azure SQL zugreifen. In diesem Fall können Sie das [gestaffelte Kopieren](https://docs.microsoft.com/azure/data-factory/data-factory-copy-activity-performance#staged-copy) in Azure SQL-Datenbank oder Azure SQL Data Warehouse verwenden. Sie benötigen in einem solchen Szenario nur HTTPS (Port 443) für das Verschieben der Daten.
+>
+>
+
 
 ### <a name="proxy-server-considerations"></a>Proxyserver-Aspekte
 Wenn die Netzwerkumgebung Ihres Unternehmens einen Proxyserver für den Internetzugriff verwendet, konfigurieren Sie das Datenverwaltungsgateway mit den geeigneten Proxyeinstellungen. Sie können den Proxy während der anfänglichen Registrierungsphase festlegen.
@@ -186,7 +197,7 @@ Sie können den HTTP-Proxy im Konfigurations-Manager anzeigen und aktualisieren.
 >
 >
 
-### <a name="configure-proxy-server-settings"></a>Konfigurieren von Proxyservereinstellungen 
+### <a name="configure-proxy-server-settings"></a>Konfigurieren von Proxyservereinstellungen
 Wenn Sie die Einstellung **Systemproxy verwenden** für den HTTP-Proxy auswählen, verwendet das Gateway die Proxyeinstellungen in „diahost.exe.config“ und „diawp.exe.config“.  Wenn in „diahost.exe.config“ und „diawp.exe.config“ kein Proxy angegeben ist, stellt das Gateway die Verbindung mit den Clouddiensten nicht über einen Proxy, sondern direkt her. Das folgende Verfahren enthält Anweisungen für die Aktualisierung der Datei „diahost.exe.config“.  
 
 1. Erstellen Sie im Datei-Explorer eine sichere Kopie von „C:\Programme\Microsoft Data Management Gateway\2.0\Shared\diahost.exe.config“, um die Originaldatei zu sichern.
@@ -211,7 +222,7 @@ Wenn Sie die Einstellung **Systemproxy verwenden** für den HTTP-Proxy auswähle
 
 > [!IMPORTANT]
 > Vergessen Sie nicht, **beide** Dateien („diahost.exe.config“ und „diawp.exe.config“) zu konfigurieren.  
-     
+
 
 Zusätzlich zu den obigen Punkten müssen Sie auch sicherstellen, dass Microsoft Azure in der Whitelist Ihres Unternehmens aufgeführt ist. Sie können die Liste mit den gültigen Microsoft Azure-IP-Adressen im [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=41653)herunterladen.
 
@@ -260,12 +271,12 @@ Sie können das Feature für die automatische Aktualisierung wie folgt deaktivie
 1. Starten Sie Windows PowerShell auf dem Gatewaycomputer.
 2. Wechseln Sie in den Ordner „C:\Programme\Microsoft Data Management Gateway\2.0\PowerShellScript“.
 3. Führen Sie den folgenden Befehl aus, um das Feature für die automatische Aktualisierung zu deaktivieren.   
-    
+
     ```PowerShell
     .\GatewayAutoUpdateToggle.ps1  -off
     ```
 4. So aktivieren Sie das Feature wieder
-    
+
     ```PowerShell
     .\GatewayAutoUpdateToggle.ps1  -on  
     ```
@@ -367,8 +378,8 @@ Zum Verschlüsseln der Anmeldeinformationen im Data Factory-Editor gehen Sie wie
                 "connectionString": "data source=myserver;initial catalog=mydatabase;Integrated Security=False;EncryptedCredential=eyJDb25uZWN0aW9uU3R",
                 "gatewayName": "adftutorialgateway"
             }
-        }
-    }
+         }
+     }
     ```
 Wenn Sie auf das Portal auf einem Computer zugreifen, der sich vom Computer mit dem Gateway unterscheidet, müssen Sie sicherstellen, dass die Anwendung "Anmeldeinformations-Manager" eine Verbindung mit dem Gatewaycomputer herstellen kann. Falls die Anwendung den Computer mit dem Gateway nicht erreichen kann, können Sie keine Anmeldeinformationen für die Datenquelle festlegen und die Verbindung mit der Datenquelle nicht testen.  
 
@@ -387,7 +398,7 @@ Dieser Abschnitt beschreibt das Erstellen und Registrieren eines Gateways mit Az
 
 1. Starten Sie **Azure PowerShell** im Administratormodus.
 2. Melden Sie sich bei Ihrem Azure-Konto an, indem Sie den folgenden Befehl ausführen und Ihre Azure-Anmeldeinformationen eingeben.
-    
+
     ```PowerShell
     Login-AzureRmAccount
     ```
@@ -414,7 +425,7 @@ Dieser Abschnitt beschreibt das Erstellen und Registrieren eines Gateways mit Az
     Key               : ADF#00000000-0000-4fb8-a867-947877aef6cb@fda06d87-f446-43b1-9485-78af26b8bab0@4707262b-dc25-4fe5-881c-c8a7c3c569fe@wu#nfU4aBlq/heRyYFZ2Xt/CD+7i73PEO521Sj2AFOCmiI
     ```
 
-1. Wechseln Sie in Azure PowerShell in den Ordner **C:\Programme\Microsoft Data Management Gateway\2.0\PowerShellScript\**. Führen Sie **RegisterGateway.ps1** mit der lokalen Variablen **$Key** aus, wie im folgenden Befehl gezeigt. Dieses Skript registriert den auf dem Computer installierten Client-Agent bei dem logischen Gateway, das Sie zuvor erstellt haben.
+1. Wechseln Sie in Azure PowerShell in den Ordner **C:\Programme\Microsoft Data Management Gateway\2.0\PowerShellScript\**. Führen Sie**RegisterGateway.ps1**mit der lokalen Variablen**$Key** aus, wie im folgenden Befehl gezeigt. Dieses Skript registriert den auf dem Computer installierten Client-Agent bei dem logischen Gateway, das Sie zuvor erstellt haben.
 
     ```PowerShell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key
@@ -435,13 +446,13 @@ Dieser Abschnitt beschreibt das Erstellen und Registrieren eines Gateways mit Az
 Sie können ein Gateway mit dem **Remove-AzureRmDataFactoryGateway**-Cmdlet entfernen und die Beschreibung für das Gateway mithilfe der **Set-AzureRmDataFactoryGateway**-Cmdlets aktualisieren. Syntax und andere Details zu diesen Cmdlets finden Sie in der Data Factory-Cmdlet-Referenz.  
 
 ### <a name="list-gateways-using-powershell"></a>Auflisten von Gateways mit PowerShell
-    
+
 ```PowerShell
 Get-AzureRmDataFactoryGateway -DataFactoryName jasoncopyusingstoredprocedure -ResourceGroupName ADF_ResourceGroup
 ```
 
 ### <a name="remove-gateway-using-powershell"></a>Entfernen von Gateways mit PowerShell
-    
+
 ```PowerShell
 Remove-AzureRmDataFactoryGateway -Name JasonHDMG_byPSRemote -ResourceGroupName ADF_ResourceGroup -DataFactoryName jasoncopyusingstoredprocedure -Force
 ```

@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 03/08/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 74b354778e775146ed6384b50b4e21cfd5c75858
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 8b0417d131bc25225e777285b9e4bfbaa97aad8f
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -74,7 +74,7 @@ Zum Konfigurieren der Integration von GitHub in Azure AD müssen Sie GitHub aus 
 
     ![Anwendungen][3]
 
-4. Geben Sie im Suchfeld den Suchbegriff **Github.com** ein.
+4. Geben Sie im Suchfeld den Suchbegriff **GitHub.com** ein.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-github-tutorial/tutorial_github_search02.png)
 
@@ -92,11 +92,11 @@ Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure A
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei GitHub müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen eines GitHub-Testbenutzers](#creating-a-Github-test-user)**, um eine Entsprechung von Britta Simon in GitHub zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testing Single Sign-On](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+3. **[Erstellen eines GitHub-Testbenutzers](#creating-a-GitHub-test-user)**, um eine Entsprechung von Britta Simon in GitHub zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** – um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
 
@@ -214,7 +214,7 @@ In diesem Abschnitt wird im Azure-Verwaltungsportal eine Testbenutzerin namens B
 ### <a name="creating-a-github-test-user"></a>Erstellen eines GitHub-Testbenutzers
 
 Damit sich Azure AD-Benutzer bei GitHub anmelden können, müssen sie in GitHub bereitgestellt werden.  
-Im Fall von GitHub ist die Bereitstellung eine manuelle Aufgabe.
+Im Fall von GitHub wird die Bereitstellung manuell durchgeführt.
 
 **Führen Sie zum Bereitstellen von Benutzerkonten die folgenden Schritte aus:**
 
@@ -250,11 +250,11 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 **Führen Sie die folgenden Schritte aus, um die Zuweisung von Britta Simon zu GitHub durchzuführen:**
 
-1. Öffnen Sie im Azure-Verwaltungsportal die Anwendungsansicht, navigieren Sie dann zur Verzeichnisansicht, wechseln Sie zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
+1. Öffnen Sie im Azure-Verwaltungsportal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
 
     ![Benutzer zuweisen][201] 
 
-2. Wählen Sie in der Anwendungsliste den Eintrag **Github.com** aus.
+2. Wählen Sie in der Anwendungsliste den Eintrag **GitHub.com** aus.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-github-tutorial/tutorial_github_search_result021.png) 
 
@@ -301,3 +301,4 @@ Wenn Sie im Zugriffsbereich auf die GitHub-Kachel klicken, sollten Sie bei Ihrer
 [201]: ./media/active-directory-saas-github-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-github-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-github-tutorial/tutorial_general_203.png
+

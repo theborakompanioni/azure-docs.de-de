@@ -6,7 +6,7 @@ Seit der Einführung der benutzerdefinierten Skripterweiterung wird diese häufi
 Mithilfe von Azure Resource Manager-Vorlagen können Sie deklarativ die Azure IaaS-Infrastruktur in der Json-Sprache angeben, indem Sie die Abhängigkeiten zwischen Ressourcen definieren. Eine ausführliche Übersicht über Azure-Ressourcen-Manager-Vorlagen finden Sie in den folgenden Artikeln:
 
 * [Übersicht über Ressourcengruppen](../articles/azure-resource-manager/resource-group-overview.md)
-* [Bereitstellen von Vorlagen mit Azure PowerShell](../articles/virtual-machines/virtual-machines-windows-ps-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Bereitstellen von Vorlagen mit Azure PowerShell](../articles/virtual-machines/windows/ps-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ### <a name="prerequisites"></a>Voraussetzungen
 1. Laden Sie die Azure-Befehlszeilentools für Ihr Betriebssystem [hier](https://azure.microsoft.com/downloads/) herunter.

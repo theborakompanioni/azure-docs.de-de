@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren eines Azure Cloud Services-Projekt mit Visual Studio | Microsoft Docs
+title: Konfigurieren eines Azure-Clouddienstprojekts mit Visual Studio | Microsoft-Dokumentation
 description: "In diesem Artikel erfahren Sie, wie Sie ein Azure-Clouddienstprojekt abhängig von den Anforderungen für dieses Projekt in Visual Studio konfigurieren."
 services: visual-studio-online
 documentationcenter: na
@@ -12,54 +12,44 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 11/11/2016
+ms.date: 03/06/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 33d6b242c5562bd0aba4786ff70782c697ca7cd7
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 11a56418156a46e1fcef7b8d1c6003990000046f
+ms.lasthandoff: 03/27/2017
 
 
 ---
 # <a name="configure-an-azure-cloud-service-project-with-visual-studio"></a>Konfigurieren eines Azure-Clouddienstprojekts mit Visual Studio
 Sie können ein Azure-Clouddienstprojekt abhängig von den Anforderungen für dieses Projekt konfigurieren. Sie können für die folgenden Kategorien Eigenschaften für das Projekt festlegen:
 
-* **Veröffentlichen eines Clouddiensts in Azure**
-  
-  Sie können eine Eigenschaft festlegen, um sicherzustellen, dass ein bereits in Azure bereitgestellter Clouddienst nicht versehentlich gelöscht wird.
-* **Ausführen oder Debuggen eines Clouddiensts auf dem lokalen Computer**
-  
-  Sie können eine Dienstkonfiguration auswählen, mit der angegeben wird, ob der Azure-Speicheremulator gestartet werden soll.
-* **Überprüfen eines Clouddienstpakets bei der Erstellung**
-  
-  Sie können festlegen, dass alle Warnungen als Fehler behandelt werden, damit sichergestellt ist, dass das Clouddienstpaket ohne Probleme bereitgestellt wird. Dies reduziert die Wartezeit, wenn Sie nach der Bereitstellung feststellen, dass ein Fehler aufgetreten ist.
+- **Veröffentlichen eines Clouddiensts in Azure**: Sie können eine Eigenschaft festlegen, um sicherzustellen, dass ein bereits in Azure bereitgestellter Clouddienst nicht versehentlich gelöscht wird.
+- **Ausführen oder Debuggen eines Clouddiensts auf dem lokalen Computer**: Sie können die zu verwendende Dienstkonfiguration auswählen und angeben, ob der Azure-Speicheremulator gestartet werden soll.
+- **Überprüfen eines Clouddienstpakets bei der Erstellung**: Sie können festlegen, dass alle Warnungen als Fehler behandelt werden, um zu gewährleisten, dass sich das Clouddienstpaket ohne Probleme bereitstellen lässt. 
 
-Die folgende Abbildung zeigt das Auswählen einer Konfiguration, die beim lokalen Ausführen oder Debuggen des Clouddiensts verwendet wird. Sie können alle benötigten Projekteigenschaften über dieses Fenster festlegen, wie in der Abbildung dargestellt.
+## <a name="steps-to-configure-an-azure-cloud-service-project"></a>Schritte zum Konfigurieren eines Azure-Clouddienstprojekts
+1. Öffnen oder Erstellen eines Clouddienstprojekts in Visual Studio
 
-![Konfigurieren eines Microsoft Azure-Projekts](./media/vs-azure-tools-configuring-an-azure-project/IC713462.png)
-
-## <a name="to-configure-an-azure-cloud-service-project"></a>So konfigurieren Sie ein Azure-Clouddienstprojekt
-1. Öffnen Sie zum Konfigurieren eines Clouddienstprojekts im **Projektmappen-Explorer** das Kontextmenü für das Clouddienstprojekt, und wählen Sie dann **Eigenschaften** aus.
+1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie im Kontextmenü die Option **Eigenschaften** aus.
    
-   Eine Seite mit dem Namen des Clouddienstprojekts wird im Visual Studio-Editor angezeigt.
-2. Öffnen Sie die Registerkarte **Entwicklung** .
-3. Um sicherzustellen, dass Sie nicht versehentlich eine vorhandene Bereitstellung in Azure löschen, wählen Sie in der Aufforderung vor der Liste zum Löschen einer vorhandenen Bereitstellung **True**aus.
-4. Wählen Sie zum Auswählen der Dienstkonfiguration, die beim lokalen Ausführen oder Debuggen des Clouddiensts verwendet werden soll, in der Liste **Dienstkonfiguration** die Dienstkonfiguration aus.
-   
-   > [!NOTE]
-   > Wenn Sie eine zu verwendende Dienstkonfiguration erstellen möchten, finden Sie weitere Informationen unter "Vorgehensweise: Verwalten von Dienstkonfigurationen und Profilen". Wenn Sie eine Dienstkonfiguration für eine Rolle ändern möchten, finden Sie weitere Informationen unter [Konfigurieren der Rollen für einen Azure-Clouddienst mit Visual Studio](vs-azure-tools-configure-roles-for-cloud-service.md).
-   > 
-   > 
-5. Wählen Sie zum Starten des Azure-Speicheremulators beim lokalen Ausführen oder Debuggen des Clouddiensts unter **Azure-Speicheremulator starten** die Option **True** aus.
-6. Um sicherzustellen, dass die Veröffentlichung bei Paketvalidierungsfehlern nicht möglich ist, wählen Sie unter **Warnungen als Fehler behandeln** die Option **True** aus.
-7. Um sicherzustellen, dass die Webrolle bei jedem lokalen Start in IIS Express den gleichen Port verwendet, wählen Sie unter **Webprojektports verwenden** die Option **True** aus. Wenn ein bestimmter Port für ein bestimmtes Webprojekt verwendet werden soll, öffnen Sie das Kontextmenü für das Webprojekt, wählen Sie die Registerkarte **Eigenschaften** und danach die Registerkarte **Web** aus, und ändern Sie die Portnummer in der Einstellung **Projekt-URL** im Abschnitt **IIS Express**. Geben Sie beispielsweise `http://localhost:14020` als Projekt-URL ein.
-8. Wählen Sie zum Speichern der Änderungen, die Sie an den Eigenschaften des Clouddienstprojekts vorgenommen haben, auf der Symbolleiste die Schaltfläche **Speichern** aus.
+1. Wählen Sie auf der Eigenschaftenseite des Projekts die Registerkarte **Entwicklung** aus.
+
+    ![Menü „Projekteigenschaften“](./media/vs-azure-tools-configuring-an-azure-project/solution-explorer-project-properties-menu.png)
+
+1. Legen Sie **Eingabeaufforderung vor dem Löschen einer vorhandenen Bereitstellung** auf **True** fest. Mit dieser Einstellung können Sie gewährleisten, dass eine vorhandene Bereitstellung in Azure nicht versehentlich gelöscht wird.
+
+1. Wählen Sie die gewünschte **Dienstkonfiguration** aus, die beim lokalen Ausführen oder Debuggen des Clouddiensts verwendet werden soll. Weitere Informationen zum Ändern einer Dienstkonfiguration für eine Rolle finden Sie unter [Konfigurieren der Rollen für einen Azure-Clouddienst mit Visual Studio](./vs-azure-tools-configure-roles-for-cloud-service.md).
+
+1. Legen Sie die Einstellung **Azure-Speicheremulator starten** auf **True** fest, um beim lokalen Ausführen oder Debuggen Ihres Clouddiensts den Azure-Speicheremulator zu starten.
+
+1. Um sicherzustellen, dass bei Paketvalidierungsfehlern keine Veröffentlichung möglich ist, legen Sie **Warnungen als Fehler behandeln** als **True** fest.
+
+1. Legen Sie **Webprojektports verwenden** auf **True** fest, um sicherzustellen, dass die Webrolle bei jedem lokalen Start in IIS Express den gleichen Port verwendet.
+
+1. Wählen Sie auf der Symbolleiste von Visual Studio **Speichern** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zum Konfigurieren von Azure-Clouddienstprojekten in Visual Studio finden Sie im Artikel zum [Konfigurieren Ihres Azure-Projekts mit mehreren Dienstkonfigurationen](vs-azure-tools-multiple-services-project-configurations.md).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
+- [Konfigurieren eines Azure-Projekts mit mehreren Dienstkonfigurationen](vs-azure-tools-multiple-services-project-configurations.md)
 
 

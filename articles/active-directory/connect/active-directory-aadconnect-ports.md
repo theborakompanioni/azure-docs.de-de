@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 935246ad590af0dcdb6d52257a94169f94dd66e5
-ms.openlocfilehash: 3ff7256578cffd30ae9b75ead2dd7f08babca171
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: ee4a47cf53898803e0080d3f9d00cf7617fe4ce8
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -33,10 +33,10 @@ In dieser Tabelle werden die Ports und Protokolle beschrieben, die für die Komm
 | --- | --- | --- |
 | DNS |53 (TCP/UDP) |DNS-Suchen in der Zielgesamtstruktur |
 | Kerberos |88 (TCP/UDP) |Kerberos-Authentifizierung für die AD-Gesamtstruktur |
-| MS-RPC |135 (TCP/UDP) |Wird bei der anfänglichen Konfiguration des Azure AD Connect-Assistenten beim Binden an die AD-Gesamtstruktur verwendet |
+| MS-RPC |135 (TCP/UDP) |Wird bei der anfänglichen Konfiguration des Azure AD Connect-Assistenten beim Binden an die AD-Gesamtstruktur sowie bei der Kennwortsynchronisierung verwendet |
 | LDAP |389 (TCP/UDP) |Wird zum Importieren von Daten aus AD verwendet. Daten werden per Kerberos Sign & Seal verschlüsselt. |
 | LDAP/SSL |636 (TCP/UDP) |Wird zum Importieren von Daten aus AD verwendet. Die Datenübertragung ist signiert und verschlüsselt. Gilt nur bei Verwendung von SSL. |
-| RPC |49152- 65535 (Random High RPC-Port) (TCP/UDP) |Wird bei der anfänglichen Konfiguration von Azure AD Connect beim Binden an AD-Gesamtstrukturen verwendet Weitere Informationen finden Sie unter [KB929851](https://support.microsoft.com/kb/929851), [KB832017](https://support.microsoft.com/kb/832017) und [KB224196](https://support.microsoft.com/kb/224196). |
+| RPC |49152- 65535 (Random High RPC-Port) (TCP/UDP) |Wird bei der anfänglichen Konfiguration von Azure AD Connect beim Binden an die AD-Gesamtstrukturen und bei der Kennwortsynchronisierung verwendet. Weitere Informationen finden Sie unter [KB929851](https://support.microsoft.com/kb/929851), [KB832017](https://support.microsoft.com/kb/832017) und [KB224196](https://support.microsoft.com/kb/224196). |
 
 ## <a name="table-2---azure-ad-connect-and-azure-ad"></a>Tabelle 2: Azure AD Connect und Azure AD
 In dieser Tabelle werden die Ports und Protokolle beschrieben, die für die Kommunikation zwischen dem Azure AD Connect-Server und Azure AD erforderlich sind.
@@ -80,7 +80,7 @@ In dieser folgenden Tabelle werden die Ports und Protokolle beschrieben, die fü
 | --- | --- | ---
 |HTTP|80|Ermöglicht ausgehenden HTTP-Verkehr für die Sicherheitsüberprüfung, z.B. SSL.
 |HTTPS|443|    Ermöglicht die Benutzerauthentifizierung für Azure AD.
-|HTTPS|10100 -&10120;|    Ermöglicht Rückantworten vom Connector an Azure AD. 
+|HTTPS|10100 - 10120|    Ermöglicht Rückantworten vom Connector an Azure AD. 
 |Azure-Servicebus|9352, 5671|    Ermöglicht eine Kommunikation zwischen Connector und Azure-Dienst für eingehende Anforderungen.
 |HTTPS|9350|    Optional; verbessert die Leistung für eingehende Anforderungen.
 |HTTPS|8080/443|    Aktiviert die Bootstrapsequenz des Connectors sowie eine automatische Aktualisierung des Connectors.
@@ -104,7 +104,7 @@ In dieser Tabelle werden die folgenden ausgehenden Ports und Protokolle beschrie
 | HTTPS |443 (TCP/UDP) |Ausgehend |
 | Azure-Servicebus |5671 (TCP/UDP) |Ausgehend |
 
-### <a name="7b---endpoints-for-azure-ad-connect-health-agent-for-ad-fssync-and-azure-ad"></a>Tabelle&7;b: Endpunkte für Azure AD Connect Health-Agent für (AD FS/Sync) und Azure AD
+### <a name="7b---endpoints-for-azure-ad-connect-health-agent-for-ad-fssync-and-azure-ad"></a>Tabelle 7b: Endpunkte für Azure AD Connect Health-Agent für (AD FS/Sync) und Azure AD
 Eine Liste mit Endpunkten finden Sie im [Abschnitt mit den Anforderungen für den Azure AD Connect Health-Agent](../connect-health/active-directory-aadconnect-health-agent-install.md#requirements).
 
 

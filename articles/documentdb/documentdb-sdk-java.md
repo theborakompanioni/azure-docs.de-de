@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 03/16/2017
 ms.author: khdang
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 50f8f6a2d64959a1981f95bfe821a2a79f6cafc6
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 6e558d2b651b9c50bafa5814a18ad360f7beb2f0
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -51,6 +51,11 @@ ms.lasthandoff: 03/07/2017
 </table></br>
 
 ## <a name="release-notes"></a>Versionsinformationen
+
+### <a name="a-name11001100httpmvnrepositorycomartifactcommicrosoftazureazure-documentdb1100"></a><a name="1.10.0"/>[1.10.0](http://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb/1.10.0)
+* Es wurde eine Unterstützung für partitionierte Sammlungen mit wenigen Anforderungseinheiten (2.500 RU/s) und für die Skalierung in Schritten von 100 RU/s hinzugefügt.
+* Es wurde ein Fehler in der nativen Assembly behoben, der bei einigen Abfragen die NullRef-Ausnahme ausgelöst hat.
+
 ### <a name="a-name196196httpmvnrepositorycomartifactcommicrosoftazureazure-documentdb196"></a><a name="1.9.6"/>[1.9.6](http://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb/1.9.6)
 * Ein Fehler in der Abfragemodulkonfiguration wurde behoben, der Ausnahmen bei Abfragen im Gatewaymodus verursachen konnte.
 * Eine Anzahl von Fehlern im Sitzungscontainer wurde behoben, die eine Ausnahme „Besitzerressource wurde nicht gefunden“ für Anforderungen direkt nach dem Erstellen der Sammlung verursachen konnten.
@@ -156,6 +161,7 @@ Anforderungen von DocumentDB mithilfe eines deaktivierten SDK werden vom Dienst 
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [1.10.0](#1.10.0) |11. März 2017 |--- |
 | [1.9.6](#1.9.6) |21. Februar 2017 |--- |
 | [1.9.5](#1.9.5) |31. Januar 2017 |--- |
 | [1.9.4](#1.9.4) |24. November 2016 |--- |

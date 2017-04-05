@@ -12,31 +12,33 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/04/2017
+ms.date: 03/24/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 64a7bfeefd8282f854aa5b143a1708dfbe02ff42
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
+ms.openlocfilehash: 75a2fa16a7e33cf85746538e120ca90a389b05c5
+ms.lasthandoff: 03/24/2017
 
 
 ---
 # <a name="understand-identity-registry-in-your-iot-hub"></a>Verstehen der Identitätsregistrierung in IoT Hub
+
 ## <a name="overview"></a>Übersicht
+
 Jeder IoT-Hub verfügt über eine Identitätsregistrierung, in der Informationen zu den Geräten gespeichert werden, die eine Verbindung mit dem IoT-Hub herstellen dürfen. Damit ein Gerät eine Verbindung mit einem IoT-Hub herstellen kann, muss in der Identitätsregistrierung des IoT-Hubs ein Eintrag für dieses Gerät vorhanden sein. Ein Gerät muss sich beim IoT-Hub zudem mit Anmeldeinformationen authentifizieren, die in der Identitätsregistrierung gespeichert sind.
 
 Ganz allgemein handelt es sich bei der Identitätsregistrierung um eine REST-fähige Sammlung von Identitätsressourcen. Wenn Sie der Identitätsregistrierung einen Eintrag hinzufügen, erstellt IoT Hub im Dienst eine Gruppe gerätebezogener Ressourcen, wie z.B. die Warteschlange laufender Cloud-zu-Gerät-Nachrichten.
 
 ### <a name="when-to-use"></a>Einsatzgebiete
+
 Verwenden Sie die Identitätsregistrierung, wenn Sie Geräte bereitstellen möchten, die eine Verbindung mit Ihrem IoT-Hub herstellen, und wenn Sie den gerätespezifischen Zugriff auf die geräteseitigen Endpunkte Ihres Hubs steuern möchten.
 
 > [!NOTE]
 > Die Identitätsregistrierung enthält keine anwendungsspezifischen Metadaten.
-> 
-> 
 
 ## <a name="identity-registry-operations"></a>Identitätsregistrierungsvorgänge
+
 Die IoT Hub-Identitätsregistrierung ermöglicht folgende Vorgänge:
 
 * Erstellen einer Geräteidentität
@@ -51,8 +53,6 @@ Alle diese Vorgänge erlauben die Verwendung von optimistischer Nebenläufigkeit
 
 > [!IMPORTANT]
 > Die einzige Möglichkeit zum Abrufen aller Identitäten in der Identitätsregistrierung eines Hubs besteht in der Verwendung der Funktion [Export][lnk-export].
-> 
-> 
 
 Für IoT Hub-Identitätsregistrierungen gilt Folgendes:
 
@@ -64,16 +64,16 @@ Eine IoT-Lösung verfügt in der Regel über einen lösungsspezifischen Speicher
 
 > [!IMPORTANT]
 > Verwenden Sie die Identitätsregistrierung nur für die Geräteverwaltung und -bereitstellung. Vorgänge mit hohem Durchsatz zur Laufzeit dürfen nicht von Vorgängen in der Identitätsregistrierung abhängen. Das Überprüfen des Verbindungsstatus eines Geräts vor dem Senden eines Befehls ist z. B. kein unterstütztes Muster. Überprüfen Sie die [Drosselungsraten][lnk-quotas] für die Identitätsregistrierung und das Muster des [Gerätetakts][lnk-guidance-heartbeat].
-> 
-> 
 
 ## <a name="disable-devices"></a>Deaktivieren von Geräten
+
 Sie können Geräte deaktivieren, indem Sie die **status**-Eigenschaft für eine Identität in der Identitätsregistrierung aktualisieren. Typischerweise wird diese Eigenschaft in zwei Szenarien verwendet:
 
 * Während eines Vorgangs zur Bereitstellungsorchestrierung. Weitere Informationen finden Sie unter [Gerätebereitstellung][lnk-guidance-provisioning].
 * Wenn aus einem beliebigen Grund die Sicherheit eines Geräts als gefährdet eingestuft oder das Gerät nicht mehr als autorisiert betrachtet wird.
 
 ## <a name="import-and-export-device-identities"></a>Importieren und Exportieren von Geräteidentitäten
+
 Sie können einen Massenexport von Geräteidentitäten aus der Identitätsregistrierung eines IoT-Hubs durchführen. Hierbei werden asynchrone Vorgänge im [Endpunkt des IoT Hub-Ressourcenanbieters][lnk-endpoints] verwendet. Exportvorgänge sind Aufträge mit langer Ausführungszeit, die einen vom Kunden bereitgestellten Blobcontainer zum Speichern von Geräteidentitätsdaten verwenden, die aus der Identitätsregistrierung gelesen werden.
 
 Sie können einen Massenimport von Geräteidentitäten in die Identitätsregistrierung eines IoT-Hubs durchführen. Hierbei werden asynchrone Vorgänge im [Endpunkt des IoT Hub-Ressourcenanbieters][lnk-endpoints] verwendet. Importvorgänge sind Aufträge mit langer Ausführungszeit, die Daten in einem vom Kunden bereitgestellten Blobcontainer verwenden, um Geräteidentitätsdaten in die Identitätsregistrierung zu schreiben.
@@ -82,11 +82,13 @@ Sie können einen Massenimport von Geräteidentitäten in die Identitätsregistr
 * Weitere Informationen zum Ausführen von Import- und Exportaufträgen finden Sie unter [Massenverwaltung von IoT Hub-Geräte-Identitäten][lnk-bulk-identity].
 
 ## <a name="device-provisioning"></a>Gerätebereitstellung
+
 Die Gerätedaten, die von einer bestimmten IoT-Lösung gespeichert werden, richten sich nach den jeweiligen Anforderungen der Lösung. Von einer Lösung müssen aber mindestens die Geräteidentitäten und Authentifizierungsschlüssel gespeichert werden. Azure IoT Hub enthält eine Identitätsregistrierung, die Werte für jedes Gerät speichern kann, z.B. IDs, Authentifizierungsschlüssel und Statuscodes. Eine Lösung kann andere Azure-Dienste wie Azure Table Storage, Azure Blob Storage oder Azure DocumentDB nutzen, um zusätzliche Gerätedaten zu speichern.
 
 *Gerätebereitstellung* ist der Prozess des Hinzufügens der ersten Gerätedaten zu den Speichern in Ihrer Lösung. Damit ein neues Gerät eine Verbindung mit Ihrem Hub herstellen kann, müssen Sie der IoT Hub-Identitätsregistrierung eine neue Geräte-ID und Schlüssel hinzufügen. Im Rahmen des Bereitstellungsprozesses müssen Sie unter Umständen gerätespezifische Daten in anderen Lösungsspeichern initialisieren.
 
 ## <a name="device-heartbeat"></a>Gerätetakt
+
 Die IoT Hub-Identitätsregistrierung enthält das Feld **connectionState**. Verwenden Sie das Feld **connectionState** nur bei der Entwicklung und beim Debuggen. IoT-Lösungen sollten das Feld zur Laufzeit nicht abfragen (um beispielsweise eine Geräteverbindung zu prüfen und dann zu bestimmen, ob eine C2D-Nachricht oder eine SMS gesendet werden soll).
 
 Wenn Ihre IoT-Lösung wissen muss, ob ein Gerät verbunden ist (entweder zur Laufzeit oder mit höherer Genauigkeit als von der **connectionState**-Eigenschaft bereitgestellt), sollten Sie das *Taktmuster* implementieren.
@@ -96,14 +98,14 @@ Beim Taktmuster sendet das Gerät D2C-Nachrichten mindestens einmal pro festgele
 Eine komplexere Implementierung kann die Informationen aus der [Vorgangsüberwachung][lnk-devguide-opmon] enthalten, um Geräte zu ermitteln, die erfolglos versuchen, eine Verbindung herzustellen oder zu kommunizieren. Wenn Sie das Taktmuster implementieren, informieren Sie sich über [IoT Hub-Kontingente und -Drosselungen][lnk-quotas].
 
 > [!NOTE]
-> Wenn für eine IoT-Lösung der Geräteverbindungsstatus ausschließlich dazu benötigt wird, um zu bestimmen, ob C2D-Nachrichten gesendet werden müssen, und wenn Nachrichten nicht an große Gruppen von Geräten übertragen werden, sollten Sie in Betracht ziehen, eine kurze Ablaufzeit zu verwenden. Dieses Muster erzielt dasselbe Ergebnis wie beim Aufrechterhalten der Registrierung des Geräteverbindungsstatus mit dem Taktmuster, dies jedoch effizienter. Es ist auch durch die Anforderung von Nachrichtenbestätigungen möglich, vom IoT Hub darüber benachrichtigt zu werden, von welchen Geräten Nachrichten empfangen werden können und welche nicht online oder ausgefallen sind.
-> 
-> 
+> Wenn für eine IoT-Lösung der Geräteverbindungsstatus ausschließlich dazu benötigt wird, um zu bestimmen, ob C2D-Nachrichten gesendet werden müssen, und wenn Nachrichten nicht an große Gruppen von Geräten übertragen werden, sollten Sie die Verwendung einer kurzen Ablaufzeit in Betracht ziehen. Dieses Muster erzielt dasselbe Ergebnis wie beim Aufrechterhalten der Registrierung des Geräteverbindungsstatus mit dem Taktmuster, dies jedoch effizienter. Es ist auch durch die Anforderung von Nachrichtenbestätigungen möglich, vom IoT Hub darüber benachrichtigt zu werden, von welchen Geräten Nachrichten empfangen werden können und welche nicht online oder ausgefallen sind.
 
 ## <a name="reference-topics"></a>Referenzthemen:
+
 Die folgenden Referenzthemen enthalten weitere Informationen zur Verwendung der Identitätsregistrierung.
 
 ## <a name="device-identity-properties"></a>Geräteidentitätseigenschaften
+
 Geräteidentitäten werden als JSON-Dokumente mit den folgenden Eigenschaften dargestellt:
 
 | Eigenschaft | Options | Beschreibung |
@@ -122,10 +124,9 @@ Geräteidentitäten werden als JSON-Dokumente mit den folgenden Eigenschaften da
 
 > [!NOTE]
 > Der Verbindungsstatus kann nur den Status der Verbindung aus Sicht von IoT Hub widerspiegeln. Aktualisierungen dieser Statusanzeige können sich je nach Netzwerkbedingungen und -konfigurationen verzögern.
-> 
-> 
 
 ## <a name="additional-reference-material"></a>Weiteres Referenzmaterial
+
 Weitere Referenzthemen im IoT Hub-Entwicklerhandbuch:
 
 * Unter [IoT Hub-Endpunkte][lnk-endpoints] werden die verschiedenen Endpunkte beschrieben, die jeder IoT-Hub für Laufzeit- und Verwaltungsvorgänge bereitstellt.
@@ -135,6 +136,7 @@ Weitere Referenzthemen im IoT Hub-Entwicklerhandbuch:
 * [IoT Hub-MQTT-Unterstützung][lnk-devguide-mqtt] enthält weitere Informationen zur Unterstützung für das MQTT-Protokoll in IoT Hub.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Nachdem Sie nun mit der Verwendung der IoT Hub-Identitätsregistrierung vertraut sind, sind möglicherweise die folgenden Themen im IoT Hub-Entwicklerhandbuch für Sie interessant:
 
 * [Verwalten des Zugriffs auf IoT Hub][lnk-devguide-security]

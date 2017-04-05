@@ -27,7 +27,7 @@ ms.lasthandoff: 03/30/2017
 
 Dieses PowerShell-Beispielskript erstellt zwei Pools für elastische Datenbanken, verschiebt eine Datenbank aus einem Pool in einen anderen und dann eine Datenbank aus einem Pool auf eine Einzeldatenbank-Leistungsstufe. 
 
-[!INCLUDE [sample-cli-install](../../../includes/sample-powershell-install-no-ssh.md)]
+[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ## <a name="sample-script"></a>Beispielskript
 

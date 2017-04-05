@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/21/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 0469880325b907065b95f94f62ab76d252c0eda5
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 0cde1f36af2d41697fa956c62cc882e5429707e8
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -130,10 +130,10 @@ Die Datei „project.json“ enthält die Abhängigkeiten. Hier sehen Sie ein Be
 
 Dies ist der C#-Code für Ihre Funktion.  Die unten definierte Funktion überwacht einen Speicherkontocontainer mit dem Namen **input** (so wie im Pfad angegeben) für neue MP4-Dateien. Sobald eine Datei in den Speichercontainer abgelegt wird, führt der BLOB-Trigger die Funktion aus.
     
-Das Beispiel in diesem Abschnitt veranschaulicht,  
+Das in diesem Abschnitt definierte Beispiel veranschaulicht Folgendes: 
 
-1. wie Sie ein Medienobjekt in einem Media Services-Konto erfassen (durch Kopieren eines BLOBs in ein AMS-Medienobjekt) und  
-2. wie Sie einen Codierungsauftrag mit der Voreinstellung „Adaptive Streaming“ von Media Encoder Standard senden.
+1. Erfassen eines Medienobjekts in einem Media Services-Konto (durch Kopieren eines Blobs in ein AMS-Medienobjekt) und 
+2. Übermitteln eines Codierungsauftrags, der die Voreinstellung „Adaptives Streaming“ von Media Encoder Standard verwendet
 
 In der Praxis möchten Sie wahrscheinlich den Auftragsstatus nachverfolgen und Ihr codiertes Medienobjekt dann veröffentlichen. Weitere Informationen finden Sie unter [Verwenden von Azure-Webhooks zum Überwachen von Media Services-Auftragsbenachrichtigungen](media-services-dotnet-check-job-progress-with-webhooks.md). Weitere Beispiele finden Sie unter [Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration).  
 
@@ -339,7 +339,7 @@ Um die Funktion zu testen, müssen Sie eine MP4-Datei in den **input**-Container
 
 Nun können Sie mit der Entwicklung einer Mediendienste-Anwendung beginnen. 
  
-Weitere Details und umfassende Beispiele/Lösungen zur Verwendung von Azure Functions und Logic Apps mit Azure Media Services zum Erstellen von benutzerdefinierten Inhaltserstellungsworkflows finden Sie unter [Media Services .NET Functions Integraiton Sample on Github](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) (Beispiel zur Integration von Media Services .NET-Funktionen in Github).
+Weitere Details und umfassende Beispiele/Lösungen zur Verwendung von Azure Functions und Logic Apps mit Azure Media Services zum Erstellen von benutzerdefinierten Inhaltserstellungsworkflows finden Sie unter [Media Services .NET Functions Integraiton Sample on GitHub](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) (Beispiel zur Integration von Media Services .NET-Funktionen in GitHub).
 
 Lesen Sie auch [Verwenden von Azure-Webhooks zum Überwachen von Media Services-Auftragsbenachrichtigungen mit .NET](media-services-dotnet-check-job-progress-with-webhooks.md). 
 

@@ -17,9 +17,9 @@ ms.workload: big-data
 ms.date: 02/08/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ecc141c9afa46f23d31de4356068ef4f98a92aa
-ms.openlocfilehash: 79e04b1569f6e3ca221b673ebe4eb9825d89abe1
-ms.lasthandoff: 02/10/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: e696906adf604ebdb665a7a29fd1bba25095e842
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -55,13 +55,7 @@ Stellen Sie mithilfe des SSH-Befehls eine Verbindung zum vollqualifizierten Dom�
 
 **Wenn Sie beim Erstellen des HDInsight-Clusters ein Kennwort für die SSH-Authentifizierung** angegeben haben, müssen Sie nach der entsprechenden Aufforderung das Kennwort angeben.
 
-Weitere Informationen zur Verwendung von SSH mit HDInsight finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, OS X, Unix oder Bash unter Windows 10](hdinsight-hadoop-linux-use-ssh-unix.md).
-
-### <a name="putty-windows-clients"></a>PuTTY (Windows-Clients)
-
-Ältere Windows-Versionen bieten keinen integrierten SSH-Client. Wir empfehlen die Verwendung von **PuTTY**. Sie können das Programm unter [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) herunterladen.
-
-Weitere Informationen zum Verwenden von PuTTY finden Sie unter [Verwenden von SSH (PuTTY) mit Linux-basiertem Hadoop in HDInsight unter Windows ](hdinsight-hadoop-linux-use-ssh-windows.md).
+Weitere Informationen zum Verwenden von SSH mit HDInsight finden Sie unter [Verwenden von SSH mit HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a id="hadoop"></a>Verwenden von Hadoop-Befehlen
 

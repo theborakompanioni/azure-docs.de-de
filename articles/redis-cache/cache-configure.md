@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 03/08/2017
+ms.date: 03/27/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: d5633ffdaba2fa881c2c42361860048cd478a502
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: fb9d9d06eb746e720a17d87d7ab45c29c6543e8f
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -75,7 +75,7 @@ Sie können die folgenden Einstellungen über das **Ressourcenmenü** anzeigen u
 
 ### <a name="activity-log"></a>Aktivitätsprotokoll
 
-Klicken Sie auf **Aktivitätsprotokoll** , um in Ihrem Cache ausgeführte Aktionen anzuzeigen. Sie können auch filtern, um diese Ansicht zum Einbeziehen anderer Ressourcen zu erweitern. Weitere Informationen zum Arbeiten mit Überwachungsprotokollen finden Sie unter [Anzeigen von Ereignissen und Überwachungsprotokollen](../monitoring-and-diagnostics/insights-debugging-with-events.md) und [Überwachen von Vorgängen mit Resource Manager](../azure-resource-manager/resource-group-audit.md). Weitere Informationen zum Überwachen von Azure Redis Cache-Ereignissen finden Sie unter [Vorgänge und Warnungen](cache-how-to-monitor.md#operations-and-alerts).
+Klicken Sie auf **Aktivitätsprotokoll** , um in Ihrem Cache ausgeführte Aktionen anzuzeigen. Sie können auch filtern, um diese Ansicht zum Einbeziehen anderer Ressourcen zu erweitern. Weitere Informationen zur Arbeit mit Überwachungsprotokollen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](../azure-resource-manager/resource-group-audit.md). Weitere Informationen zum Überwachen von Azure Redis Cache-Ereignissen finden Sie unter [Vorgänge und Warnungen](cache-how-to-monitor.md#operations-and-alerts).
 
 ### <a name="access-control-iam"></a>Zugriffssteuerung (IAM)
 

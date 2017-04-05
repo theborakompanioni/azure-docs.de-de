@@ -12,12 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 3/1/2017
+ms.date: 3/27/2017
 ms.author: mcoskun
 translationtype: Human Translation
-ms.sourcegitcommit: 4952dfded6ec5c4512a61cb18d4c754bf001dade
-ms.openlocfilehash: b5fab7cf91493d477cafd66e27e346ea3ad02f04
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: 6ac47fe040793f2ac4ff596880675df0b331143e
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -146,6 +146,7 @@ Wenn das Replikat neu gestartet werden muss, stellen zuverlässige Auflistungen 
 * Erstellen Sie keine Transaktion innerhalb der `using` -Anweisung einer anderen Transaktion, da dies zu Deadlocks führen kann.
 * Stellen Sie sicher, dass Ihre `IComparable<TKey>` -Implementierung richtig ist. Dies ist erforderlich, damit das System Prüfpunkte zusammenfügen kann.
 * Verwenden Sie Aktualisierungssperren beim Lesen eines Elements, das aktualisiert werden soll, um eine bestimmte Klasse von Deadlocks zu vermeiden.
+* Sie sollten auch Erwägung ziehen, Ihre Elemente (z.B. TKey + TValue für das zuverlässige Wörterbuch) unter 80 KB zu halten: je kleiner, desto besser. Damit verringern Sie die Nutzung großer Objektheaps sowie die Anforderungen an Datenträger und Netzwerk-E/A. In vielen Fällen werden damit auch die Replikation doppelter Daten reduziert, wenn nur ein kleiner Teil des Werts aktualisiert wird. Um dies im zuverlässigen Wörterbuch zu erreichen, werden häufig einzelne Zeilen in mehrere Zeilen aufgeteilt. 
 * Sie sollten zwecks Notfallwiederherstellung die Verwendung der Funktionen „Backup“ und „Wiederherstellung“ in Betracht ziehen.
 * Verwenden Sie Vorgänge mit einer einzigen Entität und Vorgänge mit mehreren Entitäten (z.B. `GetCountAsync` und `CreateEnumerableAsync`) aufgrund der unterschiedlichen Isolationsstufen nicht in der gleichen Transaktion.
 * Behandeln Sie „InvalidOperationException“. Benutzertransaktionen können aus verschiedenen Gründen vom System abgebrochen werden, z.B. wenn der Reliable State Manager seine primäre Rolle ändert, oder wenn eine Transaktion mit langer Laufzeit das Abschneiden des Transaktionsprotokolls einschränkt. In solchen Fällen erhalten die Benutzer möglicherweise die Fehlermeldung „InvalidOperationException“, was bedeutet, dass Ihre Transaktion bereits beendet wurde. Vorausgesetzt, das Beenden der Transaktion wurde nicht durch den Benutzer angefordert, ist der beste Weg, diese Ausnahme zu behandeln, die Transaktion zu beenden und zu überprüfen, ob das Abbruchtoken signalisiert wurde (oder ob sich die Rolle des Replikats geändert hat). Falls dies nicht der Fall ist, erstellen Sie eine neue Transaktion und versuchen Sie es erneut.  

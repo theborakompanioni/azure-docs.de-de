@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 7427a5740dd7fe32aeb4d8396568706399c66bd7
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: f09c231baecf2452a6e3abd196748629f13885ff
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -70,9 +70,9 @@ Dies sind die Grenzwerte für eine einzelne Ausführung der Logik-App.
 
 |Name|Begrenzung|Hinweise|
 |----|----|----|
-|ForEach-Elemente|5.000|Bei Bedarf können Sie die [Abfrageaktion](../connectors/connectors-native-query.md) verwenden, um größere Arrays zu filtern.|
+|ForEach-Elemente|100.000|Bei Bedarf können Sie die [Abfrageaktion](../connectors/connectors-native-query.md) verwenden, um größere Arrays zu filtern.|
 |Until-Iterationen|5.000||
-|SplitOn-Elemente|5.000||
+|SplitOn-Elemente|100.000||
 |ForEach-Parallelität|20|Sie können ein sequenzielles ForEach-Element festlegen, indem Sie `"operationOptions": "Sequential"` der `foreach`-Aktion hinzufügen.|
 
 
@@ -82,8 +82,9 @@ Dies sind die Grenzwerte für eine einzelne Instanz der Logik-App.
 
 |Name|Begrenzung|Hinweise|
 |----|----|----|
-|Aktionsausführungen pro Sekunde (Spitzen)|1.000|Bei Bedarf können Workflows auf mehrere Apps verteilt werden.|
-|Aktionsausführungen pro Sekunde (dauerhaft)|1.000.000|Bei Bedarf können Workflows auf mehrere Apps verteilt werden.|
+|Aktionsausführungen pro 5 Minuten |100.000|Bei Bedarf können Workflows auf mehrere Apps verteilt werden.|
+
+Wenn Sie davon ausgehen, dass dieses Limit bei der normalen Verarbeitung überschritten wird, oder Auslastungstests ausführen möchten, die dieses Limit für eine bestimmte Zeit überschreiten können, [wenden Sie sich an uns](mailto://logicappsemail@microsoft.com), damit wir Ihnen bei diesen Anforderungen helfen können.
 
 ### <a name="definition-limits"></a>Definitionslimits
 

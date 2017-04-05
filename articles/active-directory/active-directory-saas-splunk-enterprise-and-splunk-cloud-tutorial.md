@@ -11,12 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 3/09/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 44bf5ae5df09b564b4b3ade495ed3aa4e52676e7
-ms.openlocfilehash: 7dcb70766c132ec00ee9199ea0152cd07aa50c8f
-ms.lasthandoff: 12/06/2016
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: b78e9b7161207a74880e912241d5e965b353d1c5
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -28,7 +28,7 @@ In diesem Tutorial erfahren Sie, wie Sie Splunk Enterprise und Splunk Cloud in A
 Die Integration von Splunk Enterprise und Splunk Cloud in Azure AD bietet die folgenden Vorteile:
 
 - Sie können in Azure AD steuern, wer Zugriff auf Splunk Enterprise und Splunk Cloud hat.
-- Sie können Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Splunk Enterprise und Splunk Cloud anzumelden (einmaliges Anmelden).
+- Sie können Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Splunk Enterprise und Splunk Cloud anzumelden (einmaliges Anmelden, SSO).
 - Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
@@ -38,17 +38,17 @@ Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unte
 Um die Azure AD-Integration mit Splunk Enterprise und Splunk Cloud konfigurieren zu können, benötigen Sie Folgendes:
 
 - Ein Azure AD-Abonnement
-- Ein SSO-fähiges Abonnement für Splunk Enterprise oder Splunk Cloud
+- Ein Splunk Enterprise- oder Splunk Cloud-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 
 >[!NOTE]
 >Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
-
+>
 
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
 - Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
+- Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
@@ -57,10 +57,10 @@ In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Test
 Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
 1. Hinzufügen von Splunk Enterprise und Splunk Cloud aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+2. Konfigurieren und Testen des einmaligen Anmeldens (SSO) von Azure AD
 
 
-## <a name="adding-splunk-enterprise-and-splunk-cloud-from-the-gallery"></a>Hinzufügen von Splunk Enterprise und Splunk Cloud aus dem Katalog
+## <a name="add-splunk-enterprise-and-splunk-cloud-from-the-gallery"></a>Hinzufügen von Splunk Enterprise und Splunk Cloud aus dem Katalog
 Zum Konfigurieren der Integration von Splunk Enterprise und Splunk Cloud in Azure AD müssen Sie Splunk Enterprise und Splunk Cloud aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
 
 **Führen Sie die folgenden Schritte aus, um Splunk Enterprise und Splunk Cloud aus dem Katalog hinzuzufügen:**
@@ -91,7 +91,7 @@ Zum Konfigurieren der Integration von Splunk Enterprise und Splunk Cloud in Azur
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-splunk-enterprise-and-splunk-cloud-tutorial/tutorial_splunk_02.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 In diesem Abschnitt konfigurieren und testen Sie anhand eines Testbenutzers namens Britta Simon das einmalige Anmelden von Azure AD mit Splunk Enterprise und Splunk Cloud.
 
 Damit das einmalige Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Splunk Enterprise und Splunk Cloud als Gegenstück zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Splunk Enterprise und Splunk Cloud muss eine Linkbeziehung eingerichtet werden.
@@ -100,15 +100,15 @@ Diese Linkbeziehung wird hergestellt, indem Sie den Wert des **Benutzernamens** 
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Splunk Enterprise und Splunk Cloud müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 3. **[Erstellen eines Testbenutzers für Splunk Enterprise und Splunk Cloud](#creating-a-splunk-enterprise-and-splunk-cloud-test-user)**, um eine Entsprechung von Britta Simon in Splunk Enterprise und Splunk Cloud zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** – um Britta Simon für das einmalige Anmelden in Azure AD zu aktivieren.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassischen Portal und konfigurieren das einmalige Anmelden in Ihrer Splunk Enterprise- und Splunk Cloud-Anwendung.
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden (SSO) von Azure AD im klassischen Portal und konfigurieren das einmalige Anmelden in Ihrer Splunk Enterprise- und Splunk Cloud-Anwendung.
 
 
 **Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit Splunk Enterprise und Splunk Cloud zu konfigurieren:**
@@ -124,28 +124,20 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassi
 3. Führen Sie auf der Dialogseite **App-Einstellungen konfigurieren** die folgenden Schritte aus:
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-splunk-enterprise-and-splunk-cloud-tutorial/tutorial_splunk_04.png) 
-
-    a. Geben Sie im Textfeld **Anmelde-URL** die URL, die von Ihren Benutzern zur Anmeldung bei Splunk Enterprise und Splunk Cloud verwendet wird, nach folgendem Muster ein: `https://<splunkserverUrl>/en-US/app/launcher/home`
-    
-    b. Geben Sie im Textfeld **Bezeichner** die URL Ihres Splunk-Servers ein.
-
-    c. Geben Sie im Textfeld **Antwort-URL** die URL nach folgendem Muster ein: `https://<splunkserver>/saml/acs`
-
-    d. Klicken Sie auf **Weiter**
+  1. Geben Sie im Textfeld **Anmelde-URL** die URL, die von Ihren Benutzern zur Anmeldung bei Splunk Enterprise und Splunk Cloud verwendet wird, nach folgendem Muster ein: `https://<splunkserverUrl>/en-US/app/launcher/home`
+  2. Geben Sie im Textfeld **Bezeichner** die URL Ihres Splunk-Servers ein.
+  3. Geben Sie im Textfeld **Antwort-URL** die URL nach folgendem Muster ein: `https://<splunkserver>/saml/acs`
+  4. Klicken Sie auf **Weiter**.
  
 4. Führen Sie auf der Seite **Einmaliges Anmelden bei Splunk Enterprise und Splunk Cloud konfigurieren** die folgenden Schritte aus:
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-splunk-enterprise-and-splunk-cloud-tutorial/tutorial_splunk_05.png)
-
-    a. Klicken Sie auf **Metadaten herunterladen**und speichern Sie die Datei auf Ihrem Computer.
-
-    b. Klicken Sie auf **Weiter**.
-
+  1. Klicken Sie auf **Metadaten herunterladen**und speichern Sie die Datei auf Ihrem Computer.
+  2. Klicken Sie auf **Weiter**.
 
 5. Wenden Sie sich an das Supportteam von Splunk Enterprise und Splunk Cloud, um SSO für Ihre Anwendung konfigurieren zu lassen, und stellen Sie Folgendes bereit:
 
-    a. Die heruntergeladenen **Verbundmetadaten**
-
+    * Die heruntergeladenen **Verbundmetadaten**
 6. Wählen Sie im klassischen Portal die Bestätigung zur Konfiguration der einmaligen Anmeldung aus, und klicken Sie dann auf **Weiter**.
     
     ![Azure AD – einmaliges Anmelden][10]
@@ -154,10 +146,8 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassi
  
     ![Azure AD – einmaliges Anmelden][11]
 
-
-### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit dem Namen Britta Simon.
-
 
 ![Azure AD-Benutzer erstellen][20]
 
@@ -177,25 +167,21 @@ In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit d
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-splunk-enterprise-and-splunk-cloud-tutorial/create_aaduser_04.png) 
 
-5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:  ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-splunk-enterprise-and-splunk-cloud-tutorial/create_aaduser_05.png) 
+5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
 
-    a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-splunk-enterprise-and-splunk-cloud-tutorial/create_aaduser_05.png) 
+  1. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
+  2. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
+  3. Klicken Sie auf **Weiter**.
 
-    b. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
-
-    c. Klicken Sie auf **Weiter**.
-
-6.  Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus: ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-splunk-enterprise-and-splunk-cloud-tutorial/create_aaduser_06.png) 
-
-    a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
-
-    b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
-
-    c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
-
-    d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
-
-    e. Klicken Sie auf **Weiter**.
+6.  Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
+  
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-splunk-enterprise-and-splunk-cloud-tutorial/create_aaduser_06.png) 
+  1. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
+  2. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
+  3. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
+  4. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
+  5. Klicken Sie auf **Weiter**.
 
 7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
 
@@ -204,19 +190,15 @@ In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit d
 8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-splunk-enterprise-and-splunk-cloud-tutorial/create_aaduser_08.png) 
+  1. Notieren Sie den Wert von **Neues Kennwort**.
+  2. Klicken Sie auf **Fertig stellen**.   
 
-    a. Notieren Sie den Wert von **Neues Kennwort**.
-
-    b. Klicken Sie auf **Fertig stellen**.   
-
-
-
-### <a name="creating-an-splunk-enterprise-and-splunk-cloud-test-user"></a>Erstellen eines Testbenutzers für Splunk Enterprise und Splunk Cloud
+### <a name="create-a-splunk-enterprise-and-splunk-cloud-test-user"></a>Erstellen eines Testbenutzers für Splunk Enterprise und Splunk Cloud
 
 In diesem Abschnitt erstellen Sie in Splunk Enterprise und Splunk Cloud einen Benutzer mit dem Namen Britta Simon. Arbeiten Sie mit dem Supportteam von Splunk Enterprise und Splunk Cloud zusammen, um die Benutzer zur Plattform von Splunk Enterprise und Splunk Cloud hinzuzufügen.
 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Splunk Enterprise und Splunk Cloud gewähren.
 
@@ -242,8 +224,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Benutzer zuweisen][205]
 
-
-### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 

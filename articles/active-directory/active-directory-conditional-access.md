@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/23/2017
+ms.date: 03/28/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: af104d47d316b3e46108e7e2ed0771bd06f360af
-ms.openlocfilehash: 6c3b547b052bca6999e47ddc10fcce5e1e56fe09
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 31659a7394a34cf8fb5b6ff11c955bdc9f8b65bb
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -81,7 +82,7 @@ In den folgenden Ressourcenkategorien und Artikeln werden weitere Informationen 
 
 ### <a name="multi-factor-authentication-and-location-policies"></a>Mehrstufige Authentifizierung und Standortrichtlinien
 * [Erste Schritte mit bedingtem Zugriff auf verbundene Azure AD-Apps basierend auf Gruppen-, Standort- und MFA-Richtlinien](active-directory-conditional-access-azuread-connected-apps.md)
-* [Unterstützte Anwendungen](active-directory-conditional-access-supported-apps.md)
+* [Unterstützte Anwendungen und Browser](active-directory-conditional-access-supported-apps.md)
 
 ### <a name="device-based-conditional-access"></a>Gerätebasierter bedingter Zugriff
 * [Festlegen von gerätebasierten Richtlinien für bedingten Zugriff zur Steuerung des Zugriffs auf über Azure Active Directory verbundene Anwendungen](active-directory-conditional-access-policy-connected-applications.md)
@@ -95,10 +96,5 @@ In den folgenden Ressourcenkategorien und Artikeln werden weitere Informationen 
 ### <a name="next-steps"></a>Nächste Schritte
 * [Häufig gestellte Fragen zum bedingten Zugriff](active-directory-conditional-faqs.md)
 * [Technische Referenz](active-directory-conditional-access-technical-reference.md)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

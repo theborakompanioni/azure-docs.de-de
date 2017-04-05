@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/08/2017
+ms.date: 03/21/2017
 ms.author: ganesr;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 62ecd4cc2eed8623cab75777605d621e16b99977
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: efdec32e565bf1d11b562d283e56bd8ed5d292b9
+ms.lasthandoff: 03/24/2017
 
 
 ---
-# <a name="create-and-modify-an-expressroute-circuit"></a>Erstellen und Ändern einer ExpressRoute-Verbindung
+# <a name="create-and-modify-an-expressroute-circuit-using-powershell-classic"></a>Erstellen und Ändern einer ExpressRoute-Verbindung mit PowerShell (klassisch)
 > [!div class="op_single_selector"]
 > * [Resource Manager – Azure-Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [Resource Manager – PowerShell](expressroute-howto-circuit-arm.md)
@@ -31,7 +31,7 @@ ms.lasthandoff: 03/14/2017
 > 
 >
 
-In diesem Artikel werden Sie durch die Schritte zum Erstellen einer Azure ExpressRoute-Verbindung mithilfe von PowerShell-Cmdlets und des klassischen Bereitstellungsmodells geführt. In diesem Artikel wird auch veranschaulicht, wie Sie den Status prüfen, ein Update durchführen oder eine ExpressRoute-Verbindung löschen oder deren Bereitstellung aufheben.
+In diesem Artikel werden Sie durch die Schritte zum Erstellen einer Azure ExpressRoute-Verbindung mithilfe von PowerShell-Cmdlets und des klassischen Bereitstellungsmodells geführt. In diesem Artikel wird auch veranschaulicht, wie Sie den Status prüfen, ein Update durchführen oder eine ExpressRoute-Verbindung löschen bzw. deren Bereitstellung aufheben.
 
 [!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
@@ -44,20 +44,25 @@ In diesem Artikel werden Sie durch die Schritte zum Erstellen einer Azure Expres
 ### <a name="step-1-review-the-prerequisites-and-workflow-articles"></a>Schritt 1: Überprüfen der Voraussetzungen und Workflowartikel
 Stellen Sie sicher, dass Sie vor Beginn der Konfiguration die [Voraussetzungen](expressroute-prerequisites.md) und [Workflows](expressroute-workflows.md) gelesen haben.  
 
-### <a name="step-2-install-the-latest-versions-of-the-azure-powershell-modules"></a>Schritt 2: Installieren der aktuellen Versionen der Azure PowerShell-Module
-Eine Schritt-für-Schritt-Anleitung zum Konfigurieren des Computers für die Verwendung der Azure PowerShell-Module erhalten Sie auf der Seite [Gewusst wie: Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) .
+### <a name="step-2-install-the-latest-versions-of-the-azure-service-management-sm-powershell-modules"></a>Schritt 2: Installieren Sie die aktuellen Versionen der PowerShell-Module für die Azure-Dienstverwaltung.
+Eine ausführliche Anleitung zum Konfigurieren des Computers für die Verwendung der Azure PowerShell-Module erhalten Sie auf der Seite [Erste Schritte mit Azure PowerShell-Cmdlets](/powershell/azureps-cmdlets-docs).
 
 ### <a name="step-3-log-in-to-your-azure-account-and-select-a-subscription"></a>Schritt 3: Anmelden bei Ihrem Azure-Konto und Auswählen eines Abonnements
-1. Führen Sie das folgende Cmdlet in einem Windows PowerShell-Fenster mit erhöhten Rechten aus:
-   
+1. Öffnen Sie die PowerShell-Konsole mit erhöhten Rechten, und stellen Sie eine Verbindung mit Ihrem Konto her. Verwenden Sie das folgende Beispiel, um eine Verbindung herzustellen:
+
+        Login-AzureRmAccount
+
+2. Überprüfen Sie die Abonnements für das Konto.
+
+        Get-AzureRmSubscription
+
+3. Wenn Sie über mehr als ein Abonnement verfügen, wählen Sie das Abonnement aus, das Sie verwenden möchten.
+
+        Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
+
+4. Verwenden Sie als nächstes das folgende Cmdlet, um PowerShell Ihr Azure-Abonnement für das klassische Bereitstellungsmodell hinzuzufügen.
+
         Add-AzureAccount
-2. Melden Sie sich auf der dann angezeigten Anmeldeseite bei Ihrem Konto an.
-3. Rufen Sie eine Liste Ihrer Abonnements ab.
-   
-        Get-AzureSubscription
-4. Wählen Sie das Abonnement aus, das Sie verwenden möchten.
-   
-        Select-AzureSubscription -SubscriptionName "mysubscriptionname"
 
 ## <a name="create-and-provision-an-expressroute-circuit"></a>Erstellen und Bereitstellen einer ExpressRoute-Verbindung
 ### <a name="step-1-import-the-powershell-modules-for-expressroute"></a>Schritt 1: Importieren der PowerShell-Module für ExpressRoute
@@ -183,7 +188,7 @@ Eine detaillierte Anleitung finden Sie auf der Seite [Routingkonfiguration für 
 > 
 
 ### <a name="step-8-link-a-virtual-network-to-an-expressroute-circuit"></a>Schritt 8: Verknüpfen eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung
-Verknüpfen Sie anschließend ein virtuelles Netzwerk mit Ihrer ExpressRoute-Verbindung. Lesen Sie die Schritt-für-Schritt-Anweisungen unter [Verknüpfen von virtuellen Netzwerken mit ExpressRoute-Verbindungen](expressroute-howto-linkvnet-classic.md) . Wenn Sie ein virtuelles Netzwerk für ExpressRoute mithilfe des klassischen Bereitstellungsmodells erstellen möchten, hilft Ihnen die Anleitung unter [Erstellen eines virtuellen Netzwerks für ExpressRoute](expressroute-howto-vnet-portal-classic.md) weiter.
+Verknüpfen Sie anschließend ein virtuelles Netzwerk mit Ihrer ExpressRoute-Verbindung. Lesen Sie die Schritt-für-Schritt-Anweisungen unter [Verknüpfen von virtuellen Netzwerken mit ExpressRoute-Verbindungen](expressroute-howto-linkvnet-classic.md) . Wenn Sie ein virtuelles Netzwerk für ExpressRoute mithilfe des klassischen Bereitstellungsmodells erstellen möchten, hilft Ihnen die Anleitung [Erstellen eines virtuellen Netzwerks für ExpressRoute](expressroute-howto-vnet-portal-classic.md) weiter.
 
 ## <a name="getting-the-status-of-an-expressroute-circuit"></a>Abrufen des Status einer ExpressRoute-Verbindung
 Sie können diese Informationen jederzeit mithilfe des Cmdlets `Get-AzureCircuit` abrufen. Wenn Sie den Aufruf ohne Parameter durchführen, werden alle Verbindungen aufgelistet.

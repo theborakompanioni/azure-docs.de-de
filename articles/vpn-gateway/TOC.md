@@ -23,6 +23,7 @@
 ## Konfigurieren von VNet-zu-VNet-Verbindungen
 ### [Azure-Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 ### [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
+### [Azure-Portal (klassisch)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
 ### [Klassisches Portal (klassisch)](virtual-networks-configure-vnet-to-vnet-connection.md)
 ## Konfigurieren einer VNet-zu-VNet-Verbindung zwischen Bereitstellungsmodellen
 ### [Azure-Portal](vpn-gateway-connect-different-deployment-models-portal.md)
@@ -42,6 +43,7 @@
 ## [Überprüfen einer VPN Gateway-Verbindung](vpn-gateway-verify-connection-resource-manager.md)
 ## [Zurücksetzen einer VPN Gateway-Instanz](vpn-gateway-resetgw-classic.md)
 ## Löschen eines VPN-Gateways
+### [Azure-Portal](vpn-gateway-delete-vnet-gateway-portal.md)
 ### [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 ### [PowerShell (klassisch)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 ## [Erstellen selbstsignierter Stammzertifikate für P2S-Verbindungen](vpn-gateway-certificates-point-to-site.md)

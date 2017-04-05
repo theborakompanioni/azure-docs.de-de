@@ -16,8 +16,9 @@ ms.topic: get-started-article
 ms.date: 2/6/2017
 ms.author: guybo
 translationtype: Human Translation
-ms.sourcegitcommit: 2939de432fcb5dbf4a7316343c3c6ae102b579e8
-ms.openlocfilehash: 5b34969f9c854775587d402acbedee12f236ab7a
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 91d36d5321f455a2af31093fa460ddf6640942d4
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -62,7 +63,7 @@ Sie können einen Datenträger zu einer VM-Skalierungsgruppe mithilfe des Azure 
 az vmss disk attach -g dsktest -n dskvmss --size-gb 50 --lun 3
 ```
 > [!NOTE]
-> Verschiedene VM-Größen haben verschiedene Grenzwerte in Bezug auf die Anzahl der angefügten Laufwerke, die sie unterstützen. Lesen Sie vor dem Hinzufügen eines neuen Datenträgers die Informationen unter [Größen für virtuelle Computer in Azure](../virtual-machines/virtual-machines-windows-sizes.md).
+> Verschiedene VM-Größen haben verschiedene Grenzwerte in Bezug auf die Anzahl der angefügten Laufwerke, die sie unterstützen. Lesen Sie vor dem Hinzufügen eines neuen Datenträgers die Informationen unter [Größen für virtuelle Computer in Azure](../virtual-machines/windows/sizes.md).
 
 Sie können einen Datenträger auch hinzufügen, indem Sie der Eigenschaft _dataDisks_ im _storageProfile_ einer Skalierungsgruppendefinition einen neuen Eintrag hinzufügen und die Änderung übernehmen. Im [Azure-Ressourcen-Explorer](https://resources.azure.com/) finden Sie eine vorhandene Skalierungsgruppendefinition, mit der Sie dies testen können. Wählen Sie _Bearbeiten_, und fügen Sie zur Liste der Datenträger einen neuen Datenträger hinzu. Beispiel: (unter Verwendung des obigen Beispiels):
 ```json
@@ -106,10 +107,5 @@ In der ursprünglichen Implementierung der Unterstützung angefügter Datenträg
 
 Die Unterstützung des Azure-Portals für angefügte Datenträger in Skalierungsgruppen ist anfangs beschränkt. Je nach Ihren Anforderungen können Sie Azure-Vorlagen, CLI, PowerShell, SDKs und REST API zum Verwalten angefügter Datenträger verwenden.
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

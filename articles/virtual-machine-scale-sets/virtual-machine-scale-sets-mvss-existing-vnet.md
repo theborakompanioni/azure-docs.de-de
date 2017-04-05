@@ -1,6 +1,6 @@
 ---
-title: "Azure-VM-Skalierungsgruppen: Vorlage für ein vorhandenes virtuelles Netzwerk | Microsoft-Dokumentation"
-description: Erfahren Sie, wie Sie eine Skalierungsgruppenvorlage mit einem vorhandenen virtuellen Netzwerk erstellen
+title: "Verweisen auf ein virtuelles Netzwerk in einer Vorlage für eine Azure-Skalierungsgruppe | Microsoft-Dokumentation"
+description: "Informationen zum Hinzufügen eines virtuellen Netzwerks zu einer vorhandenen Vorlage für eine Azure-VM-Skalierungsgruppe"
 services: virtual-machine-scale-sets
 documentationcenter: 
 author: gatneil
@@ -16,18 +16,17 @@ ms.topic: article
 ms.date: 3/06/2017
 ms.author: negat
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: ddb3e1789e49d138e744c2238679236134b69324
-ms.lasthandoff: 03/09/2017
-
+ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
+ms.openlocfilehash: f300537943b76e53b0e7c271e65293e585a2cd32
+ms.lasthandoff: 03/24/2017
 
 ---
 
-# <a name="about-this-article"></a>Informationen zum Artikel
+# <a name="add-reference-to-a-virtual-network-to-an-azure-scale-set-template"></a>Hinzufügen eines Verweises auf ein virtuelles Netzwerk zu einer Vorlage für eine Azure-Skalierungsgruppe
 
 In diesem Artikel wird gezeigt, wie die [Vorlage für eine kleinstmögliche Skalierungsgruppe](./virtual-machine-scale-sets-mvss-start.md) geändert wird, um die Bereitstellung in einem vorhandenen virtuellen Netzwerk durchzuführen, statt ein neues zu erstellen.
 
-## <a name="modifying-the-minimum-viable-scale-set-to-deploy-into-an-existing-virtual-network"></a>Ändern der kleinstmöglichen Skalierungsgruppe, um die Bereitstellung in einem vorhandenen virtuellen Netzwerk durchzuführen
+## <a name="change-the-template-definition"></a>Ändern der Vorlagendefinition
 
 Unsere Vorlage für die kleinstmögliche Skalierungsgruppe kann [hier](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json) angezeigt werden, und unsere Vorlage für die Bereitstellung der Skalierungsgruppe in einem vorhandenen virtuellen Netzwerk kann [hier](https://raw.githubusercontent.com/gatneil/mvss/existing-vnet/azuredeploy.json) angezeigt werden. Sehen wir uns die Diff zum Erstellen dieser Vorlage (`git diff master minimum-viable-scale-set`) Stück für Stück an:
 

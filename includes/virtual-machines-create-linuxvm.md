@@ -37,7 +37,7 @@
     ```
    
    > [!NOTE]
-   > Geben Sie für einen virtuellen Linux-Computer die `-e`-Option in `vm create` an. SSH kann nach der Erstellung des virtuellen Computers nicht mehr aktiviert werden. Weitere Informationen zu SSH finden Sie unter [Verwenden von SSH mit Linux in Azure](../articles/virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+   > Geben Sie für einen virtuellen Linux-Computer die `-e`-Option in `vm create` an. SSH kann nach der Erstellung des virtuellen Computers nicht mehr aktiviert werden. Weitere Informationen zu SSH finden Sie unter [Verwenden von SSH mit Linux in Azure](../articles/virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 5. Sie können die Attribute der VM mithilfe des Befehls `azure vm show` überprüfen. Im folgenden Beispiel werden Informationen zur VM mit dem Namen `myVM` aufgeführt:
 
@@ -53,9 +53,4 @@
 
 ## <a name="next-steps"></a>Nächste Schritte
 Ausführliche Informationen zu diesen Azure-CLI 1.0-Befehlen für virtuelle Computer finden Sie unter [Verwendung der Azure CLI 1.0 mit der API der klassischen Bereitstellung](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

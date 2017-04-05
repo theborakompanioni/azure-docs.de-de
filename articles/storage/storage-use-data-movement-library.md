@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/22/2017
 ms.author: seguler
 translationtype: Human Translation
-ms.sourcegitcommit: 229007db52de53cd50f4d86c145b87d6c2ecf399
-ms.openlocfilehash: e1baa43957ced78b1e25fd632661be2385530db3
-ms.lasthandoff: 01/28/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 2ba94e4dd931b6d385101c7dadccfa3583b5296e
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -26,9 +26,9 @@ ms.lasthandoff: 01/28/2017
 ## <a name="overview"></a>Übersicht
 Die Microsoft Azure Storage Data Movement-Bibliothek ist eine plattformübergreifende Open Source-Bibliothek, die für Hochleistung in den Bereichen Hochladen, Herunterladen und Kopieren von Azure Storage-Blobs und -Dateien entwickelt wurde. Diese Bibliothek ist das wichtigste Framework für die Datenverschiebung, das [AzCopy](storage-use-azcopy.md) betreibt. Die Data Movement-Bibliothek stellt praktische Methoden bereit, die nicht in unserer herkömmlichen [.NET Azure Storage-Clientbibliothek](storage-dotnet-how-to-use-blobs.md) verfügbar sind. Dies beinhaltet die Möglichkeit zum Festlegen der Anzahl paralleler Vorgänge, zum Verfolgen des Übertragungsfortschritts, zum einfachen Fortsetzen einer abgebrochenen Übertragung und vieles mehr.  
 
-Diese Bibliothek verwendet auch .NET Core, was bedeutet, dass Sie es beim Erstellen von .NET-Apps für Windows, Linux und MacOS verwenden können. Weitere Informationen zu .NET Core finden Sie in der [.NET Core-Dokumentation](https://dotnet.github.io/). Diese Bibliothek funktioniert auch bei herkömmlichen .NET Framework-Apps für Windows. 
+Diese Bibliothek verwendet auch .NET Core, was bedeutet, dass Sie es beim Erstellen von .NET-Apps für Windows, Linux und macOS verwenden können. Weitere Informationen zu .NET Core finden Sie in der [.NET Core-Dokumentation](https://dotnet.github.io/). Diese Bibliothek funktioniert auch bei herkömmlichen .NET Framework-Apps für Windows. 
 
-Dieses Dokument veranschaulicht das Erstellen einer .NET Core-Konsolenanwendung, die unter Windows, Linux und MacOS ausgeführt wird, und führt die folgenden Szenarien aus:
+In diesem Dokument wird erläutert, wie eine .NET Core-Konsolenanwendung erstellt wird, die unter Windows, Linux und macOS ausgeführt wird. Zudem werden die folgenden Szenarien ausgeführt:
 
 - Hochladen von Dateien und Verzeichnissen in Blob Storage
 - Definieren der Anzahl paralleler Vorgänge bei der Datenübertragung
@@ -581,7 +581,7 @@ In diesem Beispiel legen wir den booleschen Parameter in `TransferManager.CopyAs
 Unsere Data Movement-Anwendung ist jetzt abgeschlossen. [Den vollständigen Beispielcode finden Sie auf GitHub](https://github.com/azure-samples/storage-dotnet-data-movement-library-app). 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In dieser Einführung haben wir eine Anwendung erstellt, die mit Azure Storage interagiert und unter Windows, Linux und MacOS ausgeführt wird. Erste Schritte mit Fokus auf Blobspeicher. Allerdings können dieselben Kenntnisse auf File Storage angewendet werden. Weitere Informationen finden Sie in der [Referenzdokumentation zur Azure Storage Data Movement-Bibliothek](https://azure.github.io/azure-storage-net-data-movement).
+In dieser Einführung haben wir eine Anwendung erstellt, die mit Azure Storage interagiert und unter Windows, Linux und macOS ausgeführt wird. Erste Schritte mit Fokus auf Blobspeicher. Allerdings können dieselben Kenntnisse auf File Storage angewendet werden. Weitere Informationen finden Sie in der [Referenzdokumentation zur Azure Storage Data Movement-Bibliothek](https://azure.github.io/azure-storage-net-data-movement).
 
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 

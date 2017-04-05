@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 02/22/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: c22a8f4a895efc86abc328c6cf82685d7db8c19c
-ms.openlocfilehash: 33de5839e1e8fa70f75636488a0769f7aebf8b95
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 27cc51d3f9220756fc1188f978dc158f17037bc3
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -51,7 +51,7 @@ Nein. Azure AD Connect unterstützt keine lokalen Gesamtstrukturen/Domänen, der
 **F: Was muss ich tun, wenn ich eine E-Mail erhalte, in der ich aufgefordert werde, mein Office 365-Zertifikat zu erneuern?**  
 Befolgen Sie die Anweisungen, die Sie im Thema [Erneuern von Zertifikaten](active-directory-aadconnect-o365-certs.md) finden, um Ihr Zertifikat zu erneuern.
 
-**F: Für die vertrauende Seite für Office&365; habe ich „Vertrauende Seite automatisch aktualisieren“ festgelegt. Muss ich bestimmte Maßnahmen ergreifen, wenn mein Tokensignaturzertifikat automatisch verlängert wird?**  
+**F: Für die vertrauende Seite für Office 365 habe ich „Vertrauende Seite automatisch aktualisieren“ festgelegt. Muss ich bestimmte Maßnahmen ergreifen, wenn mein Tokensignaturzertifikat automatisch verlängert wird?**  
 Befolgen Sie die Anweisungen im Artikel [Erneuern von Zertifikaten](active-directory-aadconnect-o365-certs.md).
 
 ## <a name="environment"></a>Environment
@@ -73,15 +73,7 @@ Nein, dies wird derzeit nicht unterstützt.
 **F: Ist es möglich, das ImmutableId-Attribut manuell für vorhandene Azure AD-Gruppen-/Kontaktobjekte festzulegen, um eine Hard-Match-Zuordnung zu lokalen AD-Gruppen-/Kontaktobjekten durchzuführen?**  
 Nein, dies wird derzeit nicht unterstützt.
 
-## <a name="security"></a>Sicherheit
-**F: Werden Konten nach einer bestimmten Anzahl von Versuchen, bei denen Fehler aufgetreten sind, gesperrt, oder wird eine ausgereiftere Strategie angewandt?**</br>
-Wir verwenden eine ausgereiftere Strategie zum Sperren von Konten.  Sie basiert auf der IP-Adresse der Anforderung und den eingegebenen Kennwörtern. Die Dauer der Sperre wird ebenfalls gemäß der Wahrscheinlichkeit erhöht, dass es sich um einen Angriff handelt.  
 
-**F: Bestimmte (häufige) Kennwörter werden mit „Dieses Kennwort wurde zu oft verwendet“-Meldungen zurückgewiesen – bezieht sich dies auf Kennwörter, die im aktuellen Active Directory verwendet wurden?**</br>
-Dies bezieht sich auf Kennwörter, die global häufig sind, z.B. alle Varianten von „Password“ und „123456“.
-
-**F: Wird eine Anmeldeanforderung aus fragwürdigen Quellen (Botnets, Tor-Endpunkt) in einem B2C-Mandanten blockiert, oder setzt dies einen Basic- oder Premium Edition-Mandanten voraus?**</br>
-Wir haben ein Gateway, das Anforderungen filtert, gewissen Schutz gegen Botnets bietet und für alle B2C-Mandanten gilt. 
 
 ## <a name="custom-configuration"></a>Benutzerdefinierte Konfiguration
 **F: Wo sind die PowerShell-Cmdlets für Azure AD Connect dokumentiert?**  

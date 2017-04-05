@@ -15,9 +15,9 @@ ms.workload: integration
 ms.date: 03/14/2017
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: cbe7011f827418c1094c4e262e016cb93d6d224c
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: dcf089d680249d0a2f9d748b315076d91c8c78e8
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -70,6 +70,7 @@ Mithilfe der vielen Funktionen in der [Workflowdefinitionssprache](http://aka.ms
 
 Logic Apps bieten außerdem Integration mit vielen Diensten, wie etwa Azure Functions, Azure API Management, Azure App Services und benutzerdefinierten HTTP-Endpunkten, z.B. REST und SOAP.
 
+* [Erstellen eines sozialen Dashboards in Echtzeit mit Azure Serverless](logic-apps-scenario-social-serverless.md)
 * [Aufrufen von Azure Functions aus Logic-Apps](../logic-apps/logic-apps-azure-functions.md)
 * [Szenario: Auslösen von Logic Apps mit Azure Functions](logic-apps-scenario-function-sb-trigger.md)
 * [Blog: Call SOAP endpoints from logic apps (Aufrufen von SOAP-Endpunkten aus Logic Apps)](https://blogs.msdn.microsoft.com/logicapps/2016/04/07/using-soap-services-with-logic-apps/)

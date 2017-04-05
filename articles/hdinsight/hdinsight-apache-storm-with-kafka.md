@@ -8,6 +8,7 @@ manager: paulettm
 editor: cgronlun
 ms.assetid: e4941329-1580-4cd8-b82e-a2258802c1a7
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,9 +16,9 @@ ms.workload: big-data
 ms.date: 03/20/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 3f0d284e122704ba01676c4b0028e196fe47bca8
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: dcda5e27cbcadff054c8085b72a1b6fb1c07b889
+ms.lasthandoff: 03/25/2017
 
 ---
 # <a name="use-apache-kafka-preview-with-storm-on-hdinsight"></a>Verwenden von Apache Kafka (Vorschau) mit Storm in HDInsight
@@ -40,11 +41,7 @@ Apache Kafka ist eine Veröffentlichen-Abonnieren-Messaginglösung, die für HDI
 
 * Ein Text-Editor oder eine Java-IDE
 
-* SSH-Client (Befehle `ssh` und `scp` erforderlich): Informationen zur Verwendung von SSH mit HDInsight finden Sie in den folgenden Dokumenten:
-  
-  * [Verwenden von SSH mit Linux-basiertem HDInsight unter Linux, Unix, Mac OS und Bash unter Windows 10](hdinsight-hadoop-linux-use-ssh-unix.md)
-
-  * [Verwenden von SSH (PuTTY) mit Linux-basiertem HDInsight unter Windows](hdinsight-hadoop-linux-use-ssh-windows.md)
+* Einen SSH-Client (Sie benötigen die Befehle `ssh` und `scp`) – weitere Informationen finden Sie unter [Verwenden von SSH mit HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="create-the-clusters"></a>Erstellen von Clustern
 
@@ -133,11 +130,7 @@ Anhand der Schritte in diesem Dokument wird veranschaulicht, wie Sie diese Umgeb
    
     Geben Sie nach der entsprechenden Aufforderung das Kennwort ein, das Sie beim Erstellen der Cluster verwendet haben.
    
-    Weitere Informationen zur Verwendung von SSH mit HDInsight finden Sie in den folgenden Dokumenten:
-   
-    * [Verwenden von SSH mit Linux-basiertem HDInsight unter Linux, Unix, Mac OS und Windows 10](hdinsight-hadoop-linux-use-ssh-unix.md)
-
-    * [Verwenden von SSH (PuTTY) mit Linux-basiertem HDInsight unter Windows](hdinsight-hadoop-linux-use-ssh-windows.md)
+    Informationen hierzu finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 2. Verwenden Sie für die SSH-Verbindung mit dem Kafka-Cluster die folgenden Befehle, um Variablen für die HTTP-Anmeldung und den Clusternamen festzulegen. Diese Werte werden in anderen Schritten in diesem Abschnitt verwendet.
 
@@ -238,12 +231,8 @@ Lassen Sie die SSH-Verbindung mit dem Kafka-Cluster aktiv. Sie können damit üb
   ```
 
     Geben Sie nach der entsprechenden Aufforderung das Kennwort ein, das Sie beim Erstellen der Cluster verwendet haben.
-
-    Weitere Informationen zur Verwendung von SSH mit HDInsight finden Sie in den folgenden Dokumenten:
-
-    * [Verwenden von SSH mit Linux-basiertem HDInsight unter Linux, Unix, Mac OS und Bash unter Windows 10](hdinsight-hadoop-linux-use-ssh-unix.md)
-
-    * [Verwenden von SSH (PuTTY) mit Linux-basiertem HDInsight unter Windows](hdinsight-hadoop-linux-use-ssh-windows.md)
+   
+    Informationen hierzu finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 2. Verwenden Sie für die SSH-Verbindung mit dem Storm-Cluster die folgenden Befehle, um das Skript `set-env-variables.sh` auszuführen:
 

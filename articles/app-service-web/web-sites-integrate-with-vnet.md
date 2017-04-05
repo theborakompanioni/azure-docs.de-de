@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 08/11/2016
 ms.author: ccompy
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 1184277f90dce4215de2add8b48c022e013d191d
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 5c8268a90c5e14839ed97daa6a186d170f5a4cc3
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -95,7 +95,7 @@ Wenn Ihr VNET kein Gateway aufweist und auch nicht über „Punkt-zu-Standort“
 ![][8]
 
 ##### <a name="enabling-point-to-site-in-a-resource-manager-vnet"></a>Aktivieren von „Punkt-zu-Standort“ in einem Resource Manager-VNET
-Wenn Sie ein Resource Manager-VNET mit einem Gateway und „Punkt-zu-Site“ konfigurieren möchten, müssen Sie PowerShell verwenden (siehe [Konfigurieren einer Punkt-zu-Site-VPN-Verbindung mit einem virtuellen Netzwerk mithilfe von PowerShell][V2VNETP2S]).  Die Benutzeroberfläche zum Ausführen dieser Funktion ist noch nicht verfügbar. 
+Um ein Resource Manager-VNET mit einem Gateway und Punkt-zu-Site zu konfigurieren, können Sie entweder PowerShell verwenden, wie unter [Konfigurieren einer Punkt-zu-Site-Verbindung mit einem virtuellen Netzwerk mithilfe von PowerShell][V2VNETP2S] beschrieben, oder das Azure Portal, wie unter [Konfigurieren eine Punkt-zu-Site-Verbindung mit einem VNET über das Azure Portal][V2VNETPortal].  Die Benutzeroberfläche zum Ausführen dieser Funktion ist noch nicht verfügbar. 
 
 ### <a name="creating-a-pre-configured-vnet"></a>Erstellen eines vorkonfigurierten VNET
 Wenn Sie ein neues VNET erstellen möchten, das mit einem Gateway und „Punkt-zu-Standort“ konfiguriert ist, kann dafür die App Service-Netzwerkbenutzeroberfläche verwendet werden. Dies ist allerdings nur bei einem Resource Manager-VNET möglich.  Wenn Sie ein klassisches VNET mit einem Gateway und „Punkt-zu-Standort“ erstellen möchten, müssen Sie es manuell über die Netzwerkbenutzeroberfläche erstellen. 
@@ -300,4 +300,5 @@ Bei den Anwendungsfällen gibt es zwar einige Überschneidungen, aber diese Funk
 [IntPowershell]: http://azure.microsoft.com/documentation/articles/app-service-vnet-integration-powershell/
 [ASEintro]: http://azure.microsoft.com/documentation/articles/app-service-app-service-environment-intro/
 [ILBASE]: http://azure.microsoft.com/documentation/articles/app-service-environment-with-internal-load-balancer/
+[V2VNETPortal]: https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal
 

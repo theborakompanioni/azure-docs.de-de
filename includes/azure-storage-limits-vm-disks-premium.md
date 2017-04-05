@@ -4,7 +4,7 @@
 | --- | --- |
 | Datenträgerkapazität insgesamt pro Konto |35 TB |
 | Kapazität für Momentaufnahmen insgesamt pro Konto |10 TB |
-| Max. Bandbreite pro Konto (Ein- und Ausgang<sup>1</sup>) |<=&50; GBit/s |
+| Max. Bandbreite pro Konto (Ein- und Ausgang<sup>1</sup>) |<= 50 GBit/s |
 
 <sup>1</sup>*Eingang* bezieht sich auf alle Daten (Anforderungen), die an ein Speicherkonto gesendet werden. *Ausgang* bezieht sich auf alle Daten (Antworten), die von einem Speicherkonto empfangen werden.
 
@@ -24,5 +24,5 @@
 | Max. IOPS pro virtuellem Computer |80.000 IOPS mit GS5-VM<sup>1</sup> |
 | Max. Durchsatz pro virtuellem Computer |2.000 MB/s mit GS5-VM<sup>1</sup> |
 
-<sup>1</sup>Informationen zu Grenzwerten bei virtuellen Computern anderer Größen finden Sie unter [Größe des virtuellen Computers](../articles/virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+<sup>1</sup>Informationen zu Grenzwerten bei virtuellen Computern anderer Größen finden Sie unter [Größe des virtuellen Computers](../articles/virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
 

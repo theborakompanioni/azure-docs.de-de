@@ -16,9 +16,9 @@ ms.workload: na
 ms.date: 02/15/2017
 ms.author: corywink
 translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: ce37bb41babb7bf894c23add994bf2c144ee6549
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
+ms.openlocfilehash: 8fa08ca6cefc10c1e1b47a7a498f69aca7de882e
+ms.lasthandoff: 03/23/2017
 
 
 ---
@@ -40,14 +40,14 @@ Siehe Abschnitt [Hinzufügen von Unterstützung für eine neue Methode zum Simul
 In der vorkonfigurierten Lösung zur Remoteüberwachung verwendet der Code des simulierten Geräts nur die gewünschten Eigenschaften **Desired.Config.TemperatureMeanValue** und **Desired.Config.TelemetryInterval** zum Aktualisieren der gemeldeten Eigenschaften. Alle anderen gewünschten Eigenschaftenänderungen werden ignoriert.
 
 ### <a name="my-device-does-not-appear-in-the-list-of-devices-in-the-solution-dashboard-why"></a>Mein Gerät wird nicht in der Geräteliste im Lösungsdashboard angezeigt – warum?
-Die Liste der Geräte im Lösungsdashboard verwendet eine Abfrage, um die Liste der Geräte zurückzugeben. Derzeit kann eine Abfrage nicht mehr als 10.000 Geräte zurückgeben. Versuchen Sie, restriktivere Suchkriterien für die Abfrage festzulegen.
+Die Liste der Geräte im Lösungsdashboard verwendet eine Abfrage, um die Liste der Geräte zurückzugeben. Derzeit kann eine Abfrage nicht mehr als 10.000 Geräte zurückgeben. Versuchen Sie, die Suchkriterien für die Abfrage einzuschränken.
 
 ### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-preconfigured-solution-in-azureiotsuitecom"></a>Was ist der Unterschied zwischen dem Löschen einer Ressourcengruppe im Azure-Portal und dem Klicken auf "Löschen" für eine vorkonfigurierte Lösung in "azureiotsuite.com"?
 * Wenn Sie in [azureiotsuite.com][lnk-azureiotsuite] eine vorkonfigurierte Lösung löschen, werden alle Ressourcen gelöscht, die beim Erstellen der vorkonfigurierten Lösung bereitgestellt waren. Wenn Sie dieser Ressourcengruppe weitere Ressourcen hinzugefügt haben, werden diese ebenfalls gelöscht. 
 * Wenn Sie die Ressourcengruppe im [Azure-Portal][lnk-azure-portal] löschen, werden nur die Ressourcen in dieser Ressourcengruppe gelöscht. Sie müssen auch die zugeordnete Azure Active Directory-Anwendung löschen, die der vorkonfigurierten Lösung im [klassischen Azure-Portal][lnk-classic-portal] zugeordnet ist.
 
 ### <a name="how-many-iot-hub-instances-can-i-provision-in-a-subscription"></a>Wie viele IoT Hub-Instanzen kann ich in einem Abonnement bereitstellen?
-Sie können 10 IoT Hubs pro Abonnement bereitstellen. Sie können ein [Azure-Supportticket][link-azuresupportticket] erstellen, um diesen Grenzwert zu erhöhen. Standardmäßig können Sie aber nur zehn IoT Hubs pro Abonnement bereitstellen, wie unter [Einschränkungen für Azure-Abonnements][link-azuresublimits] beschrieben. Da jede vorkonfigurierte Lösung einen neuen IoT Hub bereitstellt, können Sie somit in einem Abonnement nur bis zu zehn vorkonfigurierte Lösungen bereitstellen. 
+Standardmäßig können Sie [10 IoT Hubs pro Abonnement][link-azuresublimits] bereitstellen. Sie können ein [Azure-Supportticket] [ link-azuresupportticket] erstellen, um dieses Limit zu erhöhen. Da jede vorkonfigurierte Lösung einen neuen IoT Hub bereitstellt, können Sie somit in einem Abonnement nur bis zu zehn vorkonfigurierte Lösungen bereitstellen. 
 
 ### <a name="how-many-documentdb-instances-can-i-provision-in-a-subscription"></a>Wie viele Instanzen von DocumentDB kann ich in einem Abonnement bereitstellen?
 50. Sie können ein [Azure-Supportticket][link-azuresupportticket] erstellen, um dieses Limit zu erhöhen. Standardmäßig können Sie jedoch nur 50 DocumentDB-Instanzen pro Abonnement bereitstellen. 

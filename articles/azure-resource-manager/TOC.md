@@ -46,11 +46,12 @@
 ### [Sicherheitshinweise](best-practices-resource-manager-security.md)
 ## Festlegen von Ressourcenrichtlinien
 ### [Was sind Ressourcenrichtlinien?](resource-manager-policy.md)
-### [Zuweisen und Verwalten von Richtlinien](resource-manager-policy-create-assign.md)
+### [Richtlinienzuweisung mit dem Portal](resource-manager-policy-portal.md)
+### [Richtlinienzuweisung mit Skripts](resource-manager-policy-create-assign.md)
 ### [Tagrichtlinien für Ressourcen](resource-manager-policy-tags.md)
 ### [Speicherrichtlinien](resource-manager-policy-storage.md)
-### [Richtlinien für virtuelle Linux-Computer](../virtual-machines/virtual-machines-linux-policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-### [Richtlinien für virtuelle Windows-Computer](../virtual-machines/virtual-machines-windows-policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [Richtlinien für virtuelle Linux-Computer](../virtual-machines/linux/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [Richtlinien für virtuelle Windows-Computer](../virtual-machines/windows/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ## Überwachung und Problembehandlung
 ### [Behandeln verbreiteter Bereitstellungsfehler](resource-manager-common-deployment-errors.md)
 ### [Anzeigen von Aktivitätsprotokollen](resource-group-audit.md)

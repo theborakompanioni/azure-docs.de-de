@@ -16,9 +16,9 @@ ms.workload: na
 ms.date: 02/13/2017
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: 3992e327bbe887338234fc2d516b053f0750a151
-ms.openlocfilehash: 118ea84abb0de095ac515ee98a643718ca54c043
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: eccc181e2203a97de58005f9597613775338ebcc
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -41,7 +41,7 @@ Wenn Sie einen Analysis Services-Server in Azure erstellen, geben Sie einen eind
 
 ## <a name="get-the-server-name"></a>Abrufen des Servernamens
 
-Bevor Sie eine Verbindung herstellen, müssen Sie den Namen des Servers abrufen. Kopieren Sie den gesamten Servernamen über **Azure-Portal** > Server > **Übersicht** > **Servername**. Wenn sich andere Benutzer in Ihrer Organisation ebenfalls mit diesem Server verbinden, möchten Sie diesen Servernamen vermutlich mit ihnen teilen. Wenn Sie einen Servernamen angeben, muss der gesamte Pfad verwendet werden.
+Bevor Sie eine Verbindung herstellen, müssen Sie den Namen des Servers abrufen. Kopieren Sie den gesamten Servernamen über **Azure-Portal** > Server > **Übersicht** > **Servername**. Wenn auch andere Benutzer in Ihrer Organisation Verbindungen mit diesem Server herstellen, können Sie diesen Servernamen mit ihnen teilen. Wenn Sie einen Servernamen angeben, muss der gesamte Pfad verwendet werden.
 
 ![Abrufen von Servernamen in Azure](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 
@@ -52,11 +52,11 @@ Bevor Sie eine Verbindung herstellen, müssen Sie den Namen des Servers abrufen.
 > 
 > 
 
-1. Klicken Sie in [Power BI Desktop](https://powerbi.microsoft.com/desktop/) auf **Daten abrufen** > **Datenbanken** > **Azure Analysis Services**.
+1. Klicken Sie in [Power BI Desktop](https://powerbi.microsoft.com/desktop/) auf **Daten abrufen** > **Azure** > **Microsoft Azure Analysis Services-Datenbank**.
 2. Fügen Sie unter **Server** den Servernamen aus der Zwischenablage ein.
 3. Wenn Sie den Namen der Datenbank für tabellarische Modelle oder die Perspektive kennen, mit der Sie sich verbinden wollen, fügen Sie ihn unter **Datenbanken** ein. Andernfalls können Sie dieses Feld leer lassen. Sie können eine Datenbank oder eine Perspektive auf dem nächsten Bildschirm auswählen.
 4. Lassen Sie den Standardwert **Live verbinden** ausgewählt, und klicken Sie dann auf **Verbinden**. Geben Sie Ihr Organisationskonto ein, wenn Sie aufgefordert werden ein Konto einzugeben.
-5. Erweitern Sie unter **Navigator** den Server, wählen Sie das Modell oder die Perspektive aus, mit denen Sie eine Verbindung herstellen möchten, und klicken Sie dann auf **Verbinden**. Mit nur einem Klick auf ein Modell oder eine Perspektive werden alle Objekte für diese Ansicht gezeigt.
+5. Erweitern Sie unter **Navigator** den Server, wählen Sie das Modell oder die Perspektive aus, mit denen Sie eine Verbindung herstellen möchten, und klicken Sie dann auf **Verbinden**. Durch Klicken auf ein Modell oder eine Perspektive werden alle Objekte für diese Ansicht gezeigt.
 
 ## <a name="connect-in-power-bi"></a>Herstellen einer Verbindung in Power BI
 
@@ -68,14 +68,14 @@ Bevor Sie eine Verbindung herstellen, müssen Sie den Namen des Servers abrufen.
 Das Herstellen einer Verbindung zu einem Azure Analysis Services-Server in Excel wird unterstützt. Dies geschieht mithilfe der Funktionen „Daten abrufen“ in Excel 2016 oder „Power Query“ in früheren Versionen. Ein [MSOLAP.7 ](analysis-services-data-providers.md)-Anbieter ist erforderlich. Das Herstellen einer Verbindung mithilfe des Import Table Wizard (Assistent „Tabelle importieren“) in Power Pivot wird nicht unterstützt.
 
 > [!NOTE]
-> Einige Organisationen stellen Office 365-Updates auf dem verzögerten Kanal bereit. Das bedeutet, dass Versionsupdates bis zu vier Monate von der aktuellen Version verzögert werden. Für den Excel 2016-Versionsbuild 1609.7369.2115 und früher oder Excel 2013 können Sie eine ODC-Datei (Office Data Connection) erstellen und den MSOLAP.7-Anbieter für die Verbindung mit einem Azure Analysis Services-Server manuell aktualisieren. Weitere Informationen finden Sie unter [Erstellen einer ODC-Datei](analysis-services-odc.md).
+> Einige Organisationen stellen Office 365-Updates auf dem verzögerten Kanal bereit. Das bedeutet, dass Versionsupdates bis zu vier Monate von der aktuellen Version verzögert werden. Für Excel 2016-Versionen bis 1609.7369.2115 oder Excel 2013 können Sie eine ODC-Datei erstellen und den MSOLAP.7-Anbieter für die Verbindung mit einem Server manuell aktualisieren. Weitere Informationen finden Sie unter [Erstellen einer ODC-Datei](analysis-services-odc.md).
 > 
 > 
 
 **So stellen Sie Verbindungen von Excel 2016 her**
 
 1. Klicken Sie in Excel 2016 im Menüband **Daten** auf **Get External Data (Externe Daten abrufen)** > **Aus anderen Quellen** > **Aus Analysis Services**.
-2. Fügen Sie im Datenverbindungs-Assistenten unter **Servername** den Servernamen aus der Zwischenablage ein. Wählen Sie dann unter **Anmeldeinformationen**, **Benutzername und Kennwort verwenden**, und geben Sie dann den Benutzernamen der Organisation, z.B. nancy@adventureworks.com,, und das Passwort ein.
+2. Fügen Sie im Datenverbindungs-Assistenten unter **Servername** den Servernamen aus der Zwischenablage ein. Wählen Sie dann unter **Anmeldeinformationen** die Option **Benutzername und Kennwort verwenden** aus, und geben Sie den Benutzernamen der Organisation, z.B. nancy@adventureworks.com, und das Kennwort ein.
 
     ![Verbindung in Excel herstellen – logon](./media/analysis-services-connect/aas-connect-excel-logon.png)
 3. Wählen Sie unter **Datenbank und Tabelle wählen** die Datenbank und das Modell oder die Perspektive aus, und klicken Sie dann auf **Fertig stellen**.
@@ -91,7 +91,7 @@ Wenn Sie eine Verbindung zu Azure Analysis Services mithilfe des Tabellenobjektm
 ```
 "Provider=MSOLAP;Data Source=<Azure AS instance name>;"
 ```
-Die integrierte Authentifizierung ruft das Cache für Anmeldeinformationen von Azure Active Directory ab, falls vorhanden. Wenn dies nicht der Fall ist, öffnet sich das Azure-Anmeldefenster.
+Die integrierte Authentifizierung ruft den Cache für Anmeldeinformationen von Azure Active Directory ab, falls vorhanden. Wenn dies nicht der Fall ist, öffnet sich das Azure-Anmeldefenster.
 
 ###### <a name="azure-active-directory-authentication-with-username-and-password"></a>Authentifizierung über Azure Active Directory mit Benutzername und Kennwort
 

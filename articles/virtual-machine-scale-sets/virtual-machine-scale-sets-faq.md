@@ -1,6 +1,6 @@
 ---
 title: "Häufig gestellte Fragen zu Azure-VM-Skalierungsgruppen | Microsoft-Dokumentation"
-description: "Hier erhalten Sie Antworten auf häufig gestellte Fragen zu VM-Skalierungsgruppen"
+description: "Hier erhalten Sie Antworten auf häufig gestellte Fragen zu VM-Skalierungsgruppen."
 services: virtual-machine-scale-sets
 documentationcenter: 
 author: gatneil
@@ -17,34 +17,32 @@ ms.date: 3/17/2017
 ms.author: negat
 ms.custom: na
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 850459a79c723de0eb3249cfe9ea19bc988ca318
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: e207ace4eb5722e08f2020078dfea9129ef1deb8
+ms.lasthandoff: 03/28/2017
 
 
 ---
 
-# <a name="azure-virtual-machine-scale-sets-faq"></a>Häufig gestellte Fragen zu Azure-VM-Skalierungsgruppen
+# <a name="azure-virtual-machine-scale-sets-faqs"></a>Häufig gestellte Fragen zu Azure-VM-Skalierungsgruppen
 
-Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Skalierungsgruppen.
+Hier erhalten Sie Antworten auf häufig gestellte Fragen zu VM-Skalierungsgruppen in Azure.
 
-## <a name="autoscale"></a>Autoscale
+## <a name="autoscale"></a>Automatische Skalierung
 
 ### <a name="what-are-best-practices-for-azure-autoscale"></a>Was sind die bewährten Methoden für die automatische Skalierung in Azure?
 
-Ja. Siehe: https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-autoscale-best-practices
+Bewährte Methoden für die automatische Skalierung finden Sie unter [Empfohlene Methoden für die automatische Skalierung von VMs, VM-Skalierungsgruppen und Clouddiensten](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-autoscale-best-practices).
 
-### <a name="where-do-i-find-the-metric-names-for-autoscaling-using-host-based-metrics"></a>Wo finde ich die Metriknamen für die automatische Skalierung mithilfe von hostbasierten Metriken?
+### <a name="where-do-i-find-metric-names-for-autoscaling-that-uses-host-based-metrics"></a>Wo finde ich Metriknamen für die automatische Skalierung mit hostbasierten Metriken?
 
-https://azure.microsoft.com/documentation/articles/monitoring-supported-metrics/
+Metriknamen für die automatische Skalierung mit hostbasierten Metriken finden Sie unter [Unterstützte Metriken von Azure Monitor](https://azure.microsoft.com/documentation/articles/monitoring-supported-metrics/).
 
-### <a name="are-there-any-examples-of-autoscaling-based-on-a-service-bus-topic-and-queue-length"></a>Gibt es Beispiele für die automatische Skalierung basierend auf einem Service Bus-Thema und der Warteschlangenlänge?
+### <a name="are-there-any-examples-of-autoscaling-based-on-an-azure-service-bus-topic-and-queue-length"></a>Gibt es Beispiele für die automatische Skalierung auf der Grundlage eines Azure Service Bus-Themas und der Warteschlangenlänge?
 
-Ja. Siehe:
+Ja. Beispiele für die automatische Skalierung auf der Grundlage eines Azure Service Bus-Themas und der Warteschlangenlänge finden Sie unter [Allgemeine Metriken für die automatische Skalierung in Azure Monitor](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/).
 
-https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/
-
-Für die Service Bus-Warteschlange:
+Verwenden Sie für eine Service Bus-Warteschlange den folgenden JSON-Code:
 
 ```json
 "metricName": "MessageCount",
@@ -52,7 +50,7 @@ Für die Service Bus-Warteschlange:
 "metricResourceUri": "/subscriptions/s1/resourceGroups/rg1/providers/Microsoft.ServiceBus/namespaces/mySB/queues/myqueue"
 ```
 
-Für Speicherwarteschlangen:
+Verwenden Sie für eine Speicherwarteschlange den folgenden JSON-Code:
 
 ```json
 "metricName": "ApproximateMessageCount",
@@ -60,49 +58,45 @@ Für Speicherwarteschlangen:
 "metricResourceUri": "/subscriptions/s1/resourceGroups/rg1/providers/Microsoft.ClassicStorage/storageAccounts/mystorage/services/queue/queues/mystoragequeue"
 ```
 
-Ersetzen Sie diese Beispielwerte durch die entsprechenden Ressourcen-URIs.
+Ersetzen Sie die Beispielwerte durch die URIs (Uniform Resource Identifiers) Ihrer Ressource.
 
 
-### <a name="should-we-autoscale-with-host-based-metrics-or-use-a-diagnostics-extension"></a>Sollten wir für die automatische Skalierung hostbasierte Metriken oder eine Diagnoseerweiterung verwenden?
+### <a name="should-i-autoscale-by-using-host-based-metrics-or-a-diagnostics-extension"></a>Soll ich für die automatische Skalierung hostbasierte Metriken oder eine Diagnoseerweiterung verwenden?
 
-Sie können eine Einstellung zur automatischen Skalierung auf einem virtuellen Computer erstellen, um Metriken auf Hostebene zu verwenden. Sie können aber auch Metriken verwenden, die auf dem Gastbetriebssystem basieren.
+Sie können eine Einstellung zur automatischen Skalierung auf einem virtuellen Computer erstellen, um Metriken zu verwenden, die auf der Hostebene oder auf dem Gastbetriebssystem basieren.
 
-Sehen Sie sich diese Liste der unterstützten Metriken an: https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-autoscale-common-metrics. Dies ist ein vollständiges Codebeispiel für Skalierungsgruppen (in diesem Fall wird die CPU-Metrik auf Hostebene und die Metrik für die Nachrichtenanzahl verwendet):
+Eine Liste mit unterstützten Metriken finden Sie unter [Allgemeine Metriken für die automatische Skalierung in Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-autoscale-common-metrics). 
 
-https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets
+Ein vollständiges Beispiel für VM-Skalierungsgruppen finden Sie unter [Konfiguration der erweiterten automatischen Skalierung mithilfe von Resource Manager-Vorlagen für VM-Skalierungsgruppen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets). 
 
-### <a name="how-can-i-set-alert-rules-on-a-scale-set"></a>Wie kann ich Warnungsregeln für eine Skalierungsgruppe festlegen?
+In dem Beispiel werden die CPU-Metrik auf der Hostebene und die Metrik für die Nachrichtenanzahl verwendet.
 
-Sie können Warnungen zu Metriken für eine Skalierungsgruppe über PS oder CLI erstellen. Siehe:
 
-https://azure.microsoft.com/documentation/articles/insights-powershell-samples/#create-alert-rules
 
-https://azure.microsoft.com/documentation/articles/insights-cli-samples/#work-with-alerts
+### <a name="how-do-i-set-alert-rules-on-a-virtual-machine-scale-set"></a>Wie lege ich Warnungsregeln für eine VM-Skalierungsgruppe fest?
 
-Die TargetResourceId der Skalierungsgruppe sieht wie folgt aus: /subscriptions/IhreAbonnementID/resourceGroups/IhreRessourcengruppe/providers/Microsoft.Compute/virtualMachineScaleSets/NameIhrerVMSkalierungsgruppe
+Metrikwarnungen für VM-Skalierungsgruppen können über PowerShell oder über die Azure-Befehlszeilenschnittstelle erstellt werden. Weitere Informationen finden Sie unter [Azure Monitor – PowerShell-Schnellstartbeispiele](https://azure.microsoft.com/documentation/articles/insights-powershell-samples/#create-alert-rules) bzw. unter [Azure Monitor – Schnellstartbeispiele für die plattformübergreifende Befehlszeilenschnittstelle](https://azure.microsoft.com/documentation/articles/insights-cli-samples/#work-with-alerts).
 
-Sie können einen beliebigen VM-Leistungsindikator als Metrik auswählen, für die Warnungen ausgegeben werden sollen:
+Die Zielressourcen-ID (TargetResourceId) der VM-Skalierungsgruppe sieht wie folgt aus: 
 
-https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/#compute-metrics-for-windows-vm-v2-as-a-guest-os
+/subscriptions/IhreAbonnementID/resourceGroups/<Ihre Ressourcengruppe>/providers/Microsoft.Compute/virtualMachineScaleSets/<Name Ihrer VM-Skalierungsgruppe>
 
-https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/#compute-metrics-for-linux-vm-v2-as-a-guest-os
+Als Metrik, für die eine Warnung festgelegt werden soll, können Sie einen beliebigen VM-Leistungsindikator auswählen. Weitere Informationen finden Sie im Artikel [Allgemeine Metriken für die automatische Skalierung in Azure Monitor](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/) unter [Gastbetriebssystem-Metriken für Resource Manager-basierte virtuelle Windows-Computer](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/#guest-os-metrics-resource-manager-based-windows-vms) und [Gastbetriebssystem-Metriken für virtuelle Linux-Computer](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/#guest-os-metrics-linux-vms).
 
-### <a name="how-can-i-set-up-autoscale-on-a-scale-set-using-powershell"></a>Wie kann ich die automatische Skalierung für eine Skalierungsgruppe mithilfe von PowerShell einrichten?
+### <a name="how-do-i-set-up-autoscale-on-a-virtual-machine-scale-set-by-using-powershell"></a>Wie richte ich die automatische Skalierung für eine VM-Skalierungsgruppe mithilfe von PowerShell ein?
 
-Siehe: https://msftstack.wordpress.com/2017/03/05/how-to-add-autoscale-to-an-azure-vm-scale-set/
+Informationen zum Einrichten der automatischen Skalierung für eine VM-Skalierungsgruppe mithilfe von PowerShell finden Sie im Blogbeitrag [How to add autoscale to an Azure VM scale set](https://msftstack.wordpress.com/2017/03/05/how-to-add-autoscale-to-an-azure-vm-scale-set/) (Hinzufügen der automatischen Skalierung zu einer Azure-VM-Skalierungsgruppe).
 
 
 
 
 ## <a name="certificates"></a>Zertifikate
 
-### <a name="how-do-you-securely-ship-a-certificate-into-the-vm--is-there-an-example-of-provisioning-a-scale-set-to-run-a-website-where-the-ssl-for-the-website-is-shipped-securely-from-a-certificate-configuration--the-common-certificate-rotation-operation-would-amount-to-a-configuration-update-operation"></a>Wie wird ein Zertifikat sicher auf den virtuellen Computer übertragen?  Gibt es ein Beispiel für die Bereitstellung einer Skalierungsgruppe, um eine Website auszuführen, wobei SSL für die Website sicher aus einer Zertifikatkonfiguration übertragen wird?  Der normale Zertifikatwechsel würde auf eine Konfigurationsaktualisierung hinauslaufen.
+### <a name="how-do-i-securely-ship-a-certificate-to-the-vm-how-do-i-provision-a-virtual-machine-scale-set-to-run-a-website-where-the-ssl-for-the-website-is-shipped-securely-from-a-certificate-configuration-the-common-certificate-rotation-operation-would-be-almost-the-same-as-a-configuration-update-operation-do-you-have-an-example-of-how-to-do-this"></a>Wie übertrage ich ein Zertifikat sicher auf den virtuellen Computer? Wie stelle ich eine VM-Skalierungsgruppe bereit, um eine Website auszuführen, sodass SSL für die Website sicher aus einer Zertifikatkonfiguration übertragen wird? (Der normale Zertifikatwechsel wäre fast mit einer Konfigurationsaktualisierung gleichzusetzen.) Steht hierfür ein Beispiel zur Verfügung? 
 
-Wir unterstützen das Installieren von Kundenzertifikaten über den Schlüsseltresor direkt im Windows-Zertifikatspeicher.
+Um ein Zertifikat sicher auf den virtuellen Computer zu übertragen, können Sie ein Kundenzertifikat aus dem Schlüsseltresor des Kunden direkt in einem Windows-Zertifikatspeicher installieren.
 
-Im Kontext von Skalierungsgruppen:
-
-https://msdn.microsoft.com/library/mt589035.aspx
+Verwenden Sie dazu den folgenden JSON-Code:
 
 ```json
         "secrets": [ {
@@ -116,59 +110,60 @@ https://msdn.microsoft.com/library/mt589035.aspx
         } ]
 ```
 
-Damit werden Windows und Linux unterstützt.
+Der Code ist für Windows und Linux geeignet.
 
-### <a name="self-signed-certificate-example"></a>Beispiel für ein selbstsigniertes Zertifikat:
+Weitere Informationen finden Sie unter [Create or update a set](https://msdn.microsoft.com/library/mt589035.aspx) (Erstellen oder Aktualisieren einer Gruppe).
 
-#### <a name="create-a-self-signed-cert-in-a-keyvault"></a>Erstellen eines selbstsignierten Zertifikats in einem Schlüsseltresor
 
-Eine Möglichkeit, ein selbstsigniertes Zertifikat in einem Schlüsseltresor zu erstellen, ist, die Anweisungen in diesem Service Fabric-Artikel zu verwenden: https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/
+### <a name="example-of-self-signed-certificate"></a>Beispiel für ein selbstsigniertes Zertifikat
 
-Die PowerShell-Befehle:
+1.  Erstellen Sie ein selbstsigniertes Zertifikat in einem Schlüsseltresor.
 
-```powershell
-Import-Module "C:\Users\mikhegn\Downloads\Service-Fabric-master\Scripts\ServiceFabricRPHelpers\ServiceFabricRPHelpers.psm1"
+    Verwenden Sie die folgenden PowerShell-Befehle:
 
-Login-AzureRmAccount
+  ```powershell
+  Import-Module "C:\Users\mikhegn\Downloads\Service-Fabric-master\Scripts\ServiceFabricRPHelpers\ServiceFabricRPHelpers.psm1"
 
-Invoke-AddCertToKeyVault -SubscriptionId <Your SubID> -ResourceGroupName KeyVault -Location westus -VaultName MikhegnVault -CertificateName VMSSCert -Password VmssCert -CreateSelfSignedCertificate -DnsName vmss.mikhegn.azure.com -OutputPath c:\users\mikhegn\desktop\
-```
+  Login-AzureRmAccount
 
-Mit dem obigen Befehl erhalten Sie die Eingabe für die Resource Manager-Vorlage.
+  Invoke-AddCertToKeyVault -SubscriptionId <Your SubID> -ResourceGroupName KeyVault -Location westus -VaultName MikhegnVault -CertificateName VMSSCert -Password VmssCert -CreateSelfSignedCertificate -DnsName vmss.mikhegn.azure.com -OutputPath c:\users\mikhegn\desktop\
+  ```
 
-#### <a name="change-resource-manager-template"></a>Ändern der Resource Manager-Vorlage
+  Mit diesem Befehl erhalten Sie die Eingabe für die Azure Resource Manager-Vorlage.
 
-Fügen Sie diese Eigenschaft „virtualMachineProfile“ als Teil der Skalierungsgruppenressource hinzu:
+  Ein Beispiel für die Erstellung eines selbstsignierten Zertifikats in einem Schlüsseltresor finden Sie unter [Szenarien für die Clustersicherheit in Service Fabric](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/).
 
-```json 
-"osProfile": {
-            "computerNamePrefix": "[variables('namingInfix')]",
-            "adminUsername": "[parameters('adminUsername')]",
-            "adminPassword": "[parameters('adminPassword')]",
-            "secrets": [
-              {
-                "sourceVault": {
-                  "id": "[resourceId('KeyVault', 'Microsoft.KeyVault/vaults', 'MikhegnVault')]"
-                },
-                "vaultCertificates": [
-                  {
-                    "certificateUrl": "https://mikhegnvault.vault.azure.net:443/secrets/VMSSCert/20709ca8faee4abb84bc6f4611b088a4",
-                    "certificateStore": "My"
-                  }
-                ]
-              }
-            ]
-          }
-```
- 
+2.  Ändern Sie die Resource Manager-Vorlage.
 
-### <a name="is-there-a-way-to-specify-an-ssh-key-pair-that-i-want-to-use-for-ssh-authentication-with-a-linux-scale-set-from-a-resource-manager-template"></a>Gibt es eine Möglichkeit, ein SSH-Schlüsselpaar anzugeben, dass für die SSH-Authentifizierung bei einer Linux-Skalierungsgruppe über eine Resource Manager-Vorlage verwendet werden soll?  
+  Fügen Sie **virtualMachineProfile** die folgende Eigenschaft als Teil der VM-Skalierungsgruppenressource hinzu:
 
-Die REST-API für „osProfile“ sieht ungefähr wie bei einem normalen virtuellen Computer aus:
- 
-https://msdn.microsoft.com/library/azure/mt589035.aspx#linuxconfiguration
- 
-Nehmen Sie `osProfile` in die Vorlage auf, wie im folgenden Beispiel:
+  ```json 
+  "osProfile": {
+              "computerNamePrefix": "[variables('namingInfix')]",
+              "adminUsername": "[parameters('adminUsername')]",
+              "adminPassword": "[parameters('adminPassword')]",
+              "secrets": [
+                {
+                  "sourceVault": {
+                    "id": "[resourceId('KeyVault', 'Microsoft.KeyVault/vaults', 'MikhegnVault')]"
+                  },
+                  "vaultCertificates": [
+                    {
+                      "certificateUrl": "https://mikhegnvault.vault.azure.net:443/secrets/VMSSCert/20709ca8faee4abb84bc6f4611b088a4",
+                      "certificateStore": "My"
+                    }
+                  ]
+                }
+              ]
+            }
+  ```
+  
+
+### <a name="can-i-specify-an-ssh-key-pair-to-use-for-ssh-authentication-with-a-linux-virtual-machine-scale-set-from-a-resource-manager-template"></a>Kann ich ein SSH-Schlüsselpaar für die SSH-Authentifizierung mit einer Linux-VM-Skalierungsgruppe über eine Resource Manager-Vorlage angeben?  
+
+Ja. Die REST-API für **osProfile** gleicht der standardmäßigen VM-REST-API. 
+
+Schließen Sie **osProfile** in Ihre Vorlage ein:
 
 ```json 
 "osProfile": {
@@ -188,28 +183,24 @@ Nehmen Sie `osProfile` in die Vorlage auf, wie im folgenden Beispiel:
         }
 ```
  
-Dieser JSON-Block wird in der folgenden Schnellstartvorlage verwendet:
+Dieser JSON-Block wird in der  [GitHub-Schnellstartvorlage „101-vm-sshkey“](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json) verwendet.
  
-https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json
- 
-Betrachten Sie auch das Betriebssystemprofil in dieser Vorlage:
- 
-https://github.com/ExchMaster/gadgetron/blob/master/Gadgetron/Templates/grelayhost.json
+Das Betriebssystemprofil wird auch in der [GitHub-Schnellstartvorlage „grelayhost.json“](https://github.com/ExchMaster/gadgetron/blob/master/Gadgetron/Templates/grelayhost.json) verwendet.
+
+Weitere Informationen finden Sie unter [Create or update a set](https://msdn.microsoft.com/library/azure/mt589035.aspx#linuxconfiguration) (Erstellen oder Aktualisieren einer Gruppe).
+  
 
 ### <a name="how-do-i-remove-deprecated-certificates"></a>Wie entferne ich veraltete Zertifikate? 
 
-Sie müssen das alte Zertifikat aus der Liste der Tresorzertifikate entfernen, aber alle Zertifikate beibehalten, die auf dem Computer bleiben sollen. Dadurch wird das Zertifikat nicht von Ihren virtuellen Computern entfernt, aber das Zertifikat wird auch nicht zu neuen virtuellen Computern hinzugefügt, die in der Skalierungsgruppe erstellt werden. Um das Zertifikat von vorhandenen virtuellen Computern zu entfernen, müssen Sie eine benutzerdefinierte Skripterweiterung schreiben, die die Zertifikate manuell aus dem Zertifikatspeicher entfernt.
- 
-### <a name="how-do-i-take-an-existing-ssh-public-key-and-inject-it-into-the-scale-set-ssh-layer-during-provisioning--i-would-like-to-store-the-ssh-public-key-values-in-azure-key-vault-and-then-utilize-them-in-my-resource-manager-template"></a>Wie kann ich einen vorhandenen öffentlichen SSH-Schlüssel während der Bereitstellung in die SSH-Schicht der Skalierungsgruppe einfügen?  Ich möchte die Werte des öffentlichen SSH-Schlüssels in Azure Key Vault speichern und dann in der Resource Manager-Vorlage nutzen.
+Ein veraltetes Zertifikat können Sie entfernen, indem Sie es aus der Liste mit den Tresorzertifikaten entfernen. Belassen Sie alle Zertifikate, die auf dem Computer bleiben sollen, in der Liste. Dadurch wird das Zertifikat nicht von allen Ihren virtuellen Computern entfernt. Auch wird das Zertifikat nicht zu neuen virtuellen Computern hinzugefügt, die in der VM-Skalierungsgruppe erstellt werden. 
 
-Wenn Sie den virtuellen Computern nur einen öffentlichen SSH-Schlüssel bereitstellen, besteht kein Grund, die öffentlichen Schlüssel in den Schlüsseltresor aufzunehmen, da öffentliche Schlüssel nicht geheim sind.
+Wenn Sie das Zertifikat von vorhandenen virtuellen Computern entfernen möchten, schreiben Sie eine benutzerdefinierte Skripterweiterung, die die Zertifikate manuell aus Ihrem Zertifikatspeicher entfernt.
  
-Sie können öffentliche SSH-Schlüssel bei der Erstellung einer Linux-VM im Nur-Text-Format bereitstellen.
-Ein Beispiel finden Sie hier:
+### <a name="how-do-i-inject-an-existing-ssh-public-key-into-the-virtual-machine-scale-set-ssh-layer-during-provisioning-i-want-to-store-the-ssh-public-key-values-in-azure-key-vault-and-then-use-them-in-my-resource-manager-template"></a>Wie kann ich einen vorhandenen öffentlichen SSH-Schlüssel während der Bereitstellung in die SSH-Schicht der VM-Skalierungsgruppe einfügen? Ich möchte die Werte des öffentlichen SSH-Schlüssels in Azure Key Vault speichern und dann in der Resource Manager-Vorlage nutzen.
 
-https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json
+Wenn Sie für die virtuellen Computer nur mit einem öffentlichen SSH-Schlüssel bereitstellen, müssen Sie die öffentlichen Schlüssel nicht in Key Vault speichern. Öffentliche Schlüssel sind nicht geheim.
  
-Dies gilt insbesondere in folgenden Fällen:
+Sie können öffentliche SSH-Schlüssel bei der Erstellung eines virtuellen Linux-Computers im Nur-Text-Format angeben:
 
 ```json
 "linuxConfiguration": {  
@@ -224,48 +215,53 @@ Dies gilt insbesondere in folgenden Fällen:
 linuxConfiguration-Elementname | Erforderlich | Typ | Beschreibung
 --- | --- | --- | --- |  ---
 ssh | Nein | Sammlung | Gibt die SSH-Schlüsselkonfiguration für ein Linux-Betriebssystem an.
-path | Ja | String | Gibt den Linux-Dateipfad an, in dem die SSH-Schlüssel oder -Zertifikate platziert werden sollten.
-keyData | Ja | String | Gibt den Base64-codierten öffentlichen SSH-Schlüssel an.
- 
-### <a name="when-i-run-update-azurermvmss-after-more-than-one-certificate-from-the-same-keyvault-i-get-the-following-error"></a>Wenn ich „Update-AzureRmVmss“ nach mehr als einem Zertifikat aus dem gleichen Schlüsseltresor ausführe, wird die folgende Fehlermeldung angezeigt:
- 
-Update-AzureRmVmss: Die Liste der geheimen Schlüssel enthält wiederholte Instanzen von „/subscriptions/<Meine-Abonnement-ID>/resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev“, dies ist unzulässig. Warum kann ich nicht zwei Zertifikate aus dem gleichen Schlüsseltresor hinzufügen?
- 
-Dieses Verhalten kann auftreten, wenn Sie versuchen, den gleichen Tresor zweimal hinzuzufügen, statt eines neuen „vaultCertificate“ für den vorhandenen „sourceVault“. „Add-AzureRmVmssSecret“ funktioniert beim Hinzufügen von zusätzlichen geheimen Schlüsseln nicht ordnungsgemäß.
- 
-Wenn Sie weitere geheime Schlüssel aus dem gleichen Schlüsseltresor hinzufügen möchten, sollten Sie die Liste „$vmss.properties.osProfile.secrets[0].vaultCertificates“ aktualisieren.
- 
-Sie können die erwartete Eingabestruktur hier sehen: https://msdn.microsoft.com/library/azure/mt589035.aspx
- 
-Sie müssen den geheimen Schlüssel im Skalierungsgruppenobjekt finden, das im gleichen Schlüsseltresor enthalten ist. Dann müssen Sie den Zertifikatsverweis (die URL und den Namen den Speichers für geheime Schlüssel) der Liste hinzufügen, die dem Tresor zugeordnet ist.
+path | Ja | String | Gibt den Linux-Dateipfad für die SSH-Schlüssel oder das Zertifikat an.
+keyData | Ja | String | Gibt einen Base64-codierten öffentlichen SSH-Schlüssel an.
 
-Hinweis: Das Entfernen von Zertifikaten von virtuellen Computern über die Skalierungsgruppen-APIs wird derzeit nicht unterstützt.
+Ein Beispiel finden Sie in der [GitHub-Schnellstartvorlage „101-vm-sshkey“](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json).
+
  
-Neue virtuelle Computer verfügen nicht über das alte Zertifikat, aber alte, auf denen das Zertifikat bereits bereitgestellt war, weisen weiterhin das alte Zertifikat auf.
+### <a name="when-i-run-update-azurermvmss-after-adding-more-than-one-certificate-from-the-same-key-vault-i-see-the-following-message"></a>Wenn ich `Update-AzureRmVmss` ausführe, nachdem ich mehrere Zertifikate aus dem gleichen Schlüsseltresor hinzugefügt habe, erhalte ich die folgende Meldung:
  
-### <a name="is-there-a-way-to-get-certificates-pushed-to-the-scale-set-without-providing-the-password-when-the-certificate-is-in-secretstore-currently"></a>Gibt es eine Möglichkeit, Zertifikate abzurufen, die per Push an die Skalierungsgruppe übertragen wurden, ohne das Kennwort anzugeben, wenn sich das Zertifikat derzeit im Speicher für geheime Schlüssel befindet?
-
-Ein Hartcodierung von Kennwörtern in Skripts ist nicht erforderlich. Sie können sie dynamisch mit den jeweiligen Berechtigungen des Bereitstellungsskripts abrufen. Wenn Sie ein Skript verwenden, das ein Zertifikat aus dem Speicher für geheime Schlüssel in den Schlüsseltresor verschiebt, gibt der Befehl zum Abrufen des Zertifikats des Speichers für geheime Schlüssel außerdem das Kennwort der PFX-Datei aus.
+  Update-AzureRmVmss: Die Liste „secret“ enthält wiederholte Instanzen von „/subscriptions/<Meine Abonnement-ID>/resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev“, dies ist unzulässig.
  
-### <a name="how-does-the-secrets-property-of-virtualmachineprofileosprofile-of-a-scale-set-work-why-do-you-need-sourcevault-when-you-have-to-specify-the-absolute-uri-to-a-certificate-with-certificateurl"></a>Wie funktioniert die Eigenschaft für geheime Schlüssel von „virtualMachineProfile.osProfile“ einer Skalierungsgruppe? Warum ist „sourceVault“ erforderlich, wenn der absolute URI zu einem Zertifikat mit „certificateUrl“ angeben werden muss? 
-
-Ein Win RM-Zertifikatsverweis muss in der Eigenschaft für geheime Schlüssel des Betriebssystemprofils vorhanden sein. 
-
-Der Quelltresor muss angegeben werden, damit ACL-Richtlinien erzwungen werden können, die in CSM vorhanden sind. Ohne die Angabe des Quelltresors könnten Benutzer über CRP auch ohne entsprechende Berechtigungen geheime Schlüssel in einem Schlüsseltresor bereitstellen bzw. darauf zugreifen. Die ACLs sind sogar für Ressourcen vorhanden, die nicht vorhanden sind.
-
-Falls Sie eine falsche sourceVault-ID angegeben haben, aber eine gültige Schlüsseltresor-URL, würden wir einen Fehler melden, wenn Sie den Vorgang abrufen
+Dieser Fall kann eintreten, wenn Sie versuchen, den gleichen Tresor erneut hinzuzufügen, anstatt ein neues Zertifikat für den vorhandenen Quelltresor zu verwenden. Die Befehl `Add-AzureRmVmssSecret` funktioniert nicht ordnungsgemäß, wenn Sie zusätzliche Geheimnisse hinzufügen.
  
-### <a name="if-i-add-secrets-to-an-existing-scale-set-does-it-inject-them-in-existing-instances-or-only-new-ones"></a>Wenn ich geheime Schlüssel zu einer vorhandenen Skalierungsgruppe hinzufüge, werden sie auch in vorhandene Instanzen oder nur in neue eingefügt? 
-
-Zertifikate werden zu allen virtuellen Computern hinzugefügt, auch zu bereits vorhandenen. Wenn die upgradePolicy-Eigenschaft der Skalierungsgruppe auf „Manuell“ festgelegt ist, wird das Zertifikat dem virtuellen Computer hinzugefügt, wenn Sie ein manuelles Update auf dem virtuellen Computer auszuführen.
+Aktualisieren Sie die Liste „$vmss.properties.osProfile.secrets[0].vaultCertificates“, um weitere Geheimnisse aus dem gleichen Schlüsseltresor hinzuzufügen.
  
-### <a name="where-do-certificates-go-for-linux-vms"></a>Wohin kommen Zertifikate für virtuelle Linux-Computer?
+Die erwartete Eingabestruktur finden Sie unter [Create or update a set](https://msdn.microsoft.com/library/azure/mt589035.aspx) (Erstellen oder Aktualisieren einer Gruppe).
+ 
+Suchen Sie im Schlüsseltresor das Geheimnis im VM-Skalierungsgruppenobjekt. Fügen Sie anschließend Ihren Zertifikatsverweis (URL und Name des Geheimnisspeichers) der dem Tresor zugeordneten Liste hinzu.
 
-Siehe: https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/
+> [!NOTE] 
+> Derzeit können Zertifikate nicht mithilfe der VM-Skalierungsgruppen-API von virtuellen Computern entfernt werden.
+>
+
+Neue virtuelle Computer verfügen nicht über das alte Zertifikat. Virtuelle Computer, die über das Zertifikat verfügen und bereits bereitgestellt wurden, besitzen allerdings das alte Zertifikat.
+ 
+### <a name="can-i-push-certificates-to-the-virtual-machine-scale-set-without-providing-the-password-when-the-certificate-is-in-the-secret-store"></a>Kann ich Zertifikate mithilfe von Push ohne Angabe des Kennworts an die VM-Skalierungsgruppe übertragen, wenn sich das Zertifikat im Geheimnisspeicher befindet?
+
+In Skripts müssen keine hartcodierten Kennwörter verwendet werden. Sie können dynamisch Kennwörter mit den Berechtigungen abrufen, die Sie zum Ausführen des Bereitstellungsskripts verwenden. Wenn Sie über ein Skript verfügen, das ein Zertifikat aus dem Geheimnisspeicher-Schlüsseltresor verschiebt, gibt der Geheimnisspeicherbefehl `get certificate` auch das Kennwort der PFX-Datei aus.
+ 
+### <a name="how-does-the-secrets-property-of-virtualmachineprofileosprofile-for-a-virtual-machine-scale-set-work-why-do-i-need-the-sourcevault-value-when-i-have-to-specify-the-absolute-uri-for-a-certificate-by-using-the-certificateurl-property"></a>Wie funktioniert die Secrets-Eigenschaft von „virtualMachineProfile.osProfile“ für eine VM-Skalierungsgruppe? Warum benötige ich den sourceVault-Wert, wenn ich den absoluten URI für ein Zertifikat mithilfe der certificateUrl-Eigenschaft angeben muss? 
+
+In der Secrets-Eigenschaft des Betriebssystemprofils muss ein WinRM-Zertifikatsverweis (Windows Remote Management) vorhanden sein. 
+
+Die Angabe des Quelltresors dient zur Erzwingung von ACL-Richtlinien (Access Control List; Zugriffssteuerungsliste) aus dem Azure Cloud Service-Modell eines Benutzers. Ohne Angabe des Quelltresors könnten Benutzer über einen Anbieter von Computeressourcen (Compute Resource Provider, CRP) auch ohne entsprechende Berechtigungen Geheimnisse in einem Schlüsseltresor bereitstellen oder darauf zugreifen. ACLs sind sogar für nicht vorhandene Ressourcen vorhanden.
+
+Wenn Sie eine falsche Quelltresor-ID und eine gültige Schlüsseltresor-URL angeben, tritt beim Abfragen des Vorgangs ein Fehler auf.
+ 
+### <a name="if-i-add-secrets-to-an-existing-virtual-machine-scale-set-are-the-secrets-injected-into-existing-vms-or-only-into-new-ones"></a>Wenn ich einer vorhandenen VM-Skalierungsgruppe Geheimnisse hinzufüge, werden diese in vorhandene virtuelle Computer eingefügt oder nur in neue? 
+
+Zertifikate werden allen Ihren virtuellen Computern hinzugefügt. Das gilt auch für bereits vorhandene virtuelle Computer. Wenn die upgradePolicy-Eigenschaft Ihrer VM-Skalierungsgruppe auf **Manuell** festgelegt ist, wird das Zertifikat dem virtuellen Computer hinzugefügt, wenn Sie ein manuelles Update auf dem virtuellen Computer ausführen.
+ 
+### <a name="where-do-i-put-certificates-for-linux-vms"></a>Wohin platziere ich Zertifikate für virtuelle Linux-Computer?
+
+Eine Anleitung zum Bereitstellen von Zertifikaten für virtuelle Linux-Computer finden Sie unter [Deploy Certificates to VMs from customer-managed Key Vault](https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/) (Bereitstellen von Zertifikaten für virtuelle Computer über eine vom Kunden verwaltete Key Vault-Instanz).
   
-### <a name="how-do-you-add-a-new-vault-certificate-to-a-new-certificate-object"></a>Wie wird ein neues Tresorzertifikat zu einem neuen Zertifikatobjekt hinzugefügt?
+### <a name="how-do-i-add-a-new-vault-certificate-to-a-new-certificate-object"></a>Wie füge ich einem neuen Zertifikatobjekt ein neues Tresorzertifikat hinzu?
 
-Wenn Sie ein Tresorzertifikat zu einem vorhandenen geheimen Schlüssel hinzufügen möchten und dies das einzige geheime Objekt sein soll, können Sie vorgehen, wie im folgenden PowerShell-Beispiel gezeigt:
+Sehen Sie sich das folgende PowerShell-Beispiel an, wenn Sie einem vorhandenen Geheimnis ein Tresorzertifikat hinzufügen möchten. Verwenden Sie nur ein einzelnes Geheimnisobjekt.
  
 ```powershell
 $newVaultCertificate = New-AzureRmVmssVaultCertificateConfig -CertificateStore MY -CertificateUrl https://sansunallapps1.vault.azure.net:443/secrets/dg-private-enc/55fa0332edc44a84ad655298905f1809
@@ -277,64 +273,65 @@ Update-AzureRmVmss -VirtualMachineScaleSet $vmss -ResourceGroup $rg -Name $vmssN
  
 ### <a name="what-happens-to-certificates-if-you-reimage-a-vm"></a>Was geschieht mit Zertifikaten, wenn Sie für einen virtuellen Computer ein Reimaging durchführen?
 
-Wenn Sie für einen virtuellen Computer ein Reimaging durchführen, werden die Zertifikate entfernt, da der Betriebssystemdatenträger vollständig gelöscht wird. 
+Wenn Sie für einen virtuellen Computer ein Reimaging durchführen, werden die Zertifikate gelöscht. Beim Reimaging wird der gesamte Betriebssystemdatenträger gelöscht. 
  
 ### <a name="what-happens-if-you-delete-a-certificate-from-the-key-vault"></a>Was geschieht, wenn Sie ein Zertifikat aus dem Schlüsseltresor löschen?
 
-Wenn der geheime Schlüssel im Schlüsseltresor gelöscht wird und Sie Ihre virtuellen Computer beenden, die Zuordnung aufheben und sie dann erneut starten, tritt ein Fehler auf. Die Ursache des Fehlers ist, dass CRP die geheimen Schlüssel aus dem Schlüsseltresor abrufen muss, es aber nicht kann. In diesem Szenario können Sie die Zertifikate aus dem Skalierungsgruppemodell löschen. 
+Wenn das Geheimnis aus dem Schlüsseltresor gelöscht wird und Sie anschließend für alle Ihre virtuellen Computer `stop deallocate` ausführen und sie dann neu starten, tritt ein Fehler auf. Der Grund für den Fehler: Der CRP muss das Geheimnis aus dem Schlüsseltresor abrufen, das ist aber nicht möglich. In diesem Szenario können Sie die Zertifikate aus dem VM-Skalierungsgruppenmodell löschen. 
 
-In der CRP-Komponente werden keine geheimen Kundenschlüssel beibehalten. Wenn Sie alle virtuellen Computer in der Skalierungsgruppe beenden und die Zuordnung aufheben, wird der Cache gelöscht. In diesem Szenario werden die geheimen Schlüssel aus dem Schlüsseltresor abgerufen.
+Kundengeheimnisse werden von der CRP-Komponente nicht speichert. Wenn Sie `stop deallocate` für alle virtuellen Computer in der VM-Skalierungsgruppe ausführen, wird der Cache gelöscht. In diesem Szenario werden die Geheimnisse aus dem Schlüsseltresor abgerufen.
 
-Dieses Problem tritt beim horizontalen Hochskalieren nicht auf, da es eine zwischengespeicherte Kopie des geheimen Schlüssels im Fabric gibt (zumindest im Mandantenmodell mit nur einem Fabric).
+Beim horizontalen Hochskalieren tritt dieses Problem nicht auf, da eine zwischengespeicherte Kopie des Geheimnisses in Azure Service Fabric (Einzelfabric-Mandantenmodell) vorhanden ist.
  
-### <a name="why-do-we-have-to-specify-the-exact-location-for-the-certificate-url-as-referenced-here-per-httpsazuremicrosoftcomdocumentationarticlesservice-fabric-cluster-security"></a>Warum müssen wir den genauen Speicherort für die Zertifikat-URL angeben, wie hier erläutert: https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/, 
-https://<name of the vault>.vault.azure.net:443/secrets/<exact location>
+### <a name="why-do-i-have-to-specify-the-exact-location-for-the-certificate-url-httpsname-of-the-vaultvaultazurenet443secretsexact-location-as-indicated-in-service-fabric-cluster-security-scenarioshttpsazuremicrosoftcomdocumentationarticlesservice-fabric-cluster-security"></a>Warum muss ich den genauen Speicherort für die Zertifikat-URL (https://<name of the vault>.vault.azure.net:443/secrets/<exact location>) angeben, wie unter [Szenarien für die Clustersicherheit in Service Fabric](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/) beschrieben?
  
-Gemäß der Dokumentation zum Schlüsseltresor sollte die get-secret-REST-API die neueste Version des geheimen Schlüssels zurückgeben, wenn keine Version angegeben ist:
+Laut Azure Key Vault-Dokumentation gibt die REST-API zum Abrufen des Geheimnisses die neueste Version des Geheimnisses zurück, wenn keine Version angegeben ist.
  
 Methode | URL
 --- | ---
 GET | https://mykeyvault.vault.azure.net/secrets/{Name des geheimen Schlüssels}/{Version des geheimen Schlüssels}?api-version={API-Version}
 
-Ersetzen Sie {Name des geheimen Schlüssels} durch den Namen und {Version des geheimen Schlüssels} durch die Version des geheimen Schlüssels, den Sie abrufen möchten. Die Version des geheimen Schlüssels muss nicht angegeben werden. In diesem Fall wird die aktuelle Version abgerufen.
+Ersetzen Sie {*Name des geheimen Schlüssels*} durch den Namen und {*Version des geheimen Schlüssels*} durch die Version des Geheimnisses, das Sie abrufen möchten. Die Geheimnisversion kann weggelassen werden. In diesem Fall wird die aktuelle Version abgerufen.
   
-### <a name="why-does-certificate-version-have-to-be-specified-when-using-key-vault"></a>Warum muss die Zertifikatsversion angegeben werden, wenn der Schlüsseltresor verwendet wird?
+### <a name="why-do-i-have-to-specify-the-certificate-version-when-i-use-key-vault"></a>Warum muss ich bei Verwendung von Key Vault die Zertifikatversion angeben?
 
-Der Grund für diese Anforderung ist, dass die Benutzer genau wissen sollen, welches Zertifikat auf ihren virtuellen Computern bereitgestellt wird.
+Die Angabe der Zertifikatversion ist bei Verwendung von Key Vault erforderlich, um dem Benutzer gegenüber deutlich zu machen, welches Zertifikat auf den virtuellen Computern bereitgestellt wird.
 
-Wenn Sie einen virtuellen Computer erstellen und Ihren geheimen Schlüssel im Schlüsseltresor aktualisieren, wird das neue Zertifikat nicht auf Ihre virtuellen Computer heruntergeladen. Jedoch scheinen Ihre virtuellen Computer darauf zu verweisen, und neue virtuelle Computer erhalten den neuen geheimen Schlüssel. Um diese Probleme zu vermeiden, ist es erforderlich, dass Sie auf eine explizite Version des geheimen Schlüssels verweisen.
+Wenn Sie einen virtuellen Computer erstellen und anschließend Ihr Geheimnis im Schlüsseltresor aktualisieren, wird das neue Zertifikat nicht auf Ihre virtuellen Computer heruntergeladen. Ihre virtuellen Computer scheinen jedoch darauf zu verweisen, und neue virtuelle Computer erhalten das neue Geheimnis. Um dies zu vermeiden, müssen Sie eine Geheimnisversion verweisen.
 
-### <a name="my-team-works-with-several-certificates-that-are-distributed-to-us-as-cer-public-keys-what-is-the-recommended-approach-is-for-deployment-of-these-certs-to-a-scale-set"></a>Mein Team arbeitet mit mehreren Zertifikaten, die uns als öffentliche CER-Schlüssel zur Verfügung gestellt werden. Wie sieht die empfohlene Methode für die Bereitstellung dieser Zertifikate in einer Skalierungsgruppe aus?
+### <a name="my-team-works-with-several-certificates-that-are-distributed-to-us-as-cer-public-keys-what-is-the-recommended-approach-for-deploying-these-certificates-to-a-virtual-machine-scale-set"></a>Mein Team arbeitet mit mehreren Zertifikaten, die uns als öffentliche CER-Schlüssel zur Verfügung gestellt werden. Wie stelle ich diese Zertifikate am besten für eine VM-Skalierungsgruppe bereit?
 
-Sie können mit „X509ContentType = Pfx“ eine PFX-Datei generieren, die nur CER-Dateien enthält. Laden Sie z.B. die CER-Datei als x509Certificate2-Objekt in C# oder PowerShell und rufen Sie diese Methode auf: https://msdn.microsoft.com/library/24ww6yzk(v=vs.110).aspx
+Wenn Sie öffentliche CER-Schlüssel für eine VM-Skalierungsgruppe bereitstellen möchten, können Sie eine PFX-Datei erstellen, die nur CER-Dateien enthält. Verwenden Sie hierzu `X509ContentType = Pfx`. Laden Sie beispielsweise die CER-Datei als Objekt vom Typ „x509Certificate2“ in C# oder PowerShell, und rufen Sie dann die Methode auf. 
 
-### <a name="i-do-not-see-an-option-for-users-to-pass-in-certificates-as-base64-strings-that-most-other-resource-providers-provide"></a>Ich sehe keine Option für Benutzer, Zertifikate als Base64-Zeichenfolgen zu übergeben, die die meisten anderen Ressourcenanbieter bereitstellen.
+Weitere Informationen finden Sie unter [X509Certificate.Export Method (X509ContentType, String)](https://msdn.microsoft.com/library/24ww6yzk(v=vs.110.aspx)) (X509Certificate.Export-Methode (X509ContentType, String)).
 
-Sie können die neueste URL mit Versionsangabe innerhalb einer Resource Manager-Vorlage extrahieren, um das Verhalten zu emulieren, das Sie beschreiben. Sie können die folgende JSON-Eigenschaft in die Resource Manager-Vorlage einschließen:
+### <a name="i-do-not-see-an-option-for-users-to-pass-in-certificates-as-base64-strings-most-other-resource-providers-have-this-option"></a>Ich sehe keine Option, mit der Benutzer Zertifikate als Base64-Zeichenfolgen übergeben können. Bei den meisten anderen Ressourcenanbietern steht eine solche Option zur Verfügung.
+
+Sie können das Übergeben eines Zertifikats als Base64-Zeichenfolge emulieren, indem Sie die neueste URL mit Versionsangabe in einer Resource Manager-Vorlage extrahieren. Schließen Sie in Ihre Resource Manager-Vorlage die folgende JSON-Eigenschaft ein:
 
 ```json 
 "certificateUrl": "[reference(resourceId(parameters('vaultResourceGroup'), 'Microsoft.KeyVault/vaults/secrets', parameters('vaultName'), parameters('secretName')), '2015-06-01').secretUriWithVersion]"
 ```
  
-### <a name="do-we-have-to-wrap-certs-in-json-objects-in-keyvaults"></a>Müssen wir Zertifikate in Schlüsseltresoren mit JSON-Objekten umschließen?
+### <a name="do-i-have-to-wrap-certificates-in-json-objects-in-key-vaults"></a>Muss ich Zertifikate in Schlüsseltresoren mit JSON-Objekten umschließen?
 
-Dies ist eine Anforderung für Skalierungsgruppen/virtuelle Computer. Wir unterstützen zudem den Inhaltstyp „application/x-pkcs12“. Anweisungen finden Sie hier: http://www.rahulpnath.com/blog/pfx-certificate-in-azure-key-vault/
+In VM-Skalierungsgruppen und auf virtuellen Computern müssen Zertifikate mit JSON-Objekten umschlossen werden. 
+
+Wir unterstützen auch den Inhaltstyp „application/x-pkcs12“. Eine Anleitung zur Verwendung von „application/x-pkcs12“ finden Sie unter [PFX Certificate in Azure Key Vault](http://www.rahulpnath.com/blog/pfx-certificate-in-azure-key-vault/) (PFX-Zertifikat in Azure Key Vault).
  
-Wir unterstützen derzeit keine CER-Dateien. Sie müssen die CER-Dateien in PFX-Container exportieren.
-
-
+CER-Dateien werden derzeit nicht unterstützt. Zu verwendende CER-Dateien müssen in PFX-Container exportiert werden.
 
 
 
 ## <a name="compliance"></a>Compliance
 
-### <a name="are-scale-sets-pci-compliant"></a>Sind Skalierungsgruppen PCI-konform?
+### <a name="are-virtual-machine-scale-sets-pci-compliant"></a>Sind VM-Skalierungsgruppen PCI-konform?
 
-Skalierungsgruppen sind eine dünne API-Schicht über dem Computeressourcenanbieter. Dies ist alles Bestandteil des Bereichs „Computeplattform“ innerhalb der Azure-Dienststruktur.
+Bei VM-Skalierungsgruppen handelt es sich um eine dünne API-Schicht über dem CRP. Beide Komponenten sind Teil der Computeplattform in der Azure-Dienststruktur.
 
-Daher sind Skalierungsgruppen hinsichtlich der Konformität ein grundlegender Bestandteil der Azure-Computeplattform. Sie weisen die gleichen Einstellungen für Team, Tools, Prozesse, Bereitstellungsmethode, Sicherheitskontrollen, JIT, Überwachung, Warnungen usw. wie der Computeressourcenanbieter (CRP) selbst auf.  Skalierungsgruppen sind PCI-konform, da der Computeressourcenanbieter Teil des aktuellen PCI DSS-Nachweises ist:
+VM-Skalierungsgruppen sind hinsichtlich der Konformität ein grundlegender Bestandteil der Azure-Computeplattform. Sie teilen sich Team, Tools, Prozesse, Bereitstellungsmethode, Sicherheitskontrollen, JIT-Kompilierung, Überwachung, Warnungen usw. mit dem CRP. VM-Skalierungsgruppen sind PCI-konform (Payment Card Industry), da der CRP Teil des aktuellen PCI DSS-Nachweises (Data Security Standard) ist.
 
-Weitere Informationen finden Sie unter: [https://www.microsoft.com/TrustCenter/Compliance/PCI](https://www.microsoft.com/TrustCenter/Compliance/PCI).
+Weitere Informationen finden Sie im [Microsoft Trust Center](https://www.microsoft.com/TrustCenter/Compliance/PCI).
 
 
 
@@ -343,9 +340,9 @@ Weitere Informationen finden Sie unter: [https://www.microsoft.com/TrustCenter/C
 
 ## <a name="extensions"></a>Erweiterungen
 
-### <a name="how-do-you-delete-a-scale-set-extension"></a>Wie löschen Sie eine Skalierungsgruppenerweiterung?
+### <a name="how-do-i-delete-a-virtual-machine-scale-set-extension"></a>Wie lösche ich eine VM-Skalierungsgruppenerweiterung?
 
-Dies ist ein Beispiel in PowerShell:
+Verwenden Sie zum Löschen einer VM-Skalierungsgruppenerweiterung das folgende PowerShell-Beispiel:
 
 ```powershell
 $vmss = Get-AzureRmVmss -ResourceGroupName "resource_group_name" -VMScaleSetName "vmssName" 
@@ -355,24 +352,22 @@ $vmss=Remove-AzureRmVmssExtension -VirtualMachineScaleSet $vmss -Name "extension
 Update-AzureRmVmss -ResourceGroupName "resource_group_name" -VMScaleSetName "vmssName" -VirtualMacineScaleSet $vmss
 ```
  
-„extensionName“ finden Sie in `$vmss`.
+Den Wert für „extensionName“ finden Sie in `$vmss`.
    
-### <a name="is-there-a-scale-set-template-example-that-integrates-with-oms"></a>Gibt es ein Vorlagenbeispiel für eine Skalierungsgruppe, die in OMS integriert werden kann?
+### <a name="is-there-a-virtual-machine-scale-set-template-example-that-integrates-with-operations-management-suite"></a>Gibt es ein Beispiel für eine VM-Skalierungsgruppenvorlage mit Operations Management Suite-Integration?
 
-Sehen Sie sich das zweite Beispiel hier an:
-
-https://github.com/krnese/AzureDeploy/tree/master/OMS/MSOMS/ServiceFabric
+Ein Beispiel für eine VM-Skalierungsgruppenvorlage mit Operations Management Suite-Integration finden Sie unter [Deploy Azure Service Fabric Cluster and enable monitoring using OMS Log Analytics](https://github.com/krnese/AzureDeploy/tree/master/OMS/MSOMS/ServiceFabric) (Bereitstellen eines Azure Service Fabric-Clusters und Aktivieren der Überwachung mithilfe von Log Analytics) im zweiten Beispiel.
    
-### <a name="extensions-seem-to-run-in-parallel-on-scale-sets-causing-my-custom-script-extension-to-fail-what-can-i-do-to-fix-this-behavior"></a>Erweiterungen werden scheinbar parallel in Skalierungsgruppen ausgeführt und führen dazu, dass meine benutzerdefinierte Skripterweiterung fehlschlägt. Wie kann ich dieses Verhalten korrigieren?
+### <a name="extensions-seem-to-run-in-parallel-on-virtual-machine-scale-sets-this-causes-my-custom-script-extension-to-fail-what-can-i-do-to-fix-this"></a>Erweiterungen scheinen in VM-Skalierungsgruppen parallel ausgeführt zu werden. Das führt zu einem Fehler bei meiner benutzerdefinierten Skripterweiterung. Wie kann ich dieses Problem beheben?
 
-Siehe: https://msftstack.wordpress.com/2016/05/12/extension-sequencing-in-azure-vm-scale-sets/ 
+Informationen zur Erweiterungssequenzierung in VM-Skalierungsgruppen finden Sie unter [Extension sequencing in Azure VM Scale Sets](https://msftstack.wordpress.com/2016/05/12/extension-sequencing-in-azure-vm-scale-sets/) (Erweiterungssequenzierung in Azure-VM-Skalierungsgruppen).
  
  
-### <a name="how-do-i-reset-the-password-for-scale-set-vms"></a>Wie setze ich das Kennwort für virtuelle Computer in Skalierungsgruppen zurück?
+### <a name="how-do-i-reset-the-password-for-vms-in-my-virtual-machine-scale-set"></a>Wie setze ich das Kennwort für virtuelle Computer in meiner VM-Skalierungsgruppe zurück?
 
-Verwenden Sie Zugriffserweiterungen für virtuelle Computer.
+Das Kennwort für virtuelle Computer in Ihrer VM-Skalierungsgruppe können Sie mithilfe von Zugriffserweiterungen für virtuelle Computer zurücksetzen. 
 
-Dies ist ein Beispiel in PowerShell:
+Verwenden Sie das folgende PowerShell-Beispiel:
 
 ```powershell
 $vmssName = "myvmss"
@@ -384,24 +379,29 @@ $extName = "VMAccessAgent"
 $publisher = "Microsoft.Compute"
 $vmss = Get-AzureRmVmss -ResourceGroupName $vmssResourceGroup -VMScaleSetName $vmssName
 $vmss = Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmss -Name $extName -Publisher $publisher -Setting $publicConfig -ProtectedSetting $privateConfig -Type $extName -TypeHandlerVersion "2.0" -AutoUpgradeMinorVersion $true
-Update-AzureRmVmss -ResourceGroupName $vmssResourceGroup -Name $vmssName VirtualMachineScaleSet $vmss
+Update-AzureRmVmss -ResourceGroupName $vmssResourceGroup -Name $vmssName -VirtualMachineScaleSet $vmss
 ```
  
  
-### <a name="how-do-i-add-an-extension-to-all-vms-in-my-scale-set"></a>Wie füge ich allen virtuellen Computern in meiner Skalierungsgruppe eine Erweiterung hinzu?
+### <a name="how-do-i-add-an-extension-to-all-vms-in-my-virtual-machine-scale-set"></a>Wie füge ich allen virtuellen Computern in meiner VM-Skalierungsgruppe eine Erweiterung hinzu?
 
-- Wenn die Aktualisierungsrichtlinie auf „Automatisch“ festgelegt ist, werden durch die erneute Bereitstellung der Vorlage mit den neuen Erweiterungseigenschaften alle virtuellen Computer aktualisiert.
-- Wenn die Aktualisierungsrichtlinie auf „Manuell“ festgelegt ist, müssen Sie die Erweiterung aktualisieren und dann „manualUpdate“ für alle Instanzen ausführen.
+Wenn die Aktualisierungsrichtlinie auf **Automatisch** festgelegt ist, werden durch die erneute Bereitstellung der Vorlage mit den neuen Erweiterungseigenschaften alle virtuellen Computer aktualisiert.
+
+Wenn die Aktualisierungsrichtlinie auf **Manuell** festgelegt ist, aktualisieren Sie zunächst die Erweiterung, und aktualisieren Sie anschließend manuell alle Instanzen auf Ihren virtuellen Computern.
+
   
-### <a name="if-the-extensions-associated-with-an-existing-scale-set-are-updated-would-they-affect-already-existing-vms-that-is-would-the-vms-show-up-as-not-matching-the-scale-set-model-or-would-they-be-ignored-when-an-existing-machine-is-service-healed--reimaged--etc-would-the-scripts-that-are-currently-configured-on-the-scale-set-be-executed-or-would-the-ones-that-were-configured-when-the-machine-was-first-created-be-used"></a>Hätte es Auswirkungen auf bereits vorhandene virtuelle Computer, wenn die einer vorhandenen Skalierungsgruppe zugeordneten Erweiterungen aktualisiert werden? (Würden die virtuellen Computer also im Skalierungsgruppenmodell als nicht übereinstimmend angezeigt?) Oder werden sie ignoriert? Wenn ein vorhandener Computer vom Dienst repariert wird oder ein Reimaging durchgeführt wird, werden dann die Skripts ausgeführt, die gegenwärtig für die Skalierungsgruppe konfiguriert sind, oder werden die Skripts verwendet, die bei der Erstellung des Computers konfiguriert wurden?
+### <a name="if-the-extensions-associated-with-an-existing-virtual-machine-scale-set-are-updated-are-existing-vms-affected-that-is-will-the-vms-not-match-the-virtual-machine-scale-set-model-or-are-they-ignored-when-an-existing-machine-is-service-healed-or-reimaged-are-the-scripts-that-are-currently-configured-on-the-virtual-machine-scale-set-executed-or-are-the-scripts-that-were-configured-when-the-vm-was-first-created-used"></a>Hat die Aktualisierung der Erweiterungen, die einer vorhandenen VM-Skalierungsgruppe zugeordnet sind, Auswirkungen auf bereits vorhandene virtuelle Computer? (Anders gefragt: Entsprechen die virtuellen Computer dann *nicht* dem virtuellen Modell der VM-Skalierungsgruppe?) Oder werden sie ignoriert? Wenn ein vorhandener Computer vom Dienst repariert wird oder ein Reimaging durchgeführt wird, werden dann die Skripts ausgeführt, die gegenwärtig für die VM-Skalierungsgruppe konfiguriert sind, oder werden die Skripts verwendet, die bei der Erstellung des virtuellen Computers konfiguriert wurden?
 
-- Wenn die Erweiterungsdefinition im Skalierungsgruppenmodell aktualisiert wird, werden auch die virtuellen Computer aktualisiert, sofern „upgradePolicy“ auf „Automatisch“ festgelegt wurde. Und sie werden als nicht mit dem Modell übereinstimmend markiert, wenn „upgradePolicy“ auf „Manuell“ festgelegt ist. 
+Wenn die Erweiterungsdefinition im VM-Skalierungsgruppenmodell aktualisiert wird und die upgradePolicy-Eigenschaft auf **Automatisch** festgelegt ist, werden die virtuellen Computer aktualisiert. Ist die upgradePolicy-Eigenschaft auf **Manuell** festgelegt, werden Erweiterungen als nicht dem Modell entsprechend gekennzeichnet. 
 
-- Wenn ein vorhandener virtueller Computer vom Dienst repariert wird, wirkt dies wie ein Neustart, und die Erweiterungen werden nicht erneut ausgeführt. Wenn ein Reimaging durchgeführt wird, entspricht dies dem Ersetzen des Betriebssystemlaufwerks durch das Quellimage, und alle Spezialisierungen aus dem aktuellen Modell, wie Erweiterungen, werden ausgeführt.
+Wenn ein vorhandener virtueller Computer vom Dienst repariert wird, wird das wie ein Neustart behandelt, und die Erweiterungen werden nicht erneut ausgeführt. Wird ein Reimaging durchgeführt, ist das mit dem Austauschen des Betriebssystemdatenträgers mit dem Quellimage vergleichbar. Sämtliche Spezialisierungen aus dem aktuellen Modell (etwa Erweiterungen) werden ausgeführt.
  
-### <a name="how-do-i-get-a-scale-set-to-join-an-ad-domain"></a>Wie kann ich eine Skalierungsgruppe in eine AD-Domäne aufnehmen?
+### <a name="how-do-i-join-a-virtual-machine-scale-set-to-an-azure-ad-domain"></a>Wie füge ich eine VM-Skalierungsgruppe einer Azure AD-Domäne hinzu?
 
-Sie könnten eine Erweiterung wie die folgende mit „JsonADDomainExtension“ definieren:
+Eine VM-Skalierungsgruppe kann einer Azure AD-Domäne (Azure Active Directory) durch Definieren einer Erweiterung hinzugefügt werden. 
+
+Verwenden Sie zum Definieren einer Erweiterung die JsonADDomainExtension-Eigenschaft:
+
 ```json
                     "extensionProfile": {
                         "extensions": [
@@ -427,20 +427,20 @@ Sie könnten eine Erweiterung wie die folgende mit „JsonADDomainExtension“ d
                     }
 ```
  
-### <a name="my-scale-set-extension-is-trying-to-install-something-that-requires-a-reboot-for-instance-commandtoexecute-powershellexe--executionpolicy-unrestricted-install-windowsfeature-name-fs-resource-manager-includemanagementtools"></a>Meine Skalierungsgruppenerweiterung versucht, etwas zu installieren, das einen Neustart erfordert, z.B.: commandToExecute: powershell.exe -ExecutionPolicy Unrestricted Install-WindowsFeature –Name FS-Resource-Manager –IncludeManagementTools
+### <a name="my-virtual-machine-scale-set-extension-is-trying-to-install-something-that-requires-a-reboot-for-example-commandtoexecute-powershellexe--executionpolicy-unrestricted-install-windowsfeature-name-fs-resource-manager-includemanagementtools"></a>Meine VM-Skalierungsgruppenerweiterung versucht, etwas installieren, das einen Neustart erfordert. Beispiel: "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted Install-WindowsFeature –Name FS-Resource-Manager –IncludeManagementTools"
 
-Sie könnten die DSC-Erweiterung verwenden. Wenn das Betriebssystem 2012 R2 ist, führt Azure das WMF 5.0-Setup aus, startet neu und setzt die Konfiguration fort. 
+Wenn Ihre VM-Skalierungsgruppenerweiterung versucht, etwas installieren, das einen Neustart erfordert, können Sie die Erweiterung „Azure Automation Desired State Configuration (Automation DSC)“ verwenden. Bei Verwendung des Betriebssystems Windows Server 2012 R2 führt Azure das WMF 5.0-Setup (Windows Management Framework) aus, startet neu und setzt dann die Konfiguration fort. 
  
-### <a name="how-can-i-enable-antimalware-on-my-scale-set"></a>Wie kann ich Antischadsoftware für meine Skalierungsgruppe aktivieren?
+### <a name="how-do-i-turn-on-antimalware-in-my-virtual-machine-scale-set"></a>Wie aktiviere ich Antischadsoftware in meiner VM-Skalierungsgruppe?
 
-Hier ist ein PowerShell-Beispiel:
+Antischadsoftware können Sie in Ihrer VM-Skalierungsgruppe mithilfe des folgenden PowerShell-Beispiels aktiveren:
 
 ```powershell
 $rgname = 'autolap'
 $vmssname = 'autolapbr'
 $location = 'eastus'
  
-# retrieve the most recent version number of the extension
+# Retrieve the most recent version number of the extension.
 $allVersions= (Get-AzureRmVMExtensionImage -Location $location -PublisherName "Microsoft.Azure.Security" -Type "IaaSAntimalware").Version
 $versionString = $allVersions[($allVersions.count)-1].Split(".")[0] + "." + $allVersions[($allVersions.count)-1].Split(".")[1]
  
@@ -450,9 +450,9 @@ Add-AzureRmVmssExtension -VirtualMachineScaleSet $VMSS -Name "IaaSAntimalware" -
 Update-AzureRmVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet $VMSS 
 ```
 
-### <a name="i-need-to-execute-a-custom-script-hosted-on-a-private-storage-account-i-have-no-problems-when-the-storage-is-public-but-when-i-try-to-use-a-shared-access-signaturesas-it-fails-with-the-error-missing-mandatory-parameters-for-valid-shared-access-signature-i-know-that-linksas-works-fine-from-my-local-browser"></a>Ich muss ein benutzerdefiniertes Skript ausführen, das in einem privaten Speicherkonto gehostet wird. Ich habe keine Probleme, wenn der Speicher öffentlich ist, aber wenn ich versuche, eine SAS (Shared Access Signature) zu verwenden, tritt ein Fehler auf. Die Fehlermeldung lautet: „Erforderliche Parameter für gültige SAS (Shared Access Signature) fehlen“. Ich weiß, dass dieser Link und SAS über meinen lokalen Browser funktionieren.
+### <a name="i-need-to-execute-a-custom-script-thats-hosted-in-a-private-storage-account-the-script-runs-successfully-when-the-storage-is-public-but-when-i-try-to-use-a-shared-access-signature-sas-it-fails-this-message-is-displayed-missing-mandatory-parameters-for-valid-shared-access-signature-linksas-works-fine-from-my-local-browser"></a>Ich muss ein benutzerdefiniertes Skript ausführen, das in einem privaten Speicherkonto gehostet wird. Bei Verwendung eines privaten Speichers funktioniert das Skript einwandfrei, wenn ich jedoch eine SAS (Shared Access Signature) verwenden möchte, tritt ein Fehler auf. Folgende Meldung wird angezeigt: „Erforderliche Parameter für gültige SAS (Shared Access Signature) fehlen.“ Link und SAS funktionieren in meinem lokalen Browser problemlos.
 
-Damit dieses Szenario funktioniert, müssen Sie geschützte Einstellungen für den Speicherkontoschlüssel und den Namen einrichten. Siehe: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/#template-example-for-a-windows-vm-with-protected-settings
+Zum Ausführen eines benutzerdefinierten Skripts, das in einem privaten Speicherkonto gehostet wird, müssen Sie geschützte Einstellungen mit dem Speicherkontoschlüssel und -name einrichten. Weitere Informationen finden Sie unter [CustomScript-Erweiterung für Windows](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/#template-example-for-a-windows-vm-with-protected-settings).
 
 
 
@@ -462,46 +462,47 @@ Damit dieses Szenario funktioniert, müssen Sie geschützte Einstellungen für d
 
 ## <a name="networking"></a>Netzwerk
  
-### <a name="how-do-i-do-vip-swap-for-scale-sets-in-the-same-subscription-and-same-region"></a>Wie wird ein VIP-Swap für Skalierungsgruppen im selben Abonnement und derselben Region ausgeführt?
+### <a name="how-do-i-do-a-vip-swap-for-virtual-machine-scale-sets-in-the-same-subscription-and-same-region"></a>Wie führe ich ein VIP-Swap für VM-Skalierungsgruppen im gleichen Abonnement und in der gleichen Region aus?
 
-Siehe: https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/ 
+Informationen zum Ausführen eines VIP-Swaps für VM-Skalierungsgruppen im gleichen Abonnement und in der gleichen Region finden Sie unter [VIP Swap – blue-green deployment in Azure Resource Manager](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/) (VIP-Swap: Blaugrün-Bereitstellung in Azure Resource Manager).
  
   
-### <a name="what-is-the-resourceguid-property-on-a-nic-for"></a>Wozu dient die resourceGuid-Eigenschaft einer Netzwerkkarte?
+### <a name="what-is-the-resourceguid-property-on-a-nic-used-for"></a>Wozu dient die resourceGuid-Eigenschaft einer NIC?
 
-Es ist eine eindeutige ID. Untere Schichten werden diese ID irgendwann in der Zukunft protokollieren. 
+Bei der resourceGuid-Eigenschaft einer NIC (Network Interface Card; Netzwerkschnittstellenkarte) handelt es sich um eine eindeutige ID. Diese ID wird von unteren Schichten irgendwann in der Zukunft protokolliert. 
  
-### <a name="how-do-i-specify-a-range-of-private-ip-addresses-for-static-private-ip-address-allocation"></a>Wie gebe ich einen Bereich von privaten IP-Adressen für die statische private IP-Adresszuordnung an?
+### <a name="how-do-i-specify-a-range-of-private-ip-addresses-to-use-for-static-private-ip-address-allocation"></a>Wie gebe ich einen Bereich privater IP-Adressen für die statische private IP-Adresszuordnung an?
 
-IP-Adressen werden aus einem Subnetz ausgewählt, das Sie angeben. 
+IP-Adressen werden in einem von Ihnen angegebenen Subnetz ausgewählt. 
 
-Die Zuordnungsmethode für IP-Adressen von Skalierungsgruppen ist immer „Dynamisch“. Dies bedeutet jedoch nicht, dass sich diese IP-Adressen ändern können. Es bedeutet lediglich, dass Sie keine IP-Adressen in PUT-Anforderungen angeben müssen. Anders ausgedrückt: Sie geben den statischen Satz mit dem Subnetz an. 
+Die IP-Adresszuordnungsmethode für VM-Skalierungsgruppen ist immer dynamisch. Das bedeutet aber nicht, dass sich diese IP-Adressen ändern können. In diesem Fall bedeutet „dynamisch“ lediglich, dass Sie die IP-Adresse nicht in einer PUT-Anforderung angeben. Verwenden Sie zum Angeben der statischen Gruppe das Subnetz. 
     
-### <a name="how-do-i-deploy-a-scale-set-into-an-existing-vnet"></a>Wie stelle ich eine Skalierungsgruppe in einem vorhandenen VNET bereit? 
+### <a name="how-do-i-deploy-a-virtual-machine-scale-set-to-an-existing-azure-virtual-network"></a>Wie stelle ich eine VM-Skalierungsgruppe für ein vorhandenes virtuelles Azure-Netzwerk bereit? 
 
-Siehe: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-existing-vnet 
+Informationen zum Bereitstellen einer VM-Skalierungsgruppe für ein vorhandenes virtuelles Azure-Netzwerk finden Sie unter [Deploy a VM Scale Set into an existing vnet](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-existing-vnet) (Bereitstellen einer VM-Skalierungsgruppe für ein vorhandenes VNET). 
 
-### <a name="how-do-i-add-a-scale-sets-first-vms-ip-address-to-the-output-of-a-template"></a>Wie füge ich der Ausgabe einer Vorlage die IP-Adresse der ersten VM einer Skalierungsgruppe hinzu?
+### <a name="how-do-i-add-the-ip-address-of-the-first-vm-in-a-virtual-machine-scale-set-to-the-output-of-a-template"></a>Wie füge ich die IP-Adresse des ersten virtuellen Computers in einer VM-Skalierungsgruppe der Ausgabe einer Vorlage hinzu?
 
-Informationen dazu finden Sie hier: http://stackoverflow.com/questions/42790392/arm-get-vmsss-private-ips
+Informationen zum Hinzufügen der IP-Adresse des ersten virtuellen Computers in einer VM-Skalierungsgruppe zur Ausgabe einer Vorlage finden Sie unter [ARM: Get VMSS's private IPs](http://stackoverflow.com/questions/42790392/arm-get-vmsss-private-ips) (ARM: Abrufen der privaten IP-Adressen einer VMSS).
 
 
 
 ## <a name="scale"></a>Skalieren
 
-### <a name="why-would-you-ever-create-a-scale-set-with-fewer-than-2-vms"></a>Welche Gründe gibt es, eine Skalierungsgruppe mit weniger als zwei virtuellen Computern zu erstellen?
+### <a name="in-what-case-would-i-create-a-virtual-machine-scale-set-with-fewer-than-two-vms"></a>In welchem Fall erstelle ich eine VM-Skalierungsgruppe mit weniger als zwei virtuellen Computern?
 
-Ein Grund wäre, die elastischen Eigenschaften einer Skalierungsgruppe zu nutzen. Beispielsweise könnten Sie eine Skalierungsgruppe ohne virtuelle Computer bereitstellen, um Ihre Infrastruktur zu definieren, ohne die laufenden Kosten für virtuelle Computer zu bezahlen. Wenn Sie dann für die Bereitstellung von virtuellen Computern bereit sind, können Sie dazu die „Kapazität“ der Skalierungsgruppe auf die Anzahl der Produktionsinstanzen erhöhen.
+Ein Grund für die Erstellung einer VM-Skalierungsgruppe mit weniger als zwei virtuellen Computern wäre die Verwendung der elastischen Eigenschaften einer VM-Skalierungsgruppe. So können Sie beispielsweise eine VM-Skalierungsgruppe ohne virtuelle Computer bereitstellen, um Ihre Infrastruktur zu definieren, ohne die laufenden Kosten für virtuelle Computer zu bezahlen. Wenn Sie dann für die Bereitstellung von virtuellen Computern bereit sind, können Sie die Kapazität der VM-Skalierungsgruppe auf die Anzahl von Produktionsinstanzen erhöhen.
 
-Ein weiterer Grund dafür wäre, dass Sie die Skalierungsgruppe auf eine Weise nutzen, bei der die Verfügbarkeit nicht die gleiche Bedeutung hat wie bei der Verwendung einer Verfügbarkeitsgruppe mit diskreten virtuellen Computern. Skalierungsgruppen bieten eine Möglichkeit, mit undifferenzierten Computeeinheiten zu arbeiten, die austauschbar sind. Diese Einheitlichkeit ist ein wichtiges Unterscheidungsmerkmal von Skalierungsgruppen im Vergleich mit Verfügbarkeitsgruppen. Für viele zustandslose Workloads sind die einzelnen Einheiten nicht von Bedeutung. Sie können auf eine Computeeinheit herunterskaliert werden, wenn die Workload zurückgeht, und wieder auf viele hochskaliert werden, wenn sich die Workload erhöht.
+Ein weiterer Grund für die Erstellung einer VM-Skalierungsgruppe mit weniger als zwei virtuellen Computern wäre, wenn Sie sich weniger Gedanken um die Verfügbarkeit machen, sondern eher auf die Verwendung einer Verfügbarkeitsgruppe mit diskreten virtuellen Computern Wert legen. VM-Skalierungsgruppen ermöglichen die Verwendung undifferenzierter, austauschbarer Computeeinheiten. Diese Einheitlichkeit ist ein wichtiges Unterscheidungsmerkmal von VM-Skalierungsgruppen im Vergleich zu Verfügbarkeitsgruppen. Bei vielen zustandslosen Workloads werden keine einzelnen Einheiten nachverfolgt. Sie können zentral auf eine einzelne Computeeinheit herunterskaliert werden, wenn die Workload zurückgeht, und werden zentral wieder auf viele Computeeinheiten hochskaliert, wenn sich die Workload erhöht.
 
-### <a name="how-do-you-change-the-number-of-vms-in-a-scale-set"></a>Wie ändern Sie die Anzahl der virtuellen Computer in einer Skalierungsgruppe?
+### <a name="how-do-i-change-the-number-of-vms-in-a-virtual-machine-scale-set"></a>Wie ändere ich die Anzahl von virtuellen Computern in einer VM-Skalierungsgruppe?
 
-Siehe: https://msftstack.wordpress.com/2016/05/13/change-the-instance-count-of-an-azure-vm-scale-set/
+Informationen zum Ändern der Anzahl von virtuellen Computern in einer VM-Skalierungsgruppe finden Sie unter [Change the instance count of an Azure VM Scale Set](https://msftstack.wordpress.com/2016/05/13/change-the-instance-count-of-an-azure-vm-scale-set/) (Ändern der Instanzanzahl einer Azure-VM-Skalierungsgruppe).
 
-### <a name="how-can-you-define-custom-alerts-for-when-certain-thresholds-are-reached"></a>Wie können Sie benutzerdefinierte Warnungen für das Erreichen bestimmter Schwellenwerte definieren?
+### <a name="how-do-i-define-custom-alerts-for-when-certain-thresholds-are-reached"></a>Wie definiere ich benutzerdefinierte Warnungen für das Erreichen bestimmter Schwellenwerte?
 
-Bei der Behandlung von Warnungen gibt es eine gewisse Flexibilität. Sie können z.B. benutzerdefinierte Webhooks definieren, wie in diesem Beispiel aus einer Resource Manager-Vorlage veranschaulicht:
+Warnungen für angegebene Schwellenwerte können mit einer gewissen Flexibilität gehandhabt werden. So können Sie beispielsweise benutzerdefinierte Webhooks definieren. Das folgende Webhookbeispiel stammt aus einer Resource Manager-Vorlage:
+
 ```json
    {
          "type": "Microsoft.Insights/autoscaleSettings",
@@ -533,15 +534,16 @@ Bei der Behandlung von Warnungen gibt es eine gewisse Flexibilität. Sie können
                               ]}],
 ```
 
-In diesem Beispiel wird eine Warnung an Pagerduty ausgegeben, wenn ein Schwellenwert erreicht wird.
+In diesem Beispiel wird bei Erreichen eines Schwellenwerts eine Warnung an „Pagerduty.com“ ausgegeben.
 
 
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-### <a name="how-do-i-enable-boot-diagnostics"></a>Wie aktiviere ich die Startdiagnose?
+### <a name="how-do-i-turn-on-boot-diagnostics"></a>Wie aktiviere ich die Startdiagnose?
 
-Erstellen Sie ein Speicherkonto, fügen Sie den folgenden JSON-Block in „virtualMachineProfile“ der Skalierungsgruppe ein, und aktualisieren Sie die Skalierungsgruppe:
+Erstellen Sie zum Aktivieren der Startdiagnose zunächst ein Speicherkonto. Fügen Sie dann den folgenden JSON-Block unter **virtualMachineProfile** in die VM-Skalierungsgruppe ein, und aktualisieren Sie die VM-Skalierungsgruppe:
+
 ```json
       "diagnosticsProfile": {
         "bootDiagnostics": {
@@ -551,7 +553,7 @@ Erstellen Sie ein Speicherkonto, fügen Sie den folgenden JSON-Block in „virtu
       }
 ```
 
-Beim Erstellen eines neuen virtuellen Computers zeigt dann „InstanceView“ des virtuellen Computers die Details für den Screenshot usw. an. Beispiel:
+Beim Erstellen eines neuen virtuellen Computers zeigt die InstanceView-Eigenschaft des virtuellen Computers die Details für den Screenshot usw. an. Hier sehen Sie ein Beispiel:
  
 ```json
 "bootDiagnostics": {
@@ -564,54 +566,43 @@ Beim Erstellen eines neuen virtuellen Computers zeigt dann „InstanceView“ de
 
 ## <a name="updates"></a>Aktualisierungen
 
-### <a name="how-to-i-update-my-scale-set-to-a-new-image-and-manage-patching"></a>Wie kann ich meine Skalierungsgruppe auf ein neues Image aktualisieren und das Patchen verwalten?
+### <a name="how-to-i-update-my-virtual-machine-scale-set-to-a-new-image-how-do-i-manage-patching"></a>Wie kann ich meine VM-Skalierungsgruppe auf ein neues Image aktualisieren? Wie verwalte das Patchen?
 
-Siehe: https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set
+Informationen zum Aktualisieren Ihrer VM-Skalierungsgruppe auf ein neues Image sowie zum Verwalten des Patchens finden Sie unter [Upgraden einer VM-Skalierungsgruppe](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set).
 
-### <a name="can-you-use-the-reimage-operation-to-reset-a-vm-without-changing-the-image-that-is-reset-a-vm-to-factory-settings-rather-than-to-a-new-image"></a>Kann ein virtueller Computer durch Reimaging zurückgesetzt werden, ohne das Image zu ändern? (Kann er also auf die Werkseinstellungen zurückgesetzt werden, statt auf ein neues Image?)
+### <a name="can-i-use-the-reimage-operation-to-reset-a-vm-without-changing-the-image-that-is-i-want-reset-a-vm-to-factory-settings-rather-than-to-a-new-image"></a>Kann ich einen virtuellen Computer mittels Reimaging zurücksetzen, ohne das Image zu ändern? (Ich möchte einen virtuellen Computer auf die Werkseinstellungen zurücksetzen, nicht auf ein neues Image.)
 
-Ja. Siehe: https://docs.microsoft.com/rest/api/virtualmachinescalesets/manage-all-vms-in-a-set
+Ja. Sie können einen virtuellen Computer mittels Reimaging zurücksetzen, ohne das Image zu ändern. Falls Ihre VM-Skalierungsgruppe allerdings auf ein Plattformimage mit `version = latest` verweist, kann Ihr virtueller Computer auf ein höheres Betriebssystemimage aktualisiert werden, wenn Sie das `reimage` aufrufen.
 
-Wenn die Skalierungsgruppe jedoch auf ein Plattformimage mit version = "latest" verweist, kann Ihr virtueller Computer auf ein höheres Betriebssystemimage aktualisiert werden, wenn Sie das Reimaging durchführen.
-
-
+Weitere Informationen finden Sie unter [Manage all VMs in a set](https://docs.microsoft.com/rest/api/virtualmachinescalesets/manage-all-vms-in-a-set) (Verwalten aller virtuellen Computer in einer Gruppe).
 
 
 
+## <a name="virtual-machine-properties"></a>Eigenschaften für virtuelle Computer
 
+### <a name="how-do-i-get-property-information-for-each-vm-without-making-multiple-calls-for-example-how-would-i-get-the-fault-domain-for-each-of-the-100-vms-in-my-virtual-machine-scale-set"></a>Wie erhalte ich Informationen zu den Eigenschaften für die einzelnen virtuellen Computer, ohne mehrere Aufrufe auszuführen? Wie kann ich also beispielsweise die Fehlerdomäne für jeden der 100 virtuellen Computer in meiner VM-Skalierungsgruppe abrufen?
 
-## <a name="vm-properties"></a>Eigenschaften virtueller Computer
+Wenn Sie Informationen zu den Eigenschaften für die einzelnen virtuellen Computer abrufen möchten, ohne mehrere Aufrufe auszuführen, können Sie `ListVMInstanceViews` im Rahmen eines REST-API-Vorgangs vom Typ `GET` für den folgenden Ressourcen-URI aufrufen:
 
-### <a name="how-do-i-get-property-information-for-each-vm-without-having-to-make-multiple-calls-for-example-getting-the-fault-domain-for-each-vm-in-my-100-scale-set"></a>Wie erhalte ich Informationen zu den Eigenschaften für jeden virtuellen Computer, ohne mehrere Aufrufe auszuführen? Beispiel: Abrufen der Fehlerdomäne für jeden virtuellen Computer in meiner Skalierungsgruppe mit 100 virtuellen Computern?
+/subscriptions/<Abonnement-ID>/resourceGroups/<Name der Ressourcengruppe>/providers/Microsoft.Compute/virtualMachineScaleSets/<Name der Skalierungsgruppe>/virtualMachines?$expand=instanceView&$select=instanceView
 
-Sie können „ListVMInstanceViews“ aufrufen, indem Sie einen `GET`-REST-API-Vorgang über den folgenden Ressourcen-URI ausführen:
+### <a name="can-i-pass-different-extension-arguments-to-different-vms-in-a-virtual-machine-scale-set"></a>Kann ich unterschiedliche Erweiterungsargumente an verschiedene virtuelle Computer in einer VM-Skalierungsgruppe übergeben?
 
-`/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Compute/virtualMachineScaleSets/<scaleset_name>/virtualMachines?$expand=instanceView&$select=instanceView`
+Nein. Es ist nicht möglich, unterschiedliche Erweiterungsargumente an verschiedene virtuelle Computer in einer VM-Skalierungsgruppe zu übergeben. Erweiterungen können aber unter Berücksichtigung der eindeutigen Eigenschaften des ausführenden virtuellen Computers (beispielsweise des Computernamens) aktiv werden. Darüber hinaus können Erweiterungen Instanzmetadaten von „http://169.254.169.254“ abfragen, um weitere Informationen zu dem virtuellen Computer zu erhalten.
 
-### <a name="are-there-ways-to-pass-different-extension-arguments-to-different-vms-in-a-scale-set"></a>Gibt es Methoden zum Übergeben von unterschiedlichen Erweiterungsargumenten an verschiedene virtuelle Computer in einer Skalierungsgruppe?
+### <a name="why-are-there-gaps-between-my-virtual-machine-scale-set-vm-machine-names-and-vm-ids-for-example-0-1-3"></a>Warum gibt es Lücken zwischen den Namen der virtuellen Computer meiner VM-Skalierungsgruppe und den IDs virtueller Computer? Beispiel: 0, 1, 3...
 
-Nein, aber Erweiterungen können basierend auf eindeutigen Eigenschaften des virtuellen Computers, auf dem sie ausgeführt werden (z.B. Computername), genutzt werden. Darüber hinaus können Erweiterungen Instanzmetadaten von „http://169.254.169.254“ abfragen, um weitere Informationen zu erhalten.
+Die Lücken zwischen den Namen der virtuellen Computer Ihrer VM-Skalierungsgruppe und den IDs virtueller Computer sind darauf zurückzuführen, dass die Eigenschaft **overprovision** Ihrer VM-Skalierungsgruppe auf den Standardwert **true** festgelegt ist. Wenn die Überbereitstellung auf **true** festgelegt ist, werden mehr virtuelle Computer als angefordert bereitgestellt. Zusätzliche virtuelle Computer werden anschließend gelöscht. Dies erhöht zwar die Bereitstellungszuverlässigkeit, geht jedoch zulasten fortlaufender Namen und zusammenhängender Regeln für die Netzwerkadressenübersetzung (Network Address Translation, NAT). 
 
-### <a name="why-are-there-gaps-between-my-scale-set-vm-machine-names-and-vm-ids-for-example-0-1-3"></a>Warum gibt es Lücken zwischen den Computernamen in der VM-Skalierungsgruppe und den IDs virtueller Computer? Beispiel: 0, 1, 3...
+Die Eigenschaft kann auf **false** festgelegt werden. Bei kleinen VM-Skalierungsgruppen hat das keine nennenswerten Auswirkungen auf die Bereitstellungszuverlässigkeit.
 
-Es gibt Lücken, da die Eigenschaft für die Überprovisionierung der Skalierungsgruppe auf den Standardwert „true“ festgelegt ist. Bei einer Überprovisionierung werden mehr virtuelle Computer als angefordert erstellt, und die zusätzlichen virtuellen Computer werden anschließend gelöscht. Sie erreichen dadurch eine erhöhte Zuverlässigkeit der Bereitstellung auf Kosten von fortlaufenden Namen und zusammenhängenden NAT-Regeln. Sie können diese Eigenschaft auf „false“ festlegen, und bei kleinen Skalierungsgruppen ergibt sich kein großer Unterschied bei der Zuverlässigkeit der Bereitstellung.
+### <a name="what-is-the-difference-between-deleting-a-vm-in-a-virtual-machine-scale-set-and-deallocating-the-vm-when-should-i-choose-one-over-the-other"></a>Was ist der Unterschied zwischen dem Löschen eines virtuellen Computers in einer VM-Skalierungsgruppe und dem Aufheben der Zuordnung des virtuellen Computers? Wann sollte ich was wählen?
 
-### <a name="what-is-the-difference-between-deleting-a-vm-in-a-scale-set-vs-deallocating-the-vm-when-should-i-choose-one-over-the-other"></a>Was ist der Unterschied zwischen dem Löschen eines virtuellen Computers in einer Skalierungsgruppe und dem Aufheben der Zuordnung des virtuellen Computers? Wann sollte ich was wählen?
+Der Hauptunterschied zwischen dem Löschen eines virtuellen Computers in einer VM-Skalierungsgruppe und dem Aufheben der Zuordnung des virtuellen Computers besteht darin, dass bei `deallocate` die virtuellen Festplatten (Virtual Hard Disks, VHDs) nicht gelöscht werden. Das Ausführen von `stop deallocate` ist mit Speicherkosten verbunden. Im Anschluss finden Sie Gründe für die Verwendung der einzelnen Verfahren:
 
-Der Hauptunterschied besteht darin, dass beim Aufheben der Zuordnung die VHDs nicht gelöscht werden, daher sind keine Speicherkosten mit dem Beenden und Aufheben der Zuordnung verbunden. Mögliche Gründe für Ihre Entscheidung:
+- Sie möchten keine Computekosten mehr bezahlen, aber den Datenträgerzustand der virtuellen Computer beibehalten.
+- Sie möchten eine Gruppe virtueller Computer schneller starten als sich eine VM-Skalierungsgruppe horizontal hochskalieren lässt.
+  - Im Zusammenhang mit diesem Szenario: Sie haben ggf. ein eigenes Modul für die automatische Skalierung erstellt und möchten eine schnellere End-to-End-Skalierung erreichen.
+- Sie verfügen über eine VM-Skalierungsgruppe, die ungleichmäßig auf Fehler- oder Updatedomänen verteilt ist. Dieser Fall kann eintreten, wenn Sie selektiv virtuelle Computer gelöscht haben oder virtuelle Computer nach einer Überbereitstellung gelöscht wurden. Wenn Sie `stop deallocate` und anschließend `start` für die VM-Skalierungsgruppe ausführen, werden die virtuellen Computer gleichmäßig auf Fehler- oder Updatedomänen verteilt.
 
-- Sie möchten nicht weiter für Compute zahlen, jedoch den Datenträgerzustand der virtuellen Computer beibehalten.
-- Sie möchten eine Gruppe von virtuellen Computern schneller starten, als Sie eine Skalierungsgruppe horizontal hochskalieren können.
-  - Im Zusammenhang mit diesem Szenario: Sie haben ein eigenes Modul für die automatische Skalierung erstellt und wünschen sich eine schnellere End-to-End-Skalierung.
-  - Sie verfügen über eine Skalierungsgruppe, die ungleichmäßig über FD/UDs verteilt ist (da virtuelle Computer selektiv gelöscht wurden oder da virtuelle Computer nach einer Überprovisionierung gelöscht wurden). Durch Beenden und Aufheben der Zuordnung gefolgt vom Starten in der Skalierungsgruppe werden die virtuellen Computer gleichmäßig über FD/UDs verteilt.
-
-
-
-
-
-
-
-
- 
-   
 

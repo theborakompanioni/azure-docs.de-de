@@ -2,7 +2,7 @@ Azure-Cloudlösungen basieren auf virtuellen Computern (Emulation von physischer
 
 Azure bietet folgende Docker-Vorteile:
 
-* [Viele](../articles/virtual-machines/virtual-machines-linux-docker-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) [verschiedene](../articles/virtual-machines/virtual-machines-linux-dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Möglichkeiten zum Erstellen von Docker-Hosts für Container, die zu Ihren individuellen Anforderungen passen
+* [Viele](../articles/virtual-machines/linux/docker-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) [verschiedene](../articles/virtual-machines/linux/dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Möglichkeiten zum Erstellen von Docker-Hosts für Container, die zu Ihren individuellen Anforderungen passen
 * Der [Azure Container Service](https://azure.microsoft.com/documentation/services/container-service/) erstellt Cluster mit Containerhosts, indem Orchestrators wie **Marathon** und **Swarm** verwendet werden.
 * [Azure Resource Manager](../articles/azure-resource-manager/resource-group-overview.md) und [Ressourcengruppenvorlagen](../articles/resource-group-authoring-templates.md) zur Vereinfachung von Bereitstellung und Updates von komplexen verteilten Anwendungen
 * Integration einer großen Anzahl von proprietären und Open-Source-Tools für die Konfigurationsverwaltung
@@ -92,19 +92,19 @@ Diese Fähigkeiten werden dann oft zu Tools wie [Puppet](https://puppetlabs.com/
 Vor Kurzem wurde die REST-API der [Azure-Ressourcenverwaltung](../articles/resource-manager-deployment-model.md) veröffentlicht, und die PowerShell- und Azure-Befehlszeilenschnittstellen-Tools wurden aktualisiert, um die Verwendung zu erleichtern. Sie können komplette Anwendungstopologien bereitstellen, ändern oder erneut bereitstellen, indem Sie die [Azure Resource Manager-Vorlagen](../articles/resource-group-authoring-templates.md) mit der Azure-Ressourcenverwaltungs-API verwenden. Nutzen Sie hierbei Folgendes:
 
 * Das [Azure-Portal mit Vorlagen](https://github.com/Azure/azure-quickstart-templates) (Tipp: Verwenden Sie die Schaltfläche „DeployToAzure“.)
-* Die [Azure-Befehlszeilenschnittstelle](../articles/virtual-machines/virtual-machines-linux-cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* Die [Azure PowerShell-Module](../articles/virtual-machines/virtual-machines-linux-cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* Die [Azure-Befehlszeilenschnittstelle](../articles/virtual-machines/linux/cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* Die [Azure PowerShell-Module](../articles/virtual-machines/linux/cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ### <a name="deployment-and-management-of-entire-groups-of-azure-vms-and-containers"></a>Bereitstellung und Verwaltung vollständiger Gruppen von Azure-VMs und Containern
 Es gibt mehrere beliebte Systeme, die ganze Gruppen von virtuellen Computern bereitstellen und auf diesen Docker (oder andere Linux-Containerhostsysteme) als automatisierbare Gruppe installieren können. Direkte Links finden Sie weiter unten im Abschnitt [Container und Tools](#containers-and-vm-technologies). Es gibt eine Reihe von Systemen, die dies in größerem oder weniger großem Umfang können. Diese Liste ist nicht vollständig. Wie nützlich sie sind, hängt von Ihren Kenntnissen und Szenarios ab.
 
-Docker verfügt über einen eigenen Satz von Tools zur Erstellung von virtuellen Computern ([docker-machine](../articles/virtual-machines/virtual-machines-linux-docker-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)) und über ein Clusterverwaltungstool für Lastenausgleich und Docker-Container ([swarm](../articles/virtual-machines/virtual-machines-linux-docker-swarm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)). Darüber hinaus bietet die [Azure VM-Erweiterung für Docker](https://github.com/Azure/azure-docker-extension/blob/master/README.md) standardmäßig Unterstützung für [`docker-compose`](https://docs.docker.com/compose/), womit konfigurierte Anwendungscontainer über mehrere Container hinweg bereitgestellt werden können.
+Docker verfügt über einen eigenen Satz von Tools zur Erstellung von virtuellen Computern ([docker-machine](../articles/virtual-machines/linux/docker-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)) und über ein Clusterverwaltungstool für Lastenausgleich und Docker-Container ([swarm](../articles/virtual-machines/virtual-machines-linux-docker-swarm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)). Darüber hinaus bietet die [Azure VM-Erweiterung für Docker](https://github.com/Azure/azure-docker-extension/blob/master/README.md) standardmäßig Unterstützung für [`docker-compose`](https://docs.docker.com/compose/), womit konfigurierte Anwendungscontainer über mehrere Container hinweg bereitgestellt werden können.
 
 Außerdem können Sie auch [Data Center Operating System (DCOS) von Mesosphere](http://docs.mesosphere.com/install/azurecluster/)testen. DCOS basiert auf dem "Open-Source-Kernel für verteilte Systeme" [mesos](http://mesos.apache.org/) , der es Ihnen ermöglicht, Ihr Rechenzentrum als einen adressierbaren Dienst zu behandeln. DCOS verfügt über integrierte Pakete für verschiedene wichtige Systeme wie [Spark](http://spark.apache.org/) und [Kafka](http://kafka.apache.org/) (und andere) sowie über integrierte Dienste wie [Marathon](https://mesosphere.github.io/marathon/) (ein Containersteuerungssystem) und [Chronos](https://mesos.github.io/chronos/) (ein verteilter Scheduler). Mesos entstand auf Basis von Erfahrungen mit Twitter, AirBnb und anderen im Web operierenden Unternehmen. Sie können auch **swarm** als Orchestrierungsmodul verwenden.
 
 Darüber hinaus ist [kubernetes](https://azure.microsoft.com/blog/2014/08/28/hackathon-with-kubernetes-on-azure/) ein Open-Source-System für die VM- und Containergruppenverwaltung, das auf Grundlage der gewonnenen Erkenntnisse bei Google entstand. Möglich ist auch die [Verwendung von kubernetes mit weave, um Netzwerkunterstützung bereitzustellen](https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/getting-started-guides/coreos/azure/README.md#kubernetes-on-azure-with-coreos-and-weave).
 
-[Deis](http://deis.io/overview/) ist eine Open-Source-"Plattform-as-a-Service" (PaaS), die das Bereitstellen und Verwalten von Anwendungen auf Ihren eigenen Servern erleichtert. Deis baut auf Docker und CoreOS auf, um eine einfache PaaS mit einem durch Heroku inspirierten Workflow bereitzustellen. Sie können in Azure auf einfache Weise [eine Azure-VM-Gruppe mit drei Knoten erstellen und Deis installieren](../articles/virtual-machines/virtual-machines-linux-deis-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) und dann [eine Hello World-Go-Anwendung installieren](../articles/virtual-machines/virtual-machines-linux-deis-cluster.md#deploy-and-scale-a-hello-world-application).
+[Deis](http://deis.io/overview/) ist eine Open-Source-"Plattform-as-a-Service" (PaaS), die das Bereitstellen und Verwalten von Anwendungen auf Ihren eigenen Servern erleichtert. Deis baut auf Docker und CoreOS auf, um eine einfache PaaS mit einem durch Heroku inspirierten Workflow bereitzustellen. Sie können in Azure auf einfache Weise [eine Azure-VM-Gruppe mit drei Knoten erstellen und Deis installieren](../articles/virtual-machines/linux/deis-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) und dann [eine Hello World-Go-Anwendung installieren](../articles/virtual-machines/linux/deis-cluster.md#deploy-and-scale-a-hello-world-application).
 
 [CoreOS](https://coreos.com/os/docs/latest/booting-on-azure.html), eine Linux-Distribution mit optimiertem Ressourcenbedarf, Docker-Unterstützung und einem eigenen Containersystem namens [rkt](https://github.com/coreos/rkt) verfügt ebenfalls über ein Verwaltungstool für Containergruppen namens [fleet](https://coreos.com/using-coreos/clustering/).
 
@@ -144,13 +144,13 @@ Docker-Tools:
 
 Docker in Microsoft Azure:
 
-* [Docker-VM-Erweiterung für Linux auf Azure](../articles/virtual-machines/virtual-machines-linux-dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Docker-VM-Erweiterung für Linux auf Azure](../articles/virtual-machines/linux/dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Benutzerhandbuch für die Azure-Docker-VM-Erweiterung](https://github.com/Azure/azure-docker-extension/blob/master/README.md)
 * [Verwenden der Docker-VM-Erweiterung aus der Azure-Befehlszeilenschnittstelle (Azure-CLI)](../articles/virtual-machines/linux/classic/cli-use-docker.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 * [Verwenden der Docker-VM-Erweiterung über das Azure-Portal](../articles/virtual-machines/linux/classic/portal-use-docker.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
-* [Verwenden von "docker-machine" auf Azure](../articles/virtual-machines/virtual-machines-linux-docker-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Verwenden von "docker-machine" auf Azure](../articles/virtual-machines/linux/docker-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Verwenden von Docker mit Swarm auf Azure](../articles/virtual-machines/virtual-machines-linux-docker-swarm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Erste Schritte mit Docker und Compose auf Azure](../articles/virtual-machines/virtual-machines-linux-docker-compose-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Erste Schritte mit Docker und Compose auf Azure](../articles/virtual-machines/linux/docker-compose-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Using an Azure resource group template to create a Docker host on Azure quickly ("Verwenden einer Azure-Ressourcengruppenvorlage zur schnellen Erstellung eines Docker-Hosts in Azure", in englischer Sprache)](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)
 * [Integrierte Unterstützung für `compose`](https://github.com/Azure/azure-docker-extension#11-public-configuration-keys) für enthaltene Anwendungen
 * [Implementieren einer privaten Docker-Registrierung für Azure](../articles/virtual-machines/virtual-machines-linux-docker-registry-in-blob-storage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -164,7 +164,7 @@ Konfiguration, Clusterverwaltung und Containerorchestrierung:
 * [Fleet in CoreOS](https://coreos.com/using-coreos/clustering/)
 * Deis
 
-  * [Erstellen einer Gruppe von virtuellen Azure-Computern mit drei Knoten, Installieren von Deis und Starten einer Hello World-Go-Anwendung](../articles/virtual-machines/virtual-machines-linux-deis-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+  * [Erstellen einer Gruppe von virtuellen Azure-Computern mit drei Knoten, Installieren von Deis und Starten einer Hello World-Go-Anwendung](../articles/virtual-machines/linux/deis-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * kubernetes
 
   * [Vollständige Anleitung für die automatisierte Kubernetes- Clusterbereitstellung mit CoreOS und Weave](https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/getting-started-guides/coreos/azure/README.md#kubernetes-on-azure-with-coreos-and-weave)

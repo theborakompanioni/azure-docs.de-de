@@ -17,9 +17,9 @@ ms.date: 3/13/2017
 ms.author: markgal;trinadhk; anuragm
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 0be8f1f9fb96bce445c4a91520b9a847b205a519
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
+ms.openlocfilehash: a2452b95c9355957b10477a6e457000f0eba6a9c
+ms.lasthandoff: 04/04/2017
 
 
 ---
@@ -98,7 +98,7 @@ In der folgende Tabellen sind die Azure Backup-Komponenten angegeben, die über 
 Azure Backup schützt Storage Premium-VMs. Azure Storage Premium ist ein SSD-basierter Speicher (Solid State Drive, Festkörperlaufwerk), der auf die Unterstützung E/A-intensiver Workloads ausgelegt ist. Storage Premium ist gut für Workloads von virtuellen Computern (VMs) geeignet. Weitere Informationen zu Storage Premium finden Sie im Artikel [Storage Premium: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern](../storage/storage-premium-storage.md).
 
 ### <a name="back-up-premium-storage-vms"></a>Sichern virtueller Storage Premium-Computer
-Beim Sichern virtueller Storage Premium-Computer erstellt der Backup-Dienst einen temporären Stagingspeicherort namens „AzureBackup-“ im Storage Premium-Konto. Die Größe des Stagingspeicherorts entspricht der Größe des Momentaufnahme des Wiederherstellungspunkts. Stellen Sie sicher, dass im Speicherkonto ausreichend freier Speicherplatz für den temporären Statingspeicherort zur Verfügung steht. Weitere Informationen finden Sie im Artikel zu den [Storage Premium-Einschränkungen](../storage/storage-premium-storage.md#premium-storage-scalability-and-performance-targets). Wenn der Sicherungsauftrag abgeschlossen ist, wird der Stagingspeicherort gelöscht. Der Preis für den Speicher, der für den Stagingspeicherort genutzt wird, entspricht den [Preisen für Storage Premium](../storage/storage-premium-storage.md#pricing-and-billing).
+Beim Sichern virtueller Storage Premium-Computer erstellt der Backup-Dienst einen temporären Stagingspeicherort namens „AzureBackup-“ im Storage Premium-Konto. Die Größe des Stagingspeicherorts entspricht der Größe des Momentaufnahme des Wiederherstellungspunkts. Stellen Sie sicher, dass im Speicherkonto ausreichend freier Speicherplatz für den temporären Statingspeicherort zur Verfügung steht. Weitere Informationen finden Sie im Artikel zu den [Storage Premium-Einschränkungen](../storage/storage-premium-storage.md#scalability-and-performance-targets). Wenn der Sicherungsauftrag abgeschlossen ist, wird der Stagingspeicherort gelöscht. Der Preis für den Speicher, der für den Stagingspeicherort genutzt wird, entspricht den [Preisen für Storage Premium](../storage/storage-premium-storage.md#pricing-and-billing).
 
 > [!NOTE]
 > Ändern oder bearbeiten Sie den Stagingspeicherort nicht.

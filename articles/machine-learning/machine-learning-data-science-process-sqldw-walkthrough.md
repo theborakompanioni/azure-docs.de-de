@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 03/24/2017
 ms.author: bradsev;hangzh;weig
 translationtype: Human Translation
-ms.sourcegitcommit: 29c718d0c34d1e2f9d17b285a7270541a9ff15cf
-ms.openlocfilehash: f12bf7ef4f608e01115a7e7d12b734d65ccc40e5
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 55e3f99cd3202abc012d310b43358d3795c8531e
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -55,7 +55,7 @@ Der **eindeutige Schlüssel** für die Zusammenführung von „trip\_data“ und
 ## <a name="mltasks"></a>Drei Typen von Vorhersageaufgaben
 Wir formulieren drei Vorhersageprobleme basierend auf *tip\_amount*, um drei Arten von Modellierungsaufgaben zu veranschaulichen:
 
-1. **Binäre Klassifizierung**: Vorhersagen, ob ein Trinkgeld bezahlt wurde, d.h. ein *tip\_amount* größer als&0; $ ist eine positive Probe, während ein *tip\_amount* gleich&0; $ eine negative Probe ist.
+1. **Binäre Klassifizierung**: Vorhersagen, ob ein Trinkgeld bezahlt wurde, d.h. ein *tip\_amount* größer als 0 $ ist eine positive Probe, während ein *tip\_amount* gleich 0 $ eine negative Probe ist.
 2. **Multiklassenklassifizierung**: Vorhersage des Trinkgeldbereichs für die Fahrt. Wir teilen *tip\_amount* in fünf Fächer oder Klassen auf:
    
         Class 0 : tip_amount = $0
@@ -105,7 +105,7 @@ Befolgen Sie die Dokumentation unter [Erstellen eines SQL Data Warehouse](../sql
 **Erstellen Sie einen Machine Learning-Arbeitsbereich unter Ihrem Azure-Abonnement.** Eine Anleitung hierzu finden Sie unter [Erstellen eines Azure Machine Learning-Arbeitsbereichs](machine-learning-create-workspace.md)beschriebenen Schritte.
 
 ## <a name="getdata"></a>Laden der Daten in SQL Data Warehouse
-Öffnen Sie eine Windows PowerShell-Befehlskonsole. Führen Sie die folgenden PowerShell-Befehle zum Herunterladen der Beispiel-SQL-Skriptdateien aus, die wir für Sie auf Github bereitstellen. Speichern Sie sie in einem lokalen Verzeichnis, das Sie mit dem Parameter *-DestDir* angeben. Sie können den Wert des Parameters *-DestDir* in ein beliebiges lokales Verzeichnis ändern. Wenn *-DestDir* nicht vorhanden ist, wird es vom PowerShell-Skript erstellt.
+Öffnen Sie eine Windows PowerShell-Befehlskonsole. Führen Sie die folgenden PowerShell-Befehle zum Herunterladen der Beispiel-SQL-Skriptdateien aus, die wir für Sie auf GitHub bereitstellen. Speichern Sie sie in einem lokalen Verzeichnis, das Sie mit dem Parameter *-DestDir* angeben. Sie können den Wert des Parameters *-DestDir* in ein beliebiges lokales Verzeichnis ändern. Wenn *-DestDir* nicht vorhanden ist, wird es vom PowerShell-Skript erstellt.
 
 > [!NOTE]
 > Möglicherweise müssen Sie beim Ausführen des folgenden PowerShell-Skripts die Option **Als Administrator ausführen** verwenden, wenn Sie Administratorrechte benötigen, um Ihr *DestDir* zu erstellen oder darin zu schreiben.
@@ -340,7 +340,7 @@ Nach erfolgreicher Ausführung wird folgender Bildschirm angezeigt:
 ![][20]
 
 ## <a name="dbexplore"></a>Durchsuchen von Daten und Entwickeln von Features in Azure SQL Data Warehouse
-In diesem Abschnitt durchsuchen wir Daten und generieren Features durch das direkte Ausführen von SQL-Abfragen für Azure SQL Data Warehouse mit **Visual Studio Data Tools**. Alle in diesem Abschnitt verwendeten SQL-Abfragen finden Sie im Beispielskript *SQLDW_Explorations.sql*. Diese Datei wurde bereits vom PowerShell-Skript in das lokale Verzeichnis heruntergeladen. Sie können sie auch aus [GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/SQLDW_Explorations.sql)abrufen. In die Datei in Github sind jedoch keine Azure SQL Data Warehouse-Informationen eingebunden.
+In diesem Abschnitt durchsuchen wir Daten und generieren Features durch das direkte Ausführen von SQL-Abfragen für Azure SQL Data Warehouse mit **Visual Studio Data Tools**. Alle in diesem Abschnitt verwendeten SQL-Abfragen finden Sie im Beispielskript *SQLDW_Explorations.sql*. Diese Datei wurde bereits vom PowerShell-Skript in das lokale Verzeichnis heruntergeladen. Sie können sie auch aus [GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/SQLDW_Explorations.sql) abrufen. In die Datei in GitHub sind jedoch keine Azure SQL Data Warehouse-Informationen eingebunden.
 
 Verbinden Sie sich mithilfe von Visual Studio unter Verwendung des Anmeldenamens und Kennworts von SQL Data Warehouse mit Ihrem Azure SQL Data Warehouse, und öffnen Sie den **SQL-Objekt-Explorer** , um zu überprüfen, ob Datenbank sowie Tabellen importiert wurden. Rufen Sie die Datei *SQLDW_Explorations.sql* ab.
 

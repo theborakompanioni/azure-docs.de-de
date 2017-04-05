@@ -12,12 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 2/16/2017
+ms.date: 3/24/2017
 ms.author: msfussell
 translationtype: Human Translation
-ms.sourcegitcommit: 93e0493e6a62a70a10b8315142765a3c3892acd1
-ms.openlocfilehash: 056968900d8078dfe53948a2da1daa26cb04a713
-ms.lasthandoff: 02/08/2017
+ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
+ms.openlocfilehash: 01c0d7e8430df758749f7a524dd3b7771b24fac1
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -44,10 +44,19 @@ Die Funktionen sind:
 ## <a name="packaging-a-docker-container-with-yeoman"></a>Packen von Docker-Containern mit Yeoman
 Beim Packen eines Containers unter Linux können Sie wählen, ob Sie eine Yeoman-Vorlage verwenden oder das [Anwendungspaket manuell erstellen](#manually).
 
-Eine Service Fabric-Anwendung kann einen oder mehrere Container enthalten, die jeweils eine bestimmte Rolle bei der Bereitstellung von Funktionen der Anwendung haben. Das Service Fabric SDK für Linux enthält einen [Yeoman](http://yeoman.io/)-Generator, mit dem Sie problemlos die Anwendung erstellen und ein Containerimage hinzufügen können. Lassen Sie uns mit Yeoman eine neue Anwendung mit einem einzelnen Docker-Container erstellen, deren Name *SimpleContainerApp* lautet. Sie können später weitere Dienste hinzufügen, indem Sie die generierten Manifestdateien bearbeiten.
+Eine Service Fabric-Anwendung kann einen oder mehrere Container enthalten, die jeweils eine bestimmte Rolle bei der Bereitstellung von Funktionen der Anwendung haben. Das Service Fabric SDK für Linux enthält einen [Yeoman](http://yeoman.io/)-Generator, mit dem Sie problemlos die Anwendung erstellen und ein Containerimage hinzufügen können. Lassen Sie uns mit Yeoman eine Anwendung mit einem einzelnen Docker-Container erstellen, deren Name *SimpleContainerApp* lautet. Sie können später weitere Dienste hinzufügen, indem Sie die generierten Manifestdateien bearbeiten.
+
+## <a name="install-docker-on-your-development-box"></a>Installieren von Docker auf dem Entwicklungscomputer
+
+Führen Sie die folgenden Befehle aus, um Docker auf Ihrem Linux-Entwicklungscomputer zu installieren (bei Verwendung des vagrant-Images unter OSX ist Docker bereits installiert):
+
+```bash
+    sudo apt-get install wget
+    wget -qO- https://get.docker.io/ | sh
+```
 
 ## <a name="create-the-application"></a>Erstellen der Anwendung
-1. Geben Sie in einem Terminal die Zeichenfolge **yo azuresfguest** ein.
+1. Geben Sie in einem Terminal `yo azuresfguest` ein.
 2. Wählen Sie für das Framework **Container** aus.
 3. Nennen Sie die Anwendung z.B. „SimpleContainerApp“.
 4. Geben Sie die URL für das Containerimage aus einem DockerHub-Repository an. Der image-Parameter hat das Format [Repository]/[Imagename].
@@ -59,26 +68,30 @@ Die erstellte Anwendung kann mithilfe der Azure-Befehlszeilenschnittstelle im lo
 
 1. Stellen Sie eine Verbindung mit dem lokalen Service Fabric-Cluster her.
 
-    ```bash
+```bash
     azure servicefabric cluster connect
-    ```
+```
+
 2. Verwenden Sie das in der Vorlage bereitgestellte Installationsskript, um das Anwendungspaket in den Imagespeicher des Clusters zu kopieren, den Anwendungstyp zu registrieren und eine Instanz der Anwendung zu erstellen.
 
-    ```bash
+```bash
     ./install.sh
-    ```
+```
+
 3. Navigieren Sie in einem Browser zu Service Fabric Explorer (http://localhost:19080/Explorer). Falls Sie Vagrant unter Mac OS X verwenden, ersetzen Sie „localhost“ durch die private IP-Adresse des virtuellen Computers.
 4. Erweitern Sie den Knoten „Anwendungen“. Hier finden Sie nun einen Eintrag für Ihren Anwendungstyp und einen weiteren für die erste Instanz dieses Typs.
 5. Verwenden Sie das in der Vorlage bereitgestellte Deinstallationsskript, um die Anwendungsinstanz zu löschen und die Registrierung des Anwendungstyps aufzuheben.
 
-    ```bash
+```bash
     ./uninstall.sh
-    ```
+```
+
 Eine Beispielanwendung finden Sie in den [Codebeispielen zu Service Fabric-Containern auf GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-containers).
 
 ## <a name="adding-more-services-to-an-existing-application"></a>Hinzufügen weiterer Dienste zu einer vorhandenen Anwendung
 
 Führen Sie zum Hinzufügen eines weiteren Containerdiensts zu einer Anwendung, die bereits mit `yo` erstellt wurde, die folgenden Schritte aus: 
+
 1. Legen Sie das Verzeichnis auf den Stamm der vorhandenen Anwendung fest.  Beispiel: `cd ~/YeomanSamples/MyApplication`, wenn `MyApplication` die von Yeoman erstellte Anwendung ist.
 2. Führen Sie `yo azuresfguest:AddService` aus.
 
@@ -180,7 +193,7 @@ Sie können einen Hostport zum Kommunizieren mit dem Container konfigurieren, in
 ```
 
 ## <a name="configure-container-to-container-discovery-and-communication"></a>Konfigurieren der Container-zu-Container-Ermittlung und -Kommunikation
-Mit der `PortBinding`-Richtlinie können Sie einen Containerport einem `Endpoint` im Dienstmanifest zuordnen. Dies wird im folgenden Beispiel veranschaulicht. Der Endpunkt `Endpoint1` kann einen festen Port angeben (z.B. Port 80). Es kann auch kein Port angegeben werden. In diesem Fall wird ein zufälliger Port aus dem Anwendungsportbereich für Sie ausgewählt.
+Mit der `PortBinding`-Richtlinie können Sie einen Containerport einem `Endpoint` im Dienstmanifest zuordnen. Der Endpunkt `Endpoint1` kann einen festen Port angeben (z.B. Port 80). Es kann auch kein Port angegeben werden. In diesem Fall wird ein zufälliger Port aus dem Anwendungsportbereich für Sie ausgewählt.
 
 Wenn Sie einen Endpunkt angeben, kann Service Fabric mit dem `Endpoint`-Tag im Dienstmanifest eines Gastcontainers den Endpunkt automatisch für den Naming Service veröffentlichen. Andere Dienste, die im Cluster ausgeführt werden, können diesen Container dann ermitteln, indem sie die REST-Abfragen für die Auflösung nutzen.
 
@@ -302,5 +315,5 @@ Nachdem Sie nun einen Dienst in einem Container bereitgestellt haben, können Si
 * [Interagieren mit einem Service Fabric-Cluster mithilfe der Azure-Befehlszeilenschnittstelle](service-fabric-azure-cli.md)
 
 <!-- Images -->
-[sf-yeoman]: ./media/service-fabric-deploy-container-linux/sf-container-yeoman.png
+[sf-yeoman]: ./media/service-fabric-deploy-container-linux/sf-container-yeoman1.png
 

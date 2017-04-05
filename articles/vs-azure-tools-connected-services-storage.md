@@ -12,74 +12,67 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/11/2016
+ms.date: 03/26/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0c7ca2909de28936f17ab7ac03815d693032b04f
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 614f212bb9afb71bb432bec3df7201807083b7f5
+ms.lasthandoff: 03/27/2017
 
 
 ---
 # <a name="adding-azure-storage-by-using-visual-studio-connected-services"></a>Hinzufügen von Azure-Speicher mithilfe von verbundenen Visual Studio-Diensten
-## <a name="overview"></a>Übersicht
-Mit Visual Studio 2015 können Sie beliebige C#-Clouddienste, mobile .NET-Back-End-Dienste, ASP.NET-Websites oder -Dienste, ASP.NET 5-Dienste oder Azure WebJob-Dienste über das Dialogfeld **Verbundene Dienste hinzufügen** mit Azure Storage verbinden. Mit der Funktion für verbundene Dienste werden die benötigten Verweise und der Verbindungscode hinzugefügt und Ihre Konfigurationsdateien entsprechend geändert. Das Dialogfeld leitet Sie auch zur Dokumentation weiter, in der Sie erfahren, was die nächsten Schritte sind, um mit der Verwendung von Blobspeichern, Warteschlangen und Tabellen zu beginnen.
+Mit Visual Studio können Sie über das Dialogfeld **Verbundene Dienste hinzufügen** eine Verbindung zwischen jedem der folgenden Elemente und Azure Storage herstellen:
 
-## <a name="supported-project-types"></a>Unterstützte Projekttypen
-Mit dem Dialogfeld "Verbundene Dienste" können Sie in den folgenden Projekttypen eine Verbindung mit Azure Storage herstellen.
+- C#-Clouddienst
+- Mobiler .NET-Back-End-Dienst
+- ASP-NET-Website oder -Dienst
+- ASP.NET Core-Dienst
+- Azure WebJob-Dienst 
 
-* ASP.NET-Webprojekte
-* ASP.NET 5-Projekte
-* Webrollen- und Workerrollenprojekte für .NET-Clouddienste
-* .NET Mobile Services-Projekte
-* Azure WebJob-Projekte
+Mit der Funktion für verbundene Dienste werden die benötigten Verweise und der Verbindungscode zu Ihrem Projekt hinzugefügt und Ihre Konfigurationsdateien entsprechend geändert. 
+
+Nach Abschluss zeigt das Dialogfeld **Verbundene Dienste hinzufügen** automatisch die ausführlichen Schritte an, die erforderlich sind, um mit der Arbeit mit Blob Storage, Warteschlangen und Tabellen zu beginnen.
 
 ## <a name="connect-to-azure-storage-using-the-connected-services-dialog"></a>Herstellen einer Verbindung mit Azure Storage mithilfe des Dialogfelds "Verbundene Dienste"
-1. Stellen Sie sicher, dass Sie über ein Azure-Konto verfügen. Wenn Sie nicht über ein Azure-Konto verfügen, können Sie sich für eine [kostenlose Testversion](http://go.microsoft.com/fwlink/?LinkId=518146)registrieren. Sobald Sie ein Azure-Konto haben, können Sie Speicherkonten und Mobile Services erstellen und Azure Active Directory konfigurieren.
-2. Öffnen Sie das Projekt in Visual Studio, öffnen Sie im Projektmappen-Explorer das Kontextmenü für den Knoten **Verweise**, und wählen Sie dann **Verbundenen Dienst hinzufügen** aus.
+1. Öffnen Sie Ihr Projekt in Visual Studio.
+
+1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf den Knoten **Verbundene Dienste**, und wählen Sie im Kontextmenü die Option **Verbundene Dienste hinzufügen** aus.
    
-    ![Hinzufügen eines verbundenen Diensts](./media/vs-azure-tools-connected-services-storage/IC796702.png)
-3. Wählen Sie im Dialogfeld **Verbundenen Dienst hinzufügen** die Option **Azure Storage** aus, und klicken Sie dann auf die Schaltfläche **Konfigurieren**. Sie werden möglicherweise aufgefordert, sich bei Azure anzumelden, wenn Sie noch nicht angemeldet sind.
+    ![Verbundenen Azure-Dienst hinzufügen](./media/vs-azure-tools-connected-services-storage/IC796702.png)
+
+1. Wählen Sie auf der Seite **Verbundene Dienste** die Option **Cloudspeicher mit Azure Storage** aus.
    
-    ![Dialogfeld "Verbundenen Dienst hinzufügen" – Speicher](./media/vs-azure-tools-connected-services-storage/IC796703.png)
-4. Wählen Sie im Dialogfeld **Azure Storage** ein vorhandenes Speicherkonto aus, und klicken Sie dann auf **Hinzufügen**.
+    ![Azure Storage hinzufügen](./media/vs-azure-tools-connected-services-storage/add-azure-storage.png)
+
+1. Wählen Sie im Dialogfeld **Azure Storage** ein vorhandenes Speicherkonto aus, und klicken Sie dann auf **Hinzufügen**.
    
     Wenn Sie ein neues Speicherkonto erstellen müssen, fahren Sie mit dem nächsten Schritt fort. Fahren Sie andernfalls mit Schritt 6 fort.
-   
-    ![Dialogfeld "Azure Storage"](./media/vs-azure-tools-connected-services-storage/IC796704.png)
-5. So erstellen Sie ein neues Speicherkonto 
-   
-   1. Klicken Sie unten im Dialogfeld "Azure Storage" auf **Neues Speicherkonto erstellen** .
-   2. Füllen Sie das Dialogfeld **Speicherkonto erstellen** aus, und wählen Sie dann die Schaltfläche **Erstellen** aus.
-      
-       ![Dialogfeld "Azure Storage"](./media/vs-azure-tools-connected-services-storage/create-storage-account.png)
-      
-       Wenn Sie wieder das Dialogfeld **Azure Storage** aufrufen, wird der neue Speicher in der Liste angezeigt.
-   3. Wählen Sie den neuen Speicher in der Liste aus, und klicken Sie auf **Hinzufügen**.
-6. Der verbundene Speicherdienst wird unter dem Knoten „Dienstverweise“ des WebJob-Projekts angezeigt.
-   
-    ![Azure-Speicher im WebJobs-Projekt](./media/vs-azure-tools-connected-services-storage/IC796705.png)
-7. Überprüfen Sie die Seite mit den ersten Schritten, die angezeigt wird, und finden Sie heraus, wie das Projekt geändert wurde. Eine Seite mit ersten Schritten wird im Browser angezeigt, sobald Sie einen verbundenen Dienst hinzufügen. Sie können die vorgeschlagenen nächsten Schritte und Codebeispiele prüfen oder zur Seite "Was ist passiert" wechseln, um herauszufinden, welche Verweise in Ihrem Projekt hinzugefügt wurden und wie Ihr Code und die Konfigurationsdateien geändert wurden.
+    
+    ![Vorhandenes Speicherkonto zum Projekt hinzufügen](./media/vs-azure-tools-connected-services-storage/select-azure-storage-account.png)
 
+1. So erstellen Sie ein Speicherkonto: 
+   
+   1. Wählen Sie am unteren Rand des Dialogfelds die Option **Neues Speicherkonto erstellen** aus.
+
+   1. Füllen Sie die erforderlichen Optionen im Dialogfeld **Speicherkonto erstellen** aus, und klicken Sie auf **Erstellen**.
+      
+       ![Neues Azure-Speicherkonto](./media/vs-azure-tools-connected-services-storage/create-storage-account.png)
+      
+   1. Wenn das Dialogfeld **Azure Storage** erneut geöffnet wird, wird das neue Speicherkonto in der Liste angezeigt. Wählen Sie das neue Speicherkonto in der Liste aus, und klicken Sie auf **Hinzufügen**.
+
+1. Der verbundene Speicherdienst wird unter dem Knoten **Dienstverweise** Ihres Projekts angezeigt.
+   
 ## <a name="how-your-project-is-modified"></a>Änderungen am Projekt
-Wenn Sie die Bearbeitung des Dialogfelds abschließen, fügt Visual Studio Verweise hinzu und ändert bestimmte Konfigurationsdateien. Die genauen Änderungen hängen vom Projekttyp ab. 
+Wenn Sie die Bearbeitung des Dialogfelds abschließen, fügt Visual Studio Verweise hinzu und ändert bestimmte Konfigurationsdateien. Die genauen Änderungen hängen vom Projekttyp ab: 
 
-* Weitere Informationen zu ASP.NET-Projekten finden Sie unter [Was ist passiert – ASP.NET-Projekte](http://go.microsoft.com/fwlink/p/?LinkId=513126). 
-* Weitere Informationen zu ASP.NET 5-Projekten finden Sie unter [Was ist passiert – ASP.NET 5-Projekte](http://go.microsoft.com/fwlink/p/?LinkId=513124). 
-* Weitere Informationen zu Clouddienstprojekten (Web- und Workerrollen) finden Sie unter [Was ist passiert – Clouddienstprojekte](http://go.microsoft.com/fwlink/p/?LinkId=516965). 
-* Informationen zu WebJob-Projekten finden Sie unter [Was ist passiert – WebJob-Projekte](storage/vs-storage-webjobs-what-happened.md).
+- ASP.NET-Projekt: [Was ist passiert – ASP.NET-Projekte](http://go.microsoft.com/fwlink/p/?LinkId=513126)
+- ASP.NET Core-Projekt: [Was ist passiert – ASP.NET 5-Projekte](http://go.microsoft.com/fwlink/p/?LinkId=513124) 
+- Clouddienstprojekt (Web- und Workerrollen): [Was ist passiert – Clouddienstprojekte](http://go.microsoft.com/fwlink/p/?LinkId=516965)
+- WebJob-Projekt: [Was ist passiert – WebJob-Projekte](storage/vs-storage-webjobs-what-happened.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
-1. Nutzen Sie die Codebeispiele für die ersten Schritte als Leitfaden, um den gewünschten Speichertyp zu erstellen. Beginnen Sie dann mit dem Schreiben von Code für den Zugriff auf Ihr Speicherkonto.
-2. Stellen Sie Fragen, und holen Sie sich Hilfe
-   
-   * [MSDN Forum: Azure Storage](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)
-   * [Azure Storage-Teamblog](http://blogs.msdn.com/b/windowsazurestorage/)
-   * [Speicher auf "azure.microsoft.com"](https://azure.microsoft.com/services/storage/)
-   * [Speicherdokumentation auf "azure.microsoft.com"](https://azure.microsoft.com/documentation/services/storage/)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+- [MSDN Forum: Azure Storage](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)
+- [Microsoft Azure Storage Team Blog](http://blogs.msdn.com/b/windowsazurestorage/)
+- [Azure Storage-Dokumentation](https://docs.microsoft.com/azure/storage/)
 

@@ -15,8 +15,9 @@ ms.topic: get-started-article
 ms.date: 02/07/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 23c49393a115d9cd0ac3a1b0f146e9dcc780347e
-ms.openlocfilehash: 42be5d71d8f22a2eb06f7ca0ebd4c33fb3d8bebe
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 025e8c9e575123a3ad9863a35061ebd0af212486
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -137,6 +138,16 @@ Für Azure AD-Konten können Administratoren Kennwörter mit einer der folgenden
 
 
 - - -
+## <a name="security"></a>Sicherheit
+**F: Werden Konten nach einer bestimmten Anzahl von Versuchen, bei denen Fehler aufgetreten sind, gesperrt, oder wird eine ausgereiftere Strategie angewandt?**</br>
+Wir verwenden eine ausgereiftere Strategie zum Sperren von Konten.  Sie basiert auf der IP-Adresse der Anforderung und den eingegebenen Kennwörtern. Die Dauer der Sperre wird ebenfalls gemäß der Wahrscheinlichkeit erhöht, dass es sich um einen Angriff handelt.  
+
+**F: Bestimmte (häufige) Kennwörter werden mit „Dieses Kennwort wurde zu oft verwendet“-Meldungen zurückgewiesen – bezieht sich dies auf Kennwörter, die im aktuellen Active Directory verwendet wurden?**</br>
+Dies bezieht sich auf Kennwörter, die global häufig sind, z.B. alle Varianten von „Password“ und „123456“.
+
+**F: Wird eine Anmeldeanforderung aus fragwürdigen Quellen (Botnets, Tor-Endpunkt) in einem B2C-Mandanten blockiert, oder setzt dies einen Basic- oder Premium Edition-Mandanten voraus?**</br>
+Wir haben ein Gateway, das Anforderungen filtert, gewissen Schutz gegen Botnets bietet und für alle B2C-Mandanten gilt. 
+
 ## <a name="application-access"></a>Anwendungszugriff
 **F: Wo finde ich eine Liste mit bereits in Azure AD integrierten Anwendungen und deren Funktionen?**
 
@@ -202,9 +213,4 @@ Weitere Informationen finden Sie unter [Automatisieren der Bereitstellung und Be
 **F: Kann ich mit Azure AD eine sichere LDAP-Verbindung einrichten?**
 
 **A:** Nein.  Das LDAP-Protokoll wird von Azure AD nicht unterstützt.
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

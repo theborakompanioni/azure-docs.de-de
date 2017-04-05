@@ -4,6 +4,7 @@
 ## [Warnungen](monitoring-overview-alerts.md)
 ## [Automatische Skalierung](monitoring-overview-autoscale.md)
 ## [Aktivitätsprotokoll](monitoring-overview-activity-logs.md)
+## [Aktionsgruppen](monitoring-action-groups.md)
 ## [Diagnoseprotokolle](monitoring-overview-of-diagnostic-logs.md)
 ## [Integrierte Partnerlösungen](monitoring-partners.md)
 ## [Azure-Diagnose](azure-diagnostics.md)
@@ -28,10 +29,19 @@
 ### [Konfigurieren von Webhooks und E-Mail-Benachrichtigungen bei automatischer Skalierung](insights-autoscale-to-webhook-email.md)
 ## Verwenden des Aktivitätsprotokolls
 ### [Anzeigen von Ereignissen im Aktivitätsprotokoll](insights-debugging-with-events.md)
-### [Konfigurieren des Webhooks für eine Aktivitätsprotokollwarnung](insights-auditlog-to-webhook-email.md)
+### [Konfigurieren von Warnungen für ein Aktivitätsprotokollereignis](monitoring-activity-log-alerts.md)
 ### [Archivieren des Aktivitätsprotokolls](monitoring-archive-activity-log.md)
 ### [Streamen von Aktivitätsprotokollen an Event Hubs](monitoring-stream-activity-logs-event-hubs.md)
 ### [Überwachen von Vorgängen mit dem Ressourcen-Manager](../azure-resource-manager/resource-group-audit.md)
+### [Erstellen von Aktivitätsprotokollwarnungen mit Resource Manager](monitoring-create-activity-log-alerts-with-resource-manager-template.md)
+## Dienstbenachrichtigungen
+### [Anzeigen von Dienstbenachrichtigungen](monitoring-service-notifications.md)
+### [Konfigurieren von Warnungen für Dienstbenachrichtigungen](monitoring-activity-log-alerts-on-service-notifications.md)
+## Aktionsgruppen
+### [Informationen zum Webhookschema](monitoring-activity-log-alerts-webhook.md)
+### [Verhalten von SMS-Benachrichtigungen](monitoring-sms-alert-behavior.md)
+### [Begrenzung der Warnungsrate](monitoring-alerts-rate-limiting.md)
+### [Erstellen von Aktivitätsgruppen mit Resource Manager](monitoring-create-action-group-with-resource-manager-template.md)
 ## Verwalten von Diagnoseprotokollen
 ### [Archivieren](monitoring-archive-diagnostic-logs.md)
 ### [Stream für Event Hubs](monitoring-stream-diagnostic-logs-to-event-hubs.md)

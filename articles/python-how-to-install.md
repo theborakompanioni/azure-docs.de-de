@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: lmazuel
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: f4c30c4653d8a14c7bf68ec6935c26725c6f623c
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: c2d6999c6c6e8d9168e2417309207dd14bf4f6f2
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -43,7 +44,7 @@ Verschiedene Ausführungen von Python-Interpretern sind verfügbar. Einige Beisp
 Es gibt mehrere Möglichkeiten, CPython zu beziehen:
 
 * Direkt unter [www.python.org][www.python.org]
-* Von angesehenen Distributoren wie [www.continuum.io][www.continuum.io], [www.enthought.com][www.enthought.com] und [www.activestate.com][www.activestate.com]
+* Von angesehenen Distributoren wie [www.continuum.io][www.continuum.io], [www.enthought.com][www.enthought.com] oder [www.activestate.com][www.activestate.com]
 * Aus der Source erzeugen!
 
 Sofern Sie keine spezifischen Anforderungen haben, empfehlen wir Ihnen die ersten beiden Optionen.
@@ -110,7 +111,7 @@ Für Linux oder Mac OS werden die folgenden wichtigen Azure-Szenarien unterstüt
 
 Beim ersten Szenario können Sie vielseitige Web-Apps erstellen, die von den Vorteilen der Azure PaaS-Funktionen profitieren, wie beispielsweise [Blobspeicher](virtual-machines/virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), [Warteschlangenspeicher](storage/storage-python-how-to-use-queue-storage.md), [Tabellenspeicher](storage/storage-python-how-to-use-table-storage.md) usw. über Python-Wrapper für die Azure-REST-APIs. Diese funktionieren unter Windows, Mac und Linux identisch.  Sie können diese Clientbibliotheken auch von Ihrem lokalen Entwicklungscomputer oder einem virtuellen Linux-Computer verwenden, der auf Azure ausgeführt wird.
 
-Bei dem VM-Szenario starten Sie einen virtuellen Linux-Computer Ihrer Wahl (Ubuntu, CentOS, Suse) und führen eine beliebige Anwendung aus bzw. verwalten diese.  Beispielsweise können Sie [IPython][IPython]-REPL/Notebook auf Ihrem Windows/Mac/Linux-Computer ausführen und Ihren Browser auf einen virtuellen Linux- oder Windows-Computer mit Multi-Proc verweisen, der die IPython-Engine auf Azure ausführt. Weitere Informationen finden Sie im Tutorial [IPython-Notizbuch in Azure](virtual-machines/virtual-machines-linux-jupyter-notebook.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Bei dem VM-Szenario starten Sie einen virtuellen Linux-Computer Ihrer Wahl (Ubuntu, CentOS, Suse) und führen eine beliebige Anwendung aus bzw. verwalten diese.  Beispielsweise können Sie [IPython][IPython]-REPL/Notebook auf Ihrem Windows-/Mac-/Linux-Computer ausführen und Ihren Browser auf einen virtuellen Linux- oder Windows-Computer mit Multi-Proc verweisen, der die IPython-Engine in Azure ausführt. Weitere Informationen finden Sie im Tutorial [IPython-Notizbuch in Azure](virtual-machines/virtual-machines-linux-jupyter-notebook.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 Informationen zur Einrichtung eines virtuellen Linux-Computers finden Sie im Tutorial [Erstellen eines virtuellen Linux-Computers](virtual-machines/virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
 
@@ -120,52 +121,47 @@ Weitere Informationen zum Entwickeln und Veröffentlichen von Azure-Websites fin
 
 ## <a name="additional-software-and-resources"></a>Weitere Software und Ressourcen:
 * [Azure SDK für Python: ReadTheDocs](http://azure-sdk-for-python.readthedocs.io/en/latest/)
-* [Azure SDK für Python: Github](https://github.com/Azure/azure-sdk-for-python)
+* [Azure SDK für Python: GitHub](https://github.com/Azure/azure-sdk-for-python)
 * [Offizielle Azure-Beispiele für Python](https://azure.microsoft.com/documentation/samples/?platform=python)
-* [Continuum Analytics Python-Distribution][Continuum Analytics Python-Distribution]
-* [Enthought Python-Distribution][Enthought Python-Distribution]
-* [ActiveState Python-Distribution][ActiveState Python-Distribution]
-* [SciPy – Suite wissenschaftlicher Python-Bibliotheken][SciPy – Suite wissenschaftlicher Python-Bibliotheken]
-* [NumPy – numerische Bibliothek für Python][NumPy – numerische Bibliothek für Python]
-* [Django-Projekt – ein ausgereiftes Web-Framework/CMS][Django-Projekt – ein ausgereiftes Web-Framework/CMS]
-* [IPython – ein erweitertes REPL/Notebook für Python][IPython – ein erweitertes REPL/Notebook für Python]
+* [Continuum Analytics Python-Distribution][Continuum Analytics Python Distribution]
+* [Enthought Python-Distribution][Enthought Python Distribution]
+* [ActiveState Python-Distribution][ActiveState Python Distribution]
+* [SciPy – Suite wissenschaftlicher Python-Bibliotheken][SciPy - A suite of Scientific Python libraries]
+* [NumPy – numerische Bibliothek für Python][NumPy - A numerics library for Python]
+* [Django-Projekt – ein ausgereiftes Web-Framework/CMS][Django Project - A mature web framework/CMS]
+* [IPython – ein erweitertes REPL/Notebook für Python][IPython - an advanced REPL/Notebook for Python]
 * [IPython Notebook in Azure](virtual-machines/virtual-machines-linux-jupyter-notebook.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Python-Tools für Visual Studio auf GitHub][Python-Tools für Visual Studio auf GitHub]
+* [Python-Tools für Visual Studio auf GitHub][Python Tools for Visual Studio on GitHub]
 * [Python Developer Center](/develop/python/)
 
-[Continuum Analytics Python-Distribution]: http://continuum.io
-[Enthought Python-Distribution]: http://www.enthought.com
-[ActiveState Python-Distribution]: http://www.activestate.com
+[Continuum Analytics Python Distribution]: http://continuum.io
+[Enthought Python Distribution]: http://www.enthought.com
+[ActiveState Python Distribution]: http://www.activestate.com
 [www.python.org]: http://www.python.org
 [www.continuum.io]: http://continuum.io
 [www.enthought.com]: http://www.enthought.com
 [www.activestate.com]: http://www.activestate.com
-[SciPy – Suite wissenschaftlicher Python-Bibliotheken]: http://www.scipy.org
-[NumPy – numerische Bibliothek für Python]: http://www.numpy.org
-[Django-Projekt – ein ausgereiftes Web-Framework/CMS]: http://www.djangoproject.com
-[IPython – ein erweitertes REPL/Notebook für Python]: http://ipython.org
+[SciPy - A suite of Scientific Python libraries]: http://www.scipy.org
+[NumPy - A numerics library for Python]: http://www.numpy.org
+[Django Project - A mature web framework/CMS]: http://www.djangoproject.com
+[IPython - an advanced REPL/Notebook for Python]: http://ipython.org
 [IPython]: http://ipython.org
-[IPython Notebook in Azure]: virtual-machines-linux-jupyter-notebook.md
+[IPython Notebook on Azure]: virtual-machines-linux-jupyter-notebook.md
 [Cloud Services]: cloud-services-python-ptvs.md
 [Websites]: web-sites-python-ptvs-django-mysql.md
 [Python-Tools für Visual Studio]: http://aka.ms/ptvs
-[Python-Tools für Visual Studio auf GitHub]: https://github.com/microsoft/ptvs
+[Python Tools for Visual Studio on GitHub]: https://github.com/microsoft/ptvs
 [Python Package Index]: http://pypi.python.org/pypi
-[Microsoft Azure SDK für Python 2.7]: http://go.microsoft.com/fwlink/?LinkId=254281
-[Microsoft Azure SDK für Python 3.4]: http://go.microsoft.com/fwlink/?LinkID=516990
-[Einrichten einer Linux-VM über das Azure-Portal]: create-and-configure-opensuse-vm-in-portal.md
-[Verwenden der Azure-Befehlszeilenschnittstelle]: crossplat-cmd-tools.md
-[Erstellen eines virtuellen Linux-Computers]: virtual-machines-linux-quick-create-cli.md
-[Erstellen von Websites mit Django]: web-sites-python-create-deploy-django-app.md
-[Erstellen von Websites mit Bottle]: web-sites-python-create-deploy-bottle-app.md
-[Erstellen von Websites mit Flask]: web-sites-python-create-deploy-flask-app.md
-[Konfigurieren von Python mit Azure-Websites]: web-sites-python-configure.md
-[Tabellenspeicher]: storage-python-how-to-use-table-storage.md
-[Warteschlangenspeicher]: storage-python-how-to-use-queue-storage.md
-[Blobspeicher]: storage-python-how-to-use-blob-storage.md
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+[Microsoft Azure SDK for Python 2.7]: http://go.microsoft.com/fwlink/?LinkId=254281
+[Microsoft Azure SDK for Python 3.4]: http://go.microsoft.com/fwlink/?LinkID=516990
+[Setting up a Linux VM via the Azure portal]: create-and-configure-opensuse-vm-in-portal.md
+[How to use the Azure Command-Line Interface]: crossplat-cmd-tools.md
+[Create a Virtual Machine Running Linux]: virtual-machines-linux-quick-create-cli.md
+[Creating Websites with Django]: web-sites-python-create-deploy-django-app.md
+[Creating Websites with Bottle]: web-sites-python-create-deploy-bottle-app.md
+[Creating Websites with Flask]: web-sites-python-create-deploy-flask-app.md
+[Configuring Python with Azure Websites]: web-sites-python-configure.md
+[table storage]: storage-python-how-to-use-table-storage.md
+[queue storage]: storage-python-how-to-use-queue-storage.md
+[blob storage]: storage-python-how-to-use-blob-storage.md
 

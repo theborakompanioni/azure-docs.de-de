@@ -15,8 +15,9 @@ ms.workload: tbd
 ms.date: 01/05/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: ecb2ab00b56476b4373fa06cb766384cb2fcd514
-ms.openlocfilehash: fceb4254461bd91fd2da8603af4fefa47def72e8
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: f4f3caed8390ba3a80d6cf1282f4d2751c67ae6b
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -75,7 +76,7 @@ So finden Sie die benötigten Informationen
 Die Informationen befinden sich auf diesen Seiten:
 
 * Den **Primary key** (Primärschlüssel) finden Sie auf der Seite **Consume**.
-* Den **Request URI ** (Anforderungs-URI) finden Sie auf der Seite **Consume**. 
+* Den **Request URI** (Anforderungs-URI) finden Sie auf der Seite **Consume**. 
 * **Anforderungsheader**, **Antwortheader** und **Text** der erwarteten API stehen auf der Seite **Swagger API** zur Verfügung.
 
 ### <a name="information-locations-in-machine-learning-studio-classic-web-service-only"></a>Auffinden von Information in Machine Learning Studio (nur klassischer Webdienst)
@@ -90,7 +91,7 @@ So finden Sie die benötigten Informationen in Machine Learning Studio
 Die Informationen befinden sich auf diesen Seiten:
 
 * Der **API-Schlüssel** ist im **Dashboard** des Diensts verfügbar. 
-* Den **Request URI ** (Anforderungs-URI) finden Sie auf der API-Hilfeseite.
+* Den **Request URI** (Anforderungs-URI) finden Sie auf der API-Hilfeseite.
 * **Anforderungsheader**, **Antwortheader** und **Text** der erwarteten API stehen auf der API-Hilfeseite zur Verfügung.
 
 Um die API-Hilfeseite zuzugreifen, klicken Sie entsprechend Ihrer Aufgabe entweder auf den Link **REQUEST/RESPONSE** oder **BATCH EXECUTION**.
@@ -105,7 +106,7 @@ So finden Sie die benötigten Informationen im Azure Machine Learning Web Servic
 Die Informationen befinden sich auf diesen Seiten:
 
 * Den **Primary key** (Primärschlüssel) finden Sie auf der Seite **Consume**.
-* Den **Request URI ** (Anforderungs-URI) finden Sie auf der Seite **Consume**. 
+* Den **Request URI** (Anforderungs-URI) finden Sie auf der Seite **Consume**. 
 * **Anforderungsheader**, **Antwortheader** und **Text** der erwarteten API stehen auf der Seite **Swagger API** zur Verfügung.
 
 In den folgenden beiden Beispielen wird die Sprache C# verwendet, um den erforderlichen Code zu veranschaulichen.
@@ -730,9 +731,4 @@ Jetzt können Sie beliebige Swagger-Tools verwenden. Hier sind die Anweisungen, 
 <!-- External Links -->
 [webservicesportal]: https://services.azureml.net/
 [mlstudio]: https://studio.azureml.net
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

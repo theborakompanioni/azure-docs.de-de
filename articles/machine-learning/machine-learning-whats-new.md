@@ -12,15 +12,28 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2017
+ms.date: 03/28/2017
 ms.author: v-donglo
 translationtype: Human Translation
-ms.sourcegitcommit: 0813611f581a68efb8f09a1e041cfbe429bf0c5c
-ms.openlocfilehash: c3662dee7feb6373dd733300a9af2fc112ab270f
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 551b977b90612ddbfa1514a9c2358ebf8179c385
+ms.lasthandoff: 03/28/2017
 
 
 ---
 # <a name="whats-new-in-azure-machine-learning"></a>Neuerungen in Azure Machine Learning
+
+### <a name="the-march-2017-release-of-microsoft-azure-machine-learning-updates-provides-the-following-feature"></a>Die Updates für Microsoft Azure Machine Learning (ML) vom März 2017 bieten das folgende Feature:
+
+
+
+* Dedizierte Kapazität für Azure Machine Learning-BES-Aufträge
+
+    Die Machine Learning Batch-Pool-Verarbeitung verwendet den [Azure Batch-Dienst](../batch/batch-technical-overview.md), um kundenverwaltete Skalierung für den Azure Machine Learning-Batchausführungsdienst zu ermöglichen. Die Batch Pool-Verarbeitung ermöglicht Ihnen das Erstellen von Azure Batch-Pools, an die Sie Batchaufträge senden und diese auf vorhersagbare Weise ausführen können.
+
+    Weitere Informationen finden Sie unter [Azure Batch-Dienst für Machine Learning-Aufträge](machine-learning-dedicated-capacity-for-bes-jobs.md).
+
+
 ### <a name="the-august-2016-release-of-microsoft-azure-machine-learning-updates-provide-the-following-features"></a>Die Updates für Microsoft Azure Machine Learning (ML) vom August 2016 bieten die folgenden Features:
 * Klassische Webdienste können nun im neuen [Microsoft Azure Machine Learning Web Services](https://services.azureml.net/)-Portal verwaltet werden, das als Zentrale für die Verwaltung aller Aspekte Ihres Webdiensts fungiert.    
   * Ein Webdienst für [Nutzungsstatistik](machine-learning-manage-new-webservice.md) wird bereitgestellt.
@@ -40,10 +53,5 @@ ms.openlocfilehash: c3662dee7feb6373dd733300a9af2fc112ab270f
 * Es gibt eine neue Batch Execution Service-Testseite mit Beispieldaten und Auftragsübermittlungsverlauf.
 
 Darüber hinaus wurde Machine Learning Studio so aktualisiert, dass Sie die Bereitstellung gemäß dem neuen Webdienstmodell oder weiter gemäß dem klassischen Webdienstmodell vornehmen können. 
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

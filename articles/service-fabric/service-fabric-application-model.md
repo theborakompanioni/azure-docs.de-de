@@ -1,5 +1,5 @@
 ---
-title: Service Fabric-Anwendungsmodell | Microsoft Docs
+title: Azure Service Fabric-Anwendungsmodell | Microsoft-Dokumentation
 description: Informationen zum Modellieren und Beschreiben von Anwendungen und Diensten in Service Fabric.
 services: service-fabric
 documentationcenter: .net
@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 3/02/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 62374d57829067b27bb5876e6bbd9f869cff9187
-ms.openlocfilehash: 4991992f15b941ab9250705e20ff5f37defc30d0
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 87db655d246dad90bf0afbc91ec507b0a86d90eb
+ms.lasthandoff: 03/27/2017
 
 
 ---
 # <a name="model-an-application-in-service-fabric"></a>Modellieren von Anwendungen in Service Fabric
-Dieser Artikel enthält eine Übersicht über das Azure Service Fabric-Anwendungsmodell. Außerdem wird erläutert, wie eine Anwendung und ein Dienst über Manifestdateien definiert werden und die Anwendung für die Bereitstellung gepackt und vorbereitet wird.
+Dieser Artikel bietet eine Übersicht über das Azure Service Fabric-Anwendungsmodell und erläutert, wie eine Anwendung und ein Dienst über Manifestdateien definiert werden.
 
 ## <a name="understand-the-application-model"></a>Informationen zum Anwendungsmodell
 Eine Anwendung ist eine Sammlung von einzelnen Diensten, die eine bzw. mehrere bestimmte Funktionen ausführen. Ein Dienst führt eine vollständige und eigenständige Funktion aus (er kann unabhängig von anderen Diensten gestartet und ausgeführt werden) und besteht aus Code, Konfiguration und Daten. Für jeden Dienst besteht der Code aus den ausführbaren Binärdateien, die Konfiguration umfasst Diensteinstellungen, die zur Laufzeit geladen werden können, und die Daten bestehen aus beliebigen statischen Daten, die vom Dienst verarbeitet werden. Jede Komponente in diesem hierarchischen Anwendungsmodell kann unabhängig mit einer Versionsangabe versehen und aktualisiert werden.
@@ -85,13 +85,20 @@ Das Dienstmanifest definiert deklarativ der Diensttyp und die Version. Es legt D
 
 **ServiceTypes** deklariert, welche Diensttypen von **CodePackages** in diesem Manifest unterstützt werden. Wenn ein Dienst mit einem dieser Diensttypen instanziiert wird, werden alle Codepakete, die in diesem Manifest deklariert sind, durch Ausführen ihrer Einstiegspunkte aktiviert. Die resultierenden Prozesse registrieren die unterstützten Diensttypen zur Laufzeit. Beachten Sie, dass Diensttypen auf Ebene der Manifeste und nicht auf Ebene der Codepakete deklariert werden. Wenn mehrere Codepakete vorhanden sind, werden sie daher alle aktiviert, wenn im System nach einem der deklarierten Diensttypen gesucht wird.
 
-**SetupEntryPoint** ist ein privilegierter Einstiegspunkt, der mit den gleichen Anmeldeinformationen wie Service Fabric (i.d.R. dem *LocalSystem*-Konto) vor jedem anderen Einstiegspunkt ausgeführt wird. Die durch **EntryPoint** angegebene ausführbare Datei ist üblicherweise der Diensthost mit langer Ausführungsdauer. Das Vorhandensein eines separaten Setupeinstiegspunkts vermeidet, dass der Diensthost über längere Zeiträume mit hohen Berechtigungen ausgeführt werden muss. Die von **EntryPoint** angegebene ausführbare Datei wird ausgeführt, nachdem **SetupEntryPoint** erfolgreich beendet wurde. Der resultierende Prozess wird überwacht und neu gestartet (er beginnt wieder mit **SetupEntryPoint**), sofern er beendet wird oder abstürzt.
+**SetupEntryPoint** ist ein privilegierter Einstiegspunkt, der mit den gleichen Anmeldeinformationen wie Service Fabric (i.d.R. dem *LocalSystem*-Konto) vor jedem anderen Einstiegspunkt ausgeführt wird. Die durch **EntryPoint** angegebene ausführbare Datei ist üblicherweise der Diensthost mit langer Ausführungsdauer. Das Vorhandensein eines separaten Setupeinstiegspunkts vermeidet, dass der Diensthost über längere Zeiträume mit hohen Berechtigungen ausgeführt werden muss. Die von **EntryPoint** angegebene ausführbare Datei wird ausgeführt, nachdem **SetupEntryPoint** erfolgreich beendet wurde. Der resultierende Prozess wird überwacht und neu gestartet (er beginnt wieder mit **SetupEntryPoint**), sofern er beendet wird oder abstürzt. 
+
+Gängige Szenarios für die Verwendung von **SetupEntryPoint** sind die Anforderung, eine ausführbare Datei vor dem Starten des Diensts auszuführen, sowie die Anforderung, einen Vorgang mit erhöhten Rechten auszuführen. Beispiel:
+
+* Einrichten und Initialisieren von Umgebungsvariablen, die die ausführbare Datei des Diensts benötigt. Dies ist nicht auf Dateien beschränkt, die mit den Service Fabric-Programmiermodellen geschrieben wurden. „npm.exe“ benötigt beispielsweise einige Umgebungsvariablen, die zum Bereitstellen einer node.js-Anwendung konfiguriert wurden.
+* Einrichten einer Zugriffssteuerung durch Installieren von Sicherheitszertifikaten.
+
+Weitere Informationen zum Konfigurieren von **SetupEntryPoint** finden Sie unter [Konfigurieren der Richtlinie für einen Setupeinstiegspunkt für Dienste](service-fabric-application-runas-security.md).
 
 **EnvironmentVariables** enthält eine Liste von Umgebungsvariablen, die für dieses Codepaket festgelegt wurden. Diese können in `ApplicationManifest.xml` überschrieben werden, um unterschiedliche Werte für verschiedene Dienstinstanzen bereitzustellen. 
 
 **DataPackage** deklariert einen Ordner, der durch das **Name**-Attribut benannt wird und beliebige statische Daten enthält, die zur Laufzeit vom Prozess verarbeitet werden sollen.
 
-**ConfigPackage** deklariert einen Ordner, der durch das **Name**-Attribut benannt wird und die Datei *Settings.xml* enthält. Diese Datei enthält Abschnitte mit benutzerdefinierten Schlüssel-Wert-Paar-Einstellungen, die der Prozess zur Laufzeit einlesen kann. Wenn sich während eines Upgrades nur die **Version** von **ConfigPackage** geändert hat, wird der ausgeführte Prozess nicht neu gestartet. Stattdessen benachrichtigt ein Rückruf den Prozess, dass sich Konfigurationseinstellungen geändert haben, sodass sie dynamisch neu geladen werden können. Hier eine *Settings.xml*-Beispieldatei:
+**ConfigPackage** deklariert einen Ordner, der durch das **Name**-Attribut benannt wird und die Datei *Settings.xml* enthält. Diese Datei enthält Abschnitte mit benutzerdefinierten Schlüssel-Wert-Paar-Einstellungen, die der Prozess zur Laufzeit einlesen kann. Wenn sich während eines Upgrades nur die **Version** von **ConfigPackage** geändert hat, wird der ausgeführte Prozess nicht neu gestartet. Stattdessen benachrichtigt ein Rückruf den Prozess, dass sich Konfigurationseinstellungen geändert haben, sodass sie dynamisch neu geladen werden können. Hier ein Beispiel der Datei *Settings.xml* :
 
 ```xml
 <Settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -167,95 +174,11 @@ For more information about other features supported by application manifests, re
 *TODO: Service Templates
 -->
 
-## <a name="package-an-application"></a>Packen einer Anwendung
-### <a name="package-layout"></a>Paketlayout
-Anwendungsmanifest, Dienstmanifeste und andere erforderliche Paketdateien müssen in einem bestimmten Layout für die Bereitstellung in einem Service Fabric-Cluster angeordnet werden. Die Beispielmanifeste in diesem Artikel müssen in der folgenden Verzeichnisstruktur angeordnet werden:
 
-```
-PS D:\temp> tree /f .\MyApplicationType
-
-D:\TEMP\MYAPPLICATIONTYPE
-│   ApplicationManifest.xml
-│
-└───MyServiceManifest
-    │   ServiceManifest.xml
-    │
-    ├───MyCode
-    │       MyServiceHost.exe
-    │
-    ├───MyConfig
-    │       Settings.xml
-    │
-    └───MyData
-            init.dat
-```
-
-Die Ordner werden nach den **Name** -Attributen der jeweils zugehörigen Elemente benannt. Wenn das Dienstmanifest beispielsweise zwei Codepakete mit den Namen **MyCodeA** und **MyCodeB** umfasst, enthalten zwei Ordner mit denselben Namen die jeweils erforderlichen Binärdateien für jedes Codepaket.
-
-### <a name="use-setupentrypoint"></a>Verwenden von SetupEntryPoint
-Gängige Szenarios für die Verwendung von **SetupEntryPoint** sind die Anforderung, eine ausführbare Datei vor dem Starten des Diensts auszuführen, sowie die Anforderung, einen Vorgang mit erhöhten Rechten auszuführen. Beispiel:
-
-* Einrichten und Initialisieren von Umgebungsvariablen, die die ausführbare Datei des Diensts benötigt. Dies ist nicht auf Dateien beschränkt, die mit den Service Fabric-Programmiermodellen geschrieben wurden. „npm.exe“ benötigt beispielsweise einige Umgebungsvariablen, die zum Bereitstellen einer node.js-Anwendung konfiguriert wurden.
-* Einrichten einer Zugriffssteuerung durch Installieren von Sicherheitszertifikaten.
-
-Weitere Informationen zum Konfigurieren von **SetupEntryPoint** finden Sie unter [Konfigurieren der Richtlinie für einen Setupeinstiegspunkt für Dienste](service-fabric-application-runas-security.md).  
-
-### <a name="configure"></a>Konfigurieren 
-### <a name="build-a-package-by-using-visual-studio"></a>Erstellen eines Pakets mit Visual Studio
-Wenn Sie Ihre Anwendung mithilfe von Visual Studio 2015 erstellen, können Sie über den Befehl "Paket" automatisch ein Paket erstellen, das dem oben beschriebenen Layout entspricht.
-
-Klicken Sie zum Erstellen eines Pakets im Projektmappen-Explorer mit der rechten Maustaste auf das Anwendungsprojekt, und wählen Sie wie unten gezeigt den Befehl „Paket“ aus:
-
-![Paketieren einer Anwendung mit Visual Studio][vs-package-command]
-
-Nach Abschluss der Paketerstellung wird der Speicherort des Pakets im **Ausgabefenster** angezeigt. Beachten Sie, dass die Paketerstellung automatisch erfolgt, wenn Sie die Anwendung in Visual Studio bereitstellen oder debuggen.
-
-### <a name="build-a-package-by-command-line"></a>Erstellen eines Pakets über die Befehlszeile
-Es ist auch möglich, Ihre Anwendung mit `msbuild.exe` programmgesteuert zu packen. Diese Datei wird auch von Visual Studio im Hintergrund ausgeführt, sodass die Ausgabe identisch ist.
-
-```shell
-D:\Temp> msbuild HelloWorld.sfproj /t:Package
-```
-
-### <a name="test-the-package"></a>Testen des Pakets
-Sie können die Paketstruktur lokal über PowerShell mit dem **Test-ServiceFabricApplicationPackage** -Befehl überprüfen. Dieser Befehl sucht nach Problemen bei der Manifestanalyse und überprüft alle Verweise. Beachten Sie, dass dieser Befehl nur die strukturelle Richtigkeit der Verzeichnisse und Dateien im Paket überprüft. Es werden keine Inhalte der Code- oder Datenpakete überprüft, mit Ausnahme der Prüfung, ob alle erforderlichen Dateien vorhanden sind.
-
-```
-PS D:\temp> Test-ServiceFabricApplicationPackage .\MyApplicationType
-False
-Test-ServiceFabricApplicationPackage : The EntryPoint MySetup.bat is not found.
-FileName: C:\Users\servicefabric\AppData\Local\Temp\TestApplicationPackage_7195781181\nrri205a.e2h\MyApplicationType\MyServiceManifest\ServiceManifest.xml
-```
-
-Dieser Fehler gibt an, dass die Datei *MySetup.bat* , auf die im Dienstmanifest **SetupEntryPoint** verwiesen wird, im Codepaket fehlt. Nach dem Hinzufügen der fehlenden Datei wird die Überprüfung der Anwendung erfolgreich abgeschlossen:
-
-```
-PS D:\temp> tree /f .\MyApplicationType
-
-D:\TEMP\MYAPPLICATIONTYPE
-│   ApplicationManifest.xml
-│
-└───MyServiceManifest
-    │   ServiceManifest.xml
-    │
-    ├───MyCode
-    │       MyServiceHost.exe
-    │       MySetup.bat
-    │
-    ├───MyConfig
-    │       Settings.xml
-    │
-    └───MyData
-            init.dat
-
-PS D:\temp> Test-ServiceFabricApplicationPackage .\MyApplicationType
-True
-PS D:\temp>
-```
-
-Nachdem die Anwendung ordnungsgemäß gepackt und die Überprüfung erfolgreich abgeschlossen wurde, kann die Anwendung bereitgestellt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
+[Packen](service-fabric-package-apps.md) und Vorbereiten einer Anwendung für die Bereitstellung
+
 [Bereitstellen und Entfernen von Anwendungen][10] beschreibt, wie Sie mit PowerShell Anwendungsinstanzen verwalten.
 
 [Verwalten von Anwendungsparametern für mehrere Umgebungen][11] beschreibt, wie Parameter und Umgebungsvariablen für verschiedene Anwendungsinstanzen konfiguriert werden.
@@ -266,7 +189,6 @@ Nachdem die Anwendung ordnungsgemäß gepackt und die Überprüfung erfolgreich 
 [appmodel-diagram]: ./media/service-fabric-application-model/application-model.png
 [cluster-imagestore-apptypes]: ./media/service-fabric-application-model/cluster-imagestore-apptypes.png
 [cluster-application-instances]: media/service-fabric-application-model/cluster-application-instances.png
-[vs-package-command]: ./media/service-fabric-application-model/vs-package-command.png
 
 <!--Link references--In actual articles, you only need a single period before the slash-->
 [10]: service-fabric-deploy-remove-applications.md
