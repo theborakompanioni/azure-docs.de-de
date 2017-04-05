@@ -16,7 +16,7 @@ Auf dem Blatt „Grundlagen“ werden administrative Informationen für den virt
 
 2. Geben Sie einen **Benutzernamen** und ein sicheres **Kennwort** für die Erstellung eines lokalen Kontos auf dem virtuellen Computer ein. Das lokale Konto wird für die Anmeldung bei dem virtuellen Computer sowie für dessen Verwaltung verwendet. Im Beispiel ist _azureuser_ der Benutzername.
 
- Das Kennwort muss 8 bis 123 Zeichen lang sein und drei der folgenden vier Komplexitätsanforderungen erfüllen: ein Kleinbuchstabe, ein Großbuchstabe, eine Zahl und ein Sonderzeichen. Weitere Informationen finden Sie unter den [Anforderungen für Benutzernamen und Kennwörter](../articles/virtual-machines/virtual-machines-windows-faq.md).
+ Das Kennwort muss 8 bis 123 Zeichen lang sein und drei der folgenden vier Komplexitätsanforderungen erfüllen: ein Kleinbuchstabe, ein Großbuchstabe, eine Zahl und ein Sonderzeichen. Weitere Informationen finden Sie unter den [Anforderungen für Benutzernamen und Kennwörter](../articles/virtual-machines/windows/faq.md).
 
 3. Das **Abonnement** ist optional. Eine häufige Einstellung ist „Nutzungsbasierte Bezahlung“.
 

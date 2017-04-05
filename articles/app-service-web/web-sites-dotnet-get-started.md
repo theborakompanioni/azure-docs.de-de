@@ -3,7 +3,7 @@ title: "Bereitstellen einer ASP.NET-App für Azure mit Visual Studio | Microsoft
 description: Erfahren Sie, wie Sie ein ASP.NET-Webprojekt mit Visual Studio in einer neuen Web-App in Azure App Service bereitstellen.
 services: app-service\web
 documentationcenter: .net
-author: tdykstra
+author: cephalin
 manager: erikre
 editor: 
 ms.assetid: 69759e3c-384c-4afb-9278-db6724f6cb74
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: get-started-article
 ms.date: 12/16/2016
-ms.author: rachelap
+ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 9b7e0b429575d080819f25e04d492a2b09d4d63a
-ms.openlocfilehash: 946552d1b268c6e70a9e8fcd4c40bd6e2ab76178
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
+ms.openlocfilehash: 93107d19e1814b30d69fc12c92b544d9760bda6a
+ms.lasthandoff: 04/04/2017
 
 
 ---
@@ -50,7 +50,7 @@ Dieses Tutorial dauert etwa 10 bis 15 Minuten (ohne Berücksichtigung der Zeit f
   
     Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, besuchen Sie [Azure App Service-App erstellen](https://azure.microsoft.com/try/app-service/). Dort können Sie eine kurzzeitige Start-App in App Service erstellen – ohne Kreditkarte oder weitere Verpflichtungen.
 
-## <a name="a-namesetupdevenvaset-up-the-development-environment"></a><a name="setupdevenv"></a>Einrichten der Entwicklungsumgebung
+## <a name="setupdevenv"></a>Einrichten der Entwicklungsumgebung
 Das Tutorial wurde für Visual Studio 2015 mit dem [Azure SDK für .NET](../dotnet-sdk.md) 2.9 (oder höher) geschrieben. 
 
 * Das aktuelle Azure SDK für Visual Studio 2015 können Sie [hier](http://go.microsoft.com/fwlink/?linkid=518003) herunterladen. Das SDK installiert Visual Studio 2015, falls es noch nicht vorhanden ist.
@@ -189,8 +189,6 @@ In diesem Abschnitt stellen Sie das Webprojekt für die in Azure App Service ers
 
 ## <a name="troubleshooting"></a>Problembehandlung
 Wenn Sie beim Durcharbeiten dieses Tutorials auf ein Problem stoßen, sollten Sie sich vergewissern, dass Sie die aktuelle Version des Azure SDK für .NET verwenden. Das geht am einfachsten durch [Herunterladen des Azure SDK für Visual Studio 2015](http://go.microsoft.com/fwlink/?linkid=518003). Wenn Sie die aktuelle Version installiert haben, werden Sie vom Webplattform-Installer darüber informiert, dass keine Installation erforderlich ist.
-
-Falls Sie sich in einem Unternehmensnetzwerk befinden und versuchen, die Bereitstellung für Azure App Service über eine Firewall durchzuführen, sollten Sie sicherstellen, dass die Ports 443 und 8172 für Web Deploy geöffnet sind. Wenn Sie diese Ports nicht öffnen können, helfen Ihnen die anderen Bereitstellungsoptionen unten im Abschnitt „Nächste Schritte“ weiter.
 
 Sobald Ihre ASP.NET-Web-App in Azure App Service ausgeführt wird, können Sie sich näher mit Visual Studio-Features zur Vereinfachung der Problembehandlung befassen. Informationen zu Protokollierung, Remotedebuggen und weiteren Themen finden Sie unter [Problembehandlung von Azure-Web-Apps in Visual Studio](web-sites-dotnet-troubleshoot-visual-studio.md).
 

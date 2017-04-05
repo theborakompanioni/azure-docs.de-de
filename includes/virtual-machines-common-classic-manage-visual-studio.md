@@ -129,10 +129,5 @@ Wenn Sie Ihren virtuellen Computer konfigurieren und Software darauf installiere
 2. Wählen Sie im Kontextmenü den Befehl **Herunterfahren** aus, oder wählen Sie **Konfigurieren** aus, um die Konfigurationsseite des virtuellen Computers anzuzeigen, und klicken Sie dann auf die Schaltfläche **Herunterfahren**.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zum Erstellen von virtuellen Computern finden Sie unter [Erstellen eines virtuellen Linux-Computers](../articles/virtual-machines/virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) und [Erstellen ein virtuellen Windows-Computers im Azure-Vorschauportal](../articles/virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+Weitere Informationen zum Erstellen von virtuellen Computern finden Sie unter [Erstellen eines virtuellen Linux-Computers](../articles/virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) und [Erstellen ein virtuellen Windows-Computers im Azure-Vorschauportal](../articles/virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

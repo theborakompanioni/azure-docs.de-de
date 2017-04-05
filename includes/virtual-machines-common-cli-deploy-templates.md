@@ -36,7 +36,7 @@ Wenn Sie noch kein Azure-Abonnement aber ein MDSN-Abonnement haben, können Sie 
 [Melden Sie sich jetzt interaktiv bei Ihrem Azure-Konto an](../articles/xplat-cli-connect.md#scenario-1-azure-login-with-interactive-login), indem Sie `azure login` eingeben. Folgen Sie dann den Aufforderungen für eine interaktive Anmeldung bei Ihrem Azure-Konto. 
 
 > [!NOTE]
-> Wenn Sie über eine Geschäfts-, Schul- oder Unikonto-ID verfügen und wissen, dass die zweistufige Authentifizierung nicht aktiviert ist, können Sie **auch** `azure login -u` zusammen mit der Geschäfts-, Schul- oder Unikonto-ID verwenden, um sich *ohne* interaktive Sitzung anzumelden. Wenn Sie nicht über eine Geschäfts-, Schul- oder Unikonto-ID verfügen, können Sie [eine Geschäfts-, Schul- oder Unikonto-ID mit Ihrem persönlichen Microsoft-Konto erstellen](../articles/virtual-machines/virtual-machines-windows-create-aad-work-id.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), um sich auf die gleiche Weise anzumelden.
+> Wenn Sie über eine Geschäfts-, Schul- oder Unikonto-ID verfügen und wissen, dass die zweistufige Authentifizierung nicht aktiviert ist, können Sie **auch** `azure login -u` zusammen mit der Geschäfts-, Schul- oder Unikonto-ID verwenden, um sich *ohne* interaktive Sitzung anzumelden. Wenn Sie nicht über eine Geschäfts-, Schul- oder Unikonto-ID verfügen, können Sie [eine Geschäfts-, Schul- oder Unikonto-ID mit Ihrem persönlichen Microsoft-Konto erstellen](../articles/virtual-machines/windows/create-aad-work-id.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), um sich auf die gleiche Weise anzumelden.
 >
 >
 
@@ -100,7 +100,7 @@ data:
 info:    group create command OK
 ```
 
-Zweitens benötigen Sie ein Image. Informationen zur Suche nach einem Image mit der Azure-CLI finden Sie unter [Navigieren zwischen und Aussuchen von Azure Virtual Machine-Images mit Windows PowerShell und der Azure-Befehlszeilenschnittstelle](../articles/virtual-machines/virtual-machines-linux-cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Doch für diesen Artikel finden Sie hier eine kurze Liste beliebter Images. Für diese Schnellerfassung verwenden wir das CoreOSs Stable-Image.
+Zweitens benötigen Sie ein Image. Informationen zur Suche nach einem Image mit der Azure-CLI finden Sie unter [Navigieren zwischen und Aussuchen von Azure Virtual Machine-Images mit Windows PowerShell und der Azure-Befehlszeilenschnittstelle](../articles/virtual-machines/linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Doch für diesen Artikel finden Sie hier eine kurze Liste beliebter Images. Für diese Schnellerfassung verwenden wir das CoreOSs Stable-Image.
 
 > [!NOTE]
 > Sie können für "ComputeImageVersion" sowohl in der Vorlagensprache als auch in der Azure-Befehlszeilenschnittstelle auch einfach "latest" als Parameter angeben. Dies ermöglicht es Ihnen, immer die neueste gepatchte Version des Image zu verwenden, ohne Ihre Skripts oder Vorlagen ändern zu müssen. Dies wird nachfolgend gezeigt.
@@ -232,7 +232,7 @@ In diesem Fall fragt die untere Vorlage nach:
 * einem Domänennamen, den Externe verwenden können
 * einer Ubuntu-Server-Versionsnummer, die jedoch nur eine aus einer Liste akzeptiert
 
-Weitere Informationen finden Sie unter den [Anforderungen für Benutzernamen und Kennwörter](../articles/virtual-machines/virtual-machines-linux-faq.md#what-are-the-username-requirements-when-creating-a-vm).
+Weitere Informationen finden Sie unter den [Anforderungen für Benutzernamen und Kennwörter](../articles/virtual-machines/linux/faq.md#what-are-the-username-requirements-when-creating-a-vm).
 
 Sobald Sie diese Werte eingegeben haben, können Sie eine Gruppe erstellen und die Vorlage in Ihrem Azure-Abonnement bereitstellen.
 
@@ -1264,7 +1264,7 @@ info:    vm show command OK
 >
 
 ## <a id="log-on-to-a-linux-based-virtual-machine"></a>Aufgabe: Anmelden bei einem Linux-basierten virtuellen Computer
-In der Regel sind Linux-Computer über SSH verbunden. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux auf Azure](../articles/virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+In der Regel sind Linux-Computer über SSH verbunden. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux auf Azure](../articles/virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a id="stop-a-virtual-machine"></a>Aufgabe: Anhalten eines virtuellen Computers
 Führen Sie den folgenden Befehl aus:
@@ -1305,4 +1305,4 @@ Anschließend müssen Sie den Datenträger wie gewohnt in Linux einbinden.
 ## <a name="next-steps"></a>Nächste Schritte
 Viele weitere Verwendungsbeispiele für die Azure-Befehlszeilenschnittstelle mit dem **arm** -Modus finden Sie unter [Verwenden der plattformübergreifenden Azure-Befehlszeilenschnittstelle mit dem Azure-Ressourcen-Manager](../articles/xplat-cli-azure-resource-manager.md). Weitere Informationen zu den Konzepten und Azure-Ressourcen erhalten Sie unter [Übersicht über Azure Resource Manager](../articles/azure-resource-manager/resource-group-overview.md).
 
-Weitere Vorlagen finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/) und [Erstellen von Anwendungsframeworks mithilfe von Vorlagen](../articles/virtual-machines/virtual-machines-linux-app-frameworks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Weitere Vorlagen finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/) und [Erstellen von Anwendungsframeworks mithilfe von Vorlagen](../articles/virtual-machines/linux/app-frameworks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

@@ -81,14 +81,14 @@ In Azure werden virtuelle Computer aus einem Image erstellt. Die Images stammen 
 
 Wenn Sie einen virtuellen Computer aus einem Image im Azure Marketplace erstellen, arbeiten Sie tatsächlich mit Vorlagen. Azure Resource Manager-Vorlagen sind deklarative JSON-Dateien (JavaScript Object Notation), die zum Erstellen von komplexen Anwendungsumgebungen mit virtuellen Computern, Speicher, virtuellen Netzwerken usw. verwendet werden können. Erfahren Sie mehr über die Verwendung von [Azure Resource Manager-Vorlagen](../articles/azure-resource-manager/resource-group-overview.md) und das [Erstellen Ihrer eigenen Vorlagen](../articles/resource-group-authoring-templates.md).
 
-Sie können auch eigene benutzerdefinierte Images erstellen und mit der [Azure-Befehlszeilenschnittstelle](../articles/virtual-machines/virtual-machines-linux-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) oder [Azure PowerShell](../articles/virtual-machines/virtual-machines-windows-upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) hochladen, um schnell benutzerdefinierte virtuelle Computer für Ihre speziellen Anforderungen zu erstellen.
+Sie können auch eigene benutzerdefinierte Images erstellen und mit der [Azure-Befehlszeilenschnittstelle](../articles/virtual-machines/linux/upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) oder [Azure PowerShell](../articles/virtual-machines/windows/upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) hochladen, um schnell benutzerdefinierte virtuelle Computer für Ihre speziellen Anforderungen zu erstellen.
 
 ## <a name="availability-sets"></a>Verfügbarkeitsgruppen
-Eine Verfügbarkeitsgruppe ist eine logische Gruppierung von virtuellen Computern, die es Azure ermöglicht zu verstehen, wie Ihre Anwendung erstellt ist, um Redundanz und Verfügbarkeit zu bieten. Es wird empfohlen, dass zwei oder mehr virtuelle Computer in einer Verfügbarkeitsgruppe erstellt werden, um eine Anwendung mit hoher Verfügbarkeit bereitzustellen und um die [Azure-SLA von&99;,95%](https://azure.microsoft.com/support/legal/sla/virtual-machines/) zu erfüllen. Wenn ein einzelner virtuelle Computer [Azure Storage Premium](../articles/storage/storage-premium-storage.md) verwendet, gilt die Azure-SLA für ungeplante Wartungsereignisse. Eine Verfügbarkeitsgruppe besteht aus zwei zusätzlichen Gruppierungen, die vor Hardwareausfällen schützen und die sichere Anwendung von Updates ermöglichen: Fehlerdomänen (FDs) und Updatedomänen (UDs).
+Eine Verfügbarkeitsgruppe ist eine logische Gruppierung von virtuellen Computern, die es Azure ermöglicht zu verstehen, wie Ihre Anwendung erstellt ist, um Redundanz und Verfügbarkeit zu bieten. Es wird empfohlen, dass zwei oder mehr virtuelle Computer in einer Verfügbarkeitsgruppe erstellt werden, um eine Anwendung mit hoher Verfügbarkeit bereitzustellen und um die [Azure-SLA von 99,95%](https://azure.microsoft.com/support/legal/sla/virtual-machines/) zu erfüllen. Wenn ein einzelner virtuelle Computer [Azure Storage Premium](../articles/storage/storage-premium-storage.md) verwendet, gilt die Azure-SLA für ungeplante Wartungsereignisse. Eine Verfügbarkeitsgruppe besteht aus zwei zusätzlichen Gruppierungen, die vor Hardwareausfällen schützen und die sichere Anwendung von Updates ermöglichen: Fehlerdomänen (FDs) und Updatedomänen (UDs).
 
 ![Schematische Darstellung der Konfiguration mit Updatedomäne und Fehlerdomäne](./media/virtual-machines-common-regions-and-availability/ud-fd-configuration.png)
 
-Erfahren Sie mehr über das Verwalten der Verfügbarkeit von [virtuellen Linux-Computern](../articles/virtual-machines/virtual-machines-linux-manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) oder [virtuellen Windows-Computern](../articles/virtual-machines/virtual-machines-linux-manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Erfahren Sie mehr über das Verwalten der Verfügbarkeit von [virtuellen Linux-Computern](../articles/virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) oder [virtuellen Windows-Computern](../articles/virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ### <a name="fault-domains"></a>Fehlerdomänen
 Eine Fehlerdomäne ist eine logische Gruppe von zugrunde liegender Hardware mit einer gemeinsamen Stromquelle und einem Netzwerkswitch, ähnlich einem Rack in einem lokalen Rechenzentrum. Wenn Sie VMs in einer Verfügbarkeitsgruppe erstellen, werden Ihre VMs von der Azure-Plattform automatisch auf diese Fehlerdomänen verteilt. Bei diesem Ansatz werden die Auswirkungen von potenziellen Hardwareausfällen, Netzwerkausfällen oder Stromausfällen beschränkt.
@@ -101,9 +101,4 @@ Eine Updatedomäne ist eine logische Gruppe von zugrunde liegender Hardware, die
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sie können diese Verfügbarkeits- und Redundanzfunktionen jetzt nutzen, um Ihre Azure-Umgebung zu erstellen. Weitere Informationen zu bewährten Methoden finden Sie unter [Checkliste für die Verfügbarkeit](../articles/best-practices-availability-checklist.md).
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

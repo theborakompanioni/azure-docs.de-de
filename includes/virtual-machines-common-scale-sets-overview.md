@@ -23,7 +23,7 @@ Wenn Sie die Anzahl der virtuellen Computer in einer VM-Skalierungsgruppe erhöh
 
 Wenn Sie eine Vorlage erneut bereitstellen, um die Kapazität zu erhöhen, können Sie dafür eine viel kleinere Vorlage definieren, die nur die SKU und die geänderte Kapazität enthält. Ein entsprechendes Beispiel finden Sie hier: [https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-scale-in-or-out/azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-linux-nat/azuredeploy.json).
 
-Die Schritte, mit denen eine Skalierungsgruppe erstellt wird, die automatisch skaliert wird, werden unter [Automatisches Skalieren von Computern in einer VM-Skalierungsgruppe](../articles/virtual-machines/virtual-machines-windows-vmss-powershell-creating.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+Die Schritte, mit denen eine Skalierungsgruppe erstellt wird, die automatisch skaliert wird, werden unter [Automatisches Skalieren von Computern in einer VM-Skalierungsgruppe](../articles/virtual-machines/windows/vmss-powershell-creating.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="monitoring-your-vm-scale-set"></a>Überwachen der VM-Skalierungsgruppe
 Zurzeit sollten Sie den [Azure-Ressourcen-Explorer](https://resources.azure.com) verwenden, um VM-Skalierungsgruppen anzuzeigen. Bei VM-Skalierungsgruppen handelt es sich um Ressourcen unter „Microsoft.Compute“. Sie können sie daher anzeigen, indem Sie auf dieser Website die folgenden Links öffnen:
@@ -64,7 +64,7 @@ Dieser Abschnitt enthält einige typische Szenarien für VM-Skalierungsgruppen. 
 ## <a name="vm-scale-set-frequently-asked-questions"></a>VM-Skalierungsgruppen – häufig gestellte Fragen
 **F.** Wie viele virtuelle Computer können in eine VM-Skalierungsgruppe aufgenommen werden?
 
-**A.** &100;, sofern Sie Plattformimages verwenden, die über mehrere Speicherkonten verteilt werden können. Wenn Sie benutzerdefinierte Images verwenden, bis zu 40, weil benutzerdefinierte Images während der Vorschau nur in einem einzelnen Speicherkonto platziert werden können.
+**A.** 100, sofern Sie Plattformimages verwenden, die über mehrere Speicherkonten verteilt werden können. Wenn Sie benutzerdefinierte Images verwenden, bis zu 40, weil benutzerdefinierte Images während der Vorschau nur in einem einzelnen Speicherkonto platziert werden können.
 
 **F.** Welche anderen Ressourceneinschränkungen bestehen für VM-Skalierungsgruppen?
 
@@ -115,9 +115,4 @@ Dieser Abschnitt enthält einige typische Szenarien für VM-Skalierungsgruppen. 
 **F.** Funktionieren VM-Skalierungsgruppen mit Azure-Verfügbarkeitsgruppen?
 
 **A.** Ja. Eine VM-Skalierungsgruppe ist eine implizite Verfügbarkeitsgruppe mit 3 Fehlerdomänen (FDs) und 5 Updatedomänen (UDs). Unter virtualMachineProfile brauchen Sie nichts zu konfigurieren. In künftigen Versionen werden VM-Skalierungsgruppen wahrscheinlich mehrere Mandanten umspannen, aber derzeit entspricht eine Skalierungsgruppe einer einzigen Verfügbarkeitsgruppe.
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

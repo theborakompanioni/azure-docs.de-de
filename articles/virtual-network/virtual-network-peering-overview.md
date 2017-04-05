@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 10/17/2016
 ms.author: narayan
 translationtype: Human Translation
-ms.sourcegitcommit: 15afcad97941fc595478e36e826a73831f40475e
-ms.openlocfilehash: eb05b504c5cf13cd852a5e01cc3bec79fd20d547
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 6fbcdcf77f46a3c643e8fedc1d112588cbd7befc
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -36,7 +37,7 @@ Anforderungen und zentrale Aspekte des VNet-Peerings:
 * VNet-Peering erfolgt zwischen zwei virtuellen Netzwerken, und es besteht keine abgeleitete transitive Beziehung zwischen Peerings. Wenn beispielsweise VNetA mittels Peering mit VNetB verknüpft ist und VNetB mittels Peering mit VNetC verknüpft ist, ist VNetA *nicht* mittels Peering mit VNetC verknüpft.
 * Sie können virtuellen Netzwerken in zwei verschiedenen Abonnements mittels Peering verknüpfen, sofern ein privilegierter Benutzer beider Abonnements das Peering autorisiert und die Abonnements dem gleichen Active Directory-Mandanten zugewiesen sind.
 * Virtuelle Netzwerke können mittels Peering miteinander verknüpft werden, wenn beide mit dem Resource Manager-Bereitstellungsmodell erstellt wurden oder wenn eines davon mit dem Resource Manager-Bereitstellungsmodul und das andere mit dem klassischen Bereitstellungsmodell erstellt wurde. Virtuelle Netzwerke, die mit dem klassischen Bereitstellungsmodell erstellt wurden, können hingegen nicht miteinander verknüpft werden. Beim Peering von virtuellen Netzwerken, die mit verschiedenen Bereitstellungsmodellen erstellt wurden, müssen die virtuellen Netzwerke zum *selben* Abonnement gehören. Das Peering von virtuellen Netzwerken, die in verschiedenen Bereitstellungsmodellen erstellt wurden und zu *unterschiedlichen* Abonnements gehören, ist mit der **Vorschauversion** möglich. Weitere Informationen finden Sie im Artikel [Erstellen des VNet-Peerings mit PowerShell-Cmdlets](virtual-networks-create-vnetpeering-arm-ps.md).
-* Für die Kommunikation zwischen virtuellen Computern in mittels Peering verknüpften virtuellen Netzwerken bestehen zwar keine weiteren Bandbreiteneinschränkungen, es gilt jedoch die auf der VM-Größe basierende Bandbreitenobergrenze. Weitere Informationen zur Bandbreitenobergrenze für verschiedene VM-Größen finden Sie in den Artikeln zu VM-Größen unter [Windows](../virtual-machines/virtual-machines-windows-sizes.md) oder [Linux](../virtual-machines/virtual-machines-linux-sizes.md).
+* Für die Kommunikation zwischen virtuellen Computern in mittels Peering verknüpften virtuellen Netzwerken bestehen zwar keine weiteren Bandbreiteneinschränkungen, es gilt jedoch die auf der VM-Größe basierende Bandbreitenobergrenze. Weitere Informationen zur Bandbreitenobergrenze für verschiedene VM-Größen finden Sie in den Artikeln zu VM-Größen unter [Windows](../virtual-machines/windows/sizes.md) oder [Linux](../virtual-machines/linux/sizes.md).
 
 ![Einfaches VNet-Peering](./media/virtual-networks-peering-overview/figure01.png)
 
@@ -84,15 +85,10 @@ Pro virtuellem Netzwerk ist nur eine begrenzte Anzahl von Peerings zulässig. We
 ## <a name="pricing"></a>Preise
 Für ein- und ausgehenden Datenverkehr, der VNet-Peering verwendet, fällt eine geringe Gebühr an. Weitere Informationen finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/virtual-network).
 
-## <a name="a-namenext-stepsanext-steps"></a><a name="next-steps"></a>Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Hier erhalten Sie weitere Informationen zum Erstellen eines VNET-Peerings mit:
 
 * [Azure-Portal](virtual-networks-create-vnetpeering-arm-portal.md)
 * [Azure PowerShell](virtual-networks-create-vnetpeering-arm-ps.md)
 * [Azure Resource Manager-Vorlage](virtual-networks-create-vnetpeering-arm-template-click.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 
