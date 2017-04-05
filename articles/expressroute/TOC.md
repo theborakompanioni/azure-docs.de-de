@@ -23,18 +23,12 @@
 ## Erstellen und Ändern einer Peeringkonfiguration
 ### [Azure-Portal](expressroute-howto-routing-portal-resource-manager.md)
 ### [PowerShell](expressroute-howto-routing-arm.md)
-### [PowerShell (klassisch)](expressroute-howto-routing-classic.md)
 ## Verknüpfen eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung
 ### [Azure-Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
 ### [PowerShell](expressroute-howto-linkvnet-arm.md)
-### [PowerShell (klassisch)](expressroute-howto-linkvnet-classic.md)
-## Konfigurieren eines Gateways für ein virtuelles Netzwerk für ExpressRoute
-### [PowerShell](expressroute-howto-add-gateway-resource-manager.md)
-### [PowerShell (klassisch)](expressroute-howto-add-gateway-classic.md)
-## Erstellen von parallel bestehenden Site-to-Site-VPN Gateway- und ExpressRoute-Verbindungen
-### [PowerShell](expressroute-howto-coexist-resource-manager.md)
-### [PowerShell (klassisch)](expressroute-howto-coexist-classic.md)
-## [Migrieren einer Verbindung vom klassischen Modell auf das Resource Manager-Modell](expressroute-howto-move-arm.md)
+## [Konfigurieren eines Gateways für ein virtuelles Netzwerk für ExpressRoute](expressroute-howto-add-gateway-resource-manager.md)
+## [Konfigurieren von parallel bestehenden ExpressRoute- und Site-to-Site-Verbindungen](expressroute-howto-coexist-resource-manager.md)
+## [Umstellen einer Verbindung vom klassischen Modell auf das Resource Manager-Modell](expressroute-howto-move-arm.md)
 ## Konfigurieren eines Routers für ExpressRoute
 ### [Konfigurieren eines Routers](expressroute-config-samples-routing.md)
 ### [Beispiele für die Routerkonfiguration für NAT](expressroute-config-samples-nat.md)

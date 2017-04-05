@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2016
+ms.date: 03/22/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 9fa8835003b1d8a0dbc56bf9ff8996e48fc41acf
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
+ms.openlocfilehash: 9d3b8d0e9c13443cf29adb8c94cb817063110ae3
+ms.lasthandoff: 03/23/2017
 
 
 ---
@@ -31,7 +31,7 @@ In diesem Artikel erfahren Sie, wie Sie das AZCopy-Tool verwenden, um eine Kopie
 ## <a name="before-you-begin"></a>Voraussetzungen
 Stellen Sie sicher, dass Sie:
 
-* über Informationen zu den **Quell- und Zielspeicherkonten** verfügen. Für die Quell-VM müssen Sie Konto- und Containernamen speichern. Der Containername ist üblicherweise **vhds**. Außerdem müssen Sie über ein Zielspeicherkonto verfügen. Wenn Sie nicht bereits über eines verfügen, können Sie entweder mithilfe des Portals (**Weitere Dienste** > „Speicherkonten“ > „Hinzufügen“) oder des Cmdlets [New-AzureRmStorageAccount](https://msdn.microsoft.com/library/mt607148.aspx) eines erstellen. 
+* über Informationen zu den **Quell- und Zielspeicherkonten** verfügen. Für die Quell-VM benötigen Sie den Speicherkonto- und den Containernamen. Der Containername ist üblicherweise **vhds**. Außerdem müssen Sie über ein Zielspeicherkonto verfügen. Wenn Sie nicht bereits über eines verfügen, können Sie entweder mithilfe des Portals (**Weitere Dienste** > „Speicherkonten“ > „Hinzufügen“) oder des Cmdlets [New-AzureRmStorageAccount](https://msdn.microsoft.com/library/mt607148.aspx) eines erstellen. 
 * Azure [PowerShell 1.0](/powershell/azureps-cmdlets-docs) (oder höher) installiert haben.
 * das [AzCopy-Tool](../storage/storage-use-azcopy.md) heruntergeladen und installiert haben. 
 

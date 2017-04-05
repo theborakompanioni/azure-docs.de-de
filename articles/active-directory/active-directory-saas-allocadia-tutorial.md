@@ -12,12 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2017
+ms.date: 3/10/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 69473976eb0a9b6a0e9aa929581c0a7cf0c8d188
-ms.openlocfilehash: e9d59c593c3637d72611516fd8a6b03f3f5f917b
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 5ec20dee8b1c173af8c28f4a919568aba5f61192
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -27,7 +27,7 @@ In diesem Tutorial erfahren Sie, wie Sie Allocadia in Azure Active Directory (Az
 Die Integration von Allocadia in Azure AD bietet die folgenden Vorteile:
 
 * Sie können in Azure AD steuern, wer Zugriff auf Allocadia hat.
-* Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Allocadia anzumelden (einmaliges Anmelden).
+* Sie können Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Allocadia anzumelden (einmaliges Anmelden, SSO).
 * Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
@@ -38,23 +38,24 @@ Um die Azure AD-Integration mit Allocadia konfigurieren zu können, benötigen S
 * Ein Azure AD-Abonnement
 * Ein Allocadia-Abonnement, für das einmaliges Anmelden aktiviert ist
 
-> [!NOTE]
-> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
-> 
+>[!NOTE]
+>Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden. 
 > 
 
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
 * Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-* Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
+* Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+In diesem Tutorial testen Sie das einmalige Anmelden (SSO) von Azure AD in einer Testumgebung. 
+
+Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
 1. Hinzufügen von Allocadia aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+2. Konfigurieren und Testen des einmaligen Anmeldens (SSO) von Azure AD
 
-## <a name="adding-allocadia-from-the-gallery"></a>Hinzufügen von Allocadia aus dem Katalog
+## <a name="add-allocadia-from-the-gallery"></a>Hinzufügen von Allocadia aus dem Katalog
 Zum Konfigurieren der Integration von Allocadia in Azure AD müssen Sie Allocadia aus dem Katalog zur Liste mit den verwalteten SaaS-Apps hinzufügen.
 
 **Um Allocadia aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
@@ -85,22 +86,23 @@ Zum Konfigurieren der Integration von Allocadia in Azure AD müssen Sie Allocadi
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-allocadia-tutorial/tutorial_allocadia_06.png)
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Allocadia basierend auf einem Testbenutzer mit dem Namen Britta Simon.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden (SSO) von Azure AD mit Allocadia basierend auf einem Testbenutzer mit dem Namen Britta Simon.
 
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Allocadia als Gegenstück zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Allocadia muss eine Linkbeziehung eingerichtet werden.
+Damit einmaliges Anmelden (SSO) funktioniert, muss Azure AD wissen, welcher Benutzer in Allocadia als Entsprechung zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Allocadia muss eine Linkbeziehung eingerichtet werden.
+
 Diese Linkbeziehung wird hergestellt, indem Sie den Wert des **Benutzernamens** in Azure AD als Wert des **Benutzernamens** in Allocadia zuweisen.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Allocadia müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 3. **[Erstellen eines Allocadia-Testbenutzers](#creating-an-allocadia-test-user)** , um ein Gegenstück zu Britta Simon in Allocadia zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** – um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassischen Portal und konfigurieren das einmalige Anmelden in Ihrer Allocadia-Anwendung.
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden (SSO) von Azure AD im klassischen Portal und konfigurieren das einmalige Anmelden in Ihrer Allocadia-Anwendung.
 
 Die Allocadia-Anwendung erwartet die SAML-Assertions in einem bestimmten Format. Konfigurieren Sie für diese Anwendung die folgenden Ansprüche. Sie können die Werte dieser Attribute auf der Registerkarte **Attribut** der Anwendung verwalten. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen: 
 
@@ -120,59 +122,51 @@ Die Allocadia-Anwendung erwartet die SAML-Assertions in einem bestimmten Format.
     | lastname |user.surname |
     | email |user.mail |
 
-    a. Klicken Sie auf **Benutzerattribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
+  1. Klicken Sie auf **Benutzerattribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-allocadia-tutorial/tutorial_general_81.png) 
-
-    b. Geben Sie im Textfeld **Attributname** den für die Zeile angezeigten Attributnamen ein.
-
-    c. Wählen Sie in der Liste **Attributwert** den für die Zeile angezeigten Attributwert aus.
-
-    d. Klicken Sie auf **Fertig stellen**.    
-
-
-1. Klicken Sie im oberen Menü auf **Schnellstart**.
+  2. Geben Sie im Textfeld **Attributname** den für die Zeile angezeigten Attributnamen ein.
+  3. Wählen Sie in der Liste **Attributwert** den für die Zeile angezeigten Attributwert aus.
+  4. Klicken Sie auf **Fertig stellen**.    
+ 
+3. Klicken Sie im oberen Menü auf **Schnellstart**.
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-allocadia-tutorial/tutorial_general_83.png)  
 
-2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Allocadia anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
+4. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Allocadia anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-allocadia-tutorial/tutorial_allocadia_03.png) 
 
-3. Führen Sie auf der Dialogseite **App-Einstellungen konfigurieren** die folgenden Schritte aus:
+5. Führen Sie auf der Dialogseite **App-Einstellungen konfigurieren** die folgenden Schritte aus:
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-allocadia-tutorial/tutorial_allocadia_04.png) 
-   
-    a. Geben Sie im Feld „Bezeichner“ die URL wie folgt ein: Verwenden Sie für die Testumgebung die URL **https://na2standby.allocadia.com** und für die Produktionsumgebung **https://na2.allocadia.com**.
-   
-    b. Geben Sie im Feld „Antwort-URL“ die URL wie folgt ein: Verwenden Sie für die Testumgebung das URL-Muster **https://na2standby.allocadia.com/allocadia/saml/SSO** und für die Produktionsumgebung **https://na2.allocadia.com/allocadia/saml/SSO**.
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-allocadia-tutorial/tutorial_allocadia_04.png)  
+  1. Geben Sie im Feld „Bezeichner“ die URL wie folgt ein: Verwenden Sie für die Testumgebung die URL **https://na2standby.allocadia.com** und für die Produktionsumgebung **https://na2.allocadia.com**.
+  2. Geben Sie im Feld „Antwort-URL“ die URL wie folgt ein: Verwenden Sie für die Testumgebung das URL-Muster **https://na2standby.allocadia.com/allocadia/saml/SSO** und für die Produktionsumgebung **https://na2.allocadia.com/allocadia/saml/SSO**.
 
-4. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für Allocadia** die folgenden Schritte aus:
+6. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für Allocadia** die folgenden Schritte aus:
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-allocadia-tutorial/tutorial_allocadia_05.png) 
-   
-    a. Klicken Sie auf **Metadaten herunterladen**und speichern Sie die Datei auf Ihrem Computer.
-   
-    b. Klicken Sie auf **Next**.
+  1. Klicken Sie auf **Metadaten herunterladen**und speichern Sie die Datei auf Ihrem Computer.
+  2. Klicken Sie auf **Weiter**.
 
-5. Kontaktieren Sie das [Allocadia-Supportteam](mailTo:support@allocadia.com) , um Unterstützung bei der SSO-Konfiguration für Ihre Anwendung zu erhalten. Bitte beachten Sie, dass Sie eine E-Mail senden und die heruntergeladene Metadatendatei anfügen müssen, damit SSO von Allocadia konfiguriert werden kann.
+7. Kontaktieren Sie das [Allocadia-Supportteam](mailTo:support@allocadia.com) , um Unterstützung bei der SSO-Konfiguration für Ihre Anwendung zu erhalten. Bitte beachten Sie, dass Sie eine E-Mail senden und die heruntergeladene Metadatendatei anfügen müssen, damit SSO von Allocadia konfiguriert werden kann.
    
-    > [!NOTE]
-    > Stellen Sie sicher, dass das Allocadia-Team den Bezeichnerwert in der Testumgebung als **https://na2standby.allocadia.com** und in der Produktionsumgebung als **https://na2.allocadia.com** festgelegt hat.
-    > 
-    > 
+   >[!NOTE]
+   >Stellen Sie sicher, dass das Allocadia-Team den Bezeichnerwert in der Testumgebung als **https://na2standby.allocadia.com** und in der Produktionsumgebung als **https://na2.allocadia.com** festgelegt hat.
+   >  
 
-6. Wählen Sie im klassischen Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
+8. Wählen Sie im klassischen Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
    
     ![Azure AD – einmaliges Anmelden][10]
 
-7. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.  
+9. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.  
    
     ![Azure AD – einmaliges Anmelden][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit dem Namen Britta Simon.
-Wählen Sie in der Benutzerliste **Britta Simon**aus.
+
+* Wählen Sie in der Benutzerliste **Britta Simon**aus.
 
 ![Azure AD-Benutzer erstellen][20]
 
@@ -195,26 +189,18 @@ Wählen Sie in der Benutzerliste **Britta Simon**aus.
 5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-allocadia-tutorial/create_aaduser_05.png) 
-   
-    a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
-   
-    b. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
-   
-    c. Klicken Sie auf **Weiter**.
+ 1. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.   
+ 2. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein. 
+ 3. Klicken Sie auf **Weiter**.
 
 6. Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
    
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-allocadia-tutorial/create_aaduser_06.png) 
-   
-    a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
-   
-    b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
-   
-    c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
-   
-    d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
-   
-    e. Klicken Sie auf **Weiter**.
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-allocadia-tutorial/create_aaduser_06.png)  
+ 1. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.    
+ 2. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein. 
+ 3. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein. 
+ 4. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus. 
+ 5. Klicken Sie auf **Weiter**.
 
 7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
    
@@ -222,21 +208,18 @@ Wählen Sie in der Benutzerliste **Britta Simon**aus.
 
 8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
    
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-allocadia-tutorial/create_aaduser_08.png) 
-   
-    a. Notieren Sie den Wert von **Neues Kennwort**.
-   
-    b. Klicken Sie auf **Fertig stellen**.   
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-allocadia-tutorial/create_aaduser_08.png)  
+ 1. Notieren Sie den Wert von **Neues Kennwort**.  
+ 2. Klicken Sie auf **Fertig stellen**.   
 
-### <a name="creating-an-allocadia-test-user"></a>Erstellen eines Allocadia-Testbenutzers
+### <a name="create-an-allocadia-test-user"></a>Erstellen eines Allocadia-Testbenutzers
 In diesem Abschnitt erstellen Sie in Allocadia einen Benutzer mit dem Namen Britta Simon. Die Anwendung Allocadia unterstützt die Just-in-Time-Benutzerbereitstellung. Wenn Sie die Ansprüche konfiguriert haben, wie oben im Abschnitt **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-single-sign-on)** dargestellt, werden die Benutzer in der Anwendung bereitgestellt. 
 
-> [!NOTE]
-> Wenn Sie einen Benutzer manuell oder eine Gruppe von Benutzern erstellen müssen, wenden Sie sich an das Allocadia-Supportteam.
-> 
+>[!NOTE]
+>Wenn Sie einen Benutzer manuell oder eine Gruppe von Benutzern erstellen müssen, wenden Sie sich an das Allocadia-Supportteam. 
 > 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Allocadia gewähren.
 
 ![Benutzer zuweisen][200] 
@@ -261,8 +244,9 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
    
     ![Benutzer zuweisen][205]
 
-### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden (SSO) über den Zugriffsbereich.
+
 Wenn Sie im Zugriffsbereich auf die Kachel „Allocadia“ klicken, sollten Sie automatisch bei Ihrer Allocadia-Anwendung angemeldet werden.
 
 ## <a name="additional-resources"></a>Weitere Ressourcen

@@ -1,6 +1,6 @@
 ---
 title: Aktualisieren des Azure Linux-Agents von GitHub | Microsoft Docs
-description: "Hier erfahren Sie, wie Sie den Azure Linux-Agent für Ihren virtuellen Linux-Computer in Azure auf die neueste Version von GitHub aktualisieren."
+description: "Erfahren Sie, wie Sie den Azure Linux-Agent für Ihren virtuellen Linux-Computer in Azure auf die neueste Version von GitHub aktualisieren."
 services: virtual-machines-linux
 documentationcenter: 
 author: SuperScottz
@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 12/14/2015
 ms.author: mingzhan
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: e5baf0c89325abbef33bbabf1cfe29b878079e44
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: d35e70c1d50bd4cb2d47188585354aa3e3d740d4
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -190,10 +191,5 @@ Für CoreOS funktioniert oben genannter Befehl möglicherweise nicht.
 Sie sehen, dass die Azure Linux Agent-Version auf die neue Version aktualisiert wurde.
 
 Weitere Informationen zum Azure Linux-Agent finden Sie in der [Azure Linux-Agent-Infodatei](https://github.com/Azure/WALinuxAgent).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

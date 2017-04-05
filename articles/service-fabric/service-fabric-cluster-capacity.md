@@ -12,12 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/10/2017
+ms.date: 03/24/2017
 ms.author: chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: e9d7e1b5976719c07de78b01408b2546b4fec297
-ms.openlocfilehash: 875b344d6ed1f467c8d7a51f46e1c39ec42cfacd
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 788021a5b5715524a534ce3e9ff9019310450f4a
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -42,7 +42,7 @@ Legen Sie die Anzahl von Knotentypen fest, über die Ihr Cluster anfänglich ver
 * Da Sie nicht in die Zukunft blicken können, sollten Sie sich auf die Ihnen bekannten Fakten verlassen und die Anzahl von Knotentypen entsprechend festlegen, über die Ihre Anwendungen anfänglich verfügen müssen. Später können Knotentypen hinzugefügt oder entfernt werden. Ein Service Fabric-Cluster muss über mindestens einen Knotentyp verfügen.
 
 ## <a name="the-properties-of-each-node-type"></a>Die Eigenschaften der einzelnen Knotentypen
-Der **Knotentyp** kann als Äquivalent zu Rollen in Cloud Services betrachtet werden. Knotentypen definieren die Größe, die Anzahl und die Eigenschaften der virtuellen Computer. Jeder Knotentyp, der in einem Service Fabric-Cluster definiert ist, wird als separate VM-Skalierungsgruppe (Virtual Machine Scale Set, VMSS) eingerichtet. VM-Skalierungsgruppen sind eine Azure-Computeressource, mit der Sie eine Sammlung von virtuellen Computern bereitstellen und verwalten können. Da die einzelnen Knotentypen als separate VM-Skalierungsgruppen definiert werden, können sie unabhängig voneinander zentral hoch- oder herunterskaliert werden. Außerdem können bei den verschiedenen Typen unterschiedliche Portgruppen geöffnet sein, und die Typen können unterschiedliche Kapazitätsmetriken aufweisen.
+Der **Knotentyp** kann als Äquivalent zu Rollen in Cloud Services betrachtet werden. Knotentypen definieren die Größe, die Anzahl und die Eigenschaften der virtuellen Computer. Jeder Knotentyp, der in einem Service Fabric-Cluster definiert ist, wird als separate VM-Skalierungsgruppe (Virtual Machine Scale Set, VMSS) eingerichtet. VM-Skalierungsgruppen sind eine Azure-Computeressource, mit der Sie eine Sammlung von virtuellen Computern als Satz bereitstellen und verwalten können. Da die einzelnen Knotentypen als separate VM-Skalierungsgruppen definiert werden, können sie unabhängig voneinander zentral hoch- oder herunterskaliert werden. Außerdem können unterschiedliche Portgruppen geöffnet und unterschiedliche Kapazitätsmetriken angewendet werden.
 
 Lesen Sie [dieses Dokument](service-fabric-cluster-nodetypes.md), um detaillierte Informationen zur Beziehung zwischen Knotentypen und VMSS zu erhalten und zu erfahren, wie Sie per Remotedesktopprotokoll eine Verbindung mit einer der Instanzen herstellen, neue Ports öffnen und vieles mehr.
 
@@ -64,14 +64,14 @@ Bei Clustern mit mehreren Knotentypen muss ein Knotentyp als primärer Knotentyp
 Cluster mit mehreren Knotentypen verfügen über einen primären Knotentyp. Die übrigen Knotentypen sind keine primären Knotentypen. Nachfolgend sind die Merkmale eines nicht primären Knotentyps aufgeführt:
 
 * Die Mindestgröße von VMs für diesen Knotentyp hängt von der gewählten Dauerhaftigkeitsstufe ab. Der Standardwert für die Dauerhaftigkeitsstufe ist „Bronze“. Scrollen Sie nach unten, um Einzelheiten zur Dauerhaftigkeitsstufe und den möglichen Werten anzuzeigen.  
-* Die Mindestanzahl von VMs für diesen Knotentyp beträgt&1;. Diese Anzahl sollte jedoch basierend auf der Anzahl von Replikaten der Anwendung/Dienste gewählt werden, die auf diesem Knotentyp ausgeführt werden soll bzw. sollen. Die Anzahl von VMs auf einem Knotentyp kann nach der Bereitstellung des Clusters erhöht werden.
+* Die Mindestanzahl von VMs für diesen Knotentyp beträgt 1. Diese Anzahl sollte jedoch basierend auf der Anzahl von Replikaten der Anwendung/Dienste gewählt werden, die auf diesem Knotentyp ausgeführt werden soll bzw. sollen. Die Anzahl von VMs auf einem Knotentyp kann nach der Bereitstellung des Clusters erhöht werden.
 
 ## <a name="the-durability-characteristics-of-the-cluster"></a>Die Dauerhaftigkeitsmerkmale des Clusters
 Über die Dauerhaftigkeitsstufe wird dem System angezeigt, über welche Berechtigungen Ihre VMs für die zugrunde liegende Azure-Infrastruktur verfügen. Auf dem primären Knotentyp kann Service Fabric mit dieser Berechtigung Infrastrukturanforderungen auf VM-Ebene anhalten (z. B. einen VM-Neustart, ein VM-Reimaging oder eine VM-Migration), die sich auf die Quorumanforderungen für die Systemdienste und Ihre zustandsbehafteten Dienste auswirken. Auf den nicht primären Knotentypen kann Service Fabric mit dieser Berechtigung Infrastrukturanforderungen auf VM-Ebene (z.B. einen VM-Neustart, ein VM-Reimaging oder eine VM-Migration) anhalten, die sich auf die Quorumanforderungen für Ihre zustandsbehafteten Dienste auf diesem Knoten auswirken.
 
 Für diese Berechtigung können die folgenden Werte festgelegt werden:
 
-* Gold: Die Infrastrukturaufträge können für eine Dauer von 2 Stunden pro UD angehalten werden
+* Gold: Die Infrastrukturaufträge können für eine Dauer von 2 Stunden pro UD angehalten werden. Die Dauerhaftigkeit „Gold“ kann nur für VM-SKUs mit vollständigen Knoten wie D15_V2, G5 usw. aktiviert werden.
 * Silber: Die Infrastrukturaufträge können für eine Dauer von 30 Minuten pro UD angehalten werden. (Diese Option steht derzeit nicht zur Verfügung. Sobald aktiviert, wird diese Option für alle Standard-VMs ab einem Kern verfügbar sein.)
 * Bronze: Keine Berechtigungen Dies ist die Standardoption.
 
@@ -133,7 +133,7 @@ Für Produktionsworkloads
 
 Lesen Sie folgende Informationen für zustandslose Workloads
 
-**Anzahl von VM-Instanzen**: Für zustandslose Produktionsworkloads wird die Mindestgröße 2 für den nicht primären Knotentyp unterstützt. So können Sie zwei zustandslose Instanzen Ihrer Anwendung ausführen und stellen sicher, dass Ihr Dienst auch beim Ausfall einer VM-Instanz weiter funktioniert. 
+**Anzahl von VM-Instanzen:** Für zustandslose Produktionsworkloads wird die Mindestgröße 2 für den nicht primären Knotentyp unterstützt. So können Sie zwei zustandslose Instanzen Ihrer Anwendung ausführen und stellen sicher, dass Ihr Dienst auch beim Ausfall einer VM-Instanz weiter funktioniert. 
 
 > [!NOTE]
 > Wenn Ihr Cluster in einer niedrigeren Service Fabric-Version als 5.6 ausgeführt wird, führt ein Fehler während der Laufzeit (der in 5.6 behoben werden soll) dazu, dass nach dem Herunterskalieren eines nicht primären Knotentyps auf weniger als 5 Knoten die Clusterintegrität verloren geht. Dies lässt sich nur beheben, indem Sie den Befehl [Remove-ServiceFabricNodeState](https://docs.microsoft.com/powershell/servicefabric/vlatest/Remove-ServiceFabricNodeState) mit dem entsprechenden Knotennamen aufrufen. Unter [Zentrales Hoch- oder Herunterskalieren eines Service Fabric-Clusters](service-fabric-cluster-scale-up-down.md) finden Sie weitere Informationen.

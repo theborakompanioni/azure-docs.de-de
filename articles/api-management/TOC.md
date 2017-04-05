@@ -44,6 +44,7 @@
 ### [Verwalten von Benutzerkonten](api-management-howto-create-or-invite-developers.md)
 ### [Verwalten mithilfe von Automatisierung](automation-manage-api-management.md)
 ### [Konfigurieren mithilfe von Git](api-management-configuration-repository-git.md)
+### [Überwachen mithilfe von Azure Monitor](api-management-howto-use-azure-monitor.md)
 # Referenz
 ## [PowerShell](/powershell/azureps-cmdlets-docs)
 ## [REST](/rest/api/apimanagement/)

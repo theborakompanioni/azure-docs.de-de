@@ -13,12 +13,12 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2017
+ms.date: 04/03/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
-ms.openlocfilehash: eadf0611ca46a975c364a1b073828c6c3faf5f77
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 9e6e0a696ba27c7758c21fa46754a8539ae2255b
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -27,27 +27,15 @@ ms.lasthandoff: 01/24/2017
 Erfahren Sie, wie Zeppelin Notebooks auf Apache Spark-Clustern installiert und zur Ausführung von Spark-Aufträgen verwendet werden.
 
 > [!IMPORTANT]
-> Wenn Sie Spark 1.6-Cluster unter HDInsight 3.5 bereitgestellt haben, können Sie standardmäßig wie unter [Verwenden von Zeppelin Notebooks mit Apache Spark-Cluster unter HDInsight (Linux)](hdinsight-apache-spark-zeppelin-notebook.md) beschrieben auf Zeppelin Notebooks zugreifen. Wenn Sie Zeppelin in HDInsight-Clustern der Version 3.3 oder 3.4 (oder Spark 2.0 unter HDInsight 3.5) verwenden möchten, halten Sie sich an die Zeppelin-Installationsanleitung in diesem Artikel.
+> Wenn Sie einen Spark 1.6-Cluster in HDInsight 3.5 bereitgestellt haben, können Sie standardmäßig wie unter [Verwenden von Zeppelin-Notebooks mit Apache Spark-Clustern unter HDInsight (Linux)](hdinsight-apache-spark-zeppelin-notebook.md) beschrieben auf Zeppelin-Notebooks zugreifen. Wenn Sie Zeppelin in HDInsight-Clustern der Version 3.3 oder 3.4 verwenden möchten, halten Sie sich an die Zeppelin-Installationsanleitung in diesem Artikel.
 >
->
+> Die Verwendung der Skripts in diesem Artikel für die Installation von Zeppelin auf Spark 2.0-Clustern wird nicht unterstützt.
 
-**Voraussetzungen:**
+## <a name="prerequisites"></a>Voraussetzungen
 
-* Bevor Sie mit diesem Lernprogramm beginnen, müssen Sie über ein Azure-Abonnement verfügen. Siehe [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)(in englischer Sprache).
+* Sie benötigen ein Azure-Abonnement. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * Ein Apache Spark-Cluster unter HDInsight. Eine Anleitung finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md).
-* Einen SSH-Client. Für Linux- und Unix-Distributionen oder Macintosh OS X steht der Befehl `ssh` über das Betriebssystem zur Verfügung. Bei Windows wird [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
 
-  > [!NOTE]
-  > Wenn Sie einen anderen SSH-Client als `ssh` oder PuTTY verwenden möchten, finden Sie Informationen zum Herstellen eines SSH-Tunnels in der Dokumentation zu Ihrem Client.
-  >
-  >
-* Einen Webbrowser, der für die Verwendung eines SOCKS-Proxys konfiguriert werden kann.
-* **(Optional)**: ein Plug-In wie [FoxyProxy](http://getfoxyproxy.org/,) , das Regeln anwenden kann, sodass nur routenspezifische Anfragen durch den Tunnel geleitet werden.
-
-  > [!WARNING]
-  > Ohne ein Plug-In wie FoxyProxy können alle über den Browser gesendeten Anfragen über den Tunnel weitergeleitet werden. Dies kann dazu führen, dass Webseiten in Ihrem Browser langsamer geladen werden.
-  >
-  >
 
 ## <a name="install-zeppelin-on-a-spark-cluster"></a>Installieren von Zeppelin auf einem Spark-Cluster
 Sie können Zeppelin mithilfe von Skriptaktionen in einem Spark-Cluster installieren. Skriptaktionen verwenden benutzerdefinierte Skripts zum Installieren von Komponenten im Cluster, die nicht standardmäßig verfügbar sind. Sie können das benutzerdefinierte Skript verwenden, um Zeppelin im Azure-Portal zu installieren. Verwenden Sie dazu das HDInsight .NET SDK oder Azure PowerShell. Sie können das Skript verwenden, um Zeppelin entweder als Teil der Clustererstellung zu installieren, oder sobald der Cluster ausgeführt wird. Links in den folgenden Abschnitten enthalten die entsprechenden Anweisungen.

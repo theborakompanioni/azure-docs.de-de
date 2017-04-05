@@ -3,9 +3,9 @@
 redirect_url: https://azure.microsoft.com/services/documentdb/
 ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: d59ebef3cda36ba048b844f0cd2326fff66b4aa5
-ms.openlocfilehash: d0a616d27c653e8d3749d93f565f5e8616fdf909
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 7023e7e7f5857db345c47c9a3aa00a816e027a96
+ms.lasthandoff: 03/28/2017
 
 
 
@@ -113,7 +113,7 @@ In einer Bereichspartitionierung werden Partitionen basierend darauf zugewiesen,
 Ein Sonderfall der Bereichspartitionierung liegt vor, wenn es sich bei dem Bereich nur um einzigen diskreten Wert handelt. Dies wird zuweilen auch als "Lookuppartitionierung" bezeichnet. Dies wird häufig zur regionsbasierten Partitionierung (z. B. die Partition für Skandinavien umfasst Norwegen, Dänemark und Schweden) oder zur Partitionierung von Mandanten in einer mehrinstanzenfähigen Anwendung verwendet.
 
 ## <a name="samples"></a>Beispiele
-Sehen Sie sich das [GitHub-Projekt mit DocumentDB-Partitionierungsbeispielen](https://github.com/Azure/azure-documentdb-dotnet/tree/287acafef76ad223577759b0170c8f08adb45755/samples/code-samples/Partitioning) mit Codeausschnitten an, die erläutern, wie Sie diese „PartitionResolver“ verwenden und erweitern, um Ihre eigenen Resolver für spezielle Anwendungsfälle zu implementieren, wie beispielsweise die folgenden: 
+Sehen Sie sich das [GitHub-Projekt mit DocumentDB-Partitionierungsbeispielen](https://github.com/Azure/azure-documentdb-dotnet/tree/287acafef76ad223577759b0170c8f08adb45755/samples/code-samples/Partitioning) an. Die enthaltenen Codeausschnitte erläutern, wie Sie PartitionResolver verwenden und erweitern, um Ihre eigenen Resolver für spezielle Anwendungsfälle zu implementieren, wie beispielsweise die folgenden: 
 
 * Angeben eines frei wählbaren lambda-Ausdrucks für "GetPartitionKey" und Verwenden des Ausdrucks, um zusammengesetzte Partitionierungsschlüssel zu implementieren oder verschiedene Typen von Objekten auf unterschiedliche Weise zu partitionieren.
 * Erstellen eines einfachen [LookupPartitionResolver](https://github.com/Azure/azure-documentdb-dotnet/blob/287acafef76ad223577759b0170c8f08adb45755/samples/code-samples/Partitioning/Partitioners/LookupPartitionResolver.cs) , der zur Durchführung der Partitionierung eine manuelle Lookuptabelle verwendet. Diese Muster wird häufig für eine Partitionierung verwendet, die auf diskreten Werten wie Region, Mandanten-ID oder Anwendungsname basiert.
@@ -152,7 +152,7 @@ Sie können "PartitionResolver" verketten, indem Sie Ihren eigenen "IPartitionRe
 ## <a name="references"></a>Referenzen
 * [Serverseitige Partitionierung in DocumentDB](documentdb-partition-data.md)
 * [DocumentDB-Sammlungen und -Leistungsstufen](documentdb-performance-levels.md)
-* [Partitionieren von Codebeispielen in GitHub](https://github.com/Azure/azure-documentdb-dotnet/tree/287acafef76ad223577759b0170c8f08adb45755/samples/code-samples/Partitioning)
+* [Codebeispiele zur Partitionierung in GitHub](https://github.com/Azure/azure-documentdb-dotnet/tree/287acafef76ad223577759b0170c8f08adb45755/samples/code-samples/Partitioning)
 * [DocumentDB .NET SDK-Dokumentation in MSDN](https://msdn.microsoft.com/library/azure/dn948556.aspx)
 * [DocumentDB .NET-Beispiele](https://github.com/Azure/azure-documentdb-net)
 * [DocumentDB-Blog mit Leistungstipps](https://azure.microsoft.com/blog/2015/01/20/performance-tips-for-azure-documentdb-part-1-2/)

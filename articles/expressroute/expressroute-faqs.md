@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/17/2017
+ms.date: 03/29/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 31a267963199518ed6db4610830062099ed0dde4
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 5b7e2d8df2723f77aa8283d9faab22656198ed47
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -109,7 +109,7 @@ Ja. Ihr Abonnement kann mehr als eine ExpressRoute-Verbindung enthalten. Das Lim
 Ja. Sie können ExpressRoute-Verbindungen von verschiedenen Dienstanbietern verwenden. Jede ExpressRoute-Verbindung wird nur einem Dienstanbieter zugeordnet. 
 
 ### <a name="can-i-have-multiple-expressroute-circuits-in-the-same-location"></a>Kann ich mehrere ExpressRoute-Verbindungen am gleichen Standort haben?
-Ja. Sie können am gleichen Standort mehrere ExpressRoute-Verbindungen mit den gleichen oder unterschiedlichen Dienstanbietern haben. Es ist jedoch nicht möglich, dass Sie mehrere ExpressRoute-Verbindungen mit der gleichen Virtual Network-Instanz verknüpfen.
+Ja. Sie können am gleichen Standort mehrere ExpressRoute-Verbindungen mit den gleichen oder unterschiedlichen Dienstanbietern haben. Es ist jedoch nicht möglich, mehrere ExpressRoute-Verbindungen vom selben Standort aus mit derselben Virtual Network-Instanz zu verknüpfen.
 
 ### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>Wie kann ich meine Virtual Networks mit einer ExpressRoute-Verbindung verbinden?
 Die grundlegenden Schritte werden im Folgenden beschrieben.

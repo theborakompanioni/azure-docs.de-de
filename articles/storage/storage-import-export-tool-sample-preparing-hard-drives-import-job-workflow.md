@@ -1,6 +1,6 @@
 ---
-title: "Beispielworkflow für die Vorbereitung von Festplatten für einen Azure-Importauftrag | Microsoft Docs"
-description: "Lernen Sie eine exemplarische Vorgehensweise für den vollständigen Prozess der Laufwerkvorbereitung für einen Importauftrag im Azure-Import/Export-Dienst kennen."
+title: "Beispielworkflow für die Vorbereitung von Festplatten für einen Importauftrag in Azure Import/Export | Microsoft-Dokumentation"
+description: "Lernen Sie eine exemplarische Vorgehensweise für den vollständigen Prozess der Laufwerkvorbereitung für einen Importauftrag im Azure Import/Export-Dienst kennen."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 50fbd0d214c825137c3ac6873be27b9d2d53cee1
-ms.openlocfilehash: ebed1f1d4cb6cca96e02322d2f76abd6e9810ecc
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 2e522fabf9be5af7477e556ee0c2bf66f41c28fe
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -80,7 +80,7 @@ Das Tool verteilt die Daten optimiert auf zwei Festplatten.
 
 Darüber hinaus können Sie die folgenden Metadaten für alle Dateien festlegen:
 
-* **UploadMethod:** Microsoft Azure-Import/Export-Dienst
+* **UploadMethod:** Microsoft Azure Import/Export-Dienst
 * **DataSetName:** SampleData
 * **CreationDate:** 1.10.2013
 
@@ -89,7 +89,7 @@ Um Metadaten für die importierten Dateien festzulegen, erstellen Sie die Textda
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <Metadata>
-    <UploadMethod>Windows Azure Import/Export Service</UploadMethod>
+    <UploadMethod>Windows Azure Import/Export service</UploadMethod>
     <DataSetName>SampleData</DataSetName>
     <CreationDate>10/1/2013</CreationDate>
 </Metadata>
@@ -112,9 +112,9 @@ Um diese Eigenschaften festzulegen, erstellen Sie die Textdatei `c:\WAImportExpo
 </Properties>
 ```
 
-## <a name="run-the-azure-importexport-tool-waimportexportexe"></a>Ausführen des Azure-Import/Export-Tools (WAImportExport.exe)
+## <a name="run-the-azure-importexport-tool-waimportexportexe"></a>Ausführen des Azure Import/Export-Tools (WAImportExport.exe)
 
-Jetzt können Sie das Azure-Import/Export-Tool ausführen, um die beiden Festplatten vorzubereiten.
+Jetzt können Sie das Azure Import/Export-Tool ausführen, um die beiden Festplatten vorzubereiten.
 
 **Für die erste Sitzung:**
 

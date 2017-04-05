@@ -12,12 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2017
+ms.date: 03/24/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 6a7e0964a3a6e9be534a6bd683446d3da5edcecd
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
+ms.openlocfilehash: 96fb170e7a079fbb4bcfb4a6b1e98970a709406f
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -87,7 +87,8 @@ Verwenden Sie die folgende Tabelle, um eine Übersicht über die Schritte zu erh
 | Schritt 1: Konfigurieren des Dienstverbindungspunkts | ![Prüfen][1]                            | ![Prüfen][1]                    | ![Prüfen][1]        |
 | Schritt 2: Einrichten der Ausstellung von Ansprüchen           |                                        | ![Prüfen][1]                    | ![Prüfen][1]        |
 | Schritt 3: Aktivieren von Geräten, auf denen nicht Windows 10 ausgeführt wird      |                                        |                                | ![Prüfen][1]        |
-
+| Schritt 4: Steuern der Bereitstellung und des Rollouts     | ![Prüfen][1]                            | ![Prüfen][1]                    | ![Prüfen][1]        |
+| Schritt 5: Überprüfen von registrierten Geräten          | ![Prüfen][1]                            | ![Prüfen][1]                    | ![Prüfen][1]        |
 
 
 
@@ -292,8 +293,13 @@ Mithilfe der Definition können Sie überprüfen, ob die Werte vorhanden sind od
         Value = "http://<verified-domain-name>/adfs/services/trust/"
     );
 
-> [!NOTE]
-> Der issuerID-Anspruch für Computer in der obigen Regel muss einen der verifizierten Domänennamen in Azure AD enthalten. Dies ist nicht die AD FS-Dienst-URL.
+
+Im Anspruch oben
+
+- ist `$<domain>` die AD FS-Dienst-URL
+- und `<verified-domain-name>` ein Platzhalter, den Sie durch einen Ihrer überprüften Domänennamen in Azure AD ersetzen müssen.
+
+
 
 Weitere Informationen zu überprüften Domänennamen finden Sie unter [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](active-directory-add-domain.md).  
 Zum Abrufen einer Liste mit Ihren überprüften Unternehmensdomänen können Sie das [Get-MsolDomain](https://docs.microsoft.com/powershell/msonline/v1/get-msoldomain)-Cmdlet verwenden. 

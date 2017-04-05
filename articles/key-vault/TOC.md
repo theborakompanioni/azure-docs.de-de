@@ -24,7 +24,8 @@
 
 ## Automatisieren
 ### [Azure Automation](automation-manage-key-vault.md)
-### [Erstellen und Verwalten über die Befehlszeilenschnittstelle](key-vault-manage-with-cli.md)
+### [Erstellen und Verwalten über die CLI](key-vault-manage-with-cli.md)
+### [Erstellen und Verwalten über die CLI 2.0](key-vault-manage-with-cli2.md)
 
 # Referenz
 ## [PowerShell](/powershell/resourcemanager/azurerm.keyvault/v2.3.0/azurerm.keyvault)

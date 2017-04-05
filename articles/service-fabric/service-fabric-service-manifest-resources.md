@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 03/02/2017
 ms.author: subramar
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 193bbedca440302ead00eaac0df62fb7fe767515
-ms.lasthandoff: 11/17/2016
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 9cfdb94d1e030fe9d467389acf8894d79efd17d1
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -93,7 +93,7 @@ HTTP-Endpunkte werden von Service Fabric automatisch mit einer Zugriffssteuerung
 Das HTTPS-Protokoll ermöglicht die Serverauthentifizierung und wird auch zum Verschlüsseln der Kommunikation zwischen Client und Server verwendet. Um HTTPS für Ihren Service Fabric-Dienst zu aktivieren, geben Sie dieses Protokoll im Abschnitt *Ressourcen -> Endpunkte -> Endpunkt* des Dienstmanifests an, wie weiter oben für den Endpunkt *ServiceEndpoint3* gezeigt.
 
 > [!NOTE]
-> Das Protokoll eines Diensts kann nicht während der Anwendungsaktualisierung geändert werden, da diese Änderung eine Unterbrechung verursacht.
+> Das Protokoll eines Diensts kann nicht während eines Anwendungsupgrades geändert werden. Ein solche Änderung während des Upgrades würde zu einem Verlust der Abwärtskompatibilität führen.
 > 
 > 
 

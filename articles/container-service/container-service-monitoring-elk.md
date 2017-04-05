@@ -4,7 +4,7 @@ description: "Überwachen eines DC/OS-Clusters in Azure Container Service-Cluste
 services: container-service
 documentationcenter: 
 author: sauryadas
-manager: dan.lepow
+manager: madhana
 editor: 
 tags: acs, azure-container-service
 keywords: "Container, DC/OS, Azure, Überwachen, ELK"
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/31/2017
+ms.date: 03/27/2017
 ms.author: saudas
 translationtype: Human Translation
-ms.sourcegitcommit: 9433eb9f734dbe1b815074f86b9a691b4d16b5c8
-ms.openlocfilehash: c372c4a04de61f1eace81418ec6dea054007ec1f
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: fa17900f8a752d692a62e47d301651cc4f435f06
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -63,12 +64,10 @@ Zum Zugreifen auf das Kibana-Dashboard (bereitgestellt an Port 5601) müssen Sie
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Elasticsearch, Logstash und Kibana finden Sie in der [Dokumentation zu Elastic Stack](https://www.elastic.co/guide/index.html).
+* Weitere Informationen zur Weiterleitung und Einrichtung von System- und Anwendungsprotokollen finden Sie unter [Protokollverwaltung in DC/OS mit ELK](https://docs.mesosphere.com/1.8/administration/logging/elk/).
+
+* Weitere Informationen zum Filtern von Protokollen finden Sie unter [Filtern von Protokollen mit ELK](https://docs.mesosphere.com/1.8/administration/logging/filter-elk/). 
+
  
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

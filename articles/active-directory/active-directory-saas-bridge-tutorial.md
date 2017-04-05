@@ -11,12 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 3/10/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 1b01c8a16c217350e82db1bc7a6cc54b84888b9e
-ms.openlocfilehash: 17898ff5a2a98383a9956346d7932c31587386a7
-ms.lasthandoff: 12/13/2016
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 2250fbe0b7451d875ccdd319af9b77cb4e24fe35
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -27,7 +27,7 @@ In diesem Tutorial erfahren Sie, wie Sie Bridge in Azure Active Directory (Azure
 Die Integration von Bridge in Azure AD bietet die folgenden Vorteile:
 
 - Sie können in Azure AD steuern, wer Zugriff auf Bridge hat.
-- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Bridge anzumelden (einmaliges Anmelden).
+- Sie können Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Bridge anzumelden (einmaliges Anmelden, SSO).
 - Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
@@ -37,27 +37,29 @@ Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unte
 Zum Konfigurieren der Azure AD-Integration mit Bridge benötigen Sie Folgendes:
 
 - Ein Azure AD-Abonnement
-- Ein SSO-fähiges Bridge-Abonnement
+- Ein Bridge-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 
-> [!NOTE]
-> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
-
+>[!NOTE]
+>Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
+>
 
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
 - Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
+- Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+In diesem Tutorial testen Sie das einmalige Anmelden (SSO) von Azure AD in einer Testumgebung. 
+
+Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
 1. Hinzufügen von Bridge aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+2. Konfigurieren und Testen des einmaligen Anmeldens (SSO) von Azure AD
 
 
-## <a name="adding-bridge-from-the-gallery"></a>Hinzufügen von Bridge aus dem Katalog
+## <a name="add-bridge-from-the-gallery"></a>Hinzufügen von Bridge aus dem Katalog
 Zum Konfigurieren der Integration von Bridge in Azure AD müssen Sie Bridge aus dem Katalog zur Liste mit den verwalteten SaaS-Apps hinzufügen.
 
 **Führen Sie die folgenden Schritte aus, um Bridge aus dem Katalog hinzuzufügen:**
@@ -89,24 +91,24 @@ Zum Konfigurieren der Integration von Bridge in Azure AD müssen Sie Bridge aus 
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-bridge-tutorial/tutorial_bridge_0001.png)
 
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Bridge mithilfe eines Testbenutzers namens Britta Simon.
+##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden (SSO) von Azure AD mit Bridge basierend auf einem Testbenutzer mit dem Namen Britta Simon.
 
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Bridge einem Benutzer in Azure AD entspricht. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Bridge muss eine Linkbeziehung eingerichtet werden.
+Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Bridge als Entsprechung zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Bridge muss eine Linkbeziehung eingerichtet werden.
 
 Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD als **Benutzernamen** in Bridge zuweisen.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Bridge müssen die folgenden Schritte ausgeführt werden:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 3. **[Erstellen eines Bridge-Testbenutzers](#creating-a-bridge-test-user)**, um in Bridge einen Gegenpart für Britta Simon zu erhalten, der mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** – um Britta Simon für das einmalige Anmelden in Azure AD zu aktivieren.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassischen Portal und konfigurieren es in Ihrer Bridge-Anwendung.
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden (SSO) von Azure AD im klassischen Portal und konfigurieren das einmalige Anmelden in Ihrer Bridge-Anwendung.
 
 
 **Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Bridge die folgenden Schritte aus:**
@@ -122,15 +124,13 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassi
 3. Führen Sie auf der Dialogseite **App-Einstellungen konfigurieren** die folgenden Schritte aus:
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-bridge-tutorial/tutorial_bridge_03.png)
+  1. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<company name>.bridgeapp.com`
+  2. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://<company name>.bridgeapp.com`
+  3. Klicken Sie auf **Weiter**.
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<company name>.bridgeapp.com`
-
-    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://<company name>.bridgeapp.com`
-
-    c. Klicken Sie auf **Weiter**.
-
-    > [!NOTE] 
-    > Hinweis: Hierbei handelt es sich um Beispielwerte. Die Werte müssen durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner ersetzt werden. Sie können <a href="https://bridgeapp.zendesk.com/hc/en-us/requests/new">hier</a> ein Supportticket bei Bridge erstellen, um diese Werte zu erhalten.
+    >[!NOTE] 
+    >Hinweis: Hierbei handelt es sich um Beispielwerte. Die Werte müssen durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner ersetzt werden. Sie können <a href="https://bridgeapp.zendesk.com/hc/en-us/requests/new">hier</a> ein Supportticket bei Bridge erstellen, um diese Werte zu erhalten.
+    >
 
 4. Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für Bridge** auf **Zertifikat herunterladen**, und speichern Sie die Datei auf Ihrem Computer.
 
@@ -138,15 +138,12 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassi
 
 5. Sie können <a href="https://bridgeapp.zendesk.com/hc/en-us/requests/new">hier</a> ein Supportticket bei Bridge erstellen und die folgenden Informationen angeben, um einmaliges Anmelden für Ihre Anwendung konfigurieren zu lassen: 
 
-    •  Die heruntergeladene **Zertifikatsdatei**
+ *   Die heruntergeladene **Zertifikatsdatei**
+ *  Die **Entitäts-ID**
+ *  Die **Dienst-URL für einmaliges Anmelden**
+ *  Die **Dienst-URL für einmaliges Abmelden**
 
-    •  Die **Entitäts-ID**
-
-    •  Die **Dienst-URL für einmalige Anmeldung**
-
-    •  Die **Dienst-URL für einmalige Abmeldung**
-
-6. Wählen Sie im klassischen Portal die Bestätigung zur Konfiguration der einmaligen Anmeldung aus, und klicken Sie dann auf **Weiter**.
+6. Wählen Sie im klassischen Portal die Bestätigung zur Konfiguration der einmaligen Anmeldung aus und klicken Sie dann auf **Weiter**.
 
     ![Azure AD – einmaliges Anmelden][10]
 
@@ -155,7 +152,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassi
     ![Azure AD – einmaliges Anmelden][11]
 
 
-### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im klassischen Azure-Portal.
 
 ![Azure AD-Benutzer erstellen][20]
@@ -179,26 +176,18 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-bridge-tutorial/create_aaduser_05.png) 
-
-    a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
-
-    b. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
-
-    c. Klicken Sie auf **Weiter**.
+ 1. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
+ 2. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
+ 3. Klicken Sie auf **Weiter**.
 
 6.  Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-bridge-tutorial/create_aaduser_06.png) 
-
-    a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
-
-    b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
-
-    c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
-
-    d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
-
-    e. Klicken Sie auf **Weiter**.
+ 1. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
+ 2. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
+ 3. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
+ 4. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
+ 5. Klicken Sie auf **Weiter**.
 
 7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
 
@@ -207,19 +196,14 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-bridge-tutorial/create_aaduser_08.png) 
+ 1. Notieren Sie den Wert von **Neues Kennwort**.
+ 2. Klicken Sie auf **Fertig stellen**.   
 
-    a. Notieren Sie den Wert von **Neues Kennwort**.
-
-    b. Klicken Sie auf **Fertig stellen**.   
-
-
-
-### <a name="creating-a-bridge-test-user"></a>Erstellen eines Bridge-Testbenutzers
+### <a name="create-a-bridge-test-user"></a>Erstellen eines Bridge-Testbenutzers
 
 In diesem Abschnitt erstellen Sie in Bridge einen Benutzer namens Britta Simon. Wenden Sie sich an das Supportteam von Bridge, um einen Benutzer in der Plattform zu erstellen. Sie können <a href="https://bridgeapp.zendesk.com/hc/en-us/requests/new">hier</a> ein Supportticket bei Bridge erstellen, um die Benutzer in der Bridge-Plattform hinzuzufügen.
 
-
-### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Bridge gewähren.
 
@@ -245,14 +229,11 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
     
     ![Benutzer zuweisen][205]
 
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
-
-### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
-
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden (SSO) über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Bridge“ klicken, sollten Sie automatisch bei Ihrer Bridge-Anwendung angemeldet werden.
-
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

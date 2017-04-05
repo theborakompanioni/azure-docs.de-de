@@ -1,5 +1,5 @@
 ---
-title: "Kurzübersicht über Befehle des Azure Import/Export-Tools für Importaufträge | Microsoft Docs"
+title: "Kurzübersicht über Befehle des Azure Import/Export-Tools für Importaufträge | Microsoft-Dokumentation"
 description: "Befehlsreferenz für Befehle des Azure Import/Export-Tools, die häufig für Importaufträge verwendet werden."
 author: muralikk
 manager: syadav
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 41bc5585f3d9dea2a08dc8a6bc1e4fdf9f0c8fc4
-ms.openlocfilehash: 79b1d3f92671638ba43bac2f5428a1f903d11080
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: e9377e0c5001cf5be220e19e06ff96c1e058e853
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -24,33 +25,31 @@ ms.openlocfilehash: 79b1d3f92671638ba43bac2f5428a1f903d11080
 
 Dieser Artikel enthält eine Kurzübersicht über einige häufig verwendete Befehle. Ausführliche Informationen zur Verwendung finden Sie unter [Vorbereiten von Festplatten für einen Importauftrag](storage-import-export-tool-preparing-hard-drives-import.md).
 
-## <a name="import-job-quick-reference"></a>Kurzübersicht über Importaufträge
-
-Für die erste Sitzung:
+## <a name="first-session"></a>Erste Sitzung
 
 ```
 WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1 /sk:************* /InitialDriveSet:driveset-1.csv /DataSet:dataset-1.csv /logdir:F:\logs
 ```
 
-Zweite Sitzung:
+## <a name="second-session"></a>Zweite Sitzung
 
 ```
 WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2 /DataSet:dataset-2.csv
 ```
 
-Abbruch der aktuellen Sitzung:
+## <a name="abort-latest-session"></a>Abbruch der aktuellen Sitzung
 
 ```
 WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2 /AbortSession
 ```
 
-Fortsetzen der aktuellen unterbrochenen Sitzung:
+## <a name="resume-latest-interrupted-session"></a>Fortsetzen der aktuellen unterbrochenen Sitzung
 
 ```
 WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#3 /ResumeSession
 ```
 
-Hinzufügen von Laufwerken zur aktuellen Sitzung:
+## <a name="add-drives-to-latest-session"></a>Hinzufügen von Laufwerken zur aktuellen Sitzung
 
 ```
 WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#3 /AdditionalDriveSet:driveset-2.csv
@@ -58,10 +57,5 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#3 /AdditionalDriveS
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Beispielworkflow für die Vorbereitung von Festplatten für einen Importauftrag](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow.md)
-
-
-
-<!--HONumber=Dec16_HO3-->
-
+* [Beispielworkflow für die Vorbereitung von Festplatten für einen Importauftrag](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow.md)
 

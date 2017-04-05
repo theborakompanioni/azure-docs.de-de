@@ -1,5 +1,5 @@
 ---
-title: Informationen zu Azure IoT Hub-Endpunkten | Microsoft Docs
+title: Informationen zu Azure IoT Hub-Endpunkten | Microsoft-Dokumentation
 description: "Entwicklerhandbuch: Referenzinformationen zu IoT Hub-Endpunkten mit Geräte- und Dienstanbindung"
 services: iot-hub
 documentationcenter: .net
@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/31/2017
+ms.date: 03/22/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 32364c5a681c1d614abbc32cc8b73dba4e5a2d18
-ms.openlocfilehash: 00a576357c6e89d7943e6c6c6a83c2c1535d549e
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
+ms.openlocfilehash: cdc50ec4bf98d7924ad5bf97c9a757f0bac01173
+ms.lasthandoff: 03/23/2017
 
 
 ---
@@ -43,7 +43,7 @@ Im Folgenden finden Sie eine Beschreibung der Endpunkte:
     
     Diese Endpunkte werden über die Protokolle [MQTT v3.1.1][lnk-mqtt], HTTP 1.1 und [AMQP 1.0][lnk-amqp] verfügbar gemacht. Beachten Sie, dass AMQP auch über [WebSockets][lnk-websockets] an Port 443 verfügbar ist.
     
-    Die Zwillings- und Methodenendpunkte sind nur über [MQTT&3;.1.1][lnk-mqtt] verfügbar.
+    Die Zwillings- und Methodenendpunkte sind nur über [MQTT 3.1.1][lnk-mqtt] verfügbar.
 * **Dienstendpunkte**. Jeder IoT Hub legt eine Reihe von Endpunkten offen, die Ihr Lösungs-Back-End zur Kommunikation mit Ihren Geräten verwenden kann. Diese Endpunkte werden derzeit nur über das Protokoll [AMQP][lnk-amqp] verfügbar gemacht. Eine Ausnahme ist der Endpunkt für den Methodenaufruf, der über HTTP 1.1 verfügbar gemacht wird.
   
   * *Empfangen von D2C-Nachrichten*. Dieser Endpunkt ist kompatibel mit [Azure Event Hubs][lnk-event-hubs]. Ein Back-End-Dienst kann ihn zum Lesen der [D2C-Nachrichten][lnk-d2c] verwenden, die Ihre Geräte senden. Zusätzlich zu diesem integrierten Endpunkt können Sie für Ihren IoT-Hub benutzerdefinierte Endpunkte erstellen.

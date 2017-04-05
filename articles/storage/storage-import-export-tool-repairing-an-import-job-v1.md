@@ -1,6 +1,6 @@
 ---
-title: Reparieren eines Azure-Importauftrags | Microsoft Docs
-description: "Erfahren Sie, wie Sie einen Importauftrag reparieren, der mithilfe des Import/Export-Diensts erstellt und ausgeführt wurde."
+title: Reparieren eines Importauftrags in Azure Import/Export (V1) | Microsoft-Dokumentation
+description: "Erfahren Sie, wie Sie einen Importauftrag reparieren, der mithilfe des Azure Import/Export-Diensts erstellt und ausgeführt wurde."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 74182c8c357085f186aaa43adfaef80a083d16bb
-ms.openlocfilehash: a47b0da43a84bb77fb8de16c37811a4b87fe3fbf
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 9403fb0bb16227871388f063e9d0004c7186866e
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -31,9 +31,11 @@ Der Microsoft Azure Import/Export-Dienst kann möglicherweise einige Ihrer Datei
   
 -   Der Speicherkontoschlüssel wurde während der Übertragung der Datei geändert.  
   
-Sie können das Microsoft Azure Import/Export-Tool mit den Kopierprotokolldateien des Importauftrags ausführen, und das Tool lädt die fehlenden Dateien (oder fehlenden Dateiteile) in Ihr Windows Azure-Speicherkonto hoch, um den Importauftrag abzuschließen.  
+Sie können das Microsoft Azure Import/Export-Tool mit den Kopierprotokolldateien des Importauftrags ausführen, und das Tool lädt die fehlenden Dateien (oder fehlenden Dateiteile) in Ihr Microsoft Azure Storage-Konto hoch, um den Importauftrag abzuschließen.  
   
-Der Befehl zum Reparieren eines Exportauftrags lautet **RepairImport**. Folgende Parameter können festgelegt werden:  
+## <a name="repairimport-parameters"></a>RepairImport-Parameter
+
+Die folgenden Parameter können mit **RepairImport** angegeben werden: 
   
 |||  
 |-|-|  
@@ -102,10 +104,11 @@ Das Tool schreibt dann die problematischen Dateipfade in `9WM35C2V_pathmap.txt`,
   
 Nachdem Sie die erforderlichen Dateien für das Tool zur Verfügung gestellt oder die Pfadzuordnungsdatei aktualisiert haben, können Sie das Tool erneut ausführen, um den Importvorgang abzuschließen.  
   
-## <a name="see-also"></a>Weitere Informationen  
-[Einrichten des Azure Import/Export-Tools](storage-import-export-tool-setup-v1.md)   
-[Vorbereiten von Festplatten für einen Importauftrag](storage-import-export-tool-preparing-hard-drives-import-v1.md)   
-[Überprüfen des Auftragsstatus mit Kopierprotokolldateien](storage-import-export-tool-reviewing-job-status-v1.md)   
-[Reparieren eines Exportauftrags](storage-import-export-tool-repairing-an-export-job-v1.md)   
-[Behandeln von Problemen mit dem Azure Import/Export-Tool](storage-import-export-tool-troubleshooting-v1.md)
+## <a name="next-steps"></a>Nächste Schritte
+ 
+* [Einrichten des Azure Import/Export-Tools](storage-import-export-tool-setup-v1.md)   
+* [Vorbereiten von Festplatten für einen Importauftrag](storage-import-export-tool-preparing-hard-drives-import-v1.md)   
+* [Überprüfen des Auftragsstatus mit Protokollkopiedateien](storage-import-export-tool-reviewing-job-status-v1.md)   
+* [Reparieren eines Exportauftrags](storage-import-export-tool-repairing-an-export-job-v1.md)   
+* [Behandeln von Problemen mit dem Azure Import/Export-Tool](storage-import-export-tool-troubleshooting-v1.md)
 

@@ -1,6 +1,6 @@
 ---
 title: Format der Manifestdateien von Azure Import/Export | Microsoft Docs
-description: Hier finden Sie Informationen zum Format der Laufwerksmanifestdatei, die in einem Import- oder Exportauftrag im Import-/Exportdienst die Zuordnung zwischen Blobs in Azure Blob Storage und einer Datei auf dem Laufwerk beschreibt.
+description: Hier finden Sie Informationen zum Format der Laufwerkmanifestdatei, die in einem Import- oder Exportauftrag im Import/Export-Dienst die Zuordnung zwischen Blobs in Azure Blob Storage und Dateien auf einem Laufwerk beschreibt.
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 8de848b1192ff1c10e0375053c4e03f18c06184e
-ms.openlocfilehash: 2c76120a967aabf546fdb5246478f78e8cf47f94
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: d56754c9c205ddc4933b29e8f4891a56f42496e9
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -90,7 +90,10 @@ block-list ::=
       [<Block Offset="block-offset" Length="block-length" [Id="block-id"]   
        Hash="md5-hash"/>]  
     </BlockList>  
+
 ```
+
+## <a name="manifest-xml-elements-and-attributes"></a>Elemente und Attribute des Manifest-XML-Formats
 
 Die Datenelemente und Attribute des XML-Formats des Laufwerksmanifests sind in der folgenden Tabelle aufgeführt.  
   
@@ -131,6 +134,7 @@ Die Datenelemente und Attribute des XML-Formats des Laufwerksmanifests sind in d
 |`Blob/PropertiesPath`|String|Optional. Gibt den relativen Pfad einer Eigenschaftendatei an. Während eines Importvorgangs sind die Eigenschaften auf das Zielblob festgelegt. Während eines Exportvorgangs werden die Eigenschaften des Blobs in der Eigenschaftendatei auf dem Laufwerk gespeichert.|  
 |`Blob/PropertiesPath/@Hash`|Attribut, String|Gibt den Base16-codierten MD5-Hash der Eigenschaftendatei des Blobs an.|  
   
-## <a name="see-also"></a>Weitere Informationen  
-[Speicherimport/-export – REST](/rest/api/storageimportexport/)
+## <a name="next-steps"></a>Nächste Schritte
+ 
+* [Storage Import/Export-REST-API](/rest/api/storageimportexport/)
 

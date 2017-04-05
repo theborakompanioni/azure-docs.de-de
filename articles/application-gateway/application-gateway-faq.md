@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/17/2017
+ms.date: 03/28/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: a673044269016f5d216fa62a3bcc6f3b106838c0
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 037045c4e76d0fb8e96944fe8a3235223594a034
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -36,7 +36,7 @@ Application Gateway unterstützt SSL-Abladung und End-to-End-SSL, Web Applicatio
 
 **F: Was ist der Unterschied zwischen Application Gateway und Azure Load Balancer?**
 
-Application Gateway ist ein Lastenausgleich auf Schicht 7 (Anwendungsschicht). Dies bedeutet, dass Application Gateway nur Webdatenverkehr (HTTP/HTTPS/WebSocket) verarbeitet. Application Gateway unterstützt Funktionen für den Anwendungslastenausgleich wie SSL-Beendigung, cookiebasierte Sitzungsaffinität und Roundrobin für Lastenausgleichverkehr. Load Balancer, bewirkt einen Lastenausgleich des Datenverkehrs auf Ebene 4 (TCP/UDP).
+Application Gateway ist ein Lastenausgleich auf Schicht 7 (Anwendungsschicht). Dies bedeutet, dass Application Gateway nur Webdatenverkehr (HTTP/HTTPS/WebSocket) verarbeitet. Application Gateway unterstützt Funktionen für den Anwendungslastenausgleich wie SSL-Beendigung, cookiebasierte Sitzungsaffinität und Roundrobin für den Lastenausgleich von Datenverkehr. Load Balancer, bewirkt einen Lastenausgleich des Datenverkehrs auf Ebene 4 (TCP/UDP).
 
 **F: Welche Protokolle werden von Application Gateway unterstützt?**
 
@@ -44,7 +44,7 @@ Application Gateway unterstützt HTTP, HTTPS und WebSocket.
 
 **F: Welche Ressourcen werden derzeit als Teil des Back-End-Pools unterstützt?**
 
-Back-End-Pools können NICs, Skalierungsgruppen für virtuelle Computer (VMSS), öffentliche IP-Adressen, interne IP-Adressen und vollqualifizierte Domänennamen (FQDN) umfassen. Azure-Web-Apps werden derzeit nicht unterstützt. Mitglieder des Application Gateway-Back-End-Pools sind nicht an eine Verfügbarkeitsgruppe gebunden. Mitglieder von Back-End-Pools können auf mehrere Cluster und Rechenzentren verteilt sein oder sich außerhalb von Azure befinden, sofern sie über IP-Konnektivität verfügen.
+Back-End-Pools können Netzwerkkarten, VM-Skalierungsgruppen, öffentliche IP-Adressen, interne IP-Adressen und vollqualifizierte Domänennamen (FQDN) umfassen. Azure-Web-Apps werden derzeit nicht unterstützt. Mitglieder des Application Gateway-Back-End-Pools sind nicht an eine Verfügbarkeitsgruppe gebunden. Mitglieder von Back-End-Pools können auf mehrere Cluster und Rechenzentren verteilt sein oder sich außerhalb von Azure befinden, sofern sie über IP-Konnektivität verfügen.
 
 **F: In welchen Regionen ist der Dienst verfügbar?**
 
@@ -66,7 +66,6 @@ Wenn Sie eine öffentliche IP-Adresse als Endpunkt verwenden, können diese Info
 
 Die VIP kann sich ändern, wenn das Gateway vom Kunden beendet und gestartet wird. Der zugeordnete DNS von Application Gateway ändert sich während des Lebenszyklus des Gateways nicht. Daher wird empfohlen, einen CNAME-Alias zu verwenden und damit auf die DNS-Adresse von Application Gateway zu verweisen.
 
-
 **F: Unterstützt Application Gateway statische IP-Adressen?**
 
 Nein, Application Gateway unterstützt keine statischen öffentlichen IP-Adressen, statische interne IP-Adressen werden dagegen unterstützt.
@@ -77,7 +76,7 @@ Nur eine öffentliche IP-Adresse wird auf einer Application Gateway-Instanz unte
 
 **F: Werden X-Forwarded-For-Header von Application Gateway unterstützt?**
 
-Ja, Application Gateway fügt X-Forwarded-For-, X-Forwarded-Proto- und X-Forwarded-Port-Header in die Anforderung ein, die an das Back-End weitergeleitet wird. Das Format für den X-Forwarded-For-Header ist eine durch Trennzeichen getrennte Liste von IP:Port. Die gültigen Werte für X-Forwarded-Proto sind „http“ und „https“. X-Forwarded-Port gibt den Port an, an dem die Anforderung Application Gateway erreicht hat.
+Ja, Application Gateway fügt X-Forwarded-For-, X-Forwarded-Proto- und X-Forwarded-Port-Header in die Anforderung ein, die an das Back-End weitergeleitet wird. Das Format für den X-Forwarded-For-Header ist eine durch Trennzeichen getrennte Liste der Form „IP:Port“. Die gültigen Werte für X-Forwarded-Proto sind „http“ und „https“. X-Forwarded-Port gibt den Port an, an dem die Anforderung Application Gateway erreicht hat.
 
 ## <a name="configuration"></a>Konfiguration
 
@@ -123,11 +122,7 @@ Benutzerdefinierte Überprüfungen unterstützen keine Platzhalter/regulären Au
 
 **F: Was ist im Feld „Host“ für benutzerdefinierte Überprüfungen angegeben?**
 
-Das Feld „Host“ gibt den Namen an, an den die Überprüfung zu senden ist. Nur relevant, wenn in Application Gateway mehrere Standorte konfiguriert sind. Andernfalls verwenden Sie&127;.0.0.1. Dieser Wert entspricht nicht dem VM-Hostnamen und weist folgendes Format auf: \<Protokoll\>://\<Host\>:\<Port\>\<Pfad\>. 
-
-**F: Unterstützt Application Gateway mehrinstanzenfähige Back-Ends?**
-
-Nein, derzeit behält Application Gateway den eingehenden Hostheader bei und sendet den gleichen Header an das Back-End. Wenn für das Back-End ein anderer Header erforderlich ist, funktioniert dies nicht. Wenn das Back-End mehrinstanzenfähig ist und End-to-End-SSL aktiviert ist, erwartet das Back-End den Servernamen in der SNI-Erweiterung. Application Gateway sendet derzeit in End-to-End-SSL-Szenarien keine SNI-Header in Back-End-Anforderungen, dies würde Probleme bei Tests und Datenpfaden verursachen. 
+Das Feld „Host“ gibt den Namen an, an den die Überprüfung zu senden ist. Nur relevant, wenn in Application Gateway mehrere Standorte konfiguriert sind. Andernfalls verwenden Sie 127.0.0.1. Dieser Wert entspricht nicht dem VM-Hostnamen und weist folgendes Format auf: \<Protokoll\>://\<Host\>:\<Port\>\<Pfad\>. 
 
 ## <a name="performance"></a>Leistung
 
@@ -219,7 +214,7 @@ Ja, WAF unterstützt alle Funktionen in der Standard-SKU.
 
 **F: Welche CRS-Version wird von Application Gateway unterstützt?**
 
-Azure Application Gateway unterstützt CRS 2.2.9
+Application Gateway unterstützt CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp229) und CRS [3.0](application-gateway-crs-rulegroups-rules.md#owasp30).
 
 **F: Wie überwache ich WAF?**
 
@@ -231,11 +226,11 @@ Nein, der Erkennungsmodus protokolliert nur Datenverkehr, der eine WAF-Regel aus
 
 **F: Wie passe ich WAF-Regeln an?**
 
-WAF-Regeln sind derzeit nicht anpassbar.
+Ja, WAF-Regeln können angepasst werden. Weitere Informationen zum Anpassen finden Sie unter [Anpassen von WAF-Regelgruppen und -Regeln](application-gateway-customize-waf-rules-portal.md).
 
 **F: Welche Regeln sind derzeit verfügbar?**
 
-WAF unterstützt derzeit CRS 2.2.9, das grundlegende Sicherheit für die meisten der 10 wichtigsten, vom Open Web Application Security Project (OWASP) identifizierten Sicherheitslücken bietet. Diese finden Sie unter [OWASP Top 10 Vulnerabilities](https://www.owasp.org/index.php/Top10#OWASP_Top_10_for_2013).
+WAF unterstützt derzeit CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp30) und [3.0](https://www.owasp.org/index.php/Top10#OWASP_Top_10_for_2013), das grundlegende Sicherheit für die meisten der zehn wichtigsten, vom Open Web Application Security Project (OWASP) identifizierten Sicherheitsrisiken bietet. Diese finden Sie unter [Die 10 wichtigsten OWASP-Sicherheitsrisiken](application-gateway-crs-rulegroups-rules.md#owasp229).
 
 * Schutz vor Einschleusung von SQL-Befehlen
 
@@ -253,7 +248,7 @@ WAF unterstützt derzeit CRS 2.2.9, das grundlegende Sicherheit für die meisten
 
 **F: Unterstützt WAF auch DDoS-Verhinderung?**
 
-Nein, WAF bietet keine DDoS-Verhinderung.
+Nein, WAF bietet keinen DDoS-Schutz.
 
 ## <a name="diagnostics-and-logging"></a>Diagnose und Protokollierung
 
@@ -288,4 +283,3 @@ Der häufigste Grund ist eine Blockierung des Zugriffs auf das Back-End durch ei
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu Application Gateway finden Sie unter [Einführung in Application Gateway](application-gateway-introduction.md).
-

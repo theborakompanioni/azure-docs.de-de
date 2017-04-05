@@ -16,16 +16,16 @@ ms.topic: article
 ms.date: 2/25/2017
 ms.author: ronitr;giladm
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: d1350081aa4f70660802c61a77250496e1e7fc2a
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: e20a30a565198c01f213895a87fe8807a37272cb
+ms.lasthandoff: 03/30/2017
 
 
 ---
 
 # <a name="configure-and-manage-sql-database-auditing-in-the-azure-portal"></a>Konfigurieren und Verwalten der SQL-Datenbanküberwachung im Azure-Portal
 
-In diesem Abschnitt wird beschrieben, wie die Überwachung im Azure-Portal konfiguriert und verwaltet wird. Informationen zum Konfigurieren und Verwalten der Überwachung mithilfe von PowerShell finden Sie unter [Configure auditing with PowerShell](sql-database-auditing-powershell.md) (Konfigurieren der Überwachung mithilfe von PowerShell). 
+In diesem Abschnitt wird beschrieben, wie die Überwachung im Azure-Portal konfiguriert und verwaltet wird. Informationen zum Konfigurieren und Verwalten der Überwachung mithilfe von PowerShell finden Sie unter [Configure auditing with PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) (Konfigurieren der Überwachung mithilfe von PowerShell). 
 
 Eine Übersicht über die Überwachung finden Sie unter [SQL-Datenbanküberwachung](sql-database-auditing.md).
 
@@ -45,7 +45,7 @@ Eine Übersicht über die Überwachung finden Sie unter [SQL-Datenbanküberwachu
 
     <a id="storage-screenshot"></a>
     ![Navigationsbereich][4]
-6. Wenn Sie die überwachten Ereignisse anpassen möchten, erreichen Sie dies über PowerShell oder REST-API.
+6. Wenn Sie die überwachten Ereignisse anpassen möchten, können Sie PowerShell oder die REST-API verwenden.
 7. Nachdem Sie Ihre Überwachungseinstellungen konfiguriert haben, können Sie das neue Feature Bedrohungserkennung (Vorschau) aktivieren und die E-Mail-Konten konfigurieren, an die Sicherheitswarnungen gesendet werden sollen. Mit der Bedrohungserkennung können Sie proaktive Warnungen bei anomalen Datenbankaktivitäten erhalten, die auf mögliche Sicherheitsbedrohungen hinweisen können. Weitere Informationen finden Sie unter [Bedrohungserkennung](sql-database-threat-detection.md).
 8. Klicken Sie auf **Speichern**.
 
@@ -188,7 +188,7 @@ In einer Produktionsumgebung werden Sie Ihre Speicherschlüssel wahrscheinlich r
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zum Konfigurieren und Verwalten der Überwachung mithilfe von PowerShell finden Sie unter [Configure database auditing using PowerShell](sql-database-auditing-powershell.md) (Konfigurieren der Datenbanküberwachung mithilfe von PowerShell).
+* Informationen zum Konfigurieren und Verwalten der Überwachung mithilfe von PowerShell finden Sie unter [Configure database auditing using PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) (Konfigurieren der Datenbanküberwachung mithilfe von PowerShell).
 * Eine Übersicht über die Überwachung finden Sie unter [Datenbanküberwachung](sql-database-auditing.md).
 
 

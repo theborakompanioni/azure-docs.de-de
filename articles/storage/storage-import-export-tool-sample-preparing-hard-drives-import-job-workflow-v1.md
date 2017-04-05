@@ -1,6 +1,6 @@
 ---
-title: "Beispielworkflow für die Vorbereitung von Festplatten für einen Azure-Importauftrag | Microsoft Docs"
-description: "Lernen Sie eine exemplarische Vorgehensweise für den vollständigen Prozess der Laufwerkvorbereitung für einen Importauftrag im Azure-Import/Export-Dienst kennen."
+title: "Beispielworkflow für die Vorbereitung von Festplatten für einen Importauftrag in Azure Import/Export (V1) | Microsoft-Dokumentation"
+description: "Lernen Sie eine exemplarische Vorgehensweise für den vollständigen Prozess der Laufwerkvorbereitung für einen Importauftrag im Azure Import/Export-Dienst kennen."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 8de848b1192ff1c10e0375053c4e03f18c06184e
-ms.openlocfilehash: ee7a8c9ae4cda5b67184100dd37ee4e0384aff26
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 313f8c1f3962a943b4c98c530c324ff28aa84c10
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -49,7 +49,7 @@ Berechnen Sie nun die Größe der Daten, um zu bestimmen, wie viele Festplatten 
   
 `5TB + 30GB + 25GB + 10GB = 5TB + 65GB`  
   
-In diesem Beispiel sollten zwei 3-TB-Festplatten ausreichen. Da das Quellverzeichnis `H:\Video` jedoch 5TB an Daten enthält, und die Kapazität Ihrer einzelnen Festplatte nur 3TB beträgt, muss `H:\Video` vor dem Ausführen des Microsoft Azure-Import/Export-Tools in zwei kleinere Verzeichnisse aufgeteilt werden: `H:\Video1` und `H:\Video2`. Aus diesem Schritt resultieren die folgenden Quellverzeichnisse:  
+In diesem Beispiel sollten zwei 3-TB-Festplatten ausreichen. Da das Quellverzeichnis `H:\Video` jedoch 5 TB an Daten enthält und die Kapazität der einzelnen Festplatte nur 3 TB beträgt, muss `H:\Video` vor dem Ausführen des Microsoft Azure Import/Export-Tools in zwei kleinere Verzeichnisse aufgeteilt werden: `H:\Video1` und `H:\Video2`. Aus diesem Schritt resultieren die folgenden Quellverzeichnisse:  
   
 |Location|Größe|Virtuelles Zielverzeichnis oder Blob|  
 |--------------|----------|-------------------------------------------|  
@@ -74,7 +74,7 @@ In diesem Beispiel sollten zwei 3-TB-Festplatten ausreichen. Da das Quellverzeic
   
 Darüber hinaus können Sie die folgenden Metadaten für alle Dateien festlegen:  
   
--   **UploadMethod:** Microsoft Azure-Import/Export-Dienst  
+-   **UploadMethod:** Microsoft Azure Import/Export-Dienst  
   
 -   **DataSetName:** SampleData  
   
@@ -85,7 +85,7 @@ Um Metadaten für die importierten Dateien festzulegen, erstellen Sie die Textda
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>  
 <Metadata>  
-    <UploadMethod>Windows Azure Import/Export Service</UploadMethod>  
+    <UploadMethod>Windows Azure Import/Export service</UploadMethod>  
     <DataSetName>SampleData</DataSetName>  
     <CreationDate>10/1/2013</CreationDate>  
 </Metadata>  
@@ -110,7 +110,7 @@ Um diese Eigenschaften festzulegen, erstellen Sie die Textdatei `c:\WAImportExpo
 </Properties>  
 ```
   
-Jetzt können Sie das Azure-Import/Export-Tool ausführen, um die beiden Festplatten vorzubereiten. Beachten Sie Folgendes:  
+Jetzt können Sie das Azure Import/Export-Tool ausführen, um die beiden Festplatten vorzubereiten. Beachten Sie Folgendes:  
   
 -   Das erste Laufwerk wird als Laufwerk X bereitgestellt.  
   
@@ -131,38 +131,50 @@ Jetzt können Sie das Azure-Import/Export-Tool ausführen, um die beiden Festpla
     WAImportExport.exe PrepImport /j:FirstDrive.jrn /id:Video1 /logdir:c:\logs /sk:8ImTigJhIwvL9VEIQKB/zbqcXbxrIHbBjLIfOt0tyR98TxtFvUM/7T0KVNR6KRkJrh26u5I8hTxTLM2O1aDVqg== /t:x /format /encrypt /srcdir:x:\Video1 /dstdir:video/ /MetadataFile:c:\WAImportExport\SampleMetadata.txt /skipwrite
 ```
 
-Führen Sie für das erste Laufwerk das Azure-Import/Export-Tool zweimal aus, um die beiden Quellverzeichnisse zu kopieren:  
+## <a name="copy-sessions---first-drive"></a>Kopiersitzungen – Erstes Laufwerk
+
+Führen Sie für das erste Laufwerk das Azure Import/Export-Tool zweimal aus, um die beiden Quellverzeichnisse zu kopieren:  
+
+**Erste Kopiersitzung**
   
 ```
-## First copy session for first drive  
 WAImportExport.exe PrepImport /j:FirstDrive.jrn /id:Video1 /logdir:c:\logs /sk:8ImTigJhIwvL9VEIQKB/zbqcXbxrIHbBjLIfOt0tyR98TxtFvUM/7T0KVNR6KRkJrh26u5I8hTxTLM2O1aDVqg== /t:x /format /encrypt /srcdir:H:\Video1 /dstdir:video/ /MetadataFile:c:\WAImportExport\SampleMetadata.txt  
 ```
 
+**Zweite Kopiersitzung**
+
 ```  
-## Second copy session for first drive  
 WAImportExport.exe PrepImport /j:FirstDrive.jrn /id:Photo /srcdir:H:\Photo /dstdir:photo/ /MetadataFile:c:\WAImportExport\SampleMetadata.txt
 ```
+
+## <a name="copy-sessions---second-drive"></a>Kopiersitzungen – Zweites Laufwerk
+ 
+Führen Sie für das zweite Laufwerk das Azure Import/Export-Tool dreimal aus, einmal für jedes Quellverzeichnis und einmal für die eigenständige Blu-Ray™-Bilddatei:  
   
-Führen Sie für das zweite Laufwerk das Azure-Import/Export-Tool dreimal aus, einmal für jedes Quellverzeichnis und einmal für die eigenständige Blu-Ray™-Bilddatei:  
-  
+**Erste Kopiersitzung** 
+
 ```
-## First copy session  
 WAImportExport.exe PrepImport /j:SecondDrive.jrn /id:Video2 /logdir:c:\logs /sk:8ImTigJhIwvL9VEIQKB/zbqcXbxrIHbBjLIfOt0tyR98TxtFvUM/7T0KVNR6KRkJrh26u5I8hTxTLM2O1aDVqg== /t:y /format /encrypt /srcdir:H:\Video2 /dstdir:video/ /MetadataFile:c:\WAImportExport\SampleMetadata.txt  
 ```
   
+**Zweite Kopiersitzung**
+
 ```
-## Second copy session  
 WAImportExport.exe PrepImport /j:SecondDrive.jrn /id:Music /srcdir:\\bigshare\john\music /dstdir:music/ /MetadataFile:c:\WAImportExport\SampleMetadata.txt  
 ```  
   
+**Dritte Kopiersitzung**  
+
 ```
-## Third copy session  
 WAImportExport.exe PrepImport /j:SecondDrive.jrn /id:BlueRayIso /srcfile:K:\Temp\BlueRay.ISO /dstblob:favorite/BlueRay.ISO /MetadataFile:c:\WAImportExport\SampleMetadata.txt /PropertyFile:c:\WAImportExport\SampleProperties.txt  
 ```
-  
+
+## <a name="copy-session-completion"></a>Abschluss der Kopiersitzungen
+
 Nach Abschluss der Kopiersitzungen können Sie die beiden Laufwerke vom Kopiercomputer trennen und sie an das entsprechende Microsoft Azure-Rechenzentrum senden. Bei der Erstellung des Importauftrags im [Microsoft Azure-Verwaltungsportal](https://manage.windowsazure.com/) laden Sie die beiden Journaldateien `FirstDrive.jrn` und `SecondDrive.jrn` hoch.  
   
-## <a name="see-also"></a>Weitere Informationen  
-[Vorbereiten von Festplatten für einen Importauftrag](storage-import-export-tool-preparing-hard-drives-import-v1.md)   
-[Kurzübersicht über häufig verwendete Befehle](storage-import-export-tool-quick-reference-v1.md) 
+## <a name="next-steps"></a>Nächste Schritte
+
+* [Vorbereiten von Festplatten für einen Importauftrag](storage-import-export-tool-preparing-hard-drives-import-v1.md)   
+* [Kurzübersicht über häufig verwendete Befehle](storage-import-export-tool-quick-reference-v1.md) 
 

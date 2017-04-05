@@ -12,12 +12,12 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2017
+ms.date: 03/29/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: cd4de75743ee46bb07aec2cf23fa7687f4f20f43
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 892d24199be5065ee54d46863cca2fd958db3236
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -114,13 +114,9 @@ Derzeit ermöglichen die folgenden Dienste das Verschieben in eine neue Ressourc
 * Traffic Manager
 * Virtual Machines: Das Verschieben in ein neues Abonnement wird nicht unterstützt, wenn dessen Zertifikate in einem Schlüsseltresor gespeichert sind.
 * Virtual Machines (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
-* Virtuelle Netzwerke
+* Virtual Networks – derzeit kann ein mittels Peering verknüpftes virtuelles Netzwerk erst verschoben werden, nachdem VNET-Peering deaktiviert wurde. Nach der Deaktivierung kann das virtuelle Netzwerk verschoben und das VNET-Peering wieder aktiviert werden.
+* VPN Gateway 
 
-> [!NOTE] 
-> Derzeit kann ein virtuelles Netzwerk mit VPN Gateway erst verschoben werden, wenn das Gateway vorübergehend entfernt wurde. Nach dem Entfernen kann das virtuelle Netzwerk verschoben und das Gateway erstellt werden.
->
-> Derzeit kann ein mittels Peering verknüpftes virtuelles Netzwerk erst verschoben werden, nachdem das VNET-Peering deaktiviert wurde. Nach der Deaktivierung kann das virtuelle Netzwerk verschoben und das VNET-Peering wieder aktiviert werden.
->
  
 ## <a name="services-that-do-not-enable-move"></a>Dienste, die keine Verschiebung ermöglichen
 Die folgenden Dienste ermöglichen das Verschieben einer Ressource derzeit nicht:
@@ -137,9 +133,14 @@ Die folgenden Dienste ermöglichen das Verschieben einer Ressource derzeit nicht
 * Sicherheit
 * Virtuelle Computer mit in Schlüsseltresor gespeichertem Zertifikat
 * Virtual Machines mit Managed Disks
+* Verfügbarkeitsgruppen mit virtuellen Computern mit Managed Disks
+* Skalierungsgruppen für virtuelle Computer mit Managed Disks
+* Verwaltete Datenträger
+* Von Managed Disks erstellte Images
+* Von Managed Disks erstellte Momentaufnahmen
 * Skalierungsgruppen für virtuelle Computer
 * Virtual Networks (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
-* VPN Gateway
+* Von Marketplace-Ressourcen erstellte virtuelle Computer können nicht über Abonnements verschoben werden. Die Ressource muss im aktuellen Abonnement aufgehoben und im neuen Abonnement erneut bereitgestellt werden
 
 ## <a name="app-service-limitations"></a>App Service-Einschränkungen
 Bei der Arbeit mit App Service-Apps können Sie nicht nur einen App Service-Plan verschieben. Zum Verschieben von App Service-Apps stehen folgende Optionen bereit:

@@ -15,9 +15,9 @@ ms.workload: data-services
 ms.date: 03/07/2017
 ms.author: andrl
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 202684a1ae1106d79b9cee4e4ebf20ffa283f41b
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: a7c366d29cf163c9c30c72751a992a0ebb3462cd
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -30,42 +30,42 @@ Lassen Sie uns Ihr Projekt promoten! Zeigen Sie uns das tolle Projekt, an dem Si
 
 Aggregationen (Group-by, Pivot-table und N-dimensionale Cubes) und Zeitreihentransformationen als gespeicherte Prozeduren in DocumentDB.
 
-Informieren Sie sich auf [GitHub](https://github.com/lmaccherone/documentdb-lumenize) und [npm](https://www.npmjs.com/package/lumenize).
+Informieren Sie sich bei [GitHub](https://github.com/lmaccherone/documentdb-lumenize) und [npm](https://www.npmjs.com/package/lumenize).
 
 ### <a name="documentdb-studio"></a>DocumentDB Studio
 *von Ming Liu*
 
 Ein Clientmanagement-Viewer/Explorer für den Microsoft Azure DocumentDB-Dienst.
 
-Informieren Sie sich hierüber bei [Github](https://github.com/mingaliu/DocumentDBStudio).
+Informieren Sie sich hierüber bei [GitHub](https://github.com/mingaliu/DocumentDBStudio).
 
 ### <a name="doqmentdb"></a>DoQmentDB
 *von Arial Mashraki*
 
 DoQmentDB ist ein Node.js Promise-basierter Client, der über DocumentDB eine MongoDB-ähnliche Schicht bereitstellt.
 
-Informieren Sie sich auf [GitHub](https://github.com/a8m/doqmentdb) und [npm](https://www.npmjs.com/package/doqmentdb).
+Informieren Sie sich bei [GitHub](https://github.com/a8m/doqmentdb) und [npm](https://www.npmjs.com/package/doqmentdb).
 
 ### <a name="typescript-api"></a>TypeScript API
 *von Jelmer Cormont*
 
 Ein Wrapper um den Node.js-Client, geschrieben in TypeScript (kann auch in einfachem JavaScript verwendet werden). Unterstützt `async/await` und eine vereinfachte API.
 
-Informieren Sie sich auf [GitHub](https://github.com/jcormont/documentdb-typescript) und [npm](https://www.npmjs.com/package/documentdb-typescript).
+Informieren Sie sich bei [GitHub](https://github.com/jcormont/documentdb-typescript) und [npm](https://www.npmjs.com/package/documentdb-typescript).
 
 ### <a name="swagger-rest-api-for-documentdb"></a>Swagger-REST-API für DocumentDB
 *von Howard Edidin*
 
 Eine Swagger-Datei mit einer DocumentDB-REST-API, die problemlos als API-App bereitgestellt werden kann.
 
-Informieren Sie sich hierüber bei [Github](https://github.com/HEDIDIN/DocumentDB-REST/tree/master/DocumentDBRestApi).
+Informieren Sie sich hierüber bei [GitHub](https://github.com/HEDIDIN/DocumentDB-REST/tree/master/DocumentDBRestApi).
 
 ### <a name="fluent-plugin-documentdb"></a>fluent-plugin-documentdb
 *von Yoichi Kawasaki*
 
 fluent-plugin-documentdb ist ein Fluentd-Plug-In für die Ausgabe an Azure DocumentDB.
 
-Informieren Sie sich auf [GitHub](https://github.com/yokawasa/fluent-plugin-documentdb) und [rubygems](https://rubygems.org/gems/fluent-plugin-documentdb).
+Informieren Sie sich bei [GitHub](https://github.com/yokawasa/fluent-plugin-documentdb) und [rubygems](https://rubygems.org/gems/fluent-plugin-documentdb).
 
 *Weitere Open Source-DocumentDB-Projekte finden Sie auf [GitHub](https://github.com/search?p=4&q=documentdb&type=Repositories).*
 
@@ -220,14 +220,14 @@ Benötigen Sie technische Hilfe? Haben Sie Fragen? Fragen Sie sich, ob NoSQL ein
 Diese Projekte werden vom Azure DocumentDB-Team in Zusammenarbeit mit unserer Open Source-Community aktiv entwickelt.
 
 ### <a name="sdks"></a>SDKs
-| Plattform | Github | Paket |
+| Plattform | GitHub | Paket |
 | --- | --- | --- |
 | Node.js |[azure-documentdb-node](https://github.com/Azure/azure-documentdb-node) |[npm](https://www.npmjs.com/package/documentdb) |
 | Java |[azure-documentdb-java](https://github.com/Azure/azure-documentdb-java) |[Maven](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-documentdb%22) |
 | Python |[azure-documentdb-python](https://github.com/Azure/azure-documentdb-python) |[PyPI](https://pypi.python.org/pypi/pydocumentdb) |
 
 ### <a name="other-projects"></a>Andere Projekte
-| Name | Github | Website |
+| Name | GitHub | Website |
 | --- | --- | --- |
 | Dokumentation |[azure-content](https://github.com/Azure/azure-content/tree/master/articles/documentdb) |[Dokumentationswebsite](https://azure.microsoft.com/documentation/services/documentdb/) |
 | Hadoop-Connector |[azure-documentdb-hadoop](https://github.com/Azure/azure-documentdb-hadoop) |[Maven](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-documentdb-hadoop%22) |

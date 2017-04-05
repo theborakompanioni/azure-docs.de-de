@@ -1,5 +1,5 @@
 ---
-title: Erstellen von Warnungsregeln in OMS Log Analytics | Microsoft-Dokumentation
+title: Erstellen von Warnungen in OMS Log Analytics | Microsoft-Dokumentation
 description: "Mit Warnungen in Log Analytics werden wichtige Informationen in Ihrem OMS-Repository identifiziert, und Sie können proaktiv über Probleme informiert werden oder Aktionen aufrufen, um zu versuchen, die Probleme zu beheben.  In diesem Artikel wird beschrieben, wie Sie eine Warnungsregel erstellen, und es werden die verschiedenen Aktionen vorgestellt, die Sie durchführen können."
 services: log-analytics
 documentationcenter: 
@@ -12,18 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/28/2017
+ms.date: 03/23/2017
 ms.author: bwren
-ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: fdf22ff85a3a76be5de50632c4948df44c2312df
-ms.openlocfilehash: 9778c79ca887e154ad2796ce5d90d953643b8067
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: eec118430c6262626728c3156634361c977ccb4b
+ms.lasthandoff: 03/28/2017
 
 
 ---
-# <a name="create-and-manage-alert-rules-in-log-analytics-with-the-oms-portal"></a>Erstellen und Verwalten von Warnungsregeln in Log Analytics mit dem OMS-Portal
-[Warnungen in Log Analytics](log-analytics-alerts.md) werden mithilfe von Warnungsregeln erstellt, für die in regelmäßigen Abständen automatisch Protokollsuchen durchgeführt werden.  Sie erstellen einen Warnungsdatensatz, wenn die Ergebnisse bestimmten Kriterien entsprechen.  Die Regel kann dann automatisch eine oder mehrere Aktionen ausführen, um Sie proaktiv über die Warnung zu informieren oder einen anderen Prozess aufzurufen.   
+# <a name="working-with-alert-rules-in-log-analytics"></a>Arbeiten mit Warnungsregeln in Log Analytics
+Warnungen werden mithilfe von Warnungsregeln erstellt, für die in regelmäßigen Abständen automatisch Protokollsuchen durchgeführt werden.  Sie erstellen einen Warnungsdatensatz, wenn die Ergebnisse bestimmten Kriterien entsprechen.  Die Regel kann dann automatisch eine oder mehrere Aktionen ausführen, um Sie proaktiv über die Warnung zu informieren oder einen anderen Prozess aufzurufen.   
 
 Dieser Artikel beschreibt die Prozesse zum Erstellen und Bearbeiten von Warnungsregeln mit dem OMS-Portal.  Weitere Informationen über die unterschiedlichen Einstellungen und das Implementieren des erforderlichen Codes finden Sie unter [Reagieren auf Probleme in Log Analytics mithilfe von Warnungen](log-analytics-alerts.md).
 
@@ -79,23 +78,37 @@ Das Suchabfrage- und Zeitfenster, das die Datensätze zurückgibt, die ausgewert
 
 Wenn Sie das Zeitfenster für die Warnungsregel angeben, wird die Anzahl von vorhandenen Datensätzen angezeigt, die mit den Suchkriterien für das Zeitfenster übereinstimmen.  So können Sie die Häufigkeit bestimmen, um die zu erwartende Anzahl von Ergebnissen zu erhalten.
 
-#### <a name="threshold"></a>Schwellenwert
-
-| Eigenschaft | Beschreibung |
-|:--- |:---|
-| Anzahl der Ergebnisse |Eine Warnung wird erstellt, wenn die Anzahl der von der Abfrage zurückgegebenen Datensätze entweder **größer als** oder **kleiner als** der Wert ist, den Sie angeben.  |
-
-### <a name="alert-frequency"></a>Alert frequency (Warnhäufigkeit)
+### <a name="schedule"></a>Schedule
 Definiert, wie oft die Suchabfrage ausgeführt wird.
 
 | Eigenschaft | Beschreibung |
 |:--- |:---|
 | Alert frequency (Warnhäufigkeit) | Gibt an, wie oft die Abfrage ausgeführt werden soll. Dies kann ein beliebiger Wert zwischen 5 Minuten und 24 Stunden sein. Er sollte kleiner als oder gleich dem Zeitfensterwert sein.  Wenn der Wert größer als das Zeitfenster ist, besteht das Risiko, dass Datensätze ausgelassen werden.<br><br>Angenommen, Sie verwenden ein Zeitfenster von 30 Minuten und eine Häufigkeit von 60 Minuten.  Wenn die Abfrage um 13:00 Uhr ausgeführt wird, gibt sie die Datensätze für den Zeitraum zwischen 12:30 und 13:00 Uhr zurück.  Wenn die Abfrage dann das nächste Mal um 14 Uhr ausgeführt wird, gibt sie die Datensätze für den Zeitraum zwischen 13:30 und 14:00 Uhr zurück.  Alle Datensätze, die zwischen 13:00 und 13:30 erstellt werden, werden also nicht ausgewertet. |
+
+
+### <a name="generate-alert-based-on"></a>Warnung generieren basierend auf
+Definiert die Kriterien, anhand derer die Ergebnisse der Suchabfrage ausgewertet werden sollen, um festzulegen, ob eine Warnung erstellt werden soll.  Diese Details weichen je nach Art der ausgewählten Warnungsregel ab.  Sie können Details für die unterschiedlichen Warnungsregeltypen unter [Grundlegendes zu Warnungen in Log Analytics](log-analytics-alerts.md) abrufen.
+
+| Eigenschaft | Beschreibung |
+|:--- |:---|
 | Suppress alerts (Warnungen unterdrücken) | Wenn Sie die Unterdrückung für die Warnungsregel aktivieren, werden Aktionen für die Regel nach dem Erstellen einer neuen Warnung für einen vorher festgelegten Zeitraum deaktiviert. Die Regel wird weiter ausgeführt und erstellt Warnungsdatensätze, wenn die Kriterien erfüllt sind. Dies ist der Fall, damit Sie Zeit haben, das Problem zu beheben, ohne doppelte Aktionen durchzuführen. |
 
+#### <a name="number-of-results-alert-rules"></a>Warnungsregeln des Typs „Anzahl von Ergebnissen“
+
+| Eigenschaft | Beschreibung |
+|:--- |:---|
+| Anzahl der Ergebnisse |Eine Warnung wird erstellt, wenn die Anzahl der von der Abfrage zurückgegebenen Datensätze entweder **größer als** oder **kleiner als** der Wert ist, den Sie angeben.  |
+
+#### <a name="metric-measurement-alert-rules"></a>Warnungsregeln des Typs „Metrische Maßeinheit“
+
+| Eigenschaft | Beschreibung |
+|:--- |:---|
+| Aggregatwert | Schwellenwert, den die jeweiligen Aggregatwerte in den Ergebnissen übersteigen müssen, um als Verletzung zu gelten. |
+| Warnung auslösen basierend auf | Die erforderliche Anzahl von Verletzungen, damit eine Warnung erstellt wird.  Sie können **Sicherheitsverletzungen gesamt** für eine Beliebige Kombination aus Verletzungen in den Ergebnissen angeben oder **Aufeinanderfolgende Sicherheitsverletzungen**, um zu erfordern, dass die Verletzungen in aufeinanderfolgenden Stichproblem auftreten müssen. |
 
 ### <a name="actions"></a>Actions
-Warnungsregeln erstellen immer einen [Warnungsdatensatz](#alert-records), wenn der Schwellenwert erreicht wird.  Sie können auch eine oder mehrere auszuführende Aktionen definieren, z.B. Senden einer E-Mail oder Starten eines Runbooks.  Unter [Add actions to alert rules in Log Analytics](log-analytics-alerts-actions.md) (Hinzufügen von Aktionen zu Warnungsregeln in Log Analytics) finden Sie weitere Informationen zum Konfigurieren von Aktionen. 
+Warnungsregeln erstellen immer einen [Warnungsdatensatz](#alert-records), wenn der Schwellenwert erreicht wird.  Sie können auch auszuführende Reaktionen definieren, z.B. das Senden einer E-Mail oder das Starten eines Runbooks.
+
 
 
 #### <a name="email-actions"></a>E-Mail-Aktionen
@@ -115,7 +128,7 @@ Mit Webhookaktionen können Sie einen externen Prozess über eine HTTP POST-Anfo
 | Webhook |Geben Sie **Ja** an, wenn beim Auslösen der Warnung ein Webhook aufgerufen werden soll. |
 | Webhook-URL |Die URL des Webhooks. |
 | Include custom JSON payload (Benutzerdefinierte JSON-Nutzlast einbinden) |Wählen Sie diese Option, wenn Sie die Standardnutzlast durch eine benutzerdefinierte Nutzlast ersetzen möchten. |
-| Enter your custom JSON payload (Benutzerdefinierte JSON-Nutzlast eingeben) |Benutzerdefinierte Nutzlast, die an den Webhook gesendet wird.  |
+| Enter your custom JSON payload (Benutzerdefinierte JSON-Nutzlast eingeben) |Die benutzerdefinierte Nutzlast für den Webhook.  Details hierzu finden Sie vorherigen Abschnitt. |
 
 #### <a name="runbook-actions"></a>Runbookaktionen
 Bei Runbookaktionen wird ein Runbook in Azure Automation gestartet. 

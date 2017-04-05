@@ -4,6 +4,7 @@
 # Erste Schritte
 ## [Bereitstellen einer Skalierungsgruppe im Portal](virtual-machine-scale-sets-portal-create.md)
 ## [Bereitstellen einer Skalierungsgruppe mit PowerShell oder der Azure CLI](virtual-machine-scale-sets-create.md)
+## [Bereitstellen einer App für die automatische Skalierung mithilfe einer Vorlage](virtual-machine-scale-sets-deploy-scaling-app-template.md)
 
 # Anleitung
 ## Planen und Entwerfen

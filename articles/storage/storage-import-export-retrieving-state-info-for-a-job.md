@@ -1,6 +1,6 @@
 ---
-title: "Abrufen von Statusinformationen für einen Azure Import/Export-Auftrag | Microsoft Docs"
-description: "Informationen zum Abrufen von Statusinformationen für Microsoft Azure Import/Export-Dienstaufträge"
+title: "Abrufen von Statusinformationen für einen Azure Import/Export-Auftrag | Microsoft-Dokumentation"
+description: "Informationen zum Abrufen von Statusinformationen für Aufträge des Microsoft Azure Import/Export-Diensts."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 8de848b1192ff1c10e0375053c4e03f18c06184e
-ms.openlocfilehash: d8156439cc81a88172d5af97c31147b6ceb23ff6
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 13169716c47cf9389c8f2651393ac744441bdd6f
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -91,6 +91,7 @@ Die folgende Tabelle beschreibt die Laufwerkfehlerstatus und die Aktionen, die f
 ## <a name="faulted-states"></a>Fehlerstatus
 Wenn ein Auftrag oder Laufwerk den erwarteten Lebenszyklus nicht normal durchläuft, wird der Auftrag bzw. das Laufwerk in einen `Faulted`-Status verschoben. Zu diesem Zeitpunkt nimmt das Betriebsteam per E-Mail oder telefonisch Kontakt mit dem Kunden auf. Nachdem das Problem behoben wurde, wird der fehlerhafte Auftrag bzw. das Laufwerk aus dem `Faulted`- Status in den entsprechenden anderen Status verschoben.
 
-## <a name="see-also"></a>Weitere Informationen
-[Verwenden der REST-API des Import/Export-Diensts](storage-import-export-using-the-rest-api.md)
+## <a name="next-steps"></a>Nächste Schritte
+
+* [Verwenden der REST-API des Import/Export-Diensts](storage-import-export-using-the-rest-api.md)
 

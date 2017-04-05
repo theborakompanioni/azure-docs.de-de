@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/22/2016
+ms.date: 03/23/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: ca66a344ea855f561ead082091c6941540b1839d
-ms.openlocfilehash: c983a1cb4120e22834ffd2924b113b198f9b04e1
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: c5127a457e99772a52b76e28e7fd3a3e4dd861b0
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -221,7 +222,7 @@ Beachten Sie die folgende [SqlFilter](/dotnet/api/microsoft.servicebus.messaging
   
     -   `property IS NULL` wird als `true` ausgewertet, wenn die Eigenschaft entweder nicht vorhanden ist oder der Wert der Eigenschaft `null` ist.  
   
-Semantik der Eigenschaftsauswertung:  
+### <a name="property-evaluation-semantics"></a>Semantik der Eigenschaftsauswertung  
   
 -   Ein Versuch, eine nicht existierende Systemeigenschaft auszuwerten, wird eine [FilterException](/dotnet/api/microsoft.servicebus.messaging.filterexception)-Ausnahme auslösen.  
   
@@ -273,7 +274,7 @@ Semantik der Eigenschaftsauswertung:
 +---+---+---+---+  
 ```  
   
-Semantik der Operatorenbindung:  
+### <a name="operator-binding-semantics"></a>Semantik der Operatorenbindung
   
 -   Vergleichsoperatoren wie `>`, `>=`, `<`, `<=`, `!=` und `=` folgen der gleichen Semantik wie der C#-Operator, der Datentypaktionen und implizite Konvertierungen einbindet.  
   
@@ -283,8 +284,3 @@ Semantik der Operatorenbindung:
 
 - [SqlFilter-Klasse](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
 - [SQLRuleAction class (SQLRuleAction-Klasse)](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
-
-
-<!--HONumber=Jan17_HO4-->
-
-

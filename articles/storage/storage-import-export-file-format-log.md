@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 74182c8c357085f186aaa43adfaef80a083d16bb
-ms.openlocfilehash: 0b402db8c7e6bd4abb5aaf6ded7f539cfec7172e
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 16234ccaf13ce1d85cfd207ed4734e683070faa6
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -149,7 +149,7 @@ Die folgende Tabelle beschreibt die Elemente der Protokolldatei.
 |`Properties/Path/@Hash`|Attribut, Zeichenfolge|Base16-codierter MD5-Hash der Eigenschaftendatei.|  
 |`Blob/Status`|String|Status der Verarbeitung des Blobs.|  
   
-### <a name="drive-status-codes"></a>Statuscodes für Laufwerke  
+# <a name="drive-status-codes"></a>Statuscodes für Laufwerke  
 In der folgenden Tabelle sind die Statuscodes für die Verarbeitung eines Laufwerks aufgeführt.  
   
 |Statuscode|Beschreibung|  
@@ -178,7 +178,7 @@ In der folgenden Tabelle sind die Statuscodes für die Verarbeitung eines Laufwe
 |`BlobRequestForbidden`|Zugriff auf die Blobs im Speicherkonto ist nicht zulässig. Die Ursache kann ein ungültiger Speicherkontoschlüssel oder eine ungültige Container-SAS sein.|  
 |`InternalError`|Beim Verarbeiten des Laufwerks ist ein interner Fehler aufgetreten.|  
   
-### <a name="blob-status-codes"></a>Statuscodes für Blobs  
+## <a name="blob-status-codes"></a>Statuscodes für Blobs  
 In der folgenden Tabelle sind die Statuscodes für die Verarbeitung eines Blobs aufgeführt.  
   
 |Statuscode|Beschreibung|  
@@ -197,7 +197,7 @@ In der folgenden Tabelle sind die Statuscodes für die Verarbeitung eines Blobs 
 |`IOFailed`|Beim Verarbeiten des Blobs ist ein Datenträger- oder Netzwerk-E/A-Fehler aufgetreten.|  
 |`Failed`|Beim Verarbeiten des Blobs ist ein unbekannter Fehler aufgetreten.|  
   
-### <a name="import-disposition-status-codes"></a>Statuscodes für Importdispositionen  
+## <a name="import-disposition-status-codes"></a>Statuscodes für Importdispositionen  
 In der folgenden Tabelle sind die Statuscodes zum Auflösen einer Importdisposition aufgeführt.  
   
 |Statuscode|Beschreibung|  
@@ -208,7 +208,7 @@ In der folgenden Tabelle sind die Statuscodes zum Auflösen einer Importdisposit
 |`Overwritten`|Das Blob hat gemäß `overwrite`-Importdisposition ein vorhandenes Blob überschrieben.|  
 |`Cancelled`|Ein vorheriger Fehler hat die weitere Verarbeitung der Importdisposition beendet.|  
   
-### <a name="page-rangeblock-status-codes"></a>Statuscodes für Seitenbereiche/Blöcke  
+## <a name="page-rangeblock-status-codes"></a>Statuscodes für Seitenbereiche/Blöcke  
 In der folgenden Tabelle sind die Statuscodes für die Verarbeitung eines Seitenbereichs oder Blocks aufgeführt.  
   
 |Statuscode|Beschreibung|  
@@ -224,7 +224,7 @@ In der folgenden Tabelle sind die Statuscodes für die Verarbeitung eines Seiten
 |`Failed`|Beim Verarbeiten des Seitenbereichs oder Blocks ist ein unbekannter Fehler aufgetreten.|  
 |`Cancelled`|Ein vorheriger Fehler hat die weitere Verarbeitung des Seitenbereichs oder Blocks beendet.|  
   
-### <a name="metadata-status-codes"></a>Statuscodes für Metadaten  
+## <a name="metadata-status-codes"></a>Statuscodes für Metadaten  
 In der folgenden Tabelle sind die Statuscodes für die Verarbeitung von Blobmetadaten aufgeführt.  
   
 |Statuscode|Beschreibung|  
@@ -242,7 +242,7 @@ In der folgenden Tabelle sind die Statuscodes für die Verarbeitung von Blobmeta
 |`Failed`|Beim Verarbeiten der Metadaten ist ein unbekannter Fehler aufgetreten.|  
 |`Cancelled`|Ein vorheriger Fehler hat die weitere Verarbeitung der Metadaten beendet.|  
   
-### <a name="properties-status-codes"></a>Statuscodes für Eigenschaften  
+## <a name="properties-status-codes"></a>Statuscodes für Eigenschaften  
 In der folgenden Tabelle sind die Statuscodes für die Verarbeitung von Blobeigenschaften aufgeführt.  
   
 |Statuscode|Beschreibung|  
@@ -358,6 +358,7 @@ Das folgende Fehlerprotokoll für einen Exportauftrag gibt an, dass der Blobinha
 </DriveLog>  
 ```
   
-## <a name="see-also"></a>Weitere Informationen  
-[Speicherimport/-export – REST](/rest/api/storageimportexport/)
+## <a name="next-steps"></a>Nächste Schritte
+ 
+* [Storage Import/Export-REST-API](/rest/api/storageimportexport/)
 

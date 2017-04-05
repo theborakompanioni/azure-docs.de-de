@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/10/2017
+ms.date: 03/22/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 2b4debaeaf879b0c79c05420fdbbd8735da1d015
-ms.openlocfilehash: d1b6b5b46b3329471388e178c3ea06f881003c48
-ms.lasthandoff: 02/01/2017
-
+ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
+ms.openlocfilehash: 446f4257979e6725186b32ad65cef31cdd3e7ede
+ms.lasthandoff: 03/24/2017
 
 ---
+
 # <a name="sizes-for-linux-virtual-machines-in-azure"></a>Größen für virtuelle Linux-Computer in Azure
 Dieser Artikel beschreibt die verfügbaren Größen und Optionen für die virtuellen Azure-Computer, die Sie zum Ausführen Ihrer Linux-Apps und Workloads verwenden können. Darüber hinaus werden Überlegungen zur Bereitstellung angestellt, die Sie berücksichtigen sollten, wenn Sie eine Verwendung dieser Ressourcen planen. Dieser Artikel ist auch für [virtuelle Windows-Computer](virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)verfügbar.
 
@@ -29,12 +29,34 @@ Dieser Artikel beschreibt die verfügbaren Größen und Optionen für die virtue
 > * Informationen zu den Preisen der unterschiedlichen Größen finden Sie unter [Virtual Machines – Preise](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux). 
 > * Informationen zur Verfügbarkeit von VM-Größen in Azure-Regionen finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/).
 > * Informationen zu den allgemeinen Einschränkungen von virtuellen Azure-Computern finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md).
+> * Weitere Informationen dazu, wie Sie mit [Azure-Computeeinheiten (ACU)](virtual-machines-linux-acu.md) die Computeleistung von Azure-SKUs vergleichen können.
 > 
 > 
 
 <br>   
 
 
-[!INCLUDE [virtual-machines-common-sizes](../../includes/virtual-machines-common-sizes.md)]
+| Typ                     | Größen           |    Beschreibung       |
+|--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
+| [Allgemeiner Zweck](virtual-machines-linux-sizes-general.md)          | DSv2, Dv2, DS, D, Av2, A0-7  | Ausgewogenes Verhältnis von CPU zu Arbeitsspeicher. Ideal für Tests und Entwicklung, kleine bis mittlere Datenbanken sowie Webserver mit geringer bis mittlerer Auslastung. |
+| [Computeoptimiert](virtual-machines-linux-sizes-compute.md)        | Fs, F             | Hohes Verhältnis von CPU zu Arbeitsspeicher. Ideal für Webserver, Network Appliances, Stapelverarbeitungsvorgänge und Anwendungsserver mit mittlerer Auslastung.        |
+| [Arbeitsspeicheroptimiert](virtual-machines-linux-sizes-memory.md)         | GS, G, DSv2, DS   | Hohes Verhältnis von Speicher zu Kern. Hervorragend geeignet für relationale Datenbankserver, mittlere bis große Caches und In-Memory-Analysen.                 |
+| [Speicheroptimiert](virtual-machines-linux-sizes-storage.md)        | Ls                | Datenträgerdurchsatz und -E/A auf hohem Niveau. Ideal für Big Data sowie SQL- und NoSQL-Datenbanken.                                                         |
+| [GPU](virtual-machines-linux-sizes-gpu.md)            | NV, NC            | Spezialisierte virtuelle Computer für intensives Grafikrendering und intensive Videobearbeitung. Mit einem oder mehreren GPUs verfügbar.       |
+| [High Performance Computing](virtual-machines-linux-sizes-hpc.md) | H, A8-11          | Unsere virtuellen Computer mit den schnellsten und leistungsfähigsten CPUs, die optional über Netzwerkschnittstellen mit hohem Durchsatz (RDMA) verfügen. 
+
+<br>
+
+Weitere Informationen dazu, wie Sie mit [Azure-Computeeinheiten (ACU)](virtual-machines-linux-acu.md) die Computeleistung von Azure-SKUs vergleichen können.
+
+Weitere Informationen zu den verschiedenen verfügbaren Größen von virtuellen Computern:
+- [Allgemeiner Zweck](virtual-machines-linux-sizes-general.md)
+- [Computeoptimiert](virtual-machines-linux-sizes-compute.md)
+- [Arbeitsspeicheroptimiert](virtual-machines-linux-sizes-memory.md)
+- [Speicheroptimiert](virtual-machines-linux-sizes-storage.md)
+- [GPU](virtual-machines-linux-sizes-gpu.md)
+- [High Performance Computing](virtual-machines-linux-sizes-hpc.md)
+
+
 
 

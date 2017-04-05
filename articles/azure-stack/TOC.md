@@ -65,10 +65,11 @@
 #### [Erstellen und Veröffentlichen eines Marketplace-Elements](azure-stack-create-and-publish-marketplace-item.md)
 #### [Hinzufügen eines benutzerdefinierten VM-Images](azure-stack-add-vm-image.md)
 #### [Bereitstellen von virtuellen Linux-Computern](azure-stack-linux.md)
-### Abrechnung und verbrauchsbasierte Kostenzuteilung
-#### [Abrechnung und verbrauchsbasierte Kostenzuteilung – Übersicht](azure-stack-billing-and-chargeback.md)
-#### [Ressourcennutzungs-API für Anbieter](azure-stack-provider-resource-api.md)
-#### [Ressourcennutzungs-API für Mandanten](azure-stack-tenant-resource-usage-api.md)
+### Nutzung und Abrechnung
+#### [Übersicht](azure-stack-billing-and-chargeback.md)
+#### [Nutzungsdatenberichte](azure-stack-usage-reporting.md)
+#### [Anbieternutzungs-API](azure-stack-provider-resource-api.md)
+#### [Mandantennutzungs-API](azure-stack-tenant-resource-usage-api.md)
 #### [FAQ zur Nutzung](azure-stack-usage-related-faq.md)
 
 # Verwenden von Diensten
