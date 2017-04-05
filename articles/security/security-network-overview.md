@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/13/2017
+ms.date: 03/28/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 4f8ff754858dfb12a7c1fb6e11b1ea99d99d4aeb
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 7fe9111061fed4af6aa720d0b158e5b4f2becd90
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -29,6 +29,7 @@ Das Ziel dieses Artikel ist, Ihnen das Angebot von Microsoft Azure im Bereich Ne
 Die „Übersicht über die Netzwerksicherheit in Azure“ wird sich auf folgende Themen konzentrieren:
 
 * Azure-Netzwerke
+* Azure Network Watcher
 * Die Netzwerkzugriffssteuerung
 * Ein sicherer Remotezugriff und standortübergreifende Konnektivität
 * Availability
@@ -43,6 +44,18 @@ Virtuelle Computer benötigen Netzwerkkonnektivität. Azure erfordert von einem 
 Weitere Informationen:
 
 * [Virtuelle Netzwerke im Überblick](../virtual-network/virtual-networks-overview.md)
+
+## <a name="azure-network-watcher"></a>Azure Network Watcher
+Azure Network Watcher beinhaltet eine Vielzahl von Netzwerküberwachungsfunktionen, die bei der Behebung von Problemen helfen und einen komplett neuen Satz von Tools bereitstellen, um bei der Identifizierung von Sicherheitsproblemen zu unterstützen.
+
+Die [Sicherheitsgruppenansicht ](/network-watcher/network-watcher-security-group-view-overview.md) unterstützt bei der Überprüfung und Sicherheitskonformität von VMs (Virtual Machines) und kann zur Durchführung von programmgesteuerten Prüfungen verwendet werden, um die von Ihrem Unternehmen definierten Basisrichtlinien mit den effektiven Regeln für all Ihre VMs zu vergleichen. Hierdurch können Konfigurationsabweichungen einfacher festgestellt werden.
+
+Die [Paketerfassung](/network-watcher/network-watcher-packet-capture-overview.md) ermöglicht die Erfassung des Netzwerkdatenverkehrs zur und von der virtuellen Maschine. Neben der Sammlung von Netzwerkstatistiken und der Behebung von Anwendungsproblemen kann die Paketerfassung auch hinsichtlich der Überprüfung von Angriffen auf das Netzwerk von unschätzbarem Wert sein. Sie können diese Funktion auch zusammen mit Azure Functions verwenden, um als Reaktion auf bestimmte Azure-Warnungen Netzwerkaufnahmen zu starten.
+
+Um weitere Informationen zu Azure Network Watcher zu erhalten und zu erfahren, wie Sie einige Funktionen in Ihren Übungen prüfen, lesen Sie [Übersicht über die Überwachung in Azure Network Watcher](/network-watcher/network-watcher-monitoring-overview.md).
+
+>[!NOTE]
+Azure Network Watcher befindet sich noch in der öffentlichen Vorschauphase und weist daher unter Umständen nicht dasselbe Maß an Verfügbarkeit und Zuverlässigkeit auf wie Dienste in Versionen mit allgemeiner Verfügbarkeit. Bestimmte Features werden eventuell nicht unterstützt, bieten möglicherweise eingeschränkte Funktionen und sind vielleicht nicht an allen Azure-Standorten verfügbar. Aktuelle Hinweise zur Verfügbarkeit und zum Status dieses Diensts finden Sie auf der Seite mit [Azure-Updates](https://azure.microsoft.com/updates/?product=network-watcher).
 
 ## <a name="network-access-control"></a>Die Netzwerkzugriffssteuerung
 Netzwerkzugriffssteuerung bedeutet, die Konnektivität zu oder ausgehend von bestimmten Geräten oder Subnetzen innerhalb eines virtuellen Azure-Netzwerks zu begrenzen. Das Ziel der Netzwerkzugriffssteuerung ist sicherzustellen, dass Ihre virtuellen Computer und Dienste nur denjenigen Benutzern und Geräten zugänglich sind, denen Sie den Zugriff auch erlauben möchten. Zugriffssteuerungen basieren auf den Entscheidungen, Verbindungen zu und ausgehend von virtuellen Computern oder Diensten zuzulassen oder zu verweigern.
@@ -213,6 +226,7 @@ Sie können auch das leistungsstarke Datenvisualisierungstool [Microsoft Power B
 Weitere Informationen:
 
 * [Protokollanalysen für Netzwerksicherheitsgruppen (NSGs)](../virtual-network/virtual-network-nsg-manage-log.md)
+
 
 ## <a name="name-resolution"></a>Namensauflösung
 Die Namensauflösung ist eine Schlüsselfunktion aller Dienste, die in Azure gehostet werden. Eine Kompromittierung der Namensauflösungsfunktion kann für die Sicherheit bedeuten, dass ein Angreifer Anforderungen von Ihren Websites auf die Website eines Angreifers umleiten kann. Eine sichere Namensauflösung ist eine Voraussetzung für alle Ihre gehosteten Clouddienste.

@@ -16,14 +16,38 @@ ms.workload: NA
 ms.date: 02/15/2017
 ms.author: chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: 1b2e22150f9cea004af4892cd7fa2fb2b59c8787
-ms.openlocfilehash: 16e53dbdb4ce6de02a9c8acb2fb1d8a3ac265b8f
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: bee47924092a0b327ef3aa5b936116bf311ce8d7
+ms.lasthandoff: 03/28/2017
 
 
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>Anpassen von Service Fabric-Clustereinstellungen und der Fabric-Upgraderichtlinie
 In diesem Dokument erfahren Sie, wie Sie die verschiedenen Fabric-Einstellungen und die Fabric-Upgraderichtlinie für Ihren Service Fabric-Cluster anpassen. Die Anpassungen können im Portal oder mithilfe einer Azure Resource Manager-Vorlage vorgenommen werden.
+
+> [!NOTE]
+> Möglicherweise sind nicht alle Einstellungen über das Portal verfügbar. Falls eine der unten aufgeführten Einstellungen nicht über das Portal verfügbar sein sollte, passen Sie dies mithilfe einer Azure Resource Manager-Vorlage an.
+> 
+
+## <a name="customizing-service-fabric-cluster-settings-using-azure-resource-manager-templates"></a>Anpassen von Service Fabric-Clustereinstellungen mithilfe von Azure Resource Manager-Vorlagen
+In den folgenden Schritten wird beschrieben, wie die neue Einstellung *MaxDiskQuotaInMB* zum Abschnitt *Diagnose* hinzugefügt wird.
+
+1. Rufen Sie die Seite https://resources.azure.com auf.
+2. Navigieren Sie zu Ihrem Abonnement, indem Sie „Abonnements“ > „Ressourcengruppen“ > „Microsoft.ServiceFabric“ > Ihr Clustername erweitern.
+3. Wählen Sie in der oberen rechten Ecke „Lesen/Schreiben“.
+4. Wählen Sie „Bearbeiten“, aktualisieren Sie das JSON-Element `fabricSettings` und fügen Sie ein neues Element hinzu.
+
+```
+      {
+        "name": "Diagnostics",
+        "parameters": [
+          {
+            "name": "MaxDiskQuotaInMB",
+            "value": "65536"
+          }
+        ]
+      }
+```
 
 ## <a name="fabric-settings-that-you-can-customize"></a>Fabric-Einstellungen, die Sie anpassen können
 Es folgen die Fabric-Einstellungen, die Sie anpassen können:
@@ -71,7 +95,7 @@ Es folgen die Fabric-Einstellungen, die Sie anpassen können:
 | MaxCopyQueueSize |Uint, Standardwert 16384 |Dies ist der maximale Wert. Er definiert die Anfangsgröße für die Warteschlange, die Replikationsvorgänge verwaltet. Beachten Sie, dass der Wert eine Potenz von 2 sein muss. Wenn während der Laufzeit die Warteschlange auf diese Größe anwächst, werden Vorgänge zwischen den primären und sekundären Replikatoren gedrosselt. |
 | BatchAcknowledgementInterval | Zeit in Sekunden, Standardwert 0,015 | Geben Sie die Zeitspanne in Sekunden an. Bestimmt die Zeitdauer, die der Replikator nach dem Empfang eines Vorgangs wartet, bevor er eine Bestätigung sendet. Für andere Vorgänge, die während dieses Zeitraums empfangen werden, werden die Bestätigungen in einer einzelnen Nachricht zurückgesendet. Dadurch wird der Netzwerkverkehr verringert, jedoch möglicherweise auch der Durchsatz des Replikators. |
 | MaxReplicationMessageSize |Uint, Standardwert 52428800 | Maximale Nachrichtengröße für Replikationsvorgänge. Der Standardwert ist 50 MB. |
-| ReplicatorAddress |Wstring, Standardwert „localhost:0“ | Der Endpunkt in Form einer Zeichenfolge – „IP:Port“. Wird vom Windows Fabric-Replikator verwendet, um Verbindungen mit anderen Replikaten herzustellen, um Vorgänge zu senden/zu empfangen. |
+| ReplicatorAddress |string, Standardwert „localhost:0“ | Der Endpunkt in Form einer Zeichenfolge – „IP:Port“. Wird vom Windows Fabric-Replikator verwendet, um Verbindungen mit anderen Replikaten herzustellen, um Vorgänge zu senden/zu empfangen. |
 | InitialPrimaryReplicationQueueSize |Uint, Standardwert 64 | Dieser Wert definiert die Anfangsgröße für die Warteschlange, die Replikationsvorgänge auf dem primären Replikator verwaltet. Beachten Sie, dass der Wert eine Potenz von 2 sein muss.|
 | MaxPrimaryReplicationQueueSize |Uint, Standardwert 8192 |Dies ist die maximale Anzahl von Vorgängen, die in der primären Replikationswarteschlange vorhanden sein können. Beachten Sie, dass der Wert eine Potenz von 2 sein muss. |
 | MaxPrimaryReplicationQueueMemorySize |Uint, Standardwert 0 |Dies ist der maximale Wert für die primäre Replikationswarteschlange in Bytes. |
@@ -92,7 +116,7 @@ Es folgen die Fabric-Einstellungen, die Sie anpassen können:
 ### <a name="section-name-fabricclient"></a>Name des Abschnitts: FabricClient
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
-| NodeAddresses |Wstring, Standardwert "" |Eine Sammlung von Adressen (Verbindungszeichenfolgen) auf unterschiedlichen Knoten, die für die Kommunikation mit dem Naming Service verwendet werden können. Anfangs stellt der Client eine Verbindung her, indem er eine der Adressen nach dem Zufallsprinzip auswählt. Wenn mehr als eine Verbindungszeichenfolge angegeben wird und eine Verbindung aufgrund eines Kommunikations- oder Timeoutfehlers nicht hergestellt werden kann, wechselt der Client zur nächsten Adresse in der Reihe. Details zur Semantik von Wiederholungsversuchen finden Sie im Abschnitt zu Wiederholungsversuchen für Naming Service-Adressen. |
+| NodeAddresses |string, Standardwert "" |Eine Sammlung von Adressen (Verbindungszeichenfolgen) auf unterschiedlichen Knoten, die für die Kommunikation mit dem Naming Service verwendet werden können. Anfangs stellt der Client eine Verbindung her, indem er eine der Adressen nach dem Zufallsprinzip auswählt. Wenn mehr als eine Verbindungszeichenfolge angegeben wird und eine Verbindung aufgrund eines Kommunikations- oder Timeoutfehlers nicht hergestellt werden kann, wechselt der Client zur nächsten Adresse in der Reihe. Details zur Semantik von Wiederholungsversuchen finden Sie im Abschnitt zu Wiederholungsversuchen für Naming Service-Adressen. |
 | ConnectionInitializationTimeout |Zeit in Sekunden, Standardwert 2 |Geben Sie die Zeitspanne in Sekunden an. Timeoutintervall für Verbindungen für jeden Versuch eines Clients, eine Verbindung mit dem Gateway zu öffnen. |
 | PartitionLocationCacheLimit |Ganze Zahl, Standardwert 100000 |Anzahl der für die Dienstlösung zwischengespeicherten Partitionen (bei 0 gilt keine Begrenzung). |
 | ServiceChangePollInterval |Zeit in Sekunden, Standardwert 120 |Geben Sie die Zeitspanne in Sekunden an. Das Intervall zwischen aufeinanderfolgenden Abrufen von Dienständerungen vom Client an das Gateway für Benachrichtigungsrückrufe zu registrierten Dienständerungen. |
@@ -121,7 +145,7 @@ Es folgen die Fabric-Einstellungen, die Sie anpassen können:
 ### <a name="section-name-nodedomainids"></a>Name des Abschnitts: NodeDomainIds
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
-| UpgradeDomainId |Wstring, Standardwert "" |Beschreibt die Upgradedomäne, zu der ein Knoten gehört. |
+| UpgradeDomainId |string, Standardwert "" |Beschreibt die Upgradedomäne, zu der ein Knoten gehört. |
 | PropertyGroup |NodeFaultDomainIdCollection |Beschreibt die Fehlerdomäne, zu der ein Knoten gehört. Die Fehlerdomäne wird durch einen URI definiert, der die Position des Knotens im Datencenter beschreibt.  Fehlerdomänen-URIs weisen das Format fd:/fd/ gefolgt von einem URI-Pfadsegment auf.|
 
 ### <a name="section-name-nodeproperties"></a>Name des Abschnitts: NodeProperties
@@ -139,27 +163,27 @@ Es folgen die Fabric-Einstellungen, die Sie anpassen können:
 | --- | --- | --- |
 | StartApplicationPortRange |Ganze Zahl, Standardwert 0 |Start der Anwendungsports, die vom Hostingsubsystem verwaltet werden. Erforderlich, wenn EndpointFilteringEnabled beim Hosting „true“ ist. |
 | EndApplicationPortRange |Ganze Zahl, Standardwert 0 |Ende (nicht inklusiv) der Anwendungsports, die vom Hostingsubsystem verwaltet werden. Erforderlich, wenn EndpointFilteringEnabled beim Hosting „true“ ist. |
-| ClusterX509StoreName |Wstring, Standardwert "My" |Der Name des X.509-Zertifikatspeichers, der das Clusterzertifikat zum Sichern der Kommunikation innerhalb des Clusters enthält. |
-| ClusterX509FindType |Wstring, Standardwert "FindByThumbprint" |Gibt an, wie nach dem Clusterzertifikat im durch ClusterX509StoreName angegebenen Speicher gesucht werden soll. Unterstützte Werte: „FindByThumbprint“, „FindBySubjectName“. Wenn es bei „FindBySubjectName“ mehrere Übereinstimmungen gibt, wird das Zertifikat mit dem längsten Ablaufdatum verwendet. |
-| ClusterX509FindValue |Wstring, Standardwert "" |Suchfilterwert, der zum Suchen des Clusterzertifikats verwendet wird. |
-| ClusterX509FindValueSecondary |Wstring, Standardwert "" |Suchfilterwert, der zum Suchen des Clusterzertifikats verwendet wird. |
-| ServerAuthX509StoreName |Wstring, Standardwert "My" |Name des X.509-Zertifikatspeichers, der das Serverzertifikat für den Zugangsdienst enthält. |
-| ServerAuthX509FindType |Wstring, Standardwert "FindByThumbprint" |Gibt an, wie nach dem Serverzertifikat im durch ServerAuthX509StoreName angegebenen Speicher gesucht werden soll. Unterstützte Werte: FindByThumbprint, FindBySubjectName. |
-| ServerAuthX509FindValue |Wstring, Standardwert "" |Suchfilterwert, der zum Suchen des Serverzertifikats verwendet wird. |
-| ServerAuthX509FindValueSecondary |Wstring, Standardwert "" |Suchfilterwert, der zum Suchen des Serverzertifikats verwendet wird. |
-| ClientAuthX509StoreName |Wstring, Standardwert "My" |Der Name des X.509-Zertifikatspeichers, der das Zertifikat für die standardmäßige FabricClient-Administratorrolle enthält. |
-| ClientAuthX509FindType |Wstring, Standardwert "FindByThumbprint" |Gibt an, wie nach dem Zertifikat im durch ClientAuthX509StoreName angegebenen Speicher gesucht werden soll. Unterstützte Werte: FindByThumbprint, FindBySubjectName. |
-| ClientAuthX509FindValue |Wstring, Standardwert "" | Suchfilterwert, der zum Suchen des Zertifikats für die standardmäßige FabricClient-Administratorrolle verwendet wird. |
-| ClientAuthX509FindValueSecondary |Wstring, Standardwert "" |Suchfilterwert, der zum Suchen des Zertifikats für die standardmäßige FabricClient-Administratorrolle verwendet wird. |
-| UserRoleClientX509StoreName |Wstring, Standardwert "My" |Der Name des X.509-Zertifikatspeichers, der das Zertifikat für die standardmäßige FabricClient-Benutzerrolle enthält. |
-| UserRoleClientX509FindType |Wstring, Standardwert "FindByThumbprint" |Gibt an, wie nach dem Zertifikat im durch UserRoleClientX509StoreName angegebenen Speicher gesucht werden soll. Unterstützte Werte: FindByThumbprint, FindBySubjectName. |
-| UserRoleClientX509FindValue |Wstring, Standardwert "" |Suchfilterwert, der zum Suchen des Zertifikats für die standardmäßige FabricClient-Benutzerrolle verwendet wird. |
-| UserRoleClientX509FindValueSecondary |Wstring, Standardwert "" |Suchfilterwert, der zum Suchen des Zertifikats für die standardmäßige FabricClient-Benutzerrolle verwendet wird. |
+| ClusterX509StoreName |string, Standardwert „My“ |Der Name des X.509-Zertifikatspeichers, der das Clusterzertifikat zum Sichern der Kommunikation innerhalb des Clusters enthält. |
+| ClusterX509FindType |string, Standardwert „FindByThumbprint“ |Gibt an, wie nach dem Clusterzertifikat im durch ClusterX509StoreName angegebenen Speicher gesucht werden soll. Unterstützte Werte: „FindByThumbprint“, „FindBySubjectName“. Wenn es bei „FindBySubjectName“ mehrere Übereinstimmungen gibt, wird das Zertifikat mit dem längsten Ablaufdatum verwendet. |
+| ClusterX509FindValue |string, Standardwert "" |Suchfilterwert, der zum Suchen des Clusterzertifikats verwendet wird. |
+| ClusterX509FindValueSecondary |string, Standardwert "" |Suchfilterwert, der zum Suchen des Clusterzertifikats verwendet wird. |
+| ServerAuthX509StoreName |string, Standardwert „My“ |Name des X.509-Zertifikatspeichers, der das Serverzertifikat für den Zugangsdienst enthält. |
+| ServerAuthX509FindType |string, Standardwert „FindByThumbprint“ |Gibt an, wie nach dem Serverzertifikat im durch ServerAuthX509StoreName angegebenen Speicher gesucht werden soll. Unterstützte Werte: FindByThumbprint, FindBySubjectName. |
+| ServerAuthX509FindValue |string, Standardwert "" |Suchfilterwert, der zum Suchen des Serverzertifikats verwendet wird. |
+| ServerAuthX509FindValueSecondary |string, Standardwert "" |Suchfilterwert, der zum Suchen des Serverzertifikats verwendet wird. |
+| ClientAuthX509StoreName |string, Standardwert „My“ |Der Name des X.509-Zertifikatspeichers, der das Zertifikat für die standardmäßige FabricClient-Administratorrolle enthält. |
+| ClientAuthX509FindType |string, Standardwert „FindByThumbprint“ |Gibt an, wie nach dem Zertifikat im durch ClientAuthX509StoreName angegebenen Speicher gesucht werden soll. Unterstützte Werte: FindByThumbprint, FindBySubjectName. |
+| ClientAuthX509FindValue |string, Standardwert "" | Suchfilterwert, der zum Suchen des Zertifikats für die standardmäßige FabricClient-Administratorrolle verwendet wird. |
+| ClientAuthX509FindValueSecondary |string, Standardwert "" |Suchfilterwert, der zum Suchen des Zertifikats für die standardmäßige FabricClient-Administratorrolle verwendet wird. |
+| UserRoleClientX509StoreName |string, Standardwert „My“ |Der Name des X.509-Zertifikatspeichers, der das Zertifikat für die standardmäßige FabricClient-Benutzerrolle enthält. |
+| UserRoleClientX509FindType |string, Standardwert „FindByThumbprint“ |Gibt an, wie nach dem Zertifikat im durch UserRoleClientX509StoreName angegebenen Speicher gesucht werden soll. Unterstützte Werte: FindByThumbprint, FindBySubjectName. |
+| UserRoleClientX509FindValue |string, Standardwert "" |Suchfilterwert, der zum Suchen des Zertifikats für die standardmäßige FabricClient-Benutzerrolle verwendet wird. |
+| UserRoleClientX509FindValueSecondary |string, Standardwert "" |Suchfilterwert, der zum Suchen des Zertifikats für die standardmäßige FabricClient-Benutzerrolle verwendet wird. |
 
 ### <a name="section-name-paas"></a>Name des Abschnitts: Paas
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
-| ClusterId |Wstring, Standardwert "" |X509-Zertifikatspeicher, der vom Fabric für den Konfigurationsschutz verwendet. |
+| ClusterId |string, Standardwert "" |X509-Zertifikatspeicher, der vom Fabric für den Konfigurationsschutz verwendet. |
 
 ### <a name="section-name-fabrichost"></a>Name des Abschnitts: FabricHost
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
@@ -190,7 +214,7 @@ Es folgen die Fabric-Einstellungen, die Sie anpassen können:
 |ReplicaRestartWaitDuration | Zeit in Sekunden, Standardwert (60,0 * 30)| Geben Sie die Zeitspanne in Sekunden an. Wenn ein Naming Service-Replikat ausfällt, wird dieser Timer gestartet.  Nach Ablauf beginnt der FM damit, die ausgefallenen Replikate zu ersetzen (die Replikate werden noch nicht als verloren betrachtet). |
 |QuorumLossWaitDuration | Zeit in Sekunden, Standardwert MaxValue | Geben Sie die Zeitspanne in Sekunden an. Wenn in einem Naming Service ein Quorumverlust auftritt, wird dieser Timer gestartet.  Nach dessen Ablauf betrachtet FM die ausgefallenen Replikate als verloren und versucht, das Quorum wiederherzustellen. Beachten Sie, dass dies zu Datenverlusten führen kann. |
 |StandByReplicaKeepDuration | Zeit in Sekunden, Standardwert 3600,0 * 2 | Geben Sie die Zeitspanne in Sekunden an. Wenn Naming Service-Replikate nach einem Ausfall wieder aktiv sind, wurden sie möglicherweise bereits ersetzt.  Dieser Timer bestimmt, wie lange FM das Reservereplikat beibehält, bevor es verworfen wird. |
-|PlacementConstraints | Wstring, Standardwert "" | Platzierungseinschränkung für den Naming Service. |
+|PlacementConstraints | string, Standardwert "" | Platzierungseinschränkung für den Naming Service. |
 |ServiceDescriptionCacheLimit | Ganze Zahl, Standardwert 0 | Die maximale Anzahl von Einträgen, die im LRU-Dienstbeschreibungscache im Naming Service-Speicher beibehalten werden (bei 0 gilt keine Begrenzung). |
 |RepairInterval | Zeit in Sekunden, Standardwert 5 | Geben Sie die Zeitspanne in Sekunden an. Intervall, in dem die Korrektur von Benennungsinkonsistenzen zwischen dem Autoritätsbesitzer und dem Namensbesitzer gestartet wird. |
 |MaxNamingServiceHealthReports | Ganze Zahl, Standardwert 10 | Die maximale Anzahl von langsamen Vorgängen, die der Naming Service-Speicher gleichzeitig als fehlerhaft meldet. Bei 0 werden alle langsamen Vorgänge gesendet. |
@@ -207,30 +231,30 @@ Es folgen die Fabric-Einstellungen, die Sie anpassen können:
 ### <a name="section-name-runas"></a>Name des Abschnitts: RunAs
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
-| RunAsAccountName |Wstring, Standardwert "" |Gibt den Namen des RunAs-Kontos an. Dies ist nur für die Kontotypen „DomainUser“ und „ManagedServiceAccount“ erforderlich. Gültige Werte sind „Domäne\Benutzer“ oder "user@domain". |
-|RunAsAccountType|Wstring, Standardwert "" |Gibt den Typ des RunAs-Kontos an. Dies ist für alle RunAs-Abschnitte erforderlich. Gültige Werte sind DomainUser/NetworkService/ManagedServiceAccount /LocalSystem.|
-|RunAsPassword|Wstring, Standardwert "" |Gibt das Kennwort des RunAs-Kontos an. Dies ist nur für den Kontotyp „DomainUser“ erforderlich. |
+| RunAsAccountName |string, Standardwert "" |Gibt den Namen des RunAs-Kontos an. Dies ist nur für die Kontotypen „DomainUser“ und „ManagedServiceAccount“ erforderlich. Gültige Werte sind „Domäne\Benutzer“ oder „user@domain“. |
+|RunAsAccountType|string, Standardwert "" |Gibt den Typ des RunAs-Kontos an. Dies ist für alle RunAs-Abschnitte erforderlich. Gültige Werte sind DomainUser/NetworkService/ManagedServiceAccount /LocalSystem.|
+|RunAsPassword|string, Standardwert "" |Gibt das Kennwort des RunAs-Kontos an. Dies ist nur für den Kontotyp „DomainUser“ erforderlich. |
 
 ### <a name="section-name-runasfabric"></a>Name des Abschnitts: RunAs_Fabric
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
-| RunAsAccountName |Wstring, Standardwert "" |Gibt den Namen des RunAs-Kontos an. Dies ist nur für die Kontotypen „DomainUser“ und „ManagedServiceAccount“ erforderlich. Gültige Werte sind „Domäne\Benutzer“ oder "user@domain". |
-|RunAsAccountType|Wstring, Standardwert "" |Gibt den Typ des RunAs-Kontos an. Dies ist für alle RunAs-Abschnitte erforderlich. Gültige Werte sind LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem. |
-|RunAsPassword|Wstring, Standardwert "" |Gibt das Kennwort des RunAs-Kontos an. Dies ist nur für den Kontotyp „DomainUser“ erforderlich. |
+| RunAsAccountName |string, Standardwert "" |Gibt den Namen des RunAs-Kontos an. Dies ist nur für die Kontotypen „DomainUser“ und „ManagedServiceAccount“ erforderlich. Gültige Werte sind „Domäne\Benutzer“ oder „user@domain“. |
+|RunAsAccountType|string, Standardwert "" |Gibt den Typ des RunAs-Kontos an. Dies ist für alle RunAs-Abschnitte erforderlich. Gültige Werte sind LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem. |
+|RunAsPassword|string, Standardwert "" |Gibt das Kennwort des RunAs-Kontos an. Dies ist nur für den Kontotyp „DomainUser“ erforderlich. |
 
 ### <a name="section-name-runashttpgateway"></a>Name des Abschnitts: RunAs_HttpGateway
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
-| RunAsAccountName |Wstring, Standardwert "" |Gibt den Namen des RunAs-Kontos an. Dies ist nur für die Kontotypen „DomainUser“ und „ManagedServiceAccount“ erforderlich. Gültige Werte sind „Domäne\Benutzer“ oder "user@domain". |
-|RunAsAccountType|Wstring, Standardwert "" |Gibt den Typ des RunAs-Kontos an. Dies ist für alle RunAs-Abschnitte erforderlich. Gültige Werte sind LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem. |
-|RunAsPassword|Wstring, Standardwert "" |Gibt das Kennwort des RunAs-Kontos an. Dies ist nur für den Kontotyp „DomainUser“ erforderlich. |
+| RunAsAccountName |string, Standardwert "" |Gibt den Namen des RunAs-Kontos an. Dies ist nur für die Kontotypen „DomainUser“ und „ManagedServiceAccount“ erforderlich. Gültige Werte sind „Domäne\Benutzer“ oder „user@domain“. |
+|RunAsAccountType|string, Standardwert "" |Gibt den Typ des RunAs-Kontos an. Dies ist für alle RunAs-Abschnitte erforderlich. Gültige Werte sind LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem. |
+|RunAsPassword|string, Standardwert "" |Gibt das Kennwort des RunAs-Kontos an. Dies ist nur für den Kontotyp „DomainUser“ erforderlich. |
 
 ### <a name="section-name-runasdca"></a>Name des Abschnitts: RunAs_DCA
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
-| RunAsAccountName |Wstring, Standardwert "" |Gibt den Namen des RunAs-Kontos an. Dies ist nur für die Kontotypen „DomainUser“ und „ManagedServiceAccount“ erforderlich. Gültige Werte sind „Domäne\Benutzer“ oder "user@domain". |
-|RunAsAccountType|Wstring, Standardwert "" |Gibt den Typ des RunAs-Kontos an. Dies ist für alle RunAs-Abschnitte erforderlich. Gültige Werte sind LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem. |
-|RunAsPassword|Wstring, Standardwert "" |Gibt das Kennwort des RunAs-Kontos an. Dies ist nur für den Kontotyp „DomainUser“ erforderlich. |
+| RunAsAccountName |string, Standardwert "" |Gibt den Namen des RunAs-Kontos an. Dies ist nur für die Kontotypen „DomainUser“ und „ManagedServiceAccount“ erforderlich. Gültige Werte sind „Domäne\Benutzer“ oder „user@domain“. |
+|RunAsAccountType|string, Standardwert "" |Gibt den Typ des RunAs-Kontos an. Dies ist für alle RunAs-Abschnitte erforderlich. Gültige Werte sind LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem. |
+|RunAsPassword|string, Standardwert "" |Gibt das Kennwort des RunAs-Kontos an. Dies ist nur für den Kontotyp „DomainUser“ erforderlich. |
 
 ### <a name="section-name-httpgateway"></a>Name des Abschnitts: HttpGateway
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
@@ -242,12 +266,12 @@ Es folgen die Fabric-Einstellungen, die Sie anpassen können:
 ### <a name="section-name-ktllogger"></a>Name des Abschnitts: KtlLogger
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
-|AutomaticMemoryConfiguration |Ganze Zahl, Standardwert 1 | Flag, das angibt, ob die Einstellungen für den Arbeitsspeicher automatisch und dynamisch konfiguriert werden sollen. Bei&0; werden die Konfigurationseinstellungen für den Arbeitsspeicher direkt verwendet und nicht basierend auf Systembedingungen geändert. Bei&1; werden die Einstellungen für den Arbeitsspeicher automatisch konfiguriert und können basierend auf Systembedingungen geändert werden. |
+|AutomaticMemoryConfiguration |Ganze Zahl, Standardwert 1 | Flag, das angibt, ob die Einstellungen für den Arbeitsspeicher automatisch und dynamisch konfiguriert werden sollen. Bei 0 werden die Konfigurationseinstellungen für den Arbeitsspeicher direkt verwendet und nicht basierend auf Systembedingungen geändert. Bei 1 werden die Einstellungen für den Arbeitsspeicher automatisch konfiguriert und können basierend auf Systembedingungen geändert werden. |
 |WriteBufferMemoryPoolMinimumInKB |Ganze Zahl, Standardwert 8388608 |Die Anzahl an KB, die anfänglich für den Schreibpuffer-Speicherpool reserviert wird. Verwenden Sie 0, um eine Begrenzung anzugeben. Der Standardwert muss mit SharedLogSizeInMB weiter unten konsistent sein. |
 |WriteBufferMemoryPoolMaximumInKB | Ganze Zahl, Standardwert 0 |Die Anzahl an KB, bis zu der der Schreibpuffer-Speicherpool anwachsen kann. Verwenden Sie 0, um keine Begrenzung anzugeben. |
 |MaximumDestagingWriteOutstandingInKB | Ganze Zahl, Standardwert 0 | Die Anzahl an KB, die das freigegebene Protokoll dem dedizierten Protokoll voraus sein darf. Verwenden Sie 0, um keine Begrenzung anzugeben.
-|SharedLogPath |Wstring, Standardwert "" | Pfad und Dateiname für den Speicherort des freigegebenen Protokollcontainers. Verwenden Sie "", um den Standardpfad im Fabricdatenstamm zu nutzen. |
-|SharedLogId |Wstring, Standardwert "" |Eindeutige GUID für den freigegebenen Protokollcontainer. Verwenden Sie "", wenn Sie den Standardpfad im Fabricdatenstamm nutzen. |
+|SharedLogPath |string, Standardwert "" | Pfad und Dateiname für den Speicherort des freigegebenen Protokollcontainers. Verwenden Sie "", um den Standardpfad im Fabricdatenstamm zu nutzen. |
+|SharedLogId |string, Standardwert "" |Eindeutige GUID für den freigegebenen Protokollcontainer. Verwenden Sie "", wenn Sie den Standardpfad im Fabricdatenstamm nutzen. |
 |SharedLogSizeInMB |Ganze Zahl, Standardwert 8192 | Die Anzahl an MB, die für den freigegebenen Protokollcontainer reserviert wird. |
 
 ### <a name="section-name-applicationgatewayhttp"></a>Name des Abschnitts: ApplicationGateway/Http
@@ -258,11 +282,11 @@ Es folgen die Fabric-Einstellungen, die Sie anpassen können:
 |DefaultHttpRequestTimeout |Zeit in Sekunden. Standardwert 60 |Geben Sie die Zeitspanne in Sekunden an.  Gibt das standardmäßige Anforderungstimeout für die HTTP-Anforderungen an, die im HTTP-App-Gateway verarbeitet werden. |
 |ResolveServiceBackoffInterval |Zeit in Sekunden, Standardwert 5 |Geben Sie die Zeitspanne in Sekunden an.  Gibt das standardmäßige Backoffintervall an, nach dem ein fehlerhafter Vorgang zum Auflösen von Diensten wiederholt wird. |
 |BodyChunkSize |Uint, Standardwert 4096 |  Gibt die Größe des Blocks in Bytes an, der zum Lesen des Texts verwendet wird. |
-|GatewayAuthCredentialType |Wstring, Standardwert "None" | Gibt den Typ der Sicherheitsanmeldeinformationen an, die am HTTP-App-Gatewayendpunkt verwendet werden sollen. Gültige Werte sind None/X509. |
-|GatewayX509CertificateStoreName |Wstring, Standardwert "My" | Name des X.509-Zertifikatspeichers, der das Zertifikat für das HTTP-App-Gateway enthält. |
-|GatewayX509CertificateFindType |Wstring, Standardwert "FindByThumbprint" | Gibt an, wie nach dem Zertifikat im durch GatewayX509CertificateStoreName angegebenen Speicher gesucht werden soll. Unterstützte Werte: FindByThumbprint, FindBySubjectName. |
-|GatewayX509CertificateFindValue | Wstring, Standardwert "" | Suchfilterwert, der zum Suchen des HTTP-App-Gatewayzertifikats verwendet wird. Dieses Zertifikat ist für den HTTPS-Endpunkt konfiguriert und kann bei Bedarf auch von den Diensten zum Überprüfen der Identität der App verwendet werden. Nach FindValue wird zuerst gesucht. Wenn er nicht vorhanden ist, wird nach FindValueSecondary gesucht. |
-|GatewayX509CertificateFindValueSecondary | Wstring, Standardwert "" |Suchfilterwert, der zum Suchen des HTTP-App-Gatewayzertifikats verwendet wird. Dieses Zertifikat ist für den HTTPS-Endpunkt konfiguriert und kann bei Bedarf auch von den Diensten zum Überprüfen der Identität der App verwendet werden. Nach FindValue wird zuerst gesucht. Wenn er nicht vorhanden ist, wird nach FindValueSecondary gesucht.|
+|GatewayAuthCredentialType |string, Standardwert „None“ | Gibt den Typ der Sicherheitsanmeldeinformationen an, die am HTTP-App-Gatewayendpunkt verwendet werden sollen. Gültige Werte sind None/X509. |
+|GatewayX509CertificateStoreName |string, Standardwert „My“ | Name des X.509-Zertifikatspeichers, der das Zertifikat für das HTTP-App-Gateway enthält. |
+|GatewayX509CertificateFindType |string, Standardwert „FindByThumbprint“ | Gibt an, wie nach dem Zertifikat im durch GatewayX509CertificateStoreName angegebenen Speicher gesucht werden soll. Unterstützte Werte: FindByThumbprint, FindBySubjectName. |
+|GatewayX509CertificateFindValue | string, Standardwert "" | Suchfilterwert, der zum Suchen des HTTP-App-Gatewayzertifikats verwendet wird. Dieses Zertifikat ist für den HTTPS-Endpunkt konfiguriert und kann bei Bedarf auch von den Diensten zum Überprüfen der Identität der App verwendet werden. Nach FindValue wird zuerst gesucht. Wenn er nicht vorhanden ist, wird nach FindValueSecondary gesucht. |
+|GatewayX509CertificateFindValueSecondary | string, Standardwert "" |Suchfilterwert, der zum Suchen des HTTP-App-Gatewayzertifikats verwendet wird. Dieses Zertifikat ist für den HTTPS-Endpunkt konfiguriert und kann bei Bedarf auch von den Diensten zum Überprüfen der Identität der App verwendet werden. Nach FindValue wird zuerst gesucht. Wenn er nicht vorhanden ist, wird nach FindValueSecondary gesucht.|
 
 ### <a name="section-name-management"></a>Name des Abschnitts: Management
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
@@ -293,7 +317,7 @@ Es folgen die Fabric-Einstellungen, die Sie anpassen können:
 | ReplicaRestartWaitDuration |Zeit in Sekunden, Standardwert 60 Minuten|Geben Sie die Zeitspanne in Sekunden an. ReplicaRestartWaitDuration für FaultAnalysisService. |
 | QuorumLossWaitDuration | Zeit in Sekunden, Standardwert MaxValue |Geben Sie die Zeitspanne in Sekunden an. QuorumLossWaitDuration für FaultAnalysisService. |
 | StandByReplicaKeepDuration| Zeit in Sekunden, Standardwert (60*24*7) Minuten |Geben Sie die Zeitspanne in Sekunden an. StandByReplicaKeepDuration für FaultAnalysisService. |
-| PlacementConstraints | Wstring, Standardwert ""| PlacementConstraints für FaultAnalysisService. |
+| PlacementConstraints | string, Standardwert ""| PlacementConstraints für FaultAnalysisService. |
 | StoredActionCleanupIntervalInSeconds | Ganze Zahl, Standardwert 3600 |Gibt an, wie häufig der Speicher bereinigt wird.  Nur Aktionen in einem Endzustand und die mindestens vor CompletedActionKeepDurationInSeconds abgeschlossen wurden, werden entfernt. |
 | CompletedActionKeepDurationInSeconds | Ganze Zahl, Standardwert 604800 | Ungefähr für diese Dauer sollten Aktionen gespeichert werden, die in einem Endzustand sind.  Dies hängt auch von StoredActionCleanupIntervalInSeconds ab, da die Bereinigung nur in diesem Intervall erfolgt. 604800 sind 7 Tage. |
 | StoredChaosEventCleanupIntervalInSeconds | Ganze Zahl, Standardwert 3600 |Mit dieser Häufigkeit wird der Speicher auf Bereinigungen überwacht. Wenn die Anzahl der Ereignisse größer als 30000 ist, wird die Bereinigung gestartet. |
@@ -309,20 +333,20 @@ Es folgen die Fabric-Einstellungen, die Sie anpassen können:
 | MaxRequestProcessingThreads | Uint, Standardwert 200 |Die maximale Anzahl von parallelen Threads, die zum Verarbeiten von Anforderungen auf dem primären Replikator zulässig sind. 0 = Anzahl von Kernen. |
 | MaxSecondaryFileCopyFailureThreshold | Uint, Standardwert 25| Die maximale Anzahl von Wiederholungsversuchen beim Kopieren von Dateien auf den sekundären Replikator, bevor aufgegeben wird. |
 | AnonymousAccessEnabled | Boolesch, Standardwert „true“ |Aktivieren/deaktivieren Sie anonymen Zugriff auf die FileStoreService-Freigaben. |
-| PrimaryAccountType | Wstring, Standardwert "" |Der primäre AccountType des Prinzipals für die ACL von FileStoreService-Freigaben. |
-| PrimaryAccountUserName | Wstring, Standardwert "" |Der primäre Kontobenutzername des Prinzipals für die ACL von FileStoreService-Freigaben. |
+| PrimaryAccountType | string, Standardwert "" |Der primäre AccountType des Prinzipals für die ACL von FileStoreService-Freigaben. |
+| PrimaryAccountUserName | string, Standardwert "" |Der primäre Kontobenutzername des Prinzipals für die ACL von FileStoreService-Freigaben. |
 | PrimaryAccountUserPassword | SecureString, Standardwert ist leer |Das primäre Kontokennwort des Prinzipals für die ACL von FileStoreService-Freigaben. |
 | FileStoreService | PrimaryAccountNTLMPasswordSecret | SecureString, Standardwert ist leer | Der geheime Schlüssel des Kennworts, der als Startwert verwendet wird, um bei Verwendung der NTLM-Authentifizierung das gleiche Kennwort zu generieren. |
-| PrimaryAccountNTLMX509StoreLocation | Wstring, Standardwert "LocalMachine"| Der Speicherort des X509-Zertifikats, das verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für PrimaryAccountNTLMPasswordSecret zu generieren. |
-| PrimaryAccountNTLMX509StoreName | Wstring, Standardwert "MY"| Der Speichername des X509-Zertifikats, das verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für PrimaryAccountNTLMPasswordSecret zu generieren. |
-| PrimaryAccountNTLMX509Thumbprint | Wstring, Standardwert ""|Der Fingerabdruck des X509-Zertifikats, das verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für PrimaryAccountNTLMPasswordSecret zu generieren. |
-| SecondaryAccountType | Wstring, Standardwert ""| Der sekundäre AccountType des Prinzipals für die ACL von FileStoreService-Freigaben. |
-| SecondaryAccountUserName | Wstring, Standardwert ""| Der sekundäre Kontobenutzername des Prinzipals für die ACL von FileStoreService-Freigaben. |
+| PrimaryAccountNTLMX509StoreLocation | string, Standardwert „LocalMachine“| Der Speicherort des X509-Zertifikats, das verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für PrimaryAccountNTLMPasswordSecret zu generieren. |
+| PrimaryAccountNTLMX509StoreName | string, Standardwert „MY“| Der Speichername des X509-Zertifikats, das verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für PrimaryAccountNTLMPasswordSecret zu generieren. |
+| PrimaryAccountNTLMX509Thumbprint | string, Standardwert ""|Der Fingerabdruck des X509-Zertifikats, das verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für PrimaryAccountNTLMPasswordSecret zu generieren. |
+| SecondaryAccountType | string, Standardwert ""| Der sekundäre AccountType des Prinzipals für die ACL von FileStoreService-Freigaben. |
+| SecondaryAccountUserName | string, Standardwert ""| Der sekundäre Kontobenutzername des Prinzipals für die ACL von FileStoreService-Freigaben. |
 | SecondaryAccountUserPassword | SecureString, Standardwert ist leer |Das sekundäre Kontokennwort des Prinzipals für die ACL von FileStoreService-Freigaben.  |
 | SecondaryAccountNTLMPasswordSecret | SecureString, Standardwert ist leer | Der geheime Schlüssel des Kennworts, der als Startwert verwendet wird, um bei Verwendung der NTLM-Authentifizierung das gleiche Kennwort zu generieren. |
-| SecondaryAccountNTLMX509StoreLocation | Wstring, Standardwert "LocalMachine" |Der Speicherort des X509-Zertifikats, das verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für SecondaryAccountNTLMPasswordSecret zu generieren. |
-| SecondaryAccountNTLMX509StoreName | Wstring, Standardwert "MY" |Der Speichername des X509-Zertifikats, das verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für SecondaryAccountNTLMPasswordSecret zu generieren. |
-| SecondaryAccountNTLMX509Thumbprint | Wstring, Standardwert ""| Der Fingerabdruck des X509-Zertifikats, das verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für SecondaryAccountNTLMPasswordSecret zu generieren. |
+| SecondaryAccountNTLMX509StoreLocation | string, Standardwert „LocalMachine“ |Der Speicherort des X509-Zertifikats, das verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für SecondaryAccountNTLMPasswordSecret zu generieren. |
+| SecondaryAccountNTLMX509StoreName | string, Standardwert „MY“ |Der Speichername des X509-Zertifikats, das verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für SecondaryAccountNTLMPasswordSecret zu generieren. |
+| SecondaryAccountNTLMX509Thumbprint | string, Standardwert ""| Der Fingerabdruck des X509-Zertifikats, das verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für SecondaryAccountNTLMPasswordSecret zu generieren. |
 
 ### <a name="section-name-imagestoreservice"></a>Name des Abschnitts: ImageStoreService
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
@@ -333,7 +357,7 @@ Es folgen die Fabric-Einstellungen, die Sie anpassen können:
 | ReplicaRestartWaitDuration | Zeit in Sekunden, Standardwert 60,0 * 30 | Geben Sie die Zeitspanne in Sekunden an. ReplicaRestartWaitDuration für ImageStoreService. |
 | QuorumLossWaitDuration | Zeit in Sekunden, Standardwert MaxValue | Geben Sie die Zeitspanne in Sekunden an. QuorumLossWaitDuration für ImageStoreService. |
 | StandByReplicaKeepDuration | Zeit in Sekunden, Standardwert 3600,0 * 2 | Geben Sie die Zeitspanne in Sekunden an. StandByReplicaKeepDuration für ImageStoreService. |
-| PlacementConstraints | Wstring, Standardwert "" | PlacementConstraints für ImageStoreService. |
+| PlacementConstraints | string, Standardwert "" | PlacementConstraints für ImageStoreService. |
 | ClientUploadTimeout | Zeit in Sekunden, Standardwert 1800 |Geben Sie die Zeitspanne in Sekunden an. Der Timeoutwert für die Uploadanforderung der obersten Ebene an den Imagespeicherdienst. |
 | ClientCopyTimeout | Zeit in Sekunden, Standardwert 1800 | Geben Sie die Zeitspanne in Sekunden an. Der Timeoutwert für die Kopieranforderung der obersten Ebene an den Imagespeicherdienst. |
 | ClientDownloadTimeout | Zeit in Sekunden, Standardwert 1800 | Geben Sie die Zeitspanne in Sekunden an. Der Timeoutwert für die Downloadanforderung der obersten Ebene an den Imagespeicherdienst. |
@@ -352,7 +376,7 @@ Es folgen die Fabric-Einstellungen, die Sie anpassen können:
 ### <a name="section-name-tokenvalidationservice"></a>Name des Abschnitts: TokenValidationService
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
-| Anbieter |Wstring, Standardwert "DSTS" |Durch Trennzeichen getrennte Liste von zu aktivierenden Tokenvalidierungsanbietern (gültige Anbieter sind: DSTS, AAD). Derzeit kann immer nur ein einzelnen Anbieter aktiviert werden. |
+| Anbieter |string, Standardwert „DSTS“ |Durch Trennzeichen getrennte Liste von zu aktivierenden Tokenvalidierungsanbietern (gültige Anbieter sind: DSTS, AAD). Derzeit kann immer nur ein einzelnen Anbieter aktiviert werden. |
 
 ### <a name="section-name-upgradeorchestrationservice"></a>Name des Abschnitts: UpgradeOrchestrationService
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
@@ -362,113 +386,113 @@ Es folgen die Fabric-Einstellungen, die Sie anpassen können:
 | ReplicaRestartWaitDuration | Zeit in Sekunden, Standardwert 60 Minuten| Geben Sie die Zeitspanne in Sekunden an. ReplicaRestartWaitDuration für UpgradeOrchestrationService. |
 | QuorumLossWaitDuration | Zeit in Sekunden, Standardwert MaxValue | Geben Sie die Zeitspanne in Sekunden an. QuorumLossWaitDuration für UpgradeOrchestrationService. |
 | StandByReplicaKeepDuration | Zeit in Sekunden, Standardwert 60*24*7 Minuten | Geben Sie die Zeitspanne in Sekunden an. StandByReplicaKeepDuration für UpgradeOrchestrationService. |
-| PlacementConstraints | Wstring, Standardwert "" | PlacementConstraints für UpgradeOrchestrationService. |
+| PlacementConstraints | string, Standardwert "" | PlacementConstraints für UpgradeOrchestrationService. |
 | AutoupgradeEnabled | Boolesch, Standardwert „true“ | Automatische Abruf- und Aktualisierungsaktion basierend auf einer Datei für den Zielzustand. |
 | UpgradeApprovalRequired | Boolesch, Standardwert „false“ | Einstellung, damit bei der Codeaktualisierung die Genehmigung durch den Administrator erforderlich ist, bevor fortgefahren werden kann. |
 
 ### <a name="section-name-upgradeservice"></a>Name des Abschnitts: UpgradeService
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
-| PlacementConstraints |Wstring, Standardwert "" |PlacementConstraints für den Aktualisierungsdienst. |
+| PlacementConstraints |string, Standardwert "" |PlacementConstraints für den Aktualisierungsdienst. |
 | TargetReplicaSetSize | Ganze Zahl, Standardwert 3 | TargetReplicaSetSize für UpgradeService. |
 | MinReplicaSetSize | Ganze Zahl, Standardwert 2 | MinReplicaSetSize für UpgradeService. |
-| CoordinatorType | Wstring, Standardwert "WUTest"| CoordinatorType für UpgradeService. |
-| BaseUrl | Wstring, Standardwert "" |BaseUrl für UpgradeService. |
-| ClusterId | Wstring, Standardwert "" | ClusterId für UpgradeService. |
-| X509StoreName | Wstring, Standardwert "My"| X509StoreName für UpgradeService. |
-| X509StoreLocation | Wstring, Standardwert "" | X509StoreLocation für UpgradeService. |
-| X509FindType | Wstring, Standardwert ""| X509FindType für UpgradeService. |
-| X509FindValue | Wstring, Standardwert "" | X509FindValue für UpgradeService. |
-| X509SecondaryFindValue | Wstring, Standardwert "" | X509SecondaryFindValue für UpgradeService. |
+| CoordinatorType | string, Standardwert „WUTest“| CoordinatorType für UpgradeService. |
+| BaseUrl | string, Standardwert "" |BaseUrl für UpgradeService. |
+| ClusterId | string, Standardwert "" | ClusterId für UpgradeService. |
+| X509StoreName | string, Standardwert „My“| X509StoreName für UpgradeService. |
+| X509StoreLocation | string, Standardwert "" | X509StoreLocation für UpgradeService. |
+| X509FindType | string, Standardwert ""| X509FindType für UpgradeService. |
+| X509FindValue | string, Standardwert "" | X509FindValue für UpgradeService. |
+| X509SecondaryFindValue | string, Standardwert "" | X509SecondaryFindValue für UpgradeService. |
 | OnlyBaseUpgrade | Boolesch, Standardwert „false“ | OnlyBaseUpgrade für UpgradeService. |
-| TestCabFolder | Wstring, Standardwert "" | TestCabFolder für UpgradeService. |
+| TestCabFolder | string, Standardwert "" | TestCabFolder für UpgradeService. |
 
 ### <a name="section-name-securityclientaccess"></a>Name des Abschnitts: Security/ClientAccess
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
-| CreateName |Wstring, Standardwert "Admin" |Sicherheitskonfiguration für die Erstellung des Benennungs-URI. |
-| DeleteName |Wstring, Standardwert "Admin" |Sicherheitskonfiguration für die Löschung des Benennungs-URI. |
-| PropertyWriteBatch |Wstring, Standardwert "Admin" |Sicherheitskonfiguration für Schreibvorgänge in Benennungseigenschaften. |
-| CreateService |Wstring, Standardwert "Admin" | Sicherheitskonfiguration für die Diensterstellung. |
-| CreateServiceFromTemplate |Wstring, Standardwert "Admin" |Sicherheitskonfiguration für die Diensterstellung aus einer Vorlage. |
-| UpdateService |Wstring, Standardwert "Admin" |Sicherheitskonfiguration für Dienstupdates. |
-| DeleteService  |Wstring, Standardwert "Admin" |Sicherheitskonfiguration für die Dienstlöschung. |
-| ProvisionApplicationType |Wstring, Standardwert "Admin" | Sicherheitskonfiguration für die Anwendungstypbereitstellung. |
-| CreateApplication |Wstring, Standardwert "Admin" | Sicherheitskonfiguration für die Anwendungserstellung. |
-| DeleteApplication |Wstring, Standardwert "Admin" | Sicherheitskonfiguration für die Anwendungslöschung. |
-| UpgradeApplication |Wstring, Standardwert "Admin" | Sicherheitskonfiguration für das Starten oder Unterbrechen von Anwendungsupgrades. |
-| RollbackApplicationUpgrade |Wstring, Standardwert "Admin" | Sicherheitskonfiguration für das Rollback von Anwendungsupgrades. |
-| UnprovisionApplicationType |Wstring, Standardwert "Admin" | Sicherheitskonfiguration für die Aufhebung der Anwendungstypbereitstellung. |
-| MoveNextUpgradeDomain |Wstring, Standardwert "Admin" | Sicherheitskonfiguration für das Fortsetzen von Anwendungsupgrades mit einer expliziten Upgradedomäne. |
-| ReportUpgradeHealth |Wstring, Standardwert "Admin" | Sicherheitskonfiguration für das Fortsetzen von Anwendungsupgrades der aktuellen Upgradedomäne. |
-| ReportHealth |Wstring, Standardwert "Admin" | Sicherheitskonfiguration für Integritätsberichte. |
-| ProvisionFabric |Wstring, Standardwert "Admin" | Sicherheitskonfiguration für die MSI- und/oder Clustermanifestbereitstellung. |
-| UpgradeFabric |Wstring, Standardwert "Admin" | Sicherheitskonfiguration für das Starten von Clusterupgrades. |
-| RollbackFabricUpgrade |Wstring, Standardwert "Admin" | Sicherheitskonfiguration für das Rollback von Clusterupgrades. |
-| UnprovisionFabric |Wstring, Standardwert "Admin" | Sicherheitskonfiguration für die Aufhebung der MSI- und/oder Clustermanifestbereitstellung. |
-| MoveNextFabricUpgradeDomain |Wstring, Standardwert "Admin" | Sicherheitskonfiguration für das Fortsetzen von Clusterupgrades mit einer expliziten Upgradedomäne. |
-| ReportFabricUpgradeHealth |Wstring, Standardwert "Admin" | Sicherheitskonfiguration für das Fortsetzen von Clusterupgrades mit der aktuellen Upgradedomäne. |
-| StartInfrastructureTask |Wstring, Standardwert "Admin" | Sicherheitskonfiguration für das Starten von Infrastrukturaufgaben. |
-| FinishInfrastructureTask |Wstring, Standardwert "Admin" | Sicherheitskonfiguration für das Beenden von Infrastrukturaufgaben. |
-| ActivateNode |Wstring, Standardwert "Admin" | Sicherheitskonfiguration für die Aktivierung eines Knotens. |
-| DeactivateNode |Wstring, Standardwert "Admin" | Sicherheitskonfiguration für die Deaktivierung eines Knotens. |
-| DeactivateNodesBatch |Wstring, Standardwert "Admin" | Sicherheitskonfiguration für die Deaktivierung mehrerer Knoten. |
-| RemoveNodeDeactivations |Wstring, Standardwert "Admin" | Sicherheitskonfiguration für das Zurücksetzen der Deaktivierung mehrerer Knoten. |
-| GetNodeDeactivationStatus |Wstring, Standardwert "Admin" | Sicherheitskonfiguration für das Überprüfen des Deaktivierungstatus. |
-| NodeStateRemoved |Wstring, Standardwert "Admin" | Sicherheitskonfiguration für Berichte zur Entfernung des Knotenstatus. |
-| RecoverPartition |Wstring, Standardwert "Admin" | Sicherheitskonfiguration für die Wiederherstellung einer Partition. |
-| RecoverPartitions |Wstring, Standardwert "Admin" | Sicherheitskonfiguration für die Wiederherstellung von Partitionen. |
-| RecoverServicePartitions |Wstring, Standardwert "Admin" | Sicherheitskonfiguration für die Wiederherstellung von Dienstpartitionen. |
-| RecoverSystemPartitions |Wstring, Standardwert "Admin" | Sicherheitskonfiguration für die Wiederherstellung von Systemdienstpartitionen. |
-| ReportFault |Wstring, Standardwert "Admin" | Sicherheitskonfiguration für Fehlerberichte. |
-| InvokeInfrastructureCommand |Wstring, Standardwert "Admin" | Sicherheitskonfiguration für Befehle zum Verwalten von Infrastrukturaufgaben. |
-| FileContent |Wstring, Standardwert "Admin" | Sicherheitskonfiguration für die Imagespeicherclient-Dateiübertragung (außerhalb des Clusters). |
-| FileDownload |Wstring, Standardwert "Admin" | Sicherheitskonfiguration für die Imagespeicherclient-Dateidownloadinitiierung (außerhalb des Clusters). |
-| InternalList |Wstring, Standardwert "Admin" | Sicherheitskonfiguration für den Imagespeicherclient-Dateiauflistungsvorgang (intern). |
-| Löschen |Wstring, Standardwert "Admin" | Sicherheitskonfiguration für den Imagespeicherclient-Löschvorgang. |
-| Hochladen |Wstring, Standardwert "Admin" | Sicherheitskonfiguration für den Imagespeicherclient-Uploadvorgang. |
-| GetStagingLocation |Wstring, Standardwert "Admin" | Sicherheitskonfiguration für den Abruf des Imagespeicherclient-Stagingspeicherorts. |
-| GetStoreLocation |Wstring, Standardwert "Admin" | Sicherheitskonfiguration für den Abruf des Imagespeicherclient-Speicherorts. |
-| NodeControl |Wstring, Standardwert "Admin" | Sicherheitskonfiguration für das Starten, Beenden und Neustarten von Knoten. |
-| CodePackageControl |Wstring, Standardwert "Admin" | Sicherheitskonfiguration für das Neustarten von Codepaketen. |
-| UnreliableTransportControl |Wstring, Standardwert "Admin" | Unzuverlässiger Transport zum Hinzufügen und Entfernen von Verhaltensweisen. |
-| MoveReplicaControl |Wstring, Standardwert "Admin" | Verschieben von Replikaten. |
-| PredeployPackageToNode |Wstring, Standardwert "Admin" | API vor der Bereitstellung. |
-| StartPartitionDataLoss |Wstring, Standardwert "Admin" | Löst Datenverluste auf einer Partition aus. |
-| StartPartitionQuorumLoss |Wstring, Standardwert "Admin" | Löst Quorumverluste auf einer Partition aus. |
-| StartPartitionRestart |Wstring, Standardwert "Admin" | Startet einige oder alle Replikate einer Partition gleichzeitig neu. |
-| CancelTestCommand |Wstring, Standardwert "Admin" | Bricht einen bestimmten TestCommand ab, wenn er aktiv ist. |
-| StartChaos |Wstring, Standardwert "Admin" | Startet Chaos, wenn es noch nicht gestartet wurde. |
-| StopChaos |Wstring, Standardwert "Admin" | Beendet Chaos, falls es gestartet wurde. |
-| StartNodeTransition |Wstring, Standardwert "Admin" | Sicherheitskonfiguration für das Starten eines Knotenübergangs. |
-| StartClusterConfigurationUpgrade |Wstring, Standardwert "Admin" | Löst StartClusterConfigurationUpgrade auf einer Partition aus. |
-| GetUpgradesPendingApproval |Wstring, Standardwert "Admin" | Löst GetUpgradesPendingApproval auf einer Partition aus. |
-| StartApprovedUpgrades |Wstring, Standardwert "Admin" | Löst StartApprovedUpgrades auf einer Partition aus. |
-| Pingen |Wstring, Standardwert "Admin\|\|Benutzer" | Sicherheitskonfiguration für Clientpingvorgänge. |
-| Abfrage |Wstring, Standardwert "Admin\|\|Benutzer" | Sicherheitskonfiguration für Abfragen. |
-| NameExists |Wstring, Standardwert "Admin\|\|Benutzer" | Sicherheitskonfiguration für Überprüfungen auf das Vorhandensein von Benennungs-URIs. |
-| EnumerateSubnames |Wstring, Standardwert "Admin\|\|Benutzer" | Sicherheitskonfiguration für die Enumeration von Benennungs-URIs. |
-| EnumerateProperties |Wstring, Standardwert "Admin\|\|Benutzer" | Sicherheitskonfiguration für die Enumeration von Benennungseigenschaften. |
-| PropertyReadBatch |Wstring, Standardwert "Admin\|\|Benutzer" | Sicherheitskonfiguration für Lesevorgänge in Benennungseigenschaften. |
-| GetServiceDescription |Wstring, Standardwert "Admin\|\|Benutzer" | Sicherheitskonfiguration für Dienstbenachrichtigungen mit langen Abrufzeiten und das Lesen von Dienstbeschreibungen. |
-| ResolveService |Wstring, Standardwert "Admin\|\|Benutzer" | Sicherheitskonfiguration für die Dienstauflösung auf Konfliktbasis. |
-| ResolveNameOwner |Wstring, Standardwert "Admin\|\|Benutzer" | Sicherheitskonfiguration für die Auflösung des Benennungs-URI-Besitzers. |
-| ResolvePartition |Wstring, Standardwert "Admin\|\|Benutzer" | Sicherheitskonfiguration für die Auflösung von Systemdiensten. |
-| ServiceNotifications |Wstring, Standardwert "Admin\|\|Benutzer" | Sicherheitskonfiguration für Dienstbenachrichtigungen auf Ereignisbasis. |
-| PrefixResolveService |Wstring, Standardwert "Admin\|\|Benutzer" | Sicherheitskonfiguration für die Dienstpräfixauflösung auf Konfliktbasis. |
-| GetUpgradeStatus |Wstring, Standardwert "Admin\|\|Benutzer" | Sicherheitskonfiguration für das Abrufen des Anwendungsupgradestatus. |
-| GetFabricUpgradeStatus |Wstring, Standardwert "Admin\|\|Benutzer" | Sicherheitskonfiguration für das Abrufen des Clusterupgradestatus. |
-| InvokeInfrastructureQuery |Wstring, Standardwert "Admin\|\|Benutzer" | Sicherheitskonfiguration für das Abfragen von Infrastrukturaufgaben. |
-| Auflisten |Wstring, Standardwert "Admin\|\|Benutzer" | Sicherheitskonfiguration für den Imagespeicherclient-Dateiauflistungsvorgang. |
-| ResetPartitionLoad |Wstring, Standardwert "Admin\|\|Benutzer" | Sicherheitskonfiguration für das Zurücksetzen der failoverUnit-Auslastung. |
-| ToggleVerboseServicePlacementHealthReporting | Wstring, Standardwert "Admin\|\|Benutzer" | Sicherheitskonfiguration für Umschalten von ausführlichen Integritätsberichten zur Dienstplatzierung. |
-| GetPartitionDataLossProgress | Wstring, Standardwert "Admin\|\|Benutzer" | Ruft den Status für einen API-Aufruf zum Auslösen von Datenverlusten ab. |
-| GetPartitionQuorumLossProgress | Wstring, Standardwert "Admin\|\|Benutzer" | Ruft den Status für einen API-Aufruf zum Auslösen von Quorumverlusten ab. |
-| GetPartitionRestartProgress | Wstring, Standardwert "Admin\|\|Benutzer" | Ruft den Status für einen API-Aufruf zum Neustarten einer Partition ab. |
-| GetChaosReport | Wstring, Standardwert "Admin\|\|Benutzer" | Ruft den Status des Chaos innerhalb eines angegebenen Zeitbereichs ab. |
-| GetNodeTransitionProgress | Wstring, Standardwert "Admin\|\|Benutzer" | Sicherheitskonfiguration für das Abrufen des Status eines Knotenübergangsbefehls. |
-| GetClusterConfigurationUpgradeStatus | Wstring, Standardwert "Admin\|\|Benutzer" | Löst GetClusterConfigurationUpgradeStatus auf einer Partition aus. |
-| GetClusterConfiguration | Wstring, Standardwert "Admin\|\|Benutzer" | Löst GetClusterConfiguration auf einer Partition aus. |
+| CreateName |string, Standardwert „Admin“ |Sicherheitskonfiguration für die Erstellung des Benennungs-URI. |
+| DeleteName |string, Standardwert „Admin“ |Sicherheitskonfiguration für die Löschung des Benennungs-URI. |
+| PropertyWriteBatch |string, Standardwert „Admin“ |Sicherheitskonfiguration für Schreibvorgänge in Benennungseigenschaften. |
+| CreateService |string, Standardwert „Admin“ | Sicherheitskonfiguration für die Diensterstellung. |
+| CreateServiceFromTemplate |string, Standardwert „Admin“ |Sicherheitskonfiguration für die Diensterstellung aus einer Vorlage. |
+| UpdateService |string, Standardwert „Admin“ |Sicherheitskonfiguration für Dienstupdates. |
+| DeleteService  |string, Standardwert „Admin“ |Sicherheitskonfiguration für die Dienstlöschung. |
+| ProvisionApplicationType |string, Standardwert „Admin“ | Sicherheitskonfiguration für die Anwendungstypbereitstellung. |
+| CreateApplication |string, Standardwert „Admin“ | Sicherheitskonfiguration für die Anwendungserstellung. |
+| DeleteApplication |string, Standardwert „Admin“ | Sicherheitskonfiguration für die Anwendungslöschung. |
+| UpgradeApplication |string, Standardwert „Admin“ | Sicherheitskonfiguration für das Starten oder Unterbrechen von Anwendungsupgrades. |
+| RollbackApplicationUpgrade |string, Standardwert „Admin“ | Sicherheitskonfiguration für das Rollback von Anwendungsupgrades. |
+| UnprovisionApplicationType |string, Standardwert „Admin“ | Sicherheitskonfiguration für die Aufhebung der Anwendungstypbereitstellung. |
+| MoveNextUpgradeDomain |string, Standardwert „Admin“ | Sicherheitskonfiguration für das Fortsetzen von Anwendungsupgrades mit einer expliziten Upgradedomäne. |
+| ReportUpgradeHealth |string, Standardwert „Admin“ | Sicherheitskonfiguration für das Fortsetzen von Anwendungsupgrades der aktuellen Upgradedomäne. |
+| ReportHealth |string, Standardwert „Admin“ | Sicherheitskonfiguration für Integritätsberichte. |
+| ProvisionFabric |string, Standardwert „Admin“ | Sicherheitskonfiguration für die MSI- und/oder Clustermanifestbereitstellung. |
+| UpgradeFabric |string, Standardwert „Admin“ | Sicherheitskonfiguration für das Starten von Clusterupgrades. |
+| RollbackFabricUpgrade |string, Standardwert „Admin“ | Sicherheitskonfiguration für das Rollback von Clusterupgrades. |
+| UnprovisionFabric |string, Standardwert „Admin“ | Sicherheitskonfiguration für die Aufhebung der MSI- und/oder Clustermanifestbereitstellung. |
+| MoveNextFabricUpgradeDomain |string, Standardwert „Admin“ | Sicherheitskonfiguration für das Fortsetzen von Clusterupgrades mit einer expliziten Upgradedomäne. |
+| ReportFabricUpgradeHealth |string, Standardwert „Admin“ | Sicherheitskonfiguration für das Fortsetzen von Clusterupgrades mit der aktuellen Upgradedomäne. |
+| StartInfrastructureTask |string, Standardwert „Admin“ | Sicherheitskonfiguration für das Starten von Infrastrukturaufgaben. |
+| FinishInfrastructureTask |string, Standardwert „Admin“ | Sicherheitskonfiguration für das Beenden von Infrastrukturaufgaben. |
+| ActivateNode |string, Standardwert „Admin“ | Sicherheitskonfiguration für die Aktivierung eines Knotens. |
+| DeactivateNode |string, Standardwert „Admin“ | Sicherheitskonfiguration für die Deaktivierung eines Knotens. |
+| DeactivateNodesBatch |string, Standardwert „Admin“ | Sicherheitskonfiguration für die Deaktivierung mehrerer Knoten. |
+| RemoveNodeDeactivations |string, Standardwert „Admin“ | Sicherheitskonfiguration für das Zurücksetzen der Deaktivierung mehrerer Knoten. |
+| GetNodeDeactivationStatus |string, Standardwert „Admin“ | Sicherheitskonfiguration für das Überprüfen des Deaktivierungstatus. |
+| NodeStateRemoved |string, Standardwert „Admin“ | Sicherheitskonfiguration für Berichte zur Entfernung des Knotenstatus. |
+| RecoverPartition |string, Standardwert „Admin“ | Sicherheitskonfiguration für die Wiederherstellung einer Partition. |
+| RecoverPartitions |string, Standardwert „Admin“ | Sicherheitskonfiguration für die Wiederherstellung von Partitionen. |
+| RecoverServicePartitions |string, Standardwert „Admin“ | Sicherheitskonfiguration für die Wiederherstellung von Dienstpartitionen. |
+| RecoverSystemPartitions |string, Standardwert „Admin“ | Sicherheitskonfiguration für die Wiederherstellung von Systemdienstpartitionen. |
+| ReportFault |string, Standardwert „Admin“ | Sicherheitskonfiguration für Fehlerberichte. |
+| InvokeInfrastructureCommand |string, Standardwert „Admin“ | Sicherheitskonfiguration für Befehle zum Verwalten von Infrastrukturaufgaben. |
+| FileContent |string, Standardwert „Admin“ | Sicherheitskonfiguration für die Imagespeicherclient-Dateiübertragung (außerhalb des Clusters). |
+| FileDownload |string, Standardwert „Admin“ | Sicherheitskonfiguration für die Imagespeicherclient-Dateidownloadinitiierung (außerhalb des Clusters). |
+| InternalList |string, Standardwert „Admin“ | Sicherheitskonfiguration für den Imagespeicherclient-Dateiauflistungsvorgang (intern). |
+| Löschen |string, Standardwert „Admin“ | Sicherheitskonfiguration für den Imagespeicherclient-Löschvorgang. |
+| Hochladen |string, Standardwert „Admin“ | Sicherheitskonfiguration für den Imagespeicherclient-Uploadvorgang. |
+| GetStagingLocation |string, Standardwert „Admin“ | Sicherheitskonfiguration für den Abruf des Imagespeicherclient-Stagingspeicherorts. |
+| GetStoreLocation |string, Standardwert „Admin“ | Sicherheitskonfiguration für den Abruf des Imagespeicherclient-Speicherorts. |
+| NodeControl |string, Standardwert „Admin“ | Sicherheitskonfiguration für das Starten, Beenden und Neustarten von Knoten. |
+| CodePackageControl |string, Standardwert „Admin“ | Sicherheitskonfiguration für das Neustarten von Codepaketen. |
+| UnreliableTransportControl |string, Standardwert „Admin“ | Unzuverlässiger Transport zum Hinzufügen und Entfernen von Verhaltensweisen. |
+| MoveReplicaControl |string, Standardwert „Admin“ | Verschieben von Replikaten. |
+| PredeployPackageToNode |string, Standardwert „Admin“ | API vor der Bereitstellung. |
+| StartPartitionDataLoss |string, Standardwert „Admin“ | Löst Datenverluste auf einer Partition aus. |
+| StartPartitionQuorumLoss |string, Standardwert „Admin“ | Löst Quorumverluste auf einer Partition aus. |
+| StartPartitionRestart |string, Standardwert „Admin“ | Startet einige oder alle Replikate einer Partition gleichzeitig neu. |
+| CancelTestCommand |string, Standardwert „Admin“ | Bricht einen bestimmten TestCommand ab, wenn er aktiv ist. |
+| StartChaos |string, Standardwert „Admin“ | Startet Chaos, wenn es noch nicht gestartet wurde. |
+| StopChaos |string, Standardwert „Admin“ | Beendet Chaos, falls es gestartet wurde. |
+| StartNodeTransition |string, Standardwert „Admin“ | Sicherheitskonfiguration für das Starten eines Knotenübergangs. |
+| StartClusterConfigurationUpgrade |string, Standardwert „Admin“ | Löst StartClusterConfigurationUpgrade auf einer Partition aus. |
+| GetUpgradesPendingApproval |string, Standardwert „Admin“ | Löst GetUpgradesPendingApproval auf einer Partition aus. |
+| StartApprovedUpgrades |string, Standardwert „Admin“ | Löst StartApprovedUpgrades auf einer Partition aus. |
+| Pingen |string, Standardwert „Admin\“|\|Benutzer" | Sicherheitskonfiguration für Clientpingvorgänge. |
+| Abfrage |string, Standardwert „Admin\“|\|Benutzer" | Sicherheitskonfiguration für Abfragen. |
+| NameExists |string, Standardwert „Admin\“|\|Benutzer" | Sicherheitskonfiguration für Überprüfungen auf das Vorhandensein von Benennungs-URIs. |
+| EnumerateSubnames |string, Standardwert „Admin\“|\|Benutzer" | Sicherheitskonfiguration für die Enumeration von Benennungs-URIs. |
+| EnumerateProperties |string, Standardwert „Admin\“|\|Benutzer" | Sicherheitskonfiguration für die Enumeration von Benennungseigenschaften. |
+| PropertyReadBatch |string, Standardwert „Admin\“|\|Benutzer" | Sicherheitskonfiguration für Lesevorgänge in Benennungseigenschaften. |
+| GetServiceDescription |string, Standardwert „Admin\“|\|Benutzer" | Sicherheitskonfiguration für Dienstbenachrichtigungen mit langen Abrufzeiten und das Lesen von Dienstbeschreibungen. |
+| ResolveService |string, Standardwert „Admin\“|\|Benutzer" | Sicherheitskonfiguration für die Dienstauflösung auf Konfliktbasis. |
+| ResolveNameOwner |string, Standardwert „Admin\“|\|Benutzer" | Sicherheitskonfiguration für die Auflösung des Benennungs-URI-Besitzers. |
+| ResolvePartition |string, Standardwert „Admin\“|\|Benutzer" | Sicherheitskonfiguration für die Auflösung von Systemdiensten. |
+| ServiceNotifications |string, Standardwert „Admin\“|\|Benutzer" | Sicherheitskonfiguration für Dienstbenachrichtigungen auf Ereignisbasis. |
+| PrefixResolveService |string, Standardwert „Admin\“|\|Benutzer" | Sicherheitskonfiguration für die Dienstpräfixauflösung auf Konfliktbasis. |
+| GetUpgradeStatus |string, Standardwert „Admin\“|\|Benutzer" | Sicherheitskonfiguration für das Abrufen des Anwendungsupgradestatus. |
+| GetFabricUpgradeStatus |string, Standardwert „Admin\“|\|Benutzer" | Sicherheitskonfiguration für das Abrufen des Clusterupgradestatus. |
+| InvokeInfrastructureQuery |string, Standardwert „Admin\“|\|Benutzer" | Sicherheitskonfiguration für das Abfragen von Infrastrukturaufgaben. |
+| Auflisten |string, Standardwert „Admin\“|\|Benutzer" | Sicherheitskonfiguration für den Imagespeicherclient-Dateiauflistungsvorgang. |
+| ResetPartitionLoad |string, Standardwert „Admin\“|\|Benutzer" | Sicherheitskonfiguration für das Zurücksetzen der failoverUnit-Auslastung. |
+| ToggleVerboseServicePlacementHealthReporting | string, Standardwert „Admin\“|\|Benutzer" | Sicherheitskonfiguration für Umschalten von ausführlichen Integritätsberichten zur Dienstplatzierung. |
+| GetPartitionDataLossProgress | string, Standardwert „Admin\“|\|Benutzer" | Ruft den Status für einen API-Aufruf zum Auslösen von Datenverlusten ab. |
+| GetPartitionQuorumLossProgress | string, Standardwert „Admin\“|\|Benutzer" | Ruft den Status für einen API-Aufruf zum Auslösen von Quorumverlusten ab. |
+| GetPartitionRestartProgress | string, Standardwert „Admin\“|\|Benutzer" | Ruft den Status für einen API-Aufruf zum Neustarten einer Partition ab. |
+| GetChaosReport | string, Standardwert „Admin\“|\|Benutzer" | Ruft den Status des Chaos innerhalb eines angegebenen Zeitbereichs ab. |
+| GetNodeTransitionProgress | string, Standardwert „Admin\“|\|Benutzer" | Sicherheitskonfiguration für das Abrufen des Status eines Knotenübergangsbefehls. |
+| GetClusterConfigurationUpgradeStatus | string, Standardwert „Admin\“|\|Benutzer" | Löst GetClusterConfigurationUpgradeStatus auf einer Partition aus. |
+| GetClusterConfiguration | string, Standardwert „Admin\“|\|Benutzer" | Löst GetClusterConfiguration auf einer Partition aus. |
 
 ### <a name="section-name-reconfigurationagent"></a>Name des Abschnitts: ReconfigurationAgent
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
@@ -504,8 +528,8 @@ Es folgen die Fabric-Einstellungen, die Sie anpassen können:
 |ConstraintFixPartialDelayAfterNodeDown | Zeit in Sekunden, Standardwert 120 | Geben Sie die Zeitspanne in Sekunden an. Beheben Sie keine FaultDomain- und UpgradeDomain-Einschränkungsverletzungen innerhalb dieses Zeitraums nach einem Knotenausfall. |
 |ConstraintFixPartialDelayAfterNewNode | Zeit in Sekunden, Standardwert 120 | Geben Sie die Zeitspanne in Sekunden an. Beheben Sie keine FaultDomain- und UpgradeDomain-Einschränkungsverletzungen innerhalb dieses Zeitraums nach dem Hinzufügen eines neuen Knotens. |
 |GlobalMovementThrottleThreshold | Uint, Standardwert 1000 | Maximale Anzahl von zulässigen Datenverschiebungen in der Lastenausgleichsphase im letzten von GlobalMovementThrottleCountingInterval angegebenen Intervall. |
-|GlobalMovementThrottleThresholdForPlacement | Uint, Standardwert 0 | Maximale Anzahl von zulässigen Datenverschiebungen in der Platzierungsphase im letzten von GlobalMovementThrottleCountingInterval angegebenen Intervall. Bei&0; gilt keine Begrenzung.|
-|GlobalMovementThrottleThresholdForBalancing | Uint, Standardwert 0 | Maximale Anzahl von zulässigen Datenverschiebungen in der Lastenausgleichsphase im letzten von GlobalMovementThrottleCountingInterval angegebenen Intervall. Bei&0; gilt keine Begrenzung. |
+|GlobalMovementThrottleThresholdForPlacement | Uint, Standardwert 0 | Maximale Anzahl von zulässigen Datenverschiebungen in der Platzierungsphase im letzten von GlobalMovementThrottleCountingInterval angegebenen Intervall. Bei 0 gilt keine Begrenzung.|
+|GlobalMovementThrottleThresholdForBalancing | Uint, Standardwert 0 | Maximale Anzahl von zulässigen Datenverschiebungen in der Lastenausgleichsphase im letzten von GlobalMovementThrottleCountingInterval angegebenen Intervall. Bei 0 gilt keine Begrenzung. |
 |GlobalMovementThrottleCountingInterval | Zeit in Sekunden, Standardwert 600 | Geben Sie die Zeitspanne in Sekunden an. Geben Sie die Länge des letzten Intervalls an, für das Datenverschiebungen pro Domänenreplikat nachverfolgt werden sollen (wird zusammen mit GlobalMovementThrottleThreshold verwendet). Kann auf 0 festgelegt werden, um die globale Drosselung vollständig zu ignorieren. |
 |MovementPerPartitionThrottleThreshold | Uint, Standardwert 50 | Für eine Partition werden keine Datenverschiebungen im Zusammenhang mit dem Lastenausgleich ausgeführt, wenn die Anzahl der Datenverschiebungen im Zusammenhang mit dem Lastenausgleich für Replikate dieser Partition im letzten von MovementPerPartitionThrottleCountingInterval angegebenen Intervall den Wert von MovementPerFailoverUnitThrottleThreshold erreicht oder überschritten hat. |
 |MovementPerPartitionThrottleCountingInterval | Zeit in Sekunden, Standardwert 600 | Geben Sie die Zeitspanne in Sekunden an. Geben Sie die Länge des letzten Intervalls an, für das Datenverschiebungen pro Replikat für jede Partition nachverfolgt werden sollen (wird zusammen mit MovementPerPartitionThrottleThreshold verwendet). |
@@ -513,10 +537,10 @@ Es folgen die Fabric-Einstellungen, die Sie anpassen können:
 |UseMoveCostReports | Boolesch, Standardwert „false“ | Weist LB an, das Kostenelement der Bewertungsfunktion zu ignorieren. Dies führt möglicherweise zu mehr Datenverschiebungen für eine Platzierung mit besserem Lastenausgleich. |
 |PreventTransientOvercommit | Boolesch, Standardwert „false“ | Bestimmt, ob PLB sofort Ressourcen nutzen soll, die von den initiierten Datenverschiebungen freigegeben werden. Standardmäßig kann PLB Datenverschiebungen aus und in einen Knoten initiieren, sodass eine vorübergehende Überlastung entstehen kann. Wenn dieser Parameter auf „true“ festgelegt wird, wird diese Art von Überlastungen verhindert, und eine bedarfsgesteuerte Defragmentierung (placementWithMove) wird deaktiviert. |
 |InBuildThrottlingEnabled | Boolesch, Standardwert „false“ | Bestimmen Sie, ob die integrierte Drosselung aktiviert wird. |
-|InBuildThrottlingAssociatedMetric | Wstring, Standardwert "" | Der zugehörige Metrikname für diese Drosselung. |
+|InBuildThrottlingAssociatedMetric | string, Standardwert "" | Der zugehörige Metrikname für diese Drosselung. |
 |InBuildThrottlingGlobalMaxValue | Ganze Zahl, Standardwert 0 |Die maximale, global zulässige Anzahl von integrierten Replikaten. |
 |SwapPrimaryThrottlingEnabled | Boolesch, Standardwert „false“| Bestimmen Sie, ob die Drosselung beim Austausch des primären Replikats aktiviert wird. |
-|SwapPrimaryThrottlingAssociatedMetric | Wstring, Standardwert ""| Der zugehörige Metrikname für diese Drosselung. |
+|SwapPrimaryThrottlingAssociatedMetric | string, Standardwert ""| Der zugehörige Metrikname für diese Drosselung. |
 |SwapPrimaryThrottlingGlobalMaxValue | Ganze Zahl, Standardwert 0 | Die maximale, global zulässige Anzahl von primären Replikaten für den Austausch. |
 |PlacementConstraintPriority | Ganze Zahl, Standardwert 0 | Bestimmt die Priorität der Platzierungseinschränkung: 0: stark; 1: schwach; negativ: Ignorieren. |
 |PreferredLocationConstraintPriority | Ganze Zahl, Standardwert 2| Bestimmt die Priorität der bevorzugten Speicherorteinschränkung: 0: stark; 1: schwach; 2: Optimierung; negativ: Ignorieren. |
@@ -571,7 +595,7 @@ Es folgen die Fabric-Einstellungen, die Sie anpassen können:
 |ReplicaRestartWaitDuration |Zeit in Sekunden, Standardwert (60,0 * 30)|Geben Sie die Zeitspanne in Sekunden an. ReplicaRestartWaitDuration für ClusterManager. |
 |QuorumLossWaitDuration |Zeit in Sekunden, Standardwert MaxValue | Geben Sie die Zeitspanne in Sekunden an. QuorumLossWaitDuration für ClusterManager. |
 |StandByReplicaKeepDuration | Zeit in Sekunden, Standardwert (3600,0 * 2)|Geben Sie die Zeitspanne in Sekunden an. StandByReplicaKeepDuration für ClusterManager. |
-|PlacementConstraints | Wstring, Standardwert "" |PlacementConstraints für ClusterManager. |
+|PlacementConstraints | string, Standardwert "" |PlacementConstraints für ClusterManager. |
 |SkipRollbackUpdateDefaultService | Boolesch, Standardwert „false“ |CM überspringt das Zurücksetzen der aktualisierten Standarddienste während des Rollbacks eines Anwendungsupgrades. |
 |EnableDefaultServicesUpgrade | Boolesch, Standardwert „false“ |Aktivieren Sie das Aktualisieren von Standarddiensten während des Anwendungsupgrades. Standarddienstbeschreibungen würden nach dem Upgrade überschrieben werden. |
 |InfrastructureTaskHealthCheckWaitDuration |Zeit in Sekunden, Standardwert 0| Geben Sie die Zeitspanne in Sekunden an. Die Zeitspanne, die vor dem Starten von Integritätsprüfungen nach der Nachbearbeitung einer Infrastrukturaufgabe gewartet wird. |
