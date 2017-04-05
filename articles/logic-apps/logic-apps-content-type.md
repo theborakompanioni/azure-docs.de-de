@@ -15,9 +15,9 @@ ms.workload: integration
 ms.date: 10/18/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 3206c076350c2105e92d320ce30ce73448ccd3bd
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: d0d283f21caf53406c51670e75bf2796a175be51
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -48,7 +48,7 @@ Es ist keine zusätzliche Umwandlung erforderlich. Wenn Sie mit JSON-Daten arbei
 
 ### <a name="schema-and-schema-generator"></a>Schema und Schemagenerator
 
-Der Anforderungstrigger ermöglicht Ihnen, ein JSON-Schema für die Nutzlast eingeben, deren Empfang Sie erwarten. Dieses Schema ermöglicht dem Designer, Token zu generieren, damit Sie den Inhalt der Anforderung nutzen können. Wenn Sie nicht bereits über ein Schema verfügen, wählen Sie `Use sample payload to generate schema` aus, um ein JSON-Schema aus einer Beispielnutzlast zu generieren.
+Der Anforderungstrigger ermöglicht Ihnen, ein JSON-Schema für die Nutzlast eingeben, deren Empfang Sie erwarten. Dieses Schema ermöglicht dem Designer, Token zu generieren, damit Sie den Inhalt der Anforderung nutzen können. Wenn Sie kein Schema haben, wählen Sie **Beispielnutzlast zum Generieren eines Schemas verwenden** aus, um ein JSON-Schema für eine Beispielnutzlast generieren zu können.
 
 ![Schema](./media/logic-apps-http-endpoint/manualtrigger.png)
 

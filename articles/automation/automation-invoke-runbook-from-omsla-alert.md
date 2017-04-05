@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 01/31/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 8460ed6be3e922fb85f46982662d44eed21dda7c
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
+ms.openlocfilehash: 81cf490eae7f283c0180875cb3a2ed2ffe6333c8
+ms.lasthandoff: 03/29/2017
 
 ---
 
@@ -36,7 +36,7 @@ Beim Konfigurieren der Warnung stehen zwei Aufrufoptionen für Runbooks zur Verf
 
 ## <a name="calling-a-runbook-using-a-webhook"></a>Aufrufen eines Runbooks unter Verwendung eines Webhooks
 
-Mit einem Webhook können Sie ein bestimmtes Runbook in Azure Automation über eine einfache HTTP-Anforderung starten.  Bevor Sie die [Log Analytics-Warnung](../log-analytics/log-analytics-alerts.md#creating-alert-rules) so konfigurieren, dass sie das Runbook unter Verwendung eines Webhooks aufruft, müssen Sie zunächst einen Webhook für das Runbook erstellen, das mit dieser Methode aufgerufen werden soll.  Führen Sie die unter [Erstellen eines Webhooks](automation-webhooks.md#creating-a-webhook) angegebenen Schritte aus, und vergessen Sie nicht, sich die Webhook-URL zu notieren, damit Sie sie später beim Konfigurieren der Warnungsregel zur Hand haben.   
+Mit einem Webhook können Sie ein bestimmtes Runbook in Azure Automation über eine einfache HTTP-Anforderung starten.  Bevor Sie die [Log Analytics-Warnung](../log-analytics/log-analytics-alerts.md#alert-rules) so konfigurieren, dass sie das Runbook unter Verwendung eines Webhooks aufruft, müssen Sie zunächst einen Webhook für das Runbook erstellen, das mit dieser Methode aufgerufen werden soll.  Führen Sie die unter [Erstellen eines Webhooks](automation-webhooks.md#creating-a-webhook) angegebenen Schritte aus, und vergessen Sie nicht, sich die Webhook-URL zu notieren, damit Sie sie später beim Konfigurieren der Warnungsregel zur Hand haben.   
 
 ## <a name="calling-a-runbook-directly"></a>Direktes Aufrufen eines Runbooks
 

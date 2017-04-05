@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 10/24/2016
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: bec4f89556a2daa41e19b0ecb2ab9bbbed849107
-ms.openlocfilehash: fb3f7c08c5f3a76e4bd28f3519ab72e8b636b93c
+ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
+ms.openlocfilehash: 2684e09daa3554a5768a96ae18757a669e221efe
+ms.lasthandoff: 03/29/2017
 
 ---
 
@@ -28,13 +29,13 @@ Für einen Clouddienst, der Instanzen von Web- oder Workerrollen enthält, könn
 
 Die Datei *servicedefinition.csdef* enthält die Endpunktkonfiguration. Wenn Sie mehrere Rolleninstanzen für eine Web- oder Workerrollenbereitstellung haben, wird der Lastenausgleich für diese eingerichtet. Die Art und Weise, Instanzen zu Ihrer Cloudbereitstellung hinzuzufügen, ändert die Instanzenanzahl in der Dienstkonfigurationsdatei (CSFG-Datei).
 
-Die folgende Abbildung zeigt einen Endpunkt für verschlüsselten Datenverkehr mit Lastenausgleich, der von drei virtuellen Computern für den öffentlichen und privaten TCP-Port 443 genutzt wird. Diese drei virtuellen Computer bilden einen Satz mit Lastenausgleich.
+Die folgende Abbildung zeigt einen Endpunkt für verschlüsselten Webdatenverkehr mit Lastenausgleich, der von drei virtuellen Computern für den öffentlichen und privaten TCP-Port 80 genutzt wird. Diese drei virtuellen Computer bilden einen Satz mit Lastenausgleich.
 
 ![Beispiel für öffentlichen Lastenausgleich](./media/load-balancer-internet-overview/IC727496.png))
 
-Abbildung 1: Endpunkt mit Lastenausgleich für verschlüsselten Webdatenverkehr
+Abbildung 1: Endpunkt mit Lastenausgleich für Webdatenverkehr
 
-Wenn Internetclients Webseitenanfragen über den TCP-Port 443 an die öffentliche IP-Adresse des Clouddiensts senden, verteilt Azure Load Balancer diese Anfragen auf die drei virtuellen Computer im Satz mit Lastenausgleich. Weitere Informationen zu Lastenausgleichsalgorithmen finden Sie auf der [Übersichtsseite zum Lastenausgleich](load-balancer-overview.md#load-balancer-features).
+Wenn Internetclients Webseitenanfragen über den TCP-Port 80 an die öffentliche IP-Adresse des Clouddiensts senden, verteilt der Azure Load Balancer diese Anfragen auf die drei virtuellen Computer in der Lastenausgleichsgruppe. Weitere Informationen zu Lastenausgleichsalgorithmen finden Sie auf der [Übersichtsseite zum Lastenausgleich](load-balancer-overview.md#load-balancer-features).
 
 Standardmäßig verteilt Azure Load Balancer Netzwerkdatenverkehr gleichmäßig auf mehrere Instanzen virtueller Computer. Darüber hinaus können Sie Sitzungsaffinität konfigurieren. Weitere Informationen finden Sie unter [Load Balancer-Verteilungsmodus (Quell-IP-Affinität)](load-balancer-distribution-mode.md).
 
@@ -45,9 +46,4 @@ Lesen Sie die Informationen zum [internen Lastenausgleich](load-balancer-interna
 Sie können auch einen [Lastenausgleich für Internetzugriff erstellen](load-balancer-get-started-internet-arm-ps.md) und die Art des [Verteilungsmodus](load-balancer-distribution-mode.md) des Lastenausgleichs für ein bestimmtes Datenverkehrsverhalten im Netzwerk konfigurieren.
 
 Wenn es für Ihre Anwendung erforderlich ist, dass Verbindungen mit Servern hinter einem Lastenausgleich aufrechterhalten werden, informieren Sie sich über [TCP-Leerlauftimeout-Einstellungen für den Lastenausgleich](load-balancer-tcp-idle-timeout.md). Hier erfahren Sie mehr über das Verhalten von Leerlaufverbindungen bei der Verwendung des Azure-Lastenausgleichs.
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -65,6 +65,7 @@
 ### [Vorhersagen des Ergebnisses einer Lebensmittelüberwachung](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 ### [Analysieren von Websiteprotokollen](hdinsight-apache-spark-custom-library-website-log-analysis.md)
 ### [Verwenden von Caffe für intensives Lernen](hdinsight-deep-learning-caffe-spark.md)
+### [Verwendung mit Microsoft Cognitive Toolkit](hdinsight-apache-spark-microsoft-cognitive-toolkit.md)
 ### [Verwenden von Zeppelin-Notebooks](hdinsight-apache-spark-zeppelin-notebook.md)
 ### [Jupyter Notebook-Kernel](hdinsight-apache-spark-jupyter-notebook-kernels.md)
 ### [Verwenden von externen Paketen mit Jupyter mit Cell Magic](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
@@ -141,9 +142,8 @@
 #### [Verwenden von REST zum Installieren von Apps](https://msdn.microsoft.com/library/mt706515.aspx)
 #### [Veröffentlichen von HDInsight-Apps im Azure Marketplace](hdinsight-apps-publish-applications.md)
 ## Schützen
+### [Verwenden von SSH mit HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)
 ### [Verwenden von SSH-Tunneln](hdinsight-linux-ambari-ssh-tunnel.md)
-### [Verwenden von SSH unter Linux, Unix und OS X](hdinsight-hadoop-linux-use-ssh-unix.md)
-### [Verwenden von SSH unter dem Windows-Betriebssystem](hdinsight-hadoop-linux-use-ssh-windows.md)
 ### [Beschränken des Zugriffs auf Daten](hdinsight-storage-sharedaccesssignature-permissions.md)
 ## Verwalten
 ### [Erstellen von Linux-Clustern](hdinsight-hadoop-provision-linux-clusters.md)
@@ -171,6 +171,8 @@
 ### [Cluster- und Dienstports und URIs](hdinsight-hadoop-port-settings-for-services.md)
 ### [Migrieren zu Resource Manager-Entwicklungstools](hdinsight-hadoop-development-using-azure-resource-manager.md)
 ### [Verfügbarkeit und Zuverlässigkeit](hdinsight-high-availability-linux.md)
+### [Aktualisieren eines HDInsight-Clusters auf eine neuere Version](hdinsight-upgrade-cluster.md)
+### [Patchen des Betriebssystems für HDInsight-Cluster](hdinsight-os-patching.md)
 ## Problembehandlung
 ### [Tipps für Linux](hdinsight-hadoop-linux-information.md)
 ### [Versionshinweise](hdinsight-release-notes.md)
@@ -195,16 +197,7 @@
 # Verwandte Themen
 ## Windows-Cluster
 ### [Migrieren von Windows-Clustern zu Linux-Clustern](hdinsight-migrate-from-windows-to-linux.md)
-### [Einstieg in Hadoop](hdinsight-hadoop-tutorial-get-started-windows.md)
-### [Einstieg in Storm](hdinsight-apache-storm-tutorial-get-started.md)
-### [Einstieg in HBase](hdinsight-hbase-tutorial-get-started.md)
 ### [Ausführen von Hadoop MapReduce-Beispielen](hdinsight-run-samples.md)
-### [Erstellen von Hadoop-Clustern](hdinsight-provision-clusters.md)
-#### [Verwenden des Azure-Portals](hdinsight-hadoop-create-windows-clusters-portal.md)
-#### [Verwenden des .NET SDKs](hdinsight-hadoop-create-windows-clusters-dotnet-sdk.md)
-#### [Verwenden der Azure-Befehlszeilenschnittstelle](hdinsight-hadoop-create-windows-clusters-cli.md)
-#### [Verwenden von Azure PowerShell](hdinsight-hadoop-create-windows-clusters-powershell.md)
-#### [Verwenden von Resource Manager-Vorlagen](hdinsight-hadoop-create-windows-clusters-arm-templates.md)
 ### [Verwenden von Solr für Cluster](hdinsight-hadoop-solr-install-linux.md)
 ### [Verwenden von Giraph zur Verarbeitung großer Diagramme](hdinsight-hadoop-giraph-install.md)
 ### [Verwenden von Oozie für Workflows](hdinsight-use-oozie.md)
@@ -212,7 +205,6 @@
 ### [Verwenden von Maven zur Entwicklung von Java-Anwendungen](hdinsight-hbase-build-java-maven.md)
 ### [Verwenden der Tez-Benutzeroberfläche zum Debuggen von Tez-Aufträgen](hdinsight-debug-tez-ui.md)
 ### [Anpassen mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster.md)
-### [Verfügbarkeit und Zuverlässigkeit](hdinsight-high-availability.md)
 ### [Zugreifen auf YARN-Anwendungsprotokolle](hdinsight-hadoop-access-yarn-app-logs.md)
 ### [Verwenden von Apache Phoenix und SQuirreL](hdinsight-hbase-phoenix-squirrel.md)
 ### [Erstellen von Filmempfehlungen mit Mahout](hdinsight-mahout.md)

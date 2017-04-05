@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2017
+ms.date: 03/23/2017
 ms.author: hawong
 translationtype: Human Translation
-ms.sourcegitcommit: 912d5af4231dee6aa8bc2f32d7950f59377fe90f
-ms.openlocfilehash: dbd5448c94577e6a21a2433a00e7a2f75afcc4a0
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: 9a0ba106b4c2aded8aaac673dfba3610bd4ca0fb
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -39,7 +40,7 @@ Azure DocumentDB ist eine allgemeine NoSQL-Datenbank, die in einer Vielzahl von 
 * Da DocumentDB Konsistenzebenen wie „eventual“, „session“ und „bounded-staleness“ unterstützt, wird ein optimales Preis-Leistungs-Verhältnis ermöglicht. 
 * DocumentDB verfügt über ein flexibles, datenfreundliches Preismodell, das Speicher und Durchsatz unabhängig voneinander misst.
 * Mit dem reservierten Durchsatzmodell in DocumentDB können Sie mit der Anzahl von Lese-und Schreibvorgängen anstelle von CPU-Leistung, Arbeitsspeicher oder IOPS-Wert der verwendeten Hardware arbeiten.
-* Das Design von DocumentDB ermöglicht Ihnen auch die Anpassung an sehr hohe Abfragevolumen (mehr als&1; Milliarde Abfragen pro Tag).
+* Das Design von DocumentDB ermöglicht Ihnen auch die Anpassung an sehr hohe Abfragevolumen (mehr als 1 Milliarde Abfragen pro Tag).
 
 Diese Attribute sind vorteilhaft im Hinblick auf Web-, Mobil-, Gaming- und IoT-Anwendungen, die niedrige Antwortzeiten benötigen und große Mengen von Lese- und Schreibvorgängen bewältigen müssen. 
 
@@ -78,7 +79,7 @@ DocumentDB wird von Spielen wie z.B. [The Walking Dead: No Man's Land](https://a
 ![Gaming-Referenzarchitektur für Azure DocumentDB](./media/documentdb-use-cases/documentdb-gaming-architecture.png)
 
 ## <a name="web-and-mobile-applications"></a>Webanwendungen und mobile Anwendungen
-DocumentDB wird häufig in Web- und mobilen Anwendungen verwendet und eignet sich besonders gut für die Modellierung sozialer Interaktionen, Integration in Drittanbieterdienste sowie zum Erstellen umfangreicher Personalisierungen. 
+DocumentDB wird häufig in Web- und mobilen Anwendungen verwendet und eignet sich besonders gut für die Modellierung sozialer Interaktionen, Integration in Drittanbieterdienste sowie zum Erstellen umfangreicher Personalisierungen. Mithilfe der DocumentDB-SDKs können umfangreiche iOS- und Android-Anwendungen mit dem beliebten [Xamarin-Framework](documentdb-mobile-apps-with-xamarin.md) erstellt werden.  
 
 ### <a name="social-applications"></a>Soziale Anwendungen
 Ein häufiger Anwendungsfall für DocumentDB ist die Speicherung und Abfrage von benutzergenerierten Inhalten für Web- und mobile Anwendungen, insbesondere Anwendungen für soziale Medien. Einige Beispiele für benutzergenerierte Inhalte sind Chatsitzungen, Tweets, Blogbeiträge, Bewertungen und Kommentare. Benutzergenerierte Inhalte in Anwendungen für soziale Medien sind eine Mischung aus Freitext, Eigenschaften, Tags und Beziehungen, die nicht durch eine starre Struktur begrenzt sind. Inhalte wie Chats, Kommentare und Beiträge können in DocumentDB gespeichert werden, ohne dass hierzu Transformationen oder komplexe ORM-Ebenen (Object Relational Mapping) erforderlich sind.  Dateneigenschaften können beim Durchlaufen des Anwendungscodes ganz einfach hinzugefügt oder geändert werden, um die jeweiligen Anforderungen zu erfüllen. Auf diese Weise wird die Entwicklung erheblich beschleunigt.  
@@ -115,9 +116,4 @@ Wenn Sie mehr zu Kunden erfahren möchten, die DocumentDB verwenden, stehen Ihne
 * [Orange Tribes](https://customers.microsoft.com/en-US/story/theres-more-to-that-food-app-than-meets-the-eye-or-the-mouth). Eine Lebensmittel-App, nicht nur für Auge und Mund.
 * [Real Madrid](https://customers.microsoft.com/en-US/story/real-madrid-brings-the-stadium-closer-to-450-million-f). Real Madrid bringt den weltweit 450 Millionen Fans mit der Microsoft Cloud ihr Fußballstadion näher.
 * [Tuku](https://customers.microsoft.com/en-US/story/tuku-makes-car-buying-fun-with-help-from-azure-services). TUKU macht den Autokauf mithilfe der Azure-Dienste zum Vergnügen. 
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

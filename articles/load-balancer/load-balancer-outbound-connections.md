@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 10/31/2016
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 273598a6eecb358c0b308c481193323e67dd475c
-ms.openlocfilehash: 24c3fdd8124ff3cc43feacb6f25dda84be9f46d9
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
+ms.openlocfilehash: f02e17bb413f250fc4d980c62cfb46bc5359f7fb
+ms.lasthandoff: 03/29/2017
 
 ---
 
@@ -66,4 +66,8 @@ Es gibt viele Möglichkeiten, die öffentliche IP-Quelladresse einer ausgehenden
 Mitunter ist es nicht wünschenswert, dass eine VM einen ausgehenden Datenfluss erstellen darf. Oder ggf. gibt es eine Anforderung zum Festlegen, welche Ziele ausgehende Datenflüsse erreichen dürfen. In diesem Fall verwenden Sie [Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md) zum Bestimmen der Ziele, die die VM erreichen kann. Wenn Sie eine Netzwerksicherheitsgruppe einer VM mit Lastenausgleich zuordnen, müssen Sie die [Standardtags](../virtual-network/virtual-networks-nsg.md#default-tags) und [Standardregeln](../virtual-network/virtual-networks-nsg.md#default-rules) beachten.
 
 Sie müssen sicherstellen, dass die VM Anforderungen von Integritätstests von Azure Load Balancer empfangen kann. Wenn eine Netzwerksicherheitsgruppe Anforderungen von Integritätstests vom Standardtag AZURE_LOADBALANCER blockiert, misslingt Ihr VM-Integritätstests, weshalb die VM mit „Außer Betrieb“ markiert wird. Der Lastenausgleich beendet das Senden neuer Datenflüsse an diese VM.
+
+## <a name="limitations"></a>Einschränkungen
+
+Die maximal verfügbare Anzahl von SNAT-Ports ist zurzeit 64.511 (65.535 - 1.024 privilegierte Ports) – allerdings kann diese Anzahl nicht garantiert werden.  Diese Anzahl kann nicht direkt auf die Verbindungen übertragen werden. Weiter oben finden Sie Angaben darüber, wann und wie SNAT-Ports zugeordnet werden und wie diese begrenzte Ressource verwaltet wird.
 

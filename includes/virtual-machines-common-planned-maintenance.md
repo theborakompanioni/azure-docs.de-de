@@ -14,7 +14,7 @@ Es gibt zwei Arten der Konfiguration virtueller Computer: mehrere Instanzen und 
 
 Die Konfiguration mit mehreren Instanzen sorgt für Redundanz über mehrere physische Computer hinweg, für Leistungskraft und für optimale Vernetzung. Sie wird empfohlen, um die Verfügbarkeit Ihrer Anwendung sicherzustellen. Alle virtuellen Computer in der Verfügbarkeitsgruppe sollten denselben Zweck für Ihre Anwendung erfüllen.
 
-Weitere Informationen zum Konfigurieren Ihrer virtuellen Computer für hohe Verfügbarkeit finden Sie unter [Verwalten der Verfügbarkeit Ihrer virtuellen Windows-Computer](../articles/virtual-machines/virtual-machines-windows-manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) oder unter [Verwalten der Verfügbarkeit Ihrer virtuellen Linux-Computer](../articles/virtual-machines/virtual-machines-linux-manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Weitere Informationen zum Konfigurieren Ihrer virtuellen Computer für hohe Verfügbarkeit finden Sie unter [Verwalten der Verfügbarkeit Ihrer virtuellen Windows-Computer](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) oder unter [Verwalten der Verfügbarkeit Ihrer virtuellen Linux-Computer](../articles/virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 Im Gegensatz dazu wird eine Einzelinstanz-Konfiguration für eigenständige virtuelle Computer verwendet, die nicht in einer Verfügbarkeitsgruppe platziert wurden. Diese virtuellen Computer fallen nicht unter die Vereinbarung zum Servicelevel (SLA). Diese erfordert nämlich, dass mindestens zwei virtuelle Computer in der gleichen Verfügbarkeitsgruppe bereitgestellt werden.
 
@@ -28,7 +28,7 @@ Bei einem Konfigurationsupdate mit mehreren Instanzen wird davon ausgegangen, da
 Jeder virtuelle Computer in einer Verfügbarkeitsgruppe wird durch die zugrunde liegende Azure-Plattform einer Updatedomäne (UD) und einer Fehlerdomäne (FD) zugewiesen. Jede Updatedomäne ist eine Gruppe virtueller Computer, die im selben Zeitfenster neu gestartet wird. Jede Fehlerdomäne ist eine Gruppe virtueller Computer, die eine Stromquelle und einen Netzwerkswitch gemeinsam nutzen.
 
 
-Weitere Informationen zu Updatedomänen und Fehlerdomänen finden Sie unter [Konfigurieren mehrerer virtueller Computer in einer Verfügbarkeitsgruppe für höhere Redundanz](../articles/virtual-machines/virtual-machines-windows-manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy).
+Weitere Informationen zu Updatedomänen und Fehlerdomänen finden Sie unter [Konfigurieren mehrerer virtueller Computer in einer Verfügbarkeitsgruppe für höhere Redundanz](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy).
 
 Damit die Verfügbarkeit während eines Updates erhalten bleibt, führt Azure die Wartung nacheinander für die einzelnen Updatedomänen durch. Die Wartung in einer Updatedomäne umfasst Folgendes: Herunterfahren jedes virtuellen Computers in der Domäne, Anwenden des Updates auf die Hostcomputer und Neustarten der virtuellen Computer. Nach Abschluss der Wartung in der Domäne wiederholt Azure den Prozess für die nächste Updatedomäne. Dies wird so lange fortgesetzt, bis alle Domänen aktualisiert sind.
 
@@ -101,4 +101,4 @@ Aktuelle Regionspaare finden Sie in der folgenden Tabelle:
 <!--Link references-->
 [Virtual Machines Manage Availability]: ../articles/virtual-machines/virtual-machines-windows-hero-tutorial.md
 
-[Understand planned versus unplanned maintenance]: ../articles/virtual-machines/virtual-machines-windows-manage-availability.md#Understand-planned-versus-unplanned-maintenance/
+[Understand planned versus unplanned maintenance]: ../articles/virtual-machines/windows/manage-availability.md#Understand-planned-versus-unplanned-maintenance/

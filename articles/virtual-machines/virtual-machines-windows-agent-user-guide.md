@@ -13,17 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/17/2016
+ms.date: 03/28/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 6cf561b269c4d873a894b47265e39a057cc415c3
-ms.openlocfilehash: 24ad2c2d2872f844e32d3fae559683c3d992bd00
+ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
+ms.openlocfilehash: accfd5f0fec69175e584528ff9f6db66402cb89e
+ms.lasthandoff: 03/29/2017
 
 
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Übersicht über den Agent für virtuelle Azure-Computer
 
-Der Agent für virtuelle Microsoft Azure-Computer (AM-Agent) ist ein geschützter, einfacher Prozess zur Verwaltung der VM-Interaktion mit dem Azure Fabric Controller. Der VM-Agent spielt eine primäre Rolle bei der Aktivierung und Ausführung von Azure-VM-Erweiterungen. VM-Erweiterungen ermöglichen es, virtuelle Computer nach der Bereitstellung zu konfigurieren (beispielsweise, um Software zu installieren und zu konfigurieren). Außerdem ermöglichen VM-Erweiterungen den Einsatz von Wiederherstellungsfeatures wie das Zurücksetzen des Administratorkennworts eines virtuellen Computers. Ohne Azure-VM-Agent können keine VM-Erweiterungen ausgeführt werden.
+Der Agent für virtuelle Microsoft Azure-Computer (VM-Agent) ist ein geschützter, einfacher Prozess zur Verwaltung der VM-Interaktion mit dem Azure Fabric Controller. Der VM-Agent spielt eine primäre Rolle bei der Aktivierung und Ausführung von Azure-VM-Erweiterungen. VM-Erweiterungen ermöglichen es, virtuelle Computer nach der Bereitstellung zu konfigurieren (beispielsweise, um Software zu installieren und zu konfigurieren). Außerdem ermöglichen VM-Erweiterungen den Einsatz von Wiederherstellungsfeatures wie das Zurücksetzen des Administratorkennworts eines virtuellen Computers. Ohne Azure-VM-Agent können keine VM-Erweiterungen ausgeführt werden.
 
 In diesem Dokument werden Installation, Erkennung und Entfernung des Azure VM-Agents erläutert.
 
@@ -82,8 +83,3 @@ Wenn Sie bei einem virtuellen Azure-Computer unter Windows angemeldet sind, kön
 ## <a name="upgrade-the-vm-agent"></a>Upgraden des VM-Agents
 
 Der Azure VM-Agent für Windows wird automatisch aktualisiert. Wenn neue virtuelle Computer für Azure bereitgestellt werden, erhalten diese jeweils den neuesten VM-Agent. Benutzerdefinierte VM-Images sollten manuell mit dem neuen VM-Agent aktualisiert werden.
-
-
-<!--HONumber=Dec16_HO1-->
-
-

@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 10/24/2016
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 8827793d771a2982a3dccb5d5d1674af0cd472ce
-ms.openlocfilehash: 93577703dd2bc1409250c3df12c2d6265f3f4634
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 2f0b7a04f4b732277abc65dd5fe0844d6e906496
+ms.lasthandoff: 03/30/2017
 
 ---
 
@@ -111,7 +112,7 @@ Der Lastenausgleich kann mithilfe von Resource Manager-basierten Vorlagen, APIs 
 
     Für jede neue ausgehende Verbindung, die von einem virtuellen Computer initiiert wird, wird vom Lastenausgleich auch ein ausgehender Port zugeordnet. Dem externen Host wird Datenverkehr von einem Port angezeigt, der einer virtuellen IP (VIP) zugewiesen ist. In Szenarien, die eine große Anzahl von ausgehenden Verbindungen erfordern, empfiehlt sich die Verwendung [öffentlicher IP-Adressen auf Instanzebene](../virtual-network/virtual-networks-instance-level-public-ip.md) , damit die virtuellen Computer eine dedizierte ausgehende IP-Adresse für SNAT besitzen. Dies reduziert das Risiko einer Portauslastung.
 
-    Die maximale Anzahl von Ports, die von der VIP oder öffentlichen IP auf Instanzebene (PIPs) verwendet werden kann, beträgt 64.000. Dies ist eine standardmäßige Einschränkung für TCP.
+    Im Artikel zu [ausgehenden Verbindungen](load-balancer-outbound-connections.md) finden Sie weitere Informationen zu diesem Thema.
 
 ### <a name="support-for-multiple-load-balanced-ip-addresses-for-virtual-machines"></a>Unterstützung für mehrere IP-Adressen mit Lastenausgleich für virtuelle Computer
 Sie können einer Gruppe von virtuellen Computern mehr als eine öffentliche IP-Adresse mit Lastenausgleich zuweisen. Mit dieser Funktion können Sie mehrere SSL-Websites und/oder mehrere Listener für SQL Server-AlwaysOn-Verfügbarkeitsgruppen in der gleichen Gruppe virtueller Computer hosten. Weitere Informationen finden Sie unter [Mehrere VIPs pro Clouddienst](load-balancer-multivip.md).
@@ -125,10 +126,5 @@ Sie können einer Gruppe von virtuellen Computern mehr als eine öffentliche IP-
 [Interner Lastenausgleich (Übersicht)](load-balancer-internal-overview.md)
 
 [Erste Schritte zum Erstellen eines Lastenausgleichs für den Internetzugriff](load-balancer-get-started-internet-arm-ps.md)
-
-
-
-
-<!--HONumber=Nov16_HO5-->
 
 

@@ -6,13 +6,13 @@ Wenn Sie die Azure-Befehlszeilenschnittstelle noch nicht installiert und noch ke
 Dieser Artikel behandelt die grundlegenden Befehle, die Sie mit der Azure-Befehlszeilenschnittstelle verwenden, um Ihre ARM-Ressourcen (hauptsächlich virtuelle Computer) im Azure-Abonnement zu verwalten und mit ihnen zu interagieren.  Ausführlichere Informationen zu bestimmten Befehlszeilenschaltern und -optionen finden Sie in der Onlinehilfe zu Befehlen und Optionen, die Sie durch Eingeben von `azure <command> <subcommand> --help` oder `azure help <command> <subcommand>` aufrufen können.
 
 > [!NOTE]
-> Diese Beispiele umfassen keine vorlagenbasierten Vorgänge, die im Allgemeinen für VM-Bereitstellungen im Ressourcen-Manager empfohlen werden. Informationen finden Sie unter [Use the Azure CLI to manage Azure resources and resource groups](../articles/xplat-cli-azure-resource-manager.md) (Verwalten von Azure-Ressourcen und -Ressourcengruppen mithilfe der Befehlszeilenschnittstelle) sowie unter [Bereitstellen und Verwalten von virtuellen Computern mit Azure Resource Manager-Vorlagen und der Azure-Befehlszeilenschnittstelle](../articles/virtual-machines/virtual-machines-linux-cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> Diese Beispiele umfassen keine vorlagenbasierten Vorgänge, die im Allgemeinen für VM-Bereitstellungen im Ressourcen-Manager empfohlen werden. Informationen finden Sie unter [Use the Azure CLI to manage Azure resources and resource groups](../articles/xplat-cli-azure-resource-manager.md) (Verwalten von Azure-Ressourcen und -Ressourcengruppen mithilfe der Befehlszeilenschnittstelle) sowie unter [Bereitstellen und Verwalten von virtuellen Computern mit Azure Resource Manager-Vorlagen und der Azure-Befehlszeilenschnittstelle](../articles/virtual-machines/linux/cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 > 
 > 
 
 | Aufgabe | Ressourcen-Manager |
 | --- | --- | --- |
-| Erstellen grundlegender virtueller Computer |`azure vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password>`<br/><br/>(Ermitteln Sie `image-urn` mithilfe des Befehls `azure vm image list`. Beispiele finden Sie in [diesem Artikel](../articles/virtual-machines/virtual-machines-linux-cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).) |
+| Erstellen grundlegender virtueller Computer |`azure vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password>`<br/><br/>(Ermitteln Sie `image-urn` mithilfe des Befehls `azure vm image list`. Beispiele finden Sie in [diesem Artikel](../articles/virtual-machines/linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).) |
 | Erstellen eines virtuellen Linux-Computers |`azure  vm create [options] <resource-group> <name> <location> -y "Linux"` |
 | Erstellen eines virtuellen Windows-Computers |`azure  vm create [options] <resource-group> <name> <location> -y "Windows"` |
 | Auflisten der virtuellen Computer |`azure  vm list [options]` |

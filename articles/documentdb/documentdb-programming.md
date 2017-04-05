@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 11/11/2016
 ms.author: andrl
 translationtype: Human Translation
-ms.sourcegitcommit: a6aadaae2a9400dc62ab277d89d9a9657833b1b7
-ms.openlocfilehash: 94376ba0cb7e68045e5bc44e356a91ac2ca787b2
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: d337114c123151f06a24e80b0208c6eafb1df487
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -293,7 +294,7 @@ Nachfolgend finden Sie ein Beispiel einer gespeicherten Prozedur, die für den m
         }
     }
 
-## <a name="a-idtriggera-database-triggers"></a><a id="trigger"></a> Datenbanktrigger
+## <a id="trigger"></a> Datenbanktrigger
 ### <a name="database-pre-triggers"></a>Vorangestellte Datenbanktrigger
 DocumentDB stellt Trigger bereit, die durch einen für ein Dokument erfolgten Vorgang ausgeführt oder ausgelöst werden. Sie können z. B. einen vorangestellten Trigger angeben, wenn Sie ein Dokument erstellen. Dieser vorangestellte Trigger wird ausgeführt, bevor das Dokument erstellt wird. Nachfolgend finden Sie ein Beispiel dafür, wie vorangestellte Trigger zum Überprüfen der Eigenschaften eines zu erstellenden Dokuments verwendet werden können:
 
@@ -436,10 +437,10 @@ Dieser Trigger fragt das Metadatendokument ab und aktualisiert es mit den Detail
 
 Ein wichtiges Element ist die **transaktionale** Ausführung von Triggern in DocumentDB. Dieser nachgestellte Trigger wird als Teil derselben Transaktion wie bei der Erstellung des ursprünglichen Dokuments ausgeführt. Daher schlägt die gesamte Transaktion fehl und es wird ein Rollback ausgeführt, wenn vom nachgestellten Trigger eine Ausnahme ausgelöst wird (wenn das Metadatendokument z. B. nicht aktualisiert werden konnte). Es wird kein Dokument erstellt und stattdessen eine Ausnahme zurückgegeben.  
 
-## <a name="a-idudfauser-defined-functions"></a><a id="udf"></a>Benutzerdefinierte Funktionen
+## <a id="udf"></a>Benutzerdefinierte Funktionen
 Mithilfe der benutzerdefinierten Funktionen (UDFs) kann die Grammatik der SQL-Abfragesprache von DocumentDB erweitert und eine benutzerdefinierte Geschäftslogik implementiert werden. Sie können ausschließlich innerhalb von Abfragen aufgerufen werden. Sie haben keinen Zugriff auf das Kontextobjekt und sind als JavaScript-Komponente vorgesehen, die ausschließlich der Berechnung dient. Daher können benutzerdefinierte Funktionen auf sekundären Replikaten des DocumentDB-Diensts ausgeführt werden.  
 
-Das folgende Beispiel erstellt eine UDF, um die Einkommenssteuer auf Basis der Sätze verschiedener Einkommensgruppen zu berechnen. Dann werden sie innerhalb einer Abfrage ausgeführt, um alle Personen zu finden, die mehr als&20;.000 $ Steuern gezahlt haben.
+Das folgende Beispiel erstellt eine UDF, um die Einkommenssteuer auf Basis der Sätze verschiedener Einkommensgruppen zu berechnen. Dann werden sie innerhalb einer Abfrage ausgeführt, um alle Personen zu finden, die mehr als 20.000 $ Steuern gezahlt haben.
 
     var taxUdf = {
         id: "tax",
@@ -810,10 +811,5 @@ Weitere Informationen zur serverseitigen DocumentDB-Programmierung finden Sie au
 * [Sichere und portable Erweiterbarkeit von Datenbanken](http://dl.acm.org/citation.cfm?id=276339) 
 * [Dienstorientierte Datenbankarchitektur](http://dl.acm.org/citation.cfm?id=1066267&coll=Portal&dl=GUIDE) 
 * [Hosten der .NET-Lautzeitumgebung in Microsoft SQL Server](http://dl.acm.org/citation.cfm?id=1007669)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

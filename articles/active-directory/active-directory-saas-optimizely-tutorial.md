@@ -12,12 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 3/10/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 49352a5e8255468bbc54c02e0cd9242d49002dbd
-ms.openlocfilehash: 2275daf25fd916932dbf54a7b069ecbfcf3e68cf
-ms.lasthandoff: 12/08/2016
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 1d9aa0e5da9b0bd659b8057739c81b318023cf44
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -27,7 +27,7 @@ In diesem Tutorial erfahren Sie, wie Sie Optimizely Learn in Azure Active Direct
 Die Integration von Optimizely in Azure AD bietet die folgenden Vorteile:
 
 * Sie können in Azure AD steuern, wer Zugriff auf Optimizely hat.
-* Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Optimizely anzumelden (einmaliges Anmelden).
+* Sie können Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Optimizely anzumelden (einmaliges Anmelden, SSO).
 * Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
@@ -36,25 +36,27 @@ Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unte
 Um die Azure AD-Integration mit Optimizely konfigurieren zu können, benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement
-* Ein **Optimizely** -Abonnement, für das einmaliges Anmelden aktiviert ist
+* Ein **Optimizely**-Abonnement, für das einmaliges Anmelden aktiviert ist
 
-> [!NOTE]
-> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
+>[!NOTE]
+>Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
 > 
-> 
+
 
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
 * Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-* Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
+* Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+In diesem Tutorial testen Sie das einmalige Anmelden (SSO) von Azure AD in einer Testumgebung. 
+
+Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
 1. Hinzufügen von Optimizely aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+2. Konfigurieren und Testen des einmaligen Anmeldens (SSO) von Azure AD
 
-## <a name="adding-optimizely-from-the-gallery"></a>Hinzufügen von Optimizely aus dem Katalog
+## <a name="add-optimizely-from-the-gallery"></a>Hinzufügen von Optimizely aus dem Katalog
 Zum Konfigurieren der Integration von Optimizely in Azure AD müssen Sie Optimizely aus dem Katalog zur Liste der verwalteten SaaS-Apps hinzufügen.
 
 **Um Optimizely aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
@@ -85,24 +87,27 @@ Zum Konfigurieren der Integration von Optimizely in Azure AD müssen Sie Optimiz
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-optimizely-tutorial/tutorial_optimizely_02.png)
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Optimizely basierend auf einem Testbenutzer mit dem Namen Britta Simon.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Optimizely basierend auf einem Testbenutzer mit dem Namen Britta Simon.
 
-Damit das einmalige Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Optimizely als Gegenstück zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Optimizely muss eine Linkbeziehung eingerichtet werden.
+Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Optimizely als Entsprechung zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Optimizely muss eine Linkbeziehung eingerichtet werden.
+
 Diese Linkbeziehung wird hergestellt, indem Sie den Wert des **Benutzernamens** in Azure AD als Wert des **Benutzernamens** in Optimizely zuweisen.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Optimizely müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 3. **[Erstellen eines Optimizely-Testbenutzers](#creating-an-optimizely-test-user)** , um eine Entsprechung von Britta Simon in Optimizely zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
-Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im klassischen Azure-Portal zu aktivieren und in Ihrer Optimizely-Anwendung zu konfigurieren.
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
+Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden (SSO) von Azure AD im klassischen Azure-Portal zu aktivieren und das einmalige Anmelden in Ihrer Optimizely-Anwendung zu konfigurieren.
 
-Die Optimizely-Anwendung erwartet, dass die SAML-Assertions ein Attribut namens „email“ enthalten. Der Wert von „email“ sollte eine in Optimizely bekannte E-Mail-Adresse sein, die von Azure AD authentifiziert werden kann. Konfigurieren Sie für diese Anwendung den Anspruch „email“. Sie können die Werte dieser Attribute auf der Registerkarte **Attribute** der Anwendung verwalten. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen: 
+Die Optimizely-Anwendung erwartet, dass die SAML-Assertions ein Attribut namens „email“ enthalten. Der Wert von „email“ sollte eine in Optimizely bekannte E-Mail-Adresse sein, die von Azure AD authentifiziert werden kann. Konfigurieren Sie für diese Anwendung den Anspruch „email“. 
+
+Sie können die Werte dieser Attribute auf der Registerkarte **Attribute** der Anwendung verwalten. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen: 
 
 ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-optimizely-tutorial/tutorial_optimizely_03.png) 
 
@@ -113,16 +118,12 @@ Die Optimizely-Anwendung erwartet, dass die SAML-Assertions ein Attribut namens 
     ![Einmaliges Anmelden konfigurieren][5]
 
 2. Fügen Sie das Attribut „email“ im Dialogfeld „SAML-Tokenattribute“ hinzu.
-   
-    a. Klicken Sie unten auf der Seite auf **add user attribute** to open the **Benutzerattribut hinzufügen** zu öffnen. 
+  1. Klicken Sie unten auf der Seite auf **add user attribute** to open the **Benutzerattribut hinzufügen** zu öffnen. 
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-optimizely-tutorial/tutorial_optimizely_05.png)
-   
-    b. Geben Sie im Textfeld **Attributname** den Attributnamen „email“ ein.
-   
-    c. Wählen Sie aus der Liste **Attributwert** den Attributwert „userprincipalname“ oder einen anderen Wert aus, der eine in Azure AD und Optimizely bekannte E-Mail-Adresse enthält.
-   
-    d. Klicken Sie auf **Fertig stellen**.
+  2. Geben Sie im Textfeld **Attributname** den Attributnamen „email“ ein.
+  3. Wählen Sie aus der Liste **Attributwert** den Attributwert „userprincipalname“ oder einen anderen Wert aus, der eine in Azure AD und Optimizely bekannte E-Mail-Adresse enthält.
+  4. Klicken Sie auf **Fertig stellen**.
 
 3. Klicken Sie im oberen Menü auf **Schnellstart**.
    
@@ -139,48 +140,39 @@ Die Optimizely-Anwendung erwartet, dass die SAML-Assertions ein Attribut namens 
 6. Führen Sie auf der Dialogseite **App-Einstellungen konfigurieren** die folgenden Schritte aus: 
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-optimizely-tutorial/tutorial_optimizely_07.png)
+  1. Geben Sie im Textfeld **Anmelde-URL** Folgendes ein: `https://app.optimizely.net/contoso`
+  2. Geben Sie im Textfeld **Bezeichner** Folgendes ein: `urn:auth0:optimizely:contoso`
+  3. Klicken Sie auf **Weiter**. 
 
-    a. Geben Sie im Textfeld **Anmelde-URL** Folgendes ein: `https://app.optimizely.net/contoso`
-
-    b. Geben Sie im Textfeld **Bezeichner** Folgendes ein: `urn:auth0:optimizely:contoso`
-
-    c. Klicken Sie auf **Weiter**. 
-
-    > [!NOTE] 
-    > Die Werte für **Anmelde-URL** und **Bezeichner** sind nur Platzhalter für die tatsächlichen Werte. Anweisungen zum Abrufen der tatsächlichen Werte aus Optimizely finden Sie weiter unten in diesem Tutorial.
+     >[!NOTE] 
+     >Die Werte für **Anmelde-URL** und **Bezeichner** sind nur Platzhalter für die tatsächlichen Werte. Anweisungen zum Abrufen der tatsächlichen Werte aus Optimizely finden Sie weiter unten in diesem Tutorial.
+     >
 
 1. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für Optimizely** die folgenden Schritte aus:
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-optimizely-tutorial/tutorial_optimizely_08.png)
-   
-    a. Klicken Sie auf **Zertifikat herunterladen**und speichern Sie die Datei auf Ihrem Computer.
-   
-    b. Kopieren Sie die **Dienst-URL für einmalige Anmeldung**.
+ 1. Klicken Sie auf **Zertifikat herunterladen**und speichern Sie die Datei auf Ihrem Computer.
+ 2. Kopieren Sie die **Dienst-URL für einmalige Anmeldung**.
 
 2. Wenden Sie sich an das Supportteam von Optimizely, um SSO (Single Sign-On, einmaliges Anmelden) für Ihre Anwendung konfigurieren zu lassen, und stellen Sie Folgendes bereit:
    
-   * Ihr heruntergeladenes Zertifikat 
-   * Die Dienst-URL für einmaliges Anmelden
+  * Ihr heruntergeladenes Zertifikat 
+  * Die Dienst-URL für einmaliges Anmelden
      
-     Als Antwort auf Ihre E-Mail stellt Optimizely Ihnen die Anmelde-URL (SP-initiiertes SSO) und den Bezeichner (ID der Dienstanbieterentität).
+  Als Antwort auf Ihre E-Mail stellt Optimizely Ihnen die Anmelde-URL (SP-initiiertes SSO) und den Bezeichner (ID der Dienstanbieterentität).
 
 3. Wechseln Sie zurück zur Seite **App-Einstellungen konfigurieren** , und führen Sie die folgenden Schritte aus:
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-optimizely-tutorial/tutorial_optimizely_07.png)
-   
-    a. Geben Sie im Textfeld **Anmelde-URL** die von Optimizely bereitgestellte **SP-initiierte SSO-URL** ein.
-   
-    b. Geben Sie im Textfeld **Bezeichner** die von Optimizely bereitgestellte **ID der Dienstanbieterentität** ein.
-   
-    c. Klicken Sie auf **Next**.
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-optimizely-tutorial/tutorial_optimizely_07.png) 
+ 1. Geben Sie im Textfeld **Anmelde-URL** die von Optimizely bereitgestellte **SP-initiierte SSO-URL** ein.  
+ 2. Geben Sie im Textfeld **Bezeichner** die von Optimizely bereitgestellte **ID der Dienstanbieterentität** ein.  
+ 3. Klicken Sie auf **Weiter**.
 
 4. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für Optimizely** die folgenden Schritte aus:
    
-    ![Azure AD – einmaliges Anmelden][10]
-   
-    a. Wählen Sie die Bestätigung zur Konfiguration des einmaligen Anmeldens aus.
-   
-    b. Klicken Sie auf **Weiter**.
+    ![Azure AD – einmaliges Anmelden][10] 
+ 1. Wählen Sie die Bestätigung zur Konfiguration des einmaligen Anmeldens aus.  
+ 2. Klicken Sie auf **Weiter**.
 
 5. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.  
    
@@ -196,9 +188,10 @@ Die Optimizely-Anwendung erwartet, dass die SAML-Assertions ein Attribut namens 
    
     ![Azure AD – einmaliges Anmelden](./media/active-directory-saas-optimizely-tutorial/tutorial_optimizely_10.png)
 
-### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit dem Namen Britta Simon.
-Wählen Sie in der Benutzerliste **Britta Simon**aus.
+
+* Wählen Sie in der Benutzerliste **Britta Simon**aus.
 
 ![Azure AD-Benutzer erstellen][20]
 
@@ -220,27 +213,19 @@ Wählen Sie in der Benutzerliste **Britta Simon**aus.
 
 5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
    
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-optimizely-tutorial/create_aaduser_05.png) 
-   
-    a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
-   
-    b. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
-   
-    c. Klicken Sie auf **Weiter**.
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-optimizely-tutorial/create_aaduser_05.png)  
+ 1. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus. 
+ 2. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein. 
+ 3. Klicken Sie auf **Weiter**.
 
 6. Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
    
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-optimizely-tutorial/create_aaduser_06.png) 
-   
-    a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
-   
-    b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
-   
-    c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
-   
-    d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
-   
-    e. Klicken Sie auf **Weiter**.
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-optimizely-tutorial/create_aaduser_06.png)  
+ 1. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.   
+ 2. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein. 
+ 3. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.  
+ 4. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus. 
+ 5. Klicken Sie auf **Weiter**.
 
 7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
    
@@ -248,16 +233,14 @@ Wählen Sie in der Benutzerliste **Britta Simon**aus.
 
 8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
    
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-optimizely-tutorial/create_aaduser_08.png) 
-   
-    a. Notieren Sie den Wert von **Neues Kennwort**.
-   
-    b. Klicken Sie auf **Fertig stellen**.   
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-optimizely-tutorial/create_aaduser_08.png)  
+ 1. Notieren Sie den Wert von **Neues Kennwort**.  
+ 2. Klicken Sie auf **Fertig stellen**.   
 
-### <a name="creating-an-optimizely-test-user"></a>Erstellen eines Optimizely-Testbenutzers
+### <a name="create-an-optimizely-test-user"></a>Erstellen eines Optimizely-Testbenutzers
 In diesem Abschnitt erstellen Sie in Optimizely einen Benutzer mit dem Namen Britta Simon.
 
-1. Klicken Sie auf der Startseite auf **Collaborators** .
+1. Klicken Sie auf der Startseite auf **Collaborators**.
 
 2. Klicken Sie auf **New Collaborator** , um einen neuen Projektmitarbeiter zum Projekt hinzuzufügen.
    
@@ -269,7 +252,7 @@ In diesem Abschnitt erstellen Sie in Optimizely einen Benutzer mit dem Namen Bri
 
 1. Der Benutzer erhält eine E-Mail-Einladung. Der Benutzer muss sich mit dieser E-Mail-Adresse bei Optimizely anmelden.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Optimizely gewähren.
 
 ![Benutzer zuweisen][200] 
@@ -294,8 +277,8 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
    
     ![Benutzer zuweisen][205]
 
-### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
-Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
+Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden (SSO) über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Optimizely“ klicken, sollten Sie automatisch bei Ihrer Optimizely-Anwendung angemeldet werden.
 

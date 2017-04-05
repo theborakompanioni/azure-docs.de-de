@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 1/30/2017
 ms.author: shlo
 translationtype: Human Translation
-ms.sourcegitcommit: 6ec8ac288a4daf6fddd6d135655e62fad7ae17c2
-ms.openlocfilehash: 2ed6b838608f0f2249ef16b62ff2fb0159fc6e7f
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: 34148a8fe2fe5b9ebd2ff4a01ff523f7f5a74c67
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -104,7 +105,7 @@ Beachten Sie folgende Punkte:
 
 * „type“ ist auf „AzuresqlTable“ festgelegt.
 * Als tableName-Typeigenschaft (spezifisch für AzureSplTable-Typ) ist „MyTable“ festgelegt.
-* linkedServiceName bezieht sich auf einen verknüpften Dienst vom Typ AzureSqlDatabase. Beachten Sie die Definition des folgenden verknüpften Diensts.
+* „linkedServiceName“ verweist auf einen verknüpften Dienst vom Typ „AzureSqlDatabase“, der im folgenden JSON-Codeausschnitt definiert ist.
 * Als „availability frequency“ ist „day“ festgelegt und „interval“ ist auf „1“ festgelegt. Das bedeutet, dass der Slice täglich erzeugt wird.  
 
 AzureSqlLinkedService wird wie folgt definiert:
@@ -134,11 +135,11 @@ Wie Sie sehen, definiert der verknüpfte Dienst das Herstellen einer Verbindung 
 >
 >
 
-## <a name="a-nametypea-dataset-type"></a><a name="Type"></a> Dataset: Type
+## <a name="Type"></a> Dataset: Type
 Die unterstützten Datenquellen und die Dataset-Typen werden ausgerichtet. Informationen zu den Typen und der Konfiguration von Datasets finden Sie in den Themen, auf die im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md#supported-data-stores-and-formats) verwiesen wird. Wenn Sie z.B. Daten aus einer Azure SQL-Datenbank verwenden, klicken Sie in der Liste der unterstützten Datenspeicher auf Azure SQL-Datenbank, um ausführliche Informationen zu erhalten.  
 
-## <a name="a-namestructureadataset-structure"></a><a name="Structure"></a>Dataset: Structure
-Der Abschnitt **structure** definiert das Schema des Datasets. Er enthält eine Auflistung der Namen und Datentypen der Spalten.  Im folgenden Beispiel hat das Dataset die drei Spalten „slicetimestamp“, „projectname“ und „pageviews“. Sie entsprechen dem Typ „String“, „String“ und „Decimal“.
+## <a name="Structure"></a>Dataset: Structure
+Bei dem Abschnitt **structure** handelt es sich um einen **optionalen** Abschnitt, der das Schema des Datasets definiert. Er enthält eine Auflistung der Namen und Datentypen der Spalten. Sie verwenden den Abschnitt „structure“ entweder zum Angeben von Typinformationen für **Typkonvertierungen** oder für **Spaltenzuordnungen**. Im folgenden Beispiel hat das Dataset die drei Spalten `slicetimestamp`, `projectname` und `pageviews`. Sie weisen die Typen „String“, „String“ und „Decimal“ auf.
 
 ```json
 structure:  
@@ -149,7 +150,28 @@ structure:
 ]
 ```
 
-## <a name="a-nameavailabilitya-dataset-availability"></a><a name="Availability"></a> Dataset: Availability
+Jede Spalte enthält die folgenden Eigenschaften:
+
+| Eigenschaft | Beschreibung | Erforderlich |
+| --- | --- | --- |
+| name |Name der Spalte. |Ja |
+| type |Datentyp der Spalte.  |Nein |
+| culture |Zu verwendendes .NET-basiertes Gebietsschema, wenn der Typ angegeben ist, und den .NET-Typ `Datetime` oder `Datetimeoffset` hat. Die Standardeinstellung ist "en-us". |Nein |
+| format |Zu verwendende Formatzeichenfolge, wenn der Typ angegeben ist und den .NET-Typ `Datetime` oder `Datetimeoffset` hat. |Nein |
+
+Befolgen Sie die folgenden Angaben dazu, wann der Abschnitt **structure** mit welchen Informationen verwendet werden sollte.
+
+* **Bei strukturierten Datenquellen**, die Datenschema- und Typinformationen neben den Daten selbst speichern (Quellen wie SQL Server, Oracle, Azure-Tabelle usw.), sollten Sie den Abschnitt „structure“ nur angeben, wenn Sie bestimmte Quellspalten Senkenspalten zuordnen möchten und deren Namen nicht identisch sind. 
+  
+    Da Typinformationen für strukturierte Datenquellen bereits verfügbar sind, sollten Sie keine Typinformationen einschließen, wenn Sie sich für die Verwendung des Abschnitts „structure“ entscheiden.
+* **Für das Schema von Lesedatenquellen (insbesondere Azure-Blob)** können Sie Daten speichern, ohne Schema- oder Typinformationen mit den Daten zu speichern. Schließen Sie für diese Arten von Datenquellen „structure“ ein, wenn Sie Quellspalten Senkenspalten zuordnen möchten (oder/,) wenn das Dataset ein Eingabedataset für eine Kopieraktivität darstellt und Datentypen des Quelldatasets in native Typen der Senke konvertiert werden müssen. 
+    
+    Data Factory unterstützt die folgenden CLS-kompatiblen auf .NET basierenden Typwerte für die Bereitstellung von Typinformationen in „structure“ für das Schema von Lesedatenquellen wie Azure-Blob: Int16, Int32, Int64, Single, Double, Decimal, Byte[], Bool, String, Guid, Datetime, Datetimeoffset, Timespan.
+
+Data Factory führt beim Verschieben von Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher automatisch Typkonvertierungen durch. 
+  
+
+## <a name="Availability"></a> Dataset: Availability
 Der Abschnitt **availability** in einem Dataset definiert das Verarbeitungsfenster (stündlich, täglich, wöchentlich usw.) oder das Modell für das Aufteilen in Slices für das Dataset. Im Artikel [Planung und Ausführung](data-factory-scheduling-and-execution.md) finden Sie weitere Informationen zum Modell für das Aufteilen von Datasets in Slices und Abhängigkeiten.
 
 Der folgende Abschnitt „availability“ definiert, dass das Ausgabedataset entweder stündlich erstellt wird oder das Eingabedataset stündlich verfügbar ist:
@@ -166,11 +188,11 @@ In der folgenden Tabelle werden die Eigenschaften beschrieben, die Sie im Abschn
 
 | Eigenschaft | Beschreibung | Erforderlich | Standard |
 | --- | --- | --- | --- |
-| frequency |Gibt die Zeiteinheit für die Erstellung der Datasetslices an.<br/><br/>**Unterstützte Häufigkeit**: „Minute“, „Hour“, „Day“, „Week“, „Month“ |Ja |NA |
-| interval |Gibt einen Multiplikator für die Häufigkeit an<br/><br/>„Frequency x interval“ bestimmt, wie oft der Slice erzeugt wird.<br/><br/>Wenn Sie das Dataset auf Stundenbasis in Slices aufteilen möchten, legen Sie **Frequency** auf **Hour** und **interval** auf **1** fest.<br/><br/>**Hinweis:** Wenn Sie „Frequency“ auf „Minute“ festlegen, sollten Sie „interval“ mindestens auf „15“ festlegen. |Ja |NA |
+| frequency |Gibt die Zeiteinheit für die Erstellung der Datasetslices an.<br/><br/><b>Unterstützte Häufigkeit</b>: „Minute“, „Hour“, „Day“, „Week“, „Month“ |Ja |NA |
+| interval |Gibt einen Multiplikator für die Häufigkeit an<br/><br/>„Frequency x interval“ bestimmt, wie oft der Slice erzeugt wird.<br/><br/>Wenn Sie das Dataset auf Stundenbasis in Slices aufteilen möchten, legen Sie <b>Frequency</b> auf <b>Hour</b> und <b>interval</b> auf <b>1</b> fest.<br/><br/><b>Hinweis:</b> Wenn Sie „Frequency“ auf „Minute“ festlegen, sollten Sie „interval“ mindestens auf „15“ festlegen. |Ja |NA |
 | style |Gibt an, ob der Slice am Anfang/Ende des Intervalls erzeugt werden soll.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>Wenn „Frequency“ auf „Month“ und „style“ auf „EndOfInterval“ festgelegt ist, wird der Slice am letzten Tag des Monats erstellt. Wenn „style“ auf „StartOfInterval“ festgelegt ist, wird der Slice am ersten Tag des Monats erstellt.<br/><br/>Wenn „Frequency“ auf „Day“ und „style“ auf „EndOfInterval“ festgelegt ist, wird der Slice in der letzten Stunde des Tages erstellt.<br/><br/>Wenn „Frequency“ auf „Hour“ und „style“ auf „EndOfInterval“ festgelegt ist, wird der Slice am Ende der Stunde erstellt. Ein Slice für den Zeitraum 13:00 bis 14:00 Uhr wird z. B. um 14.00 Uhr erstellt. |Nein |EndOfInterval |
-| anchorDateTime |Definiert die absolute Position in der Zeit, die der Scheduler benötigt, um Dataset-Slicegrenzen zu berechnen. <br/><br/>**Hinweis**: Wenn AnchorDateTime Datumsteile aufweist, die präziser als die Häufigkeit sind, werden die präziseren Teile ignoriert. <br/><br/>Wenn **interval** z.B. auf **hourly** festgelegt ist („frequency: hour“ und „interval: 1“) und **AnchorDateTime** Angaben für **Minuten und Sekunden** enthält, werden die **Minuten- und Sekundenteile** von AnchorDateTime ignoriert. |Nein |01/01/0001 |
-| offset |Zeitspanne, um die Anfang und Ende aller Datasetslices verschoben werden. <br/><br/>**Hinweis:** Wenn sowohl „anchorDateTime“ als auch „offset“ angegeben werden, ist das Ergebnis die kombinierte Verschiebung. |Nein |NA |
+| anchorDateTime |Definiert die absolute Position in der Zeit, die der Scheduler benötigt, um Dataset-Slicegrenzen zu berechnen. <br/><br/><b>Hinweis</b>: Wenn AnchorDateTime Datumsteile aufweist, die präziser als die Häufigkeit sind, werden die präziseren Teile ignoriert. <br/><br/>Wenn <b>interval</b> z.B. auf <b>stündlich</b> festgelegt ist („frequency: hour“ und „interval: 1“) und <b>AnchorDateTime</b> Angaben für <b>Minuten und Sekunden</b> enthält, werden die <b>Minuten- und Sekundenteile</b> von AnchorDateTime ignoriert. |Nein |01/01/0001 |
+| offset |Zeitspanne, um die Anfang und Ende aller Datasetslices verschoben werden. <br/><br/><b>Hinweis:</b> Wenn sowohl „anchorDateTime“ als auch „offset“ angegeben werden, ist das Ergebnis die kombinierte Verschiebung. |Nein |NA |
 
 ### <a name="offset-example"></a>Beispiel zu Offset
 Tägliche Slices, die um 6:00 Uhr anstelle des Standards Mitternacht beginnen.
@@ -220,7 +242,7 @@ Wenn Sie ein Dataset jeden Monat an einem bestimmten Tag und zu einer bestimmten
 }
 ```
 
-## <a name="a-namepolicyadataset-policy"></a><a name="Policy"></a>Dataset-Richtlinie
+## <a name="Policy"></a>Dataset-Richtlinie
 Der Abschnitt **policy** in der Datasetdefinition definiert die Kriterien oder die Bedingung, die die Datasetslices erfüllen müssen.
 
 ### <a name="validation-policies"></a>Überprüfungsrichtlinien
@@ -365,9 +387,4 @@ Mit der Eigenschaft **datasets** können Sie Datasets erstellen, die einer Pipel
     }
 }
 ```
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

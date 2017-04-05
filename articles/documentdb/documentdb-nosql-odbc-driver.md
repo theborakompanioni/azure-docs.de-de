@@ -13,11 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: rest-api
 ms.topic: article
-ms.date: 01/26/2017
+ms.date: 03/27/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: f1b0fde1e6e31a8179ed61508348d850c5dd784f
-ms.openlocfilehash: 9e2c0cff442f7c66a4b1c76ab612175410f49497
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: 5f712c7fa9b6ee06f7c89de40ba4227a925a35ce
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -35,15 +36,22 @@ An dieser Stelle kommt der ODBC-Treiber ins Spiel. Mit dem ODBC-Treiber können 
 
 Nun wenden wir uns dem ODBC-Treiber zu.
 
-## <a name="a-idinstallastep-1-install-the-documentdb-odbc-driver"></a><a id="install"></a>Schritt 1: Installieren des DocumentDB-ODBC-Treibers
-1. Laden Sie entweder die Datei [Microsoft Azure DocumentDB ODBC 64-bit.msi](https://aka.ms/documentdb-odbc-64x64) für Windows-Betriebssysteme mit 64 Bit oder die Datei [Microsoft Azure DocumentDB ODBC 32-bit.msi](https://aka.ms/documentdb-odbc-32x32) für Windows-Betriebssysteme mit 32 Bit herunter. 2. Führen Sie die MSI-Datei, mit der der **Installations-Assistent für den Microsoft Azure DocumentDB-ODBC-Treiber** gestartet wird, lokal aus. 
+## <a id="install"></a>Schritt 1: Installieren des DocumentDB-ODBC-Treibers
+
+1. Laden Sie die Treiber für Ihre Umgebung herunter:
+
+    * [Microsoft Azure DocumentDB ODBC 64-bit.msi](https://aka.ms/documentdb-odbc-64x64) für 64-Bit-Windows
+    * [Microsoft Azure DocumentDB ODBC 32x64-bit.msi](https://aka.ms/documentdb-odbc-32x64) für 32- und 64-Bit-Windows
+    * [Microsoft Azure DocumentDB ODBC 32-bit.msi](https://aka.ms/documentdb-odbc-32x32) für 32-Bit-Windows
+
+    Führen Sie die MSI-Datei, mit der der **Installations-Assistent für den Microsoft Azure DocumentDB-ODBC-Treiber** gestartet wird, lokal aus. 
 2. Verwenden Sie im Installations-Assistenten die Standardeinstellungen, um den ODBC-Treiber zu installieren.
 3. Öffnen Sie die App **ODBC-Datenquellenadministrator** auf Ihrem Computer, indem Sie beispielsweise im Windows-Suchfeld **ODBC-Datenquellen** eingeben. 
     Sie können sich vergewissern, dass der Treiber installiert wurde, indem Sie auf die Registerkarte **Treiber** klicken und sicherstellen, dass der **Microsoft DocumentDB ODBC-Treiber** aufgeführt ist.
 
     ![ODBC-Datenquellenadministrator für DocumentDB](./media/documentdb-nosql-odbc-driver/documentdb-nosql-odbc-driver.png)
 
-## <a name="a-idconnectastep-2-connect-to-your-documentdb-database"></a><a id="connect"></a>Schritt 2: Herstellen der Verbindung mit Ihrer DocumentDB-Datenbank
+## <a id="connect"></a>Schritt 2: Herstellen der Verbindung mit Ihrer DocumentDB-Datenbank
 
 1. Klicken Sie nach dem [Installieren des DocumentDB-ODBC-Treibers](#install) im Fenster **ODBC-Datenquellenadministrator** auf **Hinzufügen**. Sie können einen Benutzer- oder System-DSN erstellen. In diesem Beispiel erstellen wir einen Benutzer-DSN.
 2. Wählen Sie im Fenster **Neue Datenquelle erstellen** die Option **Microsoft DocumentDB-ODBC-Treiber**, und klicken Sie dann auf **Fertig stellen**.
@@ -69,7 +77,7 @@ Nun wenden wir uns dem ODBC-Treiber zu.
 
     ![Neuer DocumentDB-ODBC-DSN auf der Registerkarte „Benutzer-DSN“](./media/documentdb-nosql-odbc-driver/documentdb-nosql-odbc-driver-user-dsn.png)
 
-## <a name="a-idcollection-mappingastep-3-create-a-schema-definition-using-the-collection-mapping-method"></a><a id="#collection-mapping"></a>Schritt 3: Erstellen einer Schemadefinition mit der Methode für die Sammlungszuordnung
+## <a id="#collection-mapping"></a>Schritt 3: Erstellen einer Schemadefinition mit der Methode für die Sammlungszuordnung
 
 Es gibt zwei Arten von Samplingmethoden, die Sie verwenden können: **Sammlungszuordnung** und **Tabellentrennzeichen**. In einer Samplingsitzung können beide Samplingmethoden verwendet werden, aber für eine Sammlung ist jeweils nur eine bestimmte Samplingmethode zulässig. Mit den Schritten unten wird ein Schema für die Daten in einer oder mehreren Sammlungen mithilfe der Methode „Sammlungszuordnung“ erstellt. Mit dieser Samplingmethode werden die Daten auf der Seite einer Sammlung abgerufen, um die Struktur der Daten zu ermitteln. Hierbei wird eine Sammlung in eine Tabelle auf ODBC-Seite transponiert. Diese Samplingmethode ist effizient und schnell, wenn die Daten einer Sammlung homogen sind. Falls eine Sammlung heterogene Daten enthält, empfehlen wir Ihnen die Verwendung der [Tabellentrennzeichen-Zuordnungsmethode](#table-mapping) (table-delimiters). Dies ist eine robustere Samplingmethode zum Ermitteln der Datenstrukturen einer Sammlung. 
 
@@ -87,7 +95,7 @@ Es gibt zwei Arten von Samplingmethoden, die Sie verwenden können: **Sammlungsz
 
     Falls Sie dieses Schema zu einem späteren Zeitpunkt mit einem DSN verwenden möchten, können Sie das Fenster „DocumentDB ODBC Driver DSN Setup“ (DocumentDB-ODBC-Treiber – DSN-Setup) (über den ODBC-Datenquellenadministrator) öffnen, auf „Erweiterte Optionen“ klicken und dann im Feld „Schemadatei“ zum gespeicherten Schema navigieren. Mit dem Speichern einer Schemadatei unter einem vorhandenen DSN wird die DSN-Verbindung an die vom Schema definierten Daten und die dazugehörige Struktur angepasst.
 
-## <a name="a-idtable-mappingastep-4-create-a-schema-definition-using-the-table-delimiters-mapping-method"></a><a id="table-mapping"></a>Schritt 4: Erstellen einer Schemadefinition mit der Tabellentrennzeichen-Zuordnungsmethode
+## <a id="table-mapping"></a>Schritt 4: Erstellen einer Schemadefinition mit der Tabellentrennzeichen-Zuordnungsmethode
 
 Es gibt zwei Arten von Samplingmethoden, die Sie verwenden können: **Sammlungszuordnung** und **Tabellentrennzeichen**. In einer Samplingsitzung können beide Samplingmethoden verwendet werden, aber für eine Sammlung ist jeweils nur eine bestimmte Samplingmethode zulässig. 
 
@@ -143,8 +151,4 @@ Stellen Sie beim Auftreten des folgenden Fehlers sicher, dass die Werte für **H
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu DocumentDB finden Sie unter [Was ist DocumentDB?](documentdb-introduction.md).
-
-
-<!--HONumber=Jan17_HO4-->
-
 

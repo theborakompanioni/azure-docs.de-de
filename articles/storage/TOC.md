@@ -45,11 +45,11 @@
 
 ## Datenspeicher 
 ### [Erstellen eines virtuellen Computers mithilfe von Resource Manager und PowerShell](../virtual-machines/virtual-machines-windows-ps-create.md)
-### [Erstellen eines virtuellen Linux-Computers mit Azure CLI 2.0](../virtual-machines/virtual-machines-linux-quick-create-cli.md)
-### [Anfügen eines verwalteten Datenträgers an einen virtuellen Windows-Computer mithilfe von PowerShell](../virtual-machines/virtual-machines-windows-attach-disk-ps.md)
-### [Hinzufügen eines verwalteten Datenträgers zu einem virtuellen Linux-Computer](../virtual-machines/virtual-machines-linux-add-disk.md)
-### [Erstellen einer Kopie einer als verwalteter Datenträger gespeicherten virtuellen Festplatte mithilfe von Momentaufnahmen unter Windows](../virtual-machines/virtual-machines-windows-snapshot-copy-managed-disk.md)
-### [Erstellen einer Kopie einer als verwalteter Datenträger gespeicherten virtuellen Festplatte mithilfe von Momentaufnahmen unter Linux](../virtual-machines/linux/virtual-machines-linux-snapshot-copy-managed-disk.md)
+### [Erstellen eines virtuellen Linux-Computers mit Azure CLI 2.0](../virtual-machines/linux/quick-create-cli.md)
+### [Anfügen eines verwalteten Datenträgers an einen virtuellen Windows-Computer mithilfe von PowerShell](../virtual-machines/windows/attach-disk-ps.md)
+### [Hinzufügen eines verwalteten Datenträgers zu einem virtuellen Linux-Computer](../virtual-machines/linux/add-disk.md)
+### [Erstellen einer Kopie einer als verwalteter Datenträger gespeicherten virtuellen Festplatte mithilfe von Momentaufnahmen unter Windows](../virtual-machines/windows/snapshot-copy-managed-disk.md)
+### [Erstellen einer Kopie einer als verwalteter Datenträger gespeicherten virtuellen Festplatte mithilfe von Momentaufnahmen unter Linux](../virtual-machines/linux/snapshot-copy-managed-disk.md)
 
 # Anleitung
 ## [Erstellen Sie ein Speicherkonto](storage-create-storage-account.md)
@@ -74,8 +74,8 @@
 ### [Datenträger und virtuelle Festplatten für virtuelle Windows-Computer](storage-about-disks-and-vhds-windows.md)
 ### [Datenträger und virtuelle Festplatten für virtuelle Linux-Computer](storage-about-disks-and-vhds-linux.md)
 ### [Übersicht über Azure Managed Disks](storage-managed-disks-overview.md)
-### [Migrieren virtueller Azure-Computer zu Azure Managed Disks](../virtual-machines/virtual-machines-windows-migrate-to-managed-disks.md)
-### [Migrieren von AWS und anderen Plattformen zu Managed Disks](../virtual-machines/virtual-machines-windows-on-prem-to-azure.md)
+### [Migrieren virtueller Azure-Computer zu Azure Managed Disks](../virtual-machines/windows/migrate-to-managed-disks.md)
+### [Migrieren von AWS und anderen Plattformen zu Managed Disks](../virtual-machines/windows/on-prem-to-azure.md)
 ### [Häufig gestellte Fragen zu Azure-IaaS-VM-Datenträgern](storage-faq-for-disks.md)
 ### Storage Premium
 #### [Premium-Hochleistungsspeicher für VM-Datenträger](storage-premium-storage.md)
@@ -142,7 +142,7 @@
 #### [Format der Manifestdatei des Import/Export-Diensts](storage-import-export-file-format-manifest.md)
 #### [Format der Metadaten- und Eigenschaftendatei des Import/Export-Diensts](storage-import-export-file-format-metadata-and-properties.md)
 #### [Format der Protokolldatei des Import/Export-Diensts](storage-import-export-file-format-log.md)
-### [Verwenden des Import/Export-Tools (Version&1;)](storage-import-export-tool-how-to-v1.md)
+### [Verwenden des Import/Export-Tools (Version 1)](storage-import-export-tool-how-to-v1.md)
 #### [Einrichten des Import/Export-Tools](storage-import-export-tool-setup-v1.md)
 #### [Vorbereiten von Festplatten für einen Importauftrag](storage-import-export-tool-preparing-hard-drives-import-v1.md)
 ##### [Festlegen von Eigenschaften und Metadaten im Rahmen des Importprozesses](storage-import-export-tool-setting-properties-metadata-import-v1.md)
@@ -201,6 +201,7 @@
 ## Azure-Speicher-Explorer
 ### [Speicher-Explorer (Vorschau)](../vs-azure-tools-storage-manage-with-storage-explorer.md)
 ### [Verwalten von Blobs mit Speicher-Explorer (Vorschau)](../vs-azure-tools-storage-explorer-blobs.md)
+### [Verwenden des Speicher-Explorers (Vorschau) mit Azure File Storage](../vs-azure-tools-storage-explorer-files.md)
 
 ## NuGet-Pakete
 ### [Azure Storage-Clientbibliothek für .NET](https://www.nuget.org/packages/WindowsAzure.Storage/)

@@ -15,8 +15,9 @@ ms.workload: identity
 ms.date: 02/09/2016
 ms.author: shoatman
 translationtype: Human Translation
-ms.sourcegitcommit: c579135f798ea0c2a5461fdd7c88244d2d6d78c6
-ms.openlocfilehash: ceb16b1431d689fb7d56c4dd588b50914357680a
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 65c8a2c020d5ef7ce47905927a248b9e73d2ed1b
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -131,7 +132,7 @@ Bei all dem muss auch gesagt werden, dass es nach wie vor möglich ist, zu verhi
 Holen Sie weitere Informationen zum Hinzufügen von Anwendungen in Azure AD und zum Konfigurieren von Diensten für Anwendungen ein.
 
 * Entwickler: [Informieren Sie sich, wie Sie eine Anwendung in AAD integrieren](https://msdn.microsoft.com/library/azure/dn151122.aspx)
-* Entwickler: [Sehen Sie sich Beispielcode für Anwendungen an, die in Github in Azure Active Directory integriert sind](https://github.com/AzureADSamples)
+* Entwickler: [Sehen Sie sich in GitHub Beispielcode für Apps an, die in Azure Active Directory integriert sind](https://github.com/AzureADSamples).
 * Entwickler und IT-Experten: [Lesen Sie die Dokumentation zur Azure Active Directory Graph-REST-API](https://msdn.microsoft.com/library/azure/hh974478.aspx)
 * IT-Experten: [Informieren Sie sich über die Verwendung der bereits in Azure Active Directory integrierten Anwendungen aus dem Anwendungskatalog](https://msdn.microsoft.com/library/azure/dn308590.aspx)
 * IT-Experten: [Üben Sie sich in den Lernprogrammen zur Konfiguration bestimmter bereits integrierter Anwendungen](https://msdn.microsoft.com/library/azure/dn893637.aspx)
@@ -143,9 +144,4 @@ Holen Sie weitere Informationen zum Hinzufügen von Anwendungen in Azure AD und 
 <!--Image references-->
 [apps_service_principals_directory]:../media/active-directory-how-applications-are-added/HowAppsAreAddedToAAD.jpg
 [app_settings]:../media/active-directory-how-applications-are-added/IntegratedAppSettings.jpg
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

@@ -13,17 +13,17 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2017
+ms.date: 03/24/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: e1331276cda20d235341171852dffeb4a9cb8bb2
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 2673c95d2e312d427454585d46ac790cb126fea6
+ms.lasthandoff: 03/27/2017
 
 
 ---
 # <a name="how-to-reset-the-remote-desktop-service-or-its-login-password-in-a-windows-vm"></a>Zurücksetzen des Remotedesktopdiensts oder seines Anmeldekennworts in einer Windows-VM
-Wenn Sie keine Verbindung mit einem virtuellen Windows-Computer herstellen können, können Sie das lokale Administratorkennwort oder die Konfiguration des Remotedesktopdiensts zurücksetzen. Das Kennwort kann entweder über das Azure-Portal oder über die VM-Zugriffserweiterung in Azure PowerShell zurückgesetzt werden. Wenn Sie PowerShell verwenden, stellen Sie sicher, dass das [neueste PowerShell-Modul installiert und konfiguriert](/powershell/azureps-cmdlets-docs) ist und Sie bei Ihrem Azure-Abonnement angemeldet sind. Sie können diese Schritte auch für virtuelle Computer durchführen, die mit dem [klassischen Bereitstellungsmodell](virtual-machines-windows-classic-reset-rdp.md) erstellt wurden.
+Wenn Sie keine Verbindung mit einem virtuellen Windows-Computer herstellen können, können Sie das lokale Administratorkennwort oder die Konfiguration des Remotedesktopdiensts zurücksetzen. Das Kennwort kann entweder über das Azure-Portal oder über die VM-Zugriffserweiterung in Azure PowerShell zurückgesetzt werden. Wenn Sie PowerShell verwenden, stellen Sie sicher, dass das [neueste PowerShell-Modul installiert und konfiguriert](/powershell/azureps-cmdlets-docs) ist und Sie bei Ihrem Azure-Abonnement angemeldet sind. Sie können diese Schritte auch für virtuelle Computer durchführen, die mit dem [klassischen Bereitstellungsmodell](windows/classic/reset-rdp.md) erstellt wurden.
 
 ## <a name="ways-to-reset-configuration-or-credentials"></a>Methoden zum Zurücksetzen der Konfiguration oder der Anmeldeinformationen
 Sie können Remotedesktopdienste und -Anmeldeinformationen auf verschiedene Weise zurücksetzen, je nach Ihren Anforderungen:
@@ -44,9 +44,15 @@ Wählen Sie Ihren virtuellen Windows-Computer aus, und klicken Sie dann auf **Su
 
 Geben Sie den Benutzernamen und ein neues Kennwort ein, und klicken Sie anschließend auf **Aktualisieren**. Versuchen Sie erneut, eine Verbindung mit Ihrem virtuellen Computer herzustellen.
 
+> [!NOTE] 
+> - Nachdem Sie das Kennwort geändert haben und der Vorgang im Portal abgeschlossen wurde, kann es 3 bis 5 Minuten dauern, bis diese Änderung auf dem virtuellen Computer wirksam wird. Wenn die Änderung dann jedoch nicht wirksam wird, starten Sie den virtuellen Computer neu.
+> - Die VMAccess-Erweiterung funktioniert nur mit dem integrierten lokalen Administratorkonto und wirkt sich auf keine andere lokale ID oder Domänen-ID aus.
+> - Wenn der Zielcomputer ein Domänencontroller ist, wird die Erweiterung zurückgesetzt oder das Domänenadministratorkonto umbenannt.
+
+
 ### <a name="reset-the-remote-desktop-service-configuration"></a>**Zurücksetzen der Konfiguration des Remotedesktopdiensts**
 
-Wählen Sie Ihren virtuellen Windows-Computer aus, und klicken Sie dann auf **Support und Problembehandlung** > **Zurücksetzen des Kennworts**. Das Blatt zum Zurücksetzen des Kennworts wird angezeigt. 
+Wählen Sie Ihren virtuellen Windows-Computer aus, und klicken Sie dann auf **Support und Problembehandlung** > **Zurücksetzen des Kennworts**. Das Blatt zum Zurücksetzen des Kennworts wird wie folgt angezeigt:
 
 ![Zurücksetzen der RDP-Konfiguration](./media/virtual-machines-windows-reset-rdp/Portal-RM-RDP-Reset.png)
 

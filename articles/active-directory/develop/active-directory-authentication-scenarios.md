@@ -15,8 +15,9 @@ ms.workload: identity
 ms.date: 01/07/2017
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: f67e96618ea25e4463a4fdf83ea20f238498fac0
-ms.openlocfilehash: 838a19ef05adad59e0317fb62e2acec8a40d7a64
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 97c6724261e35063c461ee95ccad36372dd907db
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -171,7 +172,7 @@ Sehen Sie sich die Codebeispiele für Szenarien vom Typ „Single-Page-Anwendung
 * Einzelinstanzanwendung: Wenn Sie eine Anwendung nur für Ihre Organisation erstellen, muss diese über das Azure-Portal im Verzeichnis Ihres Unternehmens registriert werden.
 * Mehrinstanzenfähige Anwendung: Wenn Sie eine Anwendung erstellen, die von Benutzern außerhalb Ihrer Organisation verwendet werden kann, muss diese ebenfalls im Verzeichnis Ihres Unternehmens registriert werden. Darüber hinaus muss sie aber auch im Verzeichnis jeder anderen Organisation registriert werden, von der die Anwendung verwendet wird. Um Ihre Anwendung in deren Verzeichnis verfügbar zu machen, können Sie einen Registrierungsprozess für Ihre Kunden einschließen, über den sie Ihrer Anwendung zustimmen können. Bei der Registrierung für Ihre Anwendung erscheint ein Dialogfeld mit den erforderlichen Berechtigungen für die Anwendung sowie mit einer Zustimmungsoption. Je nachdem, welche Berechtigungen erforderlich sind, wird unter Umständen die Zustimmung eines Administrators aus der anderen Organisation benötigt. Wenn der Benutzer oder Administrator seine Zustimmung gibt, wird die Anwendung in dessen Verzeichnis registriert. Weitere Informationen finden Sie unter [Integrieren von Anwendungen in Azure Active Directory](active-directory-integrating-applications.md).
 
-Wenn die Anwendung registriert wurde, muss sie für die Verwendung des impliziten OAuth 2.0-Gewährungsprotokolls konfiguriert werden. Dieses Protokoll ist für Anwendungen standardmäßig deaktiviert. Um das implizite OAuth&2;.0-Gewährungsprotokoll für die Anwendung zu aktivieren, müssen Sie das Anwendungsmanifest aus dem Azure-Portal bearbeiten und den Wert „oauth2AllowImplicitFlow“ auf „true“ festlegen. Ausführlichere Anweisungen finden Sie unter [Aktivieren der impliziten OAuth 2.0-Gewährung für Single-Page-Anwendungen](active-directory-integrating-applications.md).
+Wenn die Anwendung registriert wurde, muss sie für die Verwendung des impliziten OAuth 2.0-Gewährungsprotokolls konfiguriert werden. Dieses Protokoll ist für Anwendungen standardmäßig deaktiviert. Um das implizite OAuth 2.0-Gewährungsprotokoll für die Anwendung zu aktivieren, müssen Sie das Anwendungsmanifest aus dem Azure-Portal bearbeiten und den Wert „oauth2AllowImplicitFlow“ auf „true“ festlegen. Ausführlichere Anweisungen finden Sie unter [Aktivieren der impliziten OAuth 2.0-Gewährung für Single-Page-Anwendungen](active-directory-integrating-applications.md).
 
 #### <a name="token-expiration"></a>Tokenablauf
 Wenn Sie ADAL.js verwenden, um die Authentifizierung mit Azure AD zu verwalten, stehen Ihnen mehrere Features zur Verfügung, die das Aktualisieren abgelaufener Token sowie das Abrufen von Token für zusätzliche Web-API-Ressourcen erleichtern, die unter Umständen von der Anwendung aufgerufen werden. Wenn sich der Benutzer erfolgreich mit Azure AD authentifiziert, wird für den Benutzer eine durch ein Cookie gesicherte Sitzung zwischen Browser und Azure AD erstellt. Wichtig: Die Sitzung besteht zwischen dem Benutzer und Azure AD, nicht zwischen dem Benutzer und der auf dem Server ausgeführten Webanwendung. Wenn ein Token abläuft, ruft ADAL.js unter Verwendung dieser Sitzung automatisch ein weiteres Token ab. Die entsprechende Anforderung wird über ein verborgenes iFrame und unter Verwendung des impliziten OAuth-Gewährungsprotokolls gesendet und empfangen. Mit dem gleichen Mechanismus kann ADAL.js von Azure AD automatisch Zugriffstoken für andere Web-API-Ressourcen abrufen, die von der Anwendung aufgerufen werden. Dafür müssen die Ressourcen CORS (Cross-Origin Resource Sharing) unterstützen, im Verzeichnis des Benutzers registriert sein und bei der Anmeldung die erforderlichen Zustimmungen des Benutzers erhalten haben.
@@ -294,10 +295,5 @@ Wenn die erste Anwendung mithilfe ihres Autorisierungscodes ein JWT-Zugriffstoke
 [Wichtige Informationen zum Signaturschlüsselrollover in Azure AD](active-directory-signing-key-rollover.md)
 
 [OAuth 2.0 in Azure AD](https://msdn.microsoft.com/library/azure/dn645545.aspx)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

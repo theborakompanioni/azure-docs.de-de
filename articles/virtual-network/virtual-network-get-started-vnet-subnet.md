@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
-ms.openlocfilehash: 81c9313635f382252550a4c0dcc7a707e9f365fb
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: c731099cb91512f3bf0ecc2ffa5258788c90cd1b
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -101,7 +101,7 @@ Führen Sie die folgenden Schritte aus, um den virtuellen Webservercomputer zu e
     |**Ressourcengruppe**|**Vorhandene verwenden:** Wählen Sie *MyRG* aus.|Wir verwenden zwar die gleiche Ressourcengruppe wie für das VNet, die Ressourcen müssen sich jedoch nicht in der gleichen Ressourcengruppe befinden.|
     |**Standort**|*USA, Westen*|Hierbei muss es sich um den Standort handeln, den Sie in Schritt 5 des Abschnitts [Erstellen eines virtuellen Netzwerks mit zwei Subnetzen](#create-vnet) in diesem Artikel angegeben haben. Virtuelle Computer und die VNets, mit denen sie eine Verbindung herstellen, müssen sich am gleichen Standort befinden.|
 
-4. Klicken Sie auf dem Blatt **Größe auswählen** auf *DS1_V2 Standard* und anschließend auf **Auswählen**. Eine Liste mit allen von Azure unterstützten Größen für virtuelle Windows-Computer finden Sie im Artikel [Größen für virtuelle Windows-Computer in Azure](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+4. Klicken Sie auf dem Blatt **Größe auswählen** auf *DS1_V2 Standard* und anschließend auf **Auswählen**. Eine Liste mit allen von Azure unterstützten Größen für virtuelle Windows-Computer finden Sie im Artikel [Größen für virtuelle Windows-Computer in Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 5. Geben Sie auf dem Blatt **Einstellungen** die folgenden Werte ein (oder wählen Sie sie aus), und klicken Sie anschließend auf **OK**:
 
     |**Einstellung**|**Wert**|**Details**|
@@ -111,7 +111,7 @@ Führen Sie die folgenden Schritte aus, um den virtuellen Webservercomputer zu e
     |**Subnetz**|Wählen Sie *Front-End* aus.|Sie können ein beliebiges Subnetz auswählen, es muss sich jedoch innerhalb des virtuellen Netzwerks befinden.|
     |**Öffentliche IP-Adresse**|Übernehmen Sie die Standardeinstellung.|Mit einer öffentlichen IP-Adresse können Sie über das Internet eine Verbindung mit dem virtuellen Computer herstellen. Weitere Informationen zu öffentlichen IP-Adressen finden Sie im [Artikel zu IP-Adressen](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses).|
     |**Netzwerksicherheitsgruppe (Firewall)**|Übernehmen Sie die Standardeinstellung.|Klicken Sie auf die vom Portal erstellte Standard-NSG **(new) MyWebServer-nsg**, um die Einstellungen anzuzeigen. Auf dem daraufhin geöffneten Blatt **Netzwerksicherheitsgruppe erstellen** sehen Sie, dass eine einzelne Regel für eingehenden Datenverkehr vorhanden ist, die Datenverkehr vom Typ „TCP/3389 (RDP)“ von einer beliebigen Quell-IP-Adresse zulässt.|
-    |**Alle anderen Werte**|Übernehmen Sie die Standardeinstellungen.|Weitere Informationen zu den restlichen Einstellungen finden Sie in der [Übersicht über virtuelle Windows-Computer in Azure](../virtual-machines/virtual-machines-windows-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).|
+    |**Alle anderen Werte**|Übernehmen Sie die Standardeinstellungen.|Weitere Informationen zu den restlichen Einstellungen finden Sie in der [Übersicht über virtuelle Windows-Computer in Azure](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).|
 
     Mithilfe von Netzwerksicherheitsgruppen (NSGs) können Sie Ein-/Ausgangsregeln für die Art von Netzwerkdatenverkehr erstellen, der an Ihre virtuellen Computer und von Ihren virtuellen Computern übermittelt werden kann. Standardmäßig wird jeglicher eingehende Datenverkehr für den virtuellen Computer abgelehnt. Für einen Produktionswebserver können zusätzliche Eingangsregeln für TCP/80 (HTTP) und TCP/443 (HTTPS) hinzugefügt werden. Für ausgehenden Datenverkehr ist keine Regel vorhanden, da ausgehender Datenverkehr standardmäßig zugelassen wird. Sie können Regeln zur Steuerung des Datenverkehrs gemäß Ihren Richtlinien hinzufügen/entfernen. Weitere Informationen finden Sie im Artikel [Netzwerksicherheitsgruppen](virtual-networks-nsg.md).
 
@@ -160,7 +160,7 @@ Sie haben zwar ein VNet und zwei virtuelle Computer erstellt, das Azure-Portal h
 
     ![Inhalt der Ressourcengruppe](./media/virtual-network-get-started-vnet-subnet/resource-group-contents.png)
 
-Weitere Informationen zu virtuellen Computern, Datenträgern und Speicherkonten finden Sie in den Artikeln [Übersicht über virtuelle Windows-Computer in Azure](../virtual-machines/virtual-machines-windows-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [Informationen zu Datenträgern und VHDs für Azure-Windows-VMs](../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und [Einführung in Microsoft Azure Storage](../storage/storage-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Sie sehen die beiden Standard-NSGs, die das Portal für Sie erstellt hat. Außerdem sehen Sie, dass das Portal zwei Netzwerkschnittstellen (NICs) als Ressourcen erstellt hat. Mithilfe einer Netzwerkschnittstelle kann ein virtueller Computer über das VNet eine Verbindung mit anderen Ressourcen herstellen. Weitere Informationen zu Netzwerkschnittstellen finden Sie im Artikel [Was sind Netzwerkschnittstellen?](virtual-network-network-interface.md). Das Portal hat auch eine öffentliche IP-Adressressource erstellt. Bei öffentlichen IP-Adressen handelt es sich um eine Einstellung für eine öffentliche IP-Adressressource. Weitere Informationen zu öffentlichen IP-Adressen finden Sie im [Artikel zu IP-Adressen](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses).
+Weitere Informationen zu virtuellen Computern, Datenträgern und Speicherkonten finden Sie in den Artikeln [Übersicht über virtuelle Windows-Computer in Azure](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [Informationen zu Datenträgern und VHDs für Azure-Windows-VMs](../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und [Einführung in Microsoft Azure Storage](../storage/storage-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Sie sehen die beiden Standard-NSGs, die das Portal für Sie erstellt hat. Außerdem sehen Sie, dass das Portal zwei Netzwerkschnittstellen (NICs) als Ressourcen erstellt hat. Mithilfe einer Netzwerkschnittstelle kann ein virtueller Computer über das VNet eine Verbindung mit anderen Ressourcen herstellen. Weitere Informationen zu Netzwerkschnittstellen finden Sie im Artikel [Was sind Netzwerkschnittstellen?](virtual-network-network-interface.md). Das Portal hat auch eine öffentliche IP-Adressressource erstellt. Bei öffentlichen IP-Adressen handelt es sich um eine Einstellung für eine öffentliche IP-Adressressource. Weitere Informationen zu öffentlichen IP-Adressen finden Sie im [Artikel zu IP-Adressen](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses).
 
 ## <a name="connect-to-from-vms"></a>Herstellen einer Verbindung mit den virtuellen Computern
 
@@ -252,5 +252,5 @@ In dieser Übung haben Sie ein VNet und zwei virtuelle Computer erstellt. Bei de
 - [Öffentliche IP-Adressen](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)
 - [Netzwerkschnittstellen](virtual-network-network-interface.md)
 - [Netzwerksicherheitsgruppen](virtual-networks-nsg.md)
-- [Virtuelle Computer](../virtual-machines/virtual-machines-windows-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [Virtuelle Computer](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 

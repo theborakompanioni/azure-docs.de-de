@@ -1,5 +1,5 @@
 ---
-title: Reparieren eines Azure-Exportauftrags | Microsoft Docs
+title: Reparieren eines Exportauftrags in Azure Import/Export (V1) | Microsoft-Dokumentation
 description: "Erfahren Sie, wie Sie einen Exportauftrag reparieren, der mithilfe des Azure Import/Export-Diensts erstellt und ausgeführt wurde."
 author: muralikk
 manager: syadav
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 74182c8c357085f186aaa43adfaef80a083d16bb
-ms.openlocfilehash: 7ae819a662230a7ca7da6f7bc5bbb3b3f940074e
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: cab61ee993306e830ae899ed639929b0ee7fba82
+ms.lasthandoff: 03/30/2017
 
 
 ---
 # <a name="repairing-an-export-job"></a>Reparieren eines Exportauftrags
-Nach Abschluss eines Exportauftrags können Sie das Microsoft Azure Import/Export-Tool lokal ausführen, um folgende Aufgaben zu erledigen:  
+Nach Abschluss eines Exportauftrags können Sie das Microsoft Azure Import/Export-Tool lokal ausführen, um folgende Vorgänge durchzuführen:  
   
 1.  Herunterladen von Dateien, die der Azure Import/Export-Dienst nicht exportiert konnte.  
   
@@ -30,7 +30,11 @@ Nach Abschluss eines Exportauftrags können Sie das Microsoft Azure Import/Expor
   
 Sie müssen über eine Verbindung mit Azure Storage verfügen, um diese Funktion zu verwenden.  
   
-Der Befehl zum Reparieren eines Exportauftrags lautet **RepairExport**. Folgende Parameter können festgelegt werden:  
+Der Befehl zum Reparieren eines Exportauftrags lautet **RepairExport**.
+
+## <a name="repairexport-parameters"></a>RepairExport-Parameter
+
+Die folgenden Parameter können mit **RepairExport** angegeben werden:  
   
 |Parameter|Beschreibung|  
 |---------------|-----------------|  
@@ -53,7 +57,7 @@ Exportfehler können folgende Ursachen haben:
   
 -   Der Speicherkontoschlüssel wurde während des Übertragungsprozesses geändert  
   
-Zum Ausführen des Tools im **RepairExport**-Modus müssen Sie das Laufwerk mit den exportierten Dateien zuerst mit Ihrem Computer verbinden. Anschließend führen Sie das Azure Import/Export-Tool aus, und geben den Pfad zu diesem Laufwerk mit dem Parameter `/d` an. Sie müssen auch den Pfad zur heruntergeladenen Kopierprotokolldatei des Laufwerks angeben. Das folgende Befehlszeilenbeispiel führt das Tool aus, um alle Dateien zu reparieren, die nicht exportiert werden konnten:  
+Zum Ausführen des Tools im **RepairExport**-Modus müssen Sie das Laufwerk mit den exportierten Dateien zuerst mit Ihrem Computer verbinden. Anschließend führen Sie das Azure Import/Export-Tool aus und geben den Pfad zu diesem Laufwerk mit dem Parameter `/d` an. Sie müssen auch den Pfad zur heruntergeladenen Kopierprotokolldatei des Laufwerks angeben. Das folgende Befehlszeilenbeispiel führt das Tool aus, um alle Dateien zu reparieren, die nicht exportiert werden konnten:  
   
 ```  
 WAImportExport.exe RepairExport /r:C:\WAImportExport\9WM35C3U.rep /d:G:\ /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\WAImportExport\9WM35C3U.log  
@@ -80,12 +84,12 @@ Das folgende Beispiel einer Kopierprotokolldatei zeigt, dass ein Block im Blob n
   
 Die Kopierprotokolldatei gibt an, dass während des Herunterladens eines der Blöcke des Blobs in die Datei auf dem Exportlaufwerk durch den Windows Azure Import/Export-Dienst ein Fehler aufgetreten ist. Die anderen Komponenten der Datei wurden erfolgreich heruntergeladen, und die Dateilänge wurde ordnungsgemäß festgelegt. In diesem Fall öffnet das Tool die Datei auf dem Laufwerk, lädt den Block aus dem Speicherkonto herunter und schreibt ihn in den Dateibereich ab Offset 65536 mit der Länge 65536.  
   
-## <a name="using-repairexport-to-validate-drive-contents"></a>Verwenden von RepairExport zum Überprüfen der Laufwerksinhalt  
+## <a name="using-repairexport-to-validate-drive-contents"></a>Verwenden von „RepairExport“ zum Überprüfen der Laufwerkinhalte  
 Sie können Azure Import/Export auch mit der **RepairExport**-Option verwenden, um zu überprüfen, ob der Inhalt auf dem Laufwerk richtig ist. Die Manifestdatei auf den einzelnen Exportlaufwerken enthält MD5s für den Inhalt des Laufwerks.  
   
 Der Azure Import/Export-Dienst kann die Manifestdateien auch während des Exportvorgangs in ein Speicherkonto speichern. Der Speicherort der Manifestdateien ist nach Abschluss des Auftrags über den [Get Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate)-Vorgang verfügbar. Weitere Informationen zum Format der Manifestdatei eines Laufwerks finden Sie unter [Format der Manifestdatei des Import/Export-Diensts](storage-import-export-file-format-metadata-and-properties.md).  
   
-Im folgende Beispiel wird gezeigt, wie Sie das Azure Import/Export-Tool mit den Parametern **/ManifestFile** und **/CopyLogFile** ausführen:  
+Im folgenden Beispiel wird gezeigt, wie Sie das Azure Import/Export-Tool mit den Parametern **/ManifestFile** und **/CopyLogFile** ausführen:  
   
 ```  
 WAImportExport.exe RepairExport /r:C:\WAImportExport\9WM35C3U.rep /d:G:\ /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\WAImportExport\9WM35C3U.log /ManifestFile:G:\9WM35C3U.manifest  
@@ -129,7 +133,8 @@ Es folgt ein Beispiel für eine Manifestdatei:
 ``` 
   
 Nach Abschluss des Reparaturvorgangs liest das Tool alle Dateien, auf die in der Manifestdatei verwiesen wird, und überprüft die Integrität der Datei mit den MD5-Hashes. Für das oben stehende Manifest werden die folgenden Komponenten durchlaufen.  
-  
+
+```  
 G:\pictures\city\redmond.jpg, offset 0, length 3584  
   
 G:\pictures\city\redmond.jpg, offset 3584, length 3584  
@@ -147,13 +152,15 @@ G:\pictures\wild\canyon.jpg, offset 5442, length 2721
 G:\pictures\wild\canyon.jpg, offset 8163, length 2721  
   
 G:\pictures\wild\canyon.jpg.properties  
-  
+```
+
 Alle Komponenten, die die Überprüfung nicht bestehen, werden vom Tool heruntergeladen und erneut in dieselbe Datei auf dem Laufwerk geschrieben.  
   
-## <a name="see-also"></a>Weitere Informationen  
-[Einrichten des Azure Import/Export-Tools](storage-import-export-tool-setup-v1.md)   
-[Vorbereiten von Festplatten für einen Importauftrag](storage-import-export-tool-preparing-hard-drives-import-v1.md)   
-[Überprüfen des Auftragsstatus mit Kopierprotokolldateien](storage-import-export-tool-reviewing-job-status-v1.md)   
-[Reparieren eines Importauftrags](storage-import-export-tool-repairing-an-import-job-v1.md)   
-[Behandeln von Problemen mit dem Azure Import/Export-Tool](storage-import-export-tool-troubleshooting-v1.md)
+## <a name="next-steps"></a>Nächste Schritte
+ 
+* [Einrichten des Azure Import/Export-Tools](storage-import-export-tool-setup-v1.md)   
+* [Vorbereiten von Festplatten für einen Importauftrag](storage-import-export-tool-preparing-hard-drives-import-v1.md)   
+* [Überprüfen des Auftragsstatus mit Protokollkopiedateien](storage-import-export-tool-reviewing-job-status-v1.md)   
+* [Reparieren eines Importauftrags](storage-import-export-tool-repairing-an-import-job-v1.md)   
+* [Behandeln von Problemen mit dem Azure Import/Export-Tool](storage-import-export-tool-troubleshooting-v1.md)
 

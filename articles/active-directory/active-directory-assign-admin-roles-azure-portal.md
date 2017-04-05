@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/07/2017
 ms.author: femila
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: faffd356191b7cca124f0a2cd147837078e4150f
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: e8d3eb7e336383eb639e55656b26d881e8c2adb0
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -32,31 +32,32 @@ Mithilfe von Azure Active Directory (Azure AD) können Sie verschiedene Administ
 
 Die folgenden Administratorrollen sind verfügbar:
 
-* **Rechnungsadministrator**: Erledigt Käufe, verwaltet Abonnements, verwaltet Supporttickets und überwacht die Dienstintegrität.
+* **Rechnungsadministrator**: Tätigt Käufe, verwaltet Abonnements und Supporttickets und überwacht die Dienstintegrität.
 
-* **Globaler Administrator/Unternehmensadministrator**: Hat Zugriff auf alle administrativen Funktionen. Die Person, die die Anmeldung für das Azure-Konto vornimmt, wird ein globaler Administrator. Nur globale Administratoren können weitere Administratorrollen zuweisen. In Ihrem Unternehmen können mehrere globale Administratoren vorhanden sein. Globale Administratoren können das Kennwort für alle Benutzer und alle anderen Administratoren zurücksetzen. Um ihr eigenes Kennwort zurückzusetzen, müssen sie den Dienst zum Zurücksetzen des Kennworts (passwordreset.microsoftonline.com) verwenden oder einen anderen globalen Administrator bitten, ihr Kennwort für sie zurückzusetzen.
+* **Complianceadministrator**: Benutzer mit dieser Rolle verfügen über Verwaltungsberechtigungen innerhalb von Office 365 Security & Compliance Center und Exchange Admin Center. Weitere Informationen finden Sie unter [Informationen zu Administratorrollen von Office 365](https://microsoft.sharepoint.com/teams/adiamteam/_layouts/15/WopiFrame.aspx?sourcedoc={dae8d6f3-5990-46a2-b12b-4c0e561bc7cc}&action=view&wdAccPdf=1).
+
+* **CRM-Dienstadministrator:** Benutzer mit dieser Rolle verfügen über globale Berechtigungen in Microsoft CRM Online, wenn der Dienst vorhanden ist, sowie die Möglichkeit, Supporttickets zu verwalten und die Dienstintegrität zu überwachen. Weitere Informationen finden Sie unter [Informationen zu Administratorrollen von Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
+
+* **Geräteadministratoren**: Benutzer mit dieser Rolle werden zu lokalen Geräteadministratoren für alle Windows 10-Geräte, die mit Azure Active Directory verknüpft werden. Sie haben nicht die Möglichkeit zum Verwalten von Geräteobjekten in Azure Active Directory.
+
+* **Verzeichnis lesen**: Dies ist eine Legacyrolle, die Anwendungen ohne Unterstützung für das [Consent Framework](active-directory-integrating-applications.md) zugewiesen wird. Diese Rolle sollte keinem Benutzer zugewiesen werden.
+
+* **Konten für die Verzeichnissynchronisierung**: Verwenden Sie diese Rolle nicht. Diese Rolle wird automatisch dem Azure AD Connect-Dienst zugewiesen und ist weder für eine andere Verwendung vorgesehen, noch wird eine andere Verwendung unterstützt.
+
+* **Verzeichnis schreiben**: Dies ist eine Legacyrolle, die Anwendungen ohne Unterstützung für das [Consent Framework](active-directory-integrating-applications.md) zugewiesen wird. Diese Rolle sollte keinem Benutzer zugewiesen werden.
+
+* **Exchange-Dienstadministrator**: Benutzer mit dieser Rolle verfügen über globale Berechtigungen in Microsoft Exchange Online, wenn der Dienst vorhanden ist. Weitere Informationen finden Sie unter [Informationen zu Administratorrollen von Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
+
+* **Globaler Administrator/Unternehmensadministrator**: Benutzer mit dieser Rolle haben Zugriff auf alle Verwaltungsfeatures in Azure Active Directory sowie Dienste, die einen Verbund mit Azure Active Directory bilden, z.B. Exchange Online, SharePoint Online und Skype for Business Online. Die Person, die die Anmeldung für den Azure Active Directory-Mandanten vornimmt, wird ein globaler Administrator. Nur globale Administratoren können weitere Administratorrollen zuweisen. In Ihrem Unternehmen können mehrere globale Administratoren vorhanden sein. Globale Administratoren können das Kennwort für alle Benutzer und alle anderen Administratoren zurücksetzen.
 
   > [!NOTE]
   > In der Microsoft Graph-API, der Azure AD Graph-API und in Azure AD PowerShell wird diese Rolle als „Unternehmensadministrator“ identifiziert. Im [Azure-Portal](https://portal.azure.com)ist dies der „globale Administrator“.
   >
   >
 
-* **Complianceadministrator**: Benutzer mit dieser Rolle verfügen über Verwaltungsberechtigungen innerhalb des Office 365 Security & Compliance Center und Exchange Admin Center sowie über Lesezugriff auf Überwachungsprotokolle im Office 365 Admin Center. Weitere Informationen finden Sie unter [Informationen zu Administratorrollen von Office 365](https://microsoft.sharepoint.com/teams/adiamteam/_layouts/15/WopiFrame.aspx?sourcedoc={dae8d6f3-5990-46a2-b12b-4c0e561bc7cc}&action=view&wdAccPdf=1).
+* **Gasteinladender**: Benutzer mit dieser Rolle können Einladungen für Azure Active Directory B2B-Gastbenutzer verwalten, wenn die Benutzereinstellung „Mitglieder können einladen“ auf „Nein“ gesetzt ist. Weitere Informationen zur B2B-Zusammenarbeit finden Sie unter [Informationen zur Vorschau der Azure AD B2B-Zusammenarbeit](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b). Es sind keine anderen Berechtigungen eingeschlossen.
 
-* **CRM-Dienstadministrator:** Benutzer mit dieser Rolle haben globale Berechtigungen in Microsoft CRM Online, wenn der Dienst vorhanden ist. Weitere Informationen finden Sie unter [Informationen zu Administratorrollen von Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
-
-* **Genehmigende Person für den LockBox-Kundenzugriff**: Wenn der LockBox-Dienst aktiviert ist, können Benutzer mit dieser Rolle Anforderungen von Microsoft-Technikern zum Zugriff auf Unternehmensinformationen genehmigen. Weitere Informationen finden Sie unter [Informationen zu Administratorrollen von Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
-
-* **Geräteadministratoren:** Benutzer mit dieser Rolle werden zu Administratoren für alle Windows 10-Geräte, die mit Azure Active Directory verknüpft werden.
-
-* **Verzeichnis lesen**: Dies ist eine Legacyrolle, die Anwendungen ohne Unterstützung für das [Consent Framework](active-directory-integrating-applications.md)zugewiesen wird. Diese Rolle sollte keinem Benutzer zugewiesen werden.
-
-* **Konten für die Verzeichnissynchronisierung**: Verwenden Sie diese Rolle nicht. Diese Rolle wird automatisch dem Azure AD Connect-Dienst zugewiesen und ist weder für eine andere Verwendung vorgesehen, noch wird eine andere Verwendung unterstützt.
-* **Verzeichnis schreiben**: Dies ist eine Legacyrolle, die Anwendungen ohne Unterstützung für das [Consent Framework](active-directory-integrating-applications.md)zugewiesen wird. Diese Rolle sollte keinem Benutzer zugewiesen werden.
-
-* **Exchange-Dienstadministrator**: Benutzer mit dieser Rolle haben globale Berechtigungen in Microsoft Exchange Online, wenn der Dienst vorhanden ist. Weitere Informationen finden Sie unter [Informationen zu Administratorrollen von Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
-
-* **Intune-Dienstadministrator**: Benutzer mit dieser Rolle haben globale Berechtigungen in Microsoft Intune Online, wenn der Dienst vorhanden ist. Weitere Informationen finden Sie unter [Informationen zu Administratorrollen von Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
+* **Intune-Dienstadministrator**: Benutzer mit dieser Rolle verfügen über globale Berechtigungen in Microsoft Intune Online, wenn der Dienst vorhanden ist. Darüber hinaus beinhaltet diese Rolle die Möglichkeit, Benutzer und Geräte zum Zuordnen von Richtlinien zu verwalten sowie Gruppen zu erstellen und zu verwalten.
 
 * **Postfachadministrator:** Diese Rolle wird nur im Rahmen der Exchange Online-E-Mail-Unterstützung für RIM Blackberry-Geräte verwendet. Verwenden Sie diese Rolle nicht, wenn Ihre Organisation keine Exchange Online-E-Mails auf RIM Blackberry-Geräten verwendet.
 
@@ -64,43 +65,35 @@ Die folgenden Administratorrollen sind verfügbar:
 
 * **Partner Tier 2 Support** (Partnerunterstützung auf Ebene 2): Nicht verwenden. Diese Rolle wurde als veraltet markiert und wird aus Azure AD entfernt. Diese Rolle ist für einige wenige Wiederverkaufspartner von Microsoft und nicht zur allgemeinen Verwendung vorgesehen.
 
-* **Gäste Einladender:** Benutzer in dieser Rolle können Gasteinladungen verwalten. Es sind keine anderen Berechtigungen eingeschlossen.
-
-* **Kennwortadministrator/Helpdeskadministrator**: setzt Kennwörter zurück, verwaltet Dienstanforderungen und überwacht die Integrität des Diensts. Kennwortadministratoren können Kennwörter nur für Benutzer und andere Kennwortadministratoren zurücksetzen.
+* **Kennwortadministrator/Helpdeskadministrator**: Benutzer mit dieser Rolle können Kennwörter zurücksetzen, Dienstanforderungen verwalten und die Integrität des Diensts überwachen. Kennwortadministratoren können Kennwörter nur für Benutzer und andere Kennwortadministratoren zurücksetzen.
 
   > [!NOTE]
-  > In der Microsoft Graph-API, der Azure AD Graph-API und Azure AD PowerShell wird diese Rolle als „Helpdeskadministrator“ identifiziert.
+  > In der Microsoft Graph-API, der Azure AD Graph-API und Azure AD PowerShell wird diese Rolle als „Helpdeskadministrator“ identifiziert. Im [Azure-Portal](https://portal.azure.com/) lautet diese „Kennwortadministrator“.
   >
   >
-* **SharePoint-Dienstadministrator**: Benutzer mit dieser Rolle haben globale Berechtigungen in Microsoft SharePoint Online, wenn der Dienst vorhanden ist. Weitere Informationen finden Sie unter [Informationen zu Administratorrollen von Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
+  
+* **Power BI-Dienstadministrator**: Benutzer mit dieser Rolle verfügen über globale Berechtigungen in Microsoft Power BI, wenn der Dienst vorhanden ist, sowie die Möglichkeit, Supporttickets zu verwalten und die Dienstintegrität zu überwachen. Weitere Informationen finden Sie unter [Informationen zu Administratorrollen von Office 365](https://support.office.com/en-us/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d?ui=en-US&rs=en-001&ad=US).
 
-- **Skype for Business-Dienstadministrator**: Benutzer mit dieser Rolle haben globale Berechtigungen in Microsoft Skype for Business, wenn der Dienst vorhanden ist. Weitere Informationen finden Sie unter „Informationen zu Administratorrollen von Office 365“. Diese Rolle wurde bisher als Lync-Dienstadministrator bezeichnet.
+* **Administrator für privilegierte Rollen**: Benutzer mit dieser Rolle können Rollenzuweisungen in Azure Active Directory und in Azure AD Privileged Identity Management vornehmen. Überdies ermöglicht diese Rolle die vollumfängliche Verwaltung von Privileged Identity Management.
 
-- **Sicherheitsadministrator:** alle Leseberechtigungen der Rolle „Sicherheit lesen“ und außerdem eine Reihe von zusätzlichen administrativen Berechtigungen für die gleichen Dienste: Identity Protection Center, Privileged Identity Management, Monitor Office 365 Service Health und Office 365 Security & Compliance Center.
+* **Sicherheitsadministrator**: Benutzer mit dieser Rolle verfügen über alle Leseberechtigungen der Rolle „Sicherheit lesen“ sowie die Möglichkeit, die Konfiguration für sicherheitsrelevante Dienste zu verwalten (z.B. Azure Active Directory Identity Protection, Privileged Identity Management und Office 365 Security & Compliance Center). Weitere Informationen zu Office 365-Berechtigungen finden Sie unter [Berechtigungen im Office 365 Security & Compliance Center](https://support.office.com/en-us/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
 
-- **Benutzer mit Leseberechtigung für Sicherheitsfunktionen:** Zugriff mit Leseberechtigung auf eine Reihe von Sicherheitsfeatures von Identity Protection Center, Privileged Identity Management, Überwachungsprotokolle, Monitor Office 365 Service Health und Office 365 Security & Compliance Center.
+* **Sicherheit lesen**: Benutzer mit dieser Rolle verfügen über einen globalen schreibgeschützten Zugriff, einschließlich aller Informationen in Azure Active Directory, Identity Protection, Privileged Identity Management, sowie die Möglichkeit, Azure Active Directory-Anmeldeberichte und Überwachungsprotokolle zu lesen. Die Rolle gewährt außerdem Leseberechtigung im Office 365 Security & Compliance Center. Weitere Informationen zu Office 365-Berechtigungen finden Sie unter [Berechtigungen im Office 365 Security & Compliance Center](https://support.office.com/en-us/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
 
-* **Dienstadministrator**: verwaltet Dienstanforderungen und überwacht die Integrität des Dienstes. Verfügt über alle Leseberechtigungen der Rolle „Benutzer mit Leseberechtigung für Sicherheitsfunktionen“ (kann z.B. auch Überwachungsprotokolle lesen).
+* **Dienstunterstützungsadministrator**: Benutzer mit dieser Rolle können bei Microsoft Supportanfragen für Azure- und Office 365-Dienste öffnen sowie das Service-Dashboard und das Nachrichtencenter im Azure-Portal und im Office 365-Verwaltungsportal einsehen. Weitere Informationen finden Sie unter [Informationen zu Administratorrollen von Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
+
+* **SharePoint-Dienstadministrator**: Benutzer mit dieser Rolle verfügen über globale Berechtigungen in Microsoft SharePoint Online, wenn der Dienst vorhanden ist, sowie die Möglichkeit, Supporttickets zu verwalten und die Dienstintegrität zu überwachen. Weitere Informationen finden Sie unter [Informationen zu Administratorrollen von Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
+
+* **Skype for Business-/Lync-Dienstadministrator**: Benutzer mit dieser Rolle verfügen über globale Berechtigungen in Microsoft Skype for Business, wenn der Dienst vorhanden ist, sowie die Berechtigung zur Verwaltung von Skype-spezifischen Benutzerattributen in Azure Active Directory. Darüber hinaus bietet diese Rolle die Möglichkeit, Supporttickets zu verwalten und die Dienstintegrität zu überwachen. Weitere Informationen finden Sie unter [Informationen zu Administratorrollen von Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
   > [!NOTE]
-  > Um einem Benutzer die Dienstadministratorrolle zuzuweisen, muss der globale Administrator zunächst dem Benutzer Administratorberechtigungen im Dienst (z. B. Exchange Online) zuweisen, und anschließend die Dienstadministratorrolle im klassischen Azure-Portal.
+  > In der Microsoft Graph-API, der Azure AD Graph-API und in Azure AD PowerShell wird diese Rolle als „Lync-Dienstadministrator“ identifiziert. Im [Azure-Portal](https://portal.azure.com/) lautet diese „Skype for Business-Dienstadministrator“.
   >
   >
-* **Benutzerkontenadministrator:** setzt Kennwörter zurück, überwacht die Dienstintegrität und verwaltet Benutzerkonten, Benutzergruppen und Dienstanforderungen. Für die Berechtigungen eines Benutzerverwaltungsadministrators gelten einige Einschränkungen. Sie können z. B. keinen globalen Administrator löschen oder andere Administratoren erstellen. Sie können Kennwörter für Benutzer, andere Kennwortadministratoren und andere Benutzerverwalter zurücksetzen, aber keine Kennwörter für Abrechnungs-, globale und Dienstadministratoren.
+
+* **Benutzerkontoadministrator**: Benutzer mit dieser Rolle können sämtliche Benutzer und Gruppen erstellen und verwalten. Darüber hinaus beinhaltet diese Rolle die Möglichkeit, Supporttickets zu verwalten und die Dienstintegrität zu überwachen. Es gelten einige Einschränkungen. Beispielsweise lässt diese Rolle nicht das Löschen eines globalen Administrators zu. Auch die Änderung von Kennwörtern für globale oder andere privilegierte Administratoren ist nicht möglich, wohingegen dies für andere Benutzer, die keine Administratoren sind, möglich ist.
 
 ## <a name="administrator-permissions"></a>Administratorberechtigungen
-
-### <a name="application-administrator"></a>Anwendungsadministrator
-| Möglich | Nicht möglich |
-| --- | --- |
-| <p>Erstellen von Anwendungen </p><p>Verwalten im Besitz befindlicher Anwendungen </p>|<p>Zurücksetzen von Benutzerkennwörtern </p><p>Erstellen und Verwalten von Benutzeransichten</p><p>Erstellen, Bearbeiten und Löschen von Benutzern und Gruppen und Verwalten von Benutzerlizenzen</p><p>Verwalten von Domänen</p><p>Verwalten von Unternehmensinformationen </p><p>Delegieren von Administratorrollen an andere Benutzer</p><p>Verwenden der Verzeichnissynchronisierung</p><p>Anzeigen von Überwachungsprotokollberichten</p>|
-
-###<a name="application-developer"></a>Anwendungsentwickler
-
-| Möglich | Nicht möglich |
-| --- | --- |
-|<p>Anzeigen von Verzeichnisinformationen </p><p>Erstellen und Verwalten aller Anwendungen </p><p>Zuweisen von Lizenzen und Zugriff auf Anwendungen </p><p>Verwalten von Office-Supporttickets und Überwachen der Dienstintegrität</p><p>Durchführen von Abrechnungs- und Kaufvorgängen für Office-Produkte</p><p>Anzeigen von Überwachungsprotokollberichten</p>|<p>Zurücksetzen von Benutzerkennwörtern </p><p>Erstellen und Verwalten von Benutzeransichten </p><p>Erstellen, Bearbeiten und Löschen von Benutzern und Gruppen</p><p>Verwalten von Domänen </p><p>Verwalten von Unternehmensinformationen</p><p>Delegieren von Administratorrollen an andere Benutzer </p><p>Verwenden der Verzeichnissynchronisierung</p>|
-
 
 ### <a name="billing-administrator"></a>Rechnungsadministrator
 

@@ -8,6 +8,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: dd14aed9-ec25-4bb3-a20c-e29562735a7d
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,8 +16,9 @@ ms.workload: big-data
 ms.date: 01/17/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b65e9e6b196965a7df1e4979219117fb87cedbd7
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 693e3aebad339b1a9b5e0afbe7770197ea70dcf6
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -40,9 +42,9 @@ Alle Knoten eines HDInsight-Clusters befinden sich in einem Azure Virtual Networ
 
 | Dienst | Port | Protocol | Beschreibung |
 | --- | --- | --- | --- | --- |
-| sshd |22 |SSH |Stellt eine Verbindung zwischen Clients und SSHD auf dem primären Hauptknoten her. Siehe [Verwenden von SSH mit Linux-basiertem HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md) |
-| sshd |22 |SSH |Verbindet Clients mit sshd auf dem Edgeknoten (nur HDInsight Premium). Siehe [Erste Schritte mit R Server in HDInsight](hdinsight-hadoop-r-server-get-started.md) |
-| sshd |23 |SSH |Stellt eine Verbindung zwischen Clients und SSHD auf dem sekundären Hauptknoten her. Siehe [Verwenden von SSH mit Linux-basiertem HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md) |
+| sshd |22 |SSH |Stellt eine Verbindung zwischen Clients und SSHD auf dem primären Hauptknoten her. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md). |
+| sshd |22 |SSH |Verbindet Clients mit sshd auf dem Edgeknoten. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md). |
+| sshd |23 |SSH |Stellt eine Verbindung zwischen Clients und SSHD auf dem sekundären Hauptknoten her. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md). |
 | Ambari |443 |HTTPS |Ambari-Webbenutzeroberfläche. Siehe [Verwalten von HDInsight mithilfe der Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md) |
 | Ambari |443 |HTTPS |Ambari-REST-API. Siehe [Verwalten von HDInsight mithilfe der Ambari-REST-API](hdinsight-hadoop-manage-ambari-rest-api.md) |
 | WebHCat |443 |HTTPS |HCatalog-REST-API. Siehe [Verwenden von Hive mit Curl](hdinsight-hadoop-use-pig-curl.md), [Verwenden von Pig mit Curl](hdinsight-hadoop-use-pig-curl.md), [Verwenden von MapReduce mit Curl](hdinsight-hadoop-use-mapreduce-curl.md). |
@@ -138,10 +140,5 @@ Alle Dienste, die im Internet öffentlich verfügbar gemacht werden, müssen aut
 | --- | --- | --- | --- | --- |
 | Broker |Workerknoten |9092 |[Kafka Wire Protocol](http://kafka.apache.org/protocol.html) |Für die Clientkommunikation |
 | &nbsp; |Zookeeper-Knoten |2181 |&nbsp; |Port, der von Clients für die Verbindungsherstellung mit ZooKeeper verwendet wird |
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

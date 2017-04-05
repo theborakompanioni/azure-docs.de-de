@@ -45,6 +45,8 @@
 ## [Authentifizierungsprotokolle](active-directory-b2c-reference-protocols.md)
 ## [Token](active-directory-b2c-reference-tokens.md)
 
+## [Verwaltung von Bedrohungen](active-directory-b2c-reference-threat-management.md)
+
 # Verwandte Themen
 ## [Azure Active Directory](../active-directory/active-directory-whatis.md)
 ## [Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)
@@ -55,7 +57,3 @@
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c) 
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=active-directory-b2c)
 ## [Unterstützung](active-directory-b2c-support.md)
-
-<!--HONumber=Nov16_HO4-->
-
-

@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/27/2017
+ms.date: 3/09/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2924309737f2bc631e4e4f764bc7e8473353e865
-ms.openlocfilehash: 567917ee7c602a9971cf74367a1f6fcb96002e56
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 7bc96e6a711c70f9c5fa5daa4e059d9d7c04a134
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -26,9 +26,9 @@ In diesem Tutorial wird erläutert, wie einmaliges Anmelden für Azure Active Di
 Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 * Ein gültiges Azure-Abonnement
-* Ein ThousandEyes-Abonnement, für das einmaliges Anmelden aktiviert ist
+* Ein ThousandEyes-Abonnement, für das einmaliges Anmelden (SSO) aktiviert ist
 
-Nach Abschluss dieses Tutorials können sich die AAD-Benutzer, denen Sie den Zugriff auf ThousandEyes zugewiesen haben, mittels einmaliger Anmeldung auf der ThousandEyes-Unternehmenswebsite bei der Anwendung anmelden (durch den Dienstanbieter initiierte Anmeldung). Alternativ können sie den Zugriffsbereich nutzen (siehe „Einführung in den AAD-Zugriffsbereich“).
+Nach Abschluss dieses Tutorials können sich die AAD-Benutzer, denen Sie den Zugriff auf ThousandEyes zugewiesen haben, durch einmaliges Anmelden auf der ThousandEyes-Unternehmenswebsite bei der Anwendung anmelden (durch den Dienstanbieter initiierte Anmeldung). Alternativ können sie den Zugriffsbereich nutzen.
 
 1. Aktivieren der Anwendungsintegration für ThousandEyes
 2. Konfigurieren der einmaligen Anmeldung
@@ -37,10 +37,11 @@ Nach Abschluss dieses Tutorials können sich die AAD-Benutzer, denen Sie den Zug
 
 ![Szenario](./media/active-directory-saas-thousandeyes-tutorial/IC790059.png "Szenario")
 
-## <a name="enabling-the-application-integration-for-thousandeyes"></a>Aktivieren der Anwendungsintegration für ThousandEyes
+## <a name="enable-the-application-integration-for-thousandeyes"></a>Aktivieren der Anwendungsintegration für ThousandEyes
 In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für ThousandEyes aktivieren.
 
-### <a name="to-enable-the-application-integration-for-thousandeyes-perform-the-following-steps"></a>So aktivieren Sie die Anwendungsintegration für ThousandEyes:
+**So aktivieren Sie die Anwendungsintegration für ThousandEyes**
+
 1. Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
    
     ![Active Directory](./media/active-directory-saas-thousandeyes-tutorial/IC700993.png "Active Directory")
@@ -66,15 +67,16 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Tho
    
     ![ThousandEyes](./media/active-directory-saas-thousandeyes-tutorial/IC790061.png "ThousandEyes")
 
-## <a name="configuring-single-sign-on"></a>Konfigurieren der einmaligen Anmeldung
+## <a name="configure-single-sign-on"></a>Einmaliges Anmelden konfigurieren
 In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Konto in Azure Active Directory bei ThousandEyes zu authentifizieren.
 
-### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>So konfigurieren Sie einmaliges Anmelden
+**So konfigurieren Sie einmaliges Anmelden**
+
 1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **ThousandEyes** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-thousandeyes-tutorial/IC790062.png "Einmaliges Anmelden konfigurieren")
 
-1. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei ThousandEyes anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
+2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei ThousandEyes anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-thousandeyes-tutorial/IC790063.png "Einmaliges Anmelden konfigurieren")
 
@@ -103,28 +105,23 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 9. Führen Sie im Abschnitt **Einmaliges Anmelden einrichten** die folgenden Schritte aus:
    
     ![Einmaliges Anmelden einrichten](./media/active-directory-saas-thousandeyes-tutorial/IC790069.png "Einmaliges Anmelden einrichten")
-   
-    a. Wählen Sie **Einmaliges Anmelden aktivieren**aus.
-   
-    b. Kopieren Sie im klassischen Microsoft Azure-Portal auf der Seite **Einmaliges Anmelden konfigurieren für ThousandEyes** den Wert für **Remoteanmelde-URL**, und fügen Sie ihn in das Textfeld **Anmeldeseiten-URL** ein.
-   
-    c. Kopieren Sie im klassischen Microsoft Azure-Portal auf der Seite **Einmaliges Anmelden konfigurieren für ThousandEyes** den Wert für **Remoteabmelde-URL**, und fügen Sie ihn in das Textfeld **Abmeldeseiten-URL** ein.
-   
-    d. Kopieren Sie im klassischen Microsoft Azure-Portal auf der Seite **Einmaliges Anmelden konfigurieren für ThousandEyes** den Wert für **Aussteller-URL**, und fügen Sie ihn in das Textfeld **Identitätsanbieter-Aussteller** ein.
-   
-    e. Klicken Sie unter **Zertifikat des Identitätsanbieters** auf **Datei auswählen**, und laden Sie dann das Zertifikat hoch, das Sie aus dem klassischen Microsoft Azure-Portal heruntergeladen haben.
-   
-    f. Klicken Sie auf **Speichern**.
+  1. Wählen Sie **Einmaliges Anmelden aktivieren**aus.
+  2. Kopieren Sie im klassischen Microsoft Azure-Portal auf der Seite **Einmaliges Anmelden konfigurieren für ThousandEyes** den Wert für **Remoteanmelde-URL**, und fügen Sie ihn in das Textfeld **Anmeldeseiten-URL** ein.
+  3. Kopieren Sie im klassischen Microsoft Azure-Portal auf der Seite **Einmaliges Anmelden konfigurieren für ThousandEyes** den Wert für **Remoteabmelde-URL**, und fügen Sie ihn in das Textfeld **Abmeldeseiten-URL** ein.
+  4. Kopieren Sie im klassischen Microsoft Azure-Portal auf der Seite **Einmaliges Anmelden konfigurieren für ThousandEyes** den Wert für **Aussteller-URL**, und fügen Sie ihn in das Textfeld **Identitätsanbieter-Aussteller** ein.
+  5. Klicken Sie unter **Zertifikat des Identitätsanbieters** auf **Datei auswählen**, und laden Sie dann das Zertifikat hoch, das Sie aus dem klassischen Microsoft Azure-Portal heruntergeladen haben.
+  6. Klicken Sie auf **Speichern**.
 
 10. Bestätigen Sie im klassischen Azure-Portal die Konfiguration der einmaligen Anmeldung, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
     
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-thousandeyes-tutorial/IC790070.png "Einmaliges Anmelden konfigurieren")
 
-## <a name="configuring-user-provisioning"></a>Konfigurieren der Benutzerbereitstellung
+## <a name="configure-user-provisioning"></a>Benutzerbereitstellung konfigurieren
 Damit sich Azure AD-Benutzer bei ThousandEyes anmelden können, müssen sie in ThousandEyes bereitgestellt werden.  
 Im Fall von ThousandEyes ist die Bereitstellung eine manuelle Aufgabe.
 
-### <a name="to-provision-a-user-account-to-thousandeyes-perform-the-following-steps"></a>Führen Sie zum Bereitstellen von Benutzerkonten in ThousandEyes die folgenden Schritte aus:
+**Führen Sie zum Bereitstellen eines Benutzerkontos in ThousandEyes die folgenden Schritte aus:**
+
 1. Melden Sie sich bei der ThousandEyes-Unternehmenswebsite als Administrator an.
 
 2. Klicken Sie auf **Einstellungen**.
@@ -141,26 +138,23 @@ Im Fall von ThousandEyes ist die Bereitstellung eine manuelle Aufgabe.
 
 5. Führen Sie im Abschnitt **Benutzer und Konten hinzufügen** die folgenden Schritte aus:
    
-    ![Benutzerkonten hinzufügen](./media/active-directory-saas-thousandeyes-tutorial/IC790074.png "Benutzerkonten hinzufügen")
-   
-    a. Geben Sie **Name**, **E-Mail** und weitere Details eines gültigen Azure Active Directory-Kontos, das Sie bereitstellen möchten, in die entsprechenden Textfelder ein.
-   
-    b. Klicken Sie auf **Neuen Benutzer zum Konto hinzufügen**.
+    ![Benutzerkonten hinzufügen](./media/active-directory-saas-thousandeyes-tutorial/IC790074.png "Benutzerkonten hinzufügen")   
+  1. Geben Sie **Name**, **E-Mail** und weitere Details eines gültigen Azure Active Directory-Kontos, das Sie bereitstellen möchten, in die entsprechenden Textfelder ein.
+  2. Klicken Sie auf **Neuen Benutzer zum Konto hinzufügen**.
       
-    > [!NOTE]
-    > Der AAD-Kontoinhaber erhält eine E-Mail mit einem Link zur Bestätigung und Aktivierung des Kontos.
-    > 
-    > 
+     >[!NOTE]
+     >Der AAD-Kontoinhaber erhält eine E-Mail mit einem Link zur Bestätigung und Aktivierung des Kontos.
+     >  
 
-> [!NOTE]
-> Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von ThousandEyes-Benutzerkonten oder mithilfe der von ThousandEyes bereitgestellten APIs erstellen.
-> 
-> 
+>[!NOTE]
+>Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von ThousandEyes-Benutzerkonten oder mithilfe der von ThousandEyes bereitgestellten APIs erstellen.
+>  
 
-## <a name="assigning-users"></a>Zuweisen von Benutzern
+## <a name="assign-users"></a>Benutzer zuweisen
 Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
 
-### <a name="to-assign-users-to-thousandeyes-perform-the-following-steps"></a>So weisen Sie ThousandEyes Benutzer zu:
+**So weisen Sie ThousandEyes Benutzer zu**
+
 1. Erstellen Sie im klassischen Azure-Portal ein Testkonto.
 
 2. Klicken Sie auf der Anwendungsintegrationsseite für **ThousandEyes** auf **Benutzer zuweisen**.

@@ -1,5 +1,5 @@
 ---
-title: "Anzeigen einer Vorschau der Laufwerknutzung für einen Exportauftrag | Microsoft-Dokumentation"
+title: "Anzeigen einer Vorschau der Laufwerknutzung für einen Exportauftrag in Azure Import/Export (V1) | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie eine Vorschau der Liste der Blobs anzeigen, die Sie für einen Exportauftrag im Azure Import/Export-Dienst ausgewählt haben."
 author: muralikk
 manager: syadav
@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 358e3f2574cab0150c59f96b9bc4d32d959e94a8
-ms.openlocfilehash: 9ba9a3970925466285ae1df4676501fbdd24bd66
-ms.lasthandoff: 01/18/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 7bf74247090f91e17f81a9bc98ebfa78334c8c10
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -25,17 +25,23 @@ ms.lasthandoff: 01/18/2017
 # <a name="previewing-drive-usage-for-an-export-job"></a>Anzeigen einer Vorschau der Laufwerknutzung für einen Exportauftrag
 Bevor Sie einen Exportauftrag erstellen, müssen Sie eine Gruppe von Blobs auswählen, die Sie exportieren möchten. Der Microsoft Azure Import/Export-Dienst bietet Ihnen die Möglichkeit, die ausgewählten Blobs mithilfe einer Liste von Blobpfaden oder Blobpräfixen darzustellen.  
   
- Als Nächstes müssen Sie bestimmen, wie viele Laufwerke Sie senden müssen. Im Microsoft Azure Import/Export-Tool können Sie mit dem Befehl `PreviewExport` basierend auf der Größe der zu verwendenden Laufwerke eine Vorschau der Laufwerknutzung für die ausgewählten Blobs anzeigen. Folgende Parameter können Sie angeben:  
-  
-|Befehlszeilenoption|Beschreibung|  
+Als Nächstes müssen Sie bestimmen, wie viele Laufwerke Sie senden müssen. Im Import/Export-Tool können Sie mit dem Befehl `PreviewExport` basierend auf der Größe der zu verwendenden Laufwerke eine Vorschau der Laufwerknutzung für die ausgewählten Blobs anzeigen.
+
+## <a name="command-line-parameters"></a>Befehlszeilenparameter
+
+Bei der Verwendung des Befehls `PreviewExport` des Import/Export-Tools können Sie die folgenden Parameter verwenden.
+
+|Befehlszeilenparameter|Beschreibung|  
 |--------------------------|-----------------|  
 |**/logdir:**<Protokollverzeichnis\>|Optional. Das Protokollverzeichnis. In dieses Verzeichnis werden ausführliche Protokolldateien geschrieben. Wird kein Protokollverzeichnis angegeben, wird das aktuelle Verzeichnis als Protokollverzeichnis verwendet.|  
 |**/sn:**<Speicherkontoname\>|Erforderlich. Der Name des Speicherkontos für den Exportauftrag.|  
 |**/sk:**<Speicherkontoschlüssel\>|Nur erforderlich, wenn keine Container-SAS (Shared Access Signature) angegeben wurde. Der Kontoschlüssel des Speicherkontos für den Exportauftrag.|  
 |**/csas:**<Container-SAS\>|Nur erforderlich, wenn kein Speicherkontoschlüssel angegeben wurde. Die Container-SAS zum Auflisten der Blobs, die im Exportauftrag exportiert werden sollen.|  
-|**/ExportBlobListFile:**<Datei mit der Blobliste für den Export\>|Erforderlich. Der Pfad zu der XML-Datei mit der Liste der Blobpfade oder Blobpfadpräfixe für die zu exportierenden Blobs. Das Dateiformat entspricht dem Format, das im Element `BlobListBlobPath` im [Put Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate)-Vorgang der Import/Export-Dienst-REST-API verwendet wird.|  
+|**/ExportBlobListFile:**<Datei mit der Blobliste für den Export\>|Erforderlich. Pfad zur XML-Datei mit der Liste der Blobpfade oder Blobpfadpräfixe für die zu exportierenden Blobs. Das Dateiformat entspricht dem Format, das im Element `BlobListBlobPath` im [Put Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate)-Vorgang der REST-API des Import/Export-Diensts verwendet wird.|  
 |**/DriveSize:**<Laufwerkgröße\>|Erforderlich. Die Größe der Laufwerke, die für einen Exportauftrag verwendet werden sollen, *beispielsweise* 500 GB, 1,5 TB.|  
-  
+
+## <a name="command-line-example"></a>Befehlszeilenbeispiel
+
 Das folgende Beispiel veranschaulicht die Verwendung des Befehls `PreviewExport`:  
   
 ```  
@@ -71,6 +77,7 @@ Number of drives needed:        3
         Drive #3:       blobs = 2, occupied space = 131.28 GB    
 ```  
   
-## <a name="see-also"></a>Weitere Informationen  
-[Azure Import/Export-Tool – Referenz](storage-import-export-tool-how-to-v1.md)
+## <a name="next-steps"></a>Nächste Schritte
+
+* [Azure Import/Export-Tool – Referenz](storage-import-export-tool-how-to-v1.md)
 

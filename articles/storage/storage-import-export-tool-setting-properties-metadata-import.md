@@ -1,6 +1,6 @@
 ---
 title: Festlegen von Eigenschaften und Metadaten mithilfe von Azure Import/Export | Microsoft Docs
-description: "Erfahren Sie, wie Sie für die Zielblobs festzulegende Eigenschaften und Metadaten angeben, wenn Sie das Azure Import/Export-Tool zum Vorbereiten der Laufwerke ausführen."
+description: "Erfahren Sie, wie Sie beim Ausführen des Azure Import/Export-Tools zur Vorbereitung der Laufwerke Eigenschaften und Metadaten angeben, die für die Zielblobs festgelegt werden sollen."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 8de848b1192ff1c10e0375053c4e03f18c06184e
-ms.openlocfilehash: 26fb4d030341001238e7206c3856597c95d84719
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: bdc7a53f82d1fbbb726e2b1bd5d96678a8563566
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -55,7 +55,7 @@ Zum Festlegen von Blobmetadaten erstellen Sie eine lokale Textdatei, in der die 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <Metadata>
-    <UploadMethod>Windows Azure Import/Export Service</UploadMethod>
+    <UploadMethod>Windows Azure Import/Export service</UploadMethod>
     <DataSetName>SampleData</DataSetName>
     <CreationDate>10/1/2013</CreationDate>
 </Metadata>
@@ -75,5 +75,5 @@ K:\Temp\FavoriteVideo.ISO,https://mystorageaccount.blob.core.windows.net/favorit
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Format der Metadaten- und Eigenschaftendatei des Import/Export-Diensts](storage-import-export-file-format-metadata-and-properties.md)
+* [Format der Metadaten- und Eigenschaftendatei des Import/Export-Diensts](storage-import-export-file-format-metadata-and-properties.md)
 

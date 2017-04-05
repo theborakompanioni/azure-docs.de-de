@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 03/23/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: a9ebbbdc431a34553de04e920efbbc8c2496ce5f
-ms.openlocfilehash: 116dbf0ee30497d82c984b10e61ae02301e820a4
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 8ca42ef8f5314866301f5c9e93caa90dc837a66e
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -46,7 +47,7 @@ Um Machine Learning Studio verwenden zu können, benötigen Sie einen Microsoft 
 
 Der Administrator für Ihr Azure-Abonnement muss den Arbeitsbereich erstellen und Sie dann als Besitzer oder Mitwirkenden hinzufügen. Details finden Sie unter [Erstellen und Freigeben eines Azure Machine Learning-Arbeitsbereichs](machine-learning-create-workspace.md).
 
-Nachdem Ihr Arbeitsbereich erstellt wurde, öffnen Sie Machine Learning Studio ([https://studio.azureml.net](https://studio.azureml.net)). Wenn dies Ihr einziger Arbeitsbereich ist, wird er in Studio automatisch geöffnet. Andernfalls können Sie den Arbeitsbereich im Fenster oben rechts auf der Symbolleiste auswählen.
+Nachdem Ihr Arbeitsbereich erstellt wurde, öffnen Sie Machine Learning Studio ([https://studio.azureml.net/Home](https://studio.azureml.net/Home)). Wenn Sie über mehrere Arbeitsbereiche verfügen, können Sie den Arbeitsbereich im Fenster oben rechts auf der Symbolleiste auswählen.
 
 ![Auswählen eines Arbeitsbereichs in Studio][2]
 
@@ -62,9 +63,4 @@ Nachdem Ihr Arbeitsbereich erstellt wurde, öffnen Sie Machine Learning Studio (
 
 [1]: ./media/machine-learning-walkthrough-1-create-ml-workspace/create1.png
 [2]: ./media/machine-learning-walkthrough-1-create-ml-workspace/open-workspace.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

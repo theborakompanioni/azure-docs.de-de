@@ -15,15 +15,15 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: 0d6756dcc5b47898575002cd7336b8d4d5200e08
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: eab8b66bc4a9cf3090ee81f9bb47430aaf26eeee
+ms.lasthandoff: 03/24/2017
 
 ---
 
 # <a name="configure-the-geographic-traffic-routing-method-using-traffic-manager"></a>Konfigurieren der geografischen Routingmethode für Datenverkehr mithilfe von Traffic Manager
 
-Die geografische Routingmethode für Datenverkehr ermöglicht das Leiten von Datenverkehr an bestimmte Endpunkte auf der Grundlage des geografischen Ursprungsorts von Anforderungen. Dieses Tutorial zeigt, wie ein Traffic Manager-Profil mit dieser Routingmethode erstellt wird und die Endpunkte für den Empfang von Datenverkehr von angegebenen Geografien konfiguriert werden 
+Die geografische Routingmethode für Datenverkehr ermöglicht das Leiten von Datenverkehr an bestimmte Endpunkte auf der Grundlage des geografischen Ursprungsorts von Anforderungen. Dieses Tutorial zeigt, wie ein Traffic Manager-Profil mit dieser Routingmethode erstellt wird und die Endpunkte für den Empfang von Datenverkehr von angegebenen Geografien konfiguriert werden.
 
 ## <a name="create-a-traffic-manager-profile"></a>Erstellen eines Traffic Manager-Profils 
 
@@ -58,12 +58,10 @@ Die geografische Routingmethode für Datenverkehr ermöglicht das Leiten von Dat
 ## <a name="use-the-traffic-manager-profile"></a>Verwenden des Traffic Manager-Profils
 1.    Suchen Sie in der Suchleiste des Portals nach dem Namen des **Traffic Manager-Profils**, das Sie im vorhergehenden Abschnitt erstellt haben, und klicken Sie in den angezeigten Ergebnissen auf das Traffic Manager-Profil.
 2. Klicken Sie auf dem Blatt **Traffic Manager-Profil** auf **Übersicht**.
-3. Das Blatt **Traffic Manager-Profil** zeigt den DNS-Namen des neu erstellten Traffic Manager-Profils an. Dieser kann von beliebigen Clients (etwa durch Navigation in einem Webbrowser) für das Routing zum richtigen Endpunkt nach Maßgabe des Routingtyps verwendet werden.  Im Fall von geografischem Routing untersucht Traffic Manager die IP-Quelladresse der eingehenden Anforderung und bestimmt die Region, aus der sie stammt. Wenn diese Region einem Endpunkt zugeordnet ist, wird der Datenverkehr dorthin geroutet. Wenn diese Region keinem Endpunkt zugeordnet ist, gibt Traffic Manager die Abfrageantwort NODATA zurück.
+3. Auf dem Blatt **Traffic Manager-Profil** wird der DNS-Name Ihres neu erstellten Traffic Manager-Profils angezeigt. Dieser kann von beliebigen Clients (etwa durch Navigation in einem Webbrowser) für das Routing zum richtigen Endpunkt nach Maßgabe des Routingtyps verwendet werden.  Im Fall von geografischem Routing untersucht Traffic Manager die IP-Quelladresse der eingehenden Anforderung und bestimmt die Region, aus der sie stammt. Wenn diese Region einem Endpunkt zugeordnet ist, wird der Datenverkehr dorthin geroutet. Wenn diese Region keinem Endpunkt zugeordnet ist, gibt Traffic Manager die Abfrageantwort NODATA zurück.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-
-- Weitere Informationen zur [gewichteten Routingmethode für Datenverkehr](traffic-manager-configure-weighted-routing-method.md).
-- Weitere Informationen zur [Leistungsorientierten Routingmethode](traffic-manager-configure-performance-routing-method.md).
+- Erfahren Sie mehr über [Geografische Methode für das Datenverkehrsrouting](traffic-manager-routing-methods.md#geographic-traffic-routing-method).
 - Informationen zum [Testen von Traffic Manager-Einstellungen](traffic-manager-testing-settings.md).
 

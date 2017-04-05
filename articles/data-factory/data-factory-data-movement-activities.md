@@ -13,12 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2017
+ms.date: 03/24/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
-ms.openlocfilehash: f4c225c97ac997c412704b278c033c519d4424ed
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 25e266441e902a06d980b3b51abdd4fcf668d4d2
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -95,6 +95,8 @@ Wenn sich Quell- und Senkendatenspeicher in der Cloud befinden, verwendet Data F
 | Brasilien | Brasilien Süd | Brasilien Süd |
 | Europa | Nordeuropa | Europa, Norden |
 | &nbsp; | Europa, Westen | Westeuropa |
+| Vereinigtes Königreich | UK, Westen | UK, Süden |
+| &nbsp; | UK, Süden | UK, Süden |
 | Asien-Pazifik | Südostasien | Südostasien |
 | &nbsp; | Ostasien | Südostasien |
 | Australien | Australien (Osten) | Australien, Osten |
@@ -105,7 +107,7 @@ Wenn sich Quell- und Senkendatenspeicher in der Cloud befinden, verwendet Data F
 | &nbsp; | Indien, Westen | Indien (Mitte) |
 | &nbsp; | Indien, Süden | Indien (Mitte) |
 
-Alternativ können Sie unter den Typeigenschaften der Kopieraktivität (`typeProperties`) mithilfe der `executionLocation`-Eigenschaft explizit die Region des Data Factory-Diensts angeben, die für den Kopiervorgang verwendet werden soll. Die unterstützten Werte für diese Eigenschaft finden Sie weiter oben in der Spalte **Verwendete Region für die Datenverschiebung**. Hinweis: Beim Kopieren werden Ihre Daten über diese Region geleitet. Wenn Sie beispielsweise einen Kopiervorgang zwischen Azure-Speichern im Vereinigten Königreich durchführen möchten, können Sie `"executionLocation": "North Europe"` angeben, um die Daten über Nordeuropa zu leiten (siehe [Beispiel-JSON](#by-using-json-scripts) zur Referenz).
+Alternativ können Sie unter den Typeigenschaften der Kopieraktivität (`typeProperties`) mithilfe der `executionLocation`-Eigenschaft explizit die Region des Data Factory-Diensts angeben, die für den Kopiervorgang verwendet werden soll. Die unterstützten Werte für diese Eigenschaft finden Sie weiter oben in der Spalte **Verwendete Region für die Datenverschiebung**. Hinweis: Beim Kopieren werden Ihre Daten über diese Region geleitet. Wenn Sie beispielsweise einen Kopiervorgang zwischen Azure-Speichern in Korea durchführen möchten, können Sie `"executionLocation": "Japan East"` angeben, um die Daten über Japan zu leiten (siehe [JSON-Beispiel](#by-using-json-scripts) zur Referenz).
 
 > [!NOTE]
 > Falls die Region des Zieldatenspeichers in der obigen Liste nicht enthalten ist oder nicht gefunden wird, tritt standardmäßig ein Fehler auf, und die Daten werden nicht über eine Alternativregion geleitet (es sei denn, `executionLocation` wurde angegeben). Die Liste mit den unterstützten Regionen wird im Laufe der Zeit erweitert.
@@ -155,7 +157,7 @@ Dies ist eine Beispiel-JSON-Definition:
           "sink": {
             "type": "SqlSink"
           },
-          "executionLocation": "North Europe"          
+          "executionLocation": "Japan East"          
         },
         "Policy": {
           "concurrency": 1,

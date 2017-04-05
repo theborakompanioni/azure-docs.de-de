@@ -1,6 +1,6 @@
 ---
 title: Format der Metadaten- und Eigenschaftendateien von Azure Import/Export | Microsoft Docs
-description: "Informationen zum Angeben von Metadaten und Eigenschaften für mindestens ein Blob, das Teil eines Import- oder Exportauftrags ist"
+description: "Informationen zum Angeben von Metadaten und Eigenschaften für mindestens ein Blob, das Teil eines Import- oder Exportauftrags ist."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 8de848b1192ff1c10e0375053c4e03f18c06184e
-ms.openlocfilehash: 0cac5419d4b481a5b783b4b9fbd4ad2d4d637042
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 9aa7815eae9ae3c1771cd0efdc8b9db4ad2e0b65
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -69,6 +69,8 @@ Das Format einer Eigenschaftendatei lautet wie folgt:
 |`Content-Encoding`|String|Optional. Inhaltscodierung des Blobs|  
 |`Content-Language`|String|Optional. Inhaltssprache des Blob|  
 |`Cache-Control`|String|Optional. Die Cachesteuerelement-Zeichenfolge für das Blob|  
-  
- Detaillierte Regeln zum Festlegen der Blobmetadaten und -eigenschaften finden Sie unter [Set Blob Properties](/rest/api/storageservices/fileservices/set-blob-properties) (Festlegen von Blobeigenschaften), [Set Blob Metadata](/rest/api/storageservices/fileservices/set-blob-metadata) (Festlegen von Blobmetadaten) und [Setting and Retrieving Properties and Metadata for Blob Resources](/rest/api/storageservices/fileservices/setting-and-retrieving-properties-and-metadata-for-blob-resources) (Festlegen und Abrufen von Eigenschaften und Metadaten für Blobressourcen).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Ausführliche Regeln zum Festlegen der Blobmetadaten und -eigenschaften finden Sie unter [Festlegen von Blobeigenschaften](/rest/api/storageservices/fileservices/set-blob-properties), [Festlegen von Blobmetadaten](/rest/api/storageservices/fileservices/set-blob-metadata) und [Festlegen und Abrufen von Eigenschaften und Metadaten für Blobressourcen](/rest/api/storageservices/fileservices/setting-and-retrieving-properties-and-metadata-for-blob-resources).
 

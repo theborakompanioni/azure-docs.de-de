@@ -1,6 +1,6 @@
 ---
 title: "Azure-Sicherheitsfeatures, die für virtuelle Azure-Computer verwendet werden | Microsoft-Dokumentation"
-description: " Hier finden Sie eine Übersicht über die wichtigsten Sicherheitsfunktionen von Azure, die mit virtuellen Azure-Computern verwendet werden können. Virtuelle Azure-Computer bieten Ihnen die Flexibilität der Virtualisierung, ohne Zeit und Geld für den Kauf und die Verwaltung der Hardware aufwenden zu müssen, mit die virtuellen Computer betrieben werden.. "
+description: " Hier finden Sie eine Übersicht über die wichtigsten Sicherheitsfunktionen von Azure, die mit virtuellen Azure-Computern verwendet werden können. Virtuelle Azure-Computer bieten Ihnen die Flexibilität der Virtualisierung, ohne Zeit und Geld für den Kauf und die Verwaltung der Hardware aufwenden zu müssen, mit der die virtuellen Computer betrieben werden. "
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/23/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: b5edb42f7fac6943a72e02a85a4cbc32300b9f38
-ms.openlocfilehash: 5e9dcd9913cf301e7c5a50eb9e55fb0b3dc303e5
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 70d22ae8d7f67f1e12a233e004f1eb749927e7d8
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -70,8 +71,8 @@ Weitere Informationen zu Antischadsoftware zum Schützen Ihrer virtuellen Comput
 
 * [Microsoft Antimalware für Azure Cloud Services und Virtual Machines](azure-security-antimalware.md)
 * [Deploying Antimalware Solutions on Azure Virtual Machines (Bereitstellen von Antischadsoftware-Lösungen auf virtuellen Azure-Computern, in englischer Sprache)](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
-* [Installieren und Konfigurieren von Trend Micro Deep Security als Dienst auf einem virtuellen Windows-Computer](../virtual-machines/virtual-machines-windows-classic-install-trend.md)
-* [Installieren und Konfigurieren von Symantec Endpoint Protection auf einem virtuellen Windows-Computer](../virtual-machines/virtual-machines-windows-classic-install-symantec.md)
+* [Installieren und Konfigurieren von Trend Micro Deep Security als Dienst auf einem virtuellen Windows-Computer](../virtual-machines/windows/classic/install-trend.md)
+* [Installieren und Konfigurieren von Symantec Endpoint Protection auf einem virtuellen Windows-Computer](../virtual-machines/windows/classic/install-symantec.md)
 * [New Antimalware Options for Protecting Azure Virtual Machines – McAfee Endpoint Protection (Neue Antimalware-Optionen zum Schützen von Azure Virtual Machines – McAfee Endpoint Protection)](https://azure.microsoft.com/blog/new-antimalware-options-for-protecting-azure-virtual-machines/)
 * [Willkommen im Azure Marketplace](https://azure.microsoft.com/marketplace/?term=security)
 
@@ -151,9 +152,4 @@ Weitere Informationen:
 
 * [Microsoft Trust Center – Compliance](https://www.microsoft.com/TrustCenter/Compliance/default.aspx)
 * [Die vertrauenswürdige Cloud: Sicherheit, Datenschutz und Compliance von Microsoft Azure](http://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

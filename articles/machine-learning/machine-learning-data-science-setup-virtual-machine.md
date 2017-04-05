@@ -12,18 +12,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2016
+ms.date: 03/24/2017
 ms.author: xibingao;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 22d7dc81cb2fc44ff4471951cbc482f60a97bb27
-ms.openlocfilehash: b266dc9ead635fb852d64efa82587299f692a153
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 5fb930cb71fe008ba63d2068bb36643f40259e76
+ms.lasthandoff: 03/28/2017
 
 
 ---
 # <a name="set-up-an-azure-virtual-machine-as-an-ipython-notebook-server-for-advanced-analytics"></a>Einrichten eines virtuellen Azure-Computers als IPython Notebook-Server für die erweiterte Analyse
 In diesem Thema wird das Bereitstellen und Konfigurieren eines virtuellen Azure-Computers für die erweiterte Analyse als Bestandteil einer cloudbasierten Data Science-Umgebung beschrieben. Der virtuelle Windows-Computer wird mit Unterstützung von Tools wie IPython Notebook, Azure Storage-Explorer und AzCopy sowie anderer Hilfsprogramme, die für erweiterte Analyseprojekte hilfreich sind, konfiguriert. Azure Storage-Explorer und AzCopy stellen z. B. hilfreiche Möglichkeiten zum Hochladen von Daten von Ihrem lokalen Computer in den Azure-Blobspeicher oder das Herunterladen aus dem Blobspeicher auf Ihren lokalen Computer bereit.
 
-## <a name="a-namecreate-vmastep-1-create-a-general-purpose-azure-virtual-machine"></a><a name="create-vm"></a>Schritt 1: Erstellen eines allgemeinen virtuellen Azure-Computers
+## <a name="create-vm"></a>Schritt 1: Erstellen eines allgemeinen virtuellen Azure-Computers
 Wenn Sie bereits über einen virtuellen Azure-Computer verfügen und darauf einen IPython Notebook-Server einrichten möchten, können Sie diesen Schritt überspringen und mit [Schritt 2: Hinzufügen eines Endpunkts für IPython Notebooks zu einem vorhandenen virtuellen Computer](#add-endpoint)fortfahren.
 
 Bevor Sie mit der Erstellung eines virtuellen Computers in Azure beginnen, müssen Sie die Größe des Computers bestimmen, der zum Verarbeiten der Daten für das Projekt erforderlich ist. Kleinere Computer verfügen über weniger Arbeitsspeicher und weniger CPU-Kerne als leistungsstärkere Computer, aber sie sind auch preisgünstiger. Eine Liste der Computertypen und Preise finden Sie auf der Seite <a href="http://azure.microsoft.com/pricing/details/virtual-machines/" target="_blank">Virtual Machines – Preise</a>.
@@ -53,15 +54,15 @@ Die Bereitstellung des virtuellen Computers dauert 15–25 Minuten. Nachdem der
 
 ![Arbeitsbereich erstellen][29]
 
-## <a name="a-nameadd-endpointastep-2-add-an-endpoint-for-ipython-notebooks-to-an-existing-virtual-machine"></a><a name="add-endpoint"></a>Schritt 2: Hinzufügen eines Endpunkts für IPython Notebooks auf einem vorhandenen virtuellen Computer
+## <a name="add-endpoint"></a>Schritt 2: Hinzufügen eines Endpunkts für IPython Notebooks auf einem vorhandenen virtuellen Computer
 Wenn Sie den virtuellen Computer mithilfe der Anweisungen in Schritt 1 erstellt haben, wurde der Endpunkt für IPython Notebook bereits hinzugefügt. Sie können diesen Schritt deshalb überspringen.
 
 Wenn der virtuelle Computer bereits vorhanden ist und Sie einen Endpunkt für IPython Notebook (die Installation erfolgt in Schritt 3) hinzufügen möchten, melden Sie sich zunächst im klassischen Azure-Portal an, wählen Sie den virtuellen Computer aus, und fügen Sie den Endpunkt für den IPython Notebook-Server hinzu. Die folgende Abbildung zeigt einen Screenshot des Portals nach dem Hinzufügen des Endpunkts für IPython Notebook auf einem virtuellen Windows-Computer.
 
 ![Arbeitsbereich erstellen][17]
 
-## <a name="a-namerun-commandsastep-3-install-ipython-notebook-and-other-supporting-tools"></a><a name="run-commands"></a>Schritt 3: Installieren von IPython Notebook und anderen Tools
-Nachdem der virtuelle Computer erstellt wurde, verwenden Sie zum Anmelden auf dem virtuellen Windows-Computer das Remotedesktopprotokoll (RDP). Anweisungen finden Sie unter [Anmelden bei einem virtuellen Computer, auf dem Windows Server ausgeführt wird](../virtual-machines/virtual-machines-windows-classic-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Öffnen Sie die **Eingabeaufforderung** (**nicht das PowerShell-Befehlsfenster**) als **Administrator**, und führen Sie den folgenden Befehl aus.
+## <a name="run-commands"></a>Schritt 3: Installieren von IPython Notebook und anderen Tools
+Nachdem der virtuelle Computer erstellt wurde, verwenden Sie zum Anmelden auf dem virtuellen Windows-Computer das Remotedesktopprotokoll (RDP). Anweisungen finden Sie unter [Anmelden bei einem virtuellen Computer, auf dem Windows Server ausgeführt wird](../virtual-machines/windows/classic/connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Öffnen Sie die **Eingabeaufforderung** (**nicht das PowerShell-Befehlsfenster**) als **Administrator**, und führen Sie den folgenden Befehl aus.
 
     set script='https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/MachineSetup/Azure_VM_Setup_Windows.ps1'
 
@@ -71,14 +72,14 @@ Nach Abschluss der Installation wird der IPython Notebook-Server automatisch im 
 
 Geben Sie, wenn Sie dazu aufgefordert werden, ein Kennwort für IPython Notebook und das Kennwort für den Administrator des Computers ein. Dadurch kann IPython Notebook auf dem Computer als Dienst ausgeführt werden.
 
-## <a name="a-nameaccessastep-4-access-ipython-notebooks-from-a-web-browser"></a><a name="access"></a>Schritt 4: Zugreifen auf IPython Notebooks von einem Webbrowser aus
+## <a name="access"></a>Schritt 4: Zugreifen auf IPython Notebooks von einem Webbrowser aus
 Öffnen Sie für den Zugriff auf den IPython Notebook-Server einen Webbrowser, und geben Sie in das Textfeld für die URL *https://&#60;DNS-Name_der_VM>:&#60;Nummer_des_öffentlichen_Ports* ein. Hierbei muss für *&#60;Nummer_des_öffentlichen_Ports>* die Portnummer angegeben werden, die Sie beim Hinzufügen des IPython Notebook-Endpunkts angegeben haben.
 
 Den Wert für *&#60;DNS-Name_des_virtuellen Computers>* finden Sie im klassischen Azure-Portal. Klicken Sie nach der Anmeldung im klassischen Portal auf **VIRTUELLE COMPUTER**, wählen Sie den erstellten Computer aus, und wählen Sie dann das **DASHBOARD** aus. Der DNS-Name wird wie im folgenden Screenshot angezeigt:
 
 ![Arbeitsbereich erstellen][19]
 
-Es wird eine Warnung mit dem Text* Es besteht ein Problem mit dem Sicherheitszertifikat der Website (Internet Explorer)* oder *Dies ist keine sichere Verbindung (Chrome)* angezeigt, wie nachstehend gezeigt. Klicken Sie zum Fortfahren auf **Laden dieser Website fortsetzen (nicht empfohlen) (Internet Explorer)** oder auf **Erweitert** und dann auf **Weiter zu &#60;*DNS-Name*> (unsicher)** (Chrome). Geben Sie dann das Kennwort ein, das Sie zuvor für den Zugriff auf IPython Notebooks festgelegt haben.
+Es wird eine Warnung mit dem Text*Es besteht ein Problem mit dem Sicherheitszertifikat der Website (Internet Explorer)* oder *Dies ist keine sichere Verbindung (Chrome)* angezeigt, wie nachstehend gezeigt. Klicken Sie zum Fortfahren auf **Laden dieser Website fortsetzen (nicht empfohlen) (Internet Explorer)** oder auf **Erweitert** und dann auf **Weiter zu &#60;*DNS-Name*> (unsicher)** (Chrome). Geben Sie dann das Kennwort ein, das Sie zuvor für den Zugriff auf IPython Notebooks festgelegt haben.
 
 **InternetExplorer:**
 ![Arbeitsbereich erstellen][20]
@@ -89,14 +90,14 @@ Es wird eine Warnung mit dem Text* Es besteht ein Problem mit dem Sicherheitszer
 Nach Ihrer Anmeldung bei IPython Notebook wird im Browser das Verzeichnis *DataScienceSamples* angezeigt. Dieses Verzeichnis enthält Beispiele für IPython Notebook, die von Microsoft freigegeben wurden, damit Benutzer Data Science-Aufgaben durchführen können. Diese Beispiele für IPython Notebooks werden während der Einrichtung des IPython Notebook-Servers aus dem [**GitHub-Repository**](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/iPythonNotebooks) auf die virtuellen Computer ausgecheckt. Microsoft verwaltet und aktualisiert dieses Repository häufig. Sie können das GitHub-Repository regelmäßig auf aktualisierte Beispiele für IPython Notebooks überprüfen.
 ![Arbeitsbereich erstellen][18]
 
-## <a name="a-nameuploadastep-5-upload-an-existing-ipython-notebook-from-a-local-machine-to-the-ipython-notebook-server"></a><a name="upload"></a>Schritt 5: Hochladen eines vorhandenen IPython Notebooks von einem lokalen Computer auf den IPython Notebook-Server
+## <a name="upload"></a>Schritt 5: Hochladen eines vorhandenen IPython Notebooks von einem lokalen Computer auf den IPython Notebook-Server
 IPython Notebooks bieten eine einfache Möglichkeit für das Hochladen vorhandener IPython Notebooks von lokalen Computern auf den IPython Notebook-Server auf virtuellen Computern. Klicken Sie nach der Anmeldung bei IPython Notebook in einem Webbrowser auf das **Verzeichnis**, in welches das IPython Notebook hochgeladen werden soll. Wählen Sie anschließend im **Datei-Explorer**eine IPYNB-Datei mit dem IPython Notebook auf dem lokalen Computer für das Hochladen aus, und ziehen Sie es in Ihrem Webbrowser in das Verzeichnis des IPython Notebooks. Klicken Sie auf die Schaltfläche **Upload** , um die IPYNB-Datei auf den IPython Notebook-Server hochzuladen. Andere Benutzer können es dann in ihren Webbrowsern verwenden.
 
 ![Arbeitsbereich erstellen][22]
 
 ![Arbeitsbereich erstellen][23]
 
-## <a name="a-nameshutdownashut-down-and-de-allocate-virtual-machine-when-not-in-use"></a><a name="shutdown"></a>Herunterfahren und Freigeben von nicht genutzten virtuellen Computern
+## <a name="shutdown"></a>Herunterfahren und Freigeben von nicht genutzten virtuellen Computern
 Virtuelle Azure-Computer werden **nach Nutzung abgerechnet**. Damit Sie nicht für ungenutzte virtuelle Computer bezahlen müssen, sollten Sie diese in den Status **Angehalten (Zuordnung aufgehoben)** versetzen, wenn sie nicht mehr benötigt werden.
 
 > [!NOTE]
@@ -134,9 +135,4 @@ Die nächsten Schritte im Team Data Science-Prozess sind unter dem [Lernpfad](ht
 [27]: ./media/machine-learning-data-science-setup-virtual-machine/create-virtual-machine-4.png
 [28]: ./media/machine-learning-data-science-setup-virtual-machine/create-virtual-machine-5.png
 [29]: ./media/machine-learning-data-science-setup-virtual-machine/create-virtual-machine-6.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

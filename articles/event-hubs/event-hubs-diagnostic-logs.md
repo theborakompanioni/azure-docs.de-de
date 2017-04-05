@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 02/01/2017
-ms.author: babanisa
+ms.date: 03/27/2017
+ms.author: sethm;babanisa
 translationtype: Human Translation
-ms.sourcegitcommit: abcb0eee979853948cf6d981ff8f3a457eeeeef0
-ms.openlocfilehash: 87c0f3eab8c09c79de06c2e806830b2f67ea5732
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 8b0484b2d4f6474be728531fbda65896f30eccc4
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -26,10 +26,10 @@ ms.lasthandoff: 03/01/2017
 
 Sie können zwei Typen von Protokollen für Azure Event Hubs anzeigen:
 * **[Aktivitätsprotokolle](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)**. Diese Protokolle enthalten Informationen zu Vorgängen, die für einen Auftrag ausgeführt werden. Diese Protokolle sind immer aktiviert.
-* **[Diagnoseprotokolle](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)**. Sie können Diagnoseprotokolle konfigurieren, um umfangreichere Einblicke in alle Vorgänge zu erhalten, die im Rahmen des Auftrags ausgeführt werden. Diagnoseprotokolle enthalten Informationen zu Aktivitäten vom Erstellen bis zum Löschen des Auftrags, einschließlich Updates und Aktivitäten während der Auftragsausführung.
+* **[Diagnoseprotokolle](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)**. Sie können Diagnoseprotokolle konfigurieren, um einen umfangreicheren Einblick in alle Vorgänge zu erhalten, die im Rahmen des Auftrags ausgeführt werden. Diagnoseprotokolle enthalten Informationen zu Aktivitäten vom Erstellen bis zum Löschen des Auftrags, einschließlich Updates und Aktivitäten während der Auftragsausführung.
 
 ## <a name="turn-on-diagnostic-logs"></a>Aktivieren der Diagnoseprotokolle
-Diagnoseprotokolle sind standardmäßig **deaktiviert**. So aktivieren Sie Diagnoseprotokolle:
+Diagnoseprotokolle sind standardmäßig **deaktiviert**. So aktivieren Sie Diagnoseprotokolle
 
 1.    Rufen Sie im Azure-Portal das Blatt zum Streamingauftrag auf.
 
@@ -45,21 +45,21 @@ Diagnoseprotokolle sind standardmäßig **deaktiviert**. So aktivieren Sie Diagn
 
     ![Ändern des Status der Diagnoseprotokolle](./media/event-hubs-diagnostic-logs/image3.png)
 
-5.    Legen Sie das gewünschte Archivierungsziel fest, z. B. ein Speicherkonto, einen Event Hub oder eine Azure-Protokollanalyse.
+5.    Legen Sie das gewünschte Archivierungsziel fest, z.B. ein Speicherkonto, einen Event Hub oder Azure Log Analytics.
 
-6.    Wählen Sie die Kategorien von Protokollen, die Sie erfassen möchten z. B. **Ausführung** oder **Erstellung**.
+6.    Wählen Sie die Kategorien von Protokollen aus, die Sie erfassen möchten, z.B. **Ausführung** oder **Erstellung**.
 
 7.    Speichern Sie die neuen Diagnoseeinstellungen.
 
 Neue Einstellungen werden in etwa zehn Minuten wirksam. Danach werden die Protokolle im gewünschten Archivierungsziel auf dem Blatt **Diagnoseprotokolle** angezeigt.
 
-Weitere Informationen zum Konfigurieren der Diagnose finden Sie in der [Übersicht über Diagnoseprotokolle](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
+Weitere Informationen zum Konfigurieren der Diagnose finden Sie in der [Übersicht über Azure-Diagnoseprotokolle](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
 
 ## <a name="diagnostic-logs-categories"></a>Diagnoseprotokollkategorien
 Event Hubs erfassen Diagnoseprotokolle für zwei Kategorien:
 
-* **ArchivalLogs**: Hiermit werden Protokolle für das Event Hub-Archiv (insbesondere im Zusammenhang mit Archivfehlern) erfasst.
-* **OperationalLogs:** Hiermit werden Abläufe während Event Hubs-Vorgängen erfasst. Dazu zählen der Vorgangstyp (insbesondere Event Hub-Erstellung), verwendete Ressourcen und der Status des Vorgangs.
+* **ArchivalLogs:** Protokolle im Zusammenhang mit Event Hubs-Archiven, insbesondere im Zusammenhang mit Archivfehlern.
+* **OperationalLogs:** Informationen zu Abläufen während Event Hubs-Vorgängen, insbesondere zum Vorgangstyp (einschließlich Event Hub-Erstellung, verwendeter Ressourcen und des Status des Vorgangs).
 
 ## <a name="diagnostic-logs-schema"></a>Schema „Diagnoseprotokolle“
 Alle Protokolle werden im JavaScript Object Notation (JSON)-Format gespeichert. Jeder Eintrag enthält Zeichenfolgenfelder im nachfolgend beschriebenen Format.
@@ -70,20 +70,20 @@ JSON-Zeichenfolgen im Archivprotokoll enthalten Elemente, die in der folgenden T
 
 Name | Beschreibung
 ------- | -------
-TaskName | Beschreibung der fehlgeschlagenen Aufgabe
+TaskName | Beschreibung der Aufgabe, bei der ein Fehler aufgetreten ist
 ActivityId | Interne ID zur Nachverfolgung
 trackingId | Interne ID zur Nachverfolgung
 resourceId | Azure Resource Manager-Ressourcen-ID
-eventHub | Vollständiger Event Hub-Name (mit Namespace-Name)
-partitionId | Die Partition, auf die geschrieben wird
+eventHub | Vollständiger Event Hub-Name (mit Namespacename)
+partitionId | Event Hub-Partition, auf die geschrieben wird
 archiveStep | ArchiveFlushWriter
 startTime | Fehlerstartzeit
-failures | Häufigkeit, mit der ein Fehler aufgetreten ist
+failures | Anzahl der Vorkommen eines Fehlers
 durationInSeconds | Dauer des Fehlers
-Message: | Fehlermeldung
+Message: | Fehlermeldung.
 category | ArchiveLogs
 
-Hier ein Beispiel für eine JSON-Zeichenfolge im Archivierungsprotokoll:
+Es folgt ein Beispiel für eine JSON-Zeichenfolge im Archivierungsprotokoll:
 
 ```json
 {
@@ -109,16 +109,16 @@ JSON-Zeichenfolgen im Vorgangsprotokoll enthalten Elemente, die in der folgenden
 Name | Beschreibung
 ------- | -------
 ActivityId | Interne ID zur Nachverfolgung
-EventName | Vorgangsname             
+EventName | Vorgangsname     
 resourceId | Azure Resource Manager-Ressourcen-ID
 SubscriptionId | Abonnement-ID
-EventTimeString | Vorgangsdauer
+EventTimeString | Vorgangszeit
 EventProperties | Vorgangseigenschaften
 Status | Vorgangsstatus
 Aufrufer | Aufrufer des Vorgangs (Azure-Portal oder Verwaltungsclient)
 category | OperationalLogs
 
-Hier ein Beispiel für eine JSON-Zeichenfolge im Vorgangsprotokoll:
+Es folgt ein Beispiel für eine JSON-Zeichenfolge im Vorgangsprotokoll:
 
 ```json
 Example:

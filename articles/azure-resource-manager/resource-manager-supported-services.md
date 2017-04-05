@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/20/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 46eb4a20c85140a7893d77984f375d6abf3e7634
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: 7dc5143086e3a73e0536408a41468b8cdd40bd12
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -38,7 +38,7 @@ Die folgenden Tabellen zeigen, welche Microsoft-Dienste Bereitstellung und Verwa
 | Container Service |Ja |[Container Service REST](/rest/api/compute/containerservices) |[Container Service-Ressourcen](/azure/templates/microsoft.containerservice/containerservices) |
 | Dynamics Lifecycle Services |Ja | | |
 | Skalierungsgruppen |Ja |[Scale Set REST](/rest/api/compute/virtualmachinescalesets) |[Skalierungsgruppenressourcen](/azure/templates/microsoft.compute/virtualmachinescalesets) |
-| Service Fabric |Ja |[Service Fabric REST](/rest/api/servicefabric) | [Service Fabric-Schema](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2016-09-01/Microsoft.ServiceFabric.json) |
+| Service Fabric |Ja |[Service Fabric REST](/rest/api/servicefabric) | [Service Fabric-Ressourcen](/azure/templates/microsoft.servicefabric/clusters) |
 | Virtual Machines |Ja |[VM REST](/rest/api/compute/virtualmachines) |[VM-Ressourcen](/azure/templates/microsoft.compute/virtualmachines) |
 | Virtuelle Computer (Klassisch) |Eingeschränkt |- |- |
 | Remote App |Nein |- |- |
@@ -117,12 +117,12 @@ Clouddienste (klassisch) können mit anderen klassischen Ressourcen verwendet we
 | CDN |Ja |[CDN REST](/rest/api/cdn) |[CDN-Ressourcen](/azure/templates/microsoft.cdn/profiles) |
 | Mediendienst |Ja |[Media Services REST](/rest/api/media) |[Medienressourcen](/azure/templates/microsoft.media/mediaservices) |
 
-## <a name="hybrid-integration"></a>Hybridintegration
+## <a name="enterprise-integration"></a>Unternehmensintegration
 | Dienst | Ressourcen-Manager aktiviert | REST-API | Vorlagenformat |
 | --- | --- | --- | --- |
 | BizTalk Services |Ja | |[BizTalk-Schema](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2014-04-01/Microsoft.BizTalkServices.json) |
-| Wiederherstellungsdienst |Ja |[Recovery Services-REST-API](/rest/api/recoveryservices) |[Recovery Services-Ressourcen](/azure/templates/microsoft.recoveryservices/vaults) |
-| SERVICE BUS |Ja |[Service Bus REST](/rest/api/servicebus) |[Service Bus-Ressourcen](/azure/templates/microsoft.servicebus/namespaces) |
+| Relay | Ja |  | [Relay-Ressourcen](/azure/templates/microsoft.relay/namespaces) |
+| Service Bus |Ja |[Service Bus REST](/rest/api/servicebus) |[Service Bus-Ressourcen](/azure/templates/microsoft.servicebus/namespaces) |
 
 ## <a name="identity--access-management"></a>Identitäts- und Zugriffsverwaltung
 Azure Active Directory arbeitet mit dem Ressourcen-Manager zusammen, um die rollenbasierte Access Control für Ihr Abonnement zu aktivieren. Weitere Informationen zur rollenbasierten Zugriffssteuerung finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-control-configure.md).
@@ -139,10 +139,11 @@ Azure Active Directory arbeitet mit dem Ressourcen-Manager zusammen, um die roll
 | Dienst | Ressourcen-Manager aktiviert | REST-API | Vorlagenformat |
 | --- | --- | --- | --- |
 | Ratgeber | Ja | [Advisor REST](/rest/api/advisor/) | - |
-| Automation |Ja |[Automation REST](https://msdn.microsoft.com/library/azure/mt662285.aspx) |[Automation-Schema](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-10-31/Microsoft.Automation.json) |
+| Automation |Ja |[Automation REST](https://msdn.microsoft.com/library/azure/mt662285.aspx) |[Artikel zu Automation-Ressourcen](/azure/templates/microsoft.automation/automationaccounts) |
 | Abrechnung | Ja | [Billing REST](/rest/api/billing/) | - |
 | Schlüsseltresor |Ja |[Referenz zur Schlüsseltresor-REST-API](/rest/api/keyvault) |[Key Vault-Ressourcen](/azure/templates/microsoft.keyvault/vaults) |
 | Operational Insights |Ja | | |
+| Wiederherstellungsdienst |Ja |[Recovery Services-REST-API](/rest/api/recoveryservices) |[Recovery Services-Ressourcen](/azure/templates/microsoft.recoveryservices/vaults) |
 | Scheduler |Ja |[Scheduler REST](/rest/api/scheduler) |[Scheduler-Ressourcen](/azure/templates/microsoft.scheduler/jobcollections) |
 | Sicherheit |Ja |[Security REST](https://msdn.microsoft.com/library/azure/mt704034.aspx) | |
 | Server Management | Ja | [Server Management REST](/rest/api/servermanagement/) | [Server Management-Ressourcen](/azure/templates/microsoft.servermanagement/gateways) |

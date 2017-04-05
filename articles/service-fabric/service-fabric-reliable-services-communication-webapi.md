@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 02/10/2017
 ms.author: vturecek
+redirect_url: /azure/service-fabric/service-fabric-reliable-services-communication-aspnetcore
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: dc0a7dfa74e9100a61fbc45fda908e9227cf54da
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: 73b7e1c0cb93ae7c54780a3aab837b0e5bcdb0a0
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -34,19 +36,13 @@ In Service Fabric wird die bekannte und bewährte Web-API von ASP.NET verwendet.
 Eine Web-API-Anwendung selbst ändert sich nicht. Sie unterscheidet sich nicht von den Web-API-Anwendungen, die Sie bereits geschrieben haben, und es sollte problemlos möglich sein, den größten Teil Ihres Anwendungscodes einfach zu verschieben und zu nutzen. Falls Sie aber IIS zum Hosten verwendet haben, kann sich das Hosten der Anwendung etwas von der gewohnten Vorgehensweise unterscheiden. Bevor wir uns mit dem Hosten befassen, beginnen wir mit etwas Vertrautem: der Web-API-Anwendung.
 
 ## <a name="create-the-application"></a>Erstellen der Anwendung
-Erstellen Sie zunächst in Visual Studio 2015 eine neue Service Fabric-Anwendung mit einem einzelnen zustandslosen Dienst:
-
-![Erstellen einer neuen Service Fabric-Anwendung](media/service-fabric-reliable-services-communication-webapi/webapi-newproject.png)
+Erstellen Sie zunächst in Visual Studio 2015 eine neue Service Fabric-Anwendung mit einem einzelnen zustandslosen Dienst.
 
 Ihnen steht eine Visual Studio-Vorlage für einen zustandslosen Dienst, der Web-API verwendet, zur Verfügung. In diesem Tutorial erstellen wir ein Web-API-Projekt von Grund auf neu, das im Ergebnis dem entspricht, was Sie bei Auswahl dieser Vorlage erhalten würden.
 
 Wählen Sie ein Projekt für einen zustandslosen Dienst, um zu erfahren, wie Sie ein Web-API-Projekt von Grund auf neu erstellen. Alternativ können Sie mit der Web-API-Vorlage für einen zustandslosen Dienst beginnen und diese als Grundlage verwenden.  
 
-![Erstellen eines einzelnen zustandslosen Diensts](media/service-fabric-reliable-services-communication-webapi/webapi-newproject2.png)
-
 Der erste Schritt besteht darin, einige NuGet-Pakete für die Web-API abzurufen. Wir verwenden das Paket Microsoft.AspNet.WebApi.OwinSelfHost. Dieses Paket enthält alle erforderlichen Web-API-Pakete und die *Hostpakete* . Dies ist für einen späteren Teil wichtig.
-
-![Erstellen der Web-API mit dem NuGet-Paket-Manager](media/service-fabric-reliable-services-communication-webapi/webapi-nuget.png)
 
 Nachdem Sie die Pakete installiert haben, können Sie mit dem Erstellen der grundlegenden Projektstruktur der Web-API beginnen. Wenn Sie bereits mit Web-APIs gearbeitet haben, sollte Ihnen die Projektstruktur vertraut sein. Beginnen Sie, indem Sie ein `Controllers` -Verzeichnis und einen einfachen Values-Controller hinzufügen:
 
@@ -626,16 +622,12 @@ namespace WebService
 }
 ```
 
-Nachdem Sie nun alles zusammengestellt haben, sollte Ihr Projekt wie eine typische Web-API-Anwendung mit den Endpunkten der Reliable Services-API und einem OWIN-Host aussehen:
-
-![Web-API mit Reliable Services-API-Einstiegspunkten und OWIN-Host](media/service-fabric-reliable-services-communication-webapi/webapi-projectstructure.png)
+Nachdem Sie nun alles zusammengestellt haben, sollte Ihr Projekt wie eine typische Web-API-Anwendung mit den Endpunkten der Reliable Services-API und einem OWIN-Host aussehen.
 
 ## <a name="run-and-connect-through-a-web-browser"></a>Ausführen und Verbinden über einen Webbrowser
 Falls Sie dies nicht bereits getan haben, [richten Sie die Entwicklungsumgebung ein](service-fabric-get-started.md).
 
 Sie können jetzt den Dienst erstellen und bereitstellen. Drücken Sie zum Erstellen und Bereitstellen der Anwendung in Visual Studio **F5** . Im Fenster für Diagnoseereignisse sollte per Meldung darauf hingewiesen werden, dass der Webserver unter „http://localhost:8281/“ geöffnet wurde.
-
-![Visual Studio-Fenster mit Diagnoseereignissen](media/service-fabric-reliable-services-communication-webapi/webapi-diagnostics.png)
 
 > [!NOTE]
 > Wenn der Port bereits von einem anderen Prozess auf Ihrem Computer geöffnet wurde, wird hier ggf. ein Fehler angezeigt. Dies gibt an, dass der Listener nicht geöffnet werden konnte. Wenn dies der Fall ist, verwenden Sie einen anderen Port für die Endpunktkonfiguration in „ServiceManifest.xml“.
@@ -671,10 +663,5 @@ Weitere Informationen zum Erstellen von Anwendungs- und Dienstinstanzen finden S
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Debuggen der Service Fabric-Anwendung mithilfe von Visual Studio](service-fabric-debugging-your-application.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

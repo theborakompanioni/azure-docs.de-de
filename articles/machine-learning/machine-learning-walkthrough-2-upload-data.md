@@ -12,11 +12,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 03/23/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: a9ebbbdc431a34553de04e920efbbc8c2496ce5f
-ms.openlocfilehash: 2c44b51d9c832116bf77758144725d2ed3f6e422
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: c2ab5f5252e1ea1ec51f6c3bd489826c70ff011c
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -36,13 +37,19 @@ Um ein Vorhersagemodell für Kreditrisiken zu entwickeln, benötigen wir Daten, 
 
 Wir werden die Datei mit dem Namen **german.data**verwenden. Laden Sie die Datei auf Ihre lokale Festplatte herunter.  
 
-Dieser Datensatz enthält Zeilen mit 20 Variablen für 1.000 Kreditantragsteller aus der Vergangenheit. Diese 20 Variablen stellen den Funktionssatz (Funktionsvektor) des Datasets dar, der Identifikationseigenschaften für die einzelnen Kreditantragsteller enthält. Eine zusätzliche Spalte in jeder Zeile enthält das berechnete Kreditrisiko der Antragsteller. 700 der Antragsteller wurden mit niedrigem Risiko klassifiziert und 300 mit hohem Risiko.
+Das Dataset **german.data** enthält Zeilen mit 20 Variablen für 1.000 Kreditantragsteller aus der Vergangenheit. Diese 20 Variablen stellen den Featuresatz (*Featurevektor*) des Datasets dar, der Identifikationseigenschaften für die einzelnen Kreditantragsteller enthält. Eine zusätzliche Spalte in jeder Zeile enthält das berechnete Kreditrisiko der Antragsteller. 700 der Antragsteller wurden mit niedrigem Risiko klassifiziert und 300 mit hohem Risiko.
 
 Auf der UCI-Website finden Sie eine Beschreibung der Attribute des Funktionsvektors für diese Daten. Enthalten sind z.B. finanzielle Informationen, Bonitätsgeschichte, Beschäftigungsstatus und persönliche Daten. Für jeden Antragsteller wurde eine binäre Bewertung vergeben, um zwischen niedrigem und hohem Kreditrisiko zu unterscheiden. 
 
 Wir werden unser Vorhersageanalytikmodell anhand dieser Daten trainieren. Anschließend sollte unser Modell einen Funktionsvektor für neue Personen akzeptieren und vorhersagen können, ob diese ein niedriges oder hohes Kreditrisiko haben.  
 
-Hier ist ein interessantes Extra. In der Beschreibung des Datensatzes wird erläutert, dass die Fehlklassifizierung einer Person, die eigentlich ein hohes Kreditrisiko hat, mit niedrigem Kreditrisiko, 5 mal so teuer für die Finanzinstitution ist als eine Fehlklassifizierung in der Gegenrichtung. Wir können dies in unserem Experiment berücksichtigen, indem wir die Einträge von Personen mit hohem Kreditrisiko 5 mal duplizieren. Wenn das Modell anschließend dieses hohe Kreditrisiko fälschlicherweise als niedrig klassifiziert, wird diese Fehlklassifizierung 5 mal ausgeführt, ein mal pro Duplikat. Auf diese Weise werden die Kosten für diesen Fehler in den Trainingsergebnissen erhöht.  
+Hier ein interessantes Extra. In der Beschreibung des Datasets auf der UCI-Website wird auf die Kosten einer Fehlklassifizierung des Kreditrisikos einer Person hingewiesen.
+Wenn mit dem Modell ein hohes Kreditrisiko für eine Person vorhergesagt wird, die eigentlich ein niedriges Kreditrisiko aufweist, liegt eine Fehlklassifizierung des Modells vor.
+Die umgekehrte Fehlklassifizierung, d.h. die Vorhersage eines niedrigen Kreditrisikos für eine Person, die eigentlich ein hohes Kreditrisiko aufweist, ist jedoch fünfmal so teuer für die Finanzinstitution.
+
+Unser Modell soll daher so trainiert werden, dass die Kosten dieser letzteren Fehlklassifizierung fünfmal höher als die der Fehlklassifizierung in der anderen Richtung ausfallen.
+Dies kann beim Trainieren des Modells in unserem Experiment auf einfache Weise berücksichtigt werden, indem die entsprechenden Einträge von Personen mit einem hohen Kreditrisiko (fünfmal) dupliziert werden. Wenn mit dem Modell eine Person dann fälschlicherweise als Person mit einem niedrigen Kreditrisiko klassifiziert wird, wird diese Fehlklassifizierung im Modell fünfmal ausgeführt, d.h. einmal pro Duplikat. Auf diese Weise werden die Kosten für diesen Fehler in den Trainingsergebnissen erhöht.
+
 
 ## <a name="convert-the-dataset-format"></a>Konvertieren des Datensatzformats
 Der Originaldatensatz verwendet ein Format mit Trennung durch Leerzeichen. Machine Learning Studio funktioniert besser mit durch Trennzeichen getrennten Dateien (CSV). Daher werden wir den Datensatz konvertieren, indem wir die Leerzeichen durch Kommas ersetzen.  
@@ -55,7 +62,7 @@ Eine andere ist die Verwendung des sed-Befehls unter Unix:
 
     sed 's/ /,/g' german.data > german.csv  
 
-In beiden Fällen haben wir eine durch Kommas getrennte Version der Daten in eine Datei namens **german.csv** erstellt, die wir in unserem Experiment verwenden.
+In beiden Fällen haben wir eine durch Kommas getrennte Version der Daten in der Datei **german.csv** erstellt, die wir in unserem Experiment verwenden können.
 
 ## <a name="upload-the-dataset-to-machine-learning-studio"></a>Hochladen des DataSets in Machine Learning Studio
 Nach dem Konvertieren der Daten in das CSV-Format müssen Sie sie in Machine Learning Studio hochladen. 
@@ -74,7 +81,7 @@ Nach dem Konvertieren der Daten in das CSV-Format müssen Sie sie in Machine Lea
 
 6. Klicken Sie im Dialogfeld **Neuen Datensatz hochladen** auf **Durchsuchen**, und suchen Sie nach der zuvor erstellten Datei **german.csv**.
 
-7. Geben Sie einen Namen für das Dataset ein. In dieser exemplarischen Vorgehensweise nennen wir es „UCI German Credit Card Data“.
+7. Geben Sie einen Namen für das Dataset ein. Nennen Sie es in dieser exemplarischen Vorgehensweise „UCI German Credit Card Data“.
 
 8. Wählen Sie den Datentyp **Generic CSV File With no header (.nh.csv)**aus.
 
@@ -98,9 +105,4 @@ Weitere Informationen zum Importieren anderer Datentypen in einem Experiment fin
 [2]: media/machine-learning-walkthrough-2-upload-data/add-dataset.png
 [3]: media/machine-learning-walkthrough-2-upload-data/upload-dataset.png
 [4]: media/machine-learning-walkthrough-2-upload-data/dataset-list.png
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

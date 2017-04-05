@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 03/21/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: 09747f06d06f2f0e105b3eef9d46e1505b9e1a7b
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
+ms.openlocfilehash: 173607c481d0ba7ceece6310fcd131ff622a0677
+ms.lasthandoff: 03/23/2017
 
 ---
 
@@ -28,9 +28,9 @@ Der Azure Active Directory-Anwendungsproxy und PingAccess arbeiten nun zusammen,
 
 Um Ihren Benutzern den Zugriff auf Apps zu ermöglichen, die Header für die Authentifizierung verwenden, veröffentlichen Sie die App für den Remotezugriff sowohl im Anwendungsproxy als auch in PingAccess. Der Anwendungproxy behandelt diese Apps wie alle anderen und verwendet Azure AD zum Authentifizieren des Zugriffs und zum Leiten des Datenverkehrs durch den Connectordienst. PingAccess ist den Apps vorgelagert und übersetzt das Zugriffstoken aus Azure AD in einen Header, sodass die Anwendung die Authentifizierung in einem Format empfängt, das sie lesen kann. 
 
-Ihre Benutzer bemerken keinen Unterschied, wenn sie sich anmelden, um Ihre Unternehmens-Apps zu nutzen. Sie können weiterhin überall und auf beliebigen Geräten arbeiten. Wenn Ihre Benutzer sich im Büro befinden, werden ihre Authentifizierungsanforderungen nicht vom Anwendungsproxy weitergeleitet, doch PingAccess fungiert weiter als Vermittler, um die Token in Header zu übersetzen. 
+Ihre Benutzer bemerken keinen Unterschied, wenn sie sich anmelden, um Ihre Unternehmens-Apps zu nutzen. Sie können weiterhin überall und auf beliebigen Geräten arbeiten. Wenn Ihre Benutzer im Büro sind, fangen weder der Anwendungsproxy noch PingAccess den Datenverkehr ab, sodass sich für Ihre Benutzer nichts ändert.
 
-Da die Anwendungsproxyconnectors Datenverkehr zu allen Apps unabhängig von deren Authentifizierungstyp weiterleiten, sorgen sie auch weiter für einen automatischen Lastenausgleich. 
+Da die Anwendungsproxyconnectors Remotedatenverkehr zu allen Apps unabhängig von deren Authentifizierungstyp weiterleiten, sorgen sie auch weiter für einen automatischen Lastenausgleich. 
 
 ## <a name="how-do-i-get-access"></a>Wie erhalte ich Zugriff?
 
@@ -69,20 +69,25 @@ Dieser Abschnitt besteht aus zwei Teilen. Zunächst müssen Sie die App in Azure
 3. Wählen Sie oben auf dem Blatt **Hinzufügen** aus. 
 4. Wählen Sie **Lokale Anwendung** aus.
 5. Füllen Sie die Pflichtfelder mit Informationen zur neuen App aus. Befolgen Sie diese Anleitung für die folgenden Einstellungen:
-  - **Interne URL**: Geben Sie die URL an, über die Sie zur Anmeldeseite der App gelangen, wenn Sie sich im Unternehmensnetzwerk befinden.
+  - **Interne URL:** Normalerweise geben Sie die URL an, über die Sie zur Anmeldeseite der App gelangen, wenn Sie sich im Unternehmensnetzwerk befinden. Für diese Partnerschaft muss der Connector den PingAccess-Proxy als Startseite der App verwenden. Verwenden Sie dieses Format: `https://<host name of your PA server>:<port>/<App path name>`. Der Standardport ist 3000, Sie können diesen aber in PingAccess konfigurieren.
   - **Methode für die Vorauthentifizierung**: Azure Active Directory
   - **URL in Headern übersetzen**: Nein
 6. Klicken Sie unten auf dem Blatt auf **Hinzufügen**. Ihre Anwendung wird hinzugefügt, das Schnellstartmenü wird geöffnet. 
 7. Wählen Sie im Schnellstartmenü **Zuweisen eines Benutzers zu Testzwecken** aus, und fügen Sie der Anwendung mindestens einen Benutzer hinzu. Stellen Sie sicher, dass dieses Testkonto auf die lokale Anwendung zugreifen kann. 
 8. Wählen Sie **Zuweisen** aus, um die Zuweisung des Testbenutzers zu speichern. 
 9. Wählen Sie auf dem Blatt „App-Verwaltung“ **Einmaliges Anmelden** aus. 
-10. Wählen Sie im Dropdownmenü **Headerbasierte Anmeldung** aus. Wählen Sie **Speichern**aus. 
+10. Wählen Sie im Dropdownmenü **Headerbasierte Anmeldung** aus. Wählen Sie **Speichern**aus.
+
+  ![Auswählen der headerbasierten Anmeldung](./media/application-proxy-ping-access/sso-header.PNG)
+
 11. Schließen Sie das Blatt „Unternehmensanwendungen“, oder scrollen Sie ganz nach links, um zum Menü „Azure Active Directory“ zurückzukehren. 
 12. Wählen Sie **App-Registrierungen** aus.
 13. Wählen Sie die App aus, die Sie gerade hinzugefügt haben. Klicken Sie dann auf **Antwort-URLs**. 
 14. Prüfen Sie, ob die externe URL, die Sie Ihrer App in Schritt 5 zugewiesen haben, in der Liste „Antwort-URLs“ enthalten ist. Falls nicht, fügen Sie sie jetzt hinzu. 
 15. Wählen Sie auf der Blatt „App-Einstellungen“ **Erforderliche Berechtigungen** aus. 
-16. Wählen Sie **Hinzufügen**. Wählen Sie für die API **Microsoft Azure Active Directory** aus, und klicken Sie dann auf **Auswählen**. Wählen Sie für die Berechtigungen **Lesen und schreiben: Alle Anwendungen** aus. Klicken Sie dann auf **Auswählen** und **Fertig**.   
+16. Wählen Sie **Hinzufügen**. Wählen Sie für die API **Microsoft Azure Active Directory** aus, und klicken Sie dann auf **Auswählen**. Wählen Sie für die Berechtigungen die Optionen **Lesen und schreiben: Alle Anwendungen** und **Anmelden und Benutzerprofil lesen** aus. Klicken Sie dann auf **Auswählen** und **Fertig**.  
+
+  ![Auswählen von Berechtigungen](./media/application-proxy-ping-access/select-permissions.png) 
 
 #### <a name="collect-information-for-the-pingaccess-steps"></a>Erfassen von Informationen für die Schritte in PingAccess
 

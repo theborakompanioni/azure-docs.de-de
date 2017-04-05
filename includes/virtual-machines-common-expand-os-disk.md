@@ -80,10 +80,5 @@ Entsprechend können Sie andere Datenträger referenzieren, die der VM angefügt
 ($vm.StorageProfile.DataDisks | Where {$_.Name -eq 'my-second-data-disk'})[0].DiskSizeGB = 1023
 ```
 
-Wenn Sie herausfinden möchten, wie Datenträger einem virtuellen Azure Resource Manager-Computer angefügt werden, lesen Sie [diesen Artikel](../articles/virtual-machines/virtual-machines-windows-attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-
-
-
-<!--HONumber=Feb17_HO3-->
-
+Wenn Sie herausfinden möchten, wie Datenträger einem virtuellen Azure Resource Manager-Computer angefügt werden, lesen Sie [diesen Artikel](../articles/virtual-machines/windows/attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

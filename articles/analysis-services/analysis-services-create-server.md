@@ -13,16 +13,17 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 01/20/2017
+ms.date: 02/16/2017
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: 147c27d12b87379ff02b871ceabd8154e53b6c1a
-ms.openlocfilehash: f189e19b5b843d6a7d056c8230bc06d85e568202
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: 466595773663d43ad8e25fa9ec0ec0163a3f5962
+ms.lasthandoff: 03/24/2017
 
 
 ---
 # <a name="create-an-analysis-services-server"></a>Erstellen eines Analysis Services-Servers
-In diesem Artikel werden die Schritte zum Erstellen einer neuen Analysis Services-Serverressource in Ihrem Azure-Abonnement beschrieben.
+In diesem Artikel werden die Schritte zum Erstellen einer Analysis Services-Serverressource in Ihrem Azure-Abonnement beschrieben.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 Zunächst benötigen Sie Folgendes:
@@ -45,17 +46,17 @@ Zunächst benötigen Sie Folgendes:
    
    * **Servername:** Geben Sie einen eindeutigen Namen ein, mit dem auf den Server verwiesen wird.
    * **Abonnement:** Wählen Sie das Abonnement aus, für das dieser Server in Rechnung gestellt wird.
-   * **Ressourcengruppe:** Dies sind Container, die zum Verwalten einer Azure-Ressourcensammlung entwickelt wurden. Weitere Informationen finden Sie unter [Ressourcengruppen](../azure-resource-manager/resource-group-overview.md).
+   * **Ressourcengruppe:** Diese Container sind auf das Verwalten einer Azure-Ressourcensammlung ausgelegt. Weitere Informationen finden Sie unter [Ressourcengruppen](../azure-resource-manager/resource-group-overview.md).
    * **Standort:** An diesem Standort des Azure-Rechenzentrums wird der Server gehostet. Wählen Sie einen Standort in der Nähe Ihrer größten Benutzerbasis aus.
-   * **Tarif:** Wählen Sie einen Tarif aus. Tabellenmodelle bis zu 100 GB werden unterstützt. Sie können den Tarif später jederzeit ändern.
+   * **Tarif:** Wählen Sie einen Tarif aus. Tabellenmodelle bis zu 100 GB werden unterstützt. Weitere Informationen finden Sie unter [Azure Analysis Services – Preise](https://azure.microsoft.com/pricing/details/analysis-services/).
 4. Klicken Sie auf **Erstellen**.
 
-Die Erstellung dauert in der Regel weniger als eine Minute, meist nur wenige Sekunden. Wenn Sie **Add to Portal** (Zu Portal hinzufügen) ausgewählt haben, navigieren Sie zu Ihrem Portal, um den neuen Server anzuzeigen. Oder navigieren Sie zu **Weitere Dienste** > **Analysis Services**, um zu überprüfen, ob der Server bereit ist. Wenn er nicht angezeigt wird, aktualisieren Sie die Liste.
+Die Erstellung dauert in der Regel weniger als eine Minute, meist nur wenige Sekunden. Wenn Sie **Add to Portal** (Zu Portal hinzufügen) ausgewählt haben, navigieren Sie zu Ihrem Portal, um den neuen Server anzuzeigen. Oder navigieren Sie zu **Weitere Dienste** > **Analysis Services**, um zu überprüfen, ob der Server bereit ist.
 
  ![Dashboard](./media/analysis-services-create-server/aas-create-server-dashboard.png)
 
 ## <a name="automate-server-creation"></a>Automatisieren der Serverbereitstellung
-Sie können die Serverbereitstellung mithilfe von Azure Resource Manager-Vorlagendateien dynamisch automatisieren. Sehen Sie sich dieses hilfreiche Video an, um mehr zu erfahren.
+Sie können die Serverbereitstellung mithilfe von Azure Resource Manager-Vorlagendateien dynamisch automatisieren. Weitere Informationen erhalten Sie in diesem hilfreichen Video.
 
 >[!VIDEO https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation/player]
 >
@@ -66,10 +67,5 @@ Sie können die Serverbereitstellung mithilfe von Azure Resource Manager-Vorlage
 Nach dem Erstellen des Servers können Sie mithilfe von SSDT oder SSMS [ein Modell für den Server bereitstellen](analysis-services-deploy.md).
 
 Wenn ein Modell, das Sie für den Server bereitstellen, mit lokalen Datenquellen verbunden wird, müssen Sie ein [lokales Datengateway](analysis-services-gateway.md) auf einem Computer in Ihrem Netzwerk installieren.
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 

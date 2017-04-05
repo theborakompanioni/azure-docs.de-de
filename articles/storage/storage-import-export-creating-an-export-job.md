@@ -1,5 +1,5 @@
 ---
-title: "Erstellen eines Exportauftrags für Azure Import/Export | Microsoft Docs"
+title: "Erstellen eines Exportauftrags für Azure Import/Export | Microsoft-Dokumentation"
 description: "Es wird beschrieben, wie Sie einen Exportauftrag für den Microsoft Azure Import/Export-Dienst erstellen."
 author: muralikk
 manager: syadav
@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 74182c8c357085f186aaa43adfaef80a083d16bb
-ms.openlocfilehash: 55a45cf4169056d9426141a533dd1d32fe8064c4
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 3440d7e80e6a806c4119dff687fb9c590b8f0d14
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -54,7 +54,7 @@ Zum Erstellen eines Exportauftrags für den Microsoft Azure Import/Export-Dienst
 
  Weitere Informationen zum Angeben der zu exportierenden Blobs finden Sie in der Beschreibung des [Put Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate)-Vorgangs.
 
-## <a name="obtaining-your-shipping-location"></a>Beschaffen des Versandziels
+## <a name="obtaining-your-shipping-location"></a>Beschaffen der Versandadresse
 Vor dem Erstellen eines Exportauftrags müssen Sie sich den Namen und die Adresse des Versandziels beschaffen, indem Sie den Vorgang [Get Location](https://portal.azure.com) oder [List Locations](/rest/api/storageimportexport/listlocations) aufrufen. `List Locations` gibt eine Liste mit Orten und den dazugehörigen Versandadressen zurück. Sie können einen Ort aus der zurückgegebenen Liste auswählen und Ihre Festplatten an diese Adresse schicken. Sie können auch den Vorgang `Get Location` verwenden, um die Versandadresse für einen bestimmten Ort direkt zu beschaffen.
 
 Führen Sie die unten angegebenen Schritte aus, um das Versandziel zu beschaffen:
@@ -94,6 +94,7 @@ Führen Sie die unten angegebenen Schritte aus, um das Versandziel zu beschaffen
 ## <a name="receiving-the-package"></a>Empfangen des Pakets
  Nach der Verarbeitung des Exportauftrags werden Ihre Laufwerke mit den verschlüsselten Daten an Sie zurückgesendet. Sie können den BitLocker-Schlüssel für jedes Laufwerk durch Aufrufen des [Get Job](/rest/api/storageimportexport/jobs#Jobs_Get)-Vorgangs abrufen. Anschließend können Sie das Laufwerk mit dem Schlüssel entsperren. Die Laufwerkmanifestdatei auf jedem Laufwerk enthält die Liste der Dateien auf dem Laufwerk sowie die ursprüngliche Blobadresse für jede Datei.
 
-## <a name="see-also"></a>Weitere Informationen
- [Verwenden der REST-API des Import/Export-Diensts](storage-import-export-using-the-rest-api.md)
+## <a name="next-steps"></a>Nächste Schritte
+
+* [Verwenden der REST-API des Import/Export-Diensts](storage-import-export-using-the-rest-api.md)
 

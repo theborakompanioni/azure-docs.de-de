@@ -1,6 +1,6 @@
 ---
-title: Empfangen von Ereignissen von Azure Event Hubs mithilfe von .NET Standard | Microsoft Docs
-description: Erste Schritte zum Empfangen von Nachrichten mit EventProcessorHost in .NET Standard
+title: Empfangen von Ereignissen von Azure Event Hubs mithilfe von .NET Standard | Microsoft-Dokumentation
+description: "Erste Schritte zum Empfangen von Nachrichten mit „EventProcessorHost“ in .NET Standard"
 services: event-hubs
 documentationcenter: na
 author: jtaubensee
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/03/2017
+ms.date: 03/27/2017
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 65ed5164b8d010453ed34e8b8cdf68915e136007
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: c86a1feee02bbf8580a40119ac140528217e435d
+ms.lasthandoff: 03/28/2017
 
 ---
 
@@ -30,7 +30,7 @@ In diesem Tutorial lernen Sie, wie Sie eine .NET Core-Konsolenanwendung zum Empf
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* [Microsoft Visual Studio 2015 oder 2017](http://www.visualstudio.com) In den Beispielen in diesem Tutorial wird Visual Studio 2015 verwendet, aber Visual Studio 2017 wird ebenfalls unterstützt.
+* [Microsoft Visual Studio 2015 oder 2017](http://www.visualstudio.com) In den Beispielen in diesem Tutorial wird Visual Studio 2017 verwendet, aber Visual Studio 2015 wird ebenfalls unterstützt.
 * [.NET Core Visual Studio 2015- oder 2017-Tools](http://www.microsoft.com/net/core).
 * Ein Azure-Abonnement.
 * Ein Azure Event Hubs-Namespace
@@ -53,32 +53,9 @@ Verwenden Sie zunächst das [Azure-Portal](https://portal.azure.com), um einen N
 
 ## <a name="create-a-console-application"></a>Erstellen einer Konsolenanwendung
 
-1. Starten Sie Visual Studio. Klicken Sie im Menü **Datei** auf **Neu** und dann auf **Projekt**. Erstellen Sie eine .NET Core-Konsolenanwendung.
+Starten Sie Visual Studio. Klicken Sie im Menü **Datei** auf **Neu** und dann auf **Projekt**. Erstellen Sie eine .NET Core-Konsolenanwendung.
 
-    ![Neues Projekt][2]
-
-2. Doppelklicken Sie im Projektmappen-Explorer auf die Datei **project.json**, um sie im Visual Studio-Editor zu öffnen.
-3. Fügen Sie der Deklaration `"imports"` im Abschnitt `"frameworks"` die Zeichenfolge `"portable-net45+win8"` hinzu. Dieser Abschnitt sollte jetzt wie folgt angezeigt werden. Diese Zeichenfolge ist aufgrund der Abhängigkeit von Azure Storage von OData erforderlich:
-
-    ```json
-    "frameworks": {
-      "netcoreapp1.0": {
-        "imports": [
-          "dnxcore50",
-          "portable-net45+win8"
-        ]
-      }
-    }
-    ```
-
-4. Klicken Sie im Menü **Datei** auf **Alle speichern**.
-
-Beachten Sie, dass dieses Tutorial zeigt, wie eine .NET Core-Anwendung geschrieben wird. Wenn Sie jedoch das vollständige .NET Framework als Ziel setzen möchten, fügen Sie in der Datei „project.json“ im Abschnitt `"frameworks"` folgende Codezeile ein:
-
-```json
-"net451": {
-},
-```
+![Neues Projekt][2]
 
 ## <a name="add-the-event-hubs-nuget-package"></a>Hinzufügen des Event Hubs-NuGet-Pakets
 
@@ -93,9 +70,9 @@ Fügen Sie Ihrem Projekt die folgenden NuGet-Pakete hinzu:
 2. Öffnen Sie die Datei „SimpleEventProcessor.cs“, und fügen Sie folgende `using`-Anweisung am Anfang der Datei ein.
 
     ```csharp
-    using System.Text;
     using Microsoft.Azure.EventHubs;
     using Microsoft.Azure.EventHubs.Processor;
+    using System.Threading.Tasks;
     ```
 
 3. Implementieren Sie die `IEventProcessor`-Schnittstelle. Ersetzen Sie den gesamten Inhalt der Klasse `SimpleEventProcessor` durch folgenden Code:
@@ -141,6 +118,7 @@ Fügen Sie Ihrem Projekt die folgenden NuGet-Pakete hinzu:
     ```csharp
     using Microsoft.Azure.EventHubs;
     using Microsoft.Azure.EventHubs.Processor;
+    using System.Threading.Tasks;
     ```
 
 2. Fügen Sie der `Program`-Klasse Konstanten für die Event Hubs-Verbindungszeichenfolge, den Event Hub-Namen, den Speicherkonto-Containernamen, den Speicherkontonamen und den Speicherkontoschlüssel hinzu. Fügen Sie folgenden Code ein, sodass die Platzhalter durch die entsprechenden Werte ersetzt werden.

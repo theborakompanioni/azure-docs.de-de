@@ -18,9 +18,9 @@ ms.date: 02/28/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: 40042fd5ca2671cc26a67736b1c7a1e907c004d8
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
+ms.openlocfilehash: 68155ebaa6af36500bfe856c9bcd49f5efb6cbc2
+ms.lasthandoff: 03/23/2017
 
 
 ---
@@ -43,6 +43,8 @@ Um anzuzeigen, wie viele Lizenzen verfügbar sind, wechseln Sie zu **Azure Activ
 
 Klicken Sie auf ein Produkt, um festzustellen, welche Benutzer und Gruppen Lizenzen nutzen. Unter **Lizenzierte Benutzer** werden alle Benutzer angezeigt, denen direkt oder über eine oder mehrere Gruppen Lizenzen zugewiesen wurden. Unter **Lizenzierte Gruppen** sind alle Gruppen aufgeführt, denen Sie das Produkt zugewiesen haben.
 
+**PowerShell:** PowerShell-Cmdlets melden diesen Fehler als _CountViolation_.
+
 ## <a name="conflicting-service-plans"></a>In Konflikt stehende Diensteeinstellungen
 
 **Problem:** Eines der in der Gruppe angegebenen Produkte enthält einen Dienstplan, für den ein Konflikt mit einem anderen Dienstplan besteht, der dem Benutzer bereits über ein anderes Produkt zugewiesen ist. Einige Dienstpläne sind so konfiguriert, dass sie demselben Benutzer nicht wie ein anderer verwandter Dienstplan zugewiesen werden können.
@@ -56,11 +58,15 @@ Eine Möglichkeit zum Lösen dieses Konflikts ist das Deaktivieren dieser beiden
 
 Die Entscheidung, wie der Produktlizenzkonflikt zu lösen ist, liegt stets beim Administrator. Azure AD löst Lizenzkonflikte nicht automatisch.
 
+**PowerShell:** PowerShell-Cmdlets melden diesen Fehler als _MutuallyExclusiveViolation_.
+
 ## <a name="other-products-depend-on-this-license"></a>Andere Produkte sind von dieser Lizenz abhängig
 
 **Problem:** Eines der in der Gruppe angegebenen Produkte enthält einen Dienstplan, der für einen anderen Dienstplan (in einem anderen Produkt) aktiviert werden muss, um zu funktionieren. Dieser Fehler tritt auf, wenn Azure AD versucht, den zugrunde liegenden Dienstplan zu entfernen. Dies kann beispielsweise passieren, wenn der Benutzer aus der Gruppe entfernt wird.
 
 Zum Lösen dieses Problems müssen Sie sicherstellen, dass der erforderliche Plan Benutzern weiterhin über eine andere Methode zugewiesen ist oder dass die abhängigen Dienste für diese Benutzer deaktiviert sind. Anschließend können Sie die Gruppenlizenz für diese Benutzer richtig entfernen.
+
+**PowerShell:** PowerShell-Cmdlets melden diesen Fehler als _DependencyViolation_.
 
 ## <a name="usage-location-isnt-allowed"></a>Verwendungsstandort ist nicht zulässig
 
@@ -69,6 +75,8 @@ Zum Lösen dieses Problems müssen Sie sicherstellen, dass der erforderliche Pla
 Wenn Azure AD versucht, einem Benutzer eine Gruppenlizenz zuzuweisen, dessen Verwendungsstandort nicht unterstützt wird, tritt ein Fehler auf, der für den Benutzer aufgezeichnet wird.
 
 Sie können dieses Problem beheben, indem Sie Benutzer aus den nicht unterstützten Standorten der lizenzierten Gruppe entfernen. Alternativ können Sie wie folgt vorgehen: Wenn die aktuellen Werte des Verwendungsstandorts nicht den tatsächlichen Benutzerstandort darstellen, können Sie sie ändern, damit die Lizenzen beim nächsten Mal richtig zugewiesen werden (wenn der neue Standort unterstützt wird).
+
+**PowerShell:** PowerShell-Cmdlets melden diesen Fehler als _ProhibitedInUsageLocationViolation_.
 
 > [!NOTE]
 > Wenn von Azure AD Gruppenlizenzen zugewiesen werden, erben alle Benutzer ohne Verwendungsstandort den Standort des Verzeichnisses. Es wird empfohlen, dass Administratoren die richtigen Werte für den Verwendungsstandort von Benutzern festlegen, bevor sie die gruppenbasierte Lizenzierung verwenden, um die vor Ort geltenden Gesetze und Bestimmungen zu erfüllen.

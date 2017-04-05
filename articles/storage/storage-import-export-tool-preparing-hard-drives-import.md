@@ -15,20 +15,19 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 48ee2a2bd2ecd2f487748588ef2ad3138dd9983b
-ms.openlocfilehash: a113120381c4e83bd64a41fd30beb138cb1dd5fa
-ms.lasthandoff: 01/18/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: d95aaf81ee4d9c19549a57dd1af0f79a1e1bffdd
+ms.lasthandoff: 03/30/2017
 
 
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>Vorbereiten von Festplatten für einen Importauftrag
-## <a name="overview"></a>Übersicht
 
 Das WAImportExport-Tool ist das Tool für die Laufwerkvorbereitung und Reparatur, das Sie für den [Microsoft Azure Import/Export-Dienst](storage-import-export-service.md) verwenden können. Sie können dieses Tool zum Kopieren von Daten auf die Laufwerke verwenden, die Sie an ein Azure-Rechenzentrum senden. Nach Abschluss eines Importauftrags können Sie dieses Tool zum Reparieren von Blobs verwenden, die beschädigt sind, fehlen oder in Konflikt mit anderen Blobs stehen. Nachdem Sie die Laufwerke für einen abgeschlossenen Exportauftrag erhalten haben, können Sie dieses Tool nutzen, um Dateien zu reparieren, die beschädigt waren oder auf den Laufwerken fehlten. In diesem Artikel werden wir die Verwendung dieses Tools besprechen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-### <a name="prerequisites-for-running-waimportexportexe"></a>Voraussetzungen zum Ausführen von WAImportExport.exe
+### <a name="requirements-for-waimportexportexe"></a>Anforderungen zum Ausführen von „WAImportExport.exe“
 
 - **Konfiguration des Computers**
   - Windows 7, Windows Server 2008 R2 oder ein neueres Windows-Betriebssystem
@@ -52,7 +51,7 @@ Das WAImportExport-Tool ist das Tool für die Laufwerkvorbereitung und Reparatur
 
 ## <a name="download-and-install-waimportexport"></a>Herunterladen und Installieren von WAImportExport
 
-Laden Sie die [neueste Version von WAImportExport.exe](http://download.microsoft.com/download/3/6/B/36BFF22A-91C3-4DFC-8717-7567D37D64C5/WAImportExport.zip) herunter. Extrahieren Sie den ZIP-Inhalt in ein Verzeichnis auf Ihrem Computer.
+Laden Sie die [neueste Version von WAImportExport.exe](https://www.microsoft.com/download/details.aspx?id=42659) herunter. Extrahieren Sie den ZIP-Inhalt in ein Verzeichnis auf Ihrem Computer.
 
 Die nächste Aufgabe besteht darin, CSV-Dateien zu erstellen.
 
@@ -89,8 +88,8 @@ BasePath,DstBlobPathOrPrefix,BlobType,Disposition,MetadataFile,PropertiesFile
 | DstBlobPathOrPrefix | **[Erforderlich]**<br/> Der Pfad zum virtuellen Zielverzeichnis in Ihrem Microsoft Azure-Speicherkonto. Das virtuelle Verzeichnis kann, muss jedoch noch nicht vorhanden sein. Wenn es nicht vorhanden ist, wird es vom Import/Export-Dienst erstellt.<br/><br/>Achten Sie darauf, gültige Containernamen zu verwenden, wenn Sie virtuelle Zielverzeichnisse oder Blobs angeben. Containernamen müssen kleingeschrieben werden. Benennungsregeln für Container finden Sie unter [Naming and Referencing Containers, Blobs, and Metadata](/rest/api/storageservices/fileservices/naming-and-referencing-containers--blobs--and-metadata) (Benennen von Containern, Blobs und Metadaten und Verweisen auf diese). Wenn nur der Stamm angegeben wird, wird die Verzeichnisstruktur der Quelle im Zielblobcontainer repliziert. Für den Fall, dass eine andere Verzeichnisstruktur als diejenige in der Quelle gewünscht ist, stehen in der CSV-Datei mehrere Zeilen zur Zuordnung zur Verfügung.<br/><br/>Sie können einen Container oder ein Blobpräfix angeben, wie etwa „music/70s/“. Das Zielverzeichnis muss mit dem Containernamen beginnen, gefolgt von einem Schrägstrich „/“, und kann optional ein virtuelles Blobverzeichnis enthalten, das mit „/“ endet.<br/><br/>Wenn der Zielcontainer der Stammcontainer ist, müssen Sie explizit den Stammcontainer angeben – einschließlich des Schrägstrichs, wie „$root/“. Da die Namen von Blobs unter dem Stammcontainer nicht „/“ enthalten können, werden Unterverzeichnisse des Quellverzeichnisses nicht kopiert, wenn das Zielverzeichnis der Stammcontainer ist.<br/><br/>**Beispiel**<br/>Wenn der Blobzielpfad „https://mystorageaccount.blob.core.windows.net/video“ ist, kann der Wert dieses Felds „video/“ sein.  |
 | BlobType | **[Optional]** block &#124; page<br/>Gegenwärtig unterstützt der Import/Export-Dienst 2 Arten von Blobs. Seitenblobs und Blockblobs – standardmäßig werden alle Dateien als Blockblobs importiert. \*.vhd und \*.vhdx werden als Seitenblobs importiert. Die zulässige Größe von Blockblobs und Seitenblobs ist begrenzt. Weitere Informationen finden Sie unter [Skalierbarkeitsziele für Blobs, Warteschlangen, Tabellen und Dateien](storage-scalability-targets.md#scalability-targets-for-blobs-queues-tables-and-files).  |
 | Disposition | **[Optional]** rename &#124; no-overwrite &#124; overwrite (umbenennen, nicht überschreiben, überschreiben) <br/> Dieses Feld gibt das Kopierverhalten beim Import an, d.h. wenn Daten vom Datenträger in das Speicherkonto hochgeladen werden. Folgende Optionen sind verfügbar: rename&#124;overwrite&#124;no-overwrite (umbenennen, nicht überschreiben, überschreiben). Ohne besondere Angabe gilt „rename“ als Standard. <br/><br/>**Rename**: Wenn das Objekt mit dem gleichen Namen vorhanden ist, wird eine Kopie im Ziel erstellt.<br/>Overwrite: Die Datei wird mit der neueren Dateiversion überschrieben. Die Version mit der letzten Änderung überschreibt die ältere.<br/>**No-overwrite**: Wenn die Datei bereits vorhanden ist, wird sie nicht überschrieben.|
-| MetadataFile | **[Optional]** <br/>Der Wert dieses Felds ist die Metadatendatei, die bereitgestellt werden kann, wenn die Metadaten der Objekte beibehalten werden müssen, oder um benutzerdefinierte Metadaten bereitzustellen. Pfad zur Metadatendatei für die Zielblobs. Weitere Informationen finden Sie unter [Import-Export Service Metadata and Properties File Format](storage-import-export-file-format-metadata-and-properties.md) (Import/Export-Dienst: Format der Metadaten- und Eigenschaftendatei). |
-| PropertiesFile | **[Optional]** <br/>Pfad zur Eigenschaftendatei für die Zielblobs. Weitere Informationen finden Sie unter [Import-Export Service Metadata and Properties File Format](storage-import-export-file-format-metadata-and-properties.md) (Import/Export-Dienst: Format der Metadaten- und Eigenschaftendatei). |
+| MetadataFile | **[Optional]** <br/>Der Wert dieses Felds ist die Metadatendatei, die bereitgestellt werden kann, wenn die Metadaten der Objekte beibehalten werden müssen, oder um benutzerdefinierte Metadaten bereitzustellen. Pfad zur Metadatendatei für die Zielblobs. Weitere Informationen finden Sie unter [Format der Metadaten- und Eigenschaftendatei des Import/Export-Diensts](storage-import-export-file-format-metadata-and-properties.md). |
+| PropertiesFile | **[Optional]** <br/>Pfad zur Eigenschaftendatei für die Zielblobs. Weitere Informationen finden Sie unter [Format der Metadaten- und Eigenschaftendatei des Import/Export-Diensts](storage-import-export-file-format-metadata-and-properties.md). |
 
 ## <a name="prepare-initialdriveset-or-additionaldriveset-csv-file"></a>Vorbereiten von InitialDriveSet- oder AdditionalDriveSet-CSV-Datei
 
@@ -187,7 +186,7 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2  /AbortSession
 
 Nur die letzte Kopiersitzung kann abgebrochen werden, wenn sie fehlerbedingt beendet wurde. Beachten Sie, dass Sie die erste Kopiersitzung für ein Laufwerk nicht abbrechen können. Stattdessen müssen Sie die Kopiersitzung mit einer neuen Journaldatei neu starten.
 
-### <a name="resume-a-latest-interrupted-session"></a>Fortsetzen der aktuellen unterbrochenen Sitzung:
+### <a name="resume-a-latest-interrupted-session"></a>Fortsetzen der aktuellen unterbrochenen Sitzung
 
 Wenn eine Kopiersitzung aus beliebigem Grund unterbrochen wird, können Sie sie fortsetzen, indem Sie das Tool nur unter Angabe der Journaldatei ausführen:
 
@@ -222,7 +221,7 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2 /ResumeSession
 |     /CopyLogFile:&lt;Laufwerk-Kopierprotokolldatei&gt; | **Erforderlich** Gilt nur für RepairImport und RepairExport. Pfad zur Kopierprotokolldatei des Laufwerks (ausführlich oder Fehler).  |
 |     /ManifestFile:&lt;Laufwerkmanifestdatei&gt; | **Erforderlich** Gilt nur für RepairExport.<br/> Pfad der Laufwerkmanifestdatei.  |
 |     /PathMapFile:&lt;Laufwerkpfad-Zuordnungsdatei&gt; | **Optional**. Gilt nur für RepairImport.<br/> Pfad zur Datei, die relative Zuordnungen von Dateipfaden zu Speicherorten der eigentlichen Dateien zum Laufwerksstamm enthält (mit Tabstopptrennzeichen). Bei der ersten Angabe wird sie mit Dateipfaden mit leeren Zielen aufgefüllt, was bedeutet, das sie entweder nicht in den Zielverzeichnissen gefunden, der Zugriff verweigert wurde, ihre Namen ungültig oder sie in mehreren Verzeichnissen vorhanden sind. Die Pfadzuordnungsdatei kann manuell bearbeitet werden, sodass sie die richtigen Zielpfade enthält, und erneut angegeben werden, damit das Tool die Dateipfade ordnungsgemäß auflöst.  |
-|     /ExportBlobListFile:&lt;Exportbloblisten-Datei&gt; | **Erforderlich**. Gilt nur für PreviewExport.<br/> Pfad zur XML-Datei mit der Liste der Blobpfade oder Blobpfadpräfixe für die zu exportierenden Blobs. Das Dateiformat ist identisch mit dem Bloblisten-Blobformat im „Put Job“-Vorgang der Import/Export-Dienst-REST-API.  |
+|     /ExportBlobListFile:&lt;Exportbloblisten-Datei&gt; | **Erforderlich**. Gilt nur für PreviewExport.<br/> Pfad zur XML-Datei mit der Liste der Blobpfade oder Blobpfadpräfixe für die zu exportierenden Blobs. Das Dateiformat ist identisch mit dem Bloblisten-Blobformat im „Put Job“-Vorgang der REST-API des Import/Export-Diensts.  |
 |     /DriveSize:&lt;Laufwerkgröße&gt; | **Erforderlich**. Gilt nur für PreviewExport.<br/>  Die Größe der Laufwerke, die für den Export verwendet werden. Beispielsweise 500GB, 1,5TB. Hinweis: 1GB = 1.000.000.000 Bytes 1TB = 1.000.000.000.000 Bytes  |
 |     /DataSet:&lt;dataset.csv&gt; | **Erforderlich**<br/> Eine CSV-Datei, die eine Liste von Verzeichnissen enthält und/oder eine Liste von Dateien, die auf Ziellaufwerke kopiert werden sollen.  |
 |     /silentmode  | **Optional**.<br/> Ohne Angabe werden Sie an Laufwerkanforderungen erinnert, und Ihre Bestätigung ist erforderlich, um fortzufahren.  |
@@ -269,7 +268,7 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2 /ResumeSession
 </DriveManifest>
 ```
 
-### <a name="sample-journal-file-for-each-drive-ending-with-xml"></a>Beispiel einer Journaldatei für jedes Laufwerk: Endung XML
+### <a name="sample-journal-file-xml-for-each-drive"></a>Beispiel einer Journaldatei (XML) für jedes Laufwerk
 
 ```xml
 [BeginUpdateRecord][2016/11/01 21:22:25.379][Type:ActivityRecord]
@@ -286,7 +285,7 @@ SaveCommandOutput: Completed
 [EndUpdateRecord]
 ```
 
-### <a name="sample-journal-file-for-session-ended-with-jrn--which-records-the-trail-of-sessions"></a>Beispiel einer Sitzungsjournaldatei: Endung JRN; zeichnet die Spur der Sitzungen auf
+### <a name="sample-journal-file-jrn-for-session-which-records-the-trail-of-sessions"></a>Beispiel einer Sitzungsjournaldatei (JRN), das die Spur der Sitzungen aufzeichnet
 
 ```
 [BeginUpdateRecord][2016/11/02 18:24:14.735][Type:NewJournalFile]
@@ -334,7 +333,7 @@ Beispiel: „session-1“, „session#1“ oder „session\_1“
 
 Bei jeder Ausführung des WAImportExport-Tools zum Kopieren von Dateien auf die Festplatte erstellt das Tool eine Kopiersitzung. Der Status der Kopiersitzung wird in die Journaldatei geschrieben. Wenn eine Kopiersitzung (z.B. aufgrund eines Systemausfalls) unterbrochen wird, können Sie sie fortsetzen, indem Sie das Tool erneut ausführen und die Journaldatei in der Befehlszeile angeben.
 
-Für jede Festplatte, die Sie mit dem Azure Import/Export-Tool vorbereiten, erstellt das Tool eine einzelne Journaldatei mit dem Namen „&lt;Laufwerk-ID&gt;.xml“, wobei Laufwerk-ID die Seriennummer des Laufwerks ist, die das Tool aus dem Datenträger liest. Sie benötigen die Journaldateien von allen Ihren Laufwerken, um den Importauftrag zu erstellen. Die Journaldatei kann auch verwendet werden, um die Vorbereitung des Laufwerks nach Unterbrechung des Tools fortzusetzen.
+Für jede Festplatte, die Sie mit dem Azure Import/Export-Tool vorbereiten, erstellt das Tool eine einzelne Journaldatei mit dem Namen „&lt;DriveID&gt;.xml“, wobei DriveID die Seriennummer des Laufwerks ist, die das Tool aus dem Datenträger liest. Sie benötigen die Journaldateien von allen Ihren Laufwerken, um den Importauftrag zu erstellen. Die Journaldatei kann auch verwendet werden, um die Vorbereitung des Laufwerks nach Unterbrechung des Tools fortzusetzen.
 
 #### <a name="what-is-a-log-directory"></a>Was ist ein Protokollverzeichnis?
 
@@ -367,13 +366,13 @@ Um TPM in BitLocker zu deaktivieren, führen Sie die folgenden Schritte aus:<br/
 3. Bearbeiten Sie die Richtlinie **Zusätzliche Authentifizierung beim Start anfordern**.
 4. Legen Sie die Richtlinie auf **Aktiviert** fest, und stellen Sie sicher, dass **BitLocker ohne kompatibles TPM zulassen** aktiviert ist.
 
-####  <a name="how-to-check-if-net-4-or-higher-version-is-installed-on-my-machine"></a>Wie kann ich überprüfen, ob .Net 4 oder eine höhere Version auf meinem Computer installiert ist?
+####  <a name="how-to-check-if-net-4-or-higher-version-is-installed-on-my-machine"></a>Wie kann ich überprüfen, ob .NET 4 oder eine höhere Version auf meinem Computer installiert ist?
 
 Alle Microsoft .NET Framework-Versionen werden im folgenden Verzeichnis installiert: „%windir%\Microsoft.NET\Framework\“.
 
-Navigieren Sie zu dem oben erwähnten Verzeichnis Ihres Zielcomputers, auf dem das Tool ausgeführt werden soll. Suchen Sie nach einem Ordnernamen, der mit „v4“ beginnt. Wenn ein solches Verzeichnis nicht vorhanden ist, ist .Net v4 nicht auf dem Computer installiert. Sie können .Net 4 mit [Microsoft .NET Framework 4 (Webinstaller)](https://www.microsoft.com/download/details.aspx?id=17851) auf Ihren Computer herunterladen.
+Navigieren Sie zu dem oben erwähnten Verzeichnis Ihres Zielcomputers, auf dem das Tool ausgeführt werden soll. Suchen Sie nach einem Ordnernamen, der mit „v4“ beginnt. Wenn ein solches Verzeichnis nicht vorhanden ist, ist .NET 4 nicht auf dem Computer installiert. Sie können .Net 4 mit [Microsoft .NET Framework 4 (Webinstaller)](https://www.microsoft.com/download/details.aspx?id=17851) auf Ihren Computer herunterladen.
 
-### <a name="limits"></a>Einschränkungen
+### <a name="limits"></a>Grenzen
 
 #### <a name="how-many-drives-can-i-preparesend-at-the-same-time"></a>Wie viele Laufwerke kann ich zur gleichen Zeit vorbereiten/senden?
 
@@ -403,9 +402,20 @@ Das WAImportExport-Tool liest und schreibt Dateien Batch für Batch, wobei ein B
 
 ### <a name="waimportexport-output"></a>WAImportExport-Ausgabe
 
-#### <a name="there-are-two-journal-files-which-one-should-i-upload-to-azure-portal"></a>Es gibt zwei Journaldateien. Welche sollte ich in das Azure-Portal hochladen?
+#### <a name="there-are-two-journal-files-which-one-should-i-upload-to-azure-portal"></a>Es gibt zwei Journaldateien, welche davon soll ich in das Azure-Portal hochladen?
 
-**XML**: Für jede Festplatte, die Sie mit dem WAImportExport-Tool vorbereiten, erstellt das Tool eine einzelne Journaldatei mit dem Namen „&lt;Laufwerk-ID&gt;.xml“, wobei Laufwerk-ID die Seriennummer des Laufwerks ist, die das Tool aus dem Datenträger liest. Sie benötigen die Journaldateien von allen Ihren Laufwerken, um den Importauftrag im Azure-Portal zu erstellen. Diese Journaldatei kann auch verwendet werden, um die Vorbereitung des Laufwerks nach Unterbrechung des Tools fortzusetzen.
+**XML**: Für jede Festplatte, die Sie mit dem WAImportExport-Tool vorbereiten, erstellt das Tool eine einzelne Journaldatei mit dem Namen `<DriveID>.xml`, wobei DriveID die Seriennummer des Laufwerks ist, die das Tool aus dem Datenträger liest. Sie benötigen die Journaldateien von allen Ihren Laufwerken, um den Importauftrag im Azure-Portal zu erstellen. Diese Journaldatei kann auch verwendet werden, um die Vorbereitung des Laufwerks nach Unterbrechung des Tools fortzusetzen.
 
-**JRN**: Die Journaldatei mit Suffix „.jrn“ enthält den Status für alle Kopiersitzungen einer Festplatte. Sie enthält außerdem die benötigten Informationen zum Erstellen des Importauftrags. Wenn das WAImportExport-Tool für die Sitzung ausgeführt wird, müssen Sie sowohl eine Journaldatei als auch eine Kopiersitzungs-ID angeben.
+**JRN**: Die Journaldatei mit dem Suffix `.jrn` enthält den Status für alle Kopiersitzungen einer Festplatte. Sie enthält außerdem die benötigten Informationen zum Erstellen des Importauftrags. Wenn das WAImportExport-Tool für die Sitzung ausgeführt wird, müssen Sie sowohl eine Journaldatei als auch eine Kopiersitzungs-ID angeben.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* [Einrichten des Azure Import/Export-Tools](storage-import-export-tool-setup.md)
+* [Festlegen von Eigenschaften und Metadaten im Rahmen des Importprozesses](storage-import-export-tool-setting-properties-metadata-import.md)
+* [Beispielworkflow für die Vorbereitung von Festplatten für einen Importauftrag](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow.md)
+* [Kurzübersicht über häufig verwendete Befehle](storage-import-export-tool-quick-reference.md) 
+* [Überprüfen des Auftragsstatus mit Protokollkopiedateien](storage-import-export-tool-reviewing-job-status-v1.md)
+* [Reparieren eines Importauftrags](storage-import-export-tool-repairing-an-import-job-v1.md)
+* [Reparieren eines Exportauftrags](storage-import-export-tool-repairing-an-export-job-v1.md)
+* [Behandeln von Problemen mit dem Azure Import/Export-Tool](storage-import-export-tool-troubleshooting-v1.md)
 
