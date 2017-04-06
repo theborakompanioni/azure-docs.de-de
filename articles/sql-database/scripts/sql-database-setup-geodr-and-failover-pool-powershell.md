@@ -38,7 +38,8 @@ Dieses PowerShell-Beispielskript konfiguriert die aktive Georeplikation für ein
 Nach Ausführung des Skriptbeispiels können mit dem folgenden Befehl die Ressourcengruppe und alle damit verbundenen Ressourcen entfernt werden.
 
 ```powershell
-Remove-AzureRmResourceGroup -ResourceGroupName "myResourceGroup"
+Remove-AzureRmResourceGroup -ResourceGroupName "myPrimaryResourceGroup"
+Remove-AzureRmResourceGroup -ResourceGroupName "mySecondaryResourceGroup"
 ```
 
 ## <a name="script-explanation"></a>Erläuterung des Skripts

@@ -34,7 +34,7 @@ Wenn Sie möchten, können Sie Ressourcen auch mithilfe der [Azure-Befehlszeilen
 <br>
 Hier sehen Sie ein Flussdiagramm, das die Reihenfolge veranschaulicht, in der Schritte während einer Migration ausgeführt werden müssen.
 
-![Screenshot mit den Migrationsschritten](./media/virtual-machines-windows-migration-classic-resource-manager/migration-flow.png)
+![Screenshot that shows the migration steps](./media/virtual-machines-windows-migration-classic-resource-manager/migration-flow.png)
 
 ## <a name="step-1-plan-for-migration"></a>Schritt 1: Planen der Migration
 Hier finden Sie einige bewährte Methoden, die wir empfehlen, wenn Sie eine Migration von IaaS-Ressourcen aus dem klassischen Bereitstellungsmodell zu Resource Manager in Erwägung ziehen:

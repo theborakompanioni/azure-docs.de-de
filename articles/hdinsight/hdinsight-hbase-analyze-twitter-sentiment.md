@@ -1206,7 +1206,7 @@ In diesem Tutorial haben Sie erfahren, wie Sie Tweets abrufen, die Stimmung von 
 * [Entwickeln von Java MapReduce-Programmen für HDInsight][hdinsight-develop-mapreduce]
 
 [hbase-get-started]: hdinsight-hbase-tutorial-get-started-linux.md
-[website-get-started]: ../app-service-web/web-sites-dotnet-get-started.md
+[website-get-started]: ../app-service-web/app-service-web-get-started-dotnet.md
 
 
 

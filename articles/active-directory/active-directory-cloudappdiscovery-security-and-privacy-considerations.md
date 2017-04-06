@@ -11,11 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2017
+ms.date: 04/06/2017
 ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: b621a1716b731c99f9ad54d2e29006fb7bddadbb
 ms.openlocfilehash: 5c4ab6e08c8f1af89ea80ac7f4d58d82ee931ec9
+ms.lasthandoff: 01/12/2017
 
 
 ---
@@ -168,10 +169,5 @@ Jeder Benutzer, der auf die Daten im Portal zugreift, muss mit einer Azure AD P
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 * [Wie ermittle ich nicht genehmigte Cloud-Apps, die in meiner Organisation verwendet werden?](active-directory-cloudappdiscovery-whatis.md)
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 
