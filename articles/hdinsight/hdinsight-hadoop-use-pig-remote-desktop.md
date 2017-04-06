@@ -15,6 +15,7 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/17/2017
 ms.author: larryfr
+ROBOTS: NOINDEX
 translationtype: Human Translation
 ms.sourcegitcommit: ccd1dffda19718a434fc09bb74a536714799740a
 ms.openlocfilehash: 3cf91abf83359f2157d0f8cd53e0b450bfd58d80
@@ -32,16 +33,16 @@ Dieses Dokument enthält eine exemplarische Vorgehensweise für die Verwendung d
 >
 > Informationen zum interaktiven Ausführen von Pig-Aufträgen direkt im Cluster mithilfe einer Befehlszeile für HDInsight 3.4 oder höher finden Sie unter [Verwenden von Pig mit HDInsight und SSH](hdinsight-hadoop-use-pig-ssh.md).
 
-## <a name="a-idprereqaprerequisites"></a><a id="prereq"></a>Voraussetzungen
+## <a id="prereq"></a>Voraussetzungen
 Damit Sie die in dieser Artikel aufgeführten Schritte ausführen können, benötigen Sie Folgendes:
 
 * Einen Windows-basierten HDInsight-Cluster (Hadoop in HDInsight)
 * Ein Clientcomputer unter Windows 10, Windows 8 oder Windows 7
 
-## <a name="a-idconnectaconnect-with-remote-desktop"></a><a id="connect"></a>Verbinden mit dem Remotedesktop
+## <a id="connect"></a>Verbinden mit dem Remotedesktop
 Aktivieren Sie Remotedesktop für den HDInsight-Cluster, und stellen Sie anschließend mithilfe der Anweisungen unter [Verbinden mit HDInsight-Clustern über RDP](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)eine Verbindung her.
 
-## <a name="a-idpigause-the-pig-command"></a><a id="pig"></a>Verwenden des Pig-Befehls
+## <a id="pig"></a>Verwenden des Pig-Befehls
 1. Nachdem Sie eine Remotedesktopverbindung hergestellt haben, starten Sie die **Hadoop-Befehlszeile** über das Symbol auf dem Desktop.
 2. Starten Sie den Pig-Befehl wie folgt:
 
@@ -117,10 +118,10 @@ Den Pig-Befehl können Sie auch zum Ausführen von Pig Latin verwenden, das in e
         (ERROR,6)
         (FATAL,2)
 
-## <a name="a-idsummaryasummary"></a><a id="summary"></a>Zusammenfassung
+## <a id="summary"></a>Zusammenfassung
 Wie Sie sehen, können Sie mit dem Pig-Befehl interaktiv MapReduce-Vorgänge ausführen oder Pig Latin-Aufträge ausführen, die in einer Batchdatei gespeichert sind.
 
-## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>Nächste Schritte
+## <a id="nextsteps"></a>Nächste Schritte
 Allgemeine Informationen zu Pig in HDInsight:
 
 * [Verwenden von Pig mit Hadoop in HDInsight](hdinsight-use-pig.md)

@@ -3,8 +3,8 @@ title: Erste Schritte mit Azure Active Directory Premium
 description: "In diesem Thema erfahren Sie, wie Sie sich über die Volumenlizenzierungs-Website für die Premium Edition von Azure Active Directory registrieren."
 services: active-directory
 documentationcenter: 
-author: MarkusVi
-manager: curtand
+author: curtand
+manager: femila
 ms.assetid: 391764e5-c4eb-4ae6-b8a9-3d09f0de04a6
 ms.service: active-directory
 ms.workload: infrastructure-services
