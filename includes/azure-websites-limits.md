@@ -3,9 +3,7 @@
 | [Web-Apps, mobile Apps oder API-Apps](https://azure.microsoft.com/services/app-service/) pro [App Service-Plan](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)<sup>1</sup> |10 |100 |Unbegrenzt<sup>2</sup> |Unbegrenzt<sup>2</sup> |Unbegrenzt<sup>2</sup> |
 | [Logik-Apps](https://azure.microsoft.com/services/app-service/logic/) pro [App Service-Plan](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)</a><sup>1</sup> |10 |10 |10 |20 pro Kern |20 pro Kern |
 | [App Service-Plan](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) |1 pro Region |10 pro Ressourcengruppe |100 pro Ressourcengruppe |100 pro Ressourcengruppe |100 pro Ressourcengruppe |
-| Serverinstanztyp |Shared
- |Shared
- |Dediziert<sup>3</sup> |Dediziert<sup>3</sup> |Dediziert<sup>3</sup></p> |
+| Serverinstanztyp |Shared |Shared |Dediziert<sup>3</sup> |Dediziert<sup>3</sup> |Dediziert<sup>3</sup></p> |
 | [Horizontal skalieren](../articles/app-service-web/web-sites-scale.md) (max. Instanzen) |1 freigegebene |1 freigegebene |3 dedizierte<sup>3</sup> |10 dedizierte<sup>3</sup> |20 dedizierte (50 in ASE)<sup>3,4</sup> |
 | Speicher<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |500 GB<sup>4,5</sup></p> |
 | CPU-Zeit (5 min)<sup>6</sup> |3 Minuten |3 Minuten |Unbegrenzt, normal zu [bezahlen](https://azure.microsoft.com/pricing/details/app-service/)</a> |Unbegrenzt, normal zu bezahlen |Unbegrenzt, normal zu bezahlen |
@@ -39,9 +37,4 @@
 <sup>8</sup>Im Premium-Tarif sind bei Verwendung von App Service-Umgebungen Sicherungsintervalle von bis zu alle 5 Minuten möglich, andernfalls 50 Sicherungen pro Tag.  
 <sup>9</sup>Sie können benutzerdefinierte ausführbare Dateien und/oder Skripts bei Bedarf, nach Zeitplan oder fortwährend als Hintergrundaufgabe in Ihrer App Service-Instanz ausführen. Für die fortlaufende WebJobs-Ausführung ist „Immer bereit“ erforderlich. Für geplante WebJobs ist Azure Scheduler Free oder Standard erforderlich. Es gibt keinen vordefinierten Grenzwert für die Anzahl der WebJobs, die in einer App Service-Instanz ausgeführt werden können. Aber es gibt praktische Grenzwerte, die sich danach richten, was mit dem Anwendungscode erreicht werden soll.   
 <sup>10</sup>Die SLA von 99,95 % gilt für Bereitstellungen mit mehreren Instanzen, bei denen Azure Traffic Manager für Failover konfiguriert ist.  
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 
