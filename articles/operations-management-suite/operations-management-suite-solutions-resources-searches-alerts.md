@@ -272,7 +272,7 @@ Es folgt ein Beispiel für eine Lösung, die die folgenden Ressourcen enthält:
 Das Beispiel verwendet Variablen für [Standardlösungsparameter](operations-management-suite-solutions-solution-file.md#parameters), die im Gegensatz zu hartcodierten Werten in Ressourcendefinitionen häufig in einer Lösung verwendet werden.
 
     {
-        "$schema": "http://schemas.microsoft.org/azure/deploymentTemplate?api-version=2015-01-01#",
+        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
         "contentVersion": "1.0",
         "parameters": {
           "workspaceName": {
