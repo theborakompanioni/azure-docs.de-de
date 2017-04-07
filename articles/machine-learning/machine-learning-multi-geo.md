@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/17/2016
+ms.date: 4/6/2017
 ms.author: tedway; neerajkh
 translationtype: Human Translation
 ms.sourcegitcommit: ec9d29701915d237686625fbc3abec9827fda467
 ms.openlocfilehash: 22c30bfea89e3c650d81e1ebae20c9d151e6f36c
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -58,9 +59,4 @@ Stellen Sie eine Frage im [Azure Machine Learning-Forum](https://social.msdn.mic
 [2]: ./media/machine-learning-multi-geo/multi-geo_2.png
 [3]: ./media/machine-learning-multi-geo/multi-geo_3.png
 [4a]: ./media/machine-learning-multi-geo/multi-geo_4a.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 
