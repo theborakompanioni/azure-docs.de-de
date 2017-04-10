@@ -9,23 +9,25 @@ manager: jhubbard
 editor: 
 ms.assetid: aeb8c4c3-6ae2-45f7-b2c3-fa13e3752eed
 ms.service: sql-database
-ms.custom: quick start
+ms.custom: quick start create
 ms.workload: data-management
 ms.tgt_pltfrm: portal
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 03/13/2017
+ms.date: 04/03/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: be5839e04fae457b889db11dffe56f31afe723a5
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
+ms.openlocfilehash: c0c6cdf8aa48568b7a4468dd87b2896f94fc1bf6
+ms.lasthandoff: 04/04/2017
 
 
 ---
 # <a name="create-an-azure-sql-database-in-the-azure-portal"></a>Erstellen einer Azure SQL-Datenbank im Azure-Portal
 
 In diesem Schnellstart-Tutorial wird schrittweise beschrieben, wie Sie in Azure eine SQL-Datenbank erstellen.  Azure SQL-Datenbank ist ein „Database as a Service“-Angebot, bei dem Sie hoch verfügbare SQL Server-Datenbanken in der Cloud ausführen und skalieren können.  In diesem Schnellstart wird gezeigt, wie Sie die ersten Schritte ausführen, indem Sie mit dem Azure-Portal eine neue SQL-Datenbank erstellen.
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="log-in-to-the-azure-portal"></a>Anmelden beim Azure-Portal
 
@@ -43,10 +45,10 @@ Führen Sie diese Schritte aus, um eine SQL-Datenbank mit den Adventure Works LT
 
     ![Datenbankerstellung 1](./media/sql-database-get-started/create-database-1.png)
 
-3. Geben Sie die folgenden Informationen in das SQL-Datenbank-Formular ein, wie in der obigen Abbildung dargestellt: 
-   - Datenbankname: Verwenden Sie **mySampleDatabase**.
-   - Ressourcengruppe: Verwenden Sie **MyResourceGroup**.
-   - Quelle: Wählen Sie **Beispiel (AdventureWorksLT)**.
+3. Geben Sie die folgenden Informationen in das SQL-Datenbank-Formular ein, wie in der obigen Abbildung dargestellt:     
+   - Datenbankname: **mySampleDatabase**
+   - Ressourcengruppe: **myResourceGroup**
+   - Quelle: **Sample (AdventureWorksLT)**
 
 4. Klicken Sie auf **Server**, um einen neuen Server für Ihre neue Datenbank zu erstellen und zu konfigurieren. Füllen Sie das Formular **Neuer Server** aus, und geben Sie einen global eindeutigen Servernamen, einen Namen für die Serveradministrator-Anmeldung und dann das Kennwort Ihrer Wahl an. 
 
@@ -82,7 +84,7 @@ Der SQL-Datenbankdienst erstellt eine Firewall auf der Serverebene, um zu verhin
 
 4. Klicken Sie auf **OK** und dann auf das **X**, um die Seite mit den **Firewalleinstellungen** zu schließen.
 
-Nun können Sie die Verbindung mit der Datenbank und dem zugehörigen Server herstellen, indem Sie SQL Server Management Studio oder ein anderes Tool Ihrer Wahl verwenden.
+Nun können Sie über diese IP-Adresse eine Verbindung mit der Datenbank und dem dazugehörigen Server herstellen. Verwenden Sie hierzu SQL Server Management Studio oder ein anderes Tool Ihrer Wahl sowie das zuvor erstellte Serveradministratorkonto.
 
 ## <a name="query-the-sql-database"></a>Abfragen der SQL-Datenbank
 
@@ -103,7 +105,7 @@ Nach dem Erstellen der SQL-Datenbank haben wir sie mit den Daten der **Adventure
 5. Geben Sie nach der Authentifizierung im Bereich für den Abfrage-Editor die folgende Abfrage ein:
 
    ```
-   SELECT pc.Name as CategoryName, p.name as ProductName
+   SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName
    FROM SalesLT.ProductCategory pc
    JOIN SalesLT.Product p
    ON pc.productcategoryid = p.productcategoryid;

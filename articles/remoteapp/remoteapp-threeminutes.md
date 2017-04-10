@@ -14,14 +14,15 @@ ms.topic: hero-article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: e4d94d3f9736378d93e93be6645ed04ade763ca3
-ms.openlocfilehash: ccbae83898ec8ea3bd7bca0beae7f78b2b535562
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 3373e37b8efb1bd7d9b7e6c4fb8d3db468c1ad02
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="try-azure-remoteapp-on-your-device-in-3-minutes-or-less"></a>Testen von Azure RemoteApp auf Ihrem Gerät in maximal drei Minuten
 > [!IMPORTANT]
-> Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
+> Azure RemoteApp wird am 31. August 2017 eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
 > 
 > 
 
@@ -42,10 +43,5 @@ Ihre Meinung zählt. Am Ende jeder Sitzung wird ein Dialogfeld angezeigt, in dem
 > Da es sich um eine kontrollierte Umgebung zu Demonstrationszwecken handelt, ist der externe Internetzugriff von den veröffentlichten Demonstrationsanwendungen nicht aktiviert. Deshalb stehen Dienste wie OneDrive nicht zur Verfügung. Außerdem sind die gemeinsame Nutzung der Zwischenablage (Kopieren und Einfügen) sowie die USB- und Druckerumleitung deaktiviert.  
 > 
 > 
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

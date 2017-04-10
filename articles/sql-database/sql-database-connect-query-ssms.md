@@ -18,15 +18,15 @@ ms.topic: hero-article
 ms.date: 03/15/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: ba56eaa154116edbe1dd8962049535cfa57551ac
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
+ms.openlocfilehash: 7ae47bcce700336206d532b414b7d0eea41d87c5
+ms.lasthandoff: 04/04/2017
 
 
 ---
 # <a name="azure-sql-database-use-sql-server-management-studio-to-connect-and-query-data"></a>Azure SQL-Datenbank: Verwenden von SQL Server Management Studio zum Herstellen der Verbindung und Abfragen von Daten
 
-Verwenden Sie [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) zum Erstellen und Verwalten von SQL Server-Ressourcen über die Benutzeroberfläche oder in Skripts. In diesem Leitfaden wird beschrieben, wie Sie SSMS zum Herstellen einer Verbindung mit einer Azure SQL-Datenbank verwenden und dann Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen ausführen.
+Verwenden Sie [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) zum Erstellen und Verwalten von SQL Server-Ressourcen über die Benutzeroberfläche oder in Skripts. In diesem Schnellstarttutorial erfahren Sie, wie Sie mithilfe von SSMS eine Verbindung mit einer Azure SQL-Datenbank-Instanz herstellen und anschließend Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen ausführen.
 
 In diesem Schnellstart werden als Ausgangspunkt die Ressourcen verwendet, die in einem der folgenden Schnellstarts erstellt wurden:
 
@@ -45,11 +45,11 @@ Rufen Sie den vollqualifizierten Servernamen für Ihren Azure SQL-Datenbankserve
 
     <img src="./media/sql-database-connect-query-ssms/connection-information.png" alt="connection information" style="width: 780px;" />
 
-## <a name="connect-to-the-server"></a>Herstellen einer Verbindung mit dem Server
+## <a name="connect-to-the-server-and-your-new-database"></a>Herstellen einer Verbindung mit dem Server und Ihrer neuen Datenbank
 
 Verwenden Sie SQL Server Management Studio, um eine Verbindung mit Ihrem Azure SQL-Datenbankserver einzurichten.
 
-1. Geben Sie im Windows-Suchfeld den Suchbegriff **SSMS** ein, und klicken Sie auf die **Eingabeschaltfläche**, um SSMS zu öffnen.
+1. Öffnen Sie SQL Server Management Studio.
 
 2. Geben Sie im Dialogfeld **Mit Server verbinden** die folgenden Informationen ein:
    - **Servertyp**: Geben Sie das Datenbankmodul ein.

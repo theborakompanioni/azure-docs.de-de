@@ -1,0 +1,1 @@
+Vergewissern Sie sich zunächst, dass die neueste Version von [Azure PowerShell](/powershell/azureps-cmdlets-docs) installiert ist, bevor Sie mit diesem Beispiel beginnen. Führen Sie zum Starten `Login-AzureRmAccount` aus, um eine Verbindung mit Azure herzustellen. 

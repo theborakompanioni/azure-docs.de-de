@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/07/2017
+ms.date: 03/31/2017
 ms.author: sethm; babanisa
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 55cc1559189a37741d866d86241426fb73f72e4f
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 6450651062219c8f2c4757d6f233bd4b710e56ff
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -34,7 +34,7 @@ Die Ereignis- und Telemetrieverarbeitungsfunktionen von Event Hubs machen ihn be
 Event Hubs ermöglicht außerdem Verhaltensanalysen in mobilen Apps, Verkehrsinformationen von Webfarmen, Ereignisaufzeichnungen in Konsolenspielen oder von Industriemaschinen oder verbundenen Fahrzeugen erfasste Telemetriedaten.
 
 ## <a name="azure-event-hubs-overview"></a>Übersicht über Event Hubs
-In Lösungsarchitekturen übernimmt Event Hubs im Allgemeinen eine Funktion als „Eingangstür“ für eine Ereignispipeline, häufig als *Ereigniserfassung* bezeichnet. Ein Ereigniserfasser ist eine Komponente oder ein Dienst zwischen Ereignisherausgeber und Ereignisverarbeitung zum Entkoppeln der Erzeugung eines Ereignisstreams von der Verarbeitung dieser Ereignisse.
+In Lösungsarchitekturen übernimmt Event Hubs im Allgemeinen eine Funktion als „Eingangstür“ für eine Ereignispipeline, häufig als *Ereigniserfassung* bezeichnet. Ein Ereigniserfasser ist eine Komponente oder ein Dienst zwischen Ereignisherausgeber und Ereignisverarbeitung zum Entkoppeln der Erzeugung eines Ereignisstreams von der Verarbeitung dieser Ereignisse. Diese Architektur ist in der folgenden Abbildung dargestellt:
 
 ![Event Hubs](./media/event-hubs-what-is-event-hubs/event_hubs_full_pipeline.png)
 
@@ -104,6 +104,8 @@ Es folgen Beispiele für die URI-Konvention für Consumergruppen:
 //[my namespace].servicebus.windows.net/[event hub name]/[Consumer Group #1]
 //[my namespace].servicebus.windows.net/[event hub name]/[Consumer Group #2]
 ```
+
+Die folgende Abbildung zeigt die Streamverarbeitungsarchitektur von Event Hubs:
 
 ![Event Hubs](./media/event-hubs-what-is-event-hubs/event_hubs_architecture.png)
 

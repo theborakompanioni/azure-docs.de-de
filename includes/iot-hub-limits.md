@@ -47,14 +47,14 @@ Der IoT Hub-Dienst drosselt Anforderungen, wenn die folgenden Kontingente übers
 
 | Drosselung | Wert pro Hub |
 | --- | --- |
-| Identitätsregistrierungsvorgänge <br/> (erstellen, abrufen, auflisten, aktualisieren, löschen), <br/> einzelne Import-/Exportvorgänge oder Massenimport/-export |5000/Minute/Einheit (für S3)  <br/> &100;/Minute/Einheit (für S1 und S2) |
+| Identitätsregistrierungsvorgänge <br/> (erstellen, abrufen, auflisten, aktualisieren, löschen), <br/> einzelne Import-/Exportvorgänge oder Massenimport/-export |83,33/Sekunde/Einheit (5.000/Minute/Einheit) (für S3) <br/> 1,67/Sekunde/Einheit (100/Minute/Einheit) (für S1 und S2) |
 | Geräteverbindungen |6.000/Sekunde/Einheit (für S3), 120/Sekunde/Einheit (für S2), 12/Sekunde/Einheit (für S1). <br/>Mindestens 100/Sekunde |
 | Senden von Nachrichten von Geräten an die Cloud |6.000/Sekunde/Einheit (für S3), 120/Sekunde/Einheit (für S2), 12/Sekunde/Einheit (für S1). <br/>Mindestens 100/Sekunde |
-| C2D-Sendevorgänge |5.000/Minute/Einheit (für S3), 100/Minute/Einheit (für S1 und S2). |
-| C2D-Empfangsvorgänge |50.000/Minute/Einheit (für S3), 1.000/Minute/Einheit (für S1 und S2). |
-| Dateiuploadvorgänge |5.000 Dateiuploadbenachrichtigungen/Minute/Einheit (S3), 100 Dateiuploadbenachrichtigungen/Minute/Einheit (für S1 und S2). <br/> 10.000 SAS-URIs können gleichzeitig für ein Azure-Speicherkonto geöffnet sein.<br/> &10; SAS-URIs/Gerät können gleichzeitig geöffnet sein. |
+| C2D-Sendevorgänge | 83,33/Sekunde/Einheit (5.000/Minute/Einheit) (für S3), 1,67/Sekunde/Einheit (100/Minute/Einheit) (für S1 und S2) |
+| C2D-Empfangsvorgänge |833,33/Sekunde/Einheit (50.000/Minute/Einheit) (für S3), 16,67/Sekunde/Einheit (1.000/Minute/Einheit) (für S1 und S2) |
+| Dateiuploadvorgänge |83,33 Dateiuploadbenachrichtigungen/Sekunde/Einheit (5.000/Minute/Einheit) (für S3), 1,67 Dateiuploadbenachrichtigungen/Sekunde/Einheit (100/Minute/Einheit) (für S1 und S2) <br/> 10.000 SAS-URIs können gleichzeitig für ein Azure-Speicherkonto geöffnet sein.<br/> 10 SAS-URIs/Gerät können gleichzeitig geöffnet sein. |
 | Direkte Methoden | 1500/Sekunde/Einheit (für S3), 30/Sekunde/Einheit (für S2), 10/Sekunde/Einheit (für S1) |
 | Gerätezwilling-Lesevorgänge | 50/Sekunde/Einheit (für S3), maximal 10/Sekunde oder 1/Sekunde/Einheit (für S2), 10/Sekunde/Einheit (für S1) |
 | Gerätezwillingsaktualisierungen | 50/Sekunde/Einheit (für S3), maximal 10/Sekunde oder 1/Sekunde/Einheit (für S2), 10/Sekunde/Einheit (für S1) |
-| Auftragsvorgänge <br/> (Erstellen, Aktualisieren, Auflisten, Löschen) | 5000/Minute/Einheit (für S3), 100/Minute/Einheit (für S2), 100/Minute/Einheit (für S1) |
+| Auftragsvorgänge <br/> (Erstellen, Aktualisieren, Auflisten, Löschen) | 83,33/Sekunde/Einheit (5.000/Minute/Einheit) (für S3), 1,67/Sekunde/Einheit (100/Minute/Einheit) (für S2), 1,67/Sekunde/Einheit (100/Minute/Einheit) (für S1) |
 | Durchsatz für Vorgänge vom Typ „Aufträge pro Gerät“ | 50/Sekunde/Einheit (für S3), maximal 10/Sekunde oder 1/Sekunde/Einheit (für S2), 10/Sekunde/Einheit (für S1) |

@@ -15,14 +15,15 @@ ms.workload: compute
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 52edc23e0f677567beeb33c47b14f6ea66989890
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 24d41c7eb6b5bd34c07d21318740ecf4c6db2d22
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="sql-azure-with-azure-remoteapp"></a>SQL Azure mit Azure RemoteApp
 > [!IMPORTANT]
-> Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
+> Azure RemoteApp wird am 31. August 2017 eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
 > 
 > 
 
@@ -56,10 +57,5 @@ Falls die Verwendung einer unter Azure RemoteApp gehosteten Clientanwendung mit 
 * Die Netzwerklatenz von Ihrem Gerät zu Azure ist hoch. Wechseln Sie zur besten und schnellsten Netzwerkverbindung, um die höchstmögliche Leistung zu erzielen. Verwenden Sie [azurespeed.com](http://azurespeed.com/) als allgemeines Tool, um die Gerätelatenz gegenüber dem Azure-Rechenzentrum zu testen.  
 * Die unter Azure RemoteApp gehostete Client-App ist ausgelastet. Die Leistung verbessert sich, wenn Sie einen anderen Abrechnungsplan auswählen, z. B. Premium-Abrechnung. Ein anderer Trick zur Überwachung Ihrer Anwendung ist das Verfolgen der Verbrauchswerte: Drücken Sie während einer aktiven Sitzung die Tastenkombination STRG+ALT+ENDE, um den SAS-Bildschirm zu starten. Wählen Sie den Task-Manager aus, und beobachten Sie die Ressourcenauslastung für Ihre App.
 * Der SQL-Server ist ausgelastet oder nicht optimiert. Führen Sie die Schritte der SQL-Anleitung für die Problembehandlung aus. 
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

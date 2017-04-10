@@ -1,4 +1,4 @@
-Der **[Cortana Intelligence-Katalog](http://gallery.cortanaintelligence.com)** ist eine von der Community geprägte Website zum Entdecken und Teilen von Lösungen, die mit Produkten der Cortana Intelligence Suite erstellt wurden.
+Der **[Cortana Intelligence-Katalog](http://gallery.cortanaintelligence.com)** ist eine communitybasierte Website zum Entdecken und Teilen von Lösungen, die mit Produkten der Cortana Intelligence Suite erstellt wurden.
 Der Katalog enthält viele Ressourcen, mit denen Sie Ihre eigenen Analytics-Lösungen entwickeln können.
 
 <!-- On the new DOCS platform, this is a dropdown, not tabs, which doesn't work well in this context. So I'm just removing it for now.
@@ -16,8 +16,3 @@ Der Katalog enthält viele Ressourcen, mit denen Sie Ihre eigenen Analytics-Lös
 > 
 > 
 -->
-
-
-<!--HONumber=Nov16_HO3-->
-
-

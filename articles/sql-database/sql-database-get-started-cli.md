@@ -9,17 +9,17 @@ manager: jhubbard
 editor: 
 ms.assetid: 
 ms.service: sql-database
-ms.custom: quick start
+ms.custom: quick start create
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: azurecli
 ms.topic: hero-article
-ms.date: 03/13/2017
+ms.date: 04/04/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 3d642447526c5562ae3bfad5e4a4592e33e766aa
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
+ms.openlocfilehash: 7933567f6c10262b14ea1656b26d8fac148942ea
+ms.lasthandoff: 04/04/2017
 
 ---
 
@@ -27,7 +27,9 @@ ms.lasthandoff: 03/25/2017
 
 Die Azure CLI dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts. In dieser Anleitung wird die Verwendung der Azure CLI zum Bereitstellen einer Azure SQL-Datenbank in einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) auf einem [logischen SQL-Datenbankserver](sql-database-features.md) ausführlich beschrieben.
 
-Bevor Sie beginnen, stellen Sie sicher, dass die Azure CLI installiert wurde. Weitere Informationen finden Sie im [Azure CLI-Installationshandbuch](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Für dieses Schnellstarttutorial muss die aktuelle Version von [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) installiert sein. 
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 

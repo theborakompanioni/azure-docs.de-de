@@ -14,14 +14,15 @@ ms.topic: hero-article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 300ee477a00cdd463a2abf87dd73550777fd9e05
-ms.openlocfilehash: 941cc40c3c1979609649eda42e4b39aa383c3fd2
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: a6d4fbdf0e552f50673092183e893841ec0c5aa4
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="using-microsoft-outlook-in-azure-remoteapp"></a>Verwenden Microsoft Outlook in Azure RemoteApp
 > [!IMPORTANT]
-> Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
+> Azure RemoteApp wird am 31. August 2017 eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
 > 
 > 
 
@@ -36,10 +37,5 @@ Informationen dazu finden Sie unter [Schrittweise Anweisungen zum Aktivieren des
 
 ## <a name="search"></a>Suche
 In Azure RemoteApp ist die Suche in Outlook eingeschränkt. Azure RemoteApp verwendet VM-Pools, um Benutzersitzungen zu ermöglichen. Die Suchindizierung hängt von der VM-ID ab, die sich je nach virtueller Maschine unterscheidet. So ist es möglich, dass ein Benutzer bei jeder Anmeldung bei der Azure RemoteApp an eine neue virtuelle Maschine weitergeleitet wird. Bei Aktivierung der lokalen Suche würde bei jeder Änderung der VM-ID (wenn der Benutzer an eine andere virtuelle Maschine geleitet wird) der Indexer ausgeführt werden. Je nach Größe der OST-Datei könnte die Ausführung des Indexers sehr lange dauern und die erforderlichen Ressourcen für andere Apps belegen. Die Suche wäre nicht nur langsam, sondern ergäbe möglicherweise keine Ergebnisse. Mit einem Kontoprofil im Onlinemodus können Sie dieses Problem umgehen, die Gesamtleistung wäre jedoch aufgrund des fehlenden lokalen Cache beeinträchtigt (unter dem oben genannten Link finden Sie weitere Informationen zum Unterschied zwischen dem Cache- und dem Onlinemodel). Leider kann die indizierte/lokale Suche nicht deaktiviert werden, und die Online-Suche kann in Outlook 2013 nicht standardmäßig aktiviert werden.
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2017
+ms.date: 03/30/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 3cba38d95535ff5ed3cd62aac5c0aa04a310f48c
-ms.openlocfilehash: 10e58a76644b5e4d50f05a2db03f4af193cc5152
+ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
+ms.openlocfilehash: 1091abef19121ac4ce65fdaf7299b091bf41eb1c
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -28,12 +29,12 @@ Sie können die Empfehlungen und Sicherheitswarnungen aus Security Center auch k
 ## <a name="using-azure-security-center-dashboard-to-access-power-bi"></a>Verwenden des Azure Security Center-Dashboards für den Zugriff auf Power BI
 Auf Power BI-Berichte können Sie auch über die Azure Security Center-Dashboards zugreifen. Führen Sie diese Schritte aus, um die Aufgabe durchzuführen:
 
-1. Klicken Sie im **Azure Security Center**-Dashboard auf die Schaltfläche **In Power BI erkunden**.
+1. Klicken Sie auf dem Dashboard von **Azure Security Center** auf die Schaltfläche **Power BI**.
 
-    ![Mithilfe von Power BI mit Azure Security Center verbinden](./media/security-center-powerbi/security-center-powerbi-fig1-new10.png)
-2. Das Blatt **In Power BI erkunden** wird wie unten dargestellt auf der rechten Seite geöffnet:
+    ![Mithilfe von Power BI mit Azure Security Center verbinden](./media/security-center-powerbi/security-center-powerbi-fig1-new10-2017.png)
+2. Das Blatt **Power BI** wird auf der rechten Seite wie unten dargestellt geöffnet:
 
-    ![Mithilfe von Power BI mit Azure Security Center verbinden](./media/security-center-powerbi/security-center-powerbi-fig1-new2.png)
+    ![Mithilfe von Power BI mit Azure Security Center verbinden](./media/security-center-powerbi/security-center-powerbi-fig1-new11-2017.png)
 3. Wenn Sie das Power BI-Dashboard zum ersten Mal erstellen, können Sie auf dem Blatt **In Power BI erkunden** eine der folgenden Optionen wählen:
 
    * **Security insights dashboard**(Dashboard „Einblicke in die Sicherheit“): Wählen Sie diese Option, wenn Sie ein Dashboard erstellen möchten, das den Sicherheitsstatus, Threads und Erkennungen enthält. Dies ist eine häufigere Option für Personen mit der DevOps-Rolle, die für das abonnementübergreifende Analysieren ihres Schutzstatus und erkannter Warnungen verantwortlich sind.
@@ -119,9 +120,4 @@ In diesem Dokument haben Sie erfahren, wie Sie Power BI in Azure Security Center
 * [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center:](security-center-managing-and-responding-alerts.md) Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
 * [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md) : Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
 * [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Azure-Sicherheit und -Compliance.
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

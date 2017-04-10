@@ -1,5 +1,5 @@
 ---
-title: "Einführung in Application Gateway | Microsoft Docs"
+title: "Einführung in Azure Application Gateway | Microsoft-Dokumentation"
 description: "Diese Seite bietet eine Übersicht über den Application Gateway-Dienst für den Lastenausgleich der Ebene 7, einschließlich Gatewaygrößen, HTTP-Lastenausgleich, cookiebasierte Sitzungsaffinität und SSL-Auslagerung."
 documentationcenter: na
 services: application-gateway
@@ -13,28 +13,38 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
-ms.date: 12/14/2016
+ms.date: 04/03/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 119275f335344858cd20b6a17ef87e3ef32b6e12
-ms.openlocfilehash: 15db7dad6b83f6df3891aea60b308f2cf6008dd9
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
+ms.openlocfilehash: d23b400d8e6db66bc596731770a98e2833302543
+ms.lasthandoff: 04/04/2017
 
 
 ---
 # <a name="overview-of-application-gateway"></a>Übersicht über Application Gateway
 
-## <a name="what-is-application-gateway"></a>Was ist Application Gateway?
+Microsoft Azure Application Gateway ist ein dediziertes virtuelles Gerät mit einem ADC (Application Delivery Controller) als Dienst und bietet verschiedene Lastenausgleichsfunktionen der Ebene 7 für Ihre Anwendung. Es setzt sich aus mehreren Worker-Instanzen zusammen, was Skalierbarkeit und hohe Verfügbarkeit ermöglicht. Kunden können damit die Produktivität von Webfarmen steigern, indem sie die CPU-intensive SSL-Beendigung an das Anwendungsgateway auslagern. Darüber hinaus werden noch weitere Routingfunktionen der Ebene 7 bereitgestellt. Hierzu zählen etwa die Roundrobin-Verteilung des eingehenden Datenverkehrs, cookiebasierte Sitzungsaffinität, Routing auf URL-Pfadbasis und die Möglichkeit zum Hosten mehrerer Websites hinter einer einzelnen Application Gateway-Instanz. Application Gateway kann als Gateway mit Internetanbindung, rein internes Gateway oder als Kombination dieser beiden Optionen konfiguriert werden. Application Gateway wird vollständig über Azure verwaltet und ist skalierbar und hoch verfügbar. Die Anwendung umfasst viele Diagnose- und Protokollierungsfunktionen zur Verbesserung der Verwaltbarkeit. Wenn Sie ein Anwendungsgateway erstellen, wird ein Endpunkt (öffentliche VIP oder interne ILB-IP) zugeordnet und für eingehenden Netzwerkverkehr verwendet. Diese VIP oder ILB-IP wird von Azure Load Balancer auf der Transportebene (TCP/UDP) bereitgestellt, und für den gesamten eingehenden Netzwerkdatenverkehr wird unter Verwendung der Anwendungsgateway-Workerinstanzen ein Lastenausgleich durchgeführt. Das Anwendungsgateway leitet den HTTP/HTTPS-Datenverkehr dann auf der Grundlage der Konfiguration (virtueller Computer, Clouddienst oder eine interne oder externe IP-Adresse) weiter.
 
-Microsoft Azure Application Gateway verfügt über einen ADC (Application Delivery Controller) als Dienst und damit für Ihre Anwendung über verschiedene Lastenausgleichsfunktionen auf Schicht 7. So wird Kunden die Optimierung der Webfarmproduktivität ermöglicht, indem die CPU-intensive SSL-Beendigung auf das Application Gateway verlagert wird. Außerdem werden noch andere Routingfunktionen für Schicht 7 bereitgestellt, z.B. die Roundrobin-Verteilung des eingehenden Datenverkehrs, cookiebasierte Sitzungsaffinität, Routing auf URL-Pfadbasis und Möglichkeit zum Hosten von mehreren Websites hinter einem einzelnen Application Gateway. Application Gateway verfügt auch über eine Web Application Firewall (WAF), mit der Ihre Anwendung vor den meisten von OWASP ermittelten Top 10-Websicherheitsrisiken geschützt ist. Application Gateway kann als Gateway mit Internetanbindung, rein internes Gateway oder als Kombination dieser beiden Optionen konfiguriert werden. Application Gateway wird vollständig über Azure verwaltet und ist skalierbar und hoch verfügbar. Die Anwendung umfasst viele Diagnose- und Protokollierungsfunktionen zur Verbesserung der Verwaltbarkeit. Application Gateway kann für virtuelle Computer, Clouddienste und interne oder externe Webanwendungen genutzt werden.
+Im Rahmen der WAF-SKU des Anwendungsgateways wird auch eine Web Application Firewall (WAF) bereitgestellt, die Webanwendungen vor gängigen Sicherheitslücken und Exploits im Web schützt. Hierfür nutzt die Web Application Firewall Regeln aus den [OWASP-Kernregelsätzen](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) (3.0 oder 2.2.9).
 
-Application Gateway ist eine dedizierte virtuelle Appliance für Ihre Anwendung und umfasst mehrere Workerinstanzen zur Sicherstellung der Skalierbarkeit und hohen Verfügbarkeit. Wenn Sie ein Anwendungsgateway erstellen, wird ein Endpunkt (öffentliche VIP oder interne ILB-IP) zugeordnet und für eingehenden Netzwerkverkehr verwendet. Diese VIP oder ILB-IP wird vom Azure Load Balancer auf Transportebene (TCP/UDP) bereitgestellt, und für den gesamten eingehenden Netzwerkdatenverkehr wird ein Lastenausgleich auf die Application Gateway-Workerinstanzen durchgeführt. Das Anwendungsgateway leitet den HTTP/HTTPS-Datenverkehr dann auf Grundlage der Konfiguration weiter: virtueller Computer, Clouddienst oder eine interne oder externe IP-Adresse. Die Vereinbarung zum Servicelevel und die Preise finden Sie auf den Seiten [SLA](https://azure.microsoft.com/support/legal/sla/) und [Preise](https://azure.microsoft.com/pricing/details/application-gateway/).
+## <a name="differences-between-application-gateway-skus"></a>Unterschiede zwischen Application Gateway-SKUs
+
+Für Application Gateway stehen zwei SKUs zur Verfügung. Eine Standard-SKU und eine WAF-SKU (Web Application Firewall).
+
+### <a name="standard"></a>Standard
+
+Die Standard-SKU bietet SSL-Beendigung, cookiebasierte Sitzungsaffinität, Lastverteilung per Roundrobin, inhaltsbasiertes Routing, die Möglichkeit zum Hosten mehrerer Websites sowie Sicherheitsverbesserungen. Zu den Sicherheitsverbesserungen des Anwendungsgateways zählen SSL-Gruppenrichtlinienverwaltung, umfassende SSL-Unterstützung und SSL-Beendigung.
+
+### <a name="web-application-firewall-waf"></a>Web Application Firewall (WAF)
+
+Die WAF-SKU beinhaltet neben den Funktionen der Standard-SKU auch noch die [Web Application Firewall](application-gateway-web-application-firewall-overview.md). Diese bietet Angriffserkennungsregeln zum Schutz von Webanwendungen vor gängigen Sicherheitslücken und Exploits im Web.
 
 ## <a name="features"></a>Features
 
 Application Gateway unterstützt derzeit die Anwendungsbereitstellung der Ebene 7 mit folgenden Features:
 
-* **[Web Application Firewall (Vorschau):](application-gateway-webapplicationfirewall-overview.md)** Die Web Application Firewall (WAF) in Azure Application Gateway schützt Webanwendungen vor gängigen webbasierten Angriffen wie der Einschleusung von SQL-Code, Angriffen durch websiteübergreifende Skripts und der Übernahme von Sitzungen.
+* **[Web Application Firewall:](application-gateway-webapplicationfirewall-overview.md)** Die Web Application Firewall (WAF) in Azure Application Gateway schützt Webanwendungen vor gängigen webbasierten Angriffen wie Einschleusung von SQL-Befehlen, Cross-Site Scripting und Session Hijacking.
 * **HTTP-Lastenausgleich:** Application Gateway bietet Roundrobin-Lastenausgleich. Der Lastenausgleich erfolgt auf Ebene 7 und wird ausschließlich für HTTP(S)-Datenverkehr verwendet.
 * **Cookiebasierte Sitzungsaffinität:** Dieses Feature ist hilfreich, wenn eine Benutzersitzung auf dem gleichen Back-End bleiben soll. Mithilfe von auf dem Gateway verwalteten Cookies kann Application Gateway nachfolgenden Datenverkehr einer Benutzersitzung zur Verarbeitung an das gleiche Back-End weiterleiten. Dieses Feature ist wichtig, wenn der Sitzungsstatus für eine Benutzersitzung lokal auf dem Back-End-Server gespeichert wird.
 * **[Secure Sockets Layer (SSL)-Auslagerung:](application-gateway-ssl-arm.md)** Dieses Feature befreit Ihre Webserver von der kostspieligen Entschlüsselung von HTTPS-Datenverkehr. Durch die Beendigung der SSL-Verbindung bei Application Gateway und die unverschlüsselte Weiterleitung der Anforderung an den Server wird der Webserver nicht durch die Entschlüsselung belastet.  Die Antwort wird von Application Gateway vor der Rückgabe an den Client wieder verschlüsselt. Dieses Feature ist nützlich, wenn sich das Back-End im gleichen geschützten virtuellen Netzwerk befindet wie die Application Gateway in Azure.
@@ -49,8 +59,8 @@ Application Gateway unterstützt derzeit die Anwendungsbereitstellung der Ebene 
 
 Application Gateway ist nützlich für Folgendes:
 
-* Anwendungen, bei denen Anforderungen einer Benutzer-/Clientsitzung den gleichen virtuellen Back-End-Computer erreichen müssen. Beispiele für solche Anwendungen wären Einkaufswagen-Apps und E-Mail-Webserver.
-* Anwendungen, die für Webserverfarmen den Mehraufwand für die SSL-Beendigung unterbinden möchten.
+* Anwendungen, bei denen Anforderungen einer Benutzer-/Clientsitzung den gleichen virtuellen Back-End-Computer erreichen müssen. Beispiele wären etwa Einkaufswagenanwendungen und E-Mail-Webserver.
+* Beseitigung des Mehraufwands der SSL-Beendigung für Webserverfarmen.
 * Anwendungen, wie z.B. ein Content Delivery Network, für die mehrere HTTP-Anforderungen über die gleiche lange bestehende TCP-Verbindung an verschiedene Back-End-Server weitergeleitet werden bzw. für die dort ein Lastenausgleich erfolgen muss.
 * Anwendungen, die den WebSocket-Datenverkehr unterstützen
 * Schutz von Webanwendungen vor allgemeinen webbasierten Angriffen, z.B. Einschleusung von SQL-Befehlen, Cross-Site Scripting-Angriffe und Übernahme von Sitzungen.
@@ -64,8 +74,6 @@ Der Application Gateway-Lastenausgleich als ein von Azure verwalteter Dienst erm
 ## <a name="gateway-sizes-and-instances"></a>Gatewaygrößen und -instanzen
 
 Application Gateway wird derzeit in drei Größen angeboten: **klein**, **mittel** und **groß**. Kleine Instanzen sind für Entwicklungs- und Testszenarien vorgesehen.
-
-Derzeit gibt es zwei SKUs für Application Gateway: **WAF** und **Standard**.
 
 Sie können bis zu 50 Application Gateways pro Abonnement erstellen, und jedes Application Gateway kann jeweils bis zu 10 Instanzen aufweisen. Jedes Anwendungsgateway kann aus 20 HTTP-Listenern bestehen. Eine vollständige Liste mit den Einschränkungen von Anwendungsgateways finden Sie unter [Application Gateway service limits (Einschränkungen von Application Gateway)](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
 
@@ -85,9 +93,13 @@ Azure Application Gateway überprüft die Integrität der Back-End-Instanzen aut
 
 ## <a name="configuring-and-managing"></a>Konfigurieren und Verwalten
 
-Application Gateway kann für seinen Endpunkt eine öffentliche IP-Adresse, eine private IP-Adresse oder beides besitzen (sofern konfiguriert). Application Gateway wird innerhalb eines virtuellen Netzwerks in einem eigenen Subnetz konfiguriert. Das für Application Gateway erstellte oder verwendete Subnetz darf außer anderen Anwendungsgateways keine anderen Arten von Ressourcen enthalten. Zum Absichern von Back-End-Ressourcen können die Back-End-Server sich in einem anderen Subnetz im gleichen virtuellen Netzwerk befinden wie das Anwendungsgateway. Dieses zusätzliche Subnetz wird für die Back-End-Anwendungen nicht benötigt. Solange das Anwendungsgateway die IP-Adresse erreichen kann, kann das Application Gateway ADC-Funktionen für die Back-End-Server bereitstellen.
+Application Gateway kann für seinen Endpunkt eine öffentliche IP-Adresse, eine private IP-Adresse oder beides besitzen (sofern konfiguriert). Application Gateway wird innerhalb eines virtuellen Netzwerks in einem eigenen Subnetz konfiguriert. Das für Application Gateway erstellte oder verwendete Subnetz darf außer anderen Anwendungsgateways keine anderen Arten von Ressourcen enthalten. Zum Absichern von Back-End-Ressourcen können die Back-End-Server sich in einem anderen Subnetz im gleichen virtuellen Netzwerk befinden wie das Anwendungsgateway. Dieses zusätzliche Subnetz wird für die Back-End-Anwendungen nicht benötigt. Solange das Anwendungsgateway die IP-Adresse erreichen kann, kann das Application Gateway ADC-Funktionen für die Back-End-Server bereitstellen. 
 
-Sie können ein Anwendungsgateway mit REST-APIs, mit PowerShell-Cmdlets, mithilfe der Azure-Befehlszeilenschnittstelle oder über das [Azure-Portal](https://portal.azure.com/)erstellen und verwalten.
+Sie können ein Anwendungsgateway mit REST-APIs, mit PowerShell-Cmdlets, mithilfe der Azure-Befehlszeilenschnittstelle oder über das [Azure-Portal](https://portal.azure.com/)erstellen und verwalten. Sollten Sie noch Fragen zu Application Gateway haben, finden Sie unter [Häufig gestellte Fragen zu Azure Application Gateway](application-gateway-faq.md) eine Reihe häufig gestellter Fragen.
+
+## <a name="pricing"></a>Preise
+
+Der Preis basiert auf einer Gatewayinstanzgebühr pro Stunde sowie auf einer Datenverarbeitungsgebühr. Der stundenbasierte Gatewaypreis für die WAF-SKU entspricht nicht den Gebühren für die Standard-SKU und ist unter [Application Gateway – Preise](https://azure.microsoft.com/pricing/details/application-gateway/) zu finden. Die Datenverarbeitungsgebühren bleiben unverändert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

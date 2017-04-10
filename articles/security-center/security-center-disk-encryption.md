@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/15/2017
 ms.author: tomsh
 translationtype: Human Translation
-ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
-ms.openlocfilehash: 5054ea1d5bd17712a4b343319d583e62a256752d
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: ac0d2e6891d916febb3eeee736288454c2b92c2d
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -142,10 +142,10 @@ Betätigen Sie die **EINGABETASTE**. Ihnen wird nun der Name des zu verschlüsse
 
 ![PowerShell-Ausgabe](./media/security-center-disk-encryption/security-center-disk-encryption-fig7.png)
 
-Den Verschlüsselungsbefehl zum Verschlüsseln des virtuellen Computers kann auf zweierlei Weise ausgeführt werden. Die erste Methode besteht darin, in der PowerShell ISE-Konsole den folgenden Befehl einzugeben:
+Den Verschlüsselungsbefehl zum Verschlüsseln aller Laufwerke des virtuellen Computers kann auf zwei Arten ausgeführt werden: Die erste Methode besteht darin, in der PowerShell ISE-Konsole den folgenden Befehl einzugeben:
 
 ~~~
-Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $resourceGroupName -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId
+Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $resourceGroupName -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -VolumeType All
 ~~~
 
 Betätigen Sie nach der Eingabe dieses Befehls die **EINGABETASTE**.

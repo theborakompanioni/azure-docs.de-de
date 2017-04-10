@@ -5,7 +5,7 @@
 > 
 
 ## <a name="introduction"></a>Einführung
-Gerätezwillinge sind JSON-Dokumente, in denen Gerätestatusinformationen (Metadaten, Konfigurationen und Bedingungen) gespeichert werden. IoT Hub speichert einen Gerätezwilling für jedes Gerät, das Sie mit IoT Hub verbinden.
+Gerätezwillinge sind JSON-Dokumente, in denen Gerätestatusinformationen (Metadaten, Konfigurationen und Bedingungen) gespeichert werden. Von IoT Hub wird für jedes Gerät, das eine Verbindung herstellt, dauerhaft ein Gerätezwilling gespeichert.
 
 Verwenden Sie Gerätezwillinge für Folgendes:
 
@@ -28,7 +28,7 @@ Gerätezwillinge werden in einem IoT Hub gespeichert und enthalten Folgendes:
 ![][img-twin]
 
 Außerdem können mit dem Lösungs-Back-End Gerätezwillinge basierend auf allen obigen Daten abgefragt werden.
-Weitere Informationen zu Gerätezwillingen finden Sie unter [Grundlegendes zu Gerätezwillingen][lnk-twins], und eine Referenz zu Abfragen finden Sie unter [IoT Hub-Abfragesprache][lnk-query].
+Weitere Informationen zu Gerätezwillingen finden Sie unter [Grundlegendes zu Gerätezwillingen][lnk-twins]. Eine Referenz zu Abfragen finden Sie unter [IoT Hub-Abfragesprache][lnk-query].
 
 > [!NOTE]
 > Zurzeit ist der Zugriff auf Gerätezwillinge nur von Geräten aus möglich, die über das MQTT-Protokoll Verbindungen mit IoT Hub herstellen. Anweisungen zum Konvertieren vorhandener Geräte-Apps für die Verwendung von MQTT finden Sie im Artikel [MQTT-Unterstützung][lnk-devguide-mqtt].
@@ -49,7 +49,3 @@ Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 [lnk-d2c]: ../articles/iot-hub/iot-hub-devguide-messaging.md#device-to-cloud-messages
 [lnk-methods]: ../articles/iot-hub/iot-hub-devguide-direct-methods.md
 [lnk-devguide-mqtt]: ../articles/iot-hub/iot-hub-mqtt-support.md
-
-<!--HONumber=Feb17_HO3-->
-
-

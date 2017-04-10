@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2017
+ms.date: 03/30/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 3cba38d95535ff5ed3cd62aac5c0aa04a310f48c
-ms.openlocfilehash: ae263615d5fa262eb8a8ed2e5461d92bec503f1d
+ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
+ms.openlocfilehash: d796566676e13b312832dd543f52d3475d877ef8
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -33,30 +34,31 @@ Weitere Informationen zur Anwendung der Empfehlungen finden Sie unter [Implement
 
 Auf der Kachel **Sicherheitsintegrität der Ressource** können Sie den Sicherheitsstatus Ihrer Ressourcen überwachen. Im folgenden Beispiel sehen Sie eine Reihe von Problemen mit hohem und mittlerem Schweregrad, die eine Reaktion erfordern. Die Sicherheitsrichtlinien, die aktiviert sind, wirken sich auf die Arten von Sicherheitsmechanismen aus, die überwacht werden.
 
-![Kachel „Sicherheitsintegrität der Ressource“](./media/security-center-monitoring/security-center-monitoring-fig1-new4-2017.png)
+![Kachel „Sicherheitsintegrität der Ressource“](./media/security-center-monitoring/security-center-monitoring-fig1-new001-2017.png)
 
 Erkennt Security Center ein Sicherheitsrisiko, das behoben werden muss (beispielsweise einen virtuellen Computer mit fehlenden Sicherheitsupdates oder ein Subnetz ohne [Netzwerksicherheitsgruppe](/virtual-network/virtual-networks-nsg.md)), wird dies hier angegeben.
 
-### <a name="monitor-virtual-machines"></a>Überwachen virtueller Maschinen
-Wenn Sie auf der Kachel **Sicherheitsintegrität der Ressource** auf **Virtuelle Computer** klicken, wird das Blatt **Virtuelle Computer** geöffnet. Dieses enthält weitere Details zum Onboarding sowie Vorbeugungsschritte und eine Liste mit allen virtuellen Computern, die von Security Center überwacht werden (wie im folgenden Screenshot zu sehen).
+### <a name="monitor-compute"></a>Überwachen von Compute
+Wenn Sie auf der Kachel **Sicherheitsintegrität der Ressource** auf **Compute** klicken, wird das Blatt **Compute** geöffnet. Auf diesem Blatt stehen drei Registerkarten zur Verfügung:
 
-![Fehlendes Systemupdate nach virtuellem Computer](./media/security-center-monitoring/security-center-monitoring-fig2-ga.png)
+- **Übersicht:** Überwachung und Empfehlungen zu virtuellen Computern.
+- **Virtuelle Computer:** Liste mit allen virtuellen Computern und dem jeweils aktuellen Sicherheitsstatus.
+- **Clouddienste:** Liste mit allen von Security Center überwachten Web- und Workerrollen.
 
-* Schritte zur Integration
-* Empfehlungen für virtuelle Computer
-* Virtuelle Computer
+![Fehlendes Systemupdate nach virtuellem Computer](./media/security-center-monitoring/security-center-monitoring-fig1-new002-2017.png)
 
-In jedem Abschnitt können Sie eine einzelne Option auswählen, um weitere Details zu empfohlenen Problembehandlungsschritten anzuzeigen. Diese Bereiche werden in den folgenden Abschnitten ausführlicher erläutert.
+Auf den einzelnen Registerkarten können sich jeweils mehrere Abschnitte befinden, und in jedem Abschnitt können Sie eine einzelne Option auswählen, um weitere Details zu den empfohlenen Problembehandlungsschritten für ein bestimmtes Problem anzuzeigen. 
 
 #### <a name="monitoring-recommendations"></a>Überwachen der Empfehlungen
-In diesem Abschnitt werden die Gesamtanzahl und der aktuelle Status der virtuellen Computer angezeigt, die für die Datensammlung initialisiert wurden. Sobald die Datensammlung für alle virtuellen Computer initialisiert wurde, sind sie bereit für den Empfang der Security Center-Sicherheitsrichtlinien. Wenn Sie auf diesen Eintrag klicken, wird das Blatt **Installationsstatus der Datensammlung** angezeigt. Hier sehen Sie die Namen der virtuellen Computer und den aktuellen Status der Datensammlung in der Spalte **INSTALLATIONSSTATUS**, wie im folgenden Screenshot zu sehen.
+In diesem Abschnitt werden die Gesamtanzahl und der aktuelle Status der virtuellen Computer angezeigt, die für die Datensammlung initialisiert wurden. Sobald die Datensammlung für alle virtuellen Computer initialisiert wurde, sind sie bereit für den Empfang der Security Center-Sicherheitsrichtlinien. Wenn Sie auf diesen Eintrag klicken, öffnet sich das Blatt **VM-Agent fehlt oder reagiert nicht**. 
 
-![Initialisierungsstatus von virtuellen Computern](./media/security-center-monitoring/security-center-monitoring-fig3-ga.png)
+![Fehlendes Systemupdate nach virtuellem Computer](./media/security-center-monitoring/security-center-monitoring-fig1-new003-2017.png)
+
 
 #### <a name="virtual-machine-recommendations"></a>Empfehlungen für virtuelle Computer
 Dieser Abschnitt enthält eine Reihe von [Empfehlungen für die einzelnen virtuellen Computer](security-center-virtual-machine-recommendations.md), die von Azure Security Center überwacht werden. Die erste Spalte enthält die Empfehlung. Die zweite Spalte enthält die Gesamtanzahl virtueller Computer, die von dieser Empfehlung betroffen sind. Die dritte Spalte gibt Aufschluss über den Schweregrad des Problems, wie im folgenden Screenshot zu sehen.
 
-![Empfehlungen für virtuelle Computer](./media/security-center-monitoring/security-center-monitoring-fig4-ga.png)
+![Empfehlungen für virtuelle Computer](./media/security-center-monitoring/security-center-monitoring-fig1-new004-2017.png)
 
 > [!NOTE]
 > Auf dem Blatt **Networking Health** (Netzwerkintegrität) werden in der Liste **Netzwerktopologie** nur virtuelle Computer mit mindestens einem öffentlichen Endpunkt angezeigt.
@@ -93,7 +95,7 @@ Um die Details zur Empfehlung anzuzeigen, klicken Sie auf den Namen des jeweilig
 #### <a name="virtual-machines-section"></a>Abschnitt „Virtuelle Computer“
 Der Abschnitt „Virtuelle Computer“ enthält eine Übersicht über alle virtuellen Computer und Empfehlungen. Jede Spalte steht für eine Gruppe von Empfehlungen, wie im folgenden Screenshot zu sehen:
 
-![Übersicht über alle virtuellen Computer und Empfehlungen](./media/security-center-monitoring/security-center-monitoring-fig7-ga.png)
+![Übersicht über alle virtuellen Computer und Empfehlungen](./media/security-center-monitoring/security-center-monitoring-fig1-new005-2017.png)
 
 Anhand der Symbole, die unter jeder Empfehlung angezeigt werden, können Sie schnell erkennen, bei welchen virtuellen Computern eine Aktion erforderlich ist und um welche Art von Empfehlung es sich handelt.
 
@@ -103,12 +105,12 @@ Im vorherigen Beispiel liegt für einen einzelnen virtuellen Computer eine kriti
 
 Dieses Blatt enthält die Sicherheitsdetails für den virtuellen Computer. Im unteren Bereich des Blatts werden jeweils die empfohlene Aktion und der Schweregrad des jeweiligen Problems angezeigt.
 
-#### <a name="cloud-services-preview-section"></a>Abschnitt „Clouddienste (Vorschau)“
-Der Integritätsstatus für Clouddienste ist auf der Kachel **Sicherheitsintegrität** des virtuellen Computers angegeben. Eine Empfehlung wird erstellt, wenn die Betriebssystemversion nicht mehr aktuell ist, wie im folgenden Screenshot zu sehen:
+#### <a name="cloud-services-section"></a>Abschnitt „Clouddienste“
+Für Clouddienste wird eine Empfehlung erstellt, wenn die Betriebssystemversion nicht mehr aktuell ist, wie im folgenden Screenshot zu sehen:
 
-![Integritätsstatus für Clouddienste](./media/security-center-monitoring/security-center-monitoring-fig8-new2.png)
+![Integritätsstatus für Clouddienste](./media/security-center-monitoring/security-center-monitoring-fig1-new006-2017.png)
 
-Sie müssen die Schritte in der Empfehlung ausführen, um die Betriebssystemversion zu aktualisieren. Wenn Sie in „WebRole1“ (Ausführung von Windows Server mit automatischer Bereitstellung Ihrer Web-App für IIS) oder „WorkerRole1“ (Ausführung von Windows Server mit automatischer Bereitstellung Ihrer Web-App für IIS) auf die rote Warnung klicken, erscheint ein neues Blatt mit weiteren Details zur Empfehlung, wie im folgenden Screenshot zu sehen:
+In einem Szenario, in dem eine Empfehlung vorliegt (was im vorherigen Beispiel nicht der Fall ist), muss die Betriebssystemversion mithilfe der Schritte aus der Empfehlung aktualisiert werden. Ist ein Update verfügbar, erhalten Sie eine Warnung (rot oder orange, je nach Schweregrad des Problems). Wenn Sie in „WebRole1“ (Ausführung von Windows Server mit automatischer Bereitstellung Ihrer Web-App für IIS) oder „WorkerRole1“ (Ausführung von Windows Server mit automatischer Bereitstellung Ihrer Web-App für IIS) auf diese Warnung klicken, erscheint ein neues Blatt mit weiteren Details zur Empfehlung, wie im folgenden Screenshot zu sehen:
 
 ![Clouddienstdetails](./media/security-center-monitoring/security-center-monitoring-fig8-new3.png)
 
@@ -214,9 +216,4 @@ In diesem Artikel haben Sie erfahren, wie Sie die Überwachungsfunktionen in Azu
 * [Überwachen von Partnerlösungen mit Azure Security Center:](security-center-partner-solutions.md) Hier erfahren Sie, wie Sie den Integritätsstatus Ihrer Partnerlösungen überwachen.
 * [Azure Security Center – Häufig gestellte Fragen:](security-center-faq.md) Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
 * [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Azure-Sicherheit und -Compliance.
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/03/2017
+ms.date: 03/28/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 682ebb212f9056f3704a6de5dde8d3a35681108f
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: a70b82770a13231ee59ac768deb45b232f95687d
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -44,7 +44,7 @@ Derzeit werden Linux-Container für alle Orchestratoren unterstützt. Die Unters
 ### <a name="do-you-recommend-a-specific-orchestrator-in-azure-container-service"></a>Wird ein bestimmter Orchestrator in Azure Container Service empfohlen? 
 Wir empfehlen im Allgemeinen keinen bestimmten Orchestrator. Falls Sie bereits mit einem der unterstützten Orchestratoren vertraut sind, können Sie sich Ihre Erfahrung in Azure Container Service zunutze machen. Datentrends legen jedoch nahe, dass DC/OS sich in der Produktion für Big Data- und IoT-Workloads bewährt hat, Kubernetes sich für native Cloudworkloads eignet und Docker Swarm sich durch seine Integration in Docker-Tools und seine einfache Lernkurve auszeichnet.
 
-Abhängig von Ihrem Szenario können Sie auch benutzerdefinierte Containerlösungen mit anderen Azure-Diensten erstellen und verwalten. Zu diesen Diensten zählen [Virtual Machines](../virtual-machines/virtual-machines-linux-azure-overview.md), [Service Fabric](../service-fabric/service-fabric-overview.md), [Web-Apps](../app-service-web/app-service-web-overview.md) und [Batch](../batch/batch-technical-overview.md).  
+Abhängig von Ihrem Szenario können Sie auch benutzerdefinierte Containerlösungen mit anderen Azure-Diensten erstellen und verwalten. Zu diesen Diensten zählen [Virtual Machines](../virtual-machines/linux/overview.md), [Service Fabric](../service-fabric/service-fabric-overview.md), [Web-Apps](../app-service-web/app-service-web-overview.md) und [Batch](../batch/batch-technical-overview.md).  
 
 ### <a name="what-is-the-difference-between-azure-container-service-and-acs-engine"></a>Was ist der Unterschied zwischen Azure Container Service und ACS Engine? 
 Azure Container Service ist ein durch eine SLA abgedeckter Azure-Dienst mit Features im Azure-Portal, Azure-Befehlszeilentools und Azure-APIs. Der Dienst ermöglicht die schnelle Implementierung und Verwaltung von Clustern unter Verwendung standardmäßiger Containerorchestrierungstools mit einer vergleichsweise geringen Anzahl von Konfigurationsoptionen. 
@@ -55,7 +55,7 @@ Azure Container Service ist ein durch eine SLA abgedeckter Azure-Dienst mit Feat
 
 ### <a name="how-do-i-create-ssh-keys-for-my-cluster"></a>Wie erstelle ich SSH-Schlüssel für meine Cluster?
 
-Für die Authentifizierung bei den virtuellen Linux-Computern Ihres Clusters können Sie mithilfe der Standardtools Ihres Betriebssystems ein Paar aus einem öffentlichen und einem privaten SSH-RSA-Schlüssel erstellen. Eine entsprechende Anleitung finden Sie im Leitfaden für [OS X und Linux](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md) bzw. im Leitfaden für [Windows](../virtual-machines/virtual-machines-linux-ssh-from-windows.md). 
+Für die Authentifizierung bei den virtuellen Linux-Computern Ihres Clusters können Sie mithilfe der Standardtools Ihres Betriebssystems ein Paar aus einem öffentlichen und einem privaten SSH-RSA-Schlüssel erstellen. Eine entsprechende Anleitung finden Sie im Leitfaden für [OS X und Linux](../virtual-machines/linux/mac-create-ssh-keys.md) bzw. im Leitfaden für [Windows](../virtual-machines/linux/ssh-from-windows.md). 
 
 Wenn Sie einen Containerdienstcluster mithilfe von [Azure CLI 2.0-Befehlen](container-service-create-acs-cluster-cli.md) bereitstellen, können SSH-Schlüssel automatisch für Ihren Cluster generiert werden.
 
@@ -66,6 +66,12 @@ Eine Azure Active Directory-Dienstprinzipal-ID und ein Kennwort werden auch für
 
 Wenn Sie einen Kubernetes-Cluster mithilfe von [Azure CLI 2.0-Befehlen](container-service-create-acs-cluster-cli.md) bereitstellen, können Dienstprinzipal-Anmeldeinformationen automatisch für Ihren Cluster generiert werden.
 
+### <a name="how-large-a-cluster-can-i-create"></a>Welche Clustergrößen kann ich erstellen?
+Sie können einen Cluster mit einem, drei oder fünf Masterknoten erstellen. Außerdem können Sie bis zu 100 Agent-Knoten auswählen.
+
+> [!IMPORTANT]
+> Bei größeren Clustern und abhängig von der für die Knoten gewählten VM-Größe müssen Sie in Ihrem Abonnement unter Umständen das Kernkontingent erhöhen. In diesem Fall können Sie kostenlos [eine Anfrage an den Onlinekundensupport richten](../azure-supportability/how-to-create-azure-support-request.md) und eine Erhöhung des Kontingents anfordern. Bei Verwendung eines [kostenlosen Azure-Kontos](https://azure.microsoft.com/free/)können Sie nur eine begrenzte Anzahl von Azure-Compute-Kernen nutzen.
+> 
 
 ### <a name="how-do-i-increase-the-number-of-masters-after-a-cluster-is-created"></a>Wie kann ich nach der Clustererstellung die Masteranzahl erhöhen? 
 Nach der Erstellung des Clusters ist die Masteranzahl unveränderlich. Bei der Clustererstellung sollten Sie im Idealfall mehrere Master auswählen, um eine hohe Verfügbarkeit sicherzustellen.

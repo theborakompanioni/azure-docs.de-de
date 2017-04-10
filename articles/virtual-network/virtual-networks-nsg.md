@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 2165cdc87a505e94fab2fc73c30a5764348c6dc1
-ms.openlocfilehash: b382cf65ae172e0037f2bc668a4f5862b29d1700
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 6ea9db6ac7a7ba63652b860c22899a8616ea81bc
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -65,8 +66,8 @@ Die Abbildung oben zeigt, wie die NSG-Regeln verarbeitet werden.
 ### <a name="default-tags"></a>Standardtags
 Standardtags sind vom System bereitgestellte Bezeichner für eine Kategorie von IP-Adressen. In den Eigenschaften **Quelladresspräfix** und **Zieladresspräfix** von Regeln können Standardtags verwendet werden. Es gibt drei Standard-Tags, die Sie verwenden können.
 
-* **VIRTUAL_NETWORK:** Standardtag für Ihren gesamten Netzwerkadressraum. Dieser umfasst den Adressraum des virtuellen Netzwerks (in Azure definierte CIDR-Bereiche) sowie den gesamten verbundenen lokalen Adressraum und verbundene Azure VNets (lokale Netzwerke).
-* **AZURE_LOADBALANCER:** Standardtag für den Infrastruktur-Load Balancer von Azure. Wird in eine Azure-Datencenter-IP umgewandelt, die als Ausgangspunkt für die Integritätstests von Azure fungiert.
+* **VIRTUAL_NETWORK** (**VirtualNetwork** bei Verwendung von Azure Resource Manager): Dieses Standardtag symbolisiert Ihren gesamten Netzwerkadressraum. Dieser umfasst den Adressraum des virtuellen Netzwerks (in Azure definierte CIDR-Bereiche) sowie den gesamten verbundenen lokalen Adressraum und verbundene Azure VNets (lokale Netzwerke).
+* **AZURE_LOADBALANCER** (**AzureLoadBalancer** bei Verwendung von Azure Resource Manager): Dieses Standardtag symbolisiert den Lastenausgleich der Azure-Infrastruktur. Wird in eine Azure-Datencenter-IP umgewandelt, die als Ausgangspunkt für die Integritätstests von Azure fungiert.
 * **INTERNET** : Standardtag für den IP-Adressraum, der außerhalb des virtuellen Netzwerks liegt und über das öffentliche Internet erreichbar ist. Dieser Bereich schließt auch den [Azure-eigenen öffentlichen IP-Adressraum](https://www.microsoft.com/download/details.aspx?id=41653) mit ein.
 
 ### <a name="default-rules"></a>Standardregeln
@@ -258,9 +259,4 @@ Da einige der oben aufgeführten NSGs einzelnen Netzwerkkarten zugeordnet werden
 * [Bereitstellen von NSGs im klassischen Bereitstellungsmodell](virtual-networks-create-nsg-classic-ps.md)
 * [Bereitstellen von NSGs im Ressourcen-Manager](virtual-networks-create-nsg-arm-pportal.md)
 * [Verwalten von NSG-Protokollen](virtual-network-nsg-manage-log.md)
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

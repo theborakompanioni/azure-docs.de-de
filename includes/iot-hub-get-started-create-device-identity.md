@@ -6,7 +6,7 @@ In diesem Abschnitt verwenden Sie ein Node.js-Tool mit dem Namen [IoT Hub-Explor
     ```
     npm install -g iothub-explorer@latest
     ```
-2. Führen Sie anschließend den folgenden Befehl aus, um sich an Ihrem Hub anzumelden, und ersetzen Sie dabei `{iot hub connection string}` durch die zuvor kopierte IoT Hub-Verbindungszeichenfolge:
+2. Führen Sie anschließend den folgenden Befehl aus, um sich bei Ihrem Hub anzumelden. Ersetzen Sie `{iot hub connection string}` durch die zuvor kopierte IoT Hub-Verbindungszeichenfolge:
 
     ```
     iothub-explorer login "{iot hub connection string}"
@@ -21,7 +21,7 @@ Notieren Sie sich die Verbindungszeichenfolge für das Gerät aus dem Ergebnis. 
 
 ![][img-identity]
 
-Informationen zur programmgesteuerten Erstellung von Geräteidentitäten finden Sie unter [Erste Schritte mit Azure IoT Hub][lnk-getstarted].
+Informationen zum programmgesteuerten Erstellen von Geräteidentitäten finden Sie unter [Erste Schritte mit Azure IoT Hub][lnk-getstarted].
 
 <!-- images and links -->
 [img-identity]: media/iot-hub-get-started-create-device-identity/devidentity.png

@@ -18,9 +18,9 @@ ms.date: 11/14/2016
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
-ms.openlocfilehash: dd504c95e22d322707c55818815b09d8a36c7ca4
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: 4e4a4f4e299dc2747eb48bbd2e064cd80783211c
+ms.openlocfilehash: 0d3b09fb20f748fe70049c505625d813190e94b0
+ms.lasthandoff: 04/04/2017
 
 ---
 # <a name="introduction-to-private-docker-container-registries"></a>Einführung in private Docker-Containerregistrierungen
@@ -48,9 +48,7 @@ Entwickler können im Rahmen eines Workflows der Containerentwicklung auch eine 
 
 
 ## <a name="key-concepts"></a>Wichtige Begriffe
-* **Registrierung**: Erstellen Sie in Ihrem Azure-Abonnement eine oder mehrere Containerregistrierungen. Jede Registrierung verfügt über ein standardmäßiges Azure-[Speicherkonto](../storage/storage-introduction.md) an demselben Standort. Nutzen Sie den lokalen Speicher in räumlicher Nähe zu Ihren Containerimages, indem Sie eine Registrierung an demselben Azure-Standort wie Ihre Bereitstellungen erstellen.
-
-  Registrierungen werden in einer Stammdomäne basierend auf dem [Azure Active Directory-Mandanten](../active-directory/active-directory-howto-tenant.md) des Abonnements benannt. Wenn Sie beispielsweise über ein Organisationskonto in der Contoso-Domäne verfügen, hat der vollqualifizierte Registrierungsname das Format `myregistry-contoso.azurecr.io`.
+* **Registrierung**: Erstellen Sie in Ihrem Azure-Abonnement eine oder mehrere Containerregistrierungen. Jede Registrierung verfügt über ein standardmäßiges Azure-[Speicherkonto](../storage/storage-introduction.md) an demselben Standort. Nutzen Sie den lokalen Speicher in räumlicher Nähe zu Ihren Containerimages, indem Sie eine Registrierung an demselben Azure-Standort wie Ihre Bereitstellungen erstellen. Ein vollständig qualifizierter Registrierungsname hat folgendes Format: `myregistry.azurecr.io`.
 
   Sie [steuern den Zugriff](container-registry-authentication.md) auf eine Containerregistrierung mit einem auf Azure Active Directory basierenden [Dienstprinzipal](../active-directory/active-directory-application-objects.md) oder einem bereitgestellten Administratorkonto. Führen Sie den Standardbefehl `docker login` aus, um die Authentifizierung für eine Registrierung durchzuführen.
 

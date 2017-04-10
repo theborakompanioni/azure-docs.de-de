@@ -1,5 +1,5 @@
 ---
-title: "Azure Application Insights für Windows-Dienste und Workerrollen | Microsoft-Dokumentation"
+title: "Azure Application Insights für Windows-Server und Workerrollen | Microsoft-Dokumentation"
 description: "Fügen Sie das Application Insights SDK manuell zu Ihrer ASP.NET-Anwendung hinzu, um Nutzung, Verfügbarkeit und Leistung zu analysieren."
 services: application-insights
 documentationcenter: .net
@@ -14,14 +14,14 @@ ms.topic: get-started-article
 ms.date: 11/01/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: df23a55197d15946f16868d14c6db08dcba4df19
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 97d750035e79d4780738e660d05e1a41085d51f1
+ms.lasthandoff: 03/31/2017
 
 
 ---
-# <a name="manually-configure-application-insights-for-aspnet-4-applications"></a>Manuelle Konfiguration von Application Insights für ASP.NET 4-Anwendungen
-[Application Insights](app-insights-overview.md) ist ein erweiterbares Tool für Webentwickler zum Überwachen der Leistung und Verwendung der Liveanwendung. Sie können dieses Tool manuell für die Überwachung von Windows-Diensten, Workerrollen und anderen ASP.NET-Anwendungen konfigurieren. Bei Web-Apps ist die manuelle Konfiguration eine Alternative zu der von Visual Studio bereitgestellten [automatischen Einrichtung](app-insights-asp-net.md) .
+# <a name="manually-configure-application-insights-for-aspnet-applications"></a>Manuelles Konfigurieren von Application Insights für ASP.NET-Anwendungen
+[Application Insights](app-insights-overview.md) ist ein erweiterbares Tool für Webentwickler zum Überwachen der Leistung und Verwendung der Liveanwendung. Sie können dieses Tool manuell für die Überwachung von Windows-Server, Workerrollen und anderen ASP.NET-Anwendungen konfigurieren. Bei Web-Apps ist die manuelle Konfiguration eine Alternative zu der von Visual Studio bereitgestellten [automatischen Einrichtung](app-insights-asp-net.md) .
 
 ![Beispiel für Leistungsüberwachungsdiagramm](./media/app-insights-windows-services/10-perf.png)
 
@@ -47,13 +47,13 @@ Der Schlüssel identifiziert die Ressource, den Sie bald im SDK installieren kö
 
 Die Schritte, die Sie gerade zum Erstellen einer neuen Ressource getan haben, sind eine gute Möglichkeit zum Starten der Überwachung einer Anwendung. Nun können Sie Daten zur Anwendung senden.
 
-## <a name="sdk"></a>2. Installieren des SDK in Ihrer Anwendung
-Installieren und Konfigurieren des Application Insights-SDK variiert abhängig von der Plattform, mit der Sie gerade arbeiten. Bei ASP.NET-Apps ist es einfach.
+## <a name="sdk"></a>2. Installieren des Application Insights-Pakets in Ihrer Anwendung
+Die Vorgehensweise zum Installieren und Konfigurieren des Application Insights-Pakets variiert abhängig von der Plattform, mit der Sie gerade arbeiten. Bei ASP.NET-Apps ist es einfach.
 
 1. Bearbeiten Sie die NuGet-Pakete Ihres Web-App-Projekts in Visual Studio.
    
     ![Klicken Sie mit der rechten Maustaste auf das Projekt, und wählen Sie "NuGet-Pakete verwalten".](./media/app-insights-windows-services/03-nuget.png)
-2. Installieren Sie das Application Insights SDK für Web-Apps.
+2. Installieren Sie das Application Insights-Paket für Windows-Server-Apps.
    
     ![Suchen Sie nach "Application Insights".](./media/app-insights-windows-services/04-ai-nuget.png)
    
@@ -61,10 +61,10 @@ Installieren und Konfigurieren des Application Insights-SDK variiert abhängig v
    
     Ja. Wählen Sie die Kern-API (Microsoft.ApplicationInsights), wenn Sie die API nur verwenden möchten, um Ihre eigenen Telemetriedaten zu senden. Das Windows Server-Paket beinhaltet automatisch die Kern-API sowie einige weitere Pakete wie etwa die Sammlung von Leistungsindikatoren und die Abhängigkeitsüberwachung. 
 
-#### <a name="to-upgrade-to-future-sdk-versions"></a>So upgraden Sie auf zukünftige SDK-Versionen
+#### <a name="to-upgrade-to-future-package-versions"></a>So führen Sie ein Upgrade auf zukünftige Paketversionen durch
 Von Zeit zu Zeit veröffentlichen wir eine neue Version des SDK.
 
-Für ein Upgrade auf eine [neue Version des SDK](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases/)öffnen Sie wieder den NuGet-Paket-Manager und filtern die Ansicht nach installierten Paketen. Wählen Sie **Microsoft.ApplicationInsights.Web** und dann **Upgrade** aus.
+Wenn Sie ein Upgrade auf eine [neue Paketversion](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases/) durchführen möchten, öffnen Sie erneut den NuGet-Paket-Manager, und filtern Sie nach installierten Paketen. Wählen Sie **Microsoft.ApplicationInsights.WindowsServer** und anschließend **Upgrade** aus.
 
 Wenn Sie Anpassungen an der Datei "ApplicationInsights.config" vorgenommen haben, speichern Sie vor dem Upgrade eine Kopie davon. Sie können anschließend die Änderungen in die neue Version übernehmen.
 

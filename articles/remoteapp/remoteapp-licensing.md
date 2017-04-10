@@ -14,14 +14,15 @@ ms.topic: get-started-article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: fcc53e4073a6957fae263cfb5d38023ed9710d21
-ms.openlocfilehash: 47a60ba7de5ad09f0fc27efd2d041199b71be348
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 43d0dbb905b2f2b9d98fb3bf8c073ba1c4b6f4c4
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="how-does-licensing-work-in-azure-remoteapp"></a>Wie funktioniert die Lizenzierung in Azure RemoteApp?
 > [!IMPORTANT]
-> Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
+> Azure RemoteApp wird am 31. August 2017 eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
 > 
 > 
 
@@ -40,10 +41,5 @@ Für andere Apps müssen Sie sicherstellen, dass Sie die Lizenz zum Freigeben de
 Das ist einleuchtend, nicht wahr? Sie können jede App veröffentlichen, zu deren Freigabe Sie von Rechts wegen berechtigt sind. Dabei müssen Sie sicherstellen, dass Sie tatsächlich berechtigt sind, die Programme freizugeben.
 
 Bitte beachten Sie, dass Sie in einer Cloudsammlung keine Client-Zugriffslizenz (CAL) und keinen Volumenlizenzvertrag verwenden können. Sie *können* jedoch einen Volumenlizenzvertrag verwenden, um Anwendungen (mit Ausnahme von Office) in einer Hybridsammlung zu aktivieren. Sie müssen sie lediglich auf dem Vorlagenimage von den Volumenlizenzmedien installieren. Befolgen Sie die Hinweise des Herstellers der Anwendung zum Installieren von Lizenzen in einer Remotedesktop-Umgebung.
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

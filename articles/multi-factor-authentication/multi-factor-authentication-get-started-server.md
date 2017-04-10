@@ -13,12 +13,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/26/2017
+ms.date: 03/26/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: c5a26a17ab50993f8b57c8868b02541251de1cb1
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: b769f785f67c24b99156dcfc21a42f661cc9da27
+ms.lasthandoff: 03/31/2017
 
 ---
 
@@ -121,13 +121,13 @@ Nachdem Sie den Server installiert und konfiguriert haben, können Sie Benutzer 
 ## <a name="send-users-an-email"></a>Senden einer E-Mail an Benutzer
 Senden Sie den Benutzern nach dem Importieren in den MFA-Server eine E-Mail mit dem Hinweis, dass sie für die Überprüfung in zwei Schritten registriert wurden.
 
-Die gesendete E-Mail sollte sich danach richten, wie Sie die Benutzer für die Überprüfung in zwei Schritten konfiguriert haben. Falls Sie beispielsweise die Telefonnummern aus dem Telefonverzeichnis Ihres Unternehmens importieren können, sollte die E-Mail die Standardnummern enthalten, damit die Benutzer wissen, was sie erwartet. Falls Sie keine Telefonnummern importiert haben oder die Benutzer die mobile App verwenden, können Sie eine E-Mail senden, in der über einen Hyperlink auf das Benutzerportal für die Azure Multi-Factor Authentication verwiesen wird, um die Kontoregistrierung ausführen zu können.
+Die gesendete E-Mail sollte sich danach richten, wie Sie die Benutzer für die Überprüfung in zwei Schritten konfiguriert haben. Falls Sie beispielsweise die Telefonnummern aus dem Telefonverzeichnis Ihres Unternehmens importieren können, sollte die E-Mail die Standardnummern enthalten, damit die Benutzer wissen, was sie erwartet. Falls Sie keine Telefonnummern importiert haben oder die Benutzer die mobile App verwenden, senden Sie ihnen eine E-Mail, in der sie aufgefordert werden, ihre Kontoregistrierung abzuschließen. Schließen Sie in die E-Mail einen Link zum Benutzerportal für Azure Multi-Factor Authentication ein.
 
 Der Inhalt der E-Mail variiert auch abhängig von der Überprüfungsmethode, die für den Benutzer festgelegt wurde (Telefonanruf, SMS oder mobile App).  Wenn der Benutzer beispielsweise bei der Authentifizierung eine PIN verwenden muss, wird er per E-Mail informiert, wie seine anfängliche PIN festgelegt wurde.  Benutzer müssen ihre PIN während der ersten Überprüfung ändern.
 
 
 ### <a name="configure-email-and-email-templates"></a>Konfigurieren von E-Mails und E-Mail-Vorlagen
-Klicken Sie auf das E-Mail-Symbol auf der linken Seite, um die Einstellungen zum Senden dieser E-Mails einzurichten. Hier können Sie die SMTP-Informationen Ihres Mailservers eingeben und E-Mails senden, indem Sie das Kontrollkästchen **E-Mails an Benutzer senden** aktivieren.
+Klicken Sie auf das E-Mail-Symbol auf der linken Seite, um die Einstellungen zum Senden dieser E-Mails einzurichten. Auf dieser Seite können Sie die SMTP-Informationen Ihres E-Mailservers eingeben und E-Mails senden, indem Sie das Kontrollkästchen **E-Mails an Benutzer senden** aktivieren.
 
 ![E-Mail-Einstellungen](./media/multi-factor-authentication-get-started-server/email1.png)
 
@@ -155,11 +155,7 @@ Zusätzlich zu den obigen Feldern werden auch das Überprüfungsergebnis (Erfolg
 
 - Einrichten und Konfigurieren des [Benutzerportals](multi-factor-authentication-get-started-portal.md) für Self-Service
 
-- Einrichten der Multi-Factor Authentication mit [Active Directory-Verbunddiensten](multi-factor-authentication-get-started-adfs.md)
-
-- Einrichten und Konfigurieren des Azure MFA-Servers mit [RADIUS-Authentifizierung](multi-factor-authentication-get-started-server-radius.md). Mit RADIUS können Sie verschiedene Drittanbietersysteme in Azure MFA Server integrieren. 
-
-- Einrichten und Konfigurieren des Azure MFA-Servers mit [Windows-Authentifizierung](multi-factor-authentication-get-started-server-windows.md)
+- Einrichten und Konfigurieren des Azure MFA-Servers mit [Active Directory-Verbunddienste](multi-factor-authentication-get-started-adfs.md), [RADIUS-Authentifizierung](multi-factor-authentication-get-started-server-radius.md) oder [LDAP-Authentifizierung](multi-factor-authentication-get-started-server-ldap.md)
 
 - Einrichten und Konfigurieren von [Remotedesktopgateway und Azure Multi-Factor Authentication-Server mithilfe von RADIUS](multi-factor-authentication-get-started-server-rdg.md) 
 
