@@ -25,6 +25,8 @@ ms.lasthandoff: 03/01/2017
 ## <a name="overview"></a>Übersicht
 Sie können Programme oder Skripts in WebJobs auf drei Arten in Ihrer [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)-Web-App ausführen: bei Bedarf, kontinuierlich oder nach einem Zeitplan. Für die Nutzung von WebJobs fallen keine zusätzlichen Kosten an.
 
+[!INCLUDE [app-service-web-webjobs-corenote](../../includes/app-service-web-webjobs-corenote.md)]
+
 Dieser Artikel zeigt, wie Sie WebJobs mithilfe des [Azure-Portals](https://portal.azure.com)bereitstellen. Informationen zum Bereitstellen über Visual Studio oder einen kontinuierlichen Bereitstellungsprozess finden Sie unter [Bereitstellen von Azure WebJobs in Azure-Web-Apps](websites-dotnet-deploy-webjobs.md).
 
 Das Azure WebJobs-SDK vereinfacht zahlreiche WebJobs-Programmieraufgaben. Weitere Informationen finden Sie unter [Was ist das WebJobs-SDK?](websites-dotnet-webjobs-sdk.md).

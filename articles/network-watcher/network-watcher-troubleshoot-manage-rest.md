@@ -46,7 +46,6 @@ Dieses Szenario setzt voraus, dass Sie die Schritte unter [Erstellen einer Netwo
 
 Die Network Watcher-Problembehandlung bietet die Möglichkeit zum Behandeln von Problemen, die bei Virtual Network-Gateways und -Verbindungen auftreten können. Wenn eine Anforderung an die Ressourcenproblembehandlung erfolgt, werden Protokolle abgefragt und untersucht. Nach Abschluss der Untersuchung werden die Ergebnisse zurückgegeben. Anforderungen an die Problembehandlungs-API sind Anforderungen mit langer Ausführungszeit. Daher kann es mehrere Minuten dauern, bis ein Ergebnis zurückgegeben wird. Protokolle werden in einem Container auf einem Speicherkonto gespeichert.
 
-
 ## <a name="log-in-with-armclient"></a>Anmelden mit ARMClient
 
 ```PowerShell
