@@ -47,7 +47,7 @@ Die Liste der Geräte im Lösungsdashboard verwendet eine Abfrage, um die Liste 
 * Wenn Sie die Ressourcengruppe im [Azure-Portal][lnk-azure-portal] löschen, werden nur die Ressourcen in dieser Ressourcengruppe gelöscht. Sie müssen auch die zugeordnete Azure Active Directory-Anwendung löschen, die der vorkonfigurierten Lösung im [klassischen Azure-Portal][lnk-classic-portal] zugeordnet ist.
 
 ### <a name="how-many-iot-hub-instances-can-i-provision-in-a-subscription"></a>Wie viele IoT Hub-Instanzen kann ich in einem Abonnement bereitstellen?
-Standardmäßig können Sie [10 IoT Hubs pro Abonnement][link-azuresublimits] bereitstellen. Sie können ein [Azure-Supportticket] [ link-azuresupportticket] erstellen, um dieses Limit zu erhöhen. Da jede vorkonfigurierte Lösung einen neuen IoT Hub bereitstellt, können Sie somit in einem Abonnement nur bis zu zehn vorkonfigurierte Lösungen bereitstellen. 
+Standardmäßig können Sie [10 IoT Hubs pro Abonnement][link-azuresublimits] bereitstellen. Sie können ein [Azure-Supportticket][link-azuresupportticket] erstellen, um dieses Limit zu erhöhen. Da jede vorkonfigurierte Lösung einen neuen IoT Hub bereitstellt, können Sie somit in einem Abonnement nur bis zu zehn vorkonfigurierte Lösungen bereitstellen. 
 
 ### <a name="how-many-documentdb-instances-can-i-provision-in-a-subscription"></a>Wie viele Instanzen von DocumentDB kann ich in einem Abonnement bereitstellen?
 50. Sie können ein [Azure-Supportticket][link-azuresupportticket] erstellen, um dieses Limit zu erhöhen. Standardmäßig können Sie jedoch nur 50 DocumentDB-Instanzen pro Abonnement bereitstellen. 
