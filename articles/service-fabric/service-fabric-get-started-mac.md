@@ -3,8 +3,8 @@ title: Einrichten Ihrer Entwicklungsumgebung unter Mac OS X | Microsoft Docs
 description: "Installieren Sie Laufzeit, SDK und Tools, und erstellen Sie einen lokalen Entwicklungscluster. Nach Abschluss des Setups können Sie mit der Erstellung von Clientanwendungen unter Mac OS X beginnen."
 services: service-fabric
 documentationcenter: java
-author: saysa
-manager: raunakp
+author: sayantancs
+manager: timlt
 editor: 
 ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
 ms.service: service-fabric
@@ -12,7 +12,7 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/27/2016
+ms.date: 04/06/2017
 ms.author: saysa
 translationtype: Human Translation
 ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
@@ -51,7 +51,7 @@ Führen Sie die folgenden Schritte aus, um den lokalen virtuellen Computer mit e
     ```
     Mit diesen Schritten wird die Datei `Vagrantfile` mit der VM-Konfiguration und dem Downloadort der VM bereitgestellt.
 
-   
+
 2. Navigieren Sie zum lokalen Klon des Repositorys:
 
     ```bash
