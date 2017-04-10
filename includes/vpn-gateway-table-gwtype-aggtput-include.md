@@ -4,7 +4,7 @@ Beachten Sie, dass die UltraPerformance-Gateway-SKU nicht in dieser Tabelle enth
 
 |  | **VPN Gateway-Durchsatz (1)** | **Max. IPsec-Tunnel für VPN Gateway (2)** | **ExpressRoute-Gateway-Durchsatz** | **Gemeinsame Verwendung von VPN-Gateway und ExpressRoute** |
 | --- | --- | --- | --- | --- |
-| **Basic-SKU (3)(5)** |100 MBit/s |10 |500 MBit/s |Nein |
+| **Basic-SKU (3)(5)(6)** |100 MBit/s |10 |500 MBit/s (6) |Nein |
 | **Standard-SKU (4)(5)** |100 MBit/s |10 |1.000 MBit/s |Ja |
 | **High-Performance-SKU (4)** |200 MBit/s |30 |2.000 MBit/s |Ja |
 
@@ -13,9 +13,4 @@ Beachten Sie, dass die UltraPerformance-Gateway-SKU nicht in dieser Tabelle enth
 * (3) BGP wird für die Basic-SKU nicht unterstützt.
 * (4) Richtlinienbasierte VPNs werden für diese SKU nicht unterstützt. Sie werden nur für die Basic-SKU unterstützt.
 * (5) Aktiv-Aktiv-S2S-VPN-Gatewayverbindungen werden für diese SKU nicht unterstützt. Aktiv-Aktiv wird nur in der HighPerformance-SKU unterstützt.
-
-
-
-<!--HONumber=Jan17_HO1-->
-
-
+* (6) Die Basic-SKU ist für die Verwendung mit ExpressRoute veraltet.

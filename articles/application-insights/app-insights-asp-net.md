@@ -14,9 +14,9 @@ ms.topic: get-started-article
 ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: ae869be6ed9f304629498f416ffdda96252bdf9c
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: bcd8b3b7fb44a28d7184d14969eb998ce07c8e53
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -83,9 +83,10 @@ Sie können die Telemetriedaten auch im **Application Insights-Webportal** anzei
 ![Screenshot von Visual Studio mit der Vorgehensweise beim Öffnen des Application Insights-Portals](./media/app-insights-asp-net/appinsights-04-openPortal.png)
 
 > [!NOTE]
-> Falls Sie einen Zugriffsfehler erhalten, verfügen Sie unter Umständen über mehr als eine Gruppe von Microsoft-Anmeldeinformationen und haben sich mit den falschen Informationen angemeldet. Melden Sie sich vom Portal ab und dann wieder an.
+> Sollte ein Zugriffsfehler auftreten, verfügen Sie unter Umständen über mehrere Microsoft-Anmeldeinformationen und haben sich mit den falschen Informationen angemeldet. Melden Sie sich vom Portal ab und dann wieder an.
 
 Das Portal wird mit einer Ansicht der Telemetriedaten Ihrer App geöffnet.
+
 ![Screenshot der Application Insights-Übersichtsseite](./media/app-insights-asp-net/66.png)
 
 Klicken Sie auf eine beliebige Kachel oder ein beliebiges Diagramm, um weitere Details anzuzeigen.

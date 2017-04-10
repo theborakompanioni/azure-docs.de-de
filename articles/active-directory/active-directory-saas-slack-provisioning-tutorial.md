@@ -17,15 +17,16 @@ ms.author: asmalser-msft
 translationtype: Human Translation
 ms.sourcegitcommit: a3c339de98250f43c71f7dd9706888c6715ca2ef
 ms.openlocfilehash: e39f2202e83cdf66b85f1cc02a9320ec9e31472e
+ms.lasthandoff: 02/08/2017
 
 ---
 
-#<a name="tutorial-configuring-slack-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Slack für die automatische Benutzerbereitstellung
+# <a name="tutorial-configuring-slack-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Slack für die automatische Benutzerbereitstellung
 
 
 Dieses Tutorial zeigt Ihnen die Schritte, die Sie in Slack und Azure AD ausführen müssen, um Benutzerkonten von Azure AD in Slack automatisch bereitzustellen bzw. deren Bereitstellung automatisch aufzuheben. 
 
-##<a name="prerequisites"></a>Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 
 Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
@@ -45,9 +46,9 @@ Vor dem Konfigurieren und Aktivieren des Bereitstellungsdiensts müssen Sie ents
 
 ### <a name="important-tips-for-assigning-users-to-slack"></a>Wichtige Tipps zum Zuweisen von Benutzern zu Slack
 
-*   Es wird empfohlen, Slack einen einzelnen Azure AD-Benutzer zuzuweisen, um die Konfiguration der Bereitstellung zu testen. Später können weitere Benutzer und/oder Gruppen zugewiesen werden.
+*    Es wird empfohlen, Slack einen einzelnen Azure AD-Benutzer zuzuweisen, um die Konfiguration der Bereitstellung zu testen. Später können weitere Benutzer und/oder Gruppen zugewiesen werden.
 
-*   Beim Zuweisen eines Benutzers zu Slack müssen Sie im Dialogfeld „Zuweisung“ die Rolle **Benutzer** oder „Gruppe“ auswählen. Die Rolle „Standardzugriff“ funktioniert nicht für die Bereitstellung.
+*    Beim Zuweisen eines Benutzers zu Slack müssen Sie im Dialogfeld „Zuweisung“ die Rolle **Benutzer** oder „Gruppe“ auswählen. Die Rolle „Standardzugriff“ funktioniert nicht für die Bereitstellung.
 
 
 ## <a name="configuring-user-provisioning-to-slack"></a>Konfigurieren der Benutzerbereitstellung in Slack 
@@ -60,17 +61,17 @@ Dieser Abschnitt führt Sie durch das Herstellen einer Verbindung von Azure AD m
 ### <a name="to-configure-automatic-user-account-provisioning-to-slack-in-azure-ad"></a>So konfigurieren Sie die automatische Bereitstellung von Benutzerkonten für Slack in Azure AD:
 
 
-1)  Wechseln Sie im [Azure-Portal](https://portal.azure.com) zum Abschnitt **Azure Active Directory > Unternehmens-Apps > Alle Anwendungen**.
+1)    Wechseln Sie im [Azure-Portal](https://portal.azure.com) zum Abschnitt **Azure Active Directory > Unternehmens-Apps > Alle Anwendungen**.
 
 2) Wenn Sie Slack bereits für einmaliges Anmelden konfiguriert haben, suchen Sie über das Suchfeld nach Ihrer Slack-Instanz. Wählen Sie andernfalls **Hinzufügen**, und suchen Sie im Anwendungskatalog nach **Slack**. Wählen Sie „Slack“ in den Suchergebnissen aus, und fügen Sie es Ihrer Anwendungsliste hinzu.
 
-3)  Wählen Sie Ihre Slack-Instanz aus, und wählen Sie dann die Registerkarte **Bereitstellung**.
+3)    Wählen Sie Ihre Slack-Instanz aus, und wählen Sie dann die Registerkarte **Bereitstellung**.
 
-4)  Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
+4)    Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
 ![Slack-Bereitstellung](./media/active-directory-saas-slack-provisioning-tutorial/Slack1.PNG)
 
-5)  Klicken Sie im Abschnitt **Administratoranmeldeinformationen** auf **Autorisieren**. Dadurch wird ein Slack-Autorisierungsdialogfeld in einem neuen Browserfenster geöffnet. 
+5)    Klicken Sie im Abschnitt **Administratoranmeldeinformationen** auf **Autorisieren**. Dadurch wird ein Slack-Autorisierungsdialogfeld in einem neuen Browserfenster geöffnet. 
 
 6) Melden Sie sich im neuen Fenster mit Ihrem Teamadministratorkonto bei Slack an. Wählen Sie im daraufhin angezeigten Autorisierungsdialogfeld das Slack-Team aus, für das Sie die Bereitstellung aktivieren möchten, und wählen Sie dann **Autorisieren**. Kehren Sie anschließend zum Azure-Portal zurück, um die Konfiguration der Bereitstellung abzuschließen.
 
@@ -113,9 +114,4 @@ So werden alle Gruppenobjekte, die Slack im Abschnitt **Benutzer und Gruppen** z
 
 * [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](active-directory-enterprise-apps-manage-provisioning.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

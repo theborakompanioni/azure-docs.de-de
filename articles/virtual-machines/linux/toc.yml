@@ -1,0 +1,386 @@
+- name: "Dokumentation zu virtuellen Linux-Computern"
+  href: index.md
+- name: "Übersicht"
+  items:
+  - name: "Informationen zu virtuellen Computern"
+    href: overview.md
+- name: "Schnellstart"
+  expanded: true
+  items:
+  - name: "Erstellen eines virtuellen Computers – Azure-CLI"
+    href: quick-create-cli.md
+  - name: "Erstellen eines virtuellen Computers – Portal"
+    href: quick-create-portal.md
+  - name: "Erstellen eines virtuellen Computers – PowerShell"
+    href: quick-create-powershell.md
+- name: "Beispiele"
+  items:
+  - name: "Azure-Befehlszeilenschnittstelle"
+    href: cli-samples.md
+  - name: "PowerShell"
+    href: powershell-samples.md
+- name: "Tutorials"
+  items:
+  - name: "Erstellen und Verwalten eines virtuellen Computers"
+    href: tutorial-manage-vm.md
+  - name: "Lastenausgleich für hoch verfügbare virtuelle Computer"
+    href: tutorial-load-balance-nodejs.md
+  - name: "Erstellen einer VM-Skalierungsgruppe"
+    href: tutorial-create-vmss.md
+- name: "Konzepte"
+  items:
+  - name: "Von Azure unterstützte Distributionen"
+    href: endorsed-distros.md
+  - name: "Regionen und Verfügbarkeit"
+    href: regions-and-availability.md
+  - name: "Speicher"
+    href: azure-vm-storage-overview.md
+  - name: "Netzwerk"
+    href: azure-vm-network-overview.md
+  - name: "VM-Skalierungsgruppen"
+    href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md
+  - name: "Container"
+    href: containers.md
+  - name: "Ressourcen-Manager"
+    href: ../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    items:
+    - name: "Bereitstellungsmodelle"
+      href: ../../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    - name: "Vorlagen für virtuelle Computer"
+      href: ../windows/template-description.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+  - name: "Azure Linux-Agent"
+    href: agent-user-guide.md
+  - name: "Azure Security Center"
+    href: ../../security-center/security-center-linux-virtual-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+  - name: "Notfallwiederherstellung"
+    href: ../virtual-machines-disaster-recovery-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+  - name: "Geplante Wartung"
+    href: planned-maintenance.md
+    items:
+    - name: "Beibehalten der Wartung"
+      href: maintenance-in-place.md
+    - name: "Neustarten der Wartung"
+      href: impactful-maintenance.md
+  - name: "VM-Größen"
+    items:
+    - name: "Übersicht über VM-Größen"
+      href: sizes.md
+      items:
+      - name: "Allgemeiner Zweck"
+        href: sizes-general.md
+      - name: "Computeoptimiert"
+        href: sizes-compute.md
+      - name: "Arbeitsspeicheroptimiert"
+        href: sizes-memory.md
+      - name: "Speicheroptimiert"
+        href: sizes-storage.md
+      - name: "GPU"
+        href: sizes-gpu.md
+      - name: "High Performance Computing"
+        href: sizes-hpc.md
+        items:
+        - name: "Rechenintensive Größen"
+          href: a8-a9-a10-a11-specs.md
+    - name: "Azure-Computeeinheiten (ACU)"
+      href: acu.md
+    - name: "Compute-Benchmarkergebnisse"
+      href: compute-benchmark-scores.md
+  - name: "Überlegungen zur Bereitstellung"
+    items:
+    - name: "Richtlinien für Infrastrukturen"
+      href: infrastructure-virtual-machine-guidelines.md
+    - name: "Abonnements und Konten"
+      href: infrastructure-subscription-accounts-guidelines.md
+    - name: "Benennung"
+      href: infrastructure-naming-guidelines.md
+    - name: "Ressourcengruppen"
+      href: infrastructure-resource-groups-guidelines.md
+    - name: "Speicher"
+      href: infrastructure-storage-solutions-guidelines.md
+    - name: "Netzwerk"
+      href: infrastructure-networking-guidelines.md
+    - name: "Verfügbarkeitsgruppen"
+      href: infrastructure-availability-sets-guidelines.md
+    - name: "Infrastrukturbeispiel"
+      href: infrastructure-example.md
+- name: "Anleitungen"
+  items:
+  - name: "Virtuelle Computer erstellen"
+    items:
+    - name: "Übersicht über die Erstellung virtueller Computer"
+      href: creation-choices.md
+    - name: "Erstellen eines virtuellen Computers mit der Befehlszeilenschnittstelle"
+      href: quick-create-cli-nodejs.md
+    - name: "Erstellen eines virtuellen Computers mit einer Vorlage"
+      href: create-ssh-secured-vm-from-template.md
+    - name: "Kopieren eines virtuellen Computers"
+      href: copy-vm.md
+    - name: "Verschieben einer VM zwischen Abonnements"
+      href: move-vm.md
+    - name: "Erstellen eines hoch verfügbaren virtuellen Computers"
+      href: create-cli-complete.md
+    - name: "Bereitstellen einer App mit einer VM-Vorlage"
+      items:
+      - name: "Übersicht über das Tutorial"
+        href: dotnet-core-1-landing.md
+      - name: "App-Architektur"
+        href: dotnet-core-2-architecture.md
+      - name: "Zugriff und Sicherheit"
+        href: dotnet-core-3-access-security.md
+      - name: "Verfügbarkeit und Umfang"
+        href: dotnet-core-4-availability-scale.md
+      - name: "App-Bereitstellung"
+        href: dotnet-core-5-app-deployment.md
+  - name: "Konfigurieren von virtuellen Computern"
+    items:
+    - name: "Verwenden von cloud-init"
+      href: using-cloud-init.md
+    - name: "Hinzufügen eines Benutzers zu einem virtuellen Computer"
+      href: add-user.md
+    - name: "Ändern der Größe eines virtuellen Computers"
+      href: change-vm-size.md
+    - name: "Verwenden von Tags"
+      href: ../../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      items:
+      - name: "Kennzeichnen eines virtuellen Computers"
+        href: tag.md
+    - name: "Optimieren Ihrer Linux-VM"
+      href: optimization.md
+    - name: "Updaten des Azure-Linux-Agents"
+      href: update-agent.md
+    - name: "Sichern mit Recovery Services"
+      href: ../../backup/backup-azure-vms-first-look-arm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    - name: "Verknüpfen eines virtuellen RedHat-Computers mit einem Azure Active Directory-Domänendienst"
+      href: join-redhat-linux-vm-to-azure-active-directory-domain-service.md
+  - name: "Verbinden mit SSH"
+    items:
+    - name: "Erstellen von SSH-Schlüsseln auf Linux- und Mac-Computern"
+      href: mac-create-ssh-keys.md
+      items:
+      - name: "Ausführliche Schritte"
+        href: create-ssh-keys-detailed.md
+    - name: "Verwenden von SSH-Schlüsseln mit Windows für virtuelle Linux-Computer"
+      href: ssh-from-windows.md
+    - name: "Verwenden von Remotedesktop zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer"
+      href: use-remote-desktop.md
+  - name: "Verwalten von VM-Images"
+    items:
+    - name: "Suchen von VM-Images aus Marketplace"
+      href: cli-ps-findimage.md
+    - name: "Erstellen von benutzerdefinierten VM-Images"
+      href: create-upload-generic.md
+    - name: "Hochladen von benutzerdefinierten VM-Images"
+      href: upload-vhd.md
+    - name: "Erfassen eines vorhandenen virtuellen Computers in einem Image"
+      href: capture-image.md
+    - name: "Erstellen der von Azure unterstützten Images"
+      items:
+      - name: "Ubuntu"
+        href: create-upload-ubuntu.md
+      - name: "Debian"
+        href: debian-create-upload-vhd.md
+      - name: "Red Hat"
+        href: redhat-create-upload-vhd.md
+      - name: "CentOS"
+        href: create-upload-centos.md
+      - name: "Oracle Linux"
+        href: oracle-create-upload-vhd.md
+  - name: "Verwalten von VM-Speicher"
+    items:
+    - name: "Azure Managed Disks"
+      href: ../../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      items:
+      - name: "Häufig gestellte Fragen"
+        href: ../../storage/storage-faq-for-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    - name: "Kopieren von Dateien auf einen virtuellen Linux-Computer"
+      href: copy-files-to-linux-vm-using-scp.md
+    - name: "Konvertieren eines virtuellen Computers in Managed Disks"
+      href: convert-unmanaged-to-managed-disks.md
+    - name: "Erstellen einer Momentaufnahme eines verwalteten Datenträgers"
+      href: snapshot-copy-managed-disk.md
+    - name: "Hinzufügen eines Datenträgers"
+      items:
+      - name: "Azure-Befehlszeilenschnittstelle"
+        href: add-disk.md
+      - name: "Azure-Portal"
+        href: attach-disk-portal.md
+    - name: "Trennen eines Datenträgers"
+      href: detach-disk.md
+    - name: "Erweitern des Betriebssystemlaufwerks"
+      href: expand-disks.md
+    - name: "Konfigurieren von Software-RAID"
+      href: configure-raid.md
+    - name: "Konfigurieren von LVM"
+      href: configure-lvm.md
+    - name: "Bereitstellen von Azure File Storage mit SMB"
+      href: mount-azure-file-storage-on-linux-using-smb.md
+  - name: "VM-Netzwerk"
+    items:
+    - name: "Erstellen virtueller Netzwerke"
+      href: ../../virtual-network/virtual-networks-create-vnet-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    - name: "Bereitstellen eines virtuellen Computers in einem vorhandenen virtuellen Netzwerk"
+      items:
+      - name: "Azure-Befehlszeilenschnittstelle"
+        href: deploy-linux-vm-into-existing-vnet-using-cli.md
+      - name: "Azure-Portal"
+        href: deploy-linux-vm-into-existing-vnet-using-portal.md
+    - name: "Erstellen eines virtuellen Computers mit mehreren Netzwerkschnittstellenkarten (NICs)"
+      href: multiple-nics.md
+    - name: "Erstellen einer statischen öffentlichen IP-Adresse"
+      href: ../../virtual-network/virtual-network-deploy-static-pip-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    - name: "Konfigurieren von Ports, Endpunkten und Sicherheit"
+      href: endpoints-in-resource-manager.md
+    - name: "Zulassen des Zugriffs auf einen virtuellen Computer"
+      href: nsg-quickstart.md
+    - name: "Verwenden des FreeBSD-Paketfilters"
+      href: freebsd-pf-nat.md
+    - name: "Optionen für die DNS-Namensauflösung"
+      href: azure-dns.md
+    - name: "Verwenden des internen DNS für die VM-Namensauflösung"
+      href: static-dns-name-resolution-for-linux-on-azure.md
+    - name: "Erstellen eines FQDN"
+      href: portal-create-fqdn.md
+    - name: "Erstellen benutzerdefinierter Routen"
+      href: ../../virtual-network/virtual-network-create-udr-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+  - name: "Skalierung und Verfügbarkeit"
+    items:
+    - name: "VM-Verfügbarkeit"
+      href: manage-availability.md
+    - name: "Einrichten eines Load Balancers"
+      href: ../../load-balancer/load-balancer-get-started-internet-arm-ps.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    - name: "Skalieren mehrerer virtueller Computer mit Skalierungsgruppen"
+      href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    - name: "Vertikales Skalieren von VMs mit Azure Automation"
+      href: vertical-scaling-automation.md
+    - name: "Überwachung virtueller Computer"
+      href: vm-monitoring.md
+  - name: "Verwalten der VM-Sicherheit"
+    items:
+    - name: "Deaktivieren von SSH-Kennwörtern durch konfigurieren von SSHD"
+      href: mac-disable-ssh-password-usage.md
+    - name: "Zurücksetzen des SSH-Zugriffs, Verwalten von Benutzern und Überprüfen von Datenträgern"
+      href: using-vmaccess-extension.md
+    - name: "Verwenden von Stammberechtigungen"
+      href: use-root-privileges.md
+    - name: "Verschlüsseln eines VM-Datenträgers"
+      href: encrypt-disks.md
+    - name: "Anwenden von Richtlinien auf virtuelle Computer"
+      href: policy.md
+    - name: "Einrichten von Key Vault"
+      href: key-vault-setup.md
+  - name: "Verwenden von VM-Erweiterungen"
+    items:
+    - name: "Übersicht über VM-Erweiterungen"
+      href: extensions-features.md
+    - name: "Benutzerdefinierte Skripterweiterung"
+      href: extensions-customscript.md
+    - name: "OMS-Agent-Erweiterung"
+      href: extensions-oms.md
+  - name: "Ausführen von Anwendungen"
+    items:
+    - name: "Cloud Foundry"
+      href: cloudfoundry-get-started.md
+    - name: "Virtuelle Data Science-Computer – Übersicht"
+      href: ../../machine-learning/machine-learning-data-science-virtual-machine-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    - name: "MongoDB"
+      href: install-mongodb.md
+    - name: "MySQL"
+      href: mysql-install.md
+    - name: "PostgreSQL"
+      href: postgresql-install.md
+    - name: "Bereitstellen des LAMP-Stapels"
+      href: create-lamp-stack.md
+    - name: "Bereitstellen eines Deis-Clusters mit drei Knoten"
+      href: deis-cluster.md
+    - name: "Entwickeln einer Node.js-Anwendung"
+      href: ../../virtual-machines-linux-nodejs-deploy.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    - name: "Django-Web-App"
+      href: python-django-web-app.md
+    - name: "Jupyter Notebook"
+      href: jupyter-notebook.md
+    - name: "Bereitstellen von Anwendungsframeworks anhand einer Vorlage"
+      href: app-frameworks.md
+    - name: "High Performance Computing (HPC)"
+      href: hpcpack-cluster-options.md
+      items:
+      - name: "Ausführen von NAMD mit Microsoft HPC Pack"
+        href: classic/hpcpack-cluster-namd.md
+    - name: "SAP in Azure"
+      href: ../workloads/sap/get-started.md
+  - name: "Docker auf virtuellen Computern"
+    items:
+    - name: "Erstellen von Docker-Hosts mit der Azure Docker-VM-Erweiterung"
+      href: dockerextension.md
+    - name: "Verwenden von Docker Machine mit Azure"
+      href: docker-machine.md
+    - name: "Verwenden von Docker Compose mit Azure"
+      href: docker-compose-quickstart.md
+  - name: "Migrieren virtueller Computer"
+    items:
+    - name: "Übersicht über die Migration"
+      href: migration-classic-resource-manager-overview.md
+    - name: "Ausführliche Informationen zur Migration"
+      href: migration-classic-resource-manager-deep-dive.md
+    - name: "Planen der Migration"
+      href: migration-classic-resource-manager-plan.md
+    - name: "Migrieren mithilfe der Befehlszeilenschnittstelle"
+      href: migration-classic-resource-manager-cli.md
+    - name: "Häufige Fehler bei der Migration"
+      href: migration-classic-resource-manager-errors.md
+    - name: "Communitytools für die Migration"
+      href: ../windows/migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    - name: "Häufig gestellte Fragen"
+      href: migration-classic-resource-manager-faq.md
+  - name: "Problembehandlung"
+    items:
+    - name: "Problembehandlung für SSH-Verbindungen"
+      href: troubleshoot-ssh-connection.md
+      items:
+      - name: "Ausführliche Problembehandlungsschritte"
+        href: detailed-troubleshoot-ssh-connection.md
+    - name: "Problembehandlung beim Anwendungszugriff"
+      href: troubleshoot-app-connection.md
+    - name: "Problembehandlung bei Zuordnungsfehlern"
+      href: allocation-failure.md
+    - name: "Problembehandlung bei Bereitstellungsproblemen"
+      href: troubleshoot-deployment-new-vm.md
+    - name: "Erneutes Bereitstellen eines virtuellen Computers auf einem neuen Azure-Knoten"
+      href: redeploy-to-new-node.md
+    - name: "Anfügen einer virtuellen Festplatte für die Problembehandlung"
+      items:
+      - name: "Azure-Befehlszeilenschnittstelle"
+        href: troubleshoot-recovery-disks.md
+      - name: "Azure-Portal"
+        href: troubleshoot-recovery-disks-portal.md
+- name: "Referenz"
+  items:
+  - name: "Azure-Befehlszeilenschnittstelle"
+    href: /cli/azure/vm
+  - name: "PowerShell"
+    href: /powershell/azureps-cmdlets-docs
+  - name: ".NET"
+    href: /dotnet/api/microsoft.azure.management.compute
+  - name: "Java"
+    href: /java/api
+  - name: "Node.js"
+    href: https://azure.microsoft.com/en-us/develop/nodejs/#azure-sdk
+  - name: "Python"
+    href: http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.compute.html
+  - name: "REST"
+    href: /rest/api/compute
+- name: "Ressourcen"
+  items:
+  - name: "Verfassen von Vorlagen"
+    href: ../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+  - name: "Communityvorlagen"
+    href: https://azure.microsoft.com/documentation/templates
+  - name: "Preise"
+    href: https://azure.microsoft.com/pricing/details/#Linux
+  - name: "Regionale Verfügbarkeit"
+    href: https://azure.microsoft.com/regions/services/
+  - name: "Stack Overflow"
+    href: http://stackoverflow.com/questions/tagged/azure-virtual-machine
+  - name: "Videos"
+    href: https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines
+  - name: "Häufig gestellte Fragen"
+    href: faq.md

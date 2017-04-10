@@ -15,14 +15,15 @@ ms.workload: compute
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 84aaff1f1e8a92583107295643e0ada81376fab0
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: d32d91f7bbfcea61caba6ccc3033929d307f14be
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="run-any-windows-app-on-any-device-with-azure-remoteapp"></a>Mit Azure RemoteApp jede Windows-Anwendung auf jedem Gerät ausführen
 > [!IMPORTANT]
-> Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
+> Azure RemoteApp wird am 31. August 2017 eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
 > 
 > 
 
@@ -121,10 +122,5 @@ Sie können Access jetzt auf jedem Ihrer Geräte benutzen - Sie müssen nur sich
 Nun, da Sie eine Sammlung erstellen können, versuchen Sie das Erstellen einer [Sammlung, die Office 365 verwendet](remoteapp-tutorial-o365anywhere.md). Oder Sie erstellen eine [Hybrid-Sammlung ](remoteapp-create-hybrid-deployment.md), die auf Ihr lokales Netzwerk zugreifen kann.
 
 <!--Image references-->
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

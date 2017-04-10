@@ -7,16 +7,16 @@
 ## <a name="introduction"></a>Einführung
 Unter [Tutorial: Erste Schritte mit Gerätezwillingen (Vorschau)][lnk-twin-tutorial] wurde beschrieben, wie Sie Gerätemetadaten über Ihr Lösungs-Back-End mit *Tags* festlegen, Gerätebedingungen über eine Geräte-App mit *gemeldeten Eigenschaften* melden und diese Informationen mit einer SQL-ähnlichen Sprache abfragen.
 
-In diesem Tutorial wird beschrieben, wie Sie die *gewünschten Eigenschaften* des Gerätezwillings zusammen mit *gemeldeten Eigenschaften* verwenden, um für Geräte-Apps die Remotekonfiguration durchzuführen. Genauer gesagt wird in diesem Tutorial veranschaulicht, wie die gemeldeten und gewünschten Eigenschaften eines Gerätezwillings eine mehrschrittige Konfiguration einer Geräteanwendungseinstellung ermöglichen und für das Lösungs-Back-End die Ermittlung des Status dieses Vorgangs über alle Geräte hinweg möglich machen. Weitere Informationen zur Rolle der Gerätekonfiguration finden Sie unter [Übersicht über die Geräteverwaltung mit IoT Hub][lnk-dm-overview].
+In diesem Tutorial wird beschrieben, wie Sie die *gewünschten Eigenschaften* des Gerätezwillings zusammen mit *gemeldeten Eigenschaften* verwenden, um für Geräte-Apps die Remotekonfiguration durchzuführen. Genauer gesagt wird in diesem Tutorial veranschaulicht, wie die gemeldeten und gewünschten Eigenschaften eines Gerätezwillings eine mehrschrittige Konfiguration einer Geräteanwendung ermöglichen und für das Lösungs-Back-End die Ermittlung des Status dieses Vorgangs über alle Geräte hinweg möglich machen. Weitere Informationen zur Rolle der Gerätekonfiguration finden Sie unter [Übersicht über die Geräteverwaltung mit IoT Hub][lnk-dm-overview].
 
-Auf hoher Ebene ermöglicht die Verwendung von Gerätezwillingen das Lösung-Back-End zum Angeben der gewünschten Konfiguration für die verwalteten Geräte, statt bestimmte Befehle zu senden. So kann das Gerät selbst festlegen, auf welchem Weg dessen Konfiguration am besten aktualisiert werden kann (sehr wichtig in IoT-Szenarien, bei denen sich bestimmte Gerätebedingungen auf die Fähigkeit zum Ausführen bestimmter Befehle auswirken), während der aktuelle Status und potenzielle Fehlerbedingungen des Updateprozesses ständig an das Lösungs-Back-End gemeldet werden. Dieses Muster ist wichtig für die Verwaltung von großen Gerätesätzen, da das Lösungs-Back-End so über alle Geräte hinweg über einen vollständigen Einblick in den Zustand des Konfigurationsprozesses verfügt.
+Ganz allgemein kann das Lösung-Back-End bei Verwendung von Gerätezwillingen die gewünschten Konfiguration für die verwalteten Geräte angeben, anstatt bestimmte Befehle zu senden. So kann das Gerät selbst die optimale Aktualisierungsmethode für seine Konfiguration einrichten (sehr wichtig in IoT-Szenarien, bei denen sich bestimmte Gerätebedingungen auf die Fähigkeit zum Ausführen bestimmter Befehle auswirken), während der aktuelle Status und potenzielle Fehlerbedingungen des Aktualisierungsprozesses kontinuierlich an das Lösungs-Back-End gemeldet werden. Dieses Muster ist wichtig für die Verwaltung von großen Gerätesätzen, da das Lösungs-Back-End so über alle Geräte hinweg über einen vollständigen Einblick in den Zustand des Konfigurationsprozesses verfügt.
 
 > [!NOTE]
 > In Szenarios, in denen Geräte auf interaktivere Weise gesteuert werden (Einschalten eines Ventilators über eine vom Benutzer gesteuerte App), können Sie auch [direkte Methoden][lnk-methods] verwenden.
 > 
 > 
 
-In diesem Tutorial ändert das Lösungs-Back-End die Telemetriekonfiguration eines Zielgeräts. Daher nutzt die Geräte-App einen Prozess mit mehreren Schritten, um ein Konfigurationsupdate anzuwenden (z.B. ein obligatorischer Neustart eines Softwaremoduls). In diesem Tutorial wird dies anhand einer einfachen Verzögerung simuliert.
+In diesem Tutorial ändert das Lösungs-Back-End die Telemetriekonfiguration eines Zielgeräts. Infolgedessen durchläuft die Geräte-App einen Prozess mit mehreren Schritten, um ein Konfigurationsupdate anzuwenden (beispielsweise mit einem obligatorischen Neustart des Softwaremoduls, was in diesem Tutorial wird durch eine einfache Verzögerung simuliert wird).
 
 Das Lösungs-Back-End speichert die Konfiguration wie folgt in den gewünschten Eigenschaften des Gerätezwillings:
 
@@ -92,8 +92,3 @@ Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 [lnk-dm-overview]: ../articles/iot-hub/iot-hub-device-management-overview.md
 [lnk-twin-tutorial]: ../articles/iot-hub/iot-hub-node-node-twin-getstarted.md
 [lnk-guid]: https://en.wikipedia.org/wiki/Globally_unique_identifier
-
-
-<!--HONumber=Feb17_HO3-->
-
-

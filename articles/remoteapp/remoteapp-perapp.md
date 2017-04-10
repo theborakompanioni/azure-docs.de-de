@@ -15,14 +15,15 @@ ms.workload: compute
 ms.date: 11/23/2016
 ms.author: piotrci
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 6dcadbfb99d4d111ab9ddde9d74db65b5542a8f5
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 20f9e9b31498f20c2a27f0d82d434abad73d2454
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="publish-applications-to-individual-users-in-an-azure-remoteapp-collection-preview"></a>Veröffentlichen von Anwendungen für einzelne Benutzer in einer Azure RemoteApp-Sammlung (Vorschau)
 > [!IMPORTANT]
-> Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
+> Azure RemoteApp wird am 31. August 2017 eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
 > 
 > 
 
@@ -102,10 +103,5 @@ Wir freuen uns auf Ihr Feedback und Ihre Vorschläge zu dieser Vorschaufunktion.
 
 ## <a name="havent-had-a-chance-to-try-the-preview-feature"></a>Konnten Sie die Vorschaufunktion noch nicht ausprobieren?
 Falls Sie noch nicht an der Vorschau teilgenommen haben, können Sie über diese [Umfrage](http://www.instant.ly/s/AY83p) Zugriff darauf anfordern.
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

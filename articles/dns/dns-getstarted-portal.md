@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: jonatul
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 0fee02286f6d5dd4614a933590cdab43cc69237f
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
+ms.openlocfilehash: 79f0c9297c4be70f705f325274f3d9241ea4bc3f
+ms.lasthandoff: 03/29/2017
 
 ---
 
@@ -79,7 +79,7 @@ Im folgenden Beispiel werden die einzelnen Schritte zur Erstellung eines neuen A
 
 ## <a name="view-records"></a>Anzeigen von Datensätzen
 
-Im unteren Teil des Blatts der DNS-Zone finden Sie die Einträge für die DNS-Zone. Sie sehen die standardmäßigen NS- und SOA-Einträge, die in jeder Zone erstellt werden, sowie alle neuen, von Ihnen erstellen Einträge.
+Im unteren Teil des Blatts der DNS-Zone finden Sie die Einträge für die DNS-Zone. Hier müssten sowohl die in jeder Zone erstellten DNS- und SOA-Standardeinträge als auch alle neuen, von Ihnen erstellen Einträge angezeigt werden.
 
 ![Zone](./media/dns-getstarted-portal/viewzone500.png)
 

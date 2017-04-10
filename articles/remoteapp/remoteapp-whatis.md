@@ -15,14 +15,15 @@ ms.topic: get-started-article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: fcc53e4073a6957fae263cfb5d38023ed9710d21
-ms.openlocfilehash: bf8f7763db5844a0706264d24ad7a035758ebbda
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: bc5de9daeb09339c9488de8699174cd280197525
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="what-is-azure-remoteapp"></a>Was ist Azure RemoteApp?
 > [!IMPORTANT]
-> Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
+> Azure RemoteApp wird am 31. August 2017 eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
 > 
 > 
 
@@ -36,7 +37,7 @@ Haben Sie Fragen zu Azure RemoteApp? Schlagen Sie unter den [häufig gestellten 
 
 Azure RemoteApp ist Teil der [Microsoft Virtual Desktop Infrastructure](http://www.microsoft.com/server-cloud/products/virtual-desktop-infrastructure/explore.aspx).
 
-**Neu!**  Sie möchten mehr über Azure RemoteApp erfahren? Oder Azure RemoteApp individuell testen? Nehmen Sie an unserem wöchentlichen [Webinar mit Expertenantworten](https://azureinfo.microsoft.com/AzureRemoteAppAskTheExperts-Registration-Page.html?ls=Website)teil.
+**Neu!** Sie möchten mehr über Azure RemoteApp erfahren? Oder Azure RemoteApp individuell testen? Nehmen Sie an unserem wöchentlichen [Webinar mit Expertenantworten](https://azureinfo.microsoft.com/AzureRemoteAppAskTheExperts-Registration-Page.html?ls=Website)teil.
 
 ## <a name="azure-remoteapp-collections"></a>Azure RemoteApp-Sammlungen
 Es gibt zwei Arten von [Azure RemoteApp-Sammlungen](remoteapp-collections.md):
@@ -83,10 +84,5 @@ Los! Probieren Sie es aus! Diese Artikel helfen Ihnen beim Einstieg in Azure Rem
 
 ### <a name="help-us-help-you"></a>Helfen Sie uns, Ihnen zu helfen
 Wussten Sie schon, dass Sie diesen Artikel im Bereich unten nicht nur bewerten und kommentieren, sondern ihn auch selbst ändern können? Fehlt etwas? Ist etwas nicht ganz richtig? Habe ich etwas geschrieben, das eher verwirrend ist? Scrollen Sie nach oben, und klicken Sie auf **In GitHub bearbeiten** oder **Bearbeiten**, um die gewünschten Änderungen vorzunehmen und uns zur Prüfung zu übermitteln. Nachdem wir sie bestätigt haben, werden Ihre Änderungen und Verbesserungen hier angezeigt.
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

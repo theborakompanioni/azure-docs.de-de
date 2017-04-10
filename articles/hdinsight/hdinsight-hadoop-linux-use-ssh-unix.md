@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/16/2017
+ms.date: 04/03/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 89d44476e9de8ac32195efaf66535cdd9fb4260e
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
+ms.openlocfilehash: 248e820ccd2c68a8500aab3233c5beea3c8cc868
+ms.lasthandoff: 04/04/2017
 
 ---
 # <a name="connect-to-hdinsight-hadoop-using-ssh"></a>Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH
@@ -30,16 +30,19 @@ Die folgende Tabelle enthält die Adress- und Portinformationen, die zum Herstel
 
 | Adresse | Port | Verbindungsherstellung mit... |
 | ----- | ----- | ----- |
-| `<edgenodename>.<clustername>-ssh.azurehdinsight.net` | 22 | Edgeknoten (falls vorhanden) |
+| `<clustername>-ed-ssh.azurehdinsight.net` | 22 | Edgeknoten (R Server in HDInsight) |
+| `<edgenodename>.<clustername>-ssh.azurehdinsight.net` | 22 | Edgeknoten (alle anderen Clustertypen, sofern ein Edgeknoten vorhanden ist) |
 | `<clustername>-ssh.azurehdinsight.net` | 22 | Primärer Hauptknoten |
 | `<clustername>-ssh.azurehdinsight.net` | 23 | Sekundärer Hauptknoten |
 
 > [!NOTE]
-> Ersetzen Sie `<edgenodename>` durch den Namen des Edgeknotens. Weitere Informationen zur Verwendung von Edgeknoten finden Sie unter [Verwenden leerer Edgeknoten in HDInsight](hdinsight-apps-use-edge-node.md#access-an-edge-node).
+> Ersetzen Sie `<edgenodename>` durch den Namen des Edgeknotens.
 >
 > Ersetzen Sie `<clustername>` durch den Namen Ihres HDInsight-Clusters.
 >
 > Wir empfehlen Ihnen, __immer eine Verbindung mit dem Edgeknoten herzustellen__, falls ein Knoten dieser Art vorhanden ist. Auf den Hauptknoten werden Dienste gehostet, die für die Integrität des Clusters wichtig sind. Auf dem Edgeknoten werden nur die Komponenten ausgeführt, die Sie darauf anordnen.
+>
+> Weitere Informationen zur Verwendung von Edgeknoten finden Sie unter [Verwenden leerer Edgeknoten in HDInsight](hdinsight-apps-use-edge-node.md#access-an-edge-node).
 
 ## <a name="ssh-clients"></a>SSH-Clients
 

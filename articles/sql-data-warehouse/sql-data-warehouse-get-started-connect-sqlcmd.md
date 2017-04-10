@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: connect
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 77474214c6fafe7f591030d30f6a46c66fbc5c09
-ms.openlocfilehash: 1cd3bd8cab4e74da820f844d2ba96243cc6ccdcd
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 3508cdf6dcfa3d7122e1e3b635f3cd37863dbf62
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -33,7 +35,7 @@ ms.openlocfilehash: 1cd3bd8cab4e74da820f844d2ba96243cc6ccdcd
 Verwenden Sie das Befehlszeilenprogramm [sqlcmd][sqlcmd], um eine Verbindung mit einer Azure SQL Data Warehouse-Instanz herzustellen und diese abzufragen.  
 
 ## <a name="1-connect"></a>1. Verbinden
-Öffnen Sie zur Nutzung von [sqlcmd][sqlcmd] zuerst die Befehlseingabeaufforderung, und geben Sie **sqlcmd** gefolgt von der Verbindungszeichenfolge für Ihre SQL Data Warehouse-Datenbank ein. Die Verbindungszeichenfolge muss die folgenden Parameter enthalten:
+Öffnen Sie zur Verwendung von [sqlcmd][sqlcmd] die Eingabeaufforderung, und geben Sie **sqlcmd** sowie die Verbindungszeichenfolge für Ihre SQL Data Warehouse-Datenbank ein. Die Verbindungszeichenfolge muss die folgenden Parameter enthalten:
 
 * **Server (-S):** Server in Form von `<`Servername`>`.database.windows.net.
 * **Datenbank (-D)** : Datenbankname.
@@ -86,7 +88,7 @@ sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@sswor
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Ausführliche Informationen zu den in sqlcmd verfügbaren Optionen finden Sie in der [Dokumentation zu sqlcmd][sqlcmd] .
+Ausführlichere Informationen zu den verfügbaren Optionen für „sqlcmd“ finden Sie in der [Dokumentation zu „sqlcmd“][sqlcmd].
 
 <!--Image references-->
 
@@ -94,12 +96,7 @@ Ausführliche Informationen zu den in sqlcmd verfügbaren Optionen finden Sie in
 
 <!--MSDN references--> 
 [sqlcmd]: https://msdn.microsoft.com/library/ms162773.aspx
-[Azure-Portal]: https://portal.azure.com
+[Azure portal]: https://portal.azure.com
 
 <!--Other Web references-->
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

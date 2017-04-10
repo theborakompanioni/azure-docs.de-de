@@ -15,9 +15,9 @@ ms.workload: identity
 ms.date: 12/09/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 8da480acc04922a3636821c5303f6380236c5ea3
-ms.openlocfilehash: 1bff76371ea1ca3ee68c9f04ea24a42f95bb7da7
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 45ff2ff08cb36f9a4bf49ff04de149accf157e0e
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -28,7 +28,7 @@ Als Plattform vom Typ „Identity Management as a Service (IDMaaS)“ stellt Azu
 1. [Vorteile der Integration in Azure AD:](active-directory-how-to-integrate.md)Erfahren Sie, warum die Integration in Azure AD die beste Lösung für eine sichere Anmeldung und Autorisierung ist.
 2. [Azure AD-Authentifizierungsszenarien:](active-directory-authentication-scenarios.md)Nutzen Sie die vereinfachte Authentifizierung von Azure AD, um eine Anmeldung für Ihre Anwendung bereitzustellen.
 3. [Integrieren von Anwendungen in Azure AD:](active-directory-integrating-applications.md)Erfahren Sie, wie Sie Anwendungen über Azure AD hinzufügen, aktualisieren und entfernen, und informieren Sie sich über die Brandingrichtlinien für integrierte Apps.
-4. [Azure AD Graph-API:](active-directory-graph-api.md)Verwenden Sie die Azure AD Graph-API, um über REST-API-Endpunkte programmgesteuert auf Azure AD zuzugreifen. Die Azure AD Graph-API ist auch über [Microsoft Graph](https://graph.microsoft.io/)verfügbar. Microsoft Graph stellt eine einheitliche API bereit, mit deren Hilfe über einen einzelnen REST-API-Endpunkt und mit einem einzelnen Zugriffstoken auf mehrere Microsoft Clouddienst-APIs zugegriffen werden kann.
+4. [Microsoft Graph](https://graph.microsoft.io/) und [Azure AD Graph-API](active-directory-graph-api.md): Greifen Sie programmgesteuert über REST-API-Endpunkte auf Azure AD zu. **Es wird dringend empfohlen, auf Azure Active Directory-Ressourcen nicht mithilfe der Azure AD Graph-API, sondern mithilfe von Microsoft Graph zuzugreifen.** Unsere Entwicklungstätigkeiten konzentrieren sich nun auf Microsoft Graph, während für die Azure AD Graph-API keine weiteren Verbesserungen geplant sind. Die Szenarien, für die die Azure AD Graph-API möglicherweise weiterhin geeignet ist, ist nur sehr begrenzt. Weitere Informationen dazu finden Sie im Blogbeitrag [Microsoft Graph or the Azure AD Graph](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph) (Microsoft Graph oder Azure AD Graph) im Office Dev Center.
 5. [Azure AD-Authentifizierungsbibliotheken:](active-directory-authentication-libraries.md)Authentifizieren Sie Benutzer auf einfache Weise, indem Sie unter anderem Zugriffstoken über die Azure AD-Authentifizierungsbibliotheken für .NET, JavaScript, Objective-C, Android abrufen.
 
 ## <a name="getting-started"></a>Erste Schritte
@@ -57,10 +57,10 @@ Diese Tutorials sind auf verschiedene Plattformen ausgelegt und ermöglichen Ihn
 |:---:|:---:|
 | [.NET](active-directory-devquickstarts-webapi-dotnet.md) |[Node.js](active-directory-devquickstarts-webapi-nodejs.md) |
 
-### <a name="querying-the-directory-quickstart-guide"></a>Abfragen des Verzeichnisses – Schnellstartanleitung
-| [![.NET](./media/active-directory-developers-guide/graph.png)](active-directory-graph-api-quickstart.md) |
-|:---:|
-| [Graph-API](active-directory-graph-api-quickstart.md) |
+### <a name="microsoft-graph-and-azure-ad-graph-api-quick-start-guides"></a>Schnellstartanleitungen für Microsoft Graph und die Azure AD Graph-API
+| [![Microsoft Graph](./media/active-directory-developers-guide/msgraph.png)](https://developer.microsoft.com/graph/quick-start) | [![Azure AD Graph-API](./media/active-directory-developers-guide/graph.png)](active-directory-graph-api-quickstart.md) |
+|:---:|:---:|
+| [Microsoft Graph](https://developer.microsoft.com/graph/quick-start) | [Azure AD Graph-API](active-directory-graph-api-quickstart.md) |
 
 ## <a name="how-tos"></a>Vorgehensweisen
 In diesen Artikeln wird beschrieben, wie Sie mit Azure Active Directory bestimmte Aufgaben ausführen:
@@ -91,9 +91,13 @@ Diese Artikel enthalten grundlegende Referenzen zu REST- und Authentifizierungsb
 * [Azure Active Directory-Beispiele](https://github.com/azure-samples?query=active-directory): Die einfachste Möglichkeit zum Navigieren in der Liste mit den Beispielen bietet der [Index für die Codebeispiele](active-directory-code-samples.md).
 * [Active Directory-Authentifizierungsbibliothek (ADAL) für .NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet): Die Referenzdokumentation ist für die [aktuelle Hauptversion](https://docs.microsoft.com/active-directory/adal/microsoft.identitymodel.clients.activedirectory) und die [vorherige Hauptversion](https://docs.microsoft.com/active-directory/adal/v2/microsoft.identitymodel.clients.activedirectory) verfügbar.
 
-### <a name="graph-api"></a>Graph-API
-* [Graph-API-Referenz](https://msdn.microsoft.com/library/azure/hh974476.aspx): Hier finden Sie die REST-Referenz für die Azure Active Directory Graph-API. [Sehen Sie sich die interaktive Umgebung für die Graph-API-Referenz an](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog).
-* [Graph-API-Berechtigungsbereiche](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes): Hier werden die OAuth 2.0-Berechtigungsbereiche beschrieben, mit denen gesteuert wird, welchen Zugriff eine App auf die Verzeichnisdaten für einen Mandanten hat.
+### <a name="microsoft-graph-and-azure-ad-graph-api"></a>Microsoft Graph und Azure AD Graph-API
+> [!IMPORTANT]
+> Es wird dringend empfohlen, dass Sie [Microsoft Graph](https://graph.microsoft.io/) anstelle der Azure AD Graph-API für den Zugriff auf Azure Active Directory-Ressourcen verwenden. Unsere Entwicklungstätigkeiten konzentrieren sich nun auf Microsoft Graph, während für die Azure AD Graph-API keine weiteren Verbesserungen geplant sind. Die Szenarien, für die die Azure AD Graph-API möglicherweise weiterhin geeignet ist, ist nur sehr begrenzt. Weitere Informationen dazu finden Sie im Blogbeitrag [Microsoft Graph or the Azure AD Graph](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph) (Microsoft Graph oder Azure AD Graph) im Office Dev Center.
+> 
+* [Microsoft Graph:](https://graph.microsoft.io/) Dokumentation, Referenz, Beispiele und SDKs für Microsoft Graph. 
+* [Azure AD Graph-API-Referenz:](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) REST-Referenz für die Azure Active Directory Graph-API. 
+* [Azure AD Graph-API-Berechtigungsbereiche:](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes) OAuth 2.0-Berechtigungsbereiche, mit denen gesteuert wird, welchen Zugriff eine App auf die Verzeichnisdaten für einen Mandanten hat.
 
 ### <a name="authentication-and-authorization-protocols"></a>Protokolle für Authentifizierung und Autorisierung
 * [Rollover von Signaturschlüsseln in Azure AD](active-directory-signing-key-rollover.md): Erfahren Sie mehr über die Rolloverkadenz von Signaturschlüsseln von Azure AD und über die Aktualisierung des Schlüssels für die häufigsten Anwendungsszenarien.

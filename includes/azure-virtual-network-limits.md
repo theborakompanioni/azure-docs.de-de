@@ -1,4 +1,4 @@
-Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über das klassische Bereitstellungsmodell pro Abonnement verwaltet werden.
+<a name="virtual-networking-limits-classic"></a>Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über das klassische Bereitstellungsmodell verwaltet werden (pro Abonnement).
 
 | Ressource | Standardlimit | Maximales Limit |
 | --- | --- | --- |
@@ -37,7 +37,7 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 | Öffentliche IP-Adressen (statisch) |20 |Support kontaktieren |
 | Lastenausgleichsmodule (intern und Internet) |100 |Support kontaktieren |
 | Regeln für Lastenausgleichsmodule pro Lastenausgleichsmodul |150 |150 |
-| Öffentliche Front-End-IP pro Lastenausgleichsmodul |10 |Support kontaktieren |
+| Öffentliche Front-End-IP pro Lastenausgleichsmodul |10 |30 |
 | Private Front-End-IP pro Lastenausgleichsmodul |10 |Support kontaktieren |
 | VNets Peerings pro Virtual Network-Instanz |10 |50 |
 | Punkt-zu-Standort-Stammzertifikate pro VPN Gateway |20 |20 |

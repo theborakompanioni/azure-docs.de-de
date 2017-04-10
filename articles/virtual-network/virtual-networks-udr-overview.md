@@ -16,9 +16,9 @@ ms.date: 03/15/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: c9996d2160c4082c18e9022835725c4c7270a248
-ms.openlocfilehash: 555939d6181d43d89a2d355744b74887d41df6ff
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 1657f7c772b7039707a67c4abc788479cc08bdd0
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -57,7 +57,7 @@ Pakete werden über ein TCP/IP-Netzwerk weitergeleitet, das auf einer Routentabe
 | --- | --- | --- | --- |
 | Adresspräfix |Das Ziel-CIDR, das für die Route gilt, z. B. 10.1.0.0/16. |Dies muss ein gültiger CIDR-Bereich sein, der Adressen im öffentlichen Internet, Azure Virtual Network oder lokalen Rechenzentrum repräsentiert. |Stellen Sie sicher, dass das **Adresspräfix** nicht die Adresse der **Adresse des nächsten Hops** enthält. Andernfalls gelangen Ihre Pakete in eine Schleife, die von der Quelle zum nächsten Hop verläuft, ohne dass das Ziel jemals erreicht wird. |
 | Typ des nächsten Hops |Der Azure-Hop-Typ, an den das Paket gesendet werden soll. |Dies muss einer der folgenden Werte sein: <br/> **Virtuelles Netzwerk**. Entspricht dem lokalen virtuellen Netzwerk. Wenn Sie z.B. im gleichen virtuellen Netzwerk über die beiden Subnetze 10.1.0.0/16 und 10.2.0.0/16 verfügen, weist die Route für die einzelnen Subnetze in der Routentabelle für den nächsten Hop den Wert *Virtual Network* auf. <br/> **Gateway des virtuellen Netzwerks**. Entspricht einem Azure S2S-VPN-Gateway. <br/> **Internet**. Entspricht dem Standard-Internet-Gateway der Azure-Infrastruktur. <br/> **Virtuelles Gerät**ausgewählt wurde. Entspricht einem virtuellen Gerät, das Sie Ihrem virtuellen Azure-Netzwerk hinzugefügt haben. <br/> **Keine**. Entspricht einem schwarzen Loch. Pakete, die an ein schwarzes Loch weitergeleitet werden, werden überhaupt nicht weitergeleitet. |Erwägen Sie die Verwendung eines **virtuellen Geräts**, um Datenverkehr an eine VM oder die interne IP-Adresse von Azure Load Balancer weiterzuleiten.  Dieser Typ ermöglicht die Angabe einer IP-Adresse wie unten beschrieben. Erwägen Sie die Verwendung des Typs **Keine** , um zu verhindern, dass Pakete an ein bestimmtes Ziel fließen. |
-| Adresse des nächsten Hops |Die Adresse des nächsten Hops enthält die IP-Adresse, an die die Pakete weitergeleitet werden sollen. Die Werte für den nächsten Hop dürfen nur für Routen verwendet werden, für die als Typ des nächsten Hops *Virtuelles Gerät*ausgewählt wurde. |Dies muss eine IP-Adresse sein, die im virtuellen Netzwerk, auf das die benutzerdefinierte Route angewendet wird, erreichbar ist. |Wenn die IP-Adresse für eine VM steht, müssen Sie sicherstellen, dass Sie in Azure für die VM die [IP-Weiterleitung](#IP-forwarding) aktivieren. Wenn die IP-Adresse die interne IP-Adresse von Azure Load Balancer darstellt, sollten Sie sicherstellen, dass Sie über eine übereinstimmende Lastenausgleichsregel für jeden Port verfügen, für den ein Lastenausgleich durchgeführt werden soll.|
+| Adresse des nächsten Hops |Die Adresse des nächsten Hops enthält die IP-Adresse, an die die Pakete weitergeleitet werden sollen. Die Werte für den nächsten Hop dürfen nur für Routen verwendet werden, für die als Typ des nächsten Hops *Virtuelles Gerät*ausgewählt wurde. |Dabei muss es sich um eine IP-Adresse handeln, die innerhalb des virtuellen Netzwerks, auf das die benutzerdefinierte Route angewendet wird, ohne Durchlaufen eines **virtuellen Netzwerkgateways** erreichbar ist. Die IP-Adresse muss sich in dem virtuellen Netzwerk befinden, in dem sie angewendet wird, oder in einem mittels Peering verknüpften virtuellen Netzwerk. |Wenn die IP-Adresse für eine VM steht, müssen Sie sicherstellen, dass Sie in Azure für die VM die [IP-Weiterleitung](#IP-forwarding) aktivieren. Wenn die IP-Adresse die interne IP-Adresse von Azure Load Balancer darstellt, sollten Sie sicherstellen, dass Sie über eine übereinstimmende Lastenausgleichsregel für jeden Port verfügen, für den ein Lastenausgleich durchgeführt werden soll.|
 
 In Azure PowerShell haben einige der „NextHopType“-Werte andere Namen:
 

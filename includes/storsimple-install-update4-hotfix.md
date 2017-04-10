@@ -22,7 +22,7 @@ Führen Sie die folgenden Schritte aus, um das Softwareupdate aus dem Microsoft 
 > [!NOTE]
 > Der Zugriff auf die Hotfixes muss über beide Controller möglich sein, um die Erkennung von Fehlermeldungen des Peercontrollers zu ermöglichen.
 >
-> Die Hotfixes müssen in drei separate Ordner kopiert werden: Das Gerätesoftwareupdate muss in den Ordner _FirstOrderUpdate_ kopiert werden. Alle anderen unterbrechungsfreien Updates müssen in den Ordner _SecondOrderUpdate_ kopiert werden, und Wartungsmodusupdates müssen in den Ordner _ThirdOrderUpdate_ kopiert werden.
+> Die Hotfixes müssen in drei separate Ordner kopiert werden: Das Gerätesoftwareupdate kann beispielsweise in den Ordner _FirstOrderUpdate_ kopiert werden. Alle anderen unterbrechungsfreien Updates können in den Ordner _SecondOrderUpdate_ kopiert werden, und Wartungsmodusupdates können in den Ordner _ThirdOrderUpdate_ kopiert werden.
 
 #### <a name="to-install-and-verify-regular-mode-hotfixes"></a>So installieren und überprüfen Sie Hotfixes für den normalen Modus
 
@@ -40,11 +40,11 @@ Führen Sie zum Installieren und Überprüfen der Hotfixes für den normalen Mod
    
     Geben Sie Ihr Kennwort ein, wenn Sie dazu aufgefordert werden.
    
-    Im Anschluss finden Sie eine Beispielausgabe für die Installation der erstrangigen Updates.
+    Im Anschluss finden Sie eine Beispielausgabe für die Installation der erstrangigen Updates. Für das erstrangige Update müssen Sie auf die spezifische Datei verweisen.
    
         ````
         Controller0>Start-HcsHotfix -Path \\10.100.100.100\share
-        \FirstOrderUpdate\ -Credential contoso\John
+        \FirstOrderUpdate\HcsSoftwareUpdate.exe -Credential contoso\John
    
         Confirm
    
@@ -96,7 +96,7 @@ Führen Sie zum Installieren und Überprüfen der Hotfixes für den normalen Mod
     > [!IMPORTANT]
     > Sie müssen den aktiven Controller mit dem Cmdlet `Restart-HcsController` neu starten, bevor Sie die verbleibenden Updates anwenden können.
      
-7. Wiederholen Sie die Schritte 3 bis 5, um die zweitrangigen Updates zu installieren. Wenn Sie mehrere Updates installieren möchten, können Sie einfach das `Start-HcsHotfix cmdlet` ausführen und auf den Ordner mit den zweitrangigen Updates verweisen. Das Cmdlet führt alle Updates aus, die in dem Ordner verfügbar sind. Falls ein Update bereits installiert ist, wird dies von der Aktualisierungslogik erkannt, und das entsprechende Update wird nicht angewendet. Nachdem alle Hotfixes installiert wurden, verwenden Sie das Cmdlet `Get-HcsSystem`. Die Versionen sollten wie folgt aussehen:
+7. Wiederholen Sie die Schritte 3 bis 5, um die zweitrangigen Updates zu installieren. **Bei zweitrangigen Updates können Sie mehrere Updates installieren, indem Sie das `Start-HcsHotfix cmdlet` ausführen und auf den Ordner mit den zweitrangigen Updates verweisen. Das Cmdlet führt alle Updates aus, die in dem Ordner verfügbar sind.** Falls ein Update bereits installiert ist, wird dies von der Aktualisierungslogik erkannt, und das entsprechende Update wird nicht angewendet. Nachdem alle Hotfixes installiert wurden, verwenden Sie das Cmdlet `Get-HcsSystem`. Die Versionen sollten wie folgt aussehen:
 
    * `CisAgentVersion:  1.0.9441.0`
    * `MdsAgentVersion: 35.2.2.0`
@@ -247,9 +247,4 @@ Folgen Sie den Anweisungen unten, um die Datenträger-Firmwareupdates zu install
    `Exit-HcsMaintenanceMode`
 
 5. Beim Beenden des Wartungsmodus werden die Controller neu gestartet. Nachdem die Firmwareupdates für Datenträger erfolgreich installiert wurden und das Gerät den Wartungsmodus verlassen hat, kehren Sie zum klassischen Azure-Portal zurück. Beachten Sie, dass es bis zu 24 Stunden dauern kann, bis die Installation der Wartungsmodusupdates im Portal angezeigt wird.
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

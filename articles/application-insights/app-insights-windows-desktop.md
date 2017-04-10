@@ -10,12 +10,13 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: get-started-article
 ms.date: 08/26/2016
 ms.author: awills
 translationtype: Human Translation
 ms.sourcegitcommit: d84ab993b1d9489ca9d2edaa1cb9672d9bced899
 ms.openlocfilehash: 6f87eaf58c9c8dcd301a6ac245119621244a1c27
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -47,7 +48,7 @@ Mit [Azure Application Insights](app-insights-overview.md) und [HockeyApp](https
 5. [Verwenden Sie die API](app-insights-api-custom-events-metrics.md) , um Telemetriedaten zu senden.
 6. Führen Sie die App aus, und schauen Sie sich die Telemetriedaten in der Ressource an, die Sie im Azure-Portal erstellt haben.
 
-## <a name="a-nametelemetryaexample-code"></a><a name="telemetry"></a>Beispielcode
+## <a name="telemetry"></a>Beispielcode
 ```C#
 
     public partial class Form1 : Form
@@ -89,10 +90,5 @@ Mit [Azure Application Insights](app-insights-overview.md) und [HockeyApp](https
 * [Diagnosesuche](app-insights-diagnostic-search.md)
 * [Untersuchen von Metriken](app-insights-metrics-explorer.md)
 * [Schreiben von Analytics-Abfragen](app-insights-analytics.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
