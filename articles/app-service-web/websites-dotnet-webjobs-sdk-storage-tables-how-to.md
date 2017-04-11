@@ -3,7 +3,7 @@ title: Verwenden von Azure-Tabellenspeicher mit dem WebJobs-SDK
 description: "Erfahren Sie, wie Sie Azure-Tabellenspeicher mit dem WebJobs-SDK nutzen. Erstellen von Tabellen, Entitäten zu Tabellen hinzufügen und vorhandene Tabellen lesen."
 services: app-service\web, storage
 documentationcenter: .net
-author: tdykstra
+author: ggailey777
 manager: erikre
 editor: jimbe
 ms.assetid: 451432cc-c780-4310-85d3-84f44fe48afe

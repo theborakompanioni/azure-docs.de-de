@@ -3,7 +3,7 @@ title: "Bereitstellen von Webaufträgen mit Visual Studio"
 description: "Erfahren Sie, wie Sie Azure-Webaufträge mithilfe von Visual Studio in Azure App Service-Web-Apps bereitstellen."
 services: app-service
 documentationcenter: 
-author: tdykstra
+author: ggailey777
 manager: erikre
 editor: jimbe
 ms.assetid: a3a9d320-1201-4ac8-9398-b4c9535ba755

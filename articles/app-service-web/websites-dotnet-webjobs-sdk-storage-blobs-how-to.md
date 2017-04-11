@@ -3,7 +3,7 @@ title: Verwenden von Azure-Blobspeicher mit dem WebJobs-SDK
 description: "Erfahren Sie, wie Sie Azure-Blobspeicher mit dem WebJobs-SDK nutzen. Lösen Sie einen Prozess aus, wenn einem Container ein neues Blobs hinzugefügt wird, und informieren Sie sich über den Umgang mit nicht verarbeitbaren Blobs."
 services: app-service\web, storage
 documentationcenter: .net
-author: tdykstra
+author: ggailey777
 manager: erikre
 editor: 
 ms.assetid: bf32f919-f7bc-4aaa-916e-461c02f2e26c
