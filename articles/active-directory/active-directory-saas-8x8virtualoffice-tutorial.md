@@ -85,7 +85,7 @@ Dieser Abschnitt veranschaulicht anhand eines Testbenutzers namens Britta Simon,
 
 Damit einmaliges Anmelden (SSO) funktioniert, muss Azure AD wissen, welcher Benutzer in 8x8 Virtual Office als Entsprechung zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in 8x8 Virtual Office muss eine Linkbeziehung eingerichtet werden.
 
-Diese Linkbeziehung wird hergestellt, indem Sie den Benutzernamen**** in Azure AD als Benutzernamen**** in 8x8 Virtual Office zuweisen.
+Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD als **Benutzernamen** in 8x8 Virtual Office zuweisen.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens (SSO) von Microsoft Azure AD mit 8x8 Virtual Office müssen die folgenden Schritte ausgeführt werden:
 

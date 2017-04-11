@@ -85,7 +85,7 @@ Dieser Abschnitt veranschaulicht anhand eines Testbenutzers namens Britta Simon,
 
 Damit einmaliges Anmelden (SSO) funktioniert, muss Azure AD wissen, welcher Benutzer in Bynder als Entsprechung zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Bynder muss eine Linkbeziehung eingerichtet werden.
 
-Diese Linkbeziehung wird hergestellt, indem Sie den Benutzernamen**** in Azure AD als Benutzernamen**** in Bynder zuweisen.
+Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD als **Benutzernamen** in Bynder zuweisen.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Microsoft Azure AD bei Bynder müssen Sie die folgenden Bausteine ausführen:
 

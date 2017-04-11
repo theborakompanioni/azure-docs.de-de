@@ -85,7 +85,7 @@ In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azur
 
 Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in BenSelect als Gegenstück zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in BenSelect muss eine Linkbeziehung eingerichtet werden.
 
-Diese Linkbeziehung wird hergestellt, indem Sie den Benutzernamen** **in Azure AD dem Benutzernamen** **in BenSelect zuweisen.
+Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD dem **Benutzernamen** in BenSelect zuweisen.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei BenSelect müssen die folgenden Schritte ausgeführt werden:
 

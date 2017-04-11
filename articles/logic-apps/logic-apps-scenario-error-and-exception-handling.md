@@ -125,7 +125,7 @@ Wir müssen die Quelle (Anforderung) des Patientendatensatzes aus dem Dynamics C
 ## <a name="logic-app-source-code"></a>Logik-App-Quellcode
 
 > [!NOTE]
-> Bei den folgenden Angaben handelt es sich nur um Beispiele. Da dieses Tutorial auf einer Implementierung beruht, die jetzt in der Praxis verwendet wird, werden für den Wert eines Quellknotens**** unter Umständen keine Eigenschaften angezeigt, die mit der Terminplanung in Verbindung stehen.> 
+> Bei den folgenden Angaben handelt es sich nur um Beispiele. Da dieses Tutorial auf einer Implementierung beruht, die jetzt in der Praxis verwendet wird, werden für den Wert eines **Quellknotens** unter Umständen keine Eigenschaften angezeigt, die mit der Terminplanung in Verbindung stehen.> 
 
 ### <a name="logging"></a>Protokollierung
 
@@ -408,7 +408,7 @@ Mit unserer Lösung haben wir den Funktionsumfang von [DocumentDB](https://azure
 Sie können eine MVC-Web-App erstellen, mit der die Fehlerdatensätze aus DocumentDB angezeigt werden können. In der aktuellen Version sind die Vorgänge **Liste**, **Details**, **Bearbeiten** und **Löschen** enthalten.
 
 > [!NOTE]
-> Beim Bearbeitungsvorgang ersetzt DocumentDB das gesamte Dokument. Die Datensätze, die in der Listen-**** und in der Detailansicht**** angezeigt werden, sind lediglich Beispiele. Es handelt sich nicht um echte Datensätze mit Patiententerminen.
+> Beim Bearbeitungsvorgang ersetzt DocumentDB das gesamte Dokument. Die Datensätze, die in der **Listen** und in der **Detailansicht** angezeigt werden, sind lediglich Beispiele. Es handelt sich nicht um echte Datensätze mit Patiententerminen.
 
 Im Anschluss finden Sie Beispiele für unsere MVC-App-Details, die auf der Grundlage des zuvor beschriebenen Konzepts erstellt wurden.
 

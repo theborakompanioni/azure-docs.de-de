@@ -50,8 +50,8 @@ IoT Hub verwaltet einen [Gerätezwilling][lnk-device-twin] für jedes simulierte
 Ein Gerätezwilling speichert die drei Arten von Metadaten:
 
 - *Gemeldete Eigenschaften* werden von einem Gerät an einen IoT Hub gesendet. In der Remoteüberwachungslösung senden simulierte Geräte gemeldete Eigenschaften beim Start und als Antwort auf Befehle und Methoden zum **Ändern des Gerätestatus**. Sie können gemeldete Eigenschaften im Lösungsportal in der **Geräteliste** und den **Gerätedetails** anzeigen. Gemeldete Eigenschaften sind schreibgeschützt.
-- *Gewünschte Eigenschaften * werden durch Geräte vom IoT Hub abgerufen. Das Gerät ist dafür zuständig, alle erforderlichen Konfigurationsänderungen auf dem Gerät vorzunehmen. Das Gerät ist auch dafür zuständig, die Änderung als gemeldete Eigenschaft wieder an den Hub zu melden. Sie können den Wert einer gewünschten Eigenschaftswert über das Lösungsportal festlegen.
-- *Tags * sind nur im Gerätezwilling vorhanden und werden nie mit einem Gerät synchronisiert. Sie können Tag-Werte im Lösungsportal festlegen und beim Filtern der Geräteliste verwenden. Die Lösung verwendet auch ein Tag zum Identifizieren des Symbols, das im Lösungsportal für ein Gerät angezeigt wird.
+- *Gewünschte Eigenschaften* werden durch Geräte vom IoT Hub abgerufen. Das Gerät ist dafür zuständig, alle erforderlichen Konfigurationsänderungen auf dem Gerät vorzunehmen. Das Gerät ist auch dafür zuständig, die Änderung als gemeldete Eigenschaft wieder an den Hub zu melden. Sie können den Wert einer gewünschten Eigenschaftswert über das Lösungsportal festlegen.
+- *Tags* sind nur im Gerätezwilling vorhanden und werden nie mit einem Gerät synchronisiert. Sie können Tag-Werte im Lösungsportal festlegen und beim Filtern der Geräteliste verwenden. Die Lösung verwendet auch ein Tag zum Identifizieren des Symbols, das im Lösungsportal für ein Gerät angezeigt wird.
 
 Beispiele für gemeldete Eigenschaften von den simulierten Geräten sind Hersteller, Modellnummer, Breiten- und Längengrad. Simulierte Geräte geben auch die Liste der unterstützten Methoden als gemeldete Eigenschaft zurück.
 

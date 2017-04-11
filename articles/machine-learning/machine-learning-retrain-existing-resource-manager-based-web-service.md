@@ -95,7 +95,7 @@ Zum Aktualisieren von Azure Storage Informationen müssen Sie den Namen des Spei
 2. Klicken Sie im linken Navigationsbereich auf **Storage**.
 3. Wählen Sie in der Speicherkontenliste ein Speicherkonto zum Speichern des neu trainierten Modells aus.
 4. Klicken Sie im unteren Bereich der Seite auf **Zugriffsschlüssel verwalten**.
-5. Kopieren und speichern Sie den primären Zugriffsschlüssel **** , und schließen Sie anschließend das Dialogfeld.
+5. Kopieren und speichern Sie den primären **Zugriffsschlüssel** , und schließen Sie anschließend das Dialogfeld.
 6. Klicken Sie im oberen Bereich der Seite auf **Container**.
 7. Wählen Sie einen vorhandenen Container aus, oder erstellen Sie einen neuen, und speichern Sie den Namen.
 

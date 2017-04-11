@@ -254,11 +254,11 @@ Die vollständige Ausführung dieser Konsolenanwendung sollte etwa fünf Minuten
 
 1. Klicken Sie zum Ausführen der Konsolenanwendung in Visual Studio auf **Starten** , und melden Sie sich dann bei Azure AD mit denselben Anmeldeinformationen an, die Sie für Ihr Abonnement verwenden.
 
-2. Wenn der Status *Erfolgreich* angezeigt wird, drücken Sie die EINGABETASTE****. 
+2. Wenn der Status *Erfolgreich* angezeigt wird, drücken Sie die **EINGABETASTE** . 
 
     **1 Erfolgreich** wird auch im Azure-Portal auf dem Blatt „Übersicht“ für Ihre Ressourcengruppe unter „Bereitstellungen“ angezeigt.
 
-3. Bevor Sie die EINGABETASTE**** drücken, um das Löschen der Ressourcen zu starten, können Sie sich ein paar Minuten Zeit nehmen, um die Erstellung der Ressourcen im Azure-Portal zu überprüfen. Klicken Sie auf den Bereitstellungsstatus, um Informationen zur Bereitstellung anzuzeigen.
+3. Bevor Sie die **EINGABETASTE** drücken, um das Löschen der Ressourcen zu starten, können Sie sich ein paar Minuten Zeit nehmen, um die Erstellung der Ressourcen im Azure-Portal zu überprüfen. Klicken Sie auf den Bereitstellungsstatus, um Informationen zur Bereitstellung anzuzeigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Falls bei der Bereitstellung Probleme aufgetreten sind, sollten Sie den Artikel [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](../azure-resource-manager/resource-manager-common-deployment-errors.md) lesen.
