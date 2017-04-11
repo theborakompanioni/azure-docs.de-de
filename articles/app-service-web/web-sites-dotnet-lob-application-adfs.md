@@ -15,9 +15,9 @@ ms.workload: web
 ms.date: 08/31/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 29b7146837f8a88baebd67fc448954f01388d67b
-ms.lasthandoff: 11/17/2016
+ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
+ms.openlocfilehash: 22fe6397120c36e1aa716f4711fbe9e7c72d17e8
+ms.lasthandoff: 04/11/2017
 
 
 ---
@@ -87,24 +87,27 @@ Die Beispielanwendung in diesem Lernprogramm ( [WebApp-WSFederation-DotNet](http
 4. Ändern Sie in der Datei „App_Start\Startup.Auth.cs“ die folgenden Definitionen für statische Zeichenfolgen:  
    
    <pre class="prettyprint">
-private static string realm = ConfigurationManager.AppSettings["ida:<mark>RPIdentifier</mark>"]; <mark><del>private static string aadInstance = ConfigurationManager.AppSettings["ida:AADInstance"];</del></mark>
+   private static string realm = ConfigurationManager.AppSettings["ida:<mark>RPIdentifier</mark>"];
+   <mark><del>private static string aadInstance = ConfigurationManager.AppSettings["ida:AADInstance"];</del></mark>
    <mark><del>private static string tenant = ConfigurationManager.AppSettings["ida:Tenant"];</del></mark>
    <mark><del>private static string metadata = string.Format("{0}/{1}/federationmetadata/2007-06/federationmetadata.xml", aadInstance, tenant);</del></mark>
    <mark>private static string metadata = string.Format("https://{0}/federationmetadata/2007-06/federationmetadata.xml", ConfigurationManager.AppSettings["ida:ADFS"]);</mark>
    
    <mark><del>string authority = String.Format(CultureInfo.InvariantCulture, aadInstance, tenant);</del></mark>
    </pre>
-5. Nehmen Sie jetzt die entsprechenden Änderungen in der Datei „Web.config“ vor. Öffnen Sie die Datei „Web.config“, und ändern Sie die folgenden App-Einstellungen:  <pre class="prettyprint">
+5. Nehmen Sie jetzt die entsprechenden Änderungen in der Datei „Web.config“ vor. Öffnen Sie die Datei „Web.config“, und ändern Sie die folgenden App-Einstellungen:  
+   
+   <pre class="prettyprint">
    &lt;appSettings&gt;
    &lt;add key="webpages:Version" value="3.0.0.0" /&gt;
    &lt;add key="webpages:Enabled" value="false" /&gt;
    &lt;add key="ClientValidationEnabled" value="true" /&gt;
    &lt;add key="UnobtrusiveJavaScriptEnabled" value="true" /&gt;
-   <mark><del>&lt;add key="ida:Wtrealm" value="[App-ID-URI von WebApp-WSFederation-DotNet eingeben: https://contoso.onmicrosoft.com/WebApp-WSFederation-DotNet]" /&gt;</del></mark>
+   <mark><del>&lt;add key="ida:Wtrealm" value="[Enter the App ID URI of WebApp-WSFederation-DotNet https://contoso.onmicrosoft.com/WebApp-WSFederation-DotNet]" /&gt;</del></mark>
    <mark><del>&lt;add key="ida:AADInstance" value="https://login.windows.net" /&gt;</del></mark>
-   <mark><del>&lt;add key="ida:Tenant" value="[Mandantennamen eingeben, z.B. contoso.onmicrosoft.com]" /&gt;</del></mark>
-   <mark>&lt;add key="ida:RPIdentifier" value="[ID für vertrauende Seite gemäß Konfiguration in AD FS eingeben, z.B. https://localhost:44320/]" /&gt;</mark>
-   <mark>&lt;add key="ida:ADFS" value="[FQDN des AD FS-Diensts eingeben, z.B. adfs.contoso.com]" /&gt;</mark>
+   <mark><del>&lt;add key="ida:Tenant" value="[Enter tenant name, e.g. contoso.onmicrosoft.com]" /&gt;</del></mark>
+   <mark>&lt;add key="ida:RPIdentifier" value="[Enter the relying party identifier as configured in AD FS, e.g. https://localhost:44320/]" /&gt;</mark>
+   <mark>&lt;add key="ida:ADFS" value="[Enter the FQDN of AD FS service, e.g. adfs.contoso.com]" /&gt;</mark>
    
    &lt;/appSettings&gt;
    </pre>
@@ -136,7 +139,7 @@ Sie veröffentlichen hier eine Anwendung in einer Web-App in App Service-Web-App
    
    <pre class="prettyprint">
    &lt;appSettings&gt;
-   &lt;add key="ida:RPIdentifier" value="<mark>[z.B. https://mylobapp.azurewebsites.net/]</mark>" xdt:Transform="SetAttributes" xdt:Locator="Match(key)" /&gt;
+   &lt;add key="ida:RPIdentifier" value="<mark>[e.g. https://mylobapp.azurewebsites.net/]</mark>" xdt:Transform="SetAttributes" xdt:Locator="Match(key)" /&gt;
    &lt;/appSettings&gt;</pre>
 
 Danach sind in Ihrem Projekt zwei RP-IDs konfiguriert, eine für Ihre Debugumgebung in Visual Studio und eine für die veröffentlichte Web-App in Azure. Für beide Umgebungen wird in AD FS eine RP-Vertrauensstellung eingerichtet. Während des Debuggens sorgen die Anwendungseinstellungen in der Datei „Web.config“ dafür, dass Ihre **Debug** -Konfiguration mit AD FS funktioniert. Wenn die Konfiguration veröffentlicht wird (standardmäßig wird die **Release** -Konfiguration veröffentlicht), wird eine transformierte Web.config-Datei hochgeladen, die die geänderten App-Einstellungen in der Datei „Web.Release.config“ enthält.
@@ -208,7 +211,16 @@ Jetzt müssen Sie eine RP-Vertrauensstellung in der AD FS-Verwaltung konfigurier
     
     <pre class="prettyprint">
     c1:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"] &amp;&amp;
-    c2:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationinstant"] => add( store = "_OpaqueIdStore", types = ("<mark>http://contoso.com/internal/sessionid</mark>"), query = "{0};{1};{2};{3};{4}", param = "useEntropy", param = c1.Value, param = c1.OriginalIssuer, param = "", param = c2.Value);
+    c2:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationinstant"]
+     => add(
+         store = "_OpaqueIdStore",
+         types = ("<mark>http://contoso.com/internal/sessionid</mark>"),
+         query = "{0};{1};{2};{3};{4}",
+         param = "useEntropy",
+         param = c1.Value,
+         param = c1.OriginalIssuer,
+         param = "",
+         param = c2.Value);
     </pre>
     
     Die benutzerdefinierte Regel sollte wie in der folgenden Bildschirmaufnahme aussehen:
@@ -243,7 +255,7 @@ Klicken Sie nach dem Laden der Webanwendung auf **Anmelden**. Je nach der von AD
 
 ![](./media/web-sites-dotnet-lob-application-adfs/9-test-debugging.png)
 
-Nachdem Sie sich mit einem Benutzer in der AD-Domäne der AD FS-Bereitstellung angemeldet haben, sollte nun erneut die Homepage mit der Begrüßung **Hallo <User Name>!** angezeigt werden.  in der Ecke angezeigt werden. So sieht das bei mir aus.
+Nachdem Sie sich mit einem Benutzer in der AD-Domäne der AD FS-Bereitstellung angemeldet haben, sollte nun erneut die Homepage mit der Begrüßung **Hallo <User Name>!** angezeigt werden. in der Ecke angezeigt werden. So sieht das bei mir aus.
 
 ![](./media/web-sites-dotnet-lob-application-adfs/11-test-debugging-success.png)
 
@@ -266,8 +278,10 @@ Da Sie Gruppenmitgliedschaften als Rollenansprüche in die RP-Vertrauensstellung
 2. Dekorieren Sie die Aktionsmethoden `About` und `Contact` ähnlich wie der folgende Code mit Mitgliedschaften in Sicherheitsgruppen, über die Ihr authentifizierter Benutzer verfügt.  
    
     <pre class="prettyprint">
-    <mark>[Authorize(Roles="Testgruppe")]</mark>
-    public ActionResult About() { ViewBag.Message = "Ihre Seite mit der Anwendungsbeschreibung.";
+    <mark>[Authorize(Roles="Test Group")]</mark>
+    public ActionResult About()
+    {
+        ViewBag.Message = "Your application description page.";
    
         return View();
     }
@@ -287,8 +301,12 @@ Da Sie Gruppenmitgliedschaften als Rollenansprüche in die RP-Vertrauensstellung
     Wenn Sie diesen Fehler in der Ereignisanzeige auf dem AD FS-Server untersuchen, sehen Sie diese Ausnahmemeldung:  
    
     <pre class="prettyprint">
-    Microsoft.IdentityServer.Web.InvalidRequestException: MSIS7042: <mark>In den letzten „11“ Sekunden wurden von der gleichen Clientbrowsersitzung „6“ Anforderungen ausgeführt.</mark> Wenden Sie sich bezüglich der Einzelheiten an den Administrator.
-   unter Microsoft.IdentityServer.Web.Protocols.PassiveProtocolHandler.UpdateLoopDetectionCookie(WrappedHttpListenerContext context) at Microsoft.IdentityServer.Web.Protocols.WSFederation.WSFederationProtocolHandler.SendSignInResponse(WSFederationContext context, MSISSignInResponse response) at Microsoft.IdentityServer.Web.PassiveProtocolListener.ProcessProtocolRequest(ProtocolContext protocolContext, PassiveProtocolHandler protocolHandler) at Microsoft.IdentityServer.Web.PassiveProtocolListener.OnGetContext(WrappedHttpListenerContext context)  </pre>
+    Microsoft.IdentityServer.Web.InvalidRequestException: MSIS7042: <mark>The same client browser session has made '6' requests in the last '11' seconds.</mark> Contact your administrator for details.
+       at Microsoft.IdentityServer.Web.Protocols.PassiveProtocolHandler.UpdateLoopDetectionCookie(WrappedHttpListenerContext context)
+       at Microsoft.IdentityServer.Web.Protocols.WSFederation.WSFederationProtocolHandler.SendSignInResponse(WSFederationContext context, MSISSignInResponse response)
+       at Microsoft.IdentityServer.Web.PassiveProtocolListener.ProcessProtocolRequest(ProtocolContext protocolContext, PassiveProtocolHandler protocolHandler)
+       at Microsoft.IdentityServer.Web.PassiveProtocolListener.OnGetContext(WrappedHttpListenerContext context)
+    </pre>
    
     Der Grund für diesen Fehler ist, dass MVC standardmäßig die Fehlermeldung „401 - Nicht autorisiert“ zurückgibt, wenn die Rollen des Benutzers nicht autorisiert sind. Dadurch wird eine Anforderung zur erneuten Authentifizierung an Ihren Identitätsanbieter (AD FS) ausgelöst. Da der Benutzer bereits authentifiziert ist, kehrt AD FS zur selben Seite zurück- Diese gibt dann wiederum eine 401-Fehlermeldung aus, sodass eine Umleitungsschleife entsteht. Überschreiben Sie die `HandleUnauthorizedRequest` -Methode von "AuthorizeAttribute" mit einfacher Logik, um etwas Sinnvolles anzuzeigen, anstatt die Umleitungsschleife fortzusetzen.
 5. Erstellen Sie im Projekt die Datei „AuthorizeAttribute.cs“, und fügen Sie den folgenden Code ein.

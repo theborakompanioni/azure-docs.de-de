@@ -89,7 +89,7 @@ Das Verwenden von System Center Configuration Manager ist die bevorzugte Methode
    
     b. Legen Sie **Trusted Platform Module (TPM) verwenden** auf **Erforderlich** fest. 
    
-    c. Wählen Sie als **Authentifizierungsmethode **die Einstellung **Zertifikatbasiert** aus.
+    c. Wählen Sie als **Authentifizierungsmethode** die Einstellung **Zertifikatbasiert** aus.
    
     d. Klicken Sie auf **Weiter**.
 6. Klicken Sie im Dialogfeld **Zusammenfassung** auf **Weiter**.

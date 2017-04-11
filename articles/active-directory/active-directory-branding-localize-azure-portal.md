@@ -22,7 +22,7 @@ ms.lasthandoff: 12/28/2016
 
 ---
 # <a name="add-language-specific-company-branding-to-your-sign-in-page-in-the-azure-active-directory-preview"></a>Hinzufügen eines sprachspezifischen Unternehmensbrandings zur Anmeldeseite in der Azure Active Directory-Vorschau
-Um Verwirrung zu vermeiden, möchten viele Unternehmen über alle verwalteten Websites und Dienste hinweg für ein einheitliches Erscheinungsbild sorgen. Dies ist in der Azure Active Directory-Vorschau möglich, da Sie die Darstellung der Anmeldeseite mit Ihrem Firmenlogo und Ihren benutzerdefinierten Farbschemas anpassen können. [Was bietet die Vorschauversion?](active-directory-preview-explainer.md)  Die Anmeldeseite wird angezeigt, wenn Sie sich an Office 365 oder anderen webbasierten Anwendungen anmelden, die Azure AD als Identitätsanbieter verwenden. Sie interagieren mit dieser Seite, um Ihre Anmeldeinformationen einzugeben.
+Um Verwirrung zu vermeiden, möchten viele Unternehmen über alle verwalteten Websites und Dienste hinweg für ein einheitliches Erscheinungsbild sorgen. Dies ist in der Azure Active Directory-Vorschau möglich, da Sie die Darstellung der Anmeldeseite mit Ihrem Firmenlogo und Ihren benutzerdefinierten Farbschemas anpassen können. [Was bietet die Vorschauversion?](active-directory-preview-explainer.md) Die Anmeldeseite wird angezeigt, wenn Sie sich an Office 365 oder anderen webbasierten Anwendungen anmelden, die Azure AD als Identitätsanbieter verwenden. Sie interagieren mit dieser Seite, um Ihre Anmeldeinformationen einzugeben.
 
 ## <a name="customizing-the-sign-in-page-for-another-language"></a>Anpassen der Anmeldeseite für eine andere Sprache
 Sie können Ihrer benutzerdefinierten Anmeldeseite sprachspezifische Elemente hinzufügen, wenn Sie bereits eine benutzerdefinierte Anmeldeseite erstellt haben. Weitere Informationen hierzu finden Sie unter [Hinzufügen eines Unternehmensbrandings zur Anmeldeseite](active-directory-branding-custom-signon-azure-portal.md). Sie können mithilfe eines Standardsatzes anpassbarer Elementen eine Anmeldeseite pro Verzeichnis konfigurieren. Sobald Sie den Standardsatz an Seitenelementen konfiguriert haben, können Sie zusätzliche Versionen für verschiedene Gebietsschemas konfigurieren. Sie können auch verschiedene Elemente miteinander kombinieren. Beispielsweise ist Folgendes möglich:
@@ -35,7 +35,7 @@ Es wird empfohlen, die Anzahl der Sprachvariationen aus Wartungs- und Leistungsg
 **So fügen Sie Ihrem Verzeichnis ein Unternehmensbranding hinzu**
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
-2. Wählen Sie **Weitere Dienste** aus, geben Sie **Benutzer und Gruppen** in das Textfeld ein, und drücken Sie die EINGABETASTE****.
+2. Wählen Sie **Weitere Dienste** aus, geben Sie **Benutzer und Gruppen** in das Textfeld ein, und drücken Sie die **EINGABETASTE**.
 
    ![Öffnen der Benutzerverwaltung](./media/active-directory-branding-localize-azure-portal/user-management.png)
 3. Wählen Sie auf dem Blatt **Benutzer und Gruppen** die Option **Unternehmensbranding** aus.

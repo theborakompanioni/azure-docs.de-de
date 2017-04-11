@@ -104,7 +104,7 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im
 2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei 10,000ft Plans anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-10000ftplans-tutorial/tutorial_10000ftplans_03.png) 
-3. Führen Sie auf der Seite **App-Einstellungen konfigurieren **die folgenden Schritte aus, und klicken Sie dann auf **Weiter**:
+3. Führen Sie auf der Seite **App-Einstellungen konfigurieren** die folgenden Schritte aus, und klicken Sie dann auf **Weiter**:
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-10000ftplans-tutorial/tutorial_10000ftplans_04.png) 
 
@@ -125,7 +125,7 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im
     a. Klicken Sie auf **Zertifikat herunterladen**und speichern Sie die Datei auf Ihrem Computer.
    
     b. Klicken Sie auf **Weiter**.
-2. Um das einmalige Anmelden (SSO, Single Sign-On) für Ihre Anwendung konfigurieren zu lassen, wenden Sie sich an das [Supportteam von&10;,000ft Plans](mailto:support@10000ft.com), und fügen Sie das heruntergeladene Zertifikat an. Geben Sie außerdem die Aussteller-URL, die SAML-SSO-URL und die Abmelde-URL an.
+2. Um das einmalige Anmelden (SSO, Single Sign-On) für Ihre Anwendung konfigurieren zu lassen, wenden Sie sich an das [Supportteam von 10,000ft Plans](mailto:support@10000ft.com), und fügen Sie das heruntergeladene Zertifikat an. Geben Sie außerdem die Aussteller-URL, die SAML-SSO-URL und die Abmelde-URL an.
 3. Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
    
     ![Azure AD – einmaliges Anmelden][10]
