@@ -3,7 +3,7 @@ title: Verwenden von Azure-Warteschlangenspeicher mit dem WebJobs-SDK
 description: "Erfahren Sie, wie Sie Azure-Warteschlangenspeicher mit dem WebJobs-SDK nutzen. Sie können Warteschlangen erstellen und löschen, Warteschlangennachrichten einfügen, einsehen, abrufen und löschen und vieles mehr."
 services: app-service\web, storage
 documentationcenter: .net
-author: tdykstra
+author: ggailey777
 manager: erikre
 editor: jimbe
 ms.assetid: dbfac5d9-f4a0-4e3e-9ecc-af3d7bf80463

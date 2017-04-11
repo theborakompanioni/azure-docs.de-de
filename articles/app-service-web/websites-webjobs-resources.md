@@ -3,7 +3,7 @@ title: Dokumentationsressourcen zu Azure WebJobs
 description: Empfohlene Ressourcen zum Erlernen der Verwendung von Azure WebJobs und des Azure WebJobs-SDK
 services: app-service
 documentationcenter: .net
-author: tdykstra
+author: ggailey777
 manager: erikre
 editor: jimbe
 ms.assetid: ed005e56-4334-4641-a5e5-15435c2be36b
