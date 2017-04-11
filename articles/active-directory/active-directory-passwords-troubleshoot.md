@@ -1453,7 +1453,7 @@ Im Allgemeinen wird empfohlen, diese Schritte in der oben genannten Reihenfolge 
 Durch einen Neustart des Azure AD Connect-Synchronisierungsdiensts können Konnektivitätsprobleme oder andere vorübergehende Probleme mit dem Dienst beseitigt werden.
 
 1. Klicken Sie als Administrator auf dem Server, auf dem **Azure AD Connect** ausgeführt wird, auf **Start**.
-2. Geben Sie im Suchfeld **services.msc** ein, und drücken Sie die EINGABETASTE****.
+2. Geben Sie im Suchfeld **services.msc** ein, und drücken Sie die **EINGABETASTE**.
 3. Suchen Sie nach dem Eintrag **Microsoft Azure AD Connect** .
 4. Klicken Sie mit der rechten Maustaste auf den Diensteintrag, klicken Sie auf **Neu starten**, und warten Sie, bis der Vorgang abgeschlossen wurde.
 

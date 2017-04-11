@@ -17,6 +17,7 @@ ms.author: thmullan
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: ba1bb3d84b462dfebbb2564569517d7336bf54fd
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -203,7 +204,7 @@ Wenn Sie in der Anwendung bereits einige Benutzer erstellt haben (z. B. über l
 
 ![SSMS-AspNetUsers-Tabelle](./media/web-sites-dotnet-entity-framework-row-level-security/SSMS-AspNetUsers.png)
 
-Kopieren Sie die ID für user1@contoso.com,, und fügen Sie sie unten in die T-SQL-Anweisung ein. Führen Sie diese Anweisung aus, um für drei Kontakte diese UserId zuzuordnen.
+Kopieren Sie die ID für user1@contoso.com, und fügen Sie unten in die T-SQL-Anweisung ein. Führen Sie diese Anweisung aus, um für drei Kontakte diese UserId zuzuordnen.
 
 ```
 UPDATE Contacts SET UserId = '19bc9b0d-28dd-4510-bd5e-d6b6d445f511'
@@ -248,10 +249,5 @@ Das ist alles! Die einfache Contact Manager-Web-App wurde in eine mehrinstanzenf
 In diesem Tutorial haben wir in Bezug auf die Möglichkeiten von RLS nur an der Oberfläche gekratzt. Beispielsweise ist es möglich, eine anspruchsvollere oder feiner abgestimmte Zugriffslogik zu verwenden und mehr als nur die aktuelle UserId in SESSION_CONTEXT zu speichern. Sie können [RLS auch in Clientbibliotheken mit Tools für elastische Datenbanken integrieren](../sql-database/sql-database-elastic-tools-multi-tenant-row-level-security.md) , um mehrinstanzenfähige Shards auf einer Datenebene mit horizontaler Hochskalierung zu unterstützen.
 
 Außerdem arbeiten wir daran, RLS auch über diese Möglichkeiten hinaus noch besser zu machen. Bitte teilen Sie uns im Kommentarbereich mit, wenn Sie Fragen oder Ideen haben oder Funktionen vorschlagen möchten. Wir schätzen Ihr Feedback!
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
