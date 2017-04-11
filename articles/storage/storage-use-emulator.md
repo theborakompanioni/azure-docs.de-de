@@ -91,7 +91,7 @@ Der Speicheremulator wird standardmäßig im Verzeichnis "C:\Programme (x86)\Mic
 ### <a name="initialize-the-storage-emulator-to-use-a-different-sql-database"></a>Initialisieren des Speicheremulators zur Verwendung einer anderen SQL-Datenbank
 Sie können das Speicheremulator-Befehlszeilentool zum Initialisieren des Speicheremulators verwenden, damit dieser auf eine andere SQL-Datenbankinstanz als die Standardinstanz von LocalDB verweist:
 
-1. Klicken Sie auf die Schaltfläche **Start**, oder drücken Sie die WINDOWS-TASTE****. Geben Sie `Azure Storage Emulator` ein, und wählen Sie den Speicheremulator aus, wenn er angezeigt wird, um das Speicheremulator-Befehlszeilentool aufzurufen.
+1. Klicken Sie auf die Schaltfläche **Start**, oder drücken Sie die **Windows** taste. Geben Sie `Azure Storage Emulator` ein, und wählen Sie den Speicheremulator aus, wenn er angezeigt wird, um das Speicheremulator-Befehlszeilentool aufzurufen.
 2. Geben Sie im Eingabeaufforderungsfenster den folgenden Befehl ein, wobei `<SQLServerInstance>` der Name der SQL Server-Instanz ist. Geben Sie als SQL Server-Instanz `(localdb)\MSSQLLocalDb` ein, um LocalDB zu verwenden.
 
         AzureStorageEmulator init /server <SQLServerInstance>

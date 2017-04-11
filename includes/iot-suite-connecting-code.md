@@ -296,7 +296,7 @@ Fügen Sie nun den Code hinzu, der das im Modell definierte Verhalten implementi
       }
     ```
    
-    Im Anschluss finden Sie ein Beispiel für eine** **Telemetrienachricht, die an die vorkonfigurierte Lösung gesendet wird:
+    Im Anschluss finden Sie ein Beispiel für eine **Telemetrienachricht**, die an die vorkonfigurierte Lösung gesendet wird:
    
     ```
     {"DeviceId":"mydevice01", "Temperature":50, "Humidity":50, "ExternalTemperature":55}
