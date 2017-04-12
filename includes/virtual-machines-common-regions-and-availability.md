@@ -9,8 +9,6 @@ Für Compliance oder rechtliche Zwecke gibt es einige spezielle Azure-Regionen, 
 
 * **USA Gov Virginia** und **USA Gov Iowa**
   * Eine physische und logische vom Netzwerk isolierte Instanz von Azure für US-Regierungsbehörden und Partner, die von überprüften Personen aus den USA betreiben wird. Sie umfasst zusätzliche Compliancezertifizierungen, z.B. [FedRAMP](https://www.microsoft.com/en-us/TrustCenter/Compliance/FedRAMP) und [DISA](https://www.microsoft.com/en-us/TrustCenter/Compliance/DISA). Erfahren Sie mehr über [Azure Government](https://azure.microsoft.com/features/gov/).
-* **Indien, Mitte**, **Indien, Süden** und **Indien, Westen**
-  * Diese Regionen sind zurzeit für Kunden mit Volumenlizenzierung und Partner mit lokaler Registrierung in Indien verfügbar. Im Jahr 2016 können Benutzer auf diese zugreifen, wenn sie direkte Onlineabonnements erworben haben.
 * **China, Osten** und **China, Norden**
   * Diese Regionen sind über eine einzigartige Partnerschaft zwischen Microsoft und 21Vianet verfügbar, wobei Microsoft die Rechenzentren nicht direkt betreut. Weitere Informationen finden Sie unter [Microsoft Azure in China](http://www.windowsazure.cn/).
 * **Deutschland, Mitte** und **Deutschland, Nordosten**

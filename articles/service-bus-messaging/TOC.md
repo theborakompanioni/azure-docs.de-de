@@ -50,7 +50,7 @@
 ## Verwalten
 ### [Service Bus-Verwaltungsbibliotheken](service-bus-management-libraries.md)
 ### [Verwenden von Azure Resource Manager-Vorlagen](service-bus-resource-manager-overview.md)
-### [Verwenden von PowerShell zur Bereitstellung von Entitäten](service-bus-powershell-how-to-provision.md)
+### [Verwenden von PowerShell zur Bereitstellung von Entitäten](service-bus-manage-with-ps.md)
 
 # Referenz
 ## .NET

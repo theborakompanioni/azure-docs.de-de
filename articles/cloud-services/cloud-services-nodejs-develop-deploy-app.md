@@ -1,5 +1,5 @@
 ---
-title: Leitfaden zu den ersten Schritten mit Node.js | Microsoft-Dokumentation
+title: Erste Schritte mit Node.js | Microsoft Docs
 description: "Erfahren Sie, wie Sie eine einfache Node.js-Webanwendung erstellen und in einem Azure-Clouddienst bereitstellen können."
 services: cloud-services
 documentationcenter: nodejs
@@ -15,8 +15,9 @@ ms.topic: hero-article
 ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
-ms.openlocfilehash: eeb10e8325918ac699e3c1fe94d15eee5f730fce
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: e54861dbc851bc3d5629e84ddb61f26a06782ad4
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -164,7 +165,7 @@ Weitere Informationen finden Sie im [Node.js Developer Center].
 <!-- URL List -->
 
 [Azure Websites, Cloud Services and Virtual Machines comparison]: ../app-service-web/choose-web-site-cloud-service-vm.md
-[Verwendung einer einfachen Web-App]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md
+[Verwendung einer einfachen Web-App]: ../app-service-web/app-service-web-get-started-nodejs.md
 [Azure PowerShell]: /powershell/azureps-cmdlets-docs
 [Azure SDK für .NET 2.7]: http://www.microsoft.com/en-us/download/details.aspx?id=48178
 [Stellen Sie eine PowerShell-Verbindung mit Ihrem Abonnement her.]: /powershell/azureps-cmdlets-docs#step-3-connect
@@ -181,9 +182,4 @@ Weitere Informationen finden Sie im [Node.js Developer Center].
 [A browser window displaying the hello world page; the URL indicates the page is hosted on Azure.]: ./media/cloud-services-nodejs-develop-deploy-app/node21.png
 [The status of the Stop-AzureService command]: ./media/cloud-services-nodejs-develop-deploy-app/node48.png
 [The status of the Remove-AzureService command]: ./media/cloud-services-nodejs-develop-deploy-app/node49.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 
