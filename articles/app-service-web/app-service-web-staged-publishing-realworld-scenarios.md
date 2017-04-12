@@ -17,6 +17,7 @@ ms.author: sumuth
 translationtype: Human Translation
 ms.sourcegitcommit: 385eb87ec32f5f605b28cc8c76b1c89c7e90bfec
 ms.openlocfilehash: 5284022ea473db893800b0f64b5bf4f811d994aa
+ms.lasthandoff: 12/20/2016
 
 
 ---
@@ -164,7 +165,7 @@ In diesem Abschnitt erfahren Sie, wie Sie einen Bereitstellungsworkflow mit Slot
     * prefix. Only numbers, letters, and underscores please!
     */
     $table_prefix = getenv('DB_PREFIX');
-```
+    ```
 
 #### <a name="use-relative-paths"></a>Verwenden relativer Pfade
 Zuletzt müssen Sie in WordPress noch relative Pfade konfigurieren. WordPress speichert URL-Informationen in der Datenbank. Durch diesen Speicher lassen sich Inhalte nur schwierig aus einer Umgebung in eine andere verschieben. Sie müssen die Datenbank jedes Mal aktualisieren, wenn Sie Inhalte aus der lokalen Umgebung in die Stagingumgebung oder umgekehrt verschieben. Zur Vermeidung von Problemen, die durch das Bereitstellen der Datenbank bei jeder umgebungsübergreifenden Bereitstellung entstehen können, verwenden Sie das [Plug-In für relative Stammlinks](https://wordpress.org/plugins/root-relative-urls/), das über das WordPress-Administratordashboard installiert werden kann.
@@ -442,9 +443,4 @@ Dieses Beispiel veranschaulicht die Flexibilität der Plattform. Sie ermöglicht
 [Einrichten von Stagingumgebungen für Web-Apps in Azure App Service](web-sites-staged-publishing.md)
 
 [Blockieren des Webzugriffs auf Nicht-Produktionsslots](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

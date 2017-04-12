@@ -95,6 +95,7 @@ Diese Artikel enthalten grundlegende Referenzen zu REST- und Authentifizierungsb
 > [!IMPORTANT]
 > Es wird dringend empfohlen, dass Sie [Microsoft Graph](https://graph.microsoft.io/) anstelle der Azure AD Graph-API für den Zugriff auf Azure Active Directory-Ressourcen verwenden. Unsere Entwicklungstätigkeiten konzentrieren sich nun auf Microsoft Graph, während für die Azure AD Graph-API keine weiteren Verbesserungen geplant sind. Die Szenarien, für die die Azure AD Graph-API möglicherweise weiterhin geeignet ist, ist nur sehr begrenzt. Weitere Informationen dazu finden Sie im Blogbeitrag [Microsoft Graph or the Azure AD Graph](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph) (Microsoft Graph oder Azure AD Graph) im Office Dev Center.
 > 
+
 * [Microsoft Graph:](https://graph.microsoft.io/) Dokumentation, Referenz, Beispiele und SDKs für Microsoft Graph. 
 * [Azure AD Graph-API-Referenz:](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) REST-Referenz für die Azure Active Directory Graph-API. 
 * [Azure AD Graph-API-Berechtigungsbereiche:](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes) OAuth 2.0-Berechtigungsbereiche, mit denen gesteuert wird, welchen Zugriff eine App auf die Verzeichnisdaten für einen Mandanten hat.

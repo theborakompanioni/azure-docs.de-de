@@ -38,4 +38,3 @@ Azure Active Directory macht mandantenspezifische und allgemeine (mandantenunabh
 
 Informationen zu den Verbundmetadaten-Dokumenten, die von Azure AD veröffentlicht werden, finden Sie unter [Verbundmetadaten](active-directory-federation-metadata.md).
 
-

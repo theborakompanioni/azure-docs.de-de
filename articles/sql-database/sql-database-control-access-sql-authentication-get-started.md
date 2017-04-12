@@ -59,7 +59,7 @@ Die Schritte in dieser Prozedur veranschaulichen, wie Sie unter Verwendung Ihres
 2. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com/)an.
 3. Geben Sie auf der Anmeldeseite **** die Anmeldeinformationen für Ihr Abonnement ein.
    
-   ![Anmelden](./media/sql-database-get-started/login.png)
+   ![Anmelden](./media/sql-database-get-started-portal/login.png)
 
 
 <a name="create-logical-server-bk"></a>
@@ -84,11 +84,11 @@ Die Schritte in dieser Prozedur veranschaulichen, wie Sie Informationen zum Serv
 
 1. Öffnen Sie SQL Server Management Studio, und stellen Sie als Serveradministrator eine Verbindung mit Ihrem Server her. Verwenden Sie dabei die SQL Server-Authentifizierung und das Serveradministratorkonto.
 
-   ![Verbindung mit dem Server herstellen](./media/sql-database-get-started/connect-to-server.png)
+   ![Verbindung mit dem Server herstellen](./media/sql-database-get-started-portal/connect-to-server.png)
 
 2. Klicken Sie auf **Verbinden**.
 
-   ![Mit dem Server verbunden](./media/sql-database-get-started/connected-to-server.png)
+   ![Mit dem Server verbunden](./media/sql-database-get-started-portal/connected-to-server.png)
 
 3. Erweitern Sie im Objekt-Explorer die Option **Sicherheit**, und erweitern Sie anschließend **Anmeldungen**, um die vorhandenen Anmeldungen für Ihren Server anzuzeigen. Auf einem neuen Server ist nur die Anmeldung für das Serveradministratorkonto vorhanden.
 
