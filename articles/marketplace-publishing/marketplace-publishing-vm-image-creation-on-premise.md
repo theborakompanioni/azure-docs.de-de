@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 04/29/2016
 ms.author: hascipio; v-divte
 translationtype: Human Translation
-ms.sourcegitcommit: 3136b8345d0c851c29a9498089da73c8564549d1
-ms.openlocfilehash: 101d0b2733a43b99b32efae8a9510ffca2a2e467
-ms.lasthandoff: 01/31/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 8f6b9a9293dc149586e6e5fd55028170ea825b07
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -125,7 +125,7 @@ Erstellen Sie anschließend mit dem Cmdlet [NewAzureStorageContainer](http://msd
 > Bei diesen Befehlen wird davon ausgegangen, dass der aktuelle Kontext des Speicherkontos in PowerShell bereits festgelegt wurde.   Weitere Informationen zur Einrichtung von PowerShell finden Sie unter [Einrichten von Azure PowerShell](marketplace-publishing-powershell-setup.md) .  
 > 
 > ### <a name="create-a-storage-account-by-using-the-command-line-tool-for-mac-and-linux"></a>Erstellen eines Speicherkontos mit dem Befehlszeilentool für Mac und Linux
-> Erstellen Sie wie folgt über das [Linux-Befehlszeilentool](../virtual-machines/virtual-machines-linux-cli-manage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)ein Speicherkonto.
+> Erstellen Sie wie folgt über das [Linux-Befehlszeilentool](../virtual-machines/linux/cli-manage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)ein Speicherkonto.
 > 
 > 
 

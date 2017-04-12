@@ -14,39 +14,39 @@ ms.topic: article
 ms.date: 02/21/2017
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 73739f4f154bebe271ce29bd285122ea7f56d769
-ms.openlocfilehash: bcf36cdec6c1dda7aa0213c42adf8d0281dc28d2
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 6c01fe7a791742d283505057a310891a075029ef
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="using-regular-expressions-to-filter-log-searches-in-log-analytics"></a>Verwenden regulärer Ausdrücke zum Filtern der Protokollsuchen in Log Analytics
 
-[Protokollsuchen](log-analytics-log-searches.md) ermöglichen Ihnen, Informationen aus dem Log Analytics-Repository zu extrahieren.  [Filterausdrücke](log-analytics-search-reference.md#filter-expression) ermöglichen Ihnen, die Ergebnisse der Suche nach bestimmten Kriterien zu filtern.  Das **RegEx**-Schlüsselwort ermöglicht Ihnen, einen regulären Ausdruck für diesen Filter anzugeben.  
+[Protokollsuchen](log-analytics-log-searches.md) ermöglichen Ihnen, Informationen aus dem Log Analytics-Repository zu extrahieren.  [Filterausdrücke](log-analytics-search-reference.md#filter-expressions) ermöglichen Ihnen, die Ergebnisse der Suche nach bestimmten Kriterien zu filtern.  Das **RegEx**-Schlüsselwort ermöglicht Ihnen, einen regulären Ausdruck für diesen Filter anzugeben.  
 
 Dieser Artikel enthält nähere Informationen zur Syntax regulärer Ausdrücke, die von Log Analytics verwendet wird.
 
 
 ## <a name="regex-keyword"></a>RegEx-Schlüsselwort
 
-Verwenden Sie die folgende Syntax, um das **RegEx**-Schlüsselwort in einer Protokollsuche einzusetzen.  Sie können die anderen Abschnitte in diesem Artikel verwenden, um die Syntax des regulären Ausdrucks selbst zu bestimmen. 
+Verwenden Sie die folgende Syntax, um das **RegEx**-Schlüsselwort in einer Protokollsuche einzusetzen.  Sie können die anderen Abschnitte in diesem Artikel verwenden, um die Syntax des regulären Ausdrucks selbst zu bestimmen.
 
     field:Regex("Regular Expression")
     field=Regex("Regular Expression")
 
-Um beispielsweise einen regulären Ausdruck zur Rückgabe von Warnungsdatensätzen des Typs *Warnung* oder *Fehler* einzusetzen, verwenden Sie die folgende Protokollsuche. 
+Um beispielsweise einen regulären Ausdruck zur Rückgabe von Warnungsdatensätzen des Typs *Warnung* oder *Fehler* einzusetzen, verwenden Sie die folgende Protokollsuche.
 
     Type=Alert AlertSeverity=RegEx("Warning|Error")
 
 ## <a name="partial-matches"></a>Teilweise Übereinstimmungen
 Beachten Sie, dass der reguläre Ausdruck mit dem gesamten Text der Eigenschaft übereinstimmen muss.  Bei teilweisen Übereinstimmungen werden keine Datensätze zurückgegeben.  Wenn Sie z.B. versucht haben, die von einem Computer mit dem Namen „srv01.contoso.com“ stammenden Datensätze zurückzugeben, würde die folgende Protokollsuche **keine** Datensätze zurückgeben.
 
-    Computer=RegEx("srv..") 
+    Computer=RegEx("srv..")
 
-Dies liegt daran, dass nur der erste Teil des Namens mit dem regulären Ausdruck übereinstimmt.  Die folgenden zwei Protokollsuchen würden von diesem Computer stammende Datensätze zurückgeben, da sie mit dem gesamten Namen übereinstimmen. 
+Dies liegt daran, dass nur der erste Teil des Namens mit dem regulären Ausdruck übereinstimmt.  Die folgenden zwei Protokollsuchen würden von diesem Computer stammende Datensätze zurückgeben, da sie mit dem gesamten Namen übereinstimmen.
 
     Computer=RegEx("srv..@")
-    Computer=RegEx("srv...contoso.com") 
+    Computer=RegEx("srv...contoso.com")
 
 ## <a name="characters"></a>Zeichen
 Geben Sie unterschiedliche Zeichen an.

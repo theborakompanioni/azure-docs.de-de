@@ -16,9 +16,9 @@ ms.workload: na
 ms.date: 03/15/2017
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: a1d6dba724b93d1ea05474b8680bf2226c23bddc
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: be140e86047cae304bfb5c32c5cdd9135413df82
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -40,7 +40,7 @@ Verbinden Sie Sparkfun ESP8266 Thing Dev mit einem von Ihnen erstellten IoT Hub.
 * Erfassen von Sensordaten durch Ausführen einer Beispielanwendung auf Thing Dev
 * Senden der Sensordaten an Ihren IoT Hub
 
-## <a name="what-you-will-need"></a>Voraussetzungen
+## <a name="what-you-will-need"></a>Sie benötigen Folgendes
 
 ![Für das Tutorial erforderliche Teile](media/iot-hub-sparkfun-thing-dev-get-started/2_parts-needed-for-the-tutorial.png)
 
@@ -287,9 +287,5 @@ Wenn Sie die folgende Ausgabe im Fenster des seriellen Monitors und die blinkend
 
 Sie haben Sparkfun ESP8266 Thing Dev erfolgreich mit Ihrem IoT Hub verbunden und die erfassten Sensordaten an Ihren IoT Hub gesendet. 
 
-Informationen zu den weiteren ersten Schritten mit IoT Hub und zum Kennenlernen anderer IoT-Szenarien finden Sie in den folgenden Artikeln:
+[!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
 
-- [Verwalten von Cloudgerät-Nachrichten mit iothub-explorer](iot-hub-explorer-cloud-device-messaging.md)
-- [Speichern von IoT Hub-Nachrichten im Azure-Datenspeicher](iot-hub-store-data-in-azure-table-storage.md)
-- [Visualisieren von Sensordaten in Azure IoT Hub in Echtzeit mit Power BI](iot-hub-live-data-visualization-in-power-bi.md)
-- [Visualisieren von Sensordaten in Azure IoT Hub in Echtzeit mit Azure-Web-Apps ](iot-hub-live-data-visualization-in-web-apps.md)

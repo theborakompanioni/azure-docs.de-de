@@ -17,9 +17,9 @@ ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 6f0fe474787efc15db5c75266cde369725832aab
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: c9b7cc0321ba06a5d30ea5bd467efe4feeb73b99
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -87,7 +87,7 @@ Wenn diese Voraussetzungen erfüllt sind, können Sie mit dem Erstellen Ihres Fa
 
 1. Melden Sie sich mit den Daten Ihres Abonnements am [Azure-Portal](http://portal.azure.com) an.
 
-1. [Erstellen Sie eine Azure-Verfügbarkeitsgruppe](../../virtual-machines-windows-create-availability-set.md).
+1. [Erstellen Sie eine Azure-Verfügbarkeitsgruppe](../create-availability-set.md).
 
    Mit der Verfügbarkeitsgruppe werden virtuelle Computer über Fehler- und Updatedomänen hinweg gruppiert. Mithilfe einer Verfügbarkeitsgruppe wird sichergestellt, dass Ihre Anwendung nicht durch Ausfälle einzelner Komponenten, z.B. des Netzwerkswitchs oder der Stromversorgungseinheit eines Serverracks, beeinträchtigt wird. 
 

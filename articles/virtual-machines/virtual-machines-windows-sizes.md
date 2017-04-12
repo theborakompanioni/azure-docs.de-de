@@ -17,21 +17,21 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 365d6ad9ec0e0a7ad8d9742d863540646257e298
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 193cb2570e4c71c5205cc029543a3a7602a6574e
+ms.lasthandoff: 04/03/2017
 
 ---
 
 # <a name="sizes-for-windows-virtual-machines-in-azure"></a>Größen für virtuelle Windows-Computer in Azure
 
-Dieser Artikel beschreibt die verfügbaren Größen und Optionen für die virtuellen Azure-Computer, die Sie zum Ausführen Ihrer Windows-Apps und Workloads verwenden können. Darüber hinaus werden Überlegungen zur Bereitstellung angestellt, die Sie berücksichtigen sollten, wenn Sie eine Verwendung dieser Ressourcen planen.  Dieser Artikel ist auch für [virtuelle Linux-Computer](virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)verfügbar.
+Dieser Artikel beschreibt die verfügbaren Größen und Optionen für die virtuellen Azure-Computer, die Sie zum Ausführen Ihrer Windows-Apps und Workloads verwenden können. Darüber hinaus werden Überlegungen zur Bereitstellung angestellt, die Sie berücksichtigen sollten, wenn Sie eine Verwendung dieser Ressourcen planen.  Dieser Artikel ist auch für [virtuelle Linux-Computer](linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)verfügbar.
 
 > [!IMPORTANT]
 >* Informationen zu den Preisen der unterschiedlichen Größen finden Sie unter [Virtual Machines – Preise](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows). 
 >* Informationen zu den allgemeinen Einschränkungen von virtuellen Azure-Computern finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md).
 >* Speicherkosten werden separat basierend auf bereits verwendete Seiten im Speicherkonto berechnet. Weitere Informationen finden Sie unter [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
-> * Weitere Informationen dazu, wie Sie mit [Azure-Computeeinheiten (ACU)](virtual-machines-windows-acu.md) die Computeleistung von Azure-SKUs vergleichen können.
+> * Weitere Informationen dazu, wie Sie mit [Azure-Computeeinheiten (ACU)](windows/acu.md) die Computeleistung von Azure-SKUs vergleichen können.
 >
 >
 <br>    
@@ -50,7 +50,7 @@ Dieser Artikel beschreibt die verfügbaren Größen und Optionen für die virtue
 
 <br>
 
-Weitere Informationen dazu, wie Sie mit [Azure-Computeeinheiten (ACU)](virtual-machines-windows-acu.md) die Computeleistung von Azure-SKUs vergleichen können.
+Weitere Informationen dazu, wie Sie mit [Azure-Computeeinheiten (ACU)](windows/acu.md) die Computeleistung von Azure-SKUs vergleichen können.
 
 Weitere Informationen zu den verschiedenen verfügbaren Größen von virtuellen Computern:
 - [Allgemeiner Zweck](virtual-machines-windows-sizes-general.md)

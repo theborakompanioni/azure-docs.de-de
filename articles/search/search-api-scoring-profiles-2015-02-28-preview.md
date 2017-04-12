@@ -15,9 +15,9 @@ ms.tgt_pltfrm: na
 ms.author: heidist
 ms.date: 10/27/2016
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 960880e44ad4de74339df7d0786dd8aa34962e3f
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: a67637d149a84313270c03d21acf8a9c1870be05
+ms.lasthandoff: 03/31/2017
 
 ---
 
@@ -85,8 +85,6 @@ Die relevanzbasiert Sortierung wird ebenfalls über Bewertungsprofile implementi
 Wie bereits erwähnt, wird die benutzerdefinierte  Bewertung über Bewertungsprofile implementiert, die in einem Indexschema definiert sind.
 
 In diesem Beispiel wird das Schema für einen Index mit zwei Bewertungsprofilen (`boostGenre`, `newAndHighlyRated`) gezeigt. Jede Abfrage für diesen Index, die eines der Profile als Abfrageparameter enthält, verwendet das Profil zum Bewerten des Resultsets.
-
-[Testen Sie dieses Beispiel](search-get-started-scoring-profiles.md).
 
     {
       "name": "musicstoreindex",

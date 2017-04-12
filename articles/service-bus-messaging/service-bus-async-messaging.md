@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/13/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 798b4310eb5ea7a4877d7842371b5dd7cf88d632
-ms.openlocfilehash: 8a5c1a381cc5cf30f211da948951dc577a124951
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 3142bea414e54e321e3dc9ae13aca110049ee105
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -81,10 +82,9 @@ Gekoppelte Namespaces unterstützen *Sendeverfügbarkeit*. Die Sendeverfügbarke
 
 1. Nachrichten werden nur vom primären Namespace empfangen.
 2. An eine bestimmte Warteschlange oder ein bestimmtes Thema gesendete Nachrichten können ungeordnet ankommen.
-3. Wenn Ihre Anwendung Sitzungen verwendet, können Nachrichten in einer Sitzung ungeordnet ankommen. Dies entspricht nicht der normalen Funktionalität von Sitzungen. Es bedeutet, dass Ihre Anwendung Sitzungen verwendet, um Nachrichten logisch zu gruppieren. Der Sitzungszustand wird nur für den primären Namespace verwaltet.
-4. Nachrichten in einer Sitzung können ungeordnet ankommen. Dies entspricht nicht der normalen Funktionalität von Sitzungen. Es bedeutet, dass Ihre Anwendung Sitzungen verwendet, um Nachrichten logisch zu gruppieren.
-5. Der Sitzungszustand wird nur für den primären Namespace verwaltet.
-6. Die primäre Warteschlange kann online geschaltet werden und damit beginnen, Nachrichten zu akzeptieren, bevor die sekundäre Warteschlange alle Nachrichten an die primäre Warteschlange übermittelt.
+3. Nachrichten in einer Sitzung können ungeordnet ankommen. Dies entspricht nicht der normalen Funktionalität von Sitzungen. Es bedeutet, dass Ihre Anwendung Sitzungen verwendet, um Nachrichten logisch zu gruppieren.
+4. Der Sitzungszustand wird nur für den primären Namespace verwaltet.
+5. Die primäre Warteschlange kann online geschaltet werden und damit beginnen, Nachrichten zu akzeptieren, bevor die sekundäre Warteschlange alle Nachrichten an die primäre Warteschlange übermittelt.
 
 In den folgenden Abschnitten werden die APIs und deren Implementierung beschrieben, und Beispielcode wird gezeigt, in dem das Feature verwendet wird. Beachten Sie, dass dieses Feature Auswirkungen auf die Abrechnung hat.
 
@@ -152,9 +152,4 @@ Nachdem Sie nun mit den Grundlagen des asynchronen Messagings in Service Bus ver
 [UnauthorizedAccessException]: https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx
 [BacklogQueueCount]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions?redirectedfrom=MSDN#Microsoft_ServiceBus_Messaging_SendAvailabilityPairedNamespaceOptions_BacklogQueueCount
 [paired namespaces]: service-bus-paired-namespaces.md
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

@@ -15,12 +15,19 @@ ms.workload: NA
 ms.date: 01/05/2017
 ms.author: masnider;
 translationtype: Human Translation
-ms.sourcegitcommit: 1472bd1647b620d1f0489cdabbed58e72585aef7
-ms.openlocfilehash: ad1f713f2b12af4f778b9b14edf33a568d2aa8b1
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 1237f467cf993170eaf1345134fb732d4f0b1171
+ms.lasthandoff: 04/03/2017
 
 ---
 
 # <a name="reliable-services-lifecycle-overview"></a>Übersicht über den Lebenszyklus von Reliable Services
+> [!div class="op_single_selector"]
+> * [C# unter Windows](service-fabric-reliable-services-lifecycle.md)
+> * [Java unter Linux](service-fabric-reliable-services-lifecycle-java.md)
+>
+>
+
 Bei der Betrachtung der Lebenszyklen von Reliable Services sind vor allem die Grundlagen zum Lebenszyklus relevant. Im Allgemeinen:
 
 * Während des Starts
@@ -110,9 +117,4 @@ Auf ähnliche Weise muss dieses Replikat für Service Fabric mit dem Lauschen au
 * [Einführung in Reliable Services](service-fabric-reliable-services-introduction.md)
 * [Reliable Services – Schnellstart](service-fabric-reliable-services-quick-start.md)
 * [Erweiterte Verwendung von Reliable Services](service-fabric-reliable-services-advanced-usage.md)
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

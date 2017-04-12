@@ -16,9 +16,9 @@ ms.workload: big-compute
 ms.date: 10/12/2016
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 28426f048205e7cf836375d8b8855e06d5de807e
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 868026150e81347aa3a7914f63bc19c3a878c586
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -39,7 +39,7 @@ Dieser Artikel zeigt zwei Optionen zum Bereitstellen eines HPC Pack-Clusters in 
 * **Azure Resource Manager-Vorlage** : Verwenden Sie eine Vorlage aus dem Azure Marketplace oder eine Schnellstartvorlage aus der Community, um die Erstellung des Clusters im Resource Manager-Bereitstellungsmodell zu automatisieren. Beispielsweise erstellt die Vorlage [HPC Pack cluster for Linux workloads](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/) (HPC Pack-Cluster für Linux-Workloads) im Azure Marketplace eine vollständige HPC Pack-Clusterinfrastruktur für Linux HPC-Workloads.
 * **PowerShell-Skript:** Verwenden Sie das [Microsoft HPC Pack-IaaS-Bereitstellungsskript](../../windows/classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) (**New-HpcIaaSCluster.ps1**), um eine vollständige Clusterbereitstellung im klassischen Bereitstellungsmodell zu automatisieren. Dieses Azure PowerShell-Skript verwendet ein HPC Pack-VM-Image im Azure Marketplace für die schnelle Bereitstellung und bietet eine umfassende Reihe von Konfigurationsparametern, um Linux-Computeknoten bereitzustellen.
 
-Weitere Informationen zur den Optionen für HPC Pack-Clusterbereitstellungen in Azure finden Sie unter [Optionen zum Erstellen und Verwalten eines HPC-Clusters (High Performance Computing) in Azure mit Microsoft HPC Pack](../../virtual-machines-linux-hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Weitere Informationen zur den Optionen für HPC Pack-Clusterbereitstellungen in Azure finden Sie unter [Optionen zum Erstellen und Verwalten eines HPC-Clusters (High Performance Computing) in Azure mit Microsoft HPC Pack](../hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ### <a name="prerequisites"></a>Voraussetzungen
 * **Azure-Abonnement** : Sie können ein Abonnement entweder im Azure Global- oder im Azure China-Dienst nutzen. Wenn Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen.
@@ -52,7 +52,7 @@ Weitere Informationen zur den Optionen für HPC Pack-Clusterbereitstellungen in 
   * **Ubuntu Server:** 14.04 LTS, 16.04 LTS
     
     > [!TIP]
-    > Geben Sie ein SUSE Linux Enterprise Server 12-HPC-Image oder ein CentOS-basiertes HPC-Image aus dem Azure Marketplace an, um das Azure RDMA-Netzwerk mit einer der RDMA-fähigen VM-Größen zu nutzen. Weitere Informationen finden Sie unter [Informationen zu virtuellen Computern der H-Serie und der rechenintensiven A-Serie](../../virtual-machines-linux-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+    > Geben Sie ein SUSE Linux Enterprise Server 12-HPC-Image oder ein CentOS-basiertes HPC-Image aus dem Azure Marketplace an, um das Azure RDMA-Netzwerk mit einer der RDMA-fähigen VM-Größen zu nutzen. Weitere Informationen finden Sie unter [Informationen zu virtuellen Computern der H-Serie und der rechenintensiven A-Serie](../a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
     > 
     > 
 
@@ -166,7 +166,7 @@ Das HPC Pack-IaaS-Bereitstellungsskript verwendet als Eingabe eine XML-Konfigura
    > 
 
 ## <a name="connect-to-the-head-node"></a>Verbindung mit dem Hauptknoten herstellen
-Nach der Bereitstellung des HPC Pack-Clusters in Azure [stellen Sie über Remotedesktop eine Verbindung](../../virtual-machines-windows-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) mit dem virtuellen Hauptknotencomputer her. Verwenden Sie dazu die Domänenanmeldeinformationen, die Sie bei der Bereitstellung des Clusters angegeben haben (z.B. *hpc\\clusteradmin*). Sie verwalten den Cluster über den Hauptknoten.
+Nach der Bereitstellung des HPC Pack-Clusters in Azure [stellen Sie über Remotedesktop eine Verbindung](../../windows/connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) mit dem virtuellen Hauptknotencomputer her. Verwenden Sie dazu die Domänenanmeldeinformationen, die Sie bei der Bereitstellung des Clusters angegeben haben (z.B. *hpc\\clusteradmin*). Sie verwalten den Cluster über den Hauptknoten.
 
 Starten Sie auf dem Hauptknoten den HPC-Cluster-Manager, um den Status des HPC Pack-Clusters zu überprüfen. Sie können Linux-Compute-Knoten auf die gleiche Weise wie Windows-Compute-Knoten verwalten und überwachen. Beispielsweise werden unter **Ressourcenverwaltung** die Linux-Knoten aufgeführt. (Diese Knoten werden mit der Vorlage **LinuxNode** bereitgestellt.)
 
@@ -269,7 +269,7 @@ Es gibt verschiedene Methoden zum Übermitteln von Aufträgen an den HPC Pack-Cl
 * HPC-Webportal
 * REST-API
 
-Das Senden eines Auftrags an den Cluster in Azure über HPC Pack-GUI-Tools und dem HPC-Webportal ist das gleiche wie für Windows-Compute-Knoten. Weitere Informationen finden Sie unter [HPC Pack-Auftrags-Manager](https://technet.microsoft.com/library/ff919691.aspx) und [Gewusst wie: Übermitteln von Aufträgen von einem lokalen Clientcomputer](../../virtual-machines-windows-hpcpack-cluster-submit-jobs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Das Senden eines Auftrags an den Cluster in Azure über HPC Pack-GUI-Tools und dem HPC-Webportal ist das gleiche wie für Windows-Compute-Knoten. Weitere Informationen finden Sie unter [HPC Pack-Auftrags-Manager](https://technet.microsoft.com/library/ff919691.aspx) und [Gewusst wie: Übermitteln von Aufträgen von einem lokalen Clientcomputer](../../windows/hpcpack-cluster-submit-jobs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 Informationen zum Übermitteln von Aufträgen über die REST-API finden Sie unter [Erstellen und Übermitteln von Aufträgen mithilfe der REST-API in Microsoft HPC Pack](http://social.technet.microsoft.com/wiki/contents/articles/7737.creating-and-submitting-jobs-by-using-the-rest-api-in-microsoft-hpc-pack-windows-hpc-server.aspx). Informationen zum Übermitteln von Aufträgen über einen Linux-Client finden Sie außerdem im Python-Beispiel im [HPC Pack SDK](https://www.microsoft.com/download/details.aspx?id=47756).
 
@@ -299,7 +299,7 @@ Das HPC Pack-Tool [clusrun](https://technet.microsoft.com/library/cc947685.aspx)
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Versuchen Sie, den Cluster auf eine größere Anzahl von Knoten zu skalieren, oder versuchen Sie, eine Linux-Workload auf dem Cluster auszuführen. Ein Beispiel finden Sie unter [Ausführen von NAMD mit dem Microsoft HPC Pack auf Linux-Computeknoten in Azure](hpcpack-cluster-namd.md).
-* Verwenden Sie einen Cluster mit [RDMA-fähigen, rechenintensiven VMs](../../virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) zum Ausführen von MPI-Workloads. Ein Beispiel finden Sie unter [Ausführen von OpenFOAM mit Microsoft HPC Pack auf einem Linux-RDMA-Cluster in Azure](hpcpack-cluster-openfoam.md).
+* Verwenden Sie einen Cluster mit [RDMA-fähigen, rechenintensiven VMs](../../windows/a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) zum Ausführen von MPI-Workloads. Ein Beispiel finden Sie unter [Ausführen von OpenFOAM mit Microsoft HPC Pack auf einem Linux-RDMA-Cluster in Azure](hpcpack-cluster-openfoam.md).
 * Wenn Sie sich für das Arbeiten mit Linux-Knoten in einem lokalen HPC Pack-Cluster interessieren, finden Sie im [TechNet-Leitfaden](https://technet.microsoft.com/library/mt595803.aspx)weitere Informationen.
 
 <!--Image references-->
