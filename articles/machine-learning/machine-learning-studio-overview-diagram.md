@@ -13,11 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/16/2016
+ms.date: 04/04/2017
 ms.author: haining;garye
 translationtype: Human Translation
 ms.sourcegitcommit: 5e9aa39ccf91f98336e5db179b532930f7e83313
 ms.openlocfilehash: 35bf8b41288afd31ba7e6f861beb7a7bf2a36d94
+ms.lasthandoff: 12/20/2016
 
 
 ---
@@ -50,10 +51,5 @@ Laden Sie das Diagramm **Übersicht der Microsoft Azure Machine Learning Studio-
 * Ausführliche Beschreibungen der Algorithmen für maschinelles Lernen, die in Machine Learning Studio verfügbar sind, finden Sie unter [Auswählen von Algorithmen für Microsoft Azure Machine Learning](machine-learning-algorithm-choice.md).
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 
