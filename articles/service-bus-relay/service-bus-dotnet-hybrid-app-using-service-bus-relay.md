@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 02/16/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: f92909e0098a543f99baf3df3197a799bc9f1edc
-ms.openlocfilehash: 6c59c98a400da0616762b2bd0c4217d97e22ab86
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: ed1db5521a17988d7936c53afcfe565cc7ba1a38
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -227,7 +227,7 @@ In diesem Abschnitt erstellen Sie eine einfache ASP.NET-Anwendung, in der von Ih
 
    ![][19]
 8. Klicken Sie auf **OK**.
-9. Als Nächstes müssen Sie die Azure-Ressourcen für eine neue Web-App konfigurieren. Führen Sie alle Schritte in [Webanwendung erstellen](../app-service-web/web-sites-dotnet-get-started.md#create-a-web-application) und [Azure-Ressourcen erstellen](../app-service-web/web-sites-dotnet-get-started.md#create-the-azure-resources) aus. Kehren Sie anschließend zu diesem Tutorial zurück, und fahren Sie mit dem nächsten Schritt fort.
+9. Als Nächstes müssen Sie die Azure-Ressourcen für eine neue Web-App konfigurieren. Führen Sie alle Schritte in [Webanwendung erstellen](../app-service-web/app-service-web-get-started-dotnet.md) und [Azure-Ressourcen erstellen](../app-service-web/app-service-web-get-started-dotnet.md) aus. Kehren Sie anschließend zu diesem Tutorial zurück, und fahren Sie mit dem nächsten Schritt fort.
 10. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **Modelle**, und klicken Sie anschließend auf **Hinzufügen** und dann auf **Klasse**. Geben Sie in das Feld **Name** den Namen **Product.cs** ein. Klicken Sie anschließend auf **Hinzufügen**.
 
     ![][17]
@@ -395,7 +395,7 @@ Wählen Sie auf der Seite **ProductsPortal** die Option **Aktualisieren**. Bei j
 Schließen Sie beide Anwendungen, bevor Sie mit dem nächsten Schritt fortfahren.
 
 ## <a name="deploy-the-productsportal-project-to-an-azure-web-app"></a>Bereitstellen des Projekts ProductsPortal in einer Azure-Web-App
-Im nächsten Schritt wird das **ProductsPortal**-Front-End in eine Azure-Web-App konvertiert. Stellen Sie zuerst das Projekt **ProductsPortal** bereit, indem Sie alle Schritte im Abschnitt [Bereitstellen des Webprojekts für Azure](../app-service-web/web-sites-dotnet-get-started.md#deploy-the-web-project-to-azure) ausführen. Kehren Sie nach Abschluss der Bereitstellung zu diesem Tutorial zurück, und fahren Sie mit dem nächsten Schritt fort.
+Im nächsten Schritt wird das **ProductsPortal**-Front-End in eine Azure-Web-App konvertiert. Stellen Sie zuerst das Projekt **ProductsPortal** bereit, indem Sie alle Schritte im Abschnitt [Bereitstellen des Webprojekts für Azure](../app-service-web/app-service-web-get-started-dotnet.md) ausführen. Kehren Sie nach Abschluss der Bereitstellung zu diesem Tutorial zurück, und fahren Sie mit dem nächsten Schritt fort.
 
 > [!NOTE]
 > Im Browserfenster wird unter Umständen eine Fehlermeldung angezeigt, wenn das Webprojekt **ProductsPortal** nach der Bereitstellung automatisch gestartet wird. Dies ist zu erwarten und tritt auf, da die Anwendung **ProductsServer** noch nicht ausgeführt wird.

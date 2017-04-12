@@ -171,7 +171,7 @@ Zum Skalieren der Datenbank sind die in [ALTER DATABASE][ALTER DATABASE] beschri
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen zu zusätzlichen zentralen Leistungskonzepten finden Sie in den folgenden Artikeln:
 
-* [Parallelitäts- und Workloadverwaltung][Parallelitäts- und Workloadverwaltung]
+* [Parallelitäts- und Workloadverwaltung][Workload and concurrency management]
 * [Tabellenentwurf – Übersicht][Table design overview]
 * [Tabellenverteilung][Table distribution]
 * [Tabellenindizierung][Table indexing]

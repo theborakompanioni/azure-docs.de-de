@@ -1,70 +1,12 @@
 ---
-title: "Empfangen von Warnbenachrichtigungen für Azure-Dienste | Microsoft Docs"
-description: "Benachrichtigt werden, wenn die Bedingungen von Warnungsregeln erfüllt sind."
-author: rboucher
-manager: carolz
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: bc2fa75e-bc26-474e-af43-de30de5e604f
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 09/08/2015
-ms.author: robb
+redirect_url: /azure/monitoring-and-diagnostics/monitoring-overview-alerts
+redirect_document_id: TRUE
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5c929849eb71d5ebace7ef274700626d4c5e5f3e
-
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 560c1434f8af112dc302f7e37c55da82ef0c3911
+ms.lasthandoff: 03/31/2017
 
 ---
-# <a name="receive-alert-notifications"></a>Empfangen von Warnbenachrichtigungen
-Sie können auf der Grundlage von Überwachungsmetriken für Ihre Azure-Services oder von Ereignissen, die bei diesen auftreten, eine Warnung empfangen.
 
-Bei einer Warnungsregel, die auf einem Metrikwert basiert, wird die Regel aktiv und kann eine Benachrichtigung senden, sobald der Wert einer angegebenen Metrik einen bestimmten Schwellenwert überschreitet. Bei einer Warnungsregel, die auf Ereignissen basiert, kann eine Regel bei *jedem* Ereignis eine Benachrichtigung senden oder nur dann, wenn eine bestimmte Anzahl von Ereignissen aufgetreten ist.
-
-Beim Erstellen einer Warnungsregel können Sie Optionen auswählen, um eine E-Mail-Benachrichtigung an den Dienstadministrator und Co-Administratoren oder an einen anderen angegebenen Administrator zu senden. Eine Benachrichtigungs-E-Mail wird gesendet, wenn die Regel aktiv wird und nachdem eine Warnungsbedingung aufgelöst wurde.
-
-Über die [REST-API](https://msdn.microsoft.com/library/azure/dn931945.aspx) oder das [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Insights/) können Sie Informationen zu Warnungsregeln programmgesteuert konfigurieren und abrufen.
-
-## <a name="create-an-alert-rule"></a>Erstellen einer Warnungsregel
-1. Klicken Sie im [Portal](https://portal.azure.com/)auf **Durchsuchen**und anschließend auf eine Ressource, die Sie überwachen möchten.
-2. Klicken Sie im Fokus **Vorgänge** auf die Kachel **Warnungsregeln**.
-3. Klicken Sie auf den Befehl **Warnung hinzufügen** .
-   
-    ![Warnung hinzufügen](./media/insights-receive-alert-notifications/Insights_AddAlert.png)
-4. Sie können einen Namen für die Warnungsregel eingeben und eine Beschreibung auswählen, die in der Benachrichtigungs-E-Mail angezeigt wird.
-5. Bei Auswahl von **Metrics** geben Sie eine Bedingung und einen Schwellenwert für die Metrik an. Dies ist der Zeitraum, den Azure verwendet, um die Warnungsaktivität zu überwachen und darzustellen.
-   
-    ![Bedingung und Schwellenwert](./media/insights-receive-alert-notifications/Insights_ConditionAndThreshold.png)
-6. Sie können auch **Events**auswählen, um eine Benachrichtigung zu erhalten, wenn ein bestimmtes Ereignis auftritt.
-   
-    ![Events](./media/insights-receive-alert-notifications/Insights_Events.png)
-7. Anschließend können Sie festlegen, dass eine E-Mail-Benachrichtigung an die zuständigen Administratoren gesendet wird.
-
-Nachdem Sie auf **Speichern**geklickt haben, werden Sie innerhalb weniger Minuten informiert, sobald die von Ihnen gewählte Metrik den Schwellenwert überschreitet.
-
-## <a name="managing-your-alert-rules"></a>Verwalten von Warnungsregeln
-Sobald Sie eine Warnungsregel erstellt haben, können Sie eine Vorschau Ihres Warnschwellenwerts im Vergleich zur Metrik des vorhergehenden Tages anzeigen.
-
-![Ereignisse](./media/insights-receive-alert-notifications/Insights_EditAlert.png)
-
-Sie können diese Warnungsregel natürlich bearbeiten und **deaktivieren** und wieder **aktivieren**, wenn Sie vorübergehend keine Benachrichtigungen mehr empfangen möchten.
-
-## <a name="next-steps"></a>Nächste Schritte
-* [Konfigurieren Sie Webhooks für Ihre Warnungen](insights-webhooks-alerts.md) , um Benachrichtigungen an verschiedene Kanäle weiterzuleiten.
-* [Überwachen von Dienstmetriken](insights-how-to-customize-monitoring.md) , um sicherzustellen, dass Ihr Dienst verfügbar und reaktionsfähig ist.
-* [Aktivieren von Überwachung und Diagnose](insights-how-to-use-diagnostics.md) , um detaillierte Hochfrequenzmetriken zu Ihrem Dienst zu sammeln.
-* [Überwachen der Verfügbarkeit und Reaktionsfähigkeit einer beliebigen Webseite](../application-insights/app-insights-monitor-web-app-availability.md) mit Application Insights, um zu ermitteln, ob eine Seite offline ist.
-* [Überwachen der Anwendungsleistung](../application-insights/app-insights-azure-web-apps.md) , um präzise Informationen zur Leistung Ihres Codes in der Cloud zu ermitteln.
-* [Anzeigen von Ereignissen und Aktivitätsprotokollen](insights-debugging-with-events.md) , um sich über sämtliche Aktivitäten Ihres Diensts zu informieren.
-* [Nachverfolgen des Dienststatus](insights-service-health.md) , um den Zeitpunkt von Leistungsabfällen oder Dienstunterbrechungen zu ermitteln, die bei Azure aufgetreten sind.
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

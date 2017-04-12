@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 02/10/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
-ms.openlocfilehash: fa3f31cdd708729071876ffad707bea70567da83
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 6b1dede903083d1771733330a069b6ab533d9f00
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -103,7 +103,7 @@ Nach Abschluss der App-Bereitstellung erscheint eine weitere Benachrichtigung.
     ![Umbraco-Konfiguration – erste Umbraco-App in Azure App Service](./media/app-service-web-get-started-dotnet-portal/umbraco-config.png)
     
 ## <a name="next-steps"></a>Nächste Schritte
-* [Bereitstellen einer ASP.NET-Web-App für Azure App Service mit Visual Studio:](web-sites-dotnet-get-started.md) Hier erfahren Sie, wie Sie unter Verwendung einer der enthaltenen Anwendungsvorlagen eine neue Azure-Web App über Visual Studio erstellen.
+* [Bereitstellen einer ASP.NET-Web-App für Azure App Service mit Visual Studio:](app-service-web-get-started-dotnet.md) Hier erfahren Sie, wie Sie unter Verwendung einer der enthaltenen Anwendungsvorlagen eine neue Azure-Web App über Visual Studio erstellen.
 * [Bereitstellen der App in Azure App Service:](web-sites-deploy.md) Hier erfahren Sie, wie Sie Ihre App über FTP oder über Repositorys zur Quellcodeverwaltung bereitstellen.
 * [Hinzufügen von Funktionen zu Ihrer ersten Web-App:](app-service-web-get-started-2.md) Hier erfahren Sie, wie Sie Ihre Azure-App weiterentwickeln. Authentifizieren Sie Ihre Benutzer. Skalieren Sie die App je nach Bedarf. Richten Sie einige Leistungswarnungen ein. Es sind jeweils nur wenige Klicks erforderlich.
 

@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 1/24/2017
 ms.author: nisoneji
 translationtype: Human Translation
-ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
-ms.openlocfilehash: 66832a5d3f10f370ad486269c566fc948fd72234
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 6e52a647e817b64e331937c0b0f1d44f9f6c11a0
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -66,7 +66,7 @@ Folgen Sie dem Workflow für [Replikation aktivieren](site-recovery-vmware-to-az
 >
 
 ### <a name="hyper-v-to-azure"></a>Hyper-V in Azure
-Folgen Sie dem Workflow für [Replikation aktivieren](site-recovery-hyper-v-site-to-azure.md#step-6-enable-replication), um einen virtuellen Computer über das Azure Site Recovery-Portal zu schützen. Verwenden Sie im vierten Schritt des Workflows die Spalte **DISK TO REPLICATE** (ZU REPLIZIERENDER DATENTRÄGER), um Datenträger von der Replikation auszuschließen. Standardmäßig sind alle Datenträger für die Replikation ausgewählt. Deaktivieren Sie das Kontrollkästchen der Datenträger, die Sie von der Replikation ausschließen möchten, und führen Sie dann die Schritte zum Aktivieren der Replikation aus.
+Folgen Sie dem Workflow für [Replikation aktivieren](site-recovery-hyper-v-site-to-azure.md#enable-replication), um einen virtuellen Computer über das Azure Site Recovery-Portal zu schützen. Verwenden Sie im vierten Schritt des Workflows die Spalte **DISK TO REPLICATE** (ZU REPLIZIERENDER DATENTRÄGER), um Datenträger von der Replikation auszuschließen. Standardmäßig sind alle Datenträger für die Replikation ausgewählt. Deaktivieren Sie das Kontrollkästchen der Datenträger, die Sie von der Replikation ausschließen möchten, und führen Sie dann die Schritte zum Aktivieren der Replikation aus.
 
 ![Ausschließen von Datenträgern von der Replikation und Aktivieren der Replikation für Failbacks von Hyper-V auf Azure](./media/site-recovery-vmm-to-azure/enable-replication6-with-exclude-disk.png)
 
@@ -96,10 +96,10 @@ Folgende Datenträger befinden sich auf dem virtuellen Quellcomputer:
 **Name des Datenträgers** | **Gastbetriebssystemdatenträger** | **Laufwerkbuchstabe** | **Datentyp auf dem Datenträger**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0 | C:\ | Betriebssystem-Datenträger
-DB-Disk1| Disk1 | D:\ | SQL-Systemdatenbank und Benutzerdatenbank&1;
+DB-Disk1| Disk1 | D:\ | SQL-Systemdatenbank und Benutzerdatenbank 1
 DB-Disk2 (Datenträger von Schutz ausgeschlossen) | Disk2 | E:\ | Temporäre Dateien
 DB-Disk3 (Datenträger von Schutz ausgeschlossen) | Disk3 | F:\ | SQL-tempdb-Datenbank (Ordnerpfad: F:\MSSQL\Data\) </br /> </br />Notieren Sie sich den Ordnerpfad vor dem Failover.
-DB-Disk4 | Disk4 |G:\ |Benutzerdatenbank&2;
+DB-Disk4 | Disk4 |G:\ |Benutzerdatenbank 2
 
 Zwei der Datenträger des virtuellen Computers verfügen über temporäre Datenänderungen. Schützen Sie daher zwar den virtuellen Computer „SalesDB“, aber schließen Sie Disk2 und Disk3 von der Replikation aus. Azure Site Recovery repliziert diese Datenträger nicht. Bei einem Failover sind diese Datenträger nicht auf dem virtuellen Failovercomputer in Azure vorhanden.
 
@@ -109,8 +109,8 @@ Folgende Datenträger befinden sich nach einem Failover auf dem virtuellen Azure
 --- | --- | ---
 DISK0 |    C:\ | Betriebssystem-Datenträger
 Disk1 |    E:\ | Temporäre Speicherung</br /> </br />Azure fügt diesen Datenträger hinzu und weist den ersten verfügbaren Laufwerkbuchstaben zu.
-Disk2 | D:\ | SQL-Systemdatenbank und Benutzerdatenbank&1;
-Disk3 | G:\ | Benutzerdatenbank&2;
+Disk2 | D:\ | SQL-Systemdatenbank und Benutzerdatenbank 1
+Disk3 | G:\ | Benutzerdatenbank 2
 
 Da „Disk2“ und „Disk3“ vom virtuellen SalesDB-Computer ausgeschlossen wurden, ist „E:“ der erste verfügbare Laufwerkbuchstabe. Azure weist „E:“ dem temporären Speichervolume zu. Für alle replizierten Datenträger bleiben die Laufwerkbuchstaben unverändert.
 
@@ -173,8 +173,8 @@ Im vorherigen Beispiel lautet die Datenträgerkonfiguration des virtuellen Azure
 --- | --- | ---
 DISK0 | C:\ | Betriebssystem-Datenträger
 Disk1 |    E:\ | Temporäre Speicherung</br /> </br />Azure fügt diesen Datenträger hinzu und weist den ersten verfügbaren Laufwerkbuchstaben zu.
-Disk2 |    D:\ | SQL-Systemdatenbank und Benutzerdatenbank&1;
-Disk3 |    G:\ | Benutzerdatenbank&2;
+Disk2 |    D:\ | SQL-Systemdatenbank und Benutzerdatenbank 1
+Disk3 |    G:\ | Benutzerdatenbank 2
 
 
 #### <a name="vmware-to-azure"></a>VMware zu Azure
@@ -185,8 +185,8 @@ Datenträger auf dem virtuellen VMWare-Computer (ursprünglicher Speicherort) na
 **Gastbetriebssystemdatenträger** | **Laufwerkbuchstabe** | **Datentyp auf dem Datenträger**
 --- | --- | ---
 DISK0 | C:\ | Betriebssystem-Datenträger
-Disk1 |    D:\ | SQL-Systemdatenbank und Benutzerdatenbank&1;
-Disk2 |    G:\ | Benutzerdatenbank&2;
+Disk1 |    D:\ | SQL-Systemdatenbank und Benutzerdatenbank 1
+Disk2 |    G:\ | Benutzerdatenbank 2
 
 #### <a name="hyper-v-to-azure"></a>Hyper-V in Azure
 Beim Failback auf den ursprünglichen Speicherort bleibt die Datenträgerkonfiguration des virtuellen Failbackcomputers mit der Datenträgerkonfiguration für den ursprünglichen virtuellen Computer für Hyper-V identisch. Datenträger, die für „Hyper-V auf Azure“ ausgeschlossen wurden, sind daher auf dem virtuellen Failbackcomputer nicht verfügbar.
@@ -196,10 +196,10 @@ Datenträger auf dem virtuellen Hyper-V-Computer (ursprünglicher Speicherort) n
 **Name des Datenträgers** | **Gastbetriebssystemdatenträger** | **Laufwerkbuchstabe** | **Datentyp auf dem Datenträger**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0 |    C:\ | Betriebssystem-Datenträger
-DB-Disk1 | Disk1 | D:\ | SQL-Systemdatenbank und Benutzerdatenbank&1;
+DB-Disk1 | Disk1 | D:\ | SQL-Systemdatenbank und Benutzerdatenbank 1
 DB-Disk2 (ausgeschlossener Datenträger) | Disk2 | E:\ | Temporäre Dateien
 DB-Disk3 (ausgeschlossener Datenträger) | Disk3 | F:\ | SQL-tempdb-Datenbank (Ordnerpfad F:\MSSQL\Data\)
-DB-Disk4 | Disk4 | G:\ | Benutzerdatenbank&2;
+DB-Disk4 | Disk4 | G:\ | Benutzerdatenbank 2
 
 
 #### <a name="exclude-the-paging-file-pagefilesys-disk"></a>Ausschließen des Datenträgers der Auslagerungsdatei (pagefile.sys)
