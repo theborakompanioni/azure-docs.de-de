@@ -7,6 +7,8 @@ author: shizn
 manager: timtl
 tags: 
 keywords: "IoT-Entwicklung, IoT-Software, IoT-Clouddienst, Internet der Dinge Software, Azure CLI, Git unter Ubuntu installieren, Gulp ausführen, Node.js installieren Ubuntu"
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-gateway-kit-c-lesson1-set-up-nuc
 ms.assetid: cf673154-ce67-4ed7-a9f7-2440301c6270
 ms.service: iot-hub
 ms.devlang: c

@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2016
+ms.date: 03/15/2017
 ms.author: kgremban
+ms.custom: end-user
 translationtype: Human Translation
 ms.sourcegitcommit: 4ff028f88e984f28bc0f4a228aabed1fabc90560
 ms.openlocfilehash: dd9b0692dbc044e4bed26cfe7e9e4be11450a595
-
+ms.lasthandoff: 12/22/2016
 
 ---
 # <a name="what-does-azure-multi-factor-authentication-mean-for-me"></a>Was ist Azure Multi-Factor Authentication?
@@ -46,10 +47,5 @@ Wählen Sie eines der nachstehenden Themen aus, um zu beginnen.
 | [Ändern der Einstellungen](multi-factor-authentication-end-user-manage-settings.md) |Hier erfahren Sie, wie Sie Ihre Einstellungen wie die Telefonnummer oder die bevorzugte Registrierungsmethode ändern können. |
 | [Hilfe zu App-Kennwörtern](multi-factor-authentication-end-user-app-passwords.md) |Hier erhalten Sie Informationen zum Erstellen und Verwenden von App-Kennwörtern. |
 | [Verwenden der mobilen App](microsoft-authenticator-app-how-to.md) |Die Microsoft Authenticator-App ist für [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072) und [IOS](http://go.microsoft.com/fwlink/?Linkid=825073) verfügbar. |
-
-
-
-
-<!--HONumber=Dec16_HO4-->
 
 

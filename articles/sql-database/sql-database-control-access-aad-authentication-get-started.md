@@ -64,7 +64,7 @@ Führen Sie die folgenden Schritte aus, um unter Verwendung Ihres [bereits vorha
 2. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com/)an.
 3. Geben Sie auf der Anmeldeseite **** die Anmeldeinformationen für Ihr Abonnement ein.
    
-   ![Anmelden](./media/sql-database-get-started/login.png)
+   ![Anmelden](./media/sql-database-get-started-portal/login.png)
 
 
 <a name="create-logical-server-bk"></a>
@@ -99,7 +99,7 @@ In diesem Abschnitt des Tutorials zeigen Sie Informationen zur Sicherheitskonfig
 
 2. Geben Sie nach der Installation im Windows-Suchfeld den Text **Microsoft SQL Server Management Studio** ein, und drücken Sie die **EINGABETASTE**, um SSMS zu öffnen.
 
-   ![SQL Server Management Studio](./media/sql-database-get-started/ssms.png)
+   ![SQL Server Management Studio](./media/sql-database-connect-query-ssms/ssms.png)
 
 3. Wählen Sie im Dialogfeld **Mit Server verbinden** eine der Active Directory-Authentifizierungsmethoden aus, und geben Sie dann die entsprechenden Authentifizierungsinformationen an. Informationen zum Auswählen einer Methode finden Sie unter [Azure Active Directory-Authentifizierung](sql-database-aad-authentication.md) und [SSMS-Unterstützung für Azure AD MFA](sql-database-ssms-mfa-authentication.md).
 
