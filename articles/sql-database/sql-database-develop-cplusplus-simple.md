@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 03/06/2017
 ms.author: tobiast
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 6cb781b9bc0cfe672e2734661be958d4794e08d8
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: d15ab88be778b8cc081e07fb95fbd99164f18ba1
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -79,7 +79,7 @@ Alternativ hierzu können Sie auch eine DSN-Datei mit dem Assistenten erstellen,
 Glückwunsch! Sie haben mit C++ und ODBC unter Windows jetzt eine Verbindung mit Azure SQL hergestellt. Sie können weiterlesen, um sich auch über die Vorgehensweise für die Linux-Plattform zu informieren. 
 
 ## <a id="Linux"></a>Schritt 5: Herstellen einer Verbindung von einer Linux-C/C++-Anwendung
-Falls Sie es noch nicht gehört haben: Mit Visual Studio können Sie jetzt auch C++-Linux-Anwendungen entwickeln. Informationen zu diesem neuen Szenario finden Sie im Blog [Visual C++ for Linux Development](https://blogs.msdn.microsoft.com/vcblog/2016/03/30/visual-c-for-linux-development/) (Visual C++ für Linux-Entwicklung). Für die Linux-Erstellung benötigen Sie einen Remotecomputer, auf dem Ihre Linux-Distribution ausgeführt wird. Falls Sie keinen Remotecomputer haben, können Sie diesen schnell einrichten, indem Sie die Informationen unter [Erstellen eines virtuellen Linux-Computers mithilfe der Azure-Befehlszeilenschnittstelle&2;.0 (Vorschau)](../virtual-machines/virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nutzen. 
+Falls Sie es noch nicht gehört haben: Mit Visual Studio können Sie jetzt auch C++-Linux-Anwendungen entwickeln. Informationen zu diesem neuen Szenario finden Sie im Blog [Visual C++ for Linux Development](https://blogs.msdn.microsoft.com/vcblog/2016/03/30/visual-c-for-linux-development/) (Visual C++ für Linux-Entwicklung). Für die Linux-Erstellung benötigen Sie einen Remotecomputer, auf dem Ihre Linux-Distribution ausgeführt wird. Falls Sie keinen Remotecomputer haben, können Sie diesen schnell einrichten, indem Sie die Informationen unter [Erstellen eines virtuellen Linux-Computers mithilfe der Azure-Befehlszeilenschnittstelle 2.0 (Vorschau)](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nutzen. 
 
 Für die Zwecke dieses Tutorials nehmen wir an, dass Sie eine Linux-Distribution vom Typ Ubuntu 16.04 eingerichtet haben. Die hier angegebenen Schritte sollten auch für Ubuntu 15.10, Red Hat 6 und Red Hat 7 gelten. 
 

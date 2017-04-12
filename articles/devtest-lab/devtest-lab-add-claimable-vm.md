@@ -3,7 +3,7 @@ title: "Hinzufügen eines anforderbaren virtuellen Computers zu einem Lab in Azu
 description: "Erfahren Sie, wie Sie einem Lab in Azure DevTest Labs einen anforderbaren virtuellen Computer hinzufügen."
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: craigcaseyMSFT
+author: tomarcher
 manager: douge
 editor: 
 ms.assetid: f671e66e-9630-4e30-a131-a6bad9ed9c11
@@ -13,16 +13,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2017
-ms.author: v-craic
+ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: fde776806c3b5eb126540841c12267ba1a6a90e4
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 1b6e826426ebafe10abdf33f9bcfecc1c6315cfc
+ms.lasthandoff: 04/07/2017
 
 
 ---
 # <a name="add-a-claimable-vm-to-a-lab-in-azure-devtest-labs"></a>Hinzufügen eines anforderbaren virtuellen Computers zu einem Lab in Azure DevTest Labs
 Einen anforderbaren virtuellen Computer fügen Sie einem Lab in ähnlicher Weise hinzu wie [einen virtuellen Standardcomputer](devtest-lab-add-vm.md), d.h. über eine *Basis*, also entweder über ein [benutzerdefiniertes Image](devtest-lab-create-template.md), eine [Formel](devtest-lab-manage-formulas.md) oder ein [Marketplace-Image](devtest-lab-configure-marketplace-images.md). In diesem Tutorial wird erläutert, wie Sie über das Azure-Portal einem Lab in DevTest Labs einen anforderbaren virtuellen Computer hinzufügen. Zudem wird der Vorgang beschrieben, mit dem ein Benutzer den virtuellen Computer anfordert.
+
+> [!NOTE]
+> Wenn Sie virtuelle Computer im Lab über [Azure Resource Manager-Vorlagen](devtest-lab-create-environment-from-arm.md) bereitstellen, können Sie anforderbare virtuelle Computer erstellen, indem Sie die Eigenschaft **allowClaim** im Abschnitt „Eigenschaften“ auf „true“ festlegen.
+>
+>
 
 ## <a name="steps-to-add-a-claimable-vm-to-a-lab-in-azure-devtest-labs"></a>Schritte zum Hinzufügen eines anforderbaren virtuellen Computers zu einem Lab in Azure DevTest Labs
 1. Melden Sie sich beim [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
@@ -51,12 +56,8 @@ Einen anforderbaren virtuellen Computer fügen Sie einem Lab in ähnlicher Weise
 1. Wählen Sie **Erstellen** , um den angegebene virtuellen Computer dem Lab hinzuzufügen.
 1. Auf dem Blatt für das Lab wird der Status der VM-Erstellung angezeigt: erst als **Wird erstellt**, dann als **Wird ausgeführt**, nachdem die VM gestartet wurde.
 
-> [!NOTE]
-> Wenn Sie virtuelle Computer im Lab über [Azure Resource Manager-Vorlagen](devtest-lab-create-environment-from-arm.md) bereitstellen, können Sie anforderbare virtuelle Computer erstellen, indem Sie die Eigenschaft **allowClaim** im Abschnitt „Eigenschaften“ auf „true“ festlegen.
->
->
 
-### <a name="using-a-claimable-vm"></a>Verwenden eines anforderbaren virtuellen Computers
+## <a name="using-a-claimable-vm"></a>Verwenden eines anforderbaren virtuellen Computers
 
 Ein Benutzer kann mit einem der folgenden Schritte jeden virtuellen Computer aus der Liste „Claimable virtual machines“ (Anforderbare virtuelle Computer) anfordern:
 

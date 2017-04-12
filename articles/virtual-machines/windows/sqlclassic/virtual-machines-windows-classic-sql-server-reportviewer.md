@@ -16,9 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 8f85a4cee6a59316eb5c321007b5b9d562c71302
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 3d9bdd4f07d22a7bc6c80150ae27453813d39f07
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -78,7 +78,7 @@ Im Remoteverarbeitungsmodus verwendet das ReportViewer-Steuerelement die folgend
 Das ReportViewer-Steuerelement muss geeignete Anmeldeinformationen verwenden, um sich beim Berichtsserver zu authentifizieren, und die Anmeldeinformationen müssen vom Berichtsserver autorisiert werden, damit Sie auf die gewünschten Berichte zuzugreifen können. Informationen über die Authentifizierung finden Sie im Whitepaper [ReportViewer-Steuerelement von Reporting Services und Berichtsserver, die auf virtuellen Microsoft Azure-Computern basieren](https://msdn.microsoft.com/library/azure/dn753698.aspx).
 
 ## <a name="publish-the-aspnet-web-application-to-azure"></a>Veröffentlichen der ASP.NET-Webanwendung in Azure
-Anleitungen zum Veröffentlichen einer ASP.NET Web-Anwendung in Azure finden Sie unter [Vorgehensweise: Migrieren und Veröffentlichen einer Webanwendung in einem Azure-Clouddienst aus Visual Studio](../../../vs-azure-tools-migrate-publish-web-app-to-cloud-service.md) und [Erste Schritte mit Web-Apps und ASP.NET](../../../app-service-web/web-sites-dotnet-get-started.md).
+Anleitungen zum Veröffentlichen einer ASP.NET Web-Anwendung in Azure finden Sie unter [Vorgehensweise: Migrieren und Veröffentlichen einer Webanwendung in einem Azure-Clouddienst aus Visual Studio](../../../vs-azure-tools-migrate-publish-web-app-to-cloud-service.md) und [Erste Schritte mit Web-Apps und ASP.NET](../../../app-service-web/app-service-web-get-started-dotnet.md).
 
 > [!IMPORTANT]
 > Wenn der Befehl „Azure-Bereitstellungsprojekt hinzufügen“ oder „Azure-Clouddienst-Projekt hinzufügen“ nicht im Kontextmenü im Projektmappen-Explorer angezeigt wird, müssen Sie das Zielframework für das Projekt in .NET Framework 4 ändern.

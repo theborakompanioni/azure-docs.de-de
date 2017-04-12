@@ -16,8 +16,9 @@ ms.workload: data-management
 ms.date: 11/28/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 06639080dec485395d6821c371a4f792c7c02845
-ms.openlocfilehash: 5e3ac3a08ea3e5c72082dcc7faa209d848acf2fe
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: b986fc881a39ca3a28d6f5f968cefe19c05b5dc5
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -40,7 +41,7 @@ Jede Datenbank in Azure SQL-Datenbank ist einem logischen Server zugeordnet. Die
 - **Firewall der SQL-Datenbank**: Zum Schutz Ihrer Daten verhindert eine Firewall der SQL-Datenbank jeglichen Zugriff auf Ihren Datenbankserver oder dessen Datenbanken, bis Sie angeben, welche Computer zugriffsberechtigt sind. Weitere Informationen hierzu finden Sie unter [Firewalls](sql-database-firewall-configure.md).
 
 ## <a name="what-collations-are-supported"></a>Welche Sortierungen werden unterstützt?
-Die standardmäßige Datenbanksortierung von Microsoft Azure SQL-Datenbank ist **SQL_LATIN1_GENERAL_CP1_CI_AS**, wobei **LATIN1_GENERAL** für Englisch (USA), **CP1** für Codepage 1252, **CI** für keine Unterscheidung von Groß-/Kleinschreibung und **AS** für die Unterscheidung nach Akzent steht. Es ist nicht möglich, die Sortierung für V12-Datenbanken zu ändern. Weitere Informationen zum Festlegen der Sortierung finden Sie unter [COLLATE (Transact-SQL)](https://msdn.microsoft.com/library/ms184391.aspx).
+Die standardmäßige Datenbanksortierung von Microsoft Azure SQL-Datenbank ist **SQL_LATIN1_GENERAL_CP1_CI_AS**, wobei **LATIN1_GENERAL** für Englisch (USA), **CP1** für Codepage 1252, **CI** für keine Unterscheidung von Groß-/Kleinschreibung und **AS** für die Unterscheidung nach Akzent steht. Weitere Informationen zum Festlegen der Sortierung finden Sie unter [COLLATE (Transact-SQL)](https://msdn.microsoft.com/library/ms184391.aspx).
 
 ## <a name="what-are-the-naming-requirements-for-database-objects"></a>Was sind die Benennungsanforderungen für Datenbankobjekte?
 
@@ -67,10 +68,5 @@ Sie können logische Azure SQL-Datenbankserver mit verschiedenen Methoden verwal
 - Informationen zu bestimmten Ressourcenkontingenten und Einschränkungen basierend auf Ihrer **Dienstebene**. Eine Übersicht über die Dienstebenen finden Sie unter [SQL-Datenbanken-Dienstebenen](sql-database-service-tiers.md).
 - Eine Übersicht über Sicherheit finden Sie unter [Azure SQL Database Security Overview](sql-database-security-overview.md) (Übersicht über die Sicherheit von Azure SQL-Datenbank).
 - Informationen zur Verfügbarkeit von Treibern und Unterstützung für SQL-Datenbank finden Sie unter [Verbindungsbibliotheken für SQL-Datenbank und SQL Server](sql-database-libraries.md).
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

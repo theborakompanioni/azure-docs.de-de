@@ -15,15 +15,15 @@ ms.workload: identity
 ms.date: 12/27/2016
 ms.author: dugill;tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
-ms.openlocfilehash: 32f5959a9b96318208c46789ec406d614081bc8d
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
+ms.openlocfilehash: de1355a8dc4b0099dca3efc2109ccfb9facf7269
+ms.lasthandoff: 04/05/2017
 
 
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>Verwenden der Resource Manager-Authentifizierungs-API für den Zugriff auf Abonnements
 ## <a name="introduction"></a>Einführung
-Wenn Sie Softwareentwickler sind, der eine App erstellen möchten, die die Azure-Ressourcen eines Kunden verwaltet, finden Sie in diesem Thema Informationen zur Authentifizierung mit den Azure Resource Manager-APIs und zum Zugriff auf Ressourcen in anderen Abonnements. 
+Wenn Sie Softwareentwickler sind, der eine App erstellen möchten, die die Azure-Ressourcen eines Kunden verwaltet, finden Sie in diesem Thema Informationen zur Authentifizierung mit den Azure Resource Manager-APIs und zum Zugriff auf Ressourcen in anderen Abonnements.
 
 Ihre App kann auf die Resource Manager-APIs auf verschiedene Arten zugreifen:
 
@@ -32,7 +32,7 @@ Ihre App kann auf die Resource Manager-APIs auf verschiedene Arten zugreifen:
 
 Dieses Thema enthält eine schrittweise Anleitung zum Erstellen einer App, in der beide Autorisierungsmethoden genutzt werden. Es beschreibt, wie jeder Schritt mit REST-API oder C# ausgeführt wird. Die vollständige ASP.NET MVC-Anwendung finden Sie unter [https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense](https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense).
 
-Der gesamte Code für dieses Thema wird als Web-App ausgeführt, die Sie unter [http://vipswapper.azurewebsites.net/cloudsense](http://vipswapper.azurewebsites.net/cloudsense)testen können. 
+Der gesamte Code für dieses Thema wird als Web-App ausgeführt, die Sie unter [http://vipswapper.azurewebsites.net/cloudsense](http://vipswapper.azurewebsites.net/cloudsense)testen können.
 
 ## <a name="what-the-web-app-does"></a>Funktionen der Web-App
 Die Web-App führt folgende Aktionen aus:
@@ -69,11 +69,11 @@ Verwalten Sie die verbundenen Abonnements:
 ![Abonnement verbinden](./media/resource-manager-api-authentication/sample-ux-7.png)
 
 ## <a name="register-application"></a>Registrieren einer Anwendung
-Bevor Sie mit dem Programmieren beginnen, müssen Sie Ihre Web-App bei Azure Active Directory (AD) registrieren. Durch die App-Registrierung wird eine zentrale Identität für Ihre App in Azure AD erstellt. Sie enthält grundlegende Informationen über Ihre Anwendung wie die OAuth-Client-ID, Antwort-URLs und Anmeldeinformationen, die Ihre Anwendung zur Authentifizierung von Azure Resource Manager-APIs und zum Zugriff darauf verwendet. Die App-Registrierung zeichnet auch die verschiedenen delegierten Berechtigungen auf, die Ihre Anwendung benötigt, um für den Benutzer auf Microsoft-APIs zuzugreifen. 
+Bevor Sie mit dem Programmieren beginnen, müssen Sie Ihre Web-App bei Azure Active Directory (AD) registrieren. Durch die App-Registrierung wird eine zentrale Identität für Ihre App in Azure AD erstellt. Sie enthält grundlegende Informationen über Ihre Anwendung wie die OAuth-Client-ID, Antwort-URLs und Anmeldeinformationen, die Ihre Anwendung zur Authentifizierung von Azure Resource Manager-APIs und zum Zugriff darauf verwendet. Die App-Registrierung zeichnet auch die verschiedenen delegierten Berechtigungen auf, die Ihre Anwendung benötigt, um für den Benutzer auf Microsoft-APIs zuzugreifen.
 
 Da Ihre App auf andere Abonnements zugreift, müssen Sie sie als mehrinstanzenfähige Anwendung konfigurieren. Geben Sie eine Domäne an, die Ihrem Active Directory zugeordnet ist, damit die Überprüfung erfolgreich ausgeführt werden kann. Melden Sie sich beim [klassischen Portal](https://manage.windowsazure.com)an, um die Domänen zu sehen, die Ihrem Active Directory zugeordnet sind. Wählen Sie Ihr Active Directory aus, und wählen Sie anschließend **Domänen**.
 
-Im folgenden Beispiel wird gezeigt, wie Sie die App mithilfe von Azure PowerShell registrieren. Damit dieser Befehl funktioniert, benötigen Sie die aktuelle Version von Azure PowerShell (August 2016). 
+Im folgenden Beispiel wird gezeigt, wie Sie die App mithilfe von Azure PowerShell registrieren. Damit dieser Befehl funktioniert, benötigen Sie die aktuelle Version von Azure PowerShell (August 2016).
 
     $app = New-AzureRmADApplication -DisplayName "{app name}" -HomePage "https://{your domain}/{app name}" -IdentifierUris "https://{your domain}/{app name}" -Password "{your password}" -AvailableToOtherTenants $true
 
@@ -81,7 +81,7 @@ Um sich als AD-Anwendung anzumelden, benötigen Sie die Anwendungs-ID und das Ke
 
     $app.ApplicationId
 
-Im folgenden Beispiel wird gezeigt, wie Sie die App mithilfe der Azure-CLI registrieren. 
+Im folgenden Beispiel wird gezeigt, wie Sie die App mithilfe der Azure-CLI registrieren.
 
     azure ad app create --name {app name} --home-page https://{your domain}/{app name} --identifier-uris https://{your domain}/{app name} --password {your password} --available true
 
@@ -90,7 +90,7 @@ Die Ergebnisse enthalten die AppID, die Sie beim Authentifizieren als Anwendung 
 ### <a name="optional-configuration---certificate-credential"></a>Optionale Konfiguration – Zertifikatanmeldeinformationen
 Azure AD unterstützt außerdem Zertifikatanmeldeinformationen für Anwendungen: Sie erstellen ein selbstsigniertes Zertifikat, behalten den privaten Schlüssel und fügen den öffentlichen Schlüssel der Azure AD-Anwendungsregistrierung hinzu. Zur Authentifizierung sendet Ihre Anwendung eine kleine Nutzlast an Azure AD, die mit Ihrem privaten Schlüssel signiert ist, und Azure AD überprüft die Signatur mithilfe des öffentlichen Schlüssels, den Sie registriert haben.
 
-Informationen zum Erstellen einer AD-App mit einem Zertifikat finden Sie unter [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe von Azure PowerShell](resource-group-authenticate-service-principal.md#create-service-principal-with-certificate) oder unter [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe der Azure-Befehlszeilenschnittstelle](resource-group-authenticate-service-principal-cli.md#create-service-principal-with-certificate).
+Informationen zum Erstellen einer AD-App mit einem Zertifikat finden Sie unter [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe von Azure PowerShell](resource-group-authenticate-service-principal.md#create-service-principal-with-certificate-from-certificate-authority) oder unter [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe der Azure-Befehlszeilenschnittstelle](resource-group-authenticate-service-principal-cli.md#create-service-principal-with-certificate).
 
 ## <a name="get-tenant-id-from-subscription-id"></a>Abrufen der Mandanten-ID ausgehend von der Abonnement-ID
 Um ein Token anzufordern, das zum Aufrufen von Resource Manager verwendet werden kann, benötigt Ihre Anwendung die Mandanten-ID des Azure AD-Mandanten, der das Azure-Abonnement hostet. In den meisten Fällen kennen Benutzer Ihre Abonnement-ID, unter Umständen kennen sie ihre Mandanten-ID für Active Directory jedoch nicht. Fragen Sie den Benutzer nach der Abonnement-ID, um die Mandanten-ID abrufen zu können. Geben Sie die Abonnement-ID beim Senden einer Anforderung zum Abonnement an:
@@ -135,7 +135,7 @@ Beispiel für eine Open ID Connect-Antwort:
     code=AAABAAAAiL*****I4rDWd7zXsH6WUjlkIEQxIAA&id_token=eyJ0eXAiOiJKV1Q*****T3GrzzSFxg&state=M_12tMyKaM8&session_state=2d16bbce-d5d1-443f-acdf-75f6b0ce8850
 
 ### <a name="token-request-oauth20-code-grant-flow"></a>Tokenanforderung (Datenfluss für OAuth2.0-Codeberechtigungen)
-Nachdem die Anwendung den Autorisierungscode von Azure AD erhalten hat, ist es an der Zeit, das Zugriffstoken für Azure Resource Manager abzurufen.  Senden Sie eine Anforderung für ein OAuth2.0-Codeberechtigungstoken an den Azure AD-Tokenendpunkt: 
+Nachdem die Anwendung den Autorisierungscode von Azure AD erhalten hat, ist es an der Zeit, das Zugriffstoken für Azure Resource Manager abzurufen.  Senden Sie eine Anforderung für ein OAuth2.0-Codeberechtigungstoken an den Azure AD-Tokenendpunkt:
 
     https://login.microsoftonline.com/{tenant-id}/OAuth2/Token
 
@@ -152,7 +152,7 @@ Das folgende Beispiel zeigt eine Anforderung für ein Codeberechtigungstoken mit
 
 Wenn Sie Zertifikatanmeldeinformationen verwenden, erstellen Sie ein JSON-Webtoken (JWT), und signieren Sie (RSA-SHA256) mit dem privaten Schlüssel der Zertifikatanmeldeinformationen Ihrer Anwendung. Die Anspruchstypen für das Token finden Sie unter [JWT-Tokenansprüche](../active-directory/develop/active-directory-protocols-oauth-code.md#jwt-token-claims). Informationen zum Signieren von JWT-Token für die Clientassertion finden Sie im [Code der Active Directory Authentication Library (.NET)](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/blob/dev/src/ADAL.PCL.Desktop/CryptographyHelper.cs) .
 
-Informationen zur Clientauthentifizierung finden Sie in der [Open ID Connect-Spezifikation](http://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication) . 
+Informationen zur Clientauthentifizierung finden Sie in der [Open ID Connect-Spezifikation](http://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication) .
 
 Das folgende Beispiel zeigt eine Anforderung für ein Codeberechtigungstoken mit Zertifikatanmeldeinformationen:
 
@@ -163,14 +163,14 @@ Das folgende Beispiel zeigt eine Anforderung für ein Codeberechtigungstoken mit
 
     grant_type=authorization_code&code=AAABAAAAiL9Kn2Z*****L1nVMH3Z5ESiAA&redirect_uri=http%3A%2F%2Flocalhost%3A62080%2FAccount%2FSignIn&client_id=a0448380-c346-4f9f-b897-c18733de9394&client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&client_assertion=eyJhbG*****Y9cYo8nEjMyA
 
-Eine Beispielantwort für ein Codeberechtigungstoken: 
+Eine Beispielantwort für ein Codeberechtigungstoken:
 
     HTTP/1.1 200 OK
 
     {"token_type":"Bearer","expires_in":"3599","expires_on":"1432039858","not_before":"1432035958","resource":"https://management.core.windows.net/","access_token":"eyJ0eXAiOiJKV1Q****M7Cw6JWtfY2lGc5A","refresh_token":"AAABAAAAiL9Kn2Z****55j-sjnyYgAA","scope":"user_impersonation","id_token":"eyJ0eXAiOiJKV*****-drP1J3P-HnHi9Rr46kGZnukEBH4dsg"}
 
 #### <a name="handle-code-grant-token-response"></a>Verarbeiten der Antwort für ein Codeberechtigungstoken
-Eine erfolgreiche Antwort enthält das Zugriffstoken (Benutzer und App) für Azure Resource Manager. Ihre Anwendung verwendet dieses Zugriffstoken, um für den Benutzer auf Resource Manager zuzugreifen. Die Lebensdauer des von Azure AD ausgestellten Zugriffstokens beträgt eine Stunde. Es ist unwahrscheinlich, dass Ihre Webanwendung das Zugriffstoken (für den Benutzer und die App) erneuern muss. Wenn das Zugriffstoken erneuert werden muss, verwenden Sie das Aktualisierungstoken, dass die Anwendung in der Tokenantwort erhält. Senden Sie eine Anforderung für ein OAuth2.0-Token an den Azure AD-Tokenendpunkt: 
+Eine erfolgreiche Antwort enthält das Zugriffstoken (Benutzer und App) für Azure Resource Manager. Ihre Anwendung verwendet dieses Zugriffstoken, um für den Benutzer auf Resource Manager zuzugreifen. Die Lebensdauer des von Azure AD ausgestellten Zugriffstokens beträgt eine Stunde. Es ist unwahrscheinlich, dass Ihre Webanwendung das Zugriffstoken (für den Benutzer und die App) erneuern muss. Wenn das Zugriffstoken erneuert werden muss, verwenden Sie das Aktualisierungstoken, dass die Anwendung in der Tokenantwort erhält. Senden Sie eine Anforderung für ein OAuth2.0-Token an den Azure AD-Tokenendpunkt:
 
     https://login.microsoftonline.com/{tenant-id}/OAuth2/Token
 
@@ -188,7 +188,7 @@ Das folgende Beispiel zeigt die Verwendung des Aktualisierungstokens:
 Mit Aktualisierungstoken können Sie zwar neue Zugriffstoken für Azure Resource Manager abrufen, sie sind aber für Offlinezugriff durch Ihre Anwendung nicht geeignet. Die Lebensdauer der Aktualisierungstoken ist begrenzt, und Aktualisierungstoken sind an den Benutzer gebunden. Wenn der Benutzer die Organisation verlässt, hat die Anwendung, die das Aktualisierungstoken nutzt, keinen Zugriff mehr. Dieser Ansatz ist nicht für Anwendungen geeignet, die von Teams zum Verwalten ihrer Azure-Ressourcen verwendet werden.
 
 ## <a name="check-if-user-can-assign-access-to-subscription"></a>Prüfen Sie, ob der Benutzer Zugriff auf Abonnement gewähren kann.
-Ihre Anwendung verfügt jetzt über ein Token, um für den Benutzer auf Azure Resource Manager zuzugreifen. Der nächste Schritt besteht darin, Ihre App mit dem Abonnement zu verbinden. Wenn die Verbindung hergestellt ist, kann die App die Abonnements verwalten, auch wenn der Benutzer nicht anwesend ist (langfristiger Offlinezugriff). 
+Ihre Anwendung verfügt jetzt über ein Token, um für den Benutzer auf Azure Resource Manager zuzugreifen. Der nächste Schritt besteht darin, Ihre App mit dem Abonnement zu verbinden. Wenn die Verbindung hergestellt ist, kann die App die Abonnements verwalten, auch wenn der Benutzer nicht anwesend ist (langfristiger Offlinezugriff).
 
 Sie rufen für jedes Abonnement, mit dem eine Verbindung hergestellt werden soll, die [Resource Manager-API zum Auflisten von Berechtigungen](https://docs.microsoft.com/rest/api/authorization/permissions) auf, um zu bestimmen, ob der Benutzer über Zugriffsverwaltungsrechte für das Abonnement verfügt.
 
@@ -233,14 +233,14 @@ Die Methode [GetObjectIdOfServicePrincipalInOrganization](https://github.com/dus
 
 Die Abfragezeichenfolgenparameter, die für diese Anforderung verfügbar sind, werden im Thema [Anfordern eines Zugriffstokens](../active-directory/develop/active-directory-protocols-oauth-service-to-service.md#request-an-access-token) beschrieben.
 
-Beispielanforderung für ein Token zur Gewährung von Clientanmeldeinformationen: 
+Beispielanforderung für ein Token zur Gewährung von Clientanmeldeinformationen:
 
     POST https://login.microsoftonline.com/62e173e9-301e-423e-bcd4-29121ec1aa24/oauth2/token HTTP/1.1
     Content-Type: application/x-www-form-urlencoded
     Content-Length: 187</pre>
     <pre>grant_type=client_credentials&client_id=a0448380-c346-4f9f-b897-c18733de9394&resource=https%3A%2F%2Fgraph.windows.net%2F &client_secret=olna8C*****Og%3D
 
-Beispielantwort für ein Token zur Gewährung von Clientanmeldeinformationen: 
+Beispielantwort für ein Token zur Gewährung von Clientanmeldeinformationen:
 
     HTTP/1.1 200 OK
 
@@ -257,7 +257,7 @@ Im folgenden Beispiel wird gezeigt, wie der Dienstprinzipal einer Anwendung ange
 
     Authorization: Bearer eyJ0eXAiOiJK*****-kKorR-pg
 
-Das folgende Beispiel zeigt eine Antwort auf die Anforderung des Dienstprinzipals einer Anwendung. 
+Das folgende Beispiel zeigt eine Antwort auf die Anforderung des Dienstprinzipals einer Anwendung.
 
     HTTP/1.1 200 OK
 
@@ -285,7 +285,7 @@ Das folgende Anforderungsbeispiel zeigt, wie Azure-RBAC-Rollenbezeichner abgeruf
 
     Authorization: Bearer eyJ0eXAiOiJKV*****fY2lGc5
 
-Die Antwort hat folgendes Format: 
+Die Antwort hat folgendes Format:
 
     HTTP/1.1 200 OK
 
@@ -314,7 +314,7 @@ Sie haben alles, was Sie benötigen, um dem Dienstprinzipal mithilfe der [Resour
 
 Die Methode [GrantRoleToServicePrincipalOnSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceManagerUtil.cs#L170) der ASP.NET MVC-Beispiel-App implementiert diesen Aufruf.
 
-Beispielanforderung zum Zuweisen einer RBAC-Rolle zur Anwendung: 
+Beispielanforderung zum Zuweisen einer RBAC-Rolle zur Anwendung:
 
     PUT https://management.azure.com/subscriptions/09cbd307-aa71-4aca-b346-5f253e6e3ebb/providers/microsoft.authorization/roleassignments/4f87261d-2816-465d-8311-70a27558df4c?api-version=2015-07-01 HTTP/1.1
 
@@ -333,7 +333,7 @@ In der Anforderung werden die folgenden Werte verwendet:
 | acdd72a7-3385-48ef-bd42-f606fba81ae7 |Die ID der Leserrolle |
 | 4f87261d-2816-465d-8311-70a27558df4c |Eine neue GUID, erstellt für die neue Rollenzuweisung |
 
-Die Antwort hat folgendes Format: 
+Die Antwort hat folgendes Format:
 
     HTTP/1.1 201 Created
 
@@ -342,7 +342,7 @@ Die Antwort hat folgendes Format:
 ### <a name="get-app-only-access-token-for-azure-resource-manager"></a>Abrufen eines nur für die App geltenden Zugriffstokens für Azure Resource Manager
 Führen Sie im Abonnement mithilfe eines Tokens, das nur für die App gilt, eine Testaufgabe aus, um zu prüfen, ob die App über den gewünschten Zugriff verfügt.
 
-Befolgen Sie die Anweisungen im Abschnitt [Abrufen eines nur für die App geltenden Zugriffstokens für die Azure AD Graph-API](#app-azure-ad-graph), und verwenden Sie dabei einen anderen Wert für den Ressourcenparameter: 
+Befolgen Sie die Anweisungen im Abschnitt [Abrufen eines nur für die App geltenden Zugriffstokens für die Azure AD Graph-API](#app-azure-ad-graph), und verwenden Sie dabei einen anderen Wert für den Ressourcenparameter:
 
     https://management.core.windows.net/
 
@@ -358,10 +358,10 @@ Wenn dem Dienstprinzipal Ihrer Anwendung die entsprechende RBAC-Rolle für das A
 
 Wenn ein Abonnementbesitzer die Rollenzuweisung Ihrer Anwendung mithilfe des klassischen Portals oder über Befehlszeilentools entfernt, kann Ihre Anwendung nicht mehr auf das Abonnement zugreifen. In diesem Fall sollten Sie den Benutzer informieren, dass die Verbindung mit dem Abonnement von außerhalb der Anwendung unterbrochen wurde, und ihm die Möglichkeit geben, die Verbindung zu „reparieren“. Durch das „Reparieren“ wird einfach die Rollenzuweisung neu erstellt, die offline gelöscht wurde.
 
-So wie Sie es dem Benutzer ermöglicht haben, seine Abonnements mit der Anwendung zu verbinden, müssen Sie ihm auch das Trennen von Abonnements ermöglichen. Aus Sicht der Zugriffsverwaltung bedeutet Trennen, dass die Rollenzuweisung entfernt wird, die der Dienstprinzipal der Anwendung für das Abonnement hat. Optional kann jeder Status in der Anwendung für das Abonnement ebenfalls entfernt werden. Nur Benutzer mit Berechtigungen zur Zugriffsverwaltung für das Abonnement können das Abonnement trennen.
+So wie Sie es dem Benutzer ermöglicht haben, seine Abonnements mit der Anwendung zu verbinden, müssen Sie ihm auch das Trennen von Abonnements ermöglichen. Aus Sicht der Zugriffsverwaltung bedeutet Trennen, dass die Rollenzuweisung entfernt wird, die der Dienstprinzipal der Anwendung für das Abonnement hat. Optional kann jeder Status in der Anwendung für das Abonnement ebenfalls entfernt werden.
+Nur Benutzer mit Berechtigungen zur Zugriffsverwaltung für das Abonnement können das Abonnement trennen.
 
 Die Methode [RevokeRoleFromServicePrincipalOnSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceManagerUtil.cs#L200) der ASP.NET MVC-Beispiel-App implementiert diesen Aufruf.
 
 Jetzt können Benutzer Ihre Anwendung verwenden, um problemlos eine Verbindung mit ihren Azure-Abonnements herzustellen und sie zu verwalten.
-
 

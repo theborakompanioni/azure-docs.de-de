@@ -12,12 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2017
+ms.date: 04/04/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 6ad2194a71e0d36ba4a0b9a46ca6dbcd58b619ff
-ms.openlocfilehash: 06a8b79f0740e902bb7f9412b449a98b2f0167ea
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: e22a1ccb958942cfa3c67194430af6bc74fdba64
+ms.openlocfilehash: 233691d19aa2553744f92af17f7ecf9fda2290e0
+ms.lasthandoff: 04/05/2017
 
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure AD Connect Health
@@ -138,22 +138,6 @@ Nein, die Überwachung muss auf den Webanwendungs-Proxyservern nicht aktiviert w
 **F: Wie werden Azure AD Connect Health-Warnungen aufgelöst?**
 
 Azure AD Connect Health-Warnungen-Warnungen werden basierend auf einer Erfolgsbedingung aufgelöst. Azure AD Connect Health-Agents erkennen und melden die Erfolgsbedingungen in regelmäßigen Abständen an den Dienst. Bei einigen Warnungen gilt eine zeitbasierte Unterdrückung. Dies bedeutet: Wenn die gleiche Fehlerbedingung nicht innerhalb von 72 Stunden nach Generieren der Warnung erneut festgestellt wird, wird die Warnung automatisch aufgelöst.
-
-## <a name="migration-questions"></a>Fragen zur Migration
-
-Dieser Abschnitt gilt nur für Kunden, die wegen einer anstehenden Migration ihrer Azure AD Connect Health-Daten benachrichtigt wurden.
-
-**F: Muss ich nach der Migration meine Agents neu registrieren oder meine Benachrichtigungseinstellungen neu konfigurieren?**
-
-Nein. Agent-Registrierungsinformationen und die Benachrichtigungseinstellungen werden im Rahmen der Migration ebenfalls verschoben.
-
-**F: Wie lange dauert es nach der Migration, bis Daten im Portal angezeigt werden?**
-
-Daten werden nach der Migration innerhalb einer Stunde im Portal angezeigt.
-
-**F: Was geschieht mit meinen vorhanden aktiven Warnungen?**
-
-Entsprechende Warnungen werden nach der Migration innerhalb einer Stunde reaktiviert.
 
 ## <a name="related-links"></a>Verwandte Links
 * [Azure AD Connect Health](active-directory-aadconnect-health.md)

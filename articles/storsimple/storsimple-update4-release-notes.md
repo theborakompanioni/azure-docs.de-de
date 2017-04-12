@@ -12,12 +12,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 03/21/2017
+ms.date: 04/04/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: a545925bdade693f4db7db45228188dae7e5ff38
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
+ms.openlocfilehash: 23f1bbb066c5b6481988ee841ad8979d78abf084
+ms.lasthandoff: 04/05/2017
 
 
 ---
@@ -52,8 +52,6 @@ Die folgenden wichtigen Verbesserungen und Fehlerbehebungen wurden in Update 4 v
 * **StorSimple-Diagnosetool:** In Update 4 wird ein StorSimple-Diagnosetool veröffentlicht, das eine einfache Diagnose und Behebung von Problemen im Zusammenhang mit der Integrität von System, Netzwerk, Leistung und Hardwarekomponenten ermöglicht. Dieses Tool wird über Windows PowerShell für StorSimple ausgeführt. Weitere Informationen finden Sie unter [Beheben von Problemen mit dem StorSimple-Diagnosetool](storsimple-8000-diagnostics.md).
 
 * **UI-basiertes StorSimple-Migrationstool:** Vor dieser Version mussten die Benutzer aufgrund der Datenmigration der 5000-7000-Serie einen Teil des Migrationsworkflows mithilfe der Azure PowerShell-Schnittstelle ausführen. In dieser Version steht ein einfach zu bedienendes benutzeroberflächenbasiertes StorSimple-Migrationstool zur Unterstützung bereit, um denselben Workflow zu erleichtern. Dieses Tool lässt auch die Konsolidierung der Wiederherstellungsbuckets zu. 
-
-* **MPIO-Unterstützung für StorSimple Snapshot Manager:** In dieser Version haben wir die MPIO-Unterstützung für den StorSimple Snapshot Manager implementiert.
 
 * **Änderungen im Zusammenhang mit FIPS:** Ab dieser Version ist FIPS standardmäßig auf allen Geräten der StorSimple 8000-Serie für Microsoft Azure Government- und Azure Public Cloud-Konten aktiviert.
 

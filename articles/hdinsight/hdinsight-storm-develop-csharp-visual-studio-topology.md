@@ -17,9 +17,9 @@ ms.workload: big-data
 ms.date: 03/01/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
-ms.openlocfilehash: c2a92e3be7616d241eba3c6690c8f10326d8004c
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: cc6b16b559c4d1eafc570d0361c710487021f175
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -31,9 +31,9 @@ Außerdem erfahren Sie, wie hybride Topologien erstellt werden, die C#- und Java
 
 > [!IMPORTANT]
 > Während Sie für die Schritte in diesem Dokument eine Windows-Entwicklungsumgebung mit Visual Studio benötigen, kann das kompilierte Projekt an einen Linux- oder Windows-basierten HDInsight-Cluster übermittelt werden. __Nur Linux-basierte Cluster, die nach dem 28.10.2016 erstellt wurden, unterstützen SCP.NET-Topologien__.
-> 
+>
 > Um eine C#-Topologie mit einem Linux-basierten Cluster zu verwenden, müssen Sie das NuGet-Paket „Microsoft.SCP.Net.SDK“, das vom Projekt verwendet wird, auf Version 0.10.0.6 oder höher aktualisieren. Die Version des Pakets muss zudem mit der Hauptversion der Storm-Installation auf HDInsight übereinstimmen. Beispielsweise verwenden die Storm in HDInsight-Versionen 3.3 und 3.4 die Storm-Version 0.10.x, während HDInsight 3.5 Storm 1.0.x verwendet.
-> 
+>
 > C#-Topologien in Linux-basierten Clustern müssen .NET 4.5 verwenden. Zudem muss Mono im HDInsight-Cluster ausgeführt werden. Das meiste ist funktionsfähig, Sie sollten jedoch das Dokument zur [Mono-Kompatibilität](http://www.mono-project.com/docs/about-mono/compatibility/) auf mögliche Inkompatibilitäten überprüfen.
 
 
@@ -45,7 +45,7 @@ Außerdem erfahren Sie, wie hybride Topologien erstellt werden, die C#- und Java
   * Das **%JAVA_HOME%/bin**-Verzeichnis muss im Pfad liegen.
 
 * Eine der folgenden Versionen von Visual Studio:
-  
+
   * Visual Studio 2012 mit [Update 4](http://www.microsoft.com/download/details.aspx?id=39305)
   * Visual Studio 2013 mit [Update 4](http://www.microsoft.com/download/details.aspx?id=44921) oder [Visual Studio 2013 Community](http://go.microsoft.com/fwlink/?LinkId=517284)
   * Visual Studio 2015 oder [Visual Studio 2015 Community](https://go.microsoft.com/fwlink/?LinkId=532606)
@@ -54,14 +54,14 @@ Außerdem erfahren Sie, wie hybride Topologien erstellt werden, die C#- und Java
 * Azure SDK 2.9.5 oder höher
 
 * HDInsight-Tools für Visual Studio: Informationen zum Installieren und Konfigurieren der HDInsight-Tools für Visual Studio finden Sie unter [Erste Schritte mit den HDInsight-Tools für Visual Studio](hdinsight-hadoop-visual-studio-tools-get-started.md) .
-  
+
   > [!NOTE]
   > HDInsight-Tools für Visual Studio werden von Visual Studio Express nicht unterstützt
 
 * Apache Storm in HDInsight-Cluster: Informationen zum Erstellen eines Clusters finden Sie unter [Erste Schritte mit Apache Storm in HDInsight](hdinsight-apache-storm-tutorial-get-started.md) .
 
   > [!IMPORTANT]
-  > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date).
+  > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date).
 
 ## <a name="templates"></a>Vorlagen
 
@@ -100,19 +100,19 @@ Eine Beispieltopologie, die diese Komponente verwendet und mit Storm auf HDInsig
 2. Öffnen Sie Visual Studio, wählen Sie **Datei** > **Neu** aus, und klicken Sie dann auf **Projekt**.
 
 3. Erweitern Sie auf dem Bildschirm **Neues Projekt** die Option **Installiert** > **Vorlagen**, und wählen Sie dann **Azure Data Lake** aus. Wählen Sie in der Liste der Vorlagen die Option **Storm-Anwendung**aus. Geben Sie unten im Bildschirm **WordCount** als Namen der Anwendung ein.
-   
+
     ![image](./media/hdinsight-storm-develop-csharp-visual-studio-topology/new-project.png)
 
 4. Nachdem das Projekt erstellt wurde, sollten die folgenden Dateien vorliegen:
-   
+
    * **Program.cs:** Diese Datei definiert die Topologie für Ihr Projekt. Eine Standardtopologie, die aus einem Spout und einem Bolt besteht, wird standardmäßig erstellt.
 
    * **Spout.cs:**ein Beispiel-Spout, der Zufallszahlen ausgibt.
 
    * **Bolt.cs:**ein Beispiel-Bolt, der eine Anzahl der vom Spout ausgegebenen Zahlen aufnimmt.
-     
+
      Im Rahmen der Projekterstellung wird das neueste [SCP.NET-Paket](https://www.nuget.org/packages/Microsoft.SCP.Net.SDK/) von NuGet heruntergeladen.
-     
+
      [!INCLUDE [scp.net version important](../../includes/hdinsight-storm-scpdotnet-version.md)]
 
 In den nächsten Abschnitten verwandeln Sie dieses Projekt in eine einfache Anwendung zur Wortzählung.
@@ -120,7 +120,7 @@ In den nächsten Abschnitten verwandeln Sie dieses Projekt in eine einfache Anwe
 ### <a name="implement-the-spout"></a>Implementieren des Spouts
 
 1. Öffnen Sie **Spout.cs**. Mithilfe der Spouts werden Daten aus einer externen Quelle in eine Topologie eingelesen. Wichtigste Komponenten für einen Spout:
-   
+
    * **NextTuple:**wird von Storm aufgerufen, wenn der Spout neue Tupel ausgeben darf.
 
    * **Bestätigung** (nur transaktionale Topologie): Verarbeitet Bestätigungen, die von anderen Komponenten in der Topologie initiiert wurden, für Tupel, die von dem Spout gesendet wurden. Durch die Tupelbestätigung erfährt der Spout, dass die Verarbeitung durch nachgelagerte Komponenten erfolgreich ausgeführt wurde.
@@ -128,7 +128,7 @@ In den nächsten Abschnitten verwandeln Sie dieses Projekt in eine einfache Anwe
    * **Fail** (nur transaktionale Topologie): verarbeitet Tupel, bei denen bei der Verarbeitung anderer Komponenten in der Topologie ein Fehler aufgetreten ist. Das Implementieren einer Fail-Methode ermöglicht es Ihnen, das Tupel erneut auszugeben, sodass es erneut verarbeitet werden kann.
 
 2. Ersetzen Sie den Inhalt der **Spout**-Klasse durch folgenden Text. Dieses Spout gibt einen Satz willkürlich in die Topologie aus.
-    
+
     ```csharp
     private Context ctx;
     private Random r = new Random();
@@ -186,7 +186,7 @@ In den nächsten Abschnitten verwandeln Sie dieses Projekt in eine einfache Anwe
         // Only used for transactional topologies
     }
     ```
-   
+
     Lesen Sie die Kommentare in Ruhe durch, um die Funktionsweise dieses Codes zu verstehen.
 
 ### <a name="implement-the-bolts"></a>Implementieren der Bolts
@@ -194,18 +194,18 @@ In den nächsten Abschnitten verwandeln Sie dieses Projekt in eine einfache Anwe
 1. Löschen Sie die vorhandene Datei **Bolt.cs** aus dem Projekt.
 
 2. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **Hinzufügen** > **Neues Element** aus. Wählen Sie in der Liste die Option **Storm Bolt** aus, und geben Sie **Splitter.cs** als Namen ein. Wiederholen Sie diesen Vorgang, um einen zweiten Bolt namens **Counter.cs** zu erstellen.
-   
+
    * **Splitter.cs:**implementiert einen Bolt, der Sätze in einzelne Wörter unterteilt und einen neuen Datenstrom von Wörtern ausgibt.
 
    * **Counter.cs:**implementiert einen Bolt, der jedes Wort zählt und einen neuen Datenstrom von Wörtern sowie die Anzahl der einzelnen Wörter ausgibt.
-     
+
      > [!NOTE]
      > Obwohl diese Bolts in Datenströme schreiben und aus diesen lesen, können Sie mithilfe eines Bolts auch mit einer Datenbank oder einem Dienst kommunizieren.
 
 3. Öffnen Sie **Splitter.cs**. Die Datei enthält standardmäßig nur eine Methode: **Execute** (Ausführen). Diese Execute-Methode wird aufgerufen, wenn der Bolt ein zu verarbeitendes Tupel empfängt. Hier können Sie eingehende Tupel lesen und verarbeiten sowie ausgehende Tupel ausgeben.
 
 4. Ersetzen Sie den Inhalt der **Splitter** -Klasse durch folgenden Code:
-    
+
     ```csharp
     private Context ctx;
 
@@ -249,11 +249,11 @@ In den nächsten Abschnitten verwandeln Sie dieses Projekt in eine einfache Anwe
         Context.Logger.Info("Execute exit");
     }
     ```
-   
+
     Lesen Sie die Kommentare in Ruhe durch, um die Funktionsweise dieses Codes zu verstehen.
 
 5. Öffnen Sie **Counter.cs** , und ersetzen Sie die Klasseninhalte durch Folgendes:
-    
+
     ```csharp
     private Context ctx;
 
@@ -305,7 +305,7 @@ In den nächsten Abschnitten verwandeln Sie dieses Projekt in eine einfache Anwe
         Context.Logger.Info("Execute exit");
     }
     ```
-   
+
     Lesen Sie die Kommentare in Ruhe durch, um die Funktionsweise dieses Codes zu verstehen.
 
 ### <a name="define-the-topology"></a>Definieren der Topologie
@@ -382,21 +382,21 @@ Lesen Sie die Kommentare in Ruhe durch, um die Funktionsweise dieses Codes zu ve
 ## <a name="submit-the-topology"></a>Übermitteln der Topologie
 
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **An Storm in HDInsight übermitteln** aus.
-   
+
    > [!NOTE]
    > Wenn Sie dazu aufgefordert werden, geben Sie die Anmeldeinformationen für Ihr Azure-Abonnement ein. Wenn Sie über mehrere Abonnements verfügen, melden Sie sich bei dem Abonnement an, das Ihren Storm-Cluster in HDInsight enthält.
 
 2. Wählen Sie in der Dropdownliste **Storm Cluster** Ihren Storm-Cluster in HDInsight und dann die Option **Übermitteln** aus. Sie können über das Fenster **Ausgabe** überwachen, ob die Übermittlung erfolgreich ausgeführt wurde.
 
 3. Sobald die Topologie erfolgreich übermittelt wurde, sollten die **Storm-Topologien** für den Cluster angezeigt werden. Wählen Sie die **WordCount** -Topologie in der Liste aus, um Informationen zur aktiven Topologie anzuzeigen.
-   
+
    > [!NOTE]
    > Sie können die **Storm-Topologien** auch im **Server-Explorer** anzeigen, indem Sie **Azure** > **HDInsight** erweitern und dann mit der rechten Maustaste auf einen Storm in HDInsight-Cluster klicken und **Storm-Topologien anzeigen** auswählen.
 
     Doppelklicken Sie auf die Komponente im Diagramm, um Informationen zu den Komponenten in der Topologie anzuzeigen.
 
 4. Wählen Sie in der Ansicht **Topologiezusammenfassung** die Option **Beenden** aus, um die Topologie zu beenden.
-   
+
    > [!NOTE]
    > Storm-Topologien werden weiterhin ausgeführt, bis sie deaktiviert werden oder der Cluster gelöscht wird.
 
@@ -413,9 +413,9 @@ Transaktionale Topologien implementieren Folgendes, um die Wiedergabe von Daten 
 * **Fail**: Jeder Bolt kann `this.ctx.Fail(tuple)` aufrufen, um anzuzeigen, dass bei der Verarbeitung eines Tupels ein Fehler aufgetreten ist. Der Fehler wird an die `Fail` -Methode des Spouts weitergegeben, wo das Tupel mithilfe der zwischengespeicherten Daten wiedergegeben werden kann.
 
 * **Sequence ID**: Beim Ausgeben eines Tupels kann eine eindeutige Sequenz-ID angegeben werden. Der Wert identifiziert das Tupel für die Wiedergabeverarbeitung („Bestätigung“ und „Fehler“). Der Spout im Projekt **Storm-Beispiel** verwendet z.B. Folgendes beim Ausgeben von Daten:
-  
+
         this.ctx.Emit(Constants.DEFAULT_STREAM_ID, new Values(sentence), lastSeqId);
-  
+
     Dieser Code gibt einen Tupel aus, das einen Satz im Standarddatenstrom enthält, wobei der Sequenz-ID-Wert in **lastSeqId**enthalten ist. In diesem Beispiel wird **lastSeqId** für jedes ausgegebene Tupel erhöht.
 
 Wie im Projekt **Storm-Beispiel** veranschaulicht, kann zur Laufzeit auf Basis der Konfiguration angegeben werden, ob es sich um eine transaktionale Komponente handelt.
@@ -427,13 +427,13 @@ HDInsight-Tools für Visual Studio können auch zum Erstellen von hybriden Topol
 Erstellen Sie für eine hybride Beispieltopologie ein Projekt, und wählen Sie **Storm Hybrid Sample** (Storm-Hybrid-Beispiel) aus. Dieser Beispieltyp veranschaulicht die folgenden Konzepte:
 
 * **Java-Spout** und **C#-Bolt**: Definition in **HybridTopology_javaSpout_csharpBolt**
-  
+
     * Eine transaktionale Version ist in **HybridTopologyTx_javaSpout_csharpBolt** definiert.
 
 * **C#-Spout** und **Java-Bolt**: Definition in **HybridTopology_csharpSpout_javaBolt**
-  
+
     * Eine transaktionale Version ist in **HybridTopologyTx_csharpSpout_javaBolt** definiert.
-  
+
   > [!NOTE]
   > Diese Version veranschaulicht zudem, wie Sie Clojure-Code aus einer Textdatei als Java-Komponente verwenden.
 
@@ -510,7 +510,7 @@ Neuere Versionen von SCP.NET unterstützen die Paketaktualisierung über NuGet. 
 
 > [!IMPORTANT]
 > Wenn Ihr Projekt mit einer früheren Versionen von SCP.NET erstellt wurde, bei denen NuGet nicht verwendet wurde, müssen Sie zum Aktualisieren auf eine neuere Version die folgenden Schritte ausführen:
-> 
+>
 > 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **NuGet-Pakete verwalten** aus.
 > 2. Suchen Sie über das Feld **Suche** nach **Microsoft.SCP.Net.SDK**, und fügen Sie es dem Projekt hinzu.
 
@@ -542,22 +542,22 @@ Obwohl es relativ einfach ist, eine Topologie in einem Cluster bereitzustellen, 
 > Lokale Tests funktionieren nur für einfache, ausschließlich in C# umgesetzte Topologien. Sie können keine lokalen Tests für hybride Topologien verwenden oder für Topologien, in denen mehrere Streams verwendet werden.
 
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **Eigenschaften** aus. Wählen Sie in den Projekteigenschaften für **Ausgabetyp** die Option **Konsolenanwendung** aus.
-   
+
     ![Ausgabetyp](./media/hdinsight-storm-develop-csharp-visual-studio-topology/outputtype.png)
-   
+
    > [!NOTE]
    > Denken Sie daran, für den **Ausgabetyp** später wieder **Klassenbibliothek** festzulegen, bevor die Topologie in einem Cluster bereitgestellt wird.
 
 2. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie dann **Hinzufügen** > **Neues Element** aus. Wählen Sie **Klasse** aus, und geben Sie **LocalTest.cs** als Klassennamen ein. Klicken Sie abschließend auf **Hinzufügen**.
 
 3. Öffnen Sie die Datei **LocalTest.cs**, und fügen Sie die folgende **using**-Anweisung am Anfang hinzu:
-    
+
     ```csharp
     using Microsoft.SCP;
     ```
 
 4. Fügen Sie den folgenden Code als Inhalt in die **LocalTest**-Klasse ein:
-    
+
     ```csharp
     // Drives the topology components
     public void RunTestCase()
@@ -638,7 +638,7 @@ Obwohl es relativ einfach ist, eine Topologie in einem Cluster bereitzustellen, 
     Nehmen Sie sich einen Moment Zeit, um die Codekommentare zu lesen. Dieser Code verwendet **LocalContext** , um die Komponenten in der Entwicklungsumgebung auszuführen, wobei der Datenstrom zwischen den Komponenten in Textdateien auf dem lokalen Laufwerk bestehen bleibt.
 
 1. Öffnen Sie die Datei **Program.cs**, und fügen Sie der Methode **Main** Folgendes hinzu:
-    
+
     ```csharp
     Console.WriteLine("Starting tests");
     System.Environment.SetEnvironmentVariable("microsoft.scp.logPrefix", "WordCount-LocalTest");
@@ -661,7 +661,7 @@ Obwohl es relativ einfach ist, eine Topologie in einem Cluster bereitzustellen, 
 2. Speichern Sie die Änderungen, und verwenden Sie dann **F5** oder **Debuggen** > **Debugging starten**, um das Projekt zu starten. Daraufhin sollte ein Konsolenfenster angezeigt und mit fortschreitendem Test der Status protokolliert werden. Nachdem **Tests abgeschlossen** angezeigt wurde, drücken Sie eine beliebige Taste, um das Fenster zu schließen.
 
 3. Suchen Sie mithilfe von **Windows-Explorer** das Verzeichnis, in dem Ihr Projekt gespeichert ist, z.B. **C:\Users\\<Benutzername>\Documents\Visual Studio 2013\Projects\WordCount\WordCount**. Öffnen Sie in diesem Verzeichnis das Unterverzeichnis **Bin**, und klicken Sie dann auf **Debug**. Es sollten die beim Ausführen der Tests erstellten Textdateien vorhanden sein: "sentences.txt", "counter.txt" und "splitter.txt". Öffnen Sie die einzelnen Textdateien, und überprüfen Sie die Daten.
-   
+
    > [!NOTE]
    > Zeichenfolgendaten werden in diesen Dateien als Array von Dezimalwerten beibehalten. Beispiel: \[[97,103,111]] in der Datei **splitter.txt** entspricht dem Wort „and“.
 
@@ -729,5 +729,4 @@ Weitere Möglichkeiten zum Arbeiten mit HDInsight sowie weitere Beispiele für S
 **Apache HBase in HDInsight**
 
 * [Erste Schritte mit HBase in HDInsight](hdinsight-hbase-tutorial-get-started.md)
-
 

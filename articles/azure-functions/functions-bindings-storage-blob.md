@@ -17,9 +17,9 @@ ms.workload: na
 ms.date: 03/06/2017
 ms.author: chrande, glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
-ms.openlocfilehash: 590cb831ad265d9b83713f573c92d8675e64db3d
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 7b4ae9281bca20949c37b2c797e4a1a677665929
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -55,7 +55,7 @@ Der Storage-Blobtrigger zu einer Funktion verwendet die folgenden JSON-Objekte i
 Beachten Sie Folgendes:
 
 * Für `path` finden Sie Informationen zur Formatierung von Blobnamensmustern unter [Namensmuster](#pattern).
-* `connection` muss den Namen einer App-Einstellung enthalten, die eine Speicherverbindungszeichenfolge enthält. Im Azure-Portal konfiguriert der Standard-Editor auf der Registerkarte **Integrieren** diese App-Einstellung für Sie, wenn Sie ein Speicherkonto erstellen oder ein vorhandenes auswählen. Wie Sie diese App-Einstellung manuell erstellen, erfahren Sie unter [Manuelles Konfigurieren dieser App-Einstellung](). 
+* `connection` muss den Namen einer App-Einstellung enthalten, die eine Speicherverbindungszeichenfolge enthält. Im Azure-Portal konfiguriert der Standard-Editor auf der Registerkarte **Integrieren** diese App-Einstellung für Sie, wenn Sie ein Speicherkonto erstellen oder ein vorhandenes auswählen. Wie Sie diese App-Einstellung manuell erstellen, erfahren Sie unter [Manuelles Konfigurieren dieser App-Einstellung](functions-how-to-use-azure-function-app-settings.md). 
 
 Wenn bei der Ausführung eines Verbrauchsplans eine Funktionen-App im Leerlauf ist, kann es möglicherweise bis zu 10 Minuten dauern, bis neue Blobs erstellt werden. Sobald die Funktionen-App ausgeführt wird, werden die Blobs schneller verarbeitet. Um diese anfängliche Verzögerung zu vermeiden, verwenden Sie entweder einen regulären App Service-Plan mit aktivierter Always On-Option oder einen anderen Mechanismus, um die Blobverarbeitung auszulösen, z.B. eine Warteschlangennachricht mit dem Blobnamen. 
 
@@ -111,7 +111,7 @@ Blobbelege werden in einem Container mit dem Namen *azure-webjobs-hosts* im Azur
 * Containername
 * Blobtyp ("BlockBlob" oder "PageBlob")
 * Blobname
-* ETag (eine Blobversions-ID. Beispiel:&0;x8D1DC6E70A277EF)
+* ETag (eine Blobversions-ID. Beispiel: 0x8D1DC6E70A277EF)
 
 Um eine erneute Verarbeitung eines Blobs zu erzwingen, können Sie den Blobbeleg für dieses Blob manuell aus dem Container *azure-webjobs-hosts* löschen.
 
@@ -124,7 +124,7 @@ Wenn bei Ausführung einer Blobtrigger-Funktion ein Fehler auftritt, versucht Az
 * BlobType ("BlockBlob" oder "PageBlob")
 * ContainerName
 * BlobName
-* ETag (eine Blobversions-ID. Beispiel:&0;x8D1DC6E70A277EF)
+* ETag (eine Blobversions-ID. Beispiel: 0x8D1DC6E70A277EF)
 
 ### <a name="blob-polling-for-large-containers"></a>Abfragen von Blobs für große Container
 Wenn der Blobcontainer, der von der Bindung überwacht wird, mehr als 10.000 Blobs enthält, überprüft die Functions-Laufzeit Protokolldateien auf neue oder geänderte Blobs. Dieser Prozess läuft nicht in Echtzeit ab. Eine Funktion wird unter Umständen erst mehrere Minuten nach der Bloberstellung oder noch später ausgelöst. Außerdem erfolgt das [Erstellen von Storage-Protokollen auf bestmögliche Weise](https://msdn.microsoft.com/library/azure/hh343262.aspx). Es gibt aber keine Garantie, dass alle Ereignisse erfasst werden. Unter bestimmten Umständen können Protokolle fehlen. Wenn die Einschränkungen bei der Geschwindigkeit und Zuverlässigkeit von Blobtriggern für große Container für Ihre Anwendung nicht akzeptabel sind, empfiehlt es sich, zusammen mit dem Blob eine [Warteschlangennachricht](../storage/storage-dotnet-how-to-use-queues.md) zu erstellen und für die Verarbeitung des Blobs anstelle des Blobtriggers einen [Warteschlangentrigger](functions-bindings-storage-queue.md) zu verwenden.
@@ -227,7 +227,7 @@ Für die Storage-Blobeingabe in eine Funktion werden die folgenden JSON-Objekte 
 Beachten Sie Folgendes:
 
 * `path` muss den Containernamen und den Blobnamen enthalten. Wenn Sie in Ihrer Funktion beispielsweise über einen [Warteschlangentrigger](functions-bindings-storage-queue.md) verfügen, können Sie mit `"path": "samples-workitems/{queueTrigger}"` auf ein Blob im Container `samples-workitems` mit einem Namen verweisen, der mit dem in der Triggernachricht angegebenen Blobnamen übereinstimmt.   
-* `connection` muss den Namen einer App-Einstellung enthalten, die eine Speicherverbindungszeichenfolge enthält. Im Azure-Portal konfiguriert der Standard-Editor auf der Registerkarte **Integrieren** diese App-Einstellung für Sie, wenn Sie ein Speicherkonto erstellen oder ein vorhandenes auswählen. Wie Sie diese App-Einstellung manuell erstellen, erfahren Sie unter [Manuelles Konfigurieren dieser App-Einstellung](). 
+* `connection` muss den Namen einer App-Einstellung enthalten, die eine Speicherverbindungszeichenfolge enthält. Im Azure-Portal konfiguriert der Standard-Editor auf der Registerkarte **Integrieren** diese App-Einstellung für Sie, wenn Sie ein Speicherkonto erstellen oder ein vorhandenes auswählen. Wie Sie diese App-Einstellung manuell erstellen, erfahren Sie unter [Manuelles Konfigurieren dieser App-Einstellung](functions-how-to-use-azure-function-app-settings.md). 
 
 <a name="inputusage"></a>
 
@@ -340,7 +340,7 @@ Die Storage-Blobausgabe für eine Funktion verwendet die folgenden JSON-Objekte 
 Beachten Sie Folgendes:
 
 * `path` muss den Containernamen und den Blobnamen für den Schreibvorgang enthalten. Wenn Sie in Ihrer Funktion beispielsweise über einen [Warteschlangentrigger](functions-bindings-storage-queue.md) verfügen, können Sie mit `"path": "samples-workitems/{queueTrigger}"` auf ein Blob im Container `samples-workitems` mit einem Namen verweisen, der mit dem in der Triggernachricht angegebenen Blobnamen übereinstimmt.   
-* `connection` muss den Namen einer App-Einstellung enthalten, die eine Speicherverbindungszeichenfolge enthält. Im Azure-Portal konfiguriert der Standard-Editor auf der Registerkarte **Integrieren** diese App-Einstellung für Sie, wenn Sie ein Speicherkonto erstellen oder ein vorhandenes auswählen. Wie Sie diese App-Einstellung manuell erstellen, erfahren Sie unter [Manuelles Konfigurieren dieser App-Einstellung](). 
+* `connection` muss den Namen einer App-Einstellung enthalten, die eine Speicherverbindungszeichenfolge enthält. Im Azure-Portal konfiguriert der Standard-Editor auf der Registerkarte **Integrieren** diese App-Einstellung für Sie, wenn Sie ein Speicherkonto erstellen oder ein vorhandenes auswählen. Wie Sie diese App-Einstellung manuell erstellen, erfahren Sie unter [Manuelles Konfigurieren dieser App-Einstellung](functions-how-to-use-azure-function-app-settings.md). 
 
 <a name="outputusage"></a>
 

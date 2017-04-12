@@ -12,12 +12,12 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2017
+ms.date: 04/10/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 892d24199be5065ee54d46863cca2fd958db3236
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: ba85ab354d051990d0a9bae089e45c8df7ade4ea
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -114,6 +114,7 @@ Derzeit ermöglichen die folgenden Dienste das Verschieben in eine neue Ressourc
 * Traffic Manager
 * Virtual Machines: Das Verschieben in ein neues Abonnement wird nicht unterstützt, wenn dessen Zertifikate in einem Schlüsseltresor gespeichert sind.
 * Virtual Machines (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
+* Skalierungsgruppen für virtuelle Computer
 * Virtual Networks – derzeit kann ein mittels Peering verknüpftes virtuelles Netzwerk erst verschoben werden, nachdem VNET-Peering deaktiviert wurde. Nach der Deaktivierung kann das virtuelle Netzwerk verschoben und das VNET-Peering wieder aktiviert werden.
 * VPN Gateway 
 
@@ -134,11 +135,9 @@ Die folgenden Dienste ermöglichen das Verschieben einer Ressource derzeit nicht
 * Virtuelle Computer mit in Schlüsseltresor gespeichertem Zertifikat
 * Virtual Machines mit Managed Disks
 * Verfügbarkeitsgruppen mit virtuellen Computern mit Managed Disks
-* Skalierungsgruppen für virtuelle Computer mit Managed Disks
 * Verwaltete Datenträger
 * Von Managed Disks erstellte Images
 * Von Managed Disks erstellte Momentaufnahmen
-* Skalierungsgruppen für virtuelle Computer
 * Virtual Networks (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
 * Von Marketplace-Ressourcen erstellte virtuelle Computer können nicht über Abonnements verschoben werden. Die Ressource muss im aktuellen Abonnement aufgehoben und im neuen Abonnement erneut bereitgestellt werden
 
