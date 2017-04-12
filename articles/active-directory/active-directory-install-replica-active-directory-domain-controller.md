@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: ccec356c653cf5d3c767fd273c37ea5685607135
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 6e03b6072b5244aca2810f704c485384de5aedf8
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -32,7 +32,7 @@ Folgende Themen könnten für Sie ebenfalls von Interesse sein:
 ## <a name="scenario-diagram"></a>Szenariodiagramm
 In diesem Szenario müssen externe Benutzer auf Anwendungen zugreifen, die auf in die Domäne eingebundenen Servern ausgeführt werden. Die virtuellen Computer, auf denen die Anwendungsserver und die Replikatdomänencontroller ausgeführt werden, sind in einem virtuellen Azure-Netzwerk installiert. Das virtuelle Netzwerk kann über eine [Site-to-Site-VPN-Verbindung](../vpn-gateway/vpn-gateway-site-to-site-create.md), wie in der folgenden Abbildung dargestellt, mit dem lokalen Netzwerk verbunden werden, oder Sie können als schnellere Verbindung [ExpressRoute](../expressroute/expressroute-locations-providers.md) verwenden.
 
-Die Anwendungsserver und Domänencontroller werden in separaten Clouddiensten bereitgestellt, um die Computeverarbeitung zu verteilen, sowie in [Verfügbarkeitsgruppen](../virtual-machines/virtual-machines-windows-manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), um eine bessere Fehlertoleranz zu erzielen.
+Die Anwendungsserver und Domänencontroller werden in separaten Clouddiensten bereitgestellt, um die Computeverarbeitung zu verteilen, sowie in [Verfügbarkeitsgruppen](../virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), um eine bessere Fehlertoleranz zu erzielen.
 Die Domänencontroller werden durch die Active Directory-Replikation untereinander und mit lokalen Domänencontroller repliziert. Es sind keine Synchronisierungstools erforderlich.
 
 ![Diagramm eines Active Directory-Replikatdomänencontrollers in einem virtuellen Azure-Netzwerk][1]

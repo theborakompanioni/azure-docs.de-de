@@ -17,9 +17,9 @@ ms.date: 09/23/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
-ms.openlocfilehash: 2dd6e9ba1d08d3528cdf8194e1e338422361d1d5
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 5edba79e5c65f0e9411a418ac1a121fd938feff2
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -56,7 +56,7 @@ Die folgenden Einschränkungen gelten für die Verwendung dieser Funktion:
 * **VM-Erstellung:** Eine Netzwerkschnittstelle, auf der Accelerated Networking aktiviert ist, kann nur an eine VM angefügt werden, während diese VM erstellt wird. Die Netzwerkschnittstelle kann nicht an vorhandene virtuelle Computer angefügt werden.
 * **Regionen:** Dieses Angebot gilt nur in den Regionen USA, Westen-Mitte und Europa, Westen. Die Anzahl der Regionen wird in Zukunft noch erweitert.
 * **Unterstützte Betriebssysteme:** Microsoft Windows Server 2012 R2 und Windows Server 2016 Technical Preview 5. Die Unterstützung für Linux und Windows Server 2012 wird in Kürze hinzugefügt.
-* **VM-Größe:** Es werden nur die VM-Instanzgrößen „Standard_D15_v2“ und „Standard_DS15_v2“ unterstützt. Weitere Informationen finden Sie im Artikel [Windows-VM-Größen](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) . Die Anzahl von unterstützten VM-Instanzgrößen wird in Zukunft erweitert werden.
+* **VM-Größe:** Es werden nur die VM-Instanzgrößen „Standard_D15_v2“ und „Standard_DS15_v2“ unterstützt. Weitere Informationen finden Sie im Artikel [Windows-VM-Größen](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) . Die Anzahl von unterstützten VM-Instanzgrößen wird in Zukunft erweitert werden.
 
 Änderungen an diesen Einschränkungen werden auf der Seite [Azure-Updates für Virtual Network](https://azure.microsoft.com/updates/accelerated-networking-in-preview) bekannt gemacht.
 

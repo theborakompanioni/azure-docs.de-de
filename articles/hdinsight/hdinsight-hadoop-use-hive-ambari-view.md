@@ -17,9 +17,9 @@ ms.workload: big-data
 ms.date: 02/08/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 5ec4b964066687b506686709c3dc5ed5b402fbaf
-ms.openlocfilehash: a846d5a70451ed3082b90d87b90bef0eb6da5993
-ms.lasthandoff: 02/09/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 511d6dd1933f44cd0cb5ba800972a7c112a24c04
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -37,7 +37,7 @@ Ambari ist ein Verwaltungs- und Überwachungsdienstprogramm, das mit Linux-basie
 * Ein Linux-basierter HDInsight-Cluster. Informationen zum Erstellen eines Clusters finden Sie unter [Erste Schritte mit Linux-basiertem HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md).
 
 > [!IMPORTANT]
-> Die Schritte in diesem Dokument erfordern einen HDInsight-Cluster mit Linux. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date).
+> Die Schritte in diesem Dokument erfordern einen HDInsight-Cluster mit Linux. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date).
 
 ## <a name="open-the-hive-view"></a>Öffnen der Hive-Ansicht
 
@@ -68,7 +68,7 @@ Wenn mit den Schritten in diesem Dokument neue Tabellen hinzugefügt werden, kö
 Verwenden Sie die folgenden Schritte aus der Hive-Ansicht, um eine Hive-Abfrage auszuführen.
 
 1. Fügen Sie im Abschnitt **Abfrage-Editor** der Seite die folgenden HiveQL-Anweisungen in das Arbeitsblatt ein:
-   
+
     ```hiveql
     DROP TABLE log4jLogs;
     CREATE EXTERNAL TABLE log4jLogs(t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
@@ -76,12 +76,12 @@ Verwenden Sie die folgenden Schritte aus der Hive-Ansicht, um eine Hive-Abfrage 
     STORED AS TEXTFILE LOCATION '/example/data/';
     SELECT t4 AS sev, COUNT(*) AS cnt FROM log4jLogs WHERE t4 = '[ERROR]' GROUP BY t4;
     ```
-   
+
     Diese Anweisungen führen die folgenden Aktionen aus:
-   
+
    * **TABELLE LÖSCHEN** : Löscht Tabelle und Datendatei, falls die Tabelle bereits existiert.
 
-   * **CREATE EXTERNAL TABLE**: Erstellt eine neue „externe“ Tabelle in Hive. 
+   * **CREATE EXTERNAL TABLE**: Erstellt eine neue „externe“ Tabelle in Hive.
    Externe Tabellen speichern nur die Tabellendefinition in Hive. Die Daten verbleiben an ihrem ursprünglichen Speicherort.
 
    * **ZEILENFORMAT** : Teilt Hive mit, wie die Daten formatiert werden. In diesem Fall werden die Felder in den einzelnen Protokollen durch Leerzeichen getrennt.
@@ -89,42 +89,42 @@ Verwenden Sie die folgenden Schritte aus der Hive-Ansicht, um eine Hive-Abfrage 
    * **SPEICHERORT DER TEXTDATEI** – Teilt Hive den Speicherort der Daten (das Verzeichnis "example/data") und die Information mit, dass die Speicherung als Text erfolgt.
 
    * **AUSWÄHLEN** – Wählt die Anzahl aller Zeilen aus, bei denen die Spalte "t4" den Wert "FEHLER" enthält.
-     
+
      > [!NOTE]
      > Externe Tabellen sollten Sie verwenden, wenn Sie erwarten, dass die zugrunde liegenden Daten aus einer externen Quelle aktualisiert werden. Das könnte z.B. ein automatisierter Datenupload oder ein anderer MapReduce-Vorgang sein. Durch das Löschen einer externen Tabelle werden *nicht* die Daten, sondern nur die Tabellendefinitionen gelöscht.
 
 2. Starten Sie die Abfrage mit der Schaltfläche **Ausführen** am unteren Rand des Abfrage-Editors. Sie wird nun orange angezeigt, und der Text ändert sich in **Ausführung beenden**. Der Abschnitt **Abfrageprozessergebnisse** sollte unterhalb des Abfrage-Editors angezeigt werden und Informationen über den Auftrag enthalten.
-   
+
    > [!IMPORTANT]
    > In einigen Browsern werden das Protokoll oder die Ergebnisdaten möglicherweise nicht korrekt aktualisiert. Wenn Sie einen Auftrag ausführen und eine scheinbar endlose Ausführung ohne Aktualisierung des Protokolls oder Rückgabe von Ergebnissen feststellen, sollten Sie es noch einmal mit Mozilla Firefox oder Google Chrome versuchen.
- 
+
 3. Nach Abschluss der Abfrage werden im Abschnitt **Abfrageprozessergebnisse** die Ergebnisse des Vorgangs angezeigt. Die Schaltfläche **Ausführung beenden** wird auch wieder durch die grüne Schaltfläche **Ausführen** ersetzt, wenn die Abfrage ausgeführt ist. Die Registerkarte **Ergebnisse** sollte folgende Informationen enthalten:
-   
+
         sev       cnt
         [ERROR]   3
-   
+
     Auf der Registerkarte **Protokolle** können die vom Auftrag erstellten Protokollinformationen angezeigt werden.
-   
+
    > [!TIP]
    > Im Dropdown-Dialogfeld **Ergebnisse speichern** in der oberen linken Ecke des Abschnitts **Abfrageprozessergebnisse** können Sie Ergebnisse herunterladen oder speichern.
 
 4. Wählen Sie die ersten vier Zeilen dieser Abfrage aus, und klicken Sie auf **Ausführen**. Beachten Sie, dass keine Ergebnisse vorliegen, wenn der Auftrag abgeschlossen ist. Wenn ein Teil der Abfrage ausgewählt ist, werden bei Verwendung der Schaltfläche **Ausführen** nur die ausgewählten Anweisungen ausgeführt. In diesem Fall enthielt die Auswahl nicht die letzte Anweisung, die Zeilen aus der Tabelle abruft. Wenn Sie nur diese Zeile auswählen und **Ausführen** verwenden, sollten die erwarteten Ergebnisse angezeigt werden.
 
 5. Um ein neues Arbeitsblatt hinzuzufügen, verwenden Sie die Schaltfläche **Neues Arbeitsblatt** am unteren Rand des **Abfrage-Editors**. Geben Sie in das neue Arbeitsblatt die folgenden HiveQL-Anweisungen ein:
-   
+
     ```hiveql
     CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
     INSERT OVERWRITE TABLE errorLogs SELECT t1, t2, t3, t4, t5, t6, t7 FROM log4jLogs WHERE t4 = '[ERROR]';
     ```
-   
-    These statements perform the following actions:
-   
+
+  Diese Anweisungen führen die folgenden Aktionen aus:
+
    * **TABELLE ERSTELLEN, FALLS NICHT VORHANDEN** – Erstellt eine Tabelle, sofern diese noch nicht vorhanden ist. Da das Schlüsselwort **EXTERN** nicht verwendet wird, wird eine interne Tabelle erstellt. Eine interne Tabelle wird im Hive-Data Warehouse gespeichert und vollständig von Hive verwaltet. Anders als bei externen Tabellen werden beim Löschen von internen Tabellen auch die zugrunde liegenden Daten gelöscht.
 
    * **ALS ORC GESPEICHERT** – Speichert die Daten im ORC-Format (Optimized Row Columnar). Dies ist ein stark optimiertes und effizientes Format zum Speichern von Hive-Daten.
 
    * **ÜBERSCHREIBEN EINFÜGEN ... AUSWÄHLEN**: Wählt Zeilen in der Tabelle **log4jLogs** aus, die [ERROR] enthalten, und fügt die Daten dann in die Tabelle **errorLogs** ein.
-     
+
      Verwenden Sie die Schaltfläche **Ausführen**, um diese Abfrage auszuführen. Die Registerkarte **Ergebnisse** enthält keine Informationen, wenn die Abfrage keine Zeilen zurückgibt. Sobald die Abfrage abgeschlossen ist, sollte der Status **ERFOLGREICH** angezeigt werden.
 
 ### <a name="hive-settings"></a>Hive-Einstellungen
@@ -174,13 +174,13 @@ Benachrichtigungen sind Nachrichten, die beim Ausführen von Abfragen generiert 
 ## <a name="saved-queries"></a>Gespeicherte Abfragen
 
 1. Erstellen Sie im Abfrage-Editor ein Arbeitsblatt, und geben Sie die folgende Abfrage ein:
-   
+
     ```hiveql
     SELECT * from errorLogs;
     ```
-   
+
     Führen Sie die Abfrage aus, um zu überprüfen, ob sie funktioniert. Die Ergebnisse entsprechen etwa folgendem Beispiel:
-   
+
         errorlogs.t1     errorlogs.t2     errorlogs.t3     errorlogs.t4     errorlogs.t5     errorlogs.t6     errorlogs.t7
         2012-02-03     18:35:34     SampleClass0     [ERROR]     incorrect     id     
         2012-02-03     18:55:54     SampleClass1     [ERROR]     incorrect     id     
@@ -235,5 +235,4 @@ Informationen zu anderen Möglichkeiten, wie Sie mit Hadoop in HDInsight arbeite
 
 * [Verwenden von Pig mit Hadoop in HDInsight](hdinsight-use-pig.md)
 * [Verwenden von MapReduce mit Hadoop in HDInsight](hdinsight-use-mapreduce.md)
-
 

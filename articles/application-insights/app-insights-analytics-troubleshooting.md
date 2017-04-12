@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 07/11/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
-ms.openlocfilehash: 6533b1e6a40b7cbf7d3d6961523144b3d0e5263b
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 82a1888cca687ce60f811c2c3cec6b971d4a0461
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -31,21 +32,21 @@ Probleme mit [Analytics in Application Insights](app-insights-analytics.md)? Beg
 
 Deaktivieren Sie die Erweiterung, oder verwenden Sie einen anderen Browser.
 
-## <a name="a-namee-aa-unexpected-error"></a><a name="e-a"></a> „Unerwarteter Fehler“
+## <a name="e-a"></a> „Unerwarteter Fehler“
 ![Bildschirm „Unerwarteter Fehler“](./media/app-insights-analytics-troubleshooting/010.png)
 
 Während der Portallaufzeit ist ein interner Fehler aufgetreten – Ausnahmefehler.
 
 * Löschen Sie den Browsercache. 
 
-## <a name="a-namee-ba403--please-try-to-reload"></a><a name="e-b"></a>403 ... Versuchen Sie, neu zu laden
+## <a name="e-b"></a>403 ... Versuchen Sie, neu zu laden
 ![403 ... Versuchen Sie, neu zu laden](./media/app-insights-analytics-troubleshooting/020.png)
 
 Es ist ein authentifizierungsbezogener Fehler aufgetreten (während der Authentifizierung oder während der Generierung des Zugriffstokens). Das Portal kann möglicherweise nicht wiederhergestellt werden, ohne die Browsereinstellungen zu ändern.
 
 * Überprüfen Sie, ob [Drittanbietercookies im Browser aktiviert sind](#cookies) . 
 
-## <a name="a-nameauthenticationa403--verify-security-zone"></a><a name="authentication"></a>403 ... Überprüfen Sie die Sicherheitszone
+## <a name="authentication"></a>403 ... Überprüfen Sie die Sicherheitszone
 ![403 ... Überprüfen Sie die Sicherheitszone](./media/app-insights-analytics-troubleshooting/030.png)
 
 Es ist ein authentifizierungsbezogener Fehler aufgetreten (während der Authentifizierung oder während der Generierung des Zugriffstokens). Das Portal kann möglicherweise nicht wiederhergestellt werden, ohne die Browsereinstellungen zu ändern.
@@ -68,12 +69,12 @@ Es ist ein authentifizierungsbezogener Fehler aufgetreten (während der Authenti
      https://login.microsoftonline.com<br/>
      https://login.windows.net
 
-## <a name="a-namee-da404--resource-not-found"></a><a name="e-d"></a>404 ... Ressource nicht gefunden
+## <a name="e-d"></a>404 ... Ressource nicht gefunden
 ![404 ... Ressource nicht gefunden](./media/app-insights-analytics-troubleshooting/040.png)
 
 Die Anwendungsressource wurde aus Application Insights gelöscht und ist nicht mehr verfügbar. Dies kann passieren, wenn Sie die URL auf der Analytics-Seite gespeichert haben.
 
-## <a name="a-namee-ea403--no-authorization"></a><a name="e-e"></a>403 ... Keine Autorisierung
+## <a name="e-e"></a>403 ... Keine Autorisierung
 ![403 ... nicht autorisiert](./media/app-insights-analytics-troubleshooting/050.png)
 
 Sie verfügen nicht über die Berechtigung, diese Anwendung in Analytics zu öffnen.
@@ -81,39 +82,32 @@ Sie verfügen nicht über die Berechtigung, diese Anwendung in Analytics zu öff
 * Haben Sie den Link von einer anderen Person erhalten? Bitten Sie diese Person, sicherzustellen, dass Sie zu [den Lesern oder Mitwirkenden für diese Ressourcengruppe](app-insights-resources-roles-access-control.md)gehören.
 * Haben Sie den Link mit anderen Anmeldeinformationen gespeichert? Öffnen Sie das [Azure-Portal](https://portal.azure.com), und melden Sie sich ab. Versuchen Sie dann erneut, den Link zu öffnen, und verwenden Sie dabei die richtigen Anmeldeinformationen.
 
-## <a name="a-namehtml-storagea403--html5-storage"></a><a name="html-storage"></a>403 ... HTML5 Storage
-Unser Portal verwendet die HTML&5;-Mechanismen localStorage und sessionStorage.
+## <a name="html-storage"></a>403 ... HTML5 Storage
+Unser Portal verwendet die HTML 5-Mechanismen localStorage und sessionStorage.
 
 * Chrome: Einstellungen, Datenschutz, Inhaltseinstellungen.
 * Internet Explorer: Internetoptionen, Erweitert (Registerkarte), Sicherheit, DOM-Storage aktivieren
 
 ![403 ... Versuchen Sie, HTML5 Storage zu aktivieren](./media/app-insights-analytics-troubleshooting/060.png)
 
-## <a name="a-namee-ga404--subscription-not-found"></a><a name="e-g"></a>404 ... Abonnement nicht gefunden
+## <a name="e-g"></a>404 ... Abonnement nicht gefunden
 ![404 ... Abonnement nicht gefunden](./media/app-insights-analytics-troubleshooting/070.png)
 
 Die URL ist ungültig. 
 
 * Öffnen Sie die App-Ressource im [Application Insights-Portal](https://portal.azure.com). Verwenden Sie dann die Schaltfläche „Analytics“.
 
-## <a name="a-namee-ha404--page-doesnt-exist"></a><a name="e-h"></a>404 ... Seite ist nicht vorhanden
+## <a name="e-h"></a>404 ... Seite ist nicht vorhanden
 ![404 ... Seite ist nicht vorhanden](./media/app-insights-analytics-troubleshooting/080.png)
 
 Die URL ist ungültig.
 
 * Öffnen Sie die App-Ressource im [Application Insights-Portal](https://portal.azure.com). Verwenden Sie dann die Schaltfläche „Analytics“.
 
-## <a name="a-namecookiesaenable-third-party-cookies"></a><a name="cookies"></a>Aktivieren von Drittanbietercookies
+## <a name="cookies"></a>Aktivieren von Drittanbietercookies
   Informationen zum Deaktivieren von Drittanbietercookies finden Sie [hier](http://www.digitalcitizen.life/how-disable-third-party-cookies-all-major-browsers). Beachten Sie jedoch, dass die Cookies in diesem Fall **aktiviert** werden müssen.
 
-## <a name="a-namee-xaif-all-else-fails"></a><a name="e-x"></a>Wenn nichts funktioniert...
-[Wenden Sie sich an uns](app-insights-get-dev-support.md).
 
 [!INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

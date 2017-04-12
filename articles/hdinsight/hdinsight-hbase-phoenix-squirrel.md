@@ -16,9 +16,9 @@ ms.date: 02/09/2017
 ms.author: jgao
 ROBOTS: NOINDEX
 translationtype: Human Translation
-ms.sourcegitcommit: cd7e8564d24e45bad291c3632021f96fb1584b6f
-ms.openlocfilehash: 730cf9be80be5c5381148f138c3a437beb95c340
-ms.lasthandoff: 02/09/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: de997066642c72a0a9e1d7210a96a3904580e6ed
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -30,7 +30,7 @@ Erfahren Sie, wie Sie [Apache Phoenix](http://phoenix.apache.org/) in HDInsight 
 >
 
 > [!IMPORTANT]
-> Die Schritte in diesem Dokument funktionieren nur mit Windows-basierten HDInsight-Clustern. HDInsight ist unter Windows nur für HDInsight-Versionen vor 3.4 verfügbar. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date). Informationen zur Verwendung von Phoenix in Linux-basierten HDInsight-Clustern finden Sie unter [Verwenden von Apache Phoenix mit Linux-basierten HBase-Clustern in HDInsight](hdinsight-hbase-phoenix-squirrel-linux.md).
+> Die Schritte in diesem Dokument funktionieren nur mit Windows-basierten HDInsight-Clustern. HDInsight ist unter Windows nur für HDInsight-Versionen vor 3.4 verfügbar. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date). Informationen zur Verwendung von Phoenix in Linux-basierten HDInsight-Clustern finden Sie unter [Verwenden von Apache Phoenix mit Linux-basierten HBase-Clustern in HDInsight](hdinsight-hbase-phoenix-squirrel-linux.md).
 >
 
 

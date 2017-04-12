@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: e4d94d3f9736378d93e93be6645ed04ade763ca3
-ms.openlocfilehash: 537fbe37b0ee21cb5d2c9f1ba437ac178850fee2
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: a486dcb3f994cd78311ee86521a6792a4d57438e
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="troubleshoot-creating-azure-remoteapp-hybrid-collections"></a>Problembehandlung beim Erstellen von Azure RemoteApp-Hybridsammlungen
 > [!IMPORTANT]
-> Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
+> Azure RemoteApp wird am 31. August 2017 eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
 > 
 > 
 
@@ -71,10 +72,5 @@ Stellen Sie sicher, dass die Domänendetails gültig sind und dass der Domänenc
 
 ## <a name="what-domain-name-did-you-specify-when-you-created-your-collection"></a>Welchen Domänennamen haben Sie angegeben, als Sie Ihre Sammlung erstellt haben?
 Der erstellte oder hinzugefügte Domänenname muss ein interner Domänenname sein (nicht Ihr Azure AD-Domänenname), und er muss in das DNS-Format auflösbar sein (contoso.local). Angenommen, Sie verfügen über einen internen Active Directory-Namen (contoso.local) und eine Active Directory-UPN (contoso.com), dann müssen Sie den internen Namen verwenden, wenn Sie eine Sammlung erstellen.
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

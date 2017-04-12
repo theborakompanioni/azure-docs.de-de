@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/19/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
-ms.openlocfilehash: 2bd8f7ac127cd34b2d5129ecb49c56e2adf257b8
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: c6de21da824a6e81c38f36c41c05ddd704fadcb6
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -130,7 +131,7 @@ Es könnte anfangs angenommen werden, dass eine Vorlage den Nutzern die größtm
 ### <a name="free-form-configurations"></a>Konfigurationen in freier Form
 Oberflächlich betrachtet erscheinen Konfigurationen in freier Form ideal. Sie ermöglichen Ihnen, einen VM-Typ auszuwählen und eine beliebige Anzahl von Knoten und an diese Knoten angeschlossene Datenträger anzugeben, und zwar als Parameter für eine Vorlage. Dieser Ansatz ist für einige Szenarien aber nicht ideal.
 
-Auf der Seite [Größen für virtuelle Computer in Azure](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) werden die verschiedenen VM-Typen und verfügbaren Größen sowie jeweils die Anzahl langlebiger Datenträger (2, 4, 8, 16, oder 32) angegeben, die angefügt werden können. Jeder angeschlossene Datenträger bietet 500 IOPS (E/A-Vorgänge pro Sekunde), und Vielfache dieser Laufwerke können über einen Multiplikator dieser Anzahl von IOPS in einem Pool zusammengefasst werden. Beispielsweise können 16 Datenträger in einem Pool zusammengefasst werden, um 8.000 IOPS bereitzustellen. Das Bilden von Pools erfolgt über eine Konfiguration im Betriebssystem unter Verwendung von Microsoft Windows-Speicherplätzen oder RAID (Redundant Array of Inexpensive Disks) unter Linux.
+Auf der Seite [Größen für virtuelle Computer in Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) werden die verschiedenen VM-Typen und verfügbaren Größen sowie jeweils die Anzahl langlebiger Datenträger (2, 4, 8, 16, oder 32) angegeben, die angefügt werden können. Jeder angeschlossene Datenträger bietet 500 IOPS (E/A-Vorgänge pro Sekunde), und Vielfache dieser Laufwerke können über einen Multiplikator dieser Anzahl von IOPS in einem Pool zusammengefasst werden. Beispielsweise können 16 Datenträger in einem Pool zusammengefasst werden, um 8.000 IOPS bereitzustellen. Das Bilden von Pools erfolgt über eine Konfiguration im Betriebssystem unter Verwendung von Microsoft Windows-Speicherplätzen oder RAID (Redundant Array of Inexpensive Disks) unter Linux.
 
 Eine Konfiguration in freier Form ermöglicht die Auswahl mehrerer virtueller Computerinstanzen, verschiedene virtuelle Computertypen und Größen für diese Instanzen, verschiedene Datenträger für den virtuellen Computertyp und mindestens ein Skript zum Konfigurieren des Inhalts des virtuellen Computers.
 
@@ -347,10 +348,5 @@ Wenn Sie Ihre Vorlage im Marketplace veröffentlichen möchten, richten Sie unte
 * Empfehlungen für die Sicherheitseinstellungen im Azure-Ressourcen-Manager finden Sie unter [Sicherheitsaspekte für Azure-Ressourcen-Manager](best-practices-resource-manager-security.md)
 * Informationen zur Freigabe des Status in Vorlagen finden Sie unter [Freigeben des Status in Azure-Ressourcen-Manager-Vorlagen](best-practices-resource-manager-state.md).
 * Anleitungen dazu, wie Unternehmen Abonnements mit Resource Manager effektiv verwalten können, finden Sie unter [Azure-Unternehmensgerüst - Präskriptive Abonnementgovernance](resource-manager-subscription-governance.md).
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

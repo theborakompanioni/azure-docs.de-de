@@ -4,7 +4,7 @@ description: Ist Ihnen irgendetwas in Azure Application Insights unklar oder fun
 services: application-insights
 documentationcenter: .net
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: 0e3b103c-6e2a-4634-9e8c-8b85cf5e9c84
 ms.service: application-insights
 ms.workload: mobile
@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 08/24/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 182e28e37eb56c547e28524f2a3e13f042238cb4
-ms.openlocfilehash: e066a7fc671399ba44bec35a2ea860fccddb4cc5
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 35f57e1046597d30adb65b81b1e73226cb08c05f
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -47,7 +48,7 @@ Bestimmte Features wie etwa der fortlaufende Export stehen nur im Enterprise-Tar
 Preisinformationen finden Sie [hier](https://azure.microsoft.com/pricing/details/application-insights/).
 
 
-## <a name="a-nameq14awhat-does-application-insights-modify-in-my-project"></a><a name="q14"></a>Welche Änderungen nimmt Application Insights in meinem Projekt vor?
+## <a name="q14"></a>Welche Änderungen nimmt Application Insights in meinem Projekt vor?
 Die Details hängen von der Art des Projekts ab. Für eine Webanwendung:
 
 * Fügen Sie folgende Dateien zu Ihrem Projekt hinzu:
@@ -72,28 +73,28 @@ Die Details hängen von der Art des Projekts ab. Für eine Webanwendung:
 ## <a name="how-do-i-upgrade-from-older-sdk-versions"></a>Wie aktualisiere ich von älteren SDK-Versionen?
 Informationen hierzu finden Sie in den [Versionshinweisen](app-insights-release-notes.md) für das SDK, das für Ihren Anwendungstyp geeignet ist.
 
-## <a name="a-nameupdateahow-can-i-change-which-azure-resource-my-project-sends-data-to"></a><a name="update"></a>Wie kann ich ändern, an welche Azure-Ressource mein Projekt Daten sendet?
+## <a name="update"></a>Wie kann ich ändern, an welche Azure-Ressource mein Projekt Daten sendet?
 Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf `ApplicationInsights.config`. Wählen Sie dann **Application Insights aktualisieren** aus. Sie können die Daten an eine vorhandene oder neue Ressource in Azure senden. Der Assistent ändert den Instrumentationsschlüssel in ApplicationInsights.config. Dadurch wird bestimmt, wohin das Server-SDK die Daten sendet. Wenn Sie "Alle aktualisieren" deaktivieren, wird auch der Anzeigeort des Schlüssels auf Ihren Webseiten geändert.
 
-#### <a name="a-namedataahow-long-is-data-retained-in-the-portal-is-it-secure"></a><a name="data"></a>Wie lange werden Daten im Portal aufbewahrt? Ist Sicherheit gewährleistet?
+#### <a name="data"></a>Wie lange werden Daten im Portal aufbewahrt? Ist Sicherheit gewährleistet?
 Informationen hierzu finden Sie unter [Datensammlung, -aufbewahrung und -speicherung in Application Insights][data].
 
 ## <a name="logging"></a>Protokollierung
-#### <a name="a-namepostahow-do-i-see-post-data-in-diagnostic-search"></a><a name="post"></a>Wie zeige ich POST-Daten in der Diagnosesuche an?
+#### <a name="post"></a>Wie zeige ich POST-Daten in der Diagnosesuche an?
 POST-Daten werden nicht automatisch protokolliert, Sie können jedoch einen TrackTrace-Aufruf verwenden und die Daten in den Nachrichtenparameter einfügen. Die Größenbegrenzung hierfür ist höher als bei Zeichenfolgeneigenschaften, Sie können jedoch nicht danach filtern.
 
 ## <a name="security"></a>Sicherheit
 #### <a name="is-my-data-secure-in-the-portal-how-long-is-it-retained"></a>Sind meine Daten im Portal sicher? Wie lange werden sie aufbewahrt?
 Informationen hierzu finden Sie unter [Datenspeicherung und Datenschutz][data].
 
-## <a name="a-nameq17a-have-i-enabled-everything-in-application-insights"></a><a name="q17"></a> Habe ich alles in Application Insights aktiviert?
+## <a name="q17"></a> Habe ich alles in Application Insights aktiviert?
 | Diese Daten sollten angezeigt werden | So erhalten Sie die Daten | Deshalb benötigen Sie die Daten |
 | --- | --- | --- |
 | Verfügbarkeitsdiagramme |[Webtests](app-insights-monitor-web-app-availability.md) |Information, ob Ihre Web-App verfügbar ist |
 | Leistung der Server-App: Antwortzeiten usw. ... |[Fügen Sie Ihrem Projekt Application Insights hinzu](app-insights-asp-net.md) oder [installieren Sie den AI-Statusmonitor auf dem Server](app-insights-monitor-performance-live-website-now.md) (oder schreiben Sie Ihren eigenen Code zum [Nachverfolgung von Aufrufen](app-insights-api-custom-events-metrics.md#trackdependency)) |Erkennen von Leistungsproblemen |
 | Telemetriedaten zu Abhängigkeiten |[Installieren des AI-Statusmonitors auf dem Server](app-insights-monitor-performance-live-website-now.md) |Diagnostizieren von Problemen mit Datenbanken oder anderen externen Komponenten |
-| Abrufen von Stapelüberwachungen aus Ausnahmen |[Einfügen von TrackException-Aufrufen in Ihren Code](app-insights-search-diagnostic-logs.md#exceptions) (einige werden jedoch automatisch gemeldet) |Erkennen und Diagnostizieren von Ausnahmen |
-| Durchsuchen von Ablaufprotokollen |[Hinzufügen eines Protokollierungsadapters](app-insights-search-diagnostic-logs.md) |Diagnostizieren von Ausnahmen und Leistungsproblemen |
+| Abrufen von Stapelüberwachungen aus Ausnahmen |[Einfügen von TrackException-Aufrufen in Ihren Code](app-insights-asp-net-exceptions.md) (einige werden jedoch automatisch gemeldet) |Erkennen und Diagnostizieren von Ausnahmen |
+| Durchsuchen von Ablaufprotokollen |[Hinzufügen eines Protokollierungsadapters](app-insights-asp-net-trace-logs.md) |Diagnostizieren von Ausnahmen und Leistungsproblemen |
 | Grundlegende Clientnutzung: Seitenansichten, Sitzungen, ... |[JavaScript-Initialisierer in Webseiten](app-insights-javascript.md) |Nutzungsanalyse |
 | Benutzerdefinierte Metriken auf Clients |[Nachverfolgen von Aufrufen in Webseiten](app-insights-api-custom-events-metrics.md) |Verbessern der Benutzerfreundlichkeit |
 | Benutzerdefinierte Metriken auf Servern |[Nachverfolgen von Aufrufen auf dem Server](app-insights-api-custom-events-metrics.md) |Business Intelligence |
@@ -110,9 +111,4 @@ Sie können [PowerShell-Skripts schreiben](app-insights-powershell.md) , um Appl
 [platforms]: app-insights-platforms.md
 [start]: app-insights-overview.md
 [windows]: app-insights-windows-get-started.md
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

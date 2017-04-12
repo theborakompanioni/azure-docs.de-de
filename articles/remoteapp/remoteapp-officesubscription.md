@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: e4d94d3f9736378d93e93be6645ed04ade763ca3
-ms.openlocfilehash: 4ad7970b94949bf105ddf549279d4d1bcbad5f40
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: c92eec471cf080a651d6f12e9db9fa391beabd2a
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="how-to-use-your-office-365-subscription-with-azure-remoteapp"></a>Verwenden Ihres Office 365-Abonnements mit Azure RemoteApp
 > [!IMPORTANT]
-> Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
+> Azure RemoteApp wird am 31. August 2017 eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
 > 
 > 
 
@@ -39,7 +40,7 @@ Der große Vorteil des Office 365-Abonnements liegt darin, dass Sie die gleiche 
 
 Office 365 ProPlus ermöglicht die [Aktivierung gemeinsam genutzter Computer](https://technet.microsoft.com/library/Dn782860.aspx). Diese Funktion ermöglicht die temporäre benutzerbezogene Aktivierung für Office in virtuellen und Cloudumgebungen wie Azure RemoteApp (und Remotedesktopdienste).
 
-Welche Office 365-Pläne umfassen Office 365 ProPlus? Informationen dazu finden Sie in der Tabelle [Dienstverfügbarkeit in einem Office&365;-Plan](https://technet.microsoft.com/library/office-365-plan-options.aspx). Beachten Sie, dass nicht alle Pläne Office 365 ProPlus umfassen (z. B. der Office 365-Business-Plan). Wenn dies der Fall für Ihren Plan ist, empfiehlt sich ein Upgrade auf einen anderen Plan (z. B. Office 365 Education E3).
+Welche Office 365-Pläne umfassen Office 365 ProPlus? Informationen dazu finden Sie in der Tabelle [Dienstverfügbarkeit in einem Office 365-Plan](https://technet.microsoft.com/library/office-365-plan-options.aspx). Beachten Sie, dass nicht alle Pläne Office 365 ProPlus umfassen (z. B. der Office 365-Business-Plan). Wenn dies der Fall für Ihren Plan ist, empfiehlt sich ein Upgrade auf einen anderen Plan (z. B. Office 365 Education E3).
 
 ## <a name="ok-so-how-are-my-office-365-proplus-licenses-used-with-azure-remoteapp"></a>Wie werden meine Office 365 ProPlus-Lizenzen nun mit Azure RemoteApp verwendet?
 Mit jeder Benutzerlizenz für Office 365 ProPlus kann ein Benutzer Office-Anwendungen auf bis zu 5 Computern plus Tablets und Smartphones aktivieren. Jede Aktivierung ist für den Benutzer registriert, bis er Office auf dem entsprechenden Gerät deaktiviert. (Benutzer können ihre Geräte im [Office 365-Portal](https://portal.office365.com/)verwalten.)
@@ -117,10 +118,5 @@ Sie benötigen weitere Informationen zur Verwendung des Office-Bereitstellungsto
 * [Bereitstellen von Produkten vom Typ "Klick-und-Los für Office 365" mithilfe des Office-Bereitstellungstools](https://technet.microsoft.com/library/JJ219423.aspx)
 * [Deploying and Updating Office 365 ProPlus Using the Office Deployment Tool](https://channel9.msdn.com/Events/Ignite/2015/BRK3168) (Video, in englischer Sprache)
 * [Konfigurieren von Updateeinstellungen für Office 365 ProPlus](https://technet.microsoft.com/library/dn761708.aspx)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

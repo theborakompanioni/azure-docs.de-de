@@ -17,9 +17,9 @@ ms.workload: na
 ms.date: 11/10/2016
 ms.author: chrande; glenga
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: e476a80a3846b8c80c35d6803d5518727f008824
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 2ac78606f851068fa0fb7dcab3bac1c629b9cdb3
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -153,7 +153,7 @@ Die Ausgabebindung verwendet das folgende JSON-Objekte im `bindings`-Array von �
 Beachten Sie Folgendes:
 
 * Legen Sie `createIfNotExists` auf `true` fest, um die Datenbank und die Sammlung zu erstellen, wenn diese nicht vorhanden sind. Standardwert: `false`. Neue Sammlungen werden mit reserviertem Durchsatz erstellt. Dies wirkt sich auf den Preis aus. Weitere Informationen finden Sie unter [DocumentDB-Preise](https://azure.microsoft.com/pricing/details/documentdb/).
-* `connection` muss der Name einer App-Einstellung sein, die auf den Endpunkt für Ihr DocumentDB-Konto verweist (Wert: `AccountEndpoint=<Endpoint for your account>;AccountKey=<Your primary access key>`). Wenn Sie über die Functions-Portal-UI ein DocumentDB-Konto erstellen, wird bei der Kontoerstellung eine neue App-Einstellung für Sie erstellt. Damit Sie ein vorhandenes DocumentDB-Konto verwenden können, müssen Sie [diese App-Einstellung manuell konfigurieren](). 
+* `connection` muss der Name einer App-Einstellung sein, die auf den Endpunkt für Ihr DocumentDB-Konto verweist (Wert: `AccountEndpoint=<Endpoint for your account>;AccountKey=<Your primary access key>`). Wenn Sie über die Functions-Portal-UI ein DocumentDB-Konto erstellen, wird bei der Kontoerstellung eine neue App-Einstellung für Sie erstellt. Damit Sie ein vorhandenes DocumentDB-Konto verwenden können, müssen Sie [diese App-Einstellung manuell konfigurieren](functions-how-to-use-azure-function-app-settings.md). 
 
 ## <a name="output-usage"></a>Ausgabeverwendung
 Dieser Abschnitt veranschaulicht die Verwendung Ihrer DocumentDB-Ausgabebindung in Ihrem Funktionscode.

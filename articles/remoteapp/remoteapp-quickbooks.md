@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4015aede386913607df8a9499c0f08c414ee6959
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 17fbef55920c4f06f895739b89a0acc6ff08bd9d
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="how-do-you-deploy-quickbooks-in-azure-remoteapp"></a>Bereitstellen von QuickBooks in Azure RemoteApp
 > [!IMPORTANT]
-> Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
+> Azure RemoteApp wird am 31. August 2017 eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
 > 
 > 
 
@@ -48,10 +49,5 @@ Sie können sich auch meine Ignite-Präsentation mit dem Titel [Fundamentals of 
 
 ## <a name="deployment-architecture"></a>Bereitstellungsarchitektur
 ![QuickBooks- und Azure RemoteApp-Bereitstellung](./media/remoteapp-quickbooks/ra-quickbooks.png)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

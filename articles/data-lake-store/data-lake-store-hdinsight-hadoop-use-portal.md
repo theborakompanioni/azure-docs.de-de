@@ -15,9 +15,9 @@ ms.workload: big-data
 ms.date: 03/21/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: f7c977dc2e385819dada976afa9497e9a20fd90c
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
+ms.openlocfilehash: 2aa5542dc095beaf951bad2b0361a3acc4468f2d
+ms.lasthandoff: 04/05/2017
 
 
 ---
@@ -30,7 +30,7 @@ ms.lasthandoff: 03/22/2017
 >
 >
 
-In diesem Artikel erfahren Sie, wie Sie das Azure-Portal zum Erstellen eines HDInsight-Clusters mit Zugriff auf Azure Data Lake Store verwenden. Für unterstützte Clustertypen können Sie Data Lake Store als Standardspeicherkonto oder als zusätzliches Speicherkonto verwenden. 
+In diesem Artikel erfahren Sie, wie Sie das Azure-Portal zum Erstellen eines HDInsight-Clusters mit Zugriff auf Azure Data Lake Store verwenden. Für unterstützte Clustertypen können Sie Data Lake Store als Standardspeicherkonto oder als zusätzliches Speicherkonto verwenden.
 
 Wenn Sie Data Lake Store als zusätzlichen Speicher verwenden, ist das Standardspeicherkonto der Cluster nach wie vor Azure Blob Storage, und die mit dem Cluster in Verbindung stehenden Dateien (wie etwa Protokolle) werden immer noch in den Standardspeicher geschrieben. Allerdings können die Daten, die Sie verarbeiten möchten, in ein Data Lake Store-Konto gespeichert werden. Das Verwenden von Data Lake Store als zusätzliches Speicherkonto wirkt sich nicht auf die Leistung oder die Fähigkeit aus, Daten aus dem Cluster in den Speicher zu lesen bzw. zu schreiben.
 
@@ -57,7 +57,7 @@ Bevor Sie mit diesem Tutorial beginnen, stellen Sie sicher, dass Sie die folgend
 * **Azure Active Directory-Dienstprinzipal**. Dieses Tutorial enthält Anweisungen zum Erstellen eines Dienstprinzipals in Azure Active Directory (Azure AD). Sie müssen jedoch Azure AD-Administrator sein, um einen Dienstprinzipal erstellen zu können. Wenn Sie Administrator sind, können Sie diese Voraussetzung ignorieren und mit dem Tutorial fortfahren.
 
     >[!NOTE]
-    >Sie können einen Dienstprinzipal nur dann erstellen, wenn Sie ein Azure AD-Administrator sind. Ihr Azure AD-Administrator muss zunächst einen Dienstprinzipal erstellen, bevor Sie einen HDInsight-Cluster mit Data Lake Store erstellen können. Zudem muss der Dienstprinzipal mit einem Zertifikat erstellt werden, wie unter [Create a service principal with certificate (Erstellen eines Dienstprinzipals mit einem Zertifikat)](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-certificate) beschrieben.
+    >Sie können einen Dienstprinzipal nur dann erstellen, wenn Sie ein Azure AD-Administrator sind. Ihr Azure AD-Administrator muss zunächst einen Dienstprinzipal erstellen, bevor Sie einen HDInsight-Cluster mit Data Lake Store erstellen können. Zudem muss der Dienstprinzipal mit einem Zertifikat erstellt werden, wie unter [Create a service principal with certificate (Erstellen eines Dienstprinzipals mit einem Zertifikat)](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-certificate-from-certificate-authority) beschrieben.
     >
 
 ## <a name="create-an-hdinsight-cluster-with-access-to-a-data-lake-store"></a>Erstellen eines HDInsight-Clusters mit Zugriff auf einen Data Lake Store-Speicher
@@ -78,20 +78,20 @@ In diesem Abschnitt erstellen Sie einen HDInsight Hadoop-Cluster, für den ein D
 
     ![Dienstprinzipal für HDInsight-Cluster hinzufügen](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.1.adls.storage.png "Dienstprinzipal für HDInsight-Cluster hinzufügen")
 
-    
+
     In diesem Screenshot ist der Stammordnerpfad „/clusters/myhdiadlcluster“, wobei *myhdiadlcluster* der Name des Clusters ist, der erstellt wird. Stellen Sie in einem solchen Fall sicher, dass der Ordner */clusters* im Data Lake Store-Konto vorhanden ist. Der Ordner *myhdiadlcluster* wird während der Erstellung des Clusters erstellt. Wenn der Stammpfad auf */hdinsight/clusters/data/myhdiadlcluter* festgelegt wurde, stellen Sie sicher, dass */hdinsight/clusters/data/* im Data Lake Store-Konto vorhanden ist.
 
-5. Klicken Sie auf **Data Lake Store-Zugriff**, um den Zugriff zwischen dem Data Lake Store-Konto und dem HDInsight-Cluster zu konfigurieren. Anweisungen hierzu finden Sie unter [Konfigurieren des Zugriffs zwischen HDInsight-Cluster und Data Lake Store](#configure-access-between-hdinsight-cluster-and-data-lake-store). 
+5. Klicken Sie auf **Data Lake Store-Zugriff**, um den Zugriff zwischen dem Data Lake Store-Konto und dem HDInsight-Cluster zu konfigurieren. Anweisungen hierzu finden Sie unter [Konfigurieren des Zugriffs zwischen HDInsight-Cluster und Data Lake Store](#configure-access-between-hdinsight-cluster-and-data-lake-store).
 
 
-### <a name="create-a-cluster-with-data-lake-store-as-additional-storage"></a>Erstellen eines Clusters mit Data Lake Store als zusätzlichem Speicher 
+### <a name="create-a-cluster-with-data-lake-store-as-additional-storage"></a>Erstellen eines Clusters mit Data Lake Store als zusätzlichem Speicher
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 
 2. Führen Sie die Schritte unter [Erstellen von Hadoop-Clustern in HDInsight](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md) aus, um mit der Bereitstellung eines HDInsight-Clusters zu beginnen.
 
 3. Wählen Sie auf dem Blatt **Speicher** unter **Primärer Speichertyp** die Option **Azure Storage** aus.
- 
+
 4. Aktivieren Sie unter **Auswahlmethode** die gewünschte Methode:
 
     * Um ein Speicherkonto anzugeben, das Teil Ihres Azure-Abonnements ist, wählen Sie **Meine Abonnements** und dann ein Speicherkonto aus.
@@ -132,7 +132,7 @@ In diesem Abschnitt konfigurieren Sie den Zugriff zwischen HDInsight-Clustern un
 
 7. Klicken Sie auf dem Blatt **Data Lake Store-Zugriff** auf **Zugriff**. Das Blatt **Dateiberechtigungen auswählen** ist standardmäßig geöffnet. Hier sind alle Data Lake Store-Konten in Ihrem Abonnement aufgeführt.
 
-8. Wählen Sie das Data Lake Store-Konto, das dem Cluster zugeordnet werden soll. 
+8. Wählen Sie das Data Lake Store-Konto, das dem Cluster zugeordnet werden soll.
 
     **Wenn Sie Data Lake Store als Standardspeicher verwenden**, müssen Sie Berechtigungen auf zwei Ebenen zuweisen.
 

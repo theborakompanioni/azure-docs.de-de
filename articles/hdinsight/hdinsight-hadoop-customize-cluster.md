@@ -17,9 +17,9 @@ ms.date: 10/05/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
 translationtype: Human Translation
-ms.sourcegitcommit: b5fafb9603957a93a0ca8fbc6dd53798070641a4
-ms.openlocfilehash: da013207a2c804898d1a93dfd7875ed2a2deed22
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
+ms.openlocfilehash: 96a7410ec90d31e565ea8338d908564c209c6a4f
+ms.lasthandoff: 04/11/2017
 
 
 ---
@@ -29,7 +29,7 @@ Eine **Skriptaktion** kann während der Clustererstellung zum Aufrufen [benutzer
 Die Informationen in diesem Artikel gelten für Windows-basierte HDInsight-Cluster. Informationen zu Linux-basierten Clustern finden Sie unter [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md).
 
 > [!IMPORTANT]
-> Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date).
+> Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date).
 
 HDInsight-Cluster können auch auf verschiedene andere Weisen angepasst werden, z.B. durch Hinzufügen von Azure-Speicherkonten, Ändern der Hadoop-Konfigurationsdateien („core-site.xml“, „hive-site.xml“ usw.) oder Hinzufügen gemeinsam genutzter Bibliotheken (z.B. Hive, Oozie) zu allgemeinen Speicherorten im Cluster. Diese Anpassungen können über Azure PowerShell, das Azure HDInsight .NET SDK oder das Azure-Portal erfolgen. Weitere Informationen finden Sie unter [Erstellen von Hadoop-Clustern in HDInsight][hdinsight-provision-cluster].
 
@@ -76,7 +76,7 @@ HDInsight verfügt über mehrere Skripts zum Installieren der folgenden Komponen
         <tr><td>Skript-URI</td>
             <td>Geben Sie den URI für das Skript an, das aufgerufen wird, um den Cluster anzupassen. s</td></tr>
         <tr><td>Haupt-/Workerknoten</td>
-            <td>Geben Sie die Knoten (**Hauptknoten** oder **Workerknoten**) an, für die das Anpassungsskript ausgeführt wird.</b>.
+            <td>Geben Sie die Knoten (**Hauptknoten** oder **Workerknoten**) an, für die das Anpassungsskript ausgeführt wird</b>.
         <tr><td>Parameter</td>
             <td>Geben Sie die Parameter an, wenn dies für das Skript erforderlich ist.</td></tr>
     </table>

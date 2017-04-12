@@ -17,9 +17,9 @@ ms.date: 11/8/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
-ms.openlocfilehash: 54094c18dcbb751835bfa56d53358ce19e08387d
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 988510350ceb97a15bb305edff397a0e3212a89d
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -32,13 +32,13 @@ Azure verfügt über zwei Bereitstellungsmodelle: Azure Resource Manager und kla
 In diesem Artikel wird beschrieben, wie Sie mit dem Resource Manager-Bereitstellungsmodell über das Azure-Portal ein VNet erstellen. Sie können ein VNet per Resource Manager auch mit anderen Tools erstellen oder dafür das klassische Bereitstellungsmodell verwenden, indem Sie in der folgenden Liste eine andere Option wählen:
 
 > [!div class="op_single_selector"]
-- [Portal](virtual-networks-create-vnet-arm-pportal.md)
-- [PowerShell](virtual-networks-create-vnet-arm-ps.md)
-- [BEFEHLSZEILENSCHNITTSTELLE (CLI)](virtual-networks-create-vnet-arm-cli.md)
-- [Vorlage](virtual-networks-create-vnet-arm-template-click.md)
-- [Portal (klassisch)](virtual-networks-create-vnet-classic-pportal.md)
-- [PowerShell (klassisch)](virtual-networks-create-vnet-classic-netcfg-ps.md)
-- [CLI (klassisch)](virtual-networks-create-vnet-classic-cli.md)
+> * [Portal](virtual-networks-create-vnet-arm-pportal.md)
+> * [PowerShell](virtual-networks-create-vnet-arm-ps.md)
+> * [BEFEHLSZEILENSCHNITTSTELLE (CLI)](virtual-networks-create-vnet-arm-cli.md)
+> * [Vorlage](virtual-networks-create-vnet-arm-template-click.md)
+> * [Portal (klassisch)](virtual-networks-create-vnet-classic-pportal.md)
+> * [PowerShell (klassisch)](virtual-networks-create-vnet-classic-netcfg-ps.md)
+> * [CLI (klassisch)](virtual-networks-create-vnet-classic-cli.md)
 
 
 [!INCLUDE [virtual-networks-create-vnet-scenario-include](../../includes/virtual-networks-create-vnet-scenario-include.md)]
@@ -80,6 +80,6 @@ In diesem Artikel wurde beschrieben, wie Sie zu Testzwecken ein virtuelles Netzw
 
 Informieren Sie sich, wie folgende Verbindungen hergestellt werden:
 
-- Eine Verbindung eines virtuellen Computers (VM) mit einem virtuellen Netzwerk. Lesen Sie hierzu den Artikel [Erstellen eines virtuellen Windows-Computers](../virtual-machines/virtual-machines-windows-hero-tutorial.md) oder [Erstellen eines virtuellen Linux-Computers](../virtual-machines/virtual-machines-linux-quick-create-portal.md). Anstatt gemäß den Schritten in den Artikeln ein VNet und ein Subnetz zu erstellen, können Sie für die Verbindung mit der VM auch ein vorhandenes VNet und Subnetz auswählen.
+- Eine Verbindung eines virtuellen Computers (VM) mit einem virtuellen Netzwerk. Lesen Sie hierzu den Artikel [Erstellen eines virtuellen Windows-Computers](../virtual-machines/virtual-machines-windows-hero-tutorial.md) oder [Erstellen eines virtuellen Linux-Computers](../virtual-machines/linux/quick-create-portal.md). Anstatt gemäß den Schritten in den Artikeln ein VNet und ein Subnetz zu erstellen, können Sie für die Verbindung mit der VM auch ein vorhandenes VNet und Subnetz auswählen.
 - Eine Verbindung des virtuellen Netzwerks mit anderen virtuellen Netzwerken. Lesen Sie hierzu den Artikel [Konfigurieren einer VNet-zu-VNet-Verbindung über das Azure-Portal](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md).
 - Eine Verbindung des virtuellen Netzwerks mit einem lokalen Netzwerk. Verwenden Sie hierfür ein Site-to-Site-VPN oder eine ExpressRoute-Verbindung. Informationen zur Vorgehensweise finden Sie in den Artikeln [Add a Site-to-Site connection to a VNet with an existing VPN gateway connection](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) (Hinzufügen einer Site-to-Site-Verbindung zu einem VNet mit einer vorhandenen VPN-Gatewayverbindung) und [Verknüpfen eines VNet mit einer ExpressRoute-Verbindung](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md).

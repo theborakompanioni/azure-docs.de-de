@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: e4d94d3f9736378d93e93be6645ed04ade763ca3
-ms.openlocfilehash: 30d18bdbdc6293bab5a8876fb1e503e125829e2e
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 05c8a0ff04293947cec391b6467cc4adddb6a7b0
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="validate-the-azure-vnet-to-use-with-azure-remoteapp"></a>Überprüfen des Azure-VNET für die Verwendung mit Azure RemoteApp
 > [!IMPORTANT]
-> Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
+> Azure RemoteApp wird am 31. August 2017 eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
 > 
 > 
 
@@ -40,10 +41,5 @@ Weitere Informationen zum End-to-End-Workflow für Hybridsammlungen finden Sie i
 * [How to plan your virtual network for Azure RemoteApp (auf Englisch)](remoteapp-planvnet.md)
 * [Erstellen einer Hybridsammlung](remoteapp-create-hybrid-deployment.md)
 * [Bereitstellen einer Azure RemoteApp-Sammlung für Azure Virtual Network (mit ExpressRoute-Unterstützung)](http://blogs.msdn.com/b/rds/archive/2015/04/23/deploy-azure-remoteapp-collection-to-your-azure-virtual-network-with-support-for-expressroute.aspx)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

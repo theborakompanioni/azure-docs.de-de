@@ -15,14 +15,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: e28f4004e3cafcfa09309ff0143c83af5fa5493a
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: c5b87c3a814b816e8bdc28d3e22b64c2197579af
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="how-to-create-a-custom-template-image-for-azure-remoteapp"></a>Erstellen eines benutzerdefinierten Vorlagenimages für Azure RemoteApp
 > [!IMPORTANT]
-> Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
+> Azure RemoteApp wird am 31. August 2017 eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
 > 
 > 
 
@@ -142,10 +143,5 @@ Nach dem Erstellen des benutzerdefinierten Vorlagenimages müssen Sie dieses Ima
 
 * [Erstellen einer Hybrid-Sammlung von RemoteApp](remoteapp-create-hybrid-deployment.md)
 * [Erstellen einer Cloud-Sammlung von RemoteApp](remoteapp-create-cloud-deployment.md)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

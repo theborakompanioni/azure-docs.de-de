@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 1c812fc31011b57f2cdb357574877d6b7125280f
-ms.openlocfilehash: c5ae5049588d5bc7628442942e71f182a425fead
-ms.lasthandoff: 02/10/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: c0413f9c83fd6dceb4a1d956c0f32712e29bdc58
+ms.lasthandoff: 03/31/2017
 
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>So implementieren Sie die Notfallwiederherstellung mit Sichern und Wiederherstellen von Diensten in Azure API Management
@@ -49,7 +49,7 @@ Alle Aufgaben, die Sie mithilfe des Azure-Ressourcen-Managers für Ressourcen au
 Im ersten Schritt wird eine Azure Active Directory-Anwendung erstellt. Melden Sie sich mit dem Abonnement, das Ihre API Management-Dienstinstanz enthält, beim [klassischen Azure-Portal](http://manage.windowsazure.com/) an, und navigieren Sie zu der Registerkarte **Anwendungen** für Ihr Azure Active Directory-Standardverzeichnis.
 
 > [!NOTE]
-> Wenn das Azure Active Directory-Standardverzeichnis in Ihrem Konto nicht angezeigt wird, bitten Sie den Administrator des Azure-Abonnements, die erforderlichen Berechtigungen für das Konto zu erteilen. Informationen zum Ermitteln des Standardverzeichnisses finden Sie unter „Suchen des Standardverzeichnisses im klassischen Azure-Portal“ in [Erstellen einer Arbeits- oder Schulidentität in Azure Active Directory zur Verwendung mit Windows-VMs](../virtual-machines/virtual-machines-windows-create-aad-work-id.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+> Wenn das Azure Active Directory-Standardverzeichnis in Ihrem Konto nicht angezeigt wird, bitten Sie den Administrator des Azure-Abonnements, die erforderlichen Berechtigungen für das Konto zu erteilen. Informationen zum Ermitteln des Standardverzeichnisses finden Sie unter „Suchen des Standardverzeichnisses im klassischen Azure-Portal“ in [Erstellen einer Arbeits- oder Schulidentität in Azure Active Directory zur Verwendung mit Windows-VMs](../virtual-machines/windows/create-aad-work-id.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 >
 >
 

@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 3fe204c09eebf7d254a1bf2bb130e2d3498b6b45
-ms.openlocfilehash: d10ae92ba79014d9700613c06ef37a437089f5ac
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 5e91f640ab72fd3a5fffcb0f9d7bac1e9e031249
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -35,7 +36,7 @@ Die Abbildung zeigt einen virtuellen Computer mit drei NICs, die jeweils mit ein
 * Derzeit werden öffentliche IP-Adressen auf Instanzebene (LPIP) (klassische Bereitstellungen) für Multi-NIC-VMs nicht unterstützt.
 * Die interne Reihenfolge der Netzwerkkarten im virtuellen Computer ist zufällig und kann sich auch zwischen Azure-Infrastrukturaktualisierungen ändern. Die IP-Adressen und die zugehörigen Ethernet-MAC-Adressen ändern sich jedoch nicht. Nehmen wir beispielsweise an,**Eth1** hat die IP-Adresse 10.1.0.100 und die MAC-Adresse 00-0D-3A-B0-39-0D. Nach einer Azure-Infrastrukturupdate und einem Neustart kann Eth1 in **Eth2** geändert worden sein, aber die zugehörige IP-Adresse und die MAC-Adresse bleiben gleich. Wenn der Neustart vom Benutzer initiiert wird, bleibt die NIC-Reihenfolge unverändert.
 * Die Adressen der einzelnen NICs in den einzelnen virtuellen Computer müssen sich in einem Subnetz befinden, mehrere NICs in einem virtuellen Computer können Adressen zugewiesen werden, die sich im gleichen Subnetz befinden.
-* Größe des virtuellen Computers bestimmt die Anzahl der Netzwerkkarten, die Sie für einen virtuellen Computer erstellen können. Bestimmen Sie anhand der Artikel zu [Windows Server](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)- und [Linux](../virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)-VM-Größen, wie viele Netzwerkkarten jede VM-Größe unterstützt. 
+* Größe des virtuellen Computers bestimmt die Anzahl der Netzwerkkarten, die Sie für einen virtuellen Computer erstellen können. Bestimmen Sie anhand der Artikel zu [Windows Server](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)- und [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)-VM-Größen, wie viele Netzwerkkarten jede VM-Größe unterstützt. 
 
 ## <a name="network-security-groups-nsgs"></a>Netzwerksicherheitsgruppen
 In einer Ressourcen-Manager-Bereitstellung kann jede Netzwerkkarte in einem virtuellen Computer einer Netzwerksicherheitsgruppe (NSG) zugeordnet werden, einschließlich Netzwerkkarten eines virtuellen Computers, bei dem mehrere Netzwerkkarten aktiviert wurden. Wenn einer NIC eine Adresse innerhalb eines Subnetzes, das einer NSG zugeordnet ist, zugewiesen wird, dann gelten die Regeln der NSG des Subnetzes auch für diese NIC. Sie können nicht nur Subnetze, sondern auch NICs Netzwerksicherheitsgruppen zuordnen.
@@ -227,10 +228,5 @@ Da virtuelle Linux-Computer im Standardverhalten schwaches Hostrouting verwenden
 ## <a name="next-steps"></a>Nächste Schritte
 * Bereitstellen von [MultiNIC-VMs in einem Anwendungsszenario mit 2-Ebenen in einer Ressourcen-Manager-Bereitstellung](virtual-network-deploy-multinic-arm-template.md).
 * Bereitstellen von [MultiNIC-VMs in einem Anwendungsszenario mit 2-Ebenen in einer klassischen Bereitstellung](virtual-network-deploy-multinic-classic-ps.md).
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 253b7fe3614579d5a9a74d1de21bd2d3efe50d09
-ms.openlocfilehash: bf642e08d92414543f55ddeceff297c886b82882
-ms.lasthandoff: 01/26/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 9684a04b9ce12e6ca09e60909167f7557212c8be
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -51,7 +51,7 @@ Die in der folgenden Tabelle aufgeführten URLs stellen die Grundvoraussetzungen
 | \*.microsoftonline.com |HTTPS/443 |Wird zum Konfigurieren Ihres Azure AD-Verzeichnisses und zum Importieren/Exportieren von Daten verwendet. |
 
 ## <a name="errors-in-the-wizard"></a>Fehler im Assistenten
-Der Installations-Assistent verwendet zwei verschiedene Sicherheitskontexte. Auf der Seite **Mit Azure AD verbinden** verwendet er den aktuell angemeldeten Benutzer. Auf der Seite **Konfigurieren** wechselt er zu dem [Konto, das den Dienst für das Synchronisierungsmodul ausführt](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-accounts). Wenn ein Problem vorliegt, tritt es wahrscheinlich bereits auf der Seite **Mit Azure AD verbinden** des Assistenten auf, da die Proxykonfiguration global ist.
+Der Installations-Assistent verwendet zwei verschiedene Sicherheitskontexte. Auf der Seite **Mit Azure AD verbinden** verwendet er den aktuell angemeldeten Benutzer. Auf der Seite **Konfigurieren** wechselt er zu dem [Konto, das den Dienst für das Synchronisierungsmodul ausführt](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-account). Wenn ein Problem vorliegt, tritt es wahrscheinlich bereits auf der Seite **Mit Azure AD verbinden** des Assistenten auf, da die Proxykonfiguration global ist.
 
 Die folgenden Probleme sind die häufigsten Fehler, die im Installations-Assistenten auftreten.
 

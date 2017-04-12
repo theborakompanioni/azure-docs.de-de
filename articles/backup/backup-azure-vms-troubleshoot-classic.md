@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 1/23/2017
 ms.author: trinadhk;markgal;
 translationtype: Human Translation
-ms.sourcegitcommit: 2224ddf52283d7da599b1b4842ca617d28b28668
-ms.openlocfilehash: 2149407ff4e04f6a52a45c419382617810a63633
-ms.lasthandoff: 01/27/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 284a1b64fbb15d0aa800182c6671d447e191b76a
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -108,7 +108,7 @@ Für virtuelle Windows-Computer:
 
 Für virtuelle Linux-Computer:
 
-* Folgen Sie den Anweisungen unter [Aktualisieren des Azure Linux-Agents auf einem virtuellen Computer](../virtual-machines/virtual-machines-linux-update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Folgen Sie den Anweisungen unter [Aktualisieren des Azure Linux-Agents auf einem virtuellen Computer](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ### <a name="validating-vm-agent-installation"></a>Überprüfen der VM-Agent-Installation
 So überprüfen Sie die Version des VM-Agents auf virtuellen Windows-Computern

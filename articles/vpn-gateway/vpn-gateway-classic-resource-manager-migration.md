@@ -15,15 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 10/28/2016
 ms.author: amsriva
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 8efa8df1381c19aa00bd49bedb3f99086e01d9e2
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 32ca2e4b1dcf5715602b8e1e1f3026cb785fbe0c
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="vpn-gateway-classic-to-resource-manager-migration"></a>Migrieren von VPN Gateways aus dem klassischen Modell zu Resource Manager
 VPN Gateways können jetzt aus dem klassischen Modell zum Resource Manager-Bereitstellungsmodell migriert werden. Informieren Sie sich weiter über [Features und Vorteile von Azure Resource Manager](../azure-resource-manager/resource-group-overview.md). In diesem Artikel wird erklärt, wie man von klassischen Bereitstellungen zu neueren Resource Manager-basierten Modellen migriert. 
 
-VPN Gateways werden als Teil der VNet-Migration vom klassischen Modell zu Resource Manager migriert. Diese Migration erfolgt nacheinander für einzelne VNets. Es gibt keine zusätzlichen Anforderungen in Bezug auf Tools oder Voraussetzungen für die Migration. Die Schritte bei der Migration sind mit der Migration von VNets identisch, und sind auf der Seite [Migrieren von IaaS-Ressourcen](../virtual-machines/virtual-machines-windows-ps-migration-classic-resource-manager.md) aufgeführt. Es gibt keine Downtime von Datenpfaden während der Migration. Aus diesem Grund können bestehende Workloads während der Migration ohne Verlust der lokalen Konnektivität weiterhin ausgeführt werden. Die öffentliche IP-Adresse, die dem VPN Gateway zugeordnet ist, verändert sich während des Migrationsvorgangs nicht. Das bedeutet, dass Sie Ihren lokalen Router nicht neu konfigurieren müssen, wenn die Migration abgeschlossen ist.  
+VPN Gateways werden als Teil der VNet-Migration vom klassischen Modell zu Resource Manager migriert. Diese Migration erfolgt nacheinander für einzelne VNets. Es gibt keine zusätzlichen Anforderungen in Bezug auf Tools oder Voraussetzungen für die Migration. Die Schritte bei der Migration sind mit der Migration von VNets identisch, und sind auf der Seite [Migrieren von IaaS-Ressourcen](../virtual-machines/windows/migration-classic-resource-manager-ps.md) aufgeführt. Es gibt keine Downtime von Datenpfaden während der Migration. Aus diesem Grund können bestehende Workloads während der Migration ohne Verlust der lokalen Konnektivität weiterhin ausgeführt werden. Die öffentliche IP-Adresse, die dem VPN Gateway zugeordnet ist, verändert sich während des Migrationsvorgangs nicht. Das bedeutet, dass Sie Ihren lokalen Router nicht neu konfigurieren müssen, wenn die Migration abgeschlossen ist.  
 
 Das Modell in Resource Manager unterscheidet sich vom klassischen Modell und besteht aus Gateways der virtuellen Netzwerke, Gateways des lokalen Netzwerks und Verbindungsressourcen. Diese stellen das VPN Gateway selbst dar, den lokalen Standort, der einen lokalen Adressraum und Konnektivität jeweils zwischen den beiden darstellt. Sobald die Migration abgeschlossen ist, wären Ihre Gateways im klassischen Modell nicht verfügbar, und alle Verwaltungsvorgänge auf Gateways der virtuellen Netzwerke und Verbindungsobjekte müssten im Resource Manager-Modell ausgeführt werden.
 
@@ -65,11 +66,6 @@ Nachdem wir die VNet-zu-VNet-Konnektivität ohne lokale Standorte transformieren
 * Stellen Sie eine Verbindung vom betroffenen VNet zum lokalen Netzwerkgateway her, das den lokalen Standort darstellt. Das würde auch Änderungen der Einstellungen am lokalen Router erforderlich machen, um den IPsec-Tunnel zu erstellen und zu konfigurieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie Informationen zum VPN-Gateway Migrationssupport erhalten haben, wechseln Sie zu [Migrieren von IaaS-Ressourcen aus dem klassischen Bereitstellungsmodell zu Azure Resource Manager mithilfe von Azure PowerShell](../virtual-machines/virtual-machines-windows-ps-migration-classic-resource-manager.md), um anzufangen.
-
-
-
-
-<!--HONumber=Nov16_HO3-->
+Nachdem Sie Informationen zum VPN-Gateway Migrationssupport erhalten haben, wechseln Sie zu [Migrieren von IaaS-Ressourcen aus dem klassischen Bereitstellungsmodell zu Azure Resource Manager mithilfe von Azure PowerShell](../virtual-machines/windows/migration-classic-resource-manager-ps.md), um anzufangen.
 
 

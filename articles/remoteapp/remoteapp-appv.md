@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8057e9ce27f9df3e9455d48d9c8196033612c8f3
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 0e82c639ea7bfceb89f0cf9c59ab657a951f2d5f
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="using-app-v-apps-in-azure-remoteapp"></a>Verwenden von App-V-Apps in Azure RemoteApp
 > [!IMPORTANT]
-> Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
+> Azure RemoteApp wird am 31. August 2017 eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
 > 
 > 
 
@@ -41,10 +42,5 @@ Es ist einfach, Ihre vorhandene App-V-Infrastruktur mit Azure RemoteApp zu verwe
 | Global (Computer) |Vorabveröffentlichung oder Adressierung per Veröffentlichungsserver |Aktualisierung des Azure-Images erforderlich, wenn die App aktualisiert werden soll (umfangreich). Verbraucht relativ viel Platz im Image. | |
 
  Nachdem Sie das benutzerdefinierte Image und die Hybridsammlung erstellt haben, können Sie Ihre Anwendung veröffentlichen, Benutzer zuweisen und Ihre vorhandenen App-V-Anwendungen nutzen, die unter Azure RemoteApp gehostet und auf allen Geräten an allen Orten bereitgestellt werden.
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

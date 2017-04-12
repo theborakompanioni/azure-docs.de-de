@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 03/20/2017
 ms.author: byvinyal
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 8b4818ccea1ac5025e93fa0939735b3ed606f47c
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: e26a37fbe783c2ca95679b5bdcc9b0ba0beec76b
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -140,7 +140,7 @@ Weitere Informationen zu Grenzwerten für Speicherkonten finden Sie unter [Skali
 #### <a name="virtual-machine-disk-limits"></a>Grenzwerte für Datenträger virtueller Computer 
 [!INCLUDE [azure-storage-limits-vm-disks](../includes/azure-storage-limits-vm-disks.md)]
 
-Weitere Informationen finden Sie unter [Größen virtueller Computer](virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
+Weitere Informationen finden Sie unter [Größen virtueller Computer](virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
 
 #### <a name="managed-virtual-machine-disks"></a>Verwaltete VM-Datenträger
 
@@ -275,7 +275,7 @@ Einschränkungen für SQL-Datenbanken finden Sie unter [Ressourceneinschränkung
 ## <a name="see-also"></a>Siehe auch
 [Grundlegendes zu Azure-Einschränkungen und -Steigerungen](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 
-[Größen virtueller Computer und Clouddienste für Azure](virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+[Größen virtueller Computer und Clouddienste für Azure](virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 [Größen für Cloud Services](cloud-services/cloud-services-sizes-specs.md)
 

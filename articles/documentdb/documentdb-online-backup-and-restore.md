@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: raprasa
 translationtype: Human Translation
-ms.sourcegitcommit: b5419efbaf51476cfc662c8aa814001e2757b4b7
-ms.openlocfilehash: db7b24c049153b6622f50fd9934611d48c98a1e8
-ms.lasthandoff: 02/07/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: e9b99a79adf445da8761ee399fb1e1a51f9224fc
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -28,7 +28,7 @@ Azure DocumentDB erstellt in regelmäßigen Abständen automatisch Sicherungen a
 Dieser Artikel beginnt mit einer Kurzübersicht über die Redundanz und Verfügbarkeit von Daten in DocumentDB, an die sich eine Erörterung von Sicherungen anschließt. 
 
 ## <a name="high-availability-with-documentdb---a-recap"></a>Hohe Verfügbarkeit mit DocumentDB: Kurzübersicht
-DocumentDB ist auf eine [globale Verteilung](documentdb-distribute-data-globally.md) ausgelegt und ermöglicht eine Skalierung des Durchsatzes in mehreren Azure-Regionen sowie ein durch Richtlinien gesteuertes Failover und transparente Multihosting-APIs. In einem Datenbanksystem, das [SLAs für eine Verfügbarkeit von&99;,99 Prozent](https://azure.microsoft.com/support/legal/sla/documentdb/v1_0/) bietet, werden alle Schreibvorgänge in DocumentDB mithilfe eines Quorums von Replikaten in einem lokalen Rechenzentrum beständig auf lokalen Datenträgern gespeichert, bevor der Client eine Bestätigung erhält. Beachten Sie, dass die hohe Verfügbarkeit von DocumentDB von lokalem Speicher und nicht von externen Speichertechnologien abhängig ist. Wenn Ihr Konto darüber hinaus mehreren Azure-Regionen zugeordnet ist, werden Ihre Schreibvorgänge auch in andere Regionen repliziert. Um Ihren Durchsatz zu skalieren und mit kurzer Latenz auf Daten zuzugreifen, können Sie in Ihrem Datenbankkonto über so viele Leseregionen wie gewünscht verfügen. In jeder Leseregion werden die (replizierten) Daten dauerhaft in einer Replikatgruppe gespeichert.  
+DocumentDB ist auf eine [globale Verteilung](documentdb-distribute-data-globally.md) ausgelegt und ermöglicht eine Skalierung des Durchsatzes in mehreren Azure-Regionen sowie ein durch Richtlinien gesteuertes Failover und transparente Multihosting-APIs. In einem Datenbanksystem, das [SLAs für eine Verfügbarkeit von 99,99 Prozent](https://azure.microsoft.com/support/legal/sla/documentdb/v1_1/) bietet, werden alle Schreibvorgänge in DocumentDB mithilfe eines Quorums von Replikaten in einem lokalen Rechenzentrum beständig auf lokalen Datenträgern gespeichert, bevor der Client eine Bestätigung erhält. Beachten Sie, dass die hohe Verfügbarkeit von DocumentDB von lokalem Speicher und nicht von externen Speichertechnologien abhängig ist. Wenn Ihr Konto darüber hinaus mehreren Azure-Regionen zugeordnet ist, werden Ihre Schreibvorgänge auch in andere Regionen repliziert. Um Ihren Durchsatz zu skalieren und mit kurzer Latenz auf Daten zuzugreifen, können Sie in Ihrem Datenbankkonto über so viele Leseregionen wie gewünscht verfügen. In jeder Leseregion werden die (replizierten) Daten dauerhaft in einer Replikatgruppe gespeichert.  
 
 Wie im folgenden Diagramm dargestellt, wird eine einzelne DocumentDB-Sammlung [horizontal partitioniert](documentdb-partition-data.md). Eine „Partition“ ist im folgenden Diagramm durch einen Kreis dargestellt, und jede Partition bietet mithilfe einer Replikatgruppe hohe Verfügbarkeit. Dies ist die lokale Verteilung innerhalb einer einzelnen Azure-Region (siehe die x-Achse). Zusätzlich wird jede Partition (samt zugehöriger Replikatgruppe) anschließend auf mehrere Regionen verteilt, die Ihrem Datenbankkonto zugeordnet sind (in dieser Abbildung z.B. auf die drei Regionen USA, Osten, USA, Westen und Indien, Mitte). Die „Partitionsgruppe“ ist eine global verteilte Entität, die aus mehreren Kopien Ihrer Daten in jeder Region besteht (siehe die Y-Achse). Sie können den Ihrem Datenbankkonto zugeordneten Regionen eine Priorität zuweisen. Bei einem Notfall führt DocumentDB ein transparentes Failover in die nächste Region durch. Sie können ein Failover auch manuell simulieren, um zu testen, ob Ihre Anwendung lückenlos verfügbar ist.  
 

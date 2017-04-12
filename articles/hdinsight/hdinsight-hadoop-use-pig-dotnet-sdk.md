@@ -17,9 +17,9 @@ ms.workload: big-data
 ms.date: 03/03/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
-ms.openlocfilehash: db01dd7ff7590c6cb43b5f8bc39674f585160856
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 10e2f35bdaf1b6e00e3d8dde34dd5809a89cde30
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -37,18 +37,18 @@ Zur Ausführung der in diesem Artikel aufgeführten Schritte benötigen Sie Folg
 * Einen Azure HDInsight-Cluster (Hadoop in HDInsight), der auf Windows oder Linux basiert
 
   > [!IMPORTANT]
-  > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date).
+  > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date).
 
 * Visual Studio 2012, 2013, 2015 oder 2017.
 
 ## <a name="create-the-application"></a>Erstellen der Anwendung
 
-Das HDInsight .NET SDK enthält .NET-Clientbibliotheken, die das Arbeiten mit HDInsight-Clustern in .NET vereinfachen. 
+Das HDInsight .NET SDK enthält .NET-Clientbibliotheken, die das Arbeiten mit HDInsight-Clustern in .NET vereinfachen.
 
 1. Wählen Sie in Visual Studio im Menü **Datei** die Option **Neu** und anschließend **Projekt** aus.
 
 2. Geben Sie für das neue Projekt die folgenden Werte ein, oder wählen Sie sie aus:
-   
+
    | Eigenschaft | Wert |
    | ------ | ------ |
    | Kategorie | Vorlagen/Visual C#/Windows |
@@ -60,11 +60,11 @@ Das HDInsight .NET SDK enthält .NET-Clientbibliotheken, die das Arbeiten mit HD
 4. Wählen Sie im Menü **Extras** die Option **Bibliothekspaket-Manager** oder **Nuget-Paket-Manager** und dann **Paket-Manager-Konsole** aus.
 
 5. Verwenden Sie den folgenden Befehl, um die .NET SDK-Pakete zu installieren:
-   
+
         Install-Package Microsoft.Azure.Management.HDInsight.Job
 
 6. Doppelklicken Sie im Projektmappen-Explorer auf **Program.cs** , um die Datei zu öffnen. Ersetzen Sie den vorhandenen Code durch den folgenden Code:
-   
+
     ```csharp
     using Microsoft.Azure.Management.HDInsight.Job;
     using Microsoft.Azure.Management.HDInsight.Job.Models;
@@ -117,7 +117,7 @@ Das HDInsight .NET SDK enthält .NET-Clientbibliotheken, die das Arbeiten mit HD
         }
     }
     ```
-    
+
 7. Drücken Sie **F5**, um die Anwendung zu starten.
 
 8. Drücken Sie die **EINGABETASTE** , um die Anwendung zu beenden.

@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: ericor
 translationtype: Human Translation
-ms.sourcegitcommit: e4d94d3f9736378d93e93be6645ed04ade763ca3
-ms.openlocfilehash: b948a8c0394fffcfa63b5b48646639118cba8953
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: dcf897cfb03316312613a641f1758cd4636d06b7
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="upload-a-custom-image-for-azure-remoteapp"></a>Hochladen eines benutzerdefinierten Images für Azure RemoteApp
 > [!IMPORTANT]
-> Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
+> Azure RemoteApp wird am 31. August 2017 eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
 > 
 > 
 
@@ -53,10 +54,5 @@ Nachdem Sie Ihr benutzerdefiniertes Vorlagenimage erstellt oder aktualisiert hab
 * Vergewissern Sie sich, dass Sie Windows PowerShell, nicht Azure PowerShell verwenden. Sie müssen das Azure PowerShell-Modul installieren, da bestimmte Module während des Uploads erforderlich sind.
 * Nehmen Sie keine Änderungen am Skript vor, die Überprüfungen sollen Ihnen helfen.
 * Wenn die VHD-Datei beim Upload ausgesperrt wird, kopieren oder verschieben Sie sie an den neuen Speicherort, und wiederholen Sie den Upload. Möglicherweise verhindern bestimmte Windows-Prozesse den Upload.  
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

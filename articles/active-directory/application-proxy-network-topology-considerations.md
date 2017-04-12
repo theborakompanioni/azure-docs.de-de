@@ -11,20 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/12/2017
+ms.date: 03/22/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 4b21bf6bc1be59facd503000a4f83a56189d55d3
-ms.openlocfilehash: aea1b35348bec0affe2288ff683e0320e2b0f714
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 6869453e0776405841890978eef97f549be97541
+ms.lasthandoff: 04/03/2017
 
 
 ---
 
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Aspekte der Netzwerktopologie bei Verwendung des Azure Active Directory-Anwendungsproxys
-> [!NOTE]
-> Das Feature "Anwendungsproxy" ist nur verfügbar, wenn Sie Azure Active Directory auf die Premium oder Basic Edition aktualisiert haben. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-editions.md).
->
 
 In diesem Artikel geht es darum, welche Aspekte der Netzwerktopologie wichtig sind, wenn der Azure Active Directory-Anwendungsproxy (Azure AD) für die Veröffentlichung und den Zugriff auf Ihre Anwendungen per Remotezugriff verwendet wird.
 
@@ -88,7 +85,6 @@ Zum Optimieren von Hop 3 wird der Connector in geringer Entfernung von der Ziela
 
 > [!NOTE]
 Es gibt einige Szenarien, in denen Sie sowohl Hop 2 als auch Hop 3 optimieren müssen, um die gewünschte Wartezeit zu erhalten. Wenn Sie beispielsweise eine VPN- oder ExpressRoute-Verbindung zwischen Ihrem Netzwerk und dem Azure-Datencenter eingerichtet haben, können Sie beide Hops optimieren.
->
 
 ### <a name="pattern-2-take-advantage-of-expressroute-with-public-peering"></a>Muster 2: Nutzen von ExpressRoute mit öffentlichem Peering
 
@@ -110,7 +106,7 @@ Der Schwerpunkt dieses Artikels ist zwar die Anordnung des Connectors, aber Sie 
 
 Immer mehr Organisationen verschieben ihre Netzwerke in gehostete Umgebungen. Auf diese Weise können sie ihre Apps in einer gehosteten Umgebung anordnen, die gleichzeitig Teil ihres Unternehmensnetzwerks ist und sich noch innerhalb der Domäne befindet. In diesem Fall können die in den vorherigen Abschnitten beschriebenen Muster auf den neuen Anwendungsspeicherort angewendet werden.
 
-Erwägen Sie die Verwendung von Connectorgruppen für Apps, die sich an unterschiedlichen Standorten und in unterschiedlichen Netzwerken befinden. Informationen zu diesem Ansatz finden Sie unter [Azure AD Domain Services](https://azure.microsoft.com/services/active-directory-ds).
+Erwägen Sie die Verwendung von Connectorgruppen für Apps, die sich an unterschiedlichen Standorten und in unterschiedlichen Netzwerken befinden. Informationen zu diesem Ansatz finden Sie unter [Azure AD Domain Services](../active-directory-domain-services/active-directory-ds-overview.md).
 
 ## <a name="common-scenarios"></a>Gängige Szenarien
 
@@ -173,8 +169,9 @@ In dieser Situation können Sie auch eine andere Variante verwenden. Wenn sich d
 ![Diagramm mit Kontur der Kontinente und Anordnung der Hops wie in diesem Anwendungsfall](./media/application-proxy-network-topologies/application-proxy-pattern5c.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Aktivieren des Anwendungsproxys](active-directory-application-proxy-enable.md)<br>
-[Aktivieren der einmaligen Anmeldung](active-directory-application-proxy-sso-using-kcd.md)<br>
-[Aktivieren des bedingten Zugriffs](active-directory-application-proxy-conditional-access.md)<br>
-[Problembehandlung von Anwendungsproxys](active-directory-application-proxy-troubleshoot.md)
+
+- [Aktivieren des Anwendungsproxys](active-directory-application-proxy-enable.md)
+- [Aktivieren der einmaligen Anmeldung](active-directory-application-proxy-sso-using-kcd.md)
+- [Aktivieren des bedingten Zugriffs](active-directory-application-proxy-conditional-access.md)
+- [Problembehandlung von Anwendungsproxys](active-directory-application-proxy-troubleshoot.md)
 
