@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 5a5ad526513c7adf9b8274acec7d89fe375f43fc
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: cab03e7765dc7116a7f974833871fae652e8363c
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="using-redirection-in-azure-remoteapp"></a>Verwenden von Umleitungen in Azure RemoteApp
 > [!IMPORTANT]
-> Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
+> Azure RemoteApp wird am 31. August 2017 eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
 > 
 > 
 
@@ -115,10 +116,5 @@ Sie können auch das Gruppenrichtlinienverwaltungstool verwenden, um die USB-Uml
 6. Doppelklicken Sie auf **RDP-Umleitung für andere unterstützte RemoteFX USB-Geräte auf diesem Computer zulassen**.
 7. Wählen Sie **Aktiviert** und anschließend unter „Zugriffsrechte für RemoteFX USB-Umleitung“ die Option **Administratoren und Benutzer** aus.
 8. Klicken Sie auf **OK**.  
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

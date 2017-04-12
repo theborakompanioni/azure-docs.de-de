@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: e4d94d3f9736378d93e93be6645ed04ade763ca3
-ms.openlocfilehash: 456175d718898287496d9e19cae8da259fba2e8e
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 39dd726078c4dcc55063300bdca998ad822feadd
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="how-to-migrate-data-into-and-out-of-azure-remoteapp"></a>Migrieren von Daten in und aus Azure RemoteApp
 > [!IMPORTANT]
-> Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
+> Azure RemoteApp wird am 31. August 2017 eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
 > 
 > 
 
@@ -60,10 +61,5 @@ Sie können zwar den Synchronisierungs-Agent für OneDrive for Business nicht in
 
 ## <a name="copy-files-by-using-drive-redirection"></a>Kopieren von Dateien mithilfe einer Laufwerkumleitung
 Wenn Sie die [Laufwerkumleitung](remoteapp-redirection.md)aktiviert haben, haben Sie bereits ein zugeordnetes Laufwerk für Ihre Benutzer erstellt. In diesem Fall können die Benutzer ihre Dateien im umgeleiteten Laufwerk zippen und dann auf ihrem lokalen PC speichern.
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 
