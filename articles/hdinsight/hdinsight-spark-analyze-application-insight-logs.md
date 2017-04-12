@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 02/10/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 110f3aa9ce4848c9350ea2e560205aa762decf7a
-ms.openlocfilehash: 6fed646d81bf583a0c3ecefcd2bc716fe65ecdc6
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: cb994df3712798d9016401235d4eff09b3518584
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -32,12 +32,12 @@ Erfahren Sie, wie Sie mit Spark in HDInsight Telemetriedaten von Application Ins
 
 * Ein Azure-Abonnement.
 
-* Eine Anwendung, die zur Verwendung von Application Insights konfiguriert ist. 
+* Eine Anwendung, die zur Verwendung von Application Insights konfiguriert ist.
 
 * Sie müssen mit der Erstellung eines Linux-basierten HDInsight-Clusters vertraut sein. Weitere Informationen finden Sie unter [Erste Schritte: Erstellen eines Apache Spark-Clusters für Azure HDInsight und Ausführen von interaktiven Abfragen per Spark-SQL](hdinsight-apache-spark-jupyter-spark-sql.md).
-  
+
   > [!IMPORTANT]
-  > Die Schritte in diesem Dokument erfordern einen HDInsight-Cluster mit Linux. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date).
+  > Die Schritte in diesem Dokument erfordern einen HDInsight-Cluster mit Linux. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date).
 
 * Ein Webbrowser.
 
@@ -60,7 +60,7 @@ Application Insights kann für den fortlaufenden Export von Telemetriedaten in B
 * **Speicherort**: Wenn das Speicherkonto und HDInsight sich an verschiedenen Standorten befinden, kann dies die Latenz erhöhen. Gleichzeitig steigen die Kosten, da beim Verschieben von Daten zwischen Regionen Ausgangsgebühren anfallen.
 * **Blobtyp**: HDInsight unterstützt nur Blockblobs. Application Insights verwendet standardmäßig Blockblobs, deshalb sollten Sie standardmäßig mit HDInsight arbeiten.
 * **Zugriffsberechtigungen**: Wenn Sie dasselbe Speicherkonto für den fortlaufenden Application Insights-Export und den HDInsight-Standardspeicher verwenden, verfügt HDInsight über Vollzugriff auf die Application Insights-Telemetriedaten. Dies bedeutet, dass die Telemetriedaten aus dem HDInsight-Cluster gelöscht werden können.
-  
+
     Stattdessen wird empfohlen, separate Speicherkonten für HDInsight und Application Insights-Telemetriedaten zu verwenden und [Shared Access Signatures (SAS) zu verwenden, um den Datenzugriff aus HDInsight zu beschränken](hdinsight-storage-sharedaccesssignature-permissions.md). Mithilfe einer SAS können Sie HDInsight Lesezugriff auf die Telemetriedaten gewähren.
 
 ### <a name="data-schema"></a>Datenschema
@@ -78,53 +78,53 @@ Das SAS-Dokument bietet Informationen dazu, wie Sie den SAS-Speicher zu einem vo
 ## <a name="analyze-the-data-using-python-pyspark"></a>Analysieren der Daten mithilfe von Python (PySpark)
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com)Ihren Spark in HDInsight-Cluster aus. Wählen Sie im Abschnitt zunächst **Quick Links** und dann **Cluster-Dashboards** aus,und wählen Sie dann auf dem Blatt für Cluster-Dashboards **Jupyter Notebook** aus.
-   
+
     ![Clusterdashboards](./media/hdinsight-spark-analyze-application-insight-logs/clusterdashboards.png)
 
 2. Wählen Sie oben rechts auf der Jupyter-Seite **Neu** und anschließend **PySpark** aus. Eine neue Browserregisterkarte wird geöffnet, die ein Python-basiertes Jupyter Notebook enthält.
 
 3. Geben Sie in das erste (als **Zelle** bezeichnete) Feld auf der Seite folgenden Text ein:
-   
+
         sc._jsc.hadoopConfiguration().set('mapreduce.input.fileinputformat.input.dir.recursive', 'true')
-   
+
     Dieser Code konfiguriert Spark für den rekursiven Zugriff auf die Verzeichnisstruktur für die Eingabedaten. Die Application Insights-Telemetriedaten werden in einer Verzeichnisstruktur protokolliert, die `/{telemetry type}/YYYY-MM-DD/{##}/` ähnelt.
 
 4. Verwenden Sie **UMSCHALT+EINGABE**, um den Code auszuführen. Auf der linken Seite der Zelle wird ein „\*“ in Klammern angezeigt. Dies weist darauf hin, dass der Code in dieser Zelle ausgeführt wird. Nach Abschluss der Ausführung wird „\*“ in eine Zahl geändert, und eine Ausgabe, die dem folgenden Text ähnelt, wird unterhalb der Zelle angezeigt:
-   
+
         Creating SparkContext as 'sc'
-   
+
         ID    YARN Application ID    Kind    State    Spark UI    Driver log    Current session?
         3    application_1468969497124_0001    pyspark    idle    Link    Link    ✔
-   
+
         Creating HiveContext as 'sqlContext'
         SparkContext and HiveContext created. Executing user code ...
 5. Unterhalb der ersten Zelle wird eine neu erstellte Zelle angezeigt. Geben Sie den folgenden Text in die neue Zelle ein. Ersetzen Sie hierbei **CONTAINER** und **STORAGEACCOUNT** durch den Azure Storage-Kontonamen und den Namen des Blobcontainers, die Sie beim Konfigurieren des fortlaufenden Application Insights-Exports verwendet haben.
-   
+
         %%bash
         hdfs dfs -ls wasb://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
-   
+
     Verwenden Sie **UMSCHALT+EINGABETASTE**, um diese Zelle auszuführen. Ein Ergebnis ähnlich dem folgenden Text wird angezeigt:
-   
+
         Found 1 items
         drwxrwxrwx   -          0 1970-01-01 00:00 wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
-   
+
     Der zurückgegebene WASB-Pfad ist der Speicherort der Application Insights-Telemetriedaten. Ändern Sie die Zeile `hdfs dfs -ls` in der Zelle so ab, dass der zurückgegebene WASB-Pfad verwendet wird, und führen Sie dann über **UMSCHALT+EINGABE** die Zelle erneut aus. Jetzt sollten die Ergebnisse die Verzeichnisse anzeigen, die Telemetriedaten enthalten.
-   
+
    > [!NOTE]
    > Für die verbleibenden Schritte in diesem Abschnitt wurde das Verzeichnis `wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` verwendet. Ihre Verzeichnisstruktur kann anders sein.
 
 6. Geben Sie in die nächste Zelle Folgendes ein. Ersetzen Sie **WASB\_PATH** durch den Pfad aus dem vorherigen Schritt.
-   
+
         jsonFiles = sc.textFile('WASB_PATH')
         jsonData = sqlContext.read.json(jsonFiles)
-   
+
     Dieser Code erstellt einen Datenrahmen aus den JSON-Dateien, die über den fortlaufenden Exportprozess exportiert wurden. Verwenden Sie **UMSCHALT+EINGABETASTE**, um diese Zelle auszuführen.
 7. Geben Sie in der nächsten Zelle Folgendes ein, und führen Sie die Zelle aus, um das Schema anzuzeigen, das Spark für die JSON-Dateien erstellt hat:
-   
+
         jsonData.printSchema()
-   
+
     Das Schema ist für die verschiedenen Telemetriedatentypen unterschiedlich. Das nachfolgende Beispiel ist das Schema, das für Webanforderungen generiert wird (Daten sind im Unterverzeichnis `Requests` gespeichert):
-   
+
         root
         |-- context: struct (nullable = true)
         |    |-- application: struct (nullable = true)
@@ -186,19 +186,19 @@ Das SAS-Dokument bietet Informationen dazu, wie Sie den SAS-Speicher zu einem vo
         |    |    |    |-- host: string (nullable = true)
         |    |    |    |-- protocol: string (nullable = true)
 8. Verwenden Sie den folgenden Code, um den Datenrahmen als temporäre Tabelle zu registrieren und eine Abfrage für die Daten auszuführen:
-   
+
         jsonData.registerTempTable("requests")
         sqlContext.sql("select context.location.city from requests where context.location.city is not null")
-   
+
     Über diese Abfrage werden Informationen zur Stadt für die ersten 20 Datensätze zurückgegeben, bei denen „context.location.city“ nicht NULL ist.
-   
+
    > [!NOTE]
    > Die Kontextstruktur ist in allen Telemetriedaten vorhanden, die von Application Insights protokolliert werden. Möglicherweise wird das Element „city“ jedoch in Ihren Protokollen nicht aufgefüllt. Verwenden Sie das Schema, um weitere abfragbare Elemente zu identifizieren, die für Ihre Protokolle möglicherweise Daten enthalten.
-   > 
-   > 
-   
+   >
+   >
+
     Die Abfrage gibt Informationen zurück, die folgendem Text ähneln:
-   
+
         +---------+
         |     city|
         +---------+
@@ -211,52 +211,52 @@ Das SAS-Dokument bietet Informationen dazu, wie Sie den SAS-Speicher zu einem vo
 
 ## <a name="analyze-the-data-using-scala"></a>Analysieren der Daten mit Scala
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com)Ihren Spark in HDInsight-Cluster aus. Wählen Sie im Abschnitt zunächst **Quick Links** und dann **Cluster-Dashboards** aus,und wählen Sie dann auf dem Blatt für Cluster-Dashboards **Jupyter Notebook** aus.
-   
+
     ![Clusterdashboards](./media/hdinsight-spark-analyze-application-insight-logs/clusterdashboards.png)
 2. Wählen Sie oben rechts auf der Jupyter-Seite **Neu** und anschließend **Scala** aus. Daraufhin wird eine neue Browserregisterkarte geöffnet, die ein Scala-basiertes Jupyter Notebook enthält.
 3. Geben Sie in das erste (als **Zelle** bezeichnete) Feld auf der Seite folgenden Text ein:
-   
+
         sc.hadoopConfiguration.set("mapreduce.input.fileinputformat.input.dir.recursive", "true")
-   
+
     Dieser Code konfiguriert Spark für den rekursiven Zugriff auf die Verzeichnisstruktur für die Eingabedaten. Die Application Insights-Telemetriedaten werden in einer Verzeichnisstruktur protokolliert, die `/{telemetry type}/YYYY-MM-DD/{##}/` ähnelt.
 
 4. Verwenden Sie **UMSCHALT+EINGABE**, um den Code auszuführen. Auf der linken Seite der Zelle wird ein „\*“ in Klammern angezeigt. Dies weist darauf hin, dass der Code in dieser Zelle ausgeführt wird. Nach Abschluss der Ausführung wird „\*“ in eine Zahl geändert, und eine Ausgabe, die dem folgenden Text ähnelt, wird unterhalb der Zelle angezeigt:
-   
+
         Creating SparkContext as 'sc'
-   
+
         ID    YARN Application ID    Kind    State    Spark UI    Driver log    Current session?
         3    application_1468969497124_0001    spark    idle    Link    Link    ✔
-   
+
         Creating HiveContext as 'sqlContext'
         SparkContext and HiveContext created. Executing user code ...
 5. Unterhalb der ersten Zelle wird eine neu erstellte Zelle angezeigt. Geben Sie den folgenden Text in die neue Zelle ein. Ersetzen Sie hierbei **CONTAINER** und **STORAGEACCOUNT** durch den Azure Storage-Kontonamen und den Namen des Blobcontainers, die Sie beim Konfigurieren des fortlaufenden Application Insights-Exports verwendet haben.
-   
+
         %%bash
         hdfs dfs -ls wasb://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
-   
+
     Verwenden Sie **UMSCHALT+EINGABETASTE**, um diese Zelle auszuführen. Ein Ergebnis ähnlich dem folgenden Text wird angezeigt:
-   
+
         Found 1 items
         drwxrwxrwx   -          0 1970-01-01 00:00 wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
-   
+
     Der zurückgegebene WASB-Pfad ist der Speicherort der Application Insights-Telemetriedaten. Ändern Sie die Zeile `hdfs dfs -ls` in der Zelle so ab, dass der zurückgegebene WASB-Pfad verwendet wird, und führen Sie dann über **UMSCHALT+EINGABE** die Zelle erneut aus. Jetzt sollten die Ergebnisse die Verzeichnisse anzeigen, die Telemetriedaten enthalten.
-   
+
    > [!NOTE]
    > Für die verbleibenden Schritte in diesem Abschnitt wurde das Verzeichnis `wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` verwendet. Dieses Verzeichnis ist nur vorhanden, wenn Ihre Telemetriedaten aus einer Web-App stammen. Wenn Sie Telemetriedaten verwendet, die kein Anforderungsverzeichnis umfassen, wählen Sie ein anderes Verzeichnis aus, und passen Sie die übrigen Schritte auf die Verwendung dieses Verzeichnisses und des Schemas für die darin gespeicherten Daten an.
-   > 
-   > 
+   >
+   >
 6. Geben Sie in die nächste Zelle Folgendes ein. Ersetzen Sie **WASB\_PATH** durch den Pfad aus dem vorherigen Schritt.
-   
+
         jsonFiles = sc.textFile('WASB_PATH')
         jsonData = sqlContext.read.json(jsonFiles)
-   
+
     Dieser Code erstellt einen Datenrahmen aus den JSON-Dateien, die über den fortlaufenden Exportprozess exportiert wurden. Verwenden Sie **UMSCHALT+EINGABETASTE**, um diese Zelle auszuführen.
 7. Geben Sie in der nächsten Zelle Folgendes ein, und führen Sie die Zelle aus, um das Schema anzuzeigen, das Spark für die JSON-Dateien erstellt hat:
-   
+
         jsonData.printSchema
-   
+
     Das Schema ist für die verschiedenen Telemetriedatentypen unterschiedlich. Das nachfolgende Beispiel ist das Schema, das für Webanforderungen generiert wird (Daten sind im Unterverzeichnis `Requests` gespeichert):
-   
+
         root
         |-- context: struct (nullable = true)
         |    |-- application: struct (nullable = true)
@@ -318,19 +318,19 @@ Das SAS-Dokument bietet Informationen dazu, wie Sie den SAS-Speicher zu einem vo
         |    |    |    |-- host: string (nullable = true)
         |    |    |    |-- protocol: string (nullable = true)
 8. Verwenden Sie den folgenden Code, um den Datenrahmen als temporäre Tabelle zu registrieren und eine Abfrage für die Daten auszuführen:
-   
+
         jsonData.registerTempTable("requests")
         var city = sqlContext.sql("select context.location.city from requests where context.location.city is not null limit 10").show()
-   
+
     Über diese Abfrage werden Informationen zur Stadt für die ersten 20 Datensätze zurückgegeben, bei denen „context.location.city“ nicht NULL ist.
-   
+
    > [!NOTE]
    > Die Kontextstruktur ist in allen Telemetriedaten vorhanden, die von Application Insights protokolliert werden. Möglicherweise wird das Element „city“ jedoch in Ihren Protokollen nicht aufgefüllt. Verwenden Sie das Schema, um weitere abfragbare Elemente zu identifizieren, die für Ihre Protokolle möglicherweise Daten enthalten.
-   > 
-   > 
-   
+   >
+   >
+
     Die Abfrage gibt Informationen zurück, die folgendem Text ähneln:
-   
+
         +---------+
         |     city|
         +---------+
@@ -354,5 +354,4 @@ Informationen zum Erstellen und Ausführen von Spark-Anwendungen finden Sie in d
 
 * [Erstellen einer eigenständigen Anwendung mit Scala](hdinsight-apache-spark-create-standalone-application.md)
 * [Remoteausführung von Aufträgen in einem Spark-Cluster mithilfe von Livy](hdinsight-apache-spark-livy-rest-interface.md)
-
 

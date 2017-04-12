@@ -16,16 +16,15 @@ ms.workload: na
 ms.date: 03/29/2017
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: bf685e4c59117497e27ff7e2ef7b3b39caac6d4a
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 6a99749a96a6239428e5b018a26a6e8fd440c9d2
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Verwenden von Power BI zum Visualisieren von Sensordaten in Azure IoT Hub in Echtzeit
 
-> [!NOTE]
-> Bevor Sie dieses Tutorial starten, stellen Sie sicher, dass Sie das Tutorial [Verbinden von ESP8266 mit Azure IoT Hub](/iot-hub-arduino-huzzah-esp8266-get-started.md) abgeschlossen haben. In [Verbinden von ESP8266 mit Azure IoT Hub](/iot-hub-arduino-huzzah-esp8266-get-started.md) haben Sie Ihr IoT-Gerät und den IoT Hub eingerichtet sowie eine Beispielanwendung zur Ausführung auf Ihrem Gerät bereitgestellt. Die Anwendung sendet gesammelte Sensordaten an Ihren IoT Hub.
+[!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
 ## <a name="what-you-learn"></a>Lerninhalt
 
@@ -170,8 +169,4 @@ Microsoft bietet auch die [mobilen Power BI-Apps](https://powerbi.microsoft.com/
 Sie haben Power BI erfolgreich eingesetzt, um Sensordaten in Ihrem Azure IoT Hub in Echtzeit zu visualisieren.
 Es gibt eine alternative Möglichkeit zum Anzeigen von Daten in Ihrem Azure IoT Hub. Siehe [Visualisieren von Sensordaten in Azure IoT Hub in Echtzeit mit Azure-Web-Apps](iot-hub-live-data-visualization-in-web-apps.md).
 
-Informationen zu den weiteren ersten Schritten mit IoT Hub und zum Kennenlernen anderer IoT-Szenarien finden Sie in den folgenden Artikeln:
-
-- [Verwalten von Cloudgerät-Nachrichten mit iothub-explorer](iot-hub-explorer-cloud-device-messaging.md)
-- [Speichern von IoT Hub-Nachrichten im Azure-Datenspeicher](iot-hub-store-data-in-azure-table-storage.md)
-
+[!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

@@ -16,16 +16,15 @@ ms.workload: na
 ms.date: 03/27/2017
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 8c25b8f558aae638a95d6e7186e19e77d02edbb2
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: df1cf03bc452b76569bdca030b60719d6d2f29f3
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="use-iothub-explorer-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Verwenden von iothub-explorer zum Senden und Empfangen von Nachrichten zwischen Ihrem Gerät und IoT Hub
 
-> [!NOTE]
-> Bevor Sie dieses Tutorial starten, stellen Sie sicher, dass Sie das Tutorial [Verbinden von ESP8266 mit Azure IoT Hub](/iot-hub-arduino-huzzah-esp8266-get-started.md) abgeschlossen haben. In [Verbinden von ESP8266 mit Azure IoT Hub](/iot-hub-arduino-huzzah-esp8266-get-started.md) haben Sie Ihr IoT-Gerät und den IoT Hub eingerichtet sowie eine Beispielanwendung zur Ausführung auf Ihrem Gerät bereitgestellt. Die Anwendung sendet gesammelte Sensordaten an Ihren IoT Hub.
+[!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
 [iothub-explorer](https://github.com/azure/iothub-explorer) bietet eine übersichtliche Anzahl von Befehlen zum Vereinfachen der IoT Hub-Verwaltung. Der Schwerpunkt dieses Tutorials liegt auf dem Verwenden von iothub-explorer zum Senden und Empfangen von Nachrichten zwischen Ihrem Gerät und IoT Hub.
 
@@ -40,7 +39,7 @@ Sie erfahren, wie Sie mit iothub-explorer Gerät-zu-Cloud-Nachrichten überwache
 
 ## <a name="what-you-need"></a>Voraussetzungen
 
-- Sie müssen das Tutorial [Verbinden von ESP8266 mit Azure IoT Hub](/iot-hub-arduino-huzzah-esp8266-get-started.md) abgeschlossen haben, in dem die folgenden Voraussetzungen behandelt werden:
+- Sie müssen das Tutorial [Verbinden von ESP8266 mit Azure IoT Hub](iot-hub-arduino-huzzah-esp8266-get-started.md) abgeschlossen haben, in dem die folgenden Voraussetzungen behandelt werden:
   - Ein aktives Azure-Abonnement.
   - Ein Azure IoT Hub in Ihrem Abonnement.
   - Eine Clientanwendung, die Nachrichten an Ihren Azure IoT Hub sendet.
@@ -86,6 +85,4 @@ Der Befehl lässt die LED blinken, die mit dem Gerät verbunden ist, und sendet 
 
 Sie haben gelernt, Gerät-zu-Cloud-Nachrichten zu überwachen und Cloud-zu-Gerät-Nachrichten zwischen dem IoT-Gerät und Azure IoT Hub zu senden.
 
-Informationen zu den weiteren ersten Schritten mit IoT Hub und zum Kennenlernen anderer IoT-Szenarien finden Sie in den folgenden Artikeln:
-
-- [Speichern von IoT Hub-Nachrichten im Azure-Datenspeicher](iot-hub-store-data-in-azure-table-storage.md)
+[!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

@@ -16,15 +16,15 @@ ms.topic: article
 ms.date: 02/09/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: fc2a181a301ca56e41f586428e2994fcdf6d704d
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 017ba7197e11c2b222082833d5acabb9e542b762
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="how-to-attach-a-data-disk-to-a-linux-virtual-machine"></a>Gewusst wie: Anfügen eines Datenträgers an einen virtuellen Linux-Computer
 > [!IMPORTANT] 
-> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager- und klassische Bereitstellung](../../../resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Resource Manager-Modells. Erfahren Sie, wie Sie [einen Datenträger mithilfe des Resource Manager-Bereitstellungsmodell anfügen](../../virtual-machines-linux-add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager- und klassische Bereitstellung](../../../resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Resource Manager-Modells. Erfahren Sie, wie Sie [einen Datenträger mithilfe des Resource Manager-Bereitstellungsmodell anfügen](../add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 Sie können sowohl leere Datenträger, als auch Datenträger mit Daten an Ihre virtuellen Azure-Computer anfügen. Beide Arten von Datenträgern sind VHD-Dateien, die sich in einem Azure Storage-Konto befinden. Wie bei jedem Hinzufügen von Datenträgern zu einem Linux-Computer müssen Sie den Datenträger nach dem Anfügen initialisieren und formatieren, damit er verwendet werden kann. In diesem Artikel wird beschrieben, wie Sie sowohl leere Datenträger als auch Datenträger mit Daten an Ihre VMs anfügen, und wie Sie daraufhin einen neuen Datenträger initialisieren und formatieren.
 
@@ -229,10 +229,10 @@ Informieren Sie sich in den folgenden Artikeln ausführlicher über das Verwende
 * [Anmelden bei einem virtuellen Computer unter Linux][Logon]
 * [Trennen eines Datenträgers von einem virtuellen Linux-Computer](detach-disk.md)
 * [Verwenden der Azure-Befehlszeilenschnittstelle beim klassischen Bereitstellungsmodell](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
-* [Konfigurieren von RAID auf einem virtuellen Linux-Computer in Azure](../../virtual-machines-linux-configure-raid.md)
-* [Konfigurieren von LVM auf einem virtuellen Linux-Computer in Azure](../../virtual-machines-linux-configure-lvm.md)
+* [Konfigurieren von RAID auf einem virtuellen Linux-Computer in Azure](../configure-raid.md)
+* [Konfigurieren von LVM auf einem virtuellen Linux-Computer in Azure](../configure-lvm.md)
 
 <!--Link references-->
-[Agent]:../../virtual-machines-linux-agent-user-guide.md
-[Logon]:../../virtual-machines-linux-mac-create-ssh-keys.md
+[Agent]:../agent-user-guide.md
+[Logon]:../mac-create-ssh-keys.md
 

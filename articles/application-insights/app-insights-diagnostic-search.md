@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: 5e3cf1407079a166fbe5e24abae2248ef467ebbb
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 08390472c6480200751f37028fef594fb055f118
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -165,7 +165,7 @@ Neben der standardmäßig vom Application Insights SDK gesendeten Telemetriedate
 * Erfassen von Protokollablaufverfolgungen mithilfe Ihres bevorzugten Protokollierungsframeworks in [.NET](app-insights-asp-net-trace-logs.md) oder [Java](app-insights-java-trace-logs.md). Das heißt, dass Sie Ihre Protokollablaufverfolgungen durchsuchen und mit Seitenaufrufen, Ausnahmen und anderen Ereignissen korrelieren können. 
 * [Schreiben von Code](app-insights-api-custom-events-metrics.md) zum Senden benutzerdefinierter Ereignisse, Seitenaufrufe und Ausnahmen. 
 
-[Erfahren Sie, wie Sie Protokolle und benutzerdefinierte Telemetrie an Application Insights senden können](app-insights-search-diagnostic-logs.md).
+[Erfahren Sie, wie Sie Protokolle und benutzerdefinierte Telemetrie an Application Insights senden können](app-insights-asp-net-trace-logs.md).
 
 ## <a name="questions"></a>FRAGEN UND ANTWORTEN
 ### <a name="limits"></a>Wie viele Daten werden beibehalten?
@@ -173,7 +173,7 @@ Neben der standardmäßig vom Application Insights SDK gesendeten Telemetriedate
 Entsprechende Informationen finden Sie unter [Zusammenfassung der Grenzwerte](app-insights-pricing.md#limits-summary).
 
 ### <a name="how-can-i-see-post-data-in-my-server-requests"></a>Wie kann ich die POST-Daten in meinen Serveranforderungen anzeigen?
-POST-Daten werden nicht automatisch protokolliert. Sie können jedoch [TrackTrace oder Protokollaufrufe](app-insights-search-diagnostic-logs.md) verwenden. Fügen Sie die POST-Daten in den "message"-Parameter ein. Sie können nicht anhand der Nachricht wie anhand von Eigenschaften filtern, aber dafür ist der Größengrenzwert höher.
+POST-Daten werden nicht automatisch protokolliert. Sie können jedoch [TrackTrace oder Protokollaufrufe](app-insights-asp-net-trace-logs.md) verwenden. Fügen Sie die POST-Daten in den "message"-Parameter ein. Sie können nicht anhand der Nachricht wie anhand von Eigenschaften filtern, aber dafür ist der Größengrenzwert höher.
 
 ## <a name="video"></a>Video
 
@@ -181,7 +181,7 @@ POST-Daten werden nicht automatisch protokolliert. Sie können jedoch [TrackTrac
 
 ## <a name="add"></a>Nächste Schritte
 * [Stellen von komplexeren Abfragen mit Analytics](app-insights-analytics-tour.md)
-* [Senden von Protokollen und benutzerdefinierter Telemetrie an Application Insights](app-insights-search-diagnostic-logs.md)
+* [Senden von Protokollen und benutzerdefinierter Telemetrie an Application Insights](app-insights-asp-net-trace-logs.md)
 * [Einrichten von Tests der Verfügbarkeit und Reaktionsfähigkeit](app-insights-monitor-web-app-availability.md)
 * [Problembehandlung](app-insights-troubleshoot-faq.md)
 

@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7c526faeef2418cfbbca7948004691e127327020
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 7891ce3b04cd5978440dd8af73dc95d1d123ed92
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="what-kind-of-collection-do-you-need-for-azure-remoteapp"></a>Welche Art von Sammlung benötigen Sie für Azure RemoteApp?
 > [!IMPORTANT]
-> Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
+> Azure RemoteApp wird am 31. August 2017 eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
 > 
 > 
 
@@ -90,10 +91,5 @@ In [Anforderungen von Azure AD und Active Directory für Azure RemoteApp](remote
 Ich denke, ich habe jetzt alles erklärt, was Sie wissen müssen. Jetzt bleibt nur noch die praktische Anwendung – das Erstellen Ihrer ersten Azure RemoteApp-Sammlung.
 
 [Erstellen Sie eine Cloudsammlung](remoteapp-create-cloud-deployment.md), oder [erstellen Sie eine Hybridsammlung](remoteapp-create-hybrid-deployment.md) – fangen Sie einfach an.
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

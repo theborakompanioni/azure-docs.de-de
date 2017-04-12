@@ -17,9 +17,9 @@ ms.workload: big-data
 ms.date: 02/06/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 6ce490fb903d4ed2177b95145bb98fb3eeb0654f
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 71acfdc7748b85b64d4c46072d5c8ee61c0b1768
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -36,10 +36,10 @@ Um die in diesem Artikel aufgeführten Schritte auszuführen, benötigen Sie Fol
 * Ein Linux-basierter Hadoop-Cluster in HDInsight
 
   > [!IMPORTANT]
-  > Die Schritte in diesem Dokument erfordern einen HDInsight-Cluster mit Linux. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date).
+  > Die Schritte in diesem Dokument erfordern einen HDInsight-Cluster mit Linux. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date).
 
 * Ein Texteditor
-  
+
   > [!IMPORTANT]
   > Im Text-Editor muss LF als Zeilenende verwendet werden. Wenn CRLF verwendet wird, verursacht dies beim Ausführen des MapReduce-Auftrags auf Linux-basierten HDInsight-Clustern Fehler. Wenn Sie nicht sicher sind, führen Sie die optionalen Schritte im Abschnitt [Ausführen von MapReduce](#run-mapreduce) aus, um CRLF-Vorkommen in LF zu konvertieren.
 
@@ -241,23 +241,23 @@ Dadurch werden die Dateien aus dem lokalen System auf den Stammknoten kopiert.
 Führen Sie die folgenden Schritte aus, um eine Verbindung mit dem Cluster herzustellen, und führen Sie den MapReduce-Streamingauftrag in einer SSH-Sitzung aus.
 
 1. Herstellen einer Verbindung zum Cluster mithilfe von SSH:
-   
+
    `ssh username@clustername-ssh.azurehdinsight.net`
-   
+
    > [!NOTE]
    > Wenn Sie zum Schutz Ihres SSH-Kontos ein Kennwort verwendet haben, werden Sie zur Eingabe dieses Kennworts aufgefordert. Wenn Sie einen SSH-Schlüssel verwendet haben, müssen Sie möglicherweise den Parameter `-i` und den Pfad zum privaten Schlüssel, z. B. `ssh -i /path/to/private/key username@clustername-ssh.azurehdinsight.net`, angeben.
 
 2. (Optional) Falls Sie einen Text-Editor verwendet haben, der beim Erstellen der Dateien „mapper.py“ und „reducer.py“ CRLF als Zeilenende verwendet, oder nicht wissen, welches Zeilenende Ihr Editor einsetzt, konvertieren Sie CRLF-Vorkommen in „mapper.py“ und „reducer.py“ mithilfe der folgenden Befehle in LF.
-   
+
     `perl -pi -e 's/\r\n/\n/g' mappery.py`
     `perl -pi -e 's/\r\n/\n/g' reducer.py`
 
 3. Verwenden Sie zum Starten des MapReduce-Auftrags den folgenden Befehl.
-   
+
     `yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files mapper.py,reducer.py -mapper mapper.py -reducer reducer.py -input /example/data/gutenberg/davinci.txt -output /example/wordcountout`
-   
+
     Dieser Befehl besteht aus den folgenden Komponenten:
-   
+
    * **hadoop-streaming.jar**: Wird verwendet, wenn Streaming-MapReduce-Vorgänge ausgeführt werden. Es verbindet Hadoop mit dem von Ihnen bereitgestellten externen MapReduce-Code.
 
    * **-files**: Teilt Hadoop mit, dass die angegebenen Dateien für diesen MapReduce-Auftrag erforderlich sind und auf alle Arbeitsknoten kopiert werden müssen
@@ -269,7 +269,7 @@ Führen Sie die folgenden Schritte aus, um eine Verbindung mit dem Cluster herzu
    * **-input**: Die Eingabedatei, deren Wörter gezählt werden sollen.
 
    * **-output**: Das Verzeichnis, in das die Ausgabe geschrieben wird.
-     
+
      > [!NOTE]
      > Dieses Verzeichnis wird durch den Auftrag erstellt.
 
@@ -309,7 +309,7 @@ Führen Sie die folgenden Schritte aus, um den MapReduce-Streamingauftrag in Pow
 
     # Create the streaming job definition
     # Note: This assumes that the mapper.py and reducer.py
-    #       are in the root of default storage. If you put them in a 
+    #       are in the root of default storage. If you put them in a
     #       subdirectory, change the -Files parameter to the correct path.
     $jobDefinition = New-AzureRmHDInsightStreamingMapReduceJobDefinition `
         -Files "/mapper.py", "/reducer.py" `
@@ -457,5 +457,4 @@ Nachdem Sie erfahren haben, wie Sie Streaming-MapReduce-Aufträge mit HDInsight 
 * [Verwenden von Hive mit HDInsight](hdinsight-use-hive.md)
 * [Verwenden von Pig mit HDInsight](hdinsight-use-pig.md)
 * [Verwenden von MapReduce-Aufträgen mit HDInsight](hdinsight-use-mapreduce.md)
-
 

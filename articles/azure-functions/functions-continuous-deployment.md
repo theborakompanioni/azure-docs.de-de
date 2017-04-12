@@ -16,8 +16,9 @@ ms.workload: na
 ms.date: 09/25/2016
 ms.author: glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 66753c80223e33c3add9d37aa4d81656472391ca
-ms.openlocfilehash: e1a869d3c3512f32eab7840f5abc17abd8ce8004
+ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
+ms.openlocfilehash: dbcee4d57448c6f25de24d5995b85849d6d82f77
+ms.lasthandoff: 04/04/2017
 
 
 ---
@@ -27,7 +28,7 @@ Mit Azure Functions können Sie problemlos Continuous Deployment für Ihre Funkt
 Die kontinuierliche Bereitstellung ist hervorragend für Projekte geeignet, bei denen häufig zahlreiche Beiträge integriert werden. Außerdem behalten Sie die Kontrolle über den Quellcode Ihrer Funktionen. Aktuell werden folgende Bereitstellungsquellen unterstützt:
 
 * [Bitbucket](https://bitbucket.org/)
-* [Dropbox](https://bitbucket.org/)
+* [Dropbox](https://www.dropbox.com/)
 * [Lokales Git-Repository](../app-service-web/app-service-deploy-local-git.md)
 * Externes Git-Repository
 * [GitHub]
@@ -46,7 +47,7 @@ Die Bereitstellungsquelle und der darin enthaltene Funktionscode müssen vor der
 ## <a name="set-up-continuous-deployment"></a>Einrichten der fortlaufenden Bereitstellung
 Gehen Sie wie folgt vor, um Continuous Deployment für eine vorhandene Funktionen-App zu konfigurieren:
 
-1. Klicken Sie in Ihrer Funktionen-App im [Azure Functions-Portal](https://functions.azure.com/signin) auf **Funktionen-App-Einstellungen** > ** Continuous Integration konfigurieren** > **Setup**.
+1. Klicken Sie in Ihrer Funktionen-App im [Azure Functions-Portal](https://functions.azure.com/signin) auf **Funktionen-App-Einstellungen** > **Continuous Integration konfigurieren** > **Setup**.
    
     ![Continuous Deployment einrichten](./media/functions-continuous-deployment/setup-deployment.png)
    
@@ -122,7 +123,7 @@ Bevor Sie über FTP oder ein lokales Git-Repository Dateien aus Ihrer Funktionen
 <a name="downgit"></a>
 #### <a name="how-to-download-files-using-the-local-git-repository"></a>Gewusst wie: Herunterladen von Dateien mithilfe des lokalen Git-Repositorys
 
-1. Klicken Sie in Ihrer Funktionen-App im [Azure Functions-Portal](https://functions.azure.com/signin) auf **Funktionen-App-Einstellungen** > ** Continuous Integration konfigurieren** > **Setup**.
+1. Klicken Sie in Ihrer Funktionen-App im [Azure Functions-Portal](https://functions.azure.com/signin) auf **Funktionen-App-Einstellungen** > **Continuous Integration konfigurieren** > **Setup**.
 
 2. Klicken Sie auf dem Blatt „Bereitstellungen“ auf **Quelle auswählen** > **Lokales Git-Repository** und anschließend auf **OK**.
 
@@ -141,9 +142,4 @@ Bevor Sie über FTP oder ein lokales Git-Repository Dateien aus Ihrer Funktionen
     Geben Sie bei Bedarf den Benutzernamen und das Kennwort für Ihre Funktionen-App-Bereitstellung an.  
 
 [GitHub]: https://github.com/
-
-
-
-<!--HONumber=Nov16_HO4-->
-
 

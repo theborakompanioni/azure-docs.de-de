@@ -15,9 +15,9 @@ ms.workload: identity
 ms.date: 03/28/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: 7dc79fad1a87f015475cd2643c8bec55192b2a15
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 9782358e59e54070c26e05c641c02c4010af5f68
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -114,19 +114,23 @@ Durch Anwenden der folgenden drei Regeln auf die AD FS-Vertrauensstellung der ve
 
 ## <a name="supported-browsers"></a>Unterstützte Browser
 
-
-| Betriebssystem                     | Browser                 | Support |
-| :--                    | :--                      | :-:     |
+| Betriebssystem                     | Browser                 | Support     |
+| :--                    | :--                      | :-:         |
 | Windows 10                 | IE, Edge                 | ![Prüfen][1] |
 | Windows 10                 | Chrome                   | In Kürze verfügbar |
 | Windows 8/8.1            | IE                       | ![Prüfen][1] |
+| Windows 8/8.1            | Chrome                   | ![Prüfen][1] |
 | Windows 7                  | IE                       | ![Prüfen][1] |
-| iOS                     | Safari                   | ![Prüfen][1] |
+| Windows 7                  | Chrome                   | ![Prüfen][1] |
+| iOS                    | Safari                   | ![Prüfen][1] |
 | Android                | Chrome                   | ![Prüfen][1] |
-| WinPhone               | IE, Edge                 | ![Prüfen][1] |
+| Windows Phone          | IE, Edge                 | ![Prüfen][1] |
 | Windows Server 2016    | IE, Edge                 | ![Prüfen][1] |
+| Windows Server 2016    | Chrome                   | In Kürze verfügbar |
 | Windows Server 2012 R2 | IE                       | ![Prüfen][1] |
-| Windows Server 2008 R2     | IE                       | ![Prüfen][1] |
+| Windows Server 2012 R2 | Chrome                   | ![Prüfen][1] |
+| Windows Server 2008 R2 | IE                       | ![Prüfen][1] |
+| Windows Server 2008 R2 | Chrome                   | ![Prüfen][1] |
 | Mac OS                 | Safari                   | ![Prüfen][1] |
 | Mac OS                 | Chrome                   | In Kürze verfügbar |
 

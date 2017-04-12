@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/02/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 1d010dd85ccf2dd708a7740eb8399fc06a603574
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: c306000e898f5fe0260ef3347988923266ed096e
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -65,7 +65,7 @@ Organisationen, die keine Datenzugriffssteuerung mit Funktionen wie RBAC erzwing
 
 ## <a name="vm-availability-and-network-access"></a>Verfügbarkeit und Netzwerkzugriff für virtuelle Computer
 
-Falls Ihr virtueller Computer kritische Anwendungen ausführt, die eine hohe Verfügbarkeit erfordern, empfiehlt sich die Verwendung mehrerer virtueller Computer. Erstellen Sie für eine höhere Verfügbarkeit mindestens zwei VMs in der [Verfügbarkeitsgruppe](../virtual-machines/virtual-machines-windows-infrastructure-availability-sets-guidelines.md).
+Falls Ihr virtueller Computer kritische Anwendungen ausführt, die eine hohe Verfügbarkeit erfordern, empfiehlt sich die Verwendung mehrerer virtueller Computer. Erstellen Sie für eine höhere Verfügbarkeit mindestens zwei VMs in der [Verfügbarkeitsgruppe](../virtual-machines/windows/infrastructure-availability-sets-guidelines.md).
 
 [Azure Load Balancer](../load-balancer/load-balancer-overview.md) setzt außerdem voraus, dass virtuelle Computer mit Lastenausgleich der gleichen Verfügbarkeitsgruppe angehören. Falls auf diese virtuellen Computer über das Internet zugegriffen werden muss, müssen Sie einen [Load Balancer mit Internetzugriff](../load-balancer/load-balancer-internet-overview.md) konfigurieren.
 
@@ -123,7 +123,7 @@ Organisationen, die für ihre virtuellen Computer kein hohes Maß an Sicherheit 
 
 Ressourcenmissbrauch kann problematisch sein, wenn Prozesse von virtuellen Computern mehr Ressourcen beanspruchen als sie sollten. Leistungsprobleme bei einem virtuellen Computer können zu einer Dienstunterbrechung führen und gegen das Sicherheitsprinzip der Verfügbarkeit verstoßen. Aus diesem Grund muss der Zugriff auf virtuelle Computer nicht nur reaktiv (also wenn bereits ein Problem auftritt), sondern auch proaktiv anhand einer im Normalbetrieb ermittelten Baseline überwacht werden.
 
-Durch die Analyse der [Azure-Diagnoseprotokolldateien](https://azure.microsoft.com/en-us/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) können Sie die Ressourcen Ihrer virtuellen Computer überwachen und potenzielle Probleme erkennen, die unter Umständen die Leistung und Verfügbarkeit beeinträchtigen. Die Azure-Diagnoseerweiterung stellt Überwachungs- und Diagnosefunktionen auf virtuellen Windows-Computern bereit. Diese Funktionen können Sie aktivieren, indem Sie die Erweiterung in die [Azure Resource Manager-Vorlage](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md) einbeziehen.
+Durch die Analyse der [Azure-Diagnoseprotokolldateien](https://azure.microsoft.com/en-us/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) können Sie die Ressourcen Ihrer virtuellen Computer überwachen und potenzielle Probleme erkennen, die unter Umständen die Leistung und Verfügbarkeit beeinträchtigen. Die Azure-Diagnoseerweiterung stellt Überwachungs- und Diagnosefunktionen auf virtuellen Windows-Computern bereit. Diese Funktionen können Sie aktivieren, indem Sie die Erweiterung in die [Azure Resource Manager-Vorlage](../virtual-machines/windows/extensions-diagnostics-template.md) einbeziehen.
 
 Sie können auch [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-metrics.md) verwenden, um sich über den Zustand Ihrer Ressourcen zu informieren.
 

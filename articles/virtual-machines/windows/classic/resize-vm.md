@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 10/19/2016
 ms.author: drewm
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 522463673b9ac6e53da616e435a465d2d2ce0524
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 4277bc8394c7ba140291e9dc776162e87deab96b
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -28,7 +28,7 @@ In diesem Artikel erfahren Sie, wie die Größe eines virtuellen Windows-Compute
 Wenn Sie die Möglichkeit zum Ändern der Größe eines virtuellen Computers in Betracht ziehen, gibt es zwei Konzepte, die den Bereich der verfügbaren Größe für den virtuellen Computer bestimmen. Das erste Konzept ist die Region, in der Ihr virtueller Computer bereitgestellt wird. Die Liste der Größen virtueller Computer, die in der Region verfügbar sind, finden Sie auf der Azure-Regionen Webseite auf der Registerkarte Dienste. Das zweite Konzept ist die physische Hardware, die derzeit den virtuellen Computer hostet. Die physischen Server, die virtuelle Computer hosten, werden in Clustern gemeinsamer physischer Hardware gruppiert. Die Methode zum Ändern der Größe eines virtuellen Computers hängt davon ab, ob die gewünschte neue Größe des virtuellen Computers von dem Hardwarecluster unterstützt wird, das derzeit den virtuellen Computer hostet.
 
 > [!IMPORTANT] 
-> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager- und klassische Bereitstellung](../../../resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells. Sie können auch die [Größe eines virtuellen Computers ändern, der im Resource Manager-Bereitstellungsmodell erstellt wurde](../../virtual-machines-windows-resize-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager- und klassische Bereitstellung](../../../resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells. Sie können auch die [Größe eines virtuellen Computers ändern, der im Resource Manager-Bereitstellungsmodell erstellt wurde](../resize-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ## <a name="add-your-account"></a>Fügen Sie Ihr Konto hinzu
 Sie müssen Azure PowerShell zum Arbeiten mit klassischen Azure-Ressourcen konfigurieren. Gehen Sie folgendermaßen vor, Azure PowerShell zur Verwaltung der klassischen Ressourcen zu konfigurieren.
@@ -68,6 +68,6 @@ Zum Ändern der Größe eines virtuellen Computers auf eine Größe, die nicht i
 Ein Beispielskript zum Löschen und Neuerstellen eines Clouddiensts mit einer neuen Größe des virtuellen Computers finden Sie [hier](https://github.com/Azure/azure-vm-scripts). 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Ändern der Größe eines virtuellen Computers, der in dem Ressourcen-Manager-Bereitstellungsmodell erstellt wurde](../../virtual-machines-windows-resize-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* [Ändern der Größe eines virtuellen Computers, der in dem Ressourcen-Manager-Bereitstellungsmodell erstellt wurde](../resize-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 

@@ -17,9 +17,9 @@ ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 9f9908466dbfd471bc881387c0968c924140c67b
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 99292dedfd83c0adde6b7352e08e7ae3b0b14513
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -95,7 +95,7 @@ Bevor Sie die in dieser Dokumentation enthaltene Vorlage bereitstellen, sollten 
     },
     ```
 
-6. Beachten Sie, dass **vmSize** den Wert *Standard_DS3* enthält. Die Verwendung mehrerer Netzwerkschnittstellenkarten ist nur bei bestimmten VM-Größen möglich. Weitere Informationen zu den VM-Größen, die mehrere NICs unterstützen, finden Sie in den Artikeln [Windows-VM-Größen](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) und [Linux-VM-Größen](../virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+6. Beachten Sie, dass **vmSize** den Wert *Standard_DS3* enthält. Die Verwendung mehrerer Netzwerkschnittstellenkarten ist nur bei bestimmten VM-Größen möglich. Weitere Informationen zu den VM-Größen, die mehrere NICs unterstützen, finden Sie in den Artikeln [Windows-VM-Größen](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) und [Linux-VM-Größen](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 7. Scrollen Sie zu **Ressourcen** , und beachten Sie das erste Element. Dieses Element beschreibt ein Speicherkonto. Dieses Speicherkonto wird für die Datenträger der einzelnen Datenbank-VMs verwendet. In diesem Szenario verfügt jede Datenbank-VM über einen Betriebssystemdatenträger in regulärem Speicher sowie über zwei Datenträger, die sich in SSD-Storage (Premium) befinden.
 

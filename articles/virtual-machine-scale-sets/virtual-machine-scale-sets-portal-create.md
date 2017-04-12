@@ -18,9 +18,9 @@ ms.date: 09/15/2016
 ms.author: negat
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 06e7418111762a0388ce1704ba5abaa9c3a10349
-ms.openlocfilehash: e0853070b5a3f9d44baebecac625a5ad6b9ef755
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 308355e7d66c977f5cbfc8de3b939b76c2f8f83c
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -38,7 +38,7 @@ Navigieren Sie zunächst in einem Browser zum [Azure-Portal](https://portal.azur
 Nun können Sie die Standardeinstellungen verwenden und die Skalierungsgruppe schnell erstellen.
 
 * Geben Sie auf dem Blatt `Basics` einen Namen für die Skalierungsgruppe ein. Dieser Name dient als Grundlage für den FQDN des Load Balancers vor der Skalierungsgruppe und muss daher im gesamten Azure-System eindeutig sein.
-* Wählen Sie den gewünschten Betriebssystemtyp aus, geben Sie den gewünschten Benutzernamen ein, und wählen Sie den bevorzugten Authentifizierungstyp aus. Falls Sie ein Kennwort auswählen, muss es mindestens 12 Zeichen lang sein und drei der folgenden vier Komplexitätsanforderungen erfüllen: ein Kleinbuchstabe, ein Großbuchstabe, eine Zahl und ein Sonderzeichen. Weitere Informationen finden Sie unter den [Anforderungen für Benutzernamen und Kennwörter](../virtual-machines/virtual-machines-windows-faq.md#what-are-the-username-requirements-when-creating-a-vm). Wenn Sie `SSH public key`auswählen, fügen Sie nur Ihren öffentlichen Schlüssel (NICHT Ihren privaten Schlüssel) ein:
+* Wählen Sie den gewünschten Betriebssystemtyp aus, geben Sie den gewünschten Benutzernamen ein, und wählen Sie den bevorzugten Authentifizierungstyp aus. Falls Sie ein Kennwort auswählen, muss es mindestens 12 Zeichen lang sein und drei der folgenden vier Komplexitätsanforderungen erfüllen: ein Kleinbuchstabe, ein Großbuchstabe, eine Zahl und ein Sonderzeichen. Weitere Informationen finden Sie unter den [Anforderungen für Benutzernamen und Kennwörter](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm). Wenn Sie `SSH public key`auswählen, fügen Sie nur Ihren öffentlichen Schlüssel (NICHT Ihren privaten Schlüssel) ein:
 
 ![ScaleSetPortalBasics](./media/virtual-machine-scale-sets-portal-create/ScaleSetPortalBasics.PNG)
 

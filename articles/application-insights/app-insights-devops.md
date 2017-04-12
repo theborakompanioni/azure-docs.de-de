@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: f6c8c895f406187f2bc525a60ca7e53f12e99d77
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 6bc820657da4a72455d76f38dbdb06fe50b0c895
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -162,8 +162,8 @@ Wenn eine Warnung ausgelöst wird, kann Application Insights automatisch ein Arb
 ## <a name="but-what-about"></a>Aber was ist mit...?
 * [Datenschutz und Speicher:](app-insights-data-retention-privacy.md) Ihre Telemetrie wird auf sicheren Azure-Servern gespeichert.
 * Leistung: Die Auswirkungen sind sehr gering. Die Telemetrie wird in Batches verarbeitet.
-* [Support:](app-insights-get-dev-support.md) Profitieren Sie vom Azure-Supportprogramm. In den intensiv genutzten Foren beantworten Entwickler Ihre Fragen. Zudem können wir Ihnen auch individuelle Hilfe bieten.
 * [Preise:](app-insights-pricing.md) Sie können mit einer kostenlosen Version beginnen und diese beibehalten, solange Ihre Datenvolumen gering sind.
+
 
 ## <a name="video"></a>Video
 

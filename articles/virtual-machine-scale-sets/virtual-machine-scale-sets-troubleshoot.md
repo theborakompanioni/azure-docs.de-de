@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 10/28/2016
 ms.author: guybo
 translationtype: Human Translation
-ms.sourcegitcommit: 4818c0c036c7e462af5b8d99f1085f8d9025156c
-ms.openlocfilehash: 7b4db2f215b8f7369694a45533d0c862b8f8d08e
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: bd45a0fb99a77851aa7b91d23bd4b830b6f5cc7b
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.openlocfilehash: 7b4db2f215b8f7369694a45533d0c862b8f8d08e
 Folgende Punkte sollten berücksichtigt werden:
 
 * Über wie viele Kerne verfügt jeder virtuelle Computer, und laden Sie jeden Kern?
-  Das oben genannte Beispiel einer Azure-Schnellstartvorlage enthält das Skript „do_work.php“, das einen einzelnen Kern lädt. Wenn Sie einen größeren virtuellen Computer als eine Größe mit einem Kern wie Standard_A1 oder D1 verwenden, müssten Sie diese Last mehrmals ausführen. Überprüfen Sie die Anzahl der Kerne Ihrer virtuellen Computer. Lesen Sie dazu die Informationen unter [Größen für virtuelle Windows-Computer in Azure](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+  Das oben genannte Beispiel einer Azure-Schnellstartvorlage enthält das Skript „do_work.php“, das einen einzelnen Kern lädt. Wenn Sie einen größeren virtuellen Computer als eine Größe mit einem Kern wie Standard_A1 oder D1 verwenden, müssten Sie diese Last mehrmals ausführen. Überprüfen Sie die Anzahl der Kerne Ihrer virtuellen Computer. Lesen Sie dazu die Informationen unter [Größen für virtuelle Windows-Computer in Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Wie viele virtuelle Computer sind in der VM-Skalierungsgruppe enthalten? Wird auf jedem virtuellen Computer eine Last ausgeführt?
   
     Das horizontale Hochskalieren erfolgt nur, wenn die durchschnittliche CPU auf **allen** virtuellen Computer in einer Skalierungsgruppe den Schwellenwert in dem Zeitintervall überschreitet, das in den Regeln für die automatische Skalierung festgelegt ist.
@@ -82,9 +83,4 @@ Folgende Punkte sollten berücksichtigt werden:
 [audit]: ./media/virtual-machine-scale-sets-troubleshoot/image3.png
 [explorer]: ./media/virtual-machine-scale-sets-troubleshoot/image1.png
 [tables]: ./media/virtual-machine-scale-sets-troubleshoot/image4.png
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 02/23/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: a06d97216373ddc6a35160e6226b8eee8df52d27
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 4ad60c18d451ee5f92eafaf5ca81176698496dd2
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -156,7 +156,7 @@ Wenn Sie den Schlüssel zu Ihrem Speicher ändern, funktioniert der fortlaufende
 Der fortlaufende Export wird neu gestartet.
 
 ## <a name="export-samples"></a>Export-Beispiele
-* [Exportieren in SQL über eine Workerrolle][exportcode]
+
 * [Exportieren in SQL mit Stream Analytics][exportasa]
 * [Stream Analytics-Beispiel 2](app-insights-export-stream-analytics.md)
 
@@ -190,14 +190,13 @@ Bei größeren Dimensionen sollten Sie [HDInsight](https://azure.microsoft.com/s
     Ja. Klicken Sie auf „Deaktivieren“.
 
 ## <a name="code-samples"></a>Codebeispiele
-* [Analysieren exportierter JSON-Daten mithilfe einer Workerrolle][exportcode]
+
 * [Stream Analytics-Beispiel](app-insights-export-stream-analytics.md)
 * [Exportieren in SQL mit Stream Analytics][exportasa]
 * [Detaillierte Datenmodellreferenz für die Eigenschaftstypen und -werte.](app-insights-export-data-model.md)
 
 <!--Link references-->
 
-[exportcode]: app-insights-code-sample-export-telemetry-sql-database.md
 [exportasa]: app-insights-code-sample-export-sql-stream-analytics.md
 [roles]: app-insights-resources-roles-access-control.md
 

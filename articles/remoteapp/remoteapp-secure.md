@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: e4d94d3f9736378d93e93be6645ed04ade763ca3
-ms.openlocfilehash: fb524efc41b1eaa36319726b3b8b534857e2afc7
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 13085f51529dadb739b4c629bb50d8aff0c9d8c2
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="secure-apps-and-resources-in-azure-remoteapp"></a>Sichere Apps und Ressourcen in Azure RemoteApp
 > [!IMPORTANT]
-> Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
+> Azure RemoteApp wird am 31. August 2017 eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
 > 
 > 
 
@@ -48,10 +49,5 @@ Ein weiteres Beispiel ist das Blockieren des Internetzugriffs für eine bestimmt
 * Beachten Sie, dass sich die Konfigurationsumleitungen über das RemoteApp-PowerShell-Modul (wie [hier](remoteapp-redirection.md) beschrieben) auf den Clientcomputer stützen, um die Richtlinie zu erzwingen. Wenn Sicherheit das primäre Ziel ist, sollten Sie die Richtlinie über das Vorlagenimage für die lokale Richtlinie oder die Gruppenrichtlinie erzwingen.
 * [Richtlinien für Windows Server 2012 R2](https://technet.microsoft.com/library/hh831791.aspx).
 * [Office 2013-Richtlinien](https://technet.microsoft.com/library/cc178969.aspx) (einschließlich [Informationen zum Anpassen der Office-Symbolleiste](https://technet.microsoft.com/library/cc179143.aspx)).
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

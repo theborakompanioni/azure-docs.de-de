@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: a7e7b2dee8aad6112bf253f0396b174287d2d469
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 951a421a2ea7e8bea4d082f03ad85695d3a8063e
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="free-30-day-trial-of-azure-remoteapp"></a>Kostenlose 30-Tage-Testversion von Azure RemoteApp
 > [!IMPORTANT]
-> Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
+> Azure RemoteApp wird am 31. August 2017 eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
 > 
 > 
 
@@ -37,10 +38,5 @@ Im Testmodus können Sie zwei Sammlungen mit jeweils maximal 10 Benutzern erste
 Sie möchten nicht warten? Sehen Sie sich ein kurzes Video zum [Erstellen einer Cloudbereitstellung](https://azure.microsoft.com/documentation/videos/azure-remoteapp-cloud-deployment-overview/)an.
 
 Sie haben Fragen oder Anmerkungen? Stellen Sie Fragen in [den Diskussionsforen](https://feedback.azure.com/forums/247748-azure-remoteapp/). Wenn Sie über einen [Azure-Supportplan](https://azure.microsoft.com/support/plans/)verfügen, können Sie eine Supportanfrage einreichen. In unserem [Feedbackforum](https://feedback.azure.com/forums/247748-azure-remoteapp/)kann jede Person Feedback abgeben.  
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 
