@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: e4d94d3f9736378d93e93be6645ed04ade763ca3
-ms.openlocfilehash: 045410664ec70c846abbf32a36dcc8f70ac471be
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 8b5f4568fa4e505b28011134cc8669ea50e17cf6
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="estimate-azure-remoteapp-network-bandwidth-usage"></a>Schätzen der Netzwerkbandbreiten-Nutzung von Azure RemoteApp
 > [!IMPORTANT]
-> Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
+> Azure RemoteApp wird am 31. August 2017 eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
 > 
 > 
 
@@ -43,10 +44,5 @@ Beachten Sie bei der Durchsicht der vorgeschlagenen Tests und unseren gesamten (
 Wir behandeln zwar die Geräteumleitung, berücksichtigen jedoch nicht die Auswirkung des durch angeschlossene Geräte wie Speicher, Drucker, Scanner, Webcams und andere USB-Geräte verursachten Netzwerkverkehrs auf die Bandbreite. Diese Geräte verursachen in der Regel einen vorübergehenden Spitzenbedarf an Netzwerkbandbreite, der verschwindet, wenn der Vorgang abgeschlossen ist. Wenn dies jedoch häufig vorkommt, könnte sich dieser Bandbreitenbedarf bemerkbar machen.
 
 Wir erörtern auch nicht, wie ein Benutzer andere Benutzer im gleichen Netzwerk beeinträchtigen kann. Beispielsweise kann ein Benutzer bei der Wiedergabe von 4K-Video über ein 100-MB/s-Netzwerk andere Benutzer im gleichen Netzwerk deutlich beeinträchtigen, die versuchen, das Gleiche zu tun. Leider wird es zunehmend schwieriger, die Auswirkung der gleichzeitigen Nutzung zu bestimmen, um eine allgemeine oder allumfassende Einschätzung der Gesamtleistung des Systems abzugeben. Wir können lediglich sagen, dass die zu Grunde liegende Protokolltechnologie die verfügbare Netzwerkbandbreite zwar bestmöglich nutzt, aber ihre Grenzen hat.
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

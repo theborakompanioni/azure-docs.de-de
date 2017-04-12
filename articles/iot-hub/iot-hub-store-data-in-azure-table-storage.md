@@ -16,18 +16,17 @@ ms.workload: na
 ms.date: 03/27/2017
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: de47a15dd4009b9a33a53fd981bc178eaa50c035
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: ef5d4af5d5dad2b548ab01be5ba9c4769b21416a
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="save-iot-hub-messages-that-contain-information-like-sensor-data-to-azure-table-storage"></a>Speichern von IoT Hub-Nachrichten mit Informationen wie Sensordaten in Azure-Tabellenspeicher
 
-> [!Note]
-> Bevor Sie dieses Tutorial starten, stellen Sie sicher, dass Sie das Tutorial [Verbinden von ESP8266 mit Azure IoT Hub](/iot-hub-arduino-huzzah-esp8266-get-started.md) abgeschlossen haben. In [Verbinden von ESP8266 mit Azure IoT Hub](/iot-hub-arduino-huzzah-esp8266-get-started.md) haben Sie Ihr IoT-Gerät und den IoT Hub eingerichtet sowie eine Beispielanwendung zur Ausführung auf Ihrem Gerät bereitgestellt. Die Anwendung sendet gesammelte Sensordaten an Ihren IoT Hub.
+[!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-## <a name="what-you-will-learn"></a>Lernziele
+## <a name="what-you-will-learn"></a>Sie lernen Folgendes
 
 Sie erfahren, wie Sie ein Azure-Speicherkonto und eine Azure-Funktionen-App zum Speichern von IoT Hub-Nachrichten in Azure-Tabellenspeicher erstellen.
 
@@ -39,7 +38,7 @@ Sie erfahren, wie Sie ein Azure-Speicherkonto und eine Azure-Funktionen-App zum 
 
 ## <a name="what-you-will-need"></a>Voraussetzungen
 
-- Sie müssen das Tutorial [Verbinden von ESP8266 mit Azure IoT Hub](/iot-hub-arduino-huzzah-esp8266-get-started.md) abgeschlossen haben, in dem die folgenden Voraussetzungen behandelt werden:
+- Sie müssen das Tutorial [Verbinden von ESP8266 mit Azure IoT Hub](iot-hub-arduino-huzzah-esp8266-get-started.md) abgeschlossen haben, in dem die folgenden Voraussetzungen behandelt werden:
   - Ein aktives Azure-Abonnement.
   - Ein Azure IoT Hub in Ihrem Abonnement.
   - Eine ausgeführte Anwendung, die Nachrichten an Ihren Azure IoT Hub sendet.
@@ -205,6 +204,4 @@ Sie haben soeben die Funktionen-App erstellt. In ihr werden Nachrichten gespeich
 
 Sie haben Ihr Azure-Speicherkonto und die Azure-Funktionen-App erfolgreich zum Speichern von Nachrichten in Ihrem Azure-Tabellenspeicher erstellt, die Ihr IoT Hub empfängt.
 
-Informationen zu den weiteren ersten Schritten mit IoT Hub und zum Kennenlernen anderer IoT-Szenarien finden Sie in den folgenden Artikeln:
-
-- [Verwalten von Cloud-zu-Gerät-Nachrichten mit iothub-explorer](iot-hub-explorer-cloud-device-messaging.md)
+[!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

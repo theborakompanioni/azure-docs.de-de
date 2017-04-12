@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 05/31/2016
 ms.author: stepsic
 translationtype: Human Translation
-ms.sourcegitcommit: fc509ef8b30fadb6e026f346d4adbd6ef759624a
-ms.openlocfilehash: 74aae9f757f56e94b583069a1fdee7efaafe467c
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 9d169bcc0b1e89866d04cced474ee9c0e6ba6952
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -28,7 +28,7 @@ Erfahren Sie, [wie APIs als Trigger oder Aktion in Logik-Apps erstellt werden](.
 
 ## <a name="deploy-your-web-app"></a>Bereitstellen Ihrer Web-App
 
-Zunächst müssen Sie die API als Web-App in Azure App Service bereitstellen. Erfahren Sie mehr über die [grundlegende Bereitstellung beim Erstellen einer ASP.NET-Web-App](../app-service-web/web-sites-dotnet-get-started.md). Obwohl Sie jede API aus einer Logik-App aufrufen können, sollten Sie am besten Swagger-Metadaten hinzufügen, um die Integration in Logik-App-Aktionen zu vereinfachen. Erfahren Sie mehr über das [Hinzufügen von Swagger-Metadaten ](../app-service-api/app-service-api-dotnet-get-started.md#use-swagger-api-metadata-and-ui).
+Zunächst müssen Sie die API als Web-App in Azure App Service bereitstellen. Erfahren Sie mehr über die [grundlegende Bereitstellung beim Erstellen einer ASP.NET-Web-App](../app-service-web/app-service-web-get-started-dotnet.md). Obwohl Sie jede API aus einer Logik-App aufrufen können, sollten Sie am besten Swagger-Metadaten hinzufügen, um die Integration in Logik-App-Aktionen zu vereinfachen. Erfahren Sie mehr über das [Hinzufügen von Swagger-Metadaten ](../app-service-api/app-service-api-dotnet-get-started.md#use-swagger-api-metadata-and-ui).
 
 ### <a name="api-settings"></a>API-Einstellungen
 

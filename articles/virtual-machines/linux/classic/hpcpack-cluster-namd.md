@@ -16,9 +16,9 @@ ms.workload: big-compute
 ms.date: 10/13/2016
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 1e1e3b405d752c459ecfc7f74fbdafc148c147b5
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: f46facee3e45704f74a13db7a18274f5ce90ceff
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -61,7 +61,7 @@ Das Generieren eines RSA-Schlüsselpaars, das einen öffentlichen Schlüssel und
    ![Private und öffentliche Schlüssel][keys]
 
 ### <a name="add-the-key-pair-to-the-hpc-pack-cluster"></a>Hinzufügen des Schlüsselpaars zum HPC Pack-Cluster
-1. [Stellen Sie über Remotedesktop eine Verbindung mit der Hauptknoten-VM her](../../virtual-machines-windows-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Verwenden Sie hierzu die Domänenanmeldeinformationen, die Sie bei der Bereitstellung des Clusters angegeben haben (z.B. „hpc\clusteradmin“). Sie verwalten den Cluster über den Hauptknoten.
+1. [Stellen Sie über Remotedesktop eine Verbindung mit der Hauptknoten-VM her](../../windows/connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Verwenden Sie hierzu die Domänenanmeldeinformationen, die Sie bei der Bereitstellung des Clusters angegeben haben (z.B. „hpc\clusteradmin“). Sie verwalten den Cluster über den Hauptknoten.
 2. Verwenden Sie Windows Server-Standardverfahren zum Erstellen eines Domänenbenutzerkontos in der Active Directory-Domäne des Clusters. Verwenden Sie z. B. das Tool Active Directory-Benutzer und -Computer auf dem Hauptknoten. In den Beispielen in diesem Artikel wird davon ausgegangen, dass Sie einen Domänenbenutzer mit dem Namen „hpcuser“ in der Domäne „hpclab“ („hpclab\hpcuser“) erstellen.
 3. Fügen Sie den Domänenbenutzer dem HPC Pack-Cluster als Clusterbenutzer hinzu. Anweisungen finden Sie unter [Add or Remove Cluster Users](https://technet.microsoft.com/library/ff919330.aspx) (Hinzufügen oder Entfernen von Clusterbenutzern).
 4. Erstellen Sie die Datei "C:\cred.xml", und kopieren Sie die RSA-Schlüsseldaten in diese Datei. Ein Beispiel finden Sie in den Beispieldateien am Ende dieses Artikels.

@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 09/27/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: fefd6f08d3150a28f73d7733fb397f7db38aef95
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 7d67ae1bd0c53f99d9c298f5ae8f161e6a484359
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -55,7 +55,7 @@ Wechseln Sie an Ihrer Befehlszeilenschnittstelle (Bash, Terminal, Eingabeaufford
     ```
    
     > [!NOTE]
-    > Wenn Sie über eine Geschäfts-, Schul- oder Uni-ID verfügen und die zweistufige Authentifizierung nicht aktiviert ist, verwenden Sie `azure login -u` zusammen mit der ID, um sich ohne interaktive Sitzung anzumelden. Wenn Sie nicht über eine Geschäfts-, Schul- oder Unikonto-ID verfügen, können Sie eine [Geschäfts-, Schul- oder Unikonto-ID mit Ihrem persönlichen Microsoft-Konto erstellen](../virtual-machines/virtual-machines-linux-create-aad-work-id.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+    > Wenn Sie über eine Geschäfts-, Schul- oder Uni-ID verfügen und die zweistufige Authentifizierung nicht aktiviert ist, verwenden Sie `azure login -u` zusammen mit der ID, um sich ohne interaktive Sitzung anzumelden. Wenn Sie nicht über eine Geschäfts-, Schul- oder Unikonto-ID verfügen, können Sie eine [Geschäfts-, Schul- oder Unikonto-ID mit Ihrem persönlichen Microsoft-Konto erstellen](../virtual-machines/linux/create-aad-work-id.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
     
 2. **Erstellen einer Ressourcengruppe**  
 Alle Ressourcen müssen in einer Ressourcengruppe bereitgestellt werden. Geben Sie der Ressourcengruppe für dieses Tutorial den Namen **vmsstest1**.
@@ -132,7 +132,7 @@ Mit der Azure-Ressourcen-Manager-Vorlage können Sie die Azure-Ressourcen gemein
    * Die IP-Adressnamen und -präfixe für das virtuelle Netzwerk und die Subnetze.
    * Die Namen und Bezeichner des virtuellen Netzwerks, des Load Balancers und der Netzwerkschnittstellen.
    * Die Speicherkontonamen für die Konten, die den Computern in der Skalierungsgruppe zugeordnet sind.
-   * Einstellungen für die Diagnose-Erweiterung, die auf den virtuellen Computern installiert ist. Weitere Informationen zur Diagnoseerweiterung finden Sie unter [Erstellen eines virtuellen Windows-Computers mit Überwachung und Diagnose mithilfe von Azure Resource Manager-Vorlagen](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+   * Einstellungen für die Diagnose-Erweiterung, die auf den virtuellen Computern installiert ist. Weitere Informationen zur Diagnoseerweiterung finden Sie unter [Erstellen eines virtuellen Windows-Computers mit Überwachung und Diagnose mithilfe von Azure Resource Manager-Vorlagen](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 4. Fügen Sie die Speicherkontoressource unter dem übergeordneten Ressourcenelement hinzu, das Sie der Vorlage hinzugefügt haben. In dieser Vorlage wird eine Schleife verwendet, um die empfohlenen fünf Speicherkonten zu erstellen, unter denen die Betriebssystem-Datenträger und Diagnosedaten gespeichert werden. Diese Kontengruppe kann in einer Skalierungsgruppe bis zu 100 virtuelle Computer unterstützen. Dies ist derzeit der mögliche Höchstwert. Jedes Speicherkonto wird mit einem Buchstaben bezeichnet, der in den Variablen zusammen mit dem Suffix definiert wurde, das Sie in den Parametern für die Vorlage angeben.
    

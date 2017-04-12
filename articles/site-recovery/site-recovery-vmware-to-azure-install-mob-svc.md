@@ -15,9 +15,9 @@ ms.workload: backup-recovery
 ms.date: 2/20/2017
 ms.author: anoopkv
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 79beda244007649253fb7130f0403f587fcf76bf
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 6437190ac58a021ce84993f667bbb5fad6031bb3
+ms.lasthandoff: 03/31/2017
 
 ---
 
@@ -33,7 +33,7 @@ Azure Site Recovery Mobility Service erfasst Datenschreibvorgänge auf einem Com
 
 
 >[!IMPORTANT]
-> Ab Version 9.7.0.0 wird mit dem Mobility Service-Installationsprogramm auf virtuellen Windows-Computern (VMs) auch der jeweils neueste verfügbare [Azure-VM-Agent](../virtual-machines/virtual-machines-windows-extensions-features.md#azure-vm-agent) installiert. Wenn ein Computer ein Failover zu Azure ausführt, erfüllt der Computer die Agent-Installationsvoraussetzungen für die Verwendung beliebiger VM-Erweiterungen.
+> Ab Version 9.7.0.0 wird mit dem Mobility Service-Installationsprogramm auf virtuellen Windows-Computern (VMs) auch der jeweils neueste verfügbare [Azure-VM-Agent](../virtual-machines/windows/extensions-features.md#azure-vm-agent) installiert. Wenn ein Computer ein Failover zu Azure ausführt, erfüllt der Computer die Agent-Installationsvoraussetzungen für die Verwendung beliebiger VM-Erweiterungen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Führen Sie diese erforderlichen Schritte aus, bevor Sie Mobility Service manuell auf Ihrem Server installieren:

@@ -1,5 +1,5 @@
 ---
-title: Lastenausgleich bei Konfigurationen mit mehreren IP-Adressen in Azure | Microsoft Docs
+title: Lastenausgleich bei Konfigurationen mit mehreren IP-Adressen in Azure | Microsoft-Dokumentation
 description: "Lastenausgleich in Konfigurationen mit primären und sekundären IP-Adressen"
 services: load-balancer
 documentationcenter: na
@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: annahar
 translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: 4d139e615bea737473d0dfcbed22bf01367a1eb7
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: fb6a74ba476d410f7545a3cfcbaf23190f0bd402
+ms.lasthandoff: 03/31/2017
 
 ---
 
@@ -46,7 +46,7 @@ Führen Sie die folgenden Schritte aus, um das in diesem Artikel beschriebene Sz
 
     Weitere Informationen finden Sie in Schritt 2 unter [Erstellen einer Ressourcengruppe](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json).
 
-3. [Erstellen Sie eine Verfügbarkeitsgruppe](../virtual-machines/virtual-machines-windows-create-availability-set.md?toc=%2fazure%2fload-balancer%2ftoc.json) mit Ihren virtuellen Computern. Führen Sie für dieses Szenario den folgenden Befehl aus:
+3. [Erstellen Sie eine Verfügbarkeitsgruppe](../virtual-machines/windows/create-availability-set.md?toc=%2fazure%2fload-balancer%2ftoc.json) mit Ihren virtuellen Computern. Führen Sie für dieses Szenario den folgenden Befehl aus:
 
     ```powershell
     New-AzureRmAvailabilitySet -ResourceGroupName "contosofabrikam" -Name "myAvailset" -Location "West Central US"

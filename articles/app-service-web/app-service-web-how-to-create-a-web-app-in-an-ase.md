@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: ccompy
 translationtype: Human Translation
-ms.sourcegitcommit: 0b7c4c95328eb3ca573694b8eca0b0abda646fc5
-ms.openlocfilehash: cc8044f78da504c5cd9155c887b24f6880645262
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: a78d37ee59663896acc3192f8ae03575270101a8
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -25,7 +26,7 @@ ms.openlocfilehash: cc8044f78da504c5cd9155c887b24f6880645262
 Dieses Tutorial zeigt Ihnen, wie Sie Web-Apps und App Service-Pläne in einer [App Service-Umgebung](app-service-app-service-environment-intro.md) (App Service Environment, ASE) erstellen. 
 
 > [!NOTE]
-> Wenn Sie wissen möchten, wie eine Web-App erstellt wird, dies jedoch nicht in einer App Service-Umgebung durchführen möchten, finden Sie weitere Informationen unter [Erstellen einer .NET-Web-App](web-sites-dotnet-get-started.md) oder in einem der zugehörigen Tutorials für andere Sprachen und Frameworks.
+> Wenn Sie wissen möchten, wie eine Web-App erstellt wird, dies jedoch nicht in einer App Service-Umgebung durchführen möchten, finden Sie weitere Informationen unter [Erstellen einer .NET-Web-App](app-service-web-get-started-dotnet.md) oder in einem der zugehörigen Tutorials für andere Sprachen und Frameworks.
 > 
 > 
 
@@ -58,7 +59,7 @@ Bei diesem Tutorial wird vorausgesetzt, dass Sie eine App Service-Umgebung erste
     Wenn Ihre ASE eine interne VIP-Adresse verwendet, lautet die URL einer App in dieser ASE: [*Websitename*].[*während der ASE-Erstellung angegebene Unterdomäne*]   
     Nach der Auswahl Ihres ASP während der Erstellung der ASE sehen Sie die aktualisierte Unterdomäne unter **Name**.
 
-## <a name="a-namecreateplana-create-an-app-service-plan"></a><a name="createplan"></a> Erstellen eines App Service-Plans
+## <a name="createplan"></a> Erstellen eines App Service-Plans
 Wenn Sie einen App Service-Plan in einer App Service-Umgebung erstellen, stehen andere Worker zur Auswahl, da es in einer ASE keine gemeinsam verwendeten Worker gibt.  Es können ausschließlich die Worker verwendet werden, die der App Service-Umgebung vom Administrator zugewiesen wurden.  Um einen neuen Plan erstellen zu können, müssen dem ASE-Workerpool mehr Worker zugewiesen sein als die Gesamtzahl der Instanzen all Ihrer Pläne innerhalb dieses Workerpools.  Wenn im Workerpool Ihrer App Service-Umgebung nicht genügend Worker vorhanden sind, um Ihren Plan zu erstellen, müssen Sie sich an Ihren ASE-Administrator wenden und veranlassen, dass weitere Worker hinzugefügt werden.
 
 Ein weiterer Unterschied bei App Service-Plänen, die in einer App Service-Umgebung gehostet werden, besteht darin, dass keine Preise ausgewählt werden können.  Mit einer App Service-Umgebung zahlen Sie für die vom System verwendeten Computeressourcen, und es fallen keine zusätzlichen Kosten für die Pläne innerhalb der Umgebung an.  Beim Erstellen eines App Service-Plans wählen Sie üblicherweise einen Tarif, auf dessen Basis die Abrechnung erfolgt.  Bei einer App Service-Umgebung handelt es sich im Wesentlichen um einen privaten Speicherort, an dem Sie Inhalte erstellen können.  Sie zahlen nicht für das Hosten Ihrer Inhalte, sondern für die Umgebung.
@@ -107,9 +108,4 @@ Nach dem Erstellen der Web-App und des App Service-Plans sollten Sie eine zentra
 [HowtoConfigureASE]: http://azure.microsoft.com/documentation/articles/app-service-web-configure-an-app-service-environment
 [ResourceGroups]: ../azure-resource-manager/resource-group-overview.md
 [AzurePowershell]: http://azure.microsoft.com/documentation/articles/powershell-install-configure/
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

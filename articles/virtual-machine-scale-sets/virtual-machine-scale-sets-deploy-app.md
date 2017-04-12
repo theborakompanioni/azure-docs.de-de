@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: guybo
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: 9a92490239f22bd4c57c902ac53898aff1adf530
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: f39840ab2fb31775c9703799393d8c386a8451ee
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -32,7 +32,7 @@ Eine Anwendung, die in einer VM-Skalierungsgruppe ausgeführt wird, wird normale
 ## <a name="install-new-software-on-a-platform-image-at-deployment-time"></a>Installieren neuer Software auf einem Plattformimage zum Zeitpunkt der Bereitstellung
 Ein Plattformimage ist in diesem Kontext ein Betriebssystemimage aus dem Azure Marketplace, z.B. Ubuntu 16.04, Windows Server 2012 R2 usw.
 
-Sie können neue Software mithilfe einer [VM-Erweiterung](../virtual-machines/virtual-machines-windows-extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) auf einem Plattformimage installieren. Eine VM-Erweiterung ist eine Software, die ausgeführt wird, wenn ein virtueller Computer bereitgestellt wird. Sie können beliebigen Code zum Zeitpunkt der Bereitstellung ausführen, indem Sie eine benutzerdefinierte Skripterweiterung verwenden. [Hier](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale) ist ein Beispiel für eine Azure Resource Manager-Vorlage, die mithilfe einer [Azure-DSC-Erweiterung (Desired State Configuration)](virtual-machine-scale-sets-dsc.md) IIS und eine .NET-MVC-Anwendung installiert, die in die automatische Skalierung von Azure integriert ist.
+Sie können neue Software mithilfe einer [VM-Erweiterung](../virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) auf einem Plattformimage installieren. Eine VM-Erweiterung ist eine Software, die ausgeführt wird, wenn ein virtueller Computer bereitgestellt wird. Sie können beliebigen Code zum Zeitpunkt der Bereitstellung ausführen, indem Sie eine benutzerdefinierte Skripterweiterung verwenden. [Hier](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale) ist ein Beispiel für eine Azure Resource Manager-Vorlage, die mithilfe einer [Azure-DSC-Erweiterung (Desired State Configuration)](virtual-machine-scale-sets-dsc.md) IIS und eine .NET-MVC-Anwendung installiert, die in die automatische Skalierung von Azure integriert ist.
 
 Ein Vorteil dieses Ansatzes ist die Trennung von Anwendungscode und Betriebssystem, und Ihre Anwendung kann separat verwaltet werden. Natürlich bedeutet dies, dass auch mehr „bewegliche Teile“ vorhanden sind, und die Dauer der VM-Bereitstellung verlängert sich möglicherweise, wenn das Skript viel herunterladen und konfigurieren muss.
 

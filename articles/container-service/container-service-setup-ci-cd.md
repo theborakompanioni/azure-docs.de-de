@@ -17,9 +17,9 @@ ms.workload: na
 ms.date: 11/14/2016
 ms.author: johnsta
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 65fc37a1fd1d1d0149b98767117f8faafb5dcd2b
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: acfba48585b960a1ce39b77e35d292189aa9732b
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -50,8 +50,8 @@ Befassen wir uns mit einigen wichtigen Aspekten der App und dem von uns eingeric
 >[!IMPORTANT]
 > Zum Erstellen eines sicheren Clusters übergeben Sie die Datei mit dem öffentlichen SSH-Schlüssel beim Aufrufen von `az acs create`. Entweder kann Azure CLI 2.0 die Schlüssel für Sie generieren und gleichzeitig mit der Option `--generate-ssh-keys` übergeben, oder Sie übergeben den Pfad zu Ihren Schlüsseln mit der Option `--ssh-key-value` (Standardspeicherort ist unter Linux `~/.ssh/id_rsa.pub` und unter Windows `%HOMEPATH%\.ssh\id_rsa.pub`, dieser kann sich jedoch ändern).
 <!---Loc Comment: What do you mean by "you pass your SSH public key file to pass"? Thank you.--->
-> Informationen zum Erstellen von Dateien mit öffentlichen und privaten SSH-Schlüsseln unter Linux finden Sie unter [Erstellen von SSH-Schlüsseln unter Linux und Mac für Linux-VMs in Azure](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fcontainer-services%2ftoc.json). 
-> Informationen zum Erstellen von Dateien mit öffentlichen und privaten SSH-Schlüsseln unter Windows finden Sie unter [Verwenden von SSH mit Windows in Azure](../virtual-machines/virtual-machines-linux-ssh-from-windows.md?toc=%2fazure%2fcontainer-services%2ftoc.json). 
+> Informationen zum Erstellen von Dateien mit öffentlichen und privaten SSH-Schlüsseln unter Linux finden Sie unter [Erstellen von SSH-Schlüsseln unter Linux und Mac für Linux-VMs in Azure](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fcontainer-services%2ftoc.json). 
+> Informationen zum Erstellen von Dateien mit öffentlichen und privaten SSH-Schlüsseln unter Windows finden Sie unter [Verwenden von SSH mit Windows in Azure](../virtual-machines/linux/ssh-from-windows.md?toc=%2fazure%2fcontainer-services%2ftoc.json). 
 
 1. Geben Sie zunächst den Befehl [az login](/cli/azure/#login) in ein Terminalfenster ein, um sich mit der Azure-CLI bei Ihrem Azure-Abonnement anzumelden: 
 

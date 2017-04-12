@@ -16,9 +16,9 @@ ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 680b2bec3af18273d0ac43d7102a99392fd8ebe0
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 4e542ea6431933668d96f7028431826bceb9f337
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -85,7 +85,7 @@ Im Anschluss finden Sie Überlegungen und Schritte zum Burst auf RDMA-fähige Az
    Wenn Sie die Aufträge ausgeführt haben, schalten Sie die Knoten offline, und verwenden Sie die Aktion **Beenden** in HPC Cluster Manager.
 
 ## <a name="scenario-2-deploy-compute-nodes-in-compute-intensive-vms-iaas"></a>Szenario 2: Bereitstellen von Computeknoten in rechenintensiven virtuellen Computern (IaaS)
-In diesem Szenario stellen Sie den HPC Pack-Hauptknoten und Clustercomputeknoten auf virtuellen Computern in einem virtuellen Azure-Netzwerk bereit. HPC Pack bietet eine Reihe von [Bereitstellungsoptionen für virtuelle Azure-Computer](../../virtual-machines-linux-hpcpack-cluster-options.md). Hierzu zählen unter anderem automatisierte Bereitstellungsskripts und Azure-Schnellstartvorlagen. In den folgenden Anweisungen erfahren Sie, wie Sie das [HPC Pack IaaS-Bereitstellungsskript](hpcpack-cluster-powershell-script.md) zum Automatisieren der Bereitstellung eines HPC Pack 2012 R2-Clusters in Azure nutzen.
+In diesem Szenario stellen Sie den HPC Pack-Hauptknoten und Clustercomputeknoten auf virtuellen Computern in einem virtuellen Azure-Netzwerk bereit. HPC Pack bietet eine Reihe von [Bereitstellungsoptionen für virtuelle Azure-Computer](../../linux/hpcpack-cluster-options.md). Hierzu zählen unter anderem automatisierte Bereitstellungsskripts und Azure-Schnellstartvorlagen. In den folgenden Anweisungen erfahren Sie, wie Sie das [HPC Pack IaaS-Bereitstellungsskript](hpcpack-cluster-powershell-script.md) zum Automatisieren der Bereitstellung eines HPC Pack 2012 R2-Clusters in Azure nutzen.
 
 ![Cluster in Azure-VMs][iaas]
 
@@ -102,7 +102,7 @@ In diesem Szenario stellen Sie den HPC Pack-Hauptknoten und Clustercomputeknoten
    * **Windows Server-Betriebssystem**: Geben Sie zur Unterstützung von RDMA-Verbindungen für die virtuellen Computer des Computeknotens ein Windows Server 2012 R2- oder Windows Server 2012-basiertes Betriebssystem an.
    * **Clouddienste**: Es empfiehlt sich, den Hauptknoten in einem Clouddienst und die Computeknoten in einem anderen Clouddienst bereitzustellen.
    * **Hauptknotengröße**: In diesem Szenario sollte für den Hauptknoten mindestens die Größe A4 (sehr groß) verwendet werden.
-   * **HpcVmDrivers-Erweiterung**: Das Bereitstellungsskript installiert den Azure-VM-Agent und die Erweiterung „HpcVmDrivers“ automatisch bei der Bereitstellung von Computeknoten der Größe A8 oder A9 mit einem Windows Server-Betriebssystem. Mit HpcVmDrivers werden auf den Computeknoten-VMs Treiber installiert, damit eine Verbindung mit dem RDMA-Netzwerk hergestellt werden kann. Auf virtuellen Computer der RDMA-fähigen H-Serie müssen Sie die Erweiterung „HpcVmDrivers“ manuell installieren. Weitere Informationen finden Sie unter [Informationen zu virtuellen Computern der H-Reihe und der rechenintensiven A-Reihe](../../virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#access-to-the-rdma-network).
+   * **HpcVmDrivers-Erweiterung**: Das Bereitstellungsskript installiert den Azure-VM-Agent und die Erweiterung „HpcVmDrivers“ automatisch bei der Bereitstellung von Computeknoten der Größe A8 oder A9 mit einem Windows Server-Betriebssystem. Mit HpcVmDrivers werden auf den Computeknoten-VMs Treiber installiert, damit eine Verbindung mit dem RDMA-Netzwerk hergestellt werden kann. Auf virtuellen Computer der RDMA-fähigen H-Serie müssen Sie die Erweiterung „HpcVmDrivers“ manuell installieren. Weitere Informationen finden Sie unter [Informationen zu virtuellen Computern der H-Reihe und der rechenintensiven A-Reihe](../a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#access-to-the-rdma-network).
    * **Netzwerkkonfiguration des Clusters**: Das Bereitstellungsskript richtet den HPC Pack-Cluster automatisch in Topologie 5 (alle Knoten im Unternehmensnetzwerk) ein. Diese Topologie ist für alle HPC Pack-Clusterbereitstellungen auf virtuellen Computern erforderlich. Ändern Sie die Topologie des Clusternetzwerks später nicht.
 2. **Onlineschalten der Computeknoten zum Ausführen von Aufträgen**
    

@@ -12,12 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/17/2017
+ms.date: 04/07/2017
 ms.author: msfussell;mikhegn
 translationtype: Human Translation
-ms.sourcegitcommit: d1939e316efb00fb4980c57cbec28920a7475a47
-ms.openlocfilehash: 8ff5933239521f8ed986da5a12aced3110085376
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: d967d70c7fad45f7a10a5288623440491dcfffa3
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -29,7 +29,7 @@ In dieser exemplarischen Vorgehensweise wird zwar das Bereitstellen einer Anwend
 Das Anwendungspaket mit mehreren ausführbaren Gastanwendungsdateien kann mithilfe von Visual Studio generiert werden. Weitere Informationen finden Sie unter [Verwenden von Visual Studio zum Packen einer vorhandenen Anwendung](service-fabric-deploy-existing-app.md#use-visual-studio-to-package-an-existing-executable). Klicken Sie nach dem Hinzufügen der ersten ausführbaren Gastanwendungsdatei mit der rechten Maustaste auf das Anwendungsprojekt, und wählen Sie **Hinzufügen > Neuer Service Fabric-Dienst** aus, um der Projektmappe das zweite ausführbare Gastanwendungsprojekt hinzuzufügen. Hinweis: Wenn Sie die Quelle im Visual Studio-Projekt verknüpfen und die Visual Studio-Projektmappe erstellen, wird Ihr Anwendungspaket mit den Änderungen in der Quelle aktualisiert. 
 
 ## <a name="samples"></a>Beispiele
-* [Beispiel für das Packen und Bereitstellen einer ausführbaren Gastdatei](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/GuestExe/SimpleApplication)
+* [Beispiel für das Packen und Bereitstellen einer ausführbaren Gastdatei](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Beispiel für zwei ausführbare Gastdateien (C# und Node.js), die über den Naming Service mithilfe von REST kommunizieren](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
 
 ## <a name="manually-package-the-multiple-guest-executable-application"></a>Manuelles Packen der Anwendung mit mehreren ausführbaren Gastanwendungsdateien
@@ -217,6 +217,6 @@ Führen Sie zum Hinzufügen eines weiteren Diensts zu einer Anwendung, die berei
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zum Bereitstellen von Containern finden Sie unter [Vorschau: Service Fabric und Container](service-fabric-containers-overview.md).
-* [Beispiel für das Packen und Bereitstellen einer ausführbaren Gastdatei](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/GuestExe/SimpleApplication)
+* [Beispiel für das Packen und Bereitstellen einer ausführbaren Gastdatei](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Beispiel für zwei ausführbare Gastdateien (C# und Node.js), die über den Naming Service mithilfe von REST kommunizieren](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
 

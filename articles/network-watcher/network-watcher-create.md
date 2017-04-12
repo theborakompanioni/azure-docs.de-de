@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: a39ce143796408f8e44b0d2c877e631e92473462
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 7d8eb5972d35eac6cb55fc393090cfcc21ec341c
+ms.lasthandoff: 03/31/2017
 
 ---
 
@@ -25,58 +25,8 @@ ms.lasthandoff: 03/28/2017
 
 Network Watcher ist ein regionaler Dienst, mit dem Sie Bedingungen auf der Ebene von Netzwerkszenarien in Azure überwachen und diagnostizieren können. Die Überwachung auf Szenarioebene erlaubt die umfassende Diagnose von Problemen auf Netzwerkebene. Die Tools zur Netzwerkdiagnose und -visualisierung von Network Watcher helfen Ihnen dabei, Ihr Netzwerk in Azure zu verstehen, Diagnosen durchzuführen und Einblicke zu gewinnen.
 
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
-
-## <a name="register-the-preview-capability"></a>Registrieren der Vorschaufunktion
-
-Network Watcher befindet sich derzeit in der Vorschau. Um die Features von Network Watcher zu verwenden, muss das Feature registriert werden. Führen Sie zu diesem Zweck das folgende PowerShell-Beispiel aus:
-
-```powershell
-Register-AzureRmProviderFeature -FeatureName AllowNetworkWatcher -ProviderNamespace Microsoft.Network
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
-```
-
-Um zu überprüfen, ob die Registrierung erfolgreich war, führen Sie das folgende PowerShell-Beispiel aus:
-
-```powershell
-Get-AzureRmProviderFeature -FeatureName AllowNetworkWatcher -ProviderNamespace  Microsoft.Network
-```
-
-Wenn das Feature ordnungsgemäß registriert wurde, sollte die Ausgabe der folgenden ähneln:
-
-```
-FeatureName         ProviderName      RegistrationState
------------         ------------      -----------------
-AllowNetworkWatcher Microsoft.Network Registered
-```
-
-### <a name="instructions-for-cli-10"></a>Anweisungen für CLI 1.0
-
-So führen Sie die Registrierung durch
-
-```CLI
-azure feature register  Microsoft.Network AllowNetworkWatcher
-azure provider register Microsoft.Network
-```
-
-Um zu überprüfen, ob die Registrierung erfolgreich durchgeführt wurde, führen Sie den folgenden CLI-Befehl aus:
-
-```CLI
-azure feature show Microsoft.Network AllowNetworkWatcher
-```
-
-Wenn das Feature ordnungsgemäß registriert wurde, sollte die Ausgabe der folgenden ähneln:
-
-```CLI
-info:    Executing command feature show
-data:    Feature Name:       AllowNetworkWatcher
-data:    Provider Name:      Microsoft.Network
-data:    Registration State: Registered
-info:    feature show command OK
-```
-
 > [!NOTE]
-> Da Network Watcher derzeit nur CLI 1.0 unterstützt, werden die Anweisungen zum Erstellen einer neuen Network Watcher-Instanz für CLI 1.0 bereitgestellt. Zum Registrieren des Anbieters mit CLI 2.0 verwenden Sie `az feature register -n AllowNetworkWatcher --namespace Microsoft.Network`.
+> Da Network Watcher derzeit nur CLI 1.0 unterstützt, werden die Anweisungen zum Erstellen einer neuen Network Watcher-Instanz für CLI 1.0 bereitgestellt.
 
 ## <a name="create-a-network-watcher-in-the-portal"></a>Erstellen einer Network Watcher-Instanz im Portal
 

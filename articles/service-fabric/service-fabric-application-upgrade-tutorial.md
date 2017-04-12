@@ -12,12 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/02/2017
+ms.date: 04/07/2017
 ms.author: subramar
 translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: 9fc53417c40225c87d3849cbe51712849e5cc93a
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 3fa7b8d053d0193352776e94d2ab4796ba05e166
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -33,7 +33,7 @@ ms.lasthandoff: 03/03/2017
 Azure Service Fabric vereinfacht das Upgraden von Cloudanwendungen, indem sichergestellt wird, dass nur geänderte Dienste aktualisiert werden und die Anwendungsintegrität während des gesamten Upgradeprozesses überwacht wird. Falls ein Fehler auftritt, wird die Anwendung automatisch auf die vorherigen Version zurückgesetzt. Upgrades von Service Fabric-Anwendungen erfolgen *ohne Ausfallzeiten*, da die Anwendung ohne Ausfallzeiten aktualisiert werden kann. In diesem Tutorial wird beschrieben, wie ein paralleles Upgrade über Visual Studio erfolgt.
 
 ## <a name="step-1-build-and-publish-the-visual-objects-sample"></a>Schritt 1: Erstellen und Veröffentlichen des Beispiels Visual Objects
-Laden Sie zuerst die Anwendung [Visual Objects](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/Actors/VisualObjects) von GitHub herunter. Erstellen und veröffentlichen Sie dann die Anwendung, indem Sie mit der rechten Maustaste auf das Anwendungsprojekt **VisualObjects** klicken und im Menü „Service Fabric“ den Befehl **Veröffentlichen** auswählen.
+Laden Sie zuerst die Anwendung [Visual Objects](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Actors/VisualObjects) von GitHub herunter. Erstellen und veröffentlichen Sie dann die Anwendung, indem Sie mit der rechten Maustaste auf das Anwendungsprojekt **VisualObjects** klicken und im Menü „Service Fabric“ den Befehl **Veröffentlichen** auswählen.
 
 ![Kontextmenü einer Service Fabric-Anwendung][image1]
 
