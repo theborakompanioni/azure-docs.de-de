@@ -1,5 +1,5 @@
 
-1. Klicken Sie in der Projektmappenansicht (oder in Visual Studio im **Projektmappen-Explorer**) mit der rechten Maustaste auf den Komponentenordner****, klicken Sie auf **Get More Components...** (Weitere Komponenten...), suchen Sie nach der Komponente **Google Cloud Messaging Client**, und fügen Sie sie dem Projekt hinzu.
+1. Klicken Sie in der Projektmappenansicht (oder in Visual Studio im **Projektmappen-Explorer**) mit der rechten Maustaste auf den **Komponentenordner**, klicken Sie auf **Get More Components...** (Weitere Komponenten...), suchen Sie nach der Komponente **Google Cloud Messaging Client**, und fügen Sie sie dem Projekt hinzu.
 2. Öffnen Sie die Projektdatei "ToDoActivity.cs", und fügen Sie die folgende "using"-Anweisung hinzu:
    
         using Gcm.Client;
@@ -38,9 +38,4 @@
      GcmClient.Register(this, ToDoBroadcastReceiver.senderIDs);
 
 Die **ToDoActivity** ist damit für das Hinzufügen von Pushbenachrichtigungen vorbereitet.
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

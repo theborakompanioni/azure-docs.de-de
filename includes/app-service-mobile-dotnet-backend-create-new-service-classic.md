@@ -9,7 +9,7 @@
 5. Klicken Sie auf dem Blatt **Einstellungen** für das neue Back-End für mobile Apps auf **Schnellstart** > Ihre Clientanwendungsplattform > **Verbindung mit Datenbank herstellen**. 
    
     ![](./media/app-service-mobile-dotnet-backend-create-new-service/dotnet-backend-create-data-connection.png)
-6. Klicken Sie auf dem Blatt **Datenverbindung hinzufügen** auf **SQL-Datenbank** > **Neue Datenbank erstellen**, geben Sie den Namen** **für die Datenbank ein, wählen Sie einen Tarif aus, und klicken Sie anschließend auf **Server**.  Sie können diese neue Datenbank wiederverwenden. Wenn Sie bereits eine Datenbank am gleichen Standort haben, können Sie stattdessen **eine vorhandene Datenbank verwenden**. Die Verwendung einer Datenbank an einem anderen Standort wird aufgrund der Kosten für die Bandbreite und einer höheren Latenz nicht empfohlen.
+6. Klicken Sie auf dem Blatt **Datenverbindung hinzufügen** auf **SQL-Datenbank** > **Neue Datenbank erstellen**, geben Sie den **Namen** für die Datenbank ein, wählen Sie einen Tarif aus, und klicken Sie anschließend auf **Server**.  Sie können diese neue Datenbank wiederverwenden. Wenn Sie bereits eine Datenbank am gleichen Standort haben, können Sie stattdessen **eine vorhandene Datenbank verwenden**. Die Verwendung einer Datenbank an einem anderen Standort wird aufgrund der Kosten für die Bandbreite und einer höheren Latenz nicht empfohlen.
    
     ![](./media/app-service-mobile-dotnet-backend-create-new-service/dotnet-backend-create-db.png)
 7. Geben Sie auf dem Blatt **Neuer Server** im Feld **Servername** einen eindeutigen Servernamen ein, geben Sie einen Anmeldenamen und ein Kennwort an, aktivieren Sie das Kontrollkästchen **Azure-Diensten Zugriff auf den Server erlauben**, und klicken Sie anschließend auf **OK**. Dadurch wird die neue Datenbank erstellt.
@@ -17,8 +17,3 @@
 
 <!-- URLs. -->
 [Azure-Portal]: https://portal.azure.com/
-
-
-<!--HONumber=Nov16_HO3-->
-
-
