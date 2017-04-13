@@ -182,7 +182,7 @@ Der folgende Codeausschnitt durchläuft alle Tasks eines Auftrags, gibt einige I
 ```csharp
 foreach (CloudTask task in myJob.ListTasks())
 {
-    foreach (TaskOutputStorage output in
+    foreach (OutputFileReference output in
         task.OutputStorage(storageAccount).ListOutputs(
             TaskOutputKind.TaskOutput))
     {
