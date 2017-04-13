@@ -1,16 +1,17 @@
 # Übersicht
 ## [Was ist Azure Automation?](automation-intro.md)
 # Erste Schritte
-## [Erstellen eines Runbooks](automation-first-runbook-graphical.md)
-## [Erstellen eines PowerShell-Runbooks](automation-first-runbook-textual-powershell.md)
-## [Erstellen eines PowerShell-Workflow-Runbooks](automation-first-runbook-textual.md)
-## [Verwalten der rollenbasierten Zugriffssteuerung in Azure](automation-role-based-access-control.md)
+## Runbook-Tutorial
+### [Erstellen eines grafischen Runbooks](automation-first-runbook-graphical.md)
+### [Erstellen eines PowerShell-Runbooks](automation-first-runbook-textual-powershell.md)
+### [Erstellen eines PowerShell-Workflow-Runbooks](automation-first-runbook-textual.md)
 # Anleitung
-## Einrichten der Authentifizierung
+## Authentifizierung und Sicherheit
 ### [Authentifizierung in Azure Automation](automation-security-overview.md)
-### [Ausführendes Azure-Konto](automation-sec-configure-azure-runas-account.md)
-### [Azure-Dienstverwaltung und Resource Manager](automation-sec-configure-aduser-account.md)
-### [Amazon Web Services](automation-sec-configure-aws-account.md)
+### [Konfigurieren eines ausführenden Azure-Kontos](automation-sec-configure-azure-runas-account.md)
+### [Konfigurieren eines Azure AD-Benutzerkontos](automation-sec-configure-aduser-account.md)
+### [Konfigurieren der Authentifizierung mit AWS](automation-sec-configure-aws-account.md)
+### [Verwalten der rollenbasierten Zugriffssteuerung in Azure](automation-role-based-access-control.md)
 ## Erstellen von Runbooks
 ### [Runbooktypen](automation-runbook-types.md)
 ### [Erstellen und Importieren von Runbooks](automation-creating-importing-runbook.md)

@@ -14,7 +14,7 @@
 ## [Routinganforderungen](expressroute-routing.md)
 ## [NAT-Anforderungen](expressroute-nat.md)
 ## [QoS-Anforderungen](expressroute-qos.md)
-## [Umstellen von Verbindungen vom klassischen Modell auf das Resource Manager-Modell](expressroute-move.md)
+## [Informationen zum Umstellen von Verbindungen vom klassischen Modell auf das Resource Manager-Modell](expressroute-move.md)
 
 # Anleitung
 ## Erstellen und Ändern einer Verbindung
@@ -29,6 +29,7 @@
 ## [Konfigurieren eines Gateways für ein virtuelles Netzwerk für ExpressRoute](expressroute-howto-add-gateway-resource-manager.md)
 ## [Konfigurieren von parallel bestehenden ExpressRoute- und Site-to-Site-Verbindungen](expressroute-howto-coexist-resource-manager.md)
 ## [Umstellen einer Verbindung vom klassischen Modell auf das Resource Manager-Modell](expressroute-howto-move-arm.md)
+## [Migrieren von zugeordneten virtuellen Netzwerken vom klassischen Modell zu Resource Manager](expressroute-migration-classic-resource-manager.md)
 ## Konfigurieren eines Routers für ExpressRoute
 ### [Konfigurieren eines Routers](expressroute-config-samples-routing.md)
 ### [Beispiele für die Routerkonfiguration für NAT](expressroute-config-samples-nat.md)

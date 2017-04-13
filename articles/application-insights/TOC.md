@@ -30,7 +30,6 @@
 # Anleitung
 ## Planen und Entwerfen
 ### [Eingehende Diagnose für Web-Apps und Dienste](app-insights-devops.md)
-### [Developer Analytics mit Application Insights und HockeyApp](app-insights-developer-analytics.md)
 ### [Leistungsüberwachung in Webanwendungen](app-insights-web-monitor-performance.md)
 ### [Verwendungsanalyse mit Application Insights](app-insights-overview-usage.md)
 ### [Trennen von Application Insights-Ressourcen](app-insights-separate-resources.md)
@@ -39,6 +38,7 @@
 
 ## Konfigurieren
 ### Azure
+#### [Profiler](app-insights-profiler.md)
 #### [Diagnose](app-insights-azure-diagnostics.md)
 
 ### ASP.NET
@@ -139,11 +139,6 @@
 
 ## [Preise](https://azure.microsoft.com/pricing/details/application-insights/)  
 
-## [Beispiele und exemplarische Vorgehensweisen](app-insights-code-samples.md)
-### [Exemplarische Vorgehensweise: Aktivieren von Telemetriedaten für Microsoft Dynamics CRM Online](app-insights-sample-mscrm.md)
-### [Exemplarische Vorgehensweise: Exportieren in SQL mit Stream Analytics](app-insights-code-sample-export-sql-stream-analytics.md)
-### [Codebeispiel: Analysieren exportierter Daten](app-insights-code-sample-export-telemetry-sql-database.md)
-
 ## Neuigkeiten
 
 ### [Blog](https://azure.microsoft.com/blog/tag/application-insights/)
@@ -156,7 +151,7 @@
 ### [MSDN-Forum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=ApplicationInsights)  
 ### [Stack Overflow](http://stackoverflow.com/questions/tagged/az-application-insights)
 ### [Aussagen von Benutzern](https://visualstudio.uservoice.com/forums/357324-application-insights)
-### [Unterstützung](app-insights-get-dev-support.md)
+### [Unterstützung](https://azure.microsoft.com/support/)
 
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=application-insights)
 

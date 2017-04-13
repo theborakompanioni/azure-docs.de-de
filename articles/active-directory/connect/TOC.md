@@ -47,6 +47,7 @@
 ### [Verzeichniserweiterungen](active-directory-aadconnectsync-feature-directory-extensions.md)
 
 ### [Ändern des Kennworts für das Azure AD Sync-Dienstkonto](active-directory-aadconnectsync-change-serviceacct-pass.md)
+### [Ändern des AD DS-Kontokennworts](active-directory-aadconnectsync-change-addsacct-pass.md)
 ### [Aktivieren des AD-Papierkorbs](active-directory-aadconnectsync-recycle-bin.md)
 
 ### [Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md)
@@ -58,6 +59,7 @@
 
 ## Verwalten von Verbunddiensten
 ### [Verwalten und Anpassen](active-directory-aadconnect-federation-management.md)
+### [Erstellen eines Verbunds mit mehreren Instanzen von Azure AD und einer Einzelinstanz von AD FS](active-directory-aadconnectfed-single-adfs-multitenant-federation.md)
 
 
 ## Problembehandlung

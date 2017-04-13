@@ -16,6 +16,11 @@
 ### [Problembehandlung und Überwachung](troubleshooting-monitoring.md)
 ### [SAP HANA-Einzelinstanz](hana-get-started.md)
 ### [Bereitstellungshandbuch für S/4 HANA oder BW/4 HANA](cal-s4h.md)
+### Sicherung
+#### [Übersicht](sap-hana-backup-guide.md)
+#### [Sicherung auf Dateiebene](sap-hana-backup-file-level.md)
+#### [Speichermomentaufnahmen](sap-hana-backup-storage-snapshots.md)
+
 ## SAP Netweaver
 ### [Übersicht und Architektur](suse-quickstart.md)
 ### [Planen und Implementieren](planning-guide.md)

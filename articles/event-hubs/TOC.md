@@ -18,10 +18,13 @@
 
 # Anleitung
 ## Planen und Entwerfen
+### [🔧 Allgemeine Szenarien für die Integration mit Azure-Diensten](event-hubs-common-integrations.md)
 ### [Event Hubs Dedicated](event-hubs-dedicated-overview.md)
 ### [Übersicht über das Authentifizierungs- und Sicherheitsmodell](event-hubs-authentication-and-security-model-overview.md)
 ### [Verfügbarkeit und Konsistenz](event-hubs-availability-and-consistency.md)
 ## Entwickeln
+### [🔧 Fehlerbehandlung und Wiederholung](event-hubs-handling-errors-retry.md)
+### [🔧 Verwaltung von Leistung und Skalierbarkeit](event-hubs-performance-scale.md)
 ### [Verfügbare APIs](event-hubs-api-overview.md)
 #### [.NET Standard](event-hubs-dotnet-standard-api-overview.md)
 #### [.NET Framework](event-hubs-dotnet-framework-api-overview.md)
@@ -34,6 +37,7 @@
 #### [Event Hubs-Archiv](event-hubs-archive-overview.md)
 #### [Aktivieren des Event Hubs-Archivs mithilfe einer Vorlage](event-hubs-resource-manager-namespace-event-hub-enable-archive.md)
 #### [Verwenden von Python zum Aktivieren des Event Hubs-Archivs](event-hubs-archive-python.md)
+### [Verwenden von PowerShell zur Bereitstellung von Entitäten](event-hubs-manage-with-ps.md) 
 ### [Streamen von Azure-Diagnosedaten mit Event Hubs](event-hubs-streaming-azure-diags-data.md)
 ### [Erstellen und Bereitstellen von Event Hubs anhand einer Resource Manager-Vorlage](event-hubs-resource-manager-namespace-event-hub.md)
 
@@ -58,8 +62,3 @@
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=event-hubs)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-eventhub)
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=event-hubs)
-
-
-<!--HONumber=Feb17_HO3-->
-
-

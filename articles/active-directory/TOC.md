@@ -81,7 +81,8 @@
 ### [Benannte Netzwerke](active-directory-known-networks-azure-portal.md)
 ### [Berichtmigration](active-directory-reporting-migration.md)
 ### [Aufbewahrung](active-directory-reporting-retention.md)
-### [HÄUFIG GESTELLTE FRAGEN](active-directory-reporting-faq.md)
+### [Wartezeiten](active-directory-reporting-latencies-azure-portal.md)
+### [Häufig gestellte Fragen](active-directory-reporting-faq.md)
 ### Problembehandlung
 #### [Fehlende Überwachungsdaten](active-directory-reporting-troubleshoot-missing-audit-data.md)
 #### [Fehlende Daten in den Downloads](active-directory-reporting-troubleshoot-missing-data-download.md)
@@ -109,8 +110,9 @@
 ##### [Anomale Anmeldungen](active-directory-reporting-users-with-anomalous-sign-in-activity.md)
 
 ## [Verwalten von Kennwörtern](active-directory-manage-passwords.md)
-### [Aktualisieren Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md)
-### [Einrichten der Self-Service-Kennwortzurücksetzung](active-directory-passwords.md)
+### [Zurücksetzen oder Ändern des Kennworts](active-directory-passwords-update-your-own-password.md)
+### [Registrieren für die Self-Service-Kennwortzurücksetzung](active-directory-passwords-reset-register.md)
+### [Administratoren aktivieren die Self-Service-Kennwortzurücksetzung.](active-directory-passwords.md)
 ### [Grundlegendes zur Kennwortverwaltung](active-directory-passwords-how-it-works.md)
 ### [Grundlegendes zu Kennwortrichtlinien und -einschränkungen](active-directory-passwords-policy.md)
 ### Zurücksetzen von Kennwörtern
@@ -155,19 +157,12 @@
 ### [Gewähren des Remotezugriffs auf Ihre Apps](active-directory-application-proxy-get-started.md)
 #### [Aktivieren der App-Proxy](active-directory-application-proxy-enable.md)
 #### [Grundlegendes zu Connectors](application-proxy-understand-connectors.md)
-
-#### Veröffentlichen von Apps
-##### [Azure-Portal](application-proxy-publish-azure-portal.md)
-##### [Klassisches Portal](active-directory-application-proxy-publish.md)
-
+#### [Veröffentlichen von Apps](application-proxy-publish-azure-portal.md)
 #### [Sicherheit](application-proxy-security-considerations.md)
 #### [Netzwerke](application-proxy-network-topology-considerations.md)
 #### [Remotedesktop](application-proxy-publish-remote-desktop.md)
 #### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
-
-#### Veröffentlichen in getrennten Netzwerken
-##### [Azure-Portal](active-directory-application-proxy-connectors-azure-portal.md)
-##### [Klassisches Portal](active-directory-application-proxy-connectors.md)
+#### [Veröffentlichen in getrennten Netzwerken](active-directory-application-proxy-connectors-azure-portal.md)
 #### [Proxyserver](application-proxy-working-with-proxy-servers.md)
 #### [Benutzerdefinierte Domänen](active-directory-application-proxy-custom-domains.md)
 #### [Access-Apps](active-directory-appssoaccess-whatis.md)
@@ -181,6 +176,11 @@
 #### [Installation im Hintergrund](active-directory-application-proxy-silent-installation.md)
 #### [Microsoft Forefront](application-proxy-transition-from-uag-tmg.md)
 #### [Problembehandlung](active-directory-application-proxy-troubleshoot.md)
+#### Verwenden des klassischen Portals
+##### [Herunterladen von Connectors](application-proxy-enable-classic-portal.md)
+##### [Veröffentlichen von Apps](active-directory-application-proxy-publish.md)
+##### [Verwenden von Connectors](active-directory-application-proxy-connectors.md)
+
 
 ### Verwalten von Unternehmens-Apps
 #### [Zuweisen von Benutzern](active-directory-coreapps-assign-user-azure-portal.md)
@@ -200,8 +200,21 @@
 #### [Self-Service-Zugriff](active-directory-self-service-application-access.md)
 #### [Zertifikate für SSO](active-directory-sso-certs.md)
 #### [Mandanteneinschränkungen](active-directory-tenant-restrictions.md)
+#### [Verwenden von SCIM zum Bereitstellen von Benutzern](active-directory-scim-provisioning.md)
 
-### [Verwenden von SCIM zum Bereitstellen von Benutzern](active-directory-scim-provisioning.md)
+### [Problembehandlung](active-directory-application-troubleshoot-content-map.md)
+#### Anwendungsentwicklung
+##### [Konfiguration und Registrierung](active-directory-application-dev-config-content-map.md)
+##### [Entwicklung](active-directory-application-dev-development-content-map.md)
+#### Anwendungsverwaltung
+##### [Konfiguration](active-directory-application-config-content-map.md)
+##### [Anmeldung](active-directory-application-sign-in-content-map.md)
+##### [Bereitstellung](active-directory-application-provisioning-content-map.md)
+##### [Verwalten des Zugriffs](active-directory-application-access-content-map.md)
+##### [Zugriffsbereich](active-directory-application-access-panel-content-map.md)
+##### [Anwendungsproxy](active-directory-application-proxy-content-map.md)
+##### [Bedingter Zugriff](active-directory-application-conditional-access-content-map.md)
+
 ### [Dokumentbibliothek](active-directory-apps-index.md)
 
 ## Verwalten Ihres Verzeichnisses
@@ -315,6 +328,12 @@
 ### [Ändern des Signaturhashalgorithmus](active-directory-federation-sha256-guidance.md)
 
 ## [Problembehandlung](active-directory-troubleshooting.md)
+
+## Bereitstellen eines Proof of Concept (PoC) für Azure AD
+### [PoC-Playbook: Einführen](active-directory-playbook-intro.md)
+### [PoC-Playbook: Bestandteile](active-directory-playbook-ingredients.md)
+### [PoC-Playbook: Implementierung](active-directory-playbook-implementation.md)
+### [PoC-Playbook: Bausteine](active-directory-playbook-building-blocks.md)
 
 
 # Referenz

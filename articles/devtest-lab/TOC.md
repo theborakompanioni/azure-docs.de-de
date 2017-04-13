@@ -27,7 +27,7 @@
 
 ## Verwalten von VM-Grundlagen und -Vorlagen
 ### [Erstellen von anforderbaren virtuellen Computern](devtest-lab-add-claimable-vm.md)
-### [Erstellen von Umgebungen mit mehreren virtuellen Computern mit Azure Resource Manager-Vorlagen](devtest-lab-create-environment-from-arm.md)
+### [Erstellen von Umgebungen mit mehreren virtuellen Computern und PaaS-Ressourcen mit Azure Resource Manager-Vorlagen](devtest-lab-create-environment-from-arm.md)
 ### [Konfigurieren von Marketplace-Images](devtest-lab-configure-marketplace-images.md)
 ### [Vergleichen von Images und Formeln](devtest-lab-comparing-vm-base-image-types.md)
 ### [Verwalten von Formeln](devtest-lab-manage-formulas.md)

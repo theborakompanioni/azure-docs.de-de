@@ -39,6 +39,8 @@
     href: azure-vm-network-overview.md
   - name: "VM-Skalierungsgruppen"
     href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md
+  - name: "Instanzmetadatendienst" 
+    href: ../virtual-machines-instancemetadataservice-overview.md
   - name: "Container"
     href: containers.md
   - name: "Ressourcen-Manager"

@@ -48,16 +48,19 @@
 ### [Indizieren von JSON-Blobs](search-howto-index-json-blobs.md)
 ### [Konfigurieren von Indexerverbindungen mit SQL Server auf virtuellen Azure-Computern](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 ### [Feldzuordnungen in Indexern](search-indexer-field-mappings.md)
-##  Suchoberfläche
-### [Einfache Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
-### [Lucene-Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
-### [Beispiele für Lucene-Syntaxabfragen](search-query-lucene-examples.md)
-### [Filterausdruckssyntax](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)
+##  Search 
+### [Funktionsweise der Volltextsuche](search-lucene-query-architecture.md)
+### Abfrageerstellung
+#### [Einfache Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
+#### [Lucene-Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
+#### [Beispiele für Lucene-Syntaxabfragen](search-query-lucene-examples.md)
+#### [Filterausdruckssyntax](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)
+### Benutzerdefinierte Suche
+#### [Sprachanalysen](https://docs.microsoft.com/rest/api/searchservice/language-support)
+#### [Benutzerdefinierte Analysen](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)
 ### [Bewertung](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)
 ### [Vorschläge](https://docs.microsoft.com/rest/api/searchservice/suggesters)
 ### [Facettennavigation](search-faceted-navigation.md)
-### [Sprachanalysen](https://docs.microsoft.com/rest/api/searchservice/language-support)
-### [Benutzerdefinierte Analysen](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)
 
 # Referenz
 ## [.NET](/dotnet/api/microsoft.azure.search)
