@@ -119,10 +119,10 @@ Pools für elastische Datenbanken in SQL-Datenbank kombinieren die Mandantenisol
 | --- | --- |
 | Mandantenisolation und gemeinsame Ressourcennutzung |[Elastische Pools:](sql-database-elastic-pool.md)Sie können einen Pool von SQL-Datenbank-Ressourcen zuordnen und die Ressourcen mehrere Datenbanken übergreifend nutzen. Einzelne Datenbanken können außerdem so viele Ressourcen wie benötigt aus dem Pool abrufen, um Kapazitätsspitzen aufgrund von Änderungen der Mandantenworkloads abzudecken. Der elastische Pool selbst kann je nach Bedarf zentral hoch- oder herunterskaliert werden. Elastische Pools verbessern zudem die Verwaltbarkeit und vereinfachen die Überwachung sowie die Problembehandlung auf der Poolebene. |
 | Einfache DevOps-Abläufe über Datenbanken hinweg |[Elastische Pools:](sql-database-elastic-pool.md)Siehe oben. |
-| [Elastische Abfrage:](sql-database-elastic-query-horizontal-partitioning.md)Zur Berichterstellung oder mandantenübergreifenden Analyse können datenbankübergreifende Abfragen ausgeführt werden. | |
-| [Elastische Aufträge:](sql-database-elastic-jobs-overview.md)Wartungsvorgänge oder Schemaänderungen für mehrere Datenbanken können verpackt und zuverlässig bereitgestellt werden. | |
-| [Elastische Transaktionen:](sql-database-elastic-transactions-overview.md)Änderungen an mehreren Datenbanken können auf atomische und isolierte Weise verarbeitet werden. Elastische Transaktionen sind erforderlich, wenn Anwendungen für eine Reihe von Datenbankvorgängen Garantien der Art „Alles oder nichts“ benötigen. | |
-| [Clientbibliothek für elastische Datenbanken](sql-database-elastic-database-client-library.md): Sie können Datenverteilungen verwalten und Mandanten Datenbanken zuordnen. | |
+| | [Elastische Abfrage:](sql-database-elastic-query-horizontal-partitioning.md)Zur Berichterstellung oder mandantenübergreifenden Analyse können datenbankübergreifende Abfragen ausgeführt werden. |
+| | [Elastische Aufträge:](sql-database-elastic-jobs-overview.md)Wartungsvorgänge oder Schemaänderungen für mehrere Datenbanken können verpackt und zuverlässig bereitgestellt werden. |
+| | [Elastische Transaktionen:](sql-database-elastic-transactions-overview.md)Änderungen an mehreren Datenbanken können auf atomische und isolierte Weise verarbeitet werden. Elastische Transaktionen sind erforderlich, wenn Anwendungen für eine Reihe von Datenbankvorgängen Garantien der Art „Alles oder nichts“ benötigen. |
+| | [Clientbibliothek für elastische Datenbanken](sql-database-elastic-database-client-library.md): Sie können Datenverteilungen verwalten und Mandanten Datenbanken zuordnen. |
 
 ## <a name="shared-models"></a>Modelle mit gemeinsamer Nutzung
 Wie bereits beschrieben, können sich bei Ansätzen mit gemeinsamer Nutzung für die meisten SaaS-Anbieter Probleme mit der Mandantenisolation und Schwierigkeiten bei der Anwendungsentwicklung und -wartung ergeben. Für mehrinstanzenfähige Anwendungen, die einen Dienst direkt für Kunden bereitstellen, hat die Mandantenisolation jedoch ggf. nicht eine so hohe Priorität wie die Minimierung der Kosten. Bei solchen Anwendungen können Mandanten möglicherweise mit hoher Dichte in einer oder mehreren Datenbanken zusammengefasst werden, um die Kosten zu senken. Bei Modellen mit gemeinsamer Datenbanknutzung, bei denen eine Einzeldatenbank oder mehrere Datenbanken mit Sharding verwendet werden, sind dadurch Effizienzsteigerungen in Bezug auf die gemeinsame Nutzung von Ressourcen und die Gesamtkosten möglich. Azure SQL-Datenbank bietet einige Features, mit denen Kunden die Isolation einrichten können, um die Sicherheit und Verwaltung mit guter Skalierbarkeit auf der Datenebene zu verbessern.
@@ -132,10 +132,10 @@ Wie bereits beschrieben, können sich bei Ansätzen mit gemeinsamer Nutzung für
 | Features für die Sicherheitsisolation |[Sicherheit auf Zeilenebene](https://msdn.microsoft.com/library/dn765131.aspx) |
 | [Datenbankschema](https://msdn.microsoft.com/library/dd207005.aspx) | |
 | Einfache DevOps-Abläufe über Datenbanken hinweg |[Elastische Abfrage](sql-database-elastic-query-horizontal-partitioning.md) |
-| [Elastische Aufträge](sql-database-elastic-jobs-overview.md) | |
-| [Elastische Transaktionen](sql-database-elastic-transactions-overview.md) | |
-| [Clientbibliothek für elastische Datenbanken](sql-database-elastic-database-client-library.md) | |
-| [Trennen und Zusammenführen von elastischen Datenbanken](sql-database-elastic-scale-overview-split-and-merge.md) | |
+| | [Elastische Aufträge](sql-database-elastic-jobs-overview.md) |
+| | [Elastische Transaktionen](sql-database-elastic-transactions-overview.md) |
+| | [Clientbibliothek für elastische Datenbanken](sql-database-elastic-database-client-library.md) |
+| | [Trennen und Zusammenführen von elastischen Datenbanken](sql-database-elastic-scale-overview-split-and-merge.md) |
 
 ## <a name="summary"></a>Zusammenfassung
 Die Mandantenisolation ist für die meisten mehrinstanzenfähigen SaaS-Anwendungen eine wichtige Anforderung. Zum Bereitstellen der Isolation eignet sich am besten der Ansatz „eine Datenbank pro Mandant“. Die beiden anderen Ansätze erfordern Investitionen in komplexe Anwendungsschichten, bei denen erfahrene Entwickler zum Einrichten der Isolation erforderlich sind, was Kosten und Risiko deutlich reduziert. Wenn Isolationsanforderungen nicht zu einem frühen Zeitpunkt der Dienstentwicklung berücksichtigt werden, kann deren nachträgliche Einrichtung sogar teurer als bei den ersten beiden Modellen werden. Die Hauptnachteile des Modells „eine Datenbank pro Mandant“ sind die höheren Kosten für Cloudressourcen aufgrund der geringeren gemeinsamen Nutzung sowie die Wartung und Verwaltung vieler Datenbanken. Für Entwickler von SaaS-Anwendungen ist es häufig nicht leicht, diese Vor- und Nachteile gegeneinander abzuwägen.

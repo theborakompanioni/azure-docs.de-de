@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/09/2017
+ms.date: 04/12/2017
 ms.author: banders
 translationtype: Human Translation
 ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
@@ -78,7 +78,7 @@ Standardmäßig wird der Besitzer des Microsoft- oder Organisationskontos, mit d
 Es gibt zwei Berechtigungsmodelle, mit denen der Zugriff auf einen Log Analytics-Arbeitsbereich gesteuert wird:
 
 1. Ältere Log Analytics-Benutzerrollen
-2. [Rollenbasierter Zugriff in Azure](../active-directory/role-based-access-control-configure.md) 
+2. [Rollenbasierter Zugriff in Azure](../active-directory/role-based-access-control-configure.md)
 
 In der folgenden Tabelle sind die Zugriffsmöglichkeiten aufgeführt, die für die einzelnen Berechtigungsmodelle festgelegt werden können:
 
@@ -101,13 +101,14 @@ Für die folgenden Aktivitäten im Log Analytics-Portal sind ebenfalls Azure-Ber
 | Hinzufügen und Entfernen von Verwaltungslösungen                        | Schreibberechtigung für Ressourcengruppe <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | |
 | Ändern des Tarifs                                       | `Microsoft.OperationalInsights/workspaces/*/write` | |
 | Anzeigen von Daten auf den Kacheln der *Backup*- und *Site Recovery*-Lösungen | Administrator/Co-Administrator | Zugriff auf Ressourcen, die mit dem klassischen Bereitstellungsmodell bereitgestellt werden |
- 
+
 ### <a name="managing-access-to-log-analytics-using-azure-permissions"></a>Verwalten des Zugriffs auf Log Analytics mit Azure-Berechtigungen
 Führen Sie die Schritte unter [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure-Abonnementressourcen](../active-directory/role-based-access-control-configure.md) aus, um den Zugriff auf den Log Analytics-Arbeitsbereich mit Azure-Berechtigungen zu gewähren.
 
 Wenn Sie mindestens über die Azure-Leseberechtigung für den Log Analytics-Arbeitsbereich verfügen, können Sie das OMS-Portal öffnen, indem Sie beim Anzeigen des Log Analytics-Arbeitsbereichs auf die Aufgabe **OMS-Portal** klicken.
 
-Beim Öffnen des Log Analytics-Portals wechseln Sie zu den bisher verwendeten Log Analytics-Benutzerrollen. Falls Sie im Log Analytics-Portal nicht über eine Rollenzuweisung verfügen, [überprüft der Dienst Ihre Azure-Berechtigungen für den Arbeitsbereich](https://docs.microsoft.com/rest/api/authorization/permissions#Permissions_ListForResource). Ihre Rollenzuweisung im Log Analytics-Portal wird wie folgt ermittelt:
+Beim Öffnen des Log Analytics-Portals wechseln Sie zu den bisher verwendeten Log Analytics-Benutzerrollen. Falls Sie im Log Analytics-Portal nicht über eine Rollenzuweisung verfügen, [überprüft der Dienst Ihre Azure-Berechtigungen für den Arbeitsbereich](https://docs.microsoft.com/rest/api/authorization/permissions#Permissions_ListForResource).
+Ihre Rollenzuweisung im Log Analytics-Portal wird wie folgt ermittelt:
 
 | Bedingungen                                                   | Zugewiesene Log Analytics-Benutzerrolle | Hinweise |
 |--------------------------------------------------------------|----------------------------------|-------|
@@ -119,7 +120,7 @@ Beim Öffnen des Log Analytics-Portals wechseln Sie zu den bisher verwendeten Lo
 | Für per Cloudlösungsanbieter (CSP) verwaltete Abonnements. <br> Das Konto, mit dem Sie angemeldet sind, befindet sich unter der Azure Active Directory-Instanz, die mit dem Arbeitsbereich verknüpft ist. | Administrator | Normalerweise der Kunde eines CSP |
 | Für per Cloudlösungsanbieter (CSP) verwaltete Abonnements. <br> Das Konto, mit dem Sie angemeldet sind, befindet sich nicht unter der Azure Active Directory-Instanz, die mit dem Arbeitsbereich verknüpft ist. | Mitwirkender | Normalerweise der CSP |
 
-<sup>1</sup> Weitere Informationen zu Rollendefinition finden Sie unter [Erstellen von benutzerdefinierten Rollen für die rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-control-custom-roles.md). Beim Auswerten von Rollen ist die Aktion `*` nicht äquivalent zu `Microsoft.OperationalInsights/workspaces/*`. 
+<sup>1</sup> Weitere Informationen zu Rollendefinition finden Sie unter [Erstellen von benutzerdefinierten Rollen für die rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-control-custom-roles.md). Beim Auswerten von Rollen ist die Aktion `*` nicht äquivalent zu `Microsoft.OperationalInsights/workspaces/*`.
 
 Wichtige Punkte zum Azure-Portal:
 
