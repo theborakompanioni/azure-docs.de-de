@@ -9,6 +9,7 @@
 ## Verwalten virtueller Computer
 ### [Erstellen eines Angebots für virtuelle Computer](./cloud-partner-portal-publish-virtual-machine.md)
 #### [Voraussetzungen](./cloud-partner-portal-publish-virtual-machine.md#what-are-pre-requisites-for-publishing-a-vm)
+#### [Registrieren eines Microsoft-Entwicklerkontos](./cloud-partner-portal-dev-center-accounts-registration.md)
 #### [Erstellen eines neuen Angebots für virtuelle Computer](./cloud-partner-portal-publish-virtual-machine.md#how-to-create-a-new-vm-offer)
 #### [Formular für Angebotseinstellungen](./cloud-partner-portal-publish-virtual-machine.md#how-to-fill-out-the-offer-settings-form)
 #### [Formular für SKUs](./cloud-partner-portal-publish-virtual-machine.md#how-to-create-skus)
@@ -21,6 +22,7 @@
 ### [Aktualisieren eines vorhandenen Angebots](./cloud-partner-portal-update-existing-offer.md)
 ### [Löschen eines Angebots für virtuelle Computer/einer SKU](./cloud-partner-portal-delete-an-offer.md)
 ### [Migrieren zum Cloudpartnerportal](./cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)
+## [Azure Marketplace-Verkäuferhandbuch](./cloud-partner-portal-seller-guide.md)
 
 ## [Verwaltung von Marketingleads](./cloud-partner-portal-marketing-lead-management.md)
 ### [Azure-Tabelle](./cloud-partner-portal-lead-management-instructions-azure-table.md)

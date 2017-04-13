@@ -24,13 +24,10 @@
 ### [Azure-Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 ### [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 ### [Azure-Portal (klassisch)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
-### [Klassisches Portal (klassisch)](virtual-networks-configure-vnet-to-vnet-connection.md)
 ## Konfigurieren einer VNet-zu-VNet-Verbindung zwischen Bereitstellungsmodellen
 ### [Azure-Portal](vpn-gateway-connect-different-deployment-models-portal.md)
 ### [PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
-## Erstellen von parallel bestehenden Site-to-Site- und ExpressRoute-Verbindungen
-### [PowerShell](../expressroute/expressroute-howto-coexist-resource-manager.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
-### [PowerShell (klassisch)](../expressroute/expressroute-howto-coexist-classic.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
+## [Konfigurieren von parallel bestehenden Site-to-Site- und ExpressRoute-Verbindungen](../expressroute/expressroute-howto-coexist-resource-manager.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
 ## Konfigurieren der Tunnelerzwingung
 ### [PowerShell](vpn-gateway-forced-tunneling-rm.md)
 ### [PowerShell (klassisch)](vpn-gateway-about-forced-tunneling.md)
@@ -50,8 +47,8 @@
 ## [Konfigurieren einer VPN Gateway-Instanz (klassisch)](vpn-gateway-configure-vpn-gateway-mp.md)
 
 # Referenz
-## [PowerShell](https://msdn.microsoft.com/library/mt163510(v=azure.300))
-## [PowerShell (klassisch)](https://msdn.microsoft.com/library/mt270335(v=azure.300))
+## [PowerShell](/powershell/resourcemanager/azurerm.network/v3.6.0/azurerm.network)
+## [PowerShell (klassisch)](/powershell/servicemanagement/azure.networking/v3.4.0/azure.networking)
 ## [REST](https://msdn.microsoft.com/library/mt163859)
 ## [REST (klassisch)](https://msdn.microsoft.com/library/jj154113)
 

@@ -17,6 +17,7 @@
 ### [Java unter Linux](service-fabric-create-your-first-linux-application-with-java.md)
 ### [C# unter Linux](service-fabric-create-your-first-linux-application-with-csharp.md)
 ## [Bereitstellen von Apps in einem lokalen Cluster](service-fabric-get-started-with-a-local-cluster.md)
+## [Erstellen eines eigenständigen Clusters](service-fabric-get-started-standalone-cluster.md)
 
 # Anleitung
 ## Erstellen einer Anwendung
@@ -145,6 +146,7 @@
 ### Bereitstellen oder Entfernen von Anwendungen
 #### [PowerShell](service-fabric-deploy-remove-applications.md)
 #### [Visual Studio](service-fabric-publish-app-remote-cluster.md)
+#### [FabricClient-APIs](service-fabric-deploy-remove-applications-fabricclient.md)
 ### [Übersicht über Anwendungsupgrades](service-fabric-application-upgrade.md)
 ### [Konfigurieren des Anwendungsupgrades](service-fabric-visualstudio-configure-upgrade.md)
 ### [Parameter für Anwendungsupgrades](service-fabric-application-upgrade-parameters.md)
@@ -208,9 +210,9 @@
 ### [Dienstverschiebung](service-fabric-cluster-resource-manager-movement-cost.md)
 
 # Referenz
-## [PowerShell](//powershell/servicefabric/vlatest/servicefabric)
-## [Java-API](/java/api/microsoft.servicefabric.services)
-## [.NET](/dotnet/api/microsoft.servicefabric.services)
+## [PowerShell](/powershell/module/ServiceFabric/)
+## [Java-API](/java/api/)
+## [.NET](/dotnet/api/)
 ## [REST](/rest/api/servicefabric)
 
 # Ressourcen

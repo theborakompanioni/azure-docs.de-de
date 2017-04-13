@@ -79,6 +79,7 @@
 ### [Häufig gestellte Fragen zu Azure-IaaS-VM-Datenträgern](storage-faq-for-disks.md)
 ### Storage Premium
 #### [Premium-Hochleistungsspeicher für VM-Datenträger](storage-premium-storage.md)
+#### [Migrieren zu Storage Premium mit Azure Site Recovery](storage-migrate-to-premium-storage-using-azure-site-recovery.md)
 #### [Entwerfen für hohe Leistung](storage-premium-storage-performance.md)
 ### Standardspeicher
 #### [Kostengünstiger Standardspeicher und verwaltete/nicht verwaltete VM-Datenträger](storage-standard-storage.md)
