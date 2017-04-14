@@ -12,11 +12,12 @@ ms.devlang: java
 ms.topic: hero-article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 02/10/2017
+ms.date: 04/13/2017
 ms.author: sdanie
 translationtype: Human Translation
 ms.sourcegitcommit: 5369dcd6ad1ec93c63eb442db9fc5ffdcca37375
 ms.openlocfilehash: b95f37db90b105962c01545e25c8e14c53257ebc
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -50,7 +51,7 @@ Die neuesten Builds von [jedis](https://github.com/xetorthio/jedis) unterstütze
 
     boolean useSsl = true;
     /* In this line, replace <name> with your cache name: */
-    JedisShardInfo shardInfo = new JedisShardInfo("<name>.redis.cache.windows.net", 6379, useSsl);
+    JedisShardInfo shardInfo = new JedisShardInfo("<name>.redis.cache.windows.net", 6380, useSsl);
     shardInfo.setPassword("<key>"); /* Use your access key. */
 
 > [!NOTE]
@@ -69,7 +70,7 @@ Die neuesten Builds von [jedis](https://github.com/xetorthio/jedis) unterstütze
       {
         boolean useSsl = true;
         /* In this line, replace <name> with your cache name: */
-        JedisShardInfo shardInfo = new JedisShardInfo("<name>.redis.cache.windows.net", 6379, useSsl);
+        JedisShardInfo shardInfo = new JedisShardInfo("<name>.redis.cache.windows.net", 6380, useSsl);
         shardInfo.setPassword("<key>"); /* Use your access key. */
         Jedis jedis = new Jedis(shardInfo);
         jedis.set("foo", "bar");
@@ -81,9 +82,4 @@ Die neuesten Builds von [jedis](https://github.com/xetorthio/jedis) unterstütze
 ## <a name="next-steps"></a>Nächste Schritte
 * [Aktivieren Sie die Cachediagnose](https://msdn.microsoft.com/library/azure/dn763945.aspx#EnableDiagnostics), damit Sie die Integrität Ihres Caches [überwachen](https://msdn.microsoft.com/library/azure/dn763945.aspx) können.
 * Lesen Sie die offizielle [Redis-Dokumentation](http://redis.io/documentation).
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 
