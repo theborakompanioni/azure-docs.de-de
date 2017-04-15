@@ -8,7 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 4ef19ed1-e798-43a2-ad99-0e563f93ab53
 ms.service: sql-database
-ms.custom: secure and protect
+ms.custom: security-protect
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -25,7 +25,7 @@ ms.lasthandoff: 02/17/2017
 # <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-auditing"></a>SQL-Datenbank – Unterstützung für kompatible Clients und IP-Endpunktänderungen für die Überwachung
 Die [Datenbanküberwachung](sql-database-auditing.md) erfolgt automatisch bei SQL-Clients, die eine TDS-Umleitung unterstützen. Beachten Sie, dass diese Umleitung bei Verwendung der Blobüberwachungsmethode nicht angewendet wird.
 
-## <a name="a-idsubheading-1adownlevel-clients-support"></a><a id="subheading-1"></a>Unterstützung für kompatible Clients
+## <a id="subheading-1"></a>Unterstützung für kompatible Clients
 Jeder Client, der TDS 7.4 implementiert, sollte auch die Umleitung unterstützen. Zu den Ausnahmen gehören JDBC 4.0, in dem die Umleitungsfunktion nicht vollständig unterstützt wird, und Tedious for Node.JSS, in dem die Umleitungsfunktion nicht implementiert wurde.
 
 Für "Vorgängerversionsclients", d. h. Clients, die TDS 7.3 und ältere Versionen unterstützen, sollte der vollqualifizierte Domänenname des Servers in der Verbindungszeichenfolge geändert werden:
@@ -43,7 +43,7 @@ Eine unvollständige Liste der "Vorgängerversionsclients":
 
 **Anmerkung:** Die oben genannte Änderung des vollqualifizierten Domänennamens des Servers kann sich auch als nützlich erweisen bei der Anwendung einer Richtlinie für die Überwachung auf SQL Server-Ebene, ohne dass ein Konfigurationsschritt in jeder Datenbank ausgeführt werden muss (temporäre Minderung).
 
-## <a name="a-idsubheading-2aip-endpoint-changes-when-enabling-auditing"></a><a id="subheading-2"></a>IP-Endpunkt-Änderungen beim Aktivieren der Überwachung
+## <a id="subheading-2"></a>IP-Endpunkt-Änderungen beim Aktivieren der Überwachung
 Beachten Sie, dass sich beim Aktivieren der Tabellenüberwachung der IP-Endpunkt Ihrer Datenbank ändert. Wenn Sie strenge Firewall-Einstellungen haben, aktualisieren Sie diese Firewalleinstellungen entsprechend.
 
 Der neue Datenbank-IP-Endpunkt ist abhängig von der Region der Datenbank:
