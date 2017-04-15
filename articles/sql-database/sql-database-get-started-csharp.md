@@ -9,9 +9,9 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: cfff2299-a474-4054-8d99-759af1ae5188
 ms.service: sql-database
-ms.custom: single databases
+ms.custom: development
 ms.devlang: NA
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: csharp
 ms.workload: data-management
 ms.date: 10/04/2016
@@ -19,6 +19,7 @@ ms.author: sstein
 translationtype: Human Translation
 ms.sourcegitcommit: dbf337a27c43fc6c91f1b061a1938c5471dd36a4
 ms.openlocfilehash: bc1a78a2891c73df23bc2a57cec67e6b73414165
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -284,9 +285,4 @@ Nachdem Sie SQL-Datenbank ausprobiert und mit C# eine Datenbank erstellt haben, 
 [7]: ./media/sql-database-get-started-csharp/add-application.png
 [8]: ./media/sql-database-get-started-csharp/add-application2.png
 [9]: ./media/sql-database-get-started-csharp/clientid.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 
