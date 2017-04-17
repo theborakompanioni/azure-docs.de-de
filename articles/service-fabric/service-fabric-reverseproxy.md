@@ -12,12 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 02/23/2017
+ms.date: 04/07/2017
 ms.author: bharatn
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: a68855e0b6ba436849c4de13f1439f0e70009b6a
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 121bf91a2476a079c0737187aef8791be0b4b250
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -69,8 +69,8 @@ http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?
 * **Suffixpfad:** Der tatsächliche URL-Pfad des Diensts, mit dem Sie eine Verbindung herstellen möchten, z.B. *myapi/values/add/3*.
 * **PartitionKey:** Für einen partitionierten Dienst ist dies der berechnete Partitionsschlüssel der Partition, die Sie erreichen möchten. Beachten Sie, dass dies *nicht* die GUID der Partitions-ID ist. Dieser Parameter ist für Dienste, die mit einem einzelnen Partitionsschema arbeiten, nicht erforderlich.
 * **PartitionKind:** Das Partitionsschema des Diensts. Dies kann „Int64Range“ oder „Named“ sein. Dieser Parameter ist für Dienste, die mit einem einzelnen Partitionsschema arbeiten, nicht erforderlich.
-* **ListenerName** Die Endpunkte des Diensts weisen folgendes Format auf: {"Endpoints":{"Listener1":"Endpoint1","Listener2":"Endpoint2" ...}}. Wenn der Dienst mehrere Endpunkte verfügbar macht, identifiziert dieser Parameter den Endpunkt, an den die Clientanforderung weitergeleitet werden soll. Dieser Parameter kann ausgelassen werden, wenn der Dienst nur über einen Listener verfügt.
-* **TargetReplicaSelector** Gibt an, wie das Zielreplikat oder die Zielinstanz ausgewählt werden soll..
+* **ListenerName** Die Endpunkte des Diensts weisen folgendes Format auf: {"Endpoints":{"Listener1":"Endpoint1","Listener2":"Endpoint2" ...}} Wenn der Dienst mehrere Endpunkte verfügbar macht, identifiziert dieser Parameter den Endpunkt, an den die Clientanforderung weitergeleitet werden soll. Dieser Parameter kann ausgelassen werden, wenn der Dienst nur über einen Listener verfügt.
+* **TargetReplicaSelector** Gibt an, wie das Zielreplikat oder die Zielinstanz ausgewählt werden soll.
   * Wenn der Zieldienst zustandsbehaftet ist, kann der TargetReplicaSelector entweder „PrimaryReplica“, „RandomSecondaryReplica“ oder „RandomReplica“ sein. Ist dieser Parameter nicht angegeben, lautet der Standardwert „PrimaryReplica“.
   * Wenn der Zieldienst zustandslos ist, wählt der Reverseproxy eine zufällige Instanz der Dienstpartition aus, an die die Anforderung weitergeleitet wird.
 * **Timeout:** Gibt das Timeout für die HTTP-Anforderung an, die im Auftrag der Clientanforderung vom Reverseproxy für den Dienst erstellt wird. Der Standardwert beträgt 60 Sekunden. Dieser Parameter ist optional.
@@ -297,7 +297,7 @@ Zunächst rufen Sie die Vorlage für den Cluster ab, den Sie bereitstellen möch
 > Wenn Sie zum Aktivieren des Reverseproxys auf einem vorhandenen Cluster Zertifikate verwenden, die sich vom Clusterzertifikat unterscheiden, installieren Sie das Reverseproxyzertifikat, und aktualisieren Sie die ACL auf dem Cluster, bevor Sie den Reverseproxy aktivieren. Schließen Sie die Bereitstellung der [Azure Resource Manager-Vorlage](service-fabric-cluster-creation-via-arm.md) mit den oben angegebenen Einstellungen ab, bevor Sie eine Bereitstellung starten, um den Reverseproxy mit den Schritten 1–4 zu aktivieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Ein Beispiel für die HTTP-Kommunikation zwischen Diensten finden Sie im [Beispielprojekt auf GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/Services/WordCount).
+* Ein Beispiel für die HTTP-Kommunikation zwischen Diensten finden Sie im [Beispielprojekt auf GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started).
 * [Remoteprozeduraufrufe mit Reliable Services-Remoting](service-fabric-reliable-services-communication-remoting.md)
 * [Web-API, die OWIN in Reliable Services verwendet](service-fabric-reliable-services-communication-webapi.md)
 * [WCF-Kommunikation mit Reliable Services](service-fabric-reliable-services-communication-wcf.md)
