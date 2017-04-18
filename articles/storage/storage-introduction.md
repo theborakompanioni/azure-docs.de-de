@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 02/24/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: f4b26aa9a4dd110eafb8f9f8d658cc0f530136ec
-ms.openlocfilehash: 4548d83525dba6024d1892950e3acbc6b857977a
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 44f40aebe8418b0cfcf2c2708469d586d1dd4c4c
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -88,7 +88,7 @@ Blob Storage bietet drei Arten von Blobs: Blockblobs, Anfügeblobs und Seitenblo
 Wenn sich die Daten besonders umfangreicher Datasets aufgrund von Netzwerkbeschränkungen nicht sinnvoll über eine Kabelverbindung in Blob Storage hochladen bzw. daraus herunterladen lassen, können Sie eine Festplatte an Microsoft schicken und Ihre Daten direkt in das Rechenzentrum importieren bzw. aus dem Rechenzentrum exportieren lassen. Weitere Informationen finden Sie unter [Verwenden des Microsoft Azure Import/Export-Diensts zum Übertragen von Daten in den Blobspeicher](storage-import-export-service.md).
 
 ## <a name="table-storage"></a>Table Storage
-Moderne Anwendungen sind im Vergleich zu früheren Softwaregenerationen häufig auf Datenspeicher mit höherer Skalierbarkeit und Flexibilität angewiesen. Table Storage bietet eine hoch verfügbare und äußerst flexibel skalierbare Speicherung, sodass sich Ihre Anwendung automatisch auf die Anforderungen der Benutzer einstellen kann. Table Storage ist ein Schlüssel-/Attribut-basierter NoSQL-Speicher von Microsoft und unterscheidet sich durch das schemalose Design von herkömmlichen relationalen Datenbanken. Mit einem schemalosen Datenspeicher können Sie Ihre Daten problemlos an die sich verändernden Anforderungen Ihrer Anwendung anpassen. Die hohe Benutzerfreundlichkeit von Table Storage ermöglicht Entwicklern eine rasche Anwendungserstellung. Der Datenzugriff ist für alle Arten von Anwendungen schnell und kostengünstig.  Table Storage ist in der Regel erheblich günstiger als herkömmliche SQL-Lösungen für ähnliche Datenmengen.
+Moderne Anwendungen sind im Vergleich zu früheren Softwaregenerationen häufig auf Datenspeicher mit höherer Skalierbarkeit und Flexibilität angewiesen. Table Storage bietet eine hoch verfügbare und äußerst flexibel skalierbare Speicherung, sodass sich Ihre Anwendung automatisch auf die Anforderungen der Benutzer einstellen kann. Table Storage ist ein NoSQL-Schlüssel-/Attributspeicher von Microsoft, der sich durch sein schemaloses Design von herkömmlichen relationalen Datenbanken unterscheidet. Mit einem schemalosen Datenspeicher können Sie Ihre Daten problemlos an die sich verändernden Anforderungen Ihrer Anwendung anpassen. Die hohe Benutzerfreundlichkeit von Table Storage ermöglicht Entwicklern eine rasche Anwendungserstellung. Der Datenzugriff ist für alle Arten von Anwendungen schnell und kostengünstig.  Table Storage ist in der Regel erheblich günstiger als herkömmliche SQL-Lösungen für ähnliche Datenmengen.
 
 Bei Table Storage handelt es sich um einen Schlüssel-/Attribut-basierten Speicher. Das bedeutet, dass jeder Wert in einer Tabelle mit einem typisierten Eigenschaftennamen gespeichert wird. Der Eigenschaftenname kann für Filter und Auswahlkriterien verwendet werden. Eine Sammlung mit Eigenschaften und deren Werte bilden eine Entität. Da der Tabellenspeicher schemalos ist, können zwei Entitäten in der gleichen Tabelle unterschiedliche Sammlungen von Eigenschaften enthalten, und diese Eigenschaften können jeweils einen anderen Typ haben.
 
@@ -125,7 +125,7 @@ Eine Konto-SAS delegiert den Zugriff auf Ressourcen in einem oder mehreren der S
 
 Außerdem können Sie einen Container und die dazugehörigen Blobs (oder ein bestimmtes Blob) öffentlich verfügbar machen. Wenn Sie einen Container oder ein Blob als öffentliche Ressource konfigurieren, kann jeder Benutzer anonym und ohne Authentifizierung drauf zugreifen.  Mithilfe öffentlicher Container und Blobs können Sie Ressourcen wie Medien und Dokumente verfügbar machen, die auf Websites gehostet werden.  Zur Verringerung der Netzwerklatenz für ein globales Publikum können Sie von Websites verwendete Blobdaten in Azure CDN zwischenspeichern.
 
-Weitere Informationen zu Shared Access Signatures finden Sie unter [Shared Access Signatures, Teil&1;: Grundlagen zum SAS-Modell](storage-dotnet-shared-access-signature-part-1.md) . Weitere Informationen zum sicheren Zugriff auf Ihr Speicherkonto finden Sie unter [Verwalten des anonymen Lesezugriffs auf Container und Blobs](storage-manage-access-to-resources.md) sowie unter [Authentication for the Azure Storage Services](https://msdn.microsoft.com/library/azure/dd179428.aspx) (Authentifizierung für die Azure Storage-Dienste).
+Weitere Informationen zu Shared Access Signatures finden Sie unter [Shared Access Signatures, Teil 1: Grundlagen zum SAS-Modell](storage-dotnet-shared-access-signature-part-1.md) . Weitere Informationen zum sicheren Zugriff auf Ihr Speicherkonto finden Sie unter [Verwalten des anonymen Lesezugriffs auf Container und Blobs](storage-manage-access-to-resources.md) sowie unter [Authentication for the Azure Storage Services](https://msdn.microsoft.com/library/azure/dd179428.aspx) (Authentifizierung für die Azure Storage-Dienste).
 
 ## <a name="replication-for-durability-and-high-availability"></a>Replikation für Dauerhaftigkeit und hohe Verfügbarkeit
 Die Daten in Ihrem Microsoft Azure-Speicherkonto werden stets repliziert, um Beständigkeit und hohe Verfügbarkeit sicherzustellen. Bei der Replikation werden Ihre Daten kopiert, und zwar entweder innerhalb desselben Rechenzentrums, oder in ein zweites Rechenzentrum. Dies hängt davon ab, welche Replikationsoption Sie wählen. Mit der Replikation werden Ihre Daten geschützt, und die Betriebszeit der Anwendung wird hoch gehalten, falls es zu vorübergehenden Hardwareausfällen kommt. Wenn Ihre Daten in einem zweiten Rechenzentrum repliziert werden, werden Ihre Daten außerdem vor einem Ausfall aufgrund einer Katastrophe am primären Standort geschützt.

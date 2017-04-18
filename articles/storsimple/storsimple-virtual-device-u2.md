@@ -12,12 +12,12 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/22/2017
+ms.date: 04/07/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
-ms.openlocfilehash: 48d9d8ae97eb763932dd6a59a7df01ae92c92eff
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: d9ba200dba2b1460a9d3c9ba07e2bca54c30b53a
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -33,7 +33,7 @@ Das virtuelle StorSimple-Gerät steht in zwei Modellen zur Verfügung, dem Stand
 | **Maximale Kapazität** |30 TB |64 TB |
 | **Azure-VM** |Standard_A3 (4 Kerne, 7 GB Arbeitsspeicher) |Standard_DS3 (4 Kerne, 14 GB Arbeitsspeicher) |
 | **Versionskompatibilität** |Versionen unter Vorgängerversionen von Update 2 oder höher |Versionen unter Update 2 oder höher |
-| **Regionale Verfügbarkeit** |Alle Azure-Regionen |Alle Azure-Regionen, die Storage Premium unterstützen<br></br> Storage Premium-Regionen sind Regionen, die der Zeile *Disk Storage* in der Liste [Azure-Produkte nach Region](https://azure.microsoft.com/en-us/regions/services) entsprechen. |
+| **Regionale Verfügbarkeit** |Alle Azure-Regionen |Alle Azure-Regionen, die Storage Premium und DS3-Azure-VMs unterstützen<br></br> Verwenden Sie [diese Liste](https://azure.microsoft.com/en-us/regions/services), um zu ermitteln, ob in Ihrer Region sowohl *Virtuelle Computer > DS-Serie* als auch *Storage > Disk Storage* verfügbar ist. |
 | **Speichertyp** |Verwendet Azure Storage Standard für lokale Datenträger<br></br> Erfahren Sie, wie Sie ein [Storage Standard-Konto erstellen](../storage/storage-create-storage-account.md) |Verwendet Azure Storage Premium für lokale Datenträger<sup>2</sup> <br></br>Erfahren Sie, wie Sie ein [Storage Premium-Konto erstellen](../storage/storage-premium-storage.md) |
 | **Informationen zu Workloads** |Abrufen von Dateien aus Sicherungskopien auf Elementebene |Cloudentwicklungs- und Testszenarien, niedrige Latenz und Workloads mit höherer Leistung  <br></br>Sekundäres Gerät für die Notfallwiederherstellung |
 

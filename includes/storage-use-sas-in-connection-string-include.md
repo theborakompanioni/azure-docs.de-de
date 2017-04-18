@@ -1,4 +1,4 @@
-Wenn Sie über eine URL für Shared Access Signature (SAS) verfügen, die den Zugriff auf Ressourcen in einem Speicherkonto ermöglicht, können Sie die SAS in einer Verbindungszeichenfolge verwenden. Da die SAS die zum Authentifizieren der Anforderung erforderlichen Informationen in den URI einbindet, stellt der SAS-URI das Protokoll, den Dienstendpunkt und die erforderlichen Anmeldeinformationen zum Zugriff auf die Ressource bereit.
+Wenn Sie über eine URL für Shared Access Signature (SAS) verfügen, die den Zugriff auf Ressourcen in einem Speicherkonto ermöglicht, können Sie die SAS in einer Verbindungszeichenfolge verwenden. Da die SAS die zum Authentifizieren der Anforderung erforderlichen Informationen enthält, werden über eine Verbindungszeichenfolge mit einer SAS das Protokoll, der Dienstendpunkt und die erforderlichen Anmeldeinformationen zum Zugreifen auf die Ressource bereitgestellt.
 
 Um eine Verbindungszeichenfolge zu erstellen, die eine SAS enthält, geben Sie die Zeichenfolge im folgenden Format ein:
 
@@ -23,13 +23,15 @@ Jeder Dienstendpunkt ist optional, obwohl die Verbindungszeichenfolge mindestens
 Hier ist ein Beispiel einer Verbindungszeichenfolge, die eine Dienst-SAS für Blobspeicher enthält:
 
 ```
-BlobEndpoint=https://storagesample.blob.core.windows.net;SharedAccessSignature=sv=2015-04-05&sr=b&si=tutorial-policy-635959936145100803&sig=9aCzs76n0E7y5BpEi2GvsSv433BZa22leDOZXX%2BXXIU%3D
+BlobEndpoint=https://storagesample.blob.core.windows.net;
+SharedAccessSignature=sv=2015-04-05&sr=b&si=tutorial-policy-635959936145100803&sig=9aCzs76n0E7y5BpEi2GvsSv433BZa22leDOZXX%2BXXIU%3D
 ```
 
 Und hier ist ein Beispiel für die gleiche Verbindungszeichenfolge mit codierten Sonderzeichen:
 
 ```
-BlobEndpoint=https://storagesample.blob.core.windows.net;SharedAccessSignature=sv=2015-04-05&amp;sr=b&amp;si=tutorial-policy-635959936145100803&amp;sig=9aCzs76n0E7y5BpEi2GvsSv433BZa22leDOZXX%2BXXIU%3D
+BlobEndpoint=https://storagesample.blob.core.windows.net;
+SharedAccessSignature=sv=2015-04-05&amp;sr=b&amp;si=tutorial-policy-635959936145100803&amp;sig=9aCzs76n0E7y5BpEi2GvsSv433BZa22leDOZXX%2BXXIU%3D
 ```
 
 ### <a name="account-sas-example"></a>Beispiel für Konto-SAS
@@ -48,9 +50,4 @@ BlobEndpoint=https://storagesample.blob.core.windows.net;
 FileEndpoint=https://storagesample.file.core.windows.net;
 SharedAccessSignature=sv=2015-07-08&amp;sig=iCvQmdZngZNW%2F4vw43j6%2BVz6fndHF5LI639QJba4r8o%3D&amp;spr=https&amp;st=2016-04-12T03%3A24%3A31Z&amp;se=2016-04-13T03%3A29%3A31Z&amp;srt=s&amp;ss=bf&amp;sp=rwl
 ```
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

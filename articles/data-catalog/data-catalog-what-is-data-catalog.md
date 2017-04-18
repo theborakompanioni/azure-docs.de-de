@@ -13,11 +13,12 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 01/23/2017
+ms.date: 04/06/2017
 ms.author: maroche
 translationtype: Human Translation
-ms.sourcegitcommit: cd3184059a0970bb7c9b59803cf37125abbbd879
-ms.openlocfilehash: 19d4c3990c88f82f60cd253ffdcbd2005d00ad79
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: fb8f43f5bb5725da30e67cdf5d7b066fe40ed003
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -47,7 +48,7 @@ Zusammen stellen diese Probleme eine erhebliche Hürde für Unternehmen dar, die
 ## <a name="azure-data-catalog-can-help"></a>Hilfe von Azure Data Catalog
 Data Catalog ist für die Lösung dieser Probleme ausgelegt und ermöglicht es Unternehmen, mit den vorhandenen Datenressourcen den größten Nutzen zu erzielen. Data Catalog leistet Unterstützung, indem Datenquellen leicht ermittelbar gestaltet werden und von den Benutzern, die die verwalteten Daten benötigen, leicht verstanden werden.
 
-Data Catalog bietet einen cloudbasierten Dienst, unter dem Datenquellen registriert werden können. Die Daten verbleiben an ihrem vorhandenen Speicherort, aber eine Kopie der Metadaten wird Data Catalog hinzugefügt – zusammen mit einem Verweis auf den Speicherort der Datenquelle. Diese Metadaten werden außerdem indiziert, damit jede Datenquelle per Suchfunktion leicht ermittelt werden kann und für die Benutzer verständlich ist, die sie ermitteln.
+Data Catalog verfügt über einen cloudbasierten Dienst, unter dem eine Datenquelle registriert werden kann. Die Daten verbleiben an ihrem vorhandenen Speicherort, aber eine Kopie der Metadaten wird Data Catalog hinzugefügt – zusammen mit einem Verweis auf den Speicherort der Datenquelle. Diese Metadaten werden außerdem indiziert, damit jede Datenquelle per Suchfunktion leicht ermittelt werden kann und für die Benutzer verständlich ist, die sie ermitteln.
 
 Nachdem eine Datenquelle registriert wurde, können die dazugehörigen Metadaten erweitert werden. Dies kann entweder von dem Benutzer übernommen werden, der die Registrierung durchgeführt hat, oder von anderen Benutzern des Unternehmens. Alle Benutzer können eine Datenquelle mit Anmerkungen versehen, indem Beschreibungen, Tags oder andere Metadaten bereitgestellt werden, z. B. Dokumentation und Prozesse für das Anfordern des Datenquellenzugriffs. Diese beschreibenden Metadaten sind eine Erweiterung der strukturellen Metadaten (z.B. Spaltennamen und Datentypen), die für die Datenquelle registriert wurden.
 
@@ -72,9 +73,4 @@ Weitere Informationen zu den Funktionen von Data Catalog finden Sie unter:
 * [Verwalten von Datenassets](data-catalog-how-to-manage.md)
 * [Einrichten des Unternehmensglossars](data-catalog-how-to-business-glossary.md)
 * [Häufig gestellte Fragen](data-catalog-frequently-asked-questions.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

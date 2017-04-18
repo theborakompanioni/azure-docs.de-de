@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/17/2017
+ms.date: 04/11/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 4b29fd1c188c76a7c65c4dcff02dc9efdf3ebaee
-ms.openlocfilehash: 733c151012e3d896f720fbc64120432aca594bda
-ms.lasthandoff: 02/03/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 0664888dbb14aaa353d5d126cdf799b62711d71f
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -106,7 +106,7 @@ Erstellen Sie eine Azure Active Directory-Anwendung, erstellen Sie einen Dienstp
     ```PowerShell
     $azureAdApplication    
     ```
-    Notieren Sie sich die Anwendungs-ID (**ApplicationID** aus der Ausgabe).
+    Notieren Sie sich die Anwendungs-ID (applicationID) aus der Ausgabe.
 
 Nach diesen Schritten sollten Sie über vier Werte verfügen:
 
@@ -124,7 +124,7 @@ Nach diesen Schritten sollten Sie über vier Werte verfügen:
    5. Geben Sie als Name **DataFactoryAPITestApp** ein.
    6. Wählen Sie als Speicherort **C:\ADFGetStarted** aus.
    7. Klicken Sie auf **OK** , um das Projekt zu erstellen.
-2. Klicken Sie auf **Tools**, zeigen Sie auf **NuGet-Paket-Manager**, und klicken Sie auf **Paket-Manager-Konsole**.
+2. Klicken Sie auf **Extras**, zeigen Sie auf **NuGet-Paket-Manager**, und klicken Sie auf **Paket-Manager-Konsole**.
 3. Führen Sie in der **Paket-Manager-Konsole** die folgenden Schritte aus:
    1. Führen Sie den folgenden Befehl zum Installieren des Data Factory-Pakets aus: `Install-Package Microsoft.Azure.Management.DataFactories`
    2. Führen Sie den folgenden Befehl zum Installieren des Azure Active Directory-Pakets aus (Sie verwenden die Active Directory-API im Code): `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
@@ -184,7 +184,7 @@ Nach diesen Schritten sollten Sie über vier Werte verfügen:
    > [!IMPORTANT]
    > Ersetzen Sie den Wert von **ResourceGroupName** durch den Namen Ihrer Azure-Ressourcengruppe.
    >
-   > Legen Sie den Namen der Data Factory (**dataFactoryName**) auf einen eindeutigen Namen fest. Der Name der Data Factory muss global eindeutig sein. Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](data-factory-naming-rules.md) .
+   > Legen Sie den Namen der Data Factory (dataFactoryName) auf einen eindeutigen Namen fest. Der Name der Data Factory muss global eindeutig sein. Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](data-factory-naming-rules.md) .
 
 7. Fügen Sie den folgenden Code, der eine **Data Factory** erstellt, der **Main**-Methode hinzu.
 
@@ -473,7 +473,7 @@ Nach diesen Schritten sollten Sie über vier Werte verfügen:
     }
     ```
 
-15. Erweitern Sie im Projektmappen-Explorer das Projekt (**DataFactoryAPITestApp**), klicken Sie mit der rechten Maustaste auf **Verweise**, und klicken Sie auf **Verweis hinzufügen**. Aktivieren Sie das Kontrollkästchen für die Assembly **System.Configuration**, und klicken Sie auf **OK**.
+15. Erweitern Sie im Projektmappen-Explorer das Projekt (DataFactoryAPITestApp), klicken Sie mit der rechten Maustaste auf **Verweise**, und klicken Sie auf **Verweis hinzufügen**. Aktivieren Sie das Kontrollkästchen für die Assembly **System.Configuration**, und klicken Sie auf **OK**.
 16. Erstellen Sie die Konsolenanwendung. Klicken Sie im Menü auf **Erstellen** und dann auf **Projektmappe erstellen**.
 17. Vergewissern Sie sich, dass sich in Ihrem Azure-Blobspeicher mindestens eine Datei im Container **adftutorial** befindet. Erstellen Sie andernfalls im Editor die Datei **Emp.txt** mit folgendem Inhalt, und laden Sie sie anschließend in den Container „adftutorial“ hoch:
 
@@ -486,7 +486,7 @@ Nach diesen Schritten sollten Sie über vier Werte verfügen:
    * Verknüpfter Dienst: **LinkedService_AzureStorage**
    * Dataset: **DatasetBlobSource** und **DatasetBlobDestination**
    * Pipeline: **PipelineBlobSample**
-20. Stellen Sie sicher, dass die zwei Mitarbeiterdatensätze in der Tabelle „**emp**“ in der angegebenen Azure SQL-Datenbank erstellt werden.
+20. Stellen Sie sicher, dass die zwei Mitarbeiterdatensätze in der Tabelle **emp** in der angegebenen Azure SQL-Datenbank erstellt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 | Thema | Beschreibung |

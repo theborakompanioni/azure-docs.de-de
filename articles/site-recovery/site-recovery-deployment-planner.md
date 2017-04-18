@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 2/21/2017
 ms.author: nisoneji
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 431f73e1be45dec9aa0fe186cb22078f8d95588d
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 07c6836c9279ed2f28730a49d131c064891de1b1
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -90,9 +90,9 @@ Der Ordner enthält mehrere Dateien und Unterordner. Die ausführbare Datei ist 
 
     Beispiel:  
     Kopieren Sie die ZIP-Datei auf das Laufwerk „E:\“, und extrahieren Sie sie.
-   E:\ASR Deployment Planner-Preview_v1.1.zip
+   E:\ASR Deployment Planner-Preview_v1.2.zip
 
-    E:\ASR Deployment Planner-Preview_v1.1\ ASR Deployment Planner-Preview_v1.1\ ASRDeploymentPlanner.exe
+    E:\ASR Deployment Planner-Preview_v1.2\ ASR Deployment Planner-Preview_v1.2\ ASRDeploymentPlanner.exe
 
 ## <a name="capabilities"></a>Funktionen
 Sie können das Befehlszeilentool (ASRDeploymentPlanner.exe) in einem der folgenden drei Modi ausführen:
@@ -145,6 +145,8 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 | -Password | (Optional) Das Kennwort zum Herstellen der Verbindung mit dem vCenter-Server/vSphere ESXi-Host. Wenn Sie hier kein Kennwort angeben, werden Sie bei der Ausführung des Befehls zur Eingabe aufgefordert.|
 | -StorageAccountName | (Optional) Der Name des Speicherkontos zur Ermittlung des Durchsatzes, der für die Replikation von Daten aus der lokalen Umgebung in Azure erreichbar ist. Mit dem Tool werden Testdaten in dieses Speicherkonto hochgeladen, um den Durchsatz zu berechnen.|
 | -StorageAccountKey | (Optional) Der Schlüssel des Speicherkontos, der zum Zugreifen auf das Speicherkonto verwendet wird. Navigieren Sie im Azure-Portal zu „Speicherkonten“ > <*Name des Speicherkontos*> > „Einstellungen“ > „Zugriffsschlüssel“ > „Key1“ (oder primärer Zugriffsschlüssel für das klassische Speicherkonto). |
+| -Environment | (optional) Dies ist Ihre Azure Storage-Zielkontoumgebung. Diese drei Werte sind möglich: „AzureCloud“, „AzureUSGovernment“ und „AzureChinaCloud“. Der Standardwert ist „AzureCloud“. Verwenden Sie den Parameter, wenn Sie als Azure-Zielregion Clouds vom Typ „Azure US Government“ oder „Azure China“ verwenden. |
+
 
 Es wird empfohlen, die Profilerstellung für Ihre VMs mindestens 15 bis 30 Tage lang durchzuführen. Während des Zeitraums der Profilerstellung wird „ASRDeploymentPlanner.exe“ weiter ausgeführt. Im Tool wird der Zeitraum für die Profilerstellung in Tagen eingegeben. Wenn Sie die Profilerstellung nur einige Stunden oder Minuten lang durchführen möchten, um das Tool zu testen, müssen Sie in der öffentlichen Vorschauversion den Zeitraum in den entsprechenden Tageswert umrechnen. Wenn die Profilerstellung beispielsweise 30 Minuten dauern soll, muss die Eingabe 30/(60·24) = 0,021 Tage lauten. Die kürzeste zulässige Dauer für die Profilerstellung beträgt 30 Minuten.
 
@@ -281,11 +283,12 @@ Führen Sie das Tool im GetThroughput-Modus aus, um den Durchsatz zu schätzen, 
 
 |Parametername | Beschreibung |
 |-|-|
-| -operation | GetThroughput |
+| -Operation | GetThroughput |
 | -Directory | (Optional) Der UNC- oder lokale Verzeichnispfad des Speicherorts, an dem die Daten der Profilerstellung (während der Profilerstellung generierte Dateien) gespeichert werden. Diese Daten werden für die Erstellung des Berichts benötigt. Wenn kein Verzeichnisname angegeben ist, wird das Verzeichnis „ProfiledData“ verwendet. |
 | -StorageAccountName | Der Name des Speicherkontos zur Ermittlung der Bandbreite, die für die Replikation von Daten aus der lokalen Umgebung in Azure verbraucht wird. Mit dem Tool werden Testdaten in dieses Speicherkonto hochgeladen, um die verbrauchte Bandbreite zu ermitteln. |
 | -StorageAccountKey | Der Schlüssel des Speicherkontos, der zum Zugreifen auf das Speicherkonto verwendet wird. Navigieren Sie im Azure-Portal zu „Speicherkonten“ > <*Name des Speicherkontos*> > „Einstellungen“ > „Zugriffsschlüssel“ > „Key1“ (oder primärer Zugriffsschlüssel für ein klassisches Speicherkonto). |
 | -VMListFile | Die Datei mit der Liste der VMs, für die Profile erstellt werden sollen, um die verbrauchte Bandbreite zu berechnen. Der Dateipfad kann absolut oder relativ sein. Die Datei sollte einen VM-Namen bzw. eine IP-Adresse pro Zeile enthalten. Die in der Datei angegebenen VM-Namen sollten mit den VM-Namen auf dem vCenter-Server/vSphere ESXi-Host identisch sein.<br>Die Datei „VMList.txt“ enthält beispielsweise die folgenden VMs:<ul><li>VM_A</li><li>10.150.29.110</li><li>VM_B</li></ul>|
+| -Environment | (optional) Dies ist Ihre Azure Storage-Zielkontoumgebung. Diese drei Werte sind möglich: „AzureCloud“, „AzureUSGovernment“ und „AzureChinaCloud“. Der Standardwert ist „AzureCloud“. Verwenden Sie den Parameter, wenn Sie als Azure-Zielregion Clouds vom Typ „Azure US Government“ oder „Azure China“ verwenden. |
 
 Mit dem Tool werden im angegebenen Verzeichnis mehrere Dateien vom Typ „asrvhdfile<#>.vhd“ (wobei „#“ für eine Zahl steht) mit 64 MB erstellt. Mit dem Tool werden diese Dateien in das Speicherkonto hochgeladen, um den Durchsatz zu ermitteln. Nach dem Messen des Durchsatzes löscht das Tool diese Dateien aus dem Speicherkonto und vom lokalen Server. Wenn das Tool aus irgendeinem Grund beendet wird, während der Durchsatz berechnet wird, werden die Dateien nicht aus dem Speicher oder vom lokalen Server gelöscht. Sie müssen sie manuell löschen.
 
@@ -477,6 +480,10 @@ Falls ein Datenträger aufgrund seiner Workloadmerkmale in die Kategorie P20 ode
 
 **NICs**: Die Anzahl von NICs auf der VM.
 
+**Boot Type**: Dies ist der Starttyp der VM. Er kann entweder „BIOS“ oder „EFI“ lauten. Derzeit unterstützt Azure Site Recovery nur den Starttyp „BIOS“. Alle virtuellen Computer mit dem Starttyp „EFI“ sind in der Tabelle unter „Inkompatible VMs“ aufgeführt. 
+
+**OS Type**: Dies ist der Betriebssystemtyp der VM. Er kann „Windows“, „Linux“ oder „Other“ lauten.
+
 ## <a name="incompatible-vms"></a>Inkompatible VMs
 
 ![Excel-Tabelle mit inkompatiblen VMs](./media/site-recovery-deployment-planner/incompatible-vms.png)
@@ -486,6 +493,7 @@ Falls ein Datenträger aufgrund seiner Workloadmerkmale in die Kategorie P20 ode
 **VM Compatibility** (VM-Kompatibilität): Gibt an, warum die jeweilige VM für die Verwendung mit Site Recovery nicht kompatibel ist. Die Gründe werden für jeden inkompatiblen Datenträger der VM beschrieben. Basierend auf den veröffentlichten [Speichergrenzwerten](https://aka.ms/azure-storage-scalbility-performance) können dies folgende Gründe sein:
 
 * Der Datenträger ist größer als 1.023 GB. Azure Storage unterstützt derzeit keine Datenträger, die größer als 1 TB sind.
+* Der Starttyp ist EFI. Derzeit unterstützt Azure Site Recovery für virtuelle Computer nur den Starttyp „BIOS“.
 
 * Die VM-Gesamtgröße (Replikation + TFO) übersteigt den Grenzwert für die Unterstützung von Speicherkonten (35 TB). Diese Inkompatibilität tritt normalerweise auf, wenn ein einzelner Datenträger der VM über ein Leistungsmerkmal verfügt, das den unterstützten Azure- oder Site Recovery-Grenzwert für Standardspeicher überschreitet. Hierdurch fällt die VM in die Storage Premium-Zone. Die maximal unterstützte Größe für ein Storage Premium-Konto beträgt aber 35 TB, und eine einzelne geschützte VM kann nicht über mehrere Speicherkonten hinweg geschützt werden. Beachten Sie außerdem Folgendes: Wenn ein Testfailover auf einer geschützten VM durchgeführt wird, erfolgt dies unter demselben Speicherkonto, unter dem die Replikation durchgeführt wird. Richten Sie in diesem Fall die doppelte Größe des Datenträgers ein, damit die Replikation weiter durchgeführt werden kann und gleichzeitig das Testfailover erfolgreich ist.
 * Der IOPS-Quellwert übersteigt den unterstützten IOPS-Speichergrenzwert von 5.000 pro Datenträger.
@@ -508,6 +516,10 @@ Falls ein Datenträger aufgrund seiner Workloadmerkmale in die Kategorie P20 ode
 **Memory (MB)** (Arbeitsspeicher (MB)): Die Größe des Arbeitsspeichers (RAM) auf der VM.
 
 **NICs**: Die Anzahl von NICs auf der VM.
+
+**Boot Type**: Dies ist der Starttyp der VM. Er kann entweder „BIOS“ oder „EFI“ lauten. Derzeit unterstützt Azure Site Recovery nur den Starttyp „BIOS“. Alle virtuellen Computer mit dem Starttyp „EFI“ sind in der Tabelle unter „Inkompatible VMs“ aufgeführt. 
+
+**OS Type**: Dies ist der Betriebssystemtyp der VM. Er kann „Windows“, „Linux“ oder „Other“ lauten.
 
 
 ## <a name="site-recovery-limits"></a>Site Recovery-Grenzwerte
@@ -546,6 +558,18 @@ Gehen Sie wie folgt vor, um den Deployment Planner zu aktualisieren:
 
 
 ## <a name="version-history"></a>Versionsverlauf
+### <a name="12"></a>1.2
+Aktualisiert: 7. April 2017
+
+Folgende Fixes wurden hinzugefügt:
+
+* Die Überprüfung des Starttyps (BIOS oder EFI) für jeden virtuellen Computer wurde hinzugefügt, um zu ermitteln, ob der virtuelle Computer mit dem Schutzverfahren kompatibel ist.
+* Informationen zum Betriebssystem wurden für jeden virtuellen Computer in den Tabellen „Kompatible VMs“ und „Inkompatible VMs“ hinzugefügt.
+* Der GetThroughput-Vorgang wird für die Microsoft Azure-Regionen „US Government“ und „China“ jetzt unterstützt.
+* Einige zusätzliche Voraussetzungsüberprüfungen für vCenter- und ESXi-Server wurden hinzugefügt.
+* Es wurde ein fehlerhafter Bericht erstellt, wenn die Gebietsschemaeinstellungen auf einen anderen Wert als „Englisch“ festgelegt waren.
+
+
 ### <a name="11"></a>1.1
 Aktualisiert: 9. März 2017
 

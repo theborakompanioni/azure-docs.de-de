@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/17/2017
+ms.date: 04/11/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 4b29fd1c188c76a7c65c4dcff02dc9efdf3ebaee
-ms.openlocfilehash: c5049cbe98dbb04deae4a2b9dc098938aa65495a
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 003a32f2ef67f8aa63ed7be2553fa0f0c3afc08a
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -49,9 +50,9 @@ In diesem Tutorial wird veranschaulicht, wie Sie eine Azure Data Factory mit der
   3. Beschaffen Sie die **Mandanten-ID**. 
   4. Weisen Sie die Anwendung **ADFCopyTutorialApp** der Rolle **Mitwirkender von Data Factory** zu.  
 * Installieren Sie [Azure PowerShell](/powershell/azureps-cmdlets-docs).  
-* Starten Sie **PowerShell** , und führen Sie den folgenden Befehl aus. Lassen Sie Azure PowerShell bis zum Ende dieses Tutorials geöffnet. Wenn Sie PowerShell schließen und erneut öffnen, müssen Sie die Befehle erneut ausführen.
+* Starten Sie **PowerShell**, und führen Sie die unten angegebenen Schritte aus. Lassen Sie Azure PowerShell bis zum Ende dieses Tutorials geöffnet. Wenn Sie PowerShell schließen und erneut öffnen, müssen Sie die Befehle erneut ausführen.
   
-  1. Führen Sie den folgenden Befehl aus, und geben Sie den Benutzernamen und das Kennwort ein, den bzw. das Sie bei der Anmeldung beim Azure-Portal verwendet haben:
+  1. Führen Sie den folgenden Befehl aus, und geben Sie den Benutzernamen und das Kennwort ein, den bzw. das Sie bei der Anmeldung am Azure-Portal verwendet haben:
     
     ```PowerShell 
     Login-AzureRmAccount
@@ -66,7 +67,7 @@ In diesem Tutorial wird veranschaulicht, wie Sie eine Azure Data Factory mit der
     ```PowerShell
     Get-AzureRmSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzureRmContext
     ```
-  4. Erstellen Sie eine Azure-Ressourcengruppe mit dem Namen **ADFTutorialResourceGroup** , indem Sie in PowerShell den folgenden Befehl ausführen.  
+  4. Erstellen Sie eine Azure-Ressourcengruppe mit dem Namen **ADFTutorialResourceGroup** , indem Sie in der PowerShell den folgenden Befehl ausführen:  
 
     ```PowerShell     
       New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
@@ -172,10 +173,10 @@ Mit der JSON-Definition wird ein Dataset mit dem Namen **AzureBlobInput**definie
 * **linkedServiceName** ist auf **AzureStorageLinkedService** festgelegt. 
 * **folderPath** ist auf den Container **adftutorial** und **fileName** auf **emp.txt** festgelegt.  
 * „format **type**“ ist auf **TextFormat** festgelegt.
-* Die Textdatei enthält die beiden Felder **FirstName** und **LastName**, die durch ein Komma getrennt sind (**columnDelimiter**).    
-* Die Verfügbarkeit (**availability**) ist auf **hourly**, („frequency“ auf „hour“ und „interval“ auf „1“) festgelegt. Der Data Factory-Dienst sucht also stündlich im Stammordner des angegebenen Blobcontainers (**adftutorial**) nach Eingabedaten. 
+* Die Textdatei enthält die beiden Felder **FirstName** und **LastName**, die durch ein Komma getrennt sind (columnDelimiter).    
+* Die Verfügbarkeit (**availability**) ist auf **hourly** („frequency“ auf „hour“ und „interval“ auf „1“) festgelegt. Der Data Factory-Dienst sucht also stündlich im Stammordner des angegebenen Blobcontainers (adftutorial) nach Eingabedaten. 
 
-Wenn Sie keinen Dateinamen (**fileName**) für ein Eingabedataset angeben, werden alle Dateien/Blobs aus dem Eingabeordner (**folderPath**) als Eingaben betrachtet. Wenn Sie einen Dateinamen im JSON-Code angeben, wird nur die angegebene Datei bzw. das Blob als Eingabe betrachtet.
+Wenn Sie keinen Dateinamen (**fileName**) für ein Eingabedataset (input) angeben, werden alle Dateien/Blobs aus dem Eingabeordner (folderPath) als Eingaben betrachtet. Wenn Sie einen Dateinamen im JSON-Code angeben, wird nur die angegebene Datei bzw. das Blob als Eingabe betrachtet.
 
 Wenn Sie keinen **fileName** für eine **Ausgabetabelle** angeben, werden die generierten Dateien in **folderPath** im folgenden Format benannt: Data.&lt;Guid&gt;.txt (Beispiel: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.).
 
@@ -230,7 +231,7 @@ Beachten Sie folgende Punkte:
 * **linkedServiceName** ist auf **AzureSqlLinkedService** festgelegt.
 * **tablename** ist auf **emp** festgelegt.
 * Die emp-Tabelle in der Datenbank enthält drei Spalten: **ID**, **FirstName** und **LastName**. Da es sich bei „ID“ um eine Identitätsspalte handelt, müssen Sie hier lediglich **FirstName** und **LastName** angeben.
-* Die Verfügbarkeit (**availability**) ist auf **hourly**, (**frequency** auf **hour** und **interval** auf **1**) festgelegt.  Der Data Factory-Dienst generiert in der Tabelle **emp** in der Azure SQL-Datenbank stündlich einen Ausgabedatenslice.
+* Die Verfügbarkeit (**availability**) ist auf **hourly** („frequency“ auf „hour“ und „interval“ auf „1“) festgelegt.  Der Data Factory-Dienst generiert in der Tabelle **emp** in der Azure SQL-Datenbank stündlich einen Ausgabedatenslice.
 
 ### <a name="pipelinejson"></a>pipeline.json
 
@@ -316,7 +317,7 @@ $adf = "ADFCopyTutorialDF"
 ```
 
 ## <a name="authenticate-with-aad"></a>Authentifizieren mit AAD
-Führen Sie den folgenden Befehl aus, um die Authentifizierung für Azure Active Directory (AAD) durchzuführen. 
+Führen Sie den folgenden Befehl aus, um die Authentifizierung für Azure Active Directory (AAD) durchzuführen: 
 
 ```PowerShell
 $cmd = { .\curl.exe -X POST https://login.microsoftonline.com/$tenant/oauth2/token  -F grant_type=client_credentials  -F resource=https://management.core.windows.net/ -F client_id=$client_id -F client_secret=$client_secret };
@@ -360,7 +361,7 @@ Beachten Sie folgende Punkte:
 * Der Name der Data Factory kann in Zukunft als DNS-Name registriert und so öffentlich sichtbar werden.
 * Führen Sie einen der folgenden Schritte aus, wenn Sie eine Fehlermeldung wie**Dieses Abonnement ist nicht zur Verwendung des Microsoft.DataFactory-Namespaces registriert**erhalten, und versuchen Sie, die Veröffentlichung erneut durchzuführen: 
   
-  * Führen Sie in Azure PowerShell den folgenden Befehl aus, um den Data Factory-Anbieter zu registrieren. 
+  * Führen Sie in Azure PowerShell den folgenden Befehl aus, um den Data Factory-Anbieter zu registrieren: 
 
     ```PowerShell    
     Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
@@ -428,7 +429,7 @@ Führen Sie die folgenden Schritte zur Vorbereitung des Azure-Blobspeichers und 
 * Erstellen Sie die Textdatei **emp.txt**, und laden Sie diese als Blob in den Container **adftutorial** hoch. 
 * Erstellen Sie eine Tabelle namens **emp** in der Azure SQL-Datenbank, auf die **AzureSqlLinkedService** verweist.
 
-1. Öffnen Sie den Editor, fügen Sie den folgenden Text ein, und speichern Sie die Datei als **emp.txt** im Ordner **C:\ADFGetStartedPSH** auf Ihrer Festplatte. 
+1. Starten Sie den Editor. Kopieren Sie den folgenden Text, und speichern Sie ihn in der Datei **emp.txt** im Ordner **C:\ADFGetStartedPSH** auf Ihrer Festplatte. 
 
     ```   
     John, Doe
@@ -456,7 +457,7 @@ Führen Sie die folgenden Schritte zur Vorbereitung des Azure-Blobspeichers und 
     Wenn Ihr Client nicht auf den Azure SQL-Server zugreifen darf, müssen Sie die Firewall für Ihren Azure SQL-Server so konfigurieren, dass der Zugriff über Ihren Computer (bzw. dessen IP-Adresse) ermöglicht wird. Schritte zum Konfigurieren der Firewall für Ihren Azure SQL-Server finden Sie in [diesem Artikel](../sql-database/sql-database-configure-firewall-settings.md).
 
 ### <a name="create-input-dataset"></a>Erstellen eines Eingabedatasets
-In diesem Schritt erstellen Sie ein Dataset namens **AzureBlobInput**, das auf einen Blobcontainer im Azure-Speicher verweist. Dieser wird vom verknüpften Dienst **AzureStorageLinkedService** dargestellt. Dieser Blob-Container (**adftutorial**) enthält die Eingabedaten in der Datei **emp.txt**. 
+In diesem Schritt erstellen Sie ein Dataset namens **AzureBlobInput**, das auf einen Blobcontainer im Azure-Speicher verweist. Dieser wird vom verknüpften Dienst **AzureStorageLinkedService** dargestellt. Dieser Blobcontainer (adftutorial) enthält die Eingabedaten in der Datei **emp.txt**. 
 
 1. Weisen Sie den Befehl einer Variablen mit dem Namen **cmd**zu. 
 
@@ -475,7 +476,7 @@ In diesem Schritt erstellen Sie ein Dataset namens **AzureBlobInput**, das auf e
     ```
 
 ### <a name="create-output-dataset"></a>Erstellen des Ausgabedatasets
-In diesem Schritt erstellen Sie eine Ausgabetabelle namens **AzureSqlOutput**. Dieses Dataset verweist auf eine SQL-Tabelle (**emp**) in der durch **AzureSqlLinkedService** dargestellten Azure SQL-Datenbank. Die Pipeline kopiert Daten aus dem Eingabeblob in die Tabelle **emp** . 
+In diesem Schritt erstellen Sie eine Ausgabetabelle namens **AzureSqlOutput**. Dieses Dataset verweist auf eine SQL-Tabelle (emp) in der durch **AzureSqlLinkedService** dargestellten Azure SQL-Datenbank. Die Pipeline kopiert Daten aus dem Eingabeblob in die Tabelle **emp** . 
 
 1. Weisen Sie den Befehl einer Variablen mit dem Namen **cmd**zu.
 
@@ -573,9 +574,4 @@ In diesem Tutorial haben Sie mit der REST-API eine Azure Data Factory erstellt, 
 [image-data-factory-get-started-storage-explorer]: ./media/data-factory-copy-activity-tutorial-using-powershell/getstarted-storage-explorer.png
 
 [sql-management-studio]: ../sql-database/sql-database-manage-azure-ssms.md
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

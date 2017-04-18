@@ -16,9 +16,9 @@ ms.topic: get-started-article
 ms.date: 01/27/2017
 ms.author: mandia
 translationtype: Human Translation
-ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
-ms.openlocfilehash: a469a6e29e07029b7eab4e80e132b9276c5b18df
-ms.lasthandoff: 04/04/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 53bb5d64e27458b4a88981bd20ea4236b31431ec
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -87,7 +87,7 @@ Connectors bieten auch Aktionen, die Sie im Workflow Ihrer App verwenden können
 
 ## <a name="custom-connectors-and-certification-for-microsoft-azure"></a>Benutzerdefinierte Connectors und Zertifizierung für Microsoft Azure
 
-Sie möchten Ihre eigenen Connectors erstellt oder finden nicht den gewünschten Connector? Sie können [die Logic Apps-Plattform erweitern](../logic-apps/logic-apps-create-api-app.md) und API-Apps erstellen, um Aufrufe in APIs oder Systemen auszuführen, die im Rahmen unserer vorgefertigten Connectors nicht zur Verfügung stehen. Außerdem können Sie Ihre API-Apps zur Zertifizierung für Microsoft Azure einreichen sie dann über Azure verfügbar machen. Weitere Informationen zur Zertifizierung Ihrer Lösungen für Microsoft Azure finden Sie [hier](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/).
+Zum Aufrufen von APIs, die benutzerdefinierten Code ausführen oder nicht als Connector verfügbar sind, können Sie [die Logic Apps-Plattform erweitern](../logic-apps/logic-apps-create-api-app.md), indem Sie REST-basierte API-Apps als benutzerdefinierte Connectors erstellen. Wenn Sie Ihre benutzerdefinierten API-Apps öffentlich machen und in Azure für die Nutzung zur Verfügung stellen möchten, können Sie Ihre Nominierungen an das [Microsoft Azure Certified-Programm](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/) senden.
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
 

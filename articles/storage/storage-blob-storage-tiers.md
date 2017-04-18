@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 02/27/2017
 ms.author: mihauss
 translationtype: Human Translation
-ms.sourcegitcommit: c004285f3b3052ed9361fc7165702aff8f5e835d
-ms.openlocfilehash: e0df34dbb4278d759ee412000d6dafd64276d926
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 618d31e991d9405ece6533727d700e316ae85bec
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -268,6 +268,7 @@ Die Datenübertragungskosten bei Georeplikation für Blob-Speicherkonten können
 
 ### <a name="migrating-existing-data"></a>Migrieren vorhandener Daten
 Ein Blob-Speicherkonto ist ein spezielles Konto, in dem nur Blockblobs und Anfügeblobs gespeichert werden. Bereits vorhandene allgemeine Speicherkonten, die Ihnen das Speichern von Tabellen, Warteschlangen, Dateien und Datenträgern sowie Blobs ermöglichen, können nicht in Blob-Speicherkonten konvertiert werden. Zum Verwenden der Speicherebenen müssen Sie neue Blob-Speicherkonten erstellen und Ihre vorhandenen Daten in die neu erstellten Konten migrieren.
+
 Mithilfe der folgenden Methoden können Sie vorhandene Daten von lokalen Speichergeräten, aus dem Cloudspeicher von Drittanbietern oder aus Ihren vorhandenen allgemeinen Azure-Speicherkonten zu Blob-Speicherkonten migrieren:
 
 #### <a name="azcopy"></a>AzCopy

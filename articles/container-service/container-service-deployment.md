@@ -18,9 +18,9 @@ ms.date: 03/01/2017
 ms.author: rogardle
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 2e8ff5304d4ccc63f92567b22c0508e3fc7b9bcf
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 71903120a77aa4d8fd58ea600488d3464570b0cb
+ms.lasthandoff: 04/06/2017
 
 ---
 # <a name="deploy-a-docker-container-hosting-solution-using-the-azure-portal"></a>Bereitstellen einer Docker-Containerhostinglösung mit dem Azure-Portal
@@ -36,7 +36,11 @@ Hintergrundinformationen finden Sie in der [Einführung in Azure Container Servi
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* [Azure-Abonnement](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935): Falls Sie noch über kein Azure-Abonnement verfügen, können Sie sich für eine **kostenlose Testversion**registrieren. 
+* [Azure-Abonnement](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935): Falls Sie noch über kein Azure-Abonnement verfügen, können Sie sich für eine **kostenlose Testversion**registrieren. Bei größeren Clustern empfiehlt sich die Verwendung eines Abonnements mit nutzungsbasierter Bezahlung oder einer anderen Kaufoption.
+
+    > [!NOTE]
+    > Durch Ihre Nutzungs- und [Ressourcenkontingente](../azure-subscription-service-limits.md) für Azure-Abonnements, z.B. Kontingente für Kerne, kann die Größe des bereitgestellten Clusters beschränkt werden. In diesem Fall können Sie kostenlos [eine Anfrage an den Onlinekundensupport richten](../azure-supportability/how-to-create-azure-support-request.md) und eine Erhöhung des Kontingents anfordern.
+    >
 
 * **Öffentlicher SSH-RSA-Schlüssel**: Bei der Bereitstellung über das Portal oder eine der Azure-Schnellstartvorlagen müssen Sie den öffentlichen Schlüssel angeben, der zur Authentifizierung für virtuelle Azure Container Service-Computer verwendet werden soll. Informationen zum Erstellen von Secure Shell (SSH)-RSA-Schlüsseln finden Sie in den Anleitungen für [OS X und Linux](../virtual-machines/linux/mac-create-ssh-keys.md) oder für [Windows](../virtual-machines/linux/ssh-from-windows.md). 
 
@@ -109,7 +113,7 @@ Die Bereitstellung kann einige Minuten in Anspruch nehmen. Danach ist der Azure 
 ## <a name="create-a-cluster-by-using-a-quickstart-template"></a>Erstellen eines Clusters mit einer Schnellstartvorlage
 Azure-Schnellstartvorlagen sind zum Bereitstellen eines Clusters in Azure Container Service verfügbar. Die bereitgestellten Schnellstartvorlagen können auch so geändert werden, dass sie eine zusätzliche oder erweiterte Azure-Konfiguration enthalten. Zum Erstellen eines Azure Container Service-Clusters mithilfe einer Azure-Schnellstartvorlage benötigen Sie ein Azure-Abonnement. Wenn Sie über kein Azure-Abonnement verfügen, registrieren Sie sich für eine [kostenlose Testversion](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935). 
 
-Führen Sie zum Bereitstellen eines Clusters mithilfe einer Vorlage und von Azure CLI 2.0 die folgenden Schritte aus. (Weitere Informationen finden Sie in der [Installations- und Einrichtungsanleitung](/cli/azure/install-az-cli2.md).)
+Führen Sie zum Bereitstellen eines Clusters mithilfe einer Vorlage und von Azure CLI 2.0 die folgenden Schritte aus. (Weitere Informationen finden Sie in der [Installations- und Einrichtungsanleitung](/cli/azure/install-az-cli2).)
 
 > [!NOTE] 
 > In einem Windows-System können Sie ähnliche Schritte zum Bereitstellen einer Vorlage mithilfe von Azure PowerShell verwenden. Die Schritte dazu sind weiter unten in diesem Abschnitt beschrieben. Sie können eine Vorlage auch über das [Portal](../azure-resource-manager/resource-group-template-deploy-portal.md) oder mithilfe anderer Methoden bereitstellen.

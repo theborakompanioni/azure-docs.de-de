@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 03/27/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: 02e30f7fcbe0782528460b542a75f1d11c7286a1
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 076a85b7b965f163255e919eb61700aef0d1fc18
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -70,7 +70,7 @@ Bei Verwendung von Visual Studio 2013 können Sie [das aktuelle Azure SDK für V
 
     Stellen Sie sicher, dass für die Einstellungen unter **Authentifizierung** die Option **Keine Authentifizierung** angegeben ist. Je nach Ihrer Version von Visual Studio kann der Standardwert auch anders lauten. Um dies zu ändern, klicken Sie auf **Authentifizierung ändern** und wählen **Keine Authentifizierung**.
 
-    Falls Sie für diesen Vorgang Visual Studio 2015 nutzen, sollten Sie das Kontrollkästchen **In der Cloud hosten** deaktivieren. Die Schritte zum [Bereitstellen der Azure-Ressourcen](#provision-the-azure-resources) und [Veröffentlichen der Anwendung für Azure](#publish-the-application-to-azure) werden im weiteren Verlauf des Tutorials ausgeführt. Ein Beispiel, in dem eine App Service-Web-App über Visual Studio mit aktiviertem Kontrollkästchen **In der Cloud hosten** bereitgestellt wird, finden Sie unter [Erste Schritte mit Web-Apps in Azure App Service mit ASP.NET und Visual Studio](../app-service-web/web-sites-dotnet-get-started.md).
+    Falls Sie für diesen Vorgang Visual Studio 2015 nutzen, sollten Sie das Kontrollkästchen **In der Cloud hosten** deaktivieren. Die Schritte zum [Bereitstellen der Azure-Ressourcen](#provision-the-azure-resources) und [Veröffentlichen der Anwendung für Azure](#publish-the-application-to-azure) werden im weiteren Verlauf des Tutorials ausgeführt. Ein Beispiel, in dem eine App Service-Web-App über Visual Studio mit aktiviertem Kontrollkästchen **In der Cloud hosten** bereitgestellt wird, finden Sie unter [Erste Schritte mit Web-Apps in Azure App Service mit ASP.NET und Visual Studio](../app-service-web/app-service-web-get-started-dotnet.md).
    
     ![Projektvorlage auswählen][cache-select-template]
 4. Klicken Sie auf **OK** , um das Projekt zu erstellen.
@@ -86,7 +86,7 @@ In diesem Abschnitt des Tutorials wird die grundlegende Anwendung zum Lesen und 
 ### <a name="add-the-entity-framework-nuget-package"></a>Hinzufügen des Entity Framework-NuGet-Pakets
 
 1. Klicken Sie im Menü **Extras** auf **NuGet-Paket-Manager** > **Paket-Manager-Konsole**.
-2. Führen Sie im Fenster `Package Manager Console` den folgenden Befehl aus:
+2. Führen Sie den folgenden Befehl im Fenster **Paket-Manager-Konsole** aus.
     
     ```
     Install-Package EntityFramework

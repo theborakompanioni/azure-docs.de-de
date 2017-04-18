@@ -17,7 +17,7 @@
     ```
 2. Fügen Sie der Datei `sender.js` die folgenden Relay-`constants` für die Hybridverbindungsdetails hinzu. Ersetzen Sie die Platzhalter in Klammern durch die entsprechenden Werte, die beim Erstellen der Hybridverbindung abgerufen wurden.
    
-   1. `const ns` – der Relay-Namespace
+   1. `const ns` – der Relay-Namespace (Verwenden Sie den FQDN, z.B. `{namespace}.servicebus.windows.net`.)
    2. `const path` – der Name der Hybridverbindung
    3. `const keyrule` – der Name des SAS-Schlüssels
    4. `const key` – Der Wert des SAS-Schlüssels
@@ -71,9 +71,4 @@
         }
     );
     ```
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 03/06/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 23927acae12f0db13fe6dd24a4e1fde8ced25d40
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 5c6a6fcf86867fb2195a31d636003f16ed503da2
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -502,6 +502,9 @@ Gehen Sie wie folgt vor, um Entitäten in einem Azure Data Factory-Projekt mit d
 6. Klicken Sie auf **Fertig stellen** , wenn der Bereitstellungsvorgang abgeschlossen ist.
 
 Bei der Bereitstellung werden die Werte aus der Konfigurationsdatei zum Festlegen der Werte für Eigenschaften in den JSON-Dateien für Data Factory-Entitäten verwendet, bevor die Entitäten für den Azure Data Factory-Dienst bereitgestellt werden.   
+
+## <a name="use-azure-key-vault"></a>Verwenden von Azure Key Vault
+Es ist nicht ratsam und häufig gemäß der Sicherheitsrichtlinie auch nicht zulässig, für sensible Daten, z.B. Verbindungszeichenfolgen, ein Commit in das Coderepository durchzuführen. Informationen zum Speichern von sensiblen Informationen in Azure Key Vault und zum Verwenden beim Veröffentlichen von Data Factory-Entitäten finden Sie im Beispiel [ADF Secure Publish](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFSecurePublish) (Sichere ADF-Veröffentlichung) auf GitHub. Mit der Secure Publish-Erweiterung für Visual Studio können Geheimnisse in Key Vault gespeichert werden, und in verknüpften Diensten bzw. Bereitstellungskonfigurationen werden dann nur Verweise darauf angegeben. Diese Verweise werden aufgelöst, wenn Sie Data Factory-Entitäten in Azure veröffentlichen. Für diese Dateien können dann Commits in das Quellrepository durchgeführt werden, ohne Geheimnisse offenzulegen.
 
 ## <a name="summary"></a>Zusammenfassung
 In diesem Tutorial haben Sie eine Azure Data Factory zum Verarbeiten von Daten erstellt, indem Sie ein Hive-Skript in einem HDInsight Hadoop-Cluster ausgeführt haben. Sie haben den Data Factory-Editor im Azure-Portal verwendet, um die folgenden Schritte auszuführen:  

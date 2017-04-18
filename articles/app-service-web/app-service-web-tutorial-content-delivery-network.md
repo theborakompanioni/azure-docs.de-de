@@ -9,9 +9,9 @@ ms.topic: hero-article
 ms.service: app-service-web
 manager: erikre
 translationtype: Human Translation
-ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
-ms.openlocfilehash: d616ca49da7a909a1a104409c5845f39c4a5377a
-ms.lasthandoff: 04/04/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: a12eab1f7bc4177f659771d58a58f749507c994c
+ms.lasthandoff: 04/12/2017
 
 ---
 # <a name="connect-a-web-app-to-a-content-delivery-network"></a>Herstellen einer Verbindung zwischen einer Web-App und einem Content Delivery Network
@@ -19,7 +19,7 @@ ms.lasthandoff: 04/04/2017
 In diesem Tutorial erstellen Sie ein Azure CDN-Profil und einen Azure CDN-Endpunkt, um die statischen Dateien aus Ihrer Web-App über die Azure CDN-POP-Standorte bereitzustellen.
 
 > [!TIP]
-> Sehen Sie sich unter [Azure CDN-POP-Standorte](https://docs.microsoft.com/en-us/azure/cdn/cdn-pop-locations) die aktuelle Updateliste an.
+> Sehen Sie sich unter [Azure CDN-POP-Standorte](https://docs.microsoft.com/en-us/azure/cdn/cdn-pop-locations) die aktuelle Liste an.
 >
 
 ## <a name="step-1---login-to-azure-portal"></a>Schritt 1: Anmelden beim Azure-Portal

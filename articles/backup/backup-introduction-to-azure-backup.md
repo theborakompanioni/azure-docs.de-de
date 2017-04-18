@@ -17,9 +17,9 @@ ms.date: 3/13/2017
 ms.author: markgal;trinadhk; anuragm
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
-ms.openlocfilehash: a2452b95c9355957b10477a6e457000f0eba6a9c
-ms.lasthandoff: 04/04/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 2e981f0f45bc5b338937839b74114e12db960927
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -90,9 +90,9 @@ In der folgende Tabellen sind die Azure Backup-Komponenten angegeben, die über 
 | Komponente | Linux-Unterstützung (von Azure unterstützt) |
 | --- | --- |
 | Azure Backup-Agent (MARS) |Keine (nur Windows-basierter Agent) |
-| System Center DPM |Nur dateikonsistente Sicherungen auf Hyper-V<br/> (nicht für Azure-VM verfügbar) |
-| Azure Backup Server |Nur dateikonsistente Sicherungen auf Hyper-V<br/> (nicht für Azure-VM verfügbar) |
-| Azure IaaS-VM-Sicherung |Ja (anwendungskonsistente Sicherung per [Pre-Skript- und Post-Skript-Framework](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent)) |
+| System Center DPM |Dateikonsistente Sicherung von Linux-Gast-VMs unter Hyper-V und VMWare<br/> (nicht für Azure-VM verfügbar)<br/> VM-Wiederherstellung von Hyper-V- und VMWare-Linux-Gast-VMs |
+| Azure Backup Server |Dateikonsistente Sicherung von Linux-Gast-VMs unter Hyper-V und VMWare<br/> (nicht für Azure-VM verfügbar)<br/> VM-Wiederherstellung von Hyper-V- und VMWare-Linux-Gast-VMs |
+| Azure IaaS-VM-Sicherung |Anwendungskonsistente Sicherung per [Pre-Skript- und Post-Skript-Framework](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent)<br/> [Präzise Dateiwiederherstellung](backup-azure-restore-files-from-vm.md)<br/> [Wiederherstellen aller VM-Datenträger](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-backed-up-disks)<br/> [VM-Wiederherstellung](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#create-a-new-vm-from-restore-point) |
 
 ## <a name="using-premium-storage-vms-with-azure-backup"></a>Verwenden von Storage Premium-VMs mit Azure Backup
 Azure Backup schützt Storage Premium-VMs. Azure Storage Premium ist ein SSD-basierter Speicher (Solid State Drive, Festkörperlaufwerk), der auf die Unterstützung E/A-intensiver Workloads ausgelegt ist. Storage Premium ist gut für Workloads von virtuellen Computern (VMs) geeignet. Weitere Informationen zu Storage Premium finden Sie im Artikel [Storage Premium: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern](../storage/storage-premium-storage.md).

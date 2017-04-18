@@ -10,13 +10,13 @@ ms.service: azure-portal
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/14/2017
+ms.topic: get-started-article
+ms.date: 03/30/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: d7a8d669e75991f6707641e4ce53c9b63d04853c
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 8d9d39d63209b8ab6884ddeff569687b55591f95
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -52,6 +52,8 @@ Später können Sie die App bei Bedarf mit Application Insights erstellen und er
 Application Insights kann durch Installieren eines SDK in Ihrer App eine detailliertere Telemetrie bereitstellen. Beispielsweise können Sie Ablaufverfolgungsprotokolle erfassen, [benutzerdefinierte Telemetriedaten schreiben](app-insights-api-custom-events-metrics.md) und ausführlichere Berichte zu Ausnahmen erhalten.
 
 1. Konfigurieren Sie in **Visual Studio** (2013 Update 2 oder höher) Application Insights für Ihr Projekt.
+
+    Klicken Sie mit der rechten Maustaste auf das Webprojekt, und wählen Sie die Option **Hinzufügen > Application Insights** oder **Application Insights konfigurieren**.
    
     ![Klicken Sie mit der rechten Maustaste auf das Webprojekt, und wählen Sie „"Application Insights hinzufügen“ oder „Application Insights konfigurieren“.](./media/app-insights-azure-web-apps/03-add.png)
    
@@ -91,11 +93,17 @@ Application Insights kann durch Installieren eines SDK in Ihrer App eine detaill
 
 Verwenden Sie die [Analytics-Abfragesprache](app-insights-analytics-tour.md), um Telemetriedaten noch effizienter zu durchsuchen.
 
+## <a name="more-telemetry"></a>Mehr Telemetrie
+
+* [Ladedaten für Webseiten](app-insights-javascript.md)
+* [Benutzerdefinierte Telemetrie](app-insights-api-custom-events-metrics.md)
+
 ## <a name="video"></a>Video
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>Nächste Schritte
+* [Ausführen des Profilers in Ihrer Live-App](app-insights-profiler.md)
 * [Ermöglichen des Sendens von Azure-Diagnosedaten an Application Insights](app-insights-azure-diagnostics.md)
 * [Überwachen von Dienstintegritätsmetriken](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md), um sicherzustellen, dass Ihr Dienst verfügbar und reaktionsfähig ist.
 * [Empfangen von Warnbenachrichtigungen](../monitoring-and-diagnostics/insights-receive-alert-notifications.md) , wenn ein Vorgangsereignis auftritt oder Metriken einen Schwellenwert überschreiten.

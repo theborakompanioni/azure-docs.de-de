@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/04/2017
+ms.date: 04/06/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
-ms.openlocfilehash: 9a648ca8f91529bc5aaa7b8ffbcfddb40864f409
-ms.lasthandoff: 04/04/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 4b8627f3cdd13578f9b4c35297bf5d550dccfd07
+ms.lasthandoff: 04/06/2017
 
 
 ---
-# <a name="troubleshooting-you-cant-get-there-from-here-on-a-windows-device"></a>Behandeln von Zugriffsproblemen auf einem Windows-Gerät
+# <a name="you-cant-get-there-from-here-on-a-windows-device"></a>Zugriffsprobleme auf einem Windows-Gerät
 
 Beim Versuch, beispielsweise auf das SharePoint Online-Intranet Ihrer Organisation zuzugreifen, erscheint unter Umständen eine Seite mit dem Hinweis auf ein *Zugriffsproblem*. Diese Seite wird angezeigt, weil der Administrator eine Richtlinie für bedingten Zugriff konfiguriert hat, die unter bestimmten Bedingungen den Zugriff auf Ressourcen Ihrer Organisation unterbindet. Es kann zwar sein, dass sich das Problem nur in Zusammenarbeit mit dem Helpdesk oder Administrator beheben lässt, Sie können jedoch zunächst selbst ein paar Dinge ausprobieren.
 

@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/12/2017
+ms.date: 04/11/2017
 ms.author: vakarand
 translationtype: Human Translation
-ms.sourcegitcommit: 7c320a043322fefea1f58301492d4c5a0567320c
-ms.openlocfilehash: 9569a850c6fadd86c408f9e9d4ec6d7d519744e8
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 7aa1363c3d4164edb5199a21e75b2b08a3218bf5
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -34,7 +35,7 @@ Die folgende Tabelle enthält eine Liste mit Anforderungen für die Verwendung v
 | Ausgehende Verbindungen zu den Azure-Dienstendpunkten | Während der Installation und der Laufzeit erfordert der Agent Verbindungen mit den Endpunkten des Azure AD Connect Health-Diensts. Falls ausgehende Verbindungen mithilfe von Firewalls blockiert werden, müssen der Zulassungsliste folgende Endpunkte hinzugefügt werden: </br></br><li>&#42;.blob.core.windows.net </li><li>&#42;.servicebus.windows.net – Port: 5671 </li><li>&#42;.adhybridhealth.azure.com/</li><li>https://management.azure.com </li><li>https://policykeyservice.dc.ad.msft.net/</li><li>https://login.windows.net</li><li>https://login.microsoftonline.com</li><li>https://secure.aadcdn.microsoftonline-p.com</li> |
 |Ausgehende Verbindungen auf IP-Adressbasis | Informationen zur IP-adressbasierten Firewallfilterung finden Sie in den [IP-Bereichen für Azure](https://www.microsoft.com/en-us/download/details.aspx?id=41653).|
 | Die SSL-Überprüfung für ausgehenden Datenverkehr ist gefiltert oder deaktiviert. | Beim Agent-Registrierungsschritt oder bei Datenuploads tritt unter Umständen ein Fehler auf, wenn auf der Netzwerkebene eine SSL-Überprüfung oder Beendigung für ausgehenden Datenverkehr erfolgt. |
-| Firewall-Ports auf dem Server, auf dem der Agent ausgeführt wird. |Für den Agent müssen die folgenden Firewallports geöffnet sein, damit er mit den Azure AD Health-Dienstendpunkten kommunizieren kann:</br></br><li>TCP/UDP-Port 443</li><li>TCP/UDP-Port 5671</li> |
+| Firewall-Ports auf dem Server, auf dem der Agent ausgeführt wird. |Für den Agent müssen die folgenden Firewallports geöffnet sein, damit er mit den Azure AD Health-Dienstendpunkten kommunizieren kann:</br></br><li>TCP-Port 443</li><li>TCP-Port 5671</li> |
 | Zulassen der folgenden Websites, wenn die verstärkte IE-Sicherheit aktiviert ist |Wenn die verstärkte IE-Sicherheit aktiviert ist, müssen die folgenden Websites auf dem Server zugelassen werden, auf dem der Agent installiert werden soll:</br></br><li>https://login.microsoftonline.com</li><li>https://secure.aadcdn.microsoftonline-p.com</li><li>https://login.windows.net</li><li>Der Verbundserver für Ihre Organisation, dem Azure Active Directory vertraut. Beispiel: https://sts.contoso.com</li> |
 
 ## <a name="installing-the-azure-ad-connect-health-agent-for-ad-fs"></a>Installieren des Azure AD Connect Health-Agents für AD FS
@@ -167,7 +168,7 @@ Der Befehl hat folgende Parameter:
 * AttributeFiltering: $true (default) – wenn Azure AD Connect den Standardattributsatz nicht synchronisiert und für die Verwendung eines gefilterten Attributsatzes angepasst wurde. Andernfalls $false.
 * StagingMode: $false (Standard) – wenn der Azure AD Connect-Server sich NICHT im Stagingmodus befindet; $true, wenn der Server für den Stagingmodus konfiguriert ist.
 
-Wenn Sie zur Authentifizierung aufgefordert werden, geben Sie das globale Administratorkonto ein (z.B. admin@domain.onmicrosoft.com)), das zum Konfigurieren von Azure AD Connect verwendet wurde.
+Wenn Sie zur Authentifizierung aufgefordert werden, geben Sie das globale Administratorkonto ein (z.B. admin@domain.onmicrosoft.com), das zum Konfigurieren von Azure AD Connect verwendet wurde.
 
 ## <a name="installing-the-azure-ad-connect-health-agent-for-ad-ds"></a>Installieren des Azure AD Connect Health-Agents für AD DS
 Um die Installation des Agents zu starten, doppelklicken Sie auf die EXE-Datei, die Sie heruntergeladen haben. Klicken Sie auf dem ersten angezeigten Bildschirm auf "Installieren".
@@ -301,8 +302,4 @@ Sie können das Flag -ShowResults im Befehl verwenden, um detaillierte Protokoll
 * [Verwenden von Azure AD Connect Health mit AD DS](active-directory-aadconnect-health-adds.md)
 * [Azure AD Connect Health – FAQ](active-directory-aadconnect-health-faq.md)
 * [Azure AD Connect Health: Versionsverlauf](active-directory-aadconnect-health-version-history.md)
-
-
-<!--HONumber=Feb17_HO2-->
-
 

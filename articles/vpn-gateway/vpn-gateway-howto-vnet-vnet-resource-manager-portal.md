@@ -13,43 +13,39 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/27/2017
+ms.date: 04/11/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: c80ddbaf8c2c84735564e514ddaf4308c4aff303
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 4133e2e90f51d141044f2ac064c60df1263b498e
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="configure-a-vnet-to-vnet-connection-using-the-azure-portal"></a>Konfigurieren einer VNet-zu-VNet-Verbindung über das Azure-Portal
+
+Das Verbinden eines virtuellen Netzwerks mit einem anderen virtuellen Netzwerk (VNet-zu-VNet) ähnelt dem Verbinden eines VNet mit einem lokalen Standort. Beide Verbindungstypen verwenden ein VPN-Gateway, um einen sicheren Tunnel mit IPsec/IKE bereitzustellen. Die VNet-zu-VNet-Kommunikation kann sogar mit Multi-Site-Verbindungskonfigurationen kombiniert werden. Auf diese Weise können Sie Netzwerktopologien einrichten, die standortübergreifende Konnektivität mit Konnektivität zwischen virtuellen Netzwerken kombinieren.
+
+![v2v-Diagramm](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/v2vrmps.png)
+
+In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie im Rahmen des Resource Manager-Bereitstellungsmodells mithilfe von VPN Gateway und Azure-Portal eine Verbindung zwischen VNets erstellen. Wenn Sie virtuelle Netzwerke mithilfe des Azure-Portals verbinden möchten, müssen sich die VNets im gleichen Abonnement befinden. Falls sich Ihre virtuellen Netzwerke in unterschiedlichen Abonnements befinden, können Sie zur Verbindungsherstellung die [PowerShell-Schritte](vpn-gateway-vnet-vnet-rm-ps.md) verwenden.
+
+[!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)] Wenn Sie eine VNet-zu-VNet-Verbindung mit einem anderen Bereitstellungsmodell, zwischen unterschiedlichen Bereitstellungsmodellen oder mit einem anderen Bereitstellungstool erstellen möchten, können Sie in der folgenden Artikel-Dropdownliste eine Option wählen:
+
 > [!div class="op_single_selector"]
 > * [Resource Manager – Azure-Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [Resource Manager – PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Klassisch – Azure-Portal](vpn-gateway-howto-vnet-vnet-portal-classic.md)
-> * [Klassisch – Klassisches Portal](virtual-networks-configure-vnet-to-vnet-connection.md)
-> 
-> 
-
-In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie im Rahmen des Resource Manager-Bereitstellungsmodells mithilfe von VPN Gateway und Azure-Portal eine Verbindung zwischen VNets erstellen.
-
-Wenn Sie virtuelle Netzwerke mithilfe des Azure-Portals verbinden möchten, müssen sich die VNets im gleichen Abonnement befinden. Falls sich Ihre virtuellen Netzwerke in unterschiedlichen Abonnements befinden, können Sie zur Verbindungsherstellung die [PowerShell-Schritte](vpn-gateway-vnet-vnet-rm-ps.md) verwenden.
-
-![v2v-Diagramm](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/v2vrmps.png)
-
-### <a name="deployment-models-and-methods-for-vnet-to-vnet-connections"></a>Bereitstellungsmodelle und -methoden für VNet-zu-VNet-Verbindungen
-[!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)]
-
-Die folgende Tabelle enthält die derzeit verfügbaren Bereitstellungsmodelle und -methoden für VNet-zu-VNet-Konfigurationen. Falls ein Artikel mit Konfigurationsschritten verfügbar ist, steht in der Tabelle ein direkter Link zur Verfügung.
-
-[!INCLUDE [vpn-gateway-table-vnet-vnet](../../includes/vpn-gateway-table-vnet-to-vnet-include.md)]
-
-**VNet-Peering**
+> * [Verbinden von virtuellen Netzwerken aus unterschiedlichen Bereitstellungsmodellen über das Portal](vpn-gateway-connect-different-deployment-models-portal.md)
+> * [Verbinden von virtuellen Netzwerken aus verschiedenen Bereitstellungsmodellen mit PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
+>
+>
 
 [!INCLUDE [vpn-gateway-vnetpeeringlink](../../includes/vpn-gateway-vnetpeeringlink-include.md)]
 
+
 ## <a name="about-vnet-to-vnet-connections"></a>Über VNet-zu-VNet-Verbindungen
-Das Verbinden eines virtuellen Netzwerks mit einem anderen virtuellen Netzwerk (VNet-zu-VNet) ähnelt dem Verbinden eines VNet mit einem lokalen Standort. Beide Verbindungstypen verwenden ein Azure VPN Gateway, um einen sicheren Tunnel mit IPSec/IKE bereitzustellen. Die VNets, die Sie verbinden, können sich in verschiedenen Regionen oder unter verschiedenen Abonnements befinden.
+Das Verbinden eines virtuellen Netzwerks mit einem anderen virtuellen Netzwerk (VNet-zu-VNet) ähnelt dem Verbinden eines VNet mit einem lokalen Standort. Beide Verbindungstypen verwenden ein Azure VPN Gateway, um einen sicheren Tunnel mit IPSec/IKE bereitzustellen. Die VNets, die Sie verbinden, können sich in verschiedenen Regionen oder unter verschiedenen Abonnements befinden. Beachten Sie Folgendes: Wenn sich Ihre VNets in unterschiedlichen Abonnements befinden, können Sie die Verbindung nicht im Portal herstellen. Stattdessen können Sie [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) verwenden.
 
 Sie können sogar VNet-zu-VNet-Kommunikation mit Konfigurationen für mehrere Standorte kombinieren. Auf diese Weise können Sie Netzwerktopologien einrichten, die wie in der folgenden Abbildung dargestellt standortübergreifende Konnektivität mit Konnektivität zwischen virtuellen Netzwerken kombinieren:
 
@@ -144,7 +140,7 @@ DNS ist für VNet-zu-VNet-Verbindungen nicht erforderlich. Wenn Sie für Ressour
 [!INCLUDE [vpn-gateway-add-dns-rm-portal](../../includes/vpn-gateway-add-dns-rm-portal-include.md)]
 
 ## <a name="VNetGateway"></a>5. Erstellen eines Gateways für das virtuelle Netzwerk
-In diesem Schritt erstellen Sie das virtuelle Netzwerkgateway für Ihr VNet. Dieser Schritt kann bis zu 45 Minuten dauern. Falls Sie diese Konfiguration zu Übungszwecken erstellen, können Sie die [Beispieleinstellungen](#values) verwenden.
+In diesem Schritt erstellen Sie das virtuelle Netzwerkgateway für Ihr VNet. Häufig kann die Erstellung eines Gateways je nach ausgewählter Gateway-SKU mindestens 45 Minuten dauern. Falls Sie diese Konfiguration zu Übungszwecken erstellen, können Sie die [Beispieleinstellungen](#values) verwenden.
 
 ### <a name="to-create-a-virtual-network-gateway"></a>So erstellen Sie ein Gateway für das virtuelle Netzwerk
 [!INCLUDE [vpn-gateway-add-gw-rm-portal](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
@@ -153,7 +149,7 @@ In diesem Schritt erstellen Sie das virtuelle Netzwerkgateway für Ihr VNet. Die
 Nachdem Sie „TestVNet1“ konfiguriert haben, erstellen Sie „TestVNet4“. Wiederholen Sie hierzu die vorherigen Schritte mit den Werten von „TestVNet4“. Sie können mit dem Konfigurieren von „TestVNet4“ beginnen, auch wenn die Erstellung des virtuellen Netzwerkgateways für „TestVNet1“ noch nicht abgeschlossen ist. Achten Sie bei Verwendung eigener Werte darauf, dass sich die Adressräume nicht mit anderen VNets überschneiden, mit denen Sie eine Verbindung herstellen möchten.
 
 ## <a name="TestVNet1Connection"></a>7. Konfigurieren der TestVNet1-Verbindung
-Nach Abschluss der Vorgänge für die virtuellen Netzwerkgateways für „TestVNet1“ und „TestVNet4“ können Sie die Verbindungen für das virtuelle Netzwerkgateway erstellen. In diesem Abschnitt erstellen Sie eine Verbindung von „VNet1“ zu „VNet4“.
+Nach Abschluss der Vorgänge für die virtuellen Netzwerkgateways für „TestVNet1“ und „TestVNet4“ können Sie die Verbindungen für das virtuelle Netzwerkgateway erstellen. In diesem Abschnitt erstellen Sie eine Verbindung von „VNet1“ zu „VNet4“. Diese Schritte gelten nur für VNets in demselben Abonnement. Wenn sich Ihre VNets in unterschiedlichen Abonnements befinden, müssen Sie PowerShell zum Herstellen der Verbindung verwenden. Informationen hierzu finden Sie im Artikel über [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md).
 
 1. Navigieren Sie unter **Alle Ressourcen** zum virtuellen Netzwerkgateway für Ihr VNet. Beispiel: **TestVNet1GW**. Klicken Sie auf **TestVNet1GW**, um das Blatt für das virtuelle Netzwerkgateway zu öffnen.
    

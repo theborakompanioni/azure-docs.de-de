@@ -12,12 +12,12 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/06/2017
+ms.date: 04/05/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: 5da00d1d64b258773fa485baa804b283fde731c3
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 1b0d278c102497eca978d8cd3fa29cd2527f186c
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -148,11 +148,63 @@ Hier ist ein Beispiel für diese Art von Warnung angegeben:
 ![Warnung vor verdächtigem Prozess](./media/security-center-alerts-type/security-center-alerts-type-fig6-new.png)
 
 ### <a name="multiple-domain-accounts-queried"></a>Vermehrte Abfragen von Domänenkonten
-Security Center kann mehrere Abfrageversuche für Domänenkonten erkennen. Dies wird von Angreifern normalerweise während der Netzwerkerkundung durchgeführt. Angreifer können dieses Verfahren nutzen, um die Domäne für folgende Zwecke abzufragen: Wer sind die Benutzer, wie lauten die Administratorkonten der Domäne, welche Computer sind Domänencontroller und welche potenziellen Vertrauensstellungen mit anderen Domänen bestehen für die Domäne?
+Security Center kann mehrere Abfrageversuche für Active Directory-Domänenkonten erkennen. Dies wird von Angreifern normalerweise während der Netzwerkerkundung durchgeführt. Angreifer können dieses Verfahren nutzen, um die Domäne für folgende Zwecke abzufragen: Wer sind die Benutzer, wie lauten die Administratorkonten der Domäne, welche Computer sind Domänencontroller und welche potenziellen Vertrauensstellungen mit anderen Domänen bestehen für die Domäne?
 
 Hier ist ein Beispiel für diese Art von Warnung angegeben:
 
 ![Warnung vor mehreren Domänenkonten](./media/security-center-alerts-type/security-center-alerts-type-fig7-new.png)
+
+### <a name="local-administrators-group-members-were-enumerated"></a>Mitglieder der Gruppe „Lokale Administratoren“ wurden aufgezählt
+
+Security Center löst eine Warnung aus, wenn in Windows Server 2016 und Windows 10 das Sicherheitsereignis 4798 eintritt. Dies passiert, wenn lokale Administratorgruppen aufgezählt werden. Normalerweise wird dieses Verfahren von Angreifern während der Netzwerkerkundung durchgeführt. Angreifer können es nutzen, um die Identität von Benutzern mit Administratorrechten abzufragen.
+
+Hier ist ein Beispiel für diese Art von Warnung angegeben:
+
+![Lokaler Administrator](./media/security-center-alerts-type/security-center-alerts-type-fig14-new.png)
+
+### <a name="anomalous-mix-of-upper-and-lower-case-characters"></a>Ungewöhnliche Mischung aus Groß- und Kleinbuchstaben
+
+Security Center löst eine Warnung aus, wenn erkannt wird, dass in der Befehlszeile eine Mischung aus Groß- und Kleinbuchstaben verwendet wird. Angreifer nutzen dieses Verfahren unter Umständen zur Umgehung der Berücksichtigung von Groß-/Kleinschreibung oder von Computerregeln auf Hashbasis.
+
+Hier ist ein Beispiel für diese Art von Warnung angegeben:
+
+![Ungewöhnliche Mischung](./media/security-center-alerts-type/security-center-alerts-type-fig15-new.png)
+
+### <a name="suspected-kerberos-golden-ticket-attack"></a>Verdacht auf Kerberos Golden Ticket-Angriff
+
+Ein kompromittierter [krbtgt](https://technet.microsoft.com/library/dn745899.aspx)-Schlüssel kann von einem Angreifer verwendet werden, um Kerberos „Golden Tickets“ zu erstellen, mit denen der Angreifer die Identität beliebiger Benutzer annehmen kann. Security Center löst eine Warnung aus, wenn diese Art von Aktivität erkannt wird.
+
+> [!NOTE] 
+> Weitere Informationen zu Kerberos Golden Tickets finden Sie im [Windows 10 Credential Theft Mitigation Guide](http://download.microsoft.com/download/C/1/4/C14579CA-E564-4743-8B51-61C0882662AC/Windows%2010%20credential%20theft%20mitigation%20guide.docx) (Leitfaden zur Verhinderung des Diebstahls von Anmeldeinformationen unter Windows 10).
+
+Hier ist ein Beispiel für diese Art von Warnung angegeben:
+
+![Golden Ticket](./media/security-center-alerts-type/security-center-alerts-type-fig16-new.png)
+
+### <a name="suspicious-account-created"></a>Erstellung eines verdächtigen Kontos
+
+Security Center löst eine Warnung aus, wenn ein Konto erstellt wird, das einem vorhandenen integrierten Konto mit Administratorrechten stark ähnelt. Dieses Verfahren kann von Angreifern verwendet werden, um ein nicht autorisiertes Konto zu erstellen und so bei einer Überprüfung durch Menschen der Entdeckung zu entgehen.
+ 
+Hier ist ein Beispiel für diese Art von Warnung angegeben:
+
+![Verdächtiges Konto](./media/security-center-alerts-type/security-center-alerts-type-fig17-new.png)
+
+### <a name="suspicious-firewall-rule-created"></a>Verdächtige Firewallregel erstellt
+
+Angreifer können versuchen, die Hostsicherheit zu umgehen, indem sie benutzerdefinierte Firewallregeln erstellen. Auf diese Weise sollen schädliche Anwendungen die Möglichkeit zur Kommunikation mit dem Steuerungszentrum haben, oder über den kompromittierten Host sollen Angriffe auf das Netzwerk erfolgen. Security Center löst eine Warnung aus, wenn erkannt wird, dass aus einer ausführbaren Datei an einem verdächtigen Speicherort eine neue Firewallregel erstellt wurde.
+ 
+Hier ist ein Beispiel für diese Art von Warnung angegeben:
+
+![Firewallregel](./media/security-center-alerts-type/security-center-alerts-type-fig18-new.png)
+
+### <a name="suspicious-combination-of-hta-and-powershell"></a>Verdächtige Kombination von HTA und PowerShell
+
+Security Center löst eine Warnung aus, wenn erkannt wird, dass von einem Microsoft-HTML-Anwendungshost (HTA) PowerShell-Befehle ausgeführt werden. Dieses Verfahren wird von Angreifern genutzt, um schädliche PowerShell-Skripts zu starten.
+ 
+Hier ist ein Beispiel für diese Art von Warnung angegeben:
+
+![HTA und PS](./media/security-center-alerts-type/security-center-alerts-type-fig19-new.png)
+
 
 ## <a name="network-analysis"></a>Netzwerkanalyse
 Bei der Security Center-Bedrohungserkennung für Netzwerke werden automatisch Sicherheitsinformationen für Ihren Azure IPFIX-Datenverkehr (Internet Protocol Flow Information Export) erfasst. Diese Informationen, bei denen es sich häufig um korrelierende Informationen aus mehreren Quellen handelt, werden analysiert, um Bedrohungen zu identifizieren.

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/24/2017
+ms.date: 04/06/2017
 ms.author: charwen
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: f03099391600bc3b918eb3a8c866c16a02052b7a
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
+ms.openlocfilehash: c3a85b9445d69330c3f6c7d298169efddb6ecca0
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -67,7 +67,7 @@ Mit ExpressRoute können Sie die Kommunikation von virtuellem Netzwerk zu virtue
 ![ExpressRoute-Fall 3: Suboptimales Routing zwischen virtuellen Netzwerken](./media/expressroute-optimize-routing/expressroute-case3-problem.png)
 
 ### <a name="solution-assign-a-high-weight-to-local-connection"></a>Lösung: Zuweisen einer Verbindung vom Typ „Hohe Gewichtung zu lokal“
-Die Lösung ist einfach. Da Sie wissen, wo sich die VNets und die Verbindungen befinden, können Sie uns mitteilen, welcher Pfad für die einzelnen VNets jeweils bevorzugt genutzt werden soll. Speziell für dieses Beispiel gilt, dass Sie der lokalen Verbindung eine höhere Gewichtung als der Remoteverbindung verleihen. Wenn ein VNet das Präfix des anderen VNet über mehrere Verbindungen empfängt, wird die Verbindung mit der höchsten Gewichtung bevorzugt zum Senden von Datenverkehr verwendet, der für dieses Präfix bestimmt ist.
+Die Lösung ist einfach. Da Sie wissen, wo sich die VNets und die Verbindungen befinden, können Sie uns mitteilen, welcher Pfad für die einzelnen VNets jeweils bevorzugt genutzt werden soll. Speziell für dieses Beispiel gilt, dass Sie der lokalen Verbindung eine höhere Gewichtung als der Remoteverbindung verleihen (siehe Konfigurationsbeispiel [hier](expressroute-howto-linkvnet-arm.md#modify-a-virtual-network-connection)). Wenn ein VNet das Präfix des anderen VNet über mehrere Verbindungen empfängt, wird die Verbindung mit der höchsten Gewichtung bevorzugt zum Senden von Datenverkehr verwendet, der für dieses Präfix bestimmt ist.
 
 ![ExpressRoute-Fall 3 – Lösung: Zuweisen einer hohen Gewichtung zur lokalen Verbindung](./media/expressroute-optimize-routing/expressroute-case3-solution.png)
 
@@ -75,3 +75,4 @@ Die Lösung ist einfach. Da Sie wissen, wo sich die VNets und die Verbindungen b
 > Außerdem können Sie die Weiterleitung aus dem VNet an Ihr lokales Netzwerk beeinflussen, wenn Sie über mehrere ExpressRoute-Verbindungen verfügen, indem Sie die Gewichtung einer Verbindung konfigurieren, anstatt das Voranstellen von AS PATH anzuwenden. Diese Vorgehensweise wird oben im zweiten Szenario beschrieben. Für jedes Präfix sehen wir uns vor der AS PATH-Länge immer die Gewichtung der Verbindung an, wenn die Entscheidung darüber getroffen werden soll, wie der Datenverkehr gesendet wird.
 >
 >
+
