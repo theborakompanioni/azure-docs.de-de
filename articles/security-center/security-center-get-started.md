@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/06/2017
+ms.date: 04/11/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 40636aa9d847b97ea872bf4689a1da6e3eb23eb4
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: fcc43e5d98f75b34f2d65c9e1ce8eeba7762caaf
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -50,7 +50,7 @@ Führen Sie im Portal folgende Schritte aus, um auf Security Center zuzugreifen:
 1. Wählen Sie im Menü **Microsoft Azure** die Option **Security Center**.
 
    ![Azure-Menü][1]
-2. Wenn Sie zum ersten Mal auf Security Center zugreifen, wird das Blatt **Willkommen** geöffnet. Wählen Sie **Ja, ich möchte Azure Security Center starten**, um das Blatt **Security Center** zu starten und die Datensammlung zu aktivieren.
+2. Wenn Sie zum ersten Mal auf Security Center zugreifen, wird das Blatt **Willkommen** geöffnet. Wählen Sie **Launch Security Center** (Security Center starten), um das Blatt **Security Center** zu öffnen und die Datensammlung zu aktivieren.
    ![Bildschirm „Willkommen“][10]
 3. Nachdem Sie Security Center über das Blatt „Willkommen“ gestartet oder im Microsoft Azure-Menü die Option „Security Center“ gewählt haben, wird das Blatt **Security Center** geöffnet. Um zukünftig einfacher auf das Blatt **Security Center** zugreifen zu können, wählen Sie die Option **Blatt an Dashboard anheften** (oben rechts) aus.
    ![Option „Blatt an Dashboard anheften“][2]
@@ -82,10 +82,16 @@ Sie können die Sicherheitsrichtlinien für Ihre Azure-Abonnements und Ressource
 
 ### <a name="view-the-health-and-security-state-of-your-resources"></a>Anzeigen des Integritäts- und Sicherheitsstatus Ihrer Ressourcen
 1. Kehren Sie zum Blatt **Security Center** zurück. Die Kachel **Sicherheitsintegrität der Ressource** enthält Indikatoren, die den Sicherheitsstatus für virtuelle Computer, Netzwerk, Daten und Anwendungen anzeigen.
-2. Wählen Sie für weitere Informationen **Virtuelle Computer** aus. Das Blatt **Virtuelle Computer** wird geöffnet, und es wird eine Statusübersicht mit Antischadsoftwareprogrammen, Systemupdates, Neustarts und Betriebssystem-Sicherheitsrisiken Ihrer VMs angezeigt.
-   ![Kachel „Ressourcenintegrität“ in Azure Security Center][6]
-3. Wählen Sie unter **EMPFEHLUNGEN FÜR VIRTUELLE COMPUTER** eine Empfehlung aus, um weitere Informationen anzuzeigen oder Maßnahmen zur Konfiguration der erforderlichen Steuerelemente zu ergreifen.
-4. Wählen Sie unter **Virtuelle Computer** eine VM aus, um zusätzliche Details anzuzeigen.
+2. Wählen Sie **Compute**, um weitere Informationen anzuzeigen. Das Blatt **Compute** wird mit drei Registerkarten geöffnet:
+
+  - **Übersicht**: Enthält Empfehlungen zur Überwachung und zu virtuellen Computern.
+  - **Virtuelle Computer**: Liste mit allen virtuellen Computern und dem jeweils aktuellen Sicherheitsstatus
+  - **Clouddienste**: Liste mit den von Security Center überwachten Web- und Workerrollen
+
+    ![Kachel „Ressourcenintegrität“ in Azure Security Center][6]
+
+3. Wählen Sie auf der Registerkarte **Übersicht** unter **EMPFEHLUNGEN FÜR VIRTUELLE COMPUTER** eine Empfehlung aus, um weitere Informationen anzuzeigen und/oder Maßnahmen zur Konfiguration der erforderlichen Steuerelemente zu ergreifen.
+4. Wählen Sie auf der Registerkarte **Virtuelle Computer** einen virtuellen Computer aus, um zusätzliche Details anzuzeigen.
 
 ### <a name="view-security-alerts"></a>Anzeigen von Sicherheitswarnungen
 1. Kehren Sie zum Blatt **Security Center** zurück, und klicken Sie auf die Kachel **Sicherheitswarnungen**. Das Blatt **Sicherheitswarnungen** wird mit einer Liste angezeigt, in der die Warnungen aufgeführt sind. Die Warnungen werden bei der Security Center-Analyse Ihrer Sicherheitsprotokolle und der Netzwerkaktivität generiert. Die Liste enthält Warnungen integrierter Partnerlösungen.
@@ -102,7 +108,7 @@ Sie können die Sicherheitsrichtlinien für Ihre Azure-Abonnements und Ressource
 1. Kehren Sie zum Blatt **Security Center** zurück. Mit der Kachel **Partnerlösungen** können Sie auf einen Blick den Integritätsstatus Ihrer Partnerlösungen prüfen, die in Ihr Azure-Abonnement integriert sind.
 2. Wählen Sie die Kachel **Partnerlösungen** . Ein Blatt mit einer Liste der Partnerlösungen, die mit dem Security Center verbunden sind, wird geöffnet.
    ![Partnerlösungen][9]
-3. Wählen Sie eine Partnerlösung aus. In diesem Beispiel wählen wir die Lösung **F5-WAF** aus.  Auf dem geöffneten Blatt werden der Status der Partnerlösung und die zugeordneten Ressourcen der Lösung angezeigt. Wählen Sie die Option **Lösungskonsole** , um die Verwaltungsoberfläche des Partners für diese Lösung zu öffnen.
+3. Wählen Sie eine Partnerlösung aus. In diesem Beispiel wählen wir die Lösung **QualysVa1** aus.  Auf dem geöffneten Blatt werden der Status der Partnerlösung und die zugeordneten Ressourcen der Lösung angezeigt. Wählen Sie die Option **Lösungskonsole** , um die Verwaltungsoberfläche des Partners für diese Lösung zu öffnen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel wurden die Security Center-Komponenten für die Sicherheitsüberwachung und Richtlinienverwaltung vorgestellt. Nachdem Sie sich jetzt mit Security Center vertraut gemacht haben, können Sie die folgenden Schritte ausprobieren:
