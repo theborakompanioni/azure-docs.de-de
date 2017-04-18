@@ -13,16 +13,23 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/23/2017
+ms.date: 04/04/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 80939bb48c29ba39e2d347cb80d6169d79329cfc
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: d6f4caebeeced1286f24dd5fcb4f5fc7d8591785
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Erstellen einer Site-to-Site-Verbindung im Azure-Portal
+
+Eine VPN Gateway-S2S-Verbindung (Site-to-Site) ist eine Verbindung über einen VPN-Tunnel vom Typ „IPsec/IKE“ (IKEv1 oder IKEv2). Für diese Art von Verbindung wird ein lokales VPN-Gerät benötigt, dem eine öffentliche IP-Adresse zugewiesen ist und das nicht hinter einer NAT-Einheit angeordnet ist. Site-to-Site-Verbindungen können für standortübergreifende Konfigurationen und Hybridkonfigurationen verwendet werden.
+
+![Diagramm für die standortübergreifende Site-to-Site-VPN Gateway-Verbindung](./media/vpn-gateway-howto-site-to-site-resource-manager-portal/site-to-site-diagram.png)
+
+In diesem Artikel werden das Erstellen eines virtuellen Netzwerks und das Herstellen einer Site-to-Site-VPN-Gatewayverbindung mit Ihrem lokalen Netzwerk mithilfe des Azure Resource Manager-Bereitstellungsmodells und des Azure-Portals beschrieben. Sie können diese Konfiguration auch erstellen, indem Sie verschiedene Bereitstellungstools verwenden. Für das klassische Bereitstellungsmodell können Sie in der folgenden Liste eine andere Option wählen:
+
 > [!div class="op_single_selector"]
 > * [Resource Manager – Azure-Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 > * [Resource Manager – PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
@@ -32,23 +39,13 @@ ms.lasthandoff: 03/25/2017
 >
 
 
-Eine VPN Gateway-S2S-Verbindung (Site-to-Site) ist eine Verbindung über einen VPN-Tunnel vom Typ „IPsec/IKE“ (IKEv1 oder IKEv2). Für diese Art von Verbindung wird ein lokales VPN-Gerät benötigt, dem eine öffentliche IP-Adresse zugewiesen ist und das nicht hinter einer NAT-Einheit angeordnet ist. Site-to-Site-Verbindungen können für standortübergreifende Konfigurationen und Hybridkonfigurationen verwendet werden.
-
-In diesem Artikel werden das Erstellen eines virtuellen Netzwerks und das Herstellen einer Site-to-Site-VPN-Gatewayverbindung mit Ihrem lokalen Netzwerk mithilfe des Azure Resource Manager-Bereitstellungsmodells und des Azure-Portals beschrieben. 
-
-![Diagramm für die standortübergreifende Site-to-Site-VPN Gateway-Verbindung](./media/vpn-gateway-howto-site-to-site-resource-manager-portal/site-to-site-diagram.png)
-
-### <a name="deployment-models-and-methods-for-site-to-site-connections"></a>Bereitstellungsmodelle und -methoden für Site-to-Site-Verbindungen
-[!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)]
-
-Die folgende Tabelle zeigt die derzeit verfügbaren Bereitstellungsmodelle und -methoden für Site-to-Site-Konfigurationen. Falls ein Artikel mit Konfigurationsschritten verfügbar ist, steht in der Tabelle ein direkter Link zur Verfügung.
-
-[!INCLUDE [site-to-site table](../../includes/vpn-gateway-table-site-to-site-include.md)]
-
 #### <a name="additional-configurations"></a>Zusätzliche Konfigurationen
 Wenn Sie VNets miteinander verbinden möchten, aber keine Verbindung mit einem lokalen Standort erstellen, finden Sie unter [Konfigurieren einer VNet-zu-VNet-Verbindung](vpn-gateway-vnet-vnet-rm-ps.md)entsprechende Informationen. Wenn Sie eine Site-to-Site-Verbindung mit einem VNET hinzufügen möchten, das bereits über eine Verbindung verfügt, lesen Sie unter [Hinzufügen einer S2S-Verbindung mit einem VNET mit einer vorhandenen VPN-Gatewayverbindung](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) nach.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
+
+[!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)]
+
 Vergewissern Sie sich vor Beginn der Konfiguration, dass Sie über Folgendes verfügen:
 
 * Ein kompatibles VPN-Gerät (und eine Person, die es konfigurieren kann). Weitere Informationen finden Sie unter [Informationen zu VPN-Geräten](vpn-gateway-about-vpn-devices.md).
@@ -88,7 +85,7 @@ DNS ist für Site-to-Site-Verbindungen nicht erforderlich. Wenn Sie für Ressour
 [!INCLUDE [vpn-gateway-add-dns-rm-portal](../../includes/vpn-gateway-add-dns-rm-portal-include.md)]
 
 ## <a name="gatewaysubnet"></a>3. Erstellen eines Gatewaysubnetzes
-Sie müssen für Ihr VPN-Gateway ein Gatewaysubnetz erstellen. Das Gatewaysubnetz enthält die IP-Adressen, die von den Diensten des VPN-Gateways verwendet werden. Erstellen Sie nach Möglichkeit ein Gatewaysubnetz, indem Sie einen CIDR-Block vom Typ /28 oder /27 verwenden. So wird sichergestellt, dass Sie über genügend IP-Adressen verfügen, um zukünftige Anforderungen an die Gatewaykonfiguration erfüllen zu können.
+Sie müssen für Ihr VPN-Gateway ein Gatewaysubnetz erstellen. Das Gatewaysubnetz enthält die IP-Adressen, die von den Diensten des VPN-Gateways verwendet werden. Erstellen Sie nach Möglichkeit ein Gatewaysubnetz, indem Sie einen CIDR-Block vom Typ /28 oder /27 verwenden. So wird sichergestellt, dass Sie über eine ausreichende Anzahl von IP-Adressen für weitere Gatewayfeatures verfügen, die später ggf. hinzugefügt werden.
 
 [!INCLUDE [vpn-gateway-add-gwsubnet-rm-portal](../../includes/vpn-gateway-add-gwsubnet-s2s-rm-portal-include.md)]
 

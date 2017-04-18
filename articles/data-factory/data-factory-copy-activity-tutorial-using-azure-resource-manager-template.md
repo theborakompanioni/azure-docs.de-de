@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/17/2017
+ms.date: 04/11/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
-ms.openlocfilehash: 977fcf74c86e2ab312d99b3f1821cfb7efbe9745
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: f45c21e682f93de4dbe34b4ce07745225d548cb0
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -374,7 +374,7 @@ Das folgende Beispiel zeigt, wie Sie in der Resource Manager-Vorlage eine Data F
 "dataFactoryName": "[concat('AzureBlobToAzureSQLDatabaseDF', uniqueString(resourceGroup().id))]"
 ```
 
-Hierbei handelt es sich um eine eindeutige Zeichenfolge auf der Grundlage der Ressourcengruppen-ID.  
+Hierbei handelt es sich um eine eindeutige Zeichenfolge auf Grundlage der Ressourcengruppen-ID.  
 
 ### <a name="defining-data-factory-entities"></a>Definieren von Data Factory-Entitäten
 In der JSON-Vorlage werden folgende Data Factory-Entitäten definiert: 
@@ -584,7 +584,7 @@ New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFT
 
 Der erste Befehl verwendet eine Parameterdatei für die Entwicklungsumgebung, der zweite eine Parameterdatei für die Testumgebung und der dritte eine Parameterdatei für die Produktion.  
 
-Mit der Vorlage können auch wiederholte Aufgaben durchgeführt werden. Angenommen, Sie müssen zahlreiche Data Factorys mit einer Pipeline oder mehreren Pipelines erstellen, die die gleiche Logik implementieren, aber die einzelnen Data Factorys verwenden jeweils ein anderes Azure Storage- und Azure SQL-Datenbank-Konto. In diesem Szenario können Sie zur Erstellung der Data Factorys die gleiche Vorlage in der gleichen Umgebung (Entwicklungs-, Test- oder Produktionsumgebung) mit unterschiedlichen Parameterdateien Data Factorys verwenden.   
+Mit der Vorlage können auch wiederholte Aufgaben durchgeführt werden. Angenommen, Sie müssen zahlreiche Data Factorys mit einer Pipeline oder mehreren Pipelines erstellen, die die gleiche Logik implementieren, aber die einzelnen Data Factorys verwenden jeweils andere Storage- und SQL-Datenbank-Konten. In diesem Szenario können Sie zur Erstellung der Data Factorys die gleiche Vorlage in der gleichen Umgebung (Entwicklungs-, Test- oder Produktionsumgebung) mit unterschiedlichen Parameterdateien verwenden.   
 
 ## <a name="see-also"></a>Weitere Informationen
 | Thema | Beschreibung |

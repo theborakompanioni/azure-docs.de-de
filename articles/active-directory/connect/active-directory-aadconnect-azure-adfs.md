@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/27/2017
-ms.author: anandy;billmath
+ms.author: anandy; billmath
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: ed3b3b114af2844405779f65fa8c3e89ae6a6c35
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: a6a8300046a0f17061e74b793b254cdca1e1a265
+ms.lasthandoff: 04/10/2017
 
 ---
 # <a name="deploying-active-directory-federation-services-in-azure"></a>Bereitstellen von Active Directory-Verbunddiensten in Azure
@@ -119,8 +119,8 @@ Erstellen Sie die folgenden Verfügbarkeitsgruppen:
 | contosodcset |DC/ADFS |3 |5 |
 | contosowapset |WAP |3 |5 |
 
-### <a name="4----deploy-virtual-machines"></a>4.    Bereitstellen von virtuellen Computern
-Der nächste Schritt ist die Bereitstellung von virtuellen Computern, auf denen die verschiedenen Rollen in Ihrer Infrastruktur gehostet werden. Es wird empfohlen, in jeder Verfügbarkeitsgruppe mindestens zwei Computer zu verwenden. Erstellen Sie sechs virtuelle Computer für die grundlegende Bereitstellung.
+### <a name="4-deploy-virtual-machines"></a>4. Bereitstellen von virtuellen Computern
+Der nächste Schritt ist die Bereitstellung von virtuellen Computern, auf denen die verschiedenen Rollen in Ihrer Infrastruktur gehostet werden. Es wird empfohlen, in jeder Verfügbarkeitsgruppe mindestens zwei Computer zu verwenden. Erstellen Sie vier virtuelle Computer für die grundlegende Bereitstellung.
 
 | Computer | Rolle | Subnetz | Verfügbarkeitsgruppe | Speicherkonto | IP-Adresse |
 |:---:|:---:|:---:|:---:|:---:|:---:|
@@ -146,8 +146,8 @@ Nach Abschluss der Bereitstellung sollte der Bereich für virtuelle Computer wie
 * Stufen Sie die beiden Server als Replikatdomänencontroller mit DNS hoch.
 * Konfigurieren Sie die AD FS-Server, indem Sie die AD FS-Rolle mit dem Server-Manager installieren.
 
-### <a name="6----deploying-internal-load-balancer-ilb"></a>6.    Bereitstellen des internen Load Balancers (ILB)
-**6.1.    Erstellen des ILB**
+### <a name="6-deploying-internal-load-balancer-ilb"></a>6. Bereitstellen des internen Load Balancers (ILB)
+**6.1. Erstellen des ILB**
 
 Wählen Sie zum Bereitstellen eines ILB im Azure-Portal die Option „Lastenausgleichsmodule“, und klicken Sie auf „Hinzufügen“ (+).
 
@@ -172,7 +172,7 @@ Nach dem Klicken auf „Erstellen“ und der Bereitstellung des ILB sollte er in
 
 Der nächste Schritt ist das Konfigurieren des Back-End-Pools und Back-End-Tests.
 
-**6.2.    Konfigurieren des ILB-Back-End-Pools**
+**6.2. Konfigurieren des ILB-Back-End-Pools**
 
 Wählen Sie den neu erstellten ILB im Bereich „Lastenausgleichsmodule“ aus. Der Bereich mit den Einstellungen wird geöffnet. 
 
@@ -183,7 +183,7 @@ Wählen Sie den neu erstellten ILB im Bereich „Lastenausgleichsmodule“ aus. 
 
 ![ILB-Back-End-Pool konfigurieren](./media/active-directory-aadconnect-azure-adfs/ilbdeployment3.png)
 
-**6.3.    Konfigurieren des Tests**
+**6.3. Konfigurieren des Tests**
 
 Wählen Sie im Bereich mit den ILB-Einstellungen die Option „Tests“.
 
@@ -192,7 +192,7 @@ Wählen Sie im Bereich mit den ILB-Einstellungen die Option „Tests“.
 
 ![ILB-Test konfigurieren](./media/active-directory-aadconnect-azure-adfs/ilbdeployment4.png)
 
-**6.4.    Erstellen von Lastenausgleichsregeln**
+**6.4. Erstellen von Lastenausgleichsregeln**
 
 Um den Datenverkehr effektiv ausgleichen zu können, sollte der ILB mit Lastenausgleichsregeln konfiguriert werden. Gehen Sie wie folgt vor, um eine Lastenausgleichsregel zu erstellen: 
 
@@ -202,23 +202,23 @@ Um den Datenverkehr effektiv ausgleichen zu können, sollte der ILB mit Lastenau
 
 ![ILB-Ausgleichsregeln konfigurieren](./media/active-directory-aadconnect-azure-adfs/ilbdeployment5.png)
 
-**6.5.    Aktualisieren des DNS mit ILB**
+**6.5. Aktualisieren des DNS mit ILB**
 
 Wechseln Sie auf Ihren DNS-Server, und erstellen Sie einen CNAME für den ILB. Der CNAME sollte für den Verbunddienst gelten, und die IP-Adresse sollte auf die IP-Adresse des ILB verweisen. Wenn die ILB-DIP-Adresse beispielsweise 10.3.0.8 lautet und der installierte Verbunddienst „fs.contoso.com“ ist, sollten Sie einen CNAME für „fs.contoso.com“ erstellen, für den auf 10.3.0.8 verwiesen wird.
 So wird sichergestellt, dass die gesamte Kommunikation mit „fs.contoso.com“ über den ILB läuft und richtig weitergeleitet wird.
 
-### <a name="7----configuring-the-web-application-proxy-server"></a>7.    Konfigurieren des Webanwendungsproxy-Servers
-**7.1.    Konfigurieren der Webanwendungsproxy-Server für die Verbindung mit AD FS-Servern**
+### <a name="7-configuring-the-web-application-proxy-server"></a>7. Konfigurieren des Webanwendungsproxy-Servers
+**7.1. Konfigurieren der Webanwendungsproxy-Server für die Verbindung mit AD FS-Servern**
 
-Erstellen Sie für den ILB einen Eintrag unter „%systemroot%\system32\drivers\etc\hosts“, um sicherzustellen, dass Webanwendungsproxy-Server die AD FS-Server hinter dem ILB erreichen. Beachten Sie, dass der Distinguished Name (DN) der Verbunddienstname sein sollte, z.B. „fs.contoso.com“. Der IP-Eintrag sollte der IP-Adresse (in diesem Beispiel&10;.3.0.8) des ILB entsprechen.
+Erstellen Sie für den ILB einen Eintrag unter „%systemroot%\system32\drivers\etc\hosts“, um sicherzustellen, dass Webanwendungsproxy-Server die AD FS-Server hinter dem ILB erreichen. Beachten Sie, dass der Distinguished Name (DN) der Verbunddienstname sein sollte, z.B. „fs.contoso.com“. Der IP-Eintrag sollte der IP-Adresse (in diesem Beispiel 10.3.0.8) des ILB entsprechen.
 
-**7.2.    Installieren der Webanwendungsproxy-Rolle**
+**7.2. Installieren der Webanwendungsproxy-Rolle**
 
 Nachdem Sie sichergestellt haben, dass Webanwendungsproxy-Server die AD FS-Server hinter dem ILB erreichen können, können Sie als Nächstes die Webanwendungsproxy-Server installieren. Webanwendungsproxy-Server werden nicht mit der Domäne verknüpft. Installieren Sie die Webanwendungsproxy-Rollen auf den beiden Webanwendungsproxy-Servern, indem Sie die Remotezugriffsrolle auswählen. Sie werden vom Server-Manager durch die Schritte der WAP-Installation geführt.
 Weitere Informationen zur Bereitstellen von WAP finden Sie unter [Installieren und Konfigurieren des Webanwendungsproxy-Servers](https://technet.microsoft.com/library/dn383662.aspx).
 
-### <a name="8----deploying-the-internet-facing-public-load-balancer"></a>8.    Bereitstellen des (öffentlichen) Load Balancers mit Internetzugriff
-**8.1.    Erstellen des (öffentlichen) Load Balancers mit Internetzugriff**
+### <a name="8--deploying-the-internet-facing-public-load-balancer"></a>8.  Bereitstellen des (öffentlichen) Load Balancers mit Internetzugriff
+**8.1.  Erstellen des (öffentlichen) Load Balancers mit Internetzugriff**
 
 Wählen Sie im Azure-Portal die Option „Lastenausgleichsmodule“, und klicken Sie dann auf „Hinzufügen“. Geben Sie im Bereich „Lastenausgleich erstellen“ die folgenden Informationen ein:
 
@@ -232,7 +232,7 @@ Nach der Bereitstellung wird der Load Balancer in der Liste „Lastenausgleichsm
 
 ![Load Balancer-Liste](./media/active-directory-aadconnect-azure-adfs/elbdeployment2.png)
 
-**8.2.    Zuweisen einer DNS-Bezeichnung zur öffentlichen IP**
+**8.2. Zuweisen einer DNS-Bezeichnung zur öffentlichen IP**
 
 Klicken Sie im Bereich „Lastenausgleichsmodule“ auf den neu erstellten Load Balancer-Eintrag, um den Bereich für die Konfiguration zu öffnen. Führen Sie die unten angegebenen Schritte aus, um die DNS-Bezeichnung für die öffentliche IP zu konfigurieren:
 
@@ -244,26 +244,26 @@ Klicken Sie im Bereich „Lastenausgleichsmodule“ auf den neu erstellten Load 
 
 ![Load Balancer mit Internetzugriff (DNS) konfigurieren](./media/active-directory-aadconnect-azure-adfs/elbdeployment4.png)
 
-**8.3.    Konfigurieren des Back-End-Pools für den (öffentlichen) Load Balancer mit Internetzugriff** 
+**8.3. Konfigurieren des Back-End-Pools für den (öffentlichen) Load Balancer mit Internetzugriff** 
 
 Führen Sie die gleichen Schritte wie beim Erstellen des internen Load Balancers aus, um den Back-End-Pool für den (öffentlichen) Load Balancer mit Internetzugriff als Verfügbarkeitsgruppe für die WAP-Server zu konfigurieren. Beispiel: „contosowapset“.
 
 ![Back-End-Pool für Load Balancer mit Internetzugriff konfigurieren](./media/active-directory-aadconnect-azure-adfs/elbdeployment5.png)
 
-**8.4.    Konfigurieren des Tests**
+**8.4. Konfigurieren des Tests**
 
 Führen Sie die gleichen Schritte wie beim Konfigurieren des internen Load Balancers aus, um den Test für den Back-End-Pool von WAP-Servern zu konfigurieren.
 
 ![Test für Load Balancer mit Internetzugriff konfigurieren](./media/active-directory-aadconnect-azure-adfs/elbdeployment6.png)
 
-**8.5.    Erstellen von Lastenausgleichsregeln**
+**8.5. Erstellen von Lastenausgleichsregeln**
 
 Führen Sie die gleichen Schritte wie für den ILB aus, um die Lastenausgleichsregel für TCP 443 zu konfigurieren.
 
 ![Ausgleichsregeln für Load Balancer mit Internetzugriff konfigurieren](./media/active-directory-aadconnect-azure-adfs/elbdeployment7.png)
 
-### <a name="9----securing-the-network"></a>9.    Schützen des Netzwerks
-**9.1.    Schützen des internen Subnetzes**
+### <a name="9-securing-the-network"></a>9. Schützen des Netzwerks
+**9.1. Schützen des internen Subnetzes**
 
 Generell benötigen Sie die folgenden Regeln, um Ihr internes Subnetz effizient zu schützen (in der unten angegebenen Reihenfolge).
 
@@ -276,7 +276,7 @@ Generell benötigen Sie die folgenden Regeln, um Ihr internes Subnetz effizient 
 
 [Kommentar]: <> (![INT-Zugriffsregeln (eingehend)](./media/active-directory-aadconnect-azure-adfs/nsgintinbound.png)) [Kommentar]: <> (![INT-Zugriffsregeln (ausgehend)](./media/active-directory-aadconnect-azure-adfs/nsgintoutbound.png))
 
-**9.2.    Schützen des DMZ-Subnetzes**
+**9.2. Schützen des DMZ-Subnetzes**
 
 | Regel | Beschreibung | Flow |
 |:--- |:--- |:---:|
@@ -292,7 +292,7 @@ Generell benötigen Sie die folgenden Regeln, um Ihr internes Subnetz effizient 
 > 
 > 
 
-### <a name="10----test-the-ad-fs-sign-in"></a>10.    Testen der AD FS-Anmeldung
+### <a name="10-test-the-ad-fs-sign-in"></a>10. Testen der AD FS-Anmeldung
 Die einfachste Möglichkeit zum Testen von AD FS ist die Verwendung der Seite „IdpInitiatedSignon.aspx“. Hierfür ist es erforderlich, in den AD FS-Eigenschaften „IdpInitiatedSignOn“ zu aktivieren. Führen Sie die unten angegebenen Schritte aus, um Ihr AD FS-Setup zu überprüfen.
 
 1. Führen Sie das unten angegebene Cmdlet auf dem AD FS-Server aus, und verwenden Sie PowerShell, um es auf „Aktiviert“ festzulegen.

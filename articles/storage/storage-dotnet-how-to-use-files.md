@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 03/27/2017
 ms.author: renash
 translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: fcdeac53c79551000b48a47a1afc65e082bcc692
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: b835b04d6ef6d06e35add4f503e6800099e97383
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -259,6 +259,16 @@ Um die Dateifreigabe über einen lokalen Client bereitzustellen, müssen Sie zue
 > Von einigen Internet Service Providern wird Port 445 unter Umständen blockiert. Erfragen Sie dies, falls erforderlich, bei Ihrem Service Provider.
 > 
 > 
+
+### <a name="unmount-the-file-share"></a>Aufheben der Bereitstellung einer Dateifreigabe
+Zum Aufheben der Bereitstellung einer Dateifreigabe können Sie den Befehl `net use` mit der Option `/delete` verwenden.
+
+```
+net use <drive-letter> /delete
+
+example :
+net use z: /delete
+```
 
 ## <a name="develop-with-file-storage"></a>Entwickeln mit Dateispeicher
 Zum Schreiben von Code, mit dem Dateispeicher aufgerufen wird, können Sie Speicherclientbibliotheken für .NET und Java oder die Azure Storage-REST-API verwenden. Das Beispiel in diesem Abschnitt veranschaulicht, wie Sie mit einer Dateifreigabe arbeiten, indem Sie die [Azure Storage-Clientbibliothek für .NET](https://msdn.microsoft.com/library/mt347887.aspx) über eine einfache Konsolenanwendung verwenden, die auf dem Desktop ausgeführt wird.
@@ -633,7 +643,7 @@ Umfassende Unterstützung bei der Problembehandlung erhalten Sie auch im [Artike
     Ja. Er ist kostenlos, wenn der Datenverkehr in derselben Region auftritt.
 7. **Ist das Verbinden von lokalen virtuellen Computern mit Azure-Dateispeicher von Azure ExpressRoute abhängig?**
    
-    Nein. Auch wenn Sie nicht über ExpressRoute verfügen, können Sie auf die Dateifreigabe trotzdem lokal zugreifen, solange Port 445 (TCP ausgehend) für den Internetzugriff geöffnet ist. Sie können aber auch ExpressRoute mit Dateispeicher verwenden, wenn Sie möchten.
+    Nein. Auch wenn Sie nicht über ExpressRoute verfügen, können Sie auf die Dateifreigabe trotzdem lokal zugreifen, solange Port 445 (TCP ausgehend) für den Internetzugriff geöffnet ist. Sie können aber auch ExpressRoute mit Dateispeicher verwenden, wenn Sie möchten.
 8. **Ist ein „Dateifreigabenzeuge“ für einen Failovercluster einer der Anwendungsfälle für Azure-Dateispeicher?**
    
     Dies wird derzeit nicht unterstützt.
@@ -666,11 +676,13 @@ Umfassende Unterstützung bei der Problembehandlung erhalten Sie auch im [Artike
     Umfassende Unterstützung bei der Problembehandlung erhalten Sie im [Artikel zur Problembehandlung für Azure Files](storage-troubleshoot-file-connection-problems.md).               
 
 18. **Wie kann ich die serverseitige Verschlüsselung für Azure Files aktivieren?**
+> [!NOTE]
+> Die [serverseitige Verschlüsselung](storage-service-encryption.md) für Azure Files befindet sich derzeit in der Vorschauphase. Sie können sich an [SSEDiscussion](mailto:ssediscussions@microsoft.com) wenden, falls Sie während der Vorschauphase Fragen haben.
 
-    Die [serverseitige Verschlüsselung](storage-service-encryption.md) für Azure Files befindet sich derzeit in der Vorschauphase. Während der Vorschauphase können Sie dieses Feature nur für neue Azure Resource Manager-Speicherkonten aktivieren, indem Sie das [Azure-Portal](https://portal.azure.com) verwenden. Für die Aktivierung dieses Features fallen keine zusätzlichen Gebühren an. Wenn Sie Storage Service Encryption für Azure-Dateispeicher aktivieren, werden Ihre Daten automatisch für Sie verschlüsselt. 
+    [Server Side Encryption](storage-service-encryption.md) for Azure Files is currently in preview. During preview, you can enable this feature only on new Azure Resource Manager storage accounts created by using the [Azure portal](https://portal.azure.com). There is no additional charge for enabling this feature. When you enable Storage Service Encryption for Azure File Storage, your data is automatically encrypted for you. 
     
-    Für die Zukunft ist geplant, dass die Aktivierung der File Storage-Verschlüsselung mit [Azure PowerShell](/powershell/resourcemanager/azurerm.storage/v2.7.0/azurerm.storage), der [Azure CLI](storage-azure-cli.md) und der [REST-API des Azure Storage-Ressourcenanbieters](/rest/api/storagerp/storageaccounts) unterstützt wird. 
-    Unter [Storage Service Encryption](storage-service-encryption.md) finden Sie weitere Informationen zur Verschlüsselung von ruhenden Daten in Azure Storage, und bei Fragen während der Vorschauphase können Sie sich per E-Mail an ssediscussions@microsoft.com wenden.
+    We plan to support enabling encryption for file storage with [Azure PowerShell](/powershell/resourcemanager/azurerm.storage/v2.7.0/azurerm.storage), [Azure CLI](storage-azure-cli.md), and the [Azure Storage Resource Provider REST API](/rest/api/storagerp/storageaccounts) in the future. 
+    See [Storage Service Encryption](storage-service-encryption.md) for more information about encryption at rest in Azure Storage, and you can contact ssediscussions@microsoft.com if you have questions during the preview.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Azure-Dateispeicher erhalten Sie über diese Links.

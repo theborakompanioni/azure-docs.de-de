@@ -12,12 +12,12 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/27/2017
+ms.date: 04/05/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 981155c38bdc8cb54639d2271be1f3bd3036125c
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 5348cedf369264defc5bb8417397aae046915ca7
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -49,9 +49,16 @@ Sie haben folgende Möglichkeiten:
 
 ## <a name="migrate-on-premises-vms-and-physical-servers"></a>Migrieren von lokalen VMs und physischen Servern
 
-Zum Migrieren von lokalen Hyper-V-VMs, VMware-VMs und physischen Servern führen Sie fast die gleichen Schritte wie bei der regulären Replikation aus. Sie richten einen Recovery Services-Tresor ein, konfigurieren die erforderlichen Verwaltungsserver (je nachdem, was migriert werden soll), fügen sie dem Tresor hinzu und geben die Replikationseinstellungen an. Sie aktivieren die Replikation für die zu migrierenden Computer und führen ein schnelles Testfailover durch, um sicherzustellen, dass alles wie gewünscht funktioniert.
+Zum Migrieren von lokalen Hyper-V-VMs, VMware-VMs und physischen Servern führen Sie fast die gleichen Schritte wie bei der regulären Replikation aus.
 
-Nachdem Sie sich vergewissert haben, dass die Replikationsumgebung funktioniert, verwenden Sie ein geplantes oder ungeplantes Failover. Dies richtet sich danach, [was für Ihr Szenario unterstützt wird](site-recovery-failover.md). Für die Migration müssen Sie kein Commit für ein Failover durchführen. Wählen Sie stattdessen die Option **Migration abschließen** für jeden Computer, den Sie migrieren möchten. Mit der Aktion **Migration abschließen** wird der Migrationsprozess abgeschlossen, die Replikation für den Computer wird entfernt, und die Site Recovery-Berechnung von Kosten für den Computer wird beendet.
+1. Richten Sie einen Recovery Services-Tresor ein.
+2. Konfigurieren Sie die erforderlichen Verwaltungsserver (VMware, VMM oder Hyper-V, je nachdem, was migriert werden soll), fügen Sie sie dem Tresor hinzu, und geben Sie die Replikationseinstellungen an.
+3. Aktivieren Sie die Replikation für die Computer, die Sie migrieren möchten.
+4. Führen Sie nach der ersten Migration ein schnelles Testfailover durch, um sicherzustellen, dass alles wie gewünscht funktioniert.
+5. Nachdem Sie sich vergewissert haben, dass die Replikationsumgebung funktioniert, verwenden Sie ein geplantes oder ungeplantes Failover. Dies richtet sich danach, [was für Ihr Szenario unterstützt wird](site-recovery-failover.md). Wir empfehlen Ihnen, nach Möglichkeit ein geplantes Failover zu verwenden.
+6. Für die Migration müssen Sie kein Commit für ein Failover oder einen Löschvorgang durchführen. Wählen Sie stattdessen die Option **Migration abschließen** für jeden Computer, den Sie migrieren möchten.
+     - Klicken Sie unter **Replizierte Elemente** mit der rechten Maustaste auf die VM, und klicken Sie dann auf **Migration abschließen**. Klicken Sie auf **OK**, um den Vorgang abzuschließen. Sie können den Status in den VM-Eigenschaften nachverfolgen, indem Sie den Auftrag „Migration abschließen“ unter **Site Recovery-Aufträge** überwachen.
+     - Mit der Aktion **Migration abschließen** wird der Migrationsprozess abgeschlossen, die Replikation für den Computer wird entfernt, und die Site Recovery-Berechnung von Kosten für den Computer wird beendet.
 
 ![completemigration](./media/site-recovery-hyper-v-site-to-azure/migrate.png)
 

@@ -12,30 +12,30 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/17/2017
+ms.date: 04/06/2017
 ms.author: edmaca, yanacai
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: f5a27eba14560a56ad5020daf7741f37ac2cc6f2
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
+ms.openlocfilehash: c26ac89bd7ef494331ba309aacf87de03506ac4c
+ms.lasthandoff: 04/07/2017
 
 
 ---
 # <a name="tutorial-develop-u-sql-scripts-using-data-lake-tools-for-visual-studio"></a>Tutorial: Entwickeln von U-SQL-Skripts mit Data Lake-Tools für Visual Studio
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-Erfahren Sie, wie Sie Data Lake-Tools für Visual Studio installieren und zum Schreiben und Testen von U-SQL-Skripts verwenden.
+Schreiben und testen Sie U-SQL-Skripts mit Data Lake-Tools für Visual Studio.
 
 U-SQL ist eine hyperskalierbare, hochgradig erweiterbare Sprache zum Vorbereiten, Transformieren und Analysieren aller Daten im „Data Lake“ und darüber hinaus. Weitere Informationen finden Sie unter [U-SQL-Referenz](http://go.microsoft.com/fwlink/p/?LinkId=691348).
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* **Visual Studio 2015 Update 3, Visual Studio 2013 Update 4 oder Visual Studio 2012 Die Editionen Enterprise (Ultimate/Premium), Professional und Community werden unterstützt; Express Edition wird nicht unterstützt. Visual Studio 2017 wird derzeit nicht unterstützt.**
+* **Visual Studio 2017 (Datenspeicherung und Verarbeitungsworkload), Visual Studio 2015 Update 3, Visual Studio 2013 Update 4 oder Visual Studio 2012. Die Editionen Enterprise (Ultimate/Premium), Professional und Community werden unterstützt, und die Express Edition wird nicht unterstützt.**
 * **Microsoft Azure SDK für .NET ab Version 2.7.1**.  Führen Sie die Installation mit dem [Webplattform-Installer](http://www.microsoft.com/web/downloads/platform.aspx)durch.
 * **[Data Lake-Tools für Visual Studio](http://aka.ms/adltoolsvs)**
 
     Nach der Installation der Data Lake-Tools für Visual Studio wird im Server-Explorer unterhalb des Azure-Knotens der Knoten „Data Lake Analytics“ angezeigt (der Server-Explorer wird mit STRG+ALT+S geöffnet).
 
-* **Data Lake Analytics-Konto und Beispieldaten** Die Erstellung von Data Lake Analytics-Konten wird von den Data Lake-Tools nicht unterstützt. Sie können ein Konto über das Azure-Portal oder über Azure PowerShell, das .NET SDK oder die Azure-Befehlszeilenschnittstelle erstellen.
+* **Data Lake Analytics-Konto und Beispieldaten** Die Erstellung von Data Lake Analytics-Konten wird von den Data Lake-Tools nicht unterstützt. Erstellen Sie ein Konto über das Azure-Portal oder über Azure PowerShell, das .NET SDK oder die Azure-CLI.
 Zur Vereinfachung stellen wir Ihnen ein PowerShell-Skript zur Verfügung, mit dem Sie einen Data Lake Analytics-Dienst erstellen und die Quelldatendatei hochladen können. Sie finden dieses Skript unter [Anhang A: PowerShell-Beispiel zur Vorbereitung des Tutorials](data-lake-analytics-data-lake-tools-get-started.md#appx-a-powershell-sample-for-preparing-the-tutorial).
 
     Optional können Sie unter [Erste Schritte mit Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-get-started-portal.md) die folgenden beiden Abschnitte durchlaufen, um Ihr Konto von Hand zu erstellen und Daten manuell hochzuladen:
@@ -44,7 +44,7 @@ Zur Vereinfachung stellen wir Ihnen ein PowerShell-Skript zur Verfügung, mit de
     2. [Hochladen von „SearchLog.tsv“ in das standardmäßige Data Lake-Speicherkonto](data-lake-analytics-get-started-portal.md#prepare-source-data)
 
 ## <a name="connect-to-azure"></a>Herstellen einer Verbindung mit Azure
-**So stellen Sie eine Verbindung mit Data Lake Analytics her**
+**Herstellen einer Verbindung mit Data Lake Analytics**
 
 1. Öffnen Sie Visual Studio.
 2. Klicken Sie im Menü **Ansicht** auf **Server-Explorer**, um den Server-Explorer zu öffnen. Oder drücken Sie **STRG+ALT+S**.
@@ -54,9 +54,9 @@ Zur Vereinfachung stellen wir Ihnen ein PowerShell-Skript zur Verfügung, mit de
 ## <a name="upload-source-data-files"></a>Hochladen von Quelldatendateien
 Sie haben in diesem Tutorial im Abschnitt **Voraussetzungen** bereits Daten hochgeladen.  
 
-Falls Sie Ihre eigenen Daten verwenden möchten, können Sie die hier angegebene Vorgehensweise zum Hochladen von Daten über die Data Lake-Tools nutzen.
+Führen Sie diese Schritte zum Hochladen von Daten aus den Data Lake-Tools aus, um Ihre eigenen Daten zu verwenden.
 
-**So laden Sie Dateien in das abhängige Azure Data Lake-Konto hoch**
+**Hochladen von Dateien in das abhängige Azure Data Lake-Konto**
 
 1. Erweitern Sie in **Server-Explorer** nacheinander die Optionen **Azure** und **Data Lake Analytics** und dann Ihr Data Lake Analytics-Konto und die Option **Speicherkonten**. Sie sehen das standardmäßige Data Lake-Speicherkonto und die verknüpften Data Lake-Speicherkonten sowie die verknüpften Azure-Speicherkonten. Das Data Lake-Standardkonto hat die Bezeichnung „Standardspeicherkonto“.
 2. Klicken Sie mit der rechten Maustaste auf das standardmäßige Data Lake-Speicherkonto, und klicken Sie dann auf **Explorer**.  Der Explorer-Bereich mit den Data Lake-Tools für Visual Studio wird geöffnet.  Links wird eine Verzeichnisstruktur angezeigt, und rechts befindet sich die Inhaltsansicht.
@@ -65,7 +65,7 @@ Falls Sie Ihre eigenen Daten verwenden möchten, können Sie die hier angegebene
 
     ![Visual Studio-U-SQL-Projekt](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-upload-files.png)
 
-**So laden Sie Dateien in ein verknüpftes Azure Blob Storage-Konto hoch**
+**Hochladen von Dateien in ein verknüpftes Azure Blob Storage-Konto**
 
 1. Erweitern Sie in **Server-Explorer** nacheinander die Optionen **Azure** und **Data Lake Analytics** und dann Ihr Data Lake Analytics-Konto und die Option **Speicherkonten**. Sie sehen das standardmäßige Data Lake-Speicherkonto und die verknüpften Data Lake-Speicherkonten sowie die verknüpften Azure-Speicherkonten.
 2. Erweitern Sie das Azure-Speicherkonto.
@@ -76,7 +76,7 @@ Falls Sie Ihre eigenen Daten verwenden möchten, können Sie die hier angegebene
 ## <a name="develop-u-sql-scripts"></a>Entwickeln eines U-SQL-Skripts
 Die Data Lake Analytics-Aufträge werden in der Sprache U-SQL geschrieben. Weitere Informationen zu U-SQL finden Sie unter [Erste Schritte mit der Sprache U-SQL](data-lake-analytics-u-sql-get-started.md) und in der [U-SQL language reference](http://go.microsoft.com/fwlink/?LinkId=691348) (in englischer Sprache).
 
-**So erstellen und übermitteln Sie einen Data Lake Analytics-Auftrag**
+**Erstellen und Übermitteln eines Data Lake Analytics-Auftrags**
 
 1. Klicken Sie im Menü **Datei** auf **Neu** und dann auf **Projekt**.
 2. Wählen Sie den Typ **U-SQL-Projekt** aus.
@@ -128,9 +128,9 @@ Die Data Lake Analytics-Aufträge werden in der Sprache U-SQL geschrieben. Weite
        Der Name wird automatisch vervollständigt, und die Member werden für Rowsets, Klassen, Datenbanken, Schemas und benutzerdefinierte Objekte (User Defined Objects, UDOs) angezeigt.
 
        IntelliSense für Katalogentitäten (Datenbanken, Schemas, Tabellen, UDOs usw.) bezieht sich auf Ihr Compute-Konto. Sie können das aktuelle aktive Compute-Konto, die Datenbank und das Schema in der obersten Symbolleiste überprüfen und über die Dropdownlisten wechseln.
-   * **Erweitern von Spalten mit ***
+   * **Erweitern von Spalten mit „*“**
 
-       Klicken Sie rechts neben *. Unter* wird eine blaue Unterstreichung angezeigt. Bewegen Sie den Mauszeiger auf die blaue Unterstreichung, und klicken Sie auf den Pfeil nach unten.
+       Klicken Sie rechts neben „*“. Unter „*“ wird eine blaue Unterstreichung angezeigt. Bewegen Sie den Mauszeiger auf die blaue Unterstreichung, und klicken Sie auf den Pfeil nach unten.
        ![Data Lake Visual Studio-Tools – Erweitern *](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-expand-asterisk.png)
 
        Klicken Sie auf **Spalten erweitern**, und das Tool ersetzt das Sternchen („*“) durch die Spaltennamen.

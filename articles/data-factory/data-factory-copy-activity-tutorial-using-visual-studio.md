@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/02/2017
+ms.date: 04/11/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
-ms.openlocfilehash: 39824fa66dee9f1bd57687e59ece97f4f4636b7d
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 9716d18773fca8dd4612d681d1f9588106aacb14
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -148,10 +148,10 @@ In diesem Schritt erstellen Sie ein Dataset namens **InputDataset**, das auf ein
    * **linkedServiceName** ist auf **AzureStorageLinkedService** festgelegt. Sie haben diesen verknüpften Dienst in Schritt 2 erstellt.
    * **folderPath** ist auf den Container **adftutorial** festgelegt. Mithilfe der **fileName** -Eigenschaft können Sie auch den Namen eines im Ordner enthaltenen Blobs angeben. Da Sie nicht den Namen des Blobs angeben, werden Daten aus allen Blobs im Container als Eingabedaten betrachtet.  
    * „format **type**“ ist auf **TextFormat** festgelegt.
-   * Die Textdatei enthält die beiden Felder **FirstName** und **LastName**, die durch ein Komma getrennt sind (**columnDelimiter**).    
-   * Die Verfügbarkeit (**availability**) ist auf **hourly**, (**frequency** auf **hour** und **interval** auf **1**) festgelegt. Der Data Factory-Dienst sucht also stündlich im Stammordner des angegebenen Blobcontainers (**adftutorial**) nach Eingabedaten. 
+   * Die Textdatei enthält die beiden Felder **FirstName** und **LastName**, die durch ein Komma getrennt sind (columnDelimiter).    
+   * Die Verfügbarkeit (**availability**) ist auf **hourly** („frequency“ auf „hour“ und „interval“ auf „1“) festgelegt. Der Data Factory-Dienst sucht also stündlich im Stammordner des angegebenen Blobcontainers (adftutorial) nach Eingabedaten. 
    
-   Wenn Sie keinen Dateinamen (**fileName**) für ein Eingabedataset (**input**) angeben, werden alle Dateien/Blobs aus dem Eingabeordner (**folderPath**) als Eingaben betrachtet. Wenn Sie einen Dateinamen in der JSON-Datei angeben, wird nur die angegebene Datei/der angegebene Blob als Eingabe betrachtet.
+   Wenn Sie keinen Dateinamen (**fileName**) für ein Eingabedataset (**input**) angeben, werden alle Dateien/Blobs aus dem Eingabeordner (folderPath) als Eingaben betrachtet. Wenn Sie einen Dateinamen in der JSON-Datei angeben, wird nur die angegebene Datei/der angegebene Blob als Eingabe betrachtet.
    
    Wenn Sie keinen **fileName** für eine **Ausgabetabelle** angeben, werden die generierten Dateien in **folderPath** im folgenden Format benannt: Data.&lt;Guid&gt;.txt (Beispiel: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.).
    
@@ -180,7 +180,7 @@ In diesem Schritt erstellen Sie ein Ausgabedataset namens **OutputDataset**. Die
 2. Wählen Sie im Dialogfeld **Neues Element hinzufügen** die Option **Azure SQL** aus, und klicken Sie auf **Hinzufügen**. 
 3. Ersetzen Sie den JSON-Text durch den folgenden JSON-Text, und speichern Sie die Datei **AzureSqlTableLocation1.json** .
 
-    ```json
+  ```json
     {
      "name": "OutputDataset",
      "properties": {
@@ -213,7 +213,7 @@ In diesem Schritt erstellen Sie ein Ausgabedataset namens **OutputDataset**. Die
    * **linkedServiceName** ist auf **AzureSqlLinkedService** festgelegt (diesen verknüpften Dienst haben Sie in Schritt 2 erstellt).
    * **tablename** ist auf **emp** festgelegt.
    * Die emp-Tabelle in der Datenbank enthält drei Spalten: **ID**, **FirstName** und **LastName**. Da es sich bei „ID“ um eine Identitätsspalte handelt, müssen Sie hier lediglich **FirstName** und **LastName** angeben.
-   * Die Verfügbarkeit (**availability**) ist auf **hourly**, (**frequency** auf **hour** und **interval** auf **1**) festgelegt.  Der Data Factory-Dienst generiert in der Tabelle **emp** in der Azure SQL-Datenbank stündlich einen Ausgabedatenslice.
+   * Die Verfügbarkeit (**availability**) ist auf **hourly** („frequency“ auf „hour“ und „interval“ auf „1“) festgelegt.  Der Data Factory-Dienst generiert in der Tabelle **emp** in der Azure SQL-Datenbank stündlich einen Ausgabedatenslice.
 
 > [!NOTE]
 > Details zu JSON-Eigenschaften finden Sie unter [Verschieben von Daten in und aus Azure SQL-Datenbank mithilfe von Azure Data Factory](data-factory-azure-sql-connector.md#linked-service-properties) .
@@ -227,7 +227,7 @@ Sie haben bisher verknüpfte Ein-/Ausgabe-Dienste und -Tabellen erstellt. Nun er
 2. Wählen Sie im Dialogfeld **Neues Element hinzufügen** die Option **Copy Data Pipeline**, und klicken Sie auf **Hinzufügen**. 
 3. Ersetzen Sie den JSON-Code durch den folgenden JSON-Code, und speichern Sie die Datei **CopyActivity1.json** .
 
-    ```json   
+  ```json   
     {
      "name": "ADFTutorialPipeline",
      "properties": {
@@ -281,7 +281,7 @@ Sie haben bisher verknüpfte Ein-/Ausgabe-Dienste und -Tabellen erstellt. Nun er
    
    Die Start- und Endzeit von Datums-/Uhrzeitangaben müssen im [ISO-Format](http://en.wikipedia.org/wiki/ISO_8601)angegeben werden. Beispiel: 2016-10-14T16:32:41Z. Die Zeitangabe **end** ist optional, wird aber in diesem Tutorial verwendet. 
    
-   Wenn für die **end**-Eigenschaft kein Wert angegeben wird, wird sie als „**start + 48 Stunden**“ berechnet. Um die Pipeline auf unbestimmte Zeit auszuführen, geben Sie als Wert für die **end**-Eigenschaft **9999-09-09** an.
+   Wenn für die **end**-Eigenschaft kein Wert angegeben wird, wird sie als **start + 48 Stunden** berechnet. Um die Pipeline auf unbestimmte Zeit auszuführen, geben Sie als Wert für die **end**-Eigenschaft **9999-09-09** an.
    
    Im obigen Beispiel ergeben sich 24 Datenslices, da jede Stunde ein Datenslice erstellt wird.
 
@@ -325,7 +325,7 @@ In diesem Schritt veröffentlichen Sie zuvor erstellte Data Factory-Entitäten (
 
 Beachten Sie folgende Punkte: 
 
-* Führen Sie einen der folgenden Schritte aus, wenn Sie eine Fehlermeldung wie**Dieses Abonnement ist nicht zur Verwendung des Microsoft.DataFactory-Namespaces registriert**erhalten, und versuchen Sie, die Veröffentlichung erneut durchzuführen: 
+* Führen Sie einen der folgenden Schritte aus, wenn Sie eine Fehlermeldung wie „Dieses Abonnement ist nicht zur Verwendung des Microsoft.DataFactory-Namespaces registriert“ erhalten, und versuchen Sie, die Veröffentlichung erneut durchzuführen: 
   
   * Führen Sie in Azure PowerShell den folgenden Befehl aus, um den Data Factory-Anbieter zu registrieren. 
 

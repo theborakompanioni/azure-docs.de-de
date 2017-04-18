@@ -12,18 +12,18 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: get-started-article
-ms.date: 01/10/2017
+ms.date: 04/11/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: f92909e0098a543f99baf3df3197a799bc9f1edc
-ms.openlocfilehash: 76c884bfdfbfacf474489d41f1e388956e4daaa0
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 8b502f5ac5d89801d390a872e7a8b06e094ecbba
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>.NET-Anwendungen mit mehreren Ebenen unter Verwendung von Azure Service Bus-Warteschlangen
 ## <a name="introduction"></a>Einführung
-Mit Visual Studio und dem kostenlosen Azure SDK für .NET können Sie schnell und einfach für Microsoft Azure entwickeln. In diesem Tutorial werden Sie durch die Schritte zum Erstellen einer Anwendung geführt, von der mehrere in der lokalen Umgebung ausgeführte Azure-Ressourcen verwendet werden. In den Schritten wird davon ausgegangen, dass Sie noch keine Erfahrung mit Azure haben.
+Mit Visual Studio und dem kostenlosen Azure SDK für .NET können Sie schnell und einfach für Microsoft Azure entwickeln. In diesem Tutorial werden Sie durch die Schritte zum Erstellen einer Anwendung geführt, von der mehrere in der lokalen Umgebung ausgeführte Azure-Ressourcen verwendet werden.
 
 Sie lernen Folgendes:
 
@@ -34,16 +34,16 @@ Sie lernen Folgendes:
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-In diesem Lernprogramm werden Sie eine Anwendung mit mehreren Ebenen in einem Azure-Cloud-Dienst erstellen und ausführen. Als Front-End dient eine ASP.NET MVC-Webrolle, und als Back-End eine Workerrolle, die eine Service Bus-Warteschlange nutzt. Dieselbe Anwendung mit mehreren Ebenen kann auch mit einem Webprojekt als Front-End erstellt und auf einer Azure-Website anstelle eines Clouddiensts bereitgestellt werden. Hinweise zu den Unterschieden für Front-Ends mit Azure-Websites finden Sie im Abschnitt [Nächste Schritte](#nextsteps). Sie können auch das Tutorial [Hybride lokale/Cloud-.NET-Anwendung](../service-bus-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay.md) ausprobieren.
+In diesem Lernprogramm werden Sie eine Anwendung mit mehreren Ebenen in einem Azure-Cloud-Dienst erstellen und ausführen. Als Front-End dient eine ASP.NET MVC-Webrolle, und als Back-End eine Workerrolle, die eine Service Bus-Warteschlange nutzt. Dieselbe Anwendung mit mehreren Ebenen kann auch mit einem Webprojekt als Front-End erstellt und auf einer Azure-Website anstelle eines Clouddiensts bereitgestellt werden. Sie können auch das Tutorial [Hybride lokale/Cloud-.NET-Anwendung](../service-bus-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay.md) ausprobieren.
 
 Der folgende Screenshot zeigt die fertige Anwendung.
 
 ![][0]
 
 ## <a name="scenario-overview-inter-role-communication"></a>Szenario-Übersicht: Kommunikation zwischen Rollen
-Um eine Bestellung zur Verarbeitung zu übermitteln, muss die Front-End-GUI in ihrer Funktion als Webrolle mit der Logikkomponente in der mittleren Ebene interagieren, die eine Workerrolle erfüllt. Dieses Beispiel verwendet die verwaltete Servicebus-Messaging-Funktion für die Kommunikation zwischen Ebenen.
+Um eine Bestellung zur Verarbeitung zu übermitteln, muss die Front-End-GUI in ihrer Funktion als Webrolle mit der Logikkomponente in der mittleren Ebene interagieren, die eine Workerrolle erfüllt. In diesem Beispiel wird Service Bus-Messaging für die Kommunikation zwischen Ebenen verwendet.
 
-Durch die verwaltete Messaging-Funktion zwischen Web- und mittlerer Ebene werden die Komponenten voneinander entkoppelt. Im Gegensatz zur direkten Kommunikation (z. B. per TCP oder HTTP) verbindet sich die Webebene nicht direkt mit der mittleren Ebene, sondern schiebt Arbeitseinheiten in Form von Nachrichten in Service Bus, wo diese zuverlässig aufbewahrt werden, bis die mittlere Ebene diese konsumieren und verarbeiten kann.
+Durch die Nutzung von Service Bus-Messaging zwischen Web- und mittlerer Ebene werden die beiden Komponenten voneinander entkoppelt. Im Gegensatz zur direkten Kommunikation (z. B. per TCP oder HTTP) verbindet sich die Webebene nicht direkt mit der mittleren Ebene, sondern schiebt Arbeitseinheiten in Form von Nachrichten in Service Bus, wo diese zuverlässig aufbewahrt werden, bis die mittlere Ebene diese konsumieren und verarbeiten kann.
 
 Service Bus bietet zwei Entitäten für das Brokermessaging: Warteschlangen und Themen. Mit Warteschlangen wird jede Nachricht von einem einzelnen Empfänger konsumiert. Themen unterstützen das Veröffentlichungs- und Abonnementmuster, mit dem jede veröffentlichte Nachricht den für das entsprechende Thema registrierten Abonnements zugänglich gemacht wird. Jedes Abonnement pflegt eine eigene Nachrichten-Warteschlange. Abonnements können mit Filterregeln konfiguriert werden. Diese sorgen dafür, dass nur Nachrichten in der Abonnement-Warteschlange landen, welche die Filterregeln erfüllen. Das folgende Beispiel verwendet Service Bus-Warteschlangen.
 
@@ -63,7 +63,7 @@ In den folgenden Abschnitten wird der Code für die Implementierung dieser Archi
 Bevor Sie mit der Entwicklung von Azure-Anwendungen beginnen können, müssen Sie über die entsprechenden Tools verfügen und die Entwicklungsumgebung einrichten.
 
 1. Installieren Sie das Azure SDK für .NET über die [Downloadseite](https://azure.microsoft.com/downloads/) des SDK.
-2. Klicken Sie in der Spalte **.NET** auf die von Ihnen verwendete Version von [Visual Studio](http://www.visualstudio.com). Für die Schritte in diesem Tutorial wird Visual Studio 2015 verwendet.
+2. Klicken Sie in der Spalte **.NET** auf die von Ihnen verwendete Version von [Visual Studio](http://www.visualstudio.com). Für die Schritte in diesem Tutorial wird Visual Studio 2015 verwendet, aber sie funktionieren auch mit Visual Studio 2017.
 3. Wenn Sie aufgefordert werden, das Installationsprogramm auszuführen oder zu speichern, klicken Sie auf **Ausführen**.
 4. Klicken Sie im **Webplattform-Installer** auf **Installieren**, und setzen Sie die Installation fort.
 5. Nach Abschluss der Installation haben Sie alles zur Hand, was Sie benötigen, um mit der Entwicklung der App zu beginnen. Das SDK enthält Tools, mit denen Sie ganz leicht Azure-Anwendungen in Visual Studio entwickeln können.
@@ -78,7 +78,7 @@ In diesem Abschnitt lernen Sie, wie Sie das Front-End Ihrer Anwendung erstellen.
 Anschließend fügen Sie Code hinzu, mit dem Elemente an eine Service Bus-Warteschlange übermittelt und Statusinformationen zur Warteschlange angezeigt werden.
 
 ### <a name="create-the-project"></a>Erstellen des Projekts
-1. Starten Sie Microsoft Visual Studio mit Administratorrechten. Klicken Sie mit der rechten Maustaste auf das Programmsymbol von **Visual Studio**, und klicken Sie anschließend auf **Als Administrator ausführen**, um Visual Studio mit Administratorrechten zu starten. Für den ebenfalls in diesem Artikel behandelten Azure-Serveremulator muss Visual Studio mit Administratorrechten gestartet werden.
+1. Starten Sie Visual Studio mit Administratorrechten: Klicken Sie mit der rechten Maustaste auf das Programmsymbol von **Visual Studio**, und klicken Sie anschließend auf **Als Administrator ausführen**. Für den ebenfalls in diesem Artikel behandelten Azure-Serveremulator muss Visual Studio mit Administratorrechten gestartet werden.
    
    Klicken Sie in Visual Studio im Menü **Datei** auf **Neu** und anschließend auf **Projekt**.
 2. Klicken Sie im Menü **Installierte Vorlagen** unter **Visual C#** auf **Cloud** und anschließend auf **Azure-Clouddienst**. Geben Sie dem Projekt den Namen **MultiTierApp**. Klicken Sie dann auf **OK**.
@@ -98,7 +98,7 @@ Anschließend fügen Sie Code hinzu, mit dem Elemente an eine Service Bus-Wartes
     ![][16]
 7. Klicken Sie im Dialogfeld **Neues ASP.NET-Projekt** auf **OK**, um das Projekt zu erstellen.
 8. Klicken Sie im **Projektmappen-Explorer** im Projekt **FrontendWebRole** mit der rechten Maustaste auf **Verweise**, und klicken Sie dann auf **NuGet-Pakete verwalten**.
-9. Klicken Sie auf die Registerkarte **Durchsuchen**, und suchen Sie nach `Microsoft Azure Service Bus`. Klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen.
+9. Klicken Sie auf die Registerkarte **Durchsuchen**, und suchen Sie nach `Microsoft Azure Service Bus`. Wählen Sie das Paket **WindowsAzure.ServiceBus**, klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen.
    
    ![][13]
    
@@ -362,7 +362,7 @@ Sie werden nun die Workerrolle zur Verarbeitung der übermittelten Nachrichten e
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Servicebus finden Sie in den folgenden Ressourcen:  
 
-* [Azure Service Bus][sbmsdn]  
+* [Dokumentation zu Azure Service Bus][sbdocs]  
 * [Service Bus-Dienstseite][sbacom]  
 * [Verwenden von Service Bus-Warteschlangen][sbacomqhowto]  
 
@@ -370,7 +370,7 @@ Weitere Informationen zu Szenarien mit mehreren Ebenen finden Sie unter:
 
 * [.NET-Anwendungen mit mehreren Ebenen mithilfe von Speichertabellen, Warteschlangen und Blobs][mutitierstorage]  
 
-[0]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-01.png
+[0]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-app.png
 [1]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-100.png
 [2]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-101.png
 [9]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-10.png
@@ -381,8 +381,8 @@ Weitere Informationen zu Szenarien mit mehreren Ebenen finden Sie unter:
 [14]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-33.png
 [15]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-34.png
 [16]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-14.png
-[17]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-36.png
-[18]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-37.png
+[17]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-app.png
+[18]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-app2.png
 
 [19]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-38.png
 [20]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-39.png
@@ -391,7 +391,7 @@ Weitere Informationen zu Szenarien mit mehreren Ebenen finden Sie unter:
 [26]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/SBNewWorkerRole.png
 [28]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-40.png
 
-[sbmsdn]: http://msdn.microsoft.com/library/azure/ee732537.aspx  
+[sbdocs]: /azure/service-bus-messaging/  
 [sbacom]: https://azure.microsoft.com/services/service-bus/  
 [sbacomqhowto]: service-bus-dotnet-get-started-with-queues.md  
 [mutitierstorage]: https://code.msdn.microsoft.com/Windows-Azure-Multi-Tier-eadceb36

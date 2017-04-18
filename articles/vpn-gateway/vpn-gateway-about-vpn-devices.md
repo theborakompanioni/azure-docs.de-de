@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/03/2017
+ms.date: 04/11/2017
 ms.author: yushwang;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: ab0a0ecba9d9e930cbc0ec5d4b83e252d2e50f7b
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 03ba7f0df69da073fd876fc4c06121952e594a02
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -33,7 +33,7 @@ Sie benötigen ein VPN-Gerät, um eine standortübergreifende S2S-VPN-Verbindung
 
 ###<a name="items-to-note-when-viewing-the-tables"></a>Was Sie beim Anzeigen der Tabellen beachten sollten:
 
-* Die Terminologie für Azure-VPN-Gateways wurde geändert. Wahrscheinlich finden Sie beide Begriffe. Die Funktionalität hat sich nicht geändert, nur die Namen.
+* Die Terminologie für Azure-VPN-Gateways wurde geändert. Die Funktionalität hat sich nicht geändert, nur die Namen.
   * Statisches Routing = Richtlinienbasiert (PolicyBased)
   * Dynamisches Routing = Routenbasiert (RouteBased)
 * Die Spezifikationen für Hochleistungs-VPN-Gateways und routenbasierte VPN-Gateways bleiben dieselben, sofern nicht anders angegeben. Beispielsweise sind die überprüften VPN-Geräte, die mit den routenbasierten VPN-Gateways kompatibel sind, auch mit dem Azure-Hochleistungs-VPN-Gateway kompatibel.
@@ -45,7 +45,7 @@ Sie benötigen ein VPN-Gerät, um eine standortübergreifende S2S-VPN-Verbindung
 ## <a name="devicetable"></a>Überprüfte VPN-Geräte
 Wir haben in Zusammenarbeit mit Geräteherstellern eine Reihe von VPN-Standardgeräten getestet. Alle Geräte der in der folgenden Liste aufgeführten Gerätefamilien sollten mit Azure-VPN-Gateways kompatibel sein. Unter [Informationen zu VPN Gateway](vpn-gateway-about-vpngateways.md) können Sie den Gatewaytyp ermitteln, der zum Konfigurieren der gewünschten Lösung erstellt werden muss.
 
-Hilfreiche Informationen zur Konfiguration des VPN-Geräts finden Sie unter den Links für die entsprechende Gerätefamilie. Support für VPN-Geräte erhalten Sie vom jeweiligen Gerätehersteller.
+Hilfreiche Informationen zur Konfiguration des VPN-Geräts finden Sie unter den Links für die entsprechende Gerätefamilie.  Die Links zu den Konfigurationsanleitungen werden nach bestem Wissen bereitgestellt. Support für VPN-Geräte erhalten Sie vom jeweiligen Gerätehersteller.
 
 |**Hersteller**          |**Gerätefamilie**     |**Betriebssystemversion (Min.)** |**PolicyBased** |**RouteBased** |
 | ---                | ---                  | ---                   | ---            | ---           |
@@ -58,8 +58,7 @@ Hilfreiche Informationen zur Konfiguration des VPN-Geräts finden Sie unter den 
 | Cisco              |ASA       |8.3 |[Konfigurationsbeispiele](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASA) |Nicht kompatibel |
 | Cisco |ASR |PolicyBased: IOS 15.1<br>RouteBased: IOS 15.2 |[Konfigurationsbeispiele](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |[Konfigurationsbeispiele](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |
 | Cisco |ISR |PolicyBased: IOS 15.0<br>RouteBased*: IOS 15.1 |[Konfigurationsbeispiele](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |[Konfigurationsbeispiele*](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |
-| Citrix |NetScaler MPX, SDX, VPX |ab&10;.1 |[Konfigurationshandbuch](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |Nicht kompatibel |
-| Dell SonicWALL |TZ-Serie, NSA-Serie<br>SuperMassive-Serie<br>E-Class-NSA-Serie |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |[Konfigurationshandbuch für SonicOS 6.2](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646)<br>[Konfigurationshandbuch für SonicOS 5.9](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) |[Konfigurationshandbuch für SonicOS 6.2](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646)<br>[Konfigurationshandbuch für SonicOS 5.9](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) |
+| Citrix |NetScaler MPX, SDX, VPX |ab 10.1 |[Konfigurationshandbuch](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |Nicht kompatibel |
 | F5 |BIG-IP-Serie |12.0 |[Konfigurationshandbuch](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) |[Konfigurationshandbuch](https://devcentral.f5.com/articles/big-ip-to-azure-dynamic-ipsec-tunneling) |
 | Fortinet |FortiGate |FortiOS 5.4.2 |[Konfigurationshandbuch](http://cookbook.fortinet.com/ipsec-vpn-microsoft-azure-54) |[Konfigurationshandbuch](http://cookbook.fortinet.com/ipsec-vpn-microsoft-azure-54) |
 | Internet Initiative Japan (IIJ) |SEIL-Serie |SEIL/X 4.60<br>SEIL/B1 4.60<br>SEIL/x86 3.20 |[Konfigurationshandbuch](http://www.iij.ad.jp/biz/seil/ConfigAzureSEILVPN.pdf) |Nicht kompatibel |
@@ -70,7 +69,8 @@ Hilfreiche Informationen zur Konfiguration des VPN-Geräts finden Sie unter den 
 | Microsoft |Routing- und RAS-Dienst |Windows Server 2012 |Nicht kompatibel |[Konfigurationsbeispiele](http://go.microsoft.com/fwlink/p/?LinkId=717761) |
 | Open Systems AG |Mission Control Security Gateway |– |[Konfigurationshandbuch](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |[Konfigurationshandbuch](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |
 | Openswan |Openswan |2.6.32 |(In Kürze verfügbar) |Nicht kompatibel |
-| Palo Alto Networks |Alle Geräte mit PAN-OS&5;.0 |PAN-OS<br>PolicyBased: 6.1.5 oder höher<br>RouteBased: 7.1.4 |[Konfigurationshandbuch](https://live.paloaltonetworks.com/t5/Configuration-Articles/How-to-Configure-VPN-Tunnel-Between-a-Palo-Alto-Networks/ta-p/59065) |[Konfigurationshandbuch](https://live.paloaltonetworks.com/t5/Integration-Articles/Configuring-IKEv2-VPN-for-Microsoft-Azure-Environment/ta-p/60340) |
+| Palo Alto Networks |Alle Geräte mit PAN-OS 5.0 |PAN-OS<br>PolicyBased: 6.1.5 oder höher<br>RouteBased: 7.1.4 |[Konfigurationshandbuch](https://live.paloaltonetworks.com/t5/Configuration-Articles/How-to-Configure-VPN-Tunnel-Between-a-Palo-Alto-Networks/ta-p/59065) |[Konfigurationshandbuch](https://live.paloaltonetworks.com/t5/Integration-Articles/Configuring-IKEv2-VPN-for-Microsoft-Azure-Environment/ta-p/60340) |
+| SonicWall |TZ-Serie, NSA-Serie<br>SuperMassive-Serie<br>E-Class-NSA-Serie |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |[Konfigurationshandbuch für SonicOS 6.2](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646)<br>[Konfigurationshandbuch für SonicOS 5.9](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) |[Konfigurationshandbuch für SonicOS 6.2](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646)<br>[Konfigurationshandbuch für SonicOS 5.9](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) |
 | WatchGuard |Alle |Fireware XTM<br> PolicyBased: v11.11.x<br>RouteBased: v11.12.x |[Konfigurationshandbuch](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[Konfigurationshandbuch](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
 
 (*) Router der Serie ISR 7200 unterstützen nur richtlinienbasierte VPNs.
@@ -100,11 +100,11 @@ Nachdem Sie die bereitgestellte Konfigurationsvorlage für das VPN-Gerät herunt
 | &lt;SP_AzureGatewayIpAddress&gt; |Diese Informationen gelten nur für Ihr virtuelles Netzwerk und befinden sich im Verwaltungsportal unter **Gateway-IP-Adresse**. |
 | &lt;SP_PresharedKey&gt; |Diese Informationen gelten nur für Ihr virtuelles Netzwerk und befinden sich im Verwaltungsportal unter "Schlüssel verwalten". |
 
-## <a name="IPSec"></a>IPsec-/IKE-Parameter
+## <a name="ipsec"></a>IPsec-/IKE-Parameter
 > [!NOTE]
-> Die in der folgenden Tabelle aufgeführten Werte werden zwar vom Azure-VPN-Gateway unterstützt, derzeit ist es jedoch nicht möglich, über das Azure-VPN-Gateway eine bestimmte Kombination von Algorithmen oder Parametern festzulegen oder auszuwählen. Alle Einschränkungen müssen Sie vom lokalen VPN-Gerät aus angeben.
+> Die in der folgenden Tabelle aufgeführten Werte werden zwar vom Azure-VPN-Gateway unterstützt, derzeit ist es jedoch nicht möglich, über das Azure-VPN-Gateway eine bestimmte Kombination von Algorithmen oder Parametern festzulegen oder auszuwählen. Alle Einschränkungen müssen Sie vom lokalen VPN-Gerät aus angeben. Darüber hinaus müssen Sie **MSS** mit **1350** verknüpfen.
 > 
-> Darüber hinaus müssen Sie **MSS** mit **1350** verknüpfen.
+>
 
 In den folgenden Tabellen:
 
@@ -182,6 +182,8 @@ Die folgende Tabelle enthält IPsec-SA-Angebote (IKE-Schnellmodus). Angebote wer
 
 > [!IMPORTANT]
 > Hier finden Sie bekannte Kompatibilitätsprobleme zwischen Drittanbieter-VPN-Geräten und Azure-VPN-Gateways. Das Azure-Team arbeitet zusammen mit den Anbietern aktiv an der Lösung der hier angegebenen Probleme. Nachdem die Probleme behoben wurden, wird diese Seite mit den neuesten Informationen aktualisiert. Es ist also ratsam, diese Seite regelmäßig aufzurufen.
+>
+>
 
 ###<a name="feb-16-2017"></a>16. Februar 2017
 

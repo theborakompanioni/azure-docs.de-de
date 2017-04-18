@@ -16,9 +16,9 @@ ms.workload: data-management
 ms.date: 03/03/2017
 ms.author: carlrab; jognanay
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: e052109ff10f21c3a737f336479fe43fb54e500e
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: 7dc5210c073a3130bfc9ffdbc9ce33e19ca5bc1a
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -40,9 +40,9 @@ Weitere Informationen zu Azure SQL-Datenbanken, finden Sie unter [SQL databases 
 
 ## <a name="what-features-are-supported"></a>Welche Funktionen werden unterstützt?
 
-In der folgenden Tabelle sind die wichtigsten Funktionen von Azure SQL-Datenbank und SQL Server aufgeführt, gibt deren Unterstützungsmöglichkeiten und stellt einen Link zu weiteren Informationen über die Funktion auf jeder Plattform bereit. Für Funktionen von Transact-SQL folgen Sie dem Link in der Tabelle zu der Kategorie der Funktion. Siehe auch [Azure SQL-Datenbank – Abweichungen bei Transact-SQL](sql-database-transact-sql-information.md) für weitere Hintergrundinformationen zu den Gründen über fehlende Unterstützung von bestimmten Funktionsarten.
+In der folgenden Tabelle sind die wichtigsten Funktionen von Azure SQL-Datenbank und SQL Server aufgeführt, gibt deren Unterstützungsmöglichkeiten und stellt einen Link zu weiteren Informationen über die Funktion auf jeder Plattform bereit. Für Funktionen von Transact-SQL folgen Sie dem Link in der Tabelle zu der Kategorie der Funktion. Unter [Azure SQL-Datenbank – Abweichungen bei Transact-SQL](sql-database-transact-sql-information.md) finden Sie weitere Hintergrundinformationen zu den Gründen für die fehlende Unterstützung bestimmter Funktionstypen.
 
-Es werden auch weiterhin neue Funktionen zu V12 hinzugefügt. Daher empfehlen wir Ihnen, die Webseite "Dienstupdates" für Azure zu besuchen und diese Filter zu verwenden:
+Wir fügen Azure SQL-Datenbank ständig weitere Features hinzu. Daher empfehlen wir Ihnen, die Webseite "Dienstupdates" für Azure zu besuchen und diese Filter zu verwenden:
 
 * Gefiltert nach [SQL-Datenbank](https://azure.microsoft.com/updates/?service=sql-database).
 * Gefiltert nach allgemeiner Verfügbarkeit [Ankündigungen](http://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability) für SQL-Datenbankfunktionen.

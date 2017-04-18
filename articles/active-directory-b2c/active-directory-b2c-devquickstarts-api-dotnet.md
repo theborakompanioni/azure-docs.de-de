@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 03/17/2017
 ms.author: parakhj
 translationtype: Human Translation
-ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
-ms.openlocfilehash: 3dd207805c1a8f53c6cc74da08cc9378609581c5
-ms.lasthandoff: 03/23/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: d67043f2e0a062796f4d6167b28774ce494027c2
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -30,7 +30,7 @@ Mit Azure Active Directory (Azure AD) B2C können Sie eine Web-API mithilfe von 
 Bevor Sie Azure AD B2C verwenden können, müssen Sie ein Verzeichnis oder einen Mandanten erstellen. Ein Verzeichnis ist ein Container für all Ihre Benutzer, Apps, Gruppen usw. Wenn Sie noch keines verwenden, sollten Sie [ein B2C-Verzeichnis erstellen](active-directory-b2c-get-started.md) , bevor Sie die weiteren Schritte in diesem Leitfaden ausführen.
 
 > [!NOTE]
-> Für die Clientanwendung und die Web-API muss dasselbe Azure AD B2C-Verzeichnis verwendet werden.
+> Die Clientanwendung und die Web-API müssen dasselbe Azure AD B2C-Verzeichnis verwenden.
 >
 
 ## <a name="create-a-web-api"></a>Erstellen einer Web-API
@@ -59,7 +59,7 @@ Nachdem Sie die Richtlinie erfolgreich erstellt haben, können Sie Ihre App erst
 
 ## <a name="download-the-code"></a>Herunterladen des Codes
 
-Der Code für dieses Tutorial wird [auf GitHub](https://github.com/Azure-Samples/b2c-dotnet-webapp-and-webapi) verwaltet. Sie können das Beispiel klonen, indem Sie Folgendes ausführen:
+Der Code für dieses Tutorial wird auf [GitHub](https://github.com/Azure-Samples/b2c-dotnet-webapp-and-webapi) verwaltet. Sie können das Beispiel klonen, indem Sie Folgendes ausführen:
 
 ```console
 git clone https://github.com/Azure-Samples/b2c-dotnet-webapp-and-webapi.git
@@ -76,7 +76,7 @@ Unser Beispiel ist so konfiguriert, dass die Richtlinien und die Client-ID unser
     * `ida:ClientId` durch Ihre Anwendungs-ID der Web-API
     * `ida:SignUpSignInPolicyId` durch Ihren Namen für die Richtlinie zur Registrierung bzw. Anmeldung
 
-2. Öffnen Sie `web.config` im Projekt `TaskWebApp`, und ersetzen Sie die Werte wie folgt:
+2. Öffnen Sie `web.config` im Projekt `TaskWebApp` und ersetzen Sie die Werte wie folgt:
     * `ida:Tenant` durch Ihren Mandantennamen
     * `ida:ClientId` durch Ihre Anwendungs-ID der Web-App
     * `ida:ClientSecret` durch Ihren geheimen Schlüssel der Web-App

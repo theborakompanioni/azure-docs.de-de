@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: 70955113bbd2e008be855e591d04651d09438e81
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: d878bd4ed40bc662dd5a43b56e08f84ce490287e
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -85,10 +85,10 @@ Die folgende Tabelle enthält die Standorte nach Service Provider. [Hier](expres
 | **[CoreSite](http://www.coresite.com/solutions/cloud-services/public-cloud-providers/microsoft-azure-expressroute)** |Unterstützt |Unterstützt |Los Angeles, New York |
 | **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** |Unterstützt |Unterstützt |Amsterdam, Atlanta, Chicago, Dallas, Hongkong, London, Los Angeles, Melbourne, New York, Osaka, Sao Paulo, Seattle, Silicon Valley, Singapur, Sydney, Tokio, Toronto, Washington DC |
 | **euNetworks** |Unterstützt |Unterstützt |Amsterdam |
-| **[Global Cloud Xchange (GCX)] (http://globalcloudxchange.com/cloud-platform/cloud-x-fusion/cloud-x-fusion-for-azure/)** | Unterstützt| Unterstützt | Chennai |
 | **GÉANT** |Unterstützt |Unterstützt |Amsterdam |
-| **[Internet Initiative Japan Inc. - IIJ](http://www.iij.ad.jp/en/news/pressrelease/2015/1216-2.html)** |Unterstützt |Unterstützt |Osaka, Tokio |
+| **[Global Cloud Xchange (GCX)] (http://globalcloudxchange.com/cloud-platform/cloud-x-fusion/cloud-x-fusion-for-azure/)** | Unterstützt| Unterstützt | Chennai |
 | **[InterCloud](https://www.intercloud.com/)** |Unterstützt |Unterstützt |Amsterdam, London, Singapur, Washington, D.C. |
+| **[Internet Initiative Japan Inc. - IIJ](http://www.iij.ad.jp/en/news/pressrelease/2015/1216-2.html)** |Unterstützt |Unterstützt |Osaka, Tokio |
 | **Internet Solutions – Cloud Connect** |Unterstützt |Unterstützt |Amsterdam, London |
 | **[Interxion](http://www.interxion.com/why-interxion/colocate-with-the-clouds/Microsoft-Azure/)** |Unterstützt |Unterstützt |Amsterdam, London, Paris |
 | **Jisc** |Unterstützt |Unterstützt |London |
@@ -127,7 +127,7 @@ Die folgende Tabelle enthält die Standorte nach Service Provider. [Hier](expres
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |Unterstützt |Unterstützt |Chicago, Washington DC |
 | **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** |Unterstützt |Unterstützt |Chicago, Dallas, New York, Seattle+, Silicon Valley, Washington DC |
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |Unterstützt |Unterstützt |Chicago, New York+, Washington DC |
-| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |Unterstützt | Unterstützt | Dallas |
+| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |Unterstützt | Unterstützt | Chicago, Dallas |
 | **[Verizon](http://news.verizonenterprise.com/2014/04/secure-cloud-interconnect-solutions-enterprise/)** |Unterstützt |Unterstützt |Chicago, Dallas, New York, Washington DC |
 
 ### <a name="china"></a>China
@@ -166,11 +166,11 @@ Wenn Ihr Konnektivitätsanbieter nicht in den vorherigen Abschnitten enthalten i
 | --- | --- | --- |
 | **[1CLOUDSTAR](http://www.1cloudstar.com/service/cloudconnect-azure-expressroute/)** |Equinix |Singapur |
 | **[Airgate Technologies, Inc.](http://airgate.ca/cloud-express/)** | Equinix, Cologix | Toronto, Montreal |
-| **[Arteria Networks Corporation](https://arteria-net.com/business/service/cloud_access/sca/)** |Equinix |Tokio |
 | **[Alaska Communications](http://www.alaskacommunications.com/For-Your-Business/Direct-Cloud-Service)** |Equinix |Seattle |
+| **[Arteria Networks Corporation](https://arteria-net.com/business/service/cloud_access/sca/)** |Equinix |Tokio |
 | **[Bezeq International Ltd.](https://www.bezeqint.net/english)** | euNetworks | London |
-| **[Cogeco Peer 1](https://www.cogecopeer1.com/en/)**| Equinix | Montreal, Toronto |
 | **[C3ntro](http://www.c3ntro.com/data/cloud-conectivity/)** | Equinix, Megaport | Dallas |
+| **[Cogeco Peer 1](https://www.cogecopeer1.com/en/)**| Equinix | Montreal, Toronto |
 | **[Data Foundry](https://www.datafoundry.com/services/cloud-connect)** | Megaport | Dallas |
 | **[Epsilon Telecommunications Limited](http://www.epsilontel.com/data-connectivity/cloud-access/)** | Equinix | Singapur |
 | **[Eurofiber](https://eurofiber.nl/microsoft-azure/)** | Equinix | Amsterdam |
@@ -180,12 +180,12 @@ Wenn Ihr Konnektivitätsanbieter nicht in den vorherigen Abschnitten enthalten i
 | **[Lightower](http://www.lightower.com/network-solutions/cloud-connect/#microsoft-azure)** |Equinix |New York, Washington DC |
 | **[Macquarie Telecom Group](https://macquariegovernment.com/secure-cloud/secure-cloud-exchange/)** | Megaport | Sydney |
 | **[Masergy](https://www.masergy.com/solutions/hybrid-networking/cloud-marketplace/microsoft-azure)** | Equinix | Washington DC |
-| **[NexGen Networks](http://www.nexgen-net.com/nexgen-networks-direct-connect-microsoft-azure-expressroute.html)** | Interxion London |
+| **[NexGen Networks](http://www.nexgen-net.com/nexgen-networks-direct-connect-microsoft-azure-expressroute.html)** | Interxion | London |
 | **[Nianet](https://nianet.dk/produkter/internet/microsoft-expressroute)** |Telecity | Amsterdam, Frankfurt |  
+| **[QSC AG](https://www.qsc.de/de/produkte-loesungen/cloud-services-und-it-outsourcing/pure-enterprise-cloud/multi-cloud-management/azure-expressroute/)** |Interxion | Frankfurt |  
 | **[Tamares Telecom](http://www.tamarestelecom.com/our-services/#Connectivity)** | Telecity | London
 | **[Transtelco](http://www.transtelco.net/tcloud/microsoft)** |Equinix | Dallas, Los Angeles |  
-| **[QSC AG](https://www.qsc.de/de/produkte-loesungen/cloud-services-und-it-outsourcing/pure-enterprise-cloud/multi-cloud-management/azure-expressroute/)** |Interxion | Frankfurt |  
-| **[Windstream](http://www.windstreambusiness.com/solutions/cloud-services/cloud-and-managed-hosting-services)**| Equinix |Chicago, Silicon Valley, Washington, D.C. |
+| **[Windstream](http://www.windstreambusiness.com/solutions/cloud-services/cloud-and-managed-hosting-services)**| Equinix | Chicago, Silicon Valley, Washington, D.C. |
 | **[Zertia](http://www.zertia.es/index.php/novedades)**| Level 3 | Madrid |
 
 
@@ -196,7 +196,7 @@ Je nach Ihrer Netzwerkgröße kann das Aktivieren privater Verbindungen für Ihr
 | --- | --- |
 | **[Altogee](http://www.altogee.be/expressroute)** | Europa |
 | **[Avanade Inc.](http://www.avanade.com/)** | Asien, Europa, Nordamerika, Südamerika |
-| **Bright Skies GmbH** | Europa
+| **[Bright Skies GmbH](http://bskies.io/expressroute)** | Europa
 | **[Dotnet Solutions](http://www.dotnetsolutions.co.uk/)** | Europa |
 | **[Equinix Professional Services](http://www.equinix.com/services/consulting/)** | Nordamerika |
 | **[The IT Consultancy Group](http://itconsult.com.au/microsoft-expressroute)** | Australien |
@@ -205,6 +205,7 @@ Je nach Ihrer Netzwerkgröße kann das Aktivieren privater Verbindungen für Ihr
 | **[OneAs1a](http://www.oneas1a.com/express-connect-any-cloud-ecac)** | Asien |
 | **[Orange Networks](https://orange-networks.com/blog/88-azureexpressroute)** | Europa |
 | **[Perficient](http://www.perficient.com/Partners/Microsoft/Cloud/Azure-ExpressRoute)** | Nordamerika |
+| **[Presidio](http://info.presidio.com/microsoft-azure-expressroute)** | Nordamerika |
 | **[Project Leadership](http://www.projectleadership.net/azure)** | Nordamerika |
 | **[sol-tec](http://www.sol-tec.com/Technologies)** | Europa |
 

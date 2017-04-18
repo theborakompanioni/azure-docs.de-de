@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/28/2017
+ms.date: 04/04/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 280a17677714a522ca978a6eb6baf3e70f853d7a
-ms.openlocfilehash: 5b0865310076557c8f7ce6f9d9b553950854407c
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
+ms.openlocfilehash: 2fc966e7c93e44007f15c3129fbe709beddb21af
+ms.lasthandoff: 04/05/2017
 
 
 ---
-# <a name="expressroute-technical-overview"></a>ExpressRoute - Technische Übersicht
+# <a name="expressroute-overview"></a>ExpressRoute-Übersicht
 Mit Microsoft Azure ExpressRoute können Sie Ihre lokalen Netzwerke über eine dedizierte private Verbindung, die von einem Konnektivitätsanbieter bereitgestellt wird, in die Microsoft Cloud erweitern. Mit ExpressRoute können Sie Verbindungen mit Microsoft-Clouddiensten herstellen, z. B. Microsoft Azure, Office 365 und CRM Online. 
 
 Die Konnektivität kann über ein Any-to-Any-Netzwerk (IP VPN), ein Point-to-Point-Ethernet-Netzwerk oder eine virtuelle Querverbindung über einen Konnektivitätsanbieter in einer Co-Location-Einrichtung bereitgestellt werden. ExpressRoute-Verbindungen verlaufen nicht über das öffentliche Internet. Auf diese Weise können ExpressRoute-Verbindungen eine höhere Sicherheit, größere Zuverlässigkeit und schnellere Geschwindigkeit bei geringerer Latenz als herkömmliche Verbindungen über das Internet bieten. Informationen zum Verbinden Ihres Netzwerks mit Microsoft mithilfe von ExpressRoute finden Sie unter [ExpressRoute-Konnektivitätsmodelle](expressroute-connectivity-models.md).
 
-![](./media/expressroute-introduction/expressroute-connection-overview-diagram.png)
+![](./media/expressroute-introduction/expressroute-connection-overview.png)
 
 ## <a name="key-benefits"></a>Hauptvorteile
 
@@ -46,7 +46,7 @@ Weitere Informationen finden Sie unter [ExpressRoute – FAQ](expressroute-faqs.
 Microsoft nutzt das Branchenstandardprotokoll für das dynamische Routing (BGP), um Routen zwischen Ihrem lokalen Netzwerk, Ihren Instanzen in Azure und öffentlichen Microsoft-Adressen auszutauschen.  Wir richten für Ihr Netzwerk mehrere BGP-Sitzungen für unterschiedliche Datenverkehrsprofile ein. Weitere Informationen finden Sie im Artikel [ExpressRoute-Verbindung und Routingdomänen](expressroute-circuit-peerings.md) .
 
 ### <a name="redundancy"></a>Redundanz
-Jede ExpressRoute-Verbindung besteht aus zwei Verbindungen mit zwei Microsoft Enterprise-Edgeroutern (MSEEs) vom Konnektivitätsanbieter bzw. Ihrem Netzwerk-Edge. Microsoft erfordert eine BGP-Dualverbindung vom Konnektivitätsanbieter bzw. von Ihrer Seite – eine für jeden MSEE. Sie können sich auch dafür entscheiden, auf Ihrer Seite keine redundanten Geräte /Ethernet-Verbindungen bereitzustellen. Allerdings verwenden Konnektivitätsanbieter redundante Geräte, um sicherzustellen, dass Ihre Verbindungen auf redundante Weise an Microsoft übergeben werden. Eine redundante Layer 3-Konnektivitätskonfiguration ist eine Anforderung, die erfüllt sein muss, damit unsere [SLA](https://azure.microsoft.com/support/legal/sla/) gültig ist. 
+Jede ExpressRoute-Verbindung besteht aus zwei Verbindungen mit zwei Microsoft Enterprise-Edgeroutern (MSEEs) vom Konnektivitätsanbieter bzw. Ihrem Netzwerk-Edge. Für Microsoft ist eine BGP-Dualverbindung vom Konnektivitätsanbieter bzw. von Ihrer Seite erforderlich – eine für jeden MSEE. Sie können sich auch dafür entscheiden, auf Ihrer Seite keine redundanten Geräte /Ethernet-Verbindungen bereitzustellen. Allerdings verwenden Konnektivitätsanbieter redundante Geräte, um sicherzustellen, dass Ihre Verbindungen auf redundante Weise an Microsoft übergeben werden. Eine redundante Layer 3-Konnektivitätskonfiguration ist eine Anforderung, die erfüllt sein muss, damit unsere [SLA](https://azure.microsoft.com/support/legal/sla/) gültig ist.
 
 ### <a name="connectivity-to-microsoft-cloud-services"></a>Verbindung mit Microsoft-Clouddiensten
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
@@ -74,7 +74,7 @@ ExpressRoute verfügt über ein ständig wachsendes Ökosystem aus Konnektivitä
 Microsoft betreibt isolierte Cloudumgebungen für spezielle geopolitische Regionen und Kundensegmente. Eine Liste mit nationalen Clouds und Anbietern finden Sie auf der Seite [ExpressRoute-Anbieter und -Standorte](expressroute-locations.md) .
 
 ### <a name="bandwidth-options"></a>Bandbreitenoptionen
-Sie können ExpressRoute-Verbindungen für einen großen Bandbreitenbereich erwerben. Die unterstützten Bandbreiten sind unten in der Liste aufgeführt. Fragen Sie Ihren Konnektivitätsanbieter nach der Liste der Bandbreiten, die er unterstützt.
+Sie können ExpressRoute-Verbindungen für einen großen Bandbreitenbereich erwerben. Die unterstützten Bandbreiten sind unten aufgeführt. Fragen Sie Ihren Konnektivitätsanbieter nach der Liste der Bandbreiten, die er unterstützt.
 
 * 50 MBit/s
 * 100 MBit/s
@@ -106,7 +106,7 @@ Sie können ein Abrechnungsmodell auswählen, das für Sie am besten geeignet is
 * Stellen Sie sicher, dass alle Voraussetzungen erfüllt werden. Informationen finden Sie unter [ExpressRoute-Voraussetzungen](expressroute-prerequisites.md).
 * Sehen Sie sich die Anforderungen für [Routing](expressroute-routing.md), [NAT](expressroute-nat.md) und [QoS](expressroute-qos.md) an.
 * Konfigurieren Sie Ihre ExpressRoute-Verbindung.
-  * [Erstellen einer ExpressRoute-Verbindung](expressroute-howto-circuit-portal-resource-manager.md)
-  * [Konfigurieren des Routings](expressroute-howto-routing-portal-resource-manager.md)
-  * [Verknüpfen eines VNet mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-portal-resource-manager.md)
+  * [Erstellen Sie eine ExpressRoute-Verbindung.](expressroute-howto-circuit-portal-resource-manager.md)
+  * [Konfigurieren des Peerings für eine ExpressRoute-Verbindung](expressroute-howto-routing-portal-resource-manager.md)
+  * [Verbinden eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-portal-resource-manager.md)
 
