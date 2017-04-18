@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 10/19/2016
 ms.author: johnkem
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 692a0086bd8e0dd6b57de1db0f4e2a9b4f2f0bda
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 6e1a1f522b9632c7d162d36ad5baa23d6130f8b6
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -29,11 +30,6 @@ Azure Monitor ist der Plattformdienst, mit dem Sie Ihre Azure-Ressourcen an eine
 2. Klicken Sie auf die Option **Überwachen**, um das Blatt **Überwachen** zu öffnen. Auf diesem Blatt sind alle Überwachungseinstellungen und -daten in einer konsolidierten Ansicht zusammengefasst. Zunächst wird der Abschnitt **Aktivitätsprotokoll** geöffnet.
    
     ![Navigation auf dem Blatt „Monitor“](./media/monitoring-get-started/monitor-blade-nav.png)
-   
-   > [!WARNING]
-   > Die obigen Optionen **Dienstbenachrichtigungen** und **Benachrichtigungsgruppen** werden nur Benutzern angezeigt, die an der „privaten Vorschau“ dieser Features teilnehmen.
-   > 
-   > 
    
     Azure Monitor bietet drei grundlegende Kategorien von Überwachungsdaten: das **Aktivitätsprotokoll**, **Metriken** und **Diagnoseprotokolle**.
 3. Klicken Sie auf **Aktivitätsprotokoll** , um sicherzustellen, dass der Abschnitt „Aktivitätsprotokoll“ angezeigt wird.
@@ -88,7 +84,7 @@ Azure Monitor ist der Plattformdienst, mit dem Sie Ihre Azure-Ressourcen an eine
     
     ![Blatt „Warnungen“ für öffentliche Vorschau](./media/monitoring-get-started/monitor-alerts-nopp.png)
     
-    Hier können Sie alle [**Warnungen**](monitoring-overview-alerts.md) für Ihre Azure-Ressourcen verwalten. Dies umfasst auch Warnungen für Metriken, Aktivitätsprotokollereignisse (private Vorschau) sowie Webtests (Speicherorte) und proaktive Diagnosen in Application Insights. Mit Warnungen können das Senden einer E-Mail oder ein HTTP POST-Vorgang an eine Webhook-URL ausgelöst werden.
+    Hier können Sie alle [**Warnungen**](monitoring-overview-alerts.md) für Ihre Azure-Ressourcen verwalten. Dies beinhaltet auch Warnungen für Metriken, Aktivitätsprotokollereignisse sowie Webtests (Speicherorte) und proaktive Diagnosen in Application Insights. Mit Warnungen können das Senden einer E-Mail oder ein HTTP POST-Vorgang an eine Webhook-URL ausgelöst werden.
 13. Klicken Sie auf **Metrikwarnungen hinzufügen** , um eine Warnung zu erstellen.
     
     ![Metrikwarnungen hinzufügen](./media/monitoring-get-started/monitor-alerts-add.png)
@@ -103,10 +99,5 @@ Wenn Sie diese Schritte befolgen und alle wichtigen Kacheln an ein Dashboard anh
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Lesen Sie die [Übersicht über Azure Monitor](monitoring-overview.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
