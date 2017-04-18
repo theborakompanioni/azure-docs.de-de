@@ -13,10 +13,11 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: brandwe
+ms.author: xerners
 translationtype: Human Translation
 ms.sourcegitcommit: 47dce83cb4e3e5df92e91f1ca9195326634d6c8b
 ms.openlocfilehash: 36c83ad9424c7c1e0bc096696148dda801bc4257
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -568,10 +569,5 @@ Wenn Sie das Gerüst verwendet oder die Schritte der exemplarischen Vorgehenswei
 
 ## <a name="get-security-updates-for-our-product"></a>Abrufen von Sicherheitsupdates für unser Produkt
 Wir empfehlen Ihnen, den Erhalt von Benachrichtigungen zu Sicherheitsvorfällen einzurichten. Rufen Sie dazu das [Security TechCenter](https://technet.microsoft.com/security/dd252948) auf, und abonnieren Sie die Sicherheitsempfehlungen.
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 
