@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Domain Services: Aktivieren von Azure AD Domain Services | Microsoft Docs'
+title: 'Azure Active Directory Domain Services: Aktivieren von Azure Active Directory Domain Services | Microsoft-Dokumentation'
 description: "Erste Schritte mit Azure Active Directory-Domänendiensten"
 services: active-directory-ds
 documentationcenter: 
@@ -15,79 +15,84 @@ ms.topic: get-started-article
 ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 64bb5f7e78a6e48faf3487da780597b25891a2fa
-ms.lasthandoff: 12/08/2016
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: e5f1fe51d8931985fa55b2d8c0a3fd25bb93f20f
+ms.lasthandoff: 04/12/2017
 
 
 ---
-# <a name="enable-azure-ad-domain-services"></a>Aktivieren von Azure AD Domain Services
-## <a name="task-3-enable-azure-ad-domain-services"></a>Aufgabe 3: Aktivieren der Azure AD-Domänendienste
-In dieser Aufgabe aktivieren Sie Azure AD Domain Services für Ihr Verzeichnis. Führen Sie die folgenden Konfigurationsschritte aus, um Azure AD Domain Services für Ihr Verzeichnis zu aktivieren.
+# <a name="enable-azure-active-directory-domain-services"></a>Aktivieren von Azure Active Directory Domain Services
+## <a name="task-3-enable-azure-active-directory-domain-services"></a>Aufgabe 3: Aktivieren von Azure Active Directory Domain Services
+In dieser Aufgabe aktivieren Sie Azure Active Directory Domain Services (Azure AD DS) für Ihr Verzeichnis:
 
-1. Navigieren Sie zum **klassischen Azure-Portal** ([https://manage.windowsazure.com](https://manage.windowsazure.com)).
-2. Wählen Sie den Knoten **Active Directory** im linken Bereich aus.
-3. Wählen Sie den Azure AD-Mandanten (Verzeichnis) aus, für den Sie Azure AD-Domänendienste aktivieren möchten.
+1. Wechseln Sie zum [klassischen Azure-Portal](https://manage.windowsazure.com).
+2. Wählen Sie im linken Bereich die Schaltfläche **Active Directory** aus.
+3. Wählen Sie den Azure Active Directory-Mandanten (Verzeichnis) aus, für den Sie Azure AD DS aktivieren möchten.
 
     ![Auswählen des Azure AD-Verzeichnisses](./media/active-directory-domain-services-getting-started/select-aad-directory.png)
-4. Klicken Sie auf die Registerkarte **Configure** .
+4. Klicken Sie auf der Seite **preview directory** (Vorschauverzeichnis) auf die Registerkarte **Konfigurieren**.
 
-    ![Registerkarte "Konfigurieren" des Verzeichnisses](./media/active-directory-domain-services-getting-started/configure-tab.png)
-5. Scrollen Sie hinunter zum Abschnitt **Domänendienste**.
-
-    ![Konfigurationsabschnitt von Domänendienste](./media/active-directory-domain-services-getting-started/domain-services-configuration.png)
-6. Schalten Sie die Option **Domänendienste für dieses Verzeichnis aktivieren** auf **JA**. Auf der Seite werden einige weitere Konfigurationsoptionen für Azure AD Domain Services angezeigt.
+    ![Registerkarte „Konfigurieren“ des Verzeichnisses](./media/active-directory-domain-services-getting-started/configure-tab.png)
+5. Legen Sie unter **Domänendienste** die Option **Domänendienste für dieses Verzeichnis aktivieren** auf **Ja** fest.  
+    Auf der Seite werden zusätzliche Konfigurationsoptionen für Azure Active Directory Domain Services angezeigt.
 
     ![Aktivieren von Domänendienste](./media/active-directory-domain-services-getting-started/enable-domain-services.png)
 
    > [!NOTE]
-   > Wenn Sie Azure AD Domain Services für Ihren Mandanten aktivieren, generiert und speichert Azure AD die Hashwerte für die Kerberos- und NTLM-Anmeldeinformationen, die zum Authentifizieren von Benutzern benötigt werden.
+   > Wenn Sie Azure Active Directory Domain Services für Ihren Mandanten aktivieren, generiert und speichert Azure AD die Kerberos- und NTLM-Anmeldeinformationshashes, die für die Benutzerauthentifizierung benötigt werden.
    >
    >
-7. Geben Sie einen Wert für **DNS-Domänenname der Domänendienste**an.
+6. Geben Sie einen Wert für **DNS-Domänenname der Domänendienste**an.
 
-   * Standardmäßig ist der Standarddomänenname des Verzeichnisses (mit dem Domänensuffix **.onmicrosoft.com** ) ausgewählt.
-   * Die Liste enthält alle Domänen, die für Ihr Azure AD-Verzeichnis konfiguriert wurden, einschließlich überprüfter und nicht überprüfter Domänen, die Sie auf der Registerkarte „Domänen“ konfigurieren.
-   * Darüber hinaus können Sie auch einen benutzerdefinierten Domänennamen eingeben. In diesem Beispiel haben wir den benutzerdefinierten Domänennamen „contoso100.com“ eingegeben.
+   * Standardmäßig ist der Standarddomänenname des Verzeichnisses (mit dem Suffix **.onmicrosoft.com**) ausgewählt.
+
+   * Die Liste enthält alle Domänen, die für Ihr Azure AD-Verzeichnis konfiguriert wurden, einschließlich überprüfter und nicht überprüfter Domänen, die Sie auf der Registerkarte **Domänen** konfigurieren.
+
+   * Sie können auch einen benutzerdefinierten Domänennamen eingeben. In diesem Beispiel lautet der benutzerdefinierte Domänenname *contoso100.com*.
 
      > [!WARNING]
-     > Vergewissern Sie sich, dass das Domänenpräfix des angegebenen Domänennamens (beispielsweise „contoso100“ im Domänennamen „contoso100.com“) weniger als 15 Zeichen umfasst. Das Erstellen von Azure Active Directory-Domänendienste-Domänen mit einem Domänenpräfix von mehr als 15 Zeichen ist nicht möglich.
+     > Das Präfix des angegebenen Domänennamens (beispielsweise *contoso100* im Domänennamen *contoso100.com*) darf maximal 15 Zeichen lang sein. Sie können keine Azure Active Directory Domain Services-Domäne mit einem Präfix erstellen, das mehr als 15 Zeichen lang ist.
      >
      >
-8. Stellen Sie sicher, dass der DNS-Domänenname, den Sie für die verwaltete Domäne ausgewählt haben, nicht bereits im virtuellen Netzwerk vorhanden ist. Überprüfen Sie insbesondere, ob Folgendes zutrifft:
+7. Stellen Sie sicher, dass der DNS-Domänenname, den Sie für die verwaltete Domäne ausgewählt haben, nicht bereits im virtuellen Netzwerk vorhanden ist. Prüfen Sie insbesondere, ob Folgendes zutrifft:
 
    * Im virtuellen Netzwerk ist bereits eine Domäne mit dem gleichen DNS-Domänennamen vorhanden.
+
    * Zwischen dem ausgewählten virtuellen Netzwerk und Ihrem lokalen Netzwerk besteht eine VPN-Verbindung, und in Ihrem lokalen Netzwerk ist bereits eine Domäne mit dem gleichen DNS-Domänennamen vorhanden.
+
    * Im virtuellen Netzwerk ist bereits ein Clouddienst mit diesem Namen vorhanden.
-9. Im nächsten Schritt wird ein virtuelles Netzwerk ausgewählt, in dem Azure AD-Domänendienste verfügbar sein soll. Wählen Sie in der Dropdownliste **Domänendienste mit diesem virtuellen Netzwerk verbinden** das erstellte virtuelle Netzwerk und das dedizierte Subnetz aus.
+8. Wählen Sie ein virtuelles Netzwerk aus, in dem Azure Active Directory Domain Services verfügbar sein soll. Wählen Sie in der Dropdownliste **Domänendienste mit diesem virtuellen Netzwerk verbinden** das erstellte virtuelle Netzwerk und das dedizierte Subnetz aus. Berücksichtigen Sie außerdem folgende Punkte:
 
-   * Stellen Sie sicher, dass das angegebene virtuelle Netzwerk zu einer Azure-Region gehört, die von Azure AD-Domänendienste unterstützt wird. Informationen zu den Azure-Regionen, in denen Azure AD Domain Services verfügbar ist, finden Sie unter [Azure-Dienste nach Region](https://azure.microsoft.com/regions/#services/) .
-   * Virtuelle Netzwerke, die zu einer Region gehören, in der Azure AD Domain Services nicht unterstützt wird, werden in der Dropdownliste nicht angezeigt.
-   * Verwenden Sie ein dediziertes Subnetz innerhalb des virtuellen Netzwerks für Azure AD-Domänendienste. Stellen Sie sicher, dass Sie nicht das Gateway-Subnetz auswählen. Weitere Informationen finden Sie unter [Überlegungen zum Netzwerkbetrieb](active-directory-ds-networking.md).
-   * Auch virtuelle Netzwerke, die mit Azure Resource Manager erstellt wurden, werden nicht in der Dropdownliste angezeigt. Resource Manager-basierte virtuelle Netzwerke werden derzeit nicht von Azure AD Domain Services unterstützt.
-10. Klicken Sie im Aufgabenbereich am unteren Rand der Seite auf **Speichern** , um Azure AD Domain Services zu aktivieren.
-11. Auf der Seite wird der Status „Ausstehend“ angezeigt, während Azure AD Domain Services für das Verzeichnis aktiviert wird.
+   * Stellen Sie sicher, dass das angegebene virtuelle Netzwerk zu einer Azure-Region gehört, die von Azure Active Directory Domain Services unterstützt wird. Informationen dazu, in welchen Azure-Regionen Azure Active Directory Domain Services verfügbar sind, finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/#services/).
 
-    ![Aktivieren von Domänendienste – Status "Ausstehend"](./media/active-directory-domain-services-getting-started/enable-domain-services-pendingstate.png)
+   * Virtuelle Netzwerke, die zu einer Region gehören, in der Azure Active Directory Domain Services nicht unterstützt wird, werden in der Dropdownliste nicht angezeigt.
 
-    > [!NOTE]
-    > Azure AD-Domänendienste bietet eine hohe Verfügbarkeit für Ihre verwaltete Domäne. Nach der Aktivierung von Azure AD Domain Services werden nacheinander die IP-Adressen angezeigt, unter denen Domain Services im virtuellen Netzwerk verfügbar ist. Die zweite IP-Adresse wird angezeigt, sobald der Dienst die hohe Verfügbarkeit für Ihre Domäne aktiviert. Wenn hohe Verfügbarkeit für Ihre Domäne konfiguriert und aktiv ist, sollten im Abschnitt **Domänendienste** der Registerkarte **Konfigurieren** zwei IP-Adressen angezeigt werden.
-    >
-    >
-12. Nach etwa 20 bis 30 Minuten wird im Feld **IP-Adresse** auf der Seite **Konfigurieren** die erste IP-Adresse angezeigt, unter der Domain Services in Ihrem virtuellen Netzwerk verfügbar ist.
+   * Verwenden Sie ein dediziertes Subnetz innerhalb des virtuellen Netzwerks für Azure Active Directory Domain Services. Wählen Sie *nicht* das Gatewaysubnetz aus. Weitere Informationen finden Sie unter [Überlegungen zum Netzwerkbetrieb](active-directory-ds-networking.md).
 
-    ![Domänendienste aktiviert – erste IP-Adresse bereitgestellt](./media/active-directory-domain-services-getting-started/domain-services-enabled-firstdc-available.png)
-13. Wenn die hohe Verfügbarkeit für Ihre Domäne aktiv ist, werden auf der Seite zwei IP-Adressen angezeigt. Die verwaltete Domäne ist im ausgewählten virtuellen Netzwerk über diese beiden IP-Adressen verfügbar. Notieren Sie sich die IP-Adressen, um die DNS-Einstellungen für Ihr virtuelles Netzwerk aktualisieren zu können. Mit diesem Schritt können virtuelle Computer im virtuellen Netzwerk eine Verbindung mit der Domäne für Vorgänge wie Domänenbeitritt herstellen.
+   * In der Dropdownliste werden auch keine virtuellen Netzwerke angezeigt, die mit Azure Resource Manager erstellt wurden. Resource Manager-basierte virtuelle Netzwerke werden derzeit nicht von Azure Active Directory Domain Services unterstützt.
+9. Klicken Sie im Aufgabenbereich am unteren Rand der Seite auf **Speichern**, um Azure Active Directory Domain Services zu aktivieren. 
+    * Während der Aktivierung von Azure Active Directory Domain Services für Ihr Verzeichnis wird auf der Seite der Status *Ausstehend* angezeigt.
 
-    ![Domänendienste aktiviert – beide IP-Adressen bereitgestellt](./media/active-directory-domain-services-getting-started/domain-services-enabled-bothdcs-available.png)
+        ![Fenster „Domänendienste aktivieren“](./media/active-directory-domain-services-getting-started/enable-domain-services-pendingstate.png)
+
+        > [!NOTE]
+        > Azure Active Directory Domain Services bietet eine hohe Verfügbarkeit für Ihre verwaltete Domäne. Nach der Aktivierung von Azure Active Directory Domain Services werden nacheinander die IP-Adressen angezeigt, unter denen Domänendienste im virtuellen Netzwerk verfügbar sind. Die zweite IP-Adresse wird kurz nach der ersten angezeigt, sobald der Dienst die hohe Verfügbarkeit für Ihre Domäne aktiviert. Wenn hohe Verfügbarkeit für Ihre Domäne konfiguriert und aktiv ist, sollten im Abschnitt **Domänendienste** der Registerkarte **Konfigurieren** zwei IP-Adressen angezeigt werden.
+        >
+        >
+    * Nach etwa 20 bis 30 Minuten wird auf der Seite **Konfigurieren** im Feld **IP-Adresse** die erste IP-Adresse angezeigt, unter der Domänendienste in Ihrem virtuellen Netzwerk verfügbar sind.
+
+        ![Domain Services-Fenster mit der ersten bereitgestellten IP-Adresse](./media/active-directory-domain-services-getting-started/domain-services-enabled-firstdc-available.png)
+    * Wenn die hohe Verfügbarkeit für Ihre Domäne aktiv ist, werden auf der Seite zwei IP-Adressen angezeigt. Die verwaltete Domäne ist im ausgewählten virtuellen Netzwerk über diese beiden IP-Adressen verfügbar. 
+    
+10. Notieren Sie sich die beiden IP-Adressen, um die DNS-Einstellungen für Ihr virtuelles Netzwerk aktualisieren zu können. Mit diesem Schritt können virtuelle Computer im virtuellen Netzwerk eine Verbindung mit der Domäne herstellen, um Vorgänge wie etwa einen Domänenbeitritt durchzuführen.
+
+    ![Domain Services-Fenster mit beiden bereitgestellten IP-Adressen](./media/active-directory-domain-services-getting-started/domain-services-enabled-bothdcs-available.png)
 
 > [!NOTE]
-> Je nach Größe Ihres Azure AD-Mandanten (Anzahl von Benutzern, Gruppen usw.) nimmt die Synchronisierung mit der verwalteten Domäne mehr oder weniger Zeit in Anspruch. Diese Synchronisation erfolgt im Hintergrund. Bei umfangreichen Mandanten mit Zehntausenden von Objekten kann es bis zu zwei Tage dauern, bis alle Benutzer, Gruppenmitgliedschaften und Anmeldeinformationen synchronisiert wurden.
+> Die Dauer der Synchronisierung mit Ihrer verwalteten Domäne ist abhängig von der Größe Ihres Azure AD-Mandanten (also beispielsweise von der Benutzer- oder Gruppenanzahl). Diese Synchronisation erfolgt im Hintergrund. Bei umfangreichen Mandanten mit Zehntausenden von Objekten kann es bis zu zwei Tage dauern, bis alle Benutzer, Gruppenmitgliedschaften und Anmeldeinformationen synchronisiert wurden.
 >
 >
 
-<br>
-
-## <a name="task-4---update-dns-settings-for-the-azure-virtual-network"></a>Aufgabe 4: Aktualisieren der DNS-Einstellungen für das virtuelle Azure-Netzwerk
-Als nächste Konfigurationsaufgabe steht die [Aktualisierung der DNS-Einstellungen für das virtuelle Azure-Netzwerk](active-directory-ds-getting-started-dns.md)an.
+## <a name="next-steps"></a>Nächste Schritte
+Aufgabe 4: [Aktualisieren der DNS-Einstellungen für das virtuelle Azure-Netzwerk](active-directory-ds-getting-started-dns.md)
 
