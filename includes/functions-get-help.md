@@ -3,8 +3,3 @@ Posten Sie Fragen in den Azure-Foren. – [MSDN besuchen](http://go.microsoft.co
 
 Markieren Sie Fragen mit dem Schlüsselwort `azure-functions`. – [Stack Overflow besuchen](http://stackoverflow.com/questions/tagged/azure-functions)
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

@@ -12,11 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/09/2017
+ms.date: 04/17/2017
 ms.author: milanga;juliako;
 translationtype: Human Translation
 ms.sourcegitcommit: adaf2a71e022d6d29493ab0a679bd593ea40195e
 ms.openlocfilehash: acb3b4d4a14ea546e94ccc38806251460e21a6bc
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -48,7 +49,7 @@ Die API zur Gesichtserkennung und -nachverfolgung ermöglicht Gesichtspositionse
 
 Die erkannten und nachverfolgten Gesichter werden mit den Koordinaten (links, oben, Breite und Höhe) zurückgegeben, die die Position der Gesichter im Bild in Pixeln sowie eine Gesichts-ID angeben, die die Nachverfolgung einer einzelnen Person kenntlich macht. Gesichts-IDs können zurückgesetzt werden, wenn die Frontalansicht des Gesichts verloren geht oder im Frame überlappt wird, sodass einigen Personen möglicherweise mehrere IDs zugewiesen werden.
 
-### <a name="a-idoutputelementsaelements-of-the-output-json-file"></a><a id="output_elements"></a>Elemente der Ausgabe-JSON-Datei
+### <a id="output_elements"></a>Elemente der Ausgabe-JSON-Datei
 Für die Gesichtserkennung und -nachverfolgung liegen als Ausgabeergebnis die Metadaten aus den Gesichtern in der jeweiligen Datei im JSON-Format vor.
 
 Die JSON-Datei für Gesichtserkennung und -nachverfolgung umfasst die folgenden Attribute:
@@ -82,7 +83,7 @@ Face Detector verwendet Techniken der Fragmentierung (wobei die Metadaten in zei
 Wenn Sie eine Aufgabe mit **Azure Media Face Detector**erstellen, müssen Sie eine Konfigurationsvoreinstellung angeben. Die folgende Konfigurationsvoreinstellung ist nur zur Gesichtserkennung bestimmt.
 
     {
-      "version":"1.0"
+      "version":"1.0",
       "options":{
           "TrackingMode": "Faster"
       }
@@ -521,10 +522,5 @@ Das folgende Programm zeigt Ihnen, wie Sie folgendes ausführen:
 [Azure Media Services Analytics – Übersicht](media-services-analytics-overview.md)
 
 [Azure Media Analytics-Demos](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

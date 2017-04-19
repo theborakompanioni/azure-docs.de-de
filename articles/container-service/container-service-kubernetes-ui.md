@@ -58,7 +58,7 @@ $ az acs kubernetes install-cli
 Sie können die Kubernetes-Webbenutzeroberfläche starten, indem Sie Folgendes ausführen:
 
 ```console
-$ az acs kubernetes browse
+$ az acs kubernetes browse -g [Resource Group] -n [Container service instance name]
 ```
 
 Ein Webbrowser sollte geöffnet werden, der für die Kommunikation mit einem sicheren Proxy konfiguriert ist, der Ihren lokalen Computer mit der Kubernetes-Webbenutzeroberfläche verbindet.

@@ -18,7 +18,7 @@ ms.author: garye
 translationtype: Human Translation
 ms.sourcegitcommit: 21d2c20a3ac8dc4fee0680028d6c004c80a3ae38
 ms.openlocfilehash: 2835e4e8be2a11b659118f836d53c84a2c021263
-ms.lasthandoff: 03/02/2017
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -335,7 +335,7 @@ Weitere Informationen zur Abrechnung und zu Preisen finden Sie unter [Machine Le
 
 **Gibt es eine kostenlose Testversion von Machine Learning?**
 
- Azure Machine Learning verfügt über eine kostenlose Abonnementoption, die unter [Machine Learning Preise](https://azure.microsoft.com/pricing/details/machine-learning/) beschrieben wird. Bei der Anmeldung an [Machine Learning Studio](https://studio.azureml.net/?selectAccess=true&o=2) ist eine&8;-Stunden-Testversion für die schnelle Evaluierung verfügbar.
+ Azure Machine Learning verfügt über eine kostenlose Abonnementoption, die unter [Machine Learning Preise](https://azure.microsoft.com/pricing/details/machine-learning/) beschrieben wird. Bei der Anmeldung an [Machine Learning Studio](https://studio.azureml.net/?selectAccess=true&o=2) ist eine 8-Stunden-Testversion für die schnelle Evaluierung verfügbar.
 
  Wenn Sie sich für die kostenlose Azure-Testversion anmelden, können Sie außerdem die Azure-Dienste einen Monat lang ausprobieren. Weitere Informationen zur kostenlosen Azure-Testversion finden Sie in den [häufig gestellten Fragen zur kostenlosen Testversion von Azure](https://azure.microsoft.com/pricing/free-trial-faq/).
 
@@ -455,11 +455,11 @@ Dienste, denen ein Dev/Test-Tarif zugewiesen wurde, werden beendet, bis der näc
 
 Bei einer RSS-Workload zahlen Sie für jeden API-Transaktionsaufruf, den Sie vornehmen, und für die mit diesen Anforderungen verbundenen Computezeit. Zur Berechnung der Kosten für RRS-Produktions-API-Transaktionen wird die Gesamtzahl Ihrer durchgeführten API-Aufrufe mit dem Preis pro 1.000 Transaktionen (anteilsmäßig für die einzelnen Transaktionen) multipliziert. Zur Berechnung der Kosten für Ihre RSS-API-Produktions-API-Berechnungsstunden wird die Summe der für jeden API-Aufruf benötigten Zeit mit der Gesamtzahl an API-Transaktionen und dem Preis pro Produktions-API-Berechnungsstunde multipliziert.
 
-Beispiel: Für eine Standard S1-Überschreitung lautet das Ergebnis für 1.000.000 API-Transaktionen mit einer Ausführungszeit von je 0,72 Sekunden für Produktions-API-Transaktionen „500 USD“ (1.000.000 · *0,50 USD/1.000 API-Transaktionen) und für Produktions-API-Berechnungsstunden „400 USD“ (1.000.000 · *0,72 Sek. · 2 USD/Std.). Dies ergibt eine Gesamtsumme von 900 USD.
+Beispiel: Für eine Standard S1-Überschreitung lautet das Ergebnis für 1.000.000 API-Transaktionen mit einer Ausführungszeit von je 0,72 Sekunden für Produktions-API-Transaktionen „500 USD“ (1.000.000 * 0,50 USD/1.000 API-Transaktionen) und für Produktions-API-Berechnungsstunden „400 USD“ (1.000.000 * 0,72 Sek. * 2 USD/Std.). Dies ergibt eine Gesamtsumme von 900 USD.
 
 Bei BES-Workloads erfolgt die Abrechnung nach dem gleichen Prinzip. Allerdings stehen die API-Transaktionskosten hier für die Anzahl von initiierten Batchaufträgen, und die Kosten für Computestunden stellen die Computezeit im Zusammenhang mit diesen Batchaufträgen dar. Zur Berechnung der Kosten für BES-Produktions-API-Transaktionen wird die Gesamtzahl der initiierten Aufträge mit dem Preis pro 1.000 Transaktionen (anteilsmäßig für die einzelnen Transaktionen) multipliziert. Zur Berechnung der Kosten für BES-Produktions-API-Berechnungsstunden wird die Summe der für die Ausführung der einzelnen Zeilen in Ihrem Auftrag benötigten Zeit mit der Gesamtzahl an Zeilen in Ihrem Auftrag, mit der Gesamtzahl an Aufträgen und mit dem Preis pro Produktions-API-Berechnungsstunde multipliziert. Bei Verwendung des Machine Learning-Rechners zeigt der Transaktionszähler die Anzahl von Aufträgen an, die ausgeführt werden sollen, und im Feld für die Zeit pro Transaktion wird die Gesamtzeit angezeigt, die zur Ausführung aller Zeilen in den einzelnen Aufträgen benötigt wird.
 
-Beispiel für eine Standard S1-Überschreitung: Sie senden 100 Aufträge pro Tag, die jeweils 500 Zeilen umfassen und deren Ausführung jeweils 0,72 Sekunden dauert. Ihre monatlichen Überschreitungskosten für Produktions-API-Transaktionen betragen 1,55 USD (100 Aufträge pro Tag = 3.100 Aufträge/Monat · *0,50 USD je 1.000 API-Transaktionen). Die Kosten für Produktions-API-Berechnungsstunden liegen bei 620 USD (500 Zeilen · *0,72 Sek. · *3.100 Aufträge ·* 2 USD/Std.). Dies ergibt eine Gesamtsumme von 621,55 USD.
+Beispiel für eine Standard S1-Überschreitung: Sie senden 100 Aufträge pro Tag, die jeweils 500 Zeilen umfassen und deren Ausführung jeweils 0,72 Sekunden dauert. Ihre monatlichen Überschreitungskosten für Produktions-API-Transaktionen betragen 1,55 USD (100 Aufträge pro Tag = 3.100 Aufträge/Monat * 0,50 USD je 1.000 API-Transaktionen). Die Kosten für Produktions-API-Berechnungsstunden liegen bei 620 USD (500 Zeilen * 0,72 Sek. * 3.100 Aufträge * 2 USD/Std.). Dies ergibt eine Gesamtsumme von 621,55 USD.
 
 ### <a name="azure-machine-learning-classic-web-services"></a>Klassische Azure Machine Learning-Webdienste
 **Ist die nutzungsbasierte Bezahlung noch verfügbar?**
