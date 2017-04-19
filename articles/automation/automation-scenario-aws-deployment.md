@@ -4,7 +4,7 @@ description: In diesem Artikel wird gezeigt, wie Sie Azure Automation nutzen, um
 services: automation
 documentationcenter: 
 author: mgoedtel
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: 1d85c01a-d795-4523-8194-84fc15b53838
 ms.service: automation
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/13/2017
+ms.date: 04/14/2017
 ms.author: tiandert; bwren
 translationtype: Human Translation
-ms.sourcegitcommit: ff1acafaacc40dd8a04b008df7cd479c811a7af0
-ms.openlocfilehash: 62b6c09f749aa36307206e23d36bd86b5b8ce455
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: e0b784006b4933fe986890c09afa965934511784
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -24,7 +25,7 @@ ms.openlocfilehash: 62b6c09f749aa36307206e23d36bd86b5b8ce455
 In diesem Artikel wird gezeigt, wie Sie Azure Automation zur Bereitstellung eines virtuellen Computers in Ihrem AWS-Abonnement (Amazon Web Services) nutzen und für diesen virtuellen Computer einen bestimmten Namen festlegen können – ein Vorgang, der in AWS als „Tagging“ des virtuellen Computers bezeichnet wird.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Um die in diesem Artikel beschriebenen Aufgaben ausführen zu können, benötigen Sie ein Azure Automation-Konto und ein AWS-Abonnement. Weitere Informationen zum Einrichten eines Azure Automation-Kontos sowie zum Konfigurieren dieses Kontos mit den Anmeldeinformationen Ihres AWS-Abonnements finden Sie unter [Authentifizieren mit Amazon Web Services konfigurieren](automation-sec-configure-aws-account.md).  Da in den nachfolgenden Schritten auf dieses Konto verwiesen wird, sollte dieses Konto mit den Anmeldeinformationen Ihres AWS-Abonnements erstellt oder aktualisiert werden, bevor Sie fortfahren.
+Um die in diesem Artikel beschriebenen Aufgaben ausführen zu können, benötigen Sie ein Azure Automation-Konto und ein AWS-Abonnement. Weitere Informationen zum Einrichten eines Azure Automation-Kontos sowie zum Konfigurieren dieses Kontos mit den Anmeldeinformationen Ihres AWS-Abonnements finden Sie unter [Authentifizieren mit Amazon Web Services konfigurieren](automation-configure-aws-account.md).  Da in den nachfolgenden Schritten auf dieses Konto verwiesen wird, sollte dieses Konto mit den Anmeldeinformationen Ihres AWS-Abonnements erstellt oder aktualisiert werden, bevor Sie fortfahren.
 
 ## <a name="deploy-amazon-web-services-powershell-module"></a>Bereitstellen des Amazon Web Services-PowerShell-Moduls
 Unser Runbook für die VM-Bereitstellung nutzt das AWS-PowerShell-Modul zur Durchführung seiner Aufgaben. Führen Sie die folgenden Schritte aus, um das Modul zu Ihrem Automation-Konto hinzuzufügen, das mit den Anmeldeinformationen Ihres AWS-Abonnements konfiguriert ist.  
@@ -113,10 +114,5 @@ Bevor wir mit dem Testen des Runbooks fortfahren, müssen einige Dinge überprü
 * Die ersten Schritte mit PowerShell-Workflow-Runbooks sind unter [Mein erstes PowerShell-Workflow-Runbook](automation-first-runbook-textual.md)
 * Informationen über die verschiedenen Runbooktypen, ihre Vorteile und Einschränkungen finden Sie unter [Azure Automation-Runbooktypen](automation-runbook-types.md)
 * Weitere Informationen zur PowerShell-Skriptunterstützung finden Sie unter [Native PowerShell Script Support in Azure Automation (Native PowerShell-Skriptunterstützung in Azure Automation)](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

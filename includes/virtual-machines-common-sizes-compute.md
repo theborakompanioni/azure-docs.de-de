@@ -6,16 +6,13 @@ Virtuelle Computer der F-Serie sind eine hervorragende Wahl für Workloads, die 
 
 Die Fs-Serie verfügt zusätzlich zum Premium-Speicher über alle Vorteile der F-Serie.
 
-> [!NOTE]
-> Ab dem 15. April unterstützen alle Azure-VM-Größen mindestens zwei Netzwerkschnittstellen (NICs). Spezifische Regionsinformationen erhalten Sie im Rahmen eines [Dienstupdates](https://azure.microsoft.com/en-us/updates/). Diese sind im Anschluss durch ein Hütchen (^) gekennzeichnet.
-
 ## <a name="fs-series"></a>Fs-Serie*
 
 ACU: 210 - 250
 
 | Größe | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Anzahl Datenträger | Maximaler Datenträgerdurchsatz mit Cache und lokal: IOPS/MBit/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Netzwerkbandbreite |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_F1s |1 |2 |4 |2 |4.000/32 (12) |3.200/48 |2^/moderat |
+| Standard_F1s |1 |2 |4 |2 |4.000/32 (12) |3.200/48 |2/moderat |
 | Standard_F2s |2 |4 |8 |4 |8.000/64 (24) |6.400/96 |2/hoch |
 | Standard_F4s |4 |8 |16 |8 |16.000/128 (48) |12.800/192 |4/hoch |
 | Standard_F8s |8 |16 |32 |16 |32.000/256 (96) |25.600/384 |8/hoch |
@@ -32,7 +29,7 @@ ACU: 210 - 250
 
 | Größe         | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Durchsatz lokale Datenträger: IOPS/Lesen (MBit/s)/Schreiben (MBit/s) | Max. Datenträger/Durchsatz: IOPS | Maximale Anzahl NICs/Netzwerkbandbreite |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
-| Standard_F1  | 1         | 2           | 16             | 3000/46/23                                           | 2/2 x 500                         | 2^/moderat                 |
+| Standard_F1  | 1         | 2           | 16             | 3000/46/23                                           | 2/2 x 500                         | 2/moderat                 |
 | Standard_F2  | 2         | 4           | 32             | 6000/93/46                                           | 4/4 x 500                         | 2/hoch                     |
 | Standard_F4  | 4         | 8           | 64             | 12000/187/93                                         | 8/8 x 500                         | 4/hoch                     |
 | Standard_F8  | 8         | 16          | 128            | 24000/375/187                                        | 16/16 x 500                       | 8/hoch                     |

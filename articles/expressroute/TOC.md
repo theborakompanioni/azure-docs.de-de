@@ -26,7 +26,9 @@
 ## Verknüpfen eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung
 ### [Azure-Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
 ### [PowerShell](expressroute-howto-linkvnet-arm.md)
-## [Konfigurieren eines Gateways für ein virtuelles Netzwerk für ExpressRoute](expressroute-howto-add-gateway-resource-manager.md)
+## Konfigurieren eines Gateways für ein virtuelles Netzwerk für ExpressRoute
+### [Azure-Portal](expressroute-howto-add-gateway-portal-resource-manager.md)
+### [PowerShell](expressroute-howto-add-gateway-resource-manager.md)
 ## [Konfigurieren von parallel bestehenden ExpressRoute- und Site-to-Site-Verbindungen](expressroute-howto-coexist-resource-manager.md)
 ## [Umstellen einer Verbindung vom klassischen Modell auf das Resource Manager-Modell](expressroute-howto-move-arm.md)
 ## [Migrieren von zugeordneten virtuellen Netzwerken vom klassischen Modell zu Resource Manager](expressroute-migration-classic-resource-manager.md)

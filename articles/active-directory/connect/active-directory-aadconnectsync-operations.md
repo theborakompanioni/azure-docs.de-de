@@ -15,9 +15,9 @@ ms.workload: identity
 ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: 9faa28a86c9427a83e8ca4485ebcdc8e8dacd93d
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 0288d70bb5c0094b5c738b2d0c597e4c6d38a5aa
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -69,7 +69,7 @@ Sie haben einen Stagingexport der Änderungen an Azure AD und der lokalen Active
 #### <a name="verify"></a>Überprüfen
 1. Starten Sie eine Eingabeaufforderung, und wechseln Sie zu: `%ProgramFiles%\Microsoft Azure AD Sync\bin`
 2. Führen Sie den folgenden Befehl aus: `csexport "Name of Connector" %temp%\export.xml /f:x`. Den Namen des Connectors finden Sie im Synchronisierungsdienst. Für Azure AD sieht der Name in etwa wie folgt aus: contoso.com – AAD.
-3. Kopieren Sie das PowerShell-Skript aus dem Abschnitt [CSAnalyzer](#Appendix-CSAnalyzer) in eine Datei mit dem Namen `csanalyzer.ps1`.
+3. Kopieren Sie das PowerShell-Skript aus dem Abschnitt [CSAnalyzer](#appendix-csanalyzer) in eine Datei mit dem Namen `csanalyzer.ps1`.
 4. Öffnen Sie ein PowerShell-Fenster, und navigieren Sie zu dem Ordner, in dem Sie das PowerShell-Skript erstellt haben.
 5. Führen Sie `.\csanalyzer.ps1 -xmltoimport %temp%\export.xml` aus.
 6. Sie verfügen jetzt über eine Datei namens **processedusers1.csv**, die in Microsoft Excel untersucht werden kann. Alle Änderungen, die bereitgestellt werden, um in Azure AD exportiert zu werden, wurden in dieser Datei gefunden.

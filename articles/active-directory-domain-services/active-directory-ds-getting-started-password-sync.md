@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 6ed35ca1b83f5f7221824d99817800c1e42e68c1
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
+ms.openlocfilehash: 51e4665b6372859021237144a0bf7f6763a2638b
+ms.lasthandoff: 04/14/2017
 
 
 ---
@@ -55,7 +55,7 @@ Stellen Sie Ihren Benutzern die folgende Anleitung zur Verfügung, damit sie ihr
    > Sollte die Option **Kennwort ändern** auf der Zugriffsbereichsseite nicht angezeigt werden, vergewissern Sie sich, dass in Ihrer Organisation die [Kennwortverwaltung in Azure AD](../active-directory/active-directory-passwords-getting-started.md) konfiguriert ist.
    >
    >
-4. Geben Sie auf der Seite **Kennwort ändern** Ihr vorhandenes (altes) und ein neues Kennwort ein, und bestätigen Sie das neue Kennwort. 
+4. Geben Sie auf der Seite **Kennwort ändern** Ihr vorhandenes (altes) und ein neues Kennwort ein, und bestätigen Sie das neue Kennwort.
 
     ![Erstellen Sie ein virtuelles Netzwerk für Azure Active Directory-Domänendienste.](./media/active-directory-domain-services-getting-started/user-change-password2.png)
 
@@ -64,7 +64,7 @@ Stellen Sie Ihren Benutzern die folgende Anleitung zur Verfügung, damit sie ihr
 Das neue Kennwort kann wenige Minuten nach der Kennwortänderung in Azure Active Directory Domain Services verwendet werden. Nach einigen weiteren Minuten (in der Regel etwa 20 Minuten) können Sie sich mit dem neuen Kennwort bei Computern anmelden, die der verwalteten Domäne angehören.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Aktualisieren Ihres eigenen Kennworts](../active-directory/active-directory-passwords-update-your-own-password.md#reset-your-password)
+* [Aktualisieren Ihres eigenen Kennworts](../active-directory/active-directory-passwords-update-your-own-password.md#reset-my-password)
 * [Erste Schritte mit der Kennwortverwaltung](../active-directory/active-directory-passwords-getting-started.md)
 * [Aktivieren der Kennwortsynchronisierung für Azure AD-Domänendienste](active-directory-ds-getting-started-password-sync-synced-tenant.md)
 * [Verwalten einer durch die Azure Active Directory-Domänendienste verwalteten Domäne](active-directory-ds-admin-guide-administer-domain.md)
