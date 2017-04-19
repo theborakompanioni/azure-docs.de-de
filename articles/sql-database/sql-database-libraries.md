@@ -16,14 +16,15 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: genemi
 translationtype: Human Translation
-ms.sourcegitcommit: fdbe5ff497b7acc9d8521b8ba1a016ae11bc69d2
-ms.openlocfilehash: 26140426eb2a5376af003248a0de6685999ac5a2
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: b42d2bd64dbaf44f1be85d687b27ffe47eb0db53
+ms.lasthandoff: 04/15/2017
 
 
 ---
 # <a name="connection-libraries-for-sql-database-and-sql-server"></a>Verbindungsbibliotheken für SQL-Datenbank und SQL Server
 
-In diesem Thema sind die einzelnen Bibliotheken und *Treiber* aufgelistet, mit denen Clientprogramme Verbindungen mit Azure SQL-Datenbank oder Microsoft SQL Server herstellen können.
+In diesem Thema sind die einzelnen Bibliotheken und *Treiber* aufgelistet, mit denen Clientprogramme Verbindungen mit Azure SQL-Datenbank oder Microsoft SQL Server herstellen können. 
 
 | Sprache | Plattform | Zusätzliche Ressourcen | Download |
 |:--- |:--- |:--- |:--- |
@@ -38,13 +39,10 @@ In diesem Thema sind die einzelnen Bibliotheken und *Treiber* aufgelistet, mit d
 ## <a name="related-links"></a>Verwandte Links
 
 - [SQL Server-Treiber](https://docs.microsoft.com/sql/connect/sql-server-drivers/) zum Herstellen einer Verbindung von einem Client
-- [Herstellen von Verbindungen mit SQL-Datenbanken mithilfe von .NET (C#)](sql-database-develop-dotnet-simple.md), ADO.NET
-- [Herstellen von Verbindungen mit SQL-Datenbanken mithilfe von Node.js](sql-database-develop-nodejs-simple.md)
-- [Herstellen von Verbindungen mit SQL-Datenbanken mithilfe von Python](sql-database-develop-python-simple.md), pymssql
-- [Herstellen von Verbindungen mit SQL-Datenbanken mithilfe von Ruby](sql-database-develop-ruby-simple.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
+- [Herstellen von Verbindungen mit SQL-Datenbanken mithilfe von .NET (C#)](sql-database-connect-query-dotnet.md)
+- [Herstellen von Verbindungen mit SQL-Datenbanken mithilfe von PHP](sql-database-connect-query-php.md)
+- [Herstellen von Verbindungen mit SQL-Datenbanken mithilfe von Node.js](sql-database-connect-query-nodejs.md)
+- [Herstellen von Verbindungen mit SQL-Datenbank mithilfe von Java](sql-database-connect-query-java.md)
+- [Herstellen von Verbindungen mit SQL-Datenbanken mithilfe von Python](sql-database-connect-query-python.md)
+- [Herstellen von Verbindungen mit SQL-Datenbanken mithilfe von Ruby](sql-database-connect-query-ruby.md)
 

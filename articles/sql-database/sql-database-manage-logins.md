@@ -10,7 +10,7 @@ editor:
 tags: 
 ms.assetid: 0a65a93f-d5dc-424b-a774-7ed62d996f8c
 ms.service: sql-database
-ms.custom: authentication and authorization
+ms.custom: security-access
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -18,8 +18,9 @@ ms.workload: data-management
 ms.date: 01/23/2017
 ms.author: rickbyh
 translationtype: Human Translation
-ms.sourcegitcommit: 5eccb4705cd6c8f6170a48f3b3591518688651f1
-ms.openlocfilehash: c3a45973a04d5082bee777a98f8204ceedc888a5
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: f29b2c1da0d9b761634370f5f08ea942b66d9f1f
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -56,10 +57,8 @@ Die Konten **Serveradministrator** und **Azure AD-Administrator** weisen die fol
 - Mit diesen Konten können Mitglieder für die Rollen `dbmanager` und `loginmanager` hinzugefügt und entfernt werden.
 - Mit diesen Konten kann die Systemtabelle `sys.sql_logins` angezeigt werden.
 
-
-
 ### <a name="configuring-the-firewall"></a>Konfigurieren der Firewall
-Wenn eine Firewall auf Serverebene für eine einzelne IP-Adresse oder einen Bereich konfiguriert wird, kann über **SQL Server-Administrator** und **Azure Active Directory-Administrator** eine Verbindung mit der Masterdatenbank und allen Benutzerdatenbanken hergestellt werden. Die erste Firewall auf Serverebene kann über das [Azure-Portal](sql-database-configure-firewall-settings.md) konfiguriert werden, indem die [PowerShell](sql-database-configure-firewall-settings-powershell.md) oder die [REST-API](sql-database-configure-firewall-settings-rest.md) verwendet wird. Nachdem eine Verbindung hergestellt wurde, können Sie per [Transact-SQL](sql-database-configure-firewall-settings-tsql.md) auch weitere Firewallregeln auf Serverebene konfigurieren.
+Wenn eine Firewall auf Serverebene für eine einzelne IP-Adresse oder einen Bereich konfiguriert wird, kann über **SQL Server-Administrator** und **Azure Active Directory-Administrator** eine Verbindung mit der Masterdatenbank und allen Benutzerdatenbanken hergestellt werden. Die erste Firewall auf Serverebene kann über das [Azure-Portal](sql-database-get-started-portal.md) konfiguriert werden, indem die [PowerShell](sql-database-get-started-powershell.md) oder die [REST-API](https://msdn.microsoft.com/library/azure/dn505712.aspx) verwendet wird. Nachdem eine Verbindung hergestellt wurde, können Sie per [Transact-SQL](sql-database-configure-firewall-settings.md) auch weitere Firewallregeln auf Serverebene konfigurieren.
 
 ### <a name="administrator-access-path"></a>Administrator-Zugriffspfad
 Wenn die Firewall auf Serverebene richtig konfiguriert ist, können mit **SQL Server-Administrator** und **Azure Active Directory-Administrator** Verbindungen mit Tools wie SQL Server Management Studio oder SQL Server Data Tools hergestellt werden. Nur die neuesten Tools verfügen über alle Features und Funktionen. Das folgende Diagramm zeigt eine typische Konfiguration für die beiden Administratorkonten.
@@ -69,7 +68,7 @@ Wenn die Firewall auf Serverebene richtig konfiguriert ist, können mit **SQL Se
 Bei der Verwendung eines offenen Ports in der Firewall auf Serverebene können Administratoren eine Verbindung mit jeder beliebigen SQL-Datenbank herstellen.
 
 ### <a name="connecting-to-a-database-by-using-sql-server-management-studio"></a>Herstellen einer Verbindung mit der Datenbank über SQL Server Management Studio
-Eine exemplarische Vorgehensweise zur Erstellung eines Servers, einer Datenbank, von Firewallregeln auf Serverebene und zur Verwendung von SQL Server Management Studio zum Abfragen einer Datenbank finden Sie unter [Erste Schritte mit Azure SQL-Datenbankservern, -Datenbanken und -Firewallregeln mit dem Azure-Portal und SQL Server Management Studio](sql-database-get-started.md).
+Eine exemplarische Vorgehensweise zur Erstellung eines Servers, einer Datenbank, von Firewallregeln auf Serverebene und zur Verwendung von SQL Server Management Studio zum Abfragen einer Datenbank finden Sie unter [Erste Schritte mit Azure SQL-Datenbankservern, -Datenbanken und -Firewallregeln mit dem Azure-Portal und SQL Server Management Studio](sql-database-get-started-portal.md).
 
 > [!IMPORTANT]
 > Es wird empfohlen, immer die neueste Version von Management Studio zu verwenden, damit Sie mit Updates von Microsoft Azure und SQL-Datenbank synchron sind. [Aktualisieren Sie SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
@@ -196,9 +195,4 @@ Beachten Sie beim Verwalten von Anmeldungen und Benutzern in SQL-Datenbank Folge
 - Informationen zum Gewähren des Zugriffs auf ein Datenbankobjekt finden Sie unter [Erteilen des Zugriffs auf ein Datenbankobjekt](https://msdn.microsoft.com/library/ms365327.aspx).
 - Ein Tutorial mit SQL Server-Authentifizierung finden Sie unter [Tutorial: SQL Server-Authentifizierung](sql-database-control-access-sql-authentication-get-started.md).
 - Ein Tutorial mit Azure Active Directory-Authentifizierung finden Sie unter [Tutorial: AAD-Authentifizierung](sql-database-control-access-aad-authentication-get-started.md).
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

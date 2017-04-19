@@ -12,12 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/10/2017
+ms.date: 04/12/2017
 ms.author: banders;magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 6a527fa303f1e2bd06ac662e545d6b6a1d299fb4
-ms.openlocfilehash: cd06dfd498540970dc8ed29650f4d9e3ca57939b
-ms.lasthandoff: 02/10/2017
+ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
+ms.openlocfilehash: cc3ff1ca5e638896df155b55145b300f70f7540a
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -41,7 +41,6 @@ Damit der Microsoft Monitoring Agent eine Verbindung herstellen und sich beim OM
 | \*.oms.opinsights.azure.com |443 |Ja |
 | \*.blob.core.windows.net |443 |Ja |
 | \*.azure-automation.net |443 |Ja |
-| ods.systemcenteradvisor.com |443 | |
 
 Mit dem folgenden Verfahren können Sie Proxyeinstellungen für den Microsoft Monitoring Agent über die Systemsteuerung konfigurieren. Sie müssen diese Schritte für jeden Server ausführen. Wenn Sie viele Server konfigurieren müssen, ist es möglicherweise einfacher, diesen Prozess mithilfe eines Skripts zu automatisieren. Wenn dies der Fall ist, finden Sie entsprechende Anweisungen unter [So konfigurieren Sie Proxyeinstellungen für den Microsoft Monitoring Agent mithilfe eines Skripts](#to-configure-proxy-settings-for-the-microsoft-monitoring-agent-using-a-script).
 
@@ -102,7 +101,6 @@ Es folgt eine Liste der Ressourcen und Ports für Agents:<br>
 | \*.ods.opinsights.azure.com |443 |
 | \*.oms.opinsights.azure.com |443 |
 | \*.blob.core.windows.net/\* |443 |
-| ods.systemcenteradvisor.com |443 |
 
 <br>
 Es folgt eine Liste der Ressourcen und Ports für Verwaltungsserver:<br>
@@ -112,8 +110,6 @@ Es folgt eine Liste der Ressourcen und Ports für Verwaltungsserver:<br>
 | service.systemcenteradvisor.com |443 | |
 | \*.service.opinsights.azure.com |443 | |
 | \*.blob.core.windows.net |443 |Ja |
-| data.systemcenteradvisor.com |443 | |
-| ods.systemcenteradvisor.com |443 | |
 | \*.ods.opinsights.azure.com |443 |Ja |
 | \*.azure-automation.net |443 |Ja |
 

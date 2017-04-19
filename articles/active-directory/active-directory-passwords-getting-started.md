@@ -16,15 +16,15 @@ ms.topic: get-started-article
 ms.date: 03/08/2017
 ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: c2c46637ccccd01c1c3056d6a25ef605cfd68f2d
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
+ms.openlocfilehash: d1094e1b350883c206a9180ff71bd8613156360a
+ms.lasthandoff: 04/13/2017
 
 
 ---
 # <a name="getting-started-with-password-management"></a>Erste Schritte mit der Kennwortverwaltung
 > [!IMPORTANT]
-> **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md#reset-your-password)weiter.
+> **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md#reset-my-password)weiter.
 >
 >
 
@@ -69,9 +69,9 @@ Nachfolgend finden Sie einige der besten Tipps, die sich für Kunden bei der Ber
 * [**Tipp 9: PROBLEMBEHANDLUNG** – wenn Sie weitere Unterstützung benötigen, stellen Sie uns genügend Informationen zur Verfügung, damit wir Ihnen helfen können.](#tip-9-troubleshoot---if-you-still-need-help-include-enough-information-for-us-to-assist-you)
 
 ### <a name="top-tip-documentation-navigation---use-our-table-of-contents-and-your-browsers-find-feature-to-find-answers"></a>TOP-TIPP: NAVIGATION DER DOKUMENTATION – verwenden Sie unser Inhaltsverzeichnis und die Suchfunktion Ihres Browsers, um Antworten zu finden.
-Wenn Sie eine unserer Dokumentationen verwenden, haben wir uns bemüht, im Inhaltsverzeichnis Quicklinks zu allen interessanten Inhalten mit Informationen für Administratoren bereitzustellen. 
+Wenn Sie eine unserer Dokumentationen verwenden, haben wir uns bemüht, im Inhaltsverzeichnis Quicklinks zu allen interessanten Inhalten mit Informationen für Administratoren bereitzustellen.
 
-Sehen Sie sich das folgende Inhaltsverzeichnis an: 
+Sehen Sie sich das folgende Inhaltsverzeichnis an:
 * [Zurücksetzen des Azure AD-Kennworts: Dokumentation – Inhaltsverzeichnis](https://docs.microsoft.com/azure/active-directory/active-directory-passwords)
 
 ### <a name="tip-1-licensing---make-sure-you-understand-the-licensing-requirements"></a>Tipp 1: LIZENZIERUNG – stellen Sie sicher, dass Sie die Lizenzanforderungen verstehen.
@@ -93,9 +93,9 @@ Die auf der administrativen Benutzeroberfläche konfigurierten Richtlinien gelte
  * ... 30 Tage ab dem Start einer Testversion **ODER**
  * ... wenn keine Vanity-Domäne vorhanden ist **UND** Azure AD Connect Identitäten nicht synchronisiert.
  * **_Anforderung_**: Für **eine** der folgenden Informationen muss ein Wert angegeben sein: E-Mail-Adresse für Authentifizierung, alternative E-Mail-Adresse, Telefonnummer für Authentifizierung, Mobiltelefon oder Bürotelefon.
-* **Richtlinie für die zweistufige Überprüfung gilt...** 
+* **Richtlinie für die zweistufige Überprüfung gilt...**
  * ... nach Ablauf der ersten 30 Tage einer Testversion **ODER**
- * ... wenn eine Vanity-Domäne vorhanden ist **ODER** 
+ * ... wenn eine Vanity-Domäne vorhanden ist **ODER**
  * ... wenn Sie Azure AD Connect aktiviert haben, um Identitäten aus Ihrer lokalen Umgebung zu synchronisieren.
  * _**Anforderung**_: Für **zwei** der folgenden Informationen muss ein Wert angegeben sein: E-Mail-Adresse für Authentifizierung, alternative E-Mail-Adresse, Telefonnummer für Authentifizierung, Mobiltelefon oder Bürotelefon.
 
@@ -145,7 +145,7 @@ Eine vollständige Liste der Anleitungen zur Problembehandlung und spezifische A
 * [Bereitstellung der Rückschreibung – Schritt 3: Konfigurieren der Firewall](#step-3-configure-your-firewall)
 * [Bereitstellung der Rückschreibung – Schritt 4: Einrichten der geeigneten Berechtigungen](#step-4-set-up-the-appropriate-active-directory-permissions)
 
-### <a name="tip-7-reporting---see-who-is-registering-or-resetting-passwords-with-the-azure-ad-sspr-audit-logs"></a>Tipp 7: Berichterstellung – ermitteln Sie anhand der Azure AD SSPR-Überwachungsprotokolle, wer sich registriert oder Kennwörter zurücksetzt. 
+### <a name="tip-7-reporting---see-who-is-registering-or-resetting-passwords-with-the-azure-ad-sspr-audit-logs"></a>Tipp 7: Berichterstellung – ermitteln Sie anhand der Azure AD SSPR-Überwachungsprotokolle, wer sich registriert oder Kennwörter zurücksetzt.
 Sobald die Kennwortrückschreibung bereitgestellt wurde und funktioniert, ist der nächste logische Schritt, sie auszuführen und zu analysieren, wer sich noch registrieren muss, welche Probleme beim Zurücksetzen häufig auftreten, und den Nutzen Ihrer Investition in die Funktion zu ermitteln.
 
 Mithilfe der Überwachungsprotokolle für die Kennwortzurücksetzung in Azure AD haben Sie diese und viele weitere Möglichkeiten im Azure-Portal, über PowerBI, die Azure AD-Berichterstellungs-API für Ereignisse oder über PowerShell.  Weitere Informationen zur Verwendung dieser Berichterstellungsfunktionen finden Sie unter:
@@ -495,7 +495,7 @@ Jetzt, da das Zurückschreiben von Kennwörtern aktiviert ist, können Sie die o
 ## <a name="next-steps"></a>Nächste Schritte
 Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortzurücksetzung für Azure AD:
 
-* **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md#reset-your-password).
+* **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md#reset-my-password).
 * [**Funktionsweise**](active-directory-passwords-how-it-works.md) – Erfahren Sie mehr über die sechs verschiedenen Komponenten des Diensts und deren Funktionen.
 * [**Anpassen**](active-directory-passwords-customize.md) – Erfahren Sie, wie Sie das Aussehen und Verhalten des Diensts an die Anforderungen Ihrer Organisation anpassen.
 * [**Best Practices**](active-directory-passwords-best-practices.md) – Erfahren Sie, wie Sie Kennwörter in Ihrer Organisation schnell bereitstellen und effektiv verwalten.

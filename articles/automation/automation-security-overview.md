@@ -16,15 +16,15 @@ ms.workload: infrastructure-services
 ms.date: 03/01/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 7224da31e71f3f6c912cd486198135945f90a8a4
-ms.openlocfilehash: aa639886ba3379ef30f9abef8f3dff4acb5b1181
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: 1a0258e872449bf2f2f08345cbe86564e28d964e
+ms.lasthandoff: 04/17/2017
 
 
 ---
 # <a name="introduction-to-authentication-in-azure-automation"></a>Einführen in die Authentifizierung in Azure Automation  
-Mit Azure Automation können Sie Aufgaben für Ressourcen in Azure, lokal und mit anderen Cloudanbietern, z.B. Amazon Web Services (AWS), automatisieren.  Damit ein Runbook die erforderlichen Aktionen ausführen kann, muss es über Berechtigungen für den sicheren Zugriff auf die Ressourcen mit den geringstmöglichen Rechten im Abonnement verfügen. 
- 
+Mit Azure Automation können Sie Aufgaben für Ressourcen in Azure, lokal und mit anderen Cloudanbietern, z.B. Amazon Web Services (AWS), automatisieren.  Damit ein Runbook die erforderlichen Aktionen ausführen kann, muss es über Berechtigungen für den sicheren Zugriff auf die Ressourcen mit den geringstmöglichen Rechten im Abonnement verfügen.
+
 In diesem Artikel werden die unterschiedlichen Authentifizierungsszenarien beschrieben, die von Azure Automation unterstützt werden. Außerdem wird gezeigt, wie Sie für die Umgebung bzw. Umgebungen, die Sie verwalten müssen, die ersten Schritte durchführen.  
 
 ## <a name="automation-account-overview"></a>Automation-Konto – Übersicht
@@ -34,7 +34,7 @@ Die Automation-Ressourcen für jedes Automation-Konto sind mit einer einzelnen A
 
 > [!NOTE]
 > Auf Automation-Konten und die darin enthaltenen Ressourcen, die mit dem Azure-Portal erstellt werden, kann im klassischen Azure-Portal nicht zugegriffen werden. Wenn Sie diese Konten oder die enthaltenen Ressourcen mit Windows PowerShell verwalten möchten, müssen Sie die Azure-Ressourcen-Manager-Module verwenden.
-> 
+>
 
 Alle Aufgaben, die Sie für Ressourcen mit dem Azure Resource Manager und den Azure-Cmdlets in Azure Automation durchführen, müssen gegenüber Azure mit Azure Active Directory basierend auf den Anmeldeinformationen für die Organisationsidentität authentifiziert werden.  Ursprünglich wurde die zertifikatbasierte Authentifizierungsmethode mit dem Azure Service Management-Modus verwendet, aber die Einrichtung hierfür war kompliziert.  Die Authentifizierung für Azure per Azure AD-Benutzer wurde 2014 nicht nur eingeführt, um den Konfigurationsprozess für ein Authentifizierungskonto zu vereinfachen. Es sollte auch die Möglichkeit der nicht interaktiven Authentifizierung für Azure mit einem einzelnen Benutzerkonto unterstützt werden, das sowohl für Azure Resource Manager als auch für klassische Ressourcen funktioniert.   
 
@@ -52,10 +52,9 @@ In der folgenden Tabelle sind die unterschiedlichen Authentifizierungsmethoden f
 
 | Methode | Environment | Artikel |
 | --- | --- | --- |
-| Azure AD-Benutzerkonto |Azure-Ressourcen-Manager und Azure Service Management |[Authentifizieren von Runbooks mit dem Azure AD-Benutzerkonto](automation-sec-configure-aduser-account.md) |
+| Azure AD-Benutzerkonto |Azure-Ressourcen-Manager und Azure Service Management |[Authentifizieren von Runbooks mit dem Azure AD-Benutzerkonto](automation-create-aduser-account.md) |
 | Ausführendes Azure-Konto |Azure-Ressourcen-Manager |[Authentifizieren von Runbooks mit der Azure-Option „Ausführendes Konto“](automation-sec-configure-azure-runas-account.md) |
 | Klassisches ausführendes Azure-Konto |Azure-Dienstverwaltung |[Authentifizieren von Runbooks mit der Azure-Option „Ausführendes Konto“](automation-sec-configure-azure-runas-account.md) |
 | Windows-Authentifizierung |Lokales Rechenzentrum |[Authentifizieren von Runbooks für Hybrid-Runbook-Worker](automation-hybrid-runbook-worker.md) |
-| AWS-Anmeldeinformationen |Amazon Web Services |[Authentifizieren von Runbooks mit Amazon Web Services (AWS)](automation-sec-configure-aws-account.md) |
-
+| AWS-Anmeldeinformationen |Amazon Web Services |[Authentifizieren von Runbooks mit Amazon Web Services (AWS)](automation-config-aws-account.md) |
 

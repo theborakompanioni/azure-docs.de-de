@@ -16,9 +16,9 @@ ms.workload: NA
 ms.date: 09/26/2016
 ms.author: sashan
 translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: bd3aea04266baebbba1b953d5a2b7c4b2fb41a87
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 8d8743529f4f0b9e8c036d328d63bea247279fe3
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -29,11 +29,11 @@ Mit der aktiven Georeplikation können Sie bis zu vier lesbare sekundäre Datenb
 > Die aktive Georeplikation (lesbare sekundäre Datenbanken) ist jetzt für alle Datenbanken in allen Diensttarifen verfügbar. Im April 2017 wird der nicht lesbare sekundäre Typ eingestellt, und vorhandene nicht lesbare Datenbanken werden automatisch auf lesbare sekundäre Datenbanken aktualisiert.
 >  
 
- Sie können die aktive Georeplikation auf folgende Weise konfigurieren: im [Azure-Portal](sql-database-geo-replication-portal.md), mit [PowerShell](sql-database-geo-replication-powershell.md), mit [Transact-SQL](sql-database-geo-replication-transact-sql.md) oder mit der [REST-API – Create or Update Database](https://msdn.microsoft.com/library/azure/mt163685.aspx).
+ Sie können die aktive Georeplikation auf folgende Weise konfigurieren: im [Azure-Portal](sql-database-geo-replication-portal.md), mit [PowerShell](scripts/sql-database-setup-geodr-and-failover-database-powershell.md), mit [Transact-SQL](sql-database-geo-replication-transact-sql.md) oder mit der [REST-API – Create or Update Database](https://msdn.microsoft.com/library/azure/mt163685.aspx).
 
 Falls Ihre primäre Datenbank aus irgendeinem Grund ausfällt oder einfach offline geschaltet werden muss, können Sie ein *Failover* auf eine der sekundären Datenbanken durchführen. Wenn das Failover auf eine sekundäre Datenbank aktiviert ist, werden alle anderen sekundären Datenbanken automatisch mit der neuen primären Datenbank verknüpft.
 
-Das Failover auf eine sekundäre Datenbank können Sie auf folgende Weise ausführen: im [Azure-Portal](sql-database-geo-replication-failover-portal.md), mit [PowerShell](scripts/sql-database-setup-geodr-and-failover-database-powershell.md), mit [Transact-SQL](sql-database-geo-replication-failover-transact-sql.md), mit der [REST-API – Planned Failover](https://msdn.microsoft.com/library/mt575007.aspx) oder mit der [REST-API – Unplanned Failover](https://msdn.microsoft.com/library/mt582027.aspx).
+Das Failover auf eine sekundäre Datenbank können Sie auf folgende Weise ausführen: im [Azure-Portal](sql-database-geo-replication-portal.md), mit [PowerShell](scripts/sql-database-setup-geodr-and-failover-database-powershell.md), mit [Transact-SQL](sql-database-geo-replication-failover-transact-sql.md), mit der [REST-API – Planned Failover](https://msdn.microsoft.com/library/mt575007.aspx) oder mit der [REST-API – Unplanned Failover](https://msdn.microsoft.com/library/mt582027.aspx).
 
 Stellen Sie nach dem Failover sicher, dass die Authentifizierungsanforderungen für Ihren Server und Ihre Datenbank auf der neuen primären konfiguriert sind. Weitere Informationen finden Sie unter [Verwalten der Sicherheit der Azure SQL-Datenbank nach der Notfallwiederherstellung](sql-database-geo-replication-security-config.md).
 
@@ -85,7 +85,7 @@ Aufgrund der hohen Latenz von WANs wird für die fortlaufende Kopie ein asynchro
 ## <a name="programmatically-managing-active-geo-replication"></a>Programmgesteuertes Verwalten der aktiven Georeplikation
 Wie bereits zuvor erwähnt, kann die aktive Georeplikation auch programmgesteuert mit Azure PowerShell und der REST-API verwaltet werden. Die folgenden Tabellen beschreiben den verfügbaren Satz von Befehlen.
 
-* **Azure Resource Manager-API und rollenbasierte Sicherheit:** Die aktive Georeplikation umfasst eine Reihe von [Azure Resource Manager-APIs](https://msdn.microsoft.com/library/azure/mt163571.aspx) für die Verwaltung. Hierzu zählen auch [Azure Resource Manager-basierte PowerShell-Cmdlets](sql-database-geo-replication-powershell.md). Diese APIs erfordern die Verwendung von Ressourcengruppen und unterstützen rollenbasierte Sicherheit (RBAC). Weitere Informationen zur Implementierung von Zugriffsrollen finden Sie unter [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure-Abonnementressourcen](../active-directory/role-based-access-control-configure.md).
+* **Azure Resource Manager-API und rollenbasierte Sicherheit:** Die aktive Georeplikation umfasst eine Reihe von [Azure Resource Manager-APIs](https://msdn.microsoft.com/library/azure/mt163571.aspx) für die Verwaltung. Hierzu zählen auch [Azure Resource Manager-basierte PowerShell-Cmdlets](scripts/sql-database-setup-geodr-and-failover-database-powershell.md). Diese APIs erfordern die Verwendung von Ressourcengruppen und unterstützen rollenbasierte Sicherheit (RBAC). Weitere Informationen zur Implementierung von Zugriffsrollen finden Sie unter [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure-Abonnementressourcen](../active-directory/role-based-access-control-configure.md).
 
 > [!NOTE]
 > Viele neue Features für die aktive Georeplikation werden nur in der auf [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) basierenden [Azure SQL-REST-API](https://msdn.microsoft.com/library/azure/mt163571.aspx) und mit den Azure [SQL-Datenbank-PowerShell-Cmdlets](https://msdn.microsoft.com/library/azure/mt574084.aspx) unterstützt. Zur Gewährleistung der Abwärtskompatibilität werden zwar die [(klassische) REST-API](https://msdn.microsoft.com/library/azure/dn505719.aspx) sowie [(klassische) Azure SQL-Datenbank-Cmdlets](https://msdn.microsoft.com/library/azure/dn546723.aspx) unterstützt, Sie sollten jedoch die Azure Resource Manager-basierten APIs verwenden. 

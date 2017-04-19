@@ -4,7 +4,7 @@ description: "Anmeldeinformationsobjekte in Azure Automation enthalten Sicherhei
 services: automation
 documentationcenter: 
 author: mgoedtel
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: 3209bf73-c208-425e-82b6-df49860546dd
 ms.service: automation
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/11/2016
+ms.date: 04/14/2017
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 109ca4a4672d21969096af26a094390673de25d9
-ms.openlocfilehash: afb6662e1b4af6cf66fd3c8e7b155b5b6bea85ff
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 17b4dc2223d30ef13877efc650b56268b707c4bd
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -88,7 +89,7 @@ Sie können einem grafischen Runbook eine **Get-AutomationPSCredential**-Aktivit
 
 ![Anmeldeinformationen zum Zeichenbereich hinzufügen](media/automation-credentials/credential-add-canvas.png)
 
-Die folgende Abbildung zeigt ein Beispiel für die Verwendung eines Anmeldeinformationsobjekts in einem grafischen Runbook.  In diesem Fall wird das Objekt zur Bereitstellung von Authentifizierungsinformationen für ein Runbook in Azure-Ressourcen verwendet, wie unter [Authentifizieren von Runbooks mit AD-Benutzerkonto](automation-sec-configure-aduser-account.md)beschrieben.  Die erste Aktivität ruft die Anmeldeinformationen ab, die Zugriff auf das Azure-Abonnement haben.  Die Aktivität **Add-AzureAccount** verwendet diese Anmeldeinformationen anschließend, um eine Authentifizierung für alle nachfolgenden Aktivitäten bereitzustellen.  Es wird eine [Pipelineverknüpfung](automation-graphical-authoring-intro.md#links-and-workflow) verwendet, da **Get-AutomationPSCredential** ein einzelnes Objekt erwartet.  
+Die folgende Abbildung zeigt ein Beispiel für die Verwendung eines Anmeldeinformationsobjekts in einem grafischen Runbook.  In diesem Fall wird das Objekt zur Bereitstellung von Authentifizierungsinformationen für ein Runbook in Azure-Ressourcen verwendet, wie unter [Authentifizieren von Runbooks mit AD-Benutzerkonto](automation-create-aduser-account.md)beschrieben.  Die erste Aktivität ruft die Anmeldeinformationen ab, die Zugriff auf das Azure-Abonnement haben.  Die Aktivität **Add-AzureAccount** verwendet diese Anmeldeinformationen anschließend, um eine Authentifizierung für alle nachfolgenden Aktivitäten bereitzustellen.  Es wird eine [Pipelineverknüpfung](automation-graphical-authoring-intro.md#links-and-workflow) verwendet, da **Get-AutomationPSCredential** ein einzelnes Objekt erwartet.  
 
 ![Anmeldeinformationen zum Zeichenbereich hinzufügen](media/automation-credentials/get-credential.png)
 
@@ -100,10 +101,5 @@ DSC-Konfigurationen in Azure Automation können mithilfe von **Get-AutomationPSC
 * Informationen zu den verschiedenen Authentifizierungsmethoden bei Automation finden Sie unter [Azure Automation-Sicherheit](automation-security-overview.md)
 * Informationen zu den ersten Schritten mit grafischen Runbooks finden Sie unter [Mein erstes grafisches Runbook](automation-first-runbook-graphical.md)
 * Die ersten Schritte mit PowerShell-Workflow-Runbooks sind unter [Mein erstes PowerShell-Workflow-Runbook](automation-first-runbook-textual.md) 
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

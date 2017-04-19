@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 01/12/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 5d741836f5defd5d9287b90e53e71aeea439a1df
-ms.openlocfilehash: 81a7a57e6b025710660f7d55145ee286b71acf24
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: 4019b379939e43e4e974552f1f0be245c5b1d33e
+ms.lasthandoff: 04/17/2017
 
 
 ---
@@ -38,7 +38,7 @@ Der Azure AD-Anwendungsproxy bietet die folgenden Sicherheitsvorteile:
 **Bedingter Zugriff:** Wenden Sie umfassendere Richtlinienkontrollen an, bevor Verbindungen mit Ihrem Netzwerk hergestellt werden.
 
 * Beim bedingten Zugriff können Sie Einschränkungen dazu, welcher Datenverkehr auf Ihre Back-End-Anwendungen zugreifen kann, genauer definieren. Sie können Einschränkungen basierend auf dem Standort, der Authentifizierungssicherheit und dem Benutzerrisikoprofil definieren.
-* Mit dieser Funktion werden weitere Barrieren gegen Angreifer errichtet. Weitere Informationen zum bedingten Zugriff finden Sie unter [Erste Schritte mit dem bedingten Zugriff in Azure Active Directory](https://azure.microsoft.com/en-us/documentation/articles/active-directory-conditional-access-azuread-connected-apps).
+* Mit dieser Funktion werden weitere Barrieren gegen Angreifer errichtet. Weitere Informationen zum bedingten Zugriff finden Sie unter [Erste Schritte mit dem bedingten Zugriff in Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-conditional-access-azuread-connected-apps).
 
 **Beendigung des Datenverkehrs:** Der gesamte Datenverkehrsvorgang wird in der Cloud beendet.
 
@@ -53,14 +53,14 @@ Der Azure AD-Anwendungsproxy bietet die folgenden Sicherheitsvorteile:
 
 * Azure AD Identity Protection mit Intelligence auf Machine Learning-Basis mit Datenfeeds von unserer Digital Crimes Unit und aus dem Microsoft Security Response Center. Zusammen identifizieren wir proaktiv kompromittierte Konten und ermöglichen den Echtzeitschutz vor Anmeldungen mit hohem Risikofaktor. Wir berücksichtigen viele verschiedene Faktoren, z.B. den Zugriff von infizierten Geräten und über Anonymisierungsnetzwerke sowie von ungewöhnlichen und zweifelhaften Standorten.
 * Viele dieser Berichte und Ereignisse sind bereits über eine API für die Integration in Ihre Sicherheitsinformations- und Ereignisverwaltungssysteme (Security Information and Event Management, SIEM) verfügbar.
-* Weitere Informationen finden Sie unter [Azure AD Identity Protection](https://azure.microsoft.com/en-us/documentation/articles/active-directory-identityprotection).
+* Weitere Informationen finden Sie unter [Azure AD Identity Protection](https://azure.microsoft.com/documentation/articles/active-directory-identityprotection).
 
 **Remotezugriff als Dienst:** Sie müssen sich nicht mit dem Warten und Patchen von lokalen Servern beschäftigen.
 
 * Der Azure AD-Anwendungsproxy ist ein Internetskalierungsdienst, der sich im Besitz von Microsoft befindet. So sind Sie sicher, dass Sie immer die neuesten Sicherheitspatches und -upgrades erhalten.
 * Software ohne die richtigen Patches ist immer noch eine häufige Ursache für eine große Zahl von Angriffen. Mit unserem Dienstmodell müssen Sie sich nicht mehr mit der Verwaltung der Edgeserver belasten.
 
-Die Remotezugriffsdienste von Azure AD werden gemäß den Richtlinien und Standards betrieben, die im [Azure Trust Center](https://azure.microsoft.com/en-us/support/trust-center) beschrieben sind.
+Die Remotezugriffsdienste von Azure AD werden gemäß den Richtlinien und Standards betrieben, die im [Azure Trust Center](https://azure.microsoft.com/support/trust-center) beschrieben sind.
 
 Im folgenden Diagramm ist dargestellt, wie mit Azure AD der sichere Remotezugriff auf Ihre lokalen Anwendungen ermöglicht wird.
 

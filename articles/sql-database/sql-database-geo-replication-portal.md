@@ -16,9 +16,9 @@ ms.workload: NA
 ms.date: 03/062/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: 6f646b3776f0aa0bbfba227c81ac5fc4fde9265f
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 78dbbaa272d9889add5bc833c7557618f41056db
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -26,7 +26,7 @@ ms.lasthandoff: 03/10/2017
 
 In diesem Artikel erfahren Sie, wie Sie die aktive Georeplikation für SQL-Datenbank im [Azure-Portal](http://portal.azure.com) konfigurieren und ein Failover initiieren.
 
-Informationen zum Initiieren eines Failovers mit dem Azure-Portal finden Sie unter [Initiieren eines geplanten oder ungeplanten Failovers für die Azure SQL-Datenbank mit dem Azure-Portal](sql-database-geo-replication-failover-portal.md).
+Informationen zum Initiieren eines Failovers mit dem Azure-Portal finden Sie unter [Initiieren eines geplanten oder ungeplanten Failovers für die Azure SQL-Datenbank mit dem Azure-Portal](sql-database-geo-replication-portal.md).
 
 > [!NOTE]
 > Die aktive Georeplikation (lesbare sekundäre Datenbanken) ist jetzt für alle Datenbanken in allen Diensttarifen verfügbar. Im April 2017 wird der nicht lesbare sekundäre Typ eingestellt, und vorhandene nicht lesbare Datenbanken werden automatisch zu lesbaren sekundären Datenbanken aktualisiert.
@@ -81,7 +81,7 @@ Für die sekundäre Datenbank kann ein Wechsel durchgeführt werden, bei dem sie
 
 Durch den Befehl wird die sekundäre Datenbank sofort in die primäre Rolle geändert. 
 
-Es gibt einen kurzer Zeitraum, in dem beide Datenbanken während des Rollenwechsels (ca. 0 bis 25 Sekunden) nicht verfügbar sind. Wenn die primäre Datenbank über mehrere sekundäre Datenbanken verfügt, werden die anderen sekundären Datenbanken durch den Befehl automatisch neu konfiguriert, sodass sie eine Verbindung mit der neuen primären Datenbank herstellen. Unter normalen Umständen dauert der gesamte Vorgang nicht länger als&1; Minute. 
+Es gibt einen kurzer Zeitraum, in dem beide Datenbanken während des Rollenwechsels (ca. 0 bis 25 Sekunden) nicht verfügbar sind. Wenn die primäre Datenbank über mehrere sekundäre Datenbanken verfügt, werden die anderen sekundären Datenbanken durch den Befehl automatisch neu konfiguriert, sodass sie eine Verbindung mit der neuen primären Datenbank herstellen. Unter normalen Umständen dauert der gesamte Vorgang nicht länger als 1 Minute. 
 
 > [!NOTE]
 > Wenn die primäre Datenbank bei Ausgabe des Befehls online ist und gerade Commits für Transaktionen ausführt, können einige Daten verloren gehen.

@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 03/03/2017
 ms.author: daleche
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: 7e48069b84c1048617a86fbc334a04462b52deda
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 914084ff790ceb2e11852c5dae757b935f813062
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -80,20 +80,6 @@ Wenn die Anwendung dauerhaft keine Verbindung mit der Azure SQL-Datenbank herste
 2. Stellen Sie für alle Firewalls zwischen Client und Internet sicher, dass Port 1433 für ausgehende Verbindungen geöffnet ist. Zusätzliche Anhaltspunkte zu weiteren Ports, die für die Azure Active Directory-Authentifizierung geöffnet werden müssen, finden Sie unter [Konfigurieren der Windows-Firewall, um SQL Server-Zugriff zuzulassen](https://msdn.microsoft.com/library/cc646023.aspx) und [Erforderliche Ports und Protokolle für die Hybrid-Identität](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-ports).
 3. Überprüfen Sie die Verbindungszeichenfolge und andere Verbindungseinstellungen. Siehe im Thema [Verbindungsprobleme](sql-database-connectivity-issues.md#connections-to-azure-sql-database)den Abschnitt „Verbindungszeichenfolge“.
 4. Überprüfen Sie im Dashboard den Dienststatus. Wenn Sie glauben, dass es sich um einen regionalen Ausfall handelt, finden Sie unter [Wiederherstellen nach einem Ausfall](sql-database-disaster-recovery.md) Schritte zum Wiederherstellen in einer neuen Region.
-
-## <a name="all-topics-for-azure-sql-database-connection-problems"></a>Alle Themen zu Problemen mit der Verbindung mit Azure SQL-Datenbank
-Die folgende Tabelle enthält alle Themen im Zusammenhang mit Verbindungsproblemen, die sich direkt auf den Dienst Azure SQL-Datenbank beziehen.
-
-| &nbsp; | Titel | Beschreibung |
-| ---:|:--- |:--- |
-| 1 |[Beheben von Verbindungsproblemen mit der Azure SQL-Datenbank](sql-database-troubleshoot-common-connection-issues.md) |Dies ist die Landing Page für die Behebung von Verbindungsproblemen mit der Azure SQL-Datenbank. Hier erhalten Sie Informationen darüber, wie Sie vorübergehende Fehler sowie dauerhafte und nicht vorübergehende Fehler in der Azure SQL-Datenbank beheben. |
-| 2 |[Durchführen der Problembehandlung, Diagnose und Verhinderung von SQL-Verbindungsfehlern und vorübergehenden Fehlern für SQL-Datenbank](sql-database-connectivity-issues.md) |Erfahren Sie, wie Sie einen SQL-Verbindungsfehler oder vorübergehenden Fehler in Azure SQL-Datenbank behandeln, diagnostizieren und verhindern. |
-| 3 |[Allgemeiner Leitfaden zur Behandlung vorübergehender Fehler](../best-practices-retry-general.md) |Bietet allgemeine Anleitungen zur Behandlung vorübergehender Fehler beim Verbinden mit der Azure SQL-Datenbank. |
-| 4 |[Problembehandlung bei Verbindungen mit Microsoft Azure SQL-Datenbank](https://support.microsoft.com/help/10085/troubleshooting-connectivity-issues-with-microsoft-azure-sql-database) |Mit diesem Tool können Sie Ihr Problem ermitteln und Verbindungsfehler beheben. |
-| 5 |[Problembehandlung bei Fehlern wie „Die Datenbank &lt;x&gt; auf dem Server &lt;y&gt; ist zurzeit nicht verfügbar. Bitte wiederholen Sie den Verbindungsversuch später.“](sql-database-troubleshoot-connection.md) |Beschreibt die Ermittlung und Behebung eines Fehlers 40613: „Datenbank &lt;x&gt; auf Server &lt;y&gt; ist zurzeit nicht verfügbar. Wiederholen Sie den Verbindungsversuch später.“ |
-| 6 |[SQL-Fehlercodes für SQL-Datenbank-Clientanwendungen: Datenbankverbindungsfehler und andere Probleme](sql-database-develop-error-messages.md) |Stellt Informationen über SQL-Fehlercodes für SQL-Datenbank-Clientanwendungen, beispielsweise zu häufigen Datenbankverbindungsfehlern, Datenbankkopiefehlern und allgemeinen Fehlern, bereit. |
-| 7 |[Leitfaden zur Azure SQL-Datenbankleistung für Einzeldatenbanken](sql-database-performance-guidance.md) |Stellt Anleitungen zum Ermitteln des richtigen Diensttarifs für Ihre Anwendung bereit. Enthält zudem Empfehlungen zur Optimierung Ihrer Anwendung, damit Sie Ihre Azure SQL-Datenbank optimal nutzen können. |
-| 8 |[Übersicht über die Entwicklung von SQL-Datenbanken](sql-database-develop-overview.md) |Enthält Links zu Codebeispielen für verschiedene Technologien, die Sie zum Herstellen einer Verbindung und zum Interagieren mit der Azure SQL-Datenbank verwenden können. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Behandlung von Leistungsproblemen mit der Azure SQL-Datenbank](sql-database-troubleshoot-performance.md)

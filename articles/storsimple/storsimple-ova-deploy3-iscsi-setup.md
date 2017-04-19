@@ -15,9 +15,9 @@ ms.workload: TBD
 ms.date: 07/18/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 715720d22b58ddd3d0e5042de151219e49549c5e
-ms.lasthandoff: 12/08/2016
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: cc5136c209483b6b72e8d456084338688792c0d0
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -53,7 +53,7 @@ Verwenden Sie die folgende Schritt-für-Schritt-Anleitung, um Ihr virtuelles Sto
     Verwenden Sie die Verbindungs-URL aus dem vorherigen Schritt. Es wird eine Fehlermeldung mit dem Hinweis angezeigt, dass ein Problem mit dem Sicherheitszertifikat der Website aufgetreten ist. Klicken Sie auf **Mit dieser Webseite fortfahren**.
    
     ![Sicherheitszertifikatfehler](./media/storsimple-ova-deploy3-iscsi-setup/image3.png)
-2. Melden Sie sich bei der Webbenutzeroberfläche des virtuellen Geräts als **StorSimpleAdmin** an. Geben Sie das Geräteadministratorkennwort ein, das Sie unter „Schritt 3: Starten des virtuellen Geräts“ im Abschnitt [Bereitstellen von StorSimple Virtual Array – Bereitstellen eines virtuellen Geräts in Hyper-V](storsimple-ova-deploy2-provision-hyperv.md) bzw. [Bereitstellen von StorSimple Virtual Array – Bereitstellen eines virtuellen Geräts in VMware](storsimple-ova-deploy2-provision-vmware.md) geändert haben.
+2. Melden Sie sich bei der Webbenutzeroberfläche des virtuellen Geräts als **StorSimpleAdmin** an. Geben Sie das Geräteadministratorkennwort ein, das Sie unter „Schritt 3: Starten des virtuellen Geräts“ im Abschnitt [Bereitstellen von StorSimple Virtual Array – Bereitstellen eines virtuellen Geräts in Hyper-V](storsimple-ova-deploy2-provision-hyperv.md) bzw. [Bereitstellen von StorSimple Virtual Array – Bereitstellen eines virtuellen Geräts in VMware](storsimple-ova-deploy2-provision-vmware.md) geändert haben. Der Standardbenutzer lautet *StorSimpleAdmin*, und das Standardkennwort lautet *Password1*. 
    
     ![Anmeldeseite](./media/storsimple-ova-deploy3-iscsi-setup/image4.png)
 3. Sie gelangen auf die **Startseite** . Auf dieser Seite werden die verschiedenen Einstellungen beschrieben, die zum Konfigurieren und Registrieren des virtuellen Geräts beim StorSimple Manager-Dienst erforderlich sind. Beachten Sie, dass die **Netzwerkeinstellungen**, **Webproxyeinstellungen** und **Uhrzeiteinstellungen** optional sind. Die einzigen erforderlichen Einstellungen sind **Geräteeinstellungen** und **Cloudeinstellungen**.

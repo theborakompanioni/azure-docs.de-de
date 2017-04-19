@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/22/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: 9f6c36011941510d2da7f6a043128e493c13d47b
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
+ms.openlocfilehash: ae3a2236b163e6a6ffdd7f1aeabf93406981ff0b
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -25,7 +25,7 @@ ms.lasthandoff: 03/28/2017
 Dieser Artikel beschreibt die Kennwortrichtlinien und Komplexitätsanforderungen im Zusammenhang mit den in Ihrem Azure AD-Verzeichnis gespeicherten Benutzerkonten.
 
 > [!IMPORTANT]
-> **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md#reset-your-password)weiter.
+> **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md#reset-my-password)weiter.
 >
 >
 
@@ -54,7 +54,7 @@ Die folgende Tabelle beschreibt die verfügbaren Kennwortrichtlinieneinstellunge
 | Kontosperrung |Nach zehn nicht erfolgreichen Anmeldeversuchen (falsches Kennwort) wird der Benutzer für eine Minute gesperrt. Mit jeder weiteren nicht erfolgreichen Anmeldung verlängert sich die Dauer, die der Benutzer gesperrt ist. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-* **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md#reset-your-password)weiter.
+* **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md#reset-my-password)weiter.
 * [Verwalten von Kennwörtern von einem beliebigen Ort aus](active-directory-passwords.md)
 * [Funktionsweise der Kennwortverwaltung](active-directory-passwords-how-it-works.md)
 * [Erste Schritte mit der Kennwortverwaltung](active-directory-passwords-getting-started.md)

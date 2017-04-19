@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: f497366f8e66ba79b0e5978fde54d0b33048aa8d
-ms.openlocfilehash: 898b93ad95ab812b8b6a538048a86a8cc8951101
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 0a4dba58445cf0fd9fd8f51d443576bacd92251b
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -97,11 +97,6 @@ Das Referenzdataset für das Fahrzeugmodell enthält die Zuordnung von Fahrzeug-
 | XUF99EW9OIQOMV7Q7 |Familienlimousine |
 | 8OMCL3LGI7XNCC21U |Cabrio |
 | ……. | |
-
-### <a name="to-generate-simulated-data"></a>So generieren Sie simulierte Daten
-1. Klicken auf den Pfeil rechts oben im Knoten „Vehicle Telematics Simulator“ (Fahrzeugtelematiksimulator), um das Datensimulatorpaket herunterzuladen. Speichern und extrahieren Sie die Dateien lokal auf Ihrem Computer. ![Lösungsblaupause für die Fahrzeugtelemetrieanalyse](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig2-vehicle-telemetry-blueprint.png) *Abbildung 2 – Lösungsblaupause für die Fahrzeugtelemetrieanalyse*
-2. Wechseln Sie auf Ihrem lokalen Computer zum Ordner, in den Sie das „Vehicle Telematics Simulator“-Paket extrahiert haben. ![Ordner mit „Vehicle Telematics Simulator“](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig3-vehicle-telematics-simulator-folder.png) *Abbildung 3 – Ordner mit „Vehicle Telematics Simulator“*
-3. Führen Sie die Anwendung **CarEventGenerator.exe**aus.
 
 ### <a name="references"></a>Referenzen
 [Visual Studio-Projektmappe „Vehicle Telematics Simulator“](http://go.microsoft.com/fwlink/?LinkId=717075) 
@@ -393,11 +388,9 @@ Dieses Muster gilt auch für Szenarien, bei denen Sie eine Branchenanwendung in 
 Klicken Sie auf [RealtimeDashboardApp download](http://go.microsoft.com/fwlink/?LinkId=717078) , um die Visual Studio-Projektmappe „RealtimeDashboardApp“ zur Verwendung für Anpassungen herunterzuladen. 
 
 **So führen Sie die Echtzeit-Dashboardanwendung aus**
-
-1. Klicken Sie in der Diagrammansicht auf den Knoten „Power BI“ und dann im Eigenschaftenbereich auf den Link „Download Real-time Dashboard Application“ (Echtzeit-Dashboardanwendung herunterladen). ![Setupanweisungen zum Power BI-Dashboard](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig15-vehicle-telematics-powerbi-dashboard-setup.png) *Abbildung 15 – Setupanweisungen zum Power BI-Dashboard*
-2. Lokales Extrahieren und Speichern![Ordner „RealtimeDashboardApp“](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig16-vehicle-telematics-realtimedashboardapp-folder.png) *Abbildung 16 – Ordner „RealtimeDashboardApp“*  
-3. Führen Sie die Anwendung „RealtimeDashboardApp.exe“ aus.
-4. Geben Sie gültige Power BI-Anmeldeinformationen ein, melden Sie sich an, und klicken Sie auf „Annehmen“. ![Echtzeit-Dashboard-App: Anmelden bei Power BI](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig17a-vehicle-telematics-realtimedashboardapp-sign-in-to-powerbi.png) ![Echtzeit-Dashboard-App: Abschluss des Anmeldens bei Power BI](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig17b-vehicle-telematics-realtimedashboardapp-sign-in-to-powerbi.png) 
+1. Lokales Extrahieren und Speichern![Ordner „RealtimeDashboardApp“](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig16-vehicle-telematics-realtimedashboardapp-folder.png) *Abbildung 16 – Ordner „RealtimeDashboardApp“*  
+2. Führen Sie die Anwendung „RealtimeDashboardApp.exe“ aus.
+3. Geben Sie gültige Power BI-Anmeldeinformationen ein, melden Sie sich an, und klicken Sie auf „Annehmen“. ![Echtzeit-Dashboard-App: Anmelden bei Power BI](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig17a-vehicle-telematics-realtimedashboardapp-sign-in-to-powerbi.png) ![Echtzeit-Dashboard-App: Abschluss des Anmeldens bei Power BI](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig17b-vehicle-telematics-realtimedashboardapp-sign-in-to-powerbi.png) 
 
 *Abbildung 17 – RealtimeDashboardApp: Anmelden bei Power BI*
 

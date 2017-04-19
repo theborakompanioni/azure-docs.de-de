@@ -14,16 +14,16 @@ ms.topic: get-started-article
 ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: b4e2ca39cf13b25ee02afec3867a57ab4b665cbd
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 310ada88bb4d9b39eeaa10f303b9e1bd3b1f927f
+ms.lasthandoff: 04/13/2017
 
 
 ---
 # <a name="add-application-insights-sdk-to-monitor-your-nodejs-app"></a>Hinzufügen des Application Insights SDK zur Überwachung der Node.js-App
 
 
-[Azure Application Insights](app-insights-overview.md) überwacht Ihre Live-Anwendung. So können Sie [Leistungsprobleme und -ausnahmen erkennen und diagnostizieren](app-insights-detect-triage-diagnose.md) und zudem [ermitteln, wie Ihre App verwendet wird](app-insights-overview-usage.md). Dies funktioniert für Apps, die auf den eigenen lokalen IIS-Servern oder Azure-VMs gehostet werden, sowie für Azure-Web-Apps.
+[Azure Application Insights](app-insights-overview.md) überwacht Ihre Live-Anwendung. So können Sie [Leistungsprobleme und -ausnahmen erkennen und diagnostizieren](app-insights-detect-triage-diagnose.md) und zudem [ermitteln, wie Ihre App verwendet wird](app-insights-web-track-usage.md). Dies funktioniert für Apps, die auf den eigenen lokalen IIS-Servern oder Azure-VMs gehostet werden, sowie für Azure-Web-Apps.
 
 Das SDK ermöglicht die automatische Erfassung der Raten eingehender HTTP-Anforderungen sowie von Antworten, Leistungsindikatoren (CPU, Speicher, RPS) und Ausnahmefehlern. Darüber hinaus können Sie benutzerdefinierte Aufrufe zum Nachverfolgen von Abhängigkeiten, Metriken und anderen Ereignisse hinzufügen.
 
@@ -192,7 +192,7 @@ server.on("listening", () => {
 
 <!--Link references-->
 
-[knowUsers]: app-insights-overview-usage.md
+[knowUsers]: app-insights-web-track-usage.md
 [metrics]: app-insights-metrics-explorer.md
 [perf]: app-insights-web-monitor-performance.md
 [portal]: http://portal.azure.com/

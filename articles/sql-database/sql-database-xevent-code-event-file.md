@@ -17,9 +17,9 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: genemi
 translationtype: Human Translation
-ms.sourcegitcommit: fdbe5ff497b7acc9d8521b8ba1a016ae11bc69d2
-ms.openlocfilehash: 3bb6cc477b413a8636433038429e4defec1d2676
-ms.lasthandoff: 02/07/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 36bde9353c60b4f1d03188061b2b0182841d34ae
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -44,7 +44,7 @@ In diesem Thema wird ein Codebeispiel in zwei Phasen vorgestellt:
 * Ein Azure-Konto und ein Azure-Abonnement. Sie können sich für eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/)registrieren.
 * Jede Datenbank, in der eine Tabelle erstellt werden kann.
   
-  * Optional können Sie in wenigen Minuten [eine **AdventureWorksLT**-Demodatenbank erstellen](sql-database-get-started.md).
+  * Optional können Sie in wenigen Minuten [eine **AdventureWorksLT**-Demodatenbank erstellen](sql-database-get-started-portal.md).
 * SQL Server Management Studio („ssms.exe“), im Idealfall die aktuelle monatliche Updateversion. 
   Sie können "ssms.exe" in der neuesten Version wie folgt herunterladen:
   
