@@ -7,9 +7,4 @@ Verwenden Sie das Forum [User Voice](http://go.microsoft.com/fwlink/?linkid=6987
 * [Medienanalysen](https://feedback.azure.com/forums/169396-media-services/category/146181-media-analytics)
 * [Azure-Portal](https://feedback.azure.com/forums/169396-media-services/category/144432-portal/)
 * [REST-API und Plattform](https://feedback.azure.com/forums/169396-media-services/category/144423-rest-api-and-platform/)
-* [VoD-Streaming](https://feedback.azure.com/forums/169396-media-services/category/144429-vod-streaming/)
-
-
-<!--HONumber=Feb17_HO3-->
-
-
+* [VOD-Streaming](https://feedback.azure.com/forums/169396-media-services/category/144429-vod-streaming/)
