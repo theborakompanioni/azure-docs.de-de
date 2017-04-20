@@ -7,6 +7,8 @@ author: shizn
 manager: timtl
 tags: 
 keywords: Speichern von Daten in der Cloud, in der Cloud gespeicherte Daten, IoT-Clouddienst
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-intel-edison-kit-node-get-started
 ms.assetid: 37ee5962-95ce-40e8-8162-17e735eaec21
 ms.service: iot-hub
 ms.devlang: nodejs

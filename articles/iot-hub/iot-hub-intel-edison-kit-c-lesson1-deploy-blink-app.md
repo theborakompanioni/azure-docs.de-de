@@ -7,6 +7,8 @@ author: shizn
 manager: timtl
 tags: 
 keywords: Arduino LED-Projekte, Arduino blinkende LED, Arduino LED-Blinkcode, Arduino Blinkprogramm, Arduino Blinkbeispiel
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-intel-edison-kit-c-get-started
 ms.assetid: b02dfd3f-28fd-4b52-8775-eb0eaf74d707
 ms.service: iot-hub
 ms.devlang: c

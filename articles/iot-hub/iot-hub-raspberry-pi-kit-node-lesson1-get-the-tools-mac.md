@@ -7,6 +7,8 @@ author: shizn
 manager: timlt
 tags: 
 keywords: "IoT-Entwicklung, IoT-Software, Internet der Dinge Software, Python installieren Mac, Git auf Mac installieren, Gulp ausführen, Node.js installieren Mac"
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-raspberry-pi-kit-node-get-started
 ms.assetid: 2ea6d211-c0e8-4ade-ac69-d1c2261d78c4
 ms.service: iot-hub
 ms.devlang: node

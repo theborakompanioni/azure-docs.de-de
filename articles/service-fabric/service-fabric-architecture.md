@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/09/2016
+ms.date: 04/19/2016
 ms.author: rsinha
 translationtype: Human Translation
 ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
 ms.openlocfilehash: c485e8a3d12e7d2dcbfd6304a67aaa4fc2838b3f
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -62,10 +63,5 @@ Dieses Subsystem sorgt mithilfe des Naming-Diensts für zuverlässiges Messaging
 
 ## <a name="testability-subsystem"></a>Prüfbarkeitssubsystem
 Das Prüfbarkeitssubsystem besteht aus mehreren Tools, die speziell zum Testen von mit Service Fabric erstellten Diensten entwickelt wurden. Mit den Tools können Entwickler leicht aussagekräftige Fehler hervorrufen und Testszenarien ausführen, um die vielen Zustände und Übergänge zu schaffen und zu überprüfen, die für einen Dienst während seiner Lebensdauer gelten können. Dabei ist jederzeit für die erforderliche Kontrolle und Sicherheit gesorgt. Das Prüfbarkeitssubsystem bietet außerdem einen Mechanismus für das Ausführen langer Testläufe, in denen mehrere mögliche Fehler ohne Verfügbarkeitsverlust durchlaufen werden. Hierfür wird Ihnen eine Testproduktionsumgebung bereitgestellt.
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 
