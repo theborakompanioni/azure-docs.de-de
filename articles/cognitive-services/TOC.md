@@ -288,9 +288,9 @@
 ### [Hub](Translator/translator-hub-overview.md)
 ### [CTF](Translator/collaborative-translation-framework-reporting-api.md)
 ### [Übersicht über die Sprachübersetzungs-API](Translator/speech-overview.md)
-### [Referenz zur Sprachübersetzungs-API](http://docs.microsofttranslator.com/speech-translate.html)
+### [Referenz für die Sprachübersetzungs-API](http://docs.microsofttranslator.com/speech-translate.html)
 ### [Übersicht über die Textübersetzungs-API](Translator/text-overview.md)
-### [Referenz zur Textübersetzungs-API](http://docs.microsofttranslator.com/text-translate.html)
+### [Referenz für die Textübersetzungs-API](http://docs.microsofttranslator.com/text-translate.html)
 
 ## Video
 ### [Übersicht](Video/Home.md)

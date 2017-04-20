@@ -1,4 +1,5 @@
-# [Übersicht](active-directory-developers-guide.md)
+# Übersicht
+## [Entwicklerhandbuch](active-directory-developers-guide.md)
 ## [Apps und Azure Active Directory](active-directory-how-applications-are-added.md)
 ## [Entwicklerglossar](active-directory-dev-glossary.md)
 ## [AAD-Graph-API](active-directory-graph-api.md)
@@ -39,14 +40,12 @@
 ## [Brandingrichtlinien](active-directory-branding-guidelines.md)
 ## Arbeiten mit SAML
 ### [Azure AD und SAML](active-directory-saml-protocol-reference.md)
-### [Anzeigen der von Access Control zurückgegebenen SAML-Daten](active-directory-java-view-saml-returned-by-access-control.md)
 ### [Anpassen von Ansprüchen](active-directory-saml-claims-customization.md)
 ### [Debuggen von SAML-basierten SSO](active-directory-saml-debugging.md)
 ### [SAML-Protokoll für einmaliges Anmelden](active-directory-single-sign-on-protocol-reference.md)
 ### [SAML-Protokoll für einmaliges Abmelden](active-directory-single-sign-out-protocol-reference.md)
 ## Arbeiten mit Visual Studio
 ### [Erste Schritte mit Azure Active Directory und verbundenen Visual Studio-Diensten (MVC Projects.md)](vs-active-directory-dotnet-getting-started.md)
-### [Was ist mit meinem MVC-Projekt passiert?](Visual Studio Azure Active Directory connected service.md)](vs-active-directory-dotnet-what-happened
 ### [Fehler während der Authentifizierungserkennung](vs-active-directory-error.md)
 ### [Erste Schritte mit WebApi](vs-active-directory-webapi-getting-started.md)
 ### [Was ist mit meinem Web-API-Projekt passiert?](vs-active-directory-webapi-what-happened.md)
@@ -59,7 +58,8 @@
 ### [Verbundmetadaten](active-directory-federation-metadata.md)
 ### [OAuth](active-directory-protocols-oauth-code.md)
 ### [OpenID Connect](active-directory-protocols-openid-connect-code.md)
-# [v2.0-Endpunkt](active-directory-appmodel-v2-overview.md)
+### [Bedienen von Dienstaufrufen](active-directory-protocols-oauth-service-to-service.md)
+# v2.0-Endpunkt
 ## [Übersicht](active-directory-appmodel-v2-overview.md)
 ### [Unterschiede](active-directory-v2-compare.md)
 ### [App-Typen](active-directory-v2-flows.md)
@@ -82,12 +82,11 @@
 ## Referenz
 ### [Referenz zur App-Registrierung](active-directory-v2-registration-portal.md)
 ### [Authentifizierungsbibliotheken](active-directory-v2-libraries.md)
+### [v2.0-Authentifizierungsprotokolle](active-directory-v2-protocols.md)
+#### [Tokenreferenz](active-directory-v2-tokens.md)
+#### [OAuth 2.0-Autorisierungscodefluss](active-directory-v2-protocols-oauth-code.md)
+#### [OpenID Connect](active-directory-v2-protocols-oidc.md)
+#### [Impliziter Flow](active-directory-v2-protocols-implicit.md)
+#### [OAuth 2.0-Clientanmeldeinformationen](active-directory-v2-protocols-oauth-client-creds.md)
 ### [Bereiche](active-directory-v2-scopes.md)
-### [Tokenreferenz](active-directory-v2-tokens.md)
-### [OpenID Connect](active-directory-v2-protocols-oidc.md)
-### [Impliziter Flow](active-directory-v2-protocols-implicit.md)
-### [OAuth 2.0-Autorisierungscodefluss](active-directory-v2-protocols-oauth-code.md)
-### [OAuth 2.0-Clientanmeldeinformationen](active-directory-v2-protocols-oauth-client-creds.md)
-### [OAuth 2.0 und OpenID](active-directory-v2-protocols.md)
-### [Bedienen von Dienstaufrufen](active-directory-protocols-oauth-service-to-service.md)
 # [Beispiele](active-directory-code-samples.md)

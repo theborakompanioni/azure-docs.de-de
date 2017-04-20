@@ -3,15 +3,9 @@
 ## [OMS-Architektur](operations-management-suite-architecture.md)
 
 # Erste Schritte
-## Insight + Analytics
-### [Registrieren bei Log Analytics](../log-analytics/log-analytics-get-started.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
-## Automation + Control
-### [Mein erstes Runbook](../automation/automation-first-runbook-graphical.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
-## Protection & Recovery
-### [Einführung in Azure Backup](../backup/backup-introduction-to-azure-backup.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
-## Sicherheit und Compliance
-### [Sicherheit und Überwachung](oms-security-getting-started.md)
-### [Datensicherheit](oms-security-data-security.md)
+## Exemplarische Vorgehensweisen
+### [Dienstzuordnung](operations-management-suite-walkthrough-servicemap.md)
+
 
 # Anleitung
 
