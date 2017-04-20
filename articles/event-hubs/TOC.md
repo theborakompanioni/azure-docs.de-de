@@ -39,18 +39,18 @@
 #### [Verwenden von Python zum Aktivieren des Event Hubs-Archivs](event-hubs-archive-python.md)
 ### [Verwenden von PowerShell zur Bereitstellung von Entitäten](event-hubs-manage-with-ps.md) 
 ### [Streamen von Azure-Diagnosedaten mit Event Hubs](event-hubs-streaming-azure-diags-data.md)
-### [Erstellen und Bereitstellen von Event Hubs anhand einer Resource Manager-Vorlage](event-hubs-resource-manager-namespace-event-hub.md)
+### [Erstellen und Bereitstellen eines Event Hubs mithilfe einer Resource Manager-Vorlage](event-hubs-resource-manager-namespace-event-hub.md)
 
 # Referenz
+## Java
+### [com.microsoft.azure.eventhubs](/java/api/com.microsoft.azure.eventhubs)
+### [com.microsoft.azure.eventprocessorhost](/java/api/com.microsoft.azure.eventprocessorhost)
 ## .NET
 ### [Microsoft.Azure.EventHubs](/dotnet/api/microsoft.azure.eventhubs)
 ### [Microsoft.Azure.EventHubs.Processor](/dotnet/api/microsoft.azure.eventhubs.processor)
 ### [Microsoft.ServiceBus.Messaging](/dotnet/api/microsoft.servicebus.messaging)
-### [Microsoft.Azure.ServiceBus.EventProcessorHost](/dotnet/api/microsoft.azure.servicebus.eventprocessorhost)
+### [Microsoft.ServiceBus.Messaging.EventProcessorHost](/dotnet/api/microsoft.servicebus.messaging.eventprocessorhost)
 ### [Microsoft.Azure.Management.EventHub](/dotnet/api/microsoft.azure.management.eventhub)
-## Java
-### [com.microsoft.azure.eventhubs](/java/api/com.microsoft.azure.eventhubs)
-### [com.microsoft.azure.eventprocessorhost](/java/api/com.microsoft.azure.eventprocessorhost)
 ## [REST](/rest/api/eventhub)
 ## [Exceptions](event-hubs-messaging-exceptions.md)
 ## [Quotas](event-hubs-quotas.md)

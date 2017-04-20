@@ -14,12 +14,15 @@
 ## Erstellen von Vorlagen
 ### [Bewährte Methoden für Vorlagen](resource-manager-template-best-practices.md)
 ### [Vorlagenabschnitte](resource-group-authoring-templates.md)
+### [Verknüpfen mit anderen Vorlagen](resource-group-linked-templates.md)
 ### [Definieren der Abhängigkeit zwischen Ressourcen](resource-group-define-dependencies.md)
+### Kopierschleife zum Erstellen mehrerer Instanzen
+#### [Grundlegende Syntax](resource-group-create-multiple.md)
+#### [Sequenzielle Schleife](resource-manager-sequential-loop.md)
+#### [Eigenschaftskopie](resource-manager-property-copy.md)
 ### [Standort festlegen](resource-manager-template-location.md)
 ### [Tags zuweisen](resource-manager-template-tags.md)
 ### [Festlegen von Name und Typ der untergeordneten Ressource](resource-manager-template-child-resource.md)
-### [Erstellen mehrerer Instanzen des Ressourcentyps](resource-group-create-multiple.md)
-### [Verknüpfen mit anderen Vorlagen](resource-group-linked-templates.md)
 ### [Freigeben des Status für verknüpfte Vorlagen](best-practices-resource-manager-state.md)
 ### [Muster für das Entwerfen von Vorlagen](best-practices-resource-manager-design-templates.md)
 ## Bereitstellen

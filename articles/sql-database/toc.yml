@@ -4,8 +4,6 @@
   items:
   - name: "Informationen zu SQL-Datenbank"
     href: sql-database-technical-overview.md
-  - name: "Vergleichen von SQL-Datenbank"
-    href: sql-database-features.md
 - name: "Schnellstart"
   expanded: true
   items:
@@ -67,10 +65,14 @@
       href: sql-database-what-is-a-dtu.md
     - name: "DTU-Vergleichstest"
       href: sql-database-benchmark-overview.md
-    - name: "Grenzen"
+    - name: "Einschränkungen"
       href: sql-database-resource-limits.md
-  - name: "Tools"
-    href: sql-database-manage-overview.md
+    - name: "PaaS oder IaaS"
+      href: sql-database-paas-vs-sql-server-iaas.md  
+    - name: "Features"
+      href: sql-database-features.md
+    - name: "Tools"
+      href: sql-database-manage-overview.md
   - name: "Partitionieren von Daten"
     items:
     - name: "Sharddatenbanken"
@@ -231,10 +233,6 @@
     items:
     - name: "Azure AD-Authentifizierung"
       href: sql-database-aad-authentication-configure.md
-    - name: "Überwachung"
-      href: sql-database-auditing-portal.md
-    - name: "Bedrohungserkennung"
-      href: sql-database-threat-detection-portal.md
     - name: "Verschlüsseln – Zertifikatspeicher"
       href: sql-database-always-encrypted.md
     - name: "Verschlüsseln – Schlüsseltresor"
@@ -388,6 +386,8 @@
   items:
   - name: "Häufig gestellte Fragen"
     href: sql-database-faq.md
+  - name: "Öffentliche Datasets"
+    href: sql-database-public-data-sets.md  
   - name: "Behandeln von Konnektivitätsproblemen"
     href: https://support.microsoft.com/help/10085/troubleshooting-connectivity-issues-with-microsoft-azure-sql-database
   - name: "Preise"
@@ -414,3 +414,5 @@
       href: https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools
     - name: "Benutzerdefiniertes Dashboard für Pools für elastische Datenbanken"
       href: https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools-custom-dashboard
+
+

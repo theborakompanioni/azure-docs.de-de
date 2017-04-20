@@ -5,7 +5,7 @@
 ## [Anwendungsszenarien](service-fabric-application-scenarios.md)
 ## [Architektur](service-fabric-architecture.md)
 ## [Terminologie](service-fabric-technical-overview.md)
-## [Inhaltsroadmap](service-fabric-content-roadmap.md)
+## [Einführung](service-fabric-content-roadmap.md)
 
 # Erste Schritte
 ## Einrichten der Entwicklungsumgebung
@@ -17,7 +17,8 @@
 ### [Java unter Linux](service-fabric-create-your-first-linux-application-with-java.md)
 ### [C# unter Linux](service-fabric-create-your-first-linux-application-with-csharp.md)
 ## [Bereitstellen von Apps in einem lokalen Cluster](service-fabric-get-started-with-a-local-cluster.md)
-## [Erstellen eines eigenständigen Clusters](service-fabric-get-started-standalone-cluster.md)
+## [Erstellen Ihres ersten Clusters in Azure](service-fabric-get-started-azure-cluster.md)
+## [Erstellen Ihres ersten eigenständigen Clusters](service-fabric-get-started-standalone-cluster.md)
 
 # Anleitung
 ## Erstellen einer Anwendung
@@ -124,7 +125,6 @@
 #### [Zugriffssteuerung](service-fabric-cluster-security-roles.md)
 #### [Konfigurieren eines Clusters](service-fabric-cluster-fabric-settings.md)
 #### [Hinzufügen oder Ausführen eines Rollovers für Clusterzertifikate](service-fabric-cluster-security-update-certs-azure.md) 
-#### [Kostenloses Testen eines Partyclusters](http://aka.ms/tryservicefabric)
 
 ### Eigenständige Cluster
 #### [Planen und Vorbereiten der Bereitstellung](service-fabric-cluster-standalone-deployment-preparation.md)

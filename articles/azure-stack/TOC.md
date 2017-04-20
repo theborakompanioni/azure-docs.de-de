@@ -14,8 +14,7 @@
 ### [Herstellen einer Verbindung mit Azure Stack POC](azure-stack-connect-azure-stack.md)
 ### [Hinzufügen eines Standardimages](azure-stack-add-default-image.md)
 ### [Bereitstellen von virtuellen Computern](azure-stack-provision-vm.md)
-### [Erstellen eines Speicherkontos](azure-stack-provision-storage-account.md)
-### [Hinzufügen von Azure Stack-Mandanten](azure-stack-add-new-user-aad.md)
+### [Erstellen Sie ein Speicherkonto](azure-stack-provision-storage-account.md)
 ### [Erneutes Bereitstellen von Azure Stack POC](azure-stack-redeploy.md)
 
 # Verwalten
@@ -31,15 +30,17 @@
 ## Anleitung
 ### [Verwalten von Updates](azure-stack-updates.md)
 ### [Überwachung von Zustand und Warnungen](azure-stack-monitor-health.md)
-### [Verwalten von Netzwerkressourcen](azure-stack-viewing-public-ip-address-consumption-in-tp2.md)
+### [Verwalten von Netzwerkressourcen](azure-stack-viewing-public-ip-address-consumption.md)
 ### [Verwalten von Speicherressourcen](azure-stack-manage-storage-accounts.md)
 ### [Verwalten von virtuellen Computern mit Windows Azure Pack](azure-stack-manage-windows-azure-pack.md)
 
 # Sicherheit und Compliance
 ## Anleitung
 ### [Verwalten von RBAC](azure-stack-manage-permissions.md)
+### [Hinzufügen von Benutzern für Azure AD](azure-stack-add-new-user-aad.md)
 ### [Hinzufügen von Benutzern für AD FS](azure-stack-add-users-adfs.md)
 ### [Erstellen von Dienstprinzipalen](Azure-stack-create-service-principals.md)
+### [Aktivieren der Mehrinstanzenfähigkeit](azure-stack-enable-multitenancy.md)
 
 # Anbieten von Diensten
 ## Erste Schritte

@@ -1,7 +1,7 @@
 # Übersicht
 ## [Übersicht](active-directory-b2c-overview.md)
 ## [Anwendungsarten](active-directory-b2c-apps.md)
-## [Gegenüberstellung von B2C-Produktionsmandanten und -Vorschaumandanten](active-directory-b2c-reference-tenant-type.md)
+## [Regionale Verfügbarkeit und Datenresidenz](active-directory-b2c-reference-tenant-type.md)
 
 # Erste Schritte
 ## [Erstellen eines Azure AD B2C-Verzeichnisses](active-directory-b2c-get-started.md)
