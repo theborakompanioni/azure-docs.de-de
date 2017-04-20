@@ -7,6 +7,8 @@ author: shizn
 manager: timtl
 tags: 
 keywords: Arduino-Entwicklungstools, IoT-Entwicklung, IoT-Software, Internet der Dinge Software, Git unter Windows installieren, Node.js installieren Windows
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-intel-edison-kit-c-get-started
 ms.assetid: 7d29a358-544d-4657-a504-5ed9b79c2925
 ms.service: iot-hub
 ms.devlang: c

@@ -7,6 +7,8 @@ author: shizn
 manager: timtl
 tags: 
 keywords: "Raspbian installieren, Raspbian-Download, Installation von Raspbian, Raspbian-Setup, Raspberry Pi-Installation, Betriebssystem Raspberry Pi installieren, Raspberry Pi SD-Karteninstallation, Raspberry Pi verbinden, Verbindung für Raspberry Pi herstellen, Raspberry Pi-Verbindung"
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-raspberry-pi-kit-c-get-started
 ms.assetid: 8ee9b23c-93f7-43ff-8ea1-e7761eb87a6f
 ms.service: iot-hub
 ms.devlang: c
