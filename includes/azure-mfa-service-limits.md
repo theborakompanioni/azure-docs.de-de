@@ -9,8 +9,3 @@
 | Benutzerkonto nach **X** fehlerhaften MFA-Authentifizierungsversuchen sperren |Nicht festgelegt |99 |
 | Kontosperrungszähler nach **X** Minuten zurücksetzen |Nicht festgelegt |9999 |
 | Kontosperrung nach **X** Minuten aufheben |Nicht festgelegt |9999 |
-
-
-<!--HONumber=Feb17_HO1-->
-
-
