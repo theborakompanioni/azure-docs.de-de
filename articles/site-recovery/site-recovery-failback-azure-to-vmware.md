@@ -198,7 +198,7 @@ Nachdem Sie die nach der Installation nötigen Schritte ausgeführt und die Pake
   * Das Volume darf sich nicht im Sperrmodus befinden.
   * Bei dem Volume darf es sich nicht um ein Cachevolume handeln. (Die Masterzielserver-Installation darf auf diesem Volume nicht vorhanden sein. Das Volume für die benutzerdefinierte Prozessserver- und Masterzielserver-Installation kann für das Aufbewahrungsvolume nicht ausgewählt werden. Das hier installierte Prozessserver- und Masterzielserver-Volume ist ein Cachevolume des Masterzielservers.)
   * Der Dateisystemtyp für das Volume darf nicht FAT oder FAT32 lauten.
-  * Die Volumekapazität muss größer als&0; sein.
+  * Die Volumekapazität muss größer als 0 sein.
   * Das Standardaufbewahrungsvolume für Windows ist das R-Volume.
   * Das Standardaufbewahrungsvolume für Linux ist „/mnt/retention“.
 
@@ -239,7 +239,7 @@ Nachdem das erneute Schützen abgeschlossen ist, wird der virtuelle Computer zur
 * Wenn Sie die kostenlose Edition ESXi 5.5 oder die kostenlose Edition vSphere 6 Hypervisor verwenden, wäre das Failover erfolgreich, das Failback jedoch nicht. Sie müssen auf die Evaluierungslizenz eines der Programme aktualisieren, um das Failback zu aktivieren.
 * Wenn der Konfigurationsserver auf dem Prozessserver nicht erreichbar ist, können Sie Konnektivität mit dem Konfigurationsserver mit dem Telnet-Befehl an den Konfigurationsservercomputer an Port 443 überprüfen. Sie können auch versuchen, den Konfigurationsserver auf dem Prozessservercomputer zu pingen. Ein Prozessserver sollte auch einen Takt aufweisen, wenn er mit dem Konfigurationsserver verbunden ist.
 * Wenn Sie versuchen, ein Failback auf einen alternativen vCenter-Computer durchzuführen, stellen Sie sicher, dass sowohl Ihr neuer vCenter-Computer als auch der Masterzielserver erkannt werden. Als typisches Symptom sind die Datenspeicher im Dialogfeld **Erneut schützen** nicht zugänglich oder sichtbar.
-* Für einen als physischen lokalen Computer geschützten WS&2008; R2 SP1-Computer kann kein Failback von Azure auf lokale Standorte ausgeführt werden.
+* Für einen als physischen lokalen Computer geschützten WS 2008 R2 SP1-Computer kann kein Failback von Azure auf lokale Standorte ausgeführt werden.
 
 ## <a name="fail-back-with-expressroute"></a>Ausführen eines Failbacks mit ExpressRoute
 Ein Failback kann über eine VPN- oder eine ExpressRoute-Verbindung ausgeführt werden. Wenn Sie eine ExpressRoute-Verbindung verwenden möchten, beachten Sie Folgendes:

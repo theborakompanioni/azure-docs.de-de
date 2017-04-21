@@ -47,7 +47,7 @@ Die folgenden Berichte sind in dieser Ansicht zusammengefasst:
 -     Kennwortzurücksetzungsaktivität
 -     Aktivität "Registrierung für Zurücksetzen des Kennworts"
 -     Self-Service-Gruppenaktivität
--     Namensänderungen für Office&365;-Gruppen
+-     Namensänderungen für Office 365-Gruppen
 -     Kontobereitstellungsaktivität
 -     Status des Kennwortrollovers
 -     Kontobereitstellungsfehler
@@ -145,7 +145,7 @@ Rufen Sie zum Anzeigen aller Überwachungsdaten auf dem Blatt **Azure Active Dir
 | Kontobereitstellungsaktivität        | Wählen Sie als **Aktivitätskategorie** die Option **Benutzerkontenbereitstellung** aus.         |
 | Status des Kennwortrollovers             | Wählen Sie als **Aktivitätskategorie** die Option **Automatischer Rollover von App-Kennwörtern** aus.      |
 | Kontobereitstellungsfehler          | Wählen Sie als **Aktivitätskategorie** die Option **Benutzerkontenbereitstellung** aus.        |
-| Namensänderungen für Office&365;-Gruppen         | Wählen Sie als **Aktivitätskategorie** die Option **Self-Service-Kennwortverwaltung**. Wählen Sie **Aktivitätsressourcentyp** die Option **Gruppe**. Wählen Sie als **Aktivitätsquelle** die Option **Office&365;-Gruppen**.|
+| Namensänderungen für Office 365-Gruppen         | Wählen Sie als **Aktivitätskategorie** die Option **Self-Service-Kennwortverwaltung**. Wählen Sie **Aktivitätsressourcentyp** die Option **Gruppe**. Wählen Sie als **Aktivitätsquelle** die Option **Office 365-Gruppen**.|
 
 Wählen Sie zum Anzeigen des Berichts zur **Anwendungsnutzung** auf dem Blatt **Azure Active Directory** unter **VERWALTEN** die **Unternehmensanwendungen**, und wählen Sie dann **Anmeldevorgänge**.
 
