@@ -410,7 +410,7 @@ Zum Importieren von Daten in eine einzelne Sammlung geben Sie den Namen der Samm
 2. Sie können eine abgekürzte Syntax verwenden: Durch Eingabe von "Sammlung[3]" wird derselbe Satz von Sammlungen ausgegeben wie in Schritt 1.
 3. Mehrere Ersetzungen können bereitgestellt werden. "Sammlung[0-1] [0-9]" generiert z. B. 20 Sammlungsnamen mit führenden Nullen (Sammlung01, ...02, ...03).
 
-Nachdem Sie den bzw. die Sammlungsnamen angegeben haben, wählen Sie den gewünschten Durchsatz für die Sammlung(en) aus (400 RUs bis 250.000 RUs). Wählen Sie einen höheren Durchsatz, um die beste Importleistung zu erreichen. Weitere Informationen zu Leistungsebenen finden Sie unter [Leistungsebenen in DocumentDB](documentdb-performance-levels.md). Importvorgänge in Sammlungen mit einem Durchsatz von mehr als&10;.000 RUs erfordern einen Partitionsschlüssel. Wenn Sie mehr als 250.000 RUs auswählen, müssen Sie im Portal eine Anfrage stellen, um Ihr Konto zu erhöhen.
+Nachdem Sie den bzw. die Sammlungsnamen angegeben haben, wählen Sie den gewünschten Durchsatz für die Sammlung(en) aus (400 RUs bis 250.000 RUs). Wählen Sie einen höheren Durchsatz, um die beste Importleistung zu erreichen. Weitere Informationen zu Leistungsebenen finden Sie unter [Leistungsebenen in DocumentDB](documentdb-performance-levels.md). Importvorgänge in Sammlungen mit einem Durchsatz von mehr als 10.000 RUs erfordern einen Partitionsschlüssel. Wenn Sie mehr als 250.000 RUs auswählen, müssen Sie im Portal eine Anfrage stellen, um Ihr Konto zu erhöhen.
 
 > [!NOTE]
 > Die Durchsatzeinstellung gilt nur für die Sammlungserstellung. Wenn die angegebene Sammlung bereits vorhanden ist, wird der zugehörige Durchsatz nicht geändert.

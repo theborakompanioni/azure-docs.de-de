@@ -58,7 +58,7 @@ Es gibt derzeit andere Probleme mit großen VMSS, z.B. den Mangel an Unterstütz
 
 Die unterstützte Mindestgröße für einen Service Fabric-Cluster, auf dem Produktionsworkloads ausgeführt werden, beträgt fünf Knoten. Für Entwicklungs-/Testszenarios unterstützen wir Cluster mit drei Knoten.
 
-Diese Mindestwerte gelten, weil auf dem Service Fabric-Cluster ein Satz zustandsbehafteter Systemdienste ausgeführt werden, darunter der Naming Service und der Failover-Manager. Diese Dienste verfolgen, welche Dienste auf dem Cluster bereitgestellt wurden und wo sie zurzeit gehostet werden, und sind von starker Konsistenz abhängig. Diese starke Konsistenz ist wiederum von der Möglichkeit abhängig, ein *Quorum* für jedes Update am Zustand dieser Dienste abzurufen, wobei ein Quorum die strikte Mehrheit der Replikate (N/2 +&1;) für einen bestimmten Dienst darstellt.
+Diese Mindestwerte gelten, weil auf dem Service Fabric-Cluster ein Satz zustandsbehafteter Systemdienste ausgeführt werden, darunter der Naming Service und der Failover-Manager. Diese Dienste verfolgen, welche Dienste auf dem Cluster bereitgestellt wurden und wo sie zurzeit gehostet werden, und sind von starker Konsistenz abhängig. Diese starke Konsistenz ist wiederum von der Möglichkeit abhängig, ein *Quorum* für jedes Update am Zustand dieser Dienste abzurufen, wobei ein Quorum die strikte Mehrheit der Replikate (N/2 + 1) für einen bestimmten Dienst darstellt.
 
 Untersuchen wir vor diesem Hintergrund einige mögliche Clusterkonfigurationen:
 

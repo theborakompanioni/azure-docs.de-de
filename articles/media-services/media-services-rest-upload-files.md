@@ -249,7 +249,7 @@ Folgende Überlegungen sollten berücksichtigt werden:
 * Wenn Sie Ihre Dateien sofort hochladen müssen, sollten Sie Ihren StartTime-Wert auf fünf Minuten vor der aktuellen Uhrzeit festlegen. Dies ist erforderlich, weil ggf. eine Uhrzeitabweichung zwischen dem Clientcomputer und Media Services vorliegen kann. Zudem muss der StartTime-Wert das folgende DateTime-Format haben: JJJJ-MM-TTTHH:mm:ssZ (z. B. "2014-05-23T17:53:50Z").    
 * Gegebenenfalls tritt eine Verzögerung von 30 bis 40 Sekunden zwischen dem Erstellen eines Locators und seiner Verfügbarkeit auf. Dies gilt für die SAS-URL sowie für Ursprungslocators.
 
-Das folgende Beispiel zeigt, wie Sie einen SAS URL-Locator gemäß der Type-Eigenschaft im Anforderungstext (1 für einen SAS-Locator und&2; für einen On-Demand-Ursprungslocator) erstellen können. Die zurückgegebene **Path** -Eigenschaft enthält die URL, die Sie für den Upload der Datei verwenden müssen.
+Das folgende Beispiel zeigt, wie Sie einen SAS URL-Locator gemäß der Type-Eigenschaft im Anforderungstext (1 für einen SAS-Locator und 2 für einen On-Demand-Ursprungslocator) erstellen können. Die zurückgegebene **Path** -Eigenschaft enthält die URL, die Sie für den Upload der Datei verwenden müssen.
 
 **HTTP-Anforderung**
 

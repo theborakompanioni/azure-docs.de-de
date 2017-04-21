@@ -205,7 +205,7 @@ Um die Anzeige Ihrer Ausgaben im Portal zu aktivieren, müssen die folgenden Vor
 2. Halten Sie sich an die vordefinierten Namenskonventionen für Storage-Container und Dateien, wenn Sie Ausgaben dauerhaft speichern. Eine Definition dieser Konventionen finden Sie in der [Infodatei][github_file_conventions_readme] zur Dateikonventionenbibliothek. Bei Verwendung der [Azure Batch-Dateikonventionenbibliothek][nuget_package] zum dauerhaften Speichern der Ausgabe wird diese Anforderung erfüllt.
 
 ### <a name="view-outputs-in-the-portal"></a>Anzeigen von Ausgaben im Portal
-Wenn Sie Taskausgaben und Protokolle im Azure-Portal anzeigen möchten, navigieren Sie zum Task, dessen Ausgabe angezeigt werden soll, und klicken Sie auf **Gespeicherte Ausgabedateien** oder auf **Gespeicherte Protokolle**. Diese Abbildung zeigt die **gespeicherten Ausgabedateien** für den Task mit der ID&007;:
+Wenn Sie Taskausgaben und Protokolle im Azure-Portal anzeigen möchten, navigieren Sie zum Task, dessen Ausgabe angezeigt werden soll, und klicken Sie auf **Gespeicherte Ausgabedateien** oder auf **Gespeicherte Protokolle**. Diese Abbildung zeigt die **gespeicherten Ausgabedateien** für den Task mit der ID 007:
 
 ![Taskausgabeblatt im Azure-Portal][2]
 

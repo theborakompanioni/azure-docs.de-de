@@ -410,7 +410,7 @@ Folgende Überlegungen sollten berücksichtigt werden:
 
 Weitere Informationen zu SAS-Locators finden Sie in [diesem](http://southworks.com/blog/2015/05/27/reusing-azure-media-services-locators-to-avoid-facing-the-5-shared-access-policy-limitation/) Blog.
 
-Das folgende Beispiel zeigt, wie Sie einen SAS URL-Locator gemäß der Type-Eigenschaft im Anforderungstext (1 für einen SAS-Locator und&2; für einen On-Demand-Ursprungslocator) erstellen können. Die zurückgegebene **Path** -Eigenschaft enthält die URL, die Sie für den Upload der Datei verwenden müssen.
+Das folgende Beispiel zeigt, wie Sie einen SAS URL-Locator gemäß der Type-Eigenschaft im Anforderungstext (1 für einen SAS-Locator und 2 für einen On-Demand-Ursprungslocator) erstellen können. Die zurückgegebene **Path** -Eigenschaft enthält die URL, die Sie für den Upload der Datei verwenden müssen.
 
 **HTTP-Anforderung**
 
