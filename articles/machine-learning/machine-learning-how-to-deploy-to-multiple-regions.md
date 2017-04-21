@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2017
+ms.date: 04/19/2017
 ms.author: v-donglo
 translationtype: Human Translation
 ms.sourcegitcommit: 0b7c4c95328eb3ca573694b8eca0b0abda646fc5
 ms.openlocfilehash: ba27d4adf73b4d5d3747567b54aeb5f0d06f8243
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -48,10 +49,5 @@ Die Preise sind regionsspezifisch. Daher müssen Sie einen Abrechnungsplan für 
 9. Wählen Sie in der Dropdownliste **Storage account** ein Speicherkonto aus, in dem der Webdienst gespeichert werden soll.
 10. Wählen Sie in der Dropdownliste **Price Plan** einen Plan für die Region aus, die Sie in Schritt 8 gewählt haben.
 11. Klicken Sie auf **Copy**.
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
