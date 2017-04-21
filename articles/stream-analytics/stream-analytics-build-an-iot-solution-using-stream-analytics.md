@@ -129,7 +129,7 @@ Wenn Sie nicht über ein Azure-Konto verfügen, können Sie eine [kostenlose Tes
 > 
 > 
 
-Stellen Sie sicher, dass Sie am Ende dieses Artikels die Schritte der Anleitung zum „Bereinigen Ihres Azure-Kontos“ befolgen, sodass Sie Ihre Azure-Gutschrift in Höhe von&200; US-Dollar bestmöglich nutzen können.
+Stellen Sie sicher, dass Sie am Ende dieses Artikels die Schritte der Anleitung zum „Bereinigen Ihres Azure-Kontos“ befolgen, sodass Sie Ihre Azure-Gutschrift in Höhe von 200 US-Dollar bestmöglich nutzen können.
 
 ## <a name="provision-azure-resources-required-for-the-tutorial"></a>Bereitstellen von Azure-Ressourcen, die für das Tutorial nötig sind
 Für dieses Tutorial sind zwei Event Hubs zum Empfangen von Eingabe- und Ausgabedatenströmen (*entry* und *exit*) erforderlich. Azure SQL-Datenbank gibt die Ergebnisse der Stream Analytics-Aufträge aus. In Azure Storage werden Referenzdaten zu Fahrzeugregistrierungen gespeichert.
@@ -255,7 +255,7 @@ Falls Sie an Details zur Implementierung interessiert sind, finden Sie den Quell
 6. Die Quelle lautet **Event Hub**.
 7. **Service Bus-Namespace** sollte der erste TollData-Eintrag in der Dropdownliste sein.
 8. **Event Hub-Name** sollte als **Eintrag** festgelegt werden.
-9. **Event Hub-Richtlinienname* ist **RootManageSharedAccessKey** (Standardwert).
+9. **Event Hub-Richtlinienname* ist**RootManageSharedAccessKey** (Standardwert).
 10. Wählen Sie **JSON** als **Ereignisserialisierungsformat** und **UTF8** als **Codierung** aus.
    
     Ihre Einstellungen sehen nun folgendermaßen aus:
