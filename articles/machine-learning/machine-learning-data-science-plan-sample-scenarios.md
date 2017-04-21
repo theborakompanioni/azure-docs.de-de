@@ -96,7 +96,7 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
    * Erstellen Sie eine Datenbank und Zieltabellen.
    * Verwenden Sie eine der Methoden für den Massenimport, um Daten aus lokalen VM-Dateien zu laden.
    
-   Option\#&2;: Verwenden von IPython Notebook – für mittlere und größere Datasets nicht empfehlenswert
+   Option\# 2: Verwenden von IPython Notebook – für mittlere und größere Datasets nicht empfehlenswert
    
    <!-- -->    
    * Verwenden Sie die ODBC-Verbindungszeichenfolge, um von der VM auf SQL Server zuzugreifen.
