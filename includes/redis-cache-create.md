@@ -34,8 +34,3 @@ Klicken Sie nach der Konfiguration der Optionen für den neuen Cache auf **Erste
 
 ![Cache erstellt](media/redis-cache-create/redis-cache-cache-created.png)
 
-
-
-<!--HONumber=Feb17_HO2-->
-
-

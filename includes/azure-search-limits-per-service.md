@@ -16,8 +16,3 @@ Der Speicher ist durch den Festplattenspeicher oder einen festen Grenzwert für 
 <sup>1</sup> Für Free- und Vorschau-SKUs gilt keine Vereinbarung zum Servicelevel (Service Level Agreement, SLA). SLAs werden angewendet, sobald eine SKU allgemein verfügbar ist.
 
 <sup>2</sup> Für S3 HD gilt ein festes Limit von drei Partitionen. (Das Limit ist also geringer als bei S3.) Die Untergrenze für Partitionen wurde festgelegt, da die Indexanzahl für S3 HD wesentlich höher ist. Da sowohl für Computeressourcen (Speicher und Verarbeitung) als auch für Inhalte (Indizes und Dokumente) Dienstlimits gelten, wird das Inhaltslimit zuerst erreicht.
-
-
-<!--HONumber=Feb17_HO2-->
-
-
