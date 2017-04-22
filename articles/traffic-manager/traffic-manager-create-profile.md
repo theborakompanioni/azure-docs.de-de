@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/21/2017
+ms.date: 04/21/2017
 ms.author: kumud
 translationtype: Human Translation
 ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
@@ -39,7 +39,7 @@ In diesem Artikel werden diesem neu erstellten Traffic Manager-Profil zwei zuvor
     6. Klicken Sie auf **Erstellen**.
     7. Wenn die globale Bereitstellung Ihres Traffic Manager-Profils abgeschlossen ist, wird sie in der betreffenden Ressourcengruppe als eine der Ressourcen aufgelistet.
 
-![Erstellen eines Traffic Manager-Profils](./media/traffic-manager-create-profile/Create-traffic-manager-profile.png)
+    ![Erstellen eines Traffic Manager-Profils](./media/traffic-manager-create-profile/Create-traffic-manager-profile.png)
 
 ## <a name="add-traffic-manager-endpoints"></a>Hinzufügen von Traffic Manager-Endpunkten
 
@@ -57,7 +57,7 @@ In diesem Artikel werden diesem neu erstellten Traffic Manager-Profil zwei zuvor
 5.    Wiederholen Sie die Schritte 3 und 4 für den nächsten Azure-Web-Apps-Endpunkt. Achten Sie darauf, ihn mit einem auf **2** festgelegten Wert für **Priorität** hinzuzufügen.
 6.    Wenn Sie das Hinzufügen beider Endpunkte abgeschlossen haben, werden diese auf dem Blatt **Traffic Manager-Profil** zusammen mit ihrem Überwachungsstatus als **Online** angezeigt.
 
-![Hinzufügen eines Traffic Manager-Endpunkts](./media/traffic-manager-create-profile/add-traffic-manager-endpoint.png)
+    ![Hinzufügen eines Traffic Manager-Endpunkts](./media/traffic-manager-create-profile/add-traffic-manager-endpoint.png)
 
 ## <a name="use-the-traffic-manager-profile"></a>Verwenden des Traffic Manager-Profils
 1.    Suchen Sie in der Suchleiste des Portals nach dem Namen des **Traffic Manager-Profils**, das Sie im vorhergehenden Abschnitt erstellt haben. Klicken Sie in den angezeigten Ergebnissen auf das Traffic Manager-Profil.
