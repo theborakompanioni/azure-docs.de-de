@@ -229,7 +229,7 @@ Das müssen Sie tun:
 
 
 > [!NOTE]
-> Für das folgende Skript wird davon ausgegangen, dass die SQL-Verfügbarkeitsgruppe auf einem klassischen virtuellen Azure-Computer wird und der Name des wiederhergestellten virtuellen Computers in Schritt&2; „SQLAzureVM-Test“ lautet. Ändern Sie das Skript basierend auf dem Namen, den Sie für den wiederhergestellten virtuellen Computer verwenden.
+> Für das folgende Skript wird davon ausgegangen, dass die SQL-Verfügbarkeitsgruppe auf einem klassischen virtuellen Azure-Computer wird und der Name des wiederhergestellten virtuellen Computers in Schritt 2 „SQLAzureVM-Test“ lautet. Ändern Sie das Skript basierend auf dem Namen, den Sie für den wiederhergestellten virtuellen Computer verwenden.
 >
 >
 

@@ -1,5 +1,5 @@
 ---
-title: "Schemaaktualisierungen für Azure Logic Apps –&1;. August&2015; (Vorschau) | Microsoft-Dokumentation"
+title: "Schemaaktualisierungen für Azure Logic Apps – 1. August 2015 (Vorschau) | Microsoft-Dokumentation"
 description: "Erstellen von JSON-Definitionen für Azure Logic Apps mit der Schemaversion „2015-08-01-preview“."
 author: stepsic-microsoft-com
 manager: anneta
