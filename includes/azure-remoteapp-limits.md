@@ -5,10 +5,10 @@
 | Veröffentlichte Apps pro Sammlung |100 |
 | Kostenpflichtige Sammlungen |3 |
 | Kostenpflichtige Vorlagenimages |25 |
-| Benutzer – Basic-Tarif |Maximal&800; |
-| Benutzer – Standard-Tarif |Maximal&500; |
-| Benutzer – Premium-Tarif |Maximal&100; |
-| Benutzer – Premium Plus-Tarif |Maximal&50; |
+| Benutzer – Basic-Tarif |Maximal 800 |
+| Benutzer – Standard-Tarif |Maximal 500 |
+| Benutzer – Premium-Tarif |Maximal 100 |
+| Benutzer – Premium Plus-Tarif |Maximal 50 |
 | Speicherung von Benutzerdaten pro Benutzer pro Sammlung |50 GB |
 | Leerlauftimeout |4 Stunden |
 | Timeout nach Trennung |4 Stunden |
