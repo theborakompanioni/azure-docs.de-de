@@ -35,7 +35,7 @@ Mit Taskabhängigkeiten in Batch können Sie Tasks erstellen, deren Ausführung 
 
 Standardmäßig werden abhängige Tasks erst für die Ausführung eingeplant, nachdem der übergeordnete Task erfolgreich abgeschlossen wurde. Sie können eine Abhängigkeitsaktion bestimmen, um das Standardverhalten zu überschreiben und Tasks auszuführen, wenn im übergeordneten Task ein Fehler auftritt. Weitere Informationen finden Sie im Abschnitt [Abhängigkeitsaktionen](#dependency-actions).  
 
-Sie können Tasks erstellen, die in einer&1;:1- oder&1;:n-Beziehung von anderen Tasks abhängen. Sie können auch eine Bereichsabhängigkeit erstellen, bei der ein Task vom Abschluss einer Gruppe von Tasks innerhalb eines bestimmten Task-ID-Bereichs abhängig ist. Sie können diese drei grundlegenden Szenarien auch kombinieren, um m:n-Beziehungen zu erstellen.
+Sie können Tasks erstellen, die in einer 1:1- oder 1:n-Beziehung von anderen Tasks abhängen. Sie können auch eine Bereichsabhängigkeit erstellen, bei der ein Task vom Abschluss einer Gruppe von Tasks innerhalb eines bestimmten Task-ID-Bereichs abhängig ist. Sie können diese drei grundlegenden Szenarien auch kombinieren, um m:n-Beziehungen zu erstellen.
 
 ## <a name="task-dependencies-with-batch-net"></a>Taskabhängigkeiten bei Batch .NET
 In diesem Artikel wird beschrieben, wie Sie Taskabhängigkeiten mit der [.NET-Bibliothek für Batch][net_msdn] konfigurieren. Zuerst zeigen wir Ihnen, wie Sie die [Taskabhängigkeit in Ihren Aufträgen aktivieren](#enable-task-dependencies), danach erläutern wir, wie Sie [einen Task mit Abhängigkeiten konfigurieren](#create-dependent-tasks). Es wird auch beschrieben, wie Sie eine Abhängigkeitsaktion bestimmen, um abhängige Tasks auszuführen, wenn im übergeordneten Task ein Fehler auftritt. Zuletzt geht es um die von Batch unterstützten [Abhängigkeitsszenarien](#dependency-scenarios) .
@@ -73,12 +73,12 @@ Dieser Codeausschnitt erstellt einen abhängigen Task mit der Task-ID „Flowers
 > 
 
 ## <a name="dependency-scenarios"></a>Abhängigkeitsszenarien
-Es gibt drei grundlegende Szenarien für Abhängigkeiten von Tasks, die Sie in Azure Batch verwenden können:&1;:1,&1;:n und Task-ID-Bereich. Diese können Sie kombinieren, um ein viertes Szenario zu schaffen, und zwar „m:n“.
+Es gibt drei grundlegende Szenarien für Abhängigkeiten von Tasks, die Sie in Azure Batch verwenden können: 1:1, 1:n und Task-ID-Bereich. Diese können Sie kombinieren, um ein viertes Szenario zu schaffen, und zwar „m:n“.
 
 | Szenario&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Beispiel |  |
 |:---:| --- | --- |
-|  [1:1](#one-to-one) |*TaskB* hängt von *TaskA* ab. <p/> *TaskB* wird erst ausgeführt, nachdem *TaskA* erfolgreich abgeschlossen wurde |![Diagramm:&1;:1-Abhängigkeit von Tasks][1] |
-|  [1:n](#one-to-many) |*TaskC* hängt sowohl von *TaskA* als auch von *TaskB* ab. <p/> *TaskC* wird erst ausgeführt, nachdem *TaskA* und *TaskB* erfolgreich abgeschlossen wurden. |![Diagramm:&1;:n-Abhängigkeit von Tasks][2] |
+|  [1:1](#one-to-one) |*TaskB* hängt von *TaskA* ab. <p/> *TaskB* wird erst ausgeführt, nachdem *TaskA* erfolgreich abgeschlossen wurde |![Diagramm: 1:1-Abhängigkeit von Tasks][1] |
+|  [1:n](#one-to-many) |*TaskC* hängt sowohl von *TaskA* als auch von *TaskB* ab. <p/> *TaskC* wird erst ausgeführt, nachdem *TaskA* und *TaskB* erfolgreich abgeschlossen wurden. |![Diagramm: 1:n-Abhängigkeit von Tasks][2] |
 |  [Task-ID-Bereich](#task-id-range) |*TaskD* hängt von einem Taskbereich ab. <p/> *TaskD* wird erst ausgeführt, nachdem die Tasks mit den IDs *1* bis *10* erfolgreich abgeschlossen wurden. |![Diagramm: Abhängigkeit vom Task-ID-Bereich][3] |
 
 > [!TIP]
@@ -87,7 +87,7 @@ Es gibt drei grundlegende Szenarien für Abhängigkeiten von Tasks, die Sie in A
 > In den Beispielen in diesem Abschnitt wird ein abhängiger Task erst ausgeführt, nachdem die übergeordneten Tasks erfolgreich abgeschlossen wurden. Dieses Verhalten ist das Standardverhalten für einen abhängigen Task. Sie können einen abhängigen Task ausführen, wenn im übergeordneten Task ein Fehler auftritt, indem Sie eine Abhängigkeitsaktion angeben, um das Standardverhalten zu überschreiben. Weitere Informationen finden Sie im Abschnitt [Abhängigkeitsaktionen](#dependency-actions).
 
 ### <a name="one-to-one"></a>1:1
-In einer&1; :&1;-Beziehung hängt ein Task vom erfolgreichen Abschluss eines übergeordneten Tasks ab. Um die Abhängigkeit zu erstellen, geben Sie eine einzelne Task-ID für die statische [TaskDependencies][net_taskdependencies].[ OnId][net_onid]-Methode an, wenn Sie die [DependsOn][net_dependson]-Eigenschaft von [CloudTask][net_cloudtask] ausfüllen.
+In einer 1 : 1-Beziehung hängt ein Task vom erfolgreichen Abschluss eines übergeordneten Tasks ab. Um die Abhängigkeit zu erstellen, geben Sie eine einzelne Task-ID für die statische [TaskDependencies][net_taskdependencies].[ OnId][net_onid]-Methode an, wenn Sie die [DependsOn][net_dependson]-Eigenschaft von [CloudTask][net_cloudtask] ausfüllen.
 
 ```csharp
 // Task 'taskA' doesn't depend on any other tasks
@@ -101,7 +101,7 @@ new CloudTask("taskB", "cmd.exe /c echo taskB")
 ```
 
 ### <a name="one-to-many"></a>1:n
-In einer&1; : n-Beziehung hängt ein Task vom Abschluss mehrerer übergeordneter Tasks ab. Um die Abhängigkeit zu erstellen, geben Sie mehrere Task-IDs für die statische [TaskDependencies][net_taskdependencies].[ OnIds][net_onids]-Methode an, wenn Sie die [DependsOn][net_dependson]-Eigenschaft von [CloudTask][net_cloudtask] ausfüllen.
+In einer 1 : n-Beziehung hängt ein Task vom Abschluss mehrerer übergeordneter Tasks ab. Um die Abhängigkeit zu erstellen, geben Sie mehrere Task-IDs für die statische [TaskDependencies][net_taskdependencies].[ OnIds][net_onids]-Methode an, wenn Sie die [DependsOn][net_dependson]-Eigenschaft von [CloudTask][net_cloudtask] ausfüllen.
 
 ```csharp
 // 'Rain' and 'Sun' don't depend on any other tasks
@@ -149,7 +149,7 @@ new CloudTask("4", "cmd.exe /c echo 4")
 
 Standardmäßig werden ein abhängiger Task oder eine Gruppe von Tasks erst ausgeführt, nachdem ein übergeordneter Task erfolgreich abgeschlossen wurde. In einigen Szenarios möchten Sie abhängige Tasks eventuell auch ausführen, wenn im übergeordneten Task ein Fehler auftritt. Sie können das Standardverhalten überschreiben, indem Sie eine Abhängigkeitsaktion angeben. Eine Abhängigkeitsaktion gibt an, ob ein abhängiger Task basierend auf Erfolg oder Misserfolg des übergeordneten Tasks ausgeführt werden darf. 
 
-Nehmen wir beispielsweise an, dass ein abhängiger Task auf Daten vom Abschluss des Upstreamtasks wartet. Wenn der Upstreamtask fehlschlägt, kann der abhängige Task möglicherweise mit älteren Daten ausgeführt werden. In diesem Fall kann eine Abhängigkeitsaktion angeben, dass der abhängige Task berechtigt ist, trotz des Fehlers im übergeordneten Task ausgeführt zu werden..
+Nehmen wir beispielsweise an, dass ein abhängiger Task auf Daten vom Abschluss des Upstreamtasks wartet. Wenn der Upstreamtask fehlschlägt, kann der abhängige Task möglicherweise mit älteren Daten ausgeführt werden. In diesem Fall kann eine Abhängigkeitsaktion angeben, dass der abhängige Task berechtigt ist, trotz des Fehlers im übergeordneten Task ausgeführt zu werden.
 
 Eine Abhängigkeitsaktion basiert auf einer Beendigungsbedingung für den übergeordneten Task. Sie können eine Abhängigkeitsaktion für jede der folgenden Beendigungsbedingungen angeben (Informationen zu .NET finden Sie unter der [ExitConditions][net_exitconditions]-Klasse):
 
@@ -165,7 +165,7 @@ Legen Sie zum Angeben einer Abhängigkeitsaktion in .NET die [ExitOptions][net_e
 
 Die Standardeinstellung für die **DependencyAction**-Eigenschaft ist **Satisfy** (Erfüllen) für den Exitcode 0 und **Block** (Blockieren) für alle anderen Beendigungsbedingungen.
 
-Der folgende Codeausschnitt legt die **DependencyAction**-Eigenschaft für einen übergeordneten Task fest. Wenn der übergeordnete Task mit einem Planungsfehler oder den angegebenen Fehlercodes beendet wird, wird der abhängige Task blockiert. Wenn der übergeordnete Task mit einem anderen Fehler ungleich&0; beendet wird, darf der abhängige Task ausgeführt werden.
+Der folgende Codeausschnitt legt die **DependencyAction**-Eigenschaft für einen übergeordneten Task fest. Wenn der übergeordnete Task mit einem Planungsfehler oder den angegebenen Fehlercodes beendet wird, wird der abhängige Task blockiert. Wenn der übergeordnete Task mit einem anderen Fehler ungleich 0 beendet wird, darf der abhängige Task ausgeführt werden.
 
 ```csharp
 // Task A is the parent task.
@@ -234,7 +234,7 @@ Der Beitrag [Installing applications and staging data on Batch compute nodes (In
 [net_usestaskdependencies]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.usestaskdependencies.aspx
 [net_taskdependencies]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.taskdependencies.aspx
 
-[1]: ./media/batch-task-dependency/01_one_to_one.png "Diagramm:&1;:1-Abhängigkeit"
-[2]: ./media/batch-task-dependency/02_one_to_many.png "Diagramm:&1;:n-Abhängigkeit"
+[1]: ./media/batch-task-dependency/01_one_to_one.png "Diagramm: 1:1-Abhängigkeit"
+[2]: ./media/batch-task-dependency/02_one_to_many.png "Diagramm: 1:n-Abhängigkeit"
 [3]: ./media/batch-task-dependency/03_task_id_range.png "Diagramm: Abhängigkeit vom Task-ID-Bereich"
 
