@@ -129,7 +129,7 @@ Untersuchen Sie die Daten in SQL Data Warehouse. Weitere Informationen finden Si
 Weitere Informationen zu Data Platform Studio von Redgate finden Sie hier:
 
 * [DPS-Startseite](http://www.dataplatformstudio.com/)
-* [DPS-Demo auf Channel&9;](https://channel9.msdn.com/Blogs/cloud-with-a-silver-lining/Loading-data-into-Azure-SQL-Datawarehouse-with-Redgate-Data-Platform-Studio)
+* [DPS-Demo auf Channel 9](https://channel9.msdn.com/Blogs/cloud-with-a-silver-lining/Loading-data-into-Azure-SQL-Datawarehouse-with-Redgate-Data-Platform-Studio)
 
 Eine Übersicht über weitere Methoden zum Migrieren und Laden von Daten in SQL Data Warehouse finden Sie hier:
 

@@ -5,9 +5,3 @@ Im Azure-Portal können Sie zur gewünschten Verbindung navigieren und den Verbi
 3. Klicken Sie auf den Namen der zu überprüfenden Verbindung, um **Zusammenfassung** zu öffnen. Unter „Zusammenfassung“ können Sie weitere Informationen zu Ihrer Verbindung anzeigen. Der **Status** lautet „Erfolgreich“ und „Verbunden“, wenn die Verbindung erfolgreich hergestellt wurde.
    
     ![Überprüfen der VPN Gateway-Verbindung über das Azure-Portal](./media/vpn-gateway-verify-connection-portal-rm-include/connectionsucceeded.png)
-
-
-
-<!--HONumber=Jan17_HO5-->
-
-
