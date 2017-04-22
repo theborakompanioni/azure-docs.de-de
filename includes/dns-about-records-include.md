@@ -22,7 +22,3 @@ Azure DNS verwaltet alle DNS-Einträge mithilfe von *Ressourceneintragssätzen*.
 Angenommen, dass Sie bereits einen A-Eintrag „www“ in der Zone „contoso.com“ erstellt haben, der auf die IP Adresse „134.170.185.46“ zeigt (der erste Eintrag darüber).  Um den zweiten Eintrag zu erstellen, müssen Sie diesen Eintrag zum bestehenden Ressourceneintragssatz hinzufügen, anstatt einen weiteren Ressourceneintragssatz zu erstellen.
 
 Die Eintragstypen SOA und CNAME sind Ausnahmen. Die DNS-Standards lassen mehrere Datensätze mit demselben Namen für diese Typen nicht zu, daher können diese Ressourceneintragssätze nur einen Eintrag enthalten.
-
-<!--HONumber=Feb17_HO3-->
-
-
