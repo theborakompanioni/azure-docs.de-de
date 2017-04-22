@@ -10,8 +10,3 @@ Für Azure Backup gelten die folgenden Beschränkungen.
 
 * <sup>1</sup>Die Beschränkung von  54.400 GB gilt nicht für IaaS-VM-Sicherungen.
 
-
-
-<!--HONumber=Feb17_HO3-->
-
-
