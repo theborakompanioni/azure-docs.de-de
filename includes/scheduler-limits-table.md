@@ -17,8 +17,3 @@ Die folgende Tabelle informiert über die einzelnen zentralen Kontingente, Einsc
 | **Speicherung abgeschlossener und fehlerhafter Aufträge** |Abgeschlossene und fehlerhafte Aufträge werden 60 Tage lang aufbewahrt. |
 | **Timeout** |Bei HTTP-Aktionen gilt ein statisches (nicht konfigurierbares) Anforderungstimeout von 60 Sekunden. Greifen Sie bei länger dauernden Vorgängen auf asynchrone HTTP-Protokolle zurück, bei denen beispielsweise umgehend der Statuscode 202 zurückgegeben und der Vorgang im Hintergrund fortgesetzt wird. |
 
-
-
-<!--HONumber=Feb17_HO3-->
-
-
