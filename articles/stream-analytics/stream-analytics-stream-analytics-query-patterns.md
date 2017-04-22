@@ -500,7 +500,7 @@ Generieren Sie z. B. alle 5 Sekunden ein Ereignis, das den zuletzt angezeigten
     GROUP BY HOPPINGWINDOW(second, 300, 5)
 
 
-**Erläuterung**: Diese Abfrage generiert alle fünf Sekunden Ereignisse und gibt das letzte zuvor empfangene Ereignis aus. [springenden Fensters](https://msdn.microsoft.com/library/dn835041.aspx "springenden Fensters - Azure Stream Analytics") legt fest, wie weit die Abfrage zurückreicht, um das letzte Ereignis zu suchen (in diesem Beispiel&300; Sekunden).
+**Erläuterung**: Diese Abfrage generiert alle fünf Sekunden Ereignisse und gibt das letzte zuvor empfangene Ereignis aus. [springenden Fensters](https://msdn.microsoft.com/library/dn835041.aspx "springenden Fensters - Azure Stream Analytics") legt fest, wie weit die Abfrage zurückreicht, um das letzte Ereignis zu suchen (in diesem Beispiel 300 Sekunden).
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
 Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
