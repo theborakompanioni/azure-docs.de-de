@@ -105,7 +105,7 @@ ISCPSpout ist die Schnittstelle für transaktionale Spouts.
         void Fail(long seqId, Dictionary<string, Object> parms);        
     }
 
-Ebenso wie beim nicht transaktionalen Gegenstück werden `NextTx()`, `Ack()` und `Fail()` in einer engen Schleife in einem einzigen Thread im C\#-Prozess aufgerufen. Wenn keine Daten ausgegeben werden, sollte `NextTx` für kurze Zeit (z.B.&10; Millisekunden) in den Ruhezustand versetzt werden, um Prozessorleistung zu sparen.
+Ebenso wie beim nicht transaktionalen Gegenstück werden `NextTx()`, `Ack()` und `Fail()` in einer engen Schleife in einem einzigen Thread im C\#-Prozess aufgerufen. Wenn keine Daten ausgegeben werden, sollte `NextTx` für kurze Zeit (z.B. 10 Millisekunden) in den Ruhezustand versetzt werden, um Prozessorleistung zu sparen.
 
 `NextTx()` wird aufgerufen, um eine neue Transaktion zu beginnen. Der Ausgangsparameter `seqId` identifiziert die Transaktion und wird auch in `Ack()` und `Fail()` verwendet. In `NextTx()` kann der Benutzer Daten an die Java-Komponente ausgeben. Die Daten werden in ZooKeeper gespeichert, um erneut abgespielt werden zu können. Da ZooKeeper eine sehr eingeschränkte Kapazität hat, sollten die Benutzer in transaktionalen Spouts nur Metadaten ausgeben, und keine großen Datenmengen.
 
