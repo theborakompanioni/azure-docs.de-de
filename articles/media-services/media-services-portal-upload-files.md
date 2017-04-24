@@ -17,6 +17,7 @@ ms.author: juliako
 translationtype: Human Translation
 ms.sourcegitcommit: ed8ea30b87c8086d41cab879acce82062f08b31c
 ms.openlocfilehash: f27ab42ab3c7c704804b9a5493c8b3acd954decb
+ms.lasthandoff: 02/14/2017
 
 
 ---
@@ -68,10 +69,5 @@ Sie können auch mithilfe von Azure Functions einen Codierungsauftrag auslösen,
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 
