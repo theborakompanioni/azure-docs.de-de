@@ -9,7 +9,7 @@ manager: jhubbard
 editor: 
 ms.assetid: f5c5c596-cd1e-451f-92a7-b70d4916e974
 ms.service: sql-database
-ms.custom: overview
+ms.custom: resources
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -17,15 +17,15 @@ ms.workload: data-management
 wms.date: 03/06/2017
 ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
-ms.openlocfilehash: 827394be9485685388879c1eb4cee4d79ef9fe51
-ms.lasthandoff: 04/07/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 85b7336958c90b477eea8ea185a69bab2bd87a79
+ms.lasthandoff: 04/15/2017
 
 
 ---
 # <a name="sql-database-options-and-performance-understand-whats-available-in-each-service-tier"></a>SQL-Datenbankoptionen und -leistung: Grundlegendes zum Angebot in den einzelnen Tarifen
 
-Azure SQL-Datenbank bietet vier [Dienstebenen](sql-database-technical-overview.md): **Basic**, **Standard**, **Premium** und **Premium RS**. Jede Dienstebene hat mehrere Leistungsstufen für unterschiedliche Workloads. Bei höheren Leistungsstufen stehen zusätzliche Ressourcen zur Verfügung, um einen höheren Durchsatz zu ermöglichen. Sie können die Tarife und Leistungsebenen dynamisch und ohne Ausfallzeiten ändern. Die Dienstebenen „Basic“, „Standard“ und „Premium“ haben alle eine Betriebszeit-SLA von 99,99 Prozent und bieten flexible Optionen für Geschäftskontinuität, Sicherheitsfeatures und stündliche Abrechnung. Die Premium RS-Ebene bietet die gleichen Leistungsstufen, Sicherheits- und Geschäftskontinuitätsfeatures wie die Premium-Ebene, wenn auch mit reduzierter SLA.
+Azure SQL-Datenbank bietet vier [Dienstebenen](sql-database-technical-overview.md): **Basic**, **Standard**, **Premium** und **Premium RS**. Jede Dienstebene hat mehrere Leistungsstufen für unterschiedliche Workloads. Bei höheren Leistungsstufen stehen zusätzliche Ressourcen zur Verfügung, um einen höheren Durchsatz zu ermöglichen. Sie können die Tarife und Leistungsebenen dynamisch und ohne Ausfallzeiten ändern. Die Dienstebenen „Basic“, „Standard“, „Premium“ und „Premium RS“ haben alle eine Betriebszeit-SLA von 99,99% und bieten flexible Optionen für Geschäftskontinuität, Sicherheitsfeatures und stündliche Abrechnung. Die Premium RS-Ebene bietet die gleichen Leistungsstufen, Sicherheits- und Geschäftskontinuitätsfeatures wie die Premium-Ebene, wenn auch mit reduzierter SLA.
 
 > [!IMPORTANT]
 > Premium RS-Datenbanken werden mit einer niedrigeren Anzahl redundanter Kopien als Premium- oder Standard-Datenbanken ausgeführt. Im Falle eines Dienstfehlers müssen Sie daher Ihre Datenbank unter Umständen aus einer Sicherung mit einem Rückstand von bis zu 5 Minuten wiederherstellen.
@@ -61,7 +61,7 @@ Entscheiden Sie zuerst, ob Sie eine einzelne Datenbank mit einer definierten Men
 Nach der Ermittlung der Mindestdienstebene können Sie die Leistungsebene für die Datenbank (Anzahl von DTUs) bestimmen. Die standardmäßigen Leistungsebenen S2 und S3 sind meist ein guter Ausgangspunkt. Für Datenbanken mit hohen CPU- oder E/A-Anforderungen empfehlen sich dagegen eher die Premium-Leistungsebenen. Premium bietet im Vergleich zur höchsten Standard-Leistungsebene mehr CPU- und eine mindestens zehnmal höhere E/A-Leistung.
 
 ## <a name="single-database-service-tiers-and-performance-levels"></a>Tarife und Leistungsstufen für Einzeldatenbanken
-Bei Einzeldatenbanken gibt es mehrere Leistungsstufen auf den einzelnen Dienstebenen. Über das [Azure-Portal](sql-database-manage-single-databases-portal.md) oder mit [PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md), [Transact-SQL](sql-database-manage-single-databases-tsql.md), C# und der REST-API können Sie flexibel den Tarif auswählen, der die Anforderungen Ihrer Workload am besten erfüllt. 
+Bei Einzeldatenbanken gibt es mehrere Leistungsstufen auf den einzelnen Dienstebenen. Über das Azure-Portal oder mit [PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md), [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-azure-sql-database), C# und der REST-API können Sie flexibel den Tarif auswählen, der die Anforderungen Ihrer Workload am besten erfüllt.  
 
 Unabhängig von der Anzahl von gehosteten Datenbanken erhält Ihre Datenbank einen garantierten Ressourcensatz, und die erwarteten Leistungsmerkmale Ihrer Datenbank werden nicht beeinträchtigt.
 
@@ -73,7 +73,7 @@ Unabhängig von der Anzahl von gehosteten Datenbanken erhält Ihre Datenbank ein
 
 ## <a name="scaling-up-or-scaling-down-a-single-database"></a>Zentrales Hoch- oder Herunterskalieren einer einzelnen Datenbank
 
-Nach dem Auswählen eines Tarifs und einer Leistungsebene können Sie eine einzelne Datenbank dynamisch und bedarfsgerecht zentral hoch- oder herunterskalieren. Wenn Sie zentral hoch- oder herunterskalieren müssen, können Sie die Tarife Ihrer Datenbank im [Azure-Portal](sql-database-manage-single-databases-portal.md) oder mit [PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md), [Transact-SQL](sql-database-manage-single-databases-tsql.md), C# und der REST-API problemlos ändern, und zwar ohne Ausfallzeiten der Anwendung. 
+Nach dem Auswählen eines Tarifs und einer Leistungsebene können Sie eine einzelne Datenbank dynamisch und bedarfsgerecht zentral hoch- oder herunterskalieren. Wenn Sie zentral hoch- oder herunterskalieren müssen, können Sie die Tarife Ihrer Datenbank im Azure-Portal oder mit [PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md), [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-azure-sql-database), C# und der REST-API problemlos ändern, und zwar ohne Ausfallzeiten der Anwendung. 
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-dynamically-scale-up-or-scale-down/player]
 >
@@ -87,10 +87,6 @@ Die Dauer des gesamten zentralen Hochskalierungsvorgangs hängt sowohl von der G
 * Beim Downgrade von einer Premium-Dienstebene müssen Sie zuerst alle geografischen Replikationsbeziehungen beenden. Sie können die im Thema [Wiederherstellen nach einem Ausfall](sql-database-disaster-recovery.md) beschriebenen Schritte verwenden, um den Replikationsprozess zwischen der primären und den aktiven sekundären Datenbanken zu beenden.
 * Die Angebote des Wiederherstellungsdienstes variieren für die verschiedenen Dienstebenen. Wenn Sie ein Downgrade durchführen, verlieren Sie eventuell die Möglichkeit einer Zeitpunktwiederherstellung, oder der Aufbewahrungszeitraum für Sicherungen verkürzt sich. Weitere Informationen finden Sie unter [Sichern und Wiederherstellen der Azure SQL-Datenbank](sql-database-business-continuity.md).
 * Die neuen Eigenschaften für die Datenbank werden erst angewendet, wenn die Änderungen abgeschlossen sind.
-
-> [!IMPORTANT]
-> Ausführliche Schritte finden Sie unter [SQL-Datenbankoptionen und -leistung: Grundlegendes zum Angebot in den einzelnen Tarifen](sql-database-manage-single-databases-portal.md), [Manage a single database with PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md) (Verwalten einzelner Datenbanken mit PowerShell) oder [Erstellen und Verwalten einzelner Azure SQL-Datenbanken mit Transact-SQL](sql-database-manage-single-databases-tsql.md).
->
 
 ## <a name="elastic-pool-service-tiers-and-performance-in-edtus"></a>Dienstebenen und Leistung für elastische Pools in eDTUs
 
@@ -127,7 +123,7 @@ Beim Erstellen einer P11-/P15-Datenbank können Sie den MAXSIZE-Wert auf 1TB (St
 
 Für vorhandene P11- und P15-Datenbanken, die sich in einer der unterstützten Regionen befinden, können Sie den MAXSIZE-Wert auf 4TB erhöhen. Dies ist im Azure-Portal, in PowerShell oder mit Transact-SQL möglich. Das folgende Beispiel zeigt den MAXSIZE-Wert der mit dem Befehl ALTER DATABASE geändert wird:
 
- ```t-sql
+ ```sql
 ALTER DATABASE <myDatabaseName> 
    MODIFY (MAXSIZE = 4096 GB);
 ```
@@ -144,13 +140,13 @@ Beim Erstellen oder Aktualisieren einer P11-/P15-Datenbank in einer nicht unters
 - Szenarien für aktive Georeplikation:
    - Einrichten einer Georeplikationsbeziehung: Falls es sich bei der primären Datenbank um eine P11- oder P15-Datenbank handelt, müssen auch die sekundären Datenbanken vom Typ „P11“ oder „P15“ sein. Niedrigere Leistungsstufen werden als sekundäre Datenbanken abgelehnt, da sie 4 TB nicht unterstützen können.
    - Aktualisieren der primären Datenbank in einer Georeplikationsbeziehung: Die Änderung des MAXSIZE-Werts für eine primäre Datenbank in 4 TB löst die gleiche Änderung für die sekundäre Datenbank aus. Beide Upgrades müssen erfolgreich ausgeführt werden, damit die Änderung für die primäre Datenbank wirksam wird. Für die Option mit 4 TB gelten Regionseinschränkungen (siehe oben). Wenn sich die sekundäre Datenbank in einer Region befindet, die 4 TB nicht unterstützt, wird die primäre Datenbank nicht aktualisiert.
-- Die Verwendung des Import/Export-Diensts zum Laden von Datenbanken des Typs „P11-4TB“ oder „P15-4TB“ wird nicht unterstützt. Verwenden Sie „SqlPackage.exe“, um Daten zu [importieren](sql-database-import-sqlpackage.md) und [exportieren](sql-database-export.md).
+- Die Verwendung des Import/Export-Diensts zum Laden von Datenbanken des Typs „P11-4TB“ oder „P15-4TB“ wird nicht unterstützt. Verwenden Sie „SqlPackage.exe“, um Daten zu [importieren](sql-database-import.md) und [exportieren](sql-database-export.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erfahren Sie mehr über [elastische Pools](sql-database-elastic-pool-guidance.md), und lesen Sie sich den Artikel [Wo sollte ein Pool für elastische Datenbanken verwendet werden?](sql-database-elastic-pool-guidance.md) durch.
 * Informieren Sie sich darüber, wie Sie [einen elastischen Pool überwachen und verwalten und seine Größe ändern](sql-database-elastic-pool-manage-portal.md) und wie Sie [die Leistung von Einzeldatenbanken überwachen](sql-database-single-database-monitor.md).
-* Nachdem Sie jetzt die Ebenen für SQL-Datenbank kennen, können Sie sie mit einem [kostenlosen Konto](https://azure.microsoft.com/pricing/free-trial/) ausprobieren und sich mit der [Erstellung Ihrer ersten SQL-Datenbank](sql-database-get-started.md) befassen.
+* Nachdem Sie jetzt die Ebenen für SQL-Datenbank kennen, können Sie sie mit einem [kostenlosen Konto](https://azure.microsoft.com/pricing/free-trial/) ausprobieren und sich mit der [Erstellung Ihrer ersten SQL-Datenbank](sql-database-get-started-portal.md) befassen.
 * Verwenden Sie in Migrationsszenarien den [DTU Calculator](http://dtucalculator.azurewebsites.net/) (DTU-Rechner), um die voraussichtlich benötigte DTU-Anzahl zu ermitteln. 
 
 

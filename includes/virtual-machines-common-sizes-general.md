@@ -9,16 +9,13 @@ Die Dv2-Serie, eine Nachfolgerin der ursprünglichen D-Serie, hat eine leistungs
 
 Die Größen des Basic-Tarifs sind hauptsächlich für Entwicklungsworkloads und andere Anwendungen bestimmt, für die kein Lastenausgleich, keine automatische Skalierung und keine speicherintensiven virtuellen Computer erforderlich sind. Informationen zu VM-Größen, die für Produktionsanwendungen besser geeignet sind, finden Sie unter (Größen für virtuelle Computer)[virtual-machines-size-specs.md], und Informationen zu VM-Preisen finden Sie unter [Virtuelle Linux-Computer – Preise](https://azure.microsoft.com/pricing/details/virtual-machines/).
 
-> [!NOTE]
-> Ab dem 15. April unterstützen alle Azure-VM-Größen mindestens zwei Netzwerkschnittstellen (NICs). Spezifische Regionsinformationen erhalten Sie im Rahmen eines [Dienstupdates](https://azure.microsoft.com/en-us/updates/). Diese sind im Anschluss durch ein Hütchen (^) gekennzeichnet.
-
 ## <a name="dsv2-series"></a>DSv2-Serie*
 
 ACU: 210 - 250
 
 | Größe | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Anzahl Datenträger | Maximaler Datenträgerdurchsatz mit Cache: IOPS / MB/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Netzwerkbandbreite |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_DS1_v2 |1 |3,5 |7 |2 |4.000/32 (43) |3.200/48 |2^ moderat |
+| Standard_DS1_v2 |1 |3,5 |7 |2 |4.000/32 (43) |3.200/48 |2 moderat |
 | Standard_DS2_v2 |2 |7 |14 |4 |8.000/64 (86) |6.400/96 |2 hoch |
 | Standard_DS3_v2 |4 |14 |28 |8 |16.000/128 (172) |12.800/192 |4 hoch |
 | Standard_DS4_v2 |8 |28 |56 |16 |32.000/256 (344) |25.600/384 |8 hoch |
@@ -32,7 +29,7 @@ ACU: 210 - 250
 
 | Größe              | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Durchsatz lokale Datenträger: IOPS/Lesen (MBit/s)/Schreiben (MBit/s) | Max. Datenträger/Durchsatz: IOPS | Maximale Anzahl NICs/Netzwerkbandbreite |
 |-------------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
-| Standard_D1_v2    | 1         | 3,5         | 50             | 3000/46/23                                           | 2/2 x 500                         | 2^/moderat                 |
+| Standard_D1_v2    | 1         | 3,5         | 50             | 3000/46/23                                           | 2/2 x 500                         | 2/moderat                 |
 | Standard_D2_v2    | 2         | 7           | 100            | 6000/93/46                                           | 4/4 x 500                         | 2/hoch                     |
 | Standard_D3_v2    | 4         | 14          | 200            | 12000/187/93                                         | 8/8 x 500                         | 4/hoch                     |
 | Standard_D4_v2    | 8         | 28          | 400            | 24000/375/187                                        | 16/16 x 500                       | 8/hoch                     |
@@ -55,7 +52,7 @@ ACU: 160
 
 | Größe         | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Durchsatz lokale Datenträger: IOPS/Lesen (MBit/s)/Schreiben (MBit/s) | Max. Datenträger/Durchsatz: IOPS | Maximale Anzahl NICs/Netzwerkbandbreite |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
-| Standard_D1  | 1         | 3,5         | 50             | 3000/46/23                                           | 2/2 x 500                         | 2^/moderat                 |
+| Standard_D1  | 1         | 3,5         | 50             | 3000/46/23                                           | 2/2 x 500                         | 2/moderat                 |
 | Standard_D2  | 2         | 7           | 100            | 6000/93/46                                           | 4/4 x 500                         | 2/hoch                     |
 | Standard_D3  | 4         | 14          | 200            | 12000/187/93                                         | 8/8 x 500                         | 4/hoch                     |
 | Standard_D4  | 8         | 28          | 400            | 24000/375/187                                        | 16/16 x 500                       | 8/hoch                     |
@@ -69,7 +66,7 @@ ACU: 100
 
 | Größe            | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Durchsatz lokale Datenträger: IOPS/Lesen (MBit/s)/Schreiben (MBit/s) | Max. Datenträger/Durchsatz: IOPS | Maximale Anzahl NICs/Netzwerkbandbreite |
 |-----------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
-| Standard_A1_v2  | 1         | 2           | 10             | 1000/20/10                                           | 2/2 x 500                         | 2^/moderat                 |
+| Standard_A1_v2  | 1         | 2           | 10             | 1000/20/10                                           | 2/2 x 500                         | 2/moderat                 |
 | Standard_A2_v2  | 2         | 4           | 20             | 2000/40/20                                           | 4/4 x 500                         | 2/moderat                 |
 | Standard_A4_v2  | 4         | 8           | 40             | 4000/80/40                                           | 8/8 x 500                         | 4/hoch                     |
 | Standard_A8_v2  | 8         | 16          | 80             | 8000/160/80                                          | 16/16 x 500                       | 8/hoch                     |
@@ -85,12 +82,12 @@ ACU: 50 - 100
 
 | Größe | CPU-Kerne | Arbeitsspeicher: GiB | Lokales HDD: GiB | Max. Anzahl Datenträger | Max. Datenträger-Datendurchsatz: IOPS | Maximale Anzahl NICs/Netzwerkbandbreite |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_A0* |1 |0,768 |20 |1 |1 x 500 |2^/niedrig |
-| Standard_A1 |1 |1,75 |70 |2 |2 x 500 |2^/moderat |
-| Standard_A2 |2 |3,5 |135 |4 |4 x 500 |2^/moderat |
+| Standard_A0* |1 |0,768 |20 |1 |1 x 500 |2/niedrig |
+| Standard_A1 |1 |1,75 |70 |2 |2 x 500 |2/moderat |
+| Standard_A2 |2 |3,5 |135 |4 |4 x 500 |2/moderat |
 | Standard_A3 |4 |7 |285 |8 |8 x 500 |2/hoch |
 | Standard_A4 |8 |14 |605 |16 |16 x 500 |4/hoch |
-| Standard_A5 |2 |14 |135 |4 |4 x 500 |2^/moderat |
+| Standard_A5 |2 |14 |135 |4 |4 x 500 |2/moderat |
 | Standard_A6 |4 |28 |285 |8 |8 x 500 |2/hoch |
 | Standard_A7 |8 |56 |605 |16 |16 x 500 |4/hoch |
 <br>
@@ -110,8 +107,8 @@ Im klassischen Bereitstellungsmodell unterscheiden sich einige VM-Größennamen 
 
 |Größe – Größe\Name |CPU-Kerne|Arbeitsspeicher|Netzwerkkarten (max.)|Max. Größe der temporären Datenträger |Max. Datenträger (jeweils 1.023 GB)|Max. IOPS (300 pro Datenträger)|
 |---|---|---|---|---|---|---|
-|A0\Basic_A0|1|768 MB|2^| 20 GB|1|1 x 300|
-|A1\Basic_A1|1|1,75 GB|2^| 40 GB |2|2 x 300|
-|A2\Basic_A2|2|3,5 GB|2^| 60 GB|4|4 x 300|
-|A3\Basic_A3|4|7 GB|2^| 120 GB |8|4 x 300|
-|A4\Basic_A4|8|14 GB|2^| 240 GB |16|16 x 300|
+|A0\Basic_A0|1|768 MB|2| 20 GB|1|1 x 300|
+|A1\Basic_A1|1|1,75 GB|2| 40 GB |2|2 x 300|
+|A2\Basic_A2|2|3,5 GB|2| 60 GB|4|4 x 300|
+|A3\Basic_A3|4|7 GB|2| 120 GB |8|4 x 300|
+|A4\Basic_A4|8|14 GB|2| 240 GB |16|16 x 300|

@@ -16,9 +16,9 @@ ms.date: 04/11/2017
 ms.author: joflore
 ms.custom: end-user
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 9b7735bbe8d3b2ffc78eba8f1489d70a02fe7342
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
+ms.openlocfilehash: bb62d6973dff00932e72ddb4b2c344f070537828
+ms.lasthandoff: 04/14/2017
 
 
 ---
@@ -31,7 +31,7 @@ Falls eines der folgenden Szenarien auf Sie zutrifft, können wir Ihnen weiterhe
 * Sie wissen nicht genau, wie Sie auf Ihr Konto zugreifen sollen, und können sich nicht mehr an Ihr Kennwort erinnern.
 * Ihnen wurde kein Kennwort zugewiesen, und Sie wurden von einem Administrator hierher geschickt.
 
-## <a name="unlock-your-account"></a>Entsperren Ihres Kontos
+## <a name="unlock-my-account"></a>Entsperren des Kontos
 
 Falls Sie diese Seite aufgerufen haben, um Ihr Konto zu entsperren, gehen Sie wie folgt vor. Wenn weiter unten in Schritt 6 **Neues Kennwort auswählen** angezeigt wird, können Sie Ihr Kennwort entsperren oder ändern und entsperren.
 
@@ -43,6 +43,11 @@ Gehen Sie wie folgt vor, um den Zugriff auf Ihr Konto wiederherzustellen:
     ![Sie können nicht auf Ihr Konto zugreifen?][Login]
 
 2. Geben Sie die **Benutzer-ID** für Ihr Geschäfts-, Schul- oder Unikonto ein, und beweisen Sie, dass Sie kein Roboter sind, indem Sie den angezeigten CAPTCHA-Text eingeben und auf **Weiter** klicken.
+
+   > [!NOTE]
+   > Falls Ihr Administrator diese Funktion nicht aktiviert hat, wird an diesem Punkt ein Link vom Typ „Wenden Sie sich an den Administrator.“ angezeigt, damit Ihnen der Administrator per E-Mail oder über ein eigenes Webportal weiterhelfen kann.
+   >
+
 3. Abhängig davon, wie Ihr Administrator das System konfiguriert hat, wird mindestens eine der folgenden Optionen angezeigt:
     * **E-Mail an meine alternative E-Mail-Adresse senden**: Sendet eine E-Mail mit einem sechsstelligen Code an Ihre alternative E-Mail-Adresse oder an Ihre E-Mail-Adresse zur Authentifizierung. (Sie haben die Wahl.)
     * **Textnachricht an mein Mobiltelefon senden**: Sendet eine SMS mit einem sechsstelligen Code an Ihr Mobiltelefon oder an Ihr Authentifizierungstelefon. (Sie haben die Wahl.)
@@ -61,10 +66,6 @@ Gehen Sie wie folgt vor, um den Zugriff auf Ihr Konto wiederherzustellen:
 7. Wenn **Das Kennwort wurde zurückgesetzt.** erscheint, können Sie sich mit Ihrem neuen Kennwort anmelden.
 
     ![Das Kennwort wurde zurückgesetzt.][Complete]
-
-> [!NOTE]
-> Falls Ihr Administrator diese Funktion nicht aktiviert hat, wird ein Link vom Typ „Wenden Sie sich an den Administrator.“ angezeigt, damit Ihnen der Administrator per E-Mail oder über ein eigenes Webportal weiterhelfen kann.
->
 
 Nachdem Sie Ihr Kennwort mit dieser Methode entsperrt oder zurückgesetzt haben, erhalten Sie unter Umständen eine E-Mail, die den Abschluss dieses Prozesses bestätigt. Die E-Mail stammt von einem Konto wie „Microsoft im Namen von <Ihre Organisation>“. Sollten Sie eine solche E-Mail erhalten, obwohl Sie den Zugriff auf Ihr Konto nicht mithilfe der Self-Service-Kennwortzurücksetzung wiederhergestellt haben, wenden Sie sich an Ihren Administrator.
 

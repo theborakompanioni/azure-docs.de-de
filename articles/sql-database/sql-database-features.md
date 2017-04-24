@@ -8,7 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: d1a46fa4-53d2-4d25-a0a7-92e8f9d70828
 ms.service: sql-database
-ms.custom: overview
+ms.custom: features
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
@@ -16,148 +16,121 @@ ms.workload: data-management
 ms.date: 03/03/2017
 ms.author: carlrab; jognanay
 translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
-ms.openlocfilehash: 7dc5210c073a3130bfc9ffdbc9ce33e19ca5bc1a
-ms.lasthandoff: 04/10/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: a1ede93b5aacf0d8a5bcf83f208f72be328ee72f
+ms.lasthandoff: 04/15/2017
 
 
 ---
 # <a name="azure-sql-database-features"></a>Funktionen von Azure SQL-Datenbank
-Dieses Thema bietet eine Übersicht über die logischen Azure SQL-Datenbankserver und Datenbanken und enthält eine Funktionssupportmatrix mit Links über die einzelnen aufgeführten Funktionen. 
 
-## <a name="what-is-an-azure-sql-database-logical-server"></a>Was ist ein logischer Azure SQL-Datenbankserver?
-Ein logischer Azure SQL-Datenbankserver fungiert als zentraler Verwaltungspunkt für mehrere Datenbanken. In SQL-Datenbank ist ein Server ein logisches Konstrukt, das von einer SQL Server-Instanz unterschieden wird, mit der Sie möglicherweise in der lokalen Welt vertraut sind. Insbesondere der SQL-Datenbankdienst gibt keine Garantie bezüglich des Speicherorts der Datenbanken in Bezug auf ihre logischen Server, und bietet kein Zugriff oder Funktion auf Instanzebene. Weitere Informationen zu logischen Azure SQL-Servern, finden Sie unter [Logical Servers (Logische Server)](sql-database-server-overview.md). 
-
-## <a name="what-is-an-azure-sql-database"></a>Was ist eine Azure SQL-Datenbank?
-Jede Datenbank in Azure SQL-Datenbank ist einem logischen Server zugeordnet. Die Datenbank kann Folgendes sein:
-
-- Eine einzelne Datenbank mit ihrem [eigenen Ressourcensatz](sql-database-what-is-a-dtu.md#what-are-database-transaction-units-dtus) (DTUs)
-- Teil eines [Pools von Datenbanken](sql-database-elastic-pool.md), der [einen Ressourcensatz teilt](sql-database-what-is-a-dtu.md#what-are-elastic-database-transaction-units-edtus) (eDTUs)
-- Teil eines [skalierten Satzes von Sharddatenbanken](sql-database-elastic-scale-introduction.md#horizontal-and-vertical-scaling), die entweder einfache oder in einem Pool zusammengefasste Datenbanken sein können
-- Teil von Datenbanksätzen, die an einem [mehrinstanzfähigen SaaS-Entwurfsmuster](sql-database-design-patterns-multi-tenancy-saas-applications.md) teilnehmen, und deren Datenbanken entweder einzelne oder in einem Pool zusammengefasste Datenbanken (oder beides) sein können 
-
-Weitere Informationen zu Azure SQL-Datenbanken, finden Sie unter [SQL databases (SQL-Datenbanken)](sql-database-overview.md).
-
-## <a name="what-features-are-supported"></a>Welche Funktionen werden unterstützt?
-
-In der folgenden Tabelle sind die wichtigsten Funktionen von Azure SQL-Datenbank und SQL Server aufgeführt, gibt deren Unterstützungsmöglichkeiten und stellt einen Link zu weiteren Informationen über die Funktion auf jeder Plattform bereit. Für Funktionen von Transact-SQL folgen Sie dem Link in der Tabelle zu der Kategorie der Funktion. Unter [Azure SQL-Datenbank – Abweichungen bei Transact-SQL](sql-database-transact-sql-information.md) finden Sie weitere Hintergrundinformationen zu den Gründen für die fehlende Unterstützung bestimmter Funktionstypen.
+In den folgenden Tabellen sind die wichtigsten Features von Azure SQL-Datenbank und die entsprechenden Features von SQL Server aufgeführt. Außerdem enthalten sie Informationen dazu, ob die einzelnen Features unterstützt werden, und einen Link zu weiteren Informationen zum Feature für die jeweilige Plattform. Informationen zu Transact-SQL-Unterschieden, die beim Migrieren einer vorhandenen Datenbanklösung berücksichtigt werden sollten, finden Sie unter [Auflösen von Transact-SQL-Unterschieden während der Migration zur SQL-Datenbank](sql-database-transact-sql-information.md).
 
 Wir fügen Azure SQL-Datenbank ständig weitere Features hinzu. Daher empfehlen wir Ihnen, die Webseite "Dienstupdates" für Azure zu besuchen und diese Filter zu verwenden:
 
 * Gefiltert nach [SQL-Datenbank](https://azure.microsoft.com/updates/?service=sql-database).
 * Gefiltert nach allgemeiner Verfügbarkeit [Ankündigungen](http://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability) für SQL-Datenbankfunktionen.
 
-> [!TIP]
-> Informationen zum Testen einer vorhandenen Datenbank auf Kompatibilität mit Azure SQL-Datenbank finden Sie unter [Migrieren einer SQL Server-Datenbank zu Azure](sql-database-cloud-migrate.md).
->
-
 | **Feature** | **SQL Server** | **Azure SQL-Datenbank** | 
 | --- | :---: | :---: | 
-| Aktive Georeplikation | Nicht unterstützt – siehe [Always On-Verfügbarkeitsgruppen](https://msdn.microsoft.com/library/hh510230.aspx) | [Unterstützt](sql-database-geo-replication-overview.md)
-| Always Encrypted | [Unterstützt](https://msdn.microsoft.com/library/mt163865.aspx) | [Unterstützt](sql-database-always-encrypted.md) |
-| AlwaysOn-Verfügbarkeitsgruppen | [Unterstützt](https://msdn.microsoft.com/library/hh510230.aspx) | Nicht unterstützt – siehe [aktive Georeplikation](sql-database-geo-replication-overview.md) |
-| Anfügen einer Datenbank | [Unterstützt](https://msdn.microsoft.com/library/ms190209.aspx) | Nicht unterstützt |
-| Anwendungsrollen | [Unterstützt](https://msdn.microsoft.com/library/ms190998.aspx) | [Unterstützt](https://msdn.microsoft.com/library/ms190998.aspx) |
-| Automatische Skalierung | Nicht unterstützt | [Unterstützt](sql-database-service-tiers.md) |
+| Aktive Georeplikation | Nicht unterstützt – siehe [Always On-Verfügbarkeitsgruppen](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | [Unterstützt](sql-database-geo-replication-overview.md)
+| Always Encrypted | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) | Unterstützt – siehe [Zertifikatspeicher](sql-database-always-encrypted.md) und [Schlüsseltresor](sql-database-always-encrypted-azure-key-vault.md)|
+| AlwaysOn-Verfügbarkeitsgruppen | [Unterstützt](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | Nicht unterstützt – siehe [aktive Georeplikation](sql-database-geo-replication-overview.md) |
+| Anfügen einer Datenbank | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/databases/attach-a-database) | Nicht unterstützt |
+| Anwendungsrollen | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/application-roles) | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/application-roles) |
+| Automatische Skalierung | Nicht unterstützt | Unterstützt – siehe [Dienstebenen](sql-database-service-tiers.md) |
 | Azure Active Directory | Nicht unterstützt | [Unterstützt](sql-database-aad-authentication.md) |
 | Azure Data Factory | [Unterstützt](../data-factory/data-factory-introduction.md) | [Unterstützt](../data-factory/data-factory-introduction.md) |
-| Überwachung | [Unterstützt](https://msdn.microsoft.com/library/cc280386.aspx) | [Unterstützt](sql-database-auditing.md) |
-| BACPAC Datei (exportieren) | [Unterstützt](https://msdn.microsoft.com/library/hh213241.aspx) | [Unterstützt](sql-database-export.md) |
-| BACPAC Datei (importieren) | [Unterstützt](https://msdn.microsoft.com/library/hh710052.aspx) | [Unterstützt](sql-database-import-portal.md) |
-| BACKUP- und RESTORE-Anweisungen | [Unterstützt](https://msdn.microsoft.com/library/ff848768.aspx) | Nicht unterstützt |
-| Integrierte Funktionen | [Unterstützt](https://msdn.microsoft.com/library/ms174318.aspx) | [Die meisten](https://msdn.microsoft.com/library/ms174318.aspx) |
-| Erfassung geänderter Daten | [Unterstützt](https://msdn.microsoft.com/library/cc645937.aspx) | Nicht unterstützt |
-| Änderungsnachverfolgung | [Unterstützt](https://msdn.microsoft.com/library/bb933875.aspx) | [Unterstützt](https://msdn.microsoft.com/library/bb933875.aspx) |
-| Sortierung-Anweisungen | [Unterstützt](https://msdn.microsoft.com/library/ff848763.aspx) | [Unterstützt](https://msdn.microsoft.com/library/ff848763.aspx) |
-| ColumnStore-Indizes | [Unterstützt](https://msdn.microsoft.com/library/gg492088.aspx) | [Nur Premium Edition](https://msdn.microsoft.com/library/gg492088.aspx) |
-| Common Language Runtime (CLR) | [Unterstützt](https://msdn.microsoft.com/library/ms131102.aspx) | Nicht unterstützt |
-| Eigenständige Datenbanken | [Unterstützt](https://msdn.microsoft.com/library/ff929071.aspx) | Integriert |
-| Enthaltene Benutzer | [Unterstützt](https://msdn.microsoft.com/library/ff929188.aspx) | [Unterstützt](sql-database-manage-logins.md#non-administrator-users) |
-| Schlüsselwörter der Sprache zur Ablaufsteuerung | [Unterstützt](https://msdn.microsoft.com/library/ms174290.aspx) | [Unterstützt](https://msdn.microsoft.com/library/ms174290.aspx) |
-| Datenbankübergreifende Abfragen | [Unterstützt](https://msdn.microsoft.com/library/dn584627.aspx) | [Elastische Abfragen](sql-database-elastic-query-overview.md) |
-| Cursor | [Unterstützt](https://msdn.microsoft.com/library/ms181441.aspx) | [Unterstützt](https://msdn.microsoft.com/library/ms181441.aspx) | 
-| Datenkomprimierung | [Unterstützt](https://msdn.microsoft.com/library/cc280449.aspx) | [Unterstützt](https://msdn.microsoft.com/library/cc280449.aspx) |
-| Datenbanksicherungen | [Für Benutzer verfügbar](https://msdn.microsoft.com/library/ms187048.aspx) | [Integriert](sql-database-automated-backups.md) |
-| Datenbank-E-Mail | [Unterstützt](https://msdn.microsoft.com/library/ms189635.aspx) | Nicht unterstützt |
-| Datenbankspiegelung | [Unterstützt](https://msdn.microsoft.com/library/ms189852.aspx) | Nicht unterstützt |
-| Datenbank-Konfigurationsoptionen | [Unterstützt](https://msdn.microsoft.com/library/mt629158.aspx) | [Unterstützt](https://msdn.microsoft.com/library/mt629158.aspx) |
-| Data Quality Services (DQS) | [Unterstützt](https://msdn.microsoft.com/library/ff877925.aspx) | Nicht unterstützt |
-| Datenbank-Momentaufnahmen | [Unterstützt](https://msdn.microsoft.com/library/ms175158.aspx) | Nicht unterstützt |
-| Datentypen | [Unterstützt](https://msdn.microsoft.com/library/ms187752.aspx) | [Unterstützt](https://msdn.microsoft.com/library/ms187752.aspx) |  
-| DBCC-Anweisungen | [Alle](https://msdn.microsoft.com/library/ms188796.aspx) | [Einige](https://msdn.microsoft.com/library/ms188796.aspx) |
-| DDL-Anweisungen | [Unterstützt](https://msdn.microsoft.com/library/ff848799.aspx) | [Die meisten](https://msdn.microsoft.com/library/ff848799.aspx)
-| DDL-Trigger | [Unterstützt](https://msdn.microsoft.com/library/ms175941.aspx) | [Nur Datenbank](https://msdn.microsoft.com/library/ms175941.aspx) |
-| Verteilte Transaktionen | [MS DTC](https://msdn.microsoft.com/library/ms131665.aspx) | Nur begrenzte interne SQL-Datenbank-Szenarios |
-| DML-Anweisungen | [Unterstützt](https://msdn.microsoft.com/library/ff848766.aspx) | [Die meisten](https://msdn.microsoft.com/library/ff848766.aspx) |
-| DML-Trigger | [Unterstützt](https://msdn.microsoft.com/library/ms178110.aspx) | [Unterstützt](https://msdn.microsoft.com/library/ms178110.aspx) |
-| DMVs | [Alle](https://msdn.microsoft.com/library/ms188754.aspx) | [Einige](https://msdn.microsoft.com/library/ms188754.aspx) |
+| Überwachung | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine) | [Unterstützt](sql-database-auditing.md) |
+| BACPAC Datei (exportieren) | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | [Unterstützt](sql-database-export.md) |
+| BACPAC Datei (importieren) | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | [Unterstützt](sql-database-import.md) |
+| SICHERUNG | [Unterstützt](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql) | Nicht unterstützt |
+| Integrierte Funktionen | [Unterstützt](https://docs.microsoft.com/sql/t-sql/functions/functions) | Die meisten – siehe [Einzelne Funktionen] (https://docs.microsoft.com/sql/t-sql/functions/functions) |
+| Erfassung geänderter Daten | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-data-capture-sql-server) | Nicht unterstützt |
+| Änderungsnachverfolgung | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) |
+| Sortierung-Anweisungen | [Unterstützt](https://docs.microsoft.com/sql/t-sql/statements/collations) | [Unterstützt](https://docs.microsoft.com/sql/t-sql/statements/collations) |
+| ColumnStore-Indizes | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) | [Nur Premium Edition](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) |
+| Common Language Runtime (CLR) | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts) | Nicht unterstützt |
+| Eigenständige Datenbanken | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) |
+| Enthaltene Benutzer | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable) | [Unterstützt](sql-database-manage-logins.md#non-administrator-users) |
+| Schlüsselwörter der Sprache zur Ablaufsteuerung | [Unterstützt](https://docs.microsoft.com/sql/t-sql/language-elements/control-of-flow) | [Unterstützt](https://docs.microsoft.com/sql/t-sql/language-elements/control-of-flow) |
+| Datenbankübergreifende Abfragen | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/cross-database-queries) | Teilweise – siehe [Elastische Abfragen](sql-database-elastic-query-overview.md) |
+| Cursor | [Unterstützt](https://docs.microsoft.com/sql/t-sql/language-elements/cursors-transact-sql) | [Unterstützt](https://docs.microsoft.com/sql/t-sql/language-elements/cursors-transact-sql) | 
+| Datenkomprimierung | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/data-compression/data-compression) | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/data-compression/data-compression) |
+| Datenbanksicherungen | [Vom Benutzer verwaltet](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases) | [Vom SQL-Datenbankdienst verwaltet](sql-database-automated-backups.md) |
+| Datenbank-E-Mail | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail) | Nicht unterstützt |
+| Datenbankspiegelung | [Unterstützt](https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server) | Nicht unterstützt |
+| Konfigurationseinstellungen für Datenbank | [Unterstützt](https://docs.microsoft.com/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql) | [Unterstützt](https://docs.microsoft.com/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql) |
+| Data Quality Services (DQS) | [Unterstützt](https://docs.microsoft.com/sql/data-quality-services/data-quality-services) | Nicht unterstützt |
+| Datenbank-Momentaufnahmen | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/databases/database-snapshots-sql-server) | Nicht unterstützt |
+| Datentypen | [Unterstützt](https://docs.microsoft.com/sql/t-sql/data-types/data-types-transact-sql) | [Unterstützt](https://docs.microsoft.com/sql/t-sql/data-types/data-types-transact-sql) |  
+| DBCC-Anweisungen | [Unterstützt](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-transact-sql) | Die meisten – siehe [Einzelne Anweisungen](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-transact-sql) |
+| DDL-Anweisungen | [Unterstützt](https://docs.microsoft.com/sql/t-sql/statements/statements) | Die meisten – siehe [Einzelne Anweisungen](https://docs.microsoft.com/sql/t-sql/statements/statements)
+| DDL-Trigger | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/triggers/ddl-triggers) | [Nur Datenbank](https://docs.microsoft.com/sql/relational-databases/triggers/ddl-triggers) |
+| Verteilte Transaktionen | [MS DTC](https://docs.microsoft.com/sql/relational-databases/native-client-ole-db-transactions/supporting-distributed-transactions) | Nur begrenzte interne SQL-Datenbank-Szenarios |
+| DML-Anweisungen | [Unterstützt](https://docs.microsoft.com/sql/t-sql/queries/queries) | Die meisten – siehe [Einzelne Anweisungen]](https://docs.microsoft.com/sql/t-sql/queries/queries) |
+| DML-Trigger | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/triggers/dml-triggers) | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/triggers/dml-triggers) |
+| DMVs | [Alle](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) | Einige – siehe [Einzelne DMVs](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) |
 | Elastische Pools | Nicht unterstützt | [Unterstützt](sql-database-elastic-pool.md) |
-| Elastische Aufträge | Nicht unterstützt – siehe [SQL Server-Agent](https://msdn.microsoft.com/library/ms189237.aspx) | [Unterstützt](sql-database-elastic-jobs-getting-started.md) | 
-| Elastische Abfragen | Nicht unterstützt – siehe [Datenbankübergreifende Abfragen](https://msdn.microsoft.com/library/dn584627.aspx) | [Unterstützt](sql-database-elastic-query-overview.md) |
-| Ereignisbenachrichtigungen | [Unterstützt](https://msdn.microsoft.com/library/ms186376.aspx) | [Unterstützt](sql-database-insights-alerts-portal.md) |
-| Ausdrücke | [Unterstützt](https://msdn.microsoft.com/library/ms190286.aspx) | [Unterstützt](https://msdn.microsoft.com/library/ms190286.aspx) |
-| Erweiterte Ereignisse | [Unterstützt](https://msdn.microsoft.com/library/bb630282.aspx) | [Einige](sql-database-xevent-db-diff-from-svr.md) |
-| Erweiterte gespeicherte Prozeduren | [Unterstützt](https://msdn.microsoft.com/library/ms164627.aspx) | Nicht unterstützt |
-| Dateigruppen | [Unterstützt](https://msdn.microsoft.com/library/ms189563.aspx#Anchor_2) | [Nur primär](https://msdn.microsoft.com/library/ms189563.aspx#Anchor_2) |
-| Filestream | [Unterstützt](https://msdn.microsoft.com/library/gg471497.aspx) | Nicht unterstützt |
-| Volltextsuche | [Unterstützt](https://msdn.microsoft.com/library/ms142571.aspx) | [Nicht unterstützte Worttrennungen von Drittanbietern](https://msdn.microsoft.com/library/ms142571.aspx) |
-| Functions | [Unterstützt](https://msdn.microsoft.com/library/ms174318.aspx) | [Die meisten](https://msdn.microsoft.com/library/ms174318.aspx) |
-| In-Memory-Optimierung | [Unterstützt](https://msdn.microsoft.com/library/dn133186.aspx) | [Nur Premium Edition](https://msdn.microsoft.com/library/dn133186.aspx) |
-| Aufträge | [SQL Server-Agent](https://msdn.microsoft.com/library/ms189237.aspx) | [Unterstützt](sql-database-elastic-jobs-getting-started.md) |
-| Unterstützung von JSON-Daten | [Unterstützt](https://msdn.microsoft.com/library/dn921897.aspx) | [Unterstützt](sql-database-json-features.md) |
-| Sprachelemente | [Unterstützt](https://msdn.microsoft.com/library/ff848807.aspx) | [Die meisten](https://msdn.microsoft.com/library/ff848807.aspx) |  
-| Verknüpfte Server | [Unterstützt](https://msdn.microsoft.com/library/ms188279.aspx) | Nicht unterstützt – siehe [Elastic query (Elastische Abfrage)](sql-database-elastic-query-horizontal-partitioning.md) |
-| Protokollversand | [Unterstützt](https://msdn.microsoft.com/library/ms187103.aspx) | Nicht unterstützt – siehe [aktive Georeplikation](sql-database-geo-replication-overview.md) |
-| Befehle für Verwaltung | [Unterstützt](https://msdn.microsoft.com/library/ms190286.aspx)| [Nicht unterstützt](https://msdn.microsoft.com/library/ms190286.aspx) |
-| Master Data Services (MDS) | [Unterstützt](https://msdn.microsoft.com/library/ff487003.aspx) | Nicht unterstützt |
-| Minimale Protokollierung bei Massenimport | [Unterstützt](https://msdn.microsoft.com/library/ms190422.aspx) | Nicht unterstützt |
-| Ändern von Systemdaten | [Unterstützt](https://msdn.microsoft.com/library/ms178028.aspx) | Nicht unterstützt |
-| Online-Indexvorgänge | [Unterstützt](https://msdn.microsoft.com/library/ms177442.aspx) | [Transaktionsgröße durch Dienstebene eingeschränkt](https://msdn.microsoft.com/library/ms177442.aspx) |
-| Operatoren | [Unterstützt](https://msdn.microsoft.com/library/ms174986.aspx) | [Die meisten](https://msdn.microsoft.com/library/ms174986.aspx) |
-| Point-in-Time-Wiederherstellung einer Datenbank | [Unterstützt](https://msdn.microsoft.com/library/ms179451.aspx) | [Unterstützt](sql-database-recovery-using-backups.md#point-in-time-restore) |
-| PolyBase | [Unterstützt](https://msdn.microsoft.com/library/mt143171.aspx) | [Nicht unterstützt]
-| Richtlinienbasierte Verwaltung | [Unterstützt](https://msdn.microsoft.com/library/bb510667.aspx) | Nicht unterstützt |
-| Prädikate | [Unterstützt](https://msdn.microsoft.com/library/ms189523.aspx) | [Die meisten](https://msdn.microsoft.com/library/ms189523.aspx)
-| R Services | [Unterstützt](https://msdn.microsoft.com/library/mt604845.aspx)
-| Ressourcenkontrolle | [Unterstützt](https://msdn.microsoft.com/library/bb933866.aspx) | Nicht unterstützt |
-| Wiederherstellen einer Datenbank aus der Sicherung | [Unterstützt](https://msdn.microsoft.com/library/ms187048.aspx#anchor_6) | [Nur von integrierten Sicherungen](sql-database-recovery-using-backups.md) |
-| Sicherheit auf Zeilenebene | [Unterstützt](https://msdn.microsoft.com/library/dn765131.aspx) | [Unterstützt](https://msdn.microsoft.com/library/dn765131.aspx) |
-| Sicherheitsanweisungen | [Unterstützt](https://msdn.microsoft.com/library/ff848791.aspx) | [Einige](https://msdn.microsoft.com/library/ff848791.aspx) |
-| Semantische Suche | [Unterstützt](https://msdn.microsoft.com/library/gg492075.aspx) | Nicht unterstützt |
-| Sequenznummern | [Unterstützt](https://msdn.microsoft.com/library/ff878058.aspx) | [Unterstützt](https://msdn.microsoft.com/library/ff878058.aspx) |
-| Service Broker | [Unterstützt](https://msdn.microsoft.com/library/bb522893.aspx) | Nicht unterstützt |
-| Server-Konfigurationsoptionen | [Unterstützt](https://msdn.microsoft.com/library/ms189631.aspx) | Nicht unterstützt – siehe [Database configuration options (Datenbank-Konfigurationsoptionen)](https://msdn.microsoft.com/library/mt629158.aspx) |
-| SET-Anweisungen | [Unterstützt](https://msdn.microsoft.com/library/ms190356.aspx) | [Die meisten](https://msdn.microsoft.com/library/ms190356.aspx) 
-| Spatial | [Unterstützt](https://msdn.microsoft.com/library/bb933790.aspx) | [Unterstützt](https://msdn.microsoft.com/library/bb933790.aspx) |
-| SQL Server-Agent | [Unterstützt](https://msdn.microsoft.com/library/ms189237.aspx) | Nicht unterstützt – siehe [elastische Einzelvorgänge](sql-database-elastic-jobs-getting-started.md) |
-| SQL Server Analysis Services (SSAS) | [Unterstützt](https://msdn.microsoft.com/library/bb522607.aspx) | Nicht unterstützt – siehe [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) |
-| SQL Server Integration Services (SSIS) | [Unterstützt](https://msdn.microsoft.com/library/ms141026.aspx) | Nicht unterstützt – siehe [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) |
-| SQL Server PowerShell | [Unterstützt](https://msdn.microsoft.com/library/hh245198.aspx) | [Unterstützt](https://msdn.microsoft.com/library/hh245198.aspx) |
-| SQL Server Profiler | [Unterstützt](https://msdn.microsoft.com/library/ms181091.aspx) | Nicht unterstützt – siehe [Erweiterte Ereignisse](https://msdn.microsoft.com/library/ms181091.aspx) |
-| SQL Server-Replikation | [Unterstützt](https://msdn.microsoft.com/library/ms151198.aspx) | [Nur für Transaktions- und Momentaufnahmenreplikationsabonnent](sql-database-cloud-migrate.md) |
-| SQL Server Reporting Services (SSRS) | [Unterstützt](https://msdn.microsoft.com/library/ms159106.aspx) | Nicht unterstützt |
-| Gespeicherte Prozeduren | [Unterstützt](https://msdn.microsoft.com/library/ms190782.aspx) | [Unterstützt](https://msdn.microsoft.com/library/ms190782.aspx) |
-| Gespeicherte Systemfunktionen | [Unterstützt](https://msdn.microsoft.com/library/ff848780.aspx) | [Einige](https://msdn.microsoft.com/library/ff848780.aspx) |
-| Gespeicherte Systemprozeduren | [Unterstützt](https://msdn.microsoft.com/library/ms187961.aspx) | [Einige](https://msdn.microsoft.com/library/ms187961.aspx) |
-| Systemtabellen | [Unterstützt](https://msdn.microsoft.com/library/ms179932.aspx) | [Einige](https://msdn.microsoft.com/library/ms179932.aspx) |
-| Systemsichten | [Unterstützt](https://msdn.microsoft.com/library/ms177862.aspx) | [Einige](https://msdn.microsoft.com/library/ms177862.aspx)
-| Tabellenpartitionierung | [Unterstützt](https://msdn.microsoft.com/library/ms190787.aspx) | [Nur primäre Dateigruppe](https://msdn.microsoft.com/library/ms190787.aspx) |
-| Temporäre Tabellen | [Lokal und global](https://msdn.microsoft.com/library/ms174979.aspx#Anchor_4) | [Nur lokal](https://msdn.microsoft.com/library/ms174979.aspx#Anchor_4) |
-| Temporäre Tabellen | [Unterstützt](https://msdn.microsoft.com/library/dn935015.aspx) | [Unterstützt](sql-database-temporal-tables.md) |
-| Transaktionsanweisungen | [Unterstützt](https://msdn.microsoft.com/library/ms174377.aspx) | [Unterstützt](https://msdn.microsoft.com/library/ms174377.aspx) |
-| Variablen | [Unterstützt](https://msdn.microsoft.com/library/ff848809.aspx) | | [Unterstützt](https://msdn.microsoft.com/library/ff848809.aspx) | 
-| Transparent Data Encryption (TDE)  | [Unterstützt](https://msdn.microsoft.com/library/bb934049.aspx) | [Unterstützt](https://msdn.microsoft.com/dn948096.aspx) |
-| Windows Server-Failoverclustering | [Unterstützt](https://msdn.microsoft.com/library/hh270278.aspx) | Nicht unterstützt – siehe [aktive Georeplikation](sql-database-geo-replication-overview.md) |
-| XML-Indizes | [Unterstützt](http://msdn.microsoft.com/library/bb934097.aspx) | [Unterstützt](http://msdn.microsoft.com/library/bb934097.aspx) |
-| XML-Anweisungen | [Unterstützt](https://msdn.microsoft.com/library/ff848798.aspx) | [Unterstützt](https://msdn.microsoft.com/library/ff848798.aspx) |
+| Elastische Aufträge | Nicht unterstützt – siehe [SQL Server-Agent](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent) | [Unterstützt](sql-database-elastic-jobs-getting-started.md) | 
+| Elastische Abfragen | Nicht unterstützt – siehe [Datenbankübergreifende Abfragen](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/cross-database-queries) | [Unterstützt](sql-database-elastic-query-overview.md) |
+| Ereignisbenachrichtigungen | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/service-broker/event-notifications) | [Unterstützt](sql-database-insights-alerts-portal.md) |
+| Ausdrücke | [Unterstützt](https://docs.microsoft.com/sql/t-sql/language-elements/expressions-transact-sql) | [Unterstützt](https://docs.microsoft.com/sql/t-sql/language-elements/expressions-transact-sql) |
+| Erweiterte Ereignisse | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events) | Einige – siehe [Einzelne Ereignisse](sql-database-xevent-db-diff-from-svr.md) |
+| Erweiterte gespeicherte Prozeduren | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/extended-stored-procedures-programming/creating-extended-stored-procedures) | Nicht unterstützt |
+| Dateien und Dateigruppen | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/databases/database-files-and-filegroups) | [Nur primär](https://docs.microsoft.com/sql/relational-databases/databases/database-files-and-filegroups) |
+| Filestream | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) | Nicht unterstützt |
+| Volltextsuche | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/search/full-text-search) | [Nicht unterstützte Worttrennungen von Drittanbietern](https://docs.microsoft.com/sql/relational-databases/search/full-text-search) |
+| Functions | [Unterstützt](https://docs.microsoft.com/sql/t-sql/functions/functions) | Die meisten – siehe [Einzelne Funktionen](https://docs.microsoft.com/sql/t-sql/functions/functions) |
+| In-Memory-Optimierung | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | [Nur Premium Edition](sql-database-in-memory.md) |
+| Aufträge | Siehe [SQL Server-Agent](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent) | Siehe [Elastische Aufträge](sql-database-elastic-jobs-getting-started.md) |
+| Unterstützung von JSON-Daten | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) | [Unterstützt](sql-database-json-features.md) |
+| Sprachelemente | [Unterstützt](https://docs.microsoft.com/sql/t-sql/language-elements/language-elements-transact-sql) | Die meisten – siehe [Einzelne Elemente](https://docs.microsoft.com/sql/t-sql/language-elements/language-elements-transact-sql) |  
+| Verknüpfte Server | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Nicht unterstützt – siehe [Elastic query (Elastische Abfrage)](sql-database-elastic-query-horizontal-partitioning.md) |
+| Protokollversand | [Unterstützt](https://docs.microsoft.com/sql/database-engine/log-shipping/about-log-shipping-sql-server) | Nicht unterstützt – siehe [aktive Georeplikation](sql-database-geo-replication-overview.md) |
+| Master Data Services (MDS) | [Unterstützt](https://docs.microsoft.com/sql/master-data-services/master-data-services-overview-mds) | Nicht unterstützt |
+| Minimale Protokollierung bei Massenimport | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/import-export/prerequisites-for-minimal-logging-in-bulk-import) | Nicht unterstützt |
+| Ändern von Systemdaten | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/databases/system-databases) | Nicht unterstützt |
+| Online-Indexvorgänge | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/indexes/perform-index-operations-online) | [Unterstützt – Transaktionsgröße durch Dienstebene eingeschränkt](https://docs.microsoft.com/sql/relational-databases/indexes/perform-index-operations-online) |
+| Operatoren | [Unterstützt](https://docs.microsoft.com/sql/t-sql/language-elements/operators-transact-sql) | Die meisten – siehe [Einzelne Operatoren](https://docs.microsoft.com/sql/t-sql/language-elements/operators-transact-sql) |
+| Point-in-Time-Wiederherstellung einer Datenbank | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-sql-server-database-to-a-point-in-time-full-recovery-model) | [Unterstützt](sql-database-recovery-using-backups.md#point-in-time-restore) |
+| PolyBase | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) | Nicht unterstützt
+| Richtlinienbasierte Verwaltung | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/policy-based-management/administer-servers-by-using-policy-based-management) | Nicht unterstützt |
+| Prädikate | [Unterstützt](https://docs.microsoft.com/sql/t-sql/queries/predicates) | Die meisten – siehe [Einzelne Prädikate](https://docs.microsoft.com/sql/t-sql/queries/predicates)
+| R Services | [Unterstützt](https://docs.microsoft.com/sql/advanced-analytics/r-services/sql-server-r-services)
+| Ressourcenkontrolle | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) | Nicht unterstützt |
+| RESTORE-Anweisungen | [Unterstützt](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-for-restoring-recovering-and-managing-backups-transact-sql) | Nicht unterstützt | 
+| Wiederherstellen einer Datenbank aus der Sicherung | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases#restore-data-backups) | [Nur von integrierten Sicherungen](sql-database-recovery-using-backups.md) |
+| Sicherheit auf Zeilenebene | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/security/row-level-security) | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/security/row-level-security) |
+| Semantische Suche | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/search/semantic-search-sql-server) | Nicht unterstützt |
+| Sequenznummern | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/sequence-numbers/sequence-numbers) | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/sequence-numbers/sequence-numbers) |
+| Service Broker | [Unterstützt](https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-service-broker) | Nicht unterstützt |
+| Konfigurationseinstellungen für Server | [Unterstützt](https://docs.microsoft.com/sql/database-engine/configure-windows/server-configuration-options-sql-server) | Nicht unterstützt – siehe [Database configuration options (Datenbank-Konfigurationsoptionen)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql) |
+| SET-Anweisungen | [Unterstützt](https://docs.microsoft.com/sql/t-sql/statements/set-statements-transact-sql) | Die meisten – siehe [Einzelne Anweisungen](https://docs.microsoft.com/sql/t-sql/statements/set-statements-transact-sql) 
+| Spatial | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-sql-server) | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-sql-server) |
+| SQL Server-Agent | [Unterstützt](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent) | Nicht unterstützt – siehe [elastische Einzelvorgänge](sql-database-elastic-jobs-getting-started.md) |
+| SQL Server Analysis Services (SSAS) | [Unterstützt](https://docs.microsoft.com/sql/analysis-services/analysis-services) | Nicht unterstützt – siehe [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) |
+| SQL Server Integration Services (SSIS) | [Unterstützt](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | Nicht unterstützt – siehe [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) |
+| SQL Server PowerShell | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) |
+| SQL Server Profiler | [Unterstützt](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | Nicht unterstützt – siehe [Erweiterte Ereignisse](sql-database-xevent-db-diff-from-svr.md) |
+| SQL Server-Replikation | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/replication/sql-server-replication) | [Nur für Transaktions- und Momentaufnahmenreplikationsabonnent](sql-database-cloud-migrate.md) |
+| SQL Server Reporting Services (SSRS) | [Unterstützt](https://docs.microsoft.com/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports) | Nicht unterstützt |
+| Gespeicherte Prozeduren | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) |
+| Gespeicherte Systemfunktionen | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/system-functions/system-functions-for-transact-sql) | Einige – siehe [Einzelne Funktionen](https://docs.microsoft.com/sql/relational-databases/system-functions/system-functions-for-transact-sql) |
+| Gespeicherte Systemprozeduren | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/system-stored-procedures-transact-sql) | Einige – siehe [Einzelne gespeicherte Prozeduren](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/system-stored-procedures-transact-sql) |
+| Systemtabellen | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/system-tables/system-tables-transact-sql) | Einige – siehe [Einzelne Tabellen](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/system-stored-procedures-transact-sql) |
+| Systemkatalogsichten | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/catalog-views-transact-sql) | Einige – siehe [Einzelne Sichten](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/catalog-views-transact-sql)
+| Tabellenpartitionierung | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes) | Unterstützt – [Nur primäre Dateigruppe](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes) |
+| Temporäre Tabellen | [Lokal und global](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql#temporary-tables) | [Nur lokal](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql#temporary-tables) |
+| Temporäre Tabellen | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables) | [Unterstützt](sql-database-temporal-tables.md) |
+| Transaktionen | [Unterstützt](https://docs.microsoft.com/sql/t-sql/language-elements/transactions-transact-sql) | [Unterstützt](https://docs.microsoft.com/sql/t-sql/language-elements/transactions-transact-sql) |
+| Variablen | [Unterstützt](https://docs.microsoft.com/sql/t-sql/language-elements/variables-transact-sql) | [Unterstützt](https://docs.microsoft.com/sql/t-sql/language-elements/variables-transact-sql) | 
+| Transparent Data Encryption (TDE)  | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) |
+| Windows Server-Failoverclustering | [Unterstützt](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server) | Nicht unterstützt – siehe [aktive Georeplikation](sql-database-geo-replication-overview.md) |
+| XML-Indizes | [Unterstützt](https://docs.microsoft.com/sql/t-sql/statements/create-xml-index-transact-sql) | [Unterstützt](https://docs.microsoft.com/sql/t-sql/statements/create-xml-index-transact-sql) |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen über den Dienst für Azure SQL-Datenbank finden Sie unter [Was ist SQL Database? Einführung in SQL-Datenbank](sql-database-technical-overview.md)
-- Eine Übersicht über logische Azure SQL-Server finden Sie unter [SQL Database logical server overview (Übersicht über logische SQL-Datenbankserver)](sql-database-server-overview.md)
-- Unter [Übersicht zu Azure SQL-Datenbank](sql-database-overview.md) finden Sie eine Übersicht über Azure SQL-Datenbanken.
-- Informationen zur Unterstützung von Transact-SQL und Unterschiede finden Sie unter [Azure SQL-Datenbank – Abweichungen bei Transact-SQL](sql-database-transact-sql-information.md).
-- Informationen zu bestimmten Ressourcenkontingenten und Einschränkungen basierend auf Ihrer **Dienstebene**. Eine Übersicht über die Dienstebenen finden Sie unter [SQL-Datenbanken-Dienstebenen](sql-database-service-tiers.md).
-- Eine Übersicht über Sicherheit finden Sie unter [Azure SQL Database Security Overview](sql-database-security-overview.md) (Übersicht über die Sicherheit von Azure SQL-Datenbank).
-- Informationen zur Verfügbarkeit von Treibern und Unterstützung für SQL-Datenbank finden Sie unter [Verbindungsbibliotheken für SQL-Datenbank und SQL Server](sql-database-libraries.md).
+- Informationen über den Azure SQL-Datenbank-Dienst finden Sie unter [Was ist SQL Database? Einführung in SQL-Datenbank](sql-database-technical-overview.md).
+- Informationen zur Transact-SQL-Unterstützung und zu den Unterschieden finden Sie unter [Auflösen von Transact-SQL-Unterschieden während der Migration zur SQL-Datenbank](sql-database-transact-sql-information.md).
 

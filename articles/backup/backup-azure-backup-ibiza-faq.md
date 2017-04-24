@@ -16,8 +16,9 @@ ms.topic: get-started-article
 ms.date: 10/21/2016
 ms.author: markgal;trinadhk;
 translationtype: Human Translation
-ms.sourcegitcommit: e12d533ac5befe020c0aad4aa64ca9ed50349c3d
-ms.openlocfilehash: 271f447a36f42330ed7b8dea78b32c06eebdeda6
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: e5ef305d926a57e32cdebd44f3dbe2185c735dd4
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -39,11 +40,7 @@ Recovery Services-Tresore unterstützen beide Modelle.  Sie können einen im kla
 Sicherungen von klassischen virtuellen Computern in einem Sicherungstresor werden nicht automatisch zu Recovery Services-Tresoren migriert, wenn Sie die virtuellen Computer vom klassischen Modus zum Resource Manager-Modus migrieren. Führen Sie die folgenden Schritte aus, um Sicherungen virtueller Computer zu migrieren:
 
 1. Wechseln Sie im Sicherungstresor zur Registerkarte **Geschützte Elemente** , und wählen Sie den virtuellen Computer aus. Klicken Sie auf [Schutz beenden](backup-azure-manage-vms-classic.md#stop-protecting-virtual-machines). Aktivieren Sie die Option *Zugeordnete Sicherungsdaten löschen***nicht**.
-2. Migrieren Sie den virtuellen Computer vom klassischen Modus zum Resource Manager-Modus. Stellen Sie sicher, dass Speicher und Netzwerk, die dem virtuellen Computer entsprechen, auch zum Resource Manager-Modus migriert werden.
-3. Erstellen Sie einen Recovery Services-Tresor, und konfigurieren Sie die Sicherung auf dem migrierten virtuellen Computer mithilfe der Aktion **Sicherung** oben auf dem Tresordashboard. Erfahren Sie mehr darüber, wie Sie [Sicherungen im Recovery Services-Tresor ermöglichen](backup-azure-vms-first-look-arm.md)
-
-
-
-<!--HONumber=Feb17_HO3-->
-
+2. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zum Menü **Erweiterungen** für die VM, und deinstallieren Sie die Erweiterung **VMSnapshot/VMSnapshotLinux**.
+3. Migrieren Sie den virtuellen Computer vom klassischen Modus zum Resource Manager-Modus. Stellen Sie sicher, dass Speicher und Netzwerk, die dem virtuellen Computer entsprechen, auch zum Resource Manager-Modus migriert werden.
+4. Erstellen Sie einen Recovery Services-Tresor, und konfigurieren Sie die Sicherung auf dem migrierten virtuellen Computer mithilfe der Aktion **Sicherung** oben auf dem Tresordashboard. Erfahren Sie mehr darüber, wie Sie [Sicherungen im Recovery Services-Tresor ermöglichen](backup-azure-vms-first-look-arm.md)
 

@@ -7,9 +7,5 @@
 | Anzahl Tags (pro Ressource oder Ressourcengruppe) |15 |15 |
 | Tagschlüssellänge |512 |512 |
 | Tagwertlänge |256 |256 |
-
-
-
-<!--HONumber=Feb17_HO1-->
-
+| Ressourcen in exportierten Vorlagen |200 |200 |
 

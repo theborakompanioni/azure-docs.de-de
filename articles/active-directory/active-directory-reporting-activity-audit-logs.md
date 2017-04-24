@@ -15,9 +15,9 @@ ms.workload: identity
 ms.date: 04/07/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
-ms.openlocfilehash: aef5bce6f440f4a0a57763f915d307297f50281b
-ms.lasthandoff: 04/10/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: d88f8bed0cbd14ee49986d6749396731a810034b
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -75,7 +75,6 @@ Sie können die Überwachungsdaten mit den folgenden Feldern filtern, um die gem
 - Datumsbereich
 - Initiiert von (Akteur)
 - Kategorie
-- Kategorie
 - Aktivitätsressourcentyp
 - Aktivität
 
@@ -92,7 +91,7 @@ Mögliche Werte:
 
 Wenn Sie einen benutzerdefinierten Zeitraum auswählen, können Sie eine Startzeit und eine Endzeit konfigurieren.
 
-Bei Verwendung des Filters **Initiiert von (Akteur)** können Sie den Namen eines Akteurs oder dessen Benutzerprinzipalnamen (User Principal Name, UPN) definieren.
+Bei Verwendung des Filters **Initiiert von** können Sie den Namen eines Akteurs oder dessen Benutzerprinzipalnamen (User Principal Name, UPN) definieren.
 
 Bei Verwendung des Filters **Kategorie** können Sie eine der folgenden Filteroptionen auswählen:
 
@@ -182,7 +181,7 @@ Der Filter **Aktivität** basiert auf der getroffenen Auswahl für „Kategorie�
 | Kernverzeichnis| Verzeichnis| Eigenschaften für Rights Management festlegen|
 | Kernverzeichnis| Verzeichnis| Update Company (Unternehmen aktualisieren)|
 | Kernverzeichnis| Benutzer| Benutzer hinzufügen|
-| Kernverzeichnis| Benutzer| Convert Federated User To Managed (Verbundbenutzerbenutzer in verwalteten Benutzer konvertieren)|
+| Kernverzeichnis| Benutzer| Convert Federated User To Managed (Verbundbenutzer in verwalteten Benutzer konvertieren)|
 | Kernverzeichnis| Benutzer| Create Application Password For User (Anwendungskennwort für Benutzer erstellen)|
 | Kernverzeichnis| Group| Mitglied zur Gruppe hinzufügen|
 | Kernverzeichnis| Group| Gruppe hinzufügen|
@@ -204,7 +203,7 @@ Der Filter **Aktivität** basiert auf der getroffenen Auswahl für „Kategorie�
 | Kernverzeichnis| Benutzer| Remove Scoped Member From Role (Zugeordnetes Mitglied aus Rolle entfernen)|
 | Kernverzeichnis| Group| Gruppe aktualisieren|
 | Kernverzeichnis| Group| Add Owner To Group (Besitzer zu Gruppe hinzufügen)|
-| Kernverzeichnis| Group| Finish Applying Group Based License To Users (Abschließen der gruppenbasierten Lizenzzuweisung zu Benutzern)|
+| Kernverzeichnis| Group| Finish Applying Group Based License To Users (Gruppenbasierte Lizenzzuweisung zu Benutzern fertig stellen)|
 | Kernverzeichnis| Group| Remove App Role Assignment From Group (App-Rollenzuweisung von Gruppe entfernen)|
 | Kernverzeichnis| Group| Set Group To Be Managed By User (Gruppe für Verwaltung durch Benutzer festlegen)|
 | Kernverzeichnis| Anwendung| Add Oauth2Permissiongrant (Oauth2Permissiongrant hinzufügen)|
@@ -311,7 +310,7 @@ Mit Überwachungsberichten, die auf Anwendungen basieren, können Sie beispielsw
 * Haben sich die Namen von Anwendungen geändert?
 * Wer hat die Zustimmung zu einer Anwendung erteilt?
 
-Wenn Sie nur Überwachungsdaten überprüfen möchten, die sich auf Ihre Anwendungen beziehen, können Sie die gefilterte Ansicht unter **Überwachungsprotokolle** im Abschnitt **Aktivität** des Blatts **Unternehmensanwendungen** verwenden. Bei diesem Einstiegspunkt ist für **Aktivitätsressourcentyp** bereits vorab die Option **Anwendung** ausgewählt.
+Wenn Sie nur Überwachungsdaten überprüfen möchten, die sich auf Ihre Anwendungen beziehen, können Sie die gefilterte Ansicht unter **Überwachungsprotokolle** im Abschnitt **Aktivität** des Blatts **Unternehmensanwendungen** verwenden. Bei diesem Einstiegspunkt ist für **Aktivitätsressourcentyp** bereits vorab die Option **Unternehmensanwendungen** ausgewählt.
 
 ![Überwachungsprotokolle](./media/active-directory-reporting-activity-audit-logs/134.png "Überwachungsprotokolle")
 
