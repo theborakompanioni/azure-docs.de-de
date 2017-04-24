@@ -17,6 +17,7 @@ ms.author: curtand
 translationtype: Human Translation
 ms.sourcegitcommit: 8f171456f74925eba16ebd6f56ced558a11f9d99
 ms.openlocfilehash: 6c366a2b7e5017bbe67cf1dbefc0baec6cf1aed3
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -38,7 +39,7 @@ Fügen Sie Benutzer hinzu, um Ihr Verzeichnis aufzufüllen. In diesem Artikel wi
 > [!IMPORTANT]
 > Achten Sie auf die folgenden Probleme, die beim Hinzufügen eines Benutzerkontos auftreten können, wenn Ihre Organisation mehr als eine Domäne verwendet:
 >
-> * Wenn Sie Benutzerkonten mit dem gleichen Benutzerprinzipalnamen (User Principal Name, UPN) domänenübergreifend hinzufügen möchten, fügen Sie **zuerst** beispielsweise geoffgrisso@contoso.onmicrosoft.com, und **anschließend ** geoffgrisso@contoso.com hinzu.
+> * Wenn Sie Benutzerkonten mit dem gleichen Benutzerprinzipalnamen (User Principal Name, UPN) domänenübergreifend hinzufügen möchten, fügen Sie **zuerst** beispielsweise geoffgrisso@contoso.onmicrosoft.com, und **anschließend** geoffgrisso@contoso.com hinzu.
 > * Fügen Sie geoffgrisso@contoso.com **nicht** vor geoffgrisso@contoso.onmicrosoft.com hinzu. Diese Reihenfolge ist wichtig, und es kann umständlich sein, diesen Vorgang rückgängig zu machen.
 >
 >
@@ -84,9 +85,4 @@ Anschließend können Sie die Optionen zur Zugriffssteuerung für Gastbenutzer �
 <!--Image references-->
 [1]: ./media/active-directory-create-users/RBACDirConfigTab.png
 [2]: ./media/active-directory-create-users/RBACGuestAccessControls.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 
