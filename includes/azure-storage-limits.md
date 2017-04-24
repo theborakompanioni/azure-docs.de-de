@@ -16,14 +16,14 @@
 | Maximale Größe einer Dateifreigabe |5 TB |
 | Maximale Größe einer Datei in einer Dateifreigabe |1 TB |
 | Maximale Anzahl an Dateien in einer Dateifreigabe |Die einzige Einschränkung besteht in der Gesamtkapazität der Dateifreigabe von 5 TB. |
-| Max. 8 KB IOPS pro Freigabe |1000 |
+| Max. IOPS pro Freigabe |1000 |
 | Maximale Anzahl an Dateien in einer Dateifreigabe |Die einzige Einschränkung besteht in der Gesamtkapazität der Dateifreigabe von 5 TB. |
 | Maximale Anzahl an Blob-Containern, Blobs, Dateifreigaben, Tabellen, Warteschlangen, Entitäten oder Meldungen pro Speicherkonto |Die einzige Einschränkung besteht in der Speicherkontokapazität von 500 TB. |
 | Maximale Anzahl der gespeicherten Zugriffsrichtlinien pro Container, Dateifreigabe, Tabelle oder Warteschlange |5 |
 | Maximale Anforderungsrate pro Speicherkonto |Blobs: 20.000 Anforderungen pro Sekunde für Blobs eine beliebigen gültigen Größe (nur durch die Eingangs-/Ausgangsgrenzen des Kontos beschränkt) <br />Dateien: 1000 IOPS (8 KB) pro Dateifreigabe <br />Warteschlangen: 20.000 Nachrichten pro Sekunde (ausgehend von einer Nachrichtengröße von 1 KB)<br />Tabellen: 20.000 Transaktionen pro Sekunde (ausgehend von einer Entitätsgröße von 1 KB) |
 | Zieldurchsatz bei Einzel-Blob |Bis zu 60 MB pro Sekunde, oder bis zu 500 Anforderungen pro Sekunde |
-| Zieldurchsatz bei Einzelwarteschlange (Meldungen mit&1; KB) |Bis zu 2000 Meldungen pro Sekunde |
-| Zieldurchsatz bei einzelner Tabellenpartition (Entitäten mit&1; KB) |Bis zu 2000 Entitäten pro Sekunde |
+| Zieldurchsatz bei Einzelwarteschlange (Meldungen mit 1 KB) |Bis zu 2000 Meldungen pro Sekunde |
+| Zieldurchsatz bei einzelner Tabellenpartition (Entitäten mit 1 KB) |Bis zu 2000 Entitäten pro Sekunde |
 | Zieldurchsatz für eine einzelne Dateifreigabe |Bis 60 MB pro Sekunde |
 | Max. Eingang<sup>2</sup> pro Speicherkonto (US-Regionen) |10 GBit/s mit aktiviertem GRS/ZRS<sup>3</sup>, 20 GBit/s bei LRS |
 | Max. Ausgang<sup>2</sup> pro Speicherkonto (US-Regionen) |20 GBit/s mit aktiviertem RA-GRS/GRS/ZRS<sup>3</sup>, 30 GBit/s bei LRS |

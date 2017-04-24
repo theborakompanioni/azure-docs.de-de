@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 03/27/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
-ms.openlocfilehash: b575e92d2140ecc0e0f30186302e7733e08d0415
-ms.lasthandoff: 04/04/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 24ddf0d81e52960bd582861d324585b8ba0ca357
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -25,7 +25,7 @@ ms.lasthandoff: 04/04/2017
 
 [!INCLUDE [app-service-web-selector-get-started](../../includes/app-service-web-selector-get-started.md)] 
 
-Dieser Schnellstart hilft Ihnen bei der Bereitstellung Ihrer ersten ASP.NET-Web-App in [Azure App Service](../app-service/app-service-value-prop-what-is.md) in nur wenigen Minuten. Am Ende des Tutorials verfügen Sie über eine einfache, in der Cloud ausgeführte Web-App.
+Dieser Schnellstart hilft Ihnen bei der Bereitstellung Ihrer ersten ASP.NET-Web-App in [Azure App Service](../app-service/app-service-value-prop-what-is.md) in nur wenigen Minuten. Am Ende des Tutorials verfügen Sie über eine einfache Web-App, die in der Cloud ausgeführt wird.
 
 ![ASP.NET-Web-App in Azure App Service](./media/app-service-web-get-started-dotnet/updated-azure-web-app.png)
 
@@ -159,7 +159,7 @@ Sehen Sie sich die soeben erstellte Web-App im Azure-Portal an.
 
 Melden Sie sich hierzu bei [https://portal.azure.com](https://portal.azure.com) an.
 
-Klicken Sie im linken Menü auf **App Service** und anschließend auf den Namen Ihrer Azure-Web-App.
+Klicken Sie im linken Menü auf **App Services** und anschließend auf den Namen Ihrer Azure-Web-App.
 
 ![Portalnavigation zur Azure-Web-App](./media/app-service-web-get-started-dotnet/access-portal.png)
 

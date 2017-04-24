@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 04/11/2017
 ms.author: yushwang;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 03ba7f0df69da073fd876fc4c06121952e594a02
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: d7c4c5b118dade39bd47ae2c7836157589fcb45a
+ms.lasthandoff: 04/17/2017
 
 
 ---
@@ -33,21 +33,21 @@ Sie benötigen ein VPN-Gerät, um eine standortübergreifende S2S-VPN-Verbindung
 
 ###<a name="items-to-note-when-viewing-the-tables"></a>Was Sie beim Anzeigen der Tabellen beachten sollten:
 
-* Die Terminologie für Azure-VPN-Gateways wurde geändert. Die Funktionalität hat sich nicht geändert, nur die Namen.
+* Die Terminologie für Azure-VPN-Gateways wurde geändert. Dies ist nicht mit einer Änderung der Funktionalität verbunden. Es ändern sich nur die Namen.
   * Statisches Routing = Richtlinienbasiert (PolicyBased)
   * Dynamisches Routing = Routenbasiert (RouteBased)
 * Die Spezifikationen für Hochleistungs-VPN-Gateways und routenbasierte VPN-Gateways bleiben dieselben, sofern nicht anders angegeben. Beispielsweise sind die überprüften VPN-Geräte, die mit den routenbasierten VPN-Gateways kompatibel sind, auch mit dem Azure-Hochleistungs-VPN-Gateway kompatibel.
 
 > [!NOTE]
-> Beim Konfigurieren einer Standort-zu-Standort-Verbindung ist eine öffentliche IPv4-IP-Adresse für das VPN-Gerät erforderlich.                                                                                                                                                                               
+> Beim Konfigurieren einer Standort-zu-Standort-Verbindung ist eine öffentliche IPv4-IP-Adresse für das VPN-Gerät erforderlich.
+>                
 
-
-## <a name="devicetable"></a>Überprüfte VPN-Geräte
+## <a name="devicetable"></a>Überprüfte VPN-Geräte und Konfigurationshandbücher für Geräte
 Wir haben in Zusammenarbeit mit Geräteherstellern eine Reihe von VPN-Standardgeräten getestet. Alle Geräte der in der folgenden Liste aufgeführten Gerätefamilien sollten mit Azure-VPN-Gateways kompatibel sein. Unter [Informationen zu VPN Gateway](vpn-gateway-about-vpngateways.md) können Sie den Gatewaytyp ermitteln, der zum Konfigurieren der gewünschten Lösung erstellt werden muss.
 
-Hilfreiche Informationen zur Konfiguration des VPN-Geräts finden Sie unter den Links für die entsprechende Gerätefamilie.  Die Links zu den Konfigurationsanleitungen werden nach bestem Wissen bereitgestellt. Support für VPN-Geräte erhalten Sie vom jeweiligen Gerätehersteller.
+Hilfreiche Informationen zur Konfiguration des VPN-Geräts finden Sie unter den Links für die entsprechende Gerätefamilie. Die Links zu den Konfigurationsanleitungen werden nach bestem Wissen bereitgestellt. Support für VPN-Geräte erhalten Sie vom jeweiligen Gerätehersteller.
 
-|**Hersteller**          |**Gerätefamilie**     |**Betriebssystemversion (Min.)** |**PolicyBased** |**RouteBased** |
+|**Hersteller**          |**Gerätefamilie**     |**Betriebssystemversion (Min.)** |**PolicyBased-Konfiguration – Anleitung** |**RouteBased-Konfiguration – Anleitung** |
 | ---                | ---                  | ---                   | ---            | ---           |
 | A10 Networks, Inc. |Thunder CFW           |ACOS 4.1.1             |Nicht kompatibel  |[Konfigurationshandbuch](https://www.a10networks.com/resources/deployment-guides/a10-thunder-cfw-ipsec-vpn-interoperability-azure-vpn-gateways)|
 | Allied Telesis     |VPN-Router der AR-Serie |2.9.2                  |In Kürze verfügbar     |Nicht kompatibel  |
@@ -81,7 +81,7 @@ Falls Ihr Gerät nicht in der Tabelle mit den überprüften VPN-Geräten enthalt
 ## <a name="editing"></a>Bearbeiten von Gerätekonfigurationsbeispielen
 Nachdem Sie die bereitgestellte Konfigurationsvorlage für das VPN-Gerät heruntergeladen haben, müssen Sie einige der Werte entsprechend den Einstellungen Ihrer Umgebung ersetzen.
 
-###<a name="to-edit-a-sample"></a>So bearbeiten Sie eine Vorlage:
+### <a name="to-edit-a-sample"></a>So bearbeiten Sie eine Vorlage:
 
 1. Öffnen Sie die Vorlage im Editor.
 2. Suchen und ersetzen Sie alle <*text*>-Zeichenfolgen mit den Werten, die für Ihre Umgebung gelten. Schließen Sie dabei unbedingt „<“ und „>“ mit ein. Wenn ein Name angegeben ist, sollte der ausgewählte Name eindeutig sein. Sehen Sie zuerst in der Dokumentation des Geräteherstellers nach, falls ein Befehl nicht funktioniert.
@@ -106,7 +106,7 @@ Nachdem Sie die bereitgestellte Konfigurationsvorlage für das VPN-Gerät herunt
 > 
 >
 
-In den folgenden Tabellen:
+Für die folgenden Tabellen gilt:
 
 * SA = Sicherheitszuordnung
 * IKE-Phase 1 wird auch als „Hauptmodus“ bezeichnet.
@@ -185,7 +185,7 @@ Die folgende Tabelle enthält IPsec-SA-Angebote (IKE-Schnellmodus). Angebote wer
 >
 >
 
-###<a name="feb-16-2017"></a>16. Februar 2017
+### <a name="feb-16-2017"></a>16. Februar 2017
 
 **Palo Alto Networks-Geräte mit älteren Versionen als 7.1.4** für routenbasiertes Azure-VPN: Führen Sie die folgenden Schritte aus, wenn Sie VPN-Geräte von Palo Alto Networks mit einer älteren PAN-OS-Version als 7.1.4 verwenden und Konnektivitätsprobleme mit routenbasierten Azure-VPN-Gateways auftreten:
 

@@ -14,9 +14,9 @@ ms.topic: get-started-article
 ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: c4e1ecc824b09fd7523cdc7a29559adca19488f3
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: a06ba41193f00f4aa2c7af4e5430ed15f9bb877c
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -108,7 +108,7 @@ Wenn Sie die Telemetrie, die von einer Web-App an Application Insights gesendet 
 
 ![Öffnen Sie unter „portal.azure.com“ die Ressource Ihrer App, und klicken Sie auf „Einstellungen“ > „Browser“.](./media/app-insights-javascript/03.png)
 
-*Noch keine Daten verfügbar? Klicken Sie am oberen Seitenrand auf**Aktualisieren**. Immer noch nichts? Informationen hierzu finden Sie unter [Problembehandlung](app-insights-troubleshoot-faq.md).*
+*Noch keine Daten verfügbar? Klicken Sie am oberen Seitenrand auf **Aktualisieren**. Immer noch nichts? Informationen hierzu finden Sie unter [Problembehandlung](app-insights-troubleshoot-faq.md).*
 
 Das Blatt „Browser“ ist ein [Metrik-Explorer-Blatt](app-insights-metrics-explorer.md) mit voreingestellter Filter- und Diagrammauswahl. Sie können bei Bedarf den Zeitbereich, die Filter und die Diagrammkonfiguration ändern und das Ergebnis als Favorit speichern. Klicken Sie auf **Standard wiederherstellen** , um zur ursprünglichen Blattkonfiguration zurückzukehren.
 
@@ -230,6 +230,6 @@ Möchten Sie herausfinden, wofür die Benutzer Ihre App verwenden?
 ## <a name="next"></a> Nächste Schritte
 * [Nutzung nachverfolgen](app-insights-web-track-usage.md)
 * [Benutzerdefinierte Ereignisse und Metriken](app-insights-api-custom-events-metrics.md)
-* [Erstellen-Messen-Lernen](app-insights-overview-usage.md)
+* [Erstellen-Messen-Lernen](app-insights-web-track-usage.md)
 
 

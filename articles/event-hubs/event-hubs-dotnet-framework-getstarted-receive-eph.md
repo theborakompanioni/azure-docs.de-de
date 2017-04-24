@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 03/08/2017
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 38fe7818771f6a6965cb324631d0935959576541
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 6c309a14e00324a9335bde61fe175ec3906c066d
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -28,18 +28,18 @@ Event Hubs ist ein Dienst, der große Mengen von Ereignisdaten (Telemetriedaten)
 
 In diesem Tutorial lernen Sie, eine .NET Framework-Konsolenanwendung zum Empfangen von Nachrichten von einem Event Hub mithilfe des **[Ereignisprozessorhosts][EventProcessorHost]** zu schreiben. Informationen zum Senden von Ereignissen mithilfe von .NET Framework finden Sie im Artikel [Senden von Ereignissen an Azure Event Hubs mithilfe von .NET Framework](event-hubs-dotnet-framework-getstarted-send.md). Alternativ können Sie auch links im Inhaltsverzeichnis auf die entsprechende Sendesprache klicken.
 
-Der [Ereignisprozessorhost][EventProcessorHost] ist eine .NET-Klasse, die das Empfangen von Ereignissen von Event Hubs durch Verwalten von permanenten Prüfpunkten und parallelen Empfangsvorgängen von diesen Event Hubs vereinfacht. Mit dem [Ereignisprozessorhost][Event Processor Host] können Sie Ereignisse selbst dann auf mehrere Empfänger aufteilen, wenn sie in verschiedenen Knoten gehostet werden. Dieses Beispiel zeigt, wie der [Ereignisprozessorhost][EventProcessorHost] für einen einzelnen Empfänger verwendet wird. Das Beispiel [Skalieren der Ereignisverarbeitung][Scale out Event Processing with Event Hubs] veranschaulicht, wie der [Ereignisprozessorhost][EventProcessorHost] mit mehreren Empfängern verwendet wird.
+Der [Ereignisprozessorhost][EventProcessorHost] ist eine .NET-Klasse, die das Empfangen von Ereignissen von Event Hubs durch die Verwaltung von permanenten Prüfpunkten und parallelen Empfangsvorgängen von diesen Event Hubs vereinfacht. Mit dem [Ereignisprozessorhost][Event Processor Host] können Sie Ereignisse selbst dann auf mehrere Empfänger aufteilen, wenn sie in verschiedenen Knoten gehostet werden. Dieses Beispiel zeigt, wie der [Ereignisprozessorhost][EventProcessorHost] für einen einzelnen Empfänger verwendet wird. Das Beispiel [Skalieren der Ereignisverarbeitung][Scale out Event Processing with Event Hubs] veranschaulicht, wie der [Ereignisprozessorhost][EventProcessorHost] mit mehreren Empfängern verwendet wird.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
 * [Microsoft Visual Studio 2015 oder höher](http://visualstudio.com) Die Screenshots in diesem Tutorial zeigen Visual Studio 2017.
-* Ein aktives Azure-Konto. Falls Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Konto erstellen. Weitere Informationen finden Sie unter [Kostenloses Azure-Testkonto](https://azure.microsoft.com/free/).
+* Ein aktives Azure-Konto. Falls Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Konto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/free/).
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Erstellen eines Event Hubs-Namespace und eines Event Hubs
 
-Verwenden Sie zunächst das [Azure-Portal](https://portal.azure.com), um einen Namespace vom Typ „Event Hubs“ zu erstellen, und erhalten Sie so die Verwaltungsanmeldeinformationen, die Ihre Anwendung benötigt, um mit dem Event Hub zu kommunizieren. Folgen Sie dem Ablauf in [diesem Artikel](event-hubs-create.md), um einen Namespace und einen Event Hub zu erstellen, und fahren Sie mit den folgenden Schritten fort.
+Verwenden Sie zunächst das [Azure-Portal](https://portal.azure.com), um einen Namespace vom Typ „Event Hubs“ zu erstellen, und beschaffen Sie die Verwaltungsanmeldeinformationen, die Ihre Anwendung für die Kommunikation mit dem Event Hub benötigt. Folgen Sie dem Ablauf in [diesem Artikel](event-hubs-create.md), um einen Namespace und einen Event Hub zu erstellen, und fahren Sie dann mit den folgenden Schritten fort.
 
 ## <a name="create-an-azure-storage-account"></a>Erstellen eines Azure-Speicherkontos
 
@@ -152,7 +152,7 @@ Zur Verwendung des [Ereignisprozessorhosts][EventProcessorHost] benötigen Sie e
 
 12. Führen Sie das Programm aus, und stellen Sie sicher, dass keine Fehler auftreten.
   
-Glückwunsch! Soeben haben Sie Nachrichten von einem Event Hub mithilfe eines Ereignisprozessorhosts erhalten.
+Glückwunsch! Soeben haben Sie mithilfe eines Ereignisprozessorhosts Nachrichten von einem Event Hub erhalten.
 
 
 > [!NOTE]

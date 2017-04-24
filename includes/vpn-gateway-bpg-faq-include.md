@@ -28,6 +28,8 @@ Das Azure-VPN-Gateway kündigt Ihren lokalen BGP-Geräten gegenüber folgende Ro
 ### <a name="can-i-advertise-default-route-00000-to-azure-vpn-gateways"></a>Kann ich die Standardroute (0.0.0.0/0) für Azure VPN Gateways ankündigen?
 Ja.
 
+Beachten Sie Folgendes: Es wird erzwungen, dass der gesamte ausgehende VNet-Datenverkehr über Ihren lokalen Standort verläuft. Außerdem wird verhindert, dass die VNet-VMs öffentlichen Kommunikationsverkehr aus dem Internet direkt akzeptieren, z.B. per RDP oder SSH aus dem Internet zu den VMs.
+
 ### <a name="can-i-advertise-the-exact-prefixes-as-my-virtual-network-prefixes"></a>Kann ich die gleichen Präfixe wie meine Virtual Network-Präfixe ankündigen?
 
 Nein. Das Ankündigen der gleichen Präfixe wie Ihre Virtual Network-Adresspräfixe wird von der Azure-Plattform blockiert oder gefiltert. Sie können jedoch ein Präfix ankündigen, das eine Obermenge der Inhalte Ihres virtuellen Netzwerks ist. 
@@ -65,9 +67,4 @@ Das lokale Azure-Netzwerkgateway gibt die anfänglichen Adresspräfixe für das 
 
 ### <a name="what-should-i-add-to-my-on-premises-vpn-device-for-the-bgp-peering-session"></a>Was muss ich meinem lokalen VPN-Gerät für die BGP-Peeringsitzung hinzufügen?
 Sie müssen eine Hostroute der Azure-BGP-Peer-IP-Adresse auf Ihrem VPN-Gerät hinzufügen, die auf den IPsec-S2S-VPN-Tunnel verweist. Lautet die Azure-VPN-Peer-IP-Adresse also etwa 10.12.255.30, müssen Sie eine Hostroute für 10.12.255.30 mit einer Nexthop-Schnittstelle der entsprechenden IPSec-Tunnelschnittstelle auf Ihrem VPN-Gerät hinzufügen.
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

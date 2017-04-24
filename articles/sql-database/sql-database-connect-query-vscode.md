@@ -15,12 +15,12 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 03/17/2017
+ms.date: 04/17/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: ff5d156ab2b701233c4cdbf08e3d6e517c01b9fb
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 5b623c78f8b8eac846c5ca244f1e0b25ee4f400f
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -55,9 +55,11 @@ Rufen Sie den vollqualifizierten Servernamen für Ihren Azure SQL-Datenbankserve
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 2. Wählen Sie im Menü auf der linken Seite die Option **SQL-Datenbanken**, und klicken Sie auf der Seite **SQL-Datenbanken** auf Ihre Datenbank. 
-3. Suchen Sie im Azure-Portal auf der Seite für Ihre Datenbank unter **Zusammenfassung** nach Ihrer Datenbank, und kopieren Sie den **Servernamen** zur späteren Verwendung in diesem Schnellstart.
+3. Überprüfen Sie auf der Seite **Übersicht** für Ihre Datenbank den vollqualifizierten Servernamen wie in der folgenden Abbildung dargestellt. Sie können auf den Servernamen zeigen, um die Option **Klicken Sie zum Kopieren** anzuzeigen.
 
-    <img src="./media/sql-database-connect-query-vscode/connection-information.png" alt="connection information" style="width: 780px;" />
+   ![Verbindungsinformationen](./media/sql-database-connect-query-ssms/connection-information.png) 
+
+4. Falls Sie die Anmeldeinformationen für Ihren Azure SQL-Datenbankserver vergessen haben, können Sie zur Seite des SQL-Datenbankservers navigieren, um den Serveradministrator-Benutzernamen anzuzeigen und ggf. das Kennwort zurückzusetzen. 
 
 ## <a name="set-language-mode-to-sql"></a>Festlegen des Sprachmodus auf SQL
 
@@ -65,17 +67,22 @@ Legen Sie den Sprachmodus in Visual Studio Code auf **SQL** fest, um die Verwend
 
 1. Öffnen Sie ein neues Visual Studio Code-Fenster. 
 
-2. Drücken Sie **⌘+K,M** bzw. **STRG+K,M** (Mac- bzw. Windows-Option), geben Sie **SQL** ein, und drücken Sie die **EINGABETASTE**, um den Sprachmodus auf SQL festzulegen. 
+2. Klicken Sie in der unteren rechten Ecke der Statusleiste auf **Nur Text**.
+3. Geben Sie im angezeigten Dropdownmenü **Sprachmodus auswählen** den Modus **SQL** ein, und drücken Sie anschließend die **EINGABETASTE**, um das Festlegen des Sprachmodus auf „SQL“ zu bestätigen. 
 
-<img src="./media/sql-database-connect-query-vscode/vscode-language-mode.png" alt="SQL language mode" style="width: 780px;" />
+   ![Sprachmodus „SQL“](./media/sql-database-connect-query-vscode/vscode-language-mode.png)
 
-## <a name="connect-to-the-server"></a>Herstellen einer Verbindung mit dem Server
+## <a name="connect-to-your-database-in-the-sql-database-logical-server"></a>Herstellen einer Verbindung mit Ihrer Datenbank im logischen SQL-Datenbankserver
 
 Verwenden Sie Visual Studio Code, um eine Verbindung mit Ihrem Azure SQL-Datenbankserver herzustellen.
 
+> [!IMPORTANT]
+> Stellen Sie vor dem Fortfahren sicher, dass Sie über alle Informationen zu Server, Datenbank und Anmeldung verfügen. Wenn Sie mit dem Eingeben der Informationen für das Verbindungsprofil begonnen haben und zu Visual Studio Code wechseln, müssen Sie mit dem Erstellen des Verbindungsprofils neu beginnen.
+>
+
 1. Drücken Sie in VS Code die Tastenkombination **STRG+UMSCHALT+P** (oder **F1**), um die Befehlspalette zu öffnen.
 
-2. Geben Sie **sqlcon** ein, drücken Sie die **EINGABETASTE**, und legen Sie Ihre Sprache auf **SQL** fest.
+2. Geben Sie **sqlcon** ein, und drücken Sie die **EINGABETASTE**.
 
 3. Drücken Sie die **EINGABETASTE**, um die Option **Create Connection Profile** (Verbindungsprofil erstellen) auszuwählen. Ein Verbindungsprofil für Ihre SQL Server-Instanz wird erstellt.
 
@@ -97,7 +104,7 @@ Verwenden Sie Visual Studio Code, um eine Verbindung mit Ihrem Azure SQL-Datenba
 
 6. Überprüfen Sie die Verbindung in der Statusleiste.
 
-   <img src="./media/sql-database-connect-query-vscode/vscode-connection-status.png" alt="Connection status" style="width: 780px;" />
+   ![Verbindungsstatus](./media/sql-database-connect-query-vscode/vscode-connection-status.png)
 
 ## <a name="query-data"></a>Abfragen von Daten
 
@@ -114,7 +121,7 @@ Verwenden Sie die [SELECT](https://msdn.microsoft.com/library/ms189499.aspx)-Tra
 
 2. Drücken Sie **STRG+UMSCHALT+E**, um Daten aus den Tabellen „Product“ und „ProductCategory“ abzurufen.
 
-    <img src="./media/sql-database-connect-query-vscode/query.png" alt="Query" style="width: 780px;" />
+    ![Abfrage](./media/sql-database-connect-query-vscode/query.png)
 
 ## <a name="insert-data"></a>Einfügen von Daten
 

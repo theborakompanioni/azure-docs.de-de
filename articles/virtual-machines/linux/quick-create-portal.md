@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/03/2017
+ms.date: 04/13/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 25ffd1c5bf289fa98a4b350eb916b386eee7f05c
-ms.lasthandoff: 04/06/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: ab29f01980bc7c3a8f12aaa55ff35baa3bf3f9fb
+ms.lasthandoff: 04/15/2017
 
 ---
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 04/06/2017
 
 Virtuelle Azure-Computer können über das Azure-Portal erstellt werden. Diese Methode bietet eine browserbasierte Benutzeroberfläche zum Erstellen und Konfigurieren von virtuellen Computern und alle zugehörigen Ressourcen. In diesem Schnellstart wird beschrieben, wie Sie mit dem Azure-Portal einen virtuellen Computer erstellen.
 
-[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/en-us/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="create-ssh-key-pair"></a>Erstellen eines SSH-Schlüsselpaars
 
@@ -52,9 +52,9 @@ Melden Sie sich unter „http://portal.azure.com“ beim Azure-Portal an.
 
     ![Eingeben grundlegender Informationen zu Ihrem virtuellen Computer im Portalblatt](./media/quick-create-portal/create-vm-portal-basic-blade.png)  
 
-4. Wählen Sie eine Größe für den virtuellen Computer, und klicken Sie auf **Auswählen**. 
+4. Wählen Sie eine Größe für den virtuellen Computer. Wählen Sie die Option **Alle anzeigen**, oder ändern Sie den Filter **Supported disk type** (Unterstützter Datenträgertyp), um weitere Größen anzuzeigen. 
 
-    ![Auswählen einer Größe für Ihren virtuellen Computer im Portalblatt](./media/quick-create-portal/create-vm-portal-size-blade.png)
+    ![Screenshot: VM-Größen](./media/quick-create-portal/create-linux-vm-portal-sizes.png)  
 
 5. Wählen Sie auf dem Einstellungenblatt **Ja** unter **Verwaltete Datenträger verwenden**, behalten Sie die Standardwerte für die übrigen Einstellungen bei, und klicken Sie auf **OK**.
 
@@ -71,7 +71,7 @@ Standardmäßig sind für in Azure bereitgestellte virtuelle Linux-Computer nur 
 2. Klicken Sie auf dem Blatt für die Ressourcengruppe in der Ressourcenliste auf die **Netzwerksicherheitsgruppe**. Der NSG-Name muss eine Kombination aus dem Namen des virtuellen Computers und dem Suffix „-nsg“ sein.
 3. Klicken Sie auf die Überschrift **Eingangssicherheitsregel**, um die Eingangsregelliste zu öffnen. Die Liste müsste bereits eine Regel für RDP enthalten.
 4. Klicken Sie auf **+ Hinzufügen**, um das Blatt **Eingangssicherheitsregel hinzufügen** zu öffnen.
-5. Geben Sie unter **Name** die Zeichenfolge **nginx** ein, und vergewissern Sie sich, dass **Portbereich** auf „80“ und **Aktion** auf **Zulassen** festgelegt ist. Klicken Sie anschließend auf **OK**.
+5. Geben Sie unter **Name** den Namen **nginx** ein. Stellen Sie sicher, dass **Portbereich** auf 80 und **Aktion** auf **Zulassen** festgelegt ist. Klicken Sie auf **OK**.
 
 
 ## <a name="connect-to-virtual-machine"></a>Herstellen der Verbindung mit dem virtuellen Computer
@@ -104,7 +104,7 @@ apt-get -y install nginx
 
 ## <a name="view-the-ngix-welcome-page"></a>Anzeigen der NGIX-Willkommensseite
 
-Nachdem Sie NGINX installiert und Port 80 auf Ihrem virtuellen Computer für den Zugriff über das Internet geöffnet haben, können Sie nun mit einem Webbrowser Ihrer Wahl die NGINX-Standardwillkommensseite anzeigen. Verwenden Sie dabei den weiter oben dokumentierten Wert von `publicIpAddress`, um die Standardseite zu besuchen. 
+Nachdem Sie NGINX installiert und Port 80 auf Ihrem virtuellen Computer für den Zugriff über das Internet geöffnet haben, können Sie nun mit einem Webbrowser Ihrer Wahl die NGINX-Standardwillkommensseite anzeigen. Verwenden Sie dabei den dokumentierten Wert von `publicIpAddress`, um die Standardseite zu besuchen. 
 
 ![NGINX-Standardwebsite](./media/quick-create-cli/nginx.png) 
 ## <a name="delete-virtual-machine"></a>Löschen des virtuellen Computers

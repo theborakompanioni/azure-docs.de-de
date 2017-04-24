@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 03/08/2017
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 5c326a025a4276ae9b1a777439ed6c728d3e7103
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 306c9c5cb06caa186bc0b7f431a5412dfe810722
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -31,14 +31,14 @@ In diesem Tutorial erfahren Sie, wie Sie über das [Azure-Portal](https://portal
 Für dieses Tutorial benötigen Sie Folgendes:
 
 * [Microsoft Visual Studio 2015 oder höher](http://visualstudio.com) Die Screenshots in diesem Tutorial zeigen Visual Studio 2017.
-* Ein aktives Azure-Konto. Falls Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Konto erstellen. Einzelheiten finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/free/).
+* Ein aktives Azure-Konto. Falls Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Konto erstellen. Weitere Informationen finden Sie unter [Kostenloses Azure-Testkonto](https://azure.microsoft.com/free/).
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Erstellen eines Event Hubs-Namespace und eines Event Hubs
 
-Verwenden Sie zunächst das [Azure-Portal](https://portal.azure.com), um einen Namespace vom Typ „Event Hubs“ zu erstellen, und erhalten Sie so die Verwaltungsanmeldeinformationen, die Ihre Anwendung benötigt, um mit dem Event Hub zu kommunizieren. Folgen Sie dem Ablauf in [diesem Artikel](event-hubs-create.md), um einen Namespace und einen Event Hub zu erstellen, und machen Sie mit folgenden Schritten weiter.
+Verwenden Sie zunächst das [Azure-Portal](https://portal.azure.com), um einen Namespace vom Typ „Event Hubs“ zu erstellen, und beschaffen Sie die Verwaltungsanmeldeinformationen, die Ihre Anwendung für die Kommunikation mit dem Event Hub benötigt. Folgen Sie dem Ablauf in [diesem Artikel](event-hubs-create.md), um einen Namespace und einen Event Hub zu erstellen, und fahren Sie dann mit den folgenden Schritten fort.
 
 ## <a name="create-a-console-application"></a>Erstellen einer Konsolenanwendung
-In diesem Abschnitt schreiben wir eine Windows-Konsolenanwendung, die Ereignisse an den Ereignis-Hub sendet.
+In diesem Abschnitt schreiben wir eine Windows-Konsolenanwendung, die Ereignisse an den Event Hub sendet.
 
 1. Erstellen Sie in Visual Studio mithilfe der Projektvorlage **Konsolenanwendung** ein neues Visual C#-Desktopanwendungsprojekt. Geben Sie dem Projekt den Namen **Sender**.
    
@@ -55,7 +55,7 @@ In diesem Abschnitt schreiben wir eine Windows-Konsolenanwendung, die Ereignisse
     using System.Threading;
     using Microsoft.ServiceBus.Messaging;
     ```
-5. Fügen Sie der **Program** -Klasse die folgenden Felder hinzu, und ersetzen Sie dabei die Platzhalterwerte durch den Namen des im vorigen Abschnitt erstellten Event Hubs und die zuvor gespeicherte Verbindungszeichenfolge auf Namespace-Ebene.
+5. Fügen Sie der **Program**-Klasse die folgenden Felder hinzu, und ersetzen Sie dabei die Platzhalterwerte durch den Namen des im vorigen Abschnitt erstellten Event Hubs und die zuvor gespeicherte Verbindungszeichenfolge auf Namespace-Ebene.
    
     ```csharp
     static string eventHubName = "{Event Hub name}";
@@ -88,7 +88,7 @@ In diesem Abschnitt schreiben wir eine Windows-Konsolenanwendung, die Ereignisse
     ```
    
     Diese Methode sendet kontinuierlich Ereignisse mit einer Verzögerung von 200 ms an den Event Hub.
-7. Fügen Sie abschließend der **Main**-Methode die folgenden Zeilen hinzu:
+7. Fügen Sie abschließend der **Main** -Methode die folgenden Zeilen hinzu:
    
     ```csharp
     Console.WriteLine("Press Ctrl-C to stop the sender process");

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 04/03/2017
+ms.date: 04/13/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 17fb538b33a4a4a2b333ff501e6e729f6000f623
-ms.lasthandoff: 04/06/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 8a86cf64dcd65e74285a1073f7494eba0708ddcd
+ms.lasthandoff: 04/15/2017
 
 ---
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 04/06/2017
 
 Virtuelle Azure-Computer können über das Azure-Portal erstellt werden. Diese Methode bietet eine browserbasierte Benutzeroberfläche zum Erstellen und Konfigurieren von virtuellen Computern und alle zugehörigen Ressourcen. In diesem Schnellstart wird beschrieben, wie Sie mit dem Azure-Portal einen virtuellen Computer erstellen. Nach Abschluss der Bereitstellung stellen wir eine Verbindung mit dem Server her und installieren IIS.
 
-[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/en-us/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 
@@ -42,7 +42,9 @@ Melden Sie sich unter „http://portal.azure.com“ beim Azure-Portal an.
 
     ![Eingeben grundlegender Informationen zu Ihrem virtuellen Computer im Portalblatt](./media/quick-create-portal/create-windows-vm-portal-basic-blade.png)  
 
-5. Wählen Sie eine Größe für den virtuellen Computer, und klicken Sie auf **Auswählen**.
+5. Wählen Sie eine Größe für den virtuellen Computer. Wählen Sie die Option **Alle anzeigen**, oder ändern Sie den Filter **Supported disk type** (Unterstützter Datenträgertyp), um weitere Größen anzuzeigen. 
+
+    ![Screenshot: VM-Größen](./media/quick-create-portal/create-windows-vm-portal-sizes.png)  
 
 6. Wählen Sie auf dem Einstellungenblatt **Ja** unter **Verwaltete Datenträger verwenden**, behalten Sie die Standardwerte für die übrigen Einstellungen bei, und klicken Sie auf **OK**.
 
@@ -58,7 +60,7 @@ Um IIS-Datenverkehr zuzulassen, muss Port 80 für Webdatenverkehr geöffnet werd
 2. Klicken Sie auf dem Blatt für die Ressourcengruppe in der Ressourcenliste auf die **Netzwerksicherheitsgruppe**. Der NSG-Name muss eine Kombination aus dem Namen des virtuellen Computers und dem Suffix „-nsg“ sein.
 3. Klicken Sie auf die Überschrift **Eingangssicherheitsregel**, um die Eingangsregelliste zu öffnen. Die Liste müsste bereits eine Regel für RDP enthalten.
 4. Klicken Sie auf **+ Hinzufügen**, um das Blatt **Eingangssicherheitsregel hinzufügen** zu öffnen.
-5. Geben Sie unter **Name** die Zeichenfolge **IIS** ein, und vergewissern Sie sich, dass **Portbereich** auf „80“ und **Aktion** auf **Zulassen** festgelegt ist. Klicken Sie anschließend auf **OK**.
+5. Geben Sie unter **Name** den Namen **IIS** ein. Stellen Sie sicher, dass **Portbereich** auf 80 und **Aktion** auf **Zulassen** festgelegt ist. Klicken Sie auf **OK**.
 
 
 ## <a name="connect-to-virtual-machine"></a>Herstellen der Verbindung mit dem virtuellen Computer
@@ -78,7 +80,7 @@ Nachdem die Bereitstellung abgeschlossen ist, stellen Sie eine Remotedesktopverb
 
 ## <a name="install-iis-using-powershell"></a>Installieren von IIS mithilfe von PowerShell
 
-Nach der Anmeldung bei dem virtuellen Computer können Sie mit einer einzelnen PowerShell-Codezeile IIS installieren und die lokale Firewallregel aktivieren, um Webdatenverkehr zuzulassen.  Öffnen Sie eine PowerShell-Eingabeaufforderung, und führen Sie den folgenden Befehl aus:
+Öffnen Sie auf dem virtuellen Computer eine PowerShell-Eingabeaufforderung, und führen Sie den folgenden Befehl aus, um IIS zu installieren und die lokale Firewallregel zum Zulassen von Webdatenverkehr zu aktivieren:
 
 ```powershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
@@ -90,13 +92,6 @@ Nachdem Sie IIS installiert und Port 80 auf Ihrem virtuellen Computer für den Z
 
 ![IIS-Standardwebsite](./media/quick-create-powershell/default-iis-website.png) 
 
-## <a name="delete-virtual-machine"></a>Löschen des virtuellen Computers
-
-Wenn Ressourcengruppe, VM und alle zugehörigen Ressourcen nicht mehr benötigt werden, können Sie sie mit dem folgenden Befehl entfernen.
-
-```powershell
-Remove-AzureRmResourceGroup -Name myResourceGroup
-```
 ## <a name="delete-virtual-machine"></a>Löschen des virtuellen Computers
 
 Wenn Ressourcengruppe, VM und alle zugehörigen Ressourcen nicht mehr benötigt werden, löschen Sie sie. Wählen Sie hierzu die Ressourcengruppe auf dem Blatt für virtuelle Computer aus, und klicken Sie auf **Löschen**.

@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/14/2017
+ms.date: 04/17/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 15ac382f72cab455246ffcc05f08c8aba5876c8f
-ms.openlocfilehash: c90bb4f41661aedec2bde53abe035fe9bcc80320
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: 49aeb711de73bf967f330ec54385fb8bb36dd7ca
+ms.lasthandoff: 04/17/2017
 
 
 ---
@@ -34,18 +35,18 @@ Verbindungen mit mehreren Standorten können mit Windows PowerShell und den REST
 ### <a name="what-are-my-cross-premises-connection-options"></a>Welche Optionen stehen mir bei standortübergreifenden Verbindungen zur Verfügung?
 Die folgenden standortübergreifende Verbindungen werden unterstützt:
 
-* [Standort zu Standort](vpn-gateway-howto-site-to-site-resource-manager-portal.md) : VPN-Verbindung über IPsec (IKE v1 und IKE v2). Für diese Art von Verbindung wird ein VPN-Gerät oder RRAS benötigt.
-* [Punkt zu Standort](vpn-gateway-howto-point-to-site-resource-manager-portal.md) : VPN-Verbindung über SSTP (Secure Socket Tunneling-Protokoll). Für diese Verbindung wird kein VPN-Gerät benötigt.
-* [VNet-zu-VNet](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) : Dieser Verbindungstyp entspricht der Standort-zu-Standort-Konfiguration. VNet zu VNet ist eine VPN-Verbindung über IPsec (IKE v1 und IKE v2). Für diese Verbindung wird kein VPN-Gerät benötigt.
-* [Mehrere Standorte](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) : Hierbei handelt es sich um eine Variante der Standort-zu-Standort-Konfiguration, mit der Sie mehrere lokale Standorte mit einem virtuellen Netzwerk verbinden können.
-* [ExpressRoute](../expressroute/expressroute-introduction.md) : ExpressRoute ist eine Azure-Direktverbindung mit Ihrem WAN (nicht über das öffentliche Internet). Weitere Informationen finden Sie unter [ExpressRoute – Technische Übersicht](../expressroute/expressroute-introduction.md) sowie unter [ExpressRoute – FAQ](../expressroute/expressroute-faqs.md).
+* Standort zu Standort: VPN-Verbindung über IPsec (IKE v1 und IKE v2). Für diese Art von Verbindung wird ein VPN-Gerät oder RRAS benötigt. Weitere Informationen finden Sie unter [Erstellen einer Site-to-Site-Verbindung im Azure-Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+* Punkt zu Standort: VPN-Verbindung über SSTP (Secure Socket Tunneling-Protokoll). Für diese Verbindung wird kein VPN-Gerät benötigt. Weitere Informationen finden Sie unter [Konfigurieren einer Point-to-Site-Verbindung mit einem VNet über das Azure-Portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md).
+* VNet zu VNet: Dieser Verbindungstyp entspricht der Standort-zu-Standort-Konfiguration. VNet zu VNet ist eine VPN-Verbindung über IPsec (IKE v1 und IKE v2). Für diese Verbindung wird kein VPN-Gerät benötigt. Weitere Informationen finden Sie unter [Konfigurieren einer VNet-zu-VNet-Verbindung über das Azure-Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md).
+* Mehrere Standorte: Hierbei handelt es sich um eine Variante der Standort-zu-Standort-Konfiguration, mit der Sie mehrere lokale Standorte mit einem virtuellen Netzwerk verbinden können. Weitere Informationen finden Sie unter [Hinzufügen einer Site-to-Site-Verbindung (S2S) zu einem VNet mit einer vorhandenen VPN-Gatewayverbindung](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md).
+* ExpressRoute: ExpressRoute ist eine Azure-Direktverbindung mit Ihrem WAN (keine VPN-Verbindung über das öffentliche Internet). Weitere Informationen finden Sie unter [ExpressRoute – Technische Übersicht](../expressroute/expressroute-introduction.md) sowie unter [ExpressRoute – FAQ](../expressroute/expressroute-faqs.md).
 
 Weitere Informationen zu VPN Gateway-Verbindungen finden Sie unter [Informationen zu VPN Gateway](vpn-gateway-about-vpngateways.md).
 
 ### <a name="what-is-the-difference-between-a-site-to-site-connection-and-point-to-site"></a>Was ist der Unterschied zwischen einer Standort-zu-Standort- und einer Punkt-zu-Standort-Verbindung?
-**Site-to-Site**-Konfigurationen betreffen Verbindungen zwischen Ihrem lokalen Standort und Azure. Das bedeutet, Sie können eine Verbindung zwischen einem beliebigen Ihrer lokalen Computer und einem beliebigen virtuellen Computer oder einer Rolleninstanz in Ihrem virtuellen Netzwerk herstellen (abhängig von der Routingkonfiguration). Diese Option eignet sich hervorragend für eine ständig verfügbare, standortübergreifende Verbindung sowie für Hybridkonfigurationen. Dieser Verbindungstyp basiert auf einer (hardware- oder softwarebasierten) IPsec-VPN-Appliance, die am Rand des Netzwerks bereitgestellt werden muss. Wenn Sie eine Verbindung dieses Typs erstellen möchten, benötigen Sie die erforderliche VPN-Hardware und eine extern ausgerichtete IPv4-Adresse.
+**Site-to-Site**-Konfigurationen (IPsec/IKE-VPN-Tunnel) betreffen Verbindungen zwischen Ihrem lokalen Standort und Azure. Dies bedeutet, dass Sie eine Verbindung zwischen einem beliebigen lokalen Computer und einem beliebigen virtuellen Computer oder einer Rolleninstanz in Ihrem virtuellen Netzwerk herstellen können (abhängig von der Routingkonfiguration und den Berechtigungen). Diese Option eignet sich hervorragend für eine ständig verfügbare, standortübergreifende Verbindung sowie für Hybridkonfigurationen. Dieser Verbindungstyp basiert auf einer (hardware- oder softwarebasierten) IPsec-VPN-Appliance, die am Rand des Netzwerks bereitgestellt werden muss. Zum Erstellen dieser Art von Verbindung müssen Sie über eine externe IPv4-Adresse verfügen, die sich nicht hinter einem NAT-Gerät befindet.
 
-Mithilfe von **Point-to-Site**-Konfigurationen können Sie ortsunabhängig eine Verbindung zwischen einem einzelnen Computer und einer beliebigen Ressource in Ihrem virtuellen Netzwerk herstellen. Hierbei kommt der in Windows enthaltene VPN-Client zum Einsatz. Im Rahmen der Punkt-zu-Standort-Konfiguration installieren Sie ein Zertifikat und ein VPN-Clientkonfigurationspaket mit den Einstellungen, die es Ihrem Computer ermöglichen, eine Verbindung mit einem beliebigen virtuellen Computer oder einer beliebigen Rolleninstanz innerhalb des virtuellen Netzwerks herzustellen. Dieser Verbindungstyp eignet sich hervorragend, wenn Sie eine Verbindung mit einem virtuellen Netzwerk herstellen möchten, sich aber nicht vor Ort befinden. Er ist auch eine gute Wahl, wenn Ihnen keine VPN-Hardware oder keine extern ausgerichtete IPv4-Adresse zur Verfügung steht (beides Voraussetzungen für eine Standort-zu-Standort-Verbindung).
+Mithilfe von **Point-to-Site**-Konfigurationen (VPN über SSTP) können Sie ortsunabhängig eine Verbindung zwischen einem einzelnen Computer und einer beliebigen Ressource in Ihrem virtuellen Netzwerk herstellen. Hierbei kommt der in Windows enthaltene VPN-Client zum Einsatz. Im Rahmen der Punkt-zu-Standort-Konfiguration installieren Sie ein Zertifikat und ein VPN-Clientkonfigurationspaket mit den Einstellungen, die es Ihrem Computer ermöglichen, eine Verbindung mit einem beliebigen virtuellen Computer oder einer beliebigen Rolleninstanz innerhalb des virtuellen Netzwerks herzustellen. Dieser Verbindungstyp eignet sich hervorragend, wenn Sie eine Verbindung mit einem virtuellen Netzwerk herstellen möchten, sich aber nicht vor Ort befinden. Er ist auch eine gute Wahl, wenn Ihnen keine VPN-Hardware oder keine extern ausgerichtete IPv4-Adresse zur Verfügung steht (beides Voraussetzungen für eine Standort-zu-Standort-Verbindung).
 
 Sie können Ihr virtuelles Netzwerk für die parallele Verwendung von Site-to-Site- und Point-to-Site-Verbindungen konfigurieren. Hierzu müssen Sie Ihre Site-to-Site-Verbindung mit einem routenbasierten VPN-Typ für Ihr Gateway erstellen. Routenbasierte VPN-Typen werden im klassischen Bereitstellungsmodell als dynamische Gateways bezeichnet.
 
@@ -63,7 +64,7 @@ Routenbasierte Gateways implementieren die routenbasierten VPNs. Bei routingbasi
 ### <a name="do-i-need-a-gatewaysubnet"></a>Benötige ich ein Gatewaysubnetz?
 Ja. Das Gatewaysubnetz enthält die IP-Adressen, die von den Diensten des virtuellen Netzwerkgateways verwendet werden. Sie müssen ein Gatewaysubnetz für Ihr VNet erstellen, um ein virtuelles Netzwerkgateway konfigurieren zu können. Alle Gatewaysubnetze müssen den Namen „GatewaySubnet“ besitzen, damit sie einwandfrei funktionieren. Verwenden Sie für Ihr Gatewaysubnetz keinen anderen Namen. Zudem dürfen keine VMs oder anderen Komponenten im Gatewaysubnetz bereitgestellt werden.
 
-Bei der Gatewayerstellung geben Sie die Anzahl der im Subnetz enthaltenen IP-Adressen an. Die IP-Adressen im Gatewaysubnetz werden dem Gatewaydienst zugeordnet. Die Anzahl von IP-Adressen, die den Gatewaydiensten zugeordnet werden müssen, ist abhängig von der jeweiligen Konfiguration. Stellen Sie sicher, dass Ihr Gatewaysubnetz über genügend IP-Adressen verfügt, und berücksichtigen Sie dabei auch zukünftiges Wachstum sowie mögliche neue Verbindungskonfigurationen. Sie können zwar ein Gatewaysubnetz mit einer Größe von nur /29 erstellen, es empfiehlt sich jedoch, ein Gatewaysubnetz mit einer Größe von mindestens /28 (/28, /27, /26 usw.) zu erstellen. Sehen Sie sich die Anforderungen für die Konfiguration an, die Sie erstellen möchten, und vergewissern Sie sich, dass Ihr Gatewaysubnetz diese Anforderungen erfüllt.
+Bei der Gatewayerstellung geben Sie die Anzahl der im Subnetz enthaltenen IP-Adressen an. Die IP-Adressen im Gatewaysubnetz werden dem Gatewaydienst zugeordnet. Die Anzahl von IP-Adressen, die den Gatewaydiensten zugeordnet werden müssen, ist abhängig von der jeweiligen Konfiguration. Stellen Sie sicher, dass Ihr Gatewaysubnetz über genügend IP-Adressen verfügt, und berücksichtigen Sie dabei auch zukünftiges Wachstum sowie mögliche neue Verbindungskonfigurationen. Sie können zwar ein Gatewaysubnetz mit einer Größe von nur /29 erstellen, aber es empfiehlt sich, ein Gatewaysubnetz mit einer Größe von mindestens /27 (/27, /26, /25 usw.) zu erstellen. Sehen Sie sich die Anforderungen für die Konfiguration an, die Sie erstellen möchten, und vergewissern Sie sich, dass Ihr Gatewaysubnetz diese Anforderungen erfüllt.
 
 ### <a name="can-i-deploy-virtual-machines-or-role-instances-to-my-gateway-subnet"></a>Kann ich virtuelle Computer oder Rolleninstanzen in meinem Gatewaysubnetz bereitstellen?
 Nein.
@@ -95,7 +96,7 @@ Für die Authentifizierung können nur vorinstallierte Schlüssel (Pre-Shared Ke
 Ja. Weitere Informationen finden Sie unter [Konfigurieren der Tunnelerzwingung](vpn-gateway-about-forced-tunneling.md).
 
 ### <a name="can-i-set-up-my-own-vpn-server-in-azure-and-use-it-to-connect-to-my-on-premises-network"></a>Kann ich in Azure einen eigenen VPN-Server einrichten und damit eine Verbindung mit meinem lokalen Netzwerk herstellen?
-Ja. Sie können in Azure eigene VPN-Gateways oder -Server bereitstellen (entweder über Azure Marketplace oder durch Erstellung eines eigenen VPN-Routers). Sie müssen in Ihrem virtuellen Netzwerk benutzerdefinierte Routen konfigurieren, um sicherzustellen, dass der Datenverkehr ordnungsgemäß zwischen Ihren lokalen Netzwerken und den Subnetzen Ihres virtuellen Netzwerks weitergeleitet wird.
+Ja. Sie können in Azure eigene VPN-Gateways oder -Server bereitstellen (entweder über Azure Marketplace oder durch Erstellung eines eigenen VPN-Routers). Sie müssen in Ihrem virtuellen Netzwerk benutzerdefinierte Routen konfigurieren, um sicherzustellen, dass der Datenverkehr zwischen Ihren lokalen Netzwerken und den Subnetzen Ihres virtuellen Netzwerks richtig weitergeleitet wird.
 
 ### <a name="why-are-certain-ports-opened-on-my-vpn-gateway"></a>Warum werden auf meinem VPN-Gateway bestimmte Ports geöffnet?
 Sie sind für die Kommunikation mit der Azure-Infrastruktur erforderlich. Sie werden von Azure-Zertifikaten geschützt (gesperrt). Ohne die richtigen Zertifikate werden externe Entitäten, einschließlich der Kunden dieser Gateways, sich nicht auf diese Endpunkte auswirken.
@@ -106,11 +107,23 @@ Ein VPN-Gateway ist im Grunde ein mehrfach vernetztes Gerät mit einer NIC, die 
 Weitere Informationen finden Sie unter [Informationen zu VPN Gateway-Einstellungen](vpn-gateway-about-vpn-gateway-settings.md).
 
 ## <a name="site-to-site-connections-and-vpn-devices"></a>Standort-zu-Standort-Verbindungen und VPN-Geräte
-### <a name="what-should-i-consider-when-selecting-a-vpn-device"></a>Was muss ich bei der Wahl eines VPN-Geräts berücksichtigen?
-Wir haben in Zusammenarbeit mit Geräteherstellern eine Reihe von VPN-Geräten für standardmäßige Standort-zu-Standort-Verbindungen getestet. Eine Liste mit kompatiblen VPN-Geräten, entsprechenden Konfigurationsanweisungen oder -beispielen und Gerätespezifikationen finden Sie [hier](vpn-gateway-about-vpn-devices.md). Alle Geräte der als kompatibel angegebenen Gerätefamilien sollten mit Virtual Network verwendet werden können. Hilfreiche Informationen zur Konfiguration des VPN-Gerätes finden Sie im entsprechenden Konfigurationsbeispiel oder unter dem Link für die entsprechende Gerätefamilie.
 
-### <a name="what-do-i-do-if-i-have-a-vpn-device-that-isnt-in-the-known-compatible-device-list"></a>Was kann ich tun, wenn mein VPN-Gerät nicht in der Liste bekannter kompatibler Geräte enthalten ist?
-Wenn Ihr Gerät nicht in der Liste bekannter kompatibler VPN-Geräte enthalten ist und Sie das Gerät für Ihre VPN-Verbindung verwenden möchten, vergewissern Sie sich [hier](vpn-gateway-about-vpn-devices.md), dass es für die unterstützten IPsec-/IKE-Konfigurationsoptionen und -parameter geeignet ist. Geräte, die die Mindestanforderungen erfüllen, sollten problemlos mit VPN-Gateways verwendet werden können. Zusätzliche Unterstützung und Konfigurationsanweisungen erhalten Sie vom Gerätehersteller.
+### <a name="what-should-i-consider-when-selecting-a-vpn-device"></a>Was muss ich bei der Wahl eines VPN-Geräts berücksichtigen?
+Wir haben in Zusammenarbeit mit Geräteherstellern eine Reihe von VPN-Geräten für standardmäßige Standort-zu-Standort-Verbindungen getestet. Eine Liste mit kompatiblen VPN-Geräten, entsprechenden Konfigurationsanweisungen oder -beispielen und Gerätespezifikationen finden Sie im Artikel [Informationen zu VPN-Geräten](vpn-gateway-about-vpn-devices.md). Alle Geräte der als kompatibel angegebenen Gerätefamilien sollten mit Virtual Network verwendet werden können. Hilfreiche Informationen zur Konfiguration des VPN-Gerätes finden Sie im entsprechenden Konfigurationsbeispiel oder unter dem Link für die entsprechende Gerätefamilie.
+
+### <a name="where-can-i-find-configuration-settings-for-vpn-devices"></a>Wo finde ich die Konfigurationseinstellungen für VPN-Geräte?
+
+Links zu Konfigurationseinstellungen für Geräte finden Sie unter [Überprüfte VPN-Geräte](vpn-gateway-about-vpn-devices.md#devicetable). Die Links zur Gerätekonfiguration werden nach bestem Wissen bereitgestellt. Die beste Vorgehensweise besteht immer darin, die aktuellen Informationen zur Konfiguration bei Ihrem Gerätehersteller zu erfragen.
+
+Führen Sie vor dem Konfigurieren Ihres VPN-Geräts eine Überprüfung auf [bekannte Probleme mit der Gerätekompatibilität](vpn-gateway-about-vpn-devices.md#known) für das VPN-Gerät durch, das Sie verwenden möchten.
+
+### <a name="how-do-i-edit-vpn-device-configuration-samples"></a>Wie kann ich Beispiele für die Konfiguration von VPN-Geräten bearbeiten?
+
+Informationen zur Bearbeitung von Gerätekonfigurationsbeispielen finden Sie unter [Bearbeiten von Gerätekonfigurationsbeispielen](vpn-gateway-about-vpn-devices.md#editing).
+
+### <a name="where-do-i-find-ipsec-and-ike-parameters"></a>Wo finde ich IPsec- und IKE-Parameter?
+
+Informationen zu IPsec/IKE-Parametern finden Sie unter [Parameter](vpn-gateway-about-vpn-devices.md#ipsec).
 
 ### <a name="why-does-my-policy-based-vpn-tunnel-go-down-when-traffic-is-idle"></a>Warum fällt mein richtlinienbasierter VPN-Tunnel aus, wenn kein Datenverkehr stattfindet?
 Dabei handelt es sich um einen Standardvorgang bei richtlinienbasierten (auch als „statisches Routing“ bezeichnet) VPN-Gateways. Wenn im Tunnel länger als 5 Minuten kein Datenverkehr stattfindet, wird der Tunnel geschlossen. Bei erneut einsetzendem Datenverkehr wird der Tunnel umgehend wiederhergestellt. Die Richtung des Datenverkehrs ist dabei unerheblich.
@@ -120,11 +133,11 @@ Für die standortübergreifende Standort-zu-Standort-Konfiguration werden Routin
 
 Auch andere VPN-Softwarelösungen können mit unserem Gateway verwendet werden, sofern sie über branchenübliche IPsec-Implementierungen verfügen. Konfigurations- und Supportinformationen erhalten Sie vom Anbieter der Software.
 
-## <a name="a-namep2sapoint-to-site-connections"></a><a name="P2S"></a>Point-to-Site-Verbindungen
+## <a name="P2S"></a>Point-to-Site-Verbindungen
 
 [!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-point-to-site-faq-include.md)]
 
-## <a name="a-namev2vmultiavnet-to-vnet-and-multi-site-connections"></a><a name="V2VMulti"></a>VNet-zu-VNet- und Multi-Site-Verbindungen
+## <a name="V2VMulti"></a>VNet-zu-VNet- und Multi-Site-Verbindungen
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq-include](../../includes/vpn-gateway-vnet-vnet-faq-include.md)]
 
@@ -151,7 +164,7 @@ Ja. VPNs vom Typ „Punkt zu Standort“ (P2S) können mit den VPN Gateways komb
 ### <a name="can-i-connect-a-virtual-network-with-ipsec-vpns-to-my-expressroute-circuit"></a>Kann ich eine Verbindung zwischen einem virtuellen Netzwerk mit IPsec-VPNs und meiner ExpressRoute-Verbindung herstellen?
 Ja, diese Möglichkeit wird unterstützt. Weitere Informationen finden Sie unter [Konfigurieren von gleichzeitig vorhandenen ExpressRoute- und Standort-zu-Standort-VPN-Verbindungen](../expressroute/expressroute-howto-coexist-classic.md).
 
-## <a name="a-namebgpabgp"></a><a name="bgp"></a>BGP
+## <a name="bgp"></a>BGP
 [!INCLUDE [vpn-gateway-bgp-faq-include](../../includes/vpn-gateway-bpg-faq-include.md)]
 
 ## <a name="cross-premises-connectivity-and-vms"></a>Standortübergreifende Konnektivität und virtuelle Computer
@@ -170,8 +183,3 @@ Weitere Informationen zu virtuellen Netzwerken finden Sie in den [FAQs zu virtue
 
 * Weitere Informationen zu VPN Gateway finden Sie unter [Informationen zu VPN Gateway](vpn-gateway-about-vpngateways.md).
 * Weitere Informationen zu VPN Gateway-Konfigurationseinstellungen finden Sie unter [Informationen zu VPN Gateway-Einstellungen](vpn-gateway-about-vpn-gateway-settings.md).
-
-
-<!--HONumber=Feb17_HO3-->
-
-

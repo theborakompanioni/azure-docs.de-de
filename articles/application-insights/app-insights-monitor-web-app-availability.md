@@ -11,12 +11,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/06/2017
+ms.date: 04/12/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: cfe70aa09b21aa914e3705bf7969583c7a1bbd52
-ms.lasthandoff: 04/07/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 5893f8126b0f18ac0d56e434a8e495380bd605d5
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -34,23 +34,26 @@ Es gibt zwei Arten von Webtests:
 
 Sie können bis zu zehn Webtests pro Anwendungsressource erstellen.
 
-## <a name="create"></a>1. Erstellen einer Ressource für Ihre Testberichte
-Überspringen Sie diesen Schritt, wenn Sie bereits eine [Application Insights-Ressource][start] für diese Anwendung eingerichtet haben und die Verfügbarkeitsberichte am gleichen Ort angezeigt werden sollen.
+## <a name="create"></a>1. Öffnen einer Ressource für Ihre Webtestberichte
 
-Melden Sie sich bei [Microsoft Azure](http://azure.com) an, wechseln Sie zum [Azure-Portal](https://portal.azure.com), und erstellen Sie eine Application Insights-Ressource.
+**Falls Sie Application Insights bereits für Ihre Web-App konfiguriert haben**, können Sie die dazugehörige Application Insights-Ressource im [Azure-Portal](https://portal.azure.com) öffnen.
+
+**Wenn Sie Ihre Berichte in einer neuen Ressource anzeigen möchten**, können Sie sich an [Microsoft Azure](http://azure.com) anmelden, zum [Azure-Portal](https://portal.azure.com) navigieren und eine Application Insights-Ressource erstellen.
 
 ![Neu > Application Insights](./media/app-insights-monitor-web-app-availability/11-new-app.png)
 
 Klicken Sie auf **All resources** (Alle Ressourcen), um das Blatt „Übersicht“ für die neue Ressource zu öffnen.
 
 ## <a name="setup"></a>2. Erstellen eines URL-Pingtests
-Suchen Sie in der Application Insights-Ressource nach der Kachel "Verfügbarkeit". Klicken Sie darauf, um das Blatt "Webtests" für Ihre Anwendung zu öffnen, und fügen Sie einen Webtest hinzu.
+Öffnen Sie das Blatt „Verfügbarkeit“, und fügen Sie einen Webtest hinzu.
 
 ![Mindestens die URL der Website eintragen](./media/app-insights-monitor-web-app-availability/13-availability.png)
 
-* **Die URL** muss vom öffentlichen Internet aus sichtbar sein. Sie kann auch eine Abfragezeichenfolge enthalten, sodass Sie beispielsweise Ihre Datenbank abfragen können. Wenn die URL in eine Umleitung aufgelöst wird, werden bis zu 10 Umleitungen verfolgt.
-* **Abhängige Anforderungen analysieren**: Bilder, Skripts, Formatdateien und andere Ressourcen der Seite werden als Teil des Tests angefordert, und die aufgezeichnete Antwortzeit beinhaltet diese Zeiten. Der Test schlägt fehl, wenn alle diese Ressourcen innerhalb des Zeitlimits für den gesamten Test nicht erfolgreich heruntergeladen werden können.
-* **Wiederholungen aktivieren**: Wenn der Test fehlschlägt, wird er nach kurzer Zeit wiederholt. Nur wenn drei aufeinander folgende Versuche scheitern, wird ein Fehler gemeldet. Nachfolgende Tests werden dann in der üblichen Häufigkeit ausgeführt. Die Wiederholung wird bis zum nächsten Erfolg vorübergehend eingestellt. Diese Regel wird an jedem Teststandort unabhängig angewendet. (Diese Einstellung wird empfohlen. Im Durchschnitt verschwinden ca. 80 % der Fehler bei einer Wiederholung.)
+* **Die URL** kann eine beliebige Webseite sein, die Sie testen möchten, aber sie muss über das öffentliche Internet sichtbar sein. Die URL kann auch eine Abfragezeichenfolge enthalten, sodass Sie beispielsweise Ihre Datenbank abfragen können. Wenn die URL in eine Umleitung aufgelöst wird, werden bis zu 10 Umleitungen verfolgt.
+* **Abhängige Anforderungen analysieren**: Wenn diese Option aktiviert ist, werden beim Test Bilder, Skripts, Formatdateien und andere Dateien angefordert, die Teil der zu testenden Webseite sind. Die aufgezeichnete Antwortzeit enthält auch die Zeit, die zum Abrufen dieser Dateien erforderlich ist. Der Test schlägt fehl, wenn alle diese Ressourcen innerhalb des Zeitlimits für den gesamten Test nicht erfolgreich heruntergeladen werden können. 
+
+    Wenn die Option nicht aktiviert ist, wird beim Test nur die Datei unter der von Ihnen angegebenen URL angefordert.
+* **Enable retries** (Wiederholungen aktivieren): Wenn diese Option aktiviert ist, wird der Test nach kurzer Zeit wiederholt, falls er fehlschlägt. Nur wenn drei aufeinander folgende Versuche scheitern, wird ein Fehler gemeldet. Nachfolgende Tests werden dann in der üblichen Häufigkeit ausgeführt. Die Wiederholung wird bis zum nächsten Erfolg vorübergehend eingestellt. Diese Regel wird an jedem Teststandort unabhängig angewendet. Wir empfehlen Ihnen, diese Option zu verwenden. Im Durchschnitt treten ca. 80% der Fehler bei einer Wiederholung nicht mehr auf.
 * **Testhäufigkeit**: Legt fest, wie oft der Test von jedem Teststandort aus ausgeführt wird. Mit einer Frequenz von fünf Minuten und fünf Teststandorten wird Ihre Website im Durchschnitt jede Minute getestet.
 * **Teststandorte** sind die Orte, von denen aus unsere Server Webanforderungen an Ihre URL senden. Wählen Sie mehrere aus, damit Sie Probleme mit der Website von Netzwerkproblemen unterscheiden können. Sie können bis zu 16 Standorte auswählen.
 * **Erfolgskriterien**:
@@ -67,14 +70,23 @@ Suchen Sie in der Application Insights-Ressource nach der Kachel "Verfügbarkeit
 ### <a name="test-more-urls"></a>Testen weiterer URLs
 Fügen Sie weitere Tests hinzu. Neben dem Testen der Startseite können Sie auch sicherstellen, dass die Datenbank ausgeführt wird, indem Sie eine Such-URL testen.
 
+
 ## <a name="monitor"></a>3. Anzeigen der Webtestergebnisse
-Nach ein bis zwei Minuten werden Ergebnisse auf dem Webtestblatt angezeigt.
+
+Klicken Sie nach fünf Minuten auf **Aktualisieren**, um die Testergebnisse anzuzeigen. 
 
 ![Ergebnisübersicht im Startblatt](./media/app-insights-monitor-web-app-availability/14-availSummary.png)
 
 Klicken Sie auf einen beliebigen Balken im Übersichtsdiagramm, um eine detailliertere Ansicht des Zeitraums zu erhalten.
 
-In diesen Diagrammen werden die Ergebnisse für alle Webtests dieser Anwendung kombiniert.
+## <a name="edit"></a> Überprüfen und Bearbeiten der Tests
+
+Wählen Sie auf der Seite „Zusammenfassung“ einen bestimmten Test aus. Auf dieser Seite werden die jeweiligen Ergebnisse angezeigt, und Sie können den Test bearbeiten oder vorübergehend deaktivieren.
+
+![Webtest bearbeiten oder deaktivieren](./media/app-insights-monitor-web-app-availability/19-availEdit.png)
+
+Sie können Webtests beispielsweise deaktivieren, während Sie Wartungsarbeiten für den Dienst durchführen.
+
 
 ## <a name="failures"></a>Wenn Sie Fehler finden ...
 Klicken Sie auf einen roten Punkt.
@@ -103,7 +115,9 @@ Sie können ein Szenario überwachen, das eine Sequenz mit mehreren URLs umfasst
 
 Um einen mehrstufigen Test zu erstellen, zeichnen das Szenario mit Visual Studio Enterprise auf. Laden Sie dann die Aufzeichnung in Application Insights hoch. Application Insights wiederholt das Szenario in bestimmten Abständen und überprüft die Antworten.
 
-Beachten Sie, dass Sie keine codierten Funktionen in den Tests verwenden können: Die Szenarioschritte müssen als Skript in der Webtest-Datei enthalten sein.
+> [!NOTE]
+> Es ist nicht möglich, in Ihren Tests codierte Funktionen oder Schleifen zu verwenden. Der Test muss vollständig im WEBTEST-Skript enthalten sein. Sie können aber Standard-Plug-Ins nutzen.
+>
 
 #### <a name="1-record-a-scenario"></a>1. Aufzeichnen eines Szenarios
 Verwenden Sie Visual Studio Enterprise, um eine Websitzung aufzuzeichnen.
@@ -144,13 +158,19 @@ Verwenden Sie Visual Studio Enterprise, um eine Websitzung aufzuzeichnen.
 
     Legen Sie die Teststandorte, Häufigkeit und Warnungsparameter auf die gleiche Weise wie für Ping-Tests fest.
 
-Zeigen Sie die Testergebnisse und alle Fehler auf die gleiche Weise wie für die Tests mit einer einzelnen Url an.
+#### <a name="3-see-the-results"></a>3. Anzeigen der Ergebnisse
 
-Eine häufige Ursache für Fehler ist, dass der Test zu lange ausgeführt wird. Er darf nicht länger als zwei Minuten ausgeführt werden.
+Zeigen Sie die Testergebnisse und alle Fehler auf die gleiche Weise wie für die Tests mit einer einzelnen URL an.
 
-Denken Sie daran, dass alle Ressourcen einer Seite richtig geladen werden müssen, damit der Test erfolgreich ist. Dazu gehören auch Skripts, Stylesheets, Bilder usw.
+Außerdem können Sie die Testergebnisse herunterladen, um sie in Visual Studio anzuzeigen.
 
-Beachten Sie, dass der Webtest vollständig in der Webtest-Datei enthalten sein muss: Sie können keine codierten Funktionen im Test verwenden.
+#### <a name="too-many-failures"></a>Treten zu viele Fehler auf?
+
+* Eine häufige Ursache für Fehler ist, dass der Test zu lange ausgeführt wird. Er darf nicht länger als zwei Minuten ausgeführt werden.
+
+* Denken Sie daran, dass alle Ressourcen einer Seite richtig geladen werden müssen, damit der Test erfolgreich ist. Dazu gehören auch Skripts, Stylesheets, Bilder usw.
+
+* Der Webtest muss vollständig im WEBTEST-Skript enthalten sein: Sie können keine codierten Funktionen im Test verwenden.
 
 ### <a name="plugging-time-and-random-numbers-into-your-multi-step-test"></a>Einfügen von Zeiten und Zufallszahlen in einen mehrstufigen Test
 Angenommen, Sie testen ein Tool, das zeitabhängige Daten, wie z. B. Bestände, aus einem externen Feed abruft. Beim Aufzeichnen eines Webtests müssen Sie bestimmte Zeiten verwenden, aber als Parameter des Tests – StartTime und EndTime – festlegen.
@@ -211,12 +231,6 @@ Wenn bei Ihrem Test die Anmeldung mit OAuth erforderlich ist, lautet die allgeme
 * Parametrisieren Sie die Token, indem Sie den Parameter festlegen, wenn das Token vom Authentifikator zurückgegeben wird, und ihn in der Abfrage an die Website verwenden.
   (Visual Studio versucht, den Test zu parametrisieren, aber die Token werden nicht richtig parametrisiert.)
 
-## <a name="edit"></a> Bearbeiten oder Deaktivieren eines Tests
-Öffnen Sie einen Test, um ihn zu bearbeiten oder zu deaktivieren.
-
-![Webtest bearbeiten oder deaktivieren](./media/app-insights-monitor-web-app-availability/19-availEdit.png)
-
-Sie können Webtests beispielsweise deaktivieren, während Sie Wartungsarbeiten für den Dienst durchführen.
 
 ## <a name="performance-tests"></a>Leistungstests
 Sie können für Ihre Website einen Auslastungstest durchführen. Wie beim Verfügbarkeitstest auch, können Sie entweder einfache Anforderungen oder Anforderungen mit mehreren Schritten von unseren weltweit vorhandenen Punkten senden. Im Gegensatz zu einem Verfügbarkeitstest werden viele Anforderungen gesendet, um mehrere gleichzeitige Benutzer zu simulieren.
@@ -229,7 +243,7 @@ Nach Abschluss des Tests werden die Antwortzeiten und Erfolgsraten angezeigt.
 * [Verwenden Sie PowerShell-Skripts zum automatischen Einrichten eines Webtests](app-insights-powershell.md#add-an-availability-test) .
 * Richten Sie einen [Webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md) ein, der bei einer Warnung aufgerufen wird.
 
-## <a name="questions-problems"></a>Fragen? Probleme?
+## <a name="qna"></a>Fragen? Probleme?
 * *Kann ich Code aus meinem Webtest aufrufen?*
 
     Nein. Die Schritte des Tests müssen in der Webtest-Datei enthalten sein. Und Sie können keine anderen Webtests aufrufen oder Schleifen verwenden. Aber es gibt mehrere hilfreiche Plug-Ins.

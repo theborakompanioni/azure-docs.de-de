@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: ambapat
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: a28e325e8a7e902a64f8cc267e2f0d3be151bcb3
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
+ms.openlocfilehash: c344941c59c52d260999c29f448bb94df24fba1d
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -31,7 +31,7 @@ Für die Authentifizierung wird sowohl auf der Verwaltungs- als auch auf der Dat
 
 Im Anschluss finden Sie eine kurze Übersicht über die behandelten Themen:
 
-[Authentifizierung über Azure Active Directory](#authentication-using-azure-active-direcrory): In diesem Abschnitt erfahren Sie, wie sich ein Aufrufer mit Azure Active Directory authentifiziert, um über die Verwaltungs- oder Datenebene auf eine Key Vault-Instanz zuzugreifen. 
+[Authentifizierung über Azure Active Directory](#authentication-using-azure-active-directory): In diesem Abschnitt erfahren Sie, wie sich ein Aufrufer mit Azure Active Directory authentifiziert, um über die Verwaltungs- oder Datenebene auf eine Key Vault-Instanz zuzugreifen. 
 
 [Verwaltungsebene und Datenebene](#management-plane-and-data-plane): Hierbei handelt es sich um zwei Zugriffsebenen für den Zugriff auf Ihre Key Vault-Instanz. Jede Zugriffsebene unterstützt bestimmte Vorgänge. In diesem Abschnitt werden die Zugriffsendpunkte, die unterstützten Vorgänge und die Zugriffssteuerungsmethoden der jeweiligen Ebene beschrieben. 
 

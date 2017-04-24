@@ -13,12 +13,12 @@ ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 04/05/2017
+ms.date: 04/17/2017
 ms.author: andrela;sstein;carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: c36c3a3f651bcee38b953b12e48cab8d93a34207
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 368ffc65382c75b0fe5f4c20ce1c6a487a764ed3
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -70,16 +70,18 @@ Rufen Sie die Verbindungszeichenfolge im Azure-Portal ab. Sie verwenden die Verb
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 2. Wählen Sie im Menü auf der linken Seite die Option **SQL-Datenbanken**, und klicken Sie auf der Seite **SQL-Datenbanken** auf Ihre Datenbank. 
-3. Überprüfen Sie im Bereich **Zusammenfassung** für Ihre Datenbank den vollqualifizierten Servernamen. 
+3. Überprüfen Sie auf der Seite **Übersicht** für Ihre Datenbank den vollqualifizierten Servernamen wie in der Abbildung unten dargestellt. Sie können auf den Servernamen zeigen, um die Option **Klicken Sie zum Kopieren** anzuzeigen. 
 
-    <img src="./media/sql-database-connect-query-dotnet/connection-strings.png" alt="connection strings" style="width: 780px;" />
+   ![Servername](./media/sql-database-connect-query-dotnet/server-name.png) 
 
-4. Klicken Sie auf **Datenbankverbindungszeichenfolgen anzeigen**.
+4. Falls Sie die Anmeldeinformationen für Ihren Azure SQL-Datenbankserver vergessen haben, können Sie zur Seite des SQL-Datenbankservers navigieren, um den Serveradministrator-Benutzernamen anzuzeigen und ggf. das Kennwort zurückzusetzen.
 
-5. Überprüfen Sie die vollständige **ADO.NET**-Verbindungszeichenfolge.
+5. Klicken Sie auf **Datenbankverbindungszeichenfolgen anzeigen**.
 
-    <img src="./media/sql-database-connect-query-dotnet/adonet-connection-string.png" alt="ADO.NET connection string" style="width: 780px;" />
-    
+6. Überprüfen Sie die vollständige **ADO.NET**-Verbindungszeichenfolge.
+
+    ![ADO.NET-Verbindungszeichenfolge](./media/sql-database-connect-query-dotnet/adonet-connection-string.png)
+  
 ## <a name="add-systemdatasqlclient"></a>Hinzufügen von „System.Data.SqlClient“
 Wenn Sie .NET Core verwenden, fügen Sie „System.Data.SqlClient“ der ***CSPROJ-Datei*** Ihres Projekts als Abhängigkeit hinzu.
 
@@ -94,8 +96,7 @@ Wenn Sie .NET Core verwenden, fügen Sie „System.Data.SqlClient“ der ***CSPR
 1. Öffnen Sie in Ihrer Entwicklungsumgebung eine leere Codedatei.
 2. Fügen Sie ```using System.Data.SqlClient``` Ihrer Codedatei hinzu ([System.Data.SqlClient-Namespace](https://msdn.microsoft.com/library/system.data.sqlclient.aspx)). 
 
-3. Verwenden Sie [SqlCommand.ExecuteReader](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.executereader.aspx) mit einer [SELECT](https://msdn.microsoft.com/library/ms189499.aspx)-Transact-SQL-Anweisung, um Daten in Ihrer Azure SQL-Datenbank abzufragen. Hinzufügen der richtigen Werte für Ihren Server
-
+3. Verwenden Sie [SqlCommand.ExecuteReader](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.executereader.aspx) mit einer [SELECT](https://msdn.microsoft.com/library/ms189499.aspx)-Transact-SQL-Anweisung, um Daten in Ihrer Azure SQL-Datenbank abzufragen. Fügen Sie die richtigen Werte für Ihren Server hinzu.
 ```csharp
 using System;
 using System.Data;

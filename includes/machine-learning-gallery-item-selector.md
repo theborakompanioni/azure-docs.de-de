@@ -1,7 +1,7 @@
 Der **[Cortana Intelligence-Katalog](http://gallery.cortanaintelligence.com)** ist eine communitybasierte Website zum Entdecken und Teilen von Lösungen, die mit Produkten der Cortana Intelligence Suite erstellt wurden.
 Der Katalog enthält viele Ressourcen, mit denen Sie Ihre eigenen Analytics-Lösungen entwickeln können.
 
-<!-- On the new DOCS platform, this is a dropdown, not tabs, which doesn't work well in this context. So I'm just removing it for now.
+<!-- On the new DOCS platform, this is a drop-down list, not tabs, which doesn't work well in this context. So I'm just removing it for now.
 
 > [!div class="op_single_selector"]
 > * [Overview](../articles/machine-learning/machine-learning-gallery-how-to-use-contribute-publish.md)
