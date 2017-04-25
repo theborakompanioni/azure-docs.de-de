@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/23/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: 6ec77968a0f264b8bf1fa56a23e4cc7faef614da
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 53bd62688aa0d1a06d2d012c8da664d2de4b0b45
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 03/17/2017
 Azure Managed Disks vereinfacht die Datenträgerverwaltung für Azure IaaS-VMs, indem die [Speicherkonten](storage-introduction.md) verwaltet werden, die den VM-Datenträgern zugeordnet sind. Sie müssen nur die Art ([Premium](storage-premium-storage.md) oder [Standard](storage-standard-storage.md)) und die benötigte Größe des Datenträgers angeben. Azure erstellt und verwaltet ihn dann für Sie.
 
 >[!NOTE]
->Virtuelle Computer mit Managed Disks benötigen ausgehenden Datenverkehr am Port 8443, um den Status der installierten [VM-Erweiterungen](../virtual-machines/virtual-machines-windows-extensions-features.md) an die Azure-Plattform zu melden. Die Bereitstellung eines virtuellen Computers mit Erweiterungen kann ohne diesen Port nicht durchgeführt werden. Darüber hinaus ist der Bereitstellungsstatus einer Erweiterung unbekannt, wenn sie auf einer ausgeführten VM installiert wird. Wenn Sie die Sperrung von Port 8443 nicht aufheben können, müssen Sie nicht verwaltete Datenträger verwenden. Wir arbeiten aktiv an der Behebung dieses Problems. Weitere Informationen finden Sie in den [häufig gestellten Fragen zur IaaS-VM-Datenträgern](storage-faq-for-disks.md#managed-disks-and-port-8443). 
+>Virtuelle Computer mit Managed Disks benötigen ausgehenden Datenverkehr am Port 8443, um den Status der installierten [VM-Erweiterungen](../virtual-machines/windows/extensions-features.md) an die Azure-Plattform zu melden. Die Bereitstellung eines virtuellen Computers mit Erweiterungen kann ohne diesen Port nicht durchgeführt werden. Darüber hinaus ist der Bereitstellungsstatus einer Erweiterung unbekannt, wenn sie auf einer ausgeführten VM installiert wird. Wenn Sie die Sperrung von Port 8443 nicht aufheben können, müssen Sie nicht verwaltete Datenträger verwenden. Wir arbeiten aktiv an der Behebung dieses Problems. Weitere Informationen finden Sie in den [häufig gestellten Fragen zur IaaS-VM-Datenträgern](storage-faq-for-disks.md#managed-disks-and-port-8443). 
 >
 >
 
@@ -95,8 +95,8 @@ Für Managed Disks werden derzeit keine [inkrementellen Momentaufnahmen](storage
 
 Weitere Informationen dazu, wie Sie Momentaufnahmen mit Managed Disks erstellen, finden Sie unter diesen Ressourcen:
 
-* [Erstellen einer Kopie einer als verwalteter Datenträger gespeicherten virtuellen Festplatte mithilfe von Momentaufnahmen unter Windows](../virtual-machines/virtual-machines-windows-snapshot-copy-managed-disk.md)
-* [Erstellen einer Kopie einer als verwalteter Datenträger gespeicherten virtuellen Festplatte mithilfe von Momentaufnahmen unter Linux](../virtual-machines/linux/virtual-machines-linux-snapshot-copy-managed-disk.md)
+* [Erstellen einer Kopie einer als verwalteter Datenträger gespeicherten virtuellen Festplatte mithilfe von Momentaufnahmen unter Windows](../virtual-machines/windows/snapshot-copy-managed-disk.md)
+* [Erstellen einer Kopie einer als verwalteter Datenträger gespeicherten virtuellen Festplatte mithilfe von Momentaufnahmen unter Linux](../virtual-machines/linux/snapshot-copy-managed-disk.md)
 
 
 Ausführliche Informationen zu Preisen für Managed Disks finden Sie unter [Managed Disks Preise](https://azure.microsoft.com/pricing/details/managed-disks).
@@ -106,8 +106,8 @@ Ausführliche Informationen zu Preisen für Managed Disks finden Sie unter [Mana
 Für Managed Disks wird auch die Erstellung eines verwalteten benutzerdefinierten Image unterstützt. Sie können ein Image aus Ihrer benutzerdefinierten VHD in einem Speicherkonto oder direkt von einer generalisierten VM (mit Systemvorbereitung) erstellen. Hierbei werden in einem Image alle verwalteten Datenträger zusammengefasst, die einer VM zugeordnet sind, einschließlich der Datenträger für das Betriebssystem und für die Daten. Dies ermöglicht Ihnen die Erstellung von Hunderten von VMs mit Ihrem benutzerdefinierten Image, ohne dass Sie Speicherkonten kopieren oder verwalten müssen.
 
 Informationen zur Erstellung von Images finden Sie in den folgenden Artikeln:
-* [How to capture a managed image of a generalized VM in Azure](../virtual-machines/virtual-machines-windows-capture-image-resource.md) (Erstellen eines verwalteten Image eines generalisierten virtuellen Computers in Azure)
-* [Generalisieren und Erfassen eines virtuellen Linux-Computers mithilfe von Azure CLI 2.0](../virtual-machines/virtual-machines-linux-capture-image.md)
+* [How to capture a managed image of a generalized VM in Azure](../virtual-machines/windows/capture-image-resource.md) (Erstellen eines verwalteten Image eines generalisierten virtuellen Computers in Azure)
+* [Generalisieren und Erfassen eines virtuellen Linux-Computers mithilfe von Azure CLI 2.0](../virtual-machines/linux/capture-image.md)
 
 ## <a name="images-versus-snapshots"></a>Vergleich von Images und Momentaufnahmen
 
@@ -141,11 +141,11 @@ Weitere Informationen zu Managed Disks finden Sie in den folgenden Artikeln.
 
 * [Erstellen eines virtuellen Computers mithilfe von Resource Manager und PowerShell](../virtual-machines/virtual-machines-windows-ps-create.md)
 
-* [Erstellen eines virtuellen Linux-Computers mit Azure CLI 2.0](../virtual-machines/virtual-machines-linux-quick-create-cli.md)
+* [Erstellen eines virtuellen Linux-Computers mit Azure CLI 2.0](../virtual-machines/linux/quick-create-cli.md)
 
-* [Attach a data disk to a Windows VM using PowerShell](../virtual-machines/virtual-machines-windows-attach-disk-ps.md) (Anfügen eines Datenträgers an einen virtuellen Windows-Computer mithilfe von PowerShell)
+* [Attach a data disk to a Windows VM using PowerShell](../virtual-machines/windows/attach-disk-ps.md) (Anfügen eines Datenträgers an einen virtuellen Windows-Computer mithilfe von PowerShell)
 
-* [Hinzufügen eines verwalteten Datenträgers zu einem virtuellen Linux-Computer](../virtual-machines/virtual-machines-linux-quick-create-cli.md)
+* [Hinzufügen eines verwalteten Datenträgers zu einem virtuellen Linux-Computer](../virtual-machines/linux/add-disk.md)
 
 ### <a name="compare-managed-disks-storage-options"></a>Vergleichen der Managed Disks-Speicheroptionen 
 
@@ -155,7 +155,7 @@ Weitere Informationen zu Managed Disks finden Sie in den folgenden Artikeln.
 
 ### <a name="operational-guidance"></a>Leitfaden
 
-* [Migrieren von AWS und anderen Plattformen zu Managed Disks in Azure](../virtual-machines/virtual-machines-windows-on-prem-to-azure.md)
+* [Migrieren von AWS und anderen Plattformen zu Managed Disks in Azure](../virtual-machines/windows/on-prem-to-azure.md)
 
-* [Migrate Azure VMs to Managed Disks in Azure](../virtual-machines/virtual-machines-windows-migrate-to-managed-disks.md) (Migrieren von Azure-VMs zu Managed Disks in Azure)
+* [Migrate Azure VMs to Managed Disks in Azure](../virtual-machines/windows/migrate-to-managed-disks.md) (Migrieren von Azure-VMs zu Managed Disks in Azure)
 

@@ -17,16 +17,17 @@ ms.workload: NA
 ms.date: 10/13/2016
 ms.author: sashan
 translationtype: Human Translation
-ms.sourcegitcommit: ae230c012a17eb73c8993a32197c844c6abaa2a4
-ms.openlocfilehash: 8fefa688ee52395d7dee2f53da12ebc50e84fb8e
+ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
+ms.openlocfilehash: 2ddbe1766a978f9849c310a72086f95cbb68cd83
+ms.lasthandoff: 04/14/2017
 
 
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank
-Diese Übersicht beschreibt die Funktionen, die Azure SQL-Datenbank für Geschäftskontinuität und Notfallwiederherstellung bereitstellt. Dieser Artikel bietet Optionen, Empfehlungen und Tutorials für die Wiederherstellung nach Störungen, die Datenverluste nach sich ziehen oder dazu führen könnten, dass Ihre Datenbank und Ihre Anwendungen nicht verfügbar sind. Es wird auch erläutert, was zu tun ist, wenn ein Benutzer- oder Anwendungsfehler die Datenintegrität gefährdet, eine Azure-Region ausfällt oder Wartungsaufgaben für Ihre Anwendung ausgeführt werden müssen. 
+Diese Übersicht beschreibt die Funktionen, die Azure SQL-Datenbank für Geschäftskontinuität und Notfallwiederherstellung bereitstellt. Dieser Artikel bietet Optionen, Empfehlungen und Tutorials für die Wiederherstellung nach Störungen, die Datenverluste nach sich ziehen oder dazu führen könnten, dass Ihre Datenbank und Ihre Anwendungen nicht verfügbar sind. Es wird auch erläutert, was zu tun ist, wenn ein Benutzer- oder Anwendungsfehler die Datenintegrität gefährdet, eine Azure-Region ausfällt oder Wartungsaufgaben für Ihre Anwendung ausgeführt werden müssen.
 
 ## <a name="sql-database-features-that-you-can-use-to-provide-business-continuity"></a>Funktionen von SQL-Datenbank zum Sicherstellen der Geschäftskontinuität
-SQL-Datenbank bietet verschiedene Funktionen für die Sicherstellung der Geschäftskontinuität, einschließlich automatisierter Sicherungen und optionaler Datenbankreplikation. Jede Funktion weist unterschiedliche Eigenschaften für die geschätzte Wiederherstellungszeit (Estimated Recovery Time, ERT) sowie für mögliche Datenverluste bei kürzlich durchgeführten Transaktionen auf. Wenn Sie diese Optionen kennen, können Sie die richtigen Optionen auswählen und in den meisten Szenarien auch miteinander kombinieren. Wenn Sie Ihren Plan für die Geschäftskontinuität entwickeln, müssen Sie ermitteln, wie viel Zeit maximal vergehen darf, bis die Anwendung nach einer Störung vollständig wiederhergestellt ist – diese Zeitspanne ist Ihre RTO (Recovery Time Objective). Sie müssen auch herausfinden, wie viele kürzlich durchgeführte Datenupdates (in einem bestimmten Zeitraum) verloren gehen dürfen, wenn die Anwendung nach einer Störung wiederhergestellt wird – diese Zeitspanne ist Ihre RPO (Recovery Point Objective). 
+SQL-Datenbank bietet verschiedene Funktionen für die Sicherstellung der Geschäftskontinuität, einschließlich automatisierter Sicherungen und optionaler Datenbankreplikation. Jede Funktion weist unterschiedliche Eigenschaften für die geschätzte Wiederherstellungszeit (Estimated Recovery Time, ERT) sowie für mögliche Datenverluste bei kürzlich durchgeführten Transaktionen auf. Wenn Sie diese Optionen kennen, können Sie die richtigen Optionen auswählen und in den meisten Szenarien auch miteinander kombinieren. Wenn Sie Ihren Plan für die Geschäftskontinuität entwickeln, müssen Sie ermitteln, wie viel Zeit maximal vergehen darf, bis die Anwendung nach einer Störung vollständig wiederhergestellt ist – diese Zeitspanne ist Ihre RTO (Recovery Time Objective). Sie müssen auch herausfinden, wie viele kürzlich durchgeführte Datenupdates (in einem bestimmten Zeitraum) verloren gehen dürfen, wenn die Anwendung nach einer Störung wiederhergestellt wird – diese Zeitspanne ist Ihre RPO (Recovery Point Objective).
 
 Die folgende Tabelle vergleicht ERT und RPO für die drei häufigsten Szenarien.
 
@@ -40,33 +41,35 @@ Die folgende Tabelle vergleicht ERT und RPO für die drei häufigsten Szenarien.
 ### <a name="use-database-backups-to-recover-a-database"></a>Verwenden von Datenbanksicherungen zum Wiederherstellen einer Datenbank
 SQL-Datenbank führt automatisch eine Kombination aus wöchentlichen vollständigen Datenbanksicherungen, stündlichen differenziellen Datenbanksicherungen sowie Transaktionsprotokollsicherungen im Abstand von fünf Minuten durch, um Ihr Unternehmen vor Datenverlusten zu schützen. Diese Sicherungen werden in georedundantem Speicher gespeichert – für Datenbanken der Tarife „Standard“ und „Premium“ 35 Tage lang, für Datenbanken im Tarif „Basic“ sieben Tage lang. Informationen zu Tarifen finden Sie unter [Tarife](sql-database-service-tiers.md). Wenn der Aufbewahrungszeitraum für Ihren Tarif Ihre Geschäftsanforderungen nicht erfüllt, können Sie diesen verlängern, indem Sie [den Tarif wechseln](sql-database-service-tiers.md). Die vollständigen und differenziellen Datenbanksicherungen werden auch in ein [gekoppeltes Rechenzentrum](../best-practices-availability-paired-regions.md) repliziert, um weiteren Schutz bei Rechenzentrumsausfällen zu bieten. Informationen hierzu finden Sie unter [Automatische Datenbanksicherungen](sql-database-automated-backups.md).
 
-Wenn die integrierte Aufbewahrungsdauer für Ihre Anwendung nicht ausreicht, können Sie diese verlängern, indem Sie die langfristige Aufbewahrungsrichtlinie für Ihre Datenbank(en) konfigurieren. Weitere Informationen finden Sie unter [Langfristige Aufbewahrung](sql-database-long-term-retention.md). 
+Wenn die integrierte Aufbewahrungsdauer für Ihre Anwendung nicht ausreicht, können Sie diese verlängern, indem Sie die langfristige Aufbewahrungsrichtlinie für Ihre Datenbank(en) konfigurieren. Weitere Informationen finden Sie unter [Langfristige Aufbewahrung](sql-database-long-term-retention.md).
 
-Sie können diese automatischen Datenbanksicherungen verwenden, um eine Datenbank nach verschiedenen Störungen und Unterbrechungen wiederherzustellen, sowohl innerhalb Ihres eigenen Rechenzentrums als auch in einem anderen Rechenzentrum. Bei automatischen Datenbanksicherungen hängt die geschätzte Wiederherstellungszeit von verschiedenen Faktoren ab, beispielsweise von der Gesamtzahl von Datenbanken, die gleichzeitig in der gleichen Region wiederhergestellt werden müssen, von der Größe der Datenbank und der Transaktionsprotokolle sowie von der Netzwerkbandbreite. In den meisten Fällen beträgt die Wiederherstellungszeit weniger als 12 Stunden. Bei der Wiederherstellung in eine andere Datenregion ist der potenzielle Datenverlust aufgrund der georedundanten Speicherung der stündlichen differenziellen Datensicherungen auf eine Stunde begrenzt. 
+Sie können diese automatischen Datenbanksicherungen verwenden, um eine Datenbank nach verschiedenen Störungen und Unterbrechungen wiederherzustellen, sowohl innerhalb Ihres eigenen Rechenzentrums als auch in einem anderen Rechenzentrum. Bei automatischen Datenbanksicherungen hängt die geschätzte Wiederherstellungszeit von verschiedenen Faktoren ab, beispielsweise von der Gesamtzahl von Datenbanken, die gleichzeitig in der gleichen Region wiederhergestellt werden müssen, von der Größe der Datenbank und der Transaktionsprotokolle sowie von der Netzwerkbandbreite. In den meisten Fällen beträgt die Wiederherstellungszeit weniger als 12 Stunden. Bei der Wiederherstellung in eine andere Datenregion ist der potenzielle Datenverlust aufgrund der georedundanten Speicherung der stündlichen differenziellen Datensicherungen auf eine Stunde begrenzt.
 
 > [!IMPORTANT]
 > Um eine Wiederherstellung mithilfe von automatisierten Sicherungen durchzuführen, müssen Sie Mitglied der Rolle „SQL Server-Mitwirkender“ oder Besitzer des Abonnements sein. Informationen hierzu finden Sie unter [RBAC: Integrierte Rollen](../active-directory/role-based-access-built-in-roles.md). Sie können das Azure-Portal, PowerShell oder die REST-API zur Wiederherstellung verwenden. Die Nutzung von Transact-SQL ist nicht möglich.
-> 
-> 
+>
+>
 
 Verwenden Sie automatisierte Sicherungen als Mechanismus für Geschäftskontinuität und Wiederherstellung, wenn Folgendes auf Ihre Anwendung zutrifft:
 
 * Es handelt sich nicht um eine geschäftskritische Anwendung.
 * Es ist keine bindende SLA vorhanden, sodass eine Ausfallzeit von 24 Stunden oder länger keine Kosten aufgrund finanzieller Haftung nach sich zieht.
-* Daten ändern sich langsam (nur wenige Transaktionen pro Stunde), und der Verlust aller innerhalb einer Stunde erfolgten Datenänderungen ist akzeptabel. 
-* Die Kosten spielen eine große Rolle. 
+* Daten ändern sich langsam (nur wenige Transaktionen pro Stunde), und der Verlust aller innerhalb einer Stunde erfolgten Datenänderungen ist akzeptabel.
+* Die Kosten spielen eine große Rolle.
 
-Wenn Sie eine schnellere Wiederherstellung benötigen, verwenden Sie die [aktive Georeplikation](sql-database-geo-replication-overview.md) (im nächsten Abschnitt beschrieben). Wenn Sie in der Lage sein müssen, Daten aus einem Zeitraum wiederherzustellen, der länger als 35 Tage zurückliegt, sollten Sie Ihre Datenbank regelmäßig in eine BACPAC-Datei sichern (eine komprimierte Datei, die Ihr Datenbankschema und die zugehörigen Daten enthält), die entweder in einem Azure-Blobspeicher oder einem anderen Speicherort Ihrer Wahl gespeichert wird. Weitere Informationen zum Erstellen eines transaktionskonsistenten Datenbankarchivs finden Sie unter [Erstellen einer Datenbankkopie](sql-database-copy.md) und [Exportieren der Datenbankkopie](sql-database-export.md). 
+Wenn Sie eine schnellere Wiederherstellung benötigen, verwenden Sie die [aktive Georeplikation](sql-database-geo-replication-overview.md) (im nächsten Abschnitt beschrieben). Wenn Sie in der Lage sein müssen, Daten aus einem Zeitraum wiederherzustellen, der länger als 35 Tage zurückliegt, sollten Sie Ihre Datenbank regelmäßig in eine BACPAC-Datei sichern (eine komprimierte Datei, die Ihr Datenbankschema und die zugehörigen Daten enthält), die entweder in einem Azure-Blobspeicher oder einem anderen Speicherort Ihrer Wahl gespeichert wird. Weitere Informationen zum Erstellen eines transaktionskonsistenten Datenbankarchivs finden Sie unter [Erstellen einer Datenbankkopie](sql-database-copy.md) und [Exportieren der Datenbankkopie](sql-database-export.md).
 
-### <a name="use-active-geo-replication-to-reduce-recovery-time-and-limit-data-loss-associated-with-a-recovery"></a>Verwenden der aktiven Georeplikation zum Verkürzen der Wiederherstellungszeit und Begrenzen von mit einer Wiederherstellung verknüpften Datenverlusten
+### <a name="use-active-geo-replication-and-auto-failover-groups-to-reduce-recovery-time-and-limit-data-loss-associated-with-a-recovery"></a>Verwenden von aktiver Georeplikation und automatischen Failovergruppen zum Verkürzen der Wiederherstellungszeit und Begrenzen von mit einer Wiederherstellung verknüpften Datenverlusten
 Zusätzlich zu Datenbanksicherungen zur Wiederherstellung von Datenbanken nach einer Unterbrechung des Geschäftsbetriebs können Sie die [aktive Georeplikation](sql-database-geo-replication-overview.md) verwenden, um eine Datenbank so zu konfigurieren, dass sie über bis zu vier lesbare sekundäre Datenbanken in den Regionen Ihrer Wahl verfügt. Diese sekundären Datenbanken werden mithilfe eines asynchronen Replikationsmechanismus mit der primären Datenbank synchronisiert. Diese Funktion dient zum Schutz vor Unterbrechungen des Geschäftsbetriebs bei einem Rechenzentrumsausfall oder während eines Anwendungsupgrades. Die aktive Georeplikation kann auch verwendet werden, um die Leistung schreibgeschützter Abfragen für geografisch verteilte Benutzer zu verbessern.
 
-Wenn die primäre Datenbank unerwartet offline geschaltet wird oder Sie sie für Wartungsaktivitäten offline schalten müssen, können Sie schnell eine sekundäre Datenbank zur primären Datenbank hochstufen (dies wird als Failover bezeichnet) und Anwendungen so konfigurieren, dass sie eine Verbindung mit dieser hochgestuften Datenbank herstellen. Bei einem geplanten Failover entstehen keine Datenverluste. Bei einem ungeplanten Failover können aufgrund der Natur der asynchronen Replikation einige wenige Daten aus Transaktionen verloren gehen, die vor sehr kurzer Zeit erfolgt sind. Nach einem Failover können Sie zu einem späteren Zeitpunkt ein Failback durchführen – entweder gemäß einem definierten Zeitplan oder sobald das Rechenzentrum wieder online ist. In allen Fällen können die Benutzer die Datenbank für einen kurzen Zeitraum nicht nutzen und müssen die Verbindung erneut herstellen. 
+Zum Aktivieren des automatisierten und transparenten Failovers organisieren Sie Ihre georeplizierten Datenbanken unter Verwendung des SQL Database-Features „Automatische Failovergruppen“<link> in Gruppen.
+
+Wenn die primäre Datenbank unerwartet offline geschaltet wird oder Sie sie für Wartungsaktivitäten offline schalten müssen, können Sie schnell eine sekundäre Datenbank zur primären Datenbank hochstufen (dies wird als Failover bezeichnet) und Anwendungen so konfigurieren, dass sie eine Verbindung mit dieser hochgestuften Datenbank herstellen. Wenn Ihre Anwendung über den Failovergruppenlistener eine Verbindung mit den Datenbanken herstellt, brauchen Sie die Konfiguration der SQL-Verbindungszeichenfolge nach dem Failover nicht zu ändern. Bei einem geplanten Failover entstehen keine Datenverluste. Bei einem ungeplanten Failover können aufgrund der Natur der asynchronen Replikation einige wenige Daten aus Transaktionen verloren gehen, die vor sehr kurzer Zeit erfolgt sind. Mit automatischen Failovergruppen können Sie die Failoverrichtlinie anpassen, um potenzielle Datenverluste zu minimieren. Nach einem Failover können Sie zu einem späteren Zeitpunkt ein Failback durchführen – entweder gemäß einem definierten Zeitplan oder sobald das Rechenzentrum wieder online ist. In allen Fällen können die Benutzer die Datenbank für einen kurzen Zeitraum nicht nutzen und müssen die Verbindung erneut herstellen.
 
 > [!IMPORTANT]
-> Um die aktive Georeplikation verwenden zu können, müssen Sie entweder der Besitzer des Abonnements sein oder über Administratorberechtigungen in SQL Server verfügen. Zum Konfigurieren und Durchführen des Failovers können Sie das Azure-Portal, PowerShell oder die REST-API mit Berechtigungen des Abonnements verwenden. Alternativ dazu können Sie Transact-SQL mit Berechtigungen in SQL Server verwenden.
-> 
-> 
+> Um die aktive Georeplikation und automatische Failovergruppen verwenden zu können, müssen Sie entweder der Besitzer des Abonnements sein oder über Administratorberechtigungen in SQL Server verfügen. Zum Konfigurieren und Durchführen des Failovers können Sie das Azure-Portal, PowerShell oder die REST-API mit Berechtigungen des Abonnements verwenden. Alternativ dazu können Sie Transact-SQL mit Berechtigungen in SQL Server verwenden.
+>
+>
 
 Verwenden Sie die aktive Georeplikation, wenn Ihre Anwendung die folgenden Kriterien erfüllt:
 
@@ -81,12 +84,12 @@ Verwenden Sie die aktive Georeplikation, wenn Ihre Anwendung die folgenden Krite
 >
 
 ## <a name="recover-a-database-after-a-user-or-application-error"></a>Wiederherstellen einer Datenbank nach einem Benutzer- oder Anwendungsfehler
-*Niemand ist perfekt! Es kann passieren, dass ein Benutzer versehentlich Daten, eine wichtige Tabelle oder sogar eine ganze Datenbank löscht. Es kann auch vorkommen, dass eine Anwendung aufgrund eines Anwendungsfehlers unbeabsichtigt gültige Daten mit ungültigen Daten überschreibt. 
+*Niemand ist perfekt! Es kann passieren, dass ein Benutzer versehentlich Daten, eine wichtige Tabelle oder sogar eine ganze Datenbank löscht. Es kann auch vorkommen, dass eine Anwendung aufgrund eines Anwendungsfehlers unbeabsichtigt gültige Daten mit ungültigen Daten überschreibt.
 
 In einem solchen Szenario stehen Ihnen die nachfolgend beschriebenen Wiederherstellungsoptionen zur Verfügung.
 
 ### <a name="perform-a-point-in-time-restore"></a>Durchführen einer Point-in-Time-Wiederherstellung
-Sie können die automatisierten Sicherungen verwenden, um eine Kopie Ihrer Datenbank auf einen bekanntermaßen fehlerfreien Zeitpunkt wiederherzustellen, vorausgesetzt, dieser Zeitpunkt liegt innerhalb des Aufbewahrungszeitraums für die Datenbank. Nach der Wiederherstellung der Datenbank können Sie entweder die ursprüngliche Datenbank durch die wiederhergestellte Datenbank ersetzen oder die benötigten Daten aus der wiederhergestellten Datenbank in die ursprüngliche Datenbank kopieren. Wenn die Datenbank die aktive Georeplikation verwendet, empfiehlt es sich, die erforderlichen Daten aus der wiederhergestellten Kopie in die ursprüngliche Datenbank zu kopieren. Wenn Sie die ursprüngliche Datenbank durch die wiederhergestellte Datenbank ersetzen, müssen Sie die aktive Georeplikation neu konfigurieren und synchronisieren (was bei großen Datenbanken sehr lange dauern kann). 
+Sie können die automatisierten Sicherungen verwenden, um eine Kopie Ihrer Datenbank auf einen bekanntermaßen fehlerfreien Zeitpunkt wiederherzustellen, vorausgesetzt, dieser Zeitpunkt liegt innerhalb des Aufbewahrungszeitraums für die Datenbank. Nach der Wiederherstellung der Datenbank können Sie entweder die ursprüngliche Datenbank durch die wiederhergestellte Datenbank ersetzen oder die benötigten Daten aus der wiederhergestellten Datenbank in die ursprüngliche Datenbank kopieren. Wenn die Datenbank die aktive Georeplikation verwendet, empfiehlt es sich, die erforderlichen Daten aus der wiederhergestellten Kopie in die ursprüngliche Datenbank zu kopieren. Wenn Sie die ursprüngliche Datenbank durch die wiederhergestellte Datenbank ersetzen, müssen Sie die aktive Georeplikation neu konfigurieren und synchronisieren (was bei großen Datenbanken sehr lange dauern kann).
 
 Weitere Informationen und die detaillierten Schritte zum Wiederherstellen einer Datenbank auf einen bestimmten Zeitpunkt über das Azure-Portal oder mithilfe von PowerShell finden Sie unter [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore). Transact-SQL kann zur Wiederherstellung nicht verwendet werden.
 
@@ -96,9 +99,9 @@ Wenn eine Datenbank gelöscht wurde, der logische Server aber noch vorhanden ist
 Weitere Informationen und die detaillierten Schritte zum Wiederherstellen einer gelöschten Datenbank über das Azure-Portal oder mithilfe von PowerShell finden Sie unter [Wiederherstellen einer gelöschten Datenbank](sql-database-recovery-using-backups.md#deleted-database-restore). Transact-SQL kann zur Wiederherstellung nicht verwendet werden.
 
 > [!IMPORTANT]
-> Wenn der logische Server gelöscht wurde, kann eine gelöschte Datenbank nicht wiederhergestellt werden. 
-> 
-> 
+> Wenn der logische Server gelöscht wurde, kann eine gelöschte Datenbank nicht wiederhergestellt werden.
+>
+>
 
 ### <a name="restore-from-azure-backup-vault"></a>Wiederherstellen von Daten aus dem Azure-Sicherungstresor
 Wenn der Datenverlust außerhalb des aktuellen Aufbewahrungszeitraums für automatisierte Sicherungen aufgetreten und Ihre Datenbank für die langfristige Aufbewahrung konfiguriert ist, können Sie die Daten aus einer wöchentlichen Sicherung im Azure-Sicherungstresor in eine neue Datenbank wiederherstellen. Zu diesem Zeitpunkt können Sie entweder die ursprüngliche Datenbank durch die wiederhergestellte Datenbank ersetzen oder die benötigten Daten aus der wiederhergestellten Datenbank in die ursprüngliche Datenbank kopieren. Wenn Sie vor einem größeren Anwendungsupgrade eine alte Version Ihrer Datenbank abrufen oder Prüfanforderungen bzw. rechtliche Vorgaben erfüllen müssen, können Sie mithilfe einer im Azure-Sicherungstresor gespeicherten vollständigen Sicherung eine neue Datenbank erstellen.  Weitere Informationen finden Sie unter [Langfristige Aufbewahrung](sql-database-long-term-retention.md).
@@ -106,7 +109,7 @@ Wenn der Datenverlust außerhalb des aktuellen Aufbewahrungszeitraums für autom
 ## <a name="recover-a-database-to-another-region-from-an-azure-regional-data-center-outage"></a>Wiederherstellen einer Datenbank in einer anderen Region nach dem Ausfall eines Rechenzentrums in einer Azure-Region
 <!-- Explain this scenario -->
 
-Es kommt zwar sehr selten vor, aber es ist möglich, dass ein Azure-Rechenzentrum ausfällt. Ein solcher Ausfall kann den Geschäftsbetrieb einige wenige Minuten oder mehrere Stunden unterbrechen. 
+Es kommt zwar sehr selten vor, aber es ist möglich, dass ein Azure-Rechenzentrum ausfällt. Ein solcher Ausfall kann den Geschäftsbetrieb einige wenige Minuten oder mehrere Stunden unterbrechen.
 
 * Eine Möglichkeit ist, einfach zu warten, bis die Datenbank wieder online ist, wenn der Rechenzentrumsausfall behoben wurde. Dies funktioniert bei Anwendungen, bei denen die Datenbank nicht notwendigerweise online sein muss. Beispiele hierfür sind Entwicklungsprojekte oder kostenlose Testversionen, mit denen Sie nicht ständig arbeiten müssen. Wenn ein Rechenzentrum ausfällt, wissen Sie nicht, wie lange der Ausfall dauern wird, daher ist diese Option nur dann in Erwägung zu ziehen, wenn Sie Ihre Datenbank eine Zeitlang nicht benötigen.
 * Eine andere Möglichkeit besteht darin, ein Failover in eine andere Datenregion auszuführen (wenn Sie die aktive Georeplikation verwenden) oder die Datenbank mithilfe georedundanter Datenbanksicherungen wiederherzustellen (Geowiederherstellung). Ein Failover dauert nur wenige Sekunden, die Wiederherstellung aus Sicherungen nimmt mehrere Stunden in Anspruch.
@@ -120,31 +123,30 @@ Unabhängig von der Funktion für die Geschäftskontinuität, die Sie einsetzen 
 
 * Ermitteln und Vorbereiten des Zielservers, einschließlich Firewallregeln auf Serverebene, Anmeldedaten und Berechtigungen auf Ebene der Masterdatenbank.
 * Bestimmen, wie Clients und Clientanwendungen an den neuen Server umgeleitet werden sollen.
-* Dokumentieren weiterer Abhängigkeiten wie z.B. Überwachungseinstellungen und Warnungen. 
+* Dokumentieren weiterer Abhängigkeiten wie z.B. Überwachungseinstellungen und Warnungen.
 
 Wenn Planung und Vorbereitung nicht sorgfältig durchgeführt werden, dauert es länger, Anwendungen nach einem Failover oder einer Wiederherstellung wieder online zu schalten. Zudem werden voraussichtlich weitere Problembehandlungsmaßnahmen zu einem Zeitpunkt erforderlich sein, zu dem Sie bereits unter Stress stehen – eine ungünstige Kombination.
 
 ### <a name="failover-to-a-geo-replicated-secondary-database"></a>Failover auf eine georeplizierte sekundäre Datenbank
-Wenn Sie die aktive Georeplikation als Wiederherstellungsmechanismus verwenden, [erzwingen Sie ein Failover auf eine georeplizierte sekundäre Datenbank](sql-database-disaster-recovery.md#failover-to-geo-replicated-secondary-database). Die sekundäre Datenbank wird innerhalb weniger Sekunden zur neuen primären Datenbank hochgestuft und kann neue Transaktionen aufzeichnen und auf Abfragen antworten. Hierbei entsteht ein Datenverlust von nur wenigen Sekunden für die Daten, die noch nicht repliziert wurden. Informationen zum Automatisieren des Failoverprozesses finden Sie unter [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md).
+Wenn Sie aktive Georeplikation und automatische Failovergruppen als Wiederherstellungsmechanismus verwenden, können Sie eine Richtlinie für automatisches Failover konfigurieren oder [manuelles Failover](sql-database-disaster-recovery.md#failover-to-geo-replicated-secondary-database) verwenden. Sobald das Failover initiiert wurde, bewirkt es, dass die sekundäre Datenbank zur neuen primären Datenbank wird und neue Transaktionen aufzeichnen sowie auf Abfragen antworten kann. Hierbei entsteht ein minimaler Datenverlust für die Daten, die noch nicht repliziert wurden. Informationen zum Entwerfen des Failoverprozesses finden Sie unter [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md).
 
 > [!NOTE]
-> Wenn das Rechenzentrum wieder online geschaltet wird, können Sie ein Failback auf die ursprüngliche primäre Datenbank ausführen (nicht zwingend erforderlich).
-> 
-> 
+> Wenn das Rechenzentrum wieder online geschaltet wird, werden die alten primären Datenbanken automatisch wieder mit der neuen primären Datenbank verbunden und werden zu sekundären Datenbanken. Wenn Sie die primäre Datenbank wieder in den ursprünglichen Bereich verschieben müssen, können Sie manuell ein geplantes Failover initiieren (Failback).
+>
 
 ### <a name="perform-a-geo-restore"></a>Ausführen einer Geowiederherstellung
-Wenn Sie automatisierte Sicherungen mit georedundanter Speicherreplikation als Wiederherstellungsmechanismus verwenden, [stellen Sie die Datenbank per Geowiederherstellung wieder her](sql-database-disaster-recovery.md#recover-using-geo-restore). Die Wiederherstellung erfolgt in den meisten Fällen innerhalb von 12 Stunden. Es entsteht ein Datenverlust von bis zu einer Stunde – je nachdem, wann die letzte differenzielle Sicherung durchgeführt und repliziert wurde. Solange die Wiederherstellung nicht abgeschlossen ist, kann die Datenbank keine Transaktionen aufzeichnen oder auf Abfragen antworten. 
+Wenn Sie automatisierte Sicherungen mit georedundanter Speicherreplikation als Wiederherstellungsmechanismus verwenden, [stellen Sie die Datenbank per Geowiederherstellung wieder her](sql-database-disaster-recovery.md#recover-using-geo-restore). Die Wiederherstellung erfolgt in den meisten Fällen innerhalb von 12 Stunden. Es entsteht ein Datenverlust von bis zu einer Stunde – je nachdem, wann die letzte differenzielle Sicherung durchgeführt und repliziert wurde. Solange die Wiederherstellung nicht abgeschlossen ist, kann die Datenbank keine Transaktionen aufzeichnen oder auf Abfragen antworten.
 
 > [!NOTE]
 > Wenn das Rechenzentrum wieder online ist, bevor Sie Ihre Anwendung auf die wiederhergestellte Datenbank umstellen, können Sie die Wiederherstellung einfach abbrechen.  
-> 
-> 
+>
+>
 
 ### <a name="perform-post-failover--recovery-tasks"></a>Ausführen von Aufgaben nach dem Failover bzw. nach der Wiederherstellung
 Nach einer Wiederherstellung müssen Sie unabhängig vom Wiederherstellungsmechanismus folgende zusätzliche Aufgaben ausführen, damit Ihre Anwendungen wieder vollständig einsatzfähig sind und von Ihren Benutzern wieder in vollem Umfang verwendet werden können:
 
 * Umleiten von Clients und Clientanwendungen an den neuen Server
-* Sicherstellen, dass geeignete Firewallregeln auf Serverebene vorhanden sind, damit Benutzer eine Verbindung herstellen können (oder Verwenden von [Firewallregeln auf Datenbankebene](sql-database-firewall-configure.md#creating-database-level-firewall-rules))
+* Sicherstellen, dass geeignete Firewallregeln auf Serverebene vorhanden sind, damit Benutzer eine Verbindung herstellen können (oder Verwenden von [Firewallregeln auf Datenbankebene](sql-database-firewall-configure.md#creating-and-managing-firewall-rules))
 * Sicherstellen, dass die geeigneten Anmeldeinformationen und Berechtigungen auf Ebene der Masterdatenbank vorhanden sind (oder Verwenden von [eigenständigen Benutzern](https://msdn.microsoft.com/library/ff929188.aspx))
 * Konfigurieren der erforderlichen Überwachung
 * Konfigurieren der erforderlichen Warnungen
@@ -154,10 +156,4 @@ Zuweilen muss eine Anwendung aufgrund geplanter Wartungsmaßnahmen offline gesch
 
 ## <a name="next-steps"></a>Nächste Schritte
 Überlegungen zum Anwendungsentwurf für eigenständige Datenbanken und elastische Pools finden Sie unter [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md) und [Strategien für die Notfallwiederherstellung mit elastischen Pools](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
-
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 
