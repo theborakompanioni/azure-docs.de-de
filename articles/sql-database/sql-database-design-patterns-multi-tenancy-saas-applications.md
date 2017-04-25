@@ -101,7 +101,7 @@ Die folgenden Faktoren haben ebenfalls Einfluss auf das von einem Kunden gewähl
 
 * **Besitz von Mandantendaten**. Bei einer Anwendung, bei der Mandanten Besitzer ihrer eigenen Daten bleiben, ist das Muster „eine Einzeldatenbank pro Mandant“ von Vorteil.
 * **Skalierung:**Bei einer Anwendung für Hunderttausende oder Millionen von Mandanten sind Ansätze mit gemeinsamer Datenbanknutzung vorteilhaft, z.B. Sharding. Die Anforderungen an die Isolation können aber trotzdem eine Herausforderung darstellen.
-* **Wert- und Geschäftsmodell**. Wenn der Umsatz pro Mandant einer Anwendung gering ist (weniger als&1; US-Dollar), sind die Isolationsanforderungen weniger wichtig, und die Verwendung einer gemeinsamen Datenbank ist sinnvoll. Beträgt der Umsatz pro Mandant ein paar US-Dollar oder mehr, ist die Verwendung eines Modells mit einer Datenbank pro Mandant eher möglich. Dieses Modell kann die Entwicklungskosten reduzieren.
+* **Wert- und Geschäftsmodell**. Wenn der Umsatz pro Mandant einer Anwendung gering ist (weniger als 1 US-Dollar), sind die Isolationsanforderungen weniger wichtig, und die Verwendung einer gemeinsamen Datenbank ist sinnvoll. Beträgt der Umsatz pro Mandant ein paar US-Dollar oder mehr, ist die Verwendung eines Modells mit einer Datenbank pro Mandant eher möglich. Dieses Modell kann die Entwicklungskosten reduzieren.
 
 Den in Abbildung 2 dargestellten Vor- und Nachteilen zufolge muss ein ideales mehrinstanzenfähiges Modell über hervorragende Eigenschaften für die Mandantenisolation mit optimaler gemeinsamer Nutzung von Ressourcen zwischen Mandanten verfügen. Dieses Modell ist im oberen rechten Quadranten von Abbildung 2 dargestellt.
 
