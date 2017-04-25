@@ -12,17 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/15/2017
+ms.date: 04/17/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: fd2338b73bd82121ed36e286446b07ccd4a8a219
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: a0a974982f80bc2137e73a84681a9401e8a02e39
+ms.lasthandoff: 04/18/2017
 
 
 ---
 # <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-blob-storage"></a>Verwenden des Microsoft Azure Import/Export-Diensts zum Übertragen von Daten in Blob Storage
-
 Mit dem Import/Export-Dienst von Azure können Sie große Datenmengen auf sichere Weise in Azure Blob Storage übertragen, indem Sie Festplattenlaufwerke an ein Azure-Rechenzentrum schicken. Sie können diesen Dienst auch zum Übertragen von Daten aus Azure Blob Storage auf Festplattenlaufwerke und zum Versand an Ihren lokalen Standort nutzen. Dieser Dienst eignet sich für Situationen, in denen Sie mehrere TB an Daten an oder von Azure übertragen möchten und in denen das Hoch- oder Herunterladen über das Netzwerk aufgrund der eingeschränkten Bandbreite oder hoher Netzwerkkosten nicht möglich ist.
 
 Für den Dienst ist es erforderlich, dass Festplattenlaufwerke über eine BitLocker-Verschlüsselung verfügen, damit für die Sicherheit Ihrer Daten gesorgt ist. Der Dienst unterstützt klassische und Azure Resource Manager-Speicherkonten (standardmäßige und kalte Ebene), die in allen Regionen des öffentlichen Azure vorhanden sind. Schicken Sie die Festplattenlaufwerke an einen der unterstützten Standorte, die weiter unten in diesem Artikel angegeben sind.
@@ -102,12 +101,14 @@ Der Azure Import/Export-Dienst unterstützt das Kopieren von Daten von bzw. in a
 Unterstützte Standorte für die Verschickung:
 
 * USA, Osten
-* USA, Westen
-* USA, Osten 2
-* USA, Mitte
-* USA, Norden-Mitte
-* USA, Süden-Mitte
-* Europa, Norden
+* USA (West)
+* USA (Ost) 2
+* USA, Westen 2
+* USA (Mitte)
+* USA Nord Mitte
+* USA (Mitte/Süden)
+* USA, Westen-Mitte
+* Nordeuropa
 * Europa, Westen
 * Asien, Osten
 * Asien, Südosten
@@ -115,10 +116,18 @@ Unterstützte Standorte für die Verschickung:
 * Australien, Südosten
 * Japan, Westen
 * Japan, Osten
-* Indien, Mitte
-* Kanada
-* US Gov
-* China
+* Indien (Mitte)
+* Indien, Süden
+* Kanada, Mitte
+* Kanada, Osten
+* Brasilien Süd
+* Korea, Mitte
+* US Government, Virginia
+* US Government, Iowa
+* US DoD, Osten
+* US DoD, Mitte
+* China, Osten
+* China, Norden
 
 ### <a name="shipping"></a>Versand
 **Schicken von Festplatten an das Rechenzentrum:**
@@ -263,7 +272,7 @@ Der erste Schritt beim Importieren von Daten mit dem Azure Import/Export-Dienst 
     "F:\50M_original\","containername/",BlockBlob,rename,"None",None 
     ```
    
-    Im Beispiel oben wird 100M_1.csv.txt in das Stammverzeichnis des Containers mit dem Namen "Containername" kopiert. Wenn der Container "Containername" nicht vorhanden ist, wird er erstellt. Alle Dateien und Ordner in 50M_original werden rekursiv in „Containername“ kopiert. Die Ordnerstruktur wird beibehalten.
+    Im Beispiel oben wird 100M_1.csv.txt in das Stammverzeichnis des Containers mit dem Namen „Containername“ kopiert. Wenn der Container „Containername“ nicht vorhanden ist, wird er erstellt. Alle Dateien und Ordner in 50M_original werden rekursiv in „Containername“ kopiert. Die Ordnerstruktur wird beibehalten.
 
     Erfahren Sie mehr über das [Vorbereiten der Dataset-CSV-Datei](storage-import-export-tool-preparing-hard-drives-import.md#prepare-the-dataset-csv-file).
     

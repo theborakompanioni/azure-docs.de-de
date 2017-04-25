@@ -1,6 +1,6 @@
 ---
 title: Herstellen einer Verbindung mit Azure SQL-Datenbank mithilfe von Java | Microsoft-Dokumentation
-description: Zeigt ein Java-Codebeispiel zum Herstellen einer Verbindung mit Azure SQL-Datenbank.
+description: "Zeigt ein Java-Codebeispiel an, das Sie zum Herstellen einer Verbindung mit Azure SQL-Datenbank und Senden von entsprechenden Abfragen verwenden können."
 services: sql-database
 documentationcenter: 
 author: ajlam
@@ -8,37 +8,35 @@ manager: jhubbard
 editor: 
 ms.assetid: 
 ms.service: sql-database
-ms.custom: quick start
+ms.custom: quick start connect
 ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 03/27/2017
+ms.date: 04/17/2017
 ms.author: andrela;carlrab;sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: a047d4cdf869fff0d2afaf11f124370c0eae98e4
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 17202bfc03e9b60d12f1a071eff427520a0dce83
+ms.lasthandoff: 04/18/2017
 
 
 ---
 # <a name="azure-sql-database-use-java-to-connect-and-query-data"></a>Azure SQL-Datenbank: Verwenden von Java zum Herstellen einer Verbindung und Abfragen von Daten
 
-Verwenden Sie [Java](https://docs.microsoft.com/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server), um eine Verbindung mit einer Azure SQL-Datenbank herzustellen und Abfragen dafür durchzuführen. In diesem Leitfaden wird beschrieben, wie Sie Java zum Herstellen einer Verbindung mit einer Azure SQL-Datenbank verwenden und dann Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen ausführen.
+In diesem Schnellstart wird veranschaulicht, wie Sie [Java](https://docs.microsoft.com/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) nutzen, um eine Verbindung mit einer Azure SQL-Datenbank herzustellen. Anschließend können Sie Transact-SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank über Mac OS-, Windows- und Ubuntu Linux-Plattformen verwenden.
 
 In diesem Schnellstart werden als Ausgangspunkt die Ressourcen verwendet, die in einem der folgenden Schnellstarts erstellt wurden:
 
 - [Erstellen einer Datenbank – Portal](sql-database-get-started-portal.md)
 - [Erstellen einer Datenbank – CLI](sql-database-get-started-cli.md)
 
-## <a name="configure-development-environment"></a>Konfigurieren der Entwicklungsumgebung
-
-In den folgenden Abschnitten wird beschrieben, wie Sie Ihre vorhandenen Mac OS-, Linux- (Ubuntu) und Windows-Entwicklungsumgebungen für die Arbeit mit Azure SQL-Datenbank konfigurieren.
+## <a name="install-java-software"></a>Installieren von Java-Software
 
 ### <a name="mac-os"></a>**Mac OS**
 Öffnen Sie das Terminal, und navigieren Sie zu einem Verzeichnis, in dem Sie Ihr Java-Projekt erstellen möchten. Geben Sie die folgenden Befehle ein, um **brew** und **Maven** zu installieren. 
 
-```
+```bash
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew update
 brew install maven
@@ -47,7 +45,7 @@ brew install maven
 ### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
 Öffnen Sie das Terminal, und navigieren Sie zu einem Verzeichnis, in dem Sie Ihr Java-Projekt erstellen möchten. Geben Sie die folgenden Befehle ein, um **Maven** zu installieren. 
 
-```
+```bash
 sudo apt-get install maven
 ```
 
@@ -60,19 +58,20 @@ Rufen Sie die Verbindungszeichenfolge im Azure-Portal ab. Sie verwenden die Verb
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 2. Wählen Sie im Menü auf der linken Seite die Option **SQL-Datenbanken**, und klicken Sie auf der Seite **SQL-Datenbanken** auf Ihre Datenbank. 
-3. Überprüfen Sie im Bereich **Zusammenfassung** für Ihre Datenbank den vollqualifizierten Servernamen. 
+3. Überprüfen Sie auf der Seite **Übersicht** für Ihre Datenbank den vollqualifizierten Servernamen wie in der Abbildung unten dargestellt. Sie können auf den Servernamen zeigen, um die Option **Klicken Sie zum Kopieren** anzuzeigen. 
 
-    <img src="./media/sql-database-connect-query-dotnet/server-name.png" alt="server name" style="width: 780px;" />
+   ![Servername](./media/sql-database-connect-query-dotnet/server-name.png) 
 
-4. Klicken Sie auf **Datenbankverbindungszeichenfolgen anzeigen**.
+4. Falls Sie die Anmeldeinformationen für Ihren Azure SQL-Datenbankserver vergessen haben, können Sie zur Seite des SQL-Datenbankservers navigieren, um den Serveradministrator-Benutzernamen anzuzeigen und ggf. das Kennwort zurückzusetzen.
+5. Klicken Sie auf **Datenbankverbindungszeichenfolgen anzeigen**.
 
-5. Überprüfen Sie die vollständige **JDBC**-Verbindungszeichenfolge.
+6. Überprüfen Sie die vollständige **JDBC**-Verbindungszeichenfolge.
 
-    <img src="./media/sql-database-connect-query-jdbc/jdbc-connection-string.png" alt="JDBC connection string" style="width: 780px;" />
+    ![Verbindungszeichenfolge für JDBC](./media/sql-database-connect-query-jdbc/jdbc-connection-string.png)
 
 ### <a name="create-maven-project"></a>**Erstellen eines Maven-Projekts**
 Erstellen Sie über das Terminal ein neues Maven-Projekt. 
-```
+```bash
 mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=SqlDbSample" "-DarchetypeArtifactId=maven-archetype-quickstart" "-Dversion=1.0.0"
 ```
 
@@ -88,7 +87,7 @@ Fügen Sie den **Microsoft JDBC-Treiber für SQL Server** zu den Abhängigkeiten
 
 ## <a name="select-data"></a>Auswählen von Daten
 
-Verwenden Sie eine [Verbindung](https://docs.microsoft.com/sql/connect/jdbc/working-with-a-connection) mit einer [SELECT](https://msdn.microsoft.com/library/ms189499.aspx)-Transact-SQL-Anweisung, um Daten in Ihrer Azure SQL-Datenbank abzufragen.
+Verwenden Sie den folgenden Code zum Abfragen Ihrer Azure SQL-Datenbank mithilfe der Klasse [connection](https://docs.microsoft.com/sql/connect/jdbc/working-with-a-connection) und einer Transact-SQL-Anweisung des Typs [SELECT](https://docs.microsoft.com/sql/t-sql/queries/select-transact-sql). Ersetzen Sie die Parameter „hostHame“, „dbName“, „user“ und „password“ durch die Werte, die Sie angegeben haben, als Sie die Datenbank mit den AdventureWorksLT-Beispieldaten erstellt haben. 
 
 ```java
 package com.sqldbsamples;
@@ -104,10 +103,10 @@ public class App {
     public static void main(String[] args) {
     
         // Connect to database
-        String hostName = "yourserver";
-        String dbName = "yourdatabase";
-        String user = "yourusername";
-        String password = "yourpassword";
+        String hostName = "your_server.database.windows.net";
+        String dbName = "your_database";
+        String user = "your_username";
+        String password = "your_password";
         String url = String.format("jdbc:sqlserver://%s.database.windows.net:1433;database=%s;user=%s;password=%s;encrypt=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;", hostName, dbName, user, password);
         Connection connection = null;
 
@@ -123,17 +122,19 @@ public class App {
                 String selectSql = "SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName " 
                     + "FROM [SalesLT].[ProductCategory] pc "  
                     + "JOIN [SalesLT].[Product] p ON pc.productcategoryid = p.productcategoryid";
-                Statement statement = connection.createStatement();
-                ResultSet resultSet = statement.executeQuery(selectSql);
+                
+                try (Statement statement = connection.createStatement();
+                    ResultSet resultSet = statement.executeQuery(selectSql)) {
 
-                // Print results from select statement
-                System.out.println("Top 20 categories:");
-                while (resultSet.next())
-                {
-                    System.out.println(resultSet.getString(1) + " "
-                        + resultSet.getString(2));
+                        // Print results from select statement
+                        System.out.println("Top 20 categories:");
+                        while (resultSet.next())
+                        {
+                            System.out.println(resultSet.getString(1) + " "
+                                + resultSet.getString(2));
+                        }
                 }
-            }
+        }
         catch (Exception e) {
                 e.printStackTrace();
         }
@@ -143,7 +144,7 @@ public class App {
 
 ## <a name="insert-data"></a>Einfügen von Daten
 
-Verwenden Sie [vorbereitete Anweisungen](https://docs.microsoft.com/sql/connect/jdbc/using-statements-with-sql) mit einer [INSERT](https://msdn.microsoft.com/library/ms174335.aspx)-Transact-SQL-Anweisung, um Daten in Ihre Azure SQL-Datenbank einzufügen.
+Verwenden Sie den folgenden Code zum Einfügen eines neuen Produkts in die Tabelle „SalesLT.Product“ in der angegebenen Datenbank mithilfe der Klasse [Prepared Statements](https://docs.microsoft.com/sql/connect/jdbc/using-statements-with-sql) und einer Transact-SQL-Anweisung des Typs [INSERT](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql). Ersetzen Sie die Parameter „hostHame“, „dbName“, „user“ und „password“ durch die Werte, die Sie angegeben haben, als Sie die Datenbank mit den AdventureWorksLT-Beispieldaten erstellt haben. 
 
 ```java
 package com.sqldbsamples;
@@ -157,10 +158,10 @@ public class App {
     public static void main(String[] args) {
     
         // Connect to database
-        String hostName = "yourserver";
-        String dbName = "yourdatabase";
-        String user = "yourusername";
-        String password = "yourpassword";
+        String hostName = "your_server.database.windows.net";
+        String dbName = "your_database";
+        String user = "your_username";
+        String password = "your_password";
         String url = String.format("jdbc:sqlserver://%s.database.windows.net:1433;database=%s;user=%s;password=%s;encrypt=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;", hostName, dbName, user, password);
         Connection connection = null;
 
@@ -179,16 +180,17 @@ public class App {
                 java.util.Date date = new java.util.Date();
                 java.sql.Timestamp sqlTimeStamp = new java.sql.Timestamp(date.getTime());
 
-                PreparedStatement prep = connection.prepareStatement(insertSql);
-                prep.setString(1, "BrandNewProduct");
-                prep.setInt(2, 200989);
-                prep.setString(3, "Blue");
-                prep.setDouble(4, 75);
-                prep.setDouble(5, 80);
-                prep.setTimestamp(6, sqlTimeStamp);
+                try (PreparedStatement prep = connection.prepareStatement(insertSql)) {
+                        prep.setString(1, "BrandNewProduct");
+                        prep.setInt(2, 200989);
+                        prep.setString(3, "Blue");
+                        prep.setDouble(4, 75);
+                        prep.setDouble(5, 80);
+                        prep.setTimestamp(6, sqlTimeStamp);
 
-                int count = prep.executeUpdate();
-                System.out.println("Inserted: " + count + " row(s)");
+                        int count = prep.executeUpdate();
+                        System.out.println("Inserted: " + count + " row(s)");
+                }
         }
         catch (Exception e) {
                 e.printStackTrace();
@@ -198,7 +200,7 @@ public class App {
 ```
 ## <a name="update-data"></a>Aktualisieren von Daten
 
-Verwenden Sie [vorbereitete Anweisungen](https://docs.microsoft.com/sql/connect/jdbc/using-statements-with-sql) mit einer [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx)-Transact-SQL-Anweisung, um die Daten in Ihrer Azure SQL-Datenbank zu aktualisieren.
+Verwenden Sie den folgenden Code zum Aktualisieren von Daten in Ihrer Azure SQL-Datenbank mithilfe der Klasse [Prepared Statements](https://docs.microsoft.com/sql/connect/jdbc/using-statements-with-sql) und einer Transact-SQL-Anweisung des Typs[UPDATE](https://docs.microsoft.com/sql/t-sql/queries/update-transact-sql). Ersetzen Sie die Parameter „hostHame“, „dbName“, „user“ und „password“ durch die Werte, die Sie angegeben haben, als Sie die Datenbank mit den AdventureWorksLT-Beispieldaten erstellt haben. 
 
 ```java
 package com.sqldbsamples;
@@ -212,10 +214,10 @@ public class App {
     public static void main(String[] args) {
     
         // Connect to database
-        String hostName = "yourserver";
-        String dbName = "yourdatabase";
-        String user = "yourusername";
-        String password = "yourpassword";
+        String hostName = "your_server.database.windows.net";
+        String dbName = "your_database";
+        String user = "your_username";
+        String password = "your_password";
         String url = String.format("jdbc:sqlserver://%s.database.windows.net:1433;database=%s;user=%s;password=%s;encrypt=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;", hostName, dbName, user, password);
         Connection connection = null;
 
@@ -230,12 +232,13 @@ public class App {
                 // Prepared statement to update data
                 String updateSql = "UPDATE SalesLT.Product SET ListPrice = ? WHERE Name = ?";
 
-                PreparedStatement prep = connection.prepareStatement(updateSql);
-                prep.setString(1, "500");
-                prep.setString(2, "BrandNewProduct");
+                try (PreparedStatement prep = connection.prepareStatement(updateSql)) {
+                        prep.setString(1, "500");
+                        prep.setString(2, "BrandNewProduct");
 
-                int count = prep.executeUpdate();
-                System.out.println("Updated: " + count + " row(s)")
+                        int count = prep.executeUpdate();
+                        System.out.println("Updated: " + count + " row(s)")
+                }
         }
         catch (Exception e) {
                 e.printStackTrace();
@@ -248,7 +251,7 @@ public class App {
 
 ## <a name="delete-data"></a>Löschen von Daten
 
-Verwenden Sie [vorbereitete Anweisungen](https://docs.microsoft.com/sql/connect/jdbc/using-statements-with-sql) mit einer [DELETE](https://msdn.microsoft.com/library/ms189835.aspx)-Transact-SQL-Anweisung, um die Daten in Ihrer Azure SQL-Datenbank zu aktualisieren.
+Verwenden Sie den folgenden Code zum Löschen von Daten in Ihrer Azure SQL-Datenbank mithilfe der Klasse [Prepared Statements](https://docs.microsoft.com/sql/connect/jdbc/using-statements-with-sql) und einer Transact-SQL-Anweisung des Typs [DELETE](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql). Ersetzen Sie die Parameter „hostHame“, „dbName“, „user“ und „password“ durch die Werte, die Sie angegeben haben, als Sie die Datenbank mit den AdventureWorksLT-Beispieldaten erstellt haben. 
 
 ```java
 package com.sqldbsamples;
@@ -262,10 +265,10 @@ public class App {
     public static void main(String[] args) {
     
         // Connect to database
-        String hostName = "yourserver";
-        String dbName = "yourdatabase";
-        String user = "yourusername";
-        String password = "yourpassword";
+        String hostName = "your_server.database.windows.net";
+        String dbName = "your_database";
+        String user = "your_username";
+        String password = "your_password";
         String url = String.format("jdbc:sqlserver://%s.database.windows.net:1433;database=%s;user=%s;password=%s;encrypt=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;", hostName, dbName, user, password);
         Connection connection = null;
 
@@ -280,12 +283,13 @@ public class App {
                 // Prepared statement to delete data
                 String deleteSql = "DELETE SalesLT.Product WHERE Name = ?";
 
-                PreparedStatement prep = connection.prepareStatement(deleteSql);
-                prep.setString(1, "BrandNewProduct");
+                try (PreparedStatement prep = connection.prepareStatement(deleteSql)) {
+                        prep.setString(1, "BrandNewProduct");
 
-                int count = prep.executeUpdate();
-                System.out.println("Deleted: " + count + " row(s)");
-            }        
+                        int count = prep.executeUpdate();
+                        System.out.println("Deleted: " + count + " row(s)");
+                }
+        }        
         catch (Exception e) {
                 e.printStackTrace();
         }
@@ -294,9 +298,15 @@ public class App {
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Lesen Sie den Artikel [SQL-Datenbankanwendungsentwicklung – Übersicht](sql-database-develop-overview.md).
-* Erkunden Sie das GitHub-Repository für den [Microsoft-JDBC-Treiber für SQL Server](https://github.com/microsoft/mssql-jdbc).
-* [Posten Sie Probleme, oder stellen Sie Fragen](https://github.com/microsoft/mssql-jdbc/issues).
-* Entdecken Sie alle [Funktionen von SQL-Datenbank](https://azure.microsoft.com/services/sql-database/).
+
+- Erkunden Sie das GitHub-Repository für den [Microsoft-JDBC-Treiber für SQL Server](https://github.com/microsoft/mssql-jdbc).
+- [Posten Sie Probleme, oder stellen Sie Fragen](https://github.com/microsoft/mssql-jdbc/issues).
+- Weitere Informationen zum Herstellen einer Verbindung und Durchführen von Abfragen mit SQL Server Management Studio finden Sie unter [Verbinden und Abfragen mit SSMS](sql-database-connect-query-ssms.md).
+- Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit Visual Studio finden Sie unter [Verbinden und Abfragen mit Visual Studio Code](sql-database-connect-query-vscode.md).
+- Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit .NET finden Sie unter [Verbinden und Abfragen mit .NET](sql-database-connect-query-dotnet.md).
+- Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit PHP finden Sie unter [Verbinden und Abfragen mit PHP](sql-database-connect-query-php.md).
+- Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit Node.js finden Sie unter [Verbinden und Abfragen mit Node.js](sql-database-connect-query-nodejs.md).
+- Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit Python finden Sie unter [Verbinden und Abfragen mit Python](sql-database-connect-query-python.md).
+- Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit Ruby finden Sie unter [Verbinden und Abfragen mit Ruby](sql-database-connect-query-ruby.md).
 
 
