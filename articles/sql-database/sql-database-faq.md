@@ -8,7 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 1da12abc-0646-43ba-b564-e3b049a6487f
 ms.service: sql-database
-ms.custom: overview
+ms.custom: reference
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
@@ -16,9 +16,9 @@ ms.workload: data-management
 ms.date: 02/07/2017
 ms.author: sashan;carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: ef58f595ff58b9156df813cf92e2306654a8b3ed
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 610fd07388839ee3673e963f2289cbe0639ad650
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -77,7 +77,7 @@ Grundlegende Informationen zu eDTUs und Dienstebenen finden Sie unter [SQL-Daten
 Im Gegensatz zu Einzeldatenbanken hat die Nutzung der [aktiven Georeplikation](sql-database-geo-replication-overview.md) mit elastischen Datenbanken keine direkte Auswirkung auf die Abrechnung.  Ihnen werden nur die für die einzelnen Pools (primärer Pool und sekundärer Pool) bereitgestellten eDTUs in Rechnung gestellt.
 
 ## <a name="how-does-the-use-of-the-auditing-feature-impact-my-bill"></a>Wie wirkt sich die Nutzung der Überwachungsfunktion auf meine Rechnung aus?
-Die Überwachungsfunktion ist kostenfrei in den SQL-Datenbankdienst integriert und für Basic-, Standard- und Premium-Datenbanken verfügbar. Um die Überwachungsprotokolle zu speichern, nutzt die Überwachungsfunktion ein Azure-Speicherkonto, und die Sätze für Tabellen und Warteschlangen im Azure-Speicher werden abhängig von der Größe Ihres Überwachungsprotokolls angewandt.
+Die Überwachungsfunktion ist kostenfrei in den SQL-Datenbankdienst integriert und für Basic-, Standard-, Premium- und Premium RS-Datenbanken verfügbar. Um die Überwachungsprotokolle zu speichern, nutzt die Überwachungsfunktion ein Azure-Speicherkonto, und die Sätze für Tabellen und Warteschlangen im Azure-Speicher werden abhängig von der Größe Ihres Überwachungsprotokolls angewandt.
 
 ## <a name="how-do-i-find-the-right-service-tier-and-performance-level-for-single-databases-and-elastic-pools"></a>Wie finde ich die richtige Dienst- und Leistungsebene für Einzeldatenbanken und elastische Pools?
 Ihnen stehen einige Tools zur Verfügung. 
@@ -87,7 +87,7 @@ Ihnen stehen einige Tools zur Verfügung.
 * Ob ein Upgrade oder Downgrade für Ihre Einzeldatenbank erforderlich ist, erfahren Sie im [Leitfaden zur Leistung für einzelne Datenbanken](sql-database-performance-guidance.md).
 
 ## <a name="how-often-can-i-change-the-service-tier-or-performance-level-of-a-single-database"></a>Wie oft kann ich die Dienst- oder Leistungsebene einer Einzeldatenbank ändern?
-Bei V12-Datenbanken können Sie die Dienstebene bzw. den Tarif (Basic, Standard und Premium) oder die Leistungsstufe innerhalb des Tarifs (z.B. von S1 zu S2) beliebig oft ändern. Bei früheren Versionen der Datenbanken können Sie die Dienst- oder Leistungsebene innerhalb von 24 Stunden viermal ändern.
+Sie können die Dienstebene bzw. den Tarif (Basic, Standard, Premium und Premium RS) oder die Leistungsstufe innerhalb des Tarifs (z.B. von S1 in S2) beliebig oft ändern. Bei früheren Versionen der Datenbanken können Sie die Dienst- oder Leistungsebene innerhalb von 24 Stunden viermal ändern.
 
 ## <a name="how-often-can-i-adjust-the-edtus-per-pool"></a>Wie oft kann ich die eDTUs pro Pool anpassen?
 Beliebig oft.
@@ -102,7 +102,7 @@ Elastische Pools sind generell auf herkömmliche [SaaS-Anwendungsmuster (Softwar
 Der Sicherungsspeicher ist der Speicher, der mit Ihren automatisierten Datenbanksicherungen verknüpft ist, die für [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore) und [Geowiederherstellung](sql-database-recovery-using-backups.md#geo-restore) verwendet werden. Microsoft Azure SQL-Datenbanken bieten bis zu 200 Prozent Ihres maximal bereitgestellten Sicherungsdatenbankspeichers ohne zusätzliche Kosten. Wenn Sie z.B. über eine Standard-Datenbankinstanz mit einer bereitgestellten Größe von 250 GB verfügen, werden Ihnen ohne zusätzliche Kosten 500 GB Sicherungsspeicher bereitgestellt. Wenn die maximale Größe Ihres bereitgestellten Sicherungsspeichers überschritten wird, können Sie sich entweder an den Azure-Support wenden, um den Aufbewahrungszeitraum zu verkürzen, oder zusätzlichen Sicherungsspeicher erwerben, für den die standardmäßigen Gebühren für geografisch redundanten Speicher mit Lesezugriff (Read-Access Geographically Redundant Storage, RA-GRS) anfallen. Weitere Informationen zur RA-GRS-Abrechnung finden Sie in der Preisübersicht für Speicher.
 
 ## <a name="im-moving-from-webbusiness-to-the-new-service-tiers-what-do-i-need-to-know"></a>Was muss ich beim Umstieg von Web/Business auf die neuen Dienstebenen beachten?
-Azure SQL Web und Business-Datenbanken wurden eingestellt. Die Dienstebenen Basic, Standard, Premium und Elastic ersetzen die eingestellten Web- und Business-Datenbanken. Zu Ihrer Unterstützung im Übergangszeitraum haben wir die häufig gestellten Fragen ergänzt. [Häufig gestellte Fragen zur Einstellung von Web Edition und Business Edition](sql-database-web-business-sunset-faq.md)
+Azure SQL Web und Business-Datenbanken wurden eingestellt. Die Tarife Basic, Standard, Premium, Premium RS und Elastic ersetzen die eingestellten Web- und Business-Datenbanken. 
 
 ## <a name="what-is-an-expected-replication-lag-when-geo-replicating-a-database-between-two-regions-within-the-same-azure-geography"></a>Wie groß ist die erwartete Replikationsverzögerung bei der geografischen Replikation einer Datenbank zwischen zwei Regionen innerhalb derselben Azure-Geografie?
 Derzeit wird eine RPO von fünf Sekunden unterstützt. Die Replikationsverzögerung ist geringer, solange die geografisch sekundäre Datenbank in der von Azure empfohlenen zugeordneten Region gehostet wird und die gleiche Dienstebene hat.

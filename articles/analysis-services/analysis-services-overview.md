@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 02/27/2017
+ms.date: 04/17/2017
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 3539da8afe5781d74cbf723090050b767373f268
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: d1cb0751633f1a190d8ecfe1888ab6cdd8736480
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -33,10 +33,6 @@ Sehen Sie sich in diesem Video an, um zu erfahren, wie sich Azure Analysis Servi
 >
 >
 
-> [!IMPORTANT]
-> Azure Analysis Services ist als **Vorschauversion** verfügbar. Einige Funktionen werden noch nicht unterstützt. Lesen Sie hierzu [Bemerkungen zur Vorschauversion](#preview-expectations) weiter unten in diesem Artikel. Und konsultieren Sie regelmäßig unseren [Azure Analysis Services-Blog](https://go.microsoft.com/fwlink/?linkid=830920) (in englischer Sprache), um die neuesten Informationen zu erhalten.
-> 
-> 
 
 ## <a name="built-on-sql-server-analysis-services"></a>Aufbauend auf SQL Server Analysis Services
 Azure Analysis Services ist mit der SQL Server 2016 Analysis Services Enterprise Edition kompatibel, die Sie bereits kennen. Azure Analysis Services unterstützt tabellarische Modelle mit dem Kompatibilitätsgrad 1200. DirectQuery, Partitionen, Sicherheit auf Zeilenebene, bidirektionale Beziehungen und Übersetzungen werden unterstützt.
@@ -53,16 +49,14 @@ Auf Servern in Azure bereitgestellte Datenmodelle unterstützen das Herstellen v
 
 Da sich der Server in der Cloud befindet, können Clouddatenquellen nahtlos verbunden werden. Beim Verbinden mit lokalen Datenquellen gewährleistet das [lokale Datengateway](analysis-services-gateway.md) schnelle, sichere Verbindungen mit dem Analysis Services-Server in der Cloud.  
 
- \* Einige Datenquellen werden in der Vorschauversion noch nicht unterstützt. Weitere Informationen hierzu finden Sie unter [Bemerkungen zur Vorschauversion](#preview-expectations) weiter unten in diesem Artikel.
 
 ## <a name="explore-your-data-from-anywhere"></a>Datenanalysen von überall aus
-Sie können von jedem Standort eine Verbindung mit den Servern herstellen und [Daten abrufen](analysis-services-connect.md). Azure Analysis Services unterstützt das Herstellen einer Verbindung von Power BI Desktop, Excel, benutzerdefinierten Apps und browserbasierten Tools.
+Sie können von jedem Standort eine Verbindung mit den Servern herstellen und Daten abrufen. Azure Analysis Services unterstützt das Herstellen einer Verbindung von Power BI Desktop, Excel, benutzerdefinierten Apps und browserbasierten Tools.
 
 ![Datenvisualisierungen](./media/analysis-services-overview/aas-overview-visualization.png)
 
- \* Power BI Embedded wird in der Vorschauversion noch nicht unterstützt.
 
-## <a name="secure"></a>Sicher
+## <a name="secure"></a>Schützen
 #### <a name="user-authentication"></a>Benutzerauthentifizierung
 Die Benutzerauthentifizierung für Azure Analysis Services wird per [Azure Active Directory (AAD)](../active-directory/active-directory-whatis.md) durchgeführt. Wenn sich Benutzer bei einer Azure Analysis Services-Datenbank anmelden, verwenden sie eine Organisationskontoidentität mit Zugriff auf die betreffende Datenbank. Diese Benutzeridentitäten müssen Mitglied des standardmäßigen Azure Active Directory für das Abonnement sein, in dem sich der Azure Analysis Services-Server befindet. Die [Verzeichnisintegration](https://technet.microsoft.com/library/jj573653.aspx) zwischen AAD und einer lokalen Instanz von Active Directory bietet eine hervorragende Möglichkeit, den lokalen Benutzern Zugriff auf eine Azure Analysis Services-Datenbank zu ermöglichen, sie ist jedoch nicht für alle Szenarien erforderlich.
 
@@ -93,31 +87,6 @@ Analysis Services verfügt über eine dynamische Community von Benutzern. Beteil
 Haben Sie Vorschläge oder Funktionsanfragen? Hinterlassen Sie Kommentare im [Azure Analysis Services-Feedbackforum](https://aka.ms/azureanalysisservicesfeedback) (in englischer Sprache).
 
 Haben Sie Vorschläge zur Dokumentation? Sie können am Ende jedes Artikels mit Disqus Kommentare hinzufügen.
-
-## <a name="preview-expectations"></a>Bemerkungen zur Vorschauversion
-Azure Analysis Services ist derzeit als Vorschauversion verfügbar. Es gibt einige Dinge, die Sie beachten sollten.
-
-##### <a name="server-modes"></a>Servermodi
-Azure Analysis Services unterstützt derzeit den tabellarischen Modus für tabellarische Modelle mit dem Kompatibilitätsgrad 1200. Der Modus „Mehrdimensional und Data Mining“ und der Modus „PowerPivot für SharePoint“ werden nicht unterstützt.
-
-##### <a name="data-sources"></a>Datenquellen
-Für die Vorschau werden in tabellarischen Modellen mit dem Kompatibilitätsgrad 1200, die auf einem Azure Analysis Services-Server bereitgestellt sind, die folgenden Datenquellen unterstützt.
-
-| **Cloud** | **Lokal (Datengateway erforderlich)** |
-| --- | --- |
-| SQL database |SQL Server |
-| SQL Data Warehouse |APS |
-| Oracle | Oracle |
-| Teradata | |
-
-### <a name="data-source-providers"></a>Datenquellenanbieter
-Datenmodelle in Azure Analysis Services erfordern zum Verbinden mit Datenquellen möglicherweise andere Datenanbieter als Datenmodelle in SQL Server Analysis Services. Die Datenanbieteranforderungen hängen davon ab, ob die Datenquelle lokal ist oder sich in der Cloud befindet, sowie vom Typ des Datenmodells (speicherintern oder Direktabfrage). Weitere Informationen finden Sie unter [Datenquellenverbindungen](analysis-services-datasource.md).
-
-### <a name="client-connections"></a>Clientverbindungen
-
-Clientanwendungen benötigen die aktuellen [Clientdatenanbieter](analysis-services-data-providers.md), um eine Verbindung mit Azure Analysis Services herzustellen.
-
-Excel-Arbeitsmappen, die über eine Liveverbindung mit einem Azure Analysis Services-Server verfügen und auf OneDrive oder in SharePoint Online gespeichert sind, werden nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Da Sie jetzt mehr über Azure Analysis Services wissen, können Sie loslegen. Erfahren Sie, wie Sie in Azure [einen Server erstellen](analysis-services-create-server.md) und [auf ihm ein tabellarisches Modell bereitstellen](analysis-services-deploy.md).

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 03/27/2017
+ms.date: 04/11/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: fb9d9d06eb746e720a17d87d7ab45c29c6543e8f
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 031fa71b8f5aac558569eea7001e16df4cae917c
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -47,7 +47,7 @@ Sie können die folgenden Einstellungen über das **Ressourcenmenü** anzeigen u
     * [Zugriffsschlüssel](#access-keys)
     * [Erweiterte Einstellungen](#advanced-settings)
     * [Redis Cache Advisor](#redis-cache-advisor)
-    * [Tarif](#pricing-tier)
+    * [Skalieren](#scale)
     * [Redis-Clustergröße](#cluster-size)
     * [Redis-Datenpersistenz](#redis-data-persistence)
     * [Planen von Updates](#schedule-updates)
@@ -100,7 +100,7 @@ Der Abschnitt **Einstellungen** ermöglicht den Zugriff auf die folgenden Cachee
 * [Zugriffsschlüssel](#access-keys)
 * [Erweiterte Einstellungen](#advanced-settings)
 * [Redis Cache Advisor](#redis-cache-advisor)
-* [Tarif](#pricing-tier)
+* [Skalieren](#scale)
 * [Redis-Clustergröße](#cluster-size)
 * [Redis-Datenpersistenz](#redis-data-persistence)
 * [Planen von Updates](#schedule-updates)
@@ -190,11 +190,11 @@ Jeder Tarif hat verschiedene Limits für Clientverbindungen, Speicher und Bandbr
 | Serverauslastung |[Nutzungsdiagramme – Arbeitsauslastung des Redis-Servers](cache-how-to-monitor.md#usage-charts) |
 | Speicherauslastung |[Cacheleistung – Größe](cache-faq.md#cache-performance) |
 
-Klicken Sie zum Upgraden Ihres Caches auf **Jetzt aktualisieren** , um den [Tarif](#pricing-tier) zu ändern und Ihren Cache zu skalieren. Weitere Informationen zur Tarifauswahl finden Sie unter [Welches Redis Cache-Angebot und welche Redis Cache-Größe sollte ich verwenden?](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)
+Klicken Sie zum Upgraden Ihres Caches auf **Jetzt aktualisieren**, um den [Tarif](#scale) zu ändern und Ihren Cache zu skalieren. Weitere Informationen zur Tarifauswahl finden Sie unter [Welches Redis Cache-Angebot und welche Redis Cache-Größe sollte ich verwenden?](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)
 
 
-### <a name="pricing-tier"></a>Tarif
-Klicken Sie auf **Tarif** , um den Tarif für Ihren Cache anzuzeigen oder zu ändern. Weitere Informationen zur Skalierung finden Sie unter [Skalieren von Azure Redis Cache](cache-how-to-scale.md).
+### <a name="scale"></a>Skalieren
+Klicken Sie auf **Staffelung**, um den Tarif für Ihren Cache anzuzeigen oder zu ändern. Weitere Informationen zur Skalierung finden Sie unter [Skalieren von Azure Redis Cache](cache-how-to-scale.md).
 
 ![Redis-Cache: Tarif](./media/cache-configure/pricing-tier.png)
 
@@ -452,6 +452,13 @@ Weitere Informationen zu Datenbanken finden Sie unter [Was sind Redis-Datenbanke
   * P2 (13 GB - 130 GB) – bis zu 15.000 Verbindungen
   * P3 (26 GB - 260 GB) – bis zu 30.000 Verbindungen
   * P4 (53 GB - 530 GB) – bis zu 40.000 Verbindungen
+
+> [!NOTE]
+> Obgleich jede Cachegröße eine *bestimmte* Anzahl von Verbindungen zulässt, fällt für jede Verbindung ein Mehraufwand an. Ein Beispiel für einen solchen Aufwand ist die CPU- und Arbeitsspeicherauslastung aufgrund der TLS-/SSL-Verschlüsselung. Das maximale Verbindungslimit für eine angegebene Cachegröße geht von einem geringfügig ausgelasteten Cache aus. Wenn die Last des Verbindungsaufwands *plus* die Last von Clientvorgängen die Systemkapazität überschreiten, können im Cache Kapazitätsprobleme entstehen, auch wenn Sie das Verbindungslimit für die aktuelle Cachegröße nicht überschritten haben.
+> 
+> 
+
+
 
 ## <a name="redis-commands-not-supported-in-azure-redis-cache"></a>Redis-Befehle, die in Azure Redis Cache nicht unterstützt werden.
 > [!IMPORTANT]

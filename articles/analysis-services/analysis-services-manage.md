@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 02/27/2017
+ms.date: 04/18/2017
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: 3992e327bbe887338234fc2d516b053f0750a151
-ms.openlocfilehash: fdc4e495fb3fb99022b0f7c487001b2fba42cccc
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 9a298a5869d449c974267483eb779f45bc6b7abc
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -31,61 +31,39 @@ Im [Azure-Portal](http://portal.azure.com/) können Sie Server erstellen und lö
 ![Abrufen von Servernamen in Azure](./media/analysis-services-manage/aas-manage-portal.png)
 
 ## <a name="sql-server-management-studio"></a>SQL Server Management Studio
-Das Herstellen einer Verbindung mit dem Server in Azure entspricht dem Herstellen einer Verbindung mit einer Serverinstanz in der eigenen Organisation. In SSMS können Sie viele der gleichen Aufgaben ausführen, z. B. Verarbeiten von Daten oder Erstellen eines Verarbeitungsskripts, Verwalten von Rollen und Verwenden von PowerShell. [Laden Sie SSMS herunter, und installieren Sie es](#download-and-install-ssms).
+Das Herstellen einer Verbindung mit dem Server in Azure entspricht dem Herstellen einer Verbindung mit einer Serverinstanz in der eigenen Organisation. In SSMS können Sie viele der gleichen Aufgaben ausführen, z. B. Verarbeiten von Daten oder Erstellen eines Verarbeitungsskripts, Verwalten von Rollen und Verwenden von PowerShell.
   
 ![SQL Server Management Studio](./media/analysis-services-manage/aas-manage-ssms.png)
 
- Einer der größeren Unterschiede ist die Authentifizierung zum Herstellen einer Verbindung mit dem Server. Zum Herstellen einer Verbindung mit dem Azure Analysis Services-Server müssen Sie **Active Directory-Kennwortauthentifizierung** auswählen.
+### <a name="download-and-install-ssms"></a>Herunterladen und Installieren von SSMS
+Verwenden Sie die neueste Version von SSMS, um alle aktuellen Features zu erhalten und die Verbindung mit dem Azure Analysis Services-Server reibungslos herzustellen. 
 
- Wenn Sie SSMS verwenden, stellen Sie sicher, dass Ihr Benutzername in der Analysis Services-Administratoren-Gruppe enthalten ist, bevor Sie das erste Mal eine Verbindung mit dem Server herstellen. Weitere Informationen finden Sie in diesem Artikel weiter unten unter [Serveradministratoren](#server-administrators).
+[Laden Sie SQL Server Management Studio herunter](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
+
 
 ### <a name="to-connect-with-ssms"></a>So stellen Sie eine Verbindung mit SSMS her
+ Wenn Sie SSMS verwenden, stellen Sie sicher, dass Ihr Benutzername in der Analysis Services-Administratoren-Gruppe enthalten ist, bevor Sie das erste Mal eine Verbindung mit dem Server herstellen. Weitere Informationen finden Sie in diesem Artikel weiter unten unter [Serveradministratoren](#server-administrators).
+
 1. Bevor Sie eine Verbindung herstellen, müssen Sie den Namen des Servers abrufen. Kopieren Sie den Servernamen über **Azure-Portal** > Server > **Übersicht** > **Servername**.
    
     ![Abrufen von Servernamen in Azure](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 2. Klicken Sie in SSMS im **Objekt-Explorer** auf **Verbinden** > **Analysis Services**.
 3. Fügen Sie im Dialogfeld **Mit Server verbinden** den Servernamen ein, und wählen Sie dann in **Authentifizierung** eine der folgenden Optionen aus:
    
-    **Integrierte Active Directory-Authentifizierung**, um einmaliges Anmelden mit Active Directory und Azure Active Directory-Verbund zu verwenden.
-   
+    **Windows-Authentifizierung**, um Ihre Windows-Domäne\Ihren Benutzernamen und Ihr Kennwort als Anmeldeinformationen zu verwenden.
+
     **Active Directory-Kennwortauthentifizierung**, um ein Organisationskonto zu verwenden. Dies ist beispielsweise beim Herstellen einer Verbindung von einem nicht mit der Domäne verbundenen Computer sinnvoll.
-   
-    Hinweis: Wenn keine Active Directory-Authentifizierung angeboten wird, müssen Sie vermutlich [SSMS auf die neueste Version aktualisieren](#download-and-install-ssms).
+
+    **Universelle Active Directory-Authentifizierung**, um [nicht interaktive oder Multi-Factor Authentication](../sql-database/sql-database-ssms-mfa-authentication.md) zu verwenden. 
    
     ![Herstellen der Verbindung in SSMS](./media/analysis-services-manage/aas-manage-connect-ssms.png)
-
-Da das Verwalten des Servers in Azure mithilfe von SSMS auf die gleiche Weise wie das Verwalten eines lokalen Servers erfolgt, wird dies hier nicht ausführlich beschrieben. Sämtliche Informationen, die Sie benötigen, finden Sie auf MSDN unter [Analysis Services-Instanzverwaltung](https://msdn.microsoft.com/library/hh230806.aspx).
 
 ## <a name="server-administrators-and-database-users"></a>Serveradministratoren und Datenbankbenutzer
 In Azure Analysis Services gibt es zwei Benutzertypen: Serveradministratoren und Datenbankbenutzer. Beide Benutzertypen müssen in Ihrer Azure Active Directory-Instanz vorhanden sein und durch eine Organisations-E-Mail-Adresse oder einen UPN angegeben werden. Dies unterscheidet sich von lokalen tabellarischen Modelldatenbanken, die Serveradministratoren und Datenbankbenutzer mit Windows-Domänenbenutzernamen unterstützen. Weitere Informationen finden Sie unter [Verwalten von Benutzern in Azure Analysis Services](analysis-services-manage-users.md).
 
-## <a name="download-and-install-ssms"></a>Herunterladen und Installieren von SSMS
-[Laden Sie SQL Server Management Studio herunter](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
-
-Auf der Downloadseite haben Sie zwei Optionen:
- 
-* Release Candidate wird nur bei der Verbindung mit der Azure Analysis Services-Vorschau empfohlen. Diese Version erhält die neuesten Updates und funktioniert am besten mit der Azure Analysis Services-Vorschau.
-* Die aktuelle Produktionsversion wird empfohlen, wenn Sie Verbindungen mit Produktionsservern und der Azure Analysis Services-Vorschau herstellen. Bei der Verwendung dieser Version müssen Sie ggf. die Registrierung bearbeiten, um die Azure Active Directory-Authentifizierung zu aktivieren.
-
-## <a name="enable-azure-active-directory-authentication"></a>Aktivieren der Azure Active Directory-Authentifizierung
-
-Um in der Registrierung die Azure Active Directory-Authentifizierung für SSMS zu aktivieren, erstellen Sie eine Textdatei mit dem Namen „EnableAAD.reg“, und kopieren Sie dann Folgendes in die Datei:
-
-```
-Windows Registry Editor Version 5.00
-[HKEY_CURRENT_USER\Software\Microsoft\Microsoft SQL Server\Microsoft Analysis Services\Settings]
-"AS AAD Enabled"="True"
-```
-
-Speichern Sie die Datei, und führen Sie sie dann aus.
 
 ## <a name="troubleshooting-connection-problems"></a>Beheben von Verbindungsproblemen
-Wenn Sie mit SSMS eine Verbindung zu Ihrem Server herstellen möchten, nachdem Sie versucht haben (wie in Schritt 3), sich mit einem nicht im Verbund befindlichen Konto anzumelden und die Verbindung fehlgeschlagen ist, könnte es sein, dass Sie Ihren Anmelde-Cache leeren müssen. Schließen Sie SSMS, bevor Sie diese Schritte befolgen.
-
-1. Navigieren Sie im Datei-Explorer zu `C:\Users\<user_name>\AppData\Local\`.
-2. Löschen Sie den **AADCacheOM**-Ordner.
-3. Suchen Sie im **lokalen** Ordner nach DAT-Dateien, die mit dem Namen **omlibs-token-cache** beginnen. Wenn Sie welche finden, löschen Sie diese.
-4. Öffnen Sie SSMS, und wiederholen Sie die Schritte unter [Verbinden mit SSMS](#to-connect-with-ssms).
+Wenn beim Herstellen einer Verbindung mithilfe von SSMS Probleme auftreten, müssen Sie den Anmeldecache löschen. Auf dem Datenträger wird nichts zwischengespeichert. Beenden Sie den Verbindungsvorgang, und starten Sie ihn neu, um den Cache zu löschen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Wenn Sie auf dem neuen Server noch kein tabellarisches Modell bereitgestellt haben, ist jetzt ein guter Zeitpunkt dafür. Weitere Informationen finden Sie unter [Deploy to Azure Analysis Services](analysis-services-deploy.md) (Bereitstellen in Azure Analysis Services, in englischer Sprache).

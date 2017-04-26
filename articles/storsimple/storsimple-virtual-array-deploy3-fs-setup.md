@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/27/2017
+ms.date: 04/17/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 405e236288a32afa572da8c665ea2557a9c8cb03
-ms.openlocfilehash: 8d09eb65d6d165093f9de5810a6affbe95b7a053
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: ca5b67043843185ac40d02030f26fab8639a1f9f
+ms.lasthandoff: 04/25/2017
 
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>Bereitstellen von StorSimple Virtual Array – Einrichten als Dateiserver über das Azure-Portal
@@ -134,7 +134,7 @@ Führen Sie die folgenden Schritte im [Azure-Portal](https://portal.azure.com/) 
     
     3. Für die Verschlüsselung wird ein 256-Bit-AES-Schlüssel zusammen mit dem benutzerdefinierten Schlüssel verwendet. Geben Sie einen Schlüssel mit 32 Zeichen an, und geben Sie den Schlüssel anschließend zur Bestätigung erneut ein. Hinterlegen Sie den Schlüssel in einer App zur Schlüsselverwaltung für zukünftige Verwendungen.
     
-    4. Klicken Sie auf **Erforderliche Einstellungen konfigurieren**, um anzugeben, welche Anmeldeinformationen des Speicherkontos mit Ihrem Gerät verwendet werden sollen. Klicken Sie auf **Neue hinzufügen**, wenn noch keine Anmeldeinformationen des Speicherkontos konfiguriert wurden.
+    4. Klicken Sie auf **Erforderliche Einstellungen konfigurieren**, um anzugeben, welche Anmeldeinformationen des Speicherkontos mit Ihrem Gerät verwendet werden sollen. Klicken Sie auf **Neue hinzufügen**, wenn noch keine Anmeldeinformationen des Speicherkontos konfiguriert wurden. **Stellen Sie sicher, dass das von Ihnen verwendete Speicherkonto Blockblobs unterstützt. Seitenblobs werden nicht unterstützt.** Weitere Informationen zu [Blockblobs und Seitenblobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
    
     ![Konfigurieren eines Dateiservers](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs6m.png) 
 4. Gehen Sie auf dem Blatt **Anmeldeinformationen des Speicherkontos hinzufügen** wie folgt vor: 
@@ -181,7 +181,7 @@ Führen Sie die folgenden Schritte im [Azure-Portal](https://portal.azure.com/) 
     3. Geben Sie einen **Typ** für die Freigabe an. Der Typ kann **Mehrstufig** oder **Lokal** lauten. „Mehrstufig“ ist die Standardeinstellung. Für Workloads, die lokale Garantien, niedrige Latenzzeiten und höhere Leistung benötigen, wählen Sie **Lokal** für die Freigabe aus. Wählen Sie für alle anderen Daten **Mehrstufig** für die Freigabe aus.
     Eine lokale Freigabe wird mit vollständiger Speicherzuweisung (Thick Provisioning) bereitgestellt und stellt sicher, dass die primären Daten auf der Freigabe lokal auf dem Gerät verbleiben und nicht in die Cloud übergehen. Eine mehrstufige Freigabe dagegen wird mit schlanker Speicherzuweisung bereitgestellt. Wenn Sie eine mehrstufige Freigabe erstellen, werden 10 % des Speicherplatzes auf der lokalen Ebene und 90 % des Speicherplatzes in der Cloud bereitgestellt. Wenn Sie beispielsweise ein Volume mit 1 TB bereitstellen, befinden sich 100 GB lokal, und 900 GB werden in der Cloud zum Anordnen der Daten genutzt. Dies bedeutet wiederum Folgendes: Wenn der gesamte lokale Speicherplatz auf dem Gerät aufgebraucht ist, können Sie keine mehrstufige Freigabe bereitstellen.
    
-    4. Weisen Sie die Berechtigungen im Feld **Set default full permissions to ** (Vollzugriff als Standardeinstellung festlegen) dem Benutzer oder der Gruppe zu, der bzw. die auf die Freigabe zugreift. Geben Sie den Namen des Benutzers oder der Benutzergruppe im Format *john@contoso.com* ein. Es wird empfohlen, eine Benutzergruppe (anstelle eines einzelnen Benutzers) zu verwenden, um für Administratorberechtigungen den Zugriff auf diese Freigaben zuzulassen. Nachdem Sie hier die Berechtigungen zugewiesen haben, können Sie den Datei-Explorer verwenden, um diese Berechtigungen zu ändern.
+    4. Weisen Sie die Berechtigungen im Feld **Set default full permissions to**  (Vollzugriff als Standardeinstellung festlegen) dem Benutzer oder der Gruppe zu, der bzw. die auf die Freigabe zugreift. Geben Sie den Namen des Benutzers oder der Benutzergruppe im Format *john@contoso.com* ein. Es wird empfohlen, eine Benutzergruppe (anstelle eines einzelnen Benutzers) zu verwenden, um für Administratorberechtigungen den Zugriff auf diese Freigaben zuzulassen. Nachdem Sie hier die Berechtigungen zugewiesen haben, können Sie den Datei-Explorer verwenden, um diese Berechtigungen zu ändern.
    
     5. Klicken Sie auf **Hinzufügen**, um die Freigabe zu erstellen. 
     

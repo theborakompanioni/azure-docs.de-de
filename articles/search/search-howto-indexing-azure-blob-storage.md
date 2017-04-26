@@ -12,12 +12,12 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 01/18/2017
+ms.date: 04/15/2017
 ms.author: eugenesh
 translationtype: Human Translation
-ms.sourcegitcommit: 05fc8ff05f8e2f20215f6683a125c1a506b4ccdc
-ms.openlocfilehash: 23ed2e066cc6751ebabb57c8077f95b0cb074850
-ms.lasthandoff: 02/18/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: e14da5fa10533d922a6263e8f52a53c0eaa23393
+ms.lasthandoff: 04/25/2017
 
 ---
 
@@ -38,7 +38,7 @@ Der Blobindexer kann Text aus den folgenden Dokumentformaten extrahieren:
 * CSV (siehe Vorschaufeature [Indizierung der CSV-Blobs](search-howto-index-csv-blobs.md))
 
 > [!IMPORTANT]
-> Die Unterstützung für CSV- und JSON-Dateien befindet sich derzeit in der Vorschauphase. Diese Formate sind nur mit der Version **2015-02-28-Preview** der REST-API oder der Version 2.x-preview des .NET SDKs verfügbar. Beachten Sie hierbei, dass Vorschau-APIs für Tests und Evaluierungen bestimmt sind und nicht in Produktionsumgebungen eingesetzt werden sollten.
+> Die Unterstützung für CSV- und JSON-Arrays befindet sich derzeit in der Vorschauphase. Diese Formate sind nur mit der Version **2015-02-28-Preview** der REST-API oder der Version 2.x-preview des .NET SDKs verfügbar. Beachten Sie hierbei, dass Vorschau-APIs für Tests und Evaluierungen bestimmt sind und nicht in Produktionsumgebungen eingesetzt werden sollten.
 >
 >
 
@@ -139,11 +139,15 @@ Weitere Informationen zur API zum Erstellen eines Indexers finden Sie unter [Ind
 Je nach [Indexer-Konfiguration](#PartsOfBlobToIndex), kann der Blobindexer Metadaten und Textinhalt, Speicher- und Inhaltsmetadaten oder nur Speichermetadaten indizieren (nützlich, wenn Sie nur die Metadaten interessieren und den Inhalt des Blobs nicht indizieren müssen). Der Indexer extrahiert standardmäßig sowohl die Metadaten als auch den Inhalt.
 
 > [!NOTE]
-> Die Blobs mit strukturiertem Inhalt wie JSON, CSV oder XML werden standardmäßig als ein einzelnes Textsegment indiziert. Wenn Sie JSON- und CSV-Blobs in einem strukturierten Verfahren indizieren möchten, finden Sie unter [Indizierung der JSON-Blobs](search-howto-index-json-blobs.md) und [Indizierung der CSV-Blobs](search-howto-index-csv-blobs.md) Vorschaufeatures. Wir unterstützen derzeit keine Analyse des XML-Inhalts; wenn Sie diese benötigen, fügen Sie einen Vorschlag auf unserer [UserVoice](https://feedback.azure.com/forums/263029-azure-search) hinzu.
->
+> Die Blobs mit strukturiertem Inhalt wie JSON oder CSV werden standardmäßig als ein einzelnes Textsegment indiziert. Wenn Sie JSON- und CSV-Blobs in einem strukturierten Verfahren indizieren möchten, finden Sie unter [Indizierung der JSON-Blobs](search-howto-index-json-blobs.md) und [Indizierung der CSV-Blobs](search-howto-index-csv-blobs.md) Vorschaufeatures.
+> 
 > Ein Verbunddokument oder eingebettetes Dokument (z.B. ein ZIP-Archiv oder ein Word-Dokument mit eingebetteter Outlook-E-Mail mit Anhängen) wird ebenfalls als einzelnes Dokument indiziert.
 
-* Der gesamte Textinhalt des Dokuments wird in ein Zeichenfolgefeld mit dem Namen `content` extrahiert.
+* Der Textinhalt des Dokuments wird in ein Zeichenfolgefeld mit dem Namen `content` extrahiert.
+
+> [!NOTE]
+> Azure Search beschränkt die Menge des Texts, der extrahiert wird, in Abhängigkeit vom Tarif: 32.000 Zeichen für den Free-Tarif, 64.000 für Basic und 4 Millionen für Standard, Standard S2 und Standard S3. Für gekürzte Dokumente wird eine Warnung in die Statusantwort des Indexers einbezogen.  
+
 * Falls für das Blob vom Benutzer angegebene Metadateneigenschaften vorhanden sind, werden diese „Wort für Wort“ extrahiert.
 * Standardmäßige Blob-Metadateneigenschaften werden in die folgenden Felder extrahiert:
 
@@ -300,7 +304,7 @@ Damit das Löschen von Dokumenten unterstützt wird, sollten Sie die Strategie d
 
 Bei der folgenden Richtlinie wird ein Blob beispielsweise als gelöscht angesehen, wenn es über die Metadateneigenschaft `IsDeleted` mit dem Wert `true` verfügt:
 
-    PUT https://[service name].search.windows.net/datasources?api-version=2016-09-01
+    PUT https://[service name].search.windows.net/datasources/blob-datasource?api-version=2016-09-01
     Content-Type: application/json
     api-key: [admin key]
 
@@ -338,7 +342,7 @@ Das Indizieren von Blobs kann sehr zeitaufwändig sein. In Fällen, in denen Sie
 
 Ihren Dokumenten sind möglicherweise Metadaten zugeordnet – z.B. die Abteilung, die das Dokument erstellt hat –, die als strukturierte Daten an einem der folgenden Speicherorte gespeichert sind.
 -   In einem separaten Datenspeicher, z.B. SQL-Datenbank oder DocumentDB
--   Als benutzerdefinierte Metadaten in Azure Blob Storage direkt an jedes Dokument angefügt (Weitere Informationen finden Sie unter [Festlegen und Abrufen von Eigenschaften und Metadaten für Blob-Ressourcen](https://docs.microsoft.com/rest/api/storageservices/fileservices/setting-and-retrieving-properties-and-metadata-for-blob-resources).)
+-   Als benutzerdefinierte Metadaten in Azure Blob Storage direkt an jedes Dokument angefügt (Weitere Informationen finden Sie unter [Festlegen und Abrufen von Eigenschaften und Metadaten für Blob-Ressourcen](https://docs.microsoft.com/rest/api/storageservices/setting-and-retrieving-properties-and-metadata-for-blob-resources).)
 
 Sie können die Dokumente zusammen mit ihren Metadaten indizieren, indem Sie den gleichen eindeutigen Schlüsselwert jedem Dokument und seinen Metadaten zuweisen und für jeden Indexer die Aktion `mergeOrUpload` angeben. Eine ausführliche Beschreibung dieser Lösung finden Sie im externen Artikel [Combine documents with other data in Azure Search](http://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html) (Zusammenführen von Dokumenten mit anderen Daten in Azure Search).
 
