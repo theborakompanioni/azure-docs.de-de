@@ -17,6 +17,7 @@ ms.author: navale;tomfitz;
 translationtype: Human Translation
 ms.sourcegitcommit: 76864bfc1b59cfc4e6f39094c08394fe32482d17
 ms.openlocfilehash: b7957c52877b262506013a422cd1511dd0ee79a4
+ms.lasthandoff: 01/14/2017
 
 
 ---
@@ -74,7 +75,7 @@ grant_type=client_credentials&resource=https%3A%2F%2Fmanagement.core.windows.net
 **Generieren des Zugriffstokens mit Bash:**
 
 ```console
-curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "grant_type=client_credentials&resource=https://management.core.windows.net&client_id=<application id>&client_secret=<password you selected for authentication>" https://login.microsoftonline.com/<Azure AD Tenant ID>/oauth2/token?api-version=1.0
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "grant_type=client_credentials&resource=https://management.core.windows.net/&client_id=<application id>&client_secret=<password you selected for authentication>" https://login.microsoftonline.com/<Azure AD Tenant ID>/oauth2/token?api-version=1.0
 ```
 
 **Generieren des Zugriffstokens mit PowerShell:**
@@ -252,9 +253,4 @@ Die lange JSON-Antwort auf diese Anforderung wurde weggelassen, um die Lesbarkei
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zum Arbeiten mit asynchronen REST-Vorgängen finden Sie unter [Nachverfolgen asynchroner Vorgänge in Azure](resource-manager-async-operations.md).
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 
