@@ -1,8 +1,8 @@
 | Ressource | Standardlimit | Maximales Limit |
 | --- | --- | --- |
 | VMs pro [Abonnement](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> pro Region |10.000 pro Region |
-| Gesamte Kerne pro [Abonnement](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> pro Region |10.000 pro Region |
-| VM-Kerne pro Serie (Dv2, F usw.) pro [Abonnement](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> pro Region |10.000 pro Region |
+| Gesamte Kerne pro [Abonnement](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> pro Region | Support kontaktieren |
+| VM-Kerne pro Serie (Dv2, F usw.) pro [Abonnement](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> pro Region | Support kontaktieren |
 | [Co-Administratoren](../articles/billing-add-change-azure-subscription-administrator.md) pro Abonnement |Unbegrenzt |Unbegrenzt |
 | [Speicherkonten](../articles/storage/storage-create-storage-account.md) pro Abonnement |200 |200<sup>2</sup> |
 | [Ressourcengruppen](../articles/azure-resource-manager/resource-group-overview.md) pro Abonnement |800 |800 |

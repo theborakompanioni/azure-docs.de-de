@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: d56754c9c205ddc4933b29e8f4891a56f42496e9
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: c1857eb94fba13c30e7f07669616f5d0ab9953f4
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -123,7 +123,7 @@ Die Datenelemente und Attribute des XML-Formats des Laufwerksmanifests sind in d
 |`PageRange/@Offset`|Attribut, Integer|Gibt den Offset in der Übertragungsdatei und im Blob an, an dem der angegebene Seitenbereich beginnt. Dieser Wert muss ein Vielfaches von 512 sein.|  
 |`PageRange/@Length`|Attribut, Integer|Gibt die Länge des Seitenbereichs an. Dieser Wert muss ein Vielfaches von 512 sein und darf 4 MB nicht überschreiten.|  
 |`PageRange/@Hash`|Attribut, String|Gibt den Base16-codierten MD5-Hashwert für den Seitenbereich an.|  
-|`BlockList`|Geschachteltes XML-Element|Erforderlich für einen Blockblob mit benannten Blöcken.<br /><br /> Bei einem Importvorgang gibt die Blockliste einen Satz von Blöcken an, die in Azure Storage importiert werden. Bei einem Exportvorgang gibt die Blockliste an, wo jeder Block in der Datei auf dem Exportdatenträger gespeichert war. Jeder Block wird durch einen Offset in der Datei und eine Blocklänge beschrieben. Darüber hinaus wird jeder Block durch ein Block-ID-Attribut benannt und enthält einen MD5-Hash für den Block. Zum Beschreiben eines Blobs können bis zu 50.000 Blöcke verwendet werden.  Alle Blöcke müssen nach Offset sortiert sein und zusammen den gesamten Bereich der Datei abdecken, *d.h.*, zwischen den Blöcken dürfen keine Lücken vorhanden sein. Wenn das Blob nicht mehr als 64 MB umfasst, müssen alle Block-IDs für jeden Block entweder vollständig vorhanden oder nicht vorhanden sein. Block-IDs müssen Base64-codierte Zeichenfolgen sein. Weitere Anforderungen für Block-IDs finden Sie unter [Put Block](/rest/api/storageservices/fileservices/put-block).|  
+|`BlockList`|Geschachteltes XML-Element|Erforderlich für einen Blockblob mit benannten Blöcken.<br /><br /> Bei einem Importvorgang gibt die Blockliste einen Satz von Blöcken an, die in Azure Storage importiert werden. Bei einem Exportvorgang gibt die Blockliste an, wo jeder Block in der Datei auf dem Exportdatenträger gespeichert war. Jeder Block wird durch einen Offset in der Datei und eine Blocklänge beschrieben. Darüber hinaus wird jeder Block durch ein Block-ID-Attribut benannt und enthält einen MD5-Hash für den Block. Zum Beschreiben eines Blobs können bis zu 50.000 Blöcke verwendet werden.  Alle Blöcke müssen nach Offset sortiert sein und zusammen den gesamten Bereich der Datei abdecken, *d.h.*, zwischen den Blöcken dürfen keine Lücken vorhanden sein. Wenn das Blob nicht mehr als 64 MB umfasst, müssen alle Block-IDs für jeden Block entweder vollständig vorhanden oder nicht vorhanden sein. Block-IDs müssen Base64-codierte Zeichenfolgen sein. Weitere Anforderungen für Block-IDs finden Sie unter [Put Block](/rest/api/storageservices/put-block).|  
 |`Block`|XML-Element|Stellt einen Block dar.|  
 |`Block/@Offset`|Attribut, Integer|Gibt den Offset an, an dem der angegebene Block beginnt.|  
 |`Block/@Length`|Attribut, Integer|Gibt die Anzahl von Bytes im Block an. Dieser Wert darf 4 MB nicht überschreiten.|  

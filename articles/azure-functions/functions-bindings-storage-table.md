@@ -17,9 +17,9 @@ ms.workload: na
 ms.date: 10/28/2016
 ms.author: chrande
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 67c308f8216ebd291ae483c9b18d43528687e9a9
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: bb01be3ee044f60376e0c9c2de7b3dd34f3b7aca
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -61,7 +61,7 @@ Die Storage-Tabelleneingabe in eine Funktion verwendet die folgenden JSON-Objekt
 Beachten Sie Folgendes: 
 
 * Verwenden Sie `partitionKey` und `rowKey` zusammen, um eine einzelne Entität zu lesen. Diese Eigenschaften sind optional. 
-* `connection` muss den Namen einer App-Einstellung enthalten, die eine Speicherverbindungs-Zeichenfolge enthält. Im Azure-Portal konfiguriert der Standard-Editor auf der Registerkarte **Integrieren** diese App-Einstellung für Sie, wenn Sie ein Speicherkonto erstellen oder ein vorhandenes auswählen. Sie können [diese App-Einstellung auch manuell konfigurieren](functions-how-to-use-azure-function-app-settings.md#application-settings).  
+* `connection` muss den Namen einer App-Einstellung enthalten, die eine Speicherverbindungs-Zeichenfolge enthält. Im Azure-Portal konfiguriert der Standard-Editor auf der Registerkarte **Integrieren** diese App-Einstellung für Sie, wenn Sie ein Speicherkonto erstellen oder ein vorhandenes auswählen. Sie können [diese App-Einstellung auch manuell konfigurieren](functions-how-to-use-azure-function-app-settings.md#settings).  
 
 <a name="inputusage"></a>
 
@@ -179,7 +179,7 @@ Die Storage-Tabellenausgabe für eine Funktion verwendet die folgenden JSON-Obje
 Beachten Sie Folgendes: 
 
 * Verwenden Sie `partitionKey` und `rowKey` zusammen, um eine einzelne Entität zu schreiben. Diese Eigenschaften sind optional. Sie können beim Erstellen der Entitätsobjekte in Ihrem Funktionscode auch `PartitionKey` und `RowKey` angeben.
-* `connection` muss den Namen einer App-Einstellung enthalten, die eine Speicherverbindungs-Zeichenfolge enthält. Im Azure-Portal konfiguriert der Standard-Editor auf der Registerkarte **Integrieren** diese App-Einstellung für Sie, wenn Sie ein Speicherkonto erstellen oder ein vorhandenes auswählen. Sie können [diese App-Einstellung auch manuell konfigurieren](functions-how-to-use-azure-function-app-settings.md#application-settings). 
+* `connection` muss den Namen einer App-Einstellung enthalten, die eine Speicherverbindungs-Zeichenfolge enthält. Im Azure-Portal konfiguriert der Standard-Editor auf der Registerkarte **Integrieren** diese App-Einstellung für Sie, wenn Sie ein Speicherkonto erstellen oder ein vorhandenes auswählen. Sie können [diese App-Einstellung auch manuell konfigurieren](functions-how-to-use-azure-function-app-settings.md#settings). 
 
 <a name="outputusage"></a>
 

@@ -4,6 +4,7 @@
 ## [Was ist DocumentDB bzw. die API für MongoDB?](documentdb-protocol-mongodb.md)
 ## [Wichtige Konzepte](documentdb-resources.md)
 ## [Globale Verteilung](documentdb-distribute-data-globally.md)
+## [Regionale Failover](documentdb-regional-failovers.md)
 ## [Sicherheit](documentdb-nosql-database-security.md)
 ## [NoSQL-TCO-Analyse](https://aka.ms/documentdb-tco-paper)
 ## Szenarios
@@ -47,7 +48,6 @@
 ### [Modellieren der Daten](documentdb-modeling-data.md)
 ### [Festlegen einer Gültigkeitsdauer für den automatischen Ablauf von Daten](documentdb-time-to-live.md)
 ### [Sichern und Wiederherstellen](documentdb-online-backup-and-restore.md)
-### [Regionale Failover](documentdb-regional-failovers.md)
 ### Automation
 #### [Azure CLI 2.0](documentdb-automation-resource-manager-cli.md)
 #### [Azure CLI 1.0: Erstellen eines Kontos](documentdb-automation-resource-manager-cli-nodejs.md)

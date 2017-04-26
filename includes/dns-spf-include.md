@@ -1,0 +1,5 @@
+Sender Policy Framework (SPF)-Einträge werden verwendet, um anzugeben, welche E-Mail-Server E-Mails im Namen des angegeben Domänennamens senden dürfen.  Es ist wichtig, SPF-Einträge korrekt zu konfigurieren, um zu verhindern, dass Empfänger Ihre E-Mail als „Junk“ markieren.
+
+Die DNS RFCs haben ursprünglich den neuen Eintragstyp „SPF“ eingeführt, um dieses Szenario zu unterstützen. Sie haben auch die Verwendung des Eintragstyps „TXT“ zum Angeben von SPF-Einträgen zugelassen, um ältere Namenserver zu unterstützen.  Diese Mehrdeutigkeit verursachte Verwirrung, die durch [RFC 7208](http://tools.ietf.org/html/rfc7208#section-3.1) behoben wurde.  Die Aussage lautet, dass SPF-Einträge nur mithilfe des Eintragstyps „TXT“ erstellt werden und der SPF-Eintragstyp als veraltet eingestuft wird.
+
+**SPF-Einträge werden von Azure DNS unterstützt, und sollten mit dem Eintragstyp „TXT“ erstellt werden.** Der veraltete Eintragstyp „SPF“ wird nicht unterstützt. Wenn Sie [eine DNS-Zonendatei importieren](../articles/dns/dns-import-export.md), werden alle SPF-Einträge, die den Eintragstyp „SPF“ verwenden, zum Eintragstyp „TXT“ konvertiert.

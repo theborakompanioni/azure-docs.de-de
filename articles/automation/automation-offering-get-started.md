@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 04/14/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 1876b78186da3aa6c0ae9dc7de3b7ab7e46888bb
-ms.lasthandoff: 04/17/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 0f80ac93e3ff1ee95477e4fa5dbe21d61ddf8ead
+ms.lasthandoff: 04/25/2017
 
 ---
 
@@ -211,7 +211,7 @@ Nach der erfolgreichen Erstellung des Automation-Kontos werden automatisch versc
 | AzureClassicAutomationTutorial-Runbook | Ein grafisches Beispielrunbook zum Abrufen aller VMs, die mit dem klassischen Bereitstellungsmodell eines Abonnements erstellt werden, indem das klassische ausführende Konto (Zertifikat) verwendet wird. Anschließend werden der VM-Name und der -Status geschrieben. |
 | AzureClassicAutomationTutorialScript-Runbook | Ein PowerShell-Beispielrunbook, das alle klassischen virtuellen Computer in einem Abonnement mithilfe des klassischen ausführenden Kontos (Zertifikat) abruft und anschließend den VM-Namen und -Status schreibt. |
 | AzureClassicRunAsCertificate | Das automatisch erstellte Zertifikatasset, das Sie zum Authentifizieren bei Azure verwenden, sodass Sie klassische Azure-Ressourcen über Runbooks verwalten können. Das Zertifikat ist ein Jahr lang gültig. |
-| AzureClassicRunAsConnection | Das automatisch erstellte Verbindungsasset, das Sie zum Authentifizieren bei Azure verwenden, sodass Sie klassische Azure-Ressourcen über Runbooks verwalten können. |authenticate with Azure so that you can manage Azure classic resources from runbooks. |
+| AzureClassicRunAsConnection | Das automatisch erstellte Verbindungsasset, das Sie zum Authentifizieren bei Azure verwenden, sodass Sie klassische Azure-Ressourcen über Runbooks verwalten können.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Sie können überprüfen, ob die Authentifizierung Ihres neuen Automation-Kontos für Azure-Ressourcen funktioniert, indem Sie die Informationen zum [Testen der Authentifizierung für ausführende Azure Automation-Konten](automation-verify-runas-authentication.md) verwenden.

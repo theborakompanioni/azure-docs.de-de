@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 04/14/2017
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 3fb7a0361717d4616ec21e55c0a202ed8bf8991d
-ms.openlocfilehash: a537a71a43b49d510a12d1293d8ee898d66efe63
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: ab8623d6f9751ed6d71d9a5b1c0d5e939c442862
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -27,10 +28,14 @@ Im Azure-Toolkit für Eclipse können Sie HTTP-Sitzungsaffinität bzw. „persis
 
 ## <a name="to-enable-session-affinity-for-your-role"></a>So aktivieren Sie die Sitzungsaffinität für Ihre Rolle
 1. Klicken Sie im Projekt-Explorer-Bereich von Eclipse auf **Azure** und anschließend auf **Lastenausgleich**.
+
 2. Gehen Sie im Dialogfeld **Properties for WorkerRole1 Load Balancing** wie folgt vor:
-   1. Aktivieren Sie **Enable HTTP session affinity (sticky sessions) for this role.**
-   2. Wählen Sie für **Input endpoint to use** (Zu verwendender Eingabeendpunkt) den gewünschten Eingabeendpunkt aus, etwa **http (public:80, private:8080)**. Die Anwendung muss diesen Endpunkt als HTTP-Endpunkt verwenden. Sie können mehrere Endpunkte für Ihre Rolle aktivieren, aber nur eine davon für persistente Sitzungen einrichten.
-   3. Erstellen Sie Ihre Anwendung neu.
+
+   a. Aktivieren Sie **Enable HTTP session affinity (sticky sessions) for this role.**
+
+   b. Wählen Sie für **Input endpoint to use** (Zu verwendender Eingabeendpunkt) den gewünschten Eingabeendpunkt aus, etwa **http (public:80, private:8080)**. Die Anwendung muss diesen Endpunkt als HTTP-Endpunkt verwenden. Sie können mehrere Endpunkte für Ihre Rolle aktivieren, aber nur eine davon für persistente Sitzungen einrichten.
+
+   c. Erstellen Sie Ihre Anwendung neu.
 
 Nach der Aktivierung und bei Vorhandensein mehrerer Rolleninstanzen werden von einem bestimmten Client stammende HTTP-Anforderungen weiterhin von derselben Rolleninstanz behandelt.
 
@@ -38,8 +43,11 @@ Das Eclipse-Toolkit ermöglicht dies durch Installieren eines speziellen IIS-Mod
 
 ## <a name="notes-about-session-affinity"></a>Hinweise zur Sitzungsaffinität
 * Sitzungsaffinität funktioniert nicht im Serveremulator. Die Einstellungen lassen sich im Serveremulator anwenden, ohne den Erstellungsprozess oder die Ausführung des Serveremulators zu stören, aber die Funktion selbst funktioniert im Serveremulator nicht.
+
 * Das Aktivieren der Sitzungsaffinität führt zu einem erhöhten Speicherplatzbedarf der Bereitstellung in Azure, da zusätzliche Software heruntergeladen und in die Rolleninstanzen installiert wird, wenn der Dienst in der Azure-Cloud gestartet wird.
+
 * Die Dauer der Initialisierung der einzelnen Rollen verlängert sich.
+
 * Es wird ein interner Endpunkt zur Umleitung des Datenverkehrs hinzugefügt, wie oben beschrieben.
 
 
@@ -65,9 +73,4 @@ Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java
 [ic719492]: ./media/azure-toolkit-for-eclipse-enable-session-affinity/ic719492.png
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh690950.aspx -->
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

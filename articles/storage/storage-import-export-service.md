@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 04/17/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: a0a974982f80bc2137e73a84681a9401e8a02e39
-ms.lasthandoff: 04/18/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: b83d44399960137c07494e8fe97ec96fa74df3fb
+ms.lasthandoff: 04/26/2017
 
 
 ---
@@ -72,6 +72,7 @@ Laden Sie die neueste Version des [WAImportExport-Tools](http://download.microso
 
 >[!NOTE]
 >**Vorherige Version:** Sie können [Version WAImportExpot V1 des Tools herunterladen](http://download.microsoft.com/download/0/C/D/0CD6ABA7-024F-4202-91A0-CE2656DCE413/WaImportExportV1.zip) und das [WAImportExpot V1-Benutzerhandbuch](storage-import-export-tool-how-to-v1.md) zu Rate ziehen. Version WAImportExpot V1 des Tools bietet Unterstützung für **die Vorbereitung von Datenträgern, wenn die Daten bereits vorab auf den Datenträger geschrieben werden**. Sie müssen das WAImportExpot V1-Tool auch dann verwenden, wenn der einzige verfügbare Schlüssel der SAS-Schlüssel ist.
+
 >
 
 ### <a name="hard-disk-drives"></a>Festplattenlaufwerke
@@ -128,6 +129,7 @@ Unterstützte Standorte für die Verschickung:
 * US DoD, Mitte
 * China, Osten
 * China, Norden
+* UK, Süden
 
 ### <a name="shipping"></a>Versand
 **Schicken von Festplatten an das Rechenzentrum:**

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 3/27/2017
 ms.author: johnkem
 translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: b58bc0455c634631a732e28fb46191949dbc2717
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 27a0b50107964c99334efbf457bfc2f680217ad4
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -32,13 +32,13 @@ Wir bringen mit der Azure Monitor-Pipeline die Überwachungsdaten von der gesamt
 | Azure Monitor-Metriken auf Plattformebene | Metriken | [Siehe Liste hier](monitoring-supported-metrics.md) | <ul><li>**REST-API:** [Azure Monitor-Metrik-API](https://docs.microsoft.com/rest/api/monitor/metrics)</li><li>**Speicher-Blob oder Event Hub:** [Diagnoseeinstellungen](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)</li></ul> |
 | Compute-Metriken für Gastbetriebssysteme (z.B. Leistungsindikatoren) | Metriken | [Windows](../virtual-machines-dotnet-diagnostics.md)- und Linux-VMs (V2), [Clouddienste](../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md), [Service Fabric](../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md) | <ul><li>**Speichertabelle oder Blob:** [Windows oder Linux – Azure-Diagnose](../cloud-services/cloud-services-dotnet-diagnostics-storage.md)</li><li>**Event Hub:** [Windows Azure-Diagnose](../event-hubs/event-hubs-streaming-azure-diags-data.md)</li></ul> |
 | Benutzerdefinierte oder Anwendungsmetriken | Metriken | Alle mit Application Insights instrumentierten Anwendungen | <ul><li>**REST-API:** [Application Insights-REST-API](https://dev.applicationinsights.io/reference)</li></ul> |
-| Speichermetrik | Metriken | Azure Storage | <ul><li>**Speichertabelle:** [Speicheranalyse](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)</li></ul> |
+| Speichermetrik | Metriken | Azure Storage | <ul><li>**Speichertabelle:** [Speicheranalyse](https://docs.microsoft.com/rest/api/storageservices/storage-analytics)</li></ul> |
 | Abrechnungsdaten | Metriken | Alle Azure-Dienste | <ul><li>**REST-API:** [Azure-APIs zur Ressourcennutzung und Gebührenkarte](../billing/billing-usage-rate-card-overview.md)</li></ul> |
 | Aktivitätsprotokoll | Ereignisse | Alle Azure-Dienste | <ul><li>**REST-API:** [Azure Monitor-Ereignis-API](https://docs.microsoft.com/rest/api/monitor/events)</li><li>**Speicherblob oder Event Hub:** [Protokollprofil](monitoring-overview-activity-logs.md#export-the-activity-log-with-log-profiles)</li></ul> |
 | Azure Monitor-Diagnoseprotokolle | Ereignisse | [Siehe Liste hier](monitoring-overview-of-diagnostic-logs.md#supported-services-and-schema-for-diagnostic-logs) | <ul><li>**Speicher-Blob oder Event Hub:** [Diagnoseeinstellungen](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)</li></ul> |
 | Compute-Protokolle für Gastbetriebssysteme (z.B. IIS, ETW, syslogs) | Ereignisse | [Windows](../virtual-machines-dotnet-diagnostics.md)- und Linux-VMs (V2), [Clouddienste](../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md), [Service Fabric](../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md) | <ul><li>**Speichertabelle oder Blob:** [Windows oder Linux – Azure-Diagnose](../cloud-services/cloud-services-dotnet-diagnostics-storage.md)</li><li>**Event Hub:** [Windows Azure-Diagnose](../event-hubs/event-hubs-streaming-azure-diags-data.md)</li></ul> |
 | App Service-Protokolle | Ereignisse | App Services | <ul><li>**File, Table oder Blob Storage:** [Web-App-Diagnose](../app-service-web/web-sites-enable-diagnostic-log.md)</li></ul> |
-| Speicherprotokolle | Ereignisse | Azure Storage | <ul><li>**Speichertabelle:** [Speicheranalyse](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)</li></ul> |
+| Speicherprotokolle | Ereignisse | Azure Storage | <ul><li>**Speichertabelle:** [Speicheranalyse](https://docs.microsoft.com/rest/api/storageservices/storage-analytics)</li></ul> |
 | Security Center-Warnungen | Ereignisse | Azure Security Center | <ul><li>**REST-API:** [Sicherheitswarnungen](https://msdn.microsoft.com/library/mt704050.aspx)</li></ul> |
 | Active Directory-Berichte | Ereignisse | Azure Active Directory | <ul><li>**REST-API:** [Azure Active Directory-Graph-API](../active-directory/active-directory-reporting-api-getting-started.md)</li></ul> |
 | Security Center-Ressourcenstatus | Status | [Alle unterstützten Ressourcen](https://msdn.microsoft.com/library/mt704041.aspx#Anchor_1) | <ul><li>**REST-API:** [Sicherheitsstatus](https://msdn.microsoft.com/library/mt704041.aspx)</li></ul> |

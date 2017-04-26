@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: f32f61824de6a0195fc57b8cb0d73a89c7a06067
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: acf807538c8c9efdadb95c4b66db9a9d5d1f7a6d
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -32,10 +32,10 @@ Dieses Lernprogramm bietet eine praktische Beschreibung eines Szenarios der End-
 ## <a name="tools-for-troubleshooting-azure-storage-applications"></a>Tools zur Problembehandlung von Azure-Speicheranwendungen
 Um Probleme in Clientanwendungen mit Microsoft Azure-Speicher zu beheben, können Sie eine Kombination verschiedener Tools verwenden, um zu ermitteln, wann ein Problem aufgetreten ist und was die Ursache des Problems sein kann. Zu diesen Tools zählen:
 
-* **Azure-Speicheranalyse**. [Azure-Speicheranalyse](/rest/api/storageservices/fileservices/Storage-Analytics) bietet Metriken und Protokolle für den Azure-Speicher.
+* **Azure-Speicheranalyse**. [Azure-Speicheranalyse](/rest/api/storageservices/Storage-Analytics) bietet Metriken und Protokolle für den Azure-Speicher.
   
-  * **Speichermetriken** zeichnet Transaktions- und Kapazitätsmetriken für das Speicherkonto auf. Mithilfe von Metriken können Sie die Leistung Ihrer Anwendung anhand einer Vielzahl verschiedener Messwerte bestimmen. Weitere Informationen zu den Arten der von der Speicheranalyse erfassten Metriken finden Sie unter [Schema der Tabellen für Speicheranalysemetriken](/rest/api/storageservices/fileservices/Storage-Analytics-Metrics-Table-Schema) .
-  * **Speicherprotokollierung** erfasst jede Anfrage an die Azure-Speicherdienste in einem serverseitigen Protokoll. Das Protokoll erfasst ausführliche Daten für jede Anfrage, einschließlich des ausgeführten Vorgangs, des Status des Vorgangs und der Latenzinformationen. Weitere Informationen zu den Anfrage- und Antwortdaten, die von der Speicheranalyse in die Protokolle geschrieben werden, finden Sie unter [Protokollformat der Speicheranalyse](/rest/api/storageservices/fileservices/Storage-Analytics-Log-Format) .
+  * **Speichermetriken** zeichnet Transaktions- und Kapazitätsmetriken für das Speicherkonto auf. Mithilfe von Metriken können Sie die Leistung Ihrer Anwendung anhand einer Vielzahl verschiedener Messwerte bestimmen. Weitere Informationen zu den Arten der von der Speicheranalyse erfassten Metriken finden Sie unter [Schema der Tabellen für Speicheranalysemetriken](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema) .
+  * **Speicherprotokollierung** erfasst jede Anfrage an die Azure-Speicherdienste in einem serverseitigen Protokoll. Das Protokoll erfasst ausführliche Daten für jede Anfrage, einschließlich des ausgeführten Vorgangs, des Status des Vorgangs und der Latenzinformationen. Weitere Informationen zu den Anfrage- und Antwortdaten, die von der Speicheranalyse in die Protokolle geschrieben werden, finden Sie unter [Protokollformat der Speicheranalyse](/rest/api/storageservices/Storage-Analytics-Log-Format) .
 
 > [!NOTE]
 > Für Speicherkonten mit dem Replikationstyp „Zonenredundanter Speicher (ZRS)“ ist zu diesem Zeitpunkt die Metrik- oder Protokollierungsfunktion nicht aktiviert. 
