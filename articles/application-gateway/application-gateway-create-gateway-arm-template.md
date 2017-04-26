@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: f550ec9a8d254378d165f0c842459fd50ade7945
-ms.openlocfilehash: 5cdd26529ed06b7903ae232ab8da4527e79a8a68
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
+ms.openlocfilehash: 58b3d4a84c06a17eee41385509aa80e820399716
+ms.lasthandoff: 04/05/2017
 
 
 ---
@@ -30,7 +30,10 @@ ms.lasthandoff: 03/30/2017
 > * [Azure Resource Manager-Vorlage](application-gateway-create-gateway-arm-template.md)
 > * [Azure-Befehlszeilenschnittstelle](application-gateway-create-gateway-cli.md)
 
-Azure Application Gateway verwendet einen Load Balancer auf der Schicht 7 (Anwendungsschicht). Das Application Gateway ermöglicht ein Failover sowie schnelles Routing von HTTP-Anforderungen zwischen verschiedenen Servern in der Cloud und der lokalen Umgebung. Application Gateway bietet zahlreiche Application Delivery Controller-Funktionen (ADC), u.a. HTTP-Lastenausgleich, cookiebasierte Sitzungsaffinität, SSL-Auslagerung (Secure Sockets Layer), benutzerdefinierte Integritätstests und Unterstützung für mehrere Websites. Eine vollständige Liste der unterstützten Features finden Sie unter [Übersicht über Application Gateway](application-gateway-introduction.md).
+Azure Application Gateway verwendet einen Load Balancer auf der Schicht 7 (Anwendungsschicht). Das Application Gateway ermöglicht ein Failover sowie schnelles Routing von HTTP-Anforderungen zwischen verschiedenen Servern in der Cloud und der lokalen Umgebung.
+Application Gateway bietet zahlreiche Application Delivery Controller-Funktionen (ADC), u.a. HTTP-Lastenausgleich, cookiebasierte Sitzungsaffinität, SSL-Auslagerung (Secure Sockets Layer), benutzerdefinierte Integritätstests und Unterstützung für mehrere Websites.
+
+Eine vollständige Liste der unterstützten Features finden Sie unter [Übersicht über Application Gateway](application-gateway-introduction.md).
 
 Sie erfahren, wie Sie eine vorhandene Azure Resource Manager-Vorlage von GitHub herunterladen und ändern und wie Sie die Vorlage über GitHub, PowerShell und die Azure-Befehlszeilenschnittstelle bereitstellen.
 
@@ -40,13 +43,13 @@ Wenn Sie die Azure-Ressourcen-Manager-Vorlage ohne Änderungen einfach direkt au
 
 In diesem Szenario führen Sie Folgendes durch:
 
-* Sie erstellen ein Anwendungsgateway mit zwei Instanzen.
+* Erstellen eines Anwendungsgateways mit der Web Application Firewall.
 * Sie erstellen ein virtuelles Netzwerk mit dem Namen VirtualNetwork1 und dem reservierten CIDR-Block 10.0.0.0/16.
 * Sie erstellen ein Subnetz mit dem Namen Appgatewaysubnet, für das 10.0.0.0/28 als CIDR-Block verwendet wird.
 * Sie richten zwei zuvor konfigurierte Back-End-IP-Adressen für die Webserver ein, die zum Durchführen des Lastenausgleichs verwendet werden sollen. In diesem Vorlagenbeispiel werden die Back-End-IP-Adressen 10.0.1.10 und 10.0.1.11 verwendet.
 
 > [!NOTE]
-> Diese Einstellungen sind die Parameter für diese Vorlage. Zum Anpassen der Vorlage können Sie Regeln, den Listener und das SSL-Element ändern, mit dem „azuredeploy.json“ geöffnet wird.
+> Diese Einstellungen sind die Parameter für diese Vorlage. Zum Anpassen der Vorlage können Sie Regeln, den Listener, SSL und andere Optionen in der Datei „azuredeploy.json“ ändern.
 
 ![Szenario](./media/application-gateway-create-gateway-arm-template/scenario.png)
 
@@ -54,71 +57,86 @@ In diesem Szenario führen Sie Folgendes durch:
 
 Sie können die vorhandene Azure-Ressourcen-Manager-Vorlage herunterladen, um ein virtuelles Netzwerk und zwei Subnetze aus GitHub zu erstellen. Anschließend können Sie die gewünschten Änderungen vornehmen und die Vorlage bei Bedarf wiederverwenden. Führen Sie dazu die folgenden Schritte aus:
 
-1. Navigieren Sie zu [Create Application Gateway](https://github.com/Azure/azure-quickstart-templates/tree/master/101-application-gateway-create)(Erstellen eines Anwendungsgateways).
-2. Klicken Sie auf **azuredeploy.json**, und klicken Sie dann auf **RAW**.
-3. Speichern Sie die Datei in einem lokalen Ordner auf Ihrem Computer.
-4. Fahren Sie mit Schritt 7 fort, wenn Sie mit Azure-Ressourcen-Manager-Vorlagen bereits vertraut sind.
-5. Öffnen Sie die Datei, die Sie gespeichert haben, und sehen Sie sich den Inhalt unter **parameters** in Zeile 5 an. Die Parameter der Azure-Ressourcen-Manager-Vorlage stellen Platzhalter für Werte dar, die während der Bereitstellung ausgefüllt werden können.
-   
-   | Parameter | Beschreibung |
-   | --- | --- |
-   | **location** |Azure-Region, in der das Anwendungsgateway erstellt wird |
-   | **VirtualNetwork1** |Name für das neue virtuelle Netzwerk |
-   | **addressPrefix** |Adressraum für das virtuelle Netzwerk im CIDR-Format |
-   | **ApplicationGatewaysubnet** |Name für das Anwendungsgateway-Subnetz |
-   | **subnetPrefix** |CIDR-Block für das Anwendungsgateway-Subnetz |
-   | **skuname** |Größe der SKU-Instanz |
-   | **Kapazität** |Anzahl von Instanzen |
-   | **backendaddress1** |IP-Adresse des ersten Webservers |
-   | **backendaddress2** |IP-Adresse des zweiten Webservers |
+1. Navigieren Sie zu [Erstellen eines Anwendungsgateways mit aktiver Web Application Firewall](https://github.com/Azure/azure-quickstart-templates/tree/master/101-application-gateway-waf).
+1. Klicken Sie auf **azuredeploy.json**, und klicken Sie dann auf **RAW**.
+1. Speichern Sie die Datei in einem lokalen Ordner auf Ihrem Computer.
+1. Fahren Sie mit Schritt 7 fort, wenn Sie mit Azure-Ressourcen-Manager-Vorlagen bereits vertraut sind.
+1. Öffnen Sie die Datei, die Sie gespeichert haben, und betrachten Sie den Inhalt unter **parameters** in Zeile
+1. Die Parameter der Azure-Ressourcen-Manager-Vorlage stellen Platzhalter für Werte dar, die während der Bereitstellung ausgefüllt werden können.
 
-    > [!IMPORTANT]
-    >Azure-Ressourcen-Manager-Vorlagen, die in GitHub verwaltet werden, können sich im Laufe der Zeit ändern. Überprüfen Sie die Vorlage stets, bevor Sie sie verwenden.
+  | Parameter | Beschreibung |
+  | --- | --- |
+  | **subnetPrefix** |CIDR-Block für das Anwendungsgateway-Subnetz |
+  | **applicationGatewaySize** | Größe des Anwendungsgateways.  WAF lässt nur mittelgroß und groß zu. |
+  | **backendIpaddress1** |IP-Adresse des ersten Webservers. |
+  | **backendIpaddress2** |IP-Adresse des zweiten Webservers. |
+  | **wafEnabled** | Festlegung, ob WAF aktiviert ist.|
+  | **wafMode** | Modus der Web Application Firewall.  Verfügbare Optionen sind **Prävention** und **Erkennung**.|
+  | **wafRuleSetType** | Regelsatztyp für WAF.  Derzeit die OWASP die einzige unterstützte Option. |
+  | **wafRuleSetVersion** |Regelsatzversion. Die unterstützten Optionen sind derzeit OWASP CRS 2.2.9 und 3.0. |
 
-6. Überprüfen Sie den Inhalt unter **resources**, und beachten Sie folgende Eigenschaften:
+
+  > [!IMPORTANT]
+  > Azure-Ressourcen-Manager-Vorlagen, die in GitHub verwaltet werden, können sich im Laufe der Zeit ändern. Überprüfen Sie die Vorlage stets, bevor Sie sie verwenden.
+
+1. Überprüfen Sie den Inhalt unter **resources**, und beachten Sie folgende Eigenschaften:
 
    * **type**. Typ der Ressource, die von der Vorlage erstellt wird. In diesem Fall lautet der Typ `Microsoft.Network/applicationGateways` (ein Anwendungsgateway).
    * **name**. Name der Ressource. Beachten Sie die Verwendung von `[parameters('applicationGatewayName')]`. Das bedeutet, dass der Name während der Bereitstellung durch Sie oder eine Parameterdatei eingegeben wird.
    * **properties**. Liste der Eigenschaften für die Ressource. Diese Vorlage verwendet während der Erstellung des Anwendungsgateways das virtuelle Netzwerk und die öffentliche IP-Adresse.
 
-7. Navigieren Sie zurück zu [https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-create/](https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-create).
-8. Klicken Sie auf **azuredeploy-paremeters.json** und anschließend auf **RAW**.
-9. Speichern Sie die Datei in einem lokalen Ordner auf Ihrem Computer.
-10. Öffnen Sie die Datei, die Sie gespeichert haben, und bearbeiten Sie die Parameterwerte. Verwenden Sie die folgenden Werte, um das Anwendungsgateway wie in unserem Szenario beschrieben bereitzustellen.
+   > [!NOTE]
+   > Weitere Informationen zu Vorlagen finden Sie unter [Resource Manager-Vorlagen: Referenz](/templates/)
+
+1. Navigieren Sie zurück zu [https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf/](https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf).
+1. Klicken Sie auf **azuredeploy-parameters.json** und anschließend auf **RAW**.
+1. Speichern Sie die Datei in einem lokalen Ordner auf Ihrem Computer.
+1. Öffnen Sie die Datei, die Sie gespeichert haben, und bearbeiten Sie die Parameterwerte. Verwenden Sie die folgenden Werte, um das Anwendungsgateway wie in unserem Szenario beschrieben bereitzustellen.
 
     ```json
-        {
+    {
         "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-        {
-        "location" : {
-        "value" : "West US"
-        },
-        "addressPrefix": {
-        "value": "10.0.0.0/16"
-        },
-        "subnetPrefix": {
-        "value": "10.0.0.0/24"
-        },
-        "skuName": {
-        "value": "Standard_Small"
-        },
-        "capacity": {
-        "value": 2
-        },
-        "backendIpAddress1": {
-        "value": "10.0.1.10"
-        },
-        "backendIpAddress2": {
-        "value": "10.0.1.11"
+        "contentVersion": "1.0.0.0",
+        "parameters": {
+            "addressPrefix": {
+            "value": "10.0.0.0/16"
+            },
+            "subnetPrefix": {
+            "value": "10.0.0.0/28"
+            },
+            "applicationGatewaySize": {
+            "value": "WAF_Medium"
+            },
+            "capacity": {
+            "value": 2
+            },
+            "backendIpAddress1": {
+            "value": "10.0.1.10"
+            },
+            "backendIpAddress2": {
+            "value": "10.0.1.11"
+            },
+            "wafEnabled": {
+            "value": true
+            },
+            "wafMode": {
+            "value": "Detection"
+            },
+            "wafRuleSetType": {
+            "value": "OWASP"
+            },
+            "wafRuleSetVersion": {
+            "value": "3.0"
+            }
         }
-        }
+    }
     ```
 
-11. Speichern Sie die Datei. Sie können die JSON-Vorlage und die Parametervorlage mithilfe von online verfügbaren JSON-Validierungstools wie [JSlint.com](http://www.jslint.com/)testen.
+1. Speichern Sie die Datei. Sie können die JSON-Vorlage und die Parametervorlage mithilfe von online verfügbaren JSON-Validierungstools wie [JSlint.com](http://www.jslint.com/)testen.
 
 ## <a name="deploy-the-azure-resource-manager-template-by-using-powershell"></a>Bereitstellen der Azure-Ressourcen-Manager-Vorlage mit PowerShell
 
-Wenn Sie Azure PowerShell zuvor noch nicht verwendet haben, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) , und befolgen Sie die Anweisungen, um sich bei Azure anzumelden und Ihr Abonnement auszuwählen.
+Wenn Sie Azure PowerShell zuvor noch nicht verwendet haben, besuchen Sie [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs), und befolgen Sie die Anweisungen, um sich bei Azure anzumelden und Ihr Abonnement auszuwählen.
 
 ### <a name="step-1"></a>Schritt 1
 
@@ -149,7 +167,7 @@ Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
 Erstellen Sie bei Bedarf eine Ressourcengruppe mit dem Cmdlet **New-AzureResourceGroup** . Im folgenden Beispiel erstellen Sie eine Ressourcengruppe mit dem Namen AppgatewayRG in der Region „USA, Osten“.
 
 ```powershell
-New-AzureRmResourceGroup -Name AppgatewayRG -Location "East US"
+New-AzureRmResourceGroup -Name AppgatewayRG -Location "West US"
 ```
 
 Führen Sie das Cmdlet **New-AzureRmResourceGroupDeployment** aus, um das neue virtuelle Netzwerk mit der zuvor heruntergeladenen und geänderten Vorlage und den Parameterdateien bereitzustellen.
@@ -165,40 +183,26 @@ Führen Sie die folgenden Schritte aus, um die heruntergeladene Azure Resource M
 
 ### <a name="step-1"></a>Schritt 1
 
-Wenn Sie die Azure-CLI noch nie verwendet haben, lesen Sie den Artikel [Installieren der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) , und befolgen Sie die Anweisungen bis zu dem Punkt, an dem Sie Ihr Azure-Konto und Ihr Abonnement auswählen.
+Wenn Sie die Azure-CLI noch nie verwendet haben, lesen Sie den Artikel [Installieren der Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli) , und befolgen Sie die Anweisungen bis zu dem Punkt, an dem Sie Ihr Azure-Konto und Ihr Abonnement auswählen.
 
 ### <a name="step-2"></a>Schritt 2
 
-Führen Sie den Befehl **azure config mode** aus, um in den Resource Manager-Modus zu wechseln, wie im folgenden Codeausschnitt zu sehen:
+Führen Sie bei Bedarf den Befehl `az group create` aus, um eine neue Ressourcengruppe zu erstellen, wie im folgenden Codeausschnitt zu sehen. Beachten Sie die Ausgabe des Befehls. In der nach der Ausgabe angezeigten Liste werden die verwendeten Parameter erläutert. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
 
 ```azurecli
-azure config mode arm
-```
-
-Hier sehen Sie die erwartete Ausgabe des vorherigen Befehls:
-
-```azurecli
-info:    New mode is arm
-```
-
-### <a name="step-3"></a>Schritt 3
-
-Führen Sie bei Bedarf den Befehl **azure group create** aus, um eine neue Ressourcengruppe zu erstellen, wie im folgenden Codeausschnitt zu sehen. Beachten Sie die Ausgabe des Befehls. In der nach der Ausgabe angezeigten Liste werden die verwendeten Parameter erläutert. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
-
-```azurecli
-azure group create -n appgatewayRG -l eastus
+az group create --location westus --name appgatewayRG
 ```
 
 **-n (oder --name)**. Name für die neue Ressourcengruppe. In unserem Fall ist dies *appgatewayRG*.
 
-**-l (oder --location)**. Azure-Region, in der die neue Ressourcengruppe erstellt wird. In unserem Fall ist dies *eastus*.
+**-l (oder --location)**. Azure-Region, in der die neue Ressourcengruppe erstellt wird. In unserem Szenario ist dies *westus*.
 
 ### <a name="step-4"></a>Schritt 4
 
-Führen Sie das Cmdlet **azure group deployment create** aus, um das neue virtuelle Netzwerk mithilfe der im vorherigen Schritt heruntergeladenen und geänderten Vorlage und Parameterdateien bereitzustellen. In der nach der Ausgabe angezeigten Liste werden die verwendeten Parameter erläutert.
+Führen Sie das Cmdlet `az group deployment create` aus, um das neue virtuelle Netzwerk mithilfe der im vorherigen Schritt heruntergeladenen und geänderten Vorlage und Parameterdateien bereitzustellen. In der nach der Ausgabe angezeigten Liste werden die verwendeten Parameter erläutert.
 
 ```azurecli
-azure group deployment create -g appgatewayRG -n TestAppgatewayDeployment -f C:\ARM\azuredeploy.json -e C:\ARM\azuredeploy-parameters.json
+az group deployment create --resource-group appgatewayRG --name TestAppgatewayDeployment --template-file azuredeploy.json --parameters @azuredeploy-parameters.json
 ```
 
 ## <a name="deploy-the-azure-resource-manager-template-by-using-click-to-deploy"></a>Bereitstellen der Azure-Ressourcen-Manager-Vorlage per Click-to-Deploy
@@ -207,7 +211,7 @@ Click-to-Deploy ist eine weitere Option zum Verwenden von Azure-Ressourcen-Manag
 
 ### <a name="step-1"></a>Schritt 1
 
-Navigieren Sie zu [Create an Application Gateway with Public IP](https://azure.microsoft.com/documentation/templates/101-application-gateway-public-ip/)(Erstellen eines Anwendungsgateways mit öffentlicher IP).
+Wechseln Sie zu [Erstellen eines Anwendungsgateways mit der Web Application Firewall](https://azure.microsoft.com/documentation/templates/101-application-gateway-waf/).
 
 ### <a name="step-2"></a>Schritt 2
 
@@ -223,7 +227,7 @@ Füllen Sie im Portal die Parameter für die Bereitstellungsvorlage aus, und kli
 
 ### <a name="step-4"></a>Schritt 4
 
-Wählen Sie **Rechtliche Bedingungen** aus, und klicken Sie auf **Kaufen**.
+Wählen Sie **Ich stimme den oben genannten Geschäftsbedingungen zu** aus, und klicken Sie auf **Kaufen**.
 
 ### <a name="step-5"></a>Schritt 5
 
@@ -239,9 +243,9 @@ Wenn Sie SSL mit einer Vorlage verwenden, muss das Zertifikat nicht hochgeladen,
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie die SSL-Auslagerung konfigurieren möchten, finden Sie weitere Informationen im Abschnitt [Konfigurieren eines Application Gateways für die SSL-Auslagerung](application-gateway-ssl.md).
+Informationen zum Konfigurieren der SSL-Auslagerung finden Sie unter [Konfigurieren eines Anwendungsgateways für SSL-Auslagerung mit klassischem Bereitstellungsmodell](application-gateway-ssl.md).
 
-Wenn Sie ein Anwendungsgateway für die Verwendung mit einem internen Load Balancer konfigurieren möchten, ist es ratsam, den Abschnitt [Erstellen eines Application Gateways mit einem internen Lastenausgleich (ILB)](application-gateway-ilb.md)zu lesen.
+Informationen zum Konfigurieren eines Anwendungsgateways für die Verwendung mit einem internen Lastenausgleich finden Sie unter [Erstellen eines Anwendungsgateways mit einem internen Lastenausgleich (ILB)](application-gateway-ilb.md).
 
 Weitere grundsätzliche Informationen zu Lastenausgleichsoptionen finden Sie unter:
 

@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 04/03/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
-ms.openlocfilehash: e92c33b81aa1b69da0336bec1260cbda96c7a72e
+ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
+ms.openlocfilehash: df167435757b2d9d2d25b58b1b548a811b490eb5
+ms.lasthandoff: 04/04/2017
 
 
 ---
@@ -27,9 +28,9 @@ ms.openlocfilehash: e92c33b81aa1b69da0336bec1260cbda96c7a72e
 > * [Azure-Portal](application-gateway-create-url-route-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-url-route-arm-ps.md)
 
-Mit Routing auf URL-Pfadbasis können Sie Routen basierend auf dem URL-Pfad der Http-Anforderung zuordnen. Es wird überprüft, ob eine Route zu einem Backend-Pool für die URL-Listen im Application Gateway konfiguriert ist, und der Netzwerkverkehr wird an den definierten Back-End-Pool gesendet. Ein gängiges Szenario für URL-basiertes Routing ist der Lastenausgleich von Anforderungen für verschiedene Inhaltstypen auf verschiedene Back-End-Serverpools.
+Mit Routing auf URL-Pfadbasis können Sie Routen basierend auf dem URL-Pfad der Http-Anforderung zuordnen. Es wird überprüft, ob eine Route zu einem Back-End-Pool für die URL konfiguriert ist, die im Anwendungsgateway aufgeführt wird, und der Netzwerkverkehr wird an den definierten Back-End-Pool gesendet. Ein gängiges Szenario für URL-basiertes Routing ist der Lastenausgleich von Anforderungen für verschiedene Inhaltstypen auf verschiedene Back-End-Serverpools.
 
-Mit Routing auf URL-Basis wird ein neuer Regeltyp für das Application Gateway eingeführt. Application Gateways verfügen über zwei Regeltypen: Basisregeln und pfadbasierte Regeln. Der Basisregeltyp bietet einen Roundrobin-Dienst für die Back-End-Pools, während pfadbasierte Regeln neben der Roundrobin-Verteilung auch Pfadmuster der Anforderungs-URL beim Auswählen des Back-End-Pools berücksichtigen.
+Mit Routing auf URL-Basis wird ein neuer Regeltyp für das Application Gateway eingeführt. Application Gateway verfügt über zwei Regeltypen: Basisregeln und pfadbasierte Regeln. Der Basisregeltyp bietet einen Roundrobindienst für die Back-End-Pools, während pfadbasierte Regeln neben der Roundrobinverteilung auch Pfadmuster der Anforderungs-URL beim Auswählen des geeigneten Back-End-Pools berücksichtigen.
 
 ## <a name="scenario"></a>Szenario
 
@@ -38,7 +39,7 @@ Für dieses Szenario wird davon ausgegangen, dass Sie die Schritte unter [Erstel
 
 ![URL-Route][scenario]
 
-## <a name="a-namecreateruleacreate-the-path-based-rule"></a><a name="createrule"></a>Erstellen der pfadbasierten Regel
+## <a name="createrule"></a>Erstellen der pfadbasierten Regel
 
 Eine pfadbasierende Regel erfordert einen eigenen Listener. Stellen Sie daher vor dem Erstellen der Regel sicher, dass Ihnen ein Listener zur Verfügung steht, den Sie verwenden können.
 
@@ -71,13 +72,15 @@ Das Blatt **Add path-based rule** (Pfadbasierte Regel hinzufügen) verfügt übe
 * **HTTP-Einstellung** : Dies ist die Einstellung, die die HTTP-Einstellungen für die Regel festlegt.
 
 > [!IMPORTANT]
-> Pfade: Die Liste der abzustimmenden Pfadmuster. Jedes muss mit „/“ beginnen, und ein „\*“ ist nur am Ende zulässig. Gültige Beispiele sind „/xyz“, „/xyz*“ oder „/xyz/“*.  
+> Pfade: Die Liste der abzustimmenden Pfadmuster. Jedes muss mit „/“ beginnen, und ein „\*“ ist nur am Ende zulässig. Gültige Beispiele sind etwa „/xyz“, „/xyz*“ oder „/xyz/*“.  
 
 ![Hinzufügen eines Blatts mit pfadbasierten Regeln mit bereitgestellten Informationen][2]
 
 Das Hinzufügen einer pfadbasierten Regel zu einem bestehenden Application Gateway ist über das Portal ein einfacher Prozess. Nachdem eine pfadbasierte Regel erstellt wurde, kann sie bearbeitet werden, damit zusätzliche Regeln einfach hinzugefügt werden können. 
 
 ![Hinzufügen zusätzlicher pfadbasierter Regeln][3]
+
+Hierdurch wird eine pfadbasierte Route konfiguriert. Es ist zu beachten, dass die Anforderungen nicht neu geschrieben werden, da eingehende Anforderungen im Anwendungsgateway untersucht und basierend auf dem URL-Muster an das entsprechende Back-End gesendet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -87,9 +90,4 @@ Informationen zum Konfigurieren der SSL-Auslagerung mit Azure Application Gatewa
 [2]: ./media/application-gateway-create-url-route-portal/figure2.png
 [3]: ./media/application-gateway-create-url-route-portal/figure3.png
 [scenario]: ./media/application-gateway-create-url-route-portal/scenario.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

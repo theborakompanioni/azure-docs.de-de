@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 3/17/2017
+ms.date: 4/10/2017
 ms.author: negat
 ms.custom: na
 translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: e207ace4eb5722e08f2020078dfea9129ef1deb8
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 1c7b4c4b7675bfc33e102c9abb4f942a1dd33ad4
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -538,6 +538,28 @@ In diesem Beispiel wird bei Erreichen eines Schwellenwerts eine Warnung an „Pa
 
 
 
+## <a name="patching-and-operations"></a>Patching und Verfahren
+
+### <a name="how-do-i-create-a-scale-set-in-an-existing-resource-group"></a>Wie erstelle ich eine Skalierungsgruppe in einer vorhandenen Ressourcengruppe?
+
+Über das Azure-Portal können derzeit noch keine Skalierungsgruppen in einer vorhandenen Ressourcengruppe erstellt werden. Bei der Bereitstellung einer Skalierungsgruppe mithilfe einer Azure Resource Manager-Vorlage können Sie dagegen eine vorhandene Ressourcengruppe angeben. Sie können auch eine vorhandene Ressourcengruppe angeben, wenn Sie eine Skalierungsgruppe mithilfe von Azure PowerShell oder über die Azure-Befehlszeilenschnittstelle erstellen.
+
+### <a name="can-we-move-a-scale-set-to-another-resource-group"></a>Kann eine Skalierungsgruppe in eine andere Ressourcengruppe verschoben werden?
+
+Ja, Sie können Skalierungsgruppenressourcen in ein neues Abonnement oder eine neue Ressourcengruppe verschieben.
+
+### <a name="how-to-i-update-my-virtual-machine-scale-set-to-a-new-image-how-do-i-manage-patching"></a>Wie kann ich meine VM-Skalierungsgruppe auf ein neues Image aktualisieren? Wie verwalte das Patchen?
+
+Informationen zum Aktualisieren Ihrer VM-Skalierungsgruppe auf ein neues Image sowie zum Verwalten des Patchens finden Sie unter [Upgraden einer VM-Skalierungsgruppe](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set).
+
+### <a name="can-i-use-the-reimage-operation-to-reset-a-vm-without-changing-the-image-that-is-i-want-reset-a-vm-to-factory-settings-rather-than-to-a-new-image"></a>Kann ich einen virtuellen Computer mittels Reimaging zurücksetzen, ohne das Image zu ändern? (Ich möchte einen virtuellen Computer auf die Werkseinstellungen zurücksetzen, nicht auf ein neues Image.)
+
+Ja. Sie können einen virtuellen Computer mittels Reimaging zurücksetzen, ohne das Image zu ändern. Falls Ihre VM-Skalierungsgruppe allerdings auf ein Plattformimage mit `version = latest` verweist, kann Ihr virtueller Computer auf ein höheres Betriebssystemimage aktualisiert werden, wenn Sie das `reimage` aufrufen.
+
+Weitere Informationen finden Sie unter [Manage all VMs in a set](https://docs.microsoft.com/rest/api/virtualmachinescalesets/manage-all-vms-in-a-set) (Verwalten aller virtuellen Computer in einer Gruppe).
+
+
+
 ## <a name="troubleshooting"></a>Problembehandlung
 
 ### <a name="how-do-i-turn-on-boot-diagnostics"></a>Wie aktiviere ich die Startdiagnose?
@@ -561,21 +583,6 @@ Beim Erstellen eines neuen virtuellen Computers zeigt die InstanceView-Eigenscha
     "serialConsoleLogBlobUri": "https://o0sz3nhtbmkg6geswarm5.blob.core.windows.net/bootdiagnostics-swarmagen-4157d838-8335-4f78-bf0e-b616a99bc8bd/swarm-agent-9574AE92vmss-0_2.4157d838-8335-4f78-bf0e-b616a99bc8bd.serialconsole.log"
   }
 ```
-
- 
-
-## <a name="updates"></a>Aktualisierungen
-
-### <a name="how-to-i-update-my-virtual-machine-scale-set-to-a-new-image-how-do-i-manage-patching"></a>Wie kann ich meine VM-Skalierungsgruppe auf ein neues Image aktualisieren? Wie verwalte das Patchen?
-
-Informationen zum Aktualisieren Ihrer VM-Skalierungsgruppe auf ein neues Image sowie zum Verwalten des Patchens finden Sie unter [Upgraden einer VM-Skalierungsgruppe](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set).
-
-### <a name="can-i-use-the-reimage-operation-to-reset-a-vm-without-changing-the-image-that-is-i-want-reset-a-vm-to-factory-settings-rather-than-to-a-new-image"></a>Kann ich einen virtuellen Computer mittels Reimaging zurücksetzen, ohne das Image zu ändern? (Ich möchte einen virtuellen Computer auf die Werkseinstellungen zurücksetzen, nicht auf ein neues Image.)
-
-Ja. Sie können einen virtuellen Computer mittels Reimaging zurücksetzen, ohne das Image zu ändern. Falls Ihre VM-Skalierungsgruppe allerdings auf ein Plattformimage mit `version = latest` verweist, kann Ihr virtueller Computer auf ein höheres Betriebssystemimage aktualisiert werden, wenn Sie das `reimage` aufrufen.
-
-Weitere Informationen finden Sie unter [Manage all VMs in a set](https://docs.microsoft.com/rest/api/virtualmachinescalesets/manage-all-vms-in-a-set) (Verwalten aller virtuellen Computer in einer Gruppe).
-
 
 
 ## <a name="virtual-machine-properties"></a>Eigenschaften für virtuelle Computer
