@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 08/19/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 0ddac6ef30439e6bea04d63c41662bc49309de2c
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: a9bb00c6f0a691ac3a67d19ada4341d8d94876c1
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -36,7 +36,7 @@ Beachten Sie Folgendes beim Entwickeln von Media Services-Anwendungen, die Queue
 
 * Queue Storage bietet keine Garantie, dass die Übermittlung nach First-in-First-out (FIFO) sortiert erfolgt. Weitere Informationen finden sie unter [Azure-Warteschlangen und Azure Service Bus-Warteschlangen – Vergleich und Gegenüberstellung](https://msdn.microsoft.com/library/azure/hh767287.aspx).
 * Queue Storage ist kein Pushdienst. Sie müssen die Warteschlange abfragen.
-* Sie können eine beliebige Anzahl von Warteschlangen verwenden. Weitere Informationen finden Sie unter [REST-API des Warteschlangendiensts](https://docs.microsoft.com/rest/api/storageservices/fileservices/Queue-Service-REST-API).
+* Sie können eine beliebige Anzahl von Warteschlangen verwenden. Weitere Informationen finden Sie unter [REST-API des Warteschlangendiensts](https://docs.microsoft.com/rest/api/storageservices/Queue-Service-REST-API).
 * Queue Storage verfügt über einige Einschränkungen und Besonderheiten, die Sie berücksichtigen müssen. Diese werden unter [Azure-Warteschlangen und Azure Service Bus-Warteschlangen – Vergleich und Gegenüberstellung](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted) besprochen.
 
 ### <a name="code-example"></a>Codebeispiel

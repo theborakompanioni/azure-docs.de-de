@@ -14,6 +14,7 @@
 ## Site-to-Site-Verbindung konfigurieren
 ### [Azure-Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 ### [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
+### [Azure-Befehlszeilenschnittstelle](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 ### [Azure-Portal (klassisch)](vpn-gateway-howto-site-to-site-classic-portal.md)
 ### [Klassisches Portal (klassisch)](vpn-gateway-site-to-site-create.md)
 ## Point-to-Site-Verbindung konfigurieren
@@ -38,7 +39,6 @@
 ## [Konfigurieren hochverfügbarer Aktiv/Aktiv-Verbindungen](vpn-gateway-activeactive-rm-powershell.md)
 ## [Ändern der Einstellungen des lokalen Netzwerkgateways mit PowerShell](vpn-gateway-modify-local-network-gateway.md)
 ## [Überprüfen einer VPN Gateway-Verbindung](vpn-gateway-verify-connection-resource-manager.md)
-## [Überprüfen des VPN-Durchsatzes an ein VNET](vpn-gateway-validate-throughput-to-vnet.md)
 ## [Zurücksetzen einer VPN Gateway-Instanz](vpn-gateway-resetgw-classic.md)
 ## Löschen eines VPN-Gateways
 ### [Azure-Portal](vpn-gateway-delete-vnet-gateway-portal.md)
@@ -46,12 +46,15 @@
 ### [PowerShell (klassisch)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 ## [Erstellen selbstsignierter Stammzertifikate für P2S-Verbindungen](vpn-gateway-certificates-point-to-site.md)
 ## [Konfigurieren einer VPN Gateway-Instanz (klassisch)](vpn-gateway-configure-vpn-gateway-mp.md)
+## Problembehandlung
+### [Überprüfen des VPN-Durchsatzes an ein VNET](vpn-gateway-validate-throughput-to-vnet.md)
 
 # Referenz
 ## [PowerShell](/powershell/resourcemanager/azurerm.network/v3.6.0/azurerm.network)
 ## [PowerShell (klassisch)](/powershell/servicemanagement/azure.networking/v3.4.0/azure.networking)
 ## [REST](https://msdn.microsoft.com/library/mt163859)
 ## [REST (klassisch)](https://msdn.microsoft.com/library/jj154113)
+## [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/network)
 
 # Verwandte Themen
 ## [Virtual Network](/azure/virtual-network/)

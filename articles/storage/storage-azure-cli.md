@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/18/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: be44ca9d14d6dbb7a50d5c42c163bc66531bb90f
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 5b77598e76de3508d90b35ce5a1f2ee338aca0c8
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -163,10 +163,10 @@ echo "Done"
 
    * **\<storage_account_name\>**: Der Name Ihres Speicherkontos.
    * **\<storage_account_key\>** Der primäre oder sekundäre Zugriffsschlüssel für Ihr Speicherkonto.
-   * **\<container_name\>** Ein Name für den zu erstellenden Container wie z.B. „azure-cli-beispielcontainer“.
-   * **\<blob_name\>** Ein Name für das Zielblob im Container.
+   * **\<container_name\>**  Ein Name für den zu erstellenden Container wie z.B. „azure-cli-beispielcontainer“.
+   * **\<blob_name\>**  Ein Name für das Zielblob im Container.
    * **\<file_to_upload\>** Der Pfad zu der kleinen Datei auf Ihrem lokalen Computer, wie z.B. „~/images/HelloWorld.png“.
-   * **\<destination_file\>** Der Zieldateipfad, z.B. „~/downloadedImage.png“.
+   * **\<destination_file\>**  Der Zieldateipfad, z.B. „~/downloadedImage.png“.
 
 3. Nachdem Sie die erforderlichen Variablen aktualisiert haben, speichern Sie das Skript, und beenden Sie den Editor. In den nächsten Schritten wird vorausgesetzt, dass Sie Ihr **my_storage_sample.sh** genannt haben.
 
@@ -241,7 +241,7 @@ export AZURE_STORAGE_CONNECTION_STRING=<connection_string>
 >
 
 ## <a name="create-and-manage-blobs"></a>Erstellen und Verwalten von Blobs
-Der Azure-Blob-Speicher ist ein Dienst zur Speicherung großer Mengen unstrukturierter Daten, beispielsweise Text- oder Binärdaten, auf die von überall auf der Welt über HTTP oder HTTPS zugegriffen werden kann. Dieser Abschnitt setzt voraus, dass Sie mit den Azure Blob Storage-Konzepten bereits vertraut sind. Ausführliche Informationen finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](storage-dotnet-how-to-use-blobs.md) und [Konzepte des Blob-Diensts](/rest/api/storageservices/fileservices/blob-service-concepts).
+Der Azure-Blob-Speicher ist ein Dienst zur Speicherung großer Mengen unstrukturierter Daten, beispielsweise Text- oder Binärdaten, auf die von überall auf der Welt über HTTP oder HTTPS zugegriffen werden kann. Dieser Abschnitt setzt voraus, dass Sie mit den Azure Blob Storage-Konzepten bereits vertraut sind. Ausführliche Informationen finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](storage-dotnet-how-to-use-blobs.md) und [Konzepte des Blob-Diensts](/rest/api/storageservices/blob-service-concepts).
 
 ### <a name="create-a-container"></a>Erstellen eines Containers
 Jeder Blob im Azure-Speicher muss sich in einem Container befinden. Mit dem Befehl `az storage container create` können Sie einen Container erstellen:
@@ -267,7 +267,7 @@ az storage blob upload -f <local_file_path> -c <container_name> -n <blob_name>
 
  Standardmäßig lädt der Befehl `blob upload` VHD-Dateien in Seitenblobs oder andernfalls Blockblobs hoch. Um einen anderen Typ anzugeben, wenn Sie ein Blob hochladen, können Sie das Argument `--type` angeben. Uulässige Werte sind `append`, `block` und `page`.
 
- Weitere Informationen zu den verschiedenen Blobtypen finden Sie unter [Understanding Block Blobs, Append Blobs, and Page Blobs](/rest/api/storageservices/fileservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) (Grundlegendes zu Block-, Anfüge- und Seitenblobs).
+ Weitere Informationen zu den verschiedenen Blobtypen finden Sie unter [Understanding Block Blobs, Append Blobs, and Page Blobs](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) (Grundlegendes zu Block-, Anfüge- und Seitenblobs).
 
 ### <a name="download-blobs-from-a-container"></a>Herunterladen von Blobs aus einem Container
 In diesem Beispiel wird veranschaulicht, wie Blobs aus einem Container heruntergeladen werden:

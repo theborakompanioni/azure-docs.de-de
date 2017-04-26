@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: jonatul
 translationtype: Human Translation
-ms.sourcegitcommit: 119275f335344858cd20b6a17ef87e3ef32b6e12
-ms.openlocfilehash: 4e25ec1ece6017dc58c24ce593802293b7fc12b8
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: f15654f621bafb2617bdb456bbda0233db656be5
+ms.lasthandoff: 04/22/2017
 
 ---
 
@@ -68,7 +68,7 @@ Diese Einschränkungen ergeben sich aus den DNS-Standards und sind keine Einschr
 
 Ein Satz von NS-Einträgen wird automatisch an der Spitze jeder Zone erstellt (name = „@“) und automatisch gelöscht, wenn die Zone gelöscht wird (er kann nicht separat gelöscht werden).  Sie können die Gültigkeitsdauer dieses Eintragssatzes ändern. Allerdings können Sie keine Einträge ändern, die vorkonfiguriert sind, um auf die Azure DNS-Namenserver zu verweisen, die der Zone zugewiesen sind.
 
-Sie können andere NS-Einträge innerhalb der Zone erstellen und löschen (nicht an der Zonenspitze).  Dadurch können Sie untergeordnete Zonen konfigurieren (siehe [Delegieren von Unterdomänen in Azure DNS](dns-domain-delegation.md#delegating-sub-domains-in-azure-dns).)
+Sie können andere NS-Einträge innerhalb der Zone erstellen und löschen (nicht an der Zonenspitze).  Dadurch können Sie untergeordnete Zonen konfigurieren (siehe [Delegieren von Unterdomänen in Azure DNS](dns-domain-delegation.md).)
 
 ### <a name="soa-records"></a>SOA-Einträge
 
@@ -78,11 +78,7 @@ Sie können alle Eigenschaften des SOA-Eintrags ändern, bis auf die Eigenschaft
 
 ### <a name="spf-records"></a>SPF-Einträge
 
-Sender Policy Framework (SPF)-Einträge werden verwendet, um anzugeben, welche E-Mail-Server E-Mails im Namen des angegeben Domänennamens senden dürfen.  Es ist wichtig, SPF-Einträge korrekt zu konfigurieren, um zu verhindern, dass Empfänger Ihre E-Mail als „Junk“ markieren.
-
-Die DNS RFCs haben ursprünglich den neuen Eintragstyp „SPF“ eingeführt, um dieses Szenario zu unterstützen. Sie haben auch die Verwendung des Eintragstyps „TXT“ zum Angeben von SPF-Einträgen zugelassen, um ältere Namenserver zu unterstützen.  Diese Mehrdeutigkeit verursachte Verwirrung, die durch [RFC 7208](http://tools.ietf.org/html/rfc7208#section-3.1) behoben wurde.  Die Aussage lautet, dass SPF-Einträge nur mithilfe des Eintragstyps „TXT“ erstellt werden und der SPF-Eintragstyp als veraltet eingestuft wird.
-
-**SPF-Einträge werden von Azure DNS unterstützt, und sollten mit dem Eintragstyp „TXT“ erstellt werden.** Der veraltete Eintragstyp „SPF“ wird nicht unterstützt. Wenn Sie [eine DNS-Zonendatei importieren](dns-import-export.md), werden alle SPF-Einträge, die den Eintragstyp „SPF“ verwenden, zum Eintragstyp „TXT“ konvertiert.
+[!INCLUDE [dns-spf-include](../../includes/dns-spf-include.md)]
 
 ### <a name="srv-records"></a>SRV-Einträge
 
@@ -99,7 +95,7 @@ Gemäß den DNS-Standards kann ein einzelner TXT-Eintrag mehrere Zeichenfolgen e
 
 Beim Aufrufen der Azure DNS-REST-API müssen Sie jede TXT-Zeichenfolge separat angeben.  Beim Nutzen des Azure-Portals, von PowerShell oder der CLI sollten Sie nur eine Zeichenfolge pro Eintrag angeben, die bei Bedarf automatisch in Segmente mit einer Länge von 254 Zeichen unterteilt wird.
 
-Die Zeichenfolgen eines DNS-Eintrags dürfen nicht mit den TXT-Einträgen in einem TXT-Ressourceneintragssatz verwechselt werden.  Ein TXT-Ressourceneintragssatz kann mehrere Einträge enthalten, die wiederum *jeweils* mehrere Zeichenfolgen enthalten können.  Azure DNS unterstützt für Zeichenfolgen eine Gesamtlänge von bis zu 1024 Zeichen pro TXT-Ressourceneintragssatz (Kombination aller Einträge). 
+Die Zeichenfolgen eines DNS-Eintrags dürfen nicht mit den TXT-Einträgen in einem TXT-Ressourceneintragssatz verwechselt werden.  Ein TXT-Ressourceneintragssatz kann mehrere Einträge enthalten, die wiederum *jeweils* mehrere Zeichenfolgen enthalten können.  Azure DNS unterstützt für Zeichenfolgen eine Gesamtlänge von bis zu 1024 Zeichen pro TXT-Ressourceneintragssatz (Kombination aller Einträge).
 
 ## <a name="tags-and-metadata"></a>Tags und Metadaten
 
@@ -141,5 +137,4 @@ Bei der Verwendung von Azure DNS gelten folgende Standardgrenzwerte:
 
 * Lernen Sie, wie Sie [eine DNS-Zone erstellen](dns-getstarted-create-dnszone-portal.md) und [DNS-Einträge erstellen](dns-getstarted-create-recordset-portal.md), um mit der Verwendung von Azure DNS zu beginnen.
 * Um eine vorhandene DNS-Zone zu migrieren, sollten Sie sich zuerst darüber informieren, wie Sie [eine DNS-Zonendatei importieren und exportieren](dns-import-export.md).
-
 

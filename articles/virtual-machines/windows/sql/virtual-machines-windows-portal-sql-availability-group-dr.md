@@ -17,9 +17,9 @@ ms.workload: iaas-sql-server
 ms.date: 01/09/2017
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 1ceb55ba137a61d6bc2121a6b23df2c87e5b7ce2
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 088f9fc332f04edfd154450726c4e175ccaf3db3
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -28,7 +28,7 @@ ms.lasthandoff: 03/31/2017
 
 In diesem Artikel erfahren Sie, wie Sie ein SQL Server-AlwaysOn-Verfügbarkeitsgruppenreplikat in Azure Virtual Machines an einem Azure-Remotestandort konfigurieren. Verwenden Sie diese Konfiguration, um die Notfallwiederherstellung zu unterstützen.
 
-Dieser Artikel gilt für Azure Virtual Machines im Resource Manager-Modus. 
+Dieser Artikel gilt für Azure Virtual Machines im Resource Manager-Modus.
 
 Die folgende Abbildung zeigt eine typische Bereitstellung einer Verfügbarkeitsgruppe für virtuelle Azure-Computer:
 
@@ -43,13 +43,13 @@ Bei dieser Architektur kann es zu Ausfallzeiten kommen, wenn nicht mehr auf die 
 Die obige Abbildung enthält einen neuen virtuellen Computer namens SQL-3. SQL-3 befindet sich in einer anderen Azure-Region. SQL-3 wird dem Windows Server-Failovercluster hinzugefügt. SQL-3 kann ein Verfügbarkeitsgruppenreplikat hosten. Beachten Sie außerdem, dass die Azure-Region für SQL-3 über eine neue Azure Load Balancer-Instanz verfügt.
 
 >[!NOTE]
-> Eine Azure-Verfügbarkeitsgruppe wird benötigt, wenn sich mehrere virtuelle Computer in der gleichen Region befinden. Falls die Region nur einen einzelnen virtuellen Computer enthält, ist keine Verfügbarkeitsgruppe erforderlich. Virtuelle Computer können nur zum Zeitpunkt bei der Erstellung in einer Verfügbarkeitsgruppe platziert werden. Falls der virtuelle Computer bereits in einer Verfügbarkeitsgruppe enthalten ist, können Sie später einen virtuellen Computer für ein zusätzliches Replikat hinzufügen. 
+> Eine Azure-Verfügbarkeitsgruppe wird benötigt, wenn sich mehrere virtuelle Computer in der gleichen Region befinden. Falls die Region nur einen einzelnen virtuellen Computer enthält, ist keine Verfügbarkeitsgruppe erforderlich. Virtuelle Computer können nur zum Zeitpunkt bei der Erstellung in einer Verfügbarkeitsgruppe platziert werden. Falls der virtuelle Computer bereits in einer Verfügbarkeitsgruppe enthalten ist, können Sie später einen virtuellen Computer für ein zusätzliches Replikat hinzufügen.
 
 In dieser Architektur ist das Replikat in der Remoteregion in der Regel mit dem Verfügbarkeitsmodus für asynchrone Commits sowie mit dem manuellen Failovermodus konfiguriert.
 
 Wenn sich Verfügbarkeitsgruppenreplikate auf virtuellen Azure-Computern in verschiedenen Azure-Regionen befinden, wird für jede Region Folgendes benötigt:
 
-* Ein virtuelles Netzwerkgateway 
+* Ein virtuelles Netzwerkgateway
 * Eine Verbindung mit dem virtuellen Netzwerkgateway
 
 Das folgende Diagramm zeigt die Netzwerkkommunikation zwischen Rechenzentren:
@@ -72,21 +72,21 @@ Gehen Sie wie folgt vor, um ein Replikat in einem Remoterechenzentrum zu erstell
 
 1. [Erstellen Sie einen Domänencontroller in der neuen Region.](../../../active-directory/active-directory-new-forest-virtual-machine.md)
 
-   Dieser Domänencontroller ermöglicht die Authentifizierung für den Fall, dass der Domänencontroller am primären Standort nicht verfügbar ist. 
+   Dieser Domänencontroller ermöglicht die Authentifizierung für den Fall, dass der Domänencontroller am primären Standort nicht verfügbar ist.
 
 1. [Erstellen Sie einen virtuellen SQL Server-Computer in der neuen Region.](virtual-machines-windows-portal-sql-server-provision.md)
 
 1. [Erstellen Sie eine Azure Load Balancer-Instanz im Netzwerk für die neue Region.](virtual-machines-windows-portal-sql-availability-group-tutorial.md#configure-internal-load-balancer)
 
    Dieser Lastenausgleich muss folgende Anforderungen erfüllen:
-   
+
    - Er muss sich im gleichen Netzwerk und Subnetz befinden wie der neue virtuelle Computer.
    - Er muss über eine statische IP-Adresse für den Verfügbarkeitsgruppenlistener verfügen.
    - Er muss über einen Back-End-Pool verfügen, der nur die virtuellen Computer aus der Region enthält, in der sich auch der Lastenausgleich befindet.
    - Er muss einen spezifischen TCP-Porttest für die IP-Adresse verwenden.
    - Er muss über eine spezifische Lastenausgleichsregel für die SQL Server-Instanz in der gleichen Region verfügen.  
 
-1. [Fügen Sie der neuen SQL Server-Instanz das Failoverclustering-Feature hinzu.](virtual-machines-windows-portal-sql-availability-group-prereq.md#add-failover-cluster-features-to-both-sql-servers)
+1. [Fügen Sie der neuen SQL Server-Instanz das Failoverclustering-Feature hinzu.](virtual-machines-windows-portal-sql-availability-group-prereq.md#add-failover-clustering-features-to-both-sql-server-vms)
 
 1. [Fügen Sie die neue SQL Server-Instanz der Domäne hinzu.](virtual-machines-windows-portal-sql-availability-group-prereq.md#joinDomain)
 
@@ -94,20 +94,20 @@ Gehen Sie wie folgt vor, um ein Replikat in einem Remoterechenzentrum zu erstell
 
 1. [Fügen Sie die neue SQL Server-Instanz dem Windows Server-Failovercluster hinzu.](virtual-machines-windows-portal-sql-availability-group-tutorial.md#addNode)
 
-1. Erstellen Sie eine IP-Adressressource für den Cluster. 
+1. Erstellen Sie eine IP-Adressressource für den Cluster.
 
    Die IP-Adressressource kann im Failovercluster-Manager erstellt werden. Klicken Sie mit der rechten Maustaste auf die Verfügbarkeitsgruppenrolle, und klicken Sie anschließend auf **Ressource hinzufügen** > **Weitere Ressourcen** > **IP-Adresse**.
 
    ![Erstellen der IP-Adresse](./media/virtual-machines-windows-portal-sql-availability-group-dr/20-add-ip-resource.png)
 
    Konfigurieren Sie diese IP-Adresse wie folgt:
-   
+
    - Verwenden Sie das Netzwerk aus dem Remoterechenzentrum.
    - Weisen Sie die IP-Adresse aus der neuen Azure Load Balancer-Instanz zu. 
 
 1. Aktivieren Sie in der neuen SQL Server-Instanz mithilfe des SQL Server-Konfigurations-Managers die AlwaysOn-Verfügbarkeitsgruppen. (Informationen hierzu finden Sie [hier](http://msdn.microsoft.com/library/ff878259.aspx).)
 
-1. [Öffnen Sie Firewallports in der neuen SQL Server-Instanz.](virtual-machines-windows-portal-sql-availability-group-prereq.md#a-nameendpoint-firewall-configure-the-firewall-on-each-sql-server) 
+1. [Öffnen Sie Firewallports in der neuen SQL Server-Instanz.](virtual-machines-windows-portal-sql-availability-group-prereq.md#a-nameendpoint-firewall-configure-the-firewall-on-each-sql-server-vm)
 
    Welche Portnummern geöffnet werden müssen, hängt von Ihrer Umgebung ab. Öffnen Sie Ports für den Spiegelungsendpunkt und den Integritätstest der Azure Load Balancer-Instanz.
 
@@ -115,7 +115,7 @@ Gehen Sie wie folgt vor, um ein Replikat in einem Remoterechenzentrum zu erstell
 
    Konfigurieren Sie ein Replikat in einer Azure-Remoteregion für die asynchrone Replikation mit manuellem Failover.  
 
-1. Fügen Sie die IP-Adressressource als Abhängigkeit für den Cluster des Listener-Clientzugriffspunkts (Netzwerkname) hinzu. 
+1. Fügen Sie die IP-Adressressource als Abhängigkeit für den Cluster des Listener-Clientzugriffspunkts (Netzwerkname) hinzu.
 
    Der folgende Screenshot zeigt eine ordnungsgemäß konfigurierte IP-Adressclusterressource:
 
@@ -133,9 +133,9 @@ Führen Sie das PowerShell-Skript mit dem Clusternetzwerknamen, der IP-Adresse u
    $IPResourceName = "<IPResourceName>" # The cluster name for the new IP Address resource.
    $ILBIP = “<n.n.n.n>” # The IP Address of the Internal Load Balancer (ILB) in the new region. This is the static IP address for the load balancer you configured in the Azure portal.
    [int]$ProbePort = <nnnnn> # The probe port you set on the ILB.
-   
+
    Import-Module FailoverClusters
-   
+
    Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"=$ProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
    ```
 
@@ -147,26 +147,26 @@ Aktualisieren Sie vorzugsweise die Clientverbindungszeichenfolgen, um `MultiSubn
 
 Falls Sie die Verbindungszeichenfolgen nicht ändern können, können Sie den Namensauflösungs-Cache konfigurieren. Weitere Informationen finden Sie unter [Connection Timeouts in Multi-subnet Availability Group](http://blogs.msdn.microsoft.com/alwaysonpro/2014/06/03/connection-timeouts-in-multi-subnet-availability-group/) (Verbindungstimeouts in Verfügbarkeitsgruppen mit mehreren Subnetzen).
 
-## <a name="fail-over-to-remote-region"></a>Durchführen eines Failovers auf die Remoteregion 
+## <a name="fail-over-to-remote-region"></a>Durchführen eines Failovers auf die Remoteregion
 
 Sie können ein Failover des Replikats auf die Remoteregion durchführen, um die Verbindung zwischen Listener und Remoteregion zu testen. Bei einem asynchronen Replikat können beim Failover Daten verloren gehen. Konfigurieren Sie den Verfügbarkeitsmodus als synchron und den Failovermodus als automatisch, um Datenverluste beim Failover zu vermeiden. Führen Sie die folgenden Schritte aus:
 
 1. Stellen Sie im **Objekt-Explorer** eine Verbindung mit der Instanz von SQL Server her, die als Host für das primäre Replikat fungiert.
 1. Klicken Sie unter **AlwaysOn-Verfügbarkeitsgruppen** > **Verfügbarkeitsgruppen** mit der rechten Maustaste auf Ihre Verfügbarkeitsgruppe, und klicken Sie anschließend auf **Eigenschaften**.
-1. Konfigurieren Sie auf der Seite **Allgemein** unter **Verfügbarkeitsreplikate** das sekundäre Replikat am Notfallwiederherstellungsstandort mit dem Verfügbarkeitsmodus **Synchroner Commit** und dem Failovermodus **Automatisch**. 
+1. Konfigurieren Sie auf der Seite **Allgemein** unter **Verfügbarkeitsreplikate** das sekundäre Replikat am Notfallwiederherstellungsstandort mit dem Verfügbarkeitsmodus **Synchroner Commit** und dem Failovermodus **Automatisch**.
 1. Wenn Sie zur Erzielung von Hochverfügbarkeit über ein sekundäres Replikat verfügen, das sich am gleichen Standort befindet wie Ihr primäres Replikat, legen Sie dieses Replikat auf **Asynchroner Commit** und **Manuell** fest.
 1. Klicken Sie auf OK.
 1. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf die Verfügbarkeitsgruppe, und klicken Sie anschließend auf **Dashboard anzeigen**.
-1. Vergewissern Sie sich auf dem Dashboard, dass das Replikat am Notfallwiederherstellungsstandort synchronisiert wird. 
+1. Vergewissern Sie sich auf dem Dashboard, dass das Replikat am Notfallwiederherstellungsstandort synchronisiert wird.
 1. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf die Verfügbarkeitsgruppe, und klicken Sie anschließend auf **Failover...**. In SQL Server Management Studio wird ein SQL Server-Failover-Assistent geöffnet.  
 1. Klicken Sie auf **Weiter**, und wählen Sie die SQL Server-Instanz am Notfallwiederherstellungsstandort aus. Klicken Sie erneut auf **Weiter** .
-1. Stellen Sie eine Verbindung mit der SQL Server-Instanz am Notfallwiederherstellungsstandort her, und klicken Sie auf **Weiter**. 
+1. Stellen Sie eine Verbindung mit der SQL Server-Instanz am Notfallwiederherstellungsstandort her, und klicken Sie auf **Weiter**.
 1. Überprüfen Sie auf der Seite **Zusammenfassung** die Einstellungen, und klicken Sie anschließend auf **Fertig stellen**.
 
 Verschieben Sie das primäre Replikat nach dem Testen der Verbindung wieder in Ihr primäres Rechenzentrum, und legen Sie den Verfügbarkeitsmodus wieder auf die normalen Betriebseinstellungen fest. Die folgende Tabelle enthält die normalen Betriebseinstellungen für die in diesem Dokument beschriebene Architektur:
 
 | Standort | Serverinstanz | Rolle | Verfügbarkeitsmodus | Failovermodus
-| ----- | ----- | ----- | ----- | ----- 
+| ----- | ----- | ----- | ----- | -----
 | Primäres Rechenzentrum | SQL-1 | Primär | Synchron | Automatisch
 | Primäres Rechenzentrum | SQL-2 | Sekundär | Synchron | Automatisch
 | Sekundäres Rechenzentrum oder Remoterechenzentrum | SQL-3 | Sekundär | Asynchron | Manuell

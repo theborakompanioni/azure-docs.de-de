@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 8dc33077a955052a99b415b1299004cf8a4f217e
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: b49e06da0019a50cc8e50c4da47e42c03b44bcc6
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -26,7 +26,7 @@ ms.lasthandoff: 03/15/2017
 [Azure-Speicheranalyse](storage-analytics.md) enthält Metriken für alle Speicherdienste und Protokolle für Blobs, Warteschlangen und Tabellen. Sie können im [Azure-Portal](https://portal.azure.com) konfigurieren, welche Metriken und Protokolle für Ihr Konto aufgezeichnet werden, und Diagramme konfigurieren, die visuelle Darstellungen der Metrikdaten bereitstellen.
 
 > [!NOTE]
-> Für die Untersuchung von Überwachungsdaten im Azure-Portal fallen Kosten an. Weitere Informationen finden Sie unter [Speicheranalyse und Speicheranalysekosten](/rest/api/storageservices/fileservices/Storage-Analytics-and-Billing).
+> Für die Untersuchung von Überwachungsdaten im Azure-Portal fallen Kosten an. Weitere Informationen finden Sie unter [Speicheranalyse und Speicheranalysekosten](/rest/api/storageservices/Storage-Analytics-and-Billing).
 >
 > Der Azure-Dateispeicher unterstützt derzeit Metriken der Speicheranalyse, allerdings noch keine Protokollierung.
 >
@@ -153,7 +153,7 @@ Sie können Azure Storage anweisen, Diagnoseprotokolle für Lese-, Schreib- und 
 
 Die Diagnoseprotokolle werden in einem Blob-Container namens $logs in Ihren Speicherkonto gespeichert. Sie können die Protokolldaten über einen Speicher-Explorer wie den [Microsoft Speicher-Explorer](http://storageexplorer.com) oder programmgesteuert mit der Speicherclientbibliothek oder PowerShell anzeigen.
 
-Informationen zum Zugreifen auf den Container $logs finden Sie unter [Enabling Storage Logging and Accessing Log Data](/rest/api/storageservices/fileservices/enabling-storage-logging-and-accessing-log-data) (Aktivieren der Speicherprotokolierung und Zugreifen auf Protokolldaten).
+Informationen zum Zugreifen auf den Container $logs finden Sie unter [Enabling Storage Logging and Accessing Log Data](/rest/api/storageservices/enabling-storage-logging-and-accessing-log-data) (Aktivieren der Speicherprotokolierung und Zugreifen auf Protokolldaten).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
