@@ -1,9 +1,9 @@
 ---
-title: 'Azure Backup: Anwendungskonsistente Sicherung von Azure-Linux-VMs | Microsoft-Dokumentation'
-description: Anwendungskonsistente Sicherung von Azure-Linux-VMs
+title: 'Azure Backup: Anwendungskonsistente Sicherungen von Linux-VMs | Microsoft-Dokumentation'
+description: "Verwenden Sie Skripts, um für Ihre virtuellen Linux-Computer anwendungskonsistente Sicherungen in Azure zu gewährleisten. Die Skripts gelten nur für Linux-VMs in einer Ressourcen-Manager-Bereitstellung. Sie gelten nicht für Windows-VMs oder Dienst-Manager-Bereitstellungen. Dieser Artikel führt Sie durch die Schritte zum Konfigurieren von Skripts, einschließlich zur Problembehandlung."
 services: backup
 documentationcenter: dev-center-name
-author: anuragm
+author: anuragmehrotra
 manager: shivamg
 keywords: "App-konsistente Sicherung; anwendungskonsistente Sicherung für Azure-VM; Linux-VM-Sicherung; Azure-Sicherung"
 ms.assetid: bbb99cf2-d8c7-4b3d-8b29-eadc0fed3bef
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 3/20/2017
+ms.date: 4/12/2017
 ms.author: anuragm;markgal
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 044b5d3834518b44209485d1c1a68f2ac0f8a455
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 0f4ca1924531df890433ec092790e6bec7c41df0
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -26,7 +26,7 @@ ms.lasthandoff: 03/22/2017
 In diesem Artikel finden Sie Informationen zum Pre- und Post-Skript-Framework von Linux und wie es zum Erstellen anwendungskonsistenter Sicherungen von Azure-Linux-VMs genutzt werden kann.
 
 > [!Note]
-> Das Pre- und Post-Skript-Framework wird nur für mit Resource Manager bereitgestellte virtuelle Linux-Computer und nicht für klassisch bereitgestellte VMs oder virtuelle Windows-Computer unterstützt.
+> Das Pre- und Post-Skript-Framework wird nur für virtuelle Linux-Computer unterstützt, die mit dem Ressourcen-Manager bereitgestellt wurden. Skripts für Anwendungskonsistenz werden nicht für mit Service Manager bereitgestellte virtuelle Computer und nicht für Windows-VMs unterstützt.
 >
 
 ## <a name="how-the-framework-works"></a>Funktionsweise des Frameworks
@@ -48,12 +48,12 @@ Ein wichtiger Aspekt dieses Frameworks ist das Sicherstellen anwendungskonsisten
    - VMSnapshotPluginConfig.json: Berechtigung „600“, was bedeutet, dass nur der Benutzer „root“ die Berechtigungen „read“ und „write“ für diese Datei haben darf. Kein Benutzer darf die Berechtigung „execute“ haben.
    - Pre-Skript-Datei: Berechtigung „700“, was bedeutet, dass nur der Benutzer „root“ die Berechtigungen „read“, „write“ und „execute“ für diese Datei haben darf.
    - Post-Skript-Datei: Berechtigung „700“, was bedeutet, dass nur der Benutzer „root“ die Berechtigungen „read“, „write“ und „execute“ für diese Datei haben darf.
-   
+
    > [!Note]
    > Das Framework bietet Benutzer sehr viele Möglichkeiten. Deshalb ist es überaus wichtig, dass es vollständig geschützt ist und nur der Benutzer „root“ Zugriff auf wichtige JSON- und Skriptdateien hat.
    > Wenn die genannten Voraussetzungen nicht erfüllt sind, wird das Skript nicht ausgeführt, was zu einer dateisystem- bzw. absturzkonsistenten Sicherung führt.
    >
-   
+
 5. Konfigurieren Sie „VMSnapshotPluginConfig.json“ gemäß den folgenden Vorgaben.
     - **pluginName**: Lassen Sie dieses Feld unverändert, da Ihre Skripts andernfalls ggf. nicht wie erwartet funktionieren.
     - **PreScriptLocation**: Geben Sie den vollständigen Pfad des Pre-Skripts auf der zu sichernden VM an.
@@ -65,7 +65,7 @@ Ein wichtiger Aspekt dieses Frameworks ist das Sicherstellen anwendungskonsisten
     - **timeoutInSeconds**: Individuelle Timeouts für das Pre- und das Post-Skript.
     - **continueBackupOnFailure**: Legen Sie diesen Wert auf TRUE fest, wenn Azure Backup bei einem Pre-Skript- oder Post-Skript-Fehler zu einer dateisystem- bzw. absturzkonsistenten Sicherung wechseln soll. Bei Festlegung auf FALSE misslingt die Sicherung bei einem Skriptfehler (außer im Fall einer VM mit einzelnem Datenträger, wo unabhängig von dieser Einstellung auf eine absturzkonsistente Sicherung zurückgegriffen wird).
     - **fsFreezeEnabled**: Gibt an, ob unter Linux „fsfreeze“ aufgerufen werden soll, während die VM-Momentaufnahme erstellt wird, um Dateisystemkonsistenz sicherzustellen. Wir empfehlen die Festlegung auf TRUE, es sei denn, Ihre Anwendung ist von der Deaktivierung von „fsfreeze“ abhängig.
-    
+
 6. Das Skriptframework ist nun konfiguriert. Wenn die VM-Sicherung bereits konfiguriert ist, ruft Azure Backup die Skripts auf und löst eine anwendungskonsistente Sicherung aus. Wenn die VM-Sicherung nicht konfiguriert ist, konfigurieren Sie sie unter Befolgen von [Sichern virtueller Azure-Computer in Recovery Services-Tresoren](https://docs.microsoft.com/azure/backup/backup-azure-vms-first-look-arm).
 
 ## <a name="troubleshooting"></a>Problembehandlung

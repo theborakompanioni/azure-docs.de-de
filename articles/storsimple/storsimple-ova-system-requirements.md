@@ -12,12 +12,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/03/2017
+ms.date: 04/17/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: e5f9952d136a2a7914100d8a7f5ffa5ba05a9d75
-ms.openlocfilehash: 9eb839834ed4ee2291eb311f64a8dfa7f07a1ac3
-ms.lasthandoff: 02/07/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 4a2c86cee40dbd1dc2c37d58e69bdf35b0046c4d
+ms.lasthandoff: 04/25/2017
 
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>Systemanforderungen für StorSimple Virtual Array
@@ -81,7 +81,9 @@ Die folgenden Softwareanforderungen gelten für die SMB-Clients, die auf StorSim
 > [!IMPORTANT]
 > Kopieren oder speichern Sie mit dem verschlüsselndes Dateisystem von Windows (Encrypting File System, EFS) geschützte Dateien nicht auf den StorSimple Virtual Array-Dateiserver, da dies zu einer nicht unterstützten Konfiguration führt. 
 > 
-> 
+
+### <a name="supported-storage-format"></a>Unterstützte Speicherformate
+Es wird nur der Azure-Blockblobspeicher unterstützt. Seitenblobs werden nicht unterstützt. Weitere Informationen zu [Blockblobs und Seitenblobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
 
 ## <a name="networking-requirements"></a>Netzwerkanforderungen
 In der folgenden Tabelle sind die Ports aufgeführt, die in der Firewall für iSCSI-, SMB-, Cloud- oder Verwaltungsdatenverkehr geöffnet werden müssen. In dieser Tabelle bezieht sich *ein* oder *eingehend* auf die Richtung, aus der eingehende Clientanforderungen auf das Gerät zugreifen. Entsprechend bezieht sich *aus* oder *ausgehend* auf die Richtung, in der das StorSimple-Gerät Daten über die Bereitstellung hinaus an externe Ziele sendet: z.B. ausgehende Verbindungen mit dem Internet.

@@ -4,7 +4,7 @@ description: "Die grafische Erstellung ermöglicht Ihnen das Erstellen von Runbo
 services: automation
 documentationcenter: 
 author: mgoedtel
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: 4b6f840c-e941-4293-a728-b33407317943
 ms.service: automation
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/03/2016
+ms.date: 04/14/2017
 ms.author: magoedte;bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8d408f6ac49ea376508e025c53b09434c2ea164a
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 1e61e3717a9006f67c0b57c33573c2d0f5fbfa05
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -198,7 +199,7 @@ Bei einer Pipelineverknüpfung geben Sie eine Bedingung für ein einzelnes Objek
     $ActivityOutput['Get Azure VMs'].Name -match "Group1"
 
 Bei einer Sequenzverknüpfung wird die Bedingung nur einmal ausgewertet, da ein einzelnes Array mit sämtlichen Objekten zurückgegeben wird, die von der Quellaktivität ausgegeben werden.  Aus diesem Grund kann eine Sequenzverknüpfung nicht wie eine Pipelineverknüpfung zur Filterung verwendet werden, sondern ermittelt einfach nur, ob die nächste Aktivität ausgeführt wird oder nicht. Betrachten Sie beispielsweise den folgenden Satz von Aktivitäten aus unserem Runbook zum Starten des virtuellen Computers:<br> ![Bedingte Verknüpfung mit Sequenzen](media/automation-graphical-authoring-intro/runbook-conditional-links-sequence.png)<br>
- Hier sehen Sie drei unterschiedliche Sequenzverknüpfungen, die überprüfen, ob Werte für zwei Runbookeingabeparameter (Name des virtuellen Computers und Name der Ressourcengruppe) angegeben wurden, um zu bestimmen, welche Aktion durchgeführt werden soll: Starten eines einzelnen virtuellen Computers, Starten aller virtuellen Computer in der Ressourcengruppe oder Starten aller virtuellen Computer eines Abonnements.  Die Bedingungslogik für die Sequenzverknüpfung zwischen „Connect to Azure“ (Verbindung mit Azure herstellen) und „Get single VM“ (Einzelnen virtuellen Computer abrufen“) sieht wie folgt aus:
+Hier sehen Sie drei unterschiedliche Sequenzverknüpfungen, die überprüfen, ob Werte für zwei Runbookeingabeparameter (Name des virtuellen Computers und Name der Ressourcengruppe) angegeben wurden, um zu bestimmen, welche Aktion durchgeführt werden soll: Starten eines einzelnen virtuellen Computers, Starten aller virtuellen Computer in der Ressourcengruppe oder Starten aller virtuellen Computer eines Abonnements.  Die Bedingungslogik für die Sequenzverknüpfung zwischen „Connect to Azure“ (Verbindung mit Azure herstellen) und „Get single VM“ (Einzelnen virtuellen Computer abrufen“) sieht wie folgt aus:
 
     <# 
     Both VMName and ResourceGroupName runbook input parameters have values 
@@ -253,13 +254,13 @@ Sie können [Prüfpunkte](automation-powershell-workflow.md#checkpoints) in eine
 Prüfpunkte stehen nur in grafischen PowerShell-Workflow-Runbooks zur Verfügung, nicht in grafischen Runbooks.  Wenn das Runbook Azure-Cmdlets enthält, sollten Sie alle Aktivitäten mit Prüfpunkt mit „Add-AzureRMAccount“ verfolgen, falls das Runbook angehalten und an diesem Prüfpunkt auf einem anderen Worker neu gestartet wird. 
 
 ## <a name="authenticating-to-azure-resources"></a>Authentifizierung bei Azure-Ressourcen
-Zur Verwaltung von Azure-Ressourcen verwendete Runbooks in Azure Automation erfordern eine Authentifizierung bei Azure.  Standardmäßig wird das neue Feature [Ausführendes Konto](automation-sec-configure-azure-runas-account.md) (auch als Dienstprinzipal bezeichnet) verwendet, um in Ihrem Abonnement mit Automation-Runbooks auf Azure Resource Manager-Ressourcen zuzugreifen.  Diese Funktion können Sie einem grafischen Runbook hinzufügen, indem Sie der Canvas das Verbindungsobjekt **AzureRunAsConnection** (verwendet das PowerShell-Cmdlet [Get-AutomationConnection](https://technet.microsoft.com/library/dn919922%28v=sc.16%29.aspx)) und das Cmdlet [Add-AzureRmAccount](https://msdn.microsoft.com/library/mt619267.aspx) hinzufügen. Dies wird im folgenden Beispiel veranschaulicht:<br>![Authentifizierungsaktivitäten für „Ausführen als“](media/automation-graphical-authoring-intro/authenticate-run-as-account.png)<br>
+Zur Verwaltung von Azure-Ressourcen verwendete Runbooks in Azure Automation erfordern eine Authentifizierung bei Azure.  Standardmäßig wird das [ausführende Konto](automation-offering-get-started.md#automation-account) (auch als Dienstprinzipal bezeichnet) verwendet, um in Ihrem Abonnement mit Automation-Runbooks auf Azure Resource Manager-Ressourcen zuzugreifen.  Diese Funktion können Sie einem grafischen Runbook hinzufügen, indem Sie der Canvas das Verbindungsobjekt **AzureRunAsConnection** (verwendet das PowerShell-Cmdlet [Get-AutomationConnection](https://technet.microsoft.com/library/dn919922%28v=sc.16%29.aspx)) und das Cmdlet [Add-AzureRmAccount](https://msdn.microsoft.com/library/mt619267.aspx) hinzufügen. Dies wird im folgenden Beispiel veranschaulicht:<br>![Authentifizierungsaktivitäten für „Ausführen als“](media/automation-graphical-authoring-intro/authenticate-run-as-account.png)<br>
 Die Aktivität „Get Run As Connection“ (Verbindung für „Ausführen als“ abrufen; also „Get-AutomationConnection“) ist mit einer Datenquelle mit konstantem Wert konfiguriert: AzureRunAsConnection.<br>![Verbindungskonfiguration für „Ausführen als“](media/automation-graphical-authoring-intro/authenticate-runas-parameterset.png)<br>
 Die nächste Aktivität (Add-AzureRmAccount) fügt das authentifizierte ausführende Konto hinzu, damit es im Runbook verwendet werden kann.<br>
 ![Parametersatz „Add-AzureRmAccount“](media/automation-graphical-authoring-intro/authenticate-conn-to-azure-parameter-set.png)<br>
 Für die Parameter **APPLICATIONID**, **CERTIFICATETHUMBPRINT** und **TENANTID** muss der Name der Eigenschaft für den Feldpfad angegeben werden, da die Aktivität ein Objekt mit mehreren Eigenschaften ausgibt.  Andernfalls tritt beim Ausführen des Runbooks ein Fehler auf, da die Authentifizierung nicht erfolgreich ist.  Dies sind die Mindestanforderungen, die für die Authentifizierung Ihres Runbooks mit dem ausführenden Konto erfüllt sein müssen.
 
-Um die Abwärtskompatibilität für Abonnenten zu gewährleisten, die ein Automation-Konto mit einem [Azure AD-Benutzerkonto](automation-sec-configure-aduser-account.md) erstellt haben, um Azure Service Management- (ASM) oder Azure Resource Manager-Ressourcen zu verwalten, wird zur Authentifizierung das Cmdlet „Add-AzureAccount“ mit einem [Anmeldeinformationsobjekt](http://msdn.microsoft.com/library/dn940015.aspx) verwendet, das einen Active Directory-Benutzer mit Zugriff auf das Azure-Konto darstellt.
+Um die Abwärtskompatibilität für Abonnenten zu gewährleisten, die ein Automation-Konto mit einem [Azure AD-Benutzerkonto](automation-create-aduser-account.md) erstellt haben, um klassische Azure-Bereitstellungen oder Azure Resource Manager-Ressourcen zu verwalten, wird zur Authentifizierung das Cmdlet „Add-AzureAccount“ mit einem [Anmeldeinformationsobjekt](automation-credentials.md) verwendet, das einen Active Directory-Benutzer mit Zugriff auf das Azure-Konto darstellt.
 
 Sie können diese Funktionalität zu einem grafischen Runbook hinzufügen, indem Sie der Canvas ein Anmeldeinformationsobjekt gefolgt von einer Add-AzureAccount-Aktivität hinzufügen.  "Add-AzureAccount" verwendet die Anmeldeinformationen aus der Aktivität als Eingabe.  Dies wird im folgenden Beispiel veranschaulicht:
 
@@ -381,10 +382,5 @@ Im folgenden Beispiel wird die Ausgabe eine Aktivität mit dem Namen *Get Twitte
 * Informationen zu den ersten Schritten mit grafischen Runbooks finden Sie unter [Mein erstes grafisches Runbook](automation-first-runbook-graphical.md)
 * Weitere Informationen zu den verschiedenen Runbooktypen sowie zu ihren Vorteilen und Einschränkungen finden Sie unter [Azure Automation-Runbooktypen](automation-runbook-types.md)
 * Informationen zur Authentifizierung mithilfe des ausführenden Automation-Kontos finden Sie unter [Authentifizieren von Runbooks mit der Azure-Option „Ausführendes Konto“](automation-sec-configure-azure-runas-account.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

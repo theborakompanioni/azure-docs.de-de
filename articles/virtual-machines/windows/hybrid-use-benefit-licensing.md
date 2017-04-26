@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 3/10/2017
+ms.date: 4/10/2017
 ms.author: georgem
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 76459acd75cc09a315b0dad219990a830a6ad111
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
+ms.openlocfilehash: 04f5fab5a27a28a0881d59b93451f4c3615692b4
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -32,30 +32,31 @@ Für Kunden mit Software Assurance erlaubt die Hybridnutzung von Azure die Verwe
 ## <a name="ways-to-use-azure-hybrid-use-benefit"></a>Möglichkeiten zur Verwendung des Azure-Vorteils bei Hybridnutzung
 Es gibt verschiedene Möglichkeiten zum Bereitstellen von Windows-VMs mit dem Azure-Vorteil bei Hybridnutzung:
 
-1. Wenn Sie über ein Enterprise Agreement-Abonnement verfügen, können Sie [VMs über bestimmte Marketplace-Images bereitstellen](#deploy-a-vm-using-the-azure-marketplace), für die der Azure-Vorteil bei Hybridnutzung vorkonfiguriert ist.
-2. Ohne Enterprise Agreement [laden Sie eine benutzerdefinierte VM hoch](#upload-a-windows-vhd) und [führen die Bereitstellung per Resource Manager-Vorlage durch](#deploy-a-vm-via-resource-manager) oder nutzen [Azure PowerShell](#detailed-powershell-deployment-walkthrough).
+1. Sie können VMs anhand [spezifischer Marketplace-Images](#deploy-a-vm-using-the-azure-marketplace) bereitstellen, die mit dem Azure-Vorteil bei Hybridnutzung vorkonfiguriert sind: Windows Server 2016, Windows Server 2012 R2, Windows Server 2012 und Windows Server 2008 SP1.
+2. Sie können [eine benutzerdefinierte VM hochladen](#upload-a-windows-vhd) und [die Bereitstellung per Resource Manager-Vorlage durchführen](#deploy-a-vm-via-resource-manager) oder dazu [Azure PowerShell](#detailed-powershell-deployment-walkthrough) nutzen.
 
 ## <a name="deploy-a-vm-using-the-azure-marketplace"></a>Bereitstellen einer VM über den Azure Marketplace
-Für Kunden mit [Enterprise Agreement-Abonnements](https://www.microsoft.com/Licensing/licensing-programs/enterprise.aspx) stehen über den Marketplace Images zur Verfügung, für die der Azure-Vorteil bei Hybridnutzung vorkonfiguriert ist. Diese Images können beispielsweise direkt aus dem Azure-Portal, mithilfe von Resource Manager-Vorlagen oder über Azure PowerShell bereitgestellt werden. Die Images sind auf dem Marketplace wie folgt durch den Namenszusatz `[HUB]` gekennzeichnet:
-
-![Azure-Vorteil bei Hybridnutzung – Images auf dem Azure Marketplace](./media/hybrid-use-benefit-licensing/ahub-images-portal.png)
+Die folgenden Images sind mit dem Azure-Vorteil bei Hybridnutzung vorkonfiguriert: Windows Server 2016, Windows Server 2012 R2, Windows Server 2012 und Windows Server 2008 SP1. Diese Images können direkt aus dem Azure-Portal, mithilfe von Resource Manager-Vorlagen oder über Azure PowerShell bereitgestellt werden.
 
 Sie können diese Images direkt über das Azure-Portal bereitstellen. Zeigen Sie die Liste mit den Images zur Verwendung in Resource Manager-Vorlagen und für Azure PowerShell wie folgt an:
 
 Für Windows Server:
 ```powershell
-Get-AzureRMVMImageSku -Location "West US" -Publisher "MicrosoftWindowsServer" `
-    -Offer "WindowsServer-HUB"
+Get-AzureRmVMImagesku -Location westus -PublisherName MicrosoftWindowsServer -Offer WindowsServer
 ```
+2016-Datacenter-Version 2016.127.20170406 oder höher
+
+2012-R2-Datacenter-Version 4.127.20170406 oder höher
+
+2012-Datacenter-Version 3.127.20170406 oder höher
+
+2008-R2-SP1-Version 2.127.20170406 oder höher
 
 Für Windows-Clients:
 ```powershell
 Get-AzureRMVMImageSku -Location "West US" -Publisher "MicrosoftWindowsServer" `
     -Offer "Windows-HUB"
 ```
-
-Falls Sie nicht über ein Enterprise Agreement-Abonnement verfügen, können Sie weiterlesen und sich informieren, wie Sie eine benutzerdefinierte VM hochladen und die Bereitstellung mit „Azure-Vorteil bei Hybridnutzung“ durchführen.
-
 
 ## <a name="upload-a-windows-vhd"></a>Hochladen einer Windows-VHD
 Für die Bereitstellung eines virtuellen Windows-Computers in Azure müssen Sie zunächst eine virtuelle Festplatte (VHD) erstellen, die den Windows-Basisbuild enthält. Diese virtuelle Festplatte muss entsprechend über Sysprep vorbereitet werden, bevor Sie sie in Azure hochladen. Informieren Sie sich über die [VHD-Anforderungen und den Sysprep-Prozess](upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Weitere Informationen finden Sie auch unter [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles) (Sysprep-Unterstützung für Serverrollen). Sichern Sie den virtuellen Computer vor dem Ausführen von Sysprep. 
@@ -220,4 +221,6 @@ New-AzureRmVM -ResourceGroupName $resourceGroupName -Location $location -VM $vm 
 Erfahren Sie mehr zur [Lizenzierung für den Azure-Vorteil bei Hybridnutzung](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
 
 Erfahren Sie mehr zum [Verwenden von Resource Manager-Vorlagen](../../azure-resource-manager/resource-group-overview.md).
+
+Erfahren Sie mehr darüber, [wie Sie mithilfe des Azure-Vorteils bei Hybridnutzung und Azure Site Recovery das Migrieren von Anwendungen in Azure wirtschaftlicher gestalten können](https://azure.microsoft.com/blog/hybrid-use-benefit-migration-with-asr/).
 

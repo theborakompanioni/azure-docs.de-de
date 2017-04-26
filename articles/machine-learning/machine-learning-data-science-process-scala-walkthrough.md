@@ -417,7 +417,7 @@ Verwenden Sie für die Indizierung `StringIndexer()`- und für die One-Hot-Codie
 Zeit zum Ausführen der Zelle: 4 Sekunden.
 
 ### <a name="sample-and-split-the-data-set-into-training-and-test-fractions"></a>Stichprobenerfassung in Dataset und Teilen in Trainings- und Testteile
-Dieser Code erstellt eine zufällige Stichprobe der Daten (in diesem Beispiel&25;%). Obwohl es aufgrund der Größe des Datasets in diesem Beispiel nicht erforderlich ist, zeigt Ihnen der Artikel, wie Sie Stichproben erfassen können, damit Sie dieses Verfahren bei Bedarf zur Lösung eigener Probleme verwenden können. Bei großen Stichproben können Sie so beim Trainieren von Modellen deutlich Zeit sparen. Teilen Sie die Stichprobe als Nächstes zur Klassifizierung und Regressionsmodellierung in einen Trainingsteil (in diesem Beispiel&75;%) und einen Testteil (in diesem Beispiel&25;%) ein.
+Dieser Code erstellt eine zufällige Stichprobe der Daten (in diesem Beispiel 25%). Obwohl es aufgrund der Größe des Datasets in diesem Beispiel nicht erforderlich ist, zeigt Ihnen der Artikel, wie Sie Stichproben erfassen können, damit Sie dieses Verfahren bei Bedarf zur Lösung eigener Probleme verwenden können. Bei großen Stichproben können Sie so beim Trainieren von Modellen deutlich Zeit sparen. Teilen Sie die Stichprobe als Nächstes zur Klassifizierung und Regressionsmodellierung in einen Trainingsteil (in diesem Beispiel 75%) und einen Testteil (in diesem Beispiel 25%) ein.
 
 Fügen Sie eine Zufallszahl (zwischen 0 und 1) in jede Zeile (in einer „rand“-Spalte) ein, die zur Auswahl der Kreuzvalidierungsteilmengen während des Trainings verwendet werden kann.
 

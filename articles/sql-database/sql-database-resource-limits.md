@@ -8,7 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 884e519f-23bb-4b73-a718-00658629646a
 ms.service: sql-database
-ms.custom: overview
+ms.custom: resources
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,9 +16,9 @@ ms.workload: data-management
 ms.date: 03/06/2017
 ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 61eac09668b14a98a42b1907a54577d80eb933a6
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: a2177926e76b25ceb5ecb4fd9471f961d3fa989f
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 03/28/2017
 Azure SQL-Datenbank verwaltet die für eine Datenbank verfügbaren Ressourcen mithilfe zweier verschiedener Mechanismen: **Ressourcenkontrolle** und **Durchsetzung von Grenzen**. In diesem Thema werden diese beiden Hauptbereiche der Ressourcenverwaltung behandelt.
 
 ## <a name="resource-governance"></a>Ressourcenkontrolle
-Eines der Entwurfsziele der Tarife Basic, Standard und Premium ist es, dass sich die Azure SQL-Datenbank so verhält, als ob sie auf einem eigenen Computer isoliert von anderen Datenbanken ausgeführt wird. Die Ressourcenkontrolle emuliert dieses Verhalten. Wenn die aggregierte Ressourcenverwendung die maximal verfügbaren Ressourcen an CPU, Arbeitsspeicher, Protokoll-E/A und Daten-E/A erreicht, die der Datenbank zugeordnet sind, reiht die Ressourcenkontrolle die Ausführung von Abfragen in eine Warteschlange ein und ordnet den Abfragen in der Warteschlange Ressourcen zu, während sie nach und nach freigegeben werden.
+Eines der Entwurfsziele der Tarife Basic, Standard, Premium und Premium RS ist es, dass sich die Azure SQL-Datenbank so verhält, als ob sie auf einem eigenen Computer isoliert von anderen Datenbanken ausgeführt wird. Die Ressourcenkontrolle emuliert dieses Verhalten. Wenn die aggregierte Ressourcenverwendung die maximal verfügbaren Ressourcen an CPU, Arbeitsspeicher, Protokoll-E/A und Daten-E/A erreicht, die der Datenbank zugeordnet sind, reiht die Ressourcenkontrolle die Ausführung von Abfragen in eine Warteschlange ein und ordnet den Abfragen in der Warteschlange Ressourcen zu, während sie nach und nach freigegeben werden.
 
 Wie bei einem dedizierten Computer führt das Nutzen aller verfügbarer Ressourcen zu einer längeren Ausführung der derzeit ausgeführten Abfragen, was Befehlstimeouts auf dem Client zur Folge haben kann. Anwendungen mit aggressiver Wiederholungslogik und solche, die Abfragen für die Datenbank mit hoher Frequenz ausführen, können bei dem Versuch auf Fehlermeldungen stoßen, neue Abfragen auszuführen, wenn das Limit gleichzeitiger Anforderungen bereits erreicht wurde.
 
@@ -47,7 +47,7 @@ Beispielsweise werden die Anzahl der Verbindungen mit einer SQL-Datenbank und di
 Es gibt Tarife und Leistungsstufen sowohl für Einzeldatenbanken als auch für Pools für elastische Datenbanken.
 
 ### <a name="single-databases"></a>Einzeldatenbanken
-Für eine einzelne Datenbank sind deren Einschränkungen durch die Dienstebene und Leistungsstufe der Datenbank definiert. In der folgenden Tabelle sind die Merkmale von Basic-, Standard- und Premium-Datenbanken für unterschiedliche Leistungsstufen beschrieben.
+Für eine einzelne Datenbank sind deren Einschränkungen durch die Dienstebene und Leistungsstufe der Datenbank definiert. In der folgenden Tabelle sind die Merkmale von Basic-, Standard-, Premium und Premium RS-Datenbanken für unterschiedliche Leistungsstufen beschrieben.
 
 [!INCLUDE [SQL DB service tiers table](../../includes/sql-database-service-tiers-table.md)]
 
@@ -56,7 +56,7 @@ Für eine einzelne Datenbank sind deren Einschränkungen durch die Dienstebene u
 >
 
 ### <a name="elastic-pools"></a>Elastische Pools
-[Elastische Pools](sql-database-elastic-pool.md) nutzen Ressourcen in verschiedenen Datenbanken im Pool gemeinsam. In der folgenden Tabelle sind die Merkmale von elastischen Basic-, Standard- und Premium-Pools beschrieben.
+[Elastische Pools](sql-database-elastic-pool.md) nutzen Ressourcen in verschiedenen Datenbanken im Pool gemeinsam. In der folgenden Tabelle sind die Merkmale von elastischen Basic-, Standard-, Premium- und Premium RS-Pools beschrieben.
 
 [!INCLUDE [SQL DB service tiers table for elastic databases](../../includes/sql-database-service-tiers-table-elastic-pools.md)]
 
@@ -66,8 +66,8 @@ Eine erweiterte Definition der einzelnen Ressourcen, die in den vorangehenden Ta
 | Bereich | Begrenzung | Beschreibung |
 | --- | --- | --- |
 | Datenbanken mit automatisiertem Export pro Abonnement |10 |Automatisierter Export ermöglicht es Ihnen, einen benutzerdefinierten Zeitplan für die Sicherung Ihrer SQL-Datenbanken zu erstellen. Die Vorschau für dieses Feature endet am 1. März 2017.  |
-| Datenbanken pro Server |Bis zu 5.000 |Bis zu 5.000 Datenbanken pro Server sind auf V12-Servern zulässig. |
-| DTUs pro Server. |45000 |45.000 DTUs pro Server sind auf V12-Servern für die Bereitstellung von eigenständigen Datenbanken und Pools für elastische Datenbanken zugelassen. Die maximale Anzahl von eigenständigen Datenbanken und Pools pro Server wird nur durch die Anzahl der DTUs pro Server begrenzt.  
+| Datenbanken pro Server |Bis zu 5.000 |Bis zu 5.000 Datenbanken sind pro Server zulässig. |
+| DTUs pro Server. |45000 |45.000 DTUs pro Server sind für die Bereitstellung von eigenständigen Datenbanken und Pools für elastische Datenbanken zugelassen. Die maximale Anzahl von eigenständigen Datenbanken und Pools pro Server wird nur durch die Anzahl der DTUs pro Server begrenzt.  
 
 > [!IMPORTANT]
 > Der automatisierte Export von Azure SQL-Datenbanken ist jetzt als Vorschau verfügbar und wird am 1. März 2017 eingestellt. Seit dem 1. Dezember 2016 ist das Konfigurieren des automatisierten Exports für SQL-Datenbanken nicht mehr möglich. Alle vorhandenen Aufträge für automatisierten Export werden bis zum 1. März 2017 weiterhin ausgeführt. Seit dem 1. Dezember 2016 können Sie die [langfristige Sicherungsaufbewahrung](sql-database-long-term-retention.md) oder [Azure Automation](../automation/automation-intro.md) zum regelmäßigen Archivieren von SQL-Datenbanken mithilfe von PowerShell nach einem Zeitplan Ihrer Wahl verwenden. Als Beispielskript können Sie das [Beispielskript von GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-automation-automated-export) herunterladen.

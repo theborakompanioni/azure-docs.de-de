@@ -8,7 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 
 ms.service: sql-database
-ms.custom: servers
+ms.custom: DBs and servers
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,8 +16,9 @@ ms.workload: data-management
 ms.date: 02/01/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 79a9e72d29b5522dc3960b79bae7876f21acb4c5
-ms.openlocfilehash: 07181e5d35703cddf8a896badd45e7485c9e07a2
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 430af168e1bd19c15170996247bc7c7a62fe52d4
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -40,9 +41,9 @@ Ein logischer Azure Datenbankserver:
 - bietet eine Verbindungsendpunkt für den Datenbankzugriff (<serverName>.database.windows.net)
 - bietet Zugriff auf Metadaten bezüglich der darin enthaltenen Ressourcen über DMVs (dynamic management views), indem eine Verbindung mit einer Masterdatenbank hergestellt wird 
 - stellt den Bereich für Verwaltungsrichtlinien bereit, die für seine Datenbanken gelten: Anmeldungen, Firewall, Audit, Bedrohungserkennung usw. 
-- ist durch ein Kontigent innerhalb des übergeordneten Abonnements eingeschränkt (sechs Server pro Abonnement – [ siehe Subscription limits (Grenzwerte für Abonnements)](../azure-subscription-service-limits.md))
-- stellt den Bereich für Datenbank- und DTU-Kontingente für die darin enthaltenen Ressourcen (z.B. 45000 DTU in V12) bereit
-- ist der Versionierungsbereich für Funktionen, die in enthaltenen Ressourcen aktiviert wurden (aktuellste Version ist V12)
+- ist durch ein Kontingent innerhalb des übergeordneten Abonnements eingeschränkt (sechs Server pro Abonnement – [ siehe Subscription limits (Grenzwerte für Abonnements)](../azure-subscription-service-limits.md))
+- stellt den Bereich für Datenbank- und DTU-Kontingente für die darin enthaltenen Ressourcen (z.B. 45.000 DTU9) bereit
+- ist der Versionsverwaltungsbereich für Funktionen, die in enthaltenen Ressourcen aktiviert wurden 
 - Serverebenenprinzipal-Anmeldungen können alle Datenbanken auf einem Server verwalten
 - kann Anmeldungen enthalten, die denen in SQL-Instanzen vor Ort ähnlich sind und die über Zugriff auf eine oder mehrere Datenbanken auf dem Server verfügen und denen beschränkte Administratorrechte zugewiesen werden können. Weitere Informationen finden Sie unter [Logins (Anmeldungen)](sql-database-manage-logins.md).
 
@@ -55,7 +56,7 @@ Ein logischer Azure Datenbankserver:
 
 ## <a name="what-collations-are-supported"></a>Welche Sortierungen werden unterstützt?
 
-Die standardmäßige Datenbanksortierung von Microsoft Azure SQL-Datenbank ist **SQL_LATIN1_GENERAL_CP1_CI_AS**, wobei **LATIN1_GENERAL** für Englisch (USA), **CP1** für Codepage 1252, **CI** für keine Unterscheidung von Groß-/Kleinschreibung und **AS** für die Unterscheidung nach Akzent steht. Es wird nicht empfohlen, die Sortierung für V12-Datenbanken nach deren Erstellung zu ändern. Weitere Informationen über Sortierungen finden Sie unter [COLLATE (Transact-SQL)](https://msdn.microsoft.com/library/ms184391.aspx).
+Die standardmäßige Datenbanksortierung von Microsoft Azure SQL-Datenbank ist **SQL_LATIN1_GENERAL_CP1_CI_AS**, wobei **LATIN1_GENERAL** für Englisch (USA), **CP1** für Codepage 1252, **CI** für keine Unterscheidung von Groß-/Kleinschreibung und **AS** für die Unterscheidung nach Akzent steht. Es wird nicht empfohlen, die Sortierung für Datenbanken nach deren Erstellung zu ändern. Weitere Informationen über Sortierungen finden Sie unter [COLLATE (Transact-SQL)](https://msdn.microsoft.com/library/ms184391.aspx).
 
 ## <a name="what-are-the-naming-requirements-for-database-objects"></a>Was sind die Benennungsanforderungen für Datenbankobjekte?
 
@@ -68,8 +69,8 @@ Informationen zu unterstützten Funktionen finden Sie unter [Features (Funktione
 ## <a name="how-do-i-manage-a-logical-server"></a>Wie verwalte ich einen logischen Server?
 
 Sie können die logischen Azure SQL-Datenbankserver mit verschiedenen Methoden verwalten:
-- [Azure-Portal](sql-database-manage-portal.md)
-- [PowerShell](sql-database-manage-powershell.md)
+- [Azure-Portal](sql-database-manage-overview.md)
+- [PowerShell](sql-database-manage-overview.md)
 - [REST](/rest/api/sql/)
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -81,10 +82,5 @@ Sie können die logischen Azure SQL-Datenbankserver mit verschiedenen Methoden v
 - Informationen zu bestimmten Ressourcenkontingenten und Einschränkungen basierend auf Ihrer **Dienstebene**. Eine Übersicht über die Dienstebenen finden Sie unter [SQL-Datenbanken-Dienstebenen](sql-database-service-tiers.md).
 - Eine Übersicht über Sicherheit finden Sie unter [Azure SQL Database Security Overview](sql-database-security-overview.md) (Übersicht über die Sicherheit von Azure SQL-Datenbank).
 - Informationen zur Verfügbarkeit von Treibern und Unterstützung für SQL-Datenbank finden Sie unter [Verbindungsbibliotheken für SQL-Datenbank und SQL Server](sql-database-libraries.md).
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

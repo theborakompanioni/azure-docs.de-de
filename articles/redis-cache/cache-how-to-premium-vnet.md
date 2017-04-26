@@ -12,11 +12,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2017
+ms.date: 04/12/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 50d8db29ccce1244387f1fe0e3e42e610575e483
-ms.openlocfilehash: 057affeccd955245ac07fc5e174447562e81b959
+ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
+ms.openlocfilehash: cf3c1a3c669e0da810c32939492cb262e76492c7
+ms.lasthandoff: 04/14/2017
 
 
 ---
@@ -24,21 +25,21 @@ ms.openlocfilehash: 057affeccd955245ac07fc5e174447562e81b959
 Für Azure Redis Cache stehen verschiedene Cacheangebote bereit, die Flexibilität bei der Auswahl von Cachegröße und -features bieten, einschließlich Features des Premium-Tarifs wie die Unterstützung für Clustering, Persistenz und virtuelle Netzwerke. Ein VNet ist ein privates Netzwerk in der Cloud. Wenn eine Azure Redis Cache-Instanz mit einem VNet konfiguriert wird, ist dieses nicht öffentlich adressierbar, und auf das VNet kann nur über virtuelle Computer und Anwendungen innerhalb des VNet zugegriffen werden. In diesem Artikel wird erläutert, wie die Unterstützung eines virtuellen Netzwerks für eine Azure Redis Cache-Instanz vom Typ „Premium“ konfiguriert wird.
 
 > [!NOTE]
-> Azure Redis Cache unterstützt sowohl klassische als auch ARM-VNets.
+> Azure Redis Cache unterstützt sowohl klassische als auch Ressourcen-Manager-VNets.
 > 
 > 
 
 Weitere Informationen zu anderen Premium-Cache-Features finden Sie unter [Einführung in den Premium-Tarif von Azure Redis Cache](cache-premium-tier-intro.md).
 
 ## <a name="why-vnet"></a>Gründe für ein VNet
-[Azure Virtual Network (VNet)](https://azure.microsoft.com/services/virtual-network/) bietet eine verbesserte Sicherheit und Isolation für den Azure Redis Cache sowie Subnetze, Zugriffssteuerungsrichtlinien und andere Features, mit denen der Zugriff auf Azure Redis Cache weiter eingeschränkt werden kann.
+Die Bereitstellung über [Azure Virtual Network (VNet)](https://azure.microsoft.com/services/virtual-network/) bietet ein höheres Maß an Sicherheit und Isolation sowohl für Ihren Azure Redis Cache als auch für Ihre Subnetze. Sie profitieren ebenso von Richtlinien für die Zugriffssteuerung sowie von weiteren Features zur Begrenzung des Zugriffs.
 
 ## <a name="virtual-network-support"></a>Unterstützung für virtuelle Netzwerke
 Die Unterstützung für ein virtuelles Netzwerk (VNet) wird während der Erstellung des Caches auf dem Blatt **Neuer Redis Cache** konfiguriert. 
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
-Nachdem Sie einen Premium-Tarif ausgewählt haben, können Sie die Azure Redis Cache-VNet-Integration konfigurieren, indem Sie ein virtuelles Netzwerk auswählen, das sich in demselben Abonnement und im gleichen Speicherort wie Ihr Cache befindet. Um ein neues virtuelles Netzwerk verwenden zu können, müssen Sie es zuerst erstellen. Befolgen Sie dazu die Anleitungen unter [Erstellen eines virtuellen Netzwerks über das Azure-Portal](../virtual-network/virtual-networks-create-vnet-arm-pportal.md) und [Erstellen eines virtuellen Netzwerks (klassisch) über das Azure-Portal](../virtual-network/virtual-networks-create-vnet-classic-portal.md). Kehren Sie anschließend zum Blatt **Neuer Redis Cache** zurück, um Ihrem Premium-Cache zu erstellen und zu konfigurieren.
+Nachdem Sie einen Premium-Tarif ausgewählt haben, können Sie die Redis-VNet-Integration konfigurieren, indem Sie ein virtuelles Netzwerk auswählen, das sich im selben Abonnement und am gleichen Speicherort wie Ihr Cache befindet. Um ein neues virtuelles Netzwerk verwenden zu können, müssen Sie es zuerst erstellen. Befolgen Sie dazu die Anleitungen unter [Erstellen eines virtuellen Netzwerks über das Azure-Portal](../virtual-network/virtual-networks-create-vnet-arm-pportal.md) und [Erstellen eines virtuellen Netzwerks (klassisch) über das Azure-Portal](../virtual-network/virtual-networks-create-vnet-classic-portal.md). Kehren Sie anschließend zum Blatt **Neuer Redis Cache** zurück, um Ihrem Premium-Cache zu erstellen und zu konfigurieren.
 
 Klicken Sie zum Konfigurieren des virtuellen Netzwerks für Ihren neuen Cache auf dem Blatt **Neuer Redis Cache** auf **Virtuelles Netzwerk**, und wählen Sie das gewünschte virtuelle Netzwerk aus der Dropdownliste aus.
 
@@ -47,14 +48,16 @@ Klicken Sie zum Konfigurieren des virtuellen Netzwerks für Ihren neuen Cache au
 Wählen Sie in der Dropdownliste **Subnetz** das gewünschte Subnetz aus, und geben Sie die gewünschte **statische IP-Adresse** ein. Wenn Sie ein klassisches virtuelles Netzwerk verwenden, ist das Feld **Statische IP-Adresse** optional. Wenn keine Angabe erfolgt, wird eine Adresse aus dem ausgewählten Subnetz ausgewählt.
 
 > [!IMPORTANT]
-> Beim Bereitstellen eines Azure Redis Cache in einem ARM-VNet muss sich der Cache in einem dedizierten Subnetz befinden, das keine anderen Ressourcen außer Azure Redis Cache-Instanzen enthält. Wird versucht, einen Azure Redis Cache in einem virtuellen ARM-Subnetz bereitzustellen, das andere Ressourcen enthält, tritt bei der Bereitstellung ein Fehler auf.
+> Beim Bereitstellen eines Azure Redis Cache in einem Ressourcen-Manager-VNet muss sich der Cache in einem dedizierten Subnetz befinden, das keine anderen Ressourcen außer Azure Redis Cache-Instanzen enthält. Wird versucht, einen Azure Redis Cache in einem virtuellen Ressourcen-Manager-VNet in einem Subnetz bereitzustellen, das andere Ressourcen enthält, tritt bei der Bereitstellung ein Fehler auf.
 > 
 > 
 
 ![Virtuelles Netzwerk][redis-cache-vnet-ip]
 
 > [!IMPORTANT]
-> Die ersten vier Adressen in einem Subnetz sind reserviert und können nicht verwendet werden. Weitere Informationen finden Sie unter [Unterliegen die in den Subnetzen verwendeten IP-Adressen bestimmten Beschränkungen?](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)
+> Einige IP-Adressen innerhalb jedes Subnetzes sind in Azure reserviert und können deshalb nicht genutzt werden. Die erste und letzte IP-Adresse der Subnetze sind aus Gründen der Protokollkonformität reserviert. Darüber hinaus sind drei weitere für Azure-Dienste verwendete IP-Adressen reserviert. Weitere Informationen finden Sie unter [Unterliegen die in den Subnetzen verwendeten IP-Adressen bestimmten Beschränkungen?](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)
+> 
+> Zusätzlich zu den IP-Adressen, die von der Azure-VNet-Infrastruktur verwendet werden, nutzt jede Redis-Instanz im Subnetz zwei IP-Adressen pro Shard und eine zusätzliche IP-Adresse für den Lastenausgleich. Ein nicht gruppierter Cache hat definitionsgemäß einen Shard.
 > 
 > 
 
@@ -83,6 +86,7 @@ Die folgende Liste enthält Antworten auf häufig gestellte Fragen zur Skalierun
 * [Welche Probleme treten häufig bei einer fehlerhaften Konfiguration von Azure Redis Cache und VNets auf?](#what-are-some-common-misconfiguration-issues-with-azure-redis-cache-and-vnets)
 * [Kann ich VNets mit einem Standard-Cache oder Basic-Cache verwenden?](#can-i-use-vnets-with-a-standard-or-basic-cache)
 * [Warum misslingt das Erstellen eines Redis-Caches in einigen Subnetzen, aber in anderen nicht?](#why-does-creating-a-redis-cache-fail-in-some-subnets-but-not-others)
+* [Welche Anforderungen gelten für den Subnetzadressraum?](#what-are-the-subnet-address-space-requirements)
 * [Funktionieren alle Cachefeatures beim Hosten eines Cache in einem VNET?](#do-all-cache-features-work-when-hosting-a-cache-in-a-vnet)
 
 ## <a name="what-are-some-common-misconfiguration-issues-with-azure-redis-cache-and-vnets"></a>Welche Probleme treten häufig bei einer fehlerhaften Konfiguration von Azure Redis Cache und VNets auf?
@@ -112,32 +116,37 @@ Es gibt Netzwerkverbindungsanforderungen für Azure Redis Cache, die ursprüngli
 VNets können nur mit Premium-Caches verwendet werden.
 
 ### <a name="why-does-creating-a-redis-cache-fail-in-some-subnets-but-not-others"></a>Warum misslingt das Erstellen eines Redis-Caches in einigen Subnetzen, aber in anderen nicht?
-Wenn Sie einen Azure Redis Cache in einem ARM-VNet bereitstellen, muss sich der Cache in einem dedizierten Subnetz befinden, das keine anderen Ressourcentypen enthält. Wird versucht, einen Azure Redis Cache in einem virtuellen ARM-Subnetz bereitzustellen, das andere Ressourcen enthält, tritt bei der Bereitstellung ein Fehler auf. Bevor Sie einen neuen Redis-Cache erstellen können, müssen Sie die im Subnetz vorhandenen Ressourcen löschen.
+Wenn Sie einen Azure Redis Cache in einem Ressourcen-Manager-VNet bereitstellen, muss sich der Cache in einem dedizierten Subnetz befinden, das keine anderen Ressourcentypen enthält. Wird versucht, einen Azure Redis Cache in einem virtuellen Ressourcen-Manager-VNet in einem Subnetz bereitzustellen, das andere Ressourcen enthält, tritt bei der Bereitstellung ein Fehler auf. Bevor Sie einen neuen Redis-Cache erstellen können, müssen Sie die im Subnetz vorhandenen Ressourcen löschen.
 
 Sie können mehrere Typen von Ressourcen in einem klassischen VNet bereitstellen, solange Sie über genügend IP-Adressen verfügen.
+
+### <a name="what-are-the-subnet-address-space-requirements"></a>Welche Anforderungen gelten für den Subnetzadressraum?
+Einige IP-Adressen innerhalb jedes Subnetzes sind in Azure reserviert und können deshalb nicht genutzt werden. Die erste und letzte IP-Adresse der Subnetze sind aus Gründen der Protokollkonformität reserviert. Darüber hinaus sind drei weitere für Azure-Dienste verwendete IP-Adressen reserviert. Weitere Informationen finden Sie unter [Unterliegen die in den Subnetzen verwendeten IP-Adressen bestimmten Beschränkungen?](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)
+
+Zusätzlich zu den IP-Adressen, die von der Azure-VNet-Infrastruktur verwendet werden, nutzt jede Redis-Instanz im Subnetz zwei IP-Adressen pro Shard und eine zusätzliche IP-Adresse für den Lastenausgleich. Ein nicht gruppierter Cache hat definitionsgemäß einen Shard.
 
 ### <a name="do-all-cache-features-work-when-hosting-a-cache-in-a-vnet"></a>Funktionieren alle Cachefeatures beim Hosten eines Cache in einem VNET?
 Wenn der Cache zu einem virtuellen Netzwerk gehört, haben nur Clients in diesem virtuellen Netzwerk Zugriff auf den Cache. Daher stehen zurzeit in diesem Fall folgende Cache-Verwaltungsfunktionen nicht zur Verfügung.
 
-* Redis-Konsole: Da die Redis-Konsole den Client „redis-cli.exe“ verwendet, der auf virtuellen Computern gehostet wird, die nicht Teil des VNET sind, kann sie keine Verbindung mit dem Cache herstellen.
+* Redis-Konsole: Da die Redis-Konsole in Ihrem lokalen Browser ausgeführt wird, der sich außerhalb des VNet befindet, kann sie sich nicht mit Ihrem Cache verbinden.
 
 ## <a name="use-expressroute-with-azure-redis-cache"></a>Verwenden von ExpressRoute mit Azure Redis Cache
 Kunden können eine [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) -Verbindung mit ihrer virtuellen Netzwerkinfrastruktur verbinden und so ihr lokales Netzwerks auf Azure ausdehnen. 
 
 In der Standardeinstellung kündigt eine neu erstellte ExpressRoute-Verbindung eine Standardroute an, die ausgehende Internetverbindungen zulässt. Bei dieser Konfiguration können Clientanwendungen Verbindungen mit anderen Azure-Endpunkten herstellen, einschließlich Azure Redis Cache.
 
-Eine gängige Kundenkonfiguration sieht hingegen das Definieren einer eigenen Standardroute (0.0.0.0/0) vor, die ausgehenden Internetdatenverkehr stattdessen zwingt, die lokale Infrastruktur zu durchlaufen. Bei diesem Datenverkehr funktioniert die Verbindung mit Azure Redis Cache nicht mehr, da ausgehender Datenverkehr entweder lokal blockiert oder mittels NAT in eine nicht mehr nachvollziehbare Gruppe von Adressen übersetzt wird, die nicht mehr mit verschiedenen Azure-Endpunkten funktionieren.
+Eine gängige Kundenkonfiguration sieht hingegen das Definieren einer eigenen Standardroute (0.0.0.0/0) vor, die ausgehenden Internetdatenverkehr stattdessen zwingt, die lokale Infrastruktur zu durchlaufen. Dieser Datenverkehrsfluss unterbricht die Verbindung mit Azure Redis Cache, wenn der ausgehende Datenverkehr anschließend lokal so blockiert wird, dass die Azure Redis Cache-Instanz nicht mit ihren Abhängigkeiten kommunizieren kann.
 
 Die Lösung besteht darin, mindestens eine benutzerdefinierte Route (User-Defined Routes, UDRs) in dem Subnetz zu definieren, das den Azure Redis Cache enthält. Eine benutzerdefinierte Route definiert subnetzspezifische Routen, die anstelle der Standardroute berücksichtigt werden.
 
 Nach Möglichkeit sollte die folgende Konfiguration verwendet werden:
 
 * Die ExpressRoute-Konfiguration kündigt 0.0.0.0/0 an und tunnelt standardmäßig allen ausgehenden Datenverkehr zwangsweise lokal.
-* Die auf das Subnetz mit dem Azure Redis Cache angewendete benutzerdefinierte Route (UDR) definiert 0.0.0.0/0 mit dem nächsten Hoptyp „Internet“ (ein Beispiel dazu finden Sie weiter unten in diesem Artikel).
+* Die für das Subnetz mit dem Azure Redis Cache geltende benutzerdefinierte Route definiert 0.0.0.0/0 mit einer funktionierenden Route für TCP/IP-Datenverkehr zum öffentlichen Internet, beispielsweise durch Festlegen des nächsten Hoptyps auf „Internet“.
 
 Gemeinsam führen diese Schritte dazu, dass die benutzerdefinierte Route auf Subnetzebene Vorrang vor erzwungenen ExpressRoute-Tunneln hat. Dadurch wird ausgehender Internetzugriff aus dem Azure Redis Cache sichergestellt.
 
-Wenngleich das Herstellen einer Verbindung mit einem Azure Redis Cache aus einer lokalen Anwendung über ExpressRoute aus Leistungsgründen kein typisches Nutzungsszenario ist (die beste Leistung erzielen Azure Redis Cache-Clients, wenn sie sich in derselben Region wie der Azure Redis Cache befinden), kann bei diesem Szenario der ausgehende Netzwerkpfad weder durch die internen Unternehmensproxys geleitet werden, noch kann er gezwungen werden, durch einen Tunnel zur lokalen Umgebung geleitet zu werden. Andernfalls wird die tatsächliche NAT-Adresse des ausgehenden Netzwerkdatenverkehrs des Azure Redis Caches geändert. Das Ändern der NAT-Adresse des ausgehenden Netzwerkdatenverkehrs einer Azure Redis Cache-Instanz verursacht bei vielen der oben genannten Endpunkte Verbindungsfehler. Dies führt dazu, dass Versuche der Erstellung von Azure Redis Caches misslingen.
+Das Herstellen einer Verbindung mit einem Azure Redis Cache aus einer lokalen Anwendung über ExpressRoute ist aus Leistungsgründen kein typisches Nutzungsszenario (die beste Leistung erzielen Azure Redis Cache-Clients, wenn sie sich in derselben Region wie der Azure Redis Cache befinden).
 
 >[!IMPORTANT] 
 >Die in einer UDR definierten Routen **müssen** ausreichend spezifisch sein, damit sie Vorrang vor allen von der ExpressRoute-Konfiguration angekündigten Routen erhalten. Im folgenden Beispiel wird der allgemeine Adressbereich 0.0.0.0/0 verwendet, der durch Routenankündigungen mit spezifischeren Adressbereichen versehentlich überschrieben werden kann.
@@ -148,7 +157,7 @@ Wenngleich das Herstellen einer Verbindung mit einem Azure Redis Cache aus einer
 
 Hintergrundinformationen zu benutzerdefinierten Routen finden Sie in dieser [Übersicht](../virtual-network/virtual-networks-udr-overview.md).
 
-Weitere Informationen über ExpressRoute finden Sie unter [ExpressRoute – technische Übersicht](../expressroute/expressroute-introduction.md)
+Weitere Informationen über ExpressRoute finden Sie unter [ExpressRoute – technische Übersicht](../expressroute/expressroute-introduction.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen zur Verwendung weiterer Funktionen des Premium-Caches finden Sie in den folgenden Artikeln.
@@ -162,10 +171,5 @@ Informationen zur Verwendung weiterer Funktionen des Premium-Caches finden Sie i
 [redis-cache-vnet-ip]: ./media/cache-how-to-premium-vnet/redis-cache-vnet-ip.png
 
 [redis-cache-vnet-info]: ./media/cache-how-to-premium-vnet/redis-cache-vnet-info.png
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 
