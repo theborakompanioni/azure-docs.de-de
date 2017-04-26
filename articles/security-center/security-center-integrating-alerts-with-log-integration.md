@@ -15,22 +15,22 @@ ms.workload: na
 ms.date: 03/23/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: fcd14b6b0afe08db82f2b8050beaf03ece7fd212
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: d13e5b87c446e587091551b22d80fe568d5d8093
+ms.lasthandoff: 04/07/2017
 
 
 ---
 # <a name="integrating-azure-security-center-alerts-with-azure-log-integration"></a>Integrieren von Azure Security Center-Warnungen mithilfe der Azure-Protokollintegration
-Viele für den Sicherheitsbetrieb und die Bearbeitung von Incidents zuständige Teams nutzen eine SIEM-Lösung (Security Information and Event Management) als Ausgangspunkt für die Selektierung und Untersuchung von Sicherheitswarnungen. Mit der Azure-Protokollintegration können Kunden Security Center-Warnungen sowie von der Azure-Diagnose und Azure-Überwachungsprotokollen gesammelte Sicherheitsereignisse für den virtuellen Computer nahezu in Echtzeit mit ihrer Protokollanalyse oder SIEM-Lösung synchronisieren.
+Viele für den Sicherheitsbetrieb und die Bearbeitung von Incidents zuständige Teams nutzen eine SIEM-Lösung (Security Information and Event Management) als Ausgangspunkt für die Selektierung und Untersuchung von Sicherheitswarnungen. Mithilfe der Azure-Protokollintegration können Sie Azure Security Center-Warnungen in Ihre SIEM-Lösung integrieren.
 
-Die Azure-Protokollintegration funktioniert mit HP ArcSight, Splunk, IBM QRadar sowie weiteren Lösungen.
+Die Azure-Protokollintegration unterstützt derzeit HP ArcSight, Splunk und IBM QRadar.
 
 ## <a name="what-logs-can-i-integrate"></a>Welche Protokolle kann ich integrieren?
 Azure führt für jeden Dienst eine umfassende Protokollierung durch. Diese Protokolle sind wie folgt kategorisiert:
 
-* **Steuerungs-/Verwaltungsprotokolle**, die Einblicke in die CREATE-, UPDATE- und DELETE-Vorgänge in Azure Resource Manager ermöglichen.
-* **Datenebenenprotokolle**, die Einblicke in die Ereignisse ermöglichen, die bei Verwendung einer Azure-Ressource eintreten. Ein Beispiel hierfür sind Sicherheits- und Anwendungsprotokolle des Windows-Ereignisprotokolls auf einem virtuellen Computer.
+* **Steuerungs-/Verwaltungsprotokolle**, die Einblicke in die CREATE-, UPDATE- und DELETE-Vorgänge in Azure Resource Manager ermöglichen. Diese Ereignisse der Steuerungsebene werden in den Azure-Aktivitätsprotokollen aufgeführt.
+* **Datenebenenprotokolle**, die Einblicke in die Ereignisse ermöglichen, die bei Verwendung einer Azure-Ressource eintreten. Ein Beispiel ist das Windows-Ereignisprotokoll, in dem Sie Informationen zu Sicherheitsereignissen aus dem Sicherheitskanal der Ereignisanzeige finden. Ereignisse der Datenebene (die von einer virtuellen Maschine oder einem Azure-Dienst generiert werden) werden in Azure-Diagnoseprotokollen aufgeführt.
 
 Die Azure-Protokollintegration unterstützt derzeit die Integration von:
 
@@ -78,15 +78,12 @@ Der Dienst „Azure-Protokollintegration“ sammelt Telemetriedaten des Computer
 
    * **c:\Users\azlog\ AzureSecurityCenterJson**
    * **c:\Users\azlog\AzureSecurityCenterJsonLD**
-6. Verweisen Sie für den Standardconnector für die SIEM-Dateiweiterleitung auf den richtigen Ordner, um die Daten an die SIEM-Instanz zu übermitteln. Informationen zu Ihrer SIEM-Konfiguration finden Sie unter [SIEM-Konfigurationen](https://azsiempublicdrops.blob.core.windows.net/drops/ALL.htm).
-
-Wenn Sie Fragen zur Azure-Protokollintegration haben, senden Sie eine E-Mail an [AzSIEMteam@microsoft.com](mailto:AzSIEMteam@microsoft.com).
+6. Konfigurieren Sie den Connector für die SIEM-Dateiweiterleitung für den richtigen Ordner. Das Verfahren hängt vom verwendeten SIEM ab.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu Azure-Überwachungsprotokollen und Definitionen von Eigenschaften finden Sie unter:
+Weitere Informationen zu Azure-Aktivitätsprotokollen und Definitionen von Eigenschaften finden Sie unter:
 
 * [Überwachen von Vorgängen mit dem Ressourcen-Manager](../azure-resource-manager/resource-group-audit.md)
-* [Auflisten der Verwaltungsereignisse in einem Abonnement](https://msdn.microsoft.com/library/azure/dn931934.aspx) : Enthält Informationen zum Abrufen von Überwachungsprotokollereignissen.
 
 Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
