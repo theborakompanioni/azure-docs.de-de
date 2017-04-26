@@ -32,13 +32,13 @@ ms.lasthandoff: 01/06/2017
 
 * **Anmeldeinformationen auf App-Ebene**: ein Satz von Anmeldeinformationen für jede App. Er kann nur verwendet werden, um diese App bereitzustellen. Die Anmeldeinformationen für jede App werden automatisch bei der App-Erstellung generiert und befinden sich im Veröffentlichungsprofil der App. Sie können die Anmeldeinformationen nicht manuell konfigurieren, Sie können sie aber jederzeit für eine App zurücksetzen.
 
-## <a name="a-nameuserscopeaset-and-reset-user-level-credentials"></a><a name="userscope"></a>Festlegen und Zurücksetzen der Anmeldeinformationen auf Benutzerebene
+## <a name="userscope"></a>Festlegen und Zurücksetzen der Anmeldeinformationen auf Benutzerebene
 
 Sie können die Anmeldeinformationen auf Benutzerebene auf dem [Ressourcenblatt](../azure-resource-manager/resource-group-portal.md#manage-resources) einer App konfigurieren. Unabhängig von der App, in der Sie diese Anmeldeinformationen konfigurieren, gelten sie für alle Apps und für alle Abonnements in Ihrem Azure-Konto. 
 
 So konfigurieren Sie die Anmeldeinformationen auf Benutzerebene
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf „App Service“ > ** &lt;eine_App>** > **Anmeldeinformationen für Bereitstellung**.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf „App Service“ > **&lt;eine_App>** > **Anmeldeinformationen für Bereitstellung**.
 
     > [!NOTE]
     > Im Portal muss mindestens eine App vorhanden sein, bevor Sie auf das Blatt mit den Anmeldeinformationen für die Bereitstellung zugreifen können. Mit der [Azure-CLI](app-service-web-app-azure-resource-manager-xplat-cli.md) können Sie die Anmeldeinformationen auf Benutzerebene jedoch ohne eine vorhandene App konfigurieren.
@@ -60,12 +60,12 @@ Den *FTP*-Benutzernamen für die Bereitstellung finden Sie in den **Eigenschafte
 >
 >  
 
-## <a name="a-nameappscopeaget-and-reset-app-level-credentials"></a><a name="appscope"></a>Abrufen und Zurücksetzen der Anmeldeinformationen auf App-Ebene
+## <a name="appscope"></a>Abrufen und Zurücksetzen der Anmeldeinformationen auf App-Ebene
 Für jede App in App Service werden die Anmeldeinformationen auf App-Ebene im XML-Veröffentlichungsprofil gespeichert.
 
 So rufen Sie die Anmeldeinformationen auf App-Ebene ab
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf „App Service“ > ** &lt;eine_App>** > **Übersicht**.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf „App Service“ > **&lt;eine_App>** > **Übersicht**.
 
 2. Klicken Sie auf **Mehr** > **Veröffentlichungsprofil abrufen**, und der Download einer .PublishSettings-Datei beginnt.
 
@@ -80,7 +80,7 @@ Dies sind die Anmeldeinformationen auf App-Ebene.
 
 So setzen Sie die Anmeldeinformationen auf App-Ebene zurück
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf „App Service“ > ** &lt;eine_App>** > **Übersicht**.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf „App Service“ > **&lt;eine_App>** > **Übersicht**.
 
 2. Klicken Sie auf **Mehr** > **Veröffentlichungsprofil zurücksetzen**. Klicken Sie auf **Ja**, um das Zurücksetzen zu bestätigen.
 
