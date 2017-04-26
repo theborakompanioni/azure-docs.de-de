@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 09/06/2016
+ms.date: 04/11/2017
 ms.author: rclaus
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 4f6f8dd109a1f0d395782ba73fd425c7a6ccf0eb
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 1a808a83a8ed1162d57f7c5a49e34b2e3be50833
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -29,18 +29,13 @@ Dieser Artikel enthält Überlegungen zu virtuellen Oracle-Computern in Azure, d
 * Images von virtuellen Oracle JDK-Computern
 
 ## <a name="oracle-database-virtual-machine-images"></a>Images von virtuellen Oracle Database-Computern
-### <a name="clustering-rac-is-not-supported"></a>Clustering (RAC) wird nicht unterstützt
-Azure unterstützt derzeit keine Oracle Real Application Cluster (RAC) der Oracle-Datenbank. Es sind nur eigenständige Instanzen von Oracle-Datenbanken möglich. Der Grund dafür ist, dass Azure derzeit die gemeinsame Nutzung virtueller Datenträger mit Lese-/Schreibzugriff über mehrere Instanzen virtueller Computer nicht unterstützt. Multicast-UDP wird ebenfalls nicht unterstützt.
 
 ### <a name="no-static-internal-ip"></a>Keine statischen internen IP-Adressen
 Azure weist jedem virtuellen Computer eine interne IP-Adresse zu. Wenn der virtuelle Computer Teil eines virtuellen Netzwerks ist, ist die IP-Adresse des virtuellen Computers dynamisch und kann sich nach dem Neustart des virtuellen Computers unter Umständen ändern. Dies kann Probleme verursachen, da Oracle Database eine statische IP-Adresse erwartet. Um dieses Problem zu vermeiden, sollten Sie den virtuellen Computer einem Azure Virtual Network hinzufügen. Weitere Informationen finden Sie unter [Virtuelles Netzwerk](https://azure.microsoft.com/documentation/services/virtual-network/) und [Erstellen eines virtuellen Netzwerks in Azure](../../../virtual-network/virtual-networks-create-vnet-arm-pportal.md).
 
 ### <a name="attached-disk-configuration-options"></a>Optionen für die Konfiguration angefügter Datenträger
-Sie können Datendateien auf dem Betriebssystemdatenträger des virtuellen Computers oder auf angefügten Datenträgern ablegen. Angefügte Laufwerke bieten unter Umständen eine bessere Leistung und Flexibilität in Bezug auf die Größe als der Betriebssystemdatenträger. Der Betriebssystemdatenträger ist ggf. nur für Datenbanken mit einer Größe von unter 10 GB vorzuziehen.
 
-Angefügte Datenträger nutzen den Azure-BLOB-Speicherdienst. Auf jedem Datenträger können theoretisch bis zu 500 E/A-Vorgänge pro Sekunde (IOPS) ausgeführt werden.  Die Leistung angefügter Datenträger ist möglicherweise zunächst nicht optimal, aber die IOPS-Leistung kann sich nach einer Anlaufperiode von ca. 60 - 90 Minuten kontinuierlichen Betriebs beträchtlich verbessern. Wenn ein Datenträger anschließend außer Betrieb bleibt, nimmt die IOPS-Leistung möglicherweise ab, bis eine weitere Anlaufperiode mit kontinuierlichem Betrieb erfolgt. Kurz gesagt, je aktiver ein Datenträger ist, desto höher ist die Wahrscheinlichkeit, dass er die optimale IOPS-Leistung erreicht.
-
-Es ist zwar das einfachste Verfahren, einen einzelnen Datenträger an den virtuellen Computer anzufügen und auf diesem Datenträger Datenbankdateien abzulegen, aber die Leistung wird durch dieses Verfahren am stärksten beschränkt. Stattdessen können Sie häufig die effektive IOPS-Leistung verbessern, wenn Sie mehrere angefügte Datenträger verwenden, Datenbankdaten auf diesen verteilen und dann Oracle Automatic Storage Management (ASM) verwenden. Weitere Informationen finden Sie unter [Oracle Automatic Storage Management Overview](http://www.oracle.com/technetwork/database/index-100339.html) (in englischer Sprache). Zwar kann das Striping mehrerer Datenträger auf Betriebssystemebene verwendet werden, aber hiervon wird abgeraten, da eine Verbesserung der IOPS-Leistung durch dieses Verfahren nicht nachgewiesen ist.
+Angefügte Datenträger nutzen den Azure-BLOB-Speicherdienst. Auf jedem Standarddatenträger können theoretisch bis zu 500 E/A-Vorgänge pro Sekunde (IOPS) ausgeführt werden. Unser Premium-Datenträgerangebot wird in erster Linie für Datenbanknutzlasten mit hoher Leistung verwendet und kann bis zu 5.000 IOps pro Datenträger erreichen. Sie können zwar einen einzelnen Datenträger verwenden, wenn dies Ihren Anforderungen an die Leistung genügt. Sie können die effektive IOPS-Leistung jedoch verbessern, wenn Sie mehrere angefügte Datenträger verwenden, Datenbankdaten auf diesen verteilen und dann Oracle Automatic Storage Management (ASM) verwenden. Weitere Informationen finden Sie unter [Oracle Automatic Storage Management Overview](http://www.oracle.com/technetwork/database/index-100339.html) (in englischer Sprache). Zwar kann das Striping mehrerer Datenträger auf Betriebssystemebene verwendet werden, in beiden Fällen gehen Sie damit jedoch Kompromisse ein. 
 
 Sie können zwei verschiedene Verfahren zum Anfügen mehrerer Datenträger verwenden, je nachdem, ob Sie der Leistung von Lesevorgängen oder der Leistung von Schreibvorgängen für die Datenbank Vorrang einräumen:
 
@@ -48,14 +43,16 @@ Sie können zwei verschiedene Verfahren zum Anfügen mehrerer Datenträger verwe
     ![](media/mysql-2008r2/image2.png)
 
 > [!IMPORTANT]
-> Bewerten Sie den Kompromiss zwischen Schreibleistung und Leseleistung von Fall zu Fall. Die tatsächlichen Ergebnisse können variieren.
+> Bewerten Sie den Kompromiss zwischen Schreibleistung und Leseleistung von Fall zu Fall. Die tatsächlichen Ergebnisse können variieren. Testen Sie ausgiebig. ASM ist für Schreibvorgänge optimiert, Betriebssystem-Datenträgerstriping für Lesevorgänge.
 > 
-> 
+
+### <a name="clustering-rac-is-not-supported"></a>Clustering (RAC) wird nicht unterstützt
+Oracle Real Application Clusters (RAC) ist so konzipiert, dass der Ausfall eines einzelnen Knotens in einer lokalen Clusterkonfiguration mit meheren Knoten möglichst geringe Auswirkungen hat.  RAC beruht auf zwei lokalen Technologien – Netzwerk-Multicast und freigegebene Datenträger –, die in öffentlichen Cloudumgebungen mit Hyperskalierung wie Microsoft Azure nicht funktionieren. Wenn Sie die Architektur einer georedundanten Oracle DB-Konfiguration mit mehreren Knoten entwerfen möchten, müssen Sie die Datenreplikation mit Oracle DataGuard implementieren.
 
 ### <a name="high-availability-and-disaster-recovery-considerations"></a>Überlegungen zu Hochverfügbarkeit und Notfallwiederherstellung
 Wenn Sie Oracle Database auf virtuellen Azure-Computern verwenden, müssen Sie eine Lösung für Hochverfügbarkeit und Notfallwiederherstellung implementieren, um Ausfallzeiten zu vermeiden. Sie sind außerdem für das Sichern der eigenen Daten und Anwendung verantwortlich.
 
-Hochverfügbarkeit und Notfallwiederherstellung für Oracle Database Enterprise Edition (ohne RAC) in Azure lassen sich mithilfe von [Data Guard, Active Data Guard](http://www.oracle.com/technetwork/articles/oem/dataguardoverview-083155.html) oder [Oracle GoldenGate](http://www.oracle.com/technetwork/middleware/goldengate) mit zwei Datenbanken auf zwei eigenen virtuellen Computern erreichen. Beide virtuellen Computer sollten sich in demselben [Clouddienst](../../linux/classic/connect-vms.md) und [virtuellen Netzwerk](https://azure.microsoft.com/documentation/services/virtual-network/) befinden, um sicherzustellen, dass sie über die private statische IP-Adresse Zugriff aufeinander haben.  Darüber hinaus wird empfohlen, die virtuellen Computer in derselben [Verfügbarkeitsgruppe](../../virtual-machines-windows-manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) zu platzieren, damit sie von Azure in eigenen Fehlerdomänen und Upgradedomänen angeordnet werden können. Nur virtuelle Computer in demselben Clouddienst können Mitglieder derselben Verfügbarkeitsgruppe sein. Jeder virtuelle Computer muss mindestens 2 GB Arbeitsspeicher und 5 GB Speicherplatz aufweisen.
+Hochverfügbarkeit und Notfallwiederherstellung für Oracle Database Enterprise Edition (ohne RAC) in Azure lassen sich mithilfe von [Data Guard, Active Data Guard](http://www.oracle.com/technetwork/articles/oem/dataguardoverview-083155.html) oder [Oracle GoldenGate](http://www.oracle.com/technetwork/middleware/goldengate) mit zwei Datenbanken auf zwei eigenen virtuellen Computern erreichen. Beide virtuellen Computer sollten sich in demselben [virtuellen Netzwerk](https://azure.microsoft.com/documentation/services/virtual-network/) befinden, um sicherzustellen, dass sie über die private statische IP-Adresse Zugriff aufeinander haben.  Darüber hinaus wird empfohlen, die virtuellen Computer in derselben [Verfügbarkeitsgruppe](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) zu platzieren, damit sie von Azure in eigenen Fehlerdomänen und Upgradedomänen angeordnet werden können. Jeder virtuelle Computer muss mindestens 2 GB Arbeitsspeicher und 5 GB Speicherplatz aufweisen.
 
 Mit Oracle Data Guard kann Hochverfügbarkeit mit einer primären Datenbank auf einem virtuellen Computer, einer sekundären Datenbank (Standbydatenbank) auf einem weiteren virtuellen Computer und unidirektionaler Replikation zwischen diesen Komponenten erzielt werden. Das Ergebnis ist Lesezugriff auf die Kopie der Datenbank. Mit Oracle GoldenGate können Sie bidirektionale Replikation zwischen den beiden Datenbanken konfigurieren. Informationen zum Einrichten einer Hochverfügbarkeitslösung für die Datenbanken mithilfe dieser Tools finden Sie in der Dokumentation zu [Active Data Guard](http://www.oracle.com/technetwork/database/features/availability/data-guard-documentation-152848.html) und [GoldenGate](http://docs.oracle.com/goldengate/1212/gg-winux/index.html) auf der Oracle-Website. Wenn Sie Schreibzugriff auf die Kopie der Datenbank benötigen, können Sie [Oracle Active Data Guard](http://www.oracle.com/uk/products/database/options/active-data-guard/overview/index.html)verwenden.
 

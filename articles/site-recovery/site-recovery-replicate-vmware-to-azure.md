@@ -15,9 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 2/17/2017
 ms.author: asgang
 translationtype: Human Translation
-ms.sourcegitcommit: 54cf67bf630a9de30d4ccafdb09a3f8986c04145
-ms.openlocfilehash: 4415af41cfaf7230f398016e37b8a8cde453fa54
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 06ac75a40ed1dc97046836388bb7938dabd2b9ac
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -74,6 +74,14 @@ Wenn Sie VMware-VMs replizieren, beachten Sie Folgendes:
 10. Geben Sie unter **Eigenschaften** > **Eigenschaften konfigurieren**das Konto aus, das der Prozessserver zum automatischen Installieren des Mobilitätsdiensts auf dem Computer verwenden soll. Standardmäßig werden alle Datenträger repliziert. Klicken Sie auf **Alle Datenträger** , und entfernen Sie alle Datenträger, die Sie nicht replizieren möchten. Klicken Sie dann auf **OK**. Sie können später weitere Eigenschaften festlegen.
 
     ![Replikation aktivieren](./media/site-recovery-vmware-to-azure/enable-replication6.png)
+
+
+> [!NOTE]
+> Standardmäßig werden alle Datenträger auf einem Computer repliziert. Sie können [Datenträger von der Replikation ausschließen](site-recovery-exclude-disk.md). Beispielsweise möchten Sie möglicherweise nicht, dass Datenträger mit temporären Daten oder Daten, die bei jedem Neustart des Computers oder der Anwendung aktualisiert werden (z.B. pagefile.sys oder SQL Server tempdb), repliziert werden.
+>
+
+
+
 11. Überprüfen Sie unter **Replikationseinstellungen** > **Replikationseinstellungen konfigurieren**, ob die richtige Replikationsrichtlinie ausgewählt ist. Sie können die Replikationsrichtlinieneinstellungen unter **Einstellungen** > **Replikationsrichtlinien** > Richtlinienname > **Einstellungen bearbeiten** ändern. Die Änderungen, die Sie an einer Richtlinie vornehmen, werden auf die Replikation und auf neue Computer angewendet.
 12. Aktivieren Sie **Multi-VM-Konsistenz** , wenn Sie Computer in einer Replikationsgruppe zusammenfassen möchten, und geben Sie einen Namen für die Gruppe an. Klicken Sie dann auf **OK**. Beachten Sie Folgendes:
 
@@ -94,7 +102,26 @@ Es wird empfohlen, dass Sie die Eigenschaften des Quellcomputers überprüfen. B
 1. Klicken Sie auf **Einstellungen** > **Replizierte Elemente**, und wählen Sie den Computer aus. Das Blatt **Zusammenfassung** enthält Informationen zu den Einstellungen und zum Status der Computer.
 2. Unter **Eigenschaften** können Sie die Informationen zur Replikation und zum Failover für den virtuellen Computer anzeigen.
 3. Unter **Compute und Netzwerk** > **Compute-Eigenschaften** können Sie den Namen und die Zielgröße des virtuellen Azure-Computers angeben. Ändern Sie ggf. den Namen, damit er die Azure-Anforderungen erfüllt.
-   Sie können auch Informationen zum Zielnetzwerk, zum Subnetz sowie zu der IP-Adresse anzeigen und hinzufügen, die der Azure-VM zugewiesen wird. Beachten Sie Folgendes:
+![Replikation aktivieren](./media/site-recovery-vmware-to-azure/VMProperties_AVSET.png)
+
+*Ressourcengruppe*
+   
+  * Sie können eine [Ressourcengruppe](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines) auswählen, der der Computer dann nach dem Failover angehört. Sie können diese Einstellung jederzeit vor dem Failover ändern. 
+  
+> [!NOTE]
+> Wenn Sie den Computer nach dem Failover in eine andere Ressourcengruppe migrieren, funktionieren die Schutzeinstellungen des Computers nicht mehr.
+ 
+*Verfügbarkeitsgruppen*
+
+Sie können eine [Verfügbarkeitsgruppe](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) auswählen, wenn der Computer nach dem Failover einer Verfügbarkeitsgruppe angehören muss. Beachten Sie folgende Punkte bei der Auswahl einer Verfügbarkeitsgruppe:
+
+* Es werden nur Verfügbarkeitsgruppen aufgeführt, die der angegebenen Ressourcengruppe angehören.  
+* Computer mit unterschiedlichen virtuellen Netzwerken dürfen nicht zur gleichen Verfügbarkeitsgruppe gehören. 
+* Einer Verfügbarkeitsgruppe dürfen nur virtuelle Computer mit der gleichen Größe angehören. 
+
+*Netzwerkeigenschaften*
+
+Sie können auch Informationen zum Zielnetzwerk, zum Subnetz sowie zu der IP-Adresse anzeigen und hinzufügen, die der Azure-VM zugewiesen wird. Beachten Sie Folgendes:
 
    * Sie können die Ziel-IP-Adresse festlegen. Wenn Sie keine Adresse angeben, wird für den Computer, für den das Failover durchgeführt wurde, DHCP verwendet. Wenn Sie eine Adresse festlegen, die beim Failover nicht verfügbar ist, funktioniert das Failover nicht. Dieselbe Ziel-IP-Adresse kann für das Testfailover verwendet werden, wenn die Adresse im Testfailover-Netzwerk verfügbar ist.
    * Die Anzahl der Netzwerkkarten hängt von der Größe ab, die Sie für den virtuellen Zielcomputer angeben. Hierbei gilt Folgendes:
@@ -116,5 +143,7 @@ Es wird empfohlen, dass Sie die Eigenschaften des Quellcomputers überprüfen. B
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sobald der Schutz abgeschlossen ist, können Sie ein Testfailover durchführen, um zu überprüfen, ob Ihre Anwendung in Azure verfügbar gemacht wird.
+Sobald der Schutz abgeschlossen ist, können Sie ein [Failover](site-recovery-failover.md) versuchen, um zu überprüfen, ob Ihre Anwendung in Azure verfügbar gemacht wird.
+
+Wenn Sie den Schutz deaktivieren möchten, informieren Sie sich über das [Bereinigen von Registrierungs- und Schutzeinstellungen](site-recovery-manage-registration-and-protection.md).
 

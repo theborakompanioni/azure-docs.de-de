@@ -12,11 +12,12 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 12/15/2016
+ms.date: 04/10/2017
 ms.author: eugenesh
 translationtype: Human Translation
-ms.sourcegitcommit: fc2f30569acc49dd383ba230271989eca8a14423
-ms.openlocfilehash: de7af5419aa423734ad06b236e0edf61fbb0cad1
+ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
+ms.openlocfilehash: c4a9e57cda4ba5b4db742c1a37686a802f58212f
+ms.lasthandoff: 04/11/2017
 
 ---
 
@@ -44,26 +45,47 @@ Wenn Ihre Blobs ein **Array aus JSON-Objekten**enthalten, können Sie alternativ
         { "id" : "3", "text" : "example 3" }
     ]
 
-Damit können Sie Ihren Azure Search-Index mit 3 separaten Dokumenten auffüllen, die jeweils die Felder „id“ und „text“ aufweisen.
+Damit können Sie Ihren Azure Search-Index mit drei separaten Dokumenten auffüllen, die jeweils die Felder „id“ und „text“ aufweisen.
 
 > [!IMPORTANT]
-> Diese Funktion befindet sich derzeit in der Vorschauphase. Sie ist nur im Rahmen der REST-API unter der Version **2015-02-28-Preview**verfügbar. Beachten Sie hierbei, dass Vorschau-APIs für Tests und Evaluierungen bestimmt sind und nicht in Produktionsumgebungen eingesetzt werden sollten.
+> Die Funktion zur Analyse von JSON-Arrays befindet sich derzeit in der Vorschauphase. Sie ist nur im Rahmen der REST-API unter der Version **2015-02-28-Preview**verfügbar. Beachten Sie hierbei, dass Vorschau-APIs für Tests und Evaluierungen bestimmt sind und nicht in Produktionsumgebungen eingesetzt werden sollten.
 >
 >
 
 ## <a name="setting-up-json-indexing"></a>Einrichten der JSON-Indizierung
-Um JSON-Blobs zu indizieren, legen Sie den `parsingMode`-Konfigurationsparameter auf `json` (um jedes Blob als ein einzelnes Dokument zu indizieren) oder auf `jsonArray` (wenn Ihre Blobs ein JSON-Array enthalten) fest:
+Das Indizieren von JSON-Blobs ist mit der normalen Dokumentextrahierung vergleichbar. Erstellen Sie zunächst die Datenquelle wie gewohnt: 
+
+    POST https://[service name].search.windows.net/datasources?api-version=2016-09-01
+    Content-Type: application/json
+    api-key: [admin key]
+
+    {
+        "name" : "my-blob-datasource",
+        "type" : "azureblob",
+        "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>;" },
+        "container" : { "name" : "my-container", "query" : "optional, my-folder" }
+    }   
+
+Anschließend erstellen Sie den Zielsuchindex, sofern nicht bereits vorhanden. 
+
+Schließlich erstellen Sie einen Indexer und legen den `parsingMode`-Parameter auf `json` (zum Indizieren jedes Blob als einzelnes Dokument) oder `jsonArray` (wenn die Blobs JSON-Arrays enthalten und jedes Element eines Arrays als separates Dokument behandelt werden soll) fest:
+
+    POST https://[service name].search.windows.net/indexers?api-version=2016-09-01
+    Content-Type: application/json
+    api-key: [admin key]
 
     {
       "name" : "my-json-indexer",
-      ... other indexer properties
-      "parameters" : { "configuration" : { "parsingMode" : "json" | "jsonArray" } }
+      "dataSourceName" : "my-blob-datasource",
+      "targetIndexName" : "my-target-index",
+      "schedule" : { "interval" : "PT2H" },
+      "parameters" : { "configuration" : { "parsingMode" : "json" } }
     }
 
-Verwenden Sie bei Bedarf **Feldzuordnungen** , um die Eigenschaften des JSON-Quelldokuments auszuwählen, die zum Auffüllen des Zielsuchindexes verwendet werden.  Dies wird weiter unten ausführlicher beschrieben.
+Verwenden Sie bei Bedarf **Feldzuordnungen** , um die Eigenschaften des JSON-Quelldokuments auszuwählen, die zum Auffüllen des Zielsuchindexes verwendet werden. Dies wird im nächsten Abschnitt näher beschrieben.
 
 > [!IMPORTANT]
-> Bei Verwendung der Modi `json` oder `jsonArray` betrachtet Azure Search alle Blobs in Ihrer Datenquelle als JSON-Blobs. Wenn Sie eine Mischung aus JSON- und Nicht-JSON-Blobs in der gleichen Datenquelle unterstützen müssen, informieren Sie uns auf [unserer UserVoice-Website](https://feedback.azure.com/forums/263029-azure-search).
+> Bei Verwendung der Modi `json` oder `jsonArray` geht Azure Search davon aus, dass alle Blobs in Ihrer Datenquelle JSON enthalten. Wenn Sie eine Kombination von JSON- und Nicht-JSON-Blobs in der gleichen Datenquelle unterstützen müssen, informieren Sie uns auf unserer [UserVoice-Website](https://feedback.azure.com/forums/263029-azure-search).
 >
 >
 
@@ -80,7 +102,7 @@ Kommen wir nun zu unserem JSON-Beispieldokument zurück:
         }
     }
 
-Angenommen, Sie haben einen Suchindex mit den folgenden Feldern: `text` vom Typ Edm.String, `date` vom Typ Edm.DateTimeOffset und `tags` vom Typ Collection(Edm.String). Um das JSON-Objekt in der gewünschten Form zuzuordnen, verwenden Sie die folgenden Feldzuordnungen:
+Angenommen, Sie haben einen Suchindex mit den folgenden Feldern: `text` vom Typ `Edm.String`, `date` vom Typ `Edm.DateTimeOffset`und `tags` vom Typ `Collection(Edm.String)`. Um das JSON-Objekt in der gewünschten Form zuzuordnen, verwenden Sie die folgenden Feldzuordnungen:
 
     "fieldMappings" : [
         { "sourceFieldName" : "/article/text", "targetFieldName" : "text" },
@@ -88,7 +110,7 @@ Angenommen, Sie haben einen Suchindex mit den folgenden Feldern: `text` vom Typ 
         { "sourceFieldName" : "/article/tags", "targetFieldName" : "tags" }
       ]
 
-Die Quellenfeldnamen in den Zuordnungen werden mit der [JSON-Zeiger](http://tools.ietf.org/html/rfc6901) -Notation angegeben. Sie beginnen mit einem Schrägstrich, um auf das Stammverzeichnis des JSON-Dokuments zu verweisen, und geben dann mittels eines schrägstrichgetrennten Weiterleitungspfads den Pfad zur gewünschten Eigenschaft (auf beliebiger Schachtelungsebene) an.
+Die Quellenfeldnamen in den Zuordnungen werden mit der [JSON-Zeiger](http://tools.ietf.org/html/rfc6901) -Notation angegeben. Sie beginnen mit einem Schrägstrich, um auf das Stammverzeichnis des JSON-Dokuments zu verweisen, und wählen dann mittels eines schrägstrichgetrennten Weiterleitungspfads den Pfad zur gewünschten Eigenschaft (auf beliebiger Schachtelungsebene) aus.
 
 Sie können auch mit einem nullbasierten Index auf einzelne Arrayelemente verweisen. Um z. B. das erste Element des Arrays „tags“ aus dem obigen Beispiel auszuwählen, verwenden Sie eine Feldzuordnung wie folgt:
 
@@ -99,7 +121,7 @@ Sie können auch mit einem nullbasierten Index auf einzelne Arrayelemente verwei
 >
 >
 
-Wenn Ihre JSON-Dokumente nur einfache Eigenschaften der obersten Ebene enthalten, benötigen Sie möglicherweise überhaupt keine Feldzuordnungen. Wenn das JSON-Objekt z. B. wie folgt aussieht, werden die Eigenschaften der obersten Ebene „text“, „datePublished“ und „tags“ direkt den entsprechenden Feldern im Suchindex zugeordnet:
+Wenn Ihre JSON-Dokumente nur einfache Eigenschaften der obersten Ebene enthalten, benötigen Sie möglicherweise überhaupt keine Feldzuordnungen. Wenn das JSON-Objekt z.B. wie folgt aussieht, werden die Eigenschaften der obersten Ebene „text“, „datePublished“ und „tags“ direkt den entsprechenden Feldern im Suchindex zugeordnet:
 
     {
        "text" : "A hopefully useful article explaining how to parse JSON blobs",
@@ -107,47 +129,9 @@ Wenn Ihre JSON-Dokumente nur einfache Eigenschaften der obersten Ebene enthalten
        "tags" : [ "search", "storage", "howto" ]    
      }
 
-## <a name="indexing-nested-json-arrays"></a>Indizieren von geschachtelten JSON-Arrays
-Was geschieht, wenn Sie ein Array aus JSON-Objekten indizieren möchten, dieses Array aber irgendwo im Dokument geschachtelt ist? Sie können mithilfe der Konfigurationseigenschaft `documentRoot` auswählen, welche Eigenschaft das Array enthält. Angenommen, Ihre Blobs sehen folgendermaßen aus:
+Dies ist eine vollständige Indexer-Nutzlast mit Feldzuordnungen:
 
-    {
-        "level1" : {
-            "level2" : [
-                { "id" : "1", "text" : "Use the documentRoot property" },
-                { "id" : "2", "text" : "to pluck the array you want to index" },
-                { "id" : "3", "text" : "even if it's nested inside the document" }  
-            ]
-        }
-    }
-
-Dann verwenden Sie diese Konfiguration, um das in der Eigenschaft „level2“ enthaltene Array zu indizieren:
-
-    {
-        "name" : "my-json-array-indexer",
-        ... other indexer properties
-        "parameters" : { "configuration" : { "parsingMode" : "jsonArray", "documentRoot" : "/level1/level2" } }
-    }
-
-
-## <a name="request-examples"></a>Beispiele für Anforderungen
-Dies alles wird an vollständigen Nutzlastbeispielen demonstriert.
-
-Datenquelle:
-
-    POST https://[service name].search.windows.net/datasources?api-version=2015-02-28-Preview
-    Content-Type: application/json
-    api-key: [admin key]
-
-    {
-        "name" : "my-blob-datasource",
-        "type" : "azureblob",
-        "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>;" },
-        "container" : { "name" : "my-container", "query" : "optional, my-folder" }
-    }   
-
-Indexer:
-
-    POST https://[service name].search.windows.net/indexers?api-version=2015-02-28-Preview
+    POST https://[service name].search.windows.net/indexers?api-version=2016-09-01
     Content-Type: application/json
     api-key: [admin key]
 
@@ -164,11 +148,27 @@ Indexer:
         ]
     }
 
+## <a name="indexing-nested-json-arrays"></a>Indizieren von geschachtelten JSON-Arrays
+Was geschieht, wenn Sie ein Array aus JSON-Objekten indizieren möchten, dieses Array aber irgendwo im Dokument geschachtelt ist? Sie können mithilfe der Konfigurationseigenschaft `documentRoot` auswählen, welche Eigenschaft das Array enthält. Angenommen, Ihre Blobs sehen folgendermaßen aus:
+
+    {
+        "level1" : {
+            "level2" : [
+                { "id" : "1", "text" : "Use the documentRoot property" },
+                { "id" : "2", "text" : "to pluck the array you want to index" },
+                { "id" : "3", "text" : "even if it's nested inside the document" }  
+            ]
+        }
+    }
+
+Dann verwenden Sie diese Konfiguration, um das in der `level2`-Eigenschaft enthaltene Array zu indizieren:
+
+    {
+        "name" : "my-json-array-indexer",
+        ... other indexer properties
+        "parameters" : { "configuration" : { "parsingMode" : "jsonArray", "documentRoot" : "/level1/level2" } }
+    }
+
 ## <a name="help-us-make-azure-search-better"></a>Helfen Sie uns bei der Verbesserung von Azure Search
-Teilen Sie uns auf unserer [UserVoice-Website](https://feedback.azure.com/forums/263029-azure-search/)mit, wenn Sie sich Features wünschen oder Verbesserungsvorschläge haben.
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+Teilen Sie uns auf unserer [UserVoice-Website](https://feedback.azure.com/forums/263029-azure-search/) mit, wenn Sie sich Features wünschen oder Verbesserungsvorschläge haben.
 
