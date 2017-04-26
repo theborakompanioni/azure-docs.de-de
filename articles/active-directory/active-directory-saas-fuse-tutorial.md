@@ -11,11 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2017
+ms.date: 03/24/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: cb7a8a505122f0b6d2e5744c31a48018c2c05351
-ms.openlocfilehash: 10a51c8b272a8e8460079f8beb8a23dc40d3701d
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: afc9719a41e9ecb9a690edc7f16d392450fbb932
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -36,27 +37,27 @@ Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unte
 Um die Azure AD-Integration mit Fuse konfigurieren zu können, benötigen Sie Folgendes:
 
 - Ein Azure AD-Abonnement
-- Ein Fuse-Abonnement, für das einmaliges Anmelden aktiviert ist
+- Ein Fuse-Abonnement, für das einmaliges Anmelden (SSO) aktiviert ist
 
 
-> [!NOTE]
-> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
-
+>[!NOTE]
+>Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
+>
+>
 
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
 - Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
+- Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+In diesem Tutorial testen Sie das einmalige Anmelden (SSO) von Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
 1. Hinzufügen von Fuse aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+2. Konfigurieren und Testen des einmaligen Anmeldens (SSO) von Azure AD
 
-
-## <a name="adding-fuse-from-the-gallery"></a>Hinzufügen von Fuse aus dem Katalog
+## <a name="add-fuse-from-the-gallery"></a>Hinzufügen von Fuse aus dem Katalog
 Zum Konfigurieren der Integration von Fuse in Azure AD müssen Sie Fuse aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
 
 **Um Fuse aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
@@ -81,27 +82,26 @@ Zum Konfigurieren der Integration von Fuse in Azure AD müssen Sie Fuse aus dem 
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-fuse-tutorial/tutorial_fuse_0001.png)
 
+##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden (SSO) von Azure AD bei Fuse basierend auf einem Testbenutzer mit dem Namen Britta Simon.
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden mit Azure AD bei Fuse mithilfe einer Testbenutzerin namens Britta Simon.
-
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Fuse als Gegenstück für einen Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Fuse muss eine Linkbeziehung eingerichtet werden.
+Damit einmaliges Anmelden (SSO) funktioniert, muss Azure AD wissen, welcher Benutzer in Fuse als Entsprechung zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Fuse muss eine Linkbeziehung eingerichtet werden.
 
 Diese Linkbeziehung wird hergestellt, indem Sie den Benutzernamen**** in Azure AD als Benutzernamen**** in Fuse zuweisen.
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Fuse müssen Sie die folgenden Bausteine ausführen:
+Zum Konfigurieren und Testen des einmaligen Anmeldens (SSO) in Azure AD bei Fuse sind die folgenden Bausteine erforderlich:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 3. **[Erstellen eines Fuse-Testbenutzers](#creating-a-fuse-test-user)** , um eine Entsprechung von Britta Simon in Fuse zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-Verwaltungsportal und konfigurieren das einmalige Anmelden in Ihrer Fuse-Anwendung.
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden (SSO) mit Azure AD im Azure-Verwaltungsportal und konfigurieren das einmalige Anmelden in Ihrer Fuse-Anwendung.
 
-**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Fuse die folgenden Schritte aus:**
+**Führen Sie zum Konfigurieren des einmaligen Anmeldens (SSO) von Azure AD bei Fuse die folgenden Schritte aus:**
 
 1. Klicken Sie im Azure-Verwaltungsportal auf der Anwendungsintegrationsseite für **Fuse** auf **Einmaliges Anmelden**.
 
@@ -114,23 +114,23 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 3. Führen Sie die folgenden Schritte auf der Seite **Domäne und URLs für Fuse** aus:
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-fuse-tutorial/tutorial_fuse_02.png)
+  1. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<tenant name>.fusion-universal.com/`
+  2. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://<tenant name>.fusion-universal.com`
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<tenant name>.fusion-universal.com/`
-
-    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://<tenant name>.fusion-universal.com`
-
-    > [!NOTE] 
-    > Hinweis: Hierbei handelt es sich um Beispielwerte. Die Werte müssen durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner ersetzt werden. Wenden Sie sich an das [Supportteam von Fuse](mailto:support@fusion-universal.com), um diese Werte zu erhalten. 
+      >[!NOTE] 
+      >Hierbei handelt es sich um Beispielwerte. Die Werte müssen durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner ersetzt werden. Wenden Sie sich an das [Supportteam von Fuse](mailto:support@fusion-universal.com), um diese Werte zu erhalten. 
+      >
+      >
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Neues Zertifikat erstellen**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-fuse-tutorial/tutorial_fuse_03.png)   
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-fuse-tutorial/tutorial_fuse_03.png)     
 
 5. Klicken Sie im Dialogfeld **Neues Zertifikat erstellen** auf das Kalendersymbol, und wählen Sie ein **Ablaufdatum** aus. Klicken Sie auf die Schaltfläche **Speichern**.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-fuse-tutorial/tutorial_general_300.png)
 
-6. Wählen Sie im Abschnitt **SAML-Signaturzertifikat** die Option **Neues Zertifikat aktivieren**, und klicken Sie auf die Schaltfläche **Speichern**.
+6. Wählen Sie im Abschnitt **SAML-Signaturzertifikat** die Option **Make new certificate active** (Neues Zertifikat zum aktiven Zertifikat machen), und klicken Sie auf die Schaltfläche **Speichern**.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-fuse-tutorial/tutorial_fuse_04.png)
 
@@ -150,16 +150,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
 10. Wenden Sie sich an das [Fuse-Supportteam](mailto:support@fusion-universal.com), um SSO (Single Sign-On, einmaliges Anmelden) für Ihre Anwendung konfigurieren zu lassen, und stellen Sie Folgendes bereit: 
 
-    •  Die heruntergeladene **Zertifikatsdatei**
-
-    •  Die **SAML-Dienst-URL für einmaliges Anmelden**
-
-    •  Die **SAML-Entitäts-ID**
-
-    •  Die **Abmelde-URL**
+    • Die heruntergeladene **Zertifikatsdatei** • Die **SAML-Dienst-URL für einmaliges Anmelde** • Die **SAML-Entitäts-ID** • Die **Abmelde-URL**
   
-
-### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 In diesem Abschnitt wird im Azure-Verwaltungsportal eine Testbenutzerin namens Britta Simon erstellt.
 
 ![Azure AD-Benutzer erstellen][100]
@@ -181,23 +174,16 @@ In diesem Abschnitt wird im Azure-Verwaltungsportal eine Testbenutzerin namens B
 4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-fuse-tutorial/create_aaduser_04.png) 
+  1. Geben Sie in das Textfeld **Name** den Namen **BrittaSimon** ein.
+  2. Geben Sie in das Textfeld **Benutzername** die **E-Mail-Adresse** von Britta Simon ein.
+  3. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
+  4. Klicken Sie auf **Erstellen**. 
 
-    a. Geben Sie in das Textfeld **Name** den Namen **BrittaSimon** ein.
-
-    b. Geben Sie in das Textfeld **Benutzername** die **E-Mail-Adresse** von Britta Simon ein.
-
-    c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
-
-    d. Klicken Sie auf **Erstellen**. 
-
-
-
-### <a name="creating-a-fuse-test-user"></a>Erstellen eines Fuse-Testbenutzers
+### <a name="create-a-fuse-test-user"></a>Erstellen eines Fuse-Testbenutzers
 
 In diesem Abschnitt erstellen Sie in Fuse einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer ggf. vom [Fuse-Supportteam](mailto:support@fusion-universal.com) unterstützen.
 
-
-### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Fuse gewähren.
 
@@ -227,11 +213,9 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
     
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
-
-### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
-
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden (SSO) über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Fuse“ klicken, sollten Sie automatisch bei Ihrer Fuse-Anwendung angemeldet werden.
 
@@ -256,8 +240,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Fuse“ klicken, sollten Sie autom
 [201]: ./media/active-directory-saas-fuse-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-fuse-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-fuse-tutorial/tutorial_general_203.png
-
-
-<!--HONumber=Jan17_HO4-->
-
 

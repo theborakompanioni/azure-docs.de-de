@@ -12,14 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2016
+ms.date: 04/10/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 961a3867362d14ab7b6ff99ce4002380d763082f
-
+ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
+ms.openlocfilehash: 3624e4130cc1e87983ebc7c9adc4968436bec386
+ms.lasthandoff: 04/11/2017
 
 ---
+
 # <a name="connect-operations-manager-to-log-analytics"></a>Herstellen einer Verbindung zwischen Operations Manager und Log Analytics
 Zur Bewahrung Ihrer bisherigen Investitionen in System Center Operations Manager sowie zur Nutzung erweiterter Funktionen mit Log Analytics können Sie Operations Manager mit Ihrem OMS-Arbeitsbereich verknüpfen.  Die Kombination der Möglichkeiten von OMS mit den Vorteilen von Operations Manager ermöglicht Folgendes:
 
@@ -35,10 +36,12 @@ Das nachstehende Diagramm zeigt die Verbindung zwischen den Verwaltungsservern u
 
 ![oms-operations-manager-integration-diagram](./media/log-analytics-om-agents/oms-operations-manager-connection.png)
 
+Sofern es entsprechend Ihren IT-Sicherheitsrichtlinien unzulässig ist, dass Computer in Ihrem Netzwerk eine Internetverbindung herstellen, können die Verwaltungsserver so konfiguriert werden, dass sie eine Verbindung mit dem OMS-Gateway herstellen, um Konfigurationsinformationen zu empfangen und gesammelte Daten abhängig von der aktivierten Lösung zu senden.  Weitere Informationen und Schritte zum Konfigurieren der Operations Manager-Verwaltungsgruppe für die Kommunikation mit dem OMS-Dienst über ein OMS-Gateway finden Sie unter [Verbinden von Computern mit der OMS über das OMS-Gateway](log-analytics-oms-gateway.md).  
+
 ## <a name="system-requirements"></a>Systemanforderungen
 Vergewissern Sie sich zunächst anhand der folgenden Informationen, dass Sie über die erforderlichen Komponenten verfügen.
 
-* OMS unterstützt nur Operations Manager 2012 SP1 UR6 und Operations Manager 2012 R2 UR2 sowie jeweils höhere Versionen.  Proxyunterstützung wurde in Operations Manager 2012 SP1 UR7 und Operations Manager 2012 R2 UR3 hinzugefügt.
+* OMS unterstützt nur Operations Manager 2016, Operations Manager 2012 SP1 UR6 und Operations Manager 2012 R2 UR2 sowie jeweils höhere Versionen.  Proxyunterstützung wurde in Operations Manager 2012 SP1 UR7 und Operations Manager 2012 R2 UR3 hinzugefügt.
 * Alle Operations Manager-Agents müssen die Mindestanforderungen in Bezug auf die Unterstützung erfüllen. Stellen Sie sicher, dass Agents über das mindestens erforderliche Update verfügen. Andernfalls schlägt der Datenverkehr für den Windows-Agent fehl, und das Operations Manager-Ereignisprotokoll enthält viele Fehler.
 * Ein OMS-Abonnement.  Weitere Informationen finden Sie unter [Erste Schritte mit Log Analytics](log-analytics-get-started.md).
 
@@ -137,28 +140,36 @@ Es gibt verschiedene Methoden, um zu überprüfen, ob die OMS-Integration in Ope
 ## <a name="remove-integration-with-oms"></a>Entfernen der Integration für OMS
 Wenn Sie die Integration zwischen der Operations Manager-Verwaltungsgruppe und dem OMS-Arbeitsbereich nicht mehr benötigen, müssen Sie mehrere Schritte ausführen, um die Verbindung und Konfiguration in der Verwaltungsgruppe richtig zu entfernen. Mit dem folgenden Verfahren aktualisieren Sie den OMS-Arbeitsbereich, indem Sie nacheinander den Verweis auf Ihre Verwaltungsgruppe, die OMS-Connectors und die Management Packs zur Unterstützung von OMS löschen.   
 
+Management Packs für die aktivierten Lösungen, die in Operations Manager integriert werden, sowie die für die Unterstützung der Integration im OMS-Dienst erforderlichen Management Packs können in der Verwaltungsgruppe nicht ohne Weiteres gelöscht werden.  Dies ist darauf zurückzuführen, dass einige der OMS-Management Packs Abhängigkeiten von anderen zugehörigen Management Packs aufweisen.  Um Management Packs mit einer Abhängigkeit von anderen Management Packs zu löschen, laden Sie das Skript zum [Entfernen eines Management Packs mit Abhängigkeiten](https://gallery.technet.microsoft.com/scriptcenter/Script-to-remove-a-84f6873e) vom TechNet Script Center herunter.  
+
 1. Öffnen Sie die Operations Manager-Befehlsshell mit einem Konto, das Mitglied der Administratorrolle von Operations Manager ist.
    
-   > [!WARNING]
-   > Vergewissern Sie sich, dass die Namen Ihrer benutzerdefinierten Management Packs nicht das Wort „Advisor“ oder „IntelligencePack“ enthalten, bevor Sie den Vorgang fortsetzen. Andernfalls werden diese mit den folgenden Schritten aus der Verwaltungsgruppe gelöscht.
-   > 
-   > 
-2. Geben Sie an der Eingabeaufforderung der Befehlsshell `Get-SCOMManagementPack -name "*advisor*" | Remove-SCOMManagementPack`
-3. Geben Sie anschließend `Get-SCOMManagementPack -name “*IntelligencePack*” | Remove-SCOMManagementPack`
-4. Öffnen Sie die Operations Manager-Betriebskonsole mit einem Konto, das Mitglied der Administratorrolle von Operations Manager ist.
-5. Wählen Sie unter **Verwaltung** den Knoten **Management Packs** aus, und geben Sie im **Suchfeld** den Text **Advisor** ein. Überprüfen Sie dann, ob die folgenden Management Packs noch in die Verwaltungsgruppe importiert werden:
+    > [!WARNING]
+    > Vergewissern Sie sich, dass die Namen Ihrer benutzerdefinierten Management Packs nicht das Wort „Advisor“ oder „IntelligencePack“ enthalten, bevor Sie den Vorgang fortsetzen. Andernfalls werden diese mit den folgenden Schritten aus der Verwaltungsgruppe gelöscht.
+    > 
+
+2. Geben Sie an der Eingabeaufforderung der Befehlsshell den Befehl `Get-SCOMManagementPack -name "*Advisor*" | Remove-SCOMManagementPack -ErrorAction SilentlyContinue` ein.
+3. Geben Sie anschließend `Get-SCOMManagementPack -name “*IntelligencePack*” | Remove-SCOMManagementPack -ErrorAction SilentlyContinue` ein.
+4. Zum Entfernen der restlichen Management Packs mit einer Abhängigkeit von anderen System Center Advisor-Management Packs verwenden Sie das Skript *RecursiveRemove.ps1*, das Sie zuvor vom TechNet Script Center heruntergeladen haben.  
+ 
+    > [!NOTE]
+    > Löschen Sie das Microsoft System Center Advisor- oder Microsoft System Center Advisor Internal-Management Pack nicht.  
+    >  
+
+5. Öffnen Sie die Operations Manager-Betriebskonsole mit einem Konto, das Mitglied der Administratorrolle von Operations Manager ist.
+6. Wählen Sie unter **Verwaltung** den Knoten **Management Packs** aus, und geben Sie im **Suchfeld** den Text **Advisor** ein. Überprüfen Sie dann, ob die folgenden Management Packs noch in die Verwaltungsgruppe importiert werden:
    
    * Microsoft System Center Advisor
    * Microsoft System Center Advisor – Intern
-6. Klicken Sie im OMS-Portal auf die Kachel **Einstellungen** .
-7. Wählen Sie die Option **Connected Sources**(Verbundene Quellen).
-8. In der Tabelle sollte im Abschnitt „System Center Operations Manager“ der Name der Verwaltungsgruppe angezeigt werden, die Sie aus dem Arbeitsbereich entfernen möchten.  Klicken Sie unter der Spalte **Last Data** (Letzte Daten) auf **Entfernen**.  
+7. Klicken Sie im OMS-Portal auf die Kachel **Einstellungen** .
+8. Wählen Sie die Option **Connected Sources**(Verbundene Quellen).
+9. In der Tabelle sollte im Abschnitt „System Center Operations Manager“ der Name der Verwaltungsgruppe angezeigt werden, die Sie aus dem Arbeitsbereich entfernen möchten.  Klicken Sie unter der Spalte **Last Data** (Letzte Daten) auf **Entfernen**.  
    
-   > [!NOTE]
-   > Der Link zum **Entfernen** wird erst angezeigt, wenn für 14 Tage keine Aktivität der verbundenen Verwaltungsgruppe erkannt wird.  
-   > 
-   > 
-9. In einem Fenster werden Sie dazu aufgefordert zu bestätigen, dass Sie die Entfernung durchführen möchten.  Klicken Sie auf **Ja** , um den Vorgang fortzusetzen. 
+    > [!NOTE]
+    > Der Link zum **Entfernen** wird erst angezeigt, wenn für 14 Tage keine Aktivität der verbundenen Verwaltungsgruppe erkannt wird.  
+    > 
+
+10. In einem Fenster werden Sie dazu aufgefordert zu bestätigen, dass Sie die Entfernung durchführen möchten.  Klicken Sie auf **Ja** , um den Vorgang fortzusetzen. 
 
 Gehen Sie wie folgt vor, um den Connector „Microsoft.SystemCenter.Advisor.DataConnector“ und den Connector „Advisor Connector“ zu löschen: Speichern Sie das unten angegebene PowerShell-Skript auf Ihrem Computer, und führen Sie es aus, indem Sie die folgenden Beispiele verwenden.
 
@@ -168,7 +179,7 @@ Gehen Sie wie folgt vor, um den Connector „Microsoft.SystemCenter.Advisor.Data
 ```
 
 > [!NOTE]
-> Wenn der Computer, auf dem Sie dieses Skript ausführen, kein Verwaltungsserver ist, sollte darauf die Operations Manager 2012 SP1- oder R2-Befehlsshell installiert sein. Dies hängt von der Version Ihrer Verwaltungsgruppe ab.
+> Wenn der Computer, auf dem Sie dieses Skript ausführen, kein Verwaltungsserver ist, sollte darauf die Operations Manager-Befehlsshell installiert sein. Dies hängt von der Version Ihrer Verwaltungsgruppe ab.
 > 
 > 
 
@@ -263,10 +274,5 @@ Wenn Sie planen, die Verwaltungsgruppe später wieder mit einem OMS-Arbeitsberei
 ## <a name="next-steps"></a>Nächste Schritte
 * [Fügen Sie Log Analytics-Lösungen aus dem Lösungskatalog hinzu](log-analytics-add-solutions.md) , um Funktionen hinzuzufügen und Daten zu sammeln.
 * [Konfigurieren von Proxy- und Firewalleinstellungen in Log Analytics](log-analytics-proxy-firewall.md) beschreibt, wie Sie vorgehen müssen, damit Agents mit dem Log Analytics-Dienst kommunizieren können, wenn Ihre Organisation einen Proxyserver oder eine Firewall verwendet.
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

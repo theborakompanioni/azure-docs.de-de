@@ -12,22 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2017
+ms.date: 02/24/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 04a045f41965b093aab71e59cd9b5f328b44de84
-ms.openlocfilehash: bb140097831453d46f6bfef1c9fbe569eefb3020
-ms.lasthandoff: 02/03/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 8ab2dd16940f36411cf9a9f244bd3ec6eaf9749b
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tangoe-command-premium-mobile"></a>Tutorial: Azure Active Directory-Integration mit Tangoe Command Premium Mobile
+
 In diesem Tutorial erfahren Sie, wie Sie Tangoe Command Premium Mobile in Azure Active Directory (Azure AD) integrieren.
 
 Die Integration von Tangoe Command Premium Mobile in Azure AD bietet die folgenden Vorteile:
 
 * Sie können in Azure AD steuern, wer Zugriff auf Tangoe Command Premium Mobile hat.
-* Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Tangoe Command Premium Mobile anzumelden (einmaliges Anmelden).
+* Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Tangoe Command Premium Mobile anzumelden (einmaliges Anmelden, SSO).
 * Mit dem klassischen Azure-Portal können Sie Ihre Konten an einem zentralen Ort verwalten.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
@@ -38,15 +39,15 @@ Um die Azure AD-Integration mit Tangoe Command Premium Mobile konfigurieren zu 
 * Ein Azure-Abonnement
 * Ein Tangoe Command Premium Mobile-Abonnement, für das einmaliges Anmelden (SSO) aktiviert ist
 
-> [!NOTE]
-> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
+>[!NOTE]
+>Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
 > 
 > 
 
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
 * Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-* Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
+* Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. 
@@ -54,7 +55,7 @@ In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Test
 Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
 1. Hinzufügen von Tangoe Command Premium Mobile aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+2. Konfigurieren und Testen des einmaligen Anmeldens (SSO) von Azure AD
 
 ## <a name="adding-tangoe-command-premium-mobile-from-the-gallery"></a>Hinzufügen von Tangoe Command Premium Mobile aus dem Katalog
 Zum Konfigurieren der Integration von Tangoe Command Premium Mobile in Azure AD müssen Sie Tangoe Command Premium Mobile aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
@@ -81,25 +82,25 @@ Zum Konfigurieren der Integration von Tangoe Command Premium Mobile in Azure AD 
 
 ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-tangoe-tutorial/tutorial_tangoe_02.png)
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Tangoe Command Premium Mobile basierend auf einem Testbenutzer mit dem Namen Britta Simon.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden (SSO) von Azure AD bei Tangoe Command Premium Mobile basierend auf einem Testbenutzer mit dem Namen Britta Simon.
 
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Tangoe Command Premium Mobile als Gegenbenutzer zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Tangoe Command Premium Mobile muss eine Linkbeziehung eingerichtet werden.
+Damit einmaliges Anmelden (SSO) funktioniert, muss Azure AD wissen, welcher Benutzer in Tangoe Command Premium Mobile als Entsprechung zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Tangoe Command Premium Mobile muss eine Linkbeziehung eingerichtet werden.
 
 Diese Linkbeziehung wird hergestellt, indem Sie den Wert des **Benutzernamens** in Azure AD als Wert von **Username** in Tangoe Command Premium Mobile zuweisen.
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Tangoe Command Premium Mobile müssen Sie die folgenden Schritte ausführen:
+Zum Konfigurieren und Testen des einmaligen Anmeldens (SSO) in Azure AD bei Tangoe Command Premium Mobile sind die folgenden Bausteine erforderlich:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 3. **[Erstellen eines Tangoe Command Premium Mobile-Testbenutzers](#creating-an-tangoe-test-user)** , um eine Entsprechung von Britta Simon in Tangoe Command Premium Mobile zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testen des einmaligen Anmeldens](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassischen Portal und konfigurieren das einmalige Anmelden in Ihrer Tangoe Command Premium Mobile-Anwendung.
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden (SSO) von Azure AD im klassischen Portal und konfigurieren das einmalige Anmelden in Ihrer Tangoe Command Premium Mobile-Anwendung.
 
-**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Tangoe Command Premium Mobile die folgenden Schritte aus:**
+**Führen Sie zum Konfigurieren des einmaligen Anmeldens (SSO) von Azure AD bei Tangoe Command Premium Mobile die folgenden Schritte aus:**
 
 1. Klicken Sie im klassischen Portal auf der Anwendungsintegrationsseite für **Tangoe Command Premium Mobile** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
    
@@ -115,16 +116,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassi
 
    2. Geben Sie im Textfeld **Antwort-URL** die URL nach folgendem Muster ein: **https://sso.tangoe.com/sp/ACS.saml2**
 
-    > [!NOTE]  
-    > Wenn Sie die richtigen Werte für die URLs nicht kennen, können Sie die oben stehenden Werte als Platzhalter verwenden und die richtigen Werte vom Tangoe-Kundensupport anfordern.
-    >
+     >[!NOTE]  
+     >Wenn Sie die richtigen Werte für die URLs nicht kennen, können Sie die oben stehenden Werte als Platzhalter verwenden und die richtigen Werte vom Tangoe-Kundensupport anfordern.
+     >
 
 4. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für Tangoe Command Premium Mobile** die folgenden Schritte aus:
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-tangoe-tutorial/tutorial_tangoe_05.png) 
-   
-   1. Klicken Sie auf **Metadaten herunterladen**und speichern Sie die Datei auf Ihrem Computer.
-   2. Klicken Sie auf **Weiter**.
+  1. Klicken Sie auf **Metadaten herunterladen**und speichern Sie die Datei auf Ihrem Computer.
+  2. Klicken Sie auf **Weiter**.
 
 5. Wenden Sie sich an den Tangoe-Kundensupport, und stellen Sie Folgendes bereit, um das einmalige Anmelden für Ihre Anwendung konfigurieren zu lassen:
 
@@ -140,7 +140,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassi
    
     ![Azure AD – einmaliges Anmelden][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit dem Namen Britta Simon.
 
 * Wählen Sie in der Benutzerliste **Britta Simon**aus.
@@ -162,12 +162,9 @@ In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit d
 5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-tangoe-tutorial/create_aaduser_05.png) 
-   
-    a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
-   
-    b. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
-   
-    c. Klicken Sie auf **Weiter**.
+  1. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus. 
+  2. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
+  3. Klicken Sie auf **Weiter**.
 6. Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
    
    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-tangoe-tutorial/create_aaduser_06.png) 
@@ -185,16 +182,19 @@ In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit d
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-tangoe-tutorial/create_aaduser_08.png) 
    
   1. Notieren Sie den Wert von **Neues Kennwort**.
-  2. Klicken Sie auf **Fertig stellen**.   
+  2. Klicken Sie unten auf der Seite auf **Fertigstellen**.   
 
-### <a name="creating-an-tangoe-command-premium-mobile-test-user"></a>Erstellen eines Tangoe Command Premium Mobile-Testbenutzers
-In diesem Abschnitt erstellen Sie in Tangoe Command Premium Mobile einen Benutzer mit dem Namen Britta Simon. In der Tangoe Command Premium Mobile-Anwendung müssen alle Benutzer bereitgestellt werden, bevor das einmalige Anmelden verwendet werden kann. Wenden Sie sich daher an den Tangoe-Kundensupport, um sämtliche Benutzer in der Anwendung bereitzustellen. 
+### <a name="create-an-tangoe-command-premium-mobile-test-user"></a>Erstellen eines Tangoe Command Premium Mobile-Testbenutzers
+In diesem Abschnitt erstellen Sie in Tangoe Command Premium Mobile einen Benutzer mit dem Namen Britta Simon. 
 
-> [!NOTE]
-> Wenn Sie einen Benutzer manuell oder eine Gruppe von Benutzern erstellen müssen, wenden Sie sich an das Tangoe Command Premium Mobile-Supportteam.
-> 
+In der Tangoe Command Premium Mobile-Anwendung müssen alle Benutzer bereitgestellt werden, bevor das einmalige Anmelden verwendet werden kann. Wenden Sie sich daher an den Tangoe-Kundensupport, um sämtliche Benutzer in der Anwendung bereitzustellen. 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+>[!NOTE]
+>Wenn Sie einen Benutzer manuell oder eine Gruppe von Benutzern erstellen müssen, wenden Sie sich an das Tangoe Command Premium Mobile-Supportteam.
+>
+>
+
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 In diesem Abschnitt ermöglichen Sie für Britta Simon das einmalige Anmelden von Azure, indem Sie ihr Zugriff auf Tangoe Command Premium Mobile gewähren.
 
 ![Benutzer zuweisen][200] 
@@ -218,8 +218,8 @@ In diesem Abschnitt ermöglichen Sie für Britta Simon das einmalige Anmelden vo
 
 ![Benutzer zuweisen][205]
 
-### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden (SSO) über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Tangoe Command Premium Mobile“ klicken, sollten Sie automatisch bei Ihrer Tangoe Command Premium Mobile-Anwendung angemeldet werden.
 

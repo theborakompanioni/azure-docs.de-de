@@ -12,11 +12,12 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/01/2016
+ms.date: 03/28/2017
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b4b2424e5efe3392b08e58ceb05ec63f15c7ad32
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 8208a1a41388a8cc36f3702bd0cad2bb82e16403
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -49,15 +50,17 @@ Das Actor-Projekt bietet Methoden zum Einrichten und Abrufen des Werts eines Zä
 ### <a name="stateless-web-api"></a>Zustandslose Web-API
 Das zustandslose Web-API-Projekt bietet einen einfachen Webdienst, den Sie zum Öffnen Ihrer Anwendung für externe Clients verwenden können. Weitere Informationen dazu, wie das Projekt aufgebaut ist, finden Sie unter [Erste Schritte: Web-API-Dienste von Service Fabric mit selbstgehostetem OWIN](service-fabric-reliable-services-communication-webapi.md).
 
+
 ### <a name="aspnet-core"></a>ASP.NET Core
-Das Service Fabric SDK stellt die gleichen ASP.NET Core-Vorlagen bereit, die auch für eigenständige ASP.NET Core-Projekte verfügbar sind: leere Vorlage, [Web-API][aspnet-webapi] und [Webanwendung][aspnet-webapp].
+Das Service Fabric SDK umfasst die gleichen ASP.NET Core-Vorlagen, die auch für eigenständige ASP.NET Core-Projekte verfügbar sind: leere Vorlage, [Web-API][aspnet-webapi] und [Webanwendung][aspnet-webapp].
+
+### <a name="guest-executables-and-guest-containers"></a>Ausführbare Gastanwendungsdateien und Gastcontainer
+
+Bei einer Service Fabric-Gastanwendung handelt es sich um einen Dienst, der nicht mit den Programmiermodellen der Plattform erstellt wird. Sie können die Binärdateien für eine Gastanwendung entweder [direkt im Anwendungspaket](service-fabric-deploy-existing-app.md) oder [über ein Containerimage](service-fabric-deploy-container.md) packen. In beiden Fällen werden in Visual Studio die erforderlichen Artefakte im Ordner **ApplicationPackageRoot** des Anwendungsprojekts erstellt. Ein neues Dienstprojekt wird in Visual Studio nicht erstellt, da der Code bereits an anderer Stelle vorhanden ist. Wenn Sie Ihre Gastprojekte zusammen mit dem Service Fabric-Anwendungsprojekt verwalten möchten, können Sie sie der gleichen Visual Studio-Projektmappe hinzufügen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 ### <a name="create-an-azure-cluster"></a>Erstellen eines Azure-Clusters
 Das Service Fabric-SDK stellt einen lokalen Cluster zu Entwicklungs- und Testzwecken bereit. Informationen zum Erstellen eines Clusters in Azure finden Sie unter [Einrichten eines Service Fabric-Clusters im Azure-Portal][create-cluster-in-portal].
-
-### <a name="try-deploying-to-azure-for-free-with-party-clusters"></a>Kostenloses Testen der Bereitstellung von Party Clustern in Azure
-Wenn Sie das Bereitstellen und Verwalten von Anwendungen in Azure testen möchten, ohne eigene Cluster einrichten zu müssen, können Sie den kostenlosen [Party Cluster-Dienst](http://aka.ms/tryservicefabric)verwenden.
 
 ### <a name="publish-your-application-to-azure"></a>Veröffentlichen der Anwendung in Azure
 Sie können Ihre Anwendung direkt aus Visual Studio in einem Azure-Cluster veröffentlichen. Informationen dazu finden Sie unter [Veröffentlichen Ihrer Anwendung in Azure][publish-app-to-azure].
@@ -81,9 +84,4 @@ Informationen zur Einrichtung eines Continuous Integration-Prozesses für Ihre S
 [app-upgrade-tutorial]: service-fabric-application-upgrade-tutorial.md
 [aspnet-webapi]: https://docs.asp.net/en/latest/tutorials/first-web-api.html
 [aspnet-webapp]: https://docs.asp.net/en/latest/tutorials/first-mvc-app/index.html
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -11,11 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2017
+ms.date: 03/24/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 9585494ebff68891d374a29e8e3e4b7756914bcc
-ms.openlocfilehash: d8a654340df56002e503f2f61e910facb51696c5
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 8abe4b089401c8f086a77be2aa6812b4fa7910ce
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -26,7 +27,7 @@ In diesem Tutorial erfahren Sie, wie Sie Cezanne HR Software in Azure Active Dir
 Die Integration von Cezanne HR Software in Azure AD bietet die folgenden Vorteile:
 
 - Sie können in Azure AD steuern, wer auf Cezanne HR Software Zugriff hat.
-- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Cezanne HR Software anzumelden (einmaliges Anmelden).
+- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Cezanne HR Software anzumelden (einmaliges Anmelden, SSO).
 - Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Verwaltungsportal.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
@@ -36,27 +37,27 @@ Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unte
 Um die Azure AD-Integration mit Cezanne HR Software konfigurieren zu können, benötigen Sie Folgendes:
 
 - Ein Azure AD-Abonnement
-- Ein Cezanne HR Software-Abonnement, für das einmaliges Anmelden aktiviert ist
+- Ein Cezanne HR Software-Abonnement, für das einmaliges Anmelden (SSO) aktiviert ist
 
-
-> [!NOTE]
-> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
-
+>[!NOTE]
+>Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
+>
+>
 
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
 - Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
+- Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
 1. Hinzufügen von Cezanne HR Software aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+2. Konfigurieren und Testen des einmaligen Anmeldens (SSO) von Azure AD
 
 
-## <a name="adding-cezanne-hr-software-from-the-gallery"></a>Hinzufügen von Cezanne HR Software aus dem Katalog
+## <a name="add-cezanne-hr-software-from-the-gallery"></a>Hinzufügen von Cezanne HR Software aus dem Katalog
 Zum Konfigurieren der Integration von Cezanne HR Software in Azure AD müssen Sie Cezanne HR Software aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
 **Um Cezanne HR Software aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
@@ -81,27 +82,26 @@ Zum Konfigurieren der Integration von Cezanne HR Software in Azure AD müssen Si
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_0001.png)
 
+##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden (SSO) von Azure AD bei Cezanne HR Software basierend auf einem Testbenutzer mit dem Namen Britta Simon.
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
-Dieser Abschnitt veranschaulicht anhand eines Testbenutzers namens Britta Simon, wie das einmalige Anmelden von Azure AD in Cezanne HR Software konfiguriert und getestet wird.
-
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, wer der entsprechende Gegenbenutzer in Cezanne HR Software zu einem Benutzer in Azure AD ist. Anders ausgedrückt muss zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Cezanne HR Software eine Linkbeziehung eingerichtet werden.
+Damit einmaliges Anmelden (SSO) funktioniert, muss Azure AD wissen, welcher Benutzer in Cezanne HR Software als Entsprechung zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt muss zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Cezanne HR Software eine Linkbeziehung eingerichtet werden.
 
 Diese Linkbeziehung wird hergestellt, indem Sie den Benutzernamen**** in Azure AD als Benutzernamen**** in Cezanne HR Software zuweisen.
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Cezanne HR Software müssen Sie die folgenden Bausteine ausführen:
+Zum Konfigurieren und Testen des einmaligen Anmeldens (SSO) in Azure AD bei Cezanne HR Software sind die folgenden Bausteine erforderlich:
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 3. **[Erstellen eines Cezanne HR Software-Testbenutzers](#creating-a-cezanne-hr-software-test-user)** , um eine Entsprechung von Britta Simon in Cezanne HR Software zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azure-Verwaltungsportal und konfigurieren es in Ihrer Cezanne HR Software-Anwendung.
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden (SSO) von Azure AD im Azure-Verwaltungsportal und konfigurieren das einmalige Anmelden in Ihrer Cezanne HR Software-Anwendung.
 
-**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Cezanne HR Software die folgenden Schritte aus:**
+**Führen Sie zum Konfigurieren des einmaligen Anmeldens (SSO) von Azure AD bei Cezanne HR Software die folgenden Schritte aus:**
 
 1. Klicken Sie im Azure-Verwaltungsportal auf der Anwendungsintegrationsseite für **Cezanne HR Software** auf **Einmaliges Anmelden**.
 
@@ -114,13 +114,11 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
 3. Führen Sie die folgenden Schritte auf der Seite **Domäne und URLs für Cezanne HR Software** aus:
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_02.png)
+  1. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://w3.cezanneondemand.com/cezannehr/-/<tenant id>`
+  2. Geben Sie im Textfeld **Bezeichner** Folgendes ein: `https://w3.cezanneondemand.com/CezanneOnDemand/`
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://w3.cezanneondemand.com/cezannehr/-/<tenant id>`
-    
-    b. Geben Sie im Textfeld **Bezeichner** Folgendes ein: `https://w3.cezanneondemand.com/CezanneOnDemand/`
-
-    > [!NOTE] 
-    > Hinweis: Hierbei handelt es sich um Beispielwerte. Die Werte müssen durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner ersetzt werden. Hier empfehlen wir Ihnen, den eindeutigen Wert der URL im Bezeichner zu verwenden. Wenden Sie sich an das [Supportteam von Cezanne HR Software](mailto:info@cezannehr.com), um diese Werte zu erhalten.
+     >[!NOTE] 
+     > Hierbei handelt es sich um Beispielwerte. Die Werte müssen durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner ersetzt werden. Hier empfehlen wir Ihnen, den eindeutigen Wert der URL im Bezeichner zu verwenden. Wenden Sie sich an das [Supportteam von Cezanne HR Software](mailto:info@cezannehr.com), um diese Werte zu erhalten.
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Neues Zertifikat erstellen**.
 
@@ -130,7 +128,7 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_general_300.png)
 
-6. Wählen Sie im Abschnitt **SAML-Signaturzertifikat** die Option **Neues Zertifikat aktivieren**, und klicken Sie auf die Schaltfläche **Speichern**.
+6. Wählen Sie im Abschnitt **SAML-Signaturzertifikat** die Option **Make new certificate active** (Neues Zertifikat zum aktiven Zertifikat machen), und klicken Sie auf die Schaltfläche **Speichern**.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_04.png)
 
@@ -165,28 +163,19 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
 14. Führen Sie im Abschnitt **SAML 2.0 IDENTITY PROVIDERS** (SAML 2.0-IDENTITÄTSANBIETER) die folgenden Schritte aus:
 
     ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_003.png)
-
-    a. Geben Sie den Namen Ihres Identitätsanbieters als **Anzeigename**ein.
-
-    b. Geben Sie im Textfeld **Entitätsbezeichner** den Wert für die **SAML-Entitäts-ID** aus dem Konfigurationsfenster der Azure AD-Anwendung ein.
-
-    c. Ändern Sie **SAML-Bindung** in „POST“.
-
-    d. Geben Sie im Textfeld **Security Token Service Endpoint** (Sicherheitstoken-Dienstendpunkt) den Wert für die **SAML-Dienst-URL für einmaliges Anmelden** aus dem Konfigurationsfenster der Azure AD-Anwendung ein.
-
-    e. Geben Sie im Textfeld **Benutzer-ID-Attributname** „http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name“ ein.
-
-    f. Klicken Sie auf das Symbol **Hochladen** , um das heruntergeladene Zertifikat aus Azure AD hochzuladen.
-
-    g. Klicken Sie auf die Schaltfläche **OK** . 
+ 1. Geben Sie den Namen Ihres Identitätsanbieters als **Anzeigename**ein.
+ 2. Geben Sie im Textfeld **Entitätsbezeichner** den Wert für die **SAML-Entitäts-ID** aus dem Konfigurationsfenster der Azure AD-Anwendung ein.
+ 3. Ändern Sie **SAML-Bindung** in „POST“.
+ 4. Geben Sie im Textfeld **Security Token Service Endpoint** (Sicherheitstoken-Dienstendpunkt) den Wert für die **SAML-Dienst-URL für einmaliges Anmelden** aus dem Konfigurationsfenster der Azure AD-Anwendung ein.
+ 5. Geben Sie im Textfeld **Benutzer-ID-Attributname** „http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name“ ein.
+ 6. Klicken Sie auf das Symbol **Hochladen** , um das heruntergeladene Zertifikat aus Azure AD hochzuladen.
+ 7. Klicken Sie auf die Schaltfläche **OK** . 
 
 15. Klicken Sie auf die Schaltfläche **Save** .
 
     ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_004.png)
 
-
-
-### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 In diesem Abschnitt wird im Azure-Verwaltungsportal eine Testbenutzerin namens Britta Simon erstellt.
 
 ![Azure AD-Benutzer erstellen][100]
@@ -208,22 +197,16 @@ In diesem Abschnitt wird im Azure-Verwaltungsportal eine Testbenutzerin namens B
 4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_04.png) 
+ 1. Geben Sie in das Textfeld **Name** den Namen **BrittaSimon** ein.
+ 2. Geben Sie in das Textfeld **Benutzername** die **E-Mail-Adresse** von Britta Simon ein.
+ 3. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
+ 4. Klicken Sie auf **Erstellen**. 
 
-    a. Geben Sie in das Textfeld **Name** den Namen **BrittaSimon** ein.
-
-    b. Geben Sie in das Textfeld **Benutzername** die **E-Mail-Adresse** von Britta Simon ein.
-
-    c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
-
-    d. Klicken Sie auf **Erstellen**. 
-
-
-
-### <a name="creating-a-cezanne-hr-software-test-user"></a>Erstellen eines Cezanne HR Software-Testbenutzers
+### <a name="create-a-cezanne-hr-software-test-user"></a>Erstellen eines Cezanne HR Software-Testbenutzers
 
 Damit sich Azure AD-Benutzer bei Cezanne HR Software anmelden können, müssen sie in Cezanne HR Software bereitgestellt werden. Bei Cezanne HR Software ist die Bereitstellung ein manueller Vorgang.
 
-####<a name="to-provision-a-user-account-perform-the-following-steps"></a>Führen Sie zum Bereitstellen eines Benutzerkontos die folgenden Schritte aus:
+**Führen Sie zum Bereitstellen eines Benutzerkontos die folgenden Schritte aus:**
 
 1.  Melden Sie sich als Administrator auf Ihrer Cezanne HR Software-Unternehmenswebsite an.
 
@@ -234,26 +217,18 @@ Damit sich Azure AD-Benutzer bei Cezanne HR Software anmelden können, müssen s
 3.  Führen Sie im Abschnitt **Person Details** (Angaben zur Person) die folgenden Schritte aus:
 
     ![Neuer Benutzer](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_006.png "Neuer Benutzer")
-
-    a. Legen Sie **Interner Benutzer** auf „AUS“ fest.
-
-    b. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
-
-    c. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
-
-    d. Geben Sie im Textfeld **E-Mail** die E-Mail-Adresse des Kontos von Britta Simon ein.
+ 1. Legen Sie **Interner Benutzer** auf „AUS“ fest.
+ 2. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
+ 3. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
+ 4. Geben Sie im Textfeld **E-Mail** die E-Mail-Adresse des Kontos von Britta Simon ein.
 
 4.  Führen Sie unter **Kontoinformationen** die folgenden Schritte aus:
 
     ![Neuer Benutzer](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_007.png "Neuer Benutzer")
-
-    a. Geben Sie im Textfeld **Benutzername** die E-Mail-Adresse von Britta Simon ein.
-
-    b. Geben Sie im Textfeld **Kennwort** das Kennwort des Kontos von Britta Simon ein.
-
-    c. Wählen Sie unter **Sicherheitsrolle** die Option **HR Professional** (HR-Mitarbeiter).
-
-    d. Klicken Sie auf **OK**.
+ 1. Geben Sie im Textfeld **Benutzername** die E-Mail-Adresse von Britta Simon ein.
+ 2. Geben Sie im Textfeld **Kennwort** das Kennwort des Kontos von Britta Simon ein.
+ 3. Wählen Sie unter **Sicherheitsrolle** die Option **HR Professional** (HR-Mitarbeiter).
+ 4. Klicken Sie auf **OK**.
 
 5. Navigieren Sie zur Registerkarte **Einmalige Anmeldung**, und wählen Sie im Bereich **SAML 2.0 Identifiers** (SAML 2.0-Bezeichner) die Option **Neu hinzufügen**.
 
@@ -267,11 +242,9 @@ Damit sich Azure AD-Benutzer bei Cezanne HR Software anmelden können, müssen s
 
     ![Benutzer](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_010.png "Benutzer")
 
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-
-### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
-
-In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Cezanne HR Software gewähren.
+In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens (SSO) von Azure, indem Sie ihr Zugriff auf Cezanne HR Software gewähren.
 
 ![Benutzer zuweisen][200] 
 
@@ -300,10 +273,9 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
     
 
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
-### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
-
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden (SSO) über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Cezanne HR Software“ klicken, sollten Sie automatisch an Ihrer Cezanne HR Software-Anwendung angemeldet werden.
 
@@ -328,8 +300,3 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Cezanne HR Software“ klicken, so
 [201]: ./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_general_203.png
-
-
-<!--HONumber=Feb17_HO1-->
-
-
