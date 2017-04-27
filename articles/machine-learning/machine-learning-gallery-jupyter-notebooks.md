@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/06/2017
+ms.date: 03/31/2017
 ms.author: roopalik;garye
 translationtype: Human Translation
-ms.sourcegitcommit: 262ee4f092efa11150de61168e6b03c0477f0543
-ms.openlocfilehash: 1573ae126f8b76983abe98b37b9ac4072e70d9d0
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: ff7d5c372500c2cd392ed65a921d8a994b090f23
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -45,7 +46,7 @@ Auf dieser Seite können Sie alle Notebooks im Katalog durchsuchen. Sie können 
 ## <a name="download"></a>Download
 Sie können eine Kopie jedes Notebooks aus dem Katalog in den Machine Learning Studio-Arbeitsbereich herunterladen.
 
-### <a name="from-the-gallery"></a>Aus dem Katalog
+### <a name="download-from-the-gallery"></a>Herunterladen aus dem Katalog
 So laden Sie eine Kopie eines Notebooks aus dem Katalog herunter
 
 1. Öffnen Sie die Detailseite des Notebooks im Katalog
@@ -56,7 +57,7 @@ So laden Sie eine Kopie eines Notebooks aus dem Katalog herunter
 
 Wenn Sie auf **In Studio öffnen** klicken, wird das Notebook in den Machine Learning Studio-Arbeitsbereich geladen und geöffnet (sofern Sie noch nicht bei Studio angemeldet sind, werden Sie aufgefordert, sich mit Ihrem Microsoft-Konto anzumelden, bevor das Notebook in Ihren Arbeitsbereich kopiert wird). Sie finden das Notebook später wieder, indem Sie links auf der Studio-Startseite auf **Notizbücher** klicken.
 
-### <a name="in-machine-learning-studio"></a>In Machine Learning Studio
+### <a name="download-in-machine-learning-studio"></a>Herunterladen in Machine Learning Studio
 Sie können die gleichen Katalognotebooks auch öffnen, während Sie in Machine Learning Studio arbeiten:
 
 1. Klicken Sie in Machine Learning Studio auf **+NEU**
@@ -71,10 +72,5 @@ Das Notebook wird zusammen mit den anderen Notebooks auf der Seite **Notizbüche
 **[ZUM KATALOG >>](http://gallery.cortanaintelligence.com)**
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

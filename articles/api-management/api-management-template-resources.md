@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
-ms.openlocfilehash: 848d25efcae78280b090d3725eb3581c5082efb7
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 3c633d54e6b81576a2fbd1adfc69775ca1bdd09d
+ms.lasthandoff: 04/07/2017
 
 ---
 # <a name="azure-api-management-template-resources"></a>Ressourcen von Azure API Management-Vorlagen
@@ -26,7 +27,7 @@ Azure API Management enthält die folgenden Arten von Ressourcen zur Verwendung 
   
 -   [Glyphenressourcen](#glyphs)  
   
-##  <a name="a-namestringsa-string-resources"></a><a name="strings"></a> Zeichenfolgenressourcen  
+##  <a name="strings"></a> Zeichenfolgenressourcen  
  API Management enthält einen umfassenden Satz von Zeichenfolgenressourcen zur Verwendung im Entwicklerportal. Diese Ressourcen wurden für alle Sprachen lokalisiert, die von API Management unterstützt werden. Im Standardsatz der Vorlagen werden diese Ressourcen für Seitenkopfzeilen, Bezeichnungen und alle konstanten Zeichenfolgen verwendet, die im Entwicklerportal angezeigt werden. Geben Sie zum Verwenden einer Zeichenfolgenressource wie im folgenden Beispiel in Ihren Vorlagen das Ressourcenzeichenfolgen-Präfix gefolgt vom Zeichenfolgennamen an.  
   
 ```  
@@ -83,13 +84,13 @@ Azure API Management enthält die folgenden Arten von Ressourcen zur Verwendung 
   
 -   [UserProfile](#UserProfile)  
   
-###  <a name="a-nameapisstringsa-apisstrings"></a><a name="ApisStrings"></a> ApisStrings  
+###  <a name="ApisStrings"></a> ApisStrings  
   
 |Name|Text|  
 |----------|----------|  
 |PageTitleApis|APIs|  
   
-###  <a name="a-nameappdetailsstringsa-appdetailsstrings"></a><a name="AppDetailsStrings"></a> AppDetailsStrings  
+###  <a name="AppDetailsStrings"></a> AppDetailsStrings  
   
 |Name|Text|  
 |----------|----------|  
@@ -98,7 +99,7 @@ Azure API Management enthält die folgenden Arten von Ressourcen zur Verwendung 
 |WebApplicationsScreenshotAlt|Screenshot|  
 |WebApplicationsScreenshotsHeader|Screenshots|  
   
-###  <a name="a-nameapplicationliststringsa-applicationliststrings"></a><a name="ApplicationListStrings"></a> ApplicationListStrings  
+###  <a name="ApplicationListStrings"></a> ApplicationListStrings  
   
 |Name|Text|  
 |----------|----------|  
@@ -114,13 +115,13 @@ Azure API Management enthält die folgenden Arten von Ressourcen zur Verwendung 
 |WebDevelopersSubmitLink|Submit (Senden)|  
 |WebDevelopersYourApplicationsHeader|Your applications (Ihre Anwendungen)|  
   
-###  <a name="a-nameappstringsa-appstrings"></a><a name="AppStrings"></a> AppStrings  
+###  <a name="AppStrings"></a> AppStrings  
   
 |Name|Text|  
 |----------|----------|  
 |WebApplicationsHeader|Applications (Anwendungen)|  
   
-###  <a name="a-namecommonresourcesa-commonresources"></a><a name="CommonResources"></a> CommonResources  
+###  <a name="CommonResources"></a> CommonResources  
   
 |Name|Text|  
 |----------|----------|  
@@ -131,7 +132,7 @@ Azure API Management enthält die folgenden Arten von Ressourcen zur Verwendung 
 |AzureActiveDirectory|Azure Active Directory|  
 |HttpLargeRequestMessage|Http Request Body too large. (HTTP-Anforderungstext ist zu groß.)|  
   
-###  <a name="a-namecommonstringsa-commonstrings"></a><a name="CommonStrings"></a> CommonStrings  
+###  <a name="CommonStrings"></a> CommonStrings  
   
 |Name|Text|  
 |----------|----------|  
@@ -155,7 +156,7 @@ Azure API Management enthält die folgenden Arten von Ressourcen zur Verwendung 
 |TablePlaceholderNothingToDisplay|There is no data for the selected period and scope (Es sind keine Daten für den ausgewählten Zeitraum und Bereich vorhanden.)|  
 |ButtonLabelClose|Close (Schließen)|  
   
-###  <a name="a-namedocumentationa-documentation"></a><a name="Documentation"></a> Documentation  
+###  <a name="Documentation"></a> Documentation  
   
 |Name|Text|  
 |----------|----------|  
@@ -285,11 +286,11 @@ Azure API Management enthält die folgenden Arten von Ressourcen zur Verwendung 
 |OAuth2AuthorizationServerCommunicationException|An HTTP connection to authorization server could not be established or it has been unexpectedly closed. (Eine HTTP-Verbindung mit dem Autorisierungsserver konnte nicht hergestellt werden oder wurde unerwartet geschlossen.)|  
 |WebDocumentationOAuth2GeneralErrorMessage|Unexpected error occured. (Unerwarteter Fehler.)|  
 |AuthorizationServerCommunicationException|Authorization server communication exception has happened. (Für den Autorisierungsserver ist eine Ausnahme bei der Kommunikation aufgetreten.) Please contact administrator. (Wenden Sie sich an den Administrator.)|  
-|TextblockSubscriptionKeyHeaderDescription|Subscription key which provides access to this API. (Abonnementschlüssel, der den Zugriff auf diese API ermöglicht.) Found in your `<a href='/developer'\>Profile</a\>`. (Gefunden in `<a href='/developer'\>Profile</a\>`.)|  
+|TextblockSubscriptionKeyHeaderDescription|Subscription key which provides access to this API. (Abonnementschlüssel, der den Zugriff auf diese API ermöglicht.) Found in your <a href='/developer'\>Profile</a\> (Gefunden in Ihrem Profil).|  
 |TextblockOAuthHeaderDescription|OAuth 2.0 access token obtained from <i\>{0}</i\>. (OAuth 2.0-Zugriffstoken erhalten von <i\>{0}</i\>.) Supported grant types: <i\>{1}</i\>. (Unterstützte Gewährungstypen: <i\>{1}</i\>.)|  
 |TextblockContentTypeHeaderDescription|Media type of the body sent to the API. (Medientyp des an die API gesendeten Texts.)|  
-|ErrorMessageApiNotAccessible|The API you are trying to call is not accessible at this time. (Die API, die Sie aufrufen möchten, ist derzeit nicht verfügbar.) Please contact the API publisher `<a href="/issues"\>here</a\>`. (Wenden Sie sich an den API-Herausgeber `<a href="/issues"\>here</a\>`.)|  
-|ErrorMessageApiTimedout|The API you are trying to call is taking longer than normal to get response back. (Für die API, die Sie aufrufen möchten, dauert das Erhalten einer Antwort länger als normal.) Please contact the API publisher `<a href="/issues"\>here</a\>`. (Wenden Sie sich an den API-Herausgeber `<a href="/issues"\>here</a\>`.)|  
+|ErrorMessageApiNotAccessible|The API you are trying to call is not accessible at this time. (Die API, die Sie aufrufen möchten, ist derzeit nicht verfügbar.) Please contact the API publisher <a href="/issues"\>here</a\> (Wenden Sie sich an den API-Herausgeber).|  
+|ErrorMessageApiTimedout|The API you are trying to call is taking longer than normal to get response back. (Für die API, die Sie aufrufen möchten, dauert das Erhalten einer Antwort länger als normal.) Please contact the API publisher <a href="/issues"\>here</a\> (Wenden Sie sich an den API-Herausgeber).|  
 |BadRequestParameterExpected|"'{0}' parameter is expected" („Parameter '{0}' wird erwartet“)|  
 |TooltipTextDoubleClickToSelectAll|Double click to select all. (Doppelklicken, um alles auszuwählen.)|  
 |TooltipTextHideRevealSecret|Show/Hide (Ein-/Ausblenden)|  
@@ -303,7 +304,7 @@ Azure API Management enthält die folgenden Arten von Ressourcen zur Verwendung 
 |SectionHeadingCodeSamples|Codebeispiele|  
 |TextblockOpenidConnectHeaderDescription|OpenID Connect id token obtained from <i\>{0}</i\>. (OpenID Connect-ID-Token erhalten von <i\>{0}</i\>.) Supported grant types: <i\>{1}</i\>. (Unterstützte Gewährungstypen: <i\>{1}</i\>.)|  
   
-###  <a name="a-nameerrorpagestringsa-errorpagestrings"></a><a name="ErrorPageStrings"></a> ErrorPageStrings  
+###  <a name="ErrorPageStrings"></a> ErrorPageStrings  
   
 |Name|Text|  
 |----------|----------|  
@@ -321,7 +322,7 @@ Azure API Management enthält die folgenden Arten von Ressourcen zur Verwendung 
 |TitlePotentialCause|Potential cause (Mögliche Ursache)|  
 |TitlePotentialSolution|It's possibly just a temporary issue, a few things to try (Unter Umständen ist es nur ein vorübergehendes Problem. Sie können es mit folgenden Schritten probieren:)|  
   
-###  <a name="a-nameissuesstringsa-issuesstrings"></a><a name="IssuesStrings"></a> IssuesStrings  
+###  <a name="IssuesStrings"></a> IssuesStrings  
   
 |Name|Text|  
 |----------|----------|  
@@ -332,7 +333,7 @@ Azure API Management enthält die folgenden Arten von Ressourcen zur Verwendung 
 |WebIssuesSignIn|Anmelden|  
 |WebIssuesStatusReportedBy|Status: {0} &#124; Reported by {1} (Status: {0} &#124; Gemeldet von {1})|  
   
-###  <a name="a-namenotfoundstringsa-notfoundstrings"></a><a name="NotFoundStrings"></a> NotFoundStrings  
+###  <a name="NotFoundStrings"></a> NotFoundStrings  
   
 |Name|Text|  
 |----------|----------|  
@@ -347,7 +348,7 @@ Azure API Management enthält die folgenden Arten von Ressourcen zur Verwendung 
 |TitlePotentialCause|Potential cause (Mögliche Ursache)|  
 |TitlePotentialSolution|Potential solution (Mögliche Lösung)|  
   
-###  <a name="a-nameproductdetailsstringsa-productdetailsstrings"></a><a name="ProductDetailsStrings"></a> ProductDetailsStrings  
+###  <a name="ProductDetailsStrings"></a> ProductDetailsStrings  
   
 |Name|Text|  
 |----------|----------|  
@@ -369,13 +370,13 @@ Azure API Management enthält die folgenden Arten von Ressourcen zur Verwendung 
 |TextblockSubscriptionDescription|A new subscription will be created as follows: (Ein neues Abonnement wird wie folgt erstellt:)|  
 |TextblockSubscriptionLimitReached|Subscriptions limit reached. (Grenzwert für Abonnements wurde erreicht.)|  
   
-###  <a name="a-nameproductsstringsa-productsstrings"></a><a name="ProductsStrings"></a> ProductsStrings  
+###  <a name="ProductsStrings"></a> ProductsStrings  
   
 |Name|Text|  
 |----------|----------|  
 |PageTitleProducts|Produkte|  
   
-###  <a name="a-nameproviderinfostringsa-providerinfostrings"></a><a name="ProviderInfoStrings"></a> ProviderInfoStrings  
+###  <a name="ProviderInfoStrings"></a> ProviderInfoStrings  
   
 |Name|Text|  
 |----------|----------|  
@@ -383,7 +384,7 @@ Azure API Management enthält die folgenden Arten von Ressourcen zur Verwendung 
 |TextboxExternalIdentitiesSigninInvitation|Alternatively, sign in with (Als Alternative ist die Anmeldung möglich mit)|  
 |TextboxExternalIdentitiesSigninInvitationPrimary|Sign in with: (Anmelden mit:)|  
   
-###  <a name="a-namesigninresourcesa-signinresources"></a><a name="SigninResources"></a> SigninResources  
+###  <a name="SigninResources"></a> SigninResources  
   
 |Name|Text|  
 |----------|----------|  
@@ -479,7 +480,7 @@ Azure API Management enthält die folgenden Arten von Ressourcen zur Verwendung 
 |DialogHeadingTermsOfUse|Terms of Use (Nutzungsbedingungen)|  
 |ValidationMessageConsentNotAccepted|You must agree to the Terms of Use before you can proceed. (Sie müssen den Nutzungsbedingungen zustimmen, bevor Sie fortfahren können.)|  
   
-###  <a name="a-namesigninstringsa-signinstrings"></a><a name="SigninStrings"></a> SigninStrings  
+###  <a name="SigninStrings"></a> SigninStrings  
   
 |Name|Text|  
 |----------|----------|  
@@ -491,7 +492,7 @@ Azure API Management enthält die folgenden Arten von Ressourcen zur Verwendung 
 |WebAuthenticationSigninTitle|Anmelden|  
 |WebAuthenticationSignUpNow|Jetzt anmelden|  
   
-###  <a name="a-namesignupstringsa-signupstrings"></a><a name="SignupStrings"></a> SignupStrings  
+###  <a name="SignupStrings"></a> SignupStrings  
   
 |Name|Text|  
 |----------|----------|  
@@ -501,7 +502,7 @@ Azure API Management enthält die folgenden Arten von Ressourcen zur Verwendung 
 |WebAuthenticationSigninNow|Sign in now (Melden Sie sich jetzt an)|  
 |ButtonLabelSignup|Registrieren|  
   
-###  <a name="a-namesubscriptionliststringsa-subscriptionliststrings"></a><a name="SubscriptionListStrings"></a> SubscriptionListStrings  
+###  <a name="SubscriptionListStrings"></a> SubscriptionListStrings  
   
 |Name|Text|  
 |----------|----------|  
@@ -524,7 +525,7 @@ Azure API Management enthält die folgenden Arten von Ressourcen zur Verwendung 
 |PageTitleRenameSubscription|Rename subscription (Abonnement umbenennen)|  
 |SubscriptionPropertyLabelName|Abonnementname|  
   
-###  <a name="a-namesubscriptionstringsa-subscriptionstrings"></a><a name="SubscriptionStrings"></a> SubscriptionStrings  
+###  <a name="SubscriptionStrings"></a> SubscriptionStrings  
   
 |Name|Text|  
 |----------|----------|  
@@ -535,14 +536,14 @@ Azure API Management enthält die folgenden Arten von Ressourcen zur Verwendung 
 |InformationMessageKeyWasRegenerated|Are you sure that you want to regenerate this key? (Sind Sie sicher, dass Sie diesen Schlüssel neu generieren möchten?)|  
 |ButtonLabelShowKey|Sendung|  
   
-###  <a name="a-nameupdateprofilestringsa-updateprofilestrings"></a><a name="UpdateProfileStrings"></a> UpdateProfileStrings  
+###  <a name="UpdateProfileStrings"></a> UpdateProfileStrings  
   
 |Name|Text|  
 |----------|----------|  
 |ButtonLabelUpdateProfile|Update profile (Profil aktualisieren)|  
 |PageTitleUpdateProfile|Update account information (Kontoinformationen aktualisieren)|  
   
-###  <a name="a-nameuserprofilea-userprofile"></a><a name="UserProfile"></a> UserProfile  
+###  <a name="UserProfile"></a> UserProfile  
   
 |Name|Text|  
 |----------|----------|  
@@ -566,7 +567,7 @@ Azure API Management enthält die folgenden Arten von Ressourcen zur Verwendung 
 |ValidationMessageSubscriptionNameRequired|Der Abonnementname darf nicht leer sein.|  
 |ApiManagementUserLimitReached|This service has reached the maximum number of allowed users. (Für diesen Dienst wurde die maximale Anzahl von zulässigen Benutzern erreicht.) Please upgrade to a higher pricing tier. (Führen Sie ein Upgrade auf einen höheren Tarif durch.)|  
   
-##  <a name="a-nameglyphsa-glyph-resources"></a><a name="glyphs"></a> Glyphenressourcen  
+##  <a name="glyphs"></a> Glyphenressourcen  
  Für Vorlagen des API Management-Entwicklerportals können die Glyphen unter [Glyphicons from Bootstrap](http://getbootstrap.com/components/#glyphicons) (Glyphensymbole von Bootstrap) verwendet werden. Dieser Satz mit Glyphen enthält mehr als 250 Glyphen im Schriftartformat aus dem [Glyphicon](http://glyphicons.com/)-Halflings-Satz. Verwenden Sie folgende Syntax, um einen Glyphen aus diesem Satz zu verwenden.  
   
 ```html  
@@ -577,8 +578,4 @@ Azure API Management enthält die folgenden Arten von Ressourcen zur Verwendung 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [So passen Sie das Azure API Management-Entwicklerportal mithilfe von Vorlagen an](api-management-developer-portal-templates.md).
-
-
-<!--HONumber=Jan17_HO2-->
-
 

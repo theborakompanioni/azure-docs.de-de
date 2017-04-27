@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/10/2017
+ms.date: 03/23/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 308c9f4d59f6c6981af74f4208c9963e3d0102dd
-ms.openlocfilehash: 6644afc1de68230ccca089529b32195c4c8ddfe7
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: e190cfdf6d7a9dee86ed7b9072dc51ca8c993d32
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -33,7 +33,7 @@ Nach Abschluss dieses Tutorials können sich die BambooHR zugewiesenen Azure AD-
 Das in diesem Tutorial beschriebene Szenario besteht aus den folgenden Bausteinen:
 
 * Aktivieren der Anwendungsintegration für BambooHR
-* Konfigurieren der einmaligen Anmeldung
+* Konfigurieren des einmaligen Anmeldens (SSO)
 * Konfigurieren der Benutzerbereitstellung
 * Zuweisen von Benutzern
 
@@ -95,7 +95,7 @@ Im Rahmen dieses Verfahrens müssen Sie eine Base64-codierte Zertifikatsdatei er
    
    ![Einmaliges Anmelden für SAML](./media/active-directory-saas-bamboo-hr-tutorial/IC796692.png "Einmaliges Anmelden für SAML")
    
-   1. Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für BambooHR** den Wert für **Dienst-URL für einmaliges Anmelden**, und fügen Sie ihn in das Textfeld **SSO Login URL** ein.
+   1. Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für BambooHR** den Wert für **Dienst-URL für einmaliges Anmelden**, und fügen Sie ihn in das Textfeld **SSO Login URL** (SSO-Anmelde-URL) ein.
    2. Erstellen Sie eine **Base64-codierte** Datei aus dem heruntergeladenen Zertifikat.  
    
       >[!TIP]
@@ -128,7 +128,7 @@ Damit sich Azure AD-Benutzer bei BambooHR anmelden können, müssen sie in Bamb
 >Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von BambooHR-Benutzerkonten oder mithilfe der von BambooHR bereitgestellten APIs erstellen. 
 > 
 
-## <a name="assig-users"></a>Zuweisen von Benutzern
+## <a name="assign-users"></a>Benutzer zuweisen
 Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
 
 **Führen Sie zum Zuweisen von Benutzern in BambooHR folgende Schritte aus:**

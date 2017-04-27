@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/04/2017
+ms.date: 04/06/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 79004e91c9e22b085b04e446999d4efe05426436
-ms.openlocfilehash: 512c4dc5f77d5f730720909628364c5c9d8b3174
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 6d878b00094f573adc440d2384c426506fea0a40
+ms.lasthandoff: 04/06/2017
 
 
 ---
 # <a name="manage-your-iot-hub-device-identities-in-bulk"></a>Massenverwaltung von IoT Hub-Geräteidentitäten
+
 Jeder IoT Hub verfügt über eine Identitätsregistrierung, die Sie zum Erstellen von gerätebasierten Ressourcen im Dienst verwenden können. Hierzu zählt beispielsweise eine Warteschlange mit gesendeten C2D-Nachrichten. Außerdem wird mit der Identitätsregistrierung der Zugriff auf geräteseitige Endpunkte ermöglicht. In diesem Artikel wird das massenhafte Importieren und Exportieren von Geräteidentitäten in und aus einer Identitätsregistrierung beschrieben.
 
 Import- und Exportvorgänge erfolgen im Kontext von *Aufträgen*, die Ihnen das Anwenden von Massendienstvorgängen auf einen IoT Hub ermöglichen.
@@ -29,16 +30,17 @@ Import- und Exportvorgänge erfolgen im Kontext von *Aufträgen*, die Ihnen das 
 Die **RegistryManager**-Klasse enthält die Methoden **ExportDevicesAsync** und **ImportDevicesAsync**, die das **Job**-Framework verwenden. Diese Methoden ermöglichen das Exportieren, Importieren und Synchronisieren der gesamten IoT Hub-Identitätsregistrierung.
 
 ## <a name="what-are-jobs"></a>Was sind Aufträge?
+
 Identitätsregistrierungsvorgänge verwenden das **Job**-System, wenn der Vorgang:
 
-* eine potenziell lange Ausführungsdauer im Vergleich mit standardmäßigen Laufzeitvorgängen hat oder
+* eine potenziell lange Ausführungsdauer im Vergleich mit standardmäßigen Laufzeitvorgängen hat.
 * eine große Menge von Daten an den Benutzer zurückgibt.
 
 In diesen Fällen erstellt der Vorgang asynchron einen **Auftrag** für diesen IoT Hub, anstatt eines einzelnen API-Aufrufs, mit dem auf das Ergebnis des Vorgangs gewartet bzw. mit dem der Vorgang blockiert wird. Für den Vorgang wird dann sofort ein **JobProperties**-Objekt zurückgegeben.
 
 Der folgende C#-Codeausschnitt zeigt, wie ein Exportauftrag erstellt wird:
 
-```
+```csharp
 // Call an export job on the IoT Hub to retrieve all devices
 JobProperties exportJob = await registryManager.ExportDevicesAsync(containerSasUri, false);
 ```
@@ -47,11 +49,11 @@ JobProperties exportJob = await registryManager.ExportDevicesAsync(containerSasU
 > Um die **RegistryManager**-Klasse in Ihrem C#-Code zu verwenden, fügen Sie das **Microsoft.Azure.Devices**-NuGet-Paket Ihrem Projekt hinzu. Die **RegistryManager**-Klasse befindet sich im **Microsoft.Azure.Devices**-Namespace.
 
 
-Anschließend können Sie die **RegistryManager**-Klasse verwenden, um den Status des **Auftrags** unter Verwendung der zurückgegebenen **JobProperties**-Metadaten abzufragen.
+Sie können die **RegistryManager**-Klasse verwenden, um den Status des **Auftrags** unter Verwendung der zurückgegebenen **JobProperties**-Metadaten abzufragen.
 
 Der folgende C#-Codeausschnitt zeigt, wie alle fünf Sekunden eine Abfrage erfolgt, um festzustellen, ob die Auftragsausführung beendet wurde:
 
-```
+```csharp
 // Wait until job is finished
 while(true)
 {
@@ -69,22 +71,24 @@ while(true)
 ```
 
 ## <a name="export-devices"></a>Exportieren von Geräten
-Verwenden Sie die **ExportDevicesAsync**-Methode, um die gesamte IoT Hub-Identitätsregistrierung mithilfe einer [Shared Access Signature](https://msdn.microsoft.com/library/ee395415.aspx) in einen [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)-Blobcontainer zu exportieren.
+
+Verwenden Sie die **ExportDevicesAsync**-Methode, um die gesamte IoT Hub-Identitätsregistrierung mithilfe einer [Shared Access Signature](../storage/storage-security-guide.md#data-plane-security) in einen [Azure Storage](../storage/index.md)-Blobcontainer zu exportieren.
 
 Mit dieser Methode können Sie zuverlässige Sicherungen Ihrer Geräte-Informationen in einem Blobcontainer erstellen, den Sie steuern.
 
 Die **ExportDevicesAsync** -Methode erfordert zwei Parameter:
 
 * Eine *Zeichenfolge*, die einen URI eines Blobcontainers enthält. Dieser URI muss ein SAS-Token enthalten, das Schreibzugriff auf den Container gewährt. Der Auftrag erstellt zum Speichern der serialisierten Exportgerätedaten ein Blockblob in diesem Container. Das SAS-Token muss diese Berechtigungen enthalten:
-  
-   ```
+
+   ```csharp
    SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.Delete
    ```
+
 * Einen *booleschen* Wert, der angibt, ob Sie Authentifizierungsschlüssel aus Ihren Exportdaten ausschließen möchten. Bei **FALSE** werden Authentifizierungsschlüssel in die Exportausgabe eingeschlossen. Andernfalls werden Schlüssel als **NULL** exportiert.
 
 Der folgende C#-Codeausschnitt zeigt, wie Sie einen Exportauftrag initiieren, der Geräteauthentifizierungsschlüssel in die exportierten Daten einbezieht und für den Abschluss eine Umfrage durchführt:
 
-```
+```csharp
 // Call an export job on the IoT Hub to retrieve all devices
 JobProperties exportJob = await registryManager.ExportDevicesAsync(containerSasUri, false);
 
@@ -108,7 +112,7 @@ Der Auftrag speichert seine Ausgabe im angegebenen Blobcontainer als Blockblob m
 
 Das folgende Beispiel zeigt die Ausgabedaten:
 
-```
+```json
 {"id":"Device1","eTag":"MA==","status":"enabled","authentication":{"symmetricKey":{"primaryKey":"abc=","secondaryKey":"def="}}}
 {"id":"Device2","eTag":"MA==","status":"enabled","authentication":{"symmetricKey":{"primaryKey":"abc=","secondaryKey":"def="}}}
 {"id":"Device3","eTag":"MA==","status":"disabled","authentication":{"symmetricKey":{"primaryKey":"abc=","secondaryKey":"def="}}}
@@ -118,7 +122,7 @@ Das folgende Beispiel zeigt die Ausgabedaten:
 
 Wenn Sie Zugriff auf diese Daten im Code benötigen, können Sie diese Daten mithilfe der **ExportImportDevice** -Klasse problemlos deserialisieren. Der folgende C#-Codeausschnitt zeigt, wie Geräte-Informationen gelesen werden, die zuvor in einen Blockblob exportiert wurden:
 
-```
+```csharp
 var exportedDevices = new List<ExportImportDevice>();
 
 using (var streamReader = new StreamReader(await blob.OpenReadAsync(AccessCondition.GenerateIfExistsCondition(), RequestOptions, null), Encoding.UTF8))
@@ -134,44 +138,40 @@ using (var streamReader = new StreamReader(await blob.OpenReadAsync(AccessCondit
 
 > [!NOTE]
 > Sie können auch die **GetDevicesAsync**-Methode der **RegistryManager**-Klasse verwenden, um eine Liste mit Ihren Geräten abzurufen. Bei diesem Ansatz gilt jedoch eine feste Obergrenze von 1000 für die Anzahl der Geräteobjekte, die zurückgegeben werden. Die **GetDevicesAsync** -Methode sollte nur in Entwicklungsszenarien zum Unterstützen des Debuggens verwendet werden und wird für Produktionsworkloads nicht empfohlen.
-> 
-> 
 
 ## <a name="import-devices"></a>Importieren von Geräten
+
 Die **ImportDevicesAsync**-Methode in der **RegistryManager**-Klasse ermöglicht Ihnen das Anwenden von Massenvorgängen (Import/Synchronisierung) auf eine IoT Hub-Identitätsregistrierung. Wie die **ExportDevicesAsync**-Methode auch, wird für die **ImportDevicesAsync**-Methode das **Job**-Framework verwendet.
 
 Nutzen Sie die **ImportDevicesAsync**-Methode umsichtig, damit mit ihr nicht nur neue Geräte in der Identitätsregistrierung bereitgestellt, sondern auch vorhandene Geräte aktualisiert und gelöscht werden können.
 
 > [!WARNING]
 > Ein Importvorgang kann nicht rückgängig gemacht werden. Sichern Sie vor dem Verwenden der **ExportDevicesAsync**-Methode stets Ihre vorhandenen Daten in einem anderen Blobcontainer, bevor Sie Massenänderungen an Ihrer Identitätsregistrierung vornehmen.
-> 
-> 
 
 Die **ImportDevicesAsync** -Methode erfordert zwei Parameter:
 
-* Eine *Zeichenfolge*, die einen URI eines [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)-Blobcontainers als *Eingabe* in den Auftrag enthält. Dieser URI muss ein SAS-Token enthalten, das Lesezugriff auf den Container gewährt. Dieser Container muss ein Blob mit dem Namen **devices.txt** enthalten, das die serialisierten Gerätedaten enthält, die in Ihre Identitätsregistrierung importiert werden sollen. Die importierten Daten müssen Geräteinformationen im gleichen JSON-Format enthalten, das vom **ExportImportDevice**-Auftrag verwendet wird, wenn er das Blob **devices.txt** erstellt. Das SAS-Token muss diese Berechtigungen enthalten:
-  
-   ```
+* Eine *Zeichenfolge*, die einen URI eines [Azure Storage](../storage/index.md)-Blobcontainers als *Eingabe* in den Auftrag enthält. Dieser URI muss ein SAS-Token enthalten, das Lesezugriff auf den Container gewährt. Dieser Container muss ein Blob mit dem Namen **devices.txt** enthalten, das die serialisierten Gerätedaten enthält, die in Ihre Identitätsregistrierung importiert werden sollen. Die importierten Daten müssen Geräteinformationen im gleichen JSON-Format enthalten, das vom **ExportImportDevice**-Auftrag verwendet wird, wenn er das Blob **devices.txt** erstellt. Das SAS-Token muss diese Berechtigungen enthalten:
+
+   ```csharp
    SharedAccessBlobPermissions.Read
    ```
 * Eine *Zeichenfolge*, die einen URI eines [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)-Blobcontainers als *Ausgabe* aus dem Auftrag enthält. Der Auftrag erstellt in diesem Container ein Blockblob zum Speichern von Fehlerinformationen aus dem abgeschlossenen **Importauftrag**. Das SAS-Token muss diese Berechtigungen enthalten:
-  
-   ```
+
+   ```csharp
    SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.Delete
    ```
 
 > [!NOTE]
 > Die beiden Parameter können auf den gleichen Blobcontainer verweisen. Die separaten Parameter ermöglichen einfach mehr Kontrolle über Ihre Daten, da der Ausgabecontainer zusätzliche Berechtigungen erfordert.
-> 
-> 
 
 Der folgende C#-Codeausschnitt zeigt, wie ein Importauftrag ausgelöst wird:
 
-```
+```csharp
 JobProperties importJob = await registryManager.ImportDevicesAsync(containerSasUri, containerSasUri);
 ```
 
 ## <a name="import-behavior"></a>Importverhalten
+
 Sie können die **ImportDevicesAsync** -Methode zum Anwenden der folgenden Massenvorgänge auf Ihre Identitätsregistrierung verwenden:
 
 * Massenregistrierung neuer Geräte
@@ -196,17 +196,16 @@ Verwenden Sie die optionale **importMode**-Eigenschaft in den Importserialisieru
 
 > [!NOTE]
 > Wenn die Serialisierungsdaten nicht explizit ein **importMode**-Flag für ein Gerät definieren, wird standardmäßig **createOrUpdate** während des Importvorgangs gewählt.
-> 
-> 
 
 ## <a name="import-devices-example--bulk-device-provisioning"></a>Beispiel für das Importieren von Geräten – Massengerätebereitstellung
+
 Im folgenden C#-Codebeispiel wird veranschaulicht, wie Sie mehrere Geräteidentitäten generieren, mit denen Folgendes durchgeführt wird:
 
 * Einfügen von Authentifizierungsschlüsseln
 * Schreiben von Geräteinformationen in ein Blockblob
 * Importieren der Geräte in die Identitätsregistrierung
 
-```
+```csharp
 // Provision 1,000 more devices
 var serializedDevices = new List<string>();
 
@@ -268,9 +267,10 @@ while(true)
 ```
 
 ## <a name="import-devices-example--bulk-deletion"></a>Beispiel für das Importieren von Geräten – Massenlöschung
+
 Im folgenden Codebeispiel wird das Löschen der Geräte gezeigt, die Sie mithilfe des vorherigen Codebeispiels hinzugefügt haben:
 
-```
+```csharp
 // Step 1: Update each device's ImportMode to be Delete
 sb = new StringBuilder();
 serializedDevices.ForEach(serializedDevice =>
@@ -317,10 +317,11 @@ while(true)
 
 ```
 
-## <a name="getting-the-container-sas-uri"></a>Abrufen des SAS-URI des Containers
+## <a name="get-the-container-sas-uri"></a>Abrufen des SAS-URI des Containers
+
 Das folgende Codebeispiel veranschaulicht das Erstellen eines [SAS-URI](../storage/storage-dotnet-shared-access-signature-part-2.md) mit Lese-, Schreib- und Löschberechtigungen für einen Blobcontainer:
 
-```
+```csharp
 static string GetContainerSasUri(CloudBlobContainer container)
 {
   // Set the expiry time and permissions for the container.
@@ -345,6 +346,7 @@ static string GetContainerSasUri(CloudBlobContainer container)
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 In diesem Artikel haben Sie gelernt, wie Massenvorgänge auf die Identitätsregistrierung in einem IoT Hub angewendet werden. Folgen Sie diesen Links, um mehr über das Verwalten von Azure IoT Hub zu erfahren:
 
 * [IoT Hub-Metriken][lnk-metrics]

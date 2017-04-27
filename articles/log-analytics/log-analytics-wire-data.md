@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 15858f7b7436536e6bae7fcfd6a50c722d2d04a2
-ms.openlocfilehash: be00cb9b1e8ba5d9d8368695ca8d448d466e8f47
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: b1db5cd0149374842b0201cd6b820436f3822325
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -24,7 +25,7 @@ ms.openlocfilehash: be00cb9b1e8ba5d9d8368695ca8d448d466e8f47
 Bei Wire Data handelt es sich um zusammengefasste Netzwerk- und Leistungsdaten von Computern mit OMS-Agents, z.B. Operations Manager und Agents mit Windows-Verbindung. Netzwerkdaten werden mit Ihren Protokolldaten kombiniert, um Ihnen das Korrelieren von Daten zu ermöglichen. Mit OMS-Agents, die auf Computern in Ihrer IT-Infrastruktur installiert sind, werden Netzwerkdaten überwacht, die für die Netzwerkschichten 2 und 3 des [OSI-Modells](https://en.wikipedia.org/wiki/OSI_model) an Computer und von Computern gesendet werden, z.B. die verschiedenen verwendeten Protokolle und Ports.
 
 > [!NOTE]
-> Die Wire Data-Lösung ist zum Hinzufügen zu Arbeitsbereichen derzeit nicht verfügbar. Kunden, für die die Wire Data-Lösung bereits aktiviert wurde, können diese Lösung weiterhin verwenden.
+> Die Wire Data 1.0-Lösung ist zum Hinzufügen zu Arbeitsbereichen derzeit nicht verfügbar. Kunden, für die bereits die Wire Data 1.0-Lösung aktiviert wurde, können weiterhin die Wire Data 1.0-Lösung verwenden. Neue Kunden hingegen müssen stattdessen die [Wire Data 2.0](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.WireData2OMS?tab=Overview)-Lösung verwenden.
 >
 >
 
@@ -106,9 +107,4 @@ Anforderungen: Um das folgende Beispiel verwenden zu können, muss die Sicherhei
 ## <a name="next-steps"></a>Nächste Schritte
 * [Durchsuchen von Protokollen](log-analytics-log-searches.md) und darüber, wie Sie ausführliche Wire Data-Suchdatensätze anzeigen.
 * Sehen Sie sich den Blogeintrag [Using Wire Data in Operations Management Suite Log Search](http://blogs.msdn.com/b/dmuscett/archive/2015/09/09/using-wire-data-in-operations-management-suite.aspx) (Verwenden von Wire Data-Daten für die Protokollsuche der Operations Management Suite) von Daniele Muscetta mit weiteren Informationen dazu an, wie oft Daten erfasst werden und wie Sie Sammlungseigenschaften für Operations Manager-Agents ändern können.
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

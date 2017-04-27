@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/09/2017
+ms.date: 03/30/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 5ea75843bf671ad4d879c01cdd20d5bbc5e889c2
-ms.openlocfilehash: 08c991e9f217c49828889d0b806888e193b245a8
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 75685a21ce4a212638016be62640badd4870454a
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -113,12 +114,7 @@ Die folgende Richtlinie gibt vor, dass die [Speicherdienstverschlüsselung](../s
 Diese Richtlinienregel steht auch als integrierte Richtliniendefinition mit der Ressourcen-ID `/providers/Microsoft.Authorization/policyDefinitions/7c5a74bf-ae94-4a74-8fcf-644d1e0e6e6f` zur Verfügung.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Nach dem Definieren einer Richtlinienregel (wie in den vorherigen Beispielen zu sehen) müssen Sie die Richtliniendefinition erstellen und einem Bereich zuweisen. Bei dem Bereich kann es sich um ein Abonnement, um eine Ressourcengruppe oder um eine Ressource handeln. Beispiele zum Erstellen und Zuweisen von Richtlinien finden Sie unter [Zuweisen und Verwalten von Richtlinien](resource-manager-policy-create-assign.md). 
+* Nach dem Definieren einer Richtlinienregel (wie in den vorherigen Beispielen zu sehen) müssen Sie die Richtliniendefinition erstellen und einem Bereich zuweisen. Bei dem Bereich kann es sich um ein Abonnement, um eine Ressourcengruppe oder um eine Ressource handeln. Wenn Sie Richtlinien über das Portal zuweisen möchten, siehe [Verwenden des Azure-Portals zum Zuweisen und Verwalten von Ressourcenrichtlinien](resource-manager-policy-portal.md). Wenn Sie Richtlinien über die REST-API, PowerShell oder die Azure-CLI zuweisen möchten, siehe [Zuweisen und Verwalten von Richtlinien mit Skripts](resource-manager-policy-create-assign.md). 
 * Anleitungen dazu, wie Unternehmen Abonnements mit Resource Manager effektiv verwalten können, finden Sie unter [Azure-Unternehmensgerüst - Präskriptive Abonnementgovernance](resource-manager-subscription-governance.md).
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

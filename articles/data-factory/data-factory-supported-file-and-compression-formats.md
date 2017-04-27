@@ -12,17 +12,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2017
+ms.date: 03/29/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: edef5fbc015f6b6ba01aa2bfc3d908e6f11159cc
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 06f7b38f5d08f2182f08d38a11dec526042c1828
+ms.lasthandoff: 03/31/2017
 
 
 ---
 
 # <a name="file-and-compression-formats-supported-by-azure-data-factory"></a>Von Azure Data Factory unterstützte Datei- und Komprimierungsformate
+*Dieses Thema bezieht sich auf die folgenden Connectors: [Amazon S3](data-factory-amazon-simple-storage-service-connector.md), [Azure-Blob](data-factory-azure-blob-connector.md), [Azure Data Lake Store](data-factory-azure-datalake-connector.md), [Dateisystem](data-factory-onprem-file-system-connector.md), [FTP](data-factory-ftp-connector.md), [HDFS](data-factory-hdfs-connector.md), [HTTP](data-factory-http-connector.md) und [SFTP](data-factory-sftp-connector.md).*
+
 Azure Data Factory unterstützt die folgenden Dateiformattypen:
 
 * [Textformat](#text-format)
@@ -47,7 +49,7 @@ Wenn Sie aus einer Textdatei lesen oder in eine Textdatei schreiben möchten, le
 | treatEmptyAsNull |Gibt an, ob eine NULL- oder eine leere Zeichenfolge beim Lesen von Daten aus einer Eingabedatei als NULL-Wert behandelt werden sollen. |**True (Standard)**<br/>False |Nein |
 
 ### <a name="textformat-example"></a>TextFormat-Beispiel
-In der folgenden JSON-Definition für ein Dataset sind einige der optionalen Eigenschaften angegeben. 
+In der folgenden JSON-Definition für ein Dataset sind einige der optionalen Eigenschaften angegeben.
 
 ```json
 "typeProperties":
@@ -80,7 +82,7 @@ Zur Verwendung von `escapeChar` anstelle von `quoteChar` ersetzen Sie die Zeile 
 * Sie kopieren aus einer Textdatei und möchten einige Zeilen am Anfang überspringen, die keine Daten oder Kopfzeileninformationen enthalten. Geben Sie mit `skipLineCount` die Anzahl von Zeilen an, die übersprungen werden sollen. Wenn der Rest der Datei eine Kopfzeile enthält, können Sie auch `firstRowAsHeader` angeben. Wenn sowohl `skipLineCount` als auch `firstRowAsHeader` angegeben sind, werden erst die Zeilen übersprungen und dann die Kopfzeileninformationen aus der Eingabedatei gelesen.
 
 ## <a name="json-format"></a>JSON-Format
-Informationen zum **unveränderten Importieren/Exportieren einer JSON-Datei in bzw. aus DocumentDB** finden Sie im Abschnitt [Importieren oder Exportieren von JSON-Dokumenten](data-factory-azure-documentdb-connector.md#importexport-json-documents) im Artikel [Verschieben von Daten in/aus Azure DocumentDB](data-factory-azure-documentdb-connector.md). 
+Informationen zum **unveränderten Importieren/Exportieren einer JSON-Datei in bzw. aus DocumentDB** finden Sie im Abschnitt [Importieren oder Exportieren von JSON-Dokumenten](data-factory-azure-documentdb-connector.md#importexport-json-documents) im Artikel [Verschieben von Daten in/aus Azure DocumentDB](data-factory-azure-documentdb-connector.md).
 
 Wenn Sie JSON-Dateien analysieren oder die Daten im JSON-Format schreiben möchten, legen Sie für die `type`-Eigenschaft im Abschnitt `format` den Wert **JsonFormat** fest. Sie können auch die folgenden **optionalen** Eigenschaften im Abschnitt `format` angeben. Informationen zum Konfigurieren finden Sie im Abschnitt [JsonFormat-Beispiel](#jsonformat-example).
 
@@ -452,7 +454,7 @@ Beachten Sie folgende Punkte:
 * Komplexe Datentypen werden nicht unterstützt (MAP, LIST).
 * Für die Parquet-Datei stehen die folgenden mit der Komprimierung zusammenhängenden Optionen zur Verfügung: NONE, SNAPPY, GZIP und LZO. Data Factory unterstützt das Lesen von Daten aus ORC-Dateien in jedem der oben genannten komprimierten Formate. Zum Lesen der Daten wird der Komprimierungscodec in den Metadaten verwendet. Beim Schreiben in eine Parquet-Datei wählt Data Factory hingegen SNAPPY (Standardeinstellung für das Parquet-Format). Derzeit gibt es keine Option zum Überschreiben dieses Verhaltens.
 
-## <a name="compression-support"></a>Unterstützung für die Komprimierung 
+## <a name="compression-support"></a>Unterstützung für die Komprimierung
 Die Verarbeitung großer Datenmengen kann zu E/A- und Netzwerkengpässen führen. Aus diesem Grund kann die Komprimierung von Daten in Speichern nicht nur die Datenübertragung im Netzwerk beschleunigen und Speicherplatz sparen, sondern auch erhebliche Leistungssteigerungen bei der Verarbeitung von Big Data bewirken. Zurzeit wird die Komprimierung für dateibasierte Datenspeicher wie etwa Azure-Blobs oder das lokale Dateisystem unterstützt.  
 
 Um die Komprimierung für ein Dataset anzugeben, verwenden Sie im JSON-Dataset die Eigenschaft für die **Komprimierung** wie im folgenden Beispiel:   
@@ -511,3 +513,4 @@ Informationen zu den von Azure Data Factory unterstützten dateibasierten Datens
 - [HDFS](data-factory-hdfs-connector.md)
 - [Dateisystem](data-factory-onprem-file-system-connector.md)
 - [Amazon S3](data-factory-amazon-simple-storage-service-connector.md)
+

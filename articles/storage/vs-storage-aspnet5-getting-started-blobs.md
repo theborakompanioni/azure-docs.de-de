@@ -1,6 +1,6 @@
 ---
-title: Erste Schritte mit Blob Storage und verbundenen Visual Studio-Diensten (ASP.NET 5) | Microsoft Docs
-description: "Erfahren Sie etwas über die ersten Schritte mit Azure BLOB-Speicher in einem ASP.NET 5-Projekt in Visual Studio, nachdem Sie mithilfe von verbundenen Visual Studio-Diensten ein Speicherkonto erstellt haben."
+title: Erste Schritte mit Blob Storage und verbundenen Visual Studio-Diensten (ASP.NET Core) | Microsoft-Dokumentation
+description: "Informieren Sie sich über die ersten Schritte mit Azure Blob Storage in einem ASP.NET Core-Projekt in Visual Studio, nachdem Sie mithilfe von verbundenen Visual Studio-Diensten ein Speicherkonto erstellt haben."
 services: storage
 documentationcenter: 
 author: TomArcher
@@ -15,23 +15,24 @@ ms.topic: article
 ms.date: 12/02/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 88e6ce0deeb5dab276b5ae49f6c99391e37495f4
-ms.openlocfilehash: 2a31f6d8aa00e89e8dbbe0089fc76ecbb2102b3c
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: e725015c8be7ecfa908f0ae75986b73f218fa3ae
+ms.lasthandoff: 04/06/2017
 
 
 ---
-# <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-5"></a>Erste Schritte mit Azure-BLOB-Speicher und verbundenen Visual Studio-Diensten (ASP.NET 5)
+# <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-core"></a>Erste Schritte mit Azure Blob Storage und verbundenen Visual Studio-Diensten (ASP.NET Core)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## <a name="overview"></a>Übersicht
-Dieser Artikel beschreibt die ersten Schritte beim Verwenden von Azure-BLOB-Speicher in Visual Studio, nachdem Sie über das Visual Studio-Dialogfeld "Verbundene Dienste hinzufügen" in einem ASP.NET 5-Projekt ein Azure-Speicherkonto erstellt oder auf ein solches Konto verwiesen haben.
+Dieser Artikel beschreibt die ersten Schritte beim Verwenden von Azure Blob Storage in Visual Studio, nachdem Sie über das Visual Studio-Dialogfeld „Verbundene Dienste hinzufügen“ in einem ASP.NET Core-Projekt ein Azure Storage-Konto erstellt oder auf ein solches Konto verwiesen haben.
 
-Die BLOB-Speicherung in Azure ist ein Dienst zur Speicherung großer Mengen unstrukturierter Daten, auf die von überall auf der Welt über HTTP oder HTTPS zugegriffen werden kann. Ein einzelner BLOB kann eine beliebige Größe aufweisen. BLOBs können Bilder, Audio- und Videodateien, Rohdaten und Dokumentdateien enthalten. Dieser Artikel beschreibt die ersten Schritte mit dem BLOB-Speicher, nachdem Sie über das Visual Studio-Dialogfeld **Verbundene Dienste hinzufügen** ein Azure-Speicherkonto in einem ASP.NET 5-Projekt erstellt haben.
+Die BLOB-Speicherung in Azure ist ein Dienst zur Speicherung großer Mengen unstrukturierter Daten, auf die von überall auf der Welt über HTTP oder HTTPS zugegriffen werden kann. Ein einzelner BLOB kann eine beliebige Größe aufweisen. BLOBs können Bilder, Audio- und Videodateien, Rohdaten und Dokumentdateien enthalten. Dieser Artikel beschreibt die ersten Schritte mit dem Blob Storage, nachdem Sie über das Visual Studio-Dialogfeld **Verbundene Dienste hinzufügen** ein Azure Storage-Konto in einem ASP.NET Core-Projekt erstellt haben.
 
 Dateien werden in Ordnern gespeichert, Speicher-BLOBs analog dazu in Containern. Nachdem Sie einen Speicher erstellt haben, erstellen Sie mindestens einen Container in dem Speicher. Beispielsweise können Sie in einem Speicher namens „Notizbuch“ Container im Speicher namens „Bilder“ erstellen, um Bilder zu speichern, und einen anderen namens „Audio“ erstellen, um Audiodateien zu speichern. Nachdem Sie die Container erstellt haben, können Sie einzelne BLOB-Dateien in diese hochladen. Weitere Informationen zum programmgesteuerten Bearbeiten von Blobs finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](storage-dotnet-how-to-use-blobs.md) .
 
 ## <a name="access-blob-containers-in-code"></a>Zugreifen auf BLOB-Container in Code
-Für den programmgesteuerten Zugriff auf Blobs in ASP.NET 5-Projekten müssen Sie die folgenden Elemente hinzuzufügen, wenn sie nicht bereits vorhanden sind.
+Für den programmgesteuerten Zugriff auf Blobs in ASP.NET Core-Projekten müssen Sie die folgenden Elemente hinzuzufügen, wenn sie nicht bereits vorhanden sind.
 
 1. Fügen Sie die folgenden Namespace-Deklarationen zum Anfang aller C#-Dateien hinzu, in denen Sie programmgesteuert auf den Azure-Speicher zugreifen möchten:
    
@@ -53,7 +54,7 @@ Für den programmgesteuerten Zugriff auf Blobs in ASP.NET 5-Projekten müssen Si
         // Create a blob client.
         CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
    
-        // Get a reference to a container named “mycontainer.”
+        // Get a reference to a container named "mycontainer."
         CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
 
 ## <a name="create-a-container-in-code"></a>Erstellen eines Containers in Code
@@ -62,14 +63,14 @@ Sie können den **CloudBlobClient** auch zum Erstellen eines Containers in Ihrem
     // Create a blob client.
     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-    // Get a reference to a container named “my-new-container.”
+    // Get a reference to a container named "my-new-container."
     CloudBlobContainer container = blobClient.GetContainerReference("my-new-container");
 
-    // If “mycontainer” doesn’t exist, create it.
+    // If "mycontainer" doesn't exist, create it.
     await container.CreateIfNotExistsAsync();
 
 
-**HINWEIS:** Die APIs, die Aufrufe zum Azure-Speicher in ASP.NET 5 ausführen, sind asynchron. Unter [Asynchrone Programmierung mit Async und Await](http://msdn.microsoft.com/library/hh191443.aspx) finden Sie weitere Informationen. Im folgenden Code wird die Programmierung mit Async-Methoden angenommen.
+**HINWEIS:** Die APIs, die Aufrufe zum Azure Storage in ASP.NET Core ausführen, sind asynchron. Unter [Asynchrone Programmierung mit Async und Await](http://msdn.microsoft.com/library/hh191443.aspx) finden Sie weitere Informationen. Im folgenden Code wird die Programmierung mit Async-Methoden angenommen.
 
 Um die Dateien im Container für alle Benutzer zur Verfügung zu stellen, können Sie den Container mithilfe des folgenden Codes als öffentlich festlegen.
 
@@ -79,20 +80,20 @@ Um die Dateien im Container für alle Benutzer zur Verfügung zu stellen, könne
     });
 
 ## <a name="upload-a-blob-into-a-container"></a>Hochladen eines Blobs in einen Container
-Rufen Sie einen Containerverweis ab, und verwenden Sie diesen dann zum Abrufen eines BLOB-Verweises, um eine BLOB-Datei in einen Container hochzuladen. Sobald Sie über einen BLOB-Verweis verfügen, können Sie jeden Datenstrom in diesen hochladen, indem Sie die **UploadFromStreamAsync()** -Methode aufrufen. Dieser Vorgang erstellt den BLOB, wenn dieser noch nicht vorhanden ist, oder überschreibt ihn, wenn er vorhanden ist. Im folgenden Beispiel wird gezeigt, wie ein Blob in einen bereits erstellten Container hochgeladen wird.
+Rufen Sie einen Containerverweis ab, und verwenden Sie diesen dann zum Abrufen eines BLOB-Verweises, um eine BLOB-Datei in einen Container hochzuladen. Sobald Sie über einen BLOB-Verweis verfügen, können Sie jeden Datenstrom in diesen hochladen, indem Sie die **UploadFromStreamAsync()** -Methode aufrufen. Dieser Vorgang erstellt den Blob, wenn dieser noch nicht vorhanden ist, oder überschreibt ihn, wenn er vorhanden ist. Im folgenden Beispiel wird gezeigt, wie ein Blob in einen bereits erstellten Container hochgeladen wird.
 
     // Get a reference to a blob named "myblob".
     CloudBlockBlob blockBlob = container.GetBlockBlobReference("myblob");
 
     // Create or overwrite the "myblob" blob with the contents of a local file
-    // named “myfile”.
+    // named "myfile".
     using (var fileStream = System.IO.File.OpenRead(@"path\myfile"))
     {
         await blockBlob.UploadFromStreamAsync(fileStream);
     }
 
 ## <a name="list-the-blobs-in-a-container"></a>Auflisten der Blobs in einem Container
-Um die Blobs in einem Container aufzuführen, müssen Sie zuerst einen Containerverweis abrufen. Anschließend können Sie die **ListBlobsSegmentedAsync()** -Methode des Containers aufrufen, um die darin enthaltenen BLOBs und/oder Verzeichnisse abzurufen. Damit Sie auf die zahlreichen Eigenschaften und Methoden für ein zurückgegebenes **IListBlobItem**-Objekt zugreifen können, müssen Sie es in ein **CloudBlockBlob**-, **CloudPageBlob**- oder **CloudBlobDirectory**-Objekt umwandeln. Wenn der BLOB-Typ unbekannt ist, können Sie eine Typüberprüfung ausführen, um zu bestimmen, in welchen Typ die Umwandlung erfolgen soll. Im folgenden Code wird gezeigt, wie der URI der einzelnen Elemente in einem Container abgerufen und ausgegeben wird:
+Um die Blobs in einem Container aufzuführen, müssen Sie zuerst einen Containerverweis abrufen. Anschließend können Sie die **ListBlobsSegmentedAsync()** -Methode des Containers aufrufen, um die darin enthaltenen BLOBs und/oder Verzeichnisse abzurufen. Damit Sie auf die zahlreichen Eigenschaften und Methoden für ein zurückgegebenes **IListBlobItem**-Objekt zugreifen können, müssen Sie es in ein **CloudBlockBlob**-, **CloudPageBlob**- oder **CloudBlobDirectory**-Objekt umwandeln. Wenn der Blob-Typ unbekannt ist, können Sie eine Typüberprüfung ausführen, um zu bestimmen, in welchen Typ die Umwandlung erfolgen soll. Im folgenden Code wird gezeigt, wie der URI der einzelnen Elemente in einem Container abgerufen und ausgegeben wird:
 
     BlobContinuationToken token = null;
     do
@@ -132,7 +133,7 @@ Wenn Sie ein Blob herunterladen möchten, rufen Sie zuerst einen Verweis auf das
     // Get a reference to a blob named "photo1.jpg".
     CloudBlockBlob blockBlob = container.GetBlockBlobReference("photo1.jpg");
 
-    // Save the blob contents to a file named “myfile”.
+    // Save the blob contents to a file named "myfile".
     using (var fileStream = System.IO.File.OpenWrite(@"path\myfile"))
     {
         await blockBlob.DownloadToStreamAsync(fileStream);
@@ -151,10 +152,5 @@ Wenn Sie einen BLOB löschen möchten, rufen Sie zuerst einen Verweis auf den BL
 
 ## <a name="next-steps"></a>Nächste Schritte
 [!INCLUDE [vs-storage-dotnet-blobs-next-steps](../../includes/vs-storage-dotnet-blobs-next-steps.md)]
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

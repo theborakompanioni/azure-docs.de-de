@@ -15,9 +15,9 @@ ms.workload:
 ms.date: 02/13/2017
 ms.author: ruturajd
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: ef4324ebf3c24cdf2ebed58e4938f401b66b9c95
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: c75a3a2477f113f17aab7a3e1969f15a4ec88a02
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -37,6 +37,13 @@ Kommentare oder Fragen können Sie am Ende dieses Artikels oder im [Forum zu Azu
 * Das Masterziel sollte sich in einem Netzwerk befinden, das mit dem Prozessserver und dem Konfigurationsserver kommunizieren kann.
 * Die Version des Masterziels darf nicht höher als die des Prozess- und des Konfigurationsservers sein. Beispiel: Bei Version 9.4 des Konfigurationsservers kann die Version des Masterziels 9.4 oder 9.3, aber nicht 9.5 sein.
 * Das Masterziel kann nur ein virtueller VMware-Computer und kein physischer Server sein.
+* Das Masterziel muss die unten stehende Größenrichtlinie erfüllen.
+    * RAM: 6 GB oder mehr
+    * Größe des Betriebssystemdatenträgers: 50 GB oder mehr (für die CentOS6.6-Installation)
+    * Zusätzliche Datenträgergröße für Aufbewahrungslaufwerk: 1 TB
+    * CPU-Kerne: mindestens 4 Kerne
+
+
 
 
 ## <a name="steps-to-deploy-the-master-target-server"></a>Schritte zum Bereitstellen des Masterzielservers
@@ -401,5 +408,6 @@ Sie können jetzt mit [Reprotection](site-recovery-how-to-reprotect.md) (Erneute
 
 * Stellen Sie sicher, dass Sie Storage vMotion nicht auf Verwaltungskomponenten wie dem Masterziel aktivieren. Wenn das Masterziel nach erfolgreichem erneuten Schützen verschoben wird, können die Datenträger des virtuellen Computers nicht getrennt werden, und das Failback schlägt fehl.
 * Das Masterziel darf keine Momentaufnahmen auf dem virtuellen Computer aufweisen. Wenn Momentaufnahmen vorhanden sind, schlägt das Failback fehl.
-* Aufgrund von benutzerdefinierten NIC-Konfigurationen bei einigen Kunden ist die Netzwerkschnittstelle während des Systemstarts deaktiviert, und der Masterziel-Agent kann nicht initialisiert werden. Stellen Sie sicher, dass die folgenden Eigenschaften richtig festgelegt sind. Überprüfen Sie diese Eigenschaften in den Dateien der Ethernet-Karte */etc/sysconfig/network-scripts/ifcfg-eth*.       * BOOTPROTO=dhcp * ONBOOT=yes
+* Aufgrund von benutzerdefinierten NIC-Konfigurationen bei einigen Kunden ist die Netzwerkschnittstelle während des Systemstarts deaktiviert, und der Masterziel-Agent kann nicht initialisiert werden. Stellen Sie sicher, dass die folgenden Eigenschaften richtig festgelegt sind. Überprüfen Sie diese Eigenschaften in den Dateien der Ethernet-Karte: „/etc/sysconfig/network-scripts/ifcfg-eth*“.
+        * BOOTPROTO=dhcp * ONBOOT=yes
 

@@ -12,11 +12,13 @@ ms.workload: sql-data-warehouse
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2016
+ms.custom: reference
+ms.date: 03/30/2017
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ab5b0c283d1bd3fd1b734082d5ccffa4125f6de4
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 9fe41f12960dc099700e01573b4f03ebf63f8749
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -34,7 +36,7 @@ In diesem Abschnitt werden Artikel aufgelistet, die kürzlich mit einem sehr umf
 | &nbsp; | Artikel | Aktualisierter Text, Ausschnitt | Aktualisierungsdatum |
 | ---:|:--- |:--- |:--- |
 | 2 |[Laden von Daten aus Azure Blob Storage in SQL Data Warehouse (PolyBase)](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md) |/- To track bytes and files SELECT  r.command,  s.request_id,  r.status,  count(distinct input_name) as nbr_files,  sum(s.bytes_processed)/1024/1024 as gb_processed FROM  sys.dm_pdw_exec_requests r  inner join sys.dm_pdw_dms_external_work s  on r.request_id = s.request_id WHERE  r. label  = 'CTAS : Load  cso . DimProduct  '  OR r. label  = 'CTAS : Load  cso . FactOnlineSales  ' GROUP BY  r.command,  s.request_id,  r.status ORDER BY  nbr_files desc,  gb_processed desc; |2016-09-07 |
-| 3 |[SQL Data Warehouse-Wiederherstellung](sql-data-warehouse-restore-database-overview.md) |** Kann ich ein angehaltenes Data Warehouse wiederherstellen?** Um ein angehaltenes Data Warehouse wiederherzustellen, müssen Sie das Data Warehouse zuerst wieder online schalten. Sobald das Data Warehouse wieder online geschaltet wurde, stehen Ihnen Wiederherstellungspunkte aus sieben Tage zur Auswahl. ** Wiederherstellen in eine georedundante Region** Wenn Sie georedundanten Speicher verwenden, können Sie das Data Warehouse in das gekoppelte Rechenzentrum in einer anderen geografischen Region wiederherstellen. Das Data Warehouse wird aus der letzten täglichen Sicherung wiederhergestellt. ** Zeitachse der Wiederherstellung** Sie können eine Datenbank auf jeden Wiederherstellungspunkt innerhalb der letzten sieben Tage wiederherstellen. Momentaufnahmen werden alle vier bis acht Stunden gestartet und sind sieben Tage lang verfügbar. Wenn eine Momentaufnahme älter als sieben Tage ist, läuft sie ab, und ihr Wiederherstellungspunkt ist nicht mehr verfügbar. ** Kosten für die Wiederherstellung** Die Speichergebühren für das wiederhergestellte Data Warehouse werden zum Azure Storage Premium-Tarif abgerechnet. Wenn Sie ein wiederhergestelltes Data Warehouse anhalten, wird Ihnen der Speicher zum Azure Storage Premium-Tarif in Rechnung gestellt. Der Vorteil des Anhaltens besteht darin, dass keine Gebühren für die DWU-Computeressourcen anfallen. |2016-09-29 |
+| 3 |[SQL Data Warehouse-Wiederherstellung](sql-data-warehouse-restore-database-overview.md) |** Kann ich ein angehaltenes Data Warehouse wiederherstellen?** Um ein angehaltenes Data Warehouse wiederherzustellen, müssen Sie das Data Warehouse zuerst wieder online schalten. Sobald das Data Warehouse wieder online geschaltet wurde, stehen Ihnen Wiederherstellungspunkte aus sieben Tage zur Auswahl. **Wiederherstellen in einer georedundanten Region** Wenn Sie georedundanten Speicher verwenden, können Sie das Data Warehouse im gekoppelten Rechenzentrum in einer anderen geografischen Region wiederherstellen. Das Data Warehouse wird aus der letzten täglichen Sicherung wiederhergestellt. **Zeitachse der Wiederherstellung** Sie können eine Datenbank auf jeden Wiederherstellungspunkt innerhalb der letzten sieben Tage wiederherstellen. Momentaufnahmen werden alle vier bis acht Stunden gestartet und sind sieben Tage lang verfügbar. Wenn eine Momentaufnahme älter als sieben Tage ist, läuft sie ab, und ihr Wiederherstellungspunkt ist nicht mehr verfügbar. **Kosten für die Wiederherstellung** Die Speichergebühren für das wiederhergestellte Data Warehouse werden zum Azure Storage Premium-Tarif abgerechnet. Wenn Sie ein wiederhergestelltes Data Warehouse anhalten, wird Ihnen der Speicher zum Azure Storage Premium-Tarif in Rechnung gestellt. Der Vorteil des Anhaltens besteht darin, dass keine Gebühren für die DWU-Computeressourcen anfallen. |2016-09-29 |
 
 ## <a name="get-started"></a>Erste Schritte
 | &nbsp; | Titel | Beschreibung |
@@ -158,15 +160,10 @@ In diesem Abschnitt werden Artikel aufgelistet, die kürzlich mit einem sehr umf
 ## <a name="miscellaneous"></a>Verschiedenes
 | &nbsp; | Titel | Beschreibung |
 | ---:|:--- |:--- |
-| 83 |[Installieren von Visual Studio 2015 und SSDT für SQL Data Warehouse](sql-data-warehouse-install-visual-studio.md) |Installieren von Visual Studio und SQL Server Data Tools (SSDT) für Azure SQL Data Warehouse |
+| 83 |[Installieren von Visual Studio und SSDT für SQL Data Warehouse](sql-data-warehouse-install-visual-studio.md) |Installieren von Visual Studio und SQL Server Data Tools (SSDT) für Azure SQL Data Warehouse |
 | 84 |[Details zur Migration zu Storage Premium](sql-data-warehouse-migrate-to-premium-storage.md) |Anweisungen zum Migrieren eines vorhandenen SQL Data Warehouse in Storage Premium |
 | 85 |[Erste Schritte mit der Bedrohungserkennung](sql-data-warehouse-security-threat-detection.md) |Erste Schritte mit der Bedrohungserkennung |
 | 86 |[Kapazitätsgrenzen von SQL Data Warehouse](sql-data-warehouse-service-capacity-limits.md) |Maximale Werte für Verbindungen, Datenbanken, Tabellen und Abfragen für SQL Data Warehouse. |
 | 87 |[Problembehandlung bei Azure SQL Data Warehouse](sql-data-warehouse-troubleshoot.md) |Problembehandlung bei Azure SQL Data Warehouse. |
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

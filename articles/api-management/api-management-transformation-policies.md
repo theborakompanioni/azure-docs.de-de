@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 56eb95f5c8dfb34c0dbaec75efc5509f0c930ec3
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: c46a85aaf5237a2a7643cc9069255bdad9ab1d69
+ms.lasthandoff: 04/07/2017
 
 ---
 # <a name="api-management-transformation-policies"></a>Azure API Management-Transformationsrichtlinien
@@ -284,7 +284,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 <set-body>Hello world!</set-body>  
 ```  
   
-#### <a name="example-accessing-the-body-as-a-string"></a>Beispiel für den Zugriff auf den Text als Zeichenfolge  
+#### <a name="example-accessing-the-body-as-a-string-note-that-we-are-preserving-the-original-request-body-so-that-we-can-access-it-later-in-the-pipeline"></a>Beispiel für den Zugriff auf den Text als Zeichenfolge. Beachten Sie, dass der ursprüngliche Anforderungstext beibehalten wird, sodass später in der Pipeline darauf zugegriffen werden kann.
   
 ```xml  
 <set-body>  
@@ -298,7 +298,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 </set-body>  
 ```  
   
-#### <a name="example-accessing-the-body-as-a-jobject"></a>Beispiel für den Zugriff auf den Text als JObject  
+#### <a name="example-accessing-the-body-as-a-jobject-note-that-since-we-are-not-reserving-the-original-request-body-accesing-it-later-in-the-pipeline-will-result-in-an-exception"></a>Beispiel für den Zugriff auf den Text als JObject. Da der ursprüngliche Anforderungstext nicht erhalten bleibt, wird beim späteren Zugriff darauf in der Pipeline eine Ausnahme ausgelöst.  
   
 ```xml  
 <set-body>   
@@ -380,18 +380,40 @@ Die `set-body`-Richtlinie kann so konfiguriert werden, dass Sie die [Liquid](htt
 
 Für den Zugriff auf Informationen über die Anforderung und Antwort, kann die Liquid-Vorlage an ein context-Objekt mit den folgenden Eigenschaften binden: <br />
 <pre>context.
-Request.
-Url Method OriginalMethod OriginalUrl IpAddress MatchedParameters HasBody ClientCertificates Headers
+    Request.
+        Url
+        Method
+        OriginalMethod
+        OriginalUrl
+        IpAddress
+        MatchedParameters
+        HasBody
+        ClientCertificates
+        Headers
 
     Response.
         StatusCode
         Method
         Headers
-URL, Max.
-Scheme Host Port Path Query QueryString ToUri ToString
+Url.
+    Scheme
+    Host
+    Port
+    Path
+    Query
+    QueryString
+    ToUri
+    ToString
 
 OriginalUrl.
-Scheme Host Port Path Query QueryString ToUri ToString
+    Scheme
+    Host
+    Port
+    Path
+    Query
+    QueryString
+    ToUri
+    ToString
 </pre>
 
 

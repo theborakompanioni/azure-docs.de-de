@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 1/19/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 1f274fdbcdb64425a296ac7388938c423745f477
-ms.openlocfilehash: c9c0756fd714438e4ae74deadf0e5f009164af13
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 3b7eca721181155cd2bcc619d517c9b5a6a89a0d
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -185,7 +186,7 @@ Sie haben drei Hauptoptionen für die Überwachung der Fehlerhäufigkeit in der 
 
 *   Der dritte Ansatz besteht darin, eine benutzerdefinierte Komponente in der Anwendung zu implementieren, die fortlaufend Ping-Nachrichten mit leeren Leseanforderungen (z.B. das Lesen eines kleinen Blobs) an den primären Speicherendpunkt sendet, um den Systemzustand zu ermitteln. Dies nimmt zwar einige Ressourcen in Anspruch, jedoch in einem unerheblichen Maß. Wenn ein Problem festgestellt wird, durch das der Schwellenwert erreicht wird, führen Sie einen Wechsel in den schreibgeschützten Modus **SecondaryOnly** durch.
 
-Zu einem späteren Zeitpunkt möchten Sie wahrscheinlich zum primären Endpunkt zurückwechseln und Aktualisierungen wieder zulassen. Wenn Sie eine der ersten beiden oben aufgeführten Methoden verwenden, können Sie einfach zurück zum primären Endpunkt wechseln und den Aktualisierungsmodus nach einem beliebig gewählten Zeitraum oder einer Anzahl von Vorgängen aktivieren. Anschließend können Sie die Wiederholungslogik erneut ausführen lassen. Wenn das Problem behoben wurde, wird der primäre Endpunkt weiterhin verwendet, und Aktualisierungen werden zugelassen. Wenn weiterhin ein Problem vorliegt, wird erneut zum sekundären Endpunkt und in den schreibgeschützten Modus gewechselt, nachdem die festgelegten Fehlerkriterien erfüllt wurden.
+Zu einem späteren Zeitpunkt möchten Sie wahrscheinlich zum primären Endpunkt zurückwechseln und Aktualisierungen wieder zulassen. Wenn Sie eine der ersten beiden oben aufgeführten Methoden verwenden, können Sie einfach zurück zum primären Endpunkt wechseln und den Aktualisierungsmodus nach einem beliebig gewählten Zeitraum oder einer Anzahl von Vorgängen aktivieren. Anschließend können Sie die Wiederholungslogik erneut ausführen lassen. Wenn das Problem behoben wurde, wird der primäre Endpunkt weiterhin verwendet, und Aktualisierungen werden zugelassen. Wenn weiterhin ein Problem vorliegt, wird erneut zum sekundären Endpunkt und in den schreibgeschützten Modus gewechselt, nachdem die festgelegten Fehlerkriterien nicht erfüllt wurden.
 
 Wenn im dritten Szenario die Ping-Nachricht an den primären Speicherendpunkt erfolgreich ist, können Sie den Wechsel zurück zu **PrimaryOnly** auslösen und weiterhin Aktualisierungen zulassen.
 
@@ -234,9 +235,4 @@ Wenn Sie die Schwellenwerte für den Wechsel Ihrer Anwendung in den schreibgesch
 * Weitere Informationen zu georedundantem Lesezugriff, einschließlich eines weiteren Beispiels zum Festlegen von LastSyncTime, finden Sie unter [Windows Azure Storage Redundancy Options and Read Access Geo Redundant Storage](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/) (Windows Azure Storage-Redundanzoptionen und georedundanter Speicherlesezugriff).
 
 * Ein vollständiges Beispiel zur Erläuterung des Wechsels zwischen den primären und sekundären Endpunkten finden Sie unter [Azure Samples – Using the Circuit Breaker Pattern with RA-GRS storage](https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs) (Beispiele für Azure – Verwenden des Trennschalter-Musters mit RA-GRS-Speicher).
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

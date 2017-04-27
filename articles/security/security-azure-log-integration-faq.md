@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 01/07/2017
 ms.author: TomSh
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: 2d5201a335e96cc8595de834858750f6aac884a3
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: f539fc2945b9c6646660d50713d11dd7d822d06f
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -25,7 +25,11 @@ ms.lasthandoff: 03/17/2017
 In diesen häufig gestellten Fragen finden Sie Antworten zur Azure-Protokollintegration. Hierbei handelt es sich um einen Dienst, mit dem Sie nicht aufbereitete Protokolle aus Ihren Azure-Ressourcen in Ihre lokalen SIEM-Systeme (Security Information and Event Management, Sicherheitsinformationen und Ereignisverwaltung) integrieren können. Diese Integration bietet ein einheitliches Dashboard für alle Ihre Ressourcen (ganz gleich ob lokal oder in der Cloud), sodass Sie Sicherheitsereignisse im Zusammenhang mit Ihren Anwendungen aggregieren, korrelieren, analysieren und entsprechende Warnungen ausgeben können.
 
 ## <a name="is-the-azure-log-integration-software-free"></a>Ist die Integration der Software für die Azure-Protokollintegration kostenlos?
-Ja. Es fallen keine Gebühren für die Integration der Software für die Azure-Protokollintegration an. 
+Ja. Es fallen keine Gebühren für die Integration der Software für die Azure-Protokollintegration an.
+
+## <a name="where-is-azure-log-integration-available"></a>Wo ist die Azure-Protokollintegration erhältlich?
+
+Derzeit ist sie im kommerziellen Azure sowie Azure Government erhältlich, in China und Deutschland ist sie nicht verfügbar.
 
 ## <a name="how-can-i-see-the-storage-accounts-from-which-azure-log-integration-is-pulling-azure-vm-logs-from"></a>Wie kann ich die Speicherkonten anzeigen, aus denen die Azure-Protokollintegration Azure-VM-Protokolle bezieht?
 Führen Sie den Befehl **azlog source list**aus.
@@ -82,7 +86,7 @@ Siehe:
 [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md)
 
 ## <a name="how-can-i-modify-what-is-collected-with-vm-diagnostics"></a>Wie kann ich ändern, was von der VM-Diagnose erfasst wird?
-Ausführliche Informationen zum Abrufen, Ändern und Festlegen der Azure-Diagnose in einer Windows-Konfiguration [(WAD)](../virtual-machines/virtual-machines-windows-ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) finden Sie unter *Aktivieren der Azure-Diagnose auf einem virtuellen Azure-Computer unter Windows mithilfe von PowerShell* . Beispiel:
+Ausführliche Informationen zum Abrufen, Ändern und Festlegen der Azure-Diagnose in einer Windows-Konfiguration [(WAD)](../virtual-machines/windows/ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) finden Sie unter *Aktivieren der Azure-Diagnose auf einem virtuellen Azure-Computer unter Windows mithilfe von PowerShell* . Beispiel:
 
 ### <a name="get-the-wad-config"></a>Abrufen der WAD-Konfiguration
     -AzureRmVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient
@@ -107,7 +111,7 @@ In der folgenden Beispielkonfiguration werden lediglich Ereignisse mit den Ereig
 
 Vergewissern Sie sich nach dem Vornehmen von Änderungen im Speicherkonto, dass die richtigen Ereignisse erfasst werden.
 
-Wenn während der Installation und Konfiguration Probleme auftreten, öffnen Sie eine [Supportanfrage](https://docs.microsoft.com/en-us/azure/azure-supportability/how-to-create-azure-support-request), und wählen Sie „Protokollintegration“ als den Dienst aus, für den Sie Support anfordern.
+Wenn während der Installation und Konfiguration Probleme auftreten, öffnen Sie eine [Supportanfrage](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request), und wählen Sie **Protokollintegration** als den Dienst aus, für den Sie Support anfordern.
 
 
 <!--Image references-->

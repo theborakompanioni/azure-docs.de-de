@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/20/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 66fb3dc316ce25aea4dff4add5c25b7f0f56ad7a
-ms.openlocfilehash: 8c5a3ca30ae0539cded6cf9cd93ba1a42e19ba58
-ms.lasthandoff: 01/31/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 209d1cbe4f1ad08a98caf0a8d16f5b0ee45468ca
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -66,7 +66,7 @@ Es gibt möglicherweise weitere Änderungen, die Sie vornehmen möchten, um das 
 In diesem Konvertierungsprozess wird das Trainingsexperiment nicht verworfen. Nach Abschluss des Prozesses werden in Studio zwei Registerkarten angezeigt: eine für das Trainingsexperiment und eine für das Vorhersageexperiment. So können Sie vor dem Bereitstellen Ihres Webdiensts noch Änderungen am Trainingsexperiment durchführen und das Vorhersageexperiment neu erstellen. Ebenso können Sie eine Kopie des Trainingsexperiments speichern, um eine weitere Experimentreihe zu starten.
 
 > [!NOTE]
-> Durch Klicken auf **Set Up Web Service** starten Sie einen automatischen Prozess zum Konvertieren des Trainingsexperiments in ein Vorhersageexperiment. In den meisten Fällen verläuft dieser reibungslos. Wenn das Trainingsexperiment komplex ist (z.B. mehrere Pfade für das Training verknüpft werden), möchten Sie diese Konvertierung vielleicht manuell ausführen. Weitere Informationen finden Sie unter [Konvertieren eines Machine Learning-Trainingsexperiments in ein Vorhersageexperiment](machine-learning-convert-training-experiment-to-scoring-experiment.md).
+> Durch Klicken auf **Set Up Web Service** starten Sie einen automatischen Prozess zum Konvertieren des Trainingsexperiments in ein Vorhersageexperiment. In den meisten Fällen verläuft dieser reibungslos. Wenn das Trainingsexperiment komplex ist (z.B. mehrere Pfade für das Training verknüpft werden), möchten Sie diese Konvertierung vielleicht manuell ausführen. Weitere Informationen finden Sie unter [Vorbereiten des Modells für die Bereitstellung in Azure Machine Learning Studio](machine-learning-convert-training-experiment-to-scoring-experiment.md).
 > 
 > 
 
@@ -111,7 +111,7 @@ Wenn Sie am ursprünglichen Vorhersageexperiment Änderungen vornehmen möchten 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Prozess des Entwickelns und Experimentierens finden Sie in den folgenden Artikeln:
 
-* Konvertieren des Experiments: [Konvertieren eines Machine Learning-Trainingsexperiments in ein Vorhersageexperiment](machine-learning-convert-training-experiment-to-scoring-experiment.md)
+* Konvertieren des Experiments: [Vorbereiten des Modells für die Bereitstellung in Azure Machine Learning Studio](machine-learning-convert-training-experiment-to-scoring-experiment.md)
 * Bereitstellen des Webdiensts: [Bereitstellen eines Azure Machine Learning-Webdiensts](machine-learning-publish-a-machine-learning-web-service.md)
 * Neutrainieren des Modells: [Programmgesteuertes erneutes Trainieren von Machine Learning-Modellen](machine-learning-retrain-models-programmatically.md)
 

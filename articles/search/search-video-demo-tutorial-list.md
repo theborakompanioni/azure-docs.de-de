@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 02/28/2017
+ms.date: 03/31/2017
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: 0925318a483d9a5e72015d33ee0868f41ae4bedd
-ms.openlocfilehash: 4d883d96a2a45f27e847c51c973d5ca7d0e267a8
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 70b04cde5fe877355c1dea29c78df3dcb8277973
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -37,7 +37,7 @@ Beginnen Sie hier, wenn Sie noch nicht mit Azure Search vertraut sind. Sie könn
 | [Nächster Schritt:<br/> Code in .NET](search-howto-dotnet-sdk.md) | Exemplarische C#-Vorgehensweise zum Verbinden, Indizieren und Abfragen mit der Azure Search .NET Bibliothek. | November 2016 |
 | [Nächster Schritt:<br/> Code in REST](search-create-index-rest-api.md) | Überprüfen von REST-Aufrufen und JSON-Nutzlasten zum Erstellen eines Azure Search-Index mit einer beliebigen Plattform und Programmiersprache. | Dezember 2016 |
 
-## <a name="practice"></a>Üben
+## <a name="code-samples"></a>Codebeispiele
 
 Codebasierte Übungen mit Beispielen und exemplarischen Vorgehensweisen.
 
@@ -45,10 +45,19 @@ Codebasierte Übungen mit Beispielen und exemplarischen Vorgehensweisen.
 |-------|-------------|
 | [Erste Schritte mit der .NET-Clientbibliothek](https://github.com/Azure-Samples/search-dotnet-getting-started) | ASP.NET MVC 5-Anwendung mit der .NET Client Library. |
 | [Erste Schritte mit der REST-API](https://github.com/Azure-Samples/search-rest-api-getting-started) | REST-API-Codebeispiel |
-| [Demo: NYC Jobs-Website](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) | Quelle der Azure Search-Demowebsite für Jobdaten von New York City (NYC) mit ASP.NET MVC |
-| [Demo: Tate Art Gallery](https://github.com/liamca/azure-search-tate-art-gallery/) | Quelle der Azure Search-Demowebsite für Kunstgaleriedaten, zeigt den Sammlungsdatentyp und geschachtelte Datenstrukturen, Facetten und Filter, Namen von Personen und Miniaturbilder.|
+| [Quelle: NYC Jobs-Website-Demo](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) | Quelle der Azure Search-Demowebsite für Jobdaten von New York City (NYC) mit ASP.NET MVC |
+| [Quelle: Tate Art Gallery-Demo](https://github.com/liamca/azure-search-tate-art-gallery/) | Quelle der Azure Search-Demowebsite für Kunstgaleriedaten, zeigt den Sammlungsdatentyp und geschachtelte Datenstrukturen, Facetten und Filter, Namen von Personen und Miniaturbilder.|
 
 Weitere Codebeispiele für bestimmte Featurekombinationen und Szenarien: [**Beispiele für Azure > Azure Search**](https://github.com/azure-samples?utf8=%E2%9C%93&query=search).
+
+## <a name="online-demos"></a>Online-Demos
+Voll funktionsfähige Webanwendungen, die Azure Search für ihre Suchoberfläche einsetzen. Unter diesen Links wird praxisnah die Verwendung einer App vorgeführt, die Azure Search nutzt.
+
+| Link | Beschreibung |
+|-------|-------------|
+|[Demo eines Jobportals für New York City (NYC) mit Azure Search](http://aka.ms/azjobsdemo) | Eine aktive ASP.NET-Website, die Azure Search-Funktionen mithilfe von Daten der NYC Open Data Initiative veranschaulicht. Für diese App wird die [einfache Abfragesyntax](https://msdn.microsoft.com/library/azure/dn798920.aspx)verwendet. Sie können den Code ändern, um die [Lucene-Syntax](https://msdn.microsoft.com/library/azure/mt589323.aspx)auszuprobieren. |
+|[Tate Art Gallery-Demo](https://rawgit.com/liamca/azure-search-tate-art-gallery/master/Demo/index.html) | Eine gehostete ASP.NET-Website mit Beispieldaten aus der Tate Art Gallery. Probieren Sie zum Einstieg Suchbegriffe wie „modern“, „Foto“ und „Portrait“ aus.
+|[Demo-Website zu Azure Search](https://searchsamples.azurewebsites.net/#/) | Eine Sammlung von Demo-Apps für Azure Search. Testen Sie Apps für die Mediensuche, geografische Suche und Produktbestände mithilfe von Azure Search. |
 
 ## <a name="courseware"></a>Trainingsmaterialien
 
@@ -58,14 +67,6 @@ Mehrteilige Demos und Übungseinheiten für Azure Search.
 |------|-------------|------|
 [Erstellen von intelligenten, plattformübergreifenden mobilen Anwendungen mit Xamarin und Azure Search](https://mva.microsoft.com/en-US/training-courses/building-intelligent-crossplatform-mobile-applications-using-xamarin-and-azure-search-16890) | Vervollständigte Abfragen, Volltextsuche und Seitenaufteilung, Filtern, Suchen, moreLikeThis, Machine Learning, Bewertung und die Optimierung, Analyse | Dezember 2016 |
 [Verwenden von Windows Azure Search](https://mva.microsoft.com/en-US/training-courses/using-windows-azure-search-10540) | Ältere, aber immer noch relevante Funktionsübersicht zur Skalierung, räumlichen Suche, linguistischen Analyse und Spracherkennung mit Cortana | Mai 2015 | 
-
-## <a name="online-demos"></a>Online-Demos
-Voll funktionsfähige Webanwendungen, die Azure Search für ihre Suchoberfläche einsetzen. 
-
-| Link | Beschreibung |
-|-------|-------------|
-|[Demo eines Jobportals für New York City (NYC) mit Azure Search](http://aka.ms/azjobsdemo) | Eine aktive ASP.NET-Website, die Azure Search-Funktionen mithilfe von Daten der NYC Open Data Initiative veranschaulicht. Für diese App wird die [einfache Abfragesyntax](https://msdn.microsoft.com/library/azure/dn798920.aspx)verwendet. Sie können den Code ändern, um die [Lucene-Syntax](https://msdn.microsoft.com/library/azure/mt589323.aspx)auszuprobieren. |
-|[Demo-Website zu Azure Search](https://searchsamples.azurewebsites.net/#/) | Eine Sammlung von Demo-Apps für Azure Search. Testen Sie Apps für die Mediensuche, geografische Suche und Produktbestände mithilfe von Azure Search. |
 
 ## <a name="video-archive"></a>Video-Archiv
 
@@ -98,6 +99,5 @@ Voll funktionsfähige Webanwendungen, die Azure Search für ihre Suchoberfläche
 | [How to Add Suggestions to your Search Applications](https://azure.microsoft.com/blog/2015/01/20/azure-search-how-to-add-suggestions-auto-complete-to-your-search-applications/) |Hier erfahren Sie, wie Sie Vorschläge implementieren. Dies wird häufig auch als automatisches Vervollständigen bezeichnet. Diese Demo führt Sie durch eine Reihe von Themen, z.B. das Erstellen einer MVC4-Anwendung, die Azure Search-Vorschläge nutzt, das Verwenden einer „typeahead.js“-Bibliothek für Twitter zum Erstellen einer effektiven JavaScript-Komponente für automatische Vorschläge sowie das Verwenden von Fuzzyvorschlägen, mit deren Hilfe auch dann Vorschläge angezeigt werden, wenn der Benutzer das Wort falsch geschrieben hat. |
 | [TechNet Virtual Lab: Building a Microsoft Azure Search Application](http://go.microsoft.com/?linkid=9874663) |Virtuelle Übungseinheit, die eine Entwicklungsumgebung, Tools, Dokumentation und Daten bereitstellt. Zur Durchführung der Übung benötigen Sie ein Azure-Konto, entweder ein Testabonnement oder Ihr persönliches Azure-Abonnement. |
 | [Synchronize SQL Server Data with Azure Search](https://azure.microsoft.com/blog/2014/11/10/how-to-sync-sql-server-data-with-azure-search/) |Blogbeitrag mit Erläuterungen zum Laden von Daten aus relationalen SQL Server-Datenbanken in einen Azure Search-Index. |
-| [Lernprogramm zur Azure Search Management-REST-API](search-get-started-management-api.md) |So verwenden Sie die Management-REST-API, um den Dienst bereitzustellen und Administrator- oder Abfrage-API-Schlüssel zu verwalten. |
 
 

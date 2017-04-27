@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/22/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 5c427ddbe408fc42403eb6738d1983c220e899a7
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 7a9b8037967f0180d2f7d2a7d100d0cc3ad9e4a2
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -258,7 +258,7 @@ Möglicherweise enthält der Name des virtuellen Netzwerks Punkte. Wenn dies der
 ### <a name="why-do-i-get-a-parent-resource-not-found-error-when-provisioning-a-vm-from-powershell"></a>Warum erhalte ich den Fehler „Übergeordnete Ressource wurde nicht gefunden“ bei der Bereitstellung einer VM von PowerShell?
 Wenn eine Ressource einer anderen übergeordnet ist, muss die übergeordnete Ressource vor dem Erstellen der untergeordneten Ressource bereits vorhanden sein. Wenn sie nicht vorhanden ist, erhalten Sie den Fehler **ParentResourceNotFound**. Wenn Sie keine Abhängigkeit von der übergeordneten Ressource angeben, wird die untergeordnete Ressource möglicherweise vor der übergeordneten bereitgestellt.
 
-VMs sind untergeordnete Ressourcen unter einem Lab in einer Ressourcengruppe. Wenn Sie Azure-Ressourcenvorlagen zur Bereitstellung über PowerShell verwenden, sollte der im PowerShell-Skript bereitgestellte Name der Ressourcengruppe der Name der Ressourcengruppe des Labs sein. Weitere Informationen finden Sie unter [Beheben verbreiteter Azure-Bereitstellungsfehler](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-common-deployment-errors#parentresourcenotfound).
+VMs sind untergeordnete Ressourcen unter einem Lab in einer Ressourcengruppe. Wenn Sie Azure Resource Manager-Vorlagen zur Bereitstellung über PowerShell verwenden, sollte der im PowerShell-Skript bereitgestellte Name der Ressourcengruppe der Name der Ressourcengruppe des Labs sein. Weitere Informationen finden Sie unter [Beheben verbreiteter Azure-Bereitstellungsfehler](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-common-deployment-errors#parentresourcenotfound).
 
 ### <a name="where-can-i-find-more-error-information-if-a-vm-deployment-fails"></a>Wo finde ich weitere Fehlerinformationen zu Fehlern bei einer VM-Bereitstellung?
 VM-Bereitstellungsfehler werden in den Aktivitätsprotokollen erfasst. Sie können die Aktivitätsprotokolle von virtuellen Labcomputern über die **Überwachungsprotokolle** oder **VM-Diagnose** auf dem VM-Blatt des Labs im Ressourcenmenü finden (das Blatt wird angezeigt, nachdem Sie den virtuellen Computer in der Liste **Meine virtuellen Computer** ausgewählt haben).

@@ -11,12 +11,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 03/17/2017
+ms.date: 04/02/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 0ca485599d159fd4e7e001b68e4d4b41b6b2043f
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: e1ceaf7baef021f97f70a6b1a5203e178db613db
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -173,6 +173,16 @@ Erstellen Sie eine neue JSON-Datei, in diesem Beispiel die Datei `template1.json
 
 Sie können noch weitere Parameter hinzufügen. Die entsprechenden Beschreibungen finden Sie im Abschnitt „Parameter“ der Vorlage.
 
+## <a name="to-get-the-instrumentation-key"></a>So rufen Sie den Instrumentierungsschlüssel ab
+Nach dem Erstellen einer Anwendungsressource benötigen Sie den Instrumentierungsschlüssel: 
+
+```PS
+    $resource = Find-AzureRmResource -ResourceNameEquals "<YOUR APP NAME>"
+    $details = Get-AzureRmResource -ResourceId $resource.ResourceId
+    $ikey = $details.Properties.InstrumentationKey
+```
+
+
 <a id="price"></a>
 ## <a name="set-the-price-plan"></a>Festlegen des Tarifs
 
@@ -193,17 +203,11 @@ Gehen Sie wie folgt vor, um mit der obigen Vorlage eine App-Ressource mit dem En
 |2|Enterprise|
 
 * Wenn Sie nur den Standardtarif „Basic“ verwenden möchten, können Sie die Ressource CurrentBillingFeatures aus der Vorlage löschen.
+* Wenn Sie den Tarif nach dem Erstellen der Komponentenressource wechseln möchten, können Sie eine Vorlage verwenden, in der die Ressource „microsoft.insights/components“ ausgelassen wird. Lassen Sie zudem den Knoten `dependsOn` aus der Abrechnungsressource aus. 
+
+Um den aktualisierten Tarif zu prüfen, betrachten Sie das Blatt „Features und Preise“ im Browser. **Aktualisieren Sie die Browseransicht**, um sicherzustellen, dass der aktuelle Status wiedergegeben wird.
 
 
-## <a name="to-get-the-instrumentation-key"></a>So rufen Sie den Instrumentierungsschlüssel ab
-Nach der Erstellung einer Anwendungsressource, benötigen Sie den iKey: 
-
-```PS
-
-    $resource = Get-AzureRmResource -ResourceId "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<YOUR RESOURCE GROUP>/providers/Microsoft.Insights/components/<YOUR APP NAME>"
-
-    $resource.Properties.InstrumentationKey
-```
 
 ## <a name="add-a-metric-alert"></a>Hinzufügen einer Metrikwarnung
 

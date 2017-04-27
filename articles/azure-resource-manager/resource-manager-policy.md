@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/10/2017
+ms.date: 03/30/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 6d459e37b8b39f5d76c4ec86ebb7351c783b81fb
-ms.openlocfilehash: 64cb4be184e02519a6c496f8639035201ebb60f8
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: d75088bd83b0b70c889388c95331bb56fe9ba15b
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -29,7 +29,7 @@ Im Zusammenhang mit Richtlinien gibt es zwei wichtige Konzepte:
 * Richtliniendefinition: Sie beschreiben, wann die Richtlinie erzwungen wird und welche Aktion ausgeführt werden soll.
 * Richtlinienzuweisung: Sie wenden die Richtliniendefinition auf einen Bereich (Abonnement oder Ressourcengruppe) an.
 
-Dieses Thema beschäftigt sich mit der Richtliniendefinition. Informationen zur Richtlinienzuweisung finden Sie unter [Zuweisen und Verwalten von Richtlinien](resource-manager-policy-create-assign.md).
+Dieses Thema beschäftigt sich mit der Richtliniendefinition. Weitere Informationen zur Richtlinienzuweisung finden Sie unter [Verwenden des Azure-Portals zum Zuweisen und Verwalten von Ressourcenrichtlinien](resource-manager-policy-portal.md) und [Zuweisen und Verwalten von Richtlinien mit Skripts](resource-manager-policy-create-assign.md).
 
 Azure stellt einige integrierte Richtliniendefinitionen bereit, um ggf. die Anzahl der zu definierenden Richtlinien zu verringern. Falls eine dieser integrierten Richtliniendefinitionen für Ihr Szenario geeignet ist, verwenden Sie diese Definition bei der Zuweisung zu einem Bereich.
 
@@ -239,7 +239,7 @@ Die folgenden Themen enthalten Beispiele für Richtlinien:
 
 * Beispiele für Tagrichtlinien finden Sie unter [Anwenden von Ressourcenrichtlinien für Tags](resource-manager-policy-tags.md).
 * Beispiele für Speicherrichtlinien finden Sie unter [Anwenden von Ressourcenrichtlinien auf Speicherkonten](resource-manager-policy-storage.md).
-* Beispiele für VM-Richtlinien finden Sie unter [Anwenden von Sicherheit und Richtlinien auf virtuelle Linux-Computer mit Azure Resource Manager](../virtual-machines/virtual-machines-linux-policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json) sowie unter [Anwenden von Sicherheit und Richtlinien auf virtuelle Windows-Computer mit Azure Resource Manager](../virtual-machines/virtual-machines-windows-policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json).
+* Beispiele für VM-Richtlinien finden Sie unter [Anwenden von Sicherheit und Richtlinien auf virtuelle Linux-Computer mit Azure Resource Manager](../virtual-machines/linux/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json) sowie unter [Anwenden von Sicherheit und Richtlinien auf virtuelle Windows-Computer mit Azure Resource Manager](../virtual-machines/windows/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json).
 
 ### <a name="allowed-resource-locations"></a>Zulässige Ressourcenstandorte
 Informationen zum Angeben der zulässigen Standorte finden Sie im Beispiel des Abschnitts [Struktur von Richtliniendefinitionen](#policy-definition-structure). Verwenden Sie zum Hinzufügen dieser Richtliniendefinition die integrierte Richtlinie mit der Ressourcen-ID `/providers/Microsoft.Authorization/policyDefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c`.
@@ -326,7 +326,7 @@ Das folgende Beispiel veranschaulicht die Verwendung von Platzhalterzeichen, die
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Nach dem Definieren einer Richtlinienregel weisen Sie sie einem Bereich zu. Informationen zur Richtlinienzuweisung finden Sie unter [Zuweisen und Verwalten von Richtlinien](resource-manager-policy-create-assign.md).
+* Nach dem Definieren einer Richtlinienregel weisen Sie sie einem Bereich zu. Wenn Sie Richtlinien über das Portal zuweisen möchten, siehe [Verwenden des Azure-Portals zum Zuweisen und Verwalten von Ressourcenrichtlinien](resource-manager-policy-portal.md). Wenn Sie Richtlinien über die REST-API, PowerShell oder die Azure-CLI zuweisen möchten, siehe [Zuweisen und Verwalten von Richtlinien mit Skripts](resource-manager-policy-create-assign.md).
 * Anleitungen dazu, wie Unternehmen Abonnements mit Resource Manager effektiv verwalten können, finden Sie unter [Azure-Unternehmensgerüst - Präskriptive Abonnementgovernance](resource-manager-subscription-governance.md).
 * Das Richtlinienschema wird unter [http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json](http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json)veröffentlicht. 
 

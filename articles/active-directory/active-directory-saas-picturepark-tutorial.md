@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/20/2017
+ms.date: 03/24/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: e24bd626cd950f6e6d9474d1bd5f97c3ea4fb925
-ms.openlocfilehash: 626bdc99702b38c127beba54979add9b1cbd633f
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: a6b6610bb4d4b427f525934146340a9cca6f52cb
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -32,13 +33,13 @@ Nach Abschluss dieses Tutorials können sich die Picturepark zugewiesenen Azure 
 Das in diesem Lernprogramm beschriebene Szenario besteht aus den folgenden Bausteinen:
 
 1. Aktivieren der Anwendungsintegration für Picturepark
-2. Konfigurieren der einmaligen Anmeldung
+2. Konfigurieren des einmaligen Anmeldens (SSO)
 3. Konfigurieren der Benutzerbereitstellung
 4. Zuweisen von Benutzern
 
 ![Szenario](./media/active-directory-saas-picturepark-tutorial/IC795055.png "Szenario")
 
-## <a name="enabling-the-application-integration-for-picturepark"></a>Aktivieren der Anwendungsintegration für Picturepark
+## <a name="enable-the-application-integration-for-picturepark"></a>Aktivieren der Anwendungsintegration für Picturepark
 In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Picturepark aktivieren.
 
 **Um die Anwendungsintegration für Picturepark zu aktivieren, führen Sie die folgenden Schritte durch:**
@@ -64,11 +65,11 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Pic
    ![Picturepark](./media/active-directory-saas-picturepark-tutorial/IC795057.png "Picturepark")
 
 
-## <a name="configuring-single-sign-on"></a>Konfigurieren der einmaligen Anmeldung
+## <a name="configure-single-sign-on"></a>Einmaliges Anmelden konfigurieren
 
 In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei Picturepark zu authentifizieren.  
 
-Zum Konfigurieren des einmaligen Anmeldens für Picturepark müssen Sie einen Fingerabdruckwert aus einem Zertifikat abrufen.  
+Zum Konfigurieren des einmaligen Anmeldens (SSO) für Picturepark müssen Sie einen Fingerabdruckwert aus einem Zertifikat abrufen.  
 
 Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [Abrufen des Fingerabdruckwerts eines Zertifikats](http://youtu.be/YKQF266SAxI)weitere Informationen.
 
@@ -103,21 +104,23 @@ Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [Abrufen de
    4. Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für Picturepark** den Wert für **SAML-SSO-URL**, und fügen Sie ihn in das Textfeld **Aussteller-URI** ein.
    5. Kopieren Sie den **Fingerabdruckwert** aus dem exportierten Zertifikat, und fügen Sie ihn in das Textfeld **Fingerabdruck eines vertrauenswürdigen Ausstellers** ein.  
       
-      > [!TIP]
-      > Weitere Informationen finden Sie unter [Abrufen des Fingerabdruckwerts eines Zertifikats](http://youtu.be/YKQF266SAxI)
-      > 
+      >[!TIP]
+      >Weitere Informationen finden Sie unter [Abrufen des Fingerabdruckwerts eines Zertifikats](http://youtu.be/YKQF266SAxI).
+      >
+      >
 
 9. Klicken Sie auf **JoinDefaultUsersGroup**.
-10. Geben Sie **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** ein, um das Attribut **Emailaddress** im Textfeld **Anspruch** festzulegen.
+10. Geben Sie zum Festlegen des **Emailaddress**-Attributs im Textfeld **Anspruch** die Adresse **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** ein, und klicken Sie auf **Speichern**.
 
-      ![Konfiguration](./media/active-directory-saas-picturepark-tutorial/IC795065.png "Konfiguration") a. Klicken Sie auf **Speichern**.
+      ![Konfiguration](./media/active-directory-saas-picturepark-tutorial/IC795065.png "Konfiguration")
 11. Bestätigen Sie im klassischen Azure-Portal die Konfiguration der einmaligen Anmeldung, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
    
    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-picturepark-tutorial/IC795066.png "Einmaliges Anmelden konfigurieren")
 
-## <a name="configuring-user-provisioning"></a>Konfigurieren der Benutzerbereitstellung
+## <a name="configure-user-provisioning"></a>Benutzerbereitstellung konfigurieren
 Damit sich Azure AD-Benutzer bei Picturepark anmelden können, müssen sie in Picturepark bereitgestellt werden.  
-Im Fall von Picturepark ist die Bereitstellung eine manuelle Aufgabe.
+
+ * Im Fall von Picturepark ist die Bereitstellung eine manuelle Aufgabe.
 
 **Führen Sie zum Bereitstellen von Benutzerkonten die folgenden Schritte aus:**
 
@@ -136,12 +139,12 @@ Im Fall von Picturepark ist die Bereitstellung eine manuelle Aufgabe.
   2. Wählen Sie eine **Sprache**aus.
   3. Klicken Sie auf **Erstellen**.
 
-> [!NOTE]
-> Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Picturepark-Benutzerkonten oder mithilfe der von Picturepark bereitgestellten APIs erstellen.
+>[!NOTE]
+>Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Picturepark-Benutzerkonten oder mithilfe der von Picturepark bereitgestellten APIs erstellen.
 > 
 > 
 
-## <a name="assigning-users"></a>Zuweisen von Benutzern
+## <a name="assign-users"></a>Benutzer zuweisen
 Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
 
 **Um Picturepark Benutzer zuzuweisen, führen Sie die folgenden Schritte durch:**
@@ -155,10 +158,5 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
    ![Ja](./media/active-directory-saas-picturepark-tutorial/IC767830.png "Ja")
 
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

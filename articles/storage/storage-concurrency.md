@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: jahogg
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7519ff07efd5bb450362fca8d54e4d9e3be8f0df
-ms.lasthandoff: 11/17/2016
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: b5b8346c6a645ae18fd0c23a8956274f764710e0
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -40,7 +40,7 @@ Entwickler müssen nicht nur die entsprechende Nebenläufigkeitsstrategie auswä
 Für die Verwaltung des Zugriffs auf Blobs und Container im Blob-Dienst können Sie entweder das optimistische oder das pessimistische Nebenläufigkeitsmodell verwenden. Wenn Sie die Strategie nicht explizit festlegen, wird standardmäßig "Letzter Schreiber gewinnt" verwendet.  
 
 ### <a name="optimistic-concurrency-for-blobs-and-containers"></a>Optimistische Nebenläufigkeit für Blobs und Container
-Der Speicherdienst weist jedem gespeicherten Objekt einen Bezeichner zu. Dieser Bezeichner wird jedes Mal aktualisiert, wenn ein Objekt aktualisiert wird. Der Bezeichner wird dem Client zusammen mit einer HTTP GET-Antwort zurückgegeben. Dabei wird ETag-Header (Entitätstag) verwendet, der im HTTP-Protokoll definiert ist. Ein Benutzer, der eine Aktualisierung eines Objekts ausführt, kann das ursprüngliche ETag zusammen mit einem bedingten Header senden, um sicherzustellen, dass eine Aktualisierung nur stattfindet, wenn eine bestimmte Bedingung erfüllt ist. In diesem Fall handelt es sich bei der Bedingung um einen "If-Match"-Header, der den Speicherdienst zwingt zu prüfen, ob der Wert des in der Aktualisierungsanforderung angegebenen ETags mit dem im Speicherdienst hinterlegten Wert identisch ist.  
+Der Speicherdienst weist jedem gespeicherten Objekt einen Bezeichner zu. Dieser Bezeichner wird jedes Mal aktualisiert, wenn ein Objekt aktualisiert wird. Der Bezeichner wird dem Client zusammen mit einer HTTP GET-Antwort zurückgegeben. Dabei wird ETag-Header (Entitätstag) verwendet, der im HTTP-Protokoll definiert ist. Ein Benutzer, der eine Aktualisierung eines Objekts ausführt, kann das ursprüngliche ETag zusammen mit einem bedingten Header senden, um sicherzustellen, dass eine Aktualisierung nur stattfindet, wenn eine bestimmte Bedingung erfüllt ist. In diesem Fall handelt es sich bei der Bedingung um einen „If-Match“-Header, der den Speicherdienst zwingt zu prüfen, ob der Wert des in der Aktualisierungsanforderung angegebenen ETags mit dem im Speicherdienst hinterlegten Wert identisch ist.  
 
 Dieser Prozess ist folgendermaßen gegliedert:  
 
@@ -131,7 +131,7 @@ Um ein Blob für die exklusive Verwendung zu sperren, können Sie dafür eine [L
 
 Leases ermöglichen die Unterstützung verschiedener Synchronisierungsstrategien, einschließlich exklusiver Schreib-/gemeinsamer Lesezugriff, exklusiver Schreib-/exklusiver Lesezugriff und gemeinsamer Schreib-/exklusiver Lesezugriff. Ist eine Lease vorhanden, erzwingt der Speicherdienst exklusive Schreibzugriffe (put-, set- und delete-Vorgänge). Um Exklusivität von Lesevorgängen sicherzustellen, muss der Entwickler jedoch dafür sorgen, dass alle Clientanwendungen eine Lease-ID verwenden und dass jeweils nur ein Client über eine gültige Lease-ID verfügt. Lesevorgänge, die keine Lease-ID enthalten, führen zu gemeinsamen Lesevorgängen.  
 
-Der folgende C#-Codeausschnitt zeigt an einem Beispiel, wie eine exklusive Lease von 30 Sekunden für ein Blob abgerufen, der Inhalt des Blob aktualisiert und die Lease anschließend freigegeben wird. Wenn für das Blob bereits eine Lease wirksam ist, wenn Sie eine neue Lease abrufen, gibt der Blob-Dienst die Statusmeldung "HTTP (409) Conflict" zurück. Im Codeausschnitt unten wird ein **AccessCondition** -Objekt verwendet, um die Lease-Informationen zu kapseln, wenn die Anforderung zum Aktualisieren des Blob im Speicherdienst ausgeführt wird.  Sie können das vollständige Beispiel hier herunterladen: [Managing Concurrency using Azure Storage](http://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)(Verwalten von Parallelität mit Azure Storage).
+Der folgende C#-Codeausschnitt zeigt an einem Beispiel, wie eine exklusive Lease von 30 Sekunden für ein Blob abgerufen, der Inhalt des Blob aktualisiert und die Lease anschließend freigegeben wird. Wenn beim Abrufen einer neuen Lease für das Blob bereits eine Lease wirksam ist, gibt der Blob-Dienst die Statusmeldung „HTTP (409) Conflict“ zurück. Im Codeausschnitt unten wird ein **AccessCondition** -Objekt verwendet, um die Lease-Informationen zu kapseln, wenn die Anforderung zum Aktualisieren des Blob im Speicherdienst ausgeführt wird.  Sie können das vollständige Beispiel hier herunterladen: [Managing Concurrency using Azure Storage](http://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)(Verwalten von Parallelität mit Azure Storage).
 
 ```csharp
 // Acquire lease for 15 seconds
@@ -232,7 +232,7 @@ catch (StorageException ex)
 }  
 ```
 
-Um die Nebenläufigkeitsprüfung explizit zu deaktivieren, müssen Sie die **ETag**-Eigenschaft des Objekts **employee** auf „*“ festlegen, bevor der Ersetzungsvorgang ausgeführt wird.  
+Um die Parallelitätsprüfung explizit zu deaktivieren, müssen Sie die **ETag**-Eigenschaft des Objekts **employee** auf „*“ festlegen, bevor der Ersetzungsvorgang ausgeführt wird.  
 
 ```csharp
 customer.ETag = "*";  

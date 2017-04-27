@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/03/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 4680985e5c66444ca8a356cc92d45dc0f1838f55
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: da581b2e22f85152ae7bc5f0d403b2fc0aaf0e54
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -138,16 +138,16 @@ Transaktionsmetriken werden sowohl für Anforderungen von Benutzern als auch fü
 > 
 > 
 
-Kapazitätsdaten werden für den BLOB-Dienst eines Speicherkontos täglich aufgezeichnet, und es werden zwei Tabellenentitäten geschrieben. Eine Entität stellt Statistiken für Benutzerdaten bereit, während die andere Statistiken zum Blob-Container `$logs` bereitstellt, der von der Speicheranalyse verwendet wird. Die Tabelle `$MetricsCapacityBlob` enthält die folgenden Statistiken:
+Kapazitätsdaten werden für den Blob-Dienst eines Speicherkontos täglich aufgezeichnet, und es werden zwei Tabellenentitäten geschrieben. Eine Entität stellt Statistiken für Benutzerdaten bereit, während die andere Statistiken zum Blob-Container `$logs` bereitstellt, der von der Speicheranalyse verwendet wird. Die Tabelle `$MetricsCapacityBlob` enthält die folgenden Statistiken:
 
-* **Capacity**: Die Größe des vom Blob-Dienst des Speicherkontos genutzten Speichers in Bytes.
-* **ContainerCount**Die Anzahl der Blob-Container im Blob-Dienst des Speicherkontos.
+* **Capacity**: Die Größe des vom Blob-Dienst des Speicherkontos genutzten Speichers in Byte.
+* **ContainerCount**: Die Anzahl der Blob-Container im Blob-Dienst des Speicherkontos.
 * **ObjectCount**: Die Anzahl der Block- oder Seitenblobs mit und ohne ausgeführtem Commit im Blob-Dienst des Speicherkontos.
 
 Weitere Informationen zu den Kapazitätsmetriken finden Sie unter [Schema der Tabellen für Speicheranalysemetriken](https://msdn.microsoft.com/library/hh343264.aspx).
 
 ### <a name="how-metrics-are-stored"></a>Speichern von Metriken
-Alle Metrikdaten für jeden der Speicherdienste werden in drei Tabellen gespeichert, die für diesen Dienst reserviert sind: eine Tabelle für Transaktionsinformationen, eine Tabelle für minutenbezogene Transaktionsinformationen und eine weitere Tabelle für Kapazitätsinformationen. Informationen zur Transaktion und deren Dauer umfassen Anforderungs- und Antwortdaten, während Kapazitätsinformationen Daten zur Speicherverwendung enthalten. Stunden- und Minutenmetriken sowie Kapazitätsinformationen zum Blobdienst eines Speicherkontos können aus Tabellen abgerufen werden, die wie in der folgenden Tabelle beschrieben benannt sind:
+Alle Metrikdaten für jeden der Speicherdienste werden in drei Tabellen gespeichert, die für diesen Dienst reserviert sind: eine Tabelle für Transaktionsinformationen, eine Tabelle für minutenbezogene Transaktionsinformationen und eine weitere Tabelle für Kapazitätsinformationen. Informationen zur Transaktion und deren Dauer umfassen Anforderungs- und Antwortdaten, während Kapazitätsinformationen Daten zur Speicherverwendung enthalten. Stunden- und Minutenmetriken sowie Kapazitätsinformationen zum Blob-Dienst eines Speicherkontos können aus Tabellen abgerufen werden, die wie in der folgenden Tabelle beschrieben benannt sind:
 
 | Metrikebene | Tabellennamen | Unterstützte Versionen |
 | --- | --- | --- |

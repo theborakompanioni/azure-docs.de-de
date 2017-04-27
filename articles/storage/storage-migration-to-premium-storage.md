@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: yuemlu
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 2703a7ae9274e6bef38e530839c1a7c5ad69fb88
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: cbf4f1a3bce53844e032c49637d4cfd9dd722679
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -47,15 +47,15 @@ Für den Abschluss des vollständigen Migrationsprozesses sind möglicherweise z
 In diesem Abschnitt finden Sie die Voraussetzungen für das Ausführen der in diesem Artikel beschriebenen Migrationsschritte und Hilfe zum Treffen der besten Entscheidung für VM- und Datenträgertypen.
 
 ### <a name="prerequisites"></a>Voraussetzungen
-* Sie benötigen ein Azure-Abonnement. Wenn Sie kein Abonnement haben, können Sie für einen Monat eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) abonnieren, oder Sie besuchen die Seite mit den [Azure-Preisen](https://azure.microsoft.com/pricing/), die weitere Optionen bietet.
+* Sie benötigen ein Azure-Abonnement. Wenn Sie über kein Abonnement verfügen, können Sie für einen Monat eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) abonnieren, oder Sie besuchen die Seite mit den [Azure-Preisen](https://azure.microsoft.com/pricing/), die weitere Optionen bietet.
 * Zum Ausführen von PowerShell-Cmdlets benötigen Sie das Microsoft Azure PowerShell-Modul. Informationen zum Installationspunkt und zu Installationsanweisungen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) .
-* Wenn Sie Azure-VMs unter Storage Premium nutzen möchten, müssen Sie Storage Premium-fähige VMs verwenden. Mit Storage Premium-fähigen virtuellen Computern können Sie Standard- und Storage Premium-Datenträger verwenden. Premium-Datenträger werden zukünftig mit mehreren VM-Typen verfügbar sein. Weitere Informationen zu den verfügbaren Typen und Größen von Azure-VM-Datenträgern finden Sie unter [Größen für virtuelle Computer in Azure](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) und [Größen für Clouddienste](../cloud-services/cloud-services-sizes-specs.md).
+* Wenn Sie Azure-VMs unter Storage Premium nutzen möchten, müssen Sie Storage Premium-fähige VMs verwenden. Mit Storage Premium-fähigen virtuellen Computern können Sie Standard- und Storage Premium-Datenträger verwenden. Premium-Datenträger werden zukünftig mit mehreren VM-Typen verfügbar sein. Weitere Informationen zu den verfügbaren Typen und Größen von Azure-VM-Datenträgern finden Sie unter [Größen für virtuelle Computer in Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) und [Größen für Clouddienste](../cloud-services/cloud-services-sizes-specs.md).
 
 ### <a name="considerations"></a>Überlegungen
 Ein virtueller Azure-Computer unterstützt das Anfügen mehrerer Storage Premium-Datenträger, damit Ihre Anwendung bis zu 64 TB Speicher pro virtuellem Computer nutzen kann. Mit Storage Premium können Ihre Anwendungen bis zu 80.000 IOPS (Input/Output Operations Per Second, E/A-Vorgänge pro Sekunde) pro virtuellem Computer nutzen sowie 2.000 MB Datenträgerdurchsatz pro Sekunde und virtuellem Computer mit äußerst niedriger Latenz für Lesevorgänge erzielen. Sie haben die Wahl zwischen einer Vielzahl virtueller Computer und Datenträger. Anhand der Informationen in diesem Abschnitt können Sie die Ihrer Workload am besten entsprechende Option finden.
 
 #### <a name="vm-sizes"></a>VM-Größen
-Die Größenspezifikationen der Azure-VM sind unter [Größen für virtuelle Computer](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)aufgelistet. Sehen Sie sich die Leistungsmerkmale von virtuellen Computern für Storage Premium an, und wählen Sie die am besten für Ihre Workload geeignete VM-Größe aus. Stellen Sie sicher, dass auf Ihrem virtuellen Computer ausreichend Bandbreite zum Steuern des Datenverkehrs des Datenträgers verfügbar ist.
+Die Größenspezifikationen der Azure-VM sind unter [Größen für virtuelle Computer](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)aufgelistet. Sehen Sie sich die Leistungsmerkmale von virtuellen Computern für Storage Premium an, und wählen Sie die am besten für Ihre Workload geeignete VM-Größe aus. Stellen Sie sicher, dass auf Ihrem virtuellen Computer ausreichend Bandbreite zum Steuern des Datenverkehrs des Datenträgers verfügbar ist.
 
 #### <a name="disk-sizes"></a>Datenträgergrößen
 Es gibt drei Datenträgertypen, die Sie mit Ihrem virtuellen Computer verwenden können. Jeder Typ weist bestimmte IOPS- und Durchsatzeinschränkungen auf. Berücksichtigen Sie diese Beschränkungen beim Auswählen des Datenträgertyps für Ihren virtuellen Computer je nach Anforderungen Ihrer Anwendung hinsichtlich Kapazität, Leistung, Skalierbarkeit und Spitzenlasten.
@@ -66,7 +66,7 @@ Es gibt drei Datenträgertypen, die Sie mit Ihrem virtuellen Computer verwenden 
 | IOPS pro Datenträger |500 |2.300 |5.000 |
 | Durchsatz pro Datenträger |100 MB pro Sekunde |150 MB pro Sekunde |200 MB pro Sekunde |
 
-Legen Sie je nach Workload fest, ob zusätzliche Datenträger für Ihren virtuellen Computer erforderlich sind. Sie können mehrere Datenträger für permanente Daten auf Ihrem virtuellen Computer anfügen. Bei Bedarf können Sie Daten über die Datenträger verteilen, um die Kapazität und die Leistung des Volumens zu erhöhen. ([Hier](storage-premium-storage-performance.md#disk-striping) erfahren Sie, was Datenträgerstriping ist.) Wenn Sie Daten über Storage Premium-Datenträger mithilfe von [Speicherplätzen][4] verteilen, sollten Sie sie für jeden verwendeten Datenträger eine Spalte konfigurieren. Andernfalls kann die Gesamtleistung des Stripesetvolumes aufgrund ungleicher Verteilung des Datenverkehrs auf die Datenträger niedriger sein als erwartet. Für Linux-VMs können Sie dazu das Hilfsprogramm *mdadm* verwenden. Weitere Informationen finden Sie im Artikel [Konfigurieren von Software-RAID unter Linux](../virtual-machines/virtual-machines-linux-configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
+Legen Sie je nach Workload fest, ob zusätzliche Datenträger für Ihren virtuellen Computer erforderlich sind. Sie können mehrere Datenträger für permanente Daten auf Ihrem virtuellen Computer anfügen. Bei Bedarf können Sie Daten über die Datenträger verteilen, um die Kapazität und die Leistung des Volumens zu erhöhen. ([Hier](storage-premium-storage-performance.md#disk-striping) erfahren Sie, was Datenträgerstriping ist.) Wenn Sie Daten über Storage Premium-Datenträger mithilfe von [Speicherplätzen][4] verteilen, sollten Sie sie für jeden verwendeten Datenträger eine Spalte konfigurieren. Andernfalls kann die Gesamtleistung des Stripesetvolumes aufgrund ungleicher Verteilung des Datenverkehrs auf die Datenträger niedriger sein als erwartet. Für Linux-VMs können Sie dazu das Hilfsprogramm *mdadm* verwenden. Weitere Informationen finden Sie im Artikel [Konfigurieren von Software-RAID unter Linux](../virtual-machines/linux/configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
 
 #### <a name="storage-account-scalability-targets"></a>Skalierbarkeitsziele für das Speicherkonto
 Storage Premium-Konten haben zusätzlich zu den unter [Ziele für Skalierbarkeit und Leistung des Azure-Speichers](storage-scalability-targets.md) aufgeführten Zielen folgende Skalierbarkeitsziele. Wenn die Anforderungen Ihrer Anwendung die Skalierbarkeitsziele eines einzelnen Speicherkontos überschreiten, erstellen Sie die Anwendung so, dass mehrere Speicherkonten verwendet werden, und partitionieren Sie Ihre Daten in diesen Speicherkonten.
@@ -75,7 +75,7 @@ Storage Premium-Konten haben zusätzlich zu den unter [Ziele für Skalierbarkeit
 |:--- |:--- |
 | Festplattenkapazität: 35 TB<br />Kapazität für Momentaufnahmen: 10 TB |Bis zu 50 GB pro Sekunde für eingehenden und ausgehenden Datenverkehr |
 
-Weitere Informationen zu den Spezifikationen für Storage Premium finden Sie unter [Skalierbarkeits- und Leistungsziele für Storage Premium](storage-premium-storage.md#premium-storage-scalability-and-performance-targets).
+Weitere Informationen zu den Spezifikationen für Storage Premium finden Sie unter [Skalierbarkeits- und Leistungsziele für Storage Premium](storage-premium-storage.md#scalability-and-performance-targets).
 
 #### <a name="disk-caching-policy"></a>Zwischenspeicherungsrichtlinie für Datenträger
 Standardmäßig ist die Richtlinie für das Zwischenspeichern für alle Premium-Datenträger *Schreibgeschützt* und für die Premium-Betriebssystem-Datenträger, die an den virtuellen Computer angeschlossen sind, *Lesen/Schreiben*. Diese Konfigurationseinstellung wird empfohlen, um die optimale E/A-Leistung für Ihre Anwendung zu erreichen. Für Datenträger mit hohem oder ausschließlichem Schreibzugriff (z. B. SQL Server-Protokolldateien) deaktivieren Sie das Zwischenspeichern, sodass Sie eine bessere Anwendungsleistung erzielen können. Die Einstellungen für das Zwischenspeichern bei vorhandenen Datenträgern können Sie über das [Azure-Portal](https://portal.azure.com) oder den Parameter *-HostCaching* des Cmdlets *Set-AzureDataDisk* aktualisieren.
@@ -185,11 +185,11 @@ Mit AzCopy können Sie die VHD auf einfache Weise über das Internet hochladen. 
 
     Es folgt die Beschreibung der im AzCopy-Befehl verwendeten Parameter:
 
-   * **/Source:*&lt;Quelle&gt;:*** Speicherort der Ordner- oder Speichercontainer-URL, die die virtuelle Festplatte enthält
-   * **/SourceKey:*&lt;Quellspeicherschlüssel&gt;:*** Speicherkontoschlüssel des Quellspeicherkontos
-   * **/Dest:*&lt;Ziel&gt;:*** Speichercontainer-URL zum Kopieren der virtuellen Festplatte
-   * **/DestKey:*&lt;Zielspeicherschlüssel&gt;:*** Speicherkontoschlüssel des Zielspeicherkontos
-   * **/Pattern:*&lt;Dateiname&gt;:*** Geben Sie den Dateinamen der zu kopierenden VHD-Datei an.
+   * **/Source: *&lt;Quelle&gt;:*** Speicherort der Ordner- oder Speichercontainer-URL, die die virtuelle Festplatte enthält.
+   * **/SourceKey: *&lt;Speicherkontoschlüssel&gt;:*** Speicherkontoschlüssel des Quellspeicherkontos.
+   * **/Dest: *&lt;Ziel&gt;:*** Speichercontainer-URL zum Kopieren der virtuellen Festplatte.
+   * **/DestKey: *&lt;Zielspeicherkontoschlüssel&gt;:*** Speicherkontoschlüssel des Zielspeicherkontos.
+   * **/Pattern: *&lt;Dateiname&gt;:*** Geben Sie den Dateinamen der zu kopierenden VHD-Datei an.
 
 Details zur Verwendung des Tools AzCopy finden Sie unter [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md).
 
@@ -270,7 +270,7 @@ Mit AzCopy können Sie die VHD auf einfache Weise über das Internet hochladen. 
     ```azcopy
     AzCopy /Source: <source> /SourceKey: <source-account-key> /Dest: <destination> /DestKey: <dest-account-key> /BlobType:page /Pattern: <file-name>
     ```
-    
+
     Beispiel:
 
     ```azcopy
@@ -279,12 +279,12 @@ Mit AzCopy können Sie die VHD auf einfache Weise über das Internet hochladen. 
 
     Es folgt die Beschreibung der im AzCopy-Befehl verwendeten Parameter:
 
-   * **/Source:*&lt;Quelle&gt;:*** Speicherort der Ordner- oder Speichercontainer-URL, die die virtuelle Festplatte enthält
-   * **/SourceKey:*&lt;Quellspeicherschlüssel&gt;:*** Speicherkontoschlüssel des Quellspeicherkontos
-   * **/Dest:*&lt;Ziel&gt;:*** Speichercontainer-URL zum Kopieren der virtuellen Festplatte
-   * **/DestKey:*&lt;Zielspeicherschlüssel&gt;:*** Speicherkontoschlüssel des Zielspeicherkontos
+   * **/Source: *&lt;Quelle&gt;:*** Speicherort der Ordner- oder Speichercontainer-URL, die die virtuelle Festplatte enthält.
+   * **/SourceKey: *&lt;Speicherkontoschlüssel&gt;:*** Speicherkontoschlüssel des Quellspeicherkontos.
+   * **/Dest: *&lt;Ziel&gt;:*** Speichercontainer-URL zum Kopieren der virtuellen Festplatte.
+   * **/DestKey: *&lt;Zielspeicherkontoschlüssel&gt;:*** Speicherkontoschlüssel des Zielspeicherkontos.
    * **/BlobType: page:** Gibt an, dass das Ziel ein Seitenblob ist.
-   * **/Pattern:*&lt;Dateiname&gt;:*** Geben Sie den Dateinamen der zu kopierenden VHD-Datei an.
+   * **/Pattern: *&lt;Dateiname&gt;:*** Geben Sie den Dateinamen der zu kopierenden VHD-Datei an.
 
 Details zur Verwendung des Tools AzCopy finden Sie unter [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md).
 
@@ -459,14 +459,14 @@ Das Automatisierungsskript wird unten bereitgestellt. Ersetzen Sie Text durch Ih
     .Terms of Use
     Copyright © 2015 Microsoft Corporation.  All rights reserved.
 
-    THIS CODE AND ANY ASSOCIATED INFORMATION ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND,
+    THIS CODE AND ANY ASSOCIATED INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
     EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY
     AND/OR FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK OF USE, INABILITY TO USE, OR
     RESULTS FROM THE USE OF THIS CODE REMAINS WITH THE USER.
 
     .Example (Save this script as Migrate-AzureVM.ps1)
 
-    .\Migrate-AzureVM.ps1 -SourceServiceName CurrentServiceName -SourceVMName CurrentVMName –DestStorageAccount newpremiumstorageaccount -DestServiceName NewServiceName -DestVMName NewDSVMName -DestVMSize "Standard_DS2" –Location “Southeast Asia”
+    .\Migrate-AzureVM.ps1 -SourceServiceName CurrentServiceName -SourceVMName CurrentVMName –DestStorageAccount newpremiumstorageaccount -DestServiceName NewServiceName -DestVMName NewDSVMName -DestVMSize "Standard_DS2" –Location "Southeast Asia"
 
     .Link
     To find more information about how to set up Azure PowerShell, refer to the following links.
@@ -581,7 +581,7 @@ Das Automatisierungsskript wird unten bereitgestellt. Ersetzen Sie Text durch Ih
     # check if VM is shut down
     if ( $sourceVM.Status -notmatch "Stopped" )
     {
-        Write-Host "[Warning] - Stopping the VM is a required step so that the file system is consistent when you do the copy operation. Azure does not support live migration at this time. If you’d like to create a VM from a generalized image, sys-prep the Virtual Machine before stopping it." -ForegroundColor Yellow
+        Write-Host "[Warning] - Stopping the VM is a required step so that the file system is consistent when you do the copy operation. Azure does not support live migration at this time. If you'd like to create a VM from a generalized image, sys-prep the Virtual Machine before stopping it." -ForegroundColor Yellow
         $ContinueAnswer = Read-Host "`n`tDo you wish to stop $SourceVMName now? Input 'N' if you want to shut down the VM manually and come back later.(Y/N)"
         If ($ContinueAnswer -ne "Y") { Write-Host "`n Exiting." -ForegroundColor Red;Exit }
         $sourceVM | Stop-AzureVM

@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/18/2017
+ms.date: 04/12/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: eb0482d0dec3121710cc2ee56ab538cd66cb03c9
-ms.openlocfilehash: eaf7fabc243b3dfa37d974f4315a378bec9356b7
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 3d7801d8a53ac048333e43ee64724c11c25bf6a8
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -31,7 +31,7 @@ Je nach Anforderungen der einladenden Organisation kann ein Azure AD B2B-Zusamme
 
 - Zustand 1: Befindet sich in einer externen Instanz von Azure AD und wird als Gastbenutzer in der Hostorganisation dargestellt. In diesem Fall meldet sich der B2B-Benutzer mit einem Azure AD-Konto an, das zu seinem eigenen Mandanten gehört. Wenn die externe Organisation des Benutzers zum Zeitpunkt der Einladung Azure AD nicht verwendet, wird der Gastbenutzer in Azure AD erstellt, nachdem der Benutzer seine Einladung eingelöst hat und seine E-Mail-Adresse überprüft wurde. Ein solcher Mandant wird auch als Just-in-Time (JIT)-Mandant oder viraler Mandant bezeichnet.
 
-- Zustand 2: Befindet sich in einem Microsoft-Konto und wird als Gastbenutzer in der Hostorganisation dargestellt. In diesem Fall meldet sich der Gastbenutzer mit einem Microsoft-Konto an. In der aktualisierten öffentlichen Azure AD-Vorschau wird die soziale Identität eines eingeladenen Benutzers, bei der es sich nicht um ein Microsoft-Konto handelt (also z.B. google.com), während der Einlösung des Angebots als Microsoft-Konto erstellt.
+- Zustand 2: Befindet sich in einem Microsoft-Konto und wird als Gastbenutzer in der Hostorganisation dargestellt. In diesem Fall meldet sich der Gastbenutzer mit einem Microsoft-Konto an. Die soziale Identität eines eingeladenen Benutzers, bei der es sich nicht um ein Microsoft-Konto handelt (also z.B. google.com), wird während der Einlösung des Angebots als Microsoft-Konto erstellt.
 
 - Zustand 3: Befindet sich im lokalen Active Directory der Hostorganisation und wird mit dem Azure AD der Hostorganisation synchronisiert. In dieser Version müssen Sie die Eigenschaft „UserType“ solcher Benutzer in der Cloud mithilfe von PowerShell manuell ändern.
 

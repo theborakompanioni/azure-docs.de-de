@@ -13,19 +13,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: getting-started
-ms.date: 2/14/2017
+ms.date: 4/4/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 9a0e7a9aadf6ca12915635408653a37241dbb321
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 8a903cd870f01f9ca6224efd1386b68c63e3aa98
+ms.lasthandoff: 04/06/2017
 
 
 ---
 
 # <a name="deploy-an-autoscaling-app-using-a-template"></a>Bereitstellen einer App für die automatische Skalierung mithilfe einer Vorlage
 
-[Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment) sind eine hervorragende Möglichkeit, Gruppen aufeinander bezogener Ressourcen bereitzustellen. Dieses Tutorial baut auf [Bereitstellen einer einfachen Skalierungsgruppe](virtual-machine-scale-sets-mvss-start.md) auf und beschreibt, wie Sie eine einfache Anwendung zur automatischen Skalierung unter Verwendung einer Azure Resource Manager-Vorlage in einer Skalierungsgruppe bereitstellen.
+[Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment) sind eine hervorragende Möglichkeit, Gruppen aufeinander bezogener Ressourcen bereitzustellen. Dieses Tutorial baut auf [Bereitstellen einer einfachen Skalierungsgruppe](virtual-machine-scale-sets-mvss-start.md) auf und beschreibt, wie Sie eine einfache Anwendung zur automatischen Skalierung unter Verwendung einer Azure Resource Manager-Vorlage in einer Skalierungsgruppe bereitstellen.  Sie können die automatische Skalierung auch mithilfe von PowerShell, CLI oder über das Portal einrichten. Weitere Informationen finden Sie unter [Übersicht über die automatische Skalierung](virtual-machine-scale-sets-autoscale-overview.md).
 
 ## <a name="two-quickstart-templates"></a>Zwei Schnellstartvorlagen
 Wenn Sie eine Skalierungsgruppe bereitstellen, können Sie neue Software mithilfe einer [VM-Erweiterung](../virtual-machines/virtual-machines-windows-extensions-features.md) auf einem Plattformimage installieren. Eine VM-Erweiterung ist eine kleine Anwendung, die Konfigurations- und Automatisierungsaufgaben auf virtuellen Azure-Computern nach der Bereitstellung ermöglicht. In [Azure/azure-quickstart-templates](https://github.com/Azure/azure-quickstart-templates) sind zwei unterschiedliche Beispielvorlagen enthalten, die zeigen, wie Sie eine Anwendung zur automatischen Skalierung mithilfe einer VM-Erweiterung in einer Skalierungsgruppe bereitstellen.

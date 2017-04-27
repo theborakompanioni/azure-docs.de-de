@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 2/24/2017
 ms.author: shlo
 translationtype: Human Translation
-ms.sourcegitcommit: 02d810db5433370802b866424c24464d64171ef0
-ms.openlocfilehash: 6921965c3286209e024ba59637da0c485b4a0c71
-ms.lasthandoff: 02/01/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 14b7900a8b4fbf86e8a814def6fa8c7915832376
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -28,7 +28,7 @@ Data Factory ist ein cloudbasierter Datenintegrationsdienst, der das **Verschieb
 
 Data Factory ermöglicht das Erstellen von datengesteuerten Workflows zum Verschieben von Daten zwischen lokalen und cloudbasierten Datenspeichern sowie zum Verarbeiten/Transformieren von Daten mithilfe von Computediensten wie Azure HDInsight und Azure Data Lake Analytics. Nachdem Sie eine Pipeline erstellt haben, die die gewünschte Aktion ausführt, können Sie die regelmäßige Ausführung der Pipeline planen (stündlich, täglich, wöchentlich usw.).   
 
-Unter [Übersicht und Schlüsselkonzepte](data-factory-introduction.md) finden Sie weitere Informationen.
+Weitere Informationen finden Sie unter [Übersicht und wichtige Konzepte](data-factory-introduction.md).
 
 ### <a name="where-can-i-find-pricing-details-for-azure-data-factory"></a>Wo finde ich Preisinformationen zu Azure Data Factory?
 Preisinformationen zu Azure Data Factory finden Sie auf der Seite [Data Factory – Preisübersicht][adf-pricing-details].  
@@ -45,7 +45,7 @@ Data Factory ist in den Regionen **USA, Westen** sowie in **Europa, Norden** ver
 Weitere Informationen finden Sie im Abschnitt **Einschränkungen von Azure Data Factory** unter dem Artikel [Begrenzungen, Kontingente und Einschränkungen von Azure-Abonnements und -Diensten](../azure-subscription-service-limits.md#data-factory-limits) .
 
 ### <a name="what-is-the-authoringdeveloper-experience-with-azure-data-factory-service"></a>Was sieht die Erstellung-/Entwicklungsumgebung im Azure Data Factory-Dienst aus?
-Sie können Data Factorys mithilfe einer der folgenden Methoden erstellen:
+Sie können Data Factorys mithilfe eines der folgenden Werkzeuge/SDKs erstellen:
 
 * **Azure-Portal:**
    Die Data Factory-Blätter im Azure-Portal bieten eine umfassende Benutzeroberfläche zum Erstellen von Data Factorys und verknüpften Diensten. Der **Data Factory-Editor**, der auch Teil des Portals ist, ermöglicht Ihnen die einfache Erstellung von verknüpften Diensten, Tabellen, Datasets und Pipelines durch Angabe von JSON-Definitionen für diese Artefakte. Unter [Erstellen der ersten Azure Data Factory mit dem Azure-Portal](data-factory-build-your-first-pipeline-using-editor.md) finden Sie ein Beispiel für das Verwenden des Portals/Editors zum Erstellen und Bereitstellen einer Data Factory.
@@ -78,6 +78,9 @@ Die folgende Tabelle enthält eine Liste von Compute-Umgebungen, die von Data Fa
 | [Azure Machine Learning](data-factory-compute-linked-services.md#azure-machine-learning-linked-service) |[Machine Learning-Aktivitäten: Batchausführung und Ressourcenaktualisierung](data-factory-azure-ml-batch-execution-activity.md) |
 | [Azure Data Lake Analytics](data-factory-compute-linked-services.md#azure-data-lake-analytics-linked-service) |[Data Lake Analytics U-SQL](data-factory-usql-activity.md) |
 | [Azure SQL](data-factory-compute-linked-services.md#azure-sql-linked-service), [Azure SQL Data Warehouse](data-factory-compute-linked-services.md#azure-sql-data-warehouse-linked-service), [SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) |[Gespeicherte Prozedur](data-factory-stored-proc-activity.md) |
+
+### <a name="how-does-azure-data-factory-compare-with-sql-server-integration-services-ssis"></a>Wie unterscheidet sich Azure Data Factory von SQL Server Integration Services (SSIS)? 
+Siehe die Präsentation [Azure Data Factory vs. SSIS](http://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS) (in englischer Sprache) von einem unserer MVPs (Most Valued Professionals): Reza Rad. Einige der kürzlich in Data Factory vorgenommenen Änderungen werden möglicherweise in der Präsentation nicht aufgeführt. Azure Data Factory werden fortlaufend weitere Funktionen hinzugefügt. Azure Data Factory werden fortlaufend weitere Funktionen hinzugefügt. Diese Aktualisierungen werden irgendwann im Laufe dieses Jahres in den Vergleich der Datenintegrationstechnologien von Microsoft aufgenommen.   
 
 ## <a name="activities---faq"></a>Aktivitäten – Häufig gestellte Fragen
 ### <a name="what-are-the-different-types-of-activities-you-can-use-in-a-data-factory-pipeline"></a>Welche verschiedenen Arten von Aktivitäten können in einer Data Factory-Pipeline verwendet werden?

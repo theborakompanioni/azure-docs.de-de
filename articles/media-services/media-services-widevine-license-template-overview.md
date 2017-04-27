@@ -12,11 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 03/29/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a90e56bb2b7db0bb964684f9cac04096a6577adc
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 5ef6e368a170816b7000c23cdf686644690fca45
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -26,7 +27,8 @@ Azure Media Services ermöglicht jetzt das Konfigurieren und Anfordern von Widev
 
 Die Widevine-Lizenzanforderung ist als JSON-Nachricht formatiert.  
 
-Beachten Sie, dass Sie die Möglichkeit haben, eine leere Nachricht ohne Werte nur mit „{}“ zu erstellen, und eine Lizenzvorlage mit allen Standardeinstellungen wird erstellt.  
+>[!NOTE]
+> Sie können eine leere Nachricht ohne Werte nur mit „{}“ erstellen, und es wird eine Lizenzvorlage mit allen Standardeinstellungen erstellt. Die Standardeinstellungen funktionieren in den meisten Fällen. Diese Standardeinstellungen sollten beispielsweise stets für MS-Lizenzbereitstellungsszenarien verwendet werden. Wenn Sie die Werte für „provider“ und „content_id“ festlegen müssen, muss der Anbieter den Widevine-Anmeldeinformationen von Google entsprechen.
 
     {  
        “payload”:“<license challenge>”,
@@ -62,7 +64,7 @@ Beachten Sie, dass Sie die Möglichkeit haben, eine leere Nachricht ohne Werte n
 | --- | --- | --- |
 | payload |Base64-codierte Zeichenfolge |Die von einem Client gesendete Lizenzanforderung. |
 | content_id |Base64-codierte Zeichenfolge |Bezeichner, der zum Ableiten von Schlüssel-IDs und Inhaltsschlüsseln für „content_key_specs.track_type“ verwendet wird. |
-| Anbieter |string |Wird zum Nachschlagen von Inhaltsschlüsseln und Richtlinien verwendet. Erforderlich. |
+| Anbieter |string |Wird zum Nachschlagen von Inhaltsschlüsseln und Richtlinien verwendet. Wenn für die Widevine-Lizenzbereitstellung die MS-Schlüsselbereitstellung verwendet wird, wird dieser Parameter ignoriert. |
 | policy_name |string |Der Name einer zuvor registrierten Richtlinie. Optional |
 | allowed_track_types |enum |SD_ONLY oder SD_HD. Steuert, welche Inhaltsschlüssel in eine Lizenz aufgenommen werden müssen |
 | content_key_specs |Array von JSON-Strukturen, siehe **Spezifikationen für Inhaltsschlüssel** weiter unten |Eine feiner abgestimmte Steuerung der zurückzugebenden Inhaltsschlüssel. Einzelheiten finden Sie unter „Spezifikationen für Inhaltsschlüssel“ weiter unten.  Nur entweder „allowed_track_types“ oder „content_key_specs“ kann angegeben werden. |
@@ -79,7 +81,7 @@ Jeder content_key_specs-Wert muss für alle Titel angegeben werden, unabhängig 
 | Name | Wert | Beschreibung |
 | --- | --- | --- |
 | content_key_specs. track_type |string |Der Name eines Titeltyps. Wenn „content_key_specs“ in der Lizenzanforderung angegeben ist, sollten Sie unbedingt alle Titeltypen explizit angeben. Andernfalls wird die Wiedergabe nach 10 Sekunden beendet. |
-| content_key_specs  <br/> security_level |UInt32 |Definiert die Clientstabilitätsanforderungen für die Wiedergabe. <br/>  1 – Softwarebasierte White-Box-Verschlüsselung ist erforderlich. <br/>  2 – Softwareverschlüsselung und ein verborgener Decoder sind erforderlich. <br/>  3 – Die zentralen Vorgänge für Daten und Verschlüsselung müssen innerhalb einer hardwaregestützten vertrauenswürdigen Ausführungsumgebung ausgeführt werden. <br/>  4 – Verschlüsselung und Decodierung müssen innerhalb einer hardwaregestützten vertrauenswürdigen Ausführungsumgebung ausgeführt werden.  <br/>  5 – Verschlüsselung, Decodierung und Verarbeitung von Medien (komprimiert und nicht komprimiert) müssen innerhalb einer hardwaregestützten vertrauenswürdigen Ausführungsumgebung verarbeitet werden. |
+| content_key_specs  <br/> security_level |UInt32 |Definiert die Clientstabilitätsanforderungen für die Wiedergabe. <br/> 1 – Softwarebasierte White-Box-Verschlüsselung ist erforderlich. <br/> 2 – Softwareverschlüsselung und ein verborgener Decoder sind erforderlich. <br/> 3 – Die zentralen Vorgänge für Daten und Verschlüsselung müssen innerhalb einer hardwaregestützten vertrauenswürdigen Ausführungsumgebung ausgeführt werden. <br/> 4 – Verschlüsselung und Decodierung müssen innerhalb einer hardwaregestützten vertrauenswürdigen Ausführungsumgebung ausgeführt werden.  <br/> 5 – Verschlüsselung, Decodierung und Verarbeitung von Medien (komprimiert und nicht komprimiert) müssen innerhalb einer hardwaregestützten vertrauenswürdigen Ausführungsumgebung verarbeitet werden. |
 | content_key_specs <br/> required_output_protection.hdc |Zeichenfolge: HDCP_NONE, HDCP_V1 oder HDCP_V2 |Gibt an, ob HDCP erforderlich ist. |
 | content_key_specs <br/>key |Base64- <br/>codierte Zeichenfolge |Der Inhaltsschlüssel, der für diesen Titel verwendet werden soll. Wenn ein Wert angegeben wird, ist „track_type“ oder „key_id“ erforderlich.  Mit dieser Option können Inhaltsanbieter den Inhaltsschlüssel für diesen Titel einfügen, statt einen Schlüssel durch den Widevine-Lizenzserver zu generieren oder zu suchen. |
 | content_key_specs.key_id |Base64-codierte binäre Zeichenfolge, 16 Bytes |Eindeutiger Bezeichner für den Schlüssel. |
@@ -197,10 +199,5 @@ Das folgende Beispiel zeigt, wie Sie .NET-APIs verwenden, um eine einfache Widev
 
 ## <a name="see-also"></a>Weitere Informationen
 [Verwenden von dynamischer allgemeiner Verschlüsselung mit PlayReady und/oder Widevine](media-services-protect-with-drm.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

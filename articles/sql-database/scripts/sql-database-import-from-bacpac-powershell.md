@@ -17,17 +17,17 @@ ms.workload: database
 ms.date: 03/07/2017
 ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 0afe2d9e8cb6d26c43830df0ebfe2cea5c2f7665
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: ff27ec5eb86b11bbbc91e648ffa72956436f445a
+ms.lasthandoff: 04/12/2017
 
 ---
 
 # <a name="import-from-a-bacpac-into-a-sql-database-using-powershell"></a>Importieren von einer BACPAC-Datei in eine SQL-­Datenbank mithilfe von PowerShell
 
-Dieses PowerShell-Beispielskript importiert eine Datenbank von einer BACPAC-Datei.  
+Dieses PowerShell-Beispielskript importiert eine Datenbank aus einer **BACPAC**-Datei.  
 
-[!INCLUDE [sample-cli-install](../../../includes/sample-powershell-install-no-ssh.md)]
+[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ## <a name="sample-script"></a>Beispielskript
 
@@ -47,11 +47,11 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 | Befehl | Hinweise |
 |---|---|
-| [New-AzureRmResourceGroup]() | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [New-AzureRmSqlServer]() | Erstellt einen logischen Server, der die SQL-Datenbank hostet. |
-| [New-AzureRmSqlServerFirewallRule]() | Erstellt eine Firewallregel, die vom eingegebenen IP-Adressbereich aus den Zugriff auf alle SQL-Datenbanken auf dem Server ermöglicht. |
-| [New-AzureRmSqlDatabase]() | Erstellt die SQL-Datenbank auf dem logischen Server. |
-| [Remove-AzureRmResourceGroup]() | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
+| [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.3.0/new-azurermresourcegroup) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [New-AzureRmSqlServer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.sql/v2.5.0/new-azurermsqlserver) | Erstellt einen logischen Server, der die SQL-Datenbank hostet. |
+| [New-AzureRmSqlServerFirewallRule](https://docs.microsoft.com/powershell/resourcemanager/azurerm.sql/v2.3.0/new-azurermsqlserverfirewallrule) | Erstellt eine Firewallregel, die vom eingegebenen IP-Adressbereich aus den Zugriff auf alle SQL-Datenbanken auf dem Server ermöglicht. |
+| [New-AzureRmSqlDatabaseImport](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabaseimport?view=azurermps-3.7.0) | Importiert eine BACPAC-Datei und erstellt eine neue Datenbank auf dem Server. |
+| [Remove-AzureRmResourceGroup](https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.2.0/remove-azurermresourcegroup) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

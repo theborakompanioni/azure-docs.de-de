@@ -11,17 +11,16 @@ ms.service: batch
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
-ms.workload: big-compute
-ms.date: 02/27/2017
+ms.workload: 3/28/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: a23ae729e20dcf79ada73f7545861356e31b957e
-ms.lasthandoff: 03/09/2017
-
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: d533dc2c49974f2ce4ef1d1f6dc12e23ec18877f
+ms.lasthandoff: 04/03/2017
 
 ---
+
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Verwenden von Tasks mit mehreren Instanzen zum Ausführen von MPI-Anwendungen (Message Passing Interface) in Batch
 
 Tasks mit mehreren Instanzen ermöglichen die Ausführung eines Azure Batch-Tasks auf mehreren Computeknoten gleichzeitig. Diese Tasks machen High Performance Computing-Szenarien wie Message Passing Interface-Anwendungen (MPI) in Batch möglich. In diesem Artikel erfahren Sie, wie mithilfe der [Batch .NET][api_net]-Bibliothek Tasks mit mehreren Instanzen ausgeführt werden.
@@ -50,7 +49,9 @@ Wenn Sie einen Task mit Einstellungen für mehrere Instanzen an einen Auftrag ü
 >
 
 ## <a name="requirements-for-multi-instance-tasks"></a>Anforderungen für Tasks mit mehreren Instanzen
-Tasks mit mehreren Instanzen erfordern einen Pool, in dem die **Kommunikation zwischen Knoten** aktiviert und die**gleichzeitige Ausführung von Tasks deaktiviert** ist. Wenn Sie versuchen, einen Task mit mehreren Instanzen in einem Pool auszuführen, in dem die knotenübergreifende Kommunikation deaktiviert ist oder der einen höheren *maxTasksPerNode* -Wert als 1 aufweist, wird der Task nie geplant – er bleibt auf unbestimmte Zeit im aktiven Zustand. Dieser Codeausschnitt zeigt die Erstellung eines solchen Pools mithilfe der Batch-Bibliothek für .NET.
+Tasks mit mehreren Instanzen erfordern einen Pool, in dem die **Kommunikation zwischen Knoten** aktiviert und die **gleichzeitige Ausführung von Tasks deaktiviert** ist. Legen Sie die Eigenschaft [CloudPool.MaxTasksPerComputeNode](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool#Microsoft_Azure_Batch_CloudPool_MaxTasksPerComputeNode) auf 1 fest, um das gleichzeitige Ausführen von Tasks zu deaktivieren.
+
+In diesem Codeausschnitt wird veranschaulicht, wie ein Pool für Tasks mit mehreren Instanzen mithilfe der Batch-Bibliothek für .NET erstellt wird.
 
 ```csharp
 CloudPool myCloudPool =
@@ -66,7 +67,12 @@ myCloudPool.InterComputeNodeCommunicationEnabled = true;
 myCloudPool.MaxTasksPerComputeNode = 1;
 ```
 
-Darüber hinaus werden Tasks mit mehreren Instanzen *nur* auf Knoten in **Pools ausgeführt, die nach dem 14. Dezember 2015 erstellt wurden**.
+> [!NOTE]
+> Wenn Sie versuchen, einen Task mit mehreren Instanzen in einem Pool auszuführen, in dem die knotenübergreifende Kommunikation deaktiviert ist oder der einen höheren *maxTasksPerNode* -Wert als 1 aufweist, wird der Task nie geplant – er bleibt auf unbestimmte Zeit im aktiven Zustand. 
+>
+> Tasks mit mehreren Instanzen können nur auf Knoten in Pools ausgeführt werden, die nach dem 14. Dezember 2015 erstellt wurde.
+>
+>
 
 ### <a name="use-a-starttask-to-install-mpi"></a>Verwenden eines StartTask-Elements für die MPI-Installation
 Zum Ausführen von MPI-Anwendungen mit einem Task mit mehreren Instanzen müssen Sie zunächst eine MPI-Implementierung (z.B. MS-MPI oder Intel MPI) auf den Computeknoten im Pool installieren. Dies ist der ideale Zeitpunkt, um einen [StartTask][net_starttask] zu verwenden, der immer ausgeführt wird, wenn ein Knoten mit einem Pool verknüpft oder neu gestartet wird. Mit diesem Codeausschnitt wird ein StartTask erstellt, mit dem das MS-MPI-Setup-Paket als [Ressourcendatei][net_resourcefile] angegeben wird. Die Befehlszeile des Starttask wird ausgeführt, nachdem die Ressourcendatei auf den Knoten heruntergeladen wird. In diesem Fall führt die Befehlszeile eine unbeaufsichtigte Installation von MS-MPI durch.
@@ -89,7 +95,7 @@ await myCloudPool.CommitAsync();
 ```
 
 ### <a name="remote-direct-memory-access-rdma"></a>Remotezugriff auf den direkten Speicher (Remote Direct Memory Access, RDMA)
-Wenn Sie für die Computeknoten in Ihrem Batch-Pool eine [für RDMA geeignete Größe](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) wie z.B. A9 auswählen, kann die MPI-Anwendung das hochleistungsfähige RDMA-Netzwerk (Remote Direct Memory Access) mit geringer Latenz von Azure nutzen.
+Wenn Sie für die Computeknoten in Ihrem Batch-Pool eine [für RDMA geeignete Größe](../virtual-machines/windows/a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) wie z.B. A9 auswählen, kann die MPI-Anwendung das hochleistungsfähige RDMA-Netzwerk (Remote Direct Memory Access) mit geringer Latenz von Azure nutzen.
 
 Suchen Sie in den folgenden Artikeln nach den Größen, für die „RDMA-fähig“ angegeben ist:
 
@@ -98,8 +104,8 @@ Suchen Sie in den folgenden Artikeln nach den Größen, für die „RDMA-fähig�
   * [Größen für Clouddienste](../cloud-services/cloud-services-sizes-specs.md) (nur Windows)
 * **VirtualMachineConfiguration**-Pools
 
-  * [Größen für virtuelle Computer in Azure](../virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Linux)
-  * [Größen für virtuelle Computer in Azure](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows)
+  * [Größen für virtuelle Computer in Azure](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Linux)
+  * [Größen für virtuelle Computer in Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows)
 
 > [!NOTE]
 > Zum Nutzen von RDMA auf [Linux-Computeknoten](batch-linux-nodes.md) müssen Sie **Intel MPI** auf den Knoten verwenden. Weitere Informationen zu CloudServiceConfiguration- und VirtualMachineConfiguration-Pools finden Sie im Pool-Abschnitt der [Übersicht über Azure Batch-Features](batch-api-basics.md).

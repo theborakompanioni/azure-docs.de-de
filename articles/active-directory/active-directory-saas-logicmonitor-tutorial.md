@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/02/2017
+ms.date: 03/22/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: d87f6068cef7630ca7d9e8929b43449d28d11f78
-ms.openlocfilehash: 9d9074c986c7210e7d7a345ad5d761ac781be3c1
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: d47cb9ae48034c73ccb20bd1872a6b50eebb27d7
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -37,7 +37,7 @@ Das in diesem Lernprogramm beschriebene Szenario besteht aus den folgenden Baust
 
 ![Szenario](./media/active-directory-saas-logicmonitor-tutorial/IC790045.png "Szenario")
 
-## <a name="enabling-the-application-integration-for-logicmonitor"></a>Aktivieren der Anwendungsintegration für LogicMonitor
+## <a name="enable-the-application-integration-for-logicmonitor"></a>Aktivieren der Anwendungsintegration für LogicMonitor
 In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für LogicMonitor aktivieren.
 
 **Führen Sie zum Aktivieren der Anwendungsintegration für LogicMonitor die folgenden Schritte aus:**
@@ -62,7 +62,7 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Log
    
    ![LogicMonitor](./media/active-directory-saas-logicmonitor-tutorial/IC790047.png "LogicMonitor")
    
-## <a name="configuring-single-sign-on"></a>Konfigurieren der einmaligen Anmeldung
+## <a name="configure-single-sign-on"></a>Configure single sign-on
 
 In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei LogicMonitor zu authentifizieren.
 
@@ -99,7 +99,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
    
    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-logicmonitor-tutorial/IC790055.png "Einmaliges Anmelden konfigurieren")
    
-## <a name="configuring-user-provisioning"></a>Konfigurieren der Benutzerbereitstellung
+## <a name="configure-user-provisioning"></a>Benutzerbereitstellung konfigurieren
 
 Damit sich AAD-Benutzer anmelden können, müssen sie in der LogicMonitor-Anwendung unter Verwendung ihrer Azure Active Directory-Benutzernamen bereitgestellt werden.
 
@@ -122,7 +122,7 @@ Damit sich AAD-Benutzer anmelden können, müssen sie in der LogicMonitor-Anwend
 >Sie können Azure Active Directory-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von LogicMonitor-Benutzerkonten oder mithilfe der von LogicMonitor bereitgestellten APIs erstellen. 
 > 
 
-## <a name="assigning-users"></a>Zuweisen von Benutzern
+## <a name="assign-users"></a>Benutzer zuweisen
 Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
 
 **Führen Sie zum Zuweisen von Benutzern in LogicMonitor folgende Schritte aus:**

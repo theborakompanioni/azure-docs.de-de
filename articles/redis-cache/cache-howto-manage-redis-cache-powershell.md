@@ -12,11 +12,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 01/06/2017
+ms.date: 04/03/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 9d76e82b1658c3ea4dd6631bae232d17f375ab33
-ms.openlocfilehash: 61c0fd56aad1cc589138aa02ea43ef315edf9baf
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 715f76377947baaf1a72871cfe291f17e1cc0baf
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -65,7 +66,7 @@ Geben Sie beispielsweise Folgendes ein, um Hilfe zum `New-AzureRmRedisCache` -Cm
 
     Get-Help New-AzureRmRedisCache -Detailed
 
-### <a name="how-to-connect-to-azure-government-cloud-or-azure-china-cloud"></a>Herstellen einer Verbindung mit der Azure Government-Cloud oder Azure China
+### <a name="how-to-connect-to-other-clouds"></a>Herstellen von Verbindungen mit anderen Clouds
 Standardmäßig ist die Azure-Umgebung `AzureCloud` (die globale Azure-Cloudinstanz). Verwenden Sie zum Verbinden mit einer anderen Instanz den `Add-AzureRmAccount`-Befehl mit dem Befehlszeilenschalter `-Environment` oder -`EnvironmentName` mit der gewünschten Umgebung bzw. dem gewünschten Umgebungsnamen.
 
 Führen Sie zum Anzeigen der Liste der verfügbaren Umgebungen das Cmdlet `Get-AzureRmEnvironment` aus.
@@ -101,6 +102,23 @@ Verwenden Sie zum Erstellen eines Caches in der Azure China-Cloud einen der folg
 * China, Norden
 
 Weitere Informationen zur Azure China-Cloud finden Sie unter [AzureChinaCloud für Azure wird in China von 21Vianet betrieben](http://www.windowsazure.cn/).
+
+### <a name="to-connect-to-microsoft-azure-germany"></a>So stellen Sie eine Verbindung mit Microsoft Azure Deutschland her
+Verwenden Sie zum Herstellen einer Verbindung mit Microsoft Azure Deutschland einen der folgenden Befehle.
+
+    Add-AzureRMAccount -EnvironmentName AzureGermanCloud
+
+
+or
+
+    Add-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureGermanCloud)
+
+Verwenden Sie einen der folgenden Orte, um einen Cache in Microsoft Azure Deutschland zu erstellen.
+
+* Deutschland, Mitte
+* Deutschland, Nordosten
+
+Weitere Informationen zu Microsoft Azure Deutschland finden Sie unter [Microsoft Azure Deutschland](https://azure.microsoft.com/overview/clouds/germany/).
 
 ### <a name="properties-used-for-azure-redis-cache-powershell"></a>Eigenschaften, die für Azure Redis Cache-PowerShell verwendet werden
 Die folgende Tabelle enthält Eigenschaften und Beschreibungen für Parameter, die beim Erstellen und Verwalten Ihrer Azure Redis Cache-Instanzen mithilfe von Azure PowerShell häufig verwendet werden.
@@ -763,15 +781,10 @@ Der folgende Befehl startet beide Knoten des angegebenen Cache neu.
 Weitere Informationen zur Verwendung von Windows PowerShell mit Azure finden Sie in den folgenden Ressourcen:
 
 * [Dokumentation zu den Azure Redis Cache-Cmdlets auf MSDN](https://msdn.microsoft.com/library/azure/mt634513.aspx)
-* [Azure Resource Manager Cmdlets](http://go.microsoft.com/fwlink/?LinkID=394765)(in englischer Sprache): Verwenden der Cmdlets im AzureResourceManager-Modul.
+* [Azure Resource Manager-Cmdlets](http://go.microsoft.com/fwlink/?LinkID=394765): Hier erfahren Sie, wie Sie die Cmdlets im Azure Resource Manager-Modul verwenden.
 * [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/resource-group-template-deploy-portal.md): Hier erfahren Sie, wie Sie Ressourcengruppen im Azure-Portal erstellen und verwalten.
 * [Azure-Blog](http://blogs.msdn.com/windowsazure): Informationen zu neuen Funktionen in Azure.
 * [Windows PowerShell-Blog](http://blogs.msdn.com/powershell): Informationen zu neuen Funktionen in Windows PowerShell.
 * ["Hey, Scripting Guy!"- Blog](http://blogs.technet.com/b/heyscriptingguy/): Praktische Tipps und Tricks aus der Windows PowerShell-Community.
-
-
-
-
-<!--HONumber=Nov16_HO5-->
 
 

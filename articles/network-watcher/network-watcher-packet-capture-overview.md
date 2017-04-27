@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 211c33ceb8e3b9adc9ad75cf18aa459ad5523c18
-ms.openlocfilehash: 1478e5bb08b29e083861b63e4ca999a38fab8452
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: dde3d1b1b0708d49ac713e18242c3376d301c675
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -26,14 +26,10 @@ ms.lasthandoff: 02/22/2017
 
 Mithilfe der variablen Paketerfassung in Network Watcher können Sie Paketerfassungssitzungen erstellen, um den eingehenden und ausgehenden Datenverkehr eines virtuellen Computers nachzuverfolgen. Mithilfe der Paketerfassung können Sie Netzwerkanomalien sowohl reaktiv als auch proaktiv diagnostizieren. Weitere Verwendungszwecke sind das Erfassen von Netzwerkstatistiken, das Gewinnen von Informationen zu Netzwerkangriffen, das Debuggen der Kommunikation zwischen Client und Server und vieles mehr.
 
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
-
-Paketerfassung ist eine Erweiterung des virtuellen Computers, die remote über Network Watcher gestartet wird. Diese Funktion erleichtert die manuelle Ausführung einer Paketerfassung auf dem gewünschten virtuellen Computer. So sparen Sie wertvolle Zeit. Paketerfassung kann über Portal, PowerShell, CLI oder REST-API ausgelöst werden. Ein Beispiel dafür, wie die Paketerfassung ausgelöst werden kann, ist die Auslösung mit VM-Warnungen. Für die Erfassungssitzung werden Filter bereitgestellt, um sicherzustellen, dass nur der gewünschte Datenverkehr erfasst wird. Filter basieren auf 5-Tupel-Informationen (Protokoll, lokale IP-Adresse, Remote-IP-Adresse, lokaler Port und Remoteport). Die aufgezeichneten Daten werden auf dem lokalen Datenträger oder in einem Speicherblob gespeichert.
-
-![Übersicht zur Paketerfassung][1]
+Paketerfassung ist eine Erweiterung des virtuellen Computers, die remote über Network Watcher gestartet wird. Diese Funktion erleichtert die manuelle Ausführung einer Paketerfassung auf dem gewünschten virtuellen Computer. So sparen Sie wertvolle Zeit. Paketerfassung kann über Portal, PowerShell, CLI oder REST-API ausgelöst werden. Ein Beispiel dafür, wie die Paketerfassung ausgelöst werden kann, ist die Auslösung mit VM-Warnungen. Für die Erfassungssitzung werden Filter bereitgestellt, um sicherzustellen, dass nur der gewünschte Datenverkehr erfasst wird. Filter basieren auf 5-Tupel-Informationen (Protokoll, lokale IP-Adresse, Remote-IP-Adresse, lokaler Port und Remoteport). Die aufgezeichneten Daten werden auf dem lokalen Datenträger oder in einem Speicherblob gespeichert. Es sind maximal 10 Paketerfassungssitzungen pro Region und Abonnement zulässig. Dieser Grenzwert bezieht sich lediglich auf die Sitzungen und gilt nicht für die Paketerfassungsdateien, die entweder lokal auf dem virtuellen Computer oder in einem Speicherkonto gespeichert werden.
 
 > [!IMPORTANT]
-> Die Paketerfassung erfordert eine VM-Erweiterung `AzureNetworkWatcherExtension`. Informationen zur Installation der Erweiterung finden Sie für einen virtuellen Windows-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Windows](../virtual-machines/virtual-machines-windows-extensions-nwa.md) und für eine Linux-VM unter [VM-Erweiterung für den Network Watcher-Agent für Linux](../virtual-machines/virtual-machines-linux-extensions-nwa.md).
+> Für die Paketerfassung ist die VM-Erweiterung `AzureNetworkWatcherExtension` erforderlich. Informationen zur Installation der Erweiterung finden Sie für einen virtuellen Windows-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Windows](../virtual-machines/windows/extensions-nwa.md) und für eine Linux-VM unter [VM-Erweiterung für den Network Watcher-Agent für Linux](../virtual-machines/linux/extensions-nwa.md).
 
 Damit Sie wirklich ausschließlich die gewünschten Informationen erfassen, können Sie die folgenden Optionen für eine Paketerfassungssitzung nutzen:
 

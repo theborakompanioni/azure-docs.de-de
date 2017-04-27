@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 09/26/2016
 ms.author: hascipio; v-divte
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3acef7399d5e8757ebad3d6178b22eb2c5c68660
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: c4e88a9fbb15dd90d619b159ae1065dfacc1907f
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -28,47 +29,29 @@ Dieser Artikel soll Azure Marketplace-Herausgeber und/oder Co-Administratoren un
     Nach der Erstellung des virtuellen Computers können Benutzer den Namen des Hosts nicht aktualisieren.
 2. Wie wird der Remotedesktopdienst oder sein Anmeldekennwort zurückgesetzt?
    
-   * [Referenz für virtuelle Windows-Computer](https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-windows-reset-rdp/)
-   * [Referenz für virtuelle Linux-Computer](https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-linux-classic-reset-access/)
+   * [Referenz für virtuelle Windows-Computer](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-reset-rdp/)
+   * [Referenz für virtuelle Linux-Computer](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-classic-reset-access/)
 3. Wie werden neue SSH-Zertifikate generiert?
    
-   Informationen finden Sie unter folgendem Link: [https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-linux-classic-reset-access/](https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-linux-classic-reset-access/).
+   Informationen finden Sie unter folgendem Link: [https://azure.microsoft.com/documentation/articles/virtual-machines-linux-classic-reset-access/](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-classic-reset-access/)
 4. Wie wird ein offenes VPN-Zertifikat konfiguriert?
    
-   Informationen finden Sie unter folgendem Link: [https://azure.microsoft.com/en-us/documentation/articles/vpn-gateway-point-to-site-create/](https://azure.microsoft.com/en-us/documentation/articles/vpn-gateway-point-to-site-create/).
+   Informationen finden Sie unter folgendem Link: [https://azure.microsoft.com/documentation/articles/vpn-gateway-point-to-site-create/](https://azure.microsoft.com/documentation/articles/vpn-gateway-point-to-site-create/)
 5. Welche Unterstützungsrichtlinie gilt für die Ausführung von Microsoft-Serversoftware in der Umgebung für virtuelle Microsoft Azure-Computer (Infrastructure-as-a-Service)?
    
-   Informationen finden Sie unter folgendem Link: [https://support.microsoft.com/en-us/kb/2721672](https://support.microsoft.com/en-us/kb/2721672).
+   Informationen finden Sie unter folgendem Link: [https://support.microsoft.com/kb/2721672](https://support.microsoft.com/kb/2721672)
 6. Besitzen virtuelle Computer einen eindeutigen Bezeichner?
    
    Von Azure wird auf jedem virtuellen Computer eine eindeutige Azure-VM-ID codiert. Details hierzu finden Sie in diesem Blog und dieser Dokumentation.
 7. Wie wird auf einem virtuellen Computer die benutzerdefinierte Skripterweiterung in der Startaufgabe verwaltet?
    
-   Informationen finden Sie unter folgendem Link: [https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-windows-extensions-customscript/](https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-windows-extensions-customscript/).
+   Informationen finden Sie unter folgendem Link: [https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/)
 8. Wie erstelle ich mithilfe der virtuellen Festplatte, die in Storage Premium hochgeladen wird, einen virtuellen Computer im Azure-Portal?
    
    Dieses Feature wird noch nicht unterstützt.
 9. Wird im Azure Marketplace eine 32-Bit-App unterstützt?
    
-   Ausführliche Informationen zur Unterstützungsrichtlinie finden Sie unter folgendem Link: [https://support.microsoft.com/en-us/kb/2721672](https://support.microsoft.com/en-us/kb/2721672).
+   Ausführliche Informationen zur Unterstützungsrichtlinie finden Sie unter folgendem Link: [https://support.microsoft.com/kb/2721672](https://support.microsoft.com/kb/2721672)
 10. Bei jeder Erstellung eines Images aus virtuellen Festplatten erhalte ich in PowerShell eine Fehlermeldung mit dem Hinweis, dass die virtuelle Festplatte bereits mit dem Image-Repository als Ressource registriert ist. Ich habe vorher weder ein Image erstellt noch habe ich ein Image mit diesem Namen in Azure gefunden. Wie löse ich dieses Problem?
     
     Dieses Problem tritt in der Regel auf, wenn der Benutzer einen virtuellen Computer von dieser virtuellen Festplatte bereitgestellt hat und für diese eine Sperre festgelegt wurde. Vergewissern Sie sich, dass von dieser virtuellen Festplatte kein virtueller Computer zugewiesen wurde. Falls der Fehler weiterhin auftritt, erstellen Sie über den folgenden Link oder im Veröffentlichungsportal ein Supportticket (Details finden Sie in der Antwort zu Frage 11).
-11. Wie erstelle ich ein Supportticket für mein Problem?
-    
-    Führen Sie die folgenden Schritte aus:
-    
-    * Stellen Sie sicher, dass Sie ein Azure Certified-Partner sind, bevor Sie ein Supportticket erstellen. Sind Sie kein Azure Certified-Partner, bewerben Sie sich über [diesen Link](https://azure.microsoft.com/en-us/documentation/articles/marketplace-publishing-azure-certification/) für das Azure Certified-Programm.
-    * Wenn Sie ein genehmigter Azure Certified-Partner sind, melden Sie sich mit einem Microsoft-Konto beim [Veröffentlichungsportal](https://publish.windowsazure.com/) an. Besitzen Sie kein Microsoft-Konto, können Sie eines über [diesen Link](https://signup.live.com/signup?uaid=0089f09ccae94043a0f07c2aaf928831&lic=1) erstellen.
-    * Klicken Sie im Menü unter dem Benutzernamen auf den Link „Get support” (Support erhalten) (siehe Screenshot).
-      
-      ![Abbildung](media/marketplace-publishing-vm-image-creation-troubleshooting/img11_01.png)
-    * Wählen Sie als Problemtyp „VM image Certification“ (VM-Imagezertifizierung) und als Kategorie „Preparing VHDs for the Azure VM Marketplace“ (Vorbereiten von VHDs für den Azure VM-Marketplace), und klicken Sie auf die Schaltfläche „Start request“ (Anfrage starten).
-    * Geben Sie die entsprechenden Informationen ein, und senden Sie das Ticket ab. Das Supportteam hilft Ihnen, das Problem beheben.
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -1,21 +1,22 @@
 ---
-title: 'Gewusst wie: in Application Insights | Microsoft Docs'
+title: Gewusst wie ... in Azure Application Insights | Microsoft-Dokumentation
 description: "Häufig gestellte Fragen in Application Insights"
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: 48b2b644-92e4-44c3-bc14-068f1bbedd22
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 02/05/2016
+ms.date: 04/04/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
-ms.openlocfilehash: 9e54ee2d67a8dfb5b480db01219e128607e26f51
+ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
+ms.openlocfilehash: d7795a494fbe8d3a850d7d8805cf059a86965a64
+ms.lasthandoff: 04/05/2017
 
 
 ---
@@ -206,8 +207,21 @@ Zu den Metriken, die Sie im Metrik-Explorer anzeigen können, zählt u. a. eine
 * Fügen Sie zunächst [ein neues Diagramm hinzu](app-insights-metrics-explorer.md) , und prüfen Sie dann, ob der gewünschte Leistungsindikator im angebotenen grundlegenden Satz enthalten ist.
 * Wenn dies nicht der Fall ist, [fügen Sie den Leistungsindikator dem über das Leistungsindikatormodul erfassten Satz hinzu](app-insights-performance-counters.md).
 
+## <a name="version-and-release-tracking"></a>Versionsnachverfolgung
+Stellen Sie für die Nachverfolgung der Anwendungsversion sicher, dass `buildinfo.config` über den Prozess Ihres Microsoft-Buildmoduls generiert wird. Fügen Sie in Ihrer CSPROJ-Datei Folgendes hinzu:  
 
+```XML
 
-<!--HONumber=Feb17_HO1-->
+    <PropertyGroup>
+      <GenerateBuildInfoConfigFile>true</GenerateBuildInfoConfigFile>    <IncludeServerNameInBuildInfo>true</IncludeServerNameInBuildInfo>
+    </PropertyGroup>
+```
 
+Wenn das Webmodul Application Insights über die Buildinformationen verfügt, fügt es jedem Telemetrieelement automatisch die **Anwendungsversion** als Eigenschaft hinzu. Dies ermöglicht es Ihnen, nach der Version zu filtern, wenn Sie [Diagnosesuchen](app-insights-diagnostic-search.md) durchführen oder [Metriken untersuchen](app-insights-metrics-explorer.md).
 
+Beachten Sie aber, dass die Buildversionsnummer nur vom Microsoft-Buildmodul generiert wird, und nicht vom Entwicklerbuild in Visual Studio.
+
+### <a name="release-annotations"></a>Versionsanmerkungen
+Bei Verwendung von Visual Studio Team Services können Sie Ihren Diagrammen einen [Anmerkungsmarker](app-insights-annotations.md) hinzufügen lassen, wenn Sie eine neue Version veröffentlichen. In der folgenden Abbildung ist dargestellt, wie dieser Marker angezeigt wird.
+
+![Screenshot eines Beispiels für eine Versionsanmerkung in einem Diagramm](./media/app-insights-asp-net/release-annotation.png)

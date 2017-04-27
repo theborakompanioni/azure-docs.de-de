@@ -1,11 +1,11 @@
 ---
-title: "Hinzufügen der HTTP-Aktion in Logik-Apps | Microsoft Docs"
-description: "Übersicht über die HTTP-Aktion mit Eigenschaften"
-services: 
-documentationcenter: 
+title: "Kommunizieren mit Endpunkten über HTTP – Azure Logic Apps | Microsoft-Dokumentation"
+description: "Erstellen von Logik-Apps, die über HTTP mit einem beliebigen Endpunkt kommunizieren können"
+services: logic-apps
 author: jeffhollan
 manager: anneta
 editor: 
+documentationcenter: 
 tags: connectors
 ms.assetid: e11c6b4d-65a5-4d2d-8e13-38150db09c0b
 ms.service: logic-apps
@@ -14,14 +14,16 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/15/2016
-ms.author: jehollan
+ms.author: jehollan; LADocs
 translationtype: Human Translation
-ms.sourcegitcommit: 9c74b25a2ac5e2088a841d97920035376b7f3f11
-ms.openlocfilehash: d3514dad84bea024ad6215711877a9784a8d8ffd
+ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
+ms.openlocfilehash: d422a07a27ffa62a673bd2d471ae4fc837251dee
+ms.lasthandoff: 04/11/2017
 
 
 ---
 # <a name="get-started-with-the-http-action"></a>Erste Schritte mit der HTTP-Aktion
+
 Mit der HTTP-Aktion können Sie Workflows für Ihre Organisation erweitern und mit einem beliebigen Endpunkt über HTTP kommunizieren.
 
 Sie können:
@@ -39,12 +41,14 @@ Im Anschluss finden Sie eine Beispielsequenz für die Einrichtung eines HTTP-Tri
 1. Fügen Sie den HTTP-Trigger Ihrer Logik-App hinzu.
 2. Geben Sie die Parameter für den abzurufenden HTTP-Endpunkt an.
 3. Ändern Sie das Wiederholungsintervall, um die gewünschte Abrufhäufigkeit anzugeben.
-4. Die Logik-App wird nun mit den Inhalten ausgelöst, die bei den jeweiligen Überprüfungen zurückgegeben werden.
 
-![HTTP-Trigger](./media/connectors-native-http/using-trigger.png)
+   Die Logik-App wird nun mit den Inhalten ausgelöst, die bei den jeweiligen Überprüfungen zurückgegeben werden.
+
+   ![HTTP-Trigger](./media/connectors-native-http/using-trigger.png)
 
 ### <a name="how-the-http-trigger-works"></a>Funktionsweise des HTTP-Triggers
-Der HTTP-Trigger ruft in einem bestimmten Wiederholungsintervall einen HTTP-Endpunkt auf. Standardmäßig führt jeder HTTP-Antwortcode < 300 dazu, dass die Logik-App ausgeführt wird. In der Codeansicht können Sie eine Bedingung hinzufügen, um nach dem HTTP-Aufruf eine Überprüfung durchzuführen und zu ermitteln, ob die Logik-App ausgelöst werden soll. Im Anschluss finden Sie ein Beispiel für einen HTTP-Trigger, der ausgelöst wird, wenn der zurückgegebene Statuscode mindestens `400`beträgt.
+
+Der HTTP-Trigger sendet in einem bestimmten Wiederholungsintervall einen Aufruf an einen HTTP-Endpunkt. Standardmäßig bewirkt jeder HTTP-Antwortcode, der niedriger als 300 ist, das Ausführen einer Logik-App. Um anzugeben, ob die Logik-App ausgelöst werden soll, können Sie die Logik-App in der Codeansicht bearbeiten und eine Bedingung hinzufügen, die nach dem HTTP-Aufruf ausgewertet wird. Im Anschluss finden Sie ein Beispiel für einen HTTP-Trigger, der ausgelöst wird, wenn der zurückgegebene Statuscode mindestens `400` beträgt.
 
 ```javascript
 "Http":
@@ -72,17 +76,20 @@ Der HTTP-Trigger ruft in einem bestimmten Wiederholungsintervall einen HTTP-Endp
 Vollständige Informationen zu den Parametern der HTTP-Trigger sind im [MSDN](https://msdn.microsoft.com/library/azure/mt643939.aspx#HTTP-trigger)verfügbar.
 
 ## <a name="use-the-http-action"></a>Verwenden der HTTP-Aktion
-Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. Weitere Informationen zu Aktionen finden Sie [hier](connectors-overview.md).
 
-1. Wählen Sie die Schaltfläche **Neuer Schritt** aus.
-2. Wählen Sie **Aktion hinzufügen**aus.
-3. Geben Sie im Aktionssuchfeld die Zeichenfolge **http** ein, um die HTTP-Aktion anzuzeigen.
+Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. 
+Weitere Informationen zu Aktionen finden Sie [hier](connectors-overview.md).
+
+1. Wählen Sie **Neuer Schritt** > **Aktion hinzufügen** aus.
+3. Geben Sie im Aktionssuchfeld die Zeichenfolge **http** ein, um die HTTP-Aktionen aufzulisten.
    
     ![Wählen der HTTP-Aktion](./media/connectors-native-http/using-action-1.png)
-4. Geben Sie alle Parameter an, die ggf. für den HTTP-Aufruf erforderlich sind.
+
+4. Fügen Sie alle erforderlichen Parameter für den HTTP-Aufruf hinzu.
    
     ![Ausführen der HTTP-Aktion](./media/connectors-native-http/using-action-2.png)
-5. Klicken Sie zum Speichern auf die linke obere Ecke der Symbolleiste. Ihre Logik-App wird sowohl gespeichert als auch veröffentlicht (aktiviert).
+
+5. Klicken Sie auf der Symbolleiste des Designers auf **Speichern**. Die Logik-App wird gespeichert und gleichzeitig veröffentlicht (aktiviert).
 
 ## <a name="http-trigger"></a>HTTP-Trigger
 Hier finden Sie Details zu dem Trigger, den dieser Connector unterstützt. Der HTTP-Connector besitzt einen Trigger.
@@ -132,6 +139,7 @@ Das Logic Apps-Feature ermöglicht die Verwendung verschiedener Arten von Authen
 * [Azure Active Directory (Azure AD) OAuth-Authentifizierung](#azure-active-directory-oauth-authentication)
 
 #### <a name="basic-authentication"></a>Standardauthentifizierung
+
 Das folgende Authentifizierungsobjekt ist für die Standardauthentifizierung erforderlich.
 Ein * bedeutet, dass es sich um ein Pflichtfeld handelt.
 
@@ -142,11 +150,10 @@ Ein * bedeutet, dass es sich um ein Pflichtfeld handelt.
 | Kennwort* |password |Das zu authentifizierende Kennwort |
 
 > [!TIP]
-> Wenn Sie ein Kennwort verwenden möchten, das aus der Definition nicht abgerufen werden kann, verwenden Sie einen `securestring`-Parameter und die `@parameters()`-Funktion für die [Workflowdefinition](http://aka.ms/logicappdocs).
-> 
-> 
+> Wenn Sie ein Kennwort verwenden möchten, das aus der Definition nicht abgerufen werden kann, verwenden Sie einen `securestring`-Parameter und die `@parameters()` 
+> [-Funktion für die Workflowdefinition](http://aka.ms/logicappdocs).
 
-Sie erstellen also ein Objekt wie das folgende im Authentifizierungsfeld:
+Beispiel:
 
 ```javascript
 {
@@ -157,6 +164,7 @@ Sie erstellen also ein Objekt wie das folgende im Authentifizierungsfeld:
 ```
 
 #### <a name="client-certificate-authentication"></a>Clientzertifikatsauthentifizierung
+
 Das folgende Authentifizierungsobjekt ist für die Clientzertifikatsauthentifizierung erforderlich. Ein * bedeutet, dass es sich um ein Pflichtfeld handelt.
 
 | Eigenschaftenname | Datentyp | Beschreibung |
@@ -166,9 +174,8 @@ Das folgende Authentifizierungsobjekt ist für die Clientzertifikatsauthentifizi
 | Kennwort* |password |Das Kennwort für den Zugriff auf die PFX-Datei |
 
 > [!TIP]
-> Sie können einen `securestring`-Parameter und die `@parameters()`-Funktion für die [Workflowdefinition](http://aka.ms/logicappdocs) verwenden, um einen Parameter zu nutzen, der in der Definition nach dem Speichern der Logik-App nicht lesbar ist.
-> 
-> 
+> Wenn Sie einen Parameter nutzen möchten, der in der Definition nach dem Speichern der Logik-App nicht lesbar ist, können Sie einen `securestring`-Parameter und die `@parameters()` 
+> [-Funktion für die Workflowdefinition verwenden](http://aka.ms/logicappdocs).
 
 Beispiel:
 
@@ -187,7 +194,7 @@ Das folgende Authentifizierungsobjekt ist für die Azure AD-OAuth-Authentifizier
 | --- | --- | --- |
 | Typ* |Typ |Der Authentifizierungstyp (muss für Azure AD OAuth `ActiveDirectoryOAuth` sein) |
 | Mandant* |Mandant |Die Mandanten-ID für den Azure AD-Mandanten |
-| Zielgruppe* |audience |Legen Sie den Wert `https://management.core.windows.net/` |
+| Zielgruppe* |audience |Die Ressource, für deren Verwendung Sie die Autorisierung anfordern. Beispiel: `https://management.core.windows.net/` |
 | Client-ID* |clientId |Die Client-ID für die Azure AD-Anwendung |
 | Geheimer Schlüssel* |secret |Der geheime Schlüssel des Clients, der das Token anfordert |
 
@@ -210,10 +217,5 @@ Beispiel:
 
 ## <a name="next-steps"></a>Nächste Schritte
 Testen Sie nun die Plattform, und [erstellen Sie eine Logik-App](../logic-apps/logic-apps-create-a-logic-app.md). Machen Sie sich ggf. anhand unserer [API-Liste](apis-list.md) mit den anderen verfügbaren Connectors für Logik-Apps vertraut.
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

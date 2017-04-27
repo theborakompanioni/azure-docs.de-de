@@ -15,68 +15,83 @@ ms.workload: NA
 ms.date: 02/10/2017
 ms.author: makohli
 translationtype: Human Translation
-ms.sourcegitcommit: e7fc6cb4ee4752bb7ed90a8f64edcc7c82ec3a88
-ms.openlocfilehash: 8ed18f6f62b6d2895e2470df1c3bdd448ea98210
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: a662841bebda460d4225e080f16705b3f16fdc46
+ms.lasthandoff: 03/31/2017
 
 ---
 
 # <a name="get-started-with-azure-advisor"></a>Erste Schritte mit Azure Advisor
 
-Erfahren Sie, wie Sie im Azure-Portal auf Advisor zugreifen und wie Sie Empfehlungen abrufen, umsetzen, suchen und aktualisieren.
+Erfahren Sie, wie Sie über das Azure-Portal auf den Ratgeber zugreifen und wie Sie Empfehlungen abrufen, umsetzen, suchen und aktualisieren.
 
 ## <a name="get-advisor-recommendations"></a>Abrufen von Advisor-Empfehlungen
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Klicken Sie im linken Navigationsbereich auf **Weitere Dienste**, scrollen Sie im Dienstmenübereich nach unten zu **Überwachung und Verwaltung**, und klicken Sie dann auf **Azure Advisor**. Dadurch wird das Advisor-Dashboard gestartet.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 
-  ![Zugreifen auf Azure Advisor im Azure-Portal](./media/advisor-overview/advisor-azure-portal-menu.png) 
+2. Klicken Sie im linken Bereich auf **Weitere Dienste**.
 
-3. Wählen Sie auf dem Advisor-Dashboard das Abonnement aus, für das Sie Empfehlungen erhalten möchten. Das Advisor-Dashboard zeigt personalisierte Empfehlungen für ein ausgewähltes Abonnement. 
-4. Um Empfehlungen für eine bestimmte Kategorie zu erhalten, klicken Sie auf eine dieser Registerkarten: **Hohe Verfügbarkeit**, **Sicherheit**, **Leistung** oder **Kosten**.
+3. Klicken Sie im Dienstmenübereich unter **Überwachung und Verwaltung** auf **Azure-Ratgeber**.  
+ Das Ratgeberdashboard wird angezeigt.
+
+   ![Zugreifen auf Azure Advisor im Azure-Portal](./media/advisor-overview/advisor-azure-portal-menu.png) 
+
+4. Wählen Sie auf dem Ratgeberdashboard das Abonnement aus, zu dem Sie Empfehlungen erhalten möchten.  
+Das Advisor-Dashboard zeigt personalisierte Empfehlungen für ein ausgewähltes Abonnement. 
+
+5. Um Empfehlungen zu einer bestimmten Kategorie zu erhalten, klicken Sie auf eine dieser Registerkarten: **Hohe Verfügbarkeit**, **Sicherheit**, **Leistung** oder **Kosten**.
  
 > [!NOTE]
-> Für den Zugriff auf die Empfehlungen von Ratgeber müssen Sie Ihr Abonnement zunächst bei Ratgeber **registrieren**. Ein Abonnement wird registriert, wenn ein **Abonnementbesitzer** das Ratgeber-Dashboard startet und auf die Schaltfläche **Abrufen von Empfehlungen** klickt. Dies ist eine **einmalige Aufgabe**. Sobald ein Abonnement registriert wurde, können **Besitzer**, **Mitwirkende** oder **Leser** eines Abonnements, einer Ressourcengruppe oder einer bestimmten Ressource auf die Empfehlungen von Ratgeber zugreifen.
+> Für den Zugriff auf die Empfehlungen des Ratgebers müssen Sie Ihr Abonnement zunächst beim Ratgeber *registrieren*. Ein Abonnement wird registriert, wenn ein *Abonnementbesitzer* das Ratgeberdashboard aufruft und auf die Schaltfläche **Empfehlungen abrufen** klickt. Dies ist eine *einmalige Aufgabe*. Sobald ein Abonnement registriert wurde, können *Besitzer*, *Mitwirkende* oder *Leser* eines Abonnements, einer Ressourcengruppe oder einer bestimmten Ressource auf die Ratgeberempfehlungen zugreifen.
 
   ![Azure Advisor-Dashboard](./media/advisor-overview/advisor-all-tab.png)
 
-## <a name="get-advisor-recommendation-details-and-implement-a-recommendation"></a>Abrufen von Details zu einer Advisor-Empfehlung und Umsetzen einer Empfehlung
+## <a name="get-advisor-recommendation-details-and-implement-a-solution"></a>Abrufen von Details zu einer Ratgeberempfehlung und Umsetzen einer Lösung
 
-Das Blatt **Empfehlung** in Advisor bietet zusätzliche Informationen zur Advisor-Empfehlung. 
+Das Blatt **Empfehlung** im Ratgeber bietet zusätzliche Informationen zur Empfehlung. 
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und starten Sie [Azure Advisor](https://aka.ms/azureadvisordashboard).
-2. Klicken Sie auf dem Dashboard **Advisor-Empfehlungen** auf **Empfehlung abrufen**.
-3. Klicken Sie in der Liste auf eine der Empfehlungen, die Sie sich näher anschauen möchten. Dadurch wird das Blatt „Empfehlungen“ geöffnet.
-4. Überprüfen Sie auf dem Blatt „Empfehlungen“ die Informationen zu Aktionen, die Sie ausführen können, um ein potenzielles Problem zu beheben oder um eine Möglichkeit zur Kostenersparnis zu nutzen. 
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und starten Sie den [Azure-Ratgeber](https://aka.ms/azureadvisordashboard).
+
+2. Klicken Sie auf dem Dashboard **Ratgeberempfehlungen** auf **Empfehlung abrufen**.
+
+3. Klicken Sie in der Liste auf eine der Empfehlungen, die Sie sich näher ansehen möchten.  
+Das Blatt **Empfehlungen** wird angezeigt.
+
+4. Überprüfen Sie auf dem Blatt **Empfehlungen** die Informationen zu Aktionen, die Sie ausführen können, um ein potenzielles Problem zu beheben oder um eine Möglichkeit zur Kostenersparnis zu nutzen. 
   
-  ![Beispiel einer Aktion bei einer Advisor-Empfehlung](./media/advisor-overview/advisor-recommendation-action-example.png)
+  ![Das Blatt „Ratgeberempfehlungen“](./media/advisor-overview/advisor-recommendation-action-example.png)
 
 ## <a name="search-for-advisor-recommendations"></a>Suchen nach Advisor-Empfehlungen
 
 Sie können für ein bestimmtes Abonnement oder eine Ressourcengruppe Empfehlungen suchen. Sie können auch Empfehlungen nach Status suchen.
 
-1. Melden Sie sich beim Azure-Portal an, und starten Sie Azure Advisor.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und starten Sie den [Azure-Ratgeber](https://aka.ms/azureadvisordashboard).
+
 2. Suchen Sie nach den Empfehlungen, indem Sie nach Abonnements, Ressourcengruppen und Empfehlungsstatus filtern (**Aktiv** oder **Zurückgestellt**).
-3. Klicken Sie auf **Empfehlungen abrufen**, um eine Liste von Advisor-Empfehlungen basierend auf Ihren Suchfiltern abzurufen.
 
-  ![](./media/advisor-get-started/advisor-search.png)
+3. Klicken Sie auf **Empfehlungen abrufen**, um eine Liste von Ratgeberempfehlungen basierend auf Ihren Suchfilterkriterien abzurufen.
 
-## <a name="snooze-advisor-recommendations"></a>Zurückstellen von Advisor-Empfehlungen
+  ![Suchfilterkriterien für den Ratgeber](./media/advisor-get-started/advisor-search.png)
 
-1. Melden Sie sich beim Azure-Portal an, und starten Sie Azure Advisor.
-2. Klicken Sie auf **Empfehlung abrufen** und dann in der eingeblendeten Liste auf eine Empfehlung.
-3. Klicken Sie auf dem Blatt **Empfehlungen** auf **Zurückstellen**.  Sie können einen Zurückstellungszeitraum angeben oder **Nie** auswählen, um die Empfehlung zu verwerfen.
+## <a name="snooze-or-dismiss-advisor-recommendations"></a>Zurückstellen oder Verwerfen von Ratgeberempfehlungen
 
-  ![Beispiel einer Aktion bei einer Advisor-Empfehlung](./media/advisor-get-started/advisor-snooze.png)
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und starten Sie den [Azure-Ratgeber](https://aka.ms/azureadvisordashboard).
 
+2. Klicken Sie auf **Empfehlung abrufen** und dann in der Liste der Empfehlungen auf eine Empfehlung.
+
+3. Klicken Sie auf dem Blatt **Empfehlungen** auf **Zurückstellen**.  
+
+   ![Beispiel einer Aktion bei einer Advisor-Empfehlung](./media/advisor-get-started/advisor-snooze.png)
+
+4. Geben Sie einen Zurückstellungszeitraum an, oder wählen Sie **Nie** aus, um die Empfehlung zu verwerfen.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Advisor finden Sie in den folgenden Ressourcen:
--  [Einführung in Azure Advisor](advisor-overview.md)
--  [Advisor-Empfehlungen für hohe Verfügbarkeit](advisor-high-availability-recommendations.md)
--  [Advisor-Empfehlungen zur Sicherheit](advisor-security-recommendations.md)
+Weitere Informationen zum Ratgeber:
+* [Einführung in Azure Advisor](advisor-overview.md)
+* [Advisor-Empfehlungen für hohe Verfügbarkeit](advisor-high-availability-recommendations.md)
+* [Advisor-Empfehlungen zur Sicherheit](advisor-security-recommendations.md)
 -  [Advisor-Empfehlungen zur Leistung](advisor-performance-recommendations.md)
--  [Advisor-Empfehlungen zu Kosten](advisor-performance-recommendations.md)
+* [Advisor-Empfehlungen zu Kosten](advisor-performance-recommendations.md)
 

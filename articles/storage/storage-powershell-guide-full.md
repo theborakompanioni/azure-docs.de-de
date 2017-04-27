@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 03/03/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 8b9e174523b3d08be20a4d30cc83c11f5bc93cd5
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: a47a806856be9e2daa9bcac8ce23da4d15386cc8
+ms.lasthandoff: 04/06/2017
 
 ---
 
@@ -154,7 +154,7 @@ Für die Verwaltung von Azure Storage mit Azure PowerShell müssen Sie Ihre Clie
     Add-AzureAccount
     ```
 
-2. Geben Sie im Microsoft Azure-Anmeldefenster die dem Konto zugeordnete E-Mail-Adresse und das zugehörige Kennwort ein. Die Anmeldeinformationen werden von Azure authentifiziert und gespeichert, dann wird das Fenster geschlossen.
+2. Geben Sie im Fenster „Bei Microsoft Azure anmelden“ die dem Konto zugeordnete E-Mail-Adresse und das zugehörige Kennwort ein. Die Anmeldeinformationen werden von Azure authentifiziert und gespeichert, dann wird das Fenster geschlossen.
 
 3. Führen Sie dann den folgenden Befehl zum Anzeigen der Azure-Konten in Ihrer lokalen PowerShell-Umgebung aus, und stellen Sie sicher, dass Ihr Konto aufgeführt ist:
    
@@ -284,9 +284,9 @@ Verwenden Sie das folgende Cmdlet, um einen bestimmten Schlüssel abzurufen. Gü
 Wenn Sie Ihre Schlüssel neu generieren möchten, verwenden Sie das folgende Cmdlet. Gültige Werte für KeyType sind „Primary“ und „Secondary“.
 
 ```powershell
-New-AzureStorageKey -StorageAccountName $StorageAccountName -KeyType “Primary”
+New-AzureStorageKey -StorageAccountName $StorageAccountName -KeyType "Primary"
     
-New-AzureStorageKey -StorageAccountName $StorageAccountName -KeyType “Secondary”
+New-AzureStorageKey -StorageAccountName $StorageAccountName -KeyType "Secondary"
 ```
 
 ## <a name="how-to-manage-azure-blobs"></a>Verwalten von Azure-Blobs
@@ -450,7 +450,7 @@ Sie haben erfahren, wie Sie Azure-Blobs und Blobmomentaufnahmen mit Azure PowerS
 ## <a name="how-to-manage-azure-tables-and-table-entities"></a>Verwalten von Azure-Tabellen und Tabellenentitäten
 Der Azure-Tabellenspeicherdienst ist ein NoSQL-Datenspeicher, den Sie zum Speichern und Abfragen sehr großer Sätze von strukturierten, nicht relationalen Daten ausführen können. Die Hauptkomponenten des Diensts sind Tabellen, Entitäten und Eigenschaften. Eine Tabelle ist eine Sammlung von Entitäten. Eine Entität ist ein Satz von Eigenschaften. Jede Entität kann über bis zu 252 Eigenschaften verfügen, bei denen es sich um Name-Wert-Paare handelt. In diesem Abschnitt wird davon ausgegangen, dass Sie bereits mit den Konzepten des Azure-Tabellenspeicherdiensts vertraut sind. Ausführliche Informationen finden Sie unter [Understanding the Table Service Data Model](http://msdn.microsoft.com/library/azure/dd179338.aspx) (Grundlegendes zum Tabellenspeicherdienst-Datenmodell) und [Erste Schritte mit Azure Table Storage mit .NET](storage-dotnet-how-to-use-tables.md).
 
-In den folgenden Unterabschnitten erfahren Sie, wie der Azure-Tabellenspeicherdienst mit Azure PowerShell verwaltet wird. Die behandelten Szenarios umfassen das **Erstellen**, **Löschen** und **Abrufen** von **Tabellen** sowie das **Hinzufügen**, **Abfragen** und **Löschen von Tabellenentitäten**.
+In den folgenden Unterabschnitten erfahren Sie, wie der Azure Table Storage-Dienst mit Azure PowerShell verwaltet wird. Die behandelten Szenarios umfassen das **Erstellen**, **Löschen** und **Abrufen** von **Tabellen** sowie das **Hinzufügen**, **Abfragen** und **Löschen von Tabellenentitäten**.
 
 ### <a name="how-to-create-a-table"></a>Erstellen von Tabellen
 Jede Tabelle muss sich in einem Azure-Speicherkonto befinden. Im folgenden Beispiel wird veranschaulicht, wie eine Tabelle in Azure Storage erstellt wird. Im Beispiel wird zuerst mit dem Speicherkontokontext, der den Speicherkontonamen und seinen Zugriffsschlüssel umfasst, eine Verbindung mit Azure Storage hergestellt. Als Nächstes verwendet es das Cmdlet [New-AzureStorageTable](http://msdn.microsoft.com/library/azure/dn806417.aspx) , um eine Tabelle in Azure Storage zu erstellen.
@@ -497,7 +497,7 @@ Um eine Entität zu einer Tabelle hinzuzufügen, erstellen Sie zunächst ein Obj
 
 Sie können bis zu 252 benutzerdefinierte Eigenschaften für eine Entität definieren. Weitere Informationen finden Sie unter [Grundlegendes zum Tabellendienst-Datenmodell](http://msdn.microsoft.com/library/azure/dd179338.aspx).
 
-Im folgenden Beispiel wird veranschaulicht, wie Entitäten zu einer Tabelle hinzugefügt werden. Das Beispiel zeigt das Abrufen der Employee-Tabelle und das Hinzufügen mehrerer Entitäten zur Tabelle. Zunächst wird mit dem Speicherkontokontext, der den Speicherkontonamen und seinen Zugriffsschlüssel umfasst, eine Verbindung mit Azure Storage hergestellt. Anschließend wird die angegebene Tabelle mithilfe des Cmdlets [Get-AzureStorageTable](http://msdn.microsoft.com/library/azure/dn806411.aspx) abgerufen. Wenn die Tabelle nicht vorhanden ist, wird mithilfe des Cmdlets [New-AzureStorageTable](http://msdn.microsoft.com/library/azure/dn806417.aspx) eine Tabelle in Azure Storage erstellt. Als Nächstes definiert das Beispiel eine benutzerdefinierte Funktion, "Add-Entity", um Entitäten zur Tabelle hinzuzufügen, indem Partition und Zeilenschlüssel für jede Entität angegeben wird. Die Add-Entity-Funktion ruft das Cmdlet [New-Object](http://technet.microsoft.com/library/hh849885.aspx) für die [Microsoft.WindowsAzure.Storage.Table.DynamicTableEntity](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.table.dynamictableentity.aspx)-Klasse auf, um ein Entitätsobjekt zu erstellen. Später wird im Beispiel die [Microsoft.WindowsAzure.Storage.Table.TableOperation.Insert](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.table.tableoperation.insert.aspx) -Methode für dieses Entitätsobjekt aufgerufen, um es einer Tabelle hinzuzufügen.
+Im folgenden Beispiel wird veranschaulicht, wie Entitäten zu einer Tabelle hinzugefügt werden. Das Beispiel zeigt das Abrufen der Employee-Tabelle und das Hinzufügen mehrerer Entitäten zur Tabelle. Zunächst wird mit dem Speicherkontokontext, der den Speicherkontonamen und seinen Zugriffsschlüssel umfasst, eine Verbindung mit Azure Storage hergestellt. Anschließend wird die angegebene Tabelle mithilfe des Cmdlets [Get-AzureStorageTable](http://msdn.microsoft.com/library/azure/dn806411.aspx) abgerufen. Wenn die Tabelle nicht vorhanden ist, wird mithilfe des Cmdlets [New-AzureStorageTable](http://msdn.microsoft.com/library/azure/dn806417.aspx) eine Tabelle in Azure Storage erstellt. Als Nächstes definiert das Beispiel eine benutzerdefinierte Funktion „Add-Entity“, um Entitäten zur Tabelle hinzuzufügen, indem Partition und Zeilenschlüssel für jede Entität angegeben werden. Die Add-Entity-Funktion ruft das Cmdlet [New-Object](http://technet.microsoft.com/library/hh849885.aspx) für die [Microsoft.WindowsAzure.Storage.Table.DynamicTableEntity](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.table.dynamictableentity.aspx)-Klasse auf, um ein Entitätsobjekt zu erstellen. Später wird im Beispiel die [Microsoft.WindowsAzure.Storage.Table.TableOperation.Insert](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.table.tableoperation.insert.aspx) -Methode für dieses Entitätsobjekt aufgerufen, um es einer Tabelle hinzuzufügen.
 
 ```powershell
 #Function Add-Entity: Adds an employee entity to a table.
@@ -541,7 +541,7 @@ Add-Entity -Table $table -PartitionKey Partition2 -RowKey Row2 -Name Steven -Id 
 ```
 
 #### <a name="how-to-query-table-entities"></a>Abfragen von Tabellenentitäten
-Verwenden Sie die [Microsoft.WindowsAzure.Storage.Table.TableQuery](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.table.tablequery.aspx) -Klasse zum Abfragen einer Tabelle. Im folgende Beispiel wird davon ausgegangen, dass Sie das im Abschnitt "Hinzufügen von Entitäten" dieses Handbuchs angegebene Skript bereits ausgeführt haben. Im Beispiel wird zuerst mit dem Speicherkontext, der den Speicherkontonamen und seinen Zugriffsschlüssel umfasst, eine Verbindung mit Azure Storage hergestellt. Anschließend wird versucht, die zuvor erstellte Employees-Tabelle mithilfe des Cmdlets [Get-AzureStorageTable](http://msdn.microsoft.com/library/azure/dn806411.aspx) abzurufen. Durch das Aufrufen des Cmdlets [New-Object](http://technet.microsoft.com/library/hh849885.aspx) für die Microsoft.WindowsAzure.Storage.Table.TableQuery-Klasse wird ein neues Abfrageobjekt erstellt. Das Beispiel sucht nach den Entitäten, deren ID-Spalte den Wert "1" aufweist, wie im Zeichenfolgenfilter angegeben. Ausführliche Informationen finden Sie unter [Abfragen von Tabellen und Entitäten](http://msdn.microsoft.com/library/azure/dd894031.aspx). Wenn Sie diese Abfrage ausführen, werden alle Entitäten zurückgegeben, die den Filterkriterien entsprechen.
+Verwenden Sie die [Microsoft.WindowsAzure.Storage.Table.TableQuery](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.table.tablequery.aspx) -Klasse zum Abfragen einer Tabelle. Im folgenden Beispiel wird davon ausgegangen, dass Sie das im Abschnitt „Hinzufügen von Entitäten“ dieses Handbuchs angegebene Skript bereits ausgeführt haben. Im Beispiel wird zuerst mit dem Speicherkontext, der den Speicherkontonamen und seinen Zugriffsschlüssel umfasst, eine Verbindung mit Azure Storage hergestellt. Anschließend wird versucht, die zuvor erstellte Tabelle „Employees“ mithilfe des Cmdlets [Get-AzureStorageTable](http://msdn.microsoft.com/library/azure/dn806411.aspx) abzurufen. Durch das Aufrufen des Cmdlets [New-Object](http://technet.microsoft.com/library/hh849885.aspx) für die Microsoft.WindowsAzure.Storage.Table.TableQuery-Klasse wird ein neues Abfrageobjekt erstellt. Das Beispiel sucht nach den Entitäten, deren ID-Spalte den Wert „1“ aufweist, wie im Zeichenfolgenfilter angegeben. Ausführliche Informationen finden Sie unter [Abfragen von Tabellen und Entitäten](http://msdn.microsoft.com/library/azure/dd894031.aspx). Wenn Sie diese Abfrage ausführen, werden alle Entitäten zurückgegeben, die den Filterkriterien entsprechen.
 
 ```powershell
 #Define the storage account and context.
@@ -575,7 +575,7 @@ $entities  | Format-Table PartitionKey, RowKey, @{ Label = "Name"; Expression={$
 ```
 
 #### <a name="how-to-delete-table-entities"></a>Löschen von Tabellenentitäten
-Sie können eine Entität unter Verwendung ihres Partitions- und Zeilenschlüssels löschen. Im folgende Beispiel wird davon ausgegangen, dass Sie das im Abschnitt "Hinzufügen von Entitäten" dieses Handbuchs angegebene Skript bereits ausgeführt haben. Im Beispiel wird zuerst mit dem Speicherkontext, der den Speicherkontonamen und seinen Zugriffsschlüssel umfasst, eine Verbindung mit Azure Storage hergestellt. Anschließend wird versucht, die zuvor erstellte Employees-Tabelle mithilfe des Cmdlets [Get-AzureStorageTable](http://msdn.microsoft.com/library/azure/dn806411.aspx) abzurufen. Wenn die Tabelle vorhanden ist, ruft das Beispiel die [Microsoft.WindowsAzure.Storage.Table.TableOperation.Retrieve](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.table.tableoperation.retrieve.aspx) -Methode zum Abrufen einer Entität auf Grundlage ihrer Partition und der Zeilenschlüsselwerte auf. Übergeben Sie anschließend die Entität zum Löschen an die [Microsoft.WindowsAzure.Storage.Table.TableOperation.Delete](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.table.tableoperation.delete.aspx) -Methode.
+Sie können eine Entität unter Verwendung ihres Partitions- und Zeilenschlüssels löschen. Im folgenden Beispiel wird davon ausgegangen, dass Sie das im Abschnitt „Hinzufügen von Entitäten“ dieses Handbuchs angegebene Skript bereits ausgeführt haben. Im Beispiel wird zuerst mit dem Speicherkontext, der den Speicherkontonamen und seinen Zugriffsschlüssel umfasst, eine Verbindung mit Azure Storage hergestellt. Anschließend wird versucht, die zuvor erstellte Tabelle „Employees“ mithilfe des Cmdlets [Get-AzureStorageTable](http://msdn.microsoft.com/library/azure/dn806411.aspx) abzurufen. Wenn die Tabelle vorhanden ist, ruft das Beispiel die [Microsoft.WindowsAzure.Storage.Table.TableOperation.Retrieve](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.table.tableoperation.retrieve.aspx) -Methode zum Abrufen einer Entität auf Grundlage ihrer Partition und der Zeilenschlüsselwerte auf. Übergeben Sie anschließend die Entität zum Löschen an die [Microsoft.WindowsAzure.Storage.Table.TableOperation.Delete](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.table.tableoperation.delete.aspx) -Methode.
 
 ```powershell
 #Define the storage account and context.
@@ -608,7 +608,7 @@ Die Warteschlangenspeicherung in Azure ist ein Dienst zur Speicherung großer An
 In diesem Abschnitt erfahren Sie, wie Sie den Azure-Warteschlangenspeicherdienst mit Azure PowerShell verwalten. Die behandelten Szenarien umfassen das **Einfügen** und **Löschen** von Warteschlangennachrichten sowie das **Erstellen**, **Löschen** und **Abrufen** von Warteschlangen.
 
 ### <a name="how-to-create-a-queue"></a>Erstellen von Warteschlangen
-Im folgenden Beispiel wird zuerst mit dem Speicherkontokontext, der den Speicherkontonamen und seinen Zugriffsschlüssel umfasst, eine Verbindung mit Azure Storage hergestellt. Anschließend wird das Cmdlet [New-AzureStorageQueue](http://msdn.microsoft.com/library/azure/dn806382.aspx) aufgerufen, um eine Warteschlange namens "queuename" zu erstellen.
+Im folgenden Beispiel wird zuerst mit dem Speicherkontokontext, der den Speicherkontonamen und seinen Zugriffsschlüssel umfasst, eine Verbindung mit Azure Storage hergestellt. Anschließend wird das [New-AzureStorageQueue](http://msdn.microsoft.com/library/azure/dn806382.aspx)-Cmdlet aufgerufen, um eine Warteschlange namens „queuename“ zu erstellen.
 
 ```powershell
 #Define the storage account and context.

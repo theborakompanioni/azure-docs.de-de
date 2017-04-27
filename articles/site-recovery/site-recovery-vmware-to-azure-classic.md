@@ -12,15 +12,18 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 04/05/2017
 ms.author: raynew
+ROBOTS: NOINDEX, NOFOLLOW
+redirect_url: site-recovery-vmware-to-azure
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 03178e1b933f5681caf6efbeb5a89d56727ae743
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 5c597e94f524a7ecbb9e4269adbbbd735a90aa14
+ms.lasthandoff: 04/06/2017
 
 
 ---
+
 # <a name="replicate-vmware-virtual-machines-and-physical-servers-to-azure-with-azure-site-recovery"></a>Replizieren von virtuellen VMware-Computern und physischen Servern in Azure mithilfe von Azure Site Recovery
 > [!div class="op_single_selector"]
 > * [Azure-Portal](site-recovery-vmware-to-azure.md)
@@ -579,7 +582,7 @@ Der Schutzstatus kann auch unter **Geschützte Elemente** > *Schutzgruppenname* 
 3. Sie können diese Einstellungen ändern:
 
    * **Name des virtuellen Azure-Computers**: Dies ist der Name, der dem Computer in Azure nach dem Failover zugewiesen wird. Der Name muss den Azure-Anforderungen entsprechen.
-   * **Größe des virtuellen Azure-Computers**: Die Anzahl der Netzwerkkarten hängt von der Größe ab, die Sie für den virtuellen Zielcomputer angeben. Weitere Informationen zu Größen und Adaptern finden Sie in den [Größentabellen](../virtual-machines/virtual-machines-linux-sizes.md). Beachten Sie Folgendes:
+   * **Größe des virtuellen Azure-Computers**: Die Anzahl der Netzwerkkarten hängt von der Größe ab, die Sie für den virtuellen Zielcomputer angeben. Weitere Informationen zu Größen und Adaptern finden Sie in den [Größentabellen](../virtual-machines/linux/sizes.md). Beachten Sie Folgendes:
 
      * Wenn Sie die Größe eines virtuellen Computers ändern und die Einstellungen speichern, wird die Anzahl von Netzwerkkarten beim nächsten Öffnen der Registerkarte **Konfigurieren** geändert. Die Mindestanzahl von Netzwerkkarten auf den virtuellen Zielcomputern entspricht der Mindestanzahl von Netzwerkkarten auf einem virtuellen Quellcomputer. Die maximale Anzahl von Netzwerkkarten wird durch die Größe des virtuellen Computers bestimmt.
        * Wenn die Anzahl von Netzwerkkarten des Quellcomputers maximal der Anzahl von Netzwerkkarten entspricht, die für die Größe des Zielcomputers zulässig ist, hat der Zielcomputer die gleiche Anzahl von Netzwerkkarten wie der Quellcomputer.

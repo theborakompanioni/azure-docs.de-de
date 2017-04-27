@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
 translationtype: Human Translation
-ms.sourcegitcommit: e1c4342897fe6cf57e323a82e04e10473b3ece30
-ms.openlocfilehash: 777b84d9aa59f773345c1925c3c6467dc64d2d34
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: f703da63c4243c73cf68d3df9953f73d2462ac1c
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -402,7 +402,7 @@ AzCopy generiert eine JSON-Datendatei in den Blob-Container mit der folgenden Na
 
 Die generierte JSON-Datendatei folgt dem Nutzlastformat für minimale Metadaten. Details in Bezug auf dieses Nutzlastformat finden Sie unter [Nutzlastformat für Tabellendienstvorgänge](http://msdn.microsoft.com/library/azure/dn535600.aspx).
 
-Beachten Sie, dass AzCopy beim Export von Tabellen in Blobs die Tabellenentitäten in die lokalen temporären Datendateien herunterlädt und diese Entitäten dann in das Blob hochlädt. Diese temporären Datendateien werden in den Journaldateiordner mit dem Standardpfad „<code>%LocalAppData%\Microsoft\Azure\AzCopy</code>” gespeichert. Sie können die Option „/Z:[Journaldatei-Ordner]“ angeben, um den Journaldateiordner-Speicherort und damit den temporären Datendateien-Speicherort zu ändern. Die Größe der temporären Datendateien wird durch die Tabellenentitäten und die Größe bestimmt, die Sie mit der Option „/SplitSize“ angegeben haben. Auch wenn die temporäre Datei auf dem lokalen Datenträger sofort gelöscht wird, sobald sie in das Blob hochgeladen wurde, sollten Sie sicherstellen, dass Sie über genügend lokalen Speicherplatz für diese temporären Datendateien verfügen, bevor sie gelöscht werden.
+Beachten Sie, dass AzCopy beim Export von Tabellen in Blobs die Tabellenentitäten in die lokalen temporären Datendateien herunterlädt und diese Entitäten dann in das Blob hochlädt. Diese temporären Datendateien werden in den Journaldateiordner mit dem Standardpfad „<code>%LocalAppData%\Microsoft\Azure\AzCopy</code>” gespeichert. Sie können die Option „/Z:[Journaldateiordner]“ angeben, um den Journaldateiordner-Speicherort und damit den temporären Datendateien-Speicherort zu ändern. Die Größe der temporären Datendateien wird durch die Tabellenentitäten und die Größe bestimmt, die Sie mit der Option „/SplitSize“ angegeben haben. Auch wenn die temporäre Datei auf dem lokalen Datenträger sofort gelöscht wird, sobald sie in das Blob hochgeladen wurde, sollten Sie sicherstellen, dass Sie über genügend lokalen Speicherplatz für diese temporären Datendateien verfügen, bevor sie gelöscht werden.
 
 ## <a name="table-import"></a>Tabelle: Importieren
 ### <a name="import-table"></a>Importieren einer Tabelle
@@ -883,7 +883,7 @@ Sie können eine Anwendungskonfigurationsdatei namens `AzCopy.exe.config` erstel
       </appSettings>
     </configuration>
 
-Ist die Eigenschaft "AzureStorageUseV1MD5" gleich "true" (Standardwert), verwendet AzCopy die MD5-Implementierung von .NET.
+Ist die Eigenschaft „AzureStorageUseV1MD5„ gleich „true“ (Standardwert), verwendet AzCopy die MD5-Implementierung von .NET.
 Ist die Eigenschaft gleich "false", verwendet AzCopy den FIPS-konformen MD5-Algorithmus.
 
 Auf einem Windows-Computer ist der FIPS-konforme Algorithmus standardmäßig deaktiviert. Sie können "secpol.msc" im Fenster "Ausführen" eingeben und diesen Parameter über "Sicherheitseinstellungen -> Lokale Richtlinien -> Sicherheitsoptionen -> Systemkryptografie: FIPS-konformen Algorithmus für Verschlüsselung, Hashing und Signatur verwenden" überprüfen.

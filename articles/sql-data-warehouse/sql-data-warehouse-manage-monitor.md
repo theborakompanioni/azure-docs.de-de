@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: performance
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6877a54f77a4c0137e4f6a8b2b2fcff41664a4b5
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 3735d656429da1f1fe7569f640b272b099382032
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -71,9 +73,9 @@ WHERE   [label] = 'My Query';
 
 Notieren Sie sich aus den oben stehenden Abfrageergebnissen **die Anforderungs-ID** der Abfrage, die Sie untersuchen möchten.
 
-Abfragen im Status **Angehalten** werden aufgrund von Parallelitätslimits in die Warteschlange gestellt. Diese Abfragen werden auch in der Abfrage „sys.dm_pdw_waits“ mit dem Typ UserConcurrencyResourceType angezeigt. Weitere Informationen zu Parallelitätslimits finden Sie unter [Parallelitäts- und Workloadverwaltung in SQL Data Warehouse][Parallelitäts- und Workloadverwaltung in SQL Data Warehouse]. Abfragen können auch aus anderen Gründen warten, beispielsweise wegen Objektsperren.  Wenn Ihre Abfrage auf eine Ressource wartet, finden Sie nähere Informationen unter [Untersuchen von Anfragen, die auf Ressourcen warten][Untersuchen von Anfragen, die auf Ressourcen warten] weiter unten in diesem Artikel.
+Abfragen im Status **Angehalten** werden aufgrund von Parallelitätslimits in die Warteschlange gestellt. Diese Abfragen werden auch in der Abfrage „sys.dm_pdw_waits“ mit dem Typ UserConcurrencyResourceType angezeigt. Weitere Informationen zu Parallelitätslimits finden Sie unter [Parallelitäts- und Workloadverwaltung][Concurrency and workload management]. Abfragen können auch aus anderen Gründen warten, beispielsweise wegen Objektsperren.  Wenn Ihre Abfrage auf eine Ressource wartet, finden Sie nähere Informationen unter [Untersuchen von Abfragen, die auf Ressourcen warten][Investigating queries waiting for resources] weiter unten in diesem Artikel.
 
-Vereinfachen Sie die Suche nach einer Abfrage in der Tabelle „sys.dm_pdw_exec_requests“ mithilfe von [LABEL][LABEL], um Ihrer Abfrage einen Kommentar hinzuzufügen, der in der Sicht „sys.dm_pdw_exec_requests“ gesucht werden kann.
+Vereinfachen Sie die Suche nach einer Abfrage in der Tabelle „sys.dm_pdw_exec_requests“ mithilfe von [LABEL][LABEL], um Ihrer Abfrage einen Kommentar hinzuzufügen, der in der Ansicht „sys.dm_pdw_exec_requests“ gesucht werden kann.
 
 ```sql
 -- Query with Label
@@ -95,7 +97,7 @@ WHERE request_id = 'QID####'
 ORDER BY step_index;
 ```
 
-Wenn ein DSQL-Plan mehr Zeit in Anspruch nimmt als erwartet, kann die Ursache ein komplexer Plan mit vielen DSQL-Schritten oder nur ein einziger Schritt sein, der einen langen Zeitraum benötigt.  Wenn der Plan viele Schritte mit mehreren Verschiebungen aufweist, erwägen Sie die Optimierung Ihrer Tabellenverteilungen, um Datenverschiebungen zu reduzieren. Der Artikel [Verteilen von Tabellen in SQL Data Warehouse][Verteilen von Tabellen in SQL Data Warehouse] erläutert, warum Daten verschoben werden müssen, um eine Abfrage zu lösen, und erläutert einige Verteilungsstrategien zum Minimieren von Datenverschiebungen.
+Wenn ein DSQL-Plan mehr Zeit in Anspruch nimmt als erwartet, kann die Ursache ein komplexer Plan mit vielen DSQL-Schritten oder nur ein einziger Schritt sein, der einen langen Zeitraum benötigt.  Wenn der Plan viele Schritte mit mehreren Verschiebungen aufweist, erwägen Sie die Optimierung Ihrer Tabellenverteilungen, um Datenverschiebungen zu reduzieren. Der Artikel [Verteilen von Tabellen][Table distribution] erläutert, warum Daten verschoben werden müssen, um eine Abfrage zu lösen, und erläutert einige Verteilungsstrategien zum Minimieren von Datenverschiebungen.
 
 Um weitere Informationen zu einem Einzelschritt zu erhalten, beachten Sie die Spalte *operation_type* des Abfrageschritts mit langer Laufzeit, und beachten Sie den **Schrittindex**:
 
@@ -113,7 +115,7 @@ SELECT * FROM sys.dm_pdw_sql_requests
 WHERE request_id = 'QID####' AND step_index = 2;
 ```
 
-Wenn der Abfrageschritt ausgeführt wird, können Sie mit [DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN] den berechneten SQL Server-Ausführungsplan für den in einer bestimmten Verteilung ausgeführten Schritt aus dem Cache des SQL Server-Plans abrufen.
+Wenn der Abfrageschritt ausgeführt wird, können Sie mit [DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN] aus dem Cache des SQL Server-Plans den berechneten SQL Server-Ausführungsplan für den in einer bestimmten Verteilung ausgeführten Schritt abrufen.
 
 ```sql
 -- Find the SQL Server execution plan for a query running on a specific SQL Data Warehouse Compute or Control node.
@@ -136,7 +138,7 @@ WHERE request_id = 'QID####' AND step_index = 2;
 * Überprüfen Sie die Spalte *total_elapsed_time*, um festzustellen, ob das Verschieben von Daten in einer bestimmten Verteilung erheblich länger dauert als in anderen Verteilungen.
 * Überprüfen Sie für die Verteilung mit langer Laufzeit die Spalte *rows_processed*, um festzustellen, ob die Anzahl der Zeilen, die von dieser Verteilung verschoben werden, beträchtlich größer als bei den anderen ist. Falls ja, kann dies auf eine Ungleichmäßigkeit der zugrunde liegenden Daten hinweisen.
 
-Wenn die Abfrage ausgeführt wird, können Sie mit [DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN] den berechneten SQL Server-Ausführungsplan für den derzeit ausgeführten SQL-Schritt innerhalb einer bestimmten Verteilung aus dem Cache des SQL Server-Plans abrufen.
+Wird die Abfrage gerade ausgeführt, können Sie mit [DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN] aus dem Cache des SQL Server-Plans den berechneten SQL Server-Ausführungsplan für den derzeit ausgeführten SQL-Schritt innerhalb einer bestimmten Verteilung abrufen.
 
 ```sql
 -- Find the SQL Server estimated plan for a query running on a specific SQL Data Warehouse Compute or Control node.
@@ -173,18 +175,18 @@ ORDER BY waits.object_name, waits.object_type, waits.state;
 Wenn die Abfrage aktiv auf Ressourcen einer anderen Abfrage wartet, lautet der Status **AcquireResources**.  Wenn die Abfrage über alle erforderlichen Ressourcen verfügt, ist der Status **Granted**.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu DMVs finden Sie unter [Systemsichten][Systemsichten].
-Weitere Informationen zu bewährten Methoden finden Sie unter [Bewährte Methoden für SQL Data Warehouse][Bewährte Methoden für SQL Data Warehouse].
+Weitere Informationen zu DMVs finden Sie unter [Systemsichten][System views].
+Weitere Informationen zu bewährten Methoden finden Sie unter [Bewährte Methoden für SQL Data Warehouse][SQL Data Warehouse best practices].
 
 <!--Image references-->
 
 <!--Article references-->
-[Übersicht über die Verwaltung]: ./sql-data-warehouse-overview-manage.md
-[Bewährte Methoden für SQL Data Warehouse]: ./sql-data-warehouse-best-practices.md
-[Systemsichten]: ./sql-data-warehouse-reference-tsql-system-views.md
-[Verteilen von Tabellen in SQL Data Warehouse]: ./sql-data-warehouse-tables-distribute.md
-[Parallelitäts- und Workloadverwaltung in SQL Data Warehouse]: ./sql-data-warehouse-develop-concurrency.md
-[Untersuchen von Anfragen, die auf Ressourcen warten]: ./sql-data-warehouse-manage-monitor.md#waiting
+[Manage overview]: ./sql-data-warehouse-overview-manage.md
+[SQL Data Warehouse best practices]: ./sql-data-warehouse-best-practices.md
+[System views]: ./sql-data-warehouse-reference-tsql-system-views.md
+[Table distribution]: ./sql-data-warehouse-tables-distribute.md
+[Concurrency and workload management]: ./sql-data-warehouse-develop-concurrency.md
+[Investigating queries waiting for resources]: ./sql-data-warehouse-manage-monitor.md#waiting
 
 <!--MSDN references-->
 [sys.dm_pdw_dms_workers]: http://msdn.microsoft.com/library/mt203878.aspx
@@ -195,9 +197,4 @@ Weitere Informationen zu bewährten Methoden finden Sie unter [Bewährte Methode
 [DBCC PDW_SHOWEXECUTIONPLAN]: http://msdn.microsoft.com/library/mt204017.aspx
 [DBCC PDW_SHOWSPACEUSED]: http://msdn.microsoft.com/library/mt204028.aspx
 [LABEL]: https://msdn.microsoft.com/library/ms190322.aspx
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

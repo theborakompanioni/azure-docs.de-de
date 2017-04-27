@@ -15,9 +15,9 @@ ms.workload: storage
 ms.date: 02/28/2017
 ms.author: jahogg
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: daff0744d20996014b065b9d4f5fd6b196af923c
-ms.lasthandoff: 12/08/2016
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 9da543dbebe8f35178233d91492b0aff21f10986
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -166,19 +166,19 @@ In diesen Listen werden einige der wichtigsten Richtlinien zusammengefasst, die 
 
 So entwerfen Sie Ihre Tabellenspeicherdienstlösung für größtmögliche Effizienz von *Lesevorgängen* :
 
-* ***Legen Sie den Entwurf für Abfragen in leseintensiven Anwendungen aus.***  Bedenken Sie beim Entwerfen von Tabellen die Abfragen (insbesondere Abfragen mit sensiblem Latenzverhalten), die Sie ausführen werden, bevor Sie überlegen, wie die Entitäten aktualisiert werden sollen. Dies führt in der Regel zu einer effizienten und leistungsstarken Lösung.  
+* ***Legen Sie den Entwurf für Abfragen in leseintensiven Anwendungen aus.*** Bedenken Sie beim Entwerfen von Tabellen die Abfragen (insbesondere Abfragen mit sensiblem Latenzverhalten), die Sie ausführen werden, bevor Sie überlegen, wie die Entitäten aktualisiert werden sollen. Dies führt in der Regel zu einer effizienten und leistungsstarken Lösung.  
 * ***Geben Sie „PartitionKey“ und „RowKey“ in den Abfragen an.*** *Punktabfragen* wie diese sind die effizientesten Tabellenspeicherdienst-Abfragen.  
 * ***Erwägen Sie die Speicherung duplizierter Kopien von Entitäten.*** Tabellenspeicher ist günstig. Erwägen Sie daher, ein und dieselbe Entität mehrfach zu speichern (mit verschiedenen Schlüsseln), um effizientere Abfragen zu ermöglichen.  
 * ***Erwägen Sie das Denormalisieren der Daten.*** Tabellenspeicher ist günstig. Erwägen Sie daher, Ihre Daten zu denormalisieren. Speichern Sie z. B. zusammengefasste Entitäten, damit Abfragen für zusammengefasste Daten nur auf eine einzelne Entität zugreifen müssen.  
 * ***Verwenden Sie Verbundschlüsselwerte.*** **PartitionKey** und **RowKey** sind die einzigen Schlüssel, über die Sie verfügen. Verwenden Sie z. B. Verbundschlüsselwerte, um alternative Schlüsselzugriffspfade für Entitäten zu aktivieren.  
-* ***Verwenden Sie die Abfrageprojektion.***  Sie können die Datenmenge reduzieren, die Sie über das Netzwerk übertragen, indem Sie Abfragen verwenden, die nur die benötigten Felder auswählen.  
+* ***Verwenden Sie die Abfrageprojektion.*** Sie können die Datenmenge reduzieren, die Sie über das Netzwerk übertragen, indem Sie Abfragen verwenden, die nur die benötigten Felder auswählen.  
 
 So entwerfen Sie Ihre Tabellenspeicherdienstlösung für größtmögliche Effizienz von *Schreibvorgängen* :  
 
-* ***Erstellen Sie keine Hot-Partitionen.***  Wählen Sie Schlüssel aus, die es Ihnen ermöglichen, Ihre Anforderungen zu jedem Zeitpunkt auf mehrere Partitionen zu verteilen.  
-* ***Vermeiden Sie Lastspitzen.***  Sorgen Sie für einen reibungslosen Datenverkehr über einen angemessenen Zeitraum und vermeiden Sie Lastspitzen.
-* ***Erstellen Sie nicht unbedingt eine separate Tabelle für jeden Entitätstyp.***  Wenn atomische Transaktionen über Entitätstypen hinweg erforderlich sind, können Sie diese verschiedenen Entitätstypen in derselben Tabelle in derselben Partition speichern.
-* ***Bedenken Sie den maximalen Durchsatz, der erzielt werden muss.***  Sie müssen die Skalierbarkeitsziele für den Tabellenspeicherdienst berücksichtigen und sicherstellen, dass diese durch Ihren Entwurf nicht überschritten werden.  
+* ***Erstellen Sie keine Hot-Partitionen.*** Wählen Sie Schlüssel aus, die es Ihnen ermöglichen, Ihre Anforderungen zu jedem Zeitpunkt auf mehrere Partitionen zu verteilen.  
+* ***Vermeiden Sie Lastspitzen.*** Sorgen Sie für einen reibungslosen Datenverkehr über einen angemessenen Zeitraum und vermeiden Sie Lastspitzen.
+* ***Erstellen Sie nicht unbedingt eine separate Tabelle für jeden Entitätstyp.*** Wenn atomische Transaktionen über Entitätstypen hinweg erforderlich sind, können Sie diese verschiedenen Entitätstypen in derselben Tabelle in derselben Partition speichern.
+* ***Bedenken Sie den maximalen Durchsatz, der erzielt werden muss.*** Sie müssen die Skalierbarkeitsziele für den Tabellenspeicherdienst berücksichtigen und sicherstellen, dass diese durch Ihren Entwurf nicht überschritten werden.  
 
 Beim Durchlesen dieses Handbuch finden Sie Beispiele für die Umsetzung dieser Grundlagen in die Praxis.  
 
@@ -877,7 +877,7 @@ Die folgenden Muster und Anleitungen können auch relevant sein, wenn dieses Mus
 Erhöhen Sie die Skalierbarkeit, wenn Sie eine große Anzahl von Einfügungen vornehmen möchten, indem Sie die Einfügungen auf mehrere Partitionen verteilen.  
 
 #### <a name="context-and-problem"></a>Kontext und Problem
-Voranstellen oder Anfügen von Entitäten an Ihre gespeicherten Entitäten führen in der Regel dazu, dass in der Anwendung neue Entitäten auf die erste oder letzte Partition aus einer Folge von Partitionen hinzugefügt werden. In diesem Fall finden alle Einfügungen zu einem beliebigen Zeitpunkt in der gleichen Partition statt und erzeugen einen Hotspot, der Lastenausgleich-Einfügungen durch den Tabellenspeicherdienst für mehrere Knoten verhindert und wahrscheinlich dazu führt, dass Ihre Anwendung die Skalierbarkeitsziele der Partition erreicht. Beispiel: Wenn Sie eine Anwendung haben, die Zugriffe auf Netzwerk und Ressourcen von Mitarbeitern protokolliert, könnte eine wie unten gezeigte Entitätsstruktur dazu führen, dass die der aktuellen Stunde zugehörigen Partition zum Hotspot wird, wenn das Transaktionsvolumen das Skalierbarkeitsziel für eine einzelne Partition erreicht:  
+Voranstellen oder Anfügen von Entitäten an Ihre gespeicherten Entitäten führen in der Regel dazu, dass in der Anwendung neue Entitäten auf die erste oder letzte Partition aus einer Folge von Partitionen hinzugefügt werden. In diesem Fall finden alle Einfügungen zu einem beliebigen Zeitpunkt in der gleichen Partition statt und erzeugen einen Hotspot, der Lastenausgleich-Einfügungen durch den Tabellenspeicherdienst für mehrere Knoten verhindert und wahrscheinlich dazu führt, dass Ihre Anwendung die Skalierbarkeitsziele der Partition erreicht. Beispiel: Wenn Sie eine Anwendung haben, die Zugriffe auf Netzwerk und Ressourcen von Mitarbeitern protokolliert, könnte eine wie unten gezeigte Entitätsstruktur dazu führen, dass die Partition zur laufenden Stunde zum Hotspot wird, wenn das Transaktionsvolumen das Skalierbarkeitsziel für eine einzelne Partition erreicht:  
 
 ![][26]
 

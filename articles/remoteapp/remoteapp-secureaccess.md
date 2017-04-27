@@ -11,17 +11,18 @@ ms.workload: compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 04/26/2017
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: 3cd588751346517f9359f760561839339b0f9edb
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 2e1915f017db8286b8a381aacf62205f3d34bcc9
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="securing-access-to-azure-remoteapp-and-beyond"></a>Sichern des Zugriffs auf Azure RemoteApp und darüber hinaus
 > [!IMPORTANT]
-> Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
+> Azure RemoteApp wird am 31. August 2017 eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
 > 
 > 
 
@@ -34,7 +35,7 @@ Es gibt drei Hauptbereiche, die der Administrator in Augenschein nehmen muss:
 Im Folgenden finden Sie weitere Informationen und Antworten auf diese Fragen.
 
 ## <a name="who-can-access-the-collection"></a>Wer kann auf die Sammlung zugreifen?
-Der Administrator wählt die Benutzer, die auf Remoteanwendungen in der Sammlung zugreifen können. Sie können Geschäfts- oder Schulkonten (früher als „Organisationskonten“ bezeichnet) aus Azure Active Directory (Azure AD) oder Microsoft-Konten verwenden, wie z.B. @outlook.com). In den meisten Unternehmensszenarien werden Azure AD-Konten verwendet. Sie ermöglichen den Einsatz von Features für den bedingten Zugriff, die weiter unten erläutert werden, und sind außerdem die einzige Wahl für in Domänen eingebundene Sammlungen. Im weiteren Verlauf dieses Artikels wird davon ausgegangen, dass Sie Azure AD-Konten mit Azure RemoteApp verwenden.
+Der Administrator wählt die Benutzer, die auf Remoteanwendungen in der Sammlung zugreifen können. Sie können Geschäfts- oder Schulkonten (früher als „Organisationskonten“ bezeichnet) aus Azure Active Directory (Azure AD) oder Microsoft-Konten verwenden, wie z.B. @outlook.com. In den meisten Unternehmensszenarien werden Azure AD-Konten verwendet. Sie ermöglichen den Einsatz von Features für den bedingten Zugriff, die weiter unten erläutert werden, und sind außerdem die einzige Wahl für in Domänen eingebundene Sammlungen. Im weiteren Verlauf dieses Artikels wird davon ausgegangen, dass Sie Azure AD-Konten mit Azure RemoteApp verwenden.
 
 **Wir haben Folgendes erreicht:**
 
@@ -115,10 +116,5 @@ Mit Azure RemoteApp müssen Sie zuerst Ihr VNet konfigurieren und es dann beim V
 Das folgende Diagramm zeigt die vollständige Lösung, in der wir einen sicheren Zugriffskanal vom Endbenutzer über Azure RemoteApp (ARA) bis hin zur Back-End-Ressource erstellt haben.
 ![Schützen von Azure RemoteApp](./media/remoteapp-secureaccess/ra-secureoverview.png) In Phase 1 wurden die Benutzer ausgewählt und Zugriffsregeln erstellt, die den Zugriff auf ARA steuern. Im folgenden Beispiel gestatten wir nur den Benutzern Zugriff, die vom Unternehmensnetzwerk aus arbeiten. Benutzer, die dieser Vorgabe nicht entsprechen, können überhaupt nicht auf die ARA-Umgebung zugreifen.
 In Phase 2 haben wir die Back-End-Ressource nur über die Konfiguration von VNET/VPN verfügbar gemacht, die von uns gesteuert wird. Azure RemoteApp wurde im selben VNet platziert. Als Endergebnis ist die Ressource nur über die ARA-Umgebung zugänglich.
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

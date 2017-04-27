@@ -1,6 +1,6 @@
 ---
 title: "Andere Ports als 1433 für SQL-Datenbank | Microsoft Docs"
-description: Bei Clientverbindungen von ADO.NET mit Azure SQL-Datenbank V12 wird der Proxy manchmal umgangen und direkt mit der Datenbank interagiert. Andere Ports als 1433 werden wichtig.
+description: Bei Clientverbindungen von ADO.NET mit Azure SQL-Datenbank wird der Proxy gelegentlich umgangen und direkt mit der Datenbank interagiert. Andere Ports als 1433 werden wichtig.
 services: sql-database
 documentationcenter: 
 author: MightyPen
@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 08/17/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 1df9f3549db8417445a5a012d31ed662977a9990
-ms.openlocfilehash: 961b8b4eeeb8543c2adec60ff958a7f420c785b5
-ms.lasthandoff: 01/31/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: e47d8f71fbfe95027e1fbfebb0b7e91ffe653c62
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -42,7 +42,7 @@ Der Ablauf ist wie folgt:
 2. ADO.NET stellt dann eine direkte Verbindung mit dem SQL-Datenbankserver ohne Einbindung von Middleware her.
 3. Abfragen werden direkt an die Datenbank gesendet, und Ergebnisse werden direkt an den Client zurückgegeben.
 
-Stellen Sie sicher, dass der Portbereich von 11000 bis 11999 und 14000 bis 14999 auf Ihrem Azure-Clientcomputer für ADO.NET 4.5-Clientinteraktionen mit SQL-Datenbank V12 verfügbar ist.
+Stellen Sie sicher, dass der Portbereich von 11000 bis 11999 und von 14000 bis 14999 auf Ihrem Azure-Clientcomputer für ADO.NET 4.5-Clientinteraktionen mit SQL-Datenbank verfügbar ist.
 
 * Insbesondere dürfen Ports in diesem Bereich keine anderen ausgehenden Blockierungen aufweisen.
 * Auf Ihrer Azure-VM steuert die **Windows-Firewall mit erweiterter Sicherheit** die Porteinstellungen.

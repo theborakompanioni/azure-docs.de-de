@@ -14,9 +14,9 @@ ms.workload: NA
 ms.date: 1/17/2017
 ms.author: maburlik;chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: bd9ea82adc97698957dfebc3ee7c14c498808dd3
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: f332193f9a53260173a1010b8bf9f08726bea427
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -105,7 +105,9 @@ Wenn ein Clusteradministrator einen eigenständigen Service Fabric-Cluster konfi
 4. Wenn es sich bei dem bereitzustellenden Cluster um einen sicheren Cluster handelt, überprüfen Sie, ob die Sicherheitsvoraussetzungen erfüllt und ordnungsgemäß konfiguriert sind.
 5. Wenn die Clustercomputer nicht über das Internet erreichbar sind, legen Sie in der Clusterkonfiguration Folgendes fest:
 * Telemetrie deaktivieren: Legen Sie unter *properties* die Option   *"enableTelemetry": false* fest.
-* Automatisches Herunterladen von Fabric-Versionen und Benachrichtigungen zum nahenden Supportende der aktuellen Clusterversion deaktivieren: Legen Sie unter *properties* die Option   *"fabricClusterAutoupgradeEnabled": true* fest.
+* Automatisches Herunterladen von Fabric-Versionen und Benachrichtigungen zum nahenden Supportende der aktuellen Clusterversion deaktivieren: Legen Sie unter *properties* die Option   *"fabricClusterAutoupgradeEnabled": false* fest.
+* Selbst wenn der Netzwerk-/Internetzugriff auf die in der Whitelist aufgelisteten Domänen beschränkt ist, sind die unten stehenden Domänen für ein automatisches Upgrade erforderlich:   go.microsoft.com   download.microsoft.com
+
 6. Legen Sie geeignete Service Fabric-Virenschutzausschlüsse fest:
 
 | **Vom Virenschutz ausgeschlossene Verzeichnisse** |

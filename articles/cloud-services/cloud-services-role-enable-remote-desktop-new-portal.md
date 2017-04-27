@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 11/28/2016
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: b478251715076a254fe87abee1d709f47e2b3886
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
+ms.openlocfilehash: fc9b84d151144ae9cb49beacdf525fdc356818a6
+ms.lasthandoff: 04/11/2017
 
 
 ---
@@ -67,9 +67,9 @@ Nachdem Remotedesktop für die Rollen aktiviert wurde, können Sie direkt im Azu
 4. Klicken Sie auf **Öffnen** und dann auf **Verbinden**, um die Remotedesktopverbindung zu starten.
 
 >[!NOTE]
-> Wenn Ihr Clouddienst durch eine NSG geschützt wird, müssen Sie möglicherweise eine Regel erstellen, um Port **20000** zu öffnen.
+> Wenn Ihr Clouddienst durch eine NSG geschützt ist, müssen Sie u.U. Regeln erstellen, die den Datenverkehr an den Ports **3389** und **20000** zulassen.  Remotedesktop verwendet Port **3389**.  Für Cloud Services-Instanzen erfolgt ein Lastenausgleich, daher können Sie nicht direkt steuern, mit welcher Instanz eine Verbindung hergestellt wird.  Die Agents *RemoteForwarder* und *RemoteAccess* verwalten den RDP-Datenverkehr und ermöglichen es dem Client, ein RDP-Cookie zu senden und eine bestimmte Instanz anzugeben, mit der eine Verbindung hergestellt werden soll.  Die Agents *RemoteForwarder* und *RemoteAccess* fordern, dass Port **20000*** geöffnet wird, der bei Vorhandensein einer NSG möglicherweise blockiert ist.
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+## <a name="additional-resources"></a>Weitere Ressourcen
 
 [Konfigurieren von Clouddiensten](cloud-services-how-to-configure.md)
 [Häufig gestellte Fragen zu Clouddiensten– Remotedesktop](cloud-services-faq.md#remote-desktop)

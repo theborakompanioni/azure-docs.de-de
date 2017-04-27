@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 02/03/2017
 ms.author: genli
 translationtype: Human Translation
-ms.sourcegitcommit: 09c18ca6a967c2930ddd2b16d37f0bc606712ea1
-ms.openlocfilehash: fc1c8cb6b7c186e189658cacf218ec7e9261472a
+ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
+ms.openlocfilehash: 05e23ad6bc07293f53e081b905c3a9ce1c91e6f9
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -31,16 +32,22 @@ Wenn Ihr Internetbrowser hängt, können Sie nacheinander die folgenden Schritte
 * Verwenden Sie einen anderen Internetbrowser.
 * Wenn Sie Microsoft Internet Explorer verwenden, navigieren Sie im InPrivate-Browsermodus zum Azure-Portal. 
   
-  A:    Klicken Sie auf **Extras** ![Schaltfläche „Extras“](./media/billing-cannot-login-subscription/Toolsbutton.png) > **Sicherheit** > **InPrivate-Browsen**.
+  A: Klicken Sie auf **Extras** ![Schaltfläche „Extras“](./media/billing-cannot-login-subscription/Toolsbutton.png) > **Sicherheit** > **InPrivate-Browsen**.
   
-  B.    Wechseln Sie zum [Azure-Portal](https://portal.azure.com), und melden Sie sich beim Portal an.
+  B. Wechseln Sie zum [Azure-Portal](https://portal.azure.com), und melden Sie sich beim Portal an.
 
 ## <a name="error-message-no-subscriptions-found"></a>Fehlermeldung „Keine Abonnements gefunden“
 Wenn Ihr Konto nicht über ausreichende Berechtigungen verfügt, wird ggf. die Fehlermeldung **Keine Abonnements gefunden** angezeigt. Stellen Sie sicher, dass Sie als der richtige Administrator angemeldet sind. Ein Kontoadministrator hat nur Zugriff auf das [Kontocenter](https://account.windowsazure.com/Subscriptions). Dienstadministratoren und Co-Administratoren haben hingegen nur Zugriff auf das [Azure-Portal](https://portal.azure.com) oder das klassische Azure-Portal.
 
 **Szenario 1: Fehlermeldung wird im [Azure-Portal](https://portal.azure.com)** empfangen
 
-Zum Beheben dieses Problems [fügen Sie die Co-Administrator- oder Besitzerrolle](billing-add-change-azure-subscription-administrator.md) für das Konto hinzu.
+So beheben Sie dieses Problem:
+
+* Vergewissern Sie sich, dass das richtige Azure-Verzeichnis ausgewählt ist, indem Sie oben rechts auf Ihr Konto klicken.
+
+![Auswählen des Verzeichnisses oben rechts im Azure-Portal](./media/billing-cannot-login-subscription/directory-switch.png)
+
+* Wenn das richtige Azure-Verzeichnis ausgewählt ist, der Fehler jedoch immer noch ausgegeben wird, [lassen Sie Ihr Konto als Besitzer hinzufügen](billing-add-change-azure-subscription-administrator.md).
 
 **Szenario 2: Fehlermeldung wird im [Azure-Kontocenter](https://account.windowsazure.com/Subscriptions)** empfangen
 
@@ -62,10 +69,5 @@ Um dieses Problem zu lösen, probieren Sie eine der folgenden Methoden aus:
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
 [Wenden Sie sich an den Support](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen. 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

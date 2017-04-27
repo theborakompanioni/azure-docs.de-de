@@ -16,9 +16,9 @@ ms.date: 02/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 53c9b75599af48be82c63bc7a9df31d4c2de13a3
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: da77ce827c65deb18d9d84ce5cf768d89788e205
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -55,7 +55,7 @@ Wie im Diagramm unten zu sehen, durchläuft ein Computeauftrag, für den diese V
 ## <a name="prerequisites"></a>Voraussetzungen
 Für die Verwendung der Batch-Vorlagen benötigen Sie Folgendes:
 
-* Einen Computer, auf dem Visual Studio 2015 oder höher installiert ist.
+* Ein Computer mit installiertem Visual Studio 2015. Batchvorlagen werden derzeit nur für Visual Studio 2015 unterstützt.
 * Die Batch-Vorlagen, die in der [Visual Studio Gallery][vs_gallery] als Visual Studio-Erweiterungen verfügbar sind. Es gibt zwei Möglichkeiten zum Abrufen der Vorlagen:
   
   * Installieren Sie die Vorlagen über das Dialogfeld **Erweiterungen und Updates** in Visual Studio (weitere Informationen finden Sie unter [Suchen und Verwenden von Visual Studio-Erweiterungen][vs_find_use_ext]). Suchen Sie im Dialogfeld **Erweiterungen und Updates** nach den folgenden beiden Erweiterungen, und laden Sie sie herunter:

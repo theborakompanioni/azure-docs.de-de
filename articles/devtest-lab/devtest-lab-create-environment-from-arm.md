@@ -1,6 +1,6 @@
 ---
-title: Erstellen von Umgebungen mit mehreren virtuellen Computern mit Azure Resource Manager-Vorlagen | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie in Azure DevTest Labs auf der Grundlage einer Azure Resource Manager-Vorlage Umgebungen mit mehreren virtuellen Computern erstellen.
+title: Erstellen von Umgebungen mit mehreren virtuellen Computern und PaaS-Ressourcen mit Azure Resource Manager-Vorlagen | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie in Azure DevTest Labs auf der Grundlage einer Azure Resource Manager-Vorlage Umgebungen mit mehreren virtuellen Computern und PaaS-Ressourcen erstellen.
 services: devtest-lab,virtual-machines,visual-studio-online
 documentationcenter: na
 author: tomarcher
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 01/31/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: c17ea1f078c424d855109da07113a4c2f8f84ab3
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 0fbe1af87594aacd2eee4f706429e3674548d3fd
+ms.lasthandoff: 04/07/2017
 
 
 ---
 
-# <a name="create-multi-vm-environments-with-azure-resource-manager-templates"></a>Erstellen von Umgebungen mit mehreren virtuellen Computern mit Azure Resource Manager-Vorlagen
+# <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Erstellen von Umgebungen mit mehreren virtuellen Computern und PaaS-Ressourcen mit Azure Resource Manager-Vorlagen
 
 Über das [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) können Sie ganz einfach [einen virtuellen Computer erstellen und einem Lab hinzufügen](./devtest-lab-add-vm-with-artifacts.md). Für einzelne virtuelle Computer funktioniert das sehr gut. Wenn die Umgebung allerdings mehrere virtuelle Computer enthält, muss jeder virtuelle Computer einzeln erstellt werden. Für Szenarien wie etwa eine Web-App mit mehreren Ebenen oder eine SharePoint-Farm ist ein Mechanismus erforderlich, der die gleichzeitige Erstellung mehrerer virtueller Computer ermöglicht. Mit Azure Resource Manager-Vorlagen können Sie jetzt die Infrastruktur und Konfiguration Ihrer Azure-Lösung definieren und wiederholt mehrere virtuelle Computer in einem konsistenten Zustand bereitstellen. Dieses Feature hat folgende Vorteile:
 
@@ -71,7 +71,7 @@ Mit den folgenden Schritten können Sie Ihrem Lab über das Azure-Portal ein Rep
     - **Name**: Geben Sie den im Lab verwendeten Repositorynamen ein.
     - **Git-Klon-URL:** Geben Sie die Git-HTTPS-Klon-URL aus GitHub oder Visual Studio Team Services ein.  
     - **Verzweigung**: Geben Sie den Verzweigungsnamen für den Zugriff auf Ihre Azure Resource Manager-Vorlagendefinitionen ein. 
-    - **Persönliches Zugriffstoken**: Das persönliche Zugriffstoken ermöglicht den sicheren Zugriff auf Ihr Repository. Wählen Sie **&lt;Ihr Name> > Mein Profil > Sicherheit > Öffentliches Zugriffstoken** aus, um Ihr Token aus Visual Studio Team Services abzurufen. Um Ihr Token aus GitHub abzurufen, wählen Sie Ihren Avatar und anschließend **Einstellungen > Öffentliches Zugriffstoken** aus. 
+    - **Persönliches Zugriffstoken**: Das persönliche Zugriffstoken ermöglicht den sicheren Zugriff auf Ihr Repository. Wählen Sie  **&lt;Ihr Name> > Mein Profil > Sicherheit > Öffentliches Zugriffstoken** aus, um Ihr Token aus Visual Studio Team Services abzurufen. Um Ihr Token aus GitHub abzurufen, wählen Sie Ihren Avatar und anschließend **Einstellungen > Öffentliches Zugriffstoken** aus. 
     - **Ordnerpfade**: Geben Sie über eines der beiden Eingabefelder den Ordnerpfad ein – entweder zu Ihren Artefaktdefinitionen (erstes Eingabefeld) oder zu Ihren Azure Resource Manager-Vorlagendefinitionen. Der Pfad beginnt mit einem Schrägstrich (/) und wird relativ zu Ihrem Git-Klon URI angegeben.   
     
         ![Öffentliches Repository](./media/devtest-lab-create-environment-from-arm/repo-values.png)

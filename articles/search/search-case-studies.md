@@ -16,8 +16,9 @@ ms.tgt_pltfrm: na
 ms.date: 08/29/2016
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 197e5eba551d60ec33bcb5705bfa13f145554b74
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: e7cbbdc606920b9698b30e4b7a9c3325a0f866e2
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -42,8 +43,8 @@ Als Startup mit großen Plänen für seine Suchwebsite im Bereich des Gesundheit
 ## <a name="weichert-realtorshttpscustomersmicrosoftcompagescustomerstoryaspxrecid21252"></a>[Weichert Realtors](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=21252)
 Weichert Realtors stellt auf die Cloud um, was zu einer starken Veränderung bei den Geschäftsabläufen des Unternehmens führt. Durch die Migration zu Microsoft Azure konnte das Unternehmen seine Betriebskosten um 60 Prozent reduzieren, nachdem teure lokale Hardware und Software ausgemustert wurde, die CRM-Lösung mit robusten Suchfunktionen komplett erneuert wurde und viele neue Datendienste ermöglicht wurden, die für die Zukunft des Unternehmens von entscheidender Bedeutung sind. [Weitere Informationen](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=21252)
 
-## <a name="whattopediacomsearch-dev-case-study-whattopediamd"></a>[Whattopedia.com](search-dev-case-study-whattopedia.md)
-Sie erfahren, wie dieses schwedische Startup ein Infomedia-Portal erstellt hat, über das Kunden durch zielgenaue, bewertete Suchergebnisse mit Einzelhändlern in Kontakt gebracht werden, ähnlich wie Reiseportale Touristen in fernen Ländern mit Hotels, Restaurants und Unterhaltungsangeboten zusammenführen.[Weitere Informationen...](search-dev-case-study-whattopedia.md)
+## <a name="whattopediacom"></a>Whattopedia.com
+Sie erfahren, wie dieses schwedische Startup ein Infomedia-Portal erstellt hat, über das Kunden durch zielgenaue, bewertete Suchergebnisse mit Einzelhändlern in Kontakt gebracht werden, ähnlich wie Reiseportale Touristen in fernen Ländern auf Hotels, Restaurants und Unterhaltungsangebote hinweisen.
 
 <!--Image References -- here for future reference. Had to -->
 [1]: ./media/search-case-studies/autotrader_m.png
@@ -52,9 +53,4 @@ Sie erfahren, wie dieses schwedische Startup ein Infomedia-Portal erstellt hat, 
 [4]: ./media/search-case-studies/medihoo_m.png
 [5]: ./media/search-case-studies/weichert_m.png
 [xomni]: ./media/search-case-studies/xomni_m.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

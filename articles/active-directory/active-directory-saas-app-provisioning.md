@@ -15,8 +15,9 @@ ms.workload: identity
 ms.date: 02/09/2016
 ms.author: asmalser
 translationtype: Human Translation
-ms.sourcegitcommit: 6b77e338e1c7f0f79ea3c25b0b073296f7de0dcf
-ms.openlocfilehash: 1bee9573e23e1c814626d19a3df1eb7ab12486ab
+ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
+ms.openlocfilehash: 39714145f84f5f9229dbf4bbe136103d4d102bed
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -86,23 +87,11 @@ Azure AD stellt Benutzer für SaaS-Apps bereit, indem eine Verbindung mit Bereit
 Weitere Informationen dazu, wie Attribute zwischen Azure AD und Ihrer SaaS-App zugeordnet werden, finden Sie im Artikel [Anpassen von Attributzuordnungen](active-directory-saas-customizing-attribute-mappings.md).
 
 ## <a name="list-of-apps-that-support-automated-user-provisioning"></a>Liste der Apps, die eine automatisierte Benutzerbereitstellung unterstützen
-Klicken Sie auf die App, um ein Lernprogramm zum Konfigurieren der automatisierten Bereitstellung für diese App anzuzeigen:
-
-* [Box](http://go.microsoft.com/fwlink/?LinkId=286016)
-* [Citrix GoToMeeting](http://go.microsoft.com/fwlink/?LinkId=309580)
-* [Concur](http://go.microsoft.com/fwlink/?LinkId=309575)
-* [Docusign](http://go.microsoft.com/fwlink/?LinkId=403254)
-* [Dropbox für Unternehmen](http://go.microsoft.com/fwlink/?LinkId=309581)
-* [Google Apps](http://go.microsoft.com/fwlink/?LinkId=309577)
-* [Jive](http://go.microsoft.com/fwlink/?LinkId=309591)
-* [Salesforce](http://go.microsoft.com/fwlink/?LinkId=286017)
-* [Salesforce Sandbox](http://go.microsoft.com/fwlink/?LinkId=327869)
-* [ServiceNow](http://go.microsoft.com/fwlink/?LinkId=309587)
-* [Workday](http://go.microsoft.com/fwlink/?LinkId=690250) (eingehende Bereitstellung)
+Alle ausgewählten Apps im Azure AD-Anwendungskatalog unterstützen die automatisierte Benutzerbereitstellung. [Die Liste der ausgewählten Apps kann hier eingesehen werden.](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1&subcategories=featured)
 
 Damit eine Anwendung die automatisierte Benutzerbereitstellung unterstützt, müssen zunächst die erforderlichen Endpunkte bereitgestellt werden, die es externen Programmen erlauben, die Erstellung, Wartung und Entfernung von Benutzern zu automatisieren. Daher sind nicht alle SaaS-Apps mit diesem Feature kompatibel. Für Apps, die diese Unterstützung bieten, kann das Azure AD-Entwicklerteam anschließend einen Bereitstellungsconnector erstellen. Dieser Tätigkeit wird in Abhängigkeit von den Anforderungen bestehender und potenzieller Kunden Priorität eingeräumt.
 
-Wenn Sie das Azure AD-Entwicklungsteam kontaktieren möchten, um Bereitstellungsunterstützung für zusätzliche Anwendungen anzufordern, senden Sie uns eine Nachricht über das [Azure Active Directory-Feedbackforum](https://feedback.azure.com/forums/169401-azure-active-directory/).
+Wenn Sie das Azure AD-Entwicklungsteam kontaktieren möchten, um Bereitstellungsunterstützung für zusätzliche Anwendungen anzufordern, senden Sie uns eine Nachricht über das [Azure Active Directory-Feedbackforum](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests/category/172035-user-provisioning).
 
 ## <a name="related-articles"></a>Verwandte Artikel
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
@@ -112,10 +101,5 @@ Wenn Sie das Azure AD-Entwicklungsteam kontaktieren möchten, um Bereitstellungs
 * [Verwenden von SCIM für die automatische Bereitstellung von Benutzern und Gruppen aus Azure Active Directory für Anwendungen](active-directory-scim-provisioning.md)
 * [Kontobereitstellungsbenachrichtigungen](active-directory-saas-account-provisioning-notifications.md)
 * [Liste der Tutorials zur Integration von SaaS-Apps](active-directory-saas-tutorial-list.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

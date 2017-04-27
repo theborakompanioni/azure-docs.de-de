@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/03/2017
+ms.date: 03/22/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 36cc4206b81312f8f4ff287cd36d9dba56611fde
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: f3e607fbff1aa8c6a652dae452c75554a59828d9
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -26,7 +27,7 @@ In diesem Tutorial erfahren Sie, wie Sie Trello in Azure Active Directory (Azure
 Die Integration von Trello in Azure AD bietet die folgenden Vorteile:
 
 * Sie können in Azure AD steuern, wer Zugriff auf Trello hat.
-* Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Trello anzumelden (einmaliges Anmelden).
+* Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Trello anzumelden (Single Sign-On, einmaliges Anmelden).
 * Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
@@ -45,7 +46,7 @@ Um die Azure AD-Integration mit Trello konfigurieren zu können, benötigen Sie 
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
 * Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-* Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
+* Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
@@ -53,7 +54,7 @@ In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Test
 1. Hinzufügen von Trello aus dem Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
-## <a name="adding-trello-from-the-gallery"></a>Hinzufügen von Trello aus dem Katalog
+## <a name="add-trello-from-the-gallery"></a>Hinzufügen von Trello aus dem Katalog
 Zum Konfigurieren der Integration von Trello in Azure AD müssen Sie Trello aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
 
 **Um Trello aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
@@ -84,19 +85,20 @@ Zum Konfigurieren der Integration von Trello in Azure AD müssen Sie Trello aus 
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-trello-tutorial/tutorial_trello_02.png)
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+## <a name="configure-and-test-azure-ad-sso"></a>Konfigurieren und Testen des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Trello mithilfe eines Testbenutzers namens Britta Simon.
 
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Trello als Gegenbenutzer für einen Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Trello muss eine Verknüpfungsbeziehung eingerichtet werden.
-Diese Linkbeziehung wird hergestellt, indem Sie den Benutzernamen**** in Azure AD als Benutzernamen**** in Trello zuweisen. Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Trello müssen Sie die folgenden Bausteine ausführen:
+Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Trello als Entsprechung zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Trello muss eine Verknüpfungsbeziehung eingerichtet werden.
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+Diese Linkbeziehung wird hergestellt, indem Sie den Benutzernamen**** in Azure AD als Benutzernamen**** in Trello zuweisen. Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Trello müssen Sie die folgenden Bausteine ausführen:
+
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 3. **[Erstellen eines Trello-Testbenutzers](#creating-a-the-funding-portal-test-user)** , um eine Entsprechung von Britta Simon in Trello zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** – um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im klassischen Azure-Portal zu aktivieren und das einmalige Anmelden in Ihrer Trello-Anwendung zu konfigurieren.
 
 Die Trello-Anwendung erwartet, dass die SAML-Assertionen bestimmte Attribute enthalten. Konfigurieren Sie die folgenden Attribute für diese Anwendung. Sie können die Werte dieser Attribute auf der Registerkarte **Attribute** der Anwendung verwalten. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen:
@@ -117,15 +119,12 @@ Die Trello-Anwendung erwartet, dass die SAML-Assertionen bestimmte Attribute ent
     | User.FirstName | user.givenname |
     | User.LastName | user.surname |
 
-    a. Klicken Sie auf **Benutzerattribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
+   1. Klicken Sie auf **Benutzerattribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-trello-tutorial/tutorial_trello_05.png)
-
-    b. Geben Sie im Textfeld **Attribute Name** den für die Zeile angezeigten Attributnamen ein.
-
-    c. Wählen Sie in der Liste **Attributwert** den für diese Zeile angezeigten Wert aus.
-
-    d. Klicken Sie auf **Fertig stellen**. Klicken Sie unten auf der Seite auf **Änderungen übernehmen** .
+   2. Geben Sie im Textfeld **Attribute Name** den für die Zeile angezeigten Attributnamen ein.
+   3. Wählen Sie in der Liste **Attributwert** den für diese Zeile angezeigten Wert aus.
+   4. Klicken Sie auf **Fertig stellen**. Klicken Sie unten auf der Seite auf **Änderungen übernehmen** .
 
 1. Klicken Sie im oberen Menü auf **Schnellstart**.
    
@@ -143,37 +142,35 @@ Die Trello-Anwendung erwartet, dass die SAML-Assertionen bestimmte Attribute ent
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-trello-tutorial/tutorial_trello_07.png)
 
-    a. Geben Sie im Textfeld für die Antwort-URL eine URL nach folgendem Muster ein: `https://trello.com/auth/saml/consume/<enterprise>`.
+   1. Geben Sie im Textfeld für die Antwort-URL eine URL nach folgendem Muster ein: `https://trello.com/auth/saml/consume/<enterprise>`
+   2. Klicken Sie auf **Weiter**.
 
-    b. Klicken Sie auf **Weiter**.
-
-    > [!NOTE]
-    > Sie sollten über ein **\<Unternehmens\>**-Schlüsselwort aus Trello verfügen. Wenn Sie nicht über das Schlüsselwort verfügen, wenden Sie sich unter <mailto:support@trello.com> an das Supportteam, um das Schlüsselwort für Ihr Unternehmen zu erhalten.
+    >[!NOTE]
+    >Sie sollten über ein **\<Unternehmens\>**-Schlüsselwort aus Trello verfügen. Wenn Sie nicht über das Schlüsselwort verfügen, wenden Sie sich unter <mailto:support@trello.com> an das Supportteam, um das Schlüsselwort für Ihr Unternehmen zu erhalten.
     > 
     > 
 
-1. Wenn die Anwendung im **SP-initiierten Modus** konfiguriert werden soll, klicken Sie auf der Dialogfeldseite **App-Einstellungen konfigurieren** auf **Zeigen Sie die erweiterten Einstellungen an (optional)**, und geben Sie die **Anmelde-URL** ein:
+5. Wenn die Anwendung im **SP-initiierten Modus** konfiguriert werden soll, klicken Sie auf der Dialogfeldseite **App-Einstellungen konfigurieren** auf **Zeigen Sie die erweiterten Einstellungen an (optional)**, und geben Sie die **Anmelde-URL** ein:
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-trello-tutorial/tutorial_trello_08.png)
    
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://trello.com/auth/saml/consume/<enterprise>`
-   
-    b. Klicken Sie auf **Weiter**
+   1. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://trello.com/auth/saml/consume/<enterprise>`
+   2. Klicken Sie auf **Weiter**.
 
-2. Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für Trello** auf **Zertifikat herunterladen**, und speichern Sie die Datei auf Ihrem Computer.
+6. Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für Trello** auf **Zertifikat herunterladen**, und speichern Sie die Datei auf Ihrem Computer.
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-trello-tutorial/tutorial_trello_09.png)
 
-3. Um SSO für Ihre Anwendung zu konfigurieren, wechseln Sie zur Seite [Enterprise SSO-Konfiguration für Trello](https://trello.com/sso-configuration) , um dem Trello-Team die Anmelde-URL zu senden und das heruntergeladen Zertifikat anzuhängen.
-4. Wählen Sie im klassischen Portal die Bestätigung zur Konfiguration der einmaligen Anmeldung aus, und klicken Sie dann auf **Weiter**.
+7. Um SSO für Ihre Anwendung zu konfigurieren, wechseln Sie zur Seite [Enterprise SSO-Konfiguration für Trello](https://trello.com/sso-configuration) , um dem Trello-Team die Anmelde-URL zu senden und das heruntergeladen Zertifikat anzuhängen.
+8. Wählen Sie im klassischen Portal die Bestätigung zur Konfiguration der einmaligen Anmeldung aus, und klicken Sie dann auf **Weiter**.
    
     ![Azure AD – einmaliges Anmelden][10]
 
-5. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.  
+9. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.  
    
     ![Azure AD – einmaliges Anmelden][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit dem Namen Britta Simon.
 
 ![Azure AD-Benutzer erstellen][20]
@@ -198,25 +195,19 @@ In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit d
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-trello-tutorial/create_aaduser_05.png) 
    
-    a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
-   
-    b. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
-   
-    c. Klicken Sie auf **Weiter**.
+   1. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
+   2. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
+   3. Klicken Sie auf **Weiter**.
 
 6. Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-trello-tutorial/create_aaduser_06.png) 
    
-    a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
-   
-    b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
-   
-    c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
-   
-    d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
-   
-    e. Klicken Sie auf **Weiter**.
+   1. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
+   2. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
+   3. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
+   4. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
+   5. Klicken Sie auf **Weiter**.
 
 7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
    
@@ -226,14 +217,13 @@ In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit d
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-trello-tutorial/create_aaduser_08.png) 
    
-    a. Notieren Sie den Wert von **Neues Kennwort**.
-   
-    b. Klicken Sie auf **Fertig stellen**.   
+   1. Notieren Sie den Wert von **Neues Kennwort**.
+   2. Klicken Sie auf **Fertig stellen**.   
 
-### <a name="creating-a-trello-test-user"></a>Erstellen eines Trello-Testbenutzers
+### <a name="create-a-trello-test-user"></a>Erstellen eines Trello-Testbenutzers
 In diesem Abschnitt erstellen Sie in Trello einen Benutzer namens Britta Simon. In diesem Abschnitt erstellen Sie in Trello einen Benutzer namens Britta Simon. Trello unterstützt die JIT-Bereitstellung (Just-In-Time), und es wird bei der ersten Anmeldung aus Azure AD ein neues Konto erstellt.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Trello gewähren.
 
 ![Benutzer zuweisen][200] 
@@ -257,8 +247,8 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
    
     ![Benutzer zuweisen][205]
 
-### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
-Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
+Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden (SSO) über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Trello“ klicken, sollten Sie automatisch in Ihrer Trello-Anwendung angemeldet werden.
 
@@ -286,9 +276,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Trello“ klicken, sollten Sie aut
 [203]: ./media/active-directory-saas-trello-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-trello-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-trello-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

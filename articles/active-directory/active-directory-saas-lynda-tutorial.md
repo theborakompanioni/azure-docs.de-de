@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/02/2017
+ms.date: 03/22/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 07b9df5ab5c7df0089f001a26200bb9c3fb1c508
-ms.openlocfilehash: 7f4f1c22e0b3382a9de770800ccb733c61d4f5b0
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: e7b71bec34aa9507d312eead52060d2c4b774432
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -39,7 +39,7 @@ Das in diesem Lernprogramm beschriebene Szenario besteht aus den folgenden Baust
 
 ![Szenario](./media/active-directory-saas-lynda-tutorial/IC781046.png "Szenario")
 
-## <a name="enabling-the-application-integration-for-lyndacom"></a>Aktivieren der Anwendungsintegration für Lynda.com
+## <a name="enable-the-application-integration-for-lyndacom"></a>Aktivieren der Anwendungsintegration für Lynda.com
 In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Lynda.com aktivieren.
 
 **Führen Sie zum Aktivieren der Anwendungsintegration für Lynda.com die folgenden Schritte aus:**
@@ -64,7 +64,7 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Lyn
    
    ![Lynda.com](./media/active-directory-saas-lynda-tutorial/IC777525.png "Lynda.com")
    
-## <a name="configuring-single-sign-on"></a>Konfigurieren der einmaligen Anmeldung
+## <a name="configure-single-sign-on"></a>Configure single sign-on
 
 In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei Lynda.com zu authentifizieren.
 
@@ -91,7 +91,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
    
    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-lynda-tutorial/IC777530.png "Einmaliges Anmelden konfigurieren")
    
-## <a name="configuring-user-provisioning"></a>Konfigurieren der Benutzerbereitstellung
+## <a name="configure-user-provisioning"></a>Benutzerbereitstellung konfigurieren
 
 Für das Konfigurieren der Benutzerbereitstellung in Lynda.com steht kein Aktionselement zur Verfügung.  
 Wenn sich ein zugewiesener Benutzer über den Zugriffsbereich bei Lynda.com anmelden möchte, überprüft Lynda.com, ob der Benutzer vorhanden ist.  
@@ -102,7 +102,7 @@ Ist noch kein Benutzerkonto verfügbar, wird es von Lynda.com automatisch erstel
 >Sie können AAD-Benutzerkonten auch mithilfe von anderen Tools zum Erstellen von Lynda.com-Benutzerkonten oder mithilfe der von Lynda.com bereitgestellten APIs erstellen. 
 > 
 
-## <a name="assigning-users"></a>Zuweisen von Benutzern
+## <a name="assign-users"></a>Benutzer zuweisen
 Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
 
 **Führen Sie zum Zuweisen von Benutzern in Lynda.com folgende Schritte aus:**

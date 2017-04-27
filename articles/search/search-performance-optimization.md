@@ -12,11 +12,12 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 10/17/2016
+ms.date: 04/02/2017
 ms.author: liamca
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 9024c47e7d483129d66105012e0d67cfa9700cb9
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 56eeed7634fca840172ab828be5f202d80f3f4fb
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -29,7 +30,7 @@ Alle Benutzer sind an Suchmaschinen wie Bing und Google und deren hohe Leistung 
 1. Wählen Sie eine Ziellatenz aus (also die maximale Zeitdauer), die bis zum Abschluss einer typischen Suchanforderung vergehen darf.
 2. Erstellen und testen Sie eine Workload für Ihren Suchdienst mit einem realistischen Dataset, um diese Latenzraten zu messen.
 3. Beginnen Sie mit einer geringen Anzahl von Abfragen pro Sekunde, und erhöhen Sie die im Test ausgeführte Abfrageanzahl, bis die Abfragelatenz die definierte Ziellatenz unterschreitet.  Dies ist ein wichtiger Benchmark, mit dem Sie die Skalierung planen können, wenn die Nutzungsrate Ihrer Anwendung steigt.
-4. Verwenden Sie HTTP-Verbindungen nach Möglichkeit wieder.  Bei Verwendung des Azure Search .NET SDK sollten Sie eine Instanz oder eine [SearchIndexClient](https://msdn.microsoft.com/library/azure/microsoft.azure.search.searchindexclient.aspx)-Instanz wiederverwenden. Wenn Sie die REST-API nutzen, sollten Sie eine einzelne HttpClient-Instanz wiederverwenden.
+4. Verwenden Sie HTTP-Verbindungen nach Möglichkeit wieder.  Bei Verwendung des Azure Search .NET SDK sollten Sie eine Instanz oder eine [SearchIndexClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient)-Instanz wiederverwenden. Wenn Sie die REST-API nutzen, sollten Sie eine einzelne HttpClient-Instanz wiederverwenden.
 
 Beim Erstellen dieser Testworkloads müssen Sie einige Merkmale von Azure Search berücksichtigen:
 
@@ -46,7 +47,7 @@ Beim Erstellen dieser Testworkloads müssen Sie einige Merkmale von Azure Search
 ## <a name="scaling-azure-search-for-high-query-rates-and-throttled-requests"></a>Skalieren von Azure Search für hohe Abfrageraten und gedrosselte Anforderungen
 Wenn Sie zu viele gedrosselte Anforderungen empfangen oder die Ziellatenzraten aufgrund einer erhöhten Abfragelast überschreiten, können Sie die Latenzraten auf zwei Arten senken:
 
-1. **Erhöhen der Anzahl der Replikate:** Ein Replikat ist eine Kopie Ihrer Daten und ermöglicht Azure Search, die Anforderungslast auf die verschiedenen Kopien zu verteilen.  Der gesamte Lastenausgleich und die Replikation der Daten auf die Kopien werden von Azure Search verwaltet. Sie können die Anzahl der Replikate, die Ihrem Dienst zugeordnet sind, jederzeit ändern.  In einem Suchdienst mit Tarif „Standard“ können Sie bis zu 12 Replikate zuordnen, im Tarif „Basic“ bis zu drei.  Replikate können über das [Azure-Portal](search-create-service-portal.md) oder mithilfe der [Azure Search-Verwaltungs-API](search-get-started-management-api.md) angepasst werden.
+1. **Erhöhen der Anzahl der Replikate:** Ein Replikat ist eine Kopie Ihrer Daten und ermöglicht Azure Search, die Anforderungslast auf die verschiedenen Kopien zu verteilen.  Der gesamte Lastenausgleich und die Replikation der Daten auf die Kopien werden von Azure Search verwaltet. Sie können die Anzahl der Replikate, die Ihrem Dienst zugeordnet sind, jederzeit ändern.  In einem Suchdienst mit Tarif „Standard“ können Sie bis zu 12 Replikate zuordnen, im Tarif „Basic“ bis zu drei. Replikate können über das [Azure-Portal](search-create-service-portal.md) oder mithilfe von [PowerShell](search-manage-powershell.md) angepasst werden.
 2. **Wechseln zu einem höheren Search-Tarif:** Für Azure Search stehen [verschiedene Tarife](https://azure.microsoft.com/pricing/details/search/) zur Verfügung, von denen jeder eine andere Leistungsstufe bietet.  Zuweilen treten so viele Abfragen auf, dass Ihr aktueller Tarif keine ausreichend niedrigen Latenzraten mehr bieten kann, selbst wenn Sie bereits die maximale Anzahl von Replikaten zugewiesen haben.  In diesem Fall sollten Sie in Erwägung ziehen, in einen höheren Tarif zu wechseln, wie z.B. zu Azure Search S3, der sich sehr gut für Szenarien mit einer großen Anzahl von Dokumenten und extrem hohen Abfrageworkloads eignet.
 
 ## <a name="scaling-azure-search-for-slow-individual-queries"></a>Skalieren von Azure Search für langsame Einzelabfragen
@@ -54,7 +55,7 @@ Ein weiterer Grund für hohe Latenzraten kann darin liegen, dass eine einzelne A
 
 1. **Erhöhen der Anzahl der Partitionen:** Eine Partition ist ein Mechanismus, mit dem Ihre Daten auf zusätzliche Ressourcen aufgeteilt werden.  Wenn Sie eine zweite Partition hinzufügen, werden Ihre Daten und der Index in zwei Teile geteilt.  Bei einer dritten Partition werden Daten und Index in drei Teile geteilt usw.  Dies führt auch dazu, dass aufgrund der Parallelisierung langsame Abfragen in einigen Fällen schneller ausgeführt werden.  Es gibt einige Beispiele dafür, dass diese Parallelisierung extrem gut funktioniert, etwa bei Abfragen mit geringer Selektivität.  Hierbei handelt es sich um Abfragen, denen viele Dokumente entsprechen, oder um Abfragen, bei denen aufgrund von Facets Zählungen über eine große Anzahl von Dokumenten erfolgen müssen.  Da für die Bewertung der Relevanz von Dokumenten oder die Ermittlung der Anzahl von Dokumenten ein hoher Berechnungsaufwand erforderlich ist, kann das Hinzufügen weiterer Partitionen für zusätzliche Berechnungsressourcen sorgen.  
    
-   In einem Suchdienst mit Tarif „Standard“ können maximal 12 Partitionen eingerichtet werden, im Tarif „Basic“ nur eine.  Partitionen können über das [Azure-Portal](search-create-service-portal.md) oder mithilfe der [Azure Search-Verwaltungs-API](search-get-started-management-api.md) angepasst werden.
+   In einem Suchdienst mit Tarif „Standard“ können maximal 12 Partitionen eingerichtet werden, im Tarif „Basic“ nur eine.  Partitionen können über das [Azure-Portal](search-create-service-portal.md) oder mithilfe von [PowerShell](search-manage-powershell.md) angepasst werden.
 2. **Begrenzen von Feldern mit hoher Kardinalität:** Ein Feld mit hoher Kardinalität ist ein Feld, in dem Facets oder Filter verwendet werden können und das eine beträchtliche Anzahl von eindeutigen Werten besitzt. Daher erfordert die Berechnung von Ergebnissen für dieses Feld viele Ressourcen.   Wenn Sie z.B. ein Feld mit einer Produkt-ID oder einer Beschreibung zur Verwendung von Facets oder Filtern einrichten, ist die Kardinalität hoch, da die meisten Werte für jedes Dokument eindeutig sind. Verwenden Sie so wenig Felder mit Kardinalität wie irgend möglich.
 3. **Wechseln zu einem höheren Search-Tarif:** Der Wechsel in einen anderen Azure Search-Tarif ist eine weitere Möglichkeit, die Leistung langsamer Abfragen zu verbessern.  Jeder höhere Tarif bietet auch schnellere CPUs und mehr Arbeitsspeicher, was sich positiv auf die Abfrageleistung auswirken kann.
 
@@ -76,7 +77,7 @@ Das Ziel bei der Einrichtung geografisch verteilter Suchdienste ist es, über mi
    ![Tabelle der Dienste nach Region][1]
 
 ### <a name="keeping-data-in-sync-across-multiple-azure-search-services"></a>Synchronisieren von Daten über mehrere Azure Search-Dienste hinweg
-Es gibt zwei Optionen für die Synchronisierung Ihrer verteilten Suchdienste: den [Azure Search-Indexer](search-indexer-overview.md) und die Push-API (auch als [Azure Search-REST-API](https://msdn.microsoft.com/library/dn798935.aspx) bezeichnet).  
+Es gibt zwei Optionen für die Synchronisierung Ihrer verteilten Suchdienste: den [Azure Search-Indexer](search-indexer-overview.md) und die Push-API (auch als [Azure Search-REST-API](https://docs.microsoft.com/rest/api/searchservice/) bezeichnet).  
 
 ### <a name="azure-search-indexers"></a>Azure Search-Indexer
 Wenn Sie den Azure Search-Indexer verwenden, importieren Sie Datenänderungen bereits aus einem zentralen Datenspeicher wie z.B. Azure SQL-Datenbank oder DocumentDB. Beim Erstellen eines neuen Suchdiensts erstellen Sie einfach auch einen neuen Azure Search-Indexer für diesen Dienst, der auf den gleichen Datenspeicher zeigt. Auf diese Weise werden neue Änderungen von den verschiedenen Indexern indiziert, sobald sie sich im Datenspeicher befinden.  
@@ -86,7 +87,7 @@ Diese Architektur würde in etwa wie folgt aussehen.
    ![Einzelne Datenquelle mit verteilten Indexer- und Dienstkombinationen][2]
 
 ### <a name="push-api"></a>Push-API
-Wenn Sie die Azure Search-Push-API zum [Aktualisieren von Inhalten in Ihrem Azure Search-Index](https://msdn.microsoft.com/library/dn798930.aspx)verwenden, können Sie die verschiedenen Suchdienste synchronisieren, indem Sie bei jedem Update per Push alle Änderungen an alle Suchdienste übertragen.  Hierbei müssen Sie sicherstellen, dass auch Fälle richtig verarbeitet werden, bei denen bei der Aktualisierung eines Suchdienst ein Fehler auftritt, andere Updates jedoch erfolgreich sind.
+Wenn Sie die Azure Search-Push-API zum [Aktualisieren von Inhalten in Ihrem Azure Search-Index](https://docs.microsoft.com/rest/api/searchservice/update-index)verwenden, können Sie die verschiedenen Suchdienste synchronisieren, indem Sie bei jedem Update per Push alle Änderungen an alle Suchdienste übertragen.  Hierbei müssen Sie sicherstellen, dass auch Fälle richtig verarbeitet werden, bei denen bei der Aktualisierung eines Suchdienst ein Fehler auftritt, andere Updates jedoch erfolgreich sind.
 
 ## <a name="leveraging-azure-traffic-manager"></a>Arbeiten mit Azure Traffic Manager
 [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) können Sie Anfragen an mehrere Websites an verschiedenen geografischen Standorten weiterleiten, an denen dann mehrere Azure Search-Dienste zum Einsatz kommen.  Traffic Manager kann testen, ob Azure Search verfügbar ist, und Benutzer während eines Ausfalls an alternative Suchdienste weiterleiten – dies ist ein großer Vorteil.  Wenn Sie Suchanfragen über Azure-Websites weiterleiten, ermöglicht Azure Traffic Manager zudem den Lastenausgleich in Fällen, in denen die Website erreichbar ist, aber nicht Azure Search.  Hier finden Sie ein Beispiel für eine Architektur mit Traffic Manager.
@@ -113,9 +114,4 @@ Das folgende Video zeigt weitere Details zur Leistung und veranschaulicht, wie d
 [1]: ./media/search-performance-optimization/geo-redundancy.png
 [2]: ./media/search-performance-optimization/scale-indexers.png
 [3]: ./media/search-performance-optimization/geo-search-traffic-mgr.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

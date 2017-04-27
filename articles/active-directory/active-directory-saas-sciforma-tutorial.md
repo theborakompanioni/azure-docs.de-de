@@ -11,16 +11,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/03/2017
+ms.date: 03/23/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 9a653ac435198e89a527070a0174a1adaf830dc3
-ms.openlocfilehash: 166524147c050512a84c1c0340de93960d8b7632
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 18b24a3ceddd667eb41e578cd193d3a0d0d0ac1c
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="tutorial-azure-ad-integration-with-sciforma"></a>Tutorial: Azure AD-Integration mit Sciforma
 In diesem Tutorial wird die Integration von Azure und Sciforma erläutert.  
+
 Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 * Ein gültiges Azure-Abonnement
@@ -31,22 +33,21 @@ Nach Abschluss dieses Lernprogramms können sich die Sciforma zugewiesenen Azure
 Das in diesem Lernprogramm beschriebene Szenario besteht aus den folgenden Bausteinen:
 
 1. Aktivieren der Anwendungsintegration für Sciforma
-2. Konfigurieren der einmaligen Anmeldung
+2. Konfigurieren des einmaligen Anmeldens (SSO)
 3. Konfigurieren der Benutzerbereitstellung
 4. Zuweisen von Benutzern
 
 ![Szenario](./media/active-directory-saas-sciforma-tutorial/IC777369.png "Szenario")
 
-## <a name="enabling-the-application-integration-for-sciforma"></a>Aktivieren der Anwendungsintegration für Sciforma
+## <a name="enable-the-application-integration-for-sciforma"></a>Aktivieren der Anwendungsintegration für Sciforma
 In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Sciforma aktivieren.
 
-### <a name="to-enable-the-application-integration-for-sciforma-perform-the-following-steps"></a>So aktivieren Sie die Anwendungsintegration für Sciforma:
+**So aktivieren Sie die Anwendungsintegration für Sciforma:**
+
 1. Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
    
     ![Active Directory](./media/active-directory-saas-sciforma-tutorial/IC700993.png "Active Directory")
-
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
-
 3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
    
     ![Anwendungen](./media/active-directory-saas-sciforma-tutorial/IC700994.png "Anwendungen")
@@ -67,11 +68,12 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Sci
    
     ![Sciforma](./media/active-directory-saas-sciforma-tutorial/IC777371.png "Sciforma")
    
-## <a name="configuring-single-sign-on"></a>Konfigurieren der einmaligen Anmeldung
+## <a name="configure-single-sign-on"></a>Configure single sign-on
 
 In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei Sciforma zu authentifizieren.
 
-### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>So konfigurieren Sie einmaliges Anmelden
+**So konfigurieren Sie einmaliges Anmelden**
+
 1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Sciforma** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sciforma-tutorial/IC777372.png "Einmaliges Anmelden konfigurieren")
@@ -94,31 +96,25 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sciforma-tutorial/IC777376.png "Einmaliges Anmelden konfigurieren")
    
-## <a name="configuring-user-provisioning"></a>Konfigurieren der Benutzerbereitstellung
+## <a name="configure-user-provisioning"></a>Benutzerbereitstellung konfigurieren
 
-Für das Konfigurieren der Benutzerbereitstellung in Sciforma steht kein Aktionselement zur Verfügung.  
-Wenn ein zugewiesener Benutzer versucht, sich über den Zugriffsbereich bei Sciforma anzumelden, überprüft Sciforma, ob der Benutzer vorhanden ist.  
-Ist noch kein Benutzerkonto verfügbar, wird es von Sciforma automatisch erstellt.
+Für das Konfigurieren der Benutzerbereitstellung in Sciforma steht kein Aktionselement zur Verfügung. Wenn ein zugewiesener Benutzer versucht, sich über den Zugriffsbereich bei Sciforma anzumelden, überprüft Sciforma, ob der Benutzer vorhanden ist.  
 
-## <a name="assigning-users"></a>Zuweisen von Benutzern
+* Ist noch kein Benutzerkonto verfügbar, wird es von Sciforma automatisch erstellt.
+
+## <a name="assign-users"></a>Benutzer zuweisen
 Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
 
-### <a name="to-assign-users-to-sciforma-perform-the-following-steps"></a>So weisen Sie Sciforma Benutzer zu:
-1. Erstellen Sie im klassischen Azure-Portal ein Testkonto.
+**So weisen Sie Sciforma Benutzer zu:**
 
+1. Erstellen Sie im klassischen Azure-Portal ein Testkonto.
 2. Klicken Sie auf der Anwendungsintegrationsseite für **Sciforma** auf **Benutzer zuweisen**.
    
     ![Zuweisen von Benutzern](./media/active-directory-saas-sciforma-tutorial/IC777377.png "Zuweisen von Benutzern")
-
 3. Wählen Sie den Testbenutzer aus, klicken Sie auf **Zuweisen** und anschließend auf **Ja**, um die Zuweisung zu bestätigen.
    
     ![Ja](./media/active-directory-saas-sciforma-tutorial/IC767830.png "Ja")
 
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

@@ -13,13 +13,13 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/21/2017
+ms.date: 03/29/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
 translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
-ms.openlocfilehash: 183425e296f91bba47094c9b35be67fb6299c569
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
+ms.openlocfilehash: 7418544c43afee41a1c20058f53cf626aed17147
+ms.lasthandoff: 04/07/2017
 
 ---
 # <a name="use-maven-to-develop-a-java-based-word-count-topology-for-storm-on-hdinsight"></a>Verwenden von Maven zum Entwickeln einer Java-basierten Wortzählungstopologie für Storm in HDInsight
@@ -83,23 +83,62 @@ Löschen Sie den generierten Test und die Anwendungsdateien:
 * **src\test\java\com\microsoft\example\AppTest.java**
 * **src\main\java\com\microsoft\example\App.java**
 
+## <a name="add-repositories"></a>Hinzufügen von Repositorys
+
+Da HDInsight auf der Hortonworks Data Platform (HDP) basiert, empfehlen wir, das Hortonworks-Repository zum Herunterladen von Abhängigkeiten für Ihre HDInsight-Projekte zu verwenden. Fügen Sie in der Datei __pom.xml__ nach der Zeile `<url>http://maven.apache.org</url>` Folgendes hinzu:
+
+```xml
+<repositories>
+    <repository>
+        <releases>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy>
+            <checksumPolicy>warn</checksumPolicy>
+        </releases>
+        <snapshots>
+            <enabled>false</enabled>
+            <updatePolicy>never</updatePolicy>
+            <checksumPolicy>fail</checksumPolicy>
+        </snapshots>
+        <id>HDPReleases</id>
+        <name>HDP Releases</name>
+        <url>http://repo.hortonworks.com/content/repositories/releases/</url>
+        <layout>default</layout>
+    </repository>
+    <repository>
+        <releases>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy>
+            <checksumPolicy>warn</checksumPolicy>
+        </releases>
+        <snapshots>
+            <enabled>false</enabled>
+            <updatePolicy>never</updatePolicy>
+            <checksumPolicy>fail</checksumPolicy>
+        </snapshots>
+        <id>HDPJetty</id>
+        <name>Hadoop Jetty</name>
+        <url>http://repo.hortonworks.com/content/repositories/jetty-hadoop/</url>
+        <layout>default</layout>
+    </repository>
+</repositories>
+```
+
 ## <a name="add-properties"></a>Eigenschaften hinzufügen
 
-Maven ermöglicht Ihnen das Definieren von Werten auf Projektebene, die als Eigenschaften bezeichnet werden. Fügen Sie nach der Zeile `<url>http://maven.apache.org</url>` folgenden Text hinzu:
+Maven ermöglicht Ihnen das Definieren von Werten auf Projektebene, die als Eigenschaften bezeichnet werden. Fügen Sie in der Datei __pom.xml__ nach der Zeile `</repositories>` den folgenden Text hinzu:
 
 ```xml
 <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <!--
-    Storm 0.10.0 is for HDInsight 3.3 and 3.4.
-    To find the version information for earlier HDInsight cluster
-    versions, see https://azure.microsoft.com/en-us/documentation/articles/hdinsight-component-versioning/
+    This is a version of Storm from the Hortonworks repository that is compatible with HDInsight.
     -->
-    <storm.version>0.10.0</storm.version>
+    <storm.version>1.0.1.2.5.3.0-37</storm.version>
 </properties>
 ```
 
-Sie können diese Werte nun in anderen Abschnitten von `pom.xml` verwenden. Beim Angeben der Version von Storm-Komponenten können Sie z.B. `${storm.version}` verwenden, anstatt einen Wert hartzucodieren.
+Sie können diesen Wert nun in anderen Abschnitten von `pom.xml` verwenden. Beim Angeben der Version von Storm-Komponenten können Sie z.B. `${storm.version}` verwenden, anstatt einen Wert hartzucodieren.
 
 ## <a name="add-dependencies"></a>Hinzufügen von Abhängigkeiten
 
@@ -157,6 +196,7 @@ Für Storm-Topologien ist das [Exec Maven-Plug-In](http://mojo.codehaus.org/exec
     <includePluginDependencies>false</includePluginDependencies>
     <classpathScope>compile</classpathScope>
     <mainClass>${storm.topology}</mainClass>
+    <cleanupDaemonThreads>false</cleanupDaemonThreads> 
     </configuration>
 </plugin>
 ```
@@ -297,7 +337,7 @@ Bolts übernehmen die Datenverarbeitung. Diese Topologie verwendet zwei Bolts:
 > [!NOTE]
 > Bolts können alle Aufgaben übernehmen, beispielsweise Berechnungen, Persistenz oder Kommunikation mit externen Komponenten.
 
-Erstellen Sie die beiden neuen Dateien `SplitSentence.java` und `WordCount.Java` im Verzeichnis `src\main\java\com\microsoft\example`. Fügen Sie den folgenden Text in die Dateien ein:
+Erstellen Sie die beiden neuen Dateien `SplitSentence.java` und `WordCount.java` im Verzeichnis `src\main\java\com\microsoft\example`. Fügen Sie den folgenden Text in die Dateien ein:
 
 **SplitSentence**
 

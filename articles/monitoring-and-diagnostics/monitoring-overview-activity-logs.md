@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/02/2017
 ms.author: johnkem
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 4ec026a5b95170d0eba244123c37cd3c8fab150a
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
+ms.openlocfilehash: c123b76b0e4c95cfebcc79063fb1c3a27efc8646
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -47,9 +47,9 @@ Hier sind einige Verwendungsmöglichkeiten für das Aktivitätsprotokoll aufgef�
 ![Azure-Aktivitätsprotokoll](./media/monitoring-overview-activity-logs/Activity_Log_Overview_v3.png)
 
 
-* [Erstellen einer E-Mail- oder Webhookwarnung, die ein Aktivitätsprotokoll auslöst](insights-auditlog-to-webhook-email.md)
+* [Erstellen Sie eine Warnung, die ein Aktivitätsprotokollereignis auslöst.](monitoring-activity-log-alerts.md)
 * Streamen zur Erfassung durch einen Drittanbieterdienst oder durch eine benutzerdefinierte Analyselösung wie Power BI [an einen **Event Hub**](monitoring-stream-activity-logs-event-hubs.md).
-* Analysieren in Power BI mit dem [**Power BI-Inhaltspaket**](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/)
+* Analysieren in Power BI mit dem [**Power BI-Inhaltspaket**](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/)
 * [Speichern unter einem **Speicherkonto** zur Archivierung oder manuellen Untersuchung](monitoring-archive-activity-log.md) Sie können die Aufbewahrungsdauer (in Tagen) mithilfe von **Protokollprofilen** angeben.
 * Abfragen und Anzeigen des Protokolls im **Azure-Portal**
 * Fragen Sie es per PowerShell-Cmdlet, CLI oder REST-API ab.
@@ -64,7 +64,7 @@ Mit einem **Protokollprofil** wird gesteuert, wie das Aktivitätsprotokoll expor
 * Welche Ereigniskategorien gesendet werden sollen („Write“, „Delete“, „Action“) *„Kategorie“ hat in Protokollprofilen und Aktivitätsprotokollen eine unterschiedliche Bedeutung. Im Protokollprofil ist „Kategorie“ der Vorgangstyp („Write“, „Delete“, „Action“). In einem Aktivitätsprotokoll stellt die Eigenschaft „Kategorie“ die Quelle oder den Typ des Ereignisses dar (z.B. „Administration“, „ServiceHealth“, „Alert“ usw.).*
 * Welche Regionen (Standorte) exportiert werden sollen
 * Wie lange das Aktivitätsprotokoll in einem Speicherkonto beibehalten werden soll.
-    - Wenn für die Beibehaltungsdauer&0; Tage festgelegt sind, bedeutet dies, dass Protokolle unbegrenzt beibehalten werden. Andernfalls kann als Wert die Anzahl von Tagen (1 bis 2.147.483.647) festgelegt werden.
+    - Wenn für die Beibehaltungsdauer 0 Tage festgelegt sind, bedeutet dies, dass Protokolle unbegrenzt beibehalten werden. Andernfalls kann als Wert die Anzahl von Tagen (1 bis 2.147.483.647) festgelegt werden.
     - Wenn Aufbewahrungsrichtlinien festgelegt werden, aber das Speichern von Protokollen in einem Speicherkonto deaktiviert ist (etwa, wenn nur die Event Hubs- oder die OMS-Option aktiviert ist), werden die Aufbewahrungsrichtlinien ignoriert.
     - Aufbewahrungsrichtlinien werden pro Tag angewendet, sodass Protokolle am Ende eines Tages (UTC) ab dem Tag, der nun außerhalb der Aufbewahrungsrichtlinie liegt, gelöscht werden. Beispiel: Wenn Sie eine Aufbewahrungsrichtlinie für einen Tag verwenden, werden heute am Anfang des Tages die Protokolle von vorgestern gelöscht.
 
@@ -80,11 +80,10 @@ Sie können das Aktivitätsprotokoll an einen Event Hub streamen oder in einem S
 
     ![Schaltfläche „Exportieren“ im Portal](./media/monitoring-overview-activity-logs/activity-logs-portal-export.png)
 3. Auf dem daraufhin angezeigten Blatt können Sie Folgendes auswählen:  
-
-   * Regionen, die für die Ereignisse exportiert werden sollen
-   * das Speicherkonto, in dem Sie Ereignisse speichern möchten
-   * die Anzahl der Tage, die diese Ereignisse im Speicher aufbewahrt werden sollen. Bei einer Einstellung von 0 Tagen werden die Protokolle unbegrenzt aufbewahrt.
-   * den Service Bus-Namespace, in dem Sie einen Event Hub für das Streamen dieser Ereignisse erstellen möchten
+  * Regionen, die für die Ereignisse exportiert werden sollen
+  * das Speicherkonto, in dem Sie Ereignisse speichern möchten
+  * die Anzahl der Tage, die diese Ereignisse im Speicher aufbewahrt werden sollen. Bei einer Einstellung von 0 Tagen werden die Protokolle unbegrenzt aufbewahrt.
+  * den Service Bus-Namespace, in dem Sie einen Event Hub für das Streamen dieser Ereignisse erstellen möchten
 
      ![Blatt zum Exportieren des Aktivitätsprotokolls](./media/monitoring-overview-activity-logs/activity-logs-portal-export-blade.png)
 4. Klicken Sie auf **Speichern** , um die Einstellungen zu speichern. Die Einstellungen werden sofort auf Ihr Abonnement angewendet.
@@ -106,7 +105,7 @@ Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/r
 | StorageAccountId |Nein |Ressourcen-ID des Speicherkontos, in dem das Aktivitätsprotokoll gespeichert werden soll. |
 | serviceBusRuleId |Nein |Service Bus-Regel-ID für den Service Bus-Namespace, unter dem Event Hubs erstellt werden sollen. Dies ist eine Zeichenfolge mit dem folgenden Format: `{service bus resource ID}/authorizationrules/{key name}`. |
 | Standorte |Ja |Kommagetrennte Liste mit den Regionen, für die Sie Aktivitätsprotokollereignisse erfassen möchten. |
-| RetentionInDays |Ja |Anzahl von Tagen für die Aufbewahrung von Ereignissen (1 bis 2.147.483.647). Bei einem Wert von&0; werden die Protokolle dauerhaft (d.h. für immer) gespeichert. |
+| RetentionInDays |Ja |Anzahl von Tagen für die Aufbewahrung von Ereignissen (1 bis 2.147.483.647). Bei einem Wert von 0 werden die Protokolle dauerhaft (d.h. für immer) gespeichert. |
 | Categories |Nein |Kommagetrennte Liste mit den Ereigniskategorien, die erfasst werden sollen. Mögliche Werte sind „Write“, „Delete“ und „Action“. |
 
 #### <a name="remove-a-log-profile"></a>Entfernen eines Protokollprofils
@@ -135,7 +134,7 @@ azure insights logprofile add --name my_log_profile --storageId /subscriptions/s
 | storageId |Nein |Ressourcen-ID des Speicherkontos, in dem das Aktivitätsprotokoll gespeichert werden soll. |
 | serviceBusRuleId |Nein |Service Bus-Regel-ID für den Service Bus-Namespace, unter dem Event Hubs erstellt werden sollen. Dies ist eine Zeichenfolge mit dem folgenden Format: `{service bus resource ID}/authorizationrules/{key name}`. |
 | locations |Ja |Kommagetrennte Liste mit den Regionen, für die Sie Aktivitätsprotokollereignisse erfassen möchten. |
-| RetentionInDays |Ja |Anzahl von Tagen für die Aufbewahrung von Ereignissen (1 bis 2.147.483.647). Bei einem Wert von&0; werden die Protokolle dauerhaft (d.h. für immer) gespeichert. |
+| RetentionInDays |Ja |Anzahl von Tagen für die Aufbewahrung von Ereignissen (1 bis 2.147.483.647). Bei einem Wert von 0 werden die Protokolle dauerhaft (d.h. für immer) gespeichert. |
 | categories |Nein |Kommagetrennte Liste mit den Ereigniskategorien, die erfasst werden sollen. Mögliche Werte sind „Write“, „Delete“ und „Action“. |
 
 #### <a name="remove-a-log-profile"></a>Entfernen eines Protokollprofils

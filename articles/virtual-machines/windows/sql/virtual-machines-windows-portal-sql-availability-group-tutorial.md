@@ -17,14 +17,14 @@ ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 81de52ac95aaf1b6d02572a70a4c1a84fb541401
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 67663af0913a03f2001b4cce6f9f49ee91195026
+ms.lasthandoff: 04/06/2017
 
 
 ---
 
-# <a name="create-always-on-availability-group-to-improve-availability-and-disaster-recovery"></a>Erstellen einer AlwaysOn-Verfügbarkeitsgruppe zur Verbesserung der Verfügbarkeit und Notfallwiederherstellung
+# <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Manuelles Konfigurieren von AlwaysOn-Verfügbarkeitsgruppen auf virtuellen Azure-Computern
 
 In diesem Tutorial erfahren Sie, wie Sie eine SQL Server Always On-Verfügbarkeitsgruppe in Azure Virtual Machines erstellen. Im Rahmen des vollständigen Tutorials wird eine Verfügbarkeitsgruppe mit einem Datenbankreplikat in zwei SQL Server-Instanzen erstellt.
 
@@ -131,7 +131,7 @@ In diesem Beispiel erstellt der Windows-Cluster mithilfe einer Dateifreigabe ein
 
    ![Neue Freigabe](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/48-newshare.png)
 
-   Erstellen Sie mithilfe des Assistenten zum Erstellen von Ordnerfreigaben****eine Freigabe.
+   Erstellen Sie mithilfe des Assistenten zum Erstellen von Ordnerfreigaben**** eine Freigabe.
 
 1. Klicken Sie unter **Ordnerpfad** auf **Durchsuchen**, und navigieren Sie zu einem Pfad für den freigegebenen Ordner, oder erstellen Sie einen Pfad. Klicken Sie auf **Weiter**.
 
@@ -161,7 +161,7 @@ Legen Sie als Nächstes das Clusterquorum fest.
 
    ![Neue Freigabe](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/52-configurequorum.png)
 
-1. Klicken Sie im Assistenten zum Konfigurieren des Clusterquorums****auf **Weiter**.
+1. Klicken Sie im Assistenten zum Konfigurieren des Clusterquorums**** auf **Weiter**.
 
 1. Wählen Sie unter **Quorumkonfigurationsoption auswählen** die Option **Quorumzeugen auswählen** aus, und klicken Sie anschließend auf **Weiter**.
 
@@ -233,7 +233,7 @@ Repeat these steps on the second SQL Server.
 
    ![Neue Freigabe](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/48-newshare.png)
 
-   Erstellen Sie mithilfe des Assistenten zum Erstellen von Ordnerfreigaben****eine Freigabe.
+   Erstellen Sie mithilfe des Assistenten zum Erstellen von Ordnerfreigaben**** eine Freigabe.
 
 1. Klicken Sie unter **Ordnerpfad** auf **Durchsuchen**, und navigieren Sie zu einem Pfad für den freigegebenen Ordner der Datenbanksicherung, oder erstellen Sie einen Pfad. Klicken Sie auf **Weiter**.
 
@@ -296,7 +296,7 @@ Nun können Sie eine Verfügbarkeitsgruppe konfigurieren. Gehen Sie dazu wie fol
 
     ![Assistent für neue Verfügbarkeitsgruppen, anfängliche Datensynchronisierung auswählen](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/66-endpoint.png)
 
-8. Wählen Sie auf der Seite **Anfängliche Datensynchronisierung auswählen** die Option **Vollständig** aus, und geben Sie einen freigegebenen Netzwerkpfad an. Verwenden Sie für den Speicherort die [zuvor erstellte Sicherungsfreigabe](#backupshare). In diesem Beispiel: **\\\\\<Erste SQL Server-Instanz\>\Backup\**. Klicken Sie auf**Weiter**.
+8. Wählen Sie auf der Seite **Anfängliche Datensynchronisierung auswählen** die Option **Vollständig** aus, und geben Sie einen freigegebenen Netzwerkpfad an. Verwenden Sie für den Speicherort die [zuvor erstellte Sicherungsfreigabe](#backupshare). In diesem Beispiel: **\\\\\<Erste SQL Server-Instanz\>\Backup\**. Klicken Sie auf **Weiter**.
 
    >[!NOTE]
    >Zur vollständigen Synchronisierung wird die Datenbank der ersten SQL Server-Instanz vollständig gesichert und in der zweiten Instanz wiederhergestellt. Bei umfangreichen Datenbanken wird von einer vollständigen Synchronisierung abgeraten, da sie sehr lange dauern kann. Sie können den Vorgang beschleunigen, indem Sie die Datenbank manuell sichern und mit `NO RECOVERY` wiederherstellen. Falls die Datenbank bereits vor dem Konfigurieren der Verfügbarkeitsgruppe mit `NO RECOVERY` in der zweiten SQL Server-Instanz wiederhergestellt wurde, wählen Sie **Nur verknüpfen** aus. Wenn Sie die Sicherung erst nach dem Konfigurieren der Verfügbarkeitsgruppe erstellen möchten, wählen Sie **Anfängliche Datensynchronisierung überspringen** aus.

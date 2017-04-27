@@ -11,17 +11,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/25/2017
+ms.date: 03/24/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 41e04425a291c9f89bc58341c6bad22ad1bdb8ef
-ms.openlocfilehash: 90f962fbd19f125cfb609e439f157c4822acfce4
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 078a2ea0db006cf976f89a55c65a536a7b9f04aa
+ms.lasthandoff: 04/03/2017
 
 
 ---
 
 # <a name="tutorial-azure-active-directory-integration-with-panopto"></a>Tutorial: Azure Active Directory-Integration mit Panopto
-In diesem Tutorial wird die Integration von Azure und Panopto erläutert. Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+In diesem Tutorial wird die Integration von Azure und Panopto erläutert. 
+
+Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 * Ein gültiges Azure-Abonnement
 * Einen Panopto-Mandanten
@@ -31,13 +34,13 @@ Nach Abschluss dieses Tutorials können sich die Panopto zugewiesenen Azure AD-B
 Das in diesem Tutorial beschriebene Szenario besteht aus den folgenden Bausteinen:
 
 1. Aktivieren der Anwendungsintegration für Panopto
-2. Konfigurieren der einmaligen Anmeldung
+2. Konfigurieren des einmaligen Anmeldens (SSO)
 3. Konfigurieren der Benutzerbereitstellung
 4. Zuweisen von Benutzern
 
 ![Szenario](./media/active-directory-saas-panopto-tutorial/IC777665.png "Szenario")
 
-## <a name="enabling-the-application-integration-for-panopto"></a>Aktivieren der Anwendungsintegration für Panopto
+## <a name="enable-the-application-integration-for-panopto"></a>Aktivieren der Anwendungsintegration für Panopto
 In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Panopto aktivieren.
 
 **Um die Anwendungsintegration für Panopto zu aktivieren, führen Sie die folgenden Schritte durch:**
@@ -66,10 +69,11 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Pan
 
 In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei Panopto zu authentifizieren.  
 
-Im Rahmen dieses Verfahrens müssen Sie eine Base-64-codierte Zertifikatsdatei erstellen.  
+Im Rahmen dieses Verfahrens müssen Sie eine Base-64-codierte Zertifikatsdatei erstellen. 
+
 Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o)(Konvertieren eines binären Zertifikats in eine Textdatei; in englischer Sprache) weitere Informationen.
 
-**So konfigurieren Sie einmaliges Anmelden**
+**Führen Sie zum Konfigurieren von SSO die folgenden Schritte aus:**
 
 1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Panopto** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
    
@@ -111,21 +115,21 @@ Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [How to con
  ![Speichern](./media/active-directory-saas-panopto-tutorial/IC777673.png "Speichern")
 9. Bestätigen Sie im klassischen Azure-Portal die Konfiguration der einmaligen Anmeldung, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
    
-   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-panopto-tutorial/IC777674.png "Einmaliges Anmelden konfigurieren")
+  ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-panopto-tutorial/IC777674.png "Einmaliges Anmelden konfigurieren")
    
-## <a name="configuring-user-provisioning"></a>Konfigurieren der Benutzerbereitstellung
+## <a name="configure-user-provisioning"></a>Benutzerbereitstellung konfigurieren
 
 Für das Konfigurieren der Benutzerbereitstellung in Panopto steht kein Aktionselement zur Verfügung.  
 Wenn ein zugewiesener Benutzer versucht, sich über den Zugriffsbereich bei Panopto anzumelden, überprüft Panopto, ob der Benutzer vorhanden ist.  
 
 Ist noch kein Benutzerkonto verfügbar, wird es von Panopto automatisch erstellt.
 
-> [!NOTE]
-> Sie können Azure AD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Panopto-Benutzerkonten oder mithilfe der von Panopto bereitgestellten APIs erstellen.
-> 
+>[!NOTE]
+>Sie können Azure AD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Panopto-Benutzerkonten oder mithilfe der von Panopto bereitgestellten APIs erstellen.
+>
+>
 
-
-## <a name="assigning-users"></a>Zuweisen von Benutzern
+## <a name="assign-users"></a>Benutzer zuweisen
 Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
 
 **Um Panopto Benutzer hinzuzufügen, führen Sie die folgenden Schritte durch:**
@@ -139,10 +143,5 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
    ![Ja](./media/active-directory-saas-panopto-tutorial/IC767830.png "Ja")
 
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

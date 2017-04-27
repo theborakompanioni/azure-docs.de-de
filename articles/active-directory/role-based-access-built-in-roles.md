@@ -16,9 +16,9 @@ ms.date: 02/21/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 53fa0876ce1e3e2b2ac47316f37c5a0de2591d41
-ms.openlocfilehash: 404c4c4012eb5b6f8e7acdd7f985009b9f13b9f3
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
+ms.openlocfilehash: bb8d390a6ab045dc418bf80ec4fc218e0a35282b
+ms.lasthandoff: 04/11/2017
 
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure
@@ -48,6 +48,8 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 | [DNS Zone Contributor](#dns-zone-contributor) |Kann DNS-Zonen und -Einträge verwalten |
 | [Mitwirkender von DocumentDB-Konto](#documentdb-account-contributor) |Kann DocumentDB-Konten verwalten |
 | [Mitwirkender von Intelligent Systems-Konto](#intelligent-systems-account-contributor) |Kann Intelligent Systems-Konten verwalten |
+| [Überwachungsleser](#monitoring-reader) |Kann alle Überwachungsdaten lesen |
+| [Überwachungsmitwirkender](#monitoring-contributor) |Kann Überwachungsdaten lesen und Überwachungseinstellungen bearbeiten |
 | [Mitwirkender von virtuellem Netzwerk](#network-contributor) |Kann alle Netzwerkressourcen verwalten |
 | [Mitwirkender von New Relic APM-Konto](#new-relic-apm-account-contributor) |Kann New Relic Application Performance Management-Konten und -Anwendungen verwalten |
 | [Besitzer](#owner) |Kann alles verwalten, einschließlich des Zugriffs |
@@ -336,6 +338,36 @@ Kann Intelligent Systems-Konten verwalten
 | Microsoft.Resources/deployments/* |Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Lesen von Ressourcengruppen |
 | Microsoft.Support/* |Erstellen und Verwalten von Support-Tickets |
+
+### <a name="monitoring-reader"></a>Überwachungsleser
+Kann alle Überwachungsdaten (Metriken, Protokolle usw.) lesen. Siehe auch [Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor](/monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles).
+
+| **Aktionen** |  |
+| --- | --- |
+| */Lesen |Lesen von Ressourcen aller Typen mit Ausnahme geheimer Schlüssel |
+| Microsoft.OperationalInsights/workspaces/search/action |Durchsuchen von Log Analytics-Daten |
+| Microsoft.Support/* |Erstellen und Verwalten von Support-Tickets |
+
+### <a name="monitoring-contributor"></a>Überwachungsmitwirkender
+Kann sämtliche Überwachungsdaten lesen und Überwachungseinstellungen bearbeiten. Siehe auch [Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor](/monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles).
+
+| **Aktionen** |  |
+| --- | --- |
+| */Lesen |Lesen von Ressourcen aller Typen mit Ausnahme geheimer Schlüssel |
+| Microsoft.Insights/AlertRules/* |Lesen/Schreiben/Löschen von Warnungsregeln. |
+| Microsoft.Insights/components/* |Kann Application Insights-Komponenten lesen/schreiben/delegieren. |
+| Microsoft.Insights/DiagnosticSettings/* |Lesen/Schreiben/Löschen von Diagnoseeinstellungen. |
+| Microsoft.Insights/eventtypes/* |Auflisten von Aktivitätsprotokollereignissen (Verwaltungsereignissen) in einem Abonnement. Diese Berechtigung gilt sowohl für den programmgesteuerten als auch für den Portalzugriff auf das Aktivitätsprotokoll. |
+| Microsoft.Insights/LogDefinitions/* |Diese Berechtigung ist für Benutzer notwendig, die über das Portal auf Aktivitätsprotokolle zugreifen müssen. Auflisten der Protokollkategorien im Aktivitätsprotokoll. |
+| Microsoft.Insights/MetricDefinitions/* |Lesen von Metrikdefinitionen (Liste der verfügbaren Metriktypen für eine Ressource). |
+| Microsoft.Insights/Metrics/* |Lesen von Metriken für eine Ressource. |
+| Microsoft.Insights/Register/Action |Registriert den Microsoft.Insights-Anbieter. |
+| Microsoft.Insights/webtests/* |Lesen/Schreiben/Löschen von Application Insights-Webtests. |
+| Microsoft.OperationalInsights/workspaces/intelligencepacks/* |Lesen/Schreiben/Löschen von Log Analytics-Lösungspaketen. |
+| Microsoft.OperationalInsights/workspaces/savedSearches/* |Lesen/Schreiben/Löschen von gespeicherten Log Analytics-Suchvorgängen. |
+| Microsoft.OperationalInsights/workspaces/search/action |Durchsuchen von Log Analytics-Arbeitsbereichen. |
+| Microsoft.OperationalInsights/workspaces/sharedKeys/action |Auflisten der Schlüssel für einen Log Analytics-Arbeitsbereich. |
+| Microsoft.OperationalInsights/workspaces/storageinsightconfigs/* |Lesen/Schreiben/Löschen von Log Analytics-Speicherdetailinformationen. |
 
 ### <a name="network-contributor"></a>Mitwirkender von virtuellem Netzwerk
 Kann alle Netzwerkressourcen verwalten

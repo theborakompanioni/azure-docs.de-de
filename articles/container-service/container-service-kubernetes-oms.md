@@ -17,8 +17,9 @@ ms.workload: na
 ms.date: 12/09/2016
 ms.author: bburns
 translationtype: Human Translation
-ms.sourcegitcommit: 0aa9b3ae14f586fc79e6ebee898e794d526c19bd
-ms.openlocfilehash: 2a124c42e6c90e9443475e1f46cf3e10b5d53d6a
+ms.sourcegitcommit: 4e4a4f4e299dc2747eb48bbd2e064cd80783211c
+ms.openlocfilehash: 46240f3dc99a8c8a103a1e7919ad4f5e7a8ea62a
+ms.lasthandoff: 04/04/2017
 
 
 ---
@@ -70,40 +71,7 @@ Führen Sie die entsprechenden Schritte aus, um ein Konto zu erstellen. Nachdem 
 DaemonSets werden von Kubernetes verwendet, um auf jedem Host im Cluster eine einzelne Instanz eines Containers auszuführen.
 Sie eignen sich perfekt zum Ausführen von Überwachungs-Agents.
 
-Im Anschluss sehen Sie die DaemonSet-YAML-Datei. Speichern Sie sie in einer Datei namens `oms-daemonset.yaml`, und ersetzen Sie die Platzhalterwerte für `WSID` und `KEY` in der Datei durch Ihre Arbeitsbereichs-ID und den dazugehörigen Schlüssel.
-
-```yaml
-apiVersion: extensions/v1beta1
-kind: DaemonSet
-metadata:
-  name: omsagent
-spec:
-  template:
-    metadata:
-      labels:
-        app: omsagent
-    spec:
-      containers:
-      - env:
-        - name: WSID
-          value: <your workspace ID>
-        - name: KEY
-          value: <your key>
-        image: microsoft/oms
-        name: omsagent
-        ports:
-        - containerPort: 25225
-          protocol: TCP
-        securityContext:
-          privileged: true
-        volumeMounts:
-        - mountPath: /var/run/docker.sock
-          name: docker-sock
-      volumes:
-      - name: docker-sock
-        hostPath:
-          path: /var/run/docker.sock
-```
+Im Anschluss sehen Sie die [DaemonSet-YAML-Datei](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes). Speichern Sie sie in einer Datei namens `oms-daemonset.yaml`, und ersetzen Sie die Platzhalterwerte für `WSID` und `KEY` durch Ihre Arbeitsbereichs-ID und den dazugehörigen Schlüssel.
 
 Nachdem Sie der DaemonSet-Konfiguration Ihre Arbeitsbereichs-ID und den Schlüssel hinzugefügt haben, können Sie den OMS-Agent mithilfe des `kubectl`-Befehlszeilentools in Ihrem Cluster installieren:
 
@@ -113,9 +81,4 @@ $ kubectl create -f oms-daemonset.yaml
 
 ### <a name="conclusion"></a>Zusammenfassung
 Das ist alles! Nach wenigen Minuten sollten Daten bei Ihrem OMS-Dashboard eingehen.
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/01/2017
+ms.date: 04/04/2017
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: b2b969500d20d0c840f201ed2cf13a6f2ab38ee5
-ms.openlocfilehash: 719f1ea6a6f51d4a787f0465a4bbadb1a6057a8b
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 26ea8dcdeb8be3142d5e8bbd477f6d4ab6c26cdd
+ms.lasthandoff: 04/06/2017
 
 
 ---
 # <a name="dcos-container-management-through-the-marathon-rest-api"></a>DC/OS-Containerverwaltung über die Marathon-REST-API
-DC/OS stellt eine Umgebung für die Bereitstellung und Skalierung geclusterter Workloads bereit und abstrahiert die zugrunde liegende Hardware. Zusätzlich zu DC/OS ist auch ein Framework vorhanden, mit dem die Planung und Ausführung von Computeworkloads verwaltet wird. Es sind zwar Frameworks für viele gängige Workloads verfügbar, aber in diesem Dokument wird beschrieben, wie Sie Containerbereitstellungen mit Marathon erstellen und skalieren. 
+DC/OS stellt eine Umgebung für die Bereitstellung und Skalierung geclusterter Workloads bereit und abstrahiert die zugrunde liegende Hardware. Zusätzlich zu DC/OS ist auch ein Framework vorhanden, mit dem die Planung und Ausführung von Computeworkloads verwaltet wird. Es sind zwar Frameworks für viele gängige Workloads verfügbar, dieses Dokument bietet jedoch eine Einführung in das Erstellen und Skalieren von Containerbereitstellungen mithilfe der Marathon-REST-API. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -38,7 +39,7 @@ Nachdem die Verbindung mit dem Azure Container Service-Cluster hergestellt wurde
 Weitere Informationen zu den verschiedenen APIs finden Sie in der Mesosphere-Dokumentation für die [Marathon-API](https://mesosphere.github.io/marathon/docs/rest-api.html) und die [Chronos-API](https://mesos.github.io/chronos/docs/api.html) sowie in der Apache-Dokumentation für die [Mesos Scheduler-API](http://mesos.apache.org/documentation/latest/scheduler-http-api/).
 
 ## <a name="gather-information-from-dcos-and-marathon"></a>Erfassen von Informationen von DC/OS und Marathon
-Erfassen Sie vor dem Bereitstellen von Containern im DC/OS-Cluster einige Informationen zum DC/OS-Cluster, z.B. die Namen und den aktuellen Status der DC/OS-Agents. Fragen Sie dazu den `master/slaves`-Endpunkt der DC/OS-REST-API ab. Wenn alles geklappt hat, gibt die Abfrage eine Liste mit DC/OS-Agents und jeweils einigen Eigenschaften zurück.
+Erfassen Sie vor dem Bereitstellen von Containern im DC/OS-Cluster einige Informationen zum DC/OS-Cluster, z.B. die Namen und den Status der DC/OS-Agents. Fragen Sie dazu den `master/slaves`-Endpunkt der DC/OS-REST-API ab. Wenn alles geklappt hat, gibt die Abfrage eine Liste mit DC/OS-Agents und jeweils einigen Eigenschaften zurück.
 
 ```bash
 curl http://localhost/mesos/master/slaves
@@ -53,24 +54,21 @@ curl localhost/marathon/v2/apps
 ```
 
 ## <a name="deploy-a-docker-formatted-container"></a>Bereitstellen eines Containers im Docker-Format
-Sie stellen Container im Docker-Format mit Marathon über eine JSON-Datei bereit, die die vorgesehene Bereitstellung beschreibt. Im folgenden Beispiel wird der Nginx-Container bereitgestellt. Dabei wird Port 80 des DC/OS-Agents an Port 80 des Containers gebunden. Beachten Sie, dass die Eigenschaft `acceptedResourceRoles` auf `slave_public` festgelegt ist. Damit wird der Container für einen Agent in der öffentlich zugänglichen Agent-Skalierungsgruppe bereitgestellt.
+Sie stellen Container im Docker-Format mit der Marathon-REST-API über eine JSON-Datei bereit, die die vorgesehene Bereitstellung beschreibt. Im folgenden Beispiel wird ein Nginx-Container für einen privaten Agent im Cluster bereitgestellt. 
 
 ```json
 {
   "id": "nginx",
   "cpus": 0.1,
-  "mem": 16.0,
+  "mem": 32.0,
   "instances": 1,
-    "acceptedResourceRoles": [
-    "slave_public"
-  ],
   "container": {
     "type": "DOCKER",
     "docker": {
       "image": "nginx",
       "network": "BRIDGE",
       "portMappings": [
-        { "containerPort": 80, "hostPort": 80, "servicePort": 9000, "protocol": "tcp" }
+        { "containerPort": 80, "servicePort": 9000, "protocol": "tcp" }
       ]
     }
   }
@@ -95,7 +93,29 @@ Wenn Sie jetzt Marathon auf Anwendungen abfragen, erscheint diese neue Anwendung
 curl localhost/marathon/v2/apps
 ```
 
-Sie können überprüfen, ob Nginx ausgeführt wird, indem Sie eine HTTP-Anforderung an den vollqualifizierten Domänennamen des Agent-Pools senden (unter `http://<containerServiceName>agents.<region>.cloudapp.azure.com`).
+## <a name="reach-the-container"></a>Zugreifen auf den Container
+
+Sie können überprüfen, ob Nginx in einem Container auf einem der privaten Agents im Cluster ausgeführt wird. Um den Host und Port zu ermitteln, auf denen der Container ausgeführt wird, fragen Sie Marathon nach den ausgeführten Aufgaben ab: 
+
+```bash
+curl localhost/marathon/v2/tasks
+```
+
+Ermitteln Sie in der Ausgabe den Wert von `host` (eine IP-Adresse wie `10.32.0.x`) und den Wert von `ports`.
+
+
+Stellen Sie jetzt eine SSH-Terminalverbindung (keine getunnelte Verbindung) mit dem Verwaltungs-FQDN des Clusters her. Führen Sie nach dem Herstellen der Verbindung die folgende Anforderung aus, wobei Sie für `host` und `ports` die richtigen Werte angeben:
+
+```bash
+curl http://host:ports
+```
+
+Die Ausgabe des Nginx-Servers sieht in etwa wie folgt aus:
+
+![Nginx von Container](./media/container-service-mesos-marathon-rest/nginx.png)
+
+
+
 
 ## <a name="scale-your-containers"></a>Skalieren der Container
 Sie können die Marathon-API verwenden, um Anwendungsbereitstellungen horizontal hoch- oder herunterzuskalieren. Im vorherigen Beispiel haben Sie eine Instanz einer Anwendung bereitgestellt. Wir führen hierfür jetzt das horizontale Hochskalieren auf drei Instanzen einer Anwendung durch. Hierzu erstellen Sie eine JSON-Datei, indem Sie den folgenden JSON-Text verwenden und an einem zugänglichen Speicherort speichern.
@@ -104,7 +124,7 @@ Sie können die Marathon-API verwenden, um Anwendungsbereitstellungen horizontal
 { "instances": 3 }
 ```
 
-Führen Sie den folgenden Befehl aus, um die Anwendung horizontal hochzuskalieren.
+Führen Sie über die getunnelte Verbindung folgenden Befehl aus, um die Anwendung horizontal hochzuskalieren.
 
 > [!NOTE]
 > Der URI lautet „http://localhost/marathon/v2/apps/“, gefolgt von der ID der zu skalierenden Anwendung. Wenn Sie das hier bereitgestellte Nginx-Beispiel verwenden, lautet der URI „http://localhost/marathon/v2/apps/nginx“.
@@ -136,7 +156,7 @@ Sie stellen Container im Docker-Format mit Marathon über eine JSON-Datei bereit
 {
   "id": "nginx",
   "cpus": 0.1,
-  "mem": 16.0,
+  "mem": 32.0,
   "instances": 1,
   "container": {
     "type": "DOCKER",
@@ -144,14 +164,14 @@ Sie stellen Container im Docker-Format mit Marathon über eine JSON-Datei bereit
       "image": "nginx",
       "network": "BRIDGE",
       "portMappings": [
-        { "containerPort": 80, "hostPort": 80, "servicePort": 9000, "protocol": "tcp" }
+        { "containerPort": 80, "servicePort": 9000, "protocol": "tcp" }
       ]
     }
   }
 }
 ```
 
-Speichern Sie zum Bereitstellen eines Containers im Docker-Format die JSON-Datei an einem zugänglichen Speicherort. Führen Sie als Nächstes den folgenden Befehl aus, um den Container bereitzustellen. Geben Sie den Namen der JSON-Datei an (in diesem Beispiel: `marathon.json`).
+Speichern Sie zum Bereitstellen eines Containers im Docker-Format die JSON-Datei an einem zugänglichen Speicherort. Führen Sie als Nächstes den folgenden Befehl aus, um den Container bereitzustellen. Geben Sie den Pfad zur JSON-Datei an (in diesem Beispiel `marathon.json`).
 
 ```powershell
 Invoke-WebRequest -Method Post -Uri http://localhost/marathon/v2/apps -ContentType application/json -InFile 'c:\marathon.json'
@@ -177,10 +197,5 @@ Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -Cont
 ## <a name="next-steps"></a>Nächste Schritte
 * Informieren Sie sich auf der Apache Mesos-Website ausführlicher über [HTTP-Endpunkte](http://mesos.apache.org/documentation/latest/endpoints/).
 * Weitere Informationen zur [Marathon-REST-API](https://mesosphere.github.io/marathon/docs/rest-api.html)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/02/2017
+ms.date: 03/30/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: ae2280f7bd7945f723d88dc6ce3f9a117074e93f
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 7c1532db4d58673add9b8076154c471554810614
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -76,7 +76,22 @@ Beim programmgesteuerten Anmelden benötigen Sie die ID für Ihre Anwendung. Wen
     Weitere Informationen zu Berechtigungen in Data Lake Store und zu Standard- und Zugriffs-ACLs finden Sie unter [Zugriffssteuerung in Data Lake Store](data-lake-store-access-control.md).
 7. Klicken Sie auf dem Blatt **Benutzerdefinierten Zugriff hinzufügen** auf **OK**. Die neu hinzugefügte Gruppe mit den zugeordneten Berechtigungen wird jetzt auf dem Blatt **Zugriff** aufgelistet.
    
-    ![Zuweisen von Berechtigungen zu einer Gruppe](./media/data-lake-store-authenticate-using-active-directory/adl.acl.5.png "Zuweisen von Berechtigungen zu einer Gruppe")    
+    ![Zuweisen von Berechtigungen zu einer Gruppe](./media/data-lake-store-authenticate-using-active-directory/adl.acl.5.png "Zuweisen von Berechtigungen zu einer Gruppe")
+
+## <a name="step-4-get-the-oauth-20-token-endpoint-only-for-java-based-applications"></a>Schritt 4: Abrufen des OAuth 2.0-Token-Endpunkts (nur für Java-basierte Anwendungen)
+
+1. Melden Sie sich beim neuen [Azure-Portal](https://portal.azure.com) an, und klicken Sie im linken Bereich auf „Active Directory“.
+
+2. Klicken Sie im linken Bereich auf **App-Registrierungen**.
+
+3. Klicken Sie oben im Blatt „App-Registrierungen“ auf **Endpunkte**.
+
+    ![OAuth-Token-Endpunkt](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint.png "OAuth-Token-Endpunkt")
+
+4. Kopieren Sie aus der Liste der Endpunkte den OAuth 2.0-Token-Endpunkt.
+
+
+     ![OAuth-Token-Endpunkt](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint-1.png "OAuth-Token-Endpunkt")   
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie eine Azure AD-Webanwendung erstellt und die erforderlichen Informationen gesammelt, die für Ihre Clientanwendungen nötig sind, die Sie mithilfe des .NET SDKs, des Java SDKs usw. erstellen. Sie können nun mit den nachfolgend aufgeführten Artikeln fortfahren, in denen erläutert wird, wie Sie die Azure AD-Webanwendung verwenden, um sich zum ersten Mal mit Data Lake Store authentifizieren und anschließend andere Vorgänge im Store durchführen.

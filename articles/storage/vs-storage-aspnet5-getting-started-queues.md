@@ -1,6 +1,6 @@
 ---
-title: Erste Schritte mit Queue Storage und verbundenen Visual Studio-Diensten (ASP.NET 5) | Microsoft Docs
-description: "Erste Schritte mit Azure-Warteschlangenspeicher in einem ASP.NET 5-Projekt in Visual Studio"
+title: Erste Schritte mit Queue Storage und verbundenen Visual Studio-Diensten (ASP.NET Core) | Microsoft-Dokumentation
+description: Erste Schritte mit Azure Queue Storage in einem ASP.NET Core-Projekt in Visual Studio
 services: storage
 documentationcenter: 
 author: TomArcher
@@ -15,22 +15,23 @@ ms.topic: article
 ms.date: 12/02/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b166ced70b845dd297a1eb87aaec5456ec3e0b31
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 4622496544ce6e1057ac68a2e9946917573e997e
+ms.lasthandoff: 03/31/2017
 
 
 ---
-# <a name="get-started-with-queue-storage-and-visual-studio-connected-services-aspnet-5"></a>Erste Schritte mit Warteschlangenspeicher und verbundenen Visual Studio-Diensten (ASP.NET 5)
+# <a name="get-started-with-queue-storage-and-visual-studio-connected-services-aspnet-core"></a>Erste Schritte mit Queue Storage und verbundenen Visual Studio-Diensten (ASP.NET Core)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>Übersicht
-Dieser Artikel beschreibt, wie die ersten Schritte beim Verwenden von Azure Queue Storage in Visual Studio aussehen, nachdem Sie über das Visual Studio-Dialogfeld **Verbundene Dienste hinzufügen** in einem ASP.NET 5-Projekt ein Azure-Speicherkonto erstellt oder auf ein solches Konto verwiesen haben. Bei einem **Verbundene Dienste hinzufügen** -Vorgang werden die entsprechenden NuGet-Pakete installiert, um auf Azure-Speicher in Ihrem Projekt zuzugreifen, und wird die Verbindungszeichenfolge für das Speicherkonto in Ihren Konfigurationsdateien des Projekts hinzugefügt.
+Dieser Artikel beschreibt, wie die ersten Schritte beim Verwenden von Azure Queue Storage in Visual Studio aussehen, nachdem Sie über das Visual Studio-Dialogfeld **Verbundene Dienste hinzufügen** in einem ASP.NET Core-Projekt ein Azure Storage-Konto erstellt oder auf ein solches Konto verwiesen haben. Bei einem **Verbundene Dienste hinzufügen** -Vorgang werden die entsprechenden NuGet-Pakete installiert, um auf Azure-Speicher in Ihrem Projekt zuzugreifen, und wird die Verbindungszeichenfolge für das Speicherkonto in Ihren Konfigurationsdateien des Projekts hinzugefügt.
 
 Der Azure-Warteschlangenspeicher ist ein Dienst zum Speichern einer großen Anzahl von Nachrichten, auf die weltweit mit authentifizierten Aufrufen mithilfe von HTTP oder HTTPS zugegriffen werden kann. Eine einzelne Warteschlangennachricht kann bis zu 64 Kilobytes (KB) groß sein, und eine Warteschlange kann Millionen von Nachrichten enthalten. Deren Anzahl ist nur durch die Kapazität des Speicherkontos begrenzt.
 
 Damit Sie beginnen können, müssen Sie zuerst eine Azure-Warteschlage in Ihrem Speicherkonto erstellen. Wir zeigen Ihnen, wie Sie eine Warteschlange in Code erstellen. Außerdem wird gezeigt, wie Sie grundlegende Warteschlangenvorgänge, etwa Hinzufügen, Ändern, Lesen und Entfernen von Warteschlangennachrichten ausführen. Die Beispiele sind in C\# geschrieben und greifen auf die Azure Storage-Clientbibliothek für .NET zurück. Weitere Informationen zu ASP.NET finden Sie unter [ASP.NET](http://www.asp.net).
 
-**HINWEIS:** Einige der APIs, die Aufrufe zum Azure-Speicher in ASP.NET 5 ausführen, sind asynchron. Unter [Asynchrone Programmierung mit Async und Await](http://msdn.microsoft.com/library/hh191443.aspx) finden Sie weitere Informationen. Im folgenden Code wird die Programmierung mit Async-Methoden angenommen.
+**HINWEIS**: Einige der APIs, die Aufrufe des Azure Storage in ASP.NET Core ausführen, arbeiten asynchron. Unter [Asynchrone Programmierung mit Async und Await](http://msdn.microsoft.com/library/hh191443.aspx) finden Sie weitere Informationen. Im folgenden Code wird die Programmierung mit Async-Methoden angenommen.
 
 * Weitere Informationen zum programmgesteuerten Bearbeiten von Warteschlangen finden Sie unter [Erste Schritte mit Azure Queue Storage mit .NET](storage-dotnet-how-to-use-queues.md) .
 * Allgemeine Informationen zum Azure-Speicher finden Sie unter [Speicherdokumentation](https://azure.microsoft.com/documentation/services/storage/) .
@@ -38,7 +39,7 @@ Damit Sie beginnen können, müssen Sie zuerst eine Azure-Warteschlage in Ihrem 
 * Weitere Informationen über das Programmieren von ASP.NET-Anwendungen finden Sie unter [ASP.NET](http://www.asp.net) .
 
 ## <a name="access-queues-in-code"></a>Zugriff auf Warteschlangen in Code
-Um auf Warteschlangen in ASP.NET 5-Projekten zuzugreifen, müssen Sie die folgenden Elemente zu jeder C#-Quelldatei hinzufügen, in der auf Azure-Warteschlangenspeicher zugegriffen wird.
+Um auf Warteschlangen in ASP.NET Core-Projekten zuzugreifen, müssen Sie jeder C#-Quelldatei, in der auf Azure Queue Storage zugegriffen wird, die folgenden Elemente hinzufügen.
 
 1. Vergewissern Sie sich, dass die Namespacedeklarationen am Anfang der C#-Datei diese **using** -Anweisungen enthalten.
    
@@ -153,10 +154,5 @@ Zum Löschen einer Warteschlange und aller darin enthaltenen Nachrichten rufen S
 
 ## <a name="next-steps"></a>Nächste Schritte
 [!INCLUDE [vs-storage-dotnet-queues-next-steps](../../includes/vs-storage-dotnet-queues-next-steps.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

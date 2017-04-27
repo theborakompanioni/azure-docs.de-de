@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 7018320e601c1e8762e1c8fc409813a113a35044
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 20f60ccd9108a7473705c2368f28d3152d0dd614
+ms.lasthandoff: 04/07/2017
 
 ---
 
@@ -29,7 +29,7 @@ Die manuelle Analyse und Auswertung dieser Datenflussprotokolle kann schwierig s
 
 ## <a name="scenario"></a>Szenario
 
-In diesem Artikel richten wir eine Lösung ein, mit der Sie die Datenflussprotokolle von Netzwerksicherheitsgruppen mithilfe des Elastic Stack visualisieren können.  Eine Logstash-Eingangs-Plug-In ruft die Datenflussprotokolle direkt aus dem für die Datenflussprotokolle konfigurierten Speicherblob ab. Anschließend werden die Datenflussprotokolle mit dem Elastic Stack indiziert und für das Erstellen eines Kibana-Dashboards verwendet, mit dem die Informationen visualisiert werden.
+In diesem Artikel richten wir eine Lösung ein, mit der Sie die Datenflussprotokolle von Netzwerksicherheitsgruppen mithilfe des Elastic Stack visualisieren können.  Ein Logstash-Eingangs-Plug-In ruft die Flowprotokolle direkt aus dem für die Flowprotokolle konfigurierten Speicherblob ab. Anschließend werden die Datenflussprotokolle mit dem Elastic Stack indiziert und für das Erstellen eines Kibana-Dashboards verwendet, mit dem die Informationen visualisiert werden.
 
 ![Szenario][scenario]
 
@@ -88,7 +88,7 @@ Weitere Anweisungen zum Installieren von Elasticsearch finden Sie auf der Seite 
     curl -L -O https://artifacts.elastic.co/downloads/logstash/logstash-5.2.0.deb
     sudo dpkg -i logstash-5.2.0.deb
     ```
-1. Als Nächstes konfigurieren Sie Logstash so, dass die Ausgabe der Datei „eve.json“ gelesen wird. Erstellen Sie die Datei „logstash.conf“ wie folgt:
+1. Im nächsten Schritt muss Logstash für den Zugriff auf die und die Analyse der Flowprotokolle konfiguriert werden. Erstellen Sie die Datei „logstash.conf“ wie folgt:
 
     ```
     sudo touch /etc/logstash/conf.d/logstash.conf
@@ -156,7 +156,7 @@ Weitere Anweisungen zum Installieren von Logstash finden Sie in der [offiziellen
 
 ### <a name="install-the-logstash-input-plugin-for-azure-blob-storage"></a>Installieren des Logstash-Eingangs-Plug-Ins für Azure Blob Storage
 
-Mit diesem Logstash-Plug-In können Sie direkt auf die Datenflussprotokolle im jeweiligen Speicherkonto zugreifen. Sie installieren dieses Plug-In, indem Sie über das Logstash-Standardinstallationsverzeichnis (in diesem Fall /usr/share/logstash/bin) folgenden Befehl ausführen:
+Mit diesem Logstash-Plug-In können Sie direkt auf die Flowprotokolle im jeweiligen Speicherkonto zugreifen. Sie installieren dieses Plug-In, indem Sie über das Logstash-Standardinstallationsverzeichnis (in diesem Fall „/usr/share/logstash/bin“) den folgenden Befehl ausführen:
 
 ```
 logstash-plugin install logstash-input-azureblob
@@ -209,27 +209,27 @@ Das Beispieldashboard stellt mehrere Visualisierungen der Datenflussprotokolle b
 
 1. Datenfluss nach Entscheidung/Richtung über die Zeit: Zeitraumdiagramme zeigen die Anzahl der Datenflüsse für den Zeitraum an. Sie können Zeiteinheit und Dauer bei beiden Visualisierungen ändern. „Datenflüsse nach Entscheidung“ zeigt den Anteil von Entscheidungen für das Zulassen bzw. Verweigern an, während „Datenflüsse nach Richtung“ den Anteil von eingehendem und ausgehendem Datenverkehr darstellt. Mithilfe dieser Visualisierungen können Sie Datenverkehrstrends über einen Zeitraum auf Spitzen oder ungewöhnliche Muster untersuchen.
 
-  ![Abbildung&2;][2]
+  ![Abbildung 2][2]
 
 1. Datenflüsse nach Ziel/Quellport: Kreisdiagramme zeigen eine Aufschlüsselung der Datenflüsse an den jeweiligen Ports an. In dieser Ansicht können Sie die am häufigsten verwendeten Ports ermitteln. Wenn Sie im Kreisdiagramm auf einen bestimmten Port klicken, wird das übrige Dashboard nach Datenflüssen über diesen Port gefiltert.
 
-  ![Abbildung&3;][3]
+  ![Abbildung 3][3]
 
 1. Anzahl von Datenflüssen und früheste Protokollzeit: Metriken zeigen die Anzahl der aufgezeichneten Datenflüsse und das Datum des ältesten aufgezeichneten Protokolls.
 
-  ![Abbildung&4;][4]
+  ![Abbildung 4][4]
 
 1. Datenflüsse nach NSG und Regel: Ein Balkendiagramm zeigt die Verteilung der Datenflüsse innerhalb der einzelnen NSGs sowie die Verteilung der Regeln in den NSGs. Hier können Sie sehen, welche NSGs und Regeln den meisten Datenverkehr generieren.
 
-  ![Abbildung&5;][5]
+  ![Abbildung 5][5]
 
 1. 10 häufigste Quell-/Ziel-IP-Adressen: Balkendiagramme zeigen die zehn häufigsten Quell- und Ziel-IP-Adressen. Sie können diese Diagramme anpassen, um mehr oder weniger IP-Adressen anzuzeigen. Hier sehen Sie die am häufigsten auftretenden IP-Adressen sowie die Entscheidung zum Datenverkehr (zulassen oder verweigern), die für jede IP-Adresse getroffen wurden.
 
-  ![Abbildung&6;][6]
+  ![Abbildung 6][6]
 
 1. Datenflusstupel: Diese Tabelle zeigt Informationen innerhalb jedes Datenflusstupels mit der zugehörigen NSG und Regel.
 
-  ![Abbildung&7;][7]
+  ![Abbildung 7][7]
 
 Mithilfe der Abfrageleiste oben im Dashboard können Sie das Dashboard basierend auf beliebige Parameter der Datenflüsse filtern, z.B. nach Abonnement-ID, Ressourcengruppen, Regel oder andere relevante Variablen. Weitere Informationen zu Kibana-Abfragen und -Filtern finden Sie in der [offiziellen Dokumentation](https://www.elastic.co/guide/en/beats/packetbeat/current/kibana-queries-filters.html).
 

@@ -1,6 +1,6 @@
 ---
-title: Erste Schritte mit Table Storage und verbundenen Visual Studio-Diensten (ASP.NET 5) | Microsoft Docs
-description: "Erfahren Sie etwas über die ersten Schritte mit Azure-Tabellenspeicher in einem ASP.NET 5-Projekt in Visual Studio, nachdem Sie mithilfe von verbundenen Visual Studio-Diensten eine Verbindung mit einem Speicherkonto hergestellt haben."
+title: Erste Schritte mit Table Storage und verbundenen Visual Studio-Diensten (ASP.NET Core) | Microsoft-Dokumentation
+description: Machen Sie sich mit den ersten Schritten mit Azure Table Storage in einem ASP.NET Core-Projekt in Visual Studio vertraut, nachdem Sie mithilfe von verbundenen Visual Studio-Diensten eine Verbindung mit einem Speicherkonto hergestellt haben.
 services: storage
 documentationcenter: 
 author: TomArcher
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/02/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5067bd03961387593c37a8d3b7eeae4e1e586539
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: b64d4f7e55977c7ce144987f7600e5ddcb25596c
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -24,7 +25,7 @@ ms.openlocfilehash: 5067bd03961387593c37a8d3b7eeae4e1e586539
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
 ## <a name="overview"></a>Übersicht
-Dieser Artikel beschreibt, wie die ersten Schritte beim Verwenden von Azure-Tabellenspeicher in Visual Studio aussehen, nachdem Sie über das Visual Studio-Dialogfeld **Verbundene Dienste hinzufügen** in einem ASP.NET 5-Projekt ein Azure-Speicherkonto erstellt oder auf ein solches Konto verwiesen haben.
+Dieser Artikel beschreibt, wie die ersten Schritte beim Verwenden von Azure Table Storage in Visual Studio aussehen, nachdem Sie über das Visual Studio-Dialogfeld **Verbundene Dienste hinzufügen** in einem ASP.NET Core-Projekt ein Azure Storage-Konto erstellt oder auf ein solches Konto verwiesen haben.
 
 Der Azure-Tabellenspeicherdienst ermöglicht das Speichern großer Mengen von strukturierten Daten. Der Dienst ist ein NoSQL-Datenspeicher, der authentifizierte Aufrufe von innerhalb und außerhalb der Azure-Cloud akzeptiert. Azure-Tabellen sind hervorragend zur Speicherung strukturierter nicht relationaler Daten geeignet.
 
@@ -34,10 +35,10 @@ Weitere allgemeine Informationen zur Verwendung von Azure Table Storage finden S
 
 Damit Sie beginnen können, müssen Sie zuerst eine Tabelle in Ihrem Speicherkonto erstellen. Wir zeigen Ihnen, wie Sie eine Azure-Tabelle in Code erstellen. Außerdem wird gezeigt, wie Sie grundlegende Tabellen- und Entitätsvorgänge, etwa Hinzufügen, Ändern und Lesen von Tabellenentitäten, ausführen. Die Beispiele sind in C\# geschrieben und greifen auf die Azure Storage-Clientbibliothek für .NET zurück.
 
-**HINWEIS** : Einige der APIs, die Aufrufe zum Azure-Speicher in ASP.NET 5 ausführen, arbeiten asynchron. Unter [Asynchrone Programmierung mit Async und Await](http://msdn.microsoft.com/library/hh191443.aspx) finden Sie weitere Informationen. Im nachstehenden Code wird die Programmierung mit Async-Methoden angenommen.
+**HINWEIS**: Einige der APIs, die Aufrufe zum Azure Storage in ASP.NET Core ausführen, arbeiten asynchron. Unter [Asynchrone Programmierung mit Async und Await](http://msdn.microsoft.com/library/hh191443.aspx) finden Sie weitere Informationen. Im nachstehenden Code wird die Programmierung mit Async-Methoden angenommen.
 
 ## <a name="access-tables-in-code"></a>Zugreifen auf Tabellen im Code
-Um auf Tabellen in ASP.NET 5-Projekten zuzugreifen, müssen Sie die folgenden Elemente zu jeder C#-Quelldatei hinzufügen, in der auf Azure-Tabellenspeicher zugegriffen wird.
+Um auf Tabellen in ASP.NET Core-Projekten zuzugreifen, müssen Sie jeder C#-Quelldatei, in der auf Azure Table Storage zugegriffen wird, die folgenden Elemente hinzufügen.
 
 1. Vergewissern Sie sich, dass die Namespacedeklarationen am Anfang der C#-Datei diese **using** -Anweisungen enthalten.
    
@@ -184,10 +185,5 @@ Sie können eine Entität nach dem Abrufen löschen. Der folgende Code sucht nac
 
 ## <a name="next-steps"></a>Nächste Schritte
 [!INCLUDE [vs-storage-dotnet-tables-next-steps](../../includes/vs-storage-dotnet-tables-next-steps.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

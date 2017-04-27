@@ -11,17 +11,18 @@ ms.workload: compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 04/26/2017
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: e4d94d3f9736378d93e93be6645ed04ade763ca3
-ms.openlocfilehash: 05487c4bbdce24ea9f31ed451026531c16ead7c4
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 6720bb6471ef36179042562c751e1a501979f02b
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="whats-new-in-azure-remoteapp"></a>Neuigkeiten in Azure RemoteApp
 > [!IMPORTANT]
-> Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
+> Azure RemoteApp wird am 31. August 2017 eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
 > 
 > 
 
@@ -43,7 +44,7 @@ Wussten Sie, dass das Azure RemoteApp-Team monatlich Updates im RDS-Blog veröff
 Im August gab es große Änderungen – hier sind die wichtigsten:
 
 * Sie können Azure-VNETs nun mit einer Cloudsammlung verwenden! Sehen Sie sich die [Anleitung zur Clouderstellung](remoteapp-create-cloud-deployment.md) an, in der Sie die neuen Schritte erfahren.
-* Es wurde ermöglicht, dem **Startmenü **Apps für den Windows RemoteApp-Client hinzuzufügen. Apps werden in der Anwendungsliste angezeigt, und Sie können sie dem **Startmenü **in Windows anheften.
+* Es wurde ermöglicht, dem **Startmenü** Apps für den Windows RemoteApp-Client hinzuzufügen. Apps werden in der Anwendungsliste angezeigt, und Sie können sie an das **Startmenü** in Windows anheften.
 * Ein neues Image wurde dem Azure-VM-Katalog hinzugefügt – Windows Server Remote Desktop Session Host with Microsoft Office 365 ProPlus.
 * Der Mac-Client wurde korrigiert, sodass Apps mit modalen Fenstern nicht mehr einfrieren.
 * Die Verwendung Ihres [Office 365 ProPlus-Abonnements](remoteapp-officesubscription.md) mit Azure RemoteApp wurde dokumentiert.
@@ -87,10 +88,5 @@ Vielen Dank, dass Sie uns treu bleiben. Im nächsten Monat gibt es weitere Updat
 
 ### <a name="help-us-help-you"></a>Helfen Sie uns, Ihnen zu helfen
 Wussten Sie schon, dass Sie diesen Artikel im Bereich unten nicht nur bewerten und kommentieren, sondern ihn auch selbst ändern können? Fehlt etwas? Ist etwas nicht ganz richtig? Habe ich etwas geschrieben, das eher verwirrend ist? Scrollen Sie nach oben, und klicken Sie auf **Edit on GitHub**, um die gewünschten Änderungen vorzunehmen. Ihr Vorschlag wird uns vorgelegt, und wenn wir ihn bestätigt haben, werden Ihre Änderungen und Verbesserungen hier angezeigt.
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

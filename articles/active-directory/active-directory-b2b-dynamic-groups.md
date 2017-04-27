@@ -13,11 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/06/2017
+ms.date: 04/12/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: d3f68340592d9032999ecb5cc16ac1fedcce4c33
-ms.openlocfilehash: a483e219c1e730e174baa0ffa8ba471b0724f0da
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 9519719a63387cb8c341c72e262c2aeaacc3cd4a
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -25,9 +26,9 @@ ms.openlocfilehash: a483e219c1e730e174baa0ffa8ba471b0724f0da
 # <a name="dynamic-groups-and-azure-active-directory-b2b-collaboration"></a>Dynamische Gruppen und Azure Active Directory B2B-Zusammenarbeit
 
 ## <a name="what-are-dynamic-groups"></a>Was sind dynamische Gruppen?
-Die dynamische Konfiguration der Mitgliedschaft in Sicherheitsgruppen für Azure Active Directory (Azure AD) ist im [Azure-Portal](https://portal.azure.com) in der öffentlichen Vorschau verfügbar. Administratoren können Regeln einrichten, um in Azure Active Directory erstellte Gruppen anhand von Benutzerattributen (z.B. Benutzertyp, Abteilung oder Land) aufzufüllen. So können Mitglieder basierend auf Änderungen an ihren Attributen automatisch zu einer Sicherheitsgruppe hinzugefügt oder daraus entfernt werden. Anhand dieser Gruppen können Administratoren Zugriff auf Anwendungen oder Cloudressourcen gewähren (z.B. SharePoint-Websites und -Dokumente) oder den Mitgliedern Lizenzen zuweisen. Weitere Informationen zu dynamischen Gruppen erhalten Sie unter [Dedizierte Gruppen in Azure Active Directory](active-directory-accessmanagement-dedicated-groups.md).
+Die dynamische Konfiguration der Mitgliedschaft in Sicherheitsgruppen für Azure Active Directory (Azure AD) ist im [Azure-Portal](https://portal.azure.com) verfügbar. Administratoren können Regeln einrichten, um in Azure Active Directory erstellte Gruppen anhand von Benutzerattributen (z.B. Benutzertyp, Abteilung oder Land) aufzufüllen. So können Mitglieder basierend auf Änderungen an ihren Attributen automatisch zu einer Sicherheitsgruppe hinzugefügt oder daraus entfernt werden. Anhand dieser Gruppen können Administratoren Zugriff auf Anwendungen oder Cloudressourcen gewähren (z.B. SharePoint-Websites und -Dokumente) oder den Mitgliedern Lizenzen zuweisen. Weitere Informationen zu dynamischen Gruppen erhalten Sie unter [Dedizierte Gruppen in Azure Active Directory](active-directory-accessmanagement-dedicated-groups.md).
 
-Mit einem AAD-Premium-Abonnement P1 oder P2 haben Sie im Azure-Portal die Möglichkeit, erweiterte Regeln zu erstellen, mit denen Sie komplexere attributbasierte, dynamische Mitgliedschaften für Gruppen in der Azure Active Directory-Vorschau aktivieren können. Weitere Informationen zum Erstellen von erweiterten Regeln finden Sie unter [Verwenden von Attributen zum Erstellen erweiterter Regeln für Gruppenmitgliedschaften in der Azure Active Directory-Vorschau](active-directory-groups-dynamic-membership-azure-portal.md).
+Mit einem AAD-Premium-Abonnement P1 oder P2 haben Sie im Azure-Portal die Möglichkeit, erweiterte Regeln zu erstellen, mit denen Sie komplexere attributbasierte, dynamische Mitgliedschaften für Azure Active Directory-Gruppen aktivieren können. Weitere Informationen zum Erstellen von erweiterten Regeln finden Sie unter [Verwenden von Attributen zum Erstellen erweiterter Regeln für Gruppenmitgliedschaften in der Azure Active Directory-Vorschau](active-directory-groups-dynamic-membership-azure-portal.md).
 
 ## <a name="what-are-the-built-in-dynamic-groups"></a>Was sind die integrierten dynamischen Gruppen?
 Die dynamische Gruppe **Alle Benutzer** ermöglicht es Mandantenadministratoren, mit nur einem Klick eine Gruppe zu erstellen, die alle Benutzer des Mandanten umfasst. Die Gruppe **Alle Benutzer** umfasst standardmäßig alle Benutzer im Verzeichnis, einschließlich Mitgliedern und Gästen.
@@ -46,7 +47,7 @@ Eine solche Gruppe könnte beispielsweise folgendermaßen aussehen:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Artikel zur Azure AD B2B-Zusammenarbeit:
+Weitere Artikel zur Azure AD B2B-Kollaboration:
 
 * [Was ist die Azure AD B2B-Zusammenarbeit?](active-directory-b2b-what-is-azure-ad-b2b.md)
 * [Eigenschaften von B2B-Zusammenarbeitsbenutzern](active-directory-b2b-user-properties.md)
@@ -56,11 +57,6 @@ Weitere Artikel zur Azure AD B2B-Zusammenarbeit:
 * [Konfigurieren von SaaS-Apps für die B2B-Zusammenarbeit](active-directory-b2b-configure-saas-apps.md)
 * [Benutzertoken für die B2B-Zusammenarbeit](active-directory-b2b-user-token.md)
 * [Zuordnen von Benutzeransprüchen für die B2B-Zusammenarbeit](active-directory-b2b-claims-mapping.md)
-* [Externe Office 365-Freigaben](active-directory-b2b-o365-external-user.md)
+* [Externe Office 365-Freigabe](active-directory-b2b-o365-external-user.md)
 * [Aktuelle Einschränkungen der B2B-Zusammenarbeit](active-directory-b2b-current-limitations.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

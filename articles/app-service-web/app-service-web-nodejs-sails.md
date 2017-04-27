@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
-ms.openlocfilehash: b3c8a2d54ea05462db8a873c852a70e64111bc2f
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: ff5deaa15d1f78df249e9e89b1f0ffc82076fee1
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -40,7 +40,7 @@ Sie sollten über ausreichende Kenntnisse zu Sails.js verfügen. Dieses Tutorial
 Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
 
 - [Azure CLI 1.0:](app-service-web-nodejs-sails-cli-nodejs.md) Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell
-- [Azure CLI 2.0:](app-service-web-nodejs-sails.md) Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
+- [Azure CLI 2.0:](app-service-web-nodejs-sails.md) Unsere Befehlszeilenschnittstelle der nächsten Generation für das Resource Manager-Bereitstellungsmodell
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * [Node.js](https://nodejs.org/)
@@ -72,7 +72,7 @@ Erstellen Sie zuerst schnell eine standardmäßige Sails.js-App in Ihrer Entwick
         logDirectory: iisnode
 
     Die Protokollierung ist jetzt für den Server [iisnode](https://github.com/tjanczuk/iisnode) aktiviert, der von Azure App Service zum Ausführen von Node.js-Apps verwendet wird. 
-    Weitere Informationen zur Funktionsweise finden Sie unter  [Abrufen von stdout- und stderr-Protokollen von iisnode](app-service-web-nodejs-get-started.md#iisnodelog).
+    Weitere Informationen zur Funktionsweise finden Sie unter  [Debuggen einer Node.js-Web-App in Azure App Service](web-sites-nodejs-debug.md).
 
 2. Konfigurieren Sie für die App „Sails.js“ als Nächstes die Verwendung der Azure-Umgebungsvariablen. Öffnen Sie „config/env/production.js“, um Ihre Produktionsumgebung zu konfigurieren, und legen Sie `port` und `hookTimeout` fest:
 
@@ -161,7 +161,7 @@ Erstellen Sie als Nächstes die App Service-Ressource in Azure, und stellen Sie 
 
 ## <a name="troubleshoot-your-deployment"></a>Problembehandlung bei der Bereitstellung
 Wenn Ihre Sails.js-Anwendung aus irgendeinem Grund in App Service ausfällt, suchen Sie in den stderr-Protokollen nach Informationen zur Problembehandlung.
-Weitere Informationen finden Sie unter [Abrufen von stdout- und stderr-Protokollen von iisnode](app-service-web-nodejs-get-started.md#get-stdout-and-stderr-logs-from-iisnode).
+Weitere Informationen finden Sie unter [Debuggen einer Node.js-Web-App in Azure App Service](web-sites-nodejs-debug.md).
 Wenn die App erfolgreich gestartet wurde, sollte das stdout-Protokoll die vertraute Meldung anzeigen:
 
                    .-..-.
@@ -273,6 +273,6 @@ Erstellen Sie zum Herstellen einer Verbindung mit einer Datenbank in Azure die g
      Wenn die API einen weiteren neuen Eintrag zurückgibt, kommuniziert Ihre Azure-Web-App mit der DocumentDB-Datenbank (MongoDB).
 
 ## <a name="more-resources"></a>Weitere Ressourcen
-* [Erste Schritte mit Node.js-Web-Apps in Azure App Service](app-service-web-nodejs-get-started.md)
+* [Erste Schritte mit Node.js-Web-Apps in Azure App Service](app-service-web-get-started-nodejs.md)
 * [Verwenden von Node.js-Modulen mit Azure-Anwendungen](../nodejs-use-node-modules-azure-apps.md)
 

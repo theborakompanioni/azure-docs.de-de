@@ -13,18 +13,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 03/30/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 25e266441e902a06d980b3b51abdd4fcf668d4d2
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 62586434f233b1d40b8a9efd539d1fcdca3bdec7
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="move-data-by-using-copy-activity"></a>Verschieben von Daten mit der Kopieraktivität
 ## <a name="overview"></a>Übersicht
-In Azure Data Factory können Sie die Kopieraktivität verwenden, um Daten unterschiedlicher Formen von verschiedenen lokalen und Clouddatenquellen nach Azure zu kopieren. Nach dem Kopieren können die Daten weiter transformiert und analysiert werden. Sie können die Kopieraktivität auch zum Veröffentlichen von Transformations- und Analyseergebnissen für die Verwendung für Business Intelligence (BI) und in Anwendungen verwenden.
+In Azure Data Factory können Sie die Kopieraktivität verwenden, um Daten zwischen verschiedenen lokalen und Clouddatenspeichern zu kopieren. Nach dem Kopieren können die Daten weiter transformiert und analysiert werden. Sie können die Kopieraktivität auch zum Veröffentlichen von Transformations- und Analyseergebnissen für die Verwendung für Business Intelligence (BI) und in Anwendungen verwenden.
 
 ![Rolle der Kopieraktivität](media/data-factory-data-movement-activities/copy-activity.png)
 
@@ -62,17 +62,17 @@ Sie können mithilfe des Datenverwaltungsgateways auch Daten von bzw. in unterst
 ## <a name="supported-data-stores-and-formats"></a>Unterstützte Datenspeicher und Formate
 [!INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]
 
-Wenn Sie Daten in einen/aus einem Datenspeicher verschieben müssen, der von der Kopieraktivität nicht unterstützt wird, verwenden Sie die **benutzerdefinierte Aktivität** in Data Factory mit Ihrer eigenen Logik zum Kopieren/Verschieben von Daten. Informationen zum Erstellen und Verwenden einer benutzerdefinierten Aktivität finden Sie unter [Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline](data-factory-use-custom-activities.md).
-
 ### <a name="supported-file-formats"></a>Unterstützte Dateiformate
-Sie können die Kopieraktivität verwenden, um **Dateien unverändert** zwischen zwei dateibasierten Datenspeichern zu kopieren, wie z.B. Azure Blob, Azure Data Lake Store, Amazon S3, FTP, Dateisystem und HDFS. Zu diesem Zweck können Sie in den Definitionen sowohl für das Eingabe- als auch für das Ausgabedataset den [Formatierungsabschnitt](data-factory-create-datasets.md) überspringen. Die Daten werden effizient ohne jegliche Serialisierung oder Deserialisierung kopiert.
+Sie können mit der Kopieraktivität **Dateien unverändert zwischen zwei dateibasierten Datenspeichern kopieren** und den [Formatabschnitt](data-factory-create-datasets.md) in den Definitionen von Eingabe- und Ausgabedatasets überspringen. Die Daten werden effizient ohne jegliche Serialisierung oder Deserialisierung kopiert.
 
-Die Kopieraktivität liest und schreibt Dateien in den folgenden Formaten: **Text, Avro, ORC, Parquet und JSON**. Außerdem unterstützt sie folgende Komprimierungscodecs: **„GZip“, „Deflate“, „BZip2“ und „ZipDeflate“**. Sie können z.B. folgende Kopieraktivitäten ausführen:
+Die Kopieraktivität liest und schreibt Dateien in den folgenden Formaten: **Text, JSON, Avro, ORC und Parquet**. Außerdem unterstützt sie folgende Komprimierungscodecs: **„GZip“, „Deflate“, „BZip2“ und „ZipDeflate“**. Weitere Informationen finden Sie unter [Unterstützte Datei- und Komprimierungsformate](data-factory-supported-file-and-compression-formats.md).
 
-* Kopieren von Daten im GZip-komprimierten Textformat (CSV) aus einem Azure-Blob und Schreiben in Azure SQL-Datenbank
-* Kopieren von Dateien im Textformat (CSV) aus dem lokalen Dateisystem und Schreiben in einen Azure-Blob im Avro-Format
+Sie können z.B. folgende Kopieraktivitäten ausführen:
+
 * Kopieren von Daten in einer lokalen SQL Server-Instanz und Schreiben in Azure Data Lake Store im ORC-Format
+* Kopieren von Dateien im Textformat (CSV) aus dem lokalen Dateisystem und Schreiben in einen Azure-Blob im Avro-Format
 * Kopieren von ZIP-Dateien aus dem lokalen Dateisystem und Dekomprimieren in Azure Data Lake Store
+* Kopieren von Daten im GZip-komprimierten Textformat (CSV) aus einem Azure-Blob und Schreiben in Azure SQL-Datenbank
 
 ## <a name="global"></a>Global verfügbare Datenverschiebung
 Azure Data Factory ist nur in den USA (Westen), USA (Osten) und Nordeuropa verfügbar. Jedoch ist der Dienst, der die Kopieraktivität unterstützt, in den folgenden Regionen und Ländern global verfügbar. Die global verfügbare Topologie gewährleistet effiziente Datenverschiebungen, die regionsübergreifende Hops in der Regel vermeiden. Unter [Dienste nach Region](https://azure.microsoft.com/regions/#services) erfahren Sie, in welchen Regionen Data Factory und die Datenverschiebung verfügbar sind.

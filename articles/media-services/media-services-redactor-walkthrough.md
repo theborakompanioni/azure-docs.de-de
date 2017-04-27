@@ -12,11 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/30/2016
+ms.date: 04/03/2017
 ms.author: rli; juliako;
 translationtype: Human Translation
-ms.sourcegitcommit: 8d8575decb177001cefbb7f159841b64c3f84f41
-ms.openlocfilehash: d9bb513a7f5acc0ba41902795b159564b2562842
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: b34502aa75d94da1abcda880bb1a251a8455f3f8
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -114,6 +115,10 @@ Wenn Sie als Entwickler versuchen, die JSON-Anmerkungsdaten zu analysieren, such
     ![Gesichtsbearbeitung](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough012.png)
 
 5.    Im Textfeld unten werden die IDs der Gesichter aktualisiert. Erstellen Sie eine Datei namens „idlist.txt“ mit diesen IDs als durch Zeilenvorschübe getrennte Liste. 
+
+    >[!NOTE]
+    > Die Datei „idlist.txt“ muss im ANSI-Format gespeichert werden. Sie können die Datei in Editor im ANSI-Format speichern.
+    
 6.    Laden Sie diese Datei in die Ausgaberessource aus Schritt 1 hoch. Laden Sie das ursprüngliche Video ebenfalls in diese Ressource hoch, und legen Sie es als primäre Ressource fest. 
 7.    Führen Sie die Bearbeitung dieser Ressource im „Redact“-Modus aus, um das abschließend bearbeitete Video zu erhalten. 
 
@@ -129,9 +134,5 @@ Wenn Sie als Entwickler versuchen, die JSON-Anmerkungsdaten zu analysieren, such
 
 [Azure Media Analytics-Demos](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
-
-
-
-<!--HONumber=Feb17_HO3-->
-
+[Ankündigung der Gesichtsbearbeitung mit Azure Media Analytics](https://azure.microsoft.com/blog/azure-media-redactor/)
 

@@ -1,6 +1,6 @@
 ---
-title: Service Bus-Verwaltungsbibliotheken| Microsoft-Dokumentation
-description: "Verwalten von Service Bus-Namespaces und -Entitäten über .NET"
+title: Azure Service Bus-Verwaltungsbibliotheken| Microsoft-Dokumentation
+description: "Verwalten von Service Bus-Namespaces und -Messagingentitäten über .NET"
 services: service-bus-messaging
 cloud: na
 documentationcenter: na
@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 1/6/2017
+ms.date: 04/03/2017
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: dfd1ae52cc56a4d4b4c7ee3f69f0c454be607401
-ms.openlocfilehash: 7b04227327235f788ecf4018b6c159d33113b63d
+ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
+ms.openlocfilehash: ec9f2fa3d88f59172d320b58287208deb084856f
+ms.lasthandoff: 04/11/2017
 
 
 ---
@@ -36,17 +37,17 @@ Die Service Bus-Verwaltungsbibliotheken können dynamisch Service Bus-Namespaces
 
 Zur Verwendung der Service Bus-Verwaltungsbibliotheken müssen Sie zunächst eine Authentifizierung mit Azure Active Directory (AAD) durchführen. AAD erfordert, dass Sie sich als Dienstprinzipal authentifizieren. Dadurch erhalten Sie Zugriff auf Ihre Azure-Ressourcen. Informationen zum Erstellen eines Dienstprinzipals finden Sie in einem der folgenden Artikel:  
 
-* [Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Azure-Portals](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal)
-* [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe von Azure PowerShell](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authenticate-service-principal)
-* [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe der Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
+* [Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](/azure/azure-resource-manager/resource-group-create-service-principal-portal)
+* [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe von Azure PowerShell](/azure/azure-resource-manager/resource-group-authenticate-service-principal)
+* [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe der Azure-Befehlszeilenschnittstelle](/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
 
-In diesen Tutorials erhalten Sie Werte für `AppId` (Client-ID), `TenantId` (Mandanten-ID) und `ClientSecret` (Authentifizierungsschlüssel). Diese werden von den Verwaltungsbibliotheken für die Authentifizierung verwendet. Für die Ressourcengruppe, für die die Ausführung erfolgen soll, müssen Sie über Berechtigungen vom Typ „Besitzer“ verfügen.
+In diesen Tutorials erhalten Sie Werte für `AppId` (Client-ID), `TenantId` und `ClientSecret` (Authentifizierungsschlüssel). Diese werden von den Verwaltungsbibliotheken für die Authentifizierung verwendet. Für die Ressourcengruppe, für die die Ausführung erfolgen soll, müssen Sie über Berechtigungen vom Typ „Besitzer“ verfügen.
 
 ## <a name="programming-pattern"></a>Muster für die Programmierung
 
 Das Muster zum Bearbeiten einer beliebigen Service Bus-Ressource folgt einem gemeinsamen Protokoll:
 
-1. Rufen Sie mithilfe der Bibliothek `Microsoft.IdentityModel.Clients.ActiveDirectory` ein Token aus Azure Active Directory ab.
+1. Rufen Sie ein Token aus Azure Active Directory mithilfe der **Microsoft.IdentityModel.Clients.ActiveDirectory**-Bibliothek ab.
     ```csharp
     var context = new AuthenticationContext($"https://login.windows.net/{tenantId}");
 
@@ -65,7 +66,7 @@ Das Muster zum Bearbeiten einer beliebigen Service Bus-Ressource folgt einem gem
     };
     ```
 
-1. Legen Sie die CreateOrUpdate-Parameter auf Ihre spezifischen Werte fest.
+1. Legen Sie die `CreateOrUpdate`-Parameter auf Ihre spezifischen Werte fest.
     ```csharp
     var queueParams = new QueueCreateOrUpdateParameters()
     {
@@ -82,9 +83,4 @@ Das Muster zum Bearbeiten einer beliebigen Service Bus-Ressource folgt einem gem
 ## <a name="next-steps"></a>Nächste Schritte
 * [.NET-Verwaltungsbeispiel](https://github.com/Azure-Samples/service-bus-dotnet-management/)
 * [Microsoft.Azure.Management.ServiceBus-Referenz](/dotnet/api/Microsoft.Azure.Management.ServiceBus)
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

@@ -13,12 +13,12 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 03/05/2017
+ms.date: 04/05/2017
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: e0de3b12b98bf9bf361607dac4b087e4eacabf1e
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: ab914153df01c6d8135732bc772b78066e14d1d1
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -26,9 +26,8 @@ ms.lasthandoff: 03/06/2017
 > [!div class="op_single_selector"]
 > * [Portal](search-manage.md)
 > * [PowerShell](search-manage-powershell.md)
-> * [REST-API](search-get-started-management-api.md)
-> 
-> 
+> * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
+> * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
 Azure Search ist ein vollständig verwalteter cloudbasierter Suchdienst zum Erstellen einer umfassenden Suchoberfläche für benutzerdefinierte Apps. In diesem Artikel werden die Aufgaben der *Dienstverwaltung* beschrieben, die Sie im [Azure-Portal](https://portal.azure.com) für einen zuvor bereitgestellten Suchdienst durchführen können. *Service administration* ist nicht sehr umfangreich und auf die folgenden Aufgaben beschränkt:
 
@@ -74,7 +73,7 @@ In Azure Search werden keine Protokolldateien für einen einzelnen Dienst über 
 Allgemeine Informationen zu Ihrem Dienst erhalten Sie wie folgt:
 
 * Im Portal über das Dashboard des Diensts in Form von Benachrichtigungen, Eigenschaften und Statusmeldungen.
-* Über [PowerShell](search-manage-powershell.md) oder die [Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn832684.aspx), um [Diensteigenschaften abzurufen](https://msdn.microsoft.com/library/azure/dn832694.aspx) oder den Status der Indexressourcennutzung zu ermitteln.
+* Über [PowerShell](search-manage-powershell.md) oder die [Verwaltungs-REST-API](https://docs.microsoft.com/rest/api/searchmanagement/), um [Diensteigenschaften abzurufen](https://docs.microsoft.com/rest/api/searchmanagement/services) oder den Status der Indexressourcennutzung zu ermitteln.
 * Über [Datenverkehrsanalyse durchsuchen](search-traffic-analytics.md), wie bereits erwähnt.
 
 <a id="manage-keys"></a>
@@ -116,8 +115,8 @@ Die Ressourcenüberwachung im Dashboard ist auf die Informationen im Dienst-Dash
 
 Mit der Suchdienst-API können Sie Gesamtzahlen für Dokumente und Indizes abrufen. Für diese Werte gelten feste Obergrenzen basierend auf dem Tarif. Weitere Informationen finden Sie unter [Einschränkungen für Suchdienste](search-limits-quotas-capacity.md). 
 
-* [Abrufen von Indexstatistiken](http://msdn.microsoft.com/library/dn798942.aspx)
-* [Dokumentenanzahl](http://msdn.microsoft.com/library/dn798924.aspx)
+* [Abrufen von Indexstatistiken](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
+* [Dokumentenanzahl](https://docs.microsoft.com/rest/api/searchservice/count-documents)
 
 > [!NOTE]
 > Durch Caching-Eigenheiten können die Obergrenzen vorübergehend überschritten werden. Wenn Sie z. B. den gemeinsam genutzten Dienst verwenden, kann es passieren, dass eine Dokumentenanzahl oberhalb der Grenze von 10.000 Dokumenten angezeigt wird. Dies ist vorübergehend und wird bei der nächsten Einhaltungsprüfung für die Obergrenze entdeckt. 
@@ -170,7 +169,7 @@ Im Gegensatz zum Entfernen von Replikaten, bei dem Sie keine weiteren Schritte a
 
 Es ist nicht möglich, herauszufinden, welche Index-Shards auf welcher Partition gespeichert sind. Jede Partition bietet ca. 25 GB an Speicherplatz an. Sie müssen Ihren Speicherverbrauch also auf einen Wert senken, der von Ihren konfigurierten Partitionen unterstützt werden kann. Wenn Sie auf eine Partition zurückschalten, müssen alle 12 Shards in diese Partition passen.
 
-Für die zukünftige Planung können Sie den Speicherverbrauch prüfen (siehe [Abrufen der Index-Statistiken](http://msdn.microsoft.com/library/dn798942.aspx)), um herauszufinden, wie viel Speicher Sie tatsächlich nutzen. 
+Für die zukünftige Planung können Sie den Speicherverbrauch prüfen (siehe [Abrufen der Index-Statistiken](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)), um herauszufinden, wie viel Speicher Sie tatsächlich nutzen. 
 
 <a id="advanced-deployment"></a>
 
@@ -187,7 +186,6 @@ In diesem 30-minütigen Video werden die bewährten Methoden für erweiterte Ber
 Nachdem Sie sich mit den verschiedenen Vorgängen der Dienstverwaltung vertraut gemacht haben, können Sie sich über die unterschiedlichen Ansätze für die Dienstverwaltung informieren:
 
 * [PowerShell](search-manage-powershell.md)
-* [Verwaltungs-REST-API](search-get-started-management-api.md)
 
 Falls noch nicht geschehen, können Sie sich auch den [Artikel zur Leistung und Optimierung](search-performance-optimization.md)durchlesen und sich optional das im vorherigen Abschnitt angegebene Video ansehen, um eingehendere Informationen und Veranschaulichungen der empfohlenen Vorgehensweisen zu erhalten.
 

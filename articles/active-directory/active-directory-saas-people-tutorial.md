@@ -12,12 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2017
+ms.date: 03/24/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 04a045f41965b093aab71e59cd9b5f328b44de84
-ms.openlocfilehash: eb24c4fe5f382a30acc524065f2ee9e3a27ce94f
-ms.lasthandoff: 02/03/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: f0b7010b75c612cb1112d7414bab1617844dfa65
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -27,7 +27,7 @@ Dieses Tutorial soll Ihnen zeigen, wie Sie People in Azure Active Directory (Azu
 Die Integration von People in Azure AD bietet die folgenden Vorteile:
 
 * Sie können in Azure AD steuern, wer Zugriff auf People hat.
-* Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei People anzumelden (einmaliges Anmelden).
+* Sie können Ihren Benutzern das automatische einmalige Anmelden (Single Sign-On, SSO) mit ihren Azure AD-Konten bei People ermöglichen.
 * Mit dem klassischen Azure-Portal können Sie Ihre Konten an einem zentralen Ort verwalten.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
@@ -38,23 +38,25 @@ Um die Azure AD-Integration mit People konfigurieren zu können, benötigen Sie 
 * Ein Azure-Abonnement
 * Ein People-Abonnement, für das einmaliges Anmelden (SSO) aktiviert ist
 
-> [!NOTE]
-> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
+>[!NOTE]
+>Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
 > 
 > 
 
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
 * Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-* Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
+* Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-Ziel dieses Tutorials ist es, das einmalige Anmelden von Azure AD in einer Testumgebung zu testen. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+Ziel dieses Tutorials ist, das einmalige Anmelden (SSO) von Azure AD in einer Testumgebung zu testen. 
+
+Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
 1. Hinzufügen von People aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+2. Konfigurieren und Testen des einmaligen Anmeldens (SSO) von Azure AD
 
-## <a name="adding-people-from-the-gallery"></a>Hinzufügen von People aus dem Katalog
+## <a name="add-people-from-the-gallery"></a>Hinzufügen von People aus dem Katalog
 Zum Konfigurieren der Integration von People in Azure AD müssen Sie People aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
 
 **Um People aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
@@ -79,21 +81,21 @@ Zum Konfigurieren der Integration von People in Azure AD müssen Sie People aus 
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-people-tutorial/tutorial_people_02.png)
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
-In diesem Abschnitt soll veranschaulicht werden, wie basierend auf einem Testbenutzer namens Britta Simon das einmalige Anmelden von Azure AD in People konfiguriert und getestet werden kann.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
+In diesem Abschnitt soll anhand eines Testbenutzers namens Britta Simon veranschaulicht werden, wie das einmalige Anmelden von Azure AD in People konfiguriert und getestet werden kann.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei People müssen Sie die folgenden Schritte ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 3. **[Erstellen eines People-Testbenutzers](#creating-a-people-test-user)** , um eine Entsprechung von Britta Simon in People zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** – um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
-Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im klassischen Azure-Portal zu aktivieren und das einmalige Anmelden in Ihrer People-Anwendung zu konfigurieren.
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
+Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden (SSO) von Azure AD im klassischen Azure-Portal zu aktivieren und das einmalige Anmelden in Ihrer People-Anwendung zu konfigurieren.
 
-**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in People die folgenden Schritte aus:**
+**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei People die folgenden Schritte aus:**
 
 1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **People** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
    
@@ -101,7 +103,7 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im
 2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei People anmelden** die Option **Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-people-tutorial/tutorial_people_03.png) 
-3. Führen Sie auf der Seite **App-Einstellungen konfigurieren **die folgenden Schritte aus, und klicken Sie dann auf **Weiter**:
+3. Führen Sie auf der Seite **App-Einstellungen konfigurieren** die folgenden Schritte aus, und klicken Sie dann auf **Weiter**:
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-people-tutorial/tutorial_people_04.png) 
    
@@ -132,9 +134,10 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im
    
     ![Azure AD – einmaliges Anmelden][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
-Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im klassischen Azure-Portal.
-Wählen Sie in der Benutzerliste **Britta Simon**aus.
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens Britta Simon erstellt.
+
+ * Wählen Sie in der Benutzerliste **Britta Simon**aus.
 
 ![Azure AD-Benutzer erstellen][20]
 
@@ -154,9 +157,9 @@ Wählen Sie in der Benutzerliste **Britta Simon**aus.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-people-tutorial/create_aaduser_05.png) 
    
-    1. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
-    2. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
-    3. Klicken Sie auf **Weiter**.
+   1. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
+   2. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
+   3. Klicken Sie auf **Weiter**.
 6. Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
    
    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-people-tutorial/create_aaduser_06.png) 
@@ -174,13 +177,13 @@ Wählen Sie in der Benutzerliste **Britta Simon**aus.
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-people-tutorial/create_aaduser_08.png) 
    
    1. Notieren Sie den Wert von **Neues Kennwort**.
-   2. Klicken Sie auf **Fertig stellen**.   
+   2. Klicken Sie unten auf der Seite auf **Fertigstellen**.   
 
-### <a name="creating-a-people-test-user"></a>Erstellen eines People-Testbenutzers
+### <a name="create-a-people-test-user"></a>Erstellen eines People-Testbenutzers
 Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in People. People bietet keine Unterstützung für die Just-in-Time-Bereitstellung. Wenden Sie sich an das People-Supportteam, um manuell einen Benutzer zu erstellen.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
-Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmaligen Anmeldens bei Azure zu ermöglichen, indem sie Zugriff auf People erhält.
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmaligen Anmeldens (SSO) von Azure zu ermöglichen, indem ihr Zugriff auf People gewährt wird.
 
 ![Benutzer zuweisen][200] 
 
@@ -200,8 +203,9 @@ Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmal
    
     ![Benutzer zuweisen][205]
 
-### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
-Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
+Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden (SSO) über den Zugriffsbereich.
+
 Wenn Sie im Zugriffsbereich auf die Kachel „People“ klicken, sollten Sie automatisch bei Ihrer People-Anwendung angemeldet werden.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen

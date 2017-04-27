@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/09/2017
 ms.author: TomSh
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 71e0d74f0e4787393e3184a3a5b553c4935cf785
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 659304937eebb1b2fe6faf019dfef63e1e29bcd4
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -187,7 +188,7 @@ Sie können diese Art von globalem Lastenausgleich in Azure nutzen, indem Sie de
 
 Wenn ein Benutzer Ihren Dienst beispielsweise von einem EU-Standort aus anfordert, wird die Verbindung an Ihre Dienste umgeleitet, die in einem EU-Rechenzentrum angeordnet sind. Mit diesem Teil des globalen Lastenausgleichs von Traffic Manager können Sie die Leistung verbessern, da die Herstellung der Verbindung mit dem nächsten Rechenzentrum schneller als die Verbindung mit weit entfernten Rechenzentren möglich ist.
 
-Im Hinblick auf die Verfügbarkeit wird beim globalen Lastenausgleich sichergestellt, dass Ihr Dienst auch dann verfügbar ist, wenn ein gesamtes Rechenzentrum nicht mehr verfügbar ist.
+Im Hinblick auf die Verfügbarkeit wird beim globalen Lastenausgleich sichergestellt, dass Ihr Dienst auch dann verfügbar ist, wenn ein gesamtes Rechenzentrum ausfällt.
 
 Wenn ein Azure-Rechenzentrum beispielsweise aus umweltbezogenen Gründen oder aufgrund von Ausfällen (z.B. Ausfall des Netzwerks in einer Region) nicht mehr verfügbar ist, werden Verbindungen mit Ihrem Dienst an das nächste Rechenzentrum umgeleitet, das online ist. Dieser globale Lastenausgleich wird erreicht, indem DNS-Richtlinien genutzt werden, die Sie in Traffic Manager erstellen können.
 
@@ -235,9 +236,4 @@ Zuerst müssen aber einige Planungs- und Entwurfsprobleme gelöst werden. Dies i
 Microsoft hat das [Datacenter Extension Reference Architecture Diagram (Diagramm: Referenzarchitektur zur Rechenzentrumserweiterung)](https://gallery.technet.microsoft.com/Datacenter-extension-687b1d84#content) und das dazugehörige Begleitmaterial erstellt, damit Sie besser verstehen, wie eine Rechenzentrumserweiterung aussieht. Es handelt sich um ein Beispiel für eine Referenzimplementierung, die Sie verwenden können, um für Ihr Unternehmen eine sichere Rechenzentrumserweiterung in die Cloud zu planen und zu entwerfen. Wir empfehlen Ihnen, sich dieses Dokument durchzulesen, um sich über die wichtigsten Komponenten einer sicheren Lösung zu informieren.
 
 Weitere Informationen zur sicheren Erweiterung Ihres Rechenzentrums auf Azure erhalten Sie im Video [Extending your Datacenter to Microsoft Azure (Erweitern des Rechenzentrums auf Azure)](https://www.youtube.com/watch?v=Th1oQQCb2KA).
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

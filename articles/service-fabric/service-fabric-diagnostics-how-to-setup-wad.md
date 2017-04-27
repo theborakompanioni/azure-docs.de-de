@@ -3,7 +3,7 @@ title: Sammeln von Protokollen mit der Azure-Diagnose | Microsoft Docs
 description: "In diesem Artikel wird beschrieben, wie Sie die Azure-Diagnose so konfigurieren, dass Protokolle aus einem Service Fabric-Cluster unter Azure gesammelt werden."
 services: service-fabric
 documentationcenter: .net
-author: ms-toddabel
+author: dkkapur
 manager: timlt
 editor: 
 ms.assetid: 9f7e1fa5-6543-4efd-b53f-39510f18df56
@@ -13,10 +13,11 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/17/2017
-ms.author: toddabel
+ms.author: dekapur
 translationtype: Human Translation
-ms.sourcegitcommit: 1b4599848f44a7200f13bd6ddf4e82e96a75e069
-ms.openlocfilehash: 41343990d3379aabd129af437ff2edbbd2134dcc
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: d733c0643479f2f73ffeae716daecf06c75598a8
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -38,7 +39,7 @@ Einige der Vorgänge in diesem Dokument werden mithilfe folgender Tools ausgefü
 * [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
 * [Azure PowerShell](/powershell/azureps-cmdlets-docs)
 * [Azure Resource Manager-Client](https://github.com/projectkudu/ARMClient)
-* [Azure Resource Manager-Vorlage](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Azure Resource Manager-Vorlage](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="log-sources-that-you-might-want-to-collect"></a>Protokollquellen, die gesammelt werden können
 * **Service Fabric-Protokolle**: Werden von der Plattform für standardmäßige Kanäle der Ereignisablaufverfolgung für Windows und EventSource-Kanäle ausgegeben. Protokolle können unterschiedlicher Art sein:
@@ -193,7 +194,7 @@ Aktualisieren Sie dann den Abschnitt `VirtualMachineProfile` der template.json-D
 
 Nachdem Sie die Datei „template.json“ wie beschrieben geändert haben, veröffentlichen Sie die Resource Manager-Vorlage erneut. Wenn die Vorlage exportiert wurde, wird sie durch Ausführen der Datei „deploy.ps1“ neu veröffentlicht. Stellen Sie nach der Bereitstellung sicher, dass **ProvisioningState** den Status **Erfolgreich** aufweist.
 
-## <a name="update-diagnostics-to-collection-health-and-load-events"></a>Aktualisieren der Diagnose, um Integritäts- und Auslastungsereignisse zu sammeln
+## <a name="update-diagnostics-to-collect-health-and-load-events"></a>Aktualisieren der Diagnose, um Integritäts- und Auslastungsereignisse zu sammeln
 
 Ab Version 5.4 von Service Fabric können Integritäts- und Auslastungsmetrikereignisse gesammelt werden. Diese Ereignisse spiegeln Ereignisse wider, die vom System oder von Ihrem Code mithilfe der APIs zum Melden der Integrität oder Auslastung (beispielsweise [ReportPartitionHealth](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportpartitionhealth.aspx) oder [ReportLoad](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportload.aspx)) generiert wurden. Dies ermöglicht eine aggregierte Betrachtung der Systemintegrität im Laufe der Zeit sowie die Generierung von Warnungen auf der Grundlage von Integritäts- oder Auslastungsereignissen. Diese Ereignisse können Sie in der Diagnoseereignisansicht von Visual Studio anzeigen, indem Sie „Microsoft-ServiceFabric:4:0x4000000000000008“ zur Liste mit den ETW-Anbietern hinzufügen.
 
@@ -229,18 +230,13 @@ Wenn Ihre Ereignisquelle beispielsweise My-Eventsource heißt, fügen Sie folgen
         }
 ```
 
-Um Leistungsindikatoren oder Ereignisprotokolle zu sammeln, ändern Sie die Resource Manager-Vorlage anhand der Beispiele unter [Erstellen eines virtuellen Windows-Computers mit Überwachung und Diagnose mithilfe von Azure Resource Manager-Vorlagen](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Veröffentlichen Sie die Resource Manager-Vorlage dann erneut.
+Um Leistungsindikatoren oder Ereignisprotokolle zu sammeln, ändern Sie die Resource Manager-Vorlage anhand der Beispiele unter [Erstellen eines virtuellen Windows-Computers mit Überwachung und Diagnose mithilfe von Azure Resource Manager-Vorlagen](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Veröffentlichen Sie die Resource Manager-Vorlage dann erneut.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sehen Sie sich die Diagnoseereignisse an, die für [Reliable Actors](service-fabric-reliable-actors-diagnostics.md) und [Reliable Services](service-fabric-reliable-services-diagnostics.md) ausgegeben werden, um besser zu verstehen, welche Ereignisse Sie beim Behandeln von Problemen untersuchen sollten.
 
 ## <a name="related-articles"></a>Verwandte Artikel
-* [Erfahren Sie, wie Sie Leistungsindikatoren oder Protokolle mithilfe der Diagnoseerweiterung sammeln können.](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Erfahren Sie, wie Sie Leistungsindikatoren oder Protokolle mithilfe der Diagnoseerweiterung sammeln können.](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Service Fabric-Lösung in Log Analytics](../log-analytics/log-analytics-service-fabric.md)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

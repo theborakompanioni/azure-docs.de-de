@@ -15,8 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 02/08/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 2541236d84100ed7889d06f9b0580fcbc55ecfdb
-ms.openlocfilehash: f9443b633601272c79739c92995d53ba1a7d2b4e
+ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
+ms.openlocfilehash: d53d4cfdc7b673d2816fa9372dedbed540380cce
+ms.lasthandoff: 04/04/2017
 
 
 ---
@@ -30,11 +31,11 @@ Dieser Artikel beschreibt, was unterstützt wird, wenn Sie Azure Site Recovery f
 
 ## <a name="deployment-options"></a>Bereitstellungsoptionen
 
-**Bereitstellung** | **VMware-/physische Server** | **Hyper-V (keine VMM)** | **Hyper-V (mit VMM)**
+**Bereitstellung** | **VMware-/physische Server** | **Hyper-V (mit/ohne SCVMM)
 --- | --- | --- | ---
-**Azure-Portal** | Lokale virtuelle VMware-Computer zu sekundärem VMware-Standort.<br/><br/> Laden Sie das [InMage Scout-Benutzerhandbuch](http://download.microsoft.com/download/E/0/8/E08B3BCE-3631-4CED-8E65-E3E7D252D06D/InMage_Scout_Standard_User_Guide_8.0.1.pdf) herunter (das nicht im Azure-Portal verfügbar ist). | Nicht unterstützt | Lokale virtuelle Hyper-V-Computer in VMM-Clouds in eine sekundäre VMM-Cloud.<br/><br/> Nur standardmäßige Hyper-V-Replikation. SAN nicht unterstützt.
-**Klassisches Portal** | Nur im Wartungsmodus. Neue Tresore können nicht erstellt werden. | Nicht unterstützt | Nur im Wartungsmodus
-**PowerShell** | Nicht unterstützt | Nicht unterstützt | Unterstützt
+**Azure-Portal** | Lokale virtuelle VMware-Computer zu sekundärem VMware-Standort.<br/><br/> Laden Sie das [InMage Scout-Benutzerhandbuch](http://download.microsoft.com/download/E/0/8/E08B3BCE-3631-4CED-8E65-E3E7D252D06D/InMage_Scout_Standard_User_Guide_8.0.1.pdf) herunter (das nicht im Azure-Portal verfügbar ist). | Lokale virtuelle Hyper-V-Computer in VMM-Clouds in eine sekundäre VMM-Cloud.<br></br> Ohne SCVMM nicht unterstützt  <br/><br/> Nur standardmäßige Hyper-V-Replikation. SAN nicht unterstützt.
+**Klassisches Portal** | Nur im Wartungsmodus. Neue Tresore können nicht erstellt werden. | Nur im Wartungsmodus<br></br> Ohne SCVMM nicht unterstützt
+**PowerShell** | Nicht unterstützt | Unterstützt<br></br> Ohne SCVMM nicht unterstützt
 
 ## <a name="on-premises-servers"></a>Lokale Server
 
@@ -98,7 +99,7 @@ Multi-NIC | Ja | Ja
 **Speicher (Host)** | **VMware-/physische Server** | **Hyper-V (mit VMM)**
 --- | --- | ---
 NFS | Ja | –
-SMB 3.0 | – | Ja
+SMB 3.0 | N/V | Ja
 SAN (ISCSI) | Ja | Ja
 Multipfad (MPIO) | Ja | Ja
 
@@ -108,7 +109,7 @@ Multipfad (MPIO) | Ja | Ja
 --- | --- | ---
 VMDK | Ja | –
 VHD/VHDX | N/V | Ja (bis zu 16 Datenträger)
-Gen 2-VM | N/V | Ja
+Gen 2-VM | – | Ja
 Freigegebener Clusterdatenträger | Ja  | Nein
 Verschlüsselter Datenträger | Nein | Nein
 UEFI| Nein | –
@@ -119,7 +120,7 @@ Datenträger > 1 TB | Nein | Ja
 Volume mit Stripesetdatenträgern > 1 TB<br/><br/> LVM | Ja | Ja
 Speicherplätze | Nein | Ja
 Datenträger laufendem Systembetrieb hinzufügen/entfernen | Nein | Nein
-Ausschließen von Datenträgern | Nein | Nein
+Ausschließen von Datenträgern | Nein | Ja
 Multipfad (MPIO) | N/V | Ja
 
 ## <a name="vaults"></a>Tresore
@@ -140,9 +141,4 @@ Verschieben von Speicher, Netzwerk, Azure-VMs zwischen Ressourcengruppen (innerh
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie mehr über die [Voraussetzungen für die Bereitstellung](site-recovery-prereq.md).
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

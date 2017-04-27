@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 10/31/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 63c901529b81c75f46f1b21219054817c148063a
-ms.openlocfilehash: 1c46c40b09ca1923190d3c7109d25bd7525cb577
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 843a3cafd5a00dd4b4de04a43f18d58e60a48b29
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -58,7 +59,7 @@ Sie müssen keine Schwellenwerte festlegen und keine Regeln konfigurieren. Machi
 
   * Bisher nicht. Sie können aber Folgendes tun:
   * [Einrichten von Warnungen](app-insights-alerts.md), die Sie informieren, wenn eine Metrik einen Schwellenwert überschreitet
-  * [Exportieren von Telemetriedaten](app-insights-export-telemetry.md) in eine [Datenbank](app-insights-code-sample-export-sql-stream-analytics.md) oder in [Power BI](app-insights-export-power-bi.md) oder [andere](app-insights-code-sample-export-telemetry-sql-database.md) Tools, mit denen Sie selbst eine Analyse durchführen können.
+  * [Exportieren von Telemetriedaten](app-insights-export-telemetry.md) in eine [Datenbank](app-insights-code-sample-export-sql-stream-analytics.md) oder [in PowerBI](app-insights-export-power-bi.md), mit denen Sie selbst eine Analyse durchführen können.
 * *Wie oft wird die Analyse ausgeführt?*
 
   * Die Analyse der Telemetriedaten vom Vortag wird täglich ausgeführt.
@@ -136,9 +137,4 @@ Intelligente Erkennungen sind vollkommen automatisch. Vielleicht möchten Sie ab
 
 * [Einrichten von Warnungen in Application Insights](app-insights-alerts.md)
 * [Verfügbarkeitswebtests](app-insights-monitor-web-app-availability.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

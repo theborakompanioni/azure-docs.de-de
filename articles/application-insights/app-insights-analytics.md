@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: 4fbd80f7e9775fe3c12a54302be4a162d2102e2f
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 717269a2c0e0b1a3d332e627154eacd2d2c5001e
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -27,6 +27,7 @@ ms.lasthandoff: 03/16/2017
 * **[Testen Sie Analytics mit unseren simulierten Daten](https://analytics.applicationinsights.io/demo)**, wenn Ihre App noch keine Daten an Application Insights sendet.
 * In der **[Kurzübersicht für SQL-Benutzer](https://aka.ms/sql-analytics)** finden Sie eine Übersetzung der gängigsten Sprachen.
 * **[Sprachreferenz](app-insights-analytics-reference.md)** Erfahren Sie, wie die leistungsstarken Funktionen der Analytics-Abfragesprache verwenden.
+
 
 ## <a name="queries-in-analytics"></a>Abfragen in Analytics
 Eine typische Abfrage ist eine *Quelltabelle*, gefolgt von einer Reihe von *Operatoren*, die durch `|` getrennt sind. 
@@ -56,6 +57,7 @@ Es gibt auch leistungsstarke statistische Vorgänge:
 
 Die Sprache verfügt über viele attraktive Features:
 
+
 * [Filtern](app-insights-analytics-reference.md#where-operator) der Rohdaten Ihrer App-Telemetrie nach beliebigen Feldern, einschließlich Ihrer benutzerdefinierten Eigenschaften und Metriken.
 * [Verbinden](app-insights-analytics-reference.md#join-operator) mehrerer Tabellen – Korrelation von Anforderungen mit Seitenansichten, Aufrufen von Abhängigkeiten, Ausnahmen und Protokollablaufverfolgungen.
 * Leistungsstarke statistische [Aggregationen](app-insights-analytics-reference.md#aggregations).
@@ -81,7 +83,20 @@ Die Sprache verfügt über viele attraktive Features:
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Es wird empfohlen, mit der [Einführung in die Abfragesprache](app-insights-analytics-tour.md)zu beginnen.
+* Es wird empfohlen, mit der [Einführung in die Abfragesprache](app-insights-analytics-tour.md)zu beginnen. 
+
+### <a name="query-examples"></a>Abfragebeispiele
+
+* Arbeiten Sie diese exemplarischen Vorgehensweisen durch, die die Vorteile der Verwendung von Analytics veranschaulichen:
+ 1.    [Automatic diagnostics of spikes and step jumps in requests durations](https://analytics.applicationinsights.io/demo#/discover/query/results/chart?title=Automatic%20diagnostics%20of%20sudden%20spikes%20or%20step%20jumps%20in%20requests%20duration&shared=true) (Automatische Diagnose von Spitzen und Schrittsprüngen in der Anfragedauer)
+ 2.    [Analyzing performance degradations with time series analysis](https://analytics.applicationinsights.io/demo#/discover/query/main?title=Analyzing%20performance%20degradations%20with%20time%20series%20analysis&shared=true) (Analysieren der Leistungsbeeinträchtigung mithilfe der Zeitreihenanalyse)
+ 3.    [Analyzing application failures with autocluster and diffpatterns](https://analytics.applicationinsights.io/demo#/discover/query/main?title=Analyzing%20application%20failures%20with%20autocluster%20and%20diffpatterns&shared=true) (Analysieren von Anwendungsausfällen mit automatischem Clustering und Differenzmustern)
+ 4.    [Advanced shape detections with time series analysis](https://analytics.applicationinsights.io/demo#/discover/query/main?title=Advanced%20shape%20detection%20with%20time%20series%20analysis&shared=true) (Erkennung erweiterter Formen mithilfe der Zeitreihenanalyse)
+ 5.    [Using sliding window operations to analyze application usage (rolling MAU/DAU etc)](https://analytics.applicationinsights.io/demo#/discover/query/main?title=Using%20sliding%20window%20calculations%20to%20analyze%20usage%20metrics:%20rolling%20MAU~2FDAU%20and%20cohorts&shared=true) (Analysieren der Anwendungsverwendung (gleitendes MAU/DAU) mithilfe von Schiebefenstervorgängen)
+ 6.    [Detection of service disruptions based on analysis of debug logs](https://analytics.applicationinsights.io/demo#/discover/query/main?title=Detection%20of%20service%20disruptions%20based%20on%20regression%20analysis%20of%20trace%20logs&shared=true) (Erkennen von Dienstunterbrechungen durch Analyse von Debugprotokollen); ein entsprechender Blogbeitrag findet sich [hier](https://maximshklar.wordpress.com/2017/02/16/finding-trends-in-traces-with-smart-data-analytics).
+ 7.    [Profiling applications’ performance using simple debug logs](https://analytics.applicationinsights.io/demo#/discover/query/main?title=Profiling%20applications'%20performance%20with%20simple%20debug%20logs&shared=true) (Erstellen von Leistungsprofilen für Anwendungen mithilfe einfacher Debugprotokolle); ein entsprechender Blogbeitrag findet sich [hier](https://yossiattasblog.wordpress.com/2017/03/13/first-blog-post/)
+ 8.    [Measuring the duration for each step in your code flow using simple debug logs](https://analytics.applicationinsights.io/demo#/discover/query/main?title=Measuring%20the%20duration%20of%20each%20step%20in%20your%20code%20flow%20using%20simple%20debug%20logs&shared=true) (Messen der Dauer der einzelnen Schritte im Codefluss mithilfe einfacher Debugprotokolle); ein entsprechender Blogbeitrag findet sich [hier](https://yossiattasblog.wordpress.com/2017/03/14/measuring-the-duration-of-each-step-in-your-code-flow-using-simple-debug-logs/)
+ 9.    [Analyzing concurrency using simple debug logs](https://analytics.applicationinsights.io/demo#/discover/query/results/chart?title=Analyzing%20concurrency%20with%20simple%20debug%20logs&shared=true) (Analysieren der Parallelität mithilfe einfacher Debugprotokolle); ein entsprechender Blogbeitrag findet sich [hier](https://yossiattasblog.wordpress.com/2017/03/23/analyzing-concurrency-using-simple-debug-logs/)
 
 
 

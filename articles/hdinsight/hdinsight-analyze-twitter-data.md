@@ -16,9 +16,9 @@ ms.date: 02/06/2017
 ms.author: jgao
 ROBOTS: NOINDEX
 translationtype: Human Translation
-ms.sourcegitcommit: 6407c371bc51461a05429fabaf38d3f9bc80d32c
-ms.openlocfilehash: a90c412d2d66834cd0df3f348fa488b6ce10c898
-ms.lasthandoff: 02/07/2017
+ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
+ms.openlocfilehash: 159e41f3d1b43abc830b79e1ea0bed05e05505a2
+ms.lasthandoff: 04/11/2017
 
 
 ---
@@ -28,7 +28,7 @@ Soziale Netzwerke sind einer der Hauptfaktoren für die Akzeptanz von Big Data. 
 In diesem Lernprogramm werden Sie mit der Twitter-Streaming-API Tweets abrufen und dann mithilfe von Apache Hive in Azure HDInsight eine Liste der Twitter-Benutzer abrufen, die die meisten Tweets gesendet haben, die ein bestimmtes Wort enthalten.
 
 > [!IMPORTANT]
-> Die Schritte in diesem Dokument erfordern einen Windows-basierten HDInsight-Cluster. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date). Die Schritte für einen Linux-basierten Cluster finden Sie unter [Analysieren von Twitter-Daten mit Hive in HDInsight (Linux)](hdinsight-analyze-twitter-data-linux.md).
+> Die Schritte in diesem Dokument erfordern einen Windows-basierten HDInsight-Cluster. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date). Die Schritte für einen Linux-basierten Cluster finden Sie unter [Analysieren von Twitter-Daten mit Hive in HDInsight (Linux)](hdinsight-analyze-twitter-data-linux.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
@@ -461,7 +461,7 @@ Damit haben Sie sämtliche Vorbereitungen abgeschlossen. Jetzt können Sie das H
 Verwenden Sie das folgende Windows PowerShell-Skript, um das Hive-Skript auszuführen. Sie müssen die erste Variable festlegen.
 
 > [!NOTE]
-> Um die Tweets und das HiveQL-Skript, das Sie in den letzten beiden Abschnitten hochgeladen haben, zu verwenden, legen Sie "$hqlScriptFile" auf "/ tutorials/twitter/twitter.hql" fest. Um diejenigen zu verwenden, die in ein öffentliches Blob hochgeladen wurden, legen Sie für „$hqlScriptFile“ Folgendes fest: "wasbs://twittertrend@hditutorialdata.blob.core.windows.net/twitter.hql".
+> Um die Tweets und das HiveQL-Skript, das Sie in den letzten beiden Abschnitten hochgeladen haben, zu verwenden, legen Sie "$hqlScriptFile" auf "/ tutorials/twitter/twitter.hql" fest. Um diejenigen zu verwenden, die in ein öffentliches Blob hochgeladen wurden, legen Sie für „$hqlScriptFile“ Folgendes fest: „wasbs://twittertrend@hditutorialdata.blob.core.windows.net/twitter.hql“.
 
 ```powershell
 #region variables and constants
@@ -563,7 +563,7 @@ In diesem Lernprogramm haben Sie erfahren, wie Sie ein unstrukturiertes JSON-Dat
 [powershell-install]: /powershell/azureps-cmdlets-docs
 [powershell-script]: http://technet.microsoft.com/library/ee176961.aspx
 
-[hdinsight-provision]: hdinsight-provision-clusters.md
+[hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
 [hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
 [hdinsight-storage-powershell]:hdinsight-hadoop-use-blob-storage.md#access-blobs-using-azure-powershell
 [hdinsight-analyze-flight-delay-data]: hdinsight-analyze-flight-delay-data.md

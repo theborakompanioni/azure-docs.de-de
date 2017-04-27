@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2017
+ms.date: 03/30/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
-ms.openlocfilehash: 1a3b78575b2b7f8d36178d41975690e984277a29
-ms.lasthandoff: 03/29/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 454957b439e327b08dcd6e7f4acee37963970458
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -24,6 +24,9 @@ ms.lasthandoff: 03/29/2017
 Dieser Artikel beschreibt, wie die Kopieraktivität in Azure Data Factory verwendet wird, um Daten von einem lokalen bzw. einem in der Cloud gehosteten SFTP-Server zu einem unterstützten Senkendatenspeicher zu verschieben. Dieser Artikel baut auf dem Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit der Kopieraktivität und der als Quellen/Senken unterstützten Datenspeichern darstellt.
 
 Data Factory unterstützt derzeit nur das Verschieben von Daten aus einem SFTP-Server in andere Datenspeicher und nicht das Verschieben aus anderen Datenspeichern auf einen SFTP-Server. Es werden sowohl lokale als auch in der Cloud gehostete SFTP-Server unterstützt.
+
+> [!NOTE]
+> Bei der Kopieraktivität wird die Quelldatei nicht gelöscht, nachdem sie erfolgreich in das Ziel kopiert wurde. Wenn Sie die Quelldatei nach dem erfolgreichen Kopieren löschen müssen, erstellen Sie eine benutzerdefinierte Aktivität, um die Datei zu löschen, und verwenden Sie die Aktivität in der Pipeline. 
 
 ## <a name="supported-scenarios-and-authentication-types"></a>Unterstützte Szenarien und Authentifizierungsarten
 Sie können diesen SFTP-Connector zum Kopieren von Daten **sowohl von in der Cloud gehosteten SFTP-Servern als auch lokalen SFTP-Servern** verwenden. Die Authentifizierungsarten **Standard** und **SshPublicKey** werden zum Herstellen von Verbindungen mit dem SFTP-Server unterstützt.
@@ -58,7 +61,7 @@ Legen Sie zum Verwenden der Standardauthentifizierung `authenticationType` auf `
 | Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- | --- |
 | username | Benutzer, der Zugriff auf den SFTP-Server hat. |Ja |
-| password | Kennwort für den Benutzer (username). | Ja |
+| password | Kennwort für den Benutzer (username) | Ja |
 
 #### <a name="example-basic-authentication"></a>Beispiel: Standardauthentifizierung
 ```json
@@ -209,6 +212,8 @@ Eigenschaften im Abschnitt „typeProperties“ der Aktivität können dagegen j
 
 [!INCLUDE [data-factory-file-system-source](../../includes/data-factory-file-system-source.md)]
 
+## <a name="supported-file-and-compression-formats"></a>Unterstützte Datei- und Komprimierungsformate
+Einzelheiten finden Sie im Artikel [Datei- und Komprimierungsformate in Azure Data Factory](data-factory-supported-file-and-compression-formats.md).
 
 ### <a name="json-example-copy-data-from-sftp-server-to-azure-blob"></a>JSON-Beispiel: Kopieren von Daten von einem SFTP-Server nach Azure-Blob
 Das folgende Beispiel stellt JSON-Beispieldefinitionen bereit, die Sie zum Erstellen einer Pipeline mit dem [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder mit [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Darin wird veranschaulicht, wie Sie Daten aus einer SFTP-Quelle nach Azure Blob Storage kopieren. Daten können jedoch mithilfe der Kopieraktivität in Azure Data Factory **direkt** aus beliebigen Quellen in die [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) aufgeführten Senken kopiert werden.

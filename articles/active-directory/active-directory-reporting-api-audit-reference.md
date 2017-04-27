@@ -3,7 +3,7 @@ title: "Referenz zur Azure Active Directory-Überwachungs-API | Microsoft Docs"
 description: "Vorgehensweise zum Einstieg in die Azure Active Directory-Überwachungs-API"
 services: active-directory
 documentationcenter: 
-author: dhanyahk
+author: markusvi
 manager: femila
 editor: 
 ms.assetid: 44e46be8-09e5-4981-be2b-d474aaa92792
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/16/2016
+ms.date: 04/05/2017
 ms.author: dhanyahk;markvi
 translationtype: Human Translation
-ms.sourcegitcommit: b1de516d907826d3e6ede0783649f6101b381852
-ms.openlocfilehash: 261cce0b8424f73df4c7ca86784a14e95a8336f1
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: 87c7990834eaf2aa6c4aff0c341150ba9bd9eed4
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -75,6 +76,8 @@ Für anmeldebezogene API-Daten werden die folgenden Filter unterstützt:
 Um festzulegen, an welcher Art von Datensätzen Sie interessiert sind, können Sie eine Filteranweisung erstellen, die entweder eines der folgenden Filterfelder oder eine Kombination daraus enthält:
 
 * [activityDate](#activitydate): Definiert ein Datum oder einen Datumsbereich.
+* [category](#category): Definiert die Kategorie, nach der gefiltert werden soll.
+* [activityStatus](#activitystatus): Definiert den Status einer Aktivität.
 * [activityType](#activitytype): Definiert den Typ einer Aktivität.
 * [activity](#activity) : Definiert die Aktivität als Zeichenfolge.  
 * [actor/name](#actorname): Definiert den Actor in Form des Actornamens.
@@ -97,6 +100,45 @@ Um festzulegen, an welcher Art von Datensätzen Sie interessiert sind, können S
 datetime muss im UTC-Format angegeben werden.
 
 - - -
+### <a name="category"></a>category
+
+**Unterstützte Werte**:
+
+| Kategorie                         | Wert     |
+| :--                              | ---       |
+| Kernverzeichnis                   | Verzeichnis |
+| Self-Service-Kennwortverwaltung | SSPR      |
+| Self-Service-Gruppenverwaltung    | SSGM      |
+| Kontobereitstellung             | Synchronisierung      |
+| Automatisiertes Kennwortrollover      | Automatisiertes Kennwortrollover |
+| Schutz der Identität (Identity Protection)              | IdentityProtection |
+| Invited Users (Eingeladene Benutzer)                    | Invited Users (Eingeladene Benutzer) |
+| MIM Service (MIM-Dienst)                      | MIM Service (MIM-Dienst) |
+
+
+
+**Unterstützte Operatoren**: eq
+
+**Beispiel**:
+
+    $filter=category eq 'SSPR'
+- - -
+### <a name="activitystatus"></a>activityStatus
+
+**Unterstützte Werte**:
+
+| Aktivitätsstatus | Wert |
+| :--             | ---   |
+| Erfolgreich         | 0     |
+| Fehler         | - 1   |
+
+**Unterstützte Operatoren**: eq
+
+**Beispiel**:
+
+    $filter=activityStatus eq -1    
+
+---
 ### <a name="activitytype"></a>activityType
 **Unterstützte Operatoren**: eq
 
@@ -139,6 +181,7 @@ Groß-/Kleinschreibung muss nicht beachtet werden.
 **Beispiel**:
 
     $filter=actor/objectId eq 'e8096343-86a2-4384-b43a-ebfdb17600ba'    
+
 
 - - -
 ### <a name="targetname"></a>actor/name
@@ -190,10 +233,5 @@ Groß-/Kleinschreibung muss nicht beachtet werden.
 ## <a name="next-steps"></a>Nächste Schritte
 * Möchten Sie Beispiele für gefilterte Systemaktivitäten anzeigen? Sehen Sie sich die [Beispiele zur Azure Active Directory-Überwachungs-API](active-directory-reporting-api-audit-samples.md)an.
 * Sie möchten mehr über die Azure AD-Berichterstellungs-API erfahren? Lesen Sie den Artikel [Erste Schritte mit der Berichterstellungs-API von Azure Active Directory](active-directory-reporting-api-getting-started.md).
-
-
-
-
-<!--HONumber=Dec16_HO4-->
 
 

@@ -11,17 +11,18 @@ ms.workload: compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 04/26/2017
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: 816305fb3ace5bfc7cf50bac5e42fde83e9697d3
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 232901ab919c63ea70e52afb845240b41a517c51
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="azure-ad--active-directory-requirements-for-azure-remoteapp"></a>Azure AD + Active Directory-Anforderungen für Azure RemoteApp
 > [!IMPORTANT]
-> Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
+> Azure RemoteApp wird am 31. August 2017 eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
 > 
 > 
 
@@ -32,12 +33,12 @@ Wenn Sie Ihren Azure AD-Mandanten und Ihre lokalen Active Directory-Umgebungen v
 
 Hinweis: Für Hybrid-Sammlungen ist Verzeichnissynchronisierung erforderlich.
 
-### <a name="make-sure-your-domaincom-match"></a>Sicherstellen, dass Ihre "@domain.com" übereinstimmt
+### <a name="make-sure-your-domaincom-match"></a>Sicherstellen der Übereinstimmung von „@domain.com“
 Bevor Sie beginnen, stellen Sie sicher, dass der UPN für die lokale Gesamtstruktur mit dem Suffix Ihrer Azure AD-Domäne übereinstimmt. 
 
-Nachdem Sie das UPN-Domänensuffix in Azure AD eingerichtet haben, werden alle Benutzer, die sich bei Azure RemoteApp anmelden, als „"user@<the suffix you set up>“ angemeldet. Stellen Sie sicher, dass Benutzer sich mit derselben user@suffix auch bei der lokalen Domäne anmelden können. In bestimmten Fällen wurde möglicherweise ein Domänenname in Azure AD eingerichtet und für den lokalen Benutzer ein anderer Domänensuffix festgelegt. In diesem Fall können Ihre Benutzer über Azure RemoteApp keine Verbindung mit Computern oder Ressourcen herstellen, die der Domäne angehören.
+Nachdem Sie das UPN-Domänensuffix in Azure AD eingerichtet haben, werden alle Benutzer, die sich bei Azure RemoteApp anmelden, als „user@<the suffix you set up>“ angemeldet. Stellen Sie sicher, dass Benutzer sich mit derselben user@suffix auch bei der lokalen Domäne anmelden können. In bestimmten Fällen wurde möglicherweise ein Domänenname in Azure AD eingerichtet und für den lokalen Benutzer ein anderer Domänensuffix festgelegt. In diesem Fall können Ihre Benutzer über Azure RemoteApp keine Verbindung mit Computern oder Ressourcen herstellen, die der Domäne angehören.
 
-Wenn Sie Ihr UPN-Domänensuffix in AAD z. B. als "contoso.com" einrichten, einige Benutzer aber lokal bzw. in AD so konfiguriert sind, dass die Anmeldung mit @contoso.uk, erfolgt, können diese Benutzer sich bei der ARA-Sammlung nicht richtig anmelden. Der UPN der Benutzer muss in AAD und AD identisch sein, damit die Anmeldung möglich ist.
+Wenn Sie Ihr UPN-Domänensuffix in AAD z.B. als „contoso.com“ einrichten, einige Benutzer aber lokal bzw. in AD so konfiguriert sind, dass die Anmeldung mit @contoso.uk erfolgt, können sich diese Benutzer nicht ordnungsgemäß bei der ARA-Sammlung anmelden. Der UPN der Benutzer muss in AAD und AD identisch sein, damit die Anmeldung möglich ist.
 
 ### <a name="create-objects-for-azure-remoteapp"></a>Erstellen von Objekten für Azure RemoteApp
 Sie müssen außerdem die folgenden lokalen Active Directory-Objekte erstellen:
@@ -46,10 +47,5 @@ Sie müssen außerdem die folgenden lokalen Active Directory-Objekte erstellen:
 * Eine Organisationseinheit (OE), die RemoteApp-Computerobjekte enthält. Die Verwendung einer Organisationseinheit ist empfehlenswert (jedoch nicht unbedingt erforderlich), um die Konten und Richtlinien, die Sie mit RemoteApp verwenden, zu isolieren.
 
 Sie benötigen diese beiden Objekte beim Erstellen Ihrer RemoteApp-Sammlung, daher führen Sie diese Schritte unbedingt zuerst aus.
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

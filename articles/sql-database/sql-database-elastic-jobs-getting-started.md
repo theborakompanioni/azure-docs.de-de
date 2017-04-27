@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: 77b8b8960fb0e5e5340b65dae03f95b456832a07
-ms.openlocfilehash: 1765e009438684373c89dc8364efd20dd1b7c84b
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: 12f84f7ee418955f34316686c836a8697be94ea2
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -36,7 +37,7 @@ Hier erstellen Sie einen Shardzuordnungs-Manager und mehrere Shards und fügen a
    ![Eingabeaufforderung](./media/sql-database-elastic-query-getting-started/cmd-prompt.png)
 
 2. Geben Sie im Befehlsfenster „1“ ein, und drücken Sie die **EINGABETASTE**. Dadurch wird der Shardzuordnungs-Manager erstellt, und es werden zwei Shards zum Server hinzugefügt. Geben Sie dann „3“ ein, und drücken Sie die **Eingabetaste**. Wiederholen Sie diesen Vorgang viermal. Dadurch werden Beispieldatenzeilen in die Shards eingefügt.
-3. Im [Azure-Portal](https://portal.azure.com) sollten drei neue Datenbanken auf dem V12-Server angezeigt werden:
+3. Im [Azure-Portal](https://portal.azure.com) sollten drei neue Datenbanken angezeigt werden:
 
    ![Visual Studio-Bestätigung](./media/sql-database-elastic-query-getting-started/portal.png)
 
@@ -478,9 +479,4 @@ Preisinformationen finden Sie in der [SQL-Datenbank – Preisdetails](https://az
 [4]: ./media/sql-database-elastic-query-getting-started/details.png
 [5]: ./media/sql-database-elastic-query-getting-started/exel-sources.png
 <!--anchors-->
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

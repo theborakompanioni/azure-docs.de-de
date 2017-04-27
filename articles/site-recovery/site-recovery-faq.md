@@ -15,9 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 02/21/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: aebd94edbad210f15bce5b39ebf73269ec67a209
-ms.openlocfilehash: 3bcba1123d3ec00c760d022d200609bf28c22362
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 3807e51d47927ce94a62b943b85be67a247420b8
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -67,7 +67,7 @@ Ja. Sie können VMs auf Hyper-V-Servern in der VMM-Cloud in Azure replizieren, o
 Sie können physische Server unter Windows und Linux in Azure oder an einem sekundären Standort replizieren. [Informieren Sie sich](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements) über die Betriebssystemanforderungen.  Unabhängig davon, ob Sie physische Server in Azure oder an einem sekundären Standort replizieren, gelten die gleichen Anforderungen.
 
 
-Beachten Sie, dass physische Server als VMs in Azure ausgeführt werden, wenn der lokale Server ausfällt. Ein Failback auf einen lokalen physischen Server wird derzeit nicht unterstützt, aber ein Failback auf einen virtuellen Computer mit Hyper-V oder VMware ist möglich.
+Beachten Sie, dass physische Server als VMs in Azure ausgeführt werden, wenn der lokale Server ausfällt. Das Failback auf einen lokalen physischen Server wird derzeit nicht unterstützt. Für einen als physisch geschützten Computer kann nur ein Failback auf einen virtuellen VMware-Computer ausgeführt werden.
 
 ### <a name="what-vmware-vms-can-i-protect"></a>Welche VMware-VMs können geschützt werden?
 
@@ -156,16 +156,13 @@ Das Hinzufügen von neuen Computern zu vorhandenen Replikationsgruppen wird unte
 Ja. In den Bereitstellungsartikeln erfahren Sie mehr über die Drosselung der Bandbreite:
 
 * [Kapazitätsplanung für die Replikation von VMware-VMs und physischen Servern](site-recovery-plan-capacity-vmware.md)
-* [Kapazitätsplanung für die Replikation von Hyper-V-VMs in VMM-Clouds](site-recovery-vmm-to-azure.md#step-5-capacity-planning)
-* [Kapazitätsplanung für die Replikation von Hyper-V-VMs ohne VMM](site-recovery-hyper-v-site-to-azure.md#step-5-capacity-planning)
+* [Kapazitätsplanung für die Replikation von Hyper-V-VMs in VMM-Clouds](site-recovery-vmm-to-azure.md#capacity-planning)
+* [Kapazitätsplanung für die Replikation von Hyper-V-VMs ohne VMM](site-recovery-hyper-v-site-to-azure.md#capacity-planning)
 
 ## <a name="failover"></a>Failover
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-virtual-machines-after-failover"></a>Wie greife ich nach einem Failover auf Azure auf die virtuellen Azure-Computer zu?
-Sie können auf die Azure-VMs über eine sichere Internetverbindung, über eine Site-to-Site-VPN-Verbindung oder über Azure ExpressRoute zugreifen. Sie müssen eine Reihe von Vorbereitungen treffen, um eine Verbindung herzustellen. Weitere Informationen finden Sie in:
+Sie können auf die Azure-VMs über eine sichere Internetverbindung, über eine Site-to-Site-VPN-Verbindung oder über Azure ExpressRoute zugreifen. Sie müssen eine Reihe von Vorbereitungen treffen, um eine Verbindung herzustellen. [Weitere Informationen](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)
 
-* [Connect to Azure VMs after failover of VMware VMs or physical servers](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)
-* [Connect to Azure VMs after failover of Hyper-V VMs in VMM clouds](site-recovery-vmm-to-azure.md#step-7-test-your-deployment)
-* [Connect to Azure VMs after failover of Hyper-V VMs without VMM](site-recovery-hyper-v-site-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)
 
 ### <a name="if-i-fail-over-to-azure-how-does-azure-make-sure-my-data-is-resilient"></a>Wie wird bei einem Failover auf Azure in Azure sichergestellt, dass die Daten stabil sind?
 Azure ist auf Resilienz ausgelegt. Site Recovery ist bereits für ein Failover in ein sekundäres Azure-Rechenzentrum (gemäß Azure-SLA) konzipiert, falls sich die Notwendigkeit ergibt. Wenn dies der Fall ist, stellen wir sicher, dass Ihre Metadaten und Tresore innerhalb der gleichen geografischen Region bleiben, die Sie für Ihren Tresor ausgewählt haben.  
@@ -181,6 +178,12 @@ Zum Automatisieren können Sie den lokalen Orchestrator oder Operations Manager 
 * [hier](site-recovery-create-recovery-plans.md) .
 * [Weitere Informationen](site-recovery-failover.md) .
 * [Weitere Informationen](site-recovery-failback-azure-to-vmware.md) .
+
+### <a name="if-my-on-premises-host-is-not-responding-or-crashed-can-i-failover-back-to-a-different-host"></a>Angenommen, mein lokaler Host reagiert nicht mehr oder ist abgestürzt. Kann ein Failover zurück auf einen anderen Host ausgeführt werden?
+Ja, Sie können über die Wiederherstellung an einem alternativen Speicherort ein Failback auf einen anderen Host als Azure ausführen. Unter den folgenden Links für virtuelle VMware-Computer und virtuelle Hyper-V-Computer werden die verfügbaren Optionen beschrieben.
+
+* [Für virtuelle VMware-Computer](site-recovery-how-to-failback-azure-to-vmware.md#fail-back-to-the-original-or-alternate-location)
+* [Für virtuelle Hyper-V-Computer](site-recovery-failback-from-azure-to-hyper-v.md#failback-to-an-alternate-location)
 
 ## <a name="service-providers"></a>Dienstanbieter
 ### <a name="im-a-service-provider-does-site-recovery-work-for-dedicated-and-shared-infrastructure-models"></a>Ich bin ein Dienstanbieter. Ist Site Recovery für dedizierte und gemeinsam genutzte Infrastrukturmodelle geeignet?

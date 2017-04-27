@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory Domain Services: Einbinden eines virtuellen Red Hat Enterprise Linux&7;-Computers in eine verwaltete Domäne | Microsoft Docs"
+title: "Azure Active Directory Domain Services: Einbinden eines virtuellen Red Hat Enterprise Linux 7-Computers in eine verwaltete Domäne | Microsoft Docs"
 description: "Einbinden eines virtuellen Red Hat Enterprise Linux-Computers in Azure AD-Domänendienste"
 services: active-directory-ds
 documentationcenter: 
@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: d36b4c1391dad88603ad823055e11c0a4a329c3c
-ms.openlocfilehash: 89e97cb903e04efa77cfc6b02484d28a9ccfe6fb
-ms.lasthandoff: 01/13/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 69f1850bfed90392e9a4695e2443ffaa6bfc746d
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -62,7 +62,7 @@ Führen Sie die folgenden Schritte aus, um einen virtuellen RHEL 7-Computer übe
 ## <a name="connect-remotely-to-the-newly-provisioned-linux-virtual-machine"></a>Herstellen einer Remoteverbindung mit dem neu bereitgestellten virtuellen Linux-Computer
 Der virtuelle RHEL 7.2-Computer wurde in Azure bereitgestellt. Die nächste Aufgabe besteht darin, eine Remoteverbindung mit dem virtuellen Computer herzustellen.
 
-**Herstellen einer Verbindung mit dem virtuellen RHEL 7.2-Computer:** Folgen Sie den Anweisungen im Artikel [Erstellen von SSH-Schlüsseln unter Linux und Mac für Linux-VMs in Azure](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+**Herstellen einer Verbindung mit dem virtuellen RHEL 7.2-Computer:** Folgen Sie den Anweisungen im Artikel [Erstellen von SSH-Schlüsseln unter Linux und Mac für Linux-VMs in Azure](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 Bei den weiteren Schritten wird vorausgesetzt, dass Sie den PuTTY-SSH-Client verwenden, um eine Verbindung mit dem virtuellen RHEL-Computer herzustellen. Weitere Informationen finden Sie auf der [PuTTY-Downloadseite](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
 
@@ -133,7 +133,7 @@ Wenn der Computer erfolgreich in die verwaltete Domäne eingebunden wurde, sollt
 ## <a name="verify-domain-join"></a>Überprüfen des Domänenbeitritts
 Sie können schnell überprüfen, ob der Computer erfolgreich der verwalteten Domäne beigetreten ist. Stellen Sie über SSH und ein Domänenbenutzerkonto eine Verbindung mit dem neu in die Domäne eingebundenen virtuellen RHEL-Computer her, und überprüfen Sie ob das Benutzerkonto ordnungsgemäß aufgelöst wird.
 
-1. Geben Sie in Ihrem PuTTY-Terminal den folgenden Befehl ein, um über SSH eine Verbindung mit dem neu in die Domäne eingebundenen virtuellen RHEL-Computer herzustellen. Verwenden Sie ein Domänenkonto, das zu der verwalteten Domäne gehört (z.B. 'bob@CONTOSO100.COM'.
+1. Geben Sie in Ihrem PuTTY-Terminal den folgenden Befehl ein, um über SSH eine Verbindung mit dem neu in die Domäne eingebundenen virtuellen RHEL-Computer herzustellen. Verwenden Sie ein Domänenkonto, das zu der verwalteten Domäne gehört (in diesem Fall z.B. 'bob@CONTOSO100.COM').
 
     ssh -l bob@CONTOSO100.COM contoso-rhel.cloudapp.net
 2. Geben Sie in Ihrem PuTTY-Terminal den folgenden Befehl ein, um zu ermitteln, ob das Basisverzeichnis ordnungsgemäß initialisiert wurde.
@@ -153,7 +153,7 @@ Informationen finden Sie im Artikel [Problembehandlung beim Domänenbeitritt](ac
 ## <a name="related-content"></a>Verwandte Inhalte
 * [Azure AD-Domänendienste – Leitfaden zu den ersten Schritten](active-directory-ds-getting-started.md)
 * [Einbinden eines virtuellen Windows Server-Computers in eine verwaltete Domäne der Azure AD-Domänendienste](active-directory-ds-admin-guide-join-windows-vm.md)
-* [Anmelden bei einem virtuellen Computer unter Linux](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Anmelden bei einem virtuellen Computer unter Linux](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Installing Kerberos (Installieren von Kerberos)](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Managing_Smart_Cards/installing-kerberos.html)
 * [Red Hat Enterprise Linux 7 - Windows Integration Guide (Red Hat Enterprise Linux 7 – Windows-Integrationsleitfaden)](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Windows_Integration_Guide/index.html)
 

@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: t-sql
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 103b3ad93c6bb99f1781e9b3c485caa6042ae0a3
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: e42d80f0ca35f3fbb67389c66d072bc40d8a8d2c
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -63,7 +65,7 @@ GO
 EXEC prc_nesting
 ```
 
-Hinweis: SQL Data Warehouse unterstützt derzeit @@NESTLEVEL. nicht. Sie müssen die Schachtelungsebene selbst im Auge behalten. Es ist eher unwahrscheinlich, dass Sie die Obergrenze von acht Schachtelungsebenen erreichen. Falls doch, müssen Sie Ihren Code entsprechend anpassen, damit diese Obergrenze eingehalten wird.
+Beachten Sie, dass @@NESTLEVEL von SQL Data Warehouse derzeit nicht unterstützt wird. Sie müssen die Schachtelungsebene selbst verfolgen. Es ist eher unwahrscheinlich, dass Sie die Obergrenze von acht Schachtelungsebenen erreichen. Falls doch, müssen Sie Ihren Code entsprechend anpassen, damit diese Obergrenze eingehalten wird.
 
 ## <a name="insertexecute"></a>INSERT..EXECUTE
 SQL Data Warehouse lässt nicht zu, dass Sie das Resultset einer gespeicherten Prozedur mit einer INSERT-Anweisung verwenden. Es gibt aber eine andere Möglichkeit.
@@ -88,21 +90,16 @@ Sie lauten wie folgt:
 * return-Anweisung
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][Entwicklungsübersicht].
+Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][development overview].
 
 <!--Image references-->
 
 <!--Article references-->
 [temporären Tabellen]: ./sql-data-warehouse-tables-temporary.md#modularizing-code
-[Entwicklungsübersicht]: ./sql-data-warehouse-overview-develop.md
+[development overview]: ./sql-data-warehouse-overview-develop.md
 
 <!--MSDN references-->
-[Schachtelungsebene]: https://msdn.microsoft.com/library/ms187371.aspx
+[nest level]: https://msdn.microsoft.com/library/ms187371.aspx
 
 <!--Other Web references-->
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

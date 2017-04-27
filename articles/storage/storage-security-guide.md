@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: f9d15570aeeb398b34198918b78590948020f256
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: fb764e3d228aa852a4d4e6b0f314daa60d099093
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -34,7 +34,7 @@ Folgende Themen werden in diesem Artikel abgedeckt:
   Die Verwaltungsebene besteht aus den Ressourcen, die zum Verwalten Ihres Speicherkonto verwendet werden. In diesem Abschnitt erläutern wir das Azure Resource Manager-Bereitstellungsmodell und beschreiben, wie Sie die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) verwenden können, um den Zugriff auf Ihre Speicherkonten zu steuern. Wir behandeln auch die Verwaltung Ihrer Speicherkontoschlüssel, und wie Sie diese erneut generieren können.
 * [Sicherheit auf Datenebene](#data-plane-security) – Sichern des Zugriffs auf Ihre Daten
   
-  In diesem Abschnitt betrachten wir die Gewährung des Zugriffs auf die tatsächlichen Datenobjekte in Ihrem Speicherkonto, z. B. Blobs, Dateien, Warteschlangen und Tabellen mit SAS und gespeicherten Zugriffsrichtlinien. Wir betrachten SAS sowohl auf Dienst- als auch auf Kontoebene. Wir behandeln auch die Beschränkung des Zugriffs auf eine bestimmte IP-Adresse (oder einen Bereich von IP-Adressen), die Beschränkung des verwendeten HTTPS-Protokolls und das Widerrufen einer SAS, ohne ihren Ablauf abzuwarten.
+  In diesem Abschnitt betrachten wir die Gewährung des Zugriffs auf die tatsächlichen Datenobjekte in Ihrem Speicherkonto, z.B. Blobs, Dateien, Warteschlangen und Tabellen mit SAS und gespeicherten Zugriffsrichtlinien. Wir betrachten SAS sowohl auf Dienst- als auch auf Kontoebene. Wir behandeln auch die Beschränkung des Zugriffs auf eine bestimmte IP-Adresse (oder einen Bereich von IP-Adressen), die Beschränkung des verwendeten HTTPS-Protokolls und das Widerrufen einer SAS, ohne ihren Ablauf abzuwarten.
 * [Verschlüsselung während der Übertragung](#encryption-in-transit)
   
   In diesem Abschnitt wird erläutert, wie Sie Daten sichern, wenn Sie sie in oder aus Azure Storage übertragen. Wir behandeln die empfohlene Verwendung von HTTPS und die Verschlüsselung, die SMB 3.0 für Azure-Dateifreigaben verwendet. Wir werfen auch einen Blick auf die clientseitige Verschlüsselung, mit der Sie die Daten verschlüsseln können, bevor sie in einer Clientanwendung in den Speicher übertragen werden, und nach der Übertragung aus dem Speicher entschlüsseln können.
@@ -46,7 +46,7 @@ Folgende Themen werden in diesem Artikel abgedeckt:
   Dieser Abschnitt beschreibt, wie Sie in den Speicheranalyseprotokollen Informationen für eine Anforderung suchen. Wir betrachten reale Speicheranalyse-Protokolldaten und sehen, wie wir unterscheiden können, ob eine Anforderung mit dem Speicherkontoschlüssel, einer Shared Access Signature oder anonym erfolgt ist, und ob sie erfolgreich war oder nicht.
 * [Aktivieren browserbasierter Clients über CORS](#Cross-Origin-Resource-Sharing-CORS)
   
-  Dieser Abschnitt behandelt, wie Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resource Sharing, CORS) ermöglicht wird. Wir sprechen über domänenübergreifenden Zugriff, und wie er mit den in Azure Storage integrierten CORS-Funktionen durchgeführt wird.
+  Dieser Abschnitt behandelt, wie Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resource Sharing, CORS) ermöglicht wird. Wir sprechen über domänenübergreifenden Zugriff und wie er mit den in Azure Storage integrierten CORS-Funktionen durchgeführt wird.
 
 ## <a name="management-plane-security"></a>Sicherheit auf Verwaltungsebene
 Auf der Verwaltungsebene finden Vorgänge statt, die sich auf das Speicherkonto selbst auswirken. Angenommen, Sie können ein Speicherkonto erstellen oder löschen, eine Liste von Speicherkonten in einem Abonnement abrufen, die Speicherkontoschlüssel abrufen oder die Speicherkontoschlüssel erneut generieren.
@@ -68,12 +68,12 @@ Hier sind die wichtigsten Punkte, die Sie über die Verwendung von RBAC für den
 * Wenn Sie Zugriff gewähren, weisen Sie im Grunde dem Konto, das Zugriff haben soll, eine Rolle zu. Sie können den Zugriff auf die Vorgänge, mit denen dieses Speicherkonto verwaltet wird, jedoch nicht auf die Datenobjekte im Konto steuern. Sie können z. B. die Berechtigung zum Abrufen der Eigenschaften des Speicherkontos (z. B. Redundanz) gewähren, aber keine Berechtigung für einen Container oder Daten in einem Container in Blob Storage.
 * Um einer Person die Berechtigung zum Zugriff auf die Datenobjekte im Speicherkonto zu gewähren, können Sie ihr die Berechtigung zum Lesen der Speicherkontoschlüssel gewähren, und dieser Benutzer kann dann mit diesen Schlüsseln auf die Blobs, Warteschlangen, Tabellen und Dateien zugreifen.
 * Rollen können einem bestimmten Benutzerkonto, einer Gruppe von Benutzern oder einer bestimmten Anwendung zugewiesen werden.
-* Jede Rolle verfügt über eine Liste zulässiger Aktionen und nicht zulässiger Aktionen. Beispielsweise verfügt die Rolle „Mitwirkender für virtuelle Computer“ über die Aktion „listKeys“, die das Lesen der Speicherkontoschlüssel ermöglicht. Zu den nicht zulässigen Aktionen des Mitwirkenden zählt z. B. die Aktualisierung des Zugriffs für Benutzer in Active Directory.
+* Jede Rolle verfügt über eine Liste zulässiger Aktionen und nicht zulässiger Aktionen. Beispielsweise verfügt die Rolle „Mitwirkender für virtuelle Computer“ über die Aktion „listKeys“, die das Lesen der Speicherkontoschlüssel ermöglicht. Zu den nicht zulässigen Aktionen des Mitwirkenden zählt z.B. die Aktualisierung des Zugriffs für Benutzer in Active Directory.
 * Zu den Rollen für Speicher zählen (unter anderem) die folgenden:
   
   * Besitzer – Sie können alles, einschließlich des Zugriffs, verwalten.
   * Mitwirkende – Sie können alles, was der Besitzer kann, abgesehen vom Zuweisen des Zugriffs. Benutzer mit dieser Rolle können Speicherkontoschlüssel anzeigen und erneut generieren. Mit den Speicherkontoschlüsseln können sie auf die Datenobjekte zugreifen.
-  * Leser – Sie können Informationen über das Speicherkonto, mit Ausnahme geheimer Schlüssel, anzeigen. Wenn Sie z. B. einer Person eine Rolle mit Leseberechtigungen für das Speicherkonto zuweisen, kann sie die Eigenschaften des Speicherkontos anzeigen, aber nicht die Eigenschaften ändern oder den Schlüssel des Speicherkontos anzeigen.
+  * Leser – Sie können Informationen über das Speicherkonto, mit Ausnahme geheimer Schlüssel, anzeigen. Wenn Sie z.B. einer Person eine Rolle mit Leseberechtigungen für das Speicherkonto zuweisen, kann sie die Eigenschaften des Speicherkontos anzeigen, aber nicht die Eigenschaften ändern oder den Schlüssel des Speicherkontos anzeigen.
   * Speicherkontomitwirkende – Sie können das Speicherkonto verwalten – Ressourcengruppen und Ressourcen des Abonnements lesen, außerdem Abonnementressourcengruppen-Bereitstellungen erstellen und verwalten. Sie können ebenfalls auf die Schlüssel des Speicherkontos zugreifen, was wiederum bedeutet, dass sie auf die Datenebene zugreifen können.
   * Benutzerzugriffsadministrator – Sie können den Benutzerzugriff auf das Speicherkonto verwalten. Beispielsweise können sie einem bestimmten Benutzer Leserzugriff gewähren.
   * Mitwirkende für virtuelle Computer – Sie können virtuelle Computer verwalten, jedoch nicht das Speicherkonto, mit dem sie verbunden sind. Diese Rolle kann den Schlüssel des Speicherkontos auflisten, was bedeutet, dass der Benutzer, dem Sie diese Rolle zuweisen, die Datenebene aktualisieren kann.
@@ -99,7 +99,7 @@ Hier sind die wichtigsten Punkte, die Sie über die Verwendung von RBAC für den
 * [Azure Storage Resource Provider REST-API-Referenz](https://msdn.microsoft.com/library/azure/mt163683.aspx)
   
   Dies ist die Referenz für die APIs, die Sie zum programmgesteuerten Verwalten Ihres Speicherkontos verwenden können.
-* [Developer’s guide to auth with Azure Resource Manager API (Entwicklerhandbuch für die Authentifizierung mit Azure Resource Manager-API)](http://www.dushyantgill.com/blog/2015/05/23/developers-guide-to-auth-with-azure-resource-manager-api/)
+* [Developer's guide to auth with Azure Resource Manager API (Entwicklerhandbuch für die Authentifizierung mit Azure Resource Manager-API)](http://www.dushyantgill.com/blog/2015/05/23/developers-guide-to-auth-with-azure-resource-manager-api/)
   
   In diesem Artikel wird die Authentifizierung mithilfe der Resource Manager-APIs gezeigt.
 * [Role-Based Access Control for Microsoft Azure from Ignite (Rollenbasierte Zugriffssteuerung für Microsoft Azure über Ignite)](https://channel9.msdn.com/events/Ignite/2015/BRK2707)
@@ -115,7 +115,7 @@ Es gibt verschiedene Gründe, Ihre Speicherkontoschlüssel erneut zu generieren.
 
 * Möglicherweise generieren Sie sie in regelmäßigen Abständen aus Sicherheitsgründen erneut.
 * Sie würden Ihre Speicherkontoschlüssel z. B. dann erneut generieren, wenn jemand eine Anwendung gehackt und den Schlüssel abgerufen hat, der hartcodiert oder in einer Konfigurationsdatei gespeichert war, sodass er jetzt vollständigen Zugriff auf Ihr Speicherkonto hat.
-* Ein weiterer Fall für die Neugenerierung des Schlüssels ist, wenn Ihr Team eine Storage-Explorer-Anwendung verwendet, die den Speicherkontoschlüssel beibehält, und eines der Mitglieder verlässt das Team. Die Anwendung würde auch weiterhin funktionieren und ihm den Zugriff auf Ihr Speicherkonto gewähren, nachdem es fort ist. Dies ist tatsächlich der Hauptgrund dafür, SAS auf Kontoebene zu erstellen – Sie können SAS auf Kontoebene verwenden, statt die Zugriffsschlüssel in einer Konfigurationsdatei zu speichern.
+* Ein weiterer Fall für die Neugenerierung des Schlüssels ist, wenn Ihr Team eine Storage-Explorer-Anwendung verwendet, die den Speicherkontoschlüssel beibehält, und eines der Mitglieder verlässt das Team. Die Anwendung würde nach seinem Ausscheiden auch weiterhin funktionieren und ihm den Zugriff auf Ihr Speicherkonto gewähren. Dies ist tatsächlich der Hauptgrund dafür, SAS auf Kontoebene zu erstellen – Sie können SAS auf Kontoebene verwenden, statt die Zugriffsschlüssel in einer Konfigurationsdatei zu speichern.
 
 #### <a name="key-regeneration-plan"></a>Plan zur erneuten Schlüsselgenerierung
 Sie sollten den Schlüssel, den Sie verwenden, nicht ohne Planung erneut generieren. Andernfalls besteht die Gefahr, dass Sie jeglichen Zugriff auf dieses Speicherkonto abschneiden und so eine größere Unterbrechung verursachen. Darum gibt es zwei Schlüssel. Sie sollten jeweils nur einen Schlüssel erneut generieren.
@@ -124,7 +124,7 @@ Bevor Sie Ihre Schlüssel erneut generieren, halten Sie eine Liste aller Anwendu
 
 Sie können Ihre Schlüssel im Azure-Portal erneut generieren. Nachdem Schlüssel neu generiert wurden, kann es bis zu 10 Minuten dauern, bis sie in den Speicherdiensten synchronisiert sind.
 
-Wenn Sie fertig sind, sollten Sie Ihre Schlüssel mit dem im Folgenden beschriebenen allgemeinen Verfahren ändern. In diesem Fall wird davon ausgegangen, dass Sie derzeit „Key 1“ verwenden, und Sie stattdessen alles zur Verwendung von „Key 2“ ändern möchten.
+Wenn Sie so weit sind, sollten Sie Ihre Schlüssel mit dem im Folgenden beschriebenen allgemeinen Verfahren ändern. In diesem Fall wird davon ausgegangen, dass Sie derzeit „Key 1“ verwenden, und Sie stattdessen alles zur Verwendung von „Key 2“ ändern möchten.
 
 1. Generieren Sie „Key 2“ erneut, um sicherzustellen, dass es sicher ist. Dies kann im Azure-Portal erfolgen.
 2. Ändern Sie in allen Anwendungen, in denen der Speicherschlüssel gespeichert ist, den Speicherschlüssel zur Verwendung des neuen Werts von „Key 2“. Testen und veröffentlichen Sie die Anwendung.
@@ -187,7 +187,7 @@ Darüber hinaus können Sie angeben, dass Anforderungen, die mit einer SAS erfol
 #### <a name="definition-of-a-shared-access-signature"></a>Definition einer Shared Access Signature
 Eine Shared Access Signature ist ein Satz von Abfrageparametern, die an die URL angehängt werden, die auf die Ressource verweist,
 
-die Informationen über den erlaubten Zugriff und die Zeitspanne bieten, für die der Zugriff zulässig ist. Der URI in diesem Beispiel bietet für fünf Minuten Lesezugriff auf ein Blob. Beachten Sie, dass die SAS-Abfrageparameter URL-codiert sein müssen, d. h. %&3;A steht für den Doppelpunkt (:) oder %20 für ein Leerzeichen.
+die Informationen über den erlaubten Zugriff und die Zeitspanne bieten, für die der Zugriff zulässig ist. Der URI in diesem Beispiel bietet für fünf Minuten Lesezugriff auf ein Blob. Beachten Sie, dass die SAS-Abfrageparameter URL-codiert sein müssen, d. h. % 3A steht für den Doppelpunkt (:) oder %20 für ein Leerzeichen.
 
 ```
 http://mystorage.blob.core.windows.net/mycontainer/myblob.txt (URL to the blob)
@@ -216,12 +216,12 @@ Würde z. B. die obige URL statt auf ein Blob auf eine Datei weisen, würde dies
    Dies ist sehr flexibel, aber wenn Sie jedes Mal einen logischen Satz gleicher Parameter haben, sollten Sie besser eine gespeicherte Zugriffsrichtlinie verwenden.
 2. Sie können eine gespeicherte Zugriffsrichtlinie für ganze Container, Dateifreigaben, Tabellen oder Warteschlangen erstellen. Dann können Sie diese als Grundlage für die SAS-URIs verwenden, die Sie erstellen. Auf gespeicherten Zugriffsrichtlinien basierende Berechtigungen können leicht widerrufen werden. Für jeden Container, jede Warteschlange, Tabelle oder Dateifreigabe können Sie bis zu 5 Richtlinien definieren.
    
-   Wenn z. B. viele Personen die Blobs in einem bestimmten Container lesen, könnten Sie eine gespeicherte Zugriffsrichtlinie mit der Aussage „Lesezugriff gewähren“ und beliebigen anderen Einstellungen erstellen, die jedes Mal gleich sind. Anschließend können Sie mithilfe der Einstellungen der gespeicherten Zugriffsrichtlinie einen SAS-URI erstellen und das Datum und die Uhrzeit des Ablaufs angeben. Dies hat den Vorteil, dass Sie nicht jedes Mal alle Abfrageparameter angeben müssen.
+   Wenn z.B. viele Personen die Blobs in einem bestimmten Container lesen, könnten Sie eine gespeicherte Zugriffsrichtlinie mit der Aussage „Lesezugriff gewähren“ und beliebigen anderen Einstellungen erstellen, die jedes Mal gleich sind. Anschließend können Sie mithilfe der Einstellungen der gespeicherten Zugriffsrichtlinie einen SAS-URI erstellen und das Datum und die Uhrzeit des Ablaufs angeben. Dies hat den Vorteil, dass Sie nicht jedes Mal alle Abfrageparameter angeben müssen.
 
 #### <a name="revocation"></a>Widerruf
 Stellen Sie sich vor, dass Ihre SAS kompromittiert wurde, oder Sie sie aus Gründen der Unternehmenssicherheit oder wegen gesetzlicher Vorschriften und Richtlinien ändern möchten. Wie widerrufen Sie den Zugriff auf eine Ressource, die diese SAS verwendet? Das hängt davon ab, wie Sie den SAS-URI erstellt haben.
 
-Wenn Sie Ad-hoc-URIs verwenden, können Sie zwischen drei Optionen wählen. Sie können SAS-Token mit kurzen Ablaufrichtlinien ausgeben und einfach warten, bis die SAS abläuft. Sie können die Ressource umbenennen oder löschen (sofern das Token für ein einzelnes Objekt definiert wurde). Sie können die Schlüssel des Speicherkontos ändern. Diese letzte Option kann eine große Auswirkung haben, je nachdem, wie viele Dienste dieses Speicherkonto verwenden, und Sie sollten dies nicht ohne ausreichende Planung tun.
+Wenn Sie Ad-hoc-URIs verwenden, können Sie zwischen drei Optionen wählen. Sie können SAS-Token mit kurzen Ablaufrichtlinien ausgeben und einfach warten, bis die SAS abläuft. Sie können die Ressource umbenennen oder löschen (sofern das Token für ein einzelnes Objekt definiert wurde). Sie können die Schlüssel des Speicherkontos ändern. Diese letzte Option kann weitreichende Auswirkungen haben, je nachdem, wie viele Dienste dieses Speicherkonto verwenden, und Sie sollten dies nicht ohne ausreichende Planung tun.
 
 Wenn Sie eine SAS verwenden, die von einer gespeicherten Zugriffsrichtlinie abgeleitet ist, können Sie die Zugriffsrechte durch Widerrufen der gespeicherten Zugriffsrichtlinie aufheben – Sie können sie einfach so ändern, dass sie bereits abgelaufen ist, oder sie vollständig entfernen. Dies wird sofort wirksam und erklärt jede mithilfe dieser gespeicherten Zugriffsrichtlinie erstellte SAS für ungültig. Aktualisieren oder Entfernen der gespeicherten Zugriffsrichtlinie kann möglicherweise Konsequenzen für die Personen haben, die auf bestimmte Container, Dateifreigaben, Tabellen oder Warteschlangen über SAS zugreifen, doch wenn die Clients angeschrieben werden, sodass sie eine neue SAS anfordern, wenn die alte ungültig ist, funktioniert dies hervorragend.
 
@@ -289,7 +289,7 @@ Beachten Sie: Azure-Dateifreigaben können zwar mit Unix verwendet werden, doch 
 ### <a name="using-client-side-encryption-to-secure-data-that-you-send-to-storage"></a>Verwenden der clientseitigen Verschlüsselung zum Schützen von Daten, die Sie an den Speicher senden
 Eine weitere Option, die Ihnen hilft, zu gewährleisten, dass Ihre Daten beim Übertragen zwischen einer Clientanwendung und dem Speicher sicher sind, ist die clientseitige Verschlüsselung. Die Daten werden verschlüsselt, bevor sie in Azure Storage übertragen werden. Beim Abrufen der Daten aus Azure Storage werden die Daten entschlüsselt, nachdem der Client sie empfangen hat. Obwohl die Daten verschlüsselt gesendet werden, sollten Sie wegen der integrierten Datenintegritätsprüfung HTTPS verwenden, um das Risiko zu reduzieren, dass Netzwerkfehler die Integrität der Daten beeinträchtigen.
 
-Die clientseitige Verschlüsselung ist auch eine Methode zum Verschlüsseln ruhender Daten, da die Daten in verschlüsselter Form gespeichert werden. Dies behandeln wir im Abschnitt [Verschlüsselung ruhender Daten](#encryption-at-rest)noch ausführlicher.
+Die clientseitige Verschlüsselung ist auch eine Methode zum Verschlüsseln ruhender Daten, da die Daten in verschlüsselter Form gespeichert werden. Dies behandeln wir im Abschnitt [Verschlüsselung ruhender Daten](#encryption-at-rest) noch ausführlicher.
 
 ## <a name="encryption-at-rest"></a>Verschlüsselung ruhender Daten
 Drei Azure-Funktionen ermöglichen die Verschlüsselung ruhender Daten. Mit Azure Disk Encryption werden Betriebssystemdatenträger und sonstige Datenträger in virtuellen IaaS-Computern verschlüsselt. Die anderen beiden Methoden – clientseitige Verschlüsselung und SSE – werden zum Verschlüsseln von Daten in Azure Storage verwendet. Wir betrachten diese Methoden im Vergleich, um festzustellen, in welchen Fällen sie jeweils verwendet werden können.
@@ -424,7 +424,7 @@ In den nachstehenden Ressourcen ist ein Artikel aufgeführt, der die Liste der v
 
 Uns interessieren die Einträge für „GetBlob“ und deren Authentifizierung. Darum müssen wir nach Einträgen mit „operation-type“ „Get-Blob“ suchen und überprüfen den „request-status“ (<sup></sup>vierte Spalte) sowie den „authorization-type“ (<sup></sup>achte Spalte).
 
-In den ersten Zeilen der obigen Auflistung ist z. B. der „request-status“ „Success“ und der „authorization-type“ „authenticated“. Dies bedeutet, dass die Anforderung mithilfe des Speicherkontoschlüssels überprüft wurde.
+In den ersten Zeilen der obigen Auflistung ist z.B. der „request-status“ „Success“ und der „authorization-type“ „authenticated“. Dies bedeutet, dass die Anforderung mithilfe des Speicherkontoschlüssels überprüft wurde.
 
 #### <a name="how-are-my-blobs-being-authenticated"></a>Wie werden meine Blobs authentifiziert?
 Drei Fälle interessieren uns.
@@ -462,7 +462,7 @@ Sie können diese Protokolle mit dem Microsoft Message Analyzer anzeigen und ana
 ### <a name="cross-domain-access-of-resources"></a>Domänenübergreifender Ressourcenzugriff
 Wenn ein Webbrowser, der in einer Domäne ausgeführt wird, eine HTTP-Anforderung für eine Ressource aus einer anderen Domäne sendet, wird dies als Ursprünge übergreifende HTTP-Anforderung bezeichnet. Beispiel: Eine HTML-Seite von „contoso.com“ sendet eine Anforderung für eine JPEG-Datei, die auf „fabrikam.blob.core.windows.net“ gehostet wird. Aus Sicherheitsgründen schränken Browser aus Skripts wie JavaScript heraus initiierte, Ursprünge übergreifende HTTP-Anforderungen ein. Dies bedeutet: Wenn JavaScript-Code auf einer Webseite von „contoso.com“ diese JPEG-Datei auf „fabrikam.blob.core.windows.net“ anfordert, lässt der Browser die Anforderung nicht zu.
 
-Was hat dies mit Azure Storage zu tun? Wenn Sie statische Ressourcen wie z. B. JSON- oder XML-Datendateien mit einem Speicherkonto namens „Fabrikam“ in Blob Storage speichern, ist „fabrikam.blob.core.windows.net“ die Domäne für die Ressourcen, und die Webanwendung „contoso.com“ kann nicht mithilfe von JavaScript darauf zugreifen, da es sich um verschiedene Domänen handelt. Dies gilt auch, wenn Sie versuchen, einen der Azure-Speicherdienste – z. B. Table Storage – aufzurufen, die JSON-Daten zur Verarbeitung durch den JavaScript-Client zurückgeben.
+Was hat dies mit Azure Storage zu tun? Wenn Sie statische Ressourcen wie z. B. JSON- oder XML-Datendateien mit einem Speicherkonto namens „Fabrikam“ in Blob Storage speichern, ist „fabrikam.blob.core.windows.net“ die Domäne für die Ressourcen, und die Webanwendung „contoso.com“ kann nicht mithilfe von JavaScript darauf zugreifen, da es sich um verschiedene Domänen handelt. Dies gilt auch, wenn Sie versuchen, einen der Azure Storage-Dienste – z.B. Table Storage – aufzurufen, die JSON-Daten zur Verarbeitung durch den JavaScript-Client zurückgeben.
 
 #### <a name="possible-solutions"></a>Lösungsvorschläge
 Eine Möglichkeit zur Lösung des Problems ist, „fabrikam.blob.core.windows.net“ eine benutzerdefinierte Domäne wie „storage.contoso.com“ zuzuweisen. Der Haken dabei ist, dass Sie diese benutzerdefinierte Domäne nur einem einzigen Speicherkonto zuordnen können. Was geschieht, wenn die Ressourcen in mehreren Speicherkonten gespeichert sind?
@@ -525,12 +525,12 @@ Weitere Informationen zu CORS und zur CORS-Aktivierung finden Sie in diesen Ress
    
    **Ressourcen**
 
-* [Why We’re Not Recommending “FIPS Mode” Anymore (Warum wir den „FIPS-Modus“ nicht mehr empfehlen)](http://blogs.technet.com/b/secguide/archive/2014/04/07/why-we-re-not-recommending-fips-mode-anymore.aspx)
+* [Why We're Not Recommending "FIPS Mode" Anymore (Warum wir den „FIPS-Modus“ nicht mehr empfehlen)](http://blogs.technet.com/b/secguide/archive/2014/04/07/why-we-re-not-recommending-fips-mode-anymore.aspx)
   
   Dieser Blogartikel bietet einen Überblick über FIPS und erläutert, warum der FIPS-Modus nicht mehr standardmäßig aktiviert ist.
 * [FIPS 140 Validation (FIPS 140-Validierung)](https://technet.microsoft.com/library/cc750357.aspx)
   
   Dieser Artikel erläutert, wie Microsoft-Produkte und kryptografische Module mit dem FIPS-Standard für die Bundesregierung der USA kompatibel sind.
-* [“System cryptography: Use FIPS compliant algorithms for encryption, hashing, and signing” security settings effects in Windows XP and in later versions of Windows („Systemkryptografie: Verwenden von FIPS-kompatiblen Algorithmen für Verschlüsselung, Hashing und Signatur“ – Effekte von Sicherheitseinstellungen in Windows XP und höheren Versionen von Windows)](https://support.microsoft.com/kb/811833)
+* ["System cryptography: Use FIPS compliant algorithms for encryption, hashing, and signing" security settings effects in Windows XP and in later versions of Windows („Systemkryptografie: Verwenden von FIPS-konformen Algorithmen für Verschlüsselung, Hashing und Signatur“ – Effekte von Sicherheitseinstellungen in Windows XP und höheren Versionen von Windows)](https://support.microsoft.com/kb/811833)
   
   Dieser Artikel behandelt die Verwendung des FIPS-Modus auf älteren Windows-Computern.

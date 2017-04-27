@@ -16,9 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 11/28/2016
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: d055a859ec89ef7fec23db9bf1d574dd8cb76293
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
+ms.openlocfilehash: aba69b95db8313dd9ce711ddc6c26e5df55d79a4
+ms.lasthandoff: 04/04/2017
 
 
 ---
@@ -26,7 +26,7 @@ ms.lasthandoff: 03/25/2017
 ## <a name="overview"></a>Übersicht
 [Azure Storage Premium](../../../storage/storage-premium-storage.md) ist die nächste Speichergeneration mit geringer Latenz und hohem E/A-Durchsatz. Der Speicher eignet sich ideal für hohe E/A-Workloads, wie z.B. SQL Server auf [virtuellen IaaS-Computern](https://azure.microsoft.com/services/virtual-machines/).
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager- und klassische Bereitstellung](../../../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells.
 
 Dieser Artikel enthält die Planung und Anleitungen zum Migrieren eines virtuellen Computers für die Verwendung mit Premium-Speicher. Dies umfasst Schritte für die Azure-Infrastruktur (Netzwerk, Speicher) und virtuelle Windows-Gastsysteme. Das Beispiel im [Anhang](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage) zeigt eine vollständige End-to-End-Migration zum Verschieben größerer virtueller Computer mit PowerShell, um die verbesserten lokalen SSD-Speicher zu nutzen.
@@ -47,7 +47,7 @@ Ausführlichere Informationen zur Verwendung von SQL Server auf virtuellen Azure
 Es gibt einige Voraussetzungen für die Verwendung von Premium-Speicher.
 
 ### <a name="machine-size"></a>Größe des Computers
-Für die Verwendung von Premium-Speicher müssen Sie virtuelle Computer der DS-Serie verwenden. Wenn Sie bisher keine Computer der DS-Serie im Clouddienst verwendet haben, müssen Sie den vorhandenen virtuellen Computer löschen, die angefügten Datenträger beibehalten und dann einen neuen Clouddienst vor der erneuten Erstellung des virtuellen Computers mit DS*-Rollengröße erstellen. Weitere Informationen zu den Größen virtueller Computer finden Sie unter [Größen für virtuelle Computer und Clouddienste für Microsoft Azure](../../virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Für die Verwendung von Premium-Speicher müssen Sie virtuelle Computer der DS-Serie verwenden. Wenn Sie bisher keine Computer der DS-Serie im Clouddienst verwendet haben, müssen Sie den vorhandenen virtuellen Computer löschen, die angefügten Datenträger beibehalten und dann einen neuen Clouddienst vor der erneuten Erstellung des virtuellen Computers mit DS*-Rollengröße erstellen. Weitere Informationen zu den Größen virtueller Computer finden Sie unter [Größen für virtuelle Computer und Clouddienste für Microsoft Azure](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ### <a name="cloud-services"></a>Clouddienste
 Sie können nur virtuelle Computer der DS*-Serie mit Premium-Speicher verwenden, wenn sie in einem neuen Clouddienst erstellt werden. Bei Verwendung von SQL Server AlwaysOn in Azure verweist der AlwaysOn-Listener auf die interne Azure- oder die externe Lastenausgleichs-IP-Adresse, die einem Clouddienst zugeordnet ist. In diesem Artikel wird die Migration unter Aufrechterhaltung der Verfügbarkeit für dieses Szenario beschrieben.
@@ -142,9 +142,9 @@ Jetzt können Sie diese Informationen verwenden, um physischen Datenträgern in 
 Wenn Sie virtuelle Festplatten physikalischen Datenträgern in Speicherpools zugeordnet haben, können Sie sie trennen, in ein Premium-Speicherkonto kopieren und sie dann mit den richtigen Cacheeinstellungen wieder anfügen. Ein Beispiel dazu finden Sie im [Anhang](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage)in den Schritten 8 bis 12. Diese Schritte zeigen, wie Sie die Konfiguration einer an einen virtuellen Computer angefügten virtuellen Festplatte in eine CSV-Datei extrahieren, die virtuellen Festplatten kopieren, die Cachekonfigurationseinstellungen des Datenträgers ändern und schließlich den virtuellen Computer als VM der DS-Serie mit allen angefügten Datenträgern erneut bereitstellen.
 
 ### <a name="vm-storage-bandwidth-and-vhd-storage-throughput"></a>Speicherbandbreite des virtuellen Computers und Durchsatz des VHD-Speichers
-Die Höhe der Speicherleistung hängt von der angegebenen Größe des virtuellen Computers der DS*-Serie und der Größe der virtuellen Festplatte ab. Die virtuellen Computer haben verschiedene Beschränkungen für die Anzahl von VHDs, die angefügt werden können, und für die maximal unterstützte Bandbreite (MB/s). Ausführliche Informationen zu den Bandbreitenwerten finden Sie unter [Größen virtueller Computer und Clouddienste für Azure](../../virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Die Höhe der Speicherleistung hängt von der angegebenen Größe des virtuellen Computers der DS*-Serie und der Größe der virtuellen Festplatte ab. Die virtuellen Computer haben verschiedene Beschränkungen für die Anzahl von VHDs, die angefügt werden können, und für die maximal unterstützte Bandbreite (MB/s). Ausführliche Informationen zu den Bandbreitenwerten finden Sie unter [Größen virtueller Computer und Clouddienste für Azure](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-Höhere IOPS werden mit größeren Datenträgern erreicht. Sie sollten dies berücksichtigen, wenn Sie Ihren Migrationspfad planen. Weitere Informationen finden Sie in der [Tabelle für IOPS und Datenträgertypen](../../../storage/storage-premium-storage.md#premium-storage-scalability-and-performance-targets).
+Höhere IOPS werden mit größeren Datenträgern erreicht. Sie sollten dies berücksichtigen, wenn Sie Ihren Migrationspfad planen. Weitere Informationen finden Sie in der [Tabelle für IOPS und Datenträgertypen](../../../storage/storage-premium-storage.md#scalability-and-performance-targets).
 
 Bedenken Sie, dass virtuelle Computer unterschiedliche maximale Datenträgerbandbreiten haben, die sie für alle verbundenen Datenträger unterstützen. Unter hoher Last könnten Sie die maximale Bandbreite für diese VM-Rollengröße auslasten. Beispielsweise unterstützt eine Standard_DS14 bis zu 512 MB/s. Daher könnten Sie mit drei P30-Datenträgern die Bandbreite des Datenträgers des virtuellen Computers auslasten. In diesem Beispiel kann jedoch der Durchsatzgrenzwert je nach E/A-Lese- und Schreibvorgängen überschritten werden.
 
@@ -271,7 +271,7 @@ In diesem Szenario wird veranschaulicht, wie Sie vorhandene benutzerdefinierte I
 
 
 #### <a name="step-3-use-existing-image"></a>Schritt 3: Verwenden des vorhandenen Images
-Sie können ein vorhandenes Image verwenden. Oder Sie erstellen [ein Image eines vorhandenen Computers](../classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Der Computer, von dem Sie ein Image erstellen, muss kein Computer der DS*-Serie sein. Wenn Sie über ein Image verfügen, wird in den folgenden Schritten erläutert, wie Sie das PowerShell-Cmdlet**Start-AzureStorageBlobCopy** verwenden, um das Image in das Storage Premium-Konto zu kopieren.
+Sie können ein vorhandenes Image verwenden. Oder Sie erstellen [ein Image eines vorhandenen Computers](../classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Der Computer, von dem Sie ein Image erstellen, muss kein Computer der DS*-Serie sein. Wenn Sie über ein Image verfügen, wird in den folgenden Schritten erläutert, wie Sie das PowerShell-Cmdlet **Start-AzureStorageBlobCopy** verwenden, um das Image in das Storage Premium-Konto zu kopieren.
 
     #Get storage account keys:
     #Standard Storage account

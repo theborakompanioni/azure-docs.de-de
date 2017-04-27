@@ -16,18 +16,19 @@ ms.workload: iaas-sql-server
 ms.date: 11/15/2016
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 7402249aa87ffe985ae13f28a701e22af3afd450
-ms.openlocfilehash: 0d2310748c65a25ead71f7c0859919b7241d9f6c
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: f05ef18fb33942883ba164985721ce2d4f79d3fa
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Sicherung und Wiederherstellung für SQL Server auf virtuellen Azure-Computern
 ## <a name="overview"></a>Übersicht
-Das Sichern von Daten in SQL Server-Datenbanken ist ein wichtiger Bestandteil der Strategie zum Schutz vor Datenverlust aufgrund von Anwendungs- oder Benutzerfehlern. Dies gilt in gleichem Maße auch für SQL Server auf virtuellen Azure-Computern (VMs).
+Von Azure Storage werden drei Kopien jedes Azure-VM-Datenträgers verwaltet, um den Schutz vor Datenverlust oder physischer Datenbeschädigung zu gewährleisten. Anders als in einem lokalen Szenario müssen Sie sich also keine Sorgen in dieser Hinsicht machen. Sie sollten jedoch weiterhin Ihre SQL Server-Datenbanken sichern, um sie gegen Anwendungs- oder Benutzerfehler (z.B. Einfügen falscher Daten oder Löschen einer Tabelle) zu schützen und die Point-in-Time-Wiederherstellung zu ermöglichen.
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
 
-Für SQL Server auf Azure-VMs können Sie systemeigene Sicherungs- und Wiederherstellungsverfahren mit angefügten Datenträgern als Ziel der Sicherungsdateien verwenden. Die Anzahl von Datenträgern, die an einen virtuellen Azure-Computer angefügt werden können, ist allerdings je nach [Größe des virtuellen Computers](../../virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) begrenzt. Zudem muss der Mehraufwand für die Datenträgerverwaltung berücksichtigt werden.
+Für SQL Server auf Azure-VMs können Sie systemeigene Sicherungs- und Wiederherstellungsverfahren mit angefügten Datenträgern als Ziel der Sicherungsdateien verwenden. Die Anzahl von Datenträgern, die an einen virtuellen Azure-Computer angefügt werden können, ist allerdings je nach [Größe des virtuellen Computers](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) begrenzt. Zudem muss der Mehraufwand für die Datenträgerverwaltung berücksichtigt werden.
 
 Ab SQL Server 2014 können Sie Microsoft Azure-Blobspeicher für die Sicherung und Wiederherstellung verwenden. SQL Server 2016 bietet auch Erweiterungen für diese Option. Darüber hinaus bietet SQL Server 2016 für in Microsoft Azure-Blob-Speicher gespeicherte Datenbankdateien eine Option für nahezu sofortige Backups und schnelle Wiederherstellungen mithilfe von Azure-Momentaufnahmen. Dieser Artikel bietet eine Übersicht über diese Optionen. Weitere Informationen finden Sie unter [SQL Server-Sicherung und -Wiederherstellung mit dem Microsoft Azure Blob Storage Service](https://msdn.microsoft.com/library/jj919148.aspx).
 
@@ -87,10 +88,5 @@ Wenn Sie an der Planung Ihrer Bereitstellung von SQL Server auf einem virtuellen
 Obwohl Sie Ihre Daten durch Sicherung und Wiederherstellung migrieren können, sind möglicherweise einfachere Migrationspfade für SQL Server auf einer Azure-VM verfügbar. Eine vollständige Erläuterung der Migrationsoptionen und Empfehlungen finden Sie unter [Migrieren einer Datenbank zu SQL Server auf einem virtuellen Azure-Computer](virtual-machines-windows-migrate-sql.md).
 
 Lesen Sie auch die weiteren [Ressourcen für die Ausführung von SQL Server in Azure Virtual Machines](virtual-machines-windows-sql-server-iaas-overview.md).
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

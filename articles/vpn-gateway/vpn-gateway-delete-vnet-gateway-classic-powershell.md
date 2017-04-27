@@ -13,17 +13,18 @@ ms.devlang: na
 ms.topic: 
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/20/2017
+ms.date: 03/29/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: b5d90aa60de4a24b6d76414204ceae24670e48a3
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 4437c8cb9f428bea54505dc4949410d361f77c11
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell-classic"></a>Löschen eines Gateways des virtuellen Netzwerks mit PowerShell (klassisch)
 > [!div class="op_single_selector"]
+> * [Resource Manager – Azure-Portal](vpn-gateway-delete-vnet-gateway-portal.md)
 > * [Resource Manager – PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 > * [Klassisch – PowerShell](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 >
@@ -31,7 +32,7 @@ ms.lasthandoff: 03/21/2017
 
 Sie können ein VPN-Gateway im klassischen Bereitstellungsmodell mithilfe von PowerShell löschen. Ändern Sie nach dem Löschen des Gateways des virtuellen Netzwerks die Netzwerkkonfigurationsdatei, um nicht mehr verwendete Elemente zu entfernen.
 
-##<a name="part-1-connect-to-azure"></a>Teil 1: Herstellen einer Verbindung mit Azure
+##<a name="step-1-connect-to-azure"></a>Schritt 1: Herstellen einer Verbindung mit Azure
 
 ### <a name="1-install-the-latest-powershell-cmdlets"></a>1. Installieren Sie die neuesten Azure PowerShell-Cmdlets.
 
@@ -55,7 +56,7 @@ Verwenden Sie als nächstes das folgende Cmdlet, um PowerShell Ihr Azure-Abonnem
 
     Add-AzureAccount
 
-## <a name="part-2-export-and-view-the-network-configuration-file"></a>Teil 2: Exportieren und Anzeigen der Netzwerkkonfigurationsdatei
+## <a name="step-2-export-and-view-the-network-configuration-file"></a>Schritt 2: Exportieren und Anzeigen der Netzwerkkonfigurationsdatei
 
 Erstellen Sie auf Ihrem Computer ein Verzeichnis, und exportieren Sie die Netzwerkkonfigurationsdatei in das Verzeichnis. Sie verwenden diese Datei sowohl, um die aktuellen Konfigurationsinformationen anzuzeigen, als auch um die Netzwerkkonfiguration zu ändern.
 
@@ -63,13 +64,13 @@ In diesem Beispiel wird die Netzwerkkonfigurationsdatei in das Verzeichnis „C:
 
      Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 
-Öffnen Sie die Datei in einem Text-Editor, und zeigen Sie den Namen für Ihr klassisches VNet an. Wenn Sie im Azure-Portal ein VNet erstellen, ist der vollständige von Azure verwendet Name im Azure-Portal nicht zu sehen. Beispielsweise kann ein VNet, das im Azure-Portal anscheinend den Namen „ClassicVNet1“ trägt, in der Netzwerkkonfigurationsdatei einen viel längeren Namen haben. Der Name kann etwa wie folgt aussehen: „Group ClassicRG1 ClassicVNet1“. Die VNet-Namen werden unter „VirtualNetworkSite name =“ aufgelistet.<br>Verwenden Sie zum Ausführen von PowerShell-Cmdlets die Namen in der Netzwerkkonfigurationsdatei.
+Öffnen Sie die Datei in einem Text-Editor, und zeigen Sie den Namen für Ihr klassisches VNet an. Wenn Sie im Azure-Portal ein VNet erstellen, ist der vollständige von Azure verwendete Name im Portal nicht zu sehen. Beispielsweise kann ein VNet, das im Azure-Portal anscheinend den Namen „ClassicVNet1“ trägt, in der Netzwerkkonfigurationsdatei einen viel längeren Namen haben. Der Name kann etwa wie folgt aussehen: „Group ClassicRG1 ClassicVNet1“. Namen virtueller Netzwerke werden unter **VirtualNetworkSite name =** aufgelistet. Verwenden Sie zum Ausführen von PowerShell-Cmdlets die Namen in der Netzwerkkonfigurationsdatei.
 
-## <a name="part-3-delete-the-virtual-network-gateway"></a>Teil 3: Löschen des Gateways des virtuellen Netzwerks
+## <a name="step-3-delete-the-virtual-network-gateway"></a>Schritt 3: Löschen des Gateways für virtuelle Netzwerke
 
 Wenn Sie ein Gateway eines virtuellen Netzwerks löschen, werden alle Verbindungen mit dem VNet durch das Gateway getrennt. Wenn P2S-Clients mit Ihrem VNet verbunden sind, werden diese ohne Warnung getrennt.
 
-In diesem Beispiel wird das Gateway des virtuellen Netzwerks entfernt. Verwenden Sie zum Ausführen dieses Beispiels den vollständigen Namen des virtuellen Netzwerks aus der Netzwerkkonfigurationsdatei.
+In diesem Beispiel wird das Gateway für virtuelle Netzwerke gelöscht. Vergewissern Sie sich, dass Sie den vollständigen Namen des virtuellen Netzwerks aus der Netzwerkkonfigurationsdatei verwenden.
 
     Remove-AzureVNetGateway -VNetName "Group ClassicRG1 ClassicVNet1"
 
@@ -77,13 +78,13 @@ Bei Erfolg wird diese Rückgabe angezeigt:
 
     Status : Successful
 
-## <a name="part-4-modify-the-network-configuration-file"></a>Teil 4. Ändern der Netzwerkkonfigurationsdatei
+## <a name="step-4-modify-the-network-configuration-file"></a>Schritt 4: Ändern der Netzwerkkonfigurationsdatei
 
 Wenn Sie das Gateway eines virtuellen Netzwerks löschen, ändert das Cmdlet die Netzwerkkonfigurationsdatei nicht. Sie müssen die Datei ändern, um die Elemente zu entfernen, die nicht mehr verwendet werden. Die folgenden Abschnitte helfen Ihnen beim Ändern der heruntergeladenen Netzwerkkonfigurationsdatei.
 
 ###<a name="local-network-site-references"></a>Verweise auf lokale Netzwerksites
 
-Um Verweisinformationen auf Sites zu entfernen, nehmen Sie Konfigurationsänderungen an „ConnectionsToLocalNetwork/LocalNetworkSiteRef“ vor. Das Entfernen eines lokalen Siteverweises veranlasst Azure, einen Tunnel zu löschen. Je nach der von Ihnen erstellten Konfiguration wird möglicherweise keine Datei „LocalNetworkSiteRef“ aufgelistet.
+Um Verweisinformationen auf Sites zu entfernen, nehmen Sie Konfigurationsänderungen an **ConnectionsToLocalNetwork/LocalNetworkSiteRef** vor. Das Entfernen eines lokalen Siteverweises veranlasst Azure, einen Tunnel zu löschen. Je nach der von Ihnen erstellten Konfiguration wird möglicherweise keine Datei **LocalNetworkSiteRef** aufgelistet.
 
     <Gateway>
        <ConnectionsToLocalNetwork>
@@ -102,7 +103,7 @@ Beispiel:
 
 ###<a name="local-network-sites"></a>Lokale Netzwerksites
 
-Entfernen Sie alle lokalen Sites, die Sie nicht mehr verwenden. Je nach der von Ihnen erstellten Konfiguration ist möglicherweise keine lokale Netzwerksite aufgelistet.
+Entfernen Sie alle lokalen Sites, die Sie nicht mehr verwenden. Je nach der von Ihnen erstellten Konfiguration ist möglicherweise keine **LocalNetworkSite** aufgelistet.
 
     <LocalNetworkSites>
       <LocalNetworkSite name="Site1">
@@ -132,7 +133,7 @@ In diesem Beispiel haben wir nur Site3 entfernt.
 
 ### <a name="client-addresspool"></a>Clientadresspool
 
-Wenn Ihr VNet über eine P2S-Verbindung verfügte, haben Sie einen VPNClientAddressPool. Entfernen Sie die Clientadresspools, die dem gelöschten Gateway des virtuellen Netzwerks entsprechen.
+Wenn Ihr VNet über eine P2S-Verbindung verfügte, haben Sie einen **VPNClientAddressPool**. Entfernen Sie die Clientadresspools, die dem gelöschten Gateway des virtuellen Netzwerks entsprechen.
 
     <Gateway>
        <VPNClientAddressPool>
@@ -149,7 +150,7 @@ Beispiel:
 
 ### <a name="gatewaysubnet"></a>GatewaySubnet
 
-Löschen Sie das GatewaySubnet, das dem VNet entspricht.
+Löschen Sie das **GatewaySubnet**, das dem VNet entspricht.
 
     <Subnets>
        <Subnet name="FrontEnd">
@@ -168,7 +169,7 @@ Beispiel:
        </Subnet>
      </Subnets>
 
-## <a name="part-5-upload-the-network-configuration-file"></a>Teil 5: Hochladen der Netzwerkkonfigurationsdatei
+## <a name="step-5-upload-the-network-configuration-file"></a>Schritt 5: Hochladen der Netzwerkkonfigurationsdatei
 
 Speichern Sie die Änderungen, und laden Sie die Netzwerkkonfiguration nach Azure hoch. Stellen Sie sicher, dass Sie den Dateipfad wie für Ihre Umgebung erforderlich ändern.
 

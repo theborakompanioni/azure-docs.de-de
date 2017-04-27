@@ -11,27 +11,29 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/18/2017
+ms.date: 03/23/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 8e209d70a0bdcac4d3d1f7fefe265bf4824520e3
-ms.openlocfilehash: 20c198577349a2173d5b7bafd1b84fd4c24fa711
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 2fcde595a40dafda7549f5bccb582b57585b314e
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qualtrics"></a>Tutorial: Azure Active Directory-Integration mit Qualtrics
 In diesem Tutorial wird die Integration von Azure und Qualtrics erläutert.  
+
 Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 * Ein gültiges Azure-Abonnement
-* Ein Qualtrics-Abonnement, für das einmaliges Anmelden aktiviert ist
+* Ein Qualtrics-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
 
 Nach Abschluss dieses Tutorials können sich die Qualtrics zugewiesenen Azure AD-Benutzer mittels einmaliger Anmeldung auf Ihrer Qualtrics-Unternehmenswebsite bei der Anwendung anmelden (durch den Dienstanbieter initiierte Anmeldung). Alternativ können sie den Zugriffsbereich nutzen (siehe [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md)).
 
 Das in diesem Lernprogramm beschriebene Szenario besteht aus den folgenden Bausteinen:
 
 1. Aktivieren der Anwendungsintegration für Qualtrics
-2. Konfigurieren der einmaligen Anmeldung
+2. Konfigurieren des einmaligen Anmeldens (SSO)
 3. Konfigurieren der Benutzerbereitstellung
 4. Zuweisen von Benutzern
 
@@ -40,7 +42,8 @@ Das in diesem Lernprogramm beschriebene Szenario besteht aus den folgenden Baust
 ## <a name="enabling-the-application-integration-for-qualtrics"></a>Aktivieren der Anwendungsintegration für Qualtrics
 In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Qualtrics aktivieren.
 
-### <a name="to-enable-the-application-integration-for-qualtrics-perform-the-following-steps"></a>So aktivieren Sie die Anwendungsintegration für Qualtrics
+**Führen Sie die folgenden Schritte aus, um die Anwendungsintegration für Qualtrics zu aktivieren:**
+
 1. Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
    
    ![Active Directory](./media/active-directory-saas-qualtrics-tutorial/IC700993.png "Active Directory")
@@ -61,11 +64,12 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Qua
    
    ![Qualtrics](./media/active-directory-saas-qualtrics-tutorial/IC789544.png "Qualtrics")
    
-## <a name="configuring-single-sign-on"></a>Konfigurieren der einmaligen Anmeldung
+## <a name="configure-single-sign-on"></a>Configure single sign-on
 
 In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei Qualtrics zu authentifizieren.
 
-### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>So konfigurieren Sie einmaliges Anmelden
+**So konfigurieren Sie einmaliges Anmelden**
+
 1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Qualtrics** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
    
    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-qualtrics-tutorial/IC789545.png "Einmaliges Anmelden konfigurieren")
@@ -80,25 +84,25 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-qualtrics-tutorial/IC789548.png "Einmaliges Anmelden konfigurieren")
 5. Senden Sie die Metadatendatei an das Supportteam von Qualtrics.
    
-   > [!NOTE]
-   > Das einmalige Anmelden muss vom Supportteam von Qualtrics konfiguriert werden. Sie erhalten eine Benachrichtigung, sobald die Konfiguration abgeschlossen ist.
+   >[!NOTE]
+   >Das einmalige Anmelden muss vom Supportteam von Qualtrics konfiguriert werden. Sie erhalten eine Benachrichtigung, sobald die Konfiguration abgeschlossen ist.
    > 
    > 
 6. Bestätigen Sie im klassischen Azure-Portal die Konfiguration der einmaligen Anmeldung, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
    
    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-qualtrics-tutorial/IC789549.png "Einmaliges Anmelden konfigurieren")
    
-## <a name="configuring-user-provisioning"></a>Konfigurieren der Benutzerbereitstellung
+## <a name="configure-user-provisioning"></a>Benutzerbereitstellung konfigurieren
 
-Für das Konfigurieren der Benutzerbereitstellung in Qualtrics steht kein Aktionselement zur Verfügung.  
-Wenn ein zugewiesener Benutzer versucht, sich über den Zugriffsbereich bei Qualtrics anzumelden, überprüft Qualtrics, ob der Benutzer vorhanden ist.  
+Für das Konfigurieren der Benutzerbereitstellung in Qualtrics steht kein Aktionselement zur Verfügung. Wenn ein zugewiesener Benutzer versucht, sich über den Zugriffsbereich bei Qualtrics anzumelden, überprüft Qualtrics, ob der Benutzer vorhanden ist.  
 
 Ist noch kein Benutzerkonto verfügbar, wird es von Qualtrics automatisch erstellt.
 
-## <a name="assigning-users"></a>Zuweisen von Benutzern
+## <a name="assign-users"></a>Benutzer zuweisen
 Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
 
-### <a name="to-assign-users-to-qualtrics-perform-the-following-steps"></a>So weisen Sie Qualtrics Benutzer zu:
+**Führen Sie die folgenden Schritte aus, um Qualtrics Benutzer zuzuweisen:**
+
 1. Erstellen Sie im klassischen Azure-Portal ein Testkonto.
 2. Klicken Sie auf der Anwendungsintegrationsseite für **Qualtrics** auf **Benutzer zuweisen**.
    
@@ -108,10 +112,5 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
    ![Ja](./media/active-directory-saas-qualtrics-tutorial/IC767830.png "Ja")
 
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 
