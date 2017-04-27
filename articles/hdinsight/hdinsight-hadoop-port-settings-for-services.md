@@ -13,31 +13,33 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/17/2017
+ms.date: 04/14/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 693e3aebad339b1a9b5e0afbe7770197ea70dcf6
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: c27e6c19f44d9f0fa60ae31d0cda756dcd032f02
+ms.lasthandoff: 04/17/2017
 
 
 ---
 # <a name="ports-and-uris-used-by-hdinsight"></a>Von HDInsight verwendete Ports und URIs
+
 Dieses Dokument enthält eine Liste mit den Ports für Hadoop-Dienste, die in Linux-basierten HDInsight-Clustern ausgeführt werden. Außerdem enthält es Informationen zu Ports, die zum Herstellen einer Verbindung mit dem Cluster per SSH verwendet werden.
 
 ## <a name="public-ports-vs-non-public-ports"></a>Öffentliche Ports im Vergleich mit nicht öffentlichen Ports
-Für Linux-basierte HDInsight-Cluster werden nur drei Ports öffentlich im Internet verfügbar gemacht: 22, 23 und 443. Diese werden zum sicheren Zugreifen auf den Cluster per SSH und auf Dienste verwendet, die über das sichere HTTPS-Protokoll bereitgestellt werden.
+
+Für Linux-basierte HDInsight-Cluster werden nur drei Ports öffentlich im Internet verfügbar gemacht: 22, 23 und 443. Diese Ports werden zum sicheren Zugreifen auf den Cluster per SSH und auf Dienste verwendet, die über das sichere HTTPS-Protokoll bereitgestellt werden.
 
 Intern wird HDInsight von mehreren Azure Virtual Machines (Knoten im Cluster) implementiert, die in einem Azure Virtual Network ausgeführt werden. Aus dem virtuellen Netzwerk können Sie auf Ports zugreifen, die nicht über das Internet verfügbar gemacht werden. Wenn Sie beispielsweise eine Verbindung mit einem der Hauptknoten per SSH herstellen, können Sie vom Hauptknoten dann direkt auf Dienste zugreifen, die auf den Clusterknoten ausgeführt werden.
 
 > [!IMPORTANT]
-> Wenn Sie einen HDInsight-Cluster erstellen und kein Azure Virtual Network als Konfigurationsoption angeben, wird eines erstellt. Es ist aber nicht möglich, diesem automatisch erstellten virtuellen Netzwerk andere Computer hinzuzufügen (z.B. andere Azure Virtual Machines oder Ihren Cliententwicklungscomputer). 
-> 
-> 
+> Wenn Sie kein virtuelles Azure-Netzwerk als eine Konfigurationsoption für HDInsight angeben, wird automatisch eines erstellt. Sie können diesem virtuellen Netzwerk jedoch nicht mit anderen Computern (z.B. anderen virtuellen Azure-Computern oder Ihrem Client-Entwicklungscomputer) beitreten.
+
 
 Um für weitere Computer den Beitritt zum virtuellen Netzwerk durchzuführen, müssen Sie zuerst das virtuelle Netzwerk erstellen und beim Erstellen des HDInsight-Clusters dann angeben. Weitere Informationen finden Sie unter [Erweitern der HDInsight-Funktionen mit Azure Virtual Network](hdinsight-extend-hadoop-virtual-network.md)
 
 ## <a name="public-ports"></a>Öffentliche Ports
+
 Alle Knoten eines HDInsight-Clusters befinden sich in einem Azure Virtual Network, und darauf kann aus dem Internet nicht direkt zugegriffen werden. Ein öffentliches Gateway ermöglicht den Internetzugriff auf die folgenden Ports, die für alle HDInsight-Clustertypen gleich sind:
 
 | Dienst | Port | Protocol | Beschreibung |
@@ -60,23 +62,24 @@ Für spezielle Clustertypen ist Folgendes verfügbar:
 | Storm |443 |HTTPS |Storm |Storm-Webbenutzeroberfläche. Siehe [Bereitstellen und Verwalten von Storm-Topologien in HDInsight](hdinsight-storm-deploy-monitor-topology-linux.md) |
 
 ### <a name="authentication"></a>Authentifizierung
+
 Alle Dienste, die im Internet öffentlich verfügbar gemacht werden, müssen authentifiziert werden:
 
 | Port | Anmeldeinformationen |
 | --- | --- |
 | 22 oder 23 |SSH-Benutzeranmeldeinformationen, die während der Clustererstellung angegeben werden |
-| 443 |Anmeldename (Standard: admin,) und Kennwort, die während der Clustererstellung angegeben werden |
+| 443 |Anmeldename (Standard: admin) und Kennwort, die während der Clustererstellung angegeben werden |
 
 ## <a name="non-public-ports"></a>Nicht öffentliche Ports
+
 > [!NOTE]
 > Einige Dienste stehen nur bei bestimmten Clustertypen zur Verfügung. HBase beispielsweise ist nur bei HBase-Clustertypen verfügbar.
-> 
-> 
 
 ### <a name="hdfs-ports"></a>HDFS-Ports
-| Dienst | Knoten | Port | Protocol | Beschreibung |
+
+| Dienst | Nodes | Port | Protocol | Beschreibung |
 | --- | --- | --- | --- | --- |
-| NameNode-Webbenutzeroberfläche |Hauptknoten |30070 |HTTPS |Webbenutzeroberfläche zum Anzeigen des aktuellen Status |
+| NameNode-Webbenutzeroberfläche |Hauptknoten |30070 |HTTPS |Webbenutzeroberfläche zum Anzeigen des Status |
 | NameNode-Metadatendienst |Hauptknoten |8020 |IPC |Dateisystem-Metadaten |
 | DataNode |Alle Workerknoten |30075 |HTTPS |Webbenutzeroberfläche zum Anzeigen von Status, Protokollen usw. |
 | DataNode |Alle Workerknoten |30010 |&nbsp; |Datenübertragung |
@@ -84,7 +87,8 @@ Alle Dienste, die im Internet öffentlich verfügbar gemacht werden, müssen aut
 | Sekundärer NameNode |Hauptknoten |50090 |HTTP |Prüfpunkt für NameNode-Metadaten |
 
 ### <a name="yarn-ports"></a>YARN-Ports
-| Dienst | Knoten | Port | Protocol | Beschreibung |
+
+| Dienst | Nodes | Port | Protocol | Beschreibung |
 | --- | --- | --- | --- | --- |
 | Resource Manager-Webbenutzeroberfläche |Hauptknoten |8088 |HTTP |Webbenutzeroberfläche für Resource Manager |
 | Resource Manager-Webbenutzeroberfläche |Hauptknoten |8090 |HTTPS |Webbenutzeroberfläche für Resource Manager |
@@ -97,38 +101,44 @@ Alle Dienste, die im Internet öffentlich verfügbar gemacht werden, müssen aut
 | Zeitachsen-Webbenutzeroberfläche |Hauptknoten |8181 |HTTP |Webbenutzeroberfläche des Zeitachsendiensts |
 
 ### <a name="hive-ports"></a>Hive-Ports
-| Dienst | Knoten | Port | Protocol | Beschreibung |
+
+| Dienst | Nodes | Port | Protocol | Beschreibung |
 | --- | --- | --- | --- | --- |
 | HiveServer2 |Hauptknoten |10001 |Thrift |Dienst für die programmgesteuerte Verbindungsherstellung mit Hive (Thrift/JDBC) |
 | HiveServer |Hauptknoten |10000 |Thrift |Dienst für die programmgesteuerte Verbindungsherstellung mit Hive (Thrift/JDBC) |
 | Hive-Metastore |Hauptknoten |9083 |Thrift |Dienst für die programmgesteuerte Verbindungsherstellung mit Hive-Metadaten (Thrift/JDBC) |
 
 ### <a name="webhcat-ports"></a>WebHCat-Ports
-| Dienst | Knoten | Port | Protocol | Beschreibung |
+
+| Dienst | Nodes | Port | Protocol | Beschreibung |
 | --- | --- | --- | --- | --- |
 | WebHCat-Server |Hauptknoten |30111 |HTTP |Web-API zusätzlich zu HCatalog und anderen Hadoop-Diensten |
 
 ### <a name="mapreduce-ports"></a>MapReduce-Ports
-| Dienst | Knoten | Port | Protocol | Beschreibung |
+
+| Dienst | Nodes | Port | Protocol | Beschreibung |
 | --- | --- | --- | --- | --- |
 | JobHistory |Hauptknoten |19888 |HTTP |MapReduce JobHistory-Webbenutzeroberfläche |
 | JobHistory |Hauptknoten |10020 |&nbsp; |MapReduce JobHistory-Server |
 | ShuffleHandler |&nbsp; |13562 |&nbsp; |Überträgt Map-Zwischenausgaben an anfordernde Reducer |
 
 ### <a name="oozie"></a>Oozie
-| Dienst | Knoten | Port | Protocol | Beschreibung |
+
+| Dienst | Nodes | Port | Protocol | Beschreibung |
 | --- | --- | --- | --- | --- |
 | Oozie-Server |Hauptknoten |11000 |HTTP |URL für Oozie-Dienst |
 | Oozie-Server |Hauptknoten |11001 |HTTP |Port für Oozie-Verwaltung |
 
 ### <a name="ambari-metrics"></a>Ambari-Metriken
-| Dienst | Knoten | Port | Protocol | Beschreibung |
+
+| Dienst | Nodes | Port | Protocol | Beschreibung |
 | --- | --- | --- | --- | --- |
 | TimeLine (Anwendungsverlauf) |Hauptknoten |6188 |HTTP |Webbenutzeroberfläche des Zeitachsendiensts |
 | TimeLine (Anwendungsverlauf) |Hauptknoten |30200 |RPC |Webbenutzeroberfläche des Zeitachsendiensts |
 
 ### <a name="hbase-ports"></a>HBase-Ports
-| Dienst | Knoten | Port | Protocol | Beschreibung |
+
+| Dienst | Nodes | Port | Protocol | Beschreibung |
 | --- | --- | --- | --- | --- |
 | HMaster |Hauptknoten |16000 |&nbsp; |&nbsp; |
 | HMaster-Info-Webbenutzeroberfläche |Hauptknoten |16010 |HTTP |Port für die HBase-Master-Webbenutzeroberfläche |
@@ -136,7 +146,8 @@ Alle Dienste, die im Internet öffentlich verfügbar gemacht werden, müssen aut
 | &nbsp; |&nbsp; |2181 |&nbsp; |Port, der von Clients für die Verbindungsherstellung mit ZooKeeper verwendet wird |
 
 ### <a name="kafka-ports"></a>Kafka-Ports
-| Dienst | Knoten | Port | Protocol | Beschreibung |
+
+| Dienst | Nodes | Port | Protocol | Beschreibung |
 | --- | --- | --- | --- | --- |
 | Broker |Workerknoten |9092 |[Kafka Wire Protocol](http://kafka.apache.org/protocol.html) |Für die Clientkommunikation |
 | &nbsp; |Zookeeper-Knoten |2181 |&nbsp; |Port, der von Clients für die Verbindungsherstellung mit ZooKeeper verwendet wird |

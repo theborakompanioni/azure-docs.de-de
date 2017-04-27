@@ -17,9 +17,9 @@ ms.workload: big-data
 ms.date: 02/17/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: bc047ba2aacbbea6d47d3870ee70d9d9a068f83a
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 1b7772fbf719013d82e5baed1bbbf229d6f2946c
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -41,7 +41,7 @@ Azure HDInsight bietet derzeit fünf verschiedene Typen von Clustern mit einer R
 | [Storm](hdinsight-storm-overview.md) |Ereignisverarbeitung in Echtzeit |
 | [Spark](hdinsight-apache-spark-overview.md) |Arbeitsspeicherinterne Verarbeitung, interaktive Abfragen, Microbatch-Datenstromverarbeitung |
 | [Interactive Hive (Vorschau)](hdinsight-hadoop-use-interactive-hive.md) |Interaktive und schnellere Hive-Abfragen durch speicherinternes Caching |
-| [R Server auf Spark (Vorschau)](hdinsight-hadoop-r-server-overview.md) |Umfasst eine Vielzahl von Big Data-Statistiken, Vorhersagemodellierung und Machine Learning-Funktionen. |
+| [R Server auf Spark](hdinsight-hadoop-r-server-overview.md) |Umfasst eine Vielzahl von Big Data-Statistiken, Vorhersagemodellierung und Machine Learning-Funktionen. |
 | [Kafka (Vorschau)](hdinsight-apache-kafka-introduction.md) | Dies ist eine verteilte Open-Source-Streamingplattform, die zum Erstellen von Datenpipelines und Anwendungen mit Echtzeitstreaming verwendet werden kann. |
 
 Jeder Clustertyp verfügt über eine eigene Anzahl von Knoten im Cluster, Terminologie für Knoten im Cluster und eine VM-Standardgröße für jeden Knotentyp. In der folgenden Tabelle ist die Anzahl von Knoten für jeden Knotentyp jeweils in Klammern angegeben.
@@ -237,7 +237,7 @@ Im klassischen Bereitstellungsmodell unterscheiden sich einige VM-Größen in Po
 | Standard_D13_v2 |8 |56 GB |8 |Temporär (SSD) = 400 GB |16 |16 x 500 |
 | Standard_D14_v2 |16 |112 GB |8 |Temporär (SSD) = 800 GB |32 |32 x 500 |
 
-Überlegungen zur Bereitstellung, die Sie im Hinblick auf die Verwendung dieser Ressourcen berücksichtigen sollten, finden Sie unter [Größen für virtuelle Computer](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Informationen zu den Preisen der unterschiedlichen Größen finden Sie unter [HDInsight-Preise](https://azure.microsoft.com/pricing/details/hdinsight).   
+Überlegungen zur Bereitstellung, die Sie im Hinblick auf die Verwendung dieser Ressourcen berücksichtigen sollten, finden Sie unter [Größen für virtuelle Computer](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Informationen zu den Preisen der unterschiedlichen Größen finden Sie unter [HDInsight-Preise](https://azure.microsoft.com/pricing/details/hdinsight).   
 
 > [!IMPORTANT]
 > Wenn Sie mehr als 32 Workerknoten planen – entweder bei Erstellung des Clusters oder durch Skalierung des Clusters nach der Erstellung – müssen Sie eine Hauptknotengröße von mindestens 8 Kernen und 14 GB RAM auswählen.
@@ -252,6 +252,9 @@ In manchen Fällen sollte dem Cluster zusätzlicher Speicher hinzugefügt werden
 Sie können Speicherkonten hinzufügen, wenn Sie einen HDInsight-Cluster erstellen oder nachdem die Erstellung des Clusters abgeschlossen ist.  Weitere Informationen finden Sie unter [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md).
 
 Weitere Informationen zu einem sekundären Azure Storage-Konto finden Sie unter [Verwenden von Azure Storage mit HDInsight](hdinsight-hadoop-use-blob-storage.md). Weitere Informationen zur Verwendung von sekundärem Data Lake-Speicher finden Sie unter [Erstellen eines HDInsight-Clusters mit Data Lake Store mithilfe des Azure-Portals](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
+
+> [!WARNING]
+> Die Verwendung eines zusätzlichen Speicherkontos an einem anderen Ort als dem HDInsight-Cluster wird nicht unterstützt.
 
 ## <a name="use-hiveoozie-metastore"></a>Verwenden des Hive/Oozie-Metastores
 Wir empfehlen, einen benutzerdefinierten Metastore zu verwenden, wenn Sie nach dem Löschen des HDInsight-Clusters Ihre Hive-Tabellen beibehalten möchten. Sie können diesen Metastore an einen anderen HDInsight-Cluster anfügen.

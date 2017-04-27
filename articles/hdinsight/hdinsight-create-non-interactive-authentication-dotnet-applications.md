@@ -17,9 +17,9 @@ ms.topic: article
 ms.date: 02/22/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: a423975e8a091183154217678706817694f3e346
-ms.openlocfilehash: d5256250d6d3a6d7df3a90ae4a0801af131b830e
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 2b8638ffc3287346a71f591370367655c450e376
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -29,25 +29,25 @@ Sie können Ihre .NET Azure HDInsight-Anwendung entweder unter der eigenen Ident
 Für die nicht interaktive .NET-Anwendung benötigen Sie Folgendes:
 
 * Mandanten-ID des Azure-Abonnements (bzw. Verzeichnis-ID). Siehe [Abrufen der Mandanten-ID](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id).
-* Client-ID der Azure Directory-Anwendung. Siehe [Erstellen einer Active Directory-Anwendung](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-active-directory-application) und [Abrufen der Anwendungs-ID](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key).
-* Geheimen Schlüssel der Azure Directory-Anwendung. Siehe [Abrufen des Anwendungsauthentifizierungsschlüssels](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key).
+* Client-ID der Azure Active Directory-Anwendung. Weitere Informationen finden Sie unter [Erstellen einer Azure Active Directory-Anwendung](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application) und [Abrufen der Anwendungs-ID](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key).
+* Geheimer Schlüssel der Azure Active Directory-Anwendung. Siehe [Abrufen des Anwendungsauthentifizierungsschlüssels](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * HDInsight-Cluster. Siehe [Erste-Schritte-Tutorial](hdinsight-hadoop-linux-tutorial-get-started.md#create-cluster).
 
 
 
-## <a name="assign-ad-application-to-role"></a>Zuweisen der AD-Anwendung zur Rolle
+## <a name="assign-azure-ad-application-to-role"></a>Zuweisen der Azure AD-Anwendung zur Rolle
 Sie müssen die Anwendung einer [Rolle](../active-directory/role-based-access-built-in-roles.md) zuweisen, um ihr Berechtigungen zum Ausführen von Aktionen zu gewähren. Sie können den Umfang auf Abonnement-, Ressourcengruppen- oder Ressourcenebene festlegen. Die Berechtigungen werden in niedrigere Umfangsebenen übernommen (wird der Leserrolle für eine Ressourcengruppe beispielsweise eine Anwendung hinzugefügt, kann sie die Ressourcengruppe und alle darin enthaltenen Ressourcen lesen). In diesem Tutorial legen Sie den Bereich auf Ressourcengruppenebene fest. Weitere Informationen finden Sie unter [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure-Abonnementressourcen](../active-directory/role-based-access-control-configure.md).
 
-**So fügen Sie der AD-Anwendung die Rolle „Besitzer“ hinzu**
+**So fügen Sie der Azure AD-Anwendung die Rolle „Besitzer“ hinzu**
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 2. Klicken Sie im linken Bereich auf **Ressourcengruppe**.
 3. Klicken Sie auf die Ressourcengruppe mit dem HDInsight-Cluster, in dem Sie später in diesem Tutorial die Hive-Abfrage ausführen möchten. Wenn zu viele Ressourcengruppen vorhanden sind, können Sie den Filter verwenden.
 4. Klicken Sie im Ressourcengruppenmenü auf **Zugriffssteuerung (IAM)**.
 5. Klicken Sie auf dem Blatt **Benutzer** auf **Hinzufügen**.
-6. Befolgen Sie die Anleitung zum Hinzufügen der Rolle **Besitzer** zu der AD-Anwendung, die Sie oben im letzten Verfahren erstellt haben. Wenn Sie den Vorgang erfolgreich abgeschlossen haben, wird die Anwendung auf dem Blatt „Benutzer“ mit der Rolle „Besitzer“ aufgeführt.
+6. Befolgen Sie die Anleitung zum Hinzufügen der Rolle **Besitzer** zu der Azure AD-Anwendung, die Sie oben im letzten Verfahren erstellt haben. Wenn Sie den Vorgang erfolgreich abgeschlossen haben, wird die Anwendung auf dem Blatt „Benutzer“ mit der Rolle „Besitzer“ aufgeführt.
 
 ## <a name="develop-hdinsight-client-application"></a>Entwickeln der HDInsight-Clientanwendung
 
@@ -125,7 +125,7 @@ Sie müssen die Anwendung einer [Rolle](../active-directory/role-based-access-bu
         }
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals mithilfe des Portals](../azure-resource-manager/resource-group-create-service-principal-portal.md)
+* [Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mithilfe des Portals](../azure-resource-manager/resource-group-create-service-principal-portal.md)
 * [Authentifizieren eines Dienstprinzipals mit Azure Resource Manager](../azure-resource-manager/resource-group-authenticate-service-principal.md)
 * [Rollenbasierte Access Control in Azure](../active-directory/role-based-access-control-configure.md)
 

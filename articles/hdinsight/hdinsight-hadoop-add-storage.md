@@ -16,9 +16,9 @@ ms.date: 02/23/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
 translationtype: Human Translation
-ms.sourcegitcommit: d391c5c6289aa63e969f63f189eb5db680883f0a
-ms.openlocfilehash: b8c5e53ed5fe86ed099e37644d405080477f8c27
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 0bd6fce848c6d174eb519f8ef8a14f9ead5fa5ce
+ms.lasthandoff: 04/13/2017
 
 ---
 
@@ -52,7 +52,7 @@ Während der Verarbeitung führt dieses Skript folgende Aktionen aus:
 * Die Dienste Oozie, YARN MapReduce2 und HDFS werden beendet und neu gestartet, damit sie die neuen Speicherkontodaten aufnehmen.
 
 > [!WARNING]
-> Wenn das Speicherkonto sich in einer anderen Region als der HDInsight-Cluster befindet, könnten Sie eine schlechte Leistung feststellen. Der Zugriff auf Daten in einer anderen Region ist mit Netzwerkdatenverkehr außerhalb des regionalen Azure-Rechenzentrums und über das öffentliche Internet verbunden, was zu Latenz führen kann. Außerdem kann das Senden von Daten aus einem regionalen Rechenzentrum möglicherweise mehr Kosten verursachen, da eine Ausgangsgebühr erhoben wird, wenn Daten ein Rechenzentrum verlassen.
+> Die Verwendung eines Speicherkontos an einem anderen Ort als dem HDInsight-Cluster wird nicht unterstützt.
 
 ## <a name="the-script"></a>Das Skript
 
