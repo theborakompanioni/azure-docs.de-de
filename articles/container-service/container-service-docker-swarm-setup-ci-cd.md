@@ -17,6 +17,7 @@ ms.author: jucoriol
 translationtype: Human Translation
 ms.sourcegitcommit: c5e05a8693bd000010013922ed6f2a127e998efe
 ms.openlocfilehash: db58703f573c09ba45abed87547c5e80ef58638b
+ms.lasthandoff: 12/14/2016
 
 
 ---
@@ -53,6 +54,8 @@ Bevor Sie mit diesem Tutorial beginnen, müssen Sie die folgenden Aufgaben ausf�
 - [Erstellen einer Azure-Containerregistrierung](../container-registry/container-registry-get-started-portal.md)
 - [Erstellen eines Visual Studio Team Services-Kontos (sofern noch nicht vorhanden) und des Teamprojekts](https://www.visualstudio.com/en-us/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services)
 - [Verzweigen des GitHub-Repositorys zu Ihrem GitHub-Konto](https://github.com/jcorioland/MyShop/)
+
+[!INCLUDE [container-service-swarm-mode-note](../../includes/container-service-swarm-mode-note.md)]
 
 Darüber hinaus benötigen Sie einen Computer mit Ubuntu (14.04 oder 16.04), auf dem Docker installiert ist. Dieser Computer wird von Visual Studio Team Services während der Build- und Releaseprozesse verwendet. Eine Möglichkeit zum Erstellen dieses Computers ist die Verwendung des in [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/canonicalandmsopentech/dockeronubuntuserver1404lts/) verfügbaren Images. 
 
@@ -227,8 +230,3 @@ Nachdem Sie die Konfiguration abgeschlossen haben, ist es Zeit, diese neue CI/CD
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zu CI/CD mit Visual Studio Team Services finden Sie unter in der [Übersicht über den VSTS-Build](https://www.visualstudio.com/docs/build/overview).
-
-
-<!--HONumber=Dec16_HO2-->
-
-

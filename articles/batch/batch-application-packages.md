@@ -202,7 +202,7 @@ Legen Sie in Batch .NET Verweise vom Typ [CloudPool][net_cloudpool].[Application
 CloudPool myCloudPool =
     batchClient.PoolOperations.CreatePool(
         poolId: "myPool",
-        targetDedicated: "1",
+        targetDedicated: 1,
         virtualMachineSize: "small",
         cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "4"));
 

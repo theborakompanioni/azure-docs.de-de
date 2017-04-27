@@ -74,6 +74,8 @@ Docker Swarm bietet eine systemeigene Clusterfunktion für Docker. Da Docker die
 
 ![Konfiguration von Azure Container Service für die Verwendung von Swarm](media/acs-intro/acs-swarm2.png)
 
+[!INCLUDE [container-service-swarm-mode-note](../../includes/container-service-swarm-mode-note.md)]
+
 Unterstützte Tools für die Verwaltung von Containern auf einem Swarm-Cluster sind u. a. folgende:
 
 * Dokku
