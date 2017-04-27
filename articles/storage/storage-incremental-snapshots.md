@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: aungoo
 translationtype: Human Translation
-ms.sourcegitcommit: bfb29928783283336b6116f198d70b0b7117750d
-ms.openlocfilehash: 880b1c2ca069e3e4a5ce9cb2af881b95e84687f4
-ms.lasthandoff: 02/08/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 7b08ce207b2a3cc2dd3d3559765def6af42a844a
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -61,7 +61,7 @@ Mit der inkrementellen Kopie der Momentaufnahme können Sie von einem Speicherko
 
 Vorausgesetzt, die folgenden Bedingungen sind erfüllt:
 
-* Das Blob wurde am&1;. Januar&2016; oder später erstellt.
+* Das Blob wurde am 1. Januar 2016 oder später erstellt.
 * Das Blob wurde zwischen zwei Momentaufnahmen nicht mit [PutPage](https://msdn.microsoft.com/library/azure/ee691975.aspx) oder [Copyblob](https://msdn.microsoft.com/library/azure/dd894037.aspx) überschrieben.
 
 **Hinweis**: Diese Funktion steht für Premium- und Standard-Azure-Seitenblobs zur Verfügung.
@@ -105,7 +105,7 @@ Mit den unten beschriebenen Schritten werden Momentaufnahmen von *mypremiumdisk*
 ## <a name="steps-to-restore-a-disk-from-snapshots"></a>Schritte zum Wiederherstellen eines Datenträgers aus Momentaufnahmen
 Mit den unten beschriebenen Schritten wird der Premium-Datenträger *mypremiumdisk* mit einer früheren Momentaufnahme aus dem Sicherungsspeicherkonto *mybackupstdaccount* wiederhergestellt.
 
-1. Geben Sie den Zeitpunkt an, den Sie auf dem Premium-Datenträger wiederherstellen möchten. Nehmen wir an, die Momentaufnahme sei *mybackupstdpageblob_ss2*, die in dem Sicherungsspeicherkonto *mybackupstdaccount* gespeichert ist.
+1. Geben Sie den Zeitpunkt an, den Sie auf dem Premium-Datenträger wiederherstellen möchten. Angenommen, die Momentaufnahme sei *mybackupstdpageblob_ss2*, und sie ist im Sicherungsspeicherkonto *mybackupstdaccount* gespeichert.
 2. Stufen Sie die Momentaufnahme *mybackupstdpageblob_ss2* in „mybackupstdaccount“ als neues Sicherungs-Basisseitenblob *mybackupstdpageblobrestored* herauf.
 3. Erstellen Sie von diesem wiederhergestellten Sicherungsseitenblob eine Momentaufnahme mit Namen *mybackupstdpageblob_ss1*.
 4. Kopieren Sie das wiederhergestellte Seitenblob *mybackupstdpageblobrestored* als neuen Premium-Datenträger *mypremiumdiskrestored* aus *mybackupstdaccount* in *mypremiumaccount*.

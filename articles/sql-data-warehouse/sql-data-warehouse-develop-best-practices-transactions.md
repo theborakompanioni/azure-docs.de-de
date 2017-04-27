@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: t-sql
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ed017b542de11a5e8abe46e1651b04cb61c77265
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: f9f19d75a37351b3562ce8c2f3629df14c5437c6
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -179,12 +181,12 @@ DROP TABLE [dbo].[FactInternetSales_old]
 ```
 
 > [!NOTE]
-> Bei der Neuerstellung großer Tabellen kann die Nutzung von SQL Data Warehouse-Features zur Workloadverwaltung vorteilhaft sein. Weitere Details finden Sie im Artikel zur [Parallelität][Parallelität] im Abschnitt zur Workloadverwaltung.
+> Bei der Neuerstellung großer Tabellen kann die Nutzung von SQL Data Warehouse-Features zur Workloadverwaltung vorteilhaft sein. Weitere Details finden Sie im Artikel zur [Parallelität][concurrency] im Abschnitt zur Workloadverwaltung.
 > 
 > 
 
 ## <a name="optimizing-with-partition-switching"></a>Optimieren mit Partitionswechsel
-Bei umfangreichen Änderungen innerhalb einer [Tabellenpartition][Tabellenpartition] ist ein Muster für Partitionswechsel sehr sinnvoll. Wenn der Datenänderungsaufwand groß ist und mehrere Partitionen umfasst, lässt sich mit dem einfachen Durchlaufen der Partitionen das gleiche Ergebnis erzielen.
+Bei umfangreichen Änderungen innerhalb einer [Tabellenpartition][table partition] ist ein Muster für Partitionswechsel sehr sinnvoll. Wenn der Datenänderungsaufwand groß ist und mehrere Partitionen umfasst, lässt sich mit dem einfachen Durchlaufen der Partitionen das gleiche Ergebnis erzielen.
 
 Schritte zum Durchführen eines Partitionswechsels:
 
@@ -416,30 +418,25 @@ Mit Azure SQL Data Warehouse können Sie den Vorgang anhalten und fortsetzen und
 
 Die beste Vorgehensweise ist, auf den Abschluss aktiver Datenänderungstransaktionen zu warten, bevor SQL Data Warehouse angehalten oder skaliert wird. Allerdings ist dies unter Umständen nicht immer praktikabel. Sie können folgende Optionen verwenden, um das Risiko eines langen Rollbackvorgangs zu verringern:
 
-* Schreiben Sie Vorgänge mit langer Ausführungsdauer mithilfe von [CTAS][CTAS] um.
+* Schreiben Sie Vorgänge mit langer Ausführungsdauer mithilfe von [CTAS][CTAS].
 * Teilen Sie den Vorgang in Teile auf, und arbeiten Sie mit einer Teilmenge der Zeilen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu Isolationsstufen und Transaktionslimits finden Sie unter [Transaktionen in SQL Data Warehouse][Transaktionen in SQL Data Warehouse].  Eine Übersicht über weitere bewährte Methoden finden Sie unter [Bewährte Methoden für SQL Data Warehouse][Bewährte Methoden für SQL Data Warehouse].
+Weitere Informationen zu Isolationsstufen und Transaktionsgrenzen finden Sie unter [Transaktionen in SQL Data Warehouse][Transactions in SQL Data Warehouse].  Eine Übersicht über andere bewährte Methoden finden Sie unter [Bewährte Methoden für SQL Data Warehouse][SQL Data Warehouse Best Practices].
 
 <!--Image references-->
 
 <!--Article references-->
-[Transaktionen in SQL Data Warehouse]: ./sql-data-warehouse-develop-transactions.md
-[Tabellenpartition]: ./sql-data-warehouse-tables-partition.md
+[Transactions in SQL Data Warehouse]: ./sql-data-warehouse-develop-transactions.md
+[table partition]: ./sql-data-warehouse-tables-partition.md
 [Concurrency]: ./sql-data-warehouse-develop-concurrency.md
 [CTAS]: ./sql-data-warehouse-develop-ctas.md
-[Bewährte Methoden für SQL Data Warehouse]: ./sql-data-warehouse-best-practices.md
+[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
 
 <!--MSDN references-->
 [alter index]:https://msdn.microsoft.com/library/ms188388.aspx
 [RENAME]: https://msdn.microsoft.com/library/mt631611.aspx
 
 <!-- Other web references -->
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 02/09/2017
 ms.author: sethm;jotaub
 translationtype: Human Translation
-ms.sourcegitcommit: da7f8e3e61705cf07ff65c9dd1d8f292f4fb9f62
-ms.openlocfilehash: 9061829e42ed5563d64860774aa7d80f2ab011bd
+ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
+ms.openlocfilehash: cbbef00cb4c54f4df2634fbe7b3dacbd34a175bd
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -34,7 +35,7 @@ Ein [Namespace](service-bus-create-namespace-portal.md) ist ein Bereichscontaine
 Eine [Service Bus-Warteschlange](service-bus-queues-topics-subscriptions.md) ist eine Entität, in der Nachrichten gespeichert werden. Warteschlangen sind besonders nützlich, wenn Sie über mehrere Anwendungen oder mehrere Teile einer verteilten Anwendung verfügen, die miteinander kommunizieren müssen. Die Warteschlange ähnelt einem Verteilzentrum, in dem mehrere Produkte (Nachrichten) eingehen und von diesem Standort aus dann weiterverschickt werden.
 
 ### <a name="what-are-azure-service-bus-topics-and-subscriptions"></a>Was sind Azure Service Bus-Themen und -Abonnements?
-Eine Thema kann als Warteschlange visualisiert werden, und bei Verwendung mehrerer Abonnements ergibt sich ein umfassenderes Messagingmodell. Im Wesentlichen handelt es sich um ein Tool für die&1;:n-Kommunikation. Bei diesem Modell vom Typ „Veröffentlichen/Abonnieren“ (*Pub/Sub*) kann für eine Anwendung, die eine Nachricht an ein Thema mit mehreren Abonnements sendet, erreicht werden, dass die Nachricht von mehreren Anwendungen empfangen wird.
+Eine Thema kann als Warteschlange visualisiert werden, und bei Verwendung mehrerer Abonnements ergibt sich ein umfassenderes Messagingmodell. Im Wesentlichen handelt es sich um ein Tool für die 1:n-Kommunikation. Bei diesem Modell vom Typ „Veröffentlichen/Abonnieren“ (*Pub/Sub*) kann für eine Anwendung, die eine Nachricht an ein Thema mit mehreren Abonnements sendet, erreicht werden, dass die Nachricht von mehreren Anwendungen empfangen wird.
 
 ### <a name="what-is-a-partitioned-entity"></a>Was ist eine partitionierte Entität?
 Eine herkömmliche Warteschlange oder ein Thema werden von einem einzelnen Nachrichtenbroker verarbeitet und in einem Nachrichtenspeicher gespeichert. Eine [partitionierte Warteschlange bzw. ein Thema](service-bus-partitioning.md) wird mit mehreren Nachrichtenbrokern verarbeitet und in mehreren Nachrichtenspeichern gespeichert. Dies bedeutet, dass der Gesamtdurchsatz einer partitionierten Warteschlange oder eines Themas nicht mehr durch die Leistung eines einzelnen Nachrichtenbrokers oder Nachrichtenspeichers beschränkt wird. Außerdem führt ein vorübergehender Ausfall eines Nachrichtenspeichers nicht dazu, dass eine partitionierte Warteschlange oder ein Thema nicht verfügbar ist.
@@ -67,40 +68,15 @@ Jede Datenübertragung innerhalb der jeweiligen Azure-Region ist ebenso wie jede
 Nein, für Service Bus fallen keine Speicherkosten an. Es gibt allerdings ein Kontingent, das die Höchstmenge an Daten begrenzt, die pro Warteschlange/Thema beibehalten werden kann. Weitere Informationen finden Sie im nächsten Abschnitt.
 
 ## <a name="quotas"></a>Kontingente
-Eine Liste mit Service Bus-Grenzwerten und -Kontingenten finden Sie unter [Übersicht über Kontingente][Quotas overview].
+
+Eine Liste mit Service Bus-Grenzwerten und -Kontingenten finden Sie unter [Übersicht über Service Bus-Kontingente][Quotas overview].
 
 ### <a name="does-service-bus-have-any-usage-quotas"></a>Gibt es für Service Bus Nutzungskontingente?
-Microsoft legt für jeden Clouddienst standardmäßig ein aggregiertes monatliches Nutzungskontingent fest, das abonnementübergreifend für einen Kunden berechnet wird. Uns ist bewusst, dass Sie möglicherweise mehr benötigen als diese Grenzwerte. Sie können sich gerne jederzeit an unseren Kundendienst wenden und uns Ihre Anforderungen mitteilen, damit wir die Grenzwerte entsprechend anpassen können. Für Service Bus liegen die aggregierten Nutzungskontingente bei 5 Milliarden Nachrichten pro Monat.
+Microsoft legt für jeden Clouddienst standardmäßig ein aggregiertes monatliches Nutzungskontingent fest, das abonnementübergreifend für einen Kunden berechnet wird. Uns ist bewusst, dass Sie möglicherweise mehr benötigen als diese Grenzwerte. Sie können sich gerne jederzeit an unseren Kundendienst wenden und uns Ihre Anforderungen mitteilen, damit wir die Grenzwerte entsprechend anpassen können. Für Service Bus liegt das aggregierte Nutzungskontingent bei 5 Milliarden Nachrichten pro Monat.
 
 Wir behalten uns das Recht vor, ein Kundenkonto zu deaktivieren, das die Nutzungskontingente in einem Monat überschritten hat. Wir informieren allerdings per E-Mail darüber und unternehmen mehrere Versuche, den Kunden zu kontaktieren, ehe wir diese Maßnahme ergreifen. Kunden, die diese Kontingente überschreiten, haben die Kosten für die Überschreitung zu tragen.
 
 Genau wie andere Dienste in Azure setzt Service Bus eine Reihe spezifischer Kontingente durch, die eine faire Nutzung der Ressourcen sicherstellen. Im Folgenden finden Sie die Nutzungskontingente, die vom Dienst durchgesetzt werden:
-
-#### <a name="queuetopic-size"></a>Warteschlangen-/Themengröße
-Bei der Erstellung einer Warteschlange oder eines Themas legen Sie jeweils die maximale Größe fest. Dieses Kontingent kann einen Wert von 1, 2, 3, 4 oder 5 GB aufweisen. Wenn die festgelegte Größe erreicht ist, werden zusätzlich eingehende Nachrichten abgelehnt, und vom aufrufenden Code wird eine Ausnahme empfangen.
-
-#### <a name="naming-restrictions"></a>Benennungseinschränkungen
-Die Namen für einen Service Bus-Namespace können nur zwischen 6 und 50 Zeichen lang sein. Die Zeichenanzahl für Warteschlangen, Themen oder Abonnements liegt zwischen 1 und 50 Zeichen.
-
-#### <a name="number-of-concurrent-connections"></a>Anzahl gleichzeitiger Verbindungen
-Warteschlange/Thema/Abonnement: Die Anzahl der gleichzeitigen TCP-Verbindungen für eine Warteschlange, ein Thema oder ein Abonnement ist auf 100 begrenzt. Wenn dieses Kontingent erreicht wird, werden nachfolgende Anforderungen für zusätzliche Verbindungen abgelehnt, und vom aufrufenden Code wird eine Ausnahme empfangen. Für jede Messagingfactory unterhält Service Bus eine TCP-Verbindung, wenn einer der von ihr erstellten Clients einen ausstehenden aktiven Vorgang aufweist oder ein Vorgang vor weniger als 60 Sekunden abgeschlossen wurde. REST-Vorgänge werden nicht zu den gleichzeitigen TCP-Verbindungen hinzugezählt.
-
-#### <a name="number-of-topicsqueues-per-service-namespace"></a>Anzahl von Themen/Warteschlangen pro Dienstnamespace
-Die maximale Anzahl von Themen/Warteschlangen (permanente, durch Speicher gesicherte Entitäten) in einem Dienstnamespace ist auf 10.000 begrenzt. Wenn dieses Kontingent erreicht wird, werden nachfolgende Anforderungen zum Erstellen eines neuen Themas bzw. einer neuen Warteschlange für den Dienstnamespace zurückgewiesen. In diesem Fall zeigt das klassische Azure-Portal eine Fehlermeldung an, oder der anfordernde Clientcode empfängt eine Ausnahme. Dies hängt davon ab, ob der Erstellungsversuch über das Portal oder über den Clientcode erfolgt ist.
-
-### <a name="message-size-quotas"></a>Kontingente für die Nachrichtengröße
-#### <a name="queuetopicsubscription"></a>Warteschlange/Thema/Abonnement
-**Nachrichtengröße** : Jede Nachricht ist auf eine Gesamtgröße von 256 KB einschließlich Nachrichtenheader begrenzt.
-
-**Nachrichtenheadergröße** : Jeder Nachrichtenheader ist auf 64 KB begrenzt.
-
-Nachrichten, die diese Größenkontingente überschreiten, werden abgelehnt, und vom aufrufenden Code wird eine Ausnahme empfangen.
-
-**Anzahl von Abonnements pro Thema** : Die maximale Anzahl von Abonnements pro Thema ist auf 2.000 beschränkt. Wenn dieses Kontingent erreicht ist, werden nachfolgende Anforderungen zum Erstellen weiterer Abonnements für das Thema zurückgewiesen. In diesem Fall zeigt das klassische Azure-Portal eine Fehlermeldung an, oder der anfordernde Clientcode empfängt eine Ausnahme. Dies hängt davon ab, ob der Erstellungsversuch über das Portal oder über den Clientcode erfolgt ist.
-
-**Anzahl von SQL-Filtern pro Thema** : Die maximale Anzahl von SQL-Filtern pro Thema ist auf 2.000 beschränkt. Wenn dieses Kontingent erreicht ist, werden nachfolgende Anforderungen für die Erstellung weiterer Filter für das Thema zurückgewiesen, und der aufrufende Code empfängt eine Ausnahme.
-
-**Anzahl von Korrelationsfiltern pro Thema** : Die maximale Anzahl von Korrelationsfiltern pro Thema ist auf 100.000 beschränkt. Wenn dieses Kontingent erreicht ist, werden nachfolgende Anforderungen für die Erstellung weiterer Filter für das Thema zurückgewiesen, und der aufrufende Code empfängt eine Ausnahme.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 ### <a name="what-are-some-of-the-exceptions-generated-by-azure-service-bus-apis-and-their-suggested-actions"></a>Welche Beispiele gibt es für Ausnahmen, die von Azure Service Bus-APIs generiert werden, und die vorgeschlagenen Aktionen?
@@ -140,10 +116,5 @@ Weitere Informationen zu Service Bus finden Sie in den folgenden Themen:
 [Pricing overview]: https://azure.microsoft.com/pricing/details/service-bus/
 [Quotas overview]: service-bus-quotas.md
 [Exceptions overview]: service-bus-messaging-exceptions.md
-[Shared Access Signatures]: service-bus-sas-overview.md
-
-
-
-<!--HONumber=Feb17_HO2-->
-
+[Shared Access Signatures]: service-bus-sas.md
 

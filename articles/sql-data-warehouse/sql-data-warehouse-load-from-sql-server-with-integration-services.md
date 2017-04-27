@@ -3,7 +3,7 @@ title: Laden von Daten aus SQL Server in Azure SQL Data Warehouse (SSIS) | Micro
 description: Hier erfahren Sie, wie Sie ein SQL Server Integration Services (SSIS)-Paket erstellen, um Daten aus verschiedensten Datenquellen in SQL Data Warehouse zu verschieben.
 services: sql-data-warehouse
 documentationcenter: NA
-author: barbkess
+author: douglaslms
 manager: jhubbard
 editor: 
 ms.assetid: e2c252e9-0828-47c2-a808-e3bea46c134a
@@ -12,13 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 10/31/2016
-ms.author: barbkess
 ms.custom: loading
+ms.date: 03/30/2017
+ms.author: douglasl;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: a8c557ea07cbccb913bc47c510f6759dd832c861
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: d208f783e5b4e7786350706d8025e6e13f45f0d2
+ms.lasthandoff: 04/03/2017
+
 
 
 ---
@@ -55,14 +56,14 @@ SQL Server Integration Services (SSIS) ist ein flexibles Toolset und bietet vers
 Für dieses Lernprogramm ist Folgendes erforderlich:
 
 1. **SQL Server Integration Services (SSIS)**. SSIS ist eine Komponente von SQL Server und setzt eine Evaluierungsversion oder eine lizenzierte Version von SQL Server voraus. Eine Evaluierungsversion von SQL Server 2016 Preview finden Sie unter [SQL Server-Evaluierungsversionen][SQL Server Evaluations].
-2. **Visual Studio** Die kostenlose Visual Studio 2015 Community Edition finden Sie unter [Visual Studio Community][Visual Studio Community].
-3. **SQL Server Data Tools (SSDT) für Visual Studio**. SQL Server Data Tools für Visual Studio 2015 ist unter [Download der neuesten SQL Server-Datatools][Download SQL Server Data Tools (SSDT)] erhältlich.
+2. **Visual Studio** Die kostenlose Visual Studio Community Edition finden Sie unter [Visual Studio Community][Visual Studio Community].
+3. **SQL Server Data Tools (SSDT) für Visual Studio**. SQL Server Data Tools für Visual Studio ist unter [Download der neuesten SQL Server-Data Tools (SSDT)][Download SQL Server Data Tools (SSDT)] erhältlich.
 4. **Beispieldaten**. In diesem Tutorial werden als Quelldaten in SQL Server gespeicherte Beispieldaten aus der AdventureWorks-Beispieldatenbank verwendet, die in SQL Data Warehouse geladen werden sollen. Die AdventureWorks-Beispieldatenbank finden Sie unter [AdventureWorks 2014-Beispieldatenbanken][AdventureWorks 2014 Sample Databases].
 5. **Eine SQL Data Warehouse-Datenbank und entsprechende Berechtigungen**. In diesem Tutorial wird eine Verbindung mit einer SQL Data Warehouse-Instanz hergestellt, und es werden Daten in diese Instanz geladen. Sie müssen über Berechtigungen zum Erstellen einer Tabelle und zum Laden von Daten verfügen.
 6. **Eine Firewallregel**. Für SQL Data Warehouse muss eine Firewallregel mit der IP-Adresse Ihres lokalen Computers erstellt werden, um Daten an SQL Data Warehouse hochladen zu können.
 
 ## <a name="step-1-create-a-new-integration-services-project"></a>Schritt 1: Erstellen eines neuen Integration Services-Projekts
-1. Starten Sie Visual Studio 2015.
+1. Starten Sie Visual Studio.
 2. Wählen Sie im Menü **Datei** die Optionen **Neu > Projekt**.
 3. Navigieren Sie zu **Installiert &gt; Vorlagen &gt; Business Intelligence &gt; Integration Services** .
 4. Wählen Sie **Integration Services-Projekt**aus. Geben Sie Werte für **Name** und **Speicherort** ein, und wählen Sie anschließend **OK**.

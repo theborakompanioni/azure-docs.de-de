@@ -15,9 +15,9 @@ ms.workload: required
 ms.date: 02/22/2017
 ms.author: ruturajd@microsoft.com
 translationtype: Human Translation
-ms.sourcegitcommit: ac56273cf85aff550febecf0d75ec87d5c6dbbca
-ms.openlocfilehash: 26547135548dde96e9da601f2e0ccfe96c626880
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 198caeea693fbc48b6e0eb1c9c8ee559e0553261
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -238,25 +238,15 @@ Stellen Sie sich ein Szenario vor, bei dem nur ein Skript für bestimmte VMs ein
 Sie können dasselbe Skript mit unterschiedlichen Wiederherstellungsplänen verwenden und andere Parameter angeben, indem Sie den Wert für unterschiedliche Wiederherstellungspläne in verschiedenen Variablen speichern.
 
 ## <a name="sample-scripts"></a>Beispielskripts
-Ein Repository mit Skripts, die Sie direkt in Ihr Automation-Konto importieren können, finden Sie im [OMS-Repository für Skripts von Kristian Nese](https://github.com/krnese/AzureDeploy/tree/master/OMS/MSOMS/Solutions/asrautomation).
+Stellen Sie Beispielskripts mithilfe der unten stehenden Schaltfläche zum Bereitstellen in Azure in Ihrem Automation-Konto bereit.
 
-Dieses Skript ist eine Azure Resource Manager-Vorlage, mit der alle folgenden Skripts bereitgestellt werden:
+[![Bereitstellen in Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
-* NSG
+Schauen Sie sich zudem ein kurzes Video zum Wiederherstellen einer WordPress-Anwendung mit zwei Ebenen in Azure an.
 
-Beim NSG-Runbook werden jeder VM im Wiederherstellungsplan öffentliche IP-Adressen zugewiesen und die virtuellen Netzwerkadapter an eine Netzwerksicherheitsgruppe angefügt, um die Standardkommunikation zu ermöglichen.
+> [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/One-click-failover-of-a-2-tier-WordPress-application-using-Azure-Site-Recovery/player]
 
-* PublicIP
 
-Mit dem PublicIP-Runbook werden jeder VM im Wiederherstellungsplan öffentliche IP-Adressen zugewiesen. Der Zugriff auf Computer und Anwendungen hängt von den Firewalleinstellungen auf jedem Gastbetriebssystem ab.
-
-* CustomScript
-
-Beim CustomScript-Runbook werden jeder VM im Wiederherstellungsplan öffentliche IP-Adressen zugewiesen, und es wird eine benutzerdefinierte Skripterweiterung installiert, mit der während der Bereitstellung der Vorlage der Pullvorgang für das Skript durchgeführt wird, auf das Sie verweisen.
-
-* NSGwithCustomScript
-
-Mit dem NSGwithCustomScript-Runbook werden jeder VM im Wiederherstellungsplan öffentliche IP-Adressen zugewiesen, und es wird ein benutzerdefiniertes Skript per Erweiterung installiert. Außerdem wird für die virtuellen Netzwerkadapter eine Verbindung mit einer NSG hergestellt, um die eingehende und ausgehende Kommunikation für den Remotezugriff zu ermöglichen.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 [Authentifizieren von Runbooks mit der Azure-Option „Ausführendes Konto“](../automation/automation-sec-configure-azure-runas-account.md)

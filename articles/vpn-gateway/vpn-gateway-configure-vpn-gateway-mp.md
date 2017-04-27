@@ -4,7 +4,7 @@ description: "Dieser Artikel führt Sie durch die Schritte, die erforderlich sin
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-service-management
 ms.assetid: fbe59ba8-b11f-4d21-9bb1-225ec6c6d351
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/09/2017
+ms.date: 04/04/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: b6f001345daf411497295357ab43d01635ae743e
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 2ea4e6bb86b1ba6f7b501b193d0713d3901457af
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -67,16 +67,20 @@ Wenn Sie eine Standort-zu-Standort-Verbindung erstellen, sammeln Sie nach der Ga
 ![Schlüssel verwalten](./media/vpn-gateway-configure-vpn-gateway-mp/IC717029.png)
 
 ### <a name="step-2--configure-your-vpn-device"></a>Schritt 2:  Konfigurieren des VPN-Geräts
-Für Standort-zu-Standort-Verbindungen müssen Sie oder Ihr Netzwerkadministrator nach Abschluss der vorherigen Schritte das VPN-Gerät konfigurieren, um die Verbindung zu erstellen. Weitere Informationen zu VPN-Geräten finden Sie unter [Informationen zu VPN-Geräten und Gateways für virtuelle Netzwerkverbindungen](vpn-gateway-about-vpn-devices.md) .
+Für Site-to-Site-Verbindungen mit einem lokalen Netzwerk ist ein VPN-Gerät erforderlich. Wir stellen zwar nicht für alle VPN-Geräte Konfigurationsschritte bereit, aber die folgenden Links enthalten hilfreiche Informationen:
+
+- Informationen zu kompatiblen VPN-Geräten finden Sie unter [VPN-Geräte](vpn-gateway-about-vpn-devices.md). 
+- Links zu Konfigurationseinstellungen für Geräte finden Sie unter [Überprüfte VPN-Geräte](vpn-gateway-about-vpn-devices.md#devicetable). Diese Links werden nach bestem Wissen bereitgestellt. Die beste Vorgehensweise besteht immer darin, die aktuellen Informationen zur Konfiguration bei Ihrem Gerätehersteller zu erfragen.
+- Informationen zur Bearbeitung von Gerätekonfigurationsbeispielen finden Sie unter [Bearbeiten von Gerätekonfigurationsbeispielen](vpn-gateway-about-vpn-devices.md#editing).
+- Informationen zu IPsec/IKE-Parametern finden Sie unter [Parameter](vpn-gateway-about-vpn-devices.md#ipsec).
+- Führen Sie vor dem Konfigurieren Ihres VPN-Geräts eine Überprüfung auf [bekannte Probleme mit der Gerätekompatibilität](vpn-gateway-about-vpn-devices.md#known) für das VPN-Gerät durch, das Sie verwenden möchten.
+
+Beim Konfigurieren des VPN-Geräts benötigen Sie Folgendes:
+
+- Die öffentliche IP-Adresse Ihres Gateways für virtuelle Netzwerke. Sie können sie ermitteln, indem Sie zum Blatt **Übersicht** für Ihr virtuelles Netzwerk navigieren.
+- Einen gemeinsam verwendeten Schlüssel. Dies ist derselbe gemeinsame Schlüssel, den Sie beim Erstellen Ihrer Site-to-Site-VPN-Verbindung angeben. In unseren Beispielen verwenden wir einen sehr einfachen gemeinsamen Schlüssel. Es ist ratsam, einen komplexeren Schlüssel zu generieren.
 
 Wenn das VPN-Gerät konfiguriert wurde, können Sie Ihre aktualisierten Verbindungsinformationen auf der Dashboardseite für Ihr VNet anzeigen.
-
-Mithilfe eines der folgenden Befehle können Sie Ihre Verbindung testen:
-
-|  | Cisco ASA | Cisco ISR/ASR | Juniper SSG/ISG | Juniper SRX/J |
-| --- | --- | --- | --- | --- |
-| **SAs im Hauptmodus prüfen** |show crypto isakmp sa |show crypto isakmp sa |get ike cookie |show security ike security-association |
-| **SAs im schnellen Modus prüfen** |show crypto ipsec sa |show crypto ipsec sa |get sa |show security ipsec security-association |
 
 ### <a name="step-3-verify-your-local-network-ranges-and-vpn-gateway-ip-address"></a>Schritt 3: Überprüfen der lokalen Netzwerkbereiche und der IP-Adresse des VPN-Gateways
 #### <a name="verify-your-vpn-gateway-ip-address"></a>Überprüfen der IP-Adresse Ihres VPN-Gateways

@@ -14,19 +14,19 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 10/31/2016
+ms.date: 04/01/2017
 ms.author: chrande; glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 6aed248b91d25572c4eae691f4e5392e37c01400
-ms.openlocfilehash: e2d81d140c194a33ea6f1462effb09a9e283d3af
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 6644f6b879e48787249111c5e02b75b963f1e1cd
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="azure-functions-service-bus-bindings"></a>Service Bus-Bindungen von Azure Functions
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-Dieser Artikel erläutert das Konfigurieren und Codieren von Azure Service Bus-Bindungen in Azure Functions. Azure Functions unterstützt Trigger und Ausgabebindungen für Notification Hubs-Warteschlangen und -Themen.
+Dieser Artikel erläutert das Konfigurieren von und Arbeiten mit Azure Service Bus-Bindungen in Azure Functions. Azure Functions unterstützt Trigger und Ausgabebindungen für Service Bus-Warteschlangen und -Themen.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
@@ -35,7 +35,7 @@ Dieser Artikel erläutert das Konfigurieren und Codieren von Azure Service Bus-B
 ## <a name="service-bus-trigger"></a>Service Bus-Trigger
 Verwenden Sie den Service Bus-Trigger, um auf Nachrichten von einer Service Bus-Warteschlange oder einem Thema zu reagieren. 
 
-Die Trigger von Notification Hubs-Warteschlange und -Thema zu einer Funktion verwenden die folgenden JSON-Objekte im `bindings`-Array von „function.json“:
+Die Trigger für Service Bus-Warteschlangen und -Themen werden durch die folgenden JSON-Objekte im `bindings`-Array von „function.json“ definiert:
 
 * Trigger für *Warteschlange*:
 
@@ -66,10 +66,10 @@ Die Trigger von Notification Hubs-Warteschlange und -Thema zu einer Funktion ver
 
 Beachten Sie Folgendes:
 
-* [Erstellen Sie eine App-Einstellung in Ihrer Funktions-App]() für `connection`, die die Verbindungszeichenfolge zu Ihrem Service Hub-Namespace enthält, und geben Sie den Namen der App-Einstellung in Ihrem Trigger in der `connection`-Eigenschaft an. Um die Verbindungszeichenfolge zu erhalten, führen Sie die Schritte unter [Abrufen der Verwaltungsanmeldeinformationen](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials) aus.
+* [Erstellen Sie eine App-Einstellung in Ihrer Funktions-App](functions-how-to-use-azure-function-app-settings.md) für `connection`, die die Verbindungszeichenfolge zu Ihrem Service Hub-Namespace enthält, und geben Sie den Namen der App-Einstellung in Ihrem Trigger in der `connection`-Eigenschaft an. Um die Verbindungszeichenfolge zu erhalten, führen Sie die Schritte unter [Abrufen der Verwaltungsanmeldeinformationen](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials) aus.
   Die Verbindungszeichenfolge muss für einen Service Bus-Namespace gelten und darf nicht auf eine bestimmte Warteschlange oder ein Thema beschränkt sein.
   Wenn Sie `connection` leer lassen, setzt der Trigger voraus, dass eine standardmäßige Service Bus-Verbindungszeichenfolge in einer App-Einstellung mit dem Namen `AzureWebJobsServiceBus` angegeben ist.
-* Verfügbare Werte für `accessRights` sind `manage` und `listen`. Die Standardeinstellung ist `manage`, d.h. heißt, dass die `connection` die Berechtigung **Manage** hat. Wenn Sie eine Verbindungszeichenfolge verwenden, die nicht die Berechtigung **Manage** hat, legen Sie `accessRights` auf `listen` fest. Andernfalls versucht die Functions-Laufzeit ggf. erfolglos Vorgänge, die Verwaltungsrechte erfordern.
+* Verfügbare Werte für `accessRights` sind `manage` und `listen`. Die Standardeinstellung ist `manage`, d.h. heißt, dass die `connection` die Berechtigung **Manage** hat. Wenn Sie eine Verbindungszeichenfolge verwenden, die nicht die Berechtigung **Manage** hat, legen Sie `accessRights` auf `listen` fest. Andernfalls versucht die Functions-Runtime ggf. erfolglos Vorgänge auszuführen, die Verwaltungsrechte erfordern.
 
 ## <a name="trigger-behavior"></a>Triggerverhalten
 * **Single-Threading**: Die Functions-Laufzeit verarbeitet standardmäßig mehrere Nachrichten gleichzeitig. Um die Runtime anzuweisen, jeweils nur eine Warteschlangen- oder Themennachricht zu verarbeiten, legen Sie `serviceBus.maxConcurrentCalls` in *host.json* auf „1“ fest. 
@@ -88,10 +88,10 @@ In C# und F# kann die Service Bus-Triggernachricht in alle folgenden Eingabetype
 * `string` – nützlich für Zeichenfolgennachrichten
 * `byte[]` – nützlich für binäre Daten
 * Beliebiges [Objekt](https://msdn.microsoft.com/library/system.object.aspx) – nützlich für JSON-serialisierte Daten.
-  Wenn Sie einen benutzerdefinierten Eingabetyp deklarieren (z.B. `FooType`), versucht Azure Functions, die JSON-Daten in den angegebenen Typ zu deserialisieren.
+  Wenn Sie einen benutzerdefinierten Eingabetyp wie `CustomType` deklarieren, versucht Azure Functions, die JSON-Daten in den angegebenen Typ zu deserialisieren.
 * `BrokeredMessage` – gibt Ihnen die deserialisierte Nachricht mit der [BrokeredMessage.GetBody<T>()](https://msdn.microsoft.com/library/hh144211.aspx)-Methode zurück.
 
-In Node.js wird die Service Bus-Triggernachricht entweder als Zeichenfolge oder, im Fall der JSON-Nachricht, als JavaScript-Objekt an die Funktion übergeben.
+In Node.js wird die Service Bus-Triggernachricht entweder als Zeichenfolge oder als JSON-Objekt an die Funktion übergeben.
 
 <a name="triggersample"></a>
 
@@ -153,7 +153,7 @@ module.exports = function(context, myQueueItem) {
 <a name="output"></a>
 
 ## <a name="service-bus-output-binding"></a>Service Bus-Ausgabebindung
-Die Ausgaben von Notification Hubs-Warteschlange und -Thema für eine Funktion verwenden die folgenden JSON-Objekte im `bindings`-Array von „function.json“:
+Die Ausgaben von Service Bus-Warteschlange und -Thema für eine Funktion verwenden die folgenden JSON-Objekte im `bindings`-Array von „function.json“:
 
 * Ausgabe der *Warteschlange*:
 
@@ -162,7 +162,7 @@ Die Ausgaben von Notification Hubs-Warteschlange und -Thema für eine Funktion v
         "name" : "<Name of output parameter in function signature>",
         "queueName" : "<Name of the queue>",
         "connection" : "<Name of app setting that has your queue's connection string - see below>",
-        "accessRights" : "<Access rights for the connection string - see below>"
+        "accessRights" : "<Access rights for the connection string - see below>",
         "type" : "serviceBus",
         "direction" : "out"
     }
@@ -183,10 +183,10 @@ Die Ausgaben von Notification Hubs-Warteschlange und -Thema für eine Funktion v
 
 Beachten Sie Folgendes:
 
-* [Erstellen Sie eine App-Einstellung in Ihrer Funktions-App]() für `connection`, die die Verbindungszeichenfolge zu Ihrem Service Hub-Namespace enthält, und geben Sie den Namen der App-Einstellung in Ihrer Ausgabebindung in der `connection`-Eigenschaft an. Um die Verbindungszeichenfolge zu erhalten, führen Sie die Schritte unter [Abrufen der Verwaltungsanmeldeinformationen](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials) aus.
+* [Erstellen Sie eine App-Einstellung in Ihrer Funktions-App](functions-how-to-use-azure-function-app-settings.md) für `connection`, die die Verbindungszeichenfolge zu Ihrem Service Hub-Namespace enthält, und geben Sie den Namen der App-Einstellung in Ihrer Ausgabebindung in der `connection`-Eigenschaft an. Um die Verbindungszeichenfolge zu erhalten, führen Sie die Schritte unter [Abrufen der Verwaltungsanmeldeinformationen](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials) aus.
   Die Verbindungszeichenfolge muss für einen Service Bus-Namespace gelten und darf nicht auf eine bestimmte Warteschlange oder ein Thema beschränkt sein.
   Wenn Sie `connection` leer lassen, setzt die Ausgabebindung voraus, dass eine standardmäßige Service Bus-Verbindungszeichenfolge in einer App-Einstellung mit dem Namen `AzureWebJobsServiceBus` angegeben ist.
-* Verfügbare Werte für `accessRights` sind `manage` und `listen`. Die Standardeinstellung ist `manage`, d.h. heißt, dass die `connection` die Berechtigung **Manage** hat. Wenn Sie eine Verbindungszeichenfolge verwenden, die nicht die Berechtigung **Manage** hat, legen Sie `accessRights` auf `listen` fest. Andernfalls versucht die Functions-Laufzeit ggf. erfolglos Vorgänge, die Verwaltungsrechte erfordern.
+* Verfügbare Werte für `accessRights` sind `manage` und `listen`. Die Standardeinstellung ist `manage`, d.h. heißt, dass die `connection` die Berechtigung **Manage** hat. Wenn Sie eine Verbindungszeichenfolge verwenden, die nicht die Berechtigung **Manage** hat, legen Sie `accessRights` auf `listen` fest. Andernfalls versucht die Functions-Runtime ggf. erfolglos Vorgänge auszuführen, die Verwaltungsrechte erfordern.
 
 <a name="outputusage"></a>
 

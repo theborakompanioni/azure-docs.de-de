@@ -17,9 +17,9 @@ ms.topic: article
 ms.date: 01/20/2017
 ms.author: daleche
 translationtype: Human Translation
-ms.sourcegitcommit: a6489fd5ff5e60bc3a1c06485d330556250c21cd
-ms.openlocfilehash: eddbdda847d7d0cc12f3e1c6128ce76d15f6f39f
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: 608cbc0fd1cc1d73d28056909ed06618457bd9c0
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -167,7 +167,7 @@ Der SQL-Datenbankserver muss so konfiguriert werden, dass er Verbindungen von de
 
 Wenn Sie die IP-Adresse nicht konfigurieren, tritt bei Ihrem Programm ein Fehler auf, und in einer Fehlermeldung wird die erforderliche IP-Adresse angezeigt.
 
-[!INCLUDE [sql-database-include-ip-address-22-v12portal](../../includes/sql-database-include-ip-address-22-v12portal.md)]
+[!INCLUDE [sql-database-include-ip-address-22-portal](../../includes/sql-database-include-ip-address-22-v12portal.md)]
 
 Weitere Informationen finden Sie unter [Vorgehensweise: Konfigurieren von Firewalleinstellungen für SQL-Datenbank](sql-database-configure-firewall-settings.md)
 
@@ -186,7 +186,7 @@ Wenn Ihr Clientprogramm z. B. auf einem Windows-Computer gehostet wird, kann Po
 6. &gt; Aktionen
 7. &gt; Neue Regel
 
-Wenn Ihr Clientprogramm auf einem virtuellen Azure-Computer gehostet wird, sollten Sie den folgenden Artikel lesen:<br/>[Andere Ports als 1433 für ADO-Ausnahme ausgelöst, um das Programm über den vorübergehenden Fehler zu informieren.NET 4-Ausnahme ausgelöst, um das Programm über den vorübergehenden Fehler zu informieren.5 und SQL-Datenbank V12](sql-database-develop-direct-route-ports-adonet-v12.md)-Ausnahme ausgelöst, um das Programm über den vorübergehenden Fehler zu informieren.
+Wenn Ihr Clientprogramm auf einem virtuellen Azure-Computer gehostet wird, sollten Sie den folgenden Artikel lesen:<br/>[Andere Ports als 1433 für ADO.NET 4.5 und SQL-Datenbank](sql-database-develop-direct-route-ports-adonet-v12.md).
 
 Hintergrundinformationen zur Konfiguration von Ports und IP-Adressen finden Sie hier: [Firewall für Azure SQL-Datenbank](sql-database-firewall-configure.md)
 
@@ -335,7 +335,7 @@ EntLib60 kann beispielsweise für Wiederholungslogik zur Behandlung von vorüber
 ### <a name="entlib60-classes-for-transient-errors-and-retry"></a>EntLib60-Klassen für vorübergehende Fehler und Wiederholungsversuche
 Die folgenden EntLib60-Klassen sind besonders nützlich für Wiederholungslogik. All diese Klassen befinden sich im Namespace **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling** oder einem untergeordneten Namespace:
 
-*Im Namespace **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling**oder einem untergeordneten Namespace:*
+*Im Namespace **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling**:*
 
 * **RetryPolicy** 
   

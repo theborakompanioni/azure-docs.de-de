@@ -16,9 +16,9 @@ ms.workload: data-catalog
 ms.date: 03/14/2017
 ms.author: maroche
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: b92db8dd81af0c58861644cc02ca9e56b6a6a832
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: d68ed62022834c9417d820a7a64e30b47f71a1bd
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -416,6 +416,24 @@ Sie können Metadaten auf verschiedenem Wege veröffentlichen: Sie können eine 
   
     <tr>
       <td>Azure DocumentDB-Sammlung</td>
+      <td>✓</td>
+      <td>✓ </td>
+      <td>✓</td>
+      <td><font size=2></font></td>
+      <td><font size=2></font></td>
+    </tr>
+
+    <tr>
+      <td>Generische ODBC-Tabelle</td>
+      <td>✓</td>
+      <td>✓ </td>
+      <td>✓</td>
+      <td><font size=2></font></td>
+      <td><font size=2></font></td>
+    </tr>
+
+    <tr>
+      <td>Generische ODBC-Sicht</td>
       <td>✓</td>
       <td>✓ </td>
       <td>✓</td>
@@ -918,6 +936,22 @@ Wenn Sie Unterstützung für zusätzliche Quellen benötigen, senden Sie einen F
       <td>Sammlung</td>
       <td>
         <font size=2> protocol: document-db <br>authentication: {azure-access-key} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; collection </font>
+      </td>
+    </tr>
+    <tr>
+      <td>Generisches ODBC</td>
+      <td>Container</td>
+      <td>Datenbank</td>
+      <td>
+        <font size=2> protocol: odbc <br>authentication: {basic, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; options <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database </font>
+      </td>
+    </tr>
+    <tr>
+      <td>Generisches ODBC</td>
+      <td>Table</td>
+      <td>Tabelle, Ansicht</td>
+      <td>
+        <font size=2> protocol: odbc <br>authentication: {basic, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; options <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; schema </font>
       </td>
     </tr>
     <tr>

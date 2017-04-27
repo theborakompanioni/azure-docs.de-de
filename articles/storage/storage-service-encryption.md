@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: cd727a02716323c54d1c54a23cd4edd8f4940da1
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: aaada39283b19015e460768b072d0164b0d22bae
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -44,7 +44,7 @@ Zur Teilnahme an der SSE-Dateivorschau wenden Sie sich an ssediscussions@microso
 Weitere Informationen erhalten Sie in den FAQ.
 
 ### <a name="availability-for-file-storage"></a>Verfügbarkeit für File Storage
-Speicherdienstverschlüsselung für File Storage ist derzeit in den Regionen USA, Osten; USA, Osten&2; USA, Mitte; USA, Norden-Mitte; USA, Süden-Mitte, USA, Westen-Mitte; USA, Westen; USA, Westen&2; Asien, Osten; Europa, Norden; Europa, Westen, Australien, Osten und Australien, Südosten verfügbar.
+Storage Service Encryption für File Storage ist derzeit in allen Azure-Regionen verfügbar.
 
 
 Melden Sie sich zum Aktivieren oder Deaktivieren der Speicherdienstverschlüsselung für ein Speicherkonto beim [Azure-Portal](https://azure.portal.com) an, und wählen Sie ein Speicherkonto aus. Suchen Sie auf dem Blatt „Einstellungen“ nach dem Abschnitt mit dem Blobdienst, und klicken Sie auf „Verschlüsselung“.
@@ -187,7 +187,7 @@ A: Dies funktioniert nahtlos. Ihre Daten werden durch beide Methoden verschlüss
 
 A: Ja, alle Kopien des Speicherkontos werden verschlüsselt, und alle Redundanzoptionen – lokal redundanter Speicher (LRS), zonenredundanter Speicher (ZRS), georedundanter Speicher (GRS) und lesezugriff-georedundanter Speicher (RA-GRS, Read-Access Geo Redundant) werden unterstützt.
 
-**F: Ich kann die Verschlüsselung nicht für mein Speicherkonto aktivieren.**
+**F: Ich kann für mein Speicherkonto keine Verschlüsselung aktivieren.**
 
 A: Handelt es sich um ein Resource Manager-Speicherkonto? Klassische Speicherkonten werden nicht unterstützt. 
 

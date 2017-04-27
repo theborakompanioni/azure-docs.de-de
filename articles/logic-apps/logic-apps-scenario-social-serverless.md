@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 03/29/2017
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 4676e0da4309b1460e471f94946161fa22d46226
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
+ms.openlocfilehash: 0b6e118cb13ab8185d8eeb42bec6147155967967
+ms.lasthandoff: 04/04/2017
 
 ---
 # <a name="create-a-real-time-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Erstellen eines Customer Insights-Echtzeit-Dashboards mit Azure Logic Apps und Azure Functions
@@ -35,17 +35,17 @@ Azure Functions ermöglicht serverlose Computevorgänge in der Cloud.  In diesem
 
 Die gesamte Lösung kann [in Visual Studio erstellt](logic-apps-deploy-from-vs.md) und [als Teil einer Ressourcenvorlage bereitgestellt werden](logic-apps-create-deploy-template.md).  Bei [Channel 9](http://aka.ms/logicappsdemo) finden Sie außerdem ein Video mit der exemplarischen Vorgehensweise zu diesem Szenario.
 
-## <a name="building-the-logic-app-to-trigger-on-customer-data"></a>Erstellen der Logik-App für die Auslösung basierend auf Kundendaten
+## <a name="build-the-logic-app-to-trigger-on-customer-data"></a>Erstellen der Logik-App für die Auslösung basierend auf Kundendaten
 
 Gehen Sie wie folgt vor, nachdem Sie in Visual Studio oder im Azure-Portal eine [Logik-App erstellt](logic-apps-create-a-logic-app.md) haben:
 
 1. Fügen Sie einen Trigger für **On New Tweets** (Bei neuen Tweets) von Twitter hinzu.
-1. Konfigurieren Sie den Trigger so, dass er basierend auf einem Schlüsselwort oder Hashtag auf Tweets lauscht.
+2. Konfigurieren Sie den Trigger so, dass er basierend auf einem Schlüsselwort oder Hashtag auf Tweets lauscht.
 
-> [!NOTE]
-> Mit der Wiederholungseigenschaft des Triggers wird bestimmt, wie häufig die Logik-App bei abrufbasierten Triggern eine Überprüfung auf neue Elemente durchführt.
+   > [!NOTE]
+   > Mit der Wiederholungseigenschaft des Triggers wird bestimmt, wie häufig die Logik-App bei abrufbasierten Triggern eine Überprüfung auf neue Elemente durchführt.
 
-![Beispiel für Twitter-Trigger][1]
+   ![Beispiel für Twitter-Trigger][1]
 
 Diese App wird jetzt für alle neuen Tweets ausgelöst.  Wir können diese Tweetdaten dann auf die darin ausgedrückte Stimmung untersuchen.  Um die Stimmung des Texts zu erkennen, nutzen wir den [Cognitive Service von Azure](https://azure.microsoft.com/services/cognitive-services/).
 
@@ -99,7 +99,7 @@ Nachdem eine Lösung entwickelt wurde, kann sie über eine Azure-Bereitstellungs
 
 Azure Functions kann auch in die Bereitstellungsvorlage eingebunden werden, damit die gesamte Lösung mit allen Abhängigkeiten als einzelne Vorlage verwaltet werden kann.  Ein Beispiel für eine Bereitstellungsvorlage für Funktionen finden Sie im [Repository mit den Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates/tree/master/101-function-app-create-dynamic).
 
-## <a name="whats-next"></a>Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 * [Weitere Beispiele und Szenarien für Azure Logic Apps](logic-apps-examples-and-scenarios.md)
 * [Video: Umfassende exemplarische Vorgehensweise zum Erstellen dieser Lösung](http://aka.ms/logicappsdemo)

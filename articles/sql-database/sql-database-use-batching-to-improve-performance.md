@@ -16,8 +16,9 @@ ms.workload: data-management
 ms.date: 07/12/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
-ms.openlocfilehash: 28c847137bda93886a2ae80151e3834f149a4858
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: 62e8e0299aff517f45c89349ed836ec8a6dabd2b
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -44,7 +45,7 @@ Im ersten Teil dieses Artikels werden verschiedene Batchverarbeitungstechniken f
 ## <a name="batching-strategies"></a>Batchverarbeitungsstrategien
 ### <a name="note-about-timing-results-in-this-topic"></a>Hinweis zu den Zeitangaben in den Ergebnissen dieses Themas
 > [!NOTE]
-> Die Ergebnisse sind keine Benchmarks, sondern veranschaulichen die **relative Leistung**. Die Zeitangaben basieren auf einem Durchschnittswert von mindestens zehn Testläufen. Bei den Vorgängen handelt es sich um Einfügungen in eine leere Tabelle. Die Testergebnisse wurden vor V12 ermittelt und entsprechen nicht unbedingt dem Durchsatz, der mit einer V12-Datenbank und den neuen [Dienstebenen](sql-database-service-tiers.md)erreicht wird. Der relative Nutzen der Batchverarbeitungstechnik dürfte jedoch ähnlich ausfallen.
+> Die Ergebnisse sind keine Benchmarks, sondern veranschaulichen die **relative Leistung**. Die Zeitangaben basieren auf einem Durchschnittswert von mindestens zehn Testläufen. Bei den Vorgängen handelt es sich um Einfügungen in eine leere Tabelle. Die Testergebnisse wurden vor einer Weile ermittelt und entsprechen nicht unbedingt dem Durchsatz, der heute zu erwarten ist. Der relative Nutzen der Batchverarbeitungstechnik dürfte jedoch ähnlich ausfallen.
 > 
 > 
 
@@ -585,7 +586,7 @@ In diesem Beispiel können Sie den Umstand, dass es sich bei „SocialSecurityNu
       SocialSecurityNumber NVARCHAR(50) );
     GO
 
-Erstellen Sie als Nächstes eine gespeicherte Prozedur, die mithilfe der MERGE-Anweisung die Aktualisierung und Einfügung vornimmt, oder schreiben Sie entsprechenden Code. Im folgenden Beispiel wird die MERGE-Anweisung für den Tabellenwertparameter @employees, vom Typ „EmployeeTableType“ verwendet. Der Inhalt der @employees-Tabelle wird hier nicht angezeigt.
+Erstellen Sie als Nächstes eine gespeicherte Prozedur, die mithilfe der MERGE-Anweisung die Aktualisierung und Einfügung vornimmt, oder schreiben Sie entsprechenden Code. Im folgenden Beispiel wird die MERGE-Anweisung für den Tabellenwertparameter @employees vom Typ „EmployeeTableType“ verwendet. Der Inhalt der @employees-Tabelle wird hier nicht angezeigt.
 
     MERGE Employee AS target
     USING (SELECT [FirstName], [LastName], [SocialSecurityNumber] FROM @employees) 
@@ -623,10 +624,5 @@ Die folgende Liste enthält eine Zusammenfassung der in diesem Thema behandelten
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel ging es in erster Linie darum, wie Datenbankdesign und Programmiertechniken im Zusammenhang mit der Batchverarbeitung die Leistung und Skalierbarkeit Ihrer Anwendung verbessern können. Dies ist jedoch nur einer von vielen Faktoren einer Gesamtstrategie. Weitere Methoden zur Verbesserung der Leistung und Skalierbarkeit finden Sie unter [Azure SQL-Datenbank und Leistung für Einzeldatenbanken](sql-database-performance-guidance.md) und [Überlegungen zum Preis und zur Leistung eines elastischen Pools](sql-database-elastic-pool-guidance.md).
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

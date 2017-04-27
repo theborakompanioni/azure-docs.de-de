@@ -11,12 +11,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2017
+ms.date: 03/22/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: b850264ef2b89ad1679ae1e956a58cc849e63c84
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 7f6c71056bca7beebc02313409aabe386d191e23
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -1035,9 +1035,13 @@ Das Ergebnis von `reduce by city` kann z.B. Folgendes enthalten:
 | Paris |27163 |
 
 ### <a name="render-directive"></a>render-Anweisung
-    T | render [ table | timechart  | barchart | piechart ]
+    T | render [ table | timechart  | barchart | piechart | areachart | scatterchart ] 
+        [kind= default|stacked|stacked100|unstacked]
 
 „Render“ weist die Darstellungsschicht an, wie die Tabelle angezeigt werden soll. Es sollte das letzte Element der Pipe sein. Es ist eine praktische Alternative zum Verwenden der Steuerelemente in der Anzeige, und Sie können eine Abfrage mit einer bestimmten Präsentationsmethode speichern.
+
+Für einige Diagrammtypen bietet `kind` weitere Optionen. In einem Balkendiagramm vom Typ `stacked` wird beispielsweise jeder Balken nach einer ausgewählten Dimension segmentiert, sodass der Beitrag der verschiedenen Werte der Dimension zum Gesamtwert veranschaulicht wird. In einem Diagramm vom Typ `stacked100` weist jeder Balken die gleiche Höhe von 100 % auf, sodass Sie die relativen Beiträge vergleichen können.
+
 
 ### <a name="restrict-clause"></a>restrict-Klausel
 Gibt die Tabellennamen an, die für die folgenden Operatoren zur Verfügung stehen. Beispiel:
@@ -1764,6 +1768,12 @@ Sie können einen Typ in einen anderen umwandeln. Wenn die Konvertierung sinnvol
     iff(notnull(todouble(customDimensions.myValue)),
        ..., ...)
 
+
+
+
+
+
+
 ### <a name="scalar-comparisons"></a>Skalare Vergleiche
 |  |  |
 | --- | --- |
@@ -2096,6 +2106,12 @@ Die Quadratwurzelfunktion.
 ## <a name="date-and-time"></a>Datum und Uhrzeit
 [ago](#ago) | [dayofmonth](#dayofmonth) | [dayofweek](#dayofweek) |  [dayofyear](#dayofyear) |[datepart](#datepart) | [endofday](#endofday) | [endofmonth](#endofmonth) | [endofweek](#endofweek) | [endofyear](#endofyear) | [getmonth](#getmonth)|  [getyear](#getyear) | [now](#now) | [startofday](#startofday) | [startofmonth](#startofmonth) | [startofweek](#startofweek) | [startofyear](#startofyear) | [todatetime](#todatetime) | [totimespan](#totimespan) | [weekofyear](#weekofyear)
 
+Ein timespan-Wert stellt einen Zeitraum wie beispielsweise drei Stunden oder ein Jahr dar.
+
+Ein datetime-Wert stellt eine Datums-/Uhrzeitangabe nach einem bestimmten Kalender/einer bestimmten Uhr in UTC dar.
+
+Es gibt keinen separaten Typ „date“. Verwenden Sie einen Ausdruck wie `bin(timestamp, 1d)`, um die Zeit aus einem datetime-Wert zu entfernen.
+
 ### <a name="date-and-time-literals"></a>Datum und Uhrzeit – Literale
 |  |  |
 | --- | --- |
@@ -2118,22 +2134,22 @@ Die Quadratwurzelfunktion.
 | `time("0.12:34:56.7")` |`0d+12h+34m+56.7s` |
 
 ### <a name="date-and-time-expressions"></a>Datum und Uhrzeit – Ausdrücke
-| Expression | Ergebnis |
-| --- | --- |
-| `datetime("2015-01-02") - datetime("2015-01-01")` |`1d` |
-| `datetime("2015-01-01") + 1d` |`datetime("2015-01-02")` |
-| `datetime("2015-01-01") - 1d` |`datetime("2014-12-31")` |
-| `2h * 24` |`2d` |
-| `2d` / `2h` |`24` |
-| `datetime("2015-04-15T22:33") % 1d` |`timespan("22:33")` |
-| `bin(datetime("2015-04-15T22:33"), 1d)` |`datetime("2015-04-15T00:00")` |
-|  | |
-| `<` |Kleiner |
-| `<=` |Kleiner oder gleich |
-| `>` |Größer |
-| `>=` |Größer oder gleich |
-| `<>` |Not Equals |
-| `!=` |Not Equals |
+| Expression | Ergebnis |Effekt|
+| --- | --- |---|
+| `datetime("2015-01-02") - datetime("2015-01-01")` |`1d` | Zeitliche Differenz|
+| `datetime("2015-01-01") + 1d` |`datetime("2015-01-02")` | Tage addieren |
+| `datetime("2015-01-01") - 1d` |`datetime("2014-12-31")` | Tage subtrahieren|
+| `2h * 24` |`2d` |Timespan-Vielfache|
+| `2d` / `2h` |`24` |Timespan-Division|
+| `datetime("2015-04-15T22:33") % 1d` |`timespan("22:33")` |Zeit aus einem datetime-Wert|
+| `bin(datetime("2015-04-15T22:33"), 1d)` |`datetime("2015-04-15T00:00")` |Datum aus einem datetime-Wert|
+|  | ||
+| `<` ||Kleiner |
+| `<=` ||Kleiner als oder gleich |
+| `>` ||Größer |
+| `>=` ||Größer als oder gleich |
+| `<>` ||Ungleich |
+| `!=` ||Ungleich |
 
 ### <a name="ago"></a>ago
 Subtrahiert den angegebenen Zeitraum von der aktuellen UTC-Uhrzeit. Wie `now()`kann diese Funktion mehrmals in einer Anweisung verwendet werden, und die UTC-Uhrzeit, auf die verwiesen wird, ist für alle Instanziierungen identisch.

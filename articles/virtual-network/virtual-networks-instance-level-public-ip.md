@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: c233439b78fb01beaa3183b79ab633aeb9357ef0
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 773043f2841ec7539b0d49357dec6bcb9f4f78a1
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -44,8 +44,8 @@ Bei der Erstellung eines Clouddiensts in Azure werden automatisch entsprechende 
 ## <a name="why-would-i-request-an-ilpip"></a>Warum kann es sinnvoll sein, eine ILPIP anzufordern?
 Wenn Sie über eine direkt zugewiesene IP-Adresse eine Verbindung mit Ihrer VM- oder Rolleninstanz herstellen möchten, anstatt VIP:&lt;Portnummer&gt; des Clouddiensts zu verwenden, fordern Sie eine ILPIP für die VM- oder Rolleninstanz an.
 
-* **Passives FTP**: Wird einer VM eine ILPIP zugewiesen, kann die VM an fast allen Ports Datenverkehr empfangen. Die VM benötigt keine Endpunkte, um Datenverkehr empfangen zu können. ILPIPs ermöglichen Szenarios wie passives FTP, in denen die Ports dynamisch ausgewählt werden.
-* **Ausgehende IP**: Der vom virtuellen Computer ausgehende Datenverkehr wird mit der ILPIP als Quelle gesendet, und durch die ILPIP wird der virtuelle Computer gegenüber externen Entitäten eindeutig identifiziert.
+* **Aktives FTP**: Wird einer VM eine ILPIP zugewiesen, kann die VM Datenverkehr an beliebigen Ports empfangen. Die VM benötigt keine Endpunkte, um Datenverkehr empfangen zu können.  Einzelheiten zum FTP-Protokoll finden Sie unter (https://de.wikipedia.org/wiki/File_Transfer_Protocol#Protocol_overview)[File Transfer Protocol].
+* **Ausgehende IP**: Der vom virtuellen Computer ausgehende Datenverkehr wird der ILPIP als Quelle zugeordnet, und durch die ILPIP wird die VM gegenüber externen Entitäten eindeutig identifiziert.
 
 > [!NOTE]
 > Bisher wurde eine ILPIP-Adresse als PIP-Adresse (public IP, öffentliche IP) bezeichnet.

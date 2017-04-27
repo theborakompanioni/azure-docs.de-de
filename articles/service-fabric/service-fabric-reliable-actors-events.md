@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 03/02/2017
 ms.author: amanbha
 translationtype: Human Translation
-ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
-ms.openlocfilehash: 92df9505416c5b4326f007dbf4b920f2c7ec3bd8
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: b598b59dc3fa5b629b31f235fc0ea830338b1f84
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -34,7 +34,12 @@ public interface IGameEvents : IActorEvents
     void GameScoreUpdated(Guid gameId, string currentScore);
 }
 ```
-
+```Java
+public interface GameEvents implements ActorEvents
+{
+    void gameScoreUpdated(UUID gameId, String currentScore);
+}
+```
 Deklarieren Sie die vom Actor in der Actor-Schnittstelle veröffentlichten Ereignisse.
 
 ```csharp
@@ -45,7 +50,14 @@ public interface IGameActor : IActor, IActorEventPublisher<IGameEvents>
     Task<string> GetGameScore();
 }
 ```
+```Java
+public interface GameActor extends Actor, ActorEventPublisherE<GameEvents>
+{
+    CompletableFuture<?> updateGameStatus(GameStatus status);
 
+    CompletableFuture<String> getGameScore();
+}
+```
 Implementieren Sie auf der Clientseite den Ereignishandler.
 
 ```csharp
@@ -54,6 +66,15 @@ class GameEventsHandler : IGameEvents
     public void GameScoreUpdated(Guid gameId, string currentScore)
     {
         Console.WriteLine(@"Updates: Game: {0}, Score: {1}", gameId, currentScore);
+    }
+}
+```
+
+```Java
+class GameEventsHandler implements GameEvents {
+    public void gameScoreUpdated(UUID gameId, String currentScore)
+    {
+        System.out.println("Updates: Game: "+gameId+" ,Score: "+currentScore);
     }
 }
 ```
@@ -67,6 +88,12 @@ var proxy = ActorProxy.Create<IGameActor>(
 await proxy.SubscribeAsync<IGameEvents>(new GameEventsHandler());
 ```
 
+```Java
+GameActor actorProxy = ActorProxyBase.create<GameActor>(GameActor.class, new ActorId(UUID.fromString(args)));
+
+return ActorProxyEventUtility.subscribeAsync(actorProxy, new GameEventsHandler());
+```
+
 Im Failover-Fall kann ein Failover des Actors zu einem anderen Prozess oder Knoten erfolgen. Der Actor-Proxy verwaltet die aktiven Abonnements und verlängert automatisch deren Abonnement. Sie können das Intervall für die Abonnementverlängerung über die API `ActorProxyEventExtensions.SubscribeAsync<TEvent>` steuern. Zum Kündigen des Abonnements verwenden Sie die API `ActorProxyEventExtensions.UnsubscribeAsync<TEvent>` .
 
 Veröffentlichen Sie auf dem Actor die Ereignisse einfach in der Reihenfolge ihres Auftretens. Wenn für das Ereignis Abonnenten vorhanden sind, sendet die Actors-Laufzeit ihnen die Benachrichtigung.
@@ -75,10 +102,16 @@ Veröffentlichen Sie auf dem Actor die Ereignisse einfach in der Reihenfolge ihr
 var ev = GetEvent<IGameEvents>();
 ev.GameScoreUpdated(Id.GetGuidId(), score);
 ```
+```Java
+GameEvents event = getEvent<GameEvents>(GameEvents.class);
+event.gameScoreUpdated(Id.getUUIDId(), score);
+```
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Actor-Eintrittsinvarianz](service-fabric-reliable-actors-reentrancy.md)
 * [Actor-Diagnose und -Leistungsüberwachung](service-fabric-reliable-actors-diagnostics.md)
 * [Actor-API-Referenzdokumentation](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [Beispielcode](https://github.com/Azure/servicefabric-samples)
+* [C#-Beispielcode](https://github.com/Azure/servicefabric-samples)
+* [Java-Beispielcode](http://github.com/Azure-Samples/service-fabric-java-getting-started)
 

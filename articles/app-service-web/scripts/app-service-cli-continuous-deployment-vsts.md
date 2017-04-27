@@ -10,28 +10,25 @@ tags: azure-service-management
 ms.assetid: 389d3bd3-cd8e-4715-a3a1-031ec061d385
 ms.service: app-service-web
 ms.workload: web
-ms.devlang: na
+ms.devlang: azurecli
+ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: cfowler
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: a2009cb07ae2ae7cf716d77a7d9eac7482138ab1
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
+ms.openlocfilehash: b82e51d8d96c98cba1d5989060eed40ed7f2d4fe
+ms.lasthandoff: 04/04/2017
 
 ---
-
 # <a name="create-a-web-app-with-continuous-deployment-from-visual-studio-team-services"></a>Erstellen einer Web-App mit Continuous Deployment über Visual Studio Team Services
 
-Dieses Beispielskript erstellt eine Web-App in App Service mit den zugehörigen Ressourcen und richtet dann Continuous Deployment über Visual Studio Team Services ein. 
+Dieses Beispielskript erstellt eine Web-App in App Service mit den zugehörigen Ressourcen und richtet dann Continuous Deployment über Visual Studio Team Services ein. Für dieses Beispiel benötigen Sie Folgendes:
 
-Installieren Sie bei Bedarf die Azure-Befehlszeilenschnittstelle anhand der Anleitung im [Azure CLI-Installationshandbuch](https://docs.microsoft.com/cli/azure/install-azure-cli). Stellen Sie darüber hinaus Folgendes sicher:
+* Ein Visual Studio Team Services-Repository mit Anwendungscode, für das Sie über Administratorberechtigungen verfügen.
+* Ein [persönliches Zugriffstoken (PAT)](https://www.visualstudio.com/docs/setup-admin/team-services/use-personal-access-tokens-to-authenticate) für Ihr Visual Studio Team Services-Konto.
 
-- Eine Verbindung mit Azure wurde mit dem Befehl `az login` hergestellt.
-- Der Anwendungscode befindet sich in einem Visual Studio Team Services-Repository, dessen Besitzer Sie sind.
-- Sie haben [ein Zugriffstoken in Ihrem Visual Studio Team Services-Konto erstellt](https://www.visualstudio.com/docs/setup-admin/team-services/use-personal-access-tokens-to-authenticate).
-
-Dieses Beispiel wird in einer Bash-Shell ausgeführt. Optionen zum Ausführen von Azure CLI-Skripts auf einem Windows-Client finden Sie unter [Verwenden der Azure CLI unter Windows](../../virtual-machines/virtual-machines-windows-cli-options.md).
+[!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
 ## <a name="create-app-sample"></a>Erstellen eines App-Beispiels
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 01/17/2017
+ms.date: 03/31/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: a99b55c98f29356fb78e053434f6f3fc5c9d0efc
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 4ea75e08a630ad777444ea3a3cb85f4bb0efe01f
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -29,25 +29,12 @@ ms.lasthandoff: 03/21/2017
 > 
 > 
 
-Wenn eine App oder ein Skript Zugriff auf Ressourcen benötigt, können Sie eine Identität für die App einrichten und sie mit ihren eigenen Anmeldeinformationen authentifizieren. Dieser Ansatz ist dem Ausführen der App mit Ihren Anmeldeinformationen aus folgenden Gründen vorzuziehen:
+Wenn eine App oder ein Skript Zugriff auf Ressourcen benötigt, können Sie eine Identität für die App einrichten und sie mit ihren eigenen Anmeldeinformationen authentifizieren. Diese Identität wird als Dienstprinzipal bezeichnet. Dieser Ansatz ermöglicht Ihnen Folgendes:
 
 * Sie können der App-Identität Berechtigungen zuweisen, die sich von Ihren eigenen Berechtigungen unterscheiden. In der Regel sind diese Berechtigungen genau auf die Aufgaben der App beschränkt.
-* Sie müssen keine Anmeldeinformationen für die App ändern, wenn sich Ihre Zuständigkeiten ändern. 
-* Sie können ein Zertifikat verwenden, um die Authentifizierung beim Ausführen eines unbeaufsichtigten Skripts zu automatisieren.
+* Sie können ein Zertifikat für die Authentifizierung beim Ausführen eines unbeaufsichtigten Skripts verwenden.
 
-In diesem Thema erfahren Sie, wie Sie mithilfe der [Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows](../cli-install-nodejs.md) eine Anwendung einrichten, die unter eigenen Anmeldeinformationen und einer eigenen Identität ausgeführt wird.
-
-Mit der Azure-Befehlszeilenschnittstelle stehen Ihnen für die Authentifizierung Ihrer AD-Anwendung zwei Optionen zur Verfügung:
-
-* password
-* Zertifikat
-
-In diesem Thema wird die Verwendung beider Optionen in der Azure-CLI veranschaulicht. Wenn Sie sich über ein Programmierframework (wie Python, Ruby oder Node.js) bei Azure anmelden möchten, ist die Kennwortauthentifizierung wahrscheinlich die beste Option. Setzen Sie sich mit den Beispielen für die Authentifizierung in den unterschiedlichen Frameworks im Abschnitt [Beispielanwendungen](#sample-applications) auseinander, bevor Sie sich für ein Kennwort oder für ein Zertifikat entscheiden.
-
-## <a name="active-directory-concepts"></a>Active Directory-Konzepte
-In diesem Artikel erstellen Sie zwei Objekte: die AD-Anwendung (Active Directory) und den Dienstprinzipal. Die AD-Anwendung ist die globale Darstellung Ihrer Anwendung. Sie enthält die Anmeldeinformationen (eine Anwendungs-ID und ein Kennwort oder Zertifikat). Der Dienstprinzipal ist die lokale Darstellung Ihrer Anwendung in einer Active Directory-Instanz. Er enthält die Rollenzuweisung. Dieses Thema konzentriert sich auf eine Anwendung mit nur einem Mandanten, die nur zur Ausführung in einer einzigen Organisation vorgesehen ist. Anwendungen mit nur einem Mandanten werden in der Regel für innerhalb Ihrer Organisation ausgeführte Branchenanwendungen verwendet. In einer Anwendung mit nur einem Mandanten sind eine AD-App und ein Dienstprinzipal vorhanden.
-
-Sie fragen sich vielleicht, warum Sie beide Objekte benötigen. Dieser Ansatz ergibt mehr Sinn, wenn Sie mehrinstanzenfähige Anwendungen betrachten. Mehrinstanzenfähige Anwendungen werden in der Regel für SaaS-Anwendungen (Software-as-a-Service) verwendet, bei denen Ihre Anwendung in zahlreichen verschiedenen Abonnements ausgeführt wird. Bei mehrinstanzenfähigen Anwendungen besitzen Sie eine AD-App und mehrere Prinzipale (einen in jeder Active Directory-Instanz, die Zugriff auf die App gewährt). Informationen zum Einrichten einer Anwendung mit mehreren Mandanten finden Sie im [Entwicklerhandbuch für die Autorisierung mit der Azure Resource Manager-API](resource-manager-api-authentication.md).
+In diesem Artikel erfahren Sie, wie Sie mithilfe der [Azure-Befehlszeilenschnittstelle 1.0](../cli-install-nodejs.md) eine Anwendung einrichten, die unter eigenen Anmeldeinformationen und einer eigenen Identität ausgeführt wird. Installieren Sie die neueste Version der [Azure-Befehlszeilenschnittstelle 1.0](../cli-install-nodejs.md), um sicherzustellen, dass Ihre Umgebung mit den Beispielen in diesem Artikel übereinstimmt.
 
 ## <a name="required-permissions"></a>Erforderliche Berechtigungen
 Zum Abschließen dieses Themas benötigen Sie sowohl in der Azure Active Directory-Instanz als auch im Azure-Abonnement ausreichende Berechtigungen. Insbesondere müssen Sie eine App in der Active Directory-Instanz erstellen und den Dienstprinzipal einer Rolle zuweisen können. 
@@ -59,64 +46,38 @@ Fahren Sie nun mit dem Abschnitt für eine [kennwortbasierte](#create-service-pr
 ## <a name="create-service-principal-with-password"></a>Erstellen eines Dienstprinzipals mit Kennwort
 Dieser Abschnitt enthält die Schritte zum Erstellen der AD-Anwendung mit einem Kennwort und das Zuweisen der Rolle „Leser“ zum Dienstprinzipal.
 
-Lassen Sie uns diese Schritte durchgehen.
-
 1. Melden Sie sich bei Ihrem Konto an.
    
    ```azurecli
    azure login
    ```
-2. Ihnen stehen zwei Optionen zum Erstellen der AD-Anwendung zur Verfügung. Sie können die AD-Anwendung und den Dienstprinzipal entweder in einem Schritt oder separat erstellen. Erstellen Sie sie in einem Schritt, wenn Sie keine Startseite und Bezeichner-URIs für Ihre App angeben müssen. Erstellen Sie sie getrennt, wenn Sie diese Werte für eine Web-App festlegen müssen. Beide Optionen werden in diesem Schritt veranschaulicht.
-   
-   * Um die AD-Anwendung und den Dienstprinzipal in einem Schritt zu erstellen, geben Sie den Namen der App und ein Kennwort an (wie im folgenden Befehl gezeigt):
+2. Zum Erstellen einer App-Identität geben Sie den Namen der App und ein Kennwort wie im folgenden Befehl an:
      
-     ```azurecli
-     azure ad sp create -n exampleapp -p {your-password}
-     ```
-   * Zum separaten Erstellen einer AD-Anwendung geben Sie Folgendes an:
+   ```azurecli
+   azure ad sp create -n exampleapp -p {your-password}
+   ```
+     
+   Der neue Dienstprinzipal wird zurückgegeben. Die Objekt-ID wird beim Gewähren von Berechtigungen benötigt. Die mit den Dienstprinzipalnamen aufgeführte GUID wird bei der Anmeldung benötigt. Diese GUID hat den gleichen Wert wie die App-ID. In den Beispielanwendungen wird dieser Wert als `Client ID` bezeichnet. 
+     
+   ```azurecli
+   info:    Executing command ad sp create
+     
+   Creating application exampleapp
+     / Creating service principal for application 7132aca4-1bdb-4238-ad81-996ff91d8db+
+     data:    Object Id:               ff863613-e5e2-4a6b-af07-fff6f2de3f4e
+     data:    Display Name:            exampleapp
+     data:    Service Principal Names:
+     data:                             7132aca4-1bdb-4238-ad81-996ff91d8db4
+     data:                             https://www.contoso.org/example
+     info:    ad sp create command OK
+   ```
 
-      * Name der App
-      * URL für die App-Startseite
-      * durch Kommas getrennte Liste von URIs zur Identifikation der App
-      * password
-
-      Dies wird im folgenden Befehl veranschaulicht:
-     
-     ```azurecli
-     azure ad app create -n exampleapp --home-page http://www.contoso.org --identifier-uris https://www.contoso.org/example -p {Your_Password}
-     ```
-
-       Der vorherige Befehl gibt einen AppId-Wert zurück. Um einen Dienstprinzipal zu erstellen, geben Sie diesen Wert als Parameter im folgenden Befehl ein:
-     
-     ```azurecli
-     azure ad sp create -a {AppId}
-     ```
-     
-     Falls Ihr Konto nicht über die [erforderlichen Berechtigungen](#required-permissions) für die Active Directory-Instanz verfügt, wird eine Fehlermeldung mit dem Hinweis angezeigt, dass die Authentifizierung nicht autorisiert ist oder kein Abonnement im Kontext gefunden wurde.
-     
-     Bei beiden Optionen wird der neue Dienstprinzipal zurückgegeben. `Object Id` wird beim Gewähren von Berechtigungen benötigt. Beim Anmelden ist die GUID mit `Service Principal Names` erforderlich. Diese GUID hat den gleichen Wert wie die App-ID. In den Beispielanwendungen wird dieser Wert als `Client ID` bezeichnet. 
-     
-     ```azurecli
-     info:    Executing command ad sp create
-     
-     Creating application exampleapp
-       / Creating service principal for application 7132aca4-1bdb-4238-ad81-996ff91d8db+
-       data:    Object Id:               ff863613-e5e2-4a6b-af07-fff6f2de3f4e
-       data:    Display Name:            exampleapp
-       data:    Service Principal Names:
-       data:                             7132aca4-1bdb-4238-ad81-996ff91d8db4
-       data:                             https://www.contoso.org/example
-       info:    ad sp create command OK
-      ```
-
-3. Gewähren Sie dem Dienstprinzipal Berechtigungen für Ihr Abonnement. In diesem Beispiel fügen Sie den Dienstprinzipal der Rolle „Leser“ hinzu, die Berechtigung zum Lesen aller Ressourcen im Abonnement gewährt. Informationen zu den anderen Rollen finden Sie unter [RBAC: Integrierte Rollen](../active-directory/role-based-access-built-in-roles.md). Geben Sie für den `objectid`-Parameter das `Object Id`-Element an, das Sie beim Erstellen der Anwendung verwendet haben. Vor der Ausführung dieses Befehls müssen Sie einige Zeit für die Verteilung des neuen Dienstprinzipals in Active Directory einplanen. Wenn Sie diese Befehle manuell ausführen, vergeht in der Regel genügend Zeit zwischen Aufgaben. In einem Skript sollten Sie einen Schritt für eine Pause zwischen den Befehlen hinzufügen (z.B. `sleep 15`). Wenn Sie die Fehlermeldung erhalten, dass der Prinzipal nicht im Verzeichnis vorhanden ist, führen Sie den Befehl erneut aus.
+3. Gewähren Sie dem Dienstprinzipal Berechtigungen für Ihr Abonnement. In diesem Beispiel fügen Sie den Dienstprinzipal der Rolle „Leser“ hinzu, die Berechtigung zum Lesen aller Ressourcen im Abonnement gewährt. Informationen zu den anderen Rollen finden Sie unter [RBAC: Integrierte Rollen](../active-directory/role-based-access-built-in-roles.md). Geben Sie für den objectid-Parameter die Objekt-ID an, die Sie beim Erstellen der Anwendung verwendet haben. Vor der Ausführung dieses Befehls müssen Sie einige Zeit für die Verteilung des neuen Dienstprinzipals in Active Directory einplanen. Wenn Sie diese Befehle manuell ausführen, vergeht in der Regel genügend Zeit zwischen Aufgaben. In einem Skript sollten Sie einen Schritt für eine Pause zwischen den Befehlen hinzufügen (z.B. `sleep 15`). Wenn Sie die Fehlermeldung erhalten, dass der Prinzipal nicht im Verzeichnis vorhanden ist, führen Sie den Befehl erneut aus.
    
    ```azurecli
    azure role assignment create --objectId ff863613-e5e2-4a6b-af07-fff6f2de3f4e -o Reader -c /subscriptions/{subscriptionId}/
    ```
    
-     Wenn Ihr Konto nicht über ausreichende Berechtigungen zum Zuweisen einer Rolle verfügt, wird eine Fehlermeldung angezeigt. In der Meldung ist angegeben, dass Ihr Konto keine Berechtigung zum Ausführen der Aktion „Microsoft.Authorization/roleAssignments/write“ über Bereich „/subscriptions/{guid}“ hat.
-
 Das ist alles! AD-Anwendung und Dienstprinzipal sind eingerichtet. Der nächste Abschnitt veranschaulicht die Anmeldung mit den Anmeldeinformationen über die Azure-CLI. Wenn Sie die Anmeldeinformationen in Ihrer Codeanwendung verwenden möchten, müssen Sie mit diesem Thema nicht fortfahren. In diesem Fall können Sie sich in den [Beispielanwendungen](#sample-applications) Beispiele für die Anmeldung mit Anwendungs-ID und Kennwort ansehen. 
 
 ### <a name="provide-credentials-through-azure-cli"></a>Angeben von Anmeldeinformationen über die Azure-Befehlszeilenschnittstelle
@@ -128,7 +89,7 @@ Jetzt müssen Sie sich als Anwendung anmelden, um Vorgänge durchzuführen.
    azure account show
    ```
    
-     Ausgabe des Befehls:
+   Ausgabe des Befehls:
    
    ```azurecli
    info:    Executing command account show
@@ -198,66 +159,45 @@ Für diese Schritte muss [OpenSSL](http://www.openssl.org/) installiert sein.
    ```
    openssl req -x509 -days 3650 -newkey rsa:2048 -out cert.pem -nodes -subj '/CN=exampleapp'
    ```
-2. Kombinieren Sie die öffentlichen und privaten Schlüssel.
-   
+
+2. Im vorherigen Schritt werden die beiden Dateien „privkey.pem“ und „cert.pem“ erstellt. Kombinieren Sie die öffentlichen und privaten Schlüssel in einer Datei.
+
    ```
    cat privkey.pem cert.pem > examplecert.pem
    ```
+
 3. Öffnen Sie die Datei **examplecert.pem**, und suchen Sie nach der langen Zeichenfolge zwischen **-----BEGIN CERTIFICATE-----** und **-----END CERTIFICATE-----**. Kopieren Sie die Zertifikatdaten. Beim Erstellen des Dienstprinzipals übergeben Sie diese Daten als Parameter.
+
 4. Melden Sie sich bei Ihrem Konto an.
-   
+
    ```azurecli
    azure login
    ```
-5. Ihnen stehen zwei Optionen zum Erstellen der AD-Anwendung zur Verfügung. Sie können die AD-Anwendung und den Dienstprinzipal entweder in einem Schritt oder separat erstellen. Erstellen Sie sie in einem Schritt, wenn Sie keine Startseite und Bezeichner-URIs für Ihre App angeben müssen. Erstellen Sie sie getrennt, wenn Sie diese Werte für eine Web-App festlegen müssen. Beide Optionen werden in diesem Schritt veranschaulicht.
-   
-   * Um die AD-Anwendung und den Dienstprinzipal in einem Schritt zu erstellen, geben Sie den Namen der App und die Zertifikatdaten an (wie im folgenden Befehl gezeigt):
+5. Um den Dienstprinzipal zu erstellen, geben Sie den Namen der App und die Zertifikatdaten wie im folgenden Befehl an:
      
-     ```azurecli
-     azure ad sp create -n exampleapp --cert-value {certificate data}
-     ```
-   * Zum separaten Erstellen einer AD-Anwendung geben Sie Folgendes an:
-      
-      * Name der App
-      * URL für die App-Startseite
-      * durch Kommas getrennte Liste von URIs zur Identifikation der App
-      * die Zertifikatdaten
-
-      Dies wird im folgenden Befehl veranschaulicht:
-
-     ```azurecli
-     azure ad app create -n exampleapp --home-page http://www.contoso.org --identifier-uris https://www.contoso.org/example --cert-value {certificate data}
-     ```
+   ```azurecli
+   azure ad sp create -n exampleapp --cert-value {certificate data}
+   ```
      
-       Der vorherige Befehl gibt einen AppId-Wert zurück. Um einen Dienstprinzipal zu erstellen, geben Sie diesen Wert als Parameter im folgenden Befehl ein:
+   Der neue Dienstprinzipal wird zurückgegeben. Die Objekt-ID wird beim Gewähren von Berechtigungen benötigt. Die mit den Dienstprinzipalnamen aufgeführte GUID wird bei der Anmeldung benötigt. Diese GUID hat den gleichen Wert wie die App-ID. In den Beispielanwendungen wird dieser Wert als „Client ID“ bezeichnet. 
      
-     ```azurecli
-     azure ad sp create -a {AppId}
-     ```
+   ```azurecli
+   info:    Executing command ad sp create
      
-     Falls Ihr Konto nicht über die [erforderlichen Berechtigungen](#required-permissions) für die Active Directory-Instanz verfügt, wird eine Fehlermeldung mit dem Hinweis angezeigt, dass die Authentifizierung nicht autorisiert ist oder kein Abonnement im Kontext gefunden wurde.
-     
-     Bei beiden Optionen wird der neue Dienstprinzipal zurückgegeben. Die Objekt-ID wird beim Gewähren von Berechtigungen benötigt. Beim Anmelden ist die GUID mit `Service Principal Names` erforderlich. Diese GUID hat den gleichen Wert wie die App-ID. In den Beispielanwendungen wird dieser Wert als `Client ID` bezeichnet. 
-     
-     ```azurecli
-     info:    Executing command ad sp create
-     
-     Creating service principal for application 4fd39843-c338-417d-b549-a545f584a74+
-       data:    Object Id:        7dbc8265-51ed-4038-8e13-31948c7f4ce7
-       data:    Display Name:     exampleapp
-       data:    Service Principal Names:
-       data:                      4fd39843-c338-417d-b549-a545f584a745
-       data:                      https://www.contoso.org/example
-       info:    ad sp create command OK
-     ```
-6. Gewähren Sie dem Dienstprinzipal Berechtigungen für Ihr Abonnement. In diesem Beispiel fügen Sie den Dienstprinzipal der Rolle „Leser“ hinzu, die Berechtigung zum Lesen aller Ressourcen im Abonnement gewährt. Informationen zu den anderen Rollen finden Sie unter [RBAC: Integrierte Rollen](../active-directory/role-based-access-built-in-roles.md). Geben Sie für den `objectid`-Parameter das `Object Id`-Element an, das Sie beim Erstellen der Anwendung verwendet haben. Vor der Ausführung dieses Befehls müssen Sie einige Zeit für die Verteilung des neuen Dienstprinzipals in Active Directory einplanen. Wenn Sie diese Befehle manuell ausführen, vergeht in der Regel genügend Zeit zwischen Aufgaben. In einem Skript sollten Sie einen Schritt für eine Pause zwischen den Befehlen hinzufügen (z.B. `sleep 15`). Wenn Sie die Fehlermeldung erhalten, dass der Prinzipal nicht im Verzeichnis vorhanden ist, führen Sie den Befehl erneut aus.
+   Creating service principal for application 4fd39843-c338-417d-b549-a545f584a74+
+     data:    Object Id:        7dbc8265-51ed-4038-8e13-31948c7f4ce7
+     data:    Display Name:     exampleapp
+     data:    Service Principal Names:
+     data:                      4fd39843-c338-417d-b549-a545f584a745
+     data:                      https://www.contoso.org/example
+     info:    ad sp create command OK
+   ```
+6. Gewähren Sie dem Dienstprinzipal Berechtigungen für Ihr Abonnement. In diesem Beispiel fügen Sie den Dienstprinzipal der Rolle „Leser“ hinzu, die Berechtigung zum Lesen aller Ressourcen im Abonnement gewährt. Informationen zu den anderen Rollen finden Sie unter [RBAC: Integrierte Rollen](../active-directory/role-based-access-built-in-roles.md). Geben Sie für den objectid-Parameter die Objekt-ID an, die Sie beim Erstellen der Anwendung verwendet haben. Vor der Ausführung dieses Befehls müssen Sie einige Zeit für die Verteilung des neuen Dienstprinzipals in Active Directory einplanen. Wenn Sie diese Befehle manuell ausführen, vergeht in der Regel genügend Zeit zwischen Aufgaben. In einem Skript sollten Sie einen Schritt für eine Pause zwischen den Befehlen hinzufügen (z.B. `sleep 15`). Wenn Sie die Fehlermeldung erhalten, dass der Prinzipal nicht im Verzeichnis vorhanden ist, führen Sie den Befehl erneut aus.
    
    ```azurecli
    azure role assignment create --objectId 7dbc8265-51ed-4038-8e13-31948c7f4ce7 -o Reader -c /subscriptions/{subscriptionId}/
    ```
-   
-     Wenn Ihr Konto nicht über ausreichende Berechtigungen zum Zuweisen einer Rolle verfügt, wird eine Fehlermeldung angezeigt. In der Meldung ist angegeben, dass Ihr Konto keine Berechtigung zum Ausführen der Aktion „Microsoft.Authorization/roleAssignments/write“ über Bereich „/subscriptions/{guid}“ hat.
-
+  
 ### <a name="provide-certificate-through-automated-azure-cli-script"></a>Bereitstellen eines Zertifikats über automatisiertes Azure-CLI-Skript
 Jetzt müssen Sie sich als Anwendung anmelden, um Vorgänge durchzuführen.
 
@@ -267,7 +207,7 @@ Jetzt müssen Sie sich als Anwendung anmelden, um Vorgänge durchzuführen.
    azure account show
    ```
    
-     Ausgabe des Befehls:
+   Ausgabe des Befehls:
    
    ```azurecli
    info:    Executing command account show
@@ -279,7 +219,7 @@ Jetzt müssen Sie sich als Anwendung anmelden, um Vorgänge durchzuführen.
    ...
    ```
    
-     Wenn Sie die Mandanten-ID eines anderen Abonnements abrufen möchten, verwenden Sie den folgenden Befehl:
+   Wenn Sie die Mandanten-ID eines anderen Abonnements abrufen möchten, verwenden Sie den folgenden Befehl:
    
    ```azurecli
    azure account show -s {subscription-id}
@@ -290,7 +230,7 @@ Jetzt müssen Sie sich als Anwendung anmelden, um Vorgänge durchzuführen.
    openssl x509 -in "C:\certificates\examplecert.pem" -fingerprint -noout | sed 's/SHA1 Fingerprint=//g'  | sed 's/://g'
    ```
    
-     Ein Fingerabdruck wie der folgende wird zurückgegeben:
+   Ein Fingerabdruck wie der folgende wird zurückgegeben:
    
    ```
    30996D9CE48A0B6E0CD49DBB9A48059BF9355851
@@ -301,7 +241,7 @@ Jetzt müssen Sie sich als Anwendung anmelden, um Vorgänge durchzuführen.
    azure ad sp show -c exampleapp
    ```
    
-     Der für die Anmeldung zu verwendende Wert ist die in den Dienstprinzipalnamen aufgeführte GUID.
+   Der für die Anmeldung zu verwendende Wert ist die in den Dienstprinzipalnamen aufgeführte GUID.
      
    ```azurecli
    [
@@ -341,6 +281,13 @@ Zum Ändern eines Zertifikatwerts verwenden Sie:
 azure ad app set --applicationId 4fd39843-c338-417d-b549-a545f584a745 --cert-value {certificate data}
 ```
 
+## <a name="debug"></a>Debuggen
+
+Wenn Sie einen Dienstprinzipal erstellen, können folgende Fehler auftreten:
+
+* **„Authentication_Unauthorized“** oder **„Kein Abonnement in diesem Kontext gefunden.“** – Dieser Fehler wird angezeigt, wenn Ihr Konto nicht die [erforderlichen Berechtigungen](#required-permissions) zum Registrieren einer App im Active Directory hat. In der Regel wird dieser Fehler angezeigt, wenn in Ihrem Active Directory nur Administratorbenutzer Apps registrieren können und Ihr Konto kein Administratorkonto ist. Bitten Sie Ihren Administrator, Sie entweder einer Administratorrolle zuzuweisen oder es Benutzern zu ermöglichen, Apps zu registrieren.
+
+* Ihr Konto **„hat keine Berechtigung zum Ausführen der Aktion 'Microsoft.Authorization/roleAssignments/write' über Bereich '/subscriptions/{guid}'.“**  – Dieser Fehler wird angezeigt, wenn Ihr Konto nicht über ausreichende Berechtigungen verfügt, um eine Rolle einer Identität zuzuweisen. Bitten Sie Ihren Abonnementadministrator, Sie der Rolle „Benutzerzugriffsadministrator“ hinzuzufügen.
 
 ## <a name="sample-applications"></a>Beispielanwendungen
 Die folgenden Beispielanwendungen veranschaulichen die Anmeldung als Dienstprinzipal:

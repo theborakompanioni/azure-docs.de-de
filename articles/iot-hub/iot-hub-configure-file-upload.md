@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2017
+ms.date: 04/07/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
-ms.openlocfilehash: aadbee1388e2c2aafaf0a5c50d2af195284d2bec
-ms.lasthandoff: 12/06/2016
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: b1e32eef393aa213cac6af68821ad0572e4a3c92
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -26,13 +26,14 @@ ms.lasthandoff: 12/06/2016
 [!INCLUDE [iot-hub-file-upload-selector](../../includes/iot-hub-file-upload-selector.md)]
 
 ## <a name="file-upload"></a>Dateiupload
+
 Damit Sie die [Dateiuploadfunktion in IoT Hub][lnk-upload] verwenden können, müssen Sie Ihrem Hub zunächst ein Azure Storage-Konto zuordnen. Wählen Sie die **Dateiupload**-Einstellungen zum Anzeigen einer Liste der Dateiuploadeigenschaften für den IoT Hub, der geändert wird.
 
-![][13]
+![Anzeigen der Dateiuploadeinstellungen für den IoT Hub im Portal][13]
 
 **Speichercontainer**: Verwenden Sie das Azure-Portal, um einen Blobcontainer in einem Azure Storage-Konto Ihres aktuellen Azure-Abonnements auszuwählen, der Ihrer IoT Hub-Instanz zugeordnet werden soll. Erstellen Sie bei Bedarf auf dem Blatt **Speicherkonten** ein Azure Storage-Konto und auf dem Blatt **Container** einen Blobcontainer. IoT Hub generiert automatisch SAS-URIs mit Schreibberechtigungen für diesen Blobcontainer, die Geräte beim Hochladen von Dateien verwenden können.
 
-![][14]
+![Anzeigen von Speichercontainern für den Dateiupload im Portal][14]
 
 **Benachrichtigungen für hochgeladene Dateien empfangen**: Aktivieren oder deaktivieren Sie Dateiuploadbenachrichtigungen über den Umschalter.
 
@@ -42,9 +43,10 @@ Damit Sie die [Dateiuploadfunktion in IoT Hub][lnk-upload] verwenden können, m�
 
 **Anzahl maximaler Zustellungen für Dateibenachrichtigungen**: Gibt an, wie oft IoT Hub versucht, eine Dateiuploadbenachrichtigung zu senden. Standardmäßig auf 10 festgelegt, kann aber mithilfe des Schiebereglers in andere Werte geändert werden.
 
-![][15]
+![Konfigurieren des Dateiuploads für IoT Hub im Portal][15]
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Weitere Informationen zu den Dateiuploadfunktionen von IoT Hub finden Sie unter [Hochladen von Dateien von einem Gerät][lnk-upload] im IoT Hub-Entwicklerhandbuch.
 
 Folgen Sie diesen Links, um mehr über das Verwalten von Azure IoT Hub zu erfahren:

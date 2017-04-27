@@ -12,17 +12,24 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/13/2016
+ms.date: 03/31/2017
 ms.author: jeannt
 translationtype: Human Translation
-ms.sourcegitcommit: 8ea727f7b8d93401b35a7b9dbd2f00a5534c3072
-ms.openlocfilehash: e54c37f688e8d107f5323125ea42d63ec91a4c84
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 965c60ffde55041cc3864d06d81f5590c7ea1c11
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning"></a>Erläuterungen zur Spezifikationssprache Net# für neuronale Netzwerke für Azure Machine Learning
 ## <a name="overview"></a>Übersicht
-Net# ist eine Programmiersprache, die von Microsoft zur Definition von Architekturen mit neuronalen Netzwerken entwickelt wurde. Sie können Net# in Modulen für neuronale Netzwerke in Microsoft Azure Machine Learning oder in der `rxNeuralNetwork()`-Funktion in [MicrosoftML](https://msdn.microsoft.com/microsoft-r/microsoftml/microsoftml) verwenden. 
+Net# ist eine Programmiersprache, die von Microsoft zur Definition von Architekturen mit neuronalen Netzwerken entwickelt wurde. Sie können Net# in Modulen für neuronale Netzwerke in Microsoft Azure Machine Learning verwenden.
+
+<!-- This function doesn't currentlyappear in the MicrosoftML documentation. If it is added in a future update, we can uncomment this text.
+
+, or in the `rxNeuralNetwork()` function in [MicrosoftML](https://msdn.microsoft.com/microsoft-r/microsoftml/microsoftml). 
+
+-->
 
 In diesem Artikel erfahren Sie die grundlegenden Konzepte, die für die Entwicklung eines benutzerdefinierten neuronalen Netzwerks erforderlich sind: 
 
@@ -211,9 +218,9 @@ Im folgenden Beispiel wird ein Poolingbündel veranschaulicht:
       }  
 
 * Die Arität des Bündels ist 3 (die Länge der Tupel **InputShape**, **KernelShape** und **Stride**). 
-* Die Anzahl der Knoten in der Quellschicht beträgt *5 · 24 · 24 = 2880*. 
+* Die Anzahl der Knoten in der Quellschicht beträgt *5 * 24 * 24 = 2880*. 
 * Dies ist eine herkömmliche lokale Poolingschicht, da **KernelShape** und **Stride** gleich sind. 
-* Die Anzahl der Knoten in der Zielschicht beträgt *5 · 12 · 12 = 1440*.  
+* Die Anzahl der Knoten in der Zielschicht beträgt *5 * 12 * 12 = 1440*.  
 
 Weitere Informationen zu Poolingschichten finden Sie in den folgenden Artikeln (in englischer Sprache):  
 
@@ -396,22 +403,17 @@ Die Definition des folgenden Netzwerks zur Erkennung von Ziffern veranschaulicht
 * Das Netzwerk hat eine dritte verdeckte Schicht: *Hid3*. Diese ist vollständig mit der zweiten verdeckten Schicht *Conv2* verbunden.
 * Die Ausgabeschicht *Digit* ist nur mit der dritten verdeckten Schicht (*Hid3*) verbunden. Das Schlüsselwort **all** gibt an, dass die Ausgabeschicht vollständig mit *Hid3* verbunden ist.
 * Die Arität der Konvolution ist 3 (die Länge der Tupel **InputShape**, **KernelShape**, **Stride** und **Sharing**). 
-* Die Anzahl der Gewichtungen pro Kernel beträgt *1 + **KernelShape**\[0] * **KernelShape**\[1] * **KernelShape**\[2] = 1 + 1 · 5 · 5 = 26. Oder 26 · 50 = 1300*.
+* Die Anzahl der Gewichtungen pro Kernel beträgt *1 + **KernelShape**\[0] * **KernelShape**\[1] * **KernelShape**\[2] = 1 + 1 * 5 * 5 = 26. Oder 26 * 50 = 1300*.
 * Sie können die Knoten in jeder verdeckten Schicht wie folgt berechnen:
   * **NodeCount**\[0] = (5 - 1)/1 + 1 = 5.
   * **NodeCount**\[1] = (13 - 5)/2 + 1 = 5. 
   * **NodeCount**\[2] = (13 - 5)/2 + 1 = 5. 
-* Die Gesamtanzahl der Knoten kann anhand der deklarierten Dimensionalität der Schicht [50, 5, 5] wie folgt berechnet werden: ***MapCount** * **NodeCount**\[0] * **NodeCount**\[1] * **NodeCount**\[2] = 10 * 5 * 5 * 5*
+* Die Gesamtzahl der Knoten kann anhand der deklarierten Dimensionalität der Schicht [50, 5, 5] wie folgt berechnet werden: ***MapCount** * **NodeCount**\[0] * **NodeCount**\[1] * **NodeCount**\[2] = 10 * 5 * 5 * 5*
 * Da **Sharing**[d] nur für *d == 0* „False“ ist, beträgt die Anzahl der Kernel ***MapCount** * **NodeCount**\[0] = 10 * 5 = 50*. 
 
 ## <a name="acknowledgements"></a>Danksagung
 Die Net#-Sprache zum Anpassen der Architektur von neuronalen Netzwerken wurde bei Microsoft von Shon Katzenberger (Architect, Machine Learning) und Alexey Kamenev (Software Engineer, Microsoft Research) entwickelt. Sie wird für interne Machine Learning-Projekte und -Anwendungen verwendet, die von der Bilderkennung bis zur Textanalyse reichen. Weitere Informationen finden Sie unter [Neural Nets in Azure ML - Introduction to Net#](http://blogs.technet.com/b/machinelearning/archive/2015/02/16/neural-nets-in-azure-ml-introduction-to-net.aspx) (Neuronale Netze in Azure ML – Einführung in Net#).
 
 [1]:./media/machine-learning-azure-ml-netsharp-reference-guide/formula_large.gif
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

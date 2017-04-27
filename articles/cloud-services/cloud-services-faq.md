@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2016
+ms.date: 04/19/2017
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 7287cb1709b7c863cd046edfb995e23455398ec2
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
+ms.openlocfilehash: a0fd75e0797319aecac29b48df75e7a268063e04
+ms.lasthandoff: 04/11/2017
 
 
 ---
@@ -95,5 +95,5 @@ Stellen Sie zunächst sicher, dass die Instanz des virtuellen Computers, für de
 
 ## <a name="remote-desktop"></a>Remotedesktop
 ### <a name="how-do-i-remote-desktop-when-i-have-an-nsg"></a>Wie verwende ich Remotedesktop bei einer NSG?
-Fügen Sie der NSG eine Regel hinzu, die den Port **20000** weiterleitet.
+Fügen Sie der NSG Regeln hinzu, die Datenverkehr an den Ports **3389** und **20000** zulassen.  Remotedesktop verwendet Port **3389**.  Für Cloud Services-Instanzen erfolgt ein Lastenausgleich, daher können Sie nicht direkt steuern, mit welcher Instanz eine Verbindung hergestellt wird.  Die Agents *RemoteForwarder* und *RemoteAccess* verwalten den RDP-Datenverkehr und ermöglichen es dem Client, ein RDP-Cookie zu senden und eine bestimmte Instanz anzugeben, mit der eine Verbindung hergestellt werden soll.  Die Agents *RemoteForwarder* und *RemoteAccess* fordern, dass Port **20000*** geöffnet wird, der bei Vorhandensein einer NSG möglicherweise blockiert ist.
 

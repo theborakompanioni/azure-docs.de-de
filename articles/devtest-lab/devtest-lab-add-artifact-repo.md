@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/11/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: f7656382500682898cd3ed6372630afa3c3f6350
-ms.openlocfilehash: 5c595bd2175f1cbc650bd1a757eeacc80cf39e23
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 407d50afe3470f5a9e84026eaa2dcccea4d06641
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -46,7 +46,7 @@ Führen Sie folgende Schritte aus, um die Klon-URL und das persönliche Zugriffs
 4. Wählen Sie das Profilbild in der oberen rechten Ecke von GitHub aus, und wählen Sie **Settings**.
 5. Wählen Sie im Menü **Personal settings** auf der linken Seite auf **Personal access tokens**.
 6. Wählen Sie **Generate new token**.
-7. Geben Sie auf der Seite **New personal access token** unter **Token description** eine Tokenbeschreibung ein, akzeptieren Sie die Standardelemente unter **Select scopes**, und wählen Sie dann **Generate Token** aus.
+7. Geben Sie auf der Seite **New personal access token** in **Token description** eine Tokenbeschreibung ein. Wenn es sich um ein öffentliches Repository handelt, übernehmen Sie die Standardeinträge in **Select scopes**; wählen Sie andernfalls den **Repository**-Bereich aus. Wählen Sie anschließend **Generate Token** aus. [Hier erhalten Sie weitere Informationen zu OAuth-Bereichen in GitHub](https://developer.github.com/v3/oauth/#scopes).
 8. Speichern Sie das generierte Token, da Sie es später benötigen.
 9. Sie können GitHub nun schließen.   
 10. Fahren Sie mit dem Abschnitt [Verbinden des Labs mit dem Artefaktrepository](#connect-your-lab-to-the-artifact-repository) fort.

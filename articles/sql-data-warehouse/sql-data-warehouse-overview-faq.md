@@ -12,12 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: overview
 ms.date: 3/1/2017
 ms.author: elbutter
 translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: 7a752bfb349d2730537538f6856fe431204d3329
-ms.lasthandoff: 03/04/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 49cbfca4f733356548b6c8f491fead9e2d7fdf5c
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -33,7 +34,7 @@ A: SQL DW bietet verschiedene Lösungen für den Schutz von Daten, etwa transpar
 F: Wo finde ich Informationen dazu, welche rechtlichen oder geschäftsspezifischen Standards SQL DW erfüllt?
 
 A: Auf der Seite [Microsoft-Compliance] finden Sie verschiedene nach Produkt sortierte Compliance-Angebote (beispielsweise für SOC und ISO). Wählen Sie zunächst einen Compliancetitel aus. Erweitern Sie anschließend rechts auf der Seite im Abschnitt mit den konformen Microsoft-Clouddiensten den Knoten „Azure“, um die richtlinienkonformen Azure-Dienste anzuzeigen.
- 
+
 F: Kann ich eine Verbindung mit PowerBI herstellen?
 
 A: Ja. PowerBI unterstützt zwar direkte Abfragen mit SQL DW, ist jedoch nicht für eine große Anzahl von Benutzern oder eine große Menge von Echtzeitdaten vorgesehen. Für die Verwendung von PowerBI in der Produktion wird die Nutzung von PowerBI zusätzlich zu Azure Analysis Services oder Analysis Service IaaS empfohlen. 
@@ -41,6 +42,10 @@ A: Ja. PowerBI unterstützt zwar direkte Abfragen mit SQL DW, ist jedoch nicht f
 F: Welche Kapazitätsgrenzen hat SQL Data Warehouse?
 
 A: Informationen finden Sie auf der Seite mit den [Kapazitätsgrenzen]. 
+
+F: Warum erfordert Skalieren/Anhalten/Fortsetzen so viel Zeit?
+
+A: Die Dauer der Computerverwaltungsvorgänge kann durch eine Vielzahl von Faktoren beeinflusst werden. Diese Vorgänge erfordern häufig viel Zeit, wenn Transaktionsrollback erfolgt. Wenn Skalierung oder Anhalten initiiert wird, werden alle eingehenden Sitzungen blockiert, und Abfragen werden ausgeglichen. Damit das System stabil bleibt, muss ein Rollback von Transaktionen erfolgen, bevor ein Vorgang beginnen kann. Je größer die Anzahl der Transaktionen und je größer ihre Protokollgröße, desto länger wird der Vorgang angehalten, um einen stabilen Zustand des Systems wiederherzustellen.
 
 ## <a name="user-support"></a>Unterstützung für Benutzer
 
@@ -113,7 +118,7 @@ Weitere Informationen zu SQL Data Warehouse im Allgemeinen finden Sie auf der Se
 [Kapazitätsgrenzen]: ./sql-data-warehouse-service-capacity-limits.md
 [Datentypen]: ./sql-data-warehouse-tables-data-types.md
 [Nicht unterstützte Tabellenfunktionen]: ./sql-data-warehouse-tables-overview.md#unsupported-table-features
-[Azure Data Lake Store]: ./sql-data-warehouse-load-from-azure-data-lake-store.md 
+[Azure Data Lake Store]: ./sql-data-warehouse-load-from-azure-data-lake-store.md
 [Azure Storage Blobs]: ./sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md
 [Anforderung von Features für Datenbankprojekte]: https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/13313247-database-project-from-visual-studio-to-support-azu
 [MSDN]: https://msdn.microsoft.com/en-us/library/azure/mt163685.aspx

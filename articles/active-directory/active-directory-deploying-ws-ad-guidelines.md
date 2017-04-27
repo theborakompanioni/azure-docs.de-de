@@ -15,9 +15,9 @@ ms.workload: identity
 ms.date: 02/22/2017
 ms.author: femila
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: c6d26aca309597cf9552e97a22e84b6c122fe58b
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 0bcde69385b74fa62a629159abfff4bb16d9da89
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -37,7 +37,7 @@ In diesem Artikel wird davon ausgegangen, dass Leser mit den folgenden Konzepten
 * Bereitstellung, Konfiguration und Verwaltung von Anwendungen der vertrauenden Seite (Websites und Webdienste), die Windows Server AD FS-Token nutzen können
 * Allgemeine VM-Konzepte, z. B. Konfiguration eines virtuellen Computers, virtueller Datenträger und virtueller Netzwerke
 
-In diesem Artikel werden die Anforderungen für eine Hybridbereitstellung beschrieben, bei der Windows Server AD DS bzw. AD FS teilweise lokal und teilweise auf virtuellen Azure-Computern bereitgestellt werden. Im Dokument geht es zuerst um die wichtigen Unterschiede zwischen der Ausführung von Windows Server AD DS und AD FS auf virtuellen Azure-Computern und lokalen Computern und die wichtigen Entscheidungen, die sich auf den Entwurf und die Bereitstellung auswirken. Im restlichen Teil werden die Richtlinien für die einzelnen Entscheidungspunkte ausführlicher beschrieben, und Sie erfahren, wie die Richtlinien für die unterschiedlichen Bereitstellungsszenarien gelten.
+In diesem Artikel werden die Anforderungen für eine Hybridbereitstellung beschrieben, bei der Windows Server AD DS bzw. AD FS teilweise lokal und teilweise auf virtuellen Azure-Computern bereitgestellt werden. Im Dokument geht es zuerst um die wichtigen Unterschiede zwischen der Ausführung von Windows Server AD DS und AD FS auf virtuellen Azure-Computern und lokalen Computern und die wichtigen Entscheidungen, die sich auf den Entwurf und die Bereitstellung auswirken. Im restlichen Teil werden die Richtlinien für die einzelnen Entscheidungspunkte ausführlicher beschrieben, und Sie erfahren, wie die Richtlinien für die unterschiedlichen Bereitstellungsszenarien gelten.
 
 In diesem Artikel wird nicht die Konfiguration von [Azure Active Directory](http://azure.microsoft.com/services/active-directory/) beschrieben. Dabei handelt es sich um einen REST-basierten Dienst mit Funktionen für die Identitätsverwaltung und Zugriffssteuerung für Cloudanwendungen. Azure Active Directory (Azure AD) und Windows Server AD DS sind aber für die Zusammenarbeit ausgelegt, um als Lösung für die Identitäts- und Zugriffsverwaltung in den heutigen IT-Hybridumgebungen und modernen Anwendungen zu dienen. Berücksichtigen Sie Folgendes, um die Unterschiede und Beziehungen zwischen Windows Server AD DS und Azure AD besser zu verstehen:
 

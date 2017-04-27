@@ -17,9 +17,9 @@ ms.custom: H1Hack27Feb2017
 ms.date: 07/29/2016
 ms.author: b-hoedid
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: db5f70c88eb0b429a8d5d76f192a742f97fdf131
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
+ms.openlocfilehash: b996ed1889ec39de78dcee9bbcb18a5982fc5f7f
+ms.lasthandoff: 04/04/2017
 
 
 ---
@@ -105,22 +105,22 @@ Wir müssen die Quelle (Anforderung) des Patientendatensatzes aus dem Dynamics C
 
 1. Wir müssen aus Dynamics CRM Online einen neuen Termindatensatz abrufen.
 
-    Der Trigger aus CRM liefert uns die folgenden Informationen: **CRM-Patienten-ID** (PatientID),  **Datensatztyp**, **Neuer oder aktualisierter Datensatz** (boolescher Wert) und **SalesforceId**. **SalesforceId** kann NULL sein, da diese ID nur für Updates verwendet wird.
-    Zum Abrufen des CRM-Datensatzes verwenden wir die CRM-Patienten-ID (**PatientID**) und den **Datensatztyp**.
+   Der Trigger aus CRM liefert uns die folgenden Informationen: **CRM-Patienten-ID** (PatientID), **Datensatztyp**, **Neuer oder aktualisierter Datensatz** (boolescher Wert) und **SalesforceId**. **SalesforceId** kann NULL sein, da diese ID nur für Updates verwendet wird.
+   Zum Abrufen des CRM-Datensatzes verwenden wir die CRM-Patienten-ID (**PatientID**) und den **Datensatztyp**.
 
-2. Als Nächstes müssen wir den **InsertLogEntry**-Vorgang der DocumentDB-API-App hinzufügen. Dies wird in den folgenden Abbildungen veranschaulicht:
+2. Im nächsten Schritt müssen wir den Vorgang **InsertLogEntry** DocumentDB-API-App wie hier veranschaulicht im Logik-App-Designer hinzufügen.
 
-### <a name="insert-log-entry-designer-view"></a>Protokolleintrag einfügen – Designeransicht
+   **Protokolleintrag einfügen**
 
-![Protokolleintrag einfügen](media/logic-apps-scenario-error-and-exception-handling/lognewpatient.png)
+   ![Protokolleintrag einfügen](media/logic-apps-scenario-error-and-exception-handling/lognewpatient.png)
 
-### <a name="insert-error-entry-designer-view"></a>Fehlereintrag einfügen – Designeransicht
+   **Fehlereintrag einfügen**
 
-![Protokolleintrag einfügen](media/logic-apps-scenario-error-and-exception-handling/insertlogentry.png)
+   ![Protokolleintrag einfügen](media/logic-apps-scenario-error-and-exception-handling/insertlogentry.png)
 
-### <a name="check-for-create-record-failure"></a>Auf Fehler bei der Datensatzerstellung überprüfen
+   **Auf Fehler bei der Datensatzerstellung überprüfen**
 
-![Bedingung](media/logic-apps-scenario-error-and-exception-handling/condition.png)
+   ![Bedingung](media/logic-apps-scenario-error-and-exception-handling/condition.png)
 
 ## <a name="logic-app-source-code"></a>Logik-App-Quellcode
 

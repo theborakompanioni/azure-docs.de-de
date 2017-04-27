@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 03/17/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 3f0c890056c2ee00151ebc4cc74106368a56ba2f
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 229dd21f3ab1ae716cd49611e720450ae5939eb8
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -123,9 +123,16 @@ Hier sind einige Schritte, die Sie ausführen können, um Ihr Datenvolumen zu re
 * Deaktivieren Sie nicht benötigte Erfassungsmodule durch [Bearbeiten von „ApplicationInsights.config“](app-insights-configuration-with-applicationinsights-config.md). Das kann z. B. für Leistungsindikator- oder Abhängigkeitsdaten gelten.
 * Teilen Sie Ihre Telemetrie auf getrennte Instrumentierungsschlüssel auf. 
 * Aggregieren Sie Metriken vorab. Wenn Sie Ihrer App Aufrufe an TrackMetric eingefügt haben, können Sie Datenverkehr reduzieren, indem Sie die Überladung verwenden, die Ihre Berechnung des Durchschnitts und die Standardabweichung eines Batches von Messungen akzeptiert. Oder Sie können ein [vorab aggregierendes Paket](https://www.myget.org/gallery/applicationinsights-sdk-labs)verwenden.
-* Schließlich können Sie die Volumenobergrenze pro Tag senken. Dadurch werden die erfassten Daten begrenzt, dies führt jedoch auch zu einem Datenverlust für den Rest des Tages. Um diese Einstellung zu ändern, öffnen Sie **Features und Preise**, **Datenverwaltung**.
 
-    ![Anpassen der Volumenobergrenze für Telemetriedaten pro Tag](./media/app-insights-pricing/daily-cap.png) 
+## <a name="managing-the-maximum-daily-data-volume"></a>Verwalten des maximalen täglichen Datenvolumens
+
+Sie können die gesammelten Daten mithilfe der täglichen Volumenobergrenze begrenzen. Jedoch gehen alle von der Anwendung gesendeten Telemetriedaten für den Rest des Tags verloren, wenn die Obergrenze überschritten wurde. Es ist **nicht ratsam**, die Anwendung die tägliche Obergrenze erreichen zu lassen, da Sie nach dem Überschreiten der Obergrenze die Integrität und Leistung der Anwendung nicht mehr nachverfolgen können. 
+
+Verwenden Sie stattdessen [Stichproben](app-insights-sampling.md), um das gewünschte Datenvolumen anzupassen, und verwenden Sie die tägliche Obergrenze nur als letzten Ausweg für den Fall, dass die Anwendung unerwartet ein weitaus höheres Volumen an Telemetriedaten sendet. 
+
+Um die tägliche Obergrenze zu ändern, öffnen Sie **Features und Preise**, **Datenverwaltung**.
+
+![Anpassen der Volumenobergrenze für Telemetriedaten pro Tag](./media/app-insights-pricing/daily-cap.png) 
 
 ## <a name="sampling"></a>Stichproben
 Die [Stichprobenerstellung](app-insights-sampling.md) ist eine Methode, die Rate, mit der Telemetriedaten an Ihre App gesendet werden, zu verringern. Gleichzeitig soll die Möglichkeit erhalten bleiben, bei Diagnosesuchläufen relevante Ereignisse zu ermitteln und korrekte Ereigniszahlen zu erhalten. 

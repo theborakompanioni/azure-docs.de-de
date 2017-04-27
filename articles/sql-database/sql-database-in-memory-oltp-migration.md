@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 11/22/2016
 ms.author: jodebrui
 translationtype: Human Translation
-ms.sourcegitcommit: 42f3f6a24e423f54ad7bb282404ddc6ff2450cb7
-ms.openlocfilehash: 5b6fdbfa983cd5bb27ddd13860dfe89c5a3681b6
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: db2d6dbdec80e8c443014c72c80172ad3effb82c
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -25,13 +26,13 @@ ms.openlocfilehash: 5b6fdbfa983cd5bb27ddd13860dfe89c5a3681b6
 [In-Memory OLTP](sql-database-in-memory.md) kann verwendet werden, um die Leistung der Transaktionsverarbeitung, Datenerfassung und der vorübergehenden Datenszenarios in Azure SQL-Datenbanken des Typs [Premium](sql-database-service-tiers.md) zu verbessern, ohne den Tarif zu erhöhen. 
 
 > [!NOTE] 
-> Erfahren Sie mehr zu diesem Thema: [Quorum doubles key database’s workload while lowering DTU by 70% with SQL Database (Quorum verdoppelt die Arbeitslast der wichtigen Datenbank, während die DTU mit der SQL-Datenbank um 70 % verringert wird; in englischer Sprache)](https://customers.microsoft.com/en-US/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
+> Erfahren Sie mehr zu diesem Thema: [Quorum doubles key database’s workload while lowering DTU by 70% with SQL Database (Quorum verdoppelt die Arbeitslast der wichtigen Datenbank, während die DTU mit der SQL-Datenbank um 70 % verringert wird; in englischer Sprache)](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
 
 
 Führen Sie diese Schritte durch, um In-Memory-OLTP in Ihrer vorhandenen Datenbank zu übernehmen.
 
 ## <a name="step-1-ensure-you-are-using-a-premium-database"></a>Schritt 1: Sicherstellen, dass Sie eine Datenbank des Typs „Premium“ verwenden
-In-Memory OLTP wird nur in v12-Datenbanken der Premium-Edition unterstützt. In-Memory wird unterstützt, wenn das zurückgegebene Ergebnis 1 ist (nicht 0):
+In-Memory OLTP wird nur in Datenbanken der Premium-Edition unterstützt. In-Memory wird unterstützt, wenn das zurückgegebene Ergebnis 1 ist (nicht 0):
 
 ```
 SELECT DatabasePropertyEx(Db_Name(), 'IsXTPSupported');
@@ -173,10 +174,5 @@ Sie sollten die Leistungseffekte Ihrer In-Memory-Implementierungen in der Produk
 * [In-Memory OLTP (In-Memory Optimization)](http://msdn.microsoft.com/library/dn133186.aspx)
 * [Einführung zu systemeigen kompilierten gespeicherten Prozeduren](http://msdn.microsoft.com/library/dn133184.aspx)
 * [Ratgeber für die Speicheroptimierung](http://msdn.microsoft.com/library/dn284308.aspx)
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 

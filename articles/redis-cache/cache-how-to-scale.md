@@ -12,24 +12,20 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 01/06/2017
+ms.date: 04/11/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 65385aa918222837468f88246d0527c22c677ba7
-ms.openlocfilehash: 022916bacd93d283a6495a60ca1afa0c27e34e0c
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 91b3580491a1e3504a3891b66606a9bd18c0638f
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="how-to-scale-azure-redis-cache"></a>Skalieren von Azure Redis Cache
-> [!NOTE]
-> Die Skalierungsfunktion von Azure Redis Cache befindet sich derzeit in der Vorschau. 
-> 
-> 
-
-Für Azure Redis Cache stehen verschiedene Cacheangebote bereit, die Flexibilität bei der Auswahl von Cachegröße und -funktionen bieten. Wenn sich die Anforderungen Ihrer Anwendung ändern, nachdem der Cache erstellt wurde, können Sie die Größe des Caches auf dem Blatt **Ändern des Tarifs** im [Azure-Portal](https://portal.azure.com)skalieren.
+Für Azure Redis Cache stehen verschiedene Cacheangebote bereit, die Flexibilität bei der Auswahl von Cachegröße und -funktionen bieten. Nach dem Erstellen des Caches können Sie Größe und Tarif des Caches skalieren, wenn sich die Anforderungen Ihrer Anwendung ändern. In diesem Artikel wird erläutert, wie Sie Ihren Cache im Azure-Portal und mithilfe von Tools wie Azure PowerShell und Azure-CLI skalieren.
 
 ## <a name="when-to-scale"></a>Zeitpunkt für die Skalierung
-Sie können die Integrität und Leistung Ihrer Cacheanwendungen mithilfe der [Überwachungsfunktionen](cache-how-to-monitor.md) von Azure Redis Cache überwachen, um zu ermitteln, ob der Cache skaliert werden muss. 
+Sie können mithilfe der [Überwachungsfunktionen](cache-how-to-monitor.md) von Azure Redis Cache die Integration und Leistung des Caches überwachen und ermitteln, ob der Cache skaliert werden muss. 
 
 Überwachen Sie die folgenden Metriken überwachen, um herauszufinden, ob eine Skalierung notwendig ist.
 
@@ -38,31 +34,27 @@ Sie können die Integrität und Leistung Ihrer Cacheanwendungen mithilfe der [Ü
 * Netzwerkbandbreite
 * CPU-Auslastung
 
-Wenn Sie feststellen, dass Ihr Cache die Anforderungen Ihrer Anwendung nicht mehr erfüllt, können Sie in einen anderen Tarif wechseln, der zu Ihrer Anwendung passt. Weitere Informationen dazu, wie Sie ermitteln, welcher Cachetarif geeignet ist, finden Sie unter [Welches Angebot und welche Größe eignet sich für meinen Redis Cache](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)?
+Wenn Sie feststellen, dass der Cache die Anforderungen der Anwendung nicht mehr erfüllt, können Sie in einen höheren oder niedrigeren Tarif wechseln, der zu Ihrer Anwendung passt. Weitere Informationen dazu, wie Sie ermitteln, welcher Cachetarif geeignet ist, finden Sie unter [Welches Angebot und welche Größe eignet sich für meinen Redis Cache](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)?
 
 ## <a name="scale-a-cache"></a>Skalieren eines Caches
-Zum Skalieren Ihres Caches [navigieren Sie zum Cache](cache-configure.md#configure-redis-cache-settings) im [Azure-Portal](https://portal.azure.com) und klicken dann auf **Einstellungen**, **Tarif**.
+Zum Skalieren Ihres Caches [navigieren Sie zum Cache](cache-configure.md#configure-redis-cache-settings) im [Azure-Portal](https://portal.azure.com) und klicken im Menü **Ressource** auf **Skalieren**.
 
-Sie können auch auf den Abschnitt **Tarif** auf dem Blatt **Redis Cache** klicken.
+![Skalieren](./media/cache-how-to-scale/redis-cache-scale-menu.png)
 
-![Tarif][redis-cache-pricing-tier-part]
-
-Wählen Sie auf dem Blatt **Tarif** den gewünschten Tarif aus, und klicken Sie auf **Auswählen**.
+Wählen Sie auf dem Blatt **Tarif auswählen** den gewünschten Tarif aus, und klicken Sie auf **Auswählen**.
 
 ![Tarif][redis-cache-pricing-tier-blade]
 
-> [!NOTE]
-> Sie können mit den folgenden Einschränkungen auf eine andere Preisstufe skalieren.
-> 
-> * Sie können keine Skalierung von einem höheren Tarif auf einen niedrigeren Tarif vornehmen.
-> * Eine Skalierung von einem **Premium**-Cache auf einen niedrigeren **Standard**- oder **Basic**-Cache ist nicht möglich.
-> * Ein **Standard**-Cache kann nicht auf einen niedrigeren **Basic**-Cache skaliert werden.
-> * Ein **Basic**-Cache kann auf einen **Standard**-Cache skaliert werden, die Größe kann jedoch nicht gleichzeitig geändert werden. Wenn Sie eine andere Größe benötigen, können Sie anschließend einen Skalierungsvorgang auf die gewünschte Größe durchführen.
-> * Ein **Basic**-Cache kann nicht direkt auf einen **Premium**-Cache skaliert werden. Stattdessen müssen Sie in einem ersten Skalierungsvorgang von **Basic** auf **Standard** skalieren und dann in einem anschließenden Skalierungsvorgang von **Standard** auf **Premium**.
-> * Von einer größeren Größe kann nicht auf **C0 (250 MB)** herunterskaliert werden.
-> 
-> 
 
+Sie können mit den folgenden Einschränkungen zu einem anderen Tarif wechseln:
+
+* Sie können keine Skalierung von einem höheren Tarif auf einen niedrigeren Tarif vornehmen.
+  * Eine Skalierung von einem **Premium**-Cache auf einen niedrigeren **Standard**- oder **Basic**-Cache ist nicht möglich.
+  * Ein **Standard**-Cache kann nicht auf einen niedrigeren **Basic**-Cache skaliert werden.
+* Ein **Basic**-Cache kann auf einen **Standard**-Cache skaliert werden, die Größe kann jedoch nicht gleichzeitig geändert werden. Wenn Sie eine andere Größe benötigen, können Sie anschließend einen Skalierungsvorgang auf die gewünschte Größe durchführen.
+* Ein **Basic**-Cache kann nicht direkt auf einen **Premium**-Cache skaliert werden. Stattdessen müssen Sie in einem ersten Skalierungsvorgang von **Basic** auf **Standard** skalieren und dann in einem anschließenden Skalierungsvorgang von **Standard** auf **Premium**.
+* Von einer größeren Größe kann nicht auf **C0 (250 MB)** herunterskaliert werden.
+ 
 Während der Cache in den neuen Tarif skaliert wird, wird auf dem Blatt **Redis Cache** der Status **Wird skaliert** angezeigt.
 
 ![Skalieren][redis-cache-scaling]
@@ -70,7 +62,7 @@ Während der Cache in den neuen Tarif skaliert wird, wird auf dem Blatt **Redis 
 Wenn die Skalierung abgeschlossen ist, ändert sich der Status von **Wird skaliert** zu **Wird ausgeführt**.
 
 ## <a name="how-to-automate-a-scaling-operation"></a>Automatisieren eines Skalierungsvorgangs
-Sie können Ihre Azure Redis Cache-Instanzen nicht nur über das Azure-Portal skalieren, sondern auch mithilfe der Azure Redis Cache-PowerShell-Cmdlets, über die Azure-Befehlszeilenschnittstelle (Azure CLI) und mithilfe der Microsoft Azure-Verwaltungsbibliotheken. 
+Sie können Ihre Cache-Instanzen nicht nur über das Azure-Portal skalieren, sondern auch mithilfe der PowerShell-Cmdlets, über die Azure-Befehlszeilenschnittstelle (Azure-CLI) und mithilfe der Microsoft Azure-Verwaltungsbibliotheken (MAML). 
 
 * [Skalieren mithilfe von PowerShell](#scale-using-powershell)
 * [Skalieren über die Azure-Befehlszeilenschnittstelle](#scale-using-azure-cli)
@@ -123,13 +115,12 @@ Die folgende Liste enthält Antworten auf häufig gestellte Fragen zur Skalierun
 * [Nicht unterstützte Vorgänge](#operations-that-are-not-supported)
 * [Wie lange dauert die Skalierung?](#how-long-does-scaling-take)
 * [Woher weiß ich, dass die Skalierung abgeschlossen ist?](#how-can-i-tell-when-scaling-is-complete)
-* [Warum befindet sich dieses Feature in der Vorschau?](#why-is-this-feature-in-preview)
 
 ### <a name="can-i-scale-to-from-or-within-a-premium-cache"></a>Kann ich eine Skalierung auf einen Premium-Cache, aus diesem oder innerhalb von diesem vornehmen?
 * Eine Skalierung von einem **Premium**-Cache auf die niedrigeren Tarife **Basic** oder **Standard** ist nicht möglich.
 * Eine Skalierung von einem bestimmten **Premium** -Cachetarif zu einem anderen ist jedoch möglich.
 * Ein **Basic**-Cache kann nicht direkt auf einen **Premium**-Cache skaliert werden. Stattdessen müssen Sie in einem ersten Skalierungsvorgang von **Basic** auf **Standard** skalieren und dann in einem folgenden Skalierungsvorgang von **Standard** auf **Premium**.
-* Wenn Sie beim Erstellen des **Premium** -Caches die Clusterunterstützung aktiviert haben, können Sie die [Clustergröße ändern](cache-how-to-premium-clustering.md#cluster-size). Zum gegenwärtigen Zeitpunkt können Sie die Clusterunterstützung nicht auf einem vorhandenen Cache aktivieren, der ohne Clustering erstellt wurde.
+* Wenn Sie beim Erstellen des **Premium** -Caches die Clusterunterstützung aktiviert haben, können Sie die [Clustergröße ändern](cache-how-to-premium-clustering.md#cluster-size). Wenn der Cache ohne aktiviertes Clustering erstellt wurde, können Sie das Clustering nicht zu einem späteren Zeitpunkt konfigurieren.
   
   Weitere Informationen finden Sie unter [Konfigurieren von Clustern für Azure Redis Cache vom Typ "Premium"](cache-how-to-premium-clustering.md).
 
@@ -166,7 +157,7 @@ Hinweis: Für Caches der Tarife „Standard“ und „Premium“ gilt zwar eine 
   * Eine Skalierung von einem **Premium**-Cache auf einen niedrigeren **Standard**- oder **Basic**-Cache ist nicht möglich.
   * Ein **Standard**-Cache kann nicht auf einen niedrigeren **Basic**-Cache skaliert werden.
 * Ein **Basic**-Cache kann auf einen **Standard**-Cache skaliert werden, die Größe kann jedoch nicht gleichzeitig geändert werden. Wenn Sie eine andere Größe benötigen, können Sie anschließend einen Skalierungsvorgang auf die gewünschte Größe durchführen.
-* Ein **Basic**-Cache kann nicht direkt auf einen **Premium**-Cache skaliert werden. Stattdessen müssen Sie in einem ersten Skalierungsvorgang von **Basic** auf **Standard** skalieren und dann in einem anschließenden Skalierungsvorgang von **Standard** auf **Premium**.
+* Ein **Basic**-Cache kann nicht direkt auf einen **Premium**-Cache skaliert werden. Stattdessen müssen Sie in einem ersten Skalierungsvorgang von **Basic** auf **Standard** skalieren und dann in einem folgenden Skalierungsvorgang von **Standard** auf **Premium**.
 * Von einer größeren Größe kann nicht auf **C0 (250 MB)** herunterskaliert werden.
 
 Wenn bei einem Skalierungsvorgang ein Fehler auftritt, versucht der Dienst, den Vorgang rückgängig zu machen, und der Cache wird auf die ursprüngliche Größe zurückgesetzt.
@@ -177,21 +168,12 @@ Die Skalierung dauert ca. 20 Minuten, je nachdem, wie viele Daten sich im Cache
 ### <a name="how-can-i-tell-when-scaling-is-complete"></a>Woher weiß ich, dass die Skalierung abgeschlossen ist?
 Im Azure-Portal können Sie den Fortschritt der Skalierung anzeigen. Wenn die Skalierung abgeschlossen ist, ändert sich der Status des Caches zu **Wird ausgeführt**.
 
-### <a name="why-is-this-feature-in-preview"></a>Warum befindet sich dieses Feature in der Vorschau?
-Wir haben die Funktion veröffentlicht, um Feedback zu erhalten. Basierend auf dem Feedback werden wir diese Funktion in Kürze in der allgemein verfügbaren Version veröffentlichen.
-
 <!-- IMAGES -->
-[redis-cache-pricing-tier-part]: ./media/cache-how-to-scale/redis-cache-pricing-tier-part.png
 
 [redis-cache-pricing-tier-blade]: ./media/cache-how-to-scale/redis-cache-pricing-tier-blade.png
 
 [redis-cache-scaling]: ./media/cache-how-to-scale/redis-cache-scaling.png
 
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

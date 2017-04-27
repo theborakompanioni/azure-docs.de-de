@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 5f31b24a0d46b9d557a55b3c9d0cd7748ecb9c33
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: 941a795c4c83e05ec3c5bb55790f8fcc72829a65
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -46,7 +46,7 @@ Dieses Szenario:
 
 ## <a name="creating-an-azure-function-and-overview"></a>Erstellen einer Azure-Funktion und Übersicht
 
-Im ersten Schritt wird eine Azure-Funktion zum Verarbeiten der Warnung und Erstellen einer Paketerfassung erstellt. 
+Im ersten Schritt wird eine Azure-Funktion zum Verarbeiten der Warnung und Erstellen einer Paketerfassung erstellt.
 
 Die folgende Liste enthält eine Übersicht über den Workflow.
 
@@ -73,7 +73,7 @@ Um die Network Watcher-PowerShell-Cmdlets zu verwenden, muss das neueste PowerSh
     (Get-Module AzureRM.Network).Path
     ```
 
-    Dadurch erhalten Sie den lokalen Pfad Ihrer Azure PowerShell-Module. Diese Ordner werden in einem späteren Schritt verwendet. Dies sind die in diesem Szenario verwendeten Module:
+    In diesem Beispiel wird der lokale Pfad Ihrer Azure PowerShell-Module angegeben. Diese Ordner werden in einem späteren Schritt verwendet. Dies sind die in diesem Szenario verwendeten Module:
 
     * AzureRM.Network
 
@@ -85,9 +85,9 @@ Um die Network Watcher-PowerShell-Cmdlets zu verwenden, muss das neueste PowerSh
 
 1. Navigieren Sie zu **Funktionen-App-Einstellungen** > **Zum App Service-Editor wechseln**.
 
-    ![Funktionen-App][functions2]
+    ![Kudu-Funktionen][functions2]
 
-1. Klicken Sie mit der rechten Maustaste auf den AlertPacketCapturePowershell-Ordner, und erstellen Sie einen Ordner mit dem Namen **azuremodules**. Fahren Sie mit dem Erstellen von Unterordnern für jedes benötigte Modul fort.
+1. Klicken Sie mit der rechten Maustaste auf den Ordner „AlertPacketCapturePowershell“, und erstellen Sie einen Ordner mit dem Namen **azuremodules**. Fahren Sie mit dem Erstellen von Unterordnern für jedes benötigte Modul fort.
 
     ![Kudu-Funktionen][functions3]
 
@@ -107,9 +107,9 @@ Um die Network Watcher-PowerShell-Cmdlets zu verwenden, muss das neueste PowerSh
 
 ## <a name="authentication"></a>Authentifizierung
 
-Um die PowerShell-Cmdlets zu verwenden, müssen Sie sich authentifizieren. Die Authentifizierung muss in der Funktionen-App konfiguriert werden. Zu diesem Zweck werden Umgebungsvariablen konfiguriert, und eine verschlüsselte Schlüsseldatei muss in die Funktionen-App hochgeladen werden.
+Um die PowerShell-Cmdlets zu verwenden, müssen Sie sich authentifizieren. Die Authentifizierung muss in der Funktionen-App konfiguriert werden. Zum Konfigurieren der Authentifizierung werden Umgebungsvariablen konfiguriert, und eine verschlüsselte Schlüsseldatei muss in die Funktionen-App hochgeladen werden.
 
-> [!note]
+> [!NOTE]
 > Dieses Szenario stellt lediglich ein Beispiel für das Implementieren von Authentifizierung für Azure-Funktionen dar, es gibt andere Möglichkeiten, dieses Ziel zu erreichen.
 
 ### <a name="encrypted-credentials"></a>Verschlüsselte Anmeldeinformationen
@@ -139,7 +139,7 @@ Erstellen Sie im App Service-Editor der Funktionen-App einen Ordner mit dem Name
 
 ### <a name="retrieving-values-for-environment-variables"></a>Abrufen von Werten für Umgebungsvariablen
 
-Die erforderliche endgültige Konfiguration legt die Umgebungsvariablen fest, die für den Zugriff auf die Werte für die Authentifizierung erforderlich sind. Es folgt eine Liste der Umgebungsvariablen, die erstellt werden.
+Die erforderliche endgültige Konfiguration legt die Umgebungsvariablen fest, die für den Zugriff auf die Werte für die Authentifizierung erforderlich sind. In der folgenden Liste werden die erstellten Umgebungsvariablen aufgeführt:
 
 * AzureClientID
 
@@ -303,7 +303,7 @@ Navigieren Sie zu einem vorhandenen virtuellen Computer, und fügen Sie eine War
 ![Hinzufügen einer VM-Warnungsregel zu einem virtuellen Computer][1]
 
 > [!NOTE]
-> Einige Metriken sind standardmäßig nicht aktiviert. Weitere Informationen dazu, wie Sie weitere Metriken aktivieren, finden Sie unter [Aktivieren von Überwachung und Diagnose](../monitoring-and-diagnostics/insights-how-to-use-diagnostics.md).
+> Die Metrik der TCP-Segmente ist in der Standardeinstellung nicht aktiviert. Weitere Informationen dazu, wie Sie weitere Metriken aktivieren, finden Sie unter [Aktivieren von Überwachung und Diagnose](../monitoring-and-diagnostics/insights-how-to-use-diagnostics.md).
 
 Fügen Sie abschließend die URL aus dem vorherigen Schritt in das Textfeld „Webhook“ Ihrer Warnung ein. Klicken Sie auf **OK**, um die Warnungsregel zu speichern.
 

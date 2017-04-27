@@ -15,9 +15,9 @@ ms.date: 02/27/2017
 ms.author: markvi
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: d6330397b6e74b62836a2e864b1c37ab172d0028
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: c5a0f3f958d42d514a95477c1e39f02c78307d4d
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -60,7 +60,7 @@ Nach der Authentifizierung können Benutzer mit den Anwendungen interagieren, di
 ## <a name="web-browser-requirements"></a>Webbrowseranforderungen
 Die Mindestanforderung für den Zugriffsbereich ist ein Browser mit Unterstützung von JavaScript und CSS-Aktivierung. Damit der Benutzer bei Anwendungen mithilfe von kennwortbasiertem SSO (Single Sign-On, einmaliges Anmelden) angemeldet werden kann, muss die Erweiterung für den Zugriffsbereich im Browser des Benutzers installiert sein. Diese Erweiterung wird automatisch heruntergeladen, wenn ein Benutzer eine Anwendung auswählt, die für kennwortbasiertes SSO konfiguriert ist.
 
-Die Zugriffsbereichserweiterung ist derzeit für die Browser Internet Explorer 8 oder höher, Chrome und Firefox verfügbar.
+Die Zugriffsbereichserweiterung ist derzeit für die Browser Internet Explorer 8 oder höher, Edge, Chrome und Firefox verfügbar.
 
 ## <a name="mobile-app-support"></a>Unterstützung für mobile Apps
 Vom Azure Active Directory-Team wird die mobile App „Meine Apps“ veröffentlicht. Wenn diese App von Benutzern installiert wird, können sie sich auf iOS- und Android-Geräten an Anwendungen anmelden, für die kennwortbasiertes SSO genutzt wird.

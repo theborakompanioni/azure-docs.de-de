@@ -13,13 +13,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2017
+ms.date: 03/27/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 0051bbeaac458e8df07e5c7aa186fbefb526f50e
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: f02fbbfb0e8704445d9bfdaba634dbf558ceef02
+ms.lasthandoff: 04/07/2017
 
 ---
 
@@ -30,7 +30,7 @@ Wenn beim Zugriff auf eine veröffentlichte Anwendung oder beim Veröffentlichen
 * Öffnen Sie die Windows Services-Konsole, und vergewissern Sie sich, dass der Dienst **Microsoft AAD-Anwendungsproxy-Connector** aktiviert ist und ausgeführt wird. Sie können gegebenenfalls auch – wie in der folgenden Abbildung gezeigt – die Eigenschaftenseite des Anwendungsproxy-Diensts anzeigen:   
   ![Screenshot: Fenster mit Microsoft AAD-Anwendungsproxy-Connector-Eigenschaften](./media/active-directory-application-proxy-troubleshoot/connectorproperties.png)
 * Öffnen Sie die Ereignisanzeige, und suchen Sie unter **Anwendungs- und Dienstprotokolle** > **Microsoft** > **AadApplicationProxy** > **Connector** > **Administrator** nach Ereignissen, die sich auf den Anwendungsproxy-Connector beziehen.
-* Bei Bedarf sind ausführlichere Protokolle verfügbar, indem Sie die Analyse- und Debugprotokolle aktivieren und das Sitzungsprotokoll des Anwendungsproxy-Connectors aktivieren.
+* Bei Bedarf sind ausführlichere Protokolle verfügbar, indem Sie [die Sitzungsprotokolle des Anwendungsproxy-Connectors aktivieren](application-proxy-understand-connectors.md#under-the-hood).
 
 Weitere Informationen zum Azure AD-Problembehandlungstool finden Sie unter [Troubleshooting tool to validate connector networking prerequisites](https://blogs.technet.microsoft.com/applicationproxyblog/2015/09/03/troubleshooting-tool-to-validate-connector-networking-prerequisites) (Problembehandlungstool zum Überprüfen der Netzwerkvoraussetzungen für den Connector).
 
@@ -74,7 +74,7 @@ Sobald Sie den Connectorfehler im Ereignisprotokoll gefunden haben, beheben Sie 
   Falls die Installation des Connectors nicht erfolgreich verläuft, stellen Sie sicher, dass die PowerShell-Ausführungsrichtlinie nicht deaktiviert ist. 
 
   1. Öffnen Sie den Gruppenrichtlinien-Editor. 
-  2. Wechseln Sie zu **Computerkonfiguration** > **Administrative Vorlagen** > **Windows-Komponenten** > **Windows PowerShell**, und doppelklicken Sie auf **Skriptausführung aktivieren**. 
+  2. Wechseln Sie zu **Computerkonfiguration** > **Administrative Vorlagen**  > **Windows-Komponenten** > **Windows PowerShell**, und doppelklicken Sie auf **Skriptausführung aktivieren**. 
   3. Die Ausführungsrichtlinie kann entweder auf **Nicht konfiguriert** oder auf **Aktiviert** festgelegt sein. Stellen Sie bei der Einstellung **Aktiviert** sicher, dass die Ausführungsrichtlinie unter „Optionen“ auf **Lokale Skripts und remote signierte Skripts zulassen** oder **Alle Skripts zulassen** festgelegt ist. 
 
 - **Der Connector konnte die Konfiguration nicht herunterladen.** 
@@ -94,7 +94,7 @@ Diese Liste umfasst die häufiger auftretenden Fehler bei der Kerberos-Einrichtu
   Falls die Installation des Connectors nicht erfolgreich verläuft, stellen Sie sicher, dass die PowerShell-Ausführungsrichtlinie nicht deaktiviert ist. 
 
   1. Öffnen Sie den Gruppenrichtlinien-Editor. 
-  2. Wechseln Sie zu **Computerkonfiguration** > **Administrative Vorlagen** > **Windows-Komponenten** > **Windows PowerShell**, und doppelklicken Sie auf **Skriptausführung aktivieren**. 
+  2. Wechseln Sie zu **Computerkonfiguration** > **Administrative Vorlagen**  > **Windows-Komponenten** > **Windows PowerShell**, und doppelklicken Sie auf **Skriptausführung aktivieren**. 
   3. Die Ausführungsrichtlinie kann entweder auf **Nicht konfiguriert** oder auf **Aktiviert** festgelegt sein. Stellen Sie bei der Einstellung **Aktiviert** sicher, dass die Ausführungsrichtlinie unter „Optionen“ auf **Lokale Skripts und remote signierte Skripts zulassen** oder **Alle Skripts zulassen** festgelegt ist. 
 
 - **12008 – Azure AD hat die maximale Anzahl zulässiger Kerberos-Authentifizierungsversuche beim Back-End-Server überschritten.** 

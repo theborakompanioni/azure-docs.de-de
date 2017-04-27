@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/20/2017
+ms.date: 02/24/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 04a045f41965b093aab71e59cd9b5f328b44de84
-ms.openlocfilehash: 8290d90f22a80d5c585192b17cfa0aeba00aa891
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: ecd58d8f1df60aff99d9ac2e0245d06f61e0b6bb
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -32,13 +33,13 @@ Nach Abschluss dieses Tutorials können sich die PolicyStat zugewiesenen Azure A
 Das in diesem Lernprogramm beschriebene Szenario besteht aus den folgenden Bausteinen:
 
 1. Aktivieren der Anwendungsintegration für PolicyStat
-2. Konfigurieren der einmaligen Anmeldung
+2. Konfigurieren des einmaligen Anmeldens (SSO)
 3. Konfigurieren der Benutzerbereitstellung
 4. Zuweisen von Benutzern
 
 ![Szenario](./media/active-directory-saas-policystat-tutorial/IC808662.png "Szenario")
 
-## <a name="enabling-the-application-integration-for-policystat"></a>Aktivieren der Anwendungsintegration für PolicyStat
+## <a name="enable-the-application-integration-for-policystat"></a>Aktivieren der Anwendungsintegration für PolicyStat
 In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für PolicyStat aktivieren.
 
 **Um die Anwendungsintegration für PolicyStat zu aktivieren, führen Sie die folgenden Schritte durch:**
@@ -63,7 +64,7 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Pol
    
    ![PolicyStat](./media/active-directory-saas-policystat-tutorial/IC810430.png "PolicyStat")
    
-## <a name="configuring-single-sign-on"></a>Konfigurieren der einmaligen Anmeldung
+## <a name="configure-single-sign-on"></a>Configure single sign-on
 
 In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei PolicyStat zu authentifizieren.  
 
@@ -124,21 +125,20 @@ Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen.
    2. Geben Sie im Textfeld **Attributname** die Zeichenfolge **uid** ein.
    3. Wählen Sie im Textfeld **Attributwert** die Option **ExtractMailPrefix()** aus.    
    4. Wählen Sie in der Liste **E-Mail** die Option **User.mail** aus.
-   5. Klicken Sie auf **Fertig stellen**.
+   5. Klicken Sie unten auf der Seite auf **Fertigstellen**.
 
-##<a name="configuring-user-provisioning"></a>Konfigurieren der Benutzerbereitstellung
+##<a name="configure-user-provisioning"></a>Benutzerbereitstellung konfigurieren
 
 Damit sich Azure AD-Benutzer bei PolicyStat anmelden können, müssen sie in PolicyStat bereitgestellt werden.  
 
-PolicyStat unterstützt die bedarfsabhängige Benutzerbereitstellung. Das bedeutet, dass Sie die Benutzer nicht manuell zu PolicyStat hinzufügen müssen.  
-Die Benutzer werden bei der ersten Anmeldung mittels einmaligem Anmelden automatisch hinzugefügt.
+PolicyStat unterstützt die bedarfsabhängige Benutzerbereitstellung. Das bedeutet, dass Sie die Benutzer nicht manuell zu PolicyStat hinzufügen müssen. Die Benutzer werden bei der ersten Anmeldung mittels SSO automatisch hinzugefügt.
 
-> [!NOTE]
-> Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von PolicyStat-Benutzerkonten oder mithilfe der von PolicyStat bereitgestellten APIs erstellen.
+>[!NOTE]
+>Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von PolicyStat-Benutzerkonten oder mithilfe der von PolicyStat bereitgestellten APIs erstellen.
 > 
 > 
 
-## <a name="assigning-users"></a>Zuweisen von Benutzern
+## <a name="assign-users"></a>Benutzer zuweisen
 Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
 
 **Um PolicyStat Benutzer zuzuweisen, führen Sie die folgenden Schritte durch:**
@@ -152,10 +152,5 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
    ![Ja](./media/active-directory-saas-policystat-tutorial/IC767830.png "Ja")
 
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

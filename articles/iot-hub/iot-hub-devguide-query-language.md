@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 09/30/2016
 ms.author: elioda
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 44169ba74f6af2b1c27ea4c2a8fd0214892f90d5
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 1eacd13562adcff96fdd0dd3fd91c78ef6a26dbf
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -171,6 +171,11 @@ Beachten Sie, wie das **query**-Objekt mit einer Seitengröße (bis zu 1.000) in
 Beachten Sie, dass das query-Objekt mehrmals **Next\*** verfügbar macht – je nach der für die Abfrage benötigten Deserialisierung, z.B. Gerätezwillings- oder Auftragsobjekte oder reiner JSON-Code für Projektionen.
 
 ### <a name="limitations"></a>Einschränkungen
+> [!IMPORTANT]
+> Abfrageergebnisse können mit einigen Minuten Verzögerung im Vergleich zu den aktuellen Werten in Gerätezwillingen ausgegeben werden. Wenn einzelne Gerätezwillinge nach ID abgefragt werden, empfiehlt es sich stets, die API zum Abrufen von Gerätezwillingen zu verwenden, die stets die aktuellen Werte enthält und höhere Drosselungslimits aufweist.
+>
+>
+
 Derzeit werden Vergleiche nur zwischen primitiven Typen (keine Objekte) unterstützt. `... WHERE properties.desired.config = properties.reported.config` wird beispielsweise nur unterstützt, wenn diese Eigenschaften über primitive Werte verfügen.
 
 ## <a name="get-started-with-jobs-queries"></a>Erste Schritte mit Auftragsabfragen

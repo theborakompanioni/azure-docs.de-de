@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 3/01/2017
+ms.date: 3/21/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: 55baaf0984e01f3cbca7b2296f0b24661e70e7b5
-ms.lasthandoff: 03/04/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 82f084b220ba321945975c8d1a6d22e419acf5e4
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -33,7 +33,7 @@ Der Zugriff kann mit RBAC sehr detailliert zugewiesen werden, denn es gibt zwei 
 * **Bereich:** RBAC-Rollenzuweisungen gelten für ein bestimmtes Abonnement, eine Ressourcengruppe oder eine Ressource. Ein Benutzer, dem Zugriff auf eine einzelne Ressource erteilt wird, kann nicht auf andere Ressourcen im selben Abonnement zugreifen.
 * **Rolle**: Im Bereich der Zuweisung wird der Zugriff weiter eingeschränkt, indem Sie eine Rolle zuweisen. Rollen können auf allgemeiner Ebene erteilt werden (z.B. Benutzer) oder spezifisch sein (z.B. Leser virtueller Computer).
 
-Rollen können nur von dem Abonnement, der Ressourcengruppe oder der Ressource aus zugewiesen werden, das bzw. die den Bereich für die Zuweisung darstellt. Allerdings können Sie alle Zugriffszuweisungen für einen bestimmten Benutzer oder eine bestimmte Gruppe an einem einzigen Ort anzeigen.
+Rollen können nur von dem Abonnement, der Ressourcengruppe oder der Ressource aus zugewiesen werden, das bzw. die den Bereich für die Zuweisung darstellt. Allerdings können Sie alle Zugriffszuweisungen für einen bestimmten Benutzer oder eine bestimmte Gruppe an einem einzigen Ort anzeigen. In jedem Abonnement können Sie über bis zu 2.000 Rollenzuweisungen verfügen. 
 
 Informieren Sie sich über das [Verwenden von Rollenzuweisungen zum Verwalten des Zugriffs auf Ihre Azure-Abonnementressourcen](role-based-access-control-configure.md).
 

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/29/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
-ms.openlocfilehash: cc177695f73805940f6a0229c94e391bf3899f09
-ms.lasthandoff: 03/29/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 325d669f11891bf070d9bbb468af7427adda46d3
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -36,7 +36,8 @@ Benutzer | Können eine beliebige gelöschte Office 365-Gruppe wiederherstellen,
 
 
 ## <a name="how-to-view-deleted-office-365-groups-that-are-available-to-restore"></a>Vorgehensweise beim Anzeigen gelöschter Office 365-Gruppen, die zur Wiederherstellung zur Verfügung stehen
-Mit den folgenden Cmdlets können gelöschte Gruppen angezeigt werden, um sicherzustellen, dass die gewünschten Gruppen noch nicht endgültig gelöscht wurden. Diese Cmdlets gehören zum [Azure Active Directory PowerShell V2-Vorschaumodul](https://www.powershellgallery.com/packages/AzureADPreview) (Download-Link). Weitere Informationen zu diesem Modul finden Sie im Artikel [Azure Active Directory PowerShell Version 2](https://docs.microsoft.com/powershell/azuread/).
+Mit den folgenden Cmdlets können gelöschte Gruppen angezeigt werden, um sicherzustellen, dass die gewünschten Gruppen noch nicht endgültig gelöscht wurden. Diese Cmdlets gehören zum [Azure Active Directory PowerShell V2-Vorschaumodul](https://www.powershellgallery.com/packages/AzureADPreview). Weitere Informationen zu diesem Modul finden Sie im Artikel [Azure Active Directory PowerShell Version 2](https://docs.microsoft.com/powershell/azuread/).
+Beachten Sie, dass die Cmdlets zum Verwalten des vorläufigen Löschens und Wiederherstellens als öffentliche Vorschau verfügbar sind und wir an den Vorschau-Cmdlets gelegentlich Fehler verursachende Änderungen vornehmen müssen. Daher wird davon abgeraten, diese Cmdlets in einer Produktionsumgebung zu verwenden.
 
 1.    Führen Sie das folgende Cmdlet aus, um alle gelöschten Office 365-Gruppen in Ihrem Mandanten, die noch zur Wiederherstellung verfügbar sind, anzuzeigen.
   ```
@@ -80,3 +81,4 @@ Diese Artikel enthalten zusätzliche Informationen zu Azure Active Directory-Gru
 * [Verwalten der Mitglieder einer Gruppe](active-directory-groups-members-azure-portal.md)
 * [Verwalten der Mitgliedschaften einer Gruppe](active-directory-groups-membership-azure-portal.md)
 * [Verwalten dynamischer Regeln für Benutzer in einer Gruppe](active-directory-groups-dynamic-membership-azure-portal.md)
+

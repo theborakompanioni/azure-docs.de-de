@@ -16,9 +16,9 @@ ms.custom: tables
 ms.date: 07/12/2016
 ms.author: jrj;barbkess;sonyama
 translationtype: Human Translation
-ms.sourcegitcommit: f1a24e4ee10593514f44d83ad5e9a46047dafdee
-ms.openlocfilehash: f132af2966e2ac59e77dc0fa8113eb83089c68dd
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: dff94161c7d6dfedc91cfb36954e847f945985f7
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -53,7 +53,6 @@ WITH ( CLUSTERED COLUMNSTORE INDEX );
 
 Es gibt einige Szenarien, in denen der gruppierte Columnstore keine gute Option ist:
 
-* Columnstore-Tabellen weisen keine Unterstützung für sekundäre nicht gruppierte Indizes auf.  Erwägen Sie stattdessen die Verwendung von Heap oder gruppierten Indextabellen.
 * Columnstore-Tabellen weisen keine Unterstützung für „varchar(max)“, „nvarchar(max)“ und „varbinary(max)“ auf.  Erwägen Sie stattdessen die Verwendung von Heap oder gruppiertem Index.
 * Unter Umständen sind Columnstore-Tabellen für vorübergehende Daten weniger effizient.  Erwägen Sie die Verwendung von Heap und ggf. temporären Tabellen.
 * Kleine Tabellen mit weniger als 100 Millionen Zeilen.  Erwägen Sie die Verwendung von Heaptabellen.

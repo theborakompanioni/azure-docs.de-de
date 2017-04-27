@@ -1,6 +1,6 @@
 ---
-title: Leitfaden zur Abrechnungs- und Kostenverwaltung in Azure| Microsoft-Dokumentation
-description: "Dieser Artikel enthält bewährte Methoden sowie erste Schritte zur Rechnungsoptimierung."
+title: "Vermeiden unerwarteter Kosten, Verwalten der Abrechnung – Azure | Microsoft-Dokumentation"
+description: "Hier erwarten Sie, wie Sie unerwartete Gebühren in Ihrer Azure-Abrechnung vermeiden. Verwenden Sie Kostenüberwachungs- und Kostenverwaltungsfunktionen für ein Microsoft Azure-Abonnement."
 services: 
 documentationcenter: 
 author: jlian
@@ -16,9 +16,9 @@ ms.workload: na
 ms.date: 03/20/2017
 ms.author: jlian
 translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
-ms.openlocfilehash: af53cea83d2e348b2c73e56cf4b6ce5a875bce18
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: c69334279e79352e3f7ad58d356f6891dd060b0a
+ms.lasthandoff: 04/03/2017
 
 
 ---

@@ -11,33 +11,35 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/25/2017
+ms.date: 03/24/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 12868706693a076ead3cfc13ce5901bbc56d588b
-ms.openlocfilehash: 961aef8496a7de264c5d57c7a990c69996c1527e
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 66d68ef805a28552c5d161b4761e2aa3052c118c
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panorama9"></a>Tutorial: Azure Active Directory-Integration mit Panorama9
 In diesem Tutorial wird die Integration von Azure und Panorama9 erläutert.  
+
 Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 * Ein gültiges Azure-Abonnement
-* Ein Panorama9-Abonnement, für das einmaliges Anmelden aktiviert ist
+* Ein Panorama9-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
 
 Nach Abschluss dieses Tutorials können sich die Panorama9 zugewiesenen Azure AD-Benutzer mittels einmaliger Anmeldung auf Ihrer Panorama9-Unternehmenswebsite bei der Anwendung anmelden (durch den Dienstanbieter initiierte Anmeldung). Alternativ können sie den Zugriffsbereich nutzen (siehe [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md)).
 
 Das in diesem Tutorial beschriebene Szenario besteht aus den folgenden Bausteinen:
 
 1. Aktivieren der Anwendungsintegration für Panorama9
-2. Konfigurieren der einmaligen Anmeldung
+2. Konfigurieren des einmaligen Anmeldens (SSO)
 3. Konfigurieren der Benutzerbereitstellung
 4. Zuweisen von Benutzern
 
 ![Szenario](./media/active-directory-saas-panorama9-tutorial/IC790016.png "Szenario")
 
-## <a name="enabling-the-application-integration-for-panorama9"></a>Aktivieren der Anwendungsintegration für Panorama9
+## <a name="enable-the-application-integration-for-panorama9"></a>Aktivieren der Anwendungsintegration für Panorama9
 In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Panorama9 aktivieren.
 
 **Um die Anwendungsintegration für Panorama9 zu aktivieren, führen Sie die folgenden Schritte durch:**
@@ -62,15 +64,15 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Pan
    
    ![Panorama9](./media/active-directory-saas-panorama9-tutorial/IC790018.png "Panorama9")
    
-## <a name="configuring-single-sign-on"></a>Konfigurieren der einmaligen Anmeldung
+## <a name="configure-single-sign-on"></a>Configure single sign-on
 
 In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei Panorama9 zu authentifizieren.  
 
-Zum Konfigurieren des einmaligen Anmeldens für Panorama9 müssen Sie einen Fingerabdruckwert aus einem Zertifikat abrufen.  
+Zum Konfigurieren des einmaligen Anmeldens (SSO) für Panorama9 müssen Sie einen Fingerabdruckwert aus einem Zertifikat abrufen.  
 
 Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [Abrufen des Fingerabdruckwerts eines Zertifikats](http://youtu.be/YKQF266SAxI)weitere Informationen.
 
-**So konfigurieren Sie einmaliges Anmelden**
+**Führen Sie zum Konfigurieren von SSO die folgenden Schritte aus:**
 
 1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Panorama9** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
    
@@ -107,30 +109,31 @@ Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [Abrufen de
    
    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-panorama9-tutorial/IC790026.png "Einmaliges Anmelden konfigurieren")
    
-## <a name="configuring-user-provisioning"></a>Konfigurieren der Benutzerbereitstellung
+## <a name="configure-user-provisioning"></a>Benutzerbereitstellung konfigurieren
 
 Damit sich Azure AD-Benutzer bei Panorama9 anmelden können, müssen sie in Panorama9 bereitgestellt werden.  
-Im Fall von Panorama9 ist die Bereitstellung eine manuelle Aufgabe.
+
+* Im Fall von Panorama9 ist die Bereitstellung eine manuelle Aufgabe.
 
 **Um die Benutzerbereitstellung zu konfigurieren, führen Sie die folgenden Schritte durch:**
 1. Melden Sie sich bei der **Panorama9** -Unternehmenswebsite als Administrator an.
 2. Klicken Sie im oberen Menü auf **Verwalten** und dann auf **Benutzer**.
    
-   ![Benutzer](./media/active-directory-saas-panorama9-tutorial/IC790027.png "Benutzer")
+  ![Benutzer](./media/active-directory-saas-panorama9-tutorial/IC790027.png "Benutzer")
 3. Klicken Sie unten auf der Seite auf **+**.
 4. Führen Sie im Abschnitt mit den Benutzerdaten die folgenden Schritte aus:
    
-   ![Benutzer](./media/active-directory-saas-panorama9-tutorial/IC790028.png "Benutzer")
-   
-   1. Geben Sie im Textfeld **E-Mail** die E-Mail-Adresse eines gültigen Azure Active Directory-Benutzers ein, den Sie bereitstellen möchten.
-   2. Klicken Sie auf **Speichern**.
+  ![Benutzer](./media/active-directory-saas-panorama9-tutorial/IC790028.png "Benutzer")
 
-> [!NOTE]
-> Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Panorama9-Benutzerkonten oder mithilfe der von Panorama9 bereitgestellten APIs erstellen.
-> 
+  1. Geben Sie im Textfeld **E-Mail** die E-Mail-Adresse eines gültigen Azure Active Directory-Benutzers ein, den Sie bereitstellen möchten.
+  2. Klicken Sie auf **Speichern**.
 
+>[!NOTE]
+>Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Panorama9-Benutzerkonten oder mithilfe der von Panorama9 bereitgestellten APIs erstellen.
+>
+>
 
-## <a name="assigning-users"></a>Zuweisen von Benutzern
+## <a name="assign-users"></a>Benutzer zuweisen
 Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
 
 **Um Panorama9 Benutzer zuzuweisen, führen Sie die folgenden Schritte durch:**
@@ -144,10 +147,5 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
    ![Ja](./media/active-directory-saas-panorama9-tutorial/IC767830.png "Ja")
 
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

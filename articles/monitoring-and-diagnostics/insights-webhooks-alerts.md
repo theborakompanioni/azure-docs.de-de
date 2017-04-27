@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 04/03/2017
 ms.author: ashwink
 translationtype: Human Translation
-ms.sourcegitcommit: c0d101266fecf04a84b5717c1b81cefed90cab40
-ms.openlocfilehash: 440bd939f0c7d235d7be210c7fee9f2bc122718c
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 7282de704a1053e2052a189990fb2b30b2adad6f
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -33,10 +34,7 @@ Den Webhook-URI können Sie im [Portal](https://portal.azure.com/)im Bildschirm 
 Sie können auch [Azure PowerShell-Cmdlets](insights-powershell-samples.md#create-alert-rules), die [plattformübergreifende Befehlszeilenschnittstelle](insights-cli-samples.md#work-with-alerts) oder die [Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn933805.aspx) verwenden, um eine Warnung mit Veröffentlichung an einen Webhook-URI zu konfigurieren.
 
 ## <a name="authenticating-the-webhook"></a>Authentifizieren des Webhooks
-Der Webhook kann mithilfe folgender Methoden authentifiziert werden:
-
-1. **Tokenbasierte Autorisierung:** Der Webhook-URI wird mit einer Token-ID gespeichert. `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`
-2. **Kennwortbasierte Autorisierung:** Der Webhook-URI wird mit einem Benutzernamen und Kennwort gespeichert, etwa `https://userid:password@mysamplealert/webcallback?someparamater=somevalue&foo=bar`
+Die Authentifizierung des Webhooks kann mithilfe der Token-basierten Autorisierung erfolgen. Der Webhook-URI wird z.B. mit einer Token-ID gespeichert. `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`
 
 ## <a name="payload-schema"></a>Nutzlast und Schema
 Der POST-Vorgang enthält für alle metrikbasierten Warnungen die folgende JSON-Nutzlast und das folgende Schema.
@@ -112,9 +110,4 @@ Der POST-Vorgang enthält für alle metrikbasierten Warnungen die folgende JSON-
 * [Senden einer SMS über Twilio auf der Grundlage einer Azure-Warnung mithilfe einer Logik-App](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app)
 * [Senden einer Slack-Nachricht auf der Grundlage einer Azure-Warnung mithilfe einer Logik-App](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app)
 * [Senden einer Nachricht an eine Azure-Warteschlange auf der Grundlage einer Azure-Warnung mithilfe einer Logik-App](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

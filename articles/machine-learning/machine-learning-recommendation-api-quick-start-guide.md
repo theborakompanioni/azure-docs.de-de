@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Azure Machine Learning-Empfehlungs-API (Version&1;)  | Microsoft-Dokumentation'
+title: 'Schnellstart: Azure Machine Learning-Empfehlungs-API (Version 1)| Microsoft-Dokumentation'
 description: "Azure Machine Learning-Empfehlungen – Erste Schritte"
 services: machine-learning
 documentationcenter: 
@@ -12,11 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 03/31/2017
 ms.author: luisca
+ROBOTS: NOINDEX, NOFOLLOW
+redirect_url: machine-learning-datamarket-deprecation
 translationtype: Human Translation
-ms.sourcegitcommit: c5d1812a3bd7e1ad3621ca691339f01729882b08
-ms.openlocfilehash: 67131bbaccff549817bfe5fdf874d609ea22c2bc
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 21cf8b726ffd9b05f771c8ac6480140a6ed3199e
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -50,9 +53,9 @@ Die oben aufgeführten Schritte erfolgen über die Azure Machine Learning-Empfeh
 ## <a name="limitations"></a>Einschränkungen
 * Die Maximale Anzahl von Modellen pro Abonnement beträgt 10.
 * Die maximale Anzahl von Elementen, die ein Katalog aufnehmen kann, beträgt 100.000.
-* Die maximale Menge der Nutzungspunkte, die aufbewahrt werden, beträgt etwa&5;.000.000. Die ältesten werden gelöscht, wenn neue hochgeladen oder gemeldet werden.
+* Die maximale Menge der Nutzungspunkte, die aufbewahrt werden, beträgt etwa 5.000.000. Die ältesten werden gelöscht, wenn neue hochgeladen oder gemeldet werden.
 * Die maximale Größe der Daten, die in POST gesendet werden können (z.B. Importieren von Katalog- oder Nutzungsdaten), beträgt 200 MB.
-* Die Anzahl der Transaktionen pro Sekunde bei Empfehlungsmodellbuilds, die nicht aktiv sind, beträgt etwa&2; T/s. Bei aktiven Empfehlungsmodellbuilds sind bis zu 20 T/s möglich.
+* Die Anzahl der Transaktionen pro Sekunde bei Empfehlungsmodellbuilds, die nicht aktiv sind, beträgt etwa 2 T/s. Bei aktiven Empfehlungsmodellbuilds sind bis zu 20 T/s möglich.
 
 ## <a name="integration"></a>Integration
 ### <a name="authentication"></a>Authentifizierung
@@ -83,7 +86,7 @@ Den Dienststamm-URI für die APIs zu Azure Machine Learning-Empfehlungen finden 
 Der vollständige Dienst-URI wird unter Verwendung von Elementen der OData-Spezifikation angegeben.
 
 ### <a name="api-version"></a>API-Version
-Jeder API-Aufruf enthält am Ende einen Abfrageparameter namens apiVersion. Dieser muss auf&1;.0 festgelegt sein.
+Jeder API-Aufruf enthält am Ende einen Abfrageparameter namens apiVersion. Dieser muss auf 1.0 festgelegt sein.
 
 ### <a name="ids-are-case-sensitive"></a>Groß-/Kleinschreibung bei IDs
 Bei IDs, die von den APIs zurückgegeben werden, muss die Groß-/Kleinschreibung beachtet werden, wenn sie in nachfolgenden API-Aufrufen als Parameter weitergegeben werden. Beispielsweise muss bei Modell- und Katalog-IDs die Groß-/Kleinschreibung beachtet werden.
@@ -701,10 +704,5 @@ OData-XML
 
 ## <a name="legal"></a>Rechtliche Hinweise
 Dieses Dokument wird so bereitgestellt, wie es ist. Informationen und Stellungnahmen in diesem Dokument, einschließlich URLs und anderer Verweise auf Internetwebsites, können ohne vorherige Ankündigung geändert werden. Einige der in diesem Dokument dargestellten Beispiele dienen nur zu Illustrationszwecken und sind frei erfunden. Ähnlichkeiten oder Verbindungen sind rein zufällig und nicht beabsichtigt. Dieses Dokument gibt Ihnen keinerlei geistige Eigentums- oder anderweitige Rechte an irgendeinem Microsoft-Produkt. Sie dürfen dieses Dokument zu internen Referenzzwecken kopieren und verwenden. © 2014 Microsoft. Alle Rechte vorbehalten. 
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

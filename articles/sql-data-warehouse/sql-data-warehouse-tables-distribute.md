@@ -12,23 +12,25 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: tables
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 5a101aa78dbac4f1a0edb7f414b44c14db392652
-ms.openlocfilehash: 4becdace365fce1fb70e9e870dd4c8b81d1c7496
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: fe47cc1e5489d094f08b771cc8ec89de84509972
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="distributing-tables-in-sql-data-warehouse"></a>Verteilen von Tabellen in SQL Data Warehouse
 > [!div class="op_single_selector"]
-> * [Übersicht][Übersicht]
-> * [Datentypen][Datentypen]
-> * [Verteilen][Verteilen]
+> * [Übersicht][Overview]
+> * [Datentypen][Data Types]
+> * [Verteilen][Distribute]
 > * [Index][Index]
 > * [Partition][Partition]
-> * [Statistiken][Statistiken]
-> * [Temporär][Temporär]
+> * [Statistiken][Statistics]
+> * [Temporär][Temporary]
 >
 >
 
@@ -180,7 +182,7 @@ Mithilfe von `DBCC PDW_SHOWSPACEUSED`können Sie ganz einfach ermitteln, ob für
 DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
 ```
 
-Wenn Sie jedoch die dynamischen Verwaltungsansichten (Dynamic Management Views, DMV) von Azure SQL Data Warehouse abfragen, können Sie eine ausführlichere Analyse ausführen.  Erstellen Sie zunächst die Sicht [dbo.vTableSizes][dbo.vTableSizes], indem Sie den SQL-Code aus dem Artikel [Übersicht über Tabellen][Übersicht] verwenden.  Führen Sie nach dem Erstellen der Sicht diese Abfrage aus, um zu identifizieren, welche Tabellen eine Datenschiefe von mehr als 10% aufweisen.
+Wenn Sie jedoch die dynamischen Verwaltungsansichten (Dynamic Management Views, DMV) von Azure SQL Data Warehouse abfragen, können Sie eine ausführlichere Analyse ausführen.  Erstellen Sie zunächst die Sicht [dbo.vTableSizes][dbo.vTableSizes], indem Sie den SQL-Code aus dem Artikel [Übersicht über Tabellen][Overview] verwenden.  Führen Sie nach dem Erstellen der Sicht diese Abfrage aus, um zu identifizieren, welche Tabellen eine Datenschiefe von mehr als 10% aufweisen.
 
 ```sql
 select *
@@ -198,7 +200,7 @@ order by two_part_name, row_count
 ```
 
 ### <a name="resolving-data-skew"></a>Auflösen von Datenschiefe
-Nicht für jede Datenschiefe ist eine Behebung erforderlich.  In bestimmten Fällen kann die Leistung einer Tabelle bei einigen Abfragen die negative Beeinträchtigung durch die Datenschiefe ausgleichen.  Um zu entscheiden, ob die Datenschiefe in einer Tabelle beseitigt werden sollte, müssen Sie die Datenmenge und die Abfragen in Ihrer Workload möglichst umfassend verstehen.   Eine Möglichkeit zur Untersuchung der Datenschiefe ist die Ausführung der Schritte im Artikel [Abfrageüberwachung][Abfrageüberwachung]. Hiermit wird überwacht, wie stark sich die Datenschiefe auf die Abfrageleistung auswirkt und wie lange die Durchführung von Abfragen für die einzelnen Verteilungen dauert.
+Nicht für jede Datenschiefe ist eine Behebung erforderlich.  In bestimmten Fällen kann die Leistung einer Tabelle bei einigen Abfragen die negative Beeinträchtigung durch die Datenschiefe ausgleichen.  Um zu entscheiden, ob die Datenschiefe in einer Tabelle beseitigt werden sollte, müssen Sie die Datenmenge und die Abfragen in Ihrer Workload möglichst umfassend verstehen.   Eine Möglichkeit zur Untersuchung der Datenschiefe ist die Ausführung der Schritte im Artikel [Abfrageüberwachung][Query Monitoring]. Hiermit wird überwacht, wie stark sich die Datenschiefe auf die Abfrageleistung auswirkt und wie lange die Ausführung von Abfragen für die einzelnen Verteilungen dauert.
 
 Verteilen von Daten bedeutet, das richtige Gleichgewicht zwischen der Minimierung der Datenschiefe und der Minimierung von Datenverschiebungen zu finden. Dies können gegensätzliche Ziele sein, und manchmal könnten Sie die Datenschiefe beibehalten, um Datenverschiebungen zu reduzieren. Beispiel: Wenn die Verteilungsspalte häufig die freigegebene Spalte in Verknüpfungen und Aggregationen ist, minimieren Sie Datenverschiebungen. Der Vorteil durch minimale Datenverschiebungen überwiegt möglicherweise die Auswirkungen der Datenschiefe.
 
@@ -283,31 +285,26 @@ RENAME OBJECT [dbo].[FactInternetSales_ROUND_ROBIN] TO [FactInternetSales];
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zum Tabellendesign finden Sie in den Artikeln [Verteilen][Verteilen], [Index][Index], [Partition][Partition], [Datentypen][Datentypen], [Statistiken][Statistiken] und [Temporäre Tabellen][Temporär].
+Weitere Informationen zum Tabellendesign finden Sie in den Artikeln [Verteilen][Distribute], [Indizieren][Index], [Partitionieren][Partition], [Datentypen][Data Types], [Statistiken][Statistics] und [Temporäre Tabellen][Temporary].
 
-Eine Übersicht über bewährte Methoden finden Sie unter [Bewährte Methoden für SQL Data Warehouse][Bewährte Methoden für SQL Data Warehouse].
+Eine Übersicht über bewährte Methoden finden Sie unter [Bewährte Methoden für SQL Data Warehouse][SQL Data Warehouse Best Practices].
 
 <!--Image references-->
 
 <!--Article references-->
-[Übersicht]: ./sql-data-warehouse-tables-overview.md
-[Datentypen]: ./sql-data-warehouse-tables-data-types.md
-[Verteilen]: ./sql-data-warehouse-tables-distribute.md
+[Overview]: ./sql-data-warehouse-tables-overview.md
+[Data Types]: ./sql-data-warehouse-tables-data-types.md
+[Distribute]: ./sql-data-warehouse-tables-distribute.md
 [Index]: ./sql-data-warehouse-tables-index.md
 [Partition]: ./sql-data-warehouse-tables-partition.md
-[Statistiken]: ./sql-data-warehouse-tables-statistics.md
-[Temporär]: ./sql-data-warehouse-tables-temporary.md
-[Bewährte Methoden für SQL Data Warehouse]: ./sql-data-warehouse-best-practices.md
-[Abfrageüberwachung]: ./sql-data-warehouse-manage-monitor.md
+[Statistics]: ./sql-data-warehouse-tables-statistics.md
+[Temporary]: ./sql-data-warehouse-tables-temporary.md
+[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
+[Query Monitoring]: ./sql-data-warehouse-manage-monitor.md
 [dbo.vTableSizes]: ./sql-data-warehouse-tables-overview.md#table-size-queries
 
 <!--MSDN references-->
 [DBCC PDW_SHOWSPACEUSED()]: https://msdn.microsoft.com/library/mt204028.aspx
 
 <!--Other Web references-->
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

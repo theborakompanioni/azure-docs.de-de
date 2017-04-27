@@ -11,16 +11,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/03/2017
+ms.date: 03/23/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 9a653ac435198e89a527070a0174a1adaf830dc3
-ms.openlocfilehash: 504a5723f025d7383dbec78cdd268b7c1b94a1e5
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 8d913c024fce9945cfd5eaf336deed259dfbef50
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rally-software"></a>Tutorial: Azure Active Directory-Integration mit Rally Software
 In diesem Tutorial wird die Integration von Azure und Rally Software erläutert.  
+
 Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 * Ein gültiges Azure-Abonnement
@@ -29,16 +31,17 @@ Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über 
 Das in diesem Tutorial beschriebene Szenario besteht aus den folgenden Bausteinen:
 
 1. Aktivieren der Anwendungsintegration für Rally Software
-2. Konfigurieren der einmaligen Anmeldung
+2. Konfigurieren des einmaligen Anmeldens (SSO)
 3. Konfigurieren der Benutzerbereitstellung
 4. Zuweisen von Benutzern
 
 ![Szenario](./media/active-directory-saas-rally-software-tutorial/IC769525.png "Szenario")
 
-## <a name="enabling-the-application-integration-for-rally-software"></a>Aktivieren der Anwendungsintegration für Rally Software
+## <a name="enable-the-application-integration-for-rally-software"></a>Aktivieren der Anwendungsintegration für Rally Software
 In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Rally Software aktivieren.
 
-### <a name="to-enable-the-application-integration-for-rally-software-perform-the-following-steps"></a>So aktivieren Sie die Anwendungsintegration für Rally Software
+**Führen Sie die folgenden Schritte aus, um die Anwendungsintegration für Rally Software zu aktivieren:**
+
 1. Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
    
     ![Active Directory](./media/active-directory-saas-rally-software-tutorial/IC700993.png "Active Directory")
@@ -65,12 +68,14 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Ral
    
     ![Rally Software](./media/active-directory-saas-rally-software-tutorial/IC769527.png "Rally Software")
    
-## <a name="configuring-single-sign-on"></a>Konfigurieren der einmaligen Anmeldung
+## <a name="configure-single-sign-on"></a>Configure single sign-on
 
-In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei Rally Software zu authentifizieren.  
+In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei Rally Software zu authentifizieren.
+
 Im Rahmen dieses Verfahrens müssen Sie eine Base-64-codierte Zertifikatsdatei erstellen.
 
-### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>So konfigurieren Sie einmaliges Anmelden
+**So konfigurieren Sie einmaliges Anmelden**
+
 1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Rally Software** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-rally-software-tutorial/IC749323.png "Einmaliges Anmelden konfigurieren")
@@ -99,21 +104,20 @@ Im Rahmen dieses Verfahrens müssen Sie eine Base-64-codierte Zertifikatsdatei e
    
     ![Authentifizierung](./media/active-directory-saas-rally-software-tutorial/IC769542.png "Authentifizierung")
    
-    1. Wählen Sie im Dropdownmenü für die Authentifizierung die Option **Rally- oder SSO-Authentifizierung** aus.
- 
-    2. Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für Rally Software** den Wert der **Identitätsanbieter-ID**, und fügen Sie ihn in das Textfeld **Identity Provider URL** (Identitätsanbieter-URL) ein.
-
-    3. Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für Rally Software** den Wert für **Remoteabmelde-URL**.
+  1. Wählen Sie im Dropdownmenü für die Authentifizierung die Option **Rally- oder SSO-Authentifizierung** aus.
+  2. Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für Rally Software** den Wert der **Identitätsanbieter-ID**, und fügen Sie ihn in das Textfeld **Identitätsanbieter-URL** ein.
+  3. Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für Rally Software** den Wert für **Remoteabmelde-URL**.
 
 9. Bestätigen Sie im klassischen Azure-Portal die Konfiguration der einmaligen Anmeldung, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-rally-software-tutorial/IC769547.png "Einmaliges Anmelden konfigurieren")
    
-## <a name="configuring-user-provisioning"></a>Konfigurieren der Benutzerbereitstellung
+## <a name="configure-user-provisioning"></a>Benutzerbereitstellung konfigurieren
 
 Damit sich AAD-Benutzer anmelden können, müssen sie in der Rally Software-Anwendung unter Verwendung ihrer Azure Active Directory-Benutzernamen bereitgestellt werden.
 
-### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>So konfigurieren Sie die Benutzerbereitstellung
+**Um die Benutzerbereitstellung zu konfigurieren, führen Sie die folgenden Schritte durch:**
+
 1. Melden Sie sich bei Ihrem Rally Software-Mandanten an.
 
 2. Navigieren Sie zu **Einrichtung \> BENUTZER**, und klicken Sie auf **+ Neuen Benutzer hinzufügen**.
@@ -126,21 +130,20 @@ Damit sich AAD-Benutzer anmelden können, müssen sie in der Rally Software-Anwe
    
     ![Benutzer erstellen](./media/active-directory-saas-rally-software-tutorial/IC781040.png "Benutzer erstellen")
    
-    1. Geben Sie im Textfeld **Benutzername** den Namen des Azure AD-Benutzers ein, den Sie bereitstellen möchten.
+   1. Geben Sie im Textfeld **Benutzername** den Namen des Azure AD-Benutzers ein, den Sie bereitstellen möchten.
+   2. Geben Sie im Textfeld **E-Mail-Adresse** die E-Mail-Adresse des Azure AD-Benutzers ein, den Sie bereitstellen möchten.
+   3. Klicken Sie auf **Speichern und schließen**.
 
-    2. Geben Sie im Textfeld **E-Mail-Adresse** die E-Mail-Adresse des Azure AD-Benutzers ein, den Sie bereitstellen möchten.
-
-    3. Klicken Sie auf **Speichern und schließen**.
-
-> [!NOTE]
-> Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Rally Software-Benutzerkonten oder mithilfe der von Rally Software bereitgestellten APIs erstellen.
+>[!NOTE]
+>Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Rally Software-Benutzerkonten oder mithilfe der von Rally Software bereitgestellten APIs erstellen.
 > 
 > 
 
-## <a name="assigning-users"></a>Zuweisen von Benutzern
+## <a name="assign-users"></a>Benutzer zuweisen
 Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
 
-### <a name="to-assign-users-to-rally-software-perform-the-following-steps"></a>So weisen Sie Rally Software Benutzer zu
+**Führen Sie die folgenden Schritte aus, um Rally Software Benutzer zuzuweisen:**
+
 1. Erstellen Sie im klassischen Azure-Portal ein Testkonto.
 
 2. Klicken Sie auf der Anwendungsintegrationsseite für **Rally Software** auf **Benutzer zuweisen**.
@@ -152,10 +155,5 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
     ![Ja](./media/active-directory-saas-rally-software-tutorial/IC767830.png "Ja")
 
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

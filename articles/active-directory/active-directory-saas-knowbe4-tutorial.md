@@ -12,12 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2017
+ms.date: 03/22/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: ed2fc2b34ff10acc806daec84986f8db58e713c3
-ms.openlocfilehash: bc7ce4867180dd9f896b894b56a02bf033ed6bbb
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: deb4916d69ad9a447836b33711864c242e5c5dec
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -28,7 +28,7 @@ Dieses Tutorial soll Ihnen zeigen, wie Sie KnowBe4 in Azure Active Directory (Az
 Die Integration von KnowBe4 in Azure AD bietet die folgenden Vorteile:
 
 * Sie können in Azure AD steuern, wer Zugriff auf KnowBe4 hat.
-* Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei KnowBe4 anzumelden (einmaliges Anmelden).
+* Sie können Ihren Benutzern das automatische einmalige Anmelden (Single Sign-On, SSO) mit ihren Azure AD-Konten bei KnowBe4 ermöglichen.
 * Sie können Ihre Konten an einem zentralen Ort verwalten – dem Azure Active Directory-Portal
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
@@ -46,7 +46,7 @@ Um die Azure AD-Integration mit KnowBe4 konfigurieren zu können, benötigen Sie
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
 * Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-* Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
+* Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 Ziel dieses Tutorials ist es, das einmalige Anmelden von Azure AD in einer Testumgebung zu testen.  
@@ -54,7 +54,7 @@ Ziel dieses Tutorials ist es, das einmalige Anmelden von Azure AD in einer Testu
 Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
 * Hinzufügen von KnowBe4 aus dem Katalog
-* Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+* Konfigurieren und Testen des einmaligen Anmeldens (SSO) von Azure AD
 
 ## <a name="add-knowbe4-from-the-gallery"></a>Hinzufügen von KnowBe4 aus dem Katalog
 Zum Konfigurieren der Integration von KnowBe4 in Azure AD müssen Sie KnowBe4 aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
@@ -88,7 +88,7 @@ Diese Linkbeziehung wird hergestellt, indem Sie den Wert des **Benutzernamens** 
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD mit KnowBe4 müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
 2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 3. **[Erstellen eines KnowBe4-Testbenutzers](#creating-a-KnowBe4-test-user)**, um eine Entsprechung von Britta Simon in KnowBe4 zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
@@ -180,7 +180,7 @@ Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmaligen Anmeldens von Azure zu ermöglichen, indem sie Zugriff auf KnowBe4 erhält.
 
-    ![Assign User][200] 
+   ![Benutzer zuweisen][200] 
 
 **Um Britta Simon KnowBe4 zuzuweisen, führen Sie die folgenden Schritte aus:**
 

@@ -11,11 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2017
+ms.date: 04/06/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d49236c634be8260cb0fb24a0ee08cd71353f6ba
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: d2d7f5b00039cd1beab009b78b273ec4dffaab47
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -40,9 +41,9 @@ Die Syntax für die Ausdrücke für Attributzuordnungen ist den Funktionen von V
 
 - - -
 ### <a name="append"></a>Anfügen
-**Funktion:**<br>  Append(Quelle, Suffix)
+**Funktion:**<br> Append(Quelle, Suffix)
 
-**Beschreibung:**<br>  Fügt das Suffix am Ende eines angegebenen Quellzeichenfolgenwerts an.
+**Beschreibung:**<br> Fügt das Suffix am Ende eines angegebenen Quellzeichenfolgenwerts an.
 
 **Parameter:**<br> 
 
@@ -53,9 +54,9 @@ Die Syntax für die Ausdrücke für Attributzuordnungen ist den Funktionen von V
 
 - - -
 ### <a name="formatdatetime"></a>FormatDateTime
-**Funktion:**<br>  FormatDateTime(Quelle, Eingabeformat, Ausgabeformat)
+**Funktion:**<br> FormatDateTime(Quelle, Eingabeformat, Ausgabeformat)
 
-**Beschreibung:**<br>  Konvertiert eine Datumszeichenfolge aus einem Format in ein anderes Format.
+**Beschreibung:**<br> Konvertiert eine Datumszeichenfolge aus einem Format in ein anderes Format.
 
 **Parameter:**<br> 
 
@@ -67,7 +68,7 @@ Die Syntax für die Ausdrücke für Attributzuordnungen ist den Funktionen von V
 
 - - -
 ### <a name="join"></a>Join
-**Funktion:**<br>  Join(Trennzeichen, Quelle1, Quelle2, …)
+**Funktion:**<br> Join(Trennzeichen, Quelle1, Quelle2, …)
 
 **Beschreibung:**<br> „Join()“ ist vergleichbar mit „Append()“, kann jedoch mehrere **Quellzeichenfolgenwerte** in einer einzelnen Zeichenfolge kombinieren, wobei die Werte jeweils durch eine **Trennzeichenfolge** getrennt werden.
 
@@ -78,13 +79,13 @@ Wenn einer der Quellwerte ein mehrwertiges Attribut ist, werden die einzelnen We
 | Name | Erforderlich/wiederholt | Typ | Hinweise |
 | --- | --- | --- | --- |
 | **Trennzeichen** |Erforderlich |String |Zeichenfolge, die zur Trennung von Quellwerten verwendet wird, wenn diese zu einer einzelnen Zeichenfolge zusammengesetzt werden. Kann "" sein, wenn kein Trennzeichen erforderlich ist. |
-| **Quelle1 … QuelleN ** |Erforderlich, unterschiedlich oft |String |Zeichenfolgenwerte, die zusammengesetzt werden sollen. |
+| **Quelle1  … QuelleN ** |Erforderlich, unterschiedlich oft |String |Zeichenfolgenwerte, die zusammengesetzt werden sollen. |
 
 - - -
 ### <a name="mid"></a>Mid
-**Funktion:**<br>  Mid(Quelle, Start, Länge)
+**Funktion:**<br> Mid(Quelle, Start, Länge)
 
-**Beschreibung:**<br>  Gibt eine Teilzeichenfolge des Quellwerts zurück. Eine Teilzeichenfolge ist eine Zeichenfolge, die nur einige der Zeichen aus der Quellzeichenfolge enthält.
+**Beschreibung:**<br> Gibt eine Teilzeichenfolge des Quellwerts zurück. Eine Teilzeichenfolge ist eine Zeichenfolge, die nur einige der Zeichen aus der Quellzeichenfolge enthält.
 
 **Parameter:**<br> 
 
@@ -96,7 +97,7 @@ Wenn einer der Quellwerte ein mehrwertiges Attribut ist, werden die einzelnen We
 
 - - -
 ### <a name="not"></a>not
-**Funktion:**<br>  Not(Quelle)
+**Funktion:**<br> Not(Quelle)
 
 **Beschreibung:**<br> Kehrt den booleschen Wert der **Quelle** um. Lautet der **Quellwert** also *True*, gibt die Funktion *False* zurück. Andernfalls gibt sie "*True*" zurück.
 
@@ -108,7 +109,7 @@ Wenn einer der Quellwerte ein mehrwertiges Attribut ist, werden die einzelnen We
 
 - - -
 ### <a name="replace"></a>Ersetzen von
-**Funktion:**<br>  ObsoleteReplace(Quelle, AlterWert, RegexMuster, RegexGruppenname, Ersatzwert, Ersatzattributname, Vorlage)
+**Funktion:**<br> ObsoleteReplace(Quelle, AlterWert, RegexMuster, RegexGruppenname, Ersatzwert, Ersatzattributname, Vorlage)
 
 **Beschreibung:**<br>
 Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachdem, welche Parameter angegeben werden:
@@ -141,9 +142,9 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 - - -
 ### <a name="stripspaces"></a>StripSpaces
-**Funktion:**<br>  StripSpaces(Quelle)
+**Funktion:**<br> StripSpaces(Quelle)
 
-**Beschreibung:**<br>  Entfernt alle Leerzeichen (" ") aus der Quellzeichenfolge.
+**Beschreibung:**<br> Entfernt alle Leerzeichen (" ") aus der Quellzeichenfolge.
 
 **Parameter:**<br> 
 
@@ -153,7 +154,7 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 - - -
 ### <a name="switch"></a>Switch
-**Funktion:**<br>  Switch(Quelle, Standardwert, Schlüssel1, Wert1, Schlüssel2, Wert2, …)
+**Funktion:**<br> Switch(Quelle, Standardwert, Schlüssel1, Wert1, Schlüssel2, Wert2, …)
 
 **Beschreibung:**<br> Wenn der **Quellwert** einem **Schlüssel** entspricht, wird der **Wert** für diesen **Schlüssel** zurückgegeben. Wenn der **Quellwert** keinem Schlüssel entspricht, wird der **Standardwert** zurückgegeben.  **Schlüssel-** und **Wertparameter** müssen immer paarweise angegeben werden. Die Funktion erwartet immer eine gerade Anzahl von Parametern.
 
@@ -169,7 +170,7 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 ## <a name="examples"></a>Beispiele
 ### <a name="strip-known-domain-name"></a>Entfernen eines bekannten Domänennamens
 Sie müssen einen bekannten Domänennamen aus der E-Mail-Adresse eines Benutzers entfernen, um einen Benutzernamen zu erhalten. <br>
- Wenn die Domäne beispielsweise "contoso.com" lautet, können Sie den folgenden Ausdruck verwenden:
+Wenn die Domäne beispielsweise "contoso.com" lautet, können Sie den folgenden Ausdruck verwenden:
 
 **Ausdruck:** <br>
 `Replace([mail], "@contoso.com", , ,"", ,)`
@@ -187,8 +188,8 @@ Wenn Sie eine Salesforce Sandbox verwenden, müssen Sie möglicherweise ein weit
 
 **Beispieleingabe/-ausgabe:** <br>
 
-* **Eingabe**: (userPrincipalName): "John.Doe@contoso.com"
-* **AUSGABE**: "John.Doe@contoso.com.test"
+* **EINGABE**: (userPrincipalName): "John.Doe@contoso.com"
+* **AUSGABE**:  "John.Doe@contoso.com.test"
 
 ### <a name="generate-user-alias-by-concatenating-parts-of-first-and-last-name"></a>Generieren eines Benutzeralias durch Verketten von Teilen des Vor- und Nachnamens
 Sie müssen einen Benutzeralias generieren, indem Sie die ersten drei Buchstaben des Vornamens und die ersten fünf Buchstaben des Nachnamens des Benutzers verwenden.
@@ -217,7 +218,7 @@ Beispielsweise möchten Sie Datumsangaben für ServiceNow formatieren.
 
 ### <a name="replace-a-value-based-on-predefined-set-of-options"></a>Ersetzen eines Werts anhand eines vordefinierten Satzes von Optionen
 Sie müssen die Zeitzone des Benutzers anhand des Bundesstaatscodes festlegen, der in Azure AD gespeichert ist. <br>
- Wenn der Bundesstaatscode keiner der vordefinierten Optionen entspricht, soll der Standardwert "Australien/Sydney" verwendet werden.
+Wenn der Bundesstaatscode keiner der vordefinierten Optionen entspricht, soll der Standardwert "Australien/Sydney" verwendet werden.
 
 **Ausdruck:** <br>
 
@@ -236,10 +237,5 @@ Sie müssen die Zeitzone des Benutzers anhand des Bundesstaatscodes festlegen, d
 * [Verwenden von SCIM für die automatische Bereitstellung von Benutzern und Gruppen aus Azure Active Directory für Anwendungen](active-directory-scim-provisioning.md)
 * [Kontobereitstellungsbenachrichtigungen](active-directory-saas-account-provisioning-notifications.md)
 * [Liste der Tutorials zur Integration von SaaS-Apps](active-directory-saas-tutorial-list.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

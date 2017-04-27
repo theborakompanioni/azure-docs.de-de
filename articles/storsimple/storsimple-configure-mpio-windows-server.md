@@ -12,12 +12,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/27/2017
+ms.date: 04/03/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: 7b484c27157bd0a261adbf81d66b73a78e252955
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 77f06b6ef146bdea8dc2f6cb920979e827626e35
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -132,7 +132,7 @@ Nachdem MPIO unter Windows Server konfiguriert wurde, können auf dem StorSimple
 ## <a name="step-4-configure-mpio-for-high-availability-and-load-balancing"></a>Schritt 4: Konfigurieren von MPIO für hohe Verfügbarkeit und Lastenausgleich
 Für auf Multipfad basierende hohe Verfügbarkeit und Lastenausgleich müssen mehrere Sitzungen manuell hinzugefügt werden, um die verschiedenen verfügbaren Pfade zu deklarieren. Wenn beispielsweise der Host und das Gerät jeweils zwei Schnittstellen haben, die mit dem SAN verbunden sind, benötigen Sie vier Sitzungen, die mit den richtigen Pfadpermutationen konfiguriert sein müssen (wenn sich jede DATA- und Host-Schnittstelle in einem anderen IP-Subnetz befindet und nicht routingfähig ist, sind nur zwei Sitzungen erforderlich).
 
-**Es wird empfohlen, dass Sie über mindestens vier aktive parallele Sitzungen zwischen dem Gerät und dem Anwendungshost verfügen.** Dies kann erreicht werden, indem vier Netzwerkschnittstellen auf dem Windows Server-System aktiviert werden. Verwenden Sie physische Netzwerkschnittstellen oder Netzwerkvirtualisierungstechnologien auf der Hardware- oder Betriebssystemebene auf Ihrem Windows Server-Host. Mit den beiden Netzwerkschnittstellen auf dem Gerät ergibt diese Konfiguration acht Sitzungen, von denen vier aktiv (die mit dem aktiven Controller verbundenen Sitzungen) und vier passiv (die mit dem passiven Controller verbundenen Sitzungen) sind. Diese Konfiguration trägt zur Optimierung des Geräte- und Clouddurchsatzes bei.
+**Es wird empfohlen, dass Sie über mindestens acht aktive parallele Sitzungen zwischen dem Gerät und dem Anwendungshost verfügen.** Dies kann erreicht werden, indem vier Netzwerkschnittstellen auf dem Windows Server-System aktiviert werden. Verwenden Sie physische Netzwerkschnittstellen oder virtuelle Schnittstellen über Netzwerkvirtualisierungstechnologien auf der Hardware- oder Betriebssystemebene auf Ihrem Windows Server-Host. Bei zwei Netzwerkschnittstellen auf dem Gerät würde diese Konfiguration acht aktive Sitzungen ergeben. Diese Konfiguration trägt zur Optimierung des Geräte- und Clouddurchsatzes bei.
 
 > [!IMPORTANT]
 > **Es wird nicht empfohlen, 1-GbE- und 10-GbE-Netzwerkschnittstellen zu mischen. Bei Verwendung von zwei Netzwerkschnittstellen müssen beide denselben Typ haben.**

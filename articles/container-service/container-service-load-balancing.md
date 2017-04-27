@@ -17,8 +17,9 @@ ms.workload: na
 ms.date: 07/11/2016
 ms.author: rogardle
 translationtype: Human Translation
-ms.sourcegitcommit: 0aa9b3ae14f586fc79e6ebee898e794d526c19bd
-ms.openlocfilehash: 27ad7100f6203db3ba3dcc88ffdc191b9b9d45cb
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: f8a001350c9e1ac50641c3ee4430849023233c60
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -93,8 +94,8 @@ Da wir jetzt über das „marathon-lb“-Paket verfügen, können wir einen Anwe
 
 ```
 
-* Legen Sie den Wert von `HAProxy_0_VHOST` auf den FQDN des Lastenausgleichs für Ihre Agents fest. Dieser hat das folgende Format: `<acsName>agents.<region>.cloudapp.azure.com`. Wenn Sie beispielsweise einen Containerdienstcluster mit dem Namen `myacs` in der Region `West US` erstellen, lautet der FQDN wie folgt: `myacsagents.westus.cloudapp.azure.com`. Sie können hierauf auch zugreifen, indem Sie nach dem Lastenausgleichsmodul mit „agent“ im Namen suchen, wenn Sie sich die Ressourcen in der Ressourcengruppe ansehen, die Sie für den Containerdienst im [Azure-Portal](https://portal.azure.com)erstellt haben.
-* Legen Sie „servicePort“ auf einen Port mit einer Portnummer über 10.000 fest. So wird der Dienst identifiziert, der in diesem Container ausgeführt wird. Von „marathon-lb“ wird dieses Verfahren verwendet, um Dienste zu identifizieren, für die der Ausgleich durchgeführt werden soll.
+* Legen Sie den Wert von `HAPROXY_0_VHOST` auf den FQDN des Lastenausgleichs für Ihre Agents fest. Dieser hat das folgende Format: `<acsName>agents.<region>.cloudapp.azure.com`. Wenn Sie beispielsweise einen Containerdienstcluster mit dem Namen `myacs` in der Region `West US` erstellen, lautet der FQDN wie folgt: `myacsagents.westus.cloudapp.azure.com`. Sie können hierauf auch zugreifen, indem Sie nach dem Lastenausgleichsmodul mit „agent“ im Namen suchen, wenn Sie sich die Ressourcen in der Ressourcengruppe ansehen, die Sie für den Containerdienst im [Azure-Portal](https://portal.azure.com)erstellt haben.
+* Legen Sie `servicePort` auf einen Port >= 10.000 fest. So wird der Dienst identifiziert, der in diesem Container ausgeführt wird. Von „marathon-lb“ wird dieses Verfahren verwendet, um Dienste zu identifizieren, für die der Ausgleich durchgeführt werden soll.
 * Legen Sie die Bezeichnung `HAPROXY_GROUP` auf „external“ fest.
 * Legen Sie `hostPort` auf „0“ fest. Dies bedeutet, dass Marathon willkürlich einen verfügbaren Port zuordnet.
 * Legen Sie `instances` auf die Anzahl von Instanzen fest, die Sie erstellen möchten. Diese Anzahl können Sie später noch erhöhen oder verringern.
@@ -102,10 +103,10 @@ Da wir jetzt über das „marathon-lb“-Paket verfügen, können wir einen Anwe
 Beachten Sie, dass Marathon die Bereitstellung standardmäßig im privaten Cluster durchführt. Dies bedeutet, dass die obige Bereitstellung nur über den Lastenausgleich zugänglich ist. Dies ist in der Regel das erwünschte Verhalten.
 
 ### <a name="deploy-using-the-dcos-web-ui"></a>Bereitstellen mit der DC/OS-Webbenutzeroberfläche
-1. Besuchen Sie die Marathon-Seite unter „http://localhost/marathon“ (nach dem Einrichten des [SSH-Tunnels](container-service-connect.md), und klicken Sie auf `Create Appliction`.
+1. Besuchen Sie die Marathon-Seite unter http://localhost/marathon (nach dem Einrichten des [SSH-Tunnels](container-service-connect.md)), und klicken Sie auf `Create Application`.
 2. Klicken Sie im Dialogfeld `New Application` oben rechts auf `JSON Mode`.
 3. Fügen Sie den obigen JSON-Code in den Editor ein.
-4. Klicken Sie auf `Create Appliction`.
+4. Klicken Sie auf `Create Application`.
 
 ### <a name="deploy-using-the-dcos-cli"></a>Bereitstellen mit der DC/OS-Befehlszeilenschnittstelle
 Um die Anwendung mit der DC/OS-Befehlszeilenschnittstelle bereitzustellen, kopieren Sie einfach den obigen JSON-Code in eine Datei mit dem Namen `hello-web.json` und führen Folgendes aus:
@@ -132,10 +133,5 @@ Azure lb:8080 -> marathon-lb:1002 -> mycontainer2:33432
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu [marathon-lb](https://dcos.io/docs/1.7/usage/service-discovery/marathon-lb/)finden Sie in der DC/OS-Dokumentation.
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

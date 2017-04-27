@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/21/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 2c41c2df135caaead328d8fe05407cfa75cbcb91
-ms.openlocfilehash: a486fbe46f9892f6f70dcdcf27edbac63728af6e
-ms.lasthandoff: 02/14/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 223edfde090c9b77467e032198c2150fbaa56a5b
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -74,7 +74,7 @@ Sie können die Optionen „Vergrößern“, „Verkleinern“, „Mit Zoom anpa
 1. Klicken Sie mit der rechten Maustaste auf die Pipeline, und klicken Sie dann auf **Pipeline öffnen**, um alle Aktivitäten in der Pipeline sowie Ein- und Ausgabedatasets für die Aktivitäten anzuzeigen. Diese Funktion ist hilfreich, wenn Ihre Pipeline mehr als eine Aktivität enthält und Sie die operative Herkunft einer einzelnen Pipeline verstehen möchten.
 
     ![Menü "Pipeline öffnen"](./media/data-factory-monitor-manage-pipelines/open-pipeline-menu.png)     
-2. Im folgenden Beispiel sehen Sie zwei Aktivitäten in der Pipeline mit ihren Ein- und Ausgaben. Die Aktivitäten **JoinData** vom Typ „HDInsight Hive-Aktivität“ und **EgressDataAzure** vom Typ „Kopieraktivität“ sind in dieser Beispielpipeline enthalten.
+2. Im folgenden Beispiel befindet sich eine Kopieraktivität mit einer Eingabe und einer Ausgabe in der Pipeline. 
 
     ![Aktivitäten innerhalb einer Pipeline](./media/data-factory-monitor-manage-pipelines/activities-inside-pipeline.png)
 3. Sie können zurück zur Data Factory-Startseite navigieren, indem Sie in der Brotkrümelnavigation links oben auf den Link **Data Factory** klicken.
@@ -84,11 +84,9 @@ Sie können die Optionen „Vergrößern“, „Verkleinern“, „Mit Zoom anpa
 ### <a name="view-the-state-of-each-activity-inside-a-pipeline"></a>Anzeigen des Status jeder Aktivität innerhalb einer Pipeline
 Sie können den aktuellen Status einer Aktivität anzeigen, indem Sie sich den Status eines der Datasets ansehen, das von der Aktivität erzeugt wird.
 
-Im folgenden Beispiel wurde die **BlobPartitionHiveActivity** erfolgreich ausgeführt, und es wurde ein Dataset mit dem Namen **PartitionedProductsUsageTable** erzeugt, das den Status **Bereit** hat.
+Durch Doppelklicken auf **OutputBlobTable** in der Ansicht **Diagramm** werden alle Slices angezeigt, die innerhalb einer Pipeline von verschiedenen Aktivitätsausführungen erzeugt wurden. Sie stellen fest, dass die Kopieraktivität in den letzten acht Stunden erfolgreich ausgeführt wurde und Slices mit dem Status **Bereit** erzeugt hat.  
 
 ![Status der Pipeline](./media/data-factory-monitor-manage-pipelines/state-of-pipeline.png)
-
-Durch Doppelklicken auf **PartitionedProductsUsageTable** in der Ansicht **Diagramm** werden alle Slices angezeigt, die innerhalb einer Pipeline von verschiedenen Aktivitätsausführungen erzeugt wurden. Sie sehen, dass die **BlobPartitionHiveActivity** in den letzten acht Monaten jeden Monat erfolgreich ausgeführt wurde und Slices mit dem Status **Bereit** erzeugt hat.
 
 Die Datasetslices in der Data Factory können einen der folgenden Status haben:
 

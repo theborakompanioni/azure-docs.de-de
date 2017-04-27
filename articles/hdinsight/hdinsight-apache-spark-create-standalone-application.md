@@ -1,6 +1,6 @@
 ---
-title: "Erstellen eigenständiger Scala-Anwendungen zur Ausführung in HDInsight Spark-Clustern | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie eine eigenständige Spark-Anwendung zur Ausführung in HDInsight Spark-Clustern erstellen."
+title: "Erstellen einer Scala Maven-Anwendung zur Ausführung in Azure Spark-Clustern | Microsoft-Dokumentation"
+description: "Hier erfahren Sie, wie Sie eine eigenständige Spark-Anwendung, die Maven nutzt, zur Ausführung in HDInsight Spark-Clustern erstellen."
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -17,15 +17,15 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
-ms.openlocfilehash: 153b1ea4ec3d326fb533817cdb74d3489135f7d9
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: c435e8ec21b568afcadaa1af95964753d36d0ccb
+ms.lasthandoff: 04/06/2017
 
 
 ---
-# <a name="create-a-standalone-scala-application-to-run-on-apache-spark-cluster-on-hdinsight"></a>Erstellen einer eigenständigen Scala-Anwendung zur Ausführung in Apache Spark-Clustern unter HDInsight
+# <a name="create-a-scala-maven-application-to-run-on-apache-spark-cluster-on-hdinsight"></a>Erstellen einer Scala Maven-Anwendung zur Ausführung in einem Apache Spark-Cluster unter HDInsight
 
-Dieser Artikel enthält eine Schrittanleitung zum Entwickeln eigenständiger, in Scala geschriebener Spark-Anwendungen mit Maven und IntelliJ IDEA. Dabei wird Apache Maven als Buildsystem verwendet. Ausgangspunkt ist ein vorhandener, von IntelliJ IDEA bereitgestellter Maven-Archetyp für Scala.  Die Erstellung einer Scala-Anwendung in IntelliJ IDEA umfasst im Allgemeinen Folgendes:
+Hier erfahren Sie, wie Sie eine in Scala geschriebene Spark-Anwendung erstellen, die Maven mit IntelliJ IDEA nutzt. Dabei wird Apache Maven als Buildsystem verwendet. Ausgangspunkt ist ein vorhandener, von IntelliJ IDEA bereitgestellter Maven-Archetyp für Scala.  Das Erstellen einer Scala-Anwendung in IntelliJ IDEA umfasst die folgenden Schritte:
 
 * Verwenden von Maven als Buildsystem
 * Aktualisieren der Projektobjektmodell-Datei (POM-Datei) zum Auflösen von Spark-Modulabhängigkeiten
@@ -38,10 +38,10 @@ Dieser Artikel enthält eine Schrittanleitung zum Entwickeln eigenständiger, in
 > 
 > 
 
-**Voraussetzungen**
+## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* Einen Apache Spark-Cluster unter HDInsight. Eine Anleitung finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md).
+* Ein Azure-Abonnement. Siehe [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)(in englischer Sprache).
+* Ein Apache Spark-Cluster unter HDInsight. Eine Anleitung finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md).
 * Oracle Java Development Kit. Das Installationspaket finden Sie [hier](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
 * Eine Java-IDE. In diesem Artikel wird IntelliJ IDEA 15.0.1 verwendet. Das Installationspaket finden Sie [hier](https://www.jetbrains.com/idea/download/).
 

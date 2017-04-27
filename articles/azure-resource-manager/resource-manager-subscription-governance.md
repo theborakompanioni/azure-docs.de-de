@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/03/2017
+ms.date: 03/31/2017
 ms.author: rodend;karlku;tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: adae9827bbdb5f72b9e0fb4a1792fe54b9324706
-ms.openlocfilehash: 9f4f0ce9e389fa560345c77502db8e225827f054
-ms.lasthandoff: 01/10/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: c46ea77c591b9c5914f83b9d5c1498b4f397a617
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -82,11 +82,12 @@ Sie wenden das Gerüst auf Abonnementebene an, um die Anforderungen an Governanc
 Die erste Säule des Gerüsts sind Benennungsstandards. Mit sorgfältig konzipierten Benennungsstandards können Sie Ressourcen im Portal, auf einer Rechnung und innerhalb von Skripts identifizieren. Wahrscheinlich verwenden Sie bereits Benennungsstandards für die lokale Infrastruktur. Wenn Sie Azure zu Ihrer Umgebung hinzufügen, sollten Sie diese Benennungsstandards für Azure-Ressourcen übernehmen. Benennungsstandards ermöglichen eine effizientere Verwaltung der Umgebung auf allen Ebenen.
 
 > [!TIP]
+> Informationen zu Benennungskonventionen:
 > * Lesen Sie den [Leitfaden mit Mustern und Verfahren](../guidance/guidance-naming-conventions.md), und übernehmen Sie ihn wo möglich. Dieser Leitfaden hilft Ihnen bei der Entscheidung für einen sinnvollen Benennungsstandard.
 > * Verwenden Sie die Höckerschreibweise für Namen von Ressourcen (z.B. meineRessourcengruppe und VnetNetzwerkname). Hinweis: Es gibt bestimmte Ressourcen, z.B. Speicherkonten, bei denen nur Kleinbuchstaben (und keine anderen Sonderzeichen) verwendet werden dürfen.
 > * Sie könnten Azure Resource Manager-Richtlinien (im nächsten Abschnitt beschrieben) nutzen, um die Benennungsstandards zu erzwingen.
 > 
-> 
+> Die vorstehenden Tipps sollen Ihnen das Implementieren einer einheitlichen Benennungskonvention erleichtern.
 
 ## <a name="policies-and-auditing"></a>Richtlinien und Überwachung
 Die zweite Säule des Gerüsts umfasst das Erstellen von [Azure Resource Manager-Richtlinien](resource-manager-policy.md) und das [Überwachen des Aktivitätsprotokolls](resource-group-audit.md). Resource Manager-Richtlinien bieten Ihnen die Möglichkeit, mit Risiken in Azure umzugehen. Sie können Richtlinien definieren, die die Datenhoheit sicherstellen, indem Sie bestimmte Aktionen einschränken, erzwingen oder überwachen. 
@@ -156,14 +157,14 @@ Ressourcentags sind flexibel und sollten den meisten Ressourcen angefügt werden
 Weitere Beispiele für Tags finden Sie unter [Empfohlene Benennungskonventionen für Azure-Ressourcen](../guidance/guidance-naming-conventions.md).
 
 > [!TIP]
-> Entwickeln Sie eine Tagstrategie, die für alle Ihre Abonnements festlegt, welche Metadaten für die Bereiche Unternehmen, Finanzen, Sicherheit, Risikomanagement und Verwaltung der vollständigen Umgebung benötigt werden. Sie könnten eine Richtlinie erstellen, die Tags für Folgendes erfordert:
+> Sie könnten eine Richtlinie erstellen, die Tags für Folgendes erfordert:
 > 
 > * Ressourcengruppen
 > * Speicher
 > * Virtual Machines
 > * App Service-Umgebungen/Webserver
 > 
-> 
+> Durch diese Tagstrategie wird für alle Ihre Abonnements festgelegt, welche Metadaten für die Bereiche Unternehmen, Finanzen, Sicherheit, Risikomanagement und Verwaltung der vollständigen Umgebung benötigt werden. 
 
 ## <a name="resource-group"></a>Ressourcengruppe
 Mit Resource Manager können Sie Ressourcen in aussagekräftige Gruppen für Verwaltung, Abrechnung oder natürliche Affinität aufnehmen. Wie bereits erwähnt, weist Azure zwei Bereitstellungsmodelle auf. Im älteren klassischen Modell war die grundlegende Verwaltungseinheit das Abonnement. Es war schwierig, Ressourcen innerhalb eines Abonnements aufzuschlüsseln. Dies hat zur Erstellung einer großen Anzahl von Abonnements geführt. Mit dem Resource Manager-Modell wurden auch Ressourcengruppen eingeführt. Ressourcengruppen sind Container für Ressourcen, die einen gemeinsamen Lebenszyklus aufweisen oder gleiche Attribute wie „alle SQL Server“ oder „Anwendung A“ verwenden.
@@ -171,12 +172,12 @@ Mit Resource Manager können Sie Ressourcen in aussagekräftige Gruppen für Ver
 Ressourcengruppen können nicht ineinander enthalten sein, und Ressourcen können nur einer einzigen Ressourcengruppe angehören. Sie können bestimmte Aktionen auf alle Ressourcen in einer Ressourcengruppe anwenden. Durch das Löschen einer Ressourcengruppe werden beispielsweise alle Ressourcen innerhalb der Ressourcengruppe entfernt. In der Regel nehmen Sie eine vollständige Anwendung oder ein verknüpftes System in die gleiche Ressourcengruppe auf. Beispielsweise würde eine Anwendung mit drei Ebenen namens „Contoso-Webanwendung“ den Webserver, den Anwendungsserver und den SQL-Server in der gleichen Ressourcengruppe enthalten.
 
 > [!TIP]
-> Wie Sie die Ressourcengruppen organisieren, kann je nach Workload der „herkömmlichen IT“ und der „agilen IT“ variieren.
+> Wie Sie die Ressourcengruppen organisieren, kann je nach Workload der „herkömmlichen IT“ und der „agilen IT“ variieren:
 > 
 > * Workloads der „herkömmlichen IT“ werden meist nach Elementen innerhalb des gleichen Lebenszyklus gruppiert (z.B. eine Anwendung). Eine Gruppierung nach Anwendung ermöglicht die Verwaltung einzelner Anwendungen.
 > * Workloads der „agilen IT“ konzentrieren sich in der Regel auf Cloudanwendungen, die externen Kunden zugänglich sind. Die Ressourcengruppen sollten die Ebenen der Bereitstellung (z.B. Webebene, App-Ebene) und der Verwaltung widerspiegeln.
 > 
-> 
+> Das Verständnis Ihrer Workloads erleichtert es Ihnen, eine Strategie für Ressourcengruppen zu entwickeln.
 
 ## <a name="role-based-access-control"></a>Rollenbasierte Zugriffssteuerung
 Sie fragen sich wahrscheinlich, wer Zugriff auf Ressourcen haben sollte und wie dieser Zugriff gesteuert werden kann. Das Zulassen oder Untersagen von Zugriff auf das Azure-Portal und das Steuern des Zugriffs auf Ressourcen im Portal ist entscheidend. 
@@ -186,14 +187,15 @@ Als Azure ursprünglich veröffentlicht wurde, waren Zugriffssteuerungen für ei
 Diese Zunahme von Abonnements ist nicht mehr erforderlich. Mit der rollenbasierten Zugriffssteuerung können Sie Benutzer zu Standardrollen (z.B. zu den allgemeinen Rollentypen „Leser“ und „Autor“) zuweisen. Sie können auch benutzerdefinierte Rollen definieren.
 
 > [!TIP]
+> So implementieren Sie die rollenbasierte Zugriffssteuerung:
 > * Verbinden Sie den Identitätsspeicher Ihres Unternehmens (meist Active Directory) über das AD Connect-Tool mit Azure Active Directory.
 > * Kontrollieren Sie den Administrator/Co-Administrator eines Abonnements mithilfe einer verwalteten Identität. Weisen Sie den Administrator/Co-Administrator **nicht** einem neuen Abonnementbesitzer zu. Verwenden Sie stattdessen die RBAC-Rollen, um die Rechte eines **Besitzers** für eine Gruppe oder eine Einzelperson bereitzustellen.
 > * Fügen Sie Azure-Benutzer einer Gruppe (z.B. Besitzer von Anwendung X) in Active Directory hinzu. Verwenden Sie die synchronisierte Gruppe, um Mitgliedern der Gruppe die erforderlichen Rechte zum Verwalten der Ressourcengruppe, die die Anwendung enthält, zu gewähren.
 > * Befolgen Sie das Prinzip, die **geringsten Rechte** zu gewähren, die zur Erledigung der erwarteten Arbeit erforderlich sind. Beispiel:
-> * Bereitstellungsgruppe: Eine Gruppe, die nur Ressourcen bereitstellen kann.
-> * Verwaltung virtueller Computer: Eine Gruppe, die virtuelle Computer (für Vorgänge) neu starten kann.
+>   * Bereitstellungsgruppe: Eine Gruppe, die nur Ressourcen bereitstellen kann.
+>   * Verwaltung virtueller Computer: Eine Gruppe, die virtuelle Computer (für Vorgänge) neu starten kann.
 > 
-> 
+> Diese Tipps sollen Sie beim Verwalten des Benutzerzugriffs für Ihr gesamtes Abonnement unterstützen.
 
 ## <a name="azure-resource-locks"></a>Azure-Ressourcensperren
 Wenn Ihre Organisation dem Abonnement zentrale Dienste hinzufügt, wird es zunehmend wichtig sicherzustellen, dass diese Dienste verfügbar sind, um eine Unterbrechung des Geschäftsbetriebs zu vermeiden. [Ressourcensperren](resource-group-lock-resources.md) ermöglichen Ihnen, Vorgänge auf wertvollen Ressourcen einzuschränken, bei denen das Ändern oder Löschen einen erheblichen Einfluss auf Ihre Anwendungen oder die Cloudinfrastruktur hätte. Sie können Sperren auf ein Abonnement, eine Ressourcengruppe oder eine Ressource anwenden. Normalerweise wenden Sie Sperren auf grundlegende Ressourcen wie Speicherkonten, virtuelle Netzwerke und Gateways an. 
@@ -204,13 +206,13 @@ Zum Erstellen oder Löschen von Verwaltungssperren benötigen Sie Zugriff auf `M
 Unter den integrierten Rollen verfügen nur „Besitzer“ und „Benutzerzugriffsadministrator“ über diese Aktionen.
 
 > [!TIP]
-> Optionen des Kernnetzwerks sollten durch Sperren geschützt sein. Das versehentliche Löschen eines Site-to-Site-VPN mit Gateway wäre katastrophal für ein Azure-Abonnement. Azure lässt das Löschen eines virtuellen Netzwerks, das verwendet wird, nicht zu, aber die Anwendung weiterer Einschränkungen ist eine hilfreiche Sicherheitsmaßnahme. Auch Richtlinien sind für die Aufrechterhaltung der entsprechenden Kontrolle entscheidend. Sie sollten eine **CanNotDelete**-Sperre auf Richtlinien anwenden, die verwendet werden.
+> Optionen des Kernnetzwerks sollten durch Sperren geschützt sein. Das versehentliche Löschen eines Site-to-Site-VPN mit Gateway wäre katastrophal für ein Azure-Abonnement. Azure lässt das Löschen eines virtuellen Netzwerks, das verwendet wird, nicht zu, aber die Anwendung weiterer Einschränkungen ist eine hilfreiche Sicherheitsmaßnahme. 
 > 
 > * Virtuelles Netzwerk: CanNotDelete
 > * Netzwerksicherheitsgruppe: CanNotDelete
 > * Richtlinien: CanNotDelete
 > 
-> 
+> Auch Richtlinien sind für die Aufrechterhaltung der entsprechenden Kontrolle entscheidend. Sie sollten eine **CanNotDelete**-Sperre auf Richtlinien anwenden, die verwendet werden.
 
 ## <a name="core-networking-resources"></a>Zentrale Netzwerkressourcen
 Der Zugriff auf Ressourcen kann intern (innerhalb des Unternehmensnetzwerks) oder extern (über das Internet) erfolgen. Für Benutzer in Ihrer Organisation ist es einfach, versehentlich Ressourcen an der falschen Stelle zu platzieren und so böswilligen Zugriff darauf zu ermöglichen. Wie bei lokalen Geräten müssen Unternehmen die entsprechende Kontrolle implementieren, um sicherzustellen, dass Azure-Benutzer die richtigen Entscheidungen treffen. Für die Abonnementgovernance wurden Hauptressourcen identifiziert, die eine grundlegende Kontrolle des Zugriffs bieten. Zu diesen Hauptressourcen gehören:
@@ -221,15 +223,17 @@ Der Zugriff auf Ressourcen kann intern (innerhalb des Unternehmensnetzwerks) ode
 ![core networking](./media/resource-manager-subscription-governance/core-network.png)
 
 > [!TIP]
+> Für Netzwerke:
 > * Erstellen Sie virtuelle Netzwerke speziell für Workloads mit externem Zugriff und Workloads mit internem Zugriff. Dieser Ansatz reduziert die Wahrscheinlichkeit, dass versehentlich virtuelle Computer, die für interne Workloads vorgesehen sind, in einem Bereich mit externem Zugriff platziert werden.
-> * Netzwerksicherheitsgruppen sind wichtig für diese Konfiguration. Sie blockieren zumindest den Zugriff aus internen virtuellen Netzwerken auf das Internet und aus externen virtuellen Netzwerken auf das Unternehmensnetzwerk.
+> * Konfigurieren Sie Netzwerksicherheitsgruppen, um den Zugriff zu beschränken. Sie blockieren zumindest den Zugriff aus internen virtuellen Netzwerken auf das Internet und aus externen virtuellen Netzwerken auf das Unternehmensnetzwerk.
 > 
-> 
+> Diese Tipps sollen Sie beim Implementieren sicherer Netzwerkressourcen unterstützen.
 
 ### <a name="automation"></a>Automation
 Das Verwalten von einzelnen Ressourcen ist zeitaufwändig und für bestimmte Vorgänge potenziell fehleranfällig. Azure bietet verschiedene Automatisierungsfunktionen, einschließlich Azure Automation, Logic Apps und Azure Functions. Mit [Azure Automation](../automation/automation-intro.md) können Administratoren Runbooks erstellen und definieren, um häufige Aufgaben bei der Verwaltung von Ressourcen auszuführen. Sie erstellen Runbooks mithilfe eines PowerShell-Code-Editors oder eines grafischen Editors. Sie können komplexe mehrstufige Workflows erstellen. Azure Automation wird häufig verwendet, um allgemeine Aufgaben wie das Herunterfahren nicht verwendeter Ressourcen oder das Erstellen von Ressourcen als Reaktion auf einen bestimmten Trigger ohne Benutzereingriff auszuführen.
 
 > [!TIP]
+> Für Automation:
 > * Erstellen Sie ein Azure Automation-Konto, und prüfen Sie die verfügbaren Runbooks (grafisch und Befehlszeile) im [Runbookkatalog](../automation/automation-runbook-gallery.md).
 > * Importieren Sie wichtige Runbooks, und passen Sie sie für Ihre eigenen Zwecke an.
 > 

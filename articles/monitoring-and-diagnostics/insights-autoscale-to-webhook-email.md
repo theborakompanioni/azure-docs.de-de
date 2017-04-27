@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2016
+ms.date: 04/03/2017
 ms.author: ashwink
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d5fb08bbeb5564566808cd8ff6d2e83dec89de6c
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: f0ab9d4bea3a3f7f1e1a0af2206e7b5641be1288
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -75,10 +76,7 @@ Wenn Sie die REST-API oder die Resource Manager-Vorlage verwenden, fügen Sie da
 | Eigenschaften |Ja |Der Wert muss leer {} sein. Er kann auch Schlüssel-Wert-Paare enthalten. |
 
 ## <a name="authentication-in-webhooks"></a>Authentifizierung in Webhooks
-Es gibt zwei Arten von Authentifizierungs-URIs:
-
-1. Bei der tokenbasierten Authentifizierung wird der Webhook-URI mit einer Token-ID als Abfrageparameter gespeichert. Beispiel: https://beispielwarnung/web-rückruf?tokenid=token-id&parameter=wert
-2. Bei der Standardauthentifizierung werden eine Benutzer-ID und ein Kennwort verwendet. Beispiel: https://userid:password@mysamplealert/webcallback?someparamater=somevalue&parameter=value
+Die Authentifizierung des Webhooks kann mithilfe der Token-basierten Authentifizierung erfolgen, wobei der Webhook-URI mit einer Token-ID (z.B. einem Abfrageparameter) gespeichert wird. Beispiel: https://beispielwarnung/web-rückruf?tokenid=token-id&parameter=wert
 
 ## <a name="autoscale-notification-webhook-payload-schema"></a>Benachrichtigung über automatische Skalierung mit dem Webhook-Nutzlastschema
 Beim Generieren der Benachrichtigung über automatische Skalierung werden die folgenden Metadaten in die Webhook-Nutzlast aufgenommen:
@@ -128,10 +126,5 @@ Beim Generieren der Benachrichtigung über automatische Skalierung werden die fo
 | oldCapacity |Ja |Die aktuelle (alte) Anzahl von Instanzen, wenn die automatische Skalierung eine Skalierungsaktion durchgeführt hat |
 | newCapacity |Ja |Die neue Anzahl der Instanzen, auf die die automatische Skalierung die Ressource skaliert hat |
 | Eigenschaften |Nein |Optional. Eine Reihe von Schlüssel-Wert-Paaren (Beispiel: Wörterbuch <Zeichenfolge, Zeichenfolge>). Das Feld "properties" ist optional. In einer angepassten Benutzeroberfläche oder einem auf Logik-Apps basierenden Workflow können Sie Schlüssel und Werte eingeben, die mithilfe der Nutzlast übergeben werden können. Alternativ können benutzerdefinierte Eigenschaften über den Webhook-URI selbst (als Abfrageparameter) an den ausgehenden Webhook-Aufruf zurückgegeben werden. |
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

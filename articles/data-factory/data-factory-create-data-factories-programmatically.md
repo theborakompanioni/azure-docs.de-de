@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2017
+ms.date: 04/11/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 6a76c399e626ea85581d5f8fb863da878bdbf50b
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 280737097038ff328d487477279ce4f204b0ac0c
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -28,7 +28,7 @@ Sie können Azure Data Factorys mithilfe des Data Factory .NET SDK programmgeste
 ## <a name="prerequisites"></a>Voraussetzungen
 * Visual Studio 2012, 2013 oder 2015
 * Laden Sie das [Azure .NET SDK](http://azure.microsoft.com/downloads/)herunter, und installieren Sie es.
-* Fügen Sie Azure Active Directory eine native Clientanwendung hinzu. Informationen zu Schritten zum Hinzufügen der Anwendung finden Sie unter [Integrieren von Anwendungen in Azure Active Directory](../active-directory/active-directory-integrating-applications.md) . Notieren Sie sich **CLIENT-ID** und **UMLEITUNGS-URI** auf der Seite **KONFIGURIEREN**.
+* Fügen Sie Azure Active Directory eine native Clientanwendung hinzu. Informationen zu Schritten zum Hinzufügen der Anwendung finden Sie unter [Integrieren von Anwendungen in Azure Active Directory](../active-directory/active-directory-integrating-applications.md) . Notieren Sie sich **CLIENT-ID** und **UMLEITUNGS-URI** auf der Seite **KONFIGURIEREN**. Die ausführlichen Schritte werden im Artikel [Tutorial für Kopieraktivität mithilfe der .NET-API](data-factory-copy-activity-tutorial-using-dotnet-api.md). 
 * Rufen Sie Ihre Azure-**Abonnement-ID** und **Mandanten-ID** ab. Anweisungen finden Sie unter [Abrufen von Azure-Abonnement- und Mandanten-ID](#get-azure-subscription-and-tenant-ids) .
 * Herunterladen und Installieren von NuGet-Paketen für Azure Data Factory Entsprechende Anweisungen sind in der exemplarischen Vorgehensweise enthalten.
 
@@ -364,7 +364,7 @@ Sie können Azure Data Factorys mithilfe des Data Factory .NET SDK programmgeste
     Console.WriteLine("\nPress any key to exit.");
     Console.ReadKey();
     ```
-14. Erweitern Sie im Projektmappen-Explorer das Projekt (**DataFactoryAPITestApp**), klicken Sie mit der rechten Maustaste auf **Verweise**, und klicken Sie auf **Verweis hinzufügen**. Aktivieren Sie das Kontrollkästchen für das `System.Configuration` -Assembly, und klicken Sie auf **OK**.
+14. Erweitern Sie im Projektmappen-Explorer das Projekt **DataFactoryAPITestApp**, klicken Sie mit der rechten Maustaste auf **Verweise**, und klicken Sie auf **Verweis hinzufügen**. Aktivieren Sie das Kontrollkästchen für das `System.Configuration` -Assembly, und klicken Sie auf **OK**.
 15. Erstellen Sie die Konsolenanwendung. Klicken Sie im Menü auf **Erstellen** und dann auf **Projektmappe erstellen**.
 16. Vergewissern Sie sich, dass sich mindestens eine Datei im "adftutorial"-Container im Azure Blob-Speicher befindet. Ist dies nicht der Fall, erstellen Sie die Datei "Emp.txt" mit folgendem Inhalt im Editor, und laden Sie sie anschließend in den "adftutorial"-Container hoch.
 

@@ -11,17 +11,18 @@ ms.workload: compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 04/26/2017
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: 8744c5a133738fc60b86e7abd4b0d4b1cb28314c
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 532382c7e15ad9b67915e05e7c980a4123036a0f
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="how-to-use-azure-remoteapp-with-office-365-user-accounts"></a>Verwenden von Azure RemoteApp mit Office 365-Benutzerkonten
 > [!IMPORTANT]
-> Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
+> Azure RemoteApp wird am 31. August 2017 eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
 > 
 > 
 
@@ -44,16 +45,11 @@ Wir werden Ihr Azure-Abonnement von ihrem aktuellen Verzeichnis in das Office 36
 Befolgen Sie die Anweisungen in [Ändern des Azure Active Directory-Mandanten in Azure RemoteApp](remoteapp-changetenant.md). Achten Sie besonders auf die folgenden Schritte:
 
 * Schritt 1: Wenn Sie Azure RemoteApp (ARA) in diesem Abonnement bereitgestellt haben, stellen Sie sicher, dass Sie zuerst alle Azure AD-Benutzerkonten aus allen ARA-Sammlungen entfernen, bevor Sie versuchen, etwas anderes zu tun. Alternativ können Sie erwägen, alle vorhandenen Sammlungen zu löschen.
-* Schritt 2: Dies ist ein wichtiger Schritt. Sie müssen ein Microsoft-Konto (z.B. @outlook.com)) als Dienstadministrator des Abonnements verwenden, weil keine Benutzerkonten aus dem vorhandenen Azure AD dem Abonnement angefügt sein dürfen – andernfalls können wir es nicht in ein anderes Azure AD verschieben.
+* Schritt 2: Dies ist ein wichtiger Schritt. Sie müssen ein Microsoft-Konto (z.B. @outlook.com) als Dienstadministrator des Abonnements verwenden, weil an das Abonnement keine Benutzerkonten aus dem vorhandenen Azure AD angefügt sein dürfen – andernfalls können wir es nicht in ein anderes Azure AD verschieben.
 * Schritt 4: Wenn Sie ein vorhandenes Verzeichnis hinzufügen, fordert das System Sie auf, sich mit dem Administratorkonto für dieses Verzeichnis anzumelden. Stellen Sie sicher, dass Sie das Administratorkonto aus Phase 1 verwenden.
 * Schritt 5: Ändern Sie das übergeordnete Verzeichnis des Abonnements in Ihr Office 365-Verzeichnis. Das Endergebnis sollte sein, dass Ihr Abonnement unter „Einstellungen > Abonnements“ das Office 365-Verzeichnis auflistet. 
   ![Ändern des übergeordneten Verzeichnisses des Abonnements](./media/remoteapp-o365user/settings.png)
 
 An diesem Punkt ist Ihr Azure RemoteApp-Abonnement Ihrem Office 365 Azure AD zugeordnet. Sie können die vorhandenen Office 365-Benutzerkonten mit Azure RemoteApp verwenden!
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dineshm
 translationtype: Human Translation
-ms.sourcegitcommit: c5fedb8c4a6e3722e2f37dd432cec60513c73e0d
-ms.openlocfilehash: f14ed08473ba9c424acf39d3fe98d4a11adf9948
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: d234dd87919f4906628014156708489bd1efab6c
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -148,7 +149,7 @@ do
 
 Durch Angeben des *max_results*-Parameters des Segments können Sie zwischen der Anzahl von Anforderungen und der Arbeitsspeichernutzung abwägen, um den Leistungsanforderungen Ihrer Anwendung gerecht zu werden.
 
-Außerdem sollten Sie, wenn Sie APIs für segmentiertes Auflisten verwenden, die Daten aber in einer lokalen Sammlung in einem "gierigen" Stil speichern, Ihren Code so ändern, dass das Speichern von Daten in einer lokalen Sammlung sorgfältig entsprechend dem Umfang erfolgt.
+Außerdem sollten Sie, wenn Sie APIs für segmentiertes Auflisten verwenden, die Daten aber in einer lokalen Sammlung in einem „gierigen“ Stil speichern, Ihren Code so ändern, dass das Speichern von Daten in einer lokalen Sammlung sorgfältig entsprechend dem Umfang erfolgt.
 
 ## <a name="lazy-listing"></a>Faules (lazy) Auflisten
 Obwohl gieriges Auflisten möglicherweise Probleme verursacht, ist es praktisch, wenn der Container nicht zu viele Objekte enthält.
@@ -202,10 +203,5 @@ Weitere Informationen zu Azure Storage und zur Client Library for C++ finden Sie
 * [Azure Storage Client Library for C++ API Documentation.](http://azure.github.io/azure-storage-cpp/)
 * [Azure Storage-Teamblog](http://blogs.msdn.com/b/windowsazurestorage/)
 * [Azure-Speicherdokumentation](https://azure.microsoft.com/documentation/services/storage/)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

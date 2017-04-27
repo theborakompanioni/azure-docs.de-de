@@ -13,16 +13,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/03/2017
+ms.date: 03/29/2017
 ms.author: genli
 translationtype: Human Translation
-ms.sourcegitcommit: 09c18ca6a967c2930ddd2b16d37f0bc606712ea1
-ms.openlocfilehash: ccde3885f9412829cc6ff79b7efb4e3a2c099b5b
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: a8751fa70bd500a29a3e86de57de4fb919405136
+ms.lasthandoff: 03/31/2017
 
 
 ---
-# <a name="cancel-your-azure-subscription"></a>Kündigen Ihres Azure-Abonnements
-Als Kontoadministrator können Sie Ihr Azure-Abonnement kündigen. Nach der Kündigung Ihres Abonnements haben Sie keinen Zugriff auf Azure-Dienste und -Ressourcen mehr.
+# <a name="cancel-your-subscription-for-azure"></a>Kündigen Ihres Abonnements für Azure
+Als [Kontoadministrator](billing-subscription-transfer.md#whoisaa) können Sie Ihr Azure-Abonnement kündigen. Nach der Kündigung Ihres Abonnements haben Sie keinen Zugriff auf Azure-Dienste und -Ressourcen mehr.
 
 Vor der Kündigung Ihres Abonnements:
 
@@ -33,39 +34,33 @@ Vor der Kündigung Ihres Abonnements:
 Wenn Sie einen kostenpflichtigen [Azure-Supportplan](https://azure.microsoft.com/support/plans/) kündigen, werden Ihnen die Gebühren für die Laufzeit von 6 Monaten weiterhin monatlich in Rechnung gestellt.
 
 ## <a name="cancel-subscription-via-the-azure-portal"></a>Kündigen eines Abonnements über das Azure-Portal
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als Kontoadministrator an.
+1. Melden Sie sich als Kontoadministrator beim [Azure-Portal](https://portal.azure.com) an.
 
-   > [!NOTE]
-   > Nur der Kontoadministrator kann Abonnements kündigen. Wie Sie herausfinden, wer der Kontoadministrator des Abonnements ist, erfahren Sie unter [Häufig gestellte Fragen (FAQ)](billing-subscription-transfer.md#faq).
-   >
-   >
+2. Wählen Sie links im Bereich „Azure-Dienste“ **Abonnements** aus.
 
-2. Wählen Sie im Menü „Hub“ die Option **Abonnements** aus.
+    ![Screenshot mit der Schaltfläche „Abonnements“](./media/billing-download-azure-invoice-daily-usage-date/submenu.png)
 
-    ![Schaltfläche „Abonnement“](./media/billing-download-azure-invoice-daily-usage-date/submenu.png)
+3. Wählen Sie das zu kündigende Abonnement aus, und klicken Sie auf **Abonnement kündigen**.
 
-3. Wählen Sie auf dem Blatt „Abonnements“ das Abonnement aus, das Sie kündigen möchten, und klicken Sie auf **Cancel Sub** (Abo kündigen), um das Blatt für die Kündigung zu öffnen.
+    ![Screenshot mit der Schaltfläche zum Kündigen](./media/billing-how-to-cancel-azure-subscription/cancel_ibiza.png)
+4. Geben Sie den Namen des Abonnements ein, und wählen Sie einen Grund für die Kündigung aus. 
+5. Klicken Sie unten auf die Schaltfläche **Abonnement kündigen**.
 
-    ![cancel_ibiza](./media/billing-how-to-cancel-azure-subscription/cancel_ibiza.png)
-4. Geben Sie den Abonnementnamen ein, wählen Sie einen Kündigungsgrund aus, und klicken Sie unten auf dem Kündigungsblatt auf die Schaltfläche **Cancel Sub** (Abo kündigen).
-
-> [!NOTE]
-> Es dauert bis zu zehn Minuten, bis die Kündigung im Portal angezeigt wird. Die Kostenabrechnung endet hingegen sofort.
->
->
-
-## <a name="cancel-subscription-via-the-azure-account-center"></a>Kündigen eines Abonnements über das Azure-Kontocenter
-1. Melden Sie sich im [Azure-Kontocenter](https://account.windowsazure.com/subscriptions) als Kontoadministrator an.
+## <a name="cancel-subscription-by-using-the-azure-account-center"></a>Kündigen eines Abonnements über das Azure-Kontocenter
+1. Melden Sie sich beim [Azure-Kontocenter](https://account.windowsazure.com/subscriptions) als Kontoadministrator an.
 2. Wählen Sie unter **Klicken Sie auf ein Abonnement, um Details und Nutzung anzuzeigen.**das Abonnement aus, das Sie kündigen möchten.
 
-    ![selectsub](./media/billing-how-to-cancel-azure-subscription/Selectsub.png)
+    ![Screenshot mit Beispiel für ein ausgewähltes Abonnement](./media/billing-how-to-cancel-azure-subscription/Selectsub.png)
 3. Wählen Sie rechts auf der Seite **Abonnement kündigen**.
 
-    ![cancelsub](./media/billing-how-to-cancel-azure-subscription/cancelsub.png)
+    ![Screenshot mit der Schaltfläche „Abonnement kündigen“](./media/billing-how-to-cancel-azure-subscription/cancelsub.png)
 4. Wählen Sie **Ja, mein Abonnement kündigen**.
 
-    ![cancelbox](./media/billing-how-to-cancel-azure-subscription/cancelbox.png)
-5. Klicken Sie auf  ![checkbutton](./media/billing-how-to-cancel-azure-subscription/checkbutton.png) , um das Dialogfenster zu schließen und zu Ihrer Abonnementseite zurückkehren.
+    ![Screenshot mit dem Dialogfeld zum Kündigen](./media/billing-how-to-cancel-azure-subscription/cancelbox.png)
+5. Klicken Sie auf  ![Schaltfläche mit Häkchen-Symbol](./media/billing-how-to-cancel-azure-subscription/checkbutton.png) , um das Dialogfenster zu schließen und zu Ihrer Abonnementseite zurückkehren.
+
+## <a name="what-happens-after-you-cancel-your-subscription"></a>Was geschieht nach der Kündigung Ihres Abonnements?
+Es kann bis zu zehn Minuten dauern, bis die Kündigung im Portal angezeigt wird. Die Kostenabrechnung endet hingegen sofort.
 
 Nach der Kündigung Ihres Abonnements warten wir 90 Tage, bevor wir Ihre Daten endgültig löschen, für den Fall, dass Sie darauf zugreifen müssen oder Ihre Meinung ändern. Weitere Informationen finden Sie unter [Microsoft Trust Center – Sie sind im Besitz Ihrer Daten](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409).
 
@@ -73,10 +68,5 @@ Nach der Kündigung Ihres Abonnements warten wir 90 Tage, bevor wir Ihre Daten e
 Wenn Sie Ihr Abonnement mit nutzungsbasierter Bezahlung versehentlich gekündigt haben, können Sie es [im Kontocenter erneut aktivieren](billing-subscription-become-disable.md).
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
-Wenn Sie weitere Fragen haben, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , um das Problem schnell zu lösen.
-
-
-
-<!--HONumber=Feb17_HO2-->
-
+Wenn Sie weitere Fragen haben, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
 

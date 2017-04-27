@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/24/2017
+ms.date: 04/05/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: caa4f001871beeb83cc0406bd2f89c5aa026cd97
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 3155990d977d8b0849c9e0be92db11ad6567cd6e
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -49,7 +49,7 @@ Sie erhalten Informationen zu Azure Security Center, zu dessen wichtigsten Funkt
 | Reagieren | Schlägt Möglichkeiten vor, den aktuellen Angriff zu beenden und zukünftige Angriffe zu verhindern |
 
 ## <a name="introductory-walkthrough"></a>Einführende exemplarische Vorgehensweise
- Sie können über das [Azure-Portal](https://azure.microsoft.com/features/azure-portal/)auf Security Center zugreifen. [Melden Sie sich am Portal an](https://portal.azure.com), wählen Sie **Durchsuchen** aus, und scrollen Sie zur Option **Security Center**. Oder wählen Sie die Kachel **Security Center** aus, die Sie zuvor auf dem Dashboard des Portals angeheftet haben.
+ Sie können über das [Azure-Portal](https://azure.microsoft.com/features/azure-portal/)auf Security Center zugreifen. [Melden Sie sich beim Portal an](https://portal.azure.com). Scrollen Sie im Hauptmenü des Portals zur Option **Security Center**, oder wählen Sie die Kachel **Security Center** aus, die Sie zuvor am Dashboard des Portals angeheftet haben.
 
 ![Kachel „Sicherheit“ im Azure-Portal][1]
 
@@ -83,7 +83,7 @@ Mit **Speicherkonto nach Region auswählen** (siehe oben) können Sie für jede 
 >
 >
 
-Wählen Sie **Präventionsrichtlinie** (siehe oben) aus, um das Blatt **Präventionsrichtlinie** zu öffnen. **Empfehlungen anzeigen für** ermöglicht es Ihnen, die Sicherheitsmechanismen auszuwählen, die Sie entsprechend den Sicherheitsanforderungen der Ressourcen im Abonnement überwachen und empfehlen möchten.
+Wählen Sie **Präventionsrichtlinie** (siehe oben) aus, um das Blatt **Präventionsrichtlinie** zu öffnen. **Empfehlungen anzeigen für** ermöglicht es Ihnen, die zu überwachenden Sicherheitsmechanismen sowie die Empfehlungen auszuwählen, die entsprechend den Sicherheitsanforderungen der Ressourcen im Abonnement angezeigt werden sollen.
 
 Wählen Sie anschließend eine Ressourcengruppe aus, um Einzelheiten zur Richtlinie anzuzeigen.
 
@@ -115,7 +115,7 @@ Klicken Sie auf die Kachel **Empfehlungen** , um eine Liste mit Empfehlungen zu 
 ### <a name="resource-health"></a>Ressourcenintegrität
 Die Kachel **Sicherheitsintegrität der Ressource** zeigt den Sicherheitsstatus der Umgebung nach Ressourcentyp an, einschließlich der VMs, Webanwendungen und anderer Ressourcen.   
 
-Wählen Sie auf der Kachel **Sicherheitsintegrität von Ressourcen** einen Ressourcentyp aus, um weitere Informationen anzuzeigen, einschließlich einer Liste aller potenziellen Sicherheitsrisiken, die erkannt wurden. (Im folgenden Beispiel ist**Virtuelle Computer** ausgewählt.)
+Wählen Sie auf der Kachel **Sicherheitsintegrität von Ressourcen** einen Ressourcentyp aus, um weitere Informationen anzuzeigen, einschließlich einer Liste aller potenziellen Sicherheitsrisiken, die erkannt wurden. (Im folgenden Beispiel ist **Compute** ausgewählt.)
 
 ![Kachel „Ressourcenintegrität“][6]
 

@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 11/25/2015
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: d84ab993b1d9489ca9d2edaa1cb9672d9bced899
-ms.openlocfilehash: 7dd1289453fe146b446322570fcb1c0df74b4db2
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: cbdef43381deac957c0e48b7043273c43b032935
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -28,7 +29,7 @@ Application Insights kann Java- und ASP.NET-Webanwendungen und -Dienste sowie WC
 
 Auf Clientseite kann Application Insights Telemetriedaten von Webseiten und eine Vielzahl von Geräten sammeln, einschließlich iOS-, Android- und Windows Store-Apps.
 
-## <a name="a-namesetupaset-up-performance-monitoring"></a><a name="setup"></a>Einrichten der Leistungsüberwachung
+## <a name="setup"></a>Einrichten der Leistungsüberwachung
 Falls Sie Application Insights Ihrem Projekt noch nicht hinzugefügt haben (d. h., wenn es nicht über ApplicationInsights.config verfügt), gehen Sie nach einer der folgenden Methoden vor, um zu beginnen:
 
 * [ASP.NET-Web-Apps](app-insights-asp-net.md)
@@ -37,7 +38,7 @@ Falls Sie Application Insights Ihrem Projekt noch nicht hinzugefügt haben (d. 
 * [J2EE-Web-Apps](app-insights-java-get-started.md)
   * [Abhängigkeitsüberwachung hinzufügen](app-insights-java-agent.md)
 
-## <a name="a-nameviewaexploring-performance-metrics"></a><a name="view"></a>Untersuchen von Leistungsmetriken
+## <a name="view"></a>Untersuchen von Leistungsmetriken
 Navigieren Sie im [Azure-Portal](https://portal.azure.com)zu der Application Insights-Ressource, die Sie für Ihre Anwendung eingerichtet haben. Das Blatt "Übersicht" zeigt grundlegende Leistungsdaten:
 
 Klicken Sie auf ein beliebiges Diagramm, um weitere Details und Ergebnisse über einen längeren Zeitraum anzuzeigen. Klicken Sie beispielsweise auf die Kachel "Requests", und wählen Sie dann einen Zeitraum aus.
@@ -53,7 +54,7 @@ Klicken Sie auf ein Diagramm, um die anzuzeigenden Metriken auszuwählen, oder f
 > 
 > 
 
-## <a name="a-namemetricsawhat-does-it-all-mean-performance-tiles-and-reports"></a><a name="metrics"></a>Was bedeutet was? Leistungskacheln und Berichte
+## <a name="metrics"></a>Was bedeutet was? Leistungskacheln und Berichte
 Ihnen steht eine Vielzahl von Leistungsmetriken zur Verfügung. Lassen Sie uns mit denen beginnen, die standardmäßig im Anwendungsblatt angezeigt werden.
 
 ### <a name="requests"></a>Requests
@@ -104,26 +105,24 @@ Legen Sie die Ressource vor den anderen Eigenschaften fest. Wählen Sie nicht di
 
 Achten Sie auf die Einheiten, die beim Eingeben des Schwellenwerts gefordert sind.
 
-*Ich sehe keine Schaltfläche zum Hinzufügen von Benachrichtigungen.*  – Handelt es sich um ein Gruppenkonto, für das Sie nur über schreibgeschützten Zugriff verfügen? Wenden Sie sich an den Kontoadministrator.
+*Ich sehe keine Schaltfläche zum Hinzufügen von Benachrichtigungen.* – Handelt es sich um ein Gruppenkonto, für das Sie nur über schreibgeschützten Zugriff verfügen? Wenden Sie sich an den Kontoadministrator.
 
-## <a name="a-namediagnosisadiagnosing-issues"></a><a name="diagnosis"></a>Diagnostizieren von Problemen
+## <a name="diagnosis"></a>Diagnostizieren von Problemen
 Im Folgenden finden Sie einige Tipps zum Feststellen und Diagnostizieren von Leistungsproblemen:
 
 * Richten Sie [Webtests][availability] ein, um benachrichtigt zu werden, falls Ihre Website nicht erreichbar ist oder fehlerhaft bzw. langsam reagiert. 
 * Vergleichen Sie den Request-Zählwert mit anderen Metriken, um festzustellen, ob Fehler oder langsame Reaktionen mit der Last zusammenhängen.
-* [Fügen Sie Ihrem Code Trace-Anweisungen hinzu bzw. suchen Sie diese][diagnostic], um Probleme besser einzukreisen.
+* [Fügen Sie Ihrem Code Trace-Anweisungen hinzu bzw. suchen Sie diese][diagnostic], um Probleme besser einzugrenzen.
 
-## <a name="a-namenextanext-steps"></a><a name="next"></a>Nächste Schritte
-[Webtests][availability] – Lassen Sie in regelmäßigen Abständen aus aller Welt Webanforderungen an Ihre Anwendung senden.
+## <a name="next"></a>Nächste Schritte
+[Webtests][availability]: Lassen Sie in regelmäßigen Abständen aus aller Welt Webanforderungen an Ihre Anwendung senden.
 
-[Diagnostische Spuren protokollieren und suchen][diagnostic] – Fügen Sie Trace-Aufrufe ein, und durchsuchen Sie die Ergebnisse, um Probleme zu lokalisieren.
+[Diagnostische Spuren protokollieren und suchen][diagnostic]: Fügen Sie Trace-Aufrufe ein, und durchsuchen Sie die Ergebnisse, um Probleme einzugrenzen.
 
-[Nutzungsnachverfolgung][usage] – Erfahren Sie, wie Ihre Anwendung genutzt wird.
+[Nutzungsnachverfolgung][usage]: Erfahren Sie, wie Ihre Anwendung genutzt wird.
 
 [Problembehandlung][qna] und Fragen und Antworten
 
-## <a name="video"></a>Video
-> [!VIDEO https://channel9.msdn.com/Series/ConnectOn-Demand/222/player]
 
 
 <!--Link references-->
@@ -136,10 +135,5 @@ Im Folgenden finden Sie einige Tipps zum Feststellen und Diagnostizieren von Lei
 [start]: app-insights-overview.md
 [usage]: app-insights-web-track-usage.md
 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

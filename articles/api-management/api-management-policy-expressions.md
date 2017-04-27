@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 3152a1306f2c3eeb42dd3b21cff62b696ed01e5d
-ms.openlocfilehash: 75ea0486a1b5abc71df3b7d9e8385717954b89f4
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: d96dde8c74141d000c1f7c5fd9ef624ff5e46953
+ms.lasthandoff: 04/07/2017
 
 ---
 # <a name="api-management-policy-expressions"></a>Richtlinienausdrücke in API Management
@@ -186,7 +186,7 @@ Die Syntax für Richtlinienausdrücke entspricht C# 6.0. Jeder Ausdruck besitzt 
 |context.User|Email: string<br /><br /> FirstName: string<br /><br /> Groups: IEnumerable<IGroup\><br /><br /> Id: string<br /><br /> Identities: IEnumerable<IUserIdentity\><br /><br /> LastName: string<br /><br /> Note: string<br /><br /> RegistrationDate: DateTime|  
 |IApi|Id: string<br /><br /> Name: string<br /><br /> Path: string<br /><br /> Protocols: IEnumerable<string\><br /><br /> ServiceUrl: IUrl<br /><br /> SubscriptionKeyParameterNames: ISubscriptionKeyParameterNames|  
 |IGroup|Id: string<br /><br /> Name: string|  
-|IMessageBody|As<T\>(preserveContent: bool = false): Where T: string, JObject, JToken, JArray, XNode, XElement, XDocument<br /><br /> Die Methoden `context.Request.Body.As<T>` und `context.Request.Body.As<T>` dienen zum Lesen eines Anforderungs- oder Antwortnachrichtentexts in einem der angegebenen Formate. Beachten Sie, dass beim Zugriff auf den Nachrichtentext der ursprüngliche Nachrichtentext standardmäßig verloren geht und festgelegt werden muss, indem der Text wieder in dem Ausdruck zurückgegeben wird, der den Text liest. Um den Nachrichtentext zu erhalten, legen Sie den Parameter `preserveContent` auf `true` fest, wenn Sie auf die Nachricht zugreifen. Der Standardwert von `preserveContent` lautet `false`. Wenn `preserveContent` auf `true` festgelegt ist und ein Text vom Ausdruck zurückgegeben wird, wird der zurückgegebene Text verwendet. Weitere Informationen finden Sie unter der Richtlinie [Text festlegen](api-management-transformation-policies.md#SetBody).|  
+|IMessageBody|As<T\>(preserveContent: bool = false): Where T: string, JObject, JToken, JArray, XNode, XElement, XDocument<br /><br /> Mit der `context.Request.Body.As<T>`-Methode und der `context.Response.Body.As<T>`-Methode werden ein Anforderungs- und ein Antwortnachrichtentext in einem angegebenen Typ `T` gelesen. In der Standardeinstellung verwendet die Methode den Datenstrom des Originalnachrichtentexts und bewirkt, dass er nach seiner Rückgabe nicht mehr verfügbar ist. Wenn dies vermieden werden und die Methode eine Kopie des Textdatenstroms verarbeiten soll, legen Sie den `preserveContent`-Parameter auf `true` fest. Ein Beispiel finden Sie [hier](api-management-transformation-policies.md#SetBody).|  
 |IUrl|Host: string<br /><br /> Path: string<br /><br /> Port: int<br /><br /> Query: IReadOnlyDictionary<string, string[]><br /><br /> QueryString: string<br /><br /> Scheme: string|  
 |IUserIdentity|Id: string<br /><br /> Provider: string|  
 |ISubscriptionKeyParameterNames|Header: string<br /><br /> Query: string|  

@@ -17,9 +17,9 @@ ms.date: 02/16/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
-ms.openlocfilehash: ea54b413b92a4d4e312b741ce42090c77de0e6f5
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
+ms.openlocfilehash: 071156367c1f819a00d31f1d0335e301391fda81
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -127,15 +127,15 @@ Erstellen Sie in einem VNet mit dem Namen *TestVNet* im Subnetz *FrontEnd* einen
             "resourceGuid": "<guid>"
         }
     }
-        ```
+    ```
     
-    Parameters:
+    Parameter:
 
-    * `--private-ip-address`: Static private IP address for the NIC.
-    * `--vnet-name`: Name of the VNet in wihch to create the NIC.
-    * `--subnet`: Name of the subnet in which to create the NIC.
+    * `--private-ip-address`: Statische private IP-Adresse für die Netzwerkkarte.
+    * `--vnet-name`: Der Name des VNet, in dem die Netzwerkkarte erstellt werden soll.
+    * `--subnet`: Der Name des Subnetzes, in dem die Netzwerkkarte erstellt werden soll.
 
-4. Run the [azure vm create](/cli/azure/vm/nic#create) command to create the VM using the public IP and NIC created above. The list shown after the output explains the parameters used.
+4. Führen Sie den Befehl [azure vm create](/cli/azure/vm/nic#create) aus, um den virtuellen Computer unter Verwendung der oben erstellten öffentlichen IP-Adresse und Netzwerkkarte zu erstellen. In der nach der Ausgabe angezeigten Liste werden die verwendeten Parameter erläutert.
    
     ```azurecli
     az vm create \

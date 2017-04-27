@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: genli
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 7f719fb38709f4bb7083b7f21a5979f7e0588d0f
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: c62f8d077906ce8ad1b5501864a21ee369b2314a
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -44,7 +44,7 @@ Dieser Artikel beschreibt allgemeine Probleme im Zusammenhang mit Microsoft Azur
 
 **Linux-Clientprobleme**
 
-* [Zeitweiliger E/A-Fehler „Host nicht verfügbar“ (Fehler 112) bei vorhandenen Dateifreigaben, oder die Shell hängt beim Ausführen von Listenbefehlen auf dem Einbindungspunkt](#errorhold)
+* [Zeitweiliger E/A-Fehler „Host nicht verfügbar“ (Fehler 112) bei vorhandenen Dateifreigaben, oder die Shell hängt beim Ausführen von Listenbefehlen auf dem Einbindungspunkt](#error112)
 * [Einbindungsfehler 115 beim Versuch, Azure Files auf der Linux-VM einzubinden](#error15)
 * [In der Azure-Dateifreigabe auf der Linux-VM treten Probleme mit langsamer Leistung auf](#delayproblem)
 * [Einbindungsfehler (11): Ressource beim Einbinden von Ubuntu-Kerneln ab Version 4.8 vorübergehend nicht verfügbar](#ubuntumounterror)
@@ -116,13 +116,13 @@ Erstellen oder öffnen Sie niemals eine Datei für zwischengespeichertes E/A, di
 Dieses Problem kann folgende Ursachen haben:
 
 ### <a name="cause-1"></a>Ursache 1
-„Systemfehler 53 ist aufgetreten. Zugriff verweigert.“ Aus Sicherheitsgründen werden Verbindungen mit Azure File-Freigaben blockiert, wenn der Kommunikationskanal nicht verschlüsselt ist und der Verbindungsversuch nicht von dem gleichen Rechenzentrum aus erfolgt, in dem sich die Azure File-Freigaben befinden. Die Verschlüsselung des Kommunikationskanals ist nicht verfügbar, wenn das Clientbetriebssystem des Benutzers die SMB-Verschlüsselung nicht unterstützt. Dies wird durch die Fehlermeldung „Systemfehler 53 ist aufgetreten. Zugriff verweigert“ angezeigt, wenn ein Benutzer versucht, eine Dateifreigabe von einer lokalen Umgebung oder einem anderen Rechenzentrum aus einzubinden. Windows 8, Windows Server 2012 und höhere Versionen jeder Negotiate-Anforderung, die SMB 3.0 umfassen, wodurch die Verschlüsselung unterstützt wird.
+„Systemfehler 53 ist aufgetreten. Zugriff verweigert.“ Aus Sicherheitsgründen werden Verbindungen mit Azure Files-Freigaben blockiert, wenn der Kommunikationskanal nicht verschlüsselt ist und der Verbindungsversuch nicht von der gleichen Azure-Region aus erfolgt, in der sich die Azure File-Freigaben befinden. Die Verschlüsselung des Kommunikationskanals ist nicht verfügbar, wenn das Clientbetriebssystem des Benutzers die SMB-Verschlüsselung nicht unterstützt. Dies wird durch die Fehlermeldung „Systemfehler 53 ist aufgetreten. Zugriff verweigert“ angezeigt, wenn ein Benutzer versucht, eine Dateifreigabe von einer lokalen Umgebung oder einem anderen Rechenzentrum aus einzubinden. Windows 8, Windows Server 2012 und höhere Versionen jeder Negotiate-Anforderung, die SMB 3.0 umfassen, wodurch die Verschlüsselung unterstützt wird.
 
 ### <a name="solution-for-cause-1"></a>Lösung für Ursache 1
-Stellen Sie eine Verbindung von einem Client aus her, der die Anforderungen von Windows 8, Windows Server 2012 und höheren Versionen erfüllt, oder stellen Sie eine Verbindung von einem virtuellen Computer aus her, der sich im gleichen Rechenzentrum befindet wie das Azure Storage-Konto, das für die Azure-Dateifreigabe verwendet wird.
+Stellen Sie eine Verbindung von einem Client aus her, der die Anforderungen von Windows 8, Windows Server 2012 und höheren Versionen erfüllt, oder stellen Sie eine Verbindung von einem virtuellen Computer aus her, der sich in der gleichen Azure-Region befindet wie das Azure Storage-Konto, das für die Azure-Dateifreigabe verwendet wird.
 
 ### <a name="cause-2"></a>Ursache 2
-„Systemfehler 53“ oder „Systemfehler 67“ kann beim Einbinden einer Azure-Dateifreigabe auftreten, wenn die von Port 445 ausgehende Kommunikation zum Azure Files-Rechenzentrum blockiert ist. Klicken Sie [hier](http://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx), um eine Zusammenfassung der ISPs anzuzeigen, die den Zugang von Port 445 aus zulassen oder verweigern.
+„Systemfehler 53“ oder „Systemfehler 67“ kann beim Einbinden einer Azure-Dateifreigabe auftreten, wenn die von Port 445 ausgehende Kommunikation zur Azure Files-Azure-Region blockiert ist. Klicken Sie [hier](http://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx), um eine Zusammenfassung der ISPs anzuzeigen, die den Zugang von Port 445 aus zulassen oder verweigern.
 
 Comcast und einige IT-Organisationen blockieren diesen Port. Um zu verstehen, ob dies der Grund für die Meldung „Systemfehler 53“ ist, können Sie Portqry verwenden, um den Endpunkt TCP:445 abzufragen. Wenn der Endpunkt TCP:445 als gefiltert angezeigt wird, wird der TCP-Port blockiert. Dies ist eine Beispielabfrage:
 
@@ -165,7 +165,7 @@ Binden Sie die Freigabe von einer Befehlszeile für Benutzer ohne Administratorr
 
 ## <a name="my-storage-account-contains--and-the-net-use-command-fails"></a>Mein Speicherkonto enthält „/“, und beim Ausführen des Befehls „net use“ tritt ein Fehler auf
 ### <a name="cause"></a>Ursache
-Wenn der Befehl **net use** unter einer Eingabeaufforderung ausgeführt wird (cmd.exe), wird er durch das Hinzufügen von „/“ als Befehlszeilenoption analysiert. Dadurch tritt ein Fehler bei der Zuordnung des Laufwerks auf.
+Wenn der Befehl **net use** unter einer Eingabeaufforderung ausgeführt wird (cmd.exe), wird er durch Hinzufügen von „/“ als Befehlszeilenoption analysiert. Dadurch tritt ein Fehler bei der Zuordnung des Laufwerks auf.
 
 ### <a name="solution"></a>Lösung
 Sie können eine der folgenden Methoden verwenden, um dieses Problem zu umgehen:
@@ -213,7 +213,7 @@ Um eine Datei in File Storage zu kopieren, müssen Sie sie zunächst entschlüss
 
 Beachten Sie jedoch, dass sich das Festlegen des Registrierungsschlüssels auf alle Kopiervorgänge von Netzwerkfreigaben auswirkt.
 
-<a id="errorhold"></a>
+<a id="error112"></a>
 
 ## <a name="host-is-down-error-112-on-existing-file-shares-or-the-shell-hangs-when-you-run-list-commands-on-the-mount-point"></a>Fehler „Host is down“ (Host nicht verfügbar) (Fehler 112) bei vorhandenen Dateifreigaben, oder die Shell hängt beim Ausführen von Listenbefehlen auf dem Einbindungspunkt
 ### <a name="cause"></a>Ursache
@@ -251,7 +251,7 @@ Wenn Sie die neuesten Kernelversionen nicht aufrufen können, können Sie dieses
 Linux-Distributionen unterstützen die Verschlüsselungsfunktion in SMB 3.0 noch nicht. In manchen Distributionen erhalten Benutzer eine „115“-Fehlermeldung, wenn sie aufgrund eines fehlenden Features versuchen, Azure Files mithilfe von SMB 3.0 einzubinden.
 
 ### <a name="solution"></a>Lösung
-Wenn der verwendete Linux-SMB-Client die Verschlüsselung nicht unterstützt, binden Sie Azure Files mithilfe von SMB 2.1 von einer Linux-VM aus ein, die sich im gleichen Rechenzentrum wie das File Storage-Konto befindet.
+Wenn der verwendete Linux-SMB-Client die Verschlüsselung nicht unterstützt, binden Sie Azure Files mithilfe von SMB 2.1 von einer Linux-VM aus ein, die sich in der gleichen Azure-Region wie das File Storage-Konto befindet.
 
 <a id="delayproblem"></a>
 

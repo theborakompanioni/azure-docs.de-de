@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/08/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 94f0a741be663aae9f2ec4ee221a4b2b58e390e2
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: 73cd37a83ba31f428b3d0262230e4c650692a842
+ms.lasthandoff: 04/10/2017
 
 ---
 
@@ -38,9 +38,9 @@ Sie können auch die folgenden Tools für das Erstellen einer Pipeline verwenden
 
 Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden Schritte aus, um eine Pipeline zu erstellen, die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher verschiebt: 
 
-1. Erstellen **verknüpfter Dienste** zum Verknüpfen von Eingabe- und Ausgabedatenspeichern mit Ihrer Data Factory
-2. Erstellen von **Datasets** zur Darstellung von Eingabe- und Ausgabedaten für den Kopiervorgang 
-3. Erstellen einer **Pipeline** mit einer Kopieraktivität, die ein Dataset als Eingabe und ein Dataset als Ausgabe akzeptiert 
+1. Erstellen **verknüpfter Dienste** zum Verknüpfen von Eingabe- und Ausgabedatenspeichern mit Ihrer Data Factory.
+2. Erstellen von **Datasets** zur Darstellung von Eingabe- und Ausgabedaten für den Kopiervorgang. 
+3. Erstellen einer **Pipeline** mit einer Kopieraktivität, die ein Dataset als Eingabe und ein Dataset als Ausgabe akzeptiert. 
 
 Wenn Sie den Assistenten verwenden, werden automatisch JSON-Definitionen für diese Data Factory-Entitäten (verknüpfte Diensten, Datasets und die Pipeline) erstellt. Bei Verwendung von Tools und APIs (mit Ausnahme der .NET-API) definieren Sie diese Data Factory-Entitäten im JSON-Format.  Ein Beispiel mit JSON-Definitionen für Data Factory-Entitäten, die zum Kopieren von Daten in den Azure Search-Index verwendet werden, finden Sie in diesem Artikel im Abschnitt [JSON-Beispiel: Kopieren von Daten aus einer lokalen SQL Server-Instanz in den Azure Search-Index](#json-example-copy-data-from-on-premises-sql-server-to-azure-search-index). 
 
@@ -67,9 +67,9 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 
 ## <a name="copy-activity-properties"></a>Eigenschaften der Kopieraktivität
-Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md) . Eigenschaften wie Name, Beschreibung, Eingabe- und Ausgabetabellen und zahlreiche Richtlinien sind für alle Arten von Aktivitäten verfügbar. Die Eigenschaften im Abschnitt „typeProperties“ der Aktivität können dagegen je nach Aktivitätstyp variieren. Für die Kopieraktivität variieren die Eigenschaften je nach Art der Quellen und Senken.
+Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md) . Eigenschaften wie Name, Beschreibung, Eingabe- und Ausgabetabellen und zahlreiche Richtlinien sind für alle Arten von Aktivitäten verfügbar. Eigenschaften im Abschnitt typeProperties hingegen können je nach Aktivitätstyp variieren. Für die Kopieraktivität variieren die Eigenschaften je nach Art der Quellen und Senken.
 
-Wenn bei der Kopieraktivität die Quelle den Typ **AzureSearchIndexSink** hat, sind im Abschnitt „typeProperties“ die folgenden Eigenschaften verfügbar:
+Wenn bei der Kopieraktivität die Senke den Typ **AzureSearchIndexSink** aufweist, sind im Abschnitt typeProperties die folgenden Eigenschaften verfügbar:
 
 | Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
 | -------- | ----------- | -------------- | -------- |
@@ -250,7 +250,7 @@ Die Pipeline enthält eine Kopieraktivität, die für die Verwendung der Ein- un
 }
 ```
 
-Wenn Sie Daten aus einem Clouddatenspeicher in Azure Search kopieren, ist die `executionLocation`-Eigenschaft erforderlich. Im Folgenden werden als Beispiel die Änderung gezeigt, die unter der Kopieraktivität `typeProperties` erforderlich sind. Im Abschnitt [Kopieren von Daten zwischen Clouddatenspeichern](data-factory-data-movement-activities.md#global) finden Sie Informationen zu den unterstützten Werten sowie weitere Details.
+Wenn Sie Daten aus einem Clouddatenspeicher in Azure Search kopieren, ist die `executionLocation`-Eigenschaft erforderlich. Im folgenden JSON-Codeausschnitt wird als Beispiel die Änderung gezeigt, die unter der Kopieraktivität `typeProperties` erforderlich ist. Im Abschnitt [Kopieren von Daten zwischen Clouddatenspeichern](data-factory-data-movement-activities.md#global) finden Sie Informationen zu den unterstützten Werten sowie weitere Details.
 
 ```JSON
 "typeProperties": {
@@ -266,7 +266,7 @@ Wenn Sie Daten aus einem Clouddatenspeicher in Azure Search kopieren, ist die `e
 
 
 ## <a name="copy-from-a-cloud-source"></a>Kopieren aus einer Clouddatenquelle
-Wenn Sie Daten aus einem Clouddatenspeicher in Azure Search kopieren, ist die `executionLocation`-Eigenschaft erforderlich. Im Folgenden werden als Beispiel die Änderung gezeigt, die unter der Kopieraktivität `typeProperties` erforderlich sind. Im Abschnitt [Kopieren von Daten zwischen Clouddatenspeichern](data-factory-data-movement-activities.md#global) finden Sie Informationen zu den unterstützten Werten sowie weitere Details.
+Wenn Sie Daten aus einem Clouddatenspeicher in Azure Search kopieren, ist die `executionLocation`-Eigenschaft erforderlich. Im folgenden JSON-Codeausschnitt wird als Beispiel die Änderung gezeigt, die unter der Kopieraktivität `typeProperties` erforderlich ist. Im Abschnitt [Kopieren von Daten zwischen Clouddatenspeichern](data-factory-data-movement-activities.md#global) finden Sie Informationen zu den unterstützten Werten sowie weitere Details.
 
 ```JSON
 "typeProperties": {

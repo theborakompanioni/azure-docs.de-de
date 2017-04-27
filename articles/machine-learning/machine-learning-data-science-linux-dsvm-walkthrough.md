@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev;paulsh
 translationtype: Human Translation
-ms.sourcegitcommit: d0075eec26c2131f2019e7aca4c00d2d63cc976b
-ms.openlocfilehash: 80051996b0c39c53da63dc6b7bc75c869f692575
-ms.lasthandoff: 01/06/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 80e0b0cb5193d5a0c3782e2e6371b91441780347
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -44,7 +44,7 @@ Das Dataset [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) umfasst
 >
 >
 
-Falls Sie mehr Speicherplatz benötigen, können Sie zusätzliche Datenträger erstellen und an Ihre VM anfügen. Für diese Datenträger wird dauerhafter Azure-Speicher verwendet, sodass die Daten auch dann beibehalten werden, wenn der Server aufgrund einer Größenänderung neu bereitgestellt oder heruntergefahren wird. Führen Sie die Anleitung unter [Hinzufügen eines Datenträgers zu einem virtuellen Linux-Computer](../virtual-machines/virtual-machines-linux-add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)aus, um einen Datenträger hinzuzufügen und an Ihre VM anzufügen. Für diese Schritte wird die Azure-Befehlszeilenschnittstelle (Azure CLI) verwendet, die auf der DSVM bereits installiert ist. Diese Verfahren können also vollständig über die VM selbst durchgeführt werden. Eine weitere Option zum Erhöhen des Speichers ist die Verwendung von [Azure-Dateien](../storage/storage-how-to-use-files-linux.md).
+Falls Sie mehr Speicherplatz benötigen, können Sie zusätzliche Datenträger erstellen und an Ihre VM anfügen. Für diese Datenträger wird dauerhafter Azure-Speicher verwendet, sodass die Daten auch dann beibehalten werden, wenn der Server aufgrund einer Größenänderung neu bereitgestellt oder heruntergefahren wird. Führen Sie die Anleitung unter [Hinzufügen eines Datenträgers zu einem virtuellen Linux-Computer](../virtual-machines/linux/add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)aus, um einen Datenträger hinzuzufügen und an Ihre VM anzufügen. Für diese Schritte wird die Azure-Befehlszeilenschnittstelle (Azure CLI) verwendet, die auf der DSVM bereits installiert ist. Diese Verfahren können also vollständig über die VM selbst durchgeführt werden. Eine weitere Option zum Erhöhen des Speichers ist die Verwendung von [Azure-Dateien](../storage/storage-how-to-use-files-linux.md).
 
 Öffnen Sie zum Herunterladen der Daten ein Terminalfenster, und führen Sie diesen Befehl aus:
 

@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 10/20/2016
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
-ms.openlocfilehash: 62faba3827e9fc33e9788cd2d487adf04d760791
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
+ms.openlocfilehash: 50127242cdf156771d0610e58cf2fc41281adae7
+ms.lasthandoff: 03/31/2017
 
 
 ---
-# <a name="create-alerts-in-azure-monitor-for-azure-services---powershell"></a>Erstellen von Warnungen in Azure Monitor für Azure-Dienste – PowerShell 
+# <a name="create-metric-alerts-in-azure-monitor-for-azure-services---powershell"></a>Erstellen von Metrikwarnungen in Azure Monitor für Azure-Dienste – PowerShell
 > [!div class="op_single_selector"]
 > * [Portal](insights-alerts-portal.md)
 > * [PowerShell](insights-alerts-powershell.md)
@@ -30,14 +30,14 @@ ms.lasthandoff: 03/15/2017
 >
 
 ## <a name="overview"></a>Übersicht
-In diesem Artikel erfahren Sie, wie Sie Warnungen mit PowerShell einrichten können.  
+In diesem Artikel erfahren Sie, wie Sie Azure-Metrikwarnungen mit PowerShell einrichten können.  
 
 Sie können auf der Grundlage von Überwachungsmetriken für Ihre Azure-Services oder von Ereignissen, die bei diesen auftreten, eine Warnung empfangen.
 
 * **Metrikwerte** : Die Warnung wird ausgelöst, wenn der Wert einer angegebenen Metrik einen von Ihnen festgelegten Schwellenwert in beliebiger Richtung überschreitet. Das Auslösen erfolgt sowohl, wenn die Bedingung erstmals erfüllt wird, als auch danach, wenn diese Bedingung nicht mehr erfüllt wird.    
-* **Aktivitätsprotokollereignisse** : Eine Warnung kann für *jedes* Ereignis oder nur dann ausgelöst werden, wenn eine bestimmte Anzahl von Ereignissen erfolgt ist.
+* **Aktivitätsprotokollereignisse**: Eine Warnung kann für *jedes* Ereignis oder nur dann ausgelöst werden, wenn ein bestimmtes Ereignis auftritt. [Klicken Sie hier](monitoring-activity-log-alerts.md), um weitere Informationen zu Aktivitätsprotokollwarnungen zu erhalten.
 
-Sie können konfigurieren, dass bei einer Warnung Folgendes erfolgt, wenn sie ausgelöst wird:
+Sie können konfigurieren, dass bei einer Metrikwarnung Folgendes erfolgt, wenn sie ausgelöst wird:
 
 * Senden von E-Mail-Benachrichtigungen an den Dienstadministrator und Co-Administratoren
 * Senden von E-Mal an weitere von Ihnen angegebene Adressen
@@ -74,8 +74,8 @@ Um weitere Informationen zu erhalten, geben Sie ```Get-Help``` und dann den Powe
    ```
 4. Um eine Regel zu erstellen, benötigen Sie zunächst verschiedene wichtige Informationen.
 
-   * Die **Ressourcen-ID** der Ressource, für die Sie eine Warnung festlegen möchten
-   * Die für diese Ressource verfügbaren **Metrikdefinitionen**
+  * Die **Ressourcen-ID** der Ressource, für die Sie eine Warnung festlegen möchten
+  * Die für diese Ressource verfügbaren **Metrikdefinitionen**
 
      Eine Möglichkeit zum Abrufen der Ressourcen-ID ist das Azure-Portal. Falls die Ressource bereits erstellt wurde, wählen Sie sie im Portal aus. Wählen Sie dann auf dem nächsten Blatt im Abschnitt *Einstellungen* die Option *Eigenschaften* aus. **RESSOURCEN-ID** ist ein Feld auf dem nächsten Blatt. Eine andere Möglichkeit ist der [Azure-Ressourcen-Explorer](https://resources.azure.com/).
 
@@ -113,27 +113,14 @@ Um weitere Informationen zu erhalten, geben Sie ```Get-Help``` und dann den Powe
     Add-AzureRmMetricAlertRule -Name myMetricRuleWithWebhookAndEmail -Location "East US" -ResourceGroup myresourcegroup -TargetResourceId /subscriptions/dededede-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/myresourcegroupname/providers/Microsoft.Web/sites/mywebsitename -MetricName "BytesReceived" -Operator GreaterThan -Threshold 2 -WindowSize 00:05:00 -TimeAggregationOperator Total -Actions $actionEmail, $actionWebhook -Description "alert on any website activity"
     ```
 
-
-1. Zum Erstellen einer Warnung, die bei einer bestimmten Bedingung im Aktivitätsprotokoll ausgelöst wird, wählen Sie Befehle im folgenden Format:
-
-    ```PowerShell
-    $actionEmail = New-AzureRmAlertRuleEmail -CustomEmail myname@company.com
-    $actionWebhook = New-AzureRmAlertRuleWebhook -ServiceUri https://www.contoso.com?token=mytoken
-
-    Add-AzureRmLogAlertRule -Name myLogAlertRule -Location "East US" -ResourceGroup myresourcegroup -OperationName microsoft.web/sites/start/action -Status Succeeded -TargetResourceGroup resourcegroupbeingmonitored -Actions $actionEmail, $actionWebhook
-    ```
-
-    „-OperationName“ entspricht einem Ereignistyp eines Eintrags im Aktivitätsprotokoll. Beispiele sind *Microsoft.Compute/virtualMachines/delete* und *microsoft.insights/diagnosticSettings/write*.
-
-    Sie können den PowerShell-Befehl [Get-AzureRmProviderOperation](https://msdn.microsoft.com/library/mt603720.aspx) zum Abrufen einer Liste möglicher Vorgangsnamen verwenden. Alternativ können Sie im Azure-Portal das Aktivitätsprotokoll abfragen und bestimmte erfolgte Vorgänge suchen, für die Sie eine Warnung erstellen möchten. Die Vorgänge werden in der grafischen Protokollansicht mit dem Anzeigenamen angezeigt. Suchen Sie im JSON-Code nach dem Eintrag, und entnehmen Sie den Wert des Vorgangsnamen.   
-2. Überprüfen Sie, ob Warnungen ordnungsgemäß erstellt wurden, indem Sie sich die einzelnen Regeln ansehen.
+7. Überprüfen Sie, ob die Warnungen ordnungsgemäß erstellt wurden, indem Sie die einzelnen Regeln untersuchen.
 
     ```PowerShell
     Get-AzureRmAlertRule -Name myMetricRuleWithWebhookAndEmail -ResourceGroup myresourcegroup -DetailedOutput
 
     Get-AzureRmAlertRule -Name myLogAlertRule -ResourceGroup myresourcegroup -DetailedOutput
     ```
-3. Löschen Sie Ihre Warnungen. Mit diesen Befehlen werden die zuvor in diesem Artikel erstellten Regeln gelöscht.
+8. Löschen Sie Ihre Warnungen. Mit diesen Befehlen werden die zuvor in diesem Artikel erstellten Regeln gelöscht.
 
     ```PowerShell
     Remove-AzureRmAlertRule -ResourceGroup myresourcegroup -Name myrule
@@ -144,6 +131,7 @@ Um weitere Informationen zu erhalten, geben Sie ```Get-Help``` und dann den Powe
 ## <a name="next-steps"></a>Nächste Schritte
 * [Übersicht über die Azure-Überwachung](monitoring-overview.md) , einschließlich der Typen von Informationen, die Sie sammeln und überwachen können.
 * Erfahren Sie mehr über das [Konfigurieren von Webhooks in Warnungen](insights-webhooks-alerts.md).
+* Erfahren Sie mehr über das [Konfigurieren von Warnungen zu Aktivitätsprotokollereignissen](monitoring-activity-log-alerts.md).
 * Erfahren Sie mehr zu [Azure Automation-Runbooks](../automation/automation-starting-a-runbook.md).
 * Verschaffen Sie sich einen [Überblick über das Sammeln von Diagnoseprotokollen](monitoring-overview-of-diagnostic-logs.md) , um detaillierte Hochfrequenzmetriken für Ihren Dienst zu erfassen.
 * Verschaffen Sie sich einen Überblick über das [Sammeln von Dienstmetriken](insights-how-to-customize-monitoring.md) , um sicherzustellen, dass Ihr Dienst verfügbar und reaktionsfähig ist.
