@@ -48,7 +48,7 @@ Sie können beide Zertifikate erneut generieren, indem Sie im DocumentDB-Emulato
 
     ![Exportieren des lokalen DocumentDB-Emulators, Schritt 2](./media/documentdb-nosql-local-emulator/azure-documentdb-database-local-emulator-export-step-2.png)
 
-3. Klicken Sie auf **In Datei kopieren... **.
+3. Klicken Sie auf **In Datei kopieren...**.
 
     ![Exportieren des lokalen DocumentDB-Emulators, Schritt 3](./media/documentdb-nosql-local-emulator/azure-documentdb-database-local-emulator-export-step-3.png)
 
