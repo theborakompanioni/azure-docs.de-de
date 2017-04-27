@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/26/2016
 ms.author: asmalser
 translationtype: Human Translation
-ms.sourcegitcommit: c579135f798ea0c2a5461fdd7c88244d2d6d78c6
-ms.openlocfilehash: e9ab491639485950b17de4be190b6797c1660530
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: d3952e65aaf3ca89f83e99409e196840dd692a01
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -25,13 +26,13 @@ Azure Active Directory unterstützt heute Tausende von bereits integrierten Anwe
 
 Im technischen Jargon bezeichnet ein Anspruch (Claim) Informationen über den Benutzer, die ein Identitätsanbieter im Benutzertoken übergibt. Bei einem [SAML-Token](http://en.wikipedia.org/wiki/SAML_2.0) befinden sich diese Informationen in der Regel in der SAML-Attributanweisung, und die eindeutige ID des Benutzers wird durch den SAML-Betreff dargestellt.
 
-Standardmäßig stellt Azure AD der Anwendung ein SAML-Token aus, das einen NameIdentifier-Anspruch enthält, dessen Wert dem Benutzernamen in Azure AD entspricht (über den der Benutzer eindeutig identifiziert ist). Das SAML-Token enthält auch zusätzliche Ansprüche, die E-Mail-Adresse des Benutzers, Vorname und Nachname enthält.
+Standardmäßig stellt Azure AD der Anwendung ein SAML-Token aus, das einen NameIdentifier-Anspruch enthält, dessen Wert dem Benutzernamen in Azure AD entspricht (über den der Benutzer eindeutig identifiziert ist). Das SAML-Token enthält auch zusätzliche Ansprüche, die E-Mail-Adresse des Benutzers, Vorname und Nachname enthält.
 
 Zum Anzeigen oder Bearbeiten der im SAML-Token an die Anwendung ausgestellten Ansprüche öffnen Sie den Anwendungsdatensatz im Azure-Verwaltungsportal, und wählen Sie Registerkarte **Attribute** unterhalb der Anwendung.
 
 ![][1]
 
-Es kann aus zwei Gründen nötig werden, die im SAML-Token ausgestellten Ansprüche zu bearbeiten: • Die Anwendung wurde so geschrieben, das sie eine andere Gruppe von Anspruchs-URIs oder Anspruchswerten verlangt • Die Anwendung wurde so bereitgestellt, dass sie als NameIdentifier-Anspruch etwas anderes verlangt als den Benutzernamen (den Benutzerprinzipalnamen), der in Azure Active Directory gespeichert ist. 
+Es kann aus zwei Gründen notwendig sein, die im SAML-Token ausgegebenen Ansprüche zu bearbeiten: � Die Anwendung wurde so geschrieben, dass sie eine andere Gruppe von Anspruchs-URIs oder Anspruchswerten verlangt. � Die Anwendung wurde so bereitgestellt, dass sie als NameIdentifier-Anspruch etwas anderes verlangt als den Benutzernamen (den Benutzerprinzipalnamen), der in Azure Active Directory gespeichert ist. 
 
 Jeder der standardmäßigen Anspruchswerte lässt sich durch Auswählen des Stiftsymbols bearbeiten, das auf der rechten Seite angezeigt wird, wenn sich der Mauszeiger über einer der Zeilen in der Tabelle der SAML-Tokenattribute befindet. Ansprüche (mit Ausnahme von „NameIdentifier“) lassen sich mithilfe des Symbols **X** auch entfernen, und es können neue Ansprüche über die Schaltfläche **Benutzerattribut hinzufügen** erstellt werden.
 
@@ -42,7 +43,7 @@ Falls die Anwendung mit einem anderen Benutzernamen bereitgestellt wurde, klicke
 
 Wählen Sie im Menü **Attributwert** die Option **user.mail** aus, um den NameIdentifier-Anspruch auf die E-Mail-Adresse des Benutzers im Verzeichnis festzulegen, oder wählen Sie **user.onpremisessamaccountname** aus, um den SAM-Kontonamen des Benutzers zu verwenden, der aus der lokalen Azure AD-Instanz synchronisiert wurde. 
 
-Sie können auch die spezielle ExtractMailPrefix()-Funktion verwenden, um das Domänensuffix von der E-Mail-Adresse des Benutzers bzw. vom Prinzipalnamen zu entfernen, wodurch nur der erste Bestandteil des Benutzernamens durchgeleitet wird (z. B. „joesmith“ statt joesmith@contoso.com).
+Sie können auch die spezielle ExtractMailPrefix()-Funktion verwenden, um das Domänensuffix von der E-Mail-Adresse des Benutzers bzw. vom Prinzipalnamen zu entfernen, sodass nur der erste Bestandteil des Benutzernamens durchgeleitet wird (z.B. „joesmith“ anstelle von joesmith@contoso.com).
 
 ![][3]
 
@@ -63,13 +64,7 @@ Wenn für einen bestimmten Benutzer kein Wert für ein ausgewähltes Attribut ge
 * [Problembehandlung bei SAML-basiertem einmaligem Anmelden](active-directory-saml-debugging.md)
 
 <!--Image references-->
-[1]: ./media/active-directory-saml-claims-customization/claimscustomization1.png
-[2]: ./media/active-directory-saml-claims-customization/claimscustomization2.png
-[3]: ./media/active-directory-saml-claims-customization/claimscustomization3.png
-[4]: ./media/active-directory-saml-claims-customization/claimscustomization4.png
-
-
-
-<!--HONumber=Jan17_HO3-->
-
-
+[1]: ../media/active-directory-saml-claims-customization/claimscustomization1.png
+[2]: ../media/active-directory-saml-claims-customization/claimscustomization2.png
+[3]: ../media/active-directory-saml-claims-customization/claimscustomization3.png
+[4]: ../media/active-directory-saml-claims-customization/claimscustomization4.png
