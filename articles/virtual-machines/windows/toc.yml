@@ -13,18 +13,24 @@
     href: quick-create-powershell.md
   - name: "Erstellen eines virtuellen Computers – Azure-CLI"
     href: quick-create-cli.md
+- name: "Lernprogramme"
+  items:
+  - name: "1: Erstellen/Verwalten eines virtuellen Computers"
+    href: tutorial-manage-vm.md
+  - name: "2: Erstellen/Verwalten von Datenträgern"
+    href: tutorial-manage-data-disk.md
+  - name: "3: Automatisieren der Konfiguration"
+    href: tutorial-automate-vm-deployment.md
+  - name: "4: Lastenausgleich für virtuelle Computer"
+    href: tutorial-load-balancer.md
+  - name: "5: Verwalten von Netzwerken"
+    href: tutorial-virtual-network.md
 - name: "Beispiele"
   items:
   - name: "PowerShell"
     href: powershell-samples.md
   - name: "Azure-Befehlszeilenschnittstelle"
     href: cli-samples.md
-- name: "Tutorials"
-  items:
-  - name: "Erstellen und Verwalten eines virtuellen Computers"
-    href: ../virtual-machines-windows-tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-  - name: "Lastenausgleich für hoch verfügbare virtuelle Computer"
-    href: load-balanced-iis-tutorial.md
 - name: "Konzepte"
   items:
   - name: "Regionen und Verfügbarkeit"
@@ -261,7 +267,7 @@
     - name: "Verwalten des Zugriffs"
       href: ../../active-directory/active-directory-accessmanagement-groups-with-advanced-rules.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
     - name: "Verschlüsseln eines Datenträgers"
-      href: ../../security/azure-security-disk-encryption.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+      href: encrypt-disks.md
     - name: "Anwenden von Richtlinien auf virtuelle Computer"
       href: policy.md
     - name: "Einrichten von Key Vault"

@@ -10,6 +10,12 @@
 ## [Erstellen Ihrer ersten Vorlage](resource-manager-create-first-template.md)
 ## [Visual Studio mit Resource Manager](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
 
+# Beispiele
+## PowerShell
+### [Bereitstellen der Vorlage](resource-manager-samples-powershell-deploy.md)
+## Azure-Befehlszeilenschnittstelle
+### [Bereitstellen der Vorlage](resource-manager-samples-cli-deploy.md)
+
 # Anleitung
 ## Erstellen von Vorlagen
 ### [Bewährte Methoden für Vorlagen](resource-manager-template-best-practices.md)
@@ -26,8 +32,12 @@
 ### [Freigeben des Status für verknüpfte Vorlagen](best-practices-resource-manager-state.md)
 ### [Muster für das Entwerfen von Vorlagen](best-practices-resource-manager-design-templates.md)
 ## Bereitstellen
-### [PowerShell](resource-group-template-deploy.md)
-### [Azure-Befehlszeilenschnittstelle](resource-group-template-deploy-cli.md)
+### PowerShell
+#### [Bereitstellen der Vorlage](resource-group-template-deploy.md)
+#### [Bereitstellen einer privaten Vorlage mit SAS-Token](resource-manager-powershell-sas-token.md)
+### Azure-Befehlszeilenschnittstelle
+#### [Bereitstellen der Vorlage](resource-group-template-deploy-cli.md)
+#### [Bereitstellen einer privaten Vorlage mit SAS-Token](resource-manager-cli-sas-token.md)
 ### [Portal](resource-group-template-deploy-portal.md)
 ### [REST-API](resource-group-template-deploy-rest.md)
 ### [Continuous Integration in Visual Studio Team Services](../vs-azure-tools-resource-groups-ci-in-vsts.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
