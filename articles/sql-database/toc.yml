@@ -33,18 +33,19 @@
       href: sql-database-connect-query-python.md
     - name: "Ruby"
       href: sql-database-connect-query-ruby.md
+- name: "Lernprogramme"
+  items:
+  - name: "1: Erstellen/Entwerfen einer neuen SQL-Datenbank"
+    href: sql-database-design-first-database.md
+  - name: "2: Migrieren einer vorhandenen SQL Server-Instanz"
+    href: sql-database-migrate-your-sql-server-database.md 
 - name: "Beispiele"
   items:
   - name: "Azure-Befehlszeilenschnittstelle"
     href: sql-database-cli-samples.md
   - name: "PowerShell"
     href: sql-database-powershell-samples.md
-- name: "Tutorials"
-  items:
-  - name: "Erstellen einer Datenbank"
-    href: sql-database-design-first-database.md
-  - name: "Migrieren einer Datenbank"
-    href: sql-database-migrate-your-sql-server-database.md  
+ 
 - name: "Konzepte"
   items:
   - name: "Datenbanken und Server"
@@ -55,8 +56,6 @@
       href: sql-database-server-overview.md
     - name: "Elastische Pools"
       href: sql-database-elastic-pool.md
-    - name: "Sollte ich einen Pool für elastische Datenbanken verwenden?"
-      href: sql-database-elastic-pool-guidance.md
   - name: "Ressourcen"
     items:
     - name: "Dienstebenen"

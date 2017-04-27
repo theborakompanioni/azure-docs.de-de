@@ -21,18 +21,22 @@
     href: app-service-web-get-started-python.md
   - name: "Erstellen einer statischen HTML-Website"
     href: app-service-web-get-started-html.md
+- name: "Lernprogramme"
+  items:
+  - name: "1: .NET mit SQL-Datenbank"
+    href: app-service-web-tutorial-dotnet-sqldatabase.md
+  - name: "1: Node.js mit MongoDB"
+    href: app-service-web-tutorial-nodejs-mongodb-app.md
+  - name: "2: Zuordnen einer benutzerdefinierten Domäne"
+    href: app-service-web-tutorial-custom-domain.md
+  - name: "3: Binden eines SSL-Zertifikats"
+    href: app-service-web-tutorial-custom-ssl.md
 - name: "Beispiele"
   items:
   - name: "Azure-Befehlszeilenschnittstelle"
     href: app-service-cli-samples.md
   - name: "PowerShell"
     href: app-service-powershell-samples.md
-- name: "Tutorials"
-  items:
-  - name: ".NET mit SQL-Datenbank"
-    href: app-service-web-tutorial-dotnet-sqldatabase.md
-  - name: "Node.js mit MongoDB"
-    href: app-service-web-tutorial-nodejs-mongodb-app.md
 - name: "Konzepte"
   items:
   - name: "So funktioniert App Service"
@@ -174,8 +178,6 @@
         href: web-sites-dotnet-entity-framework-row-level-security.md
     - name: "Benutzerdefiniertes SSL zuweisen"
       items:
-      - name: "Kaufen eines SSL-Zertifikats"
-        href: web-sites-purchase-ssl-web-site.md
       - name: "Konfigurieren von SSL-Zertifikaten von Drittanbietern"
         href: web-sites-configure-ssl-certificate.md
     - name: "Erzwingen von HTTPS"

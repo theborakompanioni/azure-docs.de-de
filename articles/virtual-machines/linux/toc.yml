@@ -13,20 +13,30 @@
     href: quick-create-portal.md
   - name: "Erstellen eines virtuellen Computers – PowerShell"
     href: quick-create-powershell.md
+- name: "Lernprogramme"
+  items:
+  - name: "1: Erstellen/Verwalten von virtuellen Computern"
+    href: tutorial-manage-vm.md
+  - name: "2: Erstellen/Verwalten von Datenträgern"
+    href: tutorial-manage-disks.md
+  - name: "3: Automatisieren der Konfiguration"
+    href: tutorial-automate-vm-deployment.md
+  - name: "4: Erstellen von VM-Images"
+    href: tutorial-custom-images.md
+  - name: "5: Hoch verfügbare virtuelle Computer"
+    href: tutorial-availability-sets.md
+  - name: "6: Erstellen einer VM-Skalierungsgruppe"
+    href: tutorial-create-vmss.md
+  - name: "7: Lastenausgleich für virtuelle Computer"
+    href: tutorial-load-balancer.md
+  - name: "8: Verwalten von Netzwerken"
+    href: tutorial-virtual-network.md
 - name: "Beispiele"
   items:
   - name: "Azure-Befehlszeilenschnittstelle"
     href: cli-samples.md
   - name: "PowerShell"
     href: powershell-samples.md
-- name: "Tutorials"
-  items:
-  - name: "Erstellen und Verwalten eines virtuellen Computers"
-    href: tutorial-manage-vm.md
-  - name: "Lastenausgleich für hoch verfügbare virtuelle Computer"
-    href: tutorial-load-balance-nodejs.md
-  - name: "Erstellen einer VM-Skalierungsgruppe"
-    href: tutorial-create-vmss.md
 - name: "Konzepte"
   items:
   - name: "Von Azure unterstützte Distributionen"

@@ -1,10 +1,9 @@
 # Übersicht
 ## [Einführung in den Azure Data Factory-Dienst](data-factory-introduction.md)
 ## Konzepte
-### [Datasets](data-factory-create-datasets.md)
 ### [Pipelines und Aktivitäten](data-factory-create-pipelines.md)
+### [Datasets](data-factory-create-datasets.md)
 ### [Planung und Ausführung](data-factory-scheduling-and-execution.md)
-### [Verknüpfte Computedienste](data-factory-compute-linked-services.md)
 
 # Erste Schritte
 ## [Tutorial: Erstellen einer Pipeline zum Kopieren von Daten](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
@@ -21,6 +20,7 @@
 ### [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 ### [Azure Resource Manager-Vorlage](data-factory-build-your-first-pipeline-using-arm.md)
 ### [REST-API](data-factory-build-your-first-pipeline-using-rest-api.md)
+## [Tutorial: Verschieben von Daten zwischen lokalen Quellen und der Cloud](data-factory-move-data-between-onprem-and-cloud.md)
 ## [Häufig gestellte Fragen](data-factory-faq.md)
 
 # Anleitung
@@ -60,7 +60,7 @@
 #### [Teradata](data-factory-onprem-teradata-connector.md)
 #### [Webtabelle](data-factory-web-table-connector.md)
 ### [Gateway zur Datenverwaltung](data-factory-data-management-gateway.md)
-### [Verschieben von Daten zwischen lokalen Quellen und der Cloud](data-factory-move-data-between-onprem-and-cloud.md)
+
 
 ## [Transformieren von Daten](data-factory-data-transformation-activities.md)
 ### [HDInsight Hive-Aktivität](data-factory-hive-activity.md)
@@ -75,6 +75,7 @@
 ### [Benutzerdefinierte .NET-Aktivität](data-factory-use-custom-activities.md)
 ### [Invoke R scripts (Aufrufen von R-Skripts)](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
 ### [Erneutes Verarbeiten von Modellen in Azure Analysis Services](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/AzureAnalysisServicesProcessSample)
+### [Verknüpfte Computedienste](data-factory-compute-linked-services.md)
 
 ## Entwickeln
 ### [Azure Resource Manager-Vorlage](data-factory-how-to-use-resource-manager-templates.md)

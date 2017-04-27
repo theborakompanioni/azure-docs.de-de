@@ -12,16 +12,30 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
-ms.openlocfilehash: 1092d5963cd1b9e21796809374be2534df39e437
-ms.lasthandoff: 04/08/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: 503d92b694bf57381e7949b0bd379c52916b308a
+ms.lasthandoff: 04/22/2017
 
 ---
 <div class="content">
     <h1>SQL-Datenbank-Dokumentation</h1>
-    <p style="padding-bottom: 0px; max-width: 1050px;">Azure SQL-Datenbank ist eine relationale, auf Microsoft SQL Server basierende Database-as-a-Service-Lösung. SQL-Datenbank ist eine zuverlässige und sichere Hochleistungsdatenbank, mit der Sie datengesteuerte Anwendungen und Websites in der Programmiersprache Ihrer Wahl erstellen können, ohne dass eine Infrastruktur verwaltet werden muss. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie SQL-Datenbank verwenden.</p>
-<h2 style="margin-top: 36px; margin-bottom: 0px;">Schnellstarts</h2>
-<p style="margin-top: 6px; margin-bottom: 6px;">Erstellen Sie eine SQL-Datenbank über:</p>
+    <div class="introHolder" style="justify-content: space-between;">
+        <div class="intro" style="min-width: 200px">
+            <p>Azure SQL-Datenbank ist eine relationale, auf Microsoft SQL Server basierende Database-as-a-Service-Lösung. SQL-Datenbank ist eine zuverlässige und sichere Hochleistungsdatenbank, mit der Sie datengesteuerte Anwendungen und Websites in der Programmiersprache Ihrer Wahl erstellen können, ohne dass eine Infrastruktur verwaltet werden muss. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie SQL-Datenbank verwenden.</p>
+        </div>
+        <a href="https://azure.microsoft.com/en-us/resources/videos/create-sql-database-on-azure/">
+            <div class="calloutHolder" style="max-width: 250px">
+                <div>
+                    <img src="media/index/create-sql-database-on-azure.png" style="width: 250px;" />
+                </div>
+                <div>
+                    <p style="margin-top: 0; color: #6e6e6e">Erstellen einer SQL-Datenbank in Azure. (3:12)</p>
+                </div>
+            </div>
+        </a>
+    </div>
+<h2 style="margin-top: 18px; margin-bottom: 0px;">Fünfminütige Schnellstarts</h2>
+<p style="margin-top: 6px; margin-bottom: 6px;">Erfahren Sie, wie Sie eine SQL-Datenbank erstellen, sie mit SQL Management Studio verwalten und sie für die Entwicklung in C#, Java, Python, Node.js und Ruby nutzen:</p>
 <div class="ico48Case">
     <div class="ico48Link">das 
         <a href="/azure/sql-database/sql-database-get-started-portal">
@@ -43,30 +57,41 @@ ms.lasthandoff: 04/08/2017
     </div>
 </div>
 
-<div class="columnHolder">
-    <div class="column50">
-        <h2 style="margin-top: 36px">Tutorials</h2>
-        <p>Erstellen und Bereitstellen von SQL-Datenbankanwendungen</p>
-        <ul class="spaced">
-            <li><a href="/azure/sql-database/sql-database-design-first-database">Erstellen einer Datenbank</a></li>
-            <li><a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">Migrieren einer Datenbank</a></li>
-        </ul>
-        <h2>Beispiele</h2>
-        <p>Suchen von Skripts zum Verwalten allgemeiner Aufgaben.</p>
-        <ul class="spaced">
-            <li><a href="/azure/sql-database/sql-database-cli-samples">Azure-Befehlszeilenschnittstelle</a></li>
-            <li><a href="/azure/sql-database/sql-database-powershell-samples">Azure PowerShell</a></li>
-        </ul>
-    </div>
-    <div class="column50" style="max-width: 400px">
-        <h2 style="margin-top: 36px">Kostenloses Videotraining</h2>
-        <a href="https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">
-            <img src="media/index/video-training-dotnet.png" width="400" alt="">
-            <p style="margin-top: 0px">Kostenloses PluralSight-Videotraining: Entwickeln mit .NET</a></p>
-    </div>
-</div>
+<h2 style="margin-top: 36px">Schritt-für-Schritt-Tutorials</h2>
+<p>Informationen zum Erstellen, Verwalten und Migrieren von Datenbanken mithilfe der SQL-Datenbank</p>
+<ol>
+    <li><a href="/azure/sql-database/sql-database-design-first-database">Erstellen und Entwerfen des Schemas für eine neue SQL-Datenbank</a></li>
+    <li><a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">Migrieren einer vorhandenen SQL Server-Datenbank zur Verwendung von Azure SQL-Datenbank</a></li>
+</ol>
 
-<hr />
+<h2 style="margin-top: 36px">Kostenloses PluralSight-Videotraining</h2>
+<ul class="panelContent cardsW">
+    <li style="flex: 0 1 25%">
+        <a href="https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02"> 
+            <div class="cardSize">
+                <div class="cardPadding">
+                    <div class="card">
+                       <div class="cardImageOuter">
+                            <div class="cardImage">
+                                <img style="max-width: 100%" alt="" src="media/index/video-training-dotnet.png" data-linktype="external">
+                            </div>
+                        </div>
+                        <div class="cardText">
+                            <p>Entwickeln mit .NET</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </li>
+</ul>
+
+<h2 style="margin-top: 36px">Beispiele</h2>
+<p>Suchen von Skripts zum Verwalten allgemeiner Aufgaben</p>
+<ul class="spaced">
+    <li><a href="/azure/sql-database/sql-database-cli-samples">Azure-Befehlszeilenschnittstelle</a></li>
+    <li><a href="/azure/sql-database/sql-database-powershell-samples">Azure PowerShell</a></li>
+</ul>
 
 <h2 style="margin-top: 36px">Referenz</h2>
 <ul class="panelContent cardsW">
@@ -147,3 +172,4 @@ ms.lasthandoff: 04/08/2017
     </li>
 </ul>
 </div>
+

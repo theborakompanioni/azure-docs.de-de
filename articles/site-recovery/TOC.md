@@ -9,16 +9,17 @@
 
 # Erste Schritte
 ## [Replizieren von VMware-VMs in Azure](site-recovery-vmware-to-azure.md)
-## [Replizieren von VMware-VMs in Azure in einer mehrinstanzenfähigen Bereitstellung (CSP)](site-recovery-multi-tenant-support-vmware-using-csp.md)
+## [Replizieren physischer Server in Azure](site-recovery-physical-servers-to-azure.md) 
 ## [Replizieren von Hyper-V-VMs in Azure (mit VMM)](site-recovery-vmm-to-azure.md)
 ## [Replizieren von Hyper-V-VMs in Azure](site-recovery-hyper-v-site-to-azure.md)
-## [Replizieren von VMware-VMs und physischen Servern an einem sekundären Standort](site-recovery-vmware-to-vmware.md)
 ## [Replizieren von Hyper-V-VMs an einem sekundären Standort (mit VMM)](site-recovery-vmm-to-vmm.md)
+## [Replizieren von VMware-VMs und physischen Servern an einem sekundären Standort](site-recovery-vmware-to-vmware.md)
+## [Replizieren von VMware-VMs in Azure in einer mehrinstanzenfähigen Bereitstellung (CSP)](site-recovery-multi-tenant-support-vmware-using-csp.md)
 
 # Anleitung
 ## Planen
 ### [Voraussetzungen für die Bereitstellung](site-recovery-prereq.md)
-### [Aspekte der Netzwerkinfrastruktur](site-recovery-network-design.md)
+### [Planen der Netzwerkinfrastruktur](site-recovery-network-design.md)
 ### [Planen der Kapazität und Skalieren der VMware-Replikation in Azure](site-recovery-plan-capacity-vmware.md)
 ### [Deployment Planner für die VMware-Replikation in Azure](site-recovery-deployment-planner.md)
 ### [Capacity Planner für die Hyper-V-Replikation](site-recovery-capacity-planner.md)

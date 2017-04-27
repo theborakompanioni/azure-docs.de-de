@@ -12,15 +12,30 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
-ms.openlocfilehash: f6d1595d7ad4f60299308eda505abbcbd7498d64
-ms.lasthandoff: 04/08/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: 77859b2329404fd741f59bedd7b816e4e3a5fbb2
+ms.lasthandoff: 04/22/2017
 
 ---
 <div class="content">
     <h1>Web-Apps-Dokumentation</h1>
-    <p style="padding-bottom: 0px; max-width: 1050px;">Azure-Web-Apps ermöglichen das Erstellen und Hosten von Websites in der Programmiersprache Ihrer Wahl, ohne dass eine Infrastruktur verwaltet werden muss. Der Dienst bietet automatische Skalierung und hohe Verfügbarkeit, unterstützt Windows und Linux (Vorschau) und ermöglicht automatisierte Bereitstellungen über GitHub, Team Services oder ein anderes beliebiges Git-Repository. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie Azure-Web-Apps verwenden.</p>
-<h2 style="margin-top: 36px">Schnellstarts</h2>
+    <div class="introHolder" style="justify-content: space-between;">
+        <div class="intro" style="min-width: 200px">
+            <p>Azure-Web-Apps ermöglichen das Erstellen und Hosten von Webanwendungen in der Programmiersprache Ihrer Wahl, ohne dass eine Infrastruktur verwaltet werden muss. Der Dienst bietet automatische Skalierung und hohe Verfügbarkeit, unterstützt Windows und Linux und ermöglicht automatisierte Bereitstellungen über GitHub, Visual Studio Team Services oder ein anderes beliebiges Git-Repository. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie Azure-Web-Apps verwenden.</p>
+        </div>
+        <a href="https://azure.microsoft.com/en-us/resources/videos/create-a-web-app-with-nodejs-and-azure-app-service/">
+            <div class="calloutHolder" style="max-width: 250px">
+                <div>
+                    <img src="media/index/create-a-web-app-with-nodejs-and-azure-app-service.png" style="width: 250px" />
+                </div>
+                <div>
+                    <p style="margin-top: 0; color: #6e6e6e">Erstellen Sie eine Web-App mit Node.js und Azure App Service. (2:41)</p>
+                </div>
+            </div>
+        </a>
+    </div>
+<h2 style="margin-top: 24px; margin-bottom: 0px;">Fünfminütige Schnellstarts</h2>
+<p style="margin-top: 6px; margin-bottom: 6px;">Erfahren Sie, wie Sie mit Web-Apps Ihre erste Anwendung in der Cloud bereitstellen:</p>
 <div class="ico48Case">
     <div class="ico48Link">
         <a href="/azure/app-service-web/app-service-web-get-started-dotnet">
@@ -59,34 +74,62 @@ ms.lasthandoff: 04/08/2017
         </a>
     </div>
 </div>
-<div class="columnHolder">
-    <div class="column50">
-        <h2 style="margin-top: 36px">Tutorials</h2>
-        <p>Erstellen einfacher Web-Apps in der Cloud</p>
-        <ul class="spaced">
-            <li><a href="/azure/app-service-web/app-service-web-tutorial-dotnet-sqldatabase">Erstellen einer .NET-Anwendung mit Azure SQL-Datenbank</a></li>
-            <li><a href="/azure/app-service-web/app-service-web-tutorial-nodejs-mongodb-app">Erstellen einer Node.js-Anwendung mithilfe von MongoDB</a></li>
-        </ul>
-        <h2>Beispiele</h2>
-        <p>Suchen von Skripts zum Verwalten allgemeiner Aufgaben.</p>
-        <ul class="spaced">
-            <li><a href="/azure/app-service-web/app-service-cli-samples">Azure-Befehlszeilenschnittstelle</a></li>
-            <li><a href="/azure/app-service-web/app-service-powershell-samples">Azure PowerShell</a></li>
-        </ul>
-    </div>
-    <div class="column50" style="max-width: 400px">
-        <h2 style="margin-top: 36px">Kostenloses Videotraining</h2>
-        <a href="https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">
-            <img src="media/index/video-training-dotnet.png" width="400" alt="" />
-            <p style="margin-top: 0px">Kostenloses PluralSight-Videotraining: Entwickeln mit .NET</a></p>
-            <p></p>
-        <p style="margin-top: 36px"></p>
-        <a href="https://www.pluralsight.com/courses/developing-nodejs-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">
-            <img src="media/index/video-training-nodejs.png" width="400" alt="" />
-            <p style="margin-top: 0px">Kostenloses PluralSight-Videotraining: Entwickeln mit Node.js</a></p>
-    </div>
-</div>
-<hr />
+
+<h2 style="margin-top: 36px">Schritt-für-Schritt-Tutorials</h2>
+<p>Informationen zum Bereitstellen, Verwalten und Überwachen von sicheren Webanwendungen in Azure</p>
+<ol>
+    <li>Erstellen einer Anwendung mithilfe von <a href="/azure/app-service-web/app-service-web-tutorial-dotnet-sqldatabase">.NET mit Azure SQL-Datenbank</a> oder <a href="/azure/app-service-web/app-service-web-tutorial-nodejs-mongodb-app">Node.js mit MongoDB</a></li>
+    <li><a href="/azure/app-service-web/app-service-web-tutorial-custom-domain">Zuordnen einer vorhandenen benutzerdefinierten Domäne zu Ihrer Anwendung</a></li>
+    <li><a href="/azure/app-service-web/app-service-web-tutorial-custom-SSL">Binden eines vorhandenen SSL-Zertifikats an Ihre Anwendung</a></li>
+</ol>
+
+<h2 style="margin-top: 36px">Kostenloses PluralSight-Videotraining</h2>
+<ul class="panelContent cardsW">
+    <li style="flex: 0 1 25%">
+        <a href="https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02"> 
+            <div class="cardSize">
+                <div class="cardPadding">
+                    <div class="card">
+                       <div class="cardImageOuter">
+                            <div class="cardImage">
+                                <img style="max-width: 100%" alt="" src="media/index/video-training-dotnet.png" data-linktype="external">
+                            </div>
+                        </div>
+                        <div class="cardText">
+                            <p>Entwickeln mit .NET</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </li>
+    <li style="flex: 0 1 25%">
+        <a href="https://www.pluralsight.com/courses/developing-nodejs-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02"> 
+            <div class="cardSize">
+                <div class="cardPadding">
+                    <div class="card">
+                       <div class="cardImageOuter">
+                            <div class="cardImage">
+                                <img style="max-width: 100%" alt="" src="media/index/video-training-nodejs.png" data-linktype="external">
+                            </div>
+                        </div>
+                        <div class="cardText">
+                            <p>Entwickeln mit Node.js</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </li>
+</ul>
+
+<h2>Beispiele</h2>
+<p>Suchen von Skripts zum Verwalten allgemeiner Aufgaben.</p>
+<ul class="spaced">
+    <li><a href="/azure/app-service-web/app-service-cli-samples">Azure-Befehlszeilenschnittstelle</a></li>
+    <li><a href="/azure/app-service-web/app-service-powershell-samples">Azure PowerShell</a></li>
+</ul>
+
 <h2 style="margin-top: 36px">Referenz</h2>
 <ul class="panelContent cardsW">
     <li>
@@ -129,3 +172,4 @@ ms.lasthandoff: 04/08/2017
     </li>
 </ul>
 </div>
+
