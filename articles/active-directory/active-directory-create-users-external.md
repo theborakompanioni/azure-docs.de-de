@@ -17,6 +17,7 @@ ms.author: curtand
 translationtype: Human Translation
 ms.sourcegitcommit: 7b506668b3025774edec25b6a37b83a47d702cb0
 ms.openlocfilehash: b2eaddc631087d8b7b94e40f508bdd5da5229736
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -43,7 +44,7 @@ In diesem Artikel wird beschrieben, wie Sie Benutzer von anderen Verzeichnissen 
 > [!IMPORTANT]
 > Achten Sie auf die folgenden Probleme, die beim Hinzufügen eines Benutzerkontos auftreten können, wenn Ihre Organisation mehr als eine Domäne verwendet:
 >
-> * Wenn Sie Benutzerkonten mit dem gleichen Benutzerprinzipalnamen (User Principal Name, UPN) domänenübergreifend hinzufügen möchten, fügen Sie **zuerst** beispielsweise geoffgrisso@contoso.onmicrosoft.com, und **anschließend ** geoffgrisso@contoso.com hinzu.
+> * Wenn Sie Benutzerkonten mit dem gleichen Benutzerprinzipalnamen (User Principal Name, UPN) domänenübergreifend hinzufügen möchten, fügen Sie **zuerst** beispielsweise geoffgrisso@contoso.onmicrosoft.com, und **anschließend** geoffgrisso@contoso.com hinzu.
 > * Fügen Sie geoffgrisso@contoso.com **nicht** vor geoffgrisso@contoso.onmicrosoft.com hinzu. Diese Reihenfolge ist wichtig, und es kann umständlich sein, diesen Vorgang rückgängig zu machen.
 >
 >
@@ -86,9 +87,4 @@ Wenn ein Benutzer in seinem Basisverzeichnis gelöscht wird oder sein Microsoft-
 * [Verwalten von Azure AD](active-directory-administer.md)
 * [Verwalten von Kennwörtern in Azure AD](active-directory-manage-passwords.md)
 * [Verwalten von Gruppen in Azure AD](active-directory-manage-groups.md)
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 
