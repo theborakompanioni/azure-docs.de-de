@@ -15,31 +15,31 @@ ms.workload: na
 ms.date: 03/27/2017
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: 420a79a3f98500fa5e9054c3a59d9ac20ecb6cbf
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: 12d4282082b3318bd14535a49e25c8d606d1bd7f
+ms.lasthandoff: 04/26/2017
 
 ---
 
 # <a name="get-started-sending-messages-to-azure-event-hubs-in-net-standard"></a>Erste Schritte beim Senden von Nachrichten an Azure Event Hubs in .NET Standard
 
 > [!NOTE]
-> Dieses Beispiel ist auf [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/SampleSender) verfügbar.
+> Dieses Beispiel ist auf [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender) verfügbar.
 
-Dieses Tutorial zeigt, wie Sie eine .NET Core-Konsolenanwendung schreiben können, die eine Reihe von Nachrichten an einen Event Hub sendet. Sie können die [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/SampleSender)-Projektmappe ohne Änderung ausführen, indem Sie die Zeichenfolgen `EhConnectionString` und `EhEntityPath` durch Ihre Event Hub-Werte ersetzen. Sie können auch die Schritte in diesem Tutorial ausführen, um eine eigene zu erstellen.
+Dieses Tutorial zeigt, wie Sie eine .NET Core-Konsolenanwendung schreiben können, die eine Reihe von Nachrichten an einen Event Hub sendet. Sie können die [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender)-Projektmappe ohne Änderung ausführen, indem Sie die Zeichenfolgen `EhConnectionString` und `EhEntityPath` durch Ihre Event Hub-Werte ersetzen. Sie können auch die Schritte in diesem Tutorial ausführen, um eine eigene zu erstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * [Microsoft Visual Studio 2015 oder 2017](http://www.visualstudio.com) In den Beispielen in diesem Tutorial wird Visual Studio 2017 verwendet, aber Visual Studio 2015 wird ebenfalls unterstützt.
 * [.NET Core Visual Studio 2015- oder 2017-Tools](http://www.microsoft.com/net/core).
 * Ein Azure-Abonnement.
-* Ein Event Hubs-Namespace
+* Ein Event Hub-Namespace.
 
 Um Nachrichten an eine Event Hubs-Instanz senden zu können, erstellen wir mithilfe von Visual Studio eine C#-Konsolenanwendung.
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Erstellen eines Event Hubs-Namespace und eines Event Hubs
 
-Verwenden Sie zunächst das [Azure-Portal](https://portal.azure.com), um einen Namespace vom Typ „Event Hubs“ zu erstellen, und rufen Sie damit die Verwaltungsanmeldeinformationen ab, die Ihre Anwendung benötigt, um mit der Event Hubs-Instanz zu kommunizieren. Folgen Sie dem Ablauf in [diesem Artikel](event-hubs-create.md), um einen Namespace und eine Event Hubs-Instanz zu erstellen, und fahren Sie dann mit folgenden Schritten fort.
+Verwenden Sie zunächst das [Azure-Portal](https://portal.azure.com), um einen Namespace für den Event Hub-Typ zu erstellen, und rufen Sie die Verwaltungsanmeldeinformationen ab, die Ihre Anwendung benötigt, um mit dem Event Hub zu kommunizieren. Folgen Sie dem Ablauf in [diesem Artikel](event-hubs-create.md), um einen Namespace und einen Event Hub zu erstellen, und fahren Sie dann mit folgenden Schritten fort.
 
 ## <a name="create-a-console-application"></a>Erstellen einer Konsolenanwendung
 
@@ -96,7 +96,7 @@ Fügen Sie Ihrem Projekt das NuGet-Paket [`Microsoft.Azure.EventHubs`](https://w
 4. Fügen Sie wie folgt eine neue Methode mit dem Namen `SendMessagesToEventHub` in die `Program`-Klasse ein:
 
     ```csharp
-    // Creates an Event Hub client and sends 100 messages to the event hub.
+    // Creates an event hub client and sends 100 messages to the event hub.
     private static async Task SendMessagesToEventHub(int numMessagesToSend)
     {
         for (var i = 0; i < numMessagesToSend; i++)
@@ -166,7 +166,7 @@ Fügen Sie Ihrem Projekt das NuGet-Paket [`Microsoft.Azure.EventHubs`](https://w
                 Console.ReadLine();
             }
 
-            // Creates an Event Hub client and sends 100 messages to the event hub.
+            // Creates an event hub client and sends 100 messages to the event hub.
             private static async Task SendMessagesToEventHub(int numMessagesToSend)
             {
                 for (var i = 0; i < numMessagesToSend; i++)

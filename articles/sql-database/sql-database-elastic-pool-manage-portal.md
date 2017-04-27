@@ -11,15 +11,15 @@ ms.assetid: 3dc9b7a3-4b10-423a-8e44-9174aca5cf3d
 ms.service: sql-database
 ms.custom: multiple databases
 ms.devlang: NA
-ms.date: 11/17/2016
+ms.date: 04/18/2016
 ms.author: ninarn
 ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: 878bb6e792cff555747912a57c1a15632f06b2f7
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 66f7cc63d311b6b5cd223fe0d8a9bf9f636abef1
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -53,7 +53,7 @@ Am einfachsten verschieben Sie vorhandene Datenbanken in einen Pool für elastis
 
     **ODER**
 
-    Unter Umständen wird eine Meldung angezeigt, die darauf hinweist, dass empfohlene elastische Pools für den Server vorhanden sind (nur V12). Klicken Sie auf die Meldung, um die Pools anzuzeigen, die basierend auf den Telemetriedaten zur bisherigen Datenbanknutzung empfohlen werden. Klicken Sie anschließend auf die Ebene, um weitere Details anzuzeigen und den Pool anzupassen. Informationen zur Bereitstellung der Empfehlung finden Sie weiter unten in diesem Thema unter [Grundlagen von Poolempfehlungen](#understand-pool-recommendations).
+    Unter Umständen wird eine Meldung angezeigt, die darauf hinweist, dass empfohlene elastische Pools für den Server vorhanden sind. Klicken Sie auf die Meldung, um die Pools anzuzeigen, die basierend auf den Telemetriedaten zur bisherigen Datenbanknutzung empfohlen werden. Klicken Sie anschließend auf die Ebene, um weitere Details anzuzeigen und den Pool anzupassen. Informationen zur Bereitstellung der Empfehlung finden Sie weiter unten in diesem Thema unter [Grundlagen von Poolempfehlungen](#understand-pool-recommendations).
 
     ![Empfohlener Pool](./media/sql-database-elastic-pool-create-portal/recommended-pool.png)
 
@@ -88,13 +88,12 @@ Klicken Sie nach dem Festlegen des Tarifs auf „Pool konfigurieren“. Fügen S
 
     Wenn die von Ihnen verwendeten Datenbanken über ausreichend Telemetriedaten zur bisherigen Nutzung verfügen, werden der Graph **Estimated eDTU and GB usage** (Geschätzte eDTU- und GB-Nutzung) und das Balkendiagramm **Actual eDTU usage** (Tatsächliche eDTU-Nutzung) aktualisiert. Diese helfen Ihnen, Konfigurationsentscheidungen zu treffen. Außerdem erhalten Sie vom Dienst unter Umständen eine Empfehlungsnachricht zur richtigen Dimensionierung des Pools. Weitere Informationen finden Sie unter [Dynamic Recommendations](#dynamic-recommendations)weiter.
 
-3. Verwenden Sie die Steuerelemente auf der Seite **Pool konfigurieren** , um die Einstellungen zu untersuchen und den Pool zu konfigurieren. Ausführlichere Informationen zu den Grenzwerten für die einzelnen Dienstebenen finden Sie in den [Beschränkungen für Pools für elastische Datenbanken](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools). Eine ausführliche Anleitung zur Wahl der passenden Poolgröße finden Sie unter [Wann sollte ein elastischer Pool verwendet werden?](sql-database-elastic-pool-guidance.md). Weitere Informationen zu Pooleinstellungen finden Sie unter [Eigenschaften von Pools für elastische Datenbanken](sql-database-elastic-pool.md#elastic-pool-properties).
+3. Verwenden Sie die Steuerelemente auf der Seite **Pool konfigurieren** , um die Einstellungen zu untersuchen und den Pool zu konfigurieren. Ausführlichere Informationen zu den Grenzwerten für die einzelnen Dienstebenen finden Sie in den [Beschränkungen für Pools für elastische Datenbanken](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools). Eine ausführliche Anleitung zur Wahl der passenden Poolgröße finden Sie unter [Wann sollte ein elastischer Pool verwendet werden?](sql-database-elastic-pool.md). Weitere Informationen zu Pooleinstellungen finden Sie unter [Eigenschaften von Pools für elastische Datenbanken](sql-database-elastic-pool.md#database-properties-for-pooled-databases).
 
     ![Konfigurieren eines elastischen Pools](./media/sql-database-elastic-pool-create-portal/configure-performance.png)
 
 4. Klicken Sie auf **Auswählen** in the **Configure Pool** .
 5. Klicken Sie auf **OK** , um den Pool zu erstellen.
-
 
 ## <a name="understand-elastic-pool-recommendations"></a>Grundlegendes zu Empfehlungen für Pools für elastische Datenbanken
 
@@ -104,12 +103,13 @@ Der SQL-Datenbankdienst bewertet den Nutzungsverlauf und empfiehlt einen oder me
 
 Die Poolempfehlung umfasst Folgendes:
 
-- Tarif für den Pool (Basic, Standard oder Premium)
+- Tarif für den Pool (Basic, Standard, Premium oder Premium RS)
 - Passende **POOL-eDTUs** (auch als maximale eDTUs pro Pool bezeichnet)
 - **eDTU maximal** und **eDTU minimal** pro Datenbank
 - Liste der empfohlenen Datenbanken für den Pool
 
-> ![WICHTIG] Der Dienst berücksichtigt bei Poolempfehlungen Telemetriedaten der letzten 30 Tage. Damit eine Datenbank für einen Pool für elastische Datenbanken infrage kommt, muss sie seit mindestens sieben Tagen vorhanden sein. Datenbanken, die sich bereits in einem elastischen Pool befinden, werden nicht als Kandidaten für elastische Pools empfohlen.
+> [!IMPORTANT]
+> Der Dienst berücksichtigt bei der Empfehlung von Pools die Telemetrie der letzten 30 Tage. Damit eine Datenbank für einen Pool für elastische Datenbanken infrage kommt, muss sie seit mindestens sieben Tagen vorhanden sein. Datenbanken, die sich bereits in einem elastischen Pool befinden, werden nicht als Kandidaten für elastische Pools empfohlen.
 >
 
 Der Dienst bewertet den Ressourcenbedarf und die Kosteneffizienz beim Verschieben der Einzeldatenbanken auf jeder Dienstebene in Pools auf der gleichen Ebene. Beispielsweise werden alle Datenbanken der Standard-Edition auf einem Server entsprechend ihrer Eignung für einen elastischen Pool der Standard-Edition bewertet. Dies bedeutet, dass der Dienst keine tarifübergreifenden Empfehlungen trifft, also etwa eine Standard-Datenbank nicht in einen Premium-Pool verschiebt.
@@ -260,7 +260,7 @@ Sie können Datenbanken in einem vorhandenen Pool hinzufügen oder entfernen. Da
 
 ## <a name="change-performance-settings-of-an-elastic-pool"></a>Ändern der Leistungseinstellungen eines Pools für elastische Datenbanken
 
-Im Zuge der Überwachung der Ressourcenverwendung eines Pools für elastische Datenbanken stellen Sie unter Umständen fest, dass gewisse Anpassungen erforderlich sind. Möglicherweise muss die Leistung oder Speicherbegrenzung des Pools geändert werden. Gegebenenfalls möchten Sie auch die Datenbankeinstellungen im Pool ändern. Sie können das Setup des Pools jederzeit ändern, um die beste Leistungsverteilung und Kosteneffizienz zu erzielen. Weitere Informationen finden Sie unter [Wann sollte ein elastischer Pool verwendet werden?](sql-database-elastic-pool-guidance.md).
+Im Zuge der Überwachung der Ressourcenverwendung eines Pools für elastische Datenbanken stellen Sie unter Umständen fest, dass gewisse Anpassungen erforderlich sind. Möglicherweise muss die Leistung oder Speicherbegrenzung des Pools geändert werden. Gegebenenfalls möchten Sie auch die Datenbankeinstellungen im Pool ändern. Sie können das Setup des Pools jederzeit ändern, um die beste Leistungsverteilung und Kosteneffizienz zu erzielen. Weitere Informationen finden Sie unter [Wann sollte ein elastischer Pool verwendet werden?](sql-database-elastic-pool.md).
 
 So ändern Sie die eDTUs oder Speicherbegrenzungen pro Pool und die eDTUs pro Datenbank:
 
@@ -281,7 +281,7 @@ So ändern Sie die eDTUs oder Speicherbegrenzungen pro Pool und die eDTUs pro Da
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Das Konzept eines Pools für elastische Datenbanken wird unter [Was ist ein Azure SQL-Pool für elastische Datenbanken?](sql-database-elastic-pool.md) erläutert.
-- Informationen zur Verwendung von Pools für elastische Datenbanken finden Sie unter [Wann sollte ein elastischer Pool verwendet werden?](sql-database-elastic-pool-guidance.md).
+- Informationen zur Verwendung von Pools für elastische Datenbanken finden Sie unter [Wann sollte ein elastischer Pool verwendet werden?](sql-database-elastic-pool.md).
 - Informationen zur Verwendung elastischer Aufträge, um Transact-SQL-Skripts für eine beliebige Anzahl von Datenbanken im Pool auszuführen, finden Sie in der [Übersicht über elastische Aufträge](sql-database-elastic-jobs-overview.md).
 - Informationen zum Durchführen übergreifender Abfragen für eine beliebige Anzahl von Datenbanken im Pool finden Sie in der [Übersicht über elastische Abfragen](sql-database-elastic-query-overview.md).
 - Informationen zum Durchführen von Transaktionen für eine beliebige Anzahl von Datenbanken im Pool finden Sie in der [Übersicht über elastische Datenbanktransaktionen mit Azure SQL-Datenbank](sql-database-elastic-transactions-overview.md).
