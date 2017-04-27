@@ -56,7 +56,7 @@ In diesem Beispiel analysieren Sie Websiteprotokolle in einem HDInsight-Cluster,
 ## <a name="next-steps"></a>Nächste Schritte
 Versuchen Sie es mit dem folgenden Beispiel: [Analysieren von Sensordaten mit Hive mit HDInsight](hdinsight-hive-analyze-sensor-data.md).
 
-[hdinsight-provision]: hdinsight-provision-clusters.md
+[hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
 [hdinsight-sensor-data-sample]: ../hdinsight-use-hive-sensor-data-analysis.md
 
 [img-hdi-weblogs-sample]: ./media/hdinsight-hive-analyze-website-log/hdinsight-weblogs-sample.png

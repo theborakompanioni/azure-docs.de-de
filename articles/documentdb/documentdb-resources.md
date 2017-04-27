@@ -17,9 +17,9 @@ ms.date: 03/14/2017
 ms.author: anhoh
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 0c62fc01947e0f2e4b0e45d176d5af04c6250fa8
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: ec64215bfa3b812cddbed290d343c2d99fb70257
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -202,7 +202,7 @@ Die Dokumente in einer Sammlung können beliebige Schemas aufweisen, und Sie kö
 Das Abfragemodell von DocumentDB versucht die Balance zwischen Funktionalität, Effizienz und Einfachheit zu finden. Das Datenbankmodul von DocumentDB kompiliert die SQL-Abfrageanweisungen und führt sie aus. Sie können eine Sammlung mithilfe der [Azure DocumentDB-REST-APIs](https://msdn.microsoft.com/library/azure/dn781481.aspx) oder eines der [Client-SDKs](https://msdn.microsoft.com/library/azure/dn781482.aspx) abfragen. Das .NET-SDK verfügt über einen LINQ-Anbieter.
 
 > [!TIP]
-> Im [Query Playground](https://www.documentdb.com/sql/demo)können Sie DocumentDB testen und SQL-Abfragen für unser DataSet ausführen..
+> Im [Query Playground](https://www.documentdb.com/sql/demo)können Sie DocumentDB testen und SQL-Abfragen für unser DataSet ausführen.
 > 
 > 
 
@@ -408,7 +408,7 @@ Das Aufheben der Registrierung für eine benutzerdefinierte Funktion erfolgt üb
 Obwohl die obigen Codeausschnitte die Registrierung (POST), die Aufhebung der Registrierung (PUT), das Lesen/Auflisten (GET) und die Ausführung (POST) über das [DocumentDB-JavaScript-SDK](https://github.com/Azure/azure-documentdb-js) veranschaulicht haben, können Sie auch die [REST-APIs](https://msdn.microsoft.com/library/azure/dn781481.aspx) oder andere [Client-SDKs](https://msdn.microsoft.com/library/azure/dn781482.aspx) verwenden. 
 
 ## <a name="documents"></a>Dokumente
-Sie können beliebige JSON-Dokumente zu einer Sammlung hinzufügen, sie dort ersetzen, löschen, lesen, aufzählen und abfragen. DocumentDB erfordert weder Schema noch sekundäre Indizes, um die dokumentübergreifende Abfrage in einer Sammlung zu unterstützen. Die maximale Größe für ein Dokument beträgt standardmäßig 2 MB.   
+Sie können beliebige JSON-Dokumente zu einer Sammlung hinzufügen, sie dort ersetzen, löschen, lesen, aufzählen und abfragen. DocumentDB erfordert weder Schema noch sekundäre Indizes, um die dokumentübergreifende Abfrage in einer Sammlung zu unterstützen. Die maximale Größe für ein Dokument beträgt 2 MB.   
 
 DocumentDB ist ein ganz und gar offener Datenbankdienst, der keine speziellen Datentypen (z. B. Datum/Uhrzeit) oder bestimmte Codierungen für JSON-Dokumente einführt. Beachten Sie, dass für DocumentDB keine speziellen JSON-Konventionen erforderlich sind, um die Beziehungen zwischen verschiedenen Dokumenten festzuschreiben. Die SQL-Syntax von DocumentDB bietet sehr leistungsstarke hierarchische und relationale Abfrageoperatoren, um Dokumente ohne spezielle Anmerkungen oder die Festschreibung der Beziehungen zwischen Dokumenten mithilfe unterschiedlicher Eigenschaften abzufragen und zu projizieren.  
 

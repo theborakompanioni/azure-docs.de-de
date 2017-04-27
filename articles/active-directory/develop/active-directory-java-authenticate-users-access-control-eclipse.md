@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 12/22/2016
+ms.date: 04/25/2017
 ms.author: robmcm
 translationtype: Human Translation
 ms.sourcegitcommit: 3e0f8d92495c976040113f8edc0d4c789920c549
 ms.openlocfilehash: e22dca7b666720edfcbfd1b871d98b9468441fbd
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -236,7 +237,7 @@ Schließen Sie nach der Bereitstellung Ihrer Webanwendung alle offenen Browser-S
 
 Wenn Sie Ihre Hello World-ACS-Anwendung nicht mehr benötigen, denken Sie daran, die Bereitstellung zu löschen (Informationen dazu finden Sie im Thema [Erstellen einer Hello World-Anwendung für Azure in Eclipse](http://msdn.microsoft.com/library/windowsazure/hh690944.aspx) .
 
-## <a name="a-namenextstepsanext-steps"></a><a name="next_steps"></a>Nächste Schritte
+## <a name="next_steps"></a>Nächste Schritte
 Informationen zur vom ACS an Ihre Anwendung zurückgegebenen Security Assertion Markup Language (SAML) finden Sie unter [How to view SAML returned by the Azure Access Control Service][How to view SAML returned by the Azure Access Control Service] (Anzeigen der vom Azure Access Control Service zurückgegebenen SAML). Wenn Sie die ACS-Funktionalität genauer erforschen und mit anspruchsvolleren Szenarien experimentieren möchten, finden Sie weitere Informationen unter [Access Control Service 2.0][Access Control Service 2.0].
 
 In diesem Beispiel wurde auch die Option **Embed the certificate in the WAR file** verwendet. Diese Option vereinfacht die Bereitstellung des Zertifikats. Wenn Sie stattdessen Ihr Signaturzertifikat von Ihrer WAR-Datei getrennt halten möchten, gehen Sie folgendermaßen vor:
@@ -296,10 +297,5 @@ An diesem Punkt wird Ihr Zertifikat in Ihre Bereitstellung aufgenommen. Bitte be
 [add_jsp_file_acs]: ./media/active-directory-java-authenticate-users-access-control-eclipse/AddJSPFileACS.png
 [create_acs_hello_world]: ./media/active-directory-java-authenticate-users-access-control-eclipse/CreateACSHelloWorld.png
 [add_token_signing_cert]: ./media/active-directory-java-authenticate-users-access-control-eclipse/AddTokenSigningCertificate.png
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

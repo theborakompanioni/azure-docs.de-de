@@ -14,150 +14,134 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/17/2017
+ms.date: 04/14/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: a8058d8a2af2836b9e1ac611b272408b10804f24
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: 5953a4d15af087b30c8bd17245108894791bdf15
+ms.lasthandoff: 04/17/2017
 
 
 ---
-# <a name="run-hive-queries-with-hadoop-in-hdinsight-with-curl"></a>Ausführen von Hive-Abfragen mit Hadoop in HDInsight mit Curl
+# <a name="run-hive-queries-with-hadoop-in-hdinsight-using-rest"></a>Ausführen von Hive-Abfragen mit Hadoop in HDInsight mit REST
+
 [!INCLUDE [hive-selector](../../includes/hdinsight-selector-use-hive.md)]
 
-In diesem Dokument erfahren Sie, wie mithilfe von Curl Hive-Abfragen auf einem Hadoop-Cluster in Azure HDInsight ausgeführt werden.
+Erfahren Sie, wie Sie die WebHCat-REST-API verwenden, um Hive-Abfragen mit Hadoop in Azure HDInsight-Clustern auszuführen.
 
-Curl wird verwendet, um zu veranschaulichen, wie Sie über unformatierte HTTP-Anforderungen zum Ausführen, Überwachen und Abrufen der Ergebnisse der Hive-Abfragen mit HDInsight interagieren können. Dies funktioniert mithilfe der WebHCat REST-API (ehemals Templeton), die von Ihrem HDInsight-Cluster bereitgestellt wird.
+[Curl](http://curl.haxx.se/) dient zum Veranschaulichen der Interaktion mit HDInsight über unformatierte HTTP-Anforderungen. Das Hilfsprogramm [q](http://stedolan.github.io/jq/) wird verwendet, um die von REST-Anforderungen zurückgegebenen JSON-Daten zu verarbeiten.
 
 > [!NOTE]
-> Wenn Sie bereits mit der Verwendung von Linux-basierten Hadoop-Servern vertraut sind, jedoch noch nicht mit HDInsight, finden Sie weitere Informationen unter [Was Sie über Hadoop auf Linux-basiertem HDInsight wissen müssen](hdinsight-hadoop-linux-information.md).
+> Wenn Sie bereits mit der Verwendung von Linux-basierten Hadoop-Servern vertraut sind, jedoch noch nicht mit HDInsight, finden Sie weitere Informationen im Artikel [Was Sie über Hadoop auf Linux-basiertem HDInsight wissen müssen](hdinsight-hadoop-linux-information.md).
 
+## <a id="curl"></a>Ausführen von Hive-Abfragen
 
-## <a id="prereq"></a>Voraussetzungen
-Um die in diesem Artikel aufgeführten Schritte auszuführen, benötigen Sie Folgendes:
-
-* Hadoop in einem HDInsight-Cluster
-* [Curl](http://curl.haxx.se/)
-* [jq](http://stedolan.github.io/jq/)
-
-## <a id="curl"></a>Ausführen von Hive-Abfragen mit Curl
 > [!NOTE]
-> Wenn Sie Curl oder eine andere REST-Kommunikation mit WebHCat verwenden, müssen Sie die Anforderungen authentifizieren, indem Sie den Benutzernamen und das Kennwort des Administrators des HDInsight-Clusters bereitstellen. Sie müssen auch den Clusternamen als Teil des URIs (Uniform Resource Identifier) verwenden, um die Anforderungen an den Server zu senden.
-> 
+> Wenn Sie cURL oder eine andere REST-Kommunikation mit WebHCat verwenden, müssen Sie die Anforderungen authentifizieren, indem Sie den Benutzernamen und das Kennwort des Administrators des HDInsight-Clusters bereitstellen.
+>
 > Ersetzen Sie für die Befehle in diesem Abschnitt die Option **BENUTZERNAME** zur Authentifizierung im Cluster durch den Benutzer und die Option **KENNWORT** durch das Kennwort für das Benutzerkonto. Ersetzen Sie **CLUSTERNAME** durch den Namen Ihres Clusters.
-> 
-> Die REST-API wird durch [Standardauthentifizierung](http://en.wikipedia.org/wiki/Basic_access_authentication)gesichert. Sie sollten Anforderungen immer über HTTPS (Secure HTTP) stellen, um sicherzustellen, dass Ihre Anmeldeinformationen sicher an den Server gesendet werden.
-> 
-> 
+>
+> Die REST-API wird durch [Standardauthentifizierung](http://en.wikipedia.org/wiki/Basic_access_authentication)gesichert. Stellen Sie Anforderungen immer über HTTPS (Secure HTTP), um sicherzustellen, dass Ihre Anmeldeinformationen sicher an den Server gesendet werden.
 
 1. Verwenden Sie den folgenden Befehl in einer Befehlszeile, um zu überprüfen, ob Sie die Verbindung zum HDInsight-Cluster herstellen können:
-   
-        curl -u USERNAME:PASSWORD -G https://CLUSTERNAME.azurehdinsight.net/templeton/v1/status
-   
-    Sie sollten eine Antwort empfangen, die in etwa der im Folgenden aufgeführten entspricht:
-   
+
+    ```bash
+    curl -u USERNAME:PASSWORD -G https://CLUSTERNAME.azurehdinsight.net/templeton/v1/status
+    ```
+
+    Sie empfangen eine Antwort, die in etwa dem folgenden Text entspricht:
+
         {"status":"ok","version":"v1"}
-   
+
     Folgende Parameter werden in diesem Befehl verwendet:
-   
+
    * **-u** – Der Benutzername und das Kennwort für die Authentifizierung der Anforderung
-   * **-G** – Gibt an, dass dies eine GET-Anforderung ist
-     
+   * **-G**: Gibt an, dass diese Anforderung ein GET-Vorgang ist.
+
      Der Anfang der URL, **https://CLUSTERNAME.azurehdinsight.net/templeton/v1**, ist für alle Anforderungen identisch. Der Pfad, **/status**, gibt an, dass die Anforderung den Status von WebHCat (auch bekannt als Templeton) für den Server zurückgibt. Sie können mit dem folgenden Befehl auch die Version von Hive anfordern:
-     
-       curl -u USERNAME:PASSWORD -G https://CLUSTERNAME.azurehdinsight.net/templeton/v1/version/hive
-     
-     Daraufhin sollte eine Antwort ähnlich der folgenden zurückgegeben werden:
-     
+
+    ```bash
+    curl -u USERNAME:PASSWORD -G https://CLUSTERNAME.azurehdinsight.net/templeton/v1/version/hive
+    ```
+
+     Die Anforderung gibt in etwa folgenden Text zurück:
+
        {"module":"hive","version":"0.13.0.2.1.6.0-2103"}
-2. Verwenden Sie Folgendes, um eine neue Tabelle namens **log4jLogs**zu erstellen:
-   
-        curl -u USERNAME:PASSWORD -d user.name=USERNAME -d execute="set+hive.execution.engine=tez;DROP+TABLE+log4jLogs;CREATE+EXTERNAL+TABLE+log4jLogs(t1+string,t2+string,t3+string,t4+string,t5+string,t6+string,t7+string)+ROW+FORMAT+DELIMITED+FIELDS+TERMINATED+BY+' '+STORED+AS+TEXTFILE+LOCATION+'wasbs:///example/data/';SELECT+t4+AS+sev,COUNT(*)+AS+count+FROM+log4jLogs+WHERE+t4+=+'[ERROR]'+AND+INPUT__FILE__NAME+LIKE+'%25.log'+GROUP+BY+t4;" -d statusdir="wasbs:///example/curl" https://CLUSTERNAME.azurehdinsight.net/templeton/v1/hive
-   
-    Folgende Parameter werden in diesem Befehl verwendet:
-   
+
+2. Verwenden Sie Folgendes, um eine Tabelle namens **log4jLogs**zu erstellen:
+
+    ```bash
+    curl -u USERNAME:PASSWORD -d user.name=USERNAME -d execute="set+hive.execution.engine=tez;DROP+TABLE+log4jLogs;CREATE+EXTERNAL+TABLE+log4jLogs(t1+string,t2+string,t3+string,t4+string,t5+string,t6+string,t7+string)+ROW+FORMAT+DELIMITED+FIELDS+TERMINATED+BY+' '+STORED+AS+TEXTFILE+LOCATION+'/example/data/';SELECT+t4+AS+sev,COUNT(*)+AS+count+FROM+log4jLogs+WHERE+t4+=+'[ERROR]'+AND+INPUT__FILE__NAME+LIKE+'%25.log'+GROUP+BY+t4;" -d statusdir="/example/curl" https://CLUSTERNAME.azurehdinsight.net/templeton/v1/hive
+    ```
+
+    Die folgenden Parameter werden mit dieser Anforderung verwendet:
+
    * **-d**: Da `-G` nicht verwendet wird, verwendet die Anforderung standardmäßig die POST-Methode. `-d` gibt die Datenwerte an, die mit der Anforderung gesendet werden.
-     
+
      * **user.name** – Der Benutzer, der den Befehl ausführt
      * **execute** – Die auszuführenden HiveQL-Anweisungen
-     * **statusdir** – Das Verzeichnis, in das die Statusangaben für diesen Auftrag geschrieben werden.
-     
+     * **statusdir**: Das Verzeichnis, in das die Statusangaben für diesen Auftrag geschrieben werden.
+
      Diese Anweisungen führen die folgenden Aktionen aus:
-   * **TABELLE LÖSCHEN** – Löscht Tabelle und Datendatei, falls die Tabelle bereits vorhanden ist.
-   * **EXTERNE TABELLE ERSTELLEN** - Erstellt eine neue "externe" Tabelle in Hive. Externe Tabellen speichern nur die Tabellendefinition in Hive. Die Daten verbleiben an ihrem ursprünglichen Speicherort.
-     
+   * **DROP TABLE**: Wenn die Tabelle bereits vorhanden ist, wird sie gelöscht.
+   * **EXTERNE TABELLE ERSTELLEN** : Erstellt eine neue "externe" Tabelle in Hive. Externe Tabellen speichern nur die Tabellendefinition in Hive. Die Daten verbleiben an ihrem ursprünglichen Speicherort.
+
      > [!NOTE]
-     > Wenn erwartet wird, dass die zugrunde liegenden Daten über eine externe Quelle, z. B. einen automatisierten Prozess zum Hochladen von Daten, oder über einen anderen MapReduce-Vorgang aktualisiert, aber von Hive immer die neuesten Daten verwendet werden, sollten externe Tabellen verwendet werden.
-     > 
+     > Externe Tabellen sollten Sie verwenden, wenn Sie erwarten, dass die zugrunde liegenden Daten aus einer externen Quelle aktualisiert werden. Das könnte z.B. ein automatisierter Datenupload oder ein anderer MapReduce-Vorgang sein.
+     >
      > Durch das Löschen einer externen Tabelle werden **nicht** die Daten, sondern nur die Tabellendefinitionen gelöscht.
-     > 
-     > 
-   * **ZEILENFORMAT** : Teilt Hive mit, wie die Daten formatiert werden. In diesem Fall werden die Felder in den einzelnen Protokollen durch Leerzeichen getrennt.
-   * **SPEICHERORT DER TEXTDATEI** – Teilt Hive den Speicherort der Daten (das Verzeichnis "example/data") und die Information mit, dass die Speicherung als Text erfolgt.
-   * **SELECT**: Wählt die Anzahl aller Zeilen aus, bei denen die Spalte **t4** den Wert **[ERROR]** enthält. Dadurch sollte der Wert **3** zurückgegeben werden, da dieser Wert in drei Zeilen enthalten ist.
-     
+
+   * **ROW FORMAT**: Gibt an, wie die Daten formatiert werden. Die Felder werden in den einzelnen Protokollen durch Leerzeichen getrennt.
+   * **STORED AS TEXTFILE LOCATION**: Gibt den Speicherort der Daten (das Verzeichnis „example/data“) und die Information an, dass die Speicherung als Text erfolgt.
+   * **SELECT**: Wählt die Anzahl aller Zeilen aus, bei denen die Spalte **t4** den Wert **[ERROR]** enthält. Mit dieser Anweisung wird der Wert **3** zurückgegeben, da dieser Wert in drei Zeilen enthalten ist.
+
      > [!NOTE]
      > Beachten Sie, dass die Leerzeichen zwischen HiveQL-Anweisungen bei Curl durch das Zeichen `+` ersetzt werden. Werte in Anführungszeichen, die ein Leerzeichen enthalten, z. B. das Trennzeichen, dürfen nicht durch `+` ersetzt werden.
-     > 
-     > 
-   * **INPUT__FILE__NAME LIKE '%25.log'**: Begrenzt die Suche auf Dateien mit der Erweiterung „.log“. Wenn dies nicht angegeben wird, versucht Hive alle Dateien in diesem Verzeichnis und den zugehörigen Unterverzeichnissen zu durchsuchen, einschließlich der Dateien, die nicht dem für diese Tabelle definierten Spaltenschema entsprechen.
-     
+
+   * **INPUT__FILE__NAME LIKE '%25.log'**: Diese Anweisung begrenzt die Suche auf Dateien mit der Erweiterung „.log“.
+
      > [!NOTE]
-     > Beachten Sie, dass "%25" der URL-codierten Form von "%" entspricht. Daher lautet die tatsächliche Bedingung `like '%.log'`. "%" muss URL-codiert werden, da dieses Zeichen in URLs als Sonderzeichen behandelt wird.
-     > 
-     > 
-     
+     > `%25` entspricht der URL-codierten Form von „%“. Daher lautet die tatsächliche Bedingung `like '%.log'`. "%" muss URL-codiert werden, da dieses Zeichen in URLs als Sonderzeichen behandelt wird.
+
      Dieser Befehl sollte eine Auftrags-ID zurückgeben, mit der der Status des Auftrags überprüft werden kann.
-     
+
        {"id":"job_1415651640909_0026"}
-3. Verwenden Sie den folgenden Befehl, um den Status des Auftrags zu prüfen. Ersetzen Sie **JOBID** durch den Wert, der im vorherigen Schritt zurückgegeben wurde. Wenn der Rückgabewert z. B. `{"id":"job_1415651640909_0026"}` lautet, ist die **JOBID** `job_1415651640909_0026`.
-   
-        curl -G -u USERNAME:PASSWORD -d user.name=USERNAME https://CLUSTERNAME.azurehdinsight.net/templeton/v1/jobs/JOBID | jq .status.state
-   
-    Wenn der Auftrag abgeschlossen ist, wird der Status **ERFOLGREICH**angezeigt.
-   
+
+3. Verwenden Sie den folgenden Befehl, um den Status des Auftrags zu prüfen:
+
+    ```bash
+    curl -G -u USERNAME:PASSWORD -d user.name=USERNAME https://CLUSTERNAME.azurehdinsight.net/templeton/v1/jobs/JOBID | jq .status.state
+    ```
+
+    Ersetzen Sie **JOBID** durch den Wert, der im vorherigen Schritt zurückgegeben wurde. Wenn der Rückgabewert z. B. `{"id":"job_1415651640909_0026"}` lautet, ist die **JOBID** `job_1415651640909_0026`.
+
+    Wenn der Auftrag abgeschlossen ist, wird der Status **ERFOLGREICH** angezeigt.
+
    > [!NOTE]
-   > Diese Curl-Anforderung gibt ein JSON-Dokument (JavaScript Object Notation) mit Informationen zum Auftrag zurück. Mithilfe von "jq" wird nur der Statuswert abgerufen.
-   > 
-   > 
-4. Sobald der Status des Auftrags zu **ERFOLGREICH** wechselt, können Sie die Ergebnisse des Auftrags aus dem Azure Blob-Speicher abrufen. Der mit der Abfrage übergebene Parameter `statusdir` enthält den Speicherort der Ausgabedatei. In diesem Fall ist dies **wasb:///example/curl**. Diese Adresse speichert die Ausgabe des Auftrags im Verzeichnis **example/curl** des Standardspeichercontainers, der von Ihrem HDInsight-Cluster verwendet wird.
-   
-    Sie können diese Dateien mithilfe der [Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md) auflisten und herunterladen. Wenn Sie z. B. Dateien im Verzeichnis **Beispiel/Curl** auflisten möchten, verwenden Sie den folgenden Befehl:
-   
-        azure storage blob list <container-name> example/curl
-   
-    Verwenden Sie den folgenden Befehl, um eine Datei herunterzuladen:
-   
-        azure storage blob download <container-name> <blob-name> <destination-file>
-   
-   > [!NOTE]
-   > Sie müssen entweder den Namen des Speicherkontos, das den Blob enthält, mithilfe der Parameter `-a` und `-k` angeben oder die Umgebungsvariablen **AZURE\_STORAGE\_ACCOUNT** und **AZURE\_STORAGE\_ACCESS\_KEY** festlegen. Weitere Informationen finden Sie unter<a href="hdinsight-upload-data.md" target="_blank".
-   > 
-   > 
+   > Diese Curl-Anforderung gibt ein JSON-Dokument (JavaScript Object Notation) mit Informationen zum Auftrag zurück.  Mithilfe von „jq“ wird nur der Statuswert abgerufen.
+
+4. Sobald der Status des Auftrags zu **ERFOLGREICH** wechselt, können Sie die Ergebnisse des Auftrags aus dem Azure Blob-Speicher abrufen. Der mit der Abfrage übergebene Parameter `statusdir` enthält den Speicherort der Ausgabedatei. In diesem Fall ist dies **/example/curl**. Diese Adresse speichert die Ausgabe im Verzeichnis **Beispiel/Curl** im Standardspeicher des Clusters.
+
+    Sie können diese Dateien mithilfe der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) auflisten und herunterladen. Weitere Informationen zur Verwendung der Azure-Befehlszeilenschnittstelle mit Azure Storage finden Sie im Artikel [Verwenden der Azure CLI 2.0 mit Azure Storage](https://docs.microsoft.com/en-us/azure/storage/storage-azure-cli#create-and-manage-blobs).
+
 5. Verwenden Sie die folgenden Anweisungen zum Erstellen einer neuen "internen" Tabelle namens **errorLogs**.
-   
-        curl -u USERNAME:PASSWORD -d user.name=USERNAME -d execute="set+hive.execution.engine=tez;CREATE+TABLE+IF+NOT+EXISTS+errorLogs(t1+string,t2+string,t3+string,t4+string,t5+string,t6+string,t7+string)+STORED+AS+ORC;INSERT+OVERWRITE+TABLE+errorLogs+SELECT+t1,t2,t3,t4,t5,t6,t7+FROM+log4jLogs+WHERE+t4+=+'[ERROR]'+AND+INPUT__FILE__NAME+LIKE+'%25.log';SELECT+*+from+errorLogs;" -d statusdir="wasbs:///example/curl" https://CLUSTERNAME.azurehdinsight.net/templeton/v1/hive
-   
+
+    ```bash
+    curl -u USERNAME:PASSWORD -d user.name=USERNAME -d execute="set+hive.execution.engine=tez;CREATE+TABLE+IF+NOT+EXISTS+errorLogs(t1+string,t2+string,t3+string,t4+string,t5+string,t6+string,t7+string)+STORED+AS+ORC;INSERT+OVERWRITE+TABLE+errorLogs+SELECT+t1,t2,t3,t4,t5,t6,t7+FROM+log4jLogs+WHERE+t4+=+'[ERROR]'+AND+INPUT__FILE__NAME+LIKE+'%25.log';SELECT+*+from+errorLogs;" -d statusdir="/example/curl" https://CLUSTERNAME.azurehdinsight.net/templeton/v1/hive
+    ```
+
     Diese Anweisungen führen die folgenden Aktionen aus:
-   
-   * **TABELLE ERSTELLEN, FALLS NICHT VORHANDEN** – Erstellt eine Tabelle, sofern diese noch nicht vorhanden ist. Da das Schlüsselwort **EXTERN** nicht verwendet wird, ist dies eine "interne" Tabelle, die im Hive-Data Warehouse gespeichert und vollständig von Hive verwaltet wird.
-     
+
+   * **TABELLE ERSTELLEN, FALLS NICHT VORHANDEN** – Erstellt eine Tabelle, sofern diese noch nicht vorhanden ist. Diese Anweisung erstellt eine interne Tabelle, die im Hive-Data Warehouse gespeichert und vollständig von Hive verwaltet wird.
+
      > [!NOTE]
-     > Im Gegensatz zu externen Tabellen werden beim Ablegen von internen Tabellen auch die zugrunde liegenden Daten gelöscht.
-     > 
-     > 
-   * **ALS ORC GESPEICHERT** – Speichert die Daten im ORC-Format (Optimized Row Columnar). Dies ist ein stark optimiertes und effizientes Format zum Speichern von Hive-Daten.
+     > Anders als bei externen Tabellen werden beim Löschen von internen Tabellen auch die zugrunde liegenden Daten gelöscht.
+
+   * **ALS ORC GESPEICHERT** – Speichert die Daten im ORC-Format (Optimized Row Columnar). ORC ist ein stark optimiertes und effizientes Format zum Speichern von Hive-Daten.
    * **ÜBERSCHREIBEN EINFÜGEN ... SELECT**: Wählt die Zeilen aus der Tabelle **log4jLogs** aus, die den Wert **[ERROR]** enthalten. Dann werden die Daten in die Tabelle **errorLogs** eingefügt.
    * **SELECT**: Wählt alle Zeilen aus der neuen Tabelle **errorLogs** aus.
 
 6. Verwenden Sie die zurückgegebene Auftrags-ID, um den Status des Auftrags zu überprüfen. Nach der erfolgreichen Ausführung verwenden Sie die Azure-Befehlszeilenschnittstelle wie zuvor beschrieben, um die Ergebnisse herunterzuladen und anzuzeigen. Die Ausgabe sollte drei Zeilen mit dem Inhalt **[ERROR]**enthalten.
-
-## <a id="summary"></a>Zusammenfassung
-
-Wie in diesem Dokument veranschaulicht, können Sie unformatierte HTTP-Anforderungen dazu verwenden, um Hive-Aufträge auf dem HDInsight-Cluster auszuführen, zu überwachen und deren Ergebnisse anzuzeigen.
-
-Weitere Informationen zur REST-Schnittstelle, die in diesem Artikel verwendet wird, finden Sie in der <a href="https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference" target="_blank">WebHCat-Referenz</a>.
 
 ## <a id="nextsteps"></a>Nächste Schritte
 
@@ -173,6 +157,8 @@ Informationen zu anderen Möglichkeiten, wie Sie mit Hadoop in HDInsight arbeite
 Wenn Sie mit Tez mit Hive verwenden, finden Sie in den folgenden Dokumenten Informationen zum Debuggen:
 
 * [Verwenden der Ambari-Tez-Ansicht in Linux-basiertem HDInsight](hdinsight-debug-ambari-tez-view.md)
+
+Weitere Informationen zu der in diesem Artikel verwendeten REST-API finden Sie in der [WebHCat-Referenz](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference).
 
 [hdinsight-sdk-documentation]: http://msdnstage.redmond.corp.microsoft.com/library/dn479185.aspx
 
@@ -193,7 +179,7 @@ Wenn Sie mit Tez mit Hive verwenden, finden Sie in den folgenden Dokumenten Info
 
 
 
-[hdinsight-provision]: hdinsight-provision-clusters.md
+[hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
 [hdinsight-submit-jobs]: hdinsight-submit-hadoop-jobs-programmatically.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
 

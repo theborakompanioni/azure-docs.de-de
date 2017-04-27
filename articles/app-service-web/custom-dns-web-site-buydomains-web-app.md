@@ -12,11 +12,12 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/22/2016
+ms.date: 04/25/2017
 ms.author: robmcm
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 9c5c0b40d796130d93111545c93bedf86c374fd9
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -102,10 +103,5 @@ Wenn Sie die benutzerdefinierte Domäne über das Blatt **Benutzerdefinierte Dom
 * Das Blatt **Benutzerdefinierte Domänen und SSL**, auf dem Sie suchen, gehört vielleicht zu einer App, die in einem anderen Azure-Abonnement erstellt wurde. Wechseln Sie zu einer anderen App in einem anderen Abonnement, und überprüfen Sie das Blatt **Benutzerdefinierte Domänen und SSL**.  
     Innerhalb des Portals können Sie keine benutzerdefinierten Domänen anzeigen oder verwalten, die in einem anderen Azure-Abonnement erstellt wurden als die App. Wenn Sie jedoch auf dem zu der Domäne gehörenden Blatt **Domäne verwalten** auf **Erweiterte Verwaltung** klicken, werden Sie zur der Website des Domänennamenanbieters weitergeleitet, wo Sie für Apps, die in einem anderen Azure-Abonnement erstellt wurden,   [Ihre benutzerdefinierte Domäne wie alle externen Domänen manuell konfigurieren](web-sites-custom-domain-name.md) 
    können. 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
