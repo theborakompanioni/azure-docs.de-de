@@ -29,8 +29,3 @@ In diesem Abschnitt wird die Einrichtung Ihrer Entwicklungsumgebung erläutert. 
     ![Dialogfeld „Verbundener Dienst“](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-3.png)
 
 1. Wählen Sie im Dialogfeld **Azure Storage** das gewünschte Azure-Speicherkonto aus, mit dem Sie arbeiten möchten, und wählen Sie **Hinzufügen**.
-
-
-<!--HONumber=Dec16_HO3-->
-
-
