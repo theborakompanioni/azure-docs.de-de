@@ -7,8 +7,3 @@ In diesem Artikel wird Folgendes vorausgesetzt:
 
 > [!TIP]
 > Vergewissern Sie sich, dass Sie über die Azure Virtual Network-Instanz, an die das Failover der virtuellen Computer erfolgt ist, eine Verbindung mit Port 443 des (lokal ausgeführten) Konfigurationsservers herstellen können.
-
-
-<!--HONumber=Feb17_HO1-->
-
-

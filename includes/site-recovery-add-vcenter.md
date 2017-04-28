@@ -4,8 +4,3 @@
 
    > [!NOTE]
    > Wenn Sie den VMware vCenter-Server oder den VMware vSphere-Host mit einem Konto hinzufügen, das auf dem vCenter- oder Hostserver keine Administratorrechte besitzt, müssen Sie sicherstellen, dass für das Konto folgende Berechtigungen aktiviert sind: Datencenter, Datenspeicher, Ordner, Host, Netzwerk, Ressource, virtueller Computer und vSphere Distributed Switch. Außerdem benötigt der VMware vCenter-Server die Anzeigeberechtigung für den Speicher.
-
-
-<!--HONumber=Feb17_HO2-->
-
-
