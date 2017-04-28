@@ -108,7 +108,7 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden in Azure AD im 
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-newsignature-tutorial/tutorial_newsignature_04.png) 
    
-    a. Geben Sie im Textfeld **Anmelde-URL`https://portal.igcm.com/<instance name>` die URL, die von Ihren Benutzern zur Anmeldung bei der Cloud Management Portal for Microsoft Azure-Anwendung verwendet wird, nach folgendem Muster ein: **.
+    a. Geben Sie im Textfeld **Anmelde-URL`https://portal.igcm.com/<instance name>` die URL, die von Ihren Benutzern zur Anmeldung bei der Cloud Management Portal for Microsoft Azure-Anwendung verwendet wird, nach folgendem Muster ein:**.
    
     b. Klicken Sie auf **Next**.
 4. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für Cloud Management Portal for Microsoft Azure** die folgenden Schritte aus:

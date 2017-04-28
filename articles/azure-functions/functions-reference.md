@@ -76,14 +76,14 @@ Wenn Sie ein Projekt einrichten, um Funktionen für eine Funktionen-App in Azure
 > 
 > 
 
-## <a name="a-idfileupdatea-how-to-update-function-app-files"></a><a id="fileupdate"></a> Aktualisieren von Funktionen-App-Dateien
+## <a id="fileupdate"></a> Aktualisieren von Funktionen-App-Dateien
 Der im Azure-Portal integrierte Funktionen-Editor ermöglicht das Aktualisieren der Datei *function.json* und der Codedatei für eine Funktion. Zum Hochladen oder Aktualisieren anderer Dateien wie *package.json* oder *project.json* oder von Abhängigkeiten müssen Sie andere Bereitstellungsmethoden nutzen.
 
 Funktionen-Apps basieren auf App Service. Daher stehen alle [für Standard-Web-Apps verfügbaren Bereitstellungsoptionen](../app-service-web/web-sites-deploy.md) auch für Funktionen-Apps zur Verfügung. Es folgen einige Methoden, die Sie zum Hochladen oder Aktualisieren von Funktionen-App-Dateien befolgen können. 
 
 #### <a name="to-use-app-service-editor"></a>So verwenden Sie den App Service-Editor
 1. Klicken Sie im Azure Functions-Portal auf **Funktionen-App-Einstellungen**.
-2. Klicken Sie im Abschnitt** Erweiterte Einstellungen** auf **Zu App Service-Einstellungen** wechseln.
+2. Klicken Sie im Abschnitt**Erweiterte Einstellungen** auf **Zu App Service-Einstellungen** wechseln.
 3. Klicken Sie im App-Menü „Nav“ unter **ENTWICKLUNGSTOOLS** auf **App Service-Editor**.
 4. Klicken Sie auf **Start**.
    
