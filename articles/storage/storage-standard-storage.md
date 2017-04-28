@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/18/2017
 ms.author: yuemlu
 translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 77e48af7ba59ed1e5b2ebcda0760e0eda1f407df
-ms.lasthandoff: 04/06/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 37a22be9fba7b245b2c1ea3ca6e495601d63b611
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -52,7 +52,7 @@ In diesem Abschnitt werden einige der Features von Standardspeicher erläutert. 
 
 **Standardspeicher-Datenträger:** Standardspeicher-Datenträger können an beliebige virtuelle Azure-Computer angefügt werden. Dies schließt auch virtuelle Computer aus Größenserien mit Storage Premium (beispielsweise die DSv2- und die GS-Serie) mit ein. Ein Standardspeicher-Datenträger kann nur an einen einzelnen virtuellen Computer angefügt werden. An einen virtuellen Computer können allerdings mehrere dieser Datenträger angefügt werden (bis zur maximalen, für die VM-Größe definierten Datenträgeranzahl). Die Spezifikationen werden im folgenden Abschnitt zu Skalierbarkeits- und Leistungszielen für Standardspeicher ausführlicher beschrieben. 
 
-**Standardseitenblob:** Standardseitenblobs dienen zum Speichern persistenter Datenträger für virtuelle Computer, und Sie können wie bei anderen Arten von Azure-Blobs direkt über REST auf sie zugreifen. Bei [Seitenblobs](/rest/api/storageservices/fileservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) handelt es sich um eine Sammlung von 512-Byte-Seiten, die für zufällige Lese- und Schreibvorgänge optimiert sind. 
+**Standardseitenblob:** Standardseitenblobs dienen zum Speichern persistenter Datenträger für virtuelle Computer, und Sie können wie bei anderen Arten von Azure-Blobs direkt über REST auf sie zugreifen. Bei [Seitenblobs](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) handelt es sich um eine Sammlung von 512-Byte-Seiten, die für zufällige Lese- und Schreibvorgänge optimiert sind. 
 
 **Speicherreplikation:** In den meisten Regionen können in Standardspeicherkonten gespeicherte Daten lokal oder georedundant in mehreren Rechenzentren repliziert werden. Zur Verfügung stehen vier Replikationsarten: lokal redundanter Speicher (LRS), zonenredundanter Speicher (ZRS), georedundanter Speicher (GRS) und georedundanter Speicher mit Lesezugriff (RA-GRS). Für Managed Disks in Standardspeicher wird derzeit nur lokal redundanter Speicher (LRS) unterstützt. Weitere Informationen finden Sie unter [Azure Storage-Replikation](storage-redundancy.md).
 
@@ -99,11 +99,11 @@ Für den Storage-Dienst ist die VHD-Datei ein Seitenblob. Sie können Momentaufn
 
 Für nicht verwaltete Standarddatenträger können [inkrementelle Momentaufnahmen](storage-incremental-snapshots.md) erstellt werden. Die Vorgehensweise ist dabei die gleiche wie bei Momentaufnahmen für Standardspeicher. Falls sich Ihr Quelldatenträger in einem lokal redundanten Speicherkonto befindet, empfiehlt es sich, Momentaufnahmen zu erstellen und in ein georedundantes Standardspeicherkonto zu kopieren. Weitere Informationen finden Sie unter [Redundanzoptionen für Azure Storage](storage-redundancy.md).
 
-Falls ein Datenträger an einen virtuellen Computer angefügt ist, sind bestimmte API-Vorgänge für die Datenträger nicht zulässig. Sie können beispielsweise den Vorgang [Kopieren von Blob](/rest/api/storageservices/fileservices/Copy-Blob) für das Blob nicht durchführen, solange der Datenträger an den virtuellen Computer angeschlossen ist. Erstellen Sie stattdessen zunächst eine Momentaufnahme dieses Blobs, indem Sie die REST-API-Methode [Momentaufnahme-Blob](/rest/api/storageservices/fileservices/Snapshot-Blob) verwenden und anschließend den Vorgang [Kopieren von Blob](/rest/api/storageservices/fileservices/Copy-Blob) der Momentaufnahme durchführen, um den angeschlossenen Datenträger zu kopieren. Alternativ können Sie den Datenträger auch trennen und dann die erforderlichen Vorgänge ausführen.
+Falls ein Datenträger an einen virtuellen Computer angefügt ist, sind bestimmte API-Vorgänge für die Datenträger nicht zulässig. Sie können beispielsweise den Vorgang [Kopieren von Blob](/rest/api/storageservices/Copy-Blob) für das Blob nicht durchführen, solange der Datenträger an den virtuellen Computer angeschlossen ist. Erstellen Sie stattdessen zunächst eine Momentaufnahme dieses Blobs, indem Sie die REST-API-Methode [Momentaufnahme-Blob](/rest/api/storageservices/Snapshot-Blob) verwenden und anschließend den Vorgang [Kopieren von Blob](/rest/api/storageservices/Copy-Blob) der Momentaufnahme durchführen, um den angeschlossenen Datenträger zu kopieren. Alternativ können Sie den Datenträger auch trennen und dann die erforderlichen Vorgänge ausführen.
 
-Zur Aufbewahrung georedundanter Kopien Ihrer Momentaufnahmen können Sie Momentaufnahmen mithilfe von „AzCopy“ oder „Copy Blob“ aus einem lokal redundanten Speicherkonto in ein georedundantes Standardspeicherkonto kopieren. Weitere Informationen finden Sie unter [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md) und [Copy Blob](/rest/api/storageservices/fileservices/Copy-Blob).
+Zur Aufbewahrung georedundanter Kopien Ihrer Momentaufnahmen können Sie Momentaufnahmen mithilfe von „AzCopy“ oder „Copy Blob“ aus einem lokal redundanten Speicherkonto in ein georedundantes Standardspeicherkonto kopieren. Weitere Informationen finden Sie unter [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md) und [Copy Blob](/rest/api/storageservices/Copy-Blob).
 
-Ausführliche Informationen zum Ausführen von REST-Vorgängen für Seitenblobs in Standardspeicherkonten finden Sie in der [Referenz zur REST-API für Azure Storage Services](/rest/api/storageservices/fileservices/Azure-Storage-Services-REST-API-Reference).
+Ausführliche Informationen zum Ausführen von REST-Vorgängen für Seitenblobs in Standardspeicherkonten finden Sie in der [Referenz zur REST-API für Azure Storage Services](/rest/api/storageservices/Azure-Storage-Services-REST-API-Reference).
 
 ### <a name="managed-disks"></a>Verwaltete Datenträger
 
@@ -125,7 +125,7 @@ Bei Verwendung von Standardspeicher sind folgende Abrechnungsaspekte zu berücks
 
 **Verwaltete Datenträger:** Verwaltete Datenträger werden nach bereitgestellter Größe abgerechnet. Wenn Ihr Datenträger mit einer Kapazität von 10 GB bereitgestellt wird, Sie aber nur 5 GB davon nutzen, wird trotzdem die bereitgestellte Größe von 10 GB in Rechnung gestellt.
 
-**Momentaufnahmen:** Für Momentaufnahmen von Standarddatenträgern wird die zusätzliche Kapazität in Rechnung gestellt, die von den Momentaufnahmen beansprucht wird. Informationen zu Momentaufnahmen finden Sie unter [Erstellen einer Momentaufnahme eines Blobs](/rest/api/storageservices/fileservices/Creating-a-Snapshot-of-a-Blob).
+**Momentaufnahmen:** Für Momentaufnahmen von Standarddatenträgern wird die zusätzliche Kapazität in Rechnung gestellt, die von den Momentaufnahmen beansprucht wird. Informationen zu Momentaufnahmen finden Sie unter [Erstellen einer Momentaufnahme eines Blobs](/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob).
 
 **Ausgehende Datenübertragungen:**[Ausgehende Datenübertragungen](https://azure.microsoft.com/pricing/details/data-transfers/) (Daten, die von den Azure-Rechenzentren ausgehen) verursachen Kosten bei der Bandbreitenverwendung.
 
