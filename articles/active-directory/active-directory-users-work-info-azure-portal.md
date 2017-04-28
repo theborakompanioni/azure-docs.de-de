@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
-ms.author: curtand
+ms.date: 04/26/2017
+ms.author: curtand;jeffsta
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: b344136bdcfba22416933ced9a91ef2a82082d11
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -43,9 +44,4 @@ In diesem Artikel wird erläutert, wie Sie in der Azure Active Directory-Vorscha
 * [Zuweisen eines Benutzers zu Administratorrollen in der Azure Active Directory-Vorschau](active-directory-users-assign-role-azure-portal.md)
 * [Hinzufügen oder Ändern von Profilinformationen für einen Benutzer in der Azure Active Directory-Vorschau](active-directory-users-profile-azure-portal.md)
 * [Löschen eines Benutzers aus einem Verzeichnis in der Azure Active Directory-Vorschau](active-directory-users-delete-user-azure-portal.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

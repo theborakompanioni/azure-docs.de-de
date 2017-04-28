@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/07/2017
-ms.author: mbaldwin
+ms.date: 04/27/2017
+ms.author: bryanla
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 9c52e9257272c5b0c55c488d2c7ca6fef500260b
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -51,10 +52,5 @@ Beim Klicken auf **+NEU** > **App Services** wird ein **Active Directory**-Eleme
 Während die Seite geladen wird, wird das Element jedoch abgeblendet dargestellt und ist mit **Nicht verfügbar**markiert. Dies ist ein vorübergehender Zustand. Wenn Sie ein paar Sekunden warten, ist das Element verfügbar. Wenn der Zustand andauert, löst häufig das Aktualisieren die Webseite das Problem.
 
 ![Screenshot: Active Directory ist nicht verfügbar](./media/active-directory-troubleshooting/not-available.png)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

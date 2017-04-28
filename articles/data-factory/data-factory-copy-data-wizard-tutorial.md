@@ -31,8 +31,6 @@ ms.lasthandoff: 02/03/2017
 > * [Azure Resource Manager-Vorlage](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [REST-API](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
-> 
-> 
 
 Mit dem **Kopier-Assistenten** von Azure Data Factory können Sie einfach und schnell eine Pipeline erstellen, mit der das Szenario für die Datenerfassung und -verschiebung implementiert wird. Daher empfehlen wir Ihnen, den Assistenten als ersten Schritt zum Erstellen einer einfachen Pipeline für die Datenverschiebung zu verwenden. In diesem Tutorial wird gezeigt, wie Sie eine Azure Data Factory erstellen, den Kopier-Assistenten starten und die Schritte zum Angeben von Details zur Datenerfassung bzw. -verschiebung ausführen. Nachdem Sie die Schritte im Assistenten durchgeführt haben, erstellt der Assistent automatisch eine Pipeline mit einer Kopieraktivität, um Daten aus einem Azure-Blobspeicher in eine Azure SQL-Datenbank zu kopieren. Ausführliche Informationen zur Kopieraktivität finden Sie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) . 
 
