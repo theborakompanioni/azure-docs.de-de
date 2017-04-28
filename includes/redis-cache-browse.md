@@ -12,8 +12,3 @@ Sie können Ihren Cache auf dem Blatt **Redis Cache** anzeigen und konfigurieren
 
 ![Redis Cache: Alle Einstellungen](media/redis-cache-browse/redis-cache-blade.png)
 
-
-
-<!--HONumber=Dec16_HO3-->
-
-

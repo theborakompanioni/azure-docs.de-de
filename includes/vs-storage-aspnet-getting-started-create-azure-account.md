@@ -4,8 +4,3 @@ Ihr erstes Azure-Speicherkonto erstellen Sie am einfachsten im [Azure-Portal](ht
 Ein Azure-Speicherkonto können Sie auch mit [Azure PowerShell](../articles/storage/storage-powershell-guide-full.md), der [Azure-Befehlszeilenschnittstelle](../articles/storage/storage-azure-cli.md) oder der [Storage Resource Provider-Clientbibliothek für .NET](https://msdn.microsoft.com/library/azure/mt131037.aspx) erstellen.
 
 
-
-
-<!--HONumber=Dec16_HO3-->
-
-
