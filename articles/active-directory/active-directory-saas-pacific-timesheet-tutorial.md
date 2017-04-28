@@ -179,7 +179,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden bei Azu
 1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Portal in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
    
     ![Benutzer zuweisen][201] 
-2. Wählen Sie in der Anwendungsliste **Pacific Timesheet **aus.
+2. Wählen Sie in der Anwendungsliste **Pacific Timesheet**aus.
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-pacific-timesheet-tutorial/tutorial_pacific_timesheet_10.png) 
 3. Klicken Sie im oberen Menü auf **Benutzer**.
