@@ -1,5 +1,5 @@
 ---
-title: Mischen von ScaleR und SparkR mit Azure HDInsight | Microsoft-Dokumentation
+title: Verwenden von ScaleR und SparkR mit Azure HDInsight | Microsoft-Dokumentation
 description: Verwenden von ScaleR und SparkR mit R Server und HDInsight
 services: hdinsight
 documentationcenter: 
@@ -14,19 +14,19 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 04/04/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 5e8fb7642dca815c64b9aed8184672259d3facf8
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
+ms.openlocfilehash: bab5268c4aab2210e8ace2c3a1db23b34887c2ed
+ms.lasthandoff: 04/04/2017
 
 
 ---
 
-# <a name="mixing-use-of-scaler-and-sparkr-in-hdinsight"></a>Mischen der Nutzung von ScaleR und SparkR in HDInsight
+# <a name="combining-scaler-and-sparkr-in-hdinsight"></a>Kombinierte Verwendung von ScaleR und SparkR in HDInsight
 
-Es wird beschrieben, wie Sie die Nutzung von SparkR für die Datenbearbeitung unter Spark mit Microsoft R Server für Analysezwecke mischen. Obwohl beide Pakete zusätzlich zum Spark-Ausführungsmodul von Hadoop ausgeführt werden, um die neuesten Funktionen der verteilten Verarbeitung nutzen zu können, werden sie für die In-Memory-Datenfreigabe blockiert, da sie ihre eigenen Spark-Sitzungen benötigen. Bis dies in einer der nächsten Versionen von R Server behoben wird, besteht die Problemumgehung darin, nicht überlappende Spark-Sitzungen zu verwenden und Daten mithilfe von Zwischendateien auszutauschen. Sie werden sehen, dass diese beiden Anforderungen relativ einfach zu erfüllen sind.
+Erfahren Sie, wie die Fähigkeiten von ScaleR zur Datenbearbeitung in Spark mit Microsoft R Server für Analysezwecke kombiniert werden können. Obwohl beide Pakete zusätzlich zum Spark-Ausführungsmodul von Hadoop ausgeführt werden, um die neuesten Funktionen der verteilten Verarbeitung nutzen zu können, werden sie für die In-Memory-Datenfreigabe blockiert, da sie ihre eigenen Spark-Sitzungen benötigen. Bis dies in einer der nächsten Versionen von R Server behoben wird, besteht die Problemumgehung darin, nicht überlappende Spark-Sitzungen zu verwenden und Daten mithilfe von Zwischendateien auszutauschen. Sie werden sehen, dass diese beiden Anforderungen relativ einfach zu erfüllen sind.
 
 Zu Demonstrationszwecken verwenden wir ein Beispiel, das zuerst im Rahmen eines Vortrags bei der Strata 2016 von Mario Inchiosa und Roni Burd vorgestellt wurde. Es ist auch über das Webinar [Building a Scalable Data Science Platform with R](http://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio) (Erstellen einer skalierbaren Data Science-Plattform mit R) verfügbar. Im Beispiel wird SparkR genutzt, um das bekannte Dataset mit den Verspätungsdaten von Flügen mit den Wetterdaten an den Abflug- und Ankunftsflughäfen zu verknüpfen und als Eingabe für ein ScaleR-Logistikregressionsmodell zur Vorhersage von Flugverspätungen zu verwenden.
 

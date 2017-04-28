@@ -104,7 +104,7 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
 **Führen Sie zum Zuweisen von Benutzern in Abintegro folgende Schritte aus:**
 
 1. Erstellen Sie im klassischen Azure-Portal ein Testkonto.
-2. Klicken Sie auf der Anwendungsintegrationsseite für **Abintegro ** auf **Benutzer zuweisen**.
+2. Klicken Sie auf der Anwendungsintegrationsseite für **Abintegro** auf **Benutzer zuweisen**.
    
    ![Zuweisen von Benutzern](./media/active-directory-saas-abintegro-tutorial/IC790084.png "Zuweisen von Benutzern")
 3. Wählen Sie den Testbenutzer aus, klicken Sie auf **Zuweisen** und anschließend auf **Ja**, um die Zuweisung zu bestätigen.

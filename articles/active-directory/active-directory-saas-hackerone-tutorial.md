@@ -106,7 +106,7 @@ Im Rahmen dieses Verfahrens müssen Sie eine Base-64-codierte Zertifikatsdatei e
 2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei HackerOne anmelden?** die Option **Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_03.png) 
-3. Führen Sie auf der Seite **App-Einstellungen konfigurieren **die folgenden Schritte aus, und klicken Sie dann auf **Weiter**:
+3. Führen Sie auf der Seite **App-Einstellungen konfigurieren**die folgenden Schritte aus, und klicken Sie dann auf **Weiter**:
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_04.png) 
     1. Geben Sie im Textfeld **Anmelde-URL** die von Ihren Benutzern für die Anmeldung bei Ihrer HackerOne-Anwendung verwendete URL in folgendem Format ein: **„https://hackerone.com/\<company name\>/authentication“**. 

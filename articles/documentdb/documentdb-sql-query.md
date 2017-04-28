@@ -13,12 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 04/08/2017
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: 5ed72d95ae258d6fa8e808cd72ab6e8a665901c9
-ms.openlocfilehash: 4c72a7c7127f2d387926ac2722aeb3f1e5f7c2a6
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: c1360cb76c6fe8fd5177f13ea67f2109b5777521
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -1769,6 +1769,7 @@ Es folgt eine Liste der unterstützten LINQ-Operatoren im LINQ-Anbieter, die im 
 * **Where**: Filter werden in SQL WHERE übersetzt und unterstützen die Übersetzung von &&, || und ! in die SQL-Operatoren
 * **SelectMany**: Ermöglicht das Entladen von Arrays in die SQL-JOIN-Klausel. Kann zum Verketten/Verschachteln von Ausdrücken in Arrayelemente verwendet werden.
 * **OrderBy und OrderByDescending**: Auf-/absteigende Übersetzung in ORDER BY
+* Die Operatoren **Count**, **Sum**, **Min**, **Max** und **Average** für die Aggregation und deren asynchrone Entsprechungen **CountAsync**, **SumAsync**, **MinAsync**, **MaxAsync** und **AverageAsync**.
 * **CompareTo**: Übersetzung in Bereichsvergleiche. Wird häufig für Zeichenfolgen verwendet werden, da sie nicht in .NET vergleichbar sind.
 * **Take**: Übersetzung in SQL TOP, um Ergebnisse aus einer Abfrage einzuschränken.
 * **Mathematische Funktionen**: Unterstützt die Übersetzung von „Abs“, „Acos“, „Asin“, „Atan“, „Ceiling“, „Cos“, „Exp“, „Floor“, „Log“, „Log10“, „Pow“, „Round“, „Sign“, „Sin“, „Sqrt“, „Tan“, „Truncate“ aus .NET in die entsprechenden SQL-integrierten Funktionen.
@@ -1777,11 +1778,6 @@ Es folgt eine Liste der unterstützten LINQ-Operatoren im LINQ-Anbieter, die im 
 * **Geospatial-Erweiterungsfunktionen**: Unterstützt die Übersetzung aus den Stubmethoden „Distance“, „Within“, „IsValid“ und „IsValidDetailed“ in die entsprechenden SQL-integrierten Funktionen.
 * **Erweiterungsfunktion für benutzerdefinierte Funktion**: Unterstützt die Übersetzung aus der Stubmethode „UserDefinedFunctionProvider.Invoke“ in die entsprechende benutzerdefinierte Funktion.
 * **Sonstiges**: Unterstützt die Übersetzung der Zusammenfügungs- und bedingten Operatoren. Kann „Contains“ je nach Kontext in die Zeichenfolge CONTAINS, ARRAY_CONTAINS oder SQL IN übersetzen.
-
-> [!NOTE]
-> Die Aggregatoperatoren **Count, Sum, Min, Max und Average** werden derzeit nicht unterstützt, werden aber in zukünftigen Versionen des SDK verfügbar gemacht.  
-> 
-> 
 
 ### <a name="sql-query-operators"></a>SQL-Abfrageoperatoren
 Die folgenden Beispiele zeigen, wie einige der Standard-LINQ-Abfrageoperatoren in DocumentDB-Abfragen übersetzt werden.

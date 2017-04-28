@@ -67,7 +67,7 @@ Bei Verwendung einer Open-Einschränkung übermittelt das System den Schlüssel 
 
 Im folgenden Beispiel wird eine Open-Autorisierungsrichtlinie erstellt und dem Inhaltsschlüssel hinzugefügt.
 
-#### <a name="a-idcontentkeyauthorizationpoliciesacreate-contentkeyauthorizationpolicies"></a><a id="ContentKeyAuthorizationPolicies"></a>Erstellen von ContentKeyAuthorizationPolicies
+#### <a id="ContentKeyAuthorizationPolicies"></a>Erstellen von ContentKeyAuthorizationPolicies
 Anforderung:
 
     POST https://wamsbayclus001rest-hs.cloudapp.net/api/ContentKeyAuthorizationPolicies HTTP/1.1
@@ -103,7 +103,7 @@ Antwort:
 
     {"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#ContentKeyAuthorizationPolicies/@Element","Id":"nb:ckpid:UUID:db4593da-f4d1-4cc5-a92a-d20eacbabee4","Name":"Open Authorization Policy"}
 
-#### <a name="a-idcontentkeyauthorizationpolicyoptionsacreate-contentkeyauthorizationpolicyoptions"></a><a id="ContentKeyAuthorizationPolicyOptions"></a>Erstellen von ContentKeyAuthorizationPolicyOptions
+#### <a id="ContentKeyAuthorizationPolicyOptions"></a>Erstellen von ContentKeyAuthorizationPolicyOptions
 Anforderung:
 
     POST https://wamsbayclus001rest-hs.cloudapp.net/api/ContentKeyAuthorizationPolicyOptions HTTP/1.1
@@ -139,7 +139,7 @@ Antwort:
 
     {"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#ContentKeyAuthorizationPolicyOptions/@Element","Id":"nb:ckpoid:UUID:57829b17-1101-4797-919b-f816f4a007b7","Name":"policy","KeyDeliveryType":2,"KeyDeliveryConfiguration":"","Restrictions":[{"Name":"HLS Open Authorization Policy","KeyRestrictionType":0,"Requirements":null}]}
 
-#### <a name="a-idlinkcontentkeyauthorizationpolicieswithoptionsalink-contentkeyauthorizationpolicies-with-options"></a><a id="LinkContentKeyAuthorizationPoliciesWithOptions"></a>Verknüpfen von ContentKeyAuthorizationPolicies mit Optionen
+#### <a id="LinkContentKeyAuthorizationPoliciesWithOptions"></a>Verknüpfen von ContentKeyAuthorizationPolicies mit Optionen
 Anforderung:
 
     POST https://wamsbayclus001rest-hs.cloudapp.net/api/ContentKeyAuthorizationPolicies('nb%3Ackpid%3AUUID%3A0baa438b-8ac2-4c40-a53c-4d4722b78715')/$links/Options HTTP/1.1
@@ -160,7 +160,7 @@ Antwort:
 
     HTTP/1.1 204 No Content
 
-#### <a name="a-idaddauthorizationpolicytokeyaadd-authorization-policy-to-the-content-key"></a><a id="AddAuthorizationPolicyToKey"></a>Hinzufügen der Autorisierungsrichtlinie zum Inhaltsschlüssel
+#### <a id="AddAuthorizationPolicyToKey"></a>Hinzufügen der Autorisierungsrichtlinie zum Inhaltsschlüssel
 Anforderung:
 
     PUT https://wamsbayclus001rest-hs.cloudapp.net/api/ContentKeys('nb%3Akid%3AUUID%3A2e6d36a7-a17c-4e9a-830d-eca23ad1a6f9') HTTP/1.1
@@ -186,7 +186,7 @@ In diesem Abschnitt wird beschrieben, wie eine Autorisierungsrichtlinie für Inh
 
 Zur Konfiguration der Token-Einschränkungsoption müssen die Autorisierungsanforderungen des Tokens in XML beschrieben werden. Die XML für die Konfiguration der Token-Einschränkung muss folgendem XML-Schema entsprechen.
 
-#### <a name="a-idschemaatoken-restriction-schema"></a><a id="schema"></a>Schema für die Tokeneinschränkung
+#### <a id="schema"></a>Schema für die Tokeneinschränkung
     <?xml version="1.0" encoding="utf-8"?>
     <xs:schema xmlns:tns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/TokenRestrictionTemplate/v1" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/TokenRestrictionTemplate/v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
       <xs:complexType name="TokenClaim">
@@ -293,7 +293,7 @@ Bei Verwendung einer Open-Einschränkung übermittelt das System den Schlüssel 
 
 Im folgenden Beispiel wird eine Open-Autorisierungsrichtlinie erstellt und dem Inhaltsschlüssel hinzugefügt.
 
-#### <a name="a-idcontentkeyauthorizationpolicies2acreate-contentkeyauthorizationpolicies"></a><a id="ContentKeyAuthorizationPolicies2"></a>Erstellen von ContentKeyAuthorizationPolicies
+#### <a id="ContentKeyAuthorizationPolicies2"></a>Erstellen von ContentKeyAuthorizationPolicies
 Anforderung:
 
     POST https://wamsbayclus001rest-hs.cloudapp.net/api/ContentKeyAuthorizationPolicies HTTP/1.1
@@ -420,8 +420,8 @@ Verknüpfen von ContentKeyAuthorizationPolicies mit Optionen, wie [hier](#Conten
 #### <a name="add-authorization-policy-to-the-content-key"></a>Hinzufügen der Autorisierungsrichtlinie zum Inhaltsschlüssel
 Hinzufügen der AuthorizationPolicy zum ContentKey, wie [hier](#AddAuthorizationPolicyToKey)gezeigt.
 
-## <a name="a-idtypesatypes-used-when-defining-contentkeyauthorizationpolicy"></a><a id="types"></a>Beim Definieren von ContentKeyAuthorizationPolicy verwendete Typen
-### <a name="a-idcontentkeyrestrictiontypeacontentkeyrestrictiontype"></a><a id="ContentKeyRestrictionType"></a>ContentKeyRestrictionType
+## <a id="types"></a>Beim Definieren von ContentKeyAuthorizationPolicy verwendete Typen
+### <a id="ContentKeyRestrictionType"></a>ContentKeyRestrictionType
     public enum ContentKeyRestrictionType
     {
         Open = 0,
@@ -429,7 +429,7 @@ Hinzufügen der AuthorizationPolicy zum ContentKey, wie [hier](#AddAuthorization
         IPRestricted = 2,
     }
 
-### <a name="a-idcontentkeydeliverytypeacontentkeydeliverytype"></a><a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
+### <a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
     public enum ContentKeyDeliveryType
     {
         None = 0,

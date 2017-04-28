@@ -17,6 +17,7 @@ ms.author: alkohli
 translationtype: Human Translation
 ms.sourcegitcommit: 78daa5a75b3414e2761333ea6ad91945596553c8
 ms.openlocfilehash: 2017fcdc7a5c36c7c00d8bcef5be973ed60e3f82
+ms.lasthandoff: 01/30/2017
 
 
 ---
@@ -82,7 +83,7 @@ Es wird empfohlen, ein weiteres virtuelles StorSimple-Array bereitzustellen, üb
 
 Führen Sie die folgenden Schritte aus, um Ihr Gerät auf einem virtuellen StorSimple-Zielgerät wiederherzustellen.
 
-1. Versetzen Sie die Volumes/Freigaben auf dem Host in den Offlinezustand. Befolgen Sie die betriebssystemspezifischen Anweisungen auf dem Host, um Volumes bzw. Freigaben in den Offlinezustand zu versetzen. Falls sie nicht bereits offline sind, müssen Sie alle Volumes/Freigaben auf dem Gerät offline schalten, indem Sie auf** Geräte > Freigaben** (bzw. **Geräte > Volumes**) zugreifen. Wählen Sie eine Freigabe bzw. ein Volume aus, und klicken Sie unten auf der Seite auf **Offline schalten**. Wenn Sie zur Bestätigung aufgefordert werden, klicken Sie auf **Ja**. Wiederholen Sie diesen Vorgang für alle Freigaben/Volumes auf dem Gerät.
+1. Versetzen Sie die Volumes/Freigaben auf dem Host in den Offlinezustand. Befolgen Sie die betriebssystemspezifischen Anweisungen auf dem Host, um Volumes bzw. Freigaben in den Offlinezustand zu versetzen. Falls sie nicht bereits offline sind, müssen Sie alle Volumes/Freigaben auf dem Gerät offline schalten, indem Sie auf**Geräte > Freigaben** (bzw. **Geräte > Volumes**) zugreifen. Wählen Sie eine Freigabe bzw. ein Volume aus, und klicken Sie unten auf der Seite auf **Offline schalten**. Wenn Sie zur Bestätigung aufgefordert werden, klicken Sie auf **Ja**. Wiederholen Sie diesen Vorgang für alle Freigaben/Volumes auf dem Gerät.
 2. Wählen Sie auf der Seite **Geräte** das Quellgerät für das Failover aus, und klicken Sie auf **Deaktivieren**. 
     ![](./media/storsimple-ova-failover-dr/image16.png)
 3. Sie werden aufgefordert, diesen Schritt zu bestätigen. Die Gerätedeaktivierung ist ein dauerhafter Prozess, der nicht rückgängig gemacht werden kann. Sie erhalten auch eine Erinnerung, dass Sie die Freigaben/Volumes auf dem Host offline schalten sollen.
@@ -149,10 +150,5 @@ Falls eine der Vorüberprüfungen nicht erfolgreich ist, werden Vorüberprüfung
 
 ## <a name="next-steps"></a>Nächste Schritte
 Erfahren Sie mehr darüber, wie Sie das [StorSimple Virtual Array mit der lokalen Webbenutzeroberfläche verwalten](storsimple-ova-web-ui-admin.md).
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 
