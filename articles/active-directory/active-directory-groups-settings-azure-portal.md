@@ -34,7 +34,7 @@ In diesem Artikel wird erläutert, wie Sie die Einstellungen für eine Gruppe in
 
    ![Öffnen des Blatts „Gruppen“](./media/active-directory-groups-settings-azure-portal/view-groups-blade.png)
 4. Wählen Sie auf dem Blatt **Benutzer und Gruppen** eine Gruppe aus.
-5. Wählen Sie auf dem Blatt **Gruppe – * Gruppenname*** die Option **Eigenschaften aus.
+5. Wählen Sie auf dem Blatt **Gruppe –* Gruppenname***die Option**Eigenschaften aus.
 
    ![Öffnen des Blatts „Eigenschaften“](./media/active-directory-groups-settings-azure-portal/select-group-properties.png)
 6. Klicken Sie auf **Speichern**, wenn Sie die Bearbeitung der Eigenschaften für die Gruppe abgeschlossen haben.    

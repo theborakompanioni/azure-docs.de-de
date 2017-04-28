@@ -347,7 +347,7 @@ Bevor Sie diese Anwendung ausführen, müssen Sie einige Eigenschaften konfiguri
     ![][5]
    
     Klicken Sie auf **Fertig stellen**.
-5. Es wird wieder die Seite **Ziellaufzeiten** des Dialogfelds **Eigenschaften** angezeigt. Wählen Sie **Apache Tomcat&7;.0** aus, und klicken Sie dann auf **OK**.
+5. Es wird wieder die Seite **Ziellaufzeiten** des Dialogfelds **Eigenschaften** angezeigt. Wählen Sie **Apache Tomcat 7.0** aus, und klicken Sie dann auf **OK**.
    
     ![][6]
 6. Klicken Sie im Eclipse-Menü **Ausführen** auf **Ausführen**. Wählen Sie im Dialogfeld **Ausführen als** die Option **Auf Server ausführen**. Wählen Sie im Dialogfeld **Auf Server ausführen** die Option **Tomcat v7.0 Server** aus:
@@ -422,7 +422,7 @@ So rufen Sie FTP-Verbindungsinformationen aus dem Veröffentlichungsprofil ab
 * `publishUrl` stimmt mit **FTP-Hostname** überein. Dies ist der Wert, den Sie in **Host** festgelegt haben.
 * `publishMethod="FTP"` bedeutet, dass Sie **Protokoll** auf **FTP – File Transfer Protoco**l und **Verschlüsselung** auf **Unverschlüsseltes FTP verwenden** festgelegt haben.
 * `userName` und `userPWD` sind Schlüssel für die tatsächlichen Benutzernamen und Kennwörter, die Sie beim Zurücksetzen der Anmeldeinformationen für die Bereitstellung angegeben haben. `userName` stimmen mit **Bereitstellung / FTP-Benutzer**überein. Sie entsprechen **User** und **Password** in FileZilla.
-* `ftpPassiveMode="True"` bedeutet, dass eine passive FTP-Übertragung verwendet wird. Wählen Sie auf der Registerkarte **Übertragungs-Einstellungen **die Option **Passiv**.
+* `ftpPassiveMode="True"` bedeutet, dass eine passive FTP-Übertragung verwendet wird. Wählen Sie auf der Registerkarte **Übertragungs-Einstellungen**die Option **Passiv**.
 
 #### <a name="configure-the-web-app-to-host-a-java-application"></a>Konfigurieren der Web-App zum Hosten einer Java-Anwendung
 Bevor Sie die Anwendung veröffentlichen, müssen Sie einige Konfigurationseinstellungen ändern, damit die Web-App eine Java-Anwendung hosten kann.
