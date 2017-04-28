@@ -86,7 +86,3 @@ Wenn Sie mehrere Werte in einem einzelnen Tag speichern möchten, wenden Sie ein
     ]
 }
 ```
-
-<!--HONumber=Feb17_HO1-->
-
-

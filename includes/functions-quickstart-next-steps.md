@@ -10,7 +10,3 @@ In dieser Schnellstartanleitung wird eine einfache Ausführung einer grundlegend
   Beschreibt die für Azure Functions verfügbaren Servicepläne (einschließlich des Hostingplans „Verbrauchstarif“) und enthält Informationen zur Wahl des geeigneten Plans. 
 * [Was ist Azure App Service?](../articles/app-service/app-service-value-prop-what-is.md)  
   Azure Functions nutzt die Azure App Service-Plattform für Kernfunktionen wie Bereitstellungen, Umgebungsvariablen und Diagnosen. 
-
-<!--HONumber=Feb17_HO1-->
-
-

@@ -20,8 +20,3 @@ Die Schritte zum Aufheben der Registrierung eines Prozessservers sind abhängig 
     perl Unregister-ASRComponent.pl -IPAddress <IP_of_Process_Server> -Component PS
     ```
 4. Dadurch werden die Details des Prozessservers aus dem System entfernt.
-
-
-<!--HONumber=Feb17_HO1-->
-
-

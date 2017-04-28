@@ -8,8 +8,3 @@
 
     > [!Note]
   > Es kann 15 Minuten oder länger dauern, bis der Kontoname im Portal angezeigt wird. Klicken Sie zur sofortigen Aktualisierung auf **Konfigurationsserver** > ***Servername*** > **Server aktualisieren**.
-
-
-<!--HONumber=Feb17_HO2-->
-
-
