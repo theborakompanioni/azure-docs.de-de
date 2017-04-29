@@ -15,8 +15,3 @@ Wenn Sie über mehrere Abonnements verfügen, wählen Sie mit dem Cmdlet [**Set-
 
     Set-AzureRmContext -SubscriptionId '4cac86b0-1e56-bbbb-aaaa-000000000000'
 
-
-
-<!--HONumber=Feb17_HO3-->
-
-

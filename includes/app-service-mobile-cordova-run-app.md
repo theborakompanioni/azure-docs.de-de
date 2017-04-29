@@ -15,8 +15,3 @@ Das Back-End fügt Daten aus der Anforderung in die TodoItem-Tabelle in SQL-Date
 Die Schritte 3 bis 5 können für andere Plattformen wiederholt werden.
 
 [Azure-Portal]: https://portal.azure.com/
-
-
-<!--HONumber=Dec16_HO1-->
-
-

@@ -6,8 +6,3 @@ Virtuelle ExpressRoute-Netzwerkgateways können folgende SKUs verwenden:
 * HighPerformance
 * UltraPerformance
 
-
-
-<!--HONumber=Feb17_HO3-->
-
-

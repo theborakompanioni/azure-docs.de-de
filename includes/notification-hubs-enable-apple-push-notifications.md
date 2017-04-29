@@ -116,8 +116,3 @@ Um Pushbenachrichtigungen an eine iOS-App senden zu können, muss diese bei Appl
 7. Nachdem das neue Bereitstellungsprofil erstellt wurde, klicken Sie darauf, um es herunterzuladen und auf Ihrem Xcode-Entwicklungscomputer zu installieren. Klicken Sie anschließend auf **Fertig**.
    
       ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-profile-ready.png)
-
-
-<!--HONumber=Dec16_HO1-->
-
-

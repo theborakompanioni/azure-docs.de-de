@@ -12,8 +12,3 @@ In der folgenden Tabelle sind für Azure Event Hubs spezifische Kontingente und 
 | Maximale Aufbewahrungsdauer von Ereignisdaten |Entität |Statisch |- |1–7 Tage |
 | Maximale Durchsatzeinheiten |Namespace |Statisch |Bei einer Überschreitung des Grenzwerts für Durchsatzeinheiten werden Ihre Daten gedrosselt, und eine **ServerBusyException**-Ausnahme wird ausgelöst. Sie können im Tarif „Standard“ eine höhere Anzahl von Durchsatzeinheiten anfordern, indem Sie ein Supportticket erstellen. Zusätzliche Durchsatzeinheiten sind für einen festgelegten Kaufpreis in 20er-Blöcken verfügbar. |20 |
 
-
-
-<!--HONumber=Feb17_HO3-->
-
-
