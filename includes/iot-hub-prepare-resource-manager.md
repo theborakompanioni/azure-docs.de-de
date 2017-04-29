@@ -42,8 +42,3 @@ Sie haben jetzt eine Azure AD-Anwendung fertig erstellt, mit der die Authentifiz
 
 [lnk-authenticate-arm]: https://msdn.microsoft.com/library/azure/dn790557.aspx
 [lnk-powershell-install]: /powershell/azureps-cmdlets-docs
-
-
-<!--HONumber=Feb17_HO3-->
-
-

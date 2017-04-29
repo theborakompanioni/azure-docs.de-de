@@ -78,8 +78,3 @@ Für jede vorkonfigurierte Azure IoT Suite-Lösung werden Instanzen von Azure-Di
 * [**Logic Apps:**](https://azure.microsoft.com/services/app-service/logic/) Das Logic Apps-Feature von Azure App Service dient als Hilfe bei der Integration Ihrer IoT-Lösung in Ihre vorhandenen branchenspezifischen Systeme und bei der Automatisierung von Workflowprozessen. Mit Logik-Apps können Entwickler Workflows entwerfen, die über einen Auslöser gestartet werden, und dann eine Reihe von Schritten ausführen – Regeln und Aktionen, für die leistungsfähige Connectors zur Integration in Ihre Geschäftsprozesse eingesetzt werden. Logik-Apps ermöglichen standardmäßig Verbindungen mit einem umfassenden Ökosystem von SaaS-, cloudbasierten und lokalen Anwendungen.
 * [**Azure Blob Storage:**](https://azure.microsoft.com/services/storage/) zuverlässiger, kostengünstiger Cloudspeicher für die Daten, die von Ihren Geräten an die Cloud gesendet werden.
 
-
-
-<!--HONumber=Dec16_HO1-->
-
-

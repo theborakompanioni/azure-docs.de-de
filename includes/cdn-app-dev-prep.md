@@ -51,8 +51,3 @@ Wenn Sie statt eines Dienstprinzipals lieber eine interaktive individuelle Benut
 4. Anstatt der Rolle **Mitwirkender von CDN-Profil** einen Dienstprinzipal zuzuweisen, weisen Sie einzelne Benutzer oder Gruppen zu.  In diesem Beispiel sehen Sie, dass ich den Benutzer *CDN-Demobenutzer* der Rolle **Mitwirkender von CDN-Profil** zugewiesen habe.  
 
     ![Individueller Benutzerzugriff](./media/cdn-app-dev-prep/cdn-aad-user-include.png)
-
-
-<!--HONumber=Feb17_HO3-->
-
-

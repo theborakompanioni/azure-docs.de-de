@@ -26,7 +26,3 @@ Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
 [Senden von C2D-Nachrichten mit IoT Hub]: ../articles/iot-hub/iot-hub-csharp-csharp-c2d.md
 [Erste Schritte mit IoT Hub]: ../articles/iot-hub/iot-hub-node-node-getstarted.md
-
-<!--HONumber=Dec16_HO1-->
-
-

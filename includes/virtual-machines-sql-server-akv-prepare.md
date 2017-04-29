@@ -32,8 +32,3 @@ Achten Sie beim Schritt zum „Erstellen eines Schlüsseltresors“ auf die zur�
 
 Die Schlüsseltresor-URL wird später dem Parameter **$akvURL** im PowerShell-Skript zugewiesen, um die Azure-Schlüsseltresor-Integration zu ermöglichen.
 
-
-
-<!--HONumber=Feb17_HO3-->
-
-
