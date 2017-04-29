@@ -5,8 +5,3 @@ Da es sich bei File Storage-Freigaben um gewöhnliche SMB-Freigaben handelt, kö
 
 Sie können Azure-Dateifreigaben mit dem [Azure-Portal](https://portal.azure.com), den Azure Storage-PowerShell-Cmdlets, den Azure Storage-Clientbibliotheken oder der Azure Storage-REST-API erstellen. Da es sich bei diesen Dateifreigaben um SMB-Freigaben handelt, können Sie darauf außerdem über standardmäßige und vertraute Dateisystem-APIs zugreifen.
 
-
-
-<!--HONumber=Jan17_HO3-->
-
-

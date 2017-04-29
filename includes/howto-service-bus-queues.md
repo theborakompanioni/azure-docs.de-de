@@ -12,8 +12,3 @@ Service Bus-Warteschlangen sind eine Allzwecktechnologie für viele unterschiedl
 Warteschlangen unterstützen Sie bei der einfacheren Skalierung Ihrer Anwendungen und führen zu einer robusteren Architektur.
 
 
-
-
-<!--HONumber=Jan17_HO3-->
-
-
