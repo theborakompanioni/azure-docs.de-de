@@ -47,8 +47,3 @@ Wenn Sie die `compression`-Eigenschaft in einem JSON-Eingabedataset angeben, kan
 * Lesen Sie Daten aus einer Nur-Text-Datei aus einem lokalen Dateisystem, komprimieren Sie sie mithilfe des GZip-Formats, und schreiben Sie die komprimierten Daten in einen Azure-Blob. Sie definieren ein Azure-Blob-Ausgabedataset mit der `compression` `type`-JSON-Eigenschaft als GZip.
 * Lesen Sie die ZIP-Datei vom FTP-Server, dekomprimieren Sie sie, um die Dateien zu extrahieren, und stellen Sie die Dateien im Azure Data Lake Store bereit. Sie definieren ein FTP-Eingabedataset mit der `compression` `type`-JSON-Eigenschaft als ZipDeflate.
 * Lesen Sie GZIP-komprimierte Daten aus einem Azure-Blob, dekomprimieren Sie sie, komprimieren Sie sie mit BZIP2, und schreiben Sie die resultierenden Daten in einen Azure-Blob. In diesem Fall definieren Sie für das Azure-Blob-Eingabedataset die Einstellung GZIP als `compression` `type` und für das Ausgabedataset BZIP2 als `compression` `type`.   
-
-
-<!--HONumber=Feb17_HO3-->
-
-

@@ -14,7 +14,3 @@ Hier ist eine Liste mit allen Repositorys angegeben, die Beispiele für die Azur
 * [Verwaltung von Import-/Exportaufträgen über die REST-API](https://azure.microsoft.com/resources/samples/storage-dotnet-import-export-job-management/)
 * [MyDriving - An Azure IOT and Mobile Sample Application](https://azure.microsoft.com/resources/samples/mydriving/) (MyDriving – Eine Azure IOT- und mobile Beispielanwendung)
 * [.NET Storage Client Library Samples](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted) (Speicherclientbibliothek für .NET – Beispiele)
-
-<!--HONumber=Jan17_HO3-->
-
-

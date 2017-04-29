@@ -48,8 +48,3 @@ Im obigen Beispiel wird „{Slice}“ durch den Wert der Data Factory-Systemvari
 ],
 ```
 Im Beispiel oben werden Jahr, Monat, Tag und Uhrzeit von SliceStart in separate Variablen extrahiert, die von den Eigenschaften „folderPath“ und „fileName“ verwendet werden.
-
-
-<!--HONumber=Feb17_HO3-->
-
-

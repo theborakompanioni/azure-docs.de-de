@@ -8,7 +8,3 @@ Hier ist eine Liste mit allen Repositorys angegeben, die Beispiele für die Azur
 * [Erste Schritte mit dem Azure-Warteschlangendienst in Java](https://azure.microsoft.com/resources/samples/storage-queue-java-getting-started/)
 * [Erste Schritte mit dem Azure-Tabellenspeicherdienst in Java](https://azure.microsoft.com/resources/samples/storage-table-java-getting-started/)
 * [Storage Java Client Library Samples](https://github.com/Azure/azure-storage-java/tree/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage) (Speicherclientbibliothek für Java – Beispiele)
-
-<!--HONumber=Jan17_HO3-->
-
-
