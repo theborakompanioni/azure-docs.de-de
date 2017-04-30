@@ -53,7 +53,3 @@
 9. Nachdem die Updates erfolgreich installiert wurden, wird eine Benachrichtigung diesbezüglich im Blatt „Device updates“ angezeigt. Die Softwareversion ändert sich auch auf **10.0.10288.0**. 
 
     ![Gerät aktualisieren](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate17m.png)
-
-<!--HONumber=Nov16_HO4-->
-
-
