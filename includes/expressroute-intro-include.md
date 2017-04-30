@@ -3,8 +3,3 @@ Mit Microsoft Azure ExpressRoute können Sie Ihre lokalen Netzwerke über eine d
 
 ![](./media/expressroute-intro-include/expressroute-basic.png)
 
-
-
-<!--HONumber=Jan17_HO1-->
-
-

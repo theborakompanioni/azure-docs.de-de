@@ -3,8 +3,3 @@
 2. Klicken Sie auf **Virtuelle Computer**, und wählen Sie das virtuelle Gerät aus.
 3. Klicken Sie auf **Herunterfahren**.
 
-
-
-<!--HONumber=Jan17_HO1-->
-
-

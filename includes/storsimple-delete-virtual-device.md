@@ -4,8 +4,3 @@
 2. Klicken Sie auf **Virtuelle Computer**, und wählen Sie das virtuelle Gerät aus.
 3. Klicken Sie auf **Löschen** , und wählen Sie alle Datenträger des virtuellen Computers aus.
 
-
-
-<!--HONumber=Jan17_HO1-->
-
-

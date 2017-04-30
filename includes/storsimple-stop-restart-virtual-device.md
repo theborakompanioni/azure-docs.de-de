@@ -14,8 +14,3 @@ Verwenden Sie die folgenden Cmdlets für den Neustart eines virtuellen Geräts.
 
 `Restart-AzureVM -ServiceName "MyStorSimpleservice1" -Name "MyStorSimpleDevice"`
 
-
-
-<!--HONumber=Jan17_HO1-->
-
-

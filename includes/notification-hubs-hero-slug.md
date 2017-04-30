@@ -5,8 +5,3 @@ Wenn Sie mit Notification Hubs bereits vertraut sind, können Sie auf der linken
 
 Wir nehmen Ihr Feedback ernst. Wenn Sie beim Durcharbeiten dieses Themas Probleme oder Vorschläge zur Verbesserung dieses Inhalts haben, würden wir uns über Ihr Feedback unten auf der Seite freuen.
 
-
-
-<!--HONumber=Jan17_HO1-->
-
-

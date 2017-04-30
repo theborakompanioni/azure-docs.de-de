@@ -8,8 +8,3 @@ Sie bezahlen für zwei Dinge: die stündlichen Computekosten für das Gateway de
 * Wenn Sie Datenverkehr zwischen virtuellen Netzwerken in unterschiedlichen Regionen senden, richtet sich der Preis nach der Region.
 * Wenn Sie Datenverkehr nur zwischen virtuellen Netzwerken senden, die sich in derselben Region befinden, fallen keine Kosten für die Datenübertragung an. Der Datenverkehr zwischen VNets in derselben Region ist kostenlos.
 
-
-
-<!--HONumber=Jan17_HO1-->
-
-
