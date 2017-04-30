@@ -5,8 +5,3 @@
 > In unserer Liste mit [Azure Storage-Beispielen](https://docs.microsoft.com/en-us/azure/storage/storage-samples-dotnet) finden Sie benutzerfreundliche, umfassende Azure Storage-Codebeispiele, die Sie herunterladen und ausführen können.
 
 
-
-
-<!--HONumber=Jan17_HO4-->
-
-
