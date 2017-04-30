@@ -59,7 +59,7 @@ Weitere Informationen zur Unterdomäneneinrichtung im Vergleich zur Unterverzeic
 ## <a name="enable-the-network"></a>Aktivieren des Netzwerks
 Das Netzwerk ist jetzt in der Datenbank konfiguriert. Es muss noch ein weiterer Schritt durchgeführt werden, um die Netzwerkfunktionalität zu aktivieren. Schließen Sie die `wp-config.php`-Einstellungen ab, und stellen Sie sicher, dass `web.config` die einzelnen Websites ordnungsgemäß weiterleitet.
 
-Nachdem Sie auf der Seite **Netzwerkinstallation** auf die Schaltfläche `wp-config.php`Installieren`web.config` geklickt haben, versucht WordPress, die Dateien * und * zu aktualisieren. Sie sollten jedoch stets überprüfen, ob die Dateien erfolgreich aktualisiert wurden. Wenn nicht, werden in diesem Bildschirm die erforderlichen Aktualisierungen angezeigt. Bearbeiten und speichern Sie die Dateien.
+Nachdem Sie auf der Seite **Netzwerkinstallation** auf die Schaltfläche `wp-config.php`Installieren`web.config` geklickt haben, versucht WordPress, die Dateien *und* zu aktualisieren. Sie sollten jedoch stets überprüfen, ob die Dateien erfolgreich aktualisiert wurden. Wenn nicht, werden in diesem Bildschirm die erforderlichen Aktualisierungen angezeigt. Bearbeiten und speichern Sie die Dateien.
 
 Nachdem Sie diese Aktualisierungen durchgeführt haben, müssen Sie sich abmelden und erneut beim wp-admin-Dashboard anmelden.
 

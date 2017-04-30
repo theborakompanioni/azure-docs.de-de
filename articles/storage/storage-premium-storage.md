@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: ramankum
 translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 25dc9c5778c8259b8e59a9695239d167ccb9582a
-ms.lasthandoff: 04/06/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 1040027de1df88544bd7a0c4ba6565d5599a54ab
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -69,7 +69,7 @@ Hier sind einige Features von Storage Premium aufgeführt:
 * **Premium-Speicherkonto**
 
     Erstellen Sie für die Verwendung von Storage Premium ein Premium-Speicherkonto für nicht verwaltete Datenträger. Wählen Sie im [Azure-Portal](https://portal.azure.com) zum Erstellen eines Premium-Speicherkontos die Leistungsstufe **Premium**. Wählen Sie die Replikationsoption **Lokal redundanter Speicher (LRS)**. Sie können ein Premium-Speicherkonto auch erstellen, indem Sie den Typ an einem der folgenden Orte auf **Premium_LRS** festlegen:
-    * [Speicher-REST-API](https://docs.microsoft.com/rest/api/storageservices/fileservices/Azure-Storage-Services-REST-API-Reference) (Version 2014-02-14 oder höher)
+    * [Speicher-REST-API](https://docs.microsoft.com/rest/api/storageservices/Azure-Storage-Services-REST-API-Reference) (Version 2014-02-14 oder höher)
     * [Dienstverwaltungs-REST-API](http://msdn.microsoft.com/library/azure/ee460799.aspx) (Version 2014-10-01 oder höher, für klassische Azure-Bereitstellungen)
     * [Azure Storage-Ressourcenanbieter-REST-API](https://docs.microsoft.com/rest/api/storagerp) (für Azure Resource Manager-Bereitstellungen)
     * [Azure PowerShell](../powershell-install-configure.md) (Version 0.8.10 oder höher)
@@ -223,7 +223,7 @@ Für den Storage-Dienst ist die VHD-Datei ein Seitenblob. Sie können Momentaufn
 
 Erstellen Sie [inkrementelle Momentaufnahmen](storage-incremental-snapshots.md) für nicht verwaltete Premium-Datenträger. Die Vorgehensweise ist dabei die gleiche wie bei Momentaufnahmen für Standardspeicher. Storage Premium unterstützt nur lokal redundanten Speicher als Replikationsoption. Wir empfehlen Ihnen, Momentaufnahmen zu erstellen, und anschließend die Momentaufnahmen in ein geografisch redundantes Standardspeicherkonto zu kopieren. Weitere Informationen finden Sie unter [Redundanzoptionen für Azure Storage](storage-redundancy.md).
 
-Falls ein Datenträger an einen virtuellen Computer angefügt ist, sind einige API-Vorgänge auf dem Datenträger nicht zulässig. Sie können beispielsweise den Vorgang [Kopieren von Blob](/rest/api/storageservices/fileservices/Copy-Blob) für das Blob nicht durchführen, wenn der Datenträger an den virtuellen Computer angefügt ist. Erstellen Sie stattdessen zuerst eine Momentaufnahme dieses Blobs, indem Sie die [Snapshot Blob](/rest/api/storageservices/fileservices/Snapshot-Blob)-REST-API verwenden. Führen Sie anschließend den [Copy Blob](/rest/api/storageservices/fileservices/Copy-Blob)-Vorgang der Momentaufnahme durch, um den angefügten Datenträger zu kopieren. Alternativ hierzu können Sie den Datenträger auch trennen und dann die erforderlichen Vorgänge durchführen.
+Falls ein Datenträger an einen virtuellen Computer angefügt ist, sind einige API-Vorgänge auf dem Datenträger nicht zulässig. Sie können beispielsweise den Vorgang [Kopieren von Blob](/rest/api/storageservices/Copy-Blob) für das Blob nicht durchführen, wenn der Datenträger an den virtuellen Computer angefügt ist. Erstellen Sie stattdessen zuerst eine Momentaufnahme dieses Blobs, indem Sie die [Snapshot Blob](/rest/api/storageservices/Snapshot-Blob)-REST-API verwenden. Führen Sie anschließend den [Copy Blob](/rest/api/storageservices/Copy-Blob)-Vorgang der Momentaufnahme durch, um den angefügten Datenträger zu kopieren. Alternativ hierzu können Sie den Datenträger auch trennen und dann die erforderlichen Vorgänge durchführen.
 
 Für Momentaufnahmen von Storage Premium-Blobs gelten folgende Grenzwerte:
 
@@ -233,7 +233,7 @@ Für Momentaufnahmen von Storage Premium-Blobs gelten folgende Grenzwerte:
 | Speicherkontokapazität für Momentaufnahmen<br>(Umfasst nur Daten in Momentaufnahmen. Enthält keine Daten im Basisblob.) | 10 TB |
 | Mindestzeitraum zwischen aufeinanderfolgenden Momentaufnahmen | 10 Minuten |
 
-Um georedundante Kopien Ihrer Momentaufnahmen aufzubewahren, können Sie Momentaufnahmen aus einem Premium-Speicherkonto mithilfe von "AzCopy" oder "Copy Blob" in ein georedundantes Standardspeicherkonto kopieren. Weitere Informationen finden Sie unter [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md) und [Copy Blob](/rest/api/storageservices/fileservices/Copy-Blob).
+Um georedundante Kopien Ihrer Momentaufnahmen aufzubewahren, können Sie Momentaufnahmen aus einem Premium-Speicherkonto mithilfe von "AzCopy" oder "Copy Blob" in ein georedundantes Standardspeicherkonto kopieren. Weitere Informationen finden Sie unter [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md) und [Copy Blob](/rest/api/storageservices/Copy-Blob).
 
 Ausführliche Informationen zum Durchführen von REST-Vorgängen für Seitenblobs in einem Storage Premium-Konto finden Sie unter [Using Blob Service Operations with Azure Premium Storage](http://go.microsoft.com/fwlink/?LinkId=521969) (Verwenden von Blob-Dienstvorgängen mit Azure Storage Premium).
 
@@ -294,7 +294,7 @@ Bei Verwendung von Storage Premium gilt für die Abrechnung Folgendes:
 
 * **Momentaufnahmen von nicht verwalteten Premium-Datenträgern**
 
-    Für Momentaufnahmen für nicht verwaltete Premium-Datenträger wird die zusätzliche Kapazität in Rechnung gestellt, die von den Momentaufnahmen verwendet wird. Weitere Informationen zu Momentaufnahmen finden Sie unter [Create a snapshot of a blob](/rest/api/storageservices/fileservices/Snapshot-Blob) (Erstellen einer Momentaufnahme eines Blobs).
+    Für Momentaufnahmen für nicht verwaltete Premium-Datenträger wird die zusätzliche Kapazität in Rechnung gestellt, die von den Momentaufnahmen verwendet wird. Weitere Informationen zu Momentaufnahmen finden Sie unter [Create a snapshot of a blob](/rest/api/storageservices/Snapshot-Blob) (Erstellen einer Momentaufnahme eines Blobs).
 
 * **Momentaufnahmen von verwalteten Premium-Datenträgern**
 

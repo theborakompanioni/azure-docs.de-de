@@ -14,9 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 3/13/2017
 ms.author: rclaus
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 3f473836959fbc5d336038a62a95df8db6b7eb7d
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 587a8e225b18ae2a07d766f1a0d75623e44aec9f
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -91,7 +91,7 @@ Im SAP-System besteht keine Präferenz in Bezug auf die HANA-Sicherung bzw. die 
 
 Beachten Sie in Azure, dass bei der Azure-Blob-Momentaufnahmenfunktion keine Konsistenz des Dateisystems garantiert ist (siehe [Using blob snapshots with PowerShell](https://blogs.msdn.microsoft.com/cie/2016/05/17/using-blob-snapshots-with-powershell/) (Verwenden von Blob-Momentaufnahmen mit PowerShell)). Im nächsten Abschnitt (_Konsistenz von SAP HANA-Daten beim Erstellen von Speichermomentaufnahmen_) werden einige Aspekte dieser Funktion beschrieben.
 
-Außerdem sollten Sie über die Abrechnungsaspekte informiert sein, wenn Sie Blob-Momentaufnahmen häufiger nutzen. Dies ist in diesem Artikel beschrieben: [Understanding How Snapshots Accrue Charges](/rest/api/storageservices/fileservices/understanding-how-snapshots-accrue-charges) (Informationen zu den Gebühren, die für Momentaufnahmen entstehen). Dies ist nicht so einfach wie die Verwendung von virtuellen Azure-Datenträgern.
+Außerdem sollten Sie über die Abrechnungsaspekte informiert sein, wenn Sie Blob-Momentaufnahmen häufiger nutzen. Dies ist in diesem Artikel beschrieben: [Understanding How Snapshots Accrue Charges](/rest/api/storageservices/understanding-how-snapshots-accrue-charges) (Informationen zu den Gebühren, die für Momentaufnahmen entstehen). Dies ist nicht so einfach wie die Verwendung von virtuellen Azure-Datenträgern.
 
 ### <a name="sap-hana-data-consistency-when-taking-storage-snapshots"></a>Konsistenz von SAP HANA-Daten beim Erstellen von Speichermomentaufnahmen
 
