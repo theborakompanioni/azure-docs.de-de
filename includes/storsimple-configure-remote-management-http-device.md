@@ -7,8 +7,3 @@
 5. Klicken Sie auf **Remoteverwaltungszertifikat herunterladen** , um ein Remoteverwaltungszertifikat herunterzuladen. Geben Sie einen Speicherort zum Speichern der Datei an. Dieses Zertifikat muss auf dem Client oder dem Hostcomputer installiert werden, der für die Verbindung mit dem virtuellen Gerät verwendet wird.
 6. Klicken Sie unten auf der Seite auf **Speichern** .
 
-
-
-<!--HONumber=Jan17_HO1-->
-
-

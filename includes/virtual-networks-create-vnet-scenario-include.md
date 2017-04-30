@@ -8,8 +8,3 @@ In diesem Szenario erstellen Sie ein VNet namens **TestVNet** mit einem reservie
 * **FrontEnd**, mit **192.168.1.0/24** als CIDR-Block.
 * **BackEnd**, mit **192.168.2.0/24** als CIDR-Block.
 
-
-
-<!--HONumber=Jan17_HO1-->
-
-

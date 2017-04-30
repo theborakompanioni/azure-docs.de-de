@@ -11,8 +11,3 @@ Es folgen einige andere Lernprogramme, die Informationen zum Senden von Benachri
 
 Im nächsten Abschnitt des Tutorials erfahren Sie, wie Sie Benachrichtigungen über die [Notification Hub-REST-Schnittstelle](http://msdn.microsoft.com/library/windowsazure/dn223264.aspx) direkt in Ihrer App senden. Die von einem Gerät gesendeten Benachrichtigungen werden auf allen registrierten Geräten empfangen.  
 
-
-
-<!--HONumber=Jan17_HO1-->
-
-

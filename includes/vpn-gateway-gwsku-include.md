@@ -15,8 +15,3 @@ Berücksichtigen Sie bei der Auswahl einer SKU Folgendes:
 * Die gemeinsame Verwendung von VPN Gateway und ExpressRoute wird in der Basic-SKU nicht unterstützt.
 * Aktiv-Aktiv-S2S-VPN-Gatewayverbindungen können nur in der HighPerformance-SKU konfiguriert werden.
 
-
-
-<!--HONumber=Jan17_HO1-->
-
-

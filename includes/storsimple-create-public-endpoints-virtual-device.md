@@ -12,8 +12,3 @@
 
 Nach dem Erstellen des Endpunkts können Sie die Details zum Ermitteln der öffentlichen virtuellen IP-Adresse anzeigen. Notieren Sie sich diese Adresse.
 
-
-
-<!--HONumber=Jan17_HO1-->
-
-

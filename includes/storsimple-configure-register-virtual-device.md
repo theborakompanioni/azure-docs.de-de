@@ -17,8 +17,3 @@ Nach dem Abschluss der Konfiguration und Registrierung wird das Gerät online ge
 
 ![StorSimple – virtuelles Gerät ist online](./media/storsimple-configure-register-virtual-device/StorSimple_VirtualDeviceOnline1M.png)
 
-
-
-<!--HONumber=Jan17_HO1-->
-
-
