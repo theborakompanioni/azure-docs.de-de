@@ -19,8 +19,3 @@ Die Datei *host.json* enthält die laufzeitspezifische Konfiguration und befinde
 
 Jede Funktion verfügt über einen Ordner, der mindestens eine Codedatei, die function.json-Konfiguration sowie weitere Abhängigkeiten enthält.
 
-
-
-<!--HONumber=Feb17_HO3-->
-
-

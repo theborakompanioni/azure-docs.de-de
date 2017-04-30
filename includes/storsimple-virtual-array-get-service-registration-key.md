@@ -5,7 +5,3 @@
 2.  Klicken Sie im neu geöffneten Blatt auf **Verwalten&gt;** **Schlüssel**.
 
 3.  Klicken Sie auf das Kopiersymbol, um den Dienstregistrierungsschlüssel zu kopieren und für die spätere Verwendung zu speichern.
-
-<!--HONumber=Nov16_HO4-->
-
-

@@ -9,8 +9,3 @@ In diesem Schritt erstellen Sie eine Firewallregel, um den Testport für den End
 7. Geben Sie auf der Seite **Name** einen Regelnamen, z.B.**Always On-Listenertestport**, in das Textfeld **Name** ein, und klicken Sie auf **Fertig stellen**.
 8. Wiederholen Sie die oben genannten Schritte für den Port des Verfügbarkeitsgruppenlisteners (wie weiter oben im $EndpointPort-Parameter des Skripts angegeben), und geben Sie einen geeigneten Regelnamen an, z.B. **Always On-Listenerport**.
 
-
-
-<!--HONumber=Feb17_HO3-->
-
-
