@@ -1,6 +1,6 @@
 ---
 title: "Features für hohe Verfügbarkeit bei HDInsight (Hadoop) | Microsoft Docs"
-description: "Erfahren Sie, wie Linux-basierte HDInsight-Cluster durch die Verwendung eines zusätzlichen Hauptknotens eine höhere Zuverlässigkeit und Verfügbarkeit bieten. Sie erfahren, wie dies Hadoop-Dienste wie Ambari und Hive beeinflusst und wie eine Verbindung mit jedem Hauptknoten über SSH hergestellt wird."
+description: "Erfahren Sie, wie Linux-basierte HDInsight-Cluster durch die Verwendung eines zusätzlichen Hauptknotens eine höhere Zuverlässigkeit und Verfügbarkeit bieten. Sie erfahren, wie dies Hadoop-Dienste wie Ambari und Hive beeinflusst, und wie eine Verbindung mit jedem Hauptknoten über SSH hergestellt wird."
 services: hdinsight
 editor: cgronlun
 manager: jhubbard
@@ -14,104 +14,109 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 01/12/2017
+ms.date: 04/03/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: c4003809decfb83c08e808f4bd7a14c1ecf05a55
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 506f2b997ae1f770c7b59f8e801ff3fbb6434ccc
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="availability-and-reliability-of-hadoop-clusters-in-hdinsight"></a>Verfügbarkeit und Zuverlässigkeit von Hadoop-Clustern in HDInsight
 
-Hadoop erzielt hohe Verfügbarkeit und Zuverlässigkeit durch Verteilen von redundanten Kopien von Diensten und Daten auf die Knoten in einem Cluster. Hadoop-Standarddistributionen weisen jedoch typischerweise nur einen einzigen Hauptknoten auf. Jeder Ausfall dieses Hauptknotens kann dazu führen, dass der Cluster nicht mehr funktioniert.
+HDInsight-Cluster stellen zwei Hauptknoten bereit, um die Verfügbarkeit und Zuverlässigkeit von ausgeführten Hadoop-Diensten und -Aufträgen zu verbessern.
 
-Zur Behebung dieses potenziellen Problems stellen HDInsight-Cluster in Azure zwei Hauptknoten bereit, um die Verfügbarkeit und Zuverlässigkeit von ausgeführten Hadoop-Diensten und -Aufträgen zu verbessern.
+Hadoop erzielt hohe Verfügbarkeit und Zuverlässigkeit durch Aufbewahren von Kopien von Diensten und Daten auf mehreren Knoten in einem Cluster. Hadoop-Standarddistributionen weisen jedoch typischerweise nur einen einzigen Hauptknoten auf. Jeder Ausfall dieses Hauptknotens kann dazu führen, dass der Cluster nicht mehr funktioniert. Dies ist kein HDInsight-Problem.
 
 > [!IMPORTANT]
-> Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date).
+> Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date).
 
 ## <a name="understanding-the-nodes"></a>Grundlegendes zu den Knoten
-Knoten in einem HDInsight-Cluster werden mithilfe von virtuellen Azure-Computern implementiert. Falls ein Knoten ausfällt, wird er offline geschaltet, und es wird ein neuer Knoten erstellt, um den fehlerhaften Knoten zu ersetzen. Während der Knoten offline ist, wird ein anderer Knoten desselben Typs verwendet, bis der neue Knoten online geschaltet wird.
+
+Knoten in einem HDInsight-Cluster werden mithilfe von virtuellen Azure-Computern implementiert. Falls ein Knoten ausfällt, wird er offline geschaltet, und es wird ein neuer Knoten erstellt, um den fehlerhaften Knoten zu ersetzen. Während der Knoten offline ist, wird ein anderer Knoten identischen Typs verwendet, bis der neue Knoten online geschaltet wird.
 
 > [!NOTE]
-> Wenn auf dem Knoten zum Zeitpunkt des Ausfalls Daten analysiert wurden, gehen die Fortschritte dieses Auftrags verloren. Der Auftrag, der auf dem Knoten ausgeführt wurde, wird neu an einen anderen Knoten übermittelt.
-> 
-> 
+> Wenn auf dem Knoten zum Zeitpunkt des Ausfalls Daten analysiert wurden, gehen die Fortschritte dieses Auftrags verloren. Der Auftrag wird einem anderen Knoten übertragen.
 
-In den folgenden Abschnitten werden die einzelnen Arten von Knoten erläutert, die mit HDInsight verwendet werden. Es werden nicht alle Knotentypen für alle Clustertypen verwendet. Ein Hadoop-Cluster z. B. weist keine Nimbusknoten auf. Weitere Informationen zu den von den HDInsight-Clustertypen verwendeten Knoten finden Sie im Artikel [Erstellen von Linux-basierten Hadoop-Clustern in HDInsight](hdinsight-hadoop-provision-linux-clusters.md#cluster-types) im Abschnitt „Clustertypen“.
+In den folgenden Abschnitten werden die einzelnen Arten von Knoten erläutert, die mit HDInsight verwendet werden. Es werden nicht alle Knotentypen für alle Clustertypen verwendet. Ein Hadoop-Cluster weist z.B. keine Nimbusknoten auf. Weitere Informationen zu den von den HDInsight-Clustertypen verwendeten Knoten finden Sie im Dokument [Erstellen von Linux-basierten Hadoop-Clustern in HDInsight](hdinsight-hadoop-provision-linux-clusters.md#cluster-types) im Abschnitt „Clustertypen“.
 
 ### <a name="head-nodes"></a>Hauptknoten
-In einigen Implementierungen von Hadoop hostet ein einzelner Hauptknoten Dienste und Komponenten, die zur reibungslosen Verwaltung ausgefallener Workerknoten dienen. Bei einem Ausfall eines Masterdiensts auf dem Hauptknoten würde jedoch der komplette Cluster ausfallen.
 
-HDInsight-Cluster verfügen über einen sekundären Hauptknoten, sodass Masterdienste und -komponenten bei einem Ausfall des primären Knotens weiterhin auf dem sekundären Knoten ausgeführt werden können.
+Beide Hauptknoten sind aktiv und werden gleichzeitig innerhalb des HDInsight-Clusters ausgeführt. Einige Dienste wie HDFS oder YARN sind jeweils nur auf einem Hauptknoten „aktiv“. Andere Dienste (z. B. HiveServer2 oder Hive-MetaStore) sind gleichzeitig auf beiden Hauptknoten aktiv.
 
-> [!IMPORTANT]
-> Beide Hauptknoten sind aktiv und werden gleichzeitig innerhalb des Clusters ausgeführt. Einige Dienste (z. B. HDFS oder YARN) sind jeweils nur auf einem Hauptknoten „aktiv“ (und auf dem anderen Hauptknoten im „Standby“). Andere Dienste (z. B. HiveServer2 oder Hive-MetaStore) sind gleichzeitig auf beiden Hauptknoten aktiv.
-> 
-> 
-
-Hauptknoten (und andere Knoten in HDInsight) verfügen über numerische Werte als Teil des Hostnamens des Knotens. Beispiel: `hn0-CLUSTERNAME` oder `hn4-CLUSTERNAME`. 
+Hauptknoten (und andere Knoten in HDInsight) verfügen über numerische Werte als Teil des Hostnamens des Knotens. Beispiel: `hn0-CLUSTERNAME` oder `hn4-CLUSTERNAME`.
 
 > [!IMPORTANT]
-> Der numerische Wert gibt nicht an, ob ein Knoten primär oder sekundär ist; der numerische Wert vergibt nur einen eindeutigen Namen für jeden Knoten.
-> 
-> 
+> Leiten Sie vom numerischen Wert nicht ab, ob ein Knoten primär oder sekundär ist. Der numerische Wert soll nur sicherstellen, dass jeder Knoten einen eindeutigen Namen hat.
 
 ### <a name="nimbus-nodes"></a>Nimbusknoten
+
 In Storm-Clustern stellen Nimbusknoten die gleiche Funktionalität für den Hadoop JobTracker bereit, indem sie die Verarbeitung auf Workerknoten verteilen und überwachen. HDInsight stellt zwei Nimbusknoten für den Storm-Clustertyp bereit.
 
 ### <a name="zookeeper-nodes"></a>Zookeeper-Knoten
-[ZooKeeper](http://zookeeper.apache.org/) -Knoten (ZKs) wählen eine übergeordnete Instanz von Masterdiensten auf Hauptknoten aus und teilen Diensten, Datenknoten (Workerknoten) und Gateways mit, auf welchem Hauptknoten ein Masterdienst aktiv ist. Standardmäßig stellt HDInsight drei Zookeeper-Knoten bereit.
+
+[ZooKeeper](http://zookeeper.apache.org/)-Knoten wählen eine übergeordnete Instanz von Masterdiensten auf Hauptknoten aus und teilen Diensten, Datenknoten (Workerknoten) und Gateways mit, auf welchem Hauptknoten ein Masterdienst aktiv ist. Standardmäßig stellt HDInsight drei ZooKeeper-Knoten bereit.
 
 ### <a name="worker-nodes"></a>Workerknoten
-Workerknoten führen die eigentliche Analyse aus, wenn ein Auftrag an den Cluster übermittelt wird. Wenn ein Workerknoten ausfällt, wird die Ausgabe, die auf dem Knoten gerade ausgeführt wurde, an einen anderen Workerknoten übermittelt. Standardmäßig erstellt HDInsight vier Workerknoten. Sie können diese Anzahl jedoch sowohl während als auch nach der Clustererstellung gemäß Ihren Anforderungen ändern.
+
+Workerknoten führen die eigentliche Analyse aus, wenn ein Auftrag an den Cluster übermittelt wird. Wenn ein Workerknoten ausfällt, wird die Aufgabe, die auf dem Knoten gerade ausgeführt wurde, an einen anderen Workerknoten übermittelt. HDInsight erstellt standardmäßig vier Workerknoten. Sie können diese Anzahl sowohl während als auch nach der Erstellung des Clusters Ihren Bedürfnissen gemäß ändern.
 
 ### <a name="edge-node"></a>Edgeknoten
+
 Ein Edgeknoten ist nicht aktiv an der Datenanalyse im Cluster beteiligt, sondern wird von Entwicklern oder Datenspezialisten bei der Arbeit mit Hadoop verwendet. Der Edgeknoten befindet sich im gleichen virtuellen Azure-Netzwerk wie die anderen Knoten im Cluster und kann direkt auf alle anderen Knoten zugreifen. Da dieser Knoten nicht an der Analyse von Daten für den Cluster beteiligt ist, kann er problemlos eingesetzt werden, ohne dass Sie sich Gedanken darüber machen müssen, ob dadurch Ressourcen von kritischen Hadoop-Diensten oder -Analyseaufträgen abgezogen werden.
 
 Zurzeit ist R Server auf HDInsight der einzige Clustertyp, der standardmäßig einen Edgeknoten bereitstellt. Für R Server auf HDInsight wird der Edgeknoten verwendet, um R-Code lokal auf dem Knoten zu testen, bevor der Code zur verteilten Verarbeitung an den Cluster übermittelt wird.
 
-[Create a Linux-based HDInsight cluster with Hue on an Edge Node](https://azure.microsoft.com/documentation/templates/hdinsight-linux-with-hue-on-edge-node/) (Erstellen eines Linux-basierten HDInsight-Clusters mit Hue auf einem Edgeknoten) ist eine Beispielvorlage, die zum Erstellen eines Hadoop-Clustertyps verwendet werden kann, der über einen Edgeknoten verfügt.
+Informationen zur Verwendung eines Edgeknotens mit anderen Clustertypen als R Server finden Sie im Dokument [Verwenden leerer Edgeknoten in HDInsight](hdinsight-apps-use-edge-node.md).
 
 ## <a name="accessing-the-nodes"></a>Zugreifen auf die Knoten
-Der Zugriff auf den Cluster über das Internet wird über ein öffentliches Gateway bereitgestellt und ist auf das Herstellen einer Verbindung mit den Hauptknoten und (wenn es sich um einen Cluster mit R Server in HDInsight handelt) dem Edgeknoten beschränkt. Die Bereitstellung mehrerer Hauptknoten wirkt sich nicht auf den Zugriff auf die auf den Hauptknoten ausgeführten Dienste aus, da das öffentliche Gateway Anforderungen an den Hauptknoten weiterleitet, der den angeforderten Dienst hostet. Ein Beispiel: Ambari wird zurzeit auf dem sekundären Hauptknoten gehostet, und das Gateway leitet eingehende Anforderungen für Ambari an diesen Knoten weiter.
 
-Beim Zugriff auf den Cluster über SSH wird bei Verwendung von Port 22 (Standardport für SSH) eine Verbindung mit dem primären Hauptknoten hergestellt; bei Verwendung von Port 23 eine Verbindung mit dem sekundären Hauptknoten. `ssh username@mycluster-ssh.azurehdinsight.net` stellt z.B. eine Verbindung mit dem primären Hauptknoten des Clusters mit der Bezeichnung **mycluster** her.
+Zugriff auf den Cluster über das Internet ist über ein öffentliches Gateway möglich. Der Zugriff ist auf das Herstellen einer Verbindung mit den Hauptknoten und (falls vorhanden) dem Edgeknoten beschränkt. Der Zugriff auf Dienste, die auf den Hauptknoten ausgeführt werden, wird durch das Vorhandensein mehrerer Hauptknoten nicht beeinflusst. Das öffentliche Gateway leitet Anforderungen an den Hauptknoten, der den angeforderten Dienst hostet. Ein Beispiel: Ambari wird zurzeit auf dem sekundären Hauptknoten gehostet, und das Gateway leitet eingehende Anforderungen für Ambari an diesen Knoten weiter.
 
-> [!NOTE]
-> Dies gilt auch für SSH-basierte Protokolle, wie etwa SFTP (SSH File Transfer Protocol).
-> 
-> 
+Der Zugriff über das öffentliche Gateway ist auf die Ports 443 (HTTPS), 22 und 23 beschränkt.
 
-Auf den Edgeknoten, der in Clustern mit R Server in HDInsight bereitgestellt wird, kann auch direkt mithilfe von SSH über Port 22 zugegriffen werden. `ssh username@RServer.mycluster.ssh.azurehdinsight.net` stellt z.B. eine Verbindung mit dem Edgeknoten für einen Cluster mit R Server in HDInsight mit der Bezeichnung **mycluster** her. 
+* Port __443__ wird für den Zugriff auf Ambari und andere Webbenutzeroberflächen oder REST-APIs verwendet, die auf dem Hauptknoten gehostet werden.
+
+* Port __22__ wird für den Zugriff auf den primären Hauptknoten oder den Edgeknoten mit SSH verwendet.
+
+* Port __23__ wird für den Zugriff auf den sekundären Hauptknoten mit SSH verwendet. `ssh username@mycluster-ssh.azurehdinsight.net` stellt z.B. eine Verbindung mit dem primären Hauptknoten des Clusters mit der Bezeichnung **mycluster** her.
+
+Weitere Informationen zur Verwendung von SSH finden Sie im Dokument [Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ### <a name="internal-fully-qualified-domain-names-fqdn"></a>Interne vollqualifizierte Domänennamen (FQDN)
-Knoten in einem HDInsight-Cluster besitzen eine interne IP-Adresse und einen internen FQDN, auf die nur über den Cluster zugegriffen werden kann (z. B. eine SSH-Sitzung mit dem Hauptknoten oder ein im Cluster ausgeführter Auftrag). Wenn Sie mit dem internen FQDN oder der internen IP-Adresse auf Dienste im Cluster zugreifen, sollten Sie die zu verwendende IP-Adresse oder den FQDN mithilfe von Ambari überprüfen.
 
-Der Oozie-Dienst kann z. B. nur auf einem Hauptknoten ausgeführt werden, und zur Verwendung des `oozie`-Befehls in einer SSH-Sitzung ist die URL des Diensts erforderlich. Die URL kann mit dem folgenden Befehl aus Ambari abgerufen werden:
+Knoten in einem HDInsight-Cluster besitzen eine interne IP-Adresse und einen internen FQDN, auf die nur über den Cluster zugegriffen werden kann. Wenn Sie mit dem internen FQDN oder der internen IP-Adresse auf Dienste im Cluster zugreifen, sollten Sie die zu verwendende IP-Adresse oder den FQDN mithilfe von Ambari überprüfen.
+
+Der Oozie-Dienst kann z. B. nur auf einem Hauptknoten ausgeführt werden, und zur Verwendung des `oozie`-Befehls in einer SSH-Sitzung ist die URL des Diensts erforderlich. Diese URL kann mit dem folgenden Befehl aus Ambari abgerufen werden:
 
     curl -u admin:PASSWORD "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations?type=oozie-site&tag=TOPOLOGY_RESOLVED" | grep oozie.base.url
 
-Der zurückgegebene Wert enthält die mit dem `oozie`-Befehl zu verwendende interne URL und sieht in etwa wie folgt aus:
+Dieser Befehl gibt einen dem folgenden Befehl ähnelnden Wert zurück, der die mit dem `oozie`-Befehl zu verwendende interne URL enthält:
 
     "oozie.base.url": "http://hn0-CLUSTERNAME-randomcharacters.cx.internal.cloudapp.net:11000/oozie"
 
-### <a name="accessing-other-node-types"></a>Zugreifen auf andere Knotentypen
-Mit den folgenden Methoden können Sie eine Verbindung mit Knoten herstellen, auf die nicht direkt über das Internet zugegriffen werden kann.
+Weitere Informationen zum Arbeiten mit der Ambari-REST-API finden Sie unter [Verwalten von HDInsight-Clustern mithilfe der Ambari-REST-API](hdinsight-hadoop-manage-ambari-rest-api.md).
 
-* **SSH**: Sobald über SSH eine Verbindung mit dem Hauptknoten hergestellt wurde, können Sie SSH auf dem Hauptknoten verwenden, um Verbindungen mit anderen Knoten im Cluster herzustellen.
-* **SSH-Tunnel**: Wenn Sie auf einen Webdienst zugreifen müssen, der auf einem der nicht direkt mit dem Internet verbundenen Knoten gehostet wird, müssen Sie [einen SSH-Tunnel verwenden](hdinsight-linux-ambari-ssh-tunnel.md).
-* **Virtuelles Azure-Netzwerk**: Wenn Ihr HDInsight-Cluster zu einem virtuellen Azure-Netzwerk gehört, können alle Ressourcen in diesem virtuellen Netzwerk direkt auf alle Knoten im Cluster zugreifen.
+### <a name="accessing-other-node-types"></a>Zugreifen auf andere Knotentypen
+
+Mit den folgenden Methoden können Sie eine Verbindung mit Knoten herstellen, auf die nicht direkt über das Internet zugegriffen werden kann:
+
+* **SSH**: Sobald über SSH eine Verbindung mit dem Hauptknoten hergestellt wurde, können Sie SSH auf dem Hauptknoten verwenden, um Verbindungen mit anderen Knoten im Cluster herzustellen. Weitere Informationen finden Sie im Dokument [Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
+
+* **SSH-Tunnel**: Wenn Sie auf einen Webdienst zugreifen müssen, der auf einem der nicht direkt mit dem Internet verbundenen Knoten gehostet wird, müssen Sie einen SSH-Tunnel verwenden. Weitere Informationen finden Sie im Dokument [Verwenden von SSH-Tunneling zum Zugriff auf die Ambari-Webbenutzeroberfläche, JobHistory, NameNode, Oozie und andere Webbenutzeroberflächen](hdinsight-linux-ambari-ssh-tunnel.md).
+
+* **Virtuelles Azure-Netzwerk**: Wenn Ihr HDInsight-Cluster zu einem virtuellen Azure-Netzwerk gehört, können alle Ressourcen in diesem virtuellen Netzwerk direkt auf alle Knoten im Cluster zugreifen. Weitere Informationen finden Sie im Dokument [Erweitern der HDInsight-Funktionen mit Azure Virtual Network](hdinsight-extend-hadoop-virtual-network.md).
 
 ## <a name="how-to-check-on-a-service-status"></a>Überprüfen eines Dienststatus
-Sie können sowohl die Ambari-Webbenutzeroberfläche als auch die Ambari-REST-API verwenden, um den Status von Diensten zu überprüfen, die auf dem Hauptknoten ausgeführt werden.
+
+Um den Status von Diensten zu überprüfen, die auf den Hauptknoten ausgeführt werden, können Sie sowohl die Ambari-Webbenutzeroberfläche als auch die Ambari-REST-API verwenden.
 
 ### <a name="ambari-web-ui"></a>Ambari-Webbenutzeroberfläche
+
 Öffnen Sie die Ambari-Webbenutzeroberfläche über https://CLUSTERNAME.azurehdinsight.net. Ersetzen Sie **CLUSTERNAME** durch den Namen Ihres Clusters. Wenn Sie dazu aufgefordert werden, geben Sie die HTTP-Anmeldeinformationen für Ihren Cluster ein. Der standardmäßige HTTP-Benutzername ist **admin** , und das Kennwort ist das Kennwort, das Sie beim Erstellen des Clusters eingegeben haben.
 
-Die installierten Dienste werden im linken Bereich der Ambari-Seite aufgeführt.
+Die installierten Dienste werden im linken Bereich der Ambari-Seite aufgelistet.
 
 ![Installierte Dienste](./media/hdinsight-high-availability-linux/services.png)
 
@@ -125,14 +130,17 @@ Wenn Sie auf den Link für einen der Hauptknoten klicken, werden die auf diesem 
 
 ![Komponentenstatus](./media/hdinsight-high-availability-linux/nodeservices.png)
 
+Weitere Informationen zur Verwendung von Ambari finden Sie unter [Verwalten von HDInsight-Clustern mithilfe der Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md).
+
 ### <a name="ambari-rest-api"></a>Ambari-REST-API
+
 Die Ambari-REST-API ist über das Internet verfügbar, und das öffentliche Gateway verarbeitet Routinganforderungen an den Hauptknoten, auf dem die REST-API derzeit gehostet wird.
 
 Sie können den folgenden Befehl verwenden, um den Status eines Diensts über die Ambari-REST-API zu überprüfen:
 
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICENAME?fields=ServiceInfo/state
 
-* Ersetzen Sie **PASSWORD** durch Kontokennwort des HTTP-Benutzers (Administrator).
+* Ersetzen Sie **PASSWORD** durch das Kontokennwort des HTTP-Benutzers (Administrator).
 * Ersetzen Sie **CLUSTERNAME** durch den Namen des Clusters.
 * Ersetzen Sie **SERVICENAME** durch den Namen des Diensts, dessen Status Sie überprüfen möchten.
 
@@ -140,7 +148,7 @@ Wenn Sie z.B. den Status des **HDFS**-Diensts in einem Cluster mit dem Namen **m
 
     curl -u admin:password https://mycluster.azurehdinsight.net/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state
 
-Die Antwort sieht in etwa wie folgt aus:
+Die Antwort ähnelt dem folgenden JSON-Code:
 
     {
       "href" : "http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8080/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state",
@@ -159,7 +167,10 @@ Falls Sie nicht wissen, welche Dienste auf dem Cluster installiert sind, können
 
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services
 
+Weitere Informationen zum Arbeiten mit der Ambari-REST-API finden Sie unter [Verwalten von HDInsight-Clustern mithilfe der Ambari-REST-API](hdinsight-hadoop-manage-ambari-rest-api.md).
+
 #### <a name="service-components"></a>Dienstkomponenten
+
 Dienste können Komponenten enthalten, deren Status Sie einzeln überprüfen möchten. HDFS enthält z. B. die NameNode-Komponente. Der Befehl zum Anzeigen von Informationen zu einer Komponente lautet wie folgt:
 
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICE/components/component
@@ -169,15 +180,18 @@ Falls Sie nicht wissen, welche Komponenten von einem Dienst bereitgestellt werde
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICE/components/component
 
 ## <a name="how-to-access-log-files-on-the-head-nodes"></a>Zugreifen auf Protokolldateien auf den Hauptknoten
+
 ### <a name="ssh"></a>SSH
+
 Wenn Sie über SSH mit einem Hauptknoten verbunden sind, sind die Protokolldateien unter **/Var/Log** verfügbar. **/var/log/hadoop-yarn/yarn** enthält z.B. Protokolle für YARN.
 
 Da für jeden Hauptknoten spezifische Protokolleinträge vorhanden sein können, sollten Sie die Protokolle auf beiden Hauptknoten überprüfen.
 
 ### <a name="sftp"></a>SFTP
+
 Sie können auch über das SSH File Transfer Protocol oder das Secure File Transfer Protocol (SFTP) eine Verbindung mit dem Hauptknoten herstellen und die Protokolldateien direkt herunterladen.
 
-Ähnlich wie bei der Verwendung eines SSH-Clients müssen Sie beim Herstellen einer Verbindung mit dem Cluster den SSH-Benutzerkontonamen und die SSD-Adresse des Clusters angeben. Beispiel: `sftp username@mycluster-ssh.azurehdinsight.net`. Sie müssen auch das Kennwort für das Konto eingeben, wenn Sie dazu aufgefordert werden, oder mit dem Parameter `-i` einen öffentlichen Schlüssel bereitstellen.
+Ähnlich wie bei der Verwendung eines SSH-Clients müssen Sie beim Herstellen einer Verbindung mit dem Cluster den SSH-Benutzerkontonamen und die SSD-Adresse des Clusters angeben. Beispiel: `sftp username@mycluster-ssh.azurehdinsight.net`. Sie müssen das Kennwort für das Konto eingeben, wenn Sie dazu aufgefordert werden, oder mit dem Parameter `-i` einen öffentlichen Schlüssel bereitstellen.
 
 Wenn die Verbindung hergestellt ist, wird Ihnen eine `sftp>`-Eingabeaufforderung angezeigt. An dieser Eingabeaufforderung können Sie Verzeichnisse wechseln sowie Dateien hoch- und herunterladen. Durch die folgenden Befehle wird z.B. zum Verzeichnis **/var/log/hadoop/hdfs** gewechselt, und anschließend werden alle Dateien in diesem Verzeichnis heruntergeladen.
 
@@ -190,26 +204,31 @@ Um eine Liste aller verfügbaren Befehle zu erhalten, geben Sie an der `sftp>`-E
 > Es gibt auch grafische Benutzeroberflächen, mit denen Sie das Dateisystem visuell anzeigen können, wenn eine Verbindung über SFTP hergestellt wurde. [MobaXTerm](http://mobaxterm.mobatek.net/) z. B. ermöglicht das Durchsuchen des Dateisystems in einer Benutzeroberfläche ähnlich Windows Explorer.
 
 ### <a name="ambari"></a>Ambari
-> [!NOTE]
-> Für den Zugriff auf Protokolldateien über Ambari ist ein SSH-Tunnel erforderlich, da die Websites für die einzelnen Dienste nicht öffentlich im Internet verfügbar sind. Informationen zum Verwenden eines SSH-Tunnels finden Sie unter [Verwenden von SSH-Tunneling zum Zugriff auf die Ambari-Webbenutzeroberfläche, ResourceManager, JobHistory, NameNode, Oozie und andere Webbenutzeroberflächen](hdinsight-linux-ambari-ssh-tunnel.md).
 
-Wählen Sie in der Ambari-Webbenutzeroberfläche den Dienst aus, für den Sie Protokolle anzeigen möchten (z.B. YARN), und wählen Sie dann mithilfe von **Quicklinks** den gewünschten Hauptknoten aus.
+> [!NOTE]
+> Um mit Ambari auf die Protokolldateien zuzugreifen, verwenden Sie einen SSH-Tunnel. Die Weboberflächen für die einzelnen Dienste sind nicht im Internet veröffentlicht. Informationen zum Verwenden eines SSH-Tunnels finden Sie unter [Verwenden von SSH-Tunneling zum Zugriff auf die Ambari-Webbenutzeroberfläche, ResourceManager, JobHistory, NameNode, Oozie und andere Webbenutzeroberflächen](hdinsight-linux-ambari-ssh-tunnel.md).
+
+Wählen Sie auf der Ambari-Webbenutzeroberfläche den Dienst, für den Sie Protokolle anzeigen möchten (z.B. YARN). Wählen Sie dann mit **Quick Links** den Hauptknoten aus, dessen Protokolle Sie anzeigen möchten.
 
 ![Verwenden von Quicklinks zum Anzeigen von Protokollen](./media/hdinsight-high-availability-linux/viewlogs.png)
 
 ## <a name="how-to-configure-the-node-size"></a>Konfigurieren der Knotengröße
+
 Die Größe eines Knotens kann nur beim Erstellen des Clusters ausgewählt werden. Eine Liste der verschiedenen VM-Größen, die für HDInsight verfügbar sind (einschließlich Kerne, Arbeitsspeicher und lokaler Speicher), finden Sie auf der Seite [HDInsight-Preisdetails](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-Beim Erstellen eines neuen Clusters können Sie die Größe der Knoten angeben. Die Größe kann wie folgt im [Azure-Portal][preview-portal], mit [Azure PowerShell][azure-powershell] und mit der [Azure CLI][azure-cli] festgelegt werden:
+Beim Erstellen eines neuen Clusters können Sie die Größe der Knoten angeben. Die folgenden Informationen bieten eine Anleitung, wie die Größe im [Azure-Portal][preview-portal], mit [Azure PowerShell][azure-powershell] und mit der [Azure CLI][azure-cli] festgelegt werden kann:
 
-* **Azure-Portal:** Beim Erstellen eines neuen Clusters haben Sie die Möglichkeit, die Größe (Tarif) der Haupt- und Workerknoten sowie (sofern vom Clustertyp verwendet) der Zookeeper-Knoten für den Cluster festzulegen:
-  
+* **Azure-Portal**: Beim Erstellen eines Clusters können Sie die Größe der vom Cluster genutzten Knoten festlegen:
+
     ![Screenshot des Assistenten zur Clustererstellung mit der Auswahl der Knotengröße](./media/hdinsight-high-availability-linux/headnodesize.png)
+
 * **Azure-Befehlszeilenschnittstelle**: Die Größe der Haupt-, Worker- und Zookeeper-Knoten kann bei Verwendung des Befehls `azure hdinsight cluster create` mit den Parametern `--headNodeSize`, `--workerNodeSize` und `--zookeeperNodeSize` angegeben werden.
+
 * **Azure PowerShell**: Die Größe der Haupt-, Worker- und Zookeeper-Knoten kann bei Verwendung des Cmdlets `New-AzureRmHDInsightCluster` mit den Parametern `-HeadNodeVMSize`, `-WorkerNodeSize` und `-ZookeeperNodeSize` angegeben werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Dokument haben Sie erfahren, wie Azure HDInsight hohe Verfügbarkeit für Hadoop bietet. In den folgenden Artikeln finden Sie weiterführende Informationen.
+
+Über die folgenden Links erhalten Sie weiterführende Informationen.
 
 * [Ambari-REST-Referenz](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
 * [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md)

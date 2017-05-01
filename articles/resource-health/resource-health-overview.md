@@ -2,7 +2,7 @@
 title: "Übersicht über Azure Resource Health | Microsoft Docs"
 description: "Übersicht über Azure Resource Health"
 services: Resource health
-documentationcenter: dev-center-name
+documentationcenter: 
 author: BernardoAMunoz
 manager: 
 editor: 
@@ -15,101 +15,84 @@ ms.workload: Supportability
 ms.date: 06/01/2016
 ms.author: BernardoAMunoz
 translationtype: Human Translation
-ms.sourcegitcommit: d777bc6bd477c5b6645fc8bd7b6d57a5d2f89e22
-ms.openlocfilehash: e465e2c1503add186a4b134e85bd9aab61d5c0ad
+ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
+ms.openlocfilehash: d54979995ca97a70ba92c64915b919da09f548ec
+ms.lasthandoff: 04/04/2017
 
 
 ---
 # <a name="azure-resource-health-overview"></a>Übersicht über Azure Resource Health
-Azure Resource Health (Ressourcenintegrität) ist ein Dienst, der die Integrität von einzelnen Azure-Ressourcen offenlegt und wertvolle Hinweise zur Behandlung von Problemen bietet. In einer Cloudumgebung, in der der direkte Zugriff auf Server oder Infrastrukturelemente nicht möglich ist, besteht das Ziel der Ressourcenintegrität darin, die Behebung von Problemen durch Kunden zu beschleunigen. Kunden benötigen insbesondere weniger Zeit, um zu ermitteln, ob die Problemursache in der Anwendung selbst zu finden ist oder ob das Problem durch ein Ereignis auf der Azure-Plattform verursacht wird.
+ 
+Resource Health hilft Ihnen bei der Diagnose und beim Anfordern von Support, wenn ein Azure-Problem Ihre Ressourcen beeinträchtigt. Der Dienst informiert Sie über die aktuelle und frühere Integrität Ihrer Ressourcen und unterstützt Sie beim Beheben von Problemen. Resource Health bietet technischen Support, wenn Sie Unterstützung bei Azure-Dienstproblemen benötigen.
 
-## <a name="what-is-considered-a-resource-and-how-does-resource-health-decides-if-the-resource-is-healthy-or-not"></a>Was wird als Ressource angesehen, und wie wird in Bezug auf die Ressourcenintegrität entschieden, ob die Ressource fehlerfrei ist?
-Eine Ressource ist eine vom Benutzer erstellte Instanz eines Ressourcentyps, der von einem Dienst bereitgestellt wird, z.B. ein virtueller Computer, eine Web-App oder eine SQL-Datenbank. 
+Während [Azure-Status](https://status.azure.com) Sie über Dienstprobleme informiert, die einen großen Azure-Kundenkreis betreffen, bietet Ihnen Resource Health ein personalisiertes Dashboard der Integrität Ihrer Ressourcen. Resource Health teilt Ihnen mit, wie oft Ihre Ressourcen in der Vergangenheit aufgrund von Azure-Dienstproblemen nicht verfügbar waren. So können Sie leicht erkennen, ob eine SLA verletzt wurde. 
 
-Die Ressourcenintegrität basiert auf Signalen, die von der Ressource und/oder dem Dienst ausgesendet werden. So kann ermittelt werden, ob eine Ressource fehlerfrei („integer“) ist. Folgender Hinweis ist wichtig: Derzeit gilt die Ressourcenintegrität nur für die Integrität einer bestimmten Ressource. Es werden keine anderen Elemente berücksichtigt, die ggf. zur Gesamtintegrität beitragen. Wenn beispielsweise der Status eines virtuellen Computers gemeldet wird, wird nur der Computeteil der Infrastruktur berücksichtigt. Probleme im Netzwerk werden unter Resource Health also nur dann angezeigt, wenn ein Dienstausfall deklariert wurde. In diesem Fall wird dies über das Banner oben auf dem Blatt angegeben. Weitere Informationen zu Dienstausfällen erhalten Sie weiter unten in diesem Artikel. 
+## <a name="what-is-considered-a-resource-and-how-does-resource-health-decides-if-a-resource-is-healthy-or-not"></a>Was wird als Ressource angesehen, und wie entscheidet Resource Health, ob die Ressource fehlerfrei ist?
+Eine Ressource ist eine Instanz eines Ressourcentyps, der von einem Azure-Dienst über den Azure Resource Manager bereitgestellt wird, z.B. ein virtueller Computer, eine Web-App oder eine SQL-Datenbank.
 
-## <a name="how-is-resource-health-different-from-service-health-dashboard"></a>Inwiefern unterscheidet sich Resource Health vom Dashboard zum Dienststatus?
-Die von Resource Health bereitgestellten Informationen sind präziser als die vom Dashboard zum Dienststatus bereitgestellten Informationen. Vom Dashboard werden Ereignisse gemeldet, die sich auf die Verfügbarkeit eines Diensts in einer Region auswirken. Resource Health macht Informationen verfügbar, die für eine bestimmte Ressource relevant sind. Beispielsweise werden Ereignisse gemeldet, die eine Beeinträchtigung der Verfügbarkeit eines virtuellen Computers, einer Web-App oder einer SQL-Datenbank darstellen. Wenn ein Knoten beispielsweise unerwartet neu gestartet wird, können Kunden, deren virtuelle Computer auf dem Knoten ausgeführt wurden, zum Beispiel den Grund erfahren, warum die VM für eine bestimmte Zeit nicht verfügbar war.   
+Resource Health basiert auf Signalen, die von den verschiedenen Azure-Diensten ausgesendet werden, damit ermittelt werden kann, ob eine Ressource fehlerfrei ist. Wenn eine Ressource fehlerhaft ist, analysiert Resource Health zusätzliche Informationen, um die Quelle des Problems zu bestimmen. Resource Health identifiziert auch Aktionen, die Microsoft zum Beheben des Problems durchführt, oder welche Aktionen Sie durchführen können, um die Ursache des Problems zu beseitigen. 
 
-## <a name="how-to-access-resource-health"></a>Zugreifen auf Resource Health
-Es gibt zwei Möglichkeiten, um auf die Dienste von Resource Health zuzugreifen.
+Entnehmen Sie weitere Informationen zur Bewertung der Integrität der vollständigen Liste der Ressourcentypen und Integritätsprüfungen in [Ressourcentypen und Integritätsprüfungen in Azure Resource Health](resource-health-checks-resource-types.md).
 
-### <a name="azure-portal"></a>Azure-Portal
-Das Blatt „Ressourcenintegrität“ im Azure-Portal enthält ausführliche Informationen zur Integrität der Ressource sowie empfohlene Aktionen, die je nach der derzeitigen Integrität der Ressource variieren. Dieses Blatt eignet sich am besten zum Abfragen der Ressourcenintegrität, da es den Zugriff auf andere Ressourcen im Portal erlaubt. Wie bereits erwähnt, variieren die empfohlenen Aktionen auf dem Blatt „Ressourcenintegrität“ je nach der derzeitigen Integrität:
-
-* Fehlerfreie Ressourcen: Da kein Problem erkannt wurde, das sich auf die Integrität der Ressource auswirken könnte, geht es bei den Aktionen vor allem um die Unterstützung der Problembehandlung. Beispielsweise ist der direkte Zugriff auf das Blatt „Problembehandlung“ möglich, auf dem Kunden eine Anleitung zur Behebung häufiger Probleme finden.
-* Fehlerhafte Ressource: Für Probleme, die von Azure verursacht werden, werden auf dem Blatt Aktionen angezeigt, die von Microsoft zum Wiederherstellen der Ressource durchgeführt wurden bzw. werden. Für Probleme, die durch vom Benutzer initiierte Aktionen verursacht werden, wird auf dem Blatt eine Liste mit Aktionen aufgeführt, mit denen Kunden das Problem beheben und die Ressource wiederherstellen können.  
-
-Nachdem Sie sich am Azure-Portal angemeldet haben, haben Sie zwei Möglichkeiten zum Zugreifen auf das Blatt „Ressourcenintegrität“: 
-
-### <a name="open-the-resource-blade"></a>Öffnen des Blatts „Ressource“
-Öffnen Sie das Blatt „Ressource“ für eine bestimmte Ressource. Klicken Sie auf dem Blatt links, das neben dem Blatt „Ressource“ geöffnet wird, unter „Support und Problembehandlung“ auf „Ressourcenintegrität“, um das Blatt „Ressourcenintegrität“ zu öffnen. 
-
-![Blatt „Ressourcenintegrität“](./media/resource-health-overview/resourceBladeAndResourceHealth.png)
-
-### <a name="help-and-support-blade"></a>Blatt „Hilfe und Support“
-Öffnen Sie das Blatt „Hilfe und Support“, indem Sie oben rechts auf das Fragezeichen klicken und dann die Option „Hilfe und Support“ wählen. 
-
-**In der oberen Navigationsleiste**
-
-![Hilfe und Support](./media/resource-health-overview/HelpAndSupport.png)
-
-Klicken Sie auf dem Blatt links, das neben dem Blatt „Hilfe und Support“ geöffnet wird, unter „Support und Problembehandlung“ auf „Ressourcenintegrität“. Damit öffnen Sie das Blatt „Ressourcenintegrität“ für das Abonnement, auf dem alle Ressourcen Ihres Abonnements aufgelistet werden. Neben jeder Ressource wird mit einem Symbol die Integrität angegeben. Wenn Sie auf eine Ressource klicken, wird jeweils das entsprechende Blatt „Ressourcenintegrität“ geöffnet.
-
-**Kachel „Ressourcenintegrität“**
-
-![Kachel „Ressourcenintegrität“](./media/resource-health-overview/resourceHealthTile.png)
-
-## <a name="what-does-my-resource-health-status-mean"></a>Was bedeutet der angezeigte Status der Ressourcenintegrität?
-Es gibt vier verschiedene Integritätsstatus, die für die Ressource angezeigt werden können.
+## <a name="health-status-provided-by-resource-health"></a>Der von Resource Health gemeldete Integritätsstatus
+Die Integrität einer Ressource kann einen der folgenden Status annehmen:
 
 ### <a name="available"></a>Verfügbar
-Der Dienst hat auf der Plattform keine Probleme erkannt, die sich auf die Verfügbarkeit der Ressource auswirken können. Dies wird durch ein grünes Häkchen angezeigt. 
+Der Dienst hat keine Ereignisse erkannt, die Auswirkungen auf die Integrität der Ressource haben. In Fällen, in denen die Ressource während der letzten 24 Stunden nach einer ungeplanten Ausfallzeit wiederhergestellt worden ist, sehen Sie die **vor kurzem wiederhergestellt**-Benachrichtigung.
 
-![Ressource ist verfügbar](./media/resource-health-overview/Available.png)
+![Resource Health, Verfügbar, virtueller Computer](./media/resource-health-overview/Available.png)
 
 ### <a name="unavailable"></a>Nicht verfügbar
-In diesem Fall hat der Dienst ein fortlaufendes Problem auf der Plattform erkannt, das sich auf die Verfügbarkeit der Ressource auswirkt. Ein Beispiel hierfür ist, dass der Knoten, auf dem die VM ausgeführt wurde, unerwartet neu gestartet wurde. Dies wird durch ein rotes Warnsymbol angezeigt. Zusätzliche Informationen zum Problem werden im mittleren Bereich des Blatts angezeigt, z.B.: 
+Der Dienst hat ein laufendes Plattform- oder Nicht-Plattformereignis erkannt, das Auswirkungen auf die Integrität der Ressource hat.
 
-1. Aktionen von Microsoft zum Wiederherstellen der Ressource 
-2. Ausführliche Zeitachse des Problems, einschließlich der erwarteten Behebungsdauer
-3. Liste mit empfohlenen Aktionen für Benutzer 
+#### <a name="platform-events"></a>Plattformereignisse
+Diese Ereignisse werden durch mehrere Komponenten der Azure-Infrastruktur ausgelöst und umfassen sowohl geplante Aktionen wie z.B. geplante Wartung als auch unerwartete Incidents wie einen ungeplanten Hostneustart.
 
-![Ressource ist nicht verfügbar](./media/resource-health-overview/Unavailable.png)
+Resource Health berichtet zusätzliche Details zu dem Ereignis sowie dem Wiederherstellungsprozess und ermöglicht Ihnen, sich auch dann an den Support zu wenden, wenn Sie nicht über eine aktive Supportvereinbarung mit Microsoft verfügen.
 
-### <a name="unavailable--customer-initiated"></a>Nicht verfügbar – Vom Kunden initiiert
-Die Ressource ist aufgrund einer Kundenanforderung, z.B. dem Beenden einer Ressource oder dem Anfordern eines Neustarts, nicht verfügbar. Dies wird durch ein blaues Infosymbol angezeigt. 
+![Resource Health, aufgrund eines Plattformereignisses nicht verfügbarer virtueller Computer](./media/resource-health-overview/Unavailable.png)
 
-![Ressource ist aufgrund einer vom Benutzer initiierten Aktion nicht verfügbar](./media/resource-health-overview/userInitiated.png)
+#### <a name="non-platform-events"></a>Nicht-Plattformereignisse
+Diese Ereignisse werden durch Benutzeraktionen ausgelöst, z.B. das Anhalten eines virtuellen Computers oder das Erreichen der maximalen Anzahl von Verbindungen mit einem Redis Cache.
+
+![Resource Health, aufgrund eines Nicht-Plattformereignisses nicht verfügbarer virtueller Computer](./media/resource-health-overview/Unavailable_NonPlatform.png)
 
 ### <a name="unknown"></a>Unknown
-Der Dienst hat länger als fünf Minuten keine Informationen mehr zu dieser Ressource erhalten. Dies wird durch ein graues Fragezeichensymbol angezeigt. 
+Dieser Integritätsstatus gibt an, dass Resource Health seit mehr als 10 Minuten keine Informationen mehr zu dieser Ressource empfangen hat. Dieser Status ist zwar keine definitive Angabe des Ressourcenzustands, aber ein wichtiger Datenpunkt im Problembehandlungsprozess:
+* Wenn die Ressource wie erwartet ausgeführt wird, wird der Status der Ressource nach wenigen Minuten zu „Verfügbar“ aktualisiert.
+* Wenn Probleme bei der Ressource auftreten, könnte der Integritätsstatus „Unbekannt“ darauf hindeuten, dass die Ressource durch ein Plattformereignis beeinträchtigt wird.
 
-Es ist wichtig zu beachten, dass dies kein definitiver Hinweis darauf ist, dass die Ressource einen Fehler aufweist. Kunden sollten sich daher an die folgenden Empfehlungen halten:
+![Resource Health, Unbekannt, virtueller Computer](./media/resource-health-overview/Unknown.png)
 
-* Wenn die Ressource wie erwartet ausgeführt wird, die Integrität unter „Ressourcenintegrität“ aber als „Unbekannt“ angegeben wird, liegen keine Probleme vor. Sie können davon ausgehen, dass der Status der Ressource nach einigen Minuten wieder als „Fehlerfrei“ angezeigt wird.
-* Falls es Probleme beim Zugreifen auf die Ressource gibt und die Integrität unter „Ressourcenintegrität“ als „Unbekannt“ angegeben wird, kann dies ein erster Hinweis auf ein Problem sein. Es ist ratsam, weitere Untersuchungen durchzuführen, bis der Status der Integrität entweder auf „Fehlerfrei“ oder „Fehlerhaft“ aktualisiert wird.
+## <a name="report-an-incorrect-status"></a>Melden eines falschen Status
+Wenn Sie zu einem beliebigen Zeitpunkt glauben, der aktuelle Integritätsstatus sei falsch, können Sie uns dies durch Klicken auf **Falschen Integritätsstatus melden** mitteilen. In Fällen, in denen Sie von einem Azure-Problem betroffen sind, empfehlen wir Ihnen, sich auf dem Resource Health-Blatt an den Support zu wenden. 
 
-![Integrität der Ressource ist unbekannt](./media/resource-health-overview/unknown.png)
+![Resource Health, Falschen Integritätsstatus melden](./media/resource-health-overview/incorrect-status.png)
 
-## <a name="service-impacting-events"></a>Ereignisse mit Beeinträchtigung von Diensten
-Falls die Ressource durch ein dauerhaftes Ereignis beeinträchtigt wird, wird oben auf dem Blatt „Ressourcenintegrität“ ein Banner angezeigt. Wenn Sie auf das Banner klicken, wird das Blatt „Überwachungsereignisse“ geöffnet, auf dem Sie weitere Informationen zum Ausfall finden.
+## <a name="historical-information"></a>Verlaufsinformationen
+Sie können auf bis zu 14 Tage alte Integritätsverlaufsdaten zugreifen, indem Sie auf dem Resource Health-Blatt auf **Verlauf anzeigen** klicken. 
 
-![Ressourcenintegrität ggf. durch ein vom Dienst initiiertes Ereignis beeinträchtigt](./media/resource-health-overview/serviceImpactingEvent.png)
+![Resource Health, Berichtsverlauf](./media/resource-health-overview/history-blade.png)
 
-## <a name="what-else-do-i-need-to-know-about-resource-health"></a>Was muss ich sonst noch zur Ressourcenintegrität wissen?
-### <a name="signal-latency"></a>Signal-Latenz
-Die Signale für die Ressourcenintegrität können um bis zu 15 Minuten verzögert sein. Dies kann zu Diskrepanzen zwischen dem aktuellen Integritätsstatus der Ressource und der tatsächlichen Verfügbarkeit führen. Behalten Sie dies im Hinterkopf, um zu verhindern, dass unnötig Zeit für die Untersuchung möglicher Probleme aufgewendet wird. 
+## <a name="getting-started"></a>Erste Schritte
+Öffnen von Resource Health für eine Ressource
+1.    Melden Sie sich beim Azure-Portal an.
+2.    Wechseln Sie zu Ihrer Ressource.
+3.    Klicken Sie auf der linken Seite im Ressourcenmenü auf **Resource Health**.
 
-### <a name="special-case-for-sql"></a>Sonderfall für SQL
-Die Ressourcenintegrität meldet den Status der SQL-Datenbank, nicht von SQL Server. Dieser Ansatz liefert zwar ein realistischeres Bild der Integrität, aber es müssen auch mehrere Komponenten und Dienste berücksichtigt werden, um die Integrität der Datenbank zu ermitteln. Das aktuelle Signal ist von Anmeldungen bei der Datenbank abhängig. Dies bedeutet, dass der Integritätsstatus für Datenbanken, die regelmäßige Anmeldungen erhalten (also unter anderem den Empfang von Anforderungen zur Ausführung von Abfragen), auch regelmäßig angezeigt wird. Wenn auf die Datenbank mindestens zehn Minuten lang nicht zugegriffen wurde, wird sie in den Zustand „Unbekannt“ versetzt. Dies bedeutet nicht, dass die Datenbank nicht verfügbar ist. Es bedeutet nur, dass kein Signal gesendet wurde, weil keine Anmeldungen durchgeführt wurden. Beim Herstellen einer Verbindung mit der Datenbank und Ausführen einer Abfrage werden die Signale ausgegeben, die zum Ermitteln und Aktualisieren des Integritätsstatus der Datenbank erforderlich sind.
+![Öffnen von Resource Health vom Ressourcenblatt aus](./media/resource-health-overview/from-resource-blade.png)
 
-## <a name="feedback"></a>Feedback
-Wir sind stets offen für Feedback und Vorschläge. Sie können uns gern Ihre [Vorschläge](https://feedback.azure.com/forums/266794-support-feedback)senden. Außerdem erreichen Sie uns über [Twitter](https://twitter.com/azuresupport) oder die [MSDN-Foren](https://social.msdn.microsoft.com/Forums/azure).
+Sie können auch auf Resource Health zugreifen, indem Sie auf **Weitere Dienste** klicken und **Resource Health** im Filtertextfeld eingeben, um das Blatt **Hilfe und Support** zu öffnen. Klicken Sie abschließend auf [**Resource Health**](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/resourceHealth).
+
+![Öffnen von Resource Health von Weitere Dienste aus](./media/resource-health-overview/FromOtherServices.png)
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Weitere Informationen zu Resource Health finden Sie in den folgenden Dokumenten:
+-  [Ressourcentypen und Integritätsprüfungen in Azure Resource Health](resource-health-checks-resource-types.md)
+-  [Azure Resource Health – FAQ](resource-health-faq.md)
 
 
 
-
-<!--HONumber=Jan17_HO2-->
 
 

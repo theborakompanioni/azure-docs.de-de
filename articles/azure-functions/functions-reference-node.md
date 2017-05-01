@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/13/2016
+ms.date: 02/06/2017
 ms.author: chrande, glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 2c2d352a8aaf572612e64bd69e6e45616c15891d
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 060e1145246952c18f89e1088ed28ffb0036e6c5
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -52,7 +52,7 @@ module.exports = function(context, myTrigger, myInput, myOtherInput) {
 };
 ```
 
-Bindungen von `direction === "in"` werden als Funktionsargumente übergeben, sodass Sie mit [`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) neue Eingaben dynamisch verarbeiten können (etwa durch Verwendung von `arguments.length` zum vollständigen Durchlaufen Ihrer Eingaben). Diese Funktion ist sehr praktisch, wenn Sie nur einen Trigger ohne weitere Eingaben verwenden, da Sie zuverlässig auf Ihre Triggerdaten zugreifen können, ohne auf Ihr `context` -Objekt zu verweisen.
+Bindungen von `direction === "in"` werden als Funktionsargumente übergeben, sodass Sie mit [`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) neue Eingaben dynamisch verarbeiten können (etwa durch Verwendung von `arguments.length` zum vollständigen Durchlaufen Ihrer Eingaben). Diese Funktion ist praktisch, wenn Sie nur einen Trigger ohne weitere Eingaben verwenden, da Sie zuverlässig auf Ihre Triggerdaten zugreifen können, ohne auf Ihr `context`-Objekt zu verweisen.
 
 Die Argumente werden in der Reihenfolge an die Funktion übergeben, in der sie in *function.json* vorhanden sind. Dies gilt auch, wenn Sie sie in der Exportanweisung nicht angeben. Wenn Sie also beispielsweise `function(context, a, b)` in `function(context, a)` ändern, können Sie dennoch den Wert von `b` im Funktionscode abrufen, indem Sie auf `arguments[3]` verweisen.
 
@@ -70,8 +70,12 @@ module.exports = function(context) {
 };
 ```
 
-## <a name="contextbindings"></a>context.bindings
-Das `context.bindings` -Objekt erfasst alle Eingabe- und Ausgabedaten. Die Daten werden dem `context.bindings`-Objekt über die `name`-Eigenschaft der Bindung hinzugefügt. Wenn also beispielsweise in *function.json* die folgende Bindungsdefinition vorliegt, können Sie über `context.bindings.myInput` auf den Inhalt der Warteschlange zugreifen. 
+### <a name="contextbindings-property"></a>context.bindings-Eigenschaft
+
+```
+context.bindings
+```
+Gibt ein benanntes Objekt zurück, das alle Eingabe- und Ausgabedaten enthält. Wenn also beispielsweise in *function.json* die folgende Bindungsdefinition vorliegt, können Sie über das `context.bindings.myInput`-Objekt auf den Inhalt der Warteschlange zugreifen. 
 
 ```json
 {
@@ -91,10 +95,14 @@ context.bindings.myOutput = {
         a_number: 1 };
 ```
 
-## `context.done([err],[propertyBag])`
-Die `context.done`-Funktion gibt gegenüber der Laufzeit an, dass die Ausführung beendet ist. Sie sollte unbedingt aufgerufen werden, wenn Sie mit der Funktion fertig sind. Andernfalls ist der Laufzeit nicht bekannt, dass Ihre Funktion abgeschlossen wurde. 
+### <a name="contextdone-method"></a>context.Done-Methode
+```
+context.done([err],[propertyBag])
+```
 
-Mit der `context.done`-Funktion können Sie an die Laufzeit einen benutzerdefinierten Fehler sowie einen Eigenschaftenbehälter mit Eigenschaften zurückgeben, die die Eigenschaften des `context.bindings`-Objekts überschreiben.
+Teilt der Laufzeit mit, dass Ihr Code beendet ist. Sie müssen `context.done` aufrufen, da die Laufzeit sonst nie erfährt, dass Ihre Funktion abgeschlossen ist, und die Ausführung durch einen Timeout beendet wird. 
+
+Mit der `context.done`-Methode können Sie an die Laufzeit einen benutzerdefinierten Fehler sowie einen Eigenschaftenbehälter mit Eigenschaften zurückgeben, die die Eigenschaften des `context.bindings`-Objekts überschreiben.
 
 ```javascript
 // Even though we set myOutput to have:
@@ -106,52 +114,163 @@ context.done(null, { myOutput: { text: 'hello there, world', noNumber: true }});
 //  -> text: hello there, world, noNumber: true
 ```
 
-## <a name="contextlogmessage"></a>context.log(message)
-Mit der `context.log` -Methode können Sie Protokollanweisungen ausgeben, die für die Protokollierung korreliert werden. Bei Verwendung von `console.log`werden Ihre Nachrichten nur für die Protokollierung auf Prozessebene angezeigt, was nicht besonders nützlich ist.
+### <a name="contextlog-method"></a>context.log-Methode  
+
+```
+context.log(message)
+```
+Ermöglicht das Schreiben in die Streamingkonsolenprotokolle auf Standard-Ablaufverfolgungsebene. Es sind zusätzliche Protokollierungsmethoden in `context.log` verfügbar, mit denen Sie auf anderen Ablaufverfolgungsebenen in das Konsolenprotokoll schreiben können:
+
+
+| Methode                 | Beschreibung                                |
+| ---------------------- | ------------------------------------------ |
+| **Fehler(_Meldung_)**   | Schreibt in Protokollierung auf Fehlerebene oder niedriger.   |
+| **warn(_Meldung_)**    | Schreibt in Protokollierung auf Warnungsebene oder niedriger. |
+| **info(_Meldung_)**    | Schreibt in Protokollierung auf Informationsebene oder niedriger.    |
+| **verbose(_Meldung_)** | Schreibt in Protokollierung auf ausführlicher Ebene.           |
+
+Das folgende Beispiel schreibt auf Warnungs-Ablaufverfolgungsebene in die Konsole:
 
 ```javascript
-/* You can use context.log to log output specific to this 
-function. You can access your bindings via context.bindings */
-context.log({hello: 'world'}); // logs: { 'hello': 'world' } 
+context.log.warn("Something has happened."); 
+```
+Sie können den Ablaufverfolgungsebenen-Schwellenwert für die Protokollierung in der Datei „host.json“ festlegen oder ihn deaktivieren.  Weitere Informationen zum Schreiben von Protokollen finden Sie im nächsten Abschnitt.
+
+## <a name="writing-trace-output-to-the-console"></a>Schreiben der Ablaufverfolgungsausgabe in die Konsole 
+
+In Functions verwenden Sie die `context.log`-Methoden, um die Ablaufverfolgungsausgabe in die Konsole zu schreiben. An diesem Punkt können Sie `console.log` nicht verwenden, um in die Konsole zu schreiben.
+
+Beim Aufruf von `context.log()` wird Ihre Meldung auf der Standard-Ablaufverfolgungsebene, also der _info_-Ablaufverfolgungsebene, in die Konsole geschrieben. Das folgende Beispiel schreibt auf der „info“-Ablaufverfolgungsebene in die Konsole:
+
+```javascript
+context.log({hello: 'world'});  
 ```
 
-Die `context.log` -Methode unterstützt das gleiche Parameterformat, das auch von der Node-Methode [util.format](https://nodejs.org/api/util.html#util_util_format_format) unterstützt wird. Beispielsweise kann folgender Code:
+Dies ist gleichwertig mit folgendem Pfad:
+
+```javascript
+context.log.info({hello: 'world'});  
+```
+
+Der folgende Code schreibt auf der „error“-Ebene in die Konsole:
+
+```javascript
+context.log.error("An error has occurred.");  
+```
+
+Da _error_ die höchste Ablaufverfolgungsebene ist, wird diese Ablaufverfolgung auf allen Ablaufverfolgungsebenen in die Ausgabe geschrieben, solange die Protokollierung aktiviert ist.  
+
+
+Alle `context.log`-Methoden unterstützen das gleiche Parameterformat, das auch von der [util.format](https://nodejs.org/api/util.html#util_util_format_format)-Methode in Node.js unterstützt wird. Beachten Sie den folgenden Code, der auf der standardmäßigen Ablaufverfolgungsebene in die Konsole schreibt:
 
 ```javascript
 context.log('Node.js HTTP trigger function processed a request. RequestUri=' + req.originalUrl);
 context.log('Request Headers = ' + JSON.stringify(req.headers));
 ```
 
-wie folgt geschrieben werden:
+Der gleiche Code kann auch im folgenden Format geschrieben werden:
 
 ```javascript
 context.log('Node.js HTTP trigger function processed a request. RequestUri=%s', req.originalUrl);
 context.log('Request Headers = ', JSON.stringify(req.headers));
 ```
 
-## <a name="http-triggers-contextreq-and-contextres"></a>HTTP-Trigger: context.req und context.res
-Da es im Fall von HTTP-Triggern gängige Praxis ist, `req` und `res` für die HTTP-Anforderungs- und Antwortobjekte zu verwenden, haben wir uns entschieden, den Zugriff darauf im context-Objekt zu vereinfachen, anstatt die Verwendung des vollständigen `context.bindings.name`-Musters erforderlich zu machen.
+### <a name="configure-the-trace-level-for-console-logging"></a>Konfigurieren der Ablaufverfolgungsebene für die Konsolenprotokollierung
 
-```javascript
-// You can access your http request off of the context ...
-if(context.req.body.emoji === ':pizza:') context.log('Yay!');
-// and also set your http response
-context.res = { status: 202, body: 'You successfully ordered more coffee!' };   
+In Functions können Sie den Schwellenwert der Ablaufverfolgungsebene für das Schreiben in die Konsole definieren. So können Sie mühelos steuern, wie Ablaufverfolgungen Ihrer Funktionen in die Konsole geschrieben werden. Legen Sie mit der `tracing.consoleLevel`-Eigenschaft in der Datei „host.json“ den Schwellenwert für alle Ablaufverfolgungen fest, die in die Konsole geschrieben werden. Diese Einstellung gilt für alle Funktionen in Ihrer Funktionen-App. Im folgenden Beispiel wird der Schwellenwert für die Ablaufverfolgung festgelegt, um die ausführliche Protokollierung zu aktivieren:
+
+```json
+{ 
+    "tracing": {      
+        "consoleLevel": "verbose"      
+    }
+}  
 ```
+
+Die Werte von **consoleLevel** entsprechen den Namen der `context.log`-Methoden. Um die gesamte Ablaufverfolgungsprotokollierung in der Konsole zu deaktivieren, setzen Sie **consoleLevel** auf _off_. Weitere Informationen über die host.json-Datei finden Sie im [host.json-Referenzthema](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json).
+
+## <a name="http-triggers-and-bindings"></a>HTTP: Trigger und Bindungen
+
+HTTP- und Webhooktrigger und HTTP-Ausgabebindungen verwenden Request- und Response-Objekte, um das HTTP-Messaging darzustellen.  
+
+### <a name="request-object"></a>Anforderungsobjekt
+
+Das `request`-Objekt weist die folgenden Eigenschaften auf:
+
+| Eigenschaft      | Beschreibung                                                    |
+| ------------- | -------------------------------------------------------------- |
+| _body_        | Ein Objekt, das den Hauptteil der Anforderung enthält.               |
+| _headers_     | Ein Objekt, das die Header der Anforderung enthält.                   |
+| _method_      | Die HTTP-Methode der Anforderung.                                |
+| _originalUrl_ | Die URL der Anforderung.                                        |
+| _params_      | Ein Objekt, das die Routingparameter der Anforderung enthält. |
+| _query_       | Ein Objekt, das die Abfrageparameter enthält.                  |
+| _rawBody_     | Der Hauptteil der Meldung als Zeichenfolge.                           |
+
+
+### <a name="response-object"></a>Antwortobjekt
+
+Das `response`-Objekt weist die folgenden Eigenschaften auf:
+
+| Eigenschaft  | Beschreibung                                               |
+| --------- | --------------------------------------------------------- |
+| _body_    | Ein Objekt, das den Hauptteil der Antwort enthält.         |
+| _headers_ | Ein Objekt, das die Header der Antwort enthält.             |
+| _isRaw_   | Gibt an, dass die Formatierung für die Antwort übersprungen wird.    |
+| _status_  | Der HTTP-Statuscode der Antwort.                     |
+
+### <a name="accessing-the-request-and-response"></a>Zugreifen auf Anforderung und Antwort 
+
+Bei der Arbeit mit HTTP-Triggern haben Sie drei Möglichkeiten, auf die HTTP-Request-Objekte und -Response-Objekte zuzugreifen:
+
++ Über die benannten Eingabe- und Ausgabebindungen. Hierbei funktionieren die HTTP-Trigger und -Bindungen genauso wie jede andere Bindung. Im folgenden Beispiel wird das Response-Objekt mit einer als `response` benannten Bindung festgelegt. 
+
+    ```javascript
+    context.bindings.response = { status: 201, body: "Insert succeeded." };
+    ```
+
++ Über die `req`- und `res`-Eigenschaft des `context`-Objekts. Auf diese Weise können Sie die herkömmlichen Muster für den Zugriff auf HTTP-Daten über das context-Objekt verwenden, anstatt das gesamte `context.bindings.name`-Muster verwenden zu müssen. Das folgende Beispiel veranschaulicht den Zugriff auf das `req`- und `res`-Objekt des `context`-Objekts:
+
+    ```javascript
+    // You can access your http request off of the context ...
+    if(context.req.body.emoji === ':pizza:') context.log('Yay!');
+    // and also set your http response
+    context.res = { status: 202, body: 'You successfully ordered more coffee!' }; 
+    ```
+
++ Aufrufen von `context.done()`. Es gibt eine besondere Art der HTTP-Bindung, die die Antwort zurückgibt, die der `context.done()`-Methode übergeben wird. Die folgende HTTP-Ausgabebindung definiert einen `$return`-Ausgabeparameter:
+
+    ```json
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    }
+    ``` 
+    Diese Ausgabebindung erwartet, dass Sie die Antwort angeben, wenn Sie `done()` wie folgt aufrufen:
+
+    ```javascript
+     // Define a valid response object.
+    res = { status: 201, body: "Insert succeeded." };
+    context.done(null, res);   
+    ```  
 
 ## <a name="node-version--package-management"></a>Node-Version und Paketverwaltung
 Die Node-Version ist derzeit unveränderlich auf `6.5.0`festgelegt. Wir untersuchen die Option, Unterstützung für weitere Versionen sowie Konfigurationsmöglichkeiten hinzuzufügen.
 
-Sie können Pakete in Ihre Funktion einschließen, indem Sie die Datei *package.json* in den Ordner Ihrer Funktion im Dateisystem der Funktionen-App hochladen. Anweisungen zum Hochladen von Dateien finden Sie im Abschnitt **Aktualisieren von Funktionen-App-Dateien** der [Referenz für Azure Functions-Entwickler](functions-reference.md#fileupdate). 
-
-Sie können auch `npm install` an der SCM-Befehlszeilenschnittstelle (Kudu) der Funktionen-App verwenden:
+Mit den folgenden Schritten können Sie Pakete in Ihre Funktionen-App einbeziehen: 
 
 1. Navigieren Sie zu `https://<function_app_name>.scm.azurewebsites.net`.
-2. Klicken Sie auf **Debugkonsole > CMD**.
-3. Navigieren Sie zu `D:\home\site\wwwroot\<function_name>`.
-4. Führen Sie `npm install`aus.
 
-Nach der Installation der benötigten Pakete können Sie Ihre Funktion wie gewohnt (also über `require('packagename')`) importieren.
+2. Klicken Sie auf **Debugkonsole > CMD**.
+
+3. Navigieren Sie zu `D:\home\site\wwwroot`, ziehen Sie dann die Datei „package.json“ auf den **wwwroot**-Ordner in der oberen Hälfte der Seite.  
+
+    Es gibt andere Möglichkeiten, Dateien in Ihre Funktionen-App hochzuladen. Weitere Informationen finden Sie unter [Aktualisieren von Funktionen-App-Dateien](functions-reference.md#a-idfileupdatea-how-to-update-function-app-files). 
+
+4. Sobald die Datei „package.json“ hochgeladen ist, führen Sie den `npm install`-Befehl in der **Kudu-Remoteausführungskonsole** aus. Dadurch werden die in der Datei „package.json“ angegebenen Pakete heruntergeladen und die Funktionen-App neu gestartet.
+
+Nach der Installation der benötigten Pakete importieren Sie sie durch Aufrufen von `require('packagename')` in Ihre Funktion, wie im folgenden Beispiel gezeigt.
 
 ```javascript
 // Import the underscore.js library
@@ -164,7 +283,7 @@ module.exports = function(context) {
         .where(context.bindings.myInput.names, {first: 'Carla'});
 ```
 
-Node benötigt im Stamm der Funktionen-App die Datei `package.json`, damit zwischengespeicherte Pakete in Functions freigegeben werden können. Bei etwaigen Versionskonflikten können Sie `package.json` auf einer Funktionsebene hinzufügen. Dies sollte jedoch im Hinblick auf die Leistung vermieden werden. 
+Sie sollten eine `package.json`-Datei im Stammverzeichnis Ihrer Funktionen-App definieren. So nutzen alle Funktionen in der App gemeinsam die gleichen zwischengespeicherten Pakete, was die Leistung optimiert. Wenn Versionskonflikte auftreten, können Sie den Konflikt beheben, indem Sie eine `package.json`-Datei im Ordner einer bestimmten Funktion hinzufügen.  
 
 ## <a name="environment-variables"></a>Umgebungsvariablen
 Verwenden Sie `process.env`zum Abrufen einer Umgebungsvariablen oder zum Abrufen des Werts einer App-Einstellung, wie im folgenden Codebeispiel zu sehen:
@@ -185,8 +304,15 @@ function GetEnvironmentVariable(name)
     return name + ": " + process.env[name];
 }
 ```
+## <a name="considerations-for-javascript-functions"></a>Überlegungen zu JavaScript-Funktionen
 
-## <a name="typescriptcoffeescript-support"></a>Unterstützung für TypeScript/CoffeeScript
+Beim Arbeiten mit JavaScript-Funktionen sollten Sie die folgenden Aspekte beachten.
+
+### <a name="choose-single-core-app-service-plans"></a>Auswählen von Einzelkern-App Service-Plänen
+
+Wenn Sie eine Funktionen-App erstellen, die einen App Service-Plan verwendet, sollten Sie statt eines Plans mit mehreren Kernen einen Einzelkernplan auswählen. Derzeit führt Functions JavaScript-Funktionen auf Einzelkern-VMs effizienter aus; die Verwendung größerer VMs führt nicht zu den erwarteten Leistungsverbesserungen. Bei Bedarf können Sie manuell horizontal hochskalieren, indem Sie weitere Instanzen von virtuellen Computern mit einem Kern hinzufügen, oder Sie können die automatische Skalierung aktivieren. Weitere Informationen finden Sie unter [Manuelles oder automatisches Skalieren der Instanzenzahl](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json).    
+
+### <a name="typescriptcoffeescript-support"></a>Unterstützung für TypeScript/CoffeeScript
 Noch gibt es keine direkte Unterstützung für die automatische Kompilierung von TypeScript/CoffeeScript über die Laufzeit. All dies müsste also außerhalb der Laufzeit zum Zeitpunkt der Bereitstellung geschehen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
