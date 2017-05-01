@@ -12,36 +12,47 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 01/18/2017
+ms.date: 04/10/2017
 ms.author: eugenesh
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 66e6fec16aab7764b05b616efc0fccbfb2d0595e
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: 9b45ab6b86ab0a336b2a4b90e702fa4ff098d41c
+ms.lasthandoff: 04/10/2017
 
 ---
 
 # <a name="indexing-azure-table-storage-with-azure-search"></a>Indizieren von Azure Table Storage mit Azure Search
-In diesem Artikel wird beschrieben, wie Sie Azure Search zum Indizieren von Daten verwenden, die in Azure Table Storage gespeichert sind. Mit dem neuen Azure Search-Indexer für Tabellen verläuft dieser Prozess schnell und reibungslos.
+In diesem Artikel wird beschrieben, wie Sie Azure Search zum Indizieren von Daten verwenden, die in Azure Table Storage gespeichert sind.
 
 ## <a name="setting-up-azure-table-indexing"></a>Einrichten der Azure-Tabellenindizierung
-Für die Einrichtung und Konfiguration eines Azure-Indexers für Tabellen können Sie die Azure Search-REST-API nutzen, um **Indexer** und **Datenquellen** wie unter [Indizierungsvorgänge](https://msdn.microsoft.com/library/azure/dn946891.aspx) beschrieben zu erstellen und zu verwalten. Sie können auch die [Version 2.0-Vorschau](https://msdn.microsoft.com/library/mt761536%28v=azure.103%29.aspx) des .NET SDK verwenden. In Zukunft wird die Tabellenindizierung vom Azure-Portal unterstützt.
 
-Eine Datenquelle gibt an, welche Daten indiziert werden müssen. Sie legt außerdem die Anmeldeinformationen für den Zugriff auf die Daten sowie die Richtlinien zur Aktivierung von Azure Search fest, um Änderungen an den Daten effizient identifizieren zu können (z. B. neue, geänderte oder gelöschte Zeilen).
+Sie können einen Azure-Tabellenindexer folgendermaßen einrichten:
 
-Mit einem Indexer werden Daten aus einer Datenquelle gelesen und in einen Zielsuchindex geladen.
+* [Azure-Portal](https://ms.portal.azure.com)
+* Azure Search [REST-API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
+* Mit dem Azure Search [.NET SDK](https://aka.ms/search-sdk)
 
-So richten Sie die Tabellenindizierung ein:
+Hier wird der Ablauf unter Verwendung der REST-API veranschaulicht. 
 
-1. Erstellen einer Datenquelle
-   * Legen Sie den `type`-Parameter auf `azuretable` fest.
-   * Übergeben Sie die Verbindungszeichenfolge des Speicherkontos als `credentials.connectionString`-Parameter. Details finden Sie weiter unten unter [Angeben von Anmeldeinformationen](#Credentials).
-   * Geben Sie den Tabellennamen mit dem Parameter `container.name` an.
-   * Geben Sie optional eine Abfrage mit dem Parameter `container.query` an. Verwenden Sie nach Möglichkeit einen Filter für PartitionKey, um die beste Leistung zu erzielen. Alle anderen Abfragen führen zu einem vollständigen Tabellenscan, wodurch bei großen Tabellen die Leistung beeinträchtigt werden kann.
-2. Erstellen Sie einen Suchindex mit dem Schema, das den Spalten in der Tabelle entspricht, die Sie indizieren möchten.
-3. Erstellen Sie den Indexer, indem Sie die Datenquelle mit dem Suchindex verbinden.
+### <a name="step-1-create-a-data-source"></a>Schritt 1: Erstellen einer Datenquelle
 
-### <a name="create-data-source"></a>Erstellen der Datenquelle
+Eine Datenquelle gibt an, welche Daten indiziert werden müssen. Sie legt außerdem die Anmeldeinformationen für den Zugriff auf die Daten sowie die Richtlinien zur Aktivierung von Azure Search fest, um Änderungen an den Daten effizient identifizieren zu können.
+
+Für die Tabellenindizierung muss die Datenquelle über die folgenden Eigenschaften verfügen:
+
+- **name** ist der eindeutige Name der Datenquelle im Suchdienst.
+- **type** muss `azuretable` lauten.
+- Der **credentials**-Parameter enthält die Speicherkonto-Verbindungszeichenfolge. Näheres erfahren Sie im Abschnitt [Angeben von Anmeldeinformationen](#Credentials).
+- **container** legt den Tabellennamen und eine optionale Abfrage fest.
+    - Geben Sie den Tabellennamen mit dem Parameter `name` an.
+    - Geben Sie optional eine Abfrage mit dem Parameter `query` an. 
+
+> [!IMPORTANT] 
+> Verwenden Sie nach Möglichkeit einen Filter für PartitionKey, um eine bessere Leistung zu erzielen. Alle anderen Abfragen führen einen vollständigen Tabellenscan durch, was bei großen Tabellen eine schlechte Leistung zur Folge hat. Bitte lesen Sie den Abschnitt [Überlegungen zur Leistung](#Performance).
+
+
+So erstellen Sie eine Datenquelle:
+
     POST https://[service name].search.windows.net/datasources?api-version=2016-09-01
     Content-Type: application/json
     api-key: [admin key]
@@ -53,7 +64,7 @@ So richten Sie die Tabellenindizierung ein:
         "container" : { "name" : "my-table", "query" : "PartitionKey eq '123'" }
     }   
 
-Weitere Informationen über die API zum Erstellen einer Datenquelle finden Sie unter [Datenquelle erstellen](https://msdn.microsoft.com/library/azure/dn946876.aspx).
+Weitere Informationen über die API zum Erstellen einer Datenquelle finden Sie unter [Datenquelle erstellen](https://docs.microsoft.com/rest/api/searchservice/create-data-source).
 
 <a name="Credentials"></a>
 #### <a name="how-to-specify-credentials"></a>Angeben von Anmeldeinformationen ####
@@ -69,7 +80,11 @@ Weitere Informationen zu Shared Access Signatures von Speichern finden Sie unter
 > [!NOTE]
 > Bei Verwendung von SAS-Anmeldeinformationen müssen Sie die Anmeldedaten für die Datenquellen in regelmäßigen Abständen mit erneuerten Signaturen aktualisieren, um den Ablauf zu verhindern. Falls SAS-Anmeldedaten ablaufen, tritt beim Indexer ein Fehler mit ungefähr folgender Fehlermeldung auf: `Credentials provided in the connection string are invalid or have expired.`.  
 
-### <a name="create-index"></a>Erstellen des Index
+### <a name="step-2-create-an-index"></a>Schritt 2: Erstellen eines Index
+Mit dem Index werden die Felder in einem Dokument, Attribute und andere Konstrukte für die Suchoberfläche angegeben.
+
+So erstellen Sie einen Index:
+
     POST https://[service name].search.windows.net/indexes?api-version=2016-09-01
     Content-Type: application/json
     api-key: [admin key]
@@ -82,10 +97,12 @@ Weitere Informationen zu Shared Access Signatures von Speichern finden Sie unter
           ]
     }
 
-Weitere Informationen zur API zum Erstellen eines Index finden Sie unter [Create Index](https://msdn.microsoft.com/library/dn798941.aspx)
+Weitere Informationen zum Erstellen von Indizes finden Sie unter [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index) (Index erstellen).
 
-### <a name="create-indexer"></a>Erstellen eines Indexers
-Zuletzt erstellen Sie den Indexer, der auf die Datenquelle und den Zielindex verweist. Beispiel:
+### <a name="step-3-create-an-indexer"></a>Schritt 3: Erstellen eines Indexers
+Ein Indexer verbindet eine Datenquelle mit einem Zielsuchindex und stellt einen Zeitplan zur Automatisierung der Datenaktualisierung bereit. 
+
+Nach der Erstellung von Index und Datenquelle können Sie den Indexer erstellen:
 
     POST https://[service name].search.windows.net/indexers?api-version=2016-09-01
     Content-Type: application/json
@@ -98,12 +115,12 @@ Zuletzt erstellen Sie den Indexer, der auf die Datenquelle und den Zielindex ver
       "schedule" : { "interval" : "PT2H" }
     }
 
-Weitere Informationen zur API zum Erstellen eines Indexers finden Sie unter [Indexer erstellen](https://msdn.microsoft.com/library/azure/dn946899.aspx).
+Dieser Indexer wird alle zwei Stunden ausgeführt (das Planungsintervall wird auf „PT2H“ festgelegt). Um einen Indexer alle 30 Minuten auszuführen, legen Sie das Intervall auf „PT30M“ fest. Das kürzeste unterstützte Intervall beträgt fünf Minuten. Der Zeitplan ist optional. Ohne Zeitplan wird ein Indexer nur einmal bei seiner Erstellung ausgeführt. Allerdings können Sie ein Indexer bei Bedarf jederzeit ausführen.   
 
-Das ist schon alles. Viel Spaß beim Indizieren!
+Weitere Informationen zur API zum Erstellen eines Indexers finden Sie unter [Indexer erstellen](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
 
 ## <a name="dealing-with-different-field-names"></a>Behandeln von unterschiedlichen Feldnamen
-Die Feldnamen in Ihrem vorhandenen Index unterscheiden sich häufig von den Eigenschaftennamen in Ihrer Tabelle. Sie können **Feldzuordnungen** verwenden, um die Eigenschaftennamen der Tabelle den Feldnamen in Ihrem Suchindex zuzuordnen. Weitere Informationen zu Feldzuordnungen finden Sie unter [Durch Azure Search-Indexerfeldzuordnungen werden die Unterschiede zwischen Datenquellen und Suchindizes überbrückt](search-indexer-field-mappings.md).
+Die Feldnamen in Ihrem vorhandenen Index unterscheiden sich manchmal von den Eigenschaftennamen in Ihrer Tabelle. Sie können **Feldzuordnungen** verwenden, um die Eigenschaftennamen der Tabelle den Feldnamen in Ihrem Suchindex zuzuordnen. Weitere Informationen zu Feldzuordnungen finden Sie unter [Durch Azure Search-Indexerfeldzuordnungen werden die Unterschiede zwischen Datenquellen und Suchindizes überbrückt](search-indexer-field-mappings.md).
 
 ## <a name="handling-document-keys"></a>Behandeln von Dokumentschlüsseln
 In Azure Search wird ein Dokument mit dem Dokumentschlüssel eindeutig identifiziert. Jeder Suchindex muss über genau ein Schlüsselfeld vom Typ `Edm.String`verfügen. Das Schlüsselfeld ist für jedes Dokument erforderlich, das dem Index hinzugefügt wird (es ist gleichzeitig das einzige erforderliche Feld).
@@ -118,7 +135,7 @@ Da Tabellenzeilen über einen Verbundschlüssel verfügen, generiert Azure Searc
 ## <a name="incremental-indexing-and-deletion-detection"></a>Inkrementelle Indizierung und Erkennung von Löschungen
 Wenn Sie für einen Tabellenindexer die Ausführung nach einem Zeitplan einrichten, werden nur neue oder aktualisierte Zeilen neu indiziert. Dies wird durch den `Timestamp`-Wert einer Zeile bestimmt. Sie müssen keine Richtlinie zum Erkennen von Änderungen angeben. Die inkrementelle Indizierung wird für Sie automatisch aktiviert.
 
-Um anzugeben, dass bestimmte Dokumente aus dem Index entfernt werden müssen, können Sie die Strategie „Vorläufiges Löschen“ verwenden. Anstatt eine Zeile zu löschen, fügen Sie eine Eigenschaft hinzu, um anzugeben, dass sie gelöscht wurde. Außerdem richten Sie für die Datenquelle eine Richtlinie zur Erkennung des vorläufigen Löschens ein. Bei der unten angegebenen Richtlinie wird eine Zeile beispielsweise als gelöscht angesehen, wenn sie über die `IsDeleted`-Eigenschaft mit dem Wert `"true"` verfügt:
+Um anzugeben, dass bestimmte Dokumente aus dem Index entfernt werden müssen, können Sie eine Strategie für vorläufiges löschen verwenden. Anstatt eine Zeile zu löschen, fügen Sie eine Eigenschaft hinzu, um anzugeben, dass sie gelöscht ist, und richten Sie eine Richtlinie zur Erkennung einer vorläufigen Löschung für die Datenquelle ein. Bei der folgenden Richtlinie wird eine Zeile beispielsweise als gelöscht angesehen, wenn sie über die Eigenschaft `IsDeleted` mit dem Wert `"true"` verfügt:
 
     PUT https://[service name].search.windows.net/datasources?api-version=2016-09-01
     Content-Type: application/json
@@ -128,11 +145,29 @@ Um anzugeben, dass bestimmte Dokumente aus dem Index entfernt werden müssen, k�
         "name" : "my-table-datasource",
         "type" : "azuretable",
         "credentials" : { "connectionString" : "<your storage connection string>" },
-        "container" : { "name" : "table name", "query" : "query" },
+        "container" : { "name" : "table name", "query" : "<query>" },
         "dataDeletionDetectionPolicy" : { "@odata.type" : "#Microsoft.Azure.Search.SoftDeleteColumnDeletionDetectionPolicy", "softDeleteColumnName" : "IsDeleted", "softDeleteMarkerValue" : "true" }
     }   
 
+<a name="Performance"></a>
+## <a name="performance-considerations"></a>Überlegungen zur Leistung
+
+Azure Search verwendet standardmäßig folgenden Abfragefilter: `Timestamp >= HighWaterMarkValue`. Da Azure-Tabellen keinen sekundären Index im `Timestamp`-Feld besitzen, erfordert dieser Abfragetyp einen vollständigen Tabellenscan und ist daher bei großen Tabellen langsam.
+
+
+Hier lernen Sie zwei Möglichkeiten zum Verbessern der Tabellenindizierungsleistung kennen. Beide Vorgehensweisen basieren auf der Verwendung von Tabellenpartitionen: 
+
+- Wenn Ihre Daten auf natürliche Weise in mehrere Bereiche partitioniert werden können, erstellen Sie eine Datenquelle und einen entsprechenden Indexer für jeden Partitionsbereich. Jeder Indexer muss jetzt nur einen bestimmten Partitionsbereich verarbeiten, was die Abfrageleistung verbessert. Wenn die zu indizierenden Daten auf eine kleine Anzahl fester Partitionen verteilt sind, ist dies noch besser – jeder Indexer führt dann nur einen Partitionsscan durch. Um beispielsweise eine Datenquelle für die Verarbeitung eines Partitionsbereichs mit Schlüsseln von `000` bis `100` zu erstellen, verwenden Sie etwa folgende Abfrage: 
+    ```
+    "container" : { "name" : "my-table", "query" : "PartitionKey ge '000' and PartitionKey lt '100' " }
+    ```
+
+- Wenn Ihre Daten nach der Zeit partitioniert sind (wenn Sie beispielsweise jeden Tag oder jede Woche eine neue Partition erstellen), ziehen Sie folgenden Ansatz in Betracht: 
+    - Verwenden Sie eine Abfrage dieser Form: `(PartitionKey ge <TimeStamp>) and (other filters)`. 
+    - Überwachen Sie den Indexerverlauf mit der [API zum Abrufen des Indexerstatus](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status), und aktualisieren Sie regelmäßig die `<TimeStamp>`-Bedingung der Abfrage basierend auf dem aktuellen Obergrenzenmarkierungs-Wert. 
+    - Wenn Sie eine vollständige Neuindizierung auslösen müssen, müssen Sie mit diesem Ansatz die Datenquellenabfrage zusätzlich zum Indexer zurücksetzen. 
+
 
 ## <a name="help-us-make-azure-search-better"></a>Helfen Sie uns bei der Verbesserung von Azure Search
-Teilen Sie uns auf unserer [UserVoice-Website](https://feedback.azure.com/forums/263029-azure-search/)mit, wenn Sie sich Features wünschen oder Verbesserungsvorschläge haben.
+Bitte teilen Sie uns auf unserer [UserVoice-Website](https://feedback.azure.com/forums/263029-azure-search/) mit, ob Sie sich Features wünschen oder Verbesserungsvorschläge haben.
 

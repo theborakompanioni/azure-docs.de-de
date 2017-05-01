@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: shlo
 translationtype: Human Translation
-ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
-ms.openlocfilehash: 5e113af94c1ac27d759a75ff35bb9eb29fa08bf6
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: f9f29cd20020ec5e6538bf1dd31e89c2f7adcc92
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -33,6 +33,64 @@ Die folgende Tabelle enthält eine Liste von Compute-Umgebungen, die von Data Fa
 | [Azure Machine Learning](#azure-machine-learning-linked-service) |[Machine Learning-Aktivitäten: Batchausführung und Ressourcenaktualisierung](data-factory-azure-ml-batch-execution-activity.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) |[Data Lake Analytics U-SQL](data-factory-usql-activity.md) |
 | [Azure SQL](#azure-sql-linked-service), [Azure SQL Data Warehouse](#azure-sql-data-warehouse-linked-service), [SQL Server](#sql-server-linked-service) |[Gespeicherte Prozedur](data-factory-stored-proc-activity.md) |
+
+## <a name="supported-hdinsight-versions-in-azure-data-factory"></a>Unterstützte HDInsight-Versionen in Azure Data Factory
+Azure HDInsight unterstützt mehrere Hadoop-Clusterversionen, die jederzeit bereitgestellt werden können. Jede ausgewählte Version erstellt eine bestimmte Version der HDP-Distribution (Hortonworks Data Platform) und eine Reihe von Komponenten innerhalb dieser Distribution. Microsoft aktualisiert die Liste der unterstützten Versionen von HDInsight ständig, um die aktuellsten Komponenten und Fixes für das Hadoop-Ökosystem bereitzustellen. HDInsight 3.2 ist seit dem 01.04.2017 veraltet. Ausführlichere Informationen finden Sie unter [Unterstützte HDInsight-Versionen](../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions).
+
+Dies wirkt sich auf vorhandene Azure Data Factorys aus, die Aktivitäten aufweisen, die für HDInsight 3.2-Cluster ausgeführt werden. Die Benutzer sollten die unten aufgeführten Richtlinien zum Aktualisieren der betroffenen Data Factorys befolgen.
+
+### <a name="for-linked-services-pointing-to-your-own-hdinsight-clusters"></a>Für verknüpfte Dienste, die auf Ihre eigenen HDInsight-Cluster verweisen
+* **Verknüpfte HDInsight-Dienste, die auf Ihre eigenen Cluster mit HDInsight 3.2 oder früher verweisen:**
+
+  Azure Data Factory unterstützt das Senden von Aufträgen an Ihre eigenen HDInsight-Cluster von HDI 3.1 bis zur [neuesten unterstützten HDInsight-Version](../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions). Sie können seit dem 01.04.2017 jedoch keine HDInsight 3.2-Cluster mehr erstellen (gemäß Richtlinie zu veralteten Versionen unter [Unterstützte HDInsight-Versionen](../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions)).  
+
+  **Empfehlungen:** 
+  * Führen Sie Tests aus, um die Kompatibilität der Aktivitäten, die auf diese verknüpften Dienste verweisen, mit [der neuesten unterstützten HDInsight-Version](../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions) sicherzustellen. Verwenden Sie dazu Informationen, die in [Verfügbare Hadoop-Komponenten in verschiedenen Versionen von HDInsight](../hdinsight/hdinsight-component-versioning.md#hadoop-components-available-with-different-hdinsight-versions) und [Hortonworks-Versionshinweise im Zusammenhang mit HDInsight-Versionen](../hdinsight/hdinsight-component-versioning.md#hortonworks-release-notes-associated-with-hdinsight-versions) dokumentiert sind.
+  * Aktualisieren Sie Ihren HDInsight 3.2-Cluster auf [die neueste unterstützte HDInsight-Version](../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions), um die neuesten Komponenten und Fixes für das Hadoop-Ökosystem zu erhalten. 
+
+* **Verknüpfte HDInsight-Dienste, die auf Ihre eigenen Cluster mit HDInsight 3.3 oder höher verweisen:**
+
+  Azure Data Factory unterstützt das Senden von Aufträgen an Ihre eigenen HDInsight-Cluster von HDI 3.1 bis zur [neuesten unterstützten HDInsight-Version](../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions). 
+  
+  **Empfehlungen:** 
+  * Hinsichtlich der Data Factorys ist keine Aktion erforderlich. Wenn Sie allerdings eine frühere Version von HDInsight verwenden, wird dennoch empfohlen, ein Upgrade auf [die neueste unterstützte HDInsight-Version](../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions) auszuführen, um die neuesten Komponenten und Fixes für das Hadoop-Ökosystem zu erhalten.
+
+### <a name="for-hdinsight-on-demand-linked-services"></a>Für bedarfsgesteuerte verknüpfte HDInsight-Dienste
+* **Version 3.2 oder früher wird in der JSON-Definition von bedarfsgesteuerten verknüpften HDInsight-Diensten angegeben:**
+  
+  Azure Data Factory wird Unterstützung zum Erstellen eines bedarfsgesteuerten Clusters mit HDInsight 3.3 und höher beginnend ab dem **05.05.2017** ermöglichen. Und das Ende der Unterstützung vorhandener bedarfsgesteuerter verknüpfter HDInsight 3.2-Dienste wird auf den **05.07.2017** verlängert.  
+
+  **Empfehlungen:** 
+  * Führen Sie Tests aus, um die Kompatibilität der Aktivitäten, die auf diese verknüpften Dienste verweisen, mit [der neuesten unterstützten HDInsight-Version](../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions) sicherzustellen. Verwenden Sie dazu Informationen, die in [Verfügbare Hadoop-Komponenten in verschiedenen Versionen von HDInsight](../hdinsight/hdinsight-component-versioning.md#hadoop-components-available-with-different-hdinsight-versions) und [Hortonworks-Versionshinweise im Zusammenhang mit HDInsight-Versionen](../hdinsight/hdinsight-component-versioning.md#hortonworks-release-notes-associated-with-hdinsight-versions) dokumentiert sind.
+  * Aktualisieren Sie vor dem **05.07.2017** die Version-Eigenschaft in der JSON-Definition für den bedarfsgesteuerten verknüpften HDI-Dienst auf [die neueste unterstützte HDInsight-Version](../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions), um die neuesten Komponenten und Fixes für das Hadoop-Ökosystem zu erhalten. Ausführliche Informationen zur JSON-Definition finden Sie im Beispiel [Bedarfsgesteuerter verknüpfter Azure HDInsight-Dienst](#azure-hdinsight-on-demand-linked-service). 
+
+* **Version ist in bedarfsgesteuerten verknüpften HDInsight-Diensten nicht angegeben:**
+  
+  Azure Data Factory wird Unterstützung zum Erstellen eines bedarfsgesteuerten Clusters mit HDInsight 3.3 und höher beginnend ab dem **05.05.2017** ermöglichen. Und das Ende der Unterstützung vorhandener bedarfsgesteuerter verknüpfter HDInsight 3.2-Dienste wird auf den **05.07.2017** verlängert. 
+
+  Wenn die Werte nicht angegeben werden, lauten die Standardwerte der Version- und osType-Eigenschaften vor dem **05.05.2017** wie folgt: 
+
+  | Eigenschaft | Standardwert | Erforderlich |
+  | --- | --- | --- |
+  Version    | HDI 3.1 für Windows-Cluster und HDI 3.2 für Linux-Cluster.| Nein
+  osType | Der Standardwert ist „Windows“. | Nein
+
+  Wenn die Werte nicht angegeben werden, lauten die Standardwerte der Version- und osType-Eigenschaften nach dem **05.05.2017** wie folgt:
+
+  | Eigenschaft | Standardwert | Erforderlich |
+  | --- | --- | --- |
+  Version    | HDI 3.3 für Windows-Cluster und 3.5 für Linux-Cluster.    | Nein
+  osType | Der Standardwert ist „Linux“.    | Nein
+
+  **Empfehlungen:** 
+  * Aktualisieren Sie vor dem **05.05.2017** den verknüpften Dienst, um die erwartete Version- und osType-Kombination in der JSON-Definition von bedarfsgesteuerten verknüpften HDInsight-Diensten explizit zu definieren. Sie können die Version auf 3.2 festlegen, um Abwärtskompatibilität sicherzustellen. 
+  * Führen Sie zwischen dem **05.05.2017** und dem **05.07.2017** Tests aus, um die Kompatibilität der Aktivitäten, die auf diese verknüpften Dienste verweisen, mit [der neuesten unterstützten HDInsight-Version](../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions) sicherzustellen. Verwenden Sie dazu Informationen, die in [Verfügbare Hadoop-Komponenten in verschiedenen Versionen von HDInsight](../hdinsight/hdinsight-component-versioning.md#hadoop-components-available-with-different-hdinsight-versions) und [Hortonworks-Versionshinweise im Zusammenhang mit HDInsight-Versionen](../hdinsight/hdinsight-component-versioning.md#hortonworks-release-notes-associated-with-hdinsight-versions) dokumentiert sind.  
+  * Aktualisieren Sie vor dem **05.07.2017** die Version-Eigenschaft in der JSON-Definition für den bedarfsgesteuerten verknüpften HDInsight-Dienst auf [die neueste unterstützte HDInsight-Version](../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions), oder nutzen Sie den Standardwert „HDInsight 3.5“, um die neuesten Komponenten und Fixes für das Hadoop-Ökosystem zu erhalten. Ausführliche Informationen zur JSON-Definition finden Sie im Beispiel [Bedarfsgesteuerter verknüpfter Azure HDInsight-Dienst](#azure-hdinsight-on-demand-linked-service).
+
+>[!Note]
+>Azure Data Factory unterstützt derzeit keine HDInsight-Cluster mit Azure Data Lake Store als primären Speicher. Sie müssen Azure Storage als primären Speicher für HDInsight-Cluster verwenden. 
+>  
+>  
 
 ## <a name="on-demand-compute-environment"></a>Bedarfsgesteuerte Compute-Umgebung
 Bei dieser Konfiguration wird die Compute-Umgebung vollständig vom Azure Data Factory-Dienst verwaltet. Der Data Factory-Dienst erstellt diese Umgebung automatisch, bevor ein Auftrag zur Verarbeitung von Daten übermittelt wird. Sobald der Auftrag abgeschlossen wurde, wird die Umgebung entfernt. Sie können einen verknüpften Dienst für die bedarfsgesteuerte Compute-Umgebung erstellen, diesen konfigurieren und differenzierte Einstellungen für Auftragsausführung, Clusterverwaltung und Bootstrappingaktionen festlegen.
@@ -165,7 +223,7 @@ Sie können die Größe der Head-, Daten- und Zookeeper-Knoten mit den folgenden
 | zookeeperNodeSize |Gibt die Größe des Zoo Keeper-Knotens an. Der Standardwert ist „Standard_D3“. |Nein |
 
 #### <a name="specifying-node-sizes"></a>Knotengrößen angeben
-Lesen Sie den Artikel [Größen von virtuellen Computern](../virtual-machines/virtual-machines-linux-sizes.md), um Näheres zu Zeichenfolgenwerten zu erfahren, die Sie für die oben aufgeführten Eigenschaften angeben müssen. Die Werte müssen den **CMDLETs und APIs** entsprechen, auf die im Artikel verwiesen wird. Wie Sie in diesem Artikel sehen können, hat der Datenknoten „Large“ (Standard) 7 GB Arbeitsspeicher, was für Ihr Szenario möglicherweise nicht ausreichend ist. 
+Lesen Sie den Artikel [Größen von virtuellen Computern](../virtual-machines/linux/sizes.md), um Näheres zu Zeichenfolgenwerten zu erfahren, die Sie für die oben aufgeführten Eigenschaften angeben müssen. Die Werte müssen den **CMDLETs und APIs** entsprechen, auf die im Artikel verwiesen wird. Wie Sie in diesem Artikel sehen können, hat der Datenknoten „Large“ (Standard) 7 GB Arbeitsspeicher, was für Ihr Szenario möglicherweise nicht ausreichend ist. 
 
 Wenn Sie Hauptknoten und Workerknoten der Größe D4 erstellen möchten, müssen Sie **Standard_D4** als Wert für die Eigenschaften headNodeSize und dataNodeSize angeben. 
 

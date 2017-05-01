@@ -1,6 +1,6 @@
 ---
-title: Konvertieren in ein Vorhersageexperiment in Azure Machine Learning| Microsoft-Dokumentation
-description: "Konvertieren eines Machine Learning-Trainingsexperiments zum Trainieren Ihres Modells für Vorhersageanalysen in ein Vorhersageexperiment, das als Webdienst bereitgestellt werden kann."
+title: "Vorbereiten des Modells für die Bereitstellung in Azure Machine Learning Studio | Microsoft-Dokumentation"
+description: "Sie erfahren, wie Sie das trainierte Modell für die Bereitstellung als Webdienst vorbereiten, indem Sie Ihr Machine Learning Studio-Trainingsexperiment in ein Vorhersageexperiment konvertieren."
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -12,36 +12,46 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2017
+ms.date: 03/28/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
-ms.openlocfilehash: db91a464843a7c2dc5460f12f7f306972d3a7da8
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 716a9a9b723df7ff6eb111fa40f2b5941d57d67a
+ms.lasthandoff: 03/31/2017
 
 
 ---
-# <a name="convert-a-machine-learning-training-experiment-to-a-predictive-experiment"></a>Konvertieren eines Machine Learning-Trainingsexperiments in ein Vorhersageexperiment
-Azure Machine Learning ermöglicht es Ihnen, Vorhersageanalyselösungen zu erstellen, zu testen und bereitzustellen .
+# <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio"></a>Vorbereiten des Modells für die Bereitstellung in Azure Machine Learning Studio
 
-Sobald Sie ein *Trainingsexperiment* zum Trainieren Ihres Vorhersageanalysemodells erstellt und durchlaufen haben und bereit sind, dieses zum Bewerten neuer Daten zu verwenden, müssen Sie das Experiment vorbereiten und für die Bewertung optimieren. Sie können dieses *Vorhersageexperiment* dann als Azure-Webdienst operationalisieren, damit Benutzer Daten an Ihr Modell senden und dessen Vorhersagen abrufen können.
+Azure Machine Learning Studio bietet Ihnen die Tools, die Sie benötigen, um ein Vorhersageanalysenmodell zu entwickeln und dann zu operationalisieren, indem Sie es als Azure-Webdienst bereitstellen.
 
-Durch die Konvertierung in ein Vorhersageexperiment wird das trainierte Modell darauf vorbereitet, als Webdienst bereitgestellt zu werden. Benutzer des Webdiensts senden Eingabedaten an das Modell, und das Modell sendet Vorhersageergebnisse zurück. Während der Konvertierung in ein Vorhersageexperiment sollten Sie daher berücksichtigen, wie das Modell aus Ihrer Sicht erwartungsgemäß von anderen Benutzern verwendet wird.
+Dabei verwenden Sie Studio zum Erstellen eines als *Trainingsexperiment* bezeichneten Experiments, in dem Sie das Modell trainieren, bewerten und bearbeiten. Sobald Sie zufrieden sind, bereiten Sie das Modell auf die Bereitstellung vor, indem Sie Ihr Trainingsexperiment in ein *Vorhersageexperiment* konvertieren, das zum Bewerten von Benutzerdaten konfiguriert ist.
+
+Sie sehen ein Beispiel dieses Prozesses in [Exemplarische Vorgehensweise: Entwickeln einer Lösung zur Vorhersageanalyse für die Kreditrisikobewertung in Azure Machine Learning](machine-learning-walkthrough-develop-predictive-solution.md).
+
+Dieser Artikel bietet fundierte Einblicke in die Details des Vorgangs, mit dem ein Trainingsexperiment in ein Vorhersageexperiment konvertiert wird, und in die Bereitstellung dieses Vorhersageexperiments. Wenn Sie diese Details verstehen, können Sie lernen, wie Sie das bereitgestellte Modell so konfigurieren, dass es wirksamer ist.
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
+## <a name="overview"></a>Übersicht 
+
 Der Prozess der Konvertierung eines Trainingsexperiments in ein Vorhersageexperiment umfasst drei Schritte:
 
-1. Speichern Sie das Machine Learning-Modell, das Sie trainiert haben, und ersetzen Sie dann den Machine Learning-Algorithmus und die [Train Model][train-model]-Module durch Ihr gespeichertes trainiertes Modell.
-2. Reduzieren des Experiments auf die Module, die für die Bewertung erforderlich sind. Ein Trainingsexperiment enthält mehrere Module, die für das Training erforderlich sind, jedoch nicht mehr benötigt werden, nachdem das Modell entsprechend trainiert wurde und bereit für die Bewertung ist.
-3. Definieren Sie, wo Sie im Experiment Daten des Webdienst-Benutzers akzeptieren und welche Daten zurückgegeben werden.
+1. Ersetzen Sie die Machine Learning-Algorithmusmodule durch Ihr trainiertes Modell.
+2. Reduzieren des Experiments auf die Module, die für die Bewertung erforderlich sind. Ein Trainingsexperiment enthält mehrere Module, die für das Training erforderlich sind, jedoch nicht mehr benötigt werden, nachdem das Modell entsprechend trainiert wurde.
+3. Definieren Sie, wie Ihr Modell Daten des Webdienstbenutzers akzeptiert, und welche Daten zurückgegeben werden.
+
+> [!TIP]
+> In Ihrem Trainingsexperiment haben Sie Ihr Modell mit Ihren eigenen Daten trainiert und bewertet. Aber nach der Bereitstellung werden Benutzer neue Daten an Ihr Modell senden, und es wird Vorhersageergebnisse zurückgeben. Berücksichtigen Sie also bei der Konvertierung Ihres Trainingsexperiments in ein Vorhersageexperiment, um es für die Bereitstellung vorzubereiten, wie andere Benutzer das Modell verwenden werden.
+> 
+> 
 
 ## <a name="set-up-web-service-button"></a>Schaltfläche zur Webdiensteinrichtung
-Nachdem Sie das Experiment ausgeführt haben (mit der Schaltfläche **RUN** am unteren Rand der Experimentbereichs), führen Sie mit der Schaltfläche **Set Up Web Service** (wählen Sie die Option **Predictive Web Service**) die drei Schritte zum Konvertieren Ihres Trainingsexperiment in ein Vorhersageexperiment durch:
+Klicken Sie nach dem Ausführen Ihres Experiments (unten im Experimentbereich auf **RUN** klicken) auf die Schaltfläche **Set Up Web Service** (Option **Predictive Web Service** wählen). **Set Up Web Service** führt für Sie die drei Schritte zum Konvertieren Ihres Trainingsexperiments in ein Vorhersageexperiment aus:
 
-1. Dabei wird das trainierte Modell als Modul im Abschnitt **Trained Models** der Modulpalette (links neben dem Experimentbereich) gespeichert, und anschließend werden der Machine Learning-Algorithmus und die [Train Model][train-model]-Module durch das gespeicherte Modell ersetzt.
-2. Module, die offensichtlich nicht erforderlich sind, werden entfernt. In unserem Beispiel gehören dazu die Module [Split Data][split], zweites<sup></sup> [Score Model][score-model] und [Evaluate Model][evaluate-model].
-3. Webdiensteingabe- und -ausgabemodule werden erstellt und in den Standardpositionen Ihres Experiments eingefügt.
+1. Damit wird Ihr trainiertes Modell im Abschnitt **Trained Models** der Modulpalette gespeichert (auf der linken Seite des Experimentbereichs). Dann werden der Machine Learning-Algorithmus und [Train Model][train-model]-Module durch das gespeicherte trainierte Modell ersetzt.
+2. Ihr Experiment wird analysiert, und es werden Module entfernt, die eindeutig nur für das Training verwendet wurden und nicht mehr benötigt werden.
+3. Die Module _Web service input_ und _Web service output_ werden in Standardspeicherorte Ihres Experiments eingefügt (diese Module akzeptieren Benutzerdaten und geben sie zurück).
 
 Das folgende Experiment trainiert z. B. ein Boosted Decision Tree-Zwei-Klassen-Modell mit Beispiel-Erhebungsdaten:
 
@@ -51,33 +61,37 @@ Die Module in diesem Experiment führen im Wesentlichen vier verschiedene Funkti
 
 ![Modulfunktionen][figure2]
 
-Wenn Sie dieses Trainingsexperiment in ein Vorhersageexperiment konvertieren, werden einige dieser Module nicht mehr benötigt oder erhalten einen anderen Zweck:
+Wenn Sie dieses Trainingsexperiment in ein Vorhersageexperiment konvertieren, werden einige dieser Module nicht mehr benötigt oder dienen nun einem anderen Zweck:
 
 * **Data**: Die Daten in diesem Beispieldataset werden nicht während der Bewertung verwendet. Der Benutzer des Webdiensts stellt die Daten für die Bewertung bereit. Die Metadaten aus dem DataSet, z. B. Datentypen, werden jedoch vom trainierten Modell verwendet. Daher müssen Sie das DataSet im Vorhersageexperiment beibehalten, damit diese Metadaten bereitgestellt werden können.
-* **Prep** – Abhängig von den zum Bewerten übermittelten Daten können diese Module zum Verarbeiten der eingehenden Daten erforderlich sein oder auch nicht.
+
+* **Prep**: Abhängig von den zum Bewerten übermittelten Benutzerdaten können diese Module zum Verarbeiten der eingehenden Daten erforderlich sein oder auch nicht. Die **Set Up Web Service**-Schaltfläche berührt diese nicht – Sie müssen entscheiden, wie sie mit Ihnen umgehen möchten.
   
-    In diesem Beispiel können etwa im Beispiel-DataSet Werte fehlen und Spalten enthalten sein, die zum Trainieren des Modells nicht benötigt werden. Das Modul [Clean Missing Data][clean-missing-data] wurde zur Behandlung fehlender Werte hinzugefügt, und das Modul [Select Columns in Dataset][select-columns] wurde eingeschlossen, um diese zusätzlichen Spalten vom Datenfluss auszuschließen. Wenn Sie wissen, dass in den zum Bewerten durch den Webdienst übermittelten Daten keine Werte fehlen, können Sie das Modul [Clean Missing Data][clean-missing-data] entfernen. Da das Modul [Select Columns in Dataset][select-columns] beim Festlegen der bewerteten Features hilft, muss dieses Modul beibehalten werden.
-* **Train** – Diese Module werden zum Trainieren des Modells verwendet. Wenn Sie auf **Webdienst einrichten** klicken, werden diese Module durch ein einzelnes „Trained Model“-Modul ersetzt. Dieses neue Modul wird im Abschnitt **Trained Models** der Modulpalette gespeichert.
-* **Score** – In diesem Beispiel wird das Modul [Split Data][split] zum Unterteilen des Datenstroms in einen Satz von Testdaten und Trainingsdaten verwendet. Da dies im Vorhersageexperiment nicht erforderlich ist, kann das Modul entfernt werden. Ebenso werden das zweite Modul<sup></sup> [Score Model][score-model] und das Modul [Evaluate Model][evaluate-model] verwendet, um Ergebnisse aus den Testdaten zu vergleichen, und werden daher im Vorhersageexperiment ebenfalls nicht benötigt. Das verbleibende Modul [Score Model][score-model] ist jedoch erforderlich, um über den Webdienst ein Bewertungsergebnis zurückzugeben.
+    In diesem Beispiel könnten im Beispieldataset Werte fehlen, sodass ein [Clean Missing Data][clean-missing-data]-Modul für den Umgang mit ihnen einbezogen wurde. Darüber hinaus enthält das Beispieldataset Spalten, die zum Trainieren des Modells nicht benötigt werden. Daher wurde ein [Select Columns in Dataset][select-columns]-Modul einbezogen, um diese zusätzlichen Spalten aus dem Datenfluss auszuschließen. Wenn Sie wissen, dass in den zum Bewerten durch den Webdienst übermittelten Daten keine Werte fehlen, können Sie das Modul [Clean Missing Data][clean-missing-data] entfernen. Da das Modul [Select Columns in Dataset][select-columns] beim Festlegen der Datenspalten hilft, die das trainierte Modells erwartet, muss dieses Modul beibehalten werden.
+
+* **Train** – Diese Module werden zum Trainieren des Modells verwendet. Wenn Sie auf **Set Up Web Service** klicken, werden diese Module durch ein einzelnes Modul ersetzt, das das von Ihnen trainierte Modell enthält. Dieses neue Modul wird im Abschnitt **Trained Models** der Modulpalette gespeichert.
+
+* **Score**: In diesem Beispiel wird das Modul [Split Data][split] zum Unterteilen des Datenstroms in Testdaten und Trainingsdaten verwendet. Im Vorhersageexperiment trainieren wir nicht mehr, sodass [Split Data][split] entfernt werden kann. Ebenso werden das zweite Modul [Score Model][score-model] und das Modul [Evaluate Model][evaluate-model] verwendet, um Ergebnisse aus den Testdaten zu vergleichen, und daher im Vorhersageexperiment nicht benötigt. Das verbleibende Modul [Score Model][score-model] ist jedoch erforderlich, um über den Webdienst ein Bewertungsergebnis zurückzugeben.
 
 So sieht das Beispiel nach dem Klicken auf **Webdienst einrichten**aus:
 
 ![Konvertiertes Vorhersageexperiment][figure3]
 
-Das kann ausreichend sein, um das Experiment zur Bereitstellung als Webdienst vorzubereiten. Allerdings sollten Sie einige zusätzliche Aufgaben für das Experiment durchführen.
+Die Arbeit von **Set Up Web Service** kann ausreichend sein, um das Experiment zur Bereitstellung als Webdienst vorzubereiten. Allerdings sollten Sie einige zusätzliche Aufgaben für das Experiment durchführen.
 
 ### <a name="adjust-input-and-output-modules"></a>Anpassen von Eingabe- und Ausgabemodulen
-Im Trainingsexperiment haben Sie einen Satz von Trainingsdaten verwendet und dann durch Verarbeitung die Daten in einem Formular abgerufen, die für den Algorithmus für maschinelles Lernen erforderlich sind. Wenn diese Verarbeitung für die Daten, die voraussichtlich über den Webdienst empfangen werden, nicht erforderlich ist, können Sie das Modul **Web Service Input** auf einen anderen Knoten im Experiment verschieben (klicken Sie auf die Ausgabe des Moduls **Web Service Input**, und ziehen Sie sie zum Eingangsport des entsprechenden Moduls).
+Im Trainingsexperiment haben Sie einen Satz von Trainingsdaten verwendet und dann durch Verarbeitung die Daten in einem Formular abgerufen, die für den Algorithmus für maschinelles Lernen erforderlich sind. Wenn für die voraussichtlich über den Webdienst empfangenen Daten keine Verarbeitung erforderlich ist, können Sie dies umgehen: stellen Sie die Verbindung der Ausgabe des Moduls **Web service input** mit einem anderen Knoten im Experiment her. Die Benutzerdaten werden jetzt im Modell an dieser Stelle eingehen.
 
-Beispielsweise setzt **Set Up Web Service** standardmäßig das **Web service input**-Modul an den Beginn des Datenflusses, wie in der Abbildung oben dargestellt. Wenn diese Verarbeitung für die Eingabedaten nicht erforderlich ist, können Sie **Web Service Input** manuell hinter den Datenverarbeitungsmodulen platzieren:
+Beispielsweise setzt **Set Up Web Service** standardmäßig das **Web service input**-Modul an den Beginn des Datenflusses, wie in der Abbildung oben dargestellt. Aber wir können das **Web service input**-Modul manuell hinter den Datenverarbeitungsmodulen positionieren:
 
 ![Verschieben des Web Service Input][figure4]
 
 Die über den Webdienst bereitgestellten Eingabedaten werden jetzt ohne Vorverarbeitung direkt an das "Score Model"-Modul übergeben.
 
 Auf ähnliche Weise setzt **Webdienst einrichten** standardmäßig das Webdienstausgabe-Modul an das Ende des Datenflusses. In diesem Beispiel gibt der Webdienst die Ausgabe des Moduls [Score Model][score-model], die den vollständigen Eingabedatenvektor sowie die Bewertungsergebnisse enthält, an den Benutzer zurück.
+Falls Sie jedoch andere Daten zurückgeben möchten, können Sie zusätzliche Module vor dem Modul **Web Service Output** hinzufügen. 
 
-Falls Sie jedoch andere Daten zurückgeben möchten, können Sie zusätzliche Module vor dem Modul **Web Service Output** hinzufügen. Wenn Sie beispielsweise nur die Bewertungsergebnisse und nicht den gesamten Eingabedatenvektor zurückgeben möchten, können Sie ein Modul [Select Columns in Dataset][select-columns] hinzufügen, um alle Spalten mit Ausnahme der Bewertungsergebnisse auszuschließen. Anschließend verschieben Sie das Modul **Web Service Output** zur Ausgabe des Moduls [Select Columns in Dataset][select-columns]. Das Experiment würde dann wie folgt aussehen:
+Um beispielsweise nur die Bewertungsergebnisse und nicht den gesamten Eingabedatenvektor zurückzugeben, fügen Sie ein Modul [Select Columns in Dataset][select-columns] hinzu, um alle Spalten mit Ausnahme der Bewertungsergebnisse auszuschließen. Anschließend verschieben Sie das Modul **Web service output** zur Ausgabe des Moduls [Select Columns in Dataset][select-columns]. Das Experiment sieht wie folgt aus:
 
 ![Verschieben des Web Service Output][figure5]
 
@@ -88,17 +102,15 @@ Unser Vorhersageexperiment sieht nun folgendermaßen aus:
 
 ![Entfernen zusätzlicher Module][figure6]
 
-> [!TIP]
-> Beachten Sie, dass wir das Dataset oder das Modul [Select Columns in Dataset][select-columns] nicht entfernt haben. Das Modell im Webdienst verwendet die Daten im ursprünglichen Dataset nicht, jedoch die im Dataset definierten Metadaten, beispielsweise den Datentyp jeder Spalte. Ebenso identifiziert das Modul [Select Columns in Dataset][select-columns] die Datenspalten, die vom Modell verwendet werden. Beide Module müssen daher im Vorhersageexperiment erhalten bleiben.
 
 ### <a name="add-optional-web-service-parameters"></a>Hinzufügen von optionalen Webdienst-Parametern
 In einigen Fällen empfiehlt es sich, dem Benutzer des Webdiensts das Ändern des Modulverhaltens zu erlauben, wenn auf den Dienst zugegriffen wird. *Webdienstparameter* erlauben Ihnen, dies zu tun.
 
 Ein typisches Beispiel ist das Einrichten eines Moduls [Import Data][import-data], damit die Benutzer des bereitgestellten Webdiensts beim Zugreifen auf den Webdienst eine andere Datenquelle angeben können. Ein weiteres Beispiel ist die Konfiguration eines Moduls [Export Data][export-data], damit ein anderes Ziel angegeben werden kann.
 
-Sie können Webdienstparameter definieren und einem oder mehreren Modulparametern zuordnen, und Sie können angeben, ob diese Parameter erforderlich oder optional sind. Der Benutzer des Webdiensts kann dann beim Zugreifen auf den Dienst Werte für diese Parameter angeben, und das Verhalten des Moduls ändert sich entsprechend.
+Sie können Webdienstparameter definieren und einem oder mehreren Modulparametern zuordnen, und Sie können angeben, ob diese Parameter erforderlich oder optional sind. Der Benutzer des Webdiensts gibt beim Zugreifen auf den Dienst Werte für diese Parameter an, und das Verhalten des Moduls ändert sich entsprechend.
 
-Weitere Informationen zu Webdienstparametern finden Sie unter [Verwenden von Azure Machine Learning-Webdienstparametern][webserviceparameters].
+Weitere Informationen zu Webdienstparametern und ihrer Verwendung finden Sie unter [Verwenden von Azure Machine Learning-Webdienstparametern][webserviceparameters].
 
 [webserviceparameters]: machine-learning-web-service-parameters.md
 

@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 04/04/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 68e475891a91e4ae45a467cbda2b7b51c8020dbd
-ms.openlocfilehash: e5f643d444fb2bf00aa91083f5d09962372e0dbb
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 4ef0118435020edc3a922c88a5a55400992cbc09
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -106,14 +107,68 @@ Wenn Sie Express-Einstellungen verwenden, wird ein Konto für die Synchronisieru
 
 ![AD-Konto](./media/active-directory-aadconnect-accounts-permissions/adsyncserviceaccount.png)
 
-### <a name="azure-ad-connect-sync-service-accounts"></a>Azure AD Connect-Synchronisierungsdienstkonten
+Wenn Sie benutzerdefinierte Einstellungen verwenden, sind Sie für das Erstellen des Kontos vor Beginn der Installation zuständig.
+
+### <a name="azure-ad-connect-sync-service-account"></a>Azure AD Connect-Synchronisierungsdienstkonto
+Der Synchronisierungsdienst kann unter verschiedenen Konten ausgeführt werden. Er kann unter einem **virtuellen Dienstkonto** (VSA), einem **gruppenverwalteten Dienstkonto** (gMSA/sMSA) oder einem normalen Benutzerkonto ausgeführt werden. Die unterstützten Optionen wurden mit der Connect-Version von April 2017 geändert und treten in Kraft, wenn Sie eine Neuinstallation durchführen. Wenn Sie ein Upgrade von einer früheren Version von Azure AD Connect durchführen, sind diese zusätzlichen Optionen nicht verfügbar.
+
+| Kontotyp | Installationsoption | Beschreibung |
+| --- | --- | --- |
+| [Virtuelles Dienstkonto](#virtual-service-account) | Express und benutzerdefiniert, April 2017 und höher | Dies ist die Option für alle Expressinstallationen mit Ausnahme von Installationen auf einem Domänencontroller. Für benutzerdefinierte Installationen ist es die Standardoption, sofern keine andere Option verwendet wird. |
+| [Gruppenverwaltetes Dienstkonto](#group-managed-service-account) | Benutzerdefiniert, April 2017 und höher | Wenn Sie einen Remotecomputer mit SQL Server verwenden, empfehlen wir den Einsatz eines gruppenverwalteten Dienstkontos. |
+| [Benutzerkonto](#user-account) | Express und benutzerdefiniert, April 2017 und höher | Ein Benutzerkonto mit dem Präfix „AAD_“ wird nur während der Installation erstellt, wenn diese unter Windows Server 2008 und auf einem Domänencontroller erfolgt. |
+| [Benutzerkonto](#user-account) | Express und benutzerdefiniert, März 2017 und früher | Ein lokales Konto mit dem Präfix „AAD_“ wird während der Installation erstellt. Bei der benutzerdefinierten Installation kann ein anderes Konto angegeben werden. |
+
+Wenn Sie Connect mit einem Build von März 2017 und früher verwenden, setzen Sie das Kennwort für das Dienstkonto nicht zurück, da Windows die Verschlüsselungsschlüssel aus Sicherheitsgründen zerstört. Sie können das Konto nicht in ein anderes Konto ändern, ohne Azure AD Connect neu zu installieren. Wenn Sie ein Upgrade auf einen Build von April 2017 oder höher durchführen, wird das Ändern des Kennworts für das Dienstkonto unterstützt. Sie können jedoch nicht das verwendete Konto ändern.
+
+> [!Important]
+> Sie können das Dienstkonto nur bei der erstmaligen Installation festlegen. Das Ändern des Dienstkontos nach Abschluss der Installation wird nicht unterstützt.
+
+Hier sehen Sie eine Tabelle mit den Standard-, den empfohlenen und den unterstützten Optionen für das Synchronisierungsdienstkonto.
+
+Legende:
+
+- **Fettformatierung** kennzeichnet die Standardoption, die in den meisten Fällen der empfohlenen Option entspricht.
+- *Kursivformatierung* kennzeichnet die empfohlene Option, sofern diese nicht mit der Standardoption übereinstimmt.
+- 2008: Standardoption bei der Installation unter Windows Server 2008
+- Nicht fett formatiert: unterstützte Option
+- Lokales Konto: lokales Benutzerkonto auf dem Server
+- Domänenkonto: Domänenbenutzerkonto
+- sMSA: [eigenständig verwaltetes Dienstkonto](https://technet.microsoft.com/library/dd548356.aspx)
+- gMSA: [gruppenverwaltetes Dienstkonto](https://technet.microsoft.com/library/hh831782.aspx)
+
+| | LocalDB</br>Express | LocalDB/LocalSQL</br>Benutzerdefiniert | Remote-SQL</br>Benutzerdefiniert |
+| --- | --- | --- | --- |
+| **Eigenständiger/Arbeitsgruppencomputer** | Nicht unterstützt | **VSA**</br>Lokales Konto (2008)</br>Lokales Konto |  Nicht unterstützt |
+| **In die Domäne eingebundener Computer** | **VSA**</br>Lokales Konto (2008) | **VSA**</br>Lokales Konto (2008)</br>Lokales Konto</br>Domänenkonto</br>sMSA, gMSA | **gMSA**</br>Domänenkonto |
+| **Domänencontroller** | **Domänenkonto** | *gMSA*</br>**Domänenkonto**</br>sMSA| *gMSA*</br>**Domänenkonto**|
+
+#### <a name="virtual-service-account"></a>Virtuelles Dienstkonto
+Ein virtuelles Dienstkonto ist ein besonderer Kontotyp, der nicht über ein Kennwort verfügt und von Windows verwaltet wird.
+
+![VSA](./media/active-directory-aadconnect-accounts-permissions/aadsyncvsa.png)
+
+Das VSA ist für den Einsatz in Szenarien vorgesehen, in denen das Synchronisierungsmodul und SQL sich auf demselben Server befinden. Wenn Sie einen SQL-Remotecomputer verwenden, empfehlen wir stattdessen den Einsatz eines [gruppenverwalteten Dienstkontos](#managed-service-account).
+
+Für dieses Feature ist Windows Server 2008 R2 oder höher erforderlich. Wenn Sie Azure AD Connect unter Windows Server 2008 installieren, wird bei der Installation automatisch ein [Benutzerkonto](#user-account) verwendet.
+
+#### <a name="group-managed-service-account"></a>Gruppenverwaltetes Dienstkonto
+Wenn Sie einen Remotecomputer mit SQL Server verwenden, empfehlen wir den Einsatz eines **gruppenverwalteten Dienstkontos**. Weitere Informationen zum Vorbereiten von Active Directory für das gruppenverwaltete Benutzerkonto finden Sie unter [Gruppenverwaltete Dienstkonten: Übersicht](https://technet.microsoft.com/library/hh831782.aspx).
+
+Um diese Option zu verwenden, wählen Sie auf der Seite [Erforderliche Komponenten installieren](active-directory-aadconnect-get-started-custom.md#install-required-components) die Optionen **Vorhandenes Dienstkonto verwenden** und **Verwaltetes Dienstkonto**.  
+![VSA](./media/active-directory-aadconnect-accounts-permissions/serviceaccount.png)  
+Die Verwendung eines [eigenständig verwalteten Dienstkontos](https://technet.microsoft.com/library/dd548356.aspx) wird ebenfalls unterstützt. Da diese Konten jedoch nur auf dem lokalen Computer verwendet werden können, gibt es keinen praktischen Vorteil gegenüber dem virtuellen Standarddienstkonto.
+
+Für dieses Feature ist Windows Server 2012 oder höher erforderlich. Wenn Sie ein älteres Betriebssystem und Remote-SQL einsetzen, müssen Sie ein [Benutzerkonto](#user-account) verwenden.
+
+#### <a name="user-account"></a>Benutzerkonto
 Der Installations-Assistent erstellt ein lokales Dienstkonto (sofern das Konto nicht zur Verwendung in benutzerdefinierten Einstellungen angegeben wird). Das Konto ist mit dem Präfix **AAD_** versehen und wird zur Ausführung des eigentlichen Synchronisierungsdiensts verwendet. Wenn Sie Azure AD Connect auf einem Domänencontroller installieren, wird das Konto in der Domäne erstellt. Wenn Sie einen Remoteserver mit SQL Server oder einen Proxy verwenden, für den eine Authentifizierung erforderlich ist, muss das Dienstkonto **AAD_** in der Domäne vorhanden sein.
 
 ![Synchronisierungsdienstkonto](./media/active-directory-aadconnect-accounts-permissions/syncserviceaccount.png)
 
 Das Konto wird mit einem langen, komplexen Kennwort erstellt, das nicht abläuft.
 
-Dieses Konto wird verwendet, um die Kennwörter für die anderen Konten auf sichere Weise zu speichern. Die Kennwörter dieser Konten sind verschlüsselt in der Datenbank gespeichert. Die privaten Schlüssel für die Verschlüsselungsschlüssel sind mit der Verschlüsselung mit geheimem Schlüssel für kryptografische Dienste mithilfe der Windows-Datenschutz-API (DPAPI) geschützt. Setzen Sie das Kennwort für das Dienstkonto nicht zurück, da Windows ansonsten die Verschlüsselungsschlüssel aus Sicherheitsgründen zerstört.
+Dieses Konto wird verwendet, um die Kennwörter für die anderen Konten auf sichere Weise zu speichern. Die Kennwörter dieser Konten sind verschlüsselt in der Datenbank gespeichert. Die privaten Schlüssel für die Verschlüsselungsschlüssel sind mit der Verschlüsselung mit geheimem Schlüssel für kryptografische Dienste mithilfe der Windows-Datenschutz-API (DPAPI) geschützt.
 
 Bei Verwendung einer SQL Server-Instanz mit vollem Funktionsumfang wird das Dienstkonto zum DBO der Datenbank, die für das Synchronisierungsmodul erstellt wurde. Der Dienst funktioniert mit anderen Berechtigungen nicht wie vorgesehen. Darüber hinaus wird eine SQL-Anmeldung erstellt.
 
@@ -132,10 +187,4 @@ Das Dienstkonto wird mit einem langen, komplexen Kennwort erstellt, das nicht ab
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](../active-directory-aadconnect.md).
-
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

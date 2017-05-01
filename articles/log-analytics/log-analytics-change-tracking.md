@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/13/2017
+ms.date: 04/11/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: becb179da6bc6b6df629a07d3ddb5d50edbaa577
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: a3d958e1a37ddf6821d41afe7427faec1b8259b2
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="track-software-changes-in-your-environment-with-the-change-tracking-solution"></a>Nachverfolgen von Änderungen an der Software in Ihrer Umgebung mit der Change Tracking-Lösung
 
-Dieser Artikel unterstützt Sie bei der einfachen Erkennung von Änderungen an Ihrer Umgebung mithilfe der Änderungsnachverfolgungslösung in Log Analytics. Die Lösung verfolgt Änderungen an Windows- und Linux-Software, an Windows-Dateien, an Windows-Diensten und an Linux-Daemons nach. Durch Ermitteln von Konfigurationsänderungen können Sie Betriebsprobleme präzise bestimmen.
+Dieser Artikel unterstützt Sie bei der einfachen Erkennung von Änderungen an Ihrer Umgebung mithilfe der Änderungsnachverfolgungslösung in Log Analytics. Die Lösung verfolgt Änderungen an Windows- und Linux-Software, an Windows-Dateien und Registrierungsschlüsseln, an Windows-Diensten und an Linux-Daemons nach. Durch Ermitteln von Konfigurationsänderungen können Sie Betriebsprobleme präzise bestimmen.
 
 Sie installieren die Lösung, um den Typ des installierten Agents zu aktualisieren. Änderungen an installierter Software, Windows-Diensten und Linux-Daemons auf den überwachten Servern werden gelesen, und di Daten werden Verarbeitung an den Log Analytics-Dienst in der Cloud gesendet. Auf die empfangenen Daten wird Logik angewendet, und der Clouddienst zeichnet die Daten auf. Mithilfe der Informationen im Change Tracking-Dashboard können Sie ganz leicht die Änderungen erkennen, die in Ihrer Serverinfrastruktur vorgenommen wurden.
 
@@ -42,6 +42,15 @@ Führen Sie zum Konfigurieren der nachzuverfolgenden Dateien auf Windows-Compute
 3. Geben Sie unter „Nachverfolgung von Windows-Dateien“ den vollständigen Pfad ein, und zwar einschließlich des Dateinamens der Datei, die Sie nachverfolgen möchten. Klicken Sie dann auf das Symbol **Hinzufügen**. Beispiel: „C:\Program Files (x86)\Internet Explorer\iexplore.exe“ oder „C:\Windows\System32\drivers\etc\hosts“.
 4. Klicken Sie auf **Speichern**.  
    ![Änderungsnachverfolgung von Windows-Dateien](./media/log-analytics-change-tracking/windows-file-change-tracking.png)
+
+### <a name="configure-windows-registry-keys-to-track"></a>Konfigurieren der nachzuverfolgenden Windows-Registrierungsschlüssel
+Führen Sie zum Konfigurieren der nachzuverfolgenden Registrierungsschlüssel auf Windows-Computern die folgenden Schritte aus.
+
+1. Klicken Sie im OMS-Portal auf **Einstellungen** (das Zahnradsymbol).
+2. Klicken Sie auf der Seite **Einstellungen** auf **Daten** und dann auf **Nachverfolgung für Windows-Registrierung**.
+3. Geben Sie unter „Änderungsverfolgung für Windows-Registrierung“ den vollständigen Schlüssel ein, den Sie nachverfolgen möchten. Klicken Sie dann auf das Symbol **Hinzufügen**.
+4. Klicken Sie auf **Speichern**.  
+   ![Änderungsverfolgung für Windows-Registrierung](./media/log-analytics-change-tracking/windows-registry-change-tracking.png)
 
 ### <a name="limitations"></a>Einschränkungen
 Die Änderungsnachverfolgungslösung unterstützt derzeit Folgendes nicht:
@@ -73,13 +82,52 @@ Die folgende Tabelle zeigt die Datensammlungshäufigkeit für die Änderungstype
 
 | **Änderungstyp** | **frequency** | **Sendet der** **Agent** **gefundene Änderungen?** |
 | --- | --- | --- |
-| Windows-Registrierung | 50 Minuten | no |
+| Windows-Registrierung | 50 Minuten | Nein |
 | Windows-Datei | 30 Minuten | Ja. Wenn es innerhalb von 24 Stunden keine Änderungen gibt, wird eine Momentaufnahme gesendet. |
 | Linux-Datei | 15 Minuten | Ja. Wenn es innerhalb von 24 Stunden keine Änderungen gibt, wird eine Momentaufnahme gesendet. |
 | Windows-Dienste | 30 Minuten | Ja, alle 30 Minuten, wenn Änderungen gefunden werden. Alle 24 Stunden wird unabhängig von Änderungen eine Momentaufnahme gesendet. Die Momentaufnahme wird also auch gesendet, wenn es keine Änderungen gibt. |
 | Linux-Daemons | 5 Minuten | Ja. Wenn es innerhalb von 24 Stunden keine Änderungen gibt, wird eine Momentaufnahme gesendet. |
 | Windows-Software | 30 Minuten | Ja, alle 30 Minuten, wenn Änderungen gefunden werden. Alle 24 Stunden wird unabhängig von Änderungen eine Momentaufnahme gesendet. Die Momentaufnahme wird also auch gesendet, wenn es keine Änderungen gibt. |
 | Linux-Software | 5 Minuten | Ja. Wenn es innerhalb von 24 Stunden keine Änderungen gibt, wird eine Momentaufnahme gesendet. |
+
+### <a name="registry-key-change-tracking"></a>Registrierungsschlüssel-Änderungsnachverfolgung
+
+Log Analytics führt Überwachung und Nachverfolgung der Windows-Registrierung mit der Change Tracking-Lösung durch. Die Überwachung von Änderungen der Registrierungsschlüssel dient dem Ermitteln von Erweiterungspunkten, an denen Code von Drittanbietern und Schadsoftware aktiv werden können. Die folgende Liste zeigt die Standardregistrierungsschlüssel, die von der Lösung nachverfolgt werden, und die jeweiligen Gründe für die Nachverfolgung.
+
+- HKEY\_LOCAL\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Startup
+    - Überwacht Skripts, die beim Start ausgeführt werden.
+- HKEY\_LOCAL\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown
+    - Überwacht Skripts, die beim Herunterfahren ausgeführt werden.
+- HKEY\_LOCAL\_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run
+    - Überwacht für 32-Bit-Programme, die auf 64-Bit-Computern ausgeführt werden, Schlüssel, die geladen werden, bevor der Benutzer sich bei seinem Windows-Konto anmeldet.
+- HKEY\_LOCAL\_MACHINE\SOFTWARE\Microsoft\Active Setup\Installed Components
+    - Überwacht Änderungen an Anwendungseinstellungen.
+- HKEY\_LOCAL\_MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers
+    - Überwacht gängige Autostart-Einträge, die sich direkt bei Windows-Explorer einklinken und in der Regel In-Process mit „Explorer.exe“ ausgeführt werden.
+- HKEY\_LOCAL\_MACHINE\Software\Classes\Directory\Shellex\CopyHookHandlers
+    - Überwacht gängige Autostart-Einträge, die sich direkt bei Windows-Explorer einklinken und in der Regel In-Process mit „Explorer.exe“ ausgeführt werden.
+- HKEY\_LOCAL\_MACHINE\Software\Classes\Directory\Background\ShellEx\ContextMenuHandlers
+    - Überwacht gängige Autostart-Einträge, die sich direkt bei Windows-Explorer einklinken und in der Regel In-Process mit „Explorer.exe“ ausgeführt werden.
+- HKEY\_LOCAL\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers
+    - Überwacht die Symboloverlayhandler-Registrierung.
+- HKEY\_LOCAL\_MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers
+    - Überwacht die Symboloverlayhandler-Registrierung für 32-Bit-Programme, die auf 64-Bit-Computern ausgeführt werden.
+- HKEY\_LOCAL\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects
+    - Überwacht, ob neue Browserhilfsobjekt-Plug-Ins für Internet Explorer vorliegen, die dann für den Zugriff auf das Dokumentobjektmodell (DOM) der aktuellen Seite und zum Steuern der Navigation verwendet werden können.
+- HKEY\_LOCAL\_MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects
+    - Überwacht, ob neue Browserhilfsobjekt-Plug-Ins für Internet Explorer vorliegen, die dann für den Zugriff auf das Dokumentobjektmodell (DOM) der aktuellen Seite und zum Steuern der Navigation für 32-Bit-Programme, die auf 64-Bit-Computern ausgeführt werden, verwendet werden können.
+- HKEY\_LOCAL\_MACHINE\Software\Microsoft\Internet Explorer\Extensions
+    - Überwacht, ob neue Internet Explorer-Erweiterungen vorliegen, z.B. benutzerdefinierte Toolmenüs und benutzerdefinierte Symbolleistenschaltflächen.
+- HKEY\_LOCAL\_MACHINE\Software\Wow6432Node\Microsoft\Internet Explorer\Extensions
+    - Überwacht, ob neue Internet Explorer-Erweiterungen vorliegen, z.B. benutzerdefinierte Toolmenüs und benutzerdefinierte Symbolleisten-Schaltflächen für 32-Bit-Programme, die auf 64-Bit-Computern ausgeführt werden.
+- HKEY\_LOCAL\_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Drivers32
+    - Überwacht die mit wavemapper zugeordneten 32-Bit-Treiber, wave1 und wave2, msacm.imaadpcm, .msadpcm, .msgsm610 und vidc. Ähnlich dem Abschnitt „[drivers]“ in der SYSTEM. INI-Datei.
+- HKEY\_LOCAL\_MACHINE\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32
+    - Überwacht die mit wavemapper zugeordneten 32-Bit-Treiber, wave1 und wave2, msacm.imaadpcm, .msadpcm, .msgsm610 und vidc für 32-Bit-Programme, die auf 64-Bit-Computern ausgeführt werden. Ähnlich dem Abschnitt „[drivers]“ in der SYSTEM. INI-Datei.
+- HKEY\_LOCAL\_MACHINE\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    - Überwacht die Liste der bekannten oder häufig verwendete System-DLLs. Dieses System verhindert, dass schwache Anwendungsverzeichnisberechtigungen durch Infiltration mit Trojanerversionen von System-DLLs ausgenutzt werden.
+- HKEY\_LOCAL\_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify
+    - Überwacht die Liste der Pakete, die Ereignisbenachrichtigungen von Winlogon empfangen können, dem interaktiven Anmeldungsunterstützungsmodell für das Windows-Betriebssystem.
 
 
 ## <a name="use-change-tracking"></a>Verwenden von Change Tracking
