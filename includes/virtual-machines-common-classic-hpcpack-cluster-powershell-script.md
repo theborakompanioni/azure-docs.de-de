@@ -55,8 +55,3 @@ Im folgenden Beispiel wird mit der Konfigurationsdatei *MyConfigFile.xml* ein HP
 ## <a name="configuration-file"></a>Konfigurationsdatei
 Die Konfigurationsdatei für das Bereitstellungsskript ist eine XML-Datei. Die Schemadatei „HPCIaaSClusterConfig.xsd“ befindet sich im Ordner des HPC Pack-IaaS-Bereitstellungsskripts. **IaaSClusterConfig** ist das Stammelement der Konfigurationsdatei mit den untergeordneten Elementen. Diese werden in der Datei „Manual.rtf“ im Ordner des Bereitstellungsskripts ausführlich beschrieben.
 
-
-
-<!--HONumber=Feb17_HO3-->
-
-

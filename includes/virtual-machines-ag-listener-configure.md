@@ -14,7 +14,7 @@ Der Verfügbarkeitsgruppenlistener umfasst eine IP-Adresse und einen Netzwerknam
 
 Die folgenden Abschnitte enthalten ausführliche Anleitungen zu diesen Schritten. 
 
-#### <a name="a-namegetnetaget-the-name-of-the-cluster-network-resource"></a><a name="getnet"></a>Abrufen des Namens der Clusternetzwerk-Ressource
+#### <a name="getnet"></a>Abrufen des Namens der Clusternetzwerk-Ressource
 
 1. Stellen Sie eine RDP-Verbindung mit dem virtuellen Azure-Computer her, der das primäre Replikat hostet. 
 
@@ -26,7 +26,7 @@ Die folgenden Abschnitte enthalten ausführliche Anleitungen zu diesen Schritten
 
    ![Name des Clusternetzwerks](./media/virtual-machines-ag-listener-configure/90-clusternetworkname.png)
 
-#### <a name="a-nameaddcapaadd-the-client-access-point"></a><a name="addcap"></a>Hinzufügen des Clientzugriffspunkts
+#### <a name="addcap"></a>Hinzufügen des Clientzugriffspunkts
 
 Der Clientzugriffspunkt ist der Netzwerkname, der von den Anwendungen zum Herstellen der Verbindung mit den Datenbanken einer Verfügbarkeitsgruppe verwendet wird. Erstellen Sie den Clientzugriffspunkt im Failovercluster-Manager. 
 
@@ -42,7 +42,7 @@ Der Clientzugriffspunkt ist der Netzwerkname, der von den Anwendungen zum Herste
    
    Klicken Sie zum Abschließen der Listenererstellung zweimal auf **Weiter** und dann auf **Fertig stellen**. Schalten Sie den Listener oder die Ressource jetzt noch nicht online.
    
-#### <a name="a-namecongroupaconfigure-the-ip-resource-for-the-availability-group"></a><a name="congroup"></a>Konfigurieren der IP-Ressource für die Verfügbarkeitsgruppe
+#### <a name="congroup"></a>Konfigurieren der IP-Ressource für die Verfügbarkeitsgruppe
 
 1. Klicken Sie auf die Registerkarte **Ressourcen**, und erweitern Sie dann den erstellten Clientzugriffspunkt. Der Clientzugriffspunkt ist offline.
 
@@ -58,7 +58,7 @@ Der Clientzugriffspunkt ist der Netzwerkname, der von den Anwendungen zum Herste
 1. Disable NetBIOS for this address and click **OK**. Repeat this step for each IP resource if your solution spans multiple Azure VNets. 
 ------------------------->
 
-#### <a name="a-name--dependencygroupamake-the-sql-server-availability-group-resource-dependent-on-the-client-access-point"></a><a name = "dependencyGroup"></a>Einrichten der Abhängigkeit der SQL Server-Verfügbarkeitsgruppen-Ressource vom Clientzugriffspunkt
+#### <a name = "dependencyGroup"></a>Einrichten der Abhängigkeit der SQL Server-Verfügbarkeitsgruppen-Ressource vom Clientzugriffspunkt
 
 1. Klicken Sie im Failovercluster-Manager auf **Rollen** und dann auf Ihre Verfügbarkeitsgruppe.
 
@@ -70,7 +70,7 @@ Der Clientzugriffspunkt ist der Netzwerkname, der von den Anwendungen zum Herste
 
 1. Klicken Sie auf **OK**.
 
-#### <a name="a-namelistnameamake-the-client-access-point-resource-dependent-on-the-ip-address"></a><a name="listname"></a>Festlegen, dass die Clientzugriffspunkt-Ressource von der IP-Adresse abhängig ist
+#### <a name="listname"></a>Festlegen, dass die Clientzugriffspunkt-Ressource von der IP-Adresse abhängig ist
 
 1. Klicken Sie im Failovercluster-Manager auf **Rollen** und dann auf Ihre Verfügbarkeitsgruppe. 
 
@@ -84,7 +84,7 @@ Der Clientzugriffspunkt ist der Netzwerkname, der von den Anwendungen zum Herste
 
 1. Klicken Sie mit der rechten Maustaste auf den Listenernamen, und klicken Sie auf **Online schalten**. 
 
-#### <a name="a-namesetparamaset-the-cluster-parameters-in-powershell"></a><a name="setparam"></a>Festlegen der Clusterparameter in PowerShell
+#### <a name="setparam"></a>Festlegen der Clusterparameter in PowerShell
 
 1. Kopieren Sie das folgende PowerShell-Skript auf einen Ihrer Computer mit SQL Server. Aktualisieren Sie die Variablen für Ihre Umgebung.     
    ```PowerShell
@@ -102,10 +102,5 @@ Der Clientzugriffspunkt ist der Netzwerkname, der von den Anwendungen zum Herste
 
 > [!NOTE]
 > Falls sich Ihre SQL Server in unterschiedlichen Regionen befinden, muss das PowerShell-Skript zweimal ausgeführt werden. Verwenden Sie beim ersten Mal die Elemente `$ILBIP` und `$ProbePort` der ersten Region. Verwenden Sie beim zweiten Mal die Elemente `$ILBIP` und `$ProbePort` der zweiten Region. Der Clusternetzwerkname und der Cluster-IP-Ressourcenname sind identisch. 
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 
