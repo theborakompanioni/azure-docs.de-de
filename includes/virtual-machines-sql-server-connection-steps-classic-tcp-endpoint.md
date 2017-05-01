@@ -17,8 +17,3 @@ Für den Zugriff auf SQL Server über das Internet benötigt der virtuelle Compu
 7. Geben Sie für **Privater Port** den SQL Server-Lauschport an. Standardmäßig ist dies **1433**.
 8. Klicken Sie auf **OK** , um den Endpunkt zu erstellen.
 
-
-
-<!--HONumber=Jan17_HO2-->
-
-

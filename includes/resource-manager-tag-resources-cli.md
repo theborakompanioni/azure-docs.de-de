@@ -86,8 +86,3 @@ Sie können die vorhandenen Tags in Ihrem Abonnement mit dem folgenden Befehl an
 ```azurecli
 azure tag list
 ```
-
-
-<!--HONumber=Feb17_HO3-->
-
-
