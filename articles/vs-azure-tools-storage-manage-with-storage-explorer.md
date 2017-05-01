@@ -75,9 +75,9 @@ Es gibt zahlreiche Möglichkeiten, wie Sie den Speicher-Explorer (Vorschau) mit 
 
    ![Importieren des Zertifikats in den Speicher-Explorer (Vorschau)][27]
 
-4. Wählen Sie nach dem Neustart des Speicher-Explorers (Vorschau) das Menü **Bearbeiten**, und vergewissern Sie sich, dass die Option **Target Azure Stack** (Azure Stack-Ziel) aktiviert ist. Aktivieren Sie die Option, falls erforderlich, und starten Sie den Speicher-Explorer neu, damit die Änderung wirksam wird. Diese Konfiguration ist erforderlich, damit die Kompatibilität mit Ihrer Azure Stack-Umgebung sichergestellt ist.
+4. Wählen Sie nach dem Neustart des Speicher-Explorers (Vorschau) das Menü **Bearbeiten**, und vergewissern Sie sich, dass die Option **Target Azure Stack** (Azure Stack als Ziel) aktiviert ist. Aktivieren Sie die Option, falls erforderlich, und starten Sie den Speicher-Explorer neu, damit die Änderung wirksam wird. Diese Konfiguration ist erforderlich, damit die Kompatibilität mit Ihrer Azure Stack-Umgebung sichergestellt ist.
 
-   ![Sicherstellen der Aktivierung von „Target Azure Stack“ (Azure Stack-Ziel)][28]
+   ![Sicherstellen der Aktivierung von „Target Azure Stack“ (Azure Stack als Ziel)][28]
 
 5. Wählen Sie in der linken Seitenleiste die Option **Konten verwalten**. Im linken Bereich werden alle Microsoft-Konten angezeigt, an denen Sie angemeldet sind. Wählen Sie zum Herstellen der Verbindung mit einem Azure Stack-Konto die Option **Konto hinzufügen**.
 
