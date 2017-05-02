@@ -17,9 +17,9 @@ ms.workload: sqldb-migrate
 ms.date: 02/08/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
-ms.openlocfilehash: 272b5eade0a80b1f46af4e4df1c7801d86fee175
-ms.lasthandoff: 04/10/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: 9fb1d12f5895e27929b2698edbf8c207aa2ee377
+ms.lasthandoff: 04/17/2017
 
 
 ---
@@ -34,7 +34,7 @@ In beiden Fällen muss mit dem [Data Migration Assistant (DMA)](https://www.micr
 
 ## <a name="method-1-migration-with-downtime-during-the-migration"></a>1. Methode: Migration mit Ausfallzeit
 
- Verwenden Sie diese Methode, falls eine gewisse Ausfallzeit akzeptabel ist oder Sie eine Testmigration für eine später zu migrierende Produktionsdatenbank durchführen möchten.
+ Verwenden Sie diese Methode, falls eine gewisse Ausfallzeit akzeptabel ist oder Sie eine Testmigration für eine später zu migrierende Produktionsdatenbank durchführen möchten. Ein Tutorial finden Sie unter [Migrieren einer SQL Server-Datenbank](sql-database-migrate-your-sql-server-database.md).
 
 Die folgende Liste enthält den allgemeinen Workflow für die Migration einer SQL Server-Datenbank mit dieser Methode:
 
@@ -45,7 +45,7 @@ Die folgende Liste enthält den allgemeinen Workflow für die Migration einer SQ
 3. Erstellen Sie eine transaktionskonsistente Kopie der zu migrierenden Quelldatenbank – und stellen Sie sicher, dass an der Quelldatenbank keine weiteren Änderungen vorgenommen werden. (Alternativ können weitere Änderungen nach Abschluss der Migration manuell angewendet werden.) Eine Datenbank kann auf unterschiedliche Weise stillgelegt werden – vom Deaktivieren der Clientkonnektivität bis hin zum Erstellen einer [Datenbankmomentaufnahme](https://msdn.microsoft.com/library/ms175876.aspx).
 4. Stellen Sie die Transact-SQL-Skripts bereit, um die Korrekturen auf die Datenbankkopie anzuwenden.
 5. [Exportieren](sql-database-export.md) Sie die Datenbankkopie in eine BACPAC-Datei auf einem lokalen Laufwerk.
-6. [Importieren](sql-database-import-sqlpackage.md) Sie die BACPAC-Datei als neue Azure SQL-Datenbank mithilfe eines BACPAC-Importtools. Wir empfehlen „SQLPackage.exe“, da es die beste Leistung bietet.
+6. [Importieren](sql-database-import.md) Sie die BACPAC-Datei als neue Azure SQL-Datenbank mithilfe eines BACPAC-Importtools. Wir empfehlen „SQLPackage.exe“, da es die beste Leistung bietet.
 
 ### <a name="optimizing-data-transfer-performance-during-migration"></a>Optimieren der Datenübertragungsleistung während der Migration 
 

@@ -17,9 +17,9 @@ ms.date: 03/17/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 9fe18ba70c98baacae99e4f26506510921dcf894
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
+ms.openlocfilehash: 05d5ae485f5a345ade59326ab77cb38127f06580
+ms.lasthandoff: 04/14/2017
 
 
 ---
@@ -53,7 +53,7 @@ Beim Entwerfen der Anwendungsinfrastruktur sollten Sie auch die Anwendungsebenen
 
 Lastenausgleichsmodule können vor jeder Anwendungsebene zusammen mit einer Verfügbarkeitsgruppe genutzt werden und sicherstellen, dass der Datenverkehr immer an eine aktive Instanz weitergeleitet werden kann. Ohne einen Load Balancer werden Ihre virtuellen Computer möglicherweise während einer geplanten und ungeplanten Wartung weiter ausgeführt, Ihre Endbenutzer können aber möglicherweise die Probleme nicht beheben, wenn der primäre virtuelle Computer nicht verfügbar ist.
 
-Wenn Sie nicht verwaltete Datenträger verwenden, entwerfen Sie Ihre Anwendung für hohe Verfügbarkeit auf Speicherebene. Verwenden Sie als bewährte Methode mehrere Speicherkonten für jeden virtuellen Computer in einer Verfügbarkeitsgruppe. Alle Datenträger (Betriebssystem und Daten) sollten einem virtuellen Computer im selben Speicherkonto zugeordnet sein. Beachten Sie die [Grenzwerte](../../storage/storage-scalability-targets.md) des Speicherkontos, wenn Sie einem Speicherkonto weitere VHDs hinzufügen. Bei [Azure Managed Disks](../../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) wird die Verteilung der zugrunde liegenden Datenträger für Sie übernommen.
+Entwerfen Sie Ihre Anwendung für hohe Verfügbarkeit auf Speicherebene. Die bewährte Methode besteht darin, [Managed Disks für VMs in einer Verfügbarkeitsgruppe zu verwenden](../linux/manage-availability.md#use-managed-disks-for-vms-in-availability-set). Falls Sie derzeit nicht verwaltete Datenträger verwenden, empfehlen wir Ihnen dringend, [VMs in der Verfügbarkeitsgruppe für die Verwendung von Managed Disks zu konvertieren](../linux/convert-unmanaged-to-managed-disks.md#convert-vm-in-an-availability-set-to-managed-disks).
 
 ## <a name="next-steps"></a>Nächste Schritte
 [!INCLUDE [virtual-machines-linux-infrastructure-guidelines-next-steps](../../../includes/virtual-machines-linux-infrastructure-guidelines-next-steps.md)]

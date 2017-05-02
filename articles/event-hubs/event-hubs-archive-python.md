@@ -15,22 +15,22 @@ ms.topic: article
 ms.date: 01/12/2017
 ms.author: darosa;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 25dd25d8f8f0388ed7ef11bb26344ad7199fde2e
-ms.openlocfilehash: 3f0487fba592426c835d81a46a752697ecf34d8b
-ms.lasthandoff: 02/03/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 5e37870f932ce775293b913504f2530d1d8935e1
+ms.lasthandoff: 04/18/2017
 
 
 ---
 # <a name="event-hubs-archive-walkthrough-python"></a>Exemplarische Vorgehensweise für Event Hubs-Archiv: Python
 Event Hubs Archive ist ein neues Feature von Event Hubs, mit dem Sie Streamingdaten in Ihrem Event Hub automatisch an ein Azure Blob Storage-Konto Ihrer Wahl übermitteln können. Dies erleichtert die Batchverarbeitung für Echtzeit-Streamingdaten. In diesem Artikel wird beschrieben, wie Sie das Event Hubs-Archiv mit Python nutzen. Weitere Informationen zum Event Hubs-Archiv finden Sie im [Übersichtsartikel](event-hubs-archive-overview.md).
 
-In diesem Beispiel wird das [Azure Python SDK](https://azure.microsoft.com/develop/python/) verwendet, um das Archive-Feature zu demonstrieren. Mit dem Programm „sender.py“ werden simulierte Telemetriedaten der Umgebung im JSON-Format an Event Hubs gesendet. Der Event Hub ist für die Verwendung des Archiv-Features konfiguriert, damit diese Daten in Batches in den Blobspeicher geschrieben werden können. Mit der App „archivereader.py“ werden dieses Blobs dann gelesen, und es wird eine Anfügedatei pro Gerät erstellt. Anschließend werden die Daten in CSV-Dateien geschrieben.
+In diesem Beispiel wird das [Azure Python SDK](https://azure.microsoft.com/develop/python/) verwendet, um das Archive-Feature zu demonstrieren. Mit dem Programm „sender.py“ werden simulierte Telemetriedaten der Umgebung im JSON-Format an Event Hubs gesendet. Der Event Hub ist für die Verwendung des Archive-Features konfiguriert, damit diese Daten in Batches in den Blobspeicher geschrieben werden können. Mit der App „archivereader.py“ werden dieses Blobs dann gelesen, und es wird eine Anfügedatei pro Gerät erstellt. Anschließend werden die Daten in CSV-Dateien geschrieben.
 
 Ziele
 
 1. Erstellen eines Azure Blob Storage-Kontos und eines darin enthaltenen Blobcontainers mit dem Azure-Portal
 2. Erstellen eines Event Hub-Namespace mit dem Azure-Portal
-3. Erstellen eines Event Hub mit aktiviertem Archive-Feature mit dem Azure-Portal
+3. Erstellen eines Event Hubs mit aktiviertem Archive-Feature mit dem Azure-Portal
 4. Senden von Daten an den Event Hub mit einem Python-Skript
 5. Auslesen der Dateien aus dem Archiv und Verarbeiten mit einem anderen Python-Skript
 
@@ -38,7 +38,7 @@ Voraussetzungen
 
 - Python 2.7.x
 - Ein Azure-Abonnement
-- Ein aktiver [Event Hubs-Namespace und Event Hubs](event-hubs-create.md)
+- Ein aktiver [Event Hubs-Namespace und Event Hub](event-hubs-create.md)
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
