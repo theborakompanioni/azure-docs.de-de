@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 03/30/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 62586434f233b1d40b8a9efd539d1fcdca3bdec7
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: e0c999b2bf1dd38d8a0c99c6cdd4976cc896dd99
+ms.openlocfilehash: e9215bdd02c9d1b595f65997840926080d6d7d01
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -60,7 +60,15 @@ Unter [Verschieben von Daten zwischen lokalen Datenspeichern und Clouddatenspeic
 Sie können mithilfe des Datenverwaltungsgateways auch Daten von bzw. in unterstützte Datenspeicher verschieben, die auf virtuellen Azure IaaS-Computern gehostet werden. In diesem Fall können Sie das Datenverwaltungsgateway auf dem gleichen virtuellen Computer installieren, auf dem sich der Datenspeicher selbst befindet, oder auf einem separaten virtuellen Computer, der Zugriff auf den Datenspeicher hat.
 
 ## <a name="supported-data-stores-and-formats"></a>Unterstützte Datenspeicher und Formate
+Die Kopieraktivität in Data Factory kopiert die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher. Data Factory unterstützt die folgenden Datenspeicher. Daten aus beliebigen Quellen können in beliebige Senken geschrieben werden. Klicken Sie auf einen Datenspeicher, um zu erfahren, wie Daten in diesen/aus diesem Speicher kopiert werden.
+
+> [!NOTE] 
+> Wenn Sie Daten in einen/aus einem Datenspeicher verschieben müssen, der von der Kopieraktivität nicht unterstützt wird, verwenden Sie die **benutzerdefinierte Aktivität** in Data Factory mit Ihrer eigenen Logik zum Kopieren/Verschieben von Daten. Informationen zum Erstellen und Verwenden einer benutzerdefinierten Aktivität finden Sie unter [Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline](data-factory-use-custom-activities.md).
+
 [!INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]
+
+> [!NOTE]
+> Datenspeicher mit * können lokal oder in Azure IaaS verfügbar sein. Für ihre Verwendung müssen Sie das [Datenverwaltungsgateway](data-factory-data-management-gateway.md) auf einem lokalen oder einem Azure IaaS-Computer installieren.
 
 ### <a name="supported-file-formats"></a>Unterstützte Dateiformate
 Sie können mit der Kopieraktivität **Dateien unverändert zwischen zwei dateibasierten Datenspeichern kopieren** und den [Formatabschnitt](data-factory-create-datasets.md) in den Definitionen von Eingabe- und Ausgabedatasets überspringen. Die Daten werden effizient ohne jegliche Serialisierung oder Deserialisierung kopiert.
