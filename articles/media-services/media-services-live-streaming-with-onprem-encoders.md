@@ -12,12 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 04/12/2017
 ms.author: cenkd;juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 7d980e14776cade574fc9ef4e63aea5c91fb8fdf
-ms.openlocfilehash: a5867566afc80fe7ae57b5027b5578e3144f7f07
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
+ms.openlocfilehash: d6e3ea06106463367eb03498ef8d9bc47d83c694
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -35,11 +35,11 @@ In Azure Media Services stellt ein *Kanal* eine Pipeline zum Verarbeiten von Liv
 
 Ab Version Media Services 2.10 können Sie beim Erstellen eines Kanals angeben, wie der Kanal den Eingabedatenstrom empfangen soll. Sie können auch angeben, ob der Kanal den Live Encoding-Prozess für Ihren Datenstrom durchführen soll. Sie haben zwei Möglichkeiten:
 
-* **None** (Keine): Geben Sie diesen Wert an, wenn ein lokaler Liveencoder verwendet werden soll, von dem ein Mehrfachbitrate-Datenstrom (Passthrough-Datenstrom) ausgegeben wird. In diesem Fall wird der Eingabedatenstrom ohne Codierung an die Ausgabe geleitet. Dies ist das Verhalten eines Kanals für ältere Versionen als Version 2.10. Dieses Thema enthält Details zum Arbeiten mit Kanälen dieses Typs.
-* **Standard**: Wählen Sie diesen Wert, wenn Sie Media Services verwenden möchten, um einen Single-Bitrate-Livedatenstrom in einen Mehrfachbitrate-Datenstrom zu codieren. Beachten Sie, dass beim Belassen eines Live Encoding-Kanals im Status **Wird ausgeführt** Gebühren anfallen. Wir empfehlen Ihnen, die Ausführung der Kanäle sofort zu beenden, wenn das Livestreaming-Ereignis abgeschlossen ist, um das Anfallen zusätzlicher Stundengebühren zu vermeiden. Der Datenstrom wird für Kunden, die dies anfordern, von Media Services bereitgestellt.
+* **Pass-Through:** Geben Sie diesen Wert an, wenn ein lokaler Liveencoder verwendet werden soll, von dem ein Mehrfachbitraten-Datenstrom (Pass-Through-Datenstrom) ausgegeben wird. In diesem Fall wird der Eingabedatenstrom ohne Codierung an die Ausgabe geleitet. Dies ist das Verhalten eines Kanals für ältere Versionen als Version 2.10. Dieses Thema enthält Details zum Arbeiten mit Kanälen dieses Typs.
+* **Live Encoding:** Wählen Sie diesen Wert aus, wenn Sie Media Services verwenden möchten, um einen Einzelbitraten-Livedatenstrom in einen Mehrfachbitraten-Datenstrom zu codieren. Beachten Sie, dass beim Belassen eines Live Encoding-Kanals im Status **Wird ausgeführt** Gebühren anfallen. Wir empfehlen Ihnen, die Ausführung der Kanäle sofort zu beenden, wenn das Livestreaming-Ereignis abgeschlossen ist, um das Anfallen zusätzlicher Stundengebühren zu vermeiden. Der Datenstrom wird für Kunden, die dies anfordern, von Media Services bereitgestellt.
 
 > [!NOTE]
-> In diesem Thema werden die Attribute der Kanäle erläutert, die nicht zum Ausführen der Livecodierung aktiviert sind (Codierungstyp**None** ). Informationen zum Arbeiten mit Kanälen, die zum Ausführen der Livecodierung aktiviert sind, finden Sie unter [Arbeiten mit Kanälen, die zum Ausführen von Livecodierung mit Azure Media Services aktiviert wurden](media-services-manage-live-encoder-enabled-channels.md).
+> In diesem Thema werden die Attribute der Kanäle erläutert, die nicht zum Ausführen der Livecodierung aktiviert sind. Informationen zum Arbeiten mit Kanälen, die zum Ausführen der Livecodierung aktiviert sind, finden Sie unter [Arbeiten mit Kanälen, die zum Ausführen von Livecodierung mit Azure Media Services aktiviert wurden](media-services-manage-live-encoder-enabled-channels.md).
 >
 >
 
@@ -47,7 +47,7 @@ Im folgenden Diagramm ist ein Livestreaming-Workflow dargestellt, der über eine
 
 ![Liveworkflow][live-overview]
 
-## <a name="a-idscenarioacommon-live-streaming-scenario"></a><a id="scenario"></a>Allgemeines Livestreamingszenario
+## <a id="scenario"></a>Allgemeines Livestreamingszenario
 Die folgenden Schritte beschreiben die Aufgaben zum Erstellen von häufig verwendeten Livestreaminganwendungen.
 
 1. Schließen Sie eine Videokamera an einen Computer an. Starten und konfigurieren Sie einen lokalen Liveencoder, der einen RTMP- oder Fragmentiertes MP4-Datenstrom (Smooth Streaming) mit Mehrfachbitrate ausgibt. Weitere Informationen finden Sie unter [Microsoft Azure Media Services RTMP-Support und Liveencoder](http://go.microsoft.com/fwlink/?LinkId=532824).
@@ -79,9 +79,9 @@ Die folgenden Schritte beschreiben die Aufgaben zum Erstellen von häufig verwen
 
 10. Löschen Sie das Programm (und optional das Medienobjekt).     
 
-## <a name="a-idchanneladescription-of-a-channel-and-its-related-components"></a><a id="channel"></a>Beschreibung von Kanälen und zugehörigen Komponenten
-### <a name="a-idchannelinputachannel-input-ingest-configurations"></a><a id="channel_input"></a>Kanaleingangskonfigurationen (Erfassung)
-#### <a name="a-idingestprotocolsaingest-streaming-protocol"></a><a id="ingest_protocols"></a>Erfassungsstreamingprotokoll
+## <a id="channel"></a>Beschreibung von Kanälen und zugehörigen Komponenten
+### <a id="channel_input"></a>Kanaleingangskonfigurationen (Erfassung)
+#### <a id="ingest_protocols"></a>Erfassungsstreamingprotokoll
 Media Services unterstützt die Erfassung von Livefeeds, indem „Fragmentiertes MP4“ und „RTMP“ (jeweils mit Mehrfachbitrate) als Streamingprotokolle verwendet werden. Wenn das Erfassungs-Streamingprotokoll RTMP aktiviert ist, werden für den Kanal zwei Eingangsendpunkte für die Erfassung erstellt:
 
 * **Primäre URL**: Gibt die vollqualifizierte URL des primären RTMP-Erfassungsendpunkts für den Kanal an.
@@ -110,7 +110,7 @@ Sie können die Erfassungs-URLs beim Erstellen des Kanals erhalten. Der Kanal mu
 
 Sie können Livestreams vom Typ „Fragmentiertes MP4“ (Smooth Streaming) über eine SSL-Verbindung erfassen. Zur Erfassung über SSL stellen Sie sicher, dass die Erfassungs-URL auf HTTPS aktualisiert wurde. Derzeit kann RTMP nicht über SSL erfasst werden.
 
-#### <a name="a-idkeyframeintervalakeyframe-interval"></a><a id="keyframe_interval"></a>Keyframe-Intervall
+#### <a id="keyframe_interval"></a>Keyframe-Intervall
 Wenn Sie einen lokalen Liveencoder zum Erzeugen eines Datenstroms mit Mehrfachbitrate nutzen, gibt das Keyframe-Intervall die GOP-Dauer (Group of Pictures) wie von diesem externen Encoder verwendet an. Nachdem der Kanal diesen eingehenden Datenstrom erhalten hat, können Sie Ihren Livedatenstrom in einem der folgenden Formate für Clientwiedergabeanwendungen bereitstellen: Smooth Streaming, Dynamic Adaptive Streaming over HTTP (DASH) und HTTP Live Streaming (HLS). Beim Livestreaming wird HLS immer dynamisch verpackt. Standardmäßig berechnet Media Services das HLS-Segment-Paketerstellungsverhältnis (Fragmente pro Segment) basierend auf dem Keyframe-Intervall, das vom Liveencoder empfangen wird.
 
 Die folgende Tabelle zeigt, wie die Segmentdauer berechnet wird:
@@ -169,7 +169,7 @@ Zum Löschen von archivierten Inhalten beenden und löschen Sie das Programm und
 
 Auch nach dem Beenden und Löschen des Programms ist es für Benutzer möglich, Ihre archivierten Inhalte als Video on Demand zu streamen, bis Sie das Medienobjekt löschen. Wenn Sie die archivierten Inhalte beibehalten möchten, diese aber nicht für das Streaming verfügbar sein sollen, löschen Sie den Streaminglocator.
 
-## <a name="a-idstatesachannel-states-and-billing"></a><a id="states"></a>Kanalstatus und Abrechnung
+## <a id="states"></a>Kanalstatus und Abrechnung
 Mögliche Werte für den aktuellen Status eines Kanals sind:
 
 * **Beendet**: Dies ist der Ausgangsstatus des Kanals nach der Erstellung. In diesem Status können die Eigenschaften des Kanals aktualisiert werden. Ein Streaming ist aber nicht zulässig.
@@ -187,16 +187,16 @@ In der folgenden Tabelle ist die Zuordnung der Kanalstatus zu den Abrechnungsmod
 | **Wird beendet** |**Wird beendet** |Nein (Übergangsstatus) |
 | **Beendet** |**Beendet** |Nein |
 
-## <a name="a-idccandadsaclosed-captioning-and-ad-insertion"></a><a id="cc_and_ads"></a>Untertitel und Werbeeinblendungen
+## <a id="cc_and_ads"></a>Untertitel und Werbeeinblendungen
 Die folgende Tabelle enthält die unterstützten Standards für Untertitel und Werbeeinblendungen.
 
 | Standard | Hinweise |
 | --- | --- |
-| CEA-708 und EIA-608 (708/608) |CEA-708 und EIA&608; sind Untertitelstandards für die USA und Kanada.<p><p>Derzeit werden Untertitel nur unterstützt, wenn sie im codierten Eingabedatenstrom übertragen werden. Sie müssen einen Live-Media Encoder verwenden, mit dem Untertitel nach dem Standard 608 oder 708 in den codierten Datenstrom eingefügt werden können, der an Media Services gesendet wird. Media Services sendet die Inhalte mit eingefügten Untertiteln an Ihre Zuschauer. |
+| CEA-708 und EIA-608 (708/608) |CEA-708 und EIA 608 sind Untertitelstandards für die USA und Kanada.<p><p>Derzeit werden Untertitel nur unterstützt, wenn sie im codierten Eingabedatenstrom übertragen werden. Sie müssen einen Live-Media Encoder verwenden, mit dem Untertitel nach dem Standard 608 oder 708 in den codierten Datenstrom eingefügt werden können, der an Media Services gesendet wird. Media Services sendet die Inhalte mit eingefügten Untertiteln an Ihre Zuschauer. |
 | TTML in ISMT (Smooth Streaming-Texttracks) |Die dynamische Paketerstellung von Media Services ermöglicht Ihren Clients das Streamen von Inhalten in einem der folgenden Formate: DASH, HLS oder Smooth Streaming. Wenn Sie Fragmentiertes MP4 (Smooth Streaming) mit Untertiteln in ISMT (Smooth Streaming-Texttracks) erfassen, kann der Datenstrom aber nur an Smooth Streaming-Clients gesendet werden. |
 | SCTE-35 |SCTE-35 ist ein digitales Signalisierungssystem zum Einfügen von Werbeeinblendungen. Downstream-Empfänger verwenden das Signal zum Einfügen von Werbung in den Stream für die vorgesehene Zeit. SCTE-35 muss als Spur mit geringer Dichte in den Eingabestream gesendet werden.<p><p>Derzeit wird als Eingabestreamformat mit Werbesignalen nur Fragmentiertes MP4 (Smooth Streaming) unterstützt. Das einzige unterstützte Ausgabeformat ist ebenfalls Smooth Streaming. |
 
-## <a name="a-idconsiderationsaconsiderations"></a><a id="considerations"></a>Überlegungen
+## <a id="considerations"></a>Überlegungen
 Wenn Sie mit einem lokalen Liveencoder einen Datenstrom mit Mehrfachbitrate an einen Kanal senden, gelten folgende Einschränkungen:
 
 * Stellen Sie sicher, dass Sie ausreichend ungenutzte Internetbandbreite zum Senden an die Erfassungspunkte haben.

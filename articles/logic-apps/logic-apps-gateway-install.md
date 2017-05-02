@@ -15,25 +15,28 @@ ms.workload: integration
 ms.date: 07/05/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: 23b806556667539156ee399e90c7bd4af808804f
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
+ms.openlocfilehash: b9971117d5f61669a5161a28c96b11b2fd600b61
+ms.lasthandoff: 04/14/2017
 
 
 ---
 # <a name="install-an-on-premises-data-gateway-for-azure-logic-apps"></a>Installieren eines lokalen Datengateways für Azure Logic Apps
 
-Das lokale Datengateway unterstützt die folgenden Datenquellenverbindungen:
+Das lokale Datengateway unterstützt die folgenden Verbindungen:
 
 *   BizTalk Server
-*    DB2  
+*   DB2  
 *   Dateisystem
 *   Informix
 *   MQ
-*    Oracle-Datenbank 
+*   MySQL
+*   Oracle-Datenbank 
 *   SAP-Anwendungsserver 
 *   SAP-Nachrichtenserver
-*    SQL Server
+*   SharePoint nur für HTTP, nicht für HTTPS
+*   SQL Server
+*   Teradata
 
 Weitere Informationen zu diesen Verbindungen finden Sie unter [Connectors für Azure Logic Apps](https://docs.microsoft.com/azure/connectors/apis-list).
 
@@ -61,7 +64,7 @@ Sie können das Gateway nicht auf einem Domänencontroller installieren.
 
 * Sie können nur eine Geschäfts-, Schul- oder Uni-E-Mail-Adresse in Azure verwenden, um das lokale Datengateway Ihrem Konto (auf Azure Active Directory-Basis) zuzuordnen.
 
-    Bei Verwendung eines Microsoft-Kontos, z.B. @outlook.com, können Sie mit Ihrem Azure-Konto eine   [Geschäfts-, Schul- oder Uni-E-Mail-Adresse erstellen](../virtual-machines/virtual-machines-windows-create-aad-work-id.md#locate-your-default-directory-in-the-azure-classic-portal).
+    Bei Verwendung eines Microsoft-Kontos, z.B. @outlook.com, können Sie mit Ihrem Azure-Konto eine   [Geschäfts-, Schul- oder Uni-E-Mail-Adresse erstellen](../virtual-machines/windows/create-aad-work-id.md#locate-your-default-directory-in-the-azure-classic-portal).
 
 ### <a name="install-the-gateway"></a>Installieren des Gateways
 

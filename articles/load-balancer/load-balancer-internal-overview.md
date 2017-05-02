@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 10/24/2016
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 47869775365ea517b94cbd5a2eb83c93f4d2b4df
-ms.openlocfilehash: 17b7337ddcfa2671bb3a035de8462e31bfa0c85f
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
+ms.openlocfilehash: d324aaf8ec2c8766d5cf11452158d14c19cba4d9
+ms.lasthandoff: 04/13/2017
 
 ---
 
@@ -72,6 +72,10 @@ Ein weiteres Szenario für Branchenanwendungen ist eine Site-to-Site-VPN-Verbind
 ![Interner Lastenausgleich mit Standort-zu-Standort-VPN](./media/load-balancer-internal-overview/IC744150.png)
 
 Abbildung 4: An den ILB-Endpunkt weitergeleiteter lokaler Netzwerkdatenverkehr
+
+## <a name="limitations"></a>Einschränkungen
+
+Konfigurationen des internen Load Balancers unterstützen SNAT nicht. Im Rahmen dieses Dokuments bezieht sich SNAT auf die Portmaskierung bei der Übersetzung von Quellnetzwerkadressen.  Dies gilt für Szenarien, in denen ein virtueller Computer in einem Lastenausgleichspool mit der zugehörigen Front-End-IP-Adresse des internen Load Balancers kommunizieren muss. Dieses Szenario wird für den internen Load Balancer nicht unterstützt. Es treten Verbindungsfehler auf, wenn ein Lastenausgleich für den Flow auf dem virtuellen Computer erfolgt, von dem der Flow stammt. Sie müssen für solche Szenarien einen Load Balancer im Proxystil verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

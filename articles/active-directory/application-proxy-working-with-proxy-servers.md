@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 01/12/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 07adf751001a49e0365dde7cb8d7d2317a6b8134
-ms.openlocfilehash: d79c8418769656ecfd35a71a450176bd27427f68
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: 64d06a67ee5480e6bdbac2f6745ea32faa2cf003
+ms.lasthandoff: 04/17/2017
 
 
 ---
@@ -29,7 +29,7 @@ Zuerst sehen wir uns die folgenden wichtigsten Bereitstellungsszenarien an:
 * Konfigurieren von Connectors zum Umgehen von lokalen Proxys für ausgehenden Datenverkehr
 * Konfigurieren von Connectors zum Verwenden eines Proxys für ausgehenden Datenverkehr für den Zugriff auf den Azure AD-Anwendungsproxy
 
-Weitere Informationen zur Funktionsweise von Connectors finden Sie unter [Bereitstellen von sicherem Remotezugriff auf lokale Anwendungen](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-application-proxy-get-started).
+Weitere Informationen zur Funktionsweise von Connectors finden Sie unter [Bereitstellen von sicherem Remotezugriff auf lokale Anwendungen](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-get-started).
 
 ## <a name="configure-your-connectors"></a>Konfigurieren von Connectors
 
@@ -73,7 +73,7 @@ Bearbeiten Sie zum Deaktivieren der Proxynutzung für ausgehenden Datenverkehr f
   </appSettings>
 </configuration>
 ```
-Um zu erreichen, dass der Proxy auch vom Connectorupdatedienst umgangen wird, nehmen Sie eine ähnliche Änderung an der Datei „ApplicationProxyConnectorUpdaterService.exe.config“ unter „C:\Programme\Microsoft AAD App Proxy Connector Updater\ApplicationProxyConnectorUpdaterService.exe.config“ vor.
+Um zu erreichen, dass der Proxy auch vom Connectorupdatedienst umgangen wird, nehmen Sie eine ähnliche Änderung an der Datei „ApplicationProxyConnectorUpdaterService.exe.config“ unter „C:\Programme\Microsoft AAD App Proxy Connector Updater“ vor.
 
 Achten Sie darauf, dass Sie Kopien der Originaldateien erstellen, falls Sie auf die CONFIG-Standarddateien zurückgreifen müssen.
 
@@ -172,7 +172,7 @@ Sie sollten jetzt verfolgen können, dass der gesamte Datenverkehr über den Pro
 
 Die beste Möglichkeit zur Identifizierung und Behebung von Problemen mit der Connectorkonnektivität ist die Erstellung einer Netzwerkerfassung für den Connectordienst, während dieser gestartet wird. Da dies eine anspruchsvolle Aufgabe sein kann, erhalten Sie hier einige kurze Tipps zum Erfassen und Filtern von Netzwerkablaufverfolgungen.
 
-Sie können ein Überwachungstool Ihrer Wahl verwenden. Für diesen Artikel haben wir Microsoft Network Monitor 3.4 genutzt. Sie können es von der [Microsoft-Website](https://www.microsoft.com/en-us/download/details.aspx?id=4865) herunterladen.
+Sie können ein Überwachungstool Ihrer Wahl verwenden. Für diesen Artikel haben wir Microsoft Network Monitor 3.4 genutzt. Sie können es von der [Microsoft-Website](https://www.microsoft.com/download/details.aspx?id=4865) herunterladen.
 
 Die Beispiele und Filter in den folgenden Abschnitten gelten für den Netzwerkmonitor, aber die Vorgehensweise kann auf alle Analysetools angewendet werden.
 
@@ -240,7 +240,7 @@ Die Analyse per Netzwerkablaufverfolgung ist nicht für alle Fälle geeignet. Es
 
 Falls Sie weiterhin mit Problemen in Bezug auf Connectorverbindungen zu kämpfen haben, ist es ratsam, ein Ticket für unser Supportteam zu erstellen. Das Team kann Ihnen dann bei der weiteren Problembehandlung behilflich sein.
 
-Informationen zum Beheben von Fehlern mit dem Anwendungsproxyconnector finden Sie unter [Problembehandlung von Anwendungsproxys](https://azure.microsoft.com/en-us/documentation/articles/active-directory-application-proxy-troubleshoot).
+Informationen zum Beheben von Fehlern mit dem Anwendungsproxyconnector finden Sie unter [Problembehandlung von Anwendungsproxys](https://azure.microsoft.com/documentation/articles/active-directory-application-proxy-troubleshoot).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

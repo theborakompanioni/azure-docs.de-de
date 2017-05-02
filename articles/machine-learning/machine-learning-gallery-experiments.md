@@ -12,192 +12,182 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/31/2017
+ms.date: 04/26/2017
 ms.author: roopalik;garye
 translationtype: Human Translation
-ms.sourcegitcommit: 262ee4f092efa11150de61168e6b03c0477f0543
-ms.openlocfilehash: 66b61e4619518619aac644f6833c597cb9a7408e
-ms.lasthandoff: 01/10/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: a23c6419e7c4f478bfb1265a8e05c88c0b6af52b
+ms.lasthandoff: 04/15/2017
 
 
 ---
-# <a name="discover-experiments-in-the-cortana-intelligence-gallery"></a>Entdecken von Experimenten im Cortana Intelligence-Katalog
+# <a name="discover-experiments-in-cortana-intelligence-gallery"></a>Entdecken von Experimenten im Cortana Intelligence-Katalog
 [!INCLUDE [machine-learning-gallery-item-selector](../../includes/machine-learning-gallery-item-selector.md)]
 
 ## <a name="experiments-for-machine-learning-studio"></a>Experimente für Machine Learning Studio
-Der Katalog enthält eine Vielzahl von **[Experimenten](https://gallery.cortanaintelligence.com/experiments)**, die in [Azure Machine Learning Studio](https://studio.azureml.net) entwickelt wurden. Diese reichen von kurzen Machbarkeitsexperimenten, bei denen ein bestimmtes Machine Learning-Verfahren veranschaulicht wird, bis zu vollständig entwickelten Lösungen für komplexe Machine Learning-Probleme.
+Der Katalog enthält eine Vielzahl von [Experimenten](https://gallery.cortanaintelligence.com/experiments), die in [Azure Machine Learning Studio](https://studio.azureml.net) entwickelt wurden. Diese Experimente reichen von kurzen Machbarkeitsexperimenten, bei denen ein bestimmtes Verfahren mit maschinellem Lernen veranschaulicht wird, bis zu vollständig entwickelten Lösungen für komplexe Probleme des maschinellen Lernens.
 
 > [!NOTE]
-> Ein ***Experiment*** ist eine Canvas in Azure Machine Learning Studio, mit der Sie ein Predictive Analysis-Modell erstellen können. Hierzu verknüpfen Sie Daten mit verschiedenen Analysemodulen. Sie können unterschiedliche Ideen ausprobieren, Testläufe durchführen und Ihr Modell unter Azure schließlich als Webdienst veröffentlichen. Ein Beispiel für die Erstellung eines einfachen Experiments finden Sie unter [Lernprogramm für maschinelles Lernen: Erstellen Ihres ersten Experiments im Azure Machine Learning Studio](machine-learning-create-experiment.md). Eine vollständigere exemplarische Vorgehensweise zum Erstellen einer Predictive Analytics-Lösung finden Sie unter [Exemplarische Vorgehensweise: Entwickeln einer Lösung zur Vorhersageanalyse für die Kreditrisikobewertung in Azure Machine Learning](machine-learning-walkthrough-develop-predictive-solution.md).
-> 
-> 
+> Ein ***Experiment*** ist eine Canvas in Machine Learning Studio, mit der Sie ein Predictive Analysis-Modell erstellen können. Hierzu verknüpfen Sie Daten mit verschiedenen Analysemodulen. Sie können unterschiedliche Ideen ausprobieren, Testläufe durchführen und Ihr Modell unter Azure schließlich als Webdienst bereitstellen. Ein Beispiel für die Erstellung eines grundlegenden Experiments finden Sie unter [Tutorial für maschinelles Lernen: Erstellen des ersten Experiments in Azure Machine Learning Studio](machine-learning-create-experiment.md). Eine ausführlichere exemplarische Vorgehensweise zum Erstellen einer Predictive Analytics-Lösung finden Sie unter [Exemplarische Vorgehensweise: Entwickeln einer Lösung zur Vorhersageanalyse für die Kreditrisikobewertung in Azure Machine Learning](machine-learning-walkthrough-develop-predictive-solution.md).
+>
+>
 
 ## <a name="discover"></a>Entdecken
-  Öffnen Sie den [Katalog](http://gallery.cortanaintelligence.com), und klicken Sie oben auf der Katalogstartseite auf **Experimente**
-, um Experimente im Katalog zu suchen.
+Öffnen Sie den [Katalog](http://gallery.cortanaintelligence.com), und klicken Sie oben auf der Katalogstartseite auf **Experimente**, um die Experimente im Katalog zu durchsuchen.
 
- Auf der Seite **[Experimente](https://gallery.cortanaintelligence.com/experiments)**
- finden Sie eine Liste der zuletzt hinzugefügten und beliebtesten Experimente.
-Klicken Sie auf **Alle anzeigen**, um alle Experimente anzuzeigen.
-Auf dieser Seite können Sie alle Experimente im Katalog durchsuchen. Sie können auch suchen, indem Sie links auf der Seite Filterkriterien auswählen und oben Suchbegriffe eingeben.
+Auf der Seite **[Experimente](https://gallery.cortanaintelligence.com/experiments)** finden Sie eine Liste der zuletzt hinzugefügten und beliebtesten Experimente. Um alle Experimente zu sehen, wählen Sie die Schaltfläche **Alle anzeigen** aus. Wählen Sie zum Suchen nach einem bestimmten Experiment **Alle anzeigen** und dann die Filterkriterien aus. Sie können auch Suchbegriffe im Feld **Suchen** im oberen Bereich der Seite „Katalog“ eingeben.
 
- Klicken Sie auf ein beliebiges Experiment, um die Detailseite des Experiments zu öffnen und Informationen über die Funktionsweise des Experiments zu lesen. Auf dieser Seite können Sie Kommentare hinzufügen, Feedback geben oder Fragen im Kommentarbereich stellen. Außerdem können Sie diese Seite auch mit Freunden oder Kollegen teilen, indem Sie die entsprechenden Funktionen von LinkedIn oder Twitter verwenden. Sie können auch per E-Mail einen Link zum Experiment senden, um andere Benutzer zum Besuch der Seite einzuladen.
+Sie können weitere Informationen zu einem Experiment auf der Detailseite des Experiments abrufen. Um die Detailseite eines Experiments zu öffnen, wählen Sie das Experiment aus. Auf der Detailseite eines Experiments können Sie im Abschnitt **Kommentare** kommentieren, Feedback abgeben oder Fragen zum Experiment stellen. Sie können das Experiment sogar für Ihre Kontakte oder Kollegen auf Twitter oder LinkedIn freigeben. Sie können auch einen Link zur Detailseite eines Experiments per E-Mail senden, um andere Benutzer zum Besuch der Seite einzuladen.
 
 ![Teilen Sie dieses Element mit Freunden](media/machine-learning-gallery-how-to-use-contribute-publish/share-links.png)
 
 ![Fügen Sie Ihre eigenen Kommentare hinzu](media/machine-learning-gallery-how-to-use-contribute-publish/comments.png)
 
 ## <a name="download"></a>Download
-Sie können eine Kopie jedes Experiments aus dem Katalog in Ihren Studio-Arbeitsbereich herunterladen und dann die Kopie ändern, um Ihre eigenen Lösungen zu erstellen.
-Es gibt zwei Möglichkeiten, eine Kopie des Experiments zu erhalten:
+Sie können eine Kopie jedes Experiments aus dem Katalog in den Machine Learning Studio-Arbeitsbereich herunterladen. Anschließend können Sie die Kopie bearbeiten, um Ihre eigenen Lösungen zu erstellen.
 
-* **Aus dem Katalog** – Wenn Sie ein interessantes Experiment im Katalog finden, können Sie problemlos eine Kopie herunterladen und im Machine Learning Studio-Arbeitsbereich öffnen.
-* **Aus Machine Learning Studio** – Sie können in Studio jedes beliebige Experiment im Katalog als Vorlage verwenden, um ein neues Experiment zu erstellen.
+Der Cortana Intelligence-Katalog bietet die folgenden zwei Möglichkeiten, eine Kopie eines Experiments zu importieren:
+
+* **Aus dem Katalog**. Wenn Sie ein interessantes Experiment im Katalog finden, können Sie eine Kopie herunterladen und im Machine Learning Studio-Arbeitsbereich öffnen.
+* **Aus Machine Learning Studio**. Sie können in Machine Learning Studio jedes beliebige Experiment im Katalog als Vorlage verwenden, um ein neues Experiment zu erstellen.
 
 ### <a name="from-the-gallery"></a>Aus dem Katalog
-So laden Sie eine Kopie eines Experiments aus dem Katalog herunter
 
-1. Öffnen Sie die Detailseite des Experiments im Katalog
-2. Klicken Sie auf **In Studio öffnen**
-   
+1. Öffnen Sie die Detailseite des Experiments im Katalog.
+2. Wählen Sie **In Studio öffnen** aus.
+
     ![Öffnen Sie das Experiment aus dem Katalog](media/machine-learning-gallery-experiments/open-experiment-from-gallery.png)
 
-Wenn Sie auf **In Studio öffnen** klicken, wird das Experiment in den Machine Learning Studio-Arbeitsbereich geladen und geöffnet (sofern Sie noch nicht bei Studio angemeldet sind, werden Sie aufgefordert, sich mit Ihrem Microsoft-Konto anzumelden, bevor das Experiment in Ihren Arbeitsbereich kopiert wird).
+Durch die Auswahl von **In Studio öffnen** wird das Experiment in Ihrem Machine Learning Studio-Arbeitsbereich geöffnet. (Wenn Sie nicht bereits bei Machine Learning Studio angemeldet sind, werden Sie zur erstmaligen Anmeldung mit Ihrem Microsoft-Konto aufgefordert.)
 
 ### <a name="from-within-machine-learning-studio"></a>Aus Machine Learning Studio
-Sie können die gleichen Beispielexperimente auch öffnen, während Sie in Machine Learning Studio arbeiten:
 
-1. Klicken Sie in Machine Learning Studio auf **+NEU**
-2. Wählen Sie **Experiment** aus – Sie können eine Wahl in einer Liste von Katalogexperimenten von Microsoft treffen, oder Sie suchen ein bestimmtes Experiment mithilfe des Suchfelds
-3. Zeigen Sie mit der Maus auf ein Experiment, und wählen Sie **In Studio öffnen** – Das Experiment wird in Ihren Arbeitsbereich kopiert und geöffnet (um Informationen über das Experiment zu sehen, wählen Sie **View in Gallery** (Im Katalog anzeigen), um zu der Detailseite für das Experiment im Katalog zu gelangen)
-   
+1. Wählen Sie in Machine Learning Studio **NEU** aus.
+2. Wählen Sie **Experiment** aus. Sie können aus einer Liste von Katalogexperimenten auswählen oder mithilfe des Felds **Suchen** nach einem bestimmten Experiment suchen.
+3. Zeigen Sie mit dem Mauszeiger auf ein Experiment, und wählen Sie dann **In Studio öffnen** aus. (Wählen Sie zum Anzeigen von Informationen über das Experiment **Im Katalog anzeigen** aus. Dadurch wird die Detailseite des Experiments im Katalog geöffnet.)
+
     ![Öffnen Sie das Katalogexperiment in Machine Learning Studio](media/machine-learning-gallery-experiments/open-experiment-from-studio.png)
 
-Sie können das Experiment nun wie alle anderen in Machine Learning erstellten Experimente anpassen, wiederholen und bereitstellen.
+Sie können das Experiment nun wie alle anderen in Machine Learning Studio erstellten Experimente anpassen, wiederholen und bereitstellen.
 
 ![In Studio geöffnetes Experiment](media/machine-learning-gallery-experiments/experiment-open-in-studio.png)
 
 ## <a name="contribute"></a>Mitwirken
-Wenn Sie sich am Katalog anmelden, werden Sie Mitglied der Katalog-Community. Sie können dann eigene Experimente bereitstellen, damit andere Benutzer von Ihren Lösungen profitieren können.
+Wenn Sie sich beim Katalog anmelden, werden Sie Mitglied der Katalog-Community. Als Mitglied der Community können Sie eigene Experimente hinzufügen, damit andere Benutzer von Ihren Lösungen profitieren können.
 
 ### <a name="publish-your-experiment-to-the-gallery"></a>Veröffentlichen eines Experiments im Katalog
-Führen Sie die folgenden Schritte aus, um mit einem Experiment zum Cortana Intelligence-Katalog beizutragen:
 
-1. Melden Sie sich mit Ihrem Microsoft-Konto an Machine Learning Studio an.
+1. Melden Sie sich mit Ihrem Microsoft-Konto bei Machine Learning Studio an.
 2. Erstellen Sie Ihr Experiment, und führen Sie es aus.
-3. Wenn Sie bereit zum Veröffentlichen des Experiments im Katalog sind, klicken Sie unterhalb der Experimentcanvas auf **Im Katalog veröffentlichen**.
-   
-    ![Klicken Sie auf „Im Katalog veröffentlichen“](media/machine-learning-gallery-experiments/publish-experiment-to-gallery.png)
-4. Füllen Sie die Felder für den Titel und die Tags aus. Denken Sie an eine gute Beschreibung, und heben Sie die verwendeten Verfahren oder das gelöste reale Problem hervor, z.B. „Binäre Klassifizierung: Twitter-Stimmungsanalyse“.
-   
-    ![Ausfüllen der Felder für Titel und Tags beim Veröffentlichen](media/machine-learning-gallery-experiments/experiment-description.png)
-5. Schreiben Sie eine Zusammenfassung Ihres Inhalts. Beschreiben Sie kurz das gelöste Problem und Ihre Herangehensweise.
-6. Nutzen Sie das Feld für die ausführliche Beschreibung, um die einzelnen Teile des Experiments aufzuführen. Hilfreiche Elemente:
-   
+3. Wenn Sie bereit zum Veröffentlichen des Experiments im Katalog sind, wählen Sie in der Aktionsliste unterhalb der Experimentcanvas **Im Katalog veröffentlichen** aus.
+
+    ![Wählen Sie „Im Katalog veröffentlichen“ aus](media/machine-learning-gallery-experiments/publish-experiment-to-gallery.png)
+4. Geben Sie auf der Seite **Experiment Description** (Beschreibung des Experiments) einen Titel und Tags ein. Wählen Sie einen beschreibenden Titel und Tags aus. Heben Sie die verwendeten Techniken oder das Problem hervor, das Sie lösen. Ein Beispiel für einen beschreibenden Titel eines Experiment ist „Binäre Klassifizierung: Twitter-Stimmungsanalyse“.
+
+    ![Eingeben von Tags und Titel für die Veröffentlichung](media/machine-learning-gallery-experiments/experiment-description.png)
+5. Geben Sie im Feld **ZUSAMMENFASSUNG** eine Zusammenfassung Ihres Experiments ein. Beschreiben Sie kurz das durch das Experiment gelöste Problem und Ihre Herangehensweise.
+6. Beschreiben Sie im Feld **AUSFÜHRLICHE BESCHREIBUNG** die Schritte der einzelnen Abschnitte des Experiments. Hilfreiche Elemente:
    * Screenshot des Experimentgraphen
    * Datenquellen und Erklärung
    * Datenverarbeitung
    * Featureentwicklung
    * Modellbeschreibung
    * Ergebnisse und Evaluierung der Modellleistung
-     </br>
-     </br>
-     Sie können bei Bedarf Markdown für die Formatierung verwenden. Klicken Sie auf das Symbol **Vorschau**, um die Darstellung nach der Veröffentlichung zu überprüfen.
-     </br>
-     ![Klicken Sie auf „Vorschau“, um zu sehen, wie der Text dargestellt wird](media/machine-learning-gallery-experiments/preview-markdown-text.png)
-     
-     <!-- -->
-     > [!TIP]
-     > Die Felder für die Markdownbearbeitung und die Vorschau sind relativ klein. Es wird empfohlen, die Dokumentation in einem Markdown-Editor zu schreiben und das fertige Dokument in das Textfeld einzufügen.  Nachdem Sie das Experiment veröffentlicht haben, können Sie im Markdown webbasierte Standardtools zum Bearbeiten und für die Vorschau verwenden, um die erforderlichen Optimierungen und Korrekturen vorzunehmen.
-     > 
-     > 
-7. Laden Sie ein Miniaturbild für Ihr Katalogelement hoch. Es wird oben auf der Elementseite und auf der Elementkachel beim Durchsuchen des Katalogs angezeigt. Wählen Sie ein Bild von Ihrem Computer oder eines der vorhandenen Bilder aus.
+
+   Sie können Markdown für die Formatierung der Beschreibung verwenden. Um vor der Veröffentlichung eine Vorschau der Einträge auf der Beschreibungsseite des Experiments anzuzeigen, wählen Sie **Vorschau** aus.
+
+   ![Wählen Sie „Vorschau“ aus, um zu sehen, wie der Text dargestellt wird](media/machine-learning-gallery-experiments/preview-markdown-text.png)
+
+   > [!TIP]
+   > Die Textfelder für die Markdownbearbeitung und die Vorschau sind klein. Es wird empfohlen, die Dokumentation zum Experiment in einem Markdown-Editor zu schreiben und dann das fertige Dokument zu kopieren und in das Textfeld im Katalog einzufügen. Nachdem Sie Ihr Experiment veröffentlicht haben, können Sie Korrekturen mithilfe von Standardwebtools vornehmen, die Markdown für Bearbeitung und Vorschau verwenden.
+
+7. Wählen Sie auf der Seite **Bildauswahl** ein Miniaturbild für Ihr Experiment aus. Die Miniaturansicht wird oben auf der Detailseite des Experiments und in dessen Kachel angezeigt. Andere Benutzer sehen die Miniaturansicht, wenn sie den Katalog durchsuchen. Sie können Bilder von Ihrem Computer hochladen oder ein vorgefertigtes Bild aus dem Katalog auswählen.
     </br>
     ![Hochladen oder Auswählen eines Bilds für den Katalog](media/machine-learning-gallery-experiments/select-gallery-image.png)
-8. Geben Sie an, ob Sie Ihren Inhalt öffentlich oder nur für Benutzer bereitstellen möchten, die über den Link verfügen.
-   
-    ![Geben Sie an, ob öffentlich oder als nicht aufgelistet veröffentlicht werden soll](media/machine-learning-gallery-experiments/choose-public-or-unlisted.png)
-   
-    <!-- -->
-   
-   > [!TIP]
-   > Wenn Sie sicherstellen möchten, dass Ihre Dokumentation vor der Veröffentlichung wie gewünscht aussieht, können Sie die Veröffentlichung als „Nicht aufgeführt“ vornehmen und auf der Elementseite dann zu „Öffentlich“ wechseln.
-   > 
-   > 
-9. Klicken Sie auf das Häkchen **OK**, um das Experiment im Katalog zu veröffentlichen.
-   
-    ![Klicken Sie auf das Häkchen OK, um das Experiment zu veröffentlichen](media/machine-learning-gallery-experiments/ok-checkmark.png)
+8. Auf der Seite **Einstellungen** wählen Sie unter **Sichtbarkeit** aus, ob Sie Ihre Inhalte zur öffentlichen Verfügbarkeit veröffentlichen möchten (**Öffentlich**) oder nur für Personen, die über einen Link zur Seite verfügen (**Nicht aufgeführt**).
 
-Weitere Details und Tipps zur Erstellung eines qualitativ hochwertigen Katalogbeitrags finden Sie unten im Abschnitt **Vorschläge für die Veröffentlichung und qualitativ hochwertige Dokumentation**.
+    ![Geben Sie an, ob öffentlich oder als nicht aufgelistet veröffentlicht werden soll](media/machine-learning-gallery-experiments/choose-public-or-unlisted.png)
+
+    <!-- -->
+
+   > [!TIP]
+   > Wenn Sie sicherstellen möchten, dass Ihre Dokumentation fehlerfrei ist, bevor Sie sie öffentlich freigeben, können Sie das Experiment als **Nicht aufgeführt** veröffentlichen. Sie können die Sichtbarkeit später auf der Detailseite des Experiments in **Öffentlich** ändern.
+   >
+   >
+9. Klicken Sie auf das Kontrollkästchen **OK**, um das Experiment im Katalog zu veröffentlichen.
+
+    ![Klicken auf das Kontrollkästchen „OK“, um das Experiment zu veröffentlichen](media/machine-learning-gallery-experiments/ok-checkmark.png)
+
+Hinweise dazu, wie Sie ein qualitativ hochwertiges Katalogexperiment veröffentlichen, finden Sie unter [Tipps zur Dokumentation und Veröffentlichung Ihres Experiments](#tips-for-documenting-and-publishing-your-experiment).
 
 Das ist schon alles. Sie sind fertig.
 
-Sie können Ihr Experiment jetzt im Katalog anzeigen und den Link für andere Personen bereitstellen. Wenn Sie die öffentliche Bereitstellung gewählt haben, wird das Experiment im Katalog in den Browse- und Suchergebnissen angezeigt. Sie können die Dokumentation auch jederzeit auf der Elementseite bearbeiten, wenn Sie angemeldet sind.
+Sie können Ihr Experiment jetzt im Katalog anzeigen und den Link für andere Personen bereitstellen. Wenn Sie Ihr Experiment mit der Sichtbarkeitseinstellung **Öffentlich** veröffentlicht haben, wird das Experiment in den Suchergebnissen im Katalog angezeigt. Sie können die Dokumentation Ihres Experiments jederzeit auf der Detailseite des Experiments bearbeiten, wenn Sie am Katalog angemeldet sind.
 
-Um eine Liste Ihrer Beiträge anzuzeigen, klicken Sie auf das Bild in der Ecke oben rechts einer beliebigen Katalogseite und dann auf Ihren Namen, um die Kontoseite zu öffnen.
+Um die Liste Ihrer Beiträge anzuzeigen, wählen Sie Ihr Bild oben rechts auf einer beliebigen Katalogseite aus. Wählen Sie dann Ihren Namen aus, um die Seite des Kontos zu öffnen.
 
-![Klicken Sie auf den Namen Ihres Kontos](media/machine-learning-gallery-experiments/click-account-name.png)
+![Wählen Sie den Namen Ihres Kontos aus](media/machine-learning-gallery-experiments/click-account-name.png)
 
 ### <a name="update-your-experiment"></a>Aktualisieren Sie Ihr Experiment
-Wenn Sie Änderungen am Workflow (Module, Parameter usw.) in einem Experiment vornehmen müssen, das Sie im Katalog veröffentlicht haben, wechseln Sie zurück zum Experiment in Machine Learning Studio, nehmen Sie die Änderungen vor, und veröffentlichen Sie es erneut. Ihre vorhandenen veröffentlichten Experimente werden mit den Änderungen aktualisiert.
+Sie können bei Bedarf Änderungen am Workflow (Module, Parameter usw.) eines Experiments vornehmen, das Sie im Katalog veröffentlicht haben. Nehmen Sie in Machine Learning Studio die gewünschten Änderungen am Experiment vor, und veröffentlichen Sie es dann erneut. Das veröffentlichte Experiment wird mit den Änderungen aktualisiert.
 
-Wenn Sie lediglich die folgenden Informationen für das Experiment ändern oder das Experiment aus dem Katalog zu löschen müssen, können Sie diese Änderungen im Katalog vornehmen:
+Sie können die folgenden Informationen Ihres Experiments direkt im Katalog ändern:
 
 * Experimentname
-* Zusammenfassung oder Beschreibungstext
-* Angegebene Tags
-* Verwendetes Bild
-* Sichtbarkeitseinstellung („Öffentlich“ oder „Nicht aufgeführt“)
-* Experiment aus dem Katalog löschen
+* Zusammenfassung oder Beschreibung
+* Tags
+* Image
+* Sichtbarkeitseinstellung (**Öffentlich** oder **Nicht aufgeführt**)
 
-Diese Änderungen können im Katalog über die Detailseite des Experiments oder Ihre Profilseite vorgenommen werden.
+Sie können das Experiment auch aus dem Katalog löschen.
 
-#### <a name="from-your-experiments-details-page"></a>Über die Detailseite des Experiments
-Klicken Sie auf der Detailseite des Experiments auf „Bearbeiten“, um die Details für das Experiment zu ändern.
+Sie können diese Änderungen über die Detailseite des Experiments oder Ihre Profilseite im Katalog vornehmen oder es dort löschen.
 
-![Klicken Sie auf „Bearbeiten“, um das Experiment zu bearbeiten](media/machine-learning-gallery-experiments/edit-button.png)
 
-Auf der Detailseite wird der Bearbeitungsmodus aktiviert. Sie können auf „Bearbeiten“ neben dem Namen des Experiments, neben Zusammenfassung, neben Tags usw. klicken, um sie zu ändern. Wenn Sie die Änderungen vorgenommen haben, klicken Sie auf „Fertig“.
+#### <a name="from-the-experiment-details-page"></a>Detailseite des Experiments
+Wählen Sie auf der Detailseite des Experiments **Bearbeiten** aus, um die Details für das Experiment zu ändern.
 
-![Klicken Sie auf „Bearbeiten“, um Details zu bearbeiten, und klicken Sie auf „Fertig“, wenn Sie die Bearbeitung abgeschlossen haben](media/machine-learning-gallery-experiments/edit-details-page.png)
+![Auswählen von „Bearbeiten“, um das Experiment zu bearbeiten](media/machine-learning-gallery-experiments/edit-button.png)
 
-Sie können auch das Symbol „Einstellungen“ auswählen, um die Sichtbarkeit des Experiments (öffentlich oder nicht aufgeführt) zu ändern, oder Sie können das Experiment aus dem Katalog löschen.
+Die Detailseite wechselt in den Bearbeitungsmodus. Um Änderungen vorzunehmen, wählen Sie neben dem Namen, der Zusammenfassung oder den Tags des Experiments **Bearbeiten** aus. Wenn Sie alle gewünschten Änderungen vorgenommen haben, klicken Sie auf **Fertig**.
 
-![Klicken Sie auf Einstellungen, um die Sichtbarkeit zu ändern oder das Experiment zu löschen](media/machine-learning-gallery-experiments/settings-button.png)
+![Wählen Sie „Bearbeiten“ aus, um Details zu bearbeiten, und wählen Sie „Fertig“, wenn Sie die Bearbeitung abgeschlossen haben](media/machine-learning-gallery-experiments/edit-details-page.png)
+
+Um die Sichtbarkeitseinstellungen des Experiments (**Öffentlich** oder **Nicht aufgeführt**) zu ändern oder um das Experiment aus dem Katalog zu löschen, wählen Sie das Symbol **Einstellungen** aus.
+
+![Auswählen von „Einstellungen“, um die Sichtbarkeit zu ändern oder das Experiment zu löschen](media/machine-learning-gallery-experiments/settings-button.png)
 
 #### <a name="from-your-profile-page"></a>Über Ihre Profilseite
-Klicken Sie auf Ihrer Profilseite auf den Pfeil nach unten auf dem Experiment, und wählen Sie „Bearbeiten“ aus. Daraufhin gelangen Sie zur Detailseite des Experiments im Bearbeitungsmodus. Wenn Sie die Änderungen vorgenommen haben, klicken Sie auf „Fertig“.
+Wählen Sie auf Ihrer Profilseite den Pfeil nach unten für das Experiment aus, und wählen Sie dann **Bearbeiten** aus. Daraufhin gelangen Sie zur Detailseite des Experiments im Bearbeitungsmodus. Wenn Sie alle gewünschten Änderungen vorgenommen haben, klicken Sie auf **Fertig**.
 
-Sie können auch auf „Löschen“ klicken, um das Experiment aus dem Katalog zu löschen.
+Wählen Sie **Löschen** aus, um das Experiment aus dem Katalog zu löschen.
 
-![Klicken Sie auf „Bearbeiten“ oder „Löschen“](media/machine-learning-gallery-experiments/edit-delete-buttons.png)
+![Auswählen von „Bearbeiten“ oder „Löschen“](media/machine-learning-gallery-experiments/edit-delete-buttons.png)
 
-### <a name="suggestions-for-publishing-and-for-quality-documentation"></a>Vorschläge für die Veröffentlichung und qualitativ hochwertige Dokumentation
-* Sie können zwar in der Regel davon ausgehen, dass die Leser bereits über Data Science-Erfahrung verfügen, aber es ist trotzdem hilfreich, möglichst eine einfache Sprache zu nutzen und die Dinge ausführlich zu erläutern.
-* Nicht alle Leser sind mit der Cortana Intelligence Suite vertraut, da sie relativ neu ist.
-  Stellen Sie daher genügend Informationen und schrittweise Erklärungen bereit, um den Leser beim Navigieren zu helfen.
-* Visuelle Elemente, z.B. Experimentgraphen oder Screenshots von Daten, können für Leser sehr hilfreich sein, was das richtige Interpretieren und Verwenden Ihrer Inhalte betrifft. Weitere Informationen dazu, wie Sie Bilder in Ihre Dokumentation einfügen, finden Sie in unter [Publishing Guidelines and Examples collection (Veröffentlichungsrichtlinien und Beispielsammlung)](https://gallery.cortanaintelligence.com/Collection/Publishing-Guidelines-and-Examples-1).
-* Wenn Sie ein Dataset in Ihr Experiment einschließen (es wird nicht über das „Import Data“-Modul importiert), ist es Teil des Experiments und wird im Katalog veröffentlicht. Stellen Sie daher sicher, dass das von Ihnen veröffentlichte Dataset über geeignete Lizenzbedingungen für das Teilen und Herunterladen durch andere Personen verfügt. Beiträge zum Katalog unterliegen den [Nutzungsbedingungen](https://azure.microsoft.com/support/legal/website-terms-of-use/)von Azure.
+### <a name="tips-for-documenting-and-publishing-your-experiment"></a>Tipps zur Dokumentation und Veröffentlichung Ihres Experiments
+* Sie können davon ausgehen, dass der Leser bereits Data Science-Erfahrungen hat, es kann jedoch trotzdem hilfreich sein, einfache Sprache zu verwenden. Erklären Sie nach Möglichkeit alle Sachverhalte ausführlich.
+* Cortana Intelligence Suite ist relativ neu. Nicht alle Leser sind bereits mit der Verwendung vertraut. Stellen Sie daher genügend Informationen und ausführliche Erklärungen bereit, um dem Leser beim Navigieren durch das Experiment zu helfen.
+* Visuelle Elemente können dem Leser beim Verständnis und der richtigen Verwendung der Dokumentation Ihres Experiments behilflich sein. Visuelle Elemente umfassen Experimentdiagramme und Screenshots von Daten. Weitere Informationen dazu, wie Sie Bilder in Ihre Dokumentation des Experiments einfügen, finden Sie unter [Publishing Guidelines and Examples collection](https://gallery.cortanaintelligence.com/Collection/Publishing-Guidelines-and-Examples-1) (Veröffentlichungsrichtlinien und Beispielsammlung).
+* Wenn Sie ein Dataset in Ihr Experiment einbeziehen (d.h., wenn Sie das Dataset nicht über das Modul „Import Data“ importieren), ist das Dataset Teil Ihres Experiments und wird im Katalog veröffentlicht. Stellen Sie sicher, dass das veröffentlichte Dataset über Lizenzbestimmungen verfügt, die jedem Benutzer Freigabe und Download ermöglichen. Beiträge zum Katalog unterliegen den [Nutzungsbedingungen](https://azure.microsoft.com/support/legal/website-terms-of-use/)von Azure.
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 **Welche Anforderungen gelten für das Übermitteln oder Bearbeiten eines Bilds für mein Experiment?**
 
-Die Bilder, die Sie zusammen mit Ihrem Experiment übermitteln, werden verwendet, um eine Kachel für Ihren Beitrag zu erstellen. Es wird empfohlen, dass die Bilder kleiner als 500 KB sind, mit einem Seitenverhältnis von 3:2. Eine Auflösung von 960 x 640 wird empfohlen.
+Bilder, die Sie zusammen mit Ihrem Experiment übermitteln, werden verwendet, um eine Kachel für Ihren Beitrag zu erstellen. Es wird empfohlen, Bilder mit einer Größe von weniger als 500 KB und mit einem Seitenverhältnis von 3:2 sowie einer Auflösung von 960 &#215; 640 zu verwenden.
 
 **Was geschieht mit dem Dataset, das ich im Experiment verwendet habe? Wird das Dataset auch im Katalog veröffentlicht?**
 
-Wenn Ihr Dataset Teil des Experiments ist und nicht über das Import Data-Modul importiert wird, gehört es zum Experiment und wird mit ihm im Katalog veröffentlicht. Stellen Sie aus diesem Grund sicher, dass für das mit dem Experiment veröffentlichte Dataset über entsprechende Lizenzbedingungen verfügbar sind, die das Freigeben und Herunterladen durch alle Benutzer zulassen.
+Wenn Ihr Dataset Teil des Experiments ist und nicht über das Modul „Import Data“ importiert wird, wird es als Teil des Experiments im Katalog veröffentlicht. Stellen Sie sicher, dass das Dataset, das Sie mit Ihrem Experiment veröffentlichen, über die entsprechenden Lizenzbedingungen verfügt. Die Lizenzbedingungen sollten die Freigabe und den Download der Daten zulassen.
 
-**Ich verwende ein Experiment, das über ein „Import Data“-Modul Daten aus HDInsight oder SQL abruft. Zum Abrufen der Daten werden meine Anmeldeinformationen verwendet. Wie kann ich ein solches Experiment veröffentlichen und gewährleisten, dass meine Anmeldeinformationen nicht anderen zugänglich werden?**
+**Ich verwende ein Experiment, das über ein „Import Data“-Modul Daten aus HDInsight oder SQL Server abruft. Zum Abrufen der Daten werden meine Anmeldeinformationen verwendet. Kann ich diese Art von Experiment veröffentlichen? Wie kann ich sicher sein, dass meine Anmeldeinformationen nicht freigegeben werden?**
 
-Zurzeit ist das Veröffentlichen von Experimenten, die Anmeldeinformationen verwenden, nicht zulässig.
+Sie können derzeit kein Experiment mit Anmeldeinformationen im Katalog veröffentlichen.
 
 **Wie gebe ich mehrere Tags ein?**
 
-Nachdem Sie ein Tag eingegeben haben, drücken Sie die Tab-Taste, um ein weiteres Tag einzugeben.
+Nachdem Sie ein Tag eingegeben haben, drücken Sie die TAB-TASTE, um ein weiteres Tag einzugeben.
 
-**[ZUM KATALOG >>](http://gallery.cortanaintelligence.com)**
+**[Wechseln zum Katalog](http://gallery.cortanaintelligence.com)**
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
-
 

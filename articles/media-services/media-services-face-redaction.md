@@ -12,12 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/01/2017
+ms.date: 04/16/2017
 ms.author: juliako;
 translationtype: Human Translation
-ms.sourcegitcommit: 5b8d989d950c17d867f30a6fa8a464a8750e2303
-ms.openlocfilehash: 98922addf7aa8bfc77033be29bf137b362378661
-ms.lasthandoff: 02/02/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: 2600c5cec36a8a44a85a62d6672d6ae57343f20c
+ms.lasthandoff: 04/17/2017
 
 
 ---
@@ -92,7 +92,7 @@ Im Durchlauf **Analyze** des zweistufigen Workflows wird eine Videoeingabe verwe
           ]
         },
 
-… abgeschnitten
+    … truncated
 
 ### <a name="redact-mode"></a>Bearbeitungsmodus
 Im zweiten Durchlauf des Workflows wird eine größere Anzahl von Eingaben verwendet, die zu einem einzelnen Asset zusammengefasst werden müssen.
@@ -104,7 +104,7 @@ In der Ausgabe des Analysedurchlaufs ist das Originalvideo nicht enthalten. Das 
 | Phase | Dateiname | Hinweise |
 | --- | --- | --- |
 | Eingabeasset |foo.bar |Video im WMV-, MPV- oder MP4-Format. Dasselbe Video wie in Schritt 1. |
-| Eingabeasset |foo_annotations.json |Metadatendatei mit Anmerkungen aus Phase&1; mit optionalen Änderungen |
+| Eingabeasset |foo_annotations.json |Metadatendatei mit Anmerkungen aus Phase 1 mit optionalen Änderungen |
 | Eingabeasset |foo_IDList.txt (optional) |Optionale neue Liste mit zu bearbeitenden Gesicht-IDs mit Zeilentrennung. Wenn die Datei leer ist, werden alle Gesichter verschwommen angezeigt. |
 | Eingabekonfiguration |Vorgangskonfiguration (Voreinstellung) |{'version':'1.0', 'options': {'mode':'redact'}} |
 | Ausgabeasset |foo_redacted.mp4 |Video mit angewendeter Unschärfe, basierend auf Anmerkungen |
@@ -114,6 +114,12 @@ Dies ist die Ausgabe von IDList mit einer ausgewählten ID.
 
 [Video anzeigen](http://ampdemo.azureedge.net/?url=http%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fad6e24a2-4f9c-46ee-9fa7-bf05e20d19ac%2Fdance_redacted1.mp4)
 
+Beispiel: „foo_IDList.txt“
+ 
+     1
+     2
+     3
+ 
 ## <a name="attribute-descriptions"></a>Beschreibungen der Attribute
 Der Medienprozessor zur Gesichtsbearbeitung ermöglicht eine Gesichtspositionserkennung und -nachverfolgung mit hoher Genauigkeit, sodass bis zu 64 menschliche Gesichter in einem Videobild erkannt werden können. Frontalansichten von Gesichtern bieten die besten Ergebnisse, während Seitenansichten und kleine Gesichter (maximal 24 x 24 Pixel) unter Umständen nicht so genau erkannt werden.
 

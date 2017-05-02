@@ -12,12 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 04/17/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: af4aa0c69587b6a0448c470892e566b7efec4858
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: a26b1f6c13b11d0fb6b47599fee43f955cbf7b7a
+ms.lasthandoff: 04/17/2017
 
 
 ---
@@ -64,7 +64,7 @@ Führen Sie den folgenden Schritt aus, um die Lösung „Kapazität und Leistung
 
 Falls Ihre SCOM-Verwaltungsgruppe mit dem OMS-Arbeitsbereich verbunden ist, werden in SCOM die folgenden Management Packs installiert, wenn Sie diese Lösung hinzufügen. Für diese Management Packs ist keine Konfiguration oder Wartung erforderlich.
 
-- Microsoft.IntelligencePacks.CapacityPerformance (Microsoft.IntelligencePacks.UpdateAssessment)
+- Microsoft.IntelligencePacks.CapacityPerformance
 
 Das Ereignis 1201 sieht in etwa wie folgt aus:
 

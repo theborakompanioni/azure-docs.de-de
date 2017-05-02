@@ -11,12 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/12/2017
+ms.date: 03/22/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 12e8ff02c72d90513868d43bc34c564f1da1ae43
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: 93b36891c960582563a4ff9c622cd5ac3198dfeb
+ms.lasthandoff: 04/17/2017
 
 
 ---
@@ -43,7 +43,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie bereits über SharePoint 2013
 
 Unsere Kunden wünschen sich für ihre Back-End-Anwendungen (hier: SharePoint-Server) die größtmögliche Benutzerfreundlichkeit durch das einmalige Anmelden. Bei diesem häufigen Azure AD-Szenario müssen Benutzer sich nur einmal authentifizieren, da sie anschließend keine Aufforderung zur Authentifizierung mehr erhalten.
 
-Für lokale Anwendungen, für die die Windows-Authentifizierung erforderlich ist oder verwendet wird, können Sie SSO über das Kerberos-Authentifizierungsprotokoll und die Funktion „Eingeschränkte Kerberos-Delegierung“ (Kerberos Constrained Delegation, KCD) erreichen. Bei Konfiguration von KCD kann mit dem Anwendungsproxyconnector ein Windows-Ticket/-Token für einen Benutzer abgerufen werden. Dies gilt auch, wenn sich der Benutzer nicht direkt bei Windows angemeldet hat. Weitere Informationen zu KCD finden Sie unter [Eingeschränkte Kerberos-Delegierung: Übersicht](https://technet.microsoft.com/en-us/library/jj553400.aspx).
+Für lokale Anwendungen, für die die Windows-Authentifizierung erforderlich ist oder verwendet wird, können Sie SSO über das Kerberos-Authentifizierungsprotokoll und die Funktion „Eingeschränkte Kerberos-Delegierung“ (Kerberos Constrained Delegation, KCD) erreichen. Bei Konfiguration von KCD kann mit dem Anwendungsproxyconnector ein Windows-Ticket/-Token für einen Benutzer abgerufen werden. Dies gilt auch, wenn sich der Benutzer nicht direkt bei Windows angemeldet hat. Weitere Informationen zu KCD finden Sie unter [Eingeschränkte Kerberos-Delegierung: Übersicht](https://technet.microsoft.com/library/jj553400.aspx).
 
 Um KCD für einen SharePoint-Server einzurichten, verwenden Sie die Verfahren in den folgenden Abschnitten.
 
@@ -63,7 +63,7 @@ Gehen Sie wie folgt vor, um sicherzustellen, dass Ihre Websites unter einem defi
 5. Wählen Sie die Option **Neues verwaltetes Konto registrieren**. Nachdem das Konto erstellt wurde, müssen Sie den **Webanwendungspool** festlegen, bevor Sie das Konto verwenden können.
 
 > [!NOTE]
-Sie müssen über ein vorab erstelltes Azure AD-Konto für den Dienst verfügen. Es ist ratsam, die automatische Kennwortänderung zuzulassen. Weitere Informationen zu allen Schritten und zur Problembehandlung finden Sie unter [Konfigurieren der automatischen Kennwortänderung in SharePoint 2013](https://technet.microsoft.com/EN-US/library/ff724280.aspx).
+Sie müssen über ein vorab erstelltes Azure AD-Konto für den Dienst verfügen. Es ist ratsam, die automatische Kennwortänderung zuzulassen. Weitere Informationen zu allen Schritten und zur Problembehandlung finden Sie unter [Konfigurieren der automatischen Kennwortänderung in SharePoint 2013](https://technet.microsoft.com/library/ff724280.aspx).
 
 ### <a name="configure-sharepoint-for-kerberos"></a>Konfigurieren von SharePoint für Kerberos
 
@@ -87,7 +87,7 @@ Gehen Sie wie folgt vor, um Ihre SharePoint-Website für die Kerberos-Authentifi
 
 ### <a name="set-a-service-principal-name-for-the-sharepoint-service-account"></a>Festlegen eines Dienstprinzipalnamens für das SharePoint-Dienstkonto
 
-Vor dem Konfigurieren von KCD müssen Sie den SharePoint-Dienst identifizieren, der als das weiter oben konfigurierte Dienstkonto ausgeführt wird. Dazu müssen Sie einen Dienstprinzipalnamen (SPN) festlegen. Weitere Informationen finden Sie unter [Dienstprinzipalnamen](https://technet.microsoft.com/en-us/library/cc961723.aspx).
+Vor dem Konfigurieren von KCD müssen Sie den SharePoint-Dienst identifizieren, der als das weiter oben konfigurierte Dienstkonto ausgeführt wird. Dazu müssen Sie einen Dienstprinzipalnamen (SPN) festlegen. Weitere Informationen finden Sie unter [Dienstprinzipalnamen](https://technet.microsoft.com/library/cc961723.aspx).
 
 Das SPN-Format lautet wie folgt:
 
@@ -115,7 +115,7 @@ Dann lautet der SPN:
 HTTP/ sharepoint.demo.o365identity.us demo
 ```
 
-Sie müssen ggf. auch SPNs für bestimmte Websites auf Ihrem Server festlegen. Weitere Informationen finden Sie unter [Konfigurieren der Kerberos-Authentifizierung](https://technet.microsoft.com/en-us/library/cc263449(v=office.12).aspx). Achten Sie besonders auf den Abschnitt „Erstellen von Dienstprinzipalnamen für Ihre Webanwendungen mithilfe der Kerberos-Authentifizierung“.
+Sie müssen ggf. auch SPNs für bestimmte Websites auf Ihrem Server festlegen. Weitere Informationen finden Sie unter [Konfigurieren der Kerberos-Authentifizierung](https://technet.microsoft.com/library/cc263449(v=office.12).aspx). Achten Sie besonders auf den Abschnitt „Erstellen von Dienstprinzipalnamen für Ihre Webanwendungen mithilfe der Kerberos-Authentifizierung“.
 
 Dazu halten Sie sich am besten an die SPN-Formate, die für Ihre Website ggf. bereits vorhanden sind. Kopieren Sie diese SPNs für die Registrierung gegenüber dem Dienstkonto. Gehen Sie dazu folgendermaßen vor:
 
@@ -140,7 +140,7 @@ Klist gibt dann die Ziel-SPNs zurück. In diesem Beispiel ist der hervorgehobene
 
  Ersetzen Sie _http/sharepoint.demo.o365identity.us_ durch den SPN für Ihren Server und _demo\sp_svc_ durch das Dienstkonto in Ihrer Umgebung. Mit dem Befehl „setspn“ wird nach dem SPN gesucht, bevor er hinzugefügt wird. In diesem Fall wird ggf. der Fehler **Duplicate SPN Value** (Doppelter SPN-Wert) angezeigt. Stellen Sie bei Anzeige dieses Fehlers sicher, dass der Wert dem Dienstkonto zugeordnet ist.
 
-Sie können überprüfen, ob der SPN hinzugefügt wurde, indem Sie den Befehl „setspn“ mit der Option „-l“ ausführen. Weitere Informationen zu diesem Befehl finden Sie unter [Setspn](https://technet.microsoft.com/en-us/library/cc731241.aspx).
+Sie können überprüfen, ob der SPN hinzugefügt wurde, indem Sie den Befehl „setspn“ mit der Option „-l“ ausführen. Weitere Informationen zu diesem Befehl finden Sie unter [Setspn](https://technet.microsoft.com/library/cc731241.aspx).
 
 ### <a name="ensure-that-the-connector-is-set-as-a-trusted-delegate-to-sharepoint"></a>Sicherstellen, dass der Connector als vertrauenswürdiger Delegat für SharePoint festgelegt wurde
 
@@ -220,7 +220,7 @@ Mit dem letzten Schritt stellen Sie sicher, dass SharePoint die Website anhand d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Bereitstellen von sicherem Remotezugriff auf lokale Anwendungen](active-directory-application-proxy-get-started.md)<br>
-[Grundlegendes zu Azure AD-Anwendungsproxyconnectors](application-proxy-understand-connectors.md)<br>
-[Publishing SharePoint 2016 and Office Online Server with Azure AD Application Proxy](https://blogs.technet.microsoft.com/dawiese/2016/06/09/publishing-sharepoint-2016-and-office-online-server-with-azure-ad-application-proxy/) (Veröffentlichen von SharePoint 2016 und Office Online Server mit dem Azure AD-Anwendungsproxy)
+- [Bereitstellen von sicherem Remotezugriff auf lokale Anwendungen](active-directory-application-proxy-get-started.md)
+- [Grundlegendes zu Azure AD-Anwendungsproxyconnectors](application-proxy-understand-connectors.md)
+- [Publishing SharePoint 2016 and Office Online Server with Azure AD Application Proxy (Veröffentlichen von SharePoint 2016 und Office Online Server mit dem Azure AD-Anwendungsproxy)](https://blogs.technet.microsoft.com/dawiese/2016/06/09/publishing-sharepoint-2016-and-office-online-server-with-azure-ad-application-proxy/)
 

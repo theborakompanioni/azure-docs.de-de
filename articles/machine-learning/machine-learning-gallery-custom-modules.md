@@ -12,82 +12,88 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/06/2017
+ms.date: 04/14/2017
 ms.author: roopalik;garye
 translationtype: Human Translation
-ms.sourcegitcommit: 262ee4f092efa11150de61168e6b03c0477f0543
-ms.openlocfilehash: 6e0efe18c1170ef3b5a9b894888e926b31432e07
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 56c308643ad6d20170174725f76f6ddbc76b3e22
+ms.lasthandoff: 04/15/2017
 
 
 ---
-# <a name="discover-custom-machine-learning-modules-in-the-cortana-intelligence-gallery"></a>Lernen Sie benutzerdefinierte Machine Learning-Module im Cortana Intelligence-Katalog kennen
+# <a name="discover-custom-machine-learning-modules-in-cortana-intelligence-gallery"></a>Lernen Sie benutzerdefinierte Machine Learning-Module im Cortana Intelligence-Katalog kennen
 [!INCLUDE [machine-learning-gallery-item-selector](../../includes/machine-learning-gallery-item-selector.md)]
 
 ## <a name="custom-modules-for-machine-learning-studio"></a>Benutzerdefinierte Module für Machine Learning Studio
-Eine Anzahl **[benutzerdefinierter Module](https://gallery.cortanaintelligence.com/customModules)** sind im Cortana Intelligence-Katalog verfügbar, die die Funktionen von Azure Machine Learning Studio erweitern. Sie können diese Module für die Verwendung in Ihren Experimenten herunterladen, damit Sie noch mehr erweiterte Vorhersageanalytik-Lösungen entwickeln können.
+Im Cortana Intelligence-Katalog sind einige [benutzerdefinierte Module](https://gallery.cortanaintelligence.com/customModules) verfügbar, die die Funktionen von Azure Machine Learning Studio erweitern. Sie können diese Module zur Verwendung in Ihren Experimenten importieren, um noch fortschrittlichere Predictive Analytics-Lösungen entwickeln zu können.
+
+Zurzeit bietet der Katalog Module zu *Zeitserienanalysen*, *Zuordnungsregeln*, *Clusteringalgorithmen* (über k-Means hinaus), *Visualisierungen* sowie andere leistungsstarke Hilfsprogramme.
+
 
 ## <a name="discover"></a>Entdecken
-Wenn Sie im Katalog nach benutzerdefinierten Modulen suchen möchten, öffnen Sie den [Katalog](http://gallery.cortanaintelligence.com), fahren Sie mit der Maus über **More (Mehr)**, und wählen Sie **Custom Modules (Benutzerdefinierte Module)** aus.
+Wählen Sie zum Durchsuchen der benutzerdefinierten Module im [Katalog](http://gallery.cortanaintelligence.com) unter **Mehr** die Option **Benutzerdefinierte Module** aus.
 
-![Wählen Sie benutzerdefinierte Module auf der Startseite des Katalogs aus](media/machine-learning-gallery-custom-modules/select-custom-modules-in-gallery.png)
+![Auswählen von „Benutzerdefinierte Module“ auf der Startseite des Katalogs](media/machine-learning-gallery-custom-modules/select-custom-modules-in-gallery.png)
 
- Die Seite **[Custom Modules](https://gallery.cortanaintelligence.com/customModules)**
- zeigt eine Liste der am häufigsten verwendeten benutzerdefinierten Module.
-Klicken Sie auf **Alle anzeigen**, um alle benutzerdefinierten Module anzuzeigen.
-Auf dieser Seite können Sie alle benutzerdefinierten Module im Katalog durchsuchen. Sie können auch suchen, indem Sie links auf der Seite Filterkriterien auswählen und oben Suchbegriffe eingeben.
+Auf der Seite **[Benutzerdefinierte Module](https://gallery.cortanaintelligence.com/customModules)** wird eine Liste der am häufigsten verwendeten benutzerdefinierten Module angezeigt. Um alle benutzerdefinierten Modulen anzuzeigen, wählen Sie die Schaltfläche **Alle anzeigen** aus. Wählen Sie zur Suche nach einem bestimmten Modul **Alle anzeigen** und dann die Filterkriterien aus. Sie können auch Suchbegriffe im Feld **Suchen** im oberen Bereich der Seite „Katalog“ eingeben.
+
+![Klicken Sie auf „Alle anzeigen“, um alle benutzerdefinierten Module anzuzeigen](media/machine-learning-gallery-custom-modules/click-see-all-for-all-custom-modules.png)
+
+### <a name="understand"></a>Informationen
+
+Wählen Sie für Informationen über die Funktionsweise eines veröffentlichten benutzerdefinierten Moduls das benutzerdefinierte Modul aus, um die Seite „Moduldetails“ zu öffnen. Die Detailseite bietet eine konsistente und informative Lernerfahrung. Auf der Detailseite werden der Zweck des Moduls hervorgehoben und erwartete Eingaben, Ausgaben und Parameter aufgeführt. Die Detailseite verfügt außerdem über einen Link zum zugrunde liegenden Quellcode, den Sie untersuchen und anpassen können.
 
 ### <a name="comment-and-share"></a>Kommentieren und teilen
- Klicken Sie auf ein beliebiges benutzerdefiniertes Modul zum Öffnen der Seite „Details“ des Moduls und zum Lesen von Informationen zur Funktionsweise des Moduls und dessen Verwendung. Auf dieser Seite können Sie Kommentare hinzufügen, Feedback geben oder Fragen im Kommentarbereich stellen. Außerdem können Sie diese Seite auch mit Freunden oder Kollegen teilen, indem Sie die entsprechenden Funktionen von LinkedIn oder Twitter verwenden. Sie können auch einen Link zum benutzerdefinierten Modul per E-Mail senden, um andere Benutzer zum Besuch der Seite einzuladen.
+Auf der Detailseite eines benutzerdefinierten Moduls können Sie im Abschnitt **Kommentare** kommentieren, Feedback abgeben oder Fragen zum benutzerdefinierten Modul stellen. Sie können das Modul sogar für Ihre Kontakte oder Kollegen auf Twitter oder LinkedIn freigeben. Sie können auch einen Link zur Seite „Moduldetails“ per E-Mail senden, um andere Benutzer zum Besuch der Seite einzuladen.
 
 ![Teilen Sie dieses Element mit Freunden](media/machine-learning-gallery-how-to-use-contribute-publish/share-links.png)
 
 ![Fügen Sie Ihre eigenen Kommentare hinzu](media/machine-learning-gallery-how-to-use-contribute-publish/comments.png)
 
-## <a name="download"></a>Download
-Sie können alle benutzerdefinierten Module im Katalog für Ihre eigenen Experimente verwenden.
-Es gibt zwei Möglichkeiten, eine Kopie des Moduls zu erhalten:
+## <a name="import"></a>Import
+Sie können alle benutzerdefinierten Module aus dem Katalog in Ihre eigenen Experimente importieren.
 
-* **Aus dem Katalog** – Wenn Sie ein Modul aus dem Katalog herunterladen, wird das Modul der Modulpalette in Ihrem Arbeitsbereich hinzugefügt. Sie erhalten auch ein Beispielexperiment, das Ihnen ein Beispiel gibt, wie das Modul verwendet wird.
-* **Aus Machine Learning Studio** – Sie können jedes benutzerdefinierte Modul importieren, während Sie in Studio arbeiten, und das Modul wird der Modulpalette in Ihrem Arbeitsbereich hinzugefügt.
+Der Cortana Intelligence-Katalog bietet die folgenden zwei Möglichkeiten, eine Kopie des Moduls zu importieren:
 
-Nachdem das benutzerdefinierte Modul in der Modulpalette ist, können Sie es in allen Experimenten im Arbeitsbereich genau wie andere Module verwenden:
-
-1. Neues Experiment erstellen oder vorhandenes öffnen
-2. Klicken Sie in der Modulpalette links vom Experimentbereich auf **Custom** zum Erweitern der Liste der benutzerdefinierten Module im Arbeitsbereich
-   
-    ![Benutzerdefinierte Modulliste in Studio Palette](media/machine-learning-gallery-custom-modules/custom-module-in-studio-palette.png)
-3. Wählen Sie das Modul, das Sie importiert haben, und ziehen Sie es zum Experiment
+* **Aus dem Katalog**. Wenn Sie ein benutzerdefiniertes Modul aus dem Katalog importieren, erhalten Sie auch ein Beispielexperiment für die Verwendung des Moduls.
+* **Aus Machine Learning Studio**. Sie können jedes benutzerdefinierte Modul importieren, während Sie Machine Learning Studio verwenden (in diesem Fall erhalten Sie das Beispielexperiment nicht).
 
 ### <a name="from-the-gallery"></a>Aus dem Katalog
-So laden Sie eine Kopie eines benutzerdefinierten Moduls aus dem Katalog herunter:
 
-1. Öffnen Sie die Detailseite des Moduls im Katalog
-2. Klicken Sie auf **In Studio öffnen**
+1. Öffnen Sie die Moduldetailseite im Katalog. 
+2. Wählen Sie **In Studio öffnen** aus.
    
     ![Öffnen eines benutzerdefinierten Moduls aus dem Katalog](media/machine-learning-gallery-custom-modules/open-custom-module-from-gallery.png)
    
-    Jedes benutzerdefinierte Modul enthält ein Beispielexperiment, das die Verwendung des Moduls veranschaulicht. Wenn Sie auf **In Studio öffnen** klicken, wird dieses Beispielexperiment in den Machine Learning Studio-Arbeitsbereich geladen und geöffnet (sofern Sie noch nicht bei Studio angemeldet sind, werden Sie aufgefordert, sich mit Ihrem Microsoft-Konto anzumelden, bevor das Experiment in Ihren Arbeitsbereich kopiert wird).
+Jedes benutzerdefinierte Modul enthält ein Beispielexperiment, das die Verwendung des Moduls veranschaulicht. Durch die Auswahl von **In Studio öffnen** wird das Beispielexperiment in Ihrem Machine Learning Studio-Arbeitsbereich geöffnet. (Wenn Sie nicht bereits bei Studio angemeldet sind, werden Sie zur erstmaligen Anmeldung mit Ihrem Microsoft-Konto aufgefordert.)
 
-Das benutzerdefinierte Modul ist in Ihren Arbeitsbereich kopiert und in der Modulpalette zusammen mit alle anderen integrierten oder benutzerdefinierten Studio Modulen platziert. Sie können es jetzt wie andere Module in Ihrem Arbeitsbereich verwenden.
+Zusätzlich zum Beispielexperiment wird das benutzerdefinierte Modul in Ihren Arbeitsbereich kopiert. Es wird außerdem mit allen integrierten oder benutzerdefinierten Machine Learning Studio-Modulen in Ihre Modulpalette eingefügt. Sie können es jetzt wie andere Module in Ihrem Arbeitsbereich in Ihren eigenen Experimenten verwenden.
 
 ### <a name="from-within-machine-learning-studio"></a>Aus Machine Learning Studio
-Sie können die gleichen benutzerdefinierten Module auch aus dem Katalog importieren, während Sie in Machine Learning Studio arbeiten:
 
-1. Klicken Sie in Machine Learning Studio auf **+NEU**
-2. Wählen Sie **Module** aus – Eine Liste der Module aus dem Katalog wird angezeigt, in der Sie Ihre Wahl treffen können, oder suchen Sie mithilfe des Suchfelds ein bestimmtes Modul
-3. Zeigen Sie die Maus auf ein Modul, und wählen **Modul importieren** (um Informationen zum Modul anzuzeigen, wählen Sie **Im Katalog anzeigen**, anschließend gelangen Sie zur Detailseite für das Modul im Katalog)
+1. Wählen Sie in Machine Learning Studio **NEU** aus.
+2. Wählen Sie **Modul** aus. Sie können in einer Liste von Katalogmodulen auswählen oder mithilfe des Felds **Suchen** nach einem bestimmten Modul suchen.
+3. Zeigen Sie mit dem Mauszeiger auf ein Modul, und wählen Sie dann **Modul importieren** aus. (Wählen Sie zum Anzeigen von Informationen über das Modul **Im Katalog anzeigen** aus. Dadurch wird die Moduldetailseite im Katalog geöffnet.)
    
     ![Import von benutzerdefinierten Modulen in Machine Learning Studio](media/machine-learning-gallery-custom-modules/add-custom-module-in-studio.png)
 
-Das benutzerdefinierte Modul ist in Ihren Arbeitsbereich kopiert und in der Modulpalette zusammen mit alle anderen integrierten oder benutzerdefinierten Studio Modulen platziert. Sie können es jetzt wie andere Module in Ihrem Arbeitsbereich verwenden.
+Das benutzerdefinierte Modul wird in Ihren Arbeitsbereich kopiert und zusammen mit den anderen integrierten oder benutzerdefinierten Machine Learning Studio-Modulen in der Modulpalette platziert. Sie können es jetzt wie andere Module in Ihrem Arbeitsbereich in Ihren eigenen Experimenten verwenden.
 
-**[ZUM KATALOG >>](http://gallery.cortanaintelligence.com)**
+## <a name="use"></a>Verwenden Sie
+
+Unabhängig davon, welche Methode Sie zum Importieren eines benutzerdefinierten Moduls auswählen, wird das Modul beim Importieren in der Modulpalette in Machine Learning Studio platziert. Sie können das benutzerdefinierte Modul aus der Modulpalette in allen Experimenten im Arbeitsbereich genau wie alle anderen Module verwenden.
+
+So verwenden Sie ein importiertes Modul
+
+1. Erstellen Sie ein neues Experiment, oder öffnen Sie ein vorhandenes.
+2. Wählen Sie zum Erweitern der Liste der benutzerdefinierten Modulen in Ihrem Arbeitsbereich in der Modulpalette **Benutzerdefiniert** aus. Die Modulpalette befindet sich links neben der Experimentcanvas.
+   
+    ![Benutzerdefinierte Modulliste in Studio Palette](media/machine-learning-gallery-custom-modules/custom-module-in-studio-palette.png)
+3. Wählen Sie das Modul aus, das Sie importiert haben, und ziehen Sie es zum Experiment.
+
+
+**[Wechseln zum Katalog](http://gallery.cortanaintelligence.com)**
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 
