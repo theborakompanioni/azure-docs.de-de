@@ -11,7 +11,3 @@ Im Azure-Portal können Sie zur gewünschten Verbindung navigieren und den Verbi
 5. Klicken Sie zum Anzeigen von weiteren Informationen zur Verbindung auf den Namen der Verbindung, um das Blatt **Standort-zu-Standort-VPN-Verbindungen** zu öffnen.
 
     ![Verbindungsstatus – Weitere Informationen](./media/vpn-gateway-verify-connection-azureportal-classic/connections4.png "Verbindungsstatus – Weitere Informationen")
-
-<!--HONumber=Jan17_HO5-->
-
-
