@@ -163,7 +163,7 @@ Wie bei den vorherigen Schritten gibt es nur wenige Unterschiede zwischen der Im
    
     Stellen Sie beim Hinzufügen der Datei sicher, dass in der Dropdownliste neben dem Feld **Dateiname** die Option **Alle Dateien** ausgewählt ist. Im Rest dieses Lernprogramms wird davon ausgegangen, dass der Name des Bilds "image.jpg" lautet. Wenn Sie eine andere Datei haben, müssen Sie das Bild umbenennen oder den Code entsprechend ändern.
 4. Stellen Sie sicher, dass der ausgeführte Dienst die Bilddatei finden kann. Klicken Sie hierzu im **Projektmappen-Explorer** mit der rechten Maustaste auf die Bilddatei, und klicken Sie anschließend auf **Eigenschaften**. Legen Sie im Bereich **Eigenschaften** den Wert für **In Ausgabeverzeichnis kopieren** auf **Kopieren, wenn neuer** fest.
-5. Fügen Sie dem Projekt einen Verweis auf die Assembly **System.Drawing.dll`using` sowie die folgenden dazugehörigen **-Anweisungen hinzu.  
+5. Fügen Sie dem Projekt einen Verweis auf die Assembly **System.Drawing.dll`using` sowie die folgenden dazugehörigen**-Anweisungen hinzu.  
    
     ```csharp
     using System.Drawing;

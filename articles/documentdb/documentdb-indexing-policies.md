@@ -35,7 +35,7 @@ Nach Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
 * Wie nehme ich Änderungen an der Indizierungsrichtlinie einer Sammlung vor?
 * Wie vergleiche ich die Speicherung und Leistung verschiedener Indizierungsrichtlinien?
 
-## <a name="a-idcustomizingindexingpolicya-customizing-the-indexing-policy-of-a-collection"></a><a id="CustomizingIndexingPolicy"></a> Anpassen der Indizierungsrichtlinie einer Sammlung.
+## <a id="CustomizingIndexingPolicy"></a> Anpassen der Indizierungsrichtlinie einer Sammlung.
 Entwickler können die Kompromisse zwischen Speicher, Schreib-/Abfrageleistung und Abfragekonsistenz durch Überschreiben der Standardindizierungsrichtlinie in einer DocumentDB-Sammlung und durch Konfigurieren die folgenden Aspekte anpassen.
 
 * **Ein-/Auschließen von Dokumenten und Pfaden in den/aus dem Index**. Entwickler können bestimmte Dokumente zum Zeitpunkt des Einfügens oder Ersetzens in der Sammlung ausschließen oder einschließen. Entwickler können auch bestimmte JSON-Eigenschaften – auch als „Pfade“ bezeichnet – (einschließlich Platzhaltermustern) bei der Indizierung in Dokumenten ein- bzw. ausschließen, die in einem Index enthalten sind.
@@ -112,7 +112,7 @@ DocumentDB modelliert JSON-Dokumente und den Index als Strukturen und ermöglich
 
 Indexpfade beginnen mit dem Stamm (/) und enden in der Regel mit dem Platzhalterzeichen "?", das angibt, dass mehrere mögliche Werte für das Präfix verfügbar sind. Für SELECT * FROM Families F WHERE F.familyName = "Andersen" müssen Sie z. B. einen Indexpfad für /familyName/? in die Indexrichtlinie der Sammlung einbinden.
 
-Indexpfade können auch das Platzhalterzeichen * verwenden, um das Verhalten für Pfade rekursiv unter dem Präfix anzugeben. Beispielsweise kann „/payload/*“ dazu verwendet werden, um sämtliche Elemente unter der payload-Eigenschaft von der Indizierung auszuschließen.
+Indexpfade können auch das Platzhalterzeichen *verwenden, um das Verhalten für Pfade rekursiv unter dem Präfix anzugeben. Beispielsweise kann „/payload/*“ dazu verwendet werden, um sämtliche Elemente unter der payload-Eigenschaft von der Indizierung auszuschließen.
 
 Im Folgenden sind die allgemeinen Muster zum Angeben von Indexpfaden aufgeführt:
 

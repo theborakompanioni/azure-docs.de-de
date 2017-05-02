@@ -17,6 +17,7 @@ ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: b2eb87a88721a3fd1ecdfa573c6a6d49ed02d344
 ms.openlocfilehash: 6912357da797a72f8e9cb9ebf700f56d9cfcc696
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -114,7 +115,7 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-showpad-tutorial/tutorial_showpad_03.png)
 
-3. Führen Sie auf der Seite **App-Einstellungen konfigurieren **die folgenden Schritte aus, und klicken Sie dann auf **Weiter**:
+3. Führen Sie auf der Seite **App-Einstellungen konfigurieren**die folgenden Schritte aus, und klicken Sie dann auf **Weiter**:
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-showpad-tutorial/tutorial_showpad_04.png) 
 
@@ -274,9 +275,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel **Showpad** klicken, sollten Sie auto
 [203]: ./media/active-directory-saas-showpad-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-showpad-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-showpad-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

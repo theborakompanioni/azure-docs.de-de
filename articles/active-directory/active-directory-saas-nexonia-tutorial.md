@@ -16,6 +16,7 @@ ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 1b5527090a41c274b590ed9d1ac7b561b6f4ed14
 ms.openlocfilehash: 05db0ade3f74f380ccf287be61ae19b96bfee902
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -274,9 +275,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Nexonia“ klicken, sollten Sie au
 [203]: ./media/active-directory-saas-nexonia-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-nexonia-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-nexonia-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 
