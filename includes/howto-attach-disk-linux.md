@@ -115,8 +115,3 @@ Zum Anfügen eines vorhandenen Datenträgers wird eine VHD-Datei im Speicherkont
 > 
 > 
 
-
-
-<!--HONumber=Feb17_HO3-->
-
-

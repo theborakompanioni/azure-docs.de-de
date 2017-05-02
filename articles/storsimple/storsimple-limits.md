@@ -31,7 +31,7 @@ StorSimple bietet skalierbaren und flexiblen Speicher für Ihr Rechenzentrum. Es
 | Maximale Anzahl von Volumecontainern |64 | |
 | Maximale Anzahl von Volumes |255 | |
 | Maximale Anzahl von lokalen Volumes |32 | |
-| Maximale Anzahl von Zeitplänen pro Bandbreitenvorlage |168 |Einen Zeitplan für jede Stunde, jeden Tag der Woche (24 *&7;). |
+| Maximale Anzahl von Zeitplänen pro Bandbreitenvorlage |168 |Einen Zeitplan für jede Stunde, jeden Tag der Woche (24 * 7). |
 | Maximale Größe eines mehrstufigen Volumes auf physischen Geräten |64 TB für 8100 und 8600 |8100 und 8600 sind physische Geräte. |
 | Maximale Größe eines mehrstufigen Volumes auf virtuellen Geräten in Azure |30 TB für 8010  <br></br> 64 TB für 8020 |8010 und 8020 sind virtuelle Geräte in Azure, die Standardspeicher und Storage Premium verwenden. |
 | Maximale Größe eines lokal fixierten Volumes auf physischen Geräten |8,5 TB für 8100 <br></br> 22,5 TB für 8600 |8100 und 8600 sind physische Geräte. |
@@ -49,11 +49,11 @@ StorSimple bietet skalierbaren und flexiblen Speicher für Ihr Rechenzentrum. Es
 | Verarbeitungsrate für Cloudmomentaufnahmen |15 Minuten/TB |<ul><li>Die Mindestzeit zum Vorbereiten einer Cloudmomentaufnahme für das Hochladen. Diese gilt pro TB an zugewiesenen Volumedaten in der Sicherung. </li><li> Die Gesamtzeit für eine Cloudmomentaufnahme wird berechnet, indem diese Zeit zur Hochladezeit für die Momentaufnahme addiert wird. Letztere wird von der Internetbandbreite der Cloudverbindung beeinflusst. |
 | Maximaler Client-Lese-/-Schreibdurchsatz (wenn von SSD-Ebene aus bereitgestellt)* |920/720 MB/s mit einer einzelnen 10-GbE-Netzwerkschnittstelle |Bis zu 2x mit MPIO und zwei Netzwerkschnittstellen. |
 | Maximaler Client-Lese-/-Schreibdurchsatz (wenn von HDD-Ebene aus bereitgestellt)* |120/250 MB/s | |
-| Maximaler Client-Lese-/-Schreibdurchsatz (wenn von Cloud-Ebene aus bereitgestellt)* ab Update 3** |40/60 MB/s für mehrstufige Volumes<br><br>60/80 MB/s für mehrstufige Volumes, bei denen im Rahmen der Volumeerstellung die Archivierungsoption ausgewählt wurde |Lesedurchsatz hängt von Clients ab, die genügend E/A-Warteschlangentiefe generieren und verwalten müssen. <br><br>Die erreichbare Geschwindigkeit hängt von der Geschwindigkeit des zugrunde liegenden Speicherkontos ab. |
+| Maximaler Client-Lese-/-Schreibdurchsatz (wenn von Cloud-Ebene aus bereitgestellt)*ab Update 3** |40/60 MB/s für mehrstufige Volumes<br><br>60/80 MB/s für mehrstufige Volumes, bei denen im Rahmen der Volumeerstellung die Archivierungsoption ausgewählt wurde |Lesedurchsatz hängt von Clients ab, die genügend E/A-Warteschlangentiefe generieren und verwalten müssen. <br><br>Die erreichbare Geschwindigkeit hängt von der Geschwindigkeit des zugrunde liegenden Speicherkontos ab. |
 
-& #42; Der maximale Durchsatz pro E/A-Typ wurde mit 100 %-Lese- und 100 %-Schreibszenarien gemessen. Der tatsächliche Durchsatz kann geringer sein und hängt von der E/A-Mischung und den Netzwerkbedingungen ab.
+&#42; Der maximale Durchsatz pro E/A-Typ wurde mit 100 %-Lese- und 100 %-Schreibszenarien gemessen. Der tatsächliche Durchsatz kann geringer sein und hängt von der E/A-Mischung und den Netzwerkbedingungen ab.
 
-& #42; & #42; Leistungswerte vor Update 3 können niedriger sein.
+&#42; &#42; Leistungswerte vor Update 3 können niedriger sein.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Überprüfen Sie die [StorSimple-Systemanforderungen](storsimple-system-requirements.md). 

@@ -18,6 +18,7 @@ ms.author: cherylmc
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 1206d7444f32216597a6f546c71131b2de0ec3f8
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -25,6 +26,8 @@ ms.openlocfilehash: 1206d7444f32216597a6f546c71131b2de0ec3f8
 In diesem Artikel werden Sie Schritt für Schritt durch die Konfiguration eines virtuellen Netzwerks und eines Gateways für virtuelle Netzwerke zur Verwendung mit ExpressRoute geführt. Dabei werden das klassische Bereitstellungsmodell und das klassische Portal verwendet.
 
 Anweisungen für das Resource Manager-Bereitstellungsmodell finden Sie in den folgenden Artikeln: [Erstellen eines virtuellen Netzwerks über PowerShell](../virtual-network/virtual-networks-create-vnet-arm-ps.md) und [Konfigurieren eines Gateways für virtuelle Netzwerke für ExpressRoute mit Resource Manager und PowerShell](expressroute-howto-add-gateway-resource-manager.md).
+
+[!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
 **Informationen zu Azure-Bereitstellungsmodellen**
 
@@ -57,13 +60,13 @@ Mit den folgenden Schritten werden ein klassisches VNet und ein Gateway für vir
    * **Gatewaysubnetz hinzufügen** – Klicken Sie auf diese Option, um das Gatewaysubnetz hinzuzufügen. Das Gatewaysubnetz wird nur für das Gateway des virtuellen Netzwerks verwendet, und es ist für diese Konfiguration erforderlich.<BR>Das Gatewaysubnetz-CIDR (Anzahl von Adressen) für ExpressRoute muss /28 oder größer sein (/ 27, / 26 usw.). Dadurch stehen in diesem Subnetz genügend IP-Adressen zur Verfügung, damit die Konfiguration funktioniert. Wenn Sie im klassischen Portal das Kontrollkästchen zur Verwendung von ExpressRoute aktiviert haben, wird im Portal ein Gatewaysubnetz mit „/28“ angegeben.  Die Anzahl von CIDR-Adressen kann im klassischen Portal nicht angepasst werden. Das Gatewaysubnetz wird im klassischen Portal als **Gateway** angezeigt, obwohl der tatsächliche Name des erstellten Gatewaysubnetzes eigentlich **GatewaySubnet** lautet. Sie können diesen Namen mithilfe von PowerShell oder im Azure-Portal anzeigen.
 7. Klicken Sie auf das Häkchen am rechten unteren Rand der Seite, damit das virtuelle Netzwerk erstellt wird. Sobald der Vorgang abgeschlossen ist, wird im klassischen Portal auf der Seite **Netzwerke** unter **Status** der Eintrag **Erstellt** angezeigt.
 
-## <a name="a-namegwacreate-the-gateway"></a><a name="gw"></a>Erstellen des Gateways
+## <a name="gw"></a>Erstellen des Gateways
 1. Klicken Sie auf der Seite **Netzwerke** auf das eben erstellte virtuelle Netzwerk, und klicken Sie dann oben auf der Seite auf **Dashboard**.
 2. Klicken Sie unten auf der Seite **Dashboard** auf **Gateway erstellen**, und wählen Sie dann **Dynamisches Routing** aus. Klicken Sie auf **Ja** , um zu bestätigen, dass Sie ein Gateway erstellen möchten.
 3. Bei Beginn der Gatewayerstellung erhalten Sie eine entsprechende Nachricht. Die Gatewayerstellung kann bis zu 45 Minuten dauern.
 4. Verknüpfen Sie Ihr Netzwerk mit einer Verbindung. Gehen Sie gemäß den Anweisungen im Artikel [Verknüpfen von virtuellen Netzwerken mit ExpressRoute-Verbindungen](expressroute-howto-linkvnet-classic.md)vor.
 
-## <a name="a-nameconfigaconfigure-an-existing-classic-vnet-for-expressroute"></a><a name="config"></a>Konfigurieren eines vorhandenen klassischen VNet für ExpressRoute
+## <a name="config"></a>Konfigurieren eines vorhandenen klassischen VNet für ExpressRoute
 Wenn Sie bereits über ein klassisches VNet verfügen, können Sie es im klassischen Portal zum Herstellen einer Verbindung mit ExpressRoute konfigurieren. Die Einstellungen sind mit denen der obigen Abschnitte identisch. Lesen Sie also diese Abschnitte, um sich mit den erforderlichen Einstellungen vertraut zu machen. Wenn Sie parallel bestehende ExpressRoute- und Site-to-Site-Verbindungen erstellen möchten, finden Sie die erforderlichen Schritte in [diesem Artikel](expressroute-howto-coexist-classic.md). Sie unterscheiden sich von den Schritten in diesem Artikel.
 
 1. Das lokale Netzwerk muss vor dem Aktualisieren der übrigen VNet-Einstellungen erstellt werden. Um ein neues lokales Netzwerk zu erstellen, was beim Konfigurieren von ExpressRoute über das klassische Portal erforderlich ist, klicken Sie auf **Neu** **>** **Network Services** **>** **Virtuelles Netzwerk** **>** **Lokales Netzwerk** hinzufügen. Folgen Sie den Schritten des Assistenten zum Erstellen des lokalen Netzwerks.
@@ -73,10 +76,5 @@ Wenn Sie bereits über ein klassisches VNet verfügen, können Sie es im klassis
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen zum Hinzufügen virtueller Computer zu Ihrem virtuellen Netzwerk finden Sie unter [Virtual Machines-Lernpfade](https://azure.microsoft.com/documentation/learning-paths/virtual-machines/).
 * Weitere Informationen zu ExpressRoute finden Sie unter [ExpressRoute – Technische Übersicht](expressroute-introduction.md).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
