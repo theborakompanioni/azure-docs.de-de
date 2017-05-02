@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 04/03/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: f5793f771553df78c1c335ad57e0d64078d98148
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: e16792bb762287bc16c280386981a4d442448674
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -42,11 +42,10 @@ In diesem Lernprogramm lernen Sie Folgendes:
 
 ## <a name="select-a-sql-vm-image-from-the-gallery"></a>Auswählen eines SQL-VM-Image aus dem Katalog
 1. Melden Sie sich mit Ihrem Konto beim [Azure-Portal](https://portal.azure.com) an.
-   
+
    > [!NOTE]
    > Wenn Sie kein Azure-Konto haben, sollten Sie die Seite [Kostenlose einmonatige Testversion](https://azure.microsoft.com/pricing/free-trial/)besuchen.
-   > 
-   > 
+
 2. Klicken Sie im Azure-Portal auf **Neu**. Das Portal wird mit dem Blatt **Neu** geöffnet. Die SQL Server-VM-Vorlagen befinden sich im Marketplace in der Gruppe **Compute**.
 3. Klicken Sie auf dem Blatt **Neu** auf **Compute** und anschließend auf **Alle anzeigen**.
 4. Geben Sie im Textfeld **Filter** die Zeichenfolge „SQL Server“ ein, und drücken Sie die EINGABETASTE.
@@ -58,13 +57,13 @@ In diesem Lernprogramm lernen Sie Folgendes:
 
    > [!TIP]
    > In diesem Tutorial wird die Developer Edition verwendet, weil es sich um eine Edition von SQL Server mit vollem Funktionsumfang handelt, die zu Testzwecken in der Entwicklung kostenlos ist. Sie zahlen nur für die Ausführung der VM.
-   
+
    > [!NOTE]
-   > SQL-VM-Images enthalten die Lizenzkosten für SQL Server in den minutenbezogenen Preisen der von Ihnen erstellten VM (mit Ausnahme der Editionen „Developer“ und „Express“). SQL Server Developer ist kostenlos für die Entwicklung bzw. Tests (nicht für die Produktion), und SQL Express ist für einfache Workloads kostenlos (weniger als 1 GB Arbeitsspeicher, weniger als 10 GB Speicherplatz). Es gibt noch eine andere Option, nämlich die Verwendung von „Bring-Your-Own-License“ (BYOL), bei der Sie nur für die VM zahlen. Diese Imagenamen haben das Präfix {BYOL}. Weitere Informationen zu dieser Option finden Sie unter [Erste Schritte mit SQL Server auf Azure Virtual Machines](virtual-machines-windows-sql-server-iaas-overview.md).
-   > 
-   > 
+   > SQL-VM-Images enthalten die Lizenzkosten für SQL Server in den minutenbezogenen Preisen der von Ihnen erstellten VM (mit Ausnahme der Editionen „Developer“ und „Express“). SQL Server Developer ist kostenlos für die Entwicklung bzw. Tests (nicht für die Produktion), und SQL Express ist für einfache Workloads kostenlos (weniger als 1 GB Arbeitsspeicher, weniger als 10 GB Speicherplatz).
+   > Es gibt noch eine andere Option, nämlich die Verwendung von „Bring-Your-Own-License“ (BYOL), bei der Sie nur für die VM zahlen. Diese Imagenamen haben das Präfix {BYOL}. Weitere Informationen zu diesen Optionen finden Sie unter [Pricing guidance for SQL Server Azure VMs](virtual-machines-windows-sql-server-pricing-guidance.md) (Preisinformationen für virtuelle Azure-Computer unter SQL Server).
+
 7. Stellen Sie unter **Bereitstellungsmodell auswählen** sicher, dass **Resource Manager** ausgewählt ist. Das Resource Manager-Bereitstellungsmodell ist das empfohlene Bereitstellungsmodell für neue virtuelle Computer. Klicken Sie auf **Erstellen**.
-   
+
     ![SQL-VM mit Resource Manager erstellen](./media/virtual-machines-windows-portal-sql-server-provision/azure-compute-sql-deployment-model.png)
 
 ## <a name="configure-the-vm"></a>Konfigurieren der VM
@@ -100,7 +99,7 @@ Geben Sie auf dem Blatt **Grundeinstellungen** die folgenden Informationen an:
 Wählen Sie beim Schritt **Größe** auf dem Blatt **Größe auswählen** eine Größe für den virtuellen Computer aus. Auf dem Blatt werden zuerst die empfohlenen Computergrößen angezeigt. Dies erfolgt basierend auf dem von Ihnen ausgewählten Image.
 
 > [!IMPORTANT]
-> Bei den voraussichtlichen monatlichen Kosten auf dem Blatt **Größe auswählen** sind SQL Server-Lizenzierungskosten nicht berücksichtigt. Hierbei handelt es sich ausschließlich um die Kosten für den virtuellen Computer. Bei der Express Edition und der Developer Edition von SQL Server sind das die voraussichtlichen Gesamtkosten. Bei anderen Editionen können Sie auf der Seite [Virtuelle Windows-Computer – Preise](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) Ihre Zieledition von SQL Server auswählen. 
+> Bei den voraussichtlichen monatlichen Kosten auf dem Blatt **Größe auswählen** sind SQL Server-Lizenzierungskosten nicht berücksichtigt. Hierbei handelt es sich ausschließlich um die Kosten für den virtuellen Computer. Bei der Express Edition und der Developer Edition von SQL Server sind das die voraussichtlichen Gesamtkosten. Bei anderen Editionen können Sie auf der Seite [Virtuelle Windows-Computer – Preise](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) Ihre Zieledition von SQL Server auswählen. Siehe auch die [Preisinformationen für virtuelle Azure-Computer unter SQL Server](virtual-machines-windows-sql-server-pricing-guidance.md).
 
 ![Optionen für die Größe der SQL-VM](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-vm-choose-a-size.png)
 
@@ -108,8 +107,6 @@ Für Produktionsworkloads empfehlen wir die Auswahl der Größe für einen virtu
 
 > [!NOTE]
 > Weitere Informationen zu den Größen von virtuellen Computern finden Sie unter [Größen für virtuelle Computer](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Informationen zu SQL Server-VM-Größen finden Sie unter [Optimale Verfahren für die Leistung für SQL Server auf virtuellen Computern in Azure](virtual-machines-windows-sql-performance.md).
-> 
-> 
 
 Wählen Sie Ihre Computergröße aus, und klicken Sie dann auf **Auswählen**.
 

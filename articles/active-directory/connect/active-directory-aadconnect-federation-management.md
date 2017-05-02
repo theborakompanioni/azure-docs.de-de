@@ -13,12 +13,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2016
+ms.date: 4/4/2016
 ms.author: anandy
 translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: b4b5e1af6c03e1124de78308cab1dad86d06641e
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: 2a64405c0862d09dd487d260a651123eafbcaf99
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -29,6 +29,7 @@ In diesem Artikel wird beschrieben, wie Active Directory-Verbunddienste (AD FS) 
 |:--- |:--- |
 | **Verwalten von AD FS** | |
 | [Reparieren der Vertrauensstellung](#repairthetrust) |Beschreibung des Vorgangs zum Reparieren der Verbundvertrauensstellung mit Office 365 |
+| [Erstellen eines Verbunds mit Azure AD mithilfe einer alternativen Anmelde-ID](#alternateid) | Konfigurieren eines Verbunds mithilfe einer alternativen Anmelde-ID  |
 | [Hinzufügen eines AD FS-Servers](#addadfsserver) |Beschreibung des Vorgangs zum Erweitern einer AD FS-Farm mit einem zusätzlichen AD FS-Server |
 | [Hinzufügen eines AD FS-Webanwendungsproxy-Servers](#addwapserver) |Beschreibung des Vorgangs zum Erweitern einer AD FS-Farm mit einem zusätzlichen WAP-Server (Web Application Proxy) |
 | [Hinzufügen einer Verbunddomäne](#addfeddomain) |Beschreibung des Vorgangs zum Hinzufügen einer Verbunddomäne |
@@ -66,6 +67,22 @@ Mithilfe von Azure AD Connect können Sie den aktuellen Status der AD FS- und Az
 
 > [!NOTE]
 > Azure AD Connect kann nur selbstsignierte Zertifikate reparieren bzw. Maßnahmen dafür ergreifen. Azure AD Connect kann nicht zum Reparieren von Drittanbieterzertifikaten verwendet werden.
+
+## Erstellen eines Verbunds mit Azure AD mithilfe von AlternateID <a name=alternateid></a>
+Es wird empfohlen, lokal und in der Cloud identische Benutzerprinzipalnamen (UPN) zu verwenden. Wenn der lokale UPN eine nicht routingfähige Domäne verwendet (z.B. „Contoso.local“) oder aufgrund von lokalen Anwendungsabhängigkeiten nicht geändert werden kann, wird die Einrichtung einer alternativen Anmelde-ID empfohlen. Alternative Anmelde-IDs bieten die Möglichkeit, eine Anmeldeumgebung zu konfigurieren, in der sich Benutzer mit anderen Attributen als dem UPN anmelden können, z.B. mit der E-Mail-Adresse. Bei der Entscheidung für den Benutzerprinzipalnamen in Azure AD Connect wird standardmäßig das userPrincipalName-Attribut in Active Directory verwendet. Wenn Sie ein anderes Attribut als Benutzerprinzipalnamen auswählen und einen Verbund mit AD FS verwenden, konfiguriert Azure AD Connect AD FS für eine alternative Anmelde-ID. Ein Beispiel für die Auswahl eines anderen Attributs als Benutzerprinzipalnamen finden Sie unten:
+
+![Auswahl des AlternateID-Attributs](media/active-directory-aadconnect-federation-management/attributeselection.png)
+
+Das Konfigurieren einer alternativen Anmelde-ID für AD FS besteht aus zwei Hauptschritten:
+1. **Konfigurieren der richtigen Gruppe von Ausstellungsansprüchen:** Die Ausstellungsanspruchsregeln auf der vertrauenden Seite bei Azure AD werden geändert, um das ausgewählte UserPrincipalName-Attribut als alternative ID des Benutzers zu verwenden.
+2. **Aktivieren der alternativen Anmelde-ID in der AD FS-Konfiguration:** Die AD FS-Konfiguration wird aktualisiert, damit AD FS Benutzer in den entsprechenden Gesamtstrukturen mithilfe der alternativen ID suchen kann. Diese Konfiguration wird für AD FS unter Windows Server 2012 R2 (mit KB2919355) oder höher unterstützt. Wenn die AD FS-Server unter 2012 R2 ausgeführt werden, überprüft Azure AD Connect das Vorhandensein des erforderlichen KB-Updates. Wenn das KB-Update nicht installiert ist, wird nach Abschluss der Konfiguration eine Warnung angezeigt, wie unten dargestellt:
+
+    ![Warnung zu fehlendem KB-Update unter 2012 R2](media/active-directory-aadconnect-federation-management/kbwarning.png)
+
+    Installieren Sie zur Korrektur der Konfiguration bei fehlendem KB-Update das erforderliche Update [KB2919355](http://go.microsoft.com/fwlink/?LinkID=396590), und reparieren Sie dann die Vertrauensstellung mithilfe der Informationen unter [AAD reparieren und AD FS-Vertrauensstellung](#repairthetrust).
+
+> [!NOTE]
+> Weitere Informationen zur alternativen Anmelde-ID sowie Schritte zur manuellen Konfiguration finden Sie unter [Konfigurieren alternativer Anmelde-IDs](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configuring-alternate-login-id)
 
 ## Hinzufügen eines AD FS-Servers <a name=addadfsserver></a>
 

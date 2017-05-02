@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 03/28/2017
 ms.author: cfowler
 translationtype: Human Translation
-ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
-ms.openlocfilehash: 22966659db3951316dca11fd555e07a183114062
-ms.lasthandoff: 04/04/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: c32cb52e4bb7bacde20e21820f277b4e86877e74
+ms.lasthandoff: 04/25/2017
 
 ---
 # <a name="create-a-nodejs-application-on-web-app"></a>Erstellen einer Node.js-Anwendung in einer Web-App
@@ -148,7 +148,7 @@ Nach Erstellung des App Service-Plans zeigt die Azure-Befehlszeilenschnittstelle
 
 Nachdem Sie nun einen App Service-Plan erstellt haben, können Sie innerhalb des App Service-Plans `quickStartPlan` eine Web-App erstellen. Die Web-App bietet eine Hostingumgebung zum Bereitstellen unseres Codes sowie eine URL, unter der wir uns die bereitgestellte Anwendung ansehen können. Erstellen Sie die Web-App mit dem Befehl [az appservice web create](/cli/azure/appservice/web#create).
 
-Ersetzen Sie im weiter unten angegebenen Befehl den Platzhalter „<app_name>“ durch Ihren eigenen eindeutigen App-Namen. Da der App-Name als DNS-Standardwebsite für die Web-App verwendet wird, muss er für alle Apps in Azure eindeutig sein. Später können Sie der Web-App einen beliebigen benutzerdefinierten DNS-Eintrag zuordnen, bevor Sie sie für Ihre Benutzer verfügbar machen.
+Ersetzen Sie im unten stehenden Befehl den Platzhalter `<app_name>` durch Ihren eigenen eindeutigen App-Namen. Da `<app_name>` als DNS-Standardwebsite für die Web-App verwendet wird, muss er für alle Apps in Azure eindeutig sein. Später können Sie der Web-App einen beliebigen benutzerdefinierten DNS-Eintrag zuordnen, bevor Sie sie für Ihre Benutzer verfügbar machen.
 
 ```azurecli
 az appservice web create --name <app_name> --resource-group myResourceGroup --plan quickStartPlan
@@ -296,7 +296,7 @@ Sehen Sie sich die soeben erstellte Web-App im Azure-Portal an.
 
 Melden Sie sich hierzu bei [https://portal.azure.com](https://portal.azure.com) an.
 
-Klicken Sie im linken Menü auf **App Service** und anschließend auf den Namen Ihrer Azure-Web-App.
+Klicken Sie im linken Menü auf **App Services** und anschließend auf den Namen Ihrer Azure-Web-App.
 
 ![Portalnavigation zur Azure-Web-App](./media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-list.png)
 
@@ -321,3 +321,4 @@ Die Registerkarten auf dem Blatt zeigen die vielen tollen Features, mit denen Si
 ## <a name="next-steps"></a>Nächste Schritte
 
 Machen Sie sich mit vorgefertigten [Azure CLI-Beispielen](app-service-cli-samples.md) vertraut.
+

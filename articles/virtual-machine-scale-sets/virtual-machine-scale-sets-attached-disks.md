@@ -13,12 +13,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 2/6/2017
+ms.date: 4/25/2017
 ms.author: guybo
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 91d36d5321f455a2af31093fa460ddf6640942d4
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: d991adb8fa8f71a8785327be244ad9749a837dfd
+ms.lasthandoff: 04/26/2017
 
 
 ---
@@ -58,10 +58,21 @@ Eine weitere Möglichkeit zum Erstellen einer Skalierungsgruppe mit angefügten 
 Ein vollständiges Beispiel für eine Skalierungsgruppenvorlage mit einem angefügten Datenträger, die Sie direkt bereitstellen können, finden Sie hier: [https://github.com/chagarw/MDPP/tree/master/101-vmss-os-data](https://github.com/chagarw/MDPP/tree/master/101-vmss-os-data).
 
 ## <a name="adding-a-data-disk-to-an-existing-scale-set"></a>Hinzufügen eines Datenträgers zu einer vorhandenen Skalierungsgruppe
+> [!NOTE]
+>  Sie können nur Datenträger an eine Skalierungsgruppe anfügen, die mit [Azure Managed Disks](./virtual-machine-scale-sets-managed-disks.md) erstellt wurde.
+
 Sie können einen Datenträger zu einer VM-Skalierungsgruppe mithilfe des Azure CLI-Befehls _az vmss disk attach_ hinzufügen. Legen Sie eine LUN fest, die noch nicht verwendet wird. Im folgenden CLI-Beispiel wird ein Laufwerk mit 50 GB zu LUN 3 hinzugefügt:
 ```bash
 az vmss disk attach -g dsktest -n dskvmss --size-gb 50 --lun 3
 ```
+
+Im folgenden PowerShell-Beispiel wird ein Laufwerk mit 50 GB zu LUN 3 hinzugefügt:
+```powershell
+$vmss = Get-AzureRmVmss -ResourceGroupName myvmssrg -VMScaleSetName myvmss
+$vmss = Add-AzureRmVmssDataDisk -VirtualMachineScaleSet $vmss -Lun 3 -Caching 'ReadWrite' -CreateOption Empty -DiskSizeGB 50 -StorageAccountType StandardLRS
+Update-AzureRmVmss -ResourceGroupName myvmssrg -Name myvmss -VirtualMachineScaleSet $vmss
+```
+
 > [!NOTE]
 > Verschiedene VM-Größen haben verschiedene Grenzwerte in Bezug auf die Anzahl der angefügten Laufwerke, die sie unterstützen. Lesen Sie vor dem Hinzufügen eines neuen Datenträgers die Informationen unter [Größen für virtuelle Computer in Azure](../virtual-machines/windows/sizes.md).
 

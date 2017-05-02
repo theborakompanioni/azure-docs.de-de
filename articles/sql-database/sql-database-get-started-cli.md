@@ -17,9 +17,9 @@ ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 06b6830b28745b0f6574d7bca5cca7907db8ecb1
-ms.lasthandoff: 04/18/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: fb0cd3898703b9acf54d7ff70774bd090d39f0e5
+ms.lasthandoff: 04/22/2017
 
 ---
 
@@ -45,18 +45,18 @@ Definieren Sie Variablen zur Verwendung in den Skripts dieses Schnellstarts.
 
 ```azurecli
 # The data center and resource name for your resources
-resourcegroupname = myResourceGroup
-location = westeurope
+export resourcegroupname = myResourceGroup
+export location = westeurope
 # The logical server name: Use a random value or replace with your own value (do not capitalize)
-servername = server-$RANDOM
+export servername = server-$RANDOM
 # Set an admin login and password for your database
-adminlogin = ServerAdmin
-password = ChangeYourAdminPassword1
+export adminlogin = ServerAdmin
+export password = ChangeYourAdminPassword1
 # The ip address range that you want to allow to access your DB
-startip = "0.0.0.0"
-endip = "0.0.0.1"
+export startip = "0.0.0.0"
+export endip = "0.0.0.1"
 # The database name
-databasename = mySampleDatabase
+export databasename = mySampleDatabase
 ```
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
@@ -99,7 +99,11 @@ az sql db create --resource-group $resourcegroupname --server $servername \
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Andere Schnellstarts dieser Sammlung bauen auf diesem Schnellstart auf. Wenn Sie planen, mit den nachfolgenden Schnellstarts oder Tutorials fortzufahren, sollten Sie die in diesem Schnellstart erstellten Ressourcen nicht bereinigen. Falls Sie nicht fortfahren möchten, können Sie den folgenden Befehl ausführen, um alle erstellten Ressourcen dieses Schnellstarts zu löschen.
+Andere Schnellstarts dieser Sammlung bauen auf diesem Schnellstart auf. 
+
+> [!TIP]
+> Wenn Sie planen, mit den nachfolgenden Schnellstarts fortzufahren, sollten Sie die in diesem Schnellstart erstellten Ressourcen nicht bereinigen. Falls Sie nicht fortfahren möchten, können Sie die folgenden Schritte ausführen, um alle erstellten Ressourcen dieses Schnellstarts im Azure-Portal zu löschen.
+>
 
 ```azurecli
 az group delete --name $resourcegroupname
@@ -107,12 +111,15 @@ az group delete --name $resourcegroupname
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zum Herstellen einer Verbindung und Durchführen von Abfragen mit SQL Server Management Studio finden Sie unter [Verbinden und Abfragen mit SSMS](sql-database-connect-query-ssms.md).
-- Informationen zum Herstellen einer Verbindung mit Visual Studio finden Sie unter [Verbinden und Abfragen mit Visual Studio Code](sql-database-connect-query-vscode.md).
-- Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit .NET finden Sie unter [Verbinden und Abfragen mit .NET](sql-database-connect-query-dotnet.md).
-- Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit PHP finden Sie unter [Verbinden und Abfragen mit PHP](sql-database-connect-query-php.md).
-- Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit Node.js finden Sie unter [Verbinden und Abfragen mit Node.js](sql-database-connect-query-nodejs.md).
-- Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit Java finden Sie unter [Verbinden und Abfragen mit Java](sql-database-connect-query-java.md).
-- Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit Python finden Sie unter [Verbinden und Abfragen mit Python](sql-database-connect-query-python.md).
-- Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit Ruby finden Sie unter [Verbinden und Abfragen mit Ruby](sql-database-connect-query-ruby.md).
+Sie besitzen nun eine Datenbank, können eine Verbindung herstellen und Abfragen mit Ihren bevorzugten Tools ausführen. Weitere Informationen erhalten Sie, indem Sie eines der folgenden Tools auswählen:
+
+- [SQL Server Management Studio](sql-database-connect-query-ssms.md)
+- [Visual Studio Code](sql-database-connect-query-vscode.md)
+- [.NET](sql-database-connect-query-dotnet.md)
+- [PHP](sql-database-connect-query-php.md)
+- [Node.js](sql-database-connect-query-nodejs.md)
+- [Java](sql-database-connect-query-java.md)
+- [Python](sql-database-connect-query-python.md)
+- [Ruby](sql-database-connect-query-ruby.md)
+
 

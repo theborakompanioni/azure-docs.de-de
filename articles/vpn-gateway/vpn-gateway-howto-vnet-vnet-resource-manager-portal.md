@@ -13,24 +13,18 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/11/2017
+ms.date: 04/21/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 4133e2e90f51d141044f2ac064c60df1263b498e
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 50934bcc065b4039467d7371d4bbac11f5933888
+ms.lasthandoff: 04/25/2017
 
 
 ---
-# <a name="configure-a-vnet-to-vnet-connection-using-the-azure-portal"></a>Konfigurieren einer VNet-zu-VNet-Verbindung über das Azure-Portal
+# <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-the-azure-portal"></a>Konfigurieren einer VNET-zu-VNET-VPN-Gatewayverbindung über das Azure-Portal
 
-Das Verbinden eines virtuellen Netzwerks mit einem anderen virtuellen Netzwerk (VNet-zu-VNet) ähnelt dem Verbinden eines VNet mit einem lokalen Standort. Beide Verbindungstypen verwenden ein VPN-Gateway, um einen sicheren Tunnel mit IPsec/IKE bereitzustellen. Die VNet-zu-VNet-Kommunikation kann sogar mit Multi-Site-Verbindungskonfigurationen kombiniert werden. Auf diese Weise können Sie Netzwerktopologien einrichten, die standortübergreifende Konnektivität mit Konnektivität zwischen virtuellen Netzwerken kombinieren.
-
-![v2v-Diagramm](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/v2vrmps.png)
-
-In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie im Rahmen des Resource Manager-Bereitstellungsmodells mithilfe von VPN Gateway und Azure-Portal eine Verbindung zwischen VNets erstellen. Wenn Sie virtuelle Netzwerke mithilfe des Azure-Portals verbinden möchten, müssen sich die VNets im gleichen Abonnement befinden. Falls sich Ihre virtuellen Netzwerke in unterschiedlichen Abonnements befinden, können Sie zur Verbindungsherstellung die [PowerShell-Schritte](vpn-gateway-vnet-vnet-rm-ps.md) verwenden.
-
-[!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)] Wenn Sie eine VNet-zu-VNet-Verbindung mit einem anderen Bereitstellungsmodell, zwischen unterschiedlichen Bereitstellungsmodellen oder mit einem anderen Bereitstellungstool erstellen möchten, können Sie in der folgenden Artikel-Dropdownliste eine Option wählen:
+Dieser Artikel zeigt, wie Sie eine VPN-Gatewayverbindung zwischen virtuellen Netzwerken erstellen. Die virtuellen Netzwerke können sich in derselben oder in unterschiedlichen Regionen befinden und aus demselben oder unterschiedlichen Abonnements stammen. Die Schritte in diesem Artikel gelten für das Resource Manager-Bereitstellungsmodell und das Azure-Portal. Sie können diese Konfiguration auch mit einem anderen Bereitstellungstool oder -modell erstellen. Wählen Sie hierzu in der folgenden Liste eine andere Option:
 
 > [!div class="op_single_selector"]
 > * [Resource Manager – Azure-Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
@@ -41,17 +35,16 @@ In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie im Rahmen des Resou
 >
 >
 
-[!INCLUDE [vpn-gateway-vnetpeeringlink](../../includes/vpn-gateway-vnetpeeringlink-include.md)]
+![v2v-Diagramm](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/v2vrmps.png)
 
+Das Verbinden eines virtuellen Netzwerks mit einem anderen virtuellen Netzwerk (VNet-zu-VNet) ähnelt dem Verbinden eines VNet mit einem lokalen Standort. Beide Verbindungstypen verwenden ein VPN-Gateway, um einen sicheren Tunnel mit IPsec/IKE bereitzustellen. Wenn sich Ihre VNETs in der gleichen Region befinden, kann es hilfreich sein, sie mittels VNET-Peering zu verbinden. Beim VNET-Peering wird kein VPN-Gateway verwendet. Weitere Informationen finden Sie unter [VNet-Peering](../virtual-network/virtual-network-peering-overview.md).
 
-## <a name="about-vnet-to-vnet-connections"></a>Über VNet-zu-VNet-Verbindungen
-Das Verbinden eines virtuellen Netzwerks mit einem anderen virtuellen Netzwerk (VNet-zu-VNet) ähnelt dem Verbinden eines VNet mit einem lokalen Standort. Beide Verbindungstypen verwenden ein Azure VPN Gateway, um einen sicheren Tunnel mit IPSec/IKE bereitzustellen. Die VNets, die Sie verbinden, können sich in verschiedenen Regionen oder unter verschiedenen Abonnements befinden. Beachten Sie Folgendes: Wenn sich Ihre VNets in unterschiedlichen Abonnements befinden, können Sie die Verbindung nicht im Portal herstellen. Stattdessen können Sie [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) verwenden.
-
-Sie können sogar VNet-zu-VNet-Kommunikation mit Konfigurationen für mehrere Standorte kombinieren. Auf diese Weise können Sie Netzwerktopologien einrichten, die wie in der folgenden Abbildung dargestellt standortübergreifende Konnektivität mit Konnektivität zwischen virtuellen Netzwerken kombinieren:
+Die VNET-zu-VNET-Kommunikation kann mit Konfigurationen für mehrere Standorte kombiniert werden. Auf diese Weise können Sie Netzwerktopologien einrichten, die wie in der folgenden Abbildung dargestellt standortübergreifende Konnektivität mit Konnektivität zwischen virtuellen Netzwerken kombinieren:
 
 ![Informationen zu Verbindungen](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/aboutconnections.png "Informationen zu Verbindungen")
 
 ### <a name="why-connect-virtual-networks"></a>Gründe für Verbindungen zwischen virtuellen Netzwerken
+
 Aus den folgenden Gründen empfiehlt sich das Herstellen von Verbindungen zwischen virtuellen Netzwerken:
 
 * **Regionsübergreifende Georedundanz und Geopräsenz**
@@ -62,10 +55,10 @@ Aus den folgenden Gründen empfiehlt sich das Herstellen von Verbindungen zwisch
   
   * In derselben Region können Sie Anwendungen mit mehreren Ebenen und mehreren virtuellen Netzwerken einrichten, die aufgrund von Isolations- oder Verwaltungsanforderungen miteinander verbunden sind.
 
-Weitere Informationen zu VNet-zu-VNet-Verbindungen finden Sie am Ende dieses Artikels unter [Informationen zu VNet-zu-VNet-Verbindungen](#faq).
+Weitere Informationen zu VNet-zu-VNet-Verbindungen finden Sie am Ende dieses Artikels unter [Häufig gestellte Fragen zu VNet-zu-VNet-Verbindungen](#faq) . Beachten Sie Folgendes: Wenn sich Ihre VNets in unterschiedlichen Abonnements befinden, können Sie die Verbindung nicht im Portal herstellen. Stattdessen können Sie [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) verwenden.
 
 ### <a name="values"></a>Beispieleinstellungen
-Sie können die Beispielkonfigurationswerte nutzen, wenn Sie diese Schritte als Übung verwenden. Als Beispiel verwenden wir mehrere Adressräume für die einzelnen VNets. Bei VNet-zu-VNet-Konfigurationen werden jedoch nicht mehrere Adressräume benötigt.
+Sie können die Beispieleinstellungswerte nutzen, wenn Sie diese Schritte als Übung verwenden. Als Beispiel verwenden wir mehrere Adressräume für die einzelnen VNets. Bei VNet-zu-VNet-Konfigurationen werden jedoch nicht mehrere Adressräume benötigt.
 
 **Werte für TestVNet1:**
 
@@ -187,7 +180,7 @@ Wenn Sie auf eine der Verbindungen doppelklicken, erhalten Sie weitere Informati
 
 ![Zusammenfassung](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/essentials.png "Zusammenfassung")
 
-## <a name="faq"></a>Informationen zu VNet-zu-VNet-Verbindungen
+## <a name="faq"></a>Häufig gestellte Fragen zu VNet-zu-VNet-Verbindungen
 Zeigen Sie die Details zu den häufig gestellten Fragen an, um zusätzliche Informationen zu VNet-zu-VNet-Verbindungen zu erhalten.
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-vnet-vnet-faq-include.md)]

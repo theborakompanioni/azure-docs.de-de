@@ -1,6 +1,6 @@
-Sie können überprüfen, ob die Verbindungserstellung erfolgreich war, indem Sie das **Get-AzureRmVirtualNetworkGatewayConnection**-Cmdlet mit oder ohne **-Debug**-Zusatz verwenden. 
+Sie können überprüfen, ob die Verbindungserstellung erfolgreich war, indem Sie das Cmdlet „Get-AzureRmVirtualNetworkGatewayConnection“ mit oder ohne den Zusatz „-Debug“ verwenden. 
 
-1. Verwenden Sie das folgende Cmdlet-Beispiel, und konfigurieren Sie die Werte so, dass sie Ihren eigenen Werten entsprechen. Wählen Sie ggf. die Option „A“ für „Alle ausführen“ aus. In dem Beispiel verweist **-Name** auf den Namen der Verbindung, die Sie erstellt haben und testen möchten.
+1. Verwenden Sie das folgende Cmdlet-Beispiel, und konfigurieren Sie die Werte so, dass sie Ihren eigenen Werten entsprechen. Wählen Sie ggf. die Option „A“ für „Alle ausführen“ aus. In dem Beispiel verweist „-Name“ auf den Namen der Verbindung, die Sie erstellt haben und testen möchten.
 
   ```powershell
   Get-AzureRmVirtualNetworkGatewayConnection -Name MyGWConnection -ResourceGroupName MyRG
@@ -12,4 +12,3 @@ Sie können überprüfen, ob die Verbindungserstellung erfolgreich war, indem Si
   "ingressBytesTransferred": 33509044,
   "egressBytesTransferred": 4142431
   ```
-  

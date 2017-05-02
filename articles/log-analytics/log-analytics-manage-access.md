@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 04/12/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 0a6b5115a4eebfcce14094d82cdcc9579f80def6
-ms.lasthandoff: 04/15/2017
+ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
+ms.openlocfilehash: 5b4a2b7646a2ead1df459c5d9a17d125821c86a5
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -94,13 +94,15 @@ In der folgenden Tabelle sind die Zugriffsmöglichkeiten aufgeführt, die für d
 
 Mit den älteren Log Analytics-Benutzerrollen wird nur der Zugriff auf Aktivitäten gesteuert, die im [Log Analytics-Portal](https://mms.microsoft.com) durchgeführt werden.
 
-Für die folgenden Aktivitäten im Log Analytics-Portal sind ebenfalls Azure-Berechtigungen erforderlich:
+Für die folgenden Aktivitäten sind ebenfalls Azure-Berechtigungen erforderlich:
 
 | Aktion                                                          | Azure-Berechtigungen erforderlich | Hinweise |
 |-----------------------------------------------------------------|--------------------------|-------|
-| Hinzufügen und Entfernen von Verwaltungslösungen                        | Schreibberechtigung für Ressourcengruppe <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | |
+| Hinzufügen und Entfernen von Verwaltungslösungen                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | |
 | Ändern des Tarifs                                       | `Microsoft.OperationalInsights/workspaces/*/write` | |
 | Anzeigen von Daten auf den Kacheln der *Backup*- und *Site Recovery*-Lösungen | Administrator/Co-Administrator | Zugriff auf Ressourcen, die mit dem klassischen Bereitstellungsmodell bereitgestellt werden |
+| Erstellen eines Arbeitsbereichs im Azure-Portal                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/workspaces/*` ||
+
 
 ### <a name="managing-access-to-log-analytics-using-azure-permissions"></a>Verwalten des Zugriffs auf Log Analytics mit Azure-Berechtigungen
 Führen Sie die Schritte unter [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure-Abonnementressourcen](../active-directory/role-based-access-control-configure.md) aus, um den Zugriff auf den Log Analytics-Arbeitsbereich mit Azure-Berechtigungen zu gewähren.

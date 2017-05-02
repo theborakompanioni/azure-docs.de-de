@@ -1,5 +1,5 @@
 ---
-title: "Bewährte Methoden für Resource Manager-Vorlagen | Microsoft Docs"
+title: "Bewährte Methoden für das Erstellen von Resource Manager-Vorlagen | Microsoft-Dokumentation"
 description: "Leitlinien für die Vereinfachung Ihrer Azure Resource Manager-Vorlagen."
 services: azure-resource-manager
 documentationcenter: 
@@ -12,269 +12,317 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
+ms.date: 03/31/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 311eeee882e64bc9fb2e7c1ecb4706de351e7753
-ms.openlocfilehash: c774a249d37c489ad53665ad6432122c8fdd1c32
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: fe52ced5e4dc829b5d1421bf0edcd58cffcaad19
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="best-practices-for-creating-azure-resource-manager-templates"></a>Bewährte Methoden für das Erstellen von Azure Resource Manager-Vorlagen
-Anhand der folgenden Leitfäden können Sie zuverlässige und benutzerfreundliche Resource Manager-Vorlagen erstellen. Diese Leitlinien dienen nur als Vorschläge und nicht als absolute Anforderungen. Für Ihr Szenario sind ggf. Abweichungen von diesen Leitlinien erforderlich.
+Anhand dieser Leitfäden können Sie zuverlässige und benutzerfreundliche Azure Resource Manager-Vorlagen erstellen. Bei diesen Richtlinien handelt es sich lediglich um Vorschläge. Sie müssen nicht zwingend eingehalten werden (es sei denn, es ist etwas anderes angegeben). Für Ihr Szenario muss einer der folgenden Ansätze oder eines der folgenden Beispiel unter Umständen angepasst werden.
 
 ## <a name="resource-names"></a>Ressourcennamen
-Im Allgemeinen arbeiten Sie mit drei Arten von Ressourcennamen:
+Im Allgemeinen arbeiten Sie in Resource Manager mit drei Arten von Ressourcennamen:
 
-1. Ressourcennamen, die eindeutig sein müssen.
-2. Ressourcennamen, die nicht eindeutig sein müssen, wobei Sie jedoch einen Namen angeben möchten, der beim Bestimmen des Kontexts hilft.
-3. Ressourcennamen, die allgemein sein können.
+* Ressourcennamen, die eindeutig sein müssen.
+* Ressourcennamen, die nicht eindeutig sein müssen. Sie möchten jedoch einen Namen angeben, der Sie beim Ermitteln eines ressourcenbasierten Kontexts unterstützt.
+* Ressourcennamen, die allgemein sein können.
 
-Hilfe zum Festlegen einer Benennungskonvention finden Sie unter [Benennungsrichtlinien für die Infrastruktur](../virtual-machines/virtual-machines-windows-infrastructure-naming-guidelines.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Informationen zu Einschränkungen für Ressourcennamen finden Sie unter [Empfohlene Benennungskonventionen für Azure-Ressourcen](../guidance/guidance-naming-conventions.md).
+Hilfe zum Festlegen einer Benennungskonvention finden Sie unter [Benennungsrichtlinien für die Azure-Infrastruktur für Windows-VMs](../virtual-machines/windows/infrastructure-naming-guidelines.md). Informationen zu Einschränkungen für Ressourcennamen finden Sie unter [Empfohlene Benennungskonventionen für Azure-Ressourcen](../guidance/guidance-naming-conventions.md).
 
 ### <a name="unique-resource-names"></a>Eindeutige Ressourcennamen
-Sie müssen einen eindeutigen Ressourcennamen für alle Ressourcentypen angeben, die einen Datenzugriffsendpunkt haben. Es folgen allgemeine Typen, für die ein eindeutiger Name erforderlich ist:
+Sie müssen einen eindeutigen Ressourcennamen für alle Ressourcentypen angeben, die einen Datenzugriffsendpunkt haben. Es folgen allgemeine Ressourcentypen, für die ein eindeutiger Name erforderlich ist:
 
-* Speicherkonto
-* Website
+* Azure Storage<sup>1</sup> 
+* Web-Apps-Funktion von Azure App Service
 * SQL Server
-* Schlüsseltresor
-* Redis-Cache
-* Batch-Konto
-* Traffic Manager
-* Suchdienst
-* HDInsight-Cluster
+* Azure Key Vault
+* Azure Redis Cache
+* Azure Batch
+* Azure Traffic Manager
+* Azure Search
+* Azure HDInsight
 
-Darüber hinaus gilt für Namen von Speicherkonten Folgendes: Kleinbuchstaben, max. 24 Zeichen, keine Bindestriche.
+<sup>1</sup>Für Namen von Speicherkonten gilt darüber hinaus Folgendes: Kleinbuchstaben, max. 24 Zeichen, keine Bindestriche.
 
-Wenn Sie einen Parameter für diese Ressourcennamen angeben, müssen Sie während der Bereitstellung einen eindeutigen Namen raten. Stattdessen können Sie eine Variable erstellen, die mit der [uniqueString()](resource-group-template-functions.md#uniquestring)-Funktion einen Namen generiert. Häufig empfiehlt sich auch, dem Ergebnis von **uniqueString** ein Präfix oder Postfix hinzuzufügen, damit Sie den Ressourcentyp beim Untersuchen des Namens einfacher bestimmen können. Beispielsweise generieren Sie einen eindeutigen Namen für ein Speicherkonto mit der folgenden Variablen:
+Wenn Sie einen Parameter für einen Ressourcennamen angeben, müssen Sie beim Bereitstellen der Ressource einen eindeutigen Namen angeben. Optional können Sie eine Variable erstellen, die mit der [uniqueString()](resource-group-template-functions.md#uniquestring)-Funktion einen Namen generiert. 
 
-    "variables": {
-        "storageAccountName": "[concat(uniqueString(resourceGroup().id),'storage')]"
-    }
+Sie können auch ein Präfix oder Suffix zum **uniqueString**-Ergebnis hinzufügen. Wenn Sie den eindeutigen Namen ändern, können Sie den Ressourcentyp einfacher aus dem Namen ableiten. Beispielsweise können Sie einen eindeutigen Namen für ein Speicherkonto mit der folgenden Variablen generieren:
+
+```json
+"variables": {
+    "storageAccountName": "[concat(uniqueString(resourceGroup().id),'storage')]"
+}
+```
 
 ### <a name="resource-names-for-identification"></a>Ressourcennamen zur Identifizierung
-Für Ressourcentypen, die Sie benennen möchten, ohne Eindeutigkeit gewährleisten zu müssen, geben Sie einen Namen an, der sowohl den Kontext als auch Ressourcentyp identifiziert. Sie sollten einen beschreibenden Namen bereitstellen, anhand dessen Sie ihn in einer Liste mit Ressourcennamen erkennen können. Wenn Sie den Namen der Ressource im Verlauf von Bereitstellungen variieren möchten, verwenden Sie einen Parameter für den Namen:
+Einige Ressourcentypen möchten Sie vielleicht benennen, ihre Namen müssen jedoch nicht eindeutig sein. Für diese Ressourcentypen können Sie einen Namen festlegen, der sowohl den Ressourcenkontext als auch den Ressourcentyp angibt. Geben Sie einen beschreibenden Namen an, der Ihnen die Identifizierung der Ressource in einer Liste von Ressourcen erleichtert. Wenn Sie einen anderen Ressourcennamen für verschiedene Bereitstellungen verwenden müssen, können Sie einen Parameter für den Namen einsetzen:
 
-    "parameters": {
-        "vmName": { 
-            "type": "string",
-            "defaultValue": "demoLinuxVM",
-            "metadata": {
-                "description": "The name of the VM to create."
-            }
+```json
+"parameters": {
+    "vmName": { 
+        "type": "string",
+        "defaultValue": "demoLinuxVM",
+        "metadata": {
+            "description": "The name of the VM to create."
         }
     }
+}
+```
 
-Wenn Sie während der Bereitstellung keinen Namen übergeben müssen, verwenden Sie eine Variable: 
+Wenn Sie während der Bereitstellung keinen Namen übergeben müssen, können Sie eine Variable verwenden: 
 
-    "variables": {
-        "vmName": "demoLinuxVM"
-    }
+```json
+"variables": {
+    "vmName": "demoLinuxVM"
+}
+```
 
-Oder einen hartcodierten Wert:
+Sie können auch einen hartcodierten Wert verwenden:
 
-    {
-      "type": "Microsoft.Compute/virtualMachines",
-      "name": "demoLinuxVM",
-      ...
-    }
+```json
+{
+  "type": "Microsoft.Compute/virtualMachines",
+  "name": "demoLinuxVM",
+  ...
+}
+```
 
 ### <a name="generic-resource-names"></a>Allgemeine Ressourcennamen
-Für Ressourcentypen, auf die hauptsächlich über eine andere Ressource zugegriffen wird, können Sie einen allgemeinen Namen wählen, der in der Vorlage hartcodiert ist. Sie möchten beispielsweise wahrscheinlich keinen anpassbaren Namen für die Firewallregeln eines SQL-Servers angeben.
+Für Ressourcentypen, auf die hauptsächlich über eine andere Ressource zugegriffen wird, können Sie einen allgemeinen Namen wählen, der in der Vorlage hartcodiert ist. Beispielsweise können Sie einen allgemeinen Standardnamen für Firewallregeln auf einer SQL Server-Instanz festlegen:
 
-    {
-        "type": "firewallrules",
-        "name": "AllowAllWindowsAzureIps",
-        ...
-    }
+```json
+{
+    "type": "firewallrules",
+    "name": "AllowAllWindowsAzureIps",
+    ...
+}
+```
 
 ## <a name="parameters"></a>Parameter
-1. Minimieren Sie Parameter nach Möglichkeit. Falls möglich, sollten Sie eine Variable oder ein Literal verwenden. Geben Sie Parameter nur für Folgendes an:
-   
-   * Die Einstellungen, die Sie je nach Umgebung variieren möchten (z.B. SKU, Größe oder Kapazität).
-   * Ressourcennamen, die Sie zur leichteren Identifizierung angeben möchten.
-   * Werte, die Sie häufig nutzen, um andere Aufgaben zu erledigen (z.B. Benutzername des Administrators).
-   * Geheime Schlüssel (z.B. Kennwörter)
-   * Anzahl oder Array von Werten, die beim Erstellen mehrerer Instanzen eines Ressourcentyps verwendet werden.
-2. Parameternamen müssen die **lowerCamel**-Schreibweise aufweisen.
-3. Geben Sie für jeden Parameter in den Metadaten eine Beschreibung an.
-   
-        "parameters": {
-            "storageAccountType": {
-                "type": "string",
-                "metadata": {
-                    "description": "The type of the new storage account created to store the VM disks"
-                }
-            }
-        }
-4. Definieren Sie Standardwerte für Parameter (außer für Kennwörter und SSH-Schlüssel).
-   
-        "parameters": {
-            "storageAccountType": {
-                "type": "string",
-                "defaultValue": "Standard_GRS",
-                "metadata": {
-                    "description": "The type of the new storage account created to store the VM disks"
-                }
-            }
-        }
-5. Verwenden Sie **securestring** für alle Kennwörter und geheimen Schlüssel. 
-   
-        "parameters": {
-            "secretValue": {
-                "type": "securestring",
-                "metadata": {
-                    "description": "Value of the secret to store in the vault"
-                }
-            }
-        }
-6. Vermeiden Sie nach Möglichkeit einen Parameter zum Angeben des **Speicherorts**. Verwenden Sie stattdessen die „location“-Eigenschaft der Ressourcengruppe. Mithilfe des Ausdrucks **resourceGroup().location** für alle Ihre Ressourcen werden die Ressourcen in der Vorlage am selben Speicherort wie die Ressourcengruppe bereitgestellt.
-   
-        "resources": [
-          {
-              "name": "[variables('storageAccountName')]",
-              "type": "Microsoft.Storage/storageAccounts",
-              "apiVersion": "2016-01-01",
-              "location": "[resourceGroup().location]",
-              ...
-          }
-        ]
-   
-     Wenn ein Ressourcentyp nur von einer begrenzten Anzahl von Standorten unterstützt wird, erwägen Sie, einen gültigen Speicherort direkt in der Vorlage anzugeben. Wenn Sie einen „location“-Parameter verwenden müssen, nutzen Sie diesen Parameterwert nach Möglichkeit so umfassend wie möglich mit Ressourcen gemeinsam, die sich wahrscheinlich am selben Speicherort befinden. Bei diesem Ansatz wird der Aufwand seitens der Benutzer zum Angeben von Speicherorten für jeden Ressourcentyp minimiert.
-7. Vermeiden Sie das Verwenden eines Parameters oder einer Variablen für die API-Version eines Ressourcentyps. Ressourceneigenschaften und -werte können je nach Versionsnummer variieren. Mithilfe von IntelliSense kann in Code-Editoren nicht das richtige Schema ermittelt werden, wenn die API-Version auf einen Parameter oder eine Variable festgelegt ist. Stattdessen sollten Sie die API-Version in der Vorlage hartcodieren.
+Die folgenden Informationen können bei der Verwendung von Parametern hilfreich sein:
 
-## <a name="variables"></a>Variablen
-1. Verwenden Sie Variablen für Werte, die Sie mehr als einmal in einer Vorlage verwenden müssen. Wenn ein Wert nur einmal verwendet wird, erleichtert ein hartcodierter Wert das Lesen Ihrer Vorlage.
-2. Im Abschnitt mit den Variablen können Sie die [reference](resource-group-template-functions.md#reference)-Funktion nicht nutzen. Die „reference“-Funktion leitet ihren Wert vom Laufzeitstatus der Ressource ab. Variablen werden dagegen während der erstmaligen Analyse der Vorlage aufgelöst. Erstellen Sie stattdessen Werte, die die **reference**-Funktion direkt in den Abschnitten **resources** oder **outputs** der Vorlage benötigen.
-3. Beziehen Sie Variablen für Ressourcennamen ein, die eindeutig sein müssen (siehe [Ressourcennamen](#resource-names)).
-4. Sie können Variablen in komplexen Objekten gruppieren. Sie können auf einen Wert in einem komplexen Objekt im Format **variable.subentry**verweisen. Das Gruppieren von Variablen hilft beim Nachverfolgen verwandter Variablen und verbessert die Lesbarkeit der Vorlage.
+* Verwenden Sie möglichst wenig Parameter. Verwenden Sie nach Möglichkeit eine Variable oder einen Literalwert. Verwenden Sie Parameter nur in den folgenden Szenarien:
    
-        "variables": {
-            "storage": {
-                "name": "[concat(uniqueString(resourceGroup().id),'storage')]",
-                "type": "Standard_LRS"
+   * Einstellungen, die sie an die Umgebung (SKU, Größe, Kapazität) anpassen möchten.
+   * Ressourcennamen, die Sie zur leichteren Identifizierung angeben möchten
+   * Werte, die Sie häufig nutzen, um andere Aufgaben zu erledigen (z.B. Benutzername des Administrators)
+   * Geheimnisse (z.B. Kennwörter)
+   * Anzahl oder Array von Werten, die beim Erstellen mehrerer Instanzen eines Ressourcentyps verwendet werden
+* Verwenden Sie die camel-Schreibweise für Parameternamen.
+* Geben Sie für jeden Parameter in den Metadaten eine Beschreibung an.
+
+   ```json
+   "parameters": {
+       "storageAccountType": {
+           "type": "string",
+           "metadata": {
+               "description": "The type of the new storage account created to store the VM disks."
+           }
+       }
+   }
+   ```
+
+* Definieren Sie Standardwerte für Parameter (außer für Kennwörter und SSH-Schlüssel):
+   
+   ```json
+   "parameters": {
+        "storageAccountType": {
+            "type": "string",
+            "defaultValue": "Standard_GRS",
+            "metadata": {
+                "description": "The type of the new storage account created to store the VM disks."
             }
-        },
-        "resources": [
-          {
-              "type": "Microsoft.Storage/storageAccounts",
-              "name": "[variables('storage').name]",
-              "apiVersion": "2016-01-01",
-              "location": "[resourceGroup().location]",
-              "sku": {
-                  "name": "[variables('storage').type]"
-              },
-              ...
-          }
-        ]
+        }
+   }
+   ```
+
+* Verwenden Sie **securestring** für alle Kennwörter und Geheimnisse: 
+   
+   ```json
+   "parameters": {
+       "secretValue": {
+           "type": "securestring",
+           "metadata": {
+               "description": "The value of the secret to store in the vault."
+           }
+       }
+   }
+   ```
+
+* Verwenden Sie möglichst keinen Parameter zum Angeben eines Speicherorts. Verwenden Sie stattdessen die **location**-Eigenschaft der Ressourcengruppe. Mithilfe des Ausdrucks **resourceGroup().location** für alle Ihre Ressourcen werden Ressourcen in der Vorlage am selben Speicherort wie die Ressourcengruppe bereitgestellt:
+   
+   ```json
+   "resources": [
+     {
+         "name": "[variables('storageAccountName')]",
+         "type": "Microsoft.Storage/storageAccounts",
+         "apiVersion": "2016-01-01",
+         "location": "[resourceGroup().location]",
+         ...
+     }
+   ]
+   ```
+   
+   Wenn ein Ressourcentyp nur von einer begrenzten Anzahl von Standorten unterstützt wird, können Sie einen gültigen Speicherort direkt in der Vorlage angeben. Wenn Sie einen **location**-Parameter verwenden müssen, nutzen Sie diesen Parameterwert nach Möglichkeit so umfassend wie möglich mit Ressourcen gemeinsam, die sich wahrscheinlich am selben Speicherort befinden. Dadurch werden Benutzer weniger häufig zur Angabe von Speicherortinformationen aufgefordert.
+* Vermeiden Sie das Verwenden eines Parameters oder einer Variablen für die API-Version eines Ressourcentyps. Ressourceneigenschaften und -werte können je nach Versionsnummer variieren. Mithilfe von IntelliSense kann in Code-Editoren nicht das richtige Schema ermittelt werden, wenn die API-Version auf einen Parameter oder eine Variable festgelegt ist. Stattdessen sollten Sie die API-Version in der Vorlage hartcodieren.
+
+## <a name="variables"></a>Variables
+Die folgenden Informationen können bei der Verwendung von Variablen hilfreich sein:
+
+* Verwenden Sie Variablen für Werte, die Sie mehr als einmal in einer Vorlage verwenden müssen. Wenn ein Wert nur einmal verwendet wird, erleichtert ein hartcodierter Wert das Lesen Ihrer Vorlage.
+* Im Abschnitt **variables** können Sie die [reference](resource-group-template-functions.md#reference)-Funktion nicht nutzen. Die **reference**-Funktion leitet ihren Wert aus dem Laufzeitstatus der Ressource ab. Variablen werden jedoch während der ersten Analyse der Vorlage aufgelöst. Erstellen Sie Werte, die die **reference**-Funktion direkt in den Abschnitten **resources** oder **outputs** der Vorlage benötigen.
+* Beziehen Sie Variablen für Ressourcennamen ein, die eindeutig sein müssen (siehe [Ressourcennamen](#resource-names)).
+* Sie können Variablen in komplexen Objekten gruppieren. Sie können auf einen Wert in einem komplexen Objekt im Format **variable.subentry** verweisen. Durch die Gruppierung von Variablen können Sie verwandte Variablen nachverfolgen. Dadurch wird auch die Lesbarkeit der Vorlage verbessert. Hier sehen Sie ein Beispiel:
+   
+   ```json
+   "variables": {
+       "storage": {
+           "name": "[concat(uniqueString(resourceGroup().id),'storage')]",
+           "type": "Standard_LRS"
+       }
+   },
+   "resources": [
+     {
+         "type": "Microsoft.Storage/storageAccounts",
+         "name": "[variables('storage').name]",
+         "apiVersion": "2016-01-01",
+         "location": "[resourceGroup().location]",
+         "sku": {
+             "name": "[variables('storage').type]"
+         },
+         ...
+     }
+   ]
+   ```
    
    > [!NOTE]
    > Ein komplexes Objekt darf keinen Ausdruck enthalten, der auf einen Wert in einem komplexen Objekt verweist. Definieren Sie zu diesem Zweck eine gesonderte Variable.
    > 
    > 
    
-     Weitere Beispiele für das Verwenden komplexer Objekte als Variablen finden Sie unter [Freigeben des Status in Azure Resource Manager-Vorlagen](best-practices-resource-manager-state.md).
+     Fortgeschrittenere Beispiele für das Verwenden komplexer Objekte als Variablen finden Sie unter [Freigeben des Status für und aus Azure Resource Manager-Vorlagen](best-practices-resource-manager-state.md).
 
 ## <a name="resources"></a>Ressourcen
-1. Geben Sie in der Vorlage **Kommentare** für jede Ressource ein, damit andere Mitwirkende den Zweck der Ressource verstehen.
-   
-        "resources": [
-          {
-              "name": "[variables('storageAccountName')]",
-              "type": "Microsoft.Storage/storageAccounts",
-              "apiVersion": "2016-01-01",
-              "location": "[resourceGroup().location]",
-              "comments": "This storage account is used to store the VM disks",
-              ...
-          }
-        ]
-2. Verwenden Sie Tags, um Metadaten zu Ressourcen hinzuzufügen, mit denen Sie Ihre Ressourcen durch weitere Informationen ergänzen können. Beispielsweise können Sie einer Ressource Metadaten zu Abrechnungsdetails hinzufügen. Weitere Informationen finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](resource-group-using-tags.md).
-3. Wenn Sie einen **öffentlichen Endpunkt** in Ihrer Vorlage verwenden (z. B. in Form eines Blobspeichers), dürfen Sie den Namespace **nicht hartcodieren**. Verwenden Sie die **reference**-Funktion, um den Namespace dynamisch abzurufen. Mit diesem Ansatz können Sie die Vorlage in anderen öffentlichen Namespace-Umgebungen bereitstellen, ohne den Endpunkt in der Vorlage manuell zu ändern. Legen Sie die "apiVersion" auf die Version fest, die Sie für das Speicherkonto in der Vorlage verwenden.
-   
-        "osDisk": {
-            "name": "osdisk",
-            "vhd": {
-                "uri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2016-01-01').primaryEndpoints.blob, variables('vmStorageAccountContainerName'), '/',variables('OSDiskName'),'.vhd')]"
-            }
-        }
-   
-     Wenn das Speicherkonto in derselben Vorlage bereitgestellt wird, müssen Sie beim Verweisen auf die Ressource nicht den Namespace des Anbieters angeben. Die vereinfachte Syntax lautet wie folgt:
-   
-        "osDisk": {
-            "name": "osdisk",
-            "vhd": {
-                "uri": "[concat(reference(variables('storageAccountName'), '2016-01-01').primaryEndpoints.blob, variables('vmStorageAccountContainerName'), '/',variables('OSDiskName'),'.vhd')]"
-            }
-        }
-   
-     Wenn Sie andere Werte in der Vorlage mit einem öffentlichen Namespace konfiguriert haben, ändern Sie diese Werte entsprechend der „reference“-Funktion. Beispiel: Die „storageUri“ Eigenschaft des virtuellen Computers „diagnosticsProfile“.
-   
-        "diagnosticsProfile": {
-            "bootDiagnostics": {
-                "enabled": "true",
-                "storageUri": "[reference(concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2016-01-01').primaryEndpoints.blob]"
-            }
-        }
-   
-     Sie können auch auf ein in einer anderen Ressourcengruppe vorhandenes Speicherkonto **verweisen** .
+Die folgenden Informationen können bei der Verwendung von Ressourcen hilfreich sein:
 
-        "osDisk": {
-            "name": "osdisk", 
-            "vhd": {
-                "uri":"[concat(reference(resourceId(parameters('existingResourceGroup'), 'Microsoft.Storage/storageAccounts/', parameters('existingStorageAccountName')), '2016-01-01').primaryEndpoints.blob,  variables('vmStorageAccountContainerName'), '/', variables('OSDiskName'),'.vhd')]"
-            }
-        }
+* Geben Sie in der Vorlage **Kommentare** für jede Ressource ein, damit andere Mitwirkende den Zweck der Ressource verstehen.
+   
+   ```json
+   "resources": [
+     {
+         "name": "[variables('storageAccountName')]",
+         "type": "Microsoft.Storage/storageAccounts",
+         "apiVersion": "2016-01-01",
+         "location": "[resourceGroup().location]",
+         "comments": "This storage account is used to store the VM disks.",
+         ...
+     }
+   ]
+   ```
 
-1. Weisen Sie einem virtuellen Computer nur dann öffentliche IP-Adressen (publicIPAddresses) zu, wenn dies für eine Anwendung erforderlich ist. Verwenden Sie für das Debuggen, die Verwaltung oder administrative Zwecken entweder eingehende NAT-Regeln (inboundNatRules), virtuelle Netzwerkgateways (virtualNetworkGateways) oder eine Jumpbox.
+* Sie können Tags verwenden, um Ressourcen Metadaten hinzuzufügen. Fügen Sie Informationen über Ihre Ressourcen mithilfe von Metadaten hinzu. Beispielsweise können Sie für eine Ressource Metadaten zu Abrechnungsdetails hinzufügen. Weitere Informationen finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](resource-group-using-tags.md).
+* Wenn Sie einen *öffentlichen Endpunkt* in Ihrer Vorlage verwenden (z.B. in Form eines Azure-Blobspeichers), dürfen Sie den Namespace *nicht hartcodieren*. Verwenden Sie die **reference**-Funktion, um den Namespace dynamisch abzurufen. Mit diesem Ansatz können Sie die Vorlage in anderen öffentlichen Namespace-Umgebungen bereitstellen, ohne den Endpunkt in der Vorlage manuell zu ändern. Legen Sie die API-Version auf die Version fest, die Sie für das Speicherkonto in der Vorlage verwenden:
+   
+   ```json
+   "osDisk": {
+       "name": "osdisk",
+       "vhd": {
+           "uri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2016-01-01').primaryEndpoints.blob, variables('vmStorageAccountContainerName'), '/',variables('OSDiskName'),'.vhd')]"
+       }
+   }
+   ```
+   
+   Wenn das Speicherkonto in der Vorlage bereitgestellt wird, die Sie gerade erstellen, müssen Sie beim Verweisen auf die Ressource nicht den Namespace des Anbieters angeben. Hier sehen Sie die vereinfachte Syntax:
+   
+   ```json
+   "osDisk": {
+       "name": "osdisk",
+       "vhd": {
+           "uri": "[concat(reference(variables('storageAccountName'), '2016-01-01').primaryEndpoints.blob, variables('vmStorageAccountContainerName'), '/',variables('OSDiskName'),'.vhd')]"
+       }
+   }
+   ```
+   
+   Wenn die Vorlage andere Werte enthält, die für die Verwendung eines öffentlichen Namespace konfiguriert sind, ändern Sie diese Werte entsprechend der **reference**-Funktion. Beispiel: Sie können die **storageUri**-Eigenschaft des Diagnoseprofils des virtuellen Computers festlegen:
+   
+   ```json
+   "diagnosticsProfile": {
+       "bootDiagnostics": {
+           "enabled": "true",
+           "storageUri": "[reference(concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2016-01-01').primaryEndpoints.blob]"
+       }
+   }
+   ```
+   
+   Sie können auch auf ein in einer anderen Ressourcengruppe vorhandenes Speicherkonto verweisen:
+
+   ```json
+   "osDisk": {
+       "name": "osdisk", 
+       "vhd": {
+           "uri":"[concat(reference(resourceId(parameters('existingResourceGroup'), 'Microsoft.Storage/storageAccounts/', parameters('existingStorageAccountName')), '2016-01-01').primaryEndpoints.blob,  variables('vmStorageAccountContainerName'), '/', variables('OSDiskName'),'.vhd')]"
+       }
+   }
+   ```
+
+* Weisen Sie einem virtuellen Computer nur dann öffentliche IP-Adressen zu, wenn dies für eine Anwendung erforderlich ist. Verwenden Sie zum Herstellen einer Verbindung mit einem virtuellen Computer für das Debuggen, die Verwaltung oder administrative Zwecke entweder NAT-Eingangsregeln, ein Gateway für virtuelle Netzwerke oder eine Jumpbox.
    
      Weitere Informationen zum Herstellen einer Verbindung mit virtuellen Computern finden Sie unter:
    
-   * [Running VMs for an N-tier architecture on Azure](../guidance/guidance-compute-n-tier-vm.md) (Ausführen virtueller Computer in einer Azure-Architektur mit n Ebenen)
-   * [Einrichten des Zugriffs auf WinRM für virtuelle Computer in Azure Resource Manager](../virtual-machines/virtual-machines-windows-winrm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-   * [Ermöglichen des externen Zugriffs auf einen virtuellen Computer über das Azure-Portal](../virtual-machines/virtual-machines-windows-nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-   * [Zulassen des externen Zugriffs auf eine VM mithilfe von PowerShell](../virtual-machines/virtual-machines-windows-nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-   * [Öffnen von Ports und Endpunkten](../virtual-machines/virtual-machines-linux-nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-2. Die Eigenschaft **domainNameLabel** für „publicIPAdresses“ muss eindeutig sein. „domainNameLabel“ muss 3 bis 63 Zeichen lang sein und den Regeln des regulären Ausdrucks `^[a-z][a-z0-9-]{1,61}[a-z0-9]$`entsprechen. Da die „uniqueString“-Funktion eine Zeichenfolge mit 13 Zeichen erstellt, ist der dnsPrefixString-Parameter auf 50 Zeichen beschränkt.
+   * [Run Windows VMs for an N-tier application](../guidance/guidance-compute-n-tier-vm.md) (Ausführen virtueller Windows-Computer in einer Architektur mit n Ebenen in Azure)
+   * [Einrichten des Zugriffs auf WinRM für virtuelle Computer in Azure Resource Manager](../virtual-machines/windows/winrm.md)
+   * [Öffnen von Ports für einen virtuellen Computer in Azure mithilfe des Azure-Portals](../virtual-machines/windows/nsg-quickstart-portal.md)
+   * [Öffnen von Ports und Endpunkten für einen virtuellen Computer in Azure mithilfe von PowerShell](../virtual-machines/windows/nsg-quickstart-powershell.md)
+   * [Öffnen von Ports und Endpunkten für einen virtuellen Linux-Computer mithilfe der Azure CLI](../virtual-machines/virtual-machines-linux-nsg-quickstart.md)
+* Die Eigenschaft **domainNameLabel** für öffentliche IP-Adressen muss eindeutig sein. Der Wert **domainNameLabel** muss 3 bis 63 Zeichen lang sein und den Regeln des regulären Ausdrucks `^[a-z][a-z0-9-]{1,61}[a-z0-9]$` entsprechen. Da die **uniqueString**-Funktion eine Zeichenfolge mit 13 Zeichen erstellt, ist der **dnsPrefixString**-Parameter auf 50 Zeichen beschränkt:
+
+   ```json
+   "parameters": {
+       "dnsPrefixString": {
+           "type": "string",
+           "maxLength": 50,
+           "metadata": {
+               "description": "The DNS label for the public IP address. It must be lowercase. It should match the following regular expression, or it will raise an error: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$"
+           }
+       }
+   },
+   "variables": {
+       "dnsPrefix": "[concat(parameters('dnsPrefixString'),uniquestring(resourceGroup().id))]"
+   }
+   ```
+
+* Verwenden Sie beim Hinzufügen eines Kennworts zu einer benutzerdefinierten Skripterweiterung die **commandToExecute**-Eigenschaft in **protectedSettings**:
    
-        "parameters": {
-            "dnsPrefixString": {
-                "type": "string",
-                "maxLength": 50,
-                "metadata": {
-                    "description": "DNS Label for the Public IP. Must be lowercase. It should match with the following regular expression: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$ or it will raise an error."
-                }
-            }
-        },
-        "variables": {
-            "dnsPrefix": "[concat(parameters('dnsPrefixString'),uniquestring(resourceGroup().id))]"
-        }
-3. Verwenden Sie beim Hinzufügen eines Kennworts zu **customScriptExtension** die **commandToExecute**-Eigenschaft in „protectedSettings“.
-   
-        "properties": {
-            "publisher": "Microsoft.Azure.Extensions",
-            "type": "CustomScript",
-            "typeHandlerVersion": "2.0",
-            "autoUpgradeMinorVersion": true,
-            "settings": {
-                "fileUris": [
-                    "[concat(variables('template').assets, '/lamp-app/install_lamp.sh')]"
-                ]
-            },
-            "protectedSettings": {
-                "commandToExecute": "[concat('sh install_lamp.sh ', parameters('mySqlPassword'))]"
-            }
-        }
+   ```json
+   "properties": {
+       "publisher": "Microsoft.Azure.Extensions",
+       "type": "CustomScript",
+       "typeHandlerVersion": "2.0",
+       "autoUpgradeMinorVersion": true,
+       "settings": {
+           "fileUris": [
+               "[concat(variables('template').assets, '/lamp-app/install_lamp.sh')]"
+           ]
+       },
+       "protectedSettings": {
+           "commandToExecute": "[concat('sh install_lamp.sh ', parameters('mySqlPassword'))]"
+       }
+   }
+   ```
    
    > [!NOTE]
-   > Zum Sicherzustellen der Verschlüsselung von Kennwörtern, die als Parameter an „virtualMachines/extensions“ übergeben werden, verwenden Sie die „protectedSettings“-Eigenschaft der entsprechenden Erweiterungen.
+   > Zum Sicherzustellen der Verschlüsselung von Geheimnissen, die als Parameter an virtuelle Computer und Erweiterungen übergeben werden, verwenden Sie die **protectedSettings**-Eigenschaft der entsprechenden Erweiterungen.
    > 
    > 
 
 ## <a name="outputs"></a>Ausgaben
-Wenn **publicIPAddresses** mit einer Vorlage erstellt wird, sollte diese den Abschnitt **output** enthalten, der Details zur IP-Adresse und den vollständig qualifizierten Domäne zurückgibt. Anhand dieser Ausgabewerte können Sie diese Informationen nach der Bereitstellung problemlos abrufen. Beim Verweisen auf die Ressource verwenden Sie die API-Version, die zu ihrer Erstellung verwendet wurde. 
+Wenn Sie öffentliche IP-Adressen mithilfe einer Vorlage erstellen, sollte diese den Abschnitt **output** enthalten, der Details zur IP-Adresse und den vollständig qualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) zurückgibt. Mit Ausgabewerten können Sie nach der Bereitstellung ganz einfach Details zu öffentlichen IP-Adressen und FQDNs abrufen. Beim Verweisen auf die Ressource verwenden Sie die API-Version, die Sie zu ihrer Erstellung verwendet haben: 
 
-```
+```json
 "outputs": {
     "fqdn": {
         "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses',parameters('publicIPAddressName')), '2016-07-01').dnsSettings.fqdn]",
@@ -287,69 +335,67 @@ Wenn **publicIPAddresses** mit einer Vorlage erstellt wird, sollte diese den Abs
 }
 ```
 
-## <a name="single-template-or-nested-templates"></a>Einzelvorlage oder geschachtelte Vorlagen
-Um Ihre Lösung bereitzustellen, können Sie entweder eine Einzelvorlage oder eine Hauptvorlage mit mehreren geschachtelten Vorlagen verwenden. Geschachtelte Vorlagen sind für komplexere Szenarien üblich. Geschachtelte Vorlagen bieten die folgenden Vorteile:
+## <a name="single-template-vs-nested-templates"></a>Einzelvorlage im Vergleich zu geschachtelten Vorlagen
+Um Ihre Lösung bereitzustellen, können Sie entweder eine Einzelvorlage oder eine Hauptvorlage mit mehreren geschachtelten Vorlagen verwenden. Geschachtelte Vorlagen sind für komplexere Szenarien üblich. Die Verwendung einer geschachtelten Vorlage bietet folgende Vorteile:
 
-1. Die Lösung kann in Zielkomponenten zerlegt werden.
-2. Geschachtelte Vorlagen können mit anderen Hauptvorlagen erneut verwendet werden.
+* Eine Lösung kann in Zielkomponenten unterteilt werden.
+* Geschachtelte Vorlagen können mit anderen Hauptvorlagen erneut verwendet werden.
 
-Wenn Sie Ihren Vorlagenentwurf in mehrere geschachtelte Vorlagen zerlegen möchten, helfen Ihnen die folgenden Leitfäden beim Standardisieren des Entwurfs. Diese Leitlinien basieren auf dem Artikel [Bewährte Methoden für das Entwerfen von Azure-Ressourcen-Manager-Vorlagen](best-practices-resource-manager-design-templates.md) . Der empfohlene Entwurf umfasst die folgenden Vorlagen:
+Wenn Sie sich für die Verwendung geschachtelter Vorlagen entscheiden, unterstützen die folgenden Richtlinien Sie beim Standardisieren des Vorlagenentwurfs. Diese Leitlinien basieren auf dem Artikel [Entwurfsmuster für Azure Resource Manager-Vorlagen bei der Bereitstellung komplexer Lösungen](best-practices-resource-manager-design-templates.md). Wir empfehlen einen Entwurf mit folgenden Vorlagen:
 
 * **Hauptvorlage** (azuredeploy.json). Wird für die Eingabeparameter verwendet.
-* **Vorlage für freigegebene Ressourcen** Stellt die freigegebenen Ressourcen bereit, die von allen anderen Ressourcen (z. B. virtuelles Netzwerk, Verfügbarkeitsgruppen) verwendet werden. Der Ausdruck „dependsOn“ erzwingt, dass diese Vorlage vor den anderen Vorlagen bereitgestellt wird.
-* **Vorlage für optionale Ressourcen** Dient zum bedingten Bereitstellen von Ressourcen basierend auf einem Parameter (z. B. einer Jumpbox).
-* **Vorlage für Memberknotenressourcen** Jeder Instanztyp auf einer Anwendungsebene verfügt über eine eigene Konfiguration. Innerhalb einer Ebene können andere Instanztypen definiert werden (wie z. B. erste Instanz erstellt einen neuen Cluster, zusätzliche Instanzen werden dem vorhandenen Cluster hinzugefügt). Jeder Instanztyp verfügt über eine eigene Bereitstellungsvorlage.
-* **Skripts** Umfassend wiederverwendbare Skripts gibt es für jeden Instanztyp (z. B. zum Initialisieren und Formatieren zusätzlicher Datenträger). Benutzerdefinierte Skripts werden für spezifische Anpassungszwecke erstellt und unterscheiden sich je nach Instanztyp.
+* **Vorlage für freigegebene Ressourcen** Wird für die Bereitstellung von freigegebenen Ressourcen verwendet, die von allen anderen Ressourcen (z.B. dem virtuellen Netzwerk und Verfügbarkeitsgruppen) verwendet werden. Stellen Sie mithilfe des Ausdrucks **dependsOn** sicher, dass diese Vorlage vor den anderen Vorlagen bereitgestellt wird.
+* **Vorlage für optionale Ressourcen** Dient zum bedingten Bereitstellen von Ressourcen basierend auf einem Parameter (z.B. einer Jumpbox).
+* **Vorlage für Memberknotenressourcen** Jeder Instanztyp auf einer Anwendungsebene verfügt über eine eigene Konfiguration. Innerhalb einer Ebene können Sie verschiedene Instanztypen definieren. (Beispiel: Die erste Instanz erstellt einen Cluster, und dem vorhandenen Cluster werden zusätzliche Instanzen hinzugefügt.) Jeder Instanztyp verfügt über eine eigene Bereitstellungsvorlage.
+* **Skripts** Umfassend wiederverwendbare Skripts gibt es für jeden Instanztyp (z. B. zum Initialisieren und Formatieren zusätzlicher Datenträger). Für spezifische Anpassungszwecke erstellte benutzerdefinierte Skripts unterscheiden sich je nach Instanztyp.
 
 ![Geschachtelte Vorlage](./media/resource-manager-template-best-practices/nestedTemplateDesign.png)
 
-Weitere Informationen finden Sie unter [Verwenden von verknüpften Vorlagen mit Azure-Ressourcen-Manager](resource-group-linked-templates.md).
+Weitere Informationen finden Sie unter [Verwenden von verknüpften Vorlagen bei der Bereitstellung von Azure-Ressourcen](resource-group-linked-templates.md).
 
-## <a name="conditionally-link-to-nested-template"></a>Bedingtes Verknüpfen mit geschachtelter Vorlage
-Sie können mit geschachtelten Vorlagen eine bedingte Verknüpfung erstellen, indem Sie einen Parameter verwenden, der Teil des URI der Vorlage wird.
+## <a name="conditionally-link-to-nested-templates"></a>Bedingtes Verknüpfen mit geschachtelten Vorlagen
+Für das bedingte Verknüpfen mit geschachtelten Vorlagen kann ein Parameter verwendet werden. Der Parameter wird Teil des URI für die Vorlage:
 
-    "parameters": {
-        "newOrExisting": {
-            "type": "String",
-            "allowedValues": [
-                "new",
-                "existing"
-            ]
-        }
-    },
-    "variables": {
-        "templatelink": "[concat('https://raw.githubusercontent.com/Contoso/Templates/master/',parameters('newOrExisting'),'StorageAccount.json')]"
-    },
-    "resources": [
-        {
-            "apiVersion": "2015-01-01",
-            "name": "nestedTemplate",
-            "type": "Microsoft.Resources/deployments",
-            "properties": {
-                "mode": "incremental",
-                "templateLink": {
-                    "uri": "[variables('templatelink')]",
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                }
+```json
+"parameters": {
+    "newOrExisting": {
+        "type": "String",
+        "allowedValues": [
+            "new",
+            "existing"
+        ]
+    }
+},
+"variables": {
+    "templatelink": "[concat('https://raw.githubusercontent.com/Contoso/Templates/master/',parameters('newOrExisting'),'StorageAccount.json')]"
+},
+"resources": [
+    {
+        "apiVersion": "2015-01-01",
+        "name": "nestedTemplate",
+        "type": "Microsoft.Resources/deployments",
+        "properties": {
+            "mode": "incremental",
+            "templateLink": {
+                "uri": "[variables('templatelink')]",
+                "contentVersion": "1.0.0.0"
+            },
+            "parameters": {
             }
         }
-    ]
+    }
+]
+```
 
 ## <a name="template-format"></a>Vorlagenformat
-1. Es empfiehlt sich, Ihre Vorlage einer JSON-Gültigkeitsprüfung zu unterziehen, um überflüssige Kommas und runde sowie eckige Klammern zu entfernen, die während der Bereitstellung einen Fehler verursachen können. Nutzen Sie beispielsweise [JSONlint](http://jsonlint.com/) oder ein Linter-Paket für Ihre bevorzugte Bearbeitungsumgebung (Visual Studio Code, Atom, Sublime Text, Visual Studio usw.).
-2. Es ist auch eine gute Idee, Ihren JSON-Code für eine bessere Lesbarkeit zu formatieren. Sie können das JSON-Formatierungsprogramm für Ihren lokalen Editor verwenden. In Visual Studio formatieren Sie das Dokument durch Drücken von **STRG+K, STRG+D**. In Visual Studio Code müssen Sie **ALT+UMSCHALT+F**drücken. Wenn der lokale Editor das Dokument nicht formatiert, können Sie ein [online verfügbares Formatierungsprogramm](https://www.bing.com/search?q=json+formatter)verwenden.
+Es empfiehlt sich, Ihre Vorlage einer JSON-Gültigkeitsprüfung zu unterziehen. Bei dieser Überprüfung können überflüssige Kommas und runde sowie eckige Klammern entfernt werden, die während der Bereitstellung einen Fehler verursachen könnten. Nutzen Sie beispielsweise [JSONlint](http://jsonlint.com/) oder ein Linter-Paket für Ihre bevorzugte Bearbeitungsumgebung (Visual Studio Code, Atom, Sublime Text, Visual Studio).
+
+Es ist auch eine gute Idee, Ihren JSON-Code für eine bessere Lesbarkeit zu formatieren. Sie können das JSON-Formatierungsprogramm für Ihren lokalen Editor verwenden. In Visual Studio formatieren Sie das Dokument durch Drücken von STRG+K, STRG+D****. Drücken Sie in Visual Studio Code ALT+UMSCHALT+F****. Wenn der lokale Editor das Dokument nicht formatiert, können Sie ein [online verfügbares Formatierungsprogramm](https://www.bing.com/search?q=json+formatter)verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Eine Anleitung zum Gestalten Ihrer Lösung für virtuelle Computer finden Sie unter [Ausführen einer Windows-VM in Azure](../guidance/guidance-compute-single-vm.md) und [Ausführen einer Linux-VM in Azure](../guidance/guidance-compute-single-vm-linux.md).
+* Eine Anleitung zum Gestalten Ihrer Lösung für virtuelle Computer finden Sie unter [Run a Windows VM on Azure](../guidance/guidance-compute-single-vm.md) (Ausführen eines virtuellen Windows-Computers in Azure) und [Run a Linux VM on Azure](../guidance/guidance-compute-single-vm-linux.md) (Ausführen eines virtuellen Linux-Computers in Azure).
 * Eine Anleitung zum Einrichten eines Speicherkontos finden Sie unter [Checkliste zu Leistung und Skalierbarkeit von Microsoft Azure Storage](../storage/storage-performance-checklist.md).
-* Hilfe zu virtuellen Netzwerken finden Sie unter [Richtlinien für die Netzwerkinfrastruktur](../virtual-machines/virtual-machines-windows-infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-* Anleitungen dazu, wie Unternehmen Abonnements mit Resource Manager effektiv verwalten können, finden Sie unter [Azure-Unternehmensgerüst - Präskriptive Abonnementgovernance](resource-manager-subscription-governance.md).
-
-
-
-
-<!--HONumber=Dec16_HO2-->
+* Hilfe zu virtuellen Netzwerken finden Sie unter [Richtlinien für die Azure-Netzwerkinfrastruktur für Windows-VMs](../virtual-machines/windows/infrastructure-networking-guidelines.md).
+* Anleitungen dazu, wie Unternehmen Abonnements mit Resource Manager effektiv verwalten können, finden Sie unter [Azure-Unternehmensgerüst – präskriptive Abonnementgovernance](resource-manager-subscription-governance.md).
 
 

@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: jonatul
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 981275da75adb11e8fff16f77e31d4ff86affe1f
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 5cb387c4d1a2a2ae5ee8822241b11e79f53f0d6a
+ms.lasthandoff: 04/25/2017
 
 ---
 
@@ -36,6 +36,13 @@ Eine DNS-Zone wird zum Hosten der DNS-Einträge für eine bestimmte Domäne verw
 
 Bei diesen Anweisungen wird davon ausgegangen, dass Sie die Azure CLI 2.0 bereits installiert und sich dort angemeldet haben. Hilfe erhalten Sie unter [Verwalten von DNS-Zonen mit der Azure CLI 2.0](dns-operations-dnszones-cli.md).
 
+## <a name="create-the-resource-group"></a>Ressourcengruppe erstellen
+
+Vor dem Erstellen der DNS-Zone wird eine Ressourcengruppe für die DNS-Zone erstellt. Hier sehen Sie den Befehl:
+
+```azurecli
+az group create --name MyResourceGroup --location "West US"
+```
 
 ## <a name="create-a-dns-zone"></a>Erstellen einer DNS-Zone
 
@@ -100,6 +107,13 @@ az network dns zone show -g MyResourceGroup -n contoso.com -o json
 
 Diese Namenserver müssen in der Domänennamen-Registrierungsstelle konfiguriert werden (das ist die Stelle, bei der Sie den Domänennamen erworben haben). Die Registrierungsstelle bietet eine Option an, um die Namenserver für die Domäne einzurichten. Weitere Informationen finden Sie unter [Delegieren einer Domäne an Azure DNS](dns-domain-delegation.md).
 
+## <a name="delete-all-resources"></a>Löschen aller Ressourcen
+ 
+Führen Sie die folgenden Schritte aus, um alle in diesem Artikel erstellten Ressourcen zu löschen:
+
+```azurecli
+az group delete --name MyResourceGroup
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

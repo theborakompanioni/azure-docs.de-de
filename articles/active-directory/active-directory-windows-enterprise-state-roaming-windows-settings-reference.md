@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 03/08/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 9b88b18e32e6a5ef6c0a0195e649fe2862583a0b
-ms.openlocfilehash: c2c50ff6e92cf42a7d309afafb01210c4edabbe0
-ms.lasthandoff: 01/05/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 5082ed8d2f41e72fa979b978e2ac0b0840fdcdac
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -89,7 +89,19 @@ Einstellungen, für die kein Roaming oder keine Synchronisierung durchgeführt w
 | **Geräte**: verbundene freigegebene Drucker |X |X |Sonstige |
 | **Edge-Browser**: Leseliste |sync |sync |Intern |
 | **Edge-Browser**: Favoriten |sync |sync |Intern |
-| **Edge-Browser**: alle anderen Edge-Einstellungen |X |X | |
+| **Edge-Browser:** beste Websites <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
+| **Edge-Browser:** eingegebene URLs <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
+| **Edge-Browser:** Einstellungen der Favoritenleiste <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
+| **Edge-Browser:** Schaltfläche „Startseite“ anzeigen <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
+| **Edge-Browser**: Popups blockieren <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
+| **Edge-Browser:** fragen, wie mit jedem Download verfahren werden soll <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
+| **Edge-Browser:**: Speichern von Kennwörtern anbieten <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
+| **Edge-Browser:** „Do Not Track“-Anforderungen (nicht nachverfolgen) senden <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
+| **Edge-Browser:** Formulareinträge speichern <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
+| **Edge-Browser:** Such- und Websitevorschläge während der Eingabe anzeigen <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
+| **Edge-Browser:** Cookies-Voreinstellung <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
+| **Edge-Browser:** Websites das Speichern geschützter Medienlizenzen auf meinem Gerät erlauben <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
+| **Edge-Browser:** Einstellung für die Sprachausgabe <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
 | **Hoher Kontrast**: Ein/Aus |sync |X |Erleichterte Bedienung |
 | **Hoher Kontrast**: Designeinstellungen |sync |X |Erleichterte Bedienung |
 | **Internet Explorer**: geöffnete Registerkarten (URL und Titel) |sync |sync |Internet Explorer |
@@ -158,6 +170,9 @@ Einstellungen, für die kein Roaming oder keine Synchronisierung durchgeführt w
 | **Eingabe**: Tastentöne bei der Eingabe |sync |Sicherung |Sprache |
 | **Eingabe**: Personalisierungsdaten für Bildschirmtastatur |sync |Sicherung |Sprache |
 | **WLAN**: WLAN-Profile (nur WPA) |sync |sync |Kennwörter |
+
+###### <a name="footnote-1"></a>Fußnote 1
+Minimale unterstützte Betriebssystemversion des Windows Creators Updates (Build 15063). 
 
 ## <a name="related-topics"></a>Verwandte Themen
 * [Übersicht über Enterprise State Roaming](active-directory-windows-enterprise-state-roaming-overview.md)

@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 04/03/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
-ms.openlocfilehash: d23b400d8e6db66bc596731770a98e2833302543
-ms.lasthandoff: 04/04/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: ba9c673676fd0b742eb8bd780b67930333b151b3
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -101,6 +101,9 @@ Sie können ein Anwendungsgateway mit REST-APIs, mit PowerShell-Cmdlets, mithilf
 
 Der Preis basiert auf einer Gatewayinstanzgebühr pro Stunde sowie auf einer Datenverarbeitungsgebühr. Der stundenbasierte Gatewaypreis für die WAF-SKU entspricht nicht den Gebühren für die Standard-SKU und ist unter [Application Gateway – Preise](https://azure.microsoft.com/pricing/details/application-gateway/) zu finden. Die Datenverarbeitungsgebühren bleiben unverändert.
 
+## <a name="faq"></a>Häufig gestellte Fragen
+
+Häufig gestellte Fragen zu Application Gateway finden Sie unter [Häufig gestellte Fragen zu Azure Application Gateway](application-gateway-faq.md).
 ## <a name="next-steps"></a>Nächste Schritte
 
 Nachdem Sie sich mit Anwendungsgateways vertraut gemacht haben, können Sie [ein Anwendungsgateway erstellen](application-gateway-create-gateway-portal.md) oder [ein Anwendungsgateway für SSL-Auslagerung erstellen](application-gateway-ssl-arm.md), um einen Lastenausgleich für HTTPS-Verbindungen durchzuführen.
