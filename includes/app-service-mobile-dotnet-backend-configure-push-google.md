@@ -1,6 +1,6 @@
 Verwenden Sie das passende Verfahren für die Art Ihres Back-End-Projekts (.[NET-Back-End](#dotnet) oder [Node.js-Back-End](#nodejs)).
 
-### <a name="a-namedotnetanet-back-end-project"></a><a name="dotnet"></a>.NET-Back-End-Projekt
+### <a name="dotnet"></a>.NET-Back-End-Projekt
 1. Klicken Sie in Visual Studio mit der rechten Maustaste auf das Serverprojekt, und klicken Sie anschließend auf **NuGet-Pakete verwalten**. Suchen Sie nach `Microsoft.Azure.NotificationHubs`, und klicken Sie dann auf **Installieren**. Dadurch wird die Notification Hubs-Clientbibliothek installiert.
 2. Öffnen Sie im Ordner „Controller“ die Datei „TodoItemController.cs“, und fügen Sie die folgenden `using`-Anweisungen hinzu:
 
@@ -48,7 +48,7 @@ Verwenden Sie das passende Verfahren für die Art Ihres Back-End-Projekts (.[NET
 
 4. Veröffentlichen Sie das Serverprojekt erneut.
 
-### <a name="a-namenodejsanodejs-back-end-project"></a><a name="nodejs"></a>Node.js-Back-End-Projekt
+### <a name="nodejs"></a>Node.js-Back-End-Projekt
 1. Falls nicht bereits geschehen, [laden Sie das Schnellstartprojekt herunter](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart), oder verwenden Sie den [Online-Editor im Azure-Portal](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor).
 2. Ersetzen Sie den bestehenden Code in der Datei „todoitem.js“ durch den folgenden Code:
 
@@ -97,8 +97,3 @@ Verwenden Sie das passende Verfahren für die Art Ihres Back-End-Projekts (.[NET
 
     Damit wird eine GCM-Benachrichtigung gesendet, die „item.text“ enthält, wenn ein neues Todo-Element eingefügt wird.
 3. Beim Bearbeiten der Datei auf Ihrem lokalen Computer veröffentlichen Sie das Serverprojekt erneut.
-
-
-<!--HONumber=Dec16_HO2-->
-
-

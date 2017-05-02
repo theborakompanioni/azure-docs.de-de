@@ -25,8 +25,3 @@
 4. Öffnen Sie „Info.plist“ per Doppelklick, und aktivieren Sie unter **Background Modes** (Hintergrundmodi) die Option **RemoteNotifications**.
 
 [Xamarin Device Provisioning]: http://developer.xamarin.com/guides/ios/getting_started/installation/device_provisioning/
-
-
-<!--HONumber=Feb17_HO1-->
-
-

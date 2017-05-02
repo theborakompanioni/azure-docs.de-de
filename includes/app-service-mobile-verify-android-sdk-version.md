@@ -15,8 +15,3 @@ Wenn eines dieser Symptome auftritt, stimmt die Version des in Android Studio in
 3. Klicken Sie im Android Studio-Projektexplorer mit der rechten Maustaste auf den Projektknoten, und wählen Sie **Properties** (Eigenschaften) und dann in der linken Spalte **Android** aus. Stellen Sie sicher, dass für **Project Build Target** (Projektbuildziel) dieselbe SDK-Version wie für **targetSdkVersion** angegeben ist.
 
 In Android Studio wird anders als bei Eclipse die Manifestdatei nicht mehr dazu verwendet, die Ziel-SDK und die SDK-Mindestversion anzugeben.
-
-
-<!--HONumber=Dec16_HO2-->
-
-

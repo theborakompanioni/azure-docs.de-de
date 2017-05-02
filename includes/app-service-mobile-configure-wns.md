@@ -5,8 +5,3 @@
     ![Festlegen des WNS-Schlüssels im Portal](./media/app-service-mobile-configure-wns/mobile-push-wns-credentials.png)
 
 Das Back-End ist jetzt für die Verwendung von WNS zum Senden von Pushbenachrichtigungen konfiguriert.
-
-
-<!--HONumber=Feb17_HO1-->
-
-
