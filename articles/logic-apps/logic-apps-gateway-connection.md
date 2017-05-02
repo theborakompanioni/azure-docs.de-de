@@ -15,26 +15,28 @@ ms.workload: integration
 ms.date: 07/05/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: ef7df25d8080cae41235dffb287906508d4a652d
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
+ms.openlocfilehash: 3e9b95e6e9e84f8c2b615f43783d9fec5a2c09b6
+ms.lasthandoff: 04/14/2017
 
 
 ---
 # <a name="connect-to-on-premises-data-from-logic-apps"></a>Herstellen einer Verbindung mit lokalen Daten für Logik-Apps
 
-Sie können eine Verbindung mit einem lokalen Datengateway für unterstützte Azure Logic Apps-Connectors einrichten, um auf lokale Daten zuzugreifen. Die folgenden Schritte führen Sie durch die Installation und Einrichtung des lokalen Datengateways für den Einsatz mit Ihren Logik-Apps.
-Das lokale Datengateway unterstützt die folgenden Datenquellenverbindungen:
+Sie können eine Verbindung mit einem lokalen Datengateway für unterstützte Azure Logic Apps-Connectors einrichten, um auf lokale Daten zuzugreifen. Die folgenden Schritte führen Sie durch die Installation und Einrichtung des lokalen Datengateways für den Einsatz mit Ihren Logik-Apps. Das lokale Datengateway unterstützt die folgenden Verbindungen:
 
 *   BizTalk Server
-*    DB2  
+*   DB2  
 *   Dateisystem
 *   Informix
 *   MQ
-*    Oracle-Datenbank 
+*   MySQL
+*   Oracle-Datenbank 
 *   SAP-Anwendungsserver 
 *   SAP-Nachrichtenserver
-*    SQL Server
+*   SharePoint nur für HTTP, nicht für HTTPS
+*   SQL Server
+*   Teradata
 
 Weitere Informationen zu diesen Verbindungen finden Sie unter [Connectors für Azure Logic Apps](https://docs.microsoft.com/azure/connectors/apis-list).
 
@@ -42,7 +44,7 @@ Weitere Informationen zu diesen Verbindungen finden Sie unter [Connectors für A
 
 * Um das lokale Datengateway Ihrem Konto (auf Azure Active Directory-Basis) zuzuordnen, müssen Sie eine Geschäfts-, Schul- oder Uni-E-Mail-Adresse in Azure angeben.
 
-* Bei Verwendung eines Microsoft-Kontos wie z.B. @outlook.com können Sie mit Ihrem Azure-Konto eine [Geschäfts-, Schul- oder Uni-E-Mail-Adresse erstellen](../virtual-machines/virtual-machines-windows-create-aad-work-id.md#locate-your-default-directory-in-the-azure-classic-portal).
+* Bei Verwendung eines Microsoft-Kontos wie z.B. @outlook.com können Sie mit Ihrem Azure-Konto eine [Geschäfts-, Schul- oder Uni-E-Mail-Adresse erstellen](../virtual-machines/windows/create-aad-work-id.md#locate-your-default-directory-in-the-azure-classic-portal).
 
 * Das lokale Datengateway muss bereits [auf einem lokalen Computer installiert sein](logic-apps-gateway-install.md).
 
@@ -59,7 +61,7 @@ Führen Sie (sofern noch nicht geschehen) diese Schritte aus, um [das lokale Dat
 Nach der Installation des Gateways müssen Sie es Ihrem Azure-Abonnement zuordnen.
 
 > [!IMPORTANT] 
-> Stellen Sie sicher, dass die Gatewayressource in derselben Azure-Region wie die Logik-App erstellt wird. Wenn Sie sie nicht in derselben Region bereitstellen, kann in der Logik-App nicht auf die Ressource zugegriffen werden. 
+> Stellen Sie sicher, dass die Gatewayressource in derselben Azure-Region wie die Logik-App erstellt wird. Wenn Sie die Gatewayressource nicht in derselben Region bereitstellen, kann in der Logik-App nicht auf die Ressource zugegriffen werden. 
 > 
 
 1. Melden Sie sich mit der Geschäfts-, Schul- oder Uni-E-Mail-Adresse, die Sie bei der Installation des Gateways verwendet haben, bei Azure an.
@@ -85,10 +87,13 @@ Da Ihr Azure-Abonnement jetzt einer Instanz des lokalen Datengateways zugeordnet
 
 Ihre Verbindung ist jetzt für die Verwendung durch Ihre Logik-App konfiguriert.
 
-## <a name="data-gateway-connection-modifications"></a>Änderungen der Datengatewayverbindung
-Nachdem Sie die Datengatewayverbindung der Logik-App hinzugefügt haben, müssen Sie sie möglicherweise ändern, um die spezifischen Einstellungen für diese Verbindung anzupassen. Die Verbindung wird an einer der folgenden beiden Stellen angezeigt:
-* Auf dem Hauptblatt für die Logik-App sollte im Abschnitt „Entwicklungstools“ ein Bereich für API-Verbindungen angezeigt werden. Wenn Sie diesen Bereich auswählen, werden alle API-Verbindungen angezeigt, die der Logik-App zugeordnet sind. Eine davon ist die Datengatewayverbindung. Wenn Sie sie auswählen, können Sie dann die der Verbindung zugeordneten Einstellungen anzeigen und ändern.
-* Durch Auswählen des Hauptblatts „API-Verbindungen“ werden alle API-Verbindungen im Abonnement angezeigt. In dieser Liste ist auch die Datengatewayverbindung aufgeführt. Wenn Sie sie auswählen, können Sie die der Verbindung zugeordneten Einstellungen anzeigen und ändern.
+## <a name="edit-your-data-gateway-connection-settings"></a>Bearbeiten der Einstellungen für die Datengatewayverbindung
+
+Nachdem Sie die Datengatewayverbindung der Logik-App hinzugefügt haben, müssen Sie möglicherweise Änderungen vornehmen, um die spezifischen Einstellungen für diese Verbindung anzupassen. Die Verbindung wird an einer der folgenden beiden Stellen angezeigt:
+
+* Wählen Sie auf dem Blatt für die Logik-App unter **Entwicklungstools** die Option **API-Verbindungen** aus. In dieser Liste sind alle API-Verbindungen aufgeführt, die der Logik-App zugeordnet sind, darunter auch die Datengatewayverbindung. Wählen Sie diese Verbindung aus, um die zugehörigen Einstellungen anzuzeigen und zu ändern.
+
+* Auf dem Hauptblatt für die API-Verbindungen werden alle API-Verbindungen angezeigt, die Ihrem Azure-Abonnement zugeordnet sind, darunter auch die Datengatewayverbindung. Wählen Sie diese Verbindung aus, um die Verbindungseinstellungen anzuzeigen und zu ändern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

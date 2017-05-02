@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: bwren;dairwin
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 389c01234acff068dc90f3cdfdc4916a9d76d244
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
+ms.openlocfilehash: 1937462eef4647b273dfa029c8f18c80d3443ae8
+ms.lasthandoff: 04/14/2017
 
 
 ---
@@ -50,7 +50,7 @@ Die Integration zwischen SCOM und Service Map wird durch Importieren des Managem
 
     ![SCOM-Konfigurations-Assistent](media/oms-service-map/scom-configuration.png)
 
-3. Der erste Schritt im Assistenten ist die Verbindungskonfiguration, bei der Sie die Informationen für Ihren Azure-Dienstprinzipal eingeben. Geben Sie den Mandantennamen, die Mandanten-ID, die Anwendungs-ID (oder den Benutzernamen bzw. die ClientID) und das Kennwort des Dienstprinzipals ein.  [Weitere Informationen zum Erstellen eines Dienstprinzipals](#creating-a-service-principal).
+3. Der erste Schritt im Assistenten ist die Verbindungskonfiguration, bei der Sie die Informationen für Ihren Azure-Dienstprinzipal eingeben. Geben Sie den Mandantennamen, die Mandanten-ID, die Anwendungs-ID (auch als Benutzername bzw. ClientID bezeichnet) und das Kennwort des Dienstprinzipals ein.  [Weitere Informationen zum Erstellen eines Dienstprinzipals](#creating-a-service-principal).
 
     ![SCOM-Konfiguration – Dienstprinzipalname](media/oms-service-map/scom-config-spn.png)
 
@@ -77,8 +77,8 @@ Wenn der OMS-Arbeitsbereich verbunden ist, wird im Bereich „Überwachung“ de
 ![SCOM-Überwachung](media/oms-service-map/scom-monitoring.png)
 
 Der Ordner „Service Map“ umfasst drei Knoten:
-### <a name="all-alerts"></a>Alle Warnungen:
-Hier werden alle Warnungen zur Kommunikation zwischen SCOM und der Service Map-Lösung in OMS angezeigt.
+### <a name="active-alerts"></a>Aktive Warnungen:
+Hier werden alle aktiven Warnungen zur Kommunikation zwischen SCOM und der Service Map-Lösung in OMS angezeigt.
 
 **Hinweis:** Dabei handelt es sich nicht um OMS-Warnungen, die in SCOM angezeigt werden.
 ### <a name="servers"></a>Server:
@@ -108,7 +108,7 @@ Bereich „Erstellen“ > „Regeln“ > „Microsoft.SystemCenter.ServiceMapImp
 
 ## <a name="known-issueslimitations"></a>Bekannte Probleme und Einschränkungen
 Im aktuellen Entwurf:
-1. Benutzer können im Bereich „Erstellen“ in „Service Map-Servergruppe“ zwar manuell Server hinzufügen, die Synchronisierung der Zuordnungen für diese Server mit Service Map erfolgt aber erst während des nächsten Synchronisierungszyklus (Standardmäßig&60; Minuten. Benutzer können die Zeitvorgabe für die Synchronisierung ändern.). 
+1. Benutzer können im Bereich „Erstellen“ in „Service Map-Servergruppe“ zwar manuell Server hinzufügen, die Synchronisierung der Zuordnungen für diese Server mit Service Map erfolgt aber erst während des nächsten Synchronisierungszyklus (Standardmäßig 60 Minuten. Benutzer können die Zeitvorgabe für die Synchronisierung ändern.). 
 2. Benutzer können nur eine Verbindung mit einem einzigen OMS-Arbeitsbereich herstellen.
 
 ## <a name="creating-a-service-principal"></a>Erstellen eines Dienstprinzipals

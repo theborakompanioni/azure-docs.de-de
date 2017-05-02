@@ -8,16 +8,16 @@ manager: timlt
 editor: 
 ms.assetid: 5d2d04d0-fc62-45fa-88b1-61808a2bc691
 ms.service: virtual-machines-linux
-ms.devlang: na
+ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/10/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 48abd505b0c8c7b5ef6c6fbf58c45275a82b2da3
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
+ms.openlocfilehash: 94bcd9543f231b11930962a0dc86a8ead13ad968
+ms.lasthandoff: 04/14/2017
 
 
 ---
@@ -25,9 +25,6 @@ ms.lasthandoff: 04/03/2017
 Sie können einen virtuellen Computer in Azure erstellen, an den mehrere Netzwerkkarten angefügt werden. Häufige Szenarien hierfür sind z.B. unterschiedliche Subnetze für Front-End- und Back-End-Verbindung oder ein Netzwerk für eine Überwachungs- oder Sicherungslösung. Dieser Artikel bietet Informationen zu Schnellbefehlen zum Erstellen eines virtuellen Computers, an den mehrere Netzwerkkarten angefügt werden. Ausführliche Informationen hierzu sowie zum Erstellen von mehreren Netzwerkkarten in Ihren eigenen Bash-Skripts finden Sie in den Informationen zum [Bereitstellen eines virtuellen Computers mit mehreren Netzwerkkarten](../../virtual-network/virtual-network-deploy-multinic-arm-cli.md). Verschiedene [VM-Größen](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) unterstützen eine unterschiedliche Anzahl von Netzwerkkarten, passen Sie die Größe Ihres virtuellen Computers daher entsprechend an.
 
 In diesem Artikel erfahren Sie, wie Sie eine VM mit mehreren Netzwerkkarten mithilfe von Azure CLI 2.0 erstellen. Sie können diese Schritte auch mit [Azure CLI 1.0](multiple-nics-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ausführen.
-
-> [!WARNING]
-> Das Anfügen der Netzwerkkarten muss während der Erstellung des virtuellen Computers erfolgen – Sie können keine Netzwerkkarten an einen vorhandenen virtuellen Computer anfügen. Sie können [einen virtuellen Computer basierend auf dem bzw. den ursprünglichen virtuellen Datenträgern erstellen](copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) und beim Bereitstellen des virtuellen Computers mehrere Netzwerkkarten erstellen.
 
 
 ## <a name="create-supporting-resources"></a>Erstellen von unterstützenden Ressourcen
@@ -113,8 +110,4 @@ Sie können auch `copyIndex()` verwenden und eine Zahl an einen Ressourcennamen 
 Ein vollständiges Beispiel finden Sie unter [Erstellen von mehreren Netzwerkkarten mithilfe von Resource Manager-Vorlagen](../../virtual-network/virtual-network-deploy-multinic-arm-template.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Überprüfen Sie die [Linux-VM-Größen](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , wenn Sie einen virtuellen Computer mit mehreren Netzwerkkarten erstellen. Achten Sie auf die maximale Anzahl von Netzwerkkarten, die von jeder VM-Größe unterstützt wird. 
-
-Denken Sie daran, dass Sie einem vorhandenen virtuellen Computer keine weiteren Netzwerkkarten hinzufügen können. Sie müssen alle Netzwerkkarten während der Bereitstellung des virtuellen Computers erstellen. Planen Sie Ihre Bereitstellungen sorgfältig, um sicherzustellen, dass Sie die erforderliche Netzwerkkonnektivität von Anfang an einberechnen.
-
-
+Überprüfen Sie die [Linux-VM-Größen](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), wenn Sie einen virtuellen Computer mit mehreren Netzwerkkarten erstellen. Achten Sie auf die maximale Anzahl von Netzwerkkarten, die von jeder VM-Größe unterstützt wird. 

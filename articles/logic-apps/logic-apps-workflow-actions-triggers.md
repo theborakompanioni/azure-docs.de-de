@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 11/17/2016
 ms.author: mandia
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 3a240ff317e1b3ea450703965629c08053668856
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
+ms.openlocfilehash: 3f050e2722091aa8b58591cc0c894a6ecb82c3fa
+ms.lasthandoff: 04/14/2017
 
 ---
 
@@ -199,7 +199,7 @@ Die Grundfunktion des APIConnection-Triggers ist mit der des HTTP-Triggers vergl
 |Elementname|Erforderlich|Typ|Beschreibung|  
 |----------------|------------|--------|---------------|  
 |host|Ja||Das von „ApiApp“ gehostete Gateway und die ID.|  
-|method|Ja|string|Mögliche HTTP-Methoden: **GET**, **POST**, **PUT**, **DELETE**, **PATCH** und **HEAD**|  
+|method|Ja|String|Mögliche HTTP-Methoden: **GET**, **POST**, **PUT**, **DELETE**, **PATCH** und **HEAD**|  
 |Abfragen|Nein|Objekt|Stellt die Abfrageparameter dar, die der URL hinzugefügt werden sollen. `"queries" : { "api-version": "2015-02-01" }` fügt der URL beispielsweise `?api-version=2015-02-01` hinzu.|  
 |headers|Nein|Objekt|Stellt die einzelnen Header dar, die an die Anforderung gesendet werden. Verwenden Sie beispielsweise Folgendes, um Sprache und Typ für eine Anforderung festzulegen: `"headers" : { "Accept-Language": "en-us",  "Content-Type": "application/json" }`|  
 |body|Nein|Objekt|Stellt die an den Endpunkt gesendete Nutzlast dar.|  
@@ -431,7 +431,7 @@ HTTP-Aktionen rufen einen angegebenen Endpunkt auf und überprüfen anhand der A
 |headers|Nein|Objekt|Stellt die einzelnen Header dar, die an die Anforderung gesendet werden. Verwenden Sie beispielsweise Folgendes, um Sprache und Typ für eine Anforderung festzulegen: `"headers" : { "Accept-Language": "en-us",  "Content-Type": "application/json" }`|  
 |body|Nein|Objekt|Stellt die an den Endpunkt gesendete Nutzlast dar.|  
 |retryPolicy|Nein|Objekt|Ermöglicht die Anpassung des Wiederholungsverhaltens bei Fehlern vom Typ „4xx“ oder „5xx“.|  
-|operationsOptions|Nein|String|Definiert den Satz spezieller Verhaltensweisen, die überschrieben werden sollen.|  
+|operationsOptions|Nein|string|Definiert den Satz spezieller Verhaltensweisen, die überschrieben werden sollen.|  
 |Authentifizierung|Nein|Objekt|Stellt die Methode dar, mit der die Anforderung authentifiziert werden soll. Ausführliche Informationen zu diesem Objekt finden Sie unter [Ausgehende Authentifizierung von Scheduler](https://docs.microsoft.com/azure/scheduler/scheduler-outbound-authentication). Neben Scheduler wird noch die Eigenschaft `authority` unterstützt. Ohne Angabe wird standardmäßig der Wert `https://login.windows.net` verwendet. Sie können aber eine andere Zielgruppe verwenden (beispielsweise `https://login.windows\-ppe.net`).|  
   
 HTTP-Aktionen \(und APIConnection-Aktionen\) unterstützen Wiederholungsrichtlinien. Eine Wiederholungsrichtlinie gilt für vorübergehende Fehler (HTTP-Statuscodes 408, 429 und 5xx) sowie für Verbindungsausnahmen. Diese Richtlinie wird mithilfe des Objekts *retryPolicy* beschrieben, das wie folgt definiert wird:
@@ -453,7 +453,7 @@ Im folgenden Beispiel wiederholt die Aktion den Abruf der neuesten Nachrichten z
     "type": "http",
     "inputs": {
         "method": "GET",
-        "uri": "uri": "https://mynews.example.com/latest",
+        "uri": "https://mynews.example.com/latest",
         "retryPolicy" : {
             "type": "fixed",
             "interval": "PT30S",
@@ -658,6 +658,28 @@ Die Ausgabe der Aktion `query` ist ein Array mit Elementen aus dem Eingabearray,
 |Aus|Ja|Array|Das Quellarray.|
 |Hierbei gilt:|Ja|String|Die Bedingung, die auf die einzelnen Elemente des Quellarrays angewendet werden soll.|
 
+## <a name="select-action"></a>Aktion select
+
+Mit der Aktion `select` können Sie jedes Element eines Arrays in einen neuen Wert projizieren.
+Zum Konvertieren eines Arrays von Zahlen in ein Array von Objekten können Sie beispielsweise Folgendes verwenden:
+
+```json
+"SelectNumbers" : {
+    "type": "select",
+    "inputs": {
+        "from": [ 1, 3, 0, 5, 4, 2 ],
+        "select": { "number": "@item()" }
+    }
+}
+```
+
+Die Ausgabe der Aktion `select` ist ein Array mit der gleichen Kardinalität wie das Eingabearray, wobei jedes Element entsprechend der Definition durch die `select`-Eigenschaft transformiert wird. Wenn die Eingabe ein leeres Array ist, wird auch ein leeres Array ausgegeben.
+
+|Name|Erforderlich|Typ|Beschreibung|
+|--------|------------|--------|---------------|
+|Aus|Ja|Array|Das Quellarray.|
+|select|Ja|Beliebig|Die Projektion, die auf die einzelnen Elemente des Quellarrays angewendet werden soll.|
+
 ## <a name="terminate-action"></a>Terminate-Aktion
 
 Die Terminate-Aktion beendet die Ausführung des Workflows. Dabei werden alle aktiven Aktionen abgebrochen und alle restlichen Aktionen übersprungen. Mit dem folgenden Codeausschnitt wird beispielsweise eine Ausführung mit dem Status **Fehler** beendet:
@@ -703,6 +725,71 @@ Mit der Compose-Aktion können Sie ein beliebiges Objekt erstellen. Die Ausgabe 
 
 > [!NOTE]
 > Mit der Aktion **Compose** können Sie eine beliebige Ausgabe erstellen. Hierzu zählen unter anderem Objekte und Arrays sowie jede andere Art von Ausgabe, die nativ von Logik-Apps unterstützt wird (etwa XML- und Binärelemente).
+
+## <a name="table-action"></a>Aktion table
+
+Mit der Aktion `table` können Sie ein Array von Elementen in eine **CVS**- oder **HTML**-Tabelle konvertieren.
+
+Beispiel: @triggerBody() ist wie folgt definiert:
+
+```json
+[{
+  "id": 0,
+  "name": "apples"
+},{
+  "id": 1, 
+  "name": "oranges"
+}]
+```
+
+Die Aktion ist wie folgt definiert:
+
+```json
+"ConvertToTable" : {
+    "type": "table",
+    "inputs": {
+        "from": "@triggerBody()",
+        "format": "html"
+    }
+}
+```
+
+Dies ergibt:
+
+<table><thead><tr><th>id</th><th>name</th></tr></thead><tbody><tr><td>0</td><td>apples</td></tr><tr><td>1</td><td>oranges</td></tr></tbody></table>"
+
+Um die Tabelle anzupassen, können Sie die Spalten ausdrücklich angeben. Beispiel:
+
+```json
+"ConvertToTable" : {
+    "type": "table",
+    "inputs": {
+        "from": "@triggerBody()",
+        "format": "html",
+        "columns": [{
+          "header": "produce id",
+          "value": "@item().id"
+        },{
+          "header": "description",
+          "value": "@concat('fresh ', item().name)"
+        }]
+    }
+}
+```
+
+Dies ergibt:
+
+<table><thead><tr><th>produce id</th><th>Beschreibung</th></tr></thead><tbody><tr><td>0</td><td>fresh apples</td></tr><tr><td>1</td><td>fresh oranges</td></tr></tbody></table>"
+
+Wenn der Eigenschaftswert `from` ein leeres Array ist, wird eine leere Tabelle ausgegeben.
+
+|Name|Erforderlich|Typ|Beschreibung|
+|--------|------------|--------|---------------|
+|Aus|Ja|Array|Das Quellarray.|
+|format|Ja|String|Das Format, entweder **CVS** oder **HTML**.|
+|columns|Nein|Array|Die Spalten. Ermöglicht das Überschreiben des Standardformats der Tabelle.|
+|column header|Nein|String|Die Kopfzeile der Spalte.|
+|column value|Ja|String|Der Wert der Spalte.|
 
 ## <a name="workflow-action"></a>Workflow-Aktion   
 
@@ -897,3 +984,4 @@ Erfolgreich ausgewertete Bedingungen werden als `Succeeded` markiert. Aktionen i
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Workflow Service-REST-API](https://docs.microsoft.com/rest/api/logic/workflows)
+

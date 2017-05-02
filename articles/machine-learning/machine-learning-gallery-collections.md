@@ -15,91 +15,89 @@ ms.topic: article
 ms.date: 03/31/2017
 ms.author: roopalik;garye
 translationtype: Human Translation
-ms.sourcegitcommit: 262ee4f092efa11150de61168e6b03c0477f0543
-ms.openlocfilehash: 55f5eb09e13dd645369486affba338759ec6c1d5
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 03f423fff9f4105bdb3a53b245514bde506b9743
+ms.lasthandoff: 04/15/2017
 
 
 ---
-# <a name="discover-and-share-collections-in-the-cortana-intelligence-gallery"></a>Entdecken und Teilen von Sammlungen im Cortana Intelligence-Katalog
+# <a name="discover-and-share-collections-in-cortana-intelligence-gallery"></a>Entdecken und Teilen von Sammlungen im Cortana Intelligence-Katalog
 [!INCLUDE [machine-learning-gallery-item-selector](../../includes/machine-learning-gallery-item-selector.md)]
 
 ## <a name="collections"></a>Sammlungen
-Mit einer **[Sammlung](https://gallery.cortanaintelligence.com/collections)** können Sie Experimente, APIs und andere Katalogelemente gruppieren, die eine bestimmte Lösung oder ein Konzept betreffen. Diese können für die spätere Verwendung oder Freigabe gruppiert werden.
+Mit einer [Sammlung](https://gallery.cortanaintelligence.com/collections) können Sie Experimente, APIs und andere Katalogelemente gruppieren, die Sie für eine bestimmte Lösung oder ein Konzept verwenden. Sie können sie zum späteren Verwenden, zur Bezugnahme oder zum Teilen gruppieren.
 
 ## <a name="discover"></a>Entdecken
-Wenn Sie im Katalog nach Sammlungen suchen möchten, öffnen Sie den [Katalog](http://gallery.cortanaintelligence.com), fahren Sie mit der Maus über **More (Mehr)**, und wählen Sie **Collections (Sammlungen)** aus.
+Wählen Sie zum Durchsuchen von Sammlungen im [Katalog](http://gallery.cortanaintelligence.com) unter **Mehr** die Option **Sammlungen** aus.
 
-![Sammlungen auf der Startseite des Katalogs auswählen](media/machine-learning-gallery-collections/select-collections-in-gallery.png)
+![Auswählen von Sammlungen auf der Startseite des Katalogs](media/machine-learning-gallery-collections/select-collections-in-gallery.png)
 
- Auf der Seite **[Sammlungen](https://gallery.cortanaintelligence.com/collections)**
- finden Sie eine Liste der zuletzt hinzugefügten und beliebtesten Sammlungen.
-Klicken Sie auf **Alle anzeigen**, um alle Sammlungen anzuzeigen.
-Auf dieser Seite können Sie alle Sammlungen im Katalog durchsuchen. Sie können auch suchen, indem Sie links auf der Seite Filterkriterien auswählen und oben Suchbegriffe eingeben.
+Auf der Seite **[Sammlungen](https://gallery.cortanaintelligence.com/collections)** finden Sie eine Liste der zuletzt hinzugefügten und beliebtesten Sammlungen. Wählen Sie **Alle anzeigen** aus, um alle Sammlungen anzuzeigen. Wählen Sie zum Suchen nach einer bestimmten Sammlung **Alle anzeigen** und dann die Filterkriterien aus. Sie können auch Suchbegriffe im Feld **Suchen** im oberen Bereich der Seite „Katalog“ eingeben.
 
- Klicken Sie auf eine beliebige Sammlungen, um die Detailseite der Sammlung zu öffnen und weitere Informationen zu erhalten.
-Auf dieser Seite können Sie Kommentare hinzufügen, Feedback geben oder Fragen im Kommentarbereich stellen. Außerdem können Sie diese Seite auch mit Freunden oder Kollegen teilen, indem Sie die entsprechenden Funktionen von LinkedIn oder Twitter verwenden. Sie können auch per E-Mail einen Link zum Experiment senden, um andere Benutzer zum Besuch der Seite einzuladen.
+Sie erhalten auf der Seite „Sammlungsdetails“ weitere Informationen zu einer Sammlung. Um die Seite „Sammlungsdetails“ zu öffnen, wählen Sie die Sammlung aus. Auf der Seite „Sammlungsdetails“ können Sie im Abschnitt **Kommentare** kommentieren, Feedback abgeben oder Fragen zur Sammlung stellen. Sie können die Sammlung sogar für Ihre Kontakte oder Kollegen auf Twitter oder LinkedIn freigeben. Sie können auch einen Link zur Seite „Sammlungsdetails“ per E-Mail senden, um andere Benutzer zum Besuch der Seite einzuladen.
 
 ![Teilen Sie dieses Element mit Freunden](media/machine-learning-gallery-how-to-use-contribute-publish/share-links.png)
 
 ![Fügen Sie Ihre eigenen Kommentare hinzu](media/machine-learning-gallery-how-to-use-contribute-publish/comments.png)
 
 ## <a name="contribute"></a>Mitwirken
-Sie können eine Sammlung erstellen, die Elemente enthält, deren Besitzer Sie sind oder bei denen es sich um Beiträge aus der Community handelt. Sie können alle Katalogelemente sein, die eine bestimmten Projektmappe oder ein Konzept behandeln
+Sie können eine Sammlung erstellen, die Elemente enthält, deren Besitzer Sie sind oder bei denen es sich um Beiträge aus der Community handelt. Bei einem Element einer Sammlung kann es sich um ein beliebiges Katalogelement handeln, das eine bestimmte Lösung oder ein Konzept behandelt.
 
-Beispielsweise können Sie eine Sammlung verwenden, um Elemente zu einem bestimmten Thema zu gruppieren, oder Sie können die Gruppierung für ein Experiment mit mehreren Schritten durchführen, mit dem ein komplexes Problem gelöst wird.
-Die ersten Sammlungen von Microsoft bestehen aus Machine Learning-Experimentvorlagen mit mehreren Schritten zum Lösen von realen Problemen, z. B. Erkennung von Onlinebetrug, Textklassifizierung, Prognosenerstellung für den Einzelhandel und vorbeugende Wartung.
+Beispielsweise können Sie eine Sammlung verwenden, um Elemente zu einem bestimmten Thema zu gruppieren, oder Sie können ein mehrteiliges Experiment gruppieren, mit dem ein komplexes Problem gelöst wird. Die anfänglichen Sammlungen, die von Microsoft hinzugefügt wurden, bestehen aus Machine Learning-Experimentvorlagen mit mehreren Schritten. Sie können die Vorlagen verwenden, um reale Probleme zu lösen, z.B. Erkennung von Onlinebetrug, Textklassifizierung, Prognosenerstellung für den Einzelhandel oder vorbeugende Wartung.
 
 ### <a name="create-a-collection"></a>Erstellen einer Sammlung
-Führen Sie die folgenden Schritte aus, um eine Sammlung zu erstellen und dem Cortana Intelligence-Katalog als Beitrag hinzuzufügen:
 
-1. Melden Sie sich mit Ihrem Microsoft-Konto am Katalog an.
+1. Melden Sie sich mit Ihrem Microsoft-Konto beim Katalog an.
 
-2.  Klicken Sie auf Ihr Image am oberen Rand des Fensters und dann auf Ihren Namen
+2.  Wählen Sie Ihr Bild oben auf der Seite und dann Ihren Namen aus.
   
-    ![Klicken Sie auf den Namen Ihres Kontos](media/machine-learning-gallery-collections/click-account-name.png)
+    ![Wählen Sie den Namen Ihres Kontos aus](media/machine-learning-gallery-collections/click-account-name.png)
 
-3. Klicken Sie auf **Neues Element**
+3. Wählen Sie **Neues Element** aus.
    
-    ![Klicken Sie auf „Neues Element“](media/machine-learning-gallery-collections/click-new-item.png)
-4. Wählen Sie für **Elementtyp** **Sammlung** aus, versehen Sie die Sammlung mit einem Namen, einer kurzen Zusammenfassung, einer Beschreibung und den Tags, die Benutzern beim Auffinden der Sammlung als Hilfe dienen
+    ![Auswählen von „Neues Element“](media/machine-learning-gallery-collections/click-new-item.png)
+4. Wählen Sie auf der Seite **Beschreibung** für **ELEMENTTYP** die Option **Sammlung** aus. Geben Sie einen Namen für Ihre Sammlung, eine kurze Zusammenfassung, eine ausführliche Beschreibung und beliebige Tags ein, mit denen andere Benutzer Ihre Sammlung finden können.
    
-    ![Geben Sie Informationen für die neue Sammlung ein](media/machine-learning-gallery-collections/create-collection-page-1.png)
-5. Klicken Sie auf **Weiter** – Sie können eine Image-Datei hochladen, oder ein vorhandenes Image hochladen, das mit der Sammlung angezeigt wird. Wählen Sie ein Image aus, anhand dessen Benutzer einfach den Inhalt und den Zweck der Sammlung erkennen können
+    ![Eingeben von Informationen für eine neue Sammlung](media/machine-learning-gallery-collections/create-collection-page-1.png)
+5. Wählen Sie auf der Seite **Bildauswahl** ein Bild aus, das mit der Sammlung angezeigt wird. Sie können eine eigene Bilddatei hochladen oder ein vorgefertigtes Bild auswählen. Wählen Sie ein Bild aus, durch das die Benutzer Inhalt und Zweck der Sammlung erkennen können.
    
-    ![Geben Sie Informationen für die neue Sammlung ein](media/machine-learning-gallery-collections/create-collection-page-2.png)
-6. Klicken Sie auf **Weiter** – Sie können entscheiden, ob die Sammlung **Öffentlich** (kann von jedem angesehen werden), oder **Nicht aufgeführt** (nur Benutzer mit einem direkten Link können die Sammlung sehen) sein soll
+    ![Eingeben von Informationen für eine neue Sammlung](media/machine-learning-gallery-collections/create-collection-page-2.png)
+6. Wählen Sie auf der Seite **Einstellungen** für **Sichtbarkeit**aus, ob die Sammlung **Öffentlich** (jeder kann die Sammlung anzeigen) oder **Nicht aufgeführt** ist (nur Personen mit einem direkten Link zur Sammlung können sie anzeigen).
    
    > [!IMPORTANT]
-   > Wenn Sie eine Sammlung auf **Öffentlich** eingestellt haben, können Sie **Nicht aufgeführt** nicht mehr einstellen.
+   > Nach dem Festlegen einer Sammlung auf **Öffentlich** und der Auswahl von **Erstellen** können Sie diese Sammlung später nicht mehr in **Nicht aufgeführt** ändern.
    > 
    > 
    
-    ![Wählen Sie „Öffentlich“ oder „Nicht aufgeführt“ aus](media/machine-learning-gallery-collections/create-collection-page-3.png)
-7. Klicken Sie auf **Erstellen**
+    ![Wählen Sie „Öffentlich“ oder „Nicht aufgeführt“ aus.](media/machine-learning-gallery-collections/create-collection-page-3.png)
+7. Klicken Sie auf **Erstellen**.
 
-Ihre Sammlung ist jetzt Teil des Cortana Intelligence-Katalogs. Sie wird auf der Seite Ihres Kontos unter der Registerkarte **Collection** angezeigt.
+Ihre Sammlung befindet sich jetzt im Cortana Intelligence-Katalog. Ihre Sammlungen werden auf der Seite Ihres Kontos unter der Registerkarte **Sammlung** angezeigt.
 
 ### <a name="add-items-to-a-collection"></a>Hinzufügen von Elementen zu einer Sammlung
-Sie können der Sammlung Elemente hinzufügen, indem Sie sie öffnen und dann auf **Bearbeiten** und **Element hinzufügen** klicken.
+Um der Sammlung Elemente hinzuzufügen, öffnen Sie die Sammlung, wählen **Bearbeiten** und dann **Element hinzufügen** aus.
 
-![Hinzufügen von Elementen zu einer Sammlung auf der Seite Details](media/machine-learning-gallery-collections/add-to-collection-from-details-page.png)
+![Hinzufügen von Elementen zu einer Sammlung auf der Seite „Details“](media/machine-learning-gallery-collections/add-to-collection-from-details-page.png)
 
-Ihnen wird eine Liste der Elemente angezeigt, die Sie zum Katalog beigetragen haben, oder Sie können den Katalog nach Elementen durchsuchen, die hinzugefügt werden sollen. Klicken Sie auf ein Element, um es auszuwählen. Jedes ausgewählte Element wird der Menge der Elemente hinzugefügt, die hinzugefügt werden sollen – die Schaltfläche **Hinzufügen** gibt an, wie viele Elemente ausgewählt wurden.
+Eine Liste von Elementen, die Sie dem Katalog hinzugefügt haben, wird auf der Seite „Konto“ angezeigt. Sie können auch den Katalog auf Elemente zum Hinzufügen durchsuchen. Wählen Sie die Elemente aus, die Sie hinzufügen möchten. Jedes Element, das Sie auswählen, wird in die hinzuzufügenden Elemente einbezogen. Die Schaltfläche **Hinzufügen** zeigt an, wie viele Elemente Sie ausgewählt haben.
 
 ![Der Sammlung hinzufügen](media/machine-learning-gallery-collections/add-to-collection.png)
 
-Wenn Sie beim Suchen im Katalog auf ein Element stoßen, das Sie einbinden möchten, öffnen Sie es einfach, klicken auf **Zur Sammlung hinzufügen**und geben die Sammlung an, der Sie es hinzufügen möchten.
+Wenn Sie beim Durchsuchen des Katalogs ein Element finden, das Sie hinzufügen möchten, wählen Sie **Der Sammlung hinzufügen** aus, um dieses Element zu öffnen. Wählen Sie die Sammlung aus, der das Element hinzugefügt werden soll.
 
-![Hinzufügen von Elementen zu einer Sammlung auf der Seite Details](media/machine-learning-gallery-collections/add-to-collection-from-item-details.png)
+![Hinzufügen von Elementen zu einer Sammlung auf der Seite „Details“](media/machine-learning-gallery-collections/add-to-collection-from-item-details.png)
 
-Sie können die Zusammenfassung, Beschreibung oder Tags der Sammlung ändern, indem Sie sie öffnen und auf **Bearbeiten**klicken.
-Beim Bearbeiten der Sammlung können Sie auch die Reihenfolge der Elemente in der Sammlung ändern, indem Sie die Pfeiltasten neben einem Element verwenden, um seine Position in der Liste zu ändern. Sie fügen der Sammlung Hinweise hinzu, indem Sie auf die obere rechte Ecke eines Elements klicken und die Option **Notiz hinzufügen/bearbeiten**wählen. Wählen Sie zum Entfernen eines Elements aus der Sammlung **Entfernen**.
+Um die Zusammenfassung, Beschreibung oder Tags der Sammlung zu ändern, öffnen Sie die Sammlung und wählen **Bearbeiten** aus. 
+
+Während Sie Ihre Sammlung bearbeiten, können Sie die Reihenfolge der Elemente in der Sammlung ändern. Verwenden Sie die Pfeilschaltflächen neben einem Element, um es in der Liste nach oben oder unten zu verschieben. 
+
+Um der Sammlung Hinweise hinzuzufügen, wählen Sie die rechte obere Ecke eines Elements und dann die Option **Notiz hinzufügen/bearbeiten** aus. 
+
+Wählen Sie zum Entfernen eines Elements aus der Sammlung **Entfernen**.
 
 ![Ändern der Details einer Sammlung](media/machine-learning-gallery-collections/change-collection-details.png)
 
-**[ZUM KATALOG >>](http://gallery.cortanaintelligence.com)**
+**[Wechseln zum Katalog](http://gallery.cortanaintelligence.com)**
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
-
 
