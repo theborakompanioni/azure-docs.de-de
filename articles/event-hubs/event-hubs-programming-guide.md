@@ -15,9 +15,9 @@ ms.workload: tbd
 ms.date: 02/10/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2dfc38070e5c9bbdfc4c74e2465894a221657564
-ms.openlocfilehash: 1ee20b8f546c43d0351a2065b0628bb9d6b31736
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: d8a767e9149c6c5eca5b22f094ae924135fa7a2d
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -27,7 +27,7 @@ Dieser Artikel erörtert einige gängige Szenarien zum Schreiben von Code mit Az
 ## <a name="event-publishers"></a>Ereignisherausgeber
 Sie senden Ereignisse entweder mit HTTP POST oder über eine AMQP 1.0-Verbindung an einen Event Hub. Welches Verfahren gewählt wird, hängt vom jeweils vorliegenden Szenario ab. AMQP 1.0-Verbindungen werden als vermittelte Verbindungen in Service Bus gemessen und sind besser für Fälle mit häufigeren höheren Nachrichtenvolumen und geringeren Latenzanforderungen geeignet, da sie über einen dauerhaften Messagingkanal verfügen.
 
-Event Hubs werden mit der [NamespaceManager][] -Klasse erstellt und verwaltet. Beim Verwenden der per .NET verwalteten APIs sind die Hauptkonstrukte für die Veröffentlichung von Daten auf Event Hubs die Klassen [EventHubClient](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) und [EventData][]. [EventHubClient][] -Klasse stellt den AMQP-Kommunikationskanal bereit, über den Ereignisse an Event Hub gesendet werden. Die [EventData][] -Klasse stellt ein Ereignis dar und wird verwendet, um Nachrichten auf einem Event Hub zu veröffentlichen. Diese Klasse enthält den Text, einige Metadaten sowie Headerinformationen zum Ereignis. Dem [EventData][] -Objekt werden weitere Eigenschaften hinzugefügt, wenn es Event Hub durchläuft.
+Event Hubs werden mit der [NamespaceManager][] -Klasse erstellt und verwaltet. Beim Verwenden der per .NET verwalteten APIs sind die Hauptkonstrukte für die Veröffentlichung von Daten auf Event Hubs die Klassen [EventHubClient](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) und [EventData][]. [EventHubClient][] stellt den AMQP-Kommunikationskanal bereit, über den Ereignisse an Event Hub gesendet werden. Die [EventData][]-Klasse stellt ein Ereignis dar und wird verwendet, um Nachrichten auf einem Event Hub zu veröffentlichen. Diese Klasse enthält den Text, einige Metadaten sowie Headerinformationen zum Ereignis. Dem [EventData][]-Objekt werden weitere Eigenschaften hinzugefügt, wenn es einen Event Hub durchläuft.
 
 ## <a name="get-started"></a>Erste Schritte
 Die .NET-Klassen, die Event Hubs unterstützen, werden in der Assembly „Microsoft.ServiceBus.dll“ bereitgestellt. Der einfachste Weg zum Verweisen auf die Service Bus-API und Konfigurieren Ihrer Anwendung mit allen Service Bus-Abhängigkeiten ist das Herunterladen des [Service Bus-NuGet-Pakets](https://www.nuget.org/packages/WindowsAzure.ServiceBus). Alternativ dazu können Sie die [Paket-Manager-Konsole](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) in Visual Studio verwenden. Geben Sie hierzu im Fenster der [Paket-Manager-Konsole](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) den folgenden Befehl ein:
@@ -85,7 +85,7 @@ var client = factory.CreateEventHubClient("MyEventHub");
 Es ist wichtig zu beachten, dass für zusätzliche [EventHubClient][] -Objekte, die aus einer Messagingfactory-Instanz erstellt werden, die gleiche zugrunde liegende TCP-Verbindung wiederverwendet wird. Daher verfügen diese Objekte über einen clientseitigen Grenzwert für den Durchsatz. Bei der [Create](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_Create_System_String_) -Methode wird eine einzelne Messagingfactory wiederverwendet. Wenn Sie für einen einzelnen Absender einen sehr hohen Durchsatz benötigen, können Sie mehrere Messagingfactorys und ein [EventHubClient][] -Objekt aus jeder Messagingfactory erstellen.
 
 ## <a name="send-events-to-an-event-hub"></a>Senden von Ereignissen an einen Event Hub
-Sie senden Ereignisse an einen Event Hub, indem Sie eine [EventData][]-Instanz erstellen und per [Send](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_Send_Microsoft_ServiceBus_Messaging_EventData_)-Methode senden. Diese Methode verwendet einen einzelnen [EventData][] -Instanzparameter und sendet ihn synchron an einen Event Hub.
+Sie senden Ereignisse an einen Event Hub, indem Sie eine [EventData][]-Instanz erstellen und diese mit der [Send](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_Send_Microsoft_ServiceBus_Messaging_EventData_)-Methode senden. Diese Methode verwendet einen einzelnen [EventData][]-Instanzparameter und sendet ihn synchron an einen Event Hub.
 
 ## <a name="event-serialization"></a>Ereignisserialisierung
 Die [EventData][]-Klasse verfügt über [vier überladene Konstruktoren](/dotnet/api/microsoft.servicebus.messaging.eventdata#constructors_), für die verschiedene Parameter verwendet werden können, z.B. ein Objekt und Serialisierungsprogramm, ein Bytearray oder ein Datenstrom. Es ist auch möglich, die [EventData][]-Klasse zu instanziieren und den Textdatenstrom danach festzulegen. Wenn Sie JSON mit [EventData][] verwenden, können Sie mit **Encoding.UTF8.GetBytes()** das Bytearray für eine JSON-codierte Zeichenfolge abrufen.
@@ -174,7 +174,7 @@ Im Laufe der Zeit wird somit ein Gleichgewicht erreicht. Diese dynamische Funkti
 Außerdem implementiert die [EventProcessorHost][] -Klasse ein auf Azure Storage-basiertes Verfahren für die Prüfpunktausführung. Bei diesem Verfahren wird der Offset pro Partition gespeichert, damit jeder Consumer ermitteln kann, wie der letzte Prüfpunkt des vorherigen Consumers lautete. Da Partitionen per Lease zwischen Knoten wechseln, ist dies das Synchronisierungsverfahren, das die Auslastungsverteilung ermöglicht.
 
 ## <a name="publisher-revocation"></a>Herausgebersperrung
-Zusätzlich zu den erweiterten Laufzeitfunktionen von [EventProcessorHost][]ermöglichen Event Hubs die Herausgebersperrung, damit bestimmte Herausgeber blockiert werden und keine Ereignisse an einen Event Hub senden können. Diese Funktionen sind besonders nützlich, wenn das Token eines Herausgebers gefährdet ist oder ein Softwareupdate ein unangemessenes Verhalten bewirkt. In diesen Fällen kann die Identität des Herausgebers, die Teil des SAS-Tokens ist, blockiert werden, um das Veröffentlichen von Ereignissen zu verhindern.
+Zusätzlich zu den erweiterten Laufzeitfunktionen von [EventProcessorHost][] ermöglichen Event Hubs die Herausgebersperrung, damit bestimmte Herausgeber blockiert werden und keine Ereignisse an einen Event Hub senden können. Diese Funktionen sind besonders nützlich, wenn das Token eines Herausgebers gefährdet ist oder ein Softwareupdate ein unangemessenes Verhalten bewirkt. In diesen Fällen kann die Identität des Herausgebers, die Teil des SAS-Tokens ist, blockiert werden, um das Veröffentlichen von Ereignissen zu verhindern.
 
 Weitere Informationen zum Sperren von Herausgebern und zum Senden an Event Hubs als Herausgeber finden Sie im Beispiel [Service Bus Event Hubs Large Scale Secure Publishing](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-99ce67ab) (Service Bus Event Hubs – Sicheres Veröffentlichen in größerem Umfang).
 

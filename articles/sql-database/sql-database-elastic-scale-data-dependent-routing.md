@@ -13,11 +13,12 @@ ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/27/2016
-ms.author: torsteng
+ms.date: 03/27/2017
+ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: 5024e5edbfaaf9b070f66e6b009bc6085de3fa7e
-ms.openlocfilehash: b0f700bd742e1a69245711ff7f87d7f35535b3ab
+ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
+ms.openlocfilehash: ff9f3ee4e44f7d0b51a6724304b0ec0f967f7d88
+ms.lasthandoff: 04/14/2017
 
 
 ---
@@ -42,7 +43,7 @@ Anwendungen sollten **ShardMapManager** während der Initialisierung instanziier
 Wenn eine Anwendung die Shardzuordnung selbst nicht ändert, sollten die in der Factorymethode verwendeten Anmeldeinformationen nur Leseberechtigungen für die Datenbank mit der **globalen Shardzuordnung** bereitstellen. Diese Anmeldeinformationen unterscheiden sich in der Regel von Anmeldeinformationen, die für offene Verbindungen zum Shard-Zuordnungs-Manager verwendet werden. Lesen Sie dazu auch [Anmeldeinformationen für den Zugriff auf die Clientbibliothek für elastische Datenbanken](sql-database-elastic-scale-manage-credentials.md). 
 
 ## <a name="call-the-openconnectionforkey-method"></a>Aufrufen der OpenConnectionForKey-Methode
-Die **[ShardMap.OpenConnectionForKey](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey.aspx))**-Methode gibt eine ADO.NET-Verbindung zurück, die für die Befehlsausgabe an die entsprechende Datenbank basierend auf dem Wert des **key**-Parameters vorbereitet ist. Shardinginformationen werden in der Anwendung vom **ShardMapManager** zwischengespeichert. Daher erfordern diese Anforderungen i.d.R. keine Datenbanksuche in der Datenbank mit der **globalen Shardzuordnung**. 
+Die **[ShardMap.OpenConnectionForKey-Methode](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey.aspx)** gibt eine ADO.NET-Verbindung zurück, die für die Befehlsausgabe an die entsprechende Datenbank basierend auf dem Wert des **key**-Parameters vorbereitet ist. Shardinginformationen werden in der Anwendung vom **ShardMapManager** zwischengespeichert. Daher erfordern diese Anforderungen i.d.R. keine Datenbanksuche in der Datenbank mit der **globalen Shardzuordnung**. 
 
     // Syntax: 
     public SqlConnection OpenConnectionForKey<TKey>(
@@ -126,10 +127,5 @@ Transaktionseigenschaften werden für alle Vorgänge lokal auf einem Shard garan
 Weitere Informationen zum Trennen oder erneuten Anfügen eines Shards finden Sie unter [Verwenden der RecoveryManager-Klasse zur Behebung von Problemen mit der Shardzuordnung](sql-database-elastic-database-recovery-manager.md)
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/08/2017
+ms.date: 04/12/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: b3c0cca9a6d5171b1248b0f463cbbb26641fc5f2
-ms.openlocfilehash: a1a689dbfc35107b52f9b84f74ac8bfac0727a0e
-ms.lasthandoff: 02/10/2017
+ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
+ms.openlocfilehash: 4d86910acca16299627c4202ef073c526bd4fc26
+ms.lasthandoff: 04/14/2017
 
 
 ---
@@ -33,22 +33,18 @@ ms.lasthandoff: 02/10/2017
 
 Dieser Artikel unterstützt Sie beim Verknüpfen virtueller Netzwerke (VNETs) mit Azure ExpressRoute-Verbindungen über das Resource Manager-Bereitstellungsmodell und das Azure-Portal. Virtuelle Netzwerke können Teil desselben Abonnements sein oder zu einem anderen Abonnement gehören.
 
-**Informationen zu Azure-Bereitstellungsmodellen**
-
-[!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
-
-## <a name="configuration-prerequisites"></a>Konfigurationsvoraussetzungen
-* Stellen Sie sicher, dass Sie vor Beginn der Konfiguration die Seiten [Voraussetzungen](expressroute-prerequisites.md), [Routinganforderungen](expressroute-routing.md) und [Workflows](expressroute-workflows.md) gelesen haben.
+## <a name="before-you-begin"></a>Voraussetzungen
+* Lesen Sie, bevor Sie mit der Konfiguration beginnen, die Seiten [Voraussetzungen](expressroute-prerequisites.md), [Routinganforderungen](expressroute-routing.md) und [Workflows](expressroute-workflows.md).
 * Sie benötigen eine aktive ExpressRoute-Verbindung.
   
-  * Führen Sie die Schritte zum [Erstellen einer ExpressRoute-Verbindung](expressroute-howto-circuit-arm.md) aus, und lassen Sie sie vom Konnektivitätsanbieter aktivieren.
+  * Führen Sie die Schritte zum [Erstellen einer ExpressRoute-Verbindung](expressroute-howto-circuit-portal-resource-manager.md) aus, und lassen Sie sie vom Konnektivitätsanbieter aktivieren.
   * Stellen Sie sicher, dass privates Azure-Peering für die Verbindung konfiguriert ist. Informationen zum Routing finden Sie unter [Konfigurieren des Routings](expressroute-howto-routing-portal-resource-manager.md) .
   * Vergewissern Sie sich, dass das private Azure-Peering konfiguriert wurde und das BGP-Peering zwischen Ihrem Netzwerk und Microsoft aktiv ist, damit End-to-End-Konnektivität bereitgestellt werden kann.
-  * Vergewissern Sie sich, dass ein virtuelles Netzwerk und ein virtuelles Netzwerkgateway erstellt und vollständig bereitgestellt wurden. Folgen Sie der Anleitung, um ein [VPN-Gateway](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) zu erstellen. (Führen Sie nur die Schritte 1 bis 5 aus.)
+  * Vergewissern Sie sich, dass ein virtuelles Netzwerk und ein virtuelles Netzwerkgateway erstellt und vollständig bereitgestellt wurden. Befolgen Sie die Anweisungen zum [Erstellen eines virtuellen Netzwerkgateways für ExpressRoute](expressroute-howto-add-gateway-resource-manager.md). Für ein virtuelles Netzwerkgateway für ExpressRoute wird der Gatewaytyp „ExpressRoute“ und nicht „VPN“ verwendet.
 
 * Sie können bis zu zehn virtuelle Netzwerke mit einer ExpressRoute-Standardverbindung verknüpfen. Alle virtuellen Netzwerke müssen sich in der gleichen geopolitischen Region befinden, wenn Sie eine ExpressRoute-Standardverbindung verwenden. 
-
 * Wenn Sie das ExpressRoute-Premium-Add-On aktiviert haben, können Sie virtuelle Netzwerke außerhalb der geopolitischen Region der ExpressRoute-Verbindung oder eine größere Anzahl von virtuellen Netzwerken mit der Express Route-Verbindung verknüpfen. Weitere Informationen zum Premium-Add-On finden Sie in den [häufig gestellten Fragen](expressroute-faqs.md) .
+* Sie können sich das [Video ansehen](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit), bevor Sie beginnen, um die Schritte besser zu verstehen.
 
 ## <a name="connect-a-virtual-network-in-the-same-subscription-to-a-circuit"></a>Herstellen einer Verbindung zwischen einem virtuellen Netzwerk in demselben Abonnement und einer Verbindung
 
@@ -87,14 +83,15 @@ Sie können eine ExpressRoute-Verbindung für mehrere Abonnements freigeben. Die
     > 
     >
 
-### <a name="administration"></a>Verwaltung
-Der „Verbindungsbesitzer“ ist autorisierter Hauptbenutzer der ExpressRoute-Verbindungsressource. Der Verbindungsbesitzer kann Autorisierungen erstellen, die durch „Verbindungsbenutzer“ eingelöst werden können. Verbindungsbenutzer sind Besitzer von Gateways des virtuellen Netzwerks (die sich nicht in demselben Abonnement wie die ExpressRoute-Verbindung befinden). Verbindungsbenutzer können Autorisierungen einlösen (eine Autorisierung für jedes virtuelle Netzwerk).
+### <a name="administration---circuit-owners-and-circuit-users"></a>Verwaltung – Leitungsbesitzer und Leitungsbenutzer
+
+Der „Leitungsbesitzer“ (Verbindungsbesitzer) ist ein autorisierter Poweruser der ExpressRoute-Leitungsressource. Der Verbindungsbesitzer kann Autorisierungen erstellen, die durch „Verbindungsbenutzer“ eingelöst werden können. Leitungsbenutzer sind Besitzer virtueller Netzwerkgateways, die sich nicht im selben Abonnement wie die ExpressRoute-Leitung befinden. Verbindungsbenutzer können Autorisierungen einlösen (eine Autorisierung für jedes virtuelle Netzwerk).
 
 Der Besitzer der Verbindung hat die Möglichkeit, Autorisierungen jederzeit zu ändern und aufzuheben. Das Aufheben einer Autorisierung führt dazu, dass alle Verbindungen aus dem Abonnement gelöscht werden, dessen Zugriff aufgehoben wurde.
 
 ### <a name="circuit-owner-operations"></a>Aktionen als Verbindungsbesitzer
 
-#### <a name="creating-an-authorization"></a>Erstellen einer Autorisierung
+**So erstellen Sie eine Verbindungsautorisierung**
 
 Der Verbindungsbesitzer erstellt eine Autorisierung. Dies führt zur Erstellung eines Autorisierungsschlüssels, der von einem Verbindungsbenutzer verwendet werden kann, um dessen virtuelle Netzwerkgateways mit der ExpressRoute-Verbindung zu verbinden. Eine Autorisierung gilt nur für jeweils eine Verbindung.
 
@@ -106,19 +103,15 @@ Der Verbindungsbesitzer erstellt eine Autorisierung. Dies führt zur Erstellung 
 
     ![Autorisierungsschlüssel](./media/expressroute-howto-linkvnet-portal-resource-manager/authkey.png)
 
-#### <a name="deleting-authorizations"></a>Löschen von Autorisierungen
+**So löschen Sie eine Verbindungsautorisierung**
 
 Sie können eine Verbindung löschen, indem Sie das Symbol **Löschen** auf dem Blatt für Ihre Verbindung auswählen.
 
 ### <a name="circuit-user-operations"></a>Aktionen als Verbindungsbenutzer
 
-   > [!NOTE]
-   > Der Verbindungsbenutzer benötigt die Ressourcen-ID und einen Autorisierungsschlüssel vom Verbindungsbesitzer. 
+Der Verbindungsbenutzer benötigt die Ressourcen-ID und einen Autorisierungsschlüssel vom Verbindungsbesitzer. 
 
-#### <a name="redeeming-connection-authorizations"></a>Einlösen von Verbindungsautorisierungen
-
-
-Tragen Sie die Details ein, und klicken Sie auf der Registerkarte „Grundlagen“ auf **OK**.
+**So lösen Sie eine Verbindungsautorisierung ein**
 
 1.    Klicken Sie auf die Schaltfläche **+Neu**.
 
@@ -131,7 +124,7 @@ Tragen Sie die Details ein, und klicken Sie auf der Registerkarte „Grundlagen�
 3.    Stellen Sie sicher, dass für den **Verbindungstyp** „ExpressRoute“ festgelegt ist.
 
 
-4.    Tragen Sie die Details ein, und klicken Sie auf dem Blatt „Grundlagen“ auf **OK**.
+4.    Tragen Sie die Details ein, und klicken Sie dann auf dem Blatt „Grundeinstellungen“ auf **OK**.
 
     ![Blatt "Grundlagen"](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection3.png)
 
@@ -143,7 +136,8 @@ Tragen Sie die Details ein, und klicken Sie auf der Registerkarte „Grundlagen�
 
 7. Überprüfen Sie die Informationen auf dem Blatt **Zusammenfassung**, und klicken Sie auf **OK**.
 
-#### <a name="releasing-connection-authorizations"></a>Freigeben von Verbindungsautorisierungen
+
+**So geben Sie eine Verbindungsautorisierung frei**
 
 Sie können eine Autorisierung durch das Löschen der Verbindung freigeben, die die ExpressRoute-Verbindung mit dem virtuellen Netzwerk verknüpft.
 

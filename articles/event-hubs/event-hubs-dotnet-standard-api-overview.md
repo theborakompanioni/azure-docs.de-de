@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 02/02/2017
 ms.author: jotaub
 translationtype: Human Translation
-ms.sourcegitcommit: f77755bed5463c0c87f698ded5c80d824efbd8b0
-ms.openlocfilehash: 101727b54aa198411efaa5bfa7c0859bcfeb5417
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 4e05b1cc41038b2239f9314c17b93d20eed33844
+ms.lasthandoff: 04/18/2017
 
 ---
 
@@ -48,8 +49,8 @@ var connectionStringBuilder = new EventHubsConnectionStringBuilder("{Event Hub c
 var eventHubClient = EventHubClient.CreateFromConnectionString(connectionStringBuilder.ToString());
 ```
 
-### <a name="send-events"></a>Senden von Ereignissen
-Mithilfe der Klasse [**EventData**](/dotnet/api/microsoft.azure.eventhubs.eventdata) können Sie Ereignisse an Event Hub senden. Der Text muss ein `byte`-Array oder ein `byte`-Arraysegment sein.
+### <a name="send-events"></a>Senden von Ereignisse
+Mithilfe der [**EventData**](/dotnet/api/microsoft.azure.eventhubs.eventdata)-Klasse können Sie Ereignisse an einen Event Hub senden. Der Text muss ein `byte`-Array oder ein `byte`-Arraysegment sein.
 
 ```csharp
 // Create a new EventData object by encoding a string as a byte array
@@ -113,7 +114,7 @@ if (ehEvents != null)
         var customType = ehEvent.Properties["Type"];
         // Implement processing logic here
     }
-}       
+}        
 ```
 
 ## <a name="event-processor-host-apis"></a>Ereignisprozessorhost-APIs
@@ -188,8 +189,3 @@ Die .NET-API-Referenzen sind hier verfügbar:
 
 * [Microsoft.Azure.EventHubs](/dotnet/api/microsoft.azure.eventhubs)
 * [Microsoft.Azure.EventHubs.Processor](/dotnet/api/microsoft.azure.eventhubs.processor)
-
-
-<!--HONumber=Feb17_HO1-->
-
-

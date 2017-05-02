@@ -17,9 +17,9 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 06a67e4d2134baf54e88708d64981b897ecb74a0
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 7490fe7261c760f2945d67a7f819091fd69b04f8
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -55,13 +55,13 @@ Und Sie können dem Pool Datenbanken hinzufügen oder Datenbanken aus dem Pool e
 ## <a name="which-databases-go-in-a-pool"></a>Welche Datenbanken werden in einem Pool angeordnet?
 ![SQL-Datenbanken, die eDTUs in einem elastischen Pool gemeinsam nutzen.][1]
 
-Datenbanken, die für elastische Pools besonders geeignet sind, weisen in der Regel Zeiträume der Aktivität als auch der Inaktivität auf. Im obigen Beispiel sehen Sie die Aktivität einer einzelnen Datenbank, von 4 Datenbanken und schließlich eines elastischen Pools mit 20 Datenbanken. Datenbanken mit veränderlicher Aktivität im Laufe der Zeit eignen sich besonders für elastische Pools, da sie nicht alle zur gleichen Zeit aktiv sind und eDTUs gemeinsam nutzen können. Nicht alle Datenbanken entsprechen jedoch diesem Muster. Datenbanken mit einem konstanteren Ressourcenbedarf eignen sich besser für die Basic-, Standard- und Premium-Dienstebenen, bei denen Ressourcen einzeln zugewiesen werden.
+Datenbanken, die für elastische Pools besonders geeignet sind, weisen in der Regel Zeiträume der Aktivität als auch der Inaktivität auf. Im obigen Beispiel sehen Sie die Aktivität einer einzelnen Datenbank, von 4 Datenbanken und schließlich eines elastischen Pools mit 20 Datenbanken. Datenbanken mit veränderlicher Aktivität im Laufe der Zeit eignen sich besonders für elastische Pools, da sie nicht alle zur gleichen Zeit aktiv sind und eDTUs gemeinsam nutzen können. Nicht alle Datenbanken entsprechen jedoch diesem Muster. Datenbanken mit einem konstanteren Ressourcenbedarf eignen sich besser für die Basic-, Standard-, Premium- und Premium RS-Dienstebenen, bei denen Ressourcen einzeln zugewiesen werden.
 
 [Überlegungen zum Preis und zur Leistung eines elastischen Pools](sql-database-elastic-pool-guidance.md).
 
 ## <a name="edtu-and-storage-limits-for-elastic-pools"></a>eDTUs und Speicherbeschränkungen für elastische Pools
 
-In der folgenden Tabelle sind die Merkmale von elastischen Basic-, Standard- und Premium-Pools beschrieben.
+In der folgenden Tabelle sind die Merkmale von elastischen Basic-, Standard-, Premium- und Premium RS-Pools beschrieben.
 
 [!INCLUDE [SQL DB service tiers table for elastic pools](../../includes/sql-database-service-tiers-table-elastic-pools.md)]
 
@@ -74,7 +74,7 @@ Die folgenden Tabellen beschreiben die Beschränkungen für elastische Pools und
 ### <a name="limits-for-elastic-pools"></a>Beschränkungen für elastische Pools
 | Eigenschaft | Beschreibung |
 |:--- |:--- |
-| Dienstebene |Basic, Standard oder Premium. Die Dienstebene bestimmt den Bereich der Leistungs- und Speichergrenzen, die konfiguriert werden können, sowie die Wahlmöglichkeiten für die Geschäftskontinuität. Jede Datenbank innerhalb eines Pools hat die gleiche Dienstebene wie der Pool. „Dienstebene“ wird auch als „Edition“ bezeichnet. |
+| Dienstebene |Basic, Standard, Premium oder Premium RS. Die Dienstebene bestimmt den Bereich der Leistungs- und Speichergrenzen, die konfiguriert werden können, sowie die Wahlmöglichkeiten für die Geschäftskontinuität. Jede Datenbank innerhalb eines Pools hat die gleiche Dienstebene wie der Pool. „Dienstebene“ wird auch als „Edition“ bezeichnet. |
 | eDTUs pro Pool |Die maximale Anzahl der eDTUs, die von Datenbanken im Pool gemeinsam verwendet werden können. Die Gesamtanzahl der eDTUs, die von Datenbanken im Pool genutzt werden, kann diese Grenze zum gleichen Zeitpunkt nicht überschreiten. |
 | Max. Speicherkapazität pro Pool (GB) |Der maximale Speicherplatz in GB, der von Datenbanken im Pool gemeinsam verwendet werden kann. Der Gesamtspeicher, der von allen Datenbanken im Pool verwendet wird, kann diese Grenze nicht überschreiten. Die Grenze wird durch die eDTUs per Pool bestimmt. Wenn diese Grenze überschritten wird, werden alle Datenbanken zu schreibgeschützten Datenbanken. Der maximale Speicherplatz pro Pool bezieht sich auf den maximalen Speicher der Datendateien im Pool und beinhaltet nicht den von Protokolldateien belegten Speicherplatz. |
 | Max. Anzahl von Datenbanken pro Pool |Die maximale Anzahl der pro Pool zulässigen Datenbanken. |
@@ -106,7 +106,7 @@ Bei der Point-in-Time-Wiederherstellung werden automatische Datenbanksicherungen
 Die geografische Wiederherstellung ist die Standardoption für die Wiederherstellung, wenn eine Datenbank aufgrund eines Vorfalls in der Region, in der die Datenbank gehostet wird, nicht verfügbar ist. Siehe [Wiederherstellen einer Azure SQL-Datenbank oder Failover auf eine sekundäre Datenbank](sql-database-disaster-recovery.md)
 
 ### <a name="active-geo-replication"></a>Aktive Georeplikation
-Bei Anwendungen, für die umfangreichere Wiederherstellungsanforderungen als bei der geografischen Wiederherstellung erforderlich sind, konfigurieren Sie die aktive Georeplikation über das [Azure-Portal](sql-database-geo-replication-portal.md), mit [PowerShell](sql-database-geo-replication-powershell.md) oder [Transact-SQL](sql-database-geo-replication-transact-sql.md).
+Für Anwendungen, für die umfangreichere Wiederherstellungsanforderungen erforderlich sind, als die Geowiederherstellung bieten kann, konfigurieren Sie [aktive Georeplikation](sql-database-geo-replication-overview.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

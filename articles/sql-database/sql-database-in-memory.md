@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 12/07/2016
 ms.author: jodebrui
 translationtype: Human Translation
-ms.sourcegitcommit: 187954f3ddafdbc17e341ce41f5b109cb95f8a24
-ms.openlocfilehash: 620572f66367f61c6ee61d3c044083a0f71aca6f
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: f827b76b8164e4eae286c9a1247e64d4f5ee9ea8
+ms.lasthandoff: 04/15/2017
 
 ---
 
@@ -27,7 +28,7 @@ Mithilfe von In-Memory-Technologien in Azure SQL-Datenbank können Sie für vers
 
 Hier sind zwei Beispiele dafür, wie In-Memory-OLTP geholfen hat, die Leistung deutlich zu verbessern:
 
-- Mithilfe von In-Memory-OLTP[konnte Quorum Business Solutions seine Workload verdoppeln und seine DTUs (d.h. die Ressourcenbelegung) um 70 % verbessern](https://customers.microsoft.com/en-US/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database).
+- Mithilfe von In-Memory-OLTP[konnte Quorum Business Solutions seine Workload verdoppeln und seine DTUs (d.h. die Ressourcenbelegung) um 70 % verbessern](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database).
 - Das folgende Video veranschaulicht anhand einer Beispielworkload eine erhebliche Verbesserung der Ressourcennutzung: [In-Memory-OLTP in Azure SQL-Datenbank](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB).
 
 In-Memory-Technologien sind in allen Datenbanken des Tarifs „Premium“, einschließlich Datenbanken im Premium-Tarif für elastische Pools, verfügbar.
@@ -139,7 +140,7 @@ Entfernen Sie alle gruppierten Columnstore-Indizes, bevor Sie die Datenbank auf 
 
 ## <a name="1-install-the-in-memory-oltp-sample"></a>1. Installieren des Beispiels für In-Memory OLTP
 
-Sie können im [Azure-Portal](https://portal.azure.com/) die Beispieldatenbank „AdventureWorksLT [V12]“ mit wenigen Klicks erstellen. Anhand der Schritte in diesem Abschnitt wird erläutert, wie Sie anschließend Ihre AdventureWorksLT-Datenbank mit In-Memory-OLTP-Objekten erweitern können, und es werden Leistungsvorteile demonstriert.
+Sie können im [Azure-Portal](https://portal.azure.com/) die Beispieldatenbank „AdventureWorksLT“ mit wenigen Klicks erstellen. Anhand der Schritte in diesem Abschnitt wird erläutert, wie Sie anschließend Ihre AdventureWorksLT-Datenbank mit In-Memory-OLTP-Objekten erweitern können, und es werden Leistungsvorteile demonstriert.
 
 Eine einfachere, aber visuell ansprechendere Demo der Leistung von In-Memory-OLTP finden Sie hier:
 
@@ -148,7 +149,7 @@ Eine einfachere, aber visuell ansprechendere Demo der Leistung von In-Memory-OLT
 
 #### <a name="installation-steps"></a>Installationsschritte
 
-1. Erstellen Sie im [Azure-Portal](https://portal.azure.com/)auf einem V12-Server eine Premium-Datenbank. Legen Sie die AdventureWorksLT [V12]-Beispieldatenbank als **Quelle** fest. Detaillierte Anweisungen finden Sie unter [Erstellen Ihrer ersten Azure SQL-Datenbank](sql-database-get-started.md).
+1. Erstellen Sie im [Azure-Portal](https://portal.azure.com/) auf einem Server eine Premium-Datenbank. Legen Sie die Beispieldatenbank „AdventureWorksLT“ als **Quelle** fest. Detaillierte Anweisungen finden Sie unter [Erstellen Ihrer ersten Azure SQL-Datenbank](sql-database-get-started-portal.md).
 
 2. Stellen Sie eine Verbindung mit der Datenbank mit SQL Server Management Studio [(SSMS.exe)](http://msdn.microsoft.com/library/mt238290.aspx)her.
 
@@ -495,7 +496,7 @@ In einer Datenbank mit dem P2-Tarif können Sie etwa einen neunfachen Leistungsz
 
 #### <a name="deeper-information"></a>Weiterführende Informationen
 
-- [Erfahren Sie, wie Quorum die Workload der wichtigen Datenbank verdoppelt, während es die DTU mit In-Memory-OLTP in SQL-Datenbank um 70 % reduziert (in englischer Sprache)](https://customers.microsoft.com/en-US/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
+- [Erfahren Sie, wie Quorum die Workload der wichtigen Datenbank verdoppelt, während es die DTU mit In-Memory-OLTP in SQL-Datenbank um 70 % reduziert (in englischer Sprache)](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
 
 - [In-Memory OLTP (Arbeitsspeicheroptimierung)](http://msdn.microsoft.com/library/dn133186.aspx)
 
@@ -518,9 +519,4 @@ In einer Datenbank mit dem P2-Tarif können Sie etwa einen neunfachen Leistungsz
 - [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
 
 - [SQL Server Data Tools (SSDT)](http://msdn.microsoft.com/library/mt204009.aspx)
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

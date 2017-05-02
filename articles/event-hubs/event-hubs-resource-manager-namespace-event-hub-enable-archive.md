@@ -1,6 +1,6 @@
 ---
-title: Erstellen eines Azure Event Hubs-Namespace und Aktivieren eines Archivs anhand einer Vorlage | Microsoft-Dokumentation
-description: Erstellen eines Event Hubs-Namespace mit Event Hub und Aktivieren von Archive mithilfe einer Azure Resource Manager-Vorlage
+title: "Erstellen eines Azure Event Hubs-Namespace und Aktivieren des Archivs über eine Vorlage | Microsoft-Dokumentation"
+description: "Erstellen eines Azure Event Hubs-Namespace mit einem Event Hub und Aktivieren des Archivs über eine Azure Resource Manager-Vorlage"
 services: event-hubs
 documentationcenter: .net
 author: ShubhaVijayasarathy
@@ -15,20 +15,20 @@ ms.workload: na
 ms.date: 03/07/2017
 ms.author: shvija;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: cab8a4de9d8d98d77094da5d73f29237829e743a
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 62094629d899f27f56b3afc87bc08c96371acea8
+ms.lasthandoff: 04/18/2017
 
 
 ---
-# <a name="create-an-event-hubs-namespace-with-event-hub-and-enable-archive-using-an-azure-resource-manager-template"></a>Erstellen eines Event Hubs-Namespace mit Event Hub und Aktivieren von Archive mithilfe einer Azure Resource Manager-Vorlage
-In diesem Artikel wird beschrieben, wie Sie eine Azure Resource Manager-Vorlage verwenden, die einen Namespace des Typs Event Hubs mit einem Event Hub erstellt und auch die Archivfunktion auf Ihrem Event Hub aktiviert. Der Artikel erklärt Ihnen, wie Sie definieren, welche Ressourcen bereitgestellt werden und wie Sie Parameter definieren, die angegeben werden, wenn die Bereitstellung ausgeführt wird. Sie können diese Vorlage für Ihre eigenen Bereitstellungen verwenden oder Ihren Anforderungen anpassen.
+# <a name="create-an-event-hubs-namespace-with-an-event-hub-and-enable-archive-using-an-azure-resource-manager-template"></a>Erstellen eines Event Hubs-Namespace mit einem Event Hub und Aktivieren des Archivs über eine Azure Resource Manager-Vorlage
+In diesem Artikel wird beschrieben, wie Sie eine Azure Resource Manager-Vorlage verwenden, die einen Namespace des Typs Event Hubs mit einer Event Hub-Instanz erstellt und die Archivfunktion für den Event Hub aktiviert. Der Artikel erklärt Ihnen, wie Sie definieren, welche Ressourcen bereitgestellt werden und wie Sie Parameter definieren, die angegeben werden, wenn die Bereitstellung ausgeführt wird. Sie können diese Vorlage für Ihre eigenen Bereitstellungen verwenden oder Ihren Anforderungen anpassen.
 
 Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen][Authoring Azure Resource Manager templates].
 
 Weitere Informationen zur Vorgehensweise und Muster zu Benennungskonventionen für Azure-Ressourcen finden Sie unter [Recommended naming conventions for Azure resources][Azure Resources Naming Conventions] (Empfohlene Benennungskonventionen für Azure-Ressourcen).
 
-Die vollständige Vorlage finden Sie unter [Event Hub and enable Archive template][Event Hub and enable Archive template] (Event Hub- und Archive-Aktivierungsvorlage) auf GitHub.
+Die vollständige Vorlage finden Sie unter [Event Hub and enable Archive template][Event Hub and enable Archive template] (Vorlage für Event Hub und Archivaktivierung) auf GitHub.
 
 > [!NOTE]
 > Die neuesten Vorlagen finden Sie, indem Sie im Katalog [Azure-Schnellstartvorlagen][Azure Quickstart Templates] nach „Event Hubs“ suchen.
@@ -68,7 +68,7 @@ Der Name des im Event Hubs-Namespace erstellten Event Hubs.
 "eventHubName":{  
     "type":"string",
     "metadata":{  
-        "description":"Name of the Event Hub"
+        "description":"Name of the event hub"
     }
 }
 ```
@@ -83,7 +83,7 @@ Die Anzahl der Tage für die Beibehaltung von Nachrichten im Event Hub.
     "minValue":"1",
     "maxValue":"7",
     "metadata":{
-       "description":"How long to retain the data in Event Hub"
+       "description":"How long to retain the data in event hub"
      }
  }
 ```
@@ -104,7 +104,7 @@ Die Anzahl der im Event Hub zu erstellenden Partitionen.
 ```
 
 ### <a name="archiveenabled"></a>archiveEnabled
-Aktiviert Archive im Event Hub.
+Das Archiv für den Event Hub aktivieren.
 
 ```json
 "archiveEnabled":{
@@ -114,7 +114,7 @@ Aktiviert Archive im Event Hub.
     "false",
     "true"],
     "metadata":{
-        "description":"Enable or disable the Archive for your Event Hub"
+        "description":"Enable or disable the Archive for your event hub"
     }
  }
 ```
@@ -202,7 +202,7 @@ Die API-Version der Vorlage.
 ```
 
 ## <a name="resources-to-deploy"></a>Bereitzustellende Ressourcen
-Erstellt einen Namespace des Typs **EventHubs** mit einem Event Hub und aktiviert auch Archive.
+Erstellt einen Namespace des Typs **EventHubs** mit einem Event Hub und aktiviert auch das Archiv.
 
 ```json
 "resources":[  
@@ -274,7 +274,7 @@ Weitere Informationen zu Event Hubs finden Sie unter den folgenden Links:
 [Azure Quickstart Templates]:  https://azure.microsoft.com/documentation/templates/?term=event+hubs
 [Using Azure PowerShell with Azure Resource Manager]: ../powershell-azure-resource-manager.md
 [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../xplat-cli-azure-resource-manager.md
-[Event Hub and consumer group template]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-eventhubs-create-namespace-and-enable-archive/
+[Event hub and consumer group template]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-eventhubs-create-namespace-and-enable-archive/
 [Azure Resources Naming Conventions]: https://azure.microsoft.com/documentation/articles/guidance-naming-conventions/
-[Event Hub and enable Archive template]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-archive
+[Event hub and enable Archive template]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-archive
 

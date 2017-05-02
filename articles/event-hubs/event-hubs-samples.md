@@ -1,6 +1,6 @@
 ---
 title: Azure Event Hubs-Beispiele | Microsoft Docs
-description: Event Hubs-Beispiele
+description: Azure Event Hubs-Beispiele
 services: event-hubs
 documentationcenter: na
 author: jtaubensee
@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 03/07/2017
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: f3c8f6e52b8713bcdb58d55e8bbc2301a7c316e4
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 2eaf642d3d6617c8500aee283809209a5f31ef88
+ms.lasthandoff: 04/18/2017
 
 ---
 
 # <a name="event-hubs-samples"></a>Event Hubs-Beispiele 
 
-Die Event Hubs-Beispiele veranschaulichen wichtige Funktionen in [Azure Event Hubs](/azure/event-hubs/). Dieser Artikel kategorisiert und beschreibt die verfügbaren Beispiele und stellt Links zu jedem der Beispiele zur Verfügung.
+Die Azure Event Hubs-Beispiele veranschaulichen wichtige Funktionen in [Azure Event Hubs](/azure/event-hubs/). Dieser Artikel kategorisiert und beschreibt die verfügbaren Beispiele und stellt Links zu jedem der Beispiele zur Verfügung.
 
 Zum Zeitpunkt der Erstellung dieses Dokuments befinden sich Event Hubs an verschiedenen Orten:
 
@@ -38,9 +38,9 @@ Weitere Beispiele werden im Laufe der Zeit hinzugefügt. Prüfen Sie hier daher 
 
 Die folgenden Beispiele veranschaulichen, wie das Senden und Empfangen von Ereignissen mithilfe des [Event Hubs-Clients](https://github.com/Azure/azure-event-hubs-dotnet/blob/master/readme.md) für die [.NET Standard-Bibliothek](/dotnet/articles/standard/library) funktioniert.
 
-### <a name="send-events"></a>Senden von Ereignissen 
+### <a name="send-events"></a>Senden von Ereignisse 
 
-Das Beispiel [Get started sending](https://github.com/Azure/azure-event-hubs/tree/master/samples/SampleSender) (Erste Schritte beim Versenden) zeigt, wie Sie eine .NET Core-Konsolenanwendung schreiben, die Ereignisse an Event Hub sendet.
+Das Beispiel [Get started sending](https://github.com/Azure/azure-event-hubs/tree/master/samples/SampleSender) (Erste Schritte beim Versenden) zeigt, wie Sie eine .NET Core-Konsolenanwendung schreiben, die Ereignisse an einen Event Hub sendet.
 
 ### <a name="receive-events"></a>Empfangen von Ereignissen 
 
