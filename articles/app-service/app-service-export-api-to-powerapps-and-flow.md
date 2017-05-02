@@ -17,6 +17,7 @@ ms.author: mahender
 translationtype: Human Translation
 ms.sourcegitcommit: 060fbb885f254c0de02fe422460e8e8d659ac848
 ms.openlocfilehash: 503f17a629527e8c9a3bfe6cde1da31dcf1f18ef
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -59,9 +60,9 @@ In diesem Abschnitt exportieren Sie die API-Definition für Ihre App Service-API
     
     Wählen Sie bei Verwendung von Azure Functions die Option **Funktionen-App-Einstellungen** und anschließend **API-Metadaten konfigurieren** aus.
 
-2. Falls eine API-Definition bereitgestellt wurde, wird eine Schaltfläche zum Exportieren in PowerApps und Microsoft Flow** **angezeigt. Klicken Sie auf diese Schaltfläche, um den Exportvorgang zu starten.
+2. Falls eine API-Definition bereitgestellt wurde, wird eine Schaltfläche zum Exportieren in PowerApps und Microsoft Flow****angezeigt. Klicken Sie auf diese Schaltfläche, um den Exportvorgang zu starten.
 
-3. Sie können wählen, ob Sie die API-Definition herunterladen** **oder einen Link anfordern** **möchten. In beiden Fällen wird das Ergebnis im nächsten Abschnitt für PowerApps bereitgestellt. Wählen Sie eine der Optionen aus, und befolgen Sie die Anweisungen.
+3. Sie können wählen, ob Sie die API-Definition herunterladen****oder einen Link anfordern****möchten. In beiden Fällen wird das Ergebnis im nächsten Abschnitt für PowerApps bereitgestellt. Wählen Sie eine der Optionen aus, und befolgen Sie die Anweisungen.
  
 4. Falls Ihre API-Definition Sicherheitsdefinitionen enthält, werden diese in Schritt 2 angegeben. Während des Imports werden sie von PowerApps und Microsoft Flow erkannt, und Sie werden zur Angabe von Sicherheitsinformationen aufgefordert. Diese werden von den Diensten für die Anmeldung von Benutzern verwendet, damit sie auf die API zugreifen können. Falls Ihre API eine Authentifizierung erfordert, stellen Sie sicher, dass sie in Ihrem Open API-Dokument als _Sicherheitsdefinition_ erfasst ist.
 
@@ -106,9 +107,4 @@ In diesem Abschnitt erstellen Sie mithilfe der zuvor abgerufenen API-Definition 
 
 [Register Custom APIs in PowerApps]: https://powerapps.microsoft.com/tutorials/register-custom-api/ (Registrieren benutzerdefinierter APIs in PowerApps)
 [Registrieren benutzerdefinierter APIs in Microsoft Flow]: https://flow.microsoft.com/documentation/register-custom-api/
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

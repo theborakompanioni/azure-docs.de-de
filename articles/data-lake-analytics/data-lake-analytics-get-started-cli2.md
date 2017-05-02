@@ -111,8 +111,8 @@ Das Azure-Portal enthält eine Benutzeroberfläche zum Kopieren einiger Beispiel
 Zum Hochladen von Dateien per CLI 2.0 verwenden Sie die folgenden Befehle:
 
 ```azurecli
-az dls file upload --account "<Data Lake Store Account Name>" --source-path "<Source File Path>" --destination-path "<Destination File Path>"
-az dls file list --account "<Data Lake Store Account Name>" --path "<Path>"
+az dls fs upload --account "<Data Lake Store Account Name>" --source-path "<Source File Path>" --destination-path "<Destination File Path>"
+az dls fs list --account "<Data Lake Store Account Name>" --path "<Path>"
 ```
 
 Data Lake Analytics hat auch Zugriff auf den Azure-Blob-Speicher.  Informationen zum Hochladen von Daten nach Azure Blob Storage finden Sie unter [Verwenden der Azure-CLI mit Azure Storage](../storage/storage-azure-cli.md).

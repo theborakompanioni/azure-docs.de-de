@@ -42,7 +42,7 @@ Kommentare oder Fragen können Sie am Ende dieses Artikels oder im [Forum zu Azu
 
     - Zur Replikation von VMM zu VMM wählen Sie **Quelltyp** > **VMM** und die VMM-Quell- und -Zielserver aus. Klicken Sie auf **Hyper-V**, um geschützte Clouds anzuzeigen.
     - Für VMM zu Azure wählen Sie **Quelltyp** > **VMM**.  Wählen Sie den VMM-Quellserver und als Ziel **Azure** aus.
-    - Zur Hyper-V-Replikation zu Azure (ohne VMM) wählen Sie **Quelltyp** > **Hyper-V-Site** aus. Wählen Sie den Standort als Quelle und als Ziel **Azure ** aus.
+    - Zur Hyper-V-Replikation zu Azure (ohne VMM) wählen Sie **Quelltyp** > **Hyper-V-Site** aus. Wählen Sie den Standort als Quelle und als Ziel **Azure** aus.
     - Bei der Replikation eines virtuellen VMware-Computers oder eines physischen lokalen Servers zu Azure wählen Sie einen Konfigurationsserver als Quelle und als Ziel **Azure** aus.
 2. Wählen Sie unter **Virtuelle Computer auswählen** die virtuellen Computer (oder die Replikationsgruppe) aus, die Sie der Standardgruppe (Gruppe 1) im Wiederherstellungsplan hinzufügen möchten.
 

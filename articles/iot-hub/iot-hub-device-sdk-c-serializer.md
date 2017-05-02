@@ -435,7 +435,7 @@ Mitunter sollen jedoch nur *einige* Eigenschaften des Modells an die Cloud gesen
 {"Temperature":75, "Time":"2015-09-17T18:45:56Z"}
 ```
 
-Damit wird exakt das gleiche serialisierte Ereignis generiert wie beim Definieren von **TemperatureEven**t mit **Temperature **und **Time** (siehe Modell 1). In diesem Fall konnten wir mithilfe eines anderen Modells (Modell 2) exakt das gleiche serialisierte Ereignis generieren, da wir **SERIALIZE** auf andere Weise aufgerufen haben.
+Damit wird exakt das gleiche serialisierte Ereignis generiert wie beim Definieren von **TemperatureEven**t mit **Temperature**und **Time** (siehe Modell 1). In diesem Fall konnten wir mithilfe eines anderen Modells (Modell 2) exakt das gleiche serialisierte Ereignis generieren, da wir **SERIALIZE** auf andere Weise aufgerufen haben.
 
 Hierbei ist Folgendes entscheidend: Wenn Sie mehrere Datenereignisse an **SERIALIZE** übergeben, wird davon ausgegangen, dass jedes Ereignis eine Eigenschaft in einem einzelnen JSON-Objekt ist.
 

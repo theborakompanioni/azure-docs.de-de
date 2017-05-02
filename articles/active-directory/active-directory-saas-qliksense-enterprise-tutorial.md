@@ -17,6 +17,7 @@ ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 6a01f53ce05aa8084f0a18e56714b1790cfce912
 ms.openlocfilehash: 00dcedb09ea63b4337b2b730746fb2f5a1f27e64
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -372,9 +373,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Qlik Sense Enterprise“ klicken, 
 [qs51]: ./media/active-directory-saas-qliksense-enterprise-tutorial/tutorial_qliksenseenterprise_51.png
 [qs52]: ./media/active-directory-saas-qliksense-enterprise-tutorial/tutorial_qliksenseenterprise_52.png
 [qs53]: ./media/active-directory-saas-qliksense-enterprise-tutorial/tutorial_qliksenseenterprise_53.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 
