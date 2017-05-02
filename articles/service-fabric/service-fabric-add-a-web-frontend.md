@@ -12,11 +12,12 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/29/2016
+ms.date: 03/30/2017
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: faa452d3ba407d5e1ffb3fc4b60b71b2bc64113b
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: d7084624b7242a8dfc60f49d38f1808116206b46
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -29,9 +30,8 @@ In diesem Tutorial knüpfen wir nahtlos an das Tutorial [Erstellen Ihrer ersten 
 ASP.NET Core ist ein einfaches, plattformübergreifendes Webentwicklungsframework, das Sie zur Erstellung von modernen Benutzeroberflächen und Web-APIs verwenden können. Nun fügen wir unserer vorhandenen Anwendung ein ASP.NET Web API-Projekt hinzu.
 
 > [!NOTE]
-> Für dieses Tutorial müssen Sie .[.NET Core 1.0 installieren][dotnetcore-install].
-> 
-> 
+> Dieses Tutorial basiert auf den [ASP.NET Core-Tools für Visual Studio 2017](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app/start-mvc). Die .NET Core-Tools für Visual Studio 2015 werden nicht mehr aktualisiert.
+
 
 1. Klicken Sie im Projektmappen-Explorer im Anwendungsprojekt mit der rechten Maustaste auf **Dienste**, und wählen Sie **Hinzufügen > Neuer Service Fabric-Dienst** aus.
    
@@ -39,22 +39,22 @@ ASP.NET Core ist ein einfaches, plattformübergreifendes Webentwicklungsframewor
 2. Wählen Sie auf der Seite **Dienst erstellen** die Option **ASP.NET Core aus**, und legen Sie einen Namen fest.
    
     ![Auswählen eines neuen ASP.NET-Webdienstes im Dialogfeld „Neuer Dienst“][vs-new-service-dialog]
-3. Die nächste Seite umfasst eine Reihe von ASP.NET Core-Projektvorlagen. Hierbei handelt es sich um die gleichen Vorlagen wie beim Erstellen eines ASP.NET Core-Projekts außerhalb einer Service Fabric-Anwendung. In diesem Tutorial wählen wir **Web-API**. Sie können jedoch mit denselben Konzepten eine vollständige Webanwendung erstellen.
+
+3. Die nächste Seite umfasst eine Reihe von ASP.NET Core-Projektvorlagen. Beachten Sie, dass es sich hierbei um die gleichen Vorlagen wie beim Erstellen eines ASP.NET Core-Projekts außerhalb einer Service Fabric-Anwendung handelt. Sie enthalten außerdem zusätzlichen Code zum Registrieren des Diensts bei der Service Fabric-Runtime. In diesem Tutorial wählen wir **Web-API**. Sie können jedoch mit denselben Konzepten eine vollständige Webanwendung erstellen.
    
     ![Auswählen des ASP.NET-Projekttyps][vs-new-aspnet-project-dialog]
    
     Nach Erstellung Ihres Web-API-Projekts stehen Ihnen zwei Dienste in Ihrer Anwendung zur Verfügung. Bei der weiteren Erstellung Ihrer Anwendung fügen Sie weitere Dienste auf die gleiche Weise hinzu. Diese können unabhängig versioniert und aktualisiert werden.
 
 > [!TIP]
-> Weitere Informationen zum Erstellen von ASP.NET Core-Diensten finden Sie in der [ASP.NET Core-Dokumentation](https://docs.asp.net).
-> 
+> Weitere Informationen zum Erstellen von ASP.NET Core-Diensten finden Sie in der [ASP.NET Core-Dokumentation](https://docs.microsoft.com/aspnet/core/).
 > 
 
 ## <a name="run-the-application"></a>Ausführen der Anwendung
 Um uns ein Bild von unserer Arbeit zu machen, stellen wir die neue Anwendung bereit und sehen uns das Standardverhalten der Web-API-Vorlage für ASP.NET Core an.
 
 1. Drücken Sie in Visual Studio die Taste F5, um die App zu debuggen.
-2. Nach Abschluss der Bereitstellung startet Visual Studio den Browser am Stamm des ASP.NET-Web-API-Diensts, z.B.: http://localhost:33003. Die Portnummer wird nach dem Zufallsprinzip zugewiesen und kann auf Ihrem Computer anders sein. Da die Web-API-Vorlage für ASP.NET Core kein Standardverhalten für den Stamm bereitstellt, wird im Browser eine Fehlermeldung angezeigt.
+2. Nach Abschluss der Bereitstellung startet Visual Studio den Browser am Stamm des ASP.NET-Web-API-Diensts, der standardmäßig auf Port 8966 lauscht. Da die Web-API-Vorlage für ASP.NET Core kein Standardverhalten für den Stamm bereitstellt, wird im Browser eine Fehlermeldung angezeigt.
 3. Fügen Sie dem Speicherort im Browser `/api/values` hinzu. Dadurch wird die `Get` -Methode für den ValuesController in der Web-API-Vorlage aufgerufen. Dieser gibt die standardmäßige Antwort, die von der Vorlage bereitgestellt wird – ein JSON-Array, das zwei Zeichenfolgen enthält:
    
     ![Von der Web-API-Vorlage für ASP.NET Core zurückgegebene Standardwerte][browser-aspnet-template-values]
@@ -73,14 +73,16 @@ Wir erstellen zunächst die Benutzeroberfläche, die als Vertrag zwischen dem zu
 2. Wählen Sie im linken Navigationsbereich den Eintrag **Visual C#** und dann die Vorlage **Klassenbibliothek** aus. Vergewissern Sie sich, dass die .NET-Framework-Version **4.5.2**verwendet wird.
    
     ![Erstellen eines Schnittstellenprojekts für Ihren zustandsbehafteten Dienst][vs-add-class-library-project]
+
 3. Damit eine Schnittstelle von `ServiceProxy`verwendet werden kann, muss sie von der IService-Schnittstelle abgeleitet werden. Diese Schnittstelle ist in einem der Service Fabric-NuGet-Pakete enthalten. Klicken Sie zum Hinzufügen des Pakets mit der rechten Maustaste auf das neue Klassenbibliotheksprojekt, und wählen Sie **NuGet-Pakete verwalten**aus.
 4. Suchen Sie nach dem Paket **Microsoft.ServiceFabric.Services** , und installieren Sie es.
    
     ![Abrufen des Services NuGet-Pakets][vs-services-nuget-package]
+
 5. Erstellen Sie in der Klassenbibliothek eine Schnittstelle mit einer einzelnen Methode, `GetCountAsync`, und erweitern Sie die Schnittstelle von IService.
    
     ```c#
-    namespace MyStatefulService.Interfaces
+    namespace MyStatefulService.Interface
     {
         using Microsoft.ServiceFabric.Services.Remoting;
    
@@ -100,7 +102,7 @@ Nach dem Definieren der Schnittstelle müssen wir sie in den zustandsbehafteten 
 2. Suchen Sie die Klasse, die von `StatefulService` erbt (etwa `MyStatefulService`), und erweitern Sie sie, um die `ICounter`-Schnittstelle zu implementieren.
    
     ```c#
-    using MyStatefulService.Interfaces;
+    using MyStatefulService.Interface;
    
     ...
    
@@ -156,18 +158,13 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 Der zustandsbehaftete Dienst ist nun bereit, Datenverkehr von anderen Diensten zu empfangen. Es fehlt also nur noch das Hinzufügen des Codes, um durch ASP.NET Web Service mit dem Dienst zu kommunizieren.
 
 1. Fügen Sie Ihrem ASP.NET-Projekt einen Verweis auf die Klassenbibliothek mit der `ICounter` -Schnittstelle hinzu.
-2. Öffnen Sie über das Menü **Build** den **Konfigurations-Manager**. Die Ausgabe sollte folgendermaßen aussehen:
-   
-    ![Konfigurations-Manager mit Klassenbibliothek als AnyCPU][vs-configuration-manager]
-   
-    Beachten Sie, dass für die Klassenbibliothekprojekt **MyStatefulService.Interface**eine CPU-unabhängige Erstellung konfiguriert ist. Um eine problemlose Verwendung mit Service Fabric zu gewährleisten, muss es explizit auf x64 ausgerichtet sein. Klicken Sie auf die Dropdownliste „Plattform“, wählen Sie **Neu**aus, und erstellen Sie dann eine x64-Plattformkonfiguration.
-   
-    ![Erstellen einer neuen Plattform für die Klassenbibliothek][vs-create-platform]
-3. Fügen Sie dem ASP.NET-Projekt das Microsoft.ServiceFabric.Services-Paket auf dieselbe Weise hinzu wie zuvor beim Klassenbibliotheksprojekt. Dadurch wird die `ServiceProxy` -Klasse bereitgestellt.
+
+2. Fügen Sie dem ASP.NET-Projekt das Microsoft.ServiceFabric.Services-Paket auf dieselbe Weise hinzu wie zuvor beim Klassenbibliotheksprojekt. Dadurch wird die `ServiceProxy` -Klasse bereitgestellt.
+
 4. Öffnen Sie im Ordner **Controller** die `ValuesController`-Klasse. Beachten Sie, dass die `Get` -Methode derzeit nur ein hartcodiertes Zeichenfolgenarray mit „value1“ und „value2“ zurückgibt, wie wir vorhin im Browser gesehen haben. Ersetzen Sie diese Implementierung durch den folgenden Code:
    
     ```c#
-    using MyStatefulService.Interfaces;
+    using MyStatefulService.Interface;
     using Microsoft.ServiceFabric.Services.Remoting.Client;
    
     ...
@@ -192,16 +189,19 @@ Der zustandsbehaftete Dienst ist nun bereit, Datenverkehr von anderen Diensten z
     Mit diesen zwei Angaben kann Service Fabric den Computer eindeutig identifizieren, an den Anforderungen gesendet werden sollen. Die `ServiceProxy` -Klasse greift auch dann nahtlos ein, wenn der Computer ausfällt, der die Partition des zustandsbehafteten Diensts hostet, und ein anderer Computer dessen Stelle einnehmen muss. Diese Abstraktion vereinfacht das Schreiben des Clientcodes für den Umgang mit anderen Diensten beträchtlich.
    
     Sobald wir den Proxy haben, rufen wir einfach die `GetCountAsync` -Methode auf und geben das Ergebnis zurück.
+
 5. Drücken Sie erneut F5, um die geänderte Anwendung auszuführen. Wie zuvor startet Visual Studio automatisch den Browser zum Stamm des Webprojekts. Fügen Sie den „api/Values“-Pfad hinzu und der aktuelle Zählerwert sollte zurückgegeben werden.
    
     ![Anzeige des zustandsbehafteten Zählerwerts im Browser][browser-aspnet-counter-value]
    
     Aktualisieren Sie den Browser regelmäßig, um den aktuellen Zählerwert anzuzeigen.
 
-> [!WARNING]
-> Der in der Vorlage bereitgestellte, als Kestrel bekannte ASP.NET Core-Webserver wird [derzeit für die Verarbeitung direkten Internetverkehrs nicht unterstützt](https://docs.asp.net/en/latest/fundamentals/servers.html#kestrel). In Produktionsszenarien sollten Sie Ihre ASP.NET Core-Endpunkte hinter einem [API Management-Gateway][api-management-landing-page] oder einem anderen Gateway für den Internetzugriff hosten. Beachten Sie, dass Service Fabric für die Bereitstellung innerhalb von IIS nicht unterstützt wird.
-> 
-> 
+## <a name="kestrel-and-weblistener"></a>Kestrel und WebListener
+
+Der standardmäßige, als Kestrel bekannte ASP.NET Core-Webserver wird [derzeit für die Verarbeitung direkten Internetverkehrs nicht unterstützt](https://docs.asp.net/en/latest/fundamentals/servers.html#kestrel). Daher wird in ASP.NET-Vorlagen für Service Fabric standardmäßig [WebListener](https://docs.microsoft.com/aspnet/core/fundamentals/servers/weblistener) verwendet. 
+
+Wenn Sie keinen direkten Internetverkehr bereitstellen und Kestrel als Webserver verwenden möchten, können Sie dies in der Dienstlistenerkonfiguration ändern. Ersetzen Sie `return new WebHostBuilder().UseWebListener()` einfach durch `return new WebHostBuilder().UseKestrel()`. Alle anderen Konfigurationen auf dem Webhost können unverändert beibehalten werden.
+ 
 
 ## <a name="what-about-actors"></a>Was wird mit Akteuren verfahren?
 Dieses Tutorial konzentriert sich auf das Hinzufügen des Web-Front-Ends, das mit einem zustandsbehafteten Dienst kommuniziert. Allerdings können Sie ein sehr ähnliches Modell befolgen, um mit Akteuren zu sprechen. Das ist sogar einfacher.
@@ -232,16 +232,9 @@ Informationen zum Konfigurieren verschiedener Werte für andere Umgebungen finde
 [vs-add-class-library-reference]: ./media/service-fabric-add-a-web-frontend/vs-add-class-library-reference.png
 [vs-services-nuget-package]: ./media/service-fabric-add-a-web-frontend/vs-services-nuget-package.png
 [browser-aspnet-counter-value]: ./media/service-fabric-add-a-web-frontend/browser-aspnet-counter-value.png
-[vs-configuration-manager]: ./media/service-fabric-add-a-web-frontend/vs-configuration-manager.png
 [vs-create-platform]: ./media/service-fabric-add-a-web-frontend/vs-create-platform.png
 
 
 <!-- external links -->
 [dotnetcore-install]: https://www.microsoft.com/net/core#windows
-[api-management-landing-page]: https://azure.microsoft.com/en-us/services/api-management/
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

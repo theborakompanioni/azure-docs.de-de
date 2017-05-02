@@ -13,34 +13,36 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/11/2017
+ms.date: 04/24/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: ff70484dff03a44d23d2cf34ce115fd57c4b0390
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: d0cedf73aa3f73e672a73b6abaca5eb8c22a76a7
+ms.lasthandoff: 04/25/2017
 
 
 ---
-# <a name="create-a-vnet-with-a-site-to-site-connection-using-the-classic-portal"></a>Erstellen eines VNet mit einer Standort-zu-Standort-Verbindung über das klassische Portal
+# <a name="create-a-vnet-with-a-site-to-site-connection-using-the-classic-portal-classic"></a>Erstellen eines VNET mit einer Site-to-Site-Verbindung über das klassische Portal (klassisch)
 
-Eine VPN Gateway-S2S-Verbindung (Site-to-Site) ist eine Verbindung über einen VPN-Tunnel vom Typ „IPsec/IKE“ (IKEv1 oder IKEv2). Für diese Art von Verbindung wird ein lokales VPN-Gerät benötigt, dem eine öffentliche IP-Adresse zugewiesen ist und das nicht hinter einer NAT-Einheit angeordnet ist. Site-to-Site-Verbindungen können für standortübergreifende Konfigurationen und Hybridkonfigurationen verwendet werden.
-
-![Diagramm für die standortübergreifende Site-to-Site-VPN Gateway-Verbindung](./media/vpn-gateway-site-to-site-create/site-to-site-connection-diagram.png)
-
-In diesem Artikel werden das Erstellen eines virtuellen Netzwerks und das Herstellen einer Site-to-Site-VPN-Gatewayverbindung mit Ihrem lokalen Netzwerk mithilfe des klassischen Bereitstellungsmodells und des Azure-Portals beschrieben. Site-to-Site-Verbindungen können für standortübergreifende Konfigurationen und Hybridkonfigurationen verwendet werden. Sie können diese Konfiguration auch für das Resource Manager-Bereitstellungsmodell erstellen, indem Sie in der folgenden Liste eine andere Option wählen:
+In diesem Artikel wird beschrieben, wie Sie das klassische Portal zum Erstellen einer Site-to-Site-VPN Gateway-Verbindung zwischen Ihrem lokalen Netzwerk und dem VNET verwenden. Die Schritte in diesem Artikel gelten für das klassische Bereitstellungsmodell. Sie können diese Konfiguration auch mit einem anderen Bereitstellungstool oder -modell erstellen. Wählen Sie hierzu in der folgenden Liste eine andere Option:
 
 > [!div class="op_single_selector"]
 > * [Resource Manager – Azure-Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 > * [Resource Manager – PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
+> * [Resource Manager – Befehlszeilenschnittstelle](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 > * [Klassisch – Azure-Portal](vpn-gateway-howto-site-to-site-classic-portal.md)
 > * [Klassisch – Klassisches Portal](vpn-gateway-site-to-site-create.md)
+> 
 >
->
+
+![Diagramm für die standortübergreifende Site-to-Site-VPN Gateway-Verbindung](./media/vpn-gateway-site-to-site-create/site-to-site-connection-diagram.png)
+
+
+Eine Site-to-Site-VPN Gateway-Verbindung wird verwendet, um Ihr lokales Netzwerk über einen IPsec/IKE-VPN-Tunnel (IKEv1 oder IKEv2) mit einem virtuellen Azure-Netzwerk zu verbinden. Für diese Art von Verbindung wird ein lokales VPN-Gerät benötigt, dem eine extern zugängliche, öffentliche IP-Adresse zugewiesen ist. Weitere Informationen zu VPN-Gateways finden Sie unter [Informationen zu VPN Gateway](vpn-gateway-about-vpngateways.md).
 
 #### <a name="additional-configurations"></a>Zusätzliche Konfigurationen
-Wenn Sie VNets miteinander verbinden möchten, helfen Ihnen die Informationen unter [Konfigurieren einer VNet-zu-VNet-Verbindung für das klassische Bereitstellungsmodell](virtual-networks-configure-vnet-to-vnet-connection.md)weiter. Wenn Sie eine Site-to-Site-Verbindung mit einem VNET hinzufügen möchten, das bereits über eine Verbindung verfügt, lesen Sie unter [Hinzufügen einer S2S-Verbindung mit einem VNET mit einer vorhandenen VPN-Gatewayverbindung](vpn-gateway-multi-site.md) nach.
 
+Wenn Sie VNets miteinander verbinden möchten, helfen Ihnen die Informationen unter [Konfigurieren einer VNet-zu-VNet-Verbindung für das klassische Bereitstellungsmodell](virtual-networks-configure-vnet-to-vnet-connection.md)weiter. Wenn Sie eine Site-to-Site-Verbindung mit einem VNET hinzufügen möchten, das bereits über eine Verbindung verfügt, lesen Sie unter [Hinzufügen einer S2S-Verbindung mit einem VNET mit einer vorhandenen VPN-Gatewayverbindung](vpn-gateway-multi-site.md) nach.
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 [!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)]
@@ -90,7 +92,7 @@ Geben Sie die folgenden Informationen ein, und klicken Sie dann auf das Häkchen
 * **Subnetz hinzufügen:**Umfasst die Start-IP und die Anzahl von Adressen. Zusätzliche Subnetze sind nicht erforderlich, aber Sie können eine getrenntes Subnetz für virtuelle Computer erstellen, die über statische DIPs verfügen sollen. Vielleicht möchten Sie jedoch auch Ihre virtuellen Computer in einem Subnetz zusammenfassen, das von Ihren anderen Rolleninstanzen getrennt ist.
 * **Gatewaysubnetz hinzufügen:**Klicken Sie auf diese Option, um das Gatewaysubnetz hinzuzufügen. Das Gatewaysubnetz wird nur für das Gateway des virtuellen Netzwerks verwendet und ist für diese Konfiguration erforderlich.
 
-Klicken Sie auf das Häkchen am rechten unteren Rand der Seite, damit das virtuelle Netzwerk erstellt wird. Sobald der Vorgang abgeschlossen ist, wird im klassischen Azure-Portal auf der Seite **Netzwerke** unter **Status** der Eintrag **Erstellt** angezeigt. Nachdem das VNet erstellt wurde, können Sie Ihr Gateway für das virtuelle Netzwerk konfigurieren.
+Klicken Sie auf das Häkchen am rechten unteren Rand der Seite, um das virtuelle Netzwerk zu erstellen. Sobald der Vorgang abgeschlossen ist, wird im klassischen Azure-Portal auf der Seite **Netzwerke** unter **Status** der Eintrag **Erstellt** angezeigt. Nachdem das VNet erstellt wurde, können Sie Ihr Gateway für das virtuelle Netzwerk konfigurieren.
 
 [!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 

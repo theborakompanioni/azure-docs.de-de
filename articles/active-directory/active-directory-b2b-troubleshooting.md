@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 03/14/2017
+ms.date: 04/12/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 66c0084c89b5c7510196142afd27b58953d0dc86
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: ccd7bb3cab65f95c53489de07479c9750e860040
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -27,9 +27,6 @@ ms.lasthandoff: 03/15/2017
 
 Hier finden Sie Lösungen für häufig auftretende Probleme bei der Azure Active Directory B2B-Zusammenarbeit.
 
-## <a name="i-cant-create-an-external-user-due-to-an-existing-contact"></a>Ich kann aufgrund eines schon vorhandenen Kontakts einen externen Benutzer nicht erstellen.
-
-Wenn für den externen Benutzer, den Sie einladen möchten, bereits ein Kontaktobjekt vorhanden ist, können Sie diesen Benutzer erst dann einladen, wenn der Konflikt gelöst ist – üblicherweise durch Entfernen des Kontaktobjekts. Bis zur allgemeinen Verfügbarkeit der B2B-Zusammenarbeit müssen solche Konflikte manuell gelöst werden.
 
 ## <a name="ive-added-an-external-user-but-do-not-see-them-in-my-global-address-book-or-in-the-people-picker"></a>Ich habe einen externen Benutzer hinzugefügt, dieser wird aber im globalen Adressbuch oder in der Personenauswahl nicht angezeigt.
 
@@ -66,7 +63,7 @@ Um dieses Problem zu lösen, muss der Administrator des externen Benutzers das B
 
 ## <a name="how-does--which-is-not-normally-a-valid-character-sync-with-azure-ad"></a>Wie wird „\#“ – normalerweise ein ungültiges Zeichen – in Azure AD synchronisiert?
 
-„\#“ ist ein reserviertes Zeichen in UPNs für die Azure AD B2B-Zusammenarbeit oder externe Benutzer (der UPN &lt;user@contoso.com&gt; eines eingeladenen Benutzers wird zu &lt;user_contoso.com#EXT@fabrikam.onmicrosoft.com&gt;). Aus lokalen Systemen abgerufene UPNs mit \# dürfen sich daher nicht am Azure-Portal anmelden.
+„\#“ ist ein reserviertes Zeichen in UPNs für die Azure AD B2B-Zusammenarbeit oder externe Benutzer (der UPN user@contoso.com eines eingeladenen Benutzers wird zu user_contoso.com#EXT@fabrikam.onmicrosoft.com). Aus lokalen Systemen abgerufene UPNs mit \# dürfen sich daher nicht beim Azure-Portal anmelden.
 
 ## <a name="i-receive-an-error-when-adding-external-users-to-a-synchronized-group"></a>Ich erhalte eine Fehlermeldung, wenn ich externe Benutzer zu einer synchronisierten Gruppe hinzufüge.
 
@@ -74,11 +71,11 @@ Externe Benutzer können nur zu „zugewiesenen“ Gruppen oder „Sicherheitsgr
 
 ## <a name="my-external-user-did-not-receive-an-email-to-redeem"></a>Mein externer Benutzer hat keine E-Mail zur Einlösung erhalten.
 
-Der Eingeladene sollte seinen Spamfilter überprüfen oder sich mit seinem ISP in Verbindung setzen, um sicherzustellen, dass die folgende Adresse zulässig ist: &lt;Invites@microsoft.com&gt;
+Der Eingeladene sollte seinen Spamfilter überprüfen oder sich mit seinem ISP in Verbindung setzen, um sicherzustellen, dass die folgende Adresse zulässig ist: Invites@microsoft.com
 
-## <a name="my-recipient-received-multiple-emails-from-me"></a>Mein Empfänger hat mehrere E-Mails von mir erhalten.
+## <a name="i-notice-that-the-custom-message-does-not-get-included-with-invitation-messages-at-times"></a>Die benutzerdefinierte Nachricht wird nicht immer in Einladungsnachrichten eingefügt.
 
-Wenn der Empfänger einer Einladung über mehrere Aliase für sein Konto verfügt, erhält er möglicherweise zwei Einladungen. In diesen Fällen wird der erste eingelöste Link zu dem Konto, das erstellt wird. Der zweite Einlösungslink ist dann ungültig.
+Zur Einhaltung von Datenschutzgesetzen fügen unsere APIs keine benutzerdefinierten Nachrichten in die E-Mail-Einladung ein, wenn die einladende Person über keine E-Mail-Adresse in der Ressourcenorganisation (auch als einladender Mandant bezeichnet) verfügt oder wenn die Einladung von einem App-Dienstprinzipal gesendet wird. Wenn dies für Sie ein wichtiger Anwendungsfall ist, können Sie das Senden von E-Mail-Einladungen durch unsere API unterdrücken und sie über ein E-Mail-Verfahren Ihrer Wahl senden. Vergewissern Sie sich unbedingt bei der Rechtsabteilung Ihrer Organisation, dass auf diese Weise gesendete E-Mail-Nachrichten auch den Datenschutzgesetzen entsprechen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

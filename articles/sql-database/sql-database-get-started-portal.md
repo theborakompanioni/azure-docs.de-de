@@ -17,9 +17,9 @@ ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 3366348e6ea3ae296bc249090e75c16ebe9fc1fb
-ms.lasthandoff: 04/17/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: 90761317944b935b76df65d25a2035bfabe71c09
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -143,19 +143,25 @@ Nachdem Sie nun eine Beispieldatenbank in Azure erstellt haben, können Sie das 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Andere Schnellstarts dieser Sammlung bauen auf diesem Schnellstart auf. Wenn Sie planen, mit den nachfolgenden Schnellstarts fortzufahren, sollten Sie die in diesem Schnellstart erstellten Ressourcen nicht bereinigen. Falls Sie nicht fortfahren möchten, können Sie die folgenden Schritte ausführen, um alle erstellten Ressourcen dieses Schnellstarts im Azure-Portal zu löschen.
+Andere Schnellstarts dieser Sammlung bauen auf diesem Schnellstart auf. 
+
+> [!TIP]
+> Wenn Sie planen, mit den nachfolgenden Schnellstarts fortzufahren, sollten Sie die in diesem Schnellstart erstellten Ressourcen nicht bereinigen. Falls Sie nicht fortfahren möchten, können Sie die folgenden Schritte ausführen, um alle erstellten Ressourcen dieses Schnellstarts im Azure-Portal zu löschen.
+>
 
 1. Klicken Sie im Azure-Portal im Menü auf der linken Seite auf **Ressourcengruppen** und dann auf **myResourceGroup**. 
 2. Klicken Sie auf der Seite mit Ihrer Ressourcengruppe auf **Löschen**, geben Sie im Textfeld **myResourceGroup** ein, und klicken Sie dann auf **Löschen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zum Herstellen einer Verbindung und Durchführen von Abfragen mit SQL Server Management Studio finden Sie unter [Verbinden und Abfragen mit SSMS](sql-database-connect-query-ssms.md).
-- Informationen zum Herstellen einer Verbindung mit Visual Studio finden Sie unter [Verbinden und Abfragen mit Visual Studio Code](sql-database-connect-query-vscode.md).
-- Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit .NET finden Sie unter [Verbinden und Abfragen mit .NET](sql-database-connect-query-dotnet.md).
-- Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit PHP finden Sie unter [Verbinden und Abfragen mit PHP](sql-database-connect-query-php.md).
-- Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit Node.js finden Sie unter [Verbinden und Abfragen mit Node.js](sql-database-connect-query-nodejs.md).
-- Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit Java finden Sie unter [Verbinden und Abfragen mit Java](sql-database-connect-query-java.md).
-- Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit Python finden Sie unter [Verbinden und Abfragen mit Python](sql-database-connect-query-python.md).
-- Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit Ruby finden Sie unter [Verbinden und Abfragen mit Ruby](sql-database-connect-query-ruby.md).
+Sie besitzen nun eine Datenbank, können eine Verbindung herstellen und Abfragen mit Ihren bevorzugten Tools ausführen. Weitere Informationen erhalten Sie, indem Sie eines der folgenden Tools auswählen:
+
+- [SQL Server Management Studio](sql-database-connect-query-ssms.md)
+- [Visual Studio Code](sql-database-connect-query-vscode.md)
+- [.NET](sql-database-connect-query-dotnet.md)
+- [PHP](sql-database-connect-query-php.md)
+- [Node.js](sql-database-connect-query-nodejs.md)
+- [Java](sql-database-connect-query-java.md)
+- [Python](sql-database-connect-query-python.md)
+- [Ruby](sql-database-connect-query-ruby.md)
 

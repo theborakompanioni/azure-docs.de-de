@@ -13,17 +13,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/15/2017
+ms.date: 04/24/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 7adde91586f5fbbffd0aeaf0efb0810cc891ac0b
-ms.openlocfilehash: ecae2cb9c0cdc78226c100cd287b840b6b2a6bb8
-ms.lasthandoff: 04/18/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 309a36b1aa5db95a287b7a6b21449f9d61880cf4
+ms.lasthandoff: 04/25/2017
 
 
 ---
 # <a name="overview-of-azure-iot-suite"></a>Übersicht über Azure IoT Suite
+
 Die Azure IoT-Dienste (Internet of Things, Internet der Dinge) bieten zahlreiche Funktionen. Diese Dienste auf Unternehmensniveau ermöglichen Folgendes:
 
 * Sammeln von Daten von Geräten
@@ -52,9 +53,11 @@ Die vorkonfigurierten Lösungen verwenden in der Regel die folgenden Dienste:
 Eine Übersicht über die Architektur einer typischen IoT-Lösung finden Sie unter [Microsoft Azure und das Internet der Dinge (IoT)][iot-suite-what-is-azure-iot].
 
 ## <a name="preconfigured-solutions"></a>Vorkonfigurierte Lösungen
-Die IoT Suite enthält vorkonfigurierte Lösungen, die einen schnellen Einstieg und Einblick in die IoT-Szenarien ermöglichen, z.B. *Remoteüberwachung* und *Vorhersagbarer Wartungsbedarf*. Sie können die Lösungen für Ihr Azure-Abonnement bereitstellen und dann ein vollständiges End-to-End-IoT-Szenario ausführen.
+
+Die IoT Suite enthält vorkonfigurierte Lösungen, die einen schnellen Einstieg und Einblick in die allgemeinen IoT-Szenarien ermöglichen, z.B. *Remoteüberwachung*, *vorbeugende Wartung* und *verbundene Factory*. Sie können die Lösungen für Ihr Azure-Abonnement bereitstellen und dann ein vollständiges End-to-End-IoT-Szenario ausführen.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Nachdem Sie einen Überblick über die Möglichkeiten der IoT-Suite erlangt haben und ihre wichtigsten Komponenten kennen, können Sie sich weiter über die vorkonfigurierten Lösungen in IoT Suite informieren. Weitere Informationen finden Sie unter [Was sind vorkonfigurierte Azure IoT-Suite-Lösungen?][lnk-what-are-preconfig].
 
 [lnk-sdks]: https://azure.microsoft.com/documentation/articles/iot-hub-sdks-summary/

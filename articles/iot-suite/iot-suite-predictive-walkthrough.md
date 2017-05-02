@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/01/2017
+ms.date: 04/25/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 719f9810abb12cbe8645651d35cbff936cecd158
-ms.openlocfilehash: 57531b609b095359c8bf0ea3685af40124f46311
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: 9b2947d9ce00083c168635811395bc86b3e60b78
+ms.lasthandoff: 04/26/2017
 
 
 ---
@@ -63,7 +64,7 @@ IoT Hub führt die Bestätigung der Gerätebefehle durch.
 Der **Ereignisprozessorhost** wird im Rahmen eines Azure-Webauftrags ausgeführt. Der **Ereignisprozessor** verwendet die durchschnittlichen Sensorwerte eines abgeschlossenen Zyklus. Diese Werte übergibt er anschließend an eine API, die das trainierte Modell zum Berechnen der Restlebensdauer eines Triebwerks verfügbar macht. Die API wird von einem Machine Learning-Arbeitsbereich verfügbar gemacht, der als Teil der Lösung bereitgestellt wird.
 
 ## <a name="machine-learning"></a>Machine Learning
-Die Machine Learning-Komponente verwendet ein Modell, das sich von Daten ableitet, die von echten Flugzeugtriebwerken gesammelt wurden. Sie können über die Kachel auf der Seite [azureiotsuite.com][lnk-azureiotsuite] Ihrer bereitgestellten Lösung zum Machine Learning-Arbeitsbereich navigieren, wenn der Status **Bereit** lautet.
+Die Machine Learning-Komponente verwendet ein Modell, das sich von Daten ableitet, die von echten Flugzeugtriebwerken gesammelt wurden. Sie können über die Kachel auf der Seite [azureiotsuite.com][lnk-azureiotsuite] Ihrer bereitgestellten Lösung zum Machine Learning-Arbeitsbereich navigieren, wenn der Status der Lösung **Bereit** lautet.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -83,8 +84,3 @@ Sie können auch einige andere Features und Funktionen der vorkonfigurierten IoT
 [lnk-faq]: iot-suite-faq.md
 [lnk-security-groundup]: securing-iot-ground-up.md
 [lnk-machine-learning]: https://azure.microsoft.com/services/machine-learning/
-
-
-<!--HONumber=Feb17_HO1-->
-
-

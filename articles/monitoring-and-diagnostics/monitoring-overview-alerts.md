@@ -16,9 +16,9 @@ ms.date: 03/02/2017
 ms.author: robb
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: c9065c3346c924ea21060c9e7e5b297a3cb26941
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 76c8feb077cca27dc96f43e708cdef4fbb0f824c
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -44,9 +44,9 @@ Das folgende Diagramm enthält eine Zusammenfassung der Warnungen und ihrer Funk
 Sie können Warnungen basierend auf folgenden Elementen erhalten:
 
 * **Metrikwerte**: Diese Warnung wird ausgelöst, wenn der Wert für eine bestimmte Metrik einen von Ihnen definierten Schwellenwert über- oder unterschreitet. Das Auslösen erfolgt sowohl, wenn die Bedingung erstmals erfüllt wird, als auch danach, wenn diese Bedingung nicht mehr erfüllt wird. Eine laufend ergänzte Liste verfügbarer Metriken, die vom Azure-Monitor unterstützt werden, finden Sie unter [Unterstützte Metriken von Azure Monitor](monitoring-supported-metrics.md).
-* **Aktivitätsprotokollereignisse**: Diese Warnung kann für jedes Ereignis oder nur dann ausgelöst werden, wenn eine bestimmte Anzahl von Ereignissen aufgetreten ist.
+* **Aktivitätsprotokollereignisse:** Diese Warnung kann ausgelöst werden, wenn ein bestimmtes Ereignis für eine Ressource eintritt oder wenn eine Dienstbenachrichtigung in Ihrem Abonnement veröffentlicht wird.
 
-## <a name="what-can-alerts-do"></a>Welche Aktionen können Warnungen ausführen?
+## <a name="what-can-metric-alerts-do"></a>Welche Aktionen können Metrikwarnungen ausführen?
 Sie können eine Warnung so konfigurieren, dass folgende Aktionen ausgeführt werden:
 
 * Senden von E-Mail-Benachrichtigungen an den Dienstadministrator, an Co-Administratoren oder an zusätzliche von Ihnen festgelegte E-Mail-Adressen
@@ -56,12 +56,27 @@ Sie können eine Warnung so konfigurieren, dass folgende Aktionen ausgeführt we
     - Azure-Logik-App
     - ein Drittanbieter-Dienst
 
+## <a name="what-can-activity-log-alerts-do"></a>Welche Aktionen können Aktivitätsprotokollwarnungen ausführen?
+Sie können eine Warnung so konfigurieren, dass folgende Aktionen ausgeführt werden:
+* Auslösen, wenn ein bestimmtes Ereignis für eine Ressource in Ihrem Abonnement eintritt
+* Auslösen, wenn eine Dienstbenachrichtigung in Ihrem Abonnement veröffentlicht wird
+* Benachrichtigen von Mitgliedern einer Aktivitätsgruppe per
+    * sms
+    * E-Mail
+    * Webhook
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen über Warnregeln und ihre Konfiguration erhalten Sie hier:
 
-* [Azure-Portal](insights-alerts-portal.md)
-* [PowerShell](insights-alerts-powershell.md)
-* [Befehlszeilenschnittstelle](insights-alerts-command-line-interface.md)
-* [Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
+* Weitere Informationen zu [Metriken](monitoring-overview-metrics.md)
+* Konfigurieren von [Metrikwarnungen über das Azure-Portal](insights-alerts-portal.md)
+* Konfigurieren von [Metrikwarnungen mithilfe von PowerShell](insights-alerts-powershell.md)
+* Konfigurieren von [Metrikwarnungen über die Befehlszeilenschnittstelle (CLI)](insights-alerts-command-line-interface.md)
+* Konfigurieren von [Metrikwarnungen mithilfe der Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
+* Weitere Informationen zu [Aktivitätsprotokollen](monitoring-overview-activity-logs.md)
+* Konfigurieren von [Aktivitätsprotokollwarnungen über das Azure-Portal](monitoring-activity-log-alerts.md)
+* Konfigurieren von [Aktivitätsprotokollwarnungen über den Resource Manager](monitoring-create-activity-log-alerts-with-resource-manager-template.md)
+* Weitere Informationen zum [Webhookschema für Aktivitätsprotokollwarnungen](monitoring-activity-log-alerts-webhook.md)
+* Weitere Informationen zu [Dienstbenachrichtigungen](monitoring-service-notifications.md)
+* Weitere Informationen zu [Aktionsgruppen](monitoring-action-groups.md)
 

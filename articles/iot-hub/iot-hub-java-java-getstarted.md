@@ -16,9 +16,9 @@ ms.date: 03/07/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: b7dbfff716806e8b91488d3eb5eafab582e173ba
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 11d7c919da7e443dcb59c16b4d5fe2b25501fb2d
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -336,7 +336,8 @@ In diesem Abschnitt erstellen Sie eine Java-Konsolenanwendung, die ein Gerät si
     ```
     private static class TelemetryDataPoint {
       public String deviceId;
-      public double windSpeed;
+      public double temperature;
+      public double humidity;
    
       public String serialize() {
         Gson gson = new Gson();
@@ -367,17 +368,22 @@ In diesem Abschnitt erstellen Sie eine Java-Konsolenanwendung, die ein Gerät si
     
       public void run()  {
         try {
-          double avgWindSpeed = 10; // m/s
+          double minTemperature = 20;
+          double minHumidity = 60;
           Random rand = new Random();
     
           while (true) {
-            double currentWindSpeed = avgWindSpeed + rand.nextDouble() * 4 - 2;
+            double currentTemperature = minTemperature + rand.nextDouble() * 15;
+            double currentHumidity = minHumidity + rand.nextDouble() * 20;
             TelemetryDataPoint telemetryDataPoint = new TelemetryDataPoint();
             telemetryDataPoint.deviceId = deviceId;
-            telemetryDataPoint.windSpeed = currentWindSpeed;
+            telemetryDataPoint.temperature = currentTemperature;
+            telemetryDataPoint.humidity = currentHumidity;
     
             String msgStr = telemetryDataPoint.serialize();
             Message msg = new Message(msgStr);
+            msg.setProperty("temperatureAlert", (currentTemperature > 30) ? "true" : "false");
+            msg.setMessageId(java.util.UUID.randomUUID().toString()); 
             System.out.println("Sending: " + msgStr);
     
             Object lockobj = new Object();
@@ -396,7 +402,7 @@ In diesem Abschnitt erstellen Sie eine Java-Konsolenanwendung, die ein Gerät si
     }
     ```
     
-    Diese Methode sendet eine Sekunde, nachdem der IoT Hub die vorherige Nachricht bestätigt, eine neue D2C-Nachricht. Die Nachricht enthält ein JSON-serialisiertes Objekt mit der Geräte-ID sowie eine zufällig generierte Zahl, um einen Windgeschwindigkeitssensor zu simulieren.
+    Diese Methode sendet eine Sekunde, nachdem der IoT Hub die vorherige Nachricht bestätigt, eine neue D2C-Nachricht. Die Nachricht enthält ein JSON-serialisiertes Objekt mit der Geräte-ID sowie zufällig generierten Zahlen, um einen Temperatur- und Feuchtigkeitssensor zu simulieren.
 11. Ersetzen Sie die **main** -Methode durch den folgenden Code, der einen Thread zum Senden von D2C-Nachrichten an Ihren IoT Hub erstellt:
     
     ```
@@ -486,3 +492,4 @@ Informationen dazu, wie Sie Ihre IoT-Lösung erweitern und Ihre D2C-Nachrichten 
 [lnk-maven-service-search]: http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22
 [lnk-maven-device-search]: http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22
 [lnk-maven-eventhubs-search]: http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22
+

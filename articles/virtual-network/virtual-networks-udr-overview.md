@@ -16,9 +16,9 @@ ms.date: 03/15/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 1657f7c772b7039707a67c4abc788479cc08bdd0
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 93920075a8ad8de4fd650d9cbbfd13b7bc18bf52
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -46,7 +46,7 @@ Die folgende Abbildung zeigt ein Beispiel für benutzerdefinierte Routen und IP-
 ![Systemrouten in Azure](./media/virtual-networks-udr-overview/Figure2.png)
 
 > [!IMPORTANT]
-> Benutzerdefinierte Routen werden nur auf ausgehenden Datenverkehr von einem Subnetz angewendet. Sie können keine Routen erstellen, um anzugeben, wie Datenverkehr z.B. aus dem Internet in ein Subnetz gelangt. Das Gerät, an das Sie Datenverkehr weiterleiten, darf sich außerdem nicht in dem gleichen Subnetz befinden, aus dem der Datenverkehr stammt. Erstellen Sie immer ein separates Subnetz für Ihre Geräte. 
+> Benutzerdefinierte Routen werden auf Datenverkehr angewendet, der ein Subnetz von einer beliebigen Ressource (etwa an virtuelle Computer angefügte Netzwerkschnittstellen) im Subnetz verlässt. Sie können keine Routen erstellen, um anzugeben, wie Datenverkehr beispielsweise aus dem Internet in ein Subnetz gelangt. Das Gerät, an das Sie Datenverkehr weiterleiten, darf sich nicht in dem gleichen Subnetz befinden, aus dem der Datenverkehr stammt. Erstellen Sie immer ein separates Subnetz für Ihre Geräte. 
 > 
 > 
 

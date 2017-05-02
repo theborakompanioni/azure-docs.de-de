@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-wms.date: 03/06/2017
+wms.date: 04/14/2017
 ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 85b7336958c90b477eea8ea185a69bab2bd87a79
-ms.lasthandoff: 04/15/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 884cd19bdfb1bf53d75cb27e840c448eff8bc991
+ms.lasthandoff: 04/20/2017
 
 
 ---
 # <a name="sql-database-options-and-performance-understand-whats-available-in-each-service-tier"></a>SQL-Datenbankoptionen und -leistung: Grundlegendes zum Angebot in den einzelnen Tarifen
 
-Azure SQL-Datenbank bietet vier [Dienstebenen](sql-database-technical-overview.md): **Basic**, **Standard**, **Premium** und **Premium RS**. Jede Dienstebene hat mehrere Leistungsstufen für unterschiedliche Workloads. Bei höheren Leistungsstufen stehen zusätzliche Ressourcen zur Verfügung, um einen höheren Durchsatz zu ermöglichen. Sie können die Tarife und Leistungsebenen dynamisch und ohne Ausfallzeiten ändern. Die Dienstebenen „Basic“, „Standard“, „Premium“ und „Premium RS“ haben alle eine Betriebszeit-SLA von 99,99% und bieten flexible Optionen für Geschäftskontinuität, Sicherheitsfeatures und stündliche Abrechnung. Die Premium RS-Ebene bietet die gleichen Leistungsstufen, Sicherheits- und Geschäftskontinuitätsfeatures wie die Premium-Ebene, wenn auch mit reduzierter SLA.
+Azure SQL-Datenbank bietet vier [Dienstebenen](sql-database-technical-overview.md): **Basic**, **Standard**, **Premium** und **Premium RS**. Jede Dienstebene hat mehrere Leistungsstufen für unterschiedliche Workloads. Bei höheren Leistungsstufen stehen zusätzliche Ressourcen zur Verfügung, um einen höheren Durchsatz zu ermöglichen. Sie können die Tarife und Leistungsebenen dynamisch und ohne Ausfallzeiten ändern. Die Dienstebenen „Basic“, „Standard“ und „Premium“ haben alle eine Betriebszeit-SLA von 99,99 Prozent und bieten flexible Optionen für Geschäftskontinuität, Sicherheitsfeatures und stündliche Abrechnung. Die Premium RS-Ebene bietet die gleichen Leistungsstufen, Sicherheits- und Geschäftskontinuitätsfeatures wie die Premium-Ebene, wenn auch mit reduzierter SLA.
 
 > [!IMPORTANT]
 > Premium RS-Datenbanken werden mit einer niedrigeren Anzahl redundanter Kopien als Premium- oder Standard-Datenbanken ausgeführt. Im Falle eines Dienstfehlers müssen Sie daher Ihre Datenbank unter Umständen aus einer Sicherung mit einem Rückstand von bis zu 5 Minuten wiederherstellen.
@@ -44,18 +44,18 @@ In der folgenden Tabelle sind Beispiele für Dienstebenen aufgeführt, die sich 
 | **Premium RS** | Speziell für E/A-intensive Workloads, die nicht die höchsten Verfügbarkeitsgarantien benötigen. Beispiele hierfür sind das Testen von Hochleistungsworkloads oder eine analytische Workload, wo die Datenbank nicht das bevorzugte System ist. |
 |||
 
-Entscheiden Sie zuerst, ob Sie eine einzelne Datenbank mit einer definierten Menge dedizierter Ressourcen ausführen möchten, oder ob Sie einen Pool von Ressourcen für eine Gruppe von Datenbanken gemeinsam verwenden möchten. Informieren Sie sich über die [Überlegungen zu elastischen Pools](sql-database-elastic-pool-guidance.md). Bestimmen Sie zu Beginn die Datenbankfeatures, die Sie mindestens benötigen:
+Entscheiden Sie zuerst, ob Sie eine einzelne Datenbank mit einer definierten Menge dedizierter Ressourcen ausführen möchten, oder ob Sie einen Pool von Ressourcen für eine Gruppe von Datenbanken gemeinsam verwenden möchten. Informieren Sie sich über die [Überlegungen zu elastischen Pools](sql-database-elastic-pool.md). Bestimmen Sie zu Beginn die Datenbankfeatures, die Sie mindestens benötigen:
 
 | **Dienstebenenfeatures** | **Basic** | **Standard** | **Premium** | **Premium RS**|
 | :-- | --: | --: | --: | --: |
-| Maximale Größe der einzelnen Datenbank | 2 GB | 250 GB | 4TB*  | 500 GB  |
-| Maximaler Gesamtspeicher in einem Pool für elastische Datenbanken | 117 GB | 1.200GB | 750 GB | 750 GB |
-| Maximale Anzahl von Datenbanken pro Pool | 400  | 400 | 50 | 50 |
+| Maximale Größe von Einzeldatenbanken | 2 GB | 250 GB | 4TB*  | 500 GB  |
+| Maximale Datenbankgröße in einem Pool für elastische Datenbanken | 156 GB | 2,9 TB | 500 GB | 500 GB |
+| Maximale Anzahl von Datenbanken pro Pool | 500  | 500 | 100 | 100 |
 | Aufbewahrungszeitraum von Datenbanksicherungen | 7 Tage | 35 Tage | 35 Tage | 35 Tage |
 ||||||
 
 > [!IMPORTANT]
-> Kunden mit den Leistungsstufen P11 und P15 können bis zu 4TB Speicher ohne Aufpreis nutzen. Diese 4-TB-Option ist derzeit in folgenden Regionen in der Public Preview verfügbar: USA, Osten 2; USA, Westen; Europa, Westen; Asien, Südosten; Japan, Osten; Australien, Osten; Kanada, Mitte und Kanada, Osten. Aktuelle Einschränkungen finden Sie unter [Current limitations of P11 and P15 databases with 4 TB maxsize](sql-database-service-tiers.md#current-limitations-of-p11-and-p15-databases-with-4-tb-maxsize) (Aktuelle Einschränkungen bei P11- und P15-Datenbanken mit maximal 4TB).
+> Für Kunden mit den Leistungsstufen P11 und P15 stehen einzelne Datenbanken von bis zu 4 TB als öffentliche Vorschau ohne Aufpreis zur Verfügung. Premium-Pools mit mehr als 750 GB Speicher sind derzeit ebenfalls verfügbar. Diese zusätzlichen Speicheroptionen sind derzeit in den folgenden Regionen verfügbar: USA, Osten 2; USA, Westen; Europa, Westen; Asien, Südosten; Japan, Osten; Australien, Osten; Kanada, Mitte und Kanada, Osten. Informationen finden Sie unter [Aktuelle Einschränkungen von P11- und P15-Datenbanken mit einem MAXSIZE-Wert von 4 TB](sql-database-service-tiers.md#current-limitations-of-p11-and-p15-databases-with-4-tb-maxsize).
 >
 
 Nach der Ermittlung der Mindestdienstebene können Sie die Leistungsebene für die Datenbank (Anzahl von DTUs) bestimmen. Die standardmäßigen Leistungsebenen S2 und S3 sind meist ein guter Ausgangspunkt. Für Datenbanken mit hohen CPU- oder E/A-Anforderungen empfehlen sich dagegen eher die Premium-Leistungsebenen. Premium bietet im Vergleich zur höchsten Standard-Leistungsebene mehr CPU- und eine mindestens zehnmal höhere E/A-Leistung.
@@ -90,7 +90,7 @@ Die Dauer des gesamten zentralen Hochskalierungsvorgangs hängt sowohl von der G
 
 ## <a name="elastic-pool-service-tiers-and-performance-in-edtus"></a>Dienstebenen und Leistung für elastische Pools in eDTUs
 
-Durch Pools können Datenbanken eDTU-Ressourcen freigeben und gemeinsam nutzen, ohne dass jeder Datenbank im Pool eine bestimmte Leistungsebene zugewiesen werden muss. Beispielsweise kann eine Einzeldatenbank in einem Pool der Dienstebene „Standard“ 0 eDTU bis hin zum maximalen eDTU-Wert für Datenbanken nutzen, den Sie beim Konfigurieren des Pools festlegen. Bei Pools können mehrere Datenbanken mit unterschiedlichen Workloads die für den gesamten Pool verfügbaren eDTU-Ressourcen effizient nutzen. Weitere Informationen finden Sie unter den [Überlegungen zum Preis und zur Leistung eines elastischen Pools](sql-database-elastic-pool-guidance.md) .
+Durch Pools können Datenbanken eDTU-Ressourcen freigeben und gemeinsam nutzen, ohne dass jeder Datenbank im Pool eine bestimmte Leistungsebene zugewiesen werden muss. Beispielsweise kann eine Einzeldatenbank in einem Pool der Dienstebene „Standard“ 0 eDTU bis hin zum maximalen eDTU-Wert für Datenbanken nutzen, den Sie beim Konfigurieren des Pools festlegen. Bei Pools können mehrere Datenbanken mit unterschiedlichen Workloads die für den gesamten Pool verfügbaren eDTU-Ressourcen effizient nutzen. Weitere Informationen finden Sie unter den [Überlegungen zum Preis und zur Leistung eines elastischen Pools](sql-database-elastic-pool.md) .
 
 In der folgenden Tabelle sind die Merkmale der Dienstebenen eines Pools beschrieben.
 
@@ -144,7 +144,7 @@ Beim Erstellen oder Aktualisieren einer P11-/P15-Datenbank in einer nicht unters
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie mehr über [elastische Pools](sql-database-elastic-pool-guidance.md), und lesen Sie sich den Artikel [Wo sollte ein Pool für elastische Datenbanken verwendet werden?](sql-database-elastic-pool-guidance.md) durch.
+* Erfahren Sie mehr über [elastische Pools](sql-database-elastic-pool.md), und lesen Sie sich den Artikel [Wo sollte ein Pool für elastische Datenbanken verwendet werden?](sql-database-elastic-pool.md) durch.
 * Informieren Sie sich darüber, wie Sie [einen elastischen Pool überwachen und verwalten und seine Größe ändern](sql-database-elastic-pool-manage-portal.md) und wie Sie [die Leistung von Einzeldatenbanken überwachen](sql-database-single-database-monitor.md).
 * Nachdem Sie jetzt die Ebenen für SQL-Datenbank kennen, können Sie sie mit einem [kostenlosen Konto](https://azure.microsoft.com/pricing/free-trial/) ausprobieren und sich mit der [Erstellung Ihrer ersten SQL-Datenbank](sql-database-get-started-portal.md) befassen.
 * Verwenden Sie in Migrationsszenarien den [DTU Calculator](http://dtucalculator.azurewebsites.net/) (DTU-Rechner), um die voraussichtlich benötigte DTU-Anzahl zu ermitteln. 

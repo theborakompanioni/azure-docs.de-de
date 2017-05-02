@@ -1,28 +1,27 @@
-### <a name="noconnection"></a>Gewusst wie: Hinzufügen oder Entfernen von Präfixen ohne Gatewayverbindung
-### <a name="to-add-additional-prefixes"></a>So fügen Sie zusätzliche Präfixe hinzu
+### <a name="noconnection"></a>Ändern von Präfixen – keine Gatewayverbindung
 
-Verwenden Sie das unten angegebene Beispiel, um einem von Ihnen erstellten lokalen Netzwerkgateway, das noch nicht über eine Gatewayverbindung verfügt, zusätzliche Präfixe hinzuzufügen. Legen Sie die Werte auf Ihre eigenen Werte fest.
+- So fügen Sie weitere Adresspräfixe hinzu:
 
-```powershell
-$local = Get-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName -ResourceGroupName MyRGName `
-Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
--AddressPrefix @('10.0.0.0/24','20.0.0.0/24','30.0.0.0/24')
-```
-### <a name="to-remove-an-address-prefix"></a>So entfernen Sie ein Adresspräfix
+  ```powershell
+  $local = Get-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName -ResourceGroupName MyRGName `
+  Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
+  -AddressPrefix @('10.0.0.0/24','20.0.0.0/24','30.0.0.0/24')
+  ```
 
-Verwenden Sie das unten angegebene Beispiel, um ein Adresspräfix aus einem lokalen Netzwerkgateway zu entfernen, das noch nicht über eine VPN-Verbindung verfügt. Lassen Sie die Präfixe weg, die Sie nicht mehr benötigen. In diesem Beispiel wird das Präfix 20.0.0.0/24 (aus dem vorherigen Beispiel) nicht mehr benötigt. Daher wird das lokale Netzwerkgateway aktualisiert und das Präfix weggelassen.
+- So entfernen Sie ein Adresspräfix:<br>
+  Lassen Sie die Präfixe weg, die Sie nicht mehr benötigen. In diesem Beispiel wird das Präfix „20.0.0.0/24“ (aus dem vorherigen Beispiel) nicht mehr benötigt. Daher wird das lokale Netzwerkgateway aktualisiert und das Präfix weggelassen.
 
-```powershell
-$local = Get-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName -ResourceGroupName MyRGName `
-Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
--AddressPrefix @('10.0.0.0/24','30.0.0.0/24')
-```
+  ```powershell
+  $local = Get-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName -ResourceGroupName MyRGName `
+  Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
+  -AddressPrefix @('10.0.0.0/24','30.0.0.0/24')
+  ```
 
-### <a name="withconnection"></a>Gewusst wie: Hinzufügen oder Entfernen von Präfixen mit Gatewayverbindung
-Führen Sie die folgenden Schritte in der angegebenen Reihenfolge aus, wenn Sie die Gatewayverbindung erstellt haben und die IP-Adresspräfixe Ihres lokalen Netzwerkgateways hinzufügen oder entfernen möchten. Dies führt zu Ausfallzeiten für Ihre VPN-Verbindung. Beim Aktualisieren der Präfixe entfernen Sie zuerst die Verbindung und ändern die Präfixe und erstellen anschließend eine neue Verbindung. Legen Sie die Werte in den bereitgestellten Beispielen auf Ihre eigenen Werte fest.
+### <a name="withconnection"></a>Ändern von Präfixen – vorhandene Gatewayverbindung
+Führen Sie die folgenden Schritte in der angegebenen Reihenfolge aus, wenn eine Gatewayverbindung besteht und Sie die IP-Adresspräfixe Ihres lokalen Netzwerkgateways hinzufügen oder entfernen möchten. Dies führt zu Ausfallzeiten bei Ihrer VPN-Verbindung.
 
 > [!IMPORTANT]
-> Löschen Sie nicht das VPN-Gateway. Wenn Sie dies tun, müssen Sie die Schritte zum Erstellen erneut durchführen und das Gateway außerdem auf Ihrem lokalen Router mit den neuen Einstellungen erneut konfigurieren.
+> Löschen Sie nicht das VPN-Gateway. Ansonsten müssen Sie die Schritte erneut ausführen, um es neu zu erstellen. Außerdem müssen Sie Ihr lokales VPN-Gerät mit der neuen IP-Adresse des VPN-Gateways aktualisieren.
 > 
 > 
 
@@ -53,7 +52,7 @@ Führen Sie die folgenden Schritte in der angegebenen Reihenfolge aus, wenn Sie 
   $gateway1 = Get-AzureRmVirtualNetworkGateway -Name RMGateway  -ResourceGroupName MyRGName
   ```
    
-  Erstellen Sie die Verbindung. Beachten Sie, dass in diesem Beispiel die $local-Variable verwendet wird, die Sie im vorherigen Schritt festgelegt haben.
+  Erstellen Sie die Verbindung. In diesem Beispiel wird die in Schritt 2 festgelegte Variable „$local“ verwendet.
 
   ```powershell
   New-AzureRmVirtualNetworkGatewayConnection -Name MyGWConnectionName `

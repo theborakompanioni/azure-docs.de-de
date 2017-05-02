@@ -15,8 +15,9 @@ ms.topic: get-started-article
 ms.date: 09/12/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 29c4c2a2818468a2fa8360eebd4b653bdcbbde19
-ms.openlocfilehash: 0749d371466226343227c79db544a8e3dca0cca8
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 75188a8f74b08d28b92259348626d5734ed4ce6c
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -40,9 +41,11 @@ Die folgenden Schritte beschreiben, wie Sie mithilfe des Azure-Portals ein Lab i
    2. Wählen Sie das **Abonnement** aus, das mit dem Lab verknüpft werden soll.
    3. Wählen Sie einen **Speicherort** für das Lab aus.
    4. Geben Sie mithilfe von **Auto-shutdown** (Automatisch herunterfahren) an, ob Sie das automatische Herunterfahren für alle virtuellen Computer im Lab aktivieren und die entsprechenden Parameter festlegen möchten. 
-   5. Klicken Sie auf **Erstellen**.
-      
-      ![Erstellen eines Lab-Blatts](./media/devtest-lab-create-lab/create-devtestlab-blade.png)
+   5. Wählen Sie **An Dashboard anheften**, wenn auf dem Portaldashboard eine Verknüpfung des Labs angezeigt werden soll.
+   6. Wählen Sie **Automatisierungsoptionen**, um Azure Resource Manager-Vorlagen für die Konfigurationsautomatisierung abzurufen. 
+   7. Klicken Sie auf **Erstellen**.
+    
+    ![Erstellen eines Lab-Blatts](./media/devtest-lab-create-lab/create-devtestlab-blade.png)
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
@@ -54,10 +57,5 @@ Nachdem das Lab erstellt wurde, sollten Sie ggf. die folgenden Schritte ausführ
 * [Erstellen einer Labvorlage](devtest-lab-create-template.md).
 * [Erstellen benutzerdefinierter Artefakte für Ihre VMs](devtest-lab-artifact-author.md).
 * [Hinzufügen einer VM mit Artefakten zu einem Lab](devtest-lab-add-vm-with-artifacts.md).
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/15/2017
+ms.date: 04/24/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: a3657f8bb60cd1181740b0700f503b5bd1bd559f
-ms.openlocfilehash: a3847f83af1f28e40572af95ff31f44d2f3d6dc4
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: fba7f5f33d1a0d39219a6790e1d5c6b4515b794c
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -43,6 +43,7 @@ In der folgenden Tabelle wird gezeigt, welchen IoT-Features die Lösungen zugeor
 | --- | --- | --- | --- | --- | --- | --- |
 | [Remoteüberwachung][lnk-getstarted-preconfigured] |Ja |Ja |Ja |Ja |Ja |- |
 | [Vorbeugende Wartung][lnk-predictive-maintenance] |Ja |Ja |- |Ja |Ja |Ja |
+| [Verbundene Factory][lnk-getstarted-factory] |Ja |Ja |Ja |Ja |Ja |- |
 
 * *Datenerfassung:*Skalierbarer Dateneingang in der Cloud
 * *Geräteidentität:* Verwalten eindeutiger Geräteidentitäten und Steuern des Gerätezugriffs auf die Lösung.
@@ -106,7 +107,7 @@ Mit der Geräteverwaltungsfunktion von IoT Hub können Sie Ihre Geräteeigenscha
 ## <a name="azure-stream-analytics"></a>Azure Stream Analytics
 Die vorkonfigurierte Lösung verwendet drei [Azure Stream Analytics][lnk-asa]-Aufträge (ASA), um den Telemetriedatenstrom von den Geräten zu filtern:
 
-* *DeviceInfo-Auftrag* – Gibt Daten an einen Event Hub aus, der geräteregistrierungsspezifische Nachrichten an die Geräteregistrierung der Lösung (eine DocumentDB-Datenbank) weiterleitet. Die Nachricht wird gesendet, wenn ein Gerät erstmals eine Verbindung herstellt oder ein Befehl zum Ändern des Gerätestatus** **ausgeführt wurde.
+* *DeviceInfo-Auftrag* – Gibt Daten an einen Event Hub aus, der geräteregistrierungsspezifische Nachrichten an die Geräteregistrierung der Lösung (eine DocumentDB-Datenbank) weiterleitet. Die Nachricht wird gesendet, wenn ein Gerät erstmals eine Verbindung herstellt oder ein Befehl zum Ändern des Gerätestatus**** ausgeführt wurde.
 * *Telemetrieauftrag* – Sendet alle Telemetrierohdaten zu Cold Storage-Zwecken an den Azure-Blobspeicher und berechnet Telemetrieaggregationen, die im Lösungsdashboard angezeigt werden.
 * *Regelauftrag* – Filtert den Telemetriedatenstrom, um Werte zu identifizieren, die Regelschwellenwerte überschreiten, und gibt die Daten an einen Event Hub aus. Wenn eine Regel ausgelöst wird, wird das Ereignis in der Dashboardansicht des Lösungsportals als neue Zeile der Alarmverlaufstabelle angezeigt. Diese Regeln können auf der Grundlage der Einstellungen, die im Lösungsportal in den Ansichten **Regeln** und **Aktionen** definiert sind, auch eine Aktion auslösen.
 
@@ -117,7 +118,7 @@ Bei dieser vorkonfigurierten Lösung bildet der Ereignisprozessor einen Teil des
 
 Die ASA-Aufträge **DeviceInfo** und **Rules** senden ihre Ausgabe an Event Hubs für die Weitergabe an andere Back-End-Dienste. Die Lösung verwendet eine [EventProcessorHost][lnk-event-processor]-Instanz, die in einem [WebJob][lnk-web-job] ausgeführt wird, um die Nachrichten von diesen Event Hubs zu lesen. **EventProcessorHost** verwendet Folgendes:
 - Die Daten vom Typ **DeviceInfo**, um die Gerätedaten in der DocumentDB-Datenbank zu aktualisieren.
-- Die** **Regeldaten, um die Logik-App aufzurufen und die Warnungsanzeige im Lösungsportal zu aktualisieren.
+- Die**** Regeldaten, um die Logik-App aufzurufen und die Warnungsanzeige im Lösungsportal zu aktualisieren.
 
 ## <a name="device-identity-registry-device-twin-and-documentdb"></a>Geräteidentitätsregistrierung, Gerätezwilling und DocumentDB
 Jede IoT Hub-Instanz verfügt über eine [Geräteidentitätsregistrierung][lnk-identity-registry] zum Speichern von Geräteschlüsseln. IoT Hub verwendet diese Informationen zum Authentifizieren von Geräten – ein Gerät muss registriert sein und einen gültigen Schlüssel haben, bevor es eine Verbindung mit dem Hub herstellen kann.
@@ -166,4 +167,4 @@ Sie wissen nun, worum es sich bei einer vorkonfigurierten Lösung handelt, und k
 [lnk-c2d-guidance]: ../iot-hub/iot-hub-devguide-c2d-guidance.md
 [lnk-device-twin]: ../iot-hub/iot-hub-devguide-device-twins.md
 [lnk-direct-methods]: ../iot-hub/iot-hub-devguide-direct-methods.md
-
+[lnk-getstarted-factory]: iot-suite-connected-factory-overview.md

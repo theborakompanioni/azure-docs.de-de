@@ -12,17 +12,33 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 1/10/2017
+ms.date: 4/11/2017
 ms.author: raiye
 translationtype: Human Translation
-ms.sourcegitcommit: e579c7fd4547a88c6356c77a220b5f9e1a07e542
-ms.openlocfilehash: deafae1c6f77a655d80ee7bafd220c5b624018bd
-ms.lasthandoff: 01/11/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 51b5c32eb73dc70b4019e60342db659959cc93bb
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="azure-guest-os"></a>Azure-Gastbetriebssystem
 Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MSRC), die auf das Azure-Gastbetriebssystem angewendet wurden. Durchsuchen Sie diesen Artikel, um zu ermitteln, ob ein bestimmtes Update für das Gastbetriebssystem gilt, das Sie verwenden. Updates werden für die [Familie][family-explain], in der sie eingeführt wurden, immer in die jeweils neueste Version übertragen.
+
+## <a name="march-guest-os"></a>Gastbetriebssystem März
+| Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+| Rel 17-03 |  [4013429] |Verbesserungen und Fehlerbehebungen | 5.5 | 14. März 2017 |
+| Rel 17-03 |  [4012212] |März 2017: Qualitätsupdate zu Sicherheitszwecken für Windows 7 SP1 und Windows Server 2008 R2 SP1 |2.60 |14. März 2017 |
+| Rel 17-03 |  [4012213] |März 2017: Qualitätsupdate zu Sicherheitszwecken für Windows 8.1 und Windows Server 2012 R2 |4.40 |14. März 2017 |
+| Rel 17-03 |  [4012214] |März 2017: Qualitätsupdate zu Sicherheitszwecken für Windows Server 2012|3.47 |14. März 2017 |
+| Rel 17-03 |  [4012204] |Sicherheitsupdate für Internet Explorer |2.60, 3.47, 4.40, 5.5 |14. März 2017 |
+| N/V |  [4012864] |Sommerzeitumstellung in Windows für Nordzypern, Mongolei und Saratow-Region (Russland) |2.60, 3.47, 4.40 |14. März 2017 |
+| N/V |  [3212646] |Januar 2017: monatlicher Sicherheitsqualitätsrollup für Windows 7 SP1 und Windows Server 2008 R2 SP1 |2.60 |14. März 2017 |
+| N/V |  [3205409] |Dezember 2016: monatlicher Sicherheitsqualitätsrollup für Windows Server 2012 |3.47 |14. März 2017 |
+| – |  [3205401] |Dezember 2016: monatlicher Sicherheitsqualitätsrollup für Windows 8.1 und Windows Server 2012 R2 |4.40 |14. März 2017 |
+| N/V |  [3211320] |Wartungsstapelupdate für Windows 10 (Version 1607) und Windows Server 2016: 24. Januar 2017 |5.5 |14. März 2017 |
+
+
 
 ## <a name="january-guest-os"></a>Gastbetriebssystem Januar
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
@@ -34,14 +50,14 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | --- | --- | --- | --- | --- |
 | MS16-144 |[3204059] |Kumulatives Sicherheitsupdate für Internet Explorer |2.58, 3.46, 4.39 |13. Dezember 2016 |
 | MS16-145 |[3204062] |Kumulatives Sicherheitsupdate für Microsoft Edge |5.4 |13. Dezember 2016 |
-| MS16-146 |[3204066]   |Sicherheitsupdate für Microsoft-Grafikkomponente|2.58, 3.46, 4.39, 5.4 |13. Dezember 2016 |
-| MS16-147 |[3204063]   |Sicherheitsupdate für Microsoft Uniscribe|2.58, 3.46, 4.39, 5.4 |13. Dezember 2016 |
-| MS16-149 |[3205655]   |Sicherheitsupdate für Microsoft Windows|2.58, 3.46, 4.39, 5.4 |13. Dezember 2016 |
-| MS16-150 |[3205642]   |Sicherheitsupdate für sicheren Kernelmodus |5.4 |13. Dezember 2016 |
-| MS16-151 |[3205651]   |Sicherheitsupdate für Kernelmodustreiber|2.58, 3.46, 4.39, 5.4 |13. Dezember 2016 |
-| MS16-152 |[3199709]   |Sicherheitsupdate für Windows Kernel |5.4 |13. Dezember 2016 |
+| MS16-146 |[3204066]    |Sicherheitsupdate für Microsoft-Grafikkomponente|2.58, 3.46, 4.39, 5.4 |13. Dezember 2016 |
+| MS16-147 |[3204063]    |Sicherheitsupdate für Microsoft Uniscribe|2.58, 3.46, 4.39, 5.4 |13. Dezember 2016 |
+| MS16-149 |[3205655]    |Sicherheitsupdate für Microsoft Windows|2.58, 3.46, 4.39, 5.4 |13. Dezember 2016 |
+| MS16-150 |[3205642]    |Sicherheitsupdate für sicheren Kernelmodus |5.4 |13. Dezember 2016 |
+| MS16-151 |[3205651]    |Sicherheitsupdate für Kernelmodustreiber|2.58, 3.46, 4.39, 5.4 |13. Dezember 2016 |
+| MS16-152 |[3199709]    |Sicherheitsupdate für Windows Kernel |5.4 |13. Dezember 2016 |
 | MS16-153 |[3207328] |Sicherheitsupdate für den Treiber für das gemeinsame Protokolldateisystem|2.58, 3.46, 4.39, 5.4 |13. Dezember 2016 |
-| MS16-155 |[3205640]   |Sicherheitsupdate für .NET Framework |5.4 |13. Dezember 2016 |
+| MS16-155 |[3205640]    |Sicherheitsupdate für .NET Framework |5.4 |13. Dezember 2016 |
 | – |[3197868] |November 2016: monatlicher Sicherheitsqualitätsrollup für Windows 7 SP1 und Windows Server 2008 R2 SP1 |2.58 |13. Dezember 2016 |
 | – |[3197877] |November 2016: monatlicher Sicherheitsqualitätsrollup für Windows Server 2012 |3,46 |13. Dezember 2016 |
 | N/V |[3197874] |November 2016: monatlicher Sicherheitsqualitätsrollup für Windows 8.1 und Windows Server 2012 R2 |4.39 |13. Dezember 2016 |
@@ -51,11 +67,11 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | --- | --- | --- | --- | --- |
 | MS16-129 |[3199057] |Kumulatives Sicherheitsupdate für Microsoft Edge |5.3 |8. November 2016 |
 | MS16-130 |[3199172] |Sicherheitsupdate für Microsoft Windows |5.3, 4.38, 3.45, 2.57 |8. November 2016 |
-| MS16-131 |[3199151]   |Sicherheitsupdate für die Microsoft Video-Steuerung |5.3, 4.38, 3.45, 2.57 |8. November 2016 |
+| MS16-131 |[3199151]    |Sicherheitsupdate für die Microsoft Video-Steuerung |5.3, 4.38, 3.45, 2.57 |8. November 2016 |
 | MS16-132 |[3199120] |Sicherheitsupdate für Microsoft-Komponente |5.3, 4.38, 3.45, 2.57 |8. November 2016 |
 | MS16-134 |[3193706] |Sicherheitsupdate für den Treiber für das gemeinsame Protokolldateisystem |5.3, 4.38, 3.45, 2.57 |8. November 2016 |
 | MS16-135 |[3199135] |Sicherheitsupdate für Kernelmodustreiber |5.3, 4.38, 3.45, 2.57 |8. November 2016 |
-| MS16-137 |[3199173]   |Sicherheitsupdate für Windows-Authentifizierungsmethoden |5.3, 4.38, 3.45, 2.57 |8. November 2016 |
+| MS16-137 |[3199173]    |Sicherheitsupdate für Windows-Authentifizierungsmethoden |5.3, 4.38, 3.45, 2.57 |8. November 2016 |
 | MS16-138 |[3199647] |Sicherheitsupdate für Microsoft virtuelle Festplatte |5.3, 4.38, 3.45 |8. November 2016 |
 | MS16-139 |[3199720] |Sicherheitsupdate für Windows Kernel |2.57 |8. November 2016 |
 | MS16-140 |[3193479] |Sicherheitsupdate für Start-Manager |5.3, 4.38, 3.45 |8. November 2016 |
@@ -386,7 +402,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | MS15-006 |[3004365] |Sicherheitsanfälligkeit in Windows-Fehlerberichterstattung kann Umgehung der Sicherheitsfunktion ermöglichen |4.16, 3.23, 2.35 |19. Januar 2015 |
 | MS15-007 |[3014029] |Sicherheitsanfälligkeit in RADIUS-Implementierung des Netzwerkrichtlinienservers kann Denial-of-Service-Angriffe ermöglichen |4.16, 3.23, 2.35 |19. Januar 2015 |
 | MS15-008 |[3019215] |Sicherheitsanfälligkeit in Windows-Kernelmodustreibern kann Erhöhung der Berechtigungen ermöglichen |4.16, 3.23, 2.35 |19. Januar 2015 |
-| MS14&080; |[3008923] |Kumulatives Sicherheitsupdate für Internet Explorer |4.16, 3.23, 2.35 |19. Januar 2015 |
+| MS14 080 |[3008923] |Kumulatives Sicherheitsupdate für Internet Explorer |4.16, 3.23, 2.35 |19. Januar 2015 |
 | MS15-002 |[3020393] |Sicherheitsanfälligkeit im Windows-Telnetdienst kann Remotecodeausführung ermöglichen |4.16, 3.23, 2.35 |19. Januar 2015 |
 | MS15-002 |[3020393] |Sicherheitsanfälligkeit im Windows-Telnetdienst kann Remotecodeausführung ermöglichen |4.16, 3.23, 2.35 |19. Januar 2015 |
 
@@ -404,6 +420,18 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | N/V |[3007054] |PIN-geschützte Druckoption wird beim Drucken eines Dokuments aus einer Windows Store-Anwendung in Windows immer angezeigt |4.15, 3.22, 2.34 |13. Januar 2015 |
 | – |[2999802] |In Windows werden durchgezogene Linien statt gepunktete Linien gedruckt |4.15, 3.22, 2.34 |13. Januar 2015 |
 | – |[2896881] |Lange Anmeldezeit bei der Verwendung des VBScript-Befehls "AddPrinterConnection" zum Zuordnen von Druckern zu Benutzern während des Anmeldeprozesses in Windows |4.15, 3.22, 2.34 |13. Januar 2015 |
+
+[4013429]: http://support.microsoft.com/kb/4013429 
+[4012212]: http://support.microsoft.com/kb/4012212 
+[4012213]: http://support.microsoft.com/kb/4012213 
+[4012214]: http://support.microsoft.com/kb/4012214 
+[4012204]: http://support.microsoft.com/kb/4012204 
+[4012864]: http://support.microsoft.com/kb/4012864 
+[3212646]: http://support.microsoft.com/kb/3212646 
+[3205409]: http://support.microsoft.com/kb/3205409 
+[3205401]: http://support.microsoft.com/kb/3205401
+[3211320]: http://support.microsoft.com/kb/3211320
+
 
 [3216771]: https://technet.microsoft.com/library/security/MS17-004
 

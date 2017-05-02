@@ -16,9 +16,9 @@ ms.date: 03/16/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
-ms.openlocfilehash: ac67a1a67c3a11fde98242519266fcd3ab4f60cb
-ms.lasthandoff: 04/18/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 33ddab887ade0d788129367eec4db7e70f35e0b9
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -95,6 +95,7 @@ In diesem Abschnitt erstellen Sie eine .NET-Konsolen-App, mit der eine Geräteid
 > 
 > 
 
+<a id="D2C_csharp"></a>
 ## <a name="receive-device-to-cloud-messages"></a>Empfangen von Gerät-an-Cloud-Nachrichten
 In diesem Abschnitt erstellen Sie eine .NET-Konsolen-App, die D2C-Nachrichten (Device-to-Cloud) aus IoT Hub liest. Ein IoT-Hub macht einen mit [Azure Event Hubs][lnk-event-hubs-overview] kompatiblen Endpunkt verfügbar, der Ihnen das Lesen von D2C-Nachrichten ermöglicht. Zur Vereinfachung wird in diesem Tutorial ein einfacher Reader erstellt, der für eine Bereitstellung mit hohem Durchsatz nicht geeignet ist. Informationen dazu, wie Sie eine Verarbeitung von D2C-Nachrichten mit Skalierbarkeit erzielen, finden Sie im Tutorial [Verarbeiten von D2C-Nachrichten][lnk-process-d2c-tutorial]. Weitere Informationen zum Verarbeiten von Nachrichten von Event Hubs finden Sie im Tutorial [Erste Schritte mit Event Hubs][lnk-eventhubs-tutorial]. (Dieses Tutorial gilt für die mit IoT Hub Event Hubs kompatiblen Endpunkte.)
 
@@ -178,20 +179,24 @@ In diesem Abschnitt erstellen Sie eine .NET-Konsolenanwendung, die ein Gerät si
    
         private static async void SendDeviceToCloudMessagesAsync()
         {
-            double avgWindSpeed = 10; // m/s
+            double minTemperature = 20;
+            double minHumidity = 60;
             Random rand = new Random();
    
             while (true)
             {
-                double currentWindSpeed = avgWindSpeed + rand.NextDouble() * 4 - 2;
+                double currentTemperature = minTemperature + rand.NextDouble() * 15;
+                double currentHumidity = minHumidity + rand.NextDouble() * 20;
    
                 var telemetryDataPoint = new
                 {
                     deviceId = "myFirstDevice",
-                    windSpeed = currentWindSpeed
+                    temperature = currentTemperature,
+                    humidity = currentHumidity
                 };
                 var messageString = JsonConvert.SerializeObject(telemetryDataPoint);
                 var message = new Message(Encoding.ASCII.GetBytes(messageString));
+                message.Properties.Add("temperatureAlert", (currentTemperature > 30) ? "true" : "false");
    
                 await deviceClient.SendEventAsync(message);
                 Console.WriteLine("{0} > Sending message: {1}", DateTime.Now, messageString);
@@ -200,8 +205,8 @@ In diesem Abschnitt erstellen Sie eine .NET-Konsolenanwendung, die ein Gerät si
             }
         }
    
-    Diese Methode sendet jede Sekunde eine neue D2C-Nachricht. Die Nachricht enthält ein JSON-serialisiertes Objekt mit der Geräte-ID sowie eine zufällig generierte Zahl, um einen Windgeschwindigkeitssensor zu simulieren.
-7. Fügen Sie abschließend der **Main** -Methode die folgenden Zeilen hinzu:
+    Diese Methode sendet jede Sekunde eine neue D2C-Nachricht. Die Nachricht enthält ein JSON-serialisiertes Objekt mit der Geräte-ID sowie zufällig generierten Zahlen, um einen Temperatur- und Feuchtigkeitssensor zu simulieren.
+7. Fügen Sie abschließend der **Main**-Methode die folgenden Zeilen hinzu:
    
         Console.WriteLine("Simulated device\n");
         deviceClient = DeviceClient.Create(iotHubUri, new DeviceAuthenticationWithRegistrySymmetricKey("myFirstDevice", deviceKey), TransportType.Mqtt);

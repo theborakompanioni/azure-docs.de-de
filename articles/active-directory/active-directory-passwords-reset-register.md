@@ -16,9 +16,9 @@ ms.date: 03/16/2017
 ms.author: joflore
 ms.custom: end-user
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 0f10ad4904b10a9554e949e77f0192edcb8f624f
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: c6d3d9d8f399816928e794e8956bc35825462fb9
+ms.lasthandoff: 04/26/2017
 
 
 ---
@@ -49,7 +49,8 @@ Unter Umständen werden Sie von den Administratoren nach einer Weile zur Bestät
 
 * [Ändern Ihres Kennworts mithilfe der Self-Service-Kennwortzurücksetzung](active-directory-passwords-update-your-own-password.md)
 * [Registrierungsseite für die Kennwortzurücksetzung](http://aka.ms/ssprsetup)
-* [Kennwortzurücksetzungsportal](https://passwordreset.microsoftonline.com/)
+* [Portal für die Kennwortzurücksetzung](https://passwordreset.microsoftonline.com/)
+* [Wenn Sie sich nicht bei Ihrem Microsoft-Konto anmelden können](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)
 
 [Register]: ./media/active-directory-passwords-reset-register/register-2-methods.png "Registrierungsseite für die Kennwortzurücksetzung mit registrierten Methoden und der Schaltfläche „Fertig stellen“"
 

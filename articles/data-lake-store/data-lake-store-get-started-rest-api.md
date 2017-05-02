@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/03/2017
+ms.date: 04/21/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 650ff05715c8c0d915c82f9de49756530b8f3138
-ms.lasthandoff: 04/06/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: de04bf367f9f9f92756202cf6c1571f811a0f1f7
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -55,7 +55,7 @@ In diesem Szenario wird der Benutzer in der Anwendung zum Anmelden aufgefordert.
 
 1. Leiten Sie den Benutzer über die Anwendung an die folgende URL um:
    
-        https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<CLIENT-ID>&response_type=code&redirect_uri=<REDIRECT-URI>
+        https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<APPLICATION-ID>&response_type=code&redirect_uri=<REDIRECT-URI>
    
    > [!NOTE]
    > \<REDIRECT-URI> muss für die Verwendung in einer URL codiert werden. Verwenden Sie für „https://localhost“ also `https%3A%2F%2Flocalhost`.
@@ -71,7 +71,7 @@ In diesem Szenario wird der Benutzer in der Anwendung zum Anmelden aufgefordert.
         -F redirect_uri=<REDIRECT-URI> \
         -F grant_type=authorization_code \
         -F resource=https://management.core.windows.net/ \
-        -F client_id=<CLIENT-ID> \
+        -F client_id=<APPLICATION-ID> \
         -F code=<AUTHORIZATION-CODE>
    
    > [!NOTE]
@@ -86,7 +86,7 @@ In diesem Szenario wird der Benutzer in der Anwendung zum Anmelden aufgefordert.
         curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
              -F grant_type=refresh_token \
              -F resource=https://management.core.windows.net/ \
-             -F client_id=<CLIENT-ID> \
+             -F client_id=<APPLICATION-ID> \
              -F refresh_token=<REFRESH-TOKEN>
 
 Weitere Informationen zur interaktiven Benutzerauthentifizierung finden Sie unter [Autorisieren des Zugriffs auf Webanwendungen mit OAuth 2.0 und Azure Active Directory](https://msdn.microsoft.com/library/azure/dn645542.aspx).
@@ -128,7 +128,7 @@ Dieser Vorgang basiert auf dem [hier](http://hadoop.apache.org/docs/stable/hadoo
 
 Verwenden Sie den folgenden cURL-Befehl. Ersetzen Sie **\<yourstorename>** durch Ihren Data Lake Store-Namen.
 
-    curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -d "" https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/?op=MKDIRS
+    curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -d "" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/?op=MKDIRS'
 
 Ersetzen Sie im Befehl oben \<`REDACTED`\> durch das Autorisierungstoken, das Sie zuvor abgerufen haben. Dieser Befehl erstellt das Verzeichnis **mytempdir** im Stammordner Ihres Data Lake Store-Kontos.
 
@@ -141,7 +141,7 @@ Dieser Vorgang basiert auf dem [hier](http://hadoop.apache.org/docs/stable/hadoo
 
 Verwenden Sie den folgenden cURL-Befehl. Ersetzen Sie **\<yourstorename>** durch Ihren Data Lake Store-Namen.
 
-    curl -i -X GET -H "Authorization: Bearer <REDACTED>" https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/?op=LISTSTATUS
+    curl -i -X GET -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/?op=LISTSTATUS'
 
 Ersetzen Sie im Befehl oben \<`REDACTED`\> durch das Autorisierungstoken, das Sie zuvor abgerufen haben.
 
@@ -167,33 +167,24 @@ Wenn der Vorgang erfolgreich abgeschlossen wurde, sollte eine Antwort wie folgt 
 ## <a name="upload-data-into-a-data-lake-store-account"></a>Hochladen von Daten in das Data Lake-Speicherkonto
 Dieser Vorgang basiert auf dem [hier](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Create_and_Write_to_a_File)definierten WebHDFS-REST-API-Aufruf.
 
-Hochladen von Daten mithilfe der REST-API für WebHDFS ist ein zweistufiger Prozess, wie nachstehend beschrieben.
+Verwenden Sie den folgenden cURL-Befehl. Ersetzen Sie **\<yourstorename>** durch Ihren Data Lake Store-Namen.
 
-1. Senden Sie eine HTTP-PUT-Anforderung, ohne die hochzuladenden Dateidaten zu senden. Ersetzen Sie im folgenden Befehl **\<yourstorename>** durch Ihren Data Lake Store-Namen.
+    curl -i -X PUT -L -T 'C:\temp\list.txt' -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/list.txt?op=CREATE'
+
+In der obigen Syntax gibt der **-T**-Parameter den Speicherort der hochgeladenen Datei an.
+
+Die Ausgabe sieht in etwa wie folgt aus:
    
-        curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -d "" https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/?op=CREATE
-   
-    Die Ausgabe für diesen Befehl enthält eine temporäre Umleitungs-URL wie die unten gezeigte.
-   
-        HTTP/1.1 100 Continue
-   
-        HTTP/1.1 307 Temporary Redirect
-        ...
-        ...
-        Location: https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/somerandomfile.txt?op=CREATE&write=true
-        ...
-        ...
-2. Nun müssen Sie eine andere HTTP-PUT-Anforderung an die URL senden, die in der Antwort für die Eigenschaft **Location** aufgeführt wird. Ersetzen Sie **\<yourstorename>** durch Ihren Data Lake Store-Namen.
-   
-        curl -i -X PUT -T myinputfile.txt -H "Authorization: Bearer <REDACTED>" https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=CREATE&write=true
-   
-    Die Ausgabe sieht etwa wie folgt aus:
-   
-        HTTP/1.1 100 Continue
-   
-        HTTP/1.1 201 Created
-        ...
-        ...
+    HTTP/1.1 307 Temporary Redirect
+    ...
+    Location: https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/list.txt?op=CREATE&write=true
+    ...
+    Content-Length: 0
+
+    HTTP/1.1 100 Continue
+
+    HTTP/1.1 201 Created
+    ...
 
 ## <a name="read-data-from-a-data-lake-store-account"></a>Lesen von Daten aus einem Data Lake-Speicherkonto
 Dieser Vorgang basiert auf dem [hier](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Open_and_Read_a_File)definierten WebHDFS-REST-API-Aufruf.
@@ -205,7 +196,7 @@ Lesen von Daten aus einem Data Lake-Speicherkonto ist ein zweistufiger Prozess.
 
 Da es in den Eingabeparametern keinen Unterschied zwischen dem ersten und zweiten Schritt gibt, können Sie mit dem `-L` -Parameter die erste Anforderung senden. `-L` kombiniert im Wesentlichen zwei Anforderungen in einer und lässt cURL die Anforderung am neuen Speicherort nochmals ausführen. Schließlich wird die Ausgabe aller Anforderungsaufrufe wie unten dargestellt angezeigt. Ersetzen Sie **\<yourstorename>** durch Ihren Data Lake Store-Namen.
 
-    curl -i -L GET -H "Authorization: Bearer <REDACTED>" https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN
+    curl -i -L GET -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN'
 
 Es sollte eine Ausgabe angezeigt werden, die Folgendem ähnelt:
 
@@ -224,7 +215,7 @@ Dieser Vorgang basiert auf dem [hier](http://hadoop.apache.org/docs/stable/hadoo
 
 Verwenden Sie zum Umbenennen einer Datei den folgenden cURL-Befehl. Ersetzen Sie **\<yourstorename>** durch Ihren Data Lake Store-Namen.
 
-    curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -d "" https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=RENAME&destination=/mytempdir/myinputfile1.txt
+    curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -d "" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=RENAME&destination=/mytempdir/myinputfile1.txt'
 
 Es sollte eine Ausgabe angezeigt werden, die Folgendem ähnelt:
 
@@ -238,7 +229,7 @@ Dieser Vorgang basiert auf dem [hier](http://hadoop.apache.org/docs/stable/hadoo
 
 Verwenden Sie zum Löschen einer Datei den folgenden cURL-Befehl. Ersetzen Sie **\<yourstorename>** durch Ihren Data Lake Store-Namen.
 
-    curl -i -X DELETE -H "Authorization: Bearer <REDACTED>" https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile1.txt?op=DELETE
+    curl -i -X DELETE -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile1.txt?op=DELETE'
 
 Folgendes sollte angezeigt werden:
 

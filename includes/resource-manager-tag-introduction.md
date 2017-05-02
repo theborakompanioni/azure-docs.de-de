@@ -4,13 +4,9 @@ Nachdem Sie Tags angewendet haben, können Sie alle Ressourcen in Ihrem Abonneme
 
 Für Tags gelten folgende Einschränkungen:
 
-* Jede Ressource oder Ressourcengruppe kann maximal 15 Tags haben. 
+* Jede Ressource oder Ressourcengruppe kann maximal 15 Tagschlüssel-Wert-Paare haben. Diese Einschränkung gilt nur für Tags, die direkt auf die Ressourcengruppe oder die Ressource angewendet werden. Eine Ressourcengruppe kann zahlreiche Ressourcen mit jeweils 15 Tagschlüssel-Wert-Paaren enthalten. 
 * Der Tagname darf maximal 512 Zeichen lang sein.
 * Der Tagwert darf maximal 256 Zeichen lang sein. 
 * Auf die Ressourcengruppe angewendete Tags werden nicht von den in dieser Ressourcengruppe enthaltenen Ressourcen geerbt. 
 
-
-
-<!--HONumber=Feb17_HO1-->
-
-
+Wenn Sie einer Ressource mehr als 15 Werte zuordnen müssen, verwenden Sie eine JSON-Zeichenfolge für den Tagwert. Die JSON-Zeichenfolge kann zahlreiche Werte enthalten, die auf einen einzelnen Tagschlüssel angewendet werden. Dieser Artikel enthält ein Beispiel für die Zuweisung einer JSON-Zeichenfolge zum Tagschlüssel.

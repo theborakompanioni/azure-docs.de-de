@@ -11,14 +11,14 @@ ms.assetid:
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
-ms.devlang: na
+ms.devlang: azurecli
 ms.topic: article
-ms.date: 03/20/2017
+ms.date: 03/30/2017
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 949e59b64557ac3efc07da73a205c808e25aeaab
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
+ms.openlocfilehash: 56a460fa8132d310352fbb7e085091c3ee7fa848
+ms.lasthandoff: 03/31/2017
 
 ---
 
@@ -30,11 +30,11 @@ In diesem Tutorial erfahren Sie, wie Sie eine VM-Skalierungsgruppe erstellen kö
 >[!NOTE]
 >Weitere Informationen über Azure Resource Manager-Ressourcen finden Sie unter [Azure Resource Manager im Vergleich zur klassischen Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md).
 
-## <a name="log-in-to-azure"></a>Anmelden bei Azure
+## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-Wenn Sie die Azure CLI 2.0 oder PowerShell verwenden, um eine Skalierungsgruppe zu erstellen, müssen Sie sich zunächst bei Ihrem Abonnement anmelden.
+Wenn Sie Azure CLI 2.0 oder Azure PowerShell verwenden, um eine Skalierungsgruppe zu erstellen, müssen Sie sich zunächst bei Ihrem Abonnement anmelden.
 
-Weitere Informationen zum Installieren von, Einrichten von und Anmelden bei Azure mit Azure CLI 2.0 oder PowerShell finden Sie unter [Erste Schritte mit Azure CLI 2.0](/cli/azure/get-started-with-azure-cli.md) oder [Erste Schritte mit Azure PowerShell-Cmdlets](/powershell/resourcemanager/).
+Weitere Informationen zum Installieren von, Einrichten von und Anmelden bei Azure mit Azure CLI oder PowerShell finden Sie unter [Erste Schritte mit Azure CLI 2.0](/cli/azure/get-started-with-azure-cli.md) oder [Erste Schritte mit Azure PowerShell-Cmdlets](/powershell/resourcemanager/).
 
 ```azurecli
 az login
@@ -44,7 +44,7 @@ az login
 Login-AzureRmAccount
 ```
 
-## <a name="prep-create-a-resource-group"></a>Vorbereitung: Erstellen einer Ressourcengruppe
+## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
 Sie müssen zuerst eine Ressourcengruppe erstellen, der die VM-Skalierungsgruppe zugeordnet ist.
 
@@ -58,38 +58,54 @@ New-AzureRmResourceGroup -Location westus2 -Name vmss-test-1
 
 ## <a name="create-from-azure-cli"></a>Erstellen über Azure CLI
 
-Mit Azure CLI können Sie eine VM-Skalierungsgruppe mit minimalem Aufwand erstellen. Für alle Einstellungen, für die Sie keine Werte angeben, werden Standardwerte bereitgestellt. Wenn Sie beispielsweise keine Informationen zum virtuellen Netzwerk angeben, werden diese für Sie erstellt. Wenn Sie die folgenden Teile nicht angeben, werden diese für Sie erstellt: ein Load Balancer, ein VNET und eine öffentliche IP-Adresse.
+Mit Azure CLI können Sie eine VM-Skalierungsgruppe mit minimalem Aufwand erstellen. Für alle Einstellungen, für die Sie keine Werte angeben, werden Standardwerte bereitgestellt. Wenn Sie beispielsweise keine Informationen zum virtuellen Netzwerk angeben, werden diese für Sie erstellt. Wenn Sie die folgenden Elemente nicht angeben, werden sie für Sie erstellt: 
+- Ein Load Balancer
+- Ein virtuelles Netzwerk
+- Eine öffentliche IP-Adresse
 
-Bei der Auswahl des Image des virtuellen Computers, den Sie für die VM-Skalierungsgruppe verwenden möchten, haben Sie einige Optionen:
+Bei der Auswahl des Image des virtuellen Computers, den Sie für die VM-Skalierungsgruppe verwenden möchten, sind folgende Optionen verfügbar:
 
-1. URN  
+- URN  
 Der Bezeichner einer Ressource:  
-**Win2012R2Datacenter**.
+**Win2012R2Datacenter**
 
-2. URN-Alias  
+- URN-Alias  
 Der Anzeigename eines URN:  
-**MicrosoftWindowsServer:WindowsServer:2012-R2-Datacenter:latest**.
+**MicrosoftWindowsServer:WindowsServer:2012-R2-Datacenter:latest**
 
-3. Benutzerdefinierte Ressourcen-ID  
+- Benutzerdefinierte Ressourcen-ID  
 Der Pfad zu einer Azure-Ressource:  
-**/subscriptions/subscription-guid/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/images/MyImage**.
+**/subscriptions/subscription-guid/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/images/MyImage**
 
-4. Webressource  
+- Webressource  
 Der Pfad zu einer HTTP-URI:  
-**http://contoso.blob.core.windows.net/vhds/osdiskimage.vhd**.
+**http://contoso.blob.core.windows.net/vhds/osdiskimage.vhd**
 
 >[!TIP]
 >Eine Liste der verfügbaren Images können Sie mit `az vm image list` abrufen.
 
-Um eine VM-Skalierungsgruppe zu erstellen, müssen Sie Folgendes angeben: _Ressourcengruppe_, _Name_, _Betriebssystemimage_ und _Authentifizierungsinformationen_. Das folgende Beispiel erstellt eine elementare VM-Skalierungsgruppe (dieser Schritt kann einige Minuten dauern).
+Zum Erstellen einer VM-Skalierungsgruppe müssen Sie Folgendes angeben:
+
+- Ressourcengruppe 
+- Name
+- Betriebssystemimage
+- Authentifizierungsinformationen 
+ 
+Mit dem folgenden Beispiel wird eine elementare VM-Skalierungsgruppe erstellt (dieser Schritt kann einige Minuten dauern).
 
 ```azurecli
 az vmss create --resource-group vmss-test-1 --name MyScaleSet --image UbuntuLTS --authentication-type password --admin-username azureuser --admin-password P@ssw0rd!
 ```
 
+Nachdem der Befehl ausgeführt wurde, müssen Sie die VM-Skalierungsgruppe erstellen. Möglicherweise müssen Sie die IP-Adresse des virtuellen Computers abrufen, um eine Verbindung herstellen zu können. Mit dem folgenden Befehl können Sie verschiedene Informationen zum virtuellen Computer (einschließlich der IP-Adresse) abrufen. 
+
+```azurecli
+az vmss list-instance-connection-info --resource-group vmss-test-1 --name MyScaleSet
+```
+
 ## <a name="create-from-powershell"></a>Erstellen über PowerShell
 
-PowerShell ist komplizierter zu verwenden als die Azure CLI. Während die Azure CLI Standardeinstellungen für netzwerkbezogene Ressourcen (Load Balancer, IP-Adresse, ein virtuelles Netzwerk) bereitstellt, ist dies in PowerShell nicht der Fall. Verweisen auf ein Image ist ebenfalls etwas komplizierter. Sie können Images mit den folgenden Cmdlets abrufen:
+PowerShell ist in der Verwendung komplizierter als die Azure-Befehlszeilenschnittstelle. Während über die Azure-Befehlszeilenschnittstelle Standardeinstellungen für netzwerkbezogene Ressourcen (z.B. Load Balancer, IP-Adressen, virtuelle Netzwerke) bereitgestellt werden, ist dies in PowerShell nicht der Fall. Auch das Verweisen auf ein Image mit PowerShell ist etwas komplizierter. Sie können Images mit den folgenden Cmdlets abrufen:
 
 1. Get-AzureRMVMImagePublisher
 2. Get-AzureRMVMImageOffer
@@ -114,15 +130,15 @@ MicrosoftBizTalkServer     BizTalk-Server           2016-Enterprise
 ...
 ```
 
-Der Workflow zum Erstellen einer VM-Skalierungsgruppe ist wie folgt:
+Der Workflow zum Erstellen einer VM-Skalierungsgruppe gestaltet sich wie folgt:
 
 1. Erstellen Sie ein Konfigurationsobjekt, das Informationen über die Skalierungsgruppe enthält.
-2. Verweisen Sie auf ein Betriebssystem-Basisimage.
-3. Konfigurieren Sie die Einstellungen des Betriebssystems: Authentifizierung, VM-Namenspräfix, Benutzer/Kennwort.
+2. Verweisen Sie auf das Betriebssystem-Basisimage.
+3. Konfigurieren Sie die Einstellungen des Betriebssystems: Authentifizierung, VM-Namenspräfix und Benutzer/Kennwort.
 4. Konfigurieren Sie die Netzwerkeinstellungen.
 5. Erstellen Sie die Skalierungsgruppe.
 
-Dieses Beispiel erstellt eine elementare 2-Instanz-Skalierungsgruppe mit einer Installation von Windows Server 2016.
+Mit diesem Beispiel wird eine elementare Skalierungsgruppe mit zwei Instanzen für einen Computer erstellt, auf dem Windows Server 2016 installiert ist.
 
 ```powershell
 # Create a config object
@@ -131,7 +147,7 @@ $vmssConfig = New-AzureRmVmssConfig -Location WestUS2 -SkuCapacity 2 -SkuName St
 # Reference a virtual machine image from the gallery
 Set-AzureRmVmssStorageProfile $vmssConfig -ImageReferencePublisher MicrosoftWindowsServer -ImageReferenceOffer WindowsServer -ImageReferenceSku 2016-Datacenter -ImageReferenceVersion latest
 
-# Setup information about how to authenticate with the virtual machine
+# Set up information for authenticating with the virtual machine
 Set-AzureRmVmssOsProfile $vmssConfig -AdminUsername azureuser -AdminPassword P@ssw0rd! -ComputerNamePrefix myvmssvm
 
 # Create the virtual network resources
@@ -142,24 +158,29 @@ $ipConfig = New-AzureRmVmssIpConfig -Name "my-ip-address" -LoadBalancerBackendAd
 # Attach the virtual network to the config object
 Add-AzureRmVmssNetworkInterfaceConfiguration -VirtualMachineScaleSet $vmssConfig -Name "network-config" -Primary $true -IPConfiguration $ipConfig
 
-# Create the scale set with the config object (this step may take a few minutes)
+# Create the scale set with the config object (this step might take a few minutes)
 New-AzureRmVmss -ResourceGroupName vmss-test-1 -Name my-scale-set -VirtualMachineScaleSet $vmssConfig
 ```
 
 ## <a name="create-from-a-template"></a>Erstellen über eine Vorlage
 
-Sie können eine VM-Skalierungsgruppe bereitstellen, indem Sie eine Azure Resource Manager-Vorlage verwenden. Sie können eine eigene Vorlage erstellen oder eine Vorlage aus dem [Vorlagenrepository](https://azure.microsoft.com/resources/templates/?term=vmss) verwenden. Diese Vorlagen können direkt in Ihrem Azure-Abonnement bereitgestellt werden.
+Sie können eine VM-Skalierungsgruppe über eine Azure Resource Manager-Vorlage bereitstellen. Sie können eine eigene Vorlage erstellen oder eine Vorlage aus dem [Vorlagenrepository](https://azure.microsoft.com/resources/templates/?term=vmss) verwenden. Diese Vorlagen können direkt in Ihrem Azure-Abonnement bereitgestellt werden.
 
 >[!NOTE]
->Um eine eigene Vorlage zu erstellen, erstellen Sie eine _.json_-Textdatei. Allgemeine Informationen zum Erstellen und Anpassen einer Vorlage finden Sie unter [Vorlagen für Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md).
+>Um eine eigene Vorlage zu erstellen, erstellen Sie eine JSON-Textdatei. Allgemeine Informationen zum Erstellen und Anpassen einer Vorlage finden Sie unter [Vorlagen für Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md).
 
-Eine Beispielvorlage finden Sie [auf GitHub](https://github.com/gatneil/mvss/tree/minimum-viable-scale-set). Weitere Informationen zum Erstellen und Verwenden dieses Beispiel finden Sie unter [Einfachste funktionsfähige Skalierungsgruppe](.\virtual-machine-scale-sets-mvss-start.md).
+Eine Beispielvorlage finden Sie [auf GitHub](https://github.com/gatneil/mvss/tree/minimum-viable-scale-set). Weitere Informationen zum Erstellen und Verwenden dieses Beispiels finden Sie unter [Kleinstmögliche Skalierungsgruppe](.\virtual-machine-scale-sets-mvss-start.md).
 
 ## <a name="create-from-visual-studio"></a>Erstellen über Visual Studio
 
-Mit Visual Studio können Sie ein Projekt für eine Azure-Ressourcengruppe erstellen und diesem Projekt eine VM-Skalierungsgruppenvorlage hinzufügen. Sie können auswählen, welche Vorlage importiert werden soll, etwa aus GitHub oder aus dem Azure-Katalog. Außerdem wird ein PowerShell-Bereitstellungsskript für Sie generiert. Weitere Informationen finden Sie unter [Erstellen einer VM-Skalierungsgruppe mit Visual Studio](virtual-machine-scale-sets-vs-create.md).
+Mit Visual Studio können Sie ein Projekt für eine Azure-Ressourcengruppe erstellen und diesem Projekt eine Vorlage für eine VM-Skalierungsgruppe hinzufügen. Sie können auswählen, ob die Vorlage aus GitHub oder aus der Azure Web App Gallery importiert werden soll. Außerdem wird ein PowerShell-Bereitstellungsskript für Sie generiert. Weitere Informationen finden Sie unter [Erstellen einer VM-Skalierungsgruppe mit Visual Studio](virtual-machine-scale-sets-vs-create.md).
 
 ## <a name="create-from-the-azure-portal"></a>Erstellen über das Azure-Portal
 
 Das Azure-Portal bietet eine komfortable Möglichkeit, schnell eine Skalierungsgruppe zu erstellen. Weitere Informationen finden Sie unter [Erstellen einer VM-Skalierungsgruppe mit dem Azure-Portal](virtual-machine-scale-sets-portal-create.md).
 
+## <a name="next-steps"></a>Nächste Schritte
+
+Weitere Informationen zu [Datenträgern](virtual-machine-scale-sets-attached-disks.md).
+
+Informationen zum [Verwalten von Apps](virtual-machine-scale-sets-deploy-app.md).

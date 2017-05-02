@@ -13,11 +13,12 @@ ms.devlang: dotnet
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 01/13/2017
+ms.date: 04/21/2017
 ms.author: brjohnst
 translationtype: Human Translation
-ms.sourcegitcommit: 1f06a7197cc1a6dcf7a39c91183a4317bef126bb
-ms.openlocfilehash: 3a5131323f438109d94137cb4f577054ec13227f
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: 52dcb10495c564c5d8058b9c786b4cd331b6ae18
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -34,7 +35,10 @@ In diesem Artikel lernen Sie, wie Sie einen Azure Search-[Index](https://docs.mi
 
 Bevor Sie dieser Anleitung folgen und einen Index erstellen, müssen Sie einen [Azure Search-Dienst erstellen](search-create-service-portal.md).
 
-Beachten Sie, dass der gesamte Beispielcode in diesem Artikel in C# geschrieben wurde. Den vollständigen Quellcode finden Sie [bei GitHub](http://aka.ms/search-dotnet-howto).
+> [!NOTE]
+> Der gesamte Beispielcode in diesem Artikel wurde in C# geschrieben. Den vollständigen Quellcode finden Sie [bei GitHub](http://aka.ms/search-dotnet-howto). Eine ausführlichere exemplarische Vorgehensweise für den Beispielcode finden Sie auch unter [Verwenden von Azure Search aus einer .NET-Anwendung](search-howto-dotnet-sdk.md).
+>
+>
 
 ## <a name="identify-your-azure-search-services-admin-api-key"></a>Identifizieren des Admin-API-Schlüssels Ihres Azure Search-Diensts
 Nachdem Sie einen Azure Search-Dienst bereitgestellt haben, sind Sie fast bereit, Anforderungen für Ihren Dienstendpunkt mithilfe des .NET SDK auszugeben. Zunächst müssen Sie aber einen der Admin-API-Schlüssel abrufen, die für den bereitgestellten Suchdienst generiert wurden. Das .NET SDK sendet diesen API-Schlüssel für jede Anforderung an Ihren Dienst. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung versendet, und dem Dienst, der sie verarbeitet.
@@ -89,6 +93,9 @@ Berücksichtigen Sie beim Gestalten des Index die Benutzerfreundlichkeit und die
 In unserem Beispiel hat der Index den Namen „hotels“. Die Felder wurden unter Verwendung einer Modellklasse definiert. Jede Eigenschaft der Modellklasse verfügt über Attribute, die das suchbezogene Verhalten des entsprechenden Indexfelds bestimmen. Die Modellklasse ist wie folgt definiert:
 
 ```csharp
+// The SerializePropertyNamesAsCamelCase attribute is defined in the Azure Search .NET SDK.
+// It ensures that Pascal-case property names in the model class are mapped to camel-case
+// field names in the index.
 [SerializePropertyNamesAsCamelCase]
 public partial class Hotel
 {
@@ -130,8 +137,6 @@ public partial class Hotel
 
     [IsFilterable, IsSortable]
     public GeographyPoint Location { get; set; }
-
-    // ToString() method omitted for brevity...
 }
 ```
 
@@ -178,10 +183,5 @@ serviceClient.Indexes.Delete("hotels");
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nach dem Erstellen eines Azure Search-Indexes können Sie [Ihre Inhalte in den Index hochladen](search-what-is-data-import.md) und mit dem Durchsuchen der Daten beginnen.
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

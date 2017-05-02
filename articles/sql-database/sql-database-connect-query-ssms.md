@@ -18,9 +18,9 @@ ms.topic: hero-article
 ms.date: 03/15/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: a08fe566f4962684bc4aad220687e9cd36fc4abf
-ms.lasthandoff: 04/17/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 9ffad92e668b76c9a4e2941b20d075bf52132d16
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -37,7 +37,7 @@ Stellen Sie zunächst sicher, dass Sie die neueste Version von [SSMS](https://ms
 
 ## <a name="get-connection-information"></a>Abrufen von Verbindungsinformationen
 
-Rufen Sie den vollqualifizierten Servernamen für Ihren Azure SQL-Datenbankserver im Azure-Portal ab. Sie verwenden den vollqualifizierten Servernamen, um mit SQL Server Management Studio eine Verbindung mit Ihrem Server herzustellen.
+Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung mit der Azure SQL-Datenbank erforderlich sind. In den weiteren Verfahren benötigen Sie den vollqualifizierten Servernamen, den Datenbanknamen und die Anmeldeinformationen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 2. Wählen Sie im Menü auf der linken Seite die Option **SQL-Datenbanken**, und klicken Sie auf der Seite **SQL-Datenbanken** auf Ihre Datenbank. 
@@ -78,7 +78,7 @@ Verwenden Sie SQL Server Management Studio, um eine Verbindung mit Ihrem Azure S
 
 ## <a name="query-data"></a>Abfragen von Daten
 
-Verwenden Sie die [SELECT](https://msdn.microsoft.com/library/ms189499.aspx)-Transact-SQL-Anweisung, um Daten in Ihrer Azure SQL-Datenbank abzufragen.
+Verwenden Sie den folgenden Code, um mit der [SELECT](https://msdn.microsoft.com/library/ms189499.aspx)-Transact-SQL-Anweisung die 20 wichtigsten Produkte nach Kategorie abzufragen.
 
 1. Klicken Sie im Objekt-Explorer mit der rechten Maustaste auf **mySampleDatabase**, und wählen Sie **Neue Abfrage**. Ein leeres Abfragefenster mit einer Verbindung mit Ihrer Datenbank wird geöffnet.
 2. Geben Sie im Abfragefenster die folgende Abfrage ein:
@@ -96,7 +96,7 @@ Verwenden Sie die [SELECT](https://msdn.microsoft.com/library/ms189499.aspx)-Tra
 
 ## <a name="insert-data"></a>Einfügen von Daten
 
-Verwenden Sie die [INSERT](https://msdn.microsoft.com/library/ms174335.aspx)-Transact-SQL-Anweisung, um Daten in Ihre Azure SQL-Datenbank einzufügen.
+Verwenden Sie den folgenden Code, um mit der [INSERT](https://msdn.microsoft.com/library/ms174335.aspx)-Transact-SQL-Anweisung ein neues Produkt in die Tabelle „SalesLT.Product“ einzufügen.
 
 1. Ersetzen Sie im Abfragefenster die vorherige Abfrage durch die folgende Abfrage:
 
@@ -126,7 +126,7 @@ Verwenden Sie die [INSERT](https://msdn.microsoft.com/library/ms174335.aspx)-Tra
 
 ## <a name="update-data"></a>Aktualisieren von Daten
 
-Verwenden Sie die [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx)-Transact-SQL-Anweisung, um Daten in Ihrer Azure SQL-Datenbank zu aktualisieren.
+Verwenden Sie den folgenden Code, um das neue zuvor hinzugefügte Produkt mit der [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx)-Transact-SQL-Anweisung zu aktualisieren.
 
 1. Ersetzen Sie im Abfragefenster die vorherige Abfrage durch die folgende Abfrage:
 
@@ -142,7 +142,7 @@ Verwenden Sie die [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx)-Tra
 
 ## <a name="delete-data"></a>Löschen von Daten
 
-Verwenden Sie die [DELETE](https://msdn.microsoft.com/library/ms189835.aspx)-Transact-SQL-Anweisung, um Daten in Ihrer Azure SQL-Datenbank zu löschen.
+Verwenden Sie den folgenden Code, um das neue zuvor hinzugefügte Produkt mit der [DELETE](https://msdn.microsoft.com/library/ms189835.aspx)-Transact-SQL-Anweisung zu löschen.
 
 1. Ersetzen Sie im Abfragefenster die vorherige Abfrage durch die folgende Abfrage:
 

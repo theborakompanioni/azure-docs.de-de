@@ -8,14 +8,6 @@ Für Site-to-Site-Verbindungen mit einem lokalen Netzwerk ist ein VPN-Gerät erf
 
 Beim Konfigurieren des VPN-Geräts benötigen Sie Folgendes:
 
-- Die öffentliche IP-Adresse Ihres Gateways für virtuelle Netzwerke.
+- Einen gemeinsam verwendeten Schlüssel. Dies ist derselbe gemeinsame Schlüssel, den Sie beim Erstellen Ihrer Site-to-Site-VPN-Verbindung angeben. In unseren Beispielen verwenden wir einen einfachen gemeinsamen Schlüssel. Es wird empfohlen, einen komplexeren Schlüssel zu generieren.
 
-    -  Sie können die öffentliche IP-Adresse mit dem Azure-Portal ermitteln, indem Sie zu **Gateways für virtuelle Netzwerke** navigieren und auf den Namen Ihres Gateways klicken. 
-    - Verwenden Sie zum Ermitteln der öffentlichen IP-Adresse Ihres Gateways für virtuelle Netzwerke mit PowerShell das folgende Beispiel, und ersetzen Sie die Werte durch Ihre eigenen Werte.
-
-            Get-AzureRmPublicIpAddress -Name GW1PublicIP -ResourceGroupName TestRG
-- Einen gemeinsam verwendeten Schlüssel. Dies ist derselbe gemeinsame Schlüssel, den Sie beim Erstellen Ihrer Site-to-Site-VPN-Verbindung angeben. In unseren Beispielen verwenden wir einen sehr einfachen gemeinsamen Schlüssel. Es ist ratsam, einen komplexeren Schlüssel zu generieren.
-
-
-
-
+- Die öffentliche IP-Adresse Ihres Gateways für virtuelle Netzwerke. Sie können die öffentliche IP-Adresse mit dem Azure-Portal, mit PowerShell oder mit der CLI anzeigen.

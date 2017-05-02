@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/23/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 6d88b7c5ad96a1c7cfb60bde3c9d952b654adb9f
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 4b7192b22d1583be2b2ab027b040c9a2fce8a293
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -256,7 +256,7 @@ Es kann vorkommen, dass Sie Codeabschnitte oder Skripts ausführen möchten, mit
 
 * [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe von Azure PowerShell](resource-group-authenticate-service-principal.md)
 * [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe der Azure-Befehlszeilenschnittstelle](resource-group-authenticate-service-principal-cli.md)
-* [Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](resource-group-create-service-principal-portal.md)
+* [Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](resource-group-create-service-principal-portal.md)
 
 Sie können kritische Ressourcen auch explizit sperren, um zu verhindern, dass sie von Benutzern gelöscht oder geändert werden. Weitere Informationen finden Sie unter [Sperren von Ressourcen mit dem Azure-Ressourcen-Manager](resource-group-lock-resources.md).
 
