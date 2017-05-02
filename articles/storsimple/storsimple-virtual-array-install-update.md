@@ -90,7 +90,7 @@ Verwenden Sie diese Methode zum Installieren von Updates auf einem Gerät, auf d
    
     ![Gerät aktualisieren](./media/storsimple-virtual-array-install-update/update5m.png)
 
-5. Nach dem Neustart wird die Seite **Anmelden** angezeigt. Um sicherzustellen, dass die Gerätesoftware aktualisiert wurde, wechseln Sie auf der lokalen Webbenutzeroberfläche zu **Wartung** > ** Softwareupdate**. Die angezeigte Softwareversion sollte **10.0.0.0.0.10288.0** für Update 0.3 lauten.
+5. Nach dem Neustart wird die Seite **Anmelden** angezeigt. Um sicherzustellen, dass die Gerätesoftware aktualisiert wurde, wechseln Sie auf der lokalen Webbenutzeroberfläche zu **Wartung** > **Softwareupdate**. Die angezeigte Softwareversion sollte **10.0.0.0.0.10288.0** für Update 0.3 lauten.
    
    > [!NOTE]
    > Die Softwareversionen werden in der lokalen Webbenutzeroberfläche und im Azure-Portal etwas unterschiedlich angegeben. Beispiel: Die lokale Webbenutzeroberfläche gibt **10.0.0.0.0.10288** an, und das Azure-Portal **10.0.10288.0**, obwohl es sich um die gleiche Version handelt.
