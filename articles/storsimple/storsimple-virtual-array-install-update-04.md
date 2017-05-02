@@ -17,6 +17,7 @@ ms.author: alkohli
 translationtype: Human Translation
 ms.sourcegitcommit: a0c56eb55f81a30924835290acb59b7e7d7e3480
 ms.openlocfilehash: 3fb246b1515e7a637e6cff6499bf324c3f80dd45
+ms.lasthandoff: 02/08/2017
 
 ---
 # <a name="install-update-04-on-your-storsimple-virtual-array"></a>Installieren von Update 0.4 für Ihre StorSimple Virtual Array-Lösung
@@ -88,7 +89,7 @@ Verwenden Sie diese Methode zum Installieren von Updates auf einem Gerät, auf d
    
     ![Gerät aktualisieren](./media/storsimple-virtual-array-install-update/update5m.png)
 
-5. Nach dem Neustart wird die Seite **Anmelden** angezeigt. Um sicherzustellen, dass die Gerätesoftware aktualisiert wurde, wechseln Sie auf der lokalen Webbenutzeroberfläche zu **Wartung** > ** Softwareupdate**. Die angezeigte Softwareversion sollte **10.0.0.0.0.10289.0** für Update 0.4 lauten.
+5. Nach dem Neustart wird die Seite **Anmelden** angezeigt. Um sicherzustellen, dass die Gerätesoftware aktualisiert wurde, wechseln Sie auf der lokalen Webbenutzeroberfläche zu **Wartung** > **Softwareupdate**. Die angezeigte Softwareversion sollte **10.0.0.0.0.10289.0** für Update 0.4 lauten.
    
    > [!NOTE]
    > Die Softwareversionen werden in der lokalen Webbenutzeroberfläche und im Azure-Portal etwas unterschiedlich angegeben. Beispiel: Die lokale Webbenutzeroberfläche gibt **10.0.0.0.0.10289** an, und das Azure-Portal **10.0.10289.0**, obwohl es sich um die gleiche Version handelt.
@@ -107,10 +108,5 @@ Wechseln Sie nach Abschluss der Installation (wenn der Auftragsstatus bei 100 % 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie, wie Sie [StorSimple Virtual Array verwalten](storsimple-ova-web-ui-admin.md).
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 
