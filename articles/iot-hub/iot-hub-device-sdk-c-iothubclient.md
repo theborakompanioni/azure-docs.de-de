@@ -17,6 +17,7 @@ ms.author: obloch
 translationtype: Human Translation
 ms.sourcegitcommit: ef066a50b71389cb1cdd3bb0f8d342a34a4cc722
 ms.openlocfilehash: 669ef16c4fe2edd4525db6f693c424f3027793f3
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -27,7 +28,7 @@ Im vorherigen Artikel wurde beschrieben, wie Sie die **IoTHubClient**-Bibliothek
 
 Am Ende dieses Artikels werden verschiedene Themen besprochen, u.a. weitere Informationen zu Geräteanmeldeinformationen und zum Ändern des Verhaltens von **IoTHubClient** über Konfigurationsoptionen.
 
-Zur Erläuterung dieser Themen verwenden wir die** IoTHubClient**-SDK-Beispiele. Sehen Sie sich für weitere Informationen die Anwendungen **iothub\_client\_sample\_http** und **iothub\_client\_sample\_amqp** an, die im Azure IoT-Geräte-SDK für C enthalten sind. Alles nachfolgend Beschriebene wird in diesen Beispielen veranschaulicht.
+Zur Erläuterung dieser Themen verwenden wir die**IoTHubClient**-SDK-Beispiele. Sehen Sie sich für weitere Informationen die Anwendungen **iothub\_client\_sample\_http** und **iothub\_client\_sample\_amqp** an, die im Azure IoT-Geräte-SDK für C enthalten sind. Alles nachfolgend Beschriebene wird in diesen Beispielen veranschaulicht.
 
 Das [**Azure IoT-Geräte-SDK für C**](https://github.com/Azure/azure-iot-sdk-c) finden Sie im GitHub-Repository und ausführliche Informationen zur API in der [C-API-Referenz](https://azure.github.io/azure-iot-sdk-c/index.html).
 
@@ -276,9 +277,4 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-sdks]: iot-hub-devguide-sdks.md
 
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

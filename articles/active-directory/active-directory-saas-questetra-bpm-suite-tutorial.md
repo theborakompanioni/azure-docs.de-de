@@ -17,6 +17,7 @@ ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 6a01f53ce05aa8084f0a18e56714b1790cfce912
 ms.openlocfilehash: 7ae75446c9d19ce15a82caa9604658a528ab9941
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -310,9 +311,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel für die Questetra BPM Suite klicken,
 [205]: ./media/active-directory-saas-questetra-bpm-suite-tutorial/questera_bpm_suite_12.png
 
 [300]: ./media/active-directory-saas-questetra-bpm-suite-tutorial/questera_bpm_suite_11.png 
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

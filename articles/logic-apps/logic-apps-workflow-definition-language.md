@@ -136,7 +136,7 @@ Ausdrücke können an beliebiger Stelle in einem JSON-Zeichenfolgenwert verwende
 |"@@"|Eine Zeichenfolge, die „@“ enthält, wird zurückgegeben (einzelnes Zeichen).|  
 |" @"|Eine Zeichenfolge, die „ @“ enthält, wird zurückgegeben (zwei Zeichen).|  
   
-Mit der *Zeichenfolgeninterpolation* können Ausdrücke auch innerhalb von Zeichenfolgen verwendet werden. Dabei werden die Ausdrücke in `@{ ... }` eingeschlossen. Beispiel: <p>`"name" : "First Name: @{parameters('firstName')} Last Name: @{parameters('lastName'}"`
+Mit der *Zeichenfolgeninterpolation* können Ausdrücke auch innerhalb von Zeichenfolgen verwendet werden. Dabei werden die Ausdrücke in `@{ ... }` eingeschlossen. Beispiel: <p>`"name" : "First Name: @{parameters('firstName')} Last Name: @{parameters('lastName')}"`
 
 Das Ergebnis ist immer eine Zeichenfolge. Somit ist dieses Feature vergleichbar mit der `concat`-Funktion. Angenommen, Sie haben `myNumber` als `42` und `myString` als `sampleString` definiert:  
   
