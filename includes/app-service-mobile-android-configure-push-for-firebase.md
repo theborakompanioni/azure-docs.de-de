@@ -10,8 +10,3 @@ Das Mobile Apps-Back-End ist nun für die Verwendung von Firebase Cloud Messagin
 
 
 <!-- images -->
-
-
-<!--HONumber=Feb17_HO1-->
-
-

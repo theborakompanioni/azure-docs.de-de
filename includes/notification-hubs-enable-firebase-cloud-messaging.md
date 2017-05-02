@@ -8,8 +8,3 @@
 
     ![](./media/notification-hubs-enable-firebase-cloud-messaging/notification-hubs-firebase-console-project-settings.png)
 4. Klicken Sie in den Projekteinstellungen auf die Registerkarte **Cloud Messaging**, und kopieren Sie den Wert unter **Serverschlüssel** und **Absender-ID**. Sie verwenden diese Werte später, um die Zugriffsrichtlinie für den Benachrichtigungs-Hub und Ihren Benachrichtigungshandler in der App zu konfigurieren.
-
-
-<!--HONumber=Dec16_HO2-->
-
-

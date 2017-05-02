@@ -7,8 +7,3 @@ Ihr Dienst ist jetzt für die Nutzung von Firebase Cloud Messaging konfiguriert.
 <!-- URLs. -->
 
 <!-- images -->
-
-
-<!--HONumber=Feb17_HO1-->
-
-

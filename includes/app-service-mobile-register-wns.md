@@ -14,8 +14,3 @@
    > Der geheime Schlüssel der Anwendung und die Paket-SID sind wichtige Sicherheitsanmeldeinformationen. Geben Sie diese Werte nicht weiter, und verteilen Sie sie nicht mit Ihrer Anwendung.
    >
    >
-
-
-<!--HONumber=Feb17_HO1-->
-
-

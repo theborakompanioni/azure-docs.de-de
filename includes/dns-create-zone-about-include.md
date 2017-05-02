@@ -12,7 +12,3 @@ Beim Erstellen einer DNS-Zone in Azure DNS gilt Folgendes:
 > Sie müssen keinen Domänennamen besitzen, um eine DNS-Zone mit diesem Domänennamen in Azure DNS zu erstellen. Sie müssen jedoch die Domäne besitzen, um die Azure DNS-Namenserver als korrekte Namenserver für den Domänennamen mit der Domänennamen-Registrierungsstelle zu konfigurieren.
 > 
 > Weitere Informationen finden Sie unter [Delegieren einer Domäne an Azure DNS](../articles/dns/dns-domain-delegation.md).
-
-<!--HONumber=Feb17_HO1-->
-
-

@@ -94,8 +94,3 @@
         NotificationsManager.handleNotifications(this, SENDER_ID, MyHandler.class);
 
     Ihre App kann Pushbenachrichtigungen nun unterstützen.
-
-
-<!--HONumber=Feb17_HO1-->
-
-
