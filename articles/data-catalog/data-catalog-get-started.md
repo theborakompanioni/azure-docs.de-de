@@ -13,11 +13,12 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 01/19/2017
+ms.date: 05/03/2017
 ms.author: spelluru
 translationtype: Human Translation
 ms.sourcegitcommit: 2b128e2771ea89d1c0d6b8d52357d1bcc993115a
 ms.openlocfilehash: a9629d0a4bfc44f5d035a29f8e97d76922cc0060
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -362,10 +363,5 @@ In diesem Tutorial haben Sie wichtige Funktionen von Azure Data Catalog kennen g
 * [Dokumentieren von Datenassets](data-catalog-how-to-documentation.md)
 * [Herstellen einer Verbindung mit Datenassets](data-catalog-how-to-connect.md)
 * [Verwalten von Datenassets](data-catalog-how-to-manage.md)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 
