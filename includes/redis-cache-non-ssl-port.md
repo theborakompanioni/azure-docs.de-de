@@ -2,8 +2,3 @@
 
 ![Redis Cache: Einstellungen](media/redis-cache-non-ssl-port/redis-cache-non-ssl-port.png)
 
-
-
-<!--HONumber=Feb17_HO2-->
-
-
