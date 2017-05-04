@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 2f046ff687985a5c4f83ca7236ce832b4c81ea6e
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: d55892027a01bc9a1be2455d5d9bfee05b6fb982
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -28,6 +28,7 @@ Ausnahmen in Ihrer Live-Web-App werden von [Application Insights](app-insights-o
   * Installieren Sie das [Application Insights SDK](app-insights-asp-net.md) in Ihrer App.
   * IIS-Webserver: Führen Sie den [Application Insights-Agent](app-insights-monitor-performance-live-website-now.md) aus.
   * Azure-Web-Apps: Fügen Sie die [Application Insights-Erweiterung](app-insights-azure-web-apps.md) hinzu.
+  * Java-Web-Apps: Installieren Sie den [Java-Agent](app-insights-java-agent.md).
 * Installieren Sie den [JavaScript-Codeausschnitt](app-insights-javascript.md) in Ihren Webseiten, um Browserausnahmen zu erfassen.
 * In einigen Anwendungsframeworks oder bei bestimmten Einstellungen müssen Sie einige zusätzliche Schritte ausführen, um weitere Ausnahmen zu erfassen:
   * [Webformulare](#web-forms)

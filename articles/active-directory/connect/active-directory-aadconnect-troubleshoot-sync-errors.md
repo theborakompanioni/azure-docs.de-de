@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 1/31/2017
 ms.author: vakarand
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 6a466937358932a28604cddf7f32cdfd02a5b88d
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: a1190f0ab4caf749cce0b5c9ba45e55f7e6ca8ec
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -180,18 +180,18 @@ a. Stellen Sie sicher, dass das Attribut „UserPrincipalName“ nur unterstütz
 #### <a name="related-articles"></a>Verwandte Artikel
 * [Vorbereiten von Benutzern auf die Bereitstellung in Office 365 über die Verzeichnissynchronisierung ](https://support.office.com/en-us/article/Prepare-to-provision-users-through-directory-synchronization-to-Office-365-01920974-9e6f-4331-a370-13aea4e82b3e)
 
-### <a name="datavalidationfailed"></a>DataValidationFailed (Datenüberprüfung schlug fehl)
+### <a name="federateddomainchangeerror"></a>FederatedDomainChangeError
 #### <a name="description"></a>Beschreibung
-Es ist ein spezieller Fall, bei dem der Synchronisierungsfehler **DataValidationFailed** auftritt, wenn das Suffix des Attributs „UserPrincipalName“ eines Benutzers von einer Verbunddomäne in eine andere Verbunddomäne geändert wird.
+Dies ist ein spezieller Fall, bei dem der Synchronisierungsfehler **FederatedDomainChangeError** auftritt, wenn das Suffix des Attributs „UserPrincipalName“ eines Benutzers von einer Verbunddomäne in eine andere Verbunddomäne geändert wird.
 
-#### <a name="scenarios"></a>Szenarios
+#### <a name="scenarios"></a>Szenarien
 Bei einem synchronisierten Benutzer wurde das Suffix des „UserPrincipalName“ von einer Verbunddomäne zu einer anderen lokalen Verbunddomäne geändert. Beispiel: *UserPrincipalName = bob@contoso.com* wurde in *UserPrincipalName = bob@fabrikam.com* geändert.
 
 #### <a name="example"></a>Beispiel
 1. Bob Smith, ein Konto für Contoso.com, wird mit „UserPrincipalName“ bob@contoso.com als neuer Benutzer in Active Directory hinzugefügt.
 2. Bob wechselt zu einem anderen Bereich von Contoso.com mit dem Namen Fabrikam.com. Sein Attribut „UserPrincipalName“ wird in bob@fabrikam.com geändert.
 3. Die Domänen „contoso.com“ und „fabrikam.com“ sind Verbunddomänen mit Azure Active Directory.
-4. Bobs „userPrincipalName“ wird nicht aktualisiert und verursacht den Synchronisierungsfehler „DataValidationFailed“.
+4. Bobs „userPrincipalName“ wird nicht aktualisiert und verursacht den Synchronisierungsfehler „FederatedDomainChangeError“.
 
 #### <a name="how-to-fix"></a>So behebt man den Fehler
 Wenn das UserPrincipalName-Suffix eines Benutzers von bob@**contoso.com** in bob@**fabrikam.com** geändert wurde und es sich sowohl bei **contoso.com** als auch bei **fabrikam.com** um **Verbunddomänen** handelt, führen Sie die folgenden Schritte aus, um den Synchronisierungsfehler zu beheben.

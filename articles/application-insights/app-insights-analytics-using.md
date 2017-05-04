@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: d7f6f9582a3d15563c19d69845836a92a35ee95e
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 8485fd9350672dd0f41e2d5dada57a1940c43f16
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -134,7 +134,7 @@ Wenn Sie ein Dashboard zum Überwachen der Leistung oder Nutzung Ihrer Webdienst
 Wenn eine Tabelle maximal vier Spalten enthält, können Sie sie an das Dashboard anheften. Nur die ersten sieben Zeilen werden angezeigt.
 
 ### <a name="dashboard-refresh"></a>Dashboard-Aktualisierung
-Das an das Dashboard angeheftete Diagramm wird automatisch aktualisiert, indem die Abfrage etwa alle zwei Stunden erneut ausgeführt wird.
+Das an das Dashboard angeheftete Diagramm wird automatisch aktualisiert, indem die Abfrage etwa jede Stunde erneut ausgeführt wird. Sie können auch auf die Schaltfläche „Aktualisieren“ klicken.
 
 ### <a name="automatic-simplifications"></a>Automatische Vereinfachungen
 

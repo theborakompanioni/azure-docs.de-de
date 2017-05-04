@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: dca6f5189693fc98cec4f92eac81b6985e691889
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
+ms.openlocfilehash: a07051ea0be58cafcf1a7d7ae800b44e7abd05cd
+ms.lasthandoff: 04/13/2017
 
 
 ---
 # <a name="learn-more-about-password-management"></a>Weitere Informationen zur Kennwortverwaltung
 > [!IMPORTANT]
-> **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md#reset-your-password).
+> **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md#reset-my-password).
 >
 >
 
@@ -105,7 +105,7 @@ Wenn ein  Verbundbenutzer oder ein Benutzer mit Kennworthashsynchronisierung ihr
 6. Sobald die Nachricht vom Service Bus empfangen wird, wird der Endpunkt für die Kennwortzurücksetzung automatisch aktiviert und erkennt, dass eine Anforderung zur Kennwortzurücksetzung aussteht.
 7. Der Dienst sucht anschließend unter Verwendung des Cloudankerattributs nach dem betreffenden Benutzer.  Wenn diese Suche erfolgreich war, muss das Benutzerobjekt im AD-Connectorbereich vorliegen, dem entsprechenden MV-Objekt und dem entsprechenden AAD-Connectorobjekt zugeordnet sein. Und schließlich muss – damit dieses Benutzerkonto über das Synchronisierungsmodul gefunden wird – für die Verbindung zwischen AD-Connectorobjekt und MV die Synchronisierungsregel `Microsoft.InfromADUserAccountEnabled.xxx` gelten.  Dies ist erforderlich, weil der Aufruf von der Cloud eingeht, das Synchronisierungsmodul das cloudAnchor-Attribut verwendet, um das AAD-Connectorbereichsobjekt zu ermitteln, der Verbindung zum MV-Objekt und anschließend der Verbindung zurück zum AD-Objekt folgt. Da mehrere AD-Objekte (mehrere Gesamtstrukturen) für denselben Benutzer vorliegen können, wählt das Synchronisierungsmodul das richtige Objekt basierend auf der `Microsoft.InfromADUserAccountEnabled.xxx` -Verbindung aus. Als Folge dieser Logik müssen Sie für Azure AD Connect eine Verbindung mit dem primären Domänencontroller herstellen, damit das Kennwortrückschreiben funktioniert.  In diesem Fall können Sie Azure AD Connect für die Verwendung eines primären Domänencontrolleremulators konfigurieren, indem Sie mit der rechten Maustaste auf die **Eigenschaften** des Active Directory-Synchronisierungsconnectors klicken und dann die Option **Verzeichnispartitionen konfigurieren** auswählen. Suchen Sie nach dem Abschnitt **domain controller connection settings** (Domänencontroller-Verbindungseinstellungen), und aktivieren Sie das Kontrollkästchen **only use preferred domain controllers** (Nur bevorzugte Domänencontroller verwenden). Hinweis: Wenn der bevorzugte DC kein PDC-Emulator ist, nutzt Azure AD Connect trotzdem den PDC für das Kennwortrückschreiben.
 8. Sobald das Benutzerkonto ermittelt wurde, wird versucht, das Kennwort direkt in der geeigneten AD-Gesamtstruktur zurückzusetzen.
-9. Wenn die Kennwortzurücksetzung erfolgreich war, wird der Benutzer darüber informiert, dass das Kennwort geändert wurde, und der Vorgang ist damit abgeschlossen.
+9. Wenn die Kennwortzurücksetzung erfolgreich war, wird der Benutzer darüber informiert, dass das Kennwort geändert wurde, und der Vorgang ist damit abgeschlossen. Wenn das Kennwort des Benutzers mithilfe von Kennwortsynchronisierung mit Azure AD synchronisiert wird, kann es vorkommen, dass die lokale Kennwortrichtlinie schwächer als die Cloud-Kennwortrichtlinie ist. In diesem Fall erzwingen wir die lokale Kennwortrichtlinie und ermöglichen das Synchronisieren des Kennworthashs durch die Kennworthashsynchronisierung. So wird das Erzwingen der lokalen Richtlinie in der Cloud sichergestellt, unabhängig davon, ob Sie für die Bereitstellung von einmaligem Anmelden Kennwortsynchronisierung oder Verbund verwenden.
 10. Wenn beim Zurücksetzen des Kennworts ein Fehler auftritt, wird dem Benutzer eine Fehlermeldung angezeigt, und der Benutzer kann es erneut versuchen.  Es kann zu Fehlern kommen, weil der Dienst nicht verfügbar ist, weil das ausgewählte Kennwort nicht den Organisationsrichtlinien entspricht, weil der Benutzer nicht im lokalen AD gefunden wurde, oder weil andere Gründe vorliegen.  Es gibt für jeden dieser Fälle eine spezifische Meldung, die den Benutzer darüber informiert, was zur Problemlösung unternommen werden kann.
 
 ## <a name="scenarios-supported-for-password-writeback"></a>Unterstützte Szenarien für die Kennwortrückschreibung
@@ -629,7 +629,7 @@ Navigieren Sie zum Testen dieser Optionen mit einem dieser Partnerbenutzer zu �
 ## <a name="next-steps"></a>Nächste Schritte
 Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortzurücksetzung für Azure AD:
 
-* **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md#reset-your-password).
+* **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md#reset-my-password).
 * [**Funktionsweise**](active-directory-passwords-how-it-works.md) – Erfahren Sie mehr über die sechs verschiedenen Komponenten des Diensts und deren Funktionen.
 * [**Erste Schritte**](active-directory-passwords-getting-started.md) – Erfahren Sie, wie Sie Benutzern das Zurücksetzen und Ändern ihrer Cloud- oder lokalen Kennwörter erlauben.
 * [**Anpassen**](active-directory-passwords-customize.md) – Erfahren Sie, wie Sie das Aussehen und Verhalten des Diensts an die Anforderungen Ihrer Organisation anpassen.

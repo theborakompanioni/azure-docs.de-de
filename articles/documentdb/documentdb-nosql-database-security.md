@@ -13,19 +13,23 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2017
+ms.date: 04/19/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 9cf87aa75b2ef65719a38e446a81086d265e7f4d
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: d04c670daac243119b47cece2df18335c7af972c
+ms.lasthandoff: 04/18/2017
 
 
 ---
 
 # <a name="documentdb-nosql-database-security"></a>DocumentDB-Sicherheit für NoSQL-Datenbanken
 
- Dieser Artikel erläutert bewährte Methoden und wichtige Funktionen von Azure DocumentDB für die Sicherheit von NoSQL-Datenbanken, mit denen Sie Sicherheitsverletzungen in einer Datenbank verhindern bzw. erkennen und darauf reagieren können.
+Dieser Artikel erläutert bewährte Methoden und wichtige Funktionen von Azure DocumentDB für die Sicherheit von NoSQL-Datenbanken, mit denen Sie Sicherheitsverletzungen in einer Datenbank verhindern bzw. erkennen und darauf reagieren können.
+ 
+## <a name="whats-new-in-documentdb-security"></a>Neuerungen bei der Sicherheit von DocumentDB
+
+In allen Azure-Regionen mit Ausnahmen von Azure Government-Regionen, Azure in China und Azure in Deutschland ist jetzt die Verschlüsselung ruhender Daten für in DocumentDB gespeicherte Dokumente verfügbar. In den restlichen Regionen wird die Verschlüsselung ruhender Daten in der nächsten Woche aktiviert, zusammen mit der Verschlüsselung ruhender Daten in Sicherungen. Die Verschlüsselung ruhender Daten wird automatisch auf neue und bestehende Kunden in diesen Regionen angewendet. Es ist keine Konfiguration erforderlich. Sie können die gleichen Vorteile im Hinblick auf Wartezeit, Durchsatz, Verfügbarkeit und Funktionalität wie zuvor nutzen und können außerdem auf die Sicherheit Ihrer verschlüsselten ruhenden Daten vertrauen.
 
 ## <a name="how-do-i-secure-my-nosql-database"></a>Wie sichere ich meine NoSQL-Datenbank? 
 
@@ -72,7 +76,7 @@ Betrachten wir die Anforderungen nun im Detail.
 |Lokale Replikation|DocumentDB repliziert Daten automatisch auch innerhalb eines einzelnen Rechenzentrums und sorgt so für hohe Verfügbarkeit sowie die Möglichkeit, verschiedene [Konsistenzebenen](documentdb-consistency-levels.md) auszuwählen. So gewährleistet DocumentDB eine  [SLA mit 99,99 % Betriebszeit](https://azure.microsoft.com/support/legal/sla/documentdb/v1_1/) und umfasst auch eine finanzielle Garantie – dies bietet kein anderer NoSQL-Datenbankdienst.|
 |Automatisierte Onlinesicherungen|DocumentDB-Datenbanken werden regelmäßig aktualisiert und in einem georedundanten Speicher gespeichert. <br><br>Weitere Informationen erhalten Sie unter [Automatische Onlinesicherung und -wiederherstellung mit DocumentDB](documentdb-online-backup-and-restore.md).|
 |Wiederherstellen gelöschter Daten|Automatisierte Onlinesicherungen können zum Wiederherstellen von Daten verwendet werden, die versehentlich gelöscht wurden. Dies ist bis zu ca. 30 Tage nach dem Löschen möglich. <br><br>Weitere Informationen erhalten Sie unter [Automatische Onlinesicherung und -wiederherstellung mit DocumentDB](documentdb-online-backup-and-restore.md).|
-|Schützen und Isolieren von vertraulichen Daten|Personenbezogene und vertrauliche Daten können in bestimmte Sammlungen isoliert werden, und der Lese-/Schreibzugriff bzw. der schreibgeschützte Zugriff kann auf bestimmte Benutzer beschränkt werden.|
+|Schützen und Isolieren von vertraulichen Daten|Alle ruhenden Daten in den Regionen, die unter [Neuerungen](#whats-new) aufgeführt werden, sind jetzt verschlüsselt.<br><br>Personenbezogene und vertrauliche Daten können in bestimmte Sammlungen isoliert werden, und der Lese-/Schreibzugriff bzw. der schreibgeschützte Zugriff kann auf bestimmte Benutzer beschränkt werden.|
 |Überwachen auf Angriffe|Mithilfe von Überwachungsprotokollierung und Aktivitätsprotokollen können Sie Ihr Konto auf normale und ungewöhnliche Aktivitäten überwachen. Sie können anzeigen, welche Vorgänge für Ihre Ressourcen ausgeführt wurden, wer den jeweiligen Vorgang initiiert hat, wann der Vorgang ausgeführt wurde, welchen Status der Vorgang aufweist und vieles mehr.<br><br>![Aktivitätsprotokolle für Azure DocumentDB](./media/documentdb-nosql-database-security/nosql-database-security-application-logging.png)|
 |Reagieren auf Angriffe|Nachdem Sie den Azure-Support kontaktiert haben, um einen möglichen Angriff zu melden, wird ein aus fünf Schritten bestehender Prozess zur Reaktion auf den Incident angestoßen. Ziel dieses Prozesses ist es, die normale Dienstsicherheit und den normalen Betrieb so schnell wie möglich wiederherzustellen, nachdem ein Problem erkannt und eine Untersuchung gestartet wurde.<br><br>Weitere Informationen erhalten Sie unter [Microsoft Azure Security Response in the Cloud](https://aka.ms/securityresponsepaper) (Sicherheitsreaktion von Microsoft Azure in der Cloud).|
 |Geofencing (geografische Eingrenzung)|DocumentDB stellt die Datengovernance und -compliance für unabhängige Regionen sicher (z.B. Deutschland, China, US Government).|
@@ -87,3 +91,4 @@ Betrachten wir die Anforderungen nun im Detail.
 Weitere Informationen zu Hauptschlüsseln und Ressourcentoken finden Sie unter [Sicherer Zugriff auf Daten in DocumentDB](documentdb-secure-access-to-data.md).
 
 Weitere Informationen zu Microsoft-Zertifizierungen finden Sie im [Azure Trust Center](https://azure.microsoft.com/en-us/support/trust-center/).
+

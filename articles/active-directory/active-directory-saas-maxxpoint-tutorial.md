@@ -5,18 +5,18 @@ services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: femila
-ms.assetid: d92e3edb-31aa-4d21-9bf8-6e5917d7bf5f
+ms.assetid: 15ba026e-96fc-4ae8-b135-0169da810e99
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2017
+ms.date: 04/13/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 6844a46978618d5dc3292168bbcc228480311d47
-ms.openlocfilehash: e84a3aeb9e7a8cddccb293ab2bb9d7fdc5fa82b4
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 8a7481b71df5ca407dbed5da3d3cc26991504c82
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -28,9 +28,9 @@ Die Integration von MaxxPoint in Azure AD bietet die folgenden Vorteile:
 
 - Sie können in Azure AD steuern, wer Zugriff auf MaxxPoint hat.
 - Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei MaxxPoint anzumelden (einmaliges Anmelden).
-- Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Verwaltungsportal.
+- Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -39,16 +39,13 @@ Um die Azure AD-Integration mit MaxxPoint konfigurieren zu können, benötigen S
 - Ein Azure AD-Abonnement
 - Ein MaxxPoint-Abonnement, für das einmaliges Anmelden aktiviert ist
 
-
 > [!NOTE]
 > Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
-
 
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
 - Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
-
+- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
@@ -62,7 +59,7 @@ Zum Konfigurieren der Integration von MaxxPoint in Azure AD müssen Sie MaxxPoin
 
 **Um MaxxPoint aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Verwaltungsportals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
 
     ![Active Directory][1]
 
@@ -70,7 +67,7 @@ Zum Konfigurieren der Integration von MaxxPoint in Azure AD müssen Sie MaxxPoin
 
     ![Anwendungen][2]
     
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Hinzufügen**.
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Anwendungen][3]
 
@@ -81,7 +78,6 @@ Zum Konfigurieren der Integration von MaxxPoint in Azure AD müssen Sie MaxxPoin
 5. Wählen Sie im Ergebnisbereich die Option **MaxxPoint** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-maxxpoint-tutorial/tutorial_maxxpoint_0001.png)
-
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit MaxxPoint basierend auf einem Testbenutzer mit dem Namen Britta Simon.
@@ -100,11 +96,11 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei MaxxPoint
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
 
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-Verwaltungsportal und konfigurieren das einmalige Anmelden in Ihrer MaxxPoint-Anwendung.
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer MaxxPoint-Anwendung.
 
 **Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei MaxxPoint die folgenden Schritte aus:**
 
-1. Klicken Sie im Azure-Verwaltungsportal auf der Anwendungsintegrationsseite für **MaxxPoint** auf **Einmaliges Anmelden**.
+1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **MaxxPoint** auf **Einmaliges Anmelden**.
 
     ![Einmaliges Anmelden konfigurieren][4]
 
@@ -125,39 +121,29 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
     b. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://maxxpoint.westipc.com/default/sso/login/entity/<customer-id>-azure`
 
     > [!NOTE] 
-    > Hinweis: Hierbei handelt es sich um einen Beispielwert. Sie müssen den Wert mit der richtigen Anmelde-URL aktualisieren. Wenden Sie sich an das [Supportteam von MaxxPoint](mailto:iumsupport@intercall.com), um diese Werte zu erhalten.
+    > Hinweis: Hierbei handelt es sich um einen Beispielwert. Sie müssen den Wert mit der richtigen Anmelde-URL aktualisieren. Rufen Sie unter der Nummer **888-728-0950** das MaxxPoint-Team an, um diesen Wert zu erhalten.
 
-5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Neues Zertifikat erstellen**.
-
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-maxxpoint-tutorial/tutorial_general_400.png)     
-
-6. Klicken Sie im Dialogfeld **Neues Zertifikat erstellen** auf das Kalendersymbol, und wählen Sie ein **Ablaufdatum** aus. Klicken Sie auf die Schaltfläche **Speichern**.
-
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-maxxpoint-tutorial/tutorial_general_500.png)
-
-7. Wählen Sie im Abschnitt **SAML-Signaturzertifikat** die Option **Make new certificate active** (Neues Zertifikat zum aktiven Zertifikat machen), und klicken Sie auf die Schaltfläche **Speichern**.
-
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-maxxpoint-tutorial/tutorial_maxxpoint_05.png)
-
-8. Klicken Sie im Popupfenster **Rolloverzertifikat** auf **OK**.
-
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-maxxpoint-tutorial/tutorial_general_600.png)
-
-9. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
+5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-maxxpoint-tutorial/tutorial_maxxpoint_06.png) 
 
-10. Wenden Sie sich an das [Supportteam von MaxxPoint](mailto:iumsupport@intercall.com), um SSO für Ihre Anwendung konfigurieren zu lassen, und stellen Sie die heruntergeladenen **Metadaten** bereit. 
+6. Klicken Sie auf die Schaltfläche **Save** .
 
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-maxxpoint-tutorial/tutorial_general_400.png)
+
+7. Rufen Sie zum Konfigurieren zum einmaligen Anmelden für Ihre Anwendung das Supportteam von MaxxPoint unter der Nummer **888-728-0950** an, und es wird Ihnen helfen, die heruntergeladene **Metadaten-XML-Datei** an das Supportteam zu senden. 
+
+> [!TIP]
+> Während Sie die App einrichten, können Sie im [Azure-Portal](https://portal.azure.com) eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
-In diesem Abschnitt wird im Azure-Verwaltungsportal eine Testbenutzerin namens Britta Simon erstellt.
+Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
 ![Azure AD-Benutzer erstellen][100]
 
 **Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **Azure-Verwaltungsportals** auf das Symbol für **Azure Active Directory**.
+1. Klicken Sie im linken Navigationsbereich des **Azure-Portals** auf das Symbol für **Azure Active Directory**.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-maxxpoint-tutorial/create_aaduser_01.png) 
 
@@ -181,12 +167,9 @@ In diesem Abschnitt wird im Azure-Verwaltungsportal eine Testbenutzerin namens B
 
     d. Klicken Sie auf **Erstellen**. 
 
-
-
 ### <a name="creating-a-maxxpoint-test-user"></a>Erstellen eines MaxxPoint-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in MaxxPoint einen Benutzer namens Britta Simon. Wenden Sie sich an das [Supportteam von MaxxPoint](mailto:iumsupport@intercall.com), um die Benutzer der MaxxPoint-Plattform hinzufügen zu lassen.
-
+In diesem Abschnitt erstellen Sie in MaxxPoint einen Benutzer namens Britta Simon. Rufen Sie das Supportteam von MaxxPoint unter der Nummer **888-728-0950** an, um die Benutzer in der MaxxPoint-Anwendung hinzuzufügen.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -196,7 +179,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden bei Azu
 
 **Führen Sie die folgenden Schritte aus, um die Zuweisung von Britta Simon zu MaxxPoint durchzuführen:**
 
-1. Öffnen Sie im Azure-Verwaltungsportal die Anwendungsansicht, navigieren Sie dann zur Verzeichnisansicht, wechseln Sie zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
+1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
 
     ![Benutzer zuweisen][201] 
 
@@ -218,8 +201,6 @@ In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden bei Azu
 
 7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
     
-
-
 ### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.

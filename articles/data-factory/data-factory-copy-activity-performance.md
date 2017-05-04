@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 04/14/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: c3d96d11894f0009db004b1089c05559cafd2d43
-ms.openlocfilehash: ee79612cc30f1dfefcf7dcd8af7aed7836dd528c
-ms.lasthandoff: 01/06/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: bf864e0d9922e8e842945db9964899d602fd7eed
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -33,7 +33,7 @@ Azure bietet eine Reihe von Datenspeicher- und Data Warehouse-Lösungen der Unte
 Dieser Artikel beschreibt Folgendes:
 
 * [Leistungsreferenznummern](#performance-reference) für unterstützte Quellen- und Senkendatenspeicher, die Ihnen bei der Projektplanung helfen;
-* Features, die den Kopierdurchsatz in verschiedenen Szenarien verbessern können, einschließlich [paralleler Kopien](#parallel-copy), [Cloud-Datenverschiebungseinheiten](#cloud-data-movement-units) und [gestaffeltem Kopieren](#staged-copy);
+* Features, die den Kopierdurchsatz in verschiedenen Szenarien verbessern können, einschließlich [Cloud-Datenverschiebungseinheiten](#cloud-data-movement-units), [paralleler Kopien](#parallel-copy) und [gestaffeltem Kopieren](#staged-copy);
 * [Leitfaden zur Leistungsoptimierung](#performance-tuning-steps) zum Optimieren der Leistung und der Schlüsselfaktoren, die die Kopierleistung beeinflussen können.
 
 > [!NOTE]
@@ -45,7 +45,7 @@ Dieser Artikel beschreibt Folgendes:
 ![Leistungsmatrix](./media/data-factory-copy-activity-performance/CopyPerfRef.png)
 
 > [!NOTE]
-> Sie können einen höheren Durchsatz erzielen, indem Sie mehr Einheiten für Datenverschiebungen (DMUs) als der standardmäßige DMU-Höchstwert verwenden, der für die Ausführung einer Cloud-zu-Cloud-Kopieraktivität 8 beträgt. Beispielsweise können Sie mit 100 DMUs Daten mit einer Rate von **1,0 GB/s** aus dem Azure-Blob nach Azure Data Lake Store kopieren. Informationen zu diesem Feature und das unterstützte Szenario finden Sie im Abschnitt [Einheiten für Clouddatenverschiebungen](#cloud-data-movement-units). Wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/), um weitere DMUs anzufordern.
+> Sie können einen höheren Durchsatz erzielen, indem Sie mehr Einheiten für Datenverschiebungen (DMUs) als der standardmäßige DMU-Höchstwert verwenden, der für die Ausführung einer Cloud-zu-Cloud-Kopieraktivität 32 beträgt. Beispielsweise können Sie mit 100 DMUs Daten mit einer Rate von **1,0 GB/s** aus dem Azure-Blob nach Azure Data Lake Store kopieren. Informationen zu diesem Feature und das unterstützte Szenario finden Sie im Abschnitt [Einheiten für Clouddatenverschiebungen](#cloud-data-movement-units). Wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/), um weitere DMUs anzufordern.
 >
 >
 
@@ -84,6 +84,38 @@ Ein Beispiel: Angenommen, es müssen mehrere Slices aus der Vergangenheit verarb
 Und so weiter.
 
 Wenn die Einstellung **concurrency** in diesem Beispiel auf „2“ festgelegt ist, können **Aktivitätsausführung 1** und **Aktivitätsausführung 2** Daten aus zwei Aktivitätsfenstern **gleichzeitig** kopieren, um die Leistung von Datenübertragungen zu verbessern. Sind der Aktivitätsausführung 1 allerdings mehrere Dateien zugeordnet, kopiert der Datenverschiebungsdienst die Dateien einzeln aus der Quelle an das Ziel.
+
+### <a name="cloud-data-movement-units"></a>Einheiten für Clouddatenverschiebungen
+Eine **Einheit für Clouddatenverschiebungen** (Data Movement Unit, DMU) ist eine Messgröße für die Leistungsfähigkeit (Kombination aus zugeteilten CPU-, Speicher- und Netzwerkressourcen) einer einzelnen Einheit in Data Factory. Eine DMU kann bei Cloud-zu-Cloud-Kopien, aber nicht bei Hybridkopien verwendet werden.
+
+Data Factory verwendet standardmäßig eine einzelne Cloud-DMU, um eine einzelne Kopieraktivitätsausführung durchzuführen. Sie können diese Standardeinstellung überschreiben, indem Sie wie im Anschluss beschrieben einen Wert für die **cloudDataMovementUnits** -Eigenschaft angeben. Informationen zum Umfang des möglichen Leistungsgewinns durch Konfigurieren weiterer Einheiten für eine bestimmte Kopierquelle und -senke finden Sie in der [Leistungsreferenz](#performance-reference).
+
+```json
+"activities":[  
+    {
+        "name": "Sample copy activity",
+        "description": "",
+        "type": "Copy",
+        "inputs": [{ "name": "InputDataset" }],
+        "outputs": [{ "name": "OutputDataset" }],
+        "typeProperties": {
+            "source": {
+                "type": "BlobSource",
+            },
+            "sink": {
+                "type": "AzureDataLakeStoreSink"
+            },
+            "cloudDataMovementUnits": 32
+        }
+    }
+]
+```
+Für die **cloudDataMovementUnits**-Eigenschaft **sind folgende Werte zulässig**: 1 (Standard), 2, 4, 8, 16 und 32. Die **tatsächliche Anzahl von Cloud-DMUs**, die der Kopiervorgang zur Laufzeit verwendet, entspricht maximal dem konfigurierten Wert. Dies ist abhängig von Ihrem Datenmuster.
+
+> [!NOTE]
+> Sollten Sie zur Steigerung des Durchsatzes weitere Cloud-DMUs benötigen, wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/). Der Wert 8 und höher kann derzeit nur verwendet werden, wenn Sie **mehrere Dateien aus Blob Storage/Data Lake Store/Amazon S3/Cloud-FTP in Blob Storage/Data Lake Store/Azure SQL-Datenbank kopieren**.
+>
+>
 
 ### <a name="parallelcopies"></a>parallelCopies
 Mithilfe der **parallelCopies** -Eigenschaft können Sie die gewünschte Parallelität für die Kopieraktivität angeben. Diese Eigenschaft können Sie sich als die maximale Anzahl von Threads in einer Kopieraktivität vorstellen, die parallel aus Quelldatenspeichern lesen oder in Senkendatenspeicher schreiben können.
@@ -126,38 +158,6 @@ Beachten Sie Folgendes:
 
 > [!NOTE]
 > Das **parallelCopies** -Feature kann erst ab Version 1.11 des Datenverwaltungsgateways für Hybridkopien verwendet werden.
->
->
-
-### <a name="cloud-data-movement-units"></a>Einheiten für Clouddatenverschiebungen
-Eine **Einheit für Clouddatenverschiebungen** (Data Movement Unit, DMU) ist eine Messgröße für die Leistungsfähigkeit (Kombination aus zugeteilten CPU-, Speicher- und Netzwerkressourcen) einer einzelnen Einheit in Data Factory. Eine DMU kann bei Cloud-zu-Cloud-Kopien, aber nicht bei Hybridkopien verwendet werden.
-
-Data Factory verwendet standardmäßig eine einzelne Cloud-DMU, um eine einzelne Kopieraktivitätsausführung durchzuführen. Sie können diese Standardeinstellung überschreiben, indem Sie wie im Anschluss beschrieben einen Wert für die **cloudDataMovementUnits** -Eigenschaft angeben. Informationen zum Umfang des möglichen Leistungsgewinns durch Konfigurieren weiterer Einheiten für eine bestimmte Kopierquelle und -senke finden Sie in der [Leistungsreferenz](#performance-reference).
-
-```json
-"activities":[  
-    {
-        "name": "Sample copy activity",
-        "description": "",
-        "type": "Copy",
-        "inputs": [{ "name": "InputDataset" }],
-        "outputs": [{ "name": "OutputDataset" }],
-        "typeProperties": {
-            "source": {
-                "type": "BlobSource",
-            },
-            "sink": {
-                "type": "AzureDataLakeStoreSink"
-            },
-            "cloudDataMovementUnits": 4
-        }
-    }
-]
-```
-Für die **cloudDataMovementUnits**-Eigenschaft **sind folgende Werte zulässig**: 1 (Standard), 2, 4 und 8. Die **tatsächliche Anzahl von Cloud-DMUs**, die der Kopiervorgang zur Laufzeit verwendet, entspricht maximal dem konfigurierten Wert. Dies ist abhängig von Ihrem Datenmuster.
-
-> [!NOTE]
-> Sollten Sie zur Steigerung des Durchsatzes weitere Cloud-DMUs benötigen, wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/). Der Wert „8“ und höher kann derzeit nur verwendet werden, wenn Sie **mehrere Dateien mit einer Größe von jeweils mindestens 16 MB aus Blob Storage/Data Lake Store/Amazon S3/Cloud-FTP in Blob Storage/Data Lake Store/Azure SQL-Datenbank kopieren**.
 >
 >
 

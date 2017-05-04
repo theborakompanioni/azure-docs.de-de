@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: db3285bcdfb93c0c2b9f8972edb04e7064cfa31c
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: e6efa8c05c51b0438912738c3c5fcad4bc12b8f4
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -56,8 +56,16 @@ Wenn Sie ein Blatt oder Diagramm anzeigen, das Sie besonders interessiert, könn
 
 Beachten Sie, dass Diagramme auf Kacheln gruppiert sind: eine Kachel kann mehr als ein Diagramm enthalten. Sie heften die gesamte Kachel an das Dashboard an.
 
+Das Diagramm wird automatisch mit einer Häufigkeit aktualisiert, die vom Zeitbereich des Diagramms abhängt:
+
+* Zeitbereich von bis zu 1 Stunde: Aktualisierung alle 5 Minuten
+* Zeitbereich von 1-24 Stunden: Aktualisierung alle 15 Minuten
+* Zeitbereich von mehr als 24 Stunden: (Zeitbereich)/60.
+
 ### <a name="pin-any-query-in-analytics"></a>Anheften von beliebigen Abfragen in Analytics
 Sie können Analysediagramme auch an ein [freigegebenes](#share-dashboards-with-your-team) Dashboard [anheften](app-insights-analytics-using.md#pin-to-dashboard). Dadurch können Sie neben Standardmetriken Diagramme einer beliebigen Abfrage hinzufügen. (Für dieses Feature wird eine Gebühr berechnet.)
+
+Die Ergebnisse werden automatisch einmal pro Stunde neu berechnet. Klicken Sie auf das Aktualisierungssymbol im Diagramm, um die Neuberechnung sofort auszuführen. (Durch die Aktualisierung des Browserfensters erfolgt keine Neuberechnung.)
 
 ## <a name="adjust-a-tile-on-the-dashboard"></a>Anpassen einer Kachel auf dem Dashboard
 Sobald ein Kachel sich auf dem Dashboard befindet, können Sie sie anpassen.

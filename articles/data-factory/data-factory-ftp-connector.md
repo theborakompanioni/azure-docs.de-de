@@ -1,5 +1,5 @@
 ---
-title: Verschieben von Daten vom FTP-Server mithilfe von Azure Data Factory | Microsoft-Dokumentation
+title: Verschieben von Daten von einem FTP-Server mithilfe von Azure Data Factory | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Daten mithilfe von Azure Data Factory von einem FTP-Server verschieben.
 services: data-factory
 documentationcenter: 
@@ -12,59 +12,65 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/24/2017
+ms.date: 03/30/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 3f859aed911b04353273d1faa5ead8d4c48c2a05
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 1c37802e2b908747773afa093a28ea218dd60509
+ms.lasthandoff: 04/18/2017
 
 
 ---
-# <a name="move-data-from-an-ftp-server-using-azure-data-factory"></a>Verschieben von Daten mithilfe von Azure Data Factory von einem FTP-Server
+# <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Verschieben von Daten von einem FTP-Server mithilfe von Azure Data Factory
 Dieser Artikel beschreibt, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten von einem FTP-Server zu verschieben. Dieser Artikel baut auf dem Artikel zu [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit der Kopieraktivität bietet.
 
 Sie können Daten von einem FTP-Server in beliebige unterstützte Senkendatenspeicher kopieren. Eine Liste der Datenspeicher, die als Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Data Factory unterstützt derzeit nur das Verschieben von Daten aus einem FTP-Server in andere Datenspeicher und nicht das Verschieben aus anderen Datenspeichern auf einen FTP-Server. Es werden jeweils lokale als auch cloudbasierte FTP-Server unterstützt.
 
-## <a name="enabling-connectivity"></a>Herstellen der Verbindung
-Wenn Sie Daten aus einem **lokalen** FTP-Server in einen Clouddatenspeicher (z.B. Azure Blob Storage) verschieben, installieren und verwenden Sie das Datenverwaltungsgateway. Das Datenverwaltungsgateway ist ein Client-Agent, der auf dem lokalen Computer installiert ist, und der ermöglicht, dass die Clouddienste eine Verbindung mit einer lokalen Ressource herstellen. Weitere Informationen zum Gateway finden Sie unter [Gateway zur Datenverwaltung](data-factory-data-management-gateway.md). Im Artikel [Verschieben von Daten zwischen lokalen Standorten und Cloud](data-factory-move-data-between-onprem-and-cloud.md) erhalten Sie eine Schritt-für-Schritt-Anleitung zum Einrichten und Verwenden des Gateways. Sie verwenden das Gateway, um sich mit einem FTP-Server zu verbinden, auch wenn sich der Server auf einem virtuellen Azure-IaaS-Computer befindet.
+> [!NOTE]
+> Bei der Kopieraktivität wird die Quelldatei nicht gelöscht, nachdem sie erfolgreich in das Ziel kopiert wurde. Wenn Sie die Quelldatei nach dem erfolgreichen Kopieren löschen müssen, erstellen Sie eine benutzerdefinierte Aktivität, um die Datei zu löschen, und verwenden Sie die Aktivität in der Pipeline. 
 
-Sie können das Gateway auf dem gleichen lokalen Computer oder dem virtuelle Azure-IaaS-Computer als FTP-Server installieren. Allerdings sollten Sie das Gateway auf einem separaten Computer oder einer separaten Azure IaaS-VM installieren, um Ressourcenkonflikte zu vermeiden und die Leistung zu steigern. Wenn Sie das Gateway auf einem separaten Computer installieren, muss dieser Computer auf den FTP-Server zugreifen können.
+## <a name="enable-connectivity"></a>Herstellen von Konnektivität
+Wenn Sie Daten aus einem **lokalen** FTP-Server in einen Clouddatenspeicher (z.B. Azure Blob Storage) verschieben, installieren und verwenden Sie das Datenverwaltungsgateway. Das Datenverwaltungsgateway ist ein Client-Agent, der auf dem lokalen Computer installiert ist, und der ermöglicht, dass die Clouddienste eine Verbindung mit einer lokalen Ressource herstellen. Ausführliche Informationen finden Sie unter [Datenverwaltungsgateway](data-factory-data-management-gateway.md). Unter [Verschieben von Daten zwischen lokalen Standorten und Cloud](data-factory-move-data-between-onprem-and-cloud.md) erhalten Sie eine Schritt-für-Schritt-Anleitung zum Einrichten und Verwenden des Gateways. Sie verwenden das Gateway zum Herstellen der Verbindung mit einem FTP-Server, auch wenn sich der Server in einer Azure-Infrastruktur als virtueller IaaS-Computer (IaaS-VM) befindet.
 
-## <a name="getting-started"></a>Erste Schritte
-Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools/APIs aus einer FTP-Quelle verschiebt.
+Das Gateway kann auf dem gleichen lokalen Computer oder IaaS-VM wie der FTP-Server installiert werden. Es wird jedoch empfohlen, das Gateway auf einem separaten Computer/einem separaten IaaS-VM zu installieren, um Ressourcenkonflikte zu vermeiden und die Leistung zu steigern. Wenn Sie das Gateway auf einem separaten Computer installieren, muss dieser Computer auf den FTP-Server zugreifen können.
 
-Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Unter [Tutorial: Erstellen einer Pipeline mit dem Assistenten zum Kopieren](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
+## <a name="get-started"></a>Erste Schritte
+Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools oder APIs aus einer FTP-Quelle verschiebt.
 
-Sie können auch die folgenden Tools für das Erstellen einer Pipeline verwenden: **Azure-Portal**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlagen**, **.NET-API** und **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können. 
+Am einfachsten erstellen Sie eine Pipeline mit dem **Data Factory-Kopier-Assistenten**. Eine kurze exemplarische Vorgehensweise finden Sie im [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md).
 
-Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden Schritte aus, um eine Pipeline zu erstellen, die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher verschiebt: 
+Sie können auch die folgenden Tools für das Erstellen einer Pipeline verwenden: **Azure-Portal**, **Visual Studio**, **PowerShell**, **Azure Resource Manager-Vorlagen**, **.NET-API** und **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
 
-1. Erstellen **verknüpfter Dienste** zum Verknüpfen von Eingabe- und Ausgabedatenspeichern mit Ihrer Data Factory
-2. Erstellen von **Datasets** zur Darstellung von Eingabe- und Ausgabedaten für den Kopiervorgang 
-3. Erstellen einer **Pipeline** mit einer Kopieraktivität, die ein Dataset als Eingabe und ein Dataset als Ausgabe akzeptiert 
+Führen Sie unabhängig davon, ob Sie Tools oder APIs verwenden, die folgenden Schritte aus, um eine Pipeline zu erstellen, die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher verschiebt:
 
-Wenn Sie den Assistenten verwenden, werden automatisch JSON-Definitionen für diese Data Factory-Entitäten (verknüpfte Diensten, Datasets und die Pipeline) erstellt. Bei Verwendung von Tools und APIs (mit Ausnahme der .NET-API) definieren Sie diese Data Factory-Entitäten im JSON-Format.  Ein Beispiel mit JSON-Definitionen für Data Factory-Entitäten, die zum Kopieren von Daten aus einem FTP-Datenspeicher verwendet werden, finden Sie in diesem Artikel im Abschnitt [JSON-Beispiel: Kopieren von Daten von einem FTP-Server in ein Azure-Blob](#json-example-copy-data-from-ftp-server-to-azure-blob). 
+1. Erstellen **verknüpfter Dienste** zum Verknüpfen von Eingabe- und Ausgabedatenspeichern mit Ihrer Data Factory.
+2. Erstellen von **Datasets** zur Darstellung von Eingabe- und Ausgabedaten für den Kopiervorgang.
+3. Erstellen einer **Pipeline** mit einer Kopieraktivität, die ein Dataset als Eingabe und ein Dataset als Ausgabe akzeptiert.
 
-Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für FTP verwendet werden:
+Wenn Sie den Assistenten verwenden, werden automatisch JSON-Definitionen für diese Data Factory-Entitäten (verknüpfte Diensten, Datasets und die Pipeline) erstellt. Bei Verwendung von Tools oder APIs (mit Ausnahme der .NET-API) definieren Sie diese Data Factory-Entitäten im JSON-Format. Ein Beispiel mit JSON-Definitionen für Data Factory-Entitäten, die zum Kopieren von Daten aus einem FTP-Datenspeicher verwendet werden, finden Sie in diesem Artikel im Abschnitt [JSON-Beispiel: Kopieren von Daten von einem FTP-Server in ein Azure-Blob](#json-example-copy-data-from-ftp-server-to-azure-blob).
+
+> [!NOTE]
+> Weitere Informationen zu unterstützten Datei- und Komprimierungsformaten, die verwendet werden können, finden Sie unter [Datei- und Komprimierungsformate in Azure Data Factory](data-factory-supported-file-and-compression-formats.md).
+
+Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für FTP verwendet werden.
 
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
-Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den verknüpften FTP-Dienst spezifisch sind.
+In der folgenden Tabelle werden die JSON-Elemente beschrieben, die für den verknüpften FTP-Dienst spezifisch sind.
 
 | Eigenschaft | Beschreibung | Erforderlich | Standard |
 | --- | --- | --- | --- |
-| type |Die type-Eigenschaft muss auf FtpServer festgelegt sein |Ja |&nbsp; |
-| host |Name oder IP-Adresse des FTP-Servers |Ja |&nbsp; |
-| authenticationType |Angeben des Authentifizierungstyps |Ja |Standard, Anonym |
-| username |Der Benutzer, der Zugriff auf den FTP-Server hat |Nein |&nbsp; |
-| password |Kennwort für den Benutzer (username) |Nein |&nbsp; |
-| encryptedCredential |Verschlüsselte Anmeldeinformation für den Zugriff auf den FTP-Server |Nein |&nbsp; |
-| gatewayName |Name des Datenverwaltungsgateway-Gateways zum Herstellen einer Verbindung zu einem lokalen FTP-Server |Nein |&nbsp; |
-| port |Port, den der FTP-Server abhört |Nein |21 |
-| enableSsl |Angeben, ob FTP über SSL/TSL-Kanal verwendet werden soll |Nein |true |
-| enableServerCertificateValidation |Angeben, ob die Überprüfung des SSL-Zertifikats aktiviert werden soll, wenn FTP über SSL/TSL-Kanal verwendet wird |Nein |true |
+| Typ |Legen Sie diese Eigenschaft auf „FtpServer“ fest. |Ja |&nbsp; |
+| host |Gibt den Namen oder die IP-Adresse des FTP-Servers an. |Ja |&nbsp; |
+| authenticationType |Gibt den Authentifizierungstyp an. |Ja |Standard, Anonym |
+| username |Gibt den Benutzer an, der Zugriff auf den FTP-Server hat. |Nein |&nbsp; |
+| password |Gibt das Kennwort für den Benutzer (username) an. |Nein |&nbsp; |
+| encryptedCredential |Gibt die verschlüsselten Anmeldeinformationen für den Zugriff auf den FTP-Server an. |Nein |&nbsp; |
+| gatewayName |Gibt den Namen des Gateways im Datenverwaltungsgateway zum Herstellen einer Verbindung mit einem lokalen FTP-Server an. |Nein |&nbsp; |
+| port |Gibt den Port, den der FTP-Server abhört, an. |Nein |21 |
+| enableSsl |Gibt an, ob FTP über einen SSL/TLS-Kanal verwendet werden soll. |Nein |true |
+| enableServerCertificateValidation |Gibt an, ob die Überprüfung des SSL-Zertifikats aktiviert werden soll, wenn Sie FTP über SSL/TLS-Kanal verwenden. |Nein |true |
 
-### <a name="using-anonymous-authentication"></a>Verwenden der anonymen Authentifizierung
+### <a name="use-anonymous-authentication"></a>Verwenden von anonymer Authentifizierung
 
 ```JSON
 {
@@ -79,7 +85,7 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 }
 ```
 
-### <a name="using-username-and-password-in-plain-text-for-basic-authentication"></a>Verwenden von „username“ und „password“ im Nur-Text-Format für die Standardauthentifizierung
+### <a name="use-username-and-password-in-plain-text-for-basic-authentication"></a>Verwenden von „username“ und „password“ im Nur-Text-Format für die Standardauthentifizierung
 
 ```JSON
 {
@@ -96,7 +102,7 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 }
 ```
 
-### <a name="using-port-enablessl-enableservercertificatevalidation"></a>Verwenden von Port, enableSsl, enableServerCertificateValidation
+### <a name="use-port-enablessl-enableservercertificatevalidation"></a>Verwenden von „port“, „enableSsl“ und „enableServerCertificateValidation“
 
 ```JSON
 {
@@ -116,7 +122,7 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 }
 ```
 
-### <a name="using-encryptedcredential-for-authentication-and-gateway"></a>Verwenden von encryptedCredential für die Authentifizierung und das Gateway
+### <a name="use-encryptedcredential-for-authentication-and-gateway"></a>Verwenden von encryptedCredential für die Authentifizierung und das Gateway
 
 ```JSON
 {
@@ -134,29 +140,29 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 ```
 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
-Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie „structure“, „availability“ und „policy“ des JSON-Codes eines Datasets sind bei allen Dataset-Typen ähnlich.
+Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie unter [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie „structure“, „availability“ und „policy“ des JSON-Codes eines Datasets sind bei allen Dataset-Typen ähnlich.
 
-Der Abschnitt **typeProperties** ist bei jeder Art von Dataset unterschiedlich. Er enthält Informationen, die spezifisch für den Datasettyp sind. Bei einem Dataset vom Typ **FileShare** enthält Abschnitt „typeProperties“ die folgenden Eigenschaften:
+Der Abschnitt **typeProperties** ist bei jeder Art von Dataset unterschiedlich. Er enthält Informationen, die spezifisch für den Datasettyp sind. Der Abschnitt **typeProperties** für ein Dataset des Typs **FileShare** hat die folgenden Eigenschaften:
 
 | Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | folderPath |Unterpfad zum Ordner. Verwenden Sie für Sonderzeichen in der Zeichenfolge das Escapezeichen „\“. Beispiele finden Sie unter [Beispieldefinitionen für verknüpfte Dienste und Datasets](#sample-linked-service-and-dataset-definitions) .<br/><br/>Sie können diese Eigenschaft mit **partitionBy** kombinieren, um Ordnerpfade auf der Grundlage von Datum und Uhrzeit für Start und Ende des Slices zu erhalten. |Ja |
-| fileName |Geben Sie den Namen der Datei in **folderPath** an, wenn die Tabelle auf eine bestimmte Datei im Ordner verweisen soll. Wenn Sie keine Werte für diese Eigenschaft angeben, verweist die Tabelle auf alle Dateien im Ordner.<br/><br/>Wenn „fileName“ für ein Ausgabedataset nicht angegeben ist, hat der Name der generierten Datei folgendes Format: <br/><br/>Data<Guid>.txt (Beispiel: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |Nein |
-| fileFilter |Geben Sie einen Filter zur Auswahl einer Teilmenge der Dateien in "folderPath" statt alle Dateien an.<br/><br/>Zulässige Werte: `*` (mehrere Zeichen) und `?` (einzelnes Zeichen).<br/><br/>Beispiel 1: `"fileFilter": "*.log"`<br/>Beispiel 2: `"fileFilter": 2014-1-?.txt"`<br/><br/> fileFilter eignet sich für das Eingabedataset FileShare. Diese Eigenschaft wird mit HDFS nicht unterstützt. |Nein |
-| partitionedBy |Mit „partitionedBy“ kann für Zeitreihendaten ein dynamischer Wert für „folderPath“ und „filename“ angegeben werden. Beispiel: Parametrisierung von „folderPath“ für Daten nach Stunde. |Nein |
-| format | Die folgenden Formattypen werden unterstützt: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Sie müssen die **type** -Eigenschaft unter „format“ auf einen dieser Werte festlegen. Weitere Informationen finden Sie in den Abschnitten [Textformat](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-Format](data-factory-supported-file-and-compression-formats.md#json-format), [Avro-Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc-Format](data-factory-supported-file-and-compression-formats.md#orc-format) und [Parquet-Format](data-factory-supported-file-and-compression-formats.md#parquet-format). <br><br> Wenn Sie **Dateien unverändert zwischen dateibasierten Speichern kopieren** möchten (binäre Kopie), können Sie den Formatabschnitt bei den Definitionen von Eingabe- und Ausgabedatasets überspringen. |Nein |
+| fileName |Geben Sie den Namen der Datei in **folderPath** an, wenn die Tabelle auf eine bestimmte Datei im Ordner verweisen soll. Wenn Sie keine Werte für diese Eigenschaft angeben, verweist die Tabelle auf alle Dateien im Ordner.<br/><br/>Wenn **fileName** für ein Ausgabedataset nicht angegeben ist, weist der Name der generierten Datei das folgende Format auf: <br/><br/>Data.<Guid>.txt (Beispiel: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |Nein |
+| fileFilter |Geben Sie einen Filter zur Auswahl einer Teilmenge der Dateien in **folderPath** statt alle Dateien an.<br/><br/>Zulässige Werte sind: `*` (mehrere Zeichen) und `?` (einzelnes Zeichen).<br/><br/>Beispiel 1: `"fileFilter": "*.log"`<br/>Beispiel 2: `"fileFilter": 2014-1-?.txt"`<br/><br/> **fileFilter** eignet sich für das Eingabedataset „FileShare“. Diese Eigenschaft wird für HDFS (Hadoop Distributed Datei System) nicht unterstützt. |Nein |
+| partitionedBy |Wird verwendet, um einen dynamischen Wert von **folderPath** und **fileName** für Zeitreihendaten anzugeben. Sie können z.B. einen **folderPath** angeben, der für jede Stunde von Daten parametrisiert wird. |Nein |
+| format | Die folgenden Formattypen werden unterstützt: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Sie müssen die **type** -Eigenschaft unter „format“ auf einen dieser Werte festlegen. Weitere Informationen finden Sie in den Abschnitten [Textformat](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-Format](data-factory-supported-file-and-compression-formats.md#json-format), [Avro-Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc-Format](data-factory-supported-file-and-compression-formats.md#orc-format) und [Parquet-Format](data-factory-supported-file-and-compression-formats.md#parquet-format). <br><br> Wenn Sie Dateien unverändert zwischen dateibasierten Speichern kopieren möchten (binäre Kopie), können Sie den Formatabschnitt bei den Definitionen von Eingabe- und Ausgabedatasets überspringen. |Nein |
 | Komprimierung | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Folgende Typen werden unterstützt: **GZip**, **Deflate**, **BZip2** und **ZipDeflate**. Folgende Komprimierungsstufen werden unterstützt: **Optimal** und **Schnellste**. Weitere Informationen finden Sie unter [Datei- und Komprimierungsformate in Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nein |
-| useBinaryTransfer |Gibt an, ob der binären Übertragungsmodus verwendet werden soll. Bei TRUE wird der Binärmodus und bei FALSE der ASCII-Modus verwendet. Standardwert: TRUE. Diese Eigenschaft kann nur verwendet werden, wenn der zugehörige verknüpfte Dienst vom Typ FTP-Server ist. |Nein |
+| useBinaryTransfer |Gibt an, ob der binäre Übertragungsmodus verwendet werden soll. Für den Binärmodus (dies ist der Standardwert) lautet der Wert „true“, und für ASCII lautet er „false“. Diese Eigenschaft kann nur verwendet werden, wenn der zugehörige verknüpfte Dienst vom Typ „FtpServer“ ist. |Nein |
 
 > [!NOTE]
-> "filename" und "fileFilter" können nicht gleichzeitig verwendet werden.
+> **fileName** und **fileFilter** können nicht gleichzeitig verwendet werden.
 
-### <a name="using-partionedby-property"></a>Verwenden der partionedBy-Eigenschaft
-Wie im vorherigen Abschnitt erwähnt, können die **partitionedBy**-Eigenschaft, [Data Factory-Funktionen und Systemvariablen](data-factory-functions-variables.md) verwendet werden, um für Zeitreihendaten einen dynamischen Wert für folderPath und filename anzugeben.
+### <a name="use-the-partionedby-property"></a>Verwenden der partionedBy-Eigenschaft
+Wie im vorherigen Abschnitt erwähnt, kann die **partitionedBy**-Eigenschaft verwendet werden, um für Zeitreihendaten einen dynamischen Wert für **folderPath** und **fileName** anzugeben.
 
-In den Artikeln [Erstellen von Datasets](data-factory-create-datasets.md), [Planung und Ausführung](data-factory-scheduling-and-execution.md) und [Erstellen von Pipelines](data-factory-create-pipelines.md) finden Sie weitere Informationen zu Zeitreihen-Datasets, Planung und Slices.
+Unter [Erstellen von Datasets](data-factory-create-datasets.md), [Planung und Ausführung](data-factory-scheduling-and-execution.md) und [Erstellen von Pipelines](data-factory-create-pipelines.md) finden Sie weitere Informationen zu Zeitreihen-Datasets, Planung und Slices.
 
-#### <a name="sample-1"></a>Beispiel 1:
+#### <a name="sample-1"></a>Beispiel 1
 
 ```json
 "folderPath": "wikidatagateway/wikisampledataout/{Slice}",
@@ -165,9 +171,9 @@ In den Artikeln [Erstellen von Datasets](data-factory-create-datasets.md), [Plan
     { "name": "Slice", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyyMMddHH" } },
 ],
 ```
-Im obigen Beispiel wird „{Slice}“ durch den Wert der Data Factory-Systemvariablen „SliceStart“ ersetzt, die im Format „JJJJMMTTHH“ angegeben ist. "SliceStart" bezieht sich auf die Startzeit des Slices. "folderPath" unterscheidet sich für jeden Slice. Beispiel: „wikidatagateway/wikisampledataout/2014100103“ oder „wikidatagateway/wikisampledataout/2014100104“.
+Im obigen Beispiel wird {Slice} durch den Wert der Data Factory-Systemvariablen „SliceStart“ ersetzt, die im Format (JJJJMMTTHH) angegeben ist. "SliceStart" bezieht sich auf die Startzeit des Slices. Der Ordnerpfad unterscheidet sich für jeden Slice. (Beispiel: „wikidatagateway/wikisampledataout/2014100103“ oder „wikidatagateway/wikisampledataout/2014100104“.)
 
-#### <a name="sample-2"></a>Beispiel 2:
+#### <a name="sample-2"></a>Beispiel 2
 
 ```json
 "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
@@ -180,42 +186,41 @@ Im obigen Beispiel wird „{Slice}“ durch den Wert der Data Factory-Systemvari
     { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } }
 ],
 ```
-Im Beispiel oben werden Jahr, Monat, Tag und Uhrzeit von SliceStart in separate Variablen extrahiert, die von den Eigenschaften „folderPath“ und „fileName“ verwendet werden.
-
-
+Im Beispiel oben werden Jahr, Monat, Tag und Uhrzeit von „SliceStart“ in eigene Variablen extrahiert, die von den Eigenschaften **folderPath** und **fileName** verwendet werden.
 
 ## <a name="copy-activity-properties"></a>Eigenschaften der Kopieraktivität
-Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md). Eigenschaften wie Name, Beschreibung, Eingabe- und Ausgabetabellen und Richtlinien sind für alle Arten von Aktivitäten verfügbar.
+Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren von Aktivitäten finden Sie unter [Erstellen von Pipelines](data-factory-create-pipelines.md). Eigenschaften wie Name, Beschreibung, Eingabe- und Ausgabetabellen und Richtlinien sind für alle Arten von Aktivitäten verfügbar.
 
-Eigenschaften im Abschnitt „typeProperties“ der Aktivität können dagegen je nach Aktivitätstyp variieren. Für die Kopieraktivität variieren die Eigenschaften des Typs je nach Art der Quellen und Senken.
+Die Eigenschaften im Abschnitt **typeProperties** der Aktivität können dagegen je nach Aktivitätstyp variieren. Für die Kopieraktivität variieren die Eigenschaften des Typs je nach Art der Quellen und Senken.
 
-Wenn die Quelle der Kopieraktivität vom Typ **FileSystemSource** ist, sind im Abschnitt „typeProperties“ die folgenden Eigenschaften verfügbar:
+Wenn die Quelle der Kopieraktivität vom Typ **FileSystemSource** ist, steht im Abschnitt **typeProperties** die folgende Eigenschaft zur Verfügung:
 
 | Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
 | recursive |Gibt an, ob die Daten rekursiv aus den Unterordnern oder nur aus dem angegebenen Ordner gelesen werden. |True/False (Standardwert) |Nein |
 
+## <a name="json-example-copy-data-from-ftp-server-to-azure-blob-storage"></a>JSON-Beispiel: Kopieren von Daten von einem FTP-Server nach Azure Blob Storage
+Dieses Beispiel zeigt, wie Sie Daten von einem FTP-Server nach Azure Blob Storage kopieren. Daten können jedoch mithilfe der Kopieraktivität in Data Factory direkt in die unter [Unterstützte Datenspeicher und Formate](data-factory-data-movement-activities.md#supported-data-stores-and-formats) aufgeführten Senken kopiert werden.  
 
-## <a name="json-example-copy-data-from-ftp-server-to-azure-blob"></a>JSON-Beispiel: Kopieren von Daten von einem FTP-Server in ein Azure-Blob
-Dieses Beispiel zeigt, wie Sie Daten aus dem FTP-Server in Azure Blob Storage kopieren. Daten können jedoch mithilfe der Kopieraktivität in Azure Data Factory **direkt** in die [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) aufgeführten Senken kopiert werden.  
+Die folgenden Beispiele zeigen JSON-Beispieldefinitionen, die Sie zum Erstellen einer Pipeline mit dem [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder mit [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können:
 
-Die folgenden Beispiele zeigen JSON-Beispieldefinitionen, die Sie zum Erstellen einer Pipeline mit dem [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder mit [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können.
-
-* Einen verknüpften Dienst des Typs [FtpServer](#linked-service-properties)
-* Einen verknüpften Dienst des Typs [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)
-* Ein [Eingabedataset](data-factory-create-datasets.md) des Typs [FileShare](#dataset-properties)
-* Ein [Ausgabedataset](data-factory-create-datasets.md) des Typs [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)
+* Ein verknüpfter Dienst vom Typ [FtpServer](#linked-service-properties)
+* Ein verknüpfter Dienst vom Typ [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)
+* Ein [Eingabedataset](data-factory-create-datasets.md) vom Typ [FileShare](#dataset-properties)
+* Ein [Ausgabedataset](data-factory-create-datasets.md) vom Typ [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)
 * Eine [Pipeline](data-factory-create-pipelines.md) mit Kopieraktivität, die [FileSystemSource](#copy-activity-properties) und [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) verwendet
 
 Im Beispiel werden stündlich Daten aus einem FTP-Server in ein Azure-Blob kopiert. Die bei diesen Beispielen verwendeten JSON-Eigenschaften werden in den Abschnitten beschrieben, die auf die Beispiele folgen.
 
-**Verknüpfter FTP-Dienst:** Dieses Beispiel verwendet die Standardauthentifizierung mit dem Benutzernamen und dem Kennwort im Nur-Text-Format. Sie können auch eine der folgenden Methoden verwenden:
+### <a name="ftp-linked-service"></a>Verknüpfter FTP-Dienst
+
+Dieses Beispiel verwendet Standardauthentifizierung mit dem Benutzernamen und Kennwort im Nur-Text-Format. Sie können auch eine der folgenden Methoden verwenden:
 
 * Anonyme Authentifizierung
 * Standardauthentifizierung mit verschlüsselten Anmeldeinformationen
 * FTP über SSL/TLS (FTPS)
 
-Informationen zu den verschiedenen Authentifizierungstypen finden Sie im Abschnitt [Eigenschaften des verknüpften FTP-Diensts](#linked-service-properties).
+Informationen zu den verschiedenen Authentifizierungstypen finden Sie im Abschnitt [Verknüpfter FTP-Dienst](#linked-service-properties).
 
 ```JSON
 {
@@ -231,7 +236,7 @@ Informationen zu den verschiedenen Authentifizierungstypen finden Sie im Abschni
   }
 }
 ```
-**Mit Azure Storage verknüpfter Dienst:**
+### <a name="azure-storage-linked-service"></a>Mit Azure Storage verknüpfter Dienst
 
 ```JSON
 {
@@ -244,9 +249,11 @@ Informationen zu den verschiedenen Authentifizierungstypen finden Sie im Abschni
   }
 }
 ```
-**FTP-Eingabedataset:** Dieses Dataset verweist auf den FTP-Ordner `mysharedfolder` und die Datei `test.csv`. Die Pipeline kopiert die Datei in das Ziel.
+### <a name="ftp-input-dataset"></a>FTP-Eingabedataset
 
-Durch Festlegen von „external“ auf „true“ wird dem Data Factory-Dienst mitgeteilt, dass das Dataset für die Data Factory extern ist und nicht durch eine Aktivität in der Data Factory erzeugt wird.
+Dieses Dataset verweist auf den FTP-Ordner `mysharedfolder` und die Datei `test.csv`. Die Pipeline kopiert die Datei in das Ziel.
+
+Durch Festlegen von **external** auf **true** wird dem Data Factory-Dienst mitgeteilt, dass das Dataset für die Data Factory extern ist und nicht durch eine Aktivität in der Data Factory erzeugt wird.
 
 ```JSON
 {
@@ -268,7 +275,7 @@ Durch Festlegen von „external“ auf „true“ wird dem Data Factory-Dienst m
 }
 ```
 
-**Azure-Blob-Ausgabedataset**
+### <a name="azure-blob-output-dataset"></a>Azure-Blob-Ausgabedataset
 
 Daten werden stündlich in ein neues Blob geschrieben ("frequency": "hour", "interval": 1). Der Ordnerpfad des Blobs wird basierend auf der Startzeit des Slices, der verarbeitet wird, dynamisch ausgewertet. Im Ordnerpfad werden Jahr, Monat, Tag und die Stundenteile der Startzeit verwendet.
 
@@ -329,7 +336,7 @@ Daten werden stündlich in ein neues Blob geschrieben ("frequency": "hour", "int
 ```
 
 
-**Kopieraktivität in einer Pipeline mit einer Dateisystemquelle und einer Blobsenke:**
+### <a name="a-copy-activity-in-a-pipeline-with-file-system-source-and-blob-sink"></a>Kopieraktivität in einer Pipeline mit einer Dateisystemquelle und einer Blobsenke
 
 Die Pipeline enthält eine Kopieraktivität, die für die Verwendung der Ein- und Ausgabedatasets und für eine stündliche Ausführung konfiguriert ist. In der JSON-Definition der Pipeline ist der Typ **source** auf **FileSystemSource** und der Typ **sink** auf **BlobSink** festgelegt.
 
@@ -373,11 +380,10 @@ Die Pipeline enthält eine Kopieraktivität, die für die Verwendung der Ein- un
 > [!NOTE]
 > Weitere Informationen zum Zuordnen von Spalten im Quelldataset zu Spalten im Senkendataset finden Sie unter [Zuordnen von Datasetspalten in Azure Data Factory](data-factory-map-columns.md).
 
-## <a name="performance-and-tuning"></a>Leistung und Optimierung
-Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
-
 ## <a name="next-steps"></a>Nächste Schritte
 Entsprechende Informationen finden Sie in den folgenden Artikeln:
 
-* [Kopieraktivität-Tutorial](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) für schrittweise Anleitungen zum Erstellen einer Pipeline mit einer Kopieraktivität.
+* Im [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) werden wichtige Faktoren beschrieben, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
+
+* Eine Schritt-für-Schritt-Anleitung zum Erstellen einer Pipeline mit einer Kopieraktivität finden Sie im [Kopieraktivität-Tutorial](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
