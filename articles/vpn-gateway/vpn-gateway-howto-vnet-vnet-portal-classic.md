@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 04/21/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 3a3734fba72c42ee4e6f14069faf2d3396c06dd1
-ms.lasthandoff: 04/25/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: de39e768697425b98fb615697e57918c8c5d3853
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -65,7 +65,7 @@ Weitere Informationen zu VNet-zu-VNet-Verbindungen finden Sie am Ende dieses Art
 
 ### <a name="before-you-begin"></a>Voraussetzungen
 
-Ehe Sie diese Übung beginnen, laden Sie die aktuelle Version der PowerShell-Cmdlets der Azure-Dienstverwaltung herunter, und installieren Sie sie. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs). Wir verwenden für die meisten Schritte das Portal. Sie müssen jedoch PowerShell verwenden, um die Verbindungen zwischen den VNets herzustellen. Sie können die Verbindungen nicht im Azure-Portal erstellen.
+Ehe Sie diese Übung beginnen, laden Sie die aktuelle Version der PowerShell-Cmdlets der Azure-Dienstverwaltung herunter, und installieren Sie sie. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview). Wir verwenden für die meisten Schritte das Portal. Sie müssen jedoch PowerShell verwenden, um die Verbindungen zwischen den VNets herzustellen. Sie können die Verbindungen nicht im Azure-Portal erstellen.
 
 ## <a name="step1"></a>Schritt 1: Planen der IP-Adressbereiche
 
@@ -202,7 +202,7 @@ Beim Erstellen von klassischen VNETs im Azure-Portal ist der angezeigte Name nic
 
 In den folgenden Schritten stellen Sie eine Verbindung zu Ihrem Azure-Konto her. Zudem laden Sie die Netzwerkkonfigurationsdatei herunter und zeigen diese an, um die für Ihre Verbindungen erforderlichen Werte abzurufen.
 
-1. Laden Sie die aktuelle Version der PowerShell-Cmdlets der Azure-Dienstverwaltung herunter, und installieren Sie sie. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
+1. Laden Sie die aktuelle Version der PowerShell-Cmdlets der Azure-Dienstverwaltung herunter, und installieren Sie sie. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
 
 2. Öffnen Sie die PowerShell-Konsole mit erhöhten Rechten, und stellen Sie eine Verbindung mit Ihrem Konto her. Verwenden Sie das folgende Beispiel, um eine Verbindung herzustellen:
 
@@ -278,3 +278,4 @@ Beachten Sie in den folgenden Beispielen, dass der Wert für „SharedKey“ ide
 
 ## <a name="next-steps"></a>Nächste Schritte
 Überprüfen Sie Ihre Verbindungen. Weitere Informationen finden Sie unter [Überprüfen einer VPN-Gatewayverbindung](vpn-gateway-verify-connection-resource-manager.md).
+

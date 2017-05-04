@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 03/24/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 6028116d18207d13729d1816f64ad192d4cdb491
-ms.lasthandoff: 04/26/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 0fb7e8fe778c8d6f7e12b1c8a75c95941da3d4d9
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="how-to-configure-automatic-registration-of-windows-domain-joined-devices-with-azure-active-directory"></a>Es wird beschrieben, wie Sie die automatische Registrierung von in die Domäne eingebundenen Windows-Geräten mit Azure Active Directory konfigurieren.
 
-Wenn Sie den [gerätebasierten bedingten Zugriff über Azure Active Directory](active-directory-conditional-access-azure-portal.md) verwenden möchten, müssen Ihre Computer in Azure Active Directory (Azure AD) registriert werden. Sie können eine Liste mit den registrierten Geräten Ihrer Organisation abrufen, indem Sie das [Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice)-Cmdlet im [Azure Active Directory PowerShell-Modul](https://docs.microsoft.com/en-us/powershell/msonline/) verwenden. 
+Wenn Sie den [gerätebasierten bedingten Zugriff über Azure Active Directory](active-directory-conditional-access-azure-portal.md) verwenden möchten, müssen Ihre Computer in Azure Active Directory (Azure AD) registriert werden. Sie können eine Liste mit den registrierten Geräten Ihrer Organisation abrufen, indem Sie das [Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice)-Cmdlet im [Azure Active Directory PowerShell-Modul](/powershell/azure/install-msonlinev1?view=azureadps-2.0) verwenden. 
 
 Dieser Artikel enthält die Schritte zum Konfigurieren der automatischen Registrierung von in die Domäne eingebundenen Windows-Geräten mit Azure AD in Ihrer Organisation.
 
@@ -302,7 +302,7 @@ Im Anspruch oben
 
 
 Weitere Informationen zu überprüften Domänennamen finden Sie unter [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](active-directory-add-domain.md).  
-Zum Abrufen einer Liste mit Ihren überprüften Unternehmensdomänen können Sie das [Get-MsolDomain](https://docs.microsoft.com/powershell/msonline/v1/get-msoldomain)-Cmdlet verwenden. 
+Zum Abrufen einer Liste mit Ihren überprüften Unternehmensdomänen können Sie das [Get-MsolDomain](/powershell/module/msonline/get-msoldomain?view=azureadps-1.0)-Cmdlet verwenden. 
 
 ![Get-MsolDomain](./media/active-directory-conditional-access-automatic-device-registration-setup/01.png)
 
@@ -565,7 +565,7 @@ Das Installationsprogramm erstellt einen geplanten Task auf dem System, der im K
 
 ## <a name="step-5-verify-registered-devices"></a>Schritt 5: Überprüfen von registrierten Geräten
 
-Sie können die erfolgreiche Registrierung für die Geräte Ihrer Organisation überprüfen, indem Sie das [Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice)-Cmdlet im [Azure Active Directory PowerShell-Modul](https://docs.microsoft.com/en-us/powershell/msonline/) verwenden.
+Sie können die erfolgreiche Registrierung für die Geräte Ihrer Organisation überprüfen, indem Sie das [Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice)-Cmdlet im [Azure Active Directory PowerShell-Modul](/powershell/azure/install-msonlinev1?view=azureadps-2.0) verwenden.
 
 In der Ausgabe dieses Cmdlets werden Geräte angezeigt, die in Azure AD registriert sind. Verwenden Sie zum Abrufen aller Geräte den Parameter **-All**, und filtern Sie sie anschließend mit der **deviceTrustType**-Eigenschaft. In die Domäne eingebundene Geräte weisen den Wert **In die Domäne eingebunden** auf.
 
