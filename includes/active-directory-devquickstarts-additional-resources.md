@@ -5,8 +5,3 @@
 
 ## <a name="get-security-updates-for-our-products"></a>Abrufen von Sicherheitsupdates für unsere Produkte
 Wir empfehlen Ihnen, den Erhalt von Benachrichtigungen zu Sicherheitsvorfällen einzurichten. Rufen Sie dazu [die TechCenter-Seite für technische Sicherheitsbenachrichtigungen von Microsoft](https://technet.microsoft.com/security/dd252948) auf, und abonnieren Sie die Sicherheitsempfehlungen.
-
-
-<!--HONumber=Feb17_HO2-->
-
-

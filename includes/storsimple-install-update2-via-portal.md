@@ -34,8 +34,3 @@
 9. Das Update dauert einige Stunden. Durch Auswählen des Updateauftrags und Klicken auf **Details** können Sie jederzeit die Details des Auftrags anzeigen.
 10. Navigieren Sie nach dem Abschließen des Auftrags zur Seite **Wartung**, und scrollen Sie nach unten zu **Softwareupdates**.
 
-
-
-<!--HONumber=Feb17_HO2-->
-
-
