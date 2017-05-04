@@ -19,8 +19,3 @@ Der Großteil der Authentifizierungsfehler ergibt sich aus falschen oder inkonsi
 * Starten Sie bei einer .NET-API-App eine [Remotedebuggingsitzung](../articles/app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md#remotedebug), und überprüfen Sie die Werte der Variablen, die an Code übergeben werden, der ADAL verwendet, um ein Bearertoken zu beziehen, oder an Code, der Ansprüche für die erwartete Dienstprinzipal-ID überprüft. Beachten Sie, dass mit Ihrem Code die Konfigurationswerte aus vielen unterschiedlichen Quellen erfasst werden können, sodass Sie hier ggf. auch Überraschungen erleben. Wenn Sie beim Konfigurieren von Azure App Service-Umgebungseinstellungen beispielsweise nicht `ida:ClientId` angeben, sondern `ida:ClientID`, kann Folgendes passieren: Der Code ruft den gesuchten Wert für `ida:ClientId` aus der Datei „Web.config“ ab und ignoriert die Azure App Service-Einstellung. 
 * Wenn etwas nicht in einem normalen Fenster in Internet Explorer funktioniert, könnte eine existierende Anmeldung stören. Versuchen Sie es noch einmal im InPrivate-, Chrome- oder Firefox-Browser.
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

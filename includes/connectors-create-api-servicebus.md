@@ -14,8 +14,3 @@ Hier erfahren Sie, wie Sie Ihre Logik-App für Verbindungen mit Ihrem Service Bu
 4. Beachten Sie, dass die Verbindung erstellt wurde und Sie nun mit anderen Schritten in Ihrer Logik-App fortfahren können:  
     ![Service Bus-Verbindung – Abbildung 3](./media/connectors-create-api-servicebus/servicebus-3.png)   
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

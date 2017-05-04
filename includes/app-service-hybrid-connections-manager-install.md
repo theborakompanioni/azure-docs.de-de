@@ -20,8 +20,3 @@
    
     ![Status Verbunden](./media/app-service-hybrid-connections-manager-install/D10HCStatusConnected.png)
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

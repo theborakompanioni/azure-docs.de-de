@@ -58,8 +58,3 @@ Sie können Regeln verwenden, um nur Verkehr von bestimmten Computern zuzulassen
 
 Die Regeln werden der Reihe nach, beginnend mit der ersten und endend mit der letzten Regel, bewertet. Dies bedeutet, dass die Regeln gemäß der Restriktivität geordnet werden sollen. Beispiele und weitere Informationen finden Sie unter [Was ist eine Netzwerk-Zugriffssteuerungsliste?](../articles/virtual-network/virtual-networks-acl.md).
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

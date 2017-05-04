@@ -75,8 +75,3 @@ Beispiel für eine öffentliche IP-Adresse im JSON-Format:
 ### <a name="additional-resources"></a>Zusätzliche Ressourcen
 * Lesen Sie die [REST-API-Referenzdokumentation](https://msdn.microsoft.com/library/azure/mt163579.aspx) für Informationen zu Netzwerkkarten.
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

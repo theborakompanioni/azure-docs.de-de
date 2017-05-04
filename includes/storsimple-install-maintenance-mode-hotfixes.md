@@ -15,8 +15,3 @@
 5. Nachdem Sie den Hotfix auf einem Controller installiert haben, melden Sie sich bei dem anderen Controller an. Wenden Sie den Hotfix wie beim vorherigen Controller an.
 6. Nachdem alle Hotfixes angewendet wurden, beenden Sie den Wartungsmodus. Anweisungen dazu finden Sie unter [Schritt 4: Beenden des Wartungsmodus](../articles/storsimple/storsimple-update-device.md#step4).
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

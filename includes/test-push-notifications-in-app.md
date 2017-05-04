@@ -3,8 +3,3 @@
 * Fügen Sie in der App auf ein neues Element hinzu, und klicken Sie auf **+**.
 * Stellen Sie sicher, dass Sie eine Benachrichtigung erhalten haben, und klicken Sie dann auf **OK** , um diese zu schließen. Sie haben dieses Lernprogramm erfolgreich abgeschlossen.
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -20,8 +20,3 @@ In diesem Schritt erstellen Sie manuell den Verfügbarkeitsgruppenlistener im Fa
    > 
 9. Ändern Sie im gleichen Eigenschaftenfenster **IP-Adresse** den Wert für **IP-Adressname**. Dieser IP-Adressname wird in der Variablen **$IPResourceName** des PowerShell-Skripts verwendet. Wiederholen Sie diesen Schritt für jede IP-Ressource, wenn die Lösung mehrere Azure-VNets umfasst.
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

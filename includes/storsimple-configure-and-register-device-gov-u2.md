@@ -122,8 +122,3 @@
        
         Stellen Sie sicher, dass Port 9354 für die ausgehende Kommunikation geöffnet ist, da dieser Port von Service Bus für die Kommunikation zwischen dem StorSimple Manager-Dienst und Geräten verwendet wird.
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -29,8 +29,3 @@ Zum Konfigurieren dieser Aktion müssen Sie die folgenden Informationen angeben.
 10. Speichern Sie die Änderungen am Workflow.  
 11. Herzlichen Glückwunsch, Sie verfügen nun über eine voll funktionsfähige Logik-App, die ausgelöst wird, wenn einer SharePoint Online-Liste ein neues Element hinzugefügt wird. Die App erstellt dann eine Datei. Dabei werden einige der Eigenschaften des neuen Listenelements verwendet.  Durch Erstellen eines neuen Elements in der SharePoint-Liste können Sie sie jetzt testen. 
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

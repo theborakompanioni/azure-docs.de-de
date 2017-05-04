@@ -55,8 +55,3 @@ Beispielroutentabelle im JSON-Format:
 * Weitere Informationen zu Routentabellen finden Sie in der [Referenzdokumentation zur REST-API](https://msdn.microsoft.com/library/azure/mt502549.aspx) .
 * Weitere Informationen zu benutzerdefinierten Routen finden Sie in der [Referenzdokumentation zur REST-API](https://msdn.microsoft.com/library/azure/mt502539.aspx) .
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -14,8 +14,3 @@
         ![Hinzufügen von Speicherkonten](./media/storsimple-ova-configure-new-storage-account/addnewstorageaccount-include.png)
 4. Das neu erstellte Speicherkonto wird auf der Seite **Konfigurieren** unter **Speicherkonten** angezeigt. 
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

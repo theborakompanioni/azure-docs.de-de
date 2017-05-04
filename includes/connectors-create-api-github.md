@@ -16,8 +16,3 @@ Hier finden Sie die Schritte zum Autorisieren Ihrer Logik-App für Verbindungen 
 5. Beachten Sie, dass die Verbindung im Portal erstellt wurde. Sie können nun mit dem Erstellen Ihrer Logik-App fortfahren und darin GitHub verwenden:   
    ![](./media/connectors-create-api-github/github-5.png)   
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -3,8 +3,3 @@ Bereitstellungsfehler treten beim Hochladen oder Erfassen eines generalisierten 
 
 In der folgenden Tabelle sind die möglichen Kombinationen von generalisierten und spezialisierten Images aufgeführt. Zudem werden die verschiedenen Fehlertypen und die Lösungen zum Beheben der Fehler beschrieben.
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

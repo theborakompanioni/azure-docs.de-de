@@ -15,8 +15,3 @@ Im Artikel wird vorausgesetzt, dass Sie sich im Portal bei Ihrem Abonnement ange
    
    ![Vergewissern Sie sich, dass die neue DNS-Bezeichnung festgelegt ist.](./media/virtual-machines-common-portal-create-fqdn/fqdnCreated.PNG)
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

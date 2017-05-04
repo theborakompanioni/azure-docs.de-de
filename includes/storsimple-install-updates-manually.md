@@ -8,8 +8,3 @@
    
     Sie werden benachrichtigt, wenn das Update erfolgreich installiert wurde.
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

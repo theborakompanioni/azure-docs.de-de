@@ -12,8 +12,3 @@
 8. Jetzt sollte der Listenername angezeigt werden, den Sie im Failovercluster-Manager erstellt haben. Klicken Sie mit der rechten Maustaste auf den Listenernamen, und klicken Sie auf **Eigenschaften**.
 9. Geben Sie mit dem zuvor verwendeten „$EndpointPort“ im Feld**Port** die Portnummer für den Verfügbarkeitsgruppenlistener an (in diesem Tutorial war 1433 der Standardwert), und klicken Sie dann auf **OK**.
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

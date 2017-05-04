@@ -15,8 +15,3 @@ Erstellt den Dienstplan zum Hosten der Web-App. Geben Sie den Namen des Plans ü
       }
     },
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

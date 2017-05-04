@@ -36,7 +36,3 @@ Azure Active Directory muss alle Aufgaben authentifizieren, die Sie mithilfe des
     ```
 
 [lnk-authenticate-arm]: https://msdn.microsoft.com/library/azure/dn790557.aspx
-
-<!--HONumber=Nov16_HO3-->
-
-

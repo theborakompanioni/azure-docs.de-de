@@ -15,8 +15,3 @@ Die Obergrenze für die maximale Anzahl von Diensten kann auf Anfrage angehoben 
 
 <sup>4</sup> Basic verfügt über eine feste Partition. Bei diesem Tarif werden zusätzliche SUs verwendet, um weitere Replikate für umfangreichere Abfrageworkloads zuzuordnen.
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

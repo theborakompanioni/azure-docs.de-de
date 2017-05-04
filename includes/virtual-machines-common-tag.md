@@ -42,8 +42,3 @@ Ihr neues Tag sollte jetzt in der Liste der Tags für die Ressource angezeigt we
 
 ![Neues gespeichertes Tag im Azure-Portal](./media/virtual-machines-common-tag/azure-portal-saved-new-tag.png)
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

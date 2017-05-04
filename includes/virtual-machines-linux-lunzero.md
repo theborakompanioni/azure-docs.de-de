@@ -19,8 +19,3 @@ Dieses Datenträgerverhalten ist kein Azure-Problem, sondern auf diese entsprich
 * Überprüfen Sie die Ausgabe von `lsscsi` nach dem Hinzufügen eines Datenträgers, um sicherzustellen, dass in LUN 0 ein Datenträger vorhanden ist.
 * Wenn der Datenträger nicht richtig in Ihrem virtuellen Computer angezeigt wird, überprüfen Sie, ob ein Datenträger in LUN 0 vorhanden ist.
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

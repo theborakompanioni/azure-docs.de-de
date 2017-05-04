@@ -9,8 +9,3 @@ Ein interner Load Balancer ist in einem virtuellen Netzwerk konfiguriert.
 * Zwei virtuelle Computer namens DB1 und DB2
 * Endpunkte
 * Interner Lastenausgleich
-
-
-<!--HONumber=Nov16_HO2-->
-
-

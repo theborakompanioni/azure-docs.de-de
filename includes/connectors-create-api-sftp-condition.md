@@ -10,8 +10,3 @@
 6. Wählen Sie auf der rechten Seite **Wert auswählen** aus, und geben Sie *ExtractMeFirst*ein. In diesem Beispiel ist „ExtractMeFirst“ ein Wert, der von Personen, die Zugriff auf den SFTP-Ordner haben, in einer Datei erwartet wird, um anzugeben, dass es sich um eine zu extrahierende Archivdatei handelt.  
    ![SFTP-Bedingung – Abbildung 5](./media/connectors-create-api-sftp/condition-5.png)   
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

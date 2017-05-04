@@ -7,8 +7,3 @@
 4. Deaktivieren Sie die Netzwerkschnittstelle, der ein Gateway zugeordnet ist, und speichern Sie die geänderte Konfiguration. Beachten Sie, dass die Netzwerkschnittstellen-Einstellungen beibehalten werden. Wenn Sie also diese Netzwerkschnittstelle später wieder aktivieren, stellt das Portal wieder die ursprünglichen Einstellungen her.
 5. Sie können nun [das klassische Azure-Portal zum Installieren von Update 1.2 verwenden](#install-update-12-via-the-azure-classic-portal). Befolgen Sie die Anleitung beginnend mit Schritt 3 dieses Verfahrens. Nachdem Sie alle Updates installiert haben, können Sie die deaktivierte Netzwerkschnittstelle wieder aktivieren.
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

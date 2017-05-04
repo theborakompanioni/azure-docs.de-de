@@ -18,8 +18,3 @@
 4. Klicken Sie auf das Häkchensymbol  ![Häkchensymbol](./media/storsimple-add-backup-policy-u2/HCS_CheckIcon-include.png) , um den Vorgang abzuschließen.
 5. Die Seite **Sicherungsrichtlinien** wird geöffnet. Die tabellarische Auflistung der Sicherungsrichtlinien wird aktualisiert, um die benutzerdefinierte Richtlinie anzuzeigen.
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

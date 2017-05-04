@@ -11,7 +11,7 @@ Dieser Artikel enthält eine Beschreibung aller drei Optionen.
 * [Verwenden von Azure Active Directory](#ad)
 * [Verwenden von Azure Active Directory Access Control](#ac)
 
-## <a name="a-nameadinvmarunning-windows-server-active-directory-in-virtual-machines"></a><a name="adinvm"></a>Ausführen von Windows Server Active Directory auf virtuellen Computern
+## <a name="adinvm"></a>Ausführen von Windows Server Active Directory auf virtuellen Computern
 Die Ausführung von Windows Server AD auf virtuellen Azure-Computern gleicht einer lokalen Ausführung. [Abbildung 1](#fig1) zeigt ein typisches Beispiel für diesen Fall.
 
 ![Azure Active Directory auf virtuellem Computer](./media/identity/identity_01_ADinVM.png)
@@ -36,7 +36,7 @@ Die Ausführung von Windows Server AD auf Azure-VMs kann in verschiedenen Szenar
 
 Es gibt weitere Möglichkeiten. So ist es beispielsweise nicht erforderlich, Windows Server AD in der Cloud mit einem lokalen Datencenter zu verbinden. Wenn Sie eine SharePoint-Farm für einen bestimmten Kreis von Benutzern ausführen möchten, die sich zum Beispiel alle nur mit cloudbasierten Identitäten anmelden, könnten Sie eine eigenständige Gesamtstruktur auf Azure erstellen. Wie Sie diese Technologie verwenden, hängt ganz von Ihrer Zielsetzung ab. (Eine ausführlichere Anleitung zur Verwendung von Windows Server AD mit Azure finden Sie [hier](http://msdn.microsoft.com/library/windowsazure/jj156090.aspx).)
 
-## <a name="a-nameadausing-azure-active-directory"></a><a name="ad"></a>Verwenden von Azure Active Directory
+## <a name="ad"></a>Verwenden von Azure Active Directory
 Da SaaS-Anwendungen immer häufiger eingesetzt werden, stellt sich folgende Frage: Welche Art von Verzeichnisdienst sollte für diese cloudbasierten Anwendungen verwendet werden? Die Antwort von Microsoft auf diese Frage ist Azure Active Directory.
 
 Für die Verwendung des Verzeichnisdienstes in der Cloud gibt es zwei Hauptoptionen:
@@ -73,7 +73,7 @@ Zur Verwendung von Azure AD melden sich die Benutzer zunächst wie gewohnt bei i
 
 Aktuell ist Azure AD kein vollständiger Ersatz für ein lokales Windows Server AD. Wie bereits erwähnt, ist das Schema des cloudbasierten Verzeichnisses viel einfacher; dazu fehlen Aspekte wie Gruppenrichtlinien, die Fähigkeit, Informationen über Computer zu speichern, und Unterstützung für LDAP. (Tatsächlich kann ein Windows-Computer nicht für eine Benutzeranmeldung unter ausschließlicher Verwendung von Azure AD konfiguriert werden – dieses Szenario wird nicht unterstützt.) Statt dessen bestehen die ursprünglichen Ziele von Azure AD darin, Unternehmensbenutzern den Zugriff auf Anwendungen in der Cloud ohne jeweils separate Anmeldung zu ermöglichen und lokalen Verzeichnisadministratoren das manuelle Synchronisieren des lokalen Verzeichnisses mit jeder von der Organisation genutzten SaaS-Anwendung abzunehmen. Es ist jedoch davon auszugehen, dass dieser Verzeichnisdienst für die Cloud im Laufe der Zeit breitere Anwendungsmöglichkeiten erhalten wird.
 
-## <a name="a-nameacausing-azure-active-directory-access-control"></a><a name="ac"></a>Verwenden von Azure Active Directory Access Control
+## <a name="ac"></a>Verwenden von Azure Active Directory Access Control
 Cloudbasierte Identitätstechnologien können eine ganze Reihe von Problemen lösen. Azure Active Directory kann beispielsweise Benutzern einer Organisation die einmalige Anmeldung für SaaS-Anwendungen einschließlich Office 365 ermöglichen. Aber Identitätstechnologien in der Cloud können noch auf vielfältige andere Weise eingesetzt werden.
 
 Stellen Sie sich etwa vor, dass die Benutzeranmeldung für eine Anwendung mithilfe von Token geschehen soll, die von mehreren *Identitätsanbietern (IdPs)*ausgegeben werden. Aktuell gibt es die verschiedensten Identitätsanbieter, darunter Facebook, Google, Microsoft und andere; Anwendungen gestatten häufig die Benutzeranmeldung mit einer dieser Identitäten. Weshalb sollte eine Anwendung sich die Mühe machen, ihre eigene Benutzer- und Kennwortliste zu pflegen, wenn sie statt dessen auf bereits existierende Identitäten zurückgreifen kann? Das Akzeptieren vorhandener Identitäten erleichtert den Benutzern das Leben, die sich eine Kombination aus Benutzername und Kennwort weniger merken müssen, und genauso den Anwendungsentwicklern, die keine eigenen Listen von Benutzernamen und Kennwörtern mehr pflegen müssen.
@@ -101,9 +101,4 @@ Das Arbeiten mit Identitäten ist für beinahe jede Anwendung wichtig. Das Ziel 
 
 ## <a name="about-the-author"></a>Zum Autor
 David Chappell ist Direktor von Chappell & Associates [www.davidchappell.com](http://www.davidchappell.com) in San Francisco, Kalifornien.
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

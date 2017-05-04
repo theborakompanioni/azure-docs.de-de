@@ -18,8 +18,3 @@
 | **Punkt-zu-Standort** |Unterstützt |Nicht unterstützt |
 | **Von klassisch zum Ressourcen-Manager** |Unterstützt |Nicht unterstützt |
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

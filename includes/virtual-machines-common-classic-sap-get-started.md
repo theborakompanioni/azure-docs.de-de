@@ -35,8 +35,3 @@ Aktualisierung: September 2015
 
 [Dieses Handbuch jetzt herunterladen](http://go.microsoft.com/fwlink/?LinkID=521971)
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

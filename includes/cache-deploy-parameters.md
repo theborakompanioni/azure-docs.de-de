@@ -55,8 +55,3 @@ Die Größe der neuen Azure Redis Cache-Instanz.
 
 Die Vorlage definiert die Werte, die für diesen Parameter zulässig sind (0, 1, 2, 3, 4, 5 oder 6), und weist einen Standardwert (1) zu, wenn kein Wert angegeben wird. Diese Zahlen entsprechen den folgenden Cachegrößen: 0 = 250 MB, 1 = 1 GB, 2 = 2,5 GB, 3 = 6 GB, 4 = 13 GB, 5 = 26 GB, 6 = 53 GB
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

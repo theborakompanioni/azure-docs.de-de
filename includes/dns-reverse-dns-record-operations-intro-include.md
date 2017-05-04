@@ -27,8 +27,3 @@ Azure unterstützt im Zusammenhang mit Reverse-DNS zwei separate Szenarien:
 Zur Unterstützung des ersten Szenarios können Sie mit Azure DNS Ihre ARPA-Zonen hosten und die PTR-Einträge für die einzelnen DNS-Reverse-Lookups verwalten.  Die Vorgehensweise zum Erstellen der ARPA-Zone, zum Einrichten der Delegierung und zum Konfigurieren der PTR-Einträge ist die gleiche wie bei regulären DNS-Zonen.  Einziger Unterschied: Die Delegierung muss über Ihren Internetdienstanbieter und nicht über Ihre DNS-Registrierungsstelle konfiguriert werden, und es darf nur der PTR-Eintragstyp verwendet werden.
 
 Zur Unterstützung des zweiten Szenarios ermöglicht Azure die Konfiguration des Reverse-Lookups für die IP-Adressen, die Ihrem Dienst zugeordnet sind.  Dieses Reverse-Lookup wird von Azure als PTR-Eintrag in der entsprechenden ARPA-Zone konfiguriert.  Diese ARPA-Zonen entsprechen allen von Azure verwendeten IP-Adressbereichen und werden von Microsoft gehostet. **Dieses Szenario wird im weiteren Verlauf des Artikels ausführlich beschrieben.**
-
-
-<!--HONumber=Nov16_HO3-->
-
-

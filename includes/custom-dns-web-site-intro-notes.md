@@ -8,8 +8,3 @@ Dieser Artikel bezieht sich auf Azure App Service (Web-Apps, API-Apps, mobile Ap
 > 
 > 
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

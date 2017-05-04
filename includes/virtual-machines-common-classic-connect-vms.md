@@ -25,8 +25,3 @@ So verbinden Sie virtuelle Computer in einem eigenständigen Clouddienst:
    
    ![Hinzufügen eines virtuellen Computers zu einem vorhandenen Clouddienst](./media/virtual-machines-common-classic-connect-vms/Connect-VM-to-CS.png)
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

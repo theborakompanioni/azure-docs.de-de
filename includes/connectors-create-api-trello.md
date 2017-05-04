@@ -16,8 +16,3 @@ Hier finden Sie die Schritte zum Autorisieren Ihrer Logik-App für Verbindungen 
 5. Beachten Sie, dass die Verbindung erstellt wurde und Sie nun mit anderen Schritten in Ihrer Logik-App fortfahren können:   
    ![](./media/connectors-create-api-trello/trello-5.png)
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

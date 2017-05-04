@@ -24,8 +24,3 @@ Die Datei mit Tresoranmeldeinformationen wird über einen sicheren Kanal aus dem
 * Die Datei mit den Tresoranmeldeinformationen läuft nach 48 Stunden ab und kann über das Portal heruntergeladen werden.
 * Bei Fragen zum Workflow finden Sie Informationen in den [häufig gestellten Fragen](../articles/backup/backup-azure-backup-faq.md) zu Azure Backup.
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

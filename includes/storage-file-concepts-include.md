@@ -30,8 +30,3 @@ Der Dateispeicher umfasst die folgenden Komponenten:
   `http://samples.file.core.windows.net/logs/CustomLogs/Log1.txt`
 
 Informationen zur Benennung von Freigaben, Verzeichnissen und Dateien finden Sie unter [Benennen und Referenzieren von Freigaben, Verzeichnissen, Dateien und Metadaten](http://msdn.microsoft.com/library/azure/dn167011.aspx).
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -14,8 +14,3 @@ Hier finden Sie die Schritte zum Autorisieren Ihrer Logik-App für Verbindungen 
 4. Beachten Sie, dass die Verbindung erstellt wurde und Sie nun mit anderen Schritten in Ihrer Logik-App fortfahren können:   
    ![Facebook: Schritt 4](./media/connectors-create-api-facebook/facebook-4.png)   
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

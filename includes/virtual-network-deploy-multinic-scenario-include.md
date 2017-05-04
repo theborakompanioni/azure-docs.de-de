@@ -3,8 +3,3 @@ Dieses Dokument wird eine Bereitstellung schrittweise erläutert, in der in eine
 
 ![Multi-NIC-Szenario](./media/virtual-network-deploy-multinic-scenario-include/Figure1.png)
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

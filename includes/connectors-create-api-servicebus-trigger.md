@@ -14,8 +14,3 @@ Hier erfahren Sie, wie Sie mithilfe des Triggers **Service Bus - When a message 
 
 Ihre Logik-App ist nun mit einem Trigger konfiguriert. Wenn bei der ausgewählten Warteschlange ein neues Element eingeht, startet der Trigger die anderen Trigger und Aktionen des Workflows.    
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

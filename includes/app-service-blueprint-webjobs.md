@@ -24,8 +24,3 @@
 * [Horizontales Skalieren von WebJobs](http://channel9.msdn.com/Shows/Azure-Friday/Azure-WebJobs-105-Scaling-out-Web-Jobs)
 * [Videos zu Azure WebJobs von Magnus Mårtensson](https://www.youtube.com/playlist?list=PLqp1ZOYYUSd81yEzMYLTw8cz91wx_LU9r)
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

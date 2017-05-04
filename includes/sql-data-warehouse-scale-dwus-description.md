@@ -14,8 +14,3 @@ Sie können die Computeressourcen durch Anpassen der Data Warehouse-Einheiten (D
 
 Eine Liste der aktuellen DWU-Einstellungen finden Sie im Servicelevel-Zielpunkt in [Kapazitätsgrenzen von SQL Data Warehouse](../articles/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

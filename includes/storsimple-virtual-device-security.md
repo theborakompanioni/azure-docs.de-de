@@ -6,8 +6,3 @@ Beachten Sie bei der Verwendung des virtuellen StorSimple-Geräts die folgenden 
 * Der öffentliche Schlüssel des Zertifikats zum Verschlüsseln von in Azure StorSimple gespeicherten Daten wird im klassischen Azure-Portal sicher zur Verfügung gestellt, und der private Schlüssel wird auf dem StorSimple-Gerät aufbewahrt. Auf dem virtuellen StorSimple-Gerät werden die öffentlichen und privaten Schlüssel in Azure gespeichert.
 * Das virtuelle Gerät wird im Microsoft Azure-Datencenter gehostet.
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

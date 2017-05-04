@@ -32,8 +32,3 @@ Nein. Azure unterstützt für jeden Azure-Clouddienst nur einen Reverse-DNS-Eint
 ### <a name="can-i-send-emails-to-external-domains-from-my-azure-compute-services"></a>Kann ich aus Azure Compute Services heraus E-Mails an externe Domänen senden?
 
 Nein. [Azure Compute Services unterstützt das Senden von E-Mails an externe Domänen nicht.](https://blogs.msdn.microsoft.com/mast/2016/04/04/sending-e-mail-from-azure-compute-resource-to-external-domains/)
-
-
-<!--HONumber=Nov16_HO3-->
-
-

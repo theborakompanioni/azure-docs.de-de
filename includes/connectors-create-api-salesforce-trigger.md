@@ -16,8 +16,3 @@ In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie den Trigger **Sale
 
 Jetzt haben Sie Ihre Logik-App mit einem Trigger konfiguriert, der eine Ausführung der anderen Trigger und Aktionen im Workflow startet, wenn ein neues Element in Salesforce erstellt wird.  
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

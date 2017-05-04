@@ -12,8 +12,3 @@ Weitere Informationen zu den Konfigurationsbeschränkungen von Azure Redis Cache
 
 Da die Konfiguration und Verwaltung von Azure Redis Cache-Instanzen von Microsoft übernommen wird, werden nicht alle Redis-Befehle in Azure Redis Cache unterstützt. Weitere Informationen finden Sie unter [Redis-Befehle, die nicht in Azure Redis Cache unterstützt werden]((redis-cache/cache-configure.md#redis-commands-not-supported-in-azure-redis-cache).
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

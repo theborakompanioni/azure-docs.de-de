@@ -2,8 +2,3 @@ Sie können eine Netzwerksicherheitsgruppe (NSG) verwenden, um in Ihrem virtuell
 
 Weitere Informationen zu NSGs finden Sie unter [Was ist eine NSG](../articles/virtual-network/virtual-networks-nsg.md).
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

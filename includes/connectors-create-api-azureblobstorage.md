@@ -26,8 +26,3 @@ Stellen Sie die Verbindung mit Ihrem Azure Blob Storage-Konto mit den folgenden 
    
     ![Schritt zur Erstellung der Azure Blob Storage-Verbindung](./media/connectors-create-api-azureblobstorage/azureblobstorage-3.png)  
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

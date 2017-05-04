@@ -71,8 +71,3 @@ Im Mobile Service-Scheduler können Sie das folgende Skript verwenden:
     });
 
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

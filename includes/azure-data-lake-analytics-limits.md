@@ -5,8 +5,3 @@ Mit Data Lake Analytics wird die Komplexität bei der Verwaltung verteilter Infr
 | Maximale Anzahl gleichzeitiger Aufträge |3 | |
 | Maximale Parallelität pro Konto |60 |Für drei Aufträge können Sie eine beliebige Kombination von bis zu maximal 60 Einheiten von Parallelität verwenden. |
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

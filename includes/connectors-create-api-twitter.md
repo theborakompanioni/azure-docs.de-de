@@ -16,8 +16,3 @@ Hier finden Sie die Schritte zum Autorisieren Ihrer Logik-App für Verbindungen 
 5. Beachten Sie, dass die Verbindung erstellt wurde und Sie nun mit den anderen Schritten in Ihrer Logik-App fortfahren können:  
    ![Twitter-Verbindung – Abbildung 4](./media/connectors-create-api-twitter/twitter-4.png)
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

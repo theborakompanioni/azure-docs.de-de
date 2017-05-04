@@ -8,8 +8,3 @@
    
     Beide Controller werden neu gestartet. Wenn der Neustart abgeschlossen ist, wird eine andere Meldung mit dem Hinweis angezeigt, dass das Gerät in den Normalmodus versetzt wird.
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

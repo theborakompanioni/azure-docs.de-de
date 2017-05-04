@@ -203,8 +203,3 @@ Ja. VNets und die standortübergreifende Konnektivität können mithilfe von RES
 ### <a name="is-there-tooling-support-for-vnets"></a>Sind Tools zur Unterstützung von VNets verfügbar?
 Ja. Sie können PowerShell und Befehlszeilentools für zahlreiche Plattformen verwenden. Weitere Informationen finden Sie [hier](http://go.microsoft.com/fwlink/?LinkId=317721).
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

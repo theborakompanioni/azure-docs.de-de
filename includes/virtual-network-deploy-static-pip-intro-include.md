@@ -2,8 +2,3 @@ Sie können virtuelle Maschinen (VMs) in Azure erstellen und sie unter Verwendun
 
 Bevor Sie statische öffentliche IP-Adressen in VMs implementieren können, müssen Sie wissen, wann Sie statische öffentliche IP-Adressen verwenden können und wie diese eingesetzt werden. Weitere Informationen zu IP-Adressen in Azure finden Sie unter [Übersicht über IP-Adressen](../articles/virtual-network/virtual-network-ip-addresses-overview-arm.md) .
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

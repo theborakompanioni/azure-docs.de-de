@@ -49,8 +49,3 @@ Data Factory unterstützt die folgenden CLS-konformen auf .NET basierenden Typwe
 
 Für "Datetime" und "Datetimeoffset" können Sie optional auch die Zeichenfolgen "culture" und "format" angeben, um das Analysieren Ihrer benutzerdefinierten "Datetime"-Zeichenfolge zu erleichtern. Nachstehend sehen Sie ein Beispiel einer Typumwandlung.
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

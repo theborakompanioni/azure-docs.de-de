@@ -16,8 +16,3 @@ Mit dieser Bedingung wird das Feld mit der E-Mail-Adresse für jeden neuen Sales
    ![Salesforce-Bedingung – Abbildung 7](./media/connectors-create-api-salesforce/condition-7.png)  
 8. Speichern Sie Ihre Logik-Apps.  
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

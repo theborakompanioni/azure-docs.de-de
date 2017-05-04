@@ -27,8 +27,3 @@ Beginnen wir nun mit dem Hinzufügen der Aktion, um die Dateien zu extrahieren, 
    ![Bedingung für eine SFTP-Aktion – Abbildung 13](./media/connectors-create-api-sftp/condition-13.png)   
 9. Speichern Sie die Änderungen am Workflow.  
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

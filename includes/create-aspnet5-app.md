@@ -5,8 +5,3 @@
 5. Wählen Sie unter **ASP.NET Core-Vorlagen** den Eintrag **Webanwendung** und dann **OK** aus.
 6. Heben Sie die Auswahl von **In der Cloud hosten**auf. Sie verwenden Docker als Bereitstellungslösung.
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -335,8 +335,3 @@ In diesem Abschnitt fügen Sie einen neuen Controller hinzu, über den Clientger
 [B15]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-notify-users15.PNG
 [B16]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-notify-users16.PNG
 [B18]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-notify-users18.PNG
-
-
-<!--HONumber=Nov16_HO3-->
-
-
