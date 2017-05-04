@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 04/20/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 52038c02901d49f787226ce629a1ca5942414e4a
-ms.lasthandoff: 04/20/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: a3052e53c642ef3e6d9bb0489476274987707f91
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -38,7 +38,7 @@ Erfahren Sie, wie Sie virtuelle Azure-Netzwerke mit HDInsight für die folgenden
 
 * Azure-Befehlszeilenschnittstelle 2.0: Weitere Informationen finden Sie unter [Install and Configure Azure CLI 2.0 (Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle 2.0)](https://docs.microsoft.com/cli/azure/install-az-cli2).
 
-* Azure PowerShell: Weitere Informationen finden Sie unter [Install and Configure Azure PowerShell (Installieren und Konfigurieren von Azure PowerShell)](https://docs.microsoft.com/powershell/azure/overview).
+* Azure PowerShell: Weitere Informationen finden Sie unter [Install and Configure Azure PowerShell (Installieren und Konfigurieren von Azure PowerShell)](/powershell/azure/overview).
 
 > [!NOTE]
 > Für die Schritte in diesem Dokument benötigen Sie die neueste Version der Azure-Befehlszeilenschnittstelle und die neueste Version von Azure PowerShell. Bei Verwendung einer älteren Version weichen die Befehle möglicherweise ab. Verwenden Sie am besten die oben bereitgestellten Links, um jeweils die neueste Version zu installieren.
