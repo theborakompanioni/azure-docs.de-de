@@ -62,7 +62,7 @@ Sie können das Vorhersageexperiment als neuen oder klassischen Webdienst bereit
 ### <a name="deploy-the-predictive-experiment-as-a-new-web-service"></a>Bereitstellen des Vorhersageexperiments als neuen Webdienst
 Nachdem das Vorhersageexperiment vorbereitet wurde, können Sie es neuen als Azure-Webdienst bereitstellen. Mithilfe des Webdiensts können Benutzer Daten an das Modell senden, und das Modell gibt seine Vorhersagen zurück.
 
-Um das Vorhersageexperiment bereitzustellen, klicken Sie unten im Experimentbereich auf **Run** . Sobald das Experiment ausgeführt wurde, klicken Sie auf **Deploy Web Service**, und wählen Sie **Deploy Web Service [New]** aus.  Die Bereitstellungsseite des Machine Learning Web Service-Portals wird geöffnet.
+Um das Vorhersageexperiment bereitzustellen, klicken Sie unten im Experimentbereich auf **Run** . Sobald das Experiment ausgeführt wurde, klicken Sie auf **Deploy Web Service**, und wählen Sie **Deploy Web Service [new]** aus.  Die Bereitstellungsseite des Machine Learning Web Service-Portals wird geöffnet.
 
 > [!NOTE] 
 > Zum Bereitstellen eines neuen Webdiensts müssen Sie über ausreichende Berechtigungen in dem Abonnement verfügen, an das Sie den Webdienst bereitstellen. Weitere Informationen finden Sie unter [Verwalten eines Webdiensts im Azure Machine Learning Web Services-Portal](machine-learning-manage-new-webservice.md). 
