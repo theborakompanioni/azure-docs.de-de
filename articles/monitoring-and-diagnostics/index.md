@@ -1,5 +1,5 @@
 ---
-title: "Dokumentation für die Azure-Überwachung und -Diagnose – Tutorials, API-Referenz | Microsoft-Dokumentation"
+title: "Azure Monitor-Dokumentation – Tutorials, API-Referenz | Microsoft-Dokumentation"
 description: "Hier erfahren Sie, wie Sie mithilfe von Überwachungs- und Diagnosediensten die Leistung überwachen, die Sicherheit gewährleisten und Trends erkennen. API-Referenzen, bewährte Methoden und mehr."
 services: monitoring-and-diagnostics
 author: carolz
@@ -13,12 +13,12 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: 0d57ccb26a3dde16c50d2e837d392ab8e6fea979
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: 475353f5a5abca1e9d6b5fdf4980d0cf33acc744
+ms.lasthandoff: 05/03/2017
 
 ---
-# <a name="monitoring-and-diagnostics-documentation"></a>Dokumentation zu Überwachung und Diagnose
+# <a name="azure-monitor-documentation"></a>Azure Monitor-Dokumentation
 
 Hier erfahren Sie, wie Sie mithilfe der Überwachungs- und Diagnosedienste von Azure die Leistung überwachen, die Sicherheit gewährleisten und Trends erkennen. In Tutorials, API-Referenzen, bewährten Methoden und anderem Dokumentationsmaterial werden die Verwendung von Überwachungs- und Diagnosefunktionen sowie die Vorgehensweise zur Planung und Bereitstellung skalierbarer, zuverlässiger Lösungen vermittelt.
 

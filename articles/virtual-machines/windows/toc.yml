@@ -4,7 +4,7 @@
   items:
   - name: "Informationen zu virtuellen Computern"
     href: overview.md
-- name: "Schnellstart"
+- name: "Schnellstarts"
   expanded: true
   items:
   - name: "Erstellen eines virtuellen Computers – Portal"
@@ -21,10 +21,19 @@
     href: tutorial-manage-data-disk.md
   - name: "3: Automatisieren der Konfiguration"
     href: tutorial-automate-vm-deployment.md
-  - name: "4: Lastenausgleich für virtuelle Computer"
+  - name: "4: Erstellen von VM-Images"
+    href: tutorial-custom-images.md
+  - name: "5: Hoch verfügbare virtuelle Computer"
+    href: tutorial-availability-sets.md
+  - name: "6: Erstellen einer VM-Skalierungsgruppe"
+    href: tutorial-create-vmss.md
+  - name: "7: Lastenausgleich für virtuelle Computer"
     href: tutorial-load-balancer.md
-  - name: "5: Verwalten von Netzwerken"
+  - name: "8: Verwalten von Netzwerken"
     href: tutorial-virtual-network.md
+  - name: "9: Verwalten der VM-Sicherheit"
+    href: tutorial-azure-security.md
+
 - name: "Beispiele"
   items:
   - name: "PowerShell"

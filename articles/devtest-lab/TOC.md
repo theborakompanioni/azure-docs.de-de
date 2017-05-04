@@ -1,36 +1,34 @@
 # Übersicht
 ## [Informationen zu Azure DevTest Labs](devtest-lab-overview.md)
 ## [Konzepte](devtest-lab-concepts.md)
+## Szenarien
+### [Verwenden von Labs zu Schulungszwecken](devtest-lab-training-lab.md)
 
 # Erste Schritte
 ## [Labs erstellen](devtest-lab-create-lab.md)
-## [Erstellen von Formeln](devtest-lab-create-formulas.md)
-## [Virtuellen Computer erstellen](devtest-lab-add-vm.md)
-## [Verwalten von allgemeinen Labrichtlinien](devtest-lab-get-started-with-lab-policies.md)
-## [Lab zu Schulungszwecken erstellen](devtest-lab-training-lab.md)
-## [Häufig gestellte Fragen](devtest-lab-faq.md)
+## [Erstellen Ihres ersten virtuellen Computers](devtest-lab-create-first-vm.md)
+## [Festlegen von Startrichtlinien](devtest-lab-get-started-with-lab-policies.md)
 
 # Anleitung
-## Verwalten von Labs
-### [Hinzufügen von Lab-Besitzern und -Benutzern](devtest-lab-add-devtest-user.md)
-### [Verwalten aller Labrichtlinien](devtest-lab-set-lab-policy.md)
-### [Gewähren von Berechtigungen für Richtlinien](devtest-lab-grant-user-permissions-to-specific-lab-policies.md)
-### [Konfigurieren des Kostenmanagements](devtest-lab-configure-cost-management.md)
-### [Konfigurieren virtueller Netzwerke](devtest-lab-configure-vnet.md)
-### [Grundlegendes zu freigegebenen IP-Adressen](devtest-lab-shared-ip.md)
-### [Automatisieren von Lab-Änderungen mithilfe von Vorlagen und PowerShell](devtest-lab-use-arm-and-powershell-for-lab-resources.md)
-
-## Verwalten von Artefakten
-### [Hinzufügen eines Artefaktrepositorys](devtest-lab-add-artifact-repo.md)
-### [Erstellen benutzerdefinierter Artefakte](devtest-lab-artifact-author.md)
-### [Verwalten von Artefakten](devtest-lab-add-vm-with-artifacts.md)
-
-## Verwalten von VM-Grundlagen und -Vorlagen
+## Verwenden von virtuellen Computern in einem Lab
+### [Erstellen virtueller Computer](devtest-lab-add-vm.md)
 ### [Erstellen von anforderbaren virtuellen Computern](devtest-lab-add-claimable-vm.md)
-### [Erstellen von Umgebungen mit mehreren virtuellen Computern und PaaS-Ressourcen mit Azure Resource Manager-Vorlagen](devtest-lab-create-environment-from-arm.md)
+
+## Verwenden von Umgebungen in einem Lab
+### [Erstellen einer Umgebung](devtest-lab-create-environment-from-arm.md)
+
+## Sicherer Zugriff auf Labs
+### [Hinzufügen von Lab-Besitzern und -Benutzern](devtest-lab-add-devtest-user.md)
+### [Anpassen der Berechtigungen mit benutzerdefinierten Rollen](devtest-lab-grant-user-permissions-to-specific-lab-policies.md)
+
+## Konfigurieren eines Labs
+### [Festlegen von Richtlinien und Zeitplänen](devtest-lab-set-lab-policy.md)
+### [Konfigurieren des Kostenmanagements](devtest-lab-configure-cost-management.md)
 ### [Konfigurieren von Marketplace-Images](devtest-lab-configure-marketplace-images.md)
-### [Vergleichen von Images und Formeln](devtest-lab-comparing-vm-base-image-types.md)
-### [Verwalten von Formeln](devtest-lab-manage-formulas.md)
+
+## [Auswählen benutzerdefinierter Images oder Formeln](devtest-lab-comparing-vm-base-image-types.md)
+
+## Verwalten benutzerdefinierter Images
 ### [Erstellen eines benutzerdefinierten Images von einem virtuellen Computer](devtest-lab-create-custom-image-from-vm-using-portal.md)
 ### [Erstellen eines benutzerdefinierten Images aus einer VHD mithilfe des Azure-Portals](devtest-lab-create-template.md)
 ### [Erstellen eines benutzerdefinierten Images aus einer VHD mithilfe von PowerShell](devtest-lab-create-custom-image-from-vhd-using-powershell.md)
@@ -38,9 +36,28 @@
 ### [Hochladen der VHD-Datei mithilfe von PowerShell](devtest-lab-upload-vhd-using-powershell.md)
 ### [Hochladen der VHD-Datei mithilfe des Speicher-Explorers](devtest-lab-upload-vhd-using-storage-explorer.md)
 
-# Ressourcen
+## Verwalten wiederverwendbarer Vorlagen
+### [Hinzufügen eines Git-Repositorys für Artefakte und Vorlagen](devtest-lab-add-artifact-repo.md)
+### [Erstellen benutzerdefinierter Artefakte](devtest-lab-artifact-author.md)
+### [Verwalten von Formeln](devtest-lab-manage-formulas.md)
+
+## Verwalten virtueller Netzwerke
+### [Konfigurieren virtueller Netzwerke](devtest-lab-configure-vnet.md)
+### [Auswählen einer IP-Konfigurationsoption](devtest-lab-shared-ip.md)
+
+# Referenz
+## [CLI 2.0](/cli/azure/lab)
+## [PowerShell](/powershell/module/azurerm.devtestlabs/#devtest_labs)
+### [Automatisches Erstellen oder Ändern von Labs](devtest-lab-use-arm-and-powershell-for-lab-resources.md)
+## [REST-API](https://docs.microsoft.com/rest/api/dtl/)
+## [Resource Manager-Vorlagen](https://github.com/Azure/azure-devtestlab/tree/master/Samples)
+
+
+# Verwandte Themen
+## [HÄUFIG GESTELLTE FRAGEN](devtest-lab-faq.md)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=devtest-lab)
-## [Preise](https://azure.microsoft.com/pricing/details/devtest-lab/)
 ## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDevTestLabs)
+## [Team-Blog](https://blogs.msdn.microsoft.com/devtestlab/)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-devtest-labs)
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab)
+## [Preise](https://azure.microsoft.com/pricing/details/devtest-lab/)

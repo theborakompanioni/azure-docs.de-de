@@ -29,15 +29,19 @@
 ### [Standort festlegen](resource-manager-template-location.md)
 ### [Tags zuweisen](resource-manager-template-tags.md)
 ### [Festlegen von Name und Typ der untergeordneten Ressource](resource-manager-template-child-resource.md)
+### [Aktualisieren von Ressourcen](resource-manager-update.md)
+### [Verwenden von Objekten für Parameter](resource-manager-objects-as-parameters.md)
 ### [Freigeben des Status für verknüpfte Vorlagen](best-practices-resource-manager-state.md)
 ### [Muster für das Entwerfen von Vorlagen](best-practices-resource-manager-design-templates.md)
 ## Bereitstellen
 ### PowerShell
 #### [Bereitstellen der Vorlage](resource-group-template-deploy.md)
 #### [Bereitstellen einer privaten Vorlage mit SAS-Token](resource-manager-powershell-sas-token.md)
+#### [Exportieren der Vorlage und erneutes Bereitstellen](resource-manager-export-template-powershell.md)
 ### Azure-Befehlszeilenschnittstelle
 #### [Bereitstellen der Vorlage](resource-group-template-deploy-cli.md)
 #### [Bereitstellen einer privaten Vorlage mit SAS-Token](resource-manager-cli-sas-token.md)
+#### [Exportieren der Vorlage und erneutes Bereitstellen](resource-manager-export-template-cli.md)
 ### [Portal](resource-group-template-deploy-portal.md)
 ### [REST-API](resource-group-template-deploy-rest.md)
 ### [Continuous Integration in Visual Studio Team Services](../vs-azure-tools-resource-groups-ci-in-vsts.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
@@ -72,7 +76,13 @@
 
 # Referenz
 ## [Vorlagenfunktionen](resource-group-template-functions.md)
-## [PowerShell](/powershell/resourcemanager/azurerm.resources/v3.5.0/azurerm.resources)
+### [Array- und Objektfunktionen](resource-group-template-functions-array.md)
+### [Vergleichsfunktionen](resource-group-template-functions-comparison.md)
+### [Bereitstellen von Funktionen](resource-group-template-functions-deployment.md)
+### [Numerische Funktionen](resource-group-template-functions-numeric.md)
+### [Ressourcenfunktionen](resource-group-template-functions-resource.md)
+### [Zeichenfolgenfunktionen](resource-group-template-functions-string.md)
+## [PowerShell](/powershell/module/azurerm.resources)
 ## [Azure 2.0 CLI](/cli/azure/resource)
 ## [.NET](/dotnet/api/microsoft.azure.management.resourcemanager)
 ## [Java](/java/api/com.microsoft.azure.management.resources)

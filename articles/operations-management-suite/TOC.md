@@ -30,6 +30,7 @@
 
 ## Verwenden von Lösungen
 ### [Verwaltungslösungen](operations-management-suite-solutions.md)
+### [Ziellösungen](operations-management-suite-solution-targeting.md)
 ### Insight + Analytics
 #### [AD-Bewertung](../log-analytics/log-analytics-ad-assessment.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [AD-Replikationsstatus](../log-analytics/log-analytics-ad-replication-status.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
@@ -58,6 +59,7 @@
 ### [Artikel zu Automation-Ressourcen](operations-management-suite-solutions-resources-automation.md)
 ### [Protokollsuchen und -warnungen](operations-management-suite-solutions-resources-searches-alerts.md)
 ### [Ansichten](operations-management-suite-solutions-resources-views.md)
+### [bewährten Methoden](operations-management-suite-solutions-best-practices.md)
 
 ## [Integrieren in OMS](operations-management-suite-integration.md)
 

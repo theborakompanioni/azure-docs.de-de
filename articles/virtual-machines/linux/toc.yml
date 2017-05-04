@@ -4,7 +4,7 @@
   items:
   - name: "Informationen zu virtuellen Computern"
     href: overview.md
-- name: "Schnellstart"
+- name: "Schnellstarts"
   expanded: true
   items:
   - name: "Erstellen eines virtuellen Computers – Azure-CLI"
@@ -31,6 +31,8 @@
     href: tutorial-load-balancer.md
   - name: "8: Verwalten von Netzwerken"
     href: tutorial-virtual-network.md
+  - name: "9: Verwalten der VM-Sicherheit"
+    href: tutorial-azure-security.md
 - name: "Beispiele"
   items:
   - name: "Azure-Befehlszeilenschnittstelle"

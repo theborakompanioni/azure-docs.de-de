@@ -9,14 +9,14 @@
 ## Schnellstarthandbücher
 ### [Erstellen einer iOS-App](active-directory-b2c-devquickstarts-ios.md)
 ### [Erstellen einer Android-App](active-directory-b2c-devquickstarts-android.md)
-### [Erstellen einer Node.js-Web-API](active-directory-b2c-devquickstarts-api-node.md)
-### [Erstellen einer .NET-Web-App](active-directory-b2c-devquickstarts-web-dotnet.md)
-#### [Registrieren von und Anmelden bei einer ASP.NET-Web-App](active-directory-b2c-devquickstarts-web-dotnet-susi.md)
+### Erstellen einer .NET-Web-App
+#### [Registrieren von und Anmelden bei einer .NET-Web-App](active-directory-b2c-devquickstarts-web-dotnet-susi.md)
+#### [Aufrufen einer Web-API über eine .NET-Web-App](active-directory-b2c-devquickstarts-web-api-dotnet.md)
 ### [Erstellen einer .NET-Web-API](active-directory-b2c-devquickstarts-api-dotnet.md)
-### [Erstellen einer Windows-Desktop-App](active-directory-b2c-devquickstarts-native-dotnet.md)
-### [Aufrufen einer Web-API über eine .NET-Web-App](active-directory-b2c-devquickstarts-web-api-dotnet.md)
+### [Erstellen einer Node.Js-Web-App](active-directory-b2c-devquickstarts-web-node.md)
+### [Erstellen einer Node.js-Web-API](active-directory-b2c-devquickstarts-api-node.md)
+### [Erstellen einer .NET-Desktop-App](active-directory-b2c-devquickstarts-native-dotnet.md)
 ### [Verwenden der Azure AD-Graph-API](active-directory-b2c-devquickstarts-graph-dotnet.md)
-### [Hinzufügen der Anmeldung zu einer Node JS-Web-App](active-directory-b2c-devquickstarts-web-node.md)
 ## [Häufig gestellte Fragen](active-directory-b2c-faqs.md)
 
 # Anleitung
@@ -53,7 +53,7 @@
 
 # Ressourcen
 ## [Preise](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
-## [Azure-Feedbackforum](http://feedback.azure.com/forums/169401-azure-active-directory)
+## [Azure AD B2C-Feedbackforum](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c)
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c) 
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=active-directory-b2c)
 ## [Unterstützung](active-directory-b2c-support.md)

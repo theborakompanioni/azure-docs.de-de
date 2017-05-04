@@ -11,12 +11,22 @@
 ## [Übersicht über die Lösung für verbundene Factorys](iot-suite-connected-factory-overview.md)
 ## [Exemplarische Vorgehensweise zur Remoteüberwachungslösung](iot-suite-remote-monitoring-sample-walkthrough.md)
 ## [Exemplarische Vorgehensweise zur Predictive Maintenance-Lösung](iot-suite-predictive-walkthrough.md)
+## [Herstellen einer Verbindung mit Raspberry Pi](iot-suite-raspberry-pi-kit-get-started.md)
+### Verwenden von C
+#### [Simulierte Daten](iot-suite-raspberry-pi-kit-c-get-started-simulator.md)
+#### [Verwenden echter Sensoren](iot-suite-raspberry-pi-kit-c-get-started-basic.md)
+#### [Implementieren eines Firmwareupdates](iot-suite-raspberry-pi-kit-c-get-started-advanced.md)
+### Verwenden von Node.js
+#### [Simulierte Daten](iot-suite-raspberry-pi-kit-node-get-started-simulator.md)
+#### [Verwenden echter Sensoren](iot-suite-raspberry-pi-kit-node-get-started-basic.md)
+#### [Implementieren eines Firmwareupdates](iot-suite-raspberry-pi-kit-node-get-started-advanced.md)
 
 # Anleitung
-## [Verbinden Ihres Geräts mit der Remoteüberwachungslösung (Windows)](iot-suite-connecting-devices.md)
-## [Verbinden Ihres Geräts mit der Remoteüberwachungslösung (Linux)](iot-suite-connecting-devices-linux.md)
-## [Verbinden Ihres Geräts mit der Remoteüberwachungslösung (mbed)](iot-suite-connecting-devices-mbed.md)
-## [Verbinden Ihres Geräts mit der Remoteüberwachungslösung (Node)](iot-suite-connecting-devices-node.md)
+## Verbinden eines simulierten Geräts
+### [C unter Windows](iot-suite-connecting-devices.md)
+### [C unter Linux](iot-suite-connecting-devices-linux.md)
+### [Node.js](iot-suite-connecting-devices-node.md)
+## [Verbinden Ihres mbed-Geräts](iot-suite-connecting-devices-mbed.md)
 ## [Verbinden einer Logik-App mit der Remoteüberwachungslösung](iot-suite-logic-apps-tutorial.md)
 ## [Anpassen vorkonfigurierter Lösungen](iot-suite-guidance-on-customizing-preconfigured-solutions.md)
 ## [Verwenden dynamischer Telemetriedaten mit der Remoteüberwachungslösung](iot-suite-dynamic-telemetry.md)

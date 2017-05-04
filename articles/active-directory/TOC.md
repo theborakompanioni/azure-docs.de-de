@@ -1,9 +1,9 @@
 # Übersicht
 ## [Was ist Azure Active Directory?](active-directory-whatis.md)
 ## [Wählen der Edition](active-directory-editions.md)
-## [Informationen zur Azure-Identitätsverwaltung](fundamentals-identity.md)
-## [Vorschau der Azure AD-Portalbenutzeroberfläche](active-directory-preview-explainer.md)
 
+## [Informationen zur Azure-Identitätsverwaltung](identity-fundamentals.md)
+## [Vorschau der Azure-Portal-Benutzeroberfläche](active-directory-preview-explainer.md)
 
 # Erste Schritte
 ## [Erhalten eines Azure AD-Mandanten](active-directory-howto-tenant.md)
@@ -58,6 +58,7 @@
 ### [Anzeigen aller Gruppen](active-directory-groups-view-azure-portal.md)
 ### [Aktivieren dedizierter Gruppen](active-directory-accessmanagement-dedicated-groups.md)
 ### [Hinzufügen des Gruppenzugriffs auf SaaS-Apps](active-directory-accessmanagement-group-saasapps.md)
+### [Wiederherstellen einer gelöschten Office 365-Gruppe](active-directory-groups-restore-azure-portal.md)
 ### Verwalten von Gruppeneinstellungen
 #### [Azure-Portal](active-directory-groups-settings-azure-portal.md)
 #### [Cmdlets](active-directory-accessmanagement-groups-settings-cmdlets.md)
@@ -110,24 +111,27 @@
 ##### [Unbekannte Quellen](active-directory-reporting-sign-ins-from-unknown-sources.md)
 ##### [Anomale Anmeldungen](active-directory-reporting-users-with-anomalous-sign-in-activity.md)
 
-## [Verwalten von Kennwörtern](active-directory-manage-passwords.md)
-### [Zurücksetzen oder Ändern des Kennworts](active-directory-passwords-update-your-own-password.md)
-### [Registrieren für die Self-Service-Kennwortzurücksetzung](active-directory-passwords-reset-register.md)
-### [Administratoren aktivieren die Self-Service-Kennwortzurücksetzung.](active-directory-passwords.md)
-### [Grundlegendes zur Kennwortverwaltung](active-directory-passwords-how-it-works.md)
-### [Grundlegendes zu Kennwortrichtlinien und -einschränkungen](active-directory-passwords-policy.md)
-### Zurücksetzen von Kennwörtern
+## [Verwalten von Kennwörtern](active-directory-passwords.md)
+### Benutzerdokumente
+#### [Zurücksetzen oder Ändern des Kennworts](active-directory-passwords-update-your-own-password.md)
+#### [Registrieren für die Self-Service-Kennwortzurücksetzung](active-directory-passwords-reset-register.md)
+### [Schnellstart: Self-Service-Kennwortzurücksetzung](active-directory-passwords-getting-started.md)
+### [Lizenzieren von SSPR](active-directory-passwords-licensing.md)
+### [Bereitstellen von SSPR](active-directory-passwords-best-practices.md)
+### IT-Administratoren: Zurücksetzen von Kennwörtern
 #### [Azure-Portal](active-directory-users-reset-password-azure-portal.md)
-#### [Klassisches Portal](active-directory-create-users-reset-password.md)
-### [Festlegen von Ablaufrichtlinien](active-directory-passwords-set-expiration-policy.md)
-### Aktivieren der Kennwortverwaltung
-#### [Erste Schritte](active-directory-passwords-getting-started.md)
-#### [Bereitstellen](active-directory-passwords-best-practices.md)
-#### [Anpassen](active-directory-passwords-customize.md)
-#### [Anzeigen von Berichten](active-directory-passwords-get-insights.md)
-#### [Weitere Informationen](active-directory-passwords-learn-more.md)
-#### [Häufig gestellte Fragen](active-directory-passwords-faq.md)
-#### [Problembehandlung](active-directory-passwords-troubleshoot.md)
+#### [Klassisches Azure-Portal](active-directory-create-users-reset-password.md)
+### [Grundlegendes zu SSPR-Richtlinien](active-directory-passwords-policy.md)
+### [Grundlegendes zur Kennwortzurücksetzung](active-directory-passwords-how-it-works.md)
+### [Anpassen von SSPR](active-directory-passwords-customize.md)
+### [Von SSPR verwendete Daten](active-directory-passwords-data.md)
+### [Berichte zu SSPR](active-directory-passwords-reporting.md)
+### [Azure AD Connect](./connect/active-directory-aadconnect.md)
+### [Kennwortrückschreiben](active-directory-passwords-writeback.md)
+### [Kennworthashsynchronisierung](./connect/active-directory-aadconnectsync-implement-password-synchronization.md#how-password-synchronization-works)
+### [Problembehandlung](active-directory-passwords-troubleshoot.md)
+### [HÄUFIG GESTELLTE FRAGEN](active-directory-passwords-faq.md)
+
 
 ## Verwalten von Geräten
 ### [Registrieren von Geräten](active-directory-device-registration-overview.md)
@@ -289,6 +293,7 @@
 ##### [PowerShell](role-based-access-control-manage-access-powershell.md)
 ##### [REST](role-based-access-control-manage-access-rest.md)
 #### [Problembehandlung](role-based-access-control-troubleshooting.md)
+#### [Ressourcenanbietervorgänge](role-based-access-control-resource-provider-operations.md)
 ### [Konfigurieren der Tokengültigkeitsdauer](active-directory-configurable-token-lifetimes.md)
 
 ## Schützen Ihrer Identitäten
@@ -341,7 +346,7 @@
 
 
 # Referenz
-## [PowerShell-Cmdlets](/powershell/ )
+## [PowerShell-Cmdlets](/powershell/azure/overview)
 ## [Java-API-Referenz](/java/api)
 ## [.NET API](/active-directory/adal/microsoft.identitymodel.clients.activedirectory)
 ## [Dienst- und andere Einschränkungen](active-directory-service-limits-restrictions.md)

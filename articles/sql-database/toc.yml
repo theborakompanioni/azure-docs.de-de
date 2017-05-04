@@ -4,7 +4,7 @@
   items:
   - name: "Informationen zu SQL-Datenbank"
     href: sql-database-technical-overview.md
-- name: "Schnellstart"
+- name: "Schnellstarts"
   expanded: true
   items:
   - name: "Erstellen einer Datenbank – Portal"
@@ -38,7 +38,9 @@
   - name: "1: Erstellen/Entwerfen einer neuen SQL-Datenbank"
     href: sql-database-design-first-database.md
   - name: "2: Migrieren einer vorhandenen SQL Server-Instanz"
-    href: sql-database-migrate-your-sql-server-database.md 
+    href: sql-database-migrate-your-sql-server-database.md
+  - name: "3: Sichern Ihrer SQL-Datenbank"
+    href: sql-database-security-tutorial.md 
 - name: "Beispiele"
   items:
   - name: "Azure-Befehlszeilenschnittstelle"
