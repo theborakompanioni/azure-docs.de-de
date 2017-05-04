@@ -85,7 +85,7 @@ Für Anwendungen, die im Jupyter-Notebook ausgeführt werden, können Sie die `%
 Der folgende Codeausschnitt zeigt, wie die Konfiguration für eine Anwendung geändert wird, die in Jupyter ausgeführt wird.
 
     %%configure
-    {"executorMemory": "3072M", "executorCores": 4, “numExecutors”:10}
+    {"executorMemory": "3072M", "executorCores": 4, "numExecutors":10}
 
 Konfigurationsparameter müssen als JSON-Zeichenfolge übergeben werden und in der nächsten Zeile nach dem Magic-Befehl stehen, wie in der Beispielspalte gezeigt.
 
