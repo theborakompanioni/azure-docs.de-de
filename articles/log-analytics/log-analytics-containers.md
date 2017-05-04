@@ -12,12 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 04/24/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 45b07f5dd29b7e920ac2abe6765020e0337ecf95
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: f5c5abc988cd363cafe8c07f83eb2686a83ee1a2
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -43,6 +43,10 @@ Es gibt ein paar Methoden für das Installieren und Verwenden von Docker mit OMS
 
 
 Sie können die unterstützten Versionen von Docker und Linux-Betriebssystemen für Ihren Containerhost auf [GitHub](https://github.com/Microsoft/OMS-docker) überprüfen.
+
+Wenn Sie über einen Kubernetes-Cluster verfügen, der den Azure Container Service nutzt, finden Sie unter [Überwachen eines Azure Container Service-Clusters mit Microsoft Operations Management Suite (OMS)](../container-service/container-service-kubernetes-oms.md) weitere Informationen.
+
+Wenn Sie über einen DC/OS-Cluster in Azure Container Service verfügen, finden Sie unter [Überwachen eines Azure Container Service-DC/OS-Clusters mit Operations Management Suite](../container-service/container-service-monitoring-oms.md) weitere Informationen.
 
 Weitere Informationen zum Installieren und Konfigurieren von Docker-Modulen auf Windows-Computern finden Sie im Artikel [Docker-Modul unter Windows](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon).
 

@@ -16,13 +16,16 @@ ms.workload: na
 ms.date: 03/29/2017
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 6a99749a96a6239428e5b018a26a6e8fd440c9d2
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: ba25cdee46ce4ceb5acd5ff9da683a057f2bd733
+ms.lasthandoff: 04/25/2017
 
 
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Verwenden von Power BI zum Visualisieren von Sensordaten in Azure IoT Hub in Echtzeit
+
+![Lückenloses Diagramm](media/iot-hub-get-started-e2e-diagram/4.png)
+
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
@@ -36,24 +39,15 @@ Sie erfahren, wie Sie mit Power BI von Azure IoT Hub empfangene Sensordaten in E
 - Erstellen und konfigurieren Sie einen Stream Analytics-Auftrag zum Übertragen von Daten von Ihrem IoT Hub zu Ihrem Power BI-Konto, und führen Sie ihn aus.
 - Erstellen und veröffentlichen Sie einen Power BI-Bericht zum Visualisieren der Daten.
 
-## <a name="what-you-need"></a>Voraussetzungen
+## <a name="what-you-need"></a>Erforderliches Element
 
-- Sie müssen das Tutorial [Verbinden von ESP8266 mit Azure IoT Hub](iot-hub-arduino-huzzah-esp8266-get-started.md) abgeschlossen haben, in dem die folgenden Voraussetzungen behandelt werden:
+- Abschluss des Tutorials [Einrichten Ihres Geräts](iot-hub-raspberry-pi-kit-node-get-started.md), in dem die folgenden Anforderungen behandelt werden:
   - Ein aktives Azure-Abonnement.
   - Ein Azure IoT Hub in Ihrem Abonnement.
   - Eine Clientanwendung, die Nachrichten an Ihren Azure IoT Hub sendet.
 - Ein Power BI-Konto. ([Power BI kostenlos testen](https://powerbi.microsoft.com/))
 
-## <a name="add-a-consumer-group-to-your-iot-hub"></a>Hinzufügen einer Consumergruppe zu Ihrem IoT Hub
-
-Consumergruppen werden von Anwendungen verwendet, um Daten aus Azure IoT Hub abzurufen. In dieser Lektion erstellen Sie eine Consumergruppe, die von einem Stream Analytics-Auftrag zum Lesen von Daten in Ihrem IoT Hub verwendet wird.
-
-Gehen Sie folgendermaßen vor, um Ihrem IoT Hub eine Consumergruppe hinzuzufügen:
-
-1. Öffnen Sie im [Azure-Portal](https://ms.portal.azure.com/) Ihren IoT-Hub.
-1. Klicken Sie im linken Bereich auf **Endpunkte**. Wählen Sie im mittleren Bereich **Ereignisse** aus. Geben Sie im rechten Bereich unter **Consumergruppen** einen Namen ein, und klicken Sie dann auf **Speichern**.
-
-   ![Erstellen einer Consumergruppe in Azure IoT Hub](media/iot-hub-live-data-visualization-in-power-bi/1_iot-hub-create-consumer-group-azure.png)
+[!INCLUDE [iot-hub-get-started-create-consumer-group](../../includes/iot-hub-get-started-create-consumer-group.md)]
 
 ## <a name="create-configure-and-run-a-stream-analytics-job"></a>Erstellen, Konfigurieren und Ausführen eines Stream Analytics-Auftrags
 

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: e1563db23e687f772eaff2e90ce9853c9d8b87de
-ms.openlocfilehash: f87df28a5a44b7ab3c1d9a48d43c8d1354c48830
-ms.lasthandoff: 11/23/2016
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 8df9fbf4b09cb63cafc9d43592edc68068a28f14
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -47,6 +47,9 @@ Data Science umfasst Iterationen einer Sequenz von Aufgaben: Suchen, Laden und V
 Mit der Microsoft Data Science Virtual Machine können Sie gleich mit Ihrem Analyseprojekt loslegen. Sie können in verschiedenen Sprachen arbeiten, z.B. R, Python, SQL und C++. Visual Studio bietet eine benutzerfreundliche IDE zum Entwickeln und Testen von Code. Mit dem Azure SDK der VM können Sie Ihre Anwendungen mit verschiedenen Diensten auf der Cloudplattform von Microsoft erstellen. 
 
 Für dieses Data Science VM-Image fallen keine Softwaregebühren an. Sie zahlen nur die Azure-Nutzungsgebühren, die von der Größe des virtuellen Computers abhängen, die Sie bereitstellen. Weitere Informationen zu den Compute-Gebühren finden Sie auf der Seite [Data Science Virtual Machine](https://azure.microsoft.com/marketplace/partners/microsoft-ads/standard-data-science-vm/) im Abschnitt „Preisübersicht“. 
+
+## <a name="other-versions-of-the-data-science-virtual-machine"></a>Andere Versionen der Data Science Virtual Machine
+Ein [CentOS](machine-learning-data-science-linux-dsvm-intro.md)-Image ist ebenfalls verfügbar, das viele gleiche Tools wie das Windows-Image bietet. Ein [Ubuntu](machine-learning-data-science-dsvm-ubuntu-intro.md)-Image ist ebenfalls verfügbar, das viele ähnliche Tools sowie umfangreiche Lerngerüste bietet.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie eine Microsoft Data Science Virtual Machine erstellen können, benötigen Sie Folgendes:

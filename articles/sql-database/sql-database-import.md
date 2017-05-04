@@ -16,9 +16,9 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 3602a1a5f281bec79937dc20e44f447527be8377
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: e0bfa7620feeb1bad33dd2fe4b32cb237d3ce158
+ms.openlocfilehash: 8ef393e414559ed6c7a2a3b41a0c8cf060f8d4da
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -44,7 +44,7 @@ Wenn Sie eine Datenbank aus einem Archiv importieren müssen oder eine Migration
 
 In diesem Artikel wird beschrieben, wie Sie das [Azure-Portal](https://portal.azure.com) verwenden, um eine Azure SQL-Datenbank aus einer BACPAC-Datei erstellen, die im Azure Blob Storage gespeichert ist. Der Import über das Azure-Portal unterstützt nur das Importieren einer BACPAC-Datei aus dem Azure Blob Storage.
 
-Zum Importieren einer Datenbank über das Azure-Portal öffnen Sie die Seite für Ihre Datenbank, und klicken Sie auf der Symbolleiste auf **Importieren**. Geben Sie den Dateinamen im Format „*.bacpac“, das Azure Storage-Konto und den Container für die BACPAC-Datei sowie die Anmeldeinformationen für die Verbindung mit der Quelldatenbank an.  
+Zum Importieren einer Datenbank über das Azure-Portal öffnen Sie die Seite für Ihre Datenbank, und klicken Sie auf der Symbolleiste auf **Importieren**. Geben Sie das Speicherkonto und den Container an, und wählen Sie die BACPAC-Datei aus, die Sie importieren möchten. Wählen Sie die Größe der neuen Datenbank (in der Regel identisch mit dem Ursprung) aus, und geben Sie die SQL Server-Anmeldeinformationen für das Ziel an.  
 
    ![Datenbankimport](./media/sql-database-import/import.png)
 

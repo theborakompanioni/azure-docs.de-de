@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 04/07/2017
 ms.author: subramar
 translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 3fa7b8d053d0193352776e94d2ab4796ba05e166
-ms.lasthandoff: 04/07/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 2b1b12666b71bf173342d5864772a94b9625d38b
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -41,7 +41,9 @@ Durch Auswahl von **Veröffentlichen** wird ein Popupfenster geöffnet. Sie kön
 
 ![Veröffentlichen einer Service Fabric-Anwendung][image2]
 
-Sie können nun im Dialogfeld auf **Veröffentlichen** klicken. Nun können Sie in [Service Fabric Explorer den Cluster und die Anwendung anzeigen](service-fabric-visualizing-your-cluster.md). Die Anwendung „Visual Objects“ enthält einen Webdienst, zu dem Sie in Ihrem Browser wechseln können, indem Sie in die Adressleiste [http://localhost:8082/visualobjects/](http://localhost:8082/visualobjects/) eingeben.  Sie sollten 10 unverankerte visuelle Objekte sehen, die sich auf dem Bildschirm bewegen.
+Sie können nun im Dialogfeld auf **Veröffentlichen** klicken. Nun können Sie in [Service Fabric Explorer den Cluster und die Anwendung anzeigen](service-fabric-visualizing-your-cluster.md). Die Anwendung „Visual Objects“ enthält einen Webdienst, zu dem Sie in Ihrem Browser wechseln können, indem Sie in die Adressleiste [http://localhost:8081/visualobjects/](http://localhost:8081/visualobjects/) eingeben.  Sie sollten 10 unverankerte visuelle Objekte sehen, die sich auf dem Bildschirm bewegen.
+
+**HINWEIS:** Bei Bereitstellen im Profil `Cloud.xml` (Azure Service Fabric) sollte die Anwendung unter **http://{ServiceFabricName}.{Region}.cloudapp.azure.com:8081/visualobjects/** verfügbar sein. Stellen Sie sicher, dass Sie `8081/TCP` im Load Balancer konfiguriert haben (der Load Balancer befindet sich in derselben Ressourcengruppe wie die Service Fabric-Instanz).
 
 ## <a name="step-2-update-the-visual-objects-sample"></a>Schritt 2: Aktualisieren des Beispiels „Visual Objects“
 Sie werden feststellen, dass sich die visuellen Objekte mit der Version, die in Schritt 1 bereitgestellt wurde, nicht drehen. Wir aktualisieren diese Anwendung so, dass sich die visuellen Objekte drehen.

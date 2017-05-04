@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
-ms.openlocfilehash: 90b7e2f7f5327684f173bd7e10f21e65bea8fbe7
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 84bd62ae17b7f7ba4cd815ef1f9880679607ebce
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -52,7 +53,7 @@ Folgende Schritte sind zum Aktualisieren des Anwendungsgateways erforderlich:
 * **Einstellungen für den Back-End-Serverpool:** Jeder Pool weist Einstellungen wie Port, Protokoll und cookiebasierte Affinität auf. Diese Einstellungen sind an einen Pool gebunden und gelten für alle Server innerhalb des Pools.
 * **Front-End-Port:** Dieser Port ist der öffentliche Port, der im Application Gateway geöffnet ist. Datenverkehr erreicht diesen Port und wird dann an einen der Back-End-Server umgeleitet.
 * **Listener:** Der Listener verfügt über einen Front-End-Port, ein Protokoll („Http“ oder „Https“; jeweils unter Beachtung der Groß-/Kleinschreibung) und den Namen des SSL-Zertifikats (falls die SSL-Auslagerung konfiguriert wird). Bei Anwendungsgateways, die mehrere Websites hosten können, werden zudem der Hostname und SNI-Indikatoren hinzugefügt.
-* **Regel:** Mit der Regel werden der Listener und der Back-End-Serverpool verbunden, und es wird definiert, an welchen Back-End-Serverpool der Datenverkehr geleitet werden soll, wenn er einen bestimmten Listener erreicht.
+* **Regel:** Mit der Regel werden der Listener und der Back-End-Serverpool verbunden, und es wird definiert, an welchen Back-End-Serverpool der Datenverkehr geleitet werden soll, wenn er einen bestimmten Listener erreicht. Regeln werden in der Reihenfolge verarbeitet, in der sie aufgeführt sind, wobei Datenverkehr gemäß der ersten erfüllten Regel unabhängig von der Spezifizität geleitet wird. Wenn Sie beispielsweise eine Regel mit einem einfachen Listener und eine Regel mit einem Listener für mehrere Standorte auf demselben Port aktiviert haben, muss die Regel mit dem Listener für mehrere Standorte vor der Regel mit dem einfachen Listener aufgeführt sein, damit die Regel für mehrere Standorte wie erwartet funktioniert. 
 * **Zertifikate:** Für jeden Listener ist ein eindeutiges Zertifikat erforderlich, in diesem Beispiel werden 2 Listener für Multisite erstellt. Zwei PFX-Zertifikate und Kennwörter müssen dafür erstellt werden.
 
 ## <a name="create-back-end-pools-for-each-site"></a>Erstellen von Back-End-Pools für jede Website
@@ -118,7 +119,7 @@ Füllen Sie das Regelblatt wie in der folgenden Abbildung dargestellt aus. Wähl
 
 ### <a name="step-3"></a>Schritt 3
 
-Klicken Sie auf **Basic rule** (Basisregel), um die&2;. Regel zu erstellen. Füllen Sie das Formular mit dem zweiten Listener und dem zweiten Back-End-Pool aus, und klicken Sie zum Speichern auf **OK**.
+Klicken Sie auf **Basic rule** (Basisregel), um die 2. Regel zu erstellen. Füllen Sie das Formular mit dem zweiten Listener und dem zweiten Back-End-Pool aus, und klicken Sie zum Speichern auf **OK**.
 
 ![Blatt „einfache Regel hinzufügen“][10]
 
@@ -140,9 +141,4 @@ Erfahren Sie unter [Web Application Firewall für Application Gateway](applicati
 [9]: ./media/application-gateway-create-multisite-portal/figure9.png
 [10]: ./media/application-gateway-create-multisite-portal/figure10.png
 [multisite]: ./media/application-gateway-create-multisite-portal/multisite.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

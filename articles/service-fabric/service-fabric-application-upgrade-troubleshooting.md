@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 03/02/2017
 ms.author: subramar
 translationtype: Human Translation
-ms.sourcegitcommit: 5e4aebee48754f1f6762898d9571a4fff7d7283e
-ms.openlocfilehash: 2149bcf588b019a0c0f3c64a4e39fec9b9bc5925
-ms.lasthandoff: 11/17/2016
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: 7fc832ff23f5ad652df3cb9c689180c92952ba8e
+ms.lasthandoff: 04/26/2017
 
 
 ---
@@ -187,7 +187,7 @@ Das Upgrade wird ab der Upgradedomäne fortgesetzt, in der es zuletzt angehalten
 ### <a name="service-fabric-is-not-following-the-specified-health-policies"></a>Service Fabric befolgt nicht die angegebenen Integritätsrichtlinien
 Mögliche Ursache 1:
 
-Service Fabric übersetzt für die Integritätsevaluierung alle Prozentsätze in die tatsächliche Anzahl der Entitäten (z. B. Replikate, Partitionen und Dienste) und rundet immer auf ganze Zahlen auf. Wenn für *MaxPercentUnhealthyReplicasPerPartition* beispielsweise maximal 21 % angegeben wurde und fünf Replikate vorhanden sind, lässt Service Fabric bis zu zwei fehlerhafte Replikate zu (d.h. Math.Ceiling [5\*0,21]). Integritätsrichtlinien müssen also entsprechend festgelegt werden.
+Service Fabric übersetzt für die Integritätsevaluierung alle Prozentsätze in die tatsächliche Anzahl der Entitäten (z. B. Replikate, Partitionen und Dienste) und rundet immer auf ganze Zahlen auf. Wenn für *MaxPercentUnhealthyReplicasPerPartition* beispielsweise maximal 21 % angegeben wurde und fünf Replikate vorhanden sind, lässt Service Fabric bis zu zwei fehlerhafte Replikate zu (d.h. `Math.Ceiling (5*0.21)`). Integritätsrichtlinien müssen also entsprechend festgelegt werden.
 
 Mögliche Ursache 2:
 
@@ -222,7 +222,4 @@ Steuern Sie die Upgrades von Anwendungen mithilfe von [Upgradeparametern](servic
 Machen Sie Ihre Anwendungsupgrades kompatibel, indem Sie sich mit der [Datenserialisierung](service-fabric-application-upgrade-data-serialization.md)vertraut machen.
 
 Informieren Sie sich in [weiterführenden Themen](service-fabric-application-upgrade-advanced.md)darüber, wie Sie erweiterte Funktionen beim Upgrade Ihrer Anwendung nutzen.
-
-Informationen zum Beheben gängiger Probleme bei Anwendungsupgrades finden Sie in den Anweisungen unter [Problembehandlung bei Anwendungsupgrades](service-fabric-application-upgrade-troubleshooting.md).
-
 

@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 01/05/2017
 ms.author: mfussell
 translationtype: Human Translation
-ms.sourcegitcommit: f7edee399717ecb96fb920d0a938da551101c9e1
-ms.openlocfilehash: 469f37362fa0ebe39367a66df8a27e71e762a9d5
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: ce1291261cd8f65d44873217345ae6efaa515534
+ms.lasthandoff: 04/26/2017
 
 
 ---
@@ -26,7 +26,7 @@ Durch Verwenden von Azure Service Fabric können Sie Anwendungen sichern, die im
 
 Standardmäßig werden Service Fabric-Anwendungen unter dem Konto ausgeführt, unter dem der Prozess „Fabric.exe“ ausgeführt wird. Darüber hinaus bietet Service Fabric die Möglichkeit zur Ausführung von Anwendungen in einem lokalen Benutzer- oder Systemkonto, das im Manifest der Anwendung angegeben wird. Unterstützte lokale Systemkontotypen sind **LocalUser**, **NetworkService**, **LocalService** und **LocalSystem**.
 
- Wenn Sie Service Fabric unter Windows Server in Ihrem Rechenzentrum mithilfe des eigenständigen Installers ausführen, können Sie Active Directory-Domänenkonten verwenden.
+ Wenn Sie Service Fabric unter Windows Server in Ihrem Rechenzentrum mithilfe des eigenständigen Installers ausführen, können Sie Active Directory-Domänenkonten einschließlich gruppenverwalteter Dienstkonten verwenden.
 
 Sie können Benutzergruppen definieren und erstellen und dann jeder Gruppe Benutzer zur gemeinsamen Verwaltung hinzufügen. Dies ist nützlich, wenn es für verschiedene Diensteinstiegspunkte mehrere Benutzer gibt, die auf Gruppenebene bestimmte allgemeine Berechtigungen benötigen.
 
@@ -290,7 +290,44 @@ Sie müssen den privaten Schlüssel des Zertifikats zum Entschlüsseln des Kennw
 </Policies>
 <Certificates>
 ```
+### <a name="use-a-group-managed-service-account"></a>Verwenden Sie ein gruppenverwaltetes Dienstkonto.
+Für eine Service Fabric-Instanz, die mit dem eigenständigen Installer unter Windows Server installiert wurde, können Sie den Dienst als gruppenverwaltetes Dienstkonto ausführen. Hinweis: Dies bezieht sich auf eine lokale Active Directory-Instanz in Ihrer Domäne, nicht auf Azure Active Directory (Azure AD). Bei Verwenden eines gruppenverwalteten Dienstkontos gibt es kein Kennwort bzw. verschlüsseltes Kennwort, das in `Application Manifest` gespeichert wird.
 
+Im folgende Beispiel wird gezeigt, wie ein gruppenverwaltetes Dienstkonto namens *svc-Test$* erstellt, dieses verwaltete Dienstkonto auf Clusterknoten bereitgestellt und der Benutzerprinzipal konfiguriert wird.
+
+##### <a name="prerequisites"></a>Voraussetzungen
+- Die Domäne benötigt einen KDS-Stammschlüssel.
+- Die Domäne muss die Funktionsebene Windows Server 2012 oder höher aufweisen.
+
+##### <a name="example"></a>Beispiel
+1. Bitten Sie einen Active Directory-Domänenadministrator, mit dem Cmdlet `New-ADServiceAccount` ein gruppenverwaltetes Dienstkonto zu erstellen. Stellen Sie sicher, dass `PrincipalsAllowedToRetrieveManagedPassword` alle Service Fabric-Clusterknoten enthält. Beachten Sie, dass `AccountName`, `DnsHostName` und `ServicePrincipalName` eindeutig sein müssen.
+```
+New-ADServiceAccount -name svc-Test$ -DnsHostName svc-test.contoso.com  -ServicePrincipalNames http/svc-test.contoso.com -PrincipalsAllowedToRetrieveManagedPassword SfNode0$,SfNode1$,SfNode2$,SfNode3$,SfNode4$
+```
+2. Installieren und testen Sie auf jedem Service Fabric-Clusterknoten (z.B. `SfNode0$,SfNode1$,SfNode2$,SfNode3$,SfNode4$`) die gruppenverwalteten Dienstkonten.
+```
+Add-WindowsFeature RSAT-AD-PowerShell
+Install-AdServiceAccount svc-Test$
+Test-AdServiceAccount svc-Test$
+```
+3. Konfigurieren Sie den Benutzerprinzipal, und konfigurieren Sie die RunAsPolicy, um den Benutzer zu verweisen.
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="MyApplicationType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+   <ServiceManifestImport>
+      <ServiceManifestRef ServiceManifestName="MyServiceTypePkg" ServiceManifestVersion="1.0.0" />
+      <ConfigOverrides />
+      <Policies>
+         <RunAsPolicy CodePackageRef="Code" UserRef="DomaingMSA"/>
+      </Policies>
+   </ServiceManifestImport>
+  <Principals>
+    <Users>
+      <User Name="DomaingMSA" AccountType="ManagedServiceAccount" AccountName="domain\svc-Test$"/>
+    </Users>
+  </Principals>
+</ApplicationManifest>
+```
 
 ## <a name="assign-a-security-access-policy-for-http-and-https-endpoints"></a>Zuweisen einer Sicherheitszugriffsrichtlinie für HTTP- und HTTPS-Endpunkte
 Wenn Sie eine RunAs-Richtlinie auf einen Dienst anwenden und im Dienstmanifest Endpunktressourcen mit dem HTTP-Protokoll deklariert sind, müssen Sie eine **SecurityAccessPolicy** angeben. Diese Richtlinie soll sicherstellen, dass Ports, die diesen Endpunkten zugeordnet sind, richtig auf der Zugriffssteuerungsliste für das RunAs-Benutzerkonto eingetragen sind, in dem der Dienst ausgeführt wird. Andernfalls hat **http.sys** keinen Zugriff auf den Dienst, sodass beim Aufrufen vom Client Fehler auftreten. Im folgenden Beispiel wird das Customer3-Konto auf den Endpunkt **ServiceEndpointName** angewendet, und es werden vollständige Zugriffsrechte gewährt.

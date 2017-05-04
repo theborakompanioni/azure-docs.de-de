@@ -1,28 +1,26 @@
 ---
-title: "Ereignis zum Starten der Größenänderung von Pools: Azure | Microsoft-Dokumentation"
-ms.custom: 
-ms.date: 2017-02-01
-ms.prod: azure
-ms.reviewer: 
-ms.service: batch
-ms.suite: 
-ms.tgt_pltfrm: 
-ms.topic: reference
-ms.assetid: 8bd33e8b-6390-4a34-95dc-2e63d8bce941
-caps.latest.revision: 6
+title: "Azure Batch: Ereignis zum Starten der Größenänderung von Pools | Microsoft-Dokumentation"
+description: "Referenz zum Batch-Ereignis zum Starten der Größenänderung von Pools."
+services: batch
 author: tamram
-ms.author: tamram
 manager: timlt
+ms.assetid: 
+ms.service: batch
+ms.devlang: multiple
+ms.topic: article
+ms.tgt_pltfrm: vm-windows
+ms.workload: big-compute
+ms.date: 04/20/2017
+ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 5064d86063251aeed22688d8fac133c4be1a88f8
-ms.lasthandoff: 04/13/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: 826cd984d26b923ba38562e05a2e75c399be9121
+ms.lasthandoff: 04/22/2017
 
 ---
-# <a name="pool-resize-start-event"></a>Ereignis zum Starten der Größenänderung von Pools: Azure
-Text des Protokolls zum Starten der Größenänderung von Pools
 
-## <a name="remarks"></a>Anmerkungen
+# <a name="pool-resize-start-event"></a>Ereignis zum Starten der Größenänderung von Pools: Azure
+
  Dieses Ereignis wird ausgegeben, wenn die Größenänderung eines Pools gestartet wurde. Da das Ändern der Größe des Pools ein asynchrones Ereignis ist, können Sie damit rechnen, dass ein Ereignis zum Abschluss der Größenänderung von Pools ausgegeben wird, sobald der Größenänderungsvorgang abgeschlossen ist.
 
  Das folgende Beispiel zeigt den Text eines Ereignisses zum Starten der Größenänderung von Pools für einen Pool, der manuell von 0 auf 2 Knoten vergrößert wurde.

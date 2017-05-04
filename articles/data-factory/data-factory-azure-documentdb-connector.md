@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 04/19/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: e0cd1eb986e137e1e8877286b2efe9a6924da931
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: d5e13e6a96828e7c303e4d870ee170b90a0c4308
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -30,7 +30,7 @@ Sie können Daten aus einem beliebigen unterstützten Quelldatenspeicher in Azur
 > Das Kopieren von Daten aus lokalen/Azure IaaS-Datenspeichern in Azure DocumentDB und umgekehrt wird ab Version 2.1 des Datenverwaltungsgateways unterstützt.
 
 ## <a name="supported-versions"></a>Unterstützte Versionen
-Dieser DocumentDB-Connector unterstützt das Kopieren von Daten aus/in einzelne DocumentDB-Partitionssammlungen und partitionierte Sammlungen. [DocDB für MongoDB](../documentdb/documentdb-protocol-mongodb.md) wird nicht unterstützt.
+Dieser DocumentDB-Connector unterstützt das Kopieren von Daten aus/in einzelne DocumentDB-Partitionssammlungen und partitionierte Sammlungen. [DocDB für MongoDB](../documentdb/documentdb-protocol-mongodb.md) wird nicht unterstützt. Informationen zum Kopieren von Daten in/aus JSON-Dateien oder eine andere DocumentDB-Sammlung finden Sie unter [Importieren oder Exportieren von JSON-Dokumenten](#importexport-json-documents).
 
 ## <a name="getting-started"></a>Erste Schritte
 Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools/APIs in und aus Azure DocumentDB verschiebt.
@@ -41,9 +41,9 @@ Sie können auch die folgenden Tools für das Erstellen einer Pipeline verwenden
 
 Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden Schritte aus, um eine Pipeline zu erstellen, die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher verschiebt: 
 
-1. Erstellen **verknüpfter Dienste** zum Verknüpfen von Eingabe- und Ausgabedatenspeichern mit Ihrer Data Factory
-2. Erstellen von **Datasets** zur Darstellung von Eingabe- und Ausgabedaten für den Kopiervorgang 
-3. Erstellen einer **Pipeline** mit einer Kopieraktivität, die ein Dataset als Eingabe und ein Dataset als Ausgabe akzeptiert 
+1. Erstellen **verknüpfter Dienste** zum Verknüpfen von Eingabe- und Ausgabedatenspeichern mit Ihrer Data Factory.
+2. Erstellen von **Datasets** zur Darstellung von Eingabe- und Ausgabedaten für den Kopiervorgang. 
+3. Erstellen einer **Pipeline** mit einer Kopieraktivität, die ein Dataset als Eingabe und ein Dataset als Ausgabe akzeptiert. 
 
 Wenn Sie den Assistenten verwenden, werden automatisch JSON-Definitionen für diese Data Factory-Entitäten (verknüpfte Diensten, Datasets und die Pipeline) erstellt. Bei Verwendung von Tools und APIs (mit Ausnahme der .NET-API) definieren Sie diese Data Factory-Entitäten im JSON-Format.  Beispiele mit JSON-Definitionen für Data Factory-Entitäten für das Kopieren von Daten in und aus DocumentDB finden Sie in diesem Artikel im Abschnitt [JSON-Beispiele](#json-examples). 
 
@@ -115,6 +115,17 @@ Wenn „source“ bei der Kopieraktivität den Typ **DocumentDbCollectionSource*
 | nestingSeparator |Ein Sonderzeichen im Quellspaltennamen, um anzuzeigen, dass das geschachtelte Dokument erforderlich ist. <br/><br/>Zum Beispiel oben: `Name.First` in der Ausgabetabelle erzeugt im DocumentDB-Dokument die folgende JSON-Struktur:<br/><br/>"Name": {<br/>    "First": "John"<br/>}, |Zeichen, das zur Trennung der Schachtelungsebenen verwendet wird.<br/><br/>Standardwert ist `.` (Punkt). |Zeichen, das zur Trennung der Schachtelungsebenen verwendet wird. <br/><br/>Standardwert ist `.` (Punkt). |
 | writeBatchSize |Gibt die Anzahl von parallelen Anforderungen an den DocumentDB-Dienst zum Erstellen von Dokumenten an.<br/><br/>Sie können die Leistung beim Kopieren von Daten in bzw. aus DocumentDB mit dieser Eigenschaft optimieren. Sie können eine bessere Leistung erwarten, wenn Sie "writeBatchSize" heraufsetzen, da mehr parallele Anforderungen an DocumentDB gesendet werden. Sie sollten aber eine Drosselung vermeiden, die zur Ausgabe einer Fehlermeldung führen kann: „Anforderungsrate ist hoch“.<br/><br/>Die Drosselung hängt von einer Reihe von Faktoren ab, einschließlich Größe der Dokumente, Anzahl von Begriffen in Dokumenten, Indizierung der Richtlinie der Zielsammlung usw. Für Kopiervorgänge können Sie eine bessere Sammlung (z. B. S3) verwenden, um den optimalen verfügbaren Durchsatz zu erhalten (2.500 Anforderungseinheiten/Sekunde). |Integer |Nein (Standard = 5) |
 | writeBatchTimeout |Die Wartezeit für den Abschluss des Vorgangs. |Zeitraum<br/><br/> Beispiel: 00:30:00 (30 Minuten) |Nein |
+
+## <a name="importexport-json-documents"></a>Importieren oder Exportieren von JSON-Dokumenten
+Mit diesem DocumentDB-Connector können Sie problemlos
+
+* JSON-Dokumente aus verschiedenen Quellen in DocumentDB importieren, z.B. aus Azure Blob Storage, Azure Data Lake, aus einem lokalen Dateisystem oder anderen dateibasierten Speichern, die von Azure Data Factory unterstützt werden.
+* JSON-Dokumente aus DocumentDB-Sammlungen in verschiedene dateibasierte Speicher exportieren.
+* Daten zwischen zwei DocumentDB-Sammlungen unverändert migrieren.
+
+So erhalten Sie eine vom Schema unabhängige Kopie 
+* Aktivieren Sie bei Verwenden des Kopier-Assistenten die Option **Wie vorhanden in JSON-Dateien oder DocumentDB-Sammlung exportieren**.
+* Geben Sie bei Verwenden der JSON-Bearbeitung auf keinen Fall weder den Abschnitt „Structure“ in DocumentDB-Datasets noch die Eigenschaft „nestingSeparator“ für DocumentDB-Quellen/-Senken in der Kopieraktivität an. Zum Importieren aus bzw. Exportieren in JSON-Dateien geben Sie im Dateispeicher-Dataset den Formattyp als „JsonFormat“ an. Konfigurieren Sie „filePattern“, und überspringen Sie die restlichen Formateinstellungen. Details finden Sie im Abschnitt [JSON-Format](data-factory-supported-file-and-compression-formats.md#json-format).
 
 ## <a name="json-examples"></a>JSON-Beispiele
 Die folgenden Beispiele zeigen JSON-Beispieldefinitionen, die Sie zum Erstellen einer Pipeline mit dem [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder mit [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Sie zeigen das Kopieren von Daten in und aus Azure DocumentDB und Azure Blob Storage. Daten können jedoch mithilfe der Kopieraktivität in Azure Data Factory **direkt** aus beliebigen Quellen in die [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) aufgeführten Senken kopiert werden.
@@ -450,15 +461,6 @@ Dann sieht die Ausgabe-JSON in "DocumentDB" so aus:
 }
 ```
 "DocumentDB" ist ein NoSQL-Speicher für JSON-Dokumente, in denen geschachtelte Strukturen zulässig sind. Azure Data Factory ermöglicht es dem Benutzer, über einen **nestingSeparator** eine Hierarchie anzugeben. In diesem Beispiel ist dies „.“. Mit dem Trennzeichen generiert die Kopieraktivität das Objekt "Name" mit den drei untergeordneten Elementen "First", "Middle" und "Last" gemäß "Name.First", "Name.Middle" und "Name.Last" in der Tabellendefinition.
-
-## <a name="importexport-json-documents"></a>Importieren oder Exportieren von JSON-Dokumenten
-Mit diesem DocumentDB-Connector können Sie problemlos
-
-* JSON-Dokumente aus verschiedenen Quellen in DocumentDB importieren, z.B. aus Azure Blob Storage, Azure Data Lake, aus einem lokalen Dateisystem oder anderen dateibasierten Speichern, die von Azure Data Factory unterstützt werden.
-* JSON-Dokumente aus DocumentDB-Sammlungen in verschiedene dateibasierte Speicher exportieren.
-* Daten zwischen zwei DocumentDB-Sammlungen unverändert migrieren.
-
-Um solche schemaunabhängen Kopien zu erstellen, geben Sie auf keinen Fall den Abschnitt „Structure“ im Eingabedataset oder die Eigenschaft „nestingSeparator“ für DocumentDB-Quellen/Senken in der Kopieraktivität an. Informationen zu JSON-Formatkonfigurationen finden Sie im Abschnitt „Angeben des Formats“ des entsprechenden Themas zu dateibasierten Connectors.
 
 ## <a name="appendix"></a>Anhang
 1. **Frage:**

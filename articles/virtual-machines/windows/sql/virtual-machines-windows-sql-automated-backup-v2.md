@@ -16,13 +16,17 @@ ms.workload: iaas-sql-server
 ms.date: 04/05/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: dbf4b04ad92d9339b15d7f247b947dd58b17daa5
-ms.lasthandoff: 04/06/2017
-
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: e7e14b0243f82c672392d5ab4bb6aca01156465b
+ms.lasthandoff: 04/26/2017
 
 ---
+
 # <a name="automated-backup-v2-for-sql-server-2016-azure-virtual-machines-resource-manager"></a>Automatisierte Sicherung v2 für Azure Virtual Machines mit SQL Server 2016 (Resource Manager)
+
+> [!div class="op_single_selector"]
+> * [SQL Server 2014](virtual-machines-windows-sql-automated-backup.md)
+> * [SQL Server 2016](virtual-machines-windows-sql-automated-backup-v2.md)
 
 Die automatisierte Sicherung v2 konfiguriert automatisch [Managed Backup für Microsoft Azure](https://msdn.microsoft.com/library/dn449496.aspx) für alle vorhandenen und neuen Datenbanken auf einem virtuellen Azure-Computer, auf dem die Standard-, Enterprise- oder Developer-Edition von SQL Server 2016 ausgeführt wird. Dies bietet Ihnen die Möglichkeit, reguläre Datenbanksicherungen zu konfigurieren, die permanenten Azure-Blob-Speicher nutzen. Die automatisierte Sicherung v2 basiert auf der [SQL Server-Agent-Erweiterung für virtuelle SQL Server-Computer](virtual-machines-windows-sql-server-agent-extension.md).
 
@@ -47,10 +51,9 @@ Um die automatisierte Sicherung v2 verwenden zu können, müssen die folgenden V
 
 **Datenbankkonfiguration**:
 
-- Zieldatenbanken müssen das vollständige Wiederherstellungsmodell verwenden.
+- Zieldatenbanken müssen das vollständige Wiederherstellungsmodell verwenden. Weitere Informationen zu den Auswirkungen des vollständigen Wiederherstellungsmodells auf Sicherungen finden Sie unter [Sichern beim vollständigen Wiederherstellungsmodell](https://technet.microsoft.com/library/ms190217.aspx).
 - Für Systemdatenbanken muss nicht das vollständige Wiederherstellungsmodell verwendet werden. Falls Sie allerdings Protokollsicherungen für das Modell oder für MSDB benötigen, müssen Sie das vollständige Wiederherstellungsmodell verwenden.
-
-Weitere Informationen zu den Auswirkungen des vollständigen Wiederherstellungsmodells auf Sicherungen finden Sie unter [Sichern beim vollständigen Wiederherstellungsmodell](https://technet.microsoft.com/library/ms190217.aspx).
+- Zieldatenbanken müssen sich in der SQL Server-Standardinstanz befinden. Die SQL Server-IaaS-Erweiterung unterstützt keine benannten Instanzen.
 
 **Azure-Bereitstellungsmodell:**
 
@@ -122,9 +125,11 @@ Am Dienstag wird dann ab 10 Uhr erneut für sechs Stunden eine vollständige Sic
 > Bei der Planung täglicher Sicherungen empfiehlt sich die Verwendung eines großzügigen Zeitfensters, um sicherzustellen, dass alle Datenbanken gesichert werden können. Dies ist besonders wichtig, wenn große Datenmengen gesichert werden müssen.
 
 ## <a name="configuration-in-the-portal"></a>Konfiguration im Portal
-Mit dem Azure-Portal können Sie die automatisierte Sicherung v2 während der Bereitstellung oder für vorhandene virtuelle SQL Server 2016-Computer konfigurieren. 
+
+Mit dem Azure-Portal können Sie die automatisierte Sicherung v2 während der Bereitstellung oder für vorhandene virtuelle SQL Server 2016-Computer konfigurieren.
 
 ### <a name="new-vms"></a>Neue virtuelle Computer
+
 Verwenden Sie das Azure-Portal zum Konfigurieren der automatisierten Sicherung v2, wenn Sie einen neuen virtuellen Computer mit SQL Server 2016 im Resource Manager-Bereitstellungsmodell erstellen. 
 
 Wählen Sie auf dem Blatt **SQL Server-Einstellungen** die Option **Automatisierte Sicherung** aus. Auf dem folgenden Screenshot des Azure-Portals sehen Sie das Blatt **Automatisierte SQL-Sicherung** .
@@ -137,6 +142,7 @@ Wählen Sie auf dem Blatt **SQL Server-Einstellungen** die Option **Automatisier
 Wenn Sie weiteren Kontext benötigen, lesen Sie das vollständige Thema zum [Bereitstellen eines virtuellen Computers mit SQL Server in Azure](virtual-machines-windows-portal-sql-server-provision.md).
 
 ### <a name="existing-vms"></a>Vorhandene virtuelle Computer
+
 Wählen Sie für vorhandene virtuelle Computer mit SQL Server Ihren virtuellen Computer mit SQL Server aus. Wählen Sie dann auf dem Blatt **Einstellungen** den Abschnitt **SQL Server-Konfiguration** aus.
 
 ![Automatisierte SQL-Sicherung für vorhandene virtuelle Computer](./media/virtual-machines-windows-sql-automated-backup-v2/sql-server-configuration.png)
@@ -150,6 +156,7 @@ Klicken Sie abschließend unten auf dem Blatt **SQL Server-Konfiguration** auf d
 Falls Sie die automatisierte Sicherung zum ersten Mal aktivieren, konfiguriert Azure den SQL Server-IaaS-Agent im Hintergrund. Im Azure-Portal wird währenddessen u.U. nicht angezeigt, dass die automatisierte Sicherung konfiguriert wird. Warten Sie einige Minuten, bis der Agent installiert und konfiguriert wurde. Danach werden die neuen Einstellungen im Azure-Portal angezeigt.
 
 ## <a name="configuration-with-powershell"></a>Konfiguration mit PowerShell
+
 Die automatisierte Sicherung v2 kann mithilfe von PowerShell konfiguriert werden. Führen Sie zur Vorbereitung folgende Schritte aus:
 
 - [Laden Sie die aktuelle Version von Azure PowerShell herunter, und installieren Sie sie.](http://aka.ms/webpi-azps)
@@ -176,7 +183,7 @@ Set-AzureRmVMSqlServerExtension -VMName $vmname `
     -Version "1.2" -Location $region 
 ```
 
-### <a name="a-idverifysettings-verify-current-settings"></a><a id="verifysettings"> Überprüfen der aktuellen Einstellungen
+### <a id="verifysettings"></a> Überprüfen der aktuellen Einstellungen
 Wenn Sie die automatisierte Sicherung während der Bereitstellung aktiviert haben, können Sie mithilfe von PowerShell Ihre aktuelle Konfiguration überprüfen. Führen Sie den Befehl **Get-AzureRmVMSqlServerExtension** aus, und sehen Sie sich die Eigenschaft **AutoBackupSettings** an:
 
 ```powershell

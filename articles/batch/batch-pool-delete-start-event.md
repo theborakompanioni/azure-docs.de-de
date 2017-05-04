@@ -1,28 +1,26 @@
 ---
-title: "Ereignis zum Starten des Löschvorgangs von Pools: Azure | Microsoft-Dokumentation"
-ms.custom: 
-ms.date: 2017-02-01
-ms.prod: azure
-ms.reviewer: 
-ms.service: batch
-ms.suite: 
-ms.tgt_pltfrm: 
-ms.topic: reference
-ms.assetid: feddca1e-c69c-4257-be44-a36172e77157
-caps.latest.revision: 4
+title: "Azure Batch: Ereignis zum Starten des Löschvorgangs von Pools | Microsoft-Dokumentation"
+description: "Referenz zum Batch-Ereignis zum Starten des Löschvorgangs von Pools."
+services: batch
 author: tamram
-ms.author: tamram
 manager: timlt
+ms.assetid: 
+ms.service: batch
+ms.devlang: multiple
+ms.topic: article
+ms.tgt_pltfrm: vm-windows
+ms.workload: big-compute
+ms.date: 04/20/2017
+ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: ef61238c6dc342173215ae628565a0b87a86bcad
-ms.lasthandoff: 04/13/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: f8a5241dce422e5c826ab428da6d7bc93284a1cf
+ms.lasthandoff: 04/22/2017
 
 ---
-# <a name="pool-delete-start-event"></a>Ereignis zum Starten des Löschvorgangs von Pools
-Text des Protokolls zum Starten des Löschvorgangs von Pools
 
-## <a name="remarks"></a>Anmerkungen
+# <a name="pool-delete-start-event"></a>Ereignis zum Starten des Löschvorgangs von Pools
+
  Dieses Ereignis wird ausgegeben, wenn ein Löschvorgang eines Pools gestartet wurde. Da das Löschen des Pools ein asynchrones Ereignis ist, können Sie damit rechnen, dass ein Ereignis zum Abschluss des Löschvorgangs von Pools ausgegeben wird, sobald der Löschvorgang abgeschlossen ist.
 
  Das folgende Beispiel zeigt den Text eines Ereignisses zum Starten des Löschvorgangs von Pools.

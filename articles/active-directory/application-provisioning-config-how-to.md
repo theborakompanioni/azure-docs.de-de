@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 04/04/2017
 ms.author: asteen
 translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: c0283282c0f19c3a0e0f4304de2b5ab4768d3290
-ms.lasthandoff: 04/17/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: d24031955f57794d6796ea37d8d1b0984f066286
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -38,6 +38,8 @@ Wenn Sie die Unterstützung für die automatische Bereitstellung für eine besti
 ## <a name="configuring-an-application-for-automatic-provisioning"></a>Konfigurieren einer Anwendung für die automatische Bereitstellung
 
 *Automatisch* bedeutet, dass für diese Anwendung ein Azure AD-Bereitstellungsconnector entwickelt wurde. Weitere Informationen zum Azure AD-Bereitstellungsdienst und dessen Funktionsweise finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning).
+
+Weitere Informationen zum Bereitstellen einer Anwendung für bestimmte Benutzer und Gruppen finden Sie unter [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning).
 
 Die tatsächlichen Schritte, die zum Aktivieren und Konfigurieren der automatischen Bereitstellung erforderlich sind, variieren je nach Anwendung.
 

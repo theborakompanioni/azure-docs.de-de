@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/02/2017
+ms.date: 04/21/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: 0f6af54b351235390afa88f1ce156abd839a723f
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: c20f5c39b00992d801909c8e5de292f3c2f12673
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -67,12 +67,12 @@ Ihre Anwendung kann Azure AD Benutzeranmeldeinformationen direkt bereitstellen. 
 ### <a name="what-do-i-need-to-use-this-approach"></a>Was brauche ich, um diesen Ansatz zu befolgen?
 * Name Ihrer Azure AD-Domäne Dieser ist bereits in den in diesem Artikel angegebenen Voraussetzungen aufgeführt.
 * **Native Azure AD-Anwendung**
-* Client-ID für die native Azure Anwendung
-* Antwort-URI für die native Azure AD-Anwendung
+* Anwendungs-ID für die native Azure AD-Anwendung
+* Umleitungs-URI für die native Azure AD-Anwendung
 * Festlegen der delegierten Berechtigungen
 
 
-## <a name="step-1-create-an-active-directory-web-application"></a>Schritt 1: Erstellen Sie eine Active Directory-Webanwendung
+## <a name="step-1-create-an-active-directory-native-application"></a>Schritt 1: Erstellen einer nativen Active Directory-Anwendung
 
 Erstellen und Konfigurieren Sie eine native Azure AD-Anwendung für die Authentifizierung von Endbenutzern mit Azure Data Lake Store mithilfe von Azure Active Directory. Anweisungen finden Sie unter [Erstellen einer Azure AD-Anwendung](../azure-resource-manager/resource-group-create-service-principal-portal.md).
 
@@ -80,9 +80,9 @@ Wenn Sie die Anweisungen in diesem Link befolgen, stellen Sie sicher, dass Sie b
 
 ![Erstellen einer Webanwendung](./media/data-lake-store-end-user-authenticate-using-active-directory/azure-active-directory-create-native-app.png "Erstellen einer nativen Anwendung")
 
-## <a name="step-2-get-client-id-reply-uri-and-set-delegated-permissions"></a>Schritt 2: Rufen Sie die Client-ID ab, beantworten Sie den URI, und legen Sie delegierte Berechtigungen fest
+## <a name="step-2-get-application-id-and-redirect-uri"></a>Schritt 2: Abrufen von Anwendungs-ID und Umleitungs-URI
 
-Unter [Abrufen der Client-ID](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key) finden Sie Informationen, wie Sie die Client-ID (auch Anwendungs-ID genannt) der nativen Azure AD-Anwendung abrufen.
+Erfahren Sie unter [Abrufen der Anwendungs-ID](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key), wie Sie die Anwendungs-ID (im klassischen Azure-Portal auch Client-ID genannt) der nativen Azure AD-Anwendung abrufen.
 
 Führen Sie folgende Schritte aus, um den Umleitungs-URI abzurufen.
 
@@ -116,9 +116,10 @@ Führen Sie folgende Schritte aus, um den Umleitungs-URI abzurufen.
 5. Wiederholen Sie die letzten beiden Schritte, um ebenfalls Berechtigungen für die **Windows Azure-Service-Verwaltungs-API** zu erteilen.
    
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel haben Sie eine Azure AD-Webanwendung erstellt und die erforderlichen Informationen gesammelt, die für Ihre Clientanwendungen nötig sind, die Sie mithilfe des .NET SDKs, des Java SDKs usw. erstellen. Sie können nun mit den nachfolgend aufgeführten Artikeln fortfahren, in denen erläutert wird, wie Sie die Azure AD-Webanwendung verwenden, um sich zum ersten Mal mit Data Lake Store authentifizieren und anschließend andere Vorgänge im Store durchführen.
+In diesem Artikel haben Sie eine native Azure AD-Anwendung erstellt und die erforderlichen Informationen gesammelt, die für Ihre Clientanwendungen nötig sind, die Sie mithilfe von .NET SDK, Java SDK, REST-API usw. erstellen. Sie können nun mit den nachfolgend aufgeführten Artikeln fortfahren, in denen erläutert wird, wie Sie die Azure AD-Webanwendung verwenden, um sich zum ersten Mal mit Data Lake Store authentifizieren und anschließend andere Vorgänge im Store durchführen.
 
 * [Erste Schritte mit Azure Data Lake-Speicher mithilfe des .NET SDK](data-lake-store-get-started-net-sdk.md)
 * [Erste Schritte mit Azure Data Lake Store mit dem Java SDK](data-lake-store-get-started-java-sdk.md)
+* [Erste Schritte mit Azure Data Lake Store mithilfe von REST-APIs](data-lake-store-get-started-rest-api.md)
 
 

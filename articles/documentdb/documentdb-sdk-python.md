@@ -16,9 +16,9 @@ ms.date: 10/30/2016
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 4c83bcbf3e5849afd15060947ef5f0faab17ce19
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 84a04f71ffde07e9caa439c03b55920d0bb0ef16
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -51,51 +51,51 @@ ms.lasthandoff: 03/07/2017
 </table></br>
 
 ## <a name="release-notes"></a>Versionshinweise
-### <a name="a-name201201httpspypipythonorgpypipydocumentdb201"></a><a name="2.0.1"/>[2.0.1](https://pypi.python.org/pypi/pydocumentdb/2.0.1)
+### <a name="a-name201201"></a><a name="2.0.1"/>2.0.1
 * An Dokumentationskommentaren wurden redaktionelle Änderungen vorgenommen.
 
-### <a name="a-name200200httpspypipythonorgpypipydocumentdb200"></a><a name="2.0.0"/>[2.0.0](https://pypi.python.org/pypi/pydocumentdb/2.0.0)
+### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
 * Unterstützung für Python 3.5 wurde hinzugefügt.
 * Unterstützung für Verbindungspooling mithilfe eines Anforderungenmoduls wurde hinzugefügt.
 * Unterstützung für Sitzungskonsistenz wurde hinzugefügt.
 * Unterstützung für TOP-/ORDER BY-Abfragen für partitionierte Sammlungen wurde hinzugefügt.
 
-### <a name="a-name190190httpspypipythonorgpypipydocumentdb190"></a><a name="1.9.0"/>[1.9.0](https://pypi.python.org/pypi/pydocumentdb/1.9.0)
+### <a name="a-name190190"></a><a name="1.9.0"/>1.9.0
 * Unterstützung für Wiederholungsrichtlinie für gedrosselte Anforderungen hinzugefügt. (Bei gedrosselten Anforderungen wird die Ausnahme „Anforderungsrate zu groß“, Fehlercode 429, angezeigt.) Standardmäßig führt DocumentDB für jede Anforderung neun Wiederholungen durch, wenn der Fehlercode 429 auftritt, und berücksichtigt dabei die „retryAfter“-Zeit im Antwortheader. Eine feste Wiederholungsintervalldauer kann jetzt als Teil der „RetryOptions“-Eigenschaft für das „ConnectionPolicy“-Objekt festgelegt werden, wenn Sie die „retryAfter“-Zeit ignorieren möchten, die vom Server zwischen den Wiederholungen zurückgegeben wird. DocumentDB wartet jetzt bei jeder gedrosselten Anforderung (unabhängig von der Anzahl der Wiederholungen) maximal 30 Sekunden und gibt die Antwort mit dem Fehlercode 429 zurück. Diese Dauer kann auch in der „RetryOptions“-Eigenschaft im „ConnectionPolicy“-Objekt überschrieben werden.
 * DocumentDB gibt nun „x-ms-throttle-retry-count“ und „x-ms-throttle-retry-wait-time-ms“ als Antwortheader in jeder Anforderung zurück, um die Anzahl der Wiederholungen bei einer Drosselung und die kumulative Zeit anzugeben, die die Anforderung zwischen den Wiederholungen gewartet hat.
 * Die „RetryPolicy“-Klasse und die dazugehörige Eigenschaft (retry_policy), die für die „document_client“-Klasse verfügbar gemacht wurden, wurden entfernt. Stattdessen wurde die „RetryOptions“-Klasse hinzugefügt, die die „RetryOptions“-Eigenschaft in der „ConnectionPolicy“-Klasse verfügbar macht, welche zum Überschreiben einiger der Standardwiederholungsoptionen verwendet werden kann.
 
-### <a name="a-name180180httpspypipythonorgpypipydocumentdb180"></a><a name="1.8.0"/>[1.8.0](https://pypi.python.org/pypi/pydocumentdb/1.8.0)
+### <a name="a-name180180"></a><a name="1.8.0"/>1.8.0
 * Unterstützung für Datenbankkonten in mehreren Regionen hinzugefügt.
 
-### <a name="a-name170170httpspypipythonorgpypipydocumentdb170"></a><a name="1.7.0"/>[1.7.0](https://pypi.python.org/pypi/pydocumentdb/1.7.0)
+### <a name="a-name170170"></a><a name="1.7.0"/>1.7.0
 * Unterstützung des TTL-Features (Time To Live) für Dokumente hinzugefügt.
 
-### <a name="a-name161161httpspypipythonorgpypipydocumentdb161"></a><a name="1.6.1"/>[1.6.1](https://pypi.python.org/pypi/pydocumentdb/1.6.1)
+### <a name="a-name161161"></a><a name="1.6.1"/>1.6.1
 * Fehlerbehebungen im Zusammenhang mit serverseitiger Partitionierung, um Sonderzeichen im Pfad zum Partitionsschlüssel zuzulassen
 
-### <a name="a-name160160httpspypipythonorgpypipydocumentdb160"></a><a name="1.6.0"/>[1.6.0](https://pypi.python.org/pypi/pydocumentdb/1.6.0)
+### <a name="a-name160160"></a><a name="1.6.0"/>1.6.0
 * [Partitionierte Sammlungen](documentdb-partition-data.md) und [benutzerdefinierte Leistungsstufen](documentdb-performance-levels.md) implementiert. 
 
-### <a name="a-name150150httpspypipythonorgpypipydocumentdb150"></a><a name="1.5.0"/>[1.5.0](https://pypi.python.org/pypi/pydocumentdb/1.5.0)
+### <a name="a-name150150"></a><a name="1.5.0"/>1.5.0
 * Hinzufügen von Hash- und Bereichspartitionen-Konfliktlösern, um die Freigabe von Anwendungen über mehrere Partitionen zu unterstützen.
 
-### <a name="a-name142142httpspypipythonorgpypipydocumentdb142"></a><a name="1.4.2"/>[1.4.2](https://pypi.python.org/pypi/pydocumentdb/1.4.2)
+### <a name="a-name142142"></a><a name="1.4.2"/>1.4.2
 * Upsert implementiert. Neue UpsertXXX-Methoden hinzugefügt, um das „Upsert“-Feature zu unterstützen.
 * ID-basiertes Routing implementiert. Keine öffentliche API-Änderungen, alle Änderungen sind intern.
 
-### <a name="a-name120120httpspypipythonorgpypipydocumentdb120"></a><a name="1.2.0"/>[1.2.0](https://pypi.python.org/pypi/pydocumentdb/1.2.0)
+### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
 * GeoSpatial-Index unterstützt.
 * „Id“-Eigenschaft wird für alle Ressourcen überprüft. IDs für Ressourcen dürfen nicht mit einem Leerzeichen enden und keins der folgenden Zeichen enthalten: ?, /, #, \,
 * Neue Überschrift „Fortschritt der Indextransformation“ zu „ResourceResponse“ hinzugefügt.
 
-### <a name="a-name110110httpspypipythonorgpypipydocumentdb110"></a><a name="1.1.0"/>[1.1.0](https://pypi.python.org/pypi/pydocumentdb/1.1.0)
+### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
 * V2-Indizierungsrichtlinie implementiert.
 
-### <a name="a-name101101httpspypipythonorgpypipydocumentdb101"></a><a name="1.0.1"/>[1.0.1](https://pypi.python.org/pypi/pydocumentdb/1.0.1)
+### <a name="a-name101101"></a><a name="1.0.1"/>1.0.1
 * Proxyverbindung unterstützt.
 
-### <a name="a-name100100httpspypipythonorgpypipydocumentdb100"></a><a name="1.0.0"/>[1.0.0](https://pypi.python.org/pypi/pydocumentdb/1.0.0)
+### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
 * Allgemeine Verfügbarkeit (GA) des SDK
 
 ## <a name="release--retirement-dates"></a>Veröffentlichungs- und Deaktivierungstermine

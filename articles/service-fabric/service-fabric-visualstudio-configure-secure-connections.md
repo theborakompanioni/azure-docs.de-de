@@ -15,8 +15,9 @@ ms.workload: multiple
 ms.date: 10/08/2015
 ms.author: cawa
 translationtype: Human Translation
-ms.sourcegitcommit: f7edee399717ecb96fb920d0a938da551101c9e1
-ms.openlocfilehash: b6705e14e52e98759027389758d7fa57c4e11462
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 3a7f5a4afa8b00801f58776e2cf9d7bff9748925
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -41,7 +42,7 @@ Das Dialogfeld **Service Fabric-Cluster auswählen** überprüft automatisch die
 1. Stellen Sie sicher, dass Sie auf eines der Clientzertifikate zugreifen können, das für den Zielcluster vertrauenswürdig ist. Das Zertifikat ist in der Regel als PFX-Datei (privater Informationsaustausch) freigegeben. Weitere Informationen zum Konfigurieren des Servers für den Zugriff auf einen Client finden Sie unter [Einrichten eines Service Fabric-Clusters im Azure-Portal](service-fabric-cluster-creation-via-portal.md) .
 2. Installieren Sie das vertrauenswürdige Zertifikat. Zu diesem Zweck doppelklicken Sie auf die PFX-Datei oder verwenden das PowerShell-Skript „Import-PfxCertificate“, um Zertifikate zu importieren. Installieren Sie das Zertifikat unter **Cert:\LocalMachine\My**. Die Standardeinstellungen können beim Importieren des Zertifikats bedenkenlos übernommen werden.
 3. Wählen Sie den Befehl **Veröffentlichen...** im Kontextmenü des Projekts aus, um das Dialogfeld **Azure-Anwendung veröffentlichen** zu öffnen, und wählen Sie dann den Zielcluster aus. Das Tool löst die Verbindung automatisch auf und speichert die Parameter für die sichere Verbindung im Veröffentlichungsprofil.
-4. [Optional]: You can edit the publish profile to specify a secure cluster connection.
+4. Optional: Sie können das Veröffentlichungsprofil bearbeiten, um eine sichere Clusterverbindung anzugeben.
    
    Da Sie die Veröffentlichungsprofil-XML-Datei manuell bearbeiten, um Zertifikatsinformationen anzugeben, achten Sie darauf, dass Sie den Namen des Zertifikatspeichers, den Speicherort und den Zertifikatfingerabdruck notieren. Sie müssen diese Werte für den Namen des Zertifikatspeichers und den Speicherort angeben. Weitere Informationen finden Sie unter [Vorgehensweise: Abrufen des Fingerabdrucks eines Zertifikats](https://msdn.microsoft.com/library/ms734695\(v=vs.110\).aspx).
    
@@ -71,9 +72,4 @@ Weitere Informationen zum Zugreifen auf die Service Fabric-Cluster finden Sie u
 <!--Image references-->
 [publishdialog]:./media/service-fabric-visualstudio-configure-secure-connections/publishdialog.png
 [selectsfcluster]:./media/service-fabric-visualstudio-configure-secure-connections/selectsfcluster.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

@@ -17,9 +17,9 @@ ms.workload:
 ms.date: 03/30/2017
 ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 933b262f3c587229a194c3259fc5c13b75ecd050
-ms.lasthandoff: 04/13/2017
+ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
+ms.openlocfilehash: 0d02954829ebac9275c014f7dac7e1ec423b0fc1
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -30,11 +30,11 @@ In diesem Tutorial erstellen Sie für eine Universität eine Datenbank, mit der 
 
 Stellen Sie zur Durchführung dieses Tutorials sicher, dass Sie die neueste Version von [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) installiert haben. 
 
-## <a name="step-1-log-in-to-the-azure-portal"></a>Schritt 1: Anmelden beim Azure-Portal
+## <a name="log-in-to-the-azure-portal"></a>Anmelden beim Azure-Portal
 
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 
-## <a name="step-2-create-a-blank-sql-database-in-azure"></a>Schritt 2: Erstellen einer leeren SQL-­Datenbank in Azure
+## <a name="create-a-blank-sql-database-in-azure"></a>Erstellen einer leeren SQL-­Datenbank in Azure
 
 Eine Azure SQL-Datenbank wird mit einer definierten Gruppe von [Compute- und Speicherressourcen](sql-database-service-tiers.md) erstellt. Die Datenbank wird in einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) und auf einem [logischen Azure SQL-Datenbankserver](sql-database-features.md) erstellt. 
 
@@ -70,7 +70,7 @@ Führen Sie die folgenden Schritte aus, um eine leere SQL-­Datenbank zu erstell
     ![Benachrichtigung](./media/sql-database-get-started-portal/notification.png)
 
 
-## <a name="step-3-create-a-server-level-firewall-rule"></a>Schritt 3: Erstellen einer Firewallregel auf Serverebene
+## <a name="create-a-server-level-firewall-rule"></a>Erstellen einer Firewallregel auf Serverebene
 
 Azure SQL-Datenbanken werden durch eine Firewall geschützt. Standardmäßig werden alle Verbindungen mit dem Server und den Datenbanken im Server abgelehnt. Führen Sie die folgenden Schritte aus, um für den Server eine [SQL-Datenbank-Firewallregel auf Serverebene](sql-database-firewall-configure.md) zu erstellen, damit Verbindungen von der IP-Adresse Ihres Clients zugelassen werden. 
 
@@ -92,7 +92,7 @@ Nun können Sie die Verbindung mit der Datenbank und dem zugehörigen Server her
 > SQL-Datenbank kommuniziert über Port 1433. Wenn Sie versuchen, eine Verbindung aus einem Unternehmensnetzwerk heraus herzustellen, wird der ausgehende Datenverkehr über Port 1433 von der Firewall Ihres Netzwerks unter Umständen nicht zugelassen. In diesem Fall können Sie nur dann eine Verbindung mit Ihrem Azure SQL-Datenbankserver herstellen, wenn Ihre IT-Abteilung Port 1433 öffnet.
 >
 
-## <a name="step-4---get-connection-information"></a>Schritt 4: Abrufen von Verbindungsinformationen
+## <a name="get-connection-information"></a>Abrufen von Verbindungsinformationen
 
 Rufen Sie den vollqualifizierten Servernamen für Ihren Azure SQL-Datenbankserver im Azure-Portal ab. Sie verwenden den vollqualifizierten Servernamen, um mit SQL Server Management Studio eine Verbindung mit Ihrem Server herzustellen.
 
@@ -102,7 +102,7 @@ Rufen Sie den vollqualifizierten Servernamen für Ihren Azure SQL-Datenbankserve
 
     ![Verbindungsinformationen](./media/sql-database-connect-query-ssms/connection-information.png) 
 
-## <a name="step-5---connect-to-your-database-using-sql-server-management-studio"></a>Schritt 5: Herstellen einer Verbindung mit Ihrer Datenbank aus SQL Server Management Studio
+## <a name="connect-to-your-database-using-sql-server-management-studio"></a>Herstellen einer Verbindung mit Ihrer Datenbank mithilfe von SQL Server Management Studio
 
 Verwenden Sie [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms), um eine Verbindung mit Ihrem Azure SQL-Datenbankserver herzustellen.
 
@@ -128,7 +128,7 @@ Verwenden Sie [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms
 
    ![Datenbankobjekte](./media/sql-database-connect-query-ssms/connected.png)  
 
-## <a name="step-6---create-tables-in-the-database"></a>Schritt 6: Erstellen von Tabellen in der Datenbank 
+## <a name="create-tables-in-the-database"></a>Erstellen von Tabellen in der Datenbank 
 
 Erstellen Sie mit [Transact-SQL-](https://docs.microsoft.com/sql/t-sql/language-reference) ein Datenbankschema mit vier Tabellen, die ein Studentenverwaltungssystem für Universitäten modellieren:
 
@@ -199,7 +199,7 @@ Die folgende Abbildung zeigt, wie diese Tabellen miteinander verknüpft sind. Au
 
    ![Erstellte Tabellen in SMS](./media/sql-database-design-first-database/ssms-tables-created.png)
 
-## <a name="step-7---load-data-into-the-tables"></a>Schritt 7: Laden von Daten in die Tabellen
+## <a name="load-data-into-the-tables"></a>Laden von Daten in die Tabellen
 
 1. Erstellen Sie in Ihrem Ordner „Downloads“ einen Ordner namens **SampleTableData**, in dem die Beispieldaten für Ihre Datenbank gespeichert werden. 
 
@@ -223,7 +223,7 @@ Die folgende Abbildung zeigt, wie diese Tabellen miteinander verknüpft sind. Au
 
 Sie haben jetzt Beispieldaten in die Tabellen geladen, die Sie zuvor erstellt haben.
 
-## <a name="step-8---query-the-tables"></a>Schritt 8: Abfragen der Tabellen
+## <a name="query-the-tables"></a>Abfragen der Tabellen
 
 Führen Sie die folgenden Abfragen aus, um Informationen aus den Datenbanktabellen abzurufen. Weitere Informationen zum Schreiben von SQL-Abfragen finden Sie unter [Schreiben von SQL-Abfragen](https://technet.microsoft.com/library/bb264565.aspx). In der ersten Abfrage werden alle vier Tabellen verknüpft, um alle Studenten zu finden, die von „Dominick Pope“ unterrichtet werden und in dessen Kurs ein Ergebnis (Grade) haben, das über 75 % liegt. In der zweite Abfrage werden alle vier Tabellen verknüpft und alle Lehrveranstaltungen gefunden, für die „Noe Coleman“ jemals eingeschrieben war.
 
@@ -260,7 +260,7 @@ Führen Sie die folgenden Abfragen aus, um Informationen aus den Datenbanktabell
         AND person.LastName = 'Coleman'
    ```
 
-## <a name="step-9---restore-a-database-to-a-previous-point-in-time"></a>Schritt 9: Wiederherstellen eines früheren Zustands einer Datenbank 
+## <a name="restore-a-database-to-a-previous-point-in-time"></a>Wiederherstellen eines früheren Zustands einer Datenbank 
 
 Stellen Sie sich vor, Sie haben versehentlich eine Tabelle gelöscht. Dies ist eine Situation, in der Sie die Datenbank nicht einfach wiederherstellen können. Azure SQL-Datenbank ermöglicht es Ihnen, zu einem beliebigen Zeitpunkt innerhalb der letzten 35 Tage zurückzugehen und diesen Zeitpunkt in einer neuen Datenbank wiederherzustellen. Diese Datenbank können Sie dann verwenden, um die gelöschten Daten wiederherzustellen. In den folgenden Schritten wird die Beispieldatenbank für einen Zeitpunkt wiederhergestellt, der vor dem Hinzufügen der Tabellen lag.
 

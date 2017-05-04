@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/30/2017
+ms.date: 04/21/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 7c1532db4d58673add9b8076154c471554810614
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: 1d712ef6987a4af2014bedb54378f288bcf535a8
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -48,10 +48,10 @@ Wenn Sie die Anweisungen in diesem Link befolgen, stellen Sie sicher, dass Sie b
 
 ![Erstellen einer Web-App](./media/data-lake-store-authenticate-using-active-directory/azure-active-directory-create-web-app.png "Erstellen einer Web-App")
 
-## <a name="step-2-get-client-id-client-secret-and-tenant-id"></a>Schritt 2: Rufen Sie die Client-ID, den geheimen Clientschlüssel und die Mandanten-ID ab
+## <a name="step-2-get-application-id-authentication-key-and-tenant-id"></a>Schritt 2: Abrufen von Anwendungs-ID, Authentifizierungsschlüssel und Mandanten-ID
 Beim programmgesteuerten Anmelden benötigen Sie die ID für Ihre Anwendung. Wenn die Anwendung unter ihren eigenen Anmeldeinformationen ausgeführt wird, benötigen Sie außerdem einen Authentifizierungsschlüssel.
 
-* Informationen, wie Sie die Client-ID und den geheimen Clientschlüssel abrufen finden Sie unter [Abrufen der Anwendungs-ID und des Authentifizierungsschlüssels](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key).
+* Eine Anleitung zum Abrufen der Anwendungs-ID und des Authentifizierungsschlüssels (auch „Clientgeheimnis“ genannt) finden Sie unter [Abrufen der Anwendungs-ID und des Authentifizierungsschlüssels](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key).
 
 * Informationen zum Abrufen der Mandanten-ID finden Sie unter [Abrufen der Mandanten-ID](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id).
 
@@ -90,8 +90,7 @@ Beim programmgesteuerten Anmelden benötigen Sie die ID für Ihre Anwendung. Wen
 
 4. Kopieren Sie aus der Liste der Endpunkte den OAuth 2.0-Token-Endpunkt.
 
-
-     ![OAuth-Token-Endpunkt](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint-1.png "OAuth-Token-Endpunkt")   
+    ![OAuth-Token-Endpunkt](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint-1.png "OAuth-Token-Endpunkt")   
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie eine Azure AD-Webanwendung erstellt und die erforderlichen Informationen gesammelt, die für Ihre Clientanwendungen nötig sind, die Sie mithilfe des .NET SDKs, des Java SDKs usw. erstellen. Sie können nun mit den nachfolgend aufgeführten Artikeln fortfahren, in denen erläutert wird, wie Sie die Azure AD-Webanwendung verwenden, um sich zum ersten Mal mit Data Lake Store authentifizieren und anschließend andere Vorgänge im Store durchführen.

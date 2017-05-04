@@ -16,9 +16,9 @@ ms.date: 02/21/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: bb8d390a6ab045dc418bf80ec4fc218e0a35282b
-ms.lasthandoff: 04/11/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: 73c38182f4caa92f5aa561b10a30c60efc8cfdae
+ms.lasthandoff: 04/26/2017
 
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure
@@ -40,6 +40,7 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 | [Mitwirkender für Sicherungen](#backup-contributor) | Kann Sicherungen in einem Recovery Services-Tresor verwalten |
 | [Sicherungsoperator](#backup-operator) | Kann Sicherungen in einem Recovery Services-Tresor verwalten, aber nicht entfernen |
 | [Sicherungsleser](#backup-reader) | Kann alle Dienste für die Sicherungsverwaltung anzeigen  |
+| [Abrechnungsleser](#billing-reader) | Kann sämtliche Abrechnungsinformationen anzeigen  |
 | [Mitwirkender von BizTalk](#biztalk-contributor) |Kann BizTalk-Dienste verwalten |
 | [Mitwirkender von ClearDB-MySQL-DB](#cleardb-mysql-db-contributor) |Kann ClearDB MySQL-Datenbanken verwalten |
 | [Mitwirkender](#contributor) |Kann alles außer den Zugriff verwalten |
@@ -215,6 +216,15 @@ Kann die Sicherungsverwaltung im Recovery Services-Tresor überwachen
 | Microsoft.RecoveryServices/Vaults/registeredIdentities/operationResults/read  | Lesen der Ergebnisse eines mit registrierten Elementen des Tresors durchgeführten Vorgangs |
 | Microsoft.RecoveryServices/Vaults/registeredIdentities/read  | Lesen von registrierten Elementen des Tresors |
 | Microsoft.RecoveryServices/Vaults/usages/read  |  Lesen der Nutzung des Recovery Services-Tresors |
+
+## <a name="billing-reader"></a>Abrechnungsleser
+Kann sämtliche Abrechnungsinformationen anzeigen
+
+| **Aktionen** |  |
+| --- | --- |
+| Microsoft.Authorization/*/read |Lesen von Rollen und Rollenzuweisungen |
+| Microsoft.Billing/*/read |Lesen von Abrechnungsinformationen |
+| Microsoft.Support/* |Erstellen und Verwalten von Support-Tickets |
 
 ### <a name="biztalk-contributor"></a>Mitwirkender von BizTalk
 Kann BizTalk-Dienste verwalten

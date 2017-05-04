@@ -12,12 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/23/2017
+ms.date: 03/19/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 1a462b8d557ad23bda912ddf9431195a8cfe909e
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: 284b239860481cf76f647d78f6a7b5e2b7cf9a3b
+ms.lasthandoff: 04/26/2017
 
 
 ---
@@ -33,7 +33,7 @@ Das Managed Disks-Feature nimmt Ihnen die Speicherkontoverwaltung ab und vereinf
 
 **Welche Kosten fallen für mich an, wenn ich auf der Grundlage einer vorhandenen virtuellen Festplatte mit einer Größe von 80 GB einen verwalteten Standarddatenträger erstelle?**
 
-Ein verwalteter Standarddatenträger, der auf der Grundlage einer virtuellen Festplatte mit einer Größe von 80 GB erstellt wird, wird nach der nächsten verfügbaren Größe für Premiumdatenträger abgerechnet (in diesem Fall also als S10-Datenträger). Somit wird Ihnen der Preis für einen S10-Datenträger in Rechnung gestellt. Ausführliche Informationen finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/storage).
+Ein standardmäßiger verwalteter Datenträger, der auf Grundlage einer virtuellen Festplatte mit einer Größe von 80 GB erstellt wird, wird nach der nächsten verfügbaren Größe für Standard-Datenträger abgerechnet (in diesem Fall also als S10-Datenträger). Somit wird Ihnen der Preis für einen S10-Datenträger in Rechnung gestellt. Ausführliche Informationen finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/storage).
 
 **Fallen bei verwalteten Standarddatenträgern Transaktionskosten an?**
 
@@ -121,6 +121,11 @@ Ja.
 
 Azure Managed Disks unterstützt momentan nur lokal redundanten Speicher (LRS).
 
+**Kann ich meine verwalteten Datenträger verkleinern?**
+Nein. Dies wird derzeit nicht unterstützt. 
+
+**Kann ich die Eigenschaft „Name“ des Computers ändern, wenn ich einen speziellen (nicht mit Sysprep vorbereiteten oder generalisierten) Betriebssystem-Datenträger zum Bereitstellen einer VM verwende?** Nein. Sie können die Eigenschaft „Name“ des Computers nicht ändern. Die neue VM übernimmt diese von der übergeordneten VM, mit der der Betriebssystem-Datenträger erstellt wurde. 
+
 ## <a name="managed-disks-and-port-8443"></a>Managed Disks und Port 8443
 
 **Warum müssen Kunden die Sperre für ausgehenden Datenverkehr an Port 8443 für virtuelle Computer aufheben, die Azure Managed Disks verwenden?**
@@ -189,8 +194,13 @@ Die kombinierte Beschränkung für den Cache und die lokale SSD für virtuelle C
 
 Bei der lokalen SSD handelt es sich um einen temporären Speicher, der in einem virtuellen Computer mit verwalteten Datenträgern enthalten ist. Für diesen temporären Speicher fallen keine zusätzlichen Kosten an. Es empfiehlt sich, auf dieser lokalen SSD keine Anwendungsdaten zu speichern, da die Daten nicht dauerhaft in Azure Blob Storage gespeichert werden.
 
+**Welche Auswirkungen hat das Anwenden des Befehls TRIM auf Premium-Datenträger?**
+
+Es gibt keinen Nachteil bei Anwendung von TRIM auf Azure-Datenträger auf Premium- oder Standard-Datenträgern.
+
 ## <a name="what-if-my-question-isnt-answered-here"></a>Was kann ich tun, wenn meine Frage hier nicht beantwortet wird?
 
 Wenn Ihre Frage hier nicht aufgeführt wird, informieren Sie uns, und wir helfen Ihnen dabei, eine Antwort zu finden. Sie können in den Kommentaren am Ende dieses Artikels oder im [Azure Storage-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata) auf MSDN eine Frage stellen und sich mit dem Azure Storage-Team und anderen Communitymitgliedern über den Artikel austauschen.
 
 Featurevorschläge und Ideen können über das [Azure Storage-Feedbackforum](https://feedback.azure.com/forums/217298-storage) eingereicht werden.
+

@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 04/17/2017
 ms.author: meetb;carlrab;sstein
 translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: e39d108e9d6962647cbf76e50299b73939fe5977
-ms.lasthandoff: 04/18/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: d4d21297618d34aa301e4e1cc814afb15045d7f7
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -32,6 +32,9 @@ In diesem Schnellstart werden als Ausgangspunkt die Ressourcen verwendet, die in
 - [Erstellen einer Datenbank – CLI](sql-database-get-started-cli.md)
 
 ## <a name="install-php-and-database-communications-software"></a>Installieren von PHP und Datenbankkommunikationssoftware
+
+Bei den Schritten in diesem Abschnitt wird davon ausgegangen, dass Sie mit der PHP-Entwicklung vertraut sind und noch keine Erfahrung mit Azure SQL-Datenbank haben. Falls Sie noch keine Erfahrung mit der PHP-Entwicklung haben, navigieren Sie zu [Erstellen einer App mithilfe von SQL Server](https://www.microsoft.com/en-us/sql-server/developer-get-started/), und wählen Sie erst **PHP** und dann Ihr Betriebssystem aus.
+
 ### <a name="mac-os"></a>**Mac OS**
 Öffnen Sie Ihren Terminal, und geben Sie die folgenden Befehle ein, um von **brew**, **Microsoft ODBC Driver for Mac** und die **Microsoft PHP-Treiber für SQL Server** zu installieren. 
 
@@ -73,7 +76,7 @@ An diesem Punkt sollten die DLLs bei PHP registriert sein.
 
 ## <a name="get-connection-information"></a>Abrufen von Verbindungsinformationen
 
-Rufen Sie die Verbindungszeichenfolge im Azure-Portal ab. Sie verwenden die Verbindungszeichenfolge zum Herstellen einer Verbindung mit der Azure SQL-Datenbank.
+Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung mit der Azure SQL-Datenbank erforderlich sind. In den weiteren Verfahren benötigen Sie den vollqualifizierten Servernamen, den Datenbanknamen und die Anmeldeinformationen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 2. Wählen Sie im Menü auf der linken Seite die Option **SQL-Datenbanken**, und klicken Sie auf der Seite **SQL-Datenbanken** auf Ihre Datenbank. 
@@ -84,7 +87,7 @@ Rufen Sie die Verbindungszeichenfolge im Azure-Portal ab. Sie verwenden die Verb
 4. Falls Sie die Anmeldeinformationen für Ihren Azure SQL-Datenbankserver vergessen haben, können Sie zur Seite des SQL-Datenbankservers navigieren, um den Serveradministrator-Benutzernamen anzuzeigen und ggf. das Kennwort zurückzusetzen.     
     
 ## <a name="select-data"></a>Auswählen von Daten
-Verwenden Sie den folgenden Code zum Abfragen Ihrer Azure SQL-Datenbank mithilfe der Funktion [sqlsrv_query()](https://docs.microsoft.com/sql/connect/php/sqlsrv-query) und einer Transact-SQL-Anweisung des Typs [SELECT](https://docs.microsoft.com/sql/t-sql/queries/select-transact-sql). Mit der Funktion „sqlsrv_query“ können Sie ein Resultset aus einer Abfrage einer SQL-Datenbank abrufen. Diese Funktion akzeptiert jede Abfrage und gibt ein Resultset zurück, das mithilfe von [sqlsrv_fetch_array()](http://php.net/manual/en/function.sqlsrv-fetch-array.php) durchlaufen werden kann. Ersetzen Sie die Parameter „server“, „username“ und „password“ durch die Werte, die Sie angegeben haben, als Sie die Datenbank mit den AdventureWorksLT-Beispieldaten erstellt haben. 
+Verwenden Sie den folgenden Code, um mit der Transact-SQL-Anweisung [SELECT](https://docs.microsoft.com/sql/t-sql/queries/select-transact-sql) und der Funktion [sqlsrv_query()](https://docs.microsoft.com/sql/connect/php/sqlsrv-query) die 20 wichtigsten Produkte nach Kategorie abzufragen. Mit der Funktion „sqlsrv_query“ können Sie ein Resultset aus einer Abfrage einer SQL-Datenbank abrufen. Diese Funktion akzeptiert jede Abfrage und gibt ein Resultset zurück, das mithilfe von [sqlsrv_fetch_array()](http://php.net/manual/en/function.sqlsrv-fetch-array.php) durchlaufen werden kann. Ersetzen Sie die Parameter „server“, „username“ und „password“ durch die Werte, die Sie angegeben haben, als Sie die Datenbank mit den AdventureWorksLT-Beispieldaten erstellt haben. 
 
 ```PHP
 <?php
@@ -113,7 +116,7 @@ sqlsrv_free_stmt($getResults);
 
 
 ## <a name="insert-data"></a>Einfügen von Daten
-Verwenden Sie den folgenden Code zum Einfügen eines neuen Produkts in die Tabelle „SalesLT.Product“ in der angegebenen Datenbank mithilfe der Funktion[sqlsrv_query()](https://docs.microsoft.com/sql/connect/php/sqlsrv-query) und der Transact-SQL-Anweisung [INSERT](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql). Ersetzen Sie die Parameter „server“, „username“ und „password“ durch die Werte, die Sie angegeben haben, als Sie die Datenbank mit den AdventureWorksLT-Beispieldaten erstellt haben. 
+Verwenden Sie den folgenden Code, um mit der Transact-SQL-Anweisung [INSERT](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) und der Funktion [sqlsrv_query()](https://docs.microsoft.com/sql/connect/php/sqlsrv-query) ein neues Produkt in die Tabelle „SalesLT.Product“ einzufügen. Ersetzen Sie die Parameter „server“, „username“ und „password“ durch die Werte, die Sie angegeben haben, als Sie die Datenbank mit den AdventureWorksLT-Beispieldaten erstellt haben. 
 
 ```PHP
 <?php
@@ -165,7 +168,7 @@ else{
 ```
 
 ## <a name="delete-data"></a>Löschen von Daten
-Verwenden Sie den folgenden Code zum Löschen von Daten aus Ihrer Azure SQL-Datenbank-Instanz mithilfe der Funktion [sqlsrv_query()](https://docs.microsoft.com/sql/connect/php/sqlsrv-query) und der Transact-SQL-Anweisung [DELETE](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql). Ersetzen Sie die Parameter „server“, „username“ und „password“ durch die Werte, die Sie angegeben haben, als Sie die Datenbank mit den AdventureWorksLT-Beispieldaten erstellt haben.
+Verwenden Sie den folgenden Code, um das neue zuvor hinzugefügte Produkt mit der Funktion [sqlsrv_query()](https://docs.microsoft.com/sql/connect/php/sqlsrv-query) und der Transact-SQL-Anweisung [DELETE](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql) zu löschen. Ersetzen Sie die Parameter „server“, „username“ und „password“ durch die Werte, die Sie angegeben haben, als Sie die Datenbank mit den AdventureWorksLT-Beispieldaten erstellt haben.
 
 ```PHP
 <?php

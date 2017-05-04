@@ -12,12 +12,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2016
+ms.date: 04/19/2017
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 885180e9759d0702d4e0988a7a1b4eb9097d4433
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 7e68a738feff2eb2330b74d942b0a7f42d07df78
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -58,8 +58,10 @@ Ein selbstsigniertes Zertifikat können Sie mit allen verfügbaren Tools erstell
 * Es muss sich um ein X.509-Zertifikat handeln.
 * Es muss einen privaten Schlüssel enthalten.
 * Es ist für den Schlüsselaustausch erstellt (PFX-Datei).
-* Der Name des Antragstellers muss der Domäne entsprechen, über die auf den Clouddienst zugegriffen wird. 
+* Der Name des Antragstellers muss der Domäne entsprechen, über die auf den Clouddienst zugegriffen wird.
+
     > Sie können kein SSL-Zertifikat für die Domäne cloudapp.net (oder für eine andere Domäne in Zusammenhang mit Azure) beziehen; der Name des Antragstellers für das Zertifikat muss der Domäne entsprechen, über die auf Ihre Anwendung zugegriffen wird. Beispielsweise **contoso.net**, nicht **contoso.cloudapp.net**.
+
 * Mindestens 2048-Bit-Verschlüsselung.
 * **Nur Dienstzertifikat:**Das clientseitige Zertifikat muss sich im *persönlichen* Zertifikatspeicher befinden.
 
@@ -77,8 +79,7 @@ Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $pass
 
 > [!NOTE]
 > Wenn Sie das Zertifikat mit einer IP-Adresse anstelle einer Domäne verwenden möchten, verwenden Sie die IP-Adresse im Parameter -DnsName.
-> 
-> 
+
 
 Wenn Sie dieses [Zertifikat mit dem Verwaltungsportal](../azure-api-management-certs.md)verwenden möchten, exportieren Sie es in eine **CER** -Datei:
 
@@ -98,11 +99,6 @@ In [diesem](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirt
 ## <a name="next-steps"></a>Nächste Schritte
 [Hochladen des Dienstzertifikats in das klassische Azure-Portal](cloud-services-configure-ssl-certificate.md) (oder das [Azure-Portal](cloud-services-configure-ssl-certificate-portal.md)).
 
-Hochladen des [Verwaltungs-API-Zertifikats](../azure-api-management-certs.md) in das klassische Azure-Portal.
-
-> [!NOTE]
-> Im Azure-Portal erfolgt der Zugriff auf die API nicht über Verwaltungszertifikate, sondern über Benutzerkonten.
-> 
-> 
+Hochladen des [Verwaltungs-API-Zertifikats](../azure-api-management-certs.md) in das klassische Azure-Portal. Das Azure-Portal verwendet für die Authentifizierung keine Verwaltungszertifikate.
 
 

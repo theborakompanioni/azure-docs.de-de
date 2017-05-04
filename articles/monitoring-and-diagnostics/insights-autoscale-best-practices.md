@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2016
+ms.date: 04/20/2017
 ms.author: ashwink
 translationtype: Human Translation
-ms.sourcegitcommit: cc557c7139561345a201fa0cd45c803af3751acd
-ms.openlocfilehash: 25fa8749d4b23d3619829fa179a7c91da311bbd0
-ms.lasthandoff: 01/31/2017
+ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
+ms.openlocfilehash: 6dad42f94d263d9dacedf145bf4e5d487d0aed77
+ms.lasthandoff: 04/21/2017
 
 
 ---
-# <a name="best-practices-autoscaling-virtual"></a>Empfohlene Methoden für die automatische Skalierung von VMs, VM-Skalierungsgruppen und Clouddiensten
+# <a name="best-practices-for-autoscale"></a>Bewährte Methoden für die automatische Skalierung
 In diesem Artikel werden empfohlene Methoden für die automatische Skalierung in Azure erläutert. Er bezieht sich auf VMs, VM-Skalierungsgruppen und Clouddienste.  Andere Azure-Dienste verwenden andere Skalierungsmethoden.
 
 ## <a name="autoscale-concepts"></a>Konzepte der automatischen Skalierung
@@ -80,7 +80,7 @@ In diesem Fall
 1. Angenommen, es gibt zu Anfang 2 Instanzen.
 2. Falls die durchschnittliche prozentuale CPU-Auslastung über alle Instanzen 80 erreicht, wird automatisch horizontal hochskaliert und eine dritte Instanz hinzugefügt.
 3. Nehmen Sie jetzt an, dass im Laufe der Zeit die prozentuale CPU-Auslastung auf 60 fällt.
-4. Die Regel für das automatische horizontale Herunterskalieren schätzt den Endzustand, falls horizontal herunterskaliert werden sollte. Falls beispielsweise 60 x 3 (aktuelle Instanzenanzahl) = 180 / 2 (Anzahl der Instanzen wenn herunterskaliert wird) = 90 Die automatische Skalierung skaliert also nicht horizontal herunter, da sie sofort wieder horizontal hochskalieren müsste. Stattdessen wird das horizontale Herunterskalieren übersprungen. Nehmen Sie jetzt an, dass bei der nächsten Überprüfung die CPU-Auslastung auf&50; fällt.
+4. Die Regel für das automatische horizontale Herunterskalieren schätzt den Endzustand, falls horizontal herunterskaliert werden sollte. Falls beispielsweise 60 x 3 (aktuelle Instanzenanzahl) = 180 / 2 (Anzahl der Instanzen wenn herunterskaliert wird) = 90 Die automatische Skalierung skaliert also nicht horizontal herunter, da sie sofort wieder horizontal hochskalieren müsste. Stattdessen wird das horizontale Herunterskalieren übersprungen. Nehmen Sie jetzt an, dass bei der nächsten Überprüfung die CPU-Auslastung auf 50 fällt.
 5. Bei der nächsten Prüfung durch die automatische Skalierung fällt die CPU-Auslastung weiter auf 50. Jetzt schätzt sie wieder – 50 x 3 Instanzen = 150 / 2 Instanzen = 75, was unter dem Schwellenwert von 80 für das horizontale Hochskalieren liegt, daher wird erfolgreich horizontal auf 2 Instanzen herunterskaliert.
 
 ### <a name="considerations-for-scaling-threshold-values-for-special-metrics"></a>Überlegungen zu Skalierungsschwellenwerten für spezielle Metriken

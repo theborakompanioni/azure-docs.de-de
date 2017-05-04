@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 04/17/2017
 ms.author: milanga;juliako;
 translationtype: Human Translation
-ms.sourcegitcommit: adaf2a71e022d6d29493ab0a679bd593ea40195e
-ms.openlocfilehash: acb3b4d4a14ea546e94ccc38806251460e21a6bc
-ms.lasthandoff: 02/10/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 5a604f3538a0749f7f951926f451cc91504255d6
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -73,7 +73,7 @@ Die JSON-Datei für Gesichtserkennung und -nachverfolgung umfasst die folgenden 
 Face Detector verwendet Techniken der Fragmentierung (wobei die Metadaten in zeitbasierte Blöcke unterteilt werden können, sodass Sie nichts herunterladen müssen, was Sie nicht benötigen) und Segmentierung (wobei die Ereignisse aufgeteilt werden, falls sie zu groß werden). Einige einfache Berechnungen können Ihnen helfen, die Daten zu transformieren. Wenn ein Ereignis beispielsweise mit 6.300 (Ticks), einer Zeitskala von 2.997 (Ticks/s) und Framerate von 29,97 (Bilder/s) begonnen hat, dann gilt:
 
 * Start/Zeitskala = 2,1 Sekunden
-* Sekunden x Framerate = 63 Frames
+* Sekunden × Framerate = 63 Frames
 
 ## <a name="face-detection-input-and-output-example"></a>Eingabe- und Ausgabebeispiel für Gesichtserkennung
 ### <a name="input-video"></a>Videoeingang
@@ -85,14 +85,14 @@ Wenn Sie eine Aufgabe mit **Azure Media Face Detector**erstellen, müssen Sie ei
     {
       "version":"1.0",
       "options":{
-          "TrackingMode": "Faster"
+          "TrackingMode": "Fast"
       }
     }
 
 #### <a name="attribute-descriptions"></a>Beschreibungen der Attribute
 | Attributname | Beschreibung |
 | --- | --- |
-| Mode |Schneller: schnellere Verarbeitungsgeschwindigkeit, aber weniger genau (Standard). <br/>Qualität: Nachverfolgung mit höherer Genauigkeit, dafür längere Verarbeitungszeit. |
+| Mode |Schneller: höhere Verarbeitungsgeschwindigkeit, aber weniger Genauigkeit (Standard).|
 
 
 ### <a name="json-output"></a>JSON-Ausgabe

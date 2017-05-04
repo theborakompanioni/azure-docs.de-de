@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/12/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: fe8b4b097f7ff157d624c09b8dbf26f94401395c
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 158c5dc06f83e16633d3c2fbb4eb27d3e8af030c
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -42,7 +42,7 @@ Dieser Artikel enthält Anweisungen zur Verwendung eines benutzerdefinierten Dom
 ## <a name="add-a-dns-record-for-your-custom-domain"></a>Hinzufügen eines DNS-Datensatzes zu Ihrer benutzerdefinierten Domäne
 Um Ihre benutzerdefinierte Domäne mit einer Web-App im App Service zu verknüpfen, müssen Sie einen neuen Eintrag in die DNS-Tabelle für Ihre benutzerdefinierte Domäne einfügen. Verwenden Sie hierzu die von GoDaddy bereitgestellten Tools. Mit den folgenden Schritten können Sie die DNS-Tools für GoDaddy.com abrufen.
 
-1. Melden Sie sich bei Ihrem Konto auf „GoDaddy.com“ an, und wählen Sie **My Account** (Mein Konto) und dann **Manage my domains** (Meine Domänen verwalten) aus. Wählen Sie abschließend das Dropdownmenü für den Domänennamen, den Sie mit Ihrer Azure-Web-App verwenden möchten, und anschließend **DNS verwalten**aus.
+1. Melden Sie sich bei Ihrem Konto auf „GoDaddy.com“ an, und wählen Sie **My Account** (Mein Konto) und dann **Manage my domains** (Meine Domänen verwalten) aus. Wählen Sie das Dropdownmenü für den Domänennamen aus, den Sie mit Ihrer Azure-Web-App verwenden möchten, und anschließend **DNS verwalten**aus.
    
     ![Benutzerdefinierte Domänenseite für GoDaddy](./media/web-sites-godaddy-custom-domain-name/godaddy-customdomain.png)
 2. Rufen Sie auf der Seite **Domain details** (Domänendetails) die Registerkarte **DNS Zone File** (DNS-Zonendatei) auf. Dieser Abschnitt wird verwendet, um die DNS-Datensätze für die Domäne hinzuzufügen und zu ändern.
@@ -65,7 +65,7 @@ Um Ihre benutzerdefinierte Domäne mit einer Web-App im App Service zu verknüpf
    
     ![Zonendatensatz hinzufügen](./media/web-sites-godaddy-custom-domain-name/godaddy-addzonerecord.png)
    
-   * Wenn Sie einen Eintrag vom Typ **A (Host)** hinzufügen, müssen Sie das Feld **Host** entweder auf **@** (Stammdomänenname wie **contoso.com**), auf *(Platzhalter für mehrere Unterdomänen) oder auf die gewünschte Unterdomäne (etwa**www.**) festlegen. Das Feld**Points to** (Verweist auf) muss auf die IP-Adresse Ihrer Azure-Web-App festgelegt werden.
+   * Wenn Sie einen Eintrag vom Typ **A (Host)** hinzufügen, müssen Sie das Feld **Host** entweder auf **@** (Stammdomänenname wie **contoso.com**), auf * (Platzhalter für mehrere Unterdomänen) oder auf die gewünschte Unterdomäne (etwa **www.**) festlegen. Das Feld **Points to*** (Verweist auf) muss auf die IP-Adresse Ihrer Azure-Web-App festgelegt werden.
    * Wenn Sie einen **CNAME (Alias)**-Eintrag hinzufügen, müssen Sie im Feld **Host** die gewünschte Unterdomäne festlegen. Beispiel: **www**. Sie müssen das Feld **Points to** (Verweist auf) auf den **.azurewebsites.net**-Domänennamen Ihrer Azure-Web-App festlegen. Beispiel: **contoso.azurewebsites.net**.
 4. Klicken Sie auf **Weiteren hinzufügen**.
 5. Wählen Sie als Eintragstyp die Option **TXT** aus, und geben Sie als Hostwert**** das Zeichen **@** und unter **Points to** (Verweist auf) den Wert **&lt;Name Ihrer Web-App&gt;.azurewebsites.net** ein.

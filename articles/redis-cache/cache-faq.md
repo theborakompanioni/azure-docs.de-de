@@ -12,12 +12,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 04/27/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 831ce961992747de87706c3dde24b812a281c23a
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: cbd764b3c6ce912c825aa2756ac6f35c23d047bf
+ms.lasthandoff: 04/26/2017
 
 
 ---
@@ -70,6 +70,7 @@ Im Folgenden finden Sie häufig gestellte Fragen zu grundlegenden Konzepten. Fra
 * [Wie kann ich die Leistung meines Caches messen und testen?](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 * [Wichtige Details zum Threadpool-Wachstum](#important-details-about-threadpool-growth)
 * [Aktivieren der Garbage Collection auf dem Server, um bei Verwenden von „StackExchange.Redis“ mehr Durchsatz auf dem Client zu erzielen](#enable-server-gc-to-get-more-throughput-on-the-client-when-using-stackexchangeredis)
+* [Überlegungen zur Leistung im Zusammenhang mit Verbindungen](#performance-considerations-around-connections)
 
 ## <a name="monitoring-and-troubleshooting-faqs"></a>Häufig gestellte Fragen zur Überwachung und Problembehandlung
 In den häufig gestellten Fragen in diesem Abschnitt werden allgemeine Fragen zur Überwachung und Problembehandlung behandelt. Weitere Informationen zur Überwachung und Problembehandlung Ihrer Azure Redis Cache-Instanzen finden Sie unter [Überwachen von Azure Redis Cache](cache-how-to-monitor.md) und [Problembehandlung für Azure Redis Cache](cache-how-to-troubleshoot.md).
@@ -405,6 +406,13 @@ Das Aktivieren der Garbage Collection auf dem Server kann den Client optimieren 
 * [So aktivieren Sie die Garbage Collection auf dem Server](https://msdn.microsoft.com/library/ms229357.aspx)
 * [Grundlagen der Garbage Collection](https://msdn.microsoft.com/library/ee787088.aspx)
 * [Garbage Collection und Leistung](https://msdn.microsoft.com/library/ee851764.aspx)
+
+
+### <a name="performance-considerations-around-connections"></a>Überlegungen zur Leistung im Zusammenhang mit Verbindungen
+
+Jeder Tarif hat verschiedene Limits für Clientverbindungen, Speicher und Bandbreite. Obgleich jede Cachegröße eine *bestimmte* Anzahl von Verbindungen zulässt, fällt für jede Verbindung ein Mehraufwand an. Ein Beispiel für einen solchen Aufwand ist die CPU- und Arbeitsspeicherauslastung aufgrund der TLS-/SSL-Verschlüsselung. Das maximale Verbindungslimit für eine angegebene Cachegröße geht von einem geringfügig ausgelasteten Cache aus. Wenn die Last des Verbindungsaufwands *plus* die Last von Clientvorgängen die Systemkapazität überschreiten, können im Cache Kapazitätsprobleme entstehen, auch wenn Sie das Verbindungslimit für die aktuelle Cachegröße nicht überschritten haben.
+
+Weitere Informationen zu den verschiedenen Verbindungsgrenzwerten für die einzelnen Ebenen finden Sie unter [Redis Cache – Preise](https://azure.microsoft.com/pricing/details/cache/). Weitere Informationen zu Verbindungen und anderen Standardkonfigurationen finden Sie unter [Standardmäßige Redis-Serverkonfiguration](cache-configure.md#default-redis-server-configuration).
 
 <a name="cache-monitor"></a>
 

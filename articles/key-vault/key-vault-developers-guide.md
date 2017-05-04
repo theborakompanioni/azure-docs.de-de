@@ -1,6 +1,6 @@
 ---
 title: "Entwicklerhandbuch zu Schlüsseltresor | Microsoft Docs"
-description: "Mit Azure-Schlüsseltresor können Entwickler kryptografische Schlüssel in der Microsoft Azure-Umgebung verwalten. "
+description: "Mit Azure-Schlüsseltresor können Entwickler kryptografische Schlüssel in der Microsoft Azure-Umgebung verwalten."
 services: key-vault
 documentationcenter: 
 author: BrucePerlerMS
@@ -12,25 +12,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/17/2017
+ms.date: 04/18/2017
 ms.author: bruceper
 translationtype: Human Translation
-ms.sourcegitcommit: 74de2165ea3a66cd0babc9f6d6d451522988bbe6
-ms.openlocfilehash: b3fc845812e8a4a2729f026baa82b58319d5c5f3
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: c6ae0909faf0711b1ad25df48f626630644c5df7
+ms.lasthandoff: 04/20/2017
 
 
 ---
 # <a name="azure-key-vault-developers-guide"></a>Entwicklerhandbuch zu Azure-Schlüsseltresor
+
 Mithilfe des Schlüsseltresors können Sie in Ihren Anwendungen sicher auf vertrauliche Daten zugreifen:
 
 * Schlüssel und geheime Schlüssel werden geschützt, ohne dass Sie den Code selbst schreiben müssen, und können auf einfache Weise in Ihren Anwendungen verwendet werden.
 * Ihre Kunden können die Verantwortung für ihre eigenen Schlüssel übernehmen und diese selbst verwalten, sodass Sie sich auf die Bereitstellung der Hauptfunktionen der Software konzentrieren können. Auf diese Weise müssen Ihre Anwendungen weder die Verantwortung noch die Haftung für die Mandantenschlüssel und geheimen Mandantenschlüssel Ihrer Kunden übernehmen.
-* Ihre Anwendung kann Signatur- und Verschlüsselungsschlüssel verwenden, wobei die Schlüssel außerhalb der Anwendung verwaltet werden, damit die Lösung auch für eine geografisch verteilte Anwendung geeignet ist.
+* Ihre Anwendung kann Signatur- und Verschlüsselungsschlüssel verwenden, wobei die Schlüssel außerhalb der Anwendung verwaltet werden, damit die Lösung auch für eine geografisch verteilte App geeignet ist.
 * Mit der Key Vault-Version vom September 2016 können Ihre Anwendung nun auch Key Vault-Zertifikate nutzen. Weitere Informationen finden Sie im Artikel **About keys, secrets, and certificates** (Informationen zu Schlüsseln, Kennwörtern und Zertifikaten) in der [Referenz zu REST](https://msdn.microsoft.com/library/azure/dn903623.aspx).
 
 Allgemeine Informationen zu Azure Key Vault finden Sie unter [Was ist der Schlüsseltresor?](key-vault-whatis.md).
 
 ## <a name="videos"></a>Videos
+
 Dieses Video zeigt Ihnen, wie Sie selbst einen Schlüsseltresor erstellen und diesen in der Beispielanwendung „Hello Key Vault“ verwenden.
 
 
@@ -45,6 +48,7 @@ Links zu den im Video erwähnten Ressourcen:
 Um weitere Informationen zu erhalten, folgen Sie dem [Key Vault-Blog](http://aka.ms/kvblog), und beteiligen Sie sich am [Key Vault-Forum](http://aka.ms/kvforum).
 
 ## <a name="creating-and-managing-key-vaults"></a>Erstellen und Verwalten von Schlüsseltresoren
+
 Bevor Sie mit Azure Key Vault in Ihrem Code arbeiten, können Sie Tresore über REST, Resource Manager-Vorlagen, PowerShell oder die Befehlszeilenschnittstelle (CLI) erstellen und verwalten, wie in den folgenden Artikeln beschrieben:
 
 * [Erstellen und Verwalten von Schlüsseltresoren über REST](https://msdn.microsoft.com/library/azure/mt620024.aspx)
@@ -54,13 +58,12 @@ Bevor Sie mit Azure Key Vault in Ihrem Code arbeiten, können Sie Tresore über 
 
 > [!NOTE]
 > Vorgänge für Schlüsseltresore werden über AAD authentifiziert und über eine eigene Zugriffsrichtlinie des Schlüsseltresors autorisiert, die pro Tresor definiert wird.
->
->
 
 ## <a name="coding-with-key-vault"></a>Programmieren mit dem Schlüsseltresor
+
 Das Schlüsseltresor-Verwaltungssystem für Programmierer besteht aus mehreren Schnittstellen auf der Grundlage von REST: [Key Vault REST API Reference](https://msdn.microsoft.com/library/azure/dn903609.aspx)(Referenz für die Schlüsseltresor-REST-API).
 
-Nach erfolgreicher Autorisierung können Sie folgende Aufgaben ausführen:
+Nach erfolgreicher Autorisierung können Sie folgende Vorgänge ausführen.
 
 * Verwalten kryptografischer Schlüssel unter Verwendung von [Create](https://msdn.microsoft.com/library/azure/dn903634.aspx), [Import](https://msdn.microsoft.com/library/azure/dn903626.aspx), [Update](https://msdn.microsoft.com/library/azure/dn903616.aspx), [Delete](https://msdn.microsoft.com/library/azure/dn903611.aspx) und anderer Vorgänge
 * Verwalten von Geheimnissen unter Verwendung von [Get](https://msdn.microsoft.com/library/azure/dn903633.aspx), [Update](https://msdn.microsoft.com/library/azure/dn986818.aspx), [Delete](https://msdn.microsoft.com/library/azure/dn903613.aspx) und anderer Vorgänge
@@ -76,12 +79,14 @@ Die folgenden SDKs sind für die Arbeit mit dem Schlüsseltresor verfügbar:
 Weitere Informationen über die .NET SDK-Version 2.x finden Sie in den [Anmerkungen zu dieser Version](key-vault-dotnet2api-release-notes.md).
 
 ## <a name="example-code"></a>Beispielcode
+
 Vollständige Beispiele für die Verwendung von Key Vault mit Ihren Anwendungen finden Sie hier:
 
 * .NET-Beispielanwendung *HelloKeyVault* und ein Azure-Webdienstbeispiel. [Codebeispiele für Azure-Schlüsseltresor](http://www.microsoft.com/download/details.aspx?id=45343)
 * Tutorial zur Verwendung von Azure Key Vault aus einer Webanwendung in Azure. [Verwenden des Azure-Schlüsseltresors aus einer Webanwendung](key-vault-use-from-web-application.md)
 
 ## <a name="how-tos"></a>Vorgehensweisen
+
 Die folgenden Artikel und Szenarien bieten aufgabenspezifische Anleitungen für die Arbeit mit Azure Key Vault:
 
 * [Ändern der Mandanten-ID des Schlüsseltresors nach einer Abonnementverschiebung:](key-vault-subscription-move-fix.md) Wenn Sie Ihr Azure-Abonnement aus Mandant A in Mandant B verschieben, können die Prinzipale (Benutzer und Anwendungen) in Mandant B nicht auf Ihre vorhandenen Schlüsseltresore zugreifen. Gehen Sie wie folgt vor, um dies zu beheben.
@@ -97,6 +102,7 @@ Die folgenden Artikel und Szenarien bieten aufgabenspezifische Anleitungen für 
 Aufgabenspezifische Anleitungen zum Integrieren und Verwenden von Schlüsseltresoren mit Azure finden Sie in den [Beispielen für Azure Resource Manager-Vorlagen für Key Vault von Ryan Jones](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples).
 
 ## <a name="integrated-with-key-vault"></a>Key Vault-Integration
+
 Diese Artikel enthalten Informationen zu anderen Szenarien und Diensten, in denen Key Vault oder eine Key Vault-Integration zum Einsatz kommt.
 
 * Bei der [Azure Disk Encryption](../security/azure-security-disk-encryption.md) werden das Branchenstandardfeature [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) von Windows und das Feature [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) von Linux verwendet, um Volumeverschlüsselung für das Betriebssystem und die Datenträger bereitzustellen. Die Lösung ist in Azure Key Vault integriert, damit Sie die Schlüssel für die Datenträgerverschlüsselung und die geheimen Schlüssel unter Ihrem Schlüsseltresorabonnement steuern und verwalten können. Gleichzeitig können Sie sicherstellen, dass alle Daten auf den Datenträgern von virtuellen Computern im Ruhezustand in Ihrem Azure-Speicher verschlüsselt sind.
@@ -105,15 +111,12 @@ Diese Artikel enthalten Informationen zu anderen Szenarien und Diensten, in dene
 
 
 ## <a name="supporting-libraries"></a>Unterstützung von Bibliotheken
-* Die [Microsoft Azure Key Vault-Kernbibliothek](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core) bietet `IKey`- und `IKeyResolver`-Schnittstellen, um Schlüssel von Bezeichnern zu ermitteln und mit diesen Schlüsseln Vorgänge auszuführen.
+
+* Die [Microsoft Azure Key Vault-Kernbibliothek](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core) bietet die Schnittstellen **IKey** und **IKeyResolver**, um Schlüssel von Bezeichnern zu ermitteln und mit diesen Schlüsseln Vorgänge auszuführen.
 * [Microsoft Azure Key Vault-Erweiterungen](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions) bieten erweiterte Funktionen für Azure Key Vault.
 
 ## <a name="other-key-vault-resources"></a>Weitere Ressourcen für Schlüsseltresore
+
 * [Key Vault Blog](http://aka.ms/kvblog)
 * [Key Vault Forum](http://aka.ms/kvforum)
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

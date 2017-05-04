@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 4e890582e790ad9187287e1323159098e19d7325
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: c2d14be5f27a775a14039bd63c5ccb5cd7b10f9a
+ms.lasthandoff: 04/26/2017
 
 
 ---
@@ -40,7 +40,7 @@ Die OMS-Agent-Erweiterung kann für folgende Linux-Distributionen ausgeführt we
 | Oracle Linux | 5, 6 und 7 |
 | Red Hat Enterprise Linux-Server | 5, 6 und 7 |
 | Debian GNU/Linux | 6, 7 und 8 |
-| Ubuntu | 12.04 LTS, 14.04 LTS, 15.04 |
+| Ubuntu | 12.04 LTS, 14.04 LTS, 15.04, 15.10, 16.04 LTS |
 | SUSE Linux Enterprise Server | 11 und 12 |
 
 ### <a name="internet-connectivity"></a>Internetkonnektivität
@@ -49,7 +49,7 @@ Um die OMS-Agent-Erweiterung für Linux verwenden zu können, muss der virtuelle
 
 ## <a name="extension-schema"></a>Erweiterungsschema
 
-Der folgende JSON-Code zeigt das Schema für die OMS Agent-Erweiterung. Für Erweiterung werden die Arbeitsbereichs-ID und der Arbeitsbereichsschlüssel aus dem OMS-Zielarbeitsbereich benötigt. Diese sind im OMS-Portal zu finden. Da der Arbeitsbereichsschlüssel als vertrauliche Information behandelt werden muss, sollte er in einer geschützten Einstellungskonfiguration gespeichert werden. Die geschützten Einstellungsdaten der Azure-VM-Erweiterung werden verschlüsselt und nur auf dem virtuellen Zielcomputer entschlüsselt. Bitte beachten Sie, dass bei **workspaceId** und **workspaceKey** die Groß-/Kleinschreibung beachtet wird.
+Der folgende JSON-Code zeigt das Schema für die OMS Agent-Erweiterung. Für die Erweiterung werden die Arbeitsbereichs-ID und der Arbeitsbereichsschlüssel aus dem OMS-Zielarbeitsbereich benötigt. Diese Werte sind im OMS-Portal zu finden. Da der Arbeitsbereichsschlüssel als vertrauliche Information behandelt werden muss, sollte er in einer geschützten Einstellungskonfiguration gespeichert werden. Die geschützten Einstellungsdaten der Azure-VM-Erweiterung werden verschlüsselt und nur auf dem virtuellen Zielcomputer entschlüsselt. Bitte beachten Sie, dass bei **workspaceId** und **workspaceKey** die Groß-/Kleinschreibung beachtet wird.
 
 ```json
 {
@@ -63,7 +63,7 @@ Der folgende JSON-Code zeigt das Schema für die OMS Agent-Erweiterung. Für Erw
   "properties": {
     "publisher": "Microsoft.EnterpriseCloud.Monitoring",
     "type": "OmsAgentForLinux",
-    "typeHandlerVersion": "1.0",
+    "typeHandlerVersion": "1.3",
     "settings": {
       "workspaceId": "myWorkspaceId"
     },
@@ -81,7 +81,7 @@ Der folgende JSON-Code zeigt das Schema für die OMS Agent-Erweiterung. Für Erw
 | apiVersion | 2015-06-15 |
 | Herausgeber | Microsoft.EnterpriseCloud.Monitoring |
 | Typ | OmsAgentForLinux |
-| typeHandlerVersion | 1,0 |
+| typeHandlerVersion | 1.3 |
 | workspaceId (z.B.) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (z.B.) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
 
@@ -106,7 +106,7 @@ Im folgenden Beispiel wird davon ausgegangen, dass die OMS-Erweiterung in der VM
   "properties": {
     "publisher": "Microsoft.EnterpriseCloud.Monitoring",
     "type": "OmsAgentForLinux",
-    "typeHandlerVersion": "1.0",
+    "typeHandlerVersion": "1.3",
     "settings": {
       "workspaceId": "myWorkspaceId"
     },
@@ -131,7 +131,7 @@ Beim Platzieren des JSON-Codes für die Erweiterung im Stamm der Vorlage enthäl
   "properties": {
     "publisher": "Microsoft.EnterpriseCloud.Monitoring",
     "type": "OmsAgentForLinux",
-    "typeHandlerVersion": "1.0",
+    "typeHandlerVersion": "1.3",
     "settings": {
       "workspaceId": "myWorkspaceId"
     },
@@ -148,7 +148,7 @@ Sie können die OMS-Agent-VM-Erweiterung mithilfe der Azure-Befehlszeilenschnitt
 
 ```azurecli
 azure vm extension set myResourceGroup myVM \
-  OmsAgentForLinux Microsoft.EnterpriseCloud.Monitoring 1.0 \
+  OmsAgentForLinux Microsoft.EnterpriseCloud.Monitoring 1.3 \
   --public-config-path public.json  \
   --private-config-path protected.json
 ```
@@ -168,6 +168,30 @@ Die Ausgabe der Erweiterungsausführung wird in der folgenden Datei protokollier
 ```
 /opt/microsoft/omsagent/bin/stdout
 ```
+
+### <a name="error-codes-and-their-meanings"></a>Fehlercodes und ihre Bedeutung
+
+| Fehlercode | Bedeutung | Mögliche Aktion |
+| :---: | --- | --- |
+| 2 | Für Shellbündel ungültige Option bereitgestellt | |
+| 3 | Für Shellbündel keine Option bereitgestellt | |
+| 4 | Ungültiger Pakettyp | |
+| 5 | Das Shellbündel muss als Root ausgeführt werden | |
+| 6 | Ungültige Paketarchitektur | |
+| 10 | VM ist bereits mit einem OMS-Arbeitsbereich verbunden | Zum Verbinden der VM mit dem im Erweiterungsschema angegebenen Arbeitsbereich legen Sie „stopOnMultipleConnections“ in den öffentlichen Einstellungen auf FALSE fest, oder entfernen Sie diese Eigenschaft. Diese VM wird für jeden Arbeitsbereich, mit dem Sie verbunden ist, einmal in Rechnung gestellt. |
+| 11 | Ungültige Konfiguration der Erweiterung bereitgestellt | Folgen Sie den vorherigen Beispielen, um alle für die Bereitstellung erforderlichen Eigenschaftswerte festzulegen. |
+| 20 | Fehler bei der SCX-/OMI-Installation | |
+| 21 | Fehler bei der Installation von SCX/Anbieterkits | |
+| 22 | Fehler bei der Installation des gebündelten Pakets | |
+| 23 | SCX- oder OMI-Paket bereits installiert | |
+| 30 | Interner Bündelfehler | |
+| 51 | Diese Erweiterung wird vom Betriebssystem der VM nicht unterstützt. | |
+| 60 | Nicht unterstützte Version von OpenSSL | Installieren Sie eine Version von OpenSSL, die unsere [Paketanforderungen](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#package-requirements) erfüllt. |
+| 61 | Für Python fehlende ctypes-Bibliothek | Installieren Sie die Python-Bibliothek bzw. das Python-Paket ctypes (python-ctypes). |
+| 62 | Fehlendes Programm tar | Installieren Sie tar. |
+| 63 | Fehlendes Programm sed | Installieren Sie sed. |
+
+Weitere Informationen zur Problembehandlung finden Sie im [Handbuch zur Problembehandlung für den OMS-Agent für Linux](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#).
 
 ### <a name="support"></a>Support
 

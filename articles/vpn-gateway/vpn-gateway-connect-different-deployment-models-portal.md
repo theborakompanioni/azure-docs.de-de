@@ -13,34 +13,38 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/04/2017
+ms.date: 04/21/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
-ms.openlocfilehash: 3d12aaf19326c45cba1a214f1d68f41f0db8ccf6
-ms.lasthandoff: 04/05/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 3c49af42332dc62db80889f1625b243473559cd1
+ms.lasthandoff: 04/25/2017
 
 
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Verbinden von virtuellen Netzwerken aus unterschiedlichen Bereitstellungsmodellen über das Portal
+
+In diesem Artikel wird erläutert, wie Sie klassische VNets mit Resource Manager-VNets verbinden, damit die Ressourcen in den separaten Bereitstellungsmodellen miteinander kommunizieren können. Die Schritte in diesem Artikel werden in erster Linie im Azure-Portal ausgeführt. Sie können diese Konfiguration aber auch mithilfe von PowerShell durch Auswählen des Artikels in dieser Liste erstellen.
+
 > [!div class="op_single_selector"]
-> * [Azure-Portal](vpn-gateway-connect-different-deployment-models-portal.md)
+> * [Portal](vpn-gateway-connect-different-deployment-models-portal.md)
 > * [PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
 > 
 > 
 
-In Azure sind zurzeit zwei Verwaltungsmodelle verfügbar: das klassische Modell und das Resource Manager-Modell. Wenn Sie Azure seit einiger Zeit verwenden, verfügen Sie wahrscheinlich über Azure-VMs und Instanzrollen, die in einem klassischen VNet ausgeführt werden. Ihre neueren VMs und Rolleninstanzen werden möglicherweise in einem in Resource Manager erstellten VNet ausgeführt. In diesem Artikel erfahren Sie, wie Sie eine VPN-Gatewayverbindung über einen IPsec/IKE-VPN-Tunnel zwischen den virtuellen Netzwerken erstellen.
+Das Verbinden eines klassischen VNet mit einem Resource Manager-VNet ähnelt dem Verbinden eines VNet mit einem lokalen Standort. Beide Verbindungstypen verwenden ein VPN-Gateway, um einen sicheren Tunnel mit IPsec/IKE bereitzustellen. Sie können auch eine Verbindung zwischen VNets in unterschiedlichen Abonnements und Regionen erstellen. Es ist auch möglich, VNets zu verbinden, die bereits über Verbindungen mit lokalen Netzwerken verfügen, sofern sie mit einem dynamischen oder routenbasierten Gateway konfiguriert wurden. Weitere Informationen zu VNet-zu-VNet-Verbindungen finden Sie am Ende dieses Artikels unter [Häufig gestellte Fragen zu VNet-zu-VNet-Verbindungen](#faq) . 
 
-Weitere Informationen zu VNet-zu-VNet-Verbindungen finden Sie am Ende dieses Artikels unter [Informationen zu VNet-zu-VNet-Verbindungen](#faq). Darüber hinaus sollten Sie auch den Artikel [VNET-Peering](../virtual-network/virtual-network-peering-overview.md) lesen. VNET-Peering stellt eine weitere Möglichkeit dar, um eine Verbindung zwischen Ihren VNETs zu erstellen, und bietet einige Vorteile in Bezug auf Verbindungen bei bestimmten Konfigurationen.
+Wenn sich Ihre VNets in der gleichen Region befinden, kann es stattdessen hilfreich sein, sie mittels VNet-Peering zu verbinden. Beim VNet-Peering wird kein VPN-Gateway verwendet. Weitere Informationen finden Sie unter [VNet-Peering](../virtual-network/virtual-network-peering-overview.md). 
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
 * Bei den folgenden Schritten wird davon ausgegangen, dass beide VNETs bereits erstellt wurden. Wenn Sie diesen Artikel als Übung verwenden und Sie keine VNETs besitzen, finden Sie über die in den Schritten angegebenen Links Informationen zu ihrer Erstellung.
 * Stellen Sie sicher, dass sich die Adressbereiche für die VNETs weder einander überlappen noch die Bereiche für andere Verbindungen, mit denen die Gateways verbunden werden können.
-* Installieren Sie die neuesten PowerShell-Cmdlets für den Resource Manager und die Dienstverwaltung (klassisch). In diesem Artikel verwenden wir das Azure-Portal und PowerShell. Für die Verbindung zwischen dem klassischen VNET und dem Resource Manager-VNET ist PowerShell erforderlich. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs). 
+* Installieren Sie die neuesten PowerShell-Cmdlets für den Resource Manager und die Dienstverwaltung (klassisch). In diesem Artikel verwenden wir sowohl das Azure-Portal als auch PowerShell. Für die Verbindung zwischen dem klassischen VNET und dem Resource Manager-VNET ist PowerShell erforderlich. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs). 
 
 ### <a name="values"></a>Beispieleinstellungen
-Sie können die Beispieleinstellungen als Referenz oder zum Erstellen einer Testkonfiguration verwenden.
+
+Sie können diese Werte zum Erstellen einer Testumgebung verwenden oder zum besseren Verständnis der Beispiele in diesem Artikel heranziehen.
 
 **Klassisches VNET**
 
@@ -79,6 +83,7 @@ Die folgende Tabelle enthält ein Beispiel dafür, wie die Beispiel-VNETs und lo
 | RMVNet | (192.168.0.0/16) |USA (Ost) |ClassicVNetLocal (10.0.0.0/24) |
 
 ## <a name="classicvnet"></a>1. Konfigurieren der Einstellungen für klassische VNETs
+
 In diesem Abschnitt erstellen Sie das lokale Netzwerk (den lokalen Standort) und das Gateway des virtuellen Netzwerks für das klassische VNET. Wenn Sie nicht über ein klassisches VNET verfügen und diese Schritte als Übung ausführen, können Sie mithilfe der Informationen [dieses Artikels](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) und den oben genannten [Beispieleinstellungswerten](#values) ein VNET erstellen. Wenn Sie bereits ein VNET mit einem VPN-Gateway besitzen, stellen Sie sicher, dass das Gateway dynamisch ist. Falls es sich um ein statisches Gateway handelt, müssen Sie das VPN-Gateway zuerst löschen. Anschließend können Sie fortfahren.
 
 Die Screenshots dienen lediglich zur Veranschaulichung. Achten Sie darauf, dass Sie die Werte durch Ihre eigenen Werte ersetzen oder die [Beispielwerte](#values) verwenden.
@@ -99,6 +104,7 @@ Die Screenshots dienen lediglich zur Veranschaulichung. Achten Sie darauf, dass 
 8. Klicken Sie auf **OK**, um die Werte zu speichern und zum Blatt **Neue VPN-Verbindung** zurückzukehren.
 
 ### <a name="part-2---create-the-virtual-network-gateway"></a>Teil 2 – Erstellen des Gateways für das virtuelle Netzwerk
+
 1. Aktivieren Sie auf dem Blatt **Neue VPN-Verbindung** das Kontrollkästchen **Gateway sofort erstellen**, und klicken Sie auf **Optionale Gatewaykonfiguration**, um das Blatt **Gatewaykonfiguration** zu öffnen. 
 
     ![Öffnen des Blatts „Gatewaykonfiguration“](./media/vpn-gateway-connect-different-deployment-models-portal/optionalgatewayconfiguration.png "Öffnen des Blatts „Gatewaykonfiguration“")
@@ -109,6 +115,7 @@ Die Screenshots dienen lediglich zur Veranschaulichung. Achten Sie darauf, dass 
 6. Klicken Sie auf dem Blatt **Neue VPN-Verbindung** auf **OK**, um mit dem Erstellen des VPN-Gateways zu beginnen. Die Erstellung eines VPN-Gateways kann bis zu 45 Minuten dauern.
 
 ### <a name="ip"></a>Teil 3 – Kopieren der öffentlichen IP-Adresse für das Gateway des virtuellen Netzwerks
+
 Nachdem das Gateway für das virtuelle Netzwerk erstellt wurde, können Sie die Gateway-IP-Adresse anzeigen. 
 
 1. Navigieren Sie zum klassischen VNET, und klicken Sie auf **Übersicht**.
@@ -123,14 +130,15 @@ In diesem Abschnitt erstellen Sie das Gateway für das virtuelle Netzwerk und da
 Die Screenshots dienen lediglich zur Veranschaulichung. Achten Sie darauf, dass Sie die Werte durch Ihre eigenen Werte ersetzen oder die [Beispielwerte](#values) verwenden.
 
 ### <a name="part-1---create-a-gateway-subnet"></a>Teil 1 – Erstellen eines Gatewaysubnetzes
+
 Bevor Sie ein Gateway für ein virtuelles Netzwerk erstellen, müssen Sie das Gatewaysubnetz erstellen. Erstellen Sie ein Gatewaysubnetz mit einem CIDR-Wert von /28 oder einem größeren Wert (/27, /26 usw.).
 
 [!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
-
 [!INCLUDE [vpn-gateway-add-gwsubnet-rm-portal](../../includes/vpn-gateway-add-gwsubnet-rm-portal-include.md)]
 
 ### <a name="part-2---create-a-virtual-network-gateway"></a>Teil 2 – Erstellen eines virtuellen Netzwerkgateways
+
 [!INCLUDE [vpn-gateway-add-gw-rm-portal](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 
 ### <a name="createlng"></a>Teil 3 – Erstellen eines lokalen Netzwerkgateways
@@ -188,20 +196,28 @@ In den folgenden Schritten konfigurieren Sie die Verbindung zwischen dem klassis
 ### <a name="1-connect-to-your-azure-account"></a>1. Herstellen einer Verbindung mit Ihrem Azure-Konto
 
 Öffnen Sie die PowerShell-Konsole mit erhöhten Rechten, und melden Sie sich bei Ihrem Azure-Konto an. Das folgende Cmdlet fordert Sie zur Eingabe der Anmeldeinformationen für Ihr Azure-Konto auf. Nachdem Sie sich angemeldet haben, werden Ihre Kontoeinstellungen heruntergeladen, sodass sie in Azure PowerShell verfügbar sind.
-   
-    Login-AzureRmAccount 
+
+```powershell
+Login-AzureRmAccount
+```
    
 Falls Sie mehrere Abonnements haben, benötigen Sie eine Liste Ihrer Azure-Abonnements.
-   
-    Get-AzureRmSubscription
-   
+
+```powershell
+Get-AzureRmSubscription
+```
+
 Geben Sie das Abonnement an, das Sie verwenden möchten. 
-   
-    Select-AzureRmSubscription -SubscriptionName "Name of subscription"
+
+```powershell
+Select-AzureRmSubscription -SubscriptionName "Name of subscription"
+```
 
 Fügen Sie Ihr Azure-Konto hinzu, um die klassischen PowerShell-Cmdlets zu verwenden. Dazu können Sie den folgenden Befehl verwenden:
-   
-    Add-AzureAccount
+
+```powershell
+Add-AzureAccount
+```
 
 ### <a name="2-view-the-network-configuration-file-values"></a>2. Anzeigen der Werte der Netzwerkkonfigurationsdatei
 
@@ -209,7 +225,9 @@ Wenn Sie im Azure-Portal ein VNet erstellen, ist der vollständige von Azure ver
 
 Erstellen Sie auf Ihrem Computer ein Verzeichnis, und exportieren Sie die Netzwerkkonfigurationsdatei in das Verzeichnis. In diesem Beispiel wird die Netzwerkkonfigurationsdatei in das Verzeichnis „C:\AzureNet“ exportiert.
 
-    Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
+```powershell
+Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
+```
 
 Öffnen Sie die Datei in einem Text-Editor, und zeigen Sie den Namen für Ihr klassisches VNet an. Verwenden Sie zum Ausführen von PowerShell-Cmdlets die Namen in der Netzwerkkonfigurationsdatei.
 
@@ -218,16 +236,19 @@ Erstellen Sie auf Ihrem Computer ein Verzeichnis, und exportieren Sie die Netzwe
 
 ### <a name="3-create-the-connection"></a>3. Erstellen der Verbindung
 
-Legen Sie den gemeinsam verwendeten Schlüssel fest und erstellen Sie die Verbindung zwischen dem klassischen VNET und dem Resource Manager-VNET.
+Legen Sie den gemeinsam verwendeten Schlüssel fest und erstellen Sie die Verbindung zwischen dem klassischen VNET und dem Resource Manager-VNET. Der gemeinsam verwendete Schlüssel kann nicht im Portal festgelegt werden. Stellen Sie sicher, dass Sie die folgenden Schritte ausführen, während Sie zum Verwenden der klassischen Version der PowerShell-Cmdlets angemeldet sind. Verwenden Sie hierzu **Add-AzureAccount**. Andernfalls können Sie „-AzureVNetGatewayKey“ nicht festlegen.
 
 - In diesem Beispiel ist **-VNetName** der Name des klassischen VNET, der in Ihrer Netzwerkkonfigurationsdatei enthalten ist. 
 - **-LocalNetworkSiteName** ist der Name, den Sie für den lokalen Standort festgelegt haben und der in Ihrer Netzwerkkonfigurationsdatei enthalten ist.
 - **-SharedKey** ist ein Wert, den Sie generieren und festlegen. In diesem Beispiel wurde *abc123* verwendet, aber Sie können etwas Komplexeres generieren. Entscheidend ist Folgendes: Der Wert, den Sie hier angeben, muss demselben Wert entsprechen, den Sie beim Erstellen der Verbindung zwischen Ihrem Resource Manager-VNET und dem klassischen VNET angegeben haben.
 
-        Set-AzureVNetGatewayKey -VNetName "Group ClassicRG ClassicVNet" `
-        -LocalNetworkSiteName "172B9E16_RMVNetLocal" -SharedKey abc123
+```powershell
+Set-AzureVNetGatewayKey -VNetName "Group ClassicRG ClassicVNet" `
+-LocalNetworkSiteName "172B9E16_RMVNetLocal" -SharedKey abc123
+```
 
 ##<a name="verify"></a>6. Überprüfen der Verbindungen
+
 Sie können die Verbindung im Azure-Portal oder mit PowerShell überprüfen. Beim Überprüfen müssen Sie möglicherweise eine Minute warten, während die Verbindung erstellt wird. Wenn eine Verbindung erfolgreich erstellt wurde, wechselt der Verbindungsstatus von „Verbindung wird hergestellt“ zu „Verbunden“.
 
 ### <a name="to-verify-the-connection-from-your-classic-vnet-to-your-resource-manager-vnet"></a>So überprüfen Sie die Verbindung des klassischen VNet mit dem Resource Manager-VNet
@@ -238,6 +259,6 @@ Sie können die Verbindung im Azure-Portal oder mit PowerShell überprüfen. Bei
 
 [!INCLUDE [vpn-gateway-verify-connection-portal-rm](../../includes/vpn-gateway-verify-connection-portal-rm-include.md)]
 
-## <a name="faq"></a>Informationen zu VNet-zu-VNet-Verbindungen
+## <a name="faq"></a>Häufig gestellte Fragen zu VNet-zu-VNet-Verbindungen
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-vnet-vnet-faq-include.md)]

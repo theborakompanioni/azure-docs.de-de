@@ -13,17 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/11/2017
+ms.date: 04/24/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: b5bad71095e4b7e3b26df15780467526200ffa10
-ms.openlocfilehash: 68d94a6402b1497f65c4d03fb987ba800e86c2a3
-ms.lasthandoff: 01/31/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: 0e9fa1b1397c60985de9d2e60b3f01146036801f
+ms.lasthandoff: 04/26/2017
 
 
 ---
 # <a name="verify-a-vpn-gateway-connection"></a>Überprüfen einer VPN Gateway-Verbindung
-Sie können die Verbindung Ihres virtuellen Netzwerks mit einem VPN Gateway über das Portal und mithilfe von PowerShell überprüfen. Dieser Artikel enthält sowohl Schritte des Resource Manager- als auch des klassischen Bereitstellungsmodells.
+
+In diesem Artikel erfahren Sie, wie Sie Ihre VPN-Gatewayverbindung im Resource Manager- und klassischen Bereitstellungsmodell überprüfen.
 
 ## <a name="verify-using-the-azure-portal"></a>Überprüfen mithilfe des Azure-Portals
 
@@ -52,7 +53,34 @@ Installieren Sie zum Überprüfen mithilfe von PowerShell die aktuelle Version d
 
 ### <a name="verify-your-connection"></a>Überprüfen der Verbindung
 
-[!INCLUDE [Powershell](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
+[!INCLUDE [PowerShell](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
+
+## <a name="verify-using-the-azure-cli"></a>Überprüfen über die Azure CLI
+
+Zum Überprüfen mithilfe der Azure CLI installieren Sie die neueste Version der CLI-Befehle (ab 2.0). Informationen zur Installation der CLI-Befehle finden Sie unter [Installieren von Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli).
+
+### <a name="log-in-to-your-azure-account"></a>Melden Sie sich bei Ihrem Azure-Konto an.
+
+1. Melden Sie sich mit dem Befehl [az login](/cli/azure/#login) bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm.
+
+  ```azurecli
+  az login
+  ```
+2. Listen Sie die Abonnements für das Konto auf, wenn Sie über mehr als ein Azure-Abonnement verfügen.
+
+  ```azurecli
+  Az account list --all
+  ```
+3. Geben Sie das Abonnement an, das Sie verwenden möchten.
+
+  ```azurecli
+  Az account set --subscription
+  <replace_with_your_subscription_id>
+  ```
+
+### <a name="verify-your-connection"></a>Überprüfen der Verbindung
+
+[!INCLUDE [CLI](../../includes/vpn-gateway-verify-connection-cli-rm-include.md)]
 
 ## <a name="verify-using-the-azure-portal-classic"></a>Überprüfen mithilfe des Azure-Portals (klassisch)
 [!INCLUDE [Azure portal](../../includes/vpn-gateway-verify-connection-azureportal-classic-include.md)]

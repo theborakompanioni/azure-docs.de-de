@@ -16,9 +16,9 @@ ms.workload: na
 ms.date: 03/20/2017
 ms.author: jlian
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: c69334279e79352e3f7ad58d356f6891dd060b0a
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: 539a3e628dfec1088f683652bc9b743b87875d36
+ms.lasthandoff: 04/26/2017
 
 
 ---
@@ -44,7 +44,7 @@ Weitere Informationen finden Sie in den [häufig gestellten Fragen zu Preisen](h
 
 ### <a name="check-your-subscription-and-access"></a>Überprüfen von Abonnement und Zugriff
 
-Zum Anzeigen der Kosten benötigen Sie [Zugriff auf Abonnementebene](../active-directory/role-based-access-control-configure.md), aber nur der Kontoadministrator kann auf das [Kontocenter](https://account.windowsazure.com/Home/Index) zugreifen, Abrechnungsinformationen ändern und Abonnements verwalten. Der Kontoadministrator ist die Person, die den Registrierungsprozess durchlaufen hat. Weitere Informationen finden Sie unter [Hinzufügen oder Ändern von Azure-Administratorrollen](billing-add-change-azure-subscription-administrator.md).
+Zum Anzeigen der Kosten benötigen Sie [Zugriff auf Abrechnungsinformationen auf Abonnementebene](billing-manage-access.md), aber nur der Kontoadministrator kann auf das [Kontocenter](https://account.windowsazure.com/Home/Index) zugreifen, Abrechnungsinformationen ändern und Abonnements verwalten. Der Kontoadministrator ist die Person, die den Registrierungsprozess durchlaufen hat. Weitere Informationen finden Sie unter [Hinzufügen oder Ändern von Azure-Administratorrollen, die das Abonnement oder die Dienste verwalten](billing-add-change-azure-subscription-administrator.md).
 
 Um zu ermitteln, ob Sie der Kontoadministrator sind, [navigieren Sie im Azure-Portal zum Blatt „Abonnements“](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade), und sehen Sie sich die Liste mit den Abonnements an, auf die Sie Zugriff haben. Ausschlaggebend ist die Angabe unter **Meine Rolle**. Wenn hier *Kontoadministrator* angegeben ist, ist alles in Ordnung. Bei einer Angabe wie *Besitzer* verfügen Sie nicht über sämtliche Berechtigungen.
 

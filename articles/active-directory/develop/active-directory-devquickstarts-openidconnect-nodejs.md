@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: xerners
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 27f9c5a18b85c0cc2f918ccefeb063f58cc967c6
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 8d91d551cbb508485ca27d77b23eb319293e4237
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -144,8 +144,7 @@ Passport verwendet ein ähnliches Muster für alle Strategien (Twitter, Facebook
 
     > [!IMPORTANT]
     > The previous code takes any user that happens to authenticate to our server. This is known as auto-registration. We recommend that you don't let anyone authenticate to a production server without first having them register via a process that you decide on. This is usually the pattern you see in consumer apps, which allow you to register with Facebook but then ask you to provide additional information. If this weren't a sample application, we could have extracted the user's email address from the token object that is returned and then asked the user to fill out additional information. Because this is a test server, we add them to the in-memory database.
->
->
+
 
 4. Als Nächstes fügen Sie die Methoden hinzu, mit denen die angemeldeten Benutzer nachverfolgt werden können, wie es von Passport gefordert wird. Diese Methoden umfassen die Serialisierung und Deserialisierung von Informationen des Benutzers.
 
@@ -180,9 +179,9 @@ Passport verwendet ein ähnliches Muster für alle Strategien (Twitter, Facebook
             }
             return fn(null, null);
             };
-            ```
+    ```
 
-5.  Next, let's add the code to load the Express engine. Here we use the default /views and /routes pattern that Express provides.
+5.  Als Nächstes fügen Sie den Code hinzu, um das Express-Modul zu laden. Hier verwend wir die standardmäßigen Muster für „/views“ und „/routes“, die Express bietet.
 
     ```JavaScript
 
@@ -205,9 +204,9 @@ Passport verwendet ein ähnliches Muster für alle Strategien (Twitter, Facebook
           app.use(express.static(__dirname + '/../../public'));
         });
 
-        ```
+    ```
 
-6. Finally, let's add the routes that hand off the actual sign-in requests to the `passport-azure-ad` engine:
+6. Fügen Sie abschließend die Routen hinzu, die die eigentlichen Anmeldeanforderungen an das Modul `passport-azure-ad` übergeben:
 
        
        ```JavaScript
@@ -250,13 +249,13 @@ Passport verwendet ein ähnliches Muster für alle Strategien (Twitter, Facebook
                 log.info('We received a return from AzureAD.');
                 res.redirect('/');
               });
-          ```
+       ```
 
 
-## Step 4: Use Passport to issue sign-in and sign-out requests to Azure AD
-Your app is now properly configured to communicate with the endpoint by using the OpenID Connect authentication protocol.  `passport-azure-ad` has taken care of all the details of crafting authentication messages, validating tokens from Azure AD, and maintaining user sessions. All that remains is giving your users a way to sign in and sign out, and gathering additional information about the signed-in users.
+## <a name="step-4-use-passport-to-issue-sign-in-and-sign-out-requests-to-azure-ad"></a>Schritt 4: Verwenden von Passport zum Übergeben von An- und Abmeldeanforderungen an Azure AD
+Ihre Anwendung ist nun ordnungsgemäß für die Kommunikation mit dem Endpunkt über das Authentifizierungsprotokoll OpenID Connect konfiguriert.  `passport-azure-ad` kümmert sich um alle Details der Erstellung von Authentifizierungsnachrichten, die Überprüfung der Azure AD-Token und Verwaltung von Benutzersitzungen. Sie müssen Ihren Benutzern nur noch die An- und Abmeldung ermöglichen und zusätzliche Informationen zu den angemeldeten Benutzern sammeln.
 
-1. First, let's add the default, sign-in, account, and sign-out methods to our `app.js` file:
+1. Lassen Sie uns zunächst Ihrer Datei `app.js` die Standard-, Anmelde-, Konto- und Abmeldemethoden hinzufügen:
 
     ```JavaScript
 
@@ -329,9 +328,9 @@ Your app is now properly configured to communicate with the endpoint by using th
                 exports.index = function(req, res){
                   res.render('index', { title: 'Express' });
                 };
-                ```
+    ```
 
-2. Create the `/routes/user.js` route under the root directory.
+2. Erstellen der Route `/routes/user.js` im Stammverzeichnis
 
                 ```JavaScript
                 /*
@@ -341,11 +340,11 @@ Your app is now properly configured to communicate with the endpoint by using th
                 exports.list = function(req, res){
                   res.send("respond with a resource");
                 };
-        ```
+                ```
 
- These pass along the request to our views, including the user if present.
+ Diese übergeben lediglich die Anforderung an die Ansichten, einschließlich des Benutzers, falls vorhanden.
 
-3. Create the `/views/index.ejs` view under the root directory. This is a simple page that calls our login and logout methods and enables us to grab account information. Notice that we can use the conditional `if (!user)` as the user being passed through in the request is evidence we have a signed-in user.
+3. Erstellen Sie die Ansicht `/views/index.ejs` im Stammverzeichnis. Dies ist eine einfache Seite, die die Anmelde- und Abmeldemethoden aufruft und uns ermöglicht, Kontoinformationen zu erfassen. Beachten Sie, dass eine bedingte `if (!user)`-Anweisung verwendet werden kann, da das Übergeben des Benutzers in der Anforderung belegt, dass er ein angemeldeter Benutzer ist.
 
     ```JavaScript
     <% if (!user) { %>

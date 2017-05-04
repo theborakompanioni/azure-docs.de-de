@@ -15,14 +15,16 @@ ms.workload: NA
 ms.date: 03/08/2017
 ms.author: chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: 6d8f489ac053db4898741671df73b6abfabeb0dd
-ms.openlocfilehash: 140bee520dd8de0d9303a7d80e10cae407c8b10d
-ms.lasthandoff: 12/14/2016
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 8e487cd33bef73ac66e1b1b6ee614b5a1376d772
+ms.lasthandoff: 04/20/2017
 
 
 ---
 # <a name="create-service-fabric-clusters-on-windows-server-or-linux"></a>Erstellen von Service Fabric-Clustern unter Windows Server oder Linux
-Azure Service Fabric ermöglicht die Erstellung von Service Fabric-Clustern auf VMs oder Computern mit Windows Server oder Linux. Dadurch lassen sich Service Fabric-Anwendungen in jeder lokalen oder cloudbasierten Umgebung oder in einer Microsoft Azure-Umgebung bereitstellen und ausführen, in der sich miteinander verbundene Computer mit Windows Server oder Linux befinden.
+Ein Azure Service Fabric-Cluster ist eine über das Netzwerk verbundene Gruppe von virtuellen oder physischen Computern, auf denen Ihre Microservices bereitgestellt und verwaltet werden. Ein Computer oder virtueller Computer, der Teil eines Clusters ist, wird als Clusterknoten bezeichnet. Cluster können auf Tausende von Knoten skaliert werden. Wenn Sie dem Cluster neue Knoten hinzufügen, verteilt Service Fabric Partitionsreplikate und Instanzen des Diensts auf die erhöhte Anzahl von Knoten neu, um sie auszugleichen. Die Gesamtleistung der Anwendung verbessert sich, und Konflikte beim Speicherzugriff werden reduziert. Wenn die Knoten im Cluster nicht effizient genutzt werden, können Sie die Anzahl der Knoten im Cluster verringern. Service Fabric gleicht die Partitionsreplikate und Instanzen erneut auf die verringerte Anzahl von Knoten aus, um die Hardware der einzelnen Knoten besser zu nutzen.
+
+Service Fabric ermöglicht die Erstellung von Service Fabric-Clustern auf VMs oder Computern mit Windows Server oder Linux. Dadurch lassen sich Service Fabric-Anwendungen in jeder lokalen oder cloudbasierten Umgebung oder in einer Microsoft Azure-Umgebung bereitstellen und ausführen, in der sich miteinander verbundene Computer mit Windows Server oder Linux befinden.
 
 ## <a name="create-service-fabric-clusters-on-azure"></a>Erstellen von Service Fabric-Clustern in Azure
 Das Erstellen eines Clusters unter Azure wird entweder mit einer Resource Manager-Vorlage oder mit dem Azure-Portal durchgeführt. Weitere Informationen finden Sie unter [Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager](service-fabric-cluster-creation-via-arm.md) oder [Erstellen eines Service Fabric-Clusters in Azure über das Azure-Portal](service-fabric-cluster-creation-via-portal.md).

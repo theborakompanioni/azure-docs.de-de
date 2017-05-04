@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/03/2017
+ms.date: 04/21/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 514319dfcb532ab3708352b2467c095d7775b714
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: 30edf20d7fc742da9b42d3ea9baafcce31141259
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -33,8 +33,8 @@ Azure Data Lake-Speicher ist ein mit HDFS-kompatibler Cloudspeicherdienst, der f
 
 Data Lake Store ist für HDInsight ein HDFS-kompatibles Dateisystem, sodass Sie den Storm-HDFS-Bolt verwenden können, um darin zu schreiben. Beim Arbeiten mit Azure Data Lake von HDInsight können Sie ein `adl://`-Dateischema verwenden.
 
-* Wenn der Data Lake-Speicher der primäre Speicher für den Cluster ist, verwenden Sie `adl:///`. Dies ist der Stamm des Clusterspeichers in Azure Data Lake. Dies kann in Ihrem Data Lake-Speicherkonto in den Pfad /clusters/CLUSTERNAME übersetzt werden.
-* Wenn der Data Lake-Speicher der sekundäre Speicher für den Cluster ist, verwenden Sie `adl://DATALAKEACCOUNT.azuredatalakestore.net/`. Dieser URI legt das Data Lake-Speicherkonto fest, auf das Daten geschrieben werden. Daten werden ab dem Stamm von Data Lake Store geschrieben.
+* Wenn Data Lake Store der primäre Speicher für den Cluster ist, verwenden Sie `adl:///`. Dies ist der Stamm des Clusterspeichers in Azure Data Lake. Dies kann in Ihrem Data Lake Store-Konto in den Pfad „/clusters/CLUSTERNAME“ übersetzt werden.
+* Wenn Data Lake Store zusätzlicher Speicher für den Cluster ist, verwenden Sie `adl://DATALAKEACCOUNT.azuredatalakestore.net/`. Dieser URI gibt das Data Lake Store-Konto an, in das Daten geschrieben werden. Daten werden ab dem Stamm von Data Lake Store geschrieben.
 
     > [!NOTE]
     > Sie können dieses URI-Format auch zum Speichern von Daten in dem Data Lake Store-Konto verwenden, das primären Speicher für Ihren Cluster enthält. So können Sie die Daten außerhalb des Verzeichnispfads speichern, der HDInsight enthält.

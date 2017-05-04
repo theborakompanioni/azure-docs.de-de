@@ -12,12 +12,12 @@ ms.workload: multiple
 ms.tgt_pltfrm: powershell
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2016
+ms.date: 04/19/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: 407e9a1e4a50b875fa65e61d3e9aae245dd907e5
-ms.lasthandoff: 03/04/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 5d32a695c14ebe01d1ad8cf4b789bf2edc8c30ce
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -30,15 +30,16 @@ ms.lasthandoff: 03/04/2017
 >
 >
 
-In diesem Thema erfahren Sie, wie Sie Ihre Lösungen mit Azure PowerShell und Azure Resource Manager verwalten. Wenn Sie nicht mit Resource Manager vertraut sind, finden Sie weitere Informationen unter [Übersicht über Resource Manager](resource-group-overview.md). In diesem Thema geht es um Verwaltungsaufgaben. In diesem Tutorial führen Sie folgende Schritte aus:
+In diesem Artikel erfahren Sie, wie Sie Ihre Lösungen mit Azure PowerShell und Azure Resource Manager verwalten. Wenn Sie nicht mit Resource Manager vertraut sind, finden Sie weitere Informationen unter [Übersicht über Resource Manager](resource-group-overview.md). In diesem Thema geht es um Verwaltungsaufgaben. In diesem Tutorial führen Sie folgende Schritte aus:
 
 1. Erstellen einer Ressourcengruppe
 2. Hinzufügen einer Ressource zur Ressourcengruppe
 3. Hinzufügen eines Tags zur Ressource
 4. Abfragen von Ressourcen basierend auf Namen oder Tagwerten
 5. Anwenden und Entfernen einer Sperre für die Ressource
-6. Erstellen einer Resource Manager-Vorlage aus der Ressourcengruppe
-7. Löschen einer Ressourcengruppe
+6. Löschen einer Ressourcengruppe
+
+Das Bereitstellen einer Resource Manager-Vorlage für Ihr Abonnement wird in diesem Artikel nicht erläutert. Informationen darüber finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](resource-group-template-deploy.md).
 
 ## <a name="get-started-with-azure-powershell"></a>Erste Schritte mit Azure PowerShell
 
@@ -142,7 +143,7 @@ Get-AzureRmResourceGroup
 ## <a name="add-resources-to-a-resource-group"></a>Hinzufügen von Ressourcen zu einer Ressourcengruppe
 Um eine Ressource zur Ressourcengruppe hinzuzufügen, können Sie das **New-AzureRmResource**-Cmdlet oder ein Cmdlet verwenden, das spezifisch für den Typ der Ressource ist, die Sie erstellen (z.B. **New-AzureRmStorageAccount**). Sie finden es möglicherweise einfacher, ein für einen Ressourcentyp spezifisches Cmdlet zu verwenden, da es Parameter für die Eigenschaften enthält, die für die neue Ressource erforderlich sind. Für die Verwendung von **New-AzureRmResource** müssen Sie alle Eigenschaften kennen, die ohne Aufforderung festgelegt werden müssen.
 
-Das Hinzufügen einer Ressource über Cmdlets kann jedoch künftig für Verwirrung sorgen, da die neue Ressource nicht in einer Resource Manager-Vorlage vorhanden ist. Microsoft empfiehlt die Definition der Infrastruktur für Ihre Azure-Lösung in einer Resource Manager-Vorlage. Vorlagen ermöglichen Ihnen das zuverlässige und wiederholte Bereitstellen Ihrer Lösung. Das Bereitstellen einer Resource Manager-Vorlage für Ihr Abonnement wird in diesem Thema nicht gezeigt. Informationen darüber finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](resource-group-template-deploy.md). Für dieses Thema erstellen Sie ein Speicherkonto mit einem PowerShell-Cmdlet. Später erstellen Sie jedoch eine Vorlage aus Ihrer Ressourcengruppe.
+Das Hinzufügen einer Ressource über Cmdlets kann jedoch künftig für Verwirrung sorgen, da die neue Ressource nicht in einer Resource Manager-Vorlage vorhanden ist. Microsoft empfiehlt die Definition der Infrastruktur für Ihre Azure-Lösung in einer Resource Manager-Vorlage. Vorlagen ermöglichen Ihnen das zuverlässige und wiederholte Bereitstellen Ihrer Lösung. Für dieses Thema erstellen Sie ein Speicherkonto mit einem PowerShell-Cmdlet. Später erstellen Sie jedoch eine Vorlage aus Ihrer Ressourcengruppe.
 
 Das folgende Cmdlet erstellt ein Speicherkonto. Geben Sie einen eindeutigen Namen für das Speicherkonto anstelle des im Beispiel angezeigten Namens an. Der Name muss zwischen drei und 24 Zeichen lang sein und darf nur Zahlen und Kleinbuchstaben enthalten. Wenn Sie den im Beispiel angezeigten Namen verwenden, erhalten Sie eine Fehlermeldung, da dieser Name bereits verwendet wird.
 
@@ -221,25 +222,6 @@ Remove-AzureRmResourceLock -LockName LockStorage -ResourceName mystoragename -Re
 ```
 
 Weitere Informationen zum Setzen von Sperren finden Sie unter [Sperren von Ressourcen mit dem Azure Resource Manager](resource-group-lock-resources.md).
-
-## <a name="export-resource-manager-template"></a>Exportieren einer Resource Manager-Vorlage
-Für eine vorhandene Ressourcengruppe (die über PowerShell oder eine andere Methode, z.B. das Portal, bereitgestellt wird), können Sie die Resource Manager-Vorlage für die Ressourcengruppe anzeigen. Das Exportieren der Vorlage hat zwei Vorteile:
-
-1. Sie können problemlos zukünftige Bereitstellungen der Lösung automatisieren, da die gesamte Infrastruktur in der Vorlage definiert ist.
-2. Sie können sich mit der Vorlagensyntax vertraut machen, indem Sie sich die JavaScript Object Notation (JSON) zu Ihrer Lösung ansehen.
-
-> [!NOTE]
-> Die Funktion zum Exportieren von Vorlagen befindet sich in der Vorschau, und das Exportieren einer Vorlage wird derzeit nicht für alle Ressourcentypen unterstützt. Wenn Sie versuchen, eine Vorlage zu exportieren, wird ggf. ein Fehler mit dem Hinweis angezeigt, dass einige Ressourcen nicht exportiert wurden. Bei Bedarf können Sie diese Ressourcen nach dem Herunterladen manuell in der Vorlage definieren.
->
->
-
-Führen Sie zum Anzeigen der Vorlage für eine Ressourcengruppe das Cmdlet **Export-AzureRmResourceGroup** aus.
-
-```powershell
-Export-AzureRmResourceGroup -ResourceGroupName TestRG1 -Path c:\Azure\Templates\Downloads\TestRG1.json
-```
-
-Es gibt viele Optionen und Szenarien für das Exportieren einer Resource Manager-Vorlage. Weitere Informationen finden Sie unter [Exportieren einer Azure Resource Manager-Vorlage aus vorhandenen Ressourcen](resource-manager-export-template.md).
 
 ## <a name="remove-resources-or-resource-group"></a>Entfernen von Ressourcen oder Ressourcengruppen
 Sie können eine Ressource oder Ressourcengruppe entfernen. Wenn Sie eine Ressourcengruppe entfernen, entfernen Sie auch alle Ressourcen in dieser Ressourcengruppe.

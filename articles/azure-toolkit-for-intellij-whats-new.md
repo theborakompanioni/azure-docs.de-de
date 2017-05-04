@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 12/22/2016
+ms.date: 04/14/2017
 ms.author: robmcm;asirveda;martinsawicki
 translationtype: Human Translation
-ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
-ms.openlocfilehash: a2006dbcf0d63ef38651a0859dc654d531fd875a
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: 23714856f0f778be04cf321e0726b53ade430f57
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -28,6 +29,15 @@ Dieser Artikel enthält Informationen zu den verschiedenen Versionen und den neu
 > Es gibt auch ein Azure-Toolkit für die Eclipse-IDE. Weitere Informationen finden Sie unter [Azure-Toolkit für Eclipse].
 > 
 > 
+
+### <a name="april-14-2017"></a>14. April 2017
+Die Version des Azure-Toolkits für IntelliJ vom April 2017 umfasst folgende Erweiterungen:
+
+* **Verbesserte Azure-Anmeldung**: Das Azure-Toolkit für IntelliJ unterstützt nun zwei Methoden zur Anmeldung bei Ihrem Azure-Konto: *Interaktiv* und *Automatisch*. Weitere Informationen finden Sie in der [Anleitung zur Azure-Anmeldung für das Azure-Toolkit für IntelliJ].
+* **Veröffentlichen mit Docker-Containern**: Sie können jetzt mithilfe des Azure-Toolkits für IntelliJ Ihre Webanwendungen als Docker-Container veröffentlichen. Weitere Informationen finden Sie unter [Informationen zum Veröffentlichen einer Web-App als Docker-Container mit dem Azure-Toolkit für IntelliJ].
+* **Speicherkontenverwaltung**: Das Azure-Toolkit für IntelliJ unterstützt jetzt das Verwalten Ihrer Speicherkonten in der Azure-Explorer-Ansicht. Weitere Informationen finden Sie unter [Verwalten von Speicherkonten mit dem Azure-Explorer für IntelliJ].
+* **Verwaltung virtueller Computer**: Das Azure-Toolkit für IntelliJ unterstützt jetzt das Verwalten Ihrer virtuellen Computer im Azure-Explorer-Fenster. Weitere Informationen finden Sie unter [Verwalten virtueller Computer mit dem Azure-Explorer für IntelliJ].
+* **Entfernen der Unterstützung für das Remotedebuggen**. Das Remotedebuggen von Java-Web-Apps in Azure App Service wurde aus dem Azure-Toolkit für IntelliJ entfernt. Dies war es erforderlich, um einige Probleme zu beheben, die bei Kunden bei Verwendung des Toolkits aufgetreten waren.
 
 ### <a name="august-26-2016"></a>26. August 2016
 Das Release des Azure-Toolkits für IntelliJ vom April 2016 umfasst folgende Erweiterungen:
@@ -61,13 +71,15 @@ Die Version des Azure-Toolkits für IntelliJ vom April 2016 umfasst folgende Erw
 Weitere Informationen zu den Azure-Toolkits für Java-IDEs finden Sie unter den folgenden Links:
 
 * [Azure-Toolkit für Eclipse]
-  * [Installation des Azure Toolkit für Eclipse]
-  * [Erstellen einer „Hello World“-Web-App für Azure in Eclipse]
   * [Neuerungen im Azure-Toolkit für Eclipse]
+  * [Installieren des Azure-Toolkits für Eclipse]
+  * [Erstellen einer „Hello World“-Web-App für Azure in Eclipse]
+  * [Anleitung zur Azure-Anmeldung für das Azure-Toolkit für Eclipse]
 * [Azure Toolkit für IntelliJ]
-  * [Installieren des Azure Toolkit für IntelliJ]
-  * [Erstellen einer Hello World-Web-App für Azure in IntelliJ]
   * *Neuigkeiten im Azure-Toolkit für IntelliJ (dieser Artikel)*
+  * [Installieren des Azure Toolkit für IntelliJ]
+  * [Anleitung zur Azure-Anmeldung für das Azure-Toolkit für IntelliJ]
+  * [Erstellen einer „Hello World“-Web-App für Azure in IntelliJ]
 
 Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java Developer Center].
 
@@ -76,18 +88,20 @@ Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java
 [Azure-Toolkit für Eclipse]: ./azure-toolkit-for-eclipse.md
 [Azure Toolkit für IntelliJ]: ./azure-toolkit-for-intellij.md
 [Erstellen einer „Hello World“-Web-App für Azure in Eclipse]: ./app-service-web/app-service-web-eclipse-create-hello-world-web-app.md
-[Erstellen einer Hello World-Web-App für Azure in IntelliJ]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md
-[Installation des Azure Toolkit für Eclipse]: ./azure-toolkit-for-eclipse-installation.md
+[Erstellen einer „Hello World“-Web-App für Azure in IntelliJ]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md
+[Installieren des Azure-Toolkits für Eclipse]: ./azure-toolkit-for-eclipse-installation.md
 [Installieren des Azure Toolkit für IntelliJ]: ./azure-toolkit-for-intellij-installation.md
+[Anleitung zur Azure-Anmeldung für das Azure-Toolkit für Eclipse]: ./azure-toolkit-for-eclipse-sign-in-instructions.md
+[Anleitung zur Azure-Anmeldung für das Azure-Toolkit für IntelliJ]: ./azure-toolkit-for-intellij-sign-in-instructions.md
 [Neuerungen im Azure-Toolkit für Eclipse]: ./azure-toolkit-for-eclipse-whats-new.md
 [What's New in the Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij-whats-new.md
+
+[Anleitung zur Azure-Anmeldung für das Azure-Toolkit für IntelliJ]: ./azure-toolkit-for-intellij-sign-in-instructions.md
+[Informationen zum Veröffentlichen einer Web-App als Docker-Container mit dem Azure-Toolkit für IntelliJ]: ./azure-toolkit-for-intellij-publish-as-docker-container.md
+[Verwalten von Speicherkonten mit dem Azure-Explorer für IntelliJ]: ./azure-toolkit-for-intellij-managing-storage-accounts-using-azure-explorer.md
+[Verwalten virtueller Computer mit dem Azure-Explorer für IntelliJ]: ./azure-toolkit-for-intellij-managing-virtual-machines-using-azure-explorer.md
 
 [Azure Java Developer Center]: http://go.microsoft.com/fwlink/?LinkID=699547
 
 [Verwenden des HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Erstellen von Spark-Anwendungen für HDInsight Spark-Cluster unter Linux]: ./hdinsight/hdinsight-apache-spark-intellij-tool-plugin.md
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

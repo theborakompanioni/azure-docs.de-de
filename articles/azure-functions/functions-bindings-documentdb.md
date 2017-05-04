@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/10/2016
+ms.date: 04/18/2016
 ms.author: chrande; glenga
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 2ac78606f851068fa0fb7dcab3bac1c629b9cdb3
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: e38c9187be42946df1e8059ba44f10f76d32d984
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -37,34 +37,27 @@ Weitere Informationen zu DocumentDB finden Sie in der [Einführung in DocumentDB
 ## <a name="documentdb-input-binding"></a>DocumentDB-Eingabebindung
 Die DocumentDB-Eingabebindung ruft ein DocumentDB-Dokument ab und übergibt es an den benannten Eingabeparameter der Funktion. Die Dokument-ID kann basierend auf dem Trigger ermittelt werden, der die Funktion aufruft. 
 
-Die DocumentDB-Eingabe zu einer Funktion verwendet das folgende JSON-Objekt im `bindings`-Array von „function.json“:
+Die DocumentDB-Eingabebindung hat in *function.json* die folgenden Eigenschaften:
 
-```json
-{
-  "name": "<Name of input parameter in function signature>",
-  "type": "documentDB",
-  "databaseName": "<Name of the DocumentDB database>",
-  "collectionName": "<Name of the DocumentDB collection>",
-  "id": "<Id of the DocumentDB document - see below>",
-  "connection": "<Name of app setting with connection string - see below>",
-  "direction": "in"
-},
-```
+- `name`: Bezeichnername, der im Funktionscode für das Dokument verwendet wird.
+- `type`: Muss auf „documentdb“ festgelegt werden.
+- `databaseName`: Die Datenbank mit dem Dokument.
+- `collectionName`: Die Sammlung mit dem Dokument.
+- `id`: Die ID des abzurufenden Dokuments. Diese Eigenschaft unterstützt Bindungsparameter. Siehe [Binden an benutzerdefinierten Eingabeeigenschaften in einem Bindungsausdruck](functions-triggers-bindings.md#bind-to-custom-input-properties-in-a-binding-expression) im Artikel [Konzepte für Azure Functions-Trigger und -Bindungen](functions-triggers-bindings.md).
+- `sqlQuery`: Eine DocumentDB SQL-Abfrage zum Abrufen mehrerer Dokumente. Die Abfrage unterstützt Bindungen zur Laufzeit. Beispiel: `SELECT * FROM c where c.departmentId = {departmentId}`
+- `connection`: Der Name der App-Einstellung mit Ihrer DocumentDB-Verbindungszeichenfolge.
+- `direction`: Muss auf `"in"` festgelegt werden.
 
-Beachten Sie Folgendes:
+Die Eigenschaften `id` und `sqlQuery` können nicht beide angegeben werden. Wenn weder `id` noch `sqlQuery` festgelegt ist, wird die gesamte Sammlung abgerufen.
 
-* `id` unterstützt Bindungen wie `{queueTrigger}`, die den Zeichenfolgenwert der Warteschlangennachricht als Dokument-ID verwendet.
-* `connection` muss der Name einer App-Einstellung sein, die auf den Endpunkt für Ihr DocumentDB-Konto verweist (Wert: `AccountEndpoint=<Endpoint for your account>;AccountKey=<Your primary access key>`). Wenn Sie über die Functions-Portal-UI ein DocumentDB-Konto erstellen, wird bei der Kontoerstellung eine App-Einstellung für Sie erstellt. Damit Sie ein vorhandenes DocumentDB-Konto verwenden können, müssen Sie [diese App-Einstellung manuell konfigurieren](functions-how-to-use-azure-function-app-settings.md). 
-* Wenn das angegebene Dokument nicht gefunden wird, wird der benannte Eingabeparameter zur Funktion auf `null` festgelegt. 
+## <a name="using-a-documentdb-input-binding"></a>Verwenden einer DocumentDB-Eingabebindung
 
-## <a name="input-usage"></a>Eingabeverwendung
-Dieser Abschnitt veranschaulicht die Verwendung Ihrer DocumentDB-Eingabebindung in Ihrem Funktionscode.
-
-In C#- und F#-Funktionen werden alle Änderungen am Eingabedokument (benannter Eingabeparameter) automatisch wieder an die Sammlung zurückgesendet, wenn die Funktion erfolgreich beendet wird. In Node.js-Funktionen werden Dokumentaktualisierungen in der Eingabebindung nicht an die Sammlung zurückgesendet. Sie können jedoch mithilfe von `context.bindings.<documentName>In` und `context.bindings.<documentName>Out` Aktualisierungen an Eingabedokumenten vornehmen. Informationen zur Vorgehensweise finden Sie im [Node.js-Beispiel](#innodejs).
+* Wenn in C#- und F#-Funktionen die Funktion erfolgreich beendet wird, erfolgen alle Änderungen am Eingabedokument mithilfe benannter Eingabeparameter automatisch. 
+* In JavaScript-Funktionen erfolgen Aktualisierungen bei Beenden der Funktion nicht automatisch. Verwenden Sie stattdessen `context.bindings.<documentName>In` und `context.bindings.<documentName>Out`, um Aktualisierungen vorzunehmen. Siehe das [JavaScript-Beispiel](#injavascript).
 
 <a name="inputsample"></a>
 
-## <a name="input-sample"></a>Eingabebeispiel
+## <a name="input-sample-for-single-document"></a>Eingabebeispiel für einzelnes Dokument
 Angenommen, die folgende DocumentDB-Eingabebindung befindet sich im `bindings`-Array von „function.json“:
 
 ```json
@@ -83,12 +76,13 @@ Sehen Sie sich das sprachspezifische Beispiel an, in dem diese Eingabebindung zu
 
 * [C#](#incsharp)
 * [F#](#infsharp)
-* [Node.js](#innodejs)
+* [JavaScript](#injavascript)
 
 <a name="incsharp"></a>
 ### <a name="input-sample-in-c"></a>Eingabebeispiel in C# #
 
 ```cs
+// Change input document contents using DocumentDB input binding 
 public static void Run(string myQueueItem, dynamic inputDocument)
 {   
   inputDocument.text = "This has changed.";
@@ -99,12 +93,13 @@ public static void Run(string myQueueItem, dynamic inputDocument)
 ### <a name="input-sample-in-f"></a>Eingabebeispiel in F# #
 
 ```fsharp
+(* Change input document contents using DocumentDB input binding *)
 open FSharp.Interop.Dynamic
 let Run(myQueueItem: string, inputDocument: obj) =
   inputDocument?text <- "This has changed."
 ```
 
-Sie müssen eine `project.json`-Datei hinzufügen, die die NuGet-Abhängigkeiten `FSharp.Interop.Dynamic` und `Dynamitey` angibt:
+Dieses Beispiel erfordert die Datei `project.json`, die die NuGet-Abhängigkeiten `FSharp.Interop.Dynamic` und `Dynamitey` angibt:
 
 ```json
 {
@@ -121,11 +116,12 @@ Sie müssen eine `project.json`-Datei hinzufügen, die die NuGet-Abhängigkeiten
 
 Informationen zum Hinzufügen einer `project.json`-Datei finden Sie unter [Paketverwaltung](functions-reference-fsharp.md#package).
 
-<a name="innodejs"></a>
+<a name="injavascript"></a>
 
-### <a name="input-sample-in-nodejs"></a>Eingabebeispiel in Node.js
+### <a name="input-sample-in-javascript"></a>Eingabebeispiel in JavaScript
 
 ```javascript
+// Change input document contents using DocumentDB input binding, using context.bindings.inputDocumentOut
 module.exports = function (context) {   
   context.bindings.inputDocumentOut = context.bindings.inputDocumentIn;
   context.bindings.inputDocumentOut.text = "This was updated!";
@@ -133,29 +129,66 @@ module.exports = function (context) {
 };
 ```
 
-## <a id="docdboutput"></a>DocumentDB-Ausgabebindung
-Die DocumentDB-Ausgabebindung ermöglicht das Schreiben eines neuen Dokuments in eine Azure DocumentDB-Datenbank. 
+## <a name="input-sample-with-multiple-documents"></a>Eingabebeispiel mit mehreren Dokumenten
 
-Die Ausgabebindung verwendet das folgende JSON-Objekte im `bindings`-Array von „function.json“: 
+Angenommen, Sie möchten mehrere von einer SQL-Abfrage angegebene Dokumente mithilfe eines Warteschlangentriggers abrufen, um die Abfrageparameter anzupassen. 
 
-```json
+In diesem Beispiel stellt der Warteschlangentrigger den Parameter `departmentId` bereit.Die Warteschlangennachricht `{ "departmentId" : "Finance" }` gibt dann alle Datensätze für die Finanzabteilung zurück. Verwenden Sie in *function.json* Folgendes:
+
+```
 {
-  "name": "<Name of output parameter in function signature>",
-  "type": "documentDB",
-  "databaseName": "<Name of the DocumentDB database>",
-  "collectionName": "<Name of the DocumentDB collection>",
-  "createIfNotExists": <true or false - see below>,
-  "connection": "<Value of AccountEndpoint in Application Setting - see below>",
-  "direction": "out"
+    "name": "documents",
+    "type": "documentdb",
+    "direction": "in",
+    "databaseName": "MyDb",
+    "collectionName": "MyCollection",
+    "sqlQuery": "SELECT * from c where c.departmentId = {departmentId}"
+    "connection": "DocumentDBConnection"
 }
 ```
 
-Beachten Sie Folgendes:
+### <a name="input-sample-with-multiple-documents-in-c"></a>Eingabebeispiel mit mehreren Dokumenten in C#
 
-* Legen Sie `createIfNotExists` auf `true` fest, um die Datenbank und die Sammlung zu erstellen, wenn diese nicht vorhanden sind. Standardwert: `false`. Neue Sammlungen werden mit reserviertem Durchsatz erstellt. Dies wirkt sich auf den Preis aus. Weitere Informationen finden Sie unter [DocumentDB-Preise](https://azure.microsoft.com/pricing/details/documentdb/).
-* `connection` muss der Name einer App-Einstellung sein, die auf den Endpunkt für Ihr DocumentDB-Konto verweist (Wert: `AccountEndpoint=<Endpoint for your account>;AccountKey=<Your primary access key>`). Wenn Sie über die Functions-Portal-UI ein DocumentDB-Konto erstellen, wird bei der Kontoerstellung eine neue App-Einstellung für Sie erstellt. Damit Sie ein vorhandenes DocumentDB-Konto verwenden können, müssen Sie [diese App-Einstellung manuell konfigurieren](functions-how-to-use-azure-function-app-settings.md). 
+```csharp
+public static void Run(QueuePayload myQueueItem, IEnumerable<dynamic> documents)
+{   
+    foreach (var doc in documents)
+    {
+        // operate on each document
+    }    
+}
 
-## <a name="output-usage"></a>Ausgabeverwendung
+public class QueuePayload
+{
+    public string departmentId { get; set; }
+}
+```
+
+### <a name="input-sample-with-multiple-documents-in-javascript"></a>Eingabebeispiel mit mehreren Dokumenten in JavaScript
+
+```javascript
+module.exports = function (context, input) {    
+    var documents = context.bindings.documents;
+    for (var i = 0; i < documents.length; i++) {
+        var document = documents[i];
+        // operate on each document
+    }        
+    context.done();
+};
+```
+
+## <a id="docdboutput"></a>DocumentDB-Ausgabebindung
+Die DocumentDB-Ausgabebindung ermöglicht das Schreiben eines neuen Dokuments in eine Azure DocumentDB-Datenbank. Sie hat in *function.json* die folgenden Eigenschaften:
+
+- `name`: Bezeichner, der im Funktionscode für das neue Dokument verwendet wird.
+- `type`: Muss auf `"documentdb"` festgelegt werden.
+- `databaseName`: Datenbank mit der Sammlung, in der das neue Dokument erstellt wird.
+- `collectionName`: Sammlung, in der das neue Dokument erstellt wird.
+- `createIfNotExists`: Boolescher Wert, der angibt, ob die Sammlung erstellt werden soll, wenn sie nicht vorhanden ist. Die Standardeinstellung ist *false*. Der Grund hierfür ist, dass Sammlungen mit reserviertem Durchsatz erstellt werden, was sich auf den Preis auswirkt. Weitere Informationen finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/documentdb/).
+- `connection`: Der Name der App-Einstellung mit Ihrer DocumentDB-Verbindungszeichenfolge.
+- `direction`: Muss auf `"out"` festgelegt werden.
+
+## <a name="using-a-documentdb-output-binding"></a>Verwenden einer DocumentDB-Ausgabebindung
 Dieser Abschnitt veranschaulicht die Verwendung Ihrer DocumentDB-Ausgabebindung in Ihrem Funktionscode.
 
 Beim Schreiben in den Ausgabeparameter in Ihrer Funktion wird standardmäßig ein neues Dokument mit einer automatisch generierten GUID als Dokument-ID in Ihrer Datenbank erstellt. Sie können die Dokument-ID des Ausgabedokument angeben, indem Sie im Ausgabeparameter die JSON-Eigenschaft `id` festlegen. 
@@ -163,27 +196,11 @@ Beim Schreiben in den Ausgabeparameter in Ihrer Funktion wird standardmäßig ei
 >[!Note]  
 >Wenn Sie die ID eines vorhandenen Dokuments angeben, wird dieses vom neuen Ausgabedokument überschrieben. 
 
-Sie können in die Ausgabe schreiben, indem Sie einen der folgenden Typen verwenden:
-
-* Beliebiges [Objekt](https://msdn.microsoft.com/library/system.object.aspx) – nützlich für JSON-Serialisierung.
-  Wenn Sie einen benutzerdefinierten Ausgabetyp deklarieren (z.B. `out FooType paramName`), versucht Azure Functions, das Objekt in JSON zu serialisieren. Wenn der Ausgabeparameter bei Beendigung der Funktion NULL ist, erstellt die Functions-Laufzeit ein Blob als NULL-Objekt.
-* Zeichenfolge – (`out string paramName`) nützlich für Textblobdaten. Die Functions-Laufzeit erstellt nur dann ein Blob, wenn der Zeichenfolgenparameter bei Rückgabe durch die Funktion ungleich NULL ist.
-
-In C#-Funktionen können Sie auch eine Ausgabe in einen der folgenden Typen erstellen:
-
-* `TextWriter`
-* `Stream`
-* `CloudBlobStream`
-* `ICloudBlob`
-* `CloudBlockBlob` 
-* `CloudPageBlob` 
-
 Für die Ausgabe mehrerer Dokumente können Sie auch eine Bindung mit `ICollector<T>` oder `IAsyncCollector<T>` erstellen, wobei `T` einer der unterstützten Typen ist.
-
 
 <a name="outputsample"></a>
 
-## <a name="output-sample"></a>Ausgabebeispiel
+## <a name="documentdb-output-binding-sample"></a>Beispiel einer DocumentDB-Ausgabebindung
 Angenommen, die folgende DocumentDB-Ausgabebindung befindet sich im `bindings`-Array von „function.json“:
 
 ```json
@@ -223,7 +240,7 @@ Sehen Sie sich das sprachspezifische Beispiel an, in dem diese Ausgabebindung zu
 
 * [C#](#outcsharp)
 * [F#](#outfsharp)
-* [Node.js](#outnodejs)
+* [JavaScript](#outjavascript)
 
 <a name="outcsharp"></a>
 
@@ -276,7 +293,7 @@ let Run(myQueueItem: string, employeeDocument: byref<obj>, log: TraceWriter) =
       address = employee?address }
 ```
 
-Sie müssen eine `project.json`-Datei hinzufügen, die die NuGet-Abhängigkeiten `FSharp.Interop.Dynamic` und `Dynamitey` angibt:
+Dieses Beispiel erfordert die Datei `project.json`, die die NuGet-Abhängigkeiten `FSharp.Interop.Dynamic` und `Dynamitey` angibt:
 
 ```json
 {
@@ -293,9 +310,9 @@ Sie müssen eine `project.json`-Datei hinzufügen, die die NuGet-Abhängigkeiten
 
 Informationen zum Hinzufügen einer `project.json`-Datei finden Sie unter [Paketverwaltung](functions-reference-fsharp.md#package).
 
-<a name="outnodejs"></a>
+<a name="outjavascript"></a>
 
-### <a name="output-sample-in-nodejs"></a>Ausgabebeispiel in Node.js
+### <a name="output-sample-in-javascript"></a>Ausgabebeispiel in JavaScript
 
 ```javascript
 module.exports = function (context) {

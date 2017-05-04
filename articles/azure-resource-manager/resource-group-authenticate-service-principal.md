@@ -1,6 +1,6 @@
 ---
 title: "Erstellen einer Identität für die Azure-App mit PowerShell | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie mithilfe von Azure PowerShell eine Active Directory-Anwendung und einen Dienstprinzipal erstellen sowie mittels rollenbasierter Zugriffssteuerung Zugriff auf Ressourcen gewähren. Es wird gezeigt, wie eine Anwendung per Kennwort oder Zertifikat authentifiziert wird."
+description: "Hier erfahren Sie, wie Sie mithilfe von Azure PowerShell eine Azure Active Directory-Anwendung und einen Dienstprinzipal erstellen sowie mittels rollenbasierter Zugriffssteuerung Zugriff auf Ressourcen gewähren. Es wird gezeigt, wie eine Anwendung per Kennwort oder Zertifikat authentifiziert wird."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 04/03/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
-ms.openlocfilehash: db36f52f538905683b4cbc6db7cc41b56710db8c
-ms.lasthandoff: 04/04/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 775734ea55d1136e64afc713356b0f0bfc81ea9f
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -37,7 +37,7 @@ Wenn eine App oder ein Skript Zugriff auf Ressourcen benötigt, können Sie eine
 In diesem Thema erfahren Sie, wie Sie mithilfe von [Azure PowerShell](/powershell/azureps-cmdlets-docs) alle Komponenten und Einstellungen einrichten, die Sie benötigen, um eine Anwendung mit eigenen Anmeldeinformationen und einer eigenen Identität auszuführen.
 
 ## <a name="required-permissions"></a>Erforderliche Berechtigungen
-Zum Abschließen dieses Themas benötigen Sie sowohl in der Azure Active Directory-Instanz als auch im Azure-Abonnement ausreichende Berechtigungen. Insbesondere müssen Sie eine App in der Active Directory-Instanz erstellen und den Dienstprinzipal einer Rolle zuweisen können. 
+Zum Abschließen dieses Themas benötigen Sie sowohl in der Azure Active Directory-Instanz als auch im Azure-Abonnement ausreichende Berechtigungen. Insbesondere müssen Sie eine App in der Azure Active Directory-Instanz erstellen und den Dienstprinzipal einer Rolle zuweisen können. 
 
 Die einfachste Möglichkeit zum Überprüfen, ob Ihr Konto über die erforderlichen Berechtigungen verfügt, ist über das Portal. Siehe [Überprüfen der erforderlichen Berechtigung](resource-group-create-service-principal-portal.md#required-permissions).
 
@@ -85,7 +85,7 @@ Param (
     $Scope = (Get-AzureRmResourceGroup -Name $ResourceGroup -ErrorAction Stop).ResourceId
  }
 
- # Create Active Directory application with password
+ # Create Azure Active Directory application with password
  $Application = New-AzureRmADApplication -DisplayName $ApplicationDisplayName -HomePage ("http://" + $ApplicationDisplayName) -IdentifierUris ("http://" + $ApplicationDisplayName) -Password $Password
 
  # Create Service Principal for the AD app
@@ -110,7 +110,7 @@ Bitte beachten Sie bezüglich des Skripts folgende Punkte:
 * Geben Sie den Parameter ResourceGroup nur an, wenn Sie den Bereich der Rollenzuweisung auf eine Ressourcengruppe begrenzen möchten.
 * Bei Anwendungen mit nur einem Mandanten werden Startseite und Bezeichner-URIs nicht überprüft.
 *  In diesem Beispiel fügen Sie den Dienstprinzipal der Rolle „Mitwirkender“ hinzu. Informationen zu den anderen Rollen finden Sie unter [RBAC: Integrierte Rollen](../active-directory/role-based-access-built-in-roles.md).
-* Das Skript befindet sich 15 Sekunden lang im Ruhezustand und schafft damit Zeit für die Verteilung des neuen Dienstprinzipals in Active Directory. Falls das Skript nicht lange genug wartet, sehen Sie folgende Fehlermeldung: „PrincipalNotFound: Principal {id} does not exist in the directory.“ (PrincipalNotFound: Prinzipal {id} ist im Verzeichnis nicht vorhanden.).
+* Das Skript befindet sich 15 Sekunden lang im Ruhezustand und schafft damit Zeit für die Verteilung des neuen Dienstprinzipals in Azure Active Directory. Falls das Skript nicht lange genug wartet, sehen Sie folgende Fehlermeldung: „PrincipalNotFound: Principal {id} does not exist in the directory.“ (PrincipalNotFound: Prinzipal {id} ist im Verzeichnis nicht vorhanden.).
 * Wenn Sie dem Dienstprinzipal Zugriff auf weitere Abonnements oder Ressourcengruppen erteilen müssen, führen Sie das `New-AzureRMRoleAssignment`-Cmdlet erneut mit unterschiedlichen Bereichen aus.
 
 
@@ -194,7 +194,7 @@ Bitte beachten Sie bezüglich des Skripts folgende Punkte:
 * Geben Sie den Parameter ResourceGroup nur an, wenn Sie den Bereich der Rollenzuweisung auf eine Ressourcengruppe begrenzen möchten.
 * Bei Anwendungen mit nur einem Mandanten werden Startseite und Bezeichner-URIs nicht überprüft.
 *  In diesem Beispiel fügen Sie den Dienstprinzipal der Rolle „Mitwirkender“ hinzu. Informationen zu den anderen Rollen finden Sie unter [RBAC: Integrierte Rollen](../active-directory/role-based-access-built-in-roles.md).
-* Das Skript befindet sich 15 Sekunden lang im Ruhezustand und schafft damit Zeit für die Verteilung des neuen Dienstprinzipals in Active Directory. Falls das Skript nicht lange genug wartet, sehen Sie folgende Fehlermeldung: „PrincipalNotFound: Principal {id} does not exist in the directory.“ (PrincipalNotFound: Prinzipal {id} ist im Verzeichnis nicht vorhanden.).
+* Das Skript befindet sich 15 Sekunden lang im Ruhezustand und schafft damit Zeit für die Verteilung des neuen Dienstprinzipals in Azure Active Directory. Falls das Skript nicht lange genug wartet, sehen Sie folgende Fehlermeldung: „PrincipalNotFound: Principal {id} does not exist in the directory.“ (PrincipalNotFound: Prinzipal {id} ist im Verzeichnis nicht vorhanden.).
 * Wenn Sie dem Dienstprinzipal Zugriff auf weitere Abonnements oder Ressourcengruppen erteilen müssen, führen Sie das `New-AzureRMRoleAssignment`-Cmdlet erneut mit unterschiedlichen Bereichen aus.
 
 Wenn Sie **nicht mit Windows 10 oder Windows Server 2016 Technical Preview arbeiten**, müssen Sie den [Generator für selbstsignierte Zertifikate](https://gallery.technet.microsoft.com/scriptcenter/Self-signed-certificate-5920a7c6/) aus dem Skriptcenter von Microsoft herunterladen. Extrahieren Sie den Inhalt, und importieren Sie das benötigte Cmdlet.
@@ -212,7 +212,7 @@ $cert = Get-ChildItem -path Cert:\CurrentUser\my | where {$PSitem.Subject -eq 'C
 ```
 
 ### <a name="provide-certificate-through-automated-powershell-script"></a>Bereitstellen eines Zertifikats über automatisiertes PowerShell-Skript
-Bei jeder Anmeldung als Dienstprinzipal müssen Sie die Mandanten-ID des Verzeichnisses für Ihre AD-App angeben. Ein Mandant ist eine Instanz von Active Directory. Wenn Sie nur über ein einziges Abonnement verfügen, können Sie Folgendes verwenden:
+Bei jeder Anmeldung als Dienstprinzipal müssen Sie die Mandanten-ID des Verzeichnisses für Ihre AD-App angeben. Ein Mandant ist eine Instanz von Azure Active Directory. Wenn Sie nur über ein einziges Abonnement verfügen, können Sie Folgendes verwenden:
 
 ```powershell
 Param (
@@ -302,11 +302,11 @@ Bitte beachten Sie bezüglich des Skripts folgende Punkte:
 * Der Zugriff ist auf das Abonnement beschränkt.
 * Bei Anwendungen mit nur einem Mandanten werden Startseite und Bezeichner-URIs nicht überprüft.
 *  In diesem Beispiel fügen Sie den Dienstprinzipal der Rolle „Mitwirkender“ hinzu. Informationen zu den anderen Rollen finden Sie unter [RBAC: Integrierte Rollen](../active-directory/role-based-access-built-in-roles.md).
-* Das Skript befindet sich 15 Sekunden lang im Ruhezustand und schafft damit Zeit für die Verteilung des neuen Dienstprinzipals in Active Directory. Falls das Skript nicht lange genug wartet, sehen Sie folgende Fehlermeldung: „PrincipalNotFound: Principal {id} does not exist in the directory.“ (PrincipalNotFound: Prinzipal {id} ist im Verzeichnis nicht vorhanden.).
+* Das Skript befindet sich 15 Sekunden lang im Ruhezustand und schafft damit Zeit für die Verteilung des neuen Dienstprinzipals in Azure Active Directory. Falls das Skript nicht lange genug wartet, sehen Sie folgende Fehlermeldung: „PrincipalNotFound: Principal {id} does not exist in the directory.“ (PrincipalNotFound: Prinzipal {id} ist im Verzeichnis nicht vorhanden.).
 * Wenn Sie dem Dienstprinzipal Zugriff auf weitere Abonnements oder Ressourcengruppen erteilen müssen, führen Sie das `New-AzureRMRoleAssignment`-Cmdlet erneut mit unterschiedlichen Bereichen aus.
 
 ### <a name="provide-certificate-through-automated-powershell-script"></a>Bereitstellen eines Zertifikats über automatisiertes PowerShell-Skript
-Bei jeder Anmeldung als Dienstprinzipal müssen Sie die Mandanten-ID des Verzeichnisses für Ihre AD-App angeben. Ein Mandant ist eine Instanz von Active Directory.
+Bei jeder Anmeldung als Dienstprinzipal müssen Sie die Mandanten-ID des Verzeichnisses für Ihre AD-App angeben. Ein Mandant ist eine Instanz von Azure Active Directory.
 
 ```powershell
 Param (
@@ -390,7 +390,7 @@ Alternativ können Sie die REST-Vorgänge über PowerShell aufrufen, um sich anz
 
 Wenn Sie einen Dienstprinzipal erstellen, können folgende Fehler auftreten:
 
-* **„Authentication_Unauthorized“** oder **„Kein Abonnement in diesem Kontext gefunden.“** – Dieser Fehler wird angezeigt, wenn Ihr Konto nicht die [erforderlichen Berechtigungen](#required-permissions) zum Registrieren einer App im Active Directory hat. In der Regel wird dieser Fehler angezeigt, wenn in Ihrem Active Directory nur Administratorbenutzer Apps registrieren können, und Ihr Konto kein Administratorkonto ist. Bitten Sie Ihren Administrator, Sie entweder einer Administratorrolle zuzuweisen, oder Benutzern zu ermöglichen, Apps zu registrieren.
+* **„Authentication_Unauthorized“** oder **„Kein Abonnement in diesem Kontext gefunden.“** Dieser Fehler wird angezeigt, wenn Ihr Konto nicht die [erforderlichen Berechtigungen](#required-permissions) zum Registrieren einer App in Azure Active Directory hat. In der Regel wird dieser Fehler angezeigt, wenn in Ihrem Azure Active Directory nur Administratorbenutzer Apps registrieren können und Ihr Konto kein Administratorkonto ist. Bitten Sie Ihren Administrator, Sie entweder einer Administratorrolle zuzuweisen, oder Benutzern zu ermöglichen, Apps zu registrieren.
 
 * Ihr Konto **„hat keine Berechtigung zum Ausführen der Aktion 'Microsoft.Authorization/roleAssignments/write' über Bereich '/subscriptions/{guid}'.“**  – Dieser Fehler wird angezeigt, wenn Ihr Konto nicht über ausreichende Berechtigungen verfügt, um eine Rolle einer Identität zuzuweisen. Bitten Sie Ihren Abonnementadministrator, Sie der Rolle „Benutzerzugriffsadministrator“ hinzuzufügen.
 
@@ -425,6 +425,6 @@ Die folgenden Beispielanwendungen veranschaulichen die Anmeldung als Dienstprinz
 ## <a name="next-steps"></a>Nächste Schritte
 * Ausführliche Schritte zum Integrieren einer Anwendung in Azure zur Verwaltung von Ressourcen finden Sie im [Entwicklerhandbuch für die Autorisierung mit der Azure Resource Manager-API](resource-manager-api-authentication.md).
 * Eine ausführlichere Erläuterung zu Anwendungen und Dienstprinzipalen finden Sie unter [Anwendungsobjekte und Dienstprinzipalobjekte](../active-directory/active-directory-application-objects.md). 
-* Weitere Informationen zur Active Directory-Authentifizierung finden Sie unter [Authentifizierungsszenarien für Azure AD](../active-directory/active-directory-authentication-scenarios.md).
+* Weitere Informationen zur Azure Active Directory-Authentifizierung finden Sie unter [Authentifizierungsszenarien für Azure AD](../active-directory/active-directory-authentication-scenarios.md).
 
 

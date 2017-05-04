@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2017
+ms.date: 04/20/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 6e71fd9eda822478fa0555aa44908a4094fe8de2
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
+ms.openlocfilehash: 04338b62d942774368149b27e8b35713b77f8d7c
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -31,83 +31,53 @@ Durch das Anwenden einer Tagrichtlinie auf eine Ressourcengruppe oder ein Abonne
 
 Eine häufige Anforderung besteht darin, dass alle Ressourcen in einer Ressourcengruppe ein bestimmtes Tag und einen bestimmten Wert aufweisen müssen. Diese Anforderung wird oft benötigt, um die Kosten pro Abteilung zu verfolgen. Die folgenden Bedingungen müssen erfüllt sein:
 
-* Das erforderliche Tag und der entsprechende Wert werden an neue und aktualisierte Ressourcen angefügt, die keine vorhandenen Tags aufweisen.
-* Das erforderliche Tag und der entsprechende Wert werden an neue und aktualisierte Ressourcen angefügt, die zwar andere Tags, aber nicht das erforderliche Tag mit dem entsprechenden Wert aufweisen.
+* Das erforderliche Tag und der entsprechende Wert werden an neue und aktualisierte Ressourcen angefügt, die nicht über das Tag verfügen.
 * Das erforderliche Tag und der entsprechende Wert können nicht aus vorhandenen Ressourcen entfernt werden.
 
-Sie erfüllen diese Anforderung durch Anwenden der folgenden drei Richtlinien auf eine Ressourcengruppe:
+Sie erfüllen diese Anforderung, indem Sie zwei integrierte Richtlinien auf eine Ressourcengruppe anwenden.
 
-* [Tag anfügen](#append-tag) 
-* [Tag mit anderen Tags anfügen](#append-tag-with-other-tags)
-* [Tag und Wert anfordern](#require-tag-and-value)
+| ID | Beschreibung |
+| ---- | ---- |
+| 2a0e14a6-b0a6-4fab-991a-187a4f81c498 | Wendet ein erforderliches Tag und dessen Standardwert an (falls nicht vom Benutzer angegeben). |
+| 1e30110a-5ceb-460c-a204-c1c3969c6d62 | Erzwingt ein erforderliches Tag und dessen Wert. |
 
-### <a name="append-tag"></a>Tag anfügen
+### <a name="powershell"></a>PowerShell
 
-Die folgende Richtlinienregel fügt ein costCenter-Tag mit einem vordefinierten Wert an, wenn keine Tags vorhanden sind:
+Das folgende PowerShell-Skript weist die beiden integrierten Richtliniendefinitionen einer Ressourcengruppe zu. Weisen Sie der Ressourcengruppe vor dem Ausführen des Skripts alle erforderlichen Tags zu. Jedes Tag für die Ressourcengruppe wird für die Ressourcen in der Gruppe benötigt. Wenn die Zuweisung für alle Ressourcengruppen in Ihrem Abonnement erfolgen soll, lassen Sie beim Abrufen der Ressourcengruppen den Parameter `-Name` weg.
 
-```json
+```powershell
+$appendpolicy = Get-AzureRmPolicyDefinition | Where-Object {$_.Name -eq '2a0e14a6-b0a6-4fab-991a-187a4f81c498'}
+$denypolicy = Get-AzureRmPolicyDefinition | Where-Object {$_.Name -eq '1e30110a-5ceb-460c-a204-c1c3969c6d62'}
+
+$rgs = Get-AzureRMResourceGroup -Name ExampleGroup
+
+foreach($rg in $rgs)
 {
-  "if": {
-    "field": "tags",
-    "exists": "false"
-  },
-  "then": {
-    "effect": "append",
-    "details": [
-      {
-        "field": "tags",
-        "value": {"costCenter":"myDepartment" }
-      }
-    ]
-  }
-}
-```
-
-### <a name="append-tag-with-other-tags"></a>Tag mit anderen Tags anfügen
-
-Die folgende Richtlinienregel fügt ein costCenter-Tag mit einem vordefinierten Wert an, wenn Tags vorhanden sind, das costCenter-Tag jedoch nicht definiert ist:
-
-```json
-{
-  "if": {
-    "allOf": [
-      {
-        "field": "tags",
-        "exists": "true"
-      },
-      {
-        "field": "tags.costCenter",
-        "exists": "false"
-      }
-    ]
-  },
-  "then": {
-    "effect": "append",
-    "details": [
-      {
-        "field": "tags.costCenter",
-        "value": "myDepartment"
-      }
-    ]
-  }
-}
-```
-
-### <a name="require-tag-and-value"></a>Tag und Wert anfordern
-
-Die folgenden Richtlinienregel verweigert die Aktualisierung oder Erstellung von Ressourcen, deren costCenter-Tag nicht der vordefinierte Wert zugewiesen ist.
-
-```json
-{
-  "if": {
-    "not": {
-      "field": "tags.costCenter",
-      "equals": "myDepartment"
+    $tags = $rg.Tags
+    foreach($key in $tags.Keys){
+        $key 
+        $tags[$key]
+        New-AzureRmPolicyAssignment -Name ("append"+$key+"tag") -PolicyDefinition $appendpolicy -Scope $rg.ResourceId -tagName $key -tagValue  $tags[$key]
+        New-AzureRmPolicyAssignment -Name ("denywithout"+$key+"tag") -PolicyDefinition $denypolicy -Scope $rg.ResourceId -tagName $key -tagValue  $tags[$key]
     }
-  },
-  "then": {
-    "effect": "deny"
-  }
+}
+```
+
+Nach dem Zuweisen der Richtlinien können Sie ein Update für alle vorhandenen Ressourcen auslösen, um die hinzugefügten Tagrichtlinien zu erzwingen. Das folgende Skript behält alle anderen Tags bei, die für die Ressourcen vorhanden waren:
+
+```powershell
+$group = Get-AzureRmResourceGroup -Name "ExampleGroup" 
+
+$resources = Find-AzureRmResource -ResourceGroupName $group.ResourceGroupName 
+
+foreach($r in $resources)
+{
+    try{
+        $r | Set-AzureRmResource -Tags ($a=if($r.Tags -eq $NULL) { @{}} else {$r.Tags}) -Force -UsePatchSemantics
+    }
+    catch{
+        Write-Host  $r.ResourceId + "can't be updated"
+    }
 }
 ```
 
@@ -150,26 +120,6 @@ Die folgende Richtlinie verweigert Anforderungen, die kein Tag mit dem Schlüsse
   "then" : {
     "effect" : "deny"
   }
-}
-```
-
-## <a name="trigger-updates-to-existing-resources"></a>Updates für vorhandene Ressourcen auslösen
-
-Das folgende PowerShell-Skript löst ein Update für vorhandene Ressourcen aus, um die hinzugefügten Tagrichtlinien zu erzwingen.
-
-```powershell
-$group = Get-AzureRmResourceGroup -Name "ExampleGroup" 
-
-$resources = Find-AzureRmResource -ResourceGroupName $group.ResourceGroupName 
-
-foreach($r in $resources)
-{
-    try{
-        $r | Set-AzureRmResource -Tags ($a=if($_.Tags -eq $NULL) { @{}} else {$_.Tags}) -Force -UsePatchSemantics
-    }
-    catch{
-        Write-Host  $r.ResourceId + "can't be updated"
-    }
 }
 ```
 

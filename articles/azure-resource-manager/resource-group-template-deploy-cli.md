@@ -12,165 +12,99 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/10/2017
+ms.date: 04/19/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 0320aafd5eed1b3ef658d5f020fc37ba1dcff308
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: c889a609b8d49474216fe1dcfba69a881edb4133
+ms.lasthandoff: 04/20/2017
 
 
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-CLI
-> [!div class="op_single_selector"]
-> * [PowerShell](resource-group-template-deploy.md)
-> * [Azure-Befehlszeilenschnittstelle](resource-group-template-deploy-cli.md)
-> * [Portal](resource-group-template-deploy-portal.md)
-> * [REST-API](resource-group-template-deploy-rest.md)
-> 
-> 
 
-In diesem Thema wird erläutert, wie Ihre Ressourcen mithilfe von [Azure CLI 2.0](/cli/azure/install-az-cli2) und Azure Resource Manager-Vorlagen in Azure bereitgestellt werden.  Ihre Vorlage kann entweder eine lokale Datei oder eine externe Datei sein, die über einen URI verfügbar ist. Wenn sich Ihre Vorlage in einem Speicherkonto befindet, können Sie den Zugriffs auf die Vorlage beschränken und ein SAS-Token (Shared Access Signature) während der Bereitstellung angeben.
+In diesem Thema wird erläutert, wie Ihre Ressourcen mithilfe von [Azure CLI 2.0](/cli/azure/install-az-cli2) und Azure Resource Manager-Vorlagen in Azure bereitgestellt werden.  Ihre Vorlage kann entweder eine lokale Datei oder eine externe Datei sein, die über einen URI verfügbar ist.
 
-## <a name="deploy"></a>Bereitstellen
+Die in diesen Beispielen verwendete Vorlage (storage.json) finden Sie im Artikel [Erstellen Ihrer ersten Azure Resource Manager-Vorlage](resource-manager-create-first-template.md#final-template). Wenn Sie die Vorlage mit diesen Beispielen verwenden möchten, erstellen Sie eine JSON-Datei, und fügen Sie den kopierten Inhalt hinzu.
 
-* Verwenden Sie die folgenden Befehle beim Bereitstellen einer lokalen Vorlage mit Inlineparametern, um schnell mit der Bereitstellung zu beginnen:
+## <a name="deploy-local-template"></a>Bereitstellen einer lokalen Vorlage
 
-  ```azurecli
-  az login
-  az account set --subscription {subscription-id}
+Verwenden Sie die folgenden Befehle beim Bereitstellen einer lokalen Vorlage mit Inlineparametern, um schnell mit der Bereitstellung zu beginnen:
 
-  az group create --name ExampleGroup --location "Central US"
-  az group deployment create \
-      --name ExampleDeployment \
-      --resource-group ExampleGroup \
-      --template-file storage.json \
-      --parameters '{"storageNamePrefix":{"value":"contoso"},"storageSKU":{"value":"Standard_GRS"}}'
-  ```
+```azurecli
+az login
 
-  Die Bereitstellung kann einige Minuten dauern. Wenn sie abgeschlossen ist, wird eine Nachricht mit dem Ergebnis angezeigt:
+az group create --name ExampleGroup --location "Central US"
+az group deployment create \
+    --name ExampleDeployment \
+    --resource-group ExampleGroup \
+    --template-file storage.json \
+    --parameters "{\"storageNamePrefix\":{\"value\":\"contoso\"},\"storageSKU\":{\"value\":\"Standard_GRS\"}}"
+```
 
-  ```azurecli
-  "provisioningState": "Succeeded",
-  ```
-  
-* Der Befehl `az account set` wird nur benötigt, wenn Sie ein anderes Abonnement als Ihr Standardabonnement verwenden möchten. Verwenden Sie Folgendes, um alle Abonnements und die dazugehörigen IDs anzuzeigen:
+Die Bereitstellung kann einige Minuten dauern. Wenn sie abgeschlossen ist, wird eine Nachricht mit dem Ergebnis angezeigt:
 
-  ```azurecli
-  az account list
-  ```
+```azurecli
+"provisioningState": "Succeeded",
+```
 
-* Verwenden Sie zum Bereitstellen einer externen Vorlage den **template-uri**-Parameter:
+Im vorherigen Beispiel wurde die Ressourcengruppe in Ihrem Standardabonnement erstellt. Um ein anderes Abonnement zu verwenden, fügen Sie nach der Anmeldung den Befehl [az account set](/cli/azure/account#set) hinzu.
+
+## <a name="deploy-external-template"></a>Bereitstellen einer externen Vorlage
+
+Verwenden Sie zum Bereitstellen einer externen Vorlage den **template-uri**-Parameter. Die Vorlage kann sich unter jedem öffentlich zugänglichen URI (z.B. einer Datei im Speicherkonto) befinden.
    
-   ```azurecli
-   az group deployment create \
-       --name ExampleDeployment \
-       --resource-group ExampleGroup \
-       --template-uri "https://raw.githubusercontent.com/exampleuser/MyTemplates/master/storage.json" \
-       --parameters '{"storageNamePrefix":{"value":"contoso"},"storageSKU":{"value":"Standard_GRS"}}'
-   ```
+```azurecli
+az group deployment create \
+    --name ExampleDeployment \
+    --resource-group ExampleGroup \
+    --template-uri "https://raw.githubusercontent.com/exampleuser/MyTemplates/master/storage.json" \
+    --parameters "{\"storageNamePrefix\":{\"value\":\"contoso\"},\"storageSKU\":{\"value\":\"Standard_GRS\"}}"
+```
 
-* Um die Parameterwerte in einer Datei zu übergeben, verwenden Sie Folgendes:
+Sie können die Vorlage schützen, indem Sie festlegen, dass ein SAS-Token (Shared Access Signature) für den Zugriff erforderlich ist. Informationen zum Bereitstellen einer Vorlage, die ein SAS-Token erfordert, finden Sie unter [Bereitstellen einer privaten Vorlage mit SAS-Token](resource-manager-cli-sas-token.md).
 
-   ```azurecli
-   az group deployment create \
-       --name ExampleDeployment \
-       --resource-group ExampleGroup \
-       --template-file storage.json \
-       --parameters @storage.parameters.json
-   ```
+## <a name="parameter-files"></a>Parameterdateien
 
-   Die Parameterdatei muss im folgenden Format vorliegen:
+Mit den vorherigen Beispielen wurde demonstriert, wie Parameter als Inlinewerte übergeben werden. Sie können Parameterwerte in einer Datei angeben und diese Datei bei der Bereitstellung übergeben. 
 
-   ```json
-   {
-     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-     "contentVersion": "1.0.0.0",
-     "parameters": {
-        "storageNamePrefix": {
-            "value": "contoso"
-        },
-        "storageSKU": {
-            "value": "Standard_GRS"
-        }
+Die Parameterdatei muss im folgenden Format vorliegen:
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+     "storageNamePrefix": {
+         "value": "contoso"
+     },
+     "storageSKU": {
+         "value": "Standard_GRS"
      }
-   }
-   ```
+  }
+}
+```
 
-
-[!INCLUDE [resource-manager-deployments](../../includes/resource-manager-deployments.md)]
-
-Nutzen Sie zur Verwendung des vollständigen Modus den Modusparameter:
+Um eine lokale Parameterdatei zu übergeben, verwenden Sie Folgendes:
 
 ```azurecli
 az group deployment create \
     --name ExampleDeployment \
-    --mode Complete \
     --resource-group ExampleGroup \
     --template-file storage.json \
-    --parameters '{"storageNamePrefix":{"value":"contoso"},"storageSKU":{"value":"Standard_GRS"}}'
+    --parameters @storage.parameters.json
 ```
 
-## <a name="deploy-template-from-storage-with-sas-token"></a>Bereitstellen einer Vorlage aus Speicher mithilfe eines SAS-Tokens
-Sie können Ihre Vorlagen einem Speicherkonto hinzufügen und sie während der Bereitstellung mit einem SAS-Token verknüpfen.
+## <a name="test-a-deployment"></a>Testen einer Bereitstellung
 
-> [!IMPORTANT]
-> Wenn Sie die nachstehenden Schritte befolgen, hat nur der Kontobesitzer Zugriff auf das Blob mit der Vorlage. Wenn Sie jedoch ein SAS-Token für das Blob erstellen, können andere Benutzer über diesen URI auf das Blob zugreifen. Wenn ein anderer Benutzer den URI abfängt, hat dieser Benutzer Zugriff auf die Vorlage. Ein SAS-Token ist eine gute Möglichkeit zum Einschränken des Zugriffs auf Ihre Vorlagen. Sie sollten allerdings Kennwörter auf keinen Fall direkt in die Vorlage einschließen.
-> 
-> 
+Verwenden Sie [az group deployment validate](/cli/azure/group/deployment#validate), um die Vorlage und Parameterwerte zu testen, ohne dabei Ressourcen bereitzustellen. Es gelten jeweils die gleichen Optionen für die Verwendung von lokalen oder Remotedateien.
 
-### <a name="add-private-template-to-storage-account"></a>Hinzufügen einer privaten Vorlage zum Speicherkonto
-Mit dem folgenden Beispiel wird ein privater Speicherkontocontainer eingerichtet und eine Vorlage hochgeladen:
-   
 ```azurecli
-az group create --name "ManageGroup" --location "South Central US"
-az storage account create \
-    --resource-group ManageGroup \
-    --location "South Central US" \
-    --sku Standard_LRS \
-    --kind Storage \
-    --name {your-unique-name}
-connection=$(az storage account show-connection-string \
-    --resource-group ManageGroup \
-    --name {your-unique-name} \
-    --query connectionString)
-az storage container create \
-    --name templates \
-    --public-access Off \
-    --connection-string $connection
-az storage blob upload \
-    --container-name templates \
-    --file vmlinux.json \
-    --name vmlinux.json \
-    --connection-string $connection
+az group deployment validate \
+    --resource-group ExampleGroup \
+    --template-file storage.json \
+    --parameters @storage.parameters.json
 ```
-
-### <a name="provide-sas-token-during-deployment"></a>Bereitstellen eines SAS-Tokens während der Bereitstellung
-Generieren Sie zum Bereitstellen einer privaten Vorlage in einem Speicherkonto ein SAS-Token, und fügen Sie es dem URI für die Vorlage hinzu. Legen Sie die Ablaufzeit so fest, dass ausreichend Zeit für die Bereitstellung bleibt.
-   
-```azurecli
-seconds='@'$(( $(date +%s) + 1800 ))
-expiretime=$(date +%Y-%m-%dT%H:%MZ --date=$seconds)
-connection=$(az storage account show-connection-string \
-    --resource-group ManageGroup \
-    --name {your-unique-name} \
-    --query connectionString)
-token=$(az storage blob generate-sas \
-    --container-name templates \
-    --name vmlinux.json \
-    --expiry $expiretime \
-    --permissions r \
-    --output tsv \
-    --connection-string $connection)
-url=$(az storage blob url \
-    --container-name templates \
-    --name vmlinux.json \
-    --output tsv \
-    --connection-string $connection)
-az group deployment create --resource-group ExampleGroup --template-uri $url?$token
-```
-
-Ein Beispiel der Verwendung eines SAS-Tokens mit verknüpften Vorlagen finden Sie unter [Verwenden von verknüpften Vorlagen mit Azure Resource Manager](resource-group-linked-templates.md).
 
 ## <a name="debug"></a>Debuggen
 
@@ -182,136 +116,40 @@ az group deployment operation list --resource-group ExampleGroup --name vmlinux 
 
 Tipps zum Beheben gängiger Azure-Bereitstellungsfehler finden Sie unter [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](resource-manager-common-deployment-errors.md).
 
-## <a name="complete-deployment-script"></a>Vollständiges Bereitstellungsskript
 
-Im folgenden Beispiel wird das Azure CLI 2.0-Skript für die Bereitstellung einer Vorlage gezeigt, die über die Funktion [Vorlage exportieren](resource-manager-export-template.md) generiert wird:
+## <a name="export-resource-manager-template"></a>Exportieren einer Resource Manager-Vorlage
+Für eine vorhandene Ressourcengruppe (die über Azure CLI oder eine andere Methode, z.B. das Portal, bereitgestellt wird), können Sie die Resource Manager-Vorlage für die Ressourcengruppe anzeigen. Das Exportieren der Vorlage hat zwei Vorteile:
+
+1. Sie können problemlos zukünftige Bereitstellungen der Lösung automatisieren, da die gesamte Infrastruktur in der Vorlage definiert ist.
+2. Sie können sich mit der Vorlagensyntax vertraut machen, indem Sie sich die JavaScript Object Notation (JSON) zu Ihrer Lösung ansehen.
+
+Führen Sie zum Anzeigen der Vorlage für eine Ressourcengruppe den Befehl [az group export](/cli/azure/group#export) aus.
 
 ```azurecli
-#!/bin/bash
-set -euo pipefail
-IFS=$'\n\t'
-
-# -e: immediately exit if any command has a non-zero exit status
-# -o: prevents errors in a pipeline from being masked
-# IFS new value is less likely to cause confusing bugs when looping arrays or arguments (e.g. $@)
-
-usage() { echo "Usage: $0 -i <subscriptionId> -g <resourceGroupName> -n <deploymentName> -l <resourceGroupLocation>" 1>&2; exit 1; }
-
-declare subscriptionId=""
-declare resourceGroupName=""
-declare deploymentName=""
-declare resourceGroupLocation=""
-
-# Initialize parameters specified from command line
-while getopts ":i:g:n:l:" arg; do
-    case "${arg}" in
-        i)
-            subscriptionId=${OPTARG}
-            ;;
-        g)
-            resourceGroupName=${OPTARG}
-            ;;
-        n)
-            deploymentName=${OPTARG}
-            ;;
-        l)
-            resourceGroupLocation=${OPTARG}
-            ;;
-        esac
-done
-shift $((OPTIND-1))
-
-#Prompt for parameters is some required parameters are missing
-if [[ -z "$subscriptionId" ]]; then
-    echo "Subscription Id:"
-    read subscriptionId
-    [[ "${subscriptionId:?}" ]]
-fi
-
-if [[ -z "$resourceGroupName" ]]; then
-    echo "ResourceGroupName:"
-    read resourceGroupName
-    [[ "${resourceGroupName:?}" ]]
-fi
-
-if [[ -z "$deploymentName" ]]; then
-    echo "DeploymentName:"
-    read deploymentName
-fi
-
-if [[ -z "$resourceGroupLocation" ]]; then
-    echo "Enter a location below to create a new resource group else skip this"
-    echo "ResourceGroupLocation:"
-    read resourceGroupLocation
-fi
-
-#templateFile Path - template file to be used
-templateFilePath="template.json"
-
-if [ ! -f "$templateFilePath" ]; then
-    echo "$templateFilePath not found"
-    exit 1
-fi
-
-#parameter file path
-parametersFilePath="parameters.json"
-
-if [ ! -f "$parametersFilePath" ]; then
-    echo "$parametersFilePath not found"
-    exit 1
-fi
-
-if [ -z "$subscriptionId" ] || [ -z "$resourceGroupName" ] || [ -z "$deploymentName" ]; then
-    echo "Either one of subscriptionId, resourceGroupName, deploymentName is empty"
-    usage
-fi
-
-#login to azure using your credentials
-az account show 1> /dev/null
-
-if [ $? != 0 ];
-then
-    az login
-fi
-
-#set the default subscription id
-az account set --name $subscriptionId
-
-set +e
-
-#Check for existing RG
-az group show $resourceGroupName 1> /dev/null
-
-if [ $? != 0 ]; then
-    echo "Resource group with name" $resourceGroupName "could not be found. Creating new resource group.."
-    set -e
-    (
-        set -x
-        az resource group create --name $resourceGroupName --location $resourceGroupLocation 1> /dev/null
-    )
-    else
-    echo "Using existing resource group..."
-fi
-
-#Start deployment
-echo "Starting deployment..."
-(
-    set -x
-    az resource group deployment create --name $deploymentName --resource-group $resourceGroupName --template-file $templateFilePath --parameters $parametersFilePath
-)
-
-if [ $?  == 0 ];
- then
-    echo "Template has been successfully deployed"
-fi
+az group export --name ExampleGroup
 ```
 
-## <a name="next-steps"></a>Nächste Schritte
-* Ein Beispiel für die Bereitstellung von Ressourcen über die .NET-Clientbibliothek finden Sie unter [Bereitstellen von Ressourcen mithilfe von .NET-Bibliotheken und einer Vorlage](../virtual-machines/windows/csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-* Informationen zum Definieren von Parametern in der Vorlage finden Sie unter [Erstellen von Vorlagen](resource-group-authoring-templates.md#parameters).
-* Informationen zum Bereitstellen der Lösung in andere Umgebungen finden Sie unter [Entwicklungs- und Testumgebungen in Microsoft Azure](solution-dev-test-environments.md).
-* Weitere Informationen zum Verwenden eines KeyVault-Verweises zum Übergeben sicherer Werte finden Sie unter [Übergeben sicherer Werte während der Bereitstellung](resource-manager-keyvault-parameter.md).
-* Anleitungen dazu, wie Unternehmen Abonnements mit Resource Manager effektiv verwalten können, finden Sie unter [Azure-Unternehmensgerüst - Präskriptive Abonnementgovernance](resource-manager-subscription-governance.md).
-* Eine vierteilige Reihe zum Automatisieren von Bereitstellungen finden Sie unter [Automatisieren von Anwendungsbereitstellungen auf virtuellen Azure-Computern](../virtual-machines/windows/dotnet-core-1-landing.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Diese Reihe behandelt die Anwendungsarchitektur, Zugriff und Sicherheit, Verfügbarkeit und Skalierung sowie die Bereitstellung einer Anwendung.
+Weitere Informationen finden Sie unter [Exportieren einer Azure Resource Manager-Vorlage aus vorhandenen Ressourcen](resource-manager-export-template.md).
 
+
+[!INCLUDE [resource-manager-deployments](../../includes/resource-manager-deployments.md)]
+
+Nutzen Sie zur Verwendung des vollständigen Modus den `mode`-Parameter:
+
+```azurecli
+az group deployment create \
+    --name ExampleDeployment \
+    --mode Complete \
+    --resource-group ExampleGroup \
+    --template-file storage.json \
+    --parameters "{\"storageNamePrefix\":{\"value\":\"contoso\"},\"storageSKU\":{\"value\":\"Standard_GRS\"}}"
+```
+
+
+## <a name="next-steps"></a>Nächste Schritte
+* Ein vollständiges Beispielskript, mit dem eine Vorlage bereitgestellt wird, finden Sie unter [Bereitstellung über Resource Manager-Vorlage – PowerShell-Skript](resource-manager-samples-cli-deploy.md).
+* Informationen zum Definieren von Parametern in der Vorlage finden Sie unter [Erstellen von Vorlagen](resource-group-authoring-templates.md#parameters).
+* Tipps zum Beheben gängiger Azure-Bereitstellungsfehler finden Sie unter [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](resource-manager-common-deployment-errors.md).
+* Informationen zum Bereitstellen einer Vorlage, die ein SAS-Token erfordert, finden Sie unter [Bereitstellen einer privaten Vorlage mit SAS-Token](resource-manager-cli-sas-token.md).
+* Anleitungen dazu, wie Unternehmen Abonnements mit Resource Manager effektiv verwalten können, finden Sie unter [Azure-Unternehmensgerüst - Präskriptive Abonnementgovernance](resource-manager-subscription-governance.md).
 

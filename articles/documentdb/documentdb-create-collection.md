@@ -12,19 +12,23 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 04/18/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: fba82c5c826da7d1912814b61c5065ca7f726011
-ms.openlocfilehash: 8ee846e659d0a47a5fb39d6baa3235f59e19d653
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 97b634b10f75dd10c9cf4b61a5b9674f7ee73e00
+ms.lasthandoff: 04/20/2017
 
 
 ---
 # <a name="how-to-create-a-documentdb-collection-and-database-using-the-azure-portal"></a>So erstellen Sie eine DocumentDB-Sammlung und -Datenbank über das Azure-Portal
 Um Microsoft Azure DocumentDB zu verwenden, müssen Sie über ein [DocumentDB-Konto](documentdb-create-account.md), eine Datenbank, eine Sammlung und Dokumente verfügen. In diesem Thema wird die Erstellung einer DocumentDB-Sammlung im Azure-Portal beschrieben.
 
-Sie wissen nicht, was eine Sammlung ist? Dann lesen Sie den Abschnitt [Was ist eine DocumentDB-Sammlung?](#what-is-a-documentdb-collection)
+Sie wissen nicht, was eine Sammlung ist? Dann lesen Sie den Abschnitt [Was ist eine DocumentDB-Sammlung?](#what-is-a-documentdb-collection).
+
+Es gibt zwei Möglichkeiten zum Erstellen einer Sammlung im Portal: mithilfe der Schaltfläche „Sammlung hinzufügen“ oder mit dem [Daten-Explorer (Vorschau)](#data-explorer).
+
+## <a name="create-a-colletion-using-add-collection-button"></a>Erstellen einer Sammlung mithilfe der Schaltfläche „Sammlung hinzufügen“
 
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf der Navigationsleiste auf **DocumentDB (NoSQL)**, und wählen Sie anschließend auf dem Blatt **DocumentDB (NoSQL)** das Konto aus, dem Sie eine Sammlung hinzufügen möchten. Wenn keine Konten aufgeführt sind, müssen Sie [ein DocumentDB-Konto erstellen](documentdb-create-account.md).
 
@@ -54,6 +58,14 @@ Sie wissen nicht, was eine Sammlung ist? Dann lesen Sie den Abschnitt [Was ist e
 10. **Optional:** Klicken Sie im Menü „Ressource“ auf **Skalieren**, um den Durchsatz für Sammlungen im Portal zu ändern.
 
     ![Screenshot des Menüs „Ressource“ mit Auswahl von „Skalieren“](./media/documentdb-create-collection/docdb-collection-creation-scale.png)
+
+<a id="data-explorer"></a>
+## <a name="create-a-collection-by-using-data-explorer-preview"></a>Erstellen einer Sammlung mithilfe des Daten-Explorers (Vorschau)
+
+Die andere Methode zum Erstellen einer Sammlung im Portal ist der Daten-Explorer. Um den Daten-Explorer zu öffnen, klicken Sie auf **Daten-Explorer (Vorschau)**. Klicken Sie dann im Portal auf die Navigationsleiste und danach auf die Schaltfläche **Neue Sammlung** (siehe die folgende Abbildung).
+
+ ![Screenshot der Schaltfläche „Neue Sammlung“ im Portal](./media/documentdb-create-collection/azure-documentdb-data-explorer.png)
+
 
 ## <a name="what-is-a-documentdb-collection"></a>Was ist eine DocumentDB-Sammlung?
 Eine Sammlung ist ein Container für JSON-Dokumente und die zugehörige JavaScript-Anwendungslogik. Eine Sammlung ist eine abrechnungsfähige Entität, bei der die [Kosten](documentdb-performance-levels.md) durch den bereitgestellten Durchsatz der Sammlung bestimmt werden. Sammlungen können eine/n oder mehrere Partitionen oder Server umfassen und können skaliert werden, um praktisch unbegrenzte Mengen an Speicher oder Durchsatz zu verarbeiten.

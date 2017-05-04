@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: c041802cd86f9e8b07771413f867691d76b01abf
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: b94b8b84ae2cf26a1680f816460cc86c4d79e885
+ms.lasthandoff: 04/20/2017
 
 
 ---
 # <a name="provision-the-linux-data-science-virtual-machine"></a>Bereitstellen der Linux Data Science Virtual Machine
-Die Linux Data Science Virtual Machine ist ein virtueller Azure-Computer, der eine Sammlung von vorinstallierten Tools enthält. Diese Tools werden häufig für Datenanalysen und Machine Learning-Aufgaben verwendet. Die wichtigsten Softwarekomponenten sind:
+Die Linux Data Science Virtual Machine ist ein auf CentOS basierender virtueller Azure-Computer, der eine Sammlung vorinstallierter Tools enthält. Diese Tools werden häufig für Datenanalysen und Machine Learning-Aufgaben verwendet. Die wichtigsten Softwarekomponenten sind:
 
 * Microsoft R Server Developer Edition
 * Anaconda Python-Distribution (Versionen 2.7 und 3.5), einschließlich gängiger Bibliotheken für die Datenanalyse
@@ -53,6 +53,9 @@ Datenanalysten verwenden verschiedene Tools zum Ausführen dieser Aufgaben. Es k
 Mit der Linux Data Science Virtual Machine können Sie diesen Aufwand erheblich reduzieren. Nutzen Sie sie, um Ihr Analyseprojekt entscheidend voranzubringen. Sie können in verschiedenen Sprachen arbeiten, z.B. R, Python, SQL, Java und C++. Eclipse verfügt über eine benutzerfreundliche IDE zum Entwickeln und Testen von Code. Mit dem in die VM integrierten Azure SDK können Sie Ihre Anwendungen mit verschiedenen Diensten unter Linux für die Microsoft-Cloudplattform erstellen. Außerdem haben Sie Zugriff auf andere Sprachen wie Ruby, Perl, PHP und node.js, die ebenfalls vorinstalliert sind.
 
 Für dieses Data Science VM-Image fallen keine Softwaregebühren an. Sie zahlen nur die Gebühren für die Azure-Hardwarenutzung, die basierend auf der Größe des virtuellen Computers berechnet werden, den Sie mit dem VM-Image bereitstellen. Weitere Informationen zu Computegebühren finden Sie im [Azure Marketplace auf der Seite mit den VM-Preisen](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/).
+
+## <a name="other-versions-of-the-data-science-virtual-machine"></a>Andere Versionen der Data Science Virtual Machine
+Ein [Ubuntu](machine-learning-data-science-dsvm-ubuntu-intro.md)-Image ist ebenfalls verfügbar, das viele gleiche Tools wie das CentOS-Image sowie umfangreiche Lerngerüste bietet. Ein [Windows](machine-learning-data-science-provision-vm.md)-Image ist auch verfügbar.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie eine Linux Data Science Virtual Machine erstellen können, benötigen Sie Folgendes:

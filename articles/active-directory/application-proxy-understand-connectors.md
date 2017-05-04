@@ -11,12 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/02/2017
+ms.date: 04/12/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 5780c56a05ce1c40500927dec9df7906b02a1d13
-ms.lasthandoff: 04/07/2017
+ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
+ms.openlocfilehash: 16a000074ae742cc6bc1b25bf359990fe73608f7
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -29,9 +29,8 @@ Connectors sind die Komponenten, die den Azure AD-Anwendungsproxy erst möglich 
 
 Der Anwendungsproxy kann verwendet werden, nachdem Sie den Windows Server-Dienst (den „Connector“) in Ihrem Netzwerk installiert haben. Sie können mehrere Connectors basierend auf Ihren Anforderungen an eine hohe Verfügbarkeit und Skalierbarkeit installieren. Beginnen Sie mit einem Connector, und fügen Sie dann bei Bedarf weitere hinzu. Bei jeder Installation eines Connectors wird dieser dem Pool mit den Connectors hinzugefügt, der für Ihren Mandanten verwendet wird.
 
-Es empfiehlt sich, die Connectors nicht auf den gleichen Servern zu installieren, die Ihre Anwendungen hosten.
+Es empfiehlt sich, die Connectors nicht auf den gleichen Servern zu installieren, die Ihre Anwendungen hosten. Allerdings müssen Sie auf die Anwendung auf dem Server zugreifen können, auf dem Sie den Connector installieren.
 
-Sie müssen nicht verwendete Connectors nicht manuell löschen. Wenn ein Connector ausgeführt wird, bleibt er beim Herstellen der Verbindung mit dem Dienst aktiv. Connectors, die nicht verwendet werden, werden als _inaktiv_ gekennzeichnet und nach zehn Tagen Inaktivität entfernt. 
 
 ## <a name="connector-maintenance"></a>Wartung von Connectors
 Die Connectors und der Dienst führen alle Aufgaben in Bezug auf die hohe Verfügbarkeit aus. Diese können dynamisch hinzugefügt oder entfernt werden. Jedes Mal, wenn eine neue Anforderung eintrifft, wird diese an einen der gerade verfügbaren Connectors geleitet. Falls ein Connector vorübergehend nicht verfügbar ist, reagiert er nicht auf diesen Datenverkehr.
@@ -42,6 +41,20 @@ Außerdem wird der Server abgefragt, um zu ermitteln, ob eine neuere Version des
 Sie können Ihre Connectors auf dem Computer überwachen, auf dem sie ausgeführt werden, indem Sie das Ereignisprotokoll und die Leistungsindikatoren verwenden. Alternativ dazu können Sie die Connectors auch im Azure-Portal auf der Seite „Anwendungsproxy“ überwachen.
 
  ![Azure AD-Anwendungsproxyconnectors](./media/application-proxy-understand-connectors/app-proxy-connectors.png)
+
+Sie müssen nicht verwendete Connectors nicht manuell löschen. Wenn ein Connector ausgeführt wird, bleibt er beim Herstellen der Verbindung mit dem Dienst aktiv. Connectors, die nicht verwendet werden, werden als _inaktiv_ gekennzeichnet und nach zehn Tagen Inaktivität entfernt. 
+
+## <a name="automatic-updates-to-the-connector"></a>Automatische Updates des Connectors
+
+Mit dem Connectorupdatedienst erhalten Sie eine automatisierte Möglichkeit, um alles auf dem neuesten Stand zu halten. So kommen Sie in den Genuss, immer über alle neuen Features und Sicherheits- und Leistungsverbesserungen zu verfügen.
+
+Azure AD unterstützt automatische Updates für alle von Ihnen bereitgestellten Connectors. Solange der Connectorupdatedienst für den Anwendungsproxy ausgeführt wird, werden Ihre Connectors automatisch aktualisiert. Falls der Connectorupdatedienst auf Ihrem Server nicht angezeigt wird, müssen Sie den [Connector neu installieren](active-directory-application-proxy-enable.md), um Updates zu erhalten.
+
+In folgenden Fällen kann es während der Aktualisierung eines Connectors zu Ausfallzeiten kommen:
+
+- Sie verfügen nur über einen Connector. Wir empfehlen Ihnen, einen zweiten Connector zu installieren und eine [Connectorgruppe zu erstellen](active-directory-application-proxy-connectors-azure-portal.md), um diese Ausfallzeiten zu vermeiden und die hohe Verfügbarkeit zu verbessern.
+
+- Zu Beginn der Aktualisierung befand sich ein Connector mitten in einer Transaktion. Ihr Browser sollte automatisch versuchen, den Vorgang zu wiederholen. Andernfalls können Sie die Seite aktualisieren. Wenn die Anforderung erneut gesendet wird, wird der Datenverkehr an einen Backupconnector weitergeleitet.
 
 ## <a name="all-networking-is-outbound"></a>Alle Netzwerkverbindungen nur in ausgehender Richtung
 Connectors senden nur ausgehende Anforderungen, sodass die Verbindung immer von den Connectors initiiert wird. Das Öffnen von eingehenden Ports ist nicht erforderlich, da der Datenverkehr nach dem Einrichten einer Sitzung in beide Richtungen fließt.
@@ -56,7 +69,7 @@ Verwenden Sie den [Azure AD Application Proxy Connector Ports Test Tool (Testtoo
 
 ## <a name="network-security"></a>Netzwerksicherheit
 
-Connectors können überall im Netzwerk installiert werden, sodass Anforderungen sowohl an den Dienst als auch an die Back-End-Anwendungen gesendet werden können. Sie funktionieren gut, wenn Sie sie innerhalb des Unternehmensnetzwerks, in einer DMZ (demilitarisierte Zone) oder sogar auf einem virtuellen Computer installieren. Wichtig ist nur, dass der Computer, auf dem der Connector ausgeführt ist, ebenfalls Zugriff auf Ihre Apps hat.
+Connectors können überall im Netzwerk installiert werden, sodass Anforderungen sowohl an den Anwendungsproxydienst als auch an die Back-End-Anwendungen gesendet werden können. Sie funktionieren gut, wenn Sie sie innerhalb des Unternehmensnetzwerks, in einer DMZ (demilitarisierte Zone) oder sogar auf einem virtuellen Computer installieren, der in der Cloud betrieben wird. Wichtig ist nur, dass der Computer, auf dem der Connector ausgeführt ist, ebenfalls Zugriff auf Ihre Apps hat.
 
 DMZ-Bereitstellungen sind komplizierter. Es gibt jedoch einen Grund, aus dem Sie Connectors möglicherweise doch in einer DMZ bereitstellen möchten: Wenn Sie andere Infrastrukturen wie z.B. Lastenausgleichsmodule in Back-End-Anwendungen oder Angriffserkennungssysteme verwenden möchten.
 
@@ -71,7 +84,7 @@ Connectors können auch in Domänen oder Gesamtstrukturen mit einer Teilvertraue
 In der Regel ist die Connectorbereitstellung unkompliziert und erfordert keine spezielle Konfiguration. Es gibt jedoch einige Bedingungen, die berücksichtigt werden müssen:
 
 * Organisationen, die ausgehenden Datenverkehr einschränken, müssen [erforderliche Ports öffnen](active-directory-application-proxy-enable.md#open-your-ports).
-* Möglicherweise muss die Konfiguration von FIPS-konformen Computern geändert werden, damit der Connectordienst, der Connectorupdatedienst und die zugehörigen Installationsprogramme ein Zertifikat auf diesem Computer generieren und speichern können.
+* Möglicherweise muss die Konfiguration von FIPS-konformen Computern geändert werden, damit der Connectordienst, der Connectorupdatedienst und die zugehörigen Installationsprogramme ein Zertifikat generieren und speichern können.
 * Organisationen, die ihre Umgebung basierend auf den Prozessen sperren, die die Netzwerkanforderungen ausgeben, müssen sicherstellen, dass für beide Connectordienste der Zugriff auf alle erforderlichen Ports und IPs zugelassen ist.
 * In einigen Fällen kann es passieren, dass Proxys für die Weiterleitung des ausgehenden Datenverkehrs die zweistufige Authentifizierung per Zertifikat verhindern, sodass bei der Kommunikation ein Fehler auftritt.
 
@@ -101,18 +114,6 @@ Ein weiterer Leistungsfaktor ist die Qualität der Netzwerkverbindung zwischen d
 * **Onlinedienst:** Langsame Verbindungen oder Verbindungen mit hoher Latenz beeinträchtigen den Connectordienst. Es ist am besten, wenn Ihre Organisation per ExpressRoute mit Azure verbunden ist. Andernfalls muss das Netzwerkteam sicherstellen, dass Verbindungen mit Azure auf effiziente Weise verarbeitet werden.  
 * **Back-End-Anwendungen:** In einigen Fällen sind zwischen dem Connector und den Back-End-Anwendungen zusätzliche Proxys vorhanden. Dieses Problem lässt sich beheben, indem Sie auf dem Connectorcomputer einen Browser öffnen und so auf diese Anwendungen zugreifen. Wenn Sie die Connectors in Azure ausführen und die Anwendungen lokal vorliegen, ist die Benutzerfreundlichkeit ggf. nicht so hoch wie erwartet.
 * **Domänencontroller:** Wenn die Connectors SSO per eingeschränkter Kerberos-Delegierung (KCD) durchführen, nehmen sie vor dem Senden der Anforderung an das Back-End Kontakt mit den Domänencontrollern auf. Die Connectors verfügen zwar über einen Cache mit Kerberos-Tickets, aber in einer Umgebung mit hoher Auslastung kann sich die Reaktionsfähigkeit der Domänencontroller auf die Leistung auswirken. Dieses Problem tritt häufiger bei Connectors auf, die in Azure ausgeführt werden, während die Domänencontroller lokal installiert sind.
-
-## <a name="automatic-updates-to-the-connector"></a>Automatische Updates des Connectors
-
-Mit dem Connectorupdatedienst erhalten Sie eine automatisierte Möglichkeit, um alles auf dem neuesten Stand zu halten. So kommen Sie in den Genuss, immer über alle neuen Features und Sicherheits- und Leistungsverbesserungen zu verfügen.
-
-Azure AD unterstützt automatische Updates für alle von Ihnen bereitgestellten Connectors. Solange der Connectorupdatedienst für den Anwendungsproxy ausgeführt wird, werden Ihre Connectors automatisch aktualisiert. Falls der Connectorupdatedienst auf Ihrem Server nicht angezeigt wird, müssen Sie den [Connector neu installieren](active-directory-application-proxy-enable.md), um Updates zu erhalten.
-
-In folgenden Fällen kann es während der Aktualisierung eines Connectors zu Ausfallzeiten kommen:
-
-- Sie verfügen nur über einen Connector. Da kein anderer Connector vorhanden ist, über den der Datenverkehr umgeleitet werden kann, ist der Dienst während der Aktualisierung nicht verfügbar. Wir empfehlen Ihnen, einen zweiten Connector zu installieren und eine [Connectorgruppe zu erstellen](active-directory-application-proxy-connectors-azure-portal.md), um diese Ausfallzeiten zu vermeiden und die hohe Verfügbarkeit zu verbessern.
-
-- Zu Beginn der Aktualisierung befand sich ein Connector mitten in einer Transaktion. Ihr Browser sollte automatisch versuchen, den Vorgang zu wiederholen. Andernfalls können Sie die Seite aktualisieren. Wenn die Anforderung erneut gesendet wird, wird der Datenverkehr an einen Backupconnector weitergeleitet.
 
 ## <a name="under-the-hood"></a>Im Hintergrund
 

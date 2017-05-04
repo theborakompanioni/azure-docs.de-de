@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/30/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: ef3fc25ed06eb498600df4fc8fcad37f0f0dc676
-ms.lasthandoff: 04/18/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: 8dcb006a8cf167cdbfb67de5a11dabf0edbbe41c
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -37,7 +37,7 @@ Installieren Sie vor der Ausführung dieses Beispiels zunächst die folgenden er
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="step-1---test-local-mongodb-database"></a>Schritt 1: Testen der lokalen MongoDB-Datenbank
+## <a name="test-local-mongodb-database"></a>Testen der lokalen MongoDB-Datenbank
 In diesem Schritt stellen Sie sicher, dass die lokale MongoDB-Datenbank ausgeführt wird.
 
 Öffnen Sie das Terminalfenster und wechseln Sie mit `CD` zum Verzeichnis `bin` der MongoDB-Installation. 
@@ -54,7 +54,7 @@ Wenn Sie die MongoDB-Datenbank getestet haben, geben Sie im Terminal `Ctrl`+`C` 
 
 <a name="step2"></a>
 
-## <a name="step-2---create-local-nodejs-application"></a>Schritt 2: Erstellen einer lokalen Node.js-Anwendung
+## <a name="create-local-nodejs-application"></a>Erstellen einer lokalen Node.js-Anwendung
 In diesem Schritt richten Sie das lokale Node.js-Projekt ein.
 
 ### <a name="clone-the-sample-application"></a>Klonen der Beispielanwendung
@@ -103,7 +103,7 @@ Versuchen Sie, auf **Admin** > **Manage Articles** (Artikel verwalten) zu klicke
 
 Sie können Node.js jederzeit beenden, indem Sie im Terminal `Ctrl`+`C` eingeben. 
 
-## <a name="step-3---create-a-production-mongodb-database"></a>Schritt 3: Erstellen einer MongoDB-Produktionsdatenbank
+## <a name="create-a-production-mongodb-database"></a>Erstellen einer MongoDB-Produktionsdatenbank
 
 In diesem Schritt erstellen Sie eine MongoDB-Datenbank in Azure. Wenn Ihre App in Azure bereitgestellt wird, verwendet sie diese Datenbank für die Produktionsworkload.
 
@@ -163,7 +163,7 @@ DB/databaseAccounts/<documentdb_name>",
 } 
 ```
 
-## <a name="step-4---connect-your-nodejs-application-to-the-database"></a>Schritt 4: Verbinden der Node.js-Anwendung mit der Datenbank
+## <a name="connect-your-nodejs-application-to-the-database"></a>Verbinden der Node.js-Anwendung mit der Datenbank
 
 In diesem Schritt verbinden Sie die MEAN.js-Beispielanwendung mithilfe einer MongoDB-Verbindungszeichenfolge mit der soeben erstellten DocumentDB-Datenbank. 
 
@@ -242,7 +242,7 @@ MEAN.JS version: 0.5.0
 
 Navigieren Sie in einem Browser zu `http://localhost:8443`. Klicken Sie oben im Menü auf **Registrieren**, und versuchen Sie wie vorhin, einen Dummy-Benutzer zu erstellen. Wenn Sie erfolgreich sind, schreibt Ihre App Daten in die DocumentDB-Datenbank in Azure. 
 
-## <a name="step-5---deploy-the-nodejs-application-to-azure"></a>Schritt 5: Bereitstellen der Node.js-Anwendung in Azure
+## <a name="deploy-the-nodejs-application-to-azure"></a>Bereitstellen der Node.js-Anwendung in Azure
 In diesem Schritt stellen Sie die mit MongoDB verbundene Node.js-Anwendung in Azure App Service bereit.
 
 ### <a name="create-an-app-service-plan"></a>Wie erstelle ich einen Plan?
@@ -435,7 +435,7 @@ Versuchen Sie, auf **Admin** > **Manage Articles** (Artikel verwalten) zu klicke
 
 **Glückwunsch!** Sie führen eine datengesteuerte Node.js-app in Azure App Service aus.
 
-## <a name="step-6---update-data-model-and-redeploy"></a>Schritt 6: Aktualisieren und erneutes Bereitstellen des Datenmodells
+## <a name="update-data-model-and-redeploy"></a>Aktualisieren und erneutes Bereitstellen des Datenmodells
 
 In diesem Schritt nehmen Sie einige Änderungen am `article`Datenmodell vor und veröffentlichen die Änderungen in Azure.
 
@@ -486,7 +486,7 @@ exports.update = function (req, res) {
 
 Öffnen Sie nun `modules/client/views/view-article.client.view.js`.
 
-Fügen Sie unmittelbar vor dem schließenden `</section>`Tag die folgende Zeile hinzu, um `comment` und die verbleibenden Artikeldaten anzuzeigen:
+Fügen Sie unmittelbar vor dem schließenden `</section>`-Tag die folgende Zeile hinzu, um `comment` und die verbleibenden Artikeldaten anzuzeigen:
 
 ```HTML
 <p class="lead" ng-bind="vm.article.comment"></p>
@@ -569,7 +569,7 @@ Wechseln Sie nach Abschluss des `git push` zu Ihrer Azure-Web-App, und testen Si
 >
 >
 
-## <a name="step-7---stream-diagnostic-logs"></a>Schritt 7: Streaming des Diagnoseprotokolls 
+## <a name="stream-diagnostic-logs"></a>Streaming des Diagnoseprotokolls 
 
 Wenn Ihre Node.js-Anwendung in Azure App Service ausgeführt wird, können Sie die Konsolenprotokolle direkt auf Ihr Terminal umleiten. Auf diese Weise erhalten Sie die gleichen Diagnosemeldungen, die Ihnen beim Debuggen von Anwendungsfehlern helfen.
 
@@ -583,7 +583,7 @@ Nachdem das Protokollstreaming gestartet wurde, aktualisieren Sie die Azure-Web-
 
 Zum Beenden des Protokollstreamings geben Sie `Ctrl`+`C` ein. 
 
-## <a name="step-8---manage-your-azure-web-app"></a>Schritt 8: Verwalten Ihrer Azure-Web-App
+## <a name="manage-your-azure-web-app"></a>Verwalten Ihrer Azure-Web-App
 
 Wechseln Sie zum Azure-Portal, um die erstellte Web-App anzuzeigen.
 

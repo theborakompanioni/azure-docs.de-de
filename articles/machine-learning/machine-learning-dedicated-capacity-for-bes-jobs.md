@@ -11,27 +11,27 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2017
+ms.date: 04/19/2017
 ms.author: v-donglo
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: e75099e1ca7e3bbfc427883a8c343d773f3923ae
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 3879eb3d0c6fa9d74fff01b07f5c07d3991dfbbd
+ms.lasthandoff: 04/20/2017
 
 
 ---
 # <a name="azure-batch-service-for-machine-learning-jobs"></a>Azure Batch-Dienst für Machine Learning-Aufträge
 
-Machine Learning Batch-Pool-Verarbeitung verwendet den [Azure Batch-Dienst](../batch/batch-technical-overview.md), um kundenverwaltete Skalierung für den Azure Machine Learning-Batchausführungsdienst zu ermöglichen. Klassische Batchverarbeitung erfolgt in einer Umgebung mit mehreren Mandanten, wodurch die Anzahl von gleichzeitigen Aufträgen, die Sie senden können, begrenzt wird, und Aufträge werden auf FIFO-Basis in eine Warteschlange gesetzt. Diese Unsicherheit bedeutet, dass Sie nicht genau vorhersagen können, wann Ihr Auftrag ausgeführt wird.
+Die Machine Learning Batch-Poolverarbeitung ermöglicht für den Azure Machine Learning-Batchausführungsdienst eine vom Kunden verwaltete Skalierung. Klassische Batchverarbeitung für Machine Learning erfolgt in einer Umgebung mit mehreren Mandanten, wodurch die Anzahl gleichzeitiger Aufträge, die Sie senden können, begrenzt wird, und Aufträge werden auf FIFO-Basis in eine Warteschlange gestellt. Diese Unsicherheit bedeutet, dass Sie nicht genau vorhersagen können, wann Ihr Auftrag ausgeführt wird.
 
-Batch Pool-Verarbeitung ermöglicht Ihnen das Erstellen von Azure Batch-Pools, an die Sie Batchaufträge senden können. Sie steuern die Größe des Pools, und Sie steuern, an welchen der Pool der Auftrag gesendet wird. Ihr BES-Auftrag wird in seinem eigenen Verarbeitungsbereich ausgeführt, wodurch sich eine vorhersagbare Verarbeitungsleistung und die Möglichkeit ergeben, Ressourcenpools zu erstellen, die an die von Ihnen gesendete Verarbeitungslast angepasst sind.
+Die Batch-Poolverarbeitung ermöglicht Ihnen das Erstellen von Pools, an die Sie Batchaufträge senden können. Sie steuern die Größe des Pools, und Sie steuern, an welchen der Pool der Auftrag gesendet wird. Ihr BES-Auftrag wird in seinem eigenen Verarbeitungsbereich ausgeführt, wodurch sich eine vorhersagbare Verarbeitungsleistung und die Möglichkeit ergeben, Ressourcenpools zu erstellen, die an die von Ihnen gesendete Verarbeitungslast angepasst sind.
 
 ## <a name="how-to-use-batch-pool-processing"></a>Verwenden von Batch-Pool-Verarbeitung
 
-Um Batch-Pool-Verarbeitung verwenden zu können, benötigen Sie Folgendes:
+Die Konfiguration der Batch-Poolverarbeitung ist derzeit im Azure-Portal nicht möglich. Um die Batch-Poolverarbeitung verwenden zu können, müssen Sie die folgenden Schritte ausführen:
 
--   Ein Batch-Pool-Konto, das eine Pool-Dienst-URL und einen Autorisierungsschlüssel hat
--   Einen Neuer Resource Manager-basierten Webdiensttarif und Abrechnungsplan
+-   Rufen Sie den Kundensupport an, um ein Batch-Poolkonto zu erstellen und eine Pooldienst-URL und einen Autorisierungsschlüssel zu erhalten.
+-   Erstellen Sie einen neuen Resource Manager-basierten Webdienst- und Abrechnungsplan.
 
 Um Ihr Konto zu erstellen, rufen Sie Microsoft-Kundendienst und -Support (Microsoft Customer Service and Support, CSS) an, und geben Sie Ihre Abonnement-ID an. CSS bestimmt in Absprache mit Ihnen die geeignete Kapazität für Ihr Szenario. CSS konfiguriert anschließend Ihr Konto mit der maximalen Anzahl von Speicherpools, die Sie erstellen können, und der maximalen Anzahl von virtuellen Computern (VMs), die Sie in jedem Pool platzieren können. Sobald Ihr Konto konfiguriert ist, werden Ihnen Ihre Pool-Dienst-URL und ein Autorisierungsschlüssel bereitgestellt.
 
