@@ -26,8 +26,3 @@
 
 Die Seite **Sicherungsrichtlinien** wird aktualisiert, um die Änderungen an der Richtlinie zu speichern.
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -4,8 +4,3 @@ Cmdlet-Namen der Version 1.0 haben das Muster {Verb}-AzureRm{Nomen}, während Na
 
 Nur der Version 1.0 werden neue Features hinzugefügt. Informationen zur Version 1.0, z.B. zur Installation und Deinstallation, finden Sie unter [Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/).
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -8,8 +8,3 @@
 | Maximaler Arbeitsspeicher für einen Auftrag |400 MB |
 | Maximale Anzahl von Netzwerksockets, die pro Auftrag zulässig sind |1000 |
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -5,7 +5,7 @@ Führen Sie zum Erstellen eines VNet basierend auf dem oben beschriebenen Szenar
 2. Klicken Sie auf **NEU** > **NETZWERKDIENSTE** > **VIRTUELLES NETZWERK** > **BENUTZERDEFINIERT ERSTELLEN**, wie in der folgenden Abbildung dargestellt.
    
     ![Erstellen eines VNet im Portal](./media/virtual-networks-create-vnet-classic-portal-include/vnet-create-portal-figure1.gif)
-3. Geben Sie auf der Seite **Details zu Virtual Network** den Namen** **des VNets ein, wählen Sie seinen Standort** **aus, und klicken Sie dann auf den Pfeil rechts unten auf der Seite, um mit Schritt 2 fortzufahren. Die folgende Abbildung zeigt die Einstellungen für dieses Szenario.
+3. Geben Sie auf der Seite **Details zu Virtual Network** den Namen**** des VNets ein, wählen Sie seinen Standort ****aus, und klicken Sie dann auf den Pfeil rechts unten auf der Seite, um mit Schritt 2 fortzufahren. Die folgende Abbildung zeigt die Einstellungen für dieses Szenario.
    
     ![Seite "Details zu Virtual Network"](./media/virtual-networks-create-vnet-classic-portal-include/vnet-create-portal-figure2.png)
 4. Geben Sie auf der Seite **DNS-Server und VPN-Konnektivität** den Namen und die IP-Adresse für bis zu 9 DNS-Server an, die Sie verwenden möchten. Wenn Sie keinen DNS-Server angeben, verwendet Ihr VNet die interne Namensauflösung von Azure. In diesem Szenario werden keine DNS-Server konfiguriert.
@@ -30,9 +30,4 @@ Führen Sie zum Erstellen eines VNet basierend auf dem oben beschriebenen Szenar
 14. Klicken Sie auf das Häkchen in der unteren rechten Ecke der Seite, um das VNet zu erstellen. Nach einigen Sekunden wird das VNet in der Liste der verfügbaren VNets angezeigt, wie in der folgenden Abbildung dargestellt.
     
     ![Neues virtuelles Netzwerk](./media/virtual-networks-create-vnet-classic-portal-include/vnet-create-portal-figure5.png)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

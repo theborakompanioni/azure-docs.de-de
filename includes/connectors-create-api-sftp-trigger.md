@@ -16,8 +16,3 @@ Sie haben jetzt Ihre Logik-App mit einem Trigger konfiguriert, der eine Ausführ
 > 
 > 
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -12,8 +12,3 @@ In diesem Szenario erstellen Sie eine benutzerdefinierte Route für das *Front-E
 
 Durch die Kombination dieser Routen wird sichergestellt, dass der gesamte Datenverkehr von einem Subnetz zu einem anderen an den virtuellen Computer **FW1** weitergeleitet wird, der als virtuelles Gerät verwendet wird. Sie müssen auch die IP-Weiterleitung für diesen virtuellen Computer aktivieren, damit er den an andere virtuelle Computer gerichteten Datenverkehr empfangen kann.
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

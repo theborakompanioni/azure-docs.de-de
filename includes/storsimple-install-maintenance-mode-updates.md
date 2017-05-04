@@ -17,8 +17,3 @@
 8. Wurde der aktuelle Controller nach der Installation der Aktualisierung neu gestartet, stellen Sie eine Verbindung zu dem anderen Controller her und führen Sie die Schritte 1 bis 6 durch.
 9. Nachdem beide Controller aktualisiert wurden, beenden Sie den Wartungsmodus. Anweisungen dazu finden Sie unter [Schritt 4: Beenden des Wartungsmodus](../articles/storsimple/storsimple-update-device.md#step4).
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -24,8 +24,3 @@ Wenn Sie eine Verbindung mit SQL Server über das Internet herstellen möchten, 
 > 
 > 
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

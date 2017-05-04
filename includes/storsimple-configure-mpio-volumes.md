@@ -6,8 +6,3 @@
     ![MPIO-Eigenschaften – Multipfade ermitteln](./media/storsimple-configure-mpio-volumes/IC741003.png)
 4. Starten Sie den Server neu, wenn Sie dazu aufgefordert werden.
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -31,8 +31,3 @@ Für Azure Site Recovery gelten die folgenden Beschränkungen.
 | Anzahl der Server pro Wiederherstellungsplan |50 |
 
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

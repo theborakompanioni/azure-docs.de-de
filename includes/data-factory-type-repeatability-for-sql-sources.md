@@ -83,8 +83,3 @@ Azure Data Factory füllt diese Spalte den Anforderungen entsprechend auf, um si
 
 Ähnlich wie bei Verfahren 1 bereinigt die Kopieraktivität zunächst automatisch die Daten eines bestimmten Slices in der SQL-Zieltabelle. Anschließend wird die Kopieraktivität normal ausgeführt, um für diesen Slice Daten aus der Quelle im Ziel einzufügen. 
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

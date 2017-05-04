@@ -32,8 +32,3 @@ Wie Sie oben sehen können, enthält die Erweiterungsvorlage zwei Hauptabschnitt
 ## <a name="identifying-the-publisher-type-and-typehandlerversion-for-any-extension"></a>Identifizieren des Herausgebers, des Typs und des typeHandlerVersion-Elements für eine beliebige Erweiterung
 Erweiterungen für virtuelle Azure-Computer werden von Microsoft und vertrauenswürdigen Drittanbietern veröffentlicht. Jede Erweiterung wird eindeutig durch Herausgeber, Typ und typeHandlerVersion-Element identifiziert. Diese können wie folgt bestimmt werden:  
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

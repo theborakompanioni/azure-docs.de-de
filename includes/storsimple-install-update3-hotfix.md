@@ -218,8 +218,3 @@ Folgen Sie den Anweisungen unten, um die Datenträger-Firmwareupdates zu install
    `Exit-HcsMaintenanceMode`
 5. Beim Beenden des Wartungsmodus werden die Controller neu gestartet. Nachdem die Firmwareupdates für Datenträger erfolgreich installiert wurden und das Gerät den Wartungsmodus verlassen hat, kehren Sie zum klassischen Azure-Portal zurück. Beachten Sie, dass es bis zu 24 Stunden dauern kann, bis die Installation der Wartungsmodus-Updates im Portal angezeigt wird.
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

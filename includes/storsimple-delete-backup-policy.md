@@ -8,8 +8,3 @@
 
 Die Seite **Sicherungsrichtlinien** wird aktualisiert, um die neue Liste der Richtlinien anzuzeigen.
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -7,8 +7,3 @@ Beispiele für Fälle, in denen virtuelle Geräte verwendet werden können:
 
 Weitere Informationen zu UDR und IP-Weiterleitung finden Sie unter [Benutzerdefinierte Routen und IP-Weiterleitung](../articles/virtual-network/virtual-networks-udr-overview.md).
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

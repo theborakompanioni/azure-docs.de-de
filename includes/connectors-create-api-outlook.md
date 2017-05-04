@@ -15,8 +15,3 @@ Hier finden Sie die Schritte zum Autorisieren Ihrer Logik-App für Verbindungen 
 4. Geben Sie Ihre Anmeldeinformationen für Outlook an, und melden Sie sich an: ![](./media/connectors-create-api-outlook/office365-outlook-2.png)  
    Das ist alles. Sie haben damit eine Verbindung mit Outlook erstellt. Diese Verbindung steht auch für die Verwendung in anderen Logik-Apps zur Verfügung, die Sie erstellen.
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

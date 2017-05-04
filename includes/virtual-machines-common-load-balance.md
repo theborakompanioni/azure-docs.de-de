@@ -64,8 +64,3 @@ Die Schritte zum Erstellen einer Gruppe mit Lastenausgleich finden Sie unter [Ko
 
 Weitere Informationen zum Lastenausgleich finden Sie unter [Interner Lastenausgleich](../articles/load-balancer/load-balancer-internal-overview.md).
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

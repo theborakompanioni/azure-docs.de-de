@@ -5,8 +5,3 @@ Um zu veranschaulichen, wie Sie eine statische IP-Adresse für einen virtuellen 
 
 In diesem Szenario erstellen Sie einen virtuellen Computer mit der Bezeichnung **NS01** im **FrontEnd**-Subnetz und legen ihn so fest, dass die statische IP-Adresse **192.168.1.101** verwendet wird.
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

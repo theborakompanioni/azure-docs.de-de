@@ -16,8 +16,3 @@ Durch die Kombination dieser Regeln wird ein DMZ-ähnliches Szenario erstellt, i
 
 Öffnen Sie zum Bereitstellen des oben beschriebenen Szenarios [diesen Link](http://github.com/telmosampaio/azure-templates/tree/master/201-IaaS-WebFrontEnd-SQLBackEnd-NSG), klicken Sie auf **Bereitstellen in Azure**, ersetzen Sie ggf. die Werte der Standardparameter, und folgen Sie den Anweisungen im Portal. In den folgenden Beispielanweisungen wurde die Vorlage zum Bereitstellen einer Ressourcengruppe namens **RG NSG** verwendet. 
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

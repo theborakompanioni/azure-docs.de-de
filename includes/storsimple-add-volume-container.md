@@ -18,8 +18,3 @@
 
 Der Volumecontainer wird gespeichert, und der neu erstellte Volumecontainer wird auf der Seite **Volumecontainer** aufgeführt.
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

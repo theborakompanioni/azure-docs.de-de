@@ -40,8 +40,3 @@ Nach dem Erstellen des Azure Backup-Tresors sollte auf jedem Windows-Computer (W
     
     ![Konfigurieren von Azure Backup](./media/backup-install-agent/configure.png)
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

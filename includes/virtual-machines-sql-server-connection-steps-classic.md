@@ -21,8 +21,3 @@ Um sich von einem anderen Computer aus mit dem SQL Server-Datenbankmodul zu verb
 5. Geben Sie im Feld **Kennwort** das Kennwort des Anmeldenamens ein, den Sie vorher erstellt haben.
 6. Klicken Sie auf **Verbinden**.
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

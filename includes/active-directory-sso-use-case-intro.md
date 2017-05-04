@@ -16,8 +16,3 @@ Für den Fall, dass Benutzer ihre eigenen Konten für SaaS-Apps erstellt haben, 
 
 Wenn Sie eine Anwendung in Azure AD integrieren, können Sie die eingerichteten Anwendungsidentitäten der Benutzer den jeweiligen Azure AD-Identitäten zuordnen.  
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

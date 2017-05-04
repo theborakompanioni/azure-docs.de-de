@@ -15,8 +15,3 @@ Führen Sie die folgenden Schritte zum Erstellen einer Aktion „Nachricht sende
 8. Speichern Sie die Änderungen am Workflow.   
    ![Service Bus-Aktion – Abbildung 4](./media/connectors-create-api-servicebus/action-4.png)     
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

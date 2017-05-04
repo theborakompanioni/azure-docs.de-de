@@ -21,8 +21,3 @@
 | Kanada, Mitte |Kanada, Osten |
 | USA, Westen 2 |USA, Westen-Mitte |
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

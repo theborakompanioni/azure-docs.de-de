@@ -5,8 +5,3 @@ In diesem Szenario werden die folgenden Aufgaben ausgeführt:
 * Erstellen von Integritätstests
 
 ![Load Balancer-Szenarios](./media/load-balancer-get-started-internet-scenario-include/scenario-classic.png)
-
-
-<!--HONumber=Nov16_HO2-->
-
-

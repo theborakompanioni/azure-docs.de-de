@@ -7,8 +7,8 @@
 | Maximale Anzahl von Volumes |255 | |
 | Maximale Anzahl von Zeitplänen pro Bandbreitenvorlage |168 |Einen Zeitplan für jede Stunde, jeden Tag der Woche (24 * 7). |
 | Maximale Größe eines mehrstufigen Volumes auf physischen Geräten |64 TB für 8100 und 8600 |8100 und 8600 sind physische Geräte. |
-| Maximale Größe eines mehrstufigen Volumes auf virtuellen Geräten in Azure |30 TB für 8010  <br></br>  64 TB für 8020 |8010 und 8020 sind virtuelle Geräte in Azure, die Standardspeicher und Storage Premium verwenden. |
-| Maximale Größe eines lokal fixierten Volumes auf physischen Geräten |9 TB für 8100  <br></br>  24 TB für 8600 |8100 und 8600 sind physische Geräte. |
+| Maximale Größe eines mehrstufigen Volumes auf virtuellen Geräten in Azure |30 TB für 8010  <br></br> 64 TB für 8020 |8010 und 8020 sind virtuelle Geräte in Azure, die Standardspeicher und Storage Premium verwenden. |
+| Maximale Größe eines lokal fixierten Volumes auf physischen Geräten |9 TB für 8100  <br></br> 24 TB für 8600 |8100 und 8600 sind physische Geräte. |
 | Maximale Anzahl von iSCSI-Verbindungen |512 | |
 | Maximale Anzahl von iSCSI-Verbindungen von Initiatoren |512 | |
 | Maximale Anzahl von Zugriffssteuerungsdatensätzen pro Gerät |64 | |
@@ -26,9 +26,4 @@
 | Maximaler Client-Lese-/-Schreibdurchsatz (wenn von Cloud-Ebene aus bereitgestellt)* |11/41 MB/s |Lesedurchsatz hängt von Clients ab, die genügend E/A-Warteschlangentiefe generieren und verwalten müssen. |
 
 &#42; Der maximale Durchsatz pro E/A-Typ wurde mit 100 %-Lese- und 100 %-Schreibszenarien gemessen. Der tatsächliche Durchsatz kann geringer sein und hängt von der E/A-Mischung und den Netzwerkbedingungen ab.
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

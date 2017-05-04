@@ -40,8 +40,3 @@ Stellen Sie die Verbindung mit Ihrer Azure SQL-Datenbank mit den folgenden Schri
    
     ![Schritt zur Erstellung der SQL Azure-Verbindung](./media/connectors-create-api-sqlazure/table.png)
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

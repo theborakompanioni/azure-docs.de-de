@@ -23,8 +23,3 @@
      
        ![Hinzufügen von Rollen und Features – Assistent 9](./media/storsimple-install-mpio-windows-server/IC741002.png)
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

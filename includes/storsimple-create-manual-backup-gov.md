@@ -16,8 +16,3 @@
    
    Die Sicherung sollte in der Liste der Sicherungssätze enthalten sein, die im Katalog angezeigt wird.
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

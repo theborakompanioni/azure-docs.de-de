@@ -17,8 +17,3 @@ Wenn Sie eine Datenbank fortsetzen, geschieht Folgendes:
 * Ihre Daten sind verfügbar.
 * Sie müssen Ihre Workloadabfragen neu starten.
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

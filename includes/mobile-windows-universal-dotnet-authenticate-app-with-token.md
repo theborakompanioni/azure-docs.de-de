@@ -82,8 +82,3 @@
    
     Beachten Sie, dass beim ersten Start die Anmeldung beim Anbieter wieder erforderlich ist. Beim zweiten Neustart jedoch werden die zwischengespeicherten Anmeldeinformationen verwendet, und die Anmeldung wird umgangen. 
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

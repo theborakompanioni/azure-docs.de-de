@@ -20,8 +20,3 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 [3]: ./media/connectors-create-api-sharepointonline/connectionconfig3.png
 [4]: ./media/connectors-create-api-sharepointonline/connectionconfig4.png
 [5]: ./media/connectors-create-api-sharepointonline/connectionconfig5.png
-
-
-<!--HONumber=Nov16_HO3-->
-
-

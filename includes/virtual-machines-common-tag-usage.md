@@ -18,8 +18,3 @@ Den Verwendungsdetails können Sie alle Tags in der Spalte **Tags** entnehmen:
 
 Durch Analysieren dieser Tags zusammen mit der Nutzung erhalten Organisationen neue Einblicke in die Nutzung Ihrer Daten.
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

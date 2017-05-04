@@ -17,8 +17,3 @@ Führen Sie folgende Schritte aus, um Ihre Logik-App für die Verbindung mit Ihr
 4. Beachten Sie, dass die Verbindung erstellt wurde. Fahren Sie nun mit den weiteren Schritten in Ihrer Logik-App fort:   
     ![Schritt zur Erstellung der Office 365-Verbindung](./media/connectors-create-api-office365-outlook/office365-sendemailproperties.png)  
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

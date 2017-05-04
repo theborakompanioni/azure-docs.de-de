@@ -16,8 +16,3 @@ Hier finden Sie die Schritte zum Autorisieren Ihrer Logik-App für Verbindungen 
 5. Beachten Sie, dass die Verbindung erstellt wurde und Sie nun mit den anderen Schritten in Ihrer Logik-App fortfahren können:  
    ![Salesforce-Verbindung – Abbildung 5](./media/connectors-create-api-salesforce/salesforce-5.png)  
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

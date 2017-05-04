@@ -17,8 +17,3 @@
        ![Ändern eines Volumecontainers mit Bandbreitenvorlage 2](./media/storsimple-modify-volume-container/HCS_ModifyVCBT2-include.png)
    3. Klicken Sie auf das Häkchensymbol ![Häkchensymbol](./media/storsimple-modify-volume-container/HCS_CheckIcon-include.png) , um die aktualisierten Einstellungen zu speichern. Die Seite **Volumecontainer** wird den Änderungen entsprechend aktualisiert.
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

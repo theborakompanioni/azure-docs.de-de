@@ -2,8 +2,3 @@ Das Aktivitätsprotokoll enthält alle Schreibvorgänge (PUT, POST, DELETE), die
 
 Aktivitätsprotokolle werden 90 Tage lang aufbewahrt. Sie können beliebige Datumsbereiche abfragen, das Startdatum darf jedoch maximal 90 Tage zurückliegen.
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

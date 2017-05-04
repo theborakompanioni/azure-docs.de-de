@@ -8,8 +8,3 @@
 
 <sup>1</sup>API Management-Beschränkungen sind für jeden Tarif unterschiedlich. Der Tarif und die zugehörigen Beschränkungen und Skalierungsoptionen finden Sie unter [API Management Preise](https://azure.microsoft.com/pricing/details/api-management/).
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

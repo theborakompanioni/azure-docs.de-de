@@ -10,8 +10,3 @@
    
     Beide Controller werden neu gestartet. Wenn der Neustart abgeschlossen ist, wird eine andere Meldung angezeigt, die besagt, dass das Gerät in den Wartungsmodus versetzt wird.
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -189,8 +189,3 @@ Beispiel für eine Vorlage für einen Load Balancer im Json-Format:
 ### <a name="additional-resources"></a>Zusätzliche Ressourcen
 Weitere Informationen finden Sie unter [Lastenausgleich für REST-API](https://msdn.microsoft.com/library/azure/mt163651.aspx) .
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

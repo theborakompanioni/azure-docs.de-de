@@ -70,8 +70,3 @@ Bei Netzwerksicherheitsgruppen wird diese Funktion für die Portweiterleitung vo
 
 > [!NOTE]
 > Wenn Sie einen Load Balancer implementieren, weisen Sie der VM selbst normalerweise keine öffentliche IP-Adresse zu. Stattdessen wird dem Load Balancer eine öffentliche IP-Adresse zugewiesen. Sie müssen trotzdem noch die Netzwerksicherheitsgruppe und ACL-Regeln erstellen, um den ein- und ausgehenden Fluss des Datenverkehrs der VM zu definieren. Mit den NAT-Regeln des Load Balancers wird lediglich definiert, welche Ports über den Load Balancer zugelassen sind und wie sie auf die Back-End-VMs verteilt werden. Daher müssen Sie eine NAT-Regel dafür erstellen, dass der Datenverkehr durch den Load Balancer fließt. Erstellen Sie dann eine ACL-Regel für die Netzwerksicherheitsgruppe, damit der Datenverkehr die VM auch tatsächlich erreicht.
-
-
-<!--HONumber=Nov16_HO3-->
-
-

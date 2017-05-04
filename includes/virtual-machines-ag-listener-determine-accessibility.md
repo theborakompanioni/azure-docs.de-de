@@ -12,8 +12,3 @@ Sie müssen beachten, dass es zwei Methoden zum Konfigurieren eines Verfügbarke
 
 ILB kann nur für virtuelle Netzwerke mit regionalem Umfang konfiguriert werden. Vorhandene virtuelle Netzwerke, die für eine Affinitätsgruppe konfiguriert wurden, können kein ILB verwenden. Weitere Informationen finden Sie unter [Interner Lastenausgleich](../articles/load-balancer/load-balancer-internal-overview.md).
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

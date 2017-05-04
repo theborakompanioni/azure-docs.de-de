@@ -2,8 +2,3 @@ Sie können virtuelle Computer (VMs) in Azure erstellen und jedem virtuellen Com
 
 Bevor Sie mehrere NICs in virtuellen Computern implementieren können, müssen Sie wissen, wann Sie mehrere NICs verwenden können und wie diese verwendet werden. Weitere Informationen zu virtuellen Computern mit mehreren NICs finden Sie unter [Multi-NIC: Übersicht](../articles/virtual-network/virtual-networks-multiple-nics.md) .
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

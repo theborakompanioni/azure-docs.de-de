@@ -61,8 +61,3 @@ Wenn Sie Java oder PHP verwenden möchten, lesen Sie die Informationen unter [Ge
 [Hinzufügen von Pushbenachrichtigungen zu Mobile Apps]: ../articles/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md
 [Gewusst wie: Verwenden von Notification Hubs von Java/PHP aus]: ../articles/notification-hubs/notification-hubs-java-push-notification-tutorial.md
 [Microsoft.Azure.NotificationHubs-NuGet-Pakets]: http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/
-
-
-<!--HONumber=Nov16_HO3-->
-
-

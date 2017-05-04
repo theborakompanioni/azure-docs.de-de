@@ -9,8 +9,3 @@
 * [Benutzerdefinierte Konfigurationseinstellungen für App Service-Umgebungen (einschließlich PCI-Compliance-Einstellungen)](../articles/app-service-web/app-service-app-service-environment-custom-settings.md)
 * [High Density-Hosting von Apps mit App Service-Umgebungen](../articles/app-service/app-service-high-density-hosting.md#recommended-configuration-for-high-density-hosting)
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -16,8 +16,3 @@ Führen Sie folgende Schritte aus, um Ihre Logik-App für die Verbindungsherstel
 4. Beachten Sie, dass die Verbindung erstellt wurde. Fahren Sie nun mit den weiteren Schritten in Ihrer Logik-App fort:  
    ![](./media/connectors-create-api-crmonline/dynamics-properties.png)
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

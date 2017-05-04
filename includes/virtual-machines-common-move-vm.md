@@ -27,8 +27,3 @@ Sie können einen virtuellen Computer und die dazugehörigen Ressourcen mithilfe
    
     ![Screenshot des Blatts „Ressourcen verschieben“](./media/virtual-machines-common-move-vm/move-rg-list.png)
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

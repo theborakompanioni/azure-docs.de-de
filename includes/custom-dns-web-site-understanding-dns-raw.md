@@ -56,8 +56,3 @@ Sie können die IP-Adresse und die **.azurewebsites.net** -Namen für Ihre Web-A
    > 
    > 
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

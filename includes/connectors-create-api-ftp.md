@@ -12,8 +12,3 @@ Hier finden Sie die Schritte zum Autorisieren Ihrer Logik-App für Verbindungen 
 3. Beachten Sie, dass die Verbindung erstellt wurde und Sie nun mit den anderen Schritten in Ihrer Logik-App fortfahren können:  
    ![Schritt zur Erstellung der FTP-Verbindung](./media/connectors-create-api-ftp/ftp-3.png)  
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

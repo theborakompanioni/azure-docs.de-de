@@ -75,8 +75,3 @@ Standardsicherheitsregeln weisen dieselben Eigenschaften wie Sicherheitsregeln a
 * Weitere Informationen zu [NSGs](../articles/virtual-network/virtual-networks-nsg.md).
 * Weitere Informationen zu NSGs finden Sie in der [Referenzdokumentation zur REST-API](https://msdn.microsoft.com/library/azure/mt163615.aspx) .
 * Weitere Informationen zu Sicherheitsregeln finden Sie in der [Referenzdokumentation zur REST-API](https://msdn.microsoft.com/library/azure/mt163580.aspx) .
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -9,8 +9,3 @@
 | Aktive Pushkampagnen |50 pro App |
 | Pushkampagnen insgesamt (einschließlich aktiv und abgeschlossen) |1.000 pro App |
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

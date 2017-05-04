@@ -30,8 +30,3 @@ Sie müssen die folgenden Schritte ausführen, bevor Sie das Update überprüfen
 
 Nachdem Sie diese manuellen Vorabprüfungen erfolgreich abgeschlossen haben, können Sie mit dem Überprüfen und Installieren der Updates beginnen.
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -22,8 +22,3 @@ Neue Features und Funktionen werden nur neuen Versionen hinzugefügt. Wenn Sie e
 
 Es wird empfohlen, so früh wie möglich auf das neueste SDK zu aktualisieren. Sobald ein SDK für die Deaktivierung markiert wurde, bleiben Ihnen 12 Monate zur Aktualisierung Ihrer Anwendung. Wenn Sie aus einem beliebigen Grund die Aktualisierung der Anwendung in diesem Zeitraum nicht schaffen, kontaktieren Sie das [DocumentDB-Team](mailto:askdocdb@microsoft.com) , und bitten Sie vor dem Stichtag um Hilfe.
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

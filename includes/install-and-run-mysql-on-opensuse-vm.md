@@ -72,8 +72,3 @@
 [Azure-Portal]: http://manage.windowsazure.com
 
 [Bild9]: ./media/install-and-run-mysql-on-opensuse-vm/LinuxVmAddEndpointMySQL.png
-
-
-<!--HONumber=Nov16_HO3-->
-
-

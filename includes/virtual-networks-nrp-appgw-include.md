@@ -219,8 +219,3 @@ Beispiel für eine Json-Vorlage für Anwendung Gateway:
 ### <a name="additional-resources"></a>Zusätzliche Ressourcen
 Weitere Informationen finden Sie unter [ Application Gateway REST-API](https://msdn.microsoft.com/library/azure/mt299388.aspx) .
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

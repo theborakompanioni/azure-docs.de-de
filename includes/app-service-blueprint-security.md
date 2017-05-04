@@ -16,8 +16,3 @@
   * [Konfigurieren der Zugriffssteuerung für eingehenden Netzwerkdatenverkehr für Ihre ASE](../articles/app-service-web/app-service-app-service-environment-control-inbound-traffic.md)
   * [Herstellen einer sicheren Verbindung mit Back-End-Ressourcen von Ihrer ASE](../articles/app-service-web/app-service-app-service-environment-securely-connecting-to-backend-resources.md)
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

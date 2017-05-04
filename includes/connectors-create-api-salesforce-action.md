@@ -40,8 +40,3 @@ Das ist alles. Ihre Logik-App ist jetzt fertig.
 Nun können Sie Ihre Logik-App testen: Erstellen Sie in Salesforce einen neuen Lead, der die erstellte Bedingung erfüllt.  Wenn Sie diese exemplarische Vorgehensweise vollständig befolgt haben, erstellen Sie einfach einen Lead mit einer E-Mail-Adresse, die *amazon.com* enthält. Nach wenigen Sekunden sollte Ihre Logik-App ausgelöst werden, und das Ergebnis könnte etwa wie folgt aussehen:   
 ![Salesforce-Aktion – Abbildung 9](./media/connectors-create-api-salesforce/action-9.png)  
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

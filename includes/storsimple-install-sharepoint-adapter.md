@@ -18,8 +18,3 @@
 7. Öffnen Sie die Seite für die SharePoint-Zentraladministration. Hier sollte eine StorSimple-Konfigurationsgruppe angezeigt werden, die den StorSimple-Adapter für SharePoint-Links enthält.
 8. Wechseln Sie zum nächsten Schritt: [Konfigurieren von RBS](#configure-rbs).
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

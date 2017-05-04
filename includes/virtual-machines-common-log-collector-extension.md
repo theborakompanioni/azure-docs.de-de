@@ -483,8 +483,3 @@ SetAzureVMLogCollector.ps1
 ## <a name="next-steps"></a>Nächste Schritte
 Sie können jetzt Ihre Protokolle an einem sehr einfachen Speicherort untersuchen oder kopieren.
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

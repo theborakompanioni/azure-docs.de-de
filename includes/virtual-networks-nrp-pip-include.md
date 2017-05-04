@@ -39,8 +39,3 @@ Beispiel für eine öffentliche IP-Adresse im JSON-Format:
 * Weitere Informationen zu [öffentlichen IP-Adressen auf Instanzebene](../articles/virtual-network/virtual-networks-instance-level-public-ip.md).
 * Lesen Sie die [REST-API-Referenzdokumentation](https://msdn.microsoft.com/library/azure/mt163638.aspx) für Informationen zu öffentlichen IP-Adressen.
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -11,7 +11,7 @@
    
     ![StorSimple – Registrieren des Geräts 2](./media/storsimple-configure-and-register-device/HCS_RegisterYourDevice2-include.png)
    
-     Führen Sie die Schritte 5 bis 12 aus, um die mindestens erforderlichen Netzwerkeinstellungen für Ihr Gerät zu konfigurieren. **Diese Konfigurationsschritte müssen für den aktiven Controller des Geräts ausgeführt werden.**  Das Menü der seriellen Konsole gibt den Zustand des Controllers in der Bannermeldung an. Wenn Sie nicht mit dem aktiven Controller verbunden sind, trennen Sie die Verbindung, und stellen Sie dann eine Verbindung mit dem aktiven Controller her.
+     Führen Sie die Schritte 5 bis 12 aus, um die mindestens erforderlichen Netzwerkeinstellungen für Ihr Gerät zu konfigurieren. **Diese Konfigurationsschritte müssen für den aktiven Controller des Geräts ausgeführt werden.** Das Menü der seriellen Konsole gibt den Zustand des Controllers in der Bannermeldung an. Wenn Sie nicht mit dem aktiven Controller verbunden sind, trennen Sie die Verbindung, und stellen Sie dann eine Verbindung mit dem aktiven Controller her.
 5. Geben Sie an der Eingabeaufforderung Ihr Kennwort ein. Das Standardkennwort für das Gerät lautet **Password1**.
 6. Geben Sie den folgenden Befehl ein:
    
@@ -73,9 +73,4 @@ Wenn das Gerät erfolgreich registriert wurde, jedoch nicht online geschaltet wi
 ![Video verfügbar](./media/storsimple-configure-and-register-device/Video_icon.png) **Video verfügbar**
 
 Sie können sich [hier](https://azure.microsoft.com/documentation/videos/initialize-the-storsimple-appliance/)ein Video anschauen, dass die Konfiguration und Registrierung Ihres Geräts über Windows PowerShell für StorSimple demonstriert.
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

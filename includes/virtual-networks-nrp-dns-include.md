@@ -82,8 +82,3 @@ Lesen Sie die [REST-API-Dokumentation für DNS-Zonen ](https://msdn.microsoft.co
 
 Weitere Informationen erhalten Sie in der [REST-API-Dokumentation für DNS-Ressourceneintragssätze](https://msdn.microsoft.com/library/azure/mt130627.aspx) .
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

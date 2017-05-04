@@ -16,8 +16,3 @@ In diesem Beispiel zeige ich Ihnen, wie mit dem Trigger **SharePoint Online - We
 
 Jetzt haben Sie Ihre Logik-App mit einem Trigger konfiguriert, der eine Ausführung der anderen Trigger und Aktionen im Workflow startet. Dies findet jedes Mal statt, wenn ein neues Element in der ausgewählten SharePoint Online-Liste erstellt wird.  
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

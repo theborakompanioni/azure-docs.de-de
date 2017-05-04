@@ -12,8 +12,3 @@ Hier finden Sie die Schritte zum Autorisieren Ihrer Logik-App für Verbindungen 
 3. Beachten Sie, dass die Verbindung erstellt wurde und Sie nun mit anderen Schritten in Ihrer Logik-App fortfahren können:   
    ![SendGrid: Schritt 3](./media/connectors-create-api-sendgrid/sendgrid-3.png)   
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -19,8 +19,3 @@ Führen Sie folgende Schritte aus, um Ihre Logik-App für die Verbindung mit Ihr
 5. Beachten Sie, dass die Verbindung erstellt wurde. Fahren Sie nun mit den weiteren Schritten in Ihrer Logik-App fort:  
    ![](./media/connectors-create-api-onedrive/onedrive-5.png)
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

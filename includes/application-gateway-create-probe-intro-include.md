@@ -2,8 +2,3 @@ Mit benutzerdefinierten Tests gewinnen Sie eine präzisere Kontrolle über den S
 
 Dieser Artikel enthält eine Anleitung, wie Sie ein Application Gateway mit einem benutzerdefinierten Test erstellen und wie Sie einem vorhandenen Application Gateway einen benutzerdefinierten Test hinzufügen. 
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -25,8 +25,3 @@ Für ExpressRoute-Ressourcen gelten pro Abonnement die folgenden Einschränkunge
 | 5 GBit/s |10 |75 |
 | 10 GBit/s |10 |100 |
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -14,8 +14,3 @@ Hier finden Sie die Schritte zum Autorisieren Ihrer Logik-App für Verbindungen 
 4. Beachten Sie, dass die Verbindung erstellt wurde und Sie nun mit anderen Schritten in Ihrer Logik-App fortfahren können:   
    ![Schritt zur Erstellung der Verbindung mit Office 365-Benutzern](./media/connectors-create-api-office365users/office365users-4.png)  
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

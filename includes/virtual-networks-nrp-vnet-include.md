@@ -77,8 +77,3 @@ Beispiel-VNet im JSON-Format:
 * Lesen Sie die [REST-API-Referenzdokumentation](https://msdn.microsoft.com/library/azure/mt163650.aspx) für Informationen zu VNets.
 * Lesen Sie die [REST-API-Referenzdokumentation](https://msdn.microsoft.com/library/azure/mt163618.aspx) für Informationen zu Subnetzen.
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-
