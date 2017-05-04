@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 01/05/2017
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: cc61146e0353455c5c763297a002afb86b76887a
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 2bf6bd76b653e30f38595631eff576d8eeb8efda
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -88,7 +88,7 @@ In der folgenden Tabelle sind die für jede Entität verfügbaren Aktionen aufge
 | Knoten | Deaktivieren (neu starten) | Verschiebt alle In-Memory-Dienste sicher aus einem Knoten und schließt dauerhafte Dienste. Wird in der Regel verwendet, wenn die Hostprozesse oder Hostcomputer neu gestartet werden müssen. | |
 | Knoten | Deaktivieren (Daten entfernen) | Ermöglicht das sichere Schließen aller auf dem Knoten ausgeführten Dienste, nachdem ausreichend Ersatzreplikate erstellt wurden. Wird in der Regel verwendet, wenn ein Knoten (oder zumindest sein Speicher) dauerhaft außer Betrieb genommen wird. | |
 | Knoten | Knotenzustand entfernen | Entfernt die Replikatinformationen eines Knotens aus dem Cluster. Wird in der Regel verwendet, wenn ein Knoten, auf dem bereits ein Fehler aufgetreten ist, als nicht mehr wiederherstellbar gilt. | |
-| Knoten | Neu starten | Simuliert einen Knotenausfall durch einen Neustart des Knotens. Weitere Informationen finden Sie [hier](https://docs.microsoft.com/en-us/powershell/servicefabric/vlatest/Restart-ServiceFabricNode). | |
+| Knoten | Neu starten | Simuliert einen Knotenausfall durch einen Neustart des Knotens. Weitere Informationen finden Sie [hier](/powershell/module/servicefabric/restart-servicefabricnode?view=azureservicefabricps). | |
 
 Da viele Aktionen destruktiv sind, werden Sie aufgefordert, den Vorgang zu bestätigen, bevor die Aktion abgeschlossen wird.
 

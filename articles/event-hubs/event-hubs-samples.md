@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/07/2017
+ms.date: 05/01/2017
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 2eaf642d3d6617c8500aee283809209a5f31ef88
-ms.lasthandoff: 04/18/2017
+ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
+ms.openlocfilehash: 89049688ab60842910f1bab8e56c349029dd17a7
+ms.lasthandoff: 05/02/2017
 
 ---
 
@@ -28,7 +28,7 @@ Die Azure Event Hubs-Beispiele veranschaulichen wichtige Funktionen in [Azure Ev
 Zum Zeitpunkt der Erstellung dieses Dokuments befinden sich Event Hubs an verschiedenen Orten:
 
 - [MSDN-Codebeispiele für Entwickler](https://code.msdn.microsoft.com/site/search?query=event%20hubs&f%5B0%5D.Value=event%20hubs&f%5B0%5D.Type=SearchText&ac=5)
-- [GitHub](https://github.com/Azure/azure-event-hubs-dotnet/tree/master/samples)
+- [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples)
 
 Weitere Informationen zu den unterschiedlichen Versionen von .NET Framework finden Sie unter [Frameworks und Ziele](/dotnet/articles/standard/frameworks).
 
@@ -40,11 +40,11 @@ Die folgenden Beispiele veranschaulichen, wie das Senden und Empfangen von Ereig
 
 ### <a name="send-events"></a>Senden von Ereignisse 
 
-Das Beispiel [Get started sending](https://github.com/Azure/azure-event-hubs/tree/master/samples/SampleSender) (Erste Schritte beim Versenden) zeigt, wie Sie eine .NET Core-Konsolenanwendung schreiben, die Ereignisse an einen Event Hub sendet.
+Das Beispiel [Get started sending](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender) (Erste Schritte beim Versenden) zeigt, wie Sie eine .NET Core-Konsolenanwendung schreiben, die Ereignisse an einen Event Hub sendet.
 
 ### <a name="receive-events"></a>Empfangen von Ereignissen 
 
-Das Beispiel [Get started receiving with the Event Processor Host](https://github.com/Azure/azure-event-hubs/tree/master/samples/SampleEphReceiver) (Erste Schritte beim Empfangen mit dem Ereignisprozessorhost) ist eine .NET Core-Konsolenanwendung, die mithilfe des `Event Processor Host` Nachrichten von einem Event Hub empfängt.
+Das Beispiel [Get started receiving with the Event Processor Host](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver) (Erste Schritte beim Empfangen mit dem Ereignisprozessorhost) ist eine .NET Core-Konsolenanwendung, die mithilfe des `Event Processor Host` Nachrichten von einem Event Hub empfängt.
 
 ## <a name="net-framework"></a>.NET Framework    
 

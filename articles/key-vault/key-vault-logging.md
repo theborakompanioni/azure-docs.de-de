@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: cabailey
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 51732acdad74dd6dbfc47fae62efc87df6ce5c15
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 924fce8245a88fd7c12636182336e503237fe4dc
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -35,11 +35,11 @@ Sie können auf Ihre Protokollinformationen spätestens zehn Minuten nach dem Sc
 Nutzen Sie dieses Tutorial als Hilfe bei den ersten Schritten mit der Azure-Schlüsseltresor-Protokollierung, beim Erstellen Ihres Speicherkontos, Aktivieren der Protokollierung und Interpretieren der gesammelten Protokollierungsinformationen.  
 
 > [!NOTE]
-> Dieses Tutorial enthält keine Anleitung zur Erstellung von Schlüsseltresoren, Schlüsseln oder geheimen Schlüsseln. Weitere Informationen hierzu finden Sie unter [Erste Schritte mit dem Azure-Schlüsseltresor](key-vault-get-started.md). Anleitungen für die plattformübergreifende Befehlszeilenschnittstelle finden Sie in [diesem entsprechenden Tutorial](key-vault-manage-with-cli.md).
-> 
+> Dieses Tutorial enthält keine Anleitung zur Erstellung von Schlüsseltresoren, Schlüsseln oder geheimen Schlüsseln. Weitere Informationen hierzu finden Sie unter [Erste Schritte mit dem Azure-Schlüsseltresor](key-vault-get-started.md). Anleitungen für die plattformübergreifende Befehlszeilenschnittstelle finden Sie in [diesem entsprechenden Tutorial](key-vault-manage-with-cli2.md).
+>
 > Derzeit können Sie den Azure-Schlüsseltresor nicht im Azure-Portal konfigurieren. Sie müssen stattdessen die Anweisungen für Azure PowerShell verwenden.
-> 
-> 
+>
+>
 
 Eine Übersicht über den Azure-Schlüsseltresor finden Sie unter [Was ist der Azure-Schlüsseltresor?](key-vault-whatis.md)
 
@@ -47,7 +47,7 @@ Eine Übersicht über den Azure-Schlüsseltresor finden Sie unter [Was ist der A
 Für dieses Tutorial benötigen Sie Folgendes:
 
 * Vorhandenen Schlüsseltresor, der von Ihnen genutzt wird  
-* Azure PowerShell, **mindestens Version 1.0.1**. Um Azure PowerShell zu installieren und Ihrem Azure-Abonnement zuzuordnen, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs). Wenn Sie Azure PowerShell bereits installiert haben und die Version nicht kennen, geben Sie über die Azure PowerShell-Konsole `(Get-Module azure -ListAvailable).Version` ein.  
+* Azure PowerShell, **mindestens Version 1.0.1**. Um Azure PowerShell zu installieren und Ihrem Azure-Abonnement zuzuordnen, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview). Wenn Sie Azure PowerShell bereits installiert haben und die Version nicht kennen, geben Sie über die Azure PowerShell-Konsole `(Get-Module azure -ListAvailable).Version` ein.  
 * Ausreichend Speicherplatz unter Azure für Ihre Schlüsseltresor-Protokolle
 
 ## <a id="connect"></a>Verbindungsherstellung mit Ihren Abonnements
@@ -66,11 +66,11 @@ Geben Sie dann Folgendes ein, um das Abonnement anzugeben, das dem zu protokolli
     Set-AzureRmContext -SubscriptionId <subscription ID>
 
 > [!NOTE]
-> Dies ist ein wichtiger Schritt und besonders hilfreich, wenn Ihrem Konto mehrere Abonnements zugeordnet sind. Wenn dieser Schritt übersprungen wird, tritt bei der Registrierung von Microsoft.Insights möglicherweise ein Fehler auf. 
+> Dies ist ein wichtiger Schritt und besonders hilfreich, wenn Ihrem Konto mehrere Abonnements zugeordnet sind. Wenn dieser Schritt übersprungen wird, tritt bei der Registrierung von Microsoft.Insights möglicherweise ein Fehler auf.
 >   
 >
 
-Weitere Informationen zum Konfigurieren von Azure PowerShell finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
+Weitere Informationen zum Konfigurieren von Azure PowerShell finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
 
 ## <a id="storage"></a>Erstellen eines neuen Speicherkontos für Ihre Protokolle
 Sie können zwar ein vorhandenes Speicherkonto für Ihre Protokolle verwenden, aber wir erstellen ein neues Speicherkonto, das den Schlüsseltresor-Protokollen zugeordnet wird. Wir speichern die Details in einer Variablen mit dem Namen **sa**, damit wir sie später leicht angeben können.
@@ -82,8 +82,8 @@ Um die Verwaltung noch weiter zu vereinfachen, verwenden wir auch die gleiche Re
 
 > [!NOTE]
 > Wenn Sie ein vorhandenes Speicherkonto verwenden möchten, muss dafür dasselbe Abonnement wie für den Schlüsseltresor verwendet werden. Außerdem muss das Resource Manager-Bereitstellungsmodell genutzt werden, nicht das klassische Bereitstellungsmodell.
-> 
-> 
+>
+>
 
 ## <a id="identify"></a>Identifizieren des Schlüsseltresors für Ihre Protokolle
 In unserem Tutorial zu den ersten Schritten lautete der Name des Schlüsseltresors **ContosoKeyVault**. Wir nutzen den Namen also weiter und speichern die Details in einer Variablen mit dem Namen **kv**:
@@ -168,13 +168,13 @@ Beim Ausführen dieses zweiten Befehls wird mit dem Trennzeichen **/** in den Bl
 Verwenden Sie Platzhalter, um Blobs selektiv herunterzuladen. Beispiel:
 
 * Bei Verwendung mehrerer Schlüsseltresore und einem Download von Protokollen nur für einen Schlüsseltresor mit dem Namen CONTOSOKEYVAULT3:
-  
+
         Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/VAULTS/CONTOSOKEYVAULT3
 * Wenn Sie über mehrere Ressourcengruppen verfügen und nur Protokolle für eine Ressourcengruppe herunterladen möchten, verwenden Sie `-Blob '*/RESOURCEGROUPS/<resource group name>/*'`:
-  
+
         Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
 * Wenn Sie alle Protokolle für den Monat Januar 2016 herunterladen möchten, verwenden Sie `-Blob '*/year=2016/m=01/*'`:
-  
+
         Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
 
 Sie können sich nun ansehen, was in den Protokollen enthalten ist. Bevor Sie fortfahren, ist es ratsam, sich mit zwei weiteren Parametern für Get-AzureRmDiagnosticSetting vertraut zu machen:
@@ -272,8 +272,7 @@ Ein Tutorial zur Verwendung von Azure Key Vault in einer Webanwendung finden Sie
 
 Eine Referenz zur Programmierung finden Sie im [Entwicklerhandbuch für den Azure-Schlüsseltresor](key-vault-developers-guide.md).
 
-Eine Liste der Azure PowerShell 1.0-Cmdlets für Azure Key Vault finden Sie unter [Azure Key Vault Cmdlets](https://msdn.microsoft.com/library/azure/dn868052.aspx)(Azure Key Vault-Cmdlets).
+Eine Liste der Azure PowerShell 1.0-Cmdlets für Azure Key Vault finden Sie unter [Azure Key Vault Cmdlets](/powershell/module/azurerm.keyvault/#key_vault)(Azure Key Vault-Cmdlets).
 
 Ein Tutorial zur Schlüsselrotation und Protokollüberwachung mit Azure Key Vault finden Sie unter [Einrichten des Schlüsseltresors mit End-to-End-Schlüsselrotation und Überwachung](key-vault-key-rotation-log-monitoring.md).
-
 

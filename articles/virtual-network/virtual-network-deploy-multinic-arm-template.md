@@ -17,9 +17,9 @@ ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 99292dedfd83c0adde6b7352e08e7ae3b0b14513
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: e2e10d3531fbbe2ed09dc34a6c3b14ff5df1a937
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -247,7 +247,7 @@ Die unten stehende Abbildung zeigt den Inhalt der neuen Ressourcengruppe nach de
 ![Back-End-Ressourcengruppe](./media/virtual-network-deploy-multinic-arm-template/Figure2.png)
 
 ## <a name="deploy-the-template-by-using-powershell"></a>Bereitstellen der Vorlage mithilfe von PowerShell
-Stellen Sie die Vorlage bereit, die Sie mithilfe von PowerShell heruntergeladen haben. Installieren und konfigurieren Sie PowerShell dazu mithilfe der folgenden Schritte im Artikel [Install and configure PowerShell (Installieren und Konfigurieren von PowerShell)](/powershell/azureps-cmdlets-docs), und führen Sie anschließend die folgenden Schritte aus:
+Stellen Sie die Vorlage bereit, die Sie mithilfe von PowerShell heruntergeladen haben. Installieren und konfigurieren Sie PowerShell dazu mithilfe der folgenden Schritte im Artikel [Install and configure PowerShell (Installieren und Konfigurieren von PowerShell)](/powershell/azure/overview), und führen Sie anschließend die folgenden Schritte aus:
 
 Führen Sie das Cmdlet **`New-AzureRmResourceGroup`** aus, um mit der Vorlage eine Ressourcengruppe zu erstellen.
 

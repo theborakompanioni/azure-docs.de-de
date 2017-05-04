@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 04/10/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 5dee922184f0160d21da58b4aac321011df76ee9
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 5fea9dfcd323ecf497742173a66119be4f734909
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -154,7 +154,7 @@ Die folgenden Abschnitte zeigen Ihnen, wie Sie PowerShell zum Konfigurieren des 
 
 ### <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors
 
-Erstellen Sie mithilfe des Cmdlets [New-AzureRmRecoveryServicesVault](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/new-azurermrecoveryservicesvault?view=azurermps-3.7.0) einen neuen Recovery Services-Tresor.
+Erstellen Sie mithilfe des Cmdlets [New-AzureRmRecoveryServicesVault](/powershell/module/azurerm.recoveryservices/new-azurermrecoveryservicesvault) einen neuen Recovery Services-Tresor.
 
 > [!IMPORTANT]
 > Der Tresor muss sich in der gleichen Region wie der logische SQL Azure-Server befinden und die gleiche Ressourcengruppe wie der logische Server verwenden.
@@ -173,7 +173,7 @@ Set-AzureRmRecoveryServicesBackupProperties -BackupStorageRedundancy LocallyRedu
 
 ### <a name="set-your-server-to-use-the-recovery-vault-for-its-long-term-retention-backups"></a>Konfigurieren des Servers für die Verwendung des Recovery Services-Tresors für die langfristige Aufbewahrung von Sicherungen
 
-Ordnen Sie mithilfe des Cmdlets [Set-AzureRmSqlServerBackupLongTermRetentionVault](https://docs.microsoft.com/powershell/resourcemanager/azurerm.sql/v2.3.0/set-azurermsqlserverbackuplongtermretentionvault) einem bestimmten Azure SQL-Server einen zuvor erstellten Recovery Services-Tresor zu.
+Ordnen Sie mithilfe des Cmdlets [Set-AzureRmSqlServerBackupLongTermRetentionVault](/powershell/module/azurerm.sql/set-azurermsqlserverbackuplongtermretentionvault) einem bestimmten Azure SQL-Server einen zuvor erstellten Recovery Services-Tresor zu.
 
 ```PowerShell
 # Set your server to use the vault to for long-term backup retention 
@@ -183,10 +183,10 @@ Set-AzureRmSqlServerBackupLongTermRetentionVault -ResourceGroupName $resourceGro
 
 ### <a name="create-a-retention-policy"></a>Erstellen einer Aufbewahrungsrichtlinie
 
-In einer Aufbewahrungsrichtlinie wird festgelegt, wie lange eine Datenbanksicherung aufbewahrt werden soll. Rufen Sie mithilfe des Cmdlets [Get-AzureRmRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/resourcemanager/azurerm.recoveryservices.backup/v2.3.0/get-azurermrecoveryservicesbackupretentionpolicyobject) die standardmäßige Aufbewahrungsrichtlinie ab, um sie bei der Erstellung neuer Richtlinien als Vorlage zu verwenden. In dieser Vorlage ist die Beibehaltungsdauer auf zwei Jahre festgelegt. Führen Sie als Nächstes [New-AzureRmRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/resourcemanager/azurerm.recoveryservices.backup/v2.3.0/new-azurermrecoveryservicesbackupprotectionpolicy) aus, um das Erstellen der Richtlinie abzuschließen. 
+In einer Aufbewahrungsrichtlinie wird festgelegt, wie lange eine Datenbanksicherung aufbewahrt werden soll. Rufen Sie mithilfe des Cmdlets [Get-AzureRmRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/resourcemanager/azurerm.recoveryservices.backup/v2.3.0/get-azurermrecoveryservicesbackupretentionpolicyobject) die standardmäßige Aufbewahrungsrichtlinie ab, um sie bei der Erstellung neuer Richtlinien als Vorlage zu verwenden. In dieser Vorlage ist die Beibehaltungsdauer auf zwei Jahre festgelegt. Führen Sie als Nächstes [New-AzureRmRecoveryServicesBackupProtectionPolicy](/powershell/module/azurerm.recoveryservices.backup/new-azurermrecoveryservicesbackupprotectionpolicy) aus, um das Erstellen der Richtlinie abzuschließen. 
 
 > [!NOTE]
-> Bei manchen Cmdlets müssen Sie vor der Ausführung den Tresorkontext festlegen ([Set-AzureRmRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/resourcemanager/azurerm.recoveryservices/v2.3.0/set-azurermrecoveryservicesvaultcontext)), darum sehen Sie dieses Cmdlet in ein paar zugehörigen Codeausschnitten. Der Kontext wird festgelegt, da die Richtlinie Teil des Tresors ist. Sie können mehrere Aufbewahrungsrichtlinien pro Tresor erstellen und dann die gewünschte Richtlinie auf bestimmte Datenbanken anwenden. 
+> Bei manchen Cmdlets müssen Sie vor der Ausführung den Tresorkontext festlegen ([Set-AzureRmRecoveryServicesVaultContext](/powershell/module/azurerm.recoveryservices/set-azurermrecoveryservicesvaultcontext)), darum sehen Sie dieses Cmdlet in ein paar zugehörigen Codeausschnitten. Der Kontext wird festgelegt, da die Richtlinie Teil des Tresors ist. Sie können mehrere Aufbewahrungsrichtlinien pro Tresor erstellen und dann die gewünschte Richtlinie auf bestimmte Datenbanken anwenden. 
 
 
 ```PowerShell
@@ -208,7 +208,7 @@ $policy
 
 ### <a name="configure-a-database-to-use-the-previously-defined-retention-policy"></a>Konfigurieren einer Datenbank zum Verwenden der zuvor definierten Aufbewahrungsrichtlinie
 
-Wenden Sie die neue Richtlinie mithilfe des Cmdlets [Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy](https://docs.microsoft.com/powershell/resourcemanager/azurerm.sql/v2.3.0/set-azurermsqldatabasebackuplongtermretentionpolicy) auf eine bestimmte Datenbank an.
+Wenden Sie die neue Richtlinie mithilfe des Cmdlets [Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy](/powershell/module/azurerm.sql/set-azurermsqldatabasebackuplongtermretentionpolicy) auf eine bestimmte Datenbank an.
 
 ```PowerShell
 # Enable long-term retention for a specific SQL database
@@ -225,9 +225,9 @@ Zeigen Sie Informationen zu Ihren Datenbanksicherungen mit [langfristiger Beibeh
 
 Verwenden Sie die folgenden Cmdlets, um die Sicherungsinformationen anzuzeigen:
 
-- [Get-AzureRmRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.recoveryservices.backup/v2.3.0/get-azurermrecoveryservicesbackupcontainer)
-- [Get-AzureRmRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/resourcemanager/azurerm.recoveryservices.backup/v2.3.0/get-azurermrecoveryservicesbackupitem)
-- [Get-AzureRmRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/resourcemanager/azurerm.recoveryservices.backup/v2.3.0/get-azurermrecoveryservicesbackuprecoverypoint)
+- [Get-AzureRmRecoveryServicesBackupContainer](/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupcontainer)
+- [Get-AzureRmRecoveryServicesBackupItem](/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupitem)
+- [Get-AzureRmRecoveryServicesBackupRecoveryPoint](/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackuprecoverypoint)
 
 ```PowerShell
 #$resourceGroupName = "{resource-group-name}"
@@ -252,7 +252,7 @@ $availableBackups
 
 ### <a name="restore-a-database-from-a-backup-in-long-term-backup-retention"></a>Wiederherstellen einer Datenbank aus einer Sicherung mit langfristiger Beibehaltung
 
-Bei der Wiederherstellung aus einer Sicherung mit langfristiger Beibehaltung wird das [Restore-AzureRmSqlDatabase](https://docs.microsoft.com/powershell/resourcemanager/azurerm.sql/v2.3.0/restore-azurermsqldatabase)-Cmdlet verwendet.
+Bei der Wiederherstellung aus einer Sicherung mit langfristiger Beibehaltung wird das [Restore-AzureRmSqlDatabase](/powershell/module/azurerm.sql/restore-azurermsqldatabase)-Cmdlet verwendet.
 
 ```PowerShell
 # Restore the most recent backup: $availableBackups[0]

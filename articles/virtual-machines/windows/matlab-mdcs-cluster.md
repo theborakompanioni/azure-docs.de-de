@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
 translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 3b946c9c482015483c929127ff3b42b6059f5e52
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: b86f13f49c6390a90609bba9141564d2ac69246d
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -31,7 +31,7 @@ Durch die Verwendung virtueller Azure-Computer können Sie MATLAB Distributed Co
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * **Clientcomputer** : Sie benötigen einen Windows-basierten Clientcomputer für die Kommunikation mit Azure und dem MATLAB Distributed Computing Server-Cluster nach der Bereitstellung.
-* **Azure PowerShell** : Lesen Sie den Artikel [Installieren und konfigurieren Sie Azure PowerShell](/powershell/azureps-cmdlets-docs) , um zu erfahren, wie Sie Azure PowerShell auf Ihrem Clientcomputer installieren.
+* **Azure PowerShell** : Lesen Sie den Artikel [Installieren und konfigurieren Sie Azure PowerShell](/powershell/azure/overview) , um zu erfahren, wie Sie Azure PowerShell auf Ihrem Clientcomputer installieren.
 * **Azure-Abonnement** : Falls Sie über kein Abonnement verfügen, können Sie in wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/free/) einrichten. Bei größeren Clustern empfiehlt sich die Verwendung eines Abonnements mit nutzungsbasierter Bezahlung oder einer anderen Kaufoption.
 * **Kernkontingent** : Falls Sie einen umfangreichen Cluster oder mehrere MATLAB Distributed Computing Server-Cluster bereitstellen möchten, müssen Sie unter Umständen das Kernkontingent erhöhen. Um ein Kontingent zu erhöhen, können Sie kostenlos [eine Anfrage an den Onlinekundensupport richten](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) .
 * **MATLAB-, Parallel Computing Toolbox- und MATLAB Distributed Computing Server-Lizenzen** : In den Skripts wird vorausgesetzt, dass für alle Lizenzen der [MathWorks Hosted License Manager](http://www.mathworks.com/products/parallel-computing/mathworks-hosted-license-manager/) verwendet wird.  

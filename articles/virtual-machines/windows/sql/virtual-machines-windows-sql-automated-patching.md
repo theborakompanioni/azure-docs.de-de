@@ -16,9 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: c48e23c1904d824ce2360f83c9df9c8e17d6200a
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 506a40f6c05cdeee56184074774b1f6ace8f0426
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -51,7 +51,7 @@ Beachten Sie bei der Verwendung des automatisierten Patchens die folgenden Vorau
 
 **Azure PowerShell:**
 
-* [Installieren Sie die aktuellen Azure PowerShell-Befehle](/powershell/azureps-cmdlets-docs) , wenn Sie das automatisierte Patchen mit PowerShell konfigurieren möchten.
+* [Installieren Sie die aktuellen Azure PowerShell-Befehle](/powershell/azure/overview) , wenn Sie das automatisierte Patchen mit PowerShell konfigurieren möchten.
 
 > [!NOTE]
 > Das automatisierte Patchen basiert auf der Erweiterung für den SQL Server-IaaS-Agent. Aktuelle Katalogimages für virtuelle SQL-Computer fügen diese Erweiterung standardmäßig hinzu. Weitere Informationen finden Sie unter [Erweiterung für SQL Server-IaaS-Agent](virtual-machines-windows-sql-server-agent-extension.md).

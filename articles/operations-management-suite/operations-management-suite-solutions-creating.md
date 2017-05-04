@@ -16,9 +16,9 @@ ms.date: 03/20/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: e1e915e07591ed104a30e9194ec6228b04519b8c
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: e391dc0f88bd7e065f968a490b3c1ddb1fa75978
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -56,7 +56,7 @@ Sie sollten alle Abfragen definieren, die Sie für den Benutzer als hilfreich er
 ### <a name="alerts"></a>Warnungen
 [Warnungen in Log Analytics](../log-analytics/log-analytics-alerts.md) identifizieren Probleme über [Protokollsuchvorgänge](#log-searches) in den Daten des Repositorys.  Entweder benachrichtigen sie den Benutzer oder führen automatisch eine Aktion als Antwort aus. Sie sollten verschiedene Warnungsbedingungen für Ihre Anwendung definieren und entsprechende Warnungsregeln zu Ihrer Lösungsdatei hinzufügen.
 
-Wenn ein Problem prinzipiell mit einem automatisierten Prozess behoben werden kann, empfiehlt es sich in der Regel, ein Runbook in Azure Automation zu erstellen, mit dem die entsprechende Korrektur durchgeführt wird.  Die meisten Azure-Dienste lassen sich mit [Cmdlets](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) verwalten, die vom Runbook zum Ausführen solcher Funktionen verwendet werden können.
+Wenn ein Problem prinzipiell mit einem automatisierten Prozess behoben werden kann, empfiehlt es sich in der Regel, ein Runbook in Azure Automation zu erstellen, mit dem die entsprechende Korrektur durchgeführt wird.  Die meisten Azure-Dienste lassen sich mit [Cmdlets](/powershell/azure/overview) verwalten, die vom Runbook zum Ausführen solcher Funktionen verwendet werden können.
 
 Wenn Ihre Lösung externe Funktionen als Antwort auf eine Warnung erfordert, können Sie eine [Webhookantwort](../log-analytics/log-analytics-alerts-actions.md) verwenden.  Dadurch können Sie einen externen Webdienst aufrufen, der Informationen aus der Warnung sendet.
 

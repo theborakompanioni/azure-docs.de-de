@@ -16,9 +16,9 @@ ms.workload: infrastructure
 ms.date: 08/23/2016
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: b36fb2b94dcee94eb299221bbb5c82080d23bfb1
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 28bb214570fcca94c5ceb6071c4851b81ec00c8d
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -41,7 +41,7 @@ In diesem Thema wird beschrieben, wie Sie Herausgeber von VM-Images sowie entspr
 
 ## <a name="find-azure-images-with-powershell"></a>Suchen nach Azure-Images mit PowerShell
 > [!NOTE]
-> Installieren und konfigurieren Sie die [neueste Version von Azure PowerShell](/powershell/azureps-cmdlets-docs). Wenn Sie Azure PowerShell-Module vor Version 1.0 nutzen, verwenden Sie die folgenden Befehle, zunächst müssen Sie jedoch `Switch-AzureMode AzureResourceManager`ausführen. 
+> Installieren und konfigurieren Sie die [neueste Version von Azure PowerShell](/powershell/azure/overview). Wenn Sie Azure PowerShell-Module vor Version 1.0 nutzen, verwenden Sie die folgenden Befehle, zunächst müssen Sie jedoch `Switch-AzureMode AzureResourceManager`ausführen. 
 > 
 > 
 
@@ -134,3 +134,4 @@ Wenn Sie den gewählten SKU-Namen aus dieser Liste kopieren, besitzen Sie alle I
 
 ## <a name="next-steps"></a>Nächste Schritte
 Jetzt können Sie genau das Datenträgerabbild auswählen, das Sie verwenden möchten. Um anhand der soeben gefundenen Imageinformationen schnell einen virtuellen Computer zu erstellen oder eine Vorlage mit diesen Imageinformationen zu verwenden, lesen Sie die Informationen unter [Erstellen einer Windows-VM mit Resource Manager und PowerShell](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+

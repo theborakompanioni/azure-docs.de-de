@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 5274ffe641768e0725623c2acf38d432a97eea9f
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 9e65a61b2b156611e998f266068ab5e1e306143d
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -33,7 +33,7 @@ In diesem Artikel ist beschrieben, wie mit öffentlichen IP-Adressen gearbeitet 
 
 Die restlichen Abschnitte dieses Artikels enthalten die Schritte, die zum Ausführen aller Aufgaben erforderlich sind, die sich auf öffentliche IP-Adressen beziehen. Die einzelnen Abschnitte enthalten jeweils Folgendes:
 - Schritte zum Ausführen der Aufgabe innerhalb des Azure-Portals. Um die Schritte ausführen zu können, müssen Sie beim [Azure-Portal](http://portal.azure.com) angemeldet sein. Falls Sie noch nicht über ein Konto verfügen, können Sie sich für ein [kostenloses Testkonto](https://azure.microsoft.com/free) registrieren.
-- Befehle zum Ausführen der Aufgabe mithilfe von Azure PowerShell sowie Links zur Befehlsreferenz für den Befehl. Installieren und konfigurieren Sie PowerShell gemäß der Anleitung im Artikel [Get started with Azure PowerShell cmdlets](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json) (Erste Schritte mit Azure PowerShell-Cmdlets). Hilfe und Beispiele für PowerShell-Befehle erhalten Sie durch Eingabe von `get-help <command> -full`.
+- Befehle zum Ausführen der Aufgabe mithilfe von Azure PowerShell sowie Links zur Befehlsreferenz für den Befehl. Installieren und konfigurieren Sie PowerShell gemäß der Anleitung im Artikel [Get started with Azure PowerShell cmdlets](/powershell/azure/overview) (Erste Schritte mit Azure PowerShell-Cmdlets). Hilfe und Beispiele für PowerShell-Befehle erhalten Sie durch Eingabe von `get-help <command> -full`.
 - Befehle zum Ausführen der Aufgabe mithilfe der Azure-Befehlszeilenschnittstelle (Command-Line Interface, CLI) sowie Links zur Befehlsreferenz für den Befehl. Installieren und konfigurieren Sie die Azure-Befehlszeilenschnittstelle gemäß der Anleitung im Artikel [Install Azure CLI 2.0](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json) (Installieren von Azure CLI 2.0). Hilfe zu den Befehlen der Befehlszeilenschnittstelle erhalten Sie durch Eingabe von `az <command> -h`.
 
 Für öffentliche IP-Adressen fällt eine Schutzgebühr an. Informationen zu den Preisen finden Sie auf der Seite [Preise für IP-Adressen](https://azure.microsoft.com/pricing/details/ip-addresses). Die Anzahl der öffentlichen IP-Adressen, die in einem Abonnement verwendet werden können, ist beschränkt. Informationen zu den Beschränkungen finden Sie im Artikel zu den [Azure-Einschränkungen](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) . 
@@ -61,7 +61,7 @@ Um eine öffentliche IP-Adresse zu erstellen, führen Sie die folgenden Schritte
 |**Tool**|**Befehl**|
 |---|---|
 |**BEFEHLSZEILENSCHNITTSTELLE (CLI)**|[az network public-ip-create](/cli/azure/network/public-ip?toc=%2fazure%2fvirtual-network%2ftoc.json#create)|
-|**PowerShell**|[New-AzureRmPublicIpAddress](/powershell/resourcemanager/azurerm.network/v3.4.0/new-azurermpublicipaddress?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|**PowerShell**|[New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress)|
 
 ## <a name="change"></a>Ändern von Einstellungen oder Löschen einer öffentlichen IP-Adresse
 
@@ -80,7 +80,7 @@ Um eine öffentliche IP-Adresse zu ändern oder zu löschen, führen Sie die fol
 |**Tool**|**Befehl**|
 |---|---|
 |**BEFEHLSZEILENSCHNITTSTELLE (CLI)**|[az network public-ip update](/cli/azure/network/public-ip?toc=%2fazure%2fvirtual-network%2ftoc.json#update) zum Aktualisieren; [az network public-ip delete](/cli/azure/network/public-ip?toc=%2fazure%2fvirtual-network%2ftoc.json#delete) zum Löschen|
-|**PowerShell**|[Set-AzureRmPublicIpAddress](/powershell/resourcemanager/azurerm.network/v3.4.0/set-azurermpublicipaddress?toc=%2fazure%2fvirtual-network%2ftoc.json) zum Aktualisieren; [Remove-AzureRmPublicIpAddress](/powershell/resourcemanager/azurerm.network/v3.4.0/remove-azurermpublicipaddress?toc=%2fazure%2fvirtual-network%2ftoc.json) zum Löschen|
+|**PowerShell**|[Set-AzureRmPublicIpAddress](/powershell/resourcemanager/azurerm.network/v3.4.0/set-azurermpublicipaddress?toc=%2fazure%2fvirtual-network%2ftoc.json) zum Aktualisieren; [Remove-AzureRmPublicIpAddress](/powershell/module/azurerm.network/remove-azurermpublicipaddress) zum Löschen|
 
 ## <a name="next-steps"></a>Nächste Schritte
 Zuweisen von öffentlichen IP-Adressen, wenn die folgenden Azure-Ressourcen erstellt werden:
@@ -90,3 +90,4 @@ Zuweisen von öffentlichen IP-Adressen, wenn die folgenden Azure-Ressourcen erst
 - [Azure Application Gateway](../application-gateway/application-gateway-create-gateway-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Standort-zu-Standort-Verbindung über ein Azure VPN Gateway](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Azure VM-Skalierungsgruppe](../virtual-machine-scale-sets/virtual-machine-scale-sets-portal-create.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+

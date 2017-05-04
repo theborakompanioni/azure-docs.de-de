@@ -17,9 +17,9 @@ ms.date: 03/14/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: edc3cf6906bb535aec6e5203a5b306e33cd51599
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 7f86fb57d9082e19b506c42737aaa020d474d599
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -45,7 +45,7 @@ RDMA-fähige müssen Instanzen folgende Anforderungen erfüllen, um auf das Azur
 * **MPI** : Microsoft MPI (MS-MPI) 2012 R2 oder höher, Intel MPI Library 5.x
 
   Unterstützte MPI-Implementierungen verwenden die Microsoft Network Direct-Schnittstelle für die Kommunikation zwischen Instanzen. 
-* **HpcVmDrivers-VM-Erweiterung**: Auf RDMA-fähigen virtuellen Computern muss die HpcVmDrivers-Erweiterung hinzugefügt werden, um Windows-Netzwerkgerätetreiber zu installieren, die für RDMA-Verbindungen benötigt werden. (In bestimmten Bereitstellungen von A8- und A9-Instanzen wird die Erweiterung HpcVmDrivers automatisch hinzugefügt.) Wenn Sie die VM-Erweiterung einem virtuellen Computer hinzufügen müssen, können Sie dazu [Azure PowerShell](/powershell/azureps-cmdlets-docs)-Cmdlets verwenden. 
+* **HpcVmDrivers-VM-Erweiterung**: Auf RDMA-fähigen virtuellen Computern muss die HpcVmDrivers-Erweiterung hinzugefügt werden, um Windows-Netzwerkgerätetreiber zu installieren, die für RDMA-Verbindungen benötigt werden. (In bestimmten Bereitstellungen von A8- und A9-Instanzen wird die Erweiterung HpcVmDrivers automatisch hinzugefügt.) Wenn Sie die VM-Erweiterung einem virtuellen Computer hinzufügen müssen, können Sie dazu [Azure PowerShell](/powershell/azure/overview)-Cmdlets verwenden. 
 
   
   So installieren Sie z.B. die neueste Version (1.1) der HpcVMDrivers-Erweiterung auf einem vorhandenen, RDMA-fähigen virtuellen Computer namens myVM im Resource Manager-Bereitstellungsmodell:

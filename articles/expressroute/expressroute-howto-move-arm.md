@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2017
 ms.author: ganesr;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 6d11b75fdd33260be3d975d9bc25fdac3cf22b49
-ms.openlocfilehash: 73f42b25d667f07205e7e67556c367f1a0e6e215
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 7f04ac92d7a9eff9db49ff493cdaa8693ce188c6
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.openlocfilehash: 73f42b25d667f07205e7e67556c367f1a0e6e215
 Damit Sie eine ExpressRoute-Verbindung sowohl für das klassische Bereitstellungsmodell als auch für das Resource Manager-Bereitstellungsmodell verwenden können, müssen Sie die Verbindung in das Resource Manager-Bereitstellungsmodell verschieben. In den folgenden Abschnitten werden die Schritte zum Verschieben der Verbindung mithilfe von PowerShell erläutert.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
-* Stellen Sie sicher, dass Sie die neueste Version der Azure PowerShell-Module (mindestens Version 1.0) besitzen. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
+* Stellen Sie sicher, dass Sie die neueste Version der Azure PowerShell-Module (mindestens Version 1.0) besitzen. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
 * Stellen Sie sicher, dass Sie vor Beginn der Konfiguration die Seiten [Voraussetzungen](expressroute-prerequisites.md), [Routinganforderungen](expressroute-routing.md) und [Workflows](expressroute-workflows.md) gelesen haben.
 * Lesen Sie die unter [Verschieben von ExpressRoute-Verbindungen vom klassischen zum Resource Manager-Bereitstellungsmodell](expressroute-move.md) bereitgestellten Informationen. Stellen Sie sicher, dass Sie die Grenzwerte und Einschränkungen verstehen.
 * Vergewissern Sie sich, dass die Verbindung im klassischen Bereitstellungsmodell voll funktionsfähig ist.
@@ -125,10 +126,5 @@ Führen Sie die folgenden Cmdlets aus, um den Zugriff auf das klassische Bereits
 
 * [Erstellen und Ändern des Routings für Ihre ExpressRoute-Verbindung](expressroute-howto-routing-arm.md)
 * [Verknüpfen Ihres virtuelles Netzwerks mit Ihrer ExpressRoute-Verbindung](expressroute-howto-linkvnet-arm.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

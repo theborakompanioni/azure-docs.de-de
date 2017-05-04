@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: acf807538c8c9efdadb95c4b66db9a9d5d1f7a6d
-ms.lasthandoff: 04/25/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: d1709c2c28505e66a88cfbbcf4dc88c8ccca841f
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -103,9 +103,9 @@ Folgen Sie zum Konfigurieren der Protokollierung und der Metriken für das Speic
 
 **Über PowerShell**
 
-Informationen zum Einstieg in PowerShell für Azure finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
+Informationen zum Einstieg in PowerShell für Azure finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
 
-1. Verwenden Sie das [Add-AzureAccount](http://msdn.microsoft.com/library/azure/dn722528.aspx) -Cmdlet, um Ihr Azure-Benutzerkonto dem PowerShell-Fenster hinzuzufügen:
+1. Verwenden Sie das [Add-AzureAccount](/powershell/module/azure/add-azureaccount?view=azuresmps-3.7.0) -Cmdlet, um Ihr Azure-Benutzerkonto dem PowerShell-Fenster hinzuzufügen:
    
     ```powershell
     Add-AzureAccount
@@ -374,3 +374,4 @@ Weitere Informationen zur Problembehandlung in End-to-End-Szenarien im Azure-Spe
 * [Überwachen eines Speicherkontos im Azure-Portal](storage-monitor-storage-account.md)
 * [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md)
 * [Microsoft Message Analyzer Operating Guide (in englischer Sprache)](http://technet.microsoft.com/library/jj649776.aspx)
+

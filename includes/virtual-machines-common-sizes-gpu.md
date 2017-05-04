@@ -15,10 +15,6 @@ Die NC-Instanzen werden durch die Grafikkarte Tesla K80 von NVIDIA unterstützt.
 
 1 GPU = halbe M60-Karte
 
-**Unterstützte Betriebssysteme**
-
-* Windows Server 2016, Windows Server 2012 R2. Informationen finden Sie unter [N-series driver setup for Windows](../articles/virtual-machines/windows/n-series-driver-setup.md) (Einrichtung von Treibern für die N-Serie unter Windows).
-
 ## <a name="nc-instances"></a>NC-Instanzen
 
 | Größe | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | GPU |
@@ -32,10 +28,4 @@ Die NC-Instanzen werden durch die Grafikkarte Tesla K80 von NVIDIA unterstützt.
 
 * RDMA-fähig
 
-**Unterstützte Betriebssysteme**
-
-* Windows Server 2016, Windows Server 2012 R2. Informationen finden Sie unter [N-series driver setup for Windows](../articles/virtual-machines/windows/n-series-driver-setup.md) (Einrichtung von Treibern für die N-Serie unter Windows).
-* Ubuntu 16.04 LTS. Informationen finden Sie unter [N-series driver setup for Linux](../articles/virtual-machines/linux/n-series-driver-setup.md) (Einrichtung von Treibern für die N-Serie unter Linux).
-
-<br>
 

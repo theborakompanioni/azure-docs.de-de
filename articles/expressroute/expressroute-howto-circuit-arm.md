@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: ganesr;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
-ms.openlocfilehash: 15c08c950bc1dcd620f2943885e427991585d817
-ms.lasthandoff: 04/13/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 7254217bc6a7b782eb19c8f062c46923dc5e7506
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -33,7 +33,7 @@ ms.lasthandoff: 04/13/2017
 In diesem Artikel wird beschrieben, wie Sie eine Azure ExpressRoute-Verbindung mit PowerShell-Cmdlets und dem Azure Resource Manager-Bereitstellungsmodell erstellen. Der Artikel veranschaulicht auch, wie Sie den Status der Verbindung prüfen, aktualisieren, löschen oder die Bereitstellung aufheben.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
-* Installieren Sie die aktuelle Version der PowerShell-Cmdlets für Azure Resource Manager. Weitere Informationen finden Sie in der [Übersicht über Azure PowerShell](/powershell/azureps-cmdlets-docs).
+* Installieren Sie die aktuelle Version der PowerShell-Cmdlets für Azure Resource Manager. Weitere Informationen finden Sie in der [Übersicht über Azure PowerShell](/powershell/azure/overview).
 * Lesen Sie vor Beginn der Konfiguration die Seiten zu den [Voraussetzungen](expressroute-prerequisites.md) und [Workflows](expressroute-workflows.md).
 
 

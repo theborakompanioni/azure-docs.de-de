@@ -17,9 +17,9 @@ ms.workload: big-data
 ms.date: 02/22/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 938abf03191dec10da8d2fabf27c5db2415d6bc5
-ms.openlocfilehash: 6dd149808a89ccf7da2989751788e074d5340d5c
-ms.lasthandoff: 12/22/2016
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: fbd5c31a4ca1fa26d14001ba5765adfc91142a10
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -248,7 +248,7 @@ In diesem Tutorial haben Sie erfahren, wie Sie einen HBase-Cluster erstellen. We
 * [Erste Schritte mit HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md)
 * [Verwenden leerer Edgeknoten in HDInsight](hdinsight-apps-use-edge-node.md)
 * [Konfigurieren der HBase-Replikation in HDInsight](hdinsight-hbase-replication.md)
-* [Erstellen von Hadoop-Clustern in HDInsight](hdinsight-provision-clusters.md)
+* [Erstellen von Hadoop-Clustern in HDInsight](hdinsight-hadoop-provision-linux-clusters.md)
 * [Erste Schritte mit HBase mit Hadoop in HDInsight](hdinsight-hbase-tutorial-get-started.md)
 * [Analysieren der Twitter-Stimmungen mit HBase in HDInsight](hdinsight-hbase-analyze-twitter-sentiment.md)
 * [Virtuelle Netzwerke im Überblick][vnet-overview]
@@ -282,7 +282,7 @@ In diesem Tutorial haben Sie erfahren, wie Sie einen HBase-Cluster erstellen. We
 
 
 [hdinsight-customize-cluster]: hdinsight-hadoop-customize-cluster.md
-[hdinsight-provision]: hdinsight-provision-clusters.md
+[hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
 [hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
 [hdinsight-storage-powershell]: ../hdinsight-hadoop-use-blob-storage.md#powershell
 [hdinsight-analyze-flight-delay-data]: hdinsight-analyze-flight-delay-data.md

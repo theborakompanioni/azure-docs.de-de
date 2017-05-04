@@ -11,12 +11,12 @@ ms.workload: compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 04/26/2017
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: cab03e7765dc7116a7f974833871fae652e8363c
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 368bf16c77feed55c397052b63fde4ef3fb29447
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -49,7 +49,7 @@ Zwei Umleitungsoptionen sind standardmäßig deaktiviert:
 * USB-Umleitung: Die an den lokalen Computer angeschlossenen USB-Geräte können im Rahmen der Remotesitzung verwendet werden.
 
 ## <a name="change-your-redirection-settings-in-remoteapp"></a>Ändern der Umleitungseinstellungen in RemoteApp
-Die Geräteumleitungseinstellungen für eine Sammlung können mithilfe von Microsoft Azure PowerShell mit SDK geändert werden. Installieren Sie zunächst die neue Version von PowerShell und SDK, und konfigurieren Sie sie für die Verwaltung Ihres Abonnements (siehe [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs)).
+Die Geräteumleitungseinstellungen für eine Sammlung können mithilfe von Microsoft Azure PowerShell mit SDK geändert werden. Installieren Sie zunächst die neue Version von PowerShell und SDK, und konfigurieren Sie sie für die Verwaltung Ihres Abonnements (siehe [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview)).
 
 Legen Sie dann mithilfe eines Befehls wie dem folgenden die benutzerdefinierten RDP-Eigenschaften fest:
 

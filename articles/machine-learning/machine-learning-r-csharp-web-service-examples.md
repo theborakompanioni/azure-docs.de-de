@@ -1,24 +1,11 @@
 ---
-title: "(Veraltet:) Beispiele für mit R entwickelte Machine Learning-Webdienste – Azure | Microsoft Docs"
-description: "(Veraltet:) Hier finden Sie einige nützliche Beispiele für Machine Learning-Webdienste, die mit R-Code erstellt und im Azure Marketplace veröffentlicht wurden."
-keywords: C-Sharp,R-Code,Webdienste-Beispiele
-services: machine-learning
-documentationcenter: 
-author: jaymathe
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 97d66cb7-6a84-4ae9-8095-0b5f5ba82d7f
-ms.service: machine-learning
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: deprecated
-ms.date: 01/06/2017
-ms.author: jaymathe
+
 ROBOTS: NOINDEX, NOFOLLOW
+redirect_url: https://gallery.cortanaintelligence.com/
 translationtype: Human Translation
-ms.sourcegitcommit: f6ad106e769c807d1c281c8d19127eabc2048f30
-ms.openlocfilehash: 303fb71faf73d4a1b6d17b4ca66b83b15157332b
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: ece5ca060d81d2246b28753cd203aea304b443ff
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -75,10 +62,5 @@ Häufig gestellte Fragen zur Nutzung des Webdiensts und zum Veröffentlichen im 
 [1]: ./media/machine-learning-r-csharp-web-service-examples/machine-learning-r-code-options-for-using-and-sharing-cloud.png
 
 
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

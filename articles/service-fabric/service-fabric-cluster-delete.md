@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/24/2017
 ms.author: chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: a957a70be915459baa8c687c92e251c6011b6172
-ms.openlocfilehash: e73334373e9909069641cd4ad2c3280e51b5e2db
-ms.lasthandoff: 12/06/2016
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: c2792287ef8b25a57beb4af069ffc5a3eed85e15
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -34,7 +34,7 @@ Dazu stehen Ihnen zwei Möglichkeiten zur Verfügung: Sie können die Ressourcen
 Dies ist der einfachste Weg, um die Löschung aller zu Ihrem Cluster gehörenden Ressourcen zu gewährleisten, einschließlich der Ressourcengruppe. Sie können die Ressourcengruppe mit PowerShell oder über das Azure-Portal löschen. Wenn Ihre Ressourcengruppe über Ressourcen verfügt, die nicht mit dem Service Fabric-Cluster verknüpft sind, können Sie bestimmte Ressourcen löschen.
 
 ### <a name="delete-the-resource-group-using-azure-powershell"></a>Löschen der Ressourcengruppe mit Azure PowerShell
-Sie können die Ressourcengruppe auch mit den folgenden PowerShell-Cmdlets löschen. Stellen Sie sicher, dass Azure PowerShell 1.0 oder höher auf Ihrem Computer installiert ist. Falls noch nicht erfolgt, sollten Sie die Schritte unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs)
+Sie können die Ressourcengruppe auch mit den folgenden PowerShell-Cmdlets löschen. Stellen Sie sicher, dass Azure PowerShell 1.0 oder höher auf Ihrem Computer installiert ist. Falls noch nicht erfolgt, sollten Sie die Schritte unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview)
 
 Öffnen Sie ein PowerShell-Fenster und führen Sie die folgenden PS-Cmdlets aus:
 
@@ -78,7 +78,7 @@ Wenn Sie Ihren Cluster mithilfe des Portals oder der Service Fabric Resource Man
     ![Markierte Ressourcen][TaggedResources]
 
 ### <a name="delete-the-resources-using-azure-powershell"></a>Löschen der Ressourcen mit Azure PowerShell
-Sie können die Ressourcen mit den folgenden Azure PowerShell-Cmdlets einzeln löschen. Stellen Sie sicher, dass Azure PowerShell 1.0 oder höher auf Ihrem Computer installiert ist. Falls noch nicht erfolgt, sollten Sie die Schritte unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs)
+Sie können die Ressourcen mit den folgenden Azure PowerShell-Cmdlets einzeln löschen. Stellen Sie sicher, dass Azure PowerShell 1.0 oder höher auf Ihrem Computer installiert ist. Falls noch nicht erfolgt, sollten Sie die Schritte unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview)
 
 Öffnen Sie ein PowerShell-Fenster und führen Sie die folgenden PS-Cmdlets aus:
 

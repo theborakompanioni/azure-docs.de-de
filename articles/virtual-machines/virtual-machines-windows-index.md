@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 02/13/2017
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: b0f97779c2cf8bf3e7535afa8a2ab1ee45958ad1
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: fd7b14d16a0654dc1368ddb00ea047aa7dd36a4c
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -40,7 +40,7 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten W
 ## <a name="environment-setup"></a>Einrichten der Umgebung
 [Kostenloses Konto](https://azure.microsoft.com/free/)
 
-[Installieren von Azure PowerShell](/powershell/azureps-cmdlets-docs)
+[Installieren von Azure PowerShell](/powershell/azure/overview)
 
 [Installieren der Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md)
 
@@ -152,7 +152,7 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten W
 
 [Service Management .NET API (Dienstverwaltungs-.NET-API)](https://msdn.microsoft.com/library/azure/mt420161.aspx)
 
-[Azure Service Management PowerShell cmdlet reference documentation (Referenz zu PowerShell-Cmdlets für die Azure-Dienstverwaltung)](https://msdn.microsoft.com/library/azure/dn708504.aspx)
+[Azure Service Management PowerShell cmdlet reference documentation (Referenz zu PowerShell-Cmdlets für die Azure-Dienstverwaltung)](/powershell/azure/overview?view=azuresmps-3.7.0)
 
 ## <a name="troubleshooting"></a>Problembehandlung
 [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](windows/troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

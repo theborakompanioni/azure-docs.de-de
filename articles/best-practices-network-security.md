@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
 translationtype: Human Translation
-ms.sourcegitcommit: bdde0988bbaa3868c4acadfec0b81a2413e8a14b
-ms.openlocfilehash: f9a687ce5dd381e27ed9b784c3644528f000de2d
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 243c1cd5ebf34f2d8a8fda234fa3875298390336
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -78,7 +79,7 @@ Bevor der Internetdatenverkehr die virtuellen Azure-Netzwerke erreicht, müssen 
 
 1.    **DDoS-Schutz**: DDoS-Schutz ist eine Stufe des physischen Azure-Netzwerks, das die Azure Platform selbst vor groß angelegten internetbasierten Angriffen schützt. Bei diesen Angriffe wird mithilfe mehrerer „Bot“-Knoten versucht, einen Internetdienst zu überlasten. Azure verfügt über ein robustes DDoS-Schutzsystem für alle eingehenden und ausgehenden Verbindungen sowie für Verbindungen über Azure-Regionen hinweg. Diese DDoS-Sicherheitsstufe umfasst keine durch den Benutzer konfigurierbaren Attribute und ist für den Kunden nicht zugänglich. Die DDoS-Sicherheitsstufe schützt Azure als Plattform vor groß angelegten Angriffen und überwacht zudem ausgehenden Datenverkehr und Datenverkehr über Azure-Regionen hinweg. Mit virtuellen Netzwerkgeräten im VNET können Kunden zusätzliche Ausfallsicherheitslösungen zum Schutz vor kleineren Angriffen konfigurieren, die vom Plattformschutz nicht abgefangen werden. Beispiel für DDoS in Aktion: Wenn eine IP-Adresse mit Internetzugriff durch einen groß angelegten DDoS-Angriff angegriffen wurde, würde Azure die Quellen der Angriffe erkennen und den problematischen Datenverkehr bereinigen, bevor er das vorgesehene Ziel erreicht. In fast allen Fällen beeinträchtigt der Angriff den angegriffenen Endpunkt nicht. In den seltenen Fällen, in denen ein Endpunkt betroffen ist, wird kein Datenverkehr an andere Endpunkte beeinflusst, nur der angegriffene Endpunkt. Also werden andere Kunden und Dienste in keiner Weise durch den Angriff beeinträchtigt. Es ist wichtig zu beachten, dass Azure DDoS nur nach groß angelegten Angriffen sucht. Es ist möglich, dass Ihr spezifischer Dienst überlastet ist, bevor die Schwellenwerte für den Plattformschutz überschritten werden. Beispielsweise könnte eine Website auf einem einzelnen A0 IIS-Server durch einen DDoS-Angriff offline geschaltet werden, bevor der Azure DDoS-Plattformschutz eine Bedrohung registriert.
 
-2.  **Öffentliche IP-Adressen**: Mit öffentlichen IP-Adressen (aktiviert über Dienstendpunkte, öffentliche IP-Adressen, Application Gateway und andere Azure-Funktionen, die für das Internet eine öffentliche IP-Adresse für die Weiterleitung an Ihre Ressource bieten) können Clouddienste oder Ressourcengruppen öffentliche IP-Internetadressen und Ports verfügbar machen. Der Endpunkt verwendet NAT (Network Address Translation) zum Weiterleiten von Datenverkehr an die interne Adresse und den Port im virtuellen Azure-Netzwerk. Dieser Pfad ist der primäre Weg, auf dem externer Datenverkehr in das virtuelle Netzwerk gelangt. Die öffentlichen IP-Adressen können konfiguriert werden und legen fest, welcher Datenverkehr zugelassen wird bzw. wie und wo eine Übersetzung in das virtuelle Netzwerk stattfindet.
+2.    **Öffentliche IP-Adressen**: Mit öffentlichen IP-Adressen (aktiviert über Dienstendpunkte, öffentliche IP-Adressen, Application Gateway und andere Azure-Funktionen, die für das Internet eine öffentliche IP-Adresse für die Weiterleitung an Ihre Ressource bieten) können Clouddienste oder Ressourcengruppen öffentliche IP-Internetadressen und Ports verfügbar machen. Der Endpunkt verwendet NAT (Network Address Translation) zum Weiterleiten von Datenverkehr an die interne Adresse und den Port im virtuellen Azure-Netzwerk. Dieser Pfad ist der primäre Weg, auf dem externer Datenverkehr in das virtuelle Netzwerk gelangt. Die öffentlichen IP-Adressen können konfiguriert werden und legen fest, welcher Datenverkehr zugelassen wird bzw. wie und wo eine Übersetzung in das virtuelle Netzwerk stattfindet.
 
 Sobald Datenverkehr das virtuelle Netzwerk erreicht, kommen zahlreiche Funktionen ins Spiel. Virtuelle Azure-Netzwerke sind die Grundlage, auf der die Kunden ihre Workloads einbinden und die grundlegende Sicherheit auf Netzwerkebene anwenden. Es handelt sich um ein privates Netzwerk (ein virtuelles Netzwerkoverlay) in Azure, das den Kunden die folgenden Features und Merkmale bietet:
 
@@ -514,7 +515,7 @@ Durch das Hinzufügen einer privaten ExpressRoute-Peering-Netzwerkverbindung kan
 ## <a name="references"></a>Referenzen
 ### <a name="helpful-websites-and-documentation"></a>Hilfreiche Websites und Dokumentation
 * Implementierung mit Azure Resource Manager:
-* Zugreifen auf Azure mit PowerShell: [https://docs.microsoft.com/powershell/azureps-cmdlets-docs/](/powershell/azureps-cmdlets-docs)
+* Zugreifen auf Azure mit PowerShell: [https://docs.microsoft.com/powershell/azureps-cmdlets-docs/](/powershell/azure/overview)
 * Dokumentation zu virtuellen Netzwerken: [https://docs.microsoft.com/azure/virtual-network/](https://docs.microsoft.com/azure/virtual-network/)
 * Dokumentation zu Netzwerksicherheitsgruppen: [https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg](virtual-network/virtual-networks-nsg.md)
 * Dokumentation zum benutzerdefinierten Routing (UDR): [https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview](virtual-network/virtual-networks-udr-overview.md)
@@ -551,9 +552,4 @@ Durch das Hinzufügen einer privaten ExpressRoute-Peering-Netzwerkverbindung kan
 [Example6]: ./virtual-network/virtual-networks-hybrid-expressroute-asm.md
 [Example7]: ./virtual-network/virtual-networks-vnet2vnet-direct-asm.md
 [Example8]: ./virtual-network/virtual-networks-vnet2vnet-transit-asm.md
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

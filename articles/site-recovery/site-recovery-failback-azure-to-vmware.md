@@ -15,15 +15,15 @@ ms.workload: required
 ms.date: 03/27/2017
 ms.author: ruturajd
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: ba801c69cf2d0d542bebf54e99ef981854284ab0
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 3bd182a775377f912914c0c7a63fe41811146e1a
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="fail-back-vmware-virtual-machines-and-physical-servers-to-the-on-premises-site"></a>Failback von virtuellen VMware-Computern und physischen Servern zum lokalen Standort
 > [!div class="op_single_selector"]
-> * [VMware-/physische Computer von Azure](site-recovery-failback-azure-to-vmware.md)
+> * [VMware-/physische Computer von Azure](site-recovery-how-to-failback-azure-to-vmware.md)
 > * [Hyper-V-VMs von Azure](site-recovery-failback-from-azure-to-hyper-v.md)
 
 In diesem Artikel wird beschrieben, wie Sie für virtuelle Azure-Computer ein Failback auf den lokalen Standort durchführen. Befolgen Sie die Anweisungen hier, wenn Sie bereit sind, Ihre virtuellen VMware-Computer oder Ihre physischen Windows-/Linux-Server wieder per Failback zurückzuführen, nachdem Sie Ihre Computer mithilfe dieses [Verweises](site-recovery-how-to-reprotect.md) erneut geschützt haben.

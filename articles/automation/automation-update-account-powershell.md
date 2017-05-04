@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 04/14/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 96ab414f6fb58908f253e9f1cf29ab3a57ca2a90
-ms.lasthandoff: 04/15/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: d34bb4a285f77f5c21a4af2d544bda3221d59e8d
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -32,7 +32,7 @@ Sie können PowerShell verwenden, um Ihr vorhandenes Automation-Konto zu aktuali
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Das Skript kann nur unter Windows 10 und Windows Server 2016 mit Azure Resource Manager-Modul 2.01 und höher ausgeführt werden. Unter älteren Windows-Versionen wird das Skript nicht unterstützt.
-* Azure PowerShell 1.0 und höher. Informationen zur PowerShell 1.0-Version finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
+* Azure PowerShell 1.0 und höher. Informationen zur PowerShell 1.0-Version finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
 * Ein Automation-Konto, auf das im folgenden PowerShell-Skript als Wert für die Parameter *–AutomationAccountName* und *-ApplicationDisplayName* verwiesen wird.
 
 Gehen Sie wie folgt vor, um die Werte für *SubscriptionID*, *ResourceGroup* und *AutomationAccountName* zu erhalten. Hierbei handelt es sich um erforderliche Parameter für die Skripts:
@@ -271,3 +271,4 @@ Beachten Sie nach dem erfolgreichen Ausführen des Skripts Folgendes:
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zu Dienstprinzipalen finden Sie unter [Anwendungsobjekte und Dienstprinzipalobjekte](../active-directory/active-directory-application-objects.md).
 * Weitere Informationen zu Zertifikaten und Azure-Diensten finden Sie unter [Übersicht über Zertifikate für Azure Cloud Services](../cloud-services/cloud-services-certs-create.md).
+

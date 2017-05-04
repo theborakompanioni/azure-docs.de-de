@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/21/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 8f54553bc60d6ba374462d87285dfaf4ca6395c5
-ms.lasthandoff: 04/18/2017
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: 8ee0301a48265b91f951c96c3339a3c3e3bdb1cb
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -29,7 +29,7 @@ DevTest Labs stellen eine Vielzahl von Azure Resource Manager-Vorlagen und Power
 In diesem Artikel wird das Verfahren zum Verwenden dieser Vorlagen und Skripts beschrieben, um das Erstellen, Ändern und Bereitstellen Ihrer Labs zu automatisieren. In diesem Artikel wird auch erläutert, wo Sie weitere Informationen zur Verwendung von PowerShell finden, um häufige Aufgaben in DevTest Labs auszuführen.
 
 ## <a name="step-1-gather-your-templates-and-scripts"></a>Schritt 1: Suchen der Vorlagen und Skripts
-Sie finden vordefinierte [Azure Resource Manager-Vorlagen](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates) und [PowerShell-Skripts](https://github.com/Azure/azure-devtestlab/tree/master/Scripts) im öffentlichen [Github-Repository](https://github.com/Azure/azure-devtestlab). Diese können Sie unverändert übernehmen oder an Ihre Anforderungen anpassen und in einem eigenen [privaten Git-Repository](devtest-lab-add-repo.md) speichern. 
+Sie finden vordefinierte [Azure Resource Manager-Vorlagen](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates) und [PowerShell-Skripts](https://github.com/Azure/azure-devtestlab/tree/master/Scripts) im öffentlichen [Github-Repository](https://github.com/Azure/azure-devtestlab). Diese können Sie unverändert übernehmen oder an Ihre Anforderungen anpassen und in einem eigenen [privaten Git-Repository](devtest-lab-add-artifact-repo.md) speichern. 
 
 ## <a name="step-2-modify-your-azure-resource-manager-template"></a>Schritt 2: Bearbeiten der Azure Resource Manager-Vorlagen
 Unter [Erstellen von Umgebungen mit mehreren virtuellen Computern und PaaS-Ressourcen mit Azure Resource Manager-Vorlagen](devtest-lab-create-environment-from-arm.md) erfahren Sie, wie Sie mit Azure Resource Manager-Vorlagen in DevTest Labs die Infrastruktur und Konfiguration einer Azure-Lösung definieren und wiederholt mehrere VMs in einem konsistenten Zustand bereitstellen.
@@ -49,6 +49,6 @@ Es gibt zahlreiche andere allgemeine Aufgaben, die mithilfe von PowerShell autom
 * [Erstellen einer benutzerdefinierten Labrolle mithilfe von PowerShell](devtest-lab-grant-user-permissions-to-specific-lab-policies.md#creating-a-lab-custom-role-using-powershell)
 
 ### <a name="next-steps"></a>Nächste Schritte
-* Hier finden Sie Informationen zum Erstellen eines [privaten Git-Repositorys](devtest-lab-add-repo.md), in dem Sie Ihre angepassten Vorlagen oder Skripts speichern können.
+* Hier finden Sie Informationen zum Erstellen eines [privaten Git-Repositorys](devtest-lab-add-artifact-repo.md), in dem Sie Ihre angepassten Vorlagen oder Skripts speichern können.
 * Sehen Sie sich die [Azure Resource Manager-Vorlagen aus dem Katalog mit Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates) an.
 

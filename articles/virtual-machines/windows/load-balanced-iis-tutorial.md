@@ -16,9 +16,9 @@ ms.workload: infrastructure
 ms.date: 03/30/2017
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
-ms.openlocfilehash: ae0fcbf3e8ba28f104e5b44ebe5676875065e2e9
-ms.lasthandoff: 04/04/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 61fd0dc45cfa2d320713819be3db811be58ab77e
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -28,7 +28,7 @@ In diesem Tutorial erstellen Sie eine hoch verfügbare, wartungsresistente Anwen
 
 ## <a name="step-1---azure-prerequisites"></a>Schritt 1: Azure-Voraussetzungen
 
-Für dieses Tutorial muss die aktuelle Version des Moduls [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) installiert sein.
+Für dieses Tutorial muss die aktuelle Version des Moduls [Azure PowerShell](/powershell/azure/overview) installiert sein.
 
 Melden Sie sich zuerst mit dem Befehl Login-AzureRmAccount bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm.
 
@@ -36,7 +36,7 @@ Melden Sie sich zuerst mit dem Befehl Login-AzureRmAccount bei Ihrem Azure-Abonn
 Login-AzureRmAccount
 ```
 
-Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Vor der Erstellung anderer Azure-Ressourcen müssen Sie zunächst mit [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/resourcemanager/AzureRM.Resources/v2.0.3/new-azurermresourcegroup) eine Ressourcengruppe erstellen. Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen `myResourceGroup` in der Region `westeurope`: 
+Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Vor der Erstellung anderer Azure-Ressourcen müssen Sie zunächst mit [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) eine Ressourcengruppe erstellen. Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen `myResourceGroup` in der Region `westeurope`: 
 
 ```powershell
 New-AzureRmResourceGroup -ResourceGroupName myResourceGroup -Location westeurope
@@ -46,7 +46,7 @@ New-AzureRmResourceGroup -ResourceGroupName myResourceGroup -Location westeurope
 
 Virtuelle Computer können übergreifend für logische Fehler- und Updatedomänen erstellt werden. Jede logische Domäne stellt einen Teil der Hardware im zugrunde liegenden Azure-Datencenter dar. Wenn Sie mehrere virtuelle Computer erstellen, werden Ihre Compute- und Speicherressourcen auf diese Domänen verteilt. Diese Verteilung gewährleistet die Verfügbarkeit Ihrer App, wenn eine der Hardwarekomponenten gewartet werden muss. Diese logischen Fehler- und Updatedomänen können mithilfe von Verfügbarkeitsgruppen definiert werden.
 
-Erstellen Sie mithilfe von [New-AzureRmAvailabilitySet](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.8.0/new-azurermavailabilityset) eine Verfügbarkeitsgruppe. Im folgenden Beispiel wird eine Verfügbarkeitsgruppe namens `myAvailabilitySet` erstellt:
+Erstellen Sie mithilfe von [New-AzureRmAvailabilitySet](/powershell/module/azurerm.compute/new-azurermavailabilityset) eine Verfügbarkeitsgruppe. Im folgenden Beispiel wird eine Verfügbarkeitsgruppe namens `myAvailabilitySet` erstellt:
 
 ```powershell
 $availabilitySet = New-AzureRmAvailabilitySet `
@@ -64,7 +64,7 @@ Ein Azure Load Balancer verteilt Datenverkehr auf der Grundlage von Load Balance
 
 ### <a name="create-public-ip-address"></a>Erstellen einer öffentlichen IP-Adresse
 
-Um über das Internet auf Ihre App zugreifen zu können, müssen Sie dem Load Balancer eine öffentliche IP-Adresse zuweisen. Erstellen Sie mit [New-AzureRmPublicIpAddress](https://docs.microsoft.com/powershell/resourcemanager/azurerm.network/v3.6.0/new-azurermpublicipaddress) eine öffentliche IP-Adresse. Im folgenden Beispiel wird eine öffentliche IP-Adresse namens `myPublicIP` erstellt:
+Um über das Internet auf Ihre App zugreifen zu können, müssen Sie dem Load Balancer eine öffentliche IP-Adresse zuweisen. Erstellen Sie mit [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) eine öffentliche IP-Adresse. Im folgenden Beispiel wird eine öffentliche IP-Adresse namens `myPublicIP` erstellt:
 
 ```powershell
 $pip = New-AzureRmPublicIpAddress `
@@ -76,19 +76,19 @@ $pip = New-AzureRmPublicIpAddress `
 
 ### <a name="create-load-balancer"></a>Erstellen eines Load Balancers
 
-Erstellen Sie eine Front-End-IP-Adresse mit [New-AzureRmLoadBalancerFrontendIpConfig](https://docs.microsoft.com/powershell/resourcemanager/azurerm.network/v3.6.0/new-azurermloadbalancerfrontendipconfig). Im folgenden Beispiel wird eine Front-End-IP-Adresse namens `myFrontEndPool` erstellt: 
+Erstellen Sie eine Front-End-IP-Adresse mit [New-AzureRmLoadBalancerFrontendIpConfig](/powershell/module/azurerm.network/new-azurermloadbalancerfrontendipconfig). Im folgenden Beispiel wird eine Front-End-IP-Adresse namens `myFrontEndPool` erstellt: 
 
 ```powershell
 $frontendIP = New-AzureRmLoadBalancerFrontendIpConfig -Name myFrontEndPool -PublicIpAddress $pip
 ```
 
-Erstellen Sie einen Back-End-Adresspool mit [New-AzureRmLoadBalancerBackendAddressPoolConfig](https://docs.microsoft.com/powershell/resourcemanager/azurerm.network/v3.6.0/new-azurermloadbalancerbackendaddresspoolconfig). Im folgenden Beispiel wird ein Back-End-Adresspool namens `myBackEndPool` erstellt:
+Erstellen Sie einen Back-End-Adresspool mit [New-AzureRmLoadBalancerBackendAddressPoolConfig](/powershell/module/azurerm.network/new-azurermloadbalancerbackendaddresspoolconfig). Im folgenden Beispiel wird ein Back-End-Adresspool namens `myBackEndPool` erstellt:
 
 ```powershell
 $backendPool = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name myBackEndPool
 ```
 
-Erstellen Sie nun mit [New-AzureRmLoadBalancer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.network/v3.6.0/new-azurermloadbalancer) den Load Balancer. Im folgenden Beispiel wird unter Verwendung der `myPublicIP`-Adresse ein Load Balancer namens `myLoadBalancer` erstellt:
+Erstellen Sie nun mit [New-AzureRmLoadBalancer](/powershell/module/azurerm.network/new-azurermloadbalancer) den Load Balancer. Im folgenden Beispiel wird unter Verwendung der `myPublicIP`-Adresse ein Load Balancer namens `myLoadBalancer` erstellt:
 
 ```powershell
 $lb = New-AzureRmLoadBalancer `
@@ -103,7 +103,7 @@ $lb = New-AzureRmLoadBalancer `
 
 Damit der Load Balancer den Status Ihrer App überwachen kann, verwenden Sie einen Integritätstest. Abhängig von der Reaktion auf Integritätsüberprüfungen werden der Load Balancer-Rotation durch den Integritätstest dynamisch virtuelle Computer hinzugefügt oder daraus entfernt. Falls bei einem virtuellen Computer innerhalb eines Intervalls von 15 Sekunden zwei aufeinanderfolgende Fehler auftreten, wird er standardmäßig aus der Load Balancer-Verteilung entfernt.
 
-Erstellen Sie mit [Add-AzureRmLoadBalancerProbeConfig](https://docs.microsoft.com/powershell/resourcemanager/azurerm.network/v3.6.0/add-azurermloadbalancerprobeconfig) einen Integritätstest. Im folgenden Beispiel wird ein benannter Integritätstest namens `myHealthProbe` erstellt, der die einzelnen virtuellen Computer überwacht:
+Erstellen Sie mit [Add-AzureRmLoadBalancerProbeConfig](/powershell/module/azurerm.network/add-azurermloadbalancerprobeconfig) einen Integritätstest. Im folgenden Beispiel wird ein benannter Integritätstest namens `myHealthProbe` erstellt, der die einzelnen virtuellen Computer überwacht:
 
 ```powershell
 Add-AzureRmLoadBalancerProbeConfig -Name myHealthProbe `
@@ -118,7 +118,7 @@ Add-AzureRmLoadBalancerProbeConfig -Name myHealthProbe `
 
 Mithilfe einer Load Balancer-Regel wird definiert, wie Datenverkehr auf die virtuellen Computer verteilt werden soll.
 
-Erstellen Sie mit [Add-AzureRmLoadBalancerRuleConfig](https://docs.microsoft.com/powershell/resourcemanager/AzureRM.Network/v3.6.0/add-azurermloadbalancerruleconfig) eine Load Balancer-Regel. Im folgenden Beispiel wird eine Load Balancer-Regel mit dem Namen `myLoadBalancerRule` erstellt und der Datenverkehr an Port `80` ausgeglichen:
+Erstellen Sie mit [Add-AzureRmLoadBalancerRuleConfig](/powershell/module/azurerm.network/add-azurermloadbalancerruleconfig) eine Load Balancer-Regel. Im folgenden Beispiel wird eine Load Balancer-Regel mit dem Namen `myLoadBalancerRule` erstellt und der Datenverkehr an Port `80` ausgeglichen:
 
 ```powershell
 Add-AzureRmLoadBalancerRuleConfig -Name myLoadBalancerRule `
@@ -130,7 +130,7 @@ Add-AzureRmLoadBalancerRuleConfig -Name myLoadBalancerRule `
   -BackendPort 80
 ```
 
-Aktualisieren Sie den Load Balancer mit [Set-AzureRmLoadBalancer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.network/v3.6.0/set-azurermloadbalancer):
+Aktualisieren Sie den Load Balancer mit [Set-AzureRmLoadBalancer](/powershell/module/azurerm.network/set-azurermloadbalancer):
 
 ```powershell
 Set-AzureRmLoadBalancer -LoadBalancer $lb
@@ -142,13 +142,13 @@ Jeder virtuelle Computer verfügt über mindestens eine virtuelle Netzwerkschnit
 
 ### <a name="create-virtual-network"></a>Virtuelles Netzwerk erstellen
 
-Erstellen Sie zuerst mit [New-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/resourcemanager/azurerm.network/v3.6.0/new-azurermvirtualnetworksubnetconfig) ein Subnetz. Im folgenden Beispiel wird ein Subnetz namens `mySubnet` erstellt:
+Erstellen Sie zuerst mit [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) ein Subnetz. Im folgenden Beispiel wird ein Subnetz namens `mySubnet` erstellt:
 
 ```powershell
 $subnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name mySubnet -AddressPrefix 192.168.1.0/24
 ```
 
-Erstellen Sie mit [New-AzureRmVirtualNetwork](https://docs.microsoft.com/powershell/resourcemanager/azurerm.network/v3.6.0/new-azurermvirtualnetwork) ein virtuelles Netzwerk, um Netzwerkkonnektivität für Ihre virtuellen Computer bereitzustellen. Im folgenden Beispiel wird ein virtuelles Netzwerk namens `myVnet` mit `mySubnet` erstellt:
+Erstellen Sie mit [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) ein virtuelles Netzwerk, um Netzwerkkonnektivität für Ihre virtuellen Computer bereitzustellen. Im folgenden Beispiel wird ein virtuelles Netzwerk namens `myVnet` mit `mySubnet` erstellt:
 
 ```powershell
 $vnet = New-AzureRmVirtualNetwork `
@@ -163,7 +163,7 @@ $vnet = New-AzureRmVirtualNetwork `
 
 Eine Azure[Netzwerksicherheitsgruppe](../../virtual-network/virtual-networks-nsg.md) (NSG) steuert ein- und ausgehenden Datenverkehr für einen oder mehrere virtuelle Computer. Netzwerksicherheitsgruppen-Regeln dienen zum Zulassen oder Verweigern von Netzwerkdatenverkehr an einem bestimmten Port oder in einem Portbereich. Diese Regeln können auch ein Quelladresspräfix enthalten, sodass nur Datenverkehr aus einer vordefinierten Quelle mit einem virtuellen Computer kommunizieren kann.
 
-Erstellen Sie mit [New-AzureRmNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/resourcemanager/azurerm.network/v3.6.0/new-azurermnetworksecurityruleconfig) eine Netzwerksicherheitsgruppen-Regel, damit Ihre App für Webdatenverkehr erreichbar ist. Im folgenden Beispiel wird eine Netzwerksicherheitsgruppen-Regel namens `myNetworkSecurityGroupRule` erstellt:
+Erstellen Sie mit [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig) eine Netzwerksicherheitsgruppen-Regel, damit Ihre App für Webdatenverkehr erreichbar ist. Im folgenden Beispiel wird eine Netzwerksicherheitsgruppen-Regel namens `myNetworkSecurityGroupRule` erstellt:
 
 ```powershell
 $nsgRule = New-AzureRmNetworkSecurityRuleConfig `
@@ -178,7 +178,7 @@ $nsgRule = New-AzureRmNetworkSecurityRuleConfig `
   -Access Allow
 ```
 
-Erstellen Sie eine Netzwerksicherheitsgruppe mit [New-AzureRmNetworkSecurityGroup](https://docs.microsoft.com/powershell/resourcemanager/azurerm.network/v3.6.0/new-azurermnetworksecuritygroup). Im folgenden Beispiel wird eine NSG (Network Security Group, Netzwerksicherheitsgruppe) namens `myNetworkSecurityGroup` erstellt:
+Erstellen Sie eine Netzwerksicherheitsgruppe mit [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup). Im folgenden Beispiel wird eine NSG (Network Security Group, Netzwerksicherheitsgruppe) namens `myNetworkSecurityGroup` erstellt:
 
 ```powershell
 $nsg = New-AzureRmNetworkSecurityGroup `
@@ -188,7 +188,7 @@ $nsg = New-AzureRmNetworkSecurityGroup `
   -SecurityRules $nsgRule
 ```
 
-Fügen Sie mit [Set-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/resourcemanager/azurerm.network/v3.6.0/set-azurermvirtualnetworksubnetconfig) die Netzwerksicherheitsgruppe dem Subnetz hinzu:
+Fügen Sie mit [Set-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig) die Netzwerksicherheitsgruppe dem Subnetz hinzu:
 
 ```powershell
 Set-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet `
@@ -197,7 +197,7 @@ Set-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet `
   -AddressPrefix 192.168.1.0/24
 ```
 
-Aktualisieren Sie mit [Set-AzureRmVirtualNetwork](https://docs.microsoft.com/powershell/resourcemanager/azurerm.network/v3.6.0/set-azurermvirtualnetwork) das virtuelle Netzwerk:
+Aktualisieren Sie mit [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork) das virtuelle Netzwerk:
 
 ```powershell
 Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
@@ -207,7 +207,7 @@ Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
 
 Load Balancer arbeiten mit der virtuellen NIC-Ressource und nicht mit dem eigentlichen virtuellen Computer. Die virtuelle NIC wird mit dem Load Balancer verbunden und anschließend an einen virtuellen Computer angefügt.
 
-Erstellen Sie eine virtuelle NIC mit [New-AzureRmNetworkInterface](https://docs.microsoft.com/powershell/resourcemanager/azurerm.network/v3.6.0/new-azurermnetworkinterface). Im folgenden Beispiel werden drei virtuelle NICs erstellt (jeweils eine virtuelle NIC pro virtuellem Computer, den Sie in den folgenden Schritten für Ihre App erstellen):
+Erstellen Sie eine virtuelle NIC mit [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface). Im folgenden Beispiel werden drei virtuelle NICs erstellt (jeweils eine virtuelle NIC pro virtuellem Computer, den Sie in den folgenden Schritten für Ihre App erstellen):
 
 
 ```powershell
@@ -232,7 +232,7 @@ Rufen Sie mit [Get-Credential](https://msdn.microsoft.com/powershell/reference/5
 $cred = Get-Credential
 ```
 
-Erstellen Sie die VMs mit [New-AzureRmVMConfig](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.8.0/new-azurermvmconfig), [Set-AzureRmVMOperatingSystem](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.8.0/set-azurermvmoperatingsystem), [Set-AzureRmVMSourceImage](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.8.0/set-azurermvmsourceimage), [Set-AzureRmVMOSDisk](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.8.0/set-azurermvmosdisk), [Add-AzureRmVMNetworkInterface](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.8.0/add-azurermvmnetworkinterface) und [New-AzureRmVM](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.8.0/new-azurermvm). Im folgenden Beispiel werden drei VMs erstellt:
+Erstellen Sie die VMs mit [New-AzureRmVMConfig](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.8.0/new-azurermvmconfig), [Set-AzureRmVMOperatingSystem](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.8.0/set-azurermvmoperatingsystem), [Set-AzureRmVMSourceImage](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.8.0/set-azurermvmsourceimage), [Set-AzureRmVMOSDisk](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.8.0/set-azurermvmosdisk), [Add-AzureRmVMNetworkInterface](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.8.0/add-azurermvmnetworkinterface) und [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). Im folgenden Beispiel werden drei VMs erstellt:
 
 ```powershell
 for ($i=1; $i -le 3; $i++)
@@ -254,7 +254,7 @@ Die Erstellung und Konfiguration aller drei virtuellen Computer dauert einige Mi
 
 Azure-VM-Erweiterungen werden verwendet, um Konfigurationsaufgaben für den virtuellen Computer, z.B. Installieren von Anwendungen und Konfigurieren des Betriebssystems, zu automatisieren. Die [benutzerdefinierte Skripterweiterung für Windows](./../virtual-machines-windows-extensions-customscript.md) wird verwendet, um beliebige PowerShell-Skripts auf virtuellen Computern auszuführen. Das Skript kann im Azure-Speicher oder auf einem beliebigen erreichbaren HTTP-Endpunkt gespeichert werden oder in die Konfiguration der benutzerdefinierten Skripterweiterung eingebettet werden. Wenn Sie die benutzerdefinierte Skripterweiterung verwenden, verwaltet der Azure-VM-Agent die Ausführung des Skripts.
 
-Verwenden Sie [Set-AzureRmVMExtension](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.8.0/set-azurermvmextension) zum Installieren der benutzerdefinierten Skripterweiterung. Die Erweiterung führt `powershell Add-WindowsFeature Web-Server` zum Installieren des IIS-Webservers aus:
+Verwenden Sie [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) zum Installieren der benutzerdefinierten Skripterweiterung. Die Erweiterung führt `powershell Add-WindowsFeature Web-Server` zum Installieren des IIS-Webservers aus:
 
 ```powershell
 for ($i=1; $i -le 3; $i++)
@@ -272,7 +272,7 @@ for ($i=1; $i -le 3; $i++)
 
 ### <a name="test-your-app"></a>Testen Ihrer App
 
-Rufen Sie mit [Get-AzureRmPublicIPAddress](https://docs.microsoft.com/powershell/resourcemanager/azurerm.network/v3.6.0/get-azurermpublicipaddress) die öffentliche IP-Adresse Ihres Load Balancers ab. Im folgenden Beispiel wird die IP-Adresse für `myPublicIP` abgerufen, die wir zuvor erstellt haben:
+Rufen Sie mit [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) die öffentliche IP-Adresse Ihres Load Balancers ab. Im folgenden Beispiel wird die IP-Adresse für `myPublicIP` abgerufen, die wir zuvor erstellt haben:
 
 ```powershell
 Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroup -Name myPublicIP | select IpAddress
@@ -290,7 +290,7 @@ Für die virtuellen Computer, auf denen Ihre App ausgeführt wird, sind unter Um
 
 Entfernen Sie einen virtuellen Computer durch Zurücksetzen der Eigenschaft LoadBalancerBackendAddressPools der Netzwerkschnittstellenkarte aus dem Back-End-Adresspool.
 
-Erstellen Sie mit [Get-AzureRmNetworkInterface](https://docs.microsoft.com/powershell/resourcemanager/azurerm.network/v3.6.0/get-azurermnetworkinterface) eine Netzwerkschnittstellenkarte:
+Erstellen Sie mit [Get-AzureRmNetworkInterface](/powershell/module/azurerm.network/get-azurermnetworkinterface) eine Netzwerkschnittstellenkarte:
 
 ```powershell
 $nic = Get-AzureRmNetworkInterface -ResourceGroupName myResourceGroup -Name myNic2
@@ -333,3 +333,4 @@ Set-AzureRmNetworkInterface -NetworkInterface $nic
 ## <a name="next-steps"></a>Nächste Schritte
 
 Beispiele: [Virtueller Azure-Computer – PowerShell-Beispielskripts](./../virtual-machines-windows-powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+

@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/27/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: c2a9a14891f197ae442c41668229d4a7610ba248
-ms.openlocfilehash: 17270815b6278ec6b36a134c313cd543622dd9f4
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 76f59384db37967a9210ba5efa49b25788d21cdc
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -77,7 +78,7 @@ Es gibt zwei wichtige Voraussetzungen für einen erfolgreichen Austausch von Ber
 
 - Wenn Sie eine statische IP-Adresse für Ihren Produktionsslot verwenden möchten, müssen Sie auch eine für den Stagingslot reservieren. Andernfalls tritt bei dem Austausch ein Fehler auf.
 
-- Alle Instanzen Ihrer Rollen müssen ausgeführt werden, bevor Sie den Austausch durchführen können. Sie können den Status Ihrer Instanzen im klassischen Azure-Portal oder mit dem [Befehl Get-AzureRole in Windows PowerShell](https://docs.microsoft.com/en-us/powershell/servicemanagement/azure.service/v3.1.0/get-azurerole) überprüfen.
+- Alle Instanzen Ihrer Rollen müssen ausgeführt werden, bevor Sie den Austausch durchführen können. Sie können den Status Ihrer Instanzen im klassischen Azure-Portal oder mit dem [Befehl Get-AzureRole in Windows PowerShell](/powershell/module/azure/get-azurerole?view=azuresmps-3.7.0) überprüfen.
 
 Beachten Sie, dass Updates von Gastbetriebssystemen und Dienstreparaturvorgänge auch dazu führen können, dass beim Austausch von Bereitstellungen ein Fehler auftritt. Weitere Informationen finden Sie unter [Behandeln von Problemen mit der Clouddienstbereitstellung](cloud-services-troubleshoot-deployment-problems.md).
 
@@ -108,7 +109,7 @@ Im Folgenden wird beschrieben, wie eine neue SQL-Datenbankinstanz, die auf einem
 
     Der Assistent **Link Resource** wird gestartet.
 
-    ![Verknüpfen, Seite&1;](./media/cloud-services-how-to-manage/CloudServices_LinkedResources_LinkPage1.png)
+    ![Verknüpfen, Seite 1](./media/cloud-services-how-to-manage/CloudServices_LinkedResources_LinkPage1.png)
 
 4. Klicken Sie auf **Neue Ressource erstellen** oder auf **Vorhandene Ressource verknüpfen**.
 5. Wählen Sie den Typ der zu verknüpfenden Ressource. Klicken Sie im [klassischen Azure-Portal](http://manage.windowsazure.com/)auf **SQL-Datenbank**. (Das klassische Azure-Portal unterstützt nicht das Verknüpfen eines Speicherkontos mit einem Cloud-Dienst.)
@@ -153,9 +154,4 @@ Gehen Sie folgendermaßen vor, um eine Bereitstellung oder Ihren Cloud-Dienst zu
 * Weitere Informationen zum [Bereitstellen eines Clouddiensts](cloud-services-how-to-create-deploy.md)
 * [Konfigurieren eines benutzerdefinierten Domänennamens](cloud-services-custom-domain-name.md)
 * Konfigurieren von [SSL-Zertifikaten](cloud-services-configure-ssl-certificate.md)
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

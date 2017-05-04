@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 08/03/2016
 ms.author: monicar
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 1842d55e2275560581cf2766cdf74e0939e68c98
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 1cf6be168c3e87bfd567c216679f608593673340
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -47,8 +47,8 @@ Eines der zwei [Bereitstellungsmodelle](resource-manager-deployment-model.md), d
 Eine [Befehlszeilenschnittstelle](cli-install-nodejs.md) , die zum Verwalten von Azure-Diensten über Windows-, OS X- und Linux-Computer verwendet werden kann.
 
 ### <a name="powershell"></a>Azure PowerShell
-Eine [Befehlszeilenschnittstelle](/powershell/azureps-cmdlets-docs), mit der Azure-Dienste über eine Befehlszeile von einem Windows-PC aus verwaltet werden können. Einige Dienste oder Dienstfeatures können nur über PowerShell oder die CLI verwaltet werden. Richtlinien für einzelne Azure-Ressourcen beschreiben, mit welchem Modell bzw. welchen Modellen eine Ressource bereitgestellt werden kann.   
-Siehe auch [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
+Eine [Befehlszeilenschnittstelle](/powershell/azure/overview), mit der Azure-Dienste über eine Befehlszeile von einem Windows-PC aus verwaltet werden können. Einige Dienste oder Dienstfeatures können nur über PowerShell oder die CLI verwaltet werden. Richtlinien für einzelne Azure-Ressourcen beschreiben, mit welchem Modell bzw. welchen Modellen eine Ressource bereitgestellt werden kann.   
+Siehe auch [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
 
 ### <a name="arm-model"></a>Azure Resource Manager-Bereitstellungsmodell
 Eines der zwei [Bereitstellungsmodelle](resource-manager-deployment-model.md), die in Microsoft Azure zum Bereitstellen von Ressourcen verwendet werden. (Das andere ist das klassische Bereitstellungsmodell.) Einige Azure-Ressourcen können entweder in dem einen oder dem anderen Modell bereitgestellt werden, während andere in beiden Modellen bereitgestellt werden können. Richtlinien für einzelne Azure-Ressourcen beschreiben, mit welchem Modell bzw. welchen Modellen eine Ressource bereitgestellt werden kann.

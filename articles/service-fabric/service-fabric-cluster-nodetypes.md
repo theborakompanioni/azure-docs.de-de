@@ -15,8 +15,9 @@ ms.workload: NA
 ms.date: 01/05/2017
 ms.author: chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: a957a70be915459baa8c687c92e251c6011b6172
-ms.openlocfilehash: 6670076d14f1f3f3991dd004d488f69fb1c44cb6
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 32119a6ef586d616407c69e89a0d0f05758438bc
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -83,7 +84,7 @@ Wechseln Sie zur Ressourcendefinition für **Microsoft.Network/loadBalancers**. 
 ![inboundNatPools][InboundNatPools]
 
 ### <a name="after-cluster-deployment"></a>Nach der Clusterbereitstellung
-Dies ist etwas komplizierter und kann dazu führen, dass die virtuellen Computern neu gestartet werden. Sie müssen nun neue Werte mit Azure PowerShell festlegen. Stellen Sie sicher, dass Azure PowerShell 1.0 oder höher auf Ihrem Computer installiert ist. Falls noch nicht erfolgt, sollten Sie unbedingt die Schritte unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs)
+Dies ist etwas komplizierter und kann dazu führen, dass die virtuellen Computern neu gestartet werden. Sie müssen nun neue Werte mit Azure PowerShell festlegen. Stellen Sie sicher, dass Azure PowerShell 1.0 oder höher auf Ihrem Computer installiert ist. Falls noch nicht erfolgt, sollten Sie unbedingt die Schritte unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview)
 
 Melden Sie sich beim Azure-Konto an. Wenn dieser PowerShell-Befehl aus irgendeinem Grund Fehler verursacht, sollten Sie prüfen, ob Azure PowerShell ordnungsgemäß installiert ist.
 
@@ -119,9 +120,4 @@ Set-AzureRmResource -PropertyObject $PropertiesObject -ResourceGroupName <RG nam
 [LBBlade]: ./media/service-fabric-cluster-nodetypes/LBBlade.png
 [NATRules]: ./media/service-fabric-cluster-nodetypes/NATRules.png
 [RDP]: ./media/service-fabric-cluster-nodetypes/RDP.png
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

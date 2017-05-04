@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 04/11/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 5e32f1e534057b5e8e0ed6d5c0a4631f9fefbca5
-ms.lasthandoff: 04/17/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: a96150a6a7f83d1c220e0450f7704634a1f6ed1b
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -50,12 +50,12 @@ Führen Sie das Skript *CreateServiceFabricCluster.ps1* über eine PowerShell-Ad
 Das Service Fabric-Laufzeitpaket wird zum Zeitpunkt der Clustererstellung automatisch heruntergeladen und installiert.
 
 ## <a name="connect-to-the-cluster"></a>Verbinden mit dem Cluster
-Ihr Entwicklungscluster mit drei Knoten wird nun ausgeführt. Das ServiceFabric-PowerShell-Modul wird zusammen mit der Laufzeit installiert.  Die Überprüfung, ob der Cluster ausgeführt wird, kann über den gleichen Computer oder über einen Remotecomputer mit der Service Fabric-Laufzeit erfolgen.  Das Cmdlet [Connect-ServiceFabricCluster](/powershell/module/ServiceFabric/Connect-ServiceFabricCluster) stellt eine Verbindung mit dem Cluster her.   
+Ihr Entwicklungscluster mit drei Knoten wird nun ausgeführt. Das ServiceFabric-PowerShell-Modul wird zusammen mit der Laufzeit installiert.  Die Überprüfung, ob der Cluster ausgeführt wird, kann über den gleichen Computer oder über einen Remotecomputer mit der Service Fabric-Laufzeit erfolgen.  Das Cmdlet [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) stellt eine Verbindung mit dem Cluster her.   
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint localhost:19000
 ```
-Weitere Beispiele für die Herstellung einer Clusterverbindung finden Sie unter [Herstellen einer Verbindung mit einem sicheren Cluster](service-fabric-connect-to-secure-cluster.md). Verwenden Sie nach dem Herstellen einer Verbindung mit dem Cluster das Cmdlet [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode), um eine Liste mit den Knoten des Clusters sowie Statusinformationen für die einzelnen Knoten anzuzeigen. **HealthState** muss für jeden Knoten *OK* lauten.
+Weitere Beispiele für die Herstellung einer Clusterverbindung finden Sie unter [Herstellen einer Verbindung mit einem sicheren Cluster](service-fabric-connect-to-secure-cluster.md). Verwenden Sie nach dem Herstellen einer Verbindung mit dem Cluster das Cmdlet [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps), um eine Liste mit den Knoten des Clusters sowie Statusinformationen für die einzelnen Knoten anzuzeigen. **HealthState** muss für jeden Knoten *OK* lauten.
 
 ```powershell
 PS C:\temp\Microsoft.Azure.ServiceFabric.WindowsServer> Get-ServiceFabricNode |Format-Table
@@ -95,3 +95,4 @@ Nachdem Sie nun einen eigenständigen Entwicklungscluster eingerichtet haben, k�
 * [Bereitstellen von Apps mit PowerShell](service-fabric-deploy-remove-applications.md)
 
 [service-fabric-explorer]: ./media/service-fabric-get-started-standalone-cluster/sfx.png
+

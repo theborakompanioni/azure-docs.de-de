@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: e2d70bbb2af4231a9ba7e4d9a843593ff5d9f7d3
-ms.lasthandoff: 04/14/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: ec3c593c0fb6a92b65284285b330e20f788b84c5
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -42,7 +42,7 @@ Dieser Artikel bezieht sich auf VNETs und NICs, die im Rahmen des Azure Resource
 
 In den restlichen Abschnitten dieses Artikels finden Sie Anleitungen für sämtliche NIC-bezogene Aufgaben. Die einzelnen Abschnitte enthalten jeweils Folgendes:
 - Schritte zum Ausführen der Aufgabe innerhalb des Azure-Portals. Um die Schritte ausführen zu können, müssen Sie beim [Azure-Portal](http://portal.azure.com) angemeldet sein. Falls Sie noch nicht über ein Konto verfügen, können Sie sich für ein [kostenloses Testkonto](https://azure.microsoft.com/free) registrieren.
-- Befehle zum Ausführen der Aufgabe mithilfe von Azure PowerShell sowie Links zur Befehlsreferenz für den Befehl. Installieren und konfigurieren Sie PowerShell gemäß der Anleitung im Artikel [Get started with Azure PowerShell cmdlets](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json) (Erste Schritte mit Azure PowerShell-Cmdlets). Hilfe und Beispiele für PowerShell-Befehle erhalten Sie durch Eingabe von `get-help <command> -full`.
+- Befehle zum Ausführen der Aufgabe mithilfe von Azure PowerShell sowie Links zur Befehlsreferenz für den Befehl. Installieren und konfigurieren Sie PowerShell gemäß der Anleitung im Artikel [Get started with Azure PowerShell cmdlets](/powershell/azure/overview) (Erste Schritte mit Azure PowerShell-Cmdlets). Hilfe und Beispiele für PowerShell-Befehle erhalten Sie durch Eingabe von `get-help <command> -full`.
 - Befehle zum Ausführen der Aufgabe mithilfe der Azure-Befehlszeilenschnittstelle (Command-Line Interface, CLI) sowie Links zur Befehlsreferenz für den Befehl. Installieren und konfigurieren Sie die Azure-Befehlszeilenschnittstelle gemäß der Anleitung im Artikel [Install Azure CLI 2.0](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json) (Installieren von Azure CLI 2.0). Hilfe zu den Befehlen der Befehlszeilenschnittstelle erhalten Sie durch Eingabe von `az <command> -h`.
 
 ## <a name="nics"></a>Netzwerkschnittstellen
@@ -78,7 +78,7 @@ Das Azure-Portal erstellt eine primäre IP-Konfiguration namens **ipconfig1** mi
 |**Tool**|**Befehl**|
 |:---|:---|
 |**BEFEHLSZEILENSCHNITTSTELLE (CLI)**|[az network nic create](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#create)|
-|**PowerShell**|[New-AzureRmNetworkInterface](/powershell/resourcemanager/azurerm.network/v3.4.0/new-azurermnetworkinterface/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#create)|
+|**PowerShell**|[New-AzureRmNetworkInterface](/powershell/module/azurerm.network/nic)|
 
 ### <a name="view-nics"></a>Anzeigen und Ändern von Netzwerkschnittstellen und Einstellungen
 
@@ -100,7 +100,7 @@ Gehen Sie zum Anzeigen und Ändern von Netzwerkschnittstellen und Einstellungen 
 |**Tool**|**Befehl**|
 |---|---|
 |**BEFEHLSZEILENSCHNITTSTELLE (CLI)**|[az network nic list](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#list): Anzeigen von im Abonnement enthaltenen NICs. [az network nic show](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#show): Anzeigen der Einstellungen für eine NIC.|
-|**PowerShell**|[Get-AzureRmNetworkInterface](/powershell/resourcemanager/azurerm.network/v3.4.0/get-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json): Anzeigen von im Abonnement enthaltenen NICs oder der Einstellungen für eine NIC.|
+|**PowerShell**|[Get-AzureRmNetworkInterface](/powershell/module/azurerm.network/get-azurermnetworkinterface): Anzeigen von im Abonnement enthaltenen NICs oder der Einstellungen für eine NIC.|
 
 ### <a name="dns"></a>Ändern der DNS-Einstellungen für eine NIC
 
@@ -116,7 +116,7 @@ Führen Sie zum Ändern der DNS-Einstellungen für eine NIC die folgenden Schrit
 |**Tool**|**Befehl**|
 |---|---|
 |**BEFEHLSZEILENSCHNITTSTELLE (CLI)**|[az network nic update](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
-|**PowerShell**|[Set-AzureRmNetworkInterface](/powershell/resourcemanager/azurerm.network/v3.4.0/set-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|**PowerShell**|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)|
 
 ### <a name="ip-forwarding"></a>Ändern der IP-Weiterleitung für eine NIC
 
@@ -136,7 +136,7 @@ Führen Sie zum Ändern der IP-Weiterleitungseinstellungen für eine NIC die fol
 |**Tool**|**Befehl**|
 |---|---|
 |**BEFEHLSZEILENSCHNITTSTELLE (CLI)**|[az network nic update](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
-|**PowerShell**|[Set-AzureRmNetworkInterface](/powershell/resourcemanager/azurerm.network/v3.4.0/set-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|**PowerShell**|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)|
 
 ### <a name="subnet"></a>Ändern des Subnetzes, mit dem eine NIC verbunden ist
 
@@ -153,7 +153,7 @@ Im Gegensatz zum VNET können Sie das Subnetz ändern, mit dem eine NIC verbunde
 |**Tool**|**Befehl**|
 |---|---|
 |**BEFEHLSZEILENSCHNITTSTELLE (CLI)**|[az network nic ip-config update](/cli/azure/network/nic/ip-config?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
-|**PowerShell**|[Set-AzureRmNetworkInterfaceIpConfig](/powershell/resourcemanager/azurerm.network/v3.4.0/set-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|**PowerShell**|[Set-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/set-azurermnetworkinterfaceipconfig)|
 
 
 ### <a name="delete-nic"></a>Löschen einer Netzwerkschnittstelle
@@ -169,7 +169,7 @@ Wenn Sie eine NIC löschen, werden alle ihr zugewiesenen MAC- und IP-Adressen fr
 |**Tool**|**Befehl**|
 |---|---|
 |**BEFEHLSZEILENSCHNITTSTELLE (CLI)**|[az network nic delete](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#delete)|
-|**PowerShell**|[Remove-AzureRmNetworkInterface](/powershell/resourcemanager/azurerm.network/v3.1.0/remove-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|**PowerShell**|[Remove-AzureRmNetworkInterface](/powershell/module/azurerm.network/remove-azurermnetworkinterface)|
 
 ## <a name="ip-configs"></a>IP-Konfigurationen
 Jede NIC verfügt über mindestens eine IP-Konfiguration (die so genannte **primäre** Konfiguration). Zusätzlich können einer NIC *sekundäre* IP-Konfigurationen zugeordnet werden. Die Anzahl von IP-Adressen, die Sie einer NIC zuweisen können, ist begrenzt. Ausführliche Informationen finden Sie im Artikel [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). Für jede IP-Konfiguration gilt Folgendes:
@@ -205,7 +205,7 @@ Einer NIC können beliebig viele IP-Konfigurationen hinzugefügt werden (im Rahm
 |**Tool**|**Befehl**|
 |---|---|
 |**BEFEHLSZEILENSCHNITTSTELLE (CLI)**|[az network nic ip-config create](/cli/azure/network/nic/ip-config?toc=%2fazure%2fvirtual-network%2ftoc.json#create)|
-|**PowerShell**|[Add-AzureRmNetworkInterfaceIpConfig](/powershell/resourcemanager/azurerm.network/v3.4.0/add-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|**PowerShell**|[Add-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/add-azurermnetworkinterfaceipconfig)|
 
 ### <a name="change-ip-config"></a>Ändern einer IP-Konfiguration
 
@@ -225,7 +225,7 @@ Gehen Sie zum Ändern der Einstellungen für private und öffentliche IP-Adresse
 |**Tool**|**Befehl**|
 |---|---|
 |**BEFEHLSZEILENSCHNITTSTELLE (CLI)**|[az network nic ip-config update](/cli/azure/network/nic/ip-config?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
-|**PowerShell**|[Set-AzureRMNetworkInterfaceIpConfig](/powershell/resourcemanager/azurerm.network/v3.4.0/set-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|**PowerShell**|[Set-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/set-azurermnetworkinterfaceipconfig)|
 
 ### <a name="delete-ip-config"></a>Löschen einer sekundären IP-Konfiguration aus einer NIC
 
@@ -239,7 +239,7 @@ Führen Sie die folgenden Schritte aus, um eine sekundäre IP-Konfiguration aus 
 |**Tool**|**Befehl**|
 |---|---|
 |**BEFEHLSZEILENSCHNITTSTELLE (CLI)**|[az network nic ip-config delete](/cli/azure/network/nic/ip-config?toc=%2fazure%2fvirtual-network%2ftoc.json#delete)|
-|**PowerShell**|[Remove-AzureRmNetworkInterfaceIpConfig](/powershell/resourcemanager/azurerm.network/v3.4.0/remove-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|**PowerShell**|[Remove-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/remove-azurermnetworkinterfaceipconfig)|
 
 
 ## <a name="nsgs"></a>Netzwerksicherheitsgruppen
@@ -259,7 +259,7 @@ Führen Sie die folgenden Schritte aus, um eine NSG einer NIC zuzuordnen oder um
 |**Tool**|**Befehl**|
 |---|---|
 |**BEFEHLSZEILENSCHNITTSTELLE (CLI)**|[az network nic update](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
-|**PowerShell**|[Set-AzureRmNetworkInterface](/powershell/resourcemanager/azurerm.network/v3.4.0/set-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|**PowerShell**|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)|
 
 ## <a name="vms"></a>Anfügen von NICs an einen virtuellen Computer oder Trennen von NICs von einem virtuellen Computer
 
@@ -286,7 +286,7 @@ Sie können PowerShell oder die Befehlszeilenschnittstelle verwenden, um eine NI
 Über das Azure-Portal ist es nicht möglich, vorhandene NICs an einen neuen virtuellen Computer anzufügen oder einen virtuellen Computer mit mehreren NICs zu erstellen. Mit dem folgenden Befehl der Azure-Befehlszeilenschnittstelle bzw. mit dem folgenden PowerShell-Befehl können Sie vorhandene NICs beim Erstellen eines virtuellen Computers anfügen:
 
 - **Befehlszeilenschnittstelle:** [az vm create](/cli/azure/vm?toc=%2fazure%2fvirtual-network%2ftoc.json#create)
-- **PowerShell:** [New-AzureRmVM](/powershell/resourcemanager/azurerm.compute/v2.5.0/new-azurermvm?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- **PowerShell:** [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm)
 
 ### <a name="vm-view-nic"></a>Anzeigen von NICs, die an einen virtuellen Computer angefügt sind
 
@@ -298,21 +298,21 @@ Sie können PowerShell oder die Befehlszeilenschnittstelle verwenden, um eine NI
 |**Tool**|**Befehl**|
 |---|---|
 |**BEFEHLSZEILENSCHNITTSTELLE (CLI)**|[az vm show](/cli/azure/vm?toc=%2fazure%2fvirtual-network%2ftoc.json#show)|
-|**PowerShell**|[Get-AzureRmVM](/powershell/resourcemanager/azurerm.compute/v1.3.4/get-azurermvm?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|**PowerShell**|[Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm)|
 
 ### <a name="vm-attach-nic"></a>Anfügen einer NIC an einen vorhandenen virtuellen Computer
 
 Der virtuelle Computer, an den Sie eine NIC anfügen möchten, muss mehrere NICs unterstützen und sich im Zustand „Beendet (Zuordnung aufgehoben)“ befinden. NICs können nicht über das Azure-Portal an einen vorhandenen virtuellen Computer angefügt werden. Verwenden Sie den folgenden Befehl der Azure-Befehlszeilenschnittstelle bzw. den folgenden PowerShell-Befehl, um NICs an virtuelle Computer anzufügen:
 
 - **Befehlszeilenschnittstelle:** [az vm nic add](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#add)
-- **PowerShell:** [Add-AzureRmVMNetworkInterface](/powershell/resourcemanager/azurerm.compute/v2.5.0/add-azurermvmnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- **PowerShell:** [Add-AzureRmVMNetworkInterface](/powershell/module/azurerm.compute/add-azurermvmnetworkinterface)
 
 ### <a name="vm-detach-nic"></a>Trennen einer NIC von einem vorhandenen virtuellen Computer
 
 Der virtuelle Computer, von dem Sie eine NIC trennen möchten, muss sich im Zustand „Beendet (Zuordnung aufgehoben)“ befinden und über mindestens zwei angefügte NICs verfügen. Sie können jede beliebige NIC trennen, an den virtuellen Computer muss aber immer mindestens eine NIC angefügt sein. Wenn Sie eine primäre NIC trennen, weist Azure das Primärattribut einer verbleibenden angefügten NIC zu, die am längsten an den virtuellen Computer angefügt ist. Sie können allerdings auch selbst eine beliebige NIC als primäre NIC festlegen. Über das Azure-Portal können Sie weder NICs von einem virtuellen Computer trennen noch das Primärattribut für eine NIC festlegen. Diese beiden Aktionen können jedoch über die Befehlszeilenschnittstelle oder mithilfe von PowerShell ausgeführt werden. Verwenden Sie den folgenden Befehl der Azure-Befehlszeilenschnittstelle bzw. den folgenden PowerShell-Befehl, um NICs von virtuellen Computern zu trennen:
 
 - **Befehlszeilenschnittstelle:** [az vm nic remove](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#remove)
-- **PowerShell:** [Remove-AzureRMVMNetworkInterface](/powershell/resourcemanager/azurerm.compute/v2.5.0/remove-azurermvmnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- **PowerShell:** [Remove-AzureRMVMNetworkInterface](/powershell/module/azurerm.compute/remove-azurermvmnetworkinterface)
 
 ## <a name="next-steps"></a>Nächste Schritte
 In den folgenden Artikeln erfahren Sie, wie Sie mithilfe von Skripts einen virtuellen Computer mit mehreren NICs oder IP-Konfigurationen erstellen:

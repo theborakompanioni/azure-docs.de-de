@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 04/10/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: b0ccde30b93214b161558daf8e2b4e37e58711da
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: d340210d799f995cb10a20cf48a9245bbd3bc8d3
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -68,7 +68,7 @@ Für diese Konfiguration verwenden wir die folgenden Werte: Wir legen die Variab
 
 ## <a name="before-beginning"></a>Vorbereitungen
 * Stellen Sie sicher, dass Sie über ein Azure-Abonnement verfügen. Wenn Sie noch kein Azure-Abonnement besitzen, können Sie Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) aktivieren oder sich für ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial) registrieren.
-* Installieren Sie die aktuelle Version der PowerShell-Cmdlets für Azure Resource Manager. Weitere Informationen zum Installieren von PowerShell-Cmdlets finden Sie unter [Overview of Azure PowerShell](/powershell/azureps-cmdlets-docs) (Übersicht über Azure PowerShell). 
+* Installieren Sie die aktuelle Version der PowerShell-Cmdlets für Azure Resource Manager. Weitere Informationen zum Installieren von PowerShell-Cmdlets finden Sie unter [Overview of Azure PowerShell](/powershell/azure/overview) (Übersicht über Azure PowerShell). 
 
 ## <a name="declare"></a>Teil 1 – Anmelden und Festlegen von Variablen
 In diesem Abschnitt melden Sie sich an und deklarieren die für diese Konfiguration verwendeten Werte. Die deklarierten Werte werden in den Beispielskripts verwendet. Ändern Sie die Werte Ihrer Umgebung entsprechend. Alternativ können Sie diese Schritte mit den deklarierten Werten als Übung durchlaufen.
@@ -284,7 +284,7 @@ Wenn Sie eine P2S-Verbindung mit einem anderen Clientcomputer als dem für die G
 
 ## <a name="connectVM"></a>Herstellen einer Verbindung mit einem virtuellem Computer
 
-1. Nachdem Sie eine Verbindung mit Ihrem VNET hergestellt haben, können Sie über Ihre P2S-Verbindung eine Verbindung mit einem virtuellen Computer herstellen. Für die Verbindungsherstellung mit dem virtuellen Computer benötigen Sie die private IP-Adresse des virtuellen Computers. Das folgende Beispiel veranschaulicht das Abrufen der privaten IP-Adresse mit [Get-AzureRmNetworkInterface](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermnetworkinterface?view=azurermps-3.7.0). In den Ergebnissen wird eine Liste mit virtuellen Computern und den jeweiligen privaten IP-Adressen in allen Ihren Ressourcengruppen zurückgegeben. 
+1. Nachdem Sie eine Verbindung mit Ihrem VNET hergestellt haben, können Sie über Ihre P2S-Verbindung eine Verbindung mit einem virtuellen Computer herstellen. Für die Verbindungsherstellung mit dem virtuellen Computer benötigen Sie die private IP-Adresse des virtuellen Computers. Das folgende Beispiel veranschaulicht das Abrufen der privaten IP-Adresse mit [Get-AzureRmNetworkInterface](/powershell/module/azurerm.network/get-azurermnetworkinterface). In den Ergebnissen wird eine Liste mit virtuellen Computern und den jeweiligen privaten IP-Adressen in allen Ihren Ressourcengruppen zurückgegeben. 
 
   ```powershell   
   $vms = get-azurermvm
@@ -424,3 +424,4 @@ Sie können ein Clientzertifikat reaktivieren, indem Sie den Fingerabdruck aus d
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Weitere Informationen finden Sie unter [Virtuelle Computer](https://docs.microsoft.com/azure/#pivot=services&panel=Compute) . Weitere Informationen zu Netzwerken und virtuellen Computern finden Sie unter [Azure- und Linux-VM-Netzwerke (Übersicht)](../virtual-machines/linux/azure-vm-network-overview.md).
+

@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 12/06/2016
 ms.author: hkanna
 translationtype: Human Translation
-ms.sourcegitcommit: 83dc91972ad5fec85e562e45227747568b1fea75
-ms.openlocfilehash: 3d9ca83e2672d9022e4f887b84555f0bf95f6da9
-ms.lasthandoff: 01/26/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: d4a0dfbfab052e98e0dd641e8cab8fc143c2ff41
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -46,29 +46,29 @@ Die Informationen in diesem Artikel sind vornehmlich für Sicherungsadministrato
 StorSimple eignet sich aus den folgenden Gründen gut als Sicherungsziel:
 
 -   Die Lösung stellt lokalen Standardspeicher für Sicherungsanwendungen als schnelles Sicherungsziel bereit, ohne dass Änderungen nötig sind. StorSimple eignet sich auch zum schnellen Wiederherstellen der jüngsten Sicherungen.
--   Das Cloudtiering ist nahtlos in ein Azure-Cloudspeicherkonto integriert, um den kostengünstigen Azure Storage-Speicher nutzen zu können.
+-   Sein Cloudtiering ist nahtlos in ein Azure-Cloudspeicherkonto integriert, um den kostengünstigen Azure Storage-Speicher nutzen zu können.
 -   Die Lösung stellt automatisch Offsitespeicher für die Notfallwiederherstellung bereit.
 
 
 ## <a name="key-concepts"></a>Wichtige Begriffe
 
-Wie bei anderen Speicherlösungen auch, ist es erfolgsentscheidend, die Speicherleistung, die SLAs, die Änderungsrate und die Anforderungen an das Kapazitätswachstum der Lösung sorgfältig zu bewerten. Der grundlegende Gedanke ist folgender: Aufgrund der Einführung einer Cloudspeicherstufe spielen die Zugriffszeiten und Durchsatzwerte in der Cloud eine wichtige Rolle für die richtige und sinnvolle Funktionsweise von StorSimple.
+Wie bei anderen Speicherlösungen auch ist es für den Erfolg entscheidend, die Speicherleistung, SLAs, Änderungsrate und Anforderungen an das Kapazitätswachstum der Lösung sorgfältig zu bewerten. Der grundlegende Gedanke ist folgender: Aufgrund der Einführung einer Cloudspeicherstufe spielen die Zugriffszeiten und Durchsatzwerte in der Cloud eine wichtige Rolle für die richtige und sinnvolle Funktionsweise von StorSimple.
 
-StorSimple stellt Speicher für Anwendungen bereit, die mit einem klar definierten Satz Arbeitsdaten (heiße Daten) arbeiten. In diesem Modell werden für die Arbeitsdaten lokale Speicherstufen verwendet. Die verbleibenden Daten, mit denen gerade nicht gearbeitet wird (kalte oder archivierte Daten), werden per Tiering in der Cloud gespeichert. Dieses Modell ist in der folgenden Abbildung dargestellt. Die nahezu waagerecht verlaufende grüne Linie repräsentiert die Daten, die auf den lokalen Speicherstufen des StorSimple-Geräts gespeichert sind. Die exponentiell ansteigende rote Linie zeigt die Gesamtmenge von Daten, die auf allen Speicherstufen der StorSimple-Lösung gespeichert sind. Der Abstand zwischen der grünen und der roten Linie stellt die Gesamtmenge der in der Cloud gespeicherten Daten dar.
+StorSimple stellt Speicher für Anwendungen bereit, die mit einem klar definierten Satz Arbeitsdaten (heiße Daten) arbeiten. In diesem Modell werden für die Arbeitsdaten lokale Speicherstufen verwendet. Die verbleibenden Daten, mit denen gerade nicht gearbeitet wird („kalte“ oder archivierte Daten), werden per Tiering in der Cloud gespeichert. Dieses Modell ist in der folgenden Abbildung dargestellt. Die nahezu waagerecht verlaufende grüne Linie repräsentiert die Daten, die auf den lokalen Speicherstufen des StorSimple-Geräts gespeichert sind. Die exponentiell ansteigende rote Linie zeigt die Gesamtmenge von Daten, die auf allen Speicherstufen der StorSimple-Lösung gespeichert sind. Der Abstand zwischen der grünen und der roten Linie stellt die Gesamtmenge der in der Cloud gespeicherten Daten dar.
 
 **StorSimple-Tiering**
 ![Diagramm zu StorSimple-Tiering](./media/storsimple-configure-backup-target-using-veeam/image1.jpg)
 
 Dank dieser Architektur eignet sich StorSimple ideal als Sicherungsziel. Sie können StorSimple für folgende Zwecke verwenden:
 
--   Ausführen der häufigsten Wiederherstellungen aus dem lokalen Arbeitsdatensatz.
+-   Ausführen der häufigsten Wiederherstellungen aus dem lokalen Arbeitssatz von Daten.
 -   Verwenden der Cloud zur externen Notfallwiederherstellung und für ältere Daten, die seltener wiederhergestellt werden müssen.
 
 ## <a name="storsimple-benefits"></a>Vorteile von StorSimple
 
 StorSimple bietet eine lokale Lösung, die nahtlos in Microsoft Azure integriert ist, und profitiert vom reibungslosen Zugriff auf lokalen und cloudbasierten Speicher.
 
-StorSimple nutzt ein automatisches Tiering zwischen dem lokalen Gerät, das SSD-Speicher (Solid-State Drive) und SAS-Speicher (Serial-Attached SCSI) umfasst, und Azure Storage. Durch das automatische Tiering verbleiben Daten, auf die häufig zugegriffen wird, lokal auf den SSD- und SAS-Stufen. Selten genutzte Daten werden in Azure Storage verschoben.
+StorSimple nutzt ein automatisches Tiering zwischen dem lokalen Gerät, das mit SSD-Speicher (Solid-State Drive) und SAS-Speicher (Serial-Attached SCSI) arbeitet, und Azure Storage. Durch das automatische Tiering verbleiben Daten, auf die häufig zugegriffen wird, lokal auf den SSD- und SAS-Stufen. Selten genutzte Daten werden in Azure Storage verschoben.
 
 StorSimple bietet folgende Vorteile:
 
@@ -84,7 +84,7 @@ Obwohl StorSimple zwei wichtige Bereitstellungsszenarien (primäres und sekundä
 Weitere Informationen zu StorSimple finden Sie unter [StorSimple 8000-Serie: eine Hybridcloud-Speicherlösung](storsimple-overview.md). Lesen Sie auch die [technischen Spezifikationen der StorSimple 8000-Serie](storsimple-technical-specifications-and-compliance.md).
 
 > [!IMPORTANT]
-> Das Verwenden eines StorSimple-Geräts als Sicherungsziel wird nur für die Versionen StorSimple 8000 Update 3 und höher unterstützt.
+> Das Verwenden eines StorSimple-Geräts als Sicherungsziel wird nur für die Version StorSimple 8000 Update 3 und höher unterstützt.
 
 ## <a name="architecture-overview"></a>Übersicht über die Architektur
 
@@ -104,7 +104,7 @@ Die folgenden Tabellen enthalten Informationen zu verschiedenen Gerätemodellen 
 | Sicherungsszenario  | Lokale Speicherkapazität  | Cloudspeicherkapazität  |
 |---|---|---|
 | Primäre Sicherung  | Aktuelle Sicherungen im lokalen Speicher für eine schnelle Wiederherstellung zum Erfüllen der RPO-Vorgabe (Recovery Point Objective) | Sicherungsverlauf (RPO) passt in Cloudkapazität |
-| Sekundäre Sicherung | Sekundäre Kopie der Sicherungsdaten kann in Cloudkapazität gespeichert werden  | N/V  |
+| Sekundäre Sicherung | Sekundäre Kopie der Sicherungsdaten kann in Cloudkapazität gespeichert werden  | –  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>StorSimple als primäres Sicherungsziel
 
@@ -142,7 +142,7 @@ Es ist wichtig, das Hochleistungsvolume entsprechend zu bemessen, um die Kapazit
 2.  Der Sicherungsserver schreibt Daten in den Hochleistungsspeicher.
 3.  Der Sicherungsserver aktualisiert die Katalogdatenbank und schließt dann den Sicherungsauftrag ab.
 4.  Der Sicherungsserver kopiert Sicherungen basierend auf einer Aufbewahrungsrichtlinie nach StorSimple.
-5.  Ein Momentaufnahmenskript löst den StorSimple Cloud Snapshot Manager aus (starten oder löschen).
+5.  Ein Momentaufnahmenskript löst die Verwaltung von StorSimple-Cloudmomentaufnahmen aus (starten oder löschen).
 6.  Der Sicherungsserver löscht die abgelaufenen Sicherungen basierend auf einer Aufbewahrungsrichtlinie.
 
 ### <a name="secondary-target-restore-logical-steps"></a>Logische Schritte bei der Wiederherstellung des Sekundärziels
@@ -180,7 +180,7 @@ Bewährte Methoden für die Veeam-Installation finden Sie unter [Veeam Backup & 
 
 ## <a name="set-up-the-solution"></a>Einrichten der Lösung
 
-In diesem Abschnitt zeigen wir Ihnen einige Konfigurationsbeispiele. Die folgenden Beispiele und Empfehlungen veranschaulichen die einfachste und grundlegendste Implementierung. Diese Implementierung ist unter Umständen nicht exakt für Ihre spezifischen Sicherungsanforderungen geeignet.
+In diesem Abschnitt zeigen wir Ihnen einige Konfigurationsbeispiele. Die folgenden Beispiele und Empfehlungen veranschaulichen die einfachste und grundlegendste Implementierung. Diese Implementierung eignet sich möglicherweise nicht direkt für Ihre spezifischen Sicherungsanforderungen.
 
 ### <a name="set-up-storsimple"></a>Einrichten von StorSimple
 
@@ -380,7 +380,7 @@ In der folgenden Tabelle wird gezeigt, wie Sicherungen auf den lokalen und StorS
 | Sicherungstyp und Aufbewahrung | Konfigurierter Speicher | Größe (TiB) | GFS-Multiplikator | Gesamtkapazität \* (TiB) |
 |---|---|---|---|---|
 | Woche 1 (vollständig und inkrementell) |Lokaler Datenträger (kurzfristig)| 1 | 1 | 1 |
-| StorSimple, Woche 2 - 4 |StorSimple-Datenträger (langfristig) | 1 | 4 | 4 |
+| StorSimple, Woche 2-4 |StorSimple-Datenträger (langfristig) | 1 | 4 | 4 |
 | Monatlich vollständig |StorSimple-Datenträger (langfristig) | 1 | 12 | 12 |
 | Jährlich vollständig |StorSimple-Datenträger (langfristig) | 1 | 1 | 1 |
 |Größenanforderungen für GFS-Volumes |  |  |  | 18*|
@@ -394,9 +394,9 @@ GFS-Rotation mit wöchentlichem, monatlichem und jährlichem Zeitplan
 | Woche | Vollständig | Inkrementell, Tag 1 | Inkrementell, Tag 2 | Inkrementell, Tag 3 | Inkrementell, Tag 4 | Inkrementell, Tag 5 |
 |---|---|---|---|---|---|---|
 | Woche 1 | Lokales RAID-Volume  | Lokales RAID-Volume | Lokales RAID-Volume | Lokales RAID-Volume | Lokales RAID-Volume | Lokales RAID-Volume |
-| Woche 2 | StorSimple, Woche 2 - 4 |   |   |   |   |   |
-| Woche 3 | StorSimple, Woche 2 - 4 |   |   |   |   |   |
-| Woche 4 | StorSimple, Woche 2 - 4 |   |   |   |   |   |
+| Woche 2 | StorSimple, Woche 2-4 |   |   |   |   |   |
+| Woche 3 | StorSimple, Woche 2-4 |   |   |   |   |   |
+| Woche 4 | StorSimple, Woche 2-4 |   |   |   |   |   |
 | Monatlich | StorSimple monatlich |   |   |   |   |   |
 | Jährlich | StorSimple jährlich  |   |   |   |   |   |   |
 
@@ -466,7 +466,7 @@ Der folgende Abschnitt zeigt, wie Sie ein kurzes Skript schreiben, um StorSimple
 
 ### <a name="to-start-or-delete-a-cloud-snapshot"></a>So starten oder löschen Sie eine Cloudmomentaufnahme
 
-1. [Installieren Sie Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azureps-cmdlets-docs/).
+1. [Installieren Sie Azure PowerShell](/powershell/azure/overview).
 2. [Laden Sie Veröffentlichungseinstellungen und Abonnementinformationen herunter, und importieren Sie sie](https://msdn.microsoft.com/library/dn385850.aspx).
 3. Rufen Sie im klassischen Azure-Portal den Ressourcennamen und [Registrierungsschlüssel für Ihren StorSimple Manager-Dienst](storsimple-deployment-walkthrough-u2.md#step-2-get-the-service-registration-key) ab.
 4. Führen Sie auf dem Server, auf dem das Skript ausgeführt wird, PowerShell als Administrator aus. Geben Sie folgenden Befehl ein:
@@ -535,7 +535,7 @@ Ein Notfall kann durch eine Vielzahl von Faktoren verursacht werden. In der folg
 
 | Szenario | Auswirkung | Wiederherstellung | Hinweise |
 |---|---|---|---|
-| Ausfall eines StorSimple-Geräts | Sicherungs- und Wiederherstellungsvorgänge werden unterbrochen. | Ersetzen Sie das ausgefallene Gerät, und führen Sie die [Schritte für StorSimple-Failover und -Notfallwiederherstellung](storsimple-device-failover-disaster-recovery.md) durch. | Wenn nach der Wiederherstellung des Geräts eine Datenwiederherstellung erforderlich ist, werden die vollständigen Arbeitsdatensätze aus der Cloud auf das neue Gerät abgerufen. Alle Vorgänge erfolgen mit der Geschwindigkeit der Cloud. Dieses erneute Scannen von Index und Katalog kann dazu führen, dass alle Sicherungssätze gescannt und aus der Cloudspeicherstufe in die lokale Speicherstufe des Geräts übertragen werden. Dies kann ein sehr zeitaufwändiger Prozess sein. |
+| Ausfall eines StorSimple-Geräts | Sicherungs- und Wiederherstellungsvorgänge werden unterbrochen. | Ersetzen Sie das ausgefallene Gerät, und führen Sie die [Schritte für StorSimple-Failover und -Notfallwiederherstellung](storsimple-device-failover-disaster-recovery.md) durch. | Wenn nach der Wiederherstellung des Geräts eine Datenwiederherstellung erforderlich ist, werden die vollständigen Arbeitssätze mit Daten aus der Cloud auf das neue Gerät abgerufen. Alle Vorgänge erfolgen mit der Geschwindigkeit der Cloud. Dieses erneute Scannen von Index und Katalog kann dazu führen, dass alle Sicherungssätze gescannt und aus der Cloudspeicherstufe in die lokale Speicherstufe des Geräts übertragen werden. Dies kann ein sehr zeitaufwändiger Prozess sein. |
 | Ausfall des Veeam-Servers | Sicherungs- und Wiederherstellungsvorgänge werden unterbrochen. | Erstellen Sie den Sicherungsserver neu, und führen Sie eine Datenbankwiederherstellung durch, wie im [Veeam Help Center (Technical Documentation)](https://www.veeam.com/documentation-guides-datasheets.html) (Veeam Help Center (Technische Dokumentation)) beschrieben.  | Sie können den Veeam-Server am Notfallwiederherstellungsstandort neu erstellen oder wiederherstellen. Stellen Sie die Datenbank auf den jüngsten Zeitpunkt wieder her. Wenn die wiederhergestellte Veeam-Datenbank nicht mit Ihren jüngsten Sicherungsaufträgen synchron ist, ist eine Indizierung und Katalogisierung erforderlich. Das erneute Scannen von Index und Katalog kann dazu führen, dass alle Sicherungssätze gescannt und aus der Cloudspeicherstufe in die lokale Speicherstufe des Geräts übertragen werden. Damit wird diese Aufgabe noch zeitaufwendiger. |
 | Standortausfall, der zum Verlust des Sicherungsservers und von StorSimple führt | Sicherungs- und Wiederherstellungsvorgänge werden unterbrochen. | Stellen Sie zuerst StorSimple und dann Veeam wieder her. | Stellen Sie zuerst StorSimple und dann Veeam wieder her. Wenn nach der Wiederherstellung des Geräts eine Datenwiederherstellung erforderlich ist, werden die vollständigen Arbeitsdatensätze aus der Cloud auf das neue Gerät abgerufen. Alle Vorgänge erfolgen mit der Geschwindigkeit der Cloud. |
 

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
-ms.openlocfilehash: 225896e724717a00057be4c708ce485c8b785d45
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 4e0a0a711ffb0b474606863187acaab4474c3459
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -28,7 +28,7 @@ Mit den PowerShell-APIs für **Aufträge für die elastische Datenbank** (Vorsch
 ## <a name="prerequisites"></a>Voraussetzungen
 * Ein Azure-Abonnement. Eine kostenlose Testversion finden Sie unter [Einen Monat kostenlos testen](https://azure.microsoft.com/pricing/free-trial/).
 * Eine Reihe von Datenbanken, die mit den Tools für die elastische Datenbank erstellt wurden. Weitere Informationen finden Sie unter [Erste Schritte mit Tools für elastische Datenbanken](sql-database-elastic-scale-get-started.md).
-* Azure PowerShell. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
+* Azure PowerShell. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
 * PowerShell-Paket **Auftrag für die elastische Datenbank**. Weitere Informationen finden Sie unter [Installieren von Aufträgen für die elastische Datenbank](sql-database-elastic-jobs-service-installation.md).
 
 ### <a name="select-your-azure-subscription"></a>Auswählen des Azure-Abonnements
@@ -216,7 +216,7 @@ Die bewährten Sicherheitsverfahren bei Aufträgen für die elastische Datenbank
 * Die Anmeldeinformationen sollten immer nur mit den für die Ausführung von Auftragsaufgaben erforderlichen Mindestberechtigungen ausgestattet sein.  Weitere Informationen finden Sie im MSDN-Artikel [Autorisierung und Berechtigungen in SQL Server](https://msdn.microsoft.com/library/bb669084.aspx) .
 
 ### <a name="to-create-an-encrypted-credential-for-job-execution-across-databases"></a>So erstellen Sie verschlüsselte Anmeldeinformationen für die übergreifende Ausführung von Aufträgen für Datenbanken
-Bei der Erstellung neuer verschlüsselter Anmeldeinformationen fordert das Cmdlet [**Get-Credential**](https://technet.microsoft.com/library/hh849815.aspx) zur Eingabe von Benutzername und Kennwort auf, die an das Cmdlet [**New-AzureSqlJobCredential**](https://msdn.microsoft.com/library/mt346063.aspx) übergeben werden können.
+Bei der Erstellung neuer verschlüsselter Anmeldeinformationen fordert das Cmdlet [**Get-Credential**](https://technet.microsoft.com/library/hh849815.aspx) zur Eingabe von Benutzername und Kennwort auf, die an das Cmdlet [**New-AzureSqlJobCredential**](/powershell/module/elasticdatabasejobs/new-azuresqljobcredential?view=azureelasticdbjobsps-0.8.33) übergeben werden können.
 
     $credentialName = "{Credential Name}"
     $databaseCredential = Get-Credential
@@ -224,7 +224,7 @@ Bei der Erstellung neuer verschlüsselter Anmeldeinformationen fordert das Cmdle
     Write-Output $credential
 
 ### <a name="to-update-credentials"></a>So aktualisieren Sie die Anmeldeinformationen
-Verwenden Sie bei einer Kennwortänderung das Cmdlet [**Set-AzureSqlJobCredential**](https://msdn.microsoft.com/library/mt346062.aspx), und legen Sie den Parameter **CredentialName** fest.
+Verwenden Sie bei einer Kennwortänderung das Cmdlet [**Set-AzureSqlJobCredential**](/powershell/module/elasticdatabasejobs/set-azuresqljobcredential?view=azureelasticdbjobsps-0.8.33), und legen Sie den Parameter **CredentialName** fest.
 
     $credentialName = "{Credential Name}"
     Set-AzureSqlJobCredential -CredentialName $credentialName -Credential $credential 
@@ -245,7 +245,7 @@ Die Datenbank des Shardzuordnungs-Managers muss dann als Datenbankziel festgeleg
 ## <a name="create-a-t-sql-script-for-execution-across-databases"></a>Erstellen eines T-SQL-Skripts für die datenbankübergreifende Ausführung
 Beim Erstellen von T-SQL-Skripts für die Ausführung empfiehlt es sich dringend, sie [idempotent](https://en.wikipedia.org/wiki/Idempotence) und widerstandsfähig gegen Fehler zu gestalten. Aufträge für die elastische Datenbank versuchen bei jedem auftretenden Fehler, die Skriptausführung zu wiederholen, unabhängig von der Klassifikation des Fehlers.
 
-Verwenden Sie das Cmdlet [**New-AzureSqlJobContent**](https://msdn.microsoft.com/library/mt346085.aspx), um ein Skript für die Ausführung zu erstellen und zu speichern, und legen Sie die Parameter **-ContentName** und **-CommandText** fest.
+Verwenden Sie das Cmdlet [**New-AzureSqlJobContent**](/powershell/module/elasticdatabasejobs/new-azuresqljobcontent?view=azureelasticdbjobsps-0.8.33), um ein Skript für die Ausführung zu erstellen und zu speichern, und legen Sie die Parameter **-ContentName** und **-CommandText** fest.
 
     $scriptName = "Create a TestTable"
 
@@ -328,7 +328,7 @@ Aktualisieren Sie die folgende Variable, sodass sie den gewünschten Auftragsnam
     Write-Output $jobExecution
 
 ## <a name="to-retrieve-the-state-of-a-single-job-execution"></a>So rufen Sie den Ausführungsstatus eines einzelnen Auftrags ab
-Verwenden Sie das Cmdlet [**Get-AzureSqlJobExecution**](https://msdn.microsoft.com/library/mt346058.aspx), und legen Sie den Parameter **JobExecutionId** fest, um den Status der Auftragsausführung anzuzeigen.
+Verwenden Sie das Cmdlet [**Get-AzureSqlJobExecution**](/powershell/module/elasticdatabasejobs/new-azuresqljobexecution?view=azureelasticdbjobsps-0.8.33), und legen Sie den Parameter **JobExecutionId** fest, um den Status der Auftragsausführung anzuzeigen.
 
     $jobExecutionId = "{Job Execution Id}"
     $jobExecution = Get-AzureSqlJobExecution -JobExecutionId $jobExecutionId
@@ -341,7 +341,7 @@ Verwenden Sie das gleiche Cmdlet **Get-AzureSqlJobExecution** mit dem Parameter 
     Write-Output $jobExecutions 
 
 ## <a name="to-view-the-state-across-multiple-job-executions"></a>So zeigen Sie den Status für mehrere Auftragsausführungen an
-Das Cmdlet [**Get-AzureSqlJobExecution**](https://msdn.microsoft.com/library/mt346058.aspx) weist mehrere optionale Parameter auf, die zum Anzeigen der Ausführung mehrerer Aufträge verwendet werden können, gefiltert anhand der angegebenen Parameter. Die folgenden Beispiele zeigen einige der möglichen Verwendungsweisen von „Get-AzureSqlJobExecution“:
+Das Cmdlet [**Get-AzureSqlJobExecution**](/powershell/module/elasticdatabasejobs/new-azuresqljobexecution?view=azureelasticdbjobsps-0.8.33) weist mehrere optionale Parameter auf, die zum Anzeigen der Ausführung mehrerer Aufträge verwendet werden können, gefiltert anhand der angegebenen Parameter. Die folgenden Beispiele zeigen einige der möglichen Verwendungsweisen von „Get-AzureSqlJobExecution“:
 
 Abrufen aller aktiven Auftragsausführungen auf der obersten Ebene:
 
@@ -464,7 +464,7 @@ Der Abbruch kann von Aufträgen für die elastische Datenbank auf zwei verschied
 
 Wenn für einen übergeordneten Auftrag ein Auftragsabbruch angefordert wird, wird die Abbruchanforderung für den übergeordneten Auftrag und für alle seine untergeordneten Aufträge berücksichtigt.
 
-Verwenden Sie zum Senden von Abbruchanforderungen das Cmdlet [**Stop-AzureSqlJobExecution**](https://msdn.microsoft.com/library/mt346053.aspx), und legen Sie den Parameter **JobExecutionId** fest.
+Verwenden Sie zum Senden von Abbruchanforderungen das Cmdlet [**Stop-AzureSqlJobExecution**](/powershell/module/elasticdatabasejobs/stop-azuresqljobexecution?view=azureelasticdbjobsps-0.8.33), und legen Sie den Parameter **JobExecutionId** fest.
 
     $jobExecutionId = "{Job Execution Id}"
     Stop-AzureSqlJobExecution -JobExecutionId $jobExecutionId
@@ -472,9 +472,9 @@ Verwenden Sie zum Senden von Abbruchanforderungen das Cmdlet [**Stop-AzureSqlJob
 ## <a name="to-delete-a-job-and-job-history-asynchronously"></a>So löschen Sie einen Auftrag und einen Auftragsverlauf asynchron
 Aufträge für die elastische Datenbank unterstützen die asynchrone Löschung von Aufträgen. Ein Auftrag kann für die Löschung markiert werden, und das System löscht den Auftrag und seinen gesamten Verlauf, nachdem die gesamte Ausführung von Unteraufträgen für den Auftrag abgeschlossen wurde. Das System bricht aktiv ausgeführte Aufträge nicht automatisch ab.  
 
-Rufen Sie [**Stop-AzureSqlJobExecution**](https://msdn.microsoft.com/library/mt346053.aspx) auf, um die Ausführung aktiver Aufträge abzubrechen.
+Rufen Sie [**Stop-AzureSqlJobExecution**](/powershell/module/elasticdatabasejobs/stop-azuresqljobexecution?view=azureelasticdbjobsps-0.8.33) auf, um die Ausführung aktiver Aufträge abzubrechen.
 
-Verwenden Sie zum Auslösen der Löschung von Aufträgen das Cmdlet [**Remove-AzureSqlJob**](https://msdn.microsoft.com/library/mt346083.aspx), und legen Sie den Parameter **JobName** fest.
+Verwenden Sie zum Auslösen der Löschung von Aufträgen das Cmdlet [**Remove-AzureSqlJob**](/powershell/module/elasticdatabasejobs/remove-azuresqljob?view=azureelasticdbjobsps-0.8.33), und legen Sie den Parameter **JobName** fest.
 
     $jobName = "{Job Name}"
     Remove-AzureSqlJob -JobName $jobName
@@ -489,7 +489,7 @@ Legen Sie die folgenden Variablen fest, um die gewünschten Datenbankinformation
     New-AzureSqlJobDatabaseTarget -DatabaseName $databaseName -ServerName $databaseServerName 
 
 ## <a name="to-create-a-custom-database-collection-target"></a>So erstellen Sie ein benutzerdefiniertes Datenbanksammlungsziel
-Definieren Sie mithilfe des Cmdlets [**New-AzureSqlJobTarget**](https://msdn.microsoft.com/library/mt346077.aspx) ein benutzerdefiniertes Datenbanksammlungsziel, um die übergreifende Ausführung für mehrere definierte Datenbankziele zu ermöglichen. Nach dem Erstellen einer Datenbankgruppe können Datenbanken dem benutzerdefinierten Sammlungsziel zugeordnet werden.
+Definieren Sie mithilfe des Cmdlets [**New-AzureSqlJobTarget**](/powershell/module/elasticdatabasejobs/new-azuresqljobtarget?view=azureelasticdbjobsps-0.8.33) ein benutzerdefiniertes Datenbanksammlungsziel, um die übergreifende Ausführung für mehrere definierte Datenbankziele zu ermöglichen. Nach dem Erstellen einer Datenbankgruppe können Datenbanken dem benutzerdefinierten Sammlungsziel zugeordnet werden.
 
 Legen Sie die folgenden Variablen fest, um die gewünschte Konfiguration für das benutzerdefinierte Sammlungsziel anzugeben:
 
@@ -497,7 +497,7 @@ Legen Sie die folgenden Variablen fest, um die gewünschte Konfiguration für da
     New-AzureSqlJobTarget -CustomCollectionName $customCollectionName 
 
 ### <a name="to-add-databases-to-a-custom-database-collection-target"></a>So fügen Sie einem benutzerdefinierten Datenbanksammlungsziel Datenbanken hinzu
-Verwenden Sie das Cmdlet [**Add-AzureSqlJobChildTarget**](https://msdn.microsoft.comlibrary/mt346064.aspx), um eine Datenbank zu einer bestimmten benutzerdefinierten Sammlung hinzuzufügen.
+Verwenden Sie das Cmdlet [**Add-AzureSqlJobChildTarget**](/powershell/module/elasticdatabasejobs/add-azuresqljobchildtarget?view=azureelasticdbjobsps-0.8.33), um eine Datenbank zu einer bestimmten benutzerdefinierten Sammlung hinzuzufügen.
 
     $databaseServerName = "{Database Server Name}"
     $databaseName = "{Database Name}"
@@ -505,7 +505,7 @@ Verwenden Sie das Cmdlet [**Add-AzureSqlJobChildTarget**](https://msdn.microsoft
     Add-AzureSqlJobChildTarget -CustomCollectionName $customCollectionName -DatabaseName $databaseName -ServerName $databaseServerName 
 
 #### <a name="review-the-databases-within-a-custom-database-collection-target"></a>Überprüfen der Datenbanken in einem benutzerdefinierten Datenbanksammlungsziel
-Verwenden Sie das Cmdlet [**Get-AzureSqlJobTarget**](https://msdn.microsoft.com/library/mt346077.aspx), um die untergeordneten Datenbanken in einem benutzerdefinierten Datenbankziel abzurufen. 
+Verwenden Sie das Cmdlet [**Get-AzureSqlJobTarget**](/powershell/module/elasticdatabasejobs/new-azuresqljobtarget?view=azureelasticdbjobsps-0.8.33), um die untergeordneten Datenbanken in einem benutzerdefinierten Datenbankziel abzurufen. 
 
     $customCollectionName = "{Custom Database Collection Name}"
     $target = Get-AzureSqlJobTarget -CustomCollectionName $customCollectionName
@@ -513,7 +513,7 @@ Verwenden Sie das Cmdlet [**Get-AzureSqlJobTarget**](https://msdn.microsoft.com/
     Write-Output $childTargets
 
 ### <a name="create-a-job-to-execute-a-script-across-a-custom-database-collection-target"></a>Erstellen eines Auftrags zum Ausführen eines Skripts für ein benutzerdefiniertes Datenbanksammlungsziel
-Verwenden Sie das Cmdlet [**New-AzureSqlJob**](https://msdn.microsoft.com/library/mt346078.aspx), um einen Auftrag für eine Gruppe von Datenbanken zu erstellen, die durch ein benutzerdefiniertes Datenbanksammlungsziel definiert ist. Aufträge für die elastische Datenbank erweitern den Auftrag in mehrere untergeordnete Aufträge, von denen jeder einer dem benutzerdefinierten Datenbanksammlungsziel zugeordneten Datenbank entspricht, und stellen sicher, dass das Skript für jede der Datenbanken ausgeführt wird. Um Wiederholungsresilienz sicherzustellen, müssen die Skripts idempotent sein.
+Verwenden Sie das Cmdlet [**New-AzureSqlJob**](/powershell/module/elasticdatabasejobs/new-azuresqljob?view=azureelasticdbjobsps-0.8.33), um einen Auftrag für eine Gruppe von Datenbanken zu erstellen, die durch ein benutzerdefiniertes Datenbanksammlungsziel definiert ist. Aufträge für die elastische Datenbank erweitern den Auftrag in mehrere untergeordnete Aufträge, von denen jeder einer dem benutzerdefinierten Datenbanksammlungsziel zugeordneten Datenbank entspricht, und stellen sicher, dass das Skript für jede der Datenbanken ausgeführt wird. Um Wiederholungsresilienz sicherzustellen, müssen die Skripts idempotent sein.
 
     $jobName = "{Job Name}"
     $scriptName = "{Script Name}"
@@ -530,7 +530,7 @@ Die angegebene Zieltabelle wird automatisch erstellt, sofern noch nicht vorhande
 
 Das folgende PowerShell-Skript führt ein Skript aus und sammelt die Ergebnisse in einer angegebenen Tabelle. In dem Skript wird vorausgesetzt, dass ein T-SQL-Skript, das eine einzelne Ergebnismenge ausgibt, sowie ein benutzerdefiniertes Datenbanksammlungsziel erstellt wurde.
 
-Dieses Skript verwendet das Cmdlet [**Get-AzureSqlJobTarget**](https://msdn.microsoft.com/library/mt346077.aspx). Legen Sie die Parameter für Skript, Anmeldeinformationen und Ausführungsziel fest:
+Dieses Skript verwendet das Cmdlet [**Get-AzureSqlJobTarget**](/powershell/module/elasticdatabasejobs/new-azuresqljobtarget?view=azureelasticdbjobsps-0.8.33). Legen Sie die Parameter für Skript, Anmeldeinformationen und Ausführungsziel fest:
 
     $jobName = "{Job Name}"
     $scriptName = "{Script Name}"
@@ -544,7 +544,7 @@ Dieses Skript verwendet das Cmdlet [**Get-AzureSqlJobTarget**](https://msdn.micr
     $target = Get-AzureSqlJobTarget -CustomCollectionName $customCollectionName
 
 ### <a name="to-create-and-start-a-job-for-data-collection-scenarios"></a>So erstellen und starten Sie einen Auftrag für Datensammlungsszenarios
-Dieses Skript verwendet das Cmdlet [**Start-AzureSqlJobExecution**](https://msdn.microsoft.com/library/mt346055.aspx).
+Dieses Skript verwendet das Cmdlet [**Start-AzureSqlJobExecution**](/powershell/module/elasticdatabasejobs/start-azuresqljobexecution?view=azureelasticdbjobsps-0.8.33).
 
     $job = New-AzureSqlJob -JobName $jobName 
     -CredentialName $executionCredentialName 
@@ -560,7 +560,7 @@ Dieses Skript verwendet das Cmdlet [**Start-AzureSqlJobExecution**](https://msdn
     Write-Output $jobExecution
 
 ## <a name="to-schedule-a-job-execution-trigger"></a>So planen Sie einen Auftragsausführungsauslöser
-Das folgende PowerShell-Skript kann zum Erstellen eines wiederkehrenden Zeitplans verwendet werden. In diesem Skript wird zwar ein Minutenintervall verwendet, [**New-AzureSqlJobSchedule**](https://msdn.microsoft.com/library/mt346068.aspx) unterstützt jedoch auch die Parameter „-DayInterval“, „-HourInterval“, „-MonthInterval“ und „-WeekInterval“. Zeitpläne, die nur einmalig ausgeführt werden sollen, können durch Angeben von „-OneTime“ erstellt werden.
+Das folgende PowerShell-Skript kann zum Erstellen eines wiederkehrenden Zeitplans verwendet werden. In diesem Skript wird zwar ein Minutenintervall verwendet, [**New-AzureSqlJobSchedule**](/powershell/module/elasticdatabasejobs/new-azuresqljobschedule?view=azureelasticdbjobsps-0.8.33) unterstützt jedoch auch die Parameter „-DayInterval“, „-HourInterval“, „-MonthInterval“ und „-WeekInterval“. Zeitpläne, die nur einmalig ausgeführt werden sollen, können durch Angeben von „-OneTime“ erstellt werden.
 
 Erstellen Sie einen neuen Zeitplan:
 
@@ -576,7 +576,7 @@ Erstellen Sie einen neuen Zeitplan:
 ### <a name="to-trigger-a-job-executed-on-a-time-schedule"></a>So lösen Sie einen nach Zeitplan ausgeführten Auftrag aus
 Ein Auftragsauslöser kann so definiert werden, dass ein Auftrag gemäß einem Zeitplan ausgeführt wird. Das folgenden PowerShell-Skript kann zum Erstellen eines Auftragsauslösers verwendet werden.
 
-Verwenden Sie [New-AzureSqlJobTrigger](https://msdn.microsoft.com/library/mt346069.aspx) , und legen Sie die folgenden Variablen für den gewünschten Auftrag und Zeitplan fest:
+Verwenden Sie [New-AzureSqlJobTrigger](/powershell/module/elasticdatabasejobs/new-azuresqljobtrigger?view=azureelasticdbjobsps-0.8.33) , und legen Sie die folgenden Variablen für den gewünschten Auftrag und Zeitplan fest:
 
     $jobName = "{Job Name}"
     $scheduleName = "{Schedule Name}"
@@ -586,7 +586,7 @@ Verwenden Sie [New-AzureSqlJobTrigger](https://msdn.microsoft.com/library/mt3460
     Write-Output $jobTrigger
 
 ### <a name="to-remove-a-scheduled-association-to-stop-job-from-executing-on-schedule"></a>So entfernen Sie eine geplante Zuordnung, um die zeitplanbasierte Ausführung eines Auftrags zu beenden
-Um die Fortsetzung der Auftragsausführung durch einen Auftragsauslöser aufzuheben, kann der Auftragsauslöser entfernt werden. Entfernen Sie einen Auftragsauslöser mithilfe des [**Cmdlets Remove-AzureSqlJobTrigger**](https://msdn.microsoft.com/library/mt346070.aspx), um die fortlaufende Ausführung eines Auftrags gemäß einem Zeitplan zu beenden.
+Um die Fortsetzung der Auftragsausführung durch einen Auftragsauslöser aufzuheben, kann der Auftragsauslöser entfernt werden. Entfernen Sie einen Auftragsauslöser mithilfe des [**Cmdlets Remove-AzureSqlJobTrigger**](/powershell/module/elasticdatabasejobs/remove-azuresqljobtrigger?view=azureelasticdbjobsps-0.8.33), um die fortlaufende Ausführung eines Auftrags gemäß einem Zeitplan zu beenden.
 
     $jobName = "{Job Name}"
     $scheduleName = "{Schedule Name}"
@@ -602,14 +602,14 @@ Das folgende PowerShell-Skript kann verwendet werden, um die für einen bestimmt
     Write-Output $jobTriggers
 
 ### <a name="to-retrieve-job-triggers-bound-to-a-job"></a>So rufen Sie an einen Auftrag gebundene Auftragsauslöser ab
-Verwenden Sie [Get-AzureSqlJobTrigger](https://msdn.microsoft.com/library/mt346067.aspx) , um die Zeitpläne für einen registrierten Auftrag abzurufen und anzuzeigen.
+Verwenden Sie [Get-AzureSqlJobTrigger](/powershell/module/elasticdatabasejobs/get-azuresqljobtrigger?view=azureelasticdbjobsps-0.8.33) , um die Zeitpläne für einen registrierten Auftrag abzurufen und anzuzeigen.
 
     $jobName = "{Job Name}"
     $jobTriggers = Get-AzureSqlJobTrigger -JobName $jobName
     Write-Output $jobTriggers
 
 ## <a name="to-create-a-data-tier-application-dacpac-for-execution-across-databases"></a>So erstellen Sie eine Datenschichtanwendung (Data-tier Application, DACPAC) für die datenbankübergreifende Ausführung
-Informationen zur DACPAC-Erstellung finden Sie unter [Datenschichtanwendungen](https://msdn.microsoft.com/library/ee210546.aspx). Verwenden Sie für die DACPAC-Bereitstellung das Cmdlet [New-AzureSqlJobContent](https://msdn.microsoft.com/library/mt346085.aspx). Der Dienst muss Zugriff auf das DACPAC haben. Es empfiehlt sich, ein erstelltes DACPAC nach Azure Storage hochzuladen und eine [Shared Access Signature](../storage/storage-dotnet-shared-access-signature-part-1.md) (SAS) für das DACPAC zu erstellen.
+Informationen zur DACPAC-Erstellung finden Sie unter [Datenschichtanwendungen](https://msdn.microsoft.com/library/ee210546.aspx). Verwenden Sie für die DACPAC-Bereitstellung das Cmdlet [New-AzureSqlJobContent](/powershell/module/elasticdatabasejobs/new-azuresqljobcontent?view=azureelasticdbjobsps-0.8.33). Der Dienst muss Zugriff auf das DACPAC haben. Es empfiehlt sich, ein erstelltes DACPAC nach Azure Storage hochzuladen und eine [Shared Access Signature](../storage/storage-dotnet-shared-access-signature-part-1.md) (SAS) für das DACPAC zu erstellen.
 
     $dacpacUri = "{Uri}"
     $dacpacName = "{Dacpac Name}"
@@ -617,7 +617,7 @@ Informationen zur DACPAC-Erstellung finden Sie unter [Datenschichtanwendungen](h
     Write-Output $dacpac
 
 ### <a name="to-update-a-data-tier-application-dacpac-for-execution-across-databases"></a>So aktualisieren Sie eine Datenschichtanwendung (Data-tier Application, DACPAC) für die datenbankübergreifende Ausführung
-Vorhandene DACPACs, die bei Aufträge für die elastische Datenbank registriert sind, können so aktualisiert werden, dass sie auf neue URIs verweisen. Verwenden Sie das Cmdlet [**Set-AzureSqlJobContentDefinition**](https://msdn.microsoft.com/library/mt346074.aspx), um den DACPAC-URI für ein vorhandendes registriertes DACPAC zu aktualisieren:
+Vorhandene DACPACs, die bei Aufträge für die elastische Datenbank registriert sind, können so aktualisiert werden, dass sie auf neue URIs verweisen. Verwenden Sie das Cmdlet [**Set-AzureSqlJobContentDefinition**](/powershell/module/elasticdatabasejobs/set-azuresqljobcontentdefinition?view=azureelasticdbjobsps-0.8.33), um den DACPAC-URI für ein vorhandendes registriertes DACPAC zu aktualisieren:
 
     $dacpacName = "{Dacpac Name}"
     $newDacpacUri = "{Uri}"
