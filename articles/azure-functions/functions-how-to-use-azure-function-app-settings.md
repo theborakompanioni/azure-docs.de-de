@@ -12,127 +12,125 @@ ms.workload: na
 ms.tgt_pltfrm: dotnet
 ms.devlang: na
 ms.topic: article
-ms.date: 10/28/2016
-ms.author: rachelap
+ms.date: 04/23/2017
+ms.author: rachelap, glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: b7334f68e4526b716210b28388afcd0ee6e48940
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: e6f5798b260c4923452dcc96c18d4839f5c34bfc
+ms.lasthandoff: 04/25/2017
 
 
 ---
-# <a name="how-to-configure-azure-function-app-settings"></a>Konfigurieren von Azure Funktionen-App-Einstellungen
-## <a name="settings-overview"></a>Übersicht über die Einstellungen
-Sie können Azure Funktionen-App-Einstellungen verwalten, indem Sie auf den Link **Funktionen-App-Einstellungen** unten links im Portal klicken. Azure-Funktionen-App-Einstellungen gelten für alle Funktionen in der App.
+# <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Verwalten einer Funktionen-App im Azure-Portal 
 
-1. Wechseln Sie zum [Azure-Portal](http://portal.azure.com) , und melden Sie sich mit Ihrem Azure-Konto an.
-2. Klicken Sie unten links im Portal auf **Funktionen-App-Einstellungen**. Dadurch werden mehrere Optionen zur Auswahl angezeigt. 
+In Azure Functions wird mit einer Funktionen-App der Ausführungskontext für die einzelnen Funktionen angegeben. Funktionen-App-Verhalten gelten für alle von einer bestimmten Funktionen-App gehosteten Funktionen. In diesem Thema wird beschrieben, wie Sie Ihre Funktionen-Apps im Azure-Portal konfigurieren und verwalten.
 
-![Funktionen-App-Einstellungen für Azure](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
+Wechseln Sie zunächst zum [Azure-Portal](http://portal.azure.com), und melden Sie sich bei Ihrem Azure-Konto an. Geben Sie auf der Suchleiste oben im Portal den Namen der Funktionen-App ein, und wählen Sie sie in der Liste aus. Nach dem Auswählen der Funktionen-App wird die folgende Seite angezeigt:
 
-## <a name="develop"></a>Entwickeln
-### <a name="app-service-editor"></a>App Service-Editor
-Der App Service-Editor ist ein leistungsstarker Editor im Portal, mit dem Sie JSON-Konfigurationsdateien und Codedateien gleichermaßen bearbeiten können. Bei Auswahl dieser Option wird eine separate Browserregisterkarte mit einem einfachen Editor gestartet. Sie können damit in GitHub arbeiten, Code ausführen und debuggen und Einstellungen von Funktionen-Apps ändern.
+![„Übersicht“ für Funktionen-Apps im Azure-Portal](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
 
-![Der App Service-Editor](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-appservice-editor.png)
+## <a name="manage-app-service-settings"></a>Registerkarte „Einstellungen“ für Funktionen-Apps
 
-### <a name="application-settings"></a>Anwendungseinstellungen
-Sie können Umgebungsvariablen, Framework-Versionen, Remotedebugging, App-Einstellungen, Verbindungszeichenfolgen, Standarddokumente usw. verwalten. Diese Einstellungen sind spezifisch für Ihre Funktionen-App. 
+![Übersicht für Funktionen-Apps im Azure-Portal.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
 
-Klicken Sie zum Konfigurieren von App-Einstellungen auf den Link **App-Einstellungen konfigurieren**. 
+Auf der Registerkarte **Einstellungen** können Sie die von Ihrer Funktionen-App verwendete Functions-Laufzeitversion aktualisieren. Hier verwalten Sie auch die Hostschlüssel, die zum Beschränken des HTTP-Zugriffs auf alle von der Funktionen-App gehosteten Funktionen verwendet werden.
 
-![App-Einstellungen konfigurieren](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-settings.png)
+Functions unterstützt verbrauchsbasierte sowie App Service-Hostingpläne. Weitere Informationen finden Sie unter [Auswählen des richtigen Serviceplans für Azure Functions](functions-scale.md). Zur besseren Vorhersagbarkeit im verbrauchsbasierten Plan können Sie in Functions die Plattformnutzung einschränken, indem Sie ein tägliches Nutzungskontingent in GB-Sekunden festlegen. Bei Erreichen des täglichen Nutzungskontingents wird die Funktionen-App beendet. Eine Funktionen-App, die aufgrund des Erreichens des Tageskontingents beendet wurde, kann in demselben Kontext wie beim Einrichten des täglichen Kontingents wieder aktiviert werden. Ausführliche Informationen zur Abrechnung finden Sie auf der [Preisseite für Azure Functions](http://azure.microsoft.com/pricing/details/functions/).   
 
-### <a name="dev-console"></a>Entwicklerkonsole
-Sie können DOS-ähnliche Befehle mit der Konsole für Azure-Funktionen im Portal ausführen. Häufig verwendete Befehle sind z.B. Erstellen von Verzeichnissen und Dateien, Navigation sowie das Ausführen von Batchdateien und -skripts. 
+## <a name="platform-features-tab"></a>Registerkarte „Plattformfeatures“
+
+![Registerkarte „Plattformfeatures“ für Funktionen-Apps.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-features-tab.png)
+
+Funktionen-Apps werden auf der Azure App Service-Plattform ausgeführt und verwaltet. So haben die Funktionen-Apps Zugriff auf die meisten Features der Azure-Kernplattform für das Webhosting. Auf der Registerkarte **Plattformfeatures** greifen Sie auf die vielen Features der App Service-Plattform zu, die Sie in Ihren Funktionen-Apps verwenden können. 
 
 > [!NOTE]
-> Sie können Skripts hochladen, aber Sie müssen zuerst einen FTP-Client unter **Erweiterte Einstellungen** in Azure-Funktionen konfigurieren.
-> 
-> 
+> Nicht alle App Service-Features sind verfügbar, wenn eine Funktionen-App nach dem verbrauchsbasierten Hostingplan ausgeführt wird.
 
-Um die Konsole im Portal zu öffnen, klicken Sie auf **Entwicklerkonsole öffnen**.
+Im weiteren Verlauf dieses Themas werden schwerpunktmäßig folgende App Service-Features im Azure-Portal behandelt, die für Functions nützlich sind:
 
-![Konfigurieren der Arbeitsspeichergröße für die Funktionen-App](./media/functions-how-to-use-azure-function-app-settings/configure-function-console.png)
++ [App Service-Editor](#editor)
++ [Anwendungseinstellungen](#settings) 
++ [Console](#console)
++ [Erweiterte Tools (Kudu)](#kudu)
++ [Bereitstellungsoptionen](#deployment)
++ [CORS](#cors)
++ [Authentifizierung](#auth)
++ [API-Definition](#swagger)
 
-> [!NOTE]
-> Das Arbeiten in einer Konsole mit ASCII-Grafik macht Eindruck.
-> 
-> 
+Weitere Informationen zum Verwenden von App Service-Einstellungen finden Sie unter [Konfigurieren von Web-Apps in Azure App Service](../app-service-web/web-sites-configure.md).
 
-## <a name="deploy"></a>Bereitstellen
-### <a name="continuous-integration"></a>Continuous Integration
-Sie können die Funktionen-App in GitHub, Visual Studio Team Services und anderen Diensten integrieren.
+### <a name="editor"></a>App Service-Editor
 
-1. Klicken Sie auf den Link **Continuous Integration konfigurieren**. Daraufhin wird der Bereich **Bereitstellungen** mit Optionen angezeigt.
-2. Klicken Sie auf **Setup** im Bereich **Bereitstellungen**, um den Bereich **Bereitstellungsquelle** mit einer Option anzuzeigen: Klicken Sie auf **Quelle auswählen**, um verfügbare Quellen anzuzeigen. 
-3. Wählen Sie eine der verfügbaren Bereitstellungsquellen aus, indem Sie darauf klicken: Visual Studio Team Services, OneDrive, lokales Git-Repository, GitHub, Bitbucket, DropBox oder ein externes Repository. 
-   
-    ![Konfigurieren von CI für die Funktionen-App](./media/functions-how-to-use-azure-function-app-settings/configure-function-ci.png)
-4. Geben Sie Ihre Anmeldeinformationen und weitere Informationen ein, wenn Sie von den verschiedenen Bereitstellungsquellen dazu aufgefordert werden. Die Anmeldeinformationen und weiteren angeforderten Informationen können sich abhängig von der ausgewählten Quelle geringfügig unterscheiden. 
+| | |
+|-|-|
+| ![App Service-Editor für Funktionen-Apps.](./media/functions-how-to-use-azure-function-app-settings/function-app-appsvc-editor.png)  | Der App Service-Editor ist ein leistungsstarker Editor im Portal, mit dem Sie JSON-Konfigurationsdateien und Codedateien gleichermaßen bearbeiten können. Bei Auswahl dieser Option wird eine separate Browserregisterkarte mit einem einfachen Editor gestartet. Sie können damit im Git-Repository arbeiten, Code ausführen und debuggen und Einstellungen von Funktionen-Apps ändern. Im Vergleich zum Standardblatt für Funktionen-Apps bietet dieser Editor eine erweiterte Entwicklungsumgebung für Ihre Funktionen.    |
 
-Sobald Sie CI eingerichtet haben, wird verbundener Code, den Sie per Push an die konfigurierte Quelle senden, automatisch in dieser Funktionen-App bereitgestellt.
+![App Service-Editor](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-appservice-editor.png)
 
-### <a name="kudu"></a>Kudu
-Mit Kudu können Sie auf erweiterte Verwaltungsfunktionen einer Funktionen-App zugreifen.
+### <a name="settings"></a>Anwendungseinstellungen
 
-Klicken Sie zum Öffnen von Kudu auf **Zu Kudu wechseln**. Mit dieser Aktion wird ein neues Browserfenster mit dem Kudu-Web-Administrator geöffnet.
+| | |
+|-|-|
+| ![Anwendungseinstellungen für Funktionen-Apps.](./media/functions-how-to-use-azure-function-app-settings/function-app-application-settings.png) | Auf dem App Service-Blatt **Anwendungseinstellungen** können Sie Frameworkversionen, das Remotedebuggen, App-Einstellungen und Verbindungszeichenfolgen konfigurieren und verwalten. Wenn Sie Ihre Funktionen-App in andere Dienste von Azure oder Drittanbietern integrieren, können Sie hier die entsprechenden Einstellungen ändern. |
 
-> [!NOTE]
-> Sie können **Kudu** auch starten, indem Sie „scm“ in der URL Ihrer Funktion einfügen, wie im Folgenden gezeigt: ```https://<YourFunctionName>.scm.azurewebsites.net/```
-> 
-> 
+![Konfigurieren von Anwendungseinstellungen](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-settings.png)
 
-Auf der Kudu-Website können Sie Systeminformationen, App-Einstellungen, Umgebungsvariablen, HTTP-Header, Servervariablen und vieles mehr anzeigen und verwalten.
+### <a name="console"></a>Konsole
+
+| | |
+|-|-|
+| ![Konsole für Funktionen-Apps im Azure-Portal](./media/functions-how-to-use-azure-function-app-settings/function-app-console.png) | Die Konsole im Portal ist das ideale Entwicklungstool, wenn Sie Funktionen-Apps über die Befehlszeile konfigurieren möchten. Häufig verwendete Befehle sind z.B. Erstellen von Verzeichnissen und Dateien, Navigation sowie das Ausführen von Batchdateien und -skripts. |
+
+![Konsole für Funktionen-Apps](./media/functions-how-to-use-azure-function-app-settings/configure-function-console.png)
+
+### <a name="kudu"></a>Erweiterte Tools (Kudu)
+
+| | |
+|-|-|
+| ![Kudu für Funktionen-Apps im Azure-Portal](./media/functions-how-to-use-azure-function-app-settings/function-app-advanced-tools.png) | Die erweiterten Tools für App Service (auch bekannt als Kudu) ermöglichen den Zugriff auf erweiterte Verwaltungsfunktionen der Funktionen-App. Über Kudu können Sie Systeminformationen, App-Einstellungen, Umgebungsvariablen, Websiteerweiterungen, HTTP-Header und Servervariablen verwalten. Sie können **Kudu** auch starten, indem Sie zum SCM-Endpunkt für die Funktionen-App navigieren, z.B. zu `https://<myfunctionapp>.scm.azurewebsites.net/`. |
 
 ![Konfigurieren von Kudu](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-kudu.png)
 
-## <a name="manage-app-service-settings"></a>Verwalten: App Service-Einstellungen
-Verwalten Sie Ihre Funktionen-App genau wie jede andere App Service-Instanz. Mit dieser Option erhalten Sie Zugriff auf die bereits beschriebenen sowie einige weitere Einstellungen.  
 
-Um die erweiterten Einstellungen zu öffnen, klicken Sie auf den Link **Erweiterte Einstellungen**. 
+### <a name="a-namedeploymentdeployment-options"></a><a name="deployment">Bereitstellungsoptionen
 
-![App Service-Einstellungen konfigurieren](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-appservice-settings.png)
+| | |
+|-|-|
+| ![Bereitstellungsoptionen für Funktionen-Apps im Azure-Portal](./media/functions-how-to-use-azure-function-app-settings/function-app-deployment-source.png) | Mit Functions können Sie den Funktionscode auf dem lokalen Computer entwickeln. Anschließend können Sie das lokale Funktionen-App-Projekt in Azure hochladen. Neben dem herkömmlichen FTP-Upload können Sie Ihre Funktionen-App in Functions mit gängigen Continuous Integration-Lösungen wie GitHub, VSTS, Dropbox, Bitbucket usw. bereitstellen. Weitere Informationen finden Sie unter [Continuous Deployment für Azure Functions](functions-continuous-deployment.md). Zum manuellen Hochladen über FTP oder das lokale Git müssen Sie auch [die Anmeldeinformationen für die Bereitstellung konfigurieren](functions-continuous-deployment.md#credentials). |
 
-Weitere Informationen zum Konfigurieren der einzelnen Einstellungen für App-Dienste finden Sie unter [Konfigurieren von Web-Apps in Azure App Service](../app-service-web/web-sites-configure.md).
 
-## <a name="manage-cors"></a>Verwalten: CORS
-Normalerweise sind aus Sicherheitsgründen Aufrufe an die Hosts (Domänen) aus externen Quellen, z.B. Ajax-Aufrufe aus einem Browser, nicht zulässig. Andernfalls könnte schädlicher Code an das Back-End gesendet und dort ausgeführt werden. Das sicherste Verfahren besteht daher darin, alle Codequellen mit Ausnahme einiger eigener vertrauenswürdiger Quellen auf die schwarze Liste zu setzen. Sie können in Azure-Funktionen konfigurieren, welche Datenquellen Aufrufe annehmen, indem Sie die Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resource Sharing, CORS) konfigurieren. Mit CORS können Sie Domänen auflisten, die JavaScript-Quellen sind und Funktionen in Ihrer Azure-Funktionen-App aufrufen können. 
+### <a name="cors"></a>CORS
 
-1. Um CORS zu konfigurieren, klicken Sie auf den Link **CORS konfigurieren**. 
-2. Geben Sie die Domänen ein, die Sie auf die Whitelist setzen möchten.
+| | |
+|-|-|
+| ![CORS für Funktionen-Apps im Azure-Portal](./media/functions-how-to-use-azure-function-app-settings/function-app-cors.png) | Um zu verhindern, dass schädlicher Code in Ihren Diensten ausgeführt wird, werden in App Service Aufrufe für Ihre Funktionen-Apps von externen Quellen blockiert. Functions unterstützt Cross-Origin Resource Sharing (CORS), sodass Sie eine Positivliste der zulässigen Ursprünge definieren können, von denen Remoteanforderungen für die Funktionen akzeptiert werden.  |
 
 ![Konfigurieren von CORS für die Funktionen-App](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-cors.png)
 
-## <a name="manage-authenticationauthorization"></a>Verwalten: Authentifizierung/Autorisierung
-Für Funktionen, die einen HTTP-Trigger verwenden, können Sie festlegen, dass Aufrufe authentifiziert werden müssen.
+### <a name="auth"></a>Authentifizierung
 
-1. Klicken Sie zum Konfigurieren der Authentifizierung auf den Link **Authentifizierung konfigurieren**.
-2. Stellen Sie die Schaltfläche **App Service-Authentifizierung** auf **Ein**.
+| | |
+|-|-|
+| ![Authentifizierung von Funktionen-Apps im Azure-Portal](./media/functions-how-to-use-azure-function-app-settings/function-app-authentication.png) | Wenn Funktionen einen HTTP-Trigger verwenden, können Sie festlegen, dass Aufrufe zunächst authentifiziert werden müssen. App Service unterstützt die Azure Active Directory-Authentifizierung und die Anmeldung bei Anbietern von sozialen Netzwerken wie Facebook, Microsoft und Twitter. Weitere Informationen zum Konfigurieren von bestimmten Authentifizierungsanbietern finden Sie unter [Authentifizierung und Autorisierung in Azure App Service](../app-service/app-service-authentication-overview.md). |
 
-![Konfigurieren von CI für die Funktionen-App](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-authentication.png)
+![Konfigurieren der Authentifizierung für eine Funktionen-App](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-authentication.png)
 
-Die meisten Authentifizierungsanbieter fordern einen API-Schlüssel/Client-ID und einen geheimen Schlüssel an. Mit den Optionen für das Microsoft-Konto und Facebook können Sie aber auch Bereiche definieren (bestimmte Autorisierungsanmeldeinformationen). Active Directory verfügt über mehrere Expresseinstellungen oder erweiterte Konfigurationseinstellungen, die Sie festlegen können.
 
-Weitere Informationen zum Konfigurieren von bestimmten Authentifizierungsanbietern finden Sie unter [Authentifizierung und Autorisierung in Azure App Service](../app-service/app-service-authentication-overview.md).
+### <a name="swagger"></a>API-Definition
 
-## <a name="manage-api-definition"></a>Verwalten: API-Definition
-Ermöglichen Sie den Clients eine einfachere Nutzung Ihrer über HTTP ausgelösten Funktionen.
-
-1. Um eine API einzurichten, klicken Sie auf **API-Metadaten konfigurieren**. 
-2. Geben Sie die URL ein, die auf eine Swagger-Json-Datei verweist.
+| | |
+|-|-|
+| ![API-Swagger-Definition für Funktionen-Apps im Azure-Portal](./media/functions-how-to-use-azure-function-app-settings/function-app-api-definition.png) | Functions unterstützt Swagger, um Clients eine einfachere Nutzung Ihrer über HTTP ausgelösten Funktionen zu ermöglichen. Weitere Informationen zum Erstellen von API-Definitionen mit Swagger finden Sie unter [Erste Schritte mit API-Apps, ASP.NET und Swagger in Azure App Service](../app-service-api/app-service-api-dotnet-get-started.md). Sie können zudem Functions-Proxys verwenden, um eine API-Oberfläche für mehrere Funktionen zu definieren. Weitere Informationen finden Sie unter [Arbeiten mit Proxys in Azure Functions](functions-proxies.md). |
 
 ![Konfigurieren der API für die Funktionen-App](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-apidef.png)
 
-Weitere Informationen zum Erstellen von API-Definitionen mit Swagger finden Sie unter [Erste Schritte mit API-Apps, ASP.NET und Swagger in Azure App Service](../app-service-api/app-service-api-dotnet-get-started.md).
 
-## <a name="daily-usage-quota"></a>Tägliches Nutzungskontingent
-
-Mit Azure Functions können Sie die Plattformnutzung vorhersagbar einschränken, indem Sie ein tägliches Kontingent festlegen. Bei Erreichen des täglichen Kontingents wird die Funktionen-App beendet. Eine Funktionen-App, die aufgrund des Erreichens des Tageskontingents beendet wurde, kann in demselben Kontext wie beim Einrichten des täglichen Kontingents wieder aktiviert werden. Die Einheit für dieses Kontingent ist die Abrechnungseinheit: GB-s (Gigabyte-Sekunden). Einzelheiten zum Abrechnungsmodell finden Sie auf der [Preisseite für Azure Functions](http://azure.microsoft.com/pricing/details/functions/). 
-
-![Konfigurieren der Arbeitsspeichergröße für die Funktionen-App](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-quota.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
+
++ [Konfigurieren von Web-Apps in Azure App Service](../app-service-web/web-sites-configure.md)
++ [Kontinuierliche Bereitstellung für Azure Functions](functions-continuous-deployment.md)
+
 [!INCLUDE [Getting Started Note](../../includes/functions-get-help.md)]
 
 

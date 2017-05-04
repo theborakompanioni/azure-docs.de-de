@@ -1,9 +1,9 @@
 ---
-title: "Erstellen einer hoch verfügbaren App in Azure mithilfe von VM-Skalierungsgruppen | Microsoft-Dokumentation"
-description: "Erstellen Sie mit einer VM-Skalierungsgruppe und der Azure CLI eine hoch verfügbare Anwendung auf virtuellen Linux-Computern, und stellen Sie sie bereit."
+title: "Erstellen einer VM-Skalierungsgruppe für Linux in Azure | Microsoft-Dokumentation"
+description: "Erstellen und Bereitstellen einer hoch verfügbaren Anwendung auf virtuellen Linux-Computern mithilfe einer VM-Skalierungsgruppe"
 services: virtual-machine-scale-sets
 documentationcenter: 
-author: Thraka
+author: iainfoulds
 manager: timlt
 editor: 
 tags: 
@@ -13,33 +13,33 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 04/05/2017
-ms.author: adegeo
+ms.date: 04/18/2017
+ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 4c76fb202f501f671504646395b800aeb90d8e69
-ms.lasthandoff: 04/07/2017
+ms.sourcegitcommit: e0bfa7620feeb1bad33dd2fe4b32cb237d3ce158
+ms.openlocfilehash: 73167924f95c8cea0ac3cb4651cb3571fb24cc01
+ms.lasthandoff: 04/21/2017
 
 ---
 
-# <a name="create-a-highly-available-application-on-linux-with-virtual-machine-scale-sets"></a>Erstellen einer hoch verfügbaren Anwendung unter Linux mit VM-Skalierungsgruppen
-In diesem Tutorial erfahren Sie, wie Sie eine hoch verfügbare Anwendung in einer VM-Skalierungsgruppe erstellen. Sie erfahren außerdem, wie Sie die Konfiguration der virtuellen Computer in der Skalierungsgruppe automatisieren können. 
+# <a name="create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux"></a>Erstellen einer VM-Skalierungsgruppe und Bereitstellen einer hoch verfügbaren App unter Linux
+In diesem Tutorial erfahren Sie, wie sich mithilfe von VM-Skalierungsgruppen in Azure die Anzahl der virtuellen Computer (VMs), auf denen Ihre App ausgeführt wird, schnell skalieren lässt. Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch skalierender virtueller Computer bereitstellen und verwalten. Sie können die Anzahl der virtuellen Computer in der Skalierungsgruppe manuell skalieren oder basierend auf CPU-Auslastung, Speicherbedarf oder Netzwerkdatenverkehr Regeln für die automatische Skalierung definieren. Um eine VM-Skalierungsgruppe in Aktion zu sehen, erstellen Sie eine Node.js-App, die auf mehreren virtuellen Linux-Computern ausgeführt wird.
+
+Die Schritte in diesem Tutorial können mit der neuesten Version von [Azure CLI 2.0](/cli/azure/install-azure-cli) ausgeführt werden.
 
 
-## <a name="step-1---create-a-resource-group"></a>Schritt 1: Erstellen einer Ressourcengruppe
-Für dieses Tutorial muss die aktuelle Version von [Azure CLI 2.0](/cli/azure/install-azure-cli) installiert sein. Falls Sie noch nicht bei Ihrem Azure-Abonnement angemeldet sind, melden Sie sich mit [az login](/cli/azure/#login) an, und befolgen Sie die Anweisungen auf dem Bildschirm.
+## <a name="scale-set-overview"></a>Übersicht über Skalierungsgruppen
+Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch skalierender virtueller Computer bereitstellen und verwalten. In Skalierungsgruppen werden die gleichen Komponenten verwendet, die Sie im vorherigen Tutorial [Erstellen von hoch verfügbaren virtuellen Computern](tutorial-availability-sets.md) kennengelernt haben. Virtuelle Computer in einer Skalierungsgruppe werden in einer Verfügbarkeitsgruppe erstellt und auf logische Fehler- und Updatedomänen verteilt.
 
-Erstellen Sie mit [az group create](/cli/azure/group#create) eine Ressourcengruppe. Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen `myResourceGroupVMSS` am Standort `westus`:
+Virtuelle Computer werden nach Bedarf in einer Skalierungsgruppe erstellt. Sie können Regeln für die automatische Skalierung definieren, um zu steuern, wie und wann virtuelle Computer in der Skalierungsgruppe hinzugefügt oder entfernt werden. Diese Regeln können basierend auf Metriken wie CPU-Auslastung, Speicherauslastung oder Netzwerkdatenverkehr ausgelöst werden.
 
-```azurecli
-az group create --name myResourceGroupVMSS --location westus
-```
+Bei Verwendung eines Azure-Plattformimages unterstützen Skalierungsgruppen bis zu 1.000 virtuelle Computer. Für Produktionsworkloads können Sie [ein benutzerdefiniertes VM-Image erstellen](tutorial-custom-images.md). Bei Verwendung eines benutzerdefinierten Images können Sie bis zu 100 virtuelle Computer in einer Skalierungsgruppe erstellen.
 
 
-## <a name="step-2---define-your-app"></a>Schritt 2: Definieren der App
-Verwenden Sie die **cloud-init**-Konfiguration aus dem Tutorial, in dem Sie eine hoch verfügbare App mit Lastenausgleich erstellt haben. Weitere Informationen zur Verwendung von **cloud-init** finden Sie unter [Verwenden von Cloud-Init zum Anpassen einer Linux-VM während der Erstellung](using-cloud-init.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+## <a name="create-an-app-to-scale"></a>Erstellen einer App für die Skalierung
+Für die Verwendung in einer Produktionsumgebung können Sie [ein benutzerdefiniertes VM-Image erstellen](tutorial-custom-images.md), das Ihre installierte und konfigurierte Anwendung umfasst. In diesem Tutorial werden die virtuellen Computer beim ersten Start angepasst, sodass eine Skalierungsgruppe schnell in Aktion zu sehen ist.
 
-Erstellen Sie eine Datei namens `cloud-init.txt`, und fügen Sie die folgende Konfiguration ein:
+In einem vorherigen Tutorial haben Sie erfahren, wie [ein virtueller Linux-Computer beim ersten Start mit cloud-init angepasst wird](tutorial-automate-vm-deployment.md). Mithilfe der gleichen cloud-init-Konfigurationsdatei können Sie NGINX installieren und eine einfache Node.js-App „Hello World“ ausführen. Erstellen Sie eine Datei namens `cloud-init.txt`, und fügen Sie die folgende Konfiguration ein:
 
 ```yaml
 #cloud-config
@@ -76,7 +76,7 @@ write_files:
         console.log('Hello world app listening on port 3000!')
       })
 runcmd:
-  - nginx -s reload
+  - service nginx restart
   - cd "/home/azureuser/myapp"
   - npm init
   - npm install express -y
@@ -84,16 +84,18 @@ runcmd:
 ```
 
 
-## <a name="step-3---create-scale-set"></a>Schritt 3: Erstellen der Skalierungsgruppe
-Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch skalierender virtueller Computer bereitstellen und verwalten. In Skalierungsgruppen werden die gleichen Komponenten verwendet, die Sie im Tutorial [Erstellen einer hoch verfügbaren App in Azure](tutorial-load-balance-nodejs.md) kennen gelernt haben. Zu diesen Komponenten gehören Verfügbarkeitsgruppen, Fehler- und Updatedomänen sowie Lastenausgleichsmodule.
+## <a name="create-a-scale-set"></a>Erstellen einer Skalierungsgruppe
+Vor der Erstellung einer Skalierungsgruppe müssen Sie zunächst mit [az group create](/cli/azure/group#create) eine Ressourcengruppe erstellen. Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen `myResourceGroupScaleSet` am Standort `westus`:
 
-Mit einer Skalierungsgruppe werden diese Ressourcen für Sie erstellt und verwaltet. Die Anzahl von virtuellen Computern in Ihrer Skalierungsgruppe kann basierend auf definierten Regeln automatisch erhöht oder verringert werden. Sie können [ein benutzerdefiniertes Image](capture-image.md) als Quelle für den virtuellen Computer verwenden oder die virtuellen Computer wie in diesem Tutorial während der Bereitstellung mit **cloud-init** konfigurieren.
+```azurecli
+az group create --name myResourceGroupScaleSet --location westus
+```
 
-Erstellen Sie mit [az vmss create](/cli/azure/vmss#create) eine VM-Skalierungsgruppe. Im folgenden Beispiel wird eine Skalierungsgruppe namens `myScaleSet` erstellt:
+Erstellen Sie dann mit [az vmss create](/cli/azure/vmss#create) eine VM-Skalierungsgruppe. Im folgenden Beispiel werden eine Skalierungsgruppe mit dem Namen `myScaleSet` erstellt, der virtuelle Computer mithilfe der cloud-init-Datei angepasst und (sofern noch nicht vorhanden) SSH-Schlüssel generiert:
 
 ```azurecli
 az vmss create \
-  --resource-group myResourceGroupVMSS \
+  --resource-group myResourceGroupScaleSet \
   --name myScaleSet \
   --image Canonical:UbuntuServer:14.04.4-LTS:latest \
   --upgrade-policy-mode automatic \
@@ -105,12 +107,14 @@ az vmss create \
 Die Erstellung und Konfiguration aller Ressourcen und virtuellen Computer der Skalierungsgruppe dauert einige Minuten.
 
 
-## <a name="step-4---configure-firewall"></a>Schritt 4: Konfigurieren der Firewall
-Ein Lastenausgleichsmodul wurde automatisch als Teil der VM-Skalierungsgruppe erstellt. Das Lastenausgleichsmodul verteilt den Datenverkehr auf der Grundlage von Lastenausgleichsregeln auf eine Gruppe definierter virtueller Computer. Damit Datenverkehr die Web-App erreicht, erstellen Sie mit [az network lb probe create](/cli/azure/network/lb/probe#create) eine Regel. Im folgenden Beispiel wird eine Regel namens `myLoadBalancerRuleWeb` erstellt:
+## <a name="allow-web-traffic"></a>Zulassen von Webdatenverkehr
+Ein Lastenausgleichsmodul wurde automatisch als Teil der VM-Skalierungsgruppe erstellt. Das Lastenausgleichsmodul verteilt den Datenverkehr auf der Grundlage von Lastenausgleichsregeln auf eine Gruppe definierter virtueller Computer. Weitere Informationen zu den Konzepten und der Konfiguration des Load Balancers finden Sie im nächsten Tutorial [Lastenausgleich für virtuelle Computer in Azure](tutorial-load-balancer.md).
+
+Damit Datenverkehr die Web-App erreicht, erstellen Sie mit [az network lb rule create](/cli/azure/network/lb/rule#create) eine Regel. Im folgenden Beispiel wird eine Regel namens `myLoadBalancerRuleWeb` erstellt:
 
 ```azurecli
 az network lb rule create \
-  --resource-group myResourceGroupVMSS \
+  --resource-group myResourceGroupScaleSet \
   --name myLoadBalancerRuleWeb \
   --lb-name myScaleSetLB \
   --backend-pool-name myScaleSetLBBEPool \
@@ -120,12 +124,12 @@ az network lb rule create \
   --protocol tcp
 ```
 
-## <a name="step-5---test-your-app"></a>Schritt 5: Testen der App
-Rufen Sie mit [az network public-ip show](/cli/azure/network/public-ip#show) die öffentliche IP-Adresse Ihres Load Balancers ab. Im folgenden Beispiel wird die IP-Adresse für `myScaleSetLBPublicIP` abgerufen, die als Teil der Skalierungsgruppe erstellt wurde:
+## <a name="test-your-app"></a>Testen Ihrer App
+Um die Node.js-App im Web anzuzeigen, rufen Sie mit [az network public-ip show](/cli/azure/network/public-ip#show) die öffentliche IP-Adresse des Load Balancers ab. Im folgenden Beispiel wird die IP-Adresse für `myScaleSetLBPublicIP` abgerufen, die als Teil der Skalierungsgruppe erstellt wurde:
 
 ```azurecli
 az network public-ip show \
-    --resource-group myResourceGroupVMSS \
+    --resource-group myResourceGroupScaleSet \
     --name myScaleSetLBPublicIP \
     --query [ipAddress] \
     --output tsv
@@ -133,43 +137,66 @@ az network public-ip show \
 
 Geben Sie die öffentliche IP-Adresse in einen Webbrowser ein. Die App wird mit dem Hostnamen des virtuellen Computers angezeigt, an den der Load Balancer den Datenverkehr verteilt hat:
 
-![Ausgeführte Node.js-App](./media/tutorial-load-balance-nodejs/running-nodejs-app.png)
+![Ausgeführte Node.js-App](./media/tutorial-create-vmss/running-nodejs-app.png)
 
-Führen Sie eine erzwungene Aktualisierung Ihres Webbrowsers durch, um zu verfolgen, wie das Lastenausgleichsmodul den Datenverkehr auf alle virtuellen Computer in der Skalierungsgruppe verteilt, auf denen Ihre App ausgeführt wird.
+Um die Skalierungsgruppe in Aktion zu sehen, führen Sie eine erzwungene Aktualisierung Ihres Webbrowsers durch, um zu verfolgen, wie der Load Balancer den Datenverkehr auf alle virtuellen Computer in der Skalierungsgruppe verteilt, auf denen Ihre App ausgeführt wird.
 
 
-## <a name="step-6---management-tasks"></a>Schritt 6: Verwaltungsaufgaben
+## <a name="management-tasks"></a>Verwaltungsaufgaben
 Während des Lebenszyklus der Skalierungsgruppe müssen Sie möglicherweise eine oder mehrere Verwaltungsaufgaben ausführen. Darüber hinaus empfiehlt es sich, Skripts zum Automatisieren von verschiedenen Aufgaben im Lebenszyklus zu erstellen. Azure CLI 2.0 bietet eine schnelle Möglichkeit, um diese Aufgaben auszuführen. Im Folgenden sind einige allgemeine Aufgaben aufgeführt.
 
-### <a name="increase-or-decrease-vm-instances"></a>VM-Instanzen erhöhen oder verringern
-Sie können die Anzahl der virtuellen Computer in der Skalierungsgruppe mit [az vmss scale](/cli/azure/vmss#scale) manuell erhöhen oder verringern. Im folgenden Beispiel wird die Anzahl von virtuellen Computern in Ihrer Skalierungsgruppe auf `5` erhöht:
+### <a name="view-vms-in-a-scale-set"></a>Anzeigen von virtuellen Computern in einer Skalierungsgruppe
+Verwenden Sie [az vmss list-instances](/cli/azure/vmss#list-instances) wie folgt, um eine Liste der in der Skalierungsgruppe ausgeführten virtuellen Computer anzuzeigen:
 
 ```azurecli
-az vmss scale --resource-group myResourceGroupVMSS --name myScaleSet --new-capacity 5
+az vmss list-instances \
+  --resource-group myResourceGroupScaleSet \
+  --name myScaleSet \
+  --output table
+```
+
+Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
+
+```azurecli
+  InstanceId  LatestModelApplied    Location    Name          ProvisioningState    ResourceGroup            VmId
+------------  --------------------  ----------  ------------  -------------------  -----------------------  ------------------------------------
+           1  True                  westus      myScaleSet_1  Succeeded            MYRESOURCEGROUPSCALESET  c72ddc34-6c41-4a53-b89e-dd24f27b30ab
+           3  True                  westus      myScaleSet_3  Succeeded            MYRESOURCEGROUPSCALESET  44266022-65c3-49c5-92dd-88ffa64f95da
+```
+
+
+### <a name="increase-or-decrease-vm-instances"></a>VM-Instanzen erhöhen oder verringern
+Verwenden Sie [az vmss show](/cli/azure/vmss#show), und führen Sie eine Abfrage für `sku.capacity` durch, um die Anzahl der zurzeit in einer Skalierungsgruppe vorhandenen Instanzen anzuzeigen:
+
+```azurecli
+az vmss show \
+    --resource-group myResourceGroupScaleSet \
+    --name myScaleSet \
+    --query [sku.capacity] \
+    --output table
+```
+
+Sie können dann die Anzahl der virtuellen Computer in der Skalierungsgruppe mit [az vmss scale](/cli/azure/vmss#scale) manuell erhöhen oder verringern. Im folgenden Beispiel wird die Anzahl der virtuellen Computer in der Skalierungsgruppe auf `5` festgelegt:
+
+```azurecli
+az vmss scale \
+    --resource-group myResourceGroupScaleSet \
+    --name myScaleSet \
+    --new-capacity 5
 ```
 
 Mit Regeln zur automatischen Skalierung können Sie definieren, wie die Anzahl von virtuellen Computern in Ihrer Skalierungsgruppe hoch- oder herunterskaliert werden soll, um auf den Bedarf z.B. durch Netzwerkdatenverkehr oder CPU-Auslastung zu reagieren. Derzeit können diese Regeln nicht in Azure CLI 2.0 festgelegt werden. Verwenden Sie das [Azure-Portal](https://portal.azure.com) zum Konfigurieren der automatischen Skalierung.
 
 ### <a name="get-connection-info"></a>Verbindungsinformationen abrufen
-Verwenden Sie zum Abrufen der Verbindungsinformationen für die virtuellen Computer in Ihren Skalierungsgruppen [az vmss list-instance-connection-info](/cli/azure/vmss#list-instance-connection-info). Durch diesen Befehl werden die öffentliche IP-Adresse und die Ports für alle virtuellen Computer ausgegeben, die eine Verbindung mit SSH ermöglichen:
+Verwenden Sie zum Abrufen der Verbindungsinformationen für die virtuellen Computer in Ihren Skalierungsgruppen [az vmss list-instance-connection-info](/cli/azure/vmss#list-instance-connection-info). Durch diesen Befehl werden die öffentliche IP-Adresse und der Port für alle virtuellen Computer ausgegeben, die eine Verbindung mit SSH ermöglichen:
 
 ```azurecli
-az vmss list-instance-connection-info --resource-group myResourceGroupVMSS --name myScaleSet
-```
-
-### <a name="delete-resource-group"></a>Ressourcengruppe löschen
-Beim Löschen einer Ressourcengruppe werden auch alle darin enthaltenen Ressourcen gelöscht.
-
-```azurecli
-az group delete --name myResourceGroupVMSS
+az vmss list-instance-connection-info --resource-group myResourceGroupScaleSet --name myScaleSet
 ```
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Tutorial haben wir mit **cloud-init** eine Web-App definiert und alle virtuellen Computer während der Bereitstellung konfiguriert. Informationen zum Erfassen eines virtuellen Computers, um ihn als Quellimage in Ihrer Skalierungsgruppe zu verwenden, finden Sie unter [Generalisieren und Erfassen eines virtuellen Linux-Computers](capture-image.md).
+In diesem Tutorial haben Sie erfahren, wie Sie eine VM-Skalierungsgruppe erstellen. Im nächsten Tutorial erhalten Sie weitere Informationen zu den Konzepten des Lastenausgleichs für virtuelle Computer.
 
-Weitere Informationen zu einigen der Features von VM-Skalierungsgruppen aus diesem Tutorial finden Sie in den folgenden Themen:
+[Lastenausgleich für virtuelle Computer](tutorial-load-balancer.md)
 
-- [Übersicht über Azure-VM-Skalierungsgruppen](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)
-- [Übersicht über Azure Load Balancer](../../load-balancer/load-balancer-overview.md)
-- [Steuern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](../../virtual-network/virtual-networks-nsg.md)
