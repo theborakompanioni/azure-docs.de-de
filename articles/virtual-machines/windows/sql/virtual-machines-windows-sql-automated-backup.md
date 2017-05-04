@@ -16,9 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 04/24/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 5a648173e8088b58ac5a38f4a3c9d3df06157c58
-ms.lasthandoff: 04/26/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: dcb7b326cbb4ed18769010d8061f80dc9f941c87
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -59,7 +59,7 @@ Beachten Sie bei der Verwendung der automatisierten Sicherung die folgenden Vora
 
 **Azure PowerShell**:
 
-- [Installieren Sie die aktuellen Azure PowerShell-Befehle](/powershell/azureps-cmdlets-docs) , wenn Sie die automatisierte Sicherung mit PowerShell konfigurieren möchten.
+- [Installieren Sie die aktuellen Azure PowerShell-Befehle](/powershell/azure/overview) , wenn Sie die automatisierte Sicherung mit PowerShell konfigurieren möchten.
 
 > [!NOTE]
 > Die automatisierte Sicherung basiert auf der Erweiterung für den SQL Server-IaaS-Agent. Aktuelle Katalogimages für virtuelle SQL-Computer fügen diese Erweiterung standardmäßig hinzu. Weitere Informationen finden Sie unter [Erweiterung für SQL Server-IaaS-Agent](virtual-machines-windows-sql-server-agent-extension.md).

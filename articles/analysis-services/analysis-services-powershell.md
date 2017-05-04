@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 04/18/2017
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 478703542edeee1b40fb5714c91dd6a75bb17513
-ms.lasthandoff: 04/20/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: dbe1dba78fb2597dc595f9e6895d0a15181c1f05
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -34,17 +34,17 @@ Die meisten PowerShell-Aufgaben erfordern, dass Sie über Administratorberechtig
 Bei Servervorgängen, für die AzureRm-Cmdlets verwendet werden, muss Ihr Konto oder das Konto mit dem Scheduler außerdem zur Rolle „Besitzer“ für die Ressource in der [rollenbasierten Zugriffssteuerung in Azure](../active-directory/role-based-access-control-what-is.md) gehören. 
 
 ## <a name="server-operations"></a>Servervorgänge 
-Azure Analysis Services-Cmdlets sind im Komponentenmodul [AzureRM.AnalysisServices](https://www.powershellgallery.com/packages/AzureRM.AnalysisServices) enthalten. Informationen zum Installieren von AzureRM-Cmdlet-Modulen, finden Sie im PowerShell-Katalog unter [Azure Resource Manager-Cmdlets](https://docs.microsoft.com/powershell/resourcemanager/).
+Azure Analysis Services-Cmdlets sind im Komponentenmodul [AzureRM.AnalysisServices](https://www.powershellgallery.com/packages/AzureRM.AnalysisServices) enthalten. Informationen zum Installieren von AzureRM-Cmdlet-Modulen, finden Sie im PowerShell-Katalog unter [Azure Resource Manager-Cmdlets](/powershell/azure/overview).
 
 |Cmdlet|Beschreibung| 
 |------------|-----------------| 
-|[Get-AzureRmAnalysisServicesServer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.analysisservices/v3.0.0/get-azurermanalysisservicesserver)|Ruft die Details einer Serverinstanz ab.|  
-|[New-AzureRmAnalysisServicesServer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.analysisservices/v3.0.0/new-azurermanalysisservicesserver)|Erstellt eine neue Serverinstanz.|
-|[Remove-AzureRmAnalysisServicesServer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.analysisservices/v3.0.0/remove-azurermanalysisservicesserver)|Entfernt eine Serverinstanz.|  
-|[Suspend-AzureRmAnalysisServicesServe](https://docs.microsoft.com/powershell/resourcemanager/azurerm.analysisservices/v3.0.0/suspend-azurermanalysisservicesserver)|Hält eine Serverinstanz an.| 
-|[Resume-AzureRmAnalysisServicesServer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.analysisservices/v3.0.0/resume-azurermanalysisservicesserver)|Setzt eine Serverinstanz fort.|  
-|[Set-AzureRmAnalysisServicesServer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.analysisservices/v3.0.0/set-azurermanalysisservicesserver)|Ändert eine Serverinstanz.|   
-|[Test-AzureRmAnalysisServicesServer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.analysisservices/v3.0.0/test-azurermanalysisservicesserver)|Überprüft das Vorhandensein einer Serverinstanz.| 
+|[Get-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/get-azurermanalysisservicesserver)|Ruft die Details einer Serverinstanz ab.|  
+|[New-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/new-azurermanalysisservicesserver)|Erstellt eine neue Serverinstanz.|
+|[Remove-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/remove-azurermanalysisservicesserver)|Entfernt eine Serverinstanz.|  
+|[Suspend-AzureRmAnalysisServicesServe](/powershell/module/azurerm.analysisservices/suspend-azurermanalysisservicesserver)|Hält eine Serverinstanz an.| 
+|[Resume-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/resume-azurermanalysisservicesserver)|Setzt eine Serverinstanz fort.|  
+|[Set-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/set-azurermanalysisservicesserver)|Ändert eine Serverinstanz.|   
+|[Test-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/test-azurermanalysisservicesserver)|Überprüft das Vorhandensein einer Serverinstanz.| 
 
 ## <a name="database-operations"></a>Datenbankvorgänge
 Für Vorgänge der Azure Analysis Services-Datenbank wird das gleiche [SQLASCMDLETS](https://msdn.microsoft.com/library/hh758425.aspx)-Modul wie bei SQL Server Analysis Services verwendet. Allerdings werden nicht alle Cmdlets für Azure Analysis Services unterstützt. 
@@ -67,3 +67,4 @@ Das SQLASCMDLETS-Modul bietet aufgabenspezifische Cmdlets für die Datenbankverw
 ## <a name="related-information"></a>Verwandte Informationen
 * [PowerShell-Skripterstellung in Analysis Services](https://msdn.microsoft.com/library/hh213141.aspx)
 * [Programmierung von tabellarischen Modellen für den Kompatibilitätsgrad 1200](https://msdn.microsoft.com/library/mt712541.aspx)
+

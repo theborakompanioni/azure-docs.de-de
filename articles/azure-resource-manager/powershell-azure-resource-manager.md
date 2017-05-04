@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 5d32a695c14ebe01d1ad8cf4b789bf2edc8c30ce
-ms.lasthandoff: 04/20/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 674404b135d2e512840505ee0927db98824aa8b1
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -43,7 +43,7 @@ Das Bereitstellen einer Resource Manager-Vorlage für Ihr Abonnement wird in die
 
 ## <a name="get-started-with-azure-powershell"></a>Erste Schritte mit Azure PowerShell
 
-Wenn Azure PowerShell nicht installiert ist, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
+Wenn Azure PowerShell nicht installiert ist, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
 
 Wenn Sie Azure PowerShell in der Vergangenheit installiert, aber nicht vor kurzem aktualisiert haben, sollten Sie die neueste Version installieren. Sie können die Version über dieselbe Methode aktualisieren, die Sie für die Installation verwendet haben. Beispiel: Wenn Sie den Webplattform-Installer verwendet haben, starten Sie ihn erneut, und suchen Sie nach einem Update.
 
@@ -53,7 +53,7 @@ Zur Prüfung Ihrer Version des Azure-Ressourcenmodells verwenden Sie das folgend
 Get-Module -ListAvailable -Name AzureRm.Resources | Select Version
 ```
 
-Dieses Thema wurde für Version 3.3.0 aktualisiert. Wenn Sie über eine frühere Version verfügen, stimmt Ihre Umgebung möglicherweise nicht mit den in diesem Thema gezeigten Schritten überein. Eine Dokumentation zu den Cmdlets in dieser Version finden Sie unter [AzureRM.Resources Module](/en-us/powershell/resourcemanager/azurerm.resources/v3.3.0/azurerm.resources) (AzureRM.Resources-Modul).
+Dieses Thema wurde für Version 3.3.0 aktualisiert. Wenn Sie über eine frühere Version verfügen, stimmt Ihre Umgebung möglicherweise nicht mit den in diesem Thema gezeigten Schritten überein. Eine Dokumentation zu den Cmdlets in dieser Version finden Sie unter [AzureRM.Resources Module](/powershell/module/azurerm.resources) (AzureRM.Resources-Modul).
 
 ## <a name="log-in-to-your-azure-account"></a>Melden Sie sich bei Ihrem Azure-Konto an.
 Bevor Sie an Ihrer Lösung arbeiten, müssen Sie sich bei Ihrem Konto anmelden.
