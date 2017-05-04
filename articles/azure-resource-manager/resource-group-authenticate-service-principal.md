@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 04/03/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 775734ea55d1136e64afc713356b0f0bfc81ea9f
-ms.lasthandoff: 04/20/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: eb6bddbe4220418f7c525985ab6a15524589829e
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -34,7 +34,7 @@ Wenn eine App oder ein Skript Zugriff auf Ressourcen benötigt, können Sie eine
 * Sie können der App-Identität Berechtigungen zuweisen, die sich von Ihren eigenen Berechtigungen unterscheiden. In der Regel sind diese Berechtigungen genau auf die Aufgaben der App beschränkt.
 * Sie können ein Zertifikat für die Authentifizierung beim Ausführen eines unbeaufsichtigten Skripts verwenden.
 
-In diesem Thema erfahren Sie, wie Sie mithilfe von [Azure PowerShell](/powershell/azureps-cmdlets-docs) alle Komponenten und Einstellungen einrichten, die Sie benötigen, um eine Anwendung mit eigenen Anmeldeinformationen und einer eigenen Identität auszuführen.
+In diesem Thema erfahren Sie, wie Sie mithilfe von [Azure PowerShell](/powershell/azure/overview) alle Komponenten und Einstellungen einrichten, die Sie benötigen, um eine Anwendung mit eigenen Anmeldeinformationen und einer eigenen Identität auszuführen.
 
 ## <a name="required-permissions"></a>Erforderliche Berechtigungen
 Zum Abschließen dieses Themas benötigen Sie sowohl in der Azure Active Directory-Instanz als auch im Azure-Abonnement ausreichende Berechtigungen. Insbesondere müssen Sie eine App in der Azure Active Directory-Instanz erstellen und den Dienstprinzipal einer Rolle zuweisen können. 
@@ -345,7 +345,7 @@ Wenn Sie die Anwendungs-ID abrufen möchten, verwenden Sie Folgendes:
 
 ## <a name="change-credentials"></a>Ändern von Anmeldeinformationen
 
-Wenn Sie die Anmeldeinformationen für eine AD-App entweder aufgrund einer Gefährdung der Sicherheit oder aufgrund des Ablaufs der Anmeldeinformationen ändern müssen, verwenden Sie die Cmdlets [Remove-AzureRmADAppCredential](/powershell/resourcemanager/azurerm.resources/v3.3.0/remove-azurermadappcredential) und [New-AzureRmADAppCredential](/powershell/resourcemanager/azurerm.resources/v3.3.0/new-azurermadappcredential).
+Wenn Sie die Anmeldeinformationen für eine AD-App entweder aufgrund einer Gefährdung der Sicherheit oder aufgrund des Ablaufs der Anmeldeinformationen ändern müssen, verwenden Sie die Cmdlets [Remove-AzureRmADAppCredential](/powershell/resourcemanager/azurerm.resources/v3.3.0/remove-azurermadappcredential) und [New-AzureRmADAppCredential](/powershell/module/azurerm.resources/new-azurermadappcredential).
 
 Zum Entfernen aller Anmeldeinformationen für eine Anwendung verwenden Sie Folgendes:
 
@@ -390,7 +390,7 @@ Alternativ können Sie die REST-Vorgänge über PowerShell aufrufen, um sich anz
 
 Wenn Sie einen Dienstprinzipal erstellen, können folgende Fehler auftreten:
 
-* **„Authentication_Unauthorized“** oder **„Kein Abonnement in diesem Kontext gefunden.“** Dieser Fehler wird angezeigt, wenn Ihr Konto nicht die [erforderlichen Berechtigungen](#required-permissions) zum Registrieren einer App in Azure Active Directory hat. In der Regel wird dieser Fehler angezeigt, wenn in Ihrem Azure Active Directory nur Administratorbenutzer Apps registrieren können und Ihr Konto kein Administratorkonto ist. Bitten Sie Ihren Administrator, Sie entweder einer Administratorrolle zuzuweisen, oder Benutzern zu ermöglichen, Apps zu registrieren.
+* **„Authentication_Unauthorized“** oder **„Kein Abonnement in diesem Kontext gefunden.“** Dieser Fehler wird angezeigt, wenn Ihr Konto nicht über die [erforderlichen Berechtigungen](#required-permissions) verfügt, um eine App in Azure Active Directory zu registrieren. In der Regel wird dieser Fehler angezeigt, wenn in Ihrem Azure Active Directory nur Administratorbenutzer Apps registrieren können und Ihr Konto kein Administratorkonto ist. Bitten Sie Ihren Administrator, Sie entweder einer Administratorrolle zuzuweisen, oder Benutzern zu ermöglichen, Apps zu registrieren.
 
 * Ihr Konto **„hat keine Berechtigung zum Ausführen der Aktion 'Microsoft.Authorization/roleAssignments/write' über Bereich '/subscriptions/{guid}'.“**  – Dieser Fehler wird angezeigt, wenn Ihr Konto nicht über ausreichende Berechtigungen verfügt, um eine Rolle einer Identität zuzuweisen. Bitten Sie Ihren Abonnementadministrator, Sie der Rolle „Benutzerzugriffsadministrator“ hinzuzufügen.
 

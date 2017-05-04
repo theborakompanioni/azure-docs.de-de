@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 04/21/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 3c49af42332dc62db80889f1625b243473559cd1
-ms.lasthandoff: 04/25/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 9e0dbb028c668aad182e2c1c54fb397ffe99a0a0
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -40,7 +40,7 @@ Wenn sich Ihre VNets in der gleichen Region befinden, kann es stattdessen hilfre
 
 * Bei den folgenden Schritten wird davon ausgegangen, dass beide VNETs bereits erstellt wurden. Wenn Sie diesen Artikel als Übung verwenden und Sie keine VNETs besitzen, finden Sie über die in den Schritten angegebenen Links Informationen zu ihrer Erstellung.
 * Stellen Sie sicher, dass sich die Adressbereiche für die VNETs weder einander überlappen noch die Bereiche für andere Verbindungen, mit denen die Gateways verbunden werden können.
-* Installieren Sie die neuesten PowerShell-Cmdlets für den Resource Manager und die Dienstverwaltung (klassisch). In diesem Artikel verwenden wir sowohl das Azure-Portal als auch PowerShell. Für die Verbindung zwischen dem klassischen VNET und dem Resource Manager-VNET ist PowerShell erforderlich. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs). 
+* Installieren Sie die neuesten PowerShell-Cmdlets für den Resource Manager und die Dienstverwaltung (klassisch). In diesem Artikel verwenden wir sowohl das Azure-Portal als auch PowerShell. Für die Verbindung zwischen dem klassischen VNET und dem Resource Manager-VNET ist PowerShell erforderlich. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview). 
 
 ### <a name="values"></a>Beispieleinstellungen
 
@@ -262,3 +262,4 @@ Sie können die Verbindung im Azure-Portal oder mit PowerShell überprüfen. Bei
 ## <a name="faq"></a>Häufig gestellte Fragen zu VNet-zu-VNet-Verbindungen
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-vnet-vnet-faq-include.md)]
+
