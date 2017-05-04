@@ -1,144 +1,243 @@
 ---
-title: "Verbinden von Intel Edison (C) mit Azure IoT – Erste Schritte | Microsoft-Dokumentation"
-description: "Führen Sie erste Schritte mit dem Intel Edison aus, erstellen Sie Ihre Azure IoT Hub-Instanz, und verbinden Sie den Edison mit dieser IoT Hub-Instanz."
+title: "Intel Edison an Cloud (C) – Verbinden von Intel Edison mit Azure IoT Hub | Microsoft-Dokumentation"
+description: Verbinden Sie Intel Edition mit Azure IoT Hub, damit Intel Edison Daten an die Azure-Cloud sendet.
 services: iot-hub
 documentationcenter: 
 author: shizn
 manager: timtl
 tags: 
-keywords: Intel Edison Entwicklung, Azure IoT Hub, erste Schritte mit dem Internet der Dinge, Internet der Dinge Tutorial, Adafruit Internet der Dinge, Intel Edison Arduino, erste Schritte mit Arduino
+keywords: Azure IoT Intel Edison, Intel Edison IoT Hub, Intel Edison Daten an Cloud senden, Intel Edison an Cloud
 ms.assetid: 4885fa2c-c2ee-4253-b37f-ccd55f92b006
 ms.service: iot-hub
 ms.devlang: c
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/21/2017
+ms.date: 4/17/2017
 ms.author: xshi
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 7adde91586f5fbbffd0aeaf0efb0810cc891ac0b
-ms.openlocfilehash: 248bc4c309ed61ae00ef144ebdb4c820f285783d
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: fd6d04159c46439b5f1a91be7d2fa1b500bc92b3
+ms.lasthandoff: 04/20/2017
 
 
 ---
-# <a name="connect-your-intel-edison-device-to-your-iot-hub-using-c"></a>Herstellen einer Verbindung Ihres Intel Edison-Geräts mit Ihrem IoT Hub mithilfe von C
-> [!div class="op_single_selector"]
-> * [Node.JS](iot-hub-intel-edison-kit-node-get-started.md)
-> * [C](iot-hub-intel-edison-kit-c-get-started.md)
+# <a name="connect-intel-edison-to-azure-iot-hub-c"></a>Verbinden von Intel Edison mit Azure IoT Hub (C)
+
+[!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
 In diesem Tutorial machen Sie sich zuerst mit den Grundlagen der Verwendung des Intel Edison vertraut. Anschließend erfahren Sie, wie Sie Ihre Geräte mithilfe von [Azure IoT Hub](iot-hub-what-is-iot-hub.md) nahtlos mit der Cloud verbinden.
 
 Sie haben noch kein Kit? Beginnen Sie [hier](https://azure.microsoft.com/develop/iot/starter-kits).
 
-## <a name="lesson-1-configure-your-device"></a>Lektion 1: Konfigurieren Ihres Geräts
-![Lektion 1: Komplettes Diagramm](media/iot-hub-intel-edison-lessons/e2e-lesson1.png)
+## <a name="what-you-do"></a>Aufgaben
 
-In dieser Lektion konfigurieren Sie den Intel Edison mit einem Betriebssystem, richten die Entwicklungsumgebung ein und stellen eine Anwendung auf dem Edison bereit.
+* Richten Sie Intel Edison und Grove-Module ein.
+* Erstellen Sie einen IoT Hub.
+* Registrieren Sie ein Gerät für Edison in Ihren IoT Hub.
+* Führen Sie eine Beispielanwendung auf Edison aus, um Sensordaten an Ihren IoT Hub zu senden.
 
-### <a name="configure-your-device"></a>Konfigurieren Ihres Geräts
-Sie konfigurieren den Intel Edison für die erstmalige Verwendung, indem Sie die Platine einbauen, diese einschalten und das Konfigurationstool in Ihrem Desktopbetriebssystem mit dem Ziel installieren, die Firmware des Edison einzuspielen, das dazugehörige Kennwort festzulegen und sie mit dem WLAN zu verbinden.  
+Verbinden Sie Intel Edison mit einem von Ihnen erstellten IoT Hub. Führen Sie anschließend eine Beispielanwendung auf Edison aus, um Temperatur- und Luftfeuchtigkeitsdaten eines Grove-Temperatursensors zu erfassen. Senden Sie abschließend die Sensordaten an Ihren IoT Hub.
 
-*Geschätzter Zeitaufwand: 30 Minuten*
+## <a name="what-you-learn"></a>Lerninhalt
 
-Wechseln Sie zu [Konfigurieren Ihres Geräts][configure-your-device].
+* Erstellen eines Azure IoT Hubs und Abrufen der Verbindungszeichenfolge für Ihr neues Gerät
+* Verbinden von Edison mit einem Grove-Temperatursensor
+* Erfassen von Sensordaten durch Ausführen einer Beispielanwendung auf Edison
+* Senden von Sensordaten an Ihren IoT Hub
 
-### <a name="get-the-tools"></a>Tools herunterladen
-Laden Sie die Tools und Software zum Erstellen und Bereitstellen Ihrer ersten Anwendung für den Intel Edison herunter.
+## <a name="what-you-need"></a>Erforderliches Element
 
-*Geschätzter Zeitaufwand: 20 Minuten*
+![Erforderliches Element](media/iot-hub-intel-edison-kit-c-get-started/0_kit.png)
 
-Wechseln Sie zu [Abrufen der Tools][get-the-tools].
+* Intel Edison-Platine
+* Arduino-Erweiterungsplatine
+* Ein aktives Azure-Abonnement. Wenn Sie kein Azure-Konto besitzen, können Sie in nur wenigen Minuten ein [kostenloses Azure-Testkonto](https://azure.microsoft.com/free/) erstellen.
+* Mac oder PC, auf dem Windows oder Linux ausgeführt wird
+* Eine Internetverbindung.
+* USB-Kabel (Micro B zu Typ A)
+* Netzteil (Gleichstrom) Das Netzteil sollte wie folgt klassifiziert sein:
+  - 7 - 15 V (Gleichstrom)
+  - Mindestens 1500 mA
+  - Der mittlere/innere Stift muss der positive Pol des Netzteils sein.
 
-### <a name="create-and-deploy-the-blink-application"></a>Erstellen und Bereitstellen der Blinkanwendung
-Klonen Sie die Blinkbeispielanwendung aus GitHub, und verwenden Sie Gulp zum Bereitstellen der Anwendung auf der Intel Edison-Platine. Diese Beispielanwendung bewirkt, dass die mit dem Pi verbundene LED alle zwei Sekunden blinkt.
+Die folgenden Elemente sind optional:
 
-*Geschätzter Zeitaufwand: 5 Minuten*
+* Grove Base Shield V2
+* Grove-Temperatursensor
+* Grove-Kabel
+* Im Lieferumfang enthaltene Abstandshalter und Schrauben, z.B. zwei Schrauben zum Befestigen des Moduls an der Erweiterungsplatine und vier Sätze von Schrauben und Kunststoff-Abstandshaltern.
 
-Wechseln Sie zu [Erstellen und Bereitstellen der Blinkanwendung][create-and-deploy-the-blink-application].
+> [!NOTE] 
+Diese Elemente sind optional, da das Codebeispiel simulierte Sensordaten unterstützt.
 
-## <a name="lesson-2-create-your-iot-hub"></a>Lektion 2: Erstellen Sie Ihren IoT Hub
-![Lektion 2: Komplettes Diagramm](media/iot-hub-intel-edison-lessons/e2e-lesson2.png)
+[!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
 
-In dieser Lektion erstellen Sie ein kostenloses Azure-Konto, stellen Ihre Azure IoT Hub-Instanz bereit und erstellen Ihr erstes Gerät im IoT Hub.
+## <a name="setup-intel-edison"></a>Einrichten von Intel Edison
 
-Schließen Sie Lektion 1 ab, bevor Sie mit dieser Lektion beginnen.
+### <a name="assemble-your-board"></a>Zusammenbauen der Platine
 
-### <a name="get-the-azure-tools"></a>Azure Tools herunterladen
-Installieren der Azure-Befehlszeilenschnittstelle (Azure-CLI).
+In diesem Abschnitt wird beschrieben, wie Sie das Intel® Edison-Modul an der Erweiterungsplatine anbringen.
 
-*Geschätzter Zeitaufwand: 10 Minuten*
+1. Legen Sie das Intel® Edison-Modul in die weiße Umrandung auf der Erweiterungsplatine, und richten Sie die Öffnungen im Modul an den Schrauben auf der Erweiterungsplatine aus.
 
-Wechseln Sie zu [Abrufen der Azure-Tools][get-azure-tools].
+2. Drücken Sie das Modul direkt unterhalb der Wörter `What will you make?` herunter, bis es einrastet.
 
-### <a name="create-your-iot-hub-and-register-intel-edison"></a>Erstellen der IoT Hub-Instanz und Registrieren von Intel Edison
-Erstellen Sie Ihre Ressourcengruppe, stellen Sie Ihren ersten Azure IoT Hub bereit, und fügen Sie dem IoT Hub mithilfe der Azure-Befehlszeilenschnittstelle Ihr erstes Gerät hinzu.
+   ![Zusammenbauen der Platine 2](media/iot-hub-intel-edison-kit-c-get-started/1_assemble_board2.jpg)
 
-*Geschätzter Zeitaufwand: 10 Minuten*
+3. Befestigen Sie das Modul mithilfe der im Lieferumfang enthaltenen Sechskantmuttern an der Erweiterungsplatine.
 
-Wechseln Sie zu [Erstellen der IoT Hub-Instanz und Registrieren von Intel Edison](iot-hub-intel-edison-kit-c-lesson2-prepare-azure-iot-hub.md).
+   ![Zusammenbauen der Platine 3](media/iot-hub-intel-edison-kit-c-get-started/2_assemble_board3.jpg)
 
-## <a name="lesson-3-send-device-to-cloud-messages"></a>Lektion 3: Senden von Gerät-an-Cloud-Nachrichten
-![Lektion 3: Komplettes Diagramm](media/iot-hub-intel-edison-lessons/e2e-lesson3.png)
+4. Fügen Sie eine Schraube in eine der vier Ecköffnungen der Erweiterungsplatine ein. Drehen Sie einen der weißen Kunststoff-Abstandshalter auf die Schraube, und ziehen Sie ihn fest.
 
-In dieser Lektion senden Sie Nachrichten von Ihrem Edison an den IoT Hub. Außerdem erstellen Sie eine Azure-Funktionen-App, die eingehende Nachrichten von Ihrem IoT-Hub übernimmt und sie in den Azure-Tabellenspeicher schreibt.
+   ![Zusammenbau der Platine 4](media/iot-hub-intel-edison-kit-c-get-started/3_assemble_board4.jpg)
 
-Schließen Sie die Lektionen 1 und 2 ab, bevor Sie mit dieser Lektion beginnen.
+5. Wiederholen Sie diesen Schritt für die Abstandshalter der anderen drei Ecken.
 
-### <a name="create-an-azure-function-app-and-azure-storage-account"></a>Erstellen einer Azure-Funktionen-App und eines Azure Storage-Kontos
-Verwenden Sie eine Azure Resource Manager-Vorlage zum Erstellen einer Azure-Funktionen-App und eines Azure Storage-Kontos.
+   ![Zusammenbau der Platine 5](media/iot-hub-intel-edison-kit-c-get-started/4_assemble_board5.jpg)
 
-*Geschätzter Zeitaufwand: 10 Minuten*
+Ihre Platine ist nun zusammengebaut.
 
-Wechseln Sie zu [Erstellen einer Azure-Funktionen-App und eines Azure Storage-Kontos][create-an-azure-function-app-and-azure-storage-account].
+   ![Zusammengebaute Platine](media/iot-hub-intel-edison-kit-c-get-started/5_assembled_board.jpg)
 
-### <a name="run-a-sample-application-to-send-device-to-cloud-messages"></a>Ausführen einer Beispielanwendung zum Senden von D2C-Nachrichten
-Stellen Sie eine Beispielanwendung auf dem Intel Edison bereit, die Nachrichten an den IoT Hub sendet.
+### <a name="connect-the-grove-base-shield-and-the-temperature-sensor"></a>Anschließen des Grove Base Shield und des Temperatursensors
 
-*Geschätzter Zeitaufwand: 10 Minuten*
+1. Setzen Sie das Grove Base Shield auf die Platine. Vergewissern Sie sich, dass alle Stifte fest in der Platine sitzen.
+   
+   ![Grove Base Shield](media/iot-hub-intel-edison-kit-c-get-started/6_grove_base_sheild.jpg)
 
-Wechseln Sie zu [Ausführen einer Beispielanwendung zum Senden von D2C-Nachrichten][send-device-to-cloud-messages].
+2. Schließen Sie den Grove-Temperatursensor über das Grove-Kabel an den Port **A0** des Grove Base Shield an.
 
-### <a name="read-messages-persisted-in-azure-storage"></a>Lesen von Nachrichten in Azure Storage
-Sie überwachen D2C-Nachrichten (Device-to-Cloud, Gerät-zu-Cloud), während diese in Azure Storage geschrieben werden.
+   ![Anschließen des Temperatursensors](media/iot-hub-intel-edison-kit-c-get-started/7_temperature_sensor.jpg)
+   
+   ![Verbindung zwischen Edison und Sensor](media/iot-hub-intel-edison-kit-c-get-started/16_edion_sensor.png)
 
-*Geschätzter Zeitaufwand: 5 Minuten*
+Der Sensor ist damit betriebsbereit.
 
-Wechseln Sie zu [Lesen von Nachrichten in Azure Storage][read-messages-persisted-in-azure-storage].
+### <a name="power-up-edison"></a>Einschalten des Edison
 
-## <a name="lesson-4-send-cloud-to-device-messages"></a>Lektion 4: Senden von C2D-Nachrichten
-![Lektion 4: Komplettes Diagramm](media/iot-hub-intel-edison-lessons/e2e-lesson4.png)
+1. Stecken Sie das Netzteil ein.
 
-Diese Lektion zeigt, wie Nachrichten vom Azure IoT Hub an den Intel Edison gesendet werden. Die Nachrichten steuern die LED (Ein/Aus), die mit dem Edison verbunden ist. Zur Umsetzung dieser Aufgabe wird eine Beispielanwendung vorbereitet.
+   ![Einstecken des Netzteils](media/iot-hub-intel-edison-kit-c-get-started/8_plug_power.jpg)
 
-Schließen Sie die Lektionen 1, 2 und 3 ab, bevor Sie mit dieser Lektion beginnen.
+2. Eine grüne LED (mit der Bezeichnung DS1 auf der Arduino*-Erweiterungsplatine) sollte aufleuchten und eingeschaltet bleiben.
 
-### <a name="run-the-sample-application-to-receive-cloud-to-device-messages"></a>Ausführen der Beispielanwendung, um C2D-Nachrichten zu empfangen
-Die Beispielanwendung in Lektion 4 wird auf dem Edison ausgeführt und überwacht eingehende Nachrichten von Ihrem IoT Hub. Ein neuer Gulp-Task sendet Nachrichten vom IoT Hub an den Edison, damit die LED blinkt.
+3. Warten Sie eine Minute, bis die Platine hochgefahren ist.
 
-*Geschätzter Zeitaufwand: 10 Minuten*
+   > [!NOTE]
+   > Wenn Sie kein Gleichstromnetzteil haben, können Sie die Platine über einen USB-Anschluss mit Strom versorgen. Im Abschnitt `Connect Edison to your computer` finden Sie ausführliche Informationen hierzu. Die Stromversorgung Ihrer Platine auf diese Weise kann zu einem unvorhersehbaren Verhalten führen, insbesondere bei Verwenden eines WLAN oder Ansteuern von Motoren.
 
-Wechseln Sie zu [Ausführen der Beispielanwendung, um C2D-Nachrichten zu empfangen][receive-cloud-to-device-messages].
+### <a name="connect-edison-to-your-computer"></a>Verbinden von Edison mit Ihrem Computer
 
-### <a name="optional-section-change-the-on-and-off-behavior-of-the-led"></a>Optionaler Abschnitt: Ändern des Ein- und Aus-Verhaltens der LED
-Passen Sie die Nachrichten an, um das Ein- und Aus-Verhalten der LED zu ändern.
+1. Drücken Sie den Mikroschalter in Richtung der beiden Micro-USB-Anschlüsse herunter, um Edison in den Gerätemodus zu versetzen. Unterschiede zwischen dem Geräte- und Hostmodus werden [hier](https://software.intel.com/en-us/node/628233#usb-device-mode-vs-usb-host-mode) erläutert.
 
-*Geschätzter Zeitaufwand: 10 Minuten*
+   ![Herunterdrücken des Mikroschalters](media/iot-hub-intel-edison-kit-c-get-started/9_toggle_down_microswitch.jpg)
 
-Wechseln Sie zu [Optionaler Abschnitt: Ändern des Ein- und Aus-Verhaltens der LED][change-the-on-and-off-behavior-of-the-led].
+2. Stecken Sie das Micro-USB-Kabel in den oberen Micro-USB-Anschluss ein.
 
-## <a name="troubleshooting"></a>Problembehandlung
-Falls Sie bei den Lektionen Probleme haben, helfen Ihnen die Lösungen im Artikel zur [Problembehandlung][troubleshooting] weiter.
-<!-- Images and links -->
+   ![Oberer Micro-USB-Anschluss](media/iot-hub-intel-edison-kit-c-get-started/10_top_usbport.jpg)
 
-[configure-your-device]: iot-hub-intel-edison-kit-c-lesson1-configure-your-device.md
-[get-the-tools]: iot-hub-intel-edison-kit-c-lesson1-get-the-tools-win32.md
-[create-and-deploy-the-blink-application]: iot-hub-intel-edison-kit-c-lesson1-deploy-blink-app.md
-[get-azure-tools]: iot-hub-intel-edison-kit-c-lesson2-get-azure-tools-win32.md
-[create-an-azure-function-app-and-azure-storage-account]: iot-hub-intel-edison-kit-c-lesson3-deploy-resource-manager-template.md
-[send-device-to-cloud-messages]: iot-hub-intel-edison-kit-c-lesson3-run-azure-blink.md
-[read-messages-persisted-in-azure-storage]: iot-hub-intel-edison-kit-c-lesson3-read-table-storage.md
-[receive-cloud-to-device-messages]:iot-hub-intel-edison-kit-c-lesson4-send-cloud-to-device-messages.md
-[change-the-on-and-off-behavior-of-the-led]: iot-hub-intel-edison-kit-c-lesson4-change-led-behavior.md
-[troubleshooting]: iot-hub-intel-edison-kit-c-troubleshooting.md
+3. Stecken Sie das andere Ende des USB-Kabels in den Computer ein.
+
+   ![USB-Anschluss des Computers](media/iot-hub-intel-edison-kit-c-get-started/11_computer_usb.jpg)
+
+4. Sie wissen, dass Ihre Platine vollständig initialisiert wurde, wenn auf dem Computer ein neues Laufwerk bereitgestellt und angezeigt wird (ähnlich wie beim Einsetzen einer SD-Karte in Ihren Computer).
+
+## <a name="download-and-run-the-configuration-tool"></a>Herunterladen und Ausführen des Konfigurationstools
+Laden Sie über [diesen Link](https://software.intel.com/en-us/iot/hardware/edison/downloads) das neueste Konfigurationstool herunter, das unter der Überschrift `Installers` aufgeführt ist. Führen Sie das Tool aus, und befolgen Sie die Anweisungen auf dem Bildschirm. Klicken Sie bei Bedarf auf „Weiter“.
+
+### <a name="flash-firmware"></a>Einspielen der Firmware
+1. Klicken Sie auf der Seite `Set up options` auf `Flash Firmware`.
+2. Wählen Sie das Image aus, das auf Ihre Platine eingespielt werden soll, indem Sie einen der folgenden Schritte ausführen:
+   - Wählen Sie zum Herunterladen und Einspielen des neuesten von Intel angebotenen Firmware-Images auf Ihrer Platine `Download the latest image version xxxx` aus.
+   - Um auf Ihre Platine ein Image einzuspielen, das Sie bereits auf Ihrem Computer gespeichert haben, wählen Sie `Select the local image` aus. Navigieren Sie zum Image, das Sie auf Ihre Platine einspielen möchten, und wählen Sie es aus.
+3. Das Setuptool versucht, das Einspielen auf Ihre Platine durchzuführen. Der gesamte Einspielvorgang kann bis zu 10 Minuten dauern.
+
+### <a name="set-password"></a>Festlegen des Kennworts
+1. Klicken Sie auf der Seite `Set up options` auf `Enable Security`.
+2. Sie können für die Intel® Edison-Platine einen benutzerdefinierten Namen festlegen. Dies ist optional.
+3. Geben Sie ein Kennwort für die Platine ein, und klicken Sie auf `Set password`.
+4. Notieren Sie sich das Kennwort, das später verwendet wird.
+
+### <a name="connect-wi-fi"></a>Verbinden mit dem WLAN
+1. Klicken Sie auf der Seite `Set up options` auf `Connect Wi-Fi`. Warten Sie bis zu einer Minute, während der Computer verfügbare WLAN-Netzwerke sucht.
+2. Wählen Sie in der Dropdownliste `Detected Networks` Ihr Netzwerk aus.
+3. Wählen Sie in der Dropdownliste `Security` den Sicherheitstyp des Netzwerks aus.
+4. Geben Sie Ihren Anmeldenamen und das Kennwort ein, und klicken Sie auf `Configure Wi-Fi`.
+5. Notieren Sie sich die IP-Adresse, die später verwendet wird.
+
+> [!NOTE]
+> Vergewissern Sie sich, dass Edison mit dem gleichen Netzwerk wie der Computer verbunden ist. Ihr Computer verbindet sich mit Edison mithilfe der IP-Adresse.
+
+   ![Anschließen des Temperatursensors](media/iot-hub-intel-edison-kit-c-get-started/12_configuration_tool.png)
+
+Glückwunsch! Sie haben Edison erfolgreich konfiguriert.
+
+## <a name="run-a-sample-application-on-intel-edison"></a>Ausführen einer Beispielanwendung auf Intel Edison
+
+### <a name="prepare-the-azure-iot-device-sdk"></a>Vorbereiten des Azure IoT-Geräte-SDK
+
+1. Verwenden Sie einen der folgenden SSH-Clients auf Ihrem Hostcomputer, um die Verbindung mit dem Intel Edison herzustellen. Verwenden Sie dabei die IP-Adresse des Konfigurationstools und das Kennwort, das Sie in diesem Tool festgelegt haben.
+    - [PuTTY](http://www.putty.org/) für Windows.
+    - Den integrierten SSH-Client unter Ubuntu oder macOS.
+
+2. Klonen Sie die Beispiel-Client-App auf Ihrem Gerät. 
+   
+   ```bash
+   git clone https://github.com/Azure-Samples/iot-hub-c-intel-edison-client-app.git
+   ```
+
+3. Navigieren Sie dann zum Repositoryordner, und führen Sie den folgenden Befehl zum Erstellen des Azure IoT-SDK aus.
+
+   ```bash
+   cd iot-hub-c-intel-edison-client-app
+   sed -i -e 's/\r$//' buildSDK.sh
+   chmod 755 buildSDK.sh
+   ./buildSDK.sh
+   ```
+
+### <a name="configure-the-sample-application"></a>Konfigurieren der Beispielanwendung
+
+1. Öffnen Sie die Konfigurationsdatei durch Ausführen der folgenden Befehle:
+
+   ```bash
+   nano config.h
+   ```
+
+   ![Konfigurationsdatei](media/iot-hub-intel-edison-kit-c-get-started/13_configure_file.png)
+
+   Es gibt zwei Argumente in dieser Datei, die Sie konfigurieren können. Das erste ist `INTERVAL`, welches das Zeitintervall zwischen zwei Nachrichten bestimmt, die an die Cloud gesendet werden. Das zweite heißt `SIMULATED_DATA` und ist ein boolescher Wert, der bestimmt, ob simulierte Sensordaten verwendet werden sollen.
+
+   Wenn Sie **keinen Sensor haben**, legen Sie den Wert von `SIMULATED_DATA` auf `1` fest, damit die Beispielanwendung simulierte Sensordaten erstellt und nutzt.
+
+2. Speichern und beenden Sie durch Drücken von Control+O > EINGABETASTE > Control+X.
+
+### <a name="build-and-run-the-sample-application"></a>Erstellen und Ausführen der Beispielanwendung
+
+1. Erstellen Sie die Beispielanwendung durch Ausführen des folgenden Befehls:
+
+   ```bash
+   cmake . && make
+   ```
+   ![Erstellen der Ausgabe](media/iot-hub-intel-edison-kit-c-get-started/14_build_output.png)
+
+1. Führen Sie die Beispielanwendung durch Aufrufen des folgenden Befehls aus:
+
+   ```bash
+   sudo ./app '<your Azure IoT hub device connection string>'
+   ```
+
+   > [!NOTE] 
+   Stellen Sie sicher, dass Sie die Verbindungszeichenfolge des Geräts kopieren und zwischen einfachen Anführungszeichen einfügen.
+
+Die folgende Ausgabe sollte angezeigt werden, die die Sensordaten und Nachrichten zeigt, die an Ihren IoT Hub gesendet werden.
+
+![Ausgabe: von Intel Edison an Ihren IoT Hub gesendete Sensordaten](media/iot-hub-intel-edison-kit-c-get-started/15_message_sent.png)
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Sie haben eine Beispielanwendung ausgeführt, die Sensordaten sammelt und an Ihren IoT Hub sendet.
+
+[!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

@@ -15,9 +15,9 @@ ms.workload:
 ms.date: 02/13/2017
 ms.author: ruturajd
 translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: 7b7177faa9fa571d3a62ee15b4a0fbfdab3a097f
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: a655c7bf1ea5ca1439d4353df5067c0e07f2d49f
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -46,7 +46,7 @@ Hier sind die vorbereitenden Schritte angegeben, die Sie beim erneuten Schützen
         * Für einen virtuellen Windows-Computer wird ein Windows-Masterzielserver benötigt. Sie können den lokalen Prozessserver und die Masterzielcomputer wiederverwenden.
 * Ein Konfigurationsserver ist lokal erforderlich, wenn Sie ein Failback durchführen. Während des Failbacks muss der virtuelle Computer in der Konfigurationsserverdatenbank vorhanden sein. Andernfalls ist das Failback nicht erfolgreich. Stellen Sie sicher, dass Sie die regelmäßigen geplanten Sicherungen des Servers durchführen. Im Notfall müssen Sie den Server mit der gleichen IP-Adresse wiederherstellen, damit das Failback funktioniert.
 * Stellen Sie sicher, dass Sie die Einstellung „disk.EnableUUID=true“ in den Konfigurationsparametern des virtuellen Masterzielcomputers in VMware festlegen. Wenn diese Zeile nicht vorhanden ist, fügen Sie sie hinzu. Diese Einstellung ist erforderlich, um für den Datenträger des virtuellen Computers (VMDK) eine einheitliche UUID festzulegen, damit er richtig bereitgestellt wird.
-* *Der Einsatz von Storage vMaster als Masterzielserver ist nicht möglich*. Dadurch kann ein Fehler beim Failback auftreten. Der virtuelle Computer wird nicht gestartet, weil die Datenträger dafür nicht verfügbar gemacht werden.
+* *Es ist nicht möglich, Storage vMotion für den Masterzielserver zu verwenden*. Dadurch kann ein Fehler beim Failback auftreten. Der virtuelle Computer wird nicht gestartet, weil die Datenträger dafür nicht verfügbar gemacht werden. Um dies zu verhindern, schließen Sie die Masterzielserver aus der vMotion-Liste aus.
 * Sie müssen dem Masterzielserver ein neues Laufwerk hinzufügen. Dieses Laufwerk wird als Aufbewahrungslaufwerk bezeichnet. Fügen Sie einen neuen Datenträger hinzu, und formatieren Sie das Laufwerk.
 * Für das Masterziel gelten andere Voraussetzungen, die unter [Allgemeine Überprüfungen nach der Installation des Masterziels](site-recovery-how-to-reprotect.md#common-things-to-check-after-completing-installation-of-the-master-target-server) aufgeführt sind.
 
@@ -76,6 +76,11 @@ Beachten Sie, dass die Replikation nur über das S2S-VPN oder über das private 
 
 Weitere Informationen zur Installation eines Azure-Prozessservers finden Sie in [diesem Artikel](site-recovery-vmware-setup-azure-ps-resource-manager.md).
 
+> [!TIP]
+> Es empfiehlt sich grundsätzlich, beim Failback einen Azure-basierten Prozessserver zu verwenden. Die Replikationsleistung ist höher, wenn der Prozessserver sich näher beim replizierenden virtuellen Computer (dem Computer in Azure, für den das Failover durchgeführt wurde) befindet. Während des Proof of Concept (POC) oder bei Demos können Sie jedoch den lokalen Prozessserver zusammen mit ExpressRoute mit privatem Peering verwenden, um den POC schneller abzuschließen.
+
+
+
 ### <a name="what-are-the-ports-to-be-open-on-different-components-so-that-reprotect-can-work"></a>Welche Ports müssen auf den verschiedenen Komponenten geöffnet sein, damit das erneute Schützen funktioniert?
 
 ![Failover-Failback für alle Ports](./media/site-recovery-failback-azure-to-vmware-classic/Failover-Failback.png)
@@ -94,9 +99,12 @@ Klicken Sie auf die folgenden Links, um Informationen zur Installation eines Mas
 
 * Wenn sich der virtuelle Computer lokal auf dem vCenter-Server befindet, muss der Masterzielserver auf die VMDK des lokalen virtuellen Computers zugreifen können. Der Zugriff ist erforderlich, um die replizierten Daten auf die Datenträger des virtuellen Computers schreiben zu können. Stellen Sie sicher, dass der Datenspeicher des lokalen virtuellen Computers auf dem Host des Masterziels mit Lese-/Schreibzugriff bereitgestellt wird.
 
-* Falls der virtuelle Computer nicht lokal auf dem vCenter-Server vorhanden ist, müssen Sie beim erneuten Schützen einen neuen virtuellen Computer erstellen. Dieser virtuelle Computer wird auf dem ESX-Host erstellt, auf dem Sie das Masterziel erstellen. Wählen Sie den ESX-Host mit Bedacht, damit der virtuelle Failbackcomputer auf dem gewünschten Host erstellt wird.
+* Wenn der virtuelle Computer nicht lokal auf dem vCenter-Server vorhanden ist, muss der Site Recovery-Dienst beim erneuten Schützen einen neuen virtuellen Computer erstellen. Dieser virtuelle Computer wird auf dem ESX-Host erstellt, auf dem Sie das Masterziel erstellen. Wählen Sie den ESX-Host mit Bedacht, damit der virtuelle Failbackcomputer auf dem gewünschten Host erstellt wird.
 
 * *Es ist nicht möglich, Storage vMotion für den Masterzielserver zu verwenden*. Dadurch kann ein Fehler beim Failback auftreten. Der virtuelle Computer wird nicht gestartet, weil die Datenträger dafür nicht verfügbar gemacht werden.
+
+> [!WARNING]
+> Wenn für ein Masterziel nach dem erneuten Schützen Storage vMotion durchgeführt wird, werden die geschützten VM-Datenträger, die an das Masterziel angefügt sind, zu dem Ziel von vMotion migriert. Wenn Sie anschließend versuchen, ein Failback durchzuführen, schlägt die Trennung der Datenträger mit der Angabe fehl, dass die Datenträger nicht gefunden werden. Danach können die Datenträger in den Speicherkonten nur sehr schwer gefunden werden. Sie müssen sie manuell suchen und an den virtuellen Computer anfügen. Anschließend kann der lokale virtuelle Computer neu gestartet werden.
 
 * Dem vorhandenen Windows-Masterzielserver muss ein neues Laufwerk hinzugefügt werden. Dieses Laufwerk wird als Aufbewahrungslaufwerk bezeichnet. Fügen Sie einen neuen Datenträger hinzu, und formatieren Sie das Laufwerk. Das Aufbewahrungslaufwerk wird verwendet, um die Zeitpunkte festzuhalten, zu denen der virtuelle Computer zurück an den lokalen Standort repliziert wird. Hier sind einige Kriterien eines Aufbewahrungslaufwerks beschrieben. Wenn diese Kriterien nicht erfüllt sind, wird das Laufwerk nicht für den Masterzielserver aufgelistet.
 
@@ -113,6 +121,11 @@ Klicken Sie auf die folgenden Links, um Informationen zur Installation eines Mas
    * Das Standardaufbewahrungsvolume für Windows ist das R-Volume.
 
    * Das Standardaufbewahrungsvolume für Linux ist „/mnt/retention“.
+   
+   > [!IMPORTANT]
+   > Sie müssen ein neues Laufwerk hinzufügen, wenn Sie einen vorhandenen CS+PS-Computer oder eine Skalierung oder einen PS+MT-Computer verwenden. Das neue Laufwerk muss die oben genannten Anforderungen erfüllen. Wenn das Aufbewahrungslaufwerk nicht vorhanden ist, werden in der Auswahl-Dropdownliste im Portal keine Laufwerke angezeigt. Nach dem Hinzufügen eines Laufwerks zum lokalen Masterziel dauert es bis zu 15 Minuten, bis das Laufwerk in der Auswahl im Portal angezeigt wird. Sie können auch den Konfigurationsserver aktualisieren, wenn das Laufwerk nach 15 Minuten nicht angezeigt wird.
+
+
 
 * Für einen virtuellen Linux-Computer, für den ein Failover durchgeführt wurde, wird ein Linux-Masterzielserver benötigt. Für einen virtuellen Windows-Computer, für den ein Failover durchgeführt wurde, wird ein Windows-Masterzielserver benötigt.
 
