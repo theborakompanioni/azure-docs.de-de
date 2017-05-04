@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 12/05/2016
 ms.author: hkanna
 translationtype: Human Translation
-ms.sourcegitcommit: 83dc91972ad5fec85e562e45227747568b1fea75
-ms.openlocfilehash: db05fb35fdcbcf6691cc3ffc99d201383706592f
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 38a5bee31483cbb91b0278ea6c750e5ff7780b7c
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -444,7 +445,7 @@ Der folgende Abschnitt zeigt, wie Sie ein kurzes Skript schreiben, um StorSimple
 
 ### <a name="to-start-or-delete-a-cloud-snapshot"></a>So starten oder löschen Sie eine Cloudmomentaufnahme
 
-1.  [Installieren Sie Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azureps-cmdlets-docs/).
+1.  [Installieren Sie Azure PowerShell](/powershell/azure/overview).
 2.  [Laden Sie Veröffentlichungseinstellungen und Abonnementinformationen herunter, und importieren Sie sie](https://msdn.microsoft.com/library/dn385850.aspx).
 3.  Rufen Sie im klassischen Azure-Portal den Ressourcennamen und [Registrierungsschlüssel für Ihren StorSimple Manager-Dienst](storsimple-deployment-walkthrough-u2.md#step-2-get-the-service-registration-key) ab.
 4.  Führen Sie auf dem Server, auf dem das Skript ausgeführt wird, PowerShell als Administrator aus. Geben Sie folgenden Befehl ein:
@@ -523,9 +524,4 @@ Folgende Dokumente haben als Referenz für diesen Artikel gedient:
 
 - Erfahren Sie, wie Sie die [Wiederherstellung aus einem Sicherungssatz](storsimple-restore-from-backup-set-u2.md) durchführen.
 - Erfahren Sie, wie Sie [ein Gerätefailover und eine Notfallwiederherstellung](storsimple-device-failover-disaster-recovery.md) ausführen.
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

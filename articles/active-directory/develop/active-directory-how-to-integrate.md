@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/07/2017
-ms.author: mbaldwin
+ms.date: 04/27/2017
+ms.author: bryanla
 translationtype: Human Translation
-ms.sourcegitcommit: 3e0bb32a6c60011d71606c896cc506f430bc3c27
-ms.openlocfilehash: e8a092bc398e314a111973b6978012909aedc16e
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: 32c236c7082e48990f41a1a9069cea53d0cab96f
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -77,13 +78,8 @@ Die Integration in Azure AD bietet den Vorteil, dass Sie keinen zusätzlichen Co
 **Azure AD ist in Datencentern auf der ganzen Welt in Betrieb bereitgestellt und wird rund um die Uhr verwaltet und überwacht.**  Azure AD ist das Identitätsverwaltungssystem für Microsoft Azure und Office 365 und in 28 Datencentern auf der ganzen Welt im Einsatz.  Verzeichnisdaten werden garantiert in mindestens drei Datencenter repliziert.  Globale Lastenausgleichsfunktionen stellen sicher, dass Benutzer auf die nächstgelegene Kopie von Azure AD mit ihren Daten zugreifen, und leiten Anforderungen automatisch an andere Datencenter weiter, sobald ein Problem erkannt wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Erste Schritte mit dem Schreiben von Code](active-directory-developers-guide.md#getting-started).
+[Erste Schritte mit dem Schreiben von Code](active-directory-developers-guide.md#get-started).
 
 [Anmelden von Benutzern über Azure AD](active-directory-authentication-scenarios.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

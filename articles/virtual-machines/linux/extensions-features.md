@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/06/2017
+ms.date: 04/26/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 0182d0d600af691daf8c2ac7a5cb93d7755f61da
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: 2b25b4f4925962b1e4de681d268e78909a93eccd
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -56,7 +56,7 @@ Informationen zu unterstützten Betriebssystemen und Installationshinweise finde
 Für die Verwendung mit virtuellen Azure-Computern stehen viele verschiedene VM-Erweiterungen zur Verfügung. Wenn Sie eine vollständige Liste erhalten möchten, führen Sie mit der Azure-Befehlszeilenoberfläche den folgenden Befehl aus. Ersetzen Sie den Beispielspeicherort dabei durch den gewünschten Speicherort.
 
 ```azurecli
-azure vm extension-image list westus
+az vm extension image list --location westus -o table
 ```
 
 ## <a name="run-vm-extensions"></a>Ausführen von VM-Erweiterungen
@@ -67,12 +67,15 @@ Die folgenden Methoden können verwendet werden, um eine Erweiterung für einen 
 
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
-Azure VM-Erweiterungen können mithilfe des `azure vm extension set`-Befehls für einen vorhandenen virtuellen Computer ausgeführt werden. In diesem Beispiel wird die benutzerdefinierte Skripterweiterung für einen virtuellen Computer ausgeführt.
+Azure VM-Erweiterungen können mithilfe des `az vm extension set`-Befehls für einen vorhandenen virtuellen Computer ausgeführt werden. In diesem Beispiel wird die benutzerdefinierte Skripterweiterung für einen virtuellen Computer ausgeführt.
 
 ```azurecli
-azure vm extension set myResourceGroup myVM CustomScript Microsoft.Azure.Extensions 2.0 \
-  --auto-upgrade-minor-version \
-  --public-config '{"fileUris": ["https://gist.github.com/ahmetalpbalkan/b5d4a856fe15464015ae87d5587a4439/raw/466f5c30507c990a4d5a2f5c79f901fa89a80841/hello.sh"],"commandToExecute": "./hello.sh"}'
+az vm extension set `
+  --resource-group exttest `
+  --vm-name exttest `
+  --name customScript `
+  --publisher Microsoft.Azure.Extensions `
+  --settings '{"fileUris": ["https://gist.github.com/ahmetalpbalkan/b5d4a856fe15464015ae87d5587a4439/raw/466f5c30507c990a4d5a2f5c79f901fa89a80841/hello.sh"],"commandToExecute": "./hello.sh"}'
 ```
 
 Das Skript erzeugt eine Ausgabe ähnlich wie bei folgendem Text:
@@ -205,18 +208,15 @@ Die folgenden Schritte zur Problembehandlung gelten für alle VM-Erweiterungen.
 Verwenden Sie nach dem Anwenden einer VM-Erweiterung auf einen virtuellen Computer den folgenden Azure-Befehlszeilenbefehl zum Zurückgeben des Erweiterungsstatus. Ersetzen Sie die Namen der Beispielparameter durch Ihre eigenen Werte.
 
 ```azurecli
-azure vm extension get myResourceGroup myVM
+az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
 Die Ausgabe sieht in etwa wie folgt aus:
 
 ```azurecli
-info:    Executing command vm extension get
-+ Looking up the VM "myVM"
-data:    Publisher                   Name             Version  State
-data:    --------------------------  ---------------  -------  ---------
-data:    Microsoft.Azure.Extensions  DockerExtension  1.0      Succeeded
-info:    vm extension get command OK         :
+AutoUpgradeMinorVersion    Location    Name          ProvisioningState    Publisher                   ResourceGroup      TypeHandlerVersion  VirtualMachineExtensionType
+-------------------------  ----------  ------------  -------------------  --------------------------  ---------------  --------------------  -----------------------------
+True                       westus      customScript  Succeeded            Microsoft.Azure.Extensions  exttest                             2  customScript
 ```
 
 Der Ausführungsstatus von Erweiterungen findet sich ebenfalls im Azure-Portal. Um den Status einer Erweiterung anzuzeigen, wählen Sie den virtuellen Computer aus, wählen Sie **Erweiterungen** und dann die gewünschte Erweiterung aus.
@@ -226,7 +226,7 @@ Der Ausführungsstatus von Erweiterungen findet sich ebenfalls im Azure-Portal. 
 In manchen Fällen kann die erneute Ausführung einer VM-Erweiterung erforderlich sein. Sie können eine Erweiterung erneut ausführen, indem Sie sie entfernen und die Erweiterung dann mit einer Ausführungsmethode Ihrer Wahl erneut ausführen. Um eine Erweiterung zu entfernen, führen Sie den folgenden Befehl in der Azure-Befehlszeile aus. Ersetzen Sie die Namen der Beispielparameter durch Ihre eigenen Werte.
 
 ```azurecli
-azure vm extension set myResourceGroup myVM --uninstall CustomScript Microsoft.Azure.Extensions 2.0
+az vm extension delete --name customScript --resource-group myResourceGroup --vm-name myVM
 ```
 
 Im Azure-Portal können Sie eine Erweiterung mithilfe der folgenden Schritte entfernen:

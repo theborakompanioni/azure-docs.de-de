@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 02/24/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 44f40aebe8418b0cfcf2c2708469d586d1dd4c4c
-ms.lasthandoff: 04/06/2017
+ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
+ms.openlocfilehash: eec53d5dea1255572d515f1ab2796da681579d19
+ms.lasthandoff: 04/29/2017
 
 
 ---
@@ -32,7 +32,9 @@ Azure Storage ist eine Cloudspeicherlösung für moderne Anwendungen, die eine K
 * Wie wird die Dauerhaftigkeit Ihrer Azure Storage-Daten mittels Redundanz und Replikation gewährleistet?
 * Welche Schritte sind zum Erstellen einer ersten Azure Storage-Anwendung erforderlich?
 
-Informationen zum Einrichten und Starten von Azure Storage finden Sie unter [Erste Schritte mit Azure Storage – Einstieg in fünf Minuten](storage-getting-started-guide.md).
+<!-- after our quick starts are available, replace this link with a link to one of those. 
+Had to remove this article, it refers to the VS quickstarts, and they've stopped publishing them. Robin --> 
+<!-- To get up and running with Azure Storage quickly, see [Get started with Azure Storage in five minutes](storage-getting-started-guide.md). -->
 
 Informationen zu Tools, Bibliotheken und weiteren Ressourcen für die Arbeit mit Azure Storage finden Sie weiter unten unter [Nächste Schritte](#next-steps) .
 
@@ -185,12 +187,12 @@ Auf Azure Storage-Ressourcen kann über jede Sprache zugegriffen werden, die fü
 * [Speicherclientbibliothek für PHP](https://azure.microsoft.com/develop/php/)
 * [Speicherclientbibliothek für Ruby](https://azure.microsoft.com/develop/ruby/)
 * [Speicherclientbibliothek für Python](https://azure.microsoft.com/develop/python/)
-* [Storage-Cmdlets für PowerShell 1.0](https://msdn.microsoft.com/library/azure/mt269418.aspx)
+* [Storage-Cmdlets für PowerShell 1.0](/powershell/module/azurerm.storage/#storage)
 
 ### <a name="azure-storage-management-services"></a>Azure Storage-Verwaltungsdienste
 * [Speicherressourcenanbieter – REST-API-Referenz](/rest/api/storagerp/)
 * [Speicherressourcenanbieter – Clientbibliothek für .NET](/dotnet/api/microsoft.azure.management.storage)
-* [Speicherressourcenanbieter – Cmdlets für PowerShell 1.0](/powershell/storage/)
+* [Speicherressourcenanbieter – Cmdlets für PowerShell 1.0](/powershell/module/azure.storage)
 * [Storage-Dienstverwaltung – REST-API (klassisch)](https://msdn.microsoft.com/library/azure/ee460790.aspx)
 
 ### <a name="azure-storage-data-movement-services"></a>Azure Storage-Datenverschiebungsdienste
@@ -202,7 +204,7 @@ Auf Azure Storage-Ressourcen kann über jede Sprache zugegriffen werden, die fü
 * [Azure Storage-Clienttools](storage-explorers.md)
 * [Azure-SDKs und -Tools](https://azure.microsoft.com/tools/)
 * [Azure-Speicheremulator](http://www.microsoft.com/download/details.aspx?id=43709)
-* [Azure PowerShell](/powershell/azureps-cmdlets-docs)
+* [Azure PowerShell](/powershell/azure/overview)
 * [Befehlszeilenprogramm AzCopy](http://aka.ms/downloadazcopy)
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -210,8 +212,12 @@ Weitere Informationen zu Azure Storage finden Sie in den folgenden Ressourcen:
 
 ### <a name="documentation"></a>Dokumentation
 * [Azure-Speicherdokumentation](https://azure.microsoft.com/documentation/services/storage/)
-* [Erstellen Sie ein Speicherkonto](storage-create-storage-account.md)
-* [Erste Schritte mit Azure Storage – Einstieg in fünf Minuten](storage-getting-started-guide.md)
+* [Erstellen eines Speicherkontos](storage-create-storage-account.md)
+
+<!-- after our quick starts are available, replace this link with a link to one of those. 
+Had to remove this article, it refers to the VS quickstarts, and they've stopped publishing them. Robin --> 
+<!--* [Get started with Azure Storage in five minutes](storage-getting-started-guide.md)
+-->
 
 ### <a name="for-administrators"></a>Für Administratoren
 * [Verwenden von Azure PowerShell mit Azure Storage](storage-powershell-guide-full.md)

@@ -46,7 +46,7 @@
 ###[Horizontales Herunter-/Hochskalieren mithilfe des Redis-Clusters](cache-how-to-premium-clustering.md)
 
 # Referenz
-## [PowerShell](/powershell/resourcemanager/azurerm.rediscache/v2.3.0/azurerm.rediscache)
+## [PowerShell](/powershell/module/azurerm.rediscache)
 ## [Azure CLI 2.0 (Vorschau)](/cli/azure/redis)
 ## [.NET](/dotnet/api/microsoft.azure.management.redis)
 ## [Java](/java/api/com.microsoft.azure.management.redis._redis_cache)

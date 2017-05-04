@@ -14,9 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 3/13/2017
 ms.author: rclaus
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: f2449ffda80ec7cb7a73a6eac229d09c3a4a96cc
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 047d9191e2c844a591c35279ff7b143906087f56
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -105,7 +105,7 @@ Im Gegensatz zur manuellen VM-Datenträgersicherung werden bei diesem Ansatz nic
 
 ![Alle beteiligten VHDs wurden mithilfe des PowerShell-Befehls **start-azurestorageblobcopy** kopiert.](media/sap-hana-backup-file-level/image031.png)
 
-Nach Abschluss der Sicherung in der lokalen Software-RAID-Instanz wurden alle beteiligten VHDs mithilfe des PowerShell-Befehls **start-azurestorageblobcopy** kopiert. (Weitere Informationen finden Sie unter [Start-AzureStorageBlobCopy](/powershell/storage/azure.storage/v2.1.0/start-azurestorageblobcopy).) Da die Auswirkungen auf das dedizierte Dateisystem zur Aufbewahrung der Sicherungsdateien beschränkt sind, müssen Sie sich keine Gedanken über die Konsistenz der SAP HANA-Daten oder -Protokolldatei auf dem Datenträger machen. Ein Vorteil dieses Befehls besteht darin, dass der virtuelle Computer während der Ausführung des Befehls online bleiben kann. Um sicherzustellen, dass kein Prozess in das Stripeset der Sicherung schreibt, heben Sie vor dem Blobkopiervorgang die Bereitstellung auf, und binden Sie es anschließend wieder ein. Alternativ kann das Dateisystem auch mit einer geeigneten Methode „eingefroren“ werden. Ein Beispiel für eine solche Methode wäre etwa „xfs\_freeze“ für das XFS-Dateisystem.
+Nach Abschluss der Sicherung in der lokalen Software-RAID-Instanz wurden alle beteiligten VHDs mithilfe des PowerShell-Befehls **start-azurestorageblobcopy** kopiert. (Weitere Informationen finden Sie unter [Start-AzureStorageBlobCopy](/powershell/module/azure.storage/start-azurestorageblobcopy).) Da die Auswirkungen auf das dedizierte Dateisystem zur Aufbewahrung der Sicherungsdateien beschränkt sind, müssen Sie sich keine Gedanken über die Konsistenz der SAP HANA-Daten oder -Protokolldatei auf dem Datenträger machen. Ein Vorteil dieses Befehls besteht darin, dass der virtuelle Computer während der Ausführung des Befehls online bleiben kann. Um sicherzustellen, dass kein Prozess in das Stripeset der Sicherung schreibt, heben Sie vor dem Blobkopiervorgang die Bereitstellung auf, und binden Sie es anschließend wieder ein. Alternativ kann das Dateisystem auch mit einer geeigneten Methode „eingefroren“ werden. Ein Beispiel für eine solche Methode wäre etwa „xfs\_freeze“ für das XFS-Dateisystem.
 
 ![Dieser Screenshot zeigt die Liste mit Blobs im Container „vhds“ im Azure-Portal.](media/sap-hana-backup-file-level/image032.png)
 

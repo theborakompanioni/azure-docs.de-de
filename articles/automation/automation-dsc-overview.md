@@ -15,9 +15,9 @@ ms.workload: TBD
 ms.date: 02/02/2017
 ms.author: magoedte;eslesar
 translationtype: Human Translation
-ms.sourcegitcommit: f0d3a5c1929bb6dafef735ae3f4291e329861cc9
-ms.openlocfilehash: b750878703baf143a2e8247bdd01f358e462e598
-ms.lasthandoff: 02/03/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 852284ce7e82d782c31bb085d4878de25412411a
+ms.lasthandoff: 04/27/2017
 
 ---
 # <a name="azure-automation-dsc-overview"></a>Azure Automation DSC – Übersicht
@@ -116,7 +116,7 @@ Die folgende Abbildung veranschaulicht detailliert die Prozessschritte im DSC-Le
 
 * [Integrieren von Computern für die Verwaltung durch Azure Automation DSC](automation-dsc-onboarding.md)
 * [Kompilieren von Konfigurationen in Azure Automation DSC](automation-dsc-compile.md)
-* [Azure Automation DSC-Cmdlets](https://msdn.microsoft.com/library/mt244122.aspx)
+* [Azure Automation DSC-Cmdlets](/powershell/module/azurerm.automation/#automation)
 * [Azure Automation DSC – Preise](https://azure.microsoft.com/pricing/details/automation/)
 * [Kontinuierliche Bereitstellung für IaaS-VMs mit Azure Automation DSC und Chocolatey](automation-dsc-cd-chocolatey.md)
 

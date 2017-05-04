@@ -16,9 +16,9 @@ ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 2b4a10c77ae02ac0e9eeecf6d7d6ade6e4c33115
-ms.openlocfilehash: 493a915fb4e3de4cb70324b22beeaae6720a3492
-ms.lasthandoff: 01/25/2017
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: a6b1df79f4fc6b09b681755f5adbb7f56faaf225
+ms.lasthandoff: 05/01/2017
 
 
 ---
@@ -42,7 +42,7 @@ Große Datenmengen werden heute mit hoher Geschwindigkeit über das Netz übertr
 * **Konnektivität** : Stream Analytics stellt eine Direktverbindung mit Azure Event Hubs und Azure IoT Hubs (Datenstromerfassung) und mit dem Azure-Blob-Dienst (Erfassung historischer Daten) her. Ergebnisse von Stream Analytics können in Azure-Speicherblobs oder -tabellen, Azure SQL-Datenbank, Azure Data Lake Store, DocumentDB, Event Hubs, Azure Service Bus-Themen oder -Warteschlangen und Power BI geschrieben werden, um sie dort zu visualisieren, mit Workflows weiter zu verarbeiten, über [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) für eine Batchanalyse zu verwenden oder als Ereignisreihe erneut zu verarbeiten. Bei Event Hubs können mehrere Stream Analytics zusammen mit anderen Datenquellen und Verarbeitungsmodulen zusammengestellt werden, ohne den Streamingcharakter der Berechnung zu verlieren.  
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
-Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sie haben nun Stream Analytics kennengelernt, einen verwalteten Dienst für Stream Analytics für Daten aus dem Internet der Dinge. Weitere Informationen zu diesem Dienst finden Sie unter:

@@ -18,9 +18,9 @@ ms.date: 02/06/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: e1933c5bf65f3e28d952213317413d0f65309c5b
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: caf50732ce19ded5016c6d5368f8b53b6ca3646f
+ms.lasthandoff: 04/27/2017
 
 ---
 # <a name="increase-vm-availability-by-creating-an-azure-availability-set"></a>Erhöhen der VM-Verfügbarkeit durch Erstellen einer Azure-Verfügbarkeitsgruppe 
@@ -71,7 +71,7 @@ Stellen Sie vor Beginn sicher, dass Sie die neueste Version des AzureRM.Compute-
 ```powershell
 Install-Module AzureRM.Compute -RequiredVersion 2.6.0
 ```
-Weitere Informationen finden Sie unter [Azure PowerShell-Versionsverwaltung](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/#azure-powershell-versioning).
+Weitere Informationen finden Sie unter [Azure PowerShell-Versionsverwaltung](/powershell/azure/overview).
 
 
 Wenn Sie nicht verwaltete Datenträger für Ihre virtuellen Computer verwenden, geben Sie Folgendes ein:
@@ -88,7 +88,7 @@ Wenn Sie Ihre eigenen Speicherkonten für Ihre virtuellen Computer verwenden, ge
     -Name "myAvailabilitySet" -Location "West US" 
 ```
 
-Weitere Informationen finden Sie unter [New-AzureRmAvailabilitySet](/powershell/resourcemanager/azurerm.compute/v2.8.0/new-azurermavailabilityset).
+Weitere Informationen finden Sie unter [New-AzureRmAvailabilitySet](/powershell/module/azurerm.compute/new-azurermavailabilityset).
 
 ## <a name="troubleshooting"></a>Problembehandlung
 * Wenn Sie beim Erstellen eines virtuellen Computers feststellen, dass sich die gewünschte Verfügbarkeitsgruppe nicht in der Dropdownliste im Portal befindet, haben Sie sie möglicherweise in einer anderen Ressourcengruppe erstellt. Wenn Sie die Ressourcengruppe Ihrer Verfügbarkeitsgruppe nicht kennen, wechseln Sie zum Menü des Hubs und klicken auf „Durchsuchen“ > „Verfügbarkeitsgruppen“, um eine Liste Ihrer Verfügbarkeitsgruppen und der Ressourcengruppen anzuzeigen, zu denen sie gehören.

@@ -15,9 +15,9 @@ ms.workload: big-data
 ms.date: 01/27/2017
 ms.author: stewu
 translationtype: Human Translation
-ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
-ms.openlocfilehash: 34b449b251672619aec6e86b9343343a9404126a
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: a0eecbb50b001325c91d1d721bf8de7244f04674
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -48,7 +48,7 @@ Weitere wichtige Details, die beim Planen der Migration zu berücksichtigen sind
 
 * **Bandbreitengebühren**. [Bandbreitengebühren](https://azure.microsoft.com/en-us/pricing/details/bandwidth/) werden geltend gemacht, da Daten aus einer Azure-Region hinaus übertragen werden.
 
-* **ACLs für Ihre Daten**. Sichern Sie Ihre Daten in der neuen Region durch Anwenden von ACLs auf Dateien und Ordner. Weitere Informationen finden Sie unter [Schützen von Daten, die im Azure Data Lake Store gespeichert sind](data-lake-store-secure-data.md). Es wird empfohlen, dass Sie die Migration zum Aktualisieren und Anpassen Ihrer ACLs verwenden. Möglicherweise möchten die Einstellungen, die mit Ihrer aktuellen Einstellungen ähnliche verwenden. Sie können die ACLs, die auf alle Dateien angewendet werden, mithilfe vom Azure-Portal, [PowerShell-Cmdlets](https://docs.microsoft.com/en-us/powershell/resourcemanager/azurerm.datalakestore/v3.1.0/get-azurermdatalakestoreitempermission) oder SDKs anzeigen.  
+* **ACLs für Ihre Daten**. Sichern Sie Ihre Daten in der neuen Region durch Anwenden von ACLs auf Dateien und Ordner. Weitere Informationen finden Sie unter [Schützen von Daten, die im Azure Data Lake Store gespeichert sind](data-lake-store-secure-data.md). Es wird empfohlen, dass Sie die Migration zum Aktualisieren und Anpassen Ihrer ACLs verwenden. Möglicherweise möchten die Einstellungen, die mit Ihrer aktuellen Einstellungen ähnliche verwenden. Sie können die ACLs, die auf alle Dateien angewendet werden, mithilfe vom Azure-Portal, [PowerShell-Cmdlets](/powershell/module/azurerm.datalakestore/get-azurermdatalakestoreitempermission) oder SDKs anzeigen.  
 
 * **Speicherort von Analysediensten**. Für optimale Leistung sollten sich Ihre Analysedienste, wie etwa Azure Data Lake Analytics oder Azure HDInsight, in der gleichen Region wie Ihre Daten befinden.  
 

@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 08/29/2016
 ms.author: kyliel
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 5311274867de6e0d863ac532a5b3a31cf964351e
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 2d44a2d9a247ffce8bcf35152170562ac0b86710
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -177,7 +177,7 @@ Bevor Sie eine VHD-Datei hochladen können, müssen Sie eine sichere Verbindung 
 
    Weitere Informationen finden Sie unter [Erste Schritte mit Azure Cmdlets](http://msdn.microsoft.com/library/windowsazure/jj554332.aspx).
 
-   Weitere Informationen zum Installieren und Konfigurieren von PowerShell finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
+   Weitere Informationen zum Installieren und Konfigurieren von PowerShell finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
 
 ## <a name="step-4-upload-the-vhd-file"></a>Schritt 4: Hochladen der VHD-Datei
 Wenn Sie die VHD-Datei hochladen, können Sie sie an einem beliebigen Speicherort innerhalb des Blobspeichers ablegen. Im Anschluss finden Sie einige Begriffe, die beim Hochladen der Datei verwendet werden:

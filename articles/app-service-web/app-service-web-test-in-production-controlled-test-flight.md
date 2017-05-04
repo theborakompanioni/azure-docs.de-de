@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/02/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: 84b5f28fcd0640fd85b5f8c9d655105790c70d62
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: e652218e6579ef430a5dc49f77a26a7d97b8b966
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -26,7 +26,7 @@ In diesem Tutorial erfahren Sie, wie Sie *Flighting-Bereitstellungen* einrichten
 
 *Test-Flighting* ist ein Bereitstellungsprozess, bei dem eine neue Funktion oder eine Änderung mit einer begrenzten Anzahl echter Kunden getestet wird, und ist ein wichtiger Test in einem Produktionsszenario. Der Prozess ist mit dem Betatesting verwandt und wird zuweilen auch als „kontrollierter Test-Flight“ bezeichnet. Viele große Unternehmen mit Webpräsenz nutzen diese Vorgehensweise, um Updates ihrer Apps im Rahmen ihrer [agilen Bereitstellung](https://en.wikipedia.org/wiki/Agile_software_development)so früh wie möglich zu überprüfen. Mit Azure App Service können Sie das Testen in der Produktionsumgebung in die kontinuierliche Veröffentlichung und Application Insights integrieren, um das gleiche DevOps-Szenario zu implementieren. Dieser Ansatz bietet folgende Vorteile:
 
-* **Sie erhalten wertvolles Feedback,*bevor* Updates für die Produktion freigegeben werden. Es ist gut, wenn Sie direkt nach der Veröffentlichung Feedback bekommen – noch viel besser ist es aber, Feedback bereits vor der Veröffentlichung zu erhalten. Sie können Updates zu jedem Zeitpunkt im Produktlebenszyklus mit echtem Benutzerdatenverkehr und echtem Benutzerverhalten testen.
+* **Sie erhalten wertvolles Feedback, *bevor* Updates für die Produktion freigegeben werden**. Es ist gut, wenn Sie direkt nach der Veröffentlichung Feedback bekommen – noch viel besser ist es aber, Feedback bereits vor der Veröffentlichung zu erhalten. Sie können Updates zu jedem Zeitpunkt im Produktlebenszyklus mit echtem Benutzerdatenverkehr und echtem Benutzerverhalten testen.
 * **Verbessern Sie die [kontinuierliche testgesteuerte Entwicklung (Continuous Test-Driven Development, CTDD)](https://en.wikipedia.org/wiki/Continuous_test-driven_development)**: Durch Integrieren des Testens in der Produktionsumgebung in die kontinuierliche Integration und Instrumentation mit Application Insights erfolgt die Überprüfung der Benutzer frühzeitig im Produktlebenszyklus und automatisch. So können Sie den Zeitaufwand für manuelle Testausführungen reduzieren.
 * **Optimieren Sie den Testworkflow**: Durch Automatisieren des Testens in der Produktionsumgebung mit Instrumentation einer kontinuierlichen Überwachung können Sie verschiedene Testziele in einem einzigen Prozess erreichen, wie z. B. [Integration](https://en.wikipedia.org/wiki/Integration_testing), [Regression](https://en.wikipedia.org/wiki/Regression_testing), [Nutzbarkeit](https://en.wikipedia.org/wiki/Usability_testing), Barrierefreiheit, Lokalisierung, [Leistung](https://en.wikipedia.org/wiki/Software_performance_testing), [Sicherheit](https://en.wikipedia.org/wiki/Security_testing) und [Akzeptanz](https://en.wikipedia.org/wiki/Acceptance_testing).
 
@@ -355,6 +355,6 @@ Mit Azure App Service können kleine und mittelgroße Unternehmen ihre kundenori
 * [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md)
 * [JSONLint – The JSON Validator](http://jsonlint.com/)
 * [Git Branching – Basic Branching and Merging](http://www.git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
-* [Azure PowerShell](/powershell/azureps-cmdlets-docs)
+* [Azure PowerShell](/powershell/azure/overview)
 * [Wiki zum Kudu-Projekt](https://github.com/projectkudu/kudu/wiki)
 

@@ -68,7 +68,7 @@ Bit/s = 10^6 Byte pro Sekunde und GB = 1024^3 Byte.
 
 ## <a name="dv2-series"></a>Dv2-Serie
 
-ACU: 21 - 250
+ACU: 210 - 250
 
 | Größe              | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Durchsatz lokale Datenträger: IOPS/Lesen (MBit/s)/Schreiben (MBit/s) | Max. Datenträger/Durchsatz: IOPS | Maximale Anzahl NICs/Netzwerkbandbreite |
 |-------------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|

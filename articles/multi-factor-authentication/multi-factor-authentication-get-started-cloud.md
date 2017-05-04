@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 03/14/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 79c6ef627d20be52b6067d1f6dfea2a53505c590
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 554931e96e073ec2f2f68df2297e1ee21f5eda87
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -66,7 +66,7 @@ Gehen Sie wie unten angegeben vor, um MFA für die Benutzer zu aktivieren.
 Nachdem Sie Ihre Benutzer aktiviert haben, sollten Sie sie per E-Mail benachrichtigen. Bei der nächsten Anmeldung werden die Benutzer aufgefordert, ihr Konto für die Überprüfung in zwei Schritten zu registrieren. Nach der ersten Verwendung der Überprüfung in zwei Schritten müssen die Benutzer außerdem App-Kennwörter einrichten, um zu verhindern, dass sie für andere Apps als Browser-Apps gesperrt werden.
 
 ## <a name="use-powershell-to-automate-turning-on-two-step-verification"></a>Verwenden von PowerShell zum Automatisieren der Überprüfung in zwei Schritten
-Sie können den [Zustand](multi-factor-authentication-whats-next.md) mithilfe von [Azure AD PowerShell](/powershell/azureps-cmdlets-docs) wie folgt ändern.  `$st.State` kann auf einen der folgenden Zustände festgelegt werden:
+Sie können den [Zustand](multi-factor-authentication-whats-next.md) mithilfe von [Azure AD PowerShell](/powershell/azure/overview) wie folgt ändern.  `$st.State` kann auf einen der folgenden Zustände festgelegt werden:
 
 * Aktiviert
 * Erzwungen

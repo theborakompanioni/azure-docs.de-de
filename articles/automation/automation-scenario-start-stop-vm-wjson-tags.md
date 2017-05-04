@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: magoedte;paulomarquesc
 translationtype: Human Translation
-ms.sourcegitcommit: 00d348306f76194bb44e5252be5c956a48192768
-ms.openlocfilehash: 69f05a8c0fc88201fc365546870585de5a419f1d
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: af0bc6b24a403bd09092ac0a099c500d651d15b7
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -103,11 +104,11 @@ Einige ausführliche Informationen zu dieser Struktur:
 
    ![GetSystemTimeZones in PowerShell](./media/automation-scenario-start-stop-vm-wjson-tags/automation-get-timzone-powershell.png)
 
-   * Wochentage werden mit einem numerischen Wert von&0; bis&6; dargestellt. Der Wert&0; entspricht Sonntag.
+   * Wochentage werden mit einem numerischen Wert von 0 bis 6 dargestellt. Der Wert 0 entspricht Sonntag.
    * Die Startzeit wird mit dem Attribut **S** dargestellt, und ihr Wert hat das 24-Stunden-Format.
    * Die Beendigungs- oder Herunterfahrzeit wird mit dem Attribut **E** dargestellt, und ihr Wert hat das 24-Stunden-Format.
 
-     Wenn die Attribute **S** und **E** jeweils den Wert&0; besitzen, wird der virtuelle Computer in dem zum Zeitpunkt der Auswertung bestehenden Zustand belassen.
+     Wenn die Attribute **S** und **E** jeweils den Wert 0 besitzen, wird der virtuelle Computer in dem zum Zeitpunkt der Auswertung bestehenden Zustand belassen.
 3. Wenn Sie die Auswertung für einen bestimmten Tag der Woche überspringen möchten, fügen Sie für den entsprechenden Wochentag keinen Abschnitt hinzu. Im folgenden Beispiel wird nur der Montag ausgewertet; die anderen Wochentage werden ignoriert:
 
     ```json
@@ -145,7 +146,7 @@ Führen Sie die folgenden Schritte aus, um einen virtuellen Computer oder eine R
 ### <a name="tag-from-powershell"></a>Markieren über PowerShell
 Der Anfang des Skripts jedes importierten Runbooks enthält Hilfeinformationen, die beschreiben, wie Sie die Runbooks direkt über PowerShell ausführen. Die Runbooks „Add-ScheduleResource“ und „Update-ScheduleResource“ können über PowerShell aufgerufen werden. Übergeben Sie hierzu die erforderlichen Parameter, um das Zeitplan-Tag für einen virtuellen Computer oder eine Ressourcengruppe außerhalb des Portals zu erstellen oder zu aktualisieren.
 
-Zum Erstellen, Hinzufügen und Löschen von Tags über PowerShell müssen Sie zunächst Ihre [PowerShell-Umgebung für Azure einrichten](/powershell/azureps-cmdlets-docs). Nach der Einrichtung können Sie mit den folgenden Schritten fortfahren:
+Zum Erstellen, Hinzufügen und Löschen von Tags über PowerShell müssen Sie zunächst Ihre [PowerShell-Umgebung für Azure einrichten](/powershell/azure/overview). Nach der Einrichtung können Sie mit den folgenden Schritten fortfahren:
 
 ### <a name="create-a-schedule-tag-with-powershell"></a>Erstellen eines Zeitplan-Tags mit PowerShell
 1. Öffnen Sie eine PowerShell-Sitzung. Verwenden Sie das folgende Beispiel, um sich mit Ihrem ausführenden Konto zu authentifizieren und ein Abonnement anzugeben:
@@ -241,9 +242,4 @@ Die **Auftragszusammenfassung** beinhaltet Meldungen aus den Ausgabe-, Warnungs-
 * Weitere Informationen zu den Features der PowerShell-Skriptunterstützung finden Sie unter [Announcing Native PowerShell Script Support in Azure Automation](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)(Ankündigung der nativen PowerShell-Skriptunterstützung in Azure Automation).
 * Weitere Informationen zu Runbookprotokollierung und -ausgabe finden Sie unter [Runbookausgabe und -meldungen in Azure Automation](automation-runbook-output-and-messages.md).
 * Weitere Informationen zum ausführenden Konto von Azure sowie zum Authentifizieren von Runbooks mithilfe dieses Kontos finden Sie unter [Authentifizieren von Runbooks mit der Azure-Option „Ausführendes Konto“](automation-sec-configure-azure-runas-account.md).
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

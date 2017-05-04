@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: c63af2de6272604f4d2d1ee694ccc4272192ef9a
-ms.lasthandoff: 04/13/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 0065a4a73ddd7eb9877359626bac231ec3fdef7c
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -61,7 +61,7 @@ Sie können im Ressourcen-Manager-Bereitstellungsmodell ein VPN Gateway im Azure
 
 ### <a name="resource-manager-deployment-model"></a>Ressourcen-Manager-Bereitstellungsmodell
 
-Sie benötigen die aktuelle Version der PowerShell-Cmdlets. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) . Zum Zurücksetzen des Gateways wird das Resource Manager-PowerShell-Cmdlet `Reset-AzureRmVirtualNetworkGateway`verwendet. Im folgenden Beispiel wird das Azure VPN-Gateway „VNet1GW“ in der Ressourcengruppe „TestRG1“ zurückgesetzt.
+Sie benötigen die aktuelle Version der PowerShell-Cmdlets. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview) . Zum Zurücksetzen des Gateways wird das Resource Manager-PowerShell-Cmdlet `Reset-AzureRmVirtualNetworkGateway`verwendet. Im folgenden Beispiel wird das Azure VPN-Gateway „VNet1GW“ in der Ressourcengruppe „TestRG1“ zurückgesetzt.
 
 ```powershell
 $gw = Get-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroup TestRG1
@@ -70,7 +70,7 @@ Reset-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw
 
 ### <a name="resetclassic"></a> Klassisches Bereitstellungsmodell
 
-Sie benötigen die aktuelle Version der PowerShell-Cmdlets. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) . Zum Zurücksetzen von Azure VPN Gateway-Instanzen wird das PowerShell-Cmdlet **Reset-AzureVNetGateway** verwendet. Im folgenden Beispiel wird die Azure VPN Gateway-Instanz für das virtuelle Netzwerk „ContosoVNet“ zurückgesetzt.
+Sie benötigen die aktuelle Version der PowerShell-Cmdlets. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview) . Zum Zurücksetzen von Azure VPN Gateway-Instanzen wird das PowerShell-Cmdlet **Reset-AzureVNetGateway** verwendet. Im folgenden Beispiel wird die Azure VPN Gateway-Instanz für das virtuelle Netzwerk „ContosoVNet“ zurückgesetzt.
 
 ```powershell
 Reset-AzureVNetGateway –VnetName “ContosoVNet”

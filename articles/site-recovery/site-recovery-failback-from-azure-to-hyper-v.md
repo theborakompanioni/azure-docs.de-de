@@ -15,9 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 3/31/2017
 ms.author: ruturajd
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 8746abc957816f103abe6c33308af2a584e35485
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: ecfe9d512b0ffc891120d899f0541d3d3c9f6498
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -25,7 +25,7 @@ ms.lasthandoff: 03/31/2017
 # <a name="failback-in-site-recovery-for-hyper-v-virtual-machines"></a>Failback in Site Recovery für virtuelle Hyper-V-Computer
 
 > [!div class="op_single_selector"]
-> * [VMware-/physische Computer von Azure](site-recovery-failback-azure-to-vmware.md)
+> * [VMware-/physische Computer von Azure](site-recovery-how-to-failback-azure-to-vmware.md)
 > * [Hyper-V-VMs von Azure](site-recovery-failback-from-azure-to-hyper-v.md)
 
 In diesem Artikel wird beschrieben, wie Sie für virtuelle Computer, die von Site Recovery geschützt werden, ein Failback durchführen. 

@@ -54,7 +54,7 @@
 ## [Durchführen einer Angriffserkennung mithilfe von Open Source-Tools](network-watcher-intrusion-detection-open-source-tools.md)
 ## [Analysieren von Application Gateway-Protokollen in Azure Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)
 # Referenz
-## [PowerShell](https://docs.microsoft.com/powershell/resourcemanager)
+## [PowerShell](/powershell/azure/overview)
 ## [.NET](/dotnet/api)
 ## [REST](/rest/api/networkwatcher/)
 # Verwandte Themen

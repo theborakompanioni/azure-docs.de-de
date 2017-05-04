@@ -12,12 +12,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/21/2016
+ms.date: 05/01/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
-ms.openlocfilehash: 24c2670394c2873b333f41c081a8134710d16d54
-ms.lasthandoff: 01/26/2017
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: c75c6ed40754aee964e2b68f4f569dc1422507f2
+ms.lasthandoff: 05/03/2017
 
 ---
 # <a name="configure-multipath-io-on-windows-server-host-for-the-storsimple-virtual-array"></a>Konfigurieren von Multipfad-E/A auf Windows Server-Host für das virtuelle StorSimple-Array
@@ -46,7 +46,7 @@ In diesem Abschnitt werden die Konfigurationsvoraussetzungen für den Windows Se
 ### <a name="on-storsimple-virtual-array"></a>Auf dem StorSimple Virtual Array
 * Das virtuelle Array sollte als iSCSI-Server konfiguriert werden. Weitere Informationen finden Sie unter [Bereitstellen von StorSimple Virtual Array – Einrichten des virtuellen Geräts als iSCSI-Server](storsimple-virtual-array-deploy3-iscsi-setup.md). Mindestens eine Netzwerkschnittstelle sollte auf dem Array aktiviert sein.   
 * Die Netzwerkschnittstellen auf Ihrem virtuellen Array sollten vom Windows Server-Host aus erreichbar sein.
-* Mindestens ein Volume sollte auf Ihrem virtuellen StorSimple-Array erstellt werden. Weitere Informationen zum Hinzufügen eines Volume auf Ihrem StorSimple Virtual Array finden Sie unter [Hinzufügen eines Volumes](storsimple-ova-deploy3-iscsi-setup.md#step-3-add-a-volume). In diesem Verfahren haben wir 3 Volumes (1 lokales und 2 mehrstufige Volumes, wie unten gezeigt) auf dem virtuellen Array erstellt.
+* Mindestens ein Volume sollte auf Ihrem virtuellen StorSimple-Array erstellt werden. Weitere Informationen zum Hinzufügen eines Volume auf Ihrem StorSimple Virtual Array finden Sie unter [Hinzufügen eines Volumes](storsimple-virtual-array-deploy3-iscsi-setup.md#step-3-add-a-volume). In diesem Verfahren haben wir 3 Volumes (1 lokales und 2 mehrstufige Volumes, wie unten gezeigt) auf dem virtuellen Array erstellt.
   
     ![mpio0](./media/storsimple-virtual-array-configure-mpio-windows-server/mpio0.png)
 

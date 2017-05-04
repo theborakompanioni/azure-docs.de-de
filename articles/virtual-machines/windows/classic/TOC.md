@@ -9,7 +9,7 @@
 # Erste Schritte
 ## [Erstellen eines virtuellen Computers über das Portal](tutorial.md)
 ## [Anmelden an einer VM](connect-logon.md)
-## [Installieren von Azure PowerShell](/powershell/azureps-cmdlets-docs)
+## [Installieren von Azure PowerShell](/powershell/azure/overview)
 ## [Installieren der Azure-Befehlszeilenschnittstelle](../../../cli-install-nodejs.md)
 
 # Anleitung
@@ -88,7 +88,7 @@
 ## [Zurücksetzen des RDP-Kennworts](reset-rdp.md)
 
 # Referenz
-## [PowerShell](/powershell/azureps-cmdlets-docs)
+## [PowerShell](/powershell/azure/overview)
 ## [Azure-Befehlszeilenschnittstelle](/cli/azure/vm)
 ## [Java](/java/api)
 ## [.NET](/dotnet/api/microsoft.azure.management.compute)

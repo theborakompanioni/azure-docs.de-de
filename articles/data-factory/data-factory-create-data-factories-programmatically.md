@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 04/11/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 280737097038ff328d487477279ce4f204b0ac0c
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 8fcd609da46e88f7db90692c7e67011df64c9b4e
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -99,7 +99,7 @@ Sie können Azure Data Factorys mithilfe des Data Factory .NET SDK programmgeste
     ```
 
    > [!NOTE]
-   > Ersetzen Sie die **resourcegroupname** durch den Namen Ihrer Azure-Ressourcengruppe. Mit dem Cmdlet [New-AzureResourceGroup](https://msdn.microsoft.com/library/Dn654594.aspx) können Sie eine Ressourcengruppe erstellen.
+   > Ersetzen Sie die **resourcegroupname** durch den Namen Ihrer Azure-Ressourcengruppe. Mit dem Cmdlet [New-AzureResourceGroup](/powershell/module/azure/new-azureresourcegroup?view=azuresmps-3.7.0) können Sie eine Ressourcengruppe erstellen.
 7. Fügen Sie den folgenden Code, der eine **Data Factory** erstellt, der **Main**-Methode hinzu.
 
     ```csharp
@@ -445,7 +445,7 @@ Hier wird gezeigt, wie Sie die Active Directory-Anwendung und den Dienstprinzipa
 Notieren Sie sich die Anwendungs-ID und das Kennwort (geheimer Clientschlüssel), und verwenden Sie beides in der exemplarischen Vorgehensweise.
 
 ## <a name="get-azure-subscription-and-tenant-ids"></a>Abrufen von Azure-Abonnement- und Mandanten-ID
-Wenn Sie nicht die aktuelle Version von PowerShell auf Ihrem Computer installiert haben, befolgen Sie die Anweisungen im Artikel [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) , um sie zu installieren.
+Wenn Sie nicht die aktuelle Version von PowerShell auf Ihrem Computer installiert haben, befolgen Sie die Anweisungen im Artikel [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview) , um sie zu installieren.
 
 1. Starten Sie Azure PowerShell, und führen Sie den folgenden Befehl aus.
 2. Führen Sie den folgenden Befehl aus, und geben Sie den Benutzernamen und das Kennwort ein, den bzw. das Sie bei der Anmeldung beim Azure-Portal verwendet haben:

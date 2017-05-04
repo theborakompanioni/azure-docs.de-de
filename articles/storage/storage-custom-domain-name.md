@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 04/17/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 985d14cdbe776e71c93f86750cbcab93ae7c6c5a
-ms.lasthandoff: 04/15/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: e99294069f92f51d212b38b1c5ee12232c6dc77d
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -130,7 +130,7 @@ Verwenden Sie den CLI-Befehl [az storage account update](https://docs.microsoft.
 
 ### <a name="powershell"></a>PowerShell
 
-Verwenden Sie das PowerShell-Cmdlet [Set-AzureRmStorageAccount](https://docs.microsoft.com/powershell/module/azurerm.storage/Set-AzureRmStorageAccount), und geben Sie eine leere Zeichenfolge (`""`) als Wert für das `-CustomDomainName`-Argument an, um die Registrierung der benutzerdefinierten Domäne zu entfernen.
+Verwenden Sie das PowerShell-Cmdlet [Set-AzureRmStorageAccount](/powershell/module/azurerm.storage/set-azurermstorageaccount), und geben Sie eine leere Zeichenfolge (`""`) als Wert für das `-CustomDomainName`-Argument an, um die Registrierung der benutzerdefinierten Domäne zu entfernen.
 
 * Befehlsformat:
   

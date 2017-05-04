@@ -66,7 +66,7 @@
 ### [Neustarten oder Ändern der Größe einer VM](restart-resize-error-troubleshooting.md)
 
 # Referenz
-## [PowerShell](/powershell/azureps-cmdlets-docs)
+## [PowerShell](/powershell/azure/overview)
 ## [Azure-Befehlszeilenschnittstelle](/cli/azure/vm)
 ## [Java](/java/api)
 ## [Erstellen von Resource Manager-Vorlagen](../../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

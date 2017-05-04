@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 13ffe90e03dbe99366fb4f6e2788ba7a3c968a30
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: b067278389a364514067bcef7045542486e113c9
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -44,7 +45,7 @@ Obwohl in diesem Beispiel TCP-Port 3389 verwendet wird, können anhand der folge
 ## <a name="detailed-troubleshooting-steps"></a>Ausführliche Schritte zur Problembehandlung
 Führen Sie die folgenden Schritte aus, um Probleme bei NSGs für einen virtuellen Computer zu beheben:
 
-1. Starten Sie eine Azure PowerShell-Sitzung, und melden Sie sich bei Azure an. Wenn Sie nicht mit der Verwendung von Azure PowerShell vertraut sind, finden Sie entsprechende Informationen im Artikel [Gewusst wie: Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) .
+1. Starten Sie eine Azure PowerShell-Sitzung, und melden Sie sich bei Azure an. Wenn Sie nicht mit der Verwendung von Azure PowerShell vertraut sind, finden Sie entsprechende Informationen im Artikel [Gewusst wie: Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview) .
 2. Geben Sie den folgenden Befehl ein, damit alle NSG-Regeln zurückgegeben werden, die auf die NIC *VM1-NIC1* in der Ressourcengruppe *RG1* angewendet werden:
    
         Get-AzureRmEffectiveNetworkSecurityGroup -NetworkInterfaceName VM1-NIC1 -ResourceGroupName RG1
@@ -197,10 +198,5 @@ Beachten Sie bei der Problembehandlung von Verbindungsproblemen die folgenden Pu
 * Beim Peering von VNETs wird das Tag „VIRTUAL_NETWORK“ standardmäßig automatisch erweitert und enthält Präfixe für die per Peering verknüpften VNETs. Sie können diese Präfixe in der Liste **ExpandedAddressPrefix** anzeigen, um Probleme im Hinblick auf VNET-Peering-Verbindungen zu beheben. 
 * Effektive Sicherheitsregeln werden nur angezeigt, wenn der NIC oder dem Subnetz des virtuellen Computers eine NSG zugeordnet ist. 
 * Wenn der NIC oder dem Subnetz keine NSGs zugeordnet sind und dem virtuellen Computer eine öffentliche IP-Adresse zugewiesen ist, sind alle Ports für den eingehenden und ausgehenden Zugriff geöffnet. Wenn der virtuelle Computer über eine öffentliche IP-Adresse verfügt, empfiehlt es sich dringend, NSGs auf die NIC oder das Subnetz anzuwenden.  
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

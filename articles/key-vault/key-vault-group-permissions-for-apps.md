@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/01/2016
 ms.author: ambapat
 translationtype: Human Translation
-ms.sourcegitcommit: f1a03a0553bc1acd013918f527458603d08cb0f7
-ms.openlocfilehash: 8d213455ad9c771d54c2334e4d31eb4f84c9ec15
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 1549eb40b0ca79522cc5475057c3af7ff4c7fd1c
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -28,7 +29,7 @@ Die Richtlinie für die Key Vault-Zugriffssteuerung unterstützt nur 16 Einträg
 
 Hier sind die erforderlichen Komponenten angegeben:
 * [Installieren Sie das Azure Active Directory V2-PowerShell-Modul](https://www.powershellgallery.com/packages/AzureAD/2.0.0.30).
-* [Installieren Sie Azure PowerShell](/powershell/azureps-cmdlets-docs).
+* [Installieren Sie Azure PowerShell](/powershell/azure/overview).
 * Zum Ausführen der folgenden Befehle benötigen Sie Berechtigungen zum Erstellen/Bearbeiten von Gruppen im Azure Active Directory-Mandanten. Falls Sie nicht über die entsprechenden Berechtigungen verfügen, müssen Sie sich ggf. an Ihren Azure Active Directory-Administrator wenden.
 
 Führen Sie als Nächstes die folgenden Befehle in PowerShell aus.
@@ -57,9 +58,4 @@ Wenn Sie einer Gruppe von Anwendungen einen anderen Berechtigungssatz gewähren 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informieren Sie sich über das [Schützen einer Key Vault-Instanz](key-vault-secure-your-key-vault.md).
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

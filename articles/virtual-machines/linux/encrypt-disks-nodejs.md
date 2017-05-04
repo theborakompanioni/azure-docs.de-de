@@ -16,9 +16,9 @@ ms.workload: infrastructure
 ms.date: 03/06/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 5108df1ef407132de4c685d35f1c453d30d1aa96
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: b436f2d43c41000f4385889edb3fa3983d4a8c66
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -114,7 +114,7 @@ Die Azure-Befehlszeilenschnittstelle stellt während des Verschlüsselungsprozes
 azure vm enable-disk-encryption --resource-group myResourceGroup --name myVM \
   --aad-client-id 147bc426-595d-4bad-b267-58a7cbd8e0b6 \
   --aad-client-secret P@ssw0rd! \
-  --disk-encryption-key-vault-url https://myKeyVault.vault.azure.net/ \ 
+  --disk-encryption-key-vault-url https://myKeyVault.vault.azure.net/ \
   --disk-encryption-key-vault-id /subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.KeyVault/vaults/myKeyVault \
   --key-encryption-key-url https://myKeyVault.vault.azure.net/keys/myKey/6f5fe9383f4e42d0a41553ebc6a82dd1 \
   --key-encryption-key-vault-id /subscriptions/guid/resourceGroups/myResoureGroup/providers/Microsoft.KeyVault/vaults/myKeyVault \
@@ -142,11 +142,11 @@ Gehen Sie zum Verschlüsseln eines virtuellen Computers wie folgt vor:
 ## <a name="supporting-services-and-encryption-process"></a>Unterstützende Dienste und Verschlüsselungsprozess
 Für die Datenträgerverschlüsselung werden folgende zusätzliche Komponenten benötigt:
 
-* **Azure Key Vault:** Schützt die für die Datenträgerverschlüsselung/-entschlüsselung verwendeten kryptografischen und geheimen Schlüssel. 
+* **Azure Key Vault:** Schützt die für die Datenträgerverschlüsselung/-entschlüsselung verwendeten kryptografischen und geheimen Schlüssel.
   * Sie können eine ggf. bereits vorhandene Azure Key Vault-Instanz verwenden. Für die Datenträgerverschlüsselung wird keine dedizierte Key Vault-Instanz benötigt.
   * Zur Trennung administrativer Grenzen und der Schlüsselsichtbarkeit können Sie eine dedizierte Key Vault-Instanz erstellen.
-* **Azure Active Directory:** Wickelt den sicheren Austausch der erforderlichen kryptografischen Schlüssel und die Authentifizierung für angeforderte Aktionen ab. 
-  * In der Regel können Sie Ihre Anwendung in einer bereits vorhandenen Instanz von Azure Active Directory platzieren. 
+* **Azure Active Directory:** Wickelt den sicheren Austausch der erforderlichen kryptografischen Schlüssel und die Authentifizierung für angeforderte Aktionen ab.
+  * In der Regel können Sie Ihre Anwendung in einer bereits vorhandenen Instanz von Azure Active Directory platzieren.
   * Die Anwendung ist eher eine Art Endpunkt für den Key Vault- und den Virtual Machine-Dienst und dient zum Anfordern und Beziehen der entsprechenden ausgegebenen kryptografischen Schlüssel. Sie entwickeln im eigentlichen Sinne keine Anwendung, die in Azure Active Directory integriert wird.
 
 ## <a name="requirements-and-limitations"></a>Voraussetzungen und Einschränkungen
@@ -172,7 +172,7 @@ azure config mode arm
 
 Ersetzen Sie bei den Befehlsbeispielen alle Beispielparameter durch Ihre eigenen Namen, Orte und Schlüsselwerte. In den folgenden Beispielen wird die Konvention `myResourceGroup`, `myKeyVault`, `myAADApp` usw. verwendet.
 
-Erstellen Sie zum Speichern Ihrer kryptografischen Schlüssel zunächst eine Azure Key Vault-Instanz. In Azure Key Vault können Schlüssel, geheime Schlüssel und Kennwörter gespeichert werden, um eine sichere Implementierung in Anwendungen und Diensten zu ermöglichen. Bei der Verschlüsselung virtueller Datenträger dient Key Vault zum Speichern eines kryptografischen Schlüssels, der zum Verschlüsseln oder Entschlüsseln der virtuellen Datenträger verwendet wird. 
+Erstellen Sie zum Speichern Ihrer kryptografischen Schlüssel zunächst eine Azure Key Vault-Instanz. In Azure Key Vault können Schlüssel, geheime Schlüssel und Kennwörter gespeichert werden, um eine sichere Implementierung in Anwendungen und Diensten zu ermöglichen. Bei der Verschlüsselung virtueller Datenträger dient Key Vault zum Speichern eines kryptografischen Schlüssels, der zum Verschlüsseln oder Entschlüsseln der virtuellen Datenträger verwendet wird.
 
 Aktivieren Sie in Ihrem Azure-Abonnement den Azure Key Vault-Anbieter, und erstellen Sie anschließend eine Ressourcengruppe. Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen `myResourceGroup` am Standort `WestUS`:
 
@@ -188,7 +188,7 @@ azure keyvault create --vault-name myKeyVault --resource-group myResourceGroup \
   --location WestUS
 ```
 
-Kryptografische Schlüssel können mit Softwareschutz oder mit HSM-Schutz (Hardwaresicherheitsmodul) gespeichert werden. Für die Verwendung eines HSMs wird eine Key Vault-Premiuminstanz benötigt. Die Erstellung einer Key Vault-Premiuminstanz ist im Gegensatz zur Verwendung einer Key Vault-Standardinstanz, bei der Schlüssel mit Softwareschutz gespeichert werden, mit zusätzlichen Kosten verbunden. Wenn Sie eine Key Vault-Premiuminstanz erstellen möchten, fügen Sie dem Befehl aus dem vorherigen Schritt `--sku Premium` hinzu. Im folgenden Beispiel werden softwaregeschützte Schlüssel verwendet, da wir eine Key Vault-Standardinstanz erstellt haben. 
+Kryptografische Schlüssel können mit Softwareschutz oder mit HSM-Schutz (Hardwaresicherheitsmodul) gespeichert werden. Für die Verwendung eines HSMs wird eine Key Vault-Premiuminstanz benötigt. Die Erstellung einer Key Vault-Premiuminstanz ist im Gegensatz zur Verwendung einer Key Vault-Standardinstanz, bei der Schlüssel mit Softwareschutz gespeichert werden, mit zusätzlichen Kosten verbunden. Wenn Sie eine Key Vault-Premiuminstanz erstellen möchten, fügen Sie dem Befehl aus dem vorherigen Schritt `--sku Premium` hinzu. Im folgenden Beispiel werden softwaregeschützte Schlüssel verwendet, da wir eine Key Vault-Standardinstanz erstellt haben.
 
 Bei beiden Schutzmodellen muss der Azure-Plattform Zugriff gewährt werden, um beim Start des virtuellen Computers die kryptografischen Schlüssel anfordern und die virtuellen Datenträger entschlüsseln zu können. Erstellen Sie in Ihrer Key Vault-Instanz einen Verschlüsselungsschlüssel, und aktivieren Sie ihn für die Verschlüsselung virtueller Datenträger. Im folgenden Beispiel wird ein Schlüssel namens `myKey` erstellt und anschließend für die Datenträgerverschlüsselung aktiviert:
 
@@ -203,7 +203,7 @@ azure keyvault set-policy --vault-name myKeyVault --resource-group myResourceGro
 ## <a name="create-the-azure-active-directory-application"></a>Erstellen der Azure Active Directory-Anwendung
 Wenn virtuelle Datenträger verschlüsselt oder entschlüsselt werden, verwenden Sie einen Endpunkt, der die Authentifizierung und den Austausch kryptografischer Schlüssel aus Key Vault abwickelt. Dieser Endpunkt (eine Azure Active Directory-Anwendung) ermöglicht es der Azure-Plattform, im Auftrag des virtuellen Computers die entsprechenden kryptografischen Schlüssel anzufordern. In Ihrem Abonnement steht zwar eine Azure Active Directory-Standardinstanz zur Verfügung, viele Organisationen verwenden jedoch dedizierte Azure Active Directory-Verzeichnisse.
 
-Da Sie keine vollständige Azure Active Directory-Anwendung erstellen, muss es sich bei den Parametern `--home-page` und `--identifier-uris` im folgenden Beispiel nicht um echte routingfähige Adressen handeln. Im folgenden Beispiel wird außerdem ein kennwortbasierter geheimer Schlüssel angegeben, anstatt Schlüssel über das Azure-Portal zu generieren. Derzeit können über die Azure-Befehlszeilenschnittstelle keine Schlüssel generiert werden. 
+Da Sie keine vollständige Azure Active Directory-Anwendung erstellen, muss es sich bei den Parametern `--home-page` und `--identifier-uris` im folgenden Beispiel nicht um echte routingfähige Adressen handeln. Im folgenden Beispiel wird außerdem ein kennwortbasierter geheimer Schlüssel angegeben, anstatt Schlüssel über das Azure-Portal zu generieren. Derzeit können über die Azure-Befehlszeilenschnittstelle keine Schlüssel generiert werden.
 
 Erstellen Sie Ihre Azure Active Directory-Anwendung. Im folgenden Beispiel wird eine Anwendung namens `myAADApp` erstellt und das Kennwort `myPassword` verwendet. Gehen Sie zum Angeben eines eigenen Kennworts wie folgt vor:
 
@@ -214,7 +214,7 @@ azure ad app create --name myAADApp \
   --password myPassword
 ```
 
-Notieren Sie sich die `applicationId`, die in der Ausgabe des vorherigen Befehls zurückgegeben wird. Diese Anwendungs-ID wird in einigen der verbleibenden Schritte verwendet. Erstellen Sie anschließend einen Dienstprinzipalnamen (Service Principal Name, SPN), damit innerhalb Ihrer Umgebung auf die Anwendung zugegriffen werden kann. Zur erfolgreichen Ver- und Entschlüsselung virtueller Datenträger müssen Berechtigungen für den in Key Vault gespeicherten kryptografischen Schlüssel festgelegt werden, damit die Azure Active Directory-Anwendung die Schlüssel lesen kann. 
+Notieren Sie sich die `applicationId`, die in der Ausgabe des vorherigen Befehls zurückgegeben wird. Diese Anwendungs-ID wird in einigen der verbleibenden Schritte verwendet. Erstellen Sie anschließend einen Dienstprinzipalnamen (Service Principal Name, SPN), damit innerhalb Ihrer Umgebung auf die Anwendung zugegriffen werden kann. Zur erfolgreichen Ver- und Entschlüsselung virtueller Datenträger müssen Berechtigungen für den in Key Vault gespeicherten kryptografischen Schlüssel festgelegt werden, damit die Azure Active Directory-Anwendung die Schlüssel lesen kann.
 
 Erstellen Sie den SPN wie folgt, und legen Sie die entsprechenden Berechtigungen fest:
 
@@ -273,7 +273,7 @@ Da der vorherige Befehl zahlreiche Variablen enthält, finden Sie im Anschluss e
 azure vm enable-disk-encryption --resource-group myResourceGroup --name myVM \
   --aad-client-id 147bc426-595d-4bad-b267-58a7cbd8e0b6 \
   --aad-client-secret P@ssw0rd! \
-  --disk-encryption-key-vault-url https://myKeyVault.vault.azure.net/ \ 
+  --disk-encryption-key-vault-url https://myKeyVault.vault.azure.net/ \
   --disk-encryption-key-vault-id /subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.KeyVault/vaults/myKeyVault \
   --key-encryption-key-url https://myKeyVault.vault.azure.net/keys/myKey/6f5fe9383f4e42d0a41553ebc6a82dd1 \
   --key-encryption-key-vault-id /subscriptions/guid/resourceGroups/myResoureGroup/providers/Microsoft.KeyVault/vaults/myKeyVault \
@@ -314,7 +314,6 @@ azure vm enable-disk-encryption --resource-group myResourceGroup --name myVM \
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Weitere Informationen zum Verwalten von Azure Key Vault (einschließlich Informationen zum Löschen kryptografischer Schlüssel und Vault-Instanzen) finden Sie unter [Verwalten von Schlüsseltresor mit CLI](../../key-vault/key-vault-manage-with-cli.md).
+* Weitere Informationen zum Verwalten von Azure Key Vault (einschließlich Informationen zum Löschen kryptografischer Schlüssel und Vault-Instanzen) finden Sie unter [Verwalten von Schlüsseltresor mit CLI](../../key-vault/key-vault-manage-with-cli2.md).
 * Weitere Informationen zur Datenträgerverschlüsselung (etwa zum Vorbereiten des Uploads eines verschlüsselten benutzerdefinierten virtuellen Computers in Azure) finden Sie unter [Azure-Datenträgerverschlüsselung für virtuelle Windows- und Linux-IaaS-Computer](../../security/azure-security-disk-encryption.md).
-
 

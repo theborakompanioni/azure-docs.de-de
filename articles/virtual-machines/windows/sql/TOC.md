@@ -36,7 +36,7 @@
 ## [Anwendungsmuster](virtual-machines-windows-sql-server-app-patterns-dev-strategies.md)
 
 # Referenz
-## [PowerShell](/powershell/resourcemanager)
+## [PowerShell](/powershell/azure/overview)
 ## [Azure-Befehlszeilenschnittstelle](/cli/azure/)
 ## [T-SQL](https://msdn.microsoft.com/library/azure/bb510741.aspx)
 ## [SQL Server-Treiber](https://msdn.microsoft.com/library/mt654049.aspx)

@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 04/06/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: b4acb01f4939b55317ac0c78eb467159d872f47a
-ms.lasthandoff: 04/11/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 02e4e58418e289eaf4b619a6cfc411fe1f50f48f
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>Verwenden von PowerShell zum Verwalten von Service Bus-Ressourcen
 
-Microsoft Azure PowerShell ist eine Skriptumgebung, mit der Sie die Bereitstellung und Verwaltung von Azure-Diensten steuern und automatisieren können. In diesem Artikel wird beschrieben, wie Sie mithilfe des [Resource Manager-PowerShell-Moduls für Service Bus](/powershell/module/azurerm.servicebus/?view=azurermps-3.7.0#service_bus) Service Bus-Entitäten (Namespaces, Warteschlangen, Themen und Abonnements) über eine lokale Azure PowerShell-Konsole oder ein lokales Azure PowerShell-Skript bereitstellen und verwalten.
+Microsoft Azure PowerShell ist eine Skriptumgebung, mit der Sie die Bereitstellung und Verwaltung von Azure-Diensten steuern und automatisieren können. In diesem Artikel wird beschrieben, wie Sie mithilfe des [Resource Manager-PowerShell-Moduls für Service Bus](/powershell/module/azurerm.servicebus) Service Bus-Entitäten (Namespaces, Warteschlangen, Themen und Abonnements) über eine lokale Azure PowerShell-Konsole oder ein lokales Azure PowerShell-Skript bereitstellen und verwalten.
 
 Sie können Service Bus-Entitäten zudem mithilfe von Azure Resource Manager-Vorlagen erstellen. Weitere Informationen finden Sie im Artikel [Erstellen von Service Bus-Ressourcen mithilfe von Azure Resource Manager-Vorlagen](service-bus-resource-manager-overview.md).
 
@@ -158,11 +158,11 @@ Set-AzureRmServiceBusQueue -ResourceGroup $ResGrpName -NamespaceName $Namespace 
 
 ## <a name="provisioning-other-service-bus-entities"></a>Bereitstellen weiterer Service Bus-Entitäten
 
-Mit dem [PowerShell-Modul für Service Bus](/powershell/module/azurerm.servicebus/?view=azurermps-3.7.0#service_bus) können Sie andere Entitäten bereitstellen, z.B. Themen und Abonnements. Diese Cmdlets ähneln in ihrer Syntax den im vorherigen Abschnitt vorgestellten Cmdlets zur Warteschlangenerstellung.
+Mit dem [PowerShell-Modul für Service Bus](/powershell/module/azurerm.servicebus) können Sie andere Entitäten bereitstellen, z.B. Themen und Abonnements. Diese Cmdlets ähneln in ihrer Syntax den im vorherigen Abschnitt vorgestellten Cmdlets zur Warteschlangenerstellung.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Die vollständige Dokumentation zum Resource Manager-PowerShell-Modul für Service Bus finden Sie [hier](/powershell/module/azurerm.servicebus/?view=azurermps-3.7.0#service_bus). Auf dieser Seite sind alle verfügbaren Cmdlets aufgeführt.
+- Die vollständige Dokumentation zum Resource Manager-PowerShell-Modul für Service Bus finden Sie [hier](/powershell/module/azurerm.servicebus). Auf dieser Seite sind alle verfügbaren Cmdlets aufgeführt.
 - Informationen zum Verwenden von Azure Resource Manager-Vorlagen finden Sie im Artikel [Erstellen von Service Bus-Ressourcen mithilfe von Azure Resource Manager-Vorlagen](service-bus-resource-manager-overview.md).
 - Informationen zu [Service Bus .NET-Verwaltungsbibliotheken](service-bus-management-libraries.md).
 

@@ -17,9 +17,9 @@ ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: telmos
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: e3c8f61be72309354471451a33664c4b5497eb0e
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 6dd2433bf744dd207375e92fd6f24b14cd3f828c
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -56,7 +56,7 @@ Azure verfügt über zwei Portale:
 Einige Ressourcen und Features können nur in entweder dem einem oder dem anderen der beiden Portale erstellt und konfiguriert werden. Einige Ressourcen oder Features können (noch) nicht in einem der Portale erstellt oder konfiguriert werden und lassen sich nur mit PowerShell und/oder der Befehlszeilenschnittstelle konfigurieren. Die Dokumentation für die einzelnen Azure-Ressourcen legt dar, mit welcher Methode sie jeweils erstellt werden können. 
 
 ## <a name="powershell"></a>PowerShell
-Mit [PowerShell](/powershell/azureps-cmdlets-docs) können Sie eine Befehlszeile verwenden oder Skripts zum Erstellen und Konfigurieren von Azure-Ressourcen auf einem Windows-Computer schreiben.  Einzelne Azure-Ressourcen weisen [Resource Manager-Cmdlets](https://msdn.microsoft.com/library/azure/mt125356.aspx), [Dienstverwaltungs-Cmdlets](https://msdn.microsoft.com/library/azure/dn708504.aspx) oder beides auf.  Einige Ressourcen und Features können nur mit PowerShell oder der Befehlszeilenschnittstelle erstellt und/oder konfiguriert werden. Abhängig von der Ressource stehen Ihnen bei Verwendung der Ressourcen-Manager-PowerShell-Cmdlets zwei Optionen zum Erstellen und Konfigurieren von Azure-Ressourcen zur Verfügung:
+Mit [PowerShell](/powershell/azureps-cmdlets-docs) können Sie eine Befehlszeile verwenden oder Skripts zum Erstellen und Konfigurieren von Azure-Ressourcen auf einem Windows-Computer schreiben.  Einzelne Azure-Ressourcen weisen [Resource Manager-Cmdlets](/powershell/azure/overview), [Dienstverwaltungs-Cmdlets](/powershell/azure/overview?view=azuresmps-3.7.0) oder beides auf.  Einige Ressourcen und Features können nur mit PowerShell oder der Befehlszeilenschnittstelle erstellt und/oder konfiguriert werden. Abhängig von der Ressource stehen Ihnen bei Verwendung der Ressourcen-Manager-PowerShell-Cmdlets zwei Optionen zum Erstellen und Konfigurieren von Azure-Ressourcen zur Verfügung:
 
 * **Nur PowerShell-Cmdlets:** Sie können jede Azure-Ressource einzeln über die Cmdlets für die einzelnen Ressourcen erstellen und konfigurieren. Dies kann über eine Befehlszeile erfolgen oder durch Einschließen mehrerer Befehle in einem PowerShell-Skript, das Sie speichern und versionieren können.
 * **PowerShell-Cmdlets mit einer Azure-Ressourcen-Manager-Vorlage:** Sie können PowerShell zum Erstellen von Azure-Ressourcen über eine Azure-Ressourcen-Manager-Vorlage verwenden. Vorlagen können gespeichert und versioniert werden. Weitere Informationen finden Sie im Artikel [Bereitstellen einer Anwendung mit einer Azure-Ressourcen-Manager-Vorlage](resource-group-template-deploy.md) . Es gibt mehrere [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/) für gängige Lösungen, die heruntergeladen und geändert werden können.

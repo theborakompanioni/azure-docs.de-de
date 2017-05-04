@@ -15,9 +15,9 @@ ms.workload: identity
 ms.date: 03/02/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: 32c6224b36c73394c6bbd2aa5f6439f54f39f306
-ms.lasthandoff: 03/04/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 5de7b134d99a0b7887acb9d7f87991056e4d608a
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -31,8 +31,8 @@ Mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) im A
 
 Bevor Sie PowerShell verwenden können, um die RBAC zu verwalten, benötigen Sie Folgendes:
 
-* Azure PowerShell, Version 0.8.8 oder höher. Um die neueste Version zu installieren und sie Ihrem Azure-Abonnement zuzuordnen, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
-* Azure Resource Manager-Cmdlets Installieren Sie die [Azure Resource Manager-Cmdlets](https://msdn.microsoft.com/library/mt125356.aspx) in PowerShell.
+* Azure PowerShell, Version 0.8.8 oder höher. Um die neueste Version zu installieren und sie Ihrem Azure-Abonnement zuzuordnen, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
+* Azure Resource Manager-Cmdlets Installieren Sie die [Azure Resource Manager-Cmdlets](/powershell/azure/overview) in PowerShell.
 
 ## <a name="list-roles"></a>Auflisten der Rollen
 ### <a name="list-all-available-roles"></a>Auflisten aller verfügbaren Rollen
@@ -87,7 +87,7 @@ Zum Auflisten der Zugriffszuweisungen für die klassischen Abonnementadministrat
 ### <a name="search-for-object-ids"></a>Suchen nach Objekt-IDs
 Um eine Rolle zuzuweisen, müssen Sie sowohl das Objekt (Benutzer, Gruppe oder Anwendung) als auch den Bereich identifizieren.
 
-Falls Sie die Abonnement-ID nicht kennen, können Sie diese im Blatt **Abonnements** im Azure-Portal finden. Wie Sie die Abonnement-ID abfragen, erfahren Sie im MSDN unter [Get-AzureSubscription](https://msdn.microsoft.com/library/dn495302.aspx) .
+Falls Sie die Abonnement-ID nicht kennen, können Sie diese im Blatt **Abonnements** im Azure-Portal finden. Wie Sie die Abonnement-ID abfragen, erfahren Sie im MSDN unter [Get-AzureSubscription](/powershell/module/azure/get-azuresubscription?view=azuresmps-3.7.0) .
 
 So rufen Sie die Objekt-ID für eine Azure AD-Gruppe ab:
 

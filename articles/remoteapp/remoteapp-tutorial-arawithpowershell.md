@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: compute
-ms.date: 11/23/2016
+ms.date: 04/26/2017
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 9134b5893413abbc49e2332651fb4a8b549ce559
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 8bea98274f94853cb52fe8b51fdaa4f224c649e4
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -33,11 +33,11 @@ ms.lasthandoff: 03/31/2017
 - - -
 Laden Sie [hier](http://go.microsoft.com/?linkid=9811175) zunächst die Azure PowerShell-Cmdlets herunter. Diese enthalten auch die RemoteApp-Cmdlets. 
 
-Weitere Informationen finden Sie in der [Hilfe zu Azure RemoteApp-Cmdlets](https://msdn.microsoft.com/library/mt428031.aspx).
+Weitere Informationen finden Sie in der [Hilfe zu Azure RemoteApp-Cmdlets](/powershell/module/azure?view=azuresmps-3.7.0).
 
 ## <a name="configure-azure-cmdlets-to-use-your-subscription"></a>Konfigurieren Sie Azure-Cmdlets zur Verwendung Ihres Abonnements
 - - -
-Folgen Sie den Anweisungen [dieses Handbuchs](/powershell/azureps-cmdlets-docs) , sodass Sie die Cmdlets für Ihr Azure-Abonnement verwenden können.
+Folgen Sie den Anweisungen [dieses Handbuchs](/powershell/azure/overview) , sodass Sie die Cmdlets für Ihr Azure-Abonnement verwenden können.
 
 Für den Schnelleinstieg können Sie die folgenden Schritte ausführen:
 

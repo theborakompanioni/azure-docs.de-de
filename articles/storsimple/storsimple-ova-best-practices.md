@@ -12,12 +12,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/15/2017
+ms.date: 05/01/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: f04cf73d9cb651bf97aff855bf7d19e296796e50
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: 6d5563d06d9097134715f8885521c85e987a3acd
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -27,13 +27,13 @@ Bei Microsoft Azure StorSimple Virtual Array handelt es sich um eine integrierte
 
 In diesem Artikel werden die bewährten Methoden beschrieben, die während der Ersteinrichtung, Bereitstellung und Verwaltung des StorSimple Virtual Array implementiert werden. Diese bewährten Methoden umfassen überprüfte Richtlinien für die Einrichtung und Verwaltung Ihres virtuellen Arrays. Dieser Artikel richtet sich an IT-Administratoren, die die virtuellen Arrays in den Datencentern bereitstellen und verwalten.
 
-Es ist ratsam, die bewährten Methoden regelmäßig zu überprüfen. So können Sie sicherstellen, dass Ihr Gerät noch kompatibel ist, wenn Änderungen am Setup oder am Vorgangsfluss vorgenommen werden. Falls beim Implementieren dieser bewährten Methoden auf dem Array Probleme auftreten, können Sie den [Microsoft-Support](storsimple-contact-microsoft-support.md) um Hilfe bitten.
+Es ist ratsam, die bewährten Methoden regelmäßig zu überprüfen. So können Sie sicherstellen, dass Ihr Gerät noch kompatibel ist, wenn Änderungen am Setup oder am Vorgangsfluss vorgenommen werden. Falls beim Implementieren dieser bewährten Methoden auf dem Array Probleme auftreten, können Sie den [Microsoft-Support](storsimple-virtual-array-log-support-ticket.md) um Hilfe bitten.
 
 ## <a name="configuration-best-practices"></a>Bewährte Methoden für die Konfiguration
 Diese bewährten Methoden decken die Richtlinien ab, die bei der Ersteinrichtung und der Bereitstellung der virtuellen Arrays befolgt werden müssen. Hierzu gehören auch die bewährten Methoden für die Bereitstellung des virtuellen Computers, Gruppenrichtlinieneinstellungen, Größenauslegung, Netzwerkeinrichtung, Speicherkontokonfiguration und Erstellung von Freigaben und Volumes für das virtuelle Array. 
 
 ### <a name="provisioning"></a>Bereitstellung
-Das StorSimple Virtual Array ist ein virtueller Computer (VM), der unter dem Hypervisor (Hyper-V oder VMware) Ihres Hostservers bereitgestellt wird. Stellen Sie beim Bereitstellen des virtuellen Computers sicher, dass Ihr Host genügend Ressourcen zur Verfügung stellen kann. Weitere Informationen zur Bereitstellung eines Arrays finden Sie unter den [Mindestanforderungen für Ressourcen](storsimple-ova-deploy2-provision-hyperv.md#step-1-ensure-that-the-host-system-meets-minimum-virtual-device-requirements) . 
+Das StorSimple Virtual Array ist ein virtueller Computer (VM), der unter dem Hypervisor (Hyper-V oder VMware) Ihres Hostservers bereitgestellt wird. Stellen Sie beim Bereitstellen des virtuellen Computers sicher, dass Ihr Host genügend Ressourcen zur Verfügung stellen kann. Weitere Informationen zur Bereitstellung eines Arrays finden Sie unter den [Mindestanforderungen für Ressourcen](storsimple-virtual-array-deploy2-provision-hyperv.md#step-1-ensure-that-the-host-system-meets-minimum-virtual-array-requirements) .
 
 Implementieren Sie die folgenden bewährten Methoden, wenn Sie das virtuelle Array bereitstellen:
 
@@ -61,13 +61,13 @@ Basierend auf den oben genannten Punkten lassen sich die Anforderungen der Grö�
 Die folgenden Beispiele veranschaulichen, wie Sie die Größe für ein virtuelles Array gemäß Ihren Anforderungen bemessen können.
 
 #### <a name="example-1"></a>Beispiel 1:
-Sie möchten auf Ihrem virtuellen Array Folgendes durchführen können: 
+Sie möchten auf Ihrem virtuellen Array Folgendes durchführen können:
 
 * Bereitstellen eines mehrstufigen Volumes oder einer Freigabe mit 2 TB
 * Bereitstellen eines mehrstufigen Volumes oder einer Freigabe mit 1 TB
 * Bereitstellen eines lokalen Volumes oder einer Freigabe mit 300 GB
 
-Wir berechnen für die obigen Volumes oder Freigaben die Speicherplatzanforderungen auf der lokalen Ebene. 
+Wir berechnen für die obigen Volumes oder Freigaben die Speicherplatzanforderungen auf der lokalen Ebene.
 
 Erstens: Für jedes mehrstufige Volume bzw. jede Freigabe entspricht die lokale Reservierung 12% der Volume-/Freigabegröße. Die lokale Reservierung für das lokale Volume bzw. die lokale Freigabe beträgt 10 % des lokalen Volumes bzw. der lokalen Freigabe (zusätzlich zur bereitgestellten Größe). Für dieses Beispiel benötigen Sie Folgendes:
 
@@ -86,11 +86,10 @@ Wenn Sie eine unerwartete Zunahme und neue Wiederherstellungen berücksichtigen,
 
 > [!NOTE]
 > Außerdem wird empfohlen, für den lokalen Datenträger die Thin-Bereitstellung (schlanke Speicherzuweisung) zu wählen. Der Grund für diese Empfehlung ist, dass der Wiederherstellungsspeicherplatz nur benötigt wird, wenn Sie Daten wiederherstellen möchten, die älter als fünf Tage sind. Bei der Wiederherstellung auf Elementebene können Sie die Daten für die letzten fünf Tage wiederherstellen, ohne dass der zusätzliche Speicherplatz für die Wiederherstellung benötigt wird.
-> 
-> 
+
 
 #### <a name="example-2"></a>Beispiel 2:
-Sie möchten auf Ihrem virtuellen Array Folgendes durchführen können: 
+Sie möchten auf Ihrem virtuellen Array Folgendes durchführen können:
 
 * Bereitstellen eines mehrstufigen Volumes mit 2 TB
 * Bereitstellen eines lokalen Volumes mit 300 GB
@@ -102,9 +101,9 @@ Basierend auf 12% der lokalen Speicherplatzreservierung für mehrstufige Volumes
 
 Gesamter Speicherplatz für die lokale Ebene: 240 GB + 330 GB = 570 GB
 
-Der mindestens erforderliche Speicherplatz für die Wiederherstellung beträgt 330 GB. 
+Der mindestens erforderliche Speicherplatz für die Wiederherstellung beträgt 330 GB.
 
-15% des gesamten Datenträgers werden zum Speichern von Momentaufnahmen verwendet, sodass nur 85% verfügbar sind. Die Größe des Datenträgers beträgt also: (900&ast;(1/0,85)) = 1,06 TB ~ 1,25 TB (Rundung auf das nächste Quartil) 
+15% des gesamten Datenträgers werden zum Speichern von Momentaufnahmen verwendet, sodass nur 85% verfügbar sind. Die Größe des Datenträgers beträgt also: (900&ast;(1/0,85)) = 1,06 TB ~ 1,25 TB (Rundung auf das nächste Quartil)
 
 Wenn Sie eine unerwartete Zunahme berücksichtigen, sollten Sie also einen lokalen Datenträger mit einer Größe von 1,25 bis 1,5 TB bereitstellen.
 
@@ -115,29 +114,29 @@ Wenn Ihr virtuelles Array in die Domäne eingebunden ist, können GPOs darauf an
 
 Daher empfehlen wir Folgendes:
 
-* Stellen Sie sicher, dass sich das virtuelle Array in einer eigenen Organisationseinheit für Active Directory befindet. 
+* Stellen Sie sicher, dass sich das virtuelle Array in einer eigenen Organisationseinheit für Active Directory befindet.
 * Stellen Sie sicher, dass keine Gruppenrichtlinienobjekte (GPOs) auf das virtuelle Array angewendet werden. Sie können die Vererbung blockieren, um sicherzustellen, dass das virtuelle Array (untergeordneter Knoten) nicht automatisch GPOs vom übergeordneten Element erbt. Weitere Informationen finden Sie unter [Blockieren der Vererbung](https://technet.microsoft.com/library/cc731076.aspx).
 
 ### <a name="networking"></a>Netzwerk
-Die Netzwerkkonfiguration für Ihr virtuelles Array wird über die lokale Webbenutzeroberfläche durchgeführt. Eine virtuelle Netzwerkschnittstelle wird über den Hypervisor aktiviert, in dem das virtuelle Array bereitgestellt wird. Verwenden Sie die Seite [Netzwerkeinstellungen](storsimple-ova-deploy3-fs-setup.md) , um die IP-Adresse, das Subnetz und das Gateway für die virtuelle Netzwerkschnittstelle zu konfigurieren.  Sie können auch den primären und sekundären DNS-Server, die Zeiteinstellungen und optional die Proxyeinstellungen für Ihr Gerät konfigurieren. Der größte Teil der Netzwerkkonfiguration ist eine einmalige Einrichtung. Lesen Sie [StorSimple-Netzwerkanforderungen](storsimple-ova-system-requirements.md#networking-requirements) , bevor Sie das virtuelle Array bereitstellen.
+Die Netzwerkkonfiguration für Ihr virtuelles Array wird über die lokale Webbenutzeroberfläche durchgeführt. Eine virtuelle Netzwerkschnittstelle wird über den Hypervisor aktiviert, in dem das virtuelle Array bereitgestellt wird. Verwenden Sie die Seite [Netzwerkeinstellungen](storsimple-virtual-array-deploy3-fs-setup.md) , um die IP-Adresse, das Subnetz und das Gateway für die virtuelle Netzwerkschnittstelle zu konfigurieren.  Sie können auch den primären und sekundären DNS-Server, die Zeiteinstellungen und optional die Proxyeinstellungen für Ihr Gerät konfigurieren. Der größte Teil der Netzwerkkonfiguration ist eine einmalige Einrichtung. Lesen Sie [StorSimple-Netzwerkanforderungen](storsimple-ova-system-requirements.md#networking-requirements) , bevor Sie das virtuelle Array bereitstellen.
 
 Für die Bereitstellung des virtuellen Arrays empfehlen wir Ihnen, diese bewährten Methoden zu befolgen:
 
-* Stellen Sie sicher, dass das Netzwerk, in dem das virtuelle Array bereitgestellt wird, jederzeit über die Kapazität zum Bereitstellen einer Internetbandbreite von (mindestens) 5 MBit/s verfügt. 
+* Stellen Sie sicher, dass das Netzwerk, in dem das virtuelle Array bereitgestellt wird, jederzeit über die Kapazität zum Bereitstellen einer Internetbandbreite von (mindestens) 5 MBit/s verfügt.
   
   * Die erforderliche Internetbandbreite variiert je nach den Workloadmerkmalen und der Datenänderungsrate.
-  * Die Menge an Datenänderungen, die verarbeitet werden können, ist direkt proportional zu Ihrer Internetbandbreite. Beispiel: Beim Erstellen einer Sicherung ist mit einer Bandbreite von 5 MBit/s eine Datenänderungsrate von ca. 18 GB in acht Stunden möglich. Beim Vierfachen an Bandbreite (20 MBit/s) vervierfacht sich auch die Datenänderungsrate (72 GB). 
+  * Die Menge an Datenänderungen, die verarbeitet werden können, ist direkt proportional zu Ihrer Internetbandbreite. Beispiel: Beim Erstellen einer Sicherung ist mit einer Bandbreite von 5 MBit/s eine Datenänderungsrate von ca. 18 GB in acht Stunden möglich. Beim Vierfachen an Bandbreite (20 MBit/s) vervierfacht sich auch die Datenänderungsrate (72 GB).
 * Stellen Sie sicher, dass jederzeit eine Internetverbindung verfügbar ist. Sporadische oder unzuverlässige Internetverbindungen mit den Geräten können zu einem Verlust des Zugriffs auf die Daten in der Cloud und einer nicht unterstützten Konfiguration führen.
-* Bei geplanter Bereitstellung des Geräts als iSCSI-Server: 
+* Bei geplanter Bereitstellung des Geräts als iSCSI-Server:
   
-  * Es wird empfohlen, die Option **IP-Adresse automatisch abrufen** (DHCP) zu deaktivieren. 
+  * Es wird empfohlen, die Option **IP-Adresse automatisch abrufen** (DHCP) zu deaktivieren.
   * Konfigurieren Sie statische IP-Adressen. Sie müssen einen primären und einen sekundären DNS-Server konfigurieren.
   * Wenn Sie auf dem virtuellen Array mehrere Netzwerkschnittstellen definieren, kann nur die erste Netzwerkschnittstelle (standardmäßig die **Ethernet**-Schnittstelle) die Cloud erreichen. Zum Steuern der Art des Datenverkehrs können Sie mehrere virtuelle Netzwerkschnittstellen auf dem virtuellen Array erstellen (als iSCSI-Server konfiguriert) und mit unterschiedlichen Subnetzen verbinden.
-* Um nur die (vom virtuellen Array verwendete) Cloudbandbreite zu drosseln, konfigurieren Sie die Drosselung auf dem Router oder in der Firewall. Wenn Sie die Drosselung im Hypervisor definieren, werden alle Protokolle gedrosselt, z.B. auch iSCSI und SMB, anstatt nur die Cloudbandbreite. 
+* Um nur die (vom virtuellen Array verwendete) Cloudbandbreite zu drosseln, konfigurieren Sie die Drosselung auf dem Router oder in der Firewall. Wenn Sie die Drosselung im Hypervisor definieren, werden alle Protokolle gedrosselt, z.B. auch iSCSI und SMB, anstatt nur die Cloudbandbreite.
 * Stellen Sie sicher, dass die Zeitsynchronisierung für Hypervisoren aktiviert ist. Wählen Sie bei Verwendung von Hyper-V Ihr virtuelles Array im Hyper-V-Manager, navigieren Sie zu **Einstellungen &gt; Integrationsdienste**, und vergewissern Sie sich, dass **Zeitsynchronisierung** aktiviert ist.
 
 ### <a name="storage-accounts"></a>Speicherkonten
-Das StorSimple Virtual Array kann einem einzelnen Speicherkonto zugeordnet werden. Bei diesem Speicherkonto kann es sich um ein automatisch generiertes Speicherkonto, ein Konto in demselben Abonnement wie der Dienst oder ein Speicherkonto handeln, das zu einem anderen Abonnement gehört. Weitere Informationen finden Sie unter [Verwalten von Speicherkonten für Ihr virtuelles Array](storsimple-ova-manage-storage-accounts.md).
+Das StorSimple Virtual Array kann einem einzelnen Speicherkonto zugeordnet werden. Bei diesem Speicherkonto kann es sich um ein automatisch generiertes Speicherkonto, ein Konto in demselben Abonnement wie der Dienst oder ein Speicherkonto handeln, das zu einem anderen Abonnement gehört. Weitere Informationen finden Sie unter [Verwalten von Speicherkonten für Ihr virtuelles Array](storsimple-virtual-array-manage-storage-accounts.md).
 
 Verwenden Sie die folgenden Empfehlungen für Speicherkonten, die Ihrem virtuellen Array zugeordnet sind.
 
@@ -161,7 +160,7 @@ Beachten Sie die folgenden bewährten Methoden, wenn Sie Freigaben oder Volumes 
 * Rechnen Sie beim Erstellen eines Volumes den erwarteten Datenverbrauch und das zukünftige Wachstum ein. Das Volumen kann nicht nachträglich vergrößert werden.
 * Nach der Erstellung des Volumes können Sie die Größe des Volumes unter StorSimple nicht mehr verringern.
 * Beim Schreiben auf ein mehrstufiges Volume unter StorSimple wird eine E/A-Drosselung durchgeführt, wenn die Volumedaten einen bestimmten Schwellenwert erreichen (relativ zum lokalen Speicherplatz, der für das Volume reserviert ist). Wenn weiter auf dieses Volume geschrieben wird, wird der E/A-Vorgang erheblich verlangsamt. Es ist zwar möglich, über die bereitgestellte Kapazität hinaus auf ein mehrstufiges Volume zu schreiben (es wird nicht aktiv verhindert, dass der Benutzer das Schreiben über die Kapazität hinaus durchführt), aber es wird eine Warnungsbenachrichtigung mit dem Hinweis angezeigt, dass die abonnierte Menge überschritten ist. Wenn die Warnung angezeigt wird, sollten Sie unbedingt Korrekturmaßnahmen ergreifen, z.B. das Löschen der Volumedaten (Volumeerweiterung wird derzeit nicht unterstützt).
-* Für Anwendungsfälle der Notfallwiederherstellung gilt Folgendes: Da sowohl die Anzahl von zulässigen Freigaben/Volumes als auch die maximale Anzahl von Freigaben/Volumes, die parallel verarbeitet werden können, 16 beträgt, wirkt sich die Anzahl von Freigaben/Volumes nicht auf RPO und RTOs aus. 
+* Für Anwendungsfälle der Notfallwiederherstellung gilt Folgendes: Da sowohl die Anzahl von zulässigen Freigaben/Volumes als auch die maximale Anzahl von Freigaben/Volumes, die parallel verarbeitet werden können, 16 beträgt, wirkt sich die Anzahl von Freigaben/Volumes nicht auf RPO und RTOs aus.
 
 #### <a name="volumeshare-type"></a>Volumen-/Freigabetyp
 StorSimple unterstützt basierend auf der Nutzung zwei Volume-/Freigabetypen: lokal und mehrstufig. Für lokale Volumes/Freigaben wird die Thick-Bereitstellung verwendet, und für mehrstufige Volumes/Freigaben die Thin-Bereitstellung. 
@@ -190,7 +189,7 @@ Beim Konfigurieren der iSCSI-Volumes auf dem StorSimple Virtual Array ist es wic
 Nutzen Sie die folgenden bewährten Methoden, wenn Sie ACRs für StorSimple-Volumes konfigurieren:
 
 * Ordnen Sie einem Volume immer mindestens einen ACR zu.
-* Definieren Sie mehrere ACRs nur in einer Clusterumgebung.
+
 * Stellen Sie beim Zuweisen von mehr als einem ACR zu einem Volume sicher, dass das Volume nicht so verfügbar gemacht wird, dass darauf gleichzeitig mit mehr als einem nicht gruppierten Host zugegriffen werden kann. Wenn Sie einem Volume mehrere ACRs zugewiesen haben, wird eine Warnmeldung angezeigt, damit Sie die Konfiguration überprüfen können.
 
 ### <a name="data-security-and-encryption"></a>Datensicherheit und -verschlüsselung
@@ -205,7 +204,7 @@ Das StorSimple Virtual Array verfügt über Sicherheits- und Verschlüsselungsfe
 Die bewährten Methoden für den Betrieb sind Richtlinien, die bei der täglichen Verwaltung bzw. beim Betrieb des virtuellen Arrays eingehalten werden sollten. Hierbei geht es um bestimmte Verwaltungsaufgaben, z.B. das Erstellen von Sicherungen, Wiederherstellen aus einem Sicherungssatz, Durchführen eines Failovers, Deaktivieren und Löschen des Arrays, Überwachen der Systemnutzung und -integrität und Ausführen von Virenscans auf dem virtuellen Array.
 
 ### <a name="backups"></a>Backups
-Die Daten auf dem virtuellen Array werden auf zwei Arten in der Cloud gesichert: per täglicher automatisierter Standardsicherung des gesamten Geräts mit Beginn um 22:30 Uhr oder per manueller bedarfsgesteuerter Sicherung. Standardmäßig erstellt das Gerät automatisch tägliche Cloudmomentaufnahmen aller Daten, die sich darauf befinden. Weitere Informationen finden Sie unter [Sichern des StorSimple Virtual Array](storsimple-ova-backup.md).
+Die Daten auf dem virtuellen Array werden auf zwei Arten in der Cloud gesichert: per täglicher automatisierter Standardsicherung des gesamten Geräts mit Beginn um 22:30 Uhr oder per manueller bedarfsgesteuerter Sicherung. Standardmäßig erstellt das Gerät automatisch tägliche Cloudmomentaufnahmen aller Daten, die sich darauf befinden. Weitere Informationen finden Sie unter [Sichern des StorSimple Virtual Array](storsimple-virtual-array-backup.md).
 
 Häufigkeit und Aufbewahrungsdauer von Standardsicherungen können nicht geändert werden, aber Sie können die Uhrzeit konfigurieren, zu der die Sicherungen jeden Tag initiiert werden. Wir empfehlen folgende Vorgehensweise zum Konfigurieren der Startzeit für die automatisierten Sicherungen:
 
@@ -213,7 +212,7 @@ Häufigkeit und Aufbewahrungsdauer von Standardsicherungen können nicht geände
 * Initiieren Sie eine manuelle bedarfsgesteuerte Sicherung, wenn Sie die Durchführung eines Gerätefailovers planen, oder vor dem Wartungsfenster, um die Daten in Ihrem virtuellen Array zu schützen.
 
 ### <a name="restore"></a>Wiederherstellen
-Sie können die Wiederherstellung für einen Sicherungssatz auf zwei Arten durchführen: Führen Sie die Wiederherstellung auf einem anderen Volume oder einer anderen Freigabe durch, oder wählen Sie die Wiederherstellung auf Elementebene (nur für ein virtuelles Array verfügbar, das als Dateiserver konfiguriert ist). Bei der Wiederherstellung auf Elementebene können Sie die Dateien und Ordner einer Cloudsicherung für alle Freigaben des StorSimple-Geräts präzise wiederherstellen. Weitere Informationen finden Sie unter [Wiederherstellen aus einer Sicherung des StorSimple Virtual Array](storsimple-ova-restore.md).
+Sie können die Wiederherstellung für einen Sicherungssatz auf zwei Arten durchführen: Führen Sie die Wiederherstellung auf einem anderen Volume oder einer anderen Freigabe durch, oder wählen Sie die Wiederherstellung auf Elementebene (nur für ein virtuelles Array verfügbar, das als Dateiserver konfiguriert ist). Bei der Wiederherstellung auf Elementebene können Sie die Dateien und Ordner einer Cloudsicherung für alle Freigaben des StorSimple-Geräts präzise wiederherstellen. Weitere Informationen finden Sie unter [Wiederherstellen aus einer Sicherung des StorSimple Virtual Array](storsimple-virtual-array-clone.md).
 
 Beachten Sie beim Durchführen einer Wiederherstellung die folgenden Richtlinien:
 
@@ -225,7 +224,7 @@ Beachten Sie beim Durchführen einer Wiederherstellung die folgenden Richtlinien
 ### <a name="failover-and-disaster-recovery"></a>Failover und Notfallwiederherstellung
 Ein Gerätefailover ermöglicht das Migrieren Ihrer Daten von einem *Quellgerät* im Datencenter auf ein anderes *Zielgerät* an demselben oder einem anderen geografischen Standort. Das Gerätefailover gilt für das gesamte Gerät. Während des Failovers gehen die Clouddaten für das Quellgerät in den Besitz des Zielgeräts über.
 
-Für das StorSimple Virtual Array können Sie das Failover nur zu einem anderen virtuellen Array durchführen, das mit demselben StorSimple Manager-Dienst verwaltet wird. Ein Failover auf ein Gerät der 8000er Serie oder ein Array, das von einem anderen StorSimple Manager-Dienst (als für das Quellgerät) verwaltet wird, ist nicht zulässig. Weitere Informationen zu den Failoveraspekten finden Sie unter [Voraussetzungen für das Gerätefailover](storsimple-ova-failover-dr.md).
+Für das StorSimple Virtual Array können Sie das Failover nur zu einem anderen virtuellen Array durchführen, das mit demselben StorSimple Manager-Dienst verwaltet wird. Ein Failover auf ein Gerät der 8000er Serie oder ein Array, das von einem anderen StorSimple Manager-Dienst (als für das Quellgerät) verwaltet wird, ist nicht zulässig. Weitere Informationen zu den Failoveraspekten finden Sie unter [Voraussetzungen für das Gerätefailover](storsimple-virtual-array-failover-dr.md).
 
 Beachten Sie Folgendes, wenn Sie ein Failover für Ihr virtuelles Array durchführen:
 
@@ -239,7 +238,7 @@ Beachten Sie Folgendes, wenn Sie ein Failover für Ihr virtuelles Array durchfü
   * Das Failover wurde abgeschlossen, und das Quellgerät wurde gelöscht, aber das Zielgerät weist Fehler auf, und Sie können nicht auf Daten zugreifen. Die Daten sind in der Cloud weiterhin sicher und können leicht abgerufen werden, indem ein weiteres virtuelles Array erstellt und dann als Zielgerät für die Notfallwiederherstellung verwendet wird.
 
 ### <a name="deactivate"></a>Deaktivieren
-Wenn Sie ein StorSimple Virtual Array deaktivieren, trennen Sie die Verbindung zwischen dem Gerät und dem entsprechenden StorSimple Manager-Dienst. Die Deaktivierung ist ein **endgültiger** Vorgang und kann nicht rückgängig gemacht werden. Ein deaktiviertes Gerät kann nicht wieder für den StorSimple Manager-Dienst registriert werden. Weitere Informationen finden Sie unter [Deaktivieren und Löschen eines StorSimple-Geräts](storsimple-deactivate-and-delete-device.md).
+Wenn Sie ein StorSimple Virtual Array deaktivieren, trennen Sie die Verbindung zwischen dem Gerät und dem entsprechenden StorSimple Manager-Dienst. Die Deaktivierung ist ein **endgültiger** Vorgang und kann nicht rückgängig gemacht werden. Ein deaktiviertes Gerät kann nicht wieder für den StorSimple Manager-Dienst registriert werden. Weitere Informationen finden Sie unter [Deaktivieren und Löschen eines StorSimple-Geräts](storsimple-virtual-array-deactivate-and-delete-device.md).
 
 Beachten Sie beim Deaktivieren des virtuellen Arrays die folgenden bewährten Methoden:
 
@@ -250,7 +249,7 @@ Beachten Sie beim Deaktivieren des virtuellen Arrays die folgenden bewährten Me
 ### <a name="monitoring"></a>Überwachung
 Um sicherzustellen, dass sich das StorSimple Virtual Array fortlaufend in einem fehlerfreien Zustand befindet, müssen Sie das Array überwachen und dafür sorgen, dass Sie vom System Informationen erhalten, z.B. Warnungen. Implementieren Sie die folgenden bewährten Methoden, um den Gesamtzustand des virtuellen Arrays zu überwachen:
 
-* Konfigurieren Sie die Überwachung, um die Datenträgernutzung des virtuellen Arrays und für den Betriebssystem-Datenträger nachzuverfolgen. Bei Ausführung von Hyper-V können Sie eine Kombination aus System Center Virtual Machine Manager (SCVMM) und System Center Operations Manager (SCOM) verwenden, um die Virtualisierungshosts zu überwachen.   
+* Konfigurieren Sie die Überwachung, um die Datenträgernutzung des virtuellen Arrays und für den Betriebssystem-Datenträger nachzuverfolgen. Bei Ausführung von Hyper-V können Sie eine Kombination aus System Center Virtual Machine Manager (SCVMM) und System Center Operations Manager (SCOM) verwenden, um die Virtualisierungshosts zu überwachen.
 * Konfigurieren Sie E-Mail-Benachrichtigungen auf dem virtuellen Array, damit Benachrichtigungen für bestimmte Nutzungsebenen gesendet werden.                                                                                                                                                                                                
 
 ### <a name="index-search-and-virus-scan-applications"></a>Anwendungen für Indexsuche und Virenscan
@@ -285,6 +284,6 @@ Ggf. müssen mehrere virtuelle Arrays bereitgestellt werden, um einen wachsenden
 * Mehrere virtuelle Arrays (bei Konfiguration als Dateiserver oder iSCSI-Server) können in einem Namespace für das verteilte Dateisystem (Distributed File System, DFS) bereitgestellt werden. Ausführliche Schritte finden Sie unter [Distributed File System Namespace Solution with Hybrid Cloud Storage Deployment Guide](https://www.microsoft.com/download/details.aspx?id=45507)(DFS-Namespacelösung mit Hybridcloudspeicher – Leitfaden zur Bereitstellung). Die DFS-Replikation ist für die Verwendung mit dem virtuellen Array derzeit nicht zu empfehlen. 
 
 ## <a name="see-also"></a>Siehe auch
-Informieren Sie sich über das [Verwalten des StorSimple Virtual Array mithilfe des StorSimple Manager-Diensts](storsimple-ova-manager-service-administration.md) .
+Informieren Sie sich über das [Verwalten des StorSimple Virtual Array mithilfe des StorSimple Manager-Diensts](storsimple-virtual-array-manager-service-administration.md) .
 
 

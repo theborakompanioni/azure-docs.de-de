@@ -12,12 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2017
+ms.date: 04/21/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: df4340ce5185405334f08f6098590f84b067dafd
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: 2e7c1ddedaa11fb614f2e8cf6d1644ae2a2beae3
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -86,7 +86,7 @@ Eine Betrugswarnung kann auf zwei Arten gemeldet werden.  Entweder über die mob
 3. Beenden Sie den Anruf.
 
 ### <a name="view-fraud-reports"></a>Anzeigen von Betrugsberichten
-1. Melden Sie sich beim [klassischen Azure-Portal](https://portal.azure.com/)an.
+1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com)an.
 2. Wählen Sie im linken Bereich "Active Directory" aus.
 3. Wählen Sie oben **Anbieter für mehrstufige Authentifizierung** aus. Hierdurch wird eine Liste der Anbieter für mehrstufige Authentifizierung angezeigt.
 4. Wählen Sie den Multi-Factor Authentication-Anbieter aus, und klicken Sie unten auf der Seite auf **Verwalten**. Das Azure Multi-Factor Authentication-Verwaltungsportal wird geöffnet.
@@ -98,7 +98,7 @@ Eine Betrugswarnung kann auf zwei Arten gemeldet werden.  Entweder über die mob
 Mit einer Einmalumgehung kann sich ein Benutzer ein einziges Mal authentifizieren, ohne die Überprüfung in zwei Schritten auszuführen. Die Umgehung ist vorübergehend und läuft nach einer angegebenen Anzahl von Sekunden ab. Falls die mobile Anwendung oder das Telefon keine Benachrichtigung bzw. keinen Telefonanruf empfängt, können Sie eine Einmalumgehung aktivieren, damit der Benutzer auf die gewünschte Ressource zugreifen kann.
 
 ### <a name="create-a-one-time-bypass"></a>Erstellen einer Einmalumgehung
-1. Melden Sie sich beim [klassischen Azure-Portal](https://portal.azure.com/)an.
+1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com)an.
 2. Folgen Sie den Anweisungen im oberen Teil dieser Seite, um zum MFA-Verwaltungsportal zu gelangen.
 3. Wenn im Azure Multi-Factor Authentication-Verwaltungsportal links neben dem Namen Ihres Mandanten oder Azure MFA-Anbieters ein Pluszeichen (**+**) angezeigt wird, klicken Sie auf das **+**, um die verschiedenen Replikationsgruppen des MFA-Servers und die Azure Standardgruppe anzuzeigen. Wählen Sie die entsprechende Gruppe aus.
 4. Wählen Sie unter „Benutzerverwaltung“ die Option **Einmalumgehung**.
@@ -110,7 +110,7 @@ Mit einer Einmalumgehung kann sich ein Benutzer ein einziges Mal authentifiziere
 7. Das Zeitlimit gilt sofort. Daher muss sich der Benutzer anmelden, bevor die Einmalumgehung abläuft. 
 
 ### <a name="view-the-one-time-bypass-report"></a>Anzeigen des Berichts für die Einmalumgehung
-1. Melden Sie sich beim [klassischen Azure-Portal](https://portal.azure.com/)an.
+1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com)an.
 2. Wählen Sie im linken Bereich "Active Directory" aus.
 3. Wählen Sie oben **Anbieter für mehrstufige Authentifizierung** aus. Hierdurch wird eine Liste der Anbieter für mehrstufige Authentifizierung angezeigt.
 4. Wählen Sie den Multi-Factor Authentication-Anbieter aus, und klicken Sie unten auf der Seite auf **Verwalten**. Das Azure Multi-Factor Authentication-Verwaltungsportal wird geöffnet.
@@ -134,7 +134,7 @@ Eine benutzerdefinierte Nachricht wird in zwei Schritten erstellt: Zuerst laden 
 So laden Sie Ihre benutzerdefinierte Nachricht hoch:
 
 1. Erstellen Sie eine Sprachnachricht in einem der unterstützten Dateiformate.
-2. Melden Sie sich beim [klassischen Azure-Portal](https://portal.azure.com/)an.
+2. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com)an.
 3. Folgen Sie den Anweisungen im oberen Teil dieser Seite, um zum MFA-Verwaltungsportal zu gelangen.
 4. Klicken Sie im Abschnitt „Konfigurieren“ des Azure Multi-Factor Authentication-Verwaltungsportals auf **Sprachnachrichten**.
 5. Klicken Sie auf der Seite „Konfigurieren: Sprachnachrichten“ auf **Neue Sprachnachricht**.
@@ -164,7 +164,7 @@ Durch Zwischenspeichern können Sie einen bestimmten Zeitraum festlegen, sodass 
 Das Zwischenspeichern ist nicht für Anmeldungen bei Azure AD gedacht.
 
 ### <a name="set-up-caching"></a>Einrichten der Zwischenspeicherung 
-1. Melden Sie sich beim [klassischen Azure-Portal](https://portal.azure.com/)an.
+1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com)an.
 2. Folgen Sie den Anweisungen im oberen Teil dieser Seite, um zum MFA-Verwaltungsportal zu gelangen.
 3. Klicken Sie im Abschnitt „Konfigurieren“ des Azure Multi-Factor Authentication-Verwaltungsportals auf **Zwischenspeichern**.
 4. Klicken Sie auf der Seite „Zwischenspeicherung konfigurieren“ auf **Neuer Cache**.
@@ -193,7 +193,7 @@ Wenn vertrauenswürdige IPs aktiviert sind, ist die Überprüfung in zwei Schrit
 Unabhängig davon, ob vertrauenswürdige IPs aktiviert sind, ist die Überprüfung in zwei Schritten für Browserflüsse erforderlich, und für ältere Rich Client-Apps werden App-Kennwörter benötigt. 
 
 ### <a name="to-enable-trusted-ips"></a>Aktivieren von vertrauenswürdigen IP-Adressen
-1. Melden Sie sich beim [klassischen Azure-Portal](https://portal.azure.com/)an.
+1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com)an.
 2. Navigieren Sie gemäß den Anweisungen am Anfang dieses Artikels zur Seite mit den MFA-Diensteinstellungen.
 3. Auf der Seite „Diensteinstellungen“ haben Sie unter „Vertrauenswürdige IPs“ zwei Optionen:
    
@@ -255,7 +255,7 @@ Azure AD unterstützt den Verbund (Einmaliges Anmelden) mit lokalen Windows Serv
 ### <a name="allow-app-password-creation"></a>Zulassen der Erstellung von App-Kennwörtern
 Standardmäßig können keine Benutzer App-Kennwörter erstellen. Dieses Feature muss aktiviert sein. Gehen Sie wie folgt vor, um Benutzern die Erstellung von App-Kennwörtern zu ermöglichen:
 
-1. Melden Sie sich beim [klassischen Azure-Portal](https://portal.azure.com/)an.
+1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com)an.
 2. Navigieren Sie gemäß den Anweisungen am Anfang dieses Artikels zur Seite mit den MFA-Diensteinstellungen.
 3. Wählen Sie das Optionsfeld neben **Benutzern das Erstellen von App-Kennwörtern zum Anmelden bei Anwendungen gestatten, die nicht auf Browsern basieren**.
 
@@ -283,7 +283,7 @@ So reduziert sich durch das Speichern der MFA auf vertrauenswürdigen Geräten d
 >Dieses Feature ist nicht kompatibel mit dem AD FS-Feature „Angemeldet bleiben“, bei dem Benutzer die Überprüfung in zwei Schritten für AD FS über Azure MFA Server oder eine MFA-Lösung von Drittanbietern ausführen. Wenn Ihre Benutzer in AD FS „Angemeldet bleiben“ auswählen und ihr Gerät außerdem als für MFA vertrauenswürdig markieren, können sie sich nach Ablauf der Anzahl von Tagen, die unter „MFA speichern“ angegeben wurde, nicht mehr verifizieren. Azure AD fordert eine neue Überprüfung in zwei Schritten an, aber AD FS gibt ein Token mit dem ursprünglichen MFA-Anspruch und Datum zurück, statt die Überprüfung in zwei Schritten erneut durchzuführen. Dadurch entsteht eine Schleife bei der Überprüfung zwischen Azure AD und AD FS. 
 
 ### <a name="enable-remember-multi-factor-authentication"></a>Aktivieren der Speicherung der mehrstufigen Authentifizierung
-1. Melden Sie sich beim [klassischen Azure-Portal](https://portal.azure.com/)an.
+1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com)an.
 2. Navigieren Sie gemäß den Anweisungen am Anfang dieses Artikels zur Seite mit den MFA-Diensteinstellungen.
 3. Aktivieren Sie auf der Seite „Diensteinstellungen“ unter „Geräteeinstellungen von Benutzern verwalten“ die Option **Benutzern das Speichern der mehrstufigen Authentifizierung auf vertrauenswürdigen Geräten ermöglichen**.
    ![Speichern von Geräten](./media/multi-factor-authentication-whats-next/remember.png)
@@ -310,7 +310,7 @@ Wenn Ihre Benutzer Ihre Konten für MFA registrieren, wählen sie ihre bevorzugt
 | Überprüfungscode von der mobilen App |Die Microsoft Authenticator-App generiert alle 30 Sekunden einen neuen OATH-Überprüfungscode. Der Benutzer gibt diesen Überprüfungscode auf der Anmeldeoberfläche ein.<br>Die Microsoft Authenticator-App ist für [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072) und [IOS](http://go.microsoft.com/fwlink/?Linkid=825073) verfügbar. |
 
 ### <a name="how-to-enabledisable-authentication-methods"></a>Aktivieren/Deaktivieren von Authentifizierungsmethoden
-1. Melden Sie sich beim [klassischen Azure-Portal](https://portal.azure.com/)an.
+1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com)an.
 2. Navigieren Sie gemäß den Anweisungen am Anfang dieses Artikels zur Seite mit den MFA-Diensteinstellungen.
 3. Aktivieren oder deaktivieren Sie auf der Seite „Diensteinstellungen“ unter „Überprüfungsoptionen“ die Optionen, die Sie verwenden bzw. nicht verwenden möchten.
    ![Überprüfungsoptionen](./media/multi-factor-authentication-whats-next/authmethods.png)

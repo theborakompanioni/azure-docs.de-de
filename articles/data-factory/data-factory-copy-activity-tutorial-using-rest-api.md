@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 04/11/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 003a32f2ef67f8aa63ed7be2553fa0f0c3afc08a
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: f4d2535e929996101f6e22ffbd0b2105e8fbf2a8
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -49,7 +49,7 @@ In diesem Tutorial wird veranschaulicht, wie Sie eine Azure Data Factory mit der
   2. Beschaffen Sie die **Client-ID** und den **geheimen Schlüssel**. 
   3. Beschaffen Sie die **Mandanten-ID**. 
   4. Weisen Sie die Anwendung **ADFCopyTutorialApp** der Rolle **Mitwirkender von Data Factory** zu.  
-* Installieren Sie [Azure PowerShell](/powershell/azureps-cmdlets-docs).  
+* Installieren Sie [Azure PowerShell](/powershell/azure/overview).  
 * Starten Sie **PowerShell**, und führen Sie die unten angegebenen Schritte aus. Lassen Sie Azure PowerShell bis zum Ende dieses Tutorials geöffnet. Wenn Sie PowerShell schließen und erneut öffnen, müssen Sie die Befehle erneut ausführen.
   
   1. Führen Sie den folgenden Befehl aus, und geben Sie den Benutzernamen und das Kennwort ein, den bzw. das Sie bei der Anmeldung am Azure-Portal verwendet haben:
