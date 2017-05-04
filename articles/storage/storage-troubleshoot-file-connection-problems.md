@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: genli
 translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: c62f8d077906ce8ad1b5501864a21ee369b2314a
-ms.lasthandoff: 04/07/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: 0635120c4e16f3b8531039eee4c6651e7cdeca40
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -261,15 +261,17 @@ Ein möglicher Grund für langsame Leistung könnte deaktiviertes Caching sein. 
 
 In einigen Szenarios kann die serverino-Bereitstellungsoption einen „Is“-Befehl auslösen, um „stat“ für jeden Verzeichniseintrag auszuführen. Dieses Verhalten für zu Leistungsbeeinträchtigungen bei Auflistung eines großen Verzeichnisses. Sie können die Bereitstellungsoption in Ihrem „/etc/fstab“-Eintrag finden:
 
-`//azureuser.file.core.windows.net/cifs        /cifs   cifs vers=3.0,serverino,username=xxx,password=xxx,dir_mode=0777,file_mode=0777`
+`//<storage-account-name>.file.core.windows.net/<file-share-name> <mount-point> cifs vers=3.0,serverino,username=xxx,password=xxx,dir_mode=0777,file_mode=0777`
 
-Sie können auch überprüfen, ob korrekte Optionen verwendet werden, indem Sie den Befehl **sudo mount | grep cifs** ausführen und die Ausgabe überprüfen:
+Sie können auch überprüfen, ob korrekte Optionen verwendet werden, indem Sie nur den Befehl `sudo mount | grep cifs` ausführen. (Eine Beispielausgabe finden Sie weiter unten.)
 
-`//mabiccacifs.file.core.windows.net/cifs on /cifs type cifs
-(rw,relatime,vers=3.0,sec=ntlmssp,cache=strict,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777,
-dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)`
+`//<storage-account-name>.file.core.windows.net/<file-share-name> on <mount-point> type cifs
+(rw,relatime,vers=3.0,sec=ntlmssp,cache=strict,username=xxx,domain=X,uid=0,
+noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777,
+dir_mode=0777,persistenthandles,nounix,serverino,
+mapposix,rsize=1048576,wsize=1048576,actimeo=1)`
 
-Wenn die Optionen „cache=strict“ oder „serverino“ nicht vorhanden sind, heben Sie die Bereitstellung von Azure Files aus, und stellen Sie sie wieder her, indem Sie den „mount“-Befehl aus der [Dokumentation](https://docs.microsoft.com/en-us/azure/storage/storage-how-to-use-files-linux#mount-the-file-share) ausführen und erneut überprüfen, dass der Eintrag „/etc/fstab“ die korrekten Optionen besitzt.
+Falls die Optionen „cache=strict“ oder „serverino“ nicht vorhanden sind, heben Sie die Bereitstellung von Azure Files auf, und stellen Sie sie wieder her, indem Sie den Befehl „mount“ aus der [Dokumentation](https://docs.microsoft.com/en-us/azure/storage/storage-how-to-use-files-linux#mount-the-file-share) ausführen und erneut überprüfen, ob der Eintrag „/etc/fstab“ über die korrekten Optionen verfügt.
 
 <a id="ubuntumounterror"></a>
 ## <a name="mount-error11-resource-temporarily-unavailable-when-mounting-to-ubuntu-48-kernel"></a>Einbindungsfehler (11): Ressource beim Einbinden von Ubuntu-Kerneln ab Version 4.8 vorübergehend nicht verfügbar

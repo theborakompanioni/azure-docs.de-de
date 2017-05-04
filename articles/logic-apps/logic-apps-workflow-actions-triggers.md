@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 11/17/2016
 ms.author: mandia
 translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: 3f050e2722091aa8b58591cc0c894a6ecb82c3fa
-ms.lasthandoff: 04/14/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: ff86340f18a2d3d13d55b7e0bcd4122d9b85ccd9
+ms.lasthandoff: 04/20/2017
 
 ---
 
@@ -406,6 +406,8 @@ Es gibt viele Arten von Aktionen, die jeweils über ein eigenes Verhalten verfü
 -   **Wait:** Diese einfache Aktion wartet einen festen Zeitraum oder bis zu einer bestimmten Zeit.  
   
 -   **Workflow:** Diese Aktion stellt einen geschachtelten Workflow dar.  
+
+-   **Function:** Diese Aktion stellt eine Azure-Funktion dar.
 
 ### <a name="collection-actions"></a>Auflistungsaktionen
 
@@ -828,6 +830,47 @@ Wenn der Eigenschaftswert `from` ein leeres Array ist, wird eine leere Tabelle a
 Für den Workflow \(genauer gesagt: für den Trigger\) wird eine Zugriffsprüfung ausgeführt. Sie benötigen daher Zugriff auf den Workflow.  
   
 Die Ausgaben der Aktion `workflow` basieren auf der Definition in der Aktion `response` im untergeordneten Workflow. Falls Sie keine Aktion vom Typ `response` definiert haben, sind die Ausgaben leer.  
+
+## <a name="function-action"></a>Function-Aktion   
+
+|Name|Erforderlich|Typ|Beschreibung|  
+|--------|------------|--------|---------------|  
+|Funktions-ID|Ja|String|Die Ressourcen-ID der Funktion, den Sie aufrufen möchten.|  
+|method|Nein|String|Die HTTP-Methode zum Aufrufen der Funktion. Ohne Angabe wird standardmäßig `POST` verwendet.|  
+|Abfragen|Nein|Objekt|Stellt die Abfrageparameter dar, die der URL hinzugefügt werden sollen. `"queries" : { "api-version": "2015-02-01" }` fügt der URL beispielsweise `?api-version=2015-02-01` hinzu.|  
+|headers|Nein|Objekt|Stellt die einzelnen Header dar, die an die Anforderung gesendet werden. Verwenden Sie beispielsweise Folgendes, um Sprache und Typ für eine Anforderung festzulegen: `"headers" : { "Accept-Language": "en-us" }`.|  
+|body|Nein|Objekt|Stellt die an den Endpunkt gesendete Nutzlast dar.|  
+
+```json
+"myfunc" : {
+    "type" : "Function",
+    "inputs" : {
+        "function" : {
+            "id" : "/subscriptions/xxxxyyyyzzz/resourceGroups/rg001/providers/Microsoft.Web/sites/myfuncapp/functions/myfunc"
+        },
+        "queries" : {
+            "extrafield" : "specialValue"
+        },  
+        "headers" : {
+            "x-ms-date" : "@utcnow()"
+        },
+        "method" : "POST",
+    "body" : {
+            "contentFieldOne" : "value100",
+            "anotherField" : 10.001
+        }
+    },
+    "runAfter": {}
+}
+```
+
+Wenn Sie die Logik-App speichern, werden für die Funktion, auf die verwiesen wird, einige Dinge überprüft:
+-   Sie müssen auf die Funktion zugreifen können.
+-   Nur der Standard-HTTP-Trigger und der generische JSON-Webhooktrigger sind zulässig.
+-   Es darf keine Route definiert sein.
+-   Als Autorisierungsebene sind nur „function“ und „anonymous“ zulässig.
+
+Die Auslöser-URL wird abgerufen, zwischengespeichert und zur Laufzeit verwendet. Sollte die zwischengespeicherte URL also aufgrund eines Vorgangs ungültig werden, tritt zur Laufzeit ein Fehler bei der Aktion auf. Speichern Sie zur Umgehung dieses Problems die Logik-App erneut. Dadurch wird die Auslöser-URL erneut abgerufen und zwischengespeichert.
 
 ## <a name="collection-actions-scopes-and-loops"></a>Auflistungsaktionen (Bereiche und Schleifen)
 

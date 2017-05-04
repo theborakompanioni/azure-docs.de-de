@@ -12,12 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2017
+ms.date: 04/21/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: e68d39c4591341c706fcd89a584768cba07de7e1
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: 5c7c6c8568115093f3a7568b6d318f985705691c
+ms.lasthandoff: 04/26/2017
 
 
 ---
@@ -39,37 +39,38 @@ Informationen dazu, wie Sie Ihren nicht von Microsoft stammenden Identitätsanbi
 > 
 
 * [Azure Active Directory](#azure-active-directory)
-* [Optimal IDM Virtual Identity Server Federation Services](#optimal-idm-virtual-identity-server-federation-services) 
-* [PingFederate 6.11](#pingfederate-611) 
-* [PingFederate 7.2](#pingfederate-72) 
-* [PingFederate 8.x](#pingfederate-8x)
-* [Centrify](#centrify) 
-* [IBM Tivoli Federated Identity Manager 6.2.2](#ibm-tivoli-federated-identity-manager-622) 
-* [SecureAuth IdP 7.2.0](#secureauth-idp-720) 
+* [AuthAnvil Single Sign On 4.5](#authanvil-single-sign-on-45)
+* [BIG-IP mit Access Policy Manager BIG-IP Version 11.3x - 11.6x](#big-ip-with-access-policy-manager-big-ip-ver-113x--116x) 
+* [BitGlass](#bitglass)
+* [CA Secure Cloud](#ca-secure-cloud) 
 * [CA SiteMinder 12.52](#ca-siteminder-1252-sp1-cumulative-release-4) 
-* [RadiantOne CFS 3.0](#radiantone-cfs-30) 
+* [Centrify](#centrify) 
+* [Dell One Identity Cloud Access Manager v7.1](#dell-one-identity-cloud-access-manager-v71) 
+* [IBM Tivoli Federated Identity Manager 6.2.2](#ibm-tivoli-federated-identity-manager-622) 
+* [IceWall Federation Version 3.0](#icewall-federation-version-30) 
+* [Memority](#memority)
+* [NetIQ Access Manager 4.x](#netiq-access-manager-4x) 
 * [Okta](#okta) 
 * [OneLogin](#onelogin) 
-* [NetIQ Access Manager 4.0.1](#netiq-access-manager-401) 
-* [BIG-IP mit Access Policy Manager BIG-IP Version 11.3x - 11.6x](#big-ip-with-access-policy-manager-big-ip-ver-113x--116x) 
-* [VMware Workspace Portal Version 2.1](#vmware--workspace-portal-version-21) 
-* [Sign&go 5.3](#signgo-53) 
-* [IceWall Federation Version 3.0](#icewall-federation-version-30) 
-* [CA Secure Cloud](#ca-secure-cloud) 
-* [Dell One Identity Cloud Access Manager v7.1](#dell-one-identity-cloud-access-manager-v71) 
-* [AuthAnvil Single Sign On 4.5](#authanvil-single-sign-on-45)
+* [Optimal IDM Virtual Identity Server Federation Services](#optimal-idm-virtual-identity-server-federation-services) 
+* [PingFederate 6.11, 7.2, 8.x](#pingfederate-611-72-8x)
+* [RadiantOne CFS 3.0](#radiantone-cfs-30) 
 * [Sailpoint IdentityNow](#sailpoint-identitynow)
-* [NetIQ Access Manager 4.x](#netiq-access-manager-4x) 
+* [SecureAuth IdP 7.2.0](#secureauth-idp-720) 
+* [Sign&go 5.3](#signgo-53) 
+* [SoftBank](#softbank)
+* [VMware Identity Manager](#vmware-identity-manager)
+* [VMware Workspace Portal Version 2.1](#vmware--workspace-portal-version-21) 
+
 
 > [!IMPORTANT]
 > Da es sich um Drittanbieterprodukte handelt, bietet Microsoft keinen Support für die Bereitstellung, Konfiguration und Problembehandlung sowie keine bewährten Methoden oder Unterstützung bei Problemen und Fragen im Zusammenhang mit diesen Identitätsanbietern. Wenn Sie Unterstützung benötigen oder Fragen zu diesen Identitätsanbietern haben, wenden Sie sich direkt an die unterstützten Drittanbieter.
 > 
 > Diese Identitätsanbieter von Drittanbietern wurden auf Interoperabilität mit Microsoft Cloud Services unter Verwendung der WS-Verbund- und WS-Trust-Protokolle getestet. Das SAML-Protokoll wurde im Rahmen dieser Tests nicht verwendet.
 > 
-> 
+
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
-Azure Active Directory kann Benutzer durch einen Verbund mit Ihrer lokalen Active Directory-Bereitstellung oder ohne lokalen Verbundserver authentifizieren. Im letzteren Fall erfolgt die Authentifizierung über die Kennwortsynchronisierung. 
 
 Nachfolgend finden Sie die Matrix der unterstützten Szenarien für diese Art der Anmeldung: 
 
@@ -84,162 +85,20 @@ Weitere Informationen zur Verwendung von Azure Active Directory mit den AD FS fi
 
 Weitere Informationen zur Verwendung von Azure Active Directory mit Kennwortsynchronisierung finden Sie unter [Azure AD Connect](active-directory-aadconnect.md).
 
-## <a name="optimal-idm-virtual-identity-server-federation-services"></a>Optimal IDM Virtual Identity Server Federation Services
-Optimal IDM Virtual Identity Server Federation Services kann Benutzer in lokalen Active Directory-Implementierungen eines Kunden authentifizieren.
+## <a name="authanvil-single-sign-on-45"></a>AuthAnvil Single Sign On 4.5
 
 Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalige Anmelden:
 
 | Client- | Support | Ausnahmen |
 | --- | --- | --- |
-| Webbasierte Clients wie Exchange Web Access und SharePoint Online |Unterstützt |Keine |
-| Rich Client-Anwendungen wie Lync, Office-Abonnement, CRM |Unterstützt |Integrierte Windows-Authentifizierung |
-| E-Mail-Clients wie Outlook und ActiveSync |Unterstützt |Weitere Informationen zu Clientzugriffsrichtlinien finden Sie unter [Limiting Access to Office 365 Services Based on the Location of the Client](https://technet.microsoft.com/library/hh526961.aspx) |
-
-## <a name="pingfederate-611"></a>PingFederate 6.11
-PingFederate 6.11 implementiert den weit verbreiteten WS-Verbund-Identitätsstandard, um das einmalige Anmelden zu ermöglichen und ein Framework für den Austausch von Attributen bereitzustellen.
-
-Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalige Anmelden:
-
-| Client- | Support | Ausnahmen |
-| --- | --- | --- |
-| Webbasierte Clients wie Exchange Web Access und SharePoint Online |Unterstützt |Keine |
-| Rich Client-Anwendungen wie Lync, Office-Abonnement, CRM |Unterstützt |Keine (bei früheren Versionen muss ein Upgrade auf 6.11 durchgeführt werden) |
-| E-Mail-Clients wie Outlook und ActiveSync |Unterstützt |Keine |
-
-Die PingFederate-Anweisungen zur Konfiguration dieses Sicherheitstokendiensts zur Implementierung des einmaligen Anmeldens für Active Directory-Benutzer finden Sie in dieser [PDF-Datei](http://go.microsoft.com/fwlink/?LinkID=266321)
-
-## <a name="pingfederate-72"></a>PingFederate 7.2
-PingFederate 7.2 implementiert den weit verbreiteten WS-Verbund-/WS-Trust-Identitätsstandard, um das einmalige Anmelden zu ermöglichen und ein Framework für den Austausch von Attributen bereitzustellen.
-
-Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalige Anmelden:
-
-| Client- | Support | Ausnahmen |
-| --- | --- | --- |
-| Webbasierte Clients wie Exchange Web Access und SharePoint Online |Unterstützt |Keine |
-| Rich Client-Anwendungen wie Lync, Office-Abonnement, CRM |Unterstützt |Keine |
-| E-Mail-Clients wie Outlook und ActiveSync |Unterstützt |Keine |
-
-Die PingFederate-Anweisungen zur Konfiguration dieses Sicherheitstokendiensts zur Implementierung des einmaligen Anmeldens für Active Directory-Benutzer finden Sie [PDF-Datei](http://documentation.pingidentity.com/display/PF72/PingFederate+7.2)
-
-## <a name="pingfederate-8x"></a>PingFederate 8.x
-PingFederate 8.x implementiert den weit verbreiteten WS-Verbund-/WS-Trust-Identitätsstandard, um das einmalige Anmelden zu ermöglichen und ein Framework für den Austausch von Attributen bereitzustellen.
-
-Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalige Anmelden:
-
-| Client- | Support | Ausnahmen |
-| --- | --- | --- |
-| Webbasierte Clients wie Exchange Web Access und SharePoint Online |Unterstützt |Keine |
-| Rich Client-Anwendungen wie Lync, Office-Abonnement, CRM |Unterstützt |Keine |
-| E-Mail-Clients wie Outlook und ActiveSync |Unterstützt |Keine |
-
-Die PingFederate-Anweisungen zur Konfiguration dieses Sicherheitstokendiensts zur Implementierung des einmaligen Anmeldens für Active Directory-Benutzer finden Sie [PDF-Datei](http://documentation.pingidentity.com/display/PFS/SSO+to+Office+365+Introduction)
-
-## <a name="centrify"></a>Centrify
-Mit Centrify wird das einmalige Anmelden im Verbund für Office 365 ermöglicht, ohne zu diesem Zweck einen lokalen Verbundserver bereitstellen zu müssen.
-
-Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalige Anmelden:
-
-| Client- | Support | Ausnahmen |
-| --- | --- | --- |
-| Webbasierte Clients wie Exchange Web Access und SharePoint Online |Unterstützt |Keine |
-| Rich Client-Anwendungen wie Lync, Office-Abonnement, CRM |Unterstützt |Keine |
-| E-Mail-Clients wie Outlook und ActiveSync |Unterstützt |Client Access Control wird nicht unterstützt |
-
-Weitere Informationen zu Centrify finden Sie [PDF-Datei](http://www.centrify.com/cloud/apps/single-sign-on-for-office-365.asp)|
-
-## <a name="ibm-tivoli-federated-identity-manager-622"></a>IBM Tivoli Federated Identity Manager 6.2.2
-IBM Tivoli Federated Identity Manager 6.2.2 mit IBM Security Access Manager for Microsoft Applications 1.4 implementiert den weit verbreiteten WS-Verbund-/WS-Trust-Identitätsstandard, um das einmalige Anmelden zu ermöglichen und ein Framework für den Austausch von Attributen bereitzustellen.
-
-Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalige Anmelden: 
-
-| Client- | Support | Ausnahmen |
-| --- | --- | --- |
-| Webbasierte Clients wie Exchange Web Access und SharePoint Online |Unterstützt |Keine |
-| Rich Client-Anwendungen wie Lync, Office-Abonnement, CRM |Unterstützt |Keine |
-| E-Mail-Clients wie Outlook und ActiveSync |Unterstützt |Keine |
-
-Weitere Informationen zu IBM Tivoli Federated Identity Manager finden Sie unter [IBM Security Access Manager for Microsoft Applications](http://www-01.ibm.com/support/docview.wss?uid=swg24029517)
-
-## <a name="secureauth-idp-720"></a>SecureAuth IdP 7.2.0
-SecureAuth IdP 7.2.0 implementiert den weit verbreiteten WS-Verbund-/WS-Trust-Identitätsstandard, um das einmalige Anmelden zu ermöglichen und ein Framework für den Austausch von Attributen bereitzustellen.
-
-Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalige Anmelden: 
-
-| Client- | Support | Ausnahmen |
-| --- | --- | --- |
-| Webbasierte Clients wie Exchange Web Access und SharePoint Online |Unterstützt |Keine |
-| Rich Client-Anwendungen wie Lync, Office-Abonnement, CRM |Unterstützt |Keine |
-| E-Mail-Clients wie Outlook und ActiveSync |Unterstützt |Keine |
-
-Weitere Informationen zu SecureAuth finden Sie unter [SecureAuth IdP](http://go.microsoft.com/?linkid=9845293).
-
-## <a name="ca-siteminder-1252-sp1-cumulative-release-4"></a>CA SiteMinder 12.52 SP1 Cumulative Release 4
-CA SiteMinder Federation 12.52 implementiert den weit verbreiteten WS-Verbund-/WS-Trust-Identitätsstandard, um das einmalige Anmelden zu ermöglichen und ein Framework für den Austausch von Attributen bereitzustellen.
-
-Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalige Anmelden: 
-
-| Client- | Support | Ausnahmen |
-| --- | --- | --- |
-| Webbasierte Clients wie Exchange Web Access und SharePoint Online |Unterstützt |Keine |
-| Rich Client-Anwendungen wie Lync, Office-Abonnement, CRM |Unterstützt |Keine |
-| E-Mail-Clients wie Outlook und ActiveSync |Unterstützt |Keine |
-
-Weitere Informationen zu CA SiteMinder finden Sie unter [CA SiteMinder Federation.](http://www.ca.com/us/products/ca-single-sign-on.html) 
-
-## <a name="radiantone-cfs-30"></a>RadiantOne CFS 3.0
-RadiantOne Cloud Federation Service (CFS) 3.0 implementiert den weit verbreiteten WS-Verbund-/WS-Trust-Identitätsstandard, um das einmalige Anmelden zu ermöglichen und ein Framework für den Austausch von Attributen bereitzustellen.
-
-Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalige Anmelden: 
-
-| Client- | Support | Ausnahmen |
-| --- | --- | --- |
-| Webbasierte Clients wie Exchange Web Access und SharePoint Online |Unterstützt |Keine |
-| Rich Client-Anwendungen wie Lync, Office-Abonnement, CRM |Unterstützt |Integrierte Windows-Authentifizierung |
-| E-Mail-Clients wie Outlook und ActiveSync |Unterstützt |Keine |
-
-Weitere Informationen zu RadiantOne CFS finden Sie unter [RadiantOne CFS.](http://www.radiantlogic.com/products/radiantone-cfs/)
-
-## <a name="okta"></a>Okta
-Okta implementiert den weit verbreiteten WS-Verbund-/WS-Trust-Identitätsstandard, um das einmalige Anmelden zu ermöglichen und ein Framework für den Austausch von Attributen bereitzustellen.
-
-Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalige Anmelden: 
-
-| Client- | Support | Ausnahmen |
-| --- | --- | --- |
-| Webbasierte Clients wie Exchange Web Access und SharePoint Online |Unterstützt |Für die integrierte Windows-Authentifizierung muss ein zusätzlicher Webserver sowie eine zusätzliche Okta-Anwendung eingerichtet werden. |
-| Rich Client-Anwendungen wie Lync, Office-Abonnement, CRM |Unterstützt |Integrierte Windows-Authentifizierung |
-| E-Mail-Clients wie Outlook und ActiveSync |Unterstützt |Keine |
-
-Weitere Informationen zu Okta finden Sie unter [Okta](https://www.okta.com/)
-
-## <a name="onelogin"></a>OneLogin
-Die im Mai 2014 getestete OneLogin-Version implementiert den weit verbreiteten WS-Verbund-/WS-Trust-Identitätsstandard, um das einmalige Anmelden zu ermöglichen und ein Framework für den Austausch von Attributen bereitzustellen.
-
-Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalige Anmelden: 
-
-| Client- | Support | Ausnahmen |
-| --- | --- | --- |
-| Webbasierte Clients wie Exchange Web Access und SharePoint Online |Unterstützt |Integrierte Windows-Authentifizierung |
-| Rich Client-Anwendungen wie Lync, Office-Abonnement, CRM |Unterstützt |Integrierte Windows-Authentifizierung |
-| E-Mail-Clients wie Outlook und ActiveSync |Unterstützt |Keine |
-
-Weitere Informationen zu OneLogin finden Sie unter [OneLogin](https://www.onelogin.com/)
-
-## <a name="netiq-access-manager-401"></a>NetIQ Access Manager 4.0.1
-NetIQ Access Manager 4.0.1 implementiert den weit verbreiteten WS-Verbund-/WS-Trust-Identitätsstandard, um das einmalige Anmelden zu ermöglichen und ein Framework für den Austausch von Attributen bereitzustellen.
-
-Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalige Anmelden:
-
-| Client- | Support | Ausnahmen |
-| --- | --- | --- |
-| Webbasierte Clients wie Exchange Web Access und SharePoint Online |Unterstützt |*Kerberos-Verträge werden unterstützt |
+| Webbasierte Clients wie Exchange Web Access und SharePoint Online |Unterstützt |Integrierte Windows-Authentifizierung wird nicht unterstützt |
 | Rich Client-Anwendungen wie Lync, Office-Abonnement, CRM |Unterstützt |Integrierte Windows-Authentifizierung wird nicht unterstützt |
 | E-Mail-Clients wie Outlook und ActiveSync |Unterstützt |Keine |
 
-*NetIQ unterstützt die Kerberos-Authentifizierung über die Konfiguration eines Kerberos-Vertrags.  Wenn Sie Unterstützung bei dieser Konfiguration benötigen, wenden Sie sich an NetIQ, oder lesen Sie den Einrichtungsleitfaden. Weitere Informationen zu NetIQ Access Manager finden Sie unter [NetIQ Access Manager](https://www.netiq.com/documentation/netiqaccessmanager4/identityserverhelp/data/b12iqp0m.html)
+Weitere Informationen finden Sie unter [AuthAnvil Single Sign On](https://help.scorpionsoft.com/entries/26538603-How-can-I-Configure-Single-Sign-On-for-Office-365-)
+
 
 ## <a name="big-ip-with-access-policy-manager-big-ip-ver-113x--116x"></a>BIG-IP mit Access Policy Manager BIG-IP Version 11.3x - 11.6x
-BIG-IP mit Access Policy Manager (APM) BIG-IP Version 11.3x - 11.6x implementiert den weit verbreiteten SAML-Identitätsstandard, um das einmalige Anmelden zu ermöglichen und ein Framework für den Austausch von Attributen bereitzustellen.
 
 Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalige Anmelden: 
 
@@ -253,8 +112,7 @@ Weitere Informationen zu BIG-IP Access Policy Manager finden Sie unter [BIG-IP A
 
 Die BIG-IP Access Policy Manager-Anweisungen zur Konfiguration dieses Sicherheitstokendiensts zur Implementierung des einmaligen Anmeldens für Active Directory-Benutzer finden Sie in dieser [PDF-Datei](http://www.f5.com/pdf/deployment-guides/microsoft-office-365-idp-dg.pdf)
 
-## <a name="vmware--workspace-portal-version-21"></a>VMware Workspace Portal Version 2.1
-VMware Workspace Portal Version 2.1 implementiert den weit verbreiteten WS-Verbund-/WS-Trust-Identitätsstandard, um das einmalige Anmelden zu ermöglichen und ein Framework für den Austausch von Attributen bereitzustellen.
+## <a name="bitglass"></a>BitGlass
 
 Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalige Anmelden:
 
@@ -264,36 +122,9 @@ Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalig
 | Rich Client-Anwendungen wie Lync, Office-Abonnement, CRM |Unterstützt |Integrierte Windows-Authentifizierung wird nicht unterstützt |
 | E-Mail-Clients wie Outlook und ActiveSync |Unterstützt |Keine |
 
-Weitere Informationen zu VMware Workspace Portal Version 2.1 finden Sie in dieser [PDF-Datei](http://pubs.vmware.com/workspace-portal-21/topic/com.vmware.ICbase/PDF/workspace-portal-21-resource.pdf)
-
-## <a name="signgo-53"></a>Sign&go 5.3
-Sign&go 5.3 implementiert den weit verbreiteten WS-Verbund-/WS-Trust-Identitätsstandard, um das einmalige Anmelden zu ermöglichen und ein Framework für den Austausch von Attributen bereitzustellen.
-
-Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalige Anmelden:
-
-| Client- | Support | Ausnahmen |
-| --- | --- | --- |
-| Webbasierte Clients wie Exchange Web Access und SharePoint Online |Unterstützt |Kerberos-Verträge werden unterstützt |
-| Rich Client-Anwendungen wie Lync, Office-Abonnement, CRM |Unterstützt |Keine |
-| E-Mail-Clients wie Outlook und ActiveSync |Unterstützt |Keine |
-
-Sign&go 5.3 unterstützt die Kerberos-Authentifizierung über die Konfiguration eines Kerberos-Vertrags.  Wenn Sie Unterstützung bei dieser Konfiguration benötigen, wenden Sie sich an Ilex, oder lesen Sie [PDF-Datei](http://www.ilex-international.com/docs/sign&go_wsfederation_en.pdf)
-
-## <a name="icewall-federation-version-30"></a>IceWall Federation Version 3.0
-IceWall Federation Version 3.0 implementiert den weit verbreiteten WS-Verbund-/WS-Trust-Identitätsstandard, um das einmalige Anmelden zu ermöglichen und ein Framework für den Austausch von Attributen bereitzustellen.
-
-Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalige Anmelden:
-
-| Client- | Support | Ausnahmen |
-| --- | --- | --- |
-| Webbasierte Clients wie Exchange Web Access und SharePoint Online |Unterstützt |Integrierte Windows-Authentifizierung wird nicht unterstützt |
-| Rich Client-Anwendungen wie Lync, Office-Abonnement, CRM |Unterstützt |Integrierte Windows-Authentifizierung wird nicht unterstützt |
-| E-Mail-Clients wie Outlook und ActiveSync |Unterstützt |Keine |
-
-Weitere Informationen zu IceWall Federation finden Sie [hier](http://h50146.www5.hp.com/products/software/security/icewall/eng/federation/) und [hier](http://h50146.www5.hp.com/products/software/security/icewall/federation/office365.html).
+Weitere Informationen zu BitGlass finden Sie [hier](http://www.bitglass.com ).
 
 ## <a name="ca-secure-cloud"></a>CA Secure Cloud
-CA Secure Cloud implementiert den weit verbreiteten WS-Verbund-/WS-Trust-Identitätsstandard, um das einmalige Anmelden zu ermöglichen und ein Framework für den Austausch von Attributen bereitzustellen.
 
 Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalige Anmelden:
 
@@ -305,8 +136,31 @@ Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalig
 
 Weitere Informationen zu CA Secure Cloud finden Sie unter [CA Secure Cloud](http://www.ca.com/us/products/security-as-a-service.aspx)
 
+## <a name="ca-siteminder-1252-sp1-cumulative-release-4"></a>CA SiteMinder 12.52 SP1 Cumulative Release 4
+
+Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalige Anmelden: 
+
+| Client- | Support | Ausnahmen |
+| --- | --- | --- |
+| Webbasierte Clients wie Exchange Web Access und SharePoint Online |Unterstützt |Keine |
+| Rich Client-Anwendungen wie Lync, Office-Abonnement, CRM |Unterstützt |Keine |
+| E-Mail-Clients wie Outlook und ActiveSync |Unterstützt |Keine |
+
+Weitere Informationen zu CA SiteMinder finden Sie unter [CA SiteMinder Federation.](http://www.ca.com/us/products/ca-single-sign-on.html) 
+
+## <a name="centrify"></a>Centrify
+
+Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalige Anmelden:
+
+| Client- | Support | Ausnahmen |
+| --- | --- | --- |
+| Webbasierte Clients wie Exchange Web Access und SharePoint Online |Unterstützt |Keine |
+| Rich Client-Anwendungen wie Lync, Office-Abonnement, CRM |Unterstützt |Keine |
+| E-Mail-Clients wie Outlook und ActiveSync |Unterstützt |Client Access Control wird nicht unterstützt |
+
+Weitere Informationen zu Centrify finden Sie [PDF-Datei](http://www.centrify.com/cloud/apps/single-sign-on-for-office-365.asp)|
+
 ## <a name="dell-one-identity-cloud-access-manager-v71"></a>Dell One Identity Cloud Access Manager v7.1
-Dell One Identity Cloud Access Manager implementiert den weit verbreiteten WS-Verbund-/WS-Trust-Identitätsstandard, um das einmalige Anmelden zu ermöglichen und ein Framework für den Austausch von Attributen bereitzustellen.
 
 Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalige Anmelden:
 
@@ -320,8 +174,19 @@ Weitere Informationen zu Dell One Identity Cloud Access Manager finden Sie unter
 
  Anweisungen zum Konfigurieren dieses Sicherheitstokendiensts zur Implementierung des einmaligen Anmeldens für Office 365-Benutzer finden Sie unter [Configure Office 365 Users](http://documents.software.dell.com/dell-one-identity-cloud-access-manager/7.1/how-to-configure-microsoft-office-365) 
 
-## <a name="authanvil-single-sign-on-45"></a>AuthAnvil Single Sign On 4.5
-AuthAnvil Single Sign On 4.5 implementiert den weit verbreiteten WS-Verbund-/WS-Trust-Identitätsstandard, um das einmalige Anmelden zu ermöglichen und ein Framework für den Austausch von Attributen bereitzustellen.
+## <a name="ibm-tivoli-federated-identity-manager-622"></a>IBM Tivoli Federated Identity Manager 6.2.2
+
+Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalige Anmelden: 
+
+| Client- | Support | Ausnahmen |
+| --- | --- | --- |
+| Webbasierte Clients wie Exchange Web Access und SharePoint Online |Unterstützt |Keine |
+| Rich Client-Anwendungen wie Lync, Office-Abonnement, CRM |Unterstützt |Keine |
+| E-Mail-Clients wie Outlook und ActiveSync |Unterstützt |Keine |
+
+Weitere Informationen zu IBM Tivoli Federated Identity Manager finden Sie unter [IBM Security Access Manager for Microsoft Applications](http://www-01.ibm.com/support/docview.wss?uid=swg24029517)
+
+## <a name="icewall-federation-version-30"></a>IceWall Federation Version 3.0
 
 Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalige Anmelden:
 
@@ -331,23 +196,22 @@ Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalig
 | Rich Client-Anwendungen wie Lync, Office-Abonnement, CRM |Unterstützt |Integrierte Windows-Authentifizierung wird nicht unterstützt |
 | E-Mail-Clients wie Outlook und ActiveSync |Unterstützt |Keine |
 
-Weitere Informationen finden Sie unter [AuthAnvil Single Sign On](https://help.scorpionsoft.com/entries/26538603-How-can-I-Configure-Single-Sign-On-for-Office-365-)
+Weitere Informationen zu IceWall Federation finden Sie [hier](http://h50146.www5.hp.com/products/software/security/icewall/eng/federation/) und [hier](http://h50146.www5.hp.com/products/software/security/icewall/federation/office365.html).
 
-## <a name="sailpoint-identitynow"></a>Sailpoint IdentityNow
-Sailpoint IdentityNow implementiert den weit verbreiteten WS-Verbund-/WS-Trust-Identitätsstandard, um das einmalige Anmelden zu ermöglichen und ein Framework für den Austausch von Attributen bereitzustellen.
+## <a name="memority"></a>Memority
 
-Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalige Anmelden:
+Nachfolgend finden Sie die Matrix der unterstützten Szenarien für diese Art der Anmeldung: 
 
 | Client- | Support | Ausnahmen |
 | --- | --- | --- |
-| Webbasierte Clients wie Exchange Web Access und SharePoint Online |Unterstützt |Integrierte Windows-Authentifizierung wird nicht unterstützt |
-| Rich Client-Anwendungen wie Lync, Office-Abonnement, CRM |Unterstützt |Integrierte Windows-Authentifizierung wird nicht unterstützt |
+| Webbasierte Clients wie Exchange Web Access und SharePoint Online |Unterstützt |Keine |
+| Rich Client-Anwendungen wie Lync, Office-Abonnement, CRM |Unterstützt |Keine |
 | E-Mail-Clients wie Outlook und ActiveSync |Unterstützt |Keine |
 
-Weitere Informationen finden Sie unter [Sailpoint IdentityNow](https://www.sailpoint.com/idaas-identity-as-a-service-identitynow/).
+Weitere Informationen zum Verwenden von Memority finden Sie unter [Memority](http://www.memority.com).
+
 
 ## <a name="netiq-access-manager-4x"></a>NetIQ Access Manager 4.x
-NetIQ Access Manager implementiert den weit verbreiteten WS-Verbund-/WS-Trust-Identitätsstandard, um das einmalige Anmelden zu ermöglichen und ein Framework für den Austausch von Attributen bereitzustellen.
 
 Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalige Anmelden:
 
@@ -359,4 +223,155 @@ Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalig
 
 Weitere Informationen finden Sie unter [NetIQ Access Manager](https://www.netiq.com/documentation/access-manager-43/admin/data/b65ogn0.html#b12iqp0m).
 
+## <a name="okta"></a>Okta
 
+Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalige Anmelden: 
+
+| Client- | Support | Ausnahmen |
+| --- | --- | --- |
+| Webbasierte Clients wie Exchange Web Access und SharePoint Online |Unterstützt |Für die integrierte Windows-Authentifizierung muss ein zusätzlicher Webserver sowie eine zusätzliche Okta-Anwendung eingerichtet werden. |
+| Rich Client-Anwendungen wie Lync, Office-Abonnement, CRM |Unterstützt |Integrierte Windows-Authentifizierung |
+| E-Mail-Clients wie Outlook und ActiveSync |Unterstützt |Keine |
+
+Weitere Informationen zu Okta finden Sie unter [Okta](https://www.okta.com/)
+
+## <a name="onelogin"></a>OneLogin
+
+Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalige Anmelden: 
+
+| Client- | Support | Ausnahmen |
+| --- | --- | --- |
+| Webbasierte Clients wie Exchange Web Access und SharePoint Online |Unterstützt |Integrierte Windows-Authentifizierung |
+| Rich Client-Anwendungen wie Lync, Office-Abonnement, CRM |Unterstützt |Integrierte Windows-Authentifizierung |
+| E-Mail-Clients wie Outlook und ActiveSync |Unterstützt |Keine |
+
+Weitere Informationen zu OneLogin finden Sie unter [OneLogin](https://www.onelogin.com/)
+
+## <a name="optimal-idm-virtual-identity-server-federation-services"></a>Optimal IDM Virtual Identity Server Federation Services
+
+Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalige Anmelden:
+
+| Client- | Support | Ausnahmen |
+| --- | --- | --- |
+| Webbasierte Clients wie Exchange Web Access und SharePoint Online |Unterstützt |Keine |
+| Rich Client-Anwendungen wie Lync, Office-Abonnement, CRM |Unterstützt |Integrierte Windows-Authentifizierung |
+| E-Mail-Clients wie Outlook und ActiveSync |Unterstützt |
+
+Weitere Informationen zu Clientzugriffsrichtlinien finden Sie unter [Limiting Access to Office 365 Services Based on the Location of the Client](https://technet.microsoft.com/library/hh526961.aspx). |
+
+
+
+
+
+## <a name="pingfederate-611-72-8x"></a>PingFederate 6.11, 7.2, 8.x
+
+Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalige Anmelden:
+
+| Client- | Support | Ausnahmen |
+| --- | --- | --- |
+| Webbasierte Clients wie Exchange Web Access und SharePoint Online |Unterstützt |Keine |
+| Rich Client-Anwendungen wie Lync, Office-Abonnement, CRM |Unterstützt |Keine |
+| E-Mail-Clients wie Outlook und ActiveSync |Unterstützt |Keine |
+
+Die PingFederate-Anweisungen zur Konfiguration dieses Sicherheitstokendiensts zur Implementierung des einmaligen Anmeldens für Active Directory-Benutzer finden Sie hier: 
+
+- [PingFederate 6.11](http://go.microsoft.com/fwlink/?LinkID=266321)
+- [PingFederate 7.2](http://documentation.pingidentity.com/display/PF72/PingFederate+7.2)
+- [PingFederate 8.x](http://documentation.pingidentity.com/display/PFS/SSO+to+Office+365+Introduction)
+
+## <a name="radiantone-cfs-30"></a>RadiantOne CFS 3.0
+
+Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalige Anmelden: 
+
+| Client- | Support | Ausnahmen |
+| --- | --- | --- |
+| Webbasierte Clients wie Exchange Web Access und SharePoint Online |Unterstützt |Keine |
+| Rich Client-Anwendungen wie Lync, Office-Abonnement, CRM |Unterstützt |Integrierte Windows-Authentifizierung |
+| E-Mail-Clients wie Outlook und ActiveSync |Unterstützt |Keine |
+
+Weitere Informationen zu RadiantOne CFS finden Sie unter [RadiantOne CFS.](http://www.radiantlogic.com/products/radiantone-cfs/)
+
+## <a name="sailpoint-identitynow"></a>Sailpoint IdentityNow
+
+Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalige Anmelden:
+
+| Client- | Support | Ausnahmen |
+| --- | --- | --- |
+| Webbasierte Clients wie Exchange Web Access und SharePoint Online |Unterstützt |Integrierte Windows-Authentifizierung wird nicht unterstützt |
+| Rich Client-Anwendungen wie Lync, Office-Abonnement, CRM |Unterstützt |Integrierte Windows-Authentifizierung wird nicht unterstützt |
+| E-Mail-Clients wie Outlook und ActiveSync |Unterstützt |Keine |
+
+Weitere Informationen finden Sie unter [Sailpoint IdentityNow](https://www.sailpoint.com/idaas-identity-as-a-service-identitynow/).
+
+## <a name="secureauth-idp-720"></a>SecureAuth IdP 7.2.0
+
+Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalige Anmelden: 
+
+| Client- | Support | Ausnahmen |
+| --- | --- | --- |
+| Webbasierte Clients wie Exchange Web Access und SharePoint Online |Unterstützt |Keine |
+| Rich Client-Anwendungen wie Lync, Office-Abonnement, CRM |Unterstützt |Keine |
+| E-Mail-Clients wie Outlook und ActiveSync |Unterstützt |Keine |
+
+Weitere Informationen zu SecureAuth finden Sie unter [SecureAuth IdP](http://go.microsoft.com/?linkid=9845293).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## <a name="signgo-53"></a>Sign&go 5.3
+
+Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalige Anmelden:
+
+| Client- | Support | Ausnahmen |
+| --- | --- | --- |
+| Webbasierte Clients wie Exchange Web Access und SharePoint Online |Unterstützt |Kerberos-Verträge werden unterstützt |
+| Rich Client-Anwendungen wie Lync, Office-Abonnement, CRM |Unterstützt |Keine |
+| E-Mail-Clients wie Outlook und ActiveSync |Unterstützt |Keine |
+
+Sign&go 5.3 unterstützt die Kerberos-Authentifizierung über die Konfiguration eines Kerberos-Vertrags.  Wenn Sie Unterstützung bei dieser Konfiguration benötigen, wenden Sie sich an Ilex, oder lesen Sie [PDF-Datei](http://www.ilex-international.com/docs/sign&go_wsfederation_en.pdf)
+
+## <a name="softbank"></a>SoftBank
+
+Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalige Anmelden:
+
+| Client- | Support | Ausnahmen |
+| --- | --- | --- |
+| Webbasierte Clients wie Exchange Web Access und SharePoint Online |Unterstützt |Integrierte Windows-Authentifizierung wird nicht unterstützt |
+| Rich Client-Anwendungen wie Lync, Office-Abonnement, CRM |Unterstützt |Integrierte Windows-Authentifizierung wird nicht unterstützt |
+| E-Mail-Clients wie Outlook und ActiveSync |Unterstützt |Keine |
+
+Weitere Informationen zu BitGlass finden Sie [hier](https://www.softbanktech.jp/service/list/osg-pro-ent/).
+
+## <a name="vmware-identity-manager"></a>VMware Identity Manager
+
+Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalige Anmelden:
+
+| Client- | Support | Ausnahmen |
+| --- | --- | --- |
+| Webbasierte Clients wie Exchange Web Access und SharePoint Online |Unterstützt |Integrierte Windows-Authentifizierung wird nicht unterstützt |
+| Rich Client-Anwendungen wie Lync, Office-Abonnement, CRM |Unterstützt |Integrierte Windows-Authentifizierung wird nicht unterstützt |
+| E-Mail-Clients wie Outlook und ActiveSync |Unterstützt |Keine |
+
+Weitere Informationen finden Sie [hier](http://www.vmware.com/pdf/vidm-office365-saml.pdf).
+
+## <a name="vmware--workspace-portal-version-21"></a>VMware Workspace Portal Version 2.1
+
+Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalige Anmelden:
+
+| Client- | Support | Ausnahmen |
+| --- | --- | --- |
+| Webbasierte Clients wie Exchange Web Access und SharePoint Online |Unterstützt |Integrierte Windows-Authentifizierung wird nicht unterstützt |
+| Rich Client-Anwendungen wie Lync, Office-Abonnement, CRM |Unterstützt |Integrierte Windows-Authentifizierung wird nicht unterstützt |
+| E-Mail-Clients wie Outlook und ActiveSync |Unterstützt |Keine |
+
+Weitere Informationen zu VMware Workspace Portal Version 2.1 finden Sie in dieser [PDF-Datei](http://pubs.vmware.com/workspace-portal-21/topic/com.vmware.ICbase/PDF/workspace-portal-21-resource.pdf)

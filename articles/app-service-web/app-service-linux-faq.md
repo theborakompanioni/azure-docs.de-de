@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/14/2017
 ms.author: aelnably
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 148bc76b7f3e09745cbecfa41710a5e949704948
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: d9410448952438d6b9d437b7ca8823d4f196a2d6
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -72,6 +72,14 @@ Wenn Sie eine Frage haben, kommentieren Sie den Artikel, und wir werden so bald 
 
 **A:** Wir stellen eine SMB-Freigabe im Verzeichnis „\home\“ bereit. Dadurch werden alle vorhandenen Inhalte überschrieben.
 
+**F:** Welches Format hat die Server-URL der privaten Registrierung?
+
+**A:** Sie müssen die vollständige Registrierungs-URL samt „http://“ oder „https://“ eingeben.
+
+**F:** Welches Format hat der Bildname in der Option zur privaten Registrierung?
+
+**A:** Sie müssen den vollständigen Bildnamen samt URL der privaten Registrierung hinzufügen (z.B. myacr.azurecr.io/dotnet:latest)
+
 **F:** Ich möchte mehr als einen Port in meinem benutzerdefinierten Containerimage verfügbar machen. Ist das möglich?
 
 **A:** Dies wird derzeit nicht unterstützt.
@@ -87,6 +95,10 @@ Wenn Sie eine Frage haben, kommentieren Sie den Artikel, und wir werden so bald 
 **F:** Mein benutzerdefinierter Container lauscht auf einen anderen Port als Port 80. Wie kann ich meine App so konfigurieren, dass die Anforderungen an diesen Port weitergeleitet werden?
 
 **A:** Sie können eine Anwendungseinstellung mit dem Namen **PORT** und für diese den Wert der erwarteten Portnummer angeben.
+
+**F:** Muss ich HTTPS in meinem benutzerdefinierten Container implementieren?
+
+**A:** Die Plattform handhabt die HTTPS-Beendigung an den freigegebenen Front-Ends.
 
 ## <a name="pricing-and-sla"></a>Preise und SLA
 

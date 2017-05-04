@@ -13,17 +13,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2017
+ms.date: 04/18/2017
 ms.author: kirillg
 translationtype: Human Translation
-ms.sourcegitcommit: 81c569c5130869e6d8c9dc79feca592aecc44e61
-ms.openlocfilehash: edccbbb72649c5a443fefd7f1d97a8c01a4daff2
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 4338fc03664175b7c27a48f1ab682179c1035313
+ms.lasthandoff: 04/20/2017
 
 
 ---
-# <a name="view-edit-create-and-upload-json-documents-using-documentdb-document-explorer"></a>Anzeigen, Bearbeiten, Erstellen und Hochladen von JSON-Dokumenten mithilfe von DocumentDB-Dokument-Explorer
-Dieser Artikel enthält eine Übersicht über den [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) -Dokument-Explorer, ein Tool im Azure-Portal zum Anzeigen, Bearbeiten, Erstellen, Hochladen und Filtern von JSON-Dokumenten mit DocumentDB. 
+# <a name="view-edit-create-and-upload-json-documents"></a>Anzeigen, Bearbeiten, Erstellen und Hochladen von JSON-Dokumenten 
+
+Dieser Artikel bietet einen Überblick über die beiden Möglichkeiten zum Erstellen, Bearbeiten und Abfragen von Dokumenten im Portal: [Dokument-Explorer](#launch-document-explorer) und [Daten-Explorer (Vorschau)](#data-explorer).
 
 > [!NOTE]
 > Dokument-Explorer ist für DocumentDB-Konten mit Protokollunterstützung für MongoDB nicht aktiviert. Diese Seite wird aktualisiert, wenn dieses Feature aktiviert wurde.
@@ -147,6 +148,13 @@ Dokument-Explorer unterstützt die Sammelerfassung von einem oder mehreren JSON-
    
     ![Screenshot des Dokument-Explorers – Sammelerfassungsergebnisse](./media/documentdb-view-JSON-document-explorer/uploaddocument3.png)
 5. Sobald der Vorgang abgeschlossen ist, können Sie bis zu 100 weitere Dokumente auswählen, die Sie hochladen möchten.
+
+<a id="data-explorer"></a>
+## <a name="create-a-document-by-using-data-explorer-preview"></a>Erstellen eines Dokuments mithilfe des Daten-Explorers (Vorschau)
+
+Die andere Methode zum Erstellen, Bearbeiten und Abfragen von Dokumenten im Portal ist der Daten-Explorer. Um den Daten-Explorer zu öffnen, klicken Sie im Portal auf der Navigationsleiste auf **Daten-Explorer (Vorschau)**. Erweitern Sie dann den Namen der Datenbank und den Sammlungsnamen. Klicken Sie auf **Dokumente** und dann auf **Neues Dokument** (siehe die folgende Abbildung).
+
+![Screenshot der Schaltfläche „Neue Sammlung“ im Portal](./media/documentdb-view-JSON-document-explorer/azure-documentdb-data-explorer.png)
 
 ## <a name="work-with-json-documents-outside-the-portal"></a>Verwenden von JSON-Dokumenten außerhalb des Portals
 Der Dokument-Explorer im Azure-Portal ist nur eine Möglichkeit zur Verwendung von Dokumenten in DocumentDB. Für die Arbeit mit Dokumenten können Sie auch die [REST-API](https://msdn.microsoft.com/library/azure/mt489082.aspx) oder die [Client-SDKs](documentdb-sdk-dotnet.md) verwenden. Beispielcode finden Sie unter [.NET SDK-Dokumentbeispiele](documentdb-dotnet-samples.md#document-examples) sowie unter [Node.js SDK-Dokumentbeispiele](documentdb-nodejs-samples.md#document-examples).

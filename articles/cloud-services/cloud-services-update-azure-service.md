@@ -12,17 +12,18 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2016
+ms.date: 04/19/2017
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: b159d3583c24e36c2803d7d02deca1415669d054
-ms.openlocfilehash: ebc5461177df5b5a16ab9b5668f5fda890ee11a4
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 2ba9676ed2afce7f18446642527971f5001b5ca7
+ms.lasthandoff: 04/20/2017
 
 
 ---
 # <a name="how-to-update-a-cloud-service"></a>Aktualisieren eines Clouddiensts
-## <a name="overview"></a>Übersicht
-Das Aktualisieren eines Clouddiensts einschließlich der Rollen und Gastbetriebssysteme besteht aus drei Schritten. Zuerst müssen die Binär- und Konfigurationsdateien für den neuen Clouddienst oder die Version des Betriebssystems hochgeladen werden. Dann reserviert Azure Compute- und Netzwerkressourcen für den Clouddienst je nach den Erfordernissen der neuen der Clouddienstversion. Und zuletzt führt Azure ein paralleles Update aus, um den Mandanten inkrementell auf die neue Version oder das Gastbetriebssystem zu aktualisieren und Ihre Verfügbarkeit dabei beizubehalten. Dieser Artikel behandelt diesen letzten Schritt – das parallele Upgrade.
+
+Das Aktualisieren eines Clouddiensts einschließlich Rollen und Gastbetriebssysteme besteht aus drei Schritten. Zuerst müssen die Binär- und Konfigurationsdateien für den neuen Clouddienst oder die Version des Betriebssystems hochgeladen werden. Dann reserviert Azure Compute- und Netzwerkressourcen für den Clouddienst je nach den Erfordernissen der neuen der Clouddienstversion. Und zuletzt führt Azure ein paralleles Update aus, um den Mandanten inkrementell auf die neue Version oder das Gastbetriebssystem zu aktualisieren und Ihre Verfügbarkeit dabei beizubehalten. Dieser Artikel behandelt diesen letzten Schritt – das parallele Upgrade.
 
 ## <a name="update-an-azure-service"></a>Aktualisieren eines Azure-Diensts
 Azure organisiert Ihre Rolleninstanzen in logischen Gruppen, die als Upgradedomänen (UD) bezeichnet werden. Upgradedomänen (UD) sind logische Sätze von Rolleninstanzen, die als Gruppe aktualisiert werden.  Azure aktualisiert einen Clouddienst mit je einer UD. Dadurch können Instanzen in anderen UDs den Datenverkehr weiter bearbeiten.
@@ -90,11 +91,11 @@ Sie können entweder alle oder eine einzelne Rolle in Ihrem Dienst aktualisieren
 
 Das folgende Diagramm zeigt, wie das Upgrade durchgeführt wird, wenn Sie alle Rollen im Dienst aktualisieren:
 
-![Dienst aktualisieren](media/cloud-services-update-azure-service/IC345879.png "Upgrade service")
+![Dienst aktualisieren](media/cloud-services-update-azure-service/IC345879.png "Dienst aktualisieren")
 
 Das nächste Diagramm zeigt, wie die Aktualisierung durchgeführt wird, wenn Sie nur eine Rolle aktualisieren:
 
-![Rolle aktualisieren](media/cloud-services-update-azure-service/IC345880.png "Upgrade role")  
+![Rolle aktualisieren](media/cloud-services-update-azure-service/IC345880.png "Rolle aktualisieren")  
 
 Während einer automatischen Aktualisierung wertet der Azure Fabric Controller in regelmäßigen Abständen die Integrität des Clouddiensts aus, um zu bestimmen, wann die nächste UD durchlaufen werden kann. Diese Bewertung der Integrität erfolgt pro Rolle und berücksichtigt nur die Instanzen in der neuesten Version (d. h. Instanzen von UDs, die bereits durchlaufen wurden). Sie überprüft, ob eine Mindestanzahl von Rolleninstanzen für jede Rolle einen zufriedenstellende Endzustand erreicht hat.
 
@@ -178,7 +179,7 @@ Upgradedomänen werden anhand eines nullbasierten Index identifiziert: Die erste
 
 Das folgende Diagramm zeigt, wie ein Dienst mit zwei Rollen verteilt wird, wenn der Dienst zwei Upgradedomänen definiert. Der Dienst führt acht Instanzen der Webrolle und neun Instanzen der Workerrolle aus.
 
-![Verteilung von Upgradedomänen](media/cloud-services-update-azure-service/IC345533.png "Distribution of Upgrade Domains")
+![Verteilung von Upgradedomänen](media/cloud-services-update-azure-service/IC345533.png "Verteilung von Upgradedomänen")
 
 > [!NOTE]
 > Beachten Sie, dass Azure steuert, wie Instanzen Upgradedomänen zugeordnet werden. Es kann nicht festgelegt werden, welche Instanzen welcher Domäne zugeordnet werden.
@@ -189,9 +190,4 @@ Das folgende Diagramm zeigt, wie ein Dienst mit zwei Rollen verteilt wird, wenn 
 [Verwalten von Clouddiensten](cloud-services-how-to-manage.md)  
 [Überwachen von Clouddiensten](cloud-services-how-to-monitor.md)  
 [Konfigurieren von Clouddiensten](cloud-services-how-to-configure.md)  
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

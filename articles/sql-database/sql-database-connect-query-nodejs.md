@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 04/17/2017
 ms.author: lbosq
 translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 7365945818c56279bd5945fee8d0048ef425bfc7
-ms.lasthandoff: 04/18/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 4de9eb8f55bfda8b223417f5c1ed4e71b0f063c6
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -32,6 +32,8 @@ In diesem Schnellstart werden als Ausgangspunkt die Ressourcen verwendet, die in
 - [Erstellen einer Datenbank – CLI](sql-database-get-started-cli.md)
 
 ## <a name="install-nodejs"></a>Installieren von Node.js 
+
+Bei den Schritten in diesem Abschnitt wird davon ausgegangen, dass Sie mit der Node.js-Entwicklung vertraut sind und noch keine Erfahrung mit Azure SQL-Datenbank haben. Falls Sie noch keine Erfahrung mit der Node.js-Entwicklung haben, navigieren Sie zu [Erstellen einer App mithilfe von SQL Server](https://www.microsoft.com/en-us/sql-server/developer-get-started/), und wählen Sie erst **Node.js** und dann Ihr Betriebssystem aus.
 
 ### <a name="mac-os"></a>**Mac OS**
 Geben Sie die folgenden Befehle zum Installieren von **brew** ein, einem einfach zu verwendenden Paket-Manager für Mac OS X und **Node.js**.
@@ -63,7 +65,7 @@ npm install tedious
 
 ## <a name="get-connection-information"></a>Abrufen von Verbindungsinformationen
 
-Rufen Sie die Verbindungszeichenfolge im Azure-Portal ab. Sie verwenden die Verbindungszeichenfolge zum Herstellen einer Verbindung mit der Azure SQL-Datenbank.
+Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung mit der Azure SQL-Datenbank erforderlich sind. In den weiteren Verfahren benötigen Sie den vollqualifizierten Servernamen, den Datenbanknamen und die Anmeldeinformationen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 2. Wählen Sie im Menü auf der linken Seite die Option **SQL-Datenbanken**, und klicken Sie auf der Seite **SQL-Datenbanken** auf Ihre Datenbank. 
@@ -75,7 +77,7 @@ Rufen Sie die Verbindungszeichenfolge im Azure-Portal ab. Sie verwenden die Verb
     
 ## <a name="select-data"></a>Auswählen von Daten
 
-Verwenden Sie den folgenden Code, um Ihre Azure SQL-Datenbank abzufragen. Importieren Sie zunächst die Treiberklassen „Connect“ und „Request“ aus der Treiberbibliothek von tedious. Erstellen Sie anschließend das Konfigurationsobjekt, und ersetzen Sie die Variablen **username**, **password**, **server** und **database** durch die Werte, die Sie angegeben haben, als Sie die Datenbank mit den AdventureWorksLT-Beispieldaten erstellt haben. Erstellen Sie ein `Connection`-Objekt mit dem angegebenen `config`-Objekt. Definieren Sie danach den Rückruf für das `connect`-Ereignis des `connection`-Objekts zum Ausführen der `queryDatabase()`-Funktion.
+Verwenden Sie den folgenden Code, um Ihre Azure SQL-Datenbank auf die 20 wichtigsten Produkte nach Kategorie abzufragen. Importieren Sie zunächst die Treiberklassen „Connect“ und „Request“ aus der Treiberbibliothek von tedious. Erstellen Sie anschließend das Konfigurationsobjekt, und ersetzen Sie die Variablen **username**, **password**, **server** und **database** durch die Werte, die Sie angegeben haben, als Sie die Datenbank mit den AdventureWorksLT-Beispieldaten erstellt haben. Erstellen Sie ein `Connection`-Objekt mit dem angegebenen `config`-Objekt. Definieren Sie danach den Rückruf für das `connect`-Ereignis des `connection`-Objekts zum Ausführen der `queryDatabase()`-Funktion.
 
 ```js
 var Connection = require('tedious').Connection;
@@ -125,7 +127,7 @@ function queryDatabase(){
 ```
 
 ## <a name="insert-data-into-the-database"></a>Einfügen von Daten in die Datenbank
-Verwenden Sie den folgenden Code, um ein neues Produkt in die Tabelle „SalesLT.Product“ einzufügen. Ersetzen Sie die Variablen **username**, **password**, **server** und **database** durch die Werte, die Sie angegeben haben, als Sie die Datenbank mit den AdventureWorksLT-Beispieldaten erstellt haben. Verwenden Sie dieses Mal in der `insertIntoDatabase()`-Funktion eine **INSERT-Anweisung**.
+Verwenden Sie den folgenden Code, um mit der Transact-SQL-Anweisung [INSERT](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) und der Funktion `insertIntoDatabase()` ein neues Produkt in die Tabelle „SalesLT.Product“ einzufügen. Ersetzen Sie die Variablen **username**, **password**, **server** und **database** durch die Werte, die Sie angegeben haben, als Sie die Datenbank mit den AdventureWorksLT-Beispieldaten erstellt haben. 
 
 ```js
 var Connection = require('tedious').Connection;
@@ -167,7 +169,7 @@ function insertIntoDatabase(){
 ```
 
 ## <a name="update-data-in-the-database"></a>Aktualisieren von Daten in der Datenbank
-Verwenden Sie den folgenden Code, um Daten in der Datenbank zu aktualisieren. Ersetzen Sie die Variablen **username**, **password**, **server** und **database** durch die Werte, die Sie angegeben haben, als Sie die Datenbank mit den AdventureWorksLT-Beispieldaten erstellt haben. Verwenden Sie dieses Mal in der `updateInDatabase()`-Funktion eine **UPDATE-Anweisung**. Dieses Beispiel verwendet den Produktnamen, der im vorherigen Beispiel eingefügt wurde.
+Verwenden Sie den folgenden Code, um das neue zuvor hinzugefügte Produkt mit der Funktion `updateInDatabase()` und der Transact-SQL-Anweisung [UPDATE](https://docs.microsoft.com/sql/t-sql/queries/update-transact-sql) zu löschen. Ersetzen Sie die Variablen **username**, **password**, **server** und **database** durch die Werte, die Sie angegeben haben, als Sie die Datenbank mit den AdventureWorksLT-Beispieldaten erstellt haben. Dieses Beispiel verwendet den Produktnamen, der im vorherigen Beispiel eingefügt wurde.
 
 ```js
 var Connection = require('tedious').Connection;

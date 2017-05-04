@@ -1,5 +1,5 @@
 ---
-title: "Verwenden der Paketerfassung für die proaktive Netzwerküberwachung mit Azure Functions | Microsoft-Dokumentation"
+title: "Verwenden der Paketerfassung für die proaktive Netzwerküberwachung mit Warnungen und Azure Functions | Microsoft-Dokumentation"
 description: "In diesem Artikel wird beschrieben, wie Sie eine per Warnung ausgelöste Paketerfassung mit Azure Network Watcher erstellen."
 services: network-watcher
 documentationcenter: na
@@ -15,55 +15,90 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
-ms.openlocfilehash: 941a795c4c83e05ec3c5bb55790f8fcc72829a65
-ms.lasthandoff: 04/10/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: aced1550a7b5b41b0a430c26f82c31c023f4d2d4
+ms.lasthandoff: 04/26/2017
 
 
 ---
-# <a name="use-packet-capture-to-do-proactive-network-monitoring-with-azure-functions"></a>Verwenden der Paketerfassung für die proaktive Netzwerküberwachung mit Azure Functions
+# <a name="use-packet-capture-to-do-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Verwenden der Paketerfassung für die proaktive Netzwerküberwachung mit Warnungen und Azure Functions
 
-Mit der Network Watcher-Paketerfassung werden Erfassungssitzungen zum Nachverfolgen des eingehenden und ausgehenden Datenverkehrs eines virtuellen Computers erstellt. Die Erfassungsdatei kann über einen Filter verfügen, der so definiert ist, dass nur der Datenverkehr nachverfolgt wird, den Sie überwachen möchten. Diese Daten werden dann in einem Speicherblob oder lokal auf dem Gastcomputer gespeichert. Diese Funktion kann per Remotezugriff über Automationsszenarien wie Azure Functions gestartet werden. Mit der Paketerfassung können Sie proaktive Erfassungen basierend auf definierten Netzwerkanomalien durchführen. Weitere Verwendungszwecke sind das Erfassen von Netzwerkstatistiken, das Gewinnen von Informationen zu Netzwerkangriffen, das Debuggen der Kommunikation zwischen Client und Server und vieles mehr.
+Mit der Network Watcher-Paketerfassung werden Erfassungssitzungen zum Nachverfolgen des eingehenden und ausgehenden Datenverkehrs eines virtuellen Computers erstellt. Die Erfassungsdatei kann über einen Filter verfügen, der so definiert ist, dass nur der Datenverkehr nachverfolgt wird, den Sie überwachen möchten. Diese Daten werden dann in einem Speicherblob oder lokal auf dem Gastcomputer gespeichert.
+
+Diese Funktion kann per Remotezugriff über Automationsszenarien wie Azure Functions gestartet werden. Mit der Paketerfassung können Sie proaktive Erfassungen basierend auf definierten Netzwerkanomalien durchführen. Weitere Verwendungszwecke sind das Erfassen von Netzwerkstatistiken, das Gewinnen von Informationen zu Netzwerkangriffen, das Debuggen der Kommunikation zwischen Client und Server und vieles mehr.
 
 In Azure bereitgestellte Ressourcen werden rund um die Uhr ausgeführt. Für Sie bzw. Ihre Mitarbeiter ist es nicht möglich, den Status aller Ressourcen rund um die Uhr lückenlos aktiv zu überwachen. Was passiert, wenn nachts um 2 Uhr ein Problem auftritt?
 
 Durch den Einsatz von Network Watcher, Warnungen und Functions im Azure-Ökosystem können Sie mit den entsprechenden Daten und Tools proaktiv auf Probleme im Netzwerk reagieren, um diese zu lösen.
 
-## <a name="before-you-begin"></a>Voraussetzungen
+![Szenario][scenario]
 
-In diesem Beispiel werden von Ihrer VM ungewöhnlich viele TCP-Segmente gesendet, und Sie möchten dazu eine Warnung erhalten. Als Beispiel werden TCP-Segmente verwendet, aber Sie können eine beliebige Warnungsbedingung nutzen. Bei einer Warnung möchten Sie über Paketebenendaten verfügen, um zu verstehen, warum es zu einem Anstieg der Kommunikation gekommen ist. Sie können dann Maßnahmen einleiten, um die reguläre Kommunikation des Computers wiederherzustellen.
-Bei diesem Szenario wird angenommen, dass Sie über eine vorhandene Instanz von Network Watcher und eine Ressourcengruppe mit einem gültigen virtuellen Computer verfügen, der genutzt werden kann.
+## <a name="prerequisites"></a>Voraussetzungen
+
+* Installieren Sie die neueste Version von [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-3.8.0).
+* [Erstellen Sie eine Instanz von Network Watcher](network-watcher-create.md) (sofern noch nicht vorhanden).
+* Halten Sie einen virtuellen Computer in der gleichen Region bereit, in der sich auch die Network Watcher-Instanz befindet – entweder mit der [Windows-Erweiterung](../virtual-machines/windows/extensions-nwa.md) oder mit der [Erweiterung für virtuelle Linux-Computer](../virtual-machines/linux/extensions-nwa.md).
 
 ## <a name="scenario"></a>Szenario
 
-Zur Automatisierung dieses Prozesses erstellen und verbinden wir eine Warnung auf unserer VM, die ausgelöst wird, wenn der Vorfall eintritt, sowie eine Azure-Funktion für den Aufruf von Network Watcher.
+In diesem Beispiel werden von Ihrer VM ungewöhnlich viele TCP-Segmente gesendet, und Sie möchten dazu eine Warnung erhalten. Hier werden als Beispiel TCP-Segmente verwendet, Sie können jedoch eine beliebige Warnungsbedingung nutzen.
 
-Dieses Szenario:
+Bei einer Warnung möchten Sie Daten auf Paketebene erhalten, und die Erhöhung des Kommunikationsvolumens nachvollziehen zu können. So können Sie Maßnahmen ergreifen, die dafür sorgen, dass der Computer zur regulären Kommunikation zurückkehrt.
 
-* Erstellt eine Azure-Funktion, die eine Paketerfassung startet.
-* Erstellt eine Warnungsregel auf einem virtuellen Computer
-* Konfiguriert die Warnungsregel für den Aufruf der Azure-Funktion
+Bei diesem Szenario wird vorausgesetzt, dass Sie über eine Instanz von Network Watcher sowie über eine Ressourcengruppe mit einem gültigen virtuellen Computer verfügen, den Sie verwenden können.
 
-## <a name="creating-an-azure-function-and-overview"></a>Erstellen einer Azure-Funktion und Übersicht
+In diesem Beispiel werden von Ihrer VM ungewöhnlich viele TCP-Segmente gesendet, und Sie möchten dazu eine Warnung erhalten. Als Beispiel werden TCP-Segmente verwendet, aber Sie können eine beliebige Warnungsbedingung nutzen. Bei einer Warnung möchten Sie über Paketebenendaten verfügen, um zu verstehen, warum es zu einem Anstieg der Kommunikation gekommen ist. Sie können dann Maßnahmen einleiten, um die reguläre Kommunikation des Computers wiederherzustellen.
+
+Die folgende Liste enthält eine Übersicht über den Workflow:
+
+1. Auf Ihrer VM wird eine Warnung ausgelöst.
+1. Die Warnung ruft über einen Webhook Ihre Azure-Funktion auf.
+1. Ihre Azure-Funktion verarbeitet die Warnung und startet eine Network Watcher-Paketerfassungssitzung.
+1. Die Paketerfassung wird auf dem virtuellen Computer ausgeführt, und der Datenverkehr wird erfasst.
+1. Die Paketerfassungsdatei wird zur Überprüfung und Diagnose in ein Speicherkonto hochgeladen.
+
+Zur Automatisierung dieses Prozesses erstellen und verbinden wir eine Warnung auf unserem virtuellen Computer, die ausgelöst wird, wenn der Vorfall eintritt, sowie eine Funktion für den Aufruf von Network Watcher.
+
+In diesem Szenario passiert Folgendes:
+
+* Es wird eine Azure-Funktion erstellt, die eine Paketerfassung startet.
+* Es wird eine Warnungsregel auf einem virtuellen Computer erstellt, und die Warnungsregel wird zum Aufrufen der Azure-Funktion konfiguriert.
+
+## <a name="creating-an-azure-function"></a>Erstellen einer Azure-Funktion
 
 Im ersten Schritt wird eine Azure-Funktion zum Verarbeiten der Warnung und Erstellen einer Paketerfassung erstellt.
 
-Die folgende Liste enthält eine Übersicht über den Workflow.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **Neu** > **Compute** > **Funktionen-App**.
 
-1. Auf Ihrer VM wird eine Warnung ausgelöst.
-1. Für die Warnung wird Ihre Azure-Funktion per Webhook aufgerufen.
-1. Ihre Azure-Funktion verarbeitet die Warnung und startet eine Network Watcher-Paketerfassungssitzung.
-1. Die Paketerfassung wird auf dem virtuellen Computer ausgeführt, und der Datenverkehr wird erfasst. 
-1. Die Erfassungsdatei wird für die Überprüfung und Diagnose in ein Speicherkonto hochgeladen. 
+    ![Erstellen einer Funktionen-App][1-1]
 
-Die Erstellung einer Azure-Funktion ist im Portal möglich. Informationen hierzu finden Sie unter [Erstellen Sie Ihre erste Funktion in Azure Functions](../azure-functions/functions-create-first-azure-function.md). Für dieses Beispiel haben wir eine PowerShell-Funktion vom Typ „HttpTrigger“ ausgewählt. Für dieses Beispiel sind Anpassungen erforderlich, die in den folgenden Schritten erläutert werden:
+2. Geben Sie unter **Funktionen-App** die folgenden Werte ein, und klicken Sie anschließend auf **OK**, um die Funktionen-App zu erstellen:
+
+    |**Einstellung** | **Wert** | **Details** |
+    |---|---|---|
+    |**App-Name**|PacketCaptureExample|Der Name der Funktionen-App.|
+    |**Abonnement**|[Ihr Abonnement]|Wählen Sie ein Abonnement aus, in dem Sie die Funktionen-App erstellen möchten.||
+    |**Ressourcengruppe**|PacketCaptureRG|Der Name der Ressourcengruppe für die Funktionen-App.|
+    |**Hostingplan**|Verbrauchstarif| Die Art des Plans, der für Ihre Funktionen-App verwendet wird. Zur Auswahl stehen „Verbrauchstarif“ und „App Service-Plan“. |
+    |**Standort**|USA, Mitte| Die Region, in der Sie die Funktionen-App erstellen möchten.|
+    |**Speicherkonto**|{automatisch generiert}| Das Speicherkonto, das von Azure Functions für allgemeine Speicherzwecke benötigt wird.|
+
+3. Klicken Sie auf dem Blatt der Funktionen-App **PacketCaptureExample** unter **Funktionen** > **Benutzerdefinierte Funktionen** auf **+**. Wählen Sie **HttpTrigger-Powershell** aus, geben Sie die restlichen Informationen an, und klicken Sie anschließend auf **Erstellen**, um die Funktion zu erstellen.
+
+    |**Einstellung** | **Wert** | **Details** |
+    |---|---|---|
+    |**Szenario**|Experimentell|Art des Szenarios|
+    |**Name Ihrer Funktion**|AlertPacketCapturePowerShell|Name der Funktion|
+    |**Autorisierungsstufe**|Funktion|Autorisierungsstufe für die Funktion.|
 
 ![Funktionsbeispiel][functions1]
 
 > [!NOTE]
 > Die PowerShell-Vorlage ist experimentell und nicht in vollem Umfang unterstützt.
 
-## <a name="adding-modules"></a>Hinzufügen von Modulen
+Für dieses Beispiel sind Anpassungen erforderlich, die in den folgenden Schritten erläutert werden:
+
+### <a name="adding-modules"></a>Hinzufügen von Modulen
 
 Um die Network Watcher-PowerShell-Cmdlets zu verwenden, muss das neueste PowerShell-Modul in die Funktionen-App hochgeladen worden sein.
 
@@ -105,14 +140,14 @@ Um die Network Watcher-PowerShell-Cmdlets zu verwenden, muss das neueste PowerSh
 
     ![PowerShell-Dateien][functions7]
 
-## <a name="authentication"></a>Authentifizierung
+### <a name="authentication"></a>Authentifizierung
 
 Um die PowerShell-Cmdlets zu verwenden, müssen Sie sich authentifizieren. Die Authentifizierung muss in der Funktionen-App konfiguriert werden. Zum Konfigurieren der Authentifizierung werden Umgebungsvariablen konfiguriert, und eine verschlüsselte Schlüsseldatei muss in die Funktionen-App hochgeladen werden.
 
 > [!NOTE]
 > Dieses Szenario stellt lediglich ein Beispiel für das Implementieren von Authentifizierung für Azure-Funktionen dar, es gibt andere Möglichkeiten, dieses Ziel zu erreichen.
 
-### <a name="encrypted-credentials"></a>Verschlüsselte Anmeldeinformationen
+#### <a name="encrypted-credentials"></a>Verschlüsselte Anmeldeinformationen
 
 Das folgende PowerShell-Skript erstellt eine Schlüsseldatei mit dem Namen **PassEncryptKey.key** und stellt eine verschlüsselte Version des angegebenen Kennworts bereit.  Dieses Kennwort ist das gleiche, das für die Azure AD-Anwendung definiert ist, die zur Authentifizierung verwendet wird.
 
@@ -137,7 +172,7 @@ Erstellen Sie im App Service-Editor der Funktionen-App einen Ordner mit dem Name
 
 ![Funktionsschlüssel][functions8]
 
-### <a name="retrieving-values-for-environment-variables"></a>Abrufen von Werten für Umgebungsvariablen
+### <a name="retrieve-values-for-environment-variables"></a>Abrufen von Werten für Umgebungsvariablen
 
 Die erforderliche endgültige Konfiguration legt die Umgebungsvariablen fest, die für den Zugriff auf die Werte für die Authentifizierung erforderlich sind. In der folgenden Liste werden die erstellten Umgebungsvariablen aufgeführt:
 
@@ -201,7 +236,7 @@ $Encryptedpassword = $secPw | ConvertFrom-SecureString -Key $AESKey
 $Encryptedpassword
 ```
 
-### <a name="storing-the-environment-variables"></a>Speichern der Umgebungsvariablen
+### <a name="store-the-environment-variables"></a>Speichern der Umgebungsvariablen
 
 1. Navigieren Sie zur Funktionen-App, klicken Sie auf **Funktionen-App-Einstellungen** > **App-Einstellungen konfigurieren**
 
@@ -211,7 +246,7 @@ $Encryptedpassword
 
     ![app settings][functions12]
 
-## <a name="processing-the-alert-and-starting-a-packet-capture-session"></a>Verarbeiten der Warnung und Starten einer Paketerfassungssitzung
+### <a name="add-powershell-to-the-function"></a>Hinzufügen von PowerShell zur Funktion
 
 Nun können Sie über die Azure-Funktion Aufrufe an Network Watcher senden. Die Implementierung dieser Funktion unterscheidet sich je nach den geltenden Anforderungen. Für den allgemeinen Datenfluss des Codes gilt aber folgender Ablauf:
 
@@ -282,7 +317,7 @@ if($requestBody.context.resourceType -eq "Microsoft.Compute/virtualMachines")
 } 
 ``` 
 
-Nachdem Sie die Funktion erstellt haben, müssen Sie Ihre Warnung konfigurieren, um die URL aufzurufen, die der Funktion zugeordnet ist. Klicken Sie zum Abrufen dieses Werts auf **</> Funktions-URL abrufen** 
+Konfigurieren Sie nach dem Erstellen der Funktion Ihre Warnung, um die der Funktion zugeordnete URL aufzurufen. Diesen Wert erhalten Sie, indem Sie die Funktions-URL aus Ihrer Funktionen-App kopieren.
 
 ![Ermitteln der Funktions-URL 1][functions13]
 
@@ -294,37 +329,46 @@ Wenn Sie in der Nutzlast der Webhook-POST-Anforderung benutzerdefinierte Eigensc
 
 ## <a name="configure-an-alert-on-a-vm"></a>Konfigurieren einer Warnung auf einem virtuellen Computer
 
-Warnungen können konfiguriert werden, um Personen zu benachrichtigen, wenn eine bestimmte Metrik einen zugewiesenen Schwellenwert überschreitet. In diesem Beispiel wird die Warnung für die gesendeten TCP-Segmente ausgelöst, aber sie kann auch für viele andere Metriken ausgelöst werden. Hier wird eine Warnung konfiguriert, um einen Webhook zum Aufrufen der Funktion aufzurufen.
+Warnungen können konfiguriert werden, um Personen zu benachrichtigen, wenn eine bestimmte Metrik einen zugewiesenen Schwellenwert überschreitet. In diesem Beispiel wird die Warnung für die gesendeten TCP-Segmente ausgelöst, sie kann jedoch auch für viele andere Metriken ausgelöst werden. Hier wird eine Warnung konfiguriert, um einen Webhook zum Aufrufen der Funktion aufzurufen.
 
 ### <a name="create-the-alert-rule"></a>Erstellen der Warnungsregel
 
-Navigieren Sie zu einem vorhandenen virtuellen Computer, und fügen Sie eine Warnungsregel hinzu. Eine ausführlichere Dokumentation zur Konfiguration von Warnungen finden Sie unter [Erstellen von Warnungen in Azure Monitor für Azure-Dienste – Azure-Portal](../monitoring-and-diagnostics/insights-alerts-portal.md). 
+Navigieren Sie zu einem vorhandenen virtuellen Computer, und fügen Sie eine Warnungsregel hinzu. Ausführlichere Informationen zum Konfigurieren von Warnungen finden Sie unter [Erstellen von Metrikwarnungen in Azure Monitor für Azure-Dienste – Azure-Portal](../monitoring-and-diagnostics/insights-alerts-portal.md). Geben Sie auf dem Blatt die folgenden Werte ein, und klicken Sie anschließend auf **OK**.
 
-![Hinzufügen einer VM-Warnungsregel zu einem virtuellen Computer][1]
+  |**Einstellung** | **Wert** | **Details** |
+  |---|---|---|
+  |**Name**|TCP_Segments_Sent_Exceeded|Der Name der Warnungsregel.|
+  |**Beschreibung**|Schwellenwertüberschreitung durch gesendete TCP-Segmente|Die Beschreibung für die Warnungsregel.||
+  |**Metrik**|Gesendete TCP-Segmente| Die Metrik zur Auslösung der Warnung. |
+  |**Bedingung**|Größer als| Die Bedingung, die bei der Auswertung der Metrik verwendet werden soll.|
+  |**Schwellenwert**|100| Der Wert der Metrik für die Warnungsauslösung. Muss auf einen gültigen Wert für Ihre Umgebung festgelegt werden.|
+  |**Zeitraum**|Innerhalb der letzten fünf Minuten| Bestimmt den Zeitraum, in dem der Schwellenwert für die Metrik geprüft werden soll.|
+  |**Webhook**|[Webhook-URL aus der Funktionen-App]| Die Webhook-URL aus der Funktionen-App, die in den vorherigen Schritten erstellt wurde.|
 
 > [!NOTE]
 > Die Metrik der TCP-Segmente ist in der Standardeinstellung nicht aktiviert. Weitere Informationen dazu, wie Sie weitere Metriken aktivieren, finden Sie unter [Aktivieren von Überwachung und Diagnose](../monitoring-and-diagnostics/insights-how-to-use-diagnostics.md).
 
-Fügen Sie abschließend die URL aus dem vorherigen Schritt in das Textfeld „Webhook“ Ihrer Warnung ein. Klicken Sie auf **OK**, um die Warnungsregel zu speichern.
+## <a name="review-the-results"></a>Überprüfen der Ergebnisse
 
-![Einfügen der URL in die Warnungsregel][3]
+Wenn die Kriterien für die Warnung erfüllt sind, wird eine Paketerfassung erstellt. Navigieren Sie zu Ihrer Network Watcher-Instanz, und klicken Sie auf **Paketerfassung**. Auf dieser Seite können Sie auf den Link für die Paketerfassungsdatei klicken, um die Paketerfassung herunterzuladen.
 
-## <a name="downloading-and-viewing-the-capture-file"></a>Herunterladen und Anzeigen der Erfassungsdatei
+![Anzeigen der Paketerfassung][functions14]
 
-Wenn Sie Ihre Erfassung in einem Speicherkonto speichern, kann die Erfassungsdatei über das Portal oder programmgesteuert heruntergeladen werden. Wenn die Erfassungsdatei lokal gespeichert ist, wird sie abgerufen, indem die Anmeldung am virtuellen Computer durchgeführt wird. 
+Wenn die Erfassungsdatei lokal gespeichert ist, wird sie abgerufen, indem die Anmeldung am virtuellen Computer durchgeführt wird.
 
-Anweisungen zum Herunterladen von Dateien von Azure-Speicherkonten finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](../storage/storage-dotnet-how-to-use-blobs.md). Ein weiteres Tool, das verwendet werden kann, ist der Speicher-Explorer. Weitere Informationen zum Speicher-Explorer finden Sie unter [Speicher-Explorer](http://storageexplorer.com/).
+Eine Anleitung zum Herunterladen von Dateien aus Azure-Speicherkonten finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](../storage/storage-dotnet-how-to-use-blobs.md). Sie können auch den Speicher-Explorer verwenden. Weitere Informationen zum Speicher-Explorer finden Sie unter [Speicher-Explorer](http://storageexplorer.com/).
 
-Nach dem Herunterladen Ihrer Erfassung können Sie diese mit einem beliebigen Tool anzeigen, das für **CAP**-Dateien geeignet ist. Hier sind Links zu zwei Tools dieser Art angegeben:
+Nach dem Herunterladen Ihrer Erfassung können Sie diese mit einem beliebigen Tool anzeigen, das für Dateien vom Typ **.cap** geeignet ist. Hier finden Sie zwei Links zu geeigneten Tools:
 
-[Microsoft Message Analyzer](https://technet.microsoft.com/en-us/library/jj649776.aspx)  
-[WireShark](https://www.wireshark.org/)  
+- [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx)
+- [WireShark](https://www.wireshark.org/)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zum Anzeigen der Paketerfassungen finden Sie unter [Verwenden der Paketerfassung für die proaktive Netzwerküberwachung mit Azure Functions](network-watcher-alert-triggered-packet-capture.md).
+Informationen zum Anzeigen der Paketerfassungen finden Sie unter [Packet capture analysis with Wireshark](network-watcher-alert-triggered-packet-capture.md) (Paketerfassungsanalyse mit Wireshark).
 
 [1]: ./media/network-watcher-alert-triggered-packet-capture/figure1.png
+[1-1]: ./media/network-watcher-alert-triggered-packet-capture/figure1-1.png
 [2]: ./media/network-watcher-alert-triggered-packet-capture/figure2.png
 [3]: ./media/network-watcher-alert-triggered-packet-capture/figure3.png
 [functions1]:./media/network-watcher-alert-triggered-packet-capture/functions1.png
@@ -340,3 +384,6 @@ Informationen zum Anzeigen der Paketerfassungen finden Sie unter [Verwenden der 
 [functions11]:./media/network-watcher-alert-triggered-packet-capture/functions11.png
 [functions12]:./media/network-watcher-alert-triggered-packet-capture/functions12.png
 [functions13]:./media/network-watcher-alert-triggered-packet-capture/functions13.png
+[functions14]:./media/network-watcher-alert-triggered-packet-capture/functions14.png
+[scenario]:./media/network-watcher-alert-triggered-packet-capture/scenario.png
+

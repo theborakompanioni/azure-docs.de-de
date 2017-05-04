@@ -11,37 +11,31 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/12/2017
+ms.date: 04/12/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 64d06a67ee5480e6bdbac2f6745ea32faa2cf003
-ms.lasthandoff: 04/17/2017
+ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
+ms.openlocfilehash: f31625783aa03dd01a73b5e5b39dd899e109b3b9
+ms.lasthandoff: 04/21/2017
 
 
 ---
 
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Verwenden von vorhandenen lokalen Proxyservern
 
-In diesem Artikel wird beschrieben, wie Sie den Azure AD-Anwendungsproxyconnector (Azure Active Directory) für Proxyserver für ausgehenden Datenverkehr konfigurieren. Er richtet sich an Kunden mit Netzwerkumgebungen, die über vorhandene Proxys verfügen.
+In diesem Artikel erfahren Sie, wie Sie den Azure AD-Anwendungsproxyconnector (Azure Active Directory) für Proxyserver für ausgehenden Datenverkehr konfigurieren. Er richtet sich an Kunden mit Netzwerkumgebungen, die über vorhandene Proxys verfügen.
 
 Zuerst sehen wir uns die folgenden wichtigsten Bereitstellungsszenarien an:
 * Konfigurieren von Connectors zum Umgehen von lokalen Proxys für ausgehenden Datenverkehr
 * Konfigurieren von Connectors zum Verwenden eines Proxys für ausgehenden Datenverkehr für den Zugriff auf den Azure AD-Anwendungsproxy
 
-Weitere Informationen zur Funktionsweise von Connectors finden Sie unter [Bereitstellen von sicherem Remotezugriff auf lokale Anwendungen](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-get-started).
-
-## <a name="configure-your-connectors"></a>Konfigurieren von Connectors
-
-Für den Kernconnectordienst wird Azure Service Bus zum Verarbeiten der zugrunde liegenden Kommunikation mit dem Azure AD-Anwendungsproxydienst verwendet. Mit Service Bus sind zusätzliche Konfigurationsanforderungen verbunden.
-
-Informationen zum Beheben von Azure AD-Konnektivitätsproblemen finden Sie unter [How to troubleshoot Azure AD Application Proxy connectivity problems](https://blogs.technet.microsoft.com/applicationproxyblog/2015/03/24/how-to-troubleshoot-azure-ad-application-proxy-connectivity-problems) (Behandeln von Problemen mit der Azure AD-Anwendungsproxykonnektivität).
+Weitere Informationen zur Funktionsweise von Connectors finden Sie unter [Grundlegendes zu Azure AD-Anwendungsproxyconnectors](application-proxy-understand-connectors.md).
 
 ## <a name="configure-the-outbound-proxy"></a>Konfigurieren des Proxys für ausgehenden Datenverkehr
 
-Wenn Sie in Ihrer Umgebung einen Proxy für ausgehenden Datenverkehr verwenden, sollten Sie sicherstellen, dass das für die Installation verwendete Konto richtig für die Nutzung des Proxys für ausgehenden Datenverkehr konfiguriert ist. Da das Installationsprogramm im Kontext des Benutzers ausgeführt wird, der die Installation durchführt, können Sie die Konfiguration mit Microsoft Edge oder einem anderen Internetbrowser überprüfen.
+Wenn Sie in Ihrer Umgebung einen Proxy für ausgehenden Datenverkehr verwenden, konfigurieren Sie ihn mithilfe eines Kontos mit geeigneten Berechtigungen. Da das Installationsprogramm im Kontext des Benutzers ausgeführt wird, der die Installation durchführt, können Sie die Konfiguration mit Microsoft Edge oder einem anderen Internetbrowser überprüfen.
 
-Gehen Sie wie folgt vor, um die Proxyeinstellungen mit Microsoft Edge zu konfigurieren:
+Gehen Sie wie folgt vor, um die Proxyeinstellungen in Microsoft Edge zu konfigurieren:
 
 1. Navigieren Sie zu **Einstellungen** > **Erweiterte Einstellungen anzeigen** > **Proxyeinstellungen öffnen** > **Manuelle Proxyeinrichtung**.
 2. Legen Sie **Proxyserver verwenden** auf **Ein** fest, aktivieren Sie das Kontrollkästchen **Für lokale Adressen (Intranet) keinen Proxyserver verwenden**, und ändern Sie dann die Adresse und den Port, um Ihren lokalen Proxyserver anzugeben.
@@ -51,25 +45,25 @@ Gehen Sie wie folgt vor, um die Proxyeinstellungen mit Microsoft Edge zu konfigu
 
 ## <a name="bypass-outbound-proxies"></a>Umgehen von Proxys für ausgehenden Datenverkehr
 
-Standardmäßig wird von den zugrunde liegenden Betriebssystemkomponenten, die vom Connector für ausgehende Anforderungen verwendet werden, automatisch der Versuch unternommen, im Netzwerk einen Proxyserver zu ermitteln. Hierfür wird die automatische Ermittlung von Webproxys (Web Proxy Auto-Discovery, WPAD) verwendet, wenn dies in der Umgebung aktiviert ist.
+Connectors verfügen über zugrunde liegende Betriebssystemkomponenten, die ausgehende Anforderungen senden. Diese Komponenten versuchen automatisch, einen Proxyserver im Netzwerk zu ermitteln. Hierfür wird die automatische Ermittlung von Webproxys (Web Proxy Auto-Discovery, WPAD) verwendet, wenn dies in der Umgebung aktiviert ist.
 
 Die Betriebssystemkomponenten versuchen, einen Proxyserver zu finden, indem eine DNS-Suche nach „wpad.domainsuffix“ durchgeführt wird. Wenn die Auflösung im DNS erfolgreich ist, wird eine HTTP-Anforderung für die IP-Adresse für „wpad.dat“ gesendet. Diese Anforderung wird zum Proxykonfigurationsskript in Ihrer Umgebung. Der Connector verwendet dieses Skript zum Auswählen eines ausgehenden Proxyservers. Es kann aber sein, dass der Datenverkehr des Connectors trotzdem nicht fließen kann, weil für den Proxy weitere Konfigurationseinstellungen erforderlich sind.
 
-Im nächsten Abschnitt geht es um die Konfigurationsschritte, die auf dem Proxy für ausgehenden Datenverkehr benötigt werden, damit der Datenverkehr darüber gesendet werden kann. Zuerst wird aber beschrieben, wie Sie den Connector so konfigurieren, dass Ihr lokaler Proxy umgangen wird, und sicherstellen, dass die direkte Verbindung mit den Azure-Diensten verwendet wird. Dies ist unsere Empfehlung (sofern Ihre Netzwerkrichtlinie dies zulässt), weil Sie eine Konfiguration weniger verwalten müssen.
+Sie können den Connector so konfigurieren, dass Ihr lokaler Proxy umgangen wird, um sicherzustellen, dass eine direkte Verbindung mit den Azure-Diensten verwendet wird. Sofern Ihre Netzwerkrichtlinie dies zulässt, empfehlen wir diese Vorgehensweise, da Sie eine Konfiguration weniger verwalten müssen.
 
-Bearbeiten Sie zum Deaktivieren der Proxynutzung für ausgehenden Datenverkehr für den Connector die Datei „C:\Programme\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config“, und fügen Sie den Abschnitt [system.net] aus dem folgenden Codebeispiel hinzu:
+Wenn Sie für den Connector die Verwendung des Proxys für ausgehenden Datenverkehr deaktivieren möchten, bearbeiten Sie die Datei „C:\Programme\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config“, und fügen Sie den Abschnitt *system.net* aus dem folgenden Codebeispiel hinzu:
 
 ```xml
- <?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <configuration>
-<system.net>
-<defaultProxy enabled="false"></defaultProxy>
-</system.net>
- <runtime>
-<gcServer enabled="true"/>
+  <system.net>
+    <defaultProxy enabled="false"></defaultProxy>
+  </system.net>
+  <runtime>
+    <gcServer enabled="true"/>
   </runtime>
   <appSettings>
-<add key="TraceFilename" value="AadAppProxyConnector.log" />
+    <add key="TraceFilename" value="AadAppProxyConnector.log" />
   </appSettings>
 </configuration>
 ```
@@ -79,44 +73,36 @@ Achten Sie darauf, dass Sie Kopien der Originaldateien erstellen, falls Sie auf 
 
 ## <a name="use-the-outbound-proxy-server"></a>Verwenden des Proxyservers für ausgehenden Datenverkehr
 
-Wie bereits erwähnt, ist es für einige Kundenumgebungen erforderlich, dass der gesamte ausgehende Datenverkehr ausnahmslos über einen Proxy für ausgehenden Datenverkehr gesendet wird. Das Umgehen des Proxys ist also keine Option.
+Bei einigen Kundenumgebungen muss der gesamte ausgehende Datenverkehr ausnahmslos über einen Proxy für ausgehenden Datenverkehr abgewickelt werden. Das Umgehen des Proxys ist also keine Option.
 
 Sie können den Connectordatenverkehr so konfigurieren, dass er wie im folgenden Diagramm dargestellt über den Proxy für ausgehenden Datenverkehr verläuft.
 
  ![Konfigurieren des Connectordatenverkehrs für den Verlauf über einen Proxy für ausgehenden Datenverkehr für den Azure AD-Anwendungsproxy](./media/application-proxy-working-with-proxy-servers/configure-proxy-settings.png)
 
-Da es nur um ausgehenden Datenverkehr geht, muss kein Lastenausgleich zwischen den Connectors eingerichtet und auch kein Zugriff in eingehender Richtung über die Firewalls konfiguriert werden.
-
-Die folgenden Schritte müssen auf jeden Fall ausgeführt werden:
-1. Konfigurieren der Route über den Proxy für ausgehenden Datenverkehr für den Connectorupdatedienst
-2. Konfigurieren der Proxyeinstellungen zum Zulassen von Verbindungen mit dem Azure AD-Anwendungsproxydienst
+Da es nur um ausgehenden Datenverkehr geht, muss kein eingehender Zugriff durch Ihre Firewalls konfiguriert werden.
 
 ### <a name="step-1-configure-the-connector-and-related-services-to-go-through-the-outbound-proxy"></a>Schritt 1: Konfigurieren der Route über den Proxy für ausgehenden Datenverkehr für den Connector und die dazugehörigen Dienste
 
 Wie oben beschrieben, gilt Folgendes: Wenn WPAD in der Umgebung aktiviert und richtig konfiguriert ist, kann der Connector den Proxyserver für ausgehenden Datenverkehr automatisch ermitteln und versuchen, ihn zu verwenden. Sie können den Connector aber auch explizit so konfigurieren, dass ein Proxy für ausgehenden Datenverkehr verwendet wird.
 
-Bearbeiten Sie hierfür die Datei „C:\Programme\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config“, und fügen Sie den Abschnitt [system.net] aus dem folgenden Codebeispiel hinzu:
+Bearbeiten Sie hierfür die Datei „C:\Programme\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config“, und fügen Sie den Abschnitt *system.net* aus dem folgenden Codebeispiel hinzu. Legen Sie *proxyserver:8080* auf den Namen bzw. auf die IP-Adresse Ihres lokalen Proxyservers sowie auf den Port fest, an dem gelauscht wird.
 
 ```xml
- <?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <configuration>
-<system.net>  
+  <system.net>  
     <defaultProxy>   
       <proxy proxyaddress="http://proxyserver:8080" bypassonlocal="True" usesystemdefault="True"/>   
     </defaultProxy>  
-</system.net>
+  </system.net>
   <runtime>
-     <gcServer enabled="true"/>
+    <gcServer enabled="true"/>
   </runtime>
   <appSettings>
     <add key="TraceFilename" value="AadAppProxyConnector.log" />
   </appSettings>
 </configuration>
 ```
-
->[!NOTE]
->Ändern Sie _proxyserver:8080_ in den Namen Ihres lokalen Proxyservers bzw. die IP-Adresse und den Port, über den gelauscht wird.
->
 
 Konfigurieren Sie anschließend den Connectorupdatedienst für die Verwendung des Proxys, indem Sie eine ähnliche Änderung an der Datei unter „C:\Programme\Microsoft AAD App Proxy Connector Updater\ApplicationProxyConnectorUpdaterService.exe.config“ vornehmen.
 

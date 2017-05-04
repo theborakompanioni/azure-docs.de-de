@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie eine SQL Server-Datenbank zu Azure SQL-Datenb
 services: sql-database
 documentationcenter: 
 author: janeng
-manager: jstrauss
+manager: jhubbard
 editor: 
 tags: 
 ms.assetid: 
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 04/04/2017
+ms.date: 04/20/2017
 ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 842ca29e46aefbd58638ac642f000ef39c1202d1
-ms.lasthandoff: 04/13/2017
+ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
+ms.openlocfilehash: c6d965351f6f131ee342cea672fc4fa8771f8ede
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -40,7 +40,7 @@ Damit Sie dieses Tutorial ausführen können, benötigen Sie folgende Komponente
 - Den [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA).
 - Eine zu migrierende Datenbank. In diesem Tutorial wird die [SQL Server 2008-OLTP-Datenbank „AdventureWorks2008R2“](https://msftdbprodsamples.codeplex.com/releases/view/59211) für eine Instanz von SQL Server 2008R2 oder höher verwendet, Sie können aber jede Datenbank Ihrer Wahl verwenden. 
 
-## <a name="step-1---prepare-for-migration"></a>Schritt 1: Vorbereiten auf die Migration
+## <a name="prepare-for-migration"></a>Vorbereiten der Migration
 
 Sie können nun die Schritte zum Vorbereiten auf die Migration ausführen. Führen Sie die folgenden Schritte aus, um mit dem  **[Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595)**  eine Bewertung (Assessment) vorzunehmen, ob Ihre Datenbank für die Migration zu Azure SQL-Datenbank geeignet ist.
 
@@ -85,7 +85,7 @@ Sie können nun die Schritte zum Vorbereiten auf die Migration ausführen. Führ
 10. Klicken Sie optional auf **Export report**, um den Bericht als JSON-Datei zu speichern.
 11. Schließen Sie den Data Migration Assistant.
 
-## <a name="step-2---export-to-bacpac-file"></a>Schritt 2: Exportieren in eine BACPAC-Datei 
+## <a name="export-to-bacpac-file"></a>Exportieren in eine BACPAC-Datei 
 
 Eine BACPAC-Datei ist eine ZIP-Datei mit der Erweiterung BACPAC. Sie enthält die Metadaten und Daten aus einer SQL Server-Datenbank. Eine BACPAC-Datei kann in Azure Blob Storage oder im lokalen Speicher zur Archivierung oder Migration (wie von SQL Server zu Azure SQL-Datenbank) gespeichert werden. Damit ein Export hinsichtlich der Transaktionen konsistent ist, müssen Sie sicherstellen, dass während des Exports keine Schreibaktivitäten stattfinden.
 
@@ -103,11 +103,11 @@ Führen Sie die folgenden Schritte aus, um die Datenbank „AdventureWorks2008R2
 
 Sobald die Ausführung abgeschlossen ist, wird die generierte BCPAC-Datei in dem Verzeichnis gespeichert, in dem sich die ausführbare Datei „sqlpackage“ befindet. In diesem Beispiel ist das „C:\Program Files (x86) \Microsoft SQL Server\130\DAC\bin“. 
 
-## <a name="step-3-log-in-to-the-azure-portal"></a>Schritt 3: Anmelden beim Azure-Portal
+## <a name="log-in-to-the-azure-portal"></a>Anmelden beim Azure-Portal
 
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an. Melden Sie sich von dem Computer an, auf dem Sie das Befehlszeilenprogramm „SQLPackage“ ausführen. Dies vereinfacht die Erstellung der Firewallregel in Schritt 5.
 
-## <a name="step-4-create-a-sql-database-logical-server"></a>Schritt 4: Erstellen eines logischen SQL-Datenbankservers
+## <a name="create-a-sql-database-logical-server"></a>Erstellen eines logischen SQL-Datenbankservers
 
 Ein [logischer Azure SQL-Datenbankserver](sql-database-features.md) fungiert als zentraler Verwaltungspunkt für mehrere Datenbanken. Führen Sie die folgenden Schritte aus, um einen logischen SQL-Datenbank-Server zu erstellen, der die migrierte Adventure Works-OLTP-SQL Server-Datenbank enthalten soll. 
 
@@ -133,7 +133,7 @@ Ein [logischer Azure SQL-Datenbankserver](sql-database-features.md) fungiert als
 
 5. Klicken Sie auf **Erstellen**, um den logischen Server bereitzustellen. Die Bereitstellung dauert einige Minuten. 
 
-## <a name="step-5-create-a-server-level-firewall-rule"></a>Schritt 5: Erstellen einer Firewallregel auf Serverebene
+## <a name="create-a-server-level-firewall-rule"></a>Erstellen einer Firewallregel auf Serverebene
 
 Der SQL-Datenbankdienst erstellt eine [Firewall auf Serverebene](sql-database-firewall-configure.md), um zu verhindern, dass externe Anwendungen und Tools eine Verbindung mit dem Server oder Datenbanken auf dem Server herstellen – sofern keine Firewallregel erstellt wird, um die Firewall für bestimmte IP-Adressen zu öffnen. Führen Sie die folgenden Schritte aus, um eine SQL-Datenbank-Firewallregel auf Serverebene für die IP-Adresse des Computers zu erstellen, auf dem Sie das Befehlszeilenprogramm „SQLPackage“ ausführen. Damit wird es „SQLPackage“ ermöglicht, über die Azure SQL-Datenbank-Firewall eine Verbindung mit dem logischen SQL-Datenbankserver herzustellen. 
 
@@ -155,7 +155,7 @@ Nun können Sie über diese IP-Adresse Verbindungen mit allen Datenbanken auf di
 > SQL-Datenbank kommuniziert über Port 1433. Wenn Sie versuchen, eine Verbindung aus einem Unternehmensnetzwerk heraus herzustellen, wird der ausgehende Datenverkehr über Port 1433 von der Firewall Ihres Netzwerks unter Umständen nicht zugelassen. In diesem Fall können Sie nur dann eine Verbindung mit Ihrem Azure SQL-Datenbankserver herstellen, wenn Ihre IT-Abteilung Port 1433 öffnet.
 >
 
-## <a name="step-6---import-bacpac-file-to-azure-sql-database"></a>Schritt 6: Importieren der BACPAC-Datei in Azure SQL-Datenbank 
+## <a name="import-bacpac-file-to-azure-sql-database"></a>Importieren der BACPAC-Datei in Azure SQL-Datenbank 
 
 Die neuesten Versionen des Befehlszeilenprogramms „SQLPackage“ unterstützen das Erstellen einer Azure SQL-Datenbank auf einer angegebenen [Dienstebene und Leistungsstufe](sql-database-service-tiers.md). Damit beim Importieren die beste Leistung erzielt wird, wählen Sie eine hohe Dienstebene und Leistungsstufe aus. Nach dem Import können Sie zentral herunterskalieren, wenn die Dienstebene und die Leistungsstufe höher sind, als dies derzeit erforderlich ist.
 
@@ -173,7 +173,7 @@ Führen Sie die folgenden Schritte aus, um die Datenbank „AdventureWorks2008R2
 > Ein logischer Azure SQL-Datenbankserver lauscht über Port 1433. Wenn Sie versuchen, durch eine Unternehmensfirewall eine Verbindung mit einem logischen Azure SQL-Datenbankserver herzustellen, muss dieser Port in der Unternehmensfirewall geöffnet sein, damit der Vorgang erfolgreich ist.
 >
 
-## <a name="step-7---connect-using-sql-server-management-studio-ssms"></a>Schritt 7: Herstellen einer Verbindung mithilfe von SQL Server Management Studio (SSMS)
+## <a name="connect-using-sql-server-management-studio-ssms"></a>Herstellen einer Verbindung mithilfe von SQL Server Management Studio (SSMS)
 
 Verwenden Sie SQL Server Management Studio, um eine Verbindung mit Ihrem Azure SQL-Datenbankserver und der neu migrierten Datenbank herzustellen. Wenn Sie SQL Server Management Studio nicht auf dem Computer ausführen, der mit dem identisch ist, auf dem Sie „SQLPackage“ ausgeführt haben, erstellen Sie eine Firewallregel für diesen Computer (siehe die Schritte im vorherigen Verfahren).
 
@@ -192,7 +192,7 @@ Verwenden Sie SQL Server Management Studio, um eine Verbindung mit Ihrem Azure S
 
 4. Erweitern Sie im Objekt-Explorer die Option **Datenbanken** und anschließend den Eintrag **myMigratedDatabase**, um die Objekte in der Beispieldatenbank anzuzeigen.
 
-## <a name="step-8---change-database-properties"></a>Schritt 8: Ändern von Datenbankeigenschaften
+## <a name="change-database-properties"></a>Ändern von Datenbankeigenschaften
 
 Sie können die Dienstebene, die Leistungsstufe und den Kompatibilitätsgrad über SQL Server Management Studio ändern.
 

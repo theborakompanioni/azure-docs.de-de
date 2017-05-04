@@ -16,13 +16,15 @@ ms.workload: na
 ms.date: 04/12/2017
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
-ms.openlocfilehash: 00f45f2bc1a7e15d93980779c23c8aa287cd25bb
-ms.lasthandoff: 04/13/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 2cdfbadfc4cc28afe34b4d558f40bba6451f7388
+ms.lasthandoff: 04/25/2017
 
 
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>IoT-Remoteüberwachung und -Benachrichtigungen mit Azure Logic Apps zum Herstellen einer Verbindung zwischen Ihrem IoT Hub und Postfach
+
+![Lückenloses Diagramm](media/iot-hub-get-started-e2e-diagram/7.png)
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
@@ -38,9 +40,9 @@ Sie erfahren, wie Sie eine Logik-App erstellen, die Ihren IoT Hub und Ihr Postfa
 * Fügen Sie mit Ihrem IoT Hub einen Endpunkt und eine Routingregel hinzu.
 * Erstellen, konfigurieren und testen Sie eine Logik-App.
 
-## <a name="what-you-need"></a>Voraussetzungen
+## <a name="what-you-need"></a>Erforderliches Element
 
-* Sie müssen das Tutorial [Verbinden von ESP8266 mit Azure IoT Hub](iot-hub-arduino-huzzah-esp8266-get-started.md) abgeschlossen haben, in dem die folgenden Voraussetzungen behandelt werden:
+* Abschluss des Tutorials [Einrichten Ihres Geräts](iot-hub-raspberry-pi-kit-node-get-started.md), in dem die folgenden Anforderungen behandelt werden:
   * Ein aktives Azure-Abonnement.
   * Ein Azure IoT Hub in Ihrem Abonnement.
   * Eine Clientanwendung, die Nachrichten an Ihren Azure IoT Hub sendet.

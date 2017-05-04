@@ -15,9 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 4/12/2017
 ms.author: anuragm;markgal
 translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 0f4ca1924531df890433ec092790e6bec7c41df0
-ms.lasthandoff: 04/13/2017
+ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
+ms.openlocfilehash: 4529037cb610e31028a35cf4643a2a99e90b2b8f
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -39,13 +39,13 @@ Ein wichtiger Aspekt dieses Frameworks ist das Sicherstellen anwendungskonsisten
 
 1. Melden Sie sich bei der zu sichernden Linux-VM als Benutzer mit der Berechtigung „root“ an.
 
-2. Laden Sie die Datei „VMSnapshotPluginConfig.json“ von [GitHub](https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig) herunter, und kopieren Sie sie auf allen zu sichernden VMs in den Ordner „/etc/azure“. Erstellen Sie das Verzeichnis „/etc/azure“, sofern noch nicht vorhanden.
+2. Laden Sie die Datei „VMSnapshotScriptPluginConfig.json“ von [GitHub](https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig) herunter, und kopieren Sie sie auf allen zu sichernden VMs in den Ordner „/etc/azure“. Erstellen Sie das Verzeichnis „/etc/azure“, sofern noch nicht vorhanden.
 
-3. Kopieren Sie das Pre- und Post-Skript für Ihre Anwendung auf alle zu sichernden VMs. Sie können die Skripts an einen beliebigen Speicherort auf der VM kopieren. In der Datei „VMSnapshotPluginConfig.json“ müssen Sie den vollständigen Pfad der Skriptdateien aktualisieren.
+3. Kopieren Sie das Pre- und Post-Skript für Ihre Anwendung auf alle zu sichernden VMs. Sie können die Skripts an einen beliebigen Speicherort auf der VM kopieren. In der Datei „VMSnapshotScriptPluginConfig.json“ müssen Sie den vollständigen Pfad der Skriptdateien aktualisieren.
 
 4. Stellen Sie für die Dateien folgende Berechtigungen sicher:
 
-   - VMSnapshotPluginConfig.json: Berechtigung „600“, was bedeutet, dass nur der Benutzer „root“ die Berechtigungen „read“ und „write“ für diese Datei haben darf. Kein Benutzer darf die Berechtigung „execute“ haben.
+   - VMSnapshotScriptPluginConfig.json: Berechtigung „600“, was bedeutet, dass nur der Benutzer „root“ die Berechtigungen „read“ und „write“ für diese Datei haben darf. Kein Benutzer darf die Berechtigung „execute“ haben.
    - Pre-Skript-Datei: Berechtigung „700“, was bedeutet, dass nur der Benutzer „root“ die Berechtigungen „read“, „write“ und „execute“ für diese Datei haben darf.
    - Post-Skript-Datei: Berechtigung „700“, was bedeutet, dass nur der Benutzer „root“ die Berechtigungen „read“, „write“ und „execute“ für diese Datei haben darf.
 
@@ -54,7 +54,7 @@ Ein wichtiger Aspekt dieses Frameworks ist das Sicherstellen anwendungskonsisten
    > Wenn die genannten Voraussetzungen nicht erfüllt sind, wird das Skript nicht ausgeführt, was zu einer dateisystem- bzw. absturzkonsistenten Sicherung führt.
    >
 
-5. Konfigurieren Sie „VMSnapshotPluginConfig.json“ gemäß den folgenden Vorgaben.
+5. Konfigurieren Sie „VMSnapshotScriptPluginConfig.json“ gemäß den folgenden Vorgaben.
     - **pluginName**: Lassen Sie dieses Feld unverändert, da Ihre Skripts andernfalls ggf. nicht wie erwartet funktionieren.
     - **PreScriptLocation**: Geben Sie den vollständigen Pfad des Pre-Skripts auf der zu sichernden VM an.
     - **postScriptLocation**: Geben Sie den vollständigen Pfad des Post-Skripts auf der zu sichernden VM an.
@@ -76,14 +76,14 @@ Fügen Sie unbedingt beim Schreiben Ihres Pre- und Post-Skripts eine entsprechen
 | ------------------------ | -------------- | ------------------ |
 | Pre-ScriptExecutionFailed |Das Pre-Skript hat einen Fehler zurückgegeben, sodass die Sicherung ggf. nicht anwendungskonsistent ist.    | Untersuchen Sie die Fehlerprotokolle des Skripts, um das Problem zu beheben.|  
 |    Post-ScriptExecutionFailed |    Das Post-Skript hat einen Fehler zurückgegeben, der sich auf den Anwendungszustand auswirken kann. |    Untersuchen Sie die Fehlerprotokolle des Skripts, um das Problem zu beheben, und überprüfen Sie den Anwendungszustand. |
-| Pre-ScriptNotFound |    Das Pre-Skript wurde nicht am in der Konfigurationsdatei „VMSnapshotPluginConfig.json“ angegebenen Speicherort gefunden. |    Stellen Sie sicher, dass das Pre-Skript im Pfad vorhanden ist, der in der Konfigurationsdatei angegeben ist, um eine anwendungskonsistente Sicherung zu gewährleisten.|
-| Post-ScriptNotFound |    Das Post-Skript wurde nicht am in der Konfigurationsdatei „VMSnapshotPluginConfig.json“ angegebenen Speicherort gefunden. |    Stellen Sie sicher, dass das Post-Skript im Pfad vorhanden ist, der in der Konfigurationsdatei angegeben ist, um eine anwendungskonsistente Sicherung zu gewährleisten.|
+| Pre-ScriptNotFound |    Das Pre-Skript wurde nicht am in der Konfigurationsdatei „VMSnapshotScriptPluginConfig.json“ angegebenen Speicherort gefunden. |    Stellen Sie sicher, dass das Pre-Skript im Pfad vorhanden ist, der in der Konfigurationsdatei angegeben ist, um eine anwendungskonsistente Sicherung zu gewährleisten.|
+| Post-ScriptNotFound |    Das Post-Skript wurde nicht am in der Konfigurationsdatei „VMSnapshotScriptPluginConfig.json“ angegebenen Speicherort gefunden. |    Stellen Sie sicher, dass das Post-Skript im Pfad vorhanden ist, der in der Konfigurationsdatei angegeben ist, um eine anwendungskonsistente Sicherung zu gewährleisten.|
 | IncorrectPluginhostFile |    Die zur Erweiterung „VmSnapshotLinux“ gehörige Datei „pluginhost“ ist beschädigt, weshalb Pre- und Post-Skript nicht ausgeführt werden können und die Sicherung nicht anwendungskonsistent sein wird.    | Deinstallieren Sie die Erweiterung „VmSnapshotLinux“, die zum Beheben des Problems bei der nächsten Sicherung automatisch neu installiert wird. |
-| IncorrectJSONConfigFile | Die Datei „VMSnapshotPluginConfig.json“ ist falsch, weshalb Pre- und Post-Skript nicht ausgeführt werden können und die Sicherung nicht anwendungskonsistent sein wird. | Laden Sie die Kopie von [GitHub](https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig) herunter, und konfigurieren Sie sie erneut. |
+| IncorrectJSONConfigFile | Die Datei „VMSnapshotScriptPluginConfig.json“ ist falsch, weshalb Pre- und Post-Skript nicht ausgeführt werden können und die Sicherung nicht anwendungskonsistent sein wird. | Laden Sie die Kopie von [GitHub](https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig) herunter, und konfigurieren Sie sie erneut. |
 | InsufficientPermissionforPre-Script | Zum Ausführen von Skripts muss der Benutzer „root“ der Besitzer der Datei sein, und für die Datei muss die Berechtigung „700“ gelten, was bedeutet, dass nur der Besitzer die Berechtigungen „read“, „write“ und „execute“ haben darf. | Stellen Sie sicher, der Benutzer „root“ der Besitzer der Skriptdatei ist und nur der Besitzer die Berechtigungen „read“, „write“ und „execute“ hat. |
 | InsufficientPermissionforPost-Skript | Zum Ausführen von Skripts muss der Benutzer „root“ der Besitzer der Datei sein, und für die Datei muss die Berechtigung „700“ gelten, was bedeutet, dass nur der Besitzer die Berechtigungen „read“, „write“ und „execute“ haben darf. | Stellen Sie sicher, der Benutzer „root“ der Besitzer der Skriptdatei ist und nur der Besitzer die Berechtigungen „read“, „write“ und „execute“ hat. |
-| Pre-ScriptTimeout | Bei Ausführung des Pre-Skripts für eine anwendungskonsistente Sicherung ist ein Timeout aufgetreten. | Überprüfen Sie das Skript, und erhöhen Sie den Timeoutwert in der Datei „VMSnapshotPluginConfig.json“ unter „/etc/azure“. |
-| Post-ScriptTimeout | Bei Ausführung des Post-Skripts für eine anwendungskonsistente Sicherung ist ein Timeout aufgetreten. | Überprüfen Sie das Skript, und erhöhen Sie den Timeoutwert in der Datei „VMSnapshotPluginConfig.json“ unter „/etc/azure“. |
+| Pre-ScriptTimeout | Bei Ausführung des Pre-Skripts für eine anwendungskonsistente Sicherung ist ein Timeout aufgetreten. | Überprüfen Sie das Skript, und erhöhen Sie den Timeoutwert in der Datei „VMSnapshotScriptPluginConfig.json“ unter „/etc/azure“. |
+| Post-ScriptTimeout | Bei Ausführung des Post-Skripts für eine anwendungskonsistente Sicherung ist ein Timeout aufgetreten. | Überprüfen Sie das Skript, und erhöhen Sie den Timeoutwert in der Datei „VMSnapshotScriptPluginConfig.json“ unter „/etc/azure“. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Konfigurieren der VM-Sicherung in einem Recovery Services-Tresor](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms)

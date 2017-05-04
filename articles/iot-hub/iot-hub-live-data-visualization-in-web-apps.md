@@ -16,15 +16,15 @@ ms.workload: na
 ms.date: 03/29/2017
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 1d1eec1457917baef1acab27f7c60bdb048837a9
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: f3bb01da7764e467963a47d3d5485679411c9167
+ms.lasthandoff: 04/25/2017
 
 
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-azure-web-apps"></a>Visualisieren von Sensordaten in Azure IoT Hub in Echtzeit mit Web-Apps
 
-![Verbindung zwischen Sensor, IoT-Gerät, IoT Hub und Azure-Web-App](media/iot-hub-live-data-visualization-in-web-apps/1_sensor-iot-device-azure-iot-hub-web-app-connection.png)
+![Lückenloses Diagramm](media/iot-hub-get-started-e2e-diagram/5.png)
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
@@ -40,9 +40,9 @@ In dieser Lektion erfahren Sie, wie Sie von Ihrem Azure IoT Hub empfangene Senso
 - Laden Sie eine Webanwendung hoch, die von der Web-App gehostet wird.
 - Öffnen Sie die Web-App, um Temperatur- und Luftfeuchtigkeitsdaten in Ihrem IoT Hub in Echtzeit anzuzeigen.
 
-## <a name="what-you-need"></a>Voraussetzungen
+## <a name="what-you-need"></a>Erforderliches Element
 
-- Sie müssen das Tutorial [Verbinden von ESP8266 mit Azure IoT Hub](iot-hub-arduino-huzzah-esp8266-get-started.md) abgeschlossen haben, in dem die folgenden Voraussetzungen behandelt werden:
+- Abschluss des Tutorials [Einrichten Ihres Geräts](iot-hub-raspberry-pi-kit-node-get-started.md), in dem die folgenden Anforderungen behandelt werden:
   - Ein aktives Azure-Abonnement.
   - Ein Azure IoT Hub in Ihrem Abonnement.
   - Eine Clientanwendung, die Nachrichten an Ihren Azure IoT Hub sendet.
@@ -57,16 +57,7 @@ In dieser Lektion erfahren Sie, wie Sie von Ihrem Azure IoT Hub empfangene Senso
 
    ![Erstellen einer Azure-Web-App](media/iot-hub-live-data-visualization-in-web-apps/2_create-web-app-azure.png)
 
-## <a name="add-a-consumer-group-to-your-iot-hub"></a>Hinzufügen einer Consumergruppe zu Ihrem IoT Hub
-
-Consumergruppen werden von Anwendungen verwendet, um Daten aus Azure IoT Hub abzurufen. In dieser Lektion erstellen Sie eine Consumergruppe, die von der Web-App zum Lesen von Daten in Ihrem IoT Hub verwendet wird.
-
-Gehen Sie folgendermaßen vor, um Ihrem IoT Hub eine Consumergruppe hinzuzufügen:
-
-1. Öffnen Sie im [Azure-Portal](https://ms.portal.azure.com/) Ihren IoT-Hub.
-1. Klicken Sie im linken Bereich auf **Endpunkte**. Wählen Sie im mittleren Bereich **Ereignisse** aus. Geben Sie im rechten Bereich unter **Consumergruppen** einen Namen ein, und klicken Sie dann auf **Speichern**.
-
-   ![Erstellen einer Consumergruppe in Azure IoT Hub](media/iot-hub-live-data-visualization-in-web-apps/3_add-consumer-group-iot-hub-azure.png)
+[!INCLUDE [iot-hub-get-started-create-consumer-group](../../includes/iot-hub-get-started-create-consumer-group.md)]
 
 ## <a name="configure-the-web-app-to-read-data-from-your-iot-hub"></a>Konfigurieren der Web-App zum Lesen von Daten in Ihrem IoT Hub
 
@@ -75,8 +66,8 @@ Gehen Sie folgendermaßen vor, um Ihrem IoT Hub eine Consumergruppe hinzuzufüge
 
    | Schlüssel                                   | Wert                                                        |
    |---------------------------------------|--------------------------------------------------------------|
-   | Azure.IoT.IoTHub.ConnectionString     | Abgerufen aus IoT Hub-Explorer                               |
-   | Azure.IoT.IoTHub.DeviceId             | Abgerufen aus IoT Hub-Explorer                               |
+   | Azure.IoT.IoTHub.ConnectionString     | Aus IoT Hub-Explorer abgerufen                                |
+   | Azure.IoT.IoTHub.DeviceId             | Aus IoT Hub-Explorer abgerufen                                |
    | Azure.IoT.IoTHub.ConsumerGroup        | Der Name der Consumergruppe, die Sie Ihrem IoT Hub hinzufügen  |
 
    ![Hinzufügen von Einstellungen zur Azure-Web-App mit Schlüssel-Wert-Paaren](media/iot-hub-live-data-visualization-in-web-apps/4_web-app-settings-key-value-azure.png)

@@ -16,217 +16,179 @@ ms.topic: article
 ms.date: 09/19/2016
 ms.author: apurvajo;aelnably
 translationtype: Human Translation
-ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
-ms.openlocfilehash: 00e252e249dbd1a38a4649e435071685860722e4
-ms.lasthandoff: 04/07/2017
-
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: c4e7ee86ad9dc7a51fff9e948757faaf5ca9b9c4
+ms.lasthandoff: 04/22/2017
 
 ---
+# <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>Kaufen und Konfigurieren eines SSL-Zertifikats für Ihren Azure App Service
 
-# <a name="add-an-ssl-certificate-to-your-app-service-app"></a>Hinzufügen eines SSL-Zertifikats zu Ihrer App Service-App
-> [!div class="op_single_selector"]
-> * [Kaufen eines SSL-Zertifikats in Azure](web-sites-purchase-ssl-web-site.md)
-> * [Verwenden eines SSL-Zertifikats von einer anderen Stelle](web-sites-configure-ssl-certificate.md)
-> 
-> 
+In diesem Tutorial schützen Sie Ihre Web-App, indem Sie ein SSL-Zertifikat für Ihre Instanz von **[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)** erwerben, sicher in [Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-whatis) speichern und einer benutzerdefinierten Domäne zuordnen.
 
-Standardmäßig aktiviert [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) HTTPS für Ihre Web-App über ein Platzhalterzertifikat für die Domäne „\*.azurewebsites.net“. Wenn Sie keine benutzerdefinierte Domäne einrichten möchten, können Sie das HTTPS-Standardzertifikat nutzen. Wie alle [Platzhalterdomänen](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates) ist das Azure-Platzhalterzertifikat jedoch nicht so sicher wie die Verwendung einer benutzerdefinierten Domäne mit Ihrem eigenen Zertifikat.
+## <a name="step-1---log-in-to-azure"></a>Schritt 1: Anmelden bei Azure
 
-Dank App Service können Sie ein SSL-Zertifikat ganz einfach im Azure-Portal erwerben und verwalten. 
+Melden Sie sich unter „http://portal.azure.com“ beim Azure-Portal an.
 
-In diesem Artikel erfahren Sie, wie Sie ein SSL-Zertifikat für Ihre [App Service](http://go.microsoft.com/fwlink/?LinkId=529714)-App kaufen und einrichten. 
+## <a name="step-2---place-an-ssl-certificate-order"></a>Schritt 2: Bestellen eines SSL-Zertifikats
+
+Ein SSL-Zertifikat können Sie bestellen, indem Sie im **Azure-Portal** ein neues [App Service-Zertifikat](https://portal.azure.com/#create/Microsoft.SSL) erstellen.
+
+![Zertifikaterstellung](./media/app-service-web-purchase-ssl-web-site/createssl.png)
+
+Geben Sie einen aussagekräftigen Namen**** für Ihr SSL-Zertifikat sowie den Domänennamen ****ein.
 
 > [!NOTE]
-> Sie können SSL-Zertifikate nicht für benutzerdefinierte Domänennamen für Apps verwenden, die in einem App Service-Plan vom Typ „Free“ oder „Shared“ gehostet werden. Damit Sie SSL-Zertifikate verwenden können, muss Ihre Web-App in einem App Service-Plan vom Typ „Basic“, „Standard“ oder „Premium“ gehostet werden. Durch die Änderung des Abonnementtyps können sich auch die Kosten für Ihr Abonnement ändern. Weitere Informationen finden Sie unter [App Service – Preise](https://azure.microsoft.com/pricing/details/web-sites/).
-> 
-> 
+> Dies ist einer der wichtigsten Teile des Einkaufsvorgangs. Achten Sie darauf, dass Sie den richtigen Hostnamen (benutzerdefinierte Domäne) eingeben, den Sie mit diesem Zertifikat schützen möchten. Fügen Sie dem Hostnamen **NICHT** WWW an. 
+>
+
+Wählen Sie Ihr **Abonnement**, Ihre **Ressourcengruppe** und Ihre **Zertifikat-SKU** aus.
 
 > [!WARNING]
-> Versuchen Sie nicht, ein SSL-Zertifikat mithilfe eines Abonnements zu erwerben, für das keine gültige Kreditkarte hinterlegt wurde. Dies kann dazu führen, dass Ihr Abonnement deaktiviert wird. 
-> 
-> 
+> App Service-Zertifikate können nur von anderen App-Diensten innerhalb des gleichen Abonnements verwendet werden.  
+>
 
-## <a name="prerequisites"></a>Voraussetzungen
-Um HTTPS für eine benutzerdefinierte Domäne zu aktivieren, beginnen Sie zunächst mit dem [Zuordnen eines benutzerdefinierten Domänennamens zu Ihrer Azure-App](web-sites-custom-domain-name.md).
-
-Bevor Sie ein SSL-Zertifikat anfordern, legen Sie zuerst fest, welche Domänennamen durch das Zertifikat geschützt werden. Dies bestimmt den Typ des erforderlichen Zertifikats. Wenn Sie einen einzelnen Domänennamen wie „contoso.com“ *oder* „www.contoso.com“ schützen möchten, können Sie ein Standardzertifikat (Basic) verwenden. Wenn Sie mehrere Domänennamen sichern müssen, z.B. „contoso.com“, „www.contoso.com“ *und* „mail.contoso.com“, können Sie ein [Platzhalterzertifikat](http://en.wikipedia.org/wiki/Wildcard_certificate) anfordern.
-
-## <a name="bkmk_purchasecert"></a>Kaufen eines SSL-Zertifikats
-
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) die Option **Durchsuchen**. Geben Sie im Feld **Suchen** den Begriff **App Service-Zertifikat** ein. Wählen Sie in den Suchergebnissen **App Service-Zertifikat** aus. 
-
-   ![Erstellen mithilfe von „Durchsuchen“](./media/app-service-web-purchase-ssl-web-site/browse.jpg)
-   
-2. Wählen Sie auf der Seite **App Service-Zertifikate** die Option **Hinzufügen**. 
-
-   ![Hinzufügen eines Zertifikats](./media/app-service-web-purchase-ssl-web-site/add.jpg)
-
-3. Geben Sie einen Namen ****für das SSL-Zertifikat ein.
-4. Geben Sie den Hostnamen ein****.
-   
-   > [!WARNING]
-   > Dies ist einer der wichtigsten Teile des Einkaufsvorgangs. Geben Sie unbedingt den richtigen Hostnamen (benutzerdefinierter Domänenname) ein, der von diesem Zertifikat geschützt werden soll. Fügen Sie am Anfang des Hostennamens *nicht*  „www“ hinzu. Wenn der benutzerdefinierte Domänenname beispielsweise „www.contoso.com“ lautet, geben Sie im Feld **Hostname** den Namen **contoso.com** ein. Das Zertifikat schützt „www“ und Stammdomänen. 
-   > 
-
-5. Wählen Sie Ihr **Abonnement**aus. 
-   
-   Wenn Sie mehrere Abonnements haben, erstellen Sie das SSL-Zertifikat in dem gleichen Abonnement, das Sie für Ihre benutzerdefinierte Domäne oder Web-App verwenden.
-
-6. Wählen Sie eine **Ressourcengruppe**aus, oder erstellen Sie eine.
-   
-   Sie können mithilfe von Ressourcengruppen verwandte Azure-Ressourcen als Einheit verwalten. Ressourcengruppen sind nützlich, wenn Sie Regeln für die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für Ihre Apps festlegen möchten. Weitere Informationen finden Sie unter „Verwalten Ihrer Azure-Ressourcen“.
-
-7. Wählen Sie die **Zertifikat-SKU**. 
-   
-   Wählen Sie die Zertifikat-SKU, die Ihren Anforderungen entspricht, und klicken Sie auf **Erstellen**. 
-   
-   Sie können in App Service zwischen zwei SKUS wählen:
-   * **S1**: Standard-Zertifikat mit einem Jahr Gültigkeit und automatischer Verlängerung  
-   * **W1**: Platzhalterzertifikat mit einem Jahr Gültigkeit und automatischer Verlängerung       
-  
-    ![Zertifikat-SKU](./media/app-service-web-purchase-ssl-web-site/SKU.jpg)
-
-    Weitere Informationen finden Sie unter [App Service – Preise](https://azure.microsoft.com/pricing/details/web-sites/).
+## <a name="step-3---store-the-certificate-in-azure-key-vault"></a>Schritt 3: Speichern des Zertifikats in Azure Key Vault
 
 > [!NOTE]
-> Die Erstellung eines SSL-Zertifikats kann bis zu zehn Minuten dauern. Der Prozess umfasst mehrere Schritte, die im Hintergrund ausgeführt werden.  
-> 
-> 
+> [Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-whatis) ist ein Azure-Dienst zum Schutz von kryptografischen Schlüsseln und Geheimnissen, die von Cloudanwendungen und -diensten verwendet werden.
+>
 
-## <a name="bkmk_StoreKeyVault"></a>Speichern des Zertifikats in Azure Key Vault
+Öffnen Sie nach Erwerb des SSL-Zertifikats das Ressourcenblatt [App Service-Zertifikate](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders).
 
-1. Wenn Sie den Kauf des SSL-Zertifikats abgeschlossen haben, navigieren Sie im Azure-Portal zum Blatt **App Service-Zertifikate**.
+![Bild von Bereitschaft zum Speichern in KV einfügen](./media/app-service-web-purchase-ssl-web-site/ReadyKV.png)
 
-   ![Zertifikat bereit für die Speicherung in Key Vault](./media/app-service-web-purchase-ssl-web-site/ReadyKV.jpg)
-   
-   Beachten Sie, dass der Zertifikatstatus **Ausstellung steht aus** lautet. Bevor dieses Zertifikat verwendet werden kann, sind einige Schritte erforderlich.
+Der Zertifikatstatus lautet **Ausstehende Ausstellung**, da Sie noch ein paar Schritte ausführen müssen, bevor Sie das Zertifikat verwenden können.
 
-2. Wählen Sie auf dem Blatt **Zertifikateigenschaften** die Option **Zertifikatkonfiguration**. Wählen Sie zum Speichern dieses Zertifikats in Key Vault **Schritt 1: Speichern**.
-3. Wählen Sie auf dem Blatt **Key Vault-Status** die Option **Key Vault-Repository**, um einen vorhandenen Schlüsseltresor zum Speichern dieses Zertifikats festzulegen.  Wählen Sie zum Erstellen eines neuen Schlüsseltresors im gleichen Abonnement und in der gleichen Ressourcengruppe **Neuen Schlüsseltresor erstellen**.
+Klicken Sie auf dem Blatt „Zertifikateigenschaften“ auf **Zertifikatkonfiguration** und anschließend auf **Schritt 1: Speichern**, um dieses Zertifikat in Azure Key Vault zu speichern.
 
-   ![Erstellen eines neuen Schlüsseltresors](./media/app-service-web-purchase-ssl-web-site/NewKV.jpg)
-   
-   > [!NOTE]
-   > Azure Key Vault berechnet minimale Gebühren für das Speichern des Zertifikats. Weitere Informationen finden Sie auf der Seite [Key Vault – Preise](https://azure.microsoft.com/pricing/details/key-vault/).
-   > 
-   > 
-
-4. Wenn Sie das Key Vault-Repository zum Speichern des Zertifikats ausgewählt haben, wählen Sie oben auf dem Blatt **Key Vault-Status** die Schaltfläche **Speichern**.  
-   
-Zum Überprüfen Ihrer Auswahl können Sie in Ihrem Browser auf die Schaltfläche „Aktualisieren“ klicken. Ein grünes Häkchen gibt an, dass dieser Schritt abgeschlossen ist.
-
-## <a name="bkmk_VerifyOwnership"></a>Überprüfen des Domänenbesitzes
-
-1. Wählen Sie auf dem Blatt **Zertifikatkonfiguration** die Option **Schritt 2: Überprüfen**.
-2. Wählen Sie anhand der folgenden Informationen Überprüfungsoptionen aus. 
-
-App Service-Zertifikate unterstützen drei Typen von Domänenüberprüfungen:
-
-   * Domänenüberprüfung
-   * Überprüfung per E-Mail
-   * Manuelle Überprüfung
-
-### <a name="domain-verification"></a>Domänenüberprüfung 
-     
-Die Domänenüberprüfung ist *nur dann* der zweckmäßigste Prozess, wenn Sie [Ihre benutzerdefinierte Domäne von Azure App Service](custom-dns-web-site-buydomains-web-app.md) erworben haben.
-
-1. Wählen Sie zum Abschließen dieses Schritts **Überprüfen**.
-2. Wählen Sie **Aktualisieren**, um den Zertifikatstatus nach Abschluss der Überprüfung zu aktualisieren. Es kann einige Minuten dauern, bis die Überprüfung abgeschlossen ist.
-
-### <a name="mail-verification"></a>Überprüfung per E-Mail
-     
-Bei einer benutzerdefinierten Domäne wird eine Überprüfungs-E-Mail an die E-Mail-Adresse gesendet, die der Domäne zugeordnet ist. 
-
-1. Öffnen Sie die E-Mail, und klicken Sie auf den Link für die Überprüfung, um den Schritt der E-Mail-Bestätigung abzuschließen. 
-2. Wenn Sie die Überprüfungs-E-Mail erneut senden müssen, klicken Sie auf die Schaltfläche **E-Mail erneut senden**.
-
-### <a name="manual-verification"></a>Manuelle Überprüfung    
-     
-**HTML-Webseitenüberprüfung (funktioniert nur mit Standardzertifikat-SKU)**
-
-1. Erstellen Sie eine HTML-Datei mit dem Namen „starfield.html“. Der Inhalt dieser Datei sollte genau dem Namen des Domänenüberprüfungstokens entsprechen. (Sie können das Token auf dem Blatt mit dem Domänenüberprüfungsstatus**** kopieren.)
-2. Laden Sie diese Datei in den Stamm des Webservers hoch, auf dem Ihre Domäne gehostet wird. Beispiel: /.well-known/pki-validation/starfield.html.
-3.  Wählen Sie nach Abschluss der Überprüfung **Aktualisieren**, um den Zertifikatstatus zu aktualisieren. Es kann einige Minuten dauern, bis die Überprüfung abgeschlossen ist.
-
-    Wenn Sie beispielsweise ein Standardzertifikat für **contosocertdemo.com** mit dem Domänenüberprüfungstoken **tgjgthq8d11ttaeah97s3fr2sh** kaufen und anschließend eine Webanforderung an **http://contosocertdemo.com/.well-known/pki-validation/starfield.html** durchgeführt wird, sollte **tgjgthq8d11ttaeah97s3fr2sh** zurückgeben werden.
-
-**Überprüfung des DNS-TXT-Eintrags**
-        
-1. Erstellen Sie mithilfe des DNS-Managers einen TXT-Eintrag in der Unterdomäne **@** mit einem Wert, der dem **Domänenüberprüfungstoken** entspricht.
-2. Wählen Sie **Aktualisieren**, um den Zertifikatstatus nach Abschluss der Überprüfung zu aktualisieren. Es kann einige Minuten dauern, bis die Überprüfung abgeschlossen ist.
- 
-   Um beispielsweise die Validierung für ein Platzhalterzertifikat mit dem Hostnamen **\*.contosocertdemo.com** oder **\*.subdomain.contosocertdemo.com** und dem Domänenüberprüfungstoken **tgjgthq8d11ttaeah97s3fr2sh** durchzuführen, erstellen Sie einen TXT-Eintrag auf **contosocertdemo.com** mit dem Wert **tgjgthq8d11ttaeah97s3fr2sh**.     
-
-## <a name="bkmk_AssignCertificate"></a>Zuweisen des Zertifikats zu einer App Service-App
+Klicken Sie auf dem Blatt **Key Vault-Status** auf **Key Vault-Repository**, um einen bereits vorhandenen Schlüsseltresor zum Speichern dieses Zertifikats auszuwählen, ODER klicken Sie auf **Neuen Schlüsseltresor erstellen**, um einen neuen Schlüsseltresor im gleichen Abonnement und in der gleichen Ressourcengruppe zu erstellen.
 
 > [!NOTE]
-> Bevor Sie die Schritte in diesem Abschnitt ausführen, müssen Sie einen benutzerdefinierten Domänennamen mit Ihrer App verknüpfen. Weitere Informationen finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für eine Web-App](web-sites-custom-domain-name.md).
-> 
-> 
+> Die Kosten für die Speicherung des Zertifikats sind bei Azure Key Vault sehr gering.
+> Weitere Informationen finden Sie in der **[Preisübersicht zu Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/)**.
+>
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) im Menü **App Service**.
-2. Wählen Sie den Namen Ihrer App, der Sie dieses Zertifikat zuweisen möchten. 
-3. Navigieren Sie zu **Einstellungen** > **SSL-Zertifikate** > **App Service-Zertifikat importieren**, und wählen Sie dann das Zertifikat aus.
+Nach der Wahl des Key Vault-Repositorys für die Speicherung des Zertifikats sollte der Schritt **Speichern** als erfolgreich angezeigt werden.
 
-   ![Importieren des Zertifikats](./media/app-service-web-purchase-ssl-web-site/ImportCertificate.png)
+![Bild von der erfolgreichen Ausführung des Schritts „Speichern“ einfügen](./media/app-service-web-purchase-ssl-web-site/KVStoreSuccess.png)
 
-4. Wählen Sie im Abschnitt **SSL-Bindungen** die Option **Add bindings** (Bindungen hinzufügen).
-5. Wählen Sie auf dem Blatt **SSL-Bindung hinzufügen** den Domänennamen aus, den Sie mit dem SSL-Zertifikat sichern möchten. Wählen Sie das Zertifikat aus, das Sie verwenden möchten. Sie können auch auswählen, ob SSL auf der [Servernamensanzeige](http://en.wikipedia.org/wiki/Server_Name_Indication) (Server Name Indication, SNI) oder IP basieren soll.
+## <a name="step-4---verify-the-domain-ownership"></a>Schritt 4: Überprüfen des Domänenbesitzes
 
-   ![SSL-Bindungen](./media/app-service-web-purchase-ssl-web-site/SSLBindings.png)
-   
-    * Zum Zuweisen eines Zertifikats zu einem Domänennamen ordnet IP-basiertes SSL die dedizierte öffentliche IP-Adresse des Servers dem Domänennamen zu. Bei der Verwendung von IP-basiertem SSL muss jeder Ihrem Dienst zugeordnete Domänenname (etwa „contoso.com“ oder „fabricam.com“) eine dedizierte IP-Adresse besitzen. Dies ist die herkömmliche Methode zum Verknüpfen von SSL-Zertifikaten mit einem Webserver.
-    * SNI-basiertes SSL ist eine Erweiterung von SSL und [Transport Layer Security](http://en.wikipedia.org/wiki/Transport_Layer_Security) (TLS). Wenn Sie SNI-basiertes SSL verwenden, können mehrere Domänen die gleiche IP-Adresse nutzen. Jede Domäne besitzt ein separates Sicherheitszertifikat. Die meisten modernen Browser (einschließlich Internet Explorer, Chrome, Firefox und Opera) unterstützen SNI. Von älteren Browsern wird SNI nicht unterstützt. Weitere Informationen zu SNI finden Sie im Wikipedia-Artikel [Server Name Indication](http://en.wikipedia.org/wiki/Server_Name_Indication).
+> [!NOTE]
+> Von App Service-Zertifikaten werden drei Arten von Domänenüberprüfungen unterstützt: Domänenüberprüfung, Überprüfung per E-Mail und manuelle Überprüfung. Diese werden im Abschnitt [Erweitert](#advanced) ausführlicher erläutert.
 
-6. Wählen Sie **Bindung hinzufügen**, um die Änderungen zu speichern und SSL zu aktivieren.
+Klicken Sie auf dem Blatt **Zertifikatkonfiguration**, das Sie in Schritt 3 verwendet haben, auf **Schritt 2: Überprüfen**.
 
-Wenn Sie **IP-basiertes SSL** auswählen und Ihre benutzerdefinierte Domäne einen A-Datensatz verwendet, müssen Sie die folgenden zusätzlichen Schritte ausführen:
+Die **Domänenüberprüfung** ist **NUR DANN** der zweckmäßigste Prozess, wenn Sie **[Ihre benutzerdefinierte Domäne von Azure App Service erworben](custom-dns-web-site-buydomains-web-app.md)** haben.
+Klicken Sie auf die Schaltfläche **Überprüfen**, um diesen Schritt abzuschließen.
 
-1.  Nach der Konfiguration einer IP-basierten SSL-Bindung wird Ihrer App eine dedizierte IP-Adresse zugewiesen. Die IP-Adresse finden Sie unter **Einstellungen** > **Benutzerdefinierte Domäne**. Direkt über dem Abschnitt **Hostnamen** ist Ihre IP-Adresse als **Externe IP-Adresse** aufgeführt.
+![Bild von der Domänenüberprüfung einfügen](./media/app-service-web-purchase-ssl-web-site/DomainVerificationRequired.png)
 
-   ![IP-basiertes SSL](./media/app-service-web-purchase-ssl-web-site/virtual-ip-address.png)
-    
-  Diese IP-Adresse unterscheidet sich von der virtuellen IP-Adresse, die zuvor zum Konfigurieren des A-Datensatzes für Ihre Domäne verwendet wurde. Wenn Ihre App für die Verwendung von SNI-basiertem SSL oder nicht für die Verwendung von SSL konfiguriert wird, ist hier keine IP-Adresse angegeben.
+Klicken Sie nach dem Klicken auf **Überprüfen** auf die Schaltfläche **Aktualisieren**. Daraufhin sollte der Schritt **Überprüfen** als erfolgreich angezeigt werden.
 
-2.  Ändern Sie mit den von der Domänennamen-Registrierungsstelle bereitgestellten Tools den A-Datensatz für den benutzerdefinierten Domänennamen, sodass dieser auf die im vorherigen Schritt verwendete IP-Adresse verweist.
+![Bild von der erfolgreichen Ausführung des Schritts „Überprüfen“ einfügen](./media/app-service-web-purchase-ssl-web-site/KVVerifySuccess.png)
 
-3.  Um die richtige Konfiguration des Zertifikats zu überprüfen, rufen Sie Ihre App mithilfe von „HTTPS:// instead of HTTP://“ auf.
+## <a name="step-5---assign-certificate-to-app-service-app"></a>Schritt 5: Zuweisen des Zertifikats zur App Service-App
 
-## <a name="bkmk_Export"></a>Exportieren eines App Service-Zertifikats
-Sie können eine lokale PFX-Kopie eines App Service-Zertifikats erstellen. Wenn Sie eine lokale Kopie besitzen, können Sie das Zertifikat mit anderen Azure-Diensten verwenden. Weitere Informationen finden Sie in unserem Blogbeitrag [Create a local PFX copy of your App Service certificate](https://blogs.msdn.microsoft.com/appserviceteam/2017/02/24/creating-a-local-pfx-copy-of-app-service-certificate/) (Erstellen einer lokalen PFX-Kopie des App Service-Zertifikats).
+> [!NOTE]
+> Bevor Sie die Schritte in diesem Abschnitt ausführen, müssen Sie einen benutzerdefinierten Domänennamen mit Ihrer App verknüpft haben. Weitere Informationen finden Sie unter **[Konfigurieren eines benutzerdefinierten Domänennamens für eine Web-App](web-sites-custom-domain-name.md)**.
+>
 
-## <a name="bkmk_Renew"></a>Automatisches Verlängern des App Service-Zertifikats
-Um die Einstellungen für die automatische Verlängerung Ihres Zertifikats festzulegen oder Ihr Zertifikat manuell zu verlängern, wählen Sie auf dem Blatt **Zertifikateigenschaften** die Option **Einstellungen für die automatische Verlängerung**. 
+Klicken Sie im **[Azure-Portal](https://portal.azure.com/)** auf der linken Seite auf **App Service**.
 
-![Einstellungen für die automatische Verlängerung](./media/app-service-web-purchase-ssl-web-site/autorenew.png)
+Klicken Sie auf den Namen Ihrer App, der Sie dieses Zertifikat zuweisen möchten.
 
-Legen Sie **Automatisch verlängern** auf **Ein** fest, um das Zertifikat vor dem Ablauf automatisch zu verlängern. Dies ist die Standardoption. Wenn die automatische Verlängerung aktiviert ist, versuchen wir, Ihr Zertifikat ab dem 90. Tag vor Ablauf zu verlängern. Wenn Sie SSL-Bindungen für Ihre App Service-Apps im Azure-Portal erstellt haben, werden die Bindungen auch aktualisiert, wenn das neue Zertifikat bereitsteht (wie in Szenarien mit erneuter Schlüsselerstellung und Synchronisierung). 
+Klicken Sie in den **Einstellungen** auf **SSL-Zertifikate**.
 
-Wenn Sie Verlängerungen manuell festlegen möchten, wählen Sie für **Automatisch verlängern** die Option **Aus**. Sie können ein App Service-Zertifikat erst manuell verlängern, wenn das Ablaufdatum innerhalb der nächsten 90 Tage liegt.
+Klicken Sie auf **App Service-Zertifikat importieren**, und wählen Sie das soeben erworbene Zertifikat aus.
 
-## <a name="bkmk_Rekey"></a>Erneute Schlüsselerstellung für das Zertifikat und Synchronisierung
+![Bild von Zertifikatimport einfügen](./media/app-service-web-purchase-ssl-web-site/ImportCertificate.png)
 
-1. Wenn Sie jemals (aus Sicherheitsgründen) erneut einen Schlüssel für Ihr Zertifikat erstellen müssen, wählen Sie auf dem Blatt **Zertifikateigenschaften** die Option **Erstellung neuer Schlüssel und Synchronisierung** aus. 
-2. Wählen Sie **Neue Schlüssel erstellen**. Die Ausführung des Vorgangs kann bis zu zehn Minuten dauern. 
+Klicken Sie im Abschnitt **SSL-Bindungen** auf **Add bindings** (Bindungen hinzufügen), und wählen Sie mithilfe der Dropdownlisten den Domänennamen, der mit SSL geschützt werden soll, sowie das zu verwendende Zertifikat aus. Sie können auch auswählen, ob SSL auf der **[Servernamensanzeige](http://en.wikipedia.org/wiki/Server_Name_Indication)** (Server Name Indication, SNI) oder IP basieren soll.
 
-   ![Erneute Schlüsselerstellung für SSL](./media/app-service-web-purchase-ssl-web-site/Rekey.jpg)
+![Bild von SSL-Bindungen einfügen](./media/app-service-web-purchase-ssl-web-site/SSLBindings.png)
 
-Hier finden Sie einige zusätzliche Informationen zum Erstellen neuer Schlüssel:
+Klicken Sie auf **Bindung hinzufügen** , um die Änderungen zu speichern und SSL zu aktivieren.
 
-* Beim Erstellen neuer Schlüssel für Ihr Zertifikat wird das Zertifikat durch ein neues Zertifikat ersetzt. Das neue Zertifikat wird von der Zertifizierungsstelle ausgestellt.
-* Für die erneute Schlüsselerstellung werden Ihnen für die Gültigkeitsdauer des Zertifikats keine Gebühren in Rechnung gestellt. 
-* Durch die Erstellung neuer Schlüssel erhält Ihr Zertifikat den Status **Ausstellung steht aus**. 
-* Wenn das Zertifikat bereitsteht, stellen Sie sicher, dass Sie Ihre Ressourcen mit diesem Zertifikat synchronisieren, um eine Unterbrechung des Diensts zu vermeiden.
-* Die Synchronisierungsoption ist nicht für Zertifikate verfügbar, die noch keiner Web-App zugewiesen sind. 
+> [!NOTE]
+> Wenn Sie **IP-basiertes SSL** ausgewählt haben und Ihre benutzerdefinierte Domäne einen A-Eintrag verwendet, sind folgende Zusatzschritte erforderlich. Diese werden im Abschnitt [Erweitert](#Advanced) ausführlicher erläutert.
+
+Ihre App sollte nun über `HTTPS://` (anstelle von `HTTP://`) erreichbar sein. So können Sie überprüfen, ob das Zertifikat richtig konfiguriert wurde.
+
+<!--![insert image of https](./media/app-service-web-purchase-ssl-web-site/Https.png)-->
+
+## <a name="step-6---management-tasks"></a>Schritt 6: Verwaltungsaufgaben
+
+### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+
+[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Binden eines benutzerdefinierten SSL-Zertifikats an eine Web-App")] 
+
+### <a name="powershell"></a>PowerShell
+
+[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Binden eines benutzerdefinierten SSL-Zertifikats an eine Web-App")]
+
+## <a name="advanced"></a>Erweitert
+
+### <a name="verifying-domain-ownership"></a>Überprüfen des Domänenbesitzes
+
+Von App Service-Zertifikaten werden noch zwei andere Arten der Domänenüberprüfung unterstützt: Überprüfung per E-Mail und manuelle Überprüfung.
+
+#### <a name="mail-verification"></a>Überprüfung per E-Mail
+
+Die Überprüfungs-E-Mail wurde bereits an die E-Mail-Adresse(n) gesendet, die dieser benutzerdefinierten Domäne zugeordnet ist/sind.
+Öffnen Sie die E-Mail, und klicken Sie auf den Link für die Überprüfung, um den Schritt für die Überprüfung per E-Mail abzuschließen.
+
+![Bild von der Überprüfung per E-Mail einfügen](./media/app-service-web-purchase-ssl-web-site/KVVerifyEmailSuccess.png)
+
+Wenn Sie die Überprüfungs-E-Mail erneut senden müssen, klicken Sie auf die Schaltfläche **E-Mail erneut senden**.
+
+#### <a name="manual-verification"></a>Manuelle Überprüfung
+
+> [!IMPORTANT]
+> HTML-Webseitenüberprüfung (funktioniert nur mit Standardzertifikat-SKU)
+>
+
+1. Erstellen der HTML-Datei **starfield.html**
+
+1. Der Inhalt dieser Datei muss exakt dem Namen des Domänenüberprüfungstokens entsprechen. (Sie können das Token vom Blatt mit dem Domänenüberprüfungsstatus kopieren.)
+
+1. Aktualisieren Sie diese Datei im Stammverzeichnis des Webservers, der Ihre Domäne hostet: `/.well-known/pki-validation/starfield.html`
+
+1. Klicken Sie nach Abschluss der Überprüfung auf **Aktualisieren**, um den Zertifikatstatus zu aktualisieren. Es kann einige Minuten dauern, bis die Überprüfung abgeschlossen ist.
+
+> [!TIP]
+> Vergewissern Sie sich in einem Terminal mithilfe von `curl -G http://<domain>/.well-known/pki-validation/starfield.html`, dass die Antwort das `<verification-token>` enthält.
+
+#### <a name="dns-txt-record-verification"></a>Überprüfung des DNS-TXT-Eintrags
+
+1. Erstellen Sie mithilfe des DNS-Managers einen TXT-Eintrag in der Unterdomäne `@` mit einem Wert, der dem Domänenüberprüfungstoken entspricht.
+1. Klicken Sie nach Abschluss der Überprüfung auf **Aktualisieren**, um den Zertifikatstatus zu aktualisieren.
+
+> [!TIP]
+> Sie müssen einen TXT-Eintrag unter `@.<domain>` mit dem Wert `<verification-token>` erstellen.
+
+### <a name="assign-certificate-to-app-service-app"></a>Zuweisen des Zertifikats zur App Service-App
+
+Wenn Sie **IP-basiertes SSL** ausgewählt haben und Ihre benutzerdefinierte Domäne einen A-Datensatz verwendet, müssen Sie die folgenden zusätzlichen Schritte ausführen:
+
+Nach der Konfiguration einer IP-basierten SSL-Bindung wird Ihrer App eine dedizierte IP-Adresse zugewiesen. Diese IP-Adresse befindet sich auf der Seite **Benutzerdefinierte Domäne** unter den Einstellungen Ihrer App (direkt über dem Abschnitt **Hostnamen**). Sie ist als **Externe IP-Adresse** angegeben.
+
+![Bild von IP-SSL einfügen](./media/app-service-web-purchase-ssl-web-site/virtual-ip-address.png)
+
+Diese IP-Adresse unterscheidet sich von der virtuellen IP-Adresse, die zuvor zum Konfigurieren des A-Eintrags für Ihre Domäne verwendet wurde. Wenn SNI-basiertes SSL konfiguriert bzw. die Verwendung von SSL nicht konfiguriert ist, ist für diesen Eintrag keine Adresse angegeben.
+
+Ändern Sie mit den von der Domänennamen-Registrierungsstelle bereitgestellten Tools den A-Datensatz für den benutzerdefinierten Domänennamen, sodass dieser auf die im vorherigen Schritt genannte IP-Adresse verweist.
+
+## <a name="rekey-and-sync-the-certificate"></a>Erneute Schlüsselerstellung für das Zertifikat und Synchronisierung
+
+Wenn Sie erneut einen Schlüssel für Ihr Zertifikat erstellen müssen, wählen Sie auf dem Blatt **Zertifikateigenschaften** die Option **Erstellung neuer Schlüssel und Synchronisierung** aus.
+
+Klicken Sie auf die Schaltfläche **Erneute Schlüsselerstellung**, um den Prozess zu initiieren. Dieser Prozess kann 1 bis 10 Minuten in Anspruch nehmen.
+
+![Bild von erneuter Schlüsselerstellung für SSL einfügen](./media/app-service-web-purchase-ssl-web-site/Rekey.png)
+
+Bei erneuter Schlüsselerstellung für Ihr Zertifikat wird von der Zertifizierungsstelle ein neues Zertifikat ausgestellt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Sichern Ihrer benutzerdefinierten App-Domäne mit HTTPS](web-sites-configure-ssl-certificate.md)
-* [Kaufen und Konfigurieren eines benutzerdefinierten Domänennamens in Azure App Service](custom-dns-web-site-buydomains-web-app.md)
-* [Microsoft Azure Trust Center](https://azure.microsoft.com/en-us/support/trust-center/)
-
-> [!NOTE]
-> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto registrieren, besuchen Sie [Azure App Service testen](https://azure.microsoft.com/try/app-service/). Sie können eine kurzlebige Starter-Web-App in App Service erstellen. Dafür ist keine Kreditkarte erforderlich, und es entstehen Ihnen keine Verpflichtungen.
-> 
-> 
-
+* [Hinzufügen eines Content Delivery Network zu einer Azure App Service-Instanz](app-service-web-tutorial-content-delivery-network.md)

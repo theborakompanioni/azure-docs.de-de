@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/30/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: fd15cbc8f6efa788ddaeaee4ab39ce1410c4be5a
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 3a2166fefc8d0b1602562b753e0413be458fae98
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -141,6 +141,8 @@ Das folgende Beispiel zeigt eine Definition eines Alias. Wie Sie sehen können, 
 ```
 
 ## <a name="powershell"></a>PowerShell
+
+Vergewissern Sie sich, dass Sie [die neueste Version von Azure PowerShell installiert](/powershell/azure/install-azurerm-ps) haben, bevor Sie mit den PowerShell-Beispielen fortfahren. In Version 3.6.0 wurden Richtlinienparameter hinzugefügt. Bei Verwendung einer älteren Version wird bei den Beispielen ein Fehler mit dem Hinweis zurückgegeben, dass der Parameter nicht gefunden wurde.
 
 ### <a name="create-policy-definition"></a>Erstellen einer Richtliniendefinition
 Sie können eine Richtliniendefinition über das Cmdlet `New-AzureRmPolicyDefinition` erstellen. Im folgenden Beispiel wird eine Richtliniendefinition erstellt, um nur Ressourcen in Nord- und Westeuropa zuzulassen.

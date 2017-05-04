@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 04/10/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: ba85ab354d051990d0a9bae089e45c8df7ade4ea
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 626b152b8511995413af39a41161c29c88429605
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -36,7 +36,7 @@ Sie können nicht den Speicherort der Ressource ändern. Wenn Sie ein Ressource 
 ## <a name="checklist-before-moving-resources"></a>Checkliste vor dem Verschieben von Ressourcen
 Beim Verschieben einer Ressource sollten Sie einige wichtige Schritte ausführen: Indem Sie diese Bedingungen überprüfen, können Sie Fehler vermeiden.
 
-1. Quell- und Zielabonnement müssen im selben [Active Directory-Mandanten](../active-directory/active-directory-howto-tenant.md) vorhanden sein. Um zu überprüfen, ob beide Abonnements die gleiche Mandanten-ID aufweisen, verwenden Sie Azure PowerShell oder die Azure-Befehlszeilenschnittstelle.
+1. Quell- und Zielabonnement müssen im selben [Azure Active Directory-Mandanten](../active-directory/active-directory-howto-tenant.md) vorhanden sein. Um zu überprüfen, ob beide Abonnements die gleiche Mandanten-ID aufweisen, verwenden Sie Azure PowerShell oder die Azure-Befehlszeilenschnittstelle.
 
   Verwenden Sie für Azure PowerShell Folgendes:
 
@@ -50,7 +50,7 @@ Beim Verschieben einer Ressource sollten Sie einige wichtige Schritte ausführen
   az account show --subscription "Example Subscription" --query tenantId
   ```
 
-  Wenn die Mandanten-IDs für das Quell- und das Zielabonnement nicht gleich sind, können Sie versuchen, das Verzeichnis für das Abonnement zu ändern. Diese Option steht jedoch nur Dienstadministratoren zur Verfügung, die mit einem Microsoft-Konto angemeldet sind (nicht mit einem Organisationskonto). Um zu versuchen, das Verzeichnis zu ändern, melden Sie sich am [klassischen Portal](https://manage.windowsazure.com/) an, und wählen Sie **Einstellungen** und dann das Abonnement aus. Wenn das Symbol **Verzeichnis bearbeiten** verfügbar ist, wählen Sie es aus, um das zugehörige Active Directory zu ändern. 
+  Wenn die Mandanten-IDs für das Quell- und das Zielabonnement nicht gleich sind, können Sie versuchen, das Verzeichnis für das Abonnement zu ändern. Diese Option steht jedoch nur Dienstadministratoren zur Verfügung, die mit einem Microsoft-Konto angemeldet sind (nicht mit einem Organisationskonto). Um zu versuchen, das Verzeichnis zu ändern, melden Sie sich am [klassischen Portal](https://manage.windowsazure.com/) an, und wählen Sie **Einstellungen** und dann das Abonnement aus. Wenn das Symbol **Verzeichnis bearbeiten** verfügbar ist, wählen Sie es aus, um das zugehörige Azure Active Directory zu ändern. 
 
   ![Verzeichnis bearbeiten](./media/resource-group-move-resources/edit-directory.png) 
 
@@ -67,7 +67,7 @@ Sie können die meisten Ressourcen mithilfe der in diesem Artikel gezeigten Self
 
 Wenden Sie sich in folgenden Fällen an den Support:
 
-* Verschieben von Ressourcen in ein neues Azure-Konto (und einen anderen Active Directory-Mandanten)
+* Verschieben von Ressourcen in ein neues Azure-Konto (und einen anderen Azure Active Directory-Mandanten)
 * Verschieben von klassischen Ressourcen, wenn Probleme durch Einschränkungen auftreten
 
 ## <a name="services-that-enable-move"></a>Dienste, die eine Verschiebung ermöglichen

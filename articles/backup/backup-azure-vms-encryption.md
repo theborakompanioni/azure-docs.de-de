@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 01/18/2017
+ms.date: 04/24/2017
 ms.author: pajosh;markgal;trinadhk
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 82b7541ab1434179353247ffc50546812346bda9
-ms.openlocfilehash: 5de5d42037aee5b0ef7745ea5d0cc748a7b5a60e
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: da6c497e10d31dbc98703090a8f7699d0841faa8
+ms.lasthandoff: 04/26/2017
 
 
 ---
@@ -82,8 +82,13 @@ Verwenden Sie die folgenden Schritte zum Festlegen des Sicherungsziels, Definier
 ### <a name="triggering-backup-job"></a>Auslösen des Sicherungsauftrags
 Verwenden Sie die Schritte im Artikel zum Thema [Sichern von Azure-VMs im Recovery Services-Tresor](backup-azure-arm-vms.md), um den Sicherungsauftrag auszulösen.
 
+### <a name="continue-backups-of-already-backed-up-vms-with-encryption-enabled"></a>Fortsetzen von Sicherungen von bereits gesicherten VMs mit aktivierter Verschlüsselung  
+Wenn virtuelle Computer bereits im Recovery Services-Tresor gesichert und für die Verschlüsselung zu einem späteren Zeitpunkt aktiviert wurden, müssen Sie dem Sicherungsdienst Berechtigungen für den Zugriff auf den Schlüsseltresor erteilen, damit Sicherungen fortgesetzt werden können. Sie können diese Berechtigungen über PowerShell erteilen, indem Sie die Schritte im Abschnitt **Aktivieren der Sicherung** in der [PowerShell-Dokumentation](backup-azure-vms-automation.md#backup-azure-vms) ausführen. 
+
 ## <a name="restore-encrypted-vm"></a>Wiederherstellen der verschlüsselten VM
-Stellen Sie zum Wiederherstellen verschlüsselter virtueller Computer zunächst Datenträger gemäß den Schritten des Abschnitts **Wiederherstellen von gesicherten Datenträgern** (unter [Auswählen einer Konfiguration für die VM-Wiederherstellung](backup-azure-arm-restore-vms.md#choosing-a-vm-restore-configuration)) wieder her. Führen Sie anschließend die unter [Erstellen eines virtuellen Computers aus wiederhergestellten Datenträgern](backup-azure-vms-automation.md#create-a-vm-from-restored-disks) beschriebenen PowerShell-Schritte aus, um auf der Grundlage der wiederhergestellten Datenträger einen vollständigen virtuellen Computer zu erstellen.
+Stellen Sie zum Wiederherstellen verschlüsselter virtueller Computer zunächst Datenträger gemäß den Schritten des Abschnitts **Wiederherstellen von gesicherten Datenträgern** (unter [Auswählen einer Konfiguration für die VM-Wiederherstellung](backup-azure-arm-restore-vms.md#choosing-a-vm-restore-configuration)) wieder her. Sie können anschließend eine der folgenden Optionen wählen:
+* Führen Sie die unter [Erstellen eines virtuellen Computers aus wiederhergestellten Datenträgern](backup-azure-vms-automation.md#create-a-vm-from-restored-disks) beschriebenen PowerShell-Schritte aus, um auf der Grundlage der wiederhergestellten Datenträger einen vollständigen virtuellen Computer zu erstellen. 
+* Oder [verwenden Sie eine als Teil von „Datenträger wiederherstellen“ generierte Vorlage](backup-azure-arm-restore-vms.md#use-templates-to-customize-restore-vm), um VMs anhand wiederhergestellter Datenträger zu erstellen. Vorlagen können nur für Wiederherstellungspunkte verwendet werden, die nach dem 26. April 2017 erstellt wurden.
 
 ## <a name="troubleshooting-errors"></a>Problembehandlung
 | Vorgang | Fehlerdetails | Lösung |

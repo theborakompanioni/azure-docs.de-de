@@ -1,6 +1,6 @@
 ---
 title: "Erstellen einer Identität für die Azure-App mit der Azure CLI | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle eine Active Directory-Anwendung und einen Dienstprinzipal erstellen sowie mittels rollenbasierter Zugriffssteuerung Zugriff auf Ressourcen gewähren. Es wird gezeigt, wie eine Anwendung per Kennwort oder Zertifikat authentifiziert wird."
+description: "Hier erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle eine Azure Active Directory-Anwendung und einen Dienstprinzipal erstellen sowie mittels rollenbasierter Zugriffssteuerung Zugriff auf Ressourcen gewähren. Es wird gezeigt, wie eine Anwendung per Kennwort oder Zertifikat authentifiziert wird."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/31/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 4ea75e08a630ad777444ea3a3cb85f4bb0efe01f
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: c8a883dedee31d9efab6e2eb4c0ac67b467afe34
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -37,7 +37,7 @@ Wenn eine App oder ein Skript Zugriff auf Ressourcen benötigt, können Sie eine
 In diesem Artikel erfahren Sie, wie Sie mithilfe der [Azure-Befehlszeilenschnittstelle 1.0](../cli-install-nodejs.md) eine Anwendung einrichten, die unter eigenen Anmeldeinformationen und einer eigenen Identität ausgeführt wird. Installieren Sie die neueste Version der [Azure-Befehlszeilenschnittstelle 1.0](../cli-install-nodejs.md), um sicherzustellen, dass Ihre Umgebung mit den Beispielen in diesem Artikel übereinstimmt.
 
 ## <a name="required-permissions"></a>Erforderliche Berechtigungen
-Zum Abschließen dieses Themas benötigen Sie sowohl in der Azure Active Directory-Instanz als auch im Azure-Abonnement ausreichende Berechtigungen. Insbesondere müssen Sie eine App in der Active Directory-Instanz erstellen und den Dienstprinzipal einer Rolle zuweisen können. 
+Zum Abschließen dieses Themas benötigen Sie sowohl in der Azure Active Directory-Instanz als auch im Azure-Abonnement ausreichende Berechtigungen. Insbesondere müssen Sie eine App in der Azure Active Directory-Instanz erstellen und den Dienstprinzipal einer Rolle zuweisen können. 
 
 Die einfachste Möglichkeit zum Überprüfen, ob Ihr Konto über die erforderlichen Berechtigungen verfügt, ist über das Portal. Siehe [Überprüfen der erforderlichen Berechtigung im Portal](resource-group-create-service-principal-portal.md#required-permissions).
 
@@ -72,7 +72,7 @@ Dieser Abschnitt enthält die Schritte zum Erstellen der AD-Anwendung mit einem 
      info:    ad sp create command OK
    ```
 
-3. Gewähren Sie dem Dienstprinzipal Berechtigungen für Ihr Abonnement. In diesem Beispiel fügen Sie den Dienstprinzipal der Rolle „Leser“ hinzu, die Berechtigung zum Lesen aller Ressourcen im Abonnement gewährt. Informationen zu den anderen Rollen finden Sie unter [RBAC: Integrierte Rollen](../active-directory/role-based-access-built-in-roles.md). Geben Sie für den objectid-Parameter die Objekt-ID an, die Sie beim Erstellen der Anwendung verwendet haben. Vor der Ausführung dieses Befehls müssen Sie einige Zeit für die Verteilung des neuen Dienstprinzipals in Active Directory einplanen. Wenn Sie diese Befehle manuell ausführen, vergeht in der Regel genügend Zeit zwischen Aufgaben. In einem Skript sollten Sie einen Schritt für eine Pause zwischen den Befehlen hinzufügen (z.B. `sleep 15`). Wenn Sie die Fehlermeldung erhalten, dass der Prinzipal nicht im Verzeichnis vorhanden ist, führen Sie den Befehl erneut aus.
+3. Gewähren Sie dem Dienstprinzipal Berechtigungen für Ihr Abonnement. In diesem Beispiel fügen Sie den Dienstprinzipal der Rolle „Leser“ hinzu, die Berechtigung zum Lesen aller Ressourcen im Abonnement gewährt. Informationen zu den anderen Rollen finden Sie unter [RBAC: Integrierte Rollen](../active-directory/role-based-access-built-in-roles.md). Geben Sie für den objectid-Parameter die Objekt-ID an, die Sie beim Erstellen der Anwendung verwendet haben. Planen Sie vor dem Ausführen dieses Befehls etwas Zeit für die Verteilung des neuen Dienstprinzipals in Azure Active Directory ein. Wenn Sie diese Befehle manuell ausführen, vergeht in der Regel genügend Zeit zwischen Aufgaben. In einem Skript sollten Sie einen Schritt für eine Pause zwischen den Befehlen hinzufügen (z.B. `sleep 15`). Wenn Sie die Fehlermeldung erhalten, dass der Prinzipal nicht im Verzeichnis vorhanden ist, führen Sie den Befehl erneut aus.
    
    ```azurecli
    azure role assignment create --objectId ff863613-e5e2-4a6b-af07-fff6f2de3f4e -o Reader -c /subscriptions/{subscriptionId}/
@@ -83,7 +83,7 @@ Das ist alles! AD-Anwendung und Dienstprinzipal sind eingerichtet. Der nächste 
 ### <a name="provide-credentials-through-azure-cli"></a>Angeben von Anmeldeinformationen über die Azure-Befehlszeilenschnittstelle
 Jetzt müssen Sie sich als Anwendung anmelden, um Vorgänge durchzuführen.
 
-1. Bei jeder Anmeldung als Dienstprinzipal müssen Sie die Mandanten-ID des Verzeichnisses für Ihre AD-App angeben. Ein Mandant ist eine Instanz von Active Directory. Verwenden Sie zum Abrufen der Mandanten-ID für Ihr derzeit authentifiziertes Abonnement Folgendes:
+1. Bei jeder Anmeldung als Dienstprinzipal müssen Sie die Mandanten-ID des Verzeichnisses für Ihre AD-App angeben. Ein Mandant ist eine Instanz von Azure Active Directory. Verwenden Sie zum Abrufen der Mandanten-ID für Ihr derzeit authentifiziertes Abonnement Folgendes:
    
    ```azurecli
    azure account show
@@ -192,7 +192,7 @@ Für diese Schritte muss [OpenSSL](http://www.openssl.org/) installiert sein.
      data:                      https://www.contoso.org/example
      info:    ad sp create command OK
    ```
-6. Gewähren Sie dem Dienstprinzipal Berechtigungen für Ihr Abonnement. In diesem Beispiel fügen Sie den Dienstprinzipal der Rolle „Leser“ hinzu, die Berechtigung zum Lesen aller Ressourcen im Abonnement gewährt. Informationen zu den anderen Rollen finden Sie unter [RBAC: Integrierte Rollen](../active-directory/role-based-access-built-in-roles.md). Geben Sie für den objectid-Parameter die Objekt-ID an, die Sie beim Erstellen der Anwendung verwendet haben. Vor der Ausführung dieses Befehls müssen Sie einige Zeit für die Verteilung des neuen Dienstprinzipals in Active Directory einplanen. Wenn Sie diese Befehle manuell ausführen, vergeht in der Regel genügend Zeit zwischen Aufgaben. In einem Skript sollten Sie einen Schritt für eine Pause zwischen den Befehlen hinzufügen (z.B. `sleep 15`). Wenn Sie die Fehlermeldung erhalten, dass der Prinzipal nicht im Verzeichnis vorhanden ist, führen Sie den Befehl erneut aus.
+6. Gewähren Sie dem Dienstprinzipal Berechtigungen für Ihr Abonnement. In diesem Beispiel fügen Sie den Dienstprinzipal der Rolle „Leser“ hinzu, die Berechtigung zum Lesen aller Ressourcen im Abonnement gewährt. Informationen zu den anderen Rollen finden Sie unter [RBAC: Integrierte Rollen](../active-directory/role-based-access-built-in-roles.md). Geben Sie für den objectid-Parameter die Objekt-ID an, die Sie beim Erstellen der Anwendung verwendet haben. Planen Sie vor dem Ausführen dieses Befehls etwas Zeit für die Verteilung des neuen Dienstprinzipals in Azure Active Directory ein. Wenn Sie diese Befehle manuell ausführen, vergeht in der Regel genügend Zeit zwischen Aufgaben. In einem Skript sollten Sie einen Schritt für eine Pause zwischen den Befehlen hinzufügen (z.B. `sleep 15`). Wenn Sie die Fehlermeldung erhalten, dass der Prinzipal nicht im Verzeichnis vorhanden ist, führen Sie den Befehl erneut aus.
    
    ```azurecli
    azure role assignment create --objectId 7dbc8265-51ed-4038-8e13-31948c7f4ce7 -o Reader -c /subscriptions/{subscriptionId}/
@@ -201,7 +201,7 @@ Für diese Schritte muss [OpenSSL](http://www.openssl.org/) installiert sein.
 ### <a name="provide-certificate-through-automated-azure-cli-script"></a>Bereitstellen eines Zertifikats über automatisiertes Azure-CLI-Skript
 Jetzt müssen Sie sich als Anwendung anmelden, um Vorgänge durchzuführen.
 
-1. Bei jeder Anmeldung als Dienstprinzipal müssen Sie die Mandanten-ID des Verzeichnisses für Ihre AD-App angeben. Ein Mandant ist eine Instanz von Active Directory. Verwenden Sie zum Abrufen der Mandanten-ID für Ihr derzeit authentifiziertes Abonnement Folgendes:
+1. Bei jeder Anmeldung als Dienstprinzipal müssen Sie die Mandanten-ID des Verzeichnisses für Ihre AD-App angeben. Ein Mandant ist eine Instanz von Azure Active Directory. Verwenden Sie zum Abrufen der Mandanten-ID für Ihr derzeit authentifiziertes Abonnement Folgendes:
    
    ```azurecli
    azure account show
@@ -263,7 +263,7 @@ Jetzt müssen Sie sich als Anwendung anmelden, um Vorgänge durchzuführen.
    azure login --service-principal --tenant {tenant-id} -u 4fd39843-c338-417d-b549-a545f584a745 --certificate-file C:\certificates\examplecert.pem --thumbprint {thumbprint}
    ```
 
-Sie sind nun als Dienstprinzipal für die Active Directory-Anwendung authentifiziert, die Sie erstellt haben.
+Sie sind nun als Dienstprinzipal für die Azure Active Directory-Anwendung authentifiziert, die Sie erstellt haben.
 
 ## <a name="change-credentials"></a>Ändern von Anmeldeinformationen
 
@@ -285,7 +285,7 @@ azure ad app set --applicationId 4fd39843-c338-417d-b549-a545f584a745 --cert-val
 
 Wenn Sie einen Dienstprinzipal erstellen, können folgende Fehler auftreten:
 
-* **„Authentication_Unauthorized“** oder **„Kein Abonnement in diesem Kontext gefunden.“** – Dieser Fehler wird angezeigt, wenn Ihr Konto nicht die [erforderlichen Berechtigungen](#required-permissions) zum Registrieren einer App im Active Directory hat. In der Regel wird dieser Fehler angezeigt, wenn in Ihrem Active Directory nur Administratorbenutzer Apps registrieren können und Ihr Konto kein Administratorkonto ist. Bitten Sie Ihren Administrator, Sie entweder einer Administratorrolle zuzuweisen oder es Benutzern zu ermöglichen, Apps zu registrieren.
+* **„Authentication_Unauthorized“** oder **„Kein Abonnement in diesem Kontext gefunden.“** Dieser Fehler wird angezeigt, wenn Ihr Konto nicht über die [erforderlichen Berechtigungen](#required-permissions) verfügt, um eine App in Azure Active Directory zu registrieren. In der Regel wird dieser Fehler angezeigt, wenn in Ihrem Azure Active Directory nur Administratorbenutzer Apps registrieren können und Ihr Konto kein Administratorkonto ist. Bitten Sie Ihren Administrator, Sie entweder einer Administratorrolle zuzuweisen oder es Benutzern zu ermöglichen, Apps zu registrieren.
 
 * Ihr Konto **„hat keine Berechtigung zum Ausführen der Aktion 'Microsoft.Authorization/roleAssignments/write' über Bereich '/subscriptions/{guid}'.“**  – Dieser Fehler wird angezeigt, wenn Ihr Konto nicht über ausreichende Berechtigungen verfügt, um eine Rolle einer Identität zuzuweisen. Bitten Sie Ihren Abonnementadministrator, Sie der Rolle „Benutzerzugriffsadministrator“ hinzuzufügen.
 

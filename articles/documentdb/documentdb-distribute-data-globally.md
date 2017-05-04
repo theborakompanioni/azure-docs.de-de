@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/14/2017
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 203648d999032d86dca10f9b47c40a2208ab79e9
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 746fefab12aae11774a7d582e39ac2bc7eb9c88b
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -58,7 +58,7 @@ DocumentDB verfügt über richtlinienbasierte Geofencing-Funktionen. Geofencing 
 Mit DocumentDB können Sie jederzeit Regionen zu Ihrem Datenbankkonto hinzufügen (zuordnen) oder daraus entfernen (Zuordnung aufheben), wie in der [vorherigen Abbildung](#UnlimitedRegionsPerAccount) zu sehen. Aufgrund der parallelen partitionsübergreifenden Datenreplizierung ist bis zu 100 TB gewährleistet, dass DocumentDB überall auf der Welt innerhalb von 30 Minuten verfügbar ist, wenn eine neue Region online geschaltet wird. 
 
 ### <a id="FailoverPriorities"></a>Failoverprioritäten
-Mit DocumentDB können Sie für den Ausfall mehrerer Regionen die exakte Reihenfolge von regionalen Failovern steuern, indem Sie die Priorität mehreren, dem Datenbankkonto zugeordneten Regionen zuordnen, wie in der folgenden Abbildung zu sehen. DocumentDB stellt sicher, dass bei der automatischen Failoversequenz die von Ihnen angegebene Prioritätenreihenfolge eingehalten wird.
+Mit DocumentDB können Sie für den Ausfall mehrerer Regionen die exakte Reihenfolge von regionalen Failovern steuern, indem Sie die Priorität mehreren, dem Datenbankkonto zugeordneten Regionen zuordnen, wie in der folgenden Abbildung zu sehen. DocumentDB stellt sicher, dass bei der automatischen Failoversequenz die von Ihnen angegebene Prioritätenreihenfolge eingehalten wird. Weitere Informationen zu regionalen Failovern finden Sie unter [Automatisches regionales Failover für die Geschäftskontinuität in DocumentDB](documentdb-regional-failovers.md).
 
 **Ein DocumentDB-Mandant kann die Failoverprioritätenreihenfolge (rechter Bereich) für Regionen konfigurieren, die einem Datenbankkonto zugeordnet sind.**
 

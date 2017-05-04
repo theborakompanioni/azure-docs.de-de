@@ -15,9 +15,9 @@ ms.workload:
 ms.date: 02/13/2017
 ms.author: ruturajd
 translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: b054245de2c5bf6019c2cb29409289f2ac8766ec
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 6629666eaa913321db3855438bb66d349d5c52bf
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -93,6 +93,12 @@ Sie können das Failback eines virtuellen Computers erst ausführen, wenn er min
 
 Wenn Sie den anwendungskonsistenten Wiederherstellungspunkt auswählen, wird bei einem Failback für einen einzelnen virtuellen Computer die Wiederherstellung des letzten verfügbaren anwendungskonsistenten Wiederherstellungspunkts durchgeführt. Bei einem Wiederherstellungsplan mit einer Replikationsgruppe erfolgt für jede Replikationsgruppe die Wiederherstellung für den gemeinsamen verfügbaren Wiederherstellungspunkt.
 Hinweis: Anwendungskonsistente Wiederherstellungspunkte können zeitlich weiter zurück liegen, und es kann zu einem Verlust von Daten kommen.
+
+### <a name="what-happens-to-vmware-tools-post-failback"></a>Was geschieht mit VMware-Tools nach dem Failback?
+
+Während des Failovers auf Azure können die VMware-Tools nicht auf dem virtuellen Azure-Computer ausgeführt werden. Bei einem virtuellen Windows-Computer deaktiviert ASR die VMware-Tools während des Failovers. Bei einem virtuellen Linux-Computer deinstalliert ASR die VMware-Tools während des Failovers. 
+
+Im Zuge des Failbacks eines virtuellen Windows-Computers werden die VMware-Tools wieder aktiviert. Analog dazu werden die VMware-Tools beim Failback eines virtuellen Linux-Computers wieder auf dem Computer installiert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

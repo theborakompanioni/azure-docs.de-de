@@ -16,17 +16,19 @@ ms.workload: na
 ms.date: 03/27/2017
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: ef5d4af5d5dad2b548ab01be5ba9c4769b21416a
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: bed8e0c2b5d4d42fb0510f6b55cfab7404c01b11
+ms.lasthandoff: 04/25/2017
 
 
 ---
 # <a name="save-iot-hub-messages-that-contain-information-like-sensor-data-to-azure-table-storage"></a>Speichern von IoT Hub-Nachrichten mit Informationen wie Sensordaten in Azure-Tabellenspeicher
 
+![Lückenloses Diagramm](media/iot-hub-get-started-e2e-diagram/3.png)
+
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-## <a name="what-you-will-learn"></a>Sie lernen Folgendes
+## <a name="what-you-will-learn"></a>Lernziele
 
 Sie erfahren, wie Sie ein Azure-Speicherkonto und eine Azure-Funktionen-App zum Speichern von IoT Hub-Nachrichten in Azure-Tabellenspeicher erstellen.
 
@@ -36,9 +38,9 @@ Sie erfahren, wie Sie ein Azure-Speicherkonto und eine Azure-Funktionen-App zum 
 - Bereiten Sie die IoT Hub-Verbindung auf das Lesen von Nachrichten vor.
 - Erstellen Sie eine Azure-Funktionen-App, und stellen Sie sie bereit.
 
-## <a name="what-you-will-need"></a>Voraussetzungen
+## <a name="what-you-will-need"></a>Sie benötigen Folgendes
 
-- Sie müssen das Tutorial [Verbinden von ESP8266 mit Azure IoT Hub](iot-hub-arduino-huzzah-esp8266-get-started.md) abgeschlossen haben, in dem die folgenden Voraussetzungen behandelt werden:
+- Abschluss des Tutorials [Einrichten Ihres Geräts](iot-hub-raspberry-pi-kit-node-get-started.md), in dem die folgenden Anforderungen behandelt werden:
   - Ein aktives Azure-Abonnement.
   - Ein Azure IoT Hub in Ihrem Abonnement.
   - Eine ausgeführte Anwendung, die Nachrichten an Ihren Azure IoT Hub sendet.

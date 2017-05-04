@@ -1,6 +1,6 @@
 ---
-title: Verwalten von virtuellen Linux-Computern mit der Azure CLI | Microsoft-Dokumentation
-description: "Tutorial – Verwalten von virtuellen Linux-Computern mit der Azure CLI"
+title: Erstellen und Verwalten virtueller Linux-Computer mit der Azure-Befehlszeilenschnittstelle | Microsoft-Dokumentation
+description: 'Tutorial: Erstellen und Verwalten virtueller Linux-Computer mit der Azure-Befehlszeilenschnittstelle'
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: neilpeterson
@@ -9,186 +9,252 @@ editor: tysonn
 tags: azure-service-management
 ms.assetid: 
 ms.service: virtual-machines-linux
-ms.devlang: azurecli
+ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/28/2017
+ms.date: 04/25/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: c0f22806034eef1fc5ff37d547d066f554ec0a85
-ms.lasthandoff: 04/07/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: bcb075b320bab942c6421be72ea1445d5fa3f603
+ms.lasthandoff: 04/26/2017
 
 ---
 
-# <a name="manage-linux-virtual-machines-with-the-azure-cli"></a>Verwalten von virtuellen Linux-Computern mit der Azure CLI
+# <a name="create-and-manage-linux-vms-with-the-azure-cli"></a>Erstellen und Verwalten virtueller Linux-Computer mit der Azure-Befehlszeilenschnittstelle
 
-In diesem Tutorial erstellen Sie einen virtuellen Computer und führen allgemeine Verwaltungsaufgaben durch, z.B. Hinzufügen eines Datenträgers, Automatisieren der Softwareinstallation und Erstellen einer Momentaufnahme des virtuellen Computers. 
+In diesem Tutorial werden grundlegende Vorgänge bei der Erstellung von virtuellen Azure-Computern behandelt. Hierzu zählen unter anderem das Auswählen einer VM-Größe, das Auswählen eines VM-Images und das Bereitstellen eines virtuellen Computers. Des Weiteren werden in diesem Tutorial grundlegende Verwaltungsvorgänge wie etwa das Verwalten des Zustands sowie das Löschen und das Ändern der Größe eines virtuellen Computers beschrieben.
 
-Für dieses Tutorial muss die aktuelle Version von [Azure CLI 2.0](/cli/azure/install-azure-cli) installiert sein.
+Die Schritte in diesem Tutorial können mit der neuesten Version von [Azure CLI 2.0](/cli/azure/install-azure-cli) ausgeführt werden.
 
-## <a name="step-1--log-in-to-azure"></a>Schritt 1: Anmelden bei Azure
-
-Öffnen Sie zuerst ein Terminal, und melden Sie sich mit dem Befehl [az login](/cli/azure/#login) bei Ihrem Azure-Abonnement an.
-
-```azurecli
-az login
-```
-
-## <a name="step-2--create-resource-group"></a>Schritt 2: Erstellen einer Ressourcengruppe
+## <a name="create-resource-group"></a>Ressourcengruppe erstellen
 
 Erstellen Sie mit dem Befehl [az group create](https://docs.microsoft.com/cli/azure/group#create) eine Ressourcengruppe. 
 
-Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Vor dem virtuellen Computer muss eine Ressourcengruppe erstellt werden. In diesem Beispiel wird eine Ressourcengruppe mit dem Namen `myResourceGroup` in der Region `westeurope` erstellt. 
+Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Vor dem virtuellen Computer muss eine Ressourcengruppe erstellt werden. In diesem Beispiel wird eine Ressourcengruppe mit dem Namen `myResourceGroupVM` in der Region `westus` erstellt. 
 
 ```azurecli
-az group create --name myResourceGroup --location westeurope
+az group create --name myResourceGroupVM --location westus
 ```
 
-## <a name="step-3---prepare-configuration"></a>Schritt 3: Vorbereiten der Konfiguration
+Die Ressourcengruppe wird beim Erstellen oder Ändern eines virtuellen Computers angegeben, was im Laufe dieses Tutorials veranschaulicht wird.
 
-Beim Bereitstellen eines virtuellen Computers können mithilfe von **cloud-init** Konfigurationen wie das Installieren von Paketen, das Erstellen von Dateien und das Ausführen von Skripts automatisiert werden. In diesem Tutorial sind die Konfigurationen von zwei Elementen automatisiert:
-
-- Installation eines NGINX-Webservers
-- Bereitstellung eines zweiten Datenträgers auf dem virtuellen Computer
-
-Da die **cloud-init**-Konfiguration zum Zeitpunkt der Bereitstellung des virtuellen Computers erfolgt, muss vor dem Erstellen des virtuellen Computers eine **cloud-init**-Konfiguration definiert werden.
-
-Erstellen Sie eine Datei mit dem Namen `cloud-init.txt`, und kopieren Sie folgenden Inhalt hinein. Diese Konfiguration installiert das NGINX-Paket und führt Befehle aus, um den zweiten Datenträger zu formatieren und bereitzustellen.
-
-```yaml
-#cloud-config
-package_upgrade: true
-packages:
-  - nginx
-runcmd:
-  - (echo n; echo p; echo 1; echo ; echo ; echo w) | sudo fdisk /dev/sdc
-  - sudo mkfs -t ext4 /dev/sdc1
-  - sudo mkdir /datadrive
-  - sudo mount /dev/sdc1 /datadrive
-```
-
-## <a name="step-4---create-virtual-machine"></a>Schritt 4 : Erstellen eines virtuellen Computers
+## <a name="create-virtual-machine"></a>Erstellen eines virtuellen Computers
 
 Erstellen Sie mit dem Befehl [az vm create](https://docs.microsoft.com/cli/azure/vm#create) einen virtuellen Computer. 
 
-Beim Erstellen eines virtuellen Computers stehen mehrere Optionen zur Verfügung, z.B. Betriebssystemimage, Festlegen der Datenträgergröße und Administratoranmeldeinformationen. In diesem Beispiel wird ein virtueller Computer mit dem Namen `myVM` erstellt, auf dem Ubuntu ausgeführt wird. Ein Datenträger mit 50 GB wird erstellt und dem virtuellen Computer mithilfe des Arguments `--data-disk-sizes-gb` angefügt. Das Argument `--custom-data` akzeptiert, die „cloud-init“-Konfiguration und stellt sie auf dem virtuellen Computer bereit. Abschließend werden auch SSH-Schlüssel erstellt, sofern sie nicht vorhanden sind.
+Beim Erstellen eines virtuellen Computers stehen mehrere Optionen zur Verfügung, z.B. Betriebssystemimage, Festlegen der Datenträgergröße und Administratoranmeldeinformationen. In diesem Beispiel wird ein virtueller Computer mit dem Namen `myVM` erstellt, auf dem Ubuntu Server ausgeführt wird. 
 
 ```azurecli
-az vm create \
-  --resource-group myResourceGroup \
-  --name myVM \
-  --image Canonical:UbuntuServer:14.04.4-LTS:latest \
-  --generate-ssh-keys \
-  --data-disk-sizes-gb 50 \
-  --custom-data cloud-init.txt
+az vm create --resource-group myResourceGroupVM --name myVM --image UbuntuLTS --generate-ssh-keys
 ```
 
-Nachdem der virtuelle Computer erstellt wurde, gibt die Azure-CLI folgende Informationen aus. Notieren Sie die öffentliche IP-Adresse, da diese Adresse beim Zugriff auf den virtuellen Computer verwendet wird. 
+Nach der Erstellung des virtuellen Computers gibt die Azure-Befehlszeilenschnittstelle Informationen zu dem virtuellen Computer aus. Notieren Sie sich den Wert für `publicIpAddress`. Über diese Adresse kann auf den virtuellen Computer zugegriffen werden. 
 
 ```azurecli
 {
   "fqdns": "",
-  "id": "/subscriptions/d5b9d4b7-6fc1-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
-  "location": "westeurope",
+  "id": "/subscriptions/d5b9d4b7-6fc1-0000-0000-000000000000/resourceGroups/myResourceGroupVM/providers/Microsoft.Compute/virtualMachines/myVM",
+  "location": "westus",
   "macAddress": "00-0D-3A-23-9A-49",
   "powerState": "VM running",
   "privateIpAddress": "10.0.0.4",
   "publicIpAddress": "52.174.34.95",
-  "resourceGroup": "myResourceGroup"
+  "resourceGroup": "myResourceGroupVM"
 }
 ```
 
-Der virtuelle Computer wurde zwar bereitgestellt wurde, die **cloud-init** kann jedoch noch einige Minuten in Anspruch nehmen. 
+## <a name="connect-to-vm"></a>Herstellen einer Verbindung mit dem virtuellen Computer
 
-## <a name="step-5--configure-firewall"></a>Schritt 5: Konfigurieren der Firewall
+Sie können nun eine SSH-Verbindung mit dem virtuellen Computer herstellen. Ersetzen Sie die Beispiel-IP-Adresse durch den Wert für `publicIpAddress`, den Sie sich im vorherigen Schritt notiert haben.
 
-Eine Azure[Netzwerksicherheitsgruppe](../../virtual-network/virtual-networks-nsg.md) (NSG) steuert ein- und ausgehenden Datenverkehr für einen oder mehrere virtuelle Computer. Netzwerksicherheitsgruppen-Regeln dienen zum Zulassen oder Verweigern von Netzwerkdatenverkehr an einem bestimmten Port oder in einem Portbereich. Diese Regeln können auch ein Quelladresspräfix enthalten, sodass nur Datenverkehr aus einer vordefinierten Quelle mit einem virtuellen Computer kommunizieren kann.
+```bash
+ssh 52.174.34.95
+```
 
-Im vorherigen Abschnitt wurde der NGINX-Webserver installiert. Ohne eine Netzwerksicherheitsgruppen-Regel zum Zulassen des gesamten eingehenden Datenverkehrs an Port 80 kann der Webserver nicht auf das Internet zugreifen. Dieser Schritt führt Sie durch das Erstellen der NSG-Regel, um eingehende Verbindungen an Port 80 zuzulassen.
+Schließen Sie die SSH-Sitzung, wenn Sie mit dem virtuellen Computer fertig sind. 
 
-### <a name="create-nsg-rule"></a>Erstellen der NSG-Regel
+```bash
+exit
+```
 
-Zum Erstellen einer NSG-Regel für eingehenden Datenverkehr verwenden Sie den Befehl [az vm open-port](https://docs.microsoft.com/cli/azure/vm#open-port). Im folgenden Beispiel wird Port `80` für den virtuellen Computer geöffnet.
+## <a name="understand-vm-images"></a>Grundlegendes zu VM-Images
+
+Der Azure Marketplace bietet zahlreiche Images, die zum Erstellen neuer virtueller Computer verwendet werden können. In den vorherigen Schritten wurde ein virtueller Computer mit einem Ubuntu-Image erstellt. In diesem Schritt wird der Marketplace mithilfe der Azure-Befehlszeilenschnittstelle nach einem CentOS-Image durchsucht, das anschließend zum Bereitstellen eines zweiten virtuellen Computers verwendet wird.  
+
+Eine Liste mit den am häufigsten verwendeten Images erhalten Sie mithilfe des Befehls [az vm image list](/cli/azure/vm/image#list).
 
 ```azurecli
-az vm open-port --port 80 --resource-group myResourceGroup --name myVM 
+az vm image list --output table
 ```
 
-Navigieren Sie jetzt zur öffentlichen IP-Adresse des virtuellen Computers. Mit dieser NSG-Regel wird die NGINX-Standardwebsite angezeigt.
+Der Befehl gibt die beliebtesten VM-Images in Azure zurück.
 
-![NGINX-Standardwebsite](./media/tutorial-manage-vm/nginx.png)  
+```bash
+Offer          Publisher               Sku                 Urn                                                             UrnAlias             Version
+-------------  ----------------------  ------------------  --------------------------------------------------------------  -------------------  ---------
+WindowsServer  MicrosoftWindowsServer  2016-Datacenter     MicrosoftWindowsServer:WindowsServer:2016-Datacenter:latest     Win2016Datacenter    latest
+WindowsServer  MicrosoftWindowsServer  2012-R2-Datacenter  MicrosoftWindowsServer:WindowsServer:2012-R2-Datacenter:latest  Win2012R2Datacenter  latest
+WindowsServer  MicrosoftWindowsServer  2008-R2-SP1         MicrosoftWindowsServer:WindowsServer:2008-R2-SP1:latest         Win2008R2SP1         latest
+WindowsServer  MicrosoftWindowsServer  2012-Datacenter     MicrosoftWindowsServer:WindowsServer:2012-Datacenter:latest     Win2012Datacenter    latest
+UbuntuServer   Canonical               16.04-LTS           Canonical:UbuntuServer:16.04-LTS:latest                         UbuntuLTS            latest
+CentOS         OpenLogic               7.3                 OpenLogic:CentOS:7.3:latest                                     CentOS               latest
+openSUSE-Leap  SUSE                    42.2                SUSE:openSUSE-Leap:42.2:latest                                  openSUSE-Leap        latest
+RHEL           RedHat                  7.3                 RedHat:RHEL:7.3:latest                                          RHEL                 latest
+SLES           SUSE                    12-SP2              SUSE:SLES:12-SP2:latest                                         SLES                 latest
+Debian         credativ                8                   credativ:Debian:8:latest                                        Debian               latest
+CoreOS         CoreOS                  Stable              CoreOS:CoreOS:Stable:latest                                     CoreOS               latest
+```
 
-## <a name="step-6--snapshot-virtual-machine"></a>Schritt 6: Erstellen einer Momentaufnahme des virtuellen Computers
-
-Bei einer Momentaufnahme des Datenträger wird eine schreibgeschützte Point-in-Time-Kopie des Datenträgers erstellt. In diesem Schritt wird eine Momentaufnahme des Betriebssystem-Datenträgers des virtuellen Computers erstellt. Mit einer Momentaufnahme des Momentaufnahme des Betriebssystem-Datenträgers kann der virtuelle Computer schnell in einem bestimmten Zustand wiederhergestellt werden, oder die Momentaufnahme kann verwendet werden, um einen neuen virtuellen Computer mit einem identischen Zustand zu erstellen.
-
-### <a name="create-snapshot"></a>Erstellen der Momentaufnahme
-
-Vor dem Erstellen einer Momentaufnahme wird die ID oder der Name des Datenträgers benötigt. Rufen Sie die Datenträger-ID mit dem Befehl [az vm show](https://docs.microsoft.com/cli/azure/vm#show) ab. In diesem Beispiel wird die Datenträger-ID in einer Variablen gespeichert und in einem späteren Schritt verwendet.
+Eine vollständige Liste erhalten Sie, indem Sie das Argument `--all` hinzufügen. Die Imageliste kann auch nach `--publisher` oder `–offer` gefiltert werden. In diesem Beispiel wird die Liste nach Images mit einem Angebot gefiltert, das `CentOS` entspricht. 
 
 ```azurecli
-osdiskid=$(az vm show -g myResourceGroup -n myVM --query "storageProfile.osDisk.managedDisk.id" -o tsv)
+az vm image list --offer CentOS --all --output table
 ```
 
-Nachdem Sie jetzt die ID des Datenträgers haben, wird mit dem folgenden Befehl die Momentaufnahme erstellt.
-
-```azurcli
-az snapshot create -g myResourceGroup --source "$osdiskid" --name osDisk-backup
-```
-
-### <a name="create-disk-from-snapshot"></a>Erstellen eines Datenträgers aus der Momentaufnahme
-
-Diese Momentaufnahme kann dann in einen Datenträger konvertiert werden, mit dem wiederum der virtuelle Computer neu erstellt werden kann.
+Hier sehen Sie einen Teil der Ausgabe:
 
 ```azurecli
-az disk create --resource-group myResourceGroup --name mySnapshotDisk --source osDisk-backup
+Offer             Publisher         Sku   Urn                                     Version
+----------------  ----------------  ----  --------------------------------------  -----------
+CentOS            OpenLogic         6.5   OpenLogic:CentOS:6.5:6.5.201501         6.5.201501
+CentOS            OpenLogic         6.5   OpenLogic:CentOS:6.5:6.5.201503         6.5.201503
+CentOS            OpenLogic         6.5   OpenLogic:CentOS:6.5:6.5.201506         6.5.201506
+CentOS            OpenLogic         6.5   OpenLogic:CentOS:6.5:6.5.20150904       6.5.20150904
+CentOS            OpenLogic         6.5   OpenLogic:CentOS:6.5:6.5.20160309       6.5.20160309
+CentOS            OpenLogic         6.5   OpenLogic:CentOS:6.5:6.5.20170207       6.5.20170207
 ```
 
-### <a name="restore-virtual-machine-from-snapshot"></a>Wiederherstellen des virtuellen Computers aus der Momentaufnahme
-
-Löschen Sie den vorhandenen virtuellen Computer, um die Wiederherstellung des virtuellen Computers durchzuführen. 
+Wenn Sie einen virtuellen Computer mit einem bestimmten Image bereitstellen möchten, notieren Sie sich den Wert in der Spalte `Urn`. Bei der Angabe des Images kann die Imageversionsnummer durch „latest“ ersetzt werden, um die neueste Version der Distribution auszuwählen. In diesem Beispiel wird mithilfe des Arguments `--image` die neueste Version eines CentOS 6.5-Images angeben.  
 
 ```azurecli
-az vm delete --resource-group myResourceGroup --name myVM
+az vm create --resource-group myResourceGroupVM --name myVM2 --image OpenLogic:CentOS:6.5:latest --generate-ssh-keys
 ```
 
-Bei der erneuten Erstellung des virtuellen Computers wird die vorhandene Netzwerkschnittstelle wiederverwendet. So wird sichergestellt, dass Netzwerk-Sicherheitskonfigurationen beibehalten werden.
+## <a name="understand-vm-sizes"></a>Grundlegendes zu VM-Größen
 
-Rufen Sie mit dem Befehl [az network nic list](https://docs.microsoft.com/cli/azure/network/nic#list) den Namen der Netzwerkschnittstelle ab. In diesem Beispiel wird der Name in eine Variable namens `nic` eingefügt, die im nächsten Schritt verwendet wird.
+Die Größe eines virtuellen Computers bestimmt die Menge an Computeressourcen (CPU, GPU, Arbeitsspeicher und Ähnliches), die für den virtuellen Computer zur Verfügung gestellt werden. Die Größe virtueller Computer muss auf die zu erwartende Workload abgestimmt werden. Bei einer Zunahme der Workload kann die Größe eines vorhandenen virtuellen Computers geändert werden.
+
+### <a name="vm-sizes"></a>VM-Größen
+
+In der folgenden Tabelle sind Größen nach Anwendungsfällen kategorisiert.  
+
+| Typ                     | Größen           |    Beschreibung       |
+|--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
+| [Allgemeiner Zweck](sizes-general.md)         |DSv2, Dv2, DS, D, Av2, A0-7| Ausgewogenes Verhältnis zwischen CPU und Arbeitsspeicher. Ideal für Entwicklung und Tests, kleine bis mittlere Anwendungen und Datenlösungen.  |
+| [Computeoptimiert](sizes-compute.md)   | Fs, F             | Hohes Verhältnis von CPU zu Arbeitsspeicher. Geeignet für Anwendungen, Network Appliances und Batch-Prozesse mit mittlerer Auslastung.        |
+| [Arbeitsspeicheroptimiert](../virtual-machines-windows-sizes-memory.md)    | GS, G, DSv2, DS, Dv2, D   | Hohes Verhältnis von Speicher zu Kern. Hervorragend geeignet für relationale Datenbanken, mittlere bis große Caches und In-Memory-Analysen.                 |
+| [Speicheroptimiert](../virtual-machines-windows-sizes-storage.md)      | Ls                | Datenträgerdurchsatz und -E/A auf hohem Niveau. Ideal für Big Data sowie SQL- und NoSQL-Datenbanken.                                                         |
+| [GPU](sizes-gpu.md)          | NV, NC            | Spezialisierte virtuelle Computer für aufwendiges Grafikrendering und aufwendige Videobearbeitung.       |
+| [Hohe Leistung](sizes-hpc.md) | H, A8-11          | Unsere virtuellen Computer mit den leistungsfähigsten CPUs, die optional über Netzwerkschnittstellen mit hohem Durchsatz (RDMA) verfügen. 
+
+
+### <a name="find-available-vm-sizes"></a>Ermitteln der verfügbaren VM-Größen
+
+Eine Liste mit den verfügbaren VM-Größen einer bestimmten Region erhalten Sie mithilfe des Befehls [az vm list-sizes](/cli/azure/vm#list-sizes). 
 
 ```azurecli
-nic=$(az network nic list --resource-group myResourceGroup --query "[].[name]" -o tsv)
+az vm list-sizes --location westus --output table
 ```
 
-Erstellen Sie einen neuen virtuellen Computer aus dem Momentaufnahmendatenträger.
+Hier sehen Sie einen Teil der Ausgabe:
 
 ```azurecli
-az vm create --resource-group myResourceGroup --name myVM --attach-os-disk mySnapshotDisk --os-type linux --nics $nic
+  MaxDataDiskCount    MemoryInMb  Name                      NumberOfCores    OsDiskSizeInMb    ResourceDiskSizeInMb
+------------------  ------------  ----------------------  ---------------  ----------------  ----------------------
+                 2          3584  Standard_DS1                          1           1047552                    7168
+                 4          7168  Standard_DS2                          2           1047552                   14336
+                 8         14336  Standard_DS3                          4           1047552                   28672
+                16         28672  Standard_DS4                          8           1047552                   57344
+                 4         14336  Standard_DS11                         2           1047552                   28672
+                 8         28672  Standard_DS12                         4           1047552                   57344
+                16         57344  Standard_DS13                         8           1047552                  114688
+                32        114688  Standard_DS14                        16           1047552                  229376
+                 1           768  Standard_A0                           1           1047552                   20480
+                 2          1792  Standard_A1                           1           1047552                   71680
+                 4          3584  Standard_A2                           2           1047552                  138240
+                 8          7168  Standard_A3                           4           1047552                  291840
+                 4         14336  Standard_A5                           2           1047552                  138240
+                16         14336  Standard_A4                           8           1047552                  619520
+                 8         28672  Standard_A6                           4           1047552                  291840
+                16         57344  Standard_A7                           8           1047552                  619520
 ```
 
-Notieren Sie die neue öffentliche IP-Adresse, und navigieren Sie in einem Internetbrowser zu dieser Adresse. Sie werden sehen, dass NGINX auf dem wiederhergestellten virtuellen Computer ausgeführt wird. 
+### <a name="create-vm-with-specific-size"></a>Erstellen eines virtuellen Computers mit einer bestimmten Größe
 
-### <a name="reconfigure-data-disk"></a>Neukonfiguration des Datenträgers
-
-Der Datenträger kann jetzt erneut an den virtuellen Computer angefügt werden. 
-
-Suchen Sie zuerst mithilfe des Befehls [az disk list](https://docs.microsoft.com/cli/azure/disk#list) den Namen des Datenträgers. In diesem Beispiel wird der Name des Datenträgers in eine Variable namens `datadisk` eingefügt, die im nächsten Schritt verwendet wird.
+Im vorherigen Beispiel zur Erstellung eines virtuellen Computers wurde eine Standardgröße verwendet, da keine Größe angegeben wurde. Eine VM-Größe kann bei der Erstellung mit dem Befehl [az vm create](/cli/azure/vm#create) und dem Argument `--size` ausgewählt werden. 
 
 ```azurecli
-datadisk=$(az disk list -g myResourceGroup --query "[?contains(name,'myVM')].[name]" -o tsv)
+az vm create --resource-group myResourceGroupVM --name myVM3 --image UbuntuLTS --size Standard_F4s --generate-ssh-keys
 ```
 
-Verwenden Sie den Befehl [az vm disk attach](https://docs.microsoft.com/cli/azure/vm/disk#attach), um den Datenträger anzufügen.
+### <a name="resize-a-vm"></a>Ändern der Größe eines virtuellen Computers
+
+Nach der Bereitstellung eines virtuellen Computers kann dessen Größe geändert werden, um die Ressourcenzuordnung zu erhöhen oder zu verringern.
+
+Prüfen Sie vor der Größenänderung eines virtuellen Computers, ob die gewünschte Größe im aktuellen Azure-Cluster verfügbar ist. Der Befehl [az vm list-vm-resize-options](/cli/azure/vm#list-vm-resize-options) gibt die Größenliste zurück. 
 
 ```azurecli
-az vm disk attach –g myResourceGroup –-vm-name myVM –-disk $datadisk
+az vm list-vm-resize-options --resource-group myResourceGroupVM --name myVM --query [].name
+```
+Wenn die gewünschte Größe verfügbar ist, kann die Größe des virtuellen Computers im eingeschalteten Zustand geändert werden, er muss jedoch während des Vorgangs neu gestartet werden. Verwenden Sie zum Vornehmen der Größenänderung den Befehl [az vm resize]( /cli/azure/vm#resize).
+
+```azurecli
+az vm resize --resource-group myResourceGroupVM --name myVM --size Standard_DS4_v2
 ```
 
-Der Datenträger muss auch für das Betriebssystem bereitgestellt werden. Zum Bereitstellen des Datenträgers stellen Sie eine Verbindung mit dem virtuellen Computer her und führen dann `sudo mount /dev/sdc1 /datadrive` oder Ihren bevorzugten Vorgang zur Datenträgerbereitstellung aus. 
+Falls die gewünschte Größe im aktuellen Cluster nicht verfügbar ist, muss die Zuordnung des virtuellen Computers aufgehoben werden, damit die Größenänderung erfolgen kann. Verwenden Sie den Befehl [az vm deallocate]( /cli/azure/vm#deallocate), um den virtuellen Computer zu beenden und die Zuordnung aufzuheben. Wenn der virtuelle Computer wieder eingeschaltet wird, werden unter Umständen sämtliche Daten auf dem temporären Datenträger entfernt. Die öffentliche IP-Adresse ändert sich ebenfalls – es sei denn, es wird eine statische IP-Adresse verwendet. 
 
-## <a name="step-7--management-tasks"></a>Schritt 7: Verwaltungsaufgaben
+```azurecli
+az vm deallocate --resource-group myResourceGroupVM --name myVM
+```
+
+Sobald die Zuordnung aufgehoben wurde, kann die Größe geändert werden. 
+
+```azurecli
+az vm resize --resource-group myResourceGroupVM --name myVM --size Standard_GS1
+```
+
+Nach dem Ändern der Größe kann der virtuelle Computer gestartet werden.
+
+```azurecli
+az vm start --resource-group myResourceGroupVM --name myVM
+```
+
+## <a name="vm-power-states"></a>Betriebszustände von virtuellen Computern
+
+Ein virtueller Azure-Computer kann einen von mehreren Betriebszuständen aufweisen. Dieser Zustand entspricht dem aktuellen Zustand des virtuellen Computers im Hypervisor. 
+
+### <a name="power-states"></a>Betriebszustände
+
+| Betriebszustand | Beschreibung
+|----|----|
+| Wird gestartet | Gibt an, dass der virtuelle Computer gestartet wird. |
+| Wird ausgeführt | Gibt an, dass der virtuelle Computer ausgeführt wird. |
+| Wird beendet | Gibt an, dass der virtuelle Computer beendet wird. | 
+| Beendet | Gibt an, dass der virtuelle Computer beendet wurde. Für virtuelle Computer mit beendetem Zustand fallen weiterhin Computegebühren an.  |
+| Zuordnung wird aufgehoben | Gibt an, dass die Zuordnung des virtuellen Computers aufgehoben wird. |
+| Zuordnung aufgehoben | Gibt an, dass der virtuelle Computer aus dem Hypervisor entfernt wurde, auf der Steuerungsebene jedoch weiterhin verfügbar ist. Für virtuelle Computer mit aufgehobener Zuordnung fallen keine Computegebühren an. |
+| - | Gibt an, dass der Betriebszustand des virtuellen Computers nicht bekannt ist. |
+
+### <a name="find-power-state"></a>Ermitteln des Betriebszustands
+
+Verwenden Sie zum Ermitteln des Zustands eines bestimmten virtuellen Computers den Befehl [az vm get instance-view](/cli/azure/vm#get-instance-view). Achten Sie darauf, dass Sie einen gültigen Namen für einen virtuellen Computer und eine Ressourcengruppe angeben. 
+
+```azurecli
+az vm get-instance-view --name myVM --resource-group myResourceGroupVM --query instanceView.statuses[1] --output table
+```
+
+Ausgabe:
+
+```azurecli
+ode                DisplayStatus    Level
+------------------  ---------------  -------
+PowerState/running  VM running       Info
+```
+
+## <a name="management-tasks"></a>Verwaltungsaufgaben
 
 Während der Lebensdauer eines virtuellen Computers können Sie Verwaltungsaufgaben wie das Starten, Beenden oder Löschen eines virtuellen Computers ausführen. Darüber hinaus empfiehlt es sich, Skripts zum Automatisieren von wiederkehrenden oder komplexen Aufgaben zu erstellen. Mithilfe der Azure CLI können viele allgemeine Verwaltungsaufgaben über die Befehlszeile oder in Skripts ausgeführt werden. 
 
@@ -197,33 +263,19 @@ Während der Lebensdauer eines virtuellen Computers können Sie Verwaltungsaufga
 Dieser Befehl gibt die privaten und öffentlichen IP-Adressen eines virtuellen Computers zurück.  
 
 ```azurecli
-az vm list-ip-addresses --resource-group myResourceGroup --name myVM
-```
-
-### <a name="resize-virtual-machine"></a>Ändern der Größe des virtuellen Computers
-
-Zum Ändern der Größe eines virtuellen Azure-Computers müssen Sie die Namen der verfügbaren Größen in der ausgewählten Azure-Region kennen. Diese Größen können mit dem Befehl [az vm list-sizes](https://docs.microsoft.com/cli/azure/vm#list-sizes) abgerufen werden.
-
-```azurecli
-az vm list-sizes --location westeurope --output table
-```
-
-Die Größe des virtuellen Computers kann mit dem Befehl [az vm resize](https://docs.microsoft.com/cli/azure/vm#resize) geändert werden. 
-
-```azurecli
-az vm resize -g myResourceGroup -n myVM --size Standard_F4s
+az vm list-ip-addresses --resource-group myResourceGroupVM --name myVM --output table
 ```
 
 ### <a name="stop-virtual-machine"></a>Beenden des virtuellen Computers
 
 ```azurecli
-az vm stop --resource-group myResourceGroup --name myVM
+az vm stop --resource-group myResourceGroupVM --name myVM
 ```
 
 ### <a name="start-virtual-machine"></a>Starten des virtuellen Computers
 
 ```azurecli
-az vm start --resource-group myResourceGroup --name myVM
+az vm start --resource-group myResourceGroupVM --name myVM
 ```
 
 ### <a name="delete-resource-group"></a>Ressourcengruppe löschen
@@ -231,10 +283,11 @@ az vm start --resource-group myResourceGroup --name myVM
 Beim Löschen einer Ressourcengruppe werden auch alle darin enthaltenen Ressourcen gelöscht.
 
 ```azurecli
-az group delete --name myResourceGroup
+az group delete --name myResourceGroupVM --no-wait --yes
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Lernprogramm wird ein einzelner virtueller Computer erstellt, der die einzelnen Azure-Ressourcen nutzt. Das nächste Lernprogramm baut auf diesen Konzepten auf, und es wird eine hochverfügbare Anwendung mit Lastenausgleich erstellt, die robust gegenüber Wartungsereignissen ist. Fahren Sie mit dem nächsten Lernprogramm fort: [Erstellen einer hochverfügbaren Anwendung mit Load Balancer auf virtuellen Linux-Computern in Azure](tutorial-load-balance-nodejs.md).
 
-Beispiele – [Azure CLI-Beispielskripts](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+In diesem Tutorial haben Sie Informationen zur grundlegenden Erstellung und Verwaltung von virtuellen Computern erhalten. Im nächsten Tutorial erhalten Sie Informationen zu VM-Datenträgern.  
+
+[Erstellen und Verwalten von VM-Datenträgern](./tutorial-manage-disks.md)

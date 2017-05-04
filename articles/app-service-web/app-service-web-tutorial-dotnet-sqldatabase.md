@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 04/07/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 566a8d7fc595975e065c5a8a42c7f7c94997821b
-ms.lasthandoff: 04/18/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: d7006a50d35412021f7e475df526661854b23dc8
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -33,7 +33,7 @@ Vor dem Ausführen dieses Beispiels [laden Sie die kostenlose Visual Studio 2017
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="step-1---download-the-sample"></a>Schritt 1: Herunterladen des Beispiels
+## <a name="download-the-sample"></a>Herunterladen des Beispiels
 In diesem Schritt laden Sie eine ASP.NET-Beispielanwendung herunter.
 
 ### <a name="get-the-sample-project"></a>Herunterladen des Beispielprojekts
@@ -65,7 +65,7 @@ Auf der Startseite sollte eine einfache Aufgabenliste angezeigt werden. Versuche
 
 Der Datenbankkontext verwendet eine Verbindungszeichenfolge namens `MyDbConnection`. Diese Verbindungszeichenfolge wird in `Web.config` definiert, und in `Models\MyDatabaseContext.cs` wird auf sie verwiesen. Der Name der Verbindungszeichenfolge ist alles, was, die Sie später benötigen, wenn Sie Ihre Azure-Web-App mit Azure SQL-Datenbank verbinden. 
 
-## <a name="step-2---publish-to-azure-with-sql-database"></a>Schritt 2: Veröffentlichen in Azure mit SQL-Datenbank
+## <a name="publish-to-azure-with-sql-database"></a>Veröffentlichen in Azure mit SQL-Datenbank
 
 Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt **DotNetAppSqlDb**, und wählen Sie **Veröffentlichen** aus.
 
@@ -168,7 +168,7 @@ Versuchen Sie, der leeren Liste einige Aufgaben hinzuzufügen.
 
 Glückwunsch! Ihre datengesteuerte ASP.NET-Anwendung wird live in Azure App Service ausgeführt.
 
-## <a name="step-3---access-the-sql-database-locally"></a>Schritt 3: Lokaler Zugriff auf die SQL-Datenbank
+## <a name="access-the-sql-database-locally"></a>Lokaler Zugriff auf die SQL-Datenbank
 
 In Visual Studio können Sie Ihre neue SQL-Datenbank bequem im **SQL Server-Objekt-Explorer** überprüfen und verwalten.
 
@@ -204,7 +204,7 @@ Hier können Sie häufige Datenbankvorgänge ausführen, und z.B. Abfragen ausf�
 
 ![SQL-Datenbank-Objekte ansehen](./media/app-service-web-tutorial-dotnet-sqldatabase/explore-sql-database.png)
 
-## <a name="step-4---update-app-with-code-first-migrations"></a>Schritt 4: Aktualisieren der App mit Code First-Migrationen
+## <a name="update-app-with-code-first-migrations"></a>Aktualisieren der App mit Code First-Migrationen
 
 In diesem Schritt verwenden Sie Code First-Migrationen in Entity Framework, um eine Änderung am Datenbankschema vorzunehmen und sie in Azure zu veröffentlichen.
 
@@ -329,7 +329,7 @@ Versuchen Sie erneut, neue Aufgaben zu erstellen, und wählen Sie **Fertig** aus
 >
 >
 
-## <a name="step-6---stream-application-logs"></a>Schritt 6: Streamen von Anwendungsprotokollen
+## <a name="stream-application-logs"></a>Streamen von Anwendungsprotokollen
 
 Sie können Ablaufverfolgungsmeldungen direkt aus der Azure-Web-App in Visual Studio streamen.
 
@@ -389,7 +389,7 @@ Klicken Sie zum Beenden des Diensts für das Protokollstreaming auf die Schaltfl
 
 ![Beenden des Protokollstreamings](./media/app-service-web-tutorial-dotnet-sqldatabase/stop-streaming.png)
 
-## <a name="step-7---manage-your-azure-web-app"></a>Schritt 7: Verwalten Ihrer Azure-Web-App
+## <a name="manage-your-azure-web-app"></a>Verwalten Ihrer Azure-Web-App
 
 Wechseln Sie zum Azure-Portal, um die erstellte Web-App anzuzeigen. 
 

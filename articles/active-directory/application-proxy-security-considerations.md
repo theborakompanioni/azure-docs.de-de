@@ -1,5 +1,5 @@
 ---
-title: Sicherheitsaspekte beim Remotezugriff auf Apps mit dem Azure AD-Anwendungsproxy | Microsoft-Dokumentation
+title: "Sicherheitsaspekte für Azure AD-Anwendungsproxy | Microsoft-Dokumentation"
 description: Die Sicherheitsaspekte bei Verwendung des Azure AD-Anwendungsproxys werden beschrieben.
 services: active-directory
 documentationcenter: 
@@ -11,34 +11,33 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/12/2017
+ms.date: 04/12/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 4019b379939e43e4e974552f1f0be245c5b1d33e
-ms.lasthandoff: 04/17/2017
+ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
+ms.openlocfilehash: 52704b3259ddad85db12b8bb81c4992ece2f37a4
+ms.lasthandoff: 04/21/2017
 
 
 ---
 
-# <a name="security-considerations-for-accessing-apps-remotely-by-using-azure-ad-application-proxy"></a>Sicherheitsaspekte beim Remotezugriff auf Apps mit dem Azure AD-Anwendungsproxy
-
->[!NOTE]
->Das Anwendungsproxy-Feature ist nur verfügbar, wenn Sie Azure Active Directory auf die Premium oder Basic Edition aktualisiert haben. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-editions.md).
+# <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Sicherheitsaspekte beim Remotezugriff auf Apps mit dem Azure AD-Anwendungsproxy
 
 In diesem Artikel wird beschrieben, wie mit dem Azure Active Directory-Anwendungsproxy (Azure AD) ein sicherer Dienst für die Veröffentlichung und den Remotezugriff auf Anwendungen bereitgestellt wird.
+
+Im folgenden Diagramm ist dargestellt, wie mit Azure AD der sichere Remotezugriff auf Ihre lokalen Anwendungen ermöglicht wird.
+
+ ![Diagramm des sicheren Remotezugriffs über den Azure AD-Anwendungsproxy](./media/application-proxy-security-considerations/secure-remote-access.png)
 
 Der Azure AD-Anwendungsproxy bietet die folgenden Sicherheitsvorteile:
 
 **Authentifizierter Zugriff:** Nur authentifizierte Verbindungen können auf Ihr Netzwerk zugreifen.
 
-* Der Azure AD-Anwendungsproxy basiert auf dem Azure AD-Sicherheitstokendienst (Security Token Service, STS) für alle Authentifizierungen. Bei Anwendungen, die mit Vorauthentifizierung veröffentlicht werden, kann kein Datenverkehr ohne gültiges STS-Token den Anwendungsproxydienst für Ihre Umgebung passieren.
-* Bei der Vorauthentifizierung liegt es in der Natur der Sache, dass eine erhebliche Anzahl von anonymen Angriffen blockiert wird, da nur für authentifizierte Identitäten der Zugriff auf die Back-End-Anwendung zugelassen wird.
+* Der Azure AD-Anwendungsproxy basiert auf dem Azure AD-Sicherheitstokendienst (Security Token Service, STS) für alle Authentifizierungen.  Bei der Vorauthentifizierung liegt es in der Natur der Sache, dass eine erhebliche Anzahl von anonymen Angriffen blockiert wird, da nur für authentifizierte Identitäten der Zugriff auf die Back-End-Anwendung zugelassen wird.
 
 **Bedingter Zugriff:** Wenden Sie umfassendere Richtlinienkontrollen an, bevor Verbindungen mit Ihrem Netzwerk hergestellt werden.
 
-* Beim bedingten Zugriff können Sie Einschränkungen dazu, welcher Datenverkehr auf Ihre Back-End-Anwendungen zugreifen kann, genauer definieren. Sie können Einschränkungen basierend auf dem Standort, der Authentifizierungssicherheit und dem Benutzerrisikoprofil definieren.
-* Mit dieser Funktion werden weitere Barrieren gegen Angreifer errichtet. Weitere Informationen zum bedingten Zugriff finden Sie unter [Erste Schritte mit dem bedingten Zugriff in Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-conditional-access-azuread-connected-apps).
+* Mithilfe des [bedingten Zugriffs](active-directory-conditional-access-azuread-connected-apps.md) können Sie basierend auf Standort, Authentifizierungsstärke und Benutzerrisikoprofil Einschränkungen festlegen, welcher Datenverkehr auf Ihre Back-End-Anwendungen zugreifen darf.
 
 **Beendigung des Datenverkehrs:** Der gesamte Datenverkehrsvorgang wird in der Cloud beendet.
 
@@ -46,38 +45,24 @@ Der Azure AD-Anwendungsproxy bietet die folgenden Sicherheitsvorteile:
 
 **Gesamter Zugriff erfolgt in ausgehender Richtung:** Sie müssen keine eingehenden Verbindungen mit dem Unternehmensnetzwerk öffnen.
 
-* Azure AD-Connectors verwalten ausgehende Verbindungen mit dem Azure AD-Anwendungsproxydienst, d.h. Firewallports müssen nicht für eingehende Verbindungen geöffnet werden.
-* Herkömmliche Ansätze erfordern ein Umkreisnetzwerk (auch bekannt als *DMZ*, *demilitarisierte Zone* und *überwachtes Subnetz*) und öffnen den Zugriff auf nicht authentifizierte Verbindungen am Rand des Netzwerks. Aus diesem Grund mussten viele zusätzliche Investitionen in Web Application Firewall-Produkte (WAF) getätigt werden, um Datenverkehr zu analysieren und den Schutz der Umgebung auszubauen. Mit dem Anwendungsproxy können Sie dieses Szenario vermeiden. Sie können auch erwägen, das Umkreisnetzwerk nicht zu verwenden, da alle Verbindungen ausgehend sind und über einen sicheren Kanal erfolgen.
+* Azure AD-Connectors verwalten ausgehende Verbindungen mit dem Azure AD-Anwendungsproxydienst, d.h. Firewallports müssen nicht für eingehende Verbindungen geöffnet werden. Herkömmliche Proxys erforderten ein Umkreisnetzwerk (auch bekannt als *DMZ*, *demilitarisierte Zone* und *überwachtes Subnetz*) und erlaubten den Zugriff auf nicht authentifizierte Verbindungen am Rand des Netzwerks. Aus diesem Grund mussten viele zusätzliche Investitionen in Web Application Firewall-Produkte (WAF) getätigt werden, um Datenverkehr zu analysieren und den Schutz der Umgebung auszubauen. Bei Verwenden des Anwendungsproxys benötigen Sie kein Umkreisnetzwerk, da alle Verbindungen ausgehend sind und über einen sicheren Kanal erfolgen.
 
 **Sicherheitsanalyse und auf Machine Language basierende Intelligence:** Sicherheit und Schutz auf dem neuesten Stand
 
-* Azure AD Identity Protection mit Intelligence auf Machine Learning-Basis mit Datenfeeds von unserer Digital Crimes Unit und aus dem Microsoft Security Response Center. Zusammen identifizieren wir proaktiv kompromittierte Konten und ermöglichen den Echtzeitschutz vor Anmeldungen mit hohem Risikofaktor. Wir berücksichtigen viele verschiedene Faktoren, z.B. den Zugriff von infizierten Geräten und über Anonymisierungsnetzwerke sowie von ungewöhnlichen und zweifelhaften Standorten.
+* [Azure AD Identity Protection](active-directory-identityprotection.md) mit Intelligence auf Machine Learning-Basis mit Datenfeeds von unserer Digital Crimes Unit und aus dem Microsoft Security Response Center. Zusammen identifizieren wir proaktiv kompromittierte Konten und ermöglichen den Echtzeitschutz vor Anmeldungen mit hohem Risikofaktor. Wir berücksichtigen viele verschiedene Faktoren, z.B. den Zugriff von infizierten Geräten und über Anonymisierungsnetzwerke sowie von ungewöhnlichen und zweifelhaften Standorten.
 * Viele dieser Berichte und Ereignisse sind bereits über eine API für die Integration in Ihre Sicherheitsinformations- und Ereignisverwaltungssysteme (Security Information and Event Management, SIEM) verfügbar.
-* Weitere Informationen finden Sie unter [Azure AD Identity Protection](https://azure.microsoft.com/documentation/articles/active-directory-identityprotection).
 
 **Remotezugriff als Dienst:** Sie müssen sich nicht mit dem Warten und Patchen von lokalen Servern beschäftigen.
 
-* Der Azure AD-Anwendungsproxy ist ein Internetskalierungsdienst, der sich im Besitz von Microsoft befindet. So sind Sie sicher, dass Sie immer die neuesten Sicherheitspatches und -upgrades erhalten.
-* Software ohne die richtigen Patches ist immer noch eine häufige Ursache für eine große Zahl von Angriffen. Mit unserem Dienstmodell müssen Sie sich nicht mehr mit der Verwaltung der Edgeserver belasten.
+* Software ohne die richtigen Patches ist immer noch eine häufige Ursache für eine große Zahl von Angriffen. Der Azure AD-Anwendungsproxy ist ein Internetskalierungsdienst, der sich im Besitz von Microsoft befindet. So sind Sie sicher, dass Sie immer die neuesten Sicherheitspatches und -upgrades erhalten.
+* Zur Erhöhung der Sicherheit von Anwendungen, die vom Azure AD-Anwendungsproxy veröffentlicht werden, blockieren wir die Indizierung und Archivierung Ihrer Anwendungen durch Webcrawlerroboter. Jedes Mal, wenn ein Webcrawlerroboter versucht, die robots-Einstellungen für eine veröffentlichte App abzurufen, antwortet der Anwendungsproxy mit einer Datei „robots.txt“, die `User-agent: * Disallow: /` enthält.
 
-Die Remotezugriffsdienste von Azure AD werden gemäß den Richtlinien und Standards betrieben, die im [Azure Trust Center](https://azure.microsoft.com/support/trust-center) beschrieben sind.
-
-Im folgenden Diagramm ist dargestellt, wie mit Azure AD der sichere Remotezugriff auf Ihre lokalen Anwendungen ermöglicht wird.
-
- ![Diagramm des sicheren Remotezugriffs über den Azure AD-Anwendungsproxy](./media/application-proxy-security-considerations/secure-remote-access.png)
-
->[!NOTE]
->Zur Erhöhung der Sicherheit von Anwendungen, die vom Azure AD-Anwendungsproxy veröffentlicht werden, blockieren wir die Indizierung und Archivierung Ihrer Anwendungen durch Webcrawlerroboter. Jedes Mal, wenn ein Webcrawlerroboter versucht, die robots-Einstellungen für eine veröffentlichte App abzurufen, antwortet der Anwendungsproxy mit einer Datei „robots.txt“, die folgenden Text enthält:
->
->_Benutzer-Agent: *_  
->_Nicht zulassen: /_
-
-## <a name="components-of-the-azure-ad-application-proxy-solution"></a>Komponenten der Azure AD-Anwendungsproxylösung
+## <a name="under-the-hood"></a>Im Hintergrund
 
 Der Azure AD-Anwendungsproxy besteht aus zwei Teilen:
 
 * Dem cloudbasierten Dienst: In diesem Dienst werden die externen Client-/Benutzerverbindungen hergestellt.
-* Dem Azure AD-Anwendungsproxyconnector: Als lokale Komponente lauscht der Connector auf Anfragen vom Azure AD-Anwendungsproxydienst und wickelt die Verbindungen mit den internen Anwendungen ab. Der Dienst kümmert sich auch um Elemente wie z.B. die eingeschränkte Kerberos-Delegierung für SSO.
+* Dem Azure AD-Anwendungsproxyconnector: Als lokale Komponente lauscht der Connector auf Anfragen vom Azure AD-Anwendungsproxydienst und wickelt die Verbindungen mit den internen Anwendungen ab. 
 
 Ein Flow zwischen dem Connector und dem Anwendungsproxydienst wird in folgenden Fällen eingerichtet:
 
@@ -112,46 +97,51 @@ Wenn der Anwendungsproxydienst die Konfigurationseinstellungen aktualisiert, tre
 
 Die folgenden Ereignisse treten ein, wenn Benutzer auf eine veröffentlichte Anwendung zugreifen:
 
-1. Der Anwendungsproxydienst überprüft die Konfigurationseinstellungen für die App. Falls die App für die Verwendung der Vorauthentifizierung mit Azure AD konfiguriert ist, werden die Benutzer zur Authentifizierung an Azure AD STS umgeleitet. Wenn Sie die App mithilfe von Pass-Through veröffentlichen, wird dieser Schritt übersprungen.
+#### <a name="the-application-proxy-service-checks-the-configuration-settings-for-the-app"></a>Der Anwendungsproxydienst überprüft die Konfigurationseinstellungen für die App. 
 
- a. Während der Authentifizierung mit Azure AD überprüft der Anwendungsproxy etwaige Richtlinienanforderungen in Bezug auf den bedingten Zugriff für die jeweilige Anwendung. Mit diesem Schritt wird sichergestellt, dass der Benutzer der Anwendung zugewiesen wurde. Wenn Multi-Factor Authentication (MFA) erforderlich ist, fordert die Authentifizierungssequenz den Benutzer zu einer zweistufigen Authentifizierung auf.
+Falls die App für die Verwendung der Vorauthentifizierung mit Azure AD konfiguriert ist, werden die Benutzer zur Authentifizierung an Azure AD STS umgeleitet. Wenn Sie die App für die Verwendung von Pass-Through konfigurieren, wird dieser Schritt übersprungen.
 
- b. Nachdem alle Überprüfungen bestanden wurden, stellt Azure AD STS ein signiertes Token für die Anwendung aus und leitet den Benutzer zurück an den Anwendungsproxydienst.
+1. Der Anwendungsproxy überprüft etwaige Richtlinienanforderungen in Bezug auf den bedingten Zugriff für die jeweilige Anwendung. Mit diesem Schritt wird sichergestellt, dass der Benutzer der Anwendung zugewiesen wurde. Wenn die Überprüfung in zwei Schritten erforderlich ist, fordert die Authentifizierungssequenz den Benutzer zu einer zweistufigen Authentifizierung auf.
 
- c. Der Anwendungsproxy überprüft das Token, um sicherzustellen, dass es für die Anwendung ausgestellt wurde, für die der Benutzer den Zugriff angefordert hat. Dieser Schritt wird zusammen mit anderen Überprüfungen durchgeführt, z.B. mit der Sicherstellung, dass das Token von Azure AD signiert wurde und noch nicht abgelaufen ist.
+2. Nachdem alle Überprüfungen bestanden wurden, stellt Azure AD STS ein signiertes Token für die Anwendung aus und leitet den Benutzer zurück zum Anwendungsproxydienst.
 
- d. Mit dem Anwendungsproxy wird ein verschlüsseltes Cookie für die Authentifizierung (z.B. ein nicht dauerhaftes Cookie) festgelegt, um anzugeben, dass die Authentifizierung für die Anwendung erfolgt ist. Das Cookie enthält einen Ablaufzeitstempel, der auf dem Token von Azure AD und anderen Daten basiert, z.B. dem Benutzernamen, auf dem die Authentifizierung basiert. Das Cookie wird mit einem privaten Schlüssel verschlüsselt, der nur dem Anwendungsproxydienst bekannt ist.
+3. Der Anwendungsproxy stellt sicher, dass das Token für die richtige Anwendung ausgestellt wurde. Dieser Schritt wird zusammen mit anderen Überprüfungen durchgeführt, z.B. mit der Sicherstellung, dass das Token von Azure AD signiert wurde und noch nicht abgelaufen ist.
 
- e. Der Anwendungsproxy leitet den Benutzer zurück zur ursprünglich angeforderten URL.
+4. Mit dem Anwendungsproxy wird ein verschlüsseltes Cookie für die Authentifizierung festgelegt, um anzugeben, dass die Authentifizierung für die Anwendung erfolgt ist. Das Cookie enthält einen Ablaufzeitstempel, der auf dem Token von Azure AD und anderen Daten basiert, z.B. dem Benutzernamen, auf dem die Authentifizierung basiert. Das Cookie wird mit einem privaten Schlüssel verschlüsselt, der nur dem Anwendungsproxydienst bekannt ist.
 
- >[!NOTE]
- >Wenn für einen Teil der Schritte für die Vorauthentifizierung Fehler auftreten, wird die Anforderung des Benutzers verworfen, und dem Benutzer wird eine Meldung mit einem Hinweis zur Problemursache angezeigt.
- >
+5. Der Anwendungsproxy leitet den Benutzer zurück zur ursprünglich angeforderten URL.
 
-2. Nach dem Empfang der Anforderung vom Client überprüft der Anwendungsproxy, ob die Bedingung für die Vorauthentifizierung erfüllt wurde und ob das Cookie noch gültig ist (falls erforderlich). Der Anwendungsproxy reiht anschließend eine Anforderung in die entsprechende Warteschlange ein, damit sie von einem lokalen Connector verarbeitet werden kann. 
+Wenn für einen Teil der Schritte für die Vorauthentifizierung Fehler auftreten, wird die Anforderung des Benutzers verworfen, und dem Benutzer wird eine Meldung mit einem Hinweis zur Problemursache angezeigt.
 
- >[!NOTE]
- >Alle Anforderungen vom Connector verlaufen in ausgehender Richtung an den Anwendungsproxydienst. Für Connectors wird eine ausgehende Verbindung zum Anwendungsproxy offengehalten. Beim Empfang einer Anforderung reiht der Anwendungsproxy diese in eine Warteschlange für eine der offenen Verbindungen ein, damit sie vom Connector verarbeitet werden kann.
 
- * Die Anforderung enthält Elemente aus der Anwendung, z.B. Anforderungsheader und Daten aus dem verschlüsselten Cookie, den Benutzer, der die Anforderung gesendet hat, und die Anforderungs-ID. Das verschlüsselte Authentifizierungscookie wird jedoch nicht an den Connector gesendet.
+#### <a name="application-proxy-places-a-request-in-the-appropriate-queue-for-an-on-premises-connector-to-handle"></a>Der Anwendungsproxy reiht anschließend eine Anforderung in die entsprechende Warteschlange ein, damit sie von einem lokalen Connector verarbeitet werden kann. 
 
-3. Der Connector empfängt die Anforderung aus der Warteschlange basierend auf einer ausgehenden Verbindung mit langer Lebensdauer. Auf Grundlage der Anforderung führt der Anwendungsproxy eine der folgenden Aktionen durch:
+Alle Anforderungen vom Connector verlaufen in ausgehender Richtung an den Anwendungsproxydienst. Für Connectors wird eine ausgehende Verbindung zum Anwendungsproxy offengehalten. Beim Empfang einer Anforderung reiht der Anwendungsproxy diese in eine Warteschlange für eine der offenen Verbindungen ein, damit sie vom Connector verarbeitet werden kann.
 
- * Der Connector bestätigt, ob er die Anwendung identifizieren kann. Wenn er die Anwendung nicht ermitteln kann, stellt der Connector eine Verbindung mit dem Anwendungsproxydienst her, um Details zur Anwendung zu erfassen, und führt eine lokale Zwischenspeicherung durch.
+Die Anforderung enthält Elemente aus der Anwendung, z.B. Anforderungsheader und Daten aus dem verschlüsselten Cookie, den Benutzer, der die Anforderung gesendet hat, und die Anforderungs-ID. Das verschlüsselte Authentifizierungscookie wird jedoch nicht an den Connector gesendet.
 
- * Wenn die Anforderung ein einfacher Vorgang ist, z.B. ohne Daten im Text wie bei einer *GET*-RESTful-Anforderung, stellt der Connector eine Verbindung mit der internen Zielressource her und wartet dann auf eine Antwort.
+#### <a name="the-connector-receives-the-request-from-the-queue"></a>Der Connector empfängt die Anforderung aus der Warteschlange. 
 
- * Wenn in der Anforderung im Textbereich Daten zugeordnet sind, z.B. bei einem *POST*-RESTful-Vorgang, stellt der Connector mit dem Clientzertifikat eine ausgehende Verbindung mit der Anwendungsproxyinstanz her. Die Verbindung wird zum Anfordern der Daten und zum Öffnen einer Verbindung mit der internen Ressource hergestellt. Nach Erhalt der Anforderung vom Connector beginnt der Anwendungsproxydienst damit, Inhalte vom Benutzer zu akzeptieren und Daten an den Connector weiterzuleiten. Der Connector leitet die Daten wiederum an die interne Ressource weiter.
+Auf Grundlage der Anforderung führt der Anwendungsproxy eine der folgenden Aktionen durch:
 
-4. Nachdem die Anforderung/Übertragung des gesamten Inhalts an das Back-End abgeschlossen ist, wartet der Connector auf eine Antwort.
+* Der Connector bestätigt, ob er die Anwendung identifizieren kann. Wenn er die Anwendung nicht ermitteln kann, stellt der Connector eine Verbindung mit dem Anwendungsproxydienst her, um Details zur Anwendung zu erfassen, und führt eine lokale Zwischenspeicherung durch.
 
-5. Nach dem Erhalt einer Antwort stellt der Connector eine ausgehende Verbindung mit dem Anwendungsproxydienst her, um die Headerdetails zurückzugeben und mit dem Streamen der Rückgabedaten zu beginnen.
+* Wenn die Anforderung ein einfacher Vorgang ist, z.B. ohne Daten im Text wie bei einer *GET*-RESTful-Anforderung, stellt der Connector eine Verbindung mit der internen Zielressource her und wartet dann auf eine Antwort.
 
-6. Der Anwendungsproxy „streamt“ die Daten an den Benutzer. Zu diesem Zeitpunkt können einige Verarbeitungsschritte, sofern erforderlich und von der Anwendung definiert, ausgeführt werden.
+* Wenn in der Anforderung im Textbereich Daten zugeordnet sind, z.B. bei einem *POST*-RESTful-Vorgang, stellt der Connector mit dem Clientzertifikat eine ausgehende Verbindung mit der Anwendungsproxyinstanz her. Die Verbindung wird zum Anfordern der Daten und zum Öffnen einer Verbindung mit der internen Ressource hergestellt. Nach Erhalt der Anforderung vom Connector beginnt der Anwendungsproxydienst damit, Inhalte vom Benutzer zu akzeptieren und Daten an den Connector weiterzuleiten. Der Connector leitet die Daten wiederum an die interne Ressource weiter.
 
-Falls Sie Hilfe zur Kommunikation von einer Azure-Webanwendung über einen Clientbrowser mit einem lokalen SOAP-Endpunkt (Simple Object Access Protocol) mit Windows-Authentifizierung benötigen, helfen Ihnen die Informationen im [Azure Field Notes Blog](http://www.azurefieldnotes.com/2016/12/02/claims-to-windows-identity-translation-solutions-and-its-flaws-when-using-azure-ad-application-proxy) weiter.
+#### <a name="after-the-request-and-transmission-of-all-content-to-the-back-end-is-complete-the-connector-waits-for-a-response"></a>Nachdem die Anforderung/Übertragung des gesamten Inhalts an das Back-End abgeschlossen ist, wartet der Connector auf eine Antwort.
+
+Nach dem Erhalt einer Antwort stellt der Connector eine ausgehende Verbindung mit dem Anwendungsproxydienst her, um die Headerdetails zurückzugeben und mit dem Streamen der Rückgabedaten zu beginnen.
+
+#### <a name="application-proxy-streams-the-data-to-the-user"></a>Der Anwendungsproxy „streamt“ die Daten an den Benutzer. 
+
+Zu diesem Zeitpunkt können einige Verarbeitungsschritte, sofern erforderlich und von der Anwendung definiert, ausgeführt werden.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
+
+[Aspekte der Netzwerktopologie bei Verwendung des Azure AD-Anwendungsproxys](application-proxy-network-topology-considerations.md)
 
 [Grundlegendes zu Azure AD-Anwendungsproxyconnectors](application-proxy-understand-connectors.md)
 

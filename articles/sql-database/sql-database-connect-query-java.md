@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 04/17/2017
 ms.author: andrela;carlrab;sstein
 translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 17202bfc03e9b60d12f1a071eff427520a0dce83
-ms.lasthandoff: 04/18/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 6ba2880b1ce9eed0f5c3b8e3ed4255c7e4ec7f29
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -32,6 +32,8 @@ In diesem Schnellstart werden als Ausgangspunkt die Ressourcen verwendet, die in
 - [Erstellen einer Datenbank – CLI](sql-database-get-started-cli.md)
 
 ## <a name="install-java-software"></a>Installieren von Java-Software
+
+Bei den Schritten in diesem Abschnitt wird davon ausgegangen, dass Sie mit der Java-Entwicklung vertraut sind und noch keine Erfahrung mit Azure SQL-Datenbank haben. Falls Sie noch keine Erfahrung mit der Java-Entwicklung haben, navigieren Sie zu [Erstellen einer App mithilfe von SQL Server](https://www.microsoft.com/en-us/sql-server/developer-get-started/), und wählen Sie erst **Java** und dann Ihr Betriebssystem aus.
 
 ### <a name="mac-os"></a>**Mac OS**
 Öffnen Sie das Terminal, und navigieren Sie zu einem Verzeichnis, in dem Sie Ihr Java-Projekt erstellen möchten. Geben Sie die folgenden Befehle ein, um **brew** und **Maven** zu installieren. 
@@ -50,11 +52,11 @@ sudo apt-get install maven
 ```
 
 ### <a name="windows"></a>**Windows**
-Installieren Sie [Maven](https://maven.apache.org/download.cgi) unter Verwendung des offiziellen Installers.  
+Installieren Sie [Maven](https://maven.apache.org/download.cgi) unter Verwendung des offiziellen Installers. Maven dient zum einfacheren Verwalten von Abhängigkeiten sowie Erstellen, Testen und Ausführen Ihres Java-Projekts. 
 
 ## <a name="get-connection-information"></a>Abrufen von Verbindungsinformationen
 
-Rufen Sie die Verbindungszeichenfolge im Azure-Portal ab. Sie verwenden die Verbindungszeichenfolge zum Herstellen einer Verbindung mit der Azure SQL-Datenbank.
+Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung mit der Azure SQL-Datenbank erforderlich sind. In den weiteren Verfahren benötigen Sie den vollqualifizierten Servernamen, den Datenbanknamen und die Anmeldeinformationen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 2. Wählen Sie im Menü auf der linken Seite die Option **SQL-Datenbanken**, und klicken Sie auf der Seite **SQL-Datenbanken** auf Ihre Datenbank. 
@@ -67,7 +69,7 @@ Rufen Sie die Verbindungszeichenfolge im Azure-Portal ab. Sie verwenden die Verb
 
 6. Überprüfen Sie die vollständige **JDBC**-Verbindungszeichenfolge.
 
-    ![Verbindungszeichenfolge für JDBC](./media/sql-database-connect-query-jdbc/jdbc-connection-string.png)
+    ![Verbindungszeichenfolge für JDBC](./media/sql-database-connect-query-jdbc/jdbc-connection-string.png)    
 
 ### <a name="create-maven-project"></a>**Erstellen eines Maven-Projekts**
 Erstellen Sie über das Terminal ein neues Maven-Projekt. 
@@ -87,7 +89,7 @@ Fügen Sie den **Microsoft JDBC-Treiber für SQL Server** zu den Abhängigkeiten
 
 ## <a name="select-data"></a>Auswählen von Daten
 
-Verwenden Sie den folgenden Code zum Abfragen Ihrer Azure SQL-Datenbank mithilfe der Klasse [connection](https://docs.microsoft.com/sql/connect/jdbc/working-with-a-connection) und einer Transact-SQL-Anweisung des Typs [SELECT](https://docs.microsoft.com/sql/t-sql/queries/select-transact-sql). Ersetzen Sie die Parameter „hostHame“, „dbName“, „user“ und „password“ durch die Werte, die Sie angegeben haben, als Sie die Datenbank mit den AdventureWorksLT-Beispieldaten erstellt haben. 
+Verwenden Sie den folgenden Code, um mit der Transact-SQL-Anweisung [SELECT](https://docs.microsoft.com/sql/connect/jdbc/working-with-a-connection) und der Klasse [connection](https://docs.microsoft.com/sql/t-sql/queries/select-transact-sql) die 20 wichtigsten Produkte nach Kategorie abzufragen. Ersetzen Sie die Parameter „hostHame“, „dbName“, „user“ und „password“ durch die Werte, die Sie angegeben haben, als Sie die Datenbank mit den AdventureWorksLT-Beispieldaten erstellt haben. 
 
 ```java
 package com.sqldbsamples;
@@ -144,7 +146,7 @@ public class App {
 
 ## <a name="insert-data"></a>Einfügen von Daten
 
-Verwenden Sie den folgenden Code zum Einfügen eines neuen Produkts in die Tabelle „SalesLT.Product“ in der angegebenen Datenbank mithilfe der Klasse [Prepared Statements](https://docs.microsoft.com/sql/connect/jdbc/using-statements-with-sql) und einer Transact-SQL-Anweisung des Typs [INSERT](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql). Ersetzen Sie die Parameter „hostHame“, „dbName“, „user“ und „password“ durch die Werte, die Sie angegeben haben, als Sie die Datenbank mit den AdventureWorksLT-Beispieldaten erstellt haben. 
+Verwenden Sie den folgenden Code zum Einfügen eines neuen Produkts in die Tabelle „SalesLT.Product“ mithilfe der Klasse [Prepared Statements](https://docs.microsoft.com/sql/connect/jdbc/using-statements-with-sql) und der Transact-SQL-Anweisung [INSERT](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql). Ersetzen Sie die Parameter „hostHame“, „dbName“, „user“ und „password“ durch die Werte, die Sie angegeben haben, als Sie die Datenbank mit den AdventureWorksLT-Beispieldaten erstellt haben. 
 
 ```java
 package com.sqldbsamples;
@@ -174,7 +176,7 @@ public class App {
                 System.out.println("=========================================");
 
                 // Prepared statement to insert data
-                String insertSql = "INSERT INTO SalesLT.Product (Name, ProductNumber, Color, )" 
+                String insertSql = "INSERT INTO SalesLT.Product (Name, ProductNumber, Color, " 
                     + " StandardCost, ListPrice, SellStartDate) VALUES (?,?,?,?,?,?);";
 
                 java.util.Date date = new java.util.Date();
@@ -200,7 +202,7 @@ public class App {
 ```
 ## <a name="update-data"></a>Aktualisieren von Daten
 
-Verwenden Sie den folgenden Code zum Aktualisieren von Daten in Ihrer Azure SQL-Datenbank mithilfe der Klasse [Prepared Statements](https://docs.microsoft.com/sql/connect/jdbc/using-statements-with-sql) und einer Transact-SQL-Anweisung des Typs[UPDATE](https://docs.microsoft.com/sql/t-sql/queries/update-transact-sql). Ersetzen Sie die Parameter „hostHame“, „dbName“, „user“ und „password“ durch die Werte, die Sie angegeben haben, als Sie die Datenbank mit den AdventureWorksLT-Beispieldaten erstellt haben. 
+Verwenden Sie den folgenden Code zum Aktualisieren des zuvor hinzugefügten neuen Produkts in Ihrer Azure SQL-Datenbank mithilfe der Klasse [Prepared Statements](https://docs.microsoft.com/sql/connect/jdbc/using-statements-with-sql) und der Transact-SQL-Anweisung [UPDATE](https://docs.microsoft.com/sql/t-sql/queries/update-transact-sql). Ersetzen Sie die Parameter „hostHame“, „dbName“, „user“ und „password“ durch die Werte, die Sie angegeben haben, als Sie die Datenbank mit den AdventureWorksLT-Beispieldaten erstellt haben. 
 
 ```java
 package com.sqldbsamples;
@@ -251,7 +253,7 @@ public class App {
 
 ## <a name="delete-data"></a>Löschen von Daten
 
-Verwenden Sie den folgenden Code zum Löschen von Daten in Ihrer Azure SQL-Datenbank mithilfe der Klasse [Prepared Statements](https://docs.microsoft.com/sql/connect/jdbc/using-statements-with-sql) und einer Transact-SQL-Anweisung des Typs [DELETE](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql). Ersetzen Sie die Parameter „hostHame“, „dbName“, „user“ und „password“ durch die Werte, die Sie angegeben haben, als Sie die Datenbank mit den AdventureWorksLT-Beispieldaten erstellt haben. 
+Verwenden Sie den folgenden Code, um mit den [vorbereiteten Anweisungen](https://docs.microsoft.com/sql/connect/jdbc/using-statements-with-sql) und der Transact-SQL-Anweisung [DELETE](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql) das neue Produkt zu löschen, das Sie zuvor hinzugefügt haben. Ersetzen Sie die Parameter „hostHame“, „dbName“, „user“ und „password“ durch die Werte, die Sie angegeben haben, als Sie die Datenbank mit den AdventureWorksLT-Beispieldaten erstellt haben. 
 
 ```java
 package com.sqldbsamples;

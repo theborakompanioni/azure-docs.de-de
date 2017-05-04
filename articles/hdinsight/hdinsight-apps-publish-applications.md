@@ -9,15 +9,17 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 14aef891-7a37-4cf1-8f7d-ca923565c783
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/06/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 35a6c06bc4850f3fcfc6221d62998465f3b38251
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: 1a7dabcbfdc1977e747fd30cfc0383d6c5f7f5a0
+ms.lasthandoff: 04/26/2017
 
 
 ---
@@ -58,14 +60,10 @@ Die Veröffentlichung von Anwendungen im Azure Marketplace umfasst zwei Schritte
 | tiers |Die Clustertarife, mit denen die Anwendung kompatibel ist. |Standard, Premium (oder beides) |
 | versions |Die HDInsight-Clustertypen, mit denen die Anwendung kompatibel ist. |3.4 |
 
-## <a name="package-application"></a>Packen der Anwendung
-Erstellen Sie eine ZIP-Datei mit allen Dateien, die für die Installation der HDInsight-Anwendung erforderlich sind. Die ZIP-Datei wird im Schritt [Veröffentlichen der Anwendung](#publish-application)benötigt.
-
-* [createUiDefinition.json](#define-application).
-* mainTemplate.json. Ein Beispiel finden Sie unter [Installieren benutzerdefinierter HDInsight-Anwendungen](hdinsight-apps-install-custom-applications.md).
-  
+## <a name="application-install-script"></a>Skript für die Anwendungsinstallation
+Bei jeder Installation einer (vorhandenen oder neuen) Anwendung in einem Cluster wird ein Edgeknoten erstellt, auf dem das Skript für die Anwendungsinstallation ausgeführt wird.
   > [!IMPORTANT]
-  > Der Name der Anwendungsinstallationsskripts muss für einen bestimmten Cluster mit dem unten angegebenen Format eindeutig sein. Darüber hinaus müssen Aktionen für Installations- und Deinstallationsskripts idempotent sein. Das bedeutet, dass die Skripts wiederholt aufgerufen werden können und immer das gleiche Ergebnis zurückgeben.
+  > Der Name der Anwendungsinstallationsskripts muss für einen bestimmten Cluster mit dem unten angegebenen Format eindeutig sein.
   > 
   > name": "[concat('hue-install-v0','-' ,uniquestring(‘applicationName’)]"
   > 
@@ -77,12 +75,22 @@ Erstellen Sie eine ZIP-Datei mit allen Dateien, die für die Installation der HD
   > 
   > Das oben genannte Beispiel lautet schlussendlich in der Liste persistenter Skriptaktionen wie folgt: hue-install-v0-4wkahss55hlas. Eine Beispiel-JSON-Nutzlast finden Sie unter [https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json](https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json).
   > 
-  > 
+Das Installationsskript muss die folgenden Merkmale aufweisen:
+1. Stellen Sie sicher, dass das Skript idempotent ist. Mehrere Aufrufe des Skripts müssen zum gleichen Ergebnis führen.
+2. Das Skript muss ordnungsgemäß mit Versionen versehen werden. Wählen Sie einen anderen Speicherort für das Skript, wenn Sie ein Upgrade vornehmen oder Änderungen testen, damit Kunden, die versuchen, die Anwendung zu installieren, nicht beeinträchtigt werden. 
+3. Versehen Sie die Skripts an jeder Stelle mit adäquater Protokollierung. Die Skriptprotokolle sind in der Regel die einzige Möglichkeit, Probleme bei der Installation von Anwendungen zu beheben.
+4. Stellen Sie sicher, dass für Aufrufe externer Dienste oder Ressourcen eine angemessene Anzahl von Wiederholungen vorgesehen ist, damit die Installation nicht von vorübergehenden Netzwerkproblemen betroffen ist.
+5. Wenn Ihr Skript Dienste auf den Knoten startet, stellen Sie sicher, dass die Dienste überwacht werden und so konfiguriert sind, dass Sie bei Neustarts von Knoten automatisch gestartet werden.
+
+## <a name="package-application"></a>Packen der Anwendung
+Erstellen Sie eine ZIP-Datei mit allen Dateien, die für die Installation der HDInsight-Anwendung erforderlich sind. Die ZIP-Datei wird im Schritt [Veröffentlichen der Anwendung](#publish-application)benötigt.
+
+* [createUiDefinition.json](#define-application).
+* mainTemplate.json. Ein Beispiel finden Sie unter [Installieren benutzerdefinierter HDInsight-Anwendungen](hdinsight-apps-install-custom-applications.md).
 * Alle erforderlichen Skripts.
 
 > [!NOTE]
 > Die Anwendungsdateien (einschließlich Webanwendungsdateien, sofern vorhanden) können sich auf einem beliebigen, öffentlich zugänglichen Endpunkt befinden.
-> 
 > 
 
 ## <a name="publish-application"></a>Veröffentlichen der Anwendung
@@ -104,10 +112,5 @@ Gehen Sie zum Veröffentlichen einer HDInsight-Anwendung wie folgt vor:
 * [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md): Hier erfahren Sie, wie Sie mithilfe der Skriptaktion zusätzliche Anwendungen installieren.
 * [Erstellen von Linux-basierten Hadoop-Clustern in HDInsight mit Resource Manager-Vorlagen](hdinsight-hadoop-create-linux-clusters-arm-templates.md): Hier erfahren Sie, wie Sie ARM-Vorlagen für die Erstellung von HDInsight-Clustern aufrufen.
 * [Verwenden leerer Edgeknoten in HDInsight](hdinsight-apps-use-edge-node.md): Erfahren Sie, wie Sie einen leeren Edgeknoten zum Zugreifen auf HDInsight-Cluster, Testen von HDInsight-Anwendungen und Hosten von HDInsight-Anwendungen verwenden.
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

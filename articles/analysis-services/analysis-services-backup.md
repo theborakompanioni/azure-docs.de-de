@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 04/17/2017
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 8ded51e2e34aa1583b249af11a260eaa4304f79f
-ms.lasthandoff: 04/18/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: fb660384f2f9f569bcfbe7fa7d5c1f7ce772cacd
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -83,6 +83,9 @@ Bevor Sie eine Sicherung durchführen, müssen Sie die Speichereinstellungen fü
 Verwenden Sie das Cmdlet [Backup-ASDatabase](https://docs.microsoft.com/sql/analysis-services/powershell/backup-asdatabase-cmdlet).
 
 ## <a name="restore"></a>Wiederherstellen
+Bei der Wiederherstellung muss sich die Sicherungsdatei im Speicherkonto befinden, das Sie für den Server konfiguriert haben. Wenn Sie eine Sicherungsdatei aus einem lokalen Speicherort in Ihr Speicherkonto verschieben müssen, verwenden Sie den [Microsoft Azure-Speicher-Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) oder das Befehlszeilenprogramm [AzCopy](../storage/storage-use-azcopy.md). 
+
+Wenn Sie eine Datenbank für ein tabellarisches Modell des Typs 1200 von einem lokalen SQL Server Analysis Services-Server wiederherstellen, müssen Sie zuerst alle Domänenbenutzer aus den Rollen des Modells entfernen und sie als Azure Active Directory-Benutzer den Rollen wieder hinzufügen. Die Rollen werden identisch sein.
 
 ### <a name="to-restore-by-using-ssms"></a>So führen Sie eine Wiederherstellung mithilfe von SSMS durch
 
@@ -103,5 +106,8 @@ Verwenden Sie das Cmdlet [Restore-ASDatabase](https://docs.microsoft.com/sql/ana
 
 
 ## <a name="related-information"></a>Verwandte Informationen
-[Azure Storage-Konten](../storage/storage-create-storage-account.md)   
+
+[Azure-Speicherkonten](../storage/storage-create-storage-account.md)  
+[Hohe Verfügbarkeit](analysis-services-bcdr.md)     
 [Verwalten von Azure Analysis Services](analysis-services-manage.md)
+

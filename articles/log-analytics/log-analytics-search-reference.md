@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2017
+ms.date: 04/20/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: f819992125f77897545ce3194870b1eadf400852
-ms.lasthandoff: 04/07/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: fc6e4eaa34694e2b20cb53b3e457803c59bf76b9
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -609,6 +609,85 @@ Beispiel:
     Type=Event | Dedup EventID | sort TimeGenerated DESC
 
 Dieses Beispiel gibt ein Ereignis (das letzte Ereignis) pro EventID-Element zurück.
+
+### <a name="join"></a>Join
+Verknüpft die Ergebnisse zweier Abfragen zu einem einzelnen Resultset.  Unterstützt mehrere Join-Typen:
+  
+| Join-Typ | Beschreibung |
+|:--|:--|
+| Innerer Join | Gibt nur Datensätze mit einem übereinstimmenden Wert in beiden Abfragen zurück. |
+| Äußerer Join | Gibt alle Datensätze aus beiden Abfragen zurück.  |
+| Linker Join  | Gibt alle Datensätze aus der linken Abfrage und entsprechende Datensätze aus der rechten Abfrage zurück. |
+
+
+- Joins unterstützen derzeit keine Abfragen mit dem Schlüsselwort **IN** oder dem Befehl **Measure**.
+- In einen Join kann derzeit nur ein einzelnes Feld eingeschlossen werden.
+- Eine einzelne Suche darf nicht mehrere Joins enthalten.
+
+**Syntax**
+
+```
+<left-query> | JOIN <join-type> <left-query-field-name> (<right-query>) <right-query-field-name>
+```
+
+**Beispiele**
+
+Stellen Sie sich zur Veranschaulichung der verschiedenen Join-Arten vor, Sie möchten einen Datentyp aus einem benutzerdefinierten Protokoll namens „MyBackup_CL“ mit dem Takt für die einzelnen Computer verknüpfen.  Diese Datentypen haben folgende Daten:
+
+`Type = MyBackup_CL`
+
+| TimeGenerated | Computer | LastBackupStatus |
+|:---|:---|:---|
+| 4/20/2017 01:26:32.137 AM | srv01.contoso.com | Erfolgreich |
+| 4/20/2017 02:13:12.381 AM | srv02.contoso.com | Erfolgreich |
+| 4/20/2017 02:13:12.381 AM | srv03.contoso.com | Fehler |
+
+`Type = Hearbeat` (nur ein Teil der angezeigten Felder)
+
+| TimeGenerated | Computer | ComputerIP |
+|:---|:---|:---|
+| 4/21/2017 12:01:34.482 PM | srv01.contoso.com | 10.10.100.1 |
+| 4/21/2017 12:02:21.916 PM | srv02.contoso.com | 10.10.100.2 |
+| 4/21/2017 12:01:47.373 PM | srv04.contoso.com | 10.10.100.4 |
+
+#### <a name="inner-join"></a>Innerer Join
+
+`Type=MyBackup_CL | join inner Computer (Type=Heartbeat) Computer`
+
+Gibt die folgenden Datensätze zurück, bei denen das Computerfeld für beide Datentypen übereinstimmt:
+
+| Computer| TimeGenerated | LastBackupStatus | TimeGenerated_joined | ComputerIP_joined | Type_joined |
+|:---|:---|:---|:---|:---|:---|
+| srv01.contoso.com | 4/20/2017 01:26:32.137 AM | Erfolgreich | 4/21/2017 12:01:34.482 PM | 10.10.100.1 | Heartbeat |
+| srv02.contoso.com | 4/20/2017 02:13:12.381 AM | Erfolgreich | 4/21/2017 12:02:21.916 PM | 10.10.100.2 | Heartbeat |
+
+
+#### <a name="outer-join"></a>Äußerer Join
+
+`Type=MyBackup_CL | join outer Computer (Type=Heartbeat) Computer`
+
+Gibt die folgenden Datensätze für beide Datentypen zurück:
+
+| Computer| TimeGenerated | LastBackupStatus | TimeGenerated_joined | ComputerIP_joined | Type_joined |
+|:---|:---|:---|:---|:---|:---|
+| srv01.contoso.com | 4/20/2017 01:26:32.137 AM | Erfolgreich  | 4/21/2017 12:01:34.482 PM | 10.10.100.1 | Heartbeat |
+| srv02.contoso.com | 4/20/2017 02:14:12.381 AM | Erfolgreich  | 4/21/2017 12:02:21.916 PM | 10.10.100.2 | Heartbeat |
+| srv03.contoso.com | 4/20/2017 01:33:35.974 AM | Fehler  | 4/21/2017 12:01:47.373 PM | | |
+| srv04.contoso.com |                           |          | 4/21/2017 12:01:47.373 PM | 10.10.100.2 | Heartbeat |
+
+
+
+#### <a name="left-join"></a>Linker Join
+
+`Type=MyBackup_CL | join left Computer (Type=Heartbeat) Computer`
+
+Gibt die folgenden Datensätze aus „MyBackup_CL“ mit ggf. übereinstimmenden Feldern aus „Heartbeat“ zurück:
+
+| Computer| TimeGenerated | LastBackupStatus | TimeGenerated_joined | ComputerIP_joined | Type_joined |
+|:---|:---|:---|:---|:---|:---|
+| srv01.contoso.com | 4/20/2017 01:26:32.137 AM | Erfolgreich | 4/21/2017 12:01:34.482 PM | 10.10.100.1 | Heartbeat |
+| srv02.contoso.com | 4/20/2017 02:13:12.381 AM | Erfolgreich | 4/21/2017 12:02:21.916 PM | 10.10.100.2 | Heartbeat |
+| srv03.contoso.com | 4/20/2017 02:13:12.381 AM | Fehler | | | |
 
 
 ### <a name="extend"></a>Extend

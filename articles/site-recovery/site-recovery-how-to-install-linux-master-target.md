@@ -15,9 +15,9 @@ ms.workload:
 ms.date: 02/13/2017
 ms.author: ruturajd
 translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: c75a3a2477f113f17aab7a3e1969f15a4ec88a02
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 22a86001fe93dcb11e180dbdd75045b49b85b58f
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -37,13 +37,14 @@ Kommentare oder Fragen können Sie am Ende dieses Artikels oder im [Forum zu Azu
 * Das Masterziel sollte sich in einem Netzwerk befinden, das mit dem Prozessserver und dem Konfigurationsserver kommunizieren kann.
 * Die Version des Masterziels darf nicht höher als die des Prozess- und des Konfigurationsservers sein. Beispiel: Bei Version 9.4 des Konfigurationsservers kann die Version des Masterziels 9.4 oder 9.3, aber nicht 9.5 sein.
 * Das Masterziel kann nur ein virtueller VMware-Computer und kein physischer Server sein.
-* Das Masterziel muss die unten stehende Größenrichtlinie erfüllen.
+
+## <a name="master-target-sizing-guideline"></a>Größenrichtlinie für das Masterziel
+
+Das Masterziel muss mit der folgenden Größenrichtlinie erstellt werden:
     * RAM: 6 GB oder mehr
-    * Größe des Betriebssystemdatenträgers: 50 GB oder mehr (für die CentOS6.6-Installation)
+    * Größe des Betriebssystemdatenträgers: 100 GB oder mehr (für die Installation von CentOS 6.6)
     * Zusätzliche Datenträgergröße für Aufbewahrungslaufwerk: 1 TB
     * CPU-Kerne: mindestens 4 Kerne
-
-
 
 
 ## <a name="steps-to-deploy-the-master-target-server"></a>Schritte zum Bereitstellen des Masterzielservers
