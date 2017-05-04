@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 3/24/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 45bf19b4c8406cfc09624bef2b9c0f1c443d8fd6
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: bc87185c56b2dc45f041136474b9fb1bf6afebc3
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -64,7 +64,7 @@ Klicken Sie zum Erstellen eines Pakets im Projektmappen-Explorer mit der rechten
 
 ![Paketieren einer Anwendung mit Visual Studio][vs-package-command]
 
-Nach Abschluss der Paketerstellung wird der Speicherort des Pakets im **Ausgabefenster** angezeigt. Beachten Sie, dass die Paketerstellung automatisch erfolgt, wenn Sie die Anwendung in Visual Studio bereitstellen oder debuggen.
+Nach Abschluss der Paketerstellung wird der Speicherort des Pakets im **Ausgabefenster** angezeigt. Die Paketerstellung erfolgt automatisch, wenn Sie die Anwendung in Visual Studio bereitstellen oder debuggen.
 
 ### <a name="build-a-package-by-command-line"></a>Erstellen eines Pakets über die Befehlszeile
 Es ist auch möglich, Ihre Anwendung mit `msbuild.exe` programmgesteuert zu packen. Diese Datei wird auch von Visual Studio im Hintergrund ausgeführt, sodass die Ausgabe identisch ist.
@@ -169,8 +169,9 @@ PS D:\temp> Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\MyApp
 ```
 
 Intern berechnet das Service Fabric-Paket zur Überprüfung Prüfsummen für die Anwendungspakete. Bei der Komprimierung werden die Prüfsummen für die komprimierten Versionen der einzelnen Pakete berechnet.
-Wenn Sie eine nicht komprimierte Version des Anwendungspakets kopiert haben und dieses Paket komprimieren möchten, müssen Sie die Version des Anwendungsmanifests ändern, um einen Prüfsummenkonflikt zu vermeiden.
-Gleichermaßen gilt: Wenn Sie eine komprimierte Version des Pakets hochgeladen haben, müssen Sie die Version des Anwendungsmanifests aktualisieren, um ein nicht komprimiertes Paket verwenden zu können.
+Wenn Sie eine nicht komprimierte Version des Anwendungspakets kopiert haben und dieses Paket komprimieren möchten, müssen Sie die Versionen der `code`-, `config`- und `data`-Pakete ändern, um einen Prüfsummenkonflikt zu vermeiden. Wenn die Pakete unverändert sind, können Sie [diff provisioning](service-fabric-application-upgrade-advanced.md) verwenden, anstatt die Version zu ändern. Beziehen Sie bei dieser Option nicht das unveränderte Paket ein, verweisen Sie einfach vom Dienstmanifest aus darauf.
+
+Gleichermaßen gilt: Wenn Sie eine komprimierte Version des Pakets hochgeladen haben und ein unkomprimiertes Paket verwenden möchten, müssen Sie die Versionen aktualisieren, um den Prüfsummenkonflikt zu vermeiden.
 
 Das Paket ist nun ordnungsgemäß verpackt, überprüft und ggf. komprimiert. Somit ist es für die [Bereitstellung](service-fabric-deploy-remove-applications.md) in einem oder in mehreren Service Fabric-Clustern bereit.
 

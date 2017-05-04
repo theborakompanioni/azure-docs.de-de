@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 02/27/2017
+ms.date: 04/17/2017
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: 193c939065979dc48243d31e7f97cd87d96bf9a8
-ms.openlocfilehash: 18d64f1ad4ef0dd41ae9302d08e02e94d1c608f5
-ms.lasthandoff: 11/17/2016
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 766120913d419ec8090a4f25d304f2d3cf9b6693
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -33,7 +33,7 @@ Zunächst benötigen Sie Folgendes:
 * **Lokales Gateway** – Wenn eine oder mehrere Datenquellen lokal im Netzwerk der Organisation vorhanden sind, müssen Sie ein [lokales Datengateway](analysis-services-gateway.md) installieren. Das Gateway ist erforderlich, damit der Server in der Cloud eine Verbindung mit den lokalen Datenquellen herstellen kann, um Daten im Modell zu verarbeiten und zu aktualisieren.
 
 ## <a name="to-deploy-a-tabular-model-from-ssdt"></a>So stellen Sie ein tabellarisches Modell aus SSDT bereit
-Stellen Sie für die Bereitstellung aus SSDT sicher, dass Sie die [neueste Version](https://msdn.microsoft.com/library/mt204009.aspx) vom 30. September 2016 oder eine höhere Version verwenden.
+Stellen Sie für die Bereitstellung aus SSDT sicher, dass Sie die [neueste Version](https://msdn.microsoft.com/library/mt204009.aspx) verwenden.
 
 > [!TIP]
 > Stellen Sie vor dem Bereitstellen sicher, dass Sie die Daten in den Tabellen verarbeiten können. Klicken Sie in SSDT auf **Modell** > **Verarbeiten** > **Alle verarbeiten**. Wenn die Verarbeitung fehlschlägt, schlägt auch die Bereitstellung fehl.

@@ -1,6 +1,6 @@
 ---
 title: Aktivieren der Datensammlung in Azure Security Center | Microsoft Docs
-description: " Erfahren Sie, wie Sie die Datensammlung in Azure Security Center aktivieren.. "
+description: " Hier erfahren Sie, wie Sie die Datensammlung in Azure Security Center aktivieren. "
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/08/2017
+ms.date: 04/12/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 57c0228c398ba4ba3fd18a1088472749bed3ac69
-ms.openlocfilehash: 9ebbed56bdbc8385bb651c7aa1e77f369da1d727
+ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
+ms.openlocfilehash: b942f934ecb25083d779096dc628e342870edc26
+ms.lasthandoff: 04/13/2017
 
 
 ---
 # <a name="enable-data-collection-in-azure-security-center"></a>Aktivieren der Datensammlung in Azure Security Center
-Azure Security Center erfasst und verarbeitet Daten zu Ihren virtuellen Azure-Computern (einschließlich Konfigurationsinformationen, Metadaten, Ereignisprotokolle und mehr), um Kunden bei der Vermeidung, Erkennung und Behandlung von Bedrohungen zu unterstützen. Beim ersten Zugriff auf Security Center wird die Datensammlung für alle virtuellen Computer in Ihrem Abonnement aktiviert. Die Datensammlung wird zwar empfohlen, kann aber in der Security Center-Richtlinie deaktiviert werden. (Informationen hierzu finden Sie unter [Deaktivieren der Datensammlung](#disabling-data-collection).) Wenn Sie die Datensammlung deaktivieren, empfiehlt Security Center, die Datensammlung in der Sicherheitsrichtlinie für dieses Abonnement zu aktivieren.
+Azure Security Center erfasst und verarbeitet Daten zu Ihren virtuellen Azure-Computern (einschließlich Konfigurationsinformationen, Metadaten und Ereignisprotokolle), um Kunden bei der Vermeidung, Erkennung und Behandlung von Bedrohungen zu unterstützen. Beim ersten Zugriff auf Security Center wird die Datensammlung für alle virtuellen Computer in Ihrem Abonnement aktiviert. Die Datensammlung wird zwar empfohlen, kann aber in der Security Center-Richtlinie deaktiviert werden. (Informationen hierzu finden Sie unter [Deaktivieren der Datensammlung](#disabling-data-collection).) Wenn Sie die Datensammlung deaktivieren, empfiehlt Security Center, die Datensammlung in der Sicherheitsrichtlinie für dieses Abonnement zu aktivieren.
 
 > [!NOTE]
 > Der Dienst wird anhand einer Beispielbereitstellung vorgestellt. Es ist keine schrittweise Anleitung.
@@ -85,9 +86,4 @@ In diesem Artikel wurde gezeigt, wie Sie die Security Center-Empfehlung „Daten
 [4]: ./media/security-center-enable-data-collection/storage-account.png
 [5]: ./media/security-center-enable-data-collection/policy.png
 [6]: ./media/security-center-enable-data-collection/disable-data-collection.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

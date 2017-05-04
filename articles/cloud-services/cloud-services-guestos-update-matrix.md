@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 3/8/2017
+ms.date: 4/18/2017
 ms.author: raiye
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 182b03d7075c3161f09f27f265b624897cb7a9cc
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: d471f5826cc05fb52ff4c24184628235477c075d
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -39,6 +39,12 @@ Bietet Ihnen aktuelle Informationen zu den neuesten Azure-Gastbetriebssystemrele
 Sind Sie unsicher, was das Gast-BS ist oder wie Gast-BS-Releases funktionieren? Lesen Sie [diesen](#how-it-works) Abschnitt.
 
 ## <a name="news-updates"></a>Neuigkeiten
+###### <a name="april-18-2017"></a>**18. April 2017**
+Der Rollout des Gastbetriebssystems für April beginnt am 18. April, und es wird voraussichtlich am 9. Mai freigegeben.
+
+###### <a name="april-10-2017"></a>**10. April 2017**
+Der Rollout des Gastbetriebssystems für März begann am 14. März 2017, und es wurde am 10. April 2017 freigegeben.
+
 ###### <a name="january-10-2017"></a>**10. Januar 2017**
 Das Januar-Gastbetriebssystem enthält Patches, die nur die Betriebssystemfamilie 2 betreffen (Windows 2008 Server R2). Wir haben daher nur das Image für die Betriebssystemfamilie 2 (WA-GUEST-OS-2.59_201701-01) für diesen Monat veröffentlicht. Für alle anderen Betriebssystemfamilien, bleibt das Betriebssystem vom Dezember (201612-01) das aktuellste.
 
@@ -66,9 +72,10 @@ Installierte .NET Framework-Versionen: 4.0, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum | Abgelaufenes Datum |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-5.5_201703-01 |10. April 2017 |Post 5.7 |TBD | 
 | WA-GUEST-OS-5.4_201612-01 |10. Januar 2017 |Post 5.6 |TBD | 
 | WA-GUEST-OS-5.3_201611-01 |14. Dezember 2016 |Nach Version 5.5 |TBD |
-| WA-GUEST-OS-5.2_201610-02 |1. November 2016 |Nach Version 5.4 |TBD |
+|~~WA-GUEST-OS-5.2_201610-02~~ |1. November 2016 |10. April 2017 |TBD |
 
 ## <a name="family-4-releases"></a>Releases von Familie 4
 **Windows Server 2012 R2**
@@ -82,9 +89,10 @@ Unterstützt .NET 4.0, 4.5, 4.5.1, 4.5.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum | Abgelaufenes Datum |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-4.40_201703-01 |10. April 2017 |Post 4.42 |TBD |
 | WA-GUEST-OS-4.39_201612-01 |10. Januar 2017 |Post 4.41 |TBD |
 | WA-GUEST-OS-4.38_201611-01 |14. Dezember 2016 |Post 4.40 |TBD |
-| WA-GUEST-OS-4.37_201610-02 |16. November 2016 |Nach Version 4.39 |TBD |
+|~~WA-GUEST-OS-4.37_201610-02~~ |16. November 2016 |10. April 2017 |TBD |
 |~~WA-GUEST-OS-4.36_201609-01~~ |13. Oktober 2016 |14. Januar 2017 |TBD |
 |~~WA-GUEST-OS-4.35_201608-01~~ |13. September 2016 |16. Dezember 2016 |TBD |
 |~~WA-GUEST-OS-4.34_201607-01~~ |8. August 2016 |13. November 2016 |TBD |
@@ -93,8 +101,7 @@ Unterstützt .NET 4.0, 4.5, 4.5.1, 4.5.2
 |~~WA-GUEST-OS-4.31_201604-01~~ |2. Mai 2016 |13. August 2016 |TBD |
 |~~WA-GUEST-OS-4.30_201603-01~~ |7. April 2016 |10. Juli 2016 |TBD |
 |~~WA-GUEST-OS-4.29_201602-02~~ |12. März 2016 |2. Juni 2016 |TBD |
-|~~WA-GUEST-OS-4.28_201601-01~~ |12. Februar 2016 |7. Mai 2016 |TBD |
-|~~WA-GUEST-OS-4.27_201512-01~~ |12. Januar 2016 |12. April 2016 |TBD |
+
 
 ## <a name="family-3-releases"></a>Releases von Familie 3
 **Windows Server 2012**
@@ -108,9 +115,10 @@ Unterstützt .NET 4.0, 4.5, 4.5.1, 4.5.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum | Abgelaufenes Datum |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-3.47_201703-01 |10. April 2017 |Post 3.49 |TBD |
 | WA-GUEST-OS-3.46_201612-01 |10. Januar 2017 |Post 3.48 |TBD |
 | WA-GUEST-OS-3.45_201611-01 |14. Dezember 2016 |Nach Version 3.47 |TBD |
-| WA-GUEST-OS-3.44_201610-01 |16. November 2016 |Nach Version 3.46 |TBD |
+| WA-GUEST-OS-3.44_201610-02 |16. November 2016 |1. Mai 2017 |TBD |
 | ~~WA-GUEST-OS-3.43_201609-01~~ |13. Oktober 2016 |14. Januar 2017 |TBD |
 | ~~WA-GUEST-OS-3.42_201608-01~~ |13. September 2016 |16. Dezember 2016 |TBD |
 | ~~WA-GUEST-OS-3.41_201607-01~~ |8. August 2016 |13. November 2016 |TBD |
@@ -119,8 +127,7 @@ Unterstützt .NET 4.0, 4.5, 4.5.1, 4.5.2
 | ~~WA-GUEST-OS-3.38_201604-01~~ |2. Mai 2016 |13. August 2016 |TBD |
 | ~~WA-GUEST-OS-3.37_201603-01~~ |7. April 2016 |10. Juli 2016 |TBD |
 | ~~WA-GUEST-OS-3.36_201602-02~~ |12. März 2016 |2. Juni 2016 |TBD |
-| ~~WA-GUEST-OS-3.35_201601-01~~ |12. Februar 2016 |7. Mai 2016 |TBD |
-| ~~WA-GUEST-OS-3.34_201512-01~~ |12. Januar 2016 |12. April 2016 |TBD |
+
 
 ## <a name="family-2-releases"></a>Releases von Familie 2
 **Windows Server 2008 R2 SP1**
@@ -134,10 +141,11 @@ Unterstützt .NET 3.5, 4.0, 4.5, 4.5.1, 4.5.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum | Abgelaufenes Datum |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-2.60_201703-01 |10. April 2017 |Post 2.62 |TBD |
 | WA-GUEST-OS-2.59_201701-01 |10. Januar 2017 |Post 2.61 |TBD |
 | WA-GUEST-OS-2.58_201612-01 |10. Januar 2017 |Post 2.60 |TBD |
-| WA-GUEST-OS-2.57_201611-01 |14. Dezember 2016 |Nach Version 2.59 |TBD |
-| WA-GUEST-OS-2.56_201610-01 |16. November 2016 |10. Februar 2017 |TBD |
+|~~WA-GUEST-OS-2.57_201611-01~~ |14. Dezember 2016 |10. April 2017 |TBD |
+|~~WA-GUEST-OS-2.56_201610-02~~ |16. November 2016 |10. Februar 2017 |TBD |
 |~~WA-GUEST-OS-2.55_201609-01~~ |13. Oktober 2016 |14. Januar 2017 |TBD |
 |~~WA-GUEST-OS-2.54_201608-01~~ |13. September 2016 |16. Dezember 2016 |TBD |
 |~~WA-GUEST-OS-2.53_201607-01~~ |8. August 2016 |13. November 2016 |TBD |
@@ -146,8 +154,7 @@ Unterstützt .NET 3.5, 4.0, 4.5, 4.5.1, 4.5.2
 |~~WA-GUEST-OS-2.50_201604-01~~ |2. Mai 2016 |13. August 2016 |TBD |
 |~~WA-GUEST-OS-2.49_201603-01~~ |7. April 2016 |10. Juli 2016 |TBD |
 |~~WA-GUEST-OS-2.48_201602-02~~|12. März 2016 |2. Juni 2016 |TBD |
-|~~WA-GUEST-OS-2.47_201601-01~~|12. Februar 2016 |7. Mai 2016 |TBD |
-|~~WA-GUEST-OS-2.46_201512-01~~|12. Januar 2016 |12. April 2016 |TBD |
+
 
 ## <a name="msrc-patch-updates"></a>MSRC-Patch-Updates
 Die Liste der Patches, die in den einzelnen monatlichen Gastbetriebssystemreleases enthalten sind, steht [hier][patches] zur Verfügung.

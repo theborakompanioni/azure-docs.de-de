@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 12/12/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
-ms.openlocfilehash: 16e1276d5c0cc7eb8a8a868fa3b31fd51fbb1b96
-ms.lasthandoff: 02/02/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 8922c65a1755343e19072a0594b800838a5e1cf9
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -205,7 +205,7 @@ Sie erhalten Diagramme von Reaktionszeiten sowie E-Mail-Benachrichtigungen, fall
 [Weitere Informationen zu Verfügbarkeitswebtests][availability]
 
 ## <a name="diagnostic-logs"></a>Diagnoseprotokolle
-Wenn Sie für die Ablaufverfolgung Logback oder Log4J (Version&1;.2 bzw.&2;.0) verwenden, werden Ihre Ablaufverfolgungsprotokolle automatisch an Application Insights gesendet. Hier können Sie sie durchsuchen und untersuchen.
+Wenn Sie für die Ablaufverfolgung Logback oder Log4J (Version 1.2 bzw. 2.0) verwenden, werden Ihre Ablaufverfolgungsprotokolle automatisch an Application Insights gesendet. Hier können Sie sie durchsuchen und untersuchen.
 
 [Weitere Informationen zu Diagnoseprotokollen][javalogs]
 
@@ -225,7 +225,7 @@ Sie können Code sowohl in das JavaScript der Webseite als auch in serverseitige
 
 #### <a name="track-usage"></a>Nutzung nachverfolgen
 * [Fügen Sie Webclient-Telemetrie hinzu][usage], um Seitenaufrufe und grundlegende Benutzermetriken zu überwachen.
-* [Verfolgen Sie benutzerdefinierte Ereignisse und Metriken][track], um zu erfahren, wie Ihre Anwendung sowohl auf dem Client als auch auf dem Server verwendet wird.
+* [Verfolgen Sie benutzerdefinierte Ereignisse und Metriken](app-insights-web-track-usage.md), um zu erfahren, wie Ihre Anwendung sowohl auf dem Client als auch auf dem Server verwendet wird.
 
 <!--Link references-->
 
@@ -235,5 +235,5 @@ Sie können Code sowohl in das JavaScript der Webseite als auch in serverseitige
 [javalogs]: app-insights-java-trace-logs.md
 [metrics]: app-insights-metrics-explorer.md
 [track]: app-insights-api-custom-events-metrics.md
-[usage]: app-insights-web-track-usage.md
+[usage]: app-insights-javascript.md
 

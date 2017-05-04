@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/16/2017
+ms.date: 04/12/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: 0e71a840d4f503779131ee4a21fe6063d33185f1
-ms.openlocfilehash: cbefca2d45a332cd57cfea49dfeaa300426d5502
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
+ms.openlocfilehash: cdc951d4e16e7f0df425dba7c33d86255276f526
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -26,18 +26,14 @@ ms.lasthandoff: 02/24/2017
 # <a name="limitations-of-azure-ad-b2b-collaboration"></a>Einschränkungen der Azure AD B2B-Zusammenarbeit
 Azure Active Directory B2B-Zusammenarbeit (Azure AD) unterliegt derzeit den in diesem Artikel beschriebenen Einschränkungen.
 
-## <a name="invitation-apis-are-in-preview"></a>Einladungs-APIs sind in der Vorschau
-Die API-Oberfläche ist unser voraussichtlicher Schritt nach vorn. Doch wie alle Vorabversionen unterliegt die API dem Vorschaunamespacevertrag. Mit unserem Release für allgemeine Verfügbarkeit (General Availability, GA) wird die API eine Versionsnummer erhalten.
+## <a name="possible-double-multi-factor-authentication"></a>Mögliche doppelte Multi-Factor Authentication
+Mit Azure AD B2B können Sie die Multi-Factor Authentication bei der Ressourcenorganisation (die einladende Organisation) erzwingen. Die Gründe für diesen Ansatz werden in [Multi-Factor Authentication für Benutzer der Azure Active Directory B2B-Zusammenarbeit](active-directory-b2b-mfa-instructions.md) erläutert. Dies bedeutet Folgendes: Wenn ein Partner bereits Multi-Factor Authentication eingerichtet hat und sie erzwingt, müssen die Benutzer beim Partner die Authentifizierung möglicherweise einmal in ihrer eigenen Organisation ausführen und dann erneut in Ihrer.
 
-## <a name="possible-double-multi-factor-authentication"></a>Mögliche doppelte mehrstufige Authentifizierung
-Diese Redundanz kann auftreten, wenn Ihr Partner bereits über eine Richtlinie für die Azure Multi-Factor Authentication verfügt. Mehrstufige Authentifizierung für B2B-Zusammenarbeit wird in der einladenden Organisation durchgeführt und verwaltet. Eine solche Authentifizierung ist wünschenswert, da damit alle Identitäten abgedeckt werden und Sie die Authentifizierungsstärke für diejenigen Benutzer steuern können, die Sie zur B2B-Zusammenarbeit einladen.
+In einem zukünftigen Release möchten wir eine Richtlinie einführen, mit der Sie das Problem der doppelten Authentifizierung vermeiden können, indem Sie auswählen, der Multi-Factor Authentication des Partners zu vertrauen.
 
-Wenn ein Partner jedoch bereits die mehrstufige Authentifizierung eingerichtet hat und sie erzwingt, müssen die Benutzer des Partners die Authentifizierung möglicherweise einmal in ihrer eigenen Organisation ausführen und dann erneut in Ihrer.
-
-In einem zukünftigen Release möchten wir eine Richtlinie einführen, mit der Sie das Problem der doppelten Authentifizierung vermeiden können, indem Sie auswählen, der mehrstufigen Authentifizierung des Partners zu vertrauen.
 
 ## <a name="instant-on"></a>Instant-On
-Im Workflow der B2B-Zusammenarbeit werden Benutzer zum Verzeichnis hinzugefügt und während der Einlösung der Einladung, der App-Zuweisung usw. dynamisch aktualisiert. Die Aktualisierungs- und Schreibvorgänge erfolgen im Allgemeinen in einer Verzeichnisinstanz und müssen in allen Instanzen repliziert werden. Wir haben festgestellt, dass wegen der Zeitspanne, die für die Replikation erforderlich sein kann, manchmal Autorisierungsprobleme auftreten können. Wir arbeiten intensiv daran, diese Probleme vor unserem GA-Release zu minimieren bzw. eliminieren. In der Zwischenzeit werden Sie sie kaum bemerken, aber falls doch, sollten sie sich durch Aktualisieren oder erneuten Versuch lösen lassen.
+Im Workflow der B2B-Zusammenarbeit werden Benutzer zum Verzeichnis hinzugefügt und während der Einlösung der Einladung, der App-Zuweisung usw. dynamisch aktualisiert. Die Aktualisierungs- und Schreibvorgänge erfolgen im Allgemeinen in einer Verzeichnisinstanz und müssen in allen Instanzen repliziert werden. Bis zum Abschluss der Replikation kann etwas Zeit verstreichen. Wenn das Objekt in einer Instanz von Active Directory geschrieben oder aktualisiert wurde und der Aufruf zum Abrufen dieses Objekts aufgrund von Lastenausgleich in einer anderen Instanz erfolgt ist, hat dies zuweilen zu Autorisierungsproblemen geführt. Wir haben viel unternommen, um diese Replikationswartezeiten zu eliminieren oder zu reduzieren, sie können jedoch in seltenen Fällen noch auftreten. Wenn dies der Fall ist, führen Sie eine Aktualisierung aus, oder wiederholen Sie den Vorgang. Wenn Sie mit unserer API eine App schreiben, ist die Wiederholung des Vorgangs mit einem Backoff-Intervall ein sinnvolles Verfahren, um dieses Problem zu verringern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

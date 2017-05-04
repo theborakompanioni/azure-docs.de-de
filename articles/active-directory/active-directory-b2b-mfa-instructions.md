@@ -1,6 +1,6 @@
 ---
-title: "Multi-Factor Authentication für Benutzer der Azure Active Directory B2B-Zusammenarbeit | Microsoft-Dokumentation"
-description: "Azure Active Directory B2B-Zusammenarbeit unterstützt die Multi-Factor Authentication (MFA) für selektiven Zugriff auf Ihre Unternehmensanwendungen."
+title: "Bedingter Zugriff für Benutzer der Azure Active Directory B2B-Zusammenarbeit | Microsoft-Dokumentation"
+description: "Azure Active Directory B2B-Zusammenarbeit unterstützt die Multi-Factor Authentication (MFA) für den selektiven Zugriff auf Ihre Unternehmensanwendungen."
 services: active-directory
 documentationcenter: 
 author: sasubram
@@ -13,19 +13,20 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/16/2017
+ms.date: 04/11/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: 0c07c842ba8c6214d6746b0361af7b416069a6f5
-ms.openlocfilehash: 32d0b45080d57712209e0c5a3e5adf981fb4b66e
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
+ms.openlocfilehash: fac4657e9b78e900c052384e212aa9f3915f970d
+ms.lasthandoff: 04/13/2017
 
 
 ---
 
-# <a name="multi-factor-authentication-for-azure-active-directory-b2b-collaboration-users"></a>Multi-Factor Authentication für Benutzer der Azure Active Directory B2B-Zusammenarbeit
+# <a name="conditional-access-for-b2b-collaboration-users"></a>Bedingter Zugriff für Benutzer der B2B-Zusammenarbeit
 
-Mit dieser aktualisierten öffentlichen Vorschau der Azure AD B2B-Zusammenarbeit führen wir eine Funktion ein, mit der Organisationen die MFA-Richtlinien (Multi-Factor Authentication) auch für B2B-Zusammenarbeitsbenutzer erzwingen können. In dieser aktualisierten Version wird die MFA immer im Ressourcenmandanten erzwungen.
+## <a name="multi-factor-authentication-for-b2b-users"></a>Multi-Factor Authentication für B2B-Benutzer
+Azure AD B2B-Zusammenarbeit bietet Organisationen die einzigartige Möglichkeit, Multi-Factor Authentication-Richtlinien für B2B-Benutzer zu erzwingen. Diese Richtlinien können auf Mandantenebene, App-Ebene oder der Ebene einzelner Benutzer auf die gleiche Weise erzwungen werden, wie sie für Vollzeitmitarbeiter und Mitglieder der Organisation aktiviert werden können. MFA-Richtlinien werden in der Ressourcenorganisation erzwungen.
 
 Dies bedeutet Folgendes:
 1. Ein Administrator oder Information-Worker in Unternehmen A lädt Benutzer aus Unternehmen B zu einer Anwendung Foo in Unternehmen A ein.
@@ -34,28 +35,27 @@ Dies bedeutet Folgendes:
 4. Der Benutzer kann die MFA für Unternehmen A einrichten und dessen MFA-Option auswählen.
 5. Dies funktioniert für alle Identitäten (z.B. Azure AD oder MSA, wenn Benutzer in Unternehmen B sich mithilfe der ID eines sozialen Mediums authentifizieren).
 6. Unternehmen A muss über entsprechende Azure AD Premium-SKUs verfügen, die eine MFA unterstützen. Der Benutzer aus Unternehmen B nutzt diese Lizenz von Unternehmen A.
-7. Zusammengefasst: Der einladende Mandant ist *immer* für die MFA der B2B-Zusammenarbeitsbenutzer aus der Partnerorganisation zuständig, nicht die Partnerorganisation (selbst wenn diese über MFA-Funktionen verfügt). In zukünftigen Versionen wird es möglich sein, dass die einladende Organisation den MFA-Funktionen bestimmter Partnerorganisationen vertraut, statt die eigenen MFA-Mechanismen verwenden zu müssen.
 
-## <a name="setting-up-mfa-for-b2b-collaboration-users"></a>Einrichten der MFA für Benutzer der B2B-Zusammenarbeit
+Zusammengefasst: Der einladende Mandant ist *immer* für die MFA der B2B-Zusammenarbeitsbenutzer aus der Partnerorganisation zuständig, nicht die Partnerorganisation (selbst wenn diese über MFA-Funktionen verfügt).
+
+### <a name="setting-up-mfa-for-b2b-collaboration-users"></a>Einrichten der MFA für Benutzer der B2B-Zusammenarbeit
 Um herauszufinden, wie einfach sich die MFA für B2B-Zusammenarbeitsbenutzer einrichten lässt, sehen Sie sich das folgende Video an:
 
 >[!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-conditional-access-setup/Player]
 
-## <a name="b2b-users-mfa-experience-for-offer-redemption"></a>MFA-Mechanismen für B2B-Benutzer beim Einlösen von Einladungen
+### <a name="b2b-users-mfa-experience-for-offer-redemption"></a>MFA-Mechanismen für B2B-Benutzer beim Einlösen von Einladungen
 Sehen Sie sich das folgende Video an, das in einer Animation veranschaulicht, wie das Einlösen von Einladungen funktioniert:
 
 >[!VIDEO https://channel9.msdn.com/Blogs/Azure/MFA-redemption/Player]
 
-## <a name="mfa-reset-for-b2b-collaboration-users"></a>Zurücksetzen der MFA für B2B-Zusammenarbeitsbenutzer
+### <a name="mfa-reset-for-b2b-collaboration-users"></a>Zurücksetzen der MFA für B2B-Zusammenarbeitsbenutzer
 Zurzeit kann ein Administrator eine erneute Authentifizierung von B2B-Zusammenarbeitsbenutzern nur mithilfe von PowerShell-Cmdlets anfordern. Daher sollten die folgenden PowerShell-Cmdlets verwendet werden, wenn Sie die Authentifizierungsmethode eines B2B-Zusammenarbeitsbenutzers zurücksetzen möchten.
 
-> [!NOTE]
-> Um das neue Cmdlet zu verwenden, müssen Sie das Azure AD PowerShell V2-Modul installieren, das Sie hier herunterladen können: https://www.powershellgallery.com/packages/AzureADPreview
-
-1. Stellen Sie eine Verbindung mit Azure AD her.
+1. Mit Azure AD verbinden
 
   ```
-  Connect-MsolService and login
+  $cred = Get-Credential
+  Connect-MsolService -Credential $cred
   ```
 2. Rufen Sie alle Benutzer mit Authentifizierungsmethoden ab.
 
@@ -65,8 +65,7 @@ Zurzeit kann ein Administrator eine erneute Authentifizierung von B2B-Zusammenar
   Beispiel:
 
   ```
-  PS C:\Users\tjwasser> Get-MsolUser | where { $_.StrongAuthenticationMethods} | select UserPrincipalName,
-  @{n="Methods";e={($_.StrongAuthenticationMethods).MethodType}}
+  PS C:\Users\tjwasserGet-MsolUser | where { $_.StrongAuthenticationMethods} | select UserPrincipalName, @{n="Methods";e={($_.StrongAuthenticationMethods).MethodType}}
   ```
 
 3. Setzen Sie die MFA-Methode für einen bestimmten Benutzer zurück. Danach können Sie diesen UserPrincipalName verwenden, um den Zurücksetzungsbefehl auszuführen, mit dem der B2B-Zusammenarbeitsbenutzer aufgefordert wird, seine Authentifizierungsmethoden erneut einzurichten. Beispiel:
@@ -74,6 +73,46 @@ Zurzeit kann ein Administrator eine erneute Authentifizierung von B2B-Zusammenar
   ```
   Reset-MsolStrongAuthenticationMethodByUpn -UserPrincipalName gsamoogle_gmail.com#EXT#@ WoodGroveAzureAD.onmicrosoft.com
   ```
+
+### <a name="why-do-we-perform-mfa-at-the-resource-tenancy"></a>Warum wird MFA im Ressourcenmandanten ausgeführt?
+
+In der aktuellen Version wird MFA immer im Ressourcenmandanten ausgeführt. Dies erfolgt aus Gründen der Vorhersagbarkeit.
+
+Nehmen wir beispielsweise an, dass ein Contoso-Benutzer (Sally) zu Fabrikam eingeladen wird und Fabrikam MFA für B2B-Benutzer aktiviert hat.
+
+Nehmen wir außerdem an, dass Contoso eine MFA-Richtlinie für App1, jedoch nicht für App2 aktiviert hat. Wenn wir dann anhand des Contoso-MFA-Anspruchs im Token bestimmen, ob Sally in Fabrikam MFA ausführen muss, kann das folgende Problem auftreten:
+
+* Tag 1: Sally hat in Contoso MFA ausgeführt, da sie auf App1 zugreift. In Fabrikam wird dann für sie keine MFA-Aufforderung angezeigt.
+
+* Tag 2: Sally hat in Contoso auf App 2 zugegriffen und muss sich deshalb in Fabrikam für MFA registrieren, wenn sie auf Fabrikam zugreift.
+
+Dies kann für den Sally recht verwirrend sein und führt wahrscheinlich zu einer geringeren Anzahl abgeschlossener Anmeldungen.
+
+Außerdem vertraut Fabrikam nicht immer der MFA-Richtlinie von Contoso, selbst wenn Contoso die MFA-Funktionen nutzen kann.
+
+Zudem kann die Ressourcenmandanten-MFA auch für MSAs und IDs für soziale Netzwerke als Identitätsanbieter sowie für Partnerorganisationen, die keine MFA eingerichtet haben, verwendet werden.
+
+Deshalb wird im Hinblick auf MFA für B2B-Benutzer empfohlen, immer Ressourcen-MFA erforderlich zu machen. Dies kann in manchen Fällen zu doppelter MFA führen, jedoch ist bei jedem Zugriff auf einen Ressourcenmandanten die Endbenutzererfahrung vorhersagbar: Sally muss sich beim Ressourcenmandanten für MFA registrieren.
+
+### <a name="device-location-and-risk-based-conditional-access-for-b2b-users"></a>Bedingter Zugriff für B2B-Benutzer auf Grundlage von Gerät, Standort und Risiko
+
+Wenn die Contoso-Organisation gerätebasierte Richtlinien für den bedingten Zugriff auf ihre Unternehmensdaten aktiviert, wird der Zugriff von nicht verwalteten Geräten (d. h. von Geräten, die nicht von der Contoso-Organisation verwaltet werden und nicht die Contoso-Geräterichtlinien erfüllen) verhindert.
+
+Wenn das Gerät des B2B-Benutzers nicht von Contoso verwaltet wird, wird der Zugriff von B2B-Benutzern aus den Partnerorganisationen in jedem Kontext, in dem diese Richtlinien erzwungen werden, blockiert.
+
+Es ist eine hohe Anforderung, von Benutzern aus einer anderen Organisation zu verlangen, dass sie ihr Gerät von der einladenden Organisation verwalten lassen. Aus diesem Grund ermöglichen wir in zukünftigen Updates, dass Contoso auf die Gerätekonformität bestimmter Partner vertrauen kann. Dies ermöglicht Contoso das Erzwingen von Richtlinien, die zulassen, dass ein Benutzer von Fabrikam auf Contoso-Ressourcen zugreifen kann, wenn diese ebenfalls ein von Fabrikam verwaltetes Gerät verwenden.
+
+In der Zwischenzeit kann Contoso Ausschlusslisten erstellen, die bestimmte Partnerbenutzer enthalten, die gemäß der gerätebasierten Richtlinie für bedingten Zugriff ausgeschlossen werden sollen.
+
+#### <a name="location-based-conditional-access-for-b2b"></a>Standortbasierter bedingter Zugriff für B2B
+
+Für B2B-Benutzer können standortbasierte Richtlinien für bedingten Zugriff erzwungen werden, wenn die einladende Organisation (z.B. Contoso) einen vertrauenswürdigen Netzwerkumkreis (d. h. einen IP-Adressbereich) erstellen kann, der ihre Partnerorganisationen (z.B. Fabrikam) definiert.
+
+#### <a name="risk-based-conditional-access-for-b2b"></a>Risikobasierter bedingter Zugriff für B2B
+
+Auf den Risiken bei der Anmeldung basierende Richtlinien können derzeit nicht auf B2B-Benutzer angewendet werden, da die Risikobewertung in der eigenen Organisation des B2B-Benutzers (also im Identitätsmandanten des B2B-Benutzers) erfolgt.
+
+Wir erwägen für zukünftige Updates, die Risikobewertung von Partnern zu bündeln (mit Einwilligung des Partners), damit Contoso seine extern freigegebenen Apps und Daten nicht nur vor bekannten Risiken, sondern auch vor Risiken schützen kann, die Contoso nicht bekannt sind, da sie an anderer Stelle auftreten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

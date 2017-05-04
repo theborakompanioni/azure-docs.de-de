@@ -16,9 +16,9 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: 193c939065979dc48243d31e7f97cd87d96bf9a8
-ms.openlocfilehash: 90584f60864589744888817ea71d0eb0d4d170ff
-ms.lasthandoff: 11/17/2016
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: c7127f4bd89bf00a4ef72e54dc7694a1766e5762
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -129,6 +129,25 @@ De facto ist das lokale Datengateway, das zum Verbinden von Azure Analysis Servi
 Wenn beim Installieren und Konfigurieren eines Gateways Probleme auftreten, konsultieren Sie [Power BI-Gateway – Problembehandlung](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem-tshoot/). Wenn Sie der Meinung sind, dass ein Problem bei der Firewall aufgetreten ist, konsultieren Sie die Abschnitte zu Firewall oder Proxy.
 
 Wenn Sie meinen, dass beim Gateway Proxyprobleme vorliegen, konsultieren Sie [Konfigurieren von Proxyeinstellungen für Power BI-Gateways](https://powerbi.microsoft.com/documentation/powerbi-gateway-proxy.md).
+
+### <a name="telemetry"></a>Telemetrie
+Telemetrie kann zur Überwachung und Problembehandlung verwendet werden. 
+
+**So aktivieren Sie Telemetrie**
+
+1.    Überprüfen Sie das Verzeichnis des lokalen Datengateway-Clients auf dem Computer. Es lautet in der Regel „%systemdrive%\Programme\On-premises data gateway“. Alternativ können Sie die Konsole „Dienste“ öffnen und den Pfad zur ausführbaren Datei überprüfen: eine Eigenschaft des Diensts Lokales Datengateway.
+2.    In der Datei „Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config“ im Clientverzeichnis. Ändern Sie die Einstellung „SendTelemetry“ in „true“.
+        
+    ```
+        <setting name="SendTelemetry" serializeAs="String">
+                    <value>true</value>
+        </setting>
+    ```
+
+3.    Speichern Sie die Änderungen, und starten Sie den folgenden Windows-Dienst neu: Lokales Datengateway.
+
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Verwalten von Analysis Services](analysis-services-manage.md)

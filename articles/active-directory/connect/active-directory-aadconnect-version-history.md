@@ -15,9 +15,9 @@ ms.workload: identity
 ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
-ms.openlocfilehash: d89135c8f3d5011d7549158a29050e3569defbcc
-ms.lasthandoff: 03/23/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: fe01be4f57766a556ff3a27a0cbba0293675cac7
+ms.lasthandoff: 04/17/2017
 
 
 ---
@@ -34,6 +34,61 @@ Thema |  Details
 Schritte zum Upgrade von Azure AD Connect | Verschiedene Methoden zum [Aktualisieren von einer früheren Version auf die aktuelle Version](active-directory-aadconnect-upgrade-previous-version.md) von Azure AD Connect.
 Erforderliche Berechtigungen | Informationen zu den zum Anwenden eines Updates erforderlichen Berechtigungen finden Sie unter [Konten und Berechtigungen](./active-directory-aadconnect-accounts-permissions.md#upgrade).
 Download| [Azure AD Connect herunterladen](http://go.microsoft.com/fwlink/?LinkId=615771).
+
+## <a name="114860"></a>1.1.486.0
+Veröffentlichung: April 2017
+
+**Behobene Probleme:**
+* Das Problem, dass Azure AD Connect in einer lokalisierten Version von Windows Server nicht erfolgreich installiert wird, wurde behoben.
+
+## <a name="114840"></a>1.1.484.0
+Veröffentlichung: April 2017
+
+**Bekannte Probleme:**
+
+* Diese Version von Azure AD Connect wird nicht erfolgreich installiert, wenn alle der folgenden Bedingungen zutreffen:
+   1. Sie führen ein direktes Upgrade von DirSync oder eine Neuinstallation von Azure AD Connect aus.
+   2. Sie verwenden eine lokalisierte Version von Windows Server, wobei der Name der integrierten Administratorgruppe auf dem Server nicht „Administratoren“ lautet.
+   3. Sie verwenden die mit Azure AD Connect installierte SQL Server 2012 Express LocalDB-Standardinstanz, statt eine eigene vollständige Version von SQL Server bereitzustellen. 
+
+**Behobene Probleme:**
+
+Azure AD Connect-Synchronisierung
+* Das Problem, dass der Synchronisierungsplaner den gesamten Synchronisierungsschritt überspringt, wenn bei einem oder mehreren Connectors das Ausführungsprofil für diesen Synchronisierungsschritt fehlt, wurde behoben. Das Problem kann beispielsweise auftreten, wenn Sie mit Synchronization Service Manager manuell einen Connector hinzugefügt haben, ohne für diesen das Ausführungsprofil „Deltaimport“ zu erstellen. Durch diese Korrektur wird sichergestellt, dass der Synchronisierungsplaner „Deltaimport“ für andere Connectors weiterhin ausführt.
+* Das Problem, dass der Synchronisierungsdienst die Verarbeitung eines Ausführungsprofils sofort beendet, wenn bei einem der Ausführungsschritte ein Problem auftritt, wurde behoben. Mit dieser Korrektur wird sichergestellt, dass der Synchronisierungsdienst diesen Ausführungsschritt überspringt und mit der Verarbeitung der restlichen Schritte fortfährt. Beispiel: Sie verfügen für den AD-Connector über das Ausführungsprofil „Deltaimport“ mit mehreren Ausführungsschritten (einer für jede lokale AD-Domäne). Der Synchronisierungsdienst führt „Deltaimport“ für die anderen AD-Domänen aus, selbst wenn bei einer von ihnen Netzwerkverbindungsprobleme auftreten.
+* Das Problem, aufgrund dessen das Update des Azure AD-Connectors während des automatischen Upgrades übersprungen wird, wurde behoben.
+* Das Problem, aufgrund dessen Azure AD Connect während des Setups falsch bestimmt, ob der Server ein Domänencontroller ist, sodass das DirSync-Upgrade fehlschlägt, wurde behoben.
+* Das Problem, aufgrund dessen beim direkten DirSync-Upgrade kein Ausführungsprofil für den Azure AD-Connector erstellt wird, wurde behoben.
+* Das Problem, dass beim Konfigurieren des generischen LDAP-Connectors die Benutzeroberfläche von Synchronization Service Manager nicht mehr reagiert, wurde behoben.
+
+AD FS-Verwaltung
+* Das Problem, dass der Azure AD Connect-Assistent nach dem Verschieben des primären AD FS-Knotens auf einen anderen Server fehlschlägt, wurde behoben.
+
+Desktop-SSO
+* Das Problem beim Azure AD Connect-Assistenten, dass Desktop-SSO im Anmeldebildschirm nicht aktiviert werden kann, wenn während der Neuinstallation „Kennwortsynchronisierung“ als Anmeldeoption gewählt wurde, wurde behoben.
+
+**Neue Features/Verbesserungen:**
+
+Azure AD Connect-Synchronisierung
+* Die Azure AD Connect-Synchronisierung unterstützt jetzt die Verwendung von virtuellen Dienstkonten, verwalteten Dienstkonten und gruppenverwalteten Dienstkonten. Dies gilt nur für die Neuinstallation von Azure AD Connect. Beim Installieren von Azure AD Connect:
+    * Der Azure AD Connect-Assistent erstellt standardmäßig ein virtuelles Dienstkonto und verwendet dieses als Dienstkonto.
+    * Bei der Installation auf einem Domänencontroller greift Azure AD Connect auf das frühere Verhalten zurück. Das heißt, es wird ein Domänenbenutzerkonto erstellt, und dieses wird als Dienstkonto verwendet.
+    * Sie können das Standardverhalten überschreiben, indem Sie eines der folgenden Konten angeben:
+      * Ein gruppenverwaltetes Dienstkonto
+      * Ein verwaltetes Dienstkonto
+      * Ein Domänenbenutzerkonto
+      * Ein lokales Benutzerkonto
+* Wenn früher ein Upgrade auf einen neuen Build von Azure AD Connect mit Updateänderungen für Connectors oder mit Änderungen von Synchronisierungsregeln durchgeführt wurde, wurde von Azure AD Connect ein vollständiger Synchronisierungszyklus ausgelöst. Jetzt löst Azure AD Connect den Schritt „Vollständiger Import“ nur für Connectors mit Updateänderungen und den Schritt „Vollständige Synchronisierung“ nur für Connectors mit Änderungen von Synchronisierungsregeln aus.
+* Früher galt der Exportlöschschwellenwert nur für Exporte, die über den Synchronisierungsplaner ausgelöst werden. Jetzt umfasst das Feature auch Exporte, die vom Kunden mithilfe von Synchronization Service Manager manuell ausgelöst werden.
+* Eine Dienstkonfiguration im Azure AD-Mandanten gibt an, ob die Kennwortsynchronisierung für den Mandanten aktiviert ist. Früher konnte es leicht zu einer falschen Dienstkonfiguration durch Azure AD Connect kommen, wenn ein aktiver Server und ein Stagingserver vorhanden waren. Jetzt versucht Azure AD Connect, die Dienstkonfiguration nur entsprechend dem aktiven Azure AD Connect-Server vorzunehmen.
+* Der Azure AD Connect-Assistent erkennt jetzt, wenn im lokalen AD der AD-Papierkorb nicht aktiviert ist, und gibt eine entsprechende Warnung aus.
+* Früher trat beim Export nach Azure AD eine Zeitüberschreitung auf, und der Export schlug fehl, wenn die Gesamtgröße der Objekte im Batch einen bestimmten Schwellenwert überschritt. Jetzt versucht der Synchronisierungsdienst, die Objekte in einzelnen kleineren Batches erneut zu senden, wenn das Problem auftritt.
+* Die Anwendung Synchronization Service Key Management wurde aus dem Windows-Startmenü entfernt. Die Verwaltung der Verschlüsselungsschlüssel wird weiterhin über die Befehlszeilenschnittstelle mithilfe von „miiskmu.exe“ unterstützt. Informationen zum Verwalten von Verschlüsselungsschlüsseln finden Sie im Artikel [Abandoning the Azure AD Connect Sync encryption key](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-change-serviceacct-pass#abandoning-the-azure-ad-connect-sync-encryption-key) (Verwerfen des Verschlüsselungsschlüssels der Azure AD Connect-Synchronisierung) (in englischer Sprache).
+* Wenn Sie früher das Kennwort für das Dienstkonto der Azure AD Connect-Synchronisierung geändert heben, konnte der Synchronisierungsdienst nicht ordnungsgemäß gestartet werden, bis der Verschlüsselungsschlüssel verworfen und das Kennwort für das Dienstkonto der Azure AD Connect-Synchronisierung erneut initialisiert wurde. Dies ist jetzt nicht mehr erforderlich.
+
+Desktop-SSO
+
+* Für den Azure AD Connect-Assistenten muss beim Konfigurieren von Passthrough-Authentifizierung und Desktop-SSO nicht mehr Port 9090 im Netzwerk geöffnet werden. Es ist lediglich Port 443 erforderlich. 
 
 ## <a name="114430"></a>1.1.443.0
 Veröffentlichung: März 2017
@@ -268,7 +323,14 @@ Veröffentlichung: November 2015
   * Wenn eine neue Organisationseinheit in die Synchronisierung einbezogen wird, ist keine vollständige Kennwortsynchronisierung erforderlich.
   * Nach dem Aktivieren eines bisher deaktivierten Benutzers wird das Kennwort nicht synchronisiert.
   * Für die Warteschlange mit Kennwortwiederholungsversuchen gilt kein Limit, der bisherige Grenzwert von 5.000 Objekten bis zum Außerkraftsetzen wurde entfernt.
-  * [Verbesserte Problembehandlung](active-directory-aadconnectsync-implement-password-synchronization.md#troubleshooting-password-synchronization).
+<<<<<<< HEAD <<<<<<< HEAD
+  * [Verbesserte Problembehandlung](active-directory-aadconnectsync-implement-password-synchronization.md#troubleshoot-password-synchronization).
+=======
+  * [Verbesserte Problembehandlung](active-directory-aadconnectsync-troubleshoot-password-synchronization.md).
+>>>>>>> <a name="487b660b6d3bb5ce9e64b6fdbde2ae621cb91922"></a>487b660b6d3bb5ce9e64b6fdbde2ae621cb91922
+=======
+  * [Verbesserte Problembehandlung](active-directory-aadconnectsync-troubleshoot-password-synchronization.md).
+>>>>>>> 4b2e846c2cd4615f4e4be7195899de11e3957c83
 * Mit der Gesamtstrukturfunktionsebene von Windows Server 2016 kann keine Verbindung mit Active Directory hergestellt werden.
 * Nach der Erstinstallation kann die für das gruppenspezifische Filtern verwendete Gruppe nicht geändert werden.
 * Wenn Benutzer, für die das Kennwortrückschreiben aktiviert ist, ihr Kennwort ändern, wird auf dem Azure AD Connect-Server kein neues Benutzerprofil mehr angelegt.

@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: how-to-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/14/2016
+ms.date: 03/24/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 774c844375df89864274e3376ed07dd565c8ecff
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: ae6af47c82a5c0425f6cd53b8ba1134797505e6c
+ms.lasthandoff: 04/17/2017
 
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>Authentifizieren mit einer privaten Docker-Containerregistrierung
@@ -43,9 +43,16 @@ Nach der Anmeldung speichert Docker die Anmeldeinformationen zwischen, sodass Si
 >
 
 
-Dienstprinzipale ermöglichen den [rollenbasierten Zugriff](../active-directory/role-based-access-control-configure.md) auf eine Registrierung. Verfügbare Rollen sind „Leser“ (nur Pullzugriff), „Mitwirkender“ (Pull und Push) und „Besitzer“ (Pull, Push und Zuweisung von Rollen für andere Benutzer). Sie können einer Registrierung mehrere Dienstprinzipale zuweisen, damit Sie den Zugriff für unterschiedliche Benutzer oder Anwendungen definieren können. Dienstprinzipale ermöglichen auch „monitorlose“ Verbindungen mit einer Registrierung in Entwickler- oder DevOps-Szenarien, z.B.:
+Dienstprinzipale ermöglichen den [rollenbasierten Zugriff](../active-directory/role-based-access-control-configure.md) auf eine Registrierung. Folgende Rollen sind verfügbar:
+  * Leser (nur Pullzugriff)
+  * Mitwirkender (Pull und Push)
+  * Besitzer (Pull, Push und Zuweisen von Rollen an andere Benutzer)
 
-  * Containerbereitstellungen aus einer Registrierung in Orchestrierungssystemen, z.B. DC/OS, Docker Swarm und Kubernetes. Sie können Containerregistrierungen auch per Pullvorgang in andere Azure-Dienste einbinden, z.B. [Container Service](../container-service/index.md), [App Service](../app-service/index.md), [Batch](../batch/index.md) und [Service Fabric](../service-fabric/index.md).
+Anonymer Zugriff ist für Azure-Containerregistrierungen nicht verfügbar. Für öffentliche Images können Sie [Docker Hub](https://docs.docker.com/docker-hub/) verwenden.
+
+Sie können einer Registrierung mehrere Dienstprinzipale zuweisen, damit Sie den Zugriff für unterschiedliche Benutzer oder Anwendungen definieren können. Dienstprinzipale ermöglichen auch „monitorlose“ Verbindungen mit einer Registrierung in Entwickler- oder DevOps-Szenarien, z.B.:
+
+  * Containerbereitstellungen aus einer Registrierung in Orchestrierungssystemen, z.B. DC/OS, Docker Swarm und Kubernetes. Sie können Containerregistrierungen auch per Pullvorgang in andere Azure-Dienste einbinden, z.B. [Container Service](../container-service/index.md), [App Service](../app-service/index.md), [Batch](../batch/index.md), [Service Fabric](../service-fabric/index.md) und weitere Dienste.
 
   * Lösungen für Continuous Integration und Continuous Deployment (z.B. Visual Studio Team Services oder Jenkins), mit denen Containerimages erstellt und per Pushvorgang in eine Registrierung übertragen werden.
 
@@ -54,10 +61,10 @@ Dienstprinzipale ermöglichen den [rollenbasierten Zugriff](../active-directory/
 
 
 ## <a name="admin-account"></a>Administratorkonto
-Für jede von Ihnen erstellte Registrierung wird automatisch auch ein Administratorkonto erstellt. Das Konto ist standardmäßig deaktiviert, aber Sie können es aktivieren und die Anmeldeinformationen verwalten, z.B. über das [Portal](container-registry-get-started-portal.md#manage-registry-settings) oder mit den [Befehlen von Azure CLI 2.0](container-registry-get-started-azure-cli.md#manage-admin-credentials). Wenn das Konto aktiviert ist, können Sie den Benutzernamen und das Kennwort an den Befehl `docker login` übergeben, um eine grundlegende Authentifizierung für die Registrierung zu erhalten. Beispiel:
+Für jede von Ihnen erstellte Registrierung wird automatisch auch ein Administratorkonto erstellt. Das Konto ist standardmäßig deaktiviert, aber Sie können es aktivieren und die Anmeldeinformationen verwalten, z.B. über das [Portal](container-registry-get-started-portal.md#manage-registry-settings) oder mit den [Befehlen von Azure CLI 2.0](container-registry-get-started-azure-cli.md#manage-admin-credentials). Jedes Administratorkonto erhält zwei Kennwörter, die beide erneut generiert werden können. Die beiden Kennwörter ermöglichen es Ihnen, Verbindungen mit der Registrierung aufrechtzuerhalten, indem Sie ein Kennwort verwenden, während Sie das andere Kennwort neu generieren. Wenn das Konto aktiviert ist, können Sie den Benutzernamen und eines der Kennwörter an den Befehl `docker login` übergeben, um die Standardauthentifizierung für die Registrierung zu erhalten. Beispiel:
 
 ```
-docker login myregistry.azurecr.io -u myAdminName -p myPassword
+docker login myregistry.azurecr.io -u myAdminName -p myPassword1
 ```
 
 > [!IMPORTANT]

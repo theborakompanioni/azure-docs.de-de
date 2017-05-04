@@ -16,9 +16,9 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 01acc0a5a6db7695d04d3adbf843826da5288025
-ms.openlocfilehash: 30b0aaa27be46ed581f56176fa3385273ff101c0
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 12079f8dbc409afe5acc274fa08bda878c90b76e
+ms.lasthandoff: 04/13/2017
 
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Notfallwiederherstellung und Gerätefailover für StorSimple Virtual Array über das Azure-Portal
@@ -54,7 +54,7 @@ Bei jedem Gerätefailover sollten die folgenden Voraussetzungen erfüllt sein:
   > Versuchen Sie nicht, das registrierte virtuelle Gerät über den Dienst zu konfigurieren. Über den Dienst sollte keine Gerätekonfiguration durchgeführt werden.
   > 
   > 
-* Das Zielgerät darf nicht den gleichen Namen wie das Quellgerät haben. Sie können das Zielgerät immer noch umbenennen, sobald das Failover abgeschlossen ist.
+* Das Zielgerät darf nicht den gleichen Namen wie das Quellgerät haben.
 * Quell- und Zielgerät müssen vom gleichen Typ sein. Ein Failover auf einen anderen Dateiserver kann nur für ein als Dateiserver konfiguriertes virtuelles Array durchgeführt werden. Dies gilt auch für einen iSCSI-Server.
 * Für eine Dateiserver-Notfallwiederherstellung empfehlen wir Ihnen, das Zielgerät mit der gleichen Domäne wie das Quellgerät zu verbinden. Eine solche Konfiguration sorgt dafür, dass die Freigabeberechtigungen automatisch aufgelöst werden. In dieser Version wird nur das Failover auf ein Zielgerät in derselben Domäne unterstützt.
 * Die verfügbaren Zielgeräte für die Notfallwiederherstellung sind Geräte, die im Vergleich zum Quellgerät die gleiche oder eine höhere Kapazität aufweisen. Geräte, die mit Ihrem Dienst verbunden sind, aber das Speicherplatzkriterium nicht erfüllen, stehen als Zielgeräte nicht zur Verfügung.
@@ -78,7 +78,7 @@ Vor Beginn der Notfallwiederherstellung werden auf dem Gerät Vorüberprüfungen
   
   * gültige ACR-Namen
   * gültige IQN (nicht länger als 220 Zeichen)
-  * gültige CHAP-Kennwörter (12 bis&16; Zeichen lang)
+  * gültige CHAP-Kennwörter (12 bis 16 Zeichen lang)
 
 Falls eine dieser Vorüberprüfungen fehlschlägt, kann die Notfallwiederherstellung nicht durchgeführt werden. Sie müssen diese Fehler zunächst beheben, bevor Sie die Notfallwiederherstellung wiederholen können.
 
@@ -155,7 +155,7 @@ Führen Sie die folgenden Schritte aus, um Ihr Gerät auf einem virtuellen StorS
     1. Wählen Sie das StorSimple-Gerät aus, das Sie als Zielgerät für das Failover verwendet haben, und klicken Sie darauf.
     2. Wechseln Sie zu **Einstellungen > Verwaltung > Freigaben** (oder **Volumes**, wenn es sich um einen iSCSI-Server handelt). Auf dem Blatt **Freigaben** können Sie alle Freigaben (Volumes) des alten Geräts anzeigen.
         ![](./media/storsimple-virtual-array-failover-dr/failover9.png)
-14. Sie können nun das Gerät umbenennen (wie das alte Quellgerät), damit der Anwendungsserver sofort eine Verbindung zu diesem Gerät herstellen kann. Wenn Sie das Gerät nicht umbenennen möchten, müssen Sie [Einen DNS-Alias-Eintrag erstellen](https://support.microsoft.com/kb/168322). Dadurch werden alle Anwendungen, die versuchen, eine Verbindung herzustellen, auf das neue Gerät umgeleitet.
+14. Sie müssen [einen DNS-Alias-Eintrag erstellen](https://support.microsoft.com/kb/168322). Dadurch werden alle Anwendungen, die versuchen, eine Verbindung herzustellen, auf das neue Gerät umgeleitet.
 
 ## <a name="errors-during-dr"></a>Fehler bei der Notfallwiederherstellung
 

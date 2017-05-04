@@ -12,12 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 04/12/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: 6195b80037762a7f71eee9138c765e4d342acd5f
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
+ms.openlocfilehash: ff38f1536bf92911c18e0766ee655583c4d913d6
+ms.lasthandoff: 04/14/2017
 
 
 ---
@@ -25,7 +25,7 @@ ms.lasthandoff: 03/28/2017
 
 Wahrscheinlich haben Sie diese Seite aufgerufen, weil Sie leider bei der Nutzung des MyApps-Portals auf ein Problem gestoßen sind. In manchen Fällen ist es erforderlich, dass Sie sich an den Helpdesk oder Ihren Administrator wenden, um ein Problem zu beheben, doch in diesem Thema zeigen wir Ihnen Schritte zu häufig gestellten Fragen, die Sie zunächst selbst ausprobieren können.
 
-Wenn Sie Hilfe im Zusammenhang mit der Kennwortverwaltung suchen, könnten Sie [hier](active-directory-passwords-update-your-own-password.md#reset-your-password) eine Antwort finden.
+Wenn Sie Hilfe im Zusammenhang mit der Kennwortverwaltung suchen, könnten Sie [hier](active-directory-passwords-update-your-own-password.md#reset-my-password) eine Antwort finden.
 
 
 ## <a name="what-is-the-myapps-portal"></a>Was ist das MyApps-Portal?
@@ -49,7 +49,7 @@ MyApps ist ein Webportal, über das Sie folgende Aufgaben ausführen können:
 3.    Geben Sie Ihr altes Kennwort ein, geben Sie Ihr neues Kennwort ein, und bestätigen Sie das neue Kennwort.
 4.    Klicken Sie auf **Senden**.
 
-Ausführlichere Informationen finden Sie unter [Aktualisieren Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md#reset-your-password).
+Ausführlichere Informationen finden Sie unter [Aktualisieren Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md#reset-my-password).
 
 
 ## <a name="how-do-i-setup-password-reset"></a>Wie richte ich die Kennwortzurücksetzung ein?
@@ -58,7 +58,7 @@ Ausführlichere Informationen finden Sie unter [Aktualisieren Ihres eigenen Kenn
 2.    Klicken Sie unter **Konto verwalten** auf **Self-Service-Kennwortzurücksetzung einrichten**.
 3.    Führen Sie die im Dialogfeld angegebenen Schritte aus, und übermitteln Sie die Daten.
 
-Ausführlichere Informationen finden Sie unter [Zurücksetzen des Kennworts](active-directory-passwords-update-your-own-password.md#reset-your-password).
+Ausführlichere Informationen finden Sie unter [Zurücksetzen des Kennworts](active-directory-passwords-update-your-own-password.md#reset-my-password).
 
 
 ## <a name="how-can-i-add-a-new-app"></a>Wie kann ich eine neue App hinzufügen?
@@ -84,7 +84,9 @@ Ausführlichere Informationen finden Sie unter [Zurücksetzen des Kennworts](act
 - Wenn Sie auf eine Gruppe klicken, der Sie bereits angehören, können Sie Details anzeigen und die Gruppe verlassen.
 - Wenn Sie auf eine Gruppe klicken, die sich in Ihrem Besitz befindet, können Sie Details anzeigen, Mitglieder hinzufügen/entfernen und die Gruppe verlassen.
 
+## <a name="next-steps"></a>Nächste Schritte
 
+Informationen zur Problembehandlung finden Sie unter [Probleme bei der Verwendung der Website mit dem Anwendungszugriffsbereich oder der mobilen Anwendung](active-directory-application-access-panel-content-map.md).
 
 <!--Image references-->
 [1]: ./media/active-directory-saas-access-panel-user-help/01.png

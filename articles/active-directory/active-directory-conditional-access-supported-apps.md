@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/28/2017
+ms.date: 04/11/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 9782358e59e54070c26e05c641c02c4010af5f68
+ms.sourcegitcommit: 0d9afb1554158a4d88b7f161c62fa51c1bf61a7d
+ms.openlocfilehash: 569777b7034ebeccddf6d9ef89ee2f9fb667cc3f
 ms.lasthandoff: 04/12/2017
 
 
@@ -118,19 +118,15 @@ Durch Anwenden der folgenden drei Regeln auf die AD FS-Vertrauensstellung der ve
 | :--                    | :--                      | :-:         |
 | Windows 10                 | IE, Edge                 | ![Prüfen][1] |
 | Windows 10                 | Chrome                   | In Kürze verfügbar |
-| Windows 8/8.1            | IE                       | ![Prüfen][1] |
-| Windows 8/8.1            | Chrome                   | ![Prüfen][1] |
-| Windows 7                  | IE                       | ![Prüfen][1] |
-| Windows 7                  | Chrome                   | ![Prüfen][1] |
+| Windows 8/8.1            | IE, Chrome               | ![Prüfen][1] |
+| Windows 7                  | IE, Chrome               | ![Prüfen][1] |
 | iOS                    | Safari                   | ![Prüfen][1] |
 | Android                | Chrome                   | ![Prüfen][1] |
 | Windows Phone          | IE, Edge                 | ![Prüfen][1] |
 | Windows Server 2016    | IE, Edge                 | ![Prüfen][1] |
 | Windows Server 2016    | Chrome                   | In Kürze verfügbar |
-| Windows Server 2012 R2 | IE                       | ![Prüfen][1] |
-| Windows Server 2012 R2 | Chrome                   | ![Prüfen][1] |
-| Windows Server 2008 R2 | IE                       | ![Prüfen][1] |
-| Windows Server 2008 R2 | Chrome                   | ![Prüfen][1] |
+| Windows Server 2012 R2 | IE, Chrome               | ![Prüfen][1] |
+| Windows Server 2008 R2 | IE, Chrome               | ![Prüfen][1] |
 | Mac OS                 | Safari                   | ![Prüfen][1] |
 | Mac OS                 | Chrome                   | In Kürze verfügbar |
 

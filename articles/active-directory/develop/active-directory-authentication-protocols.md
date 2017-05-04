@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/07/2017
-ms.author: mbaldwin
+ms.date: 04/27/2017
+ms.author: priyamo
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: dd673ba36689c83021a27d593139f0676b0c5e79
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: 51c6a8ae17821d4eb00bf26612bc6e1e434ebbd9
+ms.lasthandoff: 04/17/2017
 
 
 ---
@@ -26,10 +26,11 @@ Azure Active Directory (Azure AD) unterstützt mehrere der am häufigsten verwen
 
 ## <a name="authentication-protocols-articles-and-reference"></a>Authentifizierungsprotokolle, Artikel und Referenz
 * [Wichtige Informationen zum Signieren vom Schlüssel-Rollover in Azure AD](active-directory-signing-key-rollover.md) – Erfahren Sie mehr über das Signieren der Schlüssel-Rolloverkadenz von Azure AD, die Änderungen zum automatischen Update des Schlüssels und die Erläuterungen zum Aktualisieren der häufigsten Anwendungsszenarien.
-* [Unterstützte Token und Anspruchstypen](active-directory-token-and-claims.md) – Erfahren Sie mehr über die Ansprüche in den Token, die von Azure AD ausgegeben werden.
+* [Unterstützte Token- und Anspruchstypen](active-directory-token-and-claims.md) – Erfahren Sie mehr über die Ansprüche in den Token, die von Azure AD ausgegeben werden.
 * [Verbundmetadaten](active-directory-federation-metadata.md) – Erfahren Sie mehr über das Suchen und Interpretieren der von Azure AD generierten Metadatendokumente.
 * [OAuth 2.0 in Azure AD](active-directory-protocols-oauth-code.md) – Erfahren Sie mehr über die Implementierung von OAuth 2.0 in Azure AD.
 * [OpenID Connect 1.0](active-directory-protocols-openid-connect-code.md) – Erfahren Sie mehr über die Verwendung des Authorisierungsprotokolls OAuth 2.0 für die Authentifizierung.
+* [Dienst-zu-Dienst-Aufrufe](active-directory-protocols-oauth-service-to-service.md) – Erfahren Sie mehr über den Ablauf der Gewährung von OAuth 2.0-Clientanmeldeinformationen für Dienst-zu-Dienst-Aufrufe.
 * [SAML-Protokollreferenz](active-directory-saml-protocol-reference.md) – Erfahren Sie mehr über die Single Sign-On- und Single Sign-Out-SAML-Profile von Azure AD.
 
 ## <a name="see-also"></a>Weitere Informationen

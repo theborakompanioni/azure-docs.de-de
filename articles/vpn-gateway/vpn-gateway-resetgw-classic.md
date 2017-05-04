@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/07/2017
+ms.date: 04/12/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 1c93a8900ea5fae8abe0d2d47f632a067736ac56
-ms.openlocfilehash: 7aef9360ab341dd7d4932a6e9c2d8ed1d7bf1163
-ms.lasthandoff: 02/08/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: c63af2de6272604f4d2d1ee694ccc4272192ef9a
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -28,7 +28,7 @@ Das Zurücksetzen von Azure VPN Gateway-Instanzen ist nützlich, wenn die stando
 
 Jede Azure VPN Gateway-Instanz ist ein Gateway eines virtuellen Netzwerks, das zwei VM-Instanzen umfasst, die in einer Konfiguration mit aktivem Standbymodus ausgeführt werden. Beim Zurücksetzen des Gateways wird das Gateway neu gestartet, und die standortübergreifenden Konfigurationen werden erneut auf das Gateway angewendet. Die öffentliche IP-Adresse des Gateways bleibt unverändert. Die VPN-Routerkonfiguration muss also nicht mit einer neuen öffentlichen IP-Adresse für Azure VPN Gateway aktualisiert werden.  
 
-Wenn der Befehl ausgeführt wird, wird die gegenwärtig aktive Instanz der Azure VPN Gateway-Instanz umgehend neu gestartet. Während des Failovers von der aktiven Instanz (die Instanz, die neu gestartet wird) auf die Standbyinstanz kommt es zu einer kurzen Unterbrechung. Diese Unterbrechung sollte weniger als&1; Minute dauern.
+Wenn der Befehl ausgeführt wird, wird die gegenwärtig aktive Instanz der Azure VPN Gateway-Instanz umgehend neu gestartet. Während des Failovers von der aktiven Instanz (die Instanz, die neu gestartet wird) auf die Standbyinstanz kommt es zu einer kurzen Unterbrechung. Diese Unterbrechung sollte weniger als 1 Minute dauern.
 
 Wenn die Verbindung nach dem ersten Neustart nicht wiederhergestellt wird, führen Sie denselben Befehl erneut aus, um die zweite VM-Instanz (das neue aktive Gateway) neu zu starten. Wenn die beiden Neustarts nacheinander angefordert werden, dauert der Neustart der beiden VM-Instanzen (aktive Instanz und Standbyinstanz) etwas länger. Der Neustart der beiden VMs kann zwei bis vier Minuten dauern, sodass die VPN-Konnektivität etwas länger unterbrochen ist.
 
@@ -63,14 +63,18 @@ Sie können im Ressourcen-Manager-Bereitstellungsmodell ein VPN Gateway im Azure
 
 Sie benötigen die aktuelle Version der PowerShell-Cmdlets. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) . Zum Zurücksetzen des Gateways wird das Resource Manager-PowerShell-Cmdlet `Reset-AzureRmVirtualNetworkGateway`verwendet. Im folgenden Beispiel wird das Azure VPN-Gateway „VNet1GW“ in der Ressourcengruppe „TestRG1“ zurückgesetzt.
 
-    $gw = Get-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroup TestRG1
-    Reset-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw
+```powershell
+$gw = Get-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroup TestRG1
+Reset-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw
+```
 
-### <a name="a-nameresetclassicaclassic-deployment-model"></a><a name="resetclassic"></a> Klassisches Bereitstellungsmodell
+### <a name="resetclassic"></a> Klassisches Bereitstellungsmodell
 
-Sie benötigen die aktuelle Version der PowerShell-Cmdlets. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) . Zum Zurücksetzen von Azure VPN Gateway-Instanzen wird das PowerShell-Cmdlet `Reset-AzureVNetGateway`verwendet. Im folgenden Beispiel wird die Azure VPN Gateway-Instanz für das virtuelle Netzwerk „ContosoVNet“ zurückgesetzt.
+Sie benötigen die aktuelle Version der PowerShell-Cmdlets. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) . Zum Zurücksetzen von Azure VPN Gateway-Instanzen wird das PowerShell-Cmdlet **Reset-AzureVNetGateway** verwendet. Im folgenden Beispiel wird die Azure VPN Gateway-Instanz für das virtuelle Netzwerk „ContosoVNet“ zurückgesetzt.
 
-    Reset-AzureVNetGateway –VnetName “ContosoVNet” 
+```powershell
+Reset-AzureVNetGateway –VnetName “ContosoVNet”
+``` 
 
 Ergebnis:
 
