@@ -31,8 +31,3 @@ Zuerst müssen Sie Ihre Anwendung beim Azure Active Directory-Mandanten (AAD) re
   * Geben Sie für native Anwendungen einen **Umleitungs-URI** an, der von Azure AD zum Zurückgeben von Tokenantworten verwendet wird. Geben Sie einen für Ihre Anwendung spezifischen Wert ein, z.B. `http://MyFirstAADApp`.
 * Nach Abschluss der Registrierung weist Azure AD Ihrer Anwendung eine eindeutige Client-ID zu, die Anwendungs-ID. Diesen Wert benötigen Sie in den nächsten Abschnitten, weswegen Sie ihn von der Anwendungsseite kopieren sollten.
 
-
-
-<!--HONumber=Feb17_HO3-->
-
-
