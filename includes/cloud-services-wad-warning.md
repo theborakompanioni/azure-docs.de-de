@@ -13,8 +13,3 @@
 >
 > Sie können Ihre Erweiterungen über das Azure-Portal oder PowerShell wieder aktivieren, nachdem Sie die aktualisierte Rolle bereitgestellt haben.
 >
-
-
-<!--HONumber=Jan17_HO3-->
-
-
