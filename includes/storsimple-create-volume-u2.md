@@ -39,8 +39,3 @@
       ![Volume hinzufügen](./media/storsimple-create-volume-u2/AddVolumeAdditionalSettings1.png)
 4. Klicken Sie auf das Häkchensymbol  ![Häkchensymbol](./media/storsimple-create-volume-u2/HCS_CheckIcon-include.png). Ein Volume wird mit den angegebenen Einstellungen erstellt.
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

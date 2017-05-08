@@ -10,8 +10,3 @@ Der Azure Backup-Dienst umfasst zwei Arten von Tresoren: den Backup-Tresor und d
 > 
 > 
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

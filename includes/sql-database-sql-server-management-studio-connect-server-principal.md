@@ -34,8 +34,3 @@ Probleme mit der Netzwerkverbindung können ebenfalls zu Verbindungsfehlern und 
 
 Details und weitere Informationen zu Verbindungsproblemen finden Sie unter [Durchführen der Problembehandlung, Diagnose und Verhinderung von SQL-Verbindungsfehlern und vorübergehenden Fehlern für SQL-Datenbank](../articles/sql-database/sql-database-connectivity-issues.md).
 
-
-
-<!----HONumber=Nov16_HO2-->
-
-

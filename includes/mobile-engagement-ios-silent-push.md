@@ -24,8 +24,3 @@
    
    * Aktivieren Sie **Push Notifications** in „Targets > Ihr Zielname > Capabilities“.
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

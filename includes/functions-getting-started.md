@@ -2,8 +2,3 @@ Azure-Funktionen ist eine ereignisgesteuerte On-Demand-Computeumgebung, mit der 
 
 In diesem Video mit den ersten Schritten wird gezeigt, wie Sie eine Funktions-App erstellen, den Code ändern und Trigger und Bindungen einsetzen.
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

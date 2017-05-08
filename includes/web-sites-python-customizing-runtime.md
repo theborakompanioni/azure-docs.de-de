@@ -15,8 +15,3 @@ sind:
 
 Wenn die Micro-Version (dritte Ziffer) angegeben wird, wird sie ignoriert.
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

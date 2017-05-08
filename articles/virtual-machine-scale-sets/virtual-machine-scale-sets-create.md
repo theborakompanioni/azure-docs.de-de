@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 03/30/2017
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: e0bfa7620feeb1bad33dd2fe4b32cb237d3ce158
-ms.openlocfilehash: 9c9135e200cd1676b01895af4611bc71d5d27c4a
-ms.lasthandoff: 04/21/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 736918ea310f276d961fa396f719b2b7809f0c0f
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -34,7 +34,7 @@ In diesem Tutorial erfahren Sie, wie Sie eine VM-Skalierungsgruppe erstellen kö
 
 Wenn Sie Azure CLI 2.0 oder Azure PowerShell verwenden, um eine Skalierungsgruppe zu erstellen, müssen Sie sich zunächst bei Ihrem Abonnement anmelden.
 
-Weitere Informationen zum Installieren von, Einrichten von und Anmelden bei Azure mit Azure CLI oder PowerShell finden Sie unter [Erste Schritte mit Azure CLI 2.0](/cli/azure/get-started-with-azure-cli.md) oder [Erste Schritte mit Azure PowerShell-Cmdlets](/powershell/resourcemanager/).
+Weitere Informationen zum Installieren von, Einrichten von und Anmelden bei Azure mit Azure CLI oder PowerShell finden Sie unter [Erste Schritte mit Azure CLI 2.0](/cli/azure/get-started-with-azure-cli.md) oder [Erste Schritte mit Azure PowerShell-Cmdlets](/powershell/azure/overview).
 
 ```azurecli
 az login
@@ -184,3 +184,4 @@ Das Azure-Portal bietet eine komfortable Möglichkeit, schnell eine Skalierungsg
 Weitere Informationen zu [Datenträgern](virtual-machine-scale-sets-attached-disks.md).
 
 Informationen zum [Verwalten von Apps](virtual-machine-scale-sets-deploy-app.md).
+

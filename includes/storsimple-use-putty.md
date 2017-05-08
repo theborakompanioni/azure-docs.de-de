@@ -26,8 +26,3 @@
      > 
 7. Klicken Sie auf **Öffnen** , um eine serielle Sitzung zu starten.
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

@@ -11,7 +11,7 @@ Damit Mobile Engagement Pushbenachrichtigungen in Ihrem Namen senden darf, müss
    
     ![](./media/mobile-engagement-ios-send-push/native-push-settings.png)
 
-## <a name="a-idsendasend-a-notification-to-your-app"></a><a id="send"></a>Versenden von Benachrichtigungen an die App
+## <a id="send"></a>Versenden von Benachrichtigungen an die App
 Wir erstellen jetzt eine einfache Pushbenachrichtigungskampagne, die eine Pushbenachrichtigung an die App sendet:
 
 1. Navigieren Sie zu der Registerkarte **Reach** in Ihrem Mobile Engagement-Portal.
@@ -39,9 +39,4 @@ Wir erstellen jetzt eine einfache Pushbenachrichtigungskampagne, die eine Pushbe
 8. Wenn Sie eine Apple Watch zusammen mit diesem iOS-Gerät nutzen, wird die Benachrichtigung auf Ihrer Apple Watch angezeigt:
    
     ![](./media/mobile-engagement-ios-send-push/apple-watch.png)
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

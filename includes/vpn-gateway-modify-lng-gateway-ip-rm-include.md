@@ -1,7 +1,7 @@
-Verwenden Sie zum Ändern der Gateway-IP-Adresse das `New-AzureRmVirtualNetworkGatewayConnection` -Cmdlet. Wenn Sie den Namen des lokalen Netzwerkgateways unverändert lassen, werden die Einstellungen überschrieben. Das Ändern der Gateway-IP-Adresse wird vom Cmdlet „Set“ derzeit nicht unterstützt.
+Verwenden Sie das Cmdlet „New-AzureRmVirtualNetworkGatewayConnection“, um die Gateway-IP-Adresse zu ändern. Das Ändern der Gateway-IP-Adresse wird vom Cmdlet „Set“ derzeit nicht unterstützt.
 
-### <a name="gwipnoconnection"></a>Gewusst wie: Ändern der Die Gateway-IP-Adresse ohne Gatewayverbindung
-Verwenden Sie das weiter unten angegebene Beispiel, um die Gateway-IP-Adresse für ein lokales Netzwerkgateway ohne Verbindung zu aktualisieren. Bei dieser Gelegenheit können Sie auch die Adresspräfixe aktualisieren. Die vorhandenen Einstellungen werden mit den angegebenen Einstellungen überschrieben. Achten Sie darauf, den Namen Ihres lokalen Netzwerkgateways zu verwenden. Andernfalls wird nicht das bereits vorhandene lokale Netzwerkgateway überschrieben, sondern ein neues erstellt.
+### <a name="gwipnoconnection"></a>Ändern der Gateway-IP-Adresse – keine Gatewayverbindung
+Verwenden Sie das weiter unten angegebene Beispiel, um die Gateway-IP-Adresse für ein lokales Netzwerkgateway ohne Verbindung zu ändern. Bei dieser Gelegenheit können Sie auch die Adresspräfixe ändern. Achten Sie darauf, dass Sie den Namen Ihres lokalen Netzwerkgateways verwenden, um die aktuellen Einstellungen zu überschreiben. Andernfalls wird nicht das bereits vorhandene lokale Netzwerkgateway überschrieben, sondern ein neues erstellt.
 
 Verwenden Sie das folgende Beispiel, und ersetzen Sie dabei die Werte durch Ihre eigenen:
 
@@ -11,37 +11,37 @@ New-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName `
 -GatewayIpAddress "5.4.3.2" -ResourceGroupName MyRGName
 ```
 
-### <a name="gwipwithconnection"></a>Gewusst wie: Ändern der Die Gateway-IP-Adresse mit Gatewayverbindung
-Ist bereits eine Gatewayverbindung vorhanden, muss sie zuerst entfernt werden. Danach können Sie dann die Gateway-IP-Adresse ändern und eine neue Verbindung erstellen. Dies führt zu Ausfallzeiten für Ihre VPN-Verbindung.
+### <a name="gwipwithconnection"></a>Ändern der Gateway-IP-Adresse – vorhandene Gatewayverbindung
+Ist bereits eine Gatewayverbindung vorhanden, muss sie zuerst entfernt werden. Nachdem die Verbindung entfernt wurde, können Sie die Gateway-IP-Adresse ändern und eine neue Verbindung erstellen. Bei dieser Gelegenheit können Sie auch die Adresspräfixe ändern. Dies führt zu Ausfallzeiten bei Ihrer VPN-Verbindung.
 
 > [!IMPORTANT]
-> Löschen Sie nicht das VPN-Gateway. Andernfalls müssen Sie die Schritte zum Erstellen erneut ausführen und das Gateway außerdem auf Ihrem lokalen Router mit der IP-Adresse konfigurieren, die dem neu erstellten Gateway zugewiesen wird.
+> Löschen Sie nicht das VPN-Gateway. Ansonsten müssen Sie die Schritte erneut ausführen, um es neu zu erstellen. Außerdem müssen Sie Ihr lokales VPN-Gerät mit der neuen IP-Adresse des VPN-Gateways aktualisieren.
 > 
 > 
 
-1. Entfernen Sie die Verbindung. Den Namen der Verbindung können Sie mithilfe des `Get-AzureRmVirtualNetworkGatewayConnection` -Cmdlets ermitteln.
+1. Entfernen Sie die Verbindung. Den Namen Ihrer Verbindung können Sie mithilfe des Cmdlets „Get-AzureRmVirtualNetworkGatewayConnection“ ermitteln.
 
   ```powershell
   Remove-AzureRmVirtualNetworkGatewayConnection -Name MyGWConnectionName `
   -ResourceGroupName MyRGName
   ```
-2. Ändern Sie den GatewayIpAddress-Wert. Bei dieser Gelegenheit können Sie ggf. auch die Adresspräfixe ändern. Beachten Sie, dass dadurch die vorhandenen Einstellungen des lokalen Netzwerkgateways überschrieben werden. Verwenden Sie zum Vornehmen von Änderungen den vorhandenen Namen des lokalen Netzwerkgateways, damit die Einstellungen überschrieben werden. Andernfalls wird nicht das bereits vorhandene lokale Netzwerkgateway geändert, sondern ein neues erstellt.
+2. Ändern Sie den GatewayIpAddress-Wert. Bei dieser Gelegenheit können Sie auch die Adresspräfixe ändern. Achten Sie darauf, dass Sie den Namen Ihres lokalen Netzwerkgateways verwenden, um die aktuellen Einstellungen zu überschreiben. Andernfalls wird nicht das bereits vorhandene lokale Netzwerkgateway überschrieben, sondern ein neues erstellt.
 
   ```powershell
   New-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName `
   -Location "West US" -AddressPrefix @('10.0.0.0/24','20.0.0.0/24','30.0.0.0/24') `
   -GatewayIpAddress "104.40.81.124" -ResourceGroupName MyRGName
   ```
-3. Erstellen Sie die Verbindung. In diesem Beispiel konfigurieren wir einen IPsec-Verbindungstyp. Verwenden Sie beim erneuten Erstellen der Verbindung den für Ihre Konfiguration angegebenen Verbindungstyp. Weitere Verbindungstypen finden Sie auf der Seite [PowerShell-Cmdlet](https://msdn.microsoft.com/library/mt603611.aspx) .  Der VirtualNetworkGateway-Name kann mithilfe des `Get-AzureRmVirtualNetworkGateway` -Cmdlets abgerufen werden.
+3. Erstellen Sie die Verbindung. In diesem Beispiel konfigurieren wir einen IPsec-Verbindungstyp. Verwenden Sie beim erneuten Erstellen der Verbindung den für Ihre Konfiguration angegebenen Verbindungstyp. Weitere Verbindungstypen finden Sie auf der Seite [PowerShell-Cmdlet](https://msdn.microsoft.com/library/mt603611.aspx) .  Der VirtualNetworkGateway-Name kann mithilfe des Cmdlets „Get-AzureRmVirtualNetworkGateway“ abgerufen werden.
    
-    Legen Sie die Variablen fest:
+    Legen Sie die Variablen fest.
 
   ```powershell
   $local = Get-AzureRMLocalNetworkGateway -Name MyLocalNetworkGWName -ResourceGroupName MyRGName `
   $vnetgw = Get-AzureRmVirtualNetworkGateway -Name RMGateway -ResourceGroupName MyRGName
   ```
    
-    Erstellen Sie die Verbindung:
+    Erstellen Sie die Verbindung.
 
   ```powershell 
   New-AzureRmVirtualNetworkGatewayConnection -Name MyGWConnectionName -ResourceGroupName MyRGName `

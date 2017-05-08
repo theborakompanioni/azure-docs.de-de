@@ -13,12 +13,12 @@ ms.topic: get-started-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2017
+ms.date: 04/19/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 5001cd47b6ee51967d1286414ccefedd8e7e7813
-ms.openlocfilehash: 888b9786de8302ccd2e11f271aa417bcbcc2620b
-ms.lasthandoff: 12/02/2016
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: c6944fd4f93d2daa9071bb27f76ea0f772bdb743
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -40,7 +40,7 @@ Die Sicherheits- und Überwachungslösung von OMS ermöglicht mit integrierten S
 Wenn Sie zum ersten Mal auf dieses Dashboard zugreifen und keine Geräte von OMS überwachen lassen, sind die Kacheln nicht mit vom Agent erfassten Daten gefüllt. Nach der Installation des Agents kann das Auffüllen einige Zeit dauern. Daher fehlen am Anfang unter Umständen einige Daten, weil sie noch in die Cloud hochgeladen werden.  Es ist also normal, wenn einige Kacheln noch keine aussagekräftigen Informationen enthalten. Weitere Informationen zur Installation des OMS-Agents in einem Windows-System finden Sie unter [Direktes Verbinden von Windows-Computern mit der OMS](https://technet.microsoft.com/library/mt484108.aspx). Weitere Informationen zur Durchführung dieser Aufgabe in einem Linux-System finden Sie unter [Verbinden von Linux-Computern mit OMS](https://technet.microsoft.com/library/mt622052.aspx).
 
 > [!NOTE]
-> Der Agent sammelt die Informationen basierend auf den aktuellen Ereignissen, die aktiviert sind, z.B. Computername, IP-Adresse und Benutzername. Es werden aber keine Dokumente/Dateien, Datenbanknamen oder privaten Daten erfasst.   
+> Der Agent sammelt die Informationen auf der Grundlage der aktivierten aktuellen Ereignisse (beispielsweise Computername, IP-Adresse und Benutzername). Es werden aber keine Dokumente/Dateien, Datenbanknamen oder privaten Daten erfasst.   
 > 
 > 
 
@@ -92,19 +92,19 @@ Wie bei anderen Live-Kacheln auch, die im OMS-Dashboard verfügbar sind, gilt Fo
 ![Suchergebnis](./media/oms-security-getting-started/oms-getting-started-fig5.png)
 
 > [!NOTE]
-> *Rang* ist eine Einstufung, mit der der Schutzstatus (Ein, Aus, Aktualisiert usw.) und gefundene Bedrohungen widergespiegelt werden. Das Vorhandensein dieser Zahl vereinfacht die Erstellung von Aggregationen.
+> *Rang* ist eine Einstufung, die den Schutzstatus (aktiviert, deaktiviert, aktualisiert usw.) sowie gefundene Bedrohungen widerspiegelt. Das Vorhandensein dieser Zahl vereinfacht die Erstellung von Aggregationen.
 > 
 > 
 
 Wenn Sie auf den Namen des Computers klicken, wird die chronologische Übersicht des Schutzstatus für den Computer angezeigt. Dies ist sehr nützlich für Szenarien, bei denen Sie ermitteln müssen, ob die Antischadsoftware installiert war und zu einem bestimmten Zeitpunkt entfernt wurde.   
 
 ### <a name="update-assessment"></a>Updatebewertung
-Mit dieser Option können Sie schnell ermitteln, wie hoch die allgemeine Gefährdung durch potenzielle Sicherheitsprobleme ist und wie wichtig diese Updates für Ihre Umgebung sind. Die Sicherheits- und Überwachungslösung von OMS ermöglicht nur die Visualisierung von Updates. Die echten Daten stammen von der [Lösung „System Updates“](https://technet.microsoft.com/library/mt484096.aspx), wobei es sich um ein anderes Modul von OMS handelt. Hier ist ein Beispiel für die Updates angegeben:
+Mit dieser Option können Sie schnell ermitteln, wie hoch die allgemeine Gefährdung durch potenzielle Sicherheitsprobleme ist und wie wichtig diese Updates für Ihre Umgebung sind. Die Sicherheits- und Überwachungslösung von OMS ermöglicht nur die Visualisierung dieser Updates. Die eigentlichen Daten stammen von der [Lösung für die Updateverwaltung](oms-solution-update-management.md) (ein anderes Modul innerhalb von OMS). Hier ist ein Beispiel für die Updates angegeben:
 
-![Systemupdates](./media/oms-security-getting-started/oms-getting-started-fig6.png)
+![Systemupdates](./media/oms-security-getting-started/oms-getting-started-fig6-new.png)
 
 > [!NOTE]
-> Weitere Informationen zur Updates-Lösung finden Sie unter [Aktualisieren von Servern mit der Lösung „System Updates“](https://technet.microsoft.com/library/mt484096.aspx).
+> Weitere Informationen zur Lösung für die Updateverwaltung finden Sie unter [Lösung für die Updateverwaltung in OMS](oms-solution-update-management.md).
 > 
 > 
 
@@ -135,6 +135,14 @@ Sie können diese Kachel verwenden, um auf alle Computer zuzugreifen, die aktiv 
 
 Sie können die Untersuchung fortsetzen, indem Sie auf die einzelnen Computer klicken und sich die angegebenen Sicherheitsereignisse ansehen.
 
+### <a name="threat-intelligence"></a>Threat Intelligence
+
+Mithilfe der Threat Intelligence-Option in der Sicherheits- und Überwachungslösung von OMS können IT-Administratoren Sicherheitsrisiken für die Umgebung erkennen. So können sie etwa ermitteln, ob ein bestimmter Computer Teil eines Botnets ist. Computer können Knoten in einem Botnet werden, wenn Angreifer illegal Schadsoftware installieren, die diesen Computer heimlich mit einem Steuerknoten verbindet. Die Option ermöglicht auch die Erkennung potenzieller Bedrohungen aus verdeckten Kommunikationskanälen wie dem Darknet. Weitere Informationen zu Threat Intelligence finden Sie im Artikel [Überwachen von und Reagieren auf Sicherheitswarnungen in der Sicherheits- und Überwachungslösung von Operations Management Suite](oms-security-responding-alerts.md).
+
+### <a name="baseline-assessment"></a>Baselinebewertung
+
+Microsoft definiert in Zusammenarbeit mit Branchenunternehmen und Behörden weltweit eine Windows-Konfiguration für Serverbereitstellungen mit hoher Sicherheit. Diese Konfiguration umfasst einen Satz von Registrierungsschlüsseln, Überwachungsrichtlinieneinstellungen und Sicherheitsrichtlinieneinstellungen sowie von Microsoft empfohlene Werte für diese Einstellungen. Dieser Regelsatz wird als Sicherheitsbaseline bezeichnet. Weitere Informationen zu dieser Option finden Sie unter [Baselinebewertung in der Sicherheits- und Überwachungslösung von Operations Management Suite](oms-security-baseline.md).
+
 ### <a name="azure-security-center"></a>Azure Security Center
 Diese Kachel ist eigentlich eine Verknüpfung für den Zugriff auf das Azure Security Center-Dashboard. Weitere Informationen zu dieser Lösung finden Sie unter [Erste Schritte mit Azure Security Center](../security-center/security-center-get-started.md) .
 
@@ -153,7 +161,7 @@ Der Hauptzweck dieser Option besteht darin, dass die Mitarbeiter der IT-Abteilun
 Diese Option kann auch bei der [Untersuchung im Rahmen einer Reaktion auf Vorfälle](https://blogs.msdn.microsoft.com/azuresecurity/2016/11/30/investigating-suspicious-activity-in-a-hybrid-cloud-with-oms-security/) verwendet werden, um die Bewertung durchzuführen und weitere Informationen zum Angriff zu erhalten.
 
 > [!NOTE]
-> Weitere Informationen zur Verwendung von OMS für die Reaktion auf Vorfälle enthält das Video [How to Leverage the Azure Security Center & Microsoft Operations Management Suite for an Incident Response](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703) (Verwenden von Azure Security Center und Microsoft Operations Management Suite für die Reaktion auf Vorfälle).
+> Weitere Informationen zur Verwendung von OMS für die Reaktion auf Vorfälle erhalten Sie im folgenden Video: [How to Leverage the Azure Security Center & Microsoft Operations Management Suite for an Incident Response](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703) (Verwenden von Azure Security Center und Microsoft Operations Management Suite für die Reaktion auf Vorfälle).
 > 
 > 
 

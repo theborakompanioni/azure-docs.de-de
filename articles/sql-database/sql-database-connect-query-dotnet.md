@@ -16,9 +16,9 @@ ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: andrela;sstein;carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 368ffc65382c75b0fe5f4c20ce1c6a487a764ed3
-ms.lasthandoff: 04/18/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 119ffa3ac31e0ea6e76f8232f13b4dd8667f78aa
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -32,6 +32,8 @@ In diesem Schnellstart werden als Ausgangspunkt die Ressourcen verwendet, die in
 - [Erstellen einer Datenbank – CLI](sql-database-get-started-cli.md)
 
 ## <a name="install-net"></a>Installieren von .NET
+
+Bei den Schritten in diesem Abschnitt wird davon ausgegangen, dass Sie mit der .NET-Entwicklung vertraut sind und noch keine Erfahrung mit Azure SQL-Datenbank haben. Falls Sie noch keine Erfahrung mit der .NET-Entwicklung haben, navigieren Sie zu [Erstellen einer App mithilfe von SQL Server](https://www.microsoft.com/en-us/sql-server/developer-get-started/), und wählen Sie erst **C#** und dann Ihr Betriebssystem aus.
 
 ### <a name="windows-net-framework-and-net-core"></a>**Windows .NET Framework und .NET Core**
 
@@ -66,7 +68,7 @@ sudo apt-get install dotnet-dev-1.0.1
 
 ## <a name="get-connection-information"></a>Abrufen von Verbindungsinformationen
 
-Rufen Sie die Verbindungszeichenfolge im Azure-Portal ab. Sie verwenden die Verbindungszeichenfolge zum Herstellen einer Verbindung mit der Azure SQL-Datenbank.
+Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung mit der Azure SQL-Datenbank erforderlich sind. In den weiteren Verfahren benötigen Sie den vollqualifizierten Servernamen, den Datenbanknamen und die Anmeldeinformationen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 2. Wählen Sie im Menü auf der linken Seite die Option **SQL-Datenbanken**, und klicken Sie auf der Seite **SQL-Datenbanken** auf Ihre Datenbank. 
@@ -96,7 +98,8 @@ Wenn Sie .NET Core verwenden, fügen Sie „System.Data.SqlClient“ der ***CSPR
 1. Öffnen Sie in Ihrer Entwicklungsumgebung eine leere Codedatei.
 2. Fügen Sie ```using System.Data.SqlClient``` Ihrer Codedatei hinzu ([System.Data.SqlClient-Namespace](https://msdn.microsoft.com/library/system.data.sqlclient.aspx)). 
 
-3. Verwenden Sie [SqlCommand.ExecuteReader](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.executereader.aspx) mit einer [SELECT](https://msdn.microsoft.com/library/ms189499.aspx)-Transact-SQL-Anweisung, um Daten in Ihrer Azure SQL-Datenbank abzufragen. Fügen Sie die richtigen Werte für Ihren Server hinzu.
+3. Verwenden Sie den folgenden Code, um mit dem Befehl [SqlCommand.ExecuteReader](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.executereader.aspx) und einer Transact-SQL-Anweisung vom Typ [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) die 20 wichtigsten Produkte nach Kategorie abzufragen. Fügen Sie die entsprechenden Werte für Server, Datenbank, Benutzer und Kennwort hinzu.
+
 ```csharp
 using System;
 using System.Data;
@@ -152,7 +155,7 @@ namespace ConsoleApplication1
 
 ## <a name="insert-data"></a>Einfügen von Daten
 
-Verwenden Sie [SqlCommand.ExecuteNonQuery](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.executenonquery.aspx) mit einer [INSERT](https://msdn.microsoft.com/library/ms174335.aspx)-Transact-SQL-Anweisung, um Daten in Ihre Azure SQL-Datenbank einzufügen.
+Verwenden Sie den folgenden Code, um mit dem Befehl [SqlCommand.ExecuteNonQuery](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.executenonquery.aspx) und einer Transact-SQL-Anweisung vom Typ [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) ein neues Produkt in die Tabelle „SalesLT.Product“ einzufügen. Fügen Sie die entsprechenden Werte für Server, Datenbank, Benutzer und Kennwort hinzu.
 
 ```csharp
 using System;
@@ -207,7 +210,7 @@ namespace ConsoleApplication1
 
 ## <a name="update-data"></a>Aktualisieren von Daten
 
-Verwenden Sie [SqlCommand.ExecuteNonQuery](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.executenonquery.aspx) mit einer [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx)-Transact-SQL-Anweisung, um die Daten in Ihrer Azure SQL-Datenbank zu aktualisieren.
+Verwenden Sie den folgenden Code, um mit dem Befehl [SqlCommand.ExecuteNonQuery](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.executenonquery.aspx) und einer Transact-SQL-Anweisung vom Typ [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) das neue Produkt zu aktualisieren, das Sie zuvor hinzugefügt haben. Fügen Sie die entsprechenden Werte für Server, Datenbank, Benutzer und Kennwort hinzu.
 
 ```csharp
 using System;
@@ -257,7 +260,7 @@ namespace ConsoleApplication1
 
 ## <a name="delete-data"></a>Löschen von Daten
 
-Verwenden Sie [SqlCommand.ExecuteNonQuery](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.executenonquery.aspx) mit einer [DELETE](https://msdn.microsoft.com/library/ms189835.aspx)-Transact-SQL-Anweisung, um die Daten in Ihrer Azure SQL-Datenbank zu löschen.
+Verwenden Sie den folgenden Code, um mit dem Befehl [SqlCommand.ExecuteNonQuery](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.executenonquery.aspx) und einer Transact-SQL-Anweisung vom Typ [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) das neue Produkt zu löschen, das Sie zuvor hinzugefügt haben. Fügen Sie die entsprechenden Werte für Server, Datenbank, Benutzer und Kennwort hinzu.
 
 ```csharp
 using System;

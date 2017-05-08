@@ -56,8 +56,3 @@ Sie können die vorhandene ARM-Vorlage zum Erstellen von einem VNet und zwei Sub
         }
 11. Speichern Sie die Datei.
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

@@ -18,8 +18,3 @@ Bei diesen Schritten wird davon ausgegangen, dass Sie mit SSMS eine Verbindung m
    
      ![SQL Server Management Studio: Connect to SQL Database server](./media/sql-database-grant-database-user-dbo-permissions/sql-database-grant-database-user-dbo-permissions-1.png)
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

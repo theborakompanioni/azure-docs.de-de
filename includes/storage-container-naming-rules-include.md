@@ -15,8 +15,3 @@ Ein Containername muss ein gültiger DNS-Name sein und den folgenden Benennungsr
 > 
 > 
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

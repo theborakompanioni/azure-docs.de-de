@@ -16,84 +16,87 @@ ms.date: 04/11/2017
 ms.author: joflore
 ms.custom: end-user
 translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: bb62d6973dff00932e72ddb4b2c344f070537828
-ms.lasthandoff: 04/14/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: c95f52f028cdfaed35821275d816a24035ff02fb
+ms.lasthandoff: 04/26/2017
 
 
 ---
-# <a name="help-i-forgot-my-password"></a>Ich habe mein Kennwort vergessen. Was nun?
+# <a name="help-i-forgot-my-azure-ad-password"></a>Ich habe mein Azure AD-Kennwort vergessen. Was nun?
 
-Schritt 1: Keine Panik
+Falls Sie Ihr Kennwort vergessen haben, von der IT-Abteilung kein Kennwort erhalten haben, aus Ihrem Konto ausgesperrt wurden oder Ihr Kennwort ändern möchten, können wir Ihnen weiterhelfen.
 
-Falls eines der folgenden Szenarien auf Sie zutrifft, können wir Ihnen weiterhelfen:
+## <a name="reset-or-unlock-my-password-for-a-work-or-school-account"></a>Zurücksetzen oder Entsperren des eigenen Kennworts für ein Geschäfts-, Schul- oder Unikonto
 
-* Sie wissen nicht genau, wie Sie auf Ihr Konto zugreifen sollen, und können sich nicht mehr an Ihr Kennwort erinnern.
-* Ihnen wurde kein Kennwort zugewiesen, und Sie wurden von einem Administrator hierher geschickt.
+Rufen Sie mithilfe der folgenden Schritte die Self-Service-Kennwortzurücksetzung von Azure AD (kurz: SSPR für „Self-Service Password Reset“) auf, um Zugriff auf Ihr Geschäfts-, Schul- oder Unikonto zu erlangen.
 
-## <a name="unlock-my-account"></a>Entsperren des Kontos
-
-Falls Sie diese Seite aufgerufen haben, um Ihr Konto zu entsperren, gehen Sie wie folgt vor. Wenn weiter unten in Schritt 6 **Neues Kennwort auswählen** angezeigt wird, können Sie Ihr Kennwort entsperren oder ändern und entsperren.
-
-## <a name="reset-my-password"></a>Zurücksetzen des eigenen Kennworts
-
-Gehen Sie wie folgt vor, um den Zugriff auf Ihr Konto wiederherzustellen:
-1. Klicken Sie auf einer beliebigen Anmeldeseite für ein Geschäfts-, Schul- oder Unikonto auf den Link **Sie können nicht auf Ihr Konto zugreifen?** und anschließend auf **Geschäfts-, Schul- oder Unikonto**, oder rufen Sie direkt die [Seite für die Kennwortzurücksetzung](https://passwordreset.microsoftonline.com/) auf.
-
-    ![Sie können nicht auf Ihr Konto zugreifen?][Login]
-
-2. Geben Sie die **Benutzer-ID** für Ihr Geschäfts-, Schul- oder Unikonto ein, und beweisen Sie, dass Sie kein Roboter sind, indem Sie den angezeigten CAPTCHA-Text eingeben und auf **Weiter** klicken.
+1. Klicken Sie auf einer beliebigen Anmeldeseite für ein Geschäfts-, Schul- oder Unikonto auf den Link **Sie können nicht auf Ihr Konto zugreifen?**, und klicken Sie anschließend auf  **Geschäfts-, Schul- oder Unikonto**, oder rufen Sie direkt die [Seite für die Kennwortzurücksetzung](https://passwordreset.microsoftonline.com/) auf.
 
    > [!NOTE]
-   > Falls Ihr Administrator diese Funktion nicht aktiviert hat, wird an diesem Punkt ein Link vom Typ „Wenden Sie sich an den Administrator.“ angezeigt, damit Ihnen der Administrator per E-Mail oder über ein eigenes Webportal weiterhelfen kann.
+   > Wenn Sie versuchen, Zugriff auf ein persönliches Konto wie „hotmail.com“ „outlook.com“ zu erlangen, probieren Sie die [Vorschläge in diesem Artikel](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) aus.
+   >
+    ![Sie können nicht auf Ihr Konto zugreifen?][Login]
+
+2. Geben Sie die **Benutzer-ID** Ihres Geschäfts-, Schul- oder Unikontos ein, beweisen Sie, dass Sie kein Roboter sind, indem Sie die auf dem Bildschirm angezeigten Zeichen eingeben, und klicken Sie anschließend auf **Weiter**.
+
+   > [!NOTE]
+   > Falls Ihr IT-Personal diese Funktion nicht aktiviert hat, wird ein Link angezeigt, über den Sie Ihren Administrator kontaktieren können, um Unterstützung vom IT-Personal zu erhalten –entweder per E-Mail oder über ein eigenes Webportal.
    >
 
-3. Abhängig davon, wie Ihr Administrator das System konfiguriert hat, wird mindestens eine der folgenden Optionen angezeigt:
-    * **E-Mail an meine alternative E-Mail-Adresse senden**: Sendet eine E-Mail mit einem sechsstelligen Code an Ihre alternative E-Mail-Adresse oder an Ihre E-Mail-Adresse zur Authentifizierung. (Sie haben die Wahl.)
-    * **Textnachricht an mein Mobiltelefon senden**: Sendet eine SMS mit einem sechsstelligen Code an Ihr Mobiltelefon oder an Ihr Authentifizierungstelefon. (Sie haben die Wahl.)
-    * **Mein Mobiltelefon anrufen**: Ruft entweder Ihr Mobiltelefon oder Ihr Authentifizierungstelefon an. (Sie haben die Wahl.) Drücken Sie die #-Taste, um den Anruf zu verifizieren.
-    * **Meine geschäftliche Rufnummer anrufen**: Ruft Ihre geschäftliche Rufnummer an. Drücken Sie die #-Taste, um den Anruf zu verifizieren.
-    * **Meine Sicherheitsfragen beantworten**: Zeigt Ihre zuvor registrierten Sicherheitsfragen zur Beantwortung an.
-4. Füllen Sie die erforderlichen Felder mit Antworten auf die Fragen aus, und klicken Sie anschließend auf **Weiter**.
+3. Je nachdem, wie das IT-Personal SSPR konfiguriert hat, wird mindestens eine der folgenden Optionen angezeigt. Einige dieser Informationen wurden vom IT-Personal oder von Ihnen selbst bereits angegeben (wie [hier](active-directory-passwords-reset-register.md) beschrieben).
+    * **E-Mail an meine alternative E-Mail-Adresse senden**
+    * **Textnachricht an mein Mobiltelefon senden**
+    * **Mein Mobiltelefon anrufen**
+    * **Meine geschäftliche Rufnummer anrufen**
+    * **Meine Sicherheitsfragen beantworten**
+
+    Wählen Sie eine Option aus, geben Sie die richtigen Antworten an, und klicken Sie anschließend auf **Weiter**.
 
     ![Überprüfen Ihrer Authentifizierungsdaten][Verification]
 
-5. Ihr Administrator kann einen zusätzlichen Überprüfungsschritt einbauen. In diesem Fall müssen Sie unter Umständen Schritt 4 mit einer anderen Option wiederholen.
-6. Geben Sie auf der Seite **Neues Kennwort auswählen** ein neues Kennwort ein, das den Anforderungen Ihrer Organisation entspricht, bestätigen Sie Ihr neues Kennwort, und klicken Sie anschließend auf **Fertig stellen**.
+4. Unter Umständen müssen Sie Schritt 3 erneut ausführen, falls das IT-Personal eine weitere Überprüfung erfordert.
+5. Geben Sie auf der Seite **Neues Kennwort auswählen** ein neues Kennwort ein, bestätigen Sie Ihr neues Kennwort, und klicken Sie anschließend auf **Fertig stellen**. Wir empfehlen ein Kennwort mit 8 bis 16 Zeichen, Groß- und Kleinbuchstaben, Zahlen und Sonderzeichen.
 
-    ![Ändern Ihres Kennworts][Change]
+   > [!NOTE]
+   > Falls Sie Ihr Konto entsperren möchten, wählen Sie an diesem Punkt nur die Entsperroption aus, oder ändern Sie Ihr Kennwort, und entsperren Sie Ihr Konto.
+   >
 
-7. Wenn **Das Kennwort wurde zurückgesetzt.** erscheint, können Sie sich mit Ihrem neuen Kennwort anmelden.
+6. Wenn **Das Kennwort wurde zurückgesetzt.** erscheint, können Sie sich mit Ihrem neuen Kennwort anmelden.
 
     ![Das Kennwort wurde zurückgesetzt.][Complete]
 
-Nachdem Sie Ihr Kennwort mit dieser Methode entsperrt oder zurückgesetzt haben, erhalten Sie unter Umständen eine E-Mail, die den Abschluss dieses Prozesses bestätigt. Die E-Mail stammt von einem Konto wie „Microsoft im Namen von <Ihre Organisation>“. Sollten Sie eine solche E-Mail erhalten, obwohl Sie den Zugriff auf Ihr Konto nicht mithilfe der Self-Service-Kennwortzurücksetzung wiederhergestellt haben, wenden Sie sich an Ihren Administrator.
+Sie sollten nun auf Ihr Konto zugreifen können. Falls nicht, wenden Sie sich an das IT-Personal Ihrer Organisation, um weitere Hilfe zu erhalten.
+
+Möglicherweise erhalten Sie eine Bestätigungs-E-Mail von einem Konto wie „Microsoft im Auftrag von \<Ihre Organisation>\". Sollten Sie eine solche E-Mail erhalten, obwohl Sie den Zugriff auf Ihr Konto nicht mithilfe der Self-Service-Kennwortzurücksetzung wiederhergestellt haben, wenden Sie sich an das IT-Personal Ihrer Organisation.
 
 ## <a name="change-my-password"></a>Ändern des eigenen Kennworts
 
-Falls Sie Ihr Kennwort bereits kennen und es ändern möchten, führen Sie die folgenden Schritte aus:
+Falls Sie Ihr Kennwort bereits kennen und es ändern möchten, führen Sie die folgenden Schritte aus.
 
 ### <a name="change-your-password-from-the-office-365-portal"></a>Ändern des Kennworts über das Office 365-Portal
 
-1. Klicken Sie rechts oben auf Ihr Profil und anschließend auf **Konto anzeigen**.
-2. **Sicherheit und Datenschutz**
-3. **Kennwort**
-4. Geben Sie Ihr altes Kennwort ein, legen Sie Ihr neues Kennwort fest, und bestätigen Sie es.
-5. **Absenden**
+Verwenden Sie die folgende Methode, falls Sie für gewöhnlich über das Office-Portal auf Ihre Anwendung zugreifen:
+
+1. Melden Sie sich bei Ihrem [Office 365-Konto](https://www.office.com) an.
+2. Klicken Sie rechts oben auf Ihr Profil und anschließend auf **Konto anzeigen**.
+3. Klicken Sie auf **Sicherheit und Datenschutz** > **Kennwort**.
+4. Geben Sie Ihr altes Kennwort ein, legen Sie Ihr neues Kennwort fest, bestätigen Sie es, und klicken Sie anschließend auf **Absenden**.
 
 ### <a name="change-your-password-from-the-azure-access-panel"></a>Ändern des Kennworts über den Azure-Zugriffsbereich
 
+Verwenden Sie die folgende Methode, falls Sie für gewöhnlich über das Azure Zugriffsportal auf Ihre Anwendung zugreifen:
+
 1. Melden Sie sich mit Ihrem vorhandenen Kennwort beim [Azure-Zugriffsportal](https://myapps.microsoft.com/) an.
 2. Klicken Sie rechts oben auf Ihr Profil und anschließend auf **Profil**.
-3. **Kennwort ändern**
-4. Geben Sie Ihr altes Kennwort ein, legen Sie Ihr neues Kennwort fest, und bestätigen Sie es.
-5. **Absenden**
+3. Klicken Sie auf **Kennwort ändern**.
+4. Geben Sie Ihr altes Kennwort ein, legen Sie Ihr neues Kennwort fest, bestätigen Sie es, und klicken Sie anschließend auf **Absenden**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Register for self-service password reset](active-directory-passwords-reset-register.md) (Registrieren für die Self-Service-Kennwortzurücksetzung)
 * [Registrierungsseite für die Kennwortzurücksetzung](http://aka.ms/ssprsetup)
 * [Portal für die Kennwortzurücksetzung](https://passwordreset.microsoftonline.com/)
+* [Wenn Sie sich nicht bei Ihrem Microsoft-Konto anmelden können](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)
 
 [Login]: ./media/active-directory-passwords-update-your-own-password/reset-1-login.png "Anmeldeseite – Sie können nicht auf Ihr Konto zugreifen?"
 [Verification]: ./media/active-directory-passwords-update-your-own-password/reset-2-verification.png "Überprüfen Ihrer Authentifizierungsdaten"
