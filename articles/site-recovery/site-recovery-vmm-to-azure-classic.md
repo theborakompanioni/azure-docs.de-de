@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 02/06/2017
 ms.author: raynew
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: ed97f2aeb19566b12342e5194ac8a01293f453bf
+ms.contentlocale: de-de
 ms.lasthandoff: 04/03/2017
 
 
@@ -334,7 +335,7 @@ Gehen Sie folgendermaßen vor, um ein Testfailover durchzuführen:
     ![Kein Netzwerk](./media/site-recovery-vmm-to-azure-classic/test-no-network.png)
 3. Wenn für die Cloud Datenverschlüsselung aktiviert ist, wählen Sie unter **Verschlüsselungsschlüssel** das Zertifikat aus, das während der Installation des Anbieters auf dem VMM-Server ausgestellt wurde, als Sie die Option zum Aktivieren der Datenverschlüsselung für eine Cloud aktiviert haben.
 4. Auf der Registerkarte **Aufträge** können Sie den Fortschritt des Failovers verfolgen. Außerdem wird Ihnen das Testreplikat des virtuellen Computers im Azure-Portal angezeigt. Wenn Sie den Zugriff auf virtuelle Computer aus Ihrem lokalen Netzwerk eingerichtet haben, können Sie eine Remotedesktopverbindung mit dem virtuellen Computer herstellen.
-5. Klicken Sie zum Beenden auf **Test abschließen**, wenn das Failover die Endphase**** des Tests erreicht. Auf der Registerkarte **Auftrag** können Sie den Failoverfortschritt und -status detailliert nachverfolgen und etwaige erforderliche Aufgaben ausführen.
+5. Klicken Sie zum Beenden auf **Test abschließen**, wenn das Failover die Endphase des **Tests erreicht** . Auf der Registerkarte **Auftrag** können Sie den Failoverfortschritt und -status detailliert nachverfolgen und etwaige erforderliche Aufgaben ausführen.
 6. Nach dem Failover können Sie das Testreplikat des virtuellen Computers im Azure-Portal sehen. Wenn Sie den Zugriff auf virtuelle Computer aus Ihrem lokalen Netzwerk eingerichtet haben, können Sie eine Remotedesktopverbindung mit dem virtuellen Computer herstellen. Gehen Sie wie folgt vor:
 
    1. Prüfen Sie, ob die virtuellen Computer erfolgreich starten.
