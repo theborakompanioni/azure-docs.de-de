@@ -14,10 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: alkarche
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: ad82c1a552d9d77259c44b938975eebc44933b86
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: 9fd5b63259c7771d8b1e346ba3a6c10a4399532a
+ms.contentlocale: de-de
+ms.lasthandoff: 05/01/2017
 
 
 ---
@@ -120,5 +121,5 @@ Es gibt Testtools, die in die Benutzeroberflächenansicht des eingebetteten Edit
 * [Entwicklerreferenz zu Azure Functions](functions-reference.md)  
   * Referenz zum Programmieren von Funktionen sowie zum Festlegen von Triggern und Bindungen.
 * [Azure Functions-GitHub-Repository](https://github.com/Azure/Azure-Functions/)
-  * Testen Sie Functions-Github (Azure Functions), und geben uns Feedback zur Vorschau der Unterstützung von API-Definitionen! Erstellen Sie ein Github-Problem für jeden Punkt, für den Sie eine Aktualisierung wünschen.
+  * Testen Sie Functions-GitHub (Azure Functions), und geben Sie uns Feedback zur Vorschau der Unterstützung von API-Definitionen! Erstellen Sie ein GitHub-Problem für jeden Punkt, für den Sie eine Aktualisierung wünschen.
 

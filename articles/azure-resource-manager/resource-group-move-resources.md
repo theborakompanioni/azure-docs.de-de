@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2017
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 626b152b8511995413af39a41161c29c88429605
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
+ms.openlocfilehash: cc2a24b26b152671173770adfd4aefcfcb2512d4
+ms.contentlocale: de-de
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -75,6 +76,7 @@ Derzeit ermöglichen die folgenden Dienste das Verschieben in eine neue Ressourc
 
 * API Management
 * App Service-Apps (Web-Apps) – siehe [App Service-Einschränkungen](#app-service-limitations)
+* Application Insights
 * Automation
 * Batch
 * Bing Maps
@@ -124,7 +126,6 @@ Die folgenden Dienste ermöglichen das Verschieben einer Ressource derzeit nicht
 
 * AD Hybrid Health Service
 * Application Gateway
-* Application Insights
 * BizTalk Services
 * Container Service
 * ExpressRoute
@@ -147,12 +148,12 @@ Bei der Arbeit mit App Service-Apps können Sie nicht nur einen App Service-Plan
 * Verschieben Sie den App Service-Plan und alle anderen App Service-Ressourcen in dieser Ressourcengruppe in eine neue Ressourcengruppe, die noch nicht über App Service-Ressourcen verfügt. Diese Anforderung bedeutet, dass Sie auch die App Service-Ressourcen verschieben müssen, die nicht dem App Service-Plan zugeordnet sind. 
 * Verschieben Sie Apps in eine andere Ressourcengruppe, behalten Sie jedoch alle App Services-Pläne in der ursprünglichen Ressourcengruppe bei.
 
-Wenn die ursprüngliche Ressourcengruppe auch eine Application Insights-Ressource enthält, können Sie diese Ressource nicht verschieben, da Application Insights das Verschieben derzeit nicht ermöglicht. Wenn Sie die Application Insights-Ressource beim Verschieben von App Service-Apps einschließen, misslingt der gesamte Verschiebevorgang. Der Application Insights- und App Service-Plan müssen sich allerdings nicht in derselben Ressourcengruppe wie die App befinden, damit die App ordnungsgemäß funktioniert.
+Der App Service-Plan muss sich nicht in derselben Ressourcengruppe wie die App befinden, damit die App ordnungsgemäß funktioniert.
 
 Angenommen, Ihre Ressourcengruppe enthält folgende Ressourcen:
 
-* **web-a**, die **plan-a** und **app-insights-a** zugeordnet ist
-* **web-b**, die **plan-b** und **app-insights-b** zugeordnet ist
+* **web-a**, die **plan-a** zugeordnet ist
+* **web-b**, die **plan-b** zugeordnet ist
 
 Die Optionen sind wie folgt:
 
@@ -161,7 +162,7 @@ Die Optionen sind wie folgt:
 * Verschieben von **web-a**
 * Verschieben von **web-b**
 
-Allen anderen Kombinationen umfassen entweder das Verschieben einer Ressource, die nicht verschoben werden kann (Application Insights), oder das Hinterlassen eines Ressourcentyps, der beim Verschieben eines App Service-Plans (beliebiger Typ von App Service-Ressource) nicht hinterlassen werden darf.
+Alle anderen Kombinationen umfassen das Hinterlassen eines Ressourcentyps, der beim Verschieben eines App Service-Plans (beliebiger Typ von App Service-Ressource) nicht zurückbleiben darf.
 
 Wenn sich Ihre Web-App in einer anderen Ressourcengruppe als ihr App Service-Plan befindet, aber Sie beide in eine neue Ressourcengruppe verschieben möchten, muss das Verschieben in zwei Schritten erfolgen. Beispiel:
 

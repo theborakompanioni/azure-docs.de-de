@@ -11,12 +11,13 @@ ms.workload: compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 04/26/2017
 ms.author: mbaldwin
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 25ba53a1047863d01ba1fc2647af51fdd582feb1
-ms.lasthandoff: 04/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 11254a9bd82885701b457ba3b4ec0ef0aad710e6
+ms.contentlocale: de-de
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -186,7 +187,7 @@ Die MyCloudIT-Plattform reduziert die Bereitstellungszeit um 95 %, die Azure-Ko
 >   
 > Loughton, Essex IG10 3TQ
 >   
-> **Telefon: +44 (0) 20 8502 2155
+> Telefonnummer: +44 (0) 20 8502 2155
 > 
 > **Singapur**:
 >   
@@ -194,7 +195,7 @@ Die MyCloudIT-Plattform reduziert die Bereitstellungszeit um 95 %, die Azure-Ko
 >   
 > The Globe, Singapore 069532
 > 
-> **Telefon: +65 6709 4933
+> Telefonnummer: +65 6709 4933
 >   
 > **Nordamerika**:
 >   
@@ -202,7 +203,7 @@ Die MyCloudIT-Plattform reduziert die Bereitstellungszeit um 95 %, die Azure-Ko
 >   
 > Suite 200, Houston, TX 77098
 >   
-> **Telefon: +1 713 691 0800
+> Telefonnummer: +1 713 691 0800
 
 #### <a name="saasplaza"></a>**SaaSplaza**
 [SaaSplaza](http://www.saasplaza.com/) bietet ein vollständiges Microsoft Dynamics-Portfolio (NAV, AX, GP, SL, CRM) sowie eine private und öffentliche Cloud (Azure).
@@ -217,7 +218,7 @@ Die MyCloudIT-Plattform reduziert die Bereitstellungszeit um 95 %, die Azure-Ko
 > 
 > Anbieten sitzungsbasierter RemoteApp- und Remotedesktop-Lösungen: Ja, beides
 > 
-> **EMEA**
+> **EMEA**:
 > 
 > Prins Mauritslaan 29-35
 > 
@@ -227,7 +228,7 @@ Die MyCloudIT-Plattform reduziert die Bereitstellungszeit um 95 %, die Azure-Ko
 > 
 > Telefon: +31 20 547 8060 
 > 
->  **Amerika**
+>  **Amerika**:
 > 
 > 171 Saxony Road, Suite 105
 > 
@@ -239,7 +240,7 @@ Die MyCloudIT-Plattform reduziert die Bereitstellungszeit um 95 %, die Azure-Ko
 > 
 > Telefon: +1 858 385 8900 
 > 
-> **APAC**
+> **APAC**:
 > 
 > 105 Cecil Street
 >    
