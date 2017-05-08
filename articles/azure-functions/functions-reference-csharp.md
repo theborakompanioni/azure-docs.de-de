@@ -16,9 +16,10 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/04/2017
 ms.author: chrande
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
 ms.openlocfilehash: 76b43c78341abb638e2ede97f68c05ee6df0700f
+ms.contentlocale: de-de
 ms.lasthandoff: 04/17/2017
 
 
@@ -218,7 +219,7 @@ public static string GetEnvironmentVariable(string name)
 ```
 
 ## <a name="reusing-csx-code"></a>Wiederverwenden von CSX-Code
-Sie können in der Datei *run.csx* Klassen und Methoden verwenden, die in anderen **CSX-Dateien definiert sind. Verwenden Sie zu diesem Zweck `#load`-Anweisungen in der Datei *run.csx*. Im folgenden Beispiel wird die Protokollierungsroutine `MyLogger` in *myLogger.csx* freigegeben und mit der `#load`-Anweisung in *run.csx* geladen: 
+Sie können in der Datei *run.csx* Klassen und Methoden verwenden, die in anderen *CSX* -Dateien definiert sind. Verwenden Sie zu diesem Zweck `#load`-Anweisungen in der Datei *run.csx*. Im folgenden Beispiel wird die Protokollierungsroutine `MyLogger` in *myLogger.csx* freigegeben und mit der `#load`-Anweisung in *run.csx* geladen: 
 
 Beispiel für *run.csx*:
 
@@ -312,7 +313,7 @@ Mit der `#load` -Direktive können Sie einen relativen Pfad verwenden:
 * `#load "loadedfiles\mylogger.csx"` : Lädt eine Datei, die sich in einem Ordner im Funktionsordner befindet.
 * `#load "..\shared\mylogger.csx"` : Lädt eine Datei, die sich in einem Ordner auf der gleichen Ebene befindet wie der Funktionsordner (also direkt unter *wwwroot*).
 
-Die `#load`-Direktive kann nur mit **CSX-Dateien (C#-Skript) verwendet werden, nicht mit **CS-Dateien. 
+Die `#load` -Direktive kann nur mit *CSX* -Dateien (C#-Skript) verwendet werden, nicht mit *CS* -Dateien. 
 
 ## <a name="versioning"></a>Versionsverwaltung
 
