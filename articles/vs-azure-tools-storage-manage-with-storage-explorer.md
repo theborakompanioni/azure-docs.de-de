@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte mit dem Speicher-Explorer (Vorschau) | Microsoft Docs
+title: Erste Schritte mit dem Speicher-Explorer (Vorschau) | Microsoft-Dokumentation
 description: Verwalten von Azure-Speicherressourcen mit dem Speicher-Explorer (Vorschauversion)
 services: storage
 documentationcenter: na
@@ -14,16 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 07b62cd6f6deb0cf3ff1c806204ebc26c773a164
-ms.lasthandoff: 04/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: fbcd35529c5d2360f5b0c9de4d3c9c4a08a0cc8f
+ms.contentlocale: de-de
+ms.lasthandoff: 04/27/2017
 
 
 ---
-# <a name="getting-started-with-storage-explorer-preview"></a>Erste Schritte mit dem Speicher-Explorer (Vorschau)
+# <a name="get-started-with-storage-explorer-preview"></a>Erste Schritte mit dem Speicher-Explorer (Vorschau)
 ## <a name="overview"></a>Übersicht
-Bei der Vorschauversion des Microsoft Azure-Speicher-Explorers handelt es sich um eine eigenständige App, über die Sie unter Windows, macOS und Linux komfortabel mit Azure Storage-Daten arbeiten können. In diesem Artikel werden die verschiedenen Möglichkeiten zum Verbinden und Verwalten Ihrer Azure-Speicherkonten beschrieben.
+Bei der Vorschauversion des Azure-Speicher-Explorers handelt es sich um eine eigenständige App, über die Sie unter Windows, macOS und Linux komfortabel mit Azure Storage-Daten arbeiten können. In diesem Artikel werden die verschiedenen Möglichkeiten zum Verbinden und Verwalten Ihrer Azure-Speicherkonten beschrieben.
 
 ![Microsoft Azure-Speicher-Explorer (Vorschau)][15]
 
@@ -31,13 +32,18 @@ Bei der Vorschauversion des Microsoft Azure-Speicher-Explorers handelt es sich u
 * [Herunterladen und Installieren des Speicher-Explorers (Vorschau)](http://www.storageexplorer.com)
 
 ## <a name="connect-to-a-storage-account-or-service"></a>Herstellen der Verbindung mit einem Speicherkonto oder Dienst
-Es gibt zahlreiche Möglichkeiten, wie Sie den Speicher-Explorer (Vorschau) mit Speicherkonten verbinden können. Beispiele hierfür wären das Herstellen einer Verbindung mit Speicherkonten, die Ihren Azure-Abonnements zugeordnet sind, das Verbinden mit freigegebenen Speicherkonten und Diensten aus anderen Azure-Abonnements und sogar das Herstellen von Verbindungen mit und Verwalten von lokalem Speicher mit dem Azure-Speicheremulator. Darüber hinaus können Sie mit Speicherkonten in Azure (global und national) arbeiten:
+Es gibt verschiedene Möglichkeiten, wie Sie den Speicher-Explorer (Vorschau) mit Speicherkonten verbinden können. Dazu zählen z. B.:
+* Verbinden mit Speicherkonten, die Ihren Azure-Abonnements zugeordnet sind
+* Verbinden mit freigegebenen Speicherkonten und Diensten aus anderen Azure-Abonnements
+* Verbinden mit und Verwalten von lokalem Speicher mithilfe des Azure-Speicheremulators 
 
-* [Herstellen einer Verbindung mit einem Azure-Abonnement](#connect-to-an-azure-subscription) : Verwalten Sie Speicherressourcen, die zu Ihrem Azure-Abonnement gehören.
-* [Verwenden von lokalem Entwicklungsspeicher](#work-with-local-development-storage) : Verwalten Sie lokalen Speicher mit dem Azure-Speicheremulator.
-* [Anfügen an externen Speicher](#attach-or-detach-an-external-storage-account): Verwalten Sie Speicherressourcen eines anderen Azure-Abonnements oder in nationalen Azure-Clouds unter Verwendung von Name, Schlüssel und Endpunkten des Speicherkontos.
-* [Anfügen eines Kontos per SAS](#attach-storage-account-using-sas) : Verwalten Sie Speicherressourcen eines anderen Azure-Abonnements per Shared Access Signature (SAS).
-* [Anfügen eines Diensts per SAS](#attach-service-using-sas) : Verwalten Sie einen bestimmten Speicherdienst (Blobcontainer, Warteschlange oder Tabelle) eines anderen Azure-Abonnements per Shared Access Signature (SAS).
+Darüber hinaus können Sie mit Speicherkonten in Azure (global und national) arbeiten:
+
+* [Herstellen einer Verbindung mit einem Azure-Abonnement:](#connect-to-an-azure-subscription) Verwalten Sie Speicherressourcen, die zu Ihrem Azure-Abonnement gehören.
+* [Verwenden von lokalem Entwicklungsspeicher:](#work-with-local-development-storage) Verwalten Sie lokalen Speicher mit dem Azure-Speicheremulator.
+* [Anfügen an externen Speicher:](#attach-or-detach-an-external-storage-account) Verwalten Sie Speicherressourcen eines anderen Azure-Abonnements oder in nationalen Azure-Clouds unter Verwendung von Name, Schlüssel und Endpunkten des Speicherkontos.
+* [Anfügen eines Speicherkontos unter Verwendung einer SAS:](#attach-storage-account-using-sas) Verwalten Sie Speicherressourcen eines anderen Azure-Abonnements unter Verwendung einer Shared Access Signature (SAS).
+* [Anfügen eines Diensts unter Verwendung einer SAS:](#attach-service-using-sas) Verwalten Sie einen bestimmten Speicherdienst (Blobcontainer, Warteschlange oder Tabelle) eines anderen Azure-Abonnements unter Verwendung einer SAS.
 
 ## <a name="connect-to-an-azure-subscription"></a>Herstellen einer Verbindung mit einem Azure-Abonnement
 > [!NOTE]
@@ -48,203 +54,255 @@ Es gibt zahlreiche Möglichkeiten, wie Sie den Speicher-Explorer (Vorschau) mit 
 1. Wählen Sie im Speicher-Explorer (Vorschau) die Option **Azure-Kontoeinstellungen**.
 
     ![Azure-Kontoeinstellungen][0]
-2. Im linken Bereich werden jetzt alle Microsoft-Konten angezeigt, bei denen Sie angemeldet sind. Wählen Sie zum Herstellen einer Verbindung mit einem anderen Konto die Option **Konto hinzufügen**aus, und führen Sie die Schritte in den Dialogfeldern durch, um sich mit einem Microsoft-Konto anzumelden, das mindestens einem aktiven Azure-Abonnement zugeordnet ist.
-> [!NOTE]
->Eine anmeldungsbasierte Verbindungsherstellung mit einer nationalen Azure-Instanz wie etwa Black Forest Azure, Fairfax Azure und Mooncake Azure wird momentan nicht unterstützt. Informationen zum Herstellen einer Verbindung mit nationalen Azure-Speicherkonten finden Sie im Abschnitt **Anfügen oder Trennen eines externen Speicherkontos**.
+
+2. Im linken Bereich werden alle Microsoft-Konten angezeigt, bei denen Sie angemeldet sind. Wählen Sie zum Herstellen einer Verbindung mit einem anderen Konto die Option **Konto hinzufügen** aus, und führen Sie die Anweisungen aus, um sich mit einem Microsoft-Konto anzumelden, das mindestens einem aktiven Azure-Abonnement zugeordnet ist.
+
+    >[!NOTE]
+    >Eine anmeldungsbasierte Verbindungsherstellung mit einer nationalen Azure-Instanz (etwa mit Azure Deutschland, Azure Government oder Azure China) wird momentan nicht unterstützt. Informationen zum Herstellen einer Verbindung mit nationalen Azure-Speicherkonten finden Sie im Abschnitt „Anfügen oder Trennen eines externen Speicherkontos“.
 
 3. Nach erfolgreicher Anmeldung mit einem Microsoft-Konto werden im linken Bereich die dem Konto zugeordneten Azure-Abonnements angezeigt. Wählen Sie die Azure-Abonnements aus, die Sie verwenden möchten, und klicken Sie dann auf **Übernehmen**. (Durch Auswählen von **Alle Abonnements** können Sie alle bzw. keine Azure-Abonnements in der Liste auswählen.)
 
-    ![Azure-Abonnements auswählen][3]
-4. Im linken Bereich werden die Speicherkonten angezeigt, die mit den ausgewählten Azure-Abonnements verknüpft sind.
+    ![Azure-Abonnements auswählen][3]  
+    Im linken Bereich werden die Speicherkonten angezeigt, die mit den ausgewählten Azure-Abonnements verknüpft sind.
 
     ![Ausgewählte Azure-Abonnements][4]
 
 ## <a name="connect-to-an-azure-stack-subscription"></a>Herstellen einer Verbindung mit einem Azure Stack-Abonnement
 
-1. Für den Speicher-Explorer ist eine VPN-Verbindung erforderlich, um den Remotezugriff auf das Azure Stack-Abonnement zu ermöglichen. Weitere Informationen zur Einrichtung der VPN-Verbindung für Azure Stack finden Sie unter [Connect to Azure Stack](azure-stack/azure-stack-connect-azure-stack.md#connect-with-vpn) (Herstellen einer Verbindung mit Azure Stack).
+Für den Speicher-Explorer ist eine VPN-Verbindung erforderlich, um den Remotezugriff auf das Azure Stack-Abonnement zu ermöglichen. Weitere Informationen zur Einrichtung einer VPN-Verbindung mit Azure Stack finden Sie unter [Connect with VPN](azure-stack/azure-stack-connect-azure-stack.md#connect-with-vpn) (Herstellen einer VPN-Verbindung).
 
-2. Für Azure Stack POC müssen Sie das Stammzertifikat der Azure Stack-Zertifizierungsstelle exportieren. Öffnen Sie `mmc.exe` auf MAS-CON01, dem Azure Stack-Hostcomputer oder einem lokalen Computer, der über eine VPN-Verbindung mit Azure Stack verfügt. Wählen Sie unter **Datei** die Option **Snap-In hinzufügen/entfernen**, und fügen Sie **Zertifikate** zum Verwalten des **Computerkontos** von **Lokaler Computer** hinzu.
+Für Azure Stack POC (Proof of Concept) müssen Sie das Stammzertifikat der Azure Stack-Zertifizierungsstelle exportieren. Gehen Sie dazu wie folgt vor:
 
-   ![Laden des Azure Stack-Stammzertifikats per „mmc.exe“][25]   
+1. Öffnen Sie `mmc.exe` auf „MAS-CON01“, einem Azure Stack-Hostcomputer oder einem lokalen Computer, der über eine VPN-Verbindung mit Azure Stack verfügt. 
 
-   Suchen Sie unter **Console Root\Certificated (Local Computer)\Trusted Root Certification Authorities\Certificates** (Konsolenstamm\Zertifiziert (Lokaler Computer)\Vertrauenswürdige Stammzertifizierungsstellen\Zertifikate) nach **AzureStackCertificationAuthority**. Klicken Sie mit der rechten Maustaste auf das Element, und wählen Sie **Alle Aufgaben > Exportieren**. Befolgen Sie dann die Schritte in den Dialogfeldern, um das Zertifikat mit der Option **Base-64-codiert X.509 (.CER)** zu exportieren. Das exportierte Zertifikat wird im nächsten Schritt verwendet.   
+2. Wählen Sie unter **Datei** die Option **Snap-In hinzufügen/entfernen** aus, und fügen Sie anschließend **Zertifikate** zum Verwalten des **Computerkontos** von **Lokaler Computer** hinzu.
 
-   ![Exportieren des Stammzertifikats der Azure Stack-Stammzertifizierungsstelle][26]   
+    ![Laden des Azure Stack-Stammzertifikats per „mmc.exe“][25]   
 
-3. Wählen Sie im Speicher-Explorer (Vorschau) das Menü **Bearbeiten** und dann die Optionen **SSL-Zertifikate** und **Zertifikate importieren**. Verwenden Sie das Dialogfeld mit der Dateiauswahl, um das Zertifikat zu suchen und zu öffnen, das Sie im vorherigen Schritt untersucht haben. Nach dem Importieren werden Sie zum Neustarten des Speicher-Explorers aufgefordert.
+3. Suchen Sie unter **Console Root\Certificated (Local Computer)\Trusted Root Certification Authorities\Certificates** (Konsolenstamm\Zertifiziert (Lokaler Computer)\Vertrauenswürdige Stammzertifizierungsstellen\Zertifikate) nach **AzureStackCertificationAuthority**. 
 
-   ![Importieren des Zertifikats in den Speicher-Explorer (Vorschau)][27]
+4. Klicken Sie mit der rechten Maustaste auf das Element, wählen Sie **Alle Aufgaben** > **Exportieren** aus, und führen Sie dann die Anweisungen aus, um das Zertifikat mit **Base-64-codiert X.509 (.CER)** zu exportieren.  
 
-4. Wählen Sie nach dem Neustart des Speicher-Explorers (Vorschau) das Menü **Bearbeiten**, und vergewissern Sie sich, dass die Option **Target Azure Stack** (Azure Stack als Ziel) aktiviert ist. Aktivieren Sie die Option, falls erforderlich, und starten Sie den Speicher-Explorer neu, damit die Änderung wirksam wird. Diese Konfiguration ist erforderlich, damit die Kompatibilität mit Ihrer Azure Stack-Umgebung sichergestellt ist.
+    Das exportierte Zertifikat wird im nächsten Schritt verwendet.   
 
-   ![Sicherstellen der Aktivierung von „Target Azure Stack“ (Azure Stack als Ziel)][28]
+    ![Exportieren des Stammzertifikats der Azure Stack-Stammzertifizierungsstelle][26]   
 
-5. Wählen Sie in der linken Seitenleiste die Option **Konten verwalten**. Im linken Bereich werden alle Microsoft-Konten angezeigt, an denen Sie angemeldet sind. Wählen Sie zum Herstellen der Verbindung mit einem Azure Stack-Konto die Option **Konto hinzufügen**.
+5. Zeigen Sie im Speicher-Explorer (Vorschau) im Menü **Bearbeiten** auf **SSL-Zertifikate**, und wählen Sie anschließend **Zertifikate importieren** aus. Suchen Sie im Dialogfeld für die Dateiauswahl nach dem Zertifikat, das Sie im vorherigen Schritt exportiert haben, und öffnen Sie es.  
 
-   ![Hinzufügen eines Azure Stack-Kontos][29]
+    Nach dem Importieren werden Sie zum Neustarten des Speicher-Explorers aufgefordert.
 
-6. Wählen Sie im Dialogfeld **Neues Konto hinzufügen** unter **Azure-Umgebung** die Option **Create Custom Environment** (Benutzerdefinierte Umgebung erstellen), und klicken Sie anschließend auf **Weiter**.
+    ![Importieren des Zertifikats in den Speicher-Explorer (Vorschau)][27]
 
-7. Geben Sie alle erforderlichen Informationen für die benutzerdefinierte Azure Stack-Umgebung ein, und klicken Sie auf **Anmelden**.  Füllen Sie die Felder im Dialogfeld **Sign in to a Custom Cloud environment** (An benutzerdefinierter Cloudumgebung anmelden) aus, um sich mit dem Azure Stack-Konto anzumelden, das mindestens einem aktiven Azure Stack-Abonnement zugeordnet ist. Die Details für die Felder des Dialogfelds lauten:
+6. Wählen Sie nach dem Neustart des Speicher-Explorers (Vorschau) das Menü **Bearbeiten** aus, und vergewissern Sie sich, dass die Option **Target Azure Stack** (Azure Stack als Ziel) aktiviert ist. Sollte die Option nicht aktiviert sein, aktivieren Sie sie, und starten Sie den Speicher-Explorer anschließend neu, damit die Änderung wirksam wird. Diese Konfiguration ist erforderlich, um die Kompatibilität mit Ihrer Azure Stack-Umgebung zu gewährleisten.
+
+    ![Sicherstellen der Aktivierung von „Target Azure Stack“ (Azure Stack als Ziel)][28]
+
+7. Wählen Sie im linken Bereich **Konten verwalten** aus.  
+    Alle Microsoft-Konten, bei denen Sie angemeldet sind, werden angezeigt.
+
+8. Wählen Sie zum Herstellen einer Verbindung mit dem Azure Stack-Konto die Option **Konto hinzufügen** aus.
+
+    ![Hinzufügen eines Azure Stack-Kontos][29]
+
+9. Wählen Sie im Dialogfeld **Neues Konto hinzufügen** unter **Azure-Umgebung** die Option **Create Custom Environment** (Benutzerdefinierte Umgebung erstellen) aus, und klicken Sie anschließend auf **Weiter**.
+
+10. Geben Sie alle erforderlichen Informationen für die benutzerdefinierte Azure Stack-Umgebung ein, und klicken Sie anschließend auf **Anmelden**. 
+
+11. Füllen Sie die Felder im Dialogfeld **Sign in to a Custom Cloud environment** (Bei benutzerdefinierter Cloudumgebung anmelden) aus, um sich mit dem Azure Stack-Konto anzumelden, das mindestens einem aktiven Azure Stack-Abonnement zugeordnet ist.  
+
+    Im Anschluss finden Sie ausführliche Informationen zu den einzelnen Feldern:
 
     * **Umgebungsname**: Dieses Feld kann vom Benutzer angepasst werden.
-    * **Autorität**: Dieser Wert sollte „https://login.windows.net“ lauten. Verwenden Sie für Azure China (Mooncake) den Wert „https://login.chinacloudapi.cn“.
-    * **Sign in resource id** (Ressourcen-ID für Anmeldung): Rufen Sie den Wert ab, indem Sie den folgenden PowerShell-Code ausführen:
+    * **Autorität**: Dieser Wert sollte „https://login.windows.net“ lauten. Verwenden Sie für Azure China den Wert „https://login.chinacloudapi.cn“.
+    * **Sign in resource id** (Ressourcen-ID für Anmeldung): Führen Sie zum Abrufen des Werts eines der folgenden PowerShell-Skripts aus:
 
-    Als Cloudadministrator:
+        Als Cloudadministrator:
 
-    ```powershell
-    PowerShell (Invoke-RestMethod -Uri https://adminmanagement.local.azurestack.external/metadata/endpoints?api-version=1.0 -Method Get).authentication.audiences[0]
-    ```
+        ```powershell
+        PowerShell (Invoke-RestMethod -Uri https://adminmanagement.local.azurestack.external/metadata/endpoints?api-version=1.0 -Method Get).authentication.audiences[0]
+        ```
 
-    Als Mandant:
+        Als Mandant:
 
-    ```powershell
-    PowerShell (Invoke-RestMethod -Uri https://management.local.azurestack.external/metadata/endpoints?api-version=1.0 -Method Get).authentication.audiences[0]
-    ```
+        ```powershell
+        PowerShell (Invoke-RestMethod -Uri https://management.local.azurestack.external/metadata/endpoints?api-version=1.0 -Method Get).authentication.audiences[0]
+        ```
 
-    * **Graph-Endpunkt**: Dieser Wert sollte „https://graph.windows.net“ lauten. Verwenden Sie für Azure China (Mooncake) den Wert „https://graph.chinacloudapi.cn“.
-    * **ARM resource id** (ARM-Ressourcen-ID): Verwenden Sie den gleichen Wert wie unter „Sign in resource id“ (Ressourcen-ID für Anmeldung).
-    * **ARM resource endpoint** (ARM-Ressourcenendpunkt): Beispiele für den ARM-Ressourcenendpunkt:
+    * **Graph-Endpunkt**: Dieser Wert sollte „https://graph.windows.net“ lauten. Verwenden Sie für Azure China den Wert „https://graph.chinacloudapi.cn“.
+    * **ARM resource id** (ARM-Ressourcen-ID): Verwenden Sie den gleichen Wert wie bei **Sign in resource id** (Ressourcen-ID für Anmeldung).
+    * **ARM resource endpoint** (ARM-Ressourcenendpunkt): Beispiele für Azure Resource Manager-Ressourcenendpunkte:
 
-    Für den Cloudadministrator: https://adminmanagement.local.azurestack.external   
-    Für den Mandanten: https://management.local.azurestack.external
+        * Für Cloudadministratoren: https://adminmanagement.local.azurestack.external   
+        * Für Mandanten: https://management.local.azurestack.external
  
     * **Tenant Ids** (Mandanten-IDs): Optional. Der Wert wird nur eingegeben, wenn das Verzeichnis angegeben werden muss.
 
-8. Nach erfolgreicher Anmeldung mit einem Azure Stack-Konto werden im linken Bereich die Azure Stack-Abonnements angezeigt, die mit dem Konto verknüpft sind. Wählen Sie die Azure Stack-Abonnements aus, die Sie verwenden möchten, und klicken Sie dann auf **Übernehmen**. (Durch Auswählen von **Alle Abonnements** können Sie alle bzw. keine Azure Stack-Abonnements in der Liste auswählen.)
+12. Nach erfolgreicher Anmeldung mit einem Azure Stack-Konto werden im linken Bereich die mit dem Konto verknüpften Azure Stack-Abonnements angezeigt. Wählen Sie die Azure Stack-Abonnements aus, die Sie verwenden möchten, und klicken Sie dann auf **Übernehmen**. (Durch Aktivieren oder Deaktivieren des Kontrollkästchens **Alle Abonnements** können Sie alle bzw. keine Azure Stack-Abonnements in der Liste auswählen.)
 
-   ![Auswählen der Azure Stack-Abonnements nach dem Ausfüllen der Felder im Dialogfeld für die benutzerdefinierte Cloudumgebung][30]
+    ![Auswählen der Azure Stack-Abonnements nach dem Ausfüllen der Felder im Dialogfeld für die benutzerdefinierte Cloudumgebung][30]  
+    Im linken Bereich werden die Speicherkonten angezeigt, die mit den ausgewählten Azure Stack-Abonnements verknüpft sind.
 
-9. Im linken Bereich werden die Speicherkonten angezeigt, die mit den ausgewählten Azure Stack-Abonnements verknüpft sind.
-
-   ![Liste mit Speicherkonten, einschließlich Azure Stack-Abonnementkonten][31]
+    ![Liste mit Speicherkonten, einschließlich Azure Stack-Abonnementkonten][31]
 
 ## <a name="work-with-local-development-storage"></a>Verwenden von lokalem Entwicklungsspeicher
-Mit dem Speicher-Explorer (Vorschau) können Sie Schritte für den lokalen Speicher ausführen, indem Sie den Azure-Speicheremulator verwenden. So können Sie Code für Speicher schreiben und den Speicher testen, ohne dass unbedingt ein Speicherkonto unter Azure bereitgestellt werden muss (das Speicherkonto wird vom Azure-Speicheremulator emuliert).
+Mit dem Speicher-Explorer (Vorschau) können Sie unter Verwendung des Azure-Speicheremulators Schritte für den lokalen Speicher ausführen. Dadurch können Sie Code für Speicher schreiben und Speicher testen, ohne dass unbedingt ein Speicherkonto in Azure bereitgestellt werden muss, da das Speicherkonto vom Azure-Speicheremulator emuliert wird.
 
 > [!NOTE]
 > Der Azure-Speicheremulator wird derzeit nur für Windows unterstützt.
 >
 >
 
-1. Erweitern Sie im linken Bereich des Speicher-Explorers (Vorschau) den Knoten **Lokal und angefügt** > **Speicherkonten** > **(Entwicklung)**.
+1. Erweitern Sie im linken Bereich des Speicher-Explorers (Vorschau) den Knoten **(Lokal und angefügt)** > **Speicherkonten** > **(Entwicklung)**.
 
     ![Lokaler Entwicklungsknoten][21]
-2. Wenn Sie den Azure-Speicheremulator noch nicht installiert haben, werden Sie über eine Infoleiste dazu aufgefordert. Wählen Sie nach dem Anzeigen der Infoleiste die Option **Aktuelle Version herunterladen**, und installieren Sie den Emulator.
+
+2. Wenn Sie den Azure-Speicheremulator noch nicht installiert haben, werden Sie über eine Infoleiste dazu aufgefordert. Falls die Infoleiste angezeigt wird, wählen Sie **Aktuelle Version herunterladen** aus, und installieren Sie den Emulator.
 
     ![Eingabeaufforderung zum Herunterladen des Azure-Speicheremulators][22]
-3. Nach der Installation des Emulators können Sie lokale Blobs, Warteschlangen und Tabellen erstellen und nutzen. Wählen Sie einen der folgenden Links aus, um weitere Informationen zum Arbeiten mit den einzelnen Speicherkontotypen zu erhalten:
 
-   * [Verwalten von Azure-Blobspeicherressourcen](vs-azure-tools-storage-explorer-blobs.md)
-   * Verwalten von Azure-Dateifreigabespeicher-Ressourcen – *In Kürze verfügbar*
-   * Verwalten von Azure Queue Storage-Ressourcen – *In Kürze verfügbar*
-   * Verwalten von Azure Table Storage-Ressourcen – *In Kürze verfügbar*
+3. Nach der Installation des Emulators können Sie lokale Blobs, Warteschlangen und Tabellen erstellen und nutzen. Weitere Informationen zur Verwendung der einzelnen Speicherkontotypen finden Sie in den folgenden Themen:
+
+    * [Verwalten von Azure-Blobspeicherressourcen](vs-azure-tools-storage-explorer-blobs.md)
+    * Verwalten von Azure-Dateifreigabespeicher-Ressourcen: *In Kürze verfügbar*
+    * Verwalten von Azure Queue Storage-Ressourcen: *In Kürze verfügbar*
+    * Verwalten von Azure Table Storage-Ressourcen: *In Kürze verfügbar*
 
 ## <a name="attach-or-detach-an-external-storage-account"></a>Anfügen oder Trennen eines externen Speicherkontos
 Mit dem Speicher-Explorer (Vorschau) können Sie das Anfügen an externe Speicherkonten durchführen, damit Speicherkonten auf einfache Weise für die gemeinsame Nutzung freigegeben werden können. In diesem Abschnitt wird das Anfügen an externe Speicherkonten und das spätere Trennen beschrieben.
 
 ### <a name="get-the-storage-account-credentials"></a>Beschaffen der Anmeldeinformationen für Speicherkonten
-Um ein externes Speicherkonto freigeben zu können, muss der Besitzer des Kontos zuerst die Anmeldeinformationen (Kontoname und Schlüssel) für das Konto beschaffen und diese Informationen dann an die Person weitergeben, die das Anfügen an das (externe) Konto durchführen möchte. Sie können die Speicherkonto-Anmeldeinformationen abrufen, indem Sie im Azure-Portal die folgenden Schritte ausführen:
+Um ein externes Speicherkonto freigeben zu können, muss der Besitzer des Kontos zuerst die Anmeldeinformationen (Kontoname und Schlüssel) für das Konto ermitteln und diese Informationen dann an die Person weitergeben, die das Anfügen an das (externe) Konto durchführen möchte. Gehen Sie im Azure-Portal wie folgt vor, um die Anmeldeinformationen für das Speicherkonto abzurufen:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+
 2. Wählen Sie **Durchsuchen**.
+
 3. Wählen Sie **Speicherkonten**.
+
 4. Wählen Sie auf dem Blatt **Speicherkonten** das gewünschte Speicherkonto aus.
-5. Wählen Sie auf dem Blatt **Einstellungen** für das ausgewählte Speicherkonto die Option **Zugriffsschlüssel**.
 
-   ![Option „Zugriffsschlüssel“][5]
-6. Kopieren Sie auf dem Blatt **Zugriffsschlüssel** die Werte **SPEICHERKONTONAME** und **SCHLÜSSEL 1**, die für das Anfügen an das Speicherkonto verwendet werden sollen.
+5. Wählen Sie auf dem Blatt **Einstellungen** für das ausgewählte Speicherkonto die Option **Zugriffsschlüssel** aus.
 
-   ![Zugriffsschlüssel][6]
+    ![Option „Zugriffsschlüssel“][5]
+
+6. Kopieren Sie auf dem Blatt **Zugriffsschlüssel** die Werte **Speicherkontoname** und **Schlüssel1** für das Anfügen an das Speicherkonto.
+
+    ![Zugriffsschlüssel][6]
 
 ### <a name="attach-to-an-external-storage-account"></a>Anfügen an ein externes Speicherkonto
-Zum Anfügen an ein externes Speicherkonto benötigen Sie den Namen und Schlüssel des Kontos. Im Abschnitt *Beschaffen der Anmeldeinformationen für Speicherkonten* wird beschrieben, wie Sie diese Werte über das Azure-Portal abrufen. Beachten Sie aber, dass der Kontoschlüssel im Portal den Namen „key 1“ hat. Wenn der Speicher-Explorer (Vorschau) nach einem Kontoschlüssel fragt, geben Sie den Wert „key 1“ ein bzw. fügen ihn ein.
+Zum Anfügen an ein externes Speicherkonto benötigen Sie den Namen und Schlüssel des Kontos. Im Abschnitt „Beschaffen der Anmeldeinformationen für Speicherkonten“ erfahren Sie, wie Sie diese Werte über das Azure-Portal abrufen. Im Portal heißt der Kontoschlüssel allerdings **Schlüssel1**. Wenn im Speicher-Explorer (Vorschau) also ein Kontoschlüssel verlangt wird, geben Sie den Wert von **Schlüssel1** ein.
 
 1. Wählen Sie im Speicher-Explorer (Vorschau) die Option **Connect to Azure storage**(Mit Azure Storage verbinden).
 
-   ![Option „Mit Azure Storage verbinden“][23]
-2. Geben Sie im Dialogfeld **Mit Azure Storage verbinden** den Kontoschlüssel (Wert „key 1“ aus dem Azure-Portal) an, und wählen Sie dann **Weiter**.
-> [!NOTE]
-> Sie können die Storage-Verbindungszeichenfolge aus einem Speicherkonto in nationalem Azure eingeben. Geben Sie beispielsweise Verbindungszeichenfolgen wie die folgende ein, um eine Verbindung mit Azure Black Forest-Speicherkonten herzustellen: DefaultEndpointsProtocol=https;AccountName=cawatest03;AccountKey=<Speicherkontoschlüssel>;EndpointSuffix=core.cloudapi.de. Die Verbindungszeichenfolge können Sie über das Azure-Portal ermitteln. Verwenden Sie hierzu die unter **Beschaffen der Anmeldeinformationen für Speicherkonten** beschriebene Vorgehensweise.
+    ![Option „Mit Azure Storage verbinden“][23]
 
-   ![Dialogfeld „Mit Azure Storage verbinden“][24]
+2. Geben Sie im Dialogfeld **Verbindung mit Azure-Speicher herstellen** den Kontoschlüssel (Wert von **Schlüssel1** aus dem Azure-Portal) an, und wählen Sie anschließend **Weiter** aus.
 
-3. Geben Sie im Dialogfeld **Externen Speicher anfügen** den Speicherkontonamen im Feld **Kontoname** ein, geben Sie weitere gewünschte Einstellungen an, und wählen Sie abschließend **Weiter**.
+    > [!NOTE]
+    > Sie können die Storage-Verbindungszeichenfolge aus einem Speicherkonto in nationalem Azure eingeben. Wenn Sie also etwa eine Verbindung mit Speicherkonten in Azure Deutschland herstellen möchten, können Sie Verbindungszeichenfolgen wie die folgenden eingeben: 
+    >
+    >* DefaultEndpointsProtocol=https
+    >* AccountName=cawatest03
+    >* AccountKey=<Speicherkontoschlüssel>
+    >* EndpointSuffix=core.cloudapi.de
+    
+    >Die Verbindungszeichenfolge können Sie wie im Abschnitt „Beschaffen der Anmeldeinformationen für Speicherkonten“ beschrieben aus dem Azure-Portal abrufen.
 
-   ![Dialogfeld „Externen Speicher anfügen“][8]
-4. Überprüfen Sie im Dialogfeld **Verbindungszusammenfassung** die angezeigten Informationen. Wenn Sie Änderungen vornehmen möchten, wählen Sie **Zurück** aus und geben die gewünschten Einstellungen erneut ein. Wählen Sie **Verbinden**, wenn Sie fertig sind.
-5. Nach dem Verbinden wird das externe Speicherkonto mit der Zeichenfolge **(Extern)** angezeigt, die an den Speicherkontonamen angehängt ist.
+    ![Dialogfeld „Verbindung mit Azure-Speicher herstellen“][24]
 
-   ![Ergebnis der Verbindung mit einem externen Speicherkonto][9]
+3. Geben Sie im Dialogfeld **Externen Speicher anfügen** im Feld **Kontoname** den Speicherkontonamen ein, geben Sie weitere gewünschte Einstellungen an, und wählen Sie anschließend **Weiter** aus.
+
+    ![Dialogfeld „Externen Speicher anfügen“][8]
+
+4. Überprüfen Sie die Angaben im Dialogfeld **Verbindungszusammenfassung**. Wenn Sie Änderungen vornehmen möchten, wählen Sie **Zurück** aus und geben die gewünschten Einstellungen erneut ein. 
+
+5. Wählen Sie **Verbinden**aus.
+
+6. Nach erfolgreicher Verbindungsherstellung wird das externe Speicherkonto angezeigt. (Dabei wird **(Extern)** an den Speicherkontonamen angehängt.)
+
+    ![Ergebnis der Verbindung mit einem externen Speicherkonto][9]
 
 ### <a name="detach-from-an-external-storage-account"></a>Trennen von einem externen Speicherkonto
-1. Klicken Sie mit der rechten Maustaste auf das externe Speicherkonto, das Sie trennen möchten, und wählen Sie im Kontextmenü die Option **Trennen**.
+1. Klicken Sie mit der rechten Maustaste auf das externe Speicherkonto, das Sie trennen möchten, und wählen Sie anschließend **Trennen** aus.
 
-   ![Option zum Trennen vom Speicher][10]
-2. Wählen Sie **Ja** , wenn das Bestätigungsdialogfeld angezeigt wird, um das Trennen vom externen Speicherkonto zu bestätigen.
+    ![Option zum Trennen vom Speicher][10]
 
-## <a name="attach-storage-account-using-sas"></a>Anfügen eines Kontos per SAS
-Mit einer [SAS (Shared Access Signature)](storage/storage-dotnet-shared-access-signature-part-1.md) kann der Administrator eines Azure-Abonnements den Zugriff auf ein Speicherkonto vorübergehend gewähren, ohne dafür Anmeldeinformationen für das Azure-Abonnement angeben zu müssen.
+2. Wählen Sie in der Bestätigungsmeldung die Option **Ja** aus, um das Trennen vom externen Speicherkonto zu bestätigen.
 
-Beispiel: Benutzer A ist Administrator eines Azure-Abonnements, und Benutzer A möchte Benutzer B für einen begrenzten Zeitraum Zugriff auf ein Speicherkonto mit bestimmten Berechtigungen gewähren:
+## <a name="attach-a-storage-account-by-using-an-sas"></a>Anfügen eines Speicherkontos unter Verwendung einer SAS
+Mithilfe einer [SAS](storage/storage-dotnet-shared-access-signature-part-1.md) kann ein Administrator eines Azure-Abonnements einem Speicherkonto ohne Angabe von Anmeldeinformationen für das Azure-Abonnement temporären Zugriff auf ein Speicherkonto gewähren.
+
+Ein Beispiel: Benutzer A ist Administrator eines Azure-Abonnements, und Benutzer A möchte Benutzer B für einen begrenzten Zeitraum und mit bestimmten Berechtigungen Zugriff auf ein Speicherkonto gewähren:
 
 1. Benutzer A generiert eine SAS (mit der Verbindungszeichenfolge für das Speicherkonto) für den entsprechenden Zeitraum und mit den gewünschten Berechtigungen.
-2. Benutzer A gibt die SAS für die Person frei, die Zugriff auf das Speicherkonto erhalten möchte. In unserem Beispiel ist dies also Benutzer B.  
+
+2. Benutzer A gibt die SAS an die Person weiter, die auf das Speicherkonto zugreifen möchte (in unserem Beispiel also an Benutzer B).  
+
 3. Benutzer B verwendet den Speicher-Explorer (Vorschau), um das Anfügen an das Konto von Benutzer A mit der bereitgestellten SAS durchzuführen.
 
-### <a name="get-a-sas-for-the-account-you-want-to-share"></a>Beschaffen einer SAS für das freizugebende Konto
-1. Klicken Sie im Speicher-Explorer (Vorschau) mit der rechten Maustaste auf das Speicherkonto, das Sie freigeben möchten, und wählen Sie im Kontextmenü die Option **Get Shared Access Signature**(SAS abrufen).
+### <a name="get-an-sas-for-the-account-you-want-to-share"></a>Beschaffen einer SAS für das freizugebende Konto
+1. Klicken Sie im Speicher-Explorer (Vorschau) mit der rechten Maustaste auf das Speicherkonto, das Sie freigeben möchten, und wählen Sie **Get Shared Access Signature**(SAS abrufen) aus.
 
-   ![Kontextmenüoption „SAS abrufen“][13]
-2. Geben Sie im Dialogfeld **Shared Access Signature** den Zeitrahmen und die gewünschten Berechtigungen für das Konto an, und wählen Sie **Erstellen**.
+    ![Kontextmenüoption „SAS abrufen“][13]
 
-    ![Dialogfeld „SAS abrufen“][14]
-3. Ein zweites **Shared Access Signature**-Dialogfeld zeigt die SAS an. Wählen Sie neben **Verbindungszeichenfolge** die Option **Kopieren**, um sie in die Zwischenablage zu kopieren. Wählen Sie **Schließen** , um das Dialogfeld zu schließen.
+2. Geben Sie im Dialogfeld **Shared Access Signature** den Zeitrahmen und die gewünschten Berechtigungen für das Konto an, und wählen Sie anschließend **Erstellen** aus.
 
-### <a name="attach-to-the-shared-account-using-the-sas"></a>Anfügen an das freigegebene Konto per SAS
+    ![Dialogfeld zum Abrufen der SAS][14]  
+    Das Dialogfeld **Shared Access Signature** wird geöffnet und zeigt die SAS an.
+
+3. Wählen Sie neben **Verbindungszeichenfolge** die Option **Kopieren** aus, um die Verbindungszeichenfolge in die Zwischenablage zu kopieren, und wählen Sie anschließend **Schließen** aus.
+
+### <a name="attach-to-the-shared-account-by-using-the-sas"></a>Anfügen an das freigegebene Konto unter Verwendung der SAS
 1. Wählen Sie im Speicher-Explorer (Vorschau) die Option **Connect to Azure storage**(Mit Azure Storage verbinden).
 
-   ![Option „Mit Azure Storage verbinden“][23]
-2. Geben Sie im Dialogfeld **Mit Azure Storage verbinden** die Verbindungszeichenfolge an, und wählen Sie **Weiter**.
+    ![Option „Mit Azure Storage verbinden“][23]
 
-   ![Dialogfeld „Mit Azure Storage verbinden“][24]
-3. Überprüfen Sie im Dialogfeld **Verbindungszusammenfassung** die angezeigten Informationen. Wenn Sie Änderungen vornehmen möchten, wählen Sie **Zurück** aus und geben die gewünschten Einstellungen erneut ein. Wählen Sie **Verbinden**, wenn Sie fertig sind.
-4. Nach dem Anfügen wird das Speicherkonto mit der Zeichenfolge „(SAS)“ angezeigt, die an den von Ihnen angegebenen Kontonamen angehängt ist.
+2. Geben Sie im Dialogfeld **Verbindung mit Azure-Speicher herstellen** die Verbindungszeichenfolge an, und wählen Sie anschließend **Weiter** aus.
 
-   ![Ergebnis des Anfügens an ein Konto per SAS][17]
+    ![Dialogfeld „Verbindung mit Azure-Speicher herstellen“][24]
 
-## <a name="attach-service-using-sas"></a>Anfügen eines Diensts per SAS
-Im Abschnitt [Anfügen eines Speicherkontos per SAS](#attach-storage-account-using-sas) wird beschrieben, wie der Administrator eines Azure-Abonnements vorübergehenden Zugriff auf ein Speicherkonto gewähren kann, indem er eine SAS für das Speicherkonto generiert (und teilt). Auf ähnliche Weise kann eine SAS für einen bestimmten Dienst (Blobcontainer, Warteschlange oder Tabelle) in einem Speicherkonto generiert werden.  
+3. Überprüfen Sie die Angaben im Dialogfeld **Verbindungszusammenfassung**. Wenn Sie etwas ändern möchten, wählen Sie **Zurück** aus, und geben Sie die gewünschten Einstellungen ein. 
 
-### <a name="generate-a-sas-for-the-service-you-want-to-share"></a>Generieren einer SAS für den Dienst, den Sie freigeben möchten
-In diesem Kontext kann ein Dienst ein Blobcontainer, eine Warteschlange oder eine Tabelle sein. In den folgenden Abschnitten wird beschrieben, wie Sie die SAS für den angegebenen Dienst generieren:
+4. Wählen Sie **Verbinden**aus.
+
+5. Nach dem Anfügen wird das Speicherkonto angezeigt. (Dabei wird **(SAS)** an den von Ihnen angegebenen Kontonamen angehängt.)
+
+    ![Ergebnis des Anfügens an ein Konto unter Verwendung der SAS][17]
+
+## <a name="attach-a-service-by-using-an-sas"></a>Anfügen eines Diensts unter Verwendung einer SAS
+Im Abschnitt „Anfügen eines Speicherkontos unter Verwendung einer SAS“ wird beschrieben, wie ein Administrator eines Azure-Abonnements vorübergehenden Zugriff auf ein Speicherkonto gewähren kann, indem er eine SAS für das Speicherkonto generiert und weitergibt. Analog dazu kann eine SAS auch für einen bestimmten Dienst (Blobcontainer, Warteschlange oder Tabelle) in einem Speicherkonto generiert werden.  
+
+### <a name="generate-an-sas-for-the-service-that-you-want-to-share"></a>Generieren einer SAS für den Dienst, den Sie freigeben möchten
+In diesem Kontext kann ein Dienst ein Blobcontainer, eine Warteschlange oder eine Tabelle sein. Informationen zum Generieren der SAS für einen aufgeführten Dienst finden Sie in den folgenden Themen:
 
 * [Abrufen der SAS für einen Blobcontainer](vs-azure-tools-storage-explorer-blobs.md#get-the-sas-for-a-blob-container)
-* Abrufen der SAS für eine Dateifreigabe – *In Kürze verfügbar*
-* Abrufen der SAS für eine Warteschlange – *In Kürze verfügbar*
-* Abrufen der SAS für eine Tabelle – *In Kürze verfügbar*
+* Abrufen der SAS für eine Dateifreigabe: *In Kürze verfügbar*
+* Abrufen der SAS für eine Warteschlange: *In Kürze verfügbar*
+* Abrufen der SAS für eine Tabelle: *In Kürze verfügbar*
 
-### <a name="attach-to-the-shared-account-service-using-the-sas"></a>Anfügen an den freigegebenen Kontodienst per SAS
+### <a name="attach-to-the-shared-account-service-by-using-the-sas"></a>Anfügen an den freigegebenen Kontodienst unter Verwendung der SAS
 1. Wählen Sie im Speicher-Explorer (Vorschau) die Option **Connect to Azure storage**(Mit Azure Storage verbinden).
 
-   ![Option „Mit Azure Storage verbinden“][23]
-2. Geben Sie im Dialogfeld **Mit Azure Storage verbinden** den SAS-URI an, und wählen Sie **Weiter**.
+    ![Option „Mit Azure Storage verbinden“][23]
 
-   ![Dialogfeld „Mit Azure Storage verbinden“][24]
-3. Überprüfen Sie im Dialogfeld **Verbindungszusammenfassung** die angezeigten Informationen. Wenn Sie Änderungen vornehmen möchten, wählen Sie **Zurück** aus und geben die gewünschten Einstellungen erneut ein. Wählen Sie **Verbinden**, wenn Sie fertig sind.
-4. Nach dem Anfügen wird der neu angefügte Dienst unter dem Knoten **(Dienst-SAS)** angezeigt.
+2. Geben Sie im Dialogfeld **Verbindung mit Azure-Speicher herstellen** den SAS-URI an, und wählen Sie anschließend **Weiter** aus.
 
-   ![Ergebnis des Anfügens an einen gemeinsamen Dienst per SAS][20]
+    ![Dialogfeld „Verbindung mit Azure-Speicher herstellen“][24]
+
+3. Überprüfen Sie die Angaben im Dialogfeld **Verbindungszusammenfassung**. Wenn Sie etwas ändern möchten, wählen Sie **Zurück** aus, und geben Sie die gewünschten Einstellungen ein. 
+
+4. Wählen Sie **Verbinden**aus.
+
+5. Nach Abschluss des Anfügevorgangs wird der neu angefügte Dienst unter dem Knoten **(Dienst-SAS)** angezeigt.
+
+    ![Ergebnis des Anfügens an einen freigegebenen Dienst unter Verwendung einer SAS][20]
 
 ## <a name="search-for-storage-accounts"></a>Suchen nach Speicherkonten
 Wenn Sie über eine lange Liste mit Speicherkonten verfügen, können Sie ein bestimmtes Speicherkonto schnell ermitteln, indem Sie das Suchfeld oben im linken Bereich verwenden.
 
-Wenn Sie Text in das Suchfeld eingeben, werden im linken Bereich nur die Speicherkonten angezeigt, die mit dem Suchwert übereinstimmen, den Sie bis zu diesem Punkt eingegeben haben. Der folgende Screenshot zeigt ein Beispiel, bei dem nach allen Speicherkonten gesucht wird, die im Speicherkontonamen den Text „tarcher“ enthalten.
+Wenn Sie Text in das Suchfeld eingeben, werden im linken Bereich die dem bislang eingegebenen Suchwert entsprechenden Speicherkonten angezeigt. Der folgende Screenshot zeigt beispielsweise eine Suche nach allen Speicherkonten, deren Name **tarcher** enthält:
 
 ![Speicherkontosuche][11]
-
-Wählen Sie zum Löschen der Suche im Suchfeld die Schaltfläche **x** .
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Verwalten von Azure-Blobspeicherressourcen mit dem Speicher-Explorer (Vorschau)](vs-azure-tools-storage-explorer-blobs.md)
