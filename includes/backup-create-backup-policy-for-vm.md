@@ -26,8 +26,3 @@ So erstellen Sie eine Richtlinie
    
     Die neue Richtlinie wird sofort auf den Tresor angewendet.
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

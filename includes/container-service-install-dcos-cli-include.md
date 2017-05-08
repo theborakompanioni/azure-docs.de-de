@@ -51,8 +51,3 @@ Jetzt können Sie überprüfen, ob die CLI installiert wurde:
 ```bash
 dcos --help
 ```
-
-
-<!--HONumber=Nov16_HO2-->
-
-

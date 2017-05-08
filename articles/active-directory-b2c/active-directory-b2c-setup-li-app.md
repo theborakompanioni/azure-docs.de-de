@@ -17,6 +17,7 @@ ms.author: swkrish
 translationtype: Human Translation
 ms.sourcegitcommit: e37c48d6c92a8a2cd480458abdff0a3a1ca9338f
 ms.openlocfilehash: 3b22dee95d064de8190d7429cc4118884fb81172
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -50,10 +51,5 @@ Um LinkedIn als Identitätsanbieter in Azure Active Directory (Azure AD) B2C ve
 5. Klicken Sie auf **Typ des Identitätsanbieters**, wählen Sie **LinkedIn** aus, und klicken Sie auf **OK**.
 6. Klicken Sie auf **Diesen Identitätsanbieter einrichten**, und geben Sie die Client-ID und das Clientgeheimnis der LinkedIn-Anwendung ein, die Sie zuvor erstellt haben.
 7. Klicken Sie auf **OK** und dann auf **Erstellen**, um die LinkedIn-Konfiguration zu speichern.
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

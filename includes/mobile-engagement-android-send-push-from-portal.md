@@ -14,7 +14,7 @@ Damit Mobile Engagement Pushbenachrichtigungen in Ihrem Namen senden kann, müss
    
     ![](./media/mobile-engagement-android-send-push/api-key.png)
 
-## <a name="a-idsendasend-a-notification-to-your-app"></a><a id="send"></a>Versenden von Benachrichtigungen an die App
+## <a id="send"></a>Versenden von Benachrichtigungen an die App
 Wir erstellen nun eine einfache Push-Benachrichtigungskampagne, die eine Push-Benachrichtigung an die App sendet.
 
 1. Navigieren Sie zu der Registerkarte **REACH** in Ihrem Mobile Engagement-Portal.
@@ -41,9 +41,4 @@ Wir erstellen nun eine einfache Push-Benachrichtigungskampagne, die eine Push-Be
 6. Als letzten Schritt klicken Sie auf **Aktivieren** , um die Kampagne zu aktivieren, damit Pushbenachrichtigungen gesendet werden.
    
     ![](./media/mobile-engagement-android-send-push/campaign-activate.png)
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

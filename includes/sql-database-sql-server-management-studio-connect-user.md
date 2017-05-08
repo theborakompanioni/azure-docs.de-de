@@ -30,8 +30,3 @@ Führen Sie die folgenden Schritte aus, um mit SSMS als Benutzer eine Verbindung
 ## <a name="troubleshoot-connection-failures"></a>Durchführen der Problembehandlung für Verbindungsfehler
 Die häufigste Ursache für Verbindungsfehler sind Unregelmäßigkeiten beim Servernamen (Erinnerung: <*Servername*> ist der Name des logischen Servers, nicht der Datenbank), Benutzernamen oder Kennwort sowie das Verbieten der Verbindung durch den Server aus Sicherheitsgründen. 
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

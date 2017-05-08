@@ -1,6 +1,6 @@
 Zwei Typen von Speicherkonten stehen zur Verfügung:
 
-### <a name="generalpurpose-storage-accounts"></a>Allgemeine Speicherkonten
+### <a name="general-purpose-storage-accounts"></a>Allgemeine Speicherkonten
 Ein allgemeines Speicherkonto bietet Ihnen Zugriff auf Azure Storage-Dienste wie Tabellen, Warteschlangen, Dateien, Blobs und Datenträger von virtuellen Azure-Computern in einem einzigen Konto. Diese Art von Speicherkonto umfasst zwei Leistungsstufen:
 
 * Storage Standard ermöglicht Ihnen das Speichern von Tabellen, Warteschlangen, Dateien, Blobs und Datenträgern von virtuellen Azure-Computern.
@@ -26,9 +26,4 @@ Weitere Informationen zu BLOB-Speicherkonten finden Sie unter [Azure-Blobspeiche
 Um ein Speicherkonto erstellen zu können, müssen Sie über ein Azure-Abonnement verfügen. Dies ist ein Plan, der Ihnen Zugriff auf eine Vielzahl von Azure-Diensten verschafft. Sie können die Verwendung von Azure mit einem [kostenlosen Konto](https://azure.microsoft.com/pricing/free-trial/) beginnen. Wenn Sie sich entscheiden, einen Plan zu kaufen, können Sie aus einer Vielzahl von [Kaufoptionen](https://azure.microsoft.com/pricing/purchase-options/) auswählen. [MSDN-Abonnenten](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) erhalten ein monatliches Gratisguthaben für Azure-Dienste, einschließlich Azure Storage. Informationen zu Volumenpreisen finden Sie unter [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
 
 Informationen zum Erstellen eines Standardspeicherkontos finden Sie unter [Erstellen Sie ein Speicherkonto](../articles/storage/storage-create-storage-account.md#create-a-storage-account) . Sie können bis zu 100 eindeutig benannte Speicherkonten unter einem einzigen Abonnement erstellen. Weitere Informationen zu den Begrenzungen von Speicherkonten finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Storage](../articles/storage/storage-scalability-targets.md) .
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

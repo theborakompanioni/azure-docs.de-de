@@ -16,9 +16,9 @@ ms.date: 03/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: c7090940192d9bd07fce96ad475b2239f5e9f2e8
-ms.lasthandoff: 04/06/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: 23dfe112411ebc6f47e6a3f09baaf1aa746e6987
+ms.lasthandoff: 04/26/2017
 
 
 ---
@@ -73,11 +73,12 @@ Ein Batch-Konto ist eine eindeutig identifizierte Entität innerhalb des Batch-D
 
 Ein Azure Batch-Konto können Sie über das [Azure-Portal](batch-account-create-portal.md) oder programmgesteuert (beispielsweise mit der [Batch Management .NET-Bibliothek ](batch-management-dotnet.md)) erstellen. Bei der Kontoerstellung können Sie ein Azure Storage-Konto zuordnen.
 
-Batch unterstützt zwei Kontokonfigurationen. Diese basieren auf der Eigenschaft *Poolzuordnungsmodus*. Die beiden Konfigurationen bieten unterschiedliche Authentifizierungsoptionen für den Batch-Dienst sowie unterschiedliche Optionen für die Bereitstellung und Verwaltung von [Batch-Pools](#pool). (Diese werden weiter unten in diesem Artikel beschrieben.) 
+Batch unterstützt zwei Kontokonfigurationen. Diese basieren auf der Eigenschaft *Poolzuordnungsmodus*. Über die beiden Konfigurationen erhalten Sie Zugriff auf verschiedene Funktionen für [Batch-Pools](#pool). (Weitere Informationen finden Sie weiter unten in diesem Artikel.) 
 
 
-* **Batch-Dienst** (Standard): Auf die Batch-APIs kann entweder unter Verwendung der Authentifizierung mit gemeinsam verwendetem Schlüssel oder unter Verwendung der [Azure Active Directory-Authentifizierung](batch-aad-auth.md) zugegriffen werden. Batch-Computeressourcen werden im Hintergrund in einem von Azure verwalteten Konto zugeordnet.   
-* **Benutzerabonnement**: Auf die Batch-APIs kann nur unter Verwendung der [Azure Active Directory-Authentifizierung](batch-aad-auth.md) zugegriffen werden. Batch-Computeressourcen werden direkt in Ihrem Azure-Abonnement zugeordnet. Dieser Modus bietet mehr Flexibilität beim Konfigurieren der Computeknoten sowie beim Integrieren in andere Dienste. In diesem Modus müssen Sie einen zusätzlichen Azure-Schlüsseltresor für Ihr Batch-Konto einrichten.
+* **Batch-Dienst:**: Die Standardoption. Bei dieser Option werden im Hintergrund virtuelle Batch-Pool-Computer in von Azure verwalteten Abonnements zugeordnet. Diese Kontokonfiguration muss verwendet werden, wenn Cloud Services-Pools benötigt werden. Sie darf jedoch nicht verwendet werden, wenn VM-Pools erforderlich sind, die auf der Grundlage benutzerdefinierter VM-Images erstellt werden oder ein virtuelles Netzwerk verwenden. Auf die Batch-APIs kann entweder unter Verwendung der Authentifizierung mit gemeinsam verwendetem Schlüssel oder unter Verwendung der [Azure Active Directory-Authentifizierung](batch-aad-auth.md) zugegriffen werden. 
+
+* **Benutzerabonnement:** Diese Kontokonfiguration muss verwendet werden, wenn VM-Pools erforderlich sind, die auf der Grundlage benutzerdefinierter VM-Images erstellt werden oder ein virtuelles Netzwerk verwenden. Auf die Batch-APIs kann nur unter Verwendung der [Azure Active Directory-Authentifizierung](batch-aad-auth.md) zugegriffen werden, und Cloud Services-Pools werden nicht unterstützt. Virtuelle Computer für Batch-Compute werden direkt in Ihrem Azure-Abonnement zugeordnet. In diesem Modus müssen Sie einen Azure-Schlüsseltresor für Ihr Batch-Konto einrichten.
  
 
 ## <a name="compute-node"></a>Computeknoten

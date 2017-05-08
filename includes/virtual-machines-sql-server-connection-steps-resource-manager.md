@@ -27,8 +27,3 @@ Wählen Sie zum Erstellen einer DNS-Bezeichnung als Erstes im Portal die Option 
    
     ![SSMS-Verbindung](./media/virtual-machines-sql-server-connection-steps/rm-ssms-connect.png)
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

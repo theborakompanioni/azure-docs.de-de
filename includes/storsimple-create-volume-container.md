@@ -20,8 +20,3 @@
 
 Sie können sich [hier](https://azure.microsoft.com/documentation/videos/create-a-volume-container-in-your-storsimple-solution/)ein Video anschauen, in dem das Erstellen eines Volumecontainers in der StorSimple-Lösung demonstriert wird.
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

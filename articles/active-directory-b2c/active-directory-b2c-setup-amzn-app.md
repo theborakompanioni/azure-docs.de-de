@@ -17,6 +17,7 @@ ms.author: swkrish
 translationtype: Human Translation
 ms.sourcegitcommit: e37c48d6c92a8a2cd480458abdff0a3a1ca9338f
 ms.openlocfilehash: f3154968710384e3f6186b277c4cae33b25c77d2
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -35,7 +36,7 @@ Um Amazon als Identitätsanbieter in Azure Active Directory (Azure AD) B2C verw
 5. Kopieren Sie im Abschnitt **Web Settings** die Werte für **Client ID** und **Client Secret**. (Hierzu müssen Sie auf die Schaltfläche **Show Secret** klicken.) Sie benötigen beide Angaben, um Amazon als Identitätsanbieter in Ihrem Mandanten zu konfigurieren. Klicken Sie unten im Abschnitt auf **Edit**. Das **Clientgeheimnis** ist eine wichtige Sicherheitsanmeldeinformation.
    
     ![Bereitstellen von Client-ID und Clientgeheimnis für die neue Anwendung bei Amazon](./media/active-directory-b2c-setup-amzn-app/amzn-client-secret.png)
-6. Geben Sie im Feld `https://login.microsoftonline.com`Allowed JavaScript Origins** den Wert ** und im Feld **Allowed Return URLs** den Wert `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` ein. Ersetzen Sie **{tenant}** durch den Namen Ihres Mandanten (z.B. „contoso.onmicrosoft.com“). Klicken Sie auf **Save**. Beim Wert für **{tenant}** wird die Groß-/Kleinschreibung beachtet.
+6. Geben Sie im Feld `https://login.microsoftonline.com`Allowed JavaScript Origins **den Wert**  und im Feld **Allowed Return URLs** den Wert `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` ein. Ersetzen Sie **{tenant}** durch den Namen Ihres Mandanten (z.B. „contoso.onmicrosoft.com“). Klicken Sie auf **Save**. Beim Wert für **{tenant}** wird die Groß-/Kleinschreibung beachtet.
    
     ![Bereitstellen von JavaScript-Ursprüngen und Rückgabe-URLs für die neue Anwendung bei Amazon](./media/active-directory-b2c-setup-amzn-app/amzn-urls.png)
 
@@ -47,10 +48,5 @@ Um Amazon als Identitätsanbieter in Azure Active Directory (Azure AD) B2C verw
 5. Klicken Sie auf **Typ des Identitätsanbieters**, wählen Sie **Amazon** aus, und klicken Sie auf **OK**.
 6. Klicken Sie auf **Diesen Identitätsanbieter einrichten**, und geben Sie die Client-ID und das Clientgeheimnis der Amazon-Anwendung ein, die Sie zuvor erstellt haben.
 7. Klicken Sie auf **OK** und dann auf **Erstellen**, um die Amazon-Konfiguration zu speichern.
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

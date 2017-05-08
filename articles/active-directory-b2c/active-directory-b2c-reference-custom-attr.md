@@ -17,6 +17,7 @@ ms.author: swkrish
 translationtype: Human Translation
 ms.sourcegitcommit: 4b13c040a15bef2f04d2cd2126e2270d061898bd
 ms.openlocfilehash: f7b21cc941f17d0815316dfe7013e9f97a95c223
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -54,10 +55,5 @@ Mit dem Feature "Jetzt ausführen" für die Richtlinie können Sie die Benutzere
 ## <a name="notes"></a>Hinweise
 * Zusammen mit Registrierungsrichtlinien können benutzerdefinierte Attribute auch in Registrierungs- oder Anmelderichtlinien sowie in Richtlinien für die Profilbearbeitung verwendet werden.
 * Die Einschränkung von benutzerdefinierten Attributen ist bekannt. Sie wird nur erstellt, wenn sie zum ersten Mal in einer Richtlinie verwendet wird und nicht, wenn Sie sie zur Liste der **Benutzerattribute**hinzufügen.
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

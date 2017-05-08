@@ -15,8 +15,3 @@
 
 Xcode erstellt die Demo-App, in die wir Mobile Engagement integrieren.
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

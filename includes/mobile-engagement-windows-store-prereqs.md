@@ -16,8 +16,3 @@ Für dieses Lernprogramm ist Folgendes erforderlich:
 > 
 > 
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

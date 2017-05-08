@@ -5,8 +5,3 @@ In diesem Szenario erstellen Sie ein Peering zwischen zwei VNets namens **VNET1*
 
 VNet-Peering ermöglicht die vollständige Konnektivität für den gesamten Adressraum von per Peering verknüpften virtuellen Netzwerken.    
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-
