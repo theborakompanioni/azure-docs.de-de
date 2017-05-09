@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2017
 ms.author: kakhan
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: d2887e255e59c164bb6d733988053f514a118c7b
-ms.lasthandoff: 04/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 35a86a91ee60a81b5c743067fcd97da0f2dcc8f1
+ms.contentlocale: de-de
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -359,7 +360,7 @@ Nach dem Hochladen der PFX-Datei stellen Sie über die folgenden Befehle ein Zer
  ```
 
 #### <a name="set-up-the-key-vault-access-policy-for-the-azure-ad-application"></a>Einrichten der Richtlinie für den Zugriff auf den Schlüsseltresor für die Azure AD-Anwendung
-Ihre Azure AD-Anwendung benötigt Rechte zum Zugreifen auf die Schlüssel oder geheimen Schlüssel im Tresor. Verwenden Sie das Cmdlet [`Set-AzureKeyVaultAccessPolicy`](https://msdn.microsoft.com/library/azure/dn903607.aspx) zum Gewähren von Berechtigungen für die Anwendung, und verwenden Sie hierbei die Client-ID (die während der Registrierung der Anwendung generiert wurde) als _–ServicePrincipalName_-Parameterwert. Weitere Informationen finden Sie im Blogbeitrag [Azure Key Vault - Step by Step](http://blogs.technet.com/b/kv/archive/2015/06/02/azure-key-vault-step-by-step.aspx) (Azure Key Vault – Schritt für Schritt). Hier sehen Sie ein Beispiel für die Durchführung dieser Aufgabe über PowerShell:
+Ihre Azure AD-Anwendung benötigt Rechte zum Zugreifen auf die Schlüssel oder geheimen Schlüssel im Tresor. Verwenden Sie das Cmdlet [`Set-AzureKeyVaultAccessPolicy`](/powershell/module/azure/set-azurekeyvaultaccesspolicy?view=azuresmps-3.7.0) zum Gewähren von Berechtigungen für die Anwendung, und verwenden Sie hierbei die Client-ID (die während der Registrierung der Anwendung generiert wurde) als _–ServicePrincipalName_-Parameterwert. Weitere Informationen finden Sie im Blogbeitrag [Azure Key Vault - Step by Step](http://blogs.technet.com/b/kv/archive/2015/06/02/azure-key-vault-step-by-step.aspx) (Azure Key Vault – Schritt für Schritt). Hier sehen Sie ein Beispiel für die Durchführung dieser Aufgabe über PowerShell:
 
     $keyVaultName = '<yourKeyVaultName>'
     $aadClientID = '<yourAadAppClientID>'
@@ -382,7 +383,7 @@ Verwenden Sie die folgende Terminologietabelle, um sich mit einigen allgemeinen 
 | CLI | Siehe [Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md). |
 | DM-Crypt |[DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) ist das Linux-basierte transparente Subsystem für die Datenträgerverschlüsselung, das zum Aktivieren der Datenträgerverschlüsselung auf virtuellen Linux-IaaS-Computern verwendet wird. |
 | KEK | Der Schlüsselverschlüsselungsschlüssel (Key Encryption Key) ist der asymmetrische Schlüssel (RSA 2048), der zum Schützen oder Umschließen des Geheimnisses verwendet wird. Sie können einen mit Hardwaresicherheitsmodulen geschützten Schlüssel oder einen Schlüssel mit Softwareschutz bereitstellen. Weitere Informationen finden Sie in der Dokumentation zu [Azure Key Vault](https://azure.microsoft.com/services/key-vault/). |
-| PS-Cmdlets | Siehe [Azure PowerShell-Cmdlets](/powershell/azureps-cmdlets-docs). |
+| PS-Cmdlets | Siehe [Azure PowerShell-Cmdlets](/powershell/azure/overview). |
 
 ### <a name="set-up-and-configure-your-key-vault-for-azure-disk-encryption"></a>Einrichten und Konfigurieren Ihres Schlüsseltresors für Azure Disk Encryption
 Mit Azure Disk Encryption werden die Schlüssel und Geheimnisse in Ihrem Azure-Schlüsseltresor geschützt. Führen Sie die Schritte in jedem der Abschnitte unten aus, um den Schlüsseltresor für Azure Disk Encryption einzurichten.
@@ -391,7 +392,7 @@ Mit Azure Disk Encryption werden die Schlüssel und Geheimnisse in Ihrem Azure-S
 Verwenden Sie eine der folgenden Optionen, um einen Schlüsseltresor zu erstellen:
 
 * [Resource Manager-Vorlage „101-Key-Vault-Create“](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)
-* [Azure PowerShell-Cmdlets für den Schlüsseltresor](https://msdn.microsoft.com/library/dn868052.aspx)
+* [Azure PowerShell-Cmdlets für den Schlüsseltresor](/powershell/module/azurerm.keyvault/#key_vault)
 * Azure-Ressourcen-Manager
 * Gewusst wie: [Schützen einer Key Vault-Instanz](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-secure-your-key-vault)
 
@@ -401,7 +402,7 @@ Verwenden Sie eine der folgenden Optionen, um einen Schlüsseltresor zu erstelle
 ![Azure Key Vault](./media/azure-security-disk-encryption/keyvault-portal-fig1.png)
 
 #### <a name="set-up-a-key-encryption-key-optional"></a>Einrichten eines Schlüsselverschlüsselungsschlüssels (optional)
-Wenn Sie als zusätzliche Sicherheitsmaßnahme einen KEK für die BitLocker-Verschlüsselungsschlüssel verwenden möchten, sollten Sie Ihrem Schlüsseltresor einen KEK hinzufügen. Verwenden Sie das Cmdlet [`Add-AzureKeyVaultKey`](https://msdn.microsoft.com/library/dn868048.aspx), um einen KEK im Schlüsseltresor zu erstellen. Sie können den KEK auch aus Ihrem lokalen Hardwaresicherheitsmodul (HSM) für die Schlüsselverwaltung importieren. Weitere Informationen finden Sie in der [Dokumentation zu Key Vault](https://azure.microsoft.com/documentation/services/key-vault/).
+Wenn Sie als zusätzliche Sicherheitsmaßnahme einen KEK für die BitLocker-Verschlüsselungsschlüssel verwenden möchten, sollten Sie Ihrem Schlüsseltresor einen KEK hinzufügen. Verwenden Sie das Cmdlet [`Add-AzureKeyVaultKey`](/powershell/module/azurerm.keyvault/add-azurermkeyvaultkey), um einen KEK im Schlüsseltresor zu erstellen. Sie können den KEK auch aus Ihrem lokalen Hardwaresicherheitsmodul (HSM) für die Schlüsselverwaltung importieren. Weitere Informationen finden Sie in der [Dokumentation zu Key Vault](https://azure.microsoft.com/documentation/services/key-vault/).
 
     Add-AzureKeyVaultKey [-VaultName] <string> [-Name] <string> -Destination <string> {HSM | Software}
 
@@ -494,7 +495,7 @@ In der folgenden Tabelle werden die Parameter der Resource Manager-Vorlage für 
 | vmName | Name des virtuellen IaaS-Computers. |
 
 #### <a name="using-powershell-cmdlets"></a>Verwenden von PowerShell-Cmdlets
-Sie können die Datenträgerverschlüsselung auf einer verschlüsselten VHD aktivieren, indem das PowerShell-Cmdlet [`Set-AzureRmVMOSDisk`](https://msdn.microsoft.com/library/azure/mt603746.aspx) verwenden.  
+Sie können die Datenträgerverschlüsselung auf einer verschlüsselten VHD aktivieren, indem das PowerShell-Cmdlet [`Set-AzureRmVMOSDisk`](/powershell/module/azurerm.compute/set-azurermvmosdisk) verwenden.  
 
 #### <a name="using-cli-commands"></a>Verwenden von CLI-Befehlen
 Führen Sie die folgenden Schritte aus, um die Datenträgerverschlüsselung für dieses Szenario mit CLI-Befehlen zu aktivieren:
@@ -630,7 +631,7 @@ Sie können die Datenträgerverschlüsselung auf Ihrer verschlüsselten VHD akti
  ```
 
 ### <a name="get-the-encryption-status-of-an-encrypted-iaas-vm"></a>Abrufen des Verschlüsselungsstatus eines verschlüsselten virtuellen IaaS-Computers
-Sie können den Verschlüsselungsstatus über den Azure Resource Manager, über [PowerShell-Cmdlets](https://msdn.microsoft.com/library/azure/mt622700.aspx) oder mithilfe von CLI-Befehlen abrufen. In den folgenden Abschnitten wird erläutert, wie Sie das klassische Azure-Portal und CLI-Befehle zum Abrufen des Verschlüsselungsstatus verwenden.
+Sie können den Verschlüsselungsstatus über den Azure Resource Manager, über [PowerShell-Cmdlets](/powershell/azure/overview) oder mithilfe von CLI-Befehlen abrufen. In den folgenden Abschnitten wird erläutert, wie Sie das klassische Azure-Portal und CLI-Befehle zum Abrufen des Verschlüsselungsstatus verwenden.
 
 #### <a name="get-the-encryption-status-of-an-encrypted-windows-vm-by-using-azure-resource-manager"></a>Abrufen des Verschlüsselungsstatus einer verschlüsselten Windows-VM mit dem Azure Resource Manager
 Sie können den Verschlüsselungsstatus des virtuellen IaaS-Computers folgendermaßen über den Azure Resource Manager abrufen:
@@ -713,7 +714,7 @@ In der folgenden Tabelle werden die Resource Manager-Vorlagenparameter für das 
 | sequenceVersion | Sequenzversion des BitLocker-Vorgangs. Diese Versionsnummer sollte jedes Mal erhöht werden, wenn auf demselben virtuellen Computer ein Vorgang für eine Datenträgerentschlüsselung durchgeführt wird. |
 
 ##### <a name="disable-encryption-on-an-existing-or-running-iaas-vm"></a>Deaktivieren der Verschlüsselung auf einem vorhandenen oder ausgeführten virtuellen IaaS-Computer
-Informationen zum Deaktivieren der Verschlüsselung auf einer vorhandenen oder ausgeführten IaaS-VM mithilfe des PowerShell-Cmdlets finden Sie unter [`Disable-AzureRmVMDiskEncryption`](https://msdn.microsoft.com/library/azure/mt715776.aspx). Dieses Cmdlet unterstützt sowohl Windows- als auch Linux-Computer. Das Cmdlet installiert eine Erweiterung auf dem virtuellen Computer, um die Verschlüsselung zu deaktivieren. Wenn der Parameter _Name_ nicht angegeben ist, wird eine Erweiterung mit dem Standardnamen _AzureDiskEncryption für Windows-VMs_ erstellt.
+Informationen zum Deaktivieren der Verschlüsselung auf einer vorhandenen oder ausgeführten IaaS-VM mithilfe des PowerShell-Cmdlets finden Sie unter [`Disable-AzureRmVMDiskEncryption`](/powershell/module/azurerm.compute/disable-azurermvmdiskencryption). Dieses Cmdlet unterstützt sowohl Windows- als auch Linux-Computer. Das Cmdlet installiert eine Erweiterung auf dem virtuellen Computer, um die Verschlüsselung zu deaktivieren. Wenn der Parameter _Name_ nicht angegeben ist, wird eine Erweiterung mit dem Standardnamen _AzureDiskEncryption für Windows-VMs_ erstellt.
 
 Auf Linux-VMs wird die Erweiterung „AzureDiskEncryptionForLinux“ verwendet.
 
@@ -1149,7 +1150,7 @@ Das zuvor abgerufene Geheimnis der Datenträgerverschlüsselung muss als Geheimn
 
 
 #### <a name="disk-encryption-secret-not-encrypted-with-a-kek"></a>Geheimnis der Datenträgerverschlüsselung ohne Verschlüsselung per KEK
-Verwenden Sie [Set-AzureKeyVaultSecret](https://msdn.microsoft.com/library/dn868050.aspx), um das Geheimnis im Schlüsseltresor einzurichten. Im Falle eines virtuellen Windows-Computers wird die BEK-Datei als Base64-Zeichenfolge codiert und dann mit dem `Set-AzureKeyVaultSecret`-Cmdlet in den Schlüsseltresor hochgeladen. Für Linux wird die Passphrase als Base64-Zeichenfolge codiert und dann in den Schlüsseltresor hochgeladen. Stellen Sie außerdem sicher, dass die folgenden Tags festgelegt sind, während das Geheimnis im Schlüsseltresor erstellt wird.
+Verwenden Sie [Set-AzureKeyVaultSecret](/powershell/module/azurerm.keyvault/set-azurekeyvaultsecret), um das Geheimnis im Schlüsseltresor einzurichten. Im Falle eines virtuellen Windows-Computers wird die BEK-Datei als Base64-Zeichenfolge codiert und dann mit dem `Set-AzureKeyVaultSecret`-Cmdlet in den Schlüsseltresor hochgeladen. Für Linux wird die Passphrase als Base64-Zeichenfolge codiert und dann in den Schlüsseltresor hochgeladen. Stellen Sie außerdem sicher, dass die folgenden Tags festgelegt sind, während das Geheimnis im Schlüsseltresor erstellt wird.
 
     # This is the passphrase that was provided for encryption during the distribution installation
     $passphrase = "contoso-password"
@@ -1165,7 +1166,7 @@ Verwenden Sie [Set-AzureKeyVaultSecret](https://msdn.microsoft.com/library/dn868
 Verwenden Sie im nächsten Schritt `$secretUrl`, um [den Betriebssystemdatenträger ohne KEK anzufügen](#without-using-a-kek).
 
 #### <a name="disk-encryption-secret-encrypted-with-a-kek"></a>Geheimnis der Datenträgerverschlüsselung mit Verschlüsselung per KEK
-Das Geheimnis kann optional mit einem KEK verschlüsselt werden, bevor er in den Schlüsseltresor hochgeladen wird. Verwenden Sie die Wrapper-[API](https://msdn.microsoft.com/library/azure/dn878066.aspx), um das Geheimnis zuerst mit dem KEK zu verschlüsseln. Die Ausgabe dieses Wrapper-Vorgangs ist eine Base64-codierte URL-Zeichenfolge, die dann als Geheimnis mit dem [`Set-AzureKeyVaultSecret`](https://msdn.microsoft.com/library/dn868050.aspx)-Cmdlet hochgeladen wird.
+Das Geheimnis kann optional mit einem KEK verschlüsselt werden, bevor er in den Schlüsseltresor hochgeladen wird. Verwenden Sie die Wrapper-[API](https://msdn.microsoft.com/library/azure/dn878066.aspx), um das Geheimnis zuerst mit dem KEK zu verschlüsseln. Die Ausgabe dieses Wrapper-Vorgangs ist eine Base64-codierte URL-Zeichenfolge, die dann als Geheimnis mit dem [`Set-AzureKeyVaultSecret`](/powershell/module/azurerm.keyvault/set-azurekeyvaultsecret)-Cmdlet hochgeladen wird.
 
     # This is the passphrase that was provided for encryption during the distribution installation
     $passphrase = "contoso-password"

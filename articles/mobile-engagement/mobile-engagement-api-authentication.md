@@ -14,9 +14,11 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 10/05/2016
 ms.author: wesmc;ricksal
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 716d2d95b5d68dbb7fdd2ef50d220a8c8c2c9f5e
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: bf8cd0d645d8a5992864c8a3820ac2049a3ff630
+ms.contentlocale: de-de
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -43,7 +45,7 @@ Es gibt mehrere Möglichkeiten, ein Token zu beziehen. Da die APIs im Allgemeine
 ### <a name="one-time-setup-using-script"></a>Einmalige Einrichtung (per Skript)
 Sie sollten die Anweisungen unten befolgen, um die Einrichtung mithilfe eines PowerShell-Skripts durchzuführen. Damit lässt sich die Einrichtung in der kürzestmöglichen Zeit durchführen. Dabei werden jedoch die lockersten Standards verwendet. Alternativ können Sie auch die Anweisungen unter [manuelle Einrichtung](mobile-engagement-api-authentication-manual.md) direkt im Azure-Portal befolgen, und eine detailliertere Konfiguration vornehmen. 
 
-1. Rufen Sie [hier](http://aka.ms/webpi-azps)die neueste Version von Azure PowerShell ab. Weitere Informationen zu den Anweisungen zum Herunterladen, finden Sie unter diesem [Link](/powershell/azureps-cmdlets-docs).  
+1. Rufen Sie [hier](http://aka.ms/webpi-azps)die neueste Version von Azure PowerShell ab. Weitere Informationen zu den Anweisungen zum Herunterladen, finden Sie unter diesem [Link](/powershell/azure/overview).  
 2. Sobald Azure PowerShell installiert ist, verwenden Sie die folgenden Befehle, um sicherzustellen, dass das **Azure-Modul** installiert ist:
    
     a. Stellen Sie sicher, dass das Azure PowerShell-Modul in der Liste der verfügbaren Module enthalten ist. 
@@ -150,10 +152,5 @@ Da Sie jetzt über ein gültiges Token verfügen, sind Sie bereit für die API-A
 [4]: ./media/mobile-engagement-api-authentication/ad-app-creation.png
 
 
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 
