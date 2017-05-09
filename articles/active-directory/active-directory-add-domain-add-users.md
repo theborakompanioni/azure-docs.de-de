@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2016
+ms.date: 05/08/2016
 ms.author: curtand
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: ccfa8d72b51c43e04d924d2b096e3cbc407af043
+ms.contentlocale: de-de
+ms.lasthandoff: 12/28/2016
 
 
 ---
@@ -49,10 +51,5 @@ Sie können dies auch mit [Microsoft PowerShell](https://msdn.microsoft.com/libr
 * [Verwenden von benutzerdefinierten Domänennamen zum Vereinfachen des Anmeldevorgangs für Benutzer](active-directory-add-domain.md)
 * [Verwalten von benutzerdefinierten Domänennamen](active-directory-add-manage-domain-names.md)
 * [Informationen zu den Konzepten der Domänenverwaltung in Azure AD](active-directory-add-domain-concepts.md)
-
-
-
-
-<!--HONumber=Dec16_HO4-->
 
 

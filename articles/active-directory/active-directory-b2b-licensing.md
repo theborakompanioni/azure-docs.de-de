@@ -15,9 +15,10 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 04/12/2017
 ms.author: sasubram
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
 ms.openlocfilehash: 4e620f3d76caa25ac0e5afb134f37ffe263935f0
+ms.contentlocale: de-de
 ms.lasthandoff: 04/13/2017
 
 
@@ -52,7 +53,7 @@ Ein B2B-Gastbenutzer ist ein Benutzer, der von einer Partnerorganisation für di
 1. Ein Gastgeber lädt einen Mitarbeiter unter Verwendung einer Consumeradresse ein.
   1. Dies entspricht nicht unseren Lizenzierungsrichtlinien und wird derzeit nicht empfohlen.
 
-2.    Eine Gastgeberorganisation fügt einen Benutzer aus einer anderen Mischorganisation hinzu.
+2. Eine Gastgeberorganisation fügt einen Benutzer aus einer anderen Mischorganisation hinzu.
   1. Dies ist der Fall, wenn der Benutzer mit B2B-APIs eingeladen wird, es ist jedoch kein herkömmliches B2B. Idealerweise sollten diese Organisationen die Benutzer der anderen Organisation als Mitglieder einladen (unsere API lässt dies zu). In diesem Fall müssen diesen Mitgliedern Lizenzen zugewiesen werden, damit sie auf die Ressourcen in der einladenden Organisation Zugriff haben.
 
   2. Manche Organisationen möchten möglicherweise als Richtlinie festlegen, dass die Benutzer der anderen Organisation als Gast eingeladen werden. Für dieses Szenario gibt es zwei Fälle:
