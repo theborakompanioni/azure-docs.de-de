@@ -15,9 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/21/2017
 ms.author: venkatja
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
 ms.openlocfilehash: 92e3e64f235e165a6a1772b6e1724789f3ec3049
+ms.contentlocale: de-de
 ms.lasthandoff: 04/26/2017
 
 ---
