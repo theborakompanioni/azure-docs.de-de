@@ -15,9 +15,10 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm;cephalin
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
 ms.openlocfilehash: e3d44bc4ff6ce7ebfcd510ef8b40fd0c614bc31e
+ms.contentlocale: de-de
 ms.lasthandoff: 04/11/2017
 
 
@@ -102,7 +103,7 @@ Wenn Sie bereits das Tutorial [Erstellen, Konfigurieren und Bereitstellen einer 
 3. Führen Sie nun den Entwicklungsserver aus:
 
         php artisan serve
-4. Navigieren Sie im Browser zu „http://localhost:8000“, und registrieren Sie wie folgt einen neuen Benutzer:
+4. Navigieren Sie im Browser zu http://localhost:8000 , und registrieren Sie wie folgt einen neuen Benutzer:
 
     ![Herstellen einer Verbindung mit der MySQL-Datenbank in Azure – Benutzerregistrierung](./media/store-php-create-mysql-database/connect-db-2-development-server.png)
 

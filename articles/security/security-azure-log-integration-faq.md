@@ -14,9 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/07/2017
 ms.author: TomSh
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: f539fc2945b9c6646660d50713d11dd7d822d06f
+ms.contentlocale: de-de
 ms.lasthandoff: 03/31/2017
 
 
@@ -86,7 +87,7 @@ Siehe:
 [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md)
 
 ## <a name="how-can-i-modify-what-is-collected-with-vm-diagnostics"></a>Wie kann ich ändern, was von der VM-Diagnose erfasst wird?
-Ausführliche Informationen zum Abrufen, Ändern und Festlegen der Azure-Diagnose in einer Windows-Konfiguration [(WAD)](../virtual-machines/windows/ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) finden Sie unter *Aktivieren der Azure-Diagnose auf einem virtuellen Azure-Computer unter Windows mithilfe von PowerShell* . Beispiel:
+Ausführliche Informationen zum Abrufen, Ändern und Festlegen der Azure-Diagnose in einer Windows-Konfiguration *(WAD)* finden Sie unter [Aktivieren der Azure-Diagnose auf einem virtuellen Azure-Computer unter Windows mithilfe von PowerShell](../virtual-machines/windows/ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) . Beispiel:
 
 ### <a name="get-the-wad-config"></a>Abrufen der WAD-Konfiguration
     -AzureRmVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient
