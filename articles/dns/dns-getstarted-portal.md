@@ -15,9 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: jonatul
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
 ms.openlocfilehash: 3aea60bc21bfb0650a336f6674005bbab47201fe
+ms.contentlocale: de-de
 ms.lasthandoff: 04/20/2017
 
 ---

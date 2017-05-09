@@ -17,9 +17,10 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: carlrab
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
 ms.openlocfilehash: 45405c7bb9993d1fd529b25b599c3cd7f459843c
+ms.contentlocale: de-de
 ms.lasthandoff: 04/20/2017
 
 
