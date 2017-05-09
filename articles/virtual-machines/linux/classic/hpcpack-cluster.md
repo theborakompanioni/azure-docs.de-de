@@ -15,10 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 10/12/2016
 ms.author: danlep
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 868026150e81347aa3a7914f63bc19c3a878c586
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: c65a932d0bf9bfb00f138997babc1bd642bcf879
+ms.contentlocale: de-de
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -59,7 +60,7 @@ Weitere Informationen zur den Optionen für HPC Pack-Clusterbereitstellungen in 
 Weitere Voraussetzungen für die Bereitstellung des Clusters über das HPC Pack-IaaS-Bereitstellungsskript:
 
 * **Clientcomputer** : Für die Ausführung des Skripts zur Clusterbereitstellung benötigen Sie einen Windows-basierten Clientcomputer.
-* **Azure PowerShell** - [Installieren und konfigurieren Sie Azure PowerShell](/powershell/azureps-cmdlets-docs) (ab Version 0.8.10) auf Ihrem Clientcomputer.
+* **Azure PowerShell** - [Installieren und konfigurieren Sie Azure PowerShell](/powershell/azure/overview) (ab Version 0.8.10) auf Ihrem Clientcomputer.
 * **HPC Pack-IaaS-Bereitstellungsskript** : Laden Sie die neueste Version des Skripts aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=44949)herunter, und entpacken Sie sie. Führen Sie `.\New-HPCIaaSCluster.ps1 –Version`aus, um die Version des Skripts zu überprüfen. Dieser Artikel basiert auf der Skriptversion 4.4.1 oder höher.
 
 ### <a name="deployment-option-1-use-a-resource-manager-template"></a>Bereitstellungsoption 1: Verwenden einer Resource Manager-Vorlage
@@ -87,7 +88,7 @@ Weitere Voraussetzungen für die Bereitstellung des Clusters über das HPC Pack-
 Im Folgenden finden Sie weitere Voraussetzungen für die Bereitstellung des Clusters über das HPC Pack-IaaS-Bereitstellungsskript:
 
 * **Clientcomputer** : Für die Ausführung des Skripts zur Clusterbereitstellung benötigen Sie einen Windows-basierten Clientcomputer.
-* **Azure PowerShell** - [Installieren und konfigurieren Sie Azure PowerShell](/powershell/azureps-cmdlets-docs) (ab Version 0.8.10) auf Ihrem Clientcomputer.
+* **Azure PowerShell** - [Installieren und konfigurieren Sie Azure PowerShell](/powershell/azure/overview) (ab Version 0.8.10) auf Ihrem Clientcomputer.
 * **HPC Pack-IaaS-Bereitstellungsskript** : Laden Sie die neueste Version des Skripts aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=44949)herunter, und entpacken Sie sie. Führen Sie `.\New-HPCIaaSCluster.ps1 –Version`aus, um die Version des Skripts zu überprüfen. Dieser Artikel basiert auf der Skriptversion 4.4.1 oder höher.
 
 **XML-Konfigurationsdatei**

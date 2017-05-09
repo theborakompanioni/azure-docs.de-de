@@ -15,10 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 04/11/2017
 ms.author: danlep
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: b37aecc5ac13210234efee624018ae783dea7820
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 8c40a0d44463c75e92444b393336db1daf270ee1
+ms.contentlocale: de-de
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -91,7 +92,7 @@ Das HPC Pack-IaaS-Bereitstellungsskript ist eine weitere vielseitige Bereitstel
 
 **Zusätzliche Voraussetzungen**
 
-* **Azure PowerShell** - [Installieren und konfigurieren Sie Azure PowerShell](/powershell/azureps-cmdlets-docs) (ab Version 0.8.10) auf Ihrem Clientcomputer.
+* **Azure PowerShell** - [Installieren und konfigurieren Sie Azure PowerShell](/powershell/azure/overview) (ab Version 0.8.10) auf Ihrem Clientcomputer.
 * **HPC Pack-IaaS-Bereitstellungsskript** : Laden Sie die neueste Version des Skripts aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=44949)herunter, und entpacken Sie sie. Führen Sie `New-HPCIaaSCluster.ps1 –Version`aus, um die Version des Skripts zu überprüfen. Dieser Artikel basiert auf der Skriptversion 4.5.0 oder höher.
 
 **Erstellen der Konfigurationsdatei**
