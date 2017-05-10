@@ -15,9 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/26/2016
 ms.author: glenga
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b873a7d0ef9efa79c9a173a8bfd3522b12522322
 ms.openlocfilehash: c0b4a963275dae5bbf203388cb61086393803b15
+ms.contentlocale: de-de
+ms.lasthandoff: 11/29/2016
 
 
 ---
@@ -96,11 +98,6 @@ Weitere Informationen zu Azure Functions finden Sie in diesen Themen.
 * [How to scale Azure Functions (Skalieren von Azure Functions) (Skalieren von Azure Functions)](functions-scale.md)  
   Beschreibt die für Azure Functions verfügbaren Servicepläne, einschließlich des Verbrauchsplans, und enthält Informationen zur Auswahl des geeigneten Plans.  
 
-[!INCLUDE [Getting Started Note](../../includes/functions-get-help.md)]
 
-
-
-
-<!--HONumber=Nov16_HO5-->
 
 
