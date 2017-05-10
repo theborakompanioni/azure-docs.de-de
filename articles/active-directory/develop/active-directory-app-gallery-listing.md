@@ -14,9 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/27/2017
 ms.author: bryanla
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 28712a9898bf2449de53d21fd87f1ce53da71ff8
 ms.openlocfilehash: df60c4737954e79ff860601412dffa58d4dbb471
+ms.contentlocale: de-de
 ms.lasthandoff: 02/11/2017
 
 
@@ -43,7 +44,7 @@ Befolgen Sie zum Integrieren Ihrer Anwendung in Azure AD diese [Anweisungen für
 > 
 > Anwendungsname:
 > 
-> Anwendungsbeschreibung (max.&256; Zeichen):
+> Anwendungsbeschreibung (max. 256 Zeichen):
 > 
 > Website der Anwendung (informativ):
 > 
@@ -77,7 +78,7 @@ Jede App, die SAML 2.0 unterstützt, kann direkt in einen Azure AD-Mandanten i
 > 
 > Anwendungsname:
 > 
-> Anwendungsbeschreibung (max.&256; Zeichen):
+> Anwendungsbeschreibung (max. 256 Zeichen):
 > 
 > Website der Anwendung (informativ):
 > 
