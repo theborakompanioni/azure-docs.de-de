@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 02/13/2017
 ms.author: ruturajd
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: a655c7bf1ea5ca1439d4353df5067c0e07f2d49f
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 3156ca5b2b8ba836e94d79a97b28bf591c799b48
+ms.contentlocale: de-de
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -25,6 +26,10 @@ ms.lasthandoff: 04/25/2017
 
 ## <a name="overview"></a>Übersicht
 In diesem Artikel erfahren Sie, wie Sie den Schutz virtueller Azure-Computer von Azure am lokalen Standort wiederherstellen. Befolgen Sie die Anweisungen in diesem Artikel, wenn alles bereit ist, um Ihre virtuellen VMware-Computer oder Ihre physischen Windows-/Linux-Server nach einem Failover vom lokalen Standort zu Azure per Failback wieder an den lokalen Standort zurückzuführen (unter [Replizieren von virtuellen VMware-Computern und physischen Servern in Azure mithilfe von Azure Site Recovery](site-recovery-failover.md) beschrieben).
+
+> [!WARNING]
+> Wenn Sie die [Migration abgeschlossen](site-recovery-migrate-to-azure.md#what-do-we-mean-by-migration), den virtuellen Computer in eine andere Ressourcengruppe verschoben oder den virtuellen Azure-Computer gelöscht haben, ist danach kein Failback möglich.
+
 
 Wenn der Schutz wiederhergestellt wurde und die geschützten virtuellen Computer repliziert werden, können Sie ein Failback für die virtuellen Computer initiieren, um sie an den lokalen Standort zu übertragen.
 
@@ -38,8 +43,11 @@ Sehen Sie sich das folgende Video zum Failover von Azure zu einem lokalen Stando
 Hier sind die vorbereitenden Schritte angegeben, die Sie beim erneuten Schützen ausführen bzw. berücksichtigen müssen.
 
 * Wenn die virtuellen Computer, für die Sie das Failback durchführen möchten, von einem vCenter-Server verwaltet werden, müssen Sie sicherstellen, dass auf den vCenter-Servern die erforderlichen Berechtigungen für die Ermittlung von virtuellen Computern vorhanden sind. [Weitere Informationen](site-recovery-vmware-to-azure-classic.md#vmware-permissions-for-vcenter-access)
-* Wenn auf einem lokalen virtuellen Computer Momentaufnahmen vorhanden sind, tritt beim Durchführen des erneuten Schutzes ein Fehler auf. Sie können die Momentaufnahmen vor dem Fortfahren mit dem erneuten Schützen löschen.
-* Vor dem Ausführen des Failbacks müssen Sie zwei zusätzliche Komponenten erstellen:
+
+> [!WARNING] 
+> Wenn auf dem Hauptziel oder lokalen virtuellen Computer Momentaufnahmen vorhanden sind, tritt beim Aktivieren des erneuten Schutzes ein Fehler auf. Sie können vor dem Fortfahren mit dem erneuten Schützen die Momentaufnahmen aus dem Hauptziel löschen. Die Momentaufnahmen auf dem virtuellen Computer werden während des Auftrags zum erneuten Schützen automatisch zusammengeführt.
+
+* Vor dem Failback müssen Sie zwei zusätzliche Komponenten erstellen:
   * **Erstellen eines Prozessservers**. Der Prozessserver empfängt Daten vom geschützten virtuellen Computer in Azure und sendet Daten an den lokalen Standort. Zwischen dem Prozessserver und dem geschützten virtuellen Computer ist ein Netzwerk mit geringer Wartezeit erforderlich. Sie können also einen lokalen Prozessserver einsetzen, wenn Sie eine Azure ExpressRoute-Verbindung verwenden, oder einen Azure-Prozessserver, wenn Sie ein VPN nutzen.
   * **Erstellen eines Masterzielservers:** Der Masterzielserver empfängt Failbackdaten. Auf dem von Ihnen erstellten lokalen Verwaltungsserver ist standardmäßig ein Masterzielserver installiert. Je nach Datenverkehrsvolumen beim Failback müssen Sie jedoch u.U. einen separaten Masterzielserver für das Failback erstellen.
         * [Für einen virtuellen Linux-Computer wird ein Linux-Masterzielserver benötigt](site-recovery-how-to-install-linux-master-target.md).
@@ -176,6 +184,8 @@ Sie können das erneute Schützen auch auf der Ebene eines Wiederherstellungspla
 > [!NOTE]
 > Eine Replikationsgruppe muss mithilfe desselben Masterziels erneut geschützt werden. Falls für das erneute Schützen ein anderer Masterzielserver genutzt wird, kann der Server keinen gemeinsamen Zeitpunkt angeben.
 
+> [!NOTE]
+> Der lokale virtuelle Computer wird während des erneuten Schützens deaktiviert. Dadurch soll die Konsistenz der Daten während der Replikation sichergestellt werden. Schalten Sie den virtuellen Computer nach Abschluss des erneuten Schützens nicht ein.
 
 Nach dem erfolgreichen erneuten Schützen befindet sich der virtuelle Computer in einem geschützten Zustand.
 

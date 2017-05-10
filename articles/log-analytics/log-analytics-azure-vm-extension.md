@@ -4,7 +4,7 @@ description: "Für Windows- und Linux-VMs sollte die Azure-VM-Erweiterung Log An
 services: log-analytics
 documentationcenter: 
 author: richrundmsft
-manager: jochan
+manager: ewinner
 editor: 
 ms.assetid: ca39e586-a6af-42fe-862e-80978a58d9b1
 ms.service: log-analytics
@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 04/27/2017
 ms.author: richrund
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 87e888bf3d7355b36c42e8787abe9bf1cb191fcd
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
+ms.openlocfilehash: 1cab9d2f814e0c36dadcdd7bbc3cdc736de0af49
+ms.contentlocale: de-de
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -36,7 +37,7 @@ Erfahren Sie mehr über [Azure VM-Erweiterungen](../virtual-machines/windows/ext
 Wenn die Erfassung von Protokolldaten auf Agentbasis erfolgt, müssen Sie [Datenquellen in Log Analytics](log-analytics-data-sources.md) konfigurieren, um die zu erfassenden Protokolle und Metriken anzugeben.
 
 > [!IMPORTANT]
-> Wenn Sie Log Analytics so konfiguriert haben, dass Protokolldaten mithilfe von [Azure-Diagnose](log-analytics-azure-storage.md) indiziert werden, und Sie den Agent für das Erfassen derselben Protokolle konfigurieren, werden diese Protokolle doppelt erfasst. Ihnen werden dann beide Datenquellen in Rechnung gestellt. Wenn der Agent installiert ist, sollten Sie die Protokolldaten ausschließlich mit dem Agent sammeln. Konfigurieren Sie in diesem Fall nicht Log Analytics für das Sammeln von Daten aus Azure-Diagnose.
+> Wenn Sie Log Analytics so konfiguriert haben, dass Protokolldaten mithilfe von [Azure-Diagnose](log-analytics-azure-storage.md) indiziert werden, und Sie den Agent für das Erfassen derselben Protokolle konfigurieren, werden diese Protokolle doppelt erfasst. Ihnen werden dann beide Datenquellen in Rechnung gestellt. Wenn der Agent installiert ist, sammeln Sie die Protokolldaten ausschließlich mit dem Agent. Konfigurieren Sie in diesem Fall nicht Log Analytics für das Sammeln von Daten aus der Azure-Diagnose.
 >
 >
 
@@ -74,7 +75,7 @@ Es gibt verschiedene Befehle für klassische virtuelle Azure-Computer und virtue
 
 Verwenden Sie für klassische virtuelle Computer das folgende PowerShell-Beispiel:
 
-```
+```PowerShell
 Add-AzureAccount
 
 $workspaceId = "enter workspace ID here"
@@ -90,9 +91,14 @@ $vm = Get-AzureVM –ServiceName $hostedService
 # Set-AzureVMExtension -VM $vm -Publisher 'Microsoft.EnterpriseCloud.Monitoring' -ExtensionName 'OmsAgentForLinux' -Version '1.*' -PublicConfiguration "{'workspaceId': '$workspaceId'}" -PrivateConfiguration "{'workspaceKey': '$workspaceKey' }" | Update-AzureVM -Verbose
 ```
 
+Für mit Resource Manager erstellte Linux-VMs, die die folgende CLI verwenden
+```azurecli
+az vm extension set --resource-group myRGMonitor --vm-name myMonitorVM --name OmsAgentForLinux --publisher Microsoft.EnterpriseCloud.Monitoring --version 1.3 --protected-settings ‘{"workspaceKey": "<workspace-key>"}’ --settings ‘{"workspaceId": "<workspace-id>"}’ 
+```
+
 Verwenden Sie für virtuelle Resource Manager-Computer das folgende PowerShell-Beispiel:
 
-```
+```PowerShell
 Login-AzureRMAccount
 Select-AzureSubscription -SubscriptionId "**"
 
@@ -122,8 +128,9 @@ $location = $vm.Location
 
 ```
 
+
 ## <a name="deploy-the-vm-extension-using-a-template"></a>Bereitstellen der VM-Erweiterung mithilfe einer Vorlage
-Mit dem Azure Resource Manager können Sie eine einfache Vorlage (im JSON-Format) erstellen, mit der die Bereitstellung und Konfiguration Ihrer Anwendung definiert wird. Diese Vorlage wird als Ressourcen-Manager-Vorlage bezeichnet und ist eine deklarative Möglichkeit zum Definieren der Bereitstellung. Mit einer Vorlage können Sie die Anwendung während des gesamten App-Lebenszyklus wiederholt bereitstellen und dabei sicher sein, dass Ihre Ressourcen einheitlich bereitgestellt werden.
+Mit dem Azure Resource Manager können Sie eine Vorlage (im JSON-Format) erstellen, mit der die Bereitstellung und Konfiguration Ihrer Anwendung definiert wird. Diese Vorlage wird als Ressourcen-Manager-Vorlage bezeichnet und ist eine deklarative Möglichkeit zum Definieren der Bereitstellung. Mit einer Vorlage können Sie die Anwendung während des gesamten App-Lebenszyklus wiederholt bereitstellen und dabei sicher sein, dass Ihre Ressourcen einheitlich bereitgestellt werden.
 
 Wenn Sie den Log Analytics-Agent in Ihre Resource Manager-Vorlage einschließen, können Sie sicherstellen, dass jeder virtuelle Computer zum Berichten an Ihren Log Analytics-Arbeitsbereich vorkonfiguriert wird.
 
@@ -135,7 +142,7 @@ Im Folgenden finden Sie ein Beispiel für eine Resource Manager-Vorlage für die
 * Ressourcenabschnitterweiterung Microsoft.EnterpriseCloud.Monitoring 
 * Ausgaben für die Suche nach workspaceId und workspaceSharedKey
 
-```
+```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
@@ -362,14 +369,14 @@ Im Folgenden finden Sie ein Beispiel für eine Resource Manager-Vorlage für die
 
 Sie können eine Vorlage mit dem folgenden PowerShell-Befehl bereitstellen:
 
-```
+```PowerShell
 New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile $templateFilePath
 ```
 
 ## <a name="troubleshooting-the-log-analytics-vm-extension"></a>Problembehandlung für die Log Analytics-VM-Erweiterung
-In der Regel erhalten Sie vom Azure-Portal oder von Azure PowerShell eine Nachricht, wenn etwas nicht funktioniert.
+In der Regel erhalten Sie vom Azure-Portal oder von Azure PowerShell eine Meldung, wenn etwas nicht funktioniert.
 
-1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an.
 2. Suchen Sie den virtuellen Computer, und öffnen Sie seine Details.
 3. Klicken Sie auf **Erweiterungen**, um zu überprüfen, ob die OMS-Erweiterung aktiviert ist.
 
@@ -394,7 +401,7 @@ Wenn die VM-Agent-Erweiterung *Microsoft Monitoring Agent* nicht installiert ist
 3. Überprüfen Sie die Protokolldateien der Microsoft Monitoring Agent-VM-Erweiterung in `C:\Packages\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent`.
 4. Stellen Sie sicher, dass der virtuelle Computer PowerShell-Skripts ausführen kann.
 5. Vergewissern Sie sich, dass die Berechtigungen für „C:\Windows\temp“ nicht geändert wurden.
-6. Zeigen Sie den Status des Microsoft Monitoring Agents an, indem Sie Folgendes in einem PowerShell-Fenster mit erhöhten Rechten auf dem virtuellen Computer eingeben: `  (New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg').GetCloudWorkspaces() | Format-List`.
+6. Zeigen Sie den Status des Microsoft Monitoring Agents an, indem Sie auf dem virtuellen Computer `  (New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg').GetCloudWorkspaces() | Format-List` den folgenden Befehl in einem PowerShell-Fenster mit erhöhten Rechten eingeben.
 7. Überprüfen Sie die Setupprotokolldateien des Microsoft Monitoring Agents in `C:\Windows\System32\config\systemprofile\AppData\Local\SCOM\Logs`.
 
 Weitere Informationen finden Sie unter [Behandeln von Problemen bei Windows-Erweiterungen](../virtual-machines/windows/extensions-troubleshoot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

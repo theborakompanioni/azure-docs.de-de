@@ -12,16 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 03/06/2017
+ms.date: 05/03/2017
 ms.author: jeffstok
-translationtype: Human Translation
-ms.sourcegitcommit: 2fe28e7b52af579038ec145c028a6d2796d6cc6e
-ms.openlocfilehash: f47b719f7b1a78264e054ee15edacc32ca35aaf7
-ms.lasthandoff: 02/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 05c5476cbfd616ce47d6d93627c6e7dd4d8a0d6f
+ms.contentlocale: de-de
+ms.lasthandoff: 05/03/2017
 
 
 ---
 # <a name="stream-analytics-release-notes"></a>Versionshinweise zu Stream Analytics
+
+## <a name="notes-for-05032017-update-of-stream-analytics"></a>Hinweise zum Stream Analytics-Update vom 03.05.2017
+Dieses Update gehört zu unserer veröffentlichten Dokumentation zur Problembehandlung.
+
+Das [Handbuch zur Problembehandlung](stream-analytics-troubleshooting-guide.md) und andere Dokumente wurden veröffentlicht. Wir freuen uns über Ihr Feedback.
+
 ## <a name="notes-for-02012017-release-of-stream-analytics"></a>Hinweise zur Stream Analytics-Version vom 01.02.2017
 Diese Version enthält das folgende Update.
 
@@ -136,7 +143,7 @@ Diese Version enthält die folgenden Updates.
 | PowerBI-Datasets können nur eine Tabelle enthalten. |PowerBI unterstützt nicht mehr als eine Tabelle in einem bestimmten Dataset. |
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
-Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)

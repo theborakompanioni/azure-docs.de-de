@@ -12,10 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2017
 ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: ed685f0a4ed26fb8d1c766f87210a99d2b5270ac
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 13a2883c59092c964cf3c353e767839c5f9ef788
+ms.contentlocale: de-de
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -43,6 +44,8 @@ Der Profiler kann momentan für ASP.NET-Web-Apps verwendet werden, die unter Azu
 Falls Sie den Profiler beenden oder neu starten müssen, finden Sie ihn **in der App Service-Ressource** unter **Webaufträge**. Wenn Sie ihn löschen möchten, suchen Sie unter **Erweiterungen**.
 
 Wenn Sie Änderungen an Ihrer Webanwendung mithilfe von WebDeploy bereitstellen, achten Sie darauf, dass der Ordner **App_Data** bei der Bereitstellung nicht gelöscht wird. Andernfalls werden die Dateien der Profiler-Erweiterung gelöscht, wenn Sie die Webanwendung das nächste Mal für Azure bereitstellen.
+
+**[Update]**  In die Application Insights-Websiteerweiterung wurde der Profiler-Agent, Version 2.3, integriert. Er ersetzt die ursprüngliche Application Insights-Websiteerweiterung „Profiler“. Sie können über den **Konfigurations**-Assistenten zur neuesten Version migrieren.
 
 ## <a name="viewing-profiler-data"></a>Anzeigen von Profiler-Daten
 
@@ -172,7 +175,7 @@ Wenn Sie den Profiler konfigurieren, werden an den Einstellungen der Web-App fol
 2. Legen Sie die .NET Framework-Version auf „v4.6“ fest.
 3. Legen Sie „Immer bereit“ auf „Ein“ fest.
 4. Fügen Sie die App-Einstellung __APPINSIGHTS_INSTRUMENTATIONKEY__ hinzu, und legen Sie den Wert auf den Instrumentationsschlüssel des SDKs fest.
-5. Fügen Sie unter **Erweiterungen** den Profiler „Application Insights Profiler“ hinzu. Die Installation dauert zwei bis drei Minuten.
+5. Fügen Sie in **Erweiterungen** „Application Insights“ hinzu. Die Installation dauert einige Minuten.
 
 ## <a id="aspnetcore"></a>Unterstützung von ASP.NET Core
 

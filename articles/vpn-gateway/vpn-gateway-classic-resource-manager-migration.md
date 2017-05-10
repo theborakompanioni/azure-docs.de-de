@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/28/2016
+ms.date: 05/02/2017
 ms.author: amsriva
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 32ca2e4b1dcf5715602b8e1e1f3026cb785fbe0c
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 1164fc24355657af22b6befaad74685ebbc2b5cb
+ms.contentlocale: de-de
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -40,7 +41,7 @@ Die meisten gängigen VPN-Konnektivitätsszenarios werden von der Migration vom 
 
 Zu nicht unterstützten Szenarios gehören –  
 
-* Zur Zeit unterstützen VNets mit ExpressRoute-Gateways keine Migration. Aus diesem Grund wird die Koexistenz mit ExpressRoute-Gateways auf dem gleichen VNet derzeit nicht unterstützt.
+* Ein VNet mit sowohl einem ExpressRoute-Gateway als auch einem VPN-Gateway wird derzeit nicht unterstützt.
 * Übertragungsszenarios in denen VM-Erweiterungen mit lokalen Servern verbunden sind. Einschränkungen zur Übertragung mit VPN-Konnektivität sind unten aufgeführt.
 
 > [!NOTE]

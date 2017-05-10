@@ -14,9 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/05/2017
 ms.author: mfussell
-translationtype: Human Translation
-ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
-ms.openlocfilehash: 0e899225063e77ccef254e8aaacbf0390faa25e3
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
+ms.openlocfilehash: 0fb4cc7b3c071eeb0bff15f9a57fc7e2106d7ca7
+ms.contentlocale: de-de
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -60,7 +62,7 @@ Weitere Informationen zum lokalen Erstellen von Clustern finden Sie unter [Erste
 
 ![Service Fabric-Plattform][Image1]
 
-## <a name="stateless-and-stateful-micrososervices-for-service-fabric"></a>Zustandslose und zustandsbehaftete Microservices für Service Fabric
+## <a name="stateless-and-stateful-microservices-for-service-fabric"></a>Zustandslose und zustandsbehaftete Microservices für Service Fabric
 Service Fabric ermöglicht es Ihnen, Anwendungen zu erstellen, die aus Microservices bestehen. Zustandslose Microservices (z.B. Protokollgateways und Webproxys) behalten über die Anforderung und ihre Antwort vom Dienst hinaus keinen veränderbaren Zustand bei. Ein zustandsloser Dienst ist zum Beispiel die Workerrolle in Azure Cloud Services. Zustandsbehaftete Microservices (z.B. Benutzerkonten, Datenbanken, Geräte, Einkaufswagen und Warteschlangen) behalten einen veränderbaren, autoritativen Zustand über die Anforderung und ihre Antwort hinaus bei. Heutige Internetanwendungen bestehen aus einer Kombination aus zustandslosen und zustandsbehafteten Microservices.
 
 Warum sollte man sowohl zustandsbehaftete als auch zustandslose Microservices haben? Die beiden wichtigsten Gründe sind:
@@ -118,9 +120,4 @@ Mit Service Fabric können Sie Folgendes tun:
 * Informieren Sie sich über [Service Fabric-Supportoptionen](service-fabric-support.md).
 
 [Image1]: media/service-fabric-overview/Service-Fabric-Overview.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 2/15/2017
 ms.author: pratshar
-translationtype: Human Translation
-ms.sourcegitcommit: b818d5083f1436035185b1b0d7990b5a36716da4
-ms.openlocfilehash: 1fca09ad0c9e1bc72109910cd0dcaf186d6a7c3d
-ms.lasthandoff: 02/23/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 960fb84c309b18c7f9741bb60b52cfcc3753a07d
+ms.contentlocale: de-de
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -83,6 +84,26 @@ Die Auslösung eines Failovers ist mit den folgenden Schritten verbunden:
 > **Laufendes Failover nicht abbrechen**: Bevor das Failover gestartet wird, wird die Replikation für den virtuellen Computer beendet. Wenn Sie für einen laufenden Auftrag die Option **Abbrechen** wählen, wird das Failover beendet, aber die Replikation für den virtuellen Computer wird nicht gestartet. Die Replikation kann nicht neu gestartet werden. 
 >
 > 
+
+## <a name="time-taken-for-failover-to-azure"></a>Zeitaufwand für das Failover in Azure
+
+In bestimmten Fällen erfordert das Failover virtueller Computer einen zusätzliche Zwischenschritt, der in der Regel ca. 8 bis 10 Minuten dauert. Das gilt für die folgenden Fälle:
+
+* VMware-VMs mit Mobility Service-Version niedriger als 9.8
+* Physische Server 
+* VMware-Linux-VMs
+* Als physische Server geschützte Hyper-V-VMs
+* VMware-VMs, bei denen die folgenden Treiber nicht als Starttreiber vorhanden sind 
+    * storvsc 
+    * vmbus 
+    * storflt 
+    * intelide 
+    * atapi
+* VMware-VMs, bei denen der DHCP-Dienst nicht aktiviert ist, unabhängig davon, ob DHCP oder statischen IP-Adressen verwendet werden
+
+In allen anderen Fällen ist dieser Zwischenschritt nicht erforderlich und der Zeitaufwand für das Failover deutlich niedriger. 
+
+
 
 
 

@@ -1,5 +1,6 @@
+
 ---
-title: Dienstremoting in Azure Service Fabric | Microsoft-Dokumentation
+title: Dienstremoting in Service Fabric | Microsoft Docs
 description: "Service Fabric-Remoting ermöglicht Clients und Diensten die Kommunikation mit Diensten über einen Remoteprozeduraufruf."
 services: service-fabric
 documentationcenter: .net
@@ -12,29 +13,24 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 02/10/2017
+ms.date: 04/20/2017
 ms.author: vturecek
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 8e06b3f2f6347468b197f2e90912a5d0facc5404
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
+ms.openlocfilehash: ebca34d5bf092494ea59a4a679f7f1175577320f
+ms.contentlocale: de-de
+ms.lasthandoff: 04/29/2017
 
 
 ---
 # <a name="service-remoting-with-reliable-services"></a>Dienstremoting mit Reliable Services
-> [!div class="op_single_selector"]
-> * [C# unter Windows](service-fabric-reliable-services-communication-remoting.md)
-> * [Java unter Linux](service-fabric-reliable-services-communication-remoting-java.md)
->
->
-
 Für WebAPI, WCF (Windows Communication Foundation) und andere Dienste, die nicht an ein bestimmtes Kommunikationsprotokoll oder einen bestimmten Kommunikationsstapel gebunden sind, stellt das Reliable Services-Framework einen Remotingmechanismus für das schnelle, einfache Einrichten von Remoteprozeduraufrufen für Dienste bereit.
 
 ## <a name="set-up-remoting-on-a-service"></a>Einrichten von Remoting für einen Dienst
 Die Einrichtung von Remoting für einen Dienst erfolgt in zwei einfachen Schritten:
 
 1. Erstellen Sie eine Schnittstelle, die vom Dienst implementiert werden soll. Diese Schnittstelle definiert die Methoden, die für den Remoteprozeduraufruf für Ihren Dienst verfügbar sind. Bei den Methoden muss es sich um asynchrone Methoden handeln, die einen Task zurückgeben. Die Schnittstelle muss `Microsoft.ServiceFabric.Services.Remoting.IService` implementieren, um zu signalisieren, dass der Dienst über eine Remotingschnittstelle verfügt.
-2. Verwenden Sie einen Remoting-Listener in Ihrem Dienst. Dies ist eine `ICommunicationListener` -Implementierung, die Remotingfunktionen bereitstellt. Der `Microsoft.ServiceFabric.Services.Remoting.Runtime`-Namespace enthält eine Erweiterungsmethode `CreateServiceRemotingListener` sowohl für zustandslose als auch für zustandsbehaftete Dienste, die zum Erstellen eines Remoting-Listener mit dem Standard-Remoting-Transportprotokoll verwendet werden kann.
+2. Verwenden Sie einen Remoting-Listener in Ihrem Dienst. Dies ist eine `ICommunicationListener` -Implementierung, die Remotingfunktionen bereitstellt. Der `Microsoft.ServiceFabric.Services.Remoting.Runtime`-Namespace enthält die Erweiterungsmethode `CreateServiceRemotingListener` sowohl für zustandslose als auch für zustandsbehaftete Dienste, die zum Erstellen eines Remotinglisteners mit dem standardmäßigen Remotingtransportprotokoll verwendet werden kann.
 
 Der folgende zustandslose Dienst macht beispielsweise eine einzelne Methode verfügbar, um „Hello World“ per Remoteprozeduraufruf abzurufen:
 
@@ -63,8 +59,7 @@ class MyService : StatelessService, IMyService
 
     protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
     {
-        return new[] { new ServiceInstanceListener(context =>
-            this.CreateServiceRemotingListener(context)) };
+        return new[] { new ServiceInstanceListener(context =>            this.CreateServiceRemotingListener(context)) };
     }
 }
 ```
@@ -85,6 +80,23 @@ string message = await helloWorldClient.HelloWorldAsync();
 ```
 
 Das Remotingframework gibt beim Dienst aufgetretene Ausnahmen an den Client weiter. Somit kann die Ausnahmebehandlungslogik auf dem Client Ausnahmen, die vom Dienst ausgegeben werden, mithilfe von `ServiceProxy` direkt behandeln.
+
+## <a name="service-proxy-lifetime"></a>Gültigkeitsdauer von Dienstproxys
+Die Erstellung von Dienstproxys ist ein einfacher Vorgang, sodass Benutzer so viele erstellen können, wie sie benötigen. Ein Dienstproxy kann erneut verwendet werden, solange der Benutzer ihn benötigt. Der Benutzer kann den gleichen Proxy im Fall einer Ausnahme erneut verwenden. Jeder Dienstproxy enthält einen Kommunikationsclient zum Senden von Nachrichten im Netzwerk. Beim Aufrufen der API erfolgt eine interne Prüfung, ob der verwendete Kommunikationsclient gültig ist. Basierend auf diesem Ergebnis erstellen wir den Kommunikationsclient neu. Daher müssen Benutzer im Fall einer Ausnahme den Dienstproxy nicht neu erstellen.
+
+### <a name="serviceproxyfactory-lifetime"></a>Gültigkeitsdauer von „ServiceProxyFactory“
+[ServiceProxyFactory](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) ist eine Factory, die einen Proxy für verschiedene Remotingschnittstellen erstellt. Bei Verwenden der API „ServiceProxy.Create“ zum Erstellen des Proxys erzeugt das Framework die ServiceProxyFactory als Singleton.
+Es ist sinnvoll, eine manuell zu erstellen, wenn Sie [IServiceRemotingClientFactory](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.services.remoting.client.iserviceremotingclientfactory)-Eigenschaften überschreiben müssen.
+„Factory“ ist ein aufwendiger Vorgang. „ServiceProxyFactory“ verwaltet den Cache des Kommunikationsclients.
+Es empfiehlt sich, „ServiceProxyFactory“ so lange wie möglich im Cache zwischenzuspeichern.
+
+## <a name="remoting-exception-handling"></a>Behandlung von Remotingausnahmen
+Alle von der Dienst-API ausgelösten Ausnahmen werden als „AggregateException“ an den Client zurückgesendet. „RemoteExceptions“ muss „DataContract Serializable“ sein, da andernfalls [ServiceException](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.services.communication.serviceexception) für die Proxy-API mit enthaltenem Serialisierungsfehler ausgelöst wird.
+
+„ServiceProxy“ verarbeitet sämtliche Failoverausnahmen für die Dienstpartition, für die seine Erstellung erfolgt ist. Dieser Proxy löst die Endpunkte erneut auf, falls Failoverausnahmen (nicht vorübergehende Ausnahmen) vorliegen, und wiederholt den Aufruf mit dem richtigen Endpunkt. Die Anzahl der Wiederholungen bei Failoverausnahmen ist unbegrenzt.
+Im Falle vorübergehender Ausnahmen wird nur der Aufruf wiederholt.
+
+Standardparameter für die Wiederholung werden von [OperationRetrySettings] angegeben. (https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.services.communication.client.operationretrysettings) Der Benutzer kann diese Werte konfigurieren, indem das „OperationRetrySettings“-Objekt an den „ServiceProxyFactory“-Konstruktor übergeben wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Web-API mit OWIN in Reliable Services](service-fabric-reliable-services-communication-webapi.md)

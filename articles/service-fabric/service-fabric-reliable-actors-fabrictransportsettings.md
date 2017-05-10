@@ -12,20 +12,21 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/22/2016
-ms.author: suchia
-translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: 4cbca6e496135a312bf4704dd0989f45dcccfc00
-ms.lasthandoff: 04/14/2017
+ms.date: 04/20/2017
+ms.author: suchiagicha
+ms.translationtype: Human Translation
+ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
+ms.openlocfilehash: 75bdd4644f4ccc583271b9169c50a375e2cd6629
+ms.contentlocale: de-de
+ms.lasthandoff: 04/29/2017
 
 
 ---
 # <a name="configure-fabrictransport-settings-for-reliable-actors"></a>Konfigurieren von FabricTransport-Einstellungen für Reliable Actors
 
 Hier folgen Einstellungen, die Sie konfigurieren können:
-
-- C#: [FabricTansportSettings](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.communication.fabrictransport.common.fabrictransportsettings)
+- C#: [FabricTransportRemotingSettings](
+https://docs.microsoft.com/en-us/java/api/microsoft.servicefabric.services.remoting.fabrictransport._fabric_transport_remoting_settings)
 - Java: [FabricTransportRemotingSettings](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.fabrictransport._fabric_transport_remoting_settings)
 
 Sie können die Standardkonfiguration von FabricTransport auf folgende Weise ändern.
@@ -41,7 +42,7 @@ Das folgende Beispiel zeigt, wie der Standardwert der Einstellungen „FabricTra
     [assembly:FabricTransportActorRemotingProvider(OperationTimeoutInSeconds = 600)]
    ```
 
-Das folgende Beispiel zeigt, wie die Standardwerte der Einstellungen „FabricTransport“, „MaxMessageSize“ und „OperationTimeoutInSeconds“ geändert werden kann:
+   Das zweite Beispiel ändert die Standardwerte von „FabricTransport MaxMessageSize“ und „OperationTimeoutInSeconds“.
 
   ```csharp
     using Microsoft.ServiceFabric.Actors.Remoting.FabricTransport;
@@ -65,6 +66,7 @@ Der Akteurcode sucht standardmäßig im Format „&lt;Akteurname&gt;TransportSet
        <Parameter Name="SecurityCredentialsType" Value="X509" />
        <Parameter Name="CertificateFindType" Value="FindByThumbprint" />
        <Parameter Name="CertificateFindValue" Value="4FEF3950642138446CC364A396E1E881DB76B48C" />
+       <Parameter Name="CertificateRemoteThumbprints" Value="b3449b018d0f6839a2c5d62b5b6c6ac822b6f662" />
        <Parameter Name="CertificateStoreLocation" Value="LocalMachine" />
        <Parameter Name="CertificateStoreName" Value="My" />
        <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
@@ -81,10 +83,11 @@ Wenn der Client nicht als Teil eines Diensts ausgeführt wird, können Sie die D
   <Settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
     <Section Name="TransportSettings">
       <Parameter Name="SecurityCredentialsType" Value="X509" />
-       <Parameter Name="OperationTimeoutInSeconds" Value="300" />
+      <Parameter Name="OperationTimeoutInSeconds" Value="300" />
       <Parameter Name="CertificateFindType" Value="FindByThumbprint" />
-      <Parameter Name="CertificateFindValue" Value="78 12 20 5a 39 d2 23 76 da a0 37 f0 5a ed e3 60 1a 7e 64 bf" />
-       <Parameter Name="OperationTimeoutInSeconds" Value="300" />
+      <Parameter Name="CertificateFindValue" Value="b3449b018d0f6839a2c5d62b5b6c6ac822b6f662" />
+      <Parameter Name="CertificateRemoteThumbprints" Value="4FEF3950642138446CC364A396E1E881DB76B48C" />
+      <Parameter Name="OperationTimeoutInSeconds" Value="300" />
       <Parameter Name="CertificateStoreLocation" Value="LocalMachine" />
       <Parameter Name="CertificateStoreName" Value="My" />
       <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
@@ -92,4 +95,64 @@ Wenn der Client nicht als Teil eines Diensts ausgeführt wird, können Sie die D
     </Section>
   </Settings>
    ```
+
+  * Konfigurieren von FabricTransport-Einstellungen zum Schützen des Actordiensts/Clients mit sekundärem Zertifikat.
+  Sekundäre Zertifikatinformationen können durch Hinzufügen des Parameters „CertificateFindValuebySecondary“ hinzugefügt werden.
+  Es folgt ein Beispiel für den Listener „TransportSettings“.
+
+    ```xml
+    <Section Name="TransportSettings">
+    <Parameter Name="SecurityCredentialsType" Value="X509" />
+    <Parameter Name="CertificateFindType" Value="FindByThumbprint" />
+    <Parameter Name="CertificateFindValue" Value="b3449b018d0f6839a2c5d62b5b6c6ac822b6f662" />
+    <Parameter Name="CertificateFindValuebySecondary" Value="h9449b018d0f6839a2c5d62b5b6c6ac822b6f690" />
+    <Parameter Name="CertificateRemoteThumbprints" Value="4FEF3950642138446CC364A396E1E881DB76B48C,a9449b018d0f6839a2c5d62b5b6c6ac822b6f667" />
+    <Parameter Name="CertificateStoreLocation" Value="LocalMachine" />
+    <Parameter Name="CertificateStoreName" Value="My" />
+    <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
+    </Section>
+     ```
+     Es folgt ein Beispiel für den Client „TransportSettings“.
+
+    ```xml
+   <Section Name="TransportSettings">
+    <Parameter Name="SecurityCredentialsType" Value="X509" />
+    <Parameter Name="CertificateFindType" Value="FindByThumbprint" />
+    <Parameter Name="CertificateFindValue" Value="4FEF3950642138446CC364A396E1E881DB76B48C" />
+    <Parameter Name="CertificateFindValuebySecondary" Value="a9449b018d0f6839a2c5d62b5b6c6ac822b6f667" />
+    <Parameter Name="CertificateRemoteThumbprints" Value="b3449b018d0f6839a2c5d62b5b6c6ac822b6f662,h9449b018d0f6839a2c5d62b5b6c6ac822b6f690" />
+    <Parameter Name="CertificateStoreLocation" Value="LocalMachine" />
+    <Parameter Name="CertificateStoreName" Value="My" />
+    <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
+    </Section>
+     ```
+    * Konfigurieren von FabricTransport-Einstellungen zum Schützen des Actordiensts/Clients mithilfe des Antragstellernamens.
+    Der Benutzer muss „findType“ als „findBySubjectName“ angeben sowie „CertificateIssuerThumbprints“ und „CertificateRemoteCommonNames“ hinzufügen.
+  Es folgt ein Beispiel für den Listener „TransportSettings“.
+
+     ```xml
+    <Section Name="TransportSettings">
+    <Parameter Name="SecurityCredentialsType" Value="X509" />
+    <Parameter Name="CertificateFindType" Value="FindBySubjectName" />
+    <Parameter Name="CertificateFindValue" Value="CN = WinFabric-Test-SAN1-Alice" />
+    <Parameter Name="CertificateIssuerThumbprints" Value="b3449b018d0f6839a2c5d62b5b6c6ac822b6f662" />
+    <Parameter Name="CertificateRemoteCommonNames" Value="WinFabric-Test-SAN1-Bob" />
+    <Parameter Name="CertificateStoreLocation" Value="LocalMachine" />
+    <Parameter Name="CertificateStoreName" Value="My" />
+    <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
+    </Section>
+    ```
+  Es folgt ein Beispiel für den Client „TransportSettings“.
+
+    ```xml
+     <Section Name="TransportSettings">
+    <Parameter Name="SecurityCredentialsType" Value="X509" />
+    <Parameter Name="CertificateFindType" Value="FindBySubjectName" />
+    <Parameter Name="CertificateFindValue" Value="CN = WinFabric-Test-SAN1-Bob" />
+    <Parameter Name="CertificateStoreLocation" Value="LocalMachine" />
+    <Parameter Name="CertificateStoreName" Value="My" />
+    <Parameter Name="CertificateRemoteCommonNames" Value="WinFabric-Test-SAN1-Alice" />
+    <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
+    </Section>
+     ```
 

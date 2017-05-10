@@ -4,27 +4,26 @@ description: "Tutorial mit ersten Schritten für die Azure Stream Analytics-Tool
 keywords: Visual Studio
 documentationcenter: 
 services: stream-analytics
-author: jeffstokes72
-manager: jhubbard
-editor: cgronlun
+author: 
+manager: 
+editor: 
 ms.assetid: a473ea0a-3eaa-4e5b-aaa1-fec7e9069f20
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 03/28/2017
-ms.author: sujie
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: d0125dda4df69279e49a9fad4dc28dcbf6368322
-ms.lasthandoff: 03/28/2017
+ms.date: 
+ms.author: 
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: cbde312e1f58cb69a7c5edbd22543732a0781fdb
+ms.contentlocale: de-de
+ms.lasthandoff: 05/03/2017
 
 
 ---
 # <a name="use-azure-stream-analytics-tool-for-visual-studio"></a>Verwenden des Azure Stream Analytics-Tools für Visual Studio
-Azure Stream Analytics-Tools für Visual Studio sind jetzt allgemein verfügbar. Diese Tools bieten umfangreichere Funktionen für Stream Analytics-Benutzer beim Beheben von Problemen sowie beim Verfassen komplexer Abfragen und sogar beim lokalen Schreiben von Abfragen. Sie können einen Stream Analytics-Auftrag zudem in ein Visual Studio-Projekt exportieren.
-
 ## <a name="introduction"></a>Einführung
 In diesem Tutorial erfahren Sie, wie Sie mit Azure Stream Analytics-Tools für Visual Studio Ihre Azure Stream Analytics-Aufträge erstellen, verfassen, lokal testen, verwalten und debuggen. 
 
@@ -54,44 +53,44 @@ Im **Projektmappen-Explorer** wird ein Projekt namens **Maut** erstellt.
 
 ## <a name="choose-the-correct-subscription"></a>Wahl des richtigen Abonnements
 1. Öffnen Sie in Visual Studio im Menü **Ansicht** den **Server-Explorer**.
-2. Melden Sie sich bei Ihrem Azure-Konto an. 
+2. Melden Sie sich mit Ihrem Azure-Konto an. 
 
 ## <a name="define-input-sources"></a>Definieren von Eingabequellen
 1.    Erweitern Sie im **Projektmappen-Explorer** den Knoten **Eingabe**, und benennen Sie **Input.json** in **EntryStream.json** um. Doppelklicken Sie auf **EntryStream.json**.
 2.    Ihr **EINGABEALIAS** sollte jetzt **EntryStream** lauten. Beachten Sie, dass der Eingabealias im Abfrageskript verwendet wird. 
 3.    Der Quelltyp ist **Datenstrom**.
 4.    Die Quelle lautet **Event Hub**.
-5.    Der Service Bus-Namespace sollte der erste **tollData**-Eintrag in der Dropdownliste sein.
+5.    Der Service Bus-Namespace muss der erste **tollData**-Eintrag in der Dropdownliste sein.
 6.    Der Event Hub-Name sollte als **Eintrag** festgelegt werden.
 7.    Der Event Hub-Richtlinienname lautet **RootManageSharedAccessKey** (Standardwert).
 8.    Wählen Sie **JSON** als **Ereignisserialisierungsformat** und **UTF8** als **Codierung** aus.
-   
-   Ihre Einstellungen sehen nun folgendermaßen aus:
-   
-   ![Definieren von Eingabequellen](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-01.png)
-   
-9.    Klicken Sie unten auf der Seite auf **Speichern**, um den Assistenten zu beenden. Sie können jetzt eine andere Eingabequelle zum Erstellen des Ausgangsdatenstroms hinzufügen. Klicken Sie mit der rechten Maustaste auf den Eingangsknoten, und klicken Sie auf **Neues Element**.
-   
-   ![Definieren von Eingabequellen](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-02.png)
-   
+
+    Ihre Einstellungen sehen nun folgendermaßen aus:
+
+    ![Definieren von Eingabequellen](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-01.png)
+ 
+9.    Klicken Sie unten auf der Seite auf **Speichern**, um den Assistenten zu beenden. Sie können jetzt eine andere Eingabequelle zum Erstellen des Ausgangsdatenstroms hinzufügen. Klicken Sie mit der rechten Maustaste auf den Eingabeknoten, und klicken Sie auf **Neues Element**.
+
+    ![Definieren von Eingabequellen](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-02.png)
+ 
 10.    Wählen Sie im eingeblendeten Fenster **Azure Stream Analytics Input** (Azure Stream Analytics-Eingabe), und ändern Sie den Namen in **ExitStream.json**. Klicken Sie auf **Hinzufügen**.
-   
-   ![Definieren von Eingabequellen](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-03.png)
-   
+
+    ![Definieren von Eingabequellen](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-03.png)
+ 
 11.    Doppelklicken Sie im Projekt auf **ExitStream.json**, und führen Sie dieselben Schritte wie im Eingabedatenstrom aus. Geben Sie die Werte für den Event Hub-Namen wie im folgenden Screenshot ein.
-   
-   ![Definieren von Eingabequellen](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-04.png)
-   
-   Sie haben jetzt zwei Eingabedatenströme definiert:
-   
-   ![Definieren von Eingabequellen](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-05.png)
-   
-   Als Nächstes fügen Sie die Referenzdateneingabe für die Blobdatei hinzu, in der die Fahrzeugregistrierungsdaten enthalten sind.
-   
+
+    ![Definieren von Eingabequellen](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-04.png)
+
+    Sie haben jetzt zwei Eingabedatenströme definiert:
+
+    ![Definieren von Eingabequellen](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-05.png)
+ 
+    Als Nächstes fügen Sie die Referenzdateneingabe für die Blobdatei hinzu, in der die Fahrzeugregistrierungsdaten enthalten sind.
+
 12.    Klicken Sie mit der rechten Maustaste im Projekt auf den Knoten **Eingaben**, und gehen Sie anschließend genauso wie bei der Datenstromeingabe vor. Wählen Sie jedoch **REFERENZDATEN** anstelle von „Datenstrom“ aus. Wählen Sie als Eingabealias den Eintrag **Registrierung** aus.
-   
-   ![Definieren von Eingabequellen](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-06.png)
-   
+
+    ![Definieren von Eingabequellen](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-06.png)
+
 13.    Wählen Sie das Storage-Konto aus, das **tolldata** enthält. Der Name des Containers sollte **tolldata** sein, und das **Pfadmuster** sollte **registration.json** lauten. Für diesen Dateinamen wird die Groß-/Kleinschreibung berücksichtigt, und er sollte nur Kleinbuchstaben enthalten.
 14.    Klicken Sie auf **Speichern**, um den Assistenten zu beenden.
 
@@ -137,32 +136,35 @@ Doppelklicken Sie im Projekt auf „Script.asaql“, um das Skript im Editor zu 
  
 ### <a name="testing-azure-stream-analytics-queries-locally"></a>Lokales Testen von Azure Stream Analytics-Abfragen
 
-1. Sie können zunächst die Abfrage kompilieren, um festzustellen, ob ein Syntaxfehler aufgetreten ist. [TBD]
-2. Um diese Abfrage anhand von Beispieldaten zu überprüfen, können Sie lokale Beispieldaten verwenden, indem Sie mit der rechten Maustaste auf die Eingabe klicken und im Kontextmenü **Lokale Eingabe hinzufügen** auswählen.
-   
-   ![Lokale Eingabe hinzufügen](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-add-local-input-01.png)
-   
-   Wählen Sie im Popupfenster die Beispieldaten vom lokalen Pfad aus. Klicken Sie auf **Speichern**.
-   
-   ![Lokale Eingabe hinzufügen](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-add-local-input-02.png)
-   
-   Eine Datei namens **local_EntryStream.json** wird automatisch zu Ihrem Ordner „Eingaben“ hinzugefügt.
-   
-   ![Lokale Eingabe hinzufügen](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-add-local-input-03.png)
-   
-3. Klicken Sie im Abfrage-Editor auf „Lokal ausführen“. Oder drücken Sie F5.
-   
-   ![Lokaler Testlauf](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-local-run-01.png)
-   
-   Sie können den Ausgabepfad der Konsolenausgabe suchen und eine beliebige Taste drücken, um den Ergebnisordner zu öffnen.
-   
-   ![Lokaler Testlauf](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-local-run-02.png)
-   
-4. Überprüfen Sie die Ergebnisse im lokalen Ordner.
-   
-   ![Lokaler Testlauf](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-local-run-03.png)
-   
-   
+1.    Sie können zunächst mit der rechten Maustaste auf das Projekt klicken und **Erstellen** auswählen, um die Abfrage zu kompilieren und zu prüfen, ob Syntaxfehler vorliegen. 
+
+2.    Um diese Abfrage anhand von Beispieldaten zu überprüfen, können Sie lokale Beispieldaten verwenden, indem Sie mit der rechten Maustaste auf die Eingabe klicken und im Kontextmenü **Lokale Eingabe hinzufügen** auswählen.
+
+    ![Lokale Eingabe hinzufügen](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-add-local-input-01.png)
+ 
+    Wählen Sie im Popupfenster die Beispieldaten in Ihrem lokalen Pfad aus. Klicken Sie auf **Speichern**.
+
+    ![Lokale Eingabe hinzufügen](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-add-local-input-02.png)
+ 
+    Eine Datei namens **local_EntryStream.json** wird automatisch zu Ihrem Ordner „Eingaben“ hinzugefügt.
+
+    ![Lokale Eingabe hinzufügen](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-add-local-input-03.png)
+ 
+3.    Klicken Sie im Abfrage-Editor auf „Lokal ausführen“. Oder drücken Sie F5.
+
+    ![Lokaler Testlauf](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-local-run-01.png)
+
+    ![Lokaler Testlauf](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-local-run-02.png)
+
+    Sie können eine beliebige Taste drücken, um die Ausgabe in Visual Studio im Fenster „Ergebnis der lokalen ASA-Ausführung“ anzuzeigen. 
+
+    ![Lokaler Testlauf](./media/stream-analytics-tools-for-vs/local-testing-output.png)
+
+4.  Sie können den Ergebnisordner öffnen, um die Ausgabedateien sowohl im CSV- als auch im JSON-Format zu überprüfen.
+
+    ![Lokaler Testlauf](./media/stream-analytics-tools-for-vs/local-testing-files.png)
+ 
+
 ### <a name="sample-input"></a>Beispieleingabe
 Sie können auch Beispieleingabedaten aus Eingabequellen in einer lokalen Datei verwenden. Klicken Sie mit der rechten Maustaste auf die Eingabekonfigurationsdatei, und wählen Sie **Beispieldaten** aus. 
 
@@ -203,8 +205,8 @@ Sie sehen, dass der Status des Auftrags in **Ausführen** geändert wurde, und E
 1. Öffnen Sie Visual Studio Server-Explorer, und klicken Sie mit der rechten Maustaste auf die Tabelle **TollDataRefJoin** .
 2. Klicken Sie auf **Tabellendaten anzeigen** , um die Ausgabe des Auftrags anzuzeigen.
    
-   ![Auswahl von „Tabellendaten anzeigen“ im Server-Explorer](media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-check-results.jpg)
-   
+    ![Auswahl von „Tabellendaten anzeigen“ im Server-Explorer](media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-check-results.jpg)
+
 
 ### <a name="view-job-metrics"></a>Anzeigen von Auftragsmetriken
 Einige grundlegende Auftragsstatistiken finden Sie in **Auftragsmetriken**. 
@@ -214,7 +216,6 @@ Einige grundlegende Auftragsstatistiken finden Sie in **Auftragsmetriken**.
  
 ## <a name="list-job-in-server-explorer"></a>Auflisten des Auftrags im Server-Explorer
 Klicken Sie im **Server-Explorer** auf **Stream Analytics-Aufträge**, und klicken Sie auf **Aktualisieren**. Der Auftrag sollte jetzt unter **Stream Analytics-Aufträge** angezeigt werden.
-
 ![Auflisten von Aufträgen](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-list-jobs-01.png)
 
 
@@ -227,25 +228,21 @@ Erweitern Sie den Auftragsknoten, und doppelklicken Sie auf den Knoten **Auftrag
 ## <a name="export-an-existing-job-to-a-project"></a>Exportieren eines vorhandenen Auftrags in ein Projekt
 Es gibt zwei Möglichkeiten zum Exportieren eines vorhandenen Auftrags in ein Projekt.
 1. Klicken Sie in **Server-Explorer** unter **Stream Analytics-Aufträge** mit der rechten Maustaste auf den Auftragsknoten. Klicken Sie im Kontextmenü auf **Export to New Stream Analytics Project** (In neues Stream Analytics-Projekt exportieren).
-   
-   ![Auftrag exportieren](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-export-job-01.png)
-   
-   Sie sehen das erstellte Projekt im **Projektmappen-Explorer**.
-   
-   ![Auftrag exportieren](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-export-job-02.png)
-   
+
+    ![Auftrag exportieren](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-export-job-01.png)
+
+    Sie sehen das erstellte Projekt im **Projektmappen-Explorer**.
+
+    ![Auftrag exportieren](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-export-job-02.png)
+ 
 2. Klicken Sie in der Auftragsansicht auf **Projekt generieren**.
-   
-   ![Auftrag exportieren](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-export-job-03.png)
-   
+
+    ![Auftrag exportieren](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-export-job-03.png)
+
 ## <a name="known-issues-and-limitations"></a>Bekannte Probleme und Einschränkungen
  
-1. Lokale Tests funktionieren nicht, wenn Ihre Abfrage geografische Funktionen enthält. 
+1. Keine Unterstützung für Power BI-Ausgabe und ADLS-Ausgabe.
 2. Keine Editor-Unterstützung beim Hinzufügen oder Ändern von JavaScript-UDF.
-3. Lokale Tests unterstützen das Speichern der Ausgabe im JSON-Format nicht. 
-4. Keine Unterstützung für Power BI-Ausgabe und ADLS-Ausgabe.
-
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)
@@ -253,6 +250,4 @@ Es gibt zwei Möglichkeiten zum Exportieren eines vorhandenen Auftrags in ein Pr
 * [Skalieren von Azure Stream Analytics-Aufträgen](stream-analytics-scale-jobs.md)
 * [Stream Analytics Query Language Reference (in englischer Sprache)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
-
 

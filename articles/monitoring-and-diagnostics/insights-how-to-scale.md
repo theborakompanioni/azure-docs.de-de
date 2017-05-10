@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2015
 ms.author: robb
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1e680679086d54a2c6b10be7635e997ac61bacd5
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 8f1c94ae5389739e03a7b1a70421e538516c873f
+ms.contentlocale: de-de
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -34,10 +36,8 @@ Sie können im Portal skalieren und mit [REST-API](https://msdn.microsoft.com/li
 
 ## <a name="scaling-manually"></a>Manuelles Skalieren
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Durchsuchen**, und navigieren Sie zu der Ressource, die Sie skalieren möchten, z.B. zu einem **App Service-Plan**.
-2. Die Kachel **Skalierung** in **Vorgänge** zeigt den Status der Skalierung an: **Aus**, wenn Sie eine manuelle Skalierung durchführen, **Ein**, wenn Sie nach einer oder mehreren Leistungsmetriken skalieren.
-   
-    ![Kachel "Skalieren"](./media/insights-how-to-scale/Insights_UsageLens.png)
-3. Durch Klicken auf die Kachel gelangen Sie zum Blatt **Skalierung** . Oben auf dem Blatt "Skalierung" wird der Verlauf automatischer Skalierungsvorgänge für den Dienst angezeigt.
+2. Klicken Sie auf **Einstellungen > Horizontal hochskalieren (App Service-Plan)**.
+3. Oben auf dem Blatt **Skalierung** wird der Verlauf automatischer Skalierungsvorgänge für den Dienst angezeigt.
    
     ![Blatt "Skalieren"](./media/insights-how-to-scale/Insights_ScaleBladeDayZero.png)
    
@@ -129,10 +129,5 @@ Möglicherweise möchten Sie jedoch tagsüber oder unter der Woche eine aggressi
 * [Überwachen der Anwendungsleistung](../application-insights/app-insights-azure-web-apps.md) , um präzise Informationen zur Leistung Ihres Codes in der Cloud zu ermitteln.
 * [Anzeigen von Ereignissen und Überwachungsprotokollen](insights-debugging-with-events.md), um sich über sämtliche Aktivitäten Ihres Diensts zu informieren.
 * [Überwachen der Verfügbarkeit und Reaktionsfähigkeit einer beliebigen Webseite](../application-insights/app-insights-monitor-web-app-availability.md) mit Application Insights, um zu ermitteln, ob eine Seite offline ist.
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

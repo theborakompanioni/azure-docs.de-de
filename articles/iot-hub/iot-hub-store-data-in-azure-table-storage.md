@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2017
 ms.author: xshi
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: bed8e0c2b5d4d42fb0510f6b55cfab7404c01b11
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 4918648906212ea9708b6c6f0e89d1f4bb7bdcc5
+ms.contentlocale: de-de
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -129,29 +130,15 @@ IoT Hub macht einen integrierten mit Event Hub kompatiblen Endpunkt verfügbar, 
       ![Hinzufügen eines Tabellenspeichers zu Ihrer Funktionen-App im Azure-Portal](media\iot-hub-store-data-in-azure-table-storage\4_azure-portal-function-app-add-output-table-storage.png)
    1. Geben Sie die erforderlichen Informationen ein.
 
+      **Tabellenparametername**: Wählen Sie `outputTable` als Namen, der im Azure Functions-Code verwendet wird.
+      
       **Tabellenname**: Verwenden Sie `deviceData` als Namen.
 
-      **Speicherkontoverbindung**: Klicken Sie auf **Neu**, und wählen Sie Ihr Speicherkonto aus.
+      **Speicherkontoverbindung**: Klicken Sie auf **Neu**, wählen Sie Ihr Speicherkonto aus, oder geben Sie es ein.
    1. Klicken Sie auf **Speichern**.
 1. Klicken Sie unter **Trigger** auf **Azure Event Hub (myEventHubTrigger)**.
 1. **Event Hub-Consumergruppe**: Geben Sie den Namen der Consumergruppe ein, die Sie zuvor erstellt haben, und klicken Sie auf **Speichern**.
 1. Klicken Sie auf **Entwickeln** und dann auf **Dateien anzeigen**.
-1. Klicken Sie auf **Hinzufügen**, um die neue Datei `package.json` hinzuzufügen. Fügen Sie die folgenden Informationen ein, und klicken Sie dann auf **Speichern**.
-
-   ```json
-   {
-      "name": "iothub_save_message_to_table",
-      "version": "0.0.1",
-      "private": true,
-      "main": "index.js",
-      "author": "Microsoft Corp.",
-      "dependencies": {
-         "azure-iothub": "1.0.9",
-         "azure-iot-common": "1.0.7",
-         "moment": "2.14.1"
-      }
-   }
-   ```
 1. Ersetzen Sie den Code in `index.js` durch den folgenden Code. Klicken Sie dann auf **Speichern**.
 
    ```javascript
@@ -159,34 +146,20 @@ IoT Hub macht einen integrierten mit Event Hub kompatiblen Endpunkt verfügbar, 
 
    // This function is triggered each time a message is revieved in the IoTHub.
    // The message payload is persisted in an Azure Storage Table
-   var moment = require('moment');
-
+ 
    module.exports = function (context, iotHubMessage) {
-      context.log('Message received: ' + JSON.stringify(iotHubMessage));
-      context.bindings.outputTable = {
-      "partitionKey": moment.utc().format('YYYYMMDD'),
-         "rowKey": moment.utc().format('hhmmss') + process.hrtime()[1] + '',
-         "message": JSON.stringify(iotHubMessage)
-      };
-      context.done();
+    context.log('Message received: ' + JSON.stringify(iotHubMessage));
+    var date = Date.now();
+    var partitionKey = Math.floor(date / (24 * 60 * 60 * 1000)) + '';
+    var rowKey = date + '';
+    context.bindings.outputTable = {
+     "partitionKey": partitionKey,
+     "rowKey": rowKey,
+     "message": JSON.stringify(iotHubMessage)
+    };
+    context.done();
    };
    ```
-1. Klicken Sie auf **Funktionen-App-Einstellungen** > **Entwicklerkonsole öffnen**.
-
-   Sie sollten sich im Ordner `wwwroot` der Funktionen-App befinden.
-1. Wechseln Sie zum Ordner der Funktion, indem Sie den folgenden Befehl ausführen:
-
-   ```bash
-   cd <your function name>
-   ```
-1. Installieren Sie das npm-Paket, indem Sie den folgenden Befehl ausführen:
-
-   ```bash
-   npm install
-   ```
-
-   > [!Note]
-   > Die Installation kann einige Zeit in Anspruch nehmen.
 
 Sie haben soeben die Funktionen-App erstellt. In ihr werden Nachrichten gespeichert, die Ihr IoT Hub in Ihrem Azure-Tabellenspeicher empfängt.
 
@@ -207,3 +180,4 @@ Sie haben soeben die Funktionen-App erstellt. In ihr werden Nachrichten gespeich
 Sie haben Ihr Azure-Speicherkonto und die Azure-Funktionen-App erfolgreich zum Speichern von Nachrichten in Ihrem Azure-Tabellenspeicher erstellt, die Ihr IoT Hub empfängt.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
+

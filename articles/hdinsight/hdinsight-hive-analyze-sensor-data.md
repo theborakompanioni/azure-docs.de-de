@@ -16,10 +16,11 @@ ms.topic: article
 ms.date: 04/14/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 3f6824ea9c306adf7279a473d5e3b0c886d29b60
-ms.lasthandoff: 04/17/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: 6588d2865928a64f6e172d0779fd43d35e7d9a6a
+ms.contentlocale: de-de
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -42,7 +43,7 @@ In diesem Beispiel verwenden Sie Hive, um Verlaufsdaten zu verarbeiten und Probl
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein HDInsight-Cluster (Hadoop): Unter [Bereitstellen von Hadoop-Clustern in HDInsight](hdinsight-provision-clusters.md) finden Sie weitere Informationen zur Erstellung von Clustern.
+* Ein HDInsight-Cluster (Hadoop): Unter [Erstellen von Hadoop-Clustern in HDInsight](hdinsight-hadoop-provision-linux-clusters.md) finden Sie weitere Informationen zur Erstellung von Clustern.
 * Microsoft Excel 2013 (PowerPivot für Datenanalysten – Microsoft Excel 2010)
 
   > [!NOTE]

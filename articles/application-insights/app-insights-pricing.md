@@ -13,10 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 229dd21f3ab1ae716cd49611e720450ae5939eb8
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 6f84365acb9a1cc1fc31fa5f3c04cd112f68087b
+ms.contentlocale: de-de
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -99,20 +100,18 @@ Die Gebühren für Application Insights werden Ihrer Azure-Rechnung hinzugefügt
 ## <a name="data-rate"></a>Datenrate
 Es gibt drei Möglichkeiten zum Begrenzen des gesendeten Datenvolumens:
 
-* **Tägliche Obergrenze.** Die Obergrenze liegt bei 500 GB pro Tag. Die Standardeinstellung beim Erstellen einer Application Insights-Ressource über Visual Studio ist klein (nur 32,3 MB pro Tag). Beim Erstellen einer Application Insights-Ressource über das Azure-Portal wird dieser Wert auf die Obergrenze festgelegt. Ändern Sie diese Einstellung mit Bedacht, da das Erreichen der Obergrenze dazu führt, dass für den Rest des Tages Daten verloren gehen. Diese Einstellung können Sie auf dem Blatt „Volumenbegrenzung pro Tag“ ändern, das über das Blatt „Datenverwaltung“ geöffnet wird.
-* **[Stichproben](app-insights-sampling.md).** Dieser Mechanismus kann die Menge der von Ihrem Server und Ihren Client-Apps gesendeten Telemetriedaten bei minimaler Verzerrung von Metriken verringern.
-* Eine **Drosselung** schränkt die Datenrate auf 32.000 Ereignisse pro Sekunde ein (gemittelt über 1 Minute). 
+* **Stichprobenerstellung**: Dieser Mechanismus kann die Menge der von Ihrem Server und Ihren Client-Apps gesendeten Telemetriedaten bei minimaler Verzerrung von Metriken verringern. Dies ist Ihr wichtigstes Tool zum Optimieren der Menge der Daten. Erfahren Sie mehr über die [Merkmale von Stichproben](app-insights-sampling.md). 
+* **Tägliche Obergrenze**: Beim Erstellen einer Application Insights-Ressource über das Azure-Portal wird dieser Wert auf 500 GB pro Tag festgelegt. Die Standardeinstellung beim Erstellen einer Application Insights-Ressource in Visual Studio ist niedrig (nur 32,3 MB pro Tag) und nur zum Vereinfachen von Tests gedacht. In diesem Fall ist es vorgesehen, dass der Benutzer vor dem Bereitstellen der App in der Produktion die tägliche Obergrenze erhöht. Die Obergrenze ist 500 GB pro Tag, es sei denn, Sie haben einen höheren Maximalwert für eine Anwendung mit hohem Datenverkehr angefordert. Seien Sie beim Festlegen der täglichen Obergrenze aufmerksam, da es Ihre Absicht sein muss, **die tägliche Obergrenze niemals zu erreichen**, weil dann für den Rest des Tages Daten verloren gehen und Sie nicht in der Lage sein werden, Ihre Anwendung zu überwachen. Diese Einstellung können Sie auf dem Blatt „Volumenbegrenzung pro Tag“ ändern, das über das Blatt „Datenverwaltung“ geöffnet wird (siehe unten). Beachten Sie, dass einige Abonnementtypen Guthaben aufweisen, das nicht für Application Insights verwendet werden kann. Wenn für das Abonnement ein Ausgabenlimit gilt, enthält das Blatt mit der täglichen Obergrenze Anweisungen, wie es aufzuheben ist und wie die tägliche Obergrenze über 32,3 MB pro Tag erhöht werden kann.  
+* **Drosselung**: Hiermit wird die Datenrate auf 32.000 Ereignisse pro Sekunde ein (gemittelt über 1 Minute) eingeschränkt. 
 
 
 *Was geschieht, wenn meine App die Drosselungsrate überschreitet?*
 
-* Die Datenmenge, die Ihre App sendet, wird minütlich gemessen. Wenn sie die pro Sekunde, über eine Minute gemittelt Datenmenge überschreitet, lehnt der Server einige Anforderungen ab. Das SDK puffert die Daten und versucht dann, erneut zu senden, wobei ein rascher Anstieg über mehrere Minuten hinweg verteilt wird. Wenn Ihre App die Drosselungsrate beim Senden von Daten laufend überschreitet, werden einige Daten gelöscht. (Die ASP.NET-, Java- und JavaScript-SDKs versuchen auf diese Weise erneut zu senden, andere SDKs löschen gedrosselte Daten möglicherweise einfach.)
+* Die Datenmenge, die Ihre App sendet, wird minütlich gemessen. Wenn sie die pro Sekunde, über eine Minute gemittelt Datenmenge überschreitet, lehnt der Server einige Anforderungen ab. Das SDK puffert die Daten und versucht dann, erneut zu senden, wobei ein rascher Anstieg über mehrere Minuten hinweg verteilt wird. Wenn Ihre App die Drosselungsrate beim Senden von Daten laufend überschreitet, werden einige Daten gelöscht. (Die ASP.NET-, Java- und JavaScript-SDKs versuchen auf diese Weise erneut zu senden, andere SDKs löschen gedrosselte Daten möglicherweise einfach.) Tritt eine Drosselung auf, erhalten Sie zur Warnung eine Benachrichtigung über diesen Vorgang.
 
-Tritt eine Drosselung auf, erhalten Sie zur Warnung eine Benachrichtigung über diesen Vorgang.
+*Woher weiß ich, wie viele Daten meine App sendet?*
 
-*Woher weiß ich, wie viele Datenpunkte meine App sendet?*
-
-* Öffnen Sie das Blatt „Preise“ erneut, um das Diagramm des Datenvolumens anzuzeigen.
+* Öffnen Sie das Blatt **Datenvolumenverwaltung**, um das Diagramm des täglichen Datenvolumens anzuzeigen. 
 * Oder fügen Sie im Metrik-Explorer ein neues Diagramm hinzu, und wählen Sie **Datenpunktvolumen** als Metrik aus. Aktivieren Sie "Gruppierung", und gruppieren Sie nach **Datentyp**.
 
 ## <a name="to-reduce-your-data-rate"></a>So verringern Sie die Datenrate
@@ -130,7 +129,7 @@ Sie können die gesammelten Daten mithilfe der täglichen Volumenobergrenze begr
 
 Verwenden Sie stattdessen [Stichproben](app-insights-sampling.md), um das gewünschte Datenvolumen anzupassen, und verwenden Sie die tägliche Obergrenze nur als letzten Ausweg für den Fall, dass die Anwendung unerwartet ein weitaus höheres Volumen an Telemetriedaten sendet. 
 
-Um die tägliche Obergrenze zu ändern, öffnen Sie **Features und Preise**, **Datenverwaltung**.
+Um die tägliche Obergrenze zu ändern, klicken Sie im Abschnitt „Konfigurieren“ Ihrer Application Insights-Ressource erst auf **Datenvolumenverwaltung** und dann auf **Tägliche Obergrenze**.
 
 ![Anpassen der Volumenobergrenze für Telemetriedaten pro Tag](./media/app-insights-pricing/daily-cap.png) 
 

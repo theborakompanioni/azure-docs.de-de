@@ -15,10 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 04/21/2017
 ms.author: nepeters
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 6bc28290f5ae0466b8e1a260d411b7eab6f12439
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: d68fc54f3fd08b3d7d66a9cd1ddb91c340191468
+ms.contentlocale: de-de
+ms.lasthandoff: 05/03/2017
 
 ---
 
@@ -26,15 +27,15 @@ ms.lasthandoff: 04/26/2017
 
 In diesem Tutorial lernen Sie die verschiedenen Typen von VM-Datenträgern kennen und erhalten Informationen zum Auswählen einer Datenträgerkonfiguration sowie zum Erstellen und Anfügen von Datenträgern an virtuelle Azure-Computer. Darüber hinaus wird in diesem Tutorial erläutert, wie Datenträger-Momentaufnahmen erstellt werden.  
 
-Die Schritte in diesem Tutorial können mit dem neuesten [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)-Modul ausgeführt werden.
+Die Schritte in diesem Tutorial können mit dem neuesten [Azure PowerShell](/powershell/azure/overview)-Modul ausgeführt werden.
 
 ## <a name="default-azure-disks"></a>Azure-Standarddatenträger
 
 Beim Erstellen eines virtuellen Azure-Computers werden zwei Datenträger automatisch an den virtuellen Computer angefügt. 
 
-**Betriebssystem-Datenträger:** Betriebssystem-Datenträger können in der Größe auf bis zu 1 TB angepasst werden und hosten das Betriebssystem des virtuellen Computers.  Dem Betriebssystem-Datenträger wird standardmäßig der Laufwerkbuchstabe `c:` zugewiesen. Die Konfiguration der Datenträgerzwischenspeicherung des Betriebssystem-Datenträgers ist für die Leistung des Betriebssystems optimiert. Der Betriebssystem-Datenträger **sollte keine** Anwendungen oder Daten hosten. Verwenden Sie für Anwendungen und Daten einen Datenträger. Dies wird weiter unten in diesem Artikel ausführlich erläutert.
+**Betriebssystem-Datenträger**: Betriebssystem-Datenträger können in der Größe auf bis zu 1TB angepasst werden und hosten das Betriebssystem des virtuellen Computers.  Dem Betriebssystem-Datenträger wird standardmäßig der Laufwerkbuchstabe *c:* zugewiesen. Die Konfiguration der Datenträgerzwischenspeicherung des Betriebssystem-Datenträgers ist für die Leistung des Betriebssystems optimiert. Der Betriebssystem-Datenträger **sollte keine** Anwendungen oder Daten hosten. Verwenden Sie für Anwendungen und Daten einen Datenträger. Dies wird weiter unten in diesem Artikel ausführlich erläutert.
 
-**Temporärer Datenträger:** Temporäre Datenträger verwenden ein Solid State Drive, das sich auf demselben Azure-Host wie der virtuelle Computer befindet. Temporäre Datenträger sind äußerst leistungsfähig und können für Vorgänge wie die temporäre Datenverarbeitung verwendet werden. Wenn der virtuelle Computer jedoch auf einen neuen Host verschoben wird, werden alle auf einem temporären Datenträger gespeicherten Daten entfernt. Die Größe des temporären Datenträgers richtet sich nach der Größe des virtuellen Computers. Temporären Datenträgern wird standardmäßig der Laufwerkbuchstabe `d:` zugewiesen.
+**Temporärer Datenträger:** Temporäre Datenträger verwenden ein Solid State Drive, das sich auf demselben Azure-Host wie der virtuelle Computer befindet. Temporäre Datenträger sind äußerst leistungsfähig und können für Vorgänge wie die temporäre Datenverarbeitung verwendet werden. Wenn der virtuelle Computer jedoch auf einen neuen Host verschoben wird, werden alle auf einem temporären Datenträger gespeicherten Daten entfernt. Die Größe des temporären Datenträgers richtet sich nach der Größe des virtuellen Computers. Temporären Datenträgern wird standardmäßig der Laufwerkbuchstabe *d:* zugewiesen.
 
 ### <a name="temporary-disk-sizes"></a>Größe von temporären Datenträgern
 
@@ -91,7 +92,7 @@ Für das Beispiel in diesem Tutorial muss ein virtueller Computer vorhanden sein
 Erstellen Sie mit [New-AzureRmDiskConfig](/powershell/module/azurerm.compute/new-azurermdiskconfig) die anfängliche Konfiguration. Im folgenden Beispiel wird ein Datenträger mit einer Größe von 128 GB erstellt.
 
 ```powershell
-$diskConfig = New-AzureRmDiskConfig -Location westus -CreateOption Empty -DiskSizeGB 128
+$diskConfig = New-AzureRmDiskConfig -Location EastUS -CreateOption Empty -DiskSizeGB 128
 ```
 
 Erstellen Sie den Datenträger mit dem Befehl [New-AzureRmDisk](/powershell/module/azurerm.compute/new-azurermdisk).
@@ -138,3 +139,4 @@ Format-Volume -FileSystem NTFS -NewFileSystemLabel "myDataDisk" -Confirm:$false
 In diesem Tutorial haben Sie Informationen zu VM-Datenträgern erhalten. Im nächsten Tutorial erfahren Sie, wie die VM-Konfiguration automatisiert werden kann.
 
 [Automatisieren der VM-Konfiguration](./tutorial-automate-vm-deployment.md)
+

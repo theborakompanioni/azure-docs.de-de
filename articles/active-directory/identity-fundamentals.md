@@ -4,17 +4,18 @@ description:
 keywords: 
 author: jeffgilb
 manager: femila
-ms.date: 3/28/2017
+ms.date: 5/1/2017
 ms.topic: article
 ms.prod: 
 ms.service: azure
 ms.technology: 
 ms.assetid: 
 ms.reviewer: jsnow
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 222259e1f7c5a8796fd9f652cf5e050e75d4ce49
-ms.lasthandoff: 03/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: bc67058d026219d676430a55fe8cfdd3f09cf295
+ms.contentlocale: de-de
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -53,7 +54,8 @@ Lösungen zur Identitäts- und Zugriffsverwaltung von Microsoft unterstützen IT
 
 Der bedingte Systemzugriff in Azure AD Premium bietet Ihnen als Unternehmensadministrator die Möglichkeit zum Erstellen von richtlinienbasierten Zugriffsregeln für jede mit Azure AD verbundene Anwendung (SaaS-Apps, in der Cloud ausgeführte benutzerdefinierte Apps oder lokale Webanwendungen). Azure AD wertet diese Richtlinien in Echtzeit aus, und setzt sie durch, wenn ein Benutzer versucht, auf eine Anwendung zuzugreifen. Mit Azure Identity Protection-Richtlinien können Sie automatisch Maßnahmen ergreifen, wenn verdächtige Aktivitäten erkannt werden, z.B. Blockieren des Zugriffs für Benutzer mit hohem Risiko, Erzwingen der mehrstufigen Authentifizierung und Zurücksetzen von Kennwörtern, wenn Anmeldeinformationen anscheinend gefährdet sind.
 
-## <a name="azure-active-directory-privileged-identify-management"></a>Azure Active Directory Privileged Identity Management
+
+## <a name="azure-active-directory-privileged-identity-management"></a>Azure Active Directory Privileged Identity Management
 
 [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-getting-started) ist im Azure Active Directory Premium P2-Angebot enthalten und ermöglicht Ihnen das Ermitteln, Einschränken und Überwachen von Administratorkonten und deren Zugriff auf Ressourcen in Ihrem Azure Active Directory und anderen Microsoft-Onlinediensten. Außerdem können Sie damit bei Bedarf Administratorzugriff für genau die Zeitspanne verwalten, die Sie benötigen.
 

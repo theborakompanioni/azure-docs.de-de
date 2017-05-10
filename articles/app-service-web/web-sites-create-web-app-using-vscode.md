@@ -1,6 +1,6 @@
 ---
-title: "Erstellen einer ASP.NET 5-Web-App in Visual Studio"
-description: "In diesem Lernprogramm erfahren Sie, wie Sie mithilfe von Visual Studio Code eine ASP.NET 5-Web-App erstellen."
+title: Erstellen einer ASP.NET Core-Web-App in Visual Studio Code
+description: In diesem Tutorial erfahren Sie, wie Sie mithilfe von Visual Studio Code eine ASP.NET Core-Web-App erstellen.
 services: app-service\web
 documentationcenter: .net
 author: erikre
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2016
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4f1bf0f15a373dfe60d923f017a96784424d6563
-ms.lasthandoff: 11/17/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: e8f78602b293863b2e58160a5eb2cf8a5855576b
+ms.contentlocale: de-de
+ms.lasthandoff: 05/02/2017
 
 
 ---
-# <a name="create-an-aspnet-5-web-app-in-visual-studio-code"></a>Erstellen einer ASP.NET 5-Web-App in Visual Studio
+# <a name="create-an-aspnet-core-web-app-in-visual-studio-code"></a>Erstellen einer ASP.NET Core-Web-App in Visual Studio Code
 ## <a name="overview"></a>Übersicht
 In diesem Tutorial erfahren Sie, wie Sie eine ASP.NET 5-Web-App mit [Visual Studio Code (VS Code)](http://code.visualstudio.com//Docs/whyvscode) erstellen und in [Azure App Service](../app-service/app-service-value-prop-what-is.md) bereitstellen. 
 
@@ -30,107 +31,50 @@ In diesem Tutorial erfahren Sie, wie Sie eine ASP.NET 5-Web-App mit [Visual Stud
 > 
 > 
 
-Das Design von ASP.NET wurde für ASP.NET 5 deutlich verändert. ASP.NET 5 ist ein neues plattformübergreifendes Open Source-Framework zum Erstellen moderner cloudbasierter Web-Apps mit .NET. Weitere Informationen finden Sie unter [Introduction to ASP.NET 5](http://docs.asp.net/en/latest/conceptual-overview/aspnet.html)(Einführung in ASP.NET 5; in englischer Sprache). Informationen zu Azure App Service-Web-Apps finden Sie unter [Web-Apps – Übersicht](app-service-web-overview.md).
+Das Design von ASP.NET wurde für ASP.NET Core deutlich verändert. ASP.NET Core ist ein neues plattformübergreifendes Open-Source-Framework zum Erstellen moderner cloudbasierter Web-Apps mithilfe von .NET. Weitere Informationen finden Sie unter [Introduction to ASP.NET Core](http://docs.asp.net/latest/conceptual-overview/aspnet.html)(Einführung in ASP.NET Core). Informationen zu Azure App Service-Web-Apps finden Sie unter [Web-Apps – Übersicht](app-service-web-overview.md).
 
 [!INCLUDE [app-service-web-try-app-service.md](../../includes/app-service-web-try-app-service.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Installieren Sie [VS Code](http://code.visualstudio.com/Docs/setup).
-* Installieren Sie [Node.js](http://nodejs.org). Node.js ist eine Plattform für die Erstellung schneller und skalierbarer Serveranwendungen mit JavaScript. Node ist die Laufzeit (Node), und [npm](http://www.npmjs.com/) der Paket-Manager für Node-Module. In diesem Lernprogramm erstellen Sie mithilfe von npm das Gerüst für eine ASP.NET 5-Web-App.
 * Installieren Sie Git – entweder über [Chocolatey](https://chocolatey.org/packages/git) oder über [git-scm.com](http://git-scm.com/downloads). Falls Sie noch keine Erfahrung mit Git haben, entscheiden Sie sich für [git-scm.com](http://git-scm.com/downloads) und wählen Sie die Option **Git über die Windows-Eingabeaufforderung verwenden**aus. Legen Sie nach der Installation von Git den Git-Benutzernamen und die dazugehörige E-Mail-Adresse fest, da diese Angaben später in diesem Lernprogramm (beim Ausführen eines Commits in VS Code) benötigt werden.  
 
-## <a name="install-aspnet-5-and-dnx"></a>Installieren von ASP.NET 5 und DNX
-ASP.NET 5/DNX (die .NET-Ausführungsumgebung) ist ein schlanker .NET-Stapel für die Erstellung moderner Cloud- und Web-Apps für OS X, Linux und Windows. Er wurde von Grund auf neu als optimiertes Entwicklungsframework für Apps konzipiert, die entweder in der Cloud bereitgestellt oder lokal ausgeführt werden. Er besteht aus modularen Komponenten mit minimalem Mehraufwand und ermöglicht Ihnen eine flexible Lösungsentwicklung.
+## <a name="install-aspnet-core"></a>Installieren von ASP.NET Core
+ASP.NET Core ist ein schlanker .NET-Stapel für die Erstellung moderner Cloud- und Web-Apps zum Ausführen unter OS X, Linux und Windows. Er wurde von Grund auf neu als optimiertes Entwicklungsframework für Apps konzipiert, die entweder in der Cloud bereitgestellt oder lokal ausgeführt werden. Er besteht aus modularen Komponenten mit minimalem Mehraufwand und ermöglicht Ihnen eine flexible Lösungsentwicklung.
 
-Dieses Lernprogramm unterstützt Sie beim Einstieg in die Anwendungserstellung mit den neuesten Entwicklungsversionen von ASP.NET 5 und DNX. Die folgenden Anweisungen beziehen sich explizit auf Windows. Ausführlichere Installationsanweisungen für OS X, Linux und Windows finden Sie unter [Installing ASP.NET 5 and DNX](https://code.visualstudio.com/Docs/ASPnet5#_installing-aspnet-5-and-dnx)(Installieren von ASP.NET 5 und DNX; in englischer Sprache). 
+Dieses Tutorial unterstützt Sie beim Einstieg in die Anwendungserstellung mit den neuesten Entwicklungsversionen von ASP.NET Core. Die folgenden Anweisungen beziehen sich explizit auf Windows. Anweisungen zur Installation unter OS X, Linux und Windows finden Sie unter [Erste Schritte mit ASP.NET Core](https://docs.microsoft.com/aspnet/core/getting-started). 
 
-1. Wenn Sie .NET Version Manager (DNVM) unter Windows installieren möchten, öffnen Sie eine Eingabeaufforderung, und führen Sie den folgenden Befehl aus:
-   
-        @powershell -NoProfile -ExecutionPolicy unrestricted -Command "&{$Branch='dev';iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.ps1'))}"
-   
-    Dadurch wird das DNVM-Skript herunterladen und Ihrem Benutzerprofilverzeichnis hinzugefügt. 
-2. **Starten Sie Windows neu** , um die DNVM-Installation abzuschließen. 
-   
-    Nach dem Neustart von Windows können Sie die Eingabeaufforderung öffnen, um den Speicherort von DNVM zu überprüfen. Geben Sie dazu Folgendes ein:
-   
-        where dnvm
-   
-    In der Eingabeaufforderung erscheint ein Pfad wie der folgende:
-   
-    ![DNVM-Speicherort](./media/web-sites-create-web-app-using-vscode/00-where-dnvm.png)
-3. Nachdem Sie nun über DNVM verfügen, müssen Sie damit DNX herunterladen, um Ihre Anwendungen ausführen zu können. Führen Sie über die Eingabeaufforderung den folgenden Befehl aus:
-   
-        dnvm upgrade
-   
-    Überprüfen Sie DNVM, und zeigen Sie die aktive Laufzeit an, indem Sie an der Eingabeaufforderung Folgendes eingeben:
-   
-        dnvm list
-   
-    In der Eingabeaufforderung werden die Details zur aktiven Laufzeit angezeigt.
-   
-    ![DNVM-Speicherort](./media/web-sites-create-web-app-using-vscode/00b-dnvm-list.png)
-   
-    Wenn mehrere DNX-Laufzeiten aufgeführt sind, können Sie an der Eingabeaufforderung die folgende Version (oder eine neuere Version) eingeben, um die aktive DNX-Laufzeit festzulegen. Legen Sie sie auf die gleiche Version fest, die auch vom ASP.NET 5-Generator verwendet wird, wenn Sie weiter unten in diesem Tutorial Ihre Web-App erstellen. *Sie müssen die aktive Laufzeit ggf. nicht ändern, wenn sie auf die neueste verfügbare festgelegt ist.*
-   
-        dnvm use 1.0.0-update1 –p
 
 > [!NOTE]
-> Ausführlichere Installationsanweisungen für OS X, Linux und Windows finden Sie unter [Installing ASP.NET 5 and DNX](https://code.visualstudio.com/Docs/ASPnet5#_installing-aspnet-5-and-dnx)(Installieren von ASP.NET 5 und DNX; in englischer Sprache). 
+> Ausführlichere Installationsanweisungen für OS X, Linux und Windows finden Sie unter [Installing ASP.NET Core](https://code.visualstudio.com/Docs/ASPnet5#_installing-aspnet-5-and-dnx)(Installieren von ASP.NET Core). 
 > 
 > 
 
 ## <a name="create-the-web-app"></a>Erstellen der Web-App
-In diesem Abschnitt erfahren Sie, wie Sie das Gerüst für eine neue ASP.NET-Web-App erstellen. Hierzu installieren Sie mithilfe des Node Package Managers (NPM) Folgendes: [Yeoman](http://yeoman.io/) (Tool zur Erstellung von Anwendungsgerüsten; VS Code-Pendant zu **Datei > Neues Projekt** in Visual Studio), [Grunt](http://gruntjs.com/) (JavaScript-Aufgabenausführung) und [Bower](http://bower.io/) (clientseitiger Paket-Manager). 
+In diesem Abschnitt erfahren Sie, wie Sie mit der CLI von .NET das Gerüst für eine neue ASP.NET-Web-App erstellen. 
 
-1. Öffnen Sie eine Eingabeaufforderung mit Administratorrechten, und navigieren Sie zu dem Ort, an dem Sie Ihr ASP.NET-Projekt erstellen möchten. Erstellen Sie z.B. das Verzeichnis *vscodeprojects* im Stammverzeichnis von Laufwerk C:\..
-2. Geben Sie an der Eingabeaufforderung Folgendes ein, um Yeoman und die unterstützenden Tools zu installieren:
+1. Geben Sie an der Eingabeaufforderung Folgendes ein, um den Projektordner und das Gerüst für die App zu erstellen:
    
-        npm install -g yo grunt-cli generator-aspnet bower
+```terminal
+mkdir SampleWebApp
+cd SampleWebApp
+dotnet new mvc
+```
+![.NET CLI: ASP.NET Core-Generator](./media/web-sites-create-web-app-using-vscode/dotnetcore-mvc-01.png)
+
+2. Führen Sie zum Installieren der benötigten NuGet-Pakete den folgenden Befehl aus:
    
-   > [!NOTE]
-   > Möglicherweise werden Sie in einer Warnmeldung darauf hingewiesen, dass die npm-Version veraltet ist. Diese Warnung sollte keine Auswirkung auf dieses Tutorial haben.
-   > 
-   > 
-3. Geben Sie an der Eingabeaufforderung Folgendes ein, um den Projektordner und das Gerüst für die App zu erstellen:
-   
-        yo aspnet
-4. Wählen Sie im ASP.NET 5-Generatormenü mithilfe der Pfeiltasten den Typ **Webanwendung Basic** aus, und drücken Sie anschließend die **&lt;EINGABETASTE>**.
-   
-    ![Yeoman – ASP.NET 5-Generator](./media/web-sites-create-web-app-using-vscode/01-yo-aspnet.png)
-5. Legen Sie als Namen für die neue ASP.NET-Web-App **SampleWebApp** fest. Dieser Name wird im gesamten Tutorial verwendet. Wenn Sie einen anderen Namen verwenden, müssen jedes Vorkommen von **SampleWebApp** durch diesen Namen ersetzen. Wenn Sie die **&lt;EINGABETASTE>** drücken, erstellt Yeoman einen neuen Ordner namens **SampleWebApp** sowie die erforderlichen Dateien für Ihre neue App.
-6. Verschieben Sie an der Eingabeaufforderung die Verzeichnisse in Ihren neuen Projektordner:
-   
-        cd SampleWebApp
-7. Geben Sie an der Eingabeaufforderung auch den folgenden Befehl ein, um die erforderlichen NuGet-Pakete zum Ausführen der Anwendung zu installieren:
-   
-        dnu restore
-8. Geben Sie an der Eingabeaufforderung den folgenden Befehl ein, um VS Code zu öffnen:
-   
-        code .
+    ```terminal
+    dotnet restore
+    ```
 
 ## <a name="run-the-web-app-locally"></a>Ausführen der Web-App (lokal)
 Nachdem Sie die Web-App erstellt und alle erforderlichen NuGet-Pakete abgerufen haben, können Sie die Web-App lokal ausführen.
 
-1. Geben Sie in VS Code unter **Befehlspalette** den folgenden Befehl ein, um die verfügbaren Optionen für die Befehlsausführung anzuzeigen:
-   
-        dnx: Run Command
-   
-   > [!NOTE]
-   > Wenn der Omnisharp-Server aktuell nicht ausgeführt wird, wird er gestartet. Geben Sie den oben aufgeführten Befehl erneut ein.
-   > 
-   > 
-   
-    Wählen Sie dann den folgenden Befehl zum Ausführen der Web-App aus:
-   
-        dnx web - (SampleWebApp)
-   
-    Im Befehlsfenster wird angezeigt, dass die Anwendung gestartet wurde. Wenn diese Meldung im Befehlsfenster nicht angezeigt wird, überprüfen Sie, ob links unten in VS Code Fehler für Ihr Projekt angezeigt werden.
-   
-   > [!NOTE]
-   > Zum Aufrufen eines Befehls über die **Befehlspalette** ist das Zeichen **>** am Anfang der Befehlszeile erforderlich. Sie können die Details des Befehls **web** in der Datei *project.json* anzeigen.   
-   > Wenn der Befehl nicht angezeigt wird oder nicht verfügbar ist, müssen Sie vielleicht die C#-Erweiterung installieren. Führen Sie `>Extensions: Install Extension` und `ext install c#` aus, um die C#-Erweiterungen zu installieren.
-   > 
-   > 
+1. Führen Sie die App aus (mit dem Befehl `dotnet run` wird die App erstellt, falls sie nicht mehr aktuell ist):
+    ```terminal
+    dotnet run
+    ```
 2. Öffnen Sie einen Browser, und navigieren Sie zur folgenden URL:
    
     **http://localhost:5000**

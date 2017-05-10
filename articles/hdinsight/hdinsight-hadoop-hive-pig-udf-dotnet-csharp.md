@@ -16,10 +16,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
-ms.openlocfilehash: f141d4f58727696c5f493c9e8eb19feb518e8968
-ms.lasthandoff: 04/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: d5854a623f656f08c428cd2f6792f25582362990
+ms.contentlocale: de-de
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -53,6 +54,8 @@ Sowohl Hive als auch Pig kann Daten zur Verarbeitung an externe Anwendungen übe
 * __Linux-basierte HDInsight__-Cluster verwenden [Mono (https://mono-project.com)](https://mono-project.com) zum Ausführen von Anwendungen für .NET. Mono-Version 4.2.1 ist in HDInsight-Version 3.5 enthalten.
 
     Weitere Informationen zur Kompatibilität von Mono mit .NET Framework-Versionen finden Sie unter [Mono compatibility](http://www.mono-project.com/docs/about-mono/compatibility/) (Kompatibilität von Mono).
+
+    Informationen zum Verwenden einer bestimmten Version von Mono finden Sie im Dokument [Installieren oder Aktualisieren von Mono](hdinsight-hadoop-install-mono.md).
 
 * __Windows-basierte HDInsight__-Cluster verwenden die Microsoft .NET CLR zum Ausführen von Anwendungen für .NET.
 

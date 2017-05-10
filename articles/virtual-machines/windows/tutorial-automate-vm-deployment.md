@@ -13,19 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 04/19/2017
+ms.date: 04/27/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
-ms.openlocfilehash: f8ce553dc528fa98fcffd42750da6bec72266129
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 54920f3b6665ce5d74bf8025d44d5e16bd8a54b4
+ms.contentlocale: de-de
+ms.lasthandoff: 05/03/2017
 
 ---
 
 # <a name="how-to-customize-a-windows-virtual-machine-in-azure"></a>Anpassen eines virtuellen Windows-Computers in Azure
 Zum Konfigurieren von virtuellen Computern (VMs) auf schnelle und einheitliche Weise ist meist eine Form der Automatisierung erwünscht. Eine gängige Methode zum Anpassen von Windows-VMs ist die Verwendung der [benutzerdefinierten Skripterweiterung für Windows](extensions-customscript.md). In diesem Tutorial wird beschrieben, wie Sie die benutzerdefinierte Skripterweiterung zum Installieren und Konfigurieren von IIS für die Ausführung einer einfachen Website nutzen.
 
-Die Schritte in diesem Tutorial können mit dem neuesten [Azure PowerShell](/powershell/azureps-cmdlets-docs/)-Modul ausgeführt werden.
+Die Schritte in diesem Tutorial können mit dem neuesten [Azure PowerShell](/powershell/azure/overview)-Modul ausgeführt werden.
 
 
 ## <a name="custom-script-extension-overview"></a>Übersicht über benutzerdefinierte Skripterweiterungen
@@ -37,7 +38,7 @@ Sie können die benutzerdefinierte Skripterweiterung mit Windows- und Linux-VMs 
 
 
 ## <a name="create-virtual-machine"></a>Erstellen eines virtuellen Computers
-Bevor Sie eine VM erstellen können, müssen Sie mit [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) eine Ressourcengruppe erstellen. Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen `myResourceGroupAutomate` am Standort `westus`:
+Bevor Sie eine VM erstellen können, müssen Sie mit [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) eine Ressourcengruppe erstellen. Das folgende Beispiel erstellt am Standort *westus* eine Ressourcengruppe mit dem Namen *myResourceGroupAutomate*.
 
 ```powershell
 New-AzureRmResourceGroup -ResourceGroupName myResourceGroupAutomate -Location westus
@@ -49,42 +50,75 @@ Legen Sie mit [Get-Credential](https://msdn.microsoft.com/powershell/reference/5
 $cred = Get-Credential
 ```
 
-Nun können nun mit [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) die VM erstellen. Das folgende Beispiel erstellt die erforderlichen virtuellen Netzwerkkomponenten, die Betriebssystemkonfiguration und dann einen virtuellen Computer mit dem Namen `myVM`:
+Nun können nun mit [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) die VM erstellen. Das folgende Beispiel erstellt die erforderlichen virtuellen Netzwerkkomponenten, die Betriebssystemkonfiguration und dann einen virtuellen Computer mit dem Namen *myVM*:
 
 ```powershell
 # Create a subnet configuration
-$subnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name mySubnet -AddressPrefix 192.168.1.0/24
+$subnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
+    -Name mySubnet `
+    -AddressPrefix 192.168.1.0/24
 
 # Create a virtual network
-$vnet = New-AzureRmVirtualNetwork -ResourceGroupName myResourceGroupAutomate -Location westus `
--Name myVnet -AddressPrefix 192.168.0.0/16 -Subnet $subnetConfig
+$vnet = New-AzureRmVirtualNetwork `
+    -ResourceGroupName myResourceGroupAutomate `
+    -Location westus `
+    -Name myVnet `
+    -AddressPrefix 192.168.0.0/16 `
+    -Subnet $subnetConfig
 
 # Create a public IP address and specify a DNS name
-$publicIP = New-AzureRmPublicIpAddress -ResourceGroupName myResourceGroupAutomate -Location westus `
--AllocationMethod Static -IdleTimeoutInMinutes 4 -Name "myPublicIP"
+$publicIP = New-AzureRmPublicIpAddress `
+    -ResourceGroupName myResourceGroupAutomate `
+    -Location westus `
+    -AllocationMethod Static `
+    -IdleTimeoutInMinutes 4 `
+    -Name "myPublicIP"
 
 # Create an inbound network security group rule for port 3389
-$nsgRuleRDP = New-AzureRmNetworkSecurityRuleConfig -Name myNetworkSecurityGroupRuleRDP  -Protocol Tcp `
--Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * `
--DestinationPortRange 3389 -Access Allow
+$nsgRuleRDP = New-AzureRmNetworkSecurityRuleConfig `
+    -Name myNetworkSecurityGroupRuleRDP  `
+    -Protocol Tcp `
+    -Direction Inbound `
+    -Priority 1000 `
+    -SourceAddressPrefix * `
+    -SourcePortRange * `
+    -DestinationAddressPrefix * `
+    -DestinationPortRange 3389 `
+    -Access Allow
 
 # Create an inbound network security group rule for port 80
-$nsgRuleWeb = New-AzureRmNetworkSecurityRuleConfig -Name myNetworkSecurityGroupRuleWWW  -Protocol Tcp `
--Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * `
--DestinationPortRange 80 -Access Allow
+$nsgRuleWeb = New-AzureRmNetworkSecurityRuleConfig `
+    -Name myNetworkSecurityGroupRuleWWW  `
+    -Protocol Tcp `
+    -Direction Inbound `
+    -Priority 1001 `
+    -SourceAddressPrefix * `
+    -SourcePortRange * `
+    -DestinationAddressPrefix * `
+    -DestinationPortRange 80 `
+    -Access Allow
 
 # Create a network security group
-$nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName myResourceGroupAutomate -Location westus `
--Name myNetworkSecurityGroup -SecurityRules $nsgRuleRDP,$nsgRuleWeb
+$nsg = New-AzureRmNetworkSecurityGroup `
+    -ResourceGroupName myResourceGroupAutomate `
+    -Location westus `
+    -Name myNetworkSecurityGroup `
+    -SecurityRules $nsgRuleRDP,$nsgRuleWeb
 
 # Create a virtual network card and associate with public IP address and NSG
-$nic = New-AzureRmNetworkInterface -Name myNic -ResourceGroupName myResourceGroupAutomate -Location westus `
--SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $publicIP.Id -NetworkSecurityGroupId $nsg.Id
+$nic = New-AzureRmNetworkInterface `
+    -Name myNic `
+    -ResourceGroupName myResourceGroupAutomate `
+    -Location westus `
+    -SubnetId $vnet.Subnets[0].Id `
+    -PublicIpAddressId $publicIP.Id `
+    -NetworkSecurityGroupId $nsg.Id
 
 # Create a virtual machine configuration
 $vmConfig = New-AzureRmVMConfig -VMName myVM -VMSize Standard_DS2 | `
 Set-AzureRmVMOperatingSystem -Windows -ComputerName myVM -Credential $cred | `
-Set-AzureRmVMSourceImage -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2016-Datacenter -Version latest | `
+Set-AzureRmVMSourceImage -PublisherName MicrosoftWindowsServer `
+    -Offer WindowsServer -Skus 2016-Datacenter -Version latest | `
 Add-AzureRmVMNetworkInterface -Id $nic.Id
 
 New-AzureRmVM -ResourceGroupName myResourceGroupAutomate -Location westus -VM $vmConfig
@@ -94,7 +128,7 @@ Die Erstellung der Ressourcen und VM dauert einige Minuten.
 
 
 ## <a name="automate-iis-install"></a>Automatisieren der Installation von IIS
-Verwenden Sie [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) zum Installieren der benutzerdefinierten Skripterweiterung. Die Erweiterung führt `powershell Add-WindowsFeature Web-Server` zum Installieren des IIS-Webservers aus und aktualisiert dann die Seite „`Default.htm`“ mit dem Hostnamen der VM:
+Verwenden Sie [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) zum Installieren der benutzerdefinierten Skripterweiterung. Die Erweiterung führt `powershell Add-WindowsFeature Web-Server` zum Installieren des IIS-Webservers aus und aktualisiert dann die Seite *Default.htm* mit dem Hostnamen der VM:
 
 ```powershell
 Set-AzureRmVMExtension -ResourceGroupName myResourceGroupAutomate `
@@ -109,10 +143,12 @@ Set-AzureRmVMExtension -ResourceGroupName myResourceGroupAutomate `
 
 
 ## <a name="test-web-site"></a>Testen der Website
-Rufen Sie mit [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) die öffentliche IP-Adresse Ihres Load Balancers ab. Im folgenden Beispiel wird die IP-Adresse für `myPublicIP` abgerufen, die wir zuvor erstellt haben:
+Rufen Sie mit [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) die öffentliche IP-Adresse Ihres Load Balancers ab. Im folgenden Beispiel wird die IP-Adresse für *myPublicIP* abgerufen, die wir zuvor erstellt haben:
 
 ```powershell
-Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroupAutomate -Name myPublicIP | select IpAddress
+Get-AzureRmPublicIPAddress `
+    -ResourceGroupName myResourceGroupAutomate `
+    -Name myPublicIP | select IpAddress
 ```
 
 Geben Sie die öffentliche IP-Adresse in einen Webbrowser ein. Die Website wird mit dem Hostnamen der VM angezeigt, an die der Load Balancer den Datenverkehr wie im folgenden Beispiel verteilt hat:
@@ -121,6 +157,8 @@ Geben Sie die öffentliche IP-Adresse in einen Webbrowser ein. Die Website wird 
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Tutorial haben Sie gelernt, wie Sie eine VM mit der benutzerdefinierten Skripterweiterung anpassen. Im nächsten Tutorial erfahren Sie, wie Sie eine IIS-Website mit Lastenausgleich erstellen.
 
-[Lastenausgleich zwischen virtuellen Computern](./tutorial-load-balancer.md)
+In diesem Tutorial haben Sie gelernt, einen virtuellen Computer beim ersten Start anzupassen. Im nächsten Tutorial erfahren Sie, wie Sie benutzerdefinierte VM-Images erstellen.
+
+[Erstellen von benutzerdefinierten VM-Images](./tutorial-custom-images.md)
+

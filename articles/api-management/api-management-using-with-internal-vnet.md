@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 456c541be7aadcce494bbd54e97deb6f30d5141b
-ms.openlocfilehash: dc9af7e4ef9599886d1be6676f88f71f80c20474
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: b9df2c3e7f49a47bfd714f28c5ab53590ca9a719
+ms.contentlocale: de-de
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -48,11 +50,11 @@ Nach erfolgreicher Bereitstellung sollte die interne virtuelle IP-Adresse des Di
 ### <a name="enable-vnet-connection-using-powershell-cmdlets"></a>Aktivieren der VNET-Verbindung mithilfe von PowerShell-Cmdlets
 Sie können VNET-Verbindungen auch mithilfe der PowerShell-Cmdlets aktivieren.
 
-* **Erstellen eines API Management-Diensts in einem VNET**: Verwenden Sie das Cmdlet [New-AzureRmApiManagement](https://docs.microsoft.com/en-us/powershell/resourcemanager/azurerm.apimanagement/v3.1.0/new-azurermapimanagement), um einen Azure API Management-Dienst in einem VNET zu erstellen und so zu konfigurieren, dass als Typ ein internes VNET verwendet wird.
+* **Erstellen eines API Management-Diensts in einem VNET**: Verwenden Sie das Cmdlet [New-AzureRmApiManagement](/powershell/module/azurerm.apimanagement/new-azurermapimanagement), um einen Azure API Management-Dienst in einem VNET zu erstellen und so zu konfigurieren, dass als Typ ein internes VNET verwendet wird.
 
-* **Bereitstellen eines vorhandenen API Management-Diensts in einem VNET**: Verwenden Sie das Cmdlet [Update-AzureRmApiManagementDeployment](https://docs.microsoft.com/en-us/powershell/resourcemanager/azurerm.apimanagement/v3.1.0/update-azurermapimanagementdeployment), um einen vorhandenen Azure API Management-Dienst in ein virtuelles Netzwerk zu verschieben und so zu konfigurieren, dass als Typ ein internes VNET verwendet wird.
+* **Bereitstellen eines vorhandenen API Management-Diensts in einem VNET**: Verwenden Sie das Cmdlet [Update-AzureRmApiManagementDeployment](/powershell/module/azurerm.apimanagement/update-azurermapimanagementdeployment), um einen vorhandenen Azure API Management-Dienst in ein virtuelles Netzwerk zu verschieben und so zu konfigurieren, dass als Typ ein internes VNET verwendet wird.
 
-## <a name="a-nameapim-dns-configurationadns-configuration"></a><a name="apim-dns-configuration"></a>DNS-Konfiguration
+## <a name="apim-dns-configuration"></a>DNS-Konfiguration
 Bei Verwendung von API Management im Modus eines externen virtuellen Netzwerks wird DNS von Azure verwaltet. Beim Modus eines internen virtuellen Netzwerks müssen Sie DNS selbst verwalten.
 
 > [!NOTE]
@@ -61,23 +63,23 @@ Bei Verwendung von API Management im Modus eines externen virtuellen Netzwerks w
 ### <a name="access-on-default-host-names"></a>Zugriff auf Standardhostnamen:
 Wenn Sie z.B. einen API Management-Dienst in einer öffentlichen Azure-Cloud mit dem Namen „Contoso“ erstellen, werden standardmäßig die folgenden Dienstendpunkte konfiguriert.
 
->   Gateway/Proxy: contoso.azure-api.net
+>    Gateway/Proxy: contoso.azure-api.net
 
 > Herausgeberportal und Entwicklerportal: contoso.portal.azure-api.net
 
 > Endpunkt für die direkte Verwaltung: contoso.management.azure-api.net
 
->   Git: contoso.scm.azure-api.net
+>    Git: contoso.scm.azure-api.net
 
 Für den Zugriff auf diese API Management-Dienstendpunkte können Sie einen virtuellen Computer in einem Subnetz erstellen, das mit dem virtuellen Netzwerk verbunden ist, in dem API Management bereitgestellt wurde. Wenn die interne virtuelle IP-Adresse für Ihren Dienst 10.0.0.5 ist, können Sie die folgende Zuordnung in der Datei „hosts“ (% SystemDrive%\drivers\etc\hosts) vornehmen:
 
-> 10.0.0.5    contoso.azure-api.net
+> 10.0.0.5      contoso.azure-api.net
 
-> 10.0.0.5    contoso.portal.azure-api.net
+> 10.0.0.5      contoso.portal.azure-api.net
 
-> 10.0.0.5    contoso.management.azure-api.net
+> 10.0.0.5      contoso.management.azure-api.net
 
-> 10.0.0.5    contoso.scm.azure-api.net
+> 10.0.0.5      contoso.scm.azure-api.net
 
 Sie können dann über den virtuellen Computer, den Sie erstellt haben, auf alle Dienstendpunkte zugreifen. Wenn Sie einen benutzerdefinierten DNS-Server in einem virtuellen Netzwerk verwenden, können Sie auch DNS-A-Datensätze erstellen und auf diese Endpunkte von überall in Ihrem virtuellen Netzwerk zugreifen. 
 
@@ -99,9 +101,4 @@ Anschließend können Sie A-Datensätze in Ihrem DNS-Server erstellen, um auf di
 
 [Create API Management service]: api-management-get-started.md#create-service-instance
 [Common Network Configuration Issues]: api-management-using-with-vnet.md#network-configuration-issues
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

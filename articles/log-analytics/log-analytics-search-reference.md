@@ -15,10 +15,11 @@ ms.topic: article
 ms.date: 04/20/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: fc6e4eaa34694e2b20cb53b3e457803c59bf76b9
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
+ms.openlocfilehash: 47fb74c608315b256e88dd774af7cb5260529607
+ms.contentlocale: de-de
+ms.lasthandoff: 04/29/2017
 
 
 ---
@@ -620,7 +621,7 @@ Verknüpft die Ergebnisse zweier Abfragen zu einem einzelnen Resultset.  Unterst
 | Linker Join  | Gibt alle Datensätze aus der linken Abfrage und entsprechende Datensätze aus der rechten Abfrage zurück. |
 
 
-- Joins unterstützen derzeit keine Abfragen mit dem Schlüsselwort **IN** oder dem Befehl **Measure**.
+- Joins unterstützen derzeit keine Abfragen, die das Schlüsselwort **IN**, den Befehl **Measure** oder den Befehl **Extend** enthalten, falls sie auf ein Feld in der rechten Abfrage abzielen.
 - In einen Join kann derzeit nur ein einzelnes Feld eingeschlossen werden.
 - Eine einzelne Suche darf nicht mehrere Joins enthalten.
 

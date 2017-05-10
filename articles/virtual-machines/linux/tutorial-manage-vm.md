@@ -15,10 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/25/2017
 ms.author: nepeters
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: bcb075b320bab942c6421be72ea1445d5fa3f603
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 7a6f255c64a584e29801aacb40c79462751fe535
+ms.contentlocale: de-de
+ms.lasthandoff: 05/03/2017
 
 ---
 
@@ -32,7 +33,7 @@ Die Schritte in diesem Tutorial können mit der neuesten Version von [Azure CLI 
 
 Erstellen Sie mit dem Befehl [az group create](https://docs.microsoft.com/cli/azure/group#create) eine Ressourcengruppe. 
 
-Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Vor dem virtuellen Computer muss eine Ressourcengruppe erstellt werden. In diesem Beispiel wird eine Ressourcengruppe mit dem Namen `myResourceGroupVM` in der Region `westus` erstellt. 
+Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Vor dem virtuellen Computer muss eine Ressourcengruppe erstellt werden. In diesem Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroupVM* in der Region *westus* erstellt. 
 
 ```azurecli
 az group create --name myResourceGroupVM --location westus
@@ -44,7 +45,7 @@ Die Ressourcengruppe wird beim Erstellen oder Ändern eines virtuellen Computers
 
 Erstellen Sie mit dem Befehl [az vm create](https://docs.microsoft.com/cli/azure/vm#create) einen virtuellen Computer. 
 
-Beim Erstellen eines virtuellen Computers stehen mehrere Optionen zur Verfügung, z.B. Betriebssystemimage, Festlegen der Datenträgergröße und Administratoranmeldeinformationen. In diesem Beispiel wird ein virtueller Computer mit dem Namen `myVM` erstellt, auf dem Ubuntu Server ausgeführt wird. 
+Beim Erstellen eines virtuellen Computers stehen mehrere Optionen zur Verfügung, z.B. Betriebssystemimage, Festlegen der Datenträgergröße und Administratoranmeldeinformationen. In diesem Beispiel wird ein virtueller Computer mit dem Namen *myVM* erstellt, auf dem Ubuntu Server ausgeführt wird. 
 
 ```azurecli
 az vm create --resource-group myResourceGroupVM --name myVM --image UbuntuLTS --generate-ssh-keys
@@ -81,7 +82,7 @@ exit
 
 ## <a name="understand-vm-images"></a>Grundlegendes zu VM-Images
 
-Der Azure Marketplace bietet zahlreiche Images, die zum Erstellen neuer virtueller Computer verwendet werden können. In den vorherigen Schritten wurde ein virtueller Computer mit einem Ubuntu-Image erstellt. In diesem Schritt wird der Marketplace mithilfe der Azure-Befehlszeilenschnittstelle nach einem CentOS-Image durchsucht, das anschließend zum Bereitstellen eines zweiten virtuellen Computers verwendet wird.  
+Azure Marketplace bietet zahlreiche Images, die zum Erstellen virtueller Computer verwendet werden können. In den vorherigen Schritten wurde ein virtueller Computer mit einem Ubuntu-Image erstellt. In diesem Schritt wird der Marketplace mithilfe der Azure-Befehlszeilenschnittstelle nach einem CentOS-Image durchsucht, das anschließend zum Bereitstellen eines zweiten virtuellen Computers verwendet wird.  
 
 Eine Liste mit den am häufigsten verwendeten Images erhalten Sie mithilfe des Befehls [az vm image list](/cli/azure/vm/image#list).
 
@@ -107,7 +108,7 @@ Debian         credativ                8                   credativ:Debian:8:lat
 CoreOS         CoreOS                  Stable              CoreOS:CoreOS:Stable:latest                                     CoreOS               latest
 ```
 
-Eine vollständige Liste erhalten Sie, indem Sie das Argument `--all` hinzufügen. Die Imageliste kann auch nach `--publisher` oder `–offer` gefiltert werden. In diesem Beispiel wird die Liste nach Images mit einem Angebot gefiltert, das `CentOS` entspricht. 
+Eine vollständige Liste erhalten Sie, indem Sie das Argument `--all` hinzufügen. Die Imageliste kann auch nach `--publisher` oder `–-offer` gefiltert werden. In diesem Beispiel wird die Liste nach Images mit einem Angebot gefiltert, das *CentOS* entspricht. 
 
 ```azurecli
 az vm image list --offer CentOS --all --output table
@@ -126,7 +127,7 @@ CentOS            OpenLogic         6.5   OpenLogic:CentOS:6.5:6.5.20160309     
 CentOS            OpenLogic         6.5   OpenLogic:CentOS:6.5:6.5.20170207       6.5.20170207
 ```
 
-Wenn Sie einen virtuellen Computer mit einem bestimmten Image bereitstellen möchten, notieren Sie sich den Wert in der Spalte `Urn`. Bei der Angabe des Images kann die Imageversionsnummer durch „latest“ ersetzt werden, um die neueste Version der Distribution auszuwählen. In diesem Beispiel wird mithilfe des Arguments `--image` die neueste Version eines CentOS 6.5-Images angeben.  
+Wenn Sie einen virtuellen Computer mit einem bestimmten Image bereitstellen möchten, notieren Sie sich den Wert in der Spalte *Urn*. Bei der Angabe des Images kann die Imageversionsnummer durch „latest“ ersetzt werden, um die neueste Version der Distribution auszuwählen. In diesem Beispiel wird mithilfe des Arguments `--image` die neueste Version eines CentOS 6.5-Images angeben.  
 
 ```azurecli
 az vm create --resource-group myResourceGroupVM --name myVM2 --image OpenLogic:CentOS:6.5:latest --generate-ssh-keys
@@ -186,7 +187,12 @@ Hier sehen Sie einen Teil der Ausgabe:
 Im vorherigen Beispiel zur Erstellung eines virtuellen Computers wurde eine Standardgröße verwendet, da keine Größe angegeben wurde. Eine VM-Größe kann bei der Erstellung mit dem Befehl [az vm create](/cli/azure/vm#create) und dem Argument `--size` ausgewählt werden. 
 
 ```azurecli
-az vm create --resource-group myResourceGroupVM --name myVM3 --image UbuntuLTS --size Standard_F4s --generate-ssh-keys
+az vm create \
+    --resource-group myResourceGroupVM \
+    --name myVM3 \
+    --image UbuntuLTS \
+    --size Standard_F4s \
+    --generate-ssh-keys
 ```
 
 ### <a name="resize-a-vm"></a>Ändern der Größe eines virtuellen Computers
@@ -243,7 +249,10 @@ Ein virtueller Azure-Computer kann einen von mehreren Betriebszuständen aufweis
 Verwenden Sie zum Ermitteln des Zustands eines bestimmten virtuellen Computers den Befehl [az vm get instance-view](/cli/azure/vm#get-instance-view). Achten Sie darauf, dass Sie einen gültigen Namen für einen virtuellen Computer und eine Ressourcengruppe angeben. 
 
 ```azurecli
-az vm get-instance-view --name myVM --resource-group myResourceGroupVM --query instanceView.statuses[1] --output table
+az vm get-instance-view \
+    --name myVM \
+    --resource-group myResourceGroupVM \
+    --query instanceView.statuses[1] --output table
 ```
 
 Ausgabe:

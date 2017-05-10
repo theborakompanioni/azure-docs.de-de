@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/01/2017
 ms.author: anmola
-translationtype: Human Translation
-ms.sourcegitcommit: e3dda1f6a0d513668aca252aa1855a93f3720247
-ms.openlocfilehash: 3bff3fb99f27985c24b5a2e677738595314242c4
-ms.lasthandoff: 03/02/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: c05081685532aecbe29e9bf380f0278e775ad6b7
+ms.contentlocale: de-de
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -37,7 +38,7 @@ Szenarien sind komplexe Vorgänge, die aus einem oder mehreren Vorgängen besteh
 * Failoverszenario
 
 ## <a name="testing-as-a-service"></a>Testing as a Service
-Der Fault Analysis Service ist ein Service Fabric-Systemdienst, der automatisch mit einem Service Fabric-Cluster gestartet wird. Dieser Dienst agiert als Host für die Fehlerinjektion, die Ausführung von Testszenarien und die Integritätsanalyse. 
+Der Fault Analysis Service ist ein Service Fabric-Systemdienst, der automatisch mit einem Service Fabric-Cluster gestartet wird. Dieser Dienst agiert als Host für die Fault Injection, die Ausführung von Testszenarien und die Integritätsanalyse. 
 
 ![Fault Analysis Service][0]
 

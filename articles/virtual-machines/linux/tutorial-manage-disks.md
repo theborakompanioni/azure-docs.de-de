@@ -15,10 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/25/2017
 ms.author: nepeters
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 3e47c917774245f8b321b5cd94def24b7f523a94
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 84ce4b288c23c7005ac92f18ee26af70479deb8d
+ms.contentlocale: de-de
+ms.lasthandoff: 05/03/2017
 
 ---
 
@@ -32,9 +33,9 @@ Die Schritte in diesem Tutorial können mit der neuesten Version von [Azure CLI 
 
 Beim Erstellen eines virtuellen Azure-Computers werden dem virtuellen Computer automatisch zwei Datenträger angefügt. 
 
-**Betriebssystem-Datenträger**: Betriebssystem-Datenträger können in der Größe auf bis zu 1TB angepasst werden und hosten das Betriebssystem des virtuellen Computers. Der Betriebssystem-Datenträger wird standardmäßig mit `/dev/sda` bezeichnet. Die Konfiguration der Datenträgerzwischenspeicherung des Betriebssystem-Datenträgers ist für die Leistung des Betriebssystems optimiert. Aufgrund dieser Konfiguration sollte der Betriebssystem-Datenträger **nicht** Anwendungen oder Daten hosten. Verwenden Sie für Anwendungen und Daten einen Datenträger. Dies wird weiter unten in diesem Artikel ausführlich erläutert. 
+**Betriebssystem-Datenträger**: Betriebssystem-Datenträger können in der Größe auf bis zu 1TB angepasst werden und hosten das Betriebssystem des virtuellen Computers. Der Betriebssystem-Datenträger wird standardmäßig mit */dev/sda* bezeichnet. Die Konfiguration der Datenträgerzwischenspeicherung des Betriebssystem-Datenträgers ist für die Leistung des Betriebssystems optimiert. Aufgrund dieser Konfiguration sollte der Betriebssystem-Datenträger **nicht** Anwendungen oder Daten hosten. Verwenden Sie für Anwendungen und Daten einen Datenträger. Dies wird weiter unten in diesem Artikel ausführlich erläutert. 
 
-**Temporärer Datenträger**: Temporäre Datenträger verwenden ein Solid State Drive, das sich auf dem gleichen Azure-Host wie der virtuelle Computer befindet. Temporäre Datenträger sind äußerst leistungsfähig und können für Vorgänge wie die temporäre Datenverarbeitung verwendet werden. Wenn der virtuelle Computer jedoch auf einen neuen Host verschoben wird, werden alle auf einem temporären Datenträger gespeicherten Daten entfernt. Die Größe des temporären Datenträgers richtet sich nach der Größe des virtuellen Computers. Temporäre Datenträger werden mit bezeichnet `/dev/sdb` und haben einen Bereitstellungspunkt `/mnt`.
+**Temporärer Datenträger**: Temporäre Datenträger verwenden ein Solid State Drive, das sich auf dem gleichen Azure-Host wie der virtuelle Computer befindet. Temporäre Datenträger sind äußerst leistungsfähig und können für Vorgänge wie die temporäre Datenverarbeitung verwendet werden. Wenn der virtuelle Computer jedoch auf einen neuen Host verschoben wird, werden alle auf einem temporären Datenträger gespeicherten Daten entfernt. Die Größe des temporären Datenträgers richtet sich nach der Größe des virtuellen Computers. Temporäre Datenträger werden mit bezeichnet */dev/sdb* und haben den Bereitstellungspunkt */mnt*.
 
 ### <a name="temporary-disk-sizes"></a>Größe von temporären Datenträgern
 
@@ -82,7 +83,7 @@ Premium-Datenträger zeichnen sich durch SSD-basierte hohe Leistung und geringe 
 | Max. IOPS pro Datenträger | 500 | 2.300 | 5.000 |
 Durchsatz pro Datenträger | 100 MB/s | 150 MB/s | 200 MB/s |
 
-In dieser Tabelle ist zwar die maximale IOPS-Anzahl pro Datenträger angegeben, eine höhere Leistung kann aber durch Striping mehrerer Datenträger erreicht werden. Eine Standard_GS5-VM kann z.B. ein Maximum von 80.000IOPS erreichen. Ausführliche Informationen zur maximalen IOPS-Anzahl pro virtuellem Computer finden Sie unter [Größen für virtuelle Linux-Computer](sizes.md).
+In dieser Tabelle ist zwar die maximale IOPS-Anzahl pro Datenträger angegeben, eine höhere Leistung kann aber durch Striping mehrerer Datenträger erreicht werden. Eine Standard_GS5-VM kann z.B. ein Maximum von 80.000 IOPS erreichen. Ausführliche Informationen zur maximalen IOPS-Anzahl pro virtuellem Computer finden Sie unter [Größen für virtuelle Linux-Computer](sizes.md).
 
 ## <a name="create-and-attach-disks"></a>Erstellen und Anfügen von Datenträgern
 
@@ -93,7 +94,7 @@ Datenträger für Daten können zum Zeitpunkt der VM-Erstellung erstellt und ang
 Erstellen Sie mit dem Befehl [az group create](https://docs.microsoft.com/cli/azure/group#create) eine Ressourcengruppe. 
 
 ```azurecli
-az group create --name myResourceGroupDisk --location westus
+az group create --name myResourceGroupDisk --location eastus
 ```
 
 Erstellen Sie mit dem Befehl [az vm create]( /cli/azure/vm#create) einen virtuellen Computer. Das `--datadisk-sizes-gb`-Argument gibt an, dass ein weiterer Datenträger erstellt und dem virtuellen Computer angefügt werden sollte. Verwenden Sie zum Erstellen und Anfügen mehrerer Datenträger eine durch Leerzeichen getrennte Liste der Datenträger-Größenwerte. Im folgenden Beispiel wird ein virtueller Computer mit zwei Datenträgern von jeweils 128GB erstellt. Da die Größe der Datenträger jeweils 128GB beträgt, werden beide Datenträger als P10 konfiguriert, was maximal 500IOPS pro Datenträger bereitstellt.
@@ -146,13 +147,13 @@ Binden Sie den neuen Datenträger ein, damit im Betriebssystem darauf zugegriffe
 sudo mkdir /datadrive && sudo mount /dev/sdc1 /datadrive
 ```
 
-Auf den Datenträger kann jetzt über den Bereitstellungspunkt `datadrive` zugegriffen werden. Dies kann mit Ausführung des `df -h`-Befehls überprüft werden. 
+Auf den Datenträger kann jetzt über den Bereitstellungspunkt *datadrive* zugegriffen werden. Dies kann durch Ausführung des Befehls `df -h` überprüft werden. 
 
 ```bash
 df -h
 ```
 
-Die Ausgabe zeigt das neue, auf `/datadrive` bereitgestellte Laufwerk.
+Die Ausgabe zeigt das neue, auf */datadrive* bereitgestellte Laufwerk.
 
 ```bash
 Filesystem      Size  Used Avail Use% Mounted on
@@ -161,7 +162,7 @@ Filesystem      Size  Used Avail Use% Mounted on
 /dev/sdc1        50G   52M   47G   1% /datadrive
 ```
 
-Um sicherzustellen, dass das Laufwerk nach einem Neustart automatisch wieder eingebunden wird, muss es der Datei `/stc/fstab` hinzugefügt werden. Rufen Sie hierzu die UUID des Datenträgers mit dem `blkid`-Hilfsprogramm ab.
+Um sicherzustellen, dass das Laufwerk nach einem Neustart automatisch wieder eingebunden wird, muss es der Datei */etc/fstab* hinzugefügt werden. Rufen Sie hierzu die UUID des Datenträgers mit dem `blkid`-Hilfsprogramm ab.
 
 ```bash
 sudo -i blkid
@@ -173,7 +174,7 @@ Die Ausgabe zeigt die UUID des Laufwerks an, in diesem Fall `/dev/sdc1`.
 /dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="ext4"
 ```
 
-Fügen Sie der `/etc/fstab`-Datei eine Zeile ähnlich der folgenden hinzu. Beachten Sie außerdem, dass Schreibbarrieren mit `barrier=0` deaktiviert werden können – diese Konfiguration kann die Datenträgerleistung verbessern. 
+Fügen Sie der Datei */etc/fstab* eine Zeile ähnlich der folgenden hinzu. Beachten Sie außerdem, dass Schreibbarrieren mit *barrier=0* deaktiviert werden können. Diese Konfiguration kann die Datenträgerleistung verbessern. 
 
 ```bash
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive  ext4    defaults,nofail,barrier=0   1  2
@@ -192,7 +193,7 @@ Sobald ein virtueller Computer bereitgestellt ist, können der Betriebssystem-Da
 Zum Vergrößern eines Datenträgers wird die ID oder der Name des Datenträgers benötigt. Verwenden Sie den [az disk list](/cli/azure/vm/disk#list)-Befehl, um alle Datenträger in einer Ressourcengruppe zurückzugeben. Notieren Sie den Namen des Datenträgers, den Sie vergrößern möchten.
 
 ```azurecli
- az disk list -g myResourceGroupDisk --query '[*].{Name:name,Gb:diskSizeGb,Tier:accountType}' --output table
+az disk list -g myResourceGroupDisk --query '[*].{Name:name,Gb:diskSizeGb,Tier:accountType}' --output table
 ```
 
 Der virtuelle Computer muss auch freigegeben werden. Verwenden Sie den Befehl [az vm deallocate]( /cli/azure/vm#deallocate), um den virtuellen Computer zu beenden und ihn freizugeben.
@@ -201,7 +202,7 @@ Der virtuelle Computer muss auch freigegeben werden. Verwenden Sie den Befehl [a
 az vm deallocate --resource-group myResourceGroupDisk --name myVM
 ```
 
-Verwenden Sie den [az disk update](/cli/azure/vm/disk#update)-Befehl, um den Datenträger zu vergrößern. In diesem Beispiel wird ein Datenträger mit dem Namen `myDataDisk` auf 1Terabyte vergrößert.
+Verwenden Sie den [az disk update](/cli/azure/vm/disk#update)-Befehl, um den Datenträger zu vergrößern. In diesem Beispiel wird ein Datenträger mit dem Namen *myDataDisk* auf 1 Terabyte vergrößert.
 
 ```azurecli
 az disk update --name myDataDisk --resource-group myResourceGroupDisk --size-gb 1023
@@ -259,7 +260,7 @@ az vm create --resource-group myResourceGroupDisk --name myVM --attach-os-disk m
 
 Alle Datenträger müssen dem virtuellen Computer erneut angefügt werden.
 
-Finden Sie zuerst mithilfe des Befehls [az disk list](https://docs.microsoft.com/cli/azure/disk#list) den Namen des Datenträgers. In diesem Beispiel wird der Name des Datenträgers in eine Variable namens `datadisk` eingefügt, die im nächsten Schritt verwendet wird.
+Finden Sie zuerst mithilfe des Befehls [az disk list](https://docs.microsoft.com/cli/azure/disk#list) den Namen des Datenträgers. In diesem Beispiel wird der Name des Datenträgers in eine Variable namens *datadisk* eingefügt, die im nächsten Schritt verwendet wird.
 
 ```azurecli
 datadisk=$(az disk list -g myResourceGroupDisk --query "[?contains(name,'myVM')].[name]" -o tsv)
