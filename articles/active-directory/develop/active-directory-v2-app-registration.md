@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 05/01/2017
 ms.author: dastrock
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: ba958d029e5bf1bc914a2dff4b6c09282d578c67
 ms.openlocfilehash: 4a71d02d37e55ae08035632c323283438b3f66c6
+ms.contentlocale: de-de
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -36,7 +38,6 @@ Melden Sie sich entweder mit einem persönlichen Microsoft-Konto oder einem Gesc
 Fertig? Jetzt sollten Sie Ihre Liste der Microsoft-Apps sehen, die wahrscheinlich noch leer ist.  Ändern wir das.
 
 Klicken Sie auf **App hinzufügen**, und geben Sie einen Namen für die App ein.  Das Portal weist der App eine global eindeutige Anwendungs-ID zu, die Sie später in Ihrem Code verwenden.  Wenn Ihre App eine serverseitige Komponente enthält, die Zugriffstoken zum Aufrufen von APIs benötigt (denken Sie an Office, Azure oder Ihre eigene Web-API), sollten Sie auch hier einen **geheimen Anwendungsschlüssel** erstellen.
-<!-- TODO: Link for app secrets -->
 
 Fügen Sie dann die Plattformen hinzu, auf denen Ihre App verwendet wird.
 
@@ -54,10 +55,5 @@ Optional können Sie das Aussehen und Verhalten der Anmeldeseite im Profilabschn
 Nachdem Sie eine Microsoft-App erstellt haben, können Sie eines unserer Schnellstarttutorials zum v2.0-Endpunkt absolvieren.  Hier sind einige Vorschläge:
 
 [!INCLUDE [active-directory-v2-quickstart-table](../../../includes/active-directory-v2-quickstart-table.md)]
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

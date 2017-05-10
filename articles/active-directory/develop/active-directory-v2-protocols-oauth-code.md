@@ -16,16 +16,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c579135f798ea0c2a5461fdd7c88244d2d6d78c6
 ms.openlocfilehash: e9da636d5dbe95ea7d0bd8cf186af30247ca8bd8
+ms.contentlocale: de-de
+ms.lasthandoff: 01/18/2017
 
 
 ---
 # <a name="v20-protocols---oauth-20-authorization-code-flow"></a>v2.0-Protokolle – OAuth 2.0-Autorisierungscodefluss
 Der OAuth 2.0-Autorisierungcodefluss kann in Apps verwendet werden, die auf einem Gerät installiert sind, um Zugriff auf geschützte Ressourcen wie Web-APIs zu gewähren.  Die Implementierung von OAuth 2.0 im App-Modell v2.0 ermöglicht es Ihnen, sich bei mobilen Apps und Desktop-Apps anzumelden und über APIs darauf zuzugreifen.  Diese sprachunabhängige Anleitung beschreibt das Senden und Empfangen von HTTP-Nachrichten ohne Verwendung unserer Open Source-Bibliotheken.
-
-<!-- TODO: Need link to libraries -->
 
 > [!NOTE]
 > Nicht alle Szenarien und Funktionen von Azure Active Directory werden vom v2.0-Endpunkt unterstützt.  Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um zu bestimmen, ob Sie den v2.0-Endpunkt verwenden sollten.
@@ -303,10 +303,5 @@ Eine erfolgreiche Tokenantwort sieht wie folgt aus:
 | correlation_id |Ein eindeutiger Bezeichner für die Anforderung, die bei der komponentenübergreifenden Diagnose helfen kann |
 
 Eine Beschreibung der Fehlercodes und der empfohlenen Clientaktion finden Sie unter [Fehlercodes für Token-Endpunktfehler](#error-codes-for-token-endpoint-errors).
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

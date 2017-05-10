@@ -14,11 +14,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/13/2016
+ms.date: 04/07/2017
 ms.author: sashan
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
 ms.openlocfilehash: 2ddbe1766a978f9849c310a72086f95cbb68cd83
+ms.contentlocale: de-de
 ms.lasthandoff: 04/14/2017
 
 
@@ -68,8 +69,7 @@ Wenn die primäre Datenbank unerwartet offline geschaltet wird oder Sie sie für
 
 > [!IMPORTANT]
 > Um die aktive Georeplikation und automatische Failovergruppen verwenden zu können, müssen Sie entweder der Besitzer des Abonnements sein oder über Administratorberechtigungen in SQL Server verfügen. Zum Konfigurieren und Durchführen des Failovers können Sie das Azure-Portal, PowerShell oder die REST-API mit Berechtigungen des Abonnements verwenden. Alternativ dazu können Sie Transact-SQL mit Berechtigungen in SQL Server verwenden.
->
->
+> 
 
 Verwenden Sie die aktive Georeplikation, wenn Ihre Anwendung die folgenden Kriterien erfüllt:
 
@@ -131,8 +131,8 @@ Wenn Planung und Vorbereitung nicht sorgfältig durchgeführt werden, dauert es 
 Wenn Sie aktive Georeplikation und automatische Failovergruppen als Wiederherstellungsmechanismus verwenden, können Sie eine Richtlinie für automatisches Failover konfigurieren oder [manuelles Failover](sql-database-disaster-recovery.md#failover-to-geo-replicated-secondary-database) verwenden. Sobald das Failover initiiert wurde, bewirkt es, dass die sekundäre Datenbank zur neuen primären Datenbank wird und neue Transaktionen aufzeichnen sowie auf Abfragen antworten kann. Hierbei entsteht ein minimaler Datenverlust für die Daten, die noch nicht repliziert wurden. Informationen zum Entwerfen des Failoverprozesses finden Sie unter [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md).
 
 > [!NOTE]
-> Wenn das Rechenzentrum wieder online geschaltet wird, werden die alten primären Datenbanken automatisch wieder mit der neuen primären Datenbank verbunden und werden zu sekundären Datenbanken. Wenn Sie die primäre Datenbank wieder in den ursprünglichen Bereich verschieben müssen, können Sie manuell ein geplantes Failover initiieren (Failback).
->
+> Wenn das Rechenzentrum wieder online geschaltet wird, werden die alten primären Datenbanken automatisch wieder mit der neuen primären Datenbank verbunden und werden zu sekundären Datenbanken. Wenn Sie die primäre Datenbank wieder in den ursprünglichen Bereich verschieben müssen, können Sie manuell ein geplantes Failover initiieren (Failback). 
+> 
 
 ### <a name="perform-a-geo-restore"></a>Ausführen einer Geowiederherstellung
 Wenn Sie automatisierte Sicherungen mit georedundanter Speicherreplikation als Wiederherstellungsmechanismus verwenden, [stellen Sie die Datenbank per Geowiederherstellung wieder her](sql-database-disaster-recovery.md#recover-using-geo-restore). Die Wiederherstellung erfolgt in den meisten Fällen innerhalb von 12 Stunden. Es entsteht ein Datenverlust von bis zu einer Stunde – je nachdem, wann die letzte differenzielle Sicherung durchgeführt und repliziert wurde. Solange die Wiederherstellung nicht abgeschlossen ist, kann die Datenbank keine Transaktionen aufzeichnen oder auf Abfragen antworten.

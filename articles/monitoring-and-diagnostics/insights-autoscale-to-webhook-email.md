@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2017
 ms.author: ashwink
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: f0ab9d4bea3a3f7f1e1a0af2206e7b5641be1288
+ms.contentlocale: de-de
 ms.lasthandoff: 04/03/2017
 
 
@@ -35,7 +36,7 @@ Sie können über das Azure-Portal für Cloud-Dienste und Serverfarmen (Web-Apps
 
 * Wählen Sie die Metrik **skalieren nach** .
 
-![skalieren nach](./media/insights-autoscale-to-webhook-email/insights-autoscale-scale-by.png)
+![skalieren nach](./media/insights-autoscale-to-webhook-email/insights-autoscale-notify.png)
 
 ## <a name="virtual-machine-scale-sets"></a>Skalierungsgruppen für virtuelle Computer
 Bei neueren, mit Resource Manager erstellten virtuellen Computern (Skalierungsgruppen für virtuelle Computer) können Sie dies mit der REST-API, den Resource Manager-Vorlagen, PowerShell und der CLI konfigurieren. Eine Portalschnittstelle ist noch nicht verfügbar.
@@ -126,5 +127,4 @@ Beim Generieren der Benachrichtigung über automatische Skalierung werden die fo
 | oldCapacity |Ja |Die aktuelle (alte) Anzahl von Instanzen, wenn die automatische Skalierung eine Skalierungsaktion durchgeführt hat |
 | newCapacity |Ja |Die neue Anzahl der Instanzen, auf die die automatische Skalierung die Ressource skaliert hat |
 | Eigenschaften |Nein |Optional. Eine Reihe von Schlüssel-Wert-Paaren (Beispiel: Wörterbuch <Zeichenfolge, Zeichenfolge>). Das Feld "properties" ist optional. In einer angepassten Benutzeroberfläche oder einem auf Logik-Apps basierenden Workflow können Sie Schlüssel und Werte eingeben, die mithilfe der Nutzlast übergeben werden können. Alternativ können benutzerdefinierte Eigenschaften über den Webhook-URI selbst (als Abfrageparameter) an den ausgehenden Webhook-Aufruf zurückgegeben werden. |
-
 
