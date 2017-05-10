@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 2969e6063d7bc59a6c8ca733912904abeeb7e7e8
-ms.openlocfilehash: afecb15f36525c53a66f30047dffe8a3e8f36107
-ms.lasthandoff: 02/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: a310236179677046ec49930b07cfdffdadc37974
+ms.contentlocale: de-de
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -48,9 +49,9 @@ Die Verbindungszeichenfolge **Senden** wird beim Protokollieren von Ereignissen 
 ![Verbindungszeichenfolge][event-hub-connection-string]
 
 ## <a name="create-an-api-management-logger"></a>Erstellen eines API Management-Loggers
-Der Event Hub ist nun vorhanden. Der nächste Schritt besteht darin, einen [Logger](https://msdn.microsoft.com/library/azure/mt592020.aspx) im API Management-Dienst zu konfigurieren, sodass Ereignisse im Event Hub protokolliert werden können.
+Der Event Hub ist nun vorhanden. Der nächste Schritt besteht darin, einen [Logger](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity) im API Management-Dienst zu konfigurieren, sodass Ereignisse im Event Hub protokolliert werden können.
 
-API Management-Logger werden mit der [API Management-REST-API](http://aka.ms/smapi)konfiguriert. Machen Sie sich vor der erstmaligen Verwendung der REST-API mit den [Voraussetzungen](https://msdn.microsoft.com/library/azure/dn776326.aspx#Prerequisites) vertraut, und stellen Sie sicher, dass der [Zugriff auf die REST- API aktiviert wurde](https://msdn.microsoft.com/library/azure/dn776326.aspx#EnableRESTAPI).
+API Management-Logger werden mit der [API Management-REST-API](http://aka.ms/smapi)konfiguriert. Machen Sie sich vor der erstmaligen Verwendung der REST-API mit den [Voraussetzungen](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/api-management-rest#Prerequisites) vertraut, und stellen Sie sicher, dass der [Zugriff auf die REST- API aktiviert wurde](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/api-management-rest#EnableRESTAPI).
 
 Um den Logger zu erstellen, senden Sie mithilfe der folgenden Vorlage eine HTTP PUT-Anforderung.
 
@@ -62,8 +63,8 @@ Um den Logger zu erstellen, senden Sie mithilfe der folgenden Vorlage eine HTTP�
 Fügen Sie der Anforderung die folgenden Header hinzu:
 
 * Content-Type: application/json
-* Authorization: SharedAccessSignature uid=...
-  * Anweisungen zum Generieren von `SharedAccessSignature` finden Sie unter [Authentifizierung für Azure API Management-REST-API](https://msdn.microsoft.com/library/azure/dn798668.aspx).
+* Authorization : SharedAccessSignature 58...
+  * Anweisungen zum Generieren von `SharedAccessSignature` finden Sie unter [Authentifizierung für Azure API Management-REST-API](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-authentication).
 
 Geben Sie den Anforderungstext gemäß der folgenden Vorlage ein.
 
@@ -85,7 +86,7 @@ Geben Sie den Anforderungstext gemäß der folgenden Vorlage ein.
 Wenn Sie die Anforderung senden und der Logger daraufhin erstellt wurde, wird der Statuscode `201 Created` zurückgegeben.
 
 > [!NOTE]
-> Informationen über weitere mögliche Rückgabecodes und die Gründe dafür erhalten Sie unter [Erstellen eines Loggers](https://msdn.microsoft.com/library/azure/mt592020.aspx#PUT). Die Vorgehensweisen für weitere Vorgänge, z.B. zum Auflisten, Aktualisieren und Löschen, finden Sie in der Dokumentation zur Entität [Logger](https://msdn.microsoft.com/library/azure/mt592020.aspx).
+> Informationen über weitere mögliche Rückgabecodes und die Gründe dafür erhalten Sie unter [Erstellen eines Loggers](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity#PUT). Die Vorgehensweisen für weitere Vorgänge, z.B. zum Auflisten, Aktualisieren und Löschen, finden Sie in der Dokumentation zur Entität [Logger](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity).
 >
 >
 
@@ -122,8 +123,8 @@ Klicken Sie auf **Speichern** , um die aktualisierte Richtlinienkonfiguration zu
   * [Empfangen von Nachrichten mit EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)
   * [Programmierleitfaden für Event Hubs](../event-hubs/event-hubs-programming-guide.md)
 * Erfahren Sie mehr über die Integration der API-Verwaltung und Event Hubs
-  * [Verweis zu Protokollierungstool](https://msdn.microsoft.com/library/azure/mt592020.aspx)
-  * [log-to-eventhub policy reference](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub)
+  * [Verweis zu Protokollierungstool](https://docs.microsoft.com/rest/api/apimanagement/loggers)
+  * [log-to-eventhub policy reference](https://docs.microsoft.com/azure/api-management/api-management-advanced-policies#log-to-eventhub)
   * [Überwachen von APIs mit Azure API Management, Event Hubs und Runscope](api-management-log-to-eventhub-sample.md)    
 
 ## <a name="watch-a-video-walkthrough"></a>Video zur exemplarischen Vorgehensweise

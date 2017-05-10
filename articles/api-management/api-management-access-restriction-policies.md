@@ -14,15 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: fd3a08f227ade7589bbc7a17fa600e5a283d8054
-ms.openlocfilehash: 7e1f99c6c603420386432e04d0a2f0ecda95d6b7
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
+ms.openlocfilehash: 4c9991baf3fbcf3b8ea01f8dd573e2336db88b68
+ms.contentlocale: de-de
+ms.lasthandoff: 05/02/2017
 
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management-Richtlinien für die Zugriffsbeschränkung
 Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
   
-##  <a name="a-nameaccessrestrictionpoliciesa-access-restriction-policies"></a><a name="AccessRestrictionPolicies"></a> Richtlinien für die Zugriffsbeschränkung  
+##  <a name="AccessRestrictionPolicies"></a> Richtlinien für die Zugriffsbeschränkung  
   
 -   [HTTP-Header überprüfen](api-management-access-restriction-policies.md#CheckHTTPHeader) – erfordert das Vorhandensein und/oder einen Wert eines HTTP-Headers.  
   
@@ -38,7 +40,7 @@ Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien.
   
 -   [JWT überprüfen](api-management-access-restriction-policies.md#ValidateJWT) – erzwingt das Vorhandensein und die Gültigkeit eines JWT, das entweder aus einem angegebenen HTTP-Header oder aus einem angegebenen Abfrageparameter extrahiert wurde.  
   
-##  <a name="a-namecheckhttpheadera-check-http-header"></a><a name="CheckHTTPHeader"></a> HTTP-Header überprüfen  
+##  <a name="CheckHTTPHeader"></a> HTTP-Header überprüfen  
  Verwenden Sie die `check-header`-Richtlinie, um zu erzwingen, dass eine Anforderung einen angegebenen HTTP-Header enthält. Sie können optional überprüfen, ob der Header einen bestimmten Wert aufweist, oder einen Bereich zulässiger Werte überprüfen. Wenn die Überprüfung nicht erfolgreich abgeschlossen wird, beendet die Richtlinie die Verarbeitung und gibt den von der Richtlinie festgelegten HTTP-Statuscode und die zugehörige Fehlermeldung zurück.  
   
 ### <a name="policy-statement"></a>Richtlinienanweisung  
@@ -81,7 +83,7 @@ Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien.
   
 -   **Richtlinienbereiche**: global, Produkt, API, Vorgang  
   
-##  <a name="a-namelimitcallratea-limit-call-rate-by-subscription"></a><a name="LimitCallRate"></a> Aufrufrate nach Abonnement begrenzen  
+##  <a name="LimitCallRate"></a> Aufrufrate nach Abonnement begrenzen  
  Die `rate-limit`-Richtlinie verhindert API-Nutzungsspitzen auf Abonnementbasis, indem sie die Aufrufrate auf eine angegebene Anzahl pro angegebenem Zeitraum begrenzt. Wenn diese Richtlinie ausgelöst wird, empfängt der Aufrufer einen `429 Too Many Requests`-Antwortstatuscode.  
   
 > [!IMPORTANT]
@@ -136,7 +138,7 @@ Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien.
   
 -   **Richtlinienbereiche**: Produkt  
   
-##  <a name="a-namelimitcallratebykeya-limit-call-rate-by-key"></a><a name="LimitCallRateByKey"></a> Aufrufrate nach Schlüssel begrenzen  
+##  <a name="LimitCallRateByKey"></a> Aufrufrate nach Schlüssel begrenzen  
  Die `rate-limit-by-key`-Richtlinie verhindert API-Nutzungsspitzen auf Schlüsselbasis, indem sie die Aufrufrate auf eine angegebene Anzahl pro angegebenem Zeitraum beschränkt. Der Schlüssel kann einen beliebigen Zeichenfolgenwert aufweisen und wird in der Regel über einen Richtlinienausdruck angegeben. Optional kann eine inkrementelle Bedingung hinzugefügt werden, um anzugeben, welche Anforderungen für den Grenzwert gezählt werden sollen. Wenn diese Richtlinie ausgelöst wird, empfängt der Aufrufer einen `429 Too Many Requests`-Antwortstatuscode.  
   
  Weitere Informationen und Beispiele zu dieser Richtlinie finden Sie unter [Erweiterte Anforderungsbegrenzung mit Azure API Management](https://azure.microsoft.com/documentation/articles/api-management-sample-flexible-throttling/).  
@@ -194,7 +196,7 @@ Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien.
   
 -   **Richtlinienbereiche**: global, Produkt, API, Vorgang  
   
-##  <a name="a-namerestrictcalleripsa-restrict-caller-ips"></a><a name="RestrictCallerIPs"></a> Aufrufer-IPs beschränken  
+##  <a name="RestrictCallerIPs"></a> Aufrufer-IPs beschränken  
  Die `ip-filter`-Richtlinie filtert (erlaubt/blockiert) Aufrufe von bestimmten IP-Adressen und/oder Adressbereichen.  
   
 ### <a name="policy-statement"></a>Richtlinienanweisung  
@@ -237,7 +239,7 @@ Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien.
   
 -   **Richtlinienbereiche**: global, Produkt, API, Vorgang  
   
-##  <a name="a-namesetusagequotaa-set-usage-quota-by-subscription"></a><a name="SetUsageQuota"></a> Nutzungskontingent nach Abonnement festlegen  
+##  <a name="SetUsageQuota"></a> Nutzungskontingent nach Abonnement festlegen  
  Die `quota`-Richtlinie erzwingt ein erneuerbares oder für die Lebensdauer gültiges Aufruf- und/oder Bandbreitenkontingent pro Abonnement.  
   
 > [!IMPORTANT]
@@ -293,7 +295,7 @@ Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien.
   
 -   **Richtlinienbereiche**: Produkt  
   
-##  <a name="a-namesetusagequotabykeya-set-usage-quota-by-key"></a><a name="SetUsageQuotaByKey"></a> Nutzungskontingent nach Schlüssel festlegen  
+##  <a name="SetUsageQuotaByKey"></a> Nutzungskontingent nach Schlüssel festlegen  
  Die `quota-by-key`-Richtlinie erzwingt ein erneuerbares oder für die Lebensdauer gültiges Aufruf- und/oder Bandbreitenkontingent pro Schlüssel. Der Schlüssel kann einen beliebigen Zeichenfolgenwert aufweisen und wird in der Regel über einen Richtlinienausdruck angegeben. Optional kann eine inkrementelle Bedingung hinzugefügt werden, um anzugeben, welche Anforderungen für das Kontingent gezählt werden sollen.  
   
  Weitere Informationen und Beispiele zu dieser Richtlinie finden Sie unter [Erweiterte Anforderungsbegrenzung mit Azure API Management](https://azure.microsoft.com/documentation/articles/api-management-sample-flexible-throttling/).  
@@ -354,7 +356,7 @@ Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien.
   
 -   **Richtlinienbereiche**: global, Produkt, API, Vorgang  
   
-##  <a name="a-namevalidatejwta-validate-jwt"></a><a name="ValidateJWT"></a> JWT überprüfen  
+##  <a name="ValidateJWT"></a> JWT überprüfen  
  Die `validate-jwt`-Richtlinie erzwingt das Vorhandensein und die Gültigkeit eines JWT (Java Web Token), das entweder aus einem angegebenen HTTP-Header oder aus einem angegebenen Abfrageparameter extrahiert wurde.  
   
 > [!IMPORTANT]
@@ -419,7 +421,27 @@ Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien.
   
 ```xml  
 <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">  
-    <openid-config url="https://login.windows.net/contoso.onmicrosoft.com/.well-known/openid-configuration" />  
+    <openid-config url="https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration" />  
+    <audiences>
+        <audience>25eef6e4-c905-4a07-8eb4-0d08d5df8b3f</audience>
+    </audiences>
+    <required-claims>  
+        <claim name="id" match="all">  
+            <value>insert claim here</value>  
+        </claim>  
+    </required-claims>  
+</validate-jwt>  
+```  
+
+  
+#### <a name="azure-active-directory-b2c-token-validation"></a>Azure Active Directory B2C-Tokenüberprüfung  
+  
+```xml  
+<validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">  
+    <openid-config url="https://login.microsoftonline.com/tfp/contoso.onmicrosoft.com/b2c_1_signin/v2.0/.well-known/openid-configuration" />
+    <audiences>
+        <audience>d313c4e4-de5f-4197-9470-e509a2f0b806</audience>
+    </audiences>
     <required-claims>  
         <claim name="id" match="all">  
             <value>insert claim here</value>  
@@ -495,7 +517,7 @@ Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien.
 |require-expiration-time|Boolescher Wert. Gibt an, ob ein Ablaufanspruch im Token erforderlich ist.|Nein|true|
 |require-scheme|Der Name des Tokenschemas, z.B. „Bearer“. Wenn dieses Attribut festgelegt ist, stellt die Richtlinie sicher, das das angegebene Schema im Wert für den Autorisierungsheader vorhanden ist.|Nein|–|
 |require-signed-tokens|Boolescher Wert. Gibt an, ob ein Token signiert sein muss.|Nein|true|  
-|url|URL des Open ID-Konfigurationsendpunkts, von dem die Open ID-Konfigurationsmetadaten abgerufen werden können. Verwenden Sie für Azure Active Directory diese URL: `https://login.windows.net/{tenant-name}/.well-known/openid-configuration`. Verwenden Sie dabei den Namen Ihres Verzeichnismandanten, z.B. `contoso.onmicrosoft.com`.|Ja|N/V|  
+|url|URL des Open ID-Konfigurationsendpunkts, von dem die Open ID-Konfigurationsmetadaten abgerufen werden können. Verwenden Sie für Azure Active Directory diese URL: `https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration`. Verwenden Sie dabei den Namen Ihres Verzeichnismandanten, z.B. `contoso.onmicrosoft.com`.|Ja|N/V|  
   
 ### <a name="usage"></a>Verwendung  
  Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
@@ -506,9 +528,4 @@ Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien.
   
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Arbeiten mit Richtlinien finden Sie unter [Richtlinien in Azure API Management](api-management-howto-policies.md).  
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

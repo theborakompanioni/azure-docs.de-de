@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/23/2016
 ms.author: jehollan
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: f09c231baecf2452a6e3abd196748629f13885ff
-ms.lasthandoff: 03/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: 2a270ba8ae17077c55c6b1473d4955dfb5f79ca1
+ms.contentlocale: de-de
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -83,6 +84,9 @@ Dies sind die Grenzwerte für eine einzelne Instanz der Logik-App.
 |Name|Begrenzung|Hinweise|
 |----|----|----|
 |Aktionsausführungen pro 5 Minuten |100.000|Bei Bedarf können Workflows auf mehrere Apps verteilt werden.|
+|Aufrufe zum Lesen von Endpunkten zur Laufzeit pro 5 Minuten |60.000|Bei Bedarf können Workflows auf mehrere Apps verteilt werden.|
+|Aufrufe zum Aufrufen von Endpunkten zur Laufzeit pro 5 Minuten |45.000|Bei Bedarf können Workflows auf mehrere Apps verteilt werden.|
+|Gleichzeitige Aufrufe zum Blockieren von Endpunkten zur Laufzeit |ca. 1.000|Verringern Sie nach Bedarf die Anzahl gleichzeitiger Anforderungen oder die Dauer|
 
 Wenn Sie davon ausgehen, dass dieses Limit bei der normalen Verarbeitung überschritten wird, oder Auslastungstests ausführen möchten, die dieses Limit für eine bestimmte Zeit überschreiten können, [wenden Sie sich an uns](mailto://logicappsemail@microsoft.com), damit wir Ihnen bei diesen Anforderungen helfen können.
 
@@ -111,6 +115,9 @@ Hier sehen Sie die Grenzwerte für Artefakte, die dem Integrationskonto hinzugef
 |----|----|----|
 |Schema|8 MB|Sie können den [Blob-URI](logic-apps-enterprise-integration-schemas.md) zum Hochladen von Dateien verwenden, die größer als 2 MB sind. |
 |Zuordnung (XSLT-Datei)|2 MB| |
+|Aufrufe zum Lesen von Endpunkten zur Laufzeit pro 5 Minuten |60.000|Bei Bedarf können Workflows auf mehrere Konten verteilt werden.|
+|Aufrufe zum Aufrufen von Endpunkten zur Laufzeit pro 5 Minuten |90.000|Bei Bedarf können Workflows auf mehrere Konten verteilt werden.|
+|Gleichzeitige Aufrufe zum Blockieren von Endpunkten zur Laufzeit |ca. 1.000|Verringern Sie nach Bedarf die Anzahl gleichzeitiger Anforderungen oder die Dauer|
 
 ### <a name="b2b-protocols-as2-x12-edifact-message-size"></a>Nachrichtengröße für B2B-Protokolle (AS2, X12, EDIFACT)
 

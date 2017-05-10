@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 65a7872e0880cc74a00ca1c05baae2b34b407a61
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: d082b37a2e070136178259c54ada8dc141f81e13
+ms.contentlocale: de-de
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -37,7 +38,7 @@ Verfügbarkeitsgruppen bieten hohe Verfügbarkeit für die virtuellen Computer. 
 
 ## <a name="create-an-availability-set"></a>Verfügbarkeitsgruppe erstellen
 
-Eine Verfügbarkeitsgruppe können Sie mithilfe von [az vm availability-set create](/cli/azure/availability-set#create) erstellen. Im folgenden Beispiel wird die Anzahl der Update- sowie der Fehlerdomänen für die Verfügbarkeitsgruppe **myAvailabilitySet** in der Ressourcengruppe **myResourceGroupAvailability** auf **2** festgelegt.
+Eine Verfügbarkeitsgruppe können Sie mithilfe von [az vm availability-set create](/cli/azure/availability-set#create) erstellen. Im folgenden Beispiel wird die Anzahl der Update- sowie der Fehlerdomänen für die Verfügbarkeitsgruppe *myAvailabilitySet* in der Ressourcengruppe *myResourceGroupAvailability* auf *2* festgelegt.
 
 ```azurecli
 az vm availability-set create \
@@ -49,7 +50,7 @@ az vm availability-set create \
 
 ## <a name="create-vms-inside-an-availability-set"></a>Erstellen von virtuellen Computern in einer Verfügbarkeitsgruppe
 
-Virtuelle Computer müssen in der Verfügbarkeitsgruppe erstellt werden, um sicherzustellen, dass sie korrekt auf die Hardwarekomponenten verteilt werden. Nach der Erstellung kann einer Verfügbarkeitsgruppe kein vorhandener virtueller Computer mehr hinzugefügt werden. 
+Virtuelle Computer müssen in der Verfügbarkeitsgruppe erstellt werden, um sicherzustellen, dass sie ordnungsgemäß auf die Hardwarekomponenten verteilt werden. Nach der Erstellung kann einer Verfügbarkeitsgruppe kein vorhandener virtueller Computer mehr hinzugefügt werden. 
 
 Die Hardware an einem Standort ist in mehrere Updatedomänen und Fehlerdomänen unterteilt. Eine **Updatedomäne** ist eine Gruppe von virtuellen Computern und der zugrunde liegenden physischen Hardwarekomponenten, die gleichzeitig neu gestartet werden können. Virtuelle Computer in ein und derselben **Fehlerdomäne** nutzen denselben Speicher sowie eine Stromquelle und einen Netzwerkswitch gemeinsam. 
 
@@ -73,7 +74,7 @@ Damit wurden 2 virtuelle Computer auf die zugrunde liegenden Hardwarekomponenten
 
 ## <a name="check-for-available-vm-sizes"></a>Prüfen der verfügbaren VM-Größen 
 
-Sie können der Verfügbarkeitsgruppe später weitere virtuelle Computer hinzufügen. Dazu müssen Sie jedoch wissen, welche VM-Größen in der Hardware verfügbar sind. Verwenden Sie `az vm availability-set list-sizes`, um alle verfügbaren Größen im Hardwarecluster für die Verfügbarkeitsgruppe aufzulisten.
+Sie können der Verfügbarkeitsgruppe später weitere virtuelle Computer hinzufügen. Dazu müssen Sie jedoch wissen, welche VM-Größen in der Hardware verfügbar sind. Verwenden Sie [az vm availability-set list-sizes](/cli/azure/availability-set#list-sizes), um alle verfügbaren Größen im Hardwarecluster für die Verfügbarkeitsgruppe aufzulisten.
 
 ```azurecli
 az vm availability-set list-sizes \

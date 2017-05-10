@@ -1,6 +1,6 @@
 ---
-title: "Programmgesteuertes Überwachen von Stream Analytics-Aufträgen | Microsoft Docs"
-description: "Erfahren Sie, wie Sie Stream Analytics-Aufträge, die mit REST-APIs, Azure SDK oder PowerShell erstellt wurden, programmgesteuert überwachen können."
+title: "Programmgesteuertes Überwachen von Aufträgen in Stream Analytics | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie Stream Analytics-Aufträge, die mit REST-APIs, Azure SDK oder PowerShell erstellt wurden, programmgesteuert überwachen."
 keywords: ".NET-Überwachung, Auftragsüberwachung, Überwachungs-App"
 services: stream-analytics
 documentationcenter: 
@@ -13,26 +13,30 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 04/04/2017
+ms.date: 04/20/2017
 ms.author: jeffstok
-translationtype: Human Translation
-ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
-ms.openlocfilehash: dc19bec960edff15feffc41bee1bbc63eeff5c6d
-ms.lasthandoff: 04/04/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: 9cc2b35fa54c1fccb0e50840d0d6484c42edc5af
+ms.contentlocale: de-de
+ms.lasthandoff: 05/01/2017
 
 
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Programmgesteuertes Überwachen von Stream Analytics-Aufträgen
- Dieser Artikel erläutert, wie die Überwachung für einen Stream Analytics-Auftrag aktiviert wird. Für Stream Analytics-Aufträge, die mit REST-APIs, Azure SDK oder PowerShell erstellt wurden, ist in der Standardeinstellung keine Überwachung aktiviert.  Sie können diese manuell im Azure-Portal aktivieren, indem Sie zur Überwachungsseite des Auftrags wechseln und auf die Schaltfläche „Aktivieren“ klicken. Sie können diesen Prozess auch automatisieren, indem Sie die in diesem Artikel beschriebenen Schritte ausführen. Die Überwachungsdaten werden im Azure-Portal im Bereich „Metriken“ für den Stream Analytics-Auftrag angezeigt.
+
+Dieser Artikel erläutert, wie die Überwachung für einen Stream Analytics-Auftrag aktiviert wird. Für Stream Analytics-Aufträge, die mit REST-APIs, Azure SDK oder PowerShell erstellt wurden, ist in der Standardeinstellung keine Überwachung aktiviert. Sie können diese manuell im Azure-Portal aktivieren, indem Sie zur Seite „Überwachen“ des Auftrags wechseln und auf die Schaltfläche „Aktivieren“ klicken. Sie können diesen Prozess auch automatisieren, indem Sie die in diesem Artikel beschriebenen Schritte ausführen. Die Überwachungsdaten werden im Azure-Portal im Bereich „Metriken“ für den Stream Analytics-Auftrag angezeigt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Bevor Sie mit diesem Artikel beginnen können, benötigen Sie Folgendes:
 
-* Visual Studio 2017 oder 2015.
-* Laden Sie das [Azure .NET SDK](https://azure.microsoft.com/downloads/)herunter, und installieren Sie es.
-* Ein vorhandener Stream Analytics-Auftrag, für den die Überwachung aktiviert werden muss.
+Bevor Sie mit diesem Vorgang beginnen können, benötigen Sie Folgendes:
+
+* Visual Studio 2017 oder 2015
+* [Azure .NET SDK](https://azure.microsoft.com/downloads/) (heruntergeladen und installiert)
+* Einen vorhandener Stream Analytics-Auftrag, für den die Überwachung aktiviert werden muss
 
 ## <a name="create-a-project"></a>Erstellen eines Projekts
+
 1. Erstellen Sie eine Visual Studio C# .NET-Konsolenanwendung.
 2. Führen Sie in der Paket-Manager-Konsole die folgenden Befehle zum Installieren der NuGet-Pakete aus. Das erste ist das Azure Stream Analytics Management .NET SDK. Das zweite ist das Azure Monitor SDK, mit dem die Überwachung aktiviert wird. Das letzte ist der Azure Active Directory-Client, der für die Authentifizierung verwendet wird.
    
@@ -116,6 +120,7 @@ Bevor Sie mit diesem Artikel beginnen können, benötigen Sie Folgendes:
      }
 
 ## <a name="create-management-clients"></a>Erstellen von Verwaltungsclients
+
 Mit dem folgenden Code werden die erforderlichen Variablen und Verwaltungsclients eingerichtet.
 
     string resourceGroupName = "<YOUR AZURE RESOURCE GROUP NAME>";
@@ -137,16 +142,17 @@ Mit dem folgenden Code werden die erforderlichen Variablen und Verwaltungsclient
     InsightsManagementClient(aadTokenCredentials, resourceManagerUri);
 
 ## <a name="enable-monitoring-for-an-existing-stream-analytics-job"></a>Aktivieren der Überwachung für einen vorhandenen Stream Analytics-Auftrag
-Mit dem folgenden Code wird die Überwachung für einen **vorhandenen** Stream Analytics-Auftrag aktiviert. Der erste Teil des Codes führt eine GET-Anforderung an den Stream Analytics-Dienst aus, um Daten zum jeweiligen Stream Analytics-Auftrag abzurufen. Hierbei wird die (mit der GET-Anforderung abgerufene) "Id"-Eigenschaft als Parameter für die Put-Methode in der zweiten Hälfte des Codes verwendet, die eine PUT-Anforderung an den Insights-Dienst sendet, um die Überwachung des Stream Analytics-Auftrags zu aktivieren.
 
-> [!WARNING]
-> Wenn Sie die Überwachung bereits für einen anderen Stream Analytics-Auftrag aktiviert haben, entweder über das Azure-Portal oder programmgesteuert über den folgenden Code, **wird empfohlen, dass Sie den gleichen Speicherkontonamen angeben wie bei der zuvor aktivierten Überwachung.**
+Mit dem folgenden Code wird die Überwachung für einen **vorhandenen** Stream Analytics-Auftrag aktiviert. Der erste Teil des Codes führt eine GET-Anforderung an den Stream Analytics-Dienst aus, um Daten zum jeweiligen Stream Analytics-Auftrag abzurufen. Hierbei wird die (mit der GET-Anforderung abgerufene) *Id*-Eigenschaft als Parameter für die Put-Methode in der zweiten Hälfte des Codes verwendet, die eine PUT-Anforderung an den Insights-Dienst sendet, um die Überwachung des Stream Analytics-Auftrags zu aktivieren.
+
+>[!WARNING]
+>Wenn Sie die Überwachung bereits für einen anderen Stream Analytics-Auftrag aktiviert haben, entweder über das Azure-Portal oder programmgesteuert über den folgenden Code, **wird empfohlen, dass Sie den gleichen Speicherkontonamen angeben wie bei der zuvor aktivierten Überwachung.**
 > 
 > Das Speicherkonto ist mit der Region verknüpft, in der Sie Ihren Stream Analytics-Auftrag erstellt haben, und nicht mit dem Auftrag selbst.
 > 
-> Alle Stream Analytics-Aufträge (und alle anderen Azure-Ressourcen) in derselben Region nutzen dieses Speicherkonto gemeinsam, um Überwachungsdaten zu speichern. Wenn Sie ein anderes Speicherkonto angeben, führt dies möglicherweise zu unbeabsichtigten Nebenwirkungen auf die Überwachung Ihrer anderen Stream Analytics-Aufträge und/oder anderen Azure-Ressourcen.
+> Alle Stream Analytics-Aufträge (und alle anderen Azure-Ressourcen) in derselben Region nutzen dieses Speicherkonto gemeinsam, um Überwachungsdaten zu speichern. Wenn Sie ein anderes Speicherkonto angeben, führt dies möglicherweise zu unbeabsichtigten Nebenwirkungen auf die Überwachung Ihrer anderen Stream Analytics-Aufträge oder anderen Azure-Ressourcen.
 > 
-> Der Speicherkontoname, der zum Ersetzen von ```“<YOUR STORAGE ACCOUNT NAME>”``` unten verwendet wird, sollte sich auf ein Speicherkonto beziehen, das zum gleichen Abonnement gehört wie der Stream Analytics-Auftrag, für den Sie die Überwachung aktivieren.
+> Der Speicherkontoname, der zum Ersetzen von `<YOUR STORAGE ACCOUNT NAME>` im folgenden Code verwendet wird, muss sich auf ein Speicherkonto beziehen, das zum gleichen Abonnement gehört wie der Stream Analytics-Auftrag, für den Sie die Überwachung aktivieren.
 > 
 > 
 
@@ -170,9 +176,11 @@ Mit dem folgenden Code wird die Überwachung für einen **vorhandenen** Stream A
 
 
 ## <a name="get-support"></a>Support
-Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
+
+Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)
 * [Erste Schritte mit Azure Stream Analytics](stream-analytics-get-started.md)
 * [Skalieren von Azure Stream Analytics-Aufträgen](stream-analytics-scale-jobs.md)

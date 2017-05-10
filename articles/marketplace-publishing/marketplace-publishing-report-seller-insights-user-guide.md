@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/03/2017
 ms.author: v-dabosl
-translationtype: Human Translation
-ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
-ms.openlocfilehash: 63153ca5c0f5e3c68db09d0e59fa26ee8cb1e465
-ms.lasthandoff: 04/04/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: e168e9610cbe493618121c688e349064c877fc8a
+ms.contentlocale: de-de
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -26,6 +27,8 @@ ms.lasthandoff: 04/04/2017
 
 >[!NOTE]
 >Nur Administratoren
+
+In diesem Abschnitt erfahren Sie, wie Sie erstmals auf das Insights-Portal des Verkäufers zugreifen.
 
 ###<a name="overview-of-roles"></a>Rollenübersicht
 
@@ -44,7 +47,7 @@ Im Idealfall gibt der Administrator vor der Anmeldung beim Insights-Portal des V
 Zur Aktivierung Ihres Diensts muss der Administrator die in der Einladungs-E-Mail angegebene URL aufrufen (https://reports.azure.com).
 
 >[!NOTE]
->HINWEIS: Falls die E-Mail-Adresse des Administrators als Microsoft-Konto angegeben ist und Sie kein Microsoft-Konto erstellt haben, das mit der E-Mail-Adresse verknüpft ist, unter der Sie die Einladung erhalten haben, müssen Sie dies vor der Anmeldung nachholen. Rufen Sie hierzu die URL „https://signup.live.command“ auf, und verwenden Sie bei der Erstellung Ihres Microsoft-Kontos die entsprechende E-Mail-Adresse.
+>Falls die E-Mail-Adresse des Administrators als Microsoft-Konto angegeben ist und Sie kein Microsoft-Konto erstellt haben, das mit der E-Mail-Adresse verknüpft ist, unter der Sie die Einladung erhalten haben, müssen Sie dies vor der Anmeldung nachholen. Rufen Sie hierzu die URL „https://signup.live.command“ auf, und verwenden Sie bei der Erstellung Ihres Microsoft-Kontos die entsprechende E-Mail-Adresse.
 
 ###<a name="sign-in-to-the-portal"></a>Anmelden beim Portal
 
@@ -61,7 +64,13 @@ Zur Aktivierung Ihres Diensts muss der Administrator die in der Einladungs-E-Mai
 Der Administrator sollte Ihnen per E-Mail mitteilen, dass Ihr Konto erstellt wurde, und die URL für das Insights-Portal des Verkäufers für Sie (https://reports.azure.com) freigeben.
 
 >[!NOTE]
->Der Administrator ist der Besitzer des Kontos, über das Lösungen tatsächlich im Azure Marketplace veröffentlicht werden.  Der Besitzer dieses Kontos kann anderen Benutzern Zugriff gewähren.  
+>Der Administrator ist der Besitzer des Kontos, über das Lösungen tatsächlich im Azure Marketplace veröffentlicht werden.  Der Besitzer dieses Kontos kann anderen Benutzern Zugriff gewähren.  Wenn Sie als Co-Administrator Zugriff auf das Veröffentlichungsportal haben, finden Sie die Adresse des Administrators über die folgenden Schritte:
+>1. Melden Sie sich beim Veröffentlichungsportal an.
+>2. Klicken Sie auf die Registerkarte „Herausgeber“.
+>3. Öffnen Sie den fraglichen Herausgeber (in der Regel gibt es ist nur einen).
+>4. Klicken Sie links unten auf „Administratoren“.
+>5. Die E-Mail-Adresse des Administrators, den Sie suchen, hat die Bezeichnung „Besitzer“.
+
 
 Sie können sich im Insights-Portal des Verkäufers mit einem persönlichen Microsoft-Konto oder mithilfe eines Unternehmenskontos anmelden, je nachdem welches Konto Ihr Administrator beim Einrichten Ihres Profils verwendet hat.  Ihr Administrator sollten Ihnen mitteilen, welches Konto Sie verwenden sollen.
 
@@ -219,8 +228,8 @@ D: Der *Bereich D* enthält Daten zu den einzelnen Abonnements.  Die Daten könn
   3. Wählen Sie aus, wie viele Elemente pro Seite angezeigt werden sollen: 10, 20 oder 50.
   4. Laden Sie die Daten im Excel- oder CSV-Format herunter, um sie offline zu analysieren.
 
-![Monatsansicht der Nutzung – Bereich D 1][24]
-![Monatsansicht der Nutzung – Bereich D 2][25]
+![Monatsansicht der Nutzung – Bereich D][24]
+![Monatsansicht der Nutzung – Bereich D: Ergebnis herunterladen][25]
 
 ###<a name="accessing-detailed-customer-data"></a>Zugreifen auf ausführliche Kundendaten
 
@@ -249,6 +258,8 @@ D: Der *Bereich D* enthält Daten zu den einzelnen Abonnements.  Die Daten könn
 
 >[!NOTE]
 >Nur Administratoren
+
+In diesem Abschnitt erfahren Sie, wie Sie neue Benutzer hinzufügen oder deren Berechtigungen im Insights-Portal für den Verkäufer ändern.
 
 ###<a name="add-user"></a>Benutzer hinzufügen
 
@@ -340,7 +351,7 @@ Versuchen Sie Ihr Kennwort mithilfe des Assistenten für die Self-Service-Kennwo
 
 
 
-[1]: ./media/marketplace-publishing-report-seller-insights-user-guide/type-of-account.png
+[1]: ./media/marketplace-publishing-report-seller-insights-user-guide/type-of-account-v2.png
 [2]: ./media/marketplace-publishing-report-seller-insights-user-guide/default-sign-in-page.png
 [3]: ./media/marketplace-publishing-report-seller-insights-user-guide/password-reset-microsoft-account.png
 [4]: ./media/marketplace-publishing-report-seller-insights-user-guide/password-reset-work-or-school-account.png

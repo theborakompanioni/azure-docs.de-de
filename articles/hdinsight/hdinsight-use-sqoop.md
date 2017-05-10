@@ -17,10 +17,11 @@ ms.topic: article
 ms.date: 02/22/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-translationtype: Human Translation
-ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
-ms.openlocfilehash: 3f053d4c94d48630252f7c80fa8077c8ae5feb2d
-ms.lasthandoff: 01/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: 1901613b3e0db19f86247ee78828eccd58fb026b
+ms.contentlocale: de-de
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -36,7 +37,8 @@ Während Hadoop die beste Wahl für die Verarbeitung unstrukturierter und halbst
 Informationen zu den in HDInsight-Clustern unterstützten Sqoop-Versionen finden Sie unter [Neuheiten in den von HDInsight bereitgestellten Clusterversionen][hdinsight-versions].
 
 ## <a name="understand-the-scenario"></a>Das Szenario
-Der HDInsight-Cluster wird mit einigen Beispieldaten geliefert. Sie verwenden die folgenden zwei Beispiele:
+
+Der HDInsight-Cluster wird mit einigen Beispieldaten geliefert. Sie verwenden die beiden folgenden Beispiele:
 
 * Eine Protokolldatei namens log4j, die sich unter */example/data/sample.log*befindet. Die folgenden Protokolle werden aus der Datei extrahiert:
   
@@ -60,7 +62,7 @@ Der HDInsight-Cluster wird mit einigen Beispieldaten geliefert. Sie verwenden di
   | sessionid |bigint |
   | sessionpagevieworder |bigint |
 
-Zunächst exportieren Sie *sample.log* und *hivesampletable* in die Azure SQL-Datenbank bzw. den SQL Server. Anschließend importieren Sie die Tabelle mit den Mobilgerätedaten über den folgenden Pfad zurück in HDInsight:
+Zunächst exportieren Sie *sample.log* und *hivesampletable* in die Azure SQL-Datenbank bzw. SQL Server. Anschließend importieren Sie die Tabelle mit den Mobilgerätedaten über den folgenden Pfad zurück in HDInsight:
 
     /tutorials/usesqoop/importeddata
 
@@ -82,7 +84,7 @@ Wenn Sie den Cluster und die SQL-Datenbank lieber mit Azure PowerShell erstellen
     - **Abonnement:** Geben Sie Ihr Azure-Abonnement ein.
     - **Ressourcengruppe**: Erstellen Sie eine neue Azure-Ressourcengruppe, oder wählen Sie eine vorhandene aus.  Eine Ressourcengruppe dient der Verwaltung.  Sie ist ein Container für Objekte.
     - **Standort**: Wählen Sie eine Region aus.
-    - **Clustername**: Geben Sie einen Namen für den Hadoop-Cluster ein, den Sie erstellen möchten.
+    - **Clustername**: Geben Sie einen Namen für den Hadoop-Cluster ein.
     - **Cluster-Benutzername und -Kennwort**: Der Standardname für die Anmeldung lautet „admin“.
     - **SSH-Benutzername und -Kennwort**.
     - **Anmeldename und Kennwort für den SQL-Datenbankserver**.
@@ -97,7 +99,7 @@ Wenn Sie den Cluster und die SQL-Datenbank lieber mit Azure PowerShell erstellen
      | Servername der Azure SQL-Datenbank |<ClusterName>dbserver |
      | Azure SQL-Datenbankname |<ClusterName>db |
      
-     Bitte notieren Sie diese Werte.  Sie werden diese später im Lernprogramm benötigen.
+     Bitte notieren Sie diese Werte.  Sie werden später im Lernprogramm benötigt.
 
 3. Klicken Sie auf **OK** , um die Parameter zu speichern.
 
@@ -105,7 +107,7 @@ Wenn Sie den Cluster und die SQL-Datenbank lieber mit Azure PowerShell erstellen
 
 5. Klicken Sie auf **Rechtliche Bedingungen** und dann auf **Erstellen**.
 
-6. Klicken Sie auf **Erstellen**. Daraufhin wird eine neue Kachel mit der Bezeichnung "Bereitstellung für Vorlagenbereitstellung wird gesendet" angezeigt. Das Erstellen des Clusters und der SQL-Datenbank dauert ca. 20 Minuten.
+6. Klicken Sie auf **Erstellen**. Daraufhin wird eine neue Kachel mit der Bezeichnung „Bereitstellung für Vorlagenbereitstellung wird gesendet“ angezeigt. Das Erstellen des Clusters und der SQL-Datenbank dauert ca. 20 Minuten.
 
 Wenn Sie die vorhandene Azure SQL-Datenbank oder Microsoft SQL Server verwenden möchten:
 
@@ -131,7 +133,7 @@ Wenn Sie die vorhandene Azure SQL-Datenbank oder Microsoft SQL Server verwenden 
       > 
       > 
     * Wenn Sie SQL Server auf einem virtuellen Azure-Computer verwenden, können Sie eine beliebige Konfiguration für das virtuelle Netzwerk nehmen, sofern sich der virtuelle Computer, auf dem SQL Server läuft, im gleichen virtuellen Netzwerk befindet wie HDInsight.
-  * Informationen zum Erstellen eines HDInsight-Clusters in einem virtuellen Netzwerk finden Sie unter [Erstellen von Hadoop-Clustern in HDInsight mithilfe von benutzerdefinierten Optionen](hdinsight-provision-clusters.md)
+  * Informationen zum Erstellen eines HDInsight-Clusters in einem virtuellen Netzwerk finden Sie unter [Erstellen von Hadoop-Clustern in HDInsight mithilfe von benutzerdefinierten Optionen](hdinsight-hadoop-provision-linux-clusters.md)
     
     > [!NOTE]
     > Der SQL Server muss eine Authentifizierung zulassen. Sie benötigen eine SQL-Serveranmeldung, um die Schritte in diesem Artikel abzuschließen.
@@ -197,7 +199,7 @@ Im PowerShell-Beispiel werden die folgenden Schritte ausgeführt:
     Um das Cluster zu untersuchen, können Sie das Azure-Portal oder Azure PowerShell verwenden.
 5. Verarbeiten Sie die Quelldatei vorab.
    
-    In diesem Tutorial exportieren Sie die Protokolldatei log4j (eine getrennte Datei) und eine Hive-Tabelle in eine Azure SQL-Datenbank. Der Name der getrennten Datei lautet */example/data/sample.log*. In diesem Tutorial haben wir Ihnen bereits einige Beispiele für log4j-Protokolle gezeigt. In der Protokolldatei existieren einige Leerzeilen und einige Zeilen, die ungefähr wie folgt aussehen:
+    In diesem Tutorial exportieren Sie die Protokolldatei „log4j“ (eine Datei mit Trennzeichen) und eine Hive-Tabelle in eine Azure SQL-Datenbank. Der Name der getrennten Datei lautet */example/data/sample.log*. In diesem Tutorial haben wir Ihnen bereits einige Beispiele für log4j-Protokolle gezeigt. In der Protokolldatei existieren einige Leerzeilen und einige Zeilen, die ungefähr wie folgt aussehen:
    
         java.lang.Exception: 2012-02-03 20:11:35 SampleClass2 [FATAL] unrecoverable system problem at id 609774657
             at com.osa.mocklogger.MockLogger$2.run(MockLogger.java:83)
@@ -213,7 +215,7 @@ Im PowerShell-Beispiel werden die folgenden Schritte ausgeführt:
    > Mit Ausnahme der Verbindungszeichenfolgen sollten die Schritte in diesem Abschnitt sowohl für Azure SQL-Datenbanken als auch für SQL Server funktionieren. Diese Schritte wurden mithilfe der folgenden Konfiguration getestet:
    > 
    > * **Virtuelles Azure-Netzwerk mit Punkt-zu-Standort-Konfiguration**: Ein virtuelles Netzwerk verbindet das HDInsight-Cluster mit einem SQL Server in einem privaten Rechenzentrum. Weitere Informationen finden Sie unter [Konfigurieren eines Punkt-zu-Standort-VPN im Verwaltungsportal](../vpn-gateway/vpn-gateway-point-to-site-create.md) .
-   > * **Azure HDInsight 3.1**: Informationen zur Erstellung eines Clusters in einem virtuellen Netzwerk finden Sie unter [Erstellen von Hadoop-Clustern in HDInsight mit benutzerdefinierten Optionen](hdinsight-provision-clusters.md) .
+   > * **Azure HDInsight 3.1**: Informationen zur Erstellung eines Clusters in einem virtuellen Netzwerk finden Sie unter [Erstellen von Hadoop-Clustern in HDInsight mit benutzerdefinierten Optionen](hdinsight-hadoop-provision-linux-clusters.md) .
    > * **SQL Server 2014**: Konfiguriert für die Authentifizierung und mit dem Konfigurationspaket für VPN-Clients für eine sichere Verbindung zum virtuellen Netzwerk.
    > 
    > 
@@ -618,7 +620,7 @@ Im PowerShell-Beispiel werden die folgenden Schritte ausgeführt:
 [azure-management-portal]: https://portal.azure.com/
 
 [hdinsight-versions]:  hdinsight-component-versioning.md
-[hdinsight-provision]: hdinsight-provision-clusters.md
+[hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
 [hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
 [hdinsight-storage]: ../hdinsight-hadoop-use-blob-storage.md
 [hdinsight-analyze-flight-data]: hdinsight-analyze-flight-delay-data.md

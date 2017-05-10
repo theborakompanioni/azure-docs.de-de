@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 1a074e54204ff8098bea09eb4aa2066ccee47608
-ms.openlocfilehash: ab9e952027dcaa5b43cdad8faf8005b063c01dce
-ms.lasthandoff: 01/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: f813dc5f126386f9ad474e113183e7b5d4c8a71a
+ms.contentlocale: de-de
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -27,7 +28,7 @@ Ab Microsoft Azure Media Services 2.2 können Sie an ein Media Services-Konto me
 * Lastenausgleich der Assets für mehrere Speicherkonten.
 * Skalierung von Media Services für umfangreiche Inhaltsverarbeitung (derzeit ist ein Speicherkonto auf eine maximale Größe von 500 TB beschränkt). 
 
-In diesem Thema wird erläutert, wie mehrere Speicherkonten mit [Azure Resource Manager-APIs](https://docs.microsoft.com/rest/api/media/mediaservice) und [PowerShell](https://docs.microsoft.com/powershell/resourcemanager/azurerm.media/v0.3.2/azurerm.media) an ein Media Services-Konto angefügt werden. Es wird zudem beschrieben, wie beim Erstellen von Medienobjekten mit dem Media Services-SDK verschiedene Speicherkonten angegeben werden. 
+In diesem Thema wird erläutert, wie mehrere Speicherkonten mit [Azure Resource Manager-APIs](https://docs.microsoft.com/rest/api/media/mediaservice) und [PowerShell](/powershell/module/azurerm.media) an ein Media Services-Konto angefügt werden. Es wird zudem beschrieben, wie beim Erstellen von Medienobjekten mit dem Media Services-SDK verschiedene Speicherkonten angegeben werden. 
 
 ## <a name="considerations"></a>Überlegungen
 Wenn Sie Ihrem Media Services-Konto mehrere Speicherkonten zuordnen, gelten die folgenden Überlegungen:
@@ -39,11 +40,11 @@ Wenn Sie Ihrem Media Services-Konto mehrere Speicherkonten zuordnen, gelten die 
 
 Weitere Überlegungen:
 
-Media Services verwendet beim Erstellen von URLs für den Streaminginhalt den Wert der **IAssetFile.Name**-Eigenschaft (z.B. http://{WAMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters). Aus diesem Grund ist die Prozentkodierung nicht zulässig. Der Wert der Name-Eigenschaft darf keines der folgenden [für die Prozentcodierung reservierten Zeichen enthalten](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters): !*'();:@&=+$,/?%#[]". Darüber hinaus darf „.“ nur einmal für die Dateinamenerweiterung vorhanden sein.
+Media Services verwendet beim Erstellen von URLs für den Streaminginhalt den Wert der **IAssetFile.Name**-Eigenschaft (z.B. http://{WAMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters). Aus diesem Grund ist die Prozentkodierung nicht zulässig. Der Wert der „Name“-Eigenschaft darf keines der folgenden für die [Prozentcodierung reservierten Zeichen](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) enthalten: !*'();:@&=+$,/?%#[]". Darüber hinaus darf „.“ nur einmal für die Dateinamenerweiterung vorhanden sein.
 
 ## <a name="to-attach-storage-accounts"></a>So fügen Sie Speicherkonten an  
 
-Um Ihre Speicherkonten Ihrem AMS-Konto anzufügen, verwenden Sie [Azure Resource Manager-APIs](https://docs.microsoft.com/rest/api/media/mediaservice) und [PowerShell](https://docs.microsoft.com/powershell/resourcemanager/azurerm.media/v0.3.2/azurerm.media), wie im folgenden Beispiel gezeigt.
+Um Ihre Speicherkonten Ihrem AMS-Konto anzufügen, verwenden Sie [Azure Resource Manager-APIs](https://docs.microsoft.com/rest/api/media/mediaservice) und [PowerShell](/powershell/module/azurerm.media), wie im folgenden Beispiel gezeigt.
 
     $regionName = "West US"
     $subscriptionId = " xxxxxxxx-xxxx-xxxx-xxxx- xxxxxxxxxxxx "

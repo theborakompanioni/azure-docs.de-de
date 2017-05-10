@@ -15,10 +15,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: e0bfa7620feeb1bad33dd2fe4b32cb237d3ce158
-ms.openlocfilehash: 73167924f95c8cea0ac3cb4651cb3571fb24cc01
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 6be49be9e4321075aa76b3abcf4695d0e7b45f6e
+ms.contentlocale: de-de
+ms.lasthandoff: 05/03/2017
 
 ---
 
@@ -39,7 +40,7 @@ Bei Verwendung eines Azure-Plattformimages unterstützen Skalierungsgruppen bis 
 ## <a name="create-an-app-to-scale"></a>Erstellen einer App für die Skalierung
 Für die Verwendung in einer Produktionsumgebung können Sie [ein benutzerdefiniertes VM-Image erstellen](tutorial-custom-images.md), das Ihre installierte und konfigurierte Anwendung umfasst. In diesem Tutorial werden die virtuellen Computer beim ersten Start angepasst, sodass eine Skalierungsgruppe schnell in Aktion zu sehen ist.
 
-In einem vorherigen Tutorial haben Sie erfahren, wie [ein virtueller Linux-Computer beim ersten Start mit cloud-init angepasst wird](tutorial-automate-vm-deployment.md). Mithilfe der gleichen cloud-init-Konfigurationsdatei können Sie NGINX installieren und eine einfache Node.js-App „Hello World“ ausführen. Erstellen Sie eine Datei namens `cloud-init.txt`, und fügen Sie die folgende Konfiguration ein:
+In einem vorherigen Tutorial haben Sie erfahren, wie [ein virtueller Linux-Computer beim ersten Start mit cloud-init angepasst wird](tutorial-automate-vm-deployment.md). Mithilfe der gleichen cloud-init-Konfigurationsdatei können Sie NGINX installieren und eine einfache Node.js-App „Hello World“ ausführen. Erstellen Sie eine Datei namens *cloud-init.txt*, und fügen Sie die folgende Konfiguration ein:
 
 ```yaml
 #cloud-config
@@ -85,13 +86,13 @@ runcmd:
 
 
 ## <a name="create-a-scale-set"></a>Erstellen einer Skalierungsgruppe
-Vor der Erstellung einer Skalierungsgruppe müssen Sie zunächst mit [az group create](/cli/azure/group#create) eine Ressourcengruppe erstellen. Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen `myResourceGroupScaleSet` am Standort `westus`:
+Vor der Erstellung einer Skalierungsgruppe müssen Sie zunächst mit [az group create](/cli/azure/group#create) eine Ressourcengruppe erstellen. Das folgende Beispiel erstellt am Standort *westus* eine Ressourcengruppe mit dem Namen *myResourceGroupScaleSet*.
 
 ```azurecli
 az group create --name myResourceGroupScaleSet --location westus
 ```
 
-Erstellen Sie dann mit [az vmss create](/cli/azure/vmss#create) eine VM-Skalierungsgruppe. Im folgenden Beispiel werden eine Skalierungsgruppe mit dem Namen `myScaleSet` erstellt, der virtuelle Computer mithilfe der cloud-init-Datei angepasst und (sofern noch nicht vorhanden) SSH-Schlüssel generiert:
+Erstellen Sie dann mit [az vmss create](/cli/azure/vmss#create) eine VM-Skalierungsgruppe. Im folgenden Beispiel werden eine Skalierungsgruppe mit dem Namen *myScaleSet* erstellt, der virtuelle Computer mithilfe der cloud-init-Datei angepasst und (sofern noch nicht vorhanden) SSH-Schlüssel generiert:
 
 ```azurecli
 az vmss create \
@@ -110,7 +111,7 @@ Die Erstellung und Konfiguration aller Ressourcen und virtuellen Computer der Sk
 ## <a name="allow-web-traffic"></a>Zulassen von Webdatenverkehr
 Ein Lastenausgleichsmodul wurde automatisch als Teil der VM-Skalierungsgruppe erstellt. Das Lastenausgleichsmodul verteilt den Datenverkehr auf der Grundlage von Lastenausgleichsregeln auf eine Gruppe definierter virtueller Computer. Weitere Informationen zu den Konzepten und der Konfiguration des Load Balancers finden Sie im nächsten Tutorial [Lastenausgleich für virtuelle Computer in Azure](tutorial-load-balancer.md).
 
-Damit Datenverkehr die Web-App erreicht, erstellen Sie mit [az network lb rule create](/cli/azure/network/lb/rule#create) eine Regel. Im folgenden Beispiel wird eine Regel namens `myLoadBalancerRuleWeb` erstellt:
+Damit Datenverkehr die Web-App erreicht, erstellen Sie mit [az network lb rule create](/cli/azure/network/lb/rule#create) eine Regel. Im folgenden Beispiel wird eine Regel namens *myLoadBalancerRuleWeb* erstellt:
 
 ```azurecli
 az network lb rule create \
@@ -125,7 +126,7 @@ az network lb rule create \
 ```
 
 ## <a name="test-your-app"></a>Testen Ihrer App
-Um die Node.js-App im Web anzuzeigen, rufen Sie mit [az network public-ip show](/cli/azure/network/public-ip#show) die öffentliche IP-Adresse des Load Balancers ab. Im folgenden Beispiel wird die IP-Adresse für `myScaleSetLBPublicIP` abgerufen, die als Teil der Skalierungsgruppe erstellt wurde:
+Um die Node.js-App im Web anzuzeigen, rufen Sie mit [az network public-ip show](/cli/azure/network/public-ip#show) die öffentliche IP-Adresse des Load Balancers ab. Im folgenden Beispiel wird die IP-Adresse für *myScaleSetLBPublicIP* abgerufen, die als Teil der Skalierungsgruppe erstellt wurde:
 
 ```azurecli
 az network public-ip show \
@@ -166,7 +167,7 @@ Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
 
 
 ### <a name="increase-or-decrease-vm-instances"></a>VM-Instanzen erhöhen oder verringern
-Verwenden Sie [az vmss show](/cli/azure/vmss#show), und führen Sie eine Abfrage für `sku.capacity` durch, um die Anzahl der zurzeit in einer Skalierungsgruppe vorhandenen Instanzen anzuzeigen:
+Verwenden Sie [az vmss show](/cli/azure/vmss#show), und führen Sie eine Abfrage nach *sku.capacity* durch, um die Anzahl der zurzeit in einer Skalierungsgruppe vorhandenen Instanzen anzuzeigen:
 
 ```azurecli
 az vmss show \
@@ -176,7 +177,7 @@ az vmss show \
     --output table
 ```
 
-Sie können dann die Anzahl der virtuellen Computer in der Skalierungsgruppe mit [az vmss scale](/cli/azure/vmss#scale) manuell erhöhen oder verringern. Im folgenden Beispiel wird die Anzahl der virtuellen Computer in der Skalierungsgruppe auf `5` festgelegt:
+Sie können dann die Anzahl der virtuellen Computer in der Skalierungsgruppe mit [az vmss scale](/cli/azure/vmss#scale) manuell erhöhen oder verringern. Im folgenden Beispiel wird die Anzahl der virtuellen Computer in der Skalierungsgruppe auf *5* festgelegt:
 
 ```azurecli
 az vmss scale \
@@ -191,7 +192,51 @@ Mit Regeln zur automatischen Skalierung können Sie definieren, wie die Anzahl v
 Verwenden Sie zum Abrufen der Verbindungsinformationen für die virtuellen Computer in Ihren Skalierungsgruppen [az vmss list-instance-connection-info](/cli/azure/vmss#list-instance-connection-info). Durch diesen Befehl werden die öffentliche IP-Adresse und der Port für alle virtuellen Computer ausgegeben, die eine Verbindung mit SSH ermöglichen:
 
 ```azurecli
-az vmss list-instance-connection-info --resource-group myResourceGroupScaleSet --name myScaleSet
+az vmss list-instance-connection-info \
+    --resource-group myResourceGroupScaleSet \
+    --name myScaleSet
+```
+
+
+## <a name="use-data-disks-with-scale-sets"></a>Verwenden von Datenträgern mit Skalierungsgruppen
+Sie können Datenträger mit Skalierungsgruppen erstellen und nutzen. In einem vorherigen Tutorial haben Sie gelernt, wie [Azure-Datenträger verwaltet werden](tutorial-manage-disks.md). Erläutert wurden die bewährten Methoden und verbesserte Leistung beim Erstellen von Apps auf normalen Datenträgern statt auf dem Betriebssystem-Datenträger.
+
+### <a name="create-scale-set-with-data-disks"></a>Erstellen einer Skalierungsgruppe mit Datenträgern
+Fügen Sie zum Erstellen einer Skalierungsgruppe und zum Anfügen von Datenträgern dem Befehl [az vmss create](/cli/azure/vmss#create) den Parameter `--data-disk-sizes-gb` hinzu. Im folgenden Beispiel wird eine Skalierungsgruppe erstellt, wobei an jede Instanz ein *50*-GB-Datenträger angefügt wird:
+
+```azurecli
+az vmss create \
+  --resource-group myResourceGroupScaleSet \
+  --name myScaleSetDisks \
+  --image Canonical:UbuntuServer:14.04.4-LTS:latest \
+  --upgrade-policy-mode automatic \
+  --custom-data cloud-init.txt \
+  --admin-username azureuser \
+  --generate-ssh-keys \
+  --data-disk-sizes-gb 50
+```
+
+Bei Entfernen von Instanzen aus einer Skalierungsgruppe werden angefügte Datenträger ebenfalls entfernt.
+
+### <a name="add-data-disks"></a>Hinzufügen von Datenträgern
+Verwenden Sie [az vmss disk attach](/cli/azure/vmss/disk#attach) zum Hinzufügen eines Datenträgers zu Instanzen in Ihrer Skalierungsgruppe. Im folgenden Beispiel wird jeder Instanz ein *50*-GB-Datenträger hinzugefügt:
+
+```azurecli
+az vmss disk attach `
+    --resource-group myResourceGroupScaleSet `
+    --name myScaleSet `
+    --size-gb 50 `
+    --lun 2
+```
+
+### <a name="detach-data-disks"></a>Trennen von Datenträgern
+Verwenden Sie [az vmss disk detach](/cli/azure/vmss/disk#detach) zum Entfernen eines Datenträgers von Instanzen in Ihrer Skalierungsgruppe. Im folgenden Beispiel wird der Datenträger mit LUN *2* aus jeder Instanz entfernt:
+
+```azurecli
+az vmss disk detach `
+    --resource-group myResourceGroupScaleSet `
+    --name myScaleSet `
+    --lun 2
 ```
 
 

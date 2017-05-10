@@ -1,5 +1,5 @@
 ---
-title: "Veröffentlichen von Azure Media Services-Inhalten mit .NET"
+title: "Veröffentlichen von Azure Media Services-Inhalten mit .NET | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie einen Locator erstellen, der zum Generieren einer Streaming-URL verwendet wird. Die Codebeispiele sind in C# geschrieben und verwenden das Media Services SDK für .NET."
 author: juliako
 manager: erikre
@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2016
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 5598a16511713a76193c13c4521e4884d8f5b75d
-ms.lasthandoff: 03/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 37f6cd3a25c36fe27c9c711a430a2fc11e50906e
+ms.contentlocale: de-de
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -53,7 +54,7 @@ Verfahren Sie zum Erstellen des OnDemand-Streaminglocators und Abrufen von URLs 
 
 
 >[!NOTE]
->Es gilt ein Grenzwert von 1.000.000 Richtlinien für verschiedene AMS-Richtlinien (z.B. für die Locator-Richtlinie oder für ContentKeyAuthorizationPolicy). Wenn Sie immer die gleichen Tage/Zugriffsberechtigungen verwenden, z.B. Richtlinien für Locator, die für einen längeren Zeitraum vorgesehen sind (Richtlinien ohne Upload), sollten Sie dieselbe Richtlinien-ID verwenden. Weitere Informationen finden Sie in [diesem](media-services-dotnet-manage-entities.md#limit-access-policies) Thema.
+>Es gilt ein Grenzwert von 1.000.000 Richtlinien für verschiedene AMS-Richtlinien (z.B. für die Locator-Richtlinie oder für ContentKeyAuthorizationPolicy). Verwenden Sie stets die gleiche Richtlinien-ID, wenn Sie immer die gleichen Tage und Zugriffsberechtigungen verwenden. Verwenden Sie z.B. für Richtlinien für Locators, die für einen längeren Zeitraum vorgesehen sind (Richtlinien ohne Upload). Weitere Informationen finden Sie in [diesem](media-services-dotnet-manage-entities.md#limit-access-policies) Thema.
 
 ### <a name="use-media-services-net-sdk"></a>Verwenden des Media Services .NET SDKs
 Erstellen von Streaming-URLs 
@@ -95,7 +96,7 @@ Erstellen von Streaming-URLs
         Console.WriteLine();
     }
 
-Codeausgabe:
+Die Ausgaben:
 
     URL to manifest for client streaming using Smooth Streaming protocol:
     http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest
@@ -106,7 +107,7 @@ Codeausgabe:
 
 
 > [!NOTE]
-> Sie können auch den Inhalt über eine SSL-Verbindung streamen. Zu diesem Zweck stellen Sie sicher, dass die Streaming-URLs mit HTTPS beginnen. Beachten Sie, dass AMS derzeit SSL mit benutzerdefinierten Domänen nicht unterstützt.  
+> Sie können auch den Inhalt über eine SSL-Verbindung streamen. Zu diesem Zweck stellen Sie sicher, dass die Streaming-URLs mit HTTPS beginnen. AMS unterstützt derzeit SSL mit benutzerdefinierten Domänen nicht.
 > 
 > 
 
@@ -140,7 +141,7 @@ Erstellen von URLs für progressive Downloads
             Console.WriteLine(originLocator.Path + pd.Name);
     }
 
-Codeausgabe:
+Die Ausgaben:
 
     http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
     http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_400kbps_AAC_und_ch2_96kbps.mp4
@@ -175,8 +176,8 @@ Im folgenden Code werden .NET SDK-Erweiterungsmethoden aufgerufen, durch die ein
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>Weitere Informationen
-[Herunterladen von Assets](media-services-deliver-asset-download.md)
-[Konfigurieren der Übermittlungsrichtlinie für Medienobjekte](media-services-dotnet-configure-asset-delivery-policy.md)
+## <a name="next-steps"></a>Nächste Schritte
+* [Herunterladen von Medienobjekten](media-services-deliver-asset-download.md)
+* [Konfigurieren der Übermittlungsrichtlinie für Medienobjekte](media-services-dotnet-configure-asset-delivery-policy.md)
 
 

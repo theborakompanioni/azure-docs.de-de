@@ -14,23 +14,36 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 02/13/2017
 ms.author: ruturajd
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 6629666eaa913321db3855438bb66d349d5c52bf
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 1c56a7f16361ac4fae97be6c9f21c959723b396c
+ms.contentlocale: de-de
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="fail-back-from-azure-to-an-on-premises-site"></a>Failback von Azure zu einem lokalen Standort
+
+> [!div class="op_single_selector"]
+> * [VMware-/physische Computer von Azure](site-recovery-failback-azure-to-vmware.md)
+> * [Hyper-V-VMs von Azure](site-recovery-failback-from-azure-to-hyper-v.md)
+
+
 In diesem Artikel wird beschrieben, wie Sie für virtuelle Azure-Computer ein Failback von Azure Virtual Machines auf den lokalen Standort durchführen. Befolgen Sie die Anweisungen in diesem Artikel, um Ihre virtuellen VMware-Computer oder Ihre physischen Windows-/Linux-Server nach einem Failover vom lokalen Standort auf Azure (beschrieben im Tutorial [Replizieren von virtuellen VMware-Computern und physischen Servern in Azure mithilfe von Azure Site Recovery](site-recovery-vmware-to-azure-classic.md)) per Failback wieder auf den lokalen Standort zurückzuführen.
 
+> [!WARNING]
+> Wenn Sie die [Migration abgeschlossen](site-recovery-migrate-to-azure.md#what-do-we-mean-by-migration), den virtuellen Computer in eine andere Ressourcengruppe verschoben oder den virtuellen Azure-Computer gelöscht haben, ist danach kein Failback möglich.
+
+> [!NOTE]
+> Wenn für VMware-VMs ein Failover erfolgt ist, ist kein Failback auf einen Hyper-V-Host möglich.
+
 ## <a name="overview-of-failback"></a>Übersicht über das Failback
-Das Failback funktioniert wie folgt: Nach einem Failover zu Azure erfolgt die Rückführung zum lokalen Standort per Failback in mehreren Phasen:
+Das Failback funktioniert wie folgt. Nach einem Failover zu Azure erfolgt das Failback zu Ihrem lokalen Standort in mehreren Phasen:
 
 1. [Schützen Sie die virtuellen Computer in Azure erneut](site-recovery-how-to-reprotect.md), damit sie mit der Replikation auf virtuelle VMware-Computer an Ihrem lokalen Standort beginnen. Im Rahmen dieses Vorgangs müssen Sie auch folgende Schritte ausführen:
     1. Einrichten eines lokalen Masterziels: Windows-Masterziel für virtuelle Windows-Computer und [Linux-Masterziel](site-recovery-how-to-install-linux-master-target.md) für virtuelle Linux-Computer
     2. Einrichten eines [Prozessservers](site-recovery-vmware-setup-azure-ps-resource-manager.md)
-    3. Initiieren des [erneuten Schützens](site-recovery-how-to-reprotect.md)
+    3. Initiieren des [erneuten Schützens](site-recovery-how-to-reprotect.md) Dabei wird der lokale virtuelle Computer deaktiviert, und die Azure-VM-Daten werden mit den lokalen Datenträgern synchronisiert.
 5. Initiieren Sie nach der Replikation Ihrer virtuellen Azure-Computer am lokalen Standort ein Failover von Azure zum lokalen Standort.
 
 Nachdem Ihre Daten per Failback zurückgeführt wurden, schützen Sie die lokalen virtuellen Computer, auf die Sie das Failback durchgeführt haben, erneut, damit diese mit der Replikation nach Azure beginnen.
@@ -41,6 +54,9 @@ Sehen Sie sich das folgende Video zum Failover von Azure zu einem lokalen Stando
 ### <a name="fail-back-to-the-original-or-alternate-location"></a>Failback zum ursprünglichen oder zu einem anderen Standort
 
 Wenn Sie ein Failover für einen virtuellen VMware-Computer durchgeführt haben, können Sie das Failback zum gleichen virtuellen lokalen Quellcomputer ausführen, sofern er lokal noch vorhanden ist. In diesem Szenario werden nur die Änderungen zurückrepliziert. Dieses Szenario wird als Wiederherstellung am ursprünglichen Speicherort bezeichnet. Wenn der lokale virtuelle Computer nicht vorhanden ist, handelt es sich um ein Szenario mit Wiederherstellung an einem alternativen Speicherort.
+
+> [!NOTE]
+> Ein Failback kann nur zum ursprünglichen vCenter- und Konfigurationsserver erfolgen. Sie können keinen neuen Konfigurationsserver bereitstellen, um mit seiner Hilfe ein Failback auszuführen. Darüber hinaus können Sie dem bestehenden Konfigurationsserver kein neues vCenter hinzufügen, um ein Failback in das neue vCenter auszuführen.
 
 #### <a name="original-location-recovery"></a>Wiederherstellung am ursprünglichen Speicherort
 
@@ -74,7 +90,7 @@ Führen Sie vor dem Fortfahren alle Schritte für das erneute Schützen aus, dam
 ## <a name="steps-to-fail-back"></a>Schritte für das Failback
 
 > [!IMPORTANT]
-Stellen Sie vor dem Initiieren des Failbacks sicher, dass der erneute Schutz für die virtuellen Computer abgeschlossen ist. Die virtuellen Computer müssen geschützt sein und den Integritätsstatus **OK** aufweisen. Informationen zum erneuten Schutz der virtuellen Computer finden Sie unter [Erneuter Schutz](site-recovery-how-to-reprotect.md).
+> Stellen Sie vor dem Initiieren des Failbacks sicher, dass der erneute Schutz für die virtuellen Computer abgeschlossen ist. Die virtuellen Computer müssen geschützt sein und den Integritätsstatus **OK** aufweisen. Informationen zum erneuten Schutz der virtuellen Computer finden Sie unter [Erneuter Schutz](site-recovery-how-to-reprotect.md).
 
 1. Wählen Sie auf der Seite mit den replizierten Elementen den virtuellen Computer aus, und klicken Sie mit der rechten Maustaste darauf, um **Ungeplantes Failover** auszuwählen.
 2. Überprüfen Sie unter **Failover bestätigen** die Failoverrichtung (von Azure), und wählen Sie dann den Wiederherstellungspunkt aus (den neuesten oder den neuesten App-konsistenten Wiederherstellungspunkt), der für das Failover verwendet werden soll. Der App-konsistente Punkt liegt vor dem aktuellen Zeitpunkt und verursacht einige Datenverluste.

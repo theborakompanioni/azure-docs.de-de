@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/31/2017
+ms.date: 05/02/2017
 ms.author: dobett
-translationtype: Human Translation
-ms.sourcegitcommit: 1915044f252984f6d68498837e13c817242542cf
-ms.openlocfilehash: d88c6e8d4c0c5aecbdbcf6262da8d919ad3b325d
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: ddf69b7256ae9665363ee0f491a6475c69d6d555
+ms.contentlocale: de-de
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -110,7 +112,7 @@ Es gibt zwei integrierte Endpunkte: **Cloud-zu-Gerät-Feedback** und **Ereigniss
 
     * **Event Hub-kompatibler Name und Event-Hub-kompatibler Endpunkt**: Bei Erstellung des IoT Hubs wird intern ein Event Hub erstellt, auf den Sie unter bestimmten Umständen zugreifen müssen. Die Event Hub-kompatiblen Werte für Name und Endpunkt können nicht angepasst, aber kopiert werden. Klicken Sie dazu auf **Kopieren**.
 
-    * **Aufbewahrungszeit**: Standardmäßig auf&1; Tag festgelegt, kann aber mithilfe der Dropdownliste geändert werden. Dieser Wert wird für die Gerät-zu-Cloud-Einstellung in Tagen angegeben.
+    * **Aufbewahrungszeit**: Standardmäßig auf 1 Tag festgelegt, kann aber mithilfe der Dropdownliste geändert werden. Dieser Wert wird für die Gerät-zu-Cloud-Einstellung in Tagen angegeben.
 
     * **Consumergruppen**: Consumergruppen ähneln als Einstellung anderen Messaging-Systemen, die zum Abrufen von Daten auf bestimmte Weise verwendet werden können, um andere Programme oder Dienste mit IoT Hub zu verbinden. Jeder IoT Hub wird mit einer Standard-Consumergruppe erstellt. Sie können mit dieser Einstellung Ihren IoT-Hubs jedoch Consumergruppen hinzufügen oder diese daraus löschen.
 
@@ -131,7 +133,7 @@ Klicken Sie auf **Routen**, um zu verwalten, wie IoT Hub Ihre D2C-Nachrichten se
 
 ![][14]
 
-Sie können Ihrem IoT-Hub Routen hinzufügen, indem Sie am oberen Rand des Blatts **Routen*** auf **Hinzufügen** klicken, die erforderlichen Informationen eingeben und auf **OK** klicken. Die wird dann auf dem Hauptblatt für **Routen** aufgeführt. Sie können eine Route bearbeiten, indem Sie in der Liste der Routen darauf klicken. Um eine Route zu aktivieren, klicken sie in der Liste der Routen darauf, und setzen Sie Schalter **Aktiviert** auf **Aus**. Klicken Sie am unteren Rand des Blatts auf **OK**, um die Änderung zu speichern.
+Sie können Ihrem IoT-Hub Routen hinzufügen, indem Sie am oberen Rand des Blatts **Routen*** auf **Hinzufügen** klicken, die erforderlichen Informationen eingeben und auf **OK** klicken. Ihre Route wird dann auf dem Hauptblatt **Routen** aufgeführt. Sie können eine Route bearbeiten, indem Sie in der Liste der Routen darauf klicken. Um eine Route zu aktivieren, klicken sie in der Liste der Routen darauf, und legen Sie den Schalter **Aktiviert** auf **Aus** fest. Klicken Sie am unteren Rand des Blatts auf **OK**, um die Änderung zu speichern.
 
 ![][15]
 
@@ -179,9 +181,4 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
 [lnk-securing]: iot-hub-security-ground-up.md
 [lnk-devguide-endpoints]: iot-hub-devguide-endpoints.md
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

@@ -14,10 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/02/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 5b5095610085019ad3fee7f4394f0c87f3740bed
-ms.openlocfilehash: 8d78a0f93a1e65eda7bfefbf910b56e0218a42c5
-ms.lasthandoff: 02/02/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 4327a3e3f67369a61eb945791ca1011fab6fb01d
+ms.contentlocale: de-de
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -44,7 +45,8 @@ Aufgabenkonfiguration (Voreinstellung). Wenn Sie eine Aufgabe mit **Azure Media 
 ### <a name="attribute-descriptions"></a>Beschreibungen der Attribute
 | Attributname | Beschreibung |
 | --- | --- |
-| Language |(Optional) Beschreibt die Sprache des Texts, nach dem gesucht wird. Eine der folgenden: AutoDetect (Standard), Arabisch, Chinesisch (traditionell), Chinesisch (vereinfacht), Dänisch, Deutsch, Englisch, Finnisch, Französisch, Griechisch, Italienisch, Japanisch, Koreanisch, Niederländisch, Norwegisch, Polnisch, Portugiesisch, Rumänisch, Russisch, Schwedisch, Serbisch (kyrillisch), Serbisch (lateinisch), Slowakisch, Spanisch, Tschechisch, Türkisch, Ungarisch. |
+|AdvancedOutput| Wenn Sie „AdvancedOutput“ auf TRUE festlegen, enthält die JSON-Ausgabe (zusätzlich zu Ausdrücken und Bereichen) für jedes einzelne Wort Positionsdaten. Wenn Sie diese Details nicht anzeigen möchten, können Sie das Flag auf FALSE festlegen. Der Standardwert ist „false“. Weitere Informationen finden Sie in [diesem Blog](https://azure.microsoft.com/blog/azure-media-ocr-simplified-output/).|
+| Sprache |(Optional) Beschreibt die Sprache des Texts, nach dem gesucht wird. Eine der folgenden: AutoDetect (Standard), Arabisch, Chinesisch (traditionell), Chinesisch (vereinfacht), Dänisch, Deutsch, Englisch, Finnisch, Französisch, Griechisch, Italienisch, Japanisch, Koreanisch, Niederländisch, Norwegisch, Polnisch, Portugiesisch, Rumänisch, Russisch, Schwedisch, Serbisch (kyrillisch), Serbisch (lateinisch), Slowakisch, Spanisch, Tschechisch, Türkisch, Ungarisch. |
 | TextOrientation |(Optional) Beschreibt die Ausrichtung des Texts, nach dem gesucht wird.  „Left“ bedeutet, dass alle Buchstaben nach links ausgerichtet sind.  Standardtext (z. B. wie in einem Buch) hat die Ausrichtung „Up“.  Eine der folgenden Optionen: AutoDetect (Standard), Up, Right, Down, Left. |
 | TimeInterval |(Optional) Beschreibt die Abtastrate.  Standard ist alle 0,5 Sekunden.<br/>JSON-Format – HH:mm:ss.SSS (Standardmäßig 00:00:00.500)<br/>XML-Format – W3C XSD-Dauer, primitiv (Standard PT0.5) |
 | DetectRegions |(Optional) Ein Array von „DetectRegion“-Objekten zur Angabe von Bereichen innerhalb des Videoframes, in denen Text erkannt werden soll.<br/>Aus den folgenden vier Integer-Werten wird ein DetectRegion-Objekt erstellt:<br/>Left – Pixel vom linken Rand<br/>Top – Pixel vom oberen Rand<br/>Width – Breite des Bereichs in Pixeln<br/>Height – Höhe des Bereichs in Pixel |
@@ -55,6 +57,7 @@ Aufgabenkonfiguration (Voreinstellung). Wenn Sie eine Aufgabe mit **Azure Media 
         "Version":1.0, 
         "Options": 
         {
+            "AdvancedOutput":"true"
             "Language":"English", 
             "TimeInterval":"00:00:01.5",
             "TextOrientation":"Up",
@@ -74,6 +77,7 @@ Aufgabenkonfiguration (Voreinstellung). Wenn Sie eine Aufgabe mit **Azure Media 
     <?xml version=""1.0"" encoding=""utf-16""?>
     <VideoOcrPreset xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" Version=""1.0"" xmlns=""http://www.windowsazure.com/media/encoding/Preset/2014/03"">
       <Options>
+         <AdvancedOutput>true</AdvancedOutput>
          <Language>English</Language>
          <TimeInterval>PT1.5S</TimeInterval>
          <DetectRegions>

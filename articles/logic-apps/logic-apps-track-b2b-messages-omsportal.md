@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2016
 ms.author: padmavc
-translationtype: Human Translation
-ms.sourcegitcommit: 2aa32d692da81dc34fafbc9cb6ea72a806f31e5c
-ms.openlocfilehash: a4068c70a01f80086ff3fb55f8e101c7dce95dea
-ms.lasthandoff: 02/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: 4d68fde29e85fcf9aa623b4d798262bcd486a8bb
+ms.contentlocale: de-de
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -80,7 +81,7 @@ Die B2B-Kommunikation umfasst den Nachrichtenaustausch zwischen zwei laufenden G
 | Sender | Der in den Empfangseinstellungen konfigurierte Gastpartner oder der in den Sendeeinstellungen für eine AS2-Vereinbarung konfigurierte Hostpartner |
 | Receiver | Der in den Empfangseinstellungen konfigurierte Hostpartner oder der in den Sendeeinstellungen für eine AS2-Vereinbarung konfigurierte Gastpartner |
 | Logik-App | Logik-App, in der die AS2-Aktionen konfiguriert sind |
-| Status | AS2-Nachrichtenstatus <br>Erfolg = Gute AS2-Nachricht empfangen oder gesendet, keine MDN konfiguriert <br>Erfolg = Gute AS2-Nachricht empfangen oder gesendet, MDN konfiguriert und empfangen oder MDN gesendet <br>Fehler = Fehlerhafte AS2-Nachricht empfangen, keine MDN konfiguriert <br>Ausstehend = Gute AS2-Nachricht empfangen oder gesendet, MDN konfiguriert und Funktionsbestätigung erwartet |
+| Status | AS2-Nachrichtenstatus <br>Erfolg = Gute AS2-Nachricht empfangen oder gesendet, keine MDN konfiguriert <br>Erfolg = Gute AS2-Nachricht empfangen oder gesendet, MDN konfiguriert und empfangen oder MDN gesendet <br>Fehler = Fehlerhafte AS2-Nachricht empfangen, keine MDN konfiguriert <br>Ausstehend = Gute AS2-Nachricht empfangen oder gesendet, MDN konfiguriert und MDN erwartet |
 | Ack | MDN-Nachrichtenstatus <br>Akzeptiert = Positive MDN empfangen oder gesendet <br>Ausstehend = Warten auf Empfangen oder Senden einer MDN <br>Abgelehnt = Negative MDN empfangen oder gesendet <br>Nicht erforderlich = MDN ist in der Vereinbarung nicht konfiguriert |
 | Richtung | Richtung der AS2-Nachricht |
 | Korrelations-ID | ID zum Korrelieren aller Trigger und Aktionen innerhalb einer Logik-App |

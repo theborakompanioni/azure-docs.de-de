@@ -11,12 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2017
+ms.date: 04/26/2017
 ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 7f6c71056bca7beebc02313409aabe386d191e23
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
+ms.openlocfilehash: 93831bb163f67bbf40026faf3096ff5b7c581dfe
+ms.contentlocale: de-de
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -664,7 +665,7 @@ Abrufen erweiterter Aktivitäten aus einem Protokoll, in dem einige Einträge de
            | where Name == "Stop"
            | project StopTime=timestamp, ActivityId)
         on ActivityId
-    | project City, ActivityId, StartTime, StopTime, Duration, StopTime, StartTime
+    | project City, ActivityId, StartTime, StopTime, Duration=StopTime-StartTime
 
 ```
 
@@ -2750,7 +2751,8 @@ Verwenden Sie `parsejson` zum Erstellen eines dynamischen Literals (Alias: `tody
 * `parsejson('21')` : ein einzelner Wert vom Typ „dynamic“ mit einer Zahl
 * `parsejson('"21"')` : ein einzelner Wert vom Typ „dynamic“ mit einer Zeichenfolge
 
-Beachten Sie, dass bei JSON, im Gegensatz zu JavaScript, die Verwendung doppelter Anführungszeichen (`"`) um Zeichenfolgen unbedingt erforderlich ist. Daher ist es im Allgemeinen einfacher, ein JSON-codiertes Zeichenfolgenliteral mit einfachen Anführungszeichen (`'`) zu kennzeichnen.
+> ![HINWEIS] Doppelte Anführungszeichen (`"`) müssen zum Einschließen von Bezeichnungen und Zeichenfolgenwerten im JSON-Format verwendet werden. Daher ist es im Allgemeinen einfacher, ein JSON-codiertes Zeichenfolgenliteral mit einfachen Anführungszeichen (`'`) zu kennzeichnen.
+> 
 
 In diesem Beispiel wird ein dynamischer Wert erstellt, und anschließend werden dessen Felder verwendet:
 
@@ -2927,21 +2929,23 @@ Ein Objekt vom Typ `dynamic` , angegeben durch *json*.
 
 **Beispiel**
 
-Für das folgende Beispiel gilt: Wenn `context_custom_metrics` ein `string`-Element ist, das wie folgt aussieht: 
+Für das folgende Beispiel gilt, dass `customDimensions.person` ein `string`-Element ist, das wie folgt aussieht: 
 
 ```
-{"duration":{"value":118.0,"count":5.0,"min":100.0,"max":150.0,"stdDev":0.0,"sampledValue":118.0,"sum":118.0}}
+"\"addresses\":[{\"postcode\":\"C789\",\"street\":\"high st\",\"town\":\"Cardigan\"},{\"postcode\":\"J456\",\"street\":\"low st\",\"town\":\"Jumper\"}],\"name\":\"Ada\""
 ```
 
 dann ruft das folgende Fragment zunächst den Wert des `duration`-Slots im Objekt und daraus zwei Slots ab: `duration.value` und  `duration.min` (bzw. `118.0` und `110.0`).
 
 ```AIQL
-T
-| ...
+customEvents
+| where name == "newMember"
 | extend d=parsejson(context_custom_metrics) 
 | extend duration_value=d.duration.value, duration_min=d["duration"]["min"]
 ```
 
+> ![HINWEIS] Doppelte Anführungszeichen müssen zum Einschließen von Bezeichnungen und Zeichenfolgenwerten im JSON-Format verwendet werden. 
+>
 
 
 ### <a name="range"></a>range

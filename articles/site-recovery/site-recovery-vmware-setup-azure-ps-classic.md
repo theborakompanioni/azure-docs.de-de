@@ -1,5 +1,5 @@
 ---
-title: " Verwalten eines in Azure ausgeführten Prozessservers (Klassisch) | Microsoft-Dokumentations"
+title: " Verwalten eines in Azure ausgeführten Prozessservers (Klassisch) | Microsoft-Dokumentation"
 description: In diesem Artikel wird beschrieben, wie ein Failbackprozessserver (Klassisch) in Azure eingerichtet wird.
 services: site-recovery
 documentationcenter: 
@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: backup-recovery
 ms.date: 2/2/2017
 ms.author: anoopkv
-translationtype: Human Translation
-ms.sourcegitcommit: bb24e1c79f6a77ec157fa05a8a212109ce8ae7ad
-ms.openlocfilehash: cc2d4d92f7d900f8dc231e11b65acf4b742ed893
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: cceda131fc9eaa74f6328c8dd68a8e3885877061
+ms.contentlocale: de-de
+ms.lasthandoff: 05/02/2017
 
 ---
 
@@ -28,7 +30,7 @@ ms.openlocfilehash: cc2d4d92f7d900f8dc231e11b65acf4b742ed893
 Beim Failback empfiehlt es sich den Prozessserver in Azure bereitzustellen, wenn die Wartezeit zwischen dem Azure Virtual Network und Ihrem lokalen Netzwerk hoch ist. In diesem Artikel wird beschrieben, wie Sie in Azure ausgeführte Prozessserver einrichten, konfigurieren und verwalten können.
 
 > [!NOTE]
-> Dieser Artikel gilt, wenn Sie **Resource Manager** beim Failover als Bereitstellungsmodell für die virtuellen Computer verwendet haben. Wenn Sie **Klassisch** als Bereitstellungsmodell ausgewählt haben, führen Sie die unter [Verwalten eines in Azure ausgeführten Prozessservers (Resource Manager)](./site-recovery-vmware-setup-azure-ps-resource-manager.md) beschriebenen Schritte aus.
+> Dieser Artikel gilt, wenn Sie beim Failover das klassische Bereitstellungsmodell für die virtuellen Computer verwendet haben. Wenn Sie Resource Manager als Bereitstellungsmodell ausgewählt haben, führen Sie die unter [Verwalten eines in Azure ausgeführten Prozessservers (Resource Manager)](./site-recovery-vmware-setup-azure-ps-resource-manager.md) beschriebenen Schritte aus.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -60,9 +62,4 @@ Beim Failback empfiehlt es sich den Prozessserver in Azure bereitzustellen, wenn
 ## <a name="unregistering-the-process-server-running-in-azure-from-a-configuration-server-running-on-premises"></a>Aufheben der Registrierung des Prozessservers (in Azure ausgeführt) beim Konfigurationsserver (lokal ausgeführt)
 
 [!INCLUDE [site-recovery-vmware-upgrade-process-server](../../includes/site-recovery-vmware-unregister-process-server.md)]
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

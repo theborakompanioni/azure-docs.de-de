@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2016
 ms.author: mthalman;mikhegn
-translationtype: Human Translation
-ms.sourcegitcommit: f7edee399717ecb96fb920d0a938da551101c9e1
-ms.openlocfilehash: 437e343425da5c8cfe71d4ae67c423fcc2b794c2
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: 76a1e013e824910c7a489e345b6563ae3951378f
+ms.contentlocale: de-de
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -104,14 +106,14 @@ Eine Team Services-Releasedefinition beschreibt einen Workflow, der aus verschie
     1. Wählen Sie im Menü **Neuer Dienstendpunkt** und dann **Azure Service Fabric** aus.
     2. Wählen Sie den Typ der Authentifizierung für den Cluster aus, der von diesem Endpunkt genutzt wird.
     3. Geben Sie im Feld **Verbindungsname** einen Namen für die Verbindung ein.  In der Regel verwenden Sie den Namen des Clusters.
-    4. Definieren Sie im Feld **Clusterendpunkt** die URL für den Clientverbindungsendpunkt.  Beispiel: https://contoso.westus.cloudapp.azure.com:19000.
+    4. Definieren Sie im Feld **Clusterendpunkt** die URL für den Clientverbindungsendpunkt.  Beispiel: tcp://contoso.westus.cloudapp.azure.com:19000.
     5. Wenn Sie Azure Active Directory-Anmeldeinformationen für die Herstellung der Verbindung mit dem Cluster verwenden möchten, geben Sie die entsprechenden Daten in den Feldern **Benutzername** und **Kennwort** ein.
     6. Für die zertifikatbasierte Authentifizierung definieren Sie im Feld **Clientzertifikat** die Base64-Codierung der Clientzertifikatdatei.  In der kontextbezogenen Hilfe zu diesem Feld erfahren Sie, wie Sie diesen Wert abrufen.  Wenn Ihr Zertifikat durch ein Kennwort geschützt ist, legen Sie das Kennwort im Feld **Kennwort** fest.
     7. Bestätigen Sie Ihre Änderungen durch Klicken auf **OK**. Nachdem Sie zu Ihrer Releasedefinition zurückgekehrt sind, klicken Sie im Feld **Clusterverbindung** auf das Aktualisierungssymbol, um den gerade hinzugefügten Endpunkt anzuzeigen.
 12. Speichern Sie die Releasedefinition.
 
 > [!NOTE]
-> Microsoft-Konten (wie etwa @hotmail.com oder @outlook.com) werden in Kombination mit der Authentifizierung über Azure Active Directory nicht unterstützt.
+> Microsoft-Konten (wie etwa @hotmail.com oder @outlook.com) werden in Kombination mit der Azure Active Directory-Authentifizierung nicht unterstützt.
 > 
 > 
 
@@ -130,10 +132,5 @@ Weitere Informationen zu Continuous Integration für Service Fabric-Anwendungen 
 * [Startseite der Team Services-Dokumentation](https://www.visualstudio.com/docs/overview)
 * [Buildverwaltung in Team Services](https://www.visualstudio.com/docs/build/overview)
 * [Releaseverwaltung in Team Services](https://www.visualstudio.com/docs/release/overview)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 
