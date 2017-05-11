@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/21/2017
+ms.date: 05/04/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
-ms.openlocfilehash: 2aa5542dc095beaf951bad2b0361a3acc4468f2d
-ms.lasthandoff: 04/05/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: 37211b961644fdc5567147cde946f86afb9b1aa9
+ms.contentlocale: de-de
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -76,10 +77,9 @@ In diesem Abschnitt erstellen Sie einen HDInsight Hadoop-Cluster, für den ein D
 
 4. Wählen Sie ein bereits vorhandenes Data Lake Store-Konto aus, und geben Sie einen Stammordnerpfad ein, in dem die clusterspezifischen Dateien gespeichert werden sollen.
 
-    ![Dienstprinzipal für HDInsight-Cluster hinzufügen](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.1.adls.storage.png "Dienstprinzipal für HDInsight-Cluster hinzufügen")
-
-
     In diesem Screenshot ist der Stammordnerpfad „/clusters/myhdiadlcluster“, wobei *myhdiadlcluster* der Name des Clusters ist, der erstellt wird. Stellen Sie in einem solchen Fall sicher, dass der Ordner */clusters* im Data Lake Store-Konto vorhanden ist. Der Ordner *myhdiadlcluster* wird während der Erstellung des Clusters erstellt. Wenn der Stammpfad auf */hdinsight/clusters/data/myhdiadlcluter* festgelegt wurde, stellen Sie sicher, dass */hdinsight/clusters/data/* im Data Lake Store-Konto vorhanden ist.
+
+    ![Dienstprinzipal für HDInsight-Cluster hinzufügen](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.1.adls.storage.png "Dienstprinzipal für HDInsight-Cluster hinzufügen")
 
 5. Klicken Sie auf **Data Lake Store-Zugriff**, um den Zugriff zwischen dem Data Lake Store-Konto und dem HDInsight-Cluster zu konfigurieren. Anweisungen hierzu finden Sie unter [Konfigurieren des Zugriffs zwischen HDInsight-Cluster und Data Lake Store](#configure-access-between-hdinsight-cluster-and-data-lake-store).
 
