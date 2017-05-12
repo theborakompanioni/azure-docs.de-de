@@ -31,7 +31,11 @@
     href: tutorial-load-balancer.md
   - name: "8: Verwalten von Netzwerken"
     href: tutorial-virtual-network.md
-  - name: "9: Verwalten der VM-Sicherheit"
+  - name: "9 – Sichern virtueller Computer"
+    href: tutorial-backup-vms.md
+  - name: "10 – Überwachen virtueller Computer"
+    href: tutorial-monitoring.md
+  - name: "11 – Verwalten der Sicherheit virtueller Computer"
     href: tutorial-azure-security.md
 
 - name: "Beispiele"
@@ -202,7 +206,7 @@
       - name: "Azure PowerShell"
         href: attach-disk-ps.md
       - name: "Azure-Portal"
-        href: attach-disk-portal.md
+        href: attach-managed-disk-portal.md
     - name: "Trennen eines Datenträgers"
       href: detach-disk.md
     - name: "Erweitern des Betriebssystemdatenträgers"
@@ -223,6 +227,8 @@
         href: vhd-copy.md
       - name: "Erstellen eines virtuellen Computers aus einer speziellen VHD"
         href: create-vm-specialized.md
+      - name: "Anfügen eines nicht verwalteten Datenträgers"
+        href: attach-disk-portal.md
   - name: "VM-Netzwerk"
     href: ps-common-network-ref.md
     items:
@@ -392,9 +398,9 @@
   - name: "Java"
     href: /java/api
   - name: "Node.js"
-    href: https://azure.microsoft.com/en-us/develop/nodejs/#azure-sdk
+    href: https://azure.microsoft.com/develop/nodejs/#azure-sdk
   - name: "Python"
-    href: http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.compute.html
+    href: https://azure.microsoft.com/develop/python/
   - name: "Compute REST"
     href: /rest/api/compute
   - name: "Managed Disks REST"

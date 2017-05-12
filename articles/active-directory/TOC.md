@@ -3,7 +3,6 @@
 ## [Wählen der Edition](active-directory-editions.md)
 
 ## [Informationen zur Azure-Identitätsverwaltung](identity-fundamentals.md)
-## [Vorschau der Azure-Portal-Benutzeroberfläche](active-directory-preview-explainer.md)
 
 # Erste Schritte
 ## [Erhalten eines Azure AD-Mandanten](active-directory-howto-tenant.md)
@@ -18,7 +17,9 @@
 
 # Anleitung
 ## Planen und Entwerfen
+### [Informationen zur Azure AD-Architektur](active-directory-architecture.md)
 ### [Bereitstellen einer Hybrididentitätslösung](active-directory-hybrid-identity-design-considerations-overview.md)
+
 #### Bestimmen der Anforderungen
 ##### [Identität](active-directory-hybrid-identity-design-considerations-business-needs.md)
 ##### [Verzeichnissynchronisierung](active-directory-hybrid-identity-design-considerations-directory-sync-requirements.md)
@@ -80,7 +81,7 @@
 ### [Gefährdete Benutzer](active-directory-reporting-security-user-at-risk.md)
 ### [Riskante Anmeldungen](active-directory-reporting-security-risky-sign-ins.md)
 ### [Risikoereignisse](active-directory-reporting-risk-events.md)
-### [Benannte Netzwerke](active-directory-known-networks-azure-portal.md)
+### [Benannte Speicherorte](active-directory-named-locations.md)
 ### [Berichtmigration](active-directory-reporting-migration.md)
 ### [Aufbewahrung](active-directory-reporting-retention.md)
 ### [Wartezeiten](active-directory-reporting-latencies-azure-portal.md)
@@ -91,6 +92,7 @@
 ###    Programmgesteuerter Zugriff
 #### [Überwachungsreferenz](active-directory-reporting-api-audit-reference.md)
 #### [Überwachungsbeispiele](active-directory-reporting-api-audit-samples.md)
+#### [Abrufen von Daten](active-directory-reporting-api-with-certificates.md)
 #### [Voraussetzungen](active-directory-reporting-api-prerequisites.md)
 #### [Anmeldereferenz](active-directory-reporting-api-sign-in-activity-reference.md)
 #### [Anmeldebeispiele](active-directory-reporting-api-sign-in-activity-samples.md)
@@ -114,6 +116,7 @@
 ## [Verwalten von Kennwörtern](active-directory-passwords.md)
 ### Benutzerdokumente
 #### [Zurücksetzen oder Ändern des Kennworts](active-directory-passwords-update-your-own-password.md)
+#### [Bewährte Methoden für Kennwörter](active-directory-secure-passwords.md)
 #### [Registrieren für die Self-Service-Kennwortzurücksetzung](active-directory-passwords-reset-register.md)
 ### [Schnellstart: Self-Service-Kennwortzurücksetzung](active-directory-passwords-getting-started.md)
 ### [Lizenzieren von SSPR](active-directory-passwords-licensing.md)
@@ -159,33 +162,37 @@
 #### [Aktualisieren von Registrierungseinstellungen](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
 #### [Grundlegendes zu Sicherheit und Datenschutz](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)
 
-### [Gewähren des Remotezugriffs auf Ihre Apps](active-directory-application-proxy-get-started.md)
-#### [Aktivieren der App-Proxy](active-directory-application-proxy-enable.md)
-#### [Grundlegendes zu Connectors](application-proxy-understand-connectors.md)
-#### [Veröffentlichen von Apps](application-proxy-publish-azure-portal.md)
-#### [Sicherheit](application-proxy-security-considerations.md)
-#### [Netzwerke](application-proxy-network-topology-considerations.md)
-#### [Remotedesktop](application-proxy-publish-remote-desktop.md)
-#### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
-#### [Veröffentlichen in getrennten Netzwerken](active-directory-application-proxy-connectors-azure-portal.md)
-#### [Proxyserver](application-proxy-working-with-proxy-servers.md)
-#### [Benutzerdefinierte Domänen](active-directory-application-proxy-custom-domains.md)
-#### [Access-Apps](active-directory-appssoaccess-whatis.md)
-##### [Azure-Portal](application-proxy-sso-azure-portal.md)
-#### [SSO mit KCD](active-directory-application-proxy-sso-using-kcd.md)
-#### [SSO mit Headern](application-proxy-ping-access.md)
-#### [Ansprüche unterstützende Apps](active-directory-application-proxy-claims-aware-apps.md)
-#### [Native Client-Apps](active-directory-application-proxy-native-client.md)
-#### [Benutzerdefinierte Startseite](application-proxy-office365-app-launcher.md)
-#### [Bedingter Zugriff](active-directory-application-proxy-conditional-access.md)
-#### [Installation im Hintergrund](active-directory-application-proxy-silent-installation.md)
-#### [Microsoft Forefront](application-proxy-transition-from-uag-tmg.md)
+### [Remotezugriff auf Apps mit dem Anwendungsproxy](active-directory-application-proxy-get-started.md)
+#### Erste Schritte
+##### [Aktivieren der App-Proxy](active-directory-application-proxy-enable.md)
+##### [Veröffentlichen von Apps](application-proxy-publish-azure-portal.md)
+##### [Benutzerdefinierte Domänen](active-directory-application-proxy-custom-domains.md)
+#### [SSO-Zugriff](active-directory-appssoaccess-whatis.md)
+##### [SSO mit KCD](active-directory-application-proxy-sso-using-kcd.md)
+##### [SSO mit Headern](application-proxy-ping-access.md)
+##### [SSO mit Kennworttresoren](application-proxy-sso-azure-portal.md)
+#### Informationen zu bewährte Methoden
+##### [Connectors](application-proxy-understand-connectors.md)
+##### [Sicherheit](application-proxy-security-considerations.md)
+##### [Netzwerke](application-proxy-network-topology-considerations.md)
+#### 
+#### Erweiterte Konfigurationen
+##### [Veröffentlichen in getrennten Netzwerken](active-directory-application-proxy-connectors-azure-portal.md)
+##### [Proxyserver](application-proxy-working-with-proxy-servers.md)
+##### [Ansprüche unterstützende Apps](active-directory-application-proxy-claims-aware-apps.md)
+##### [Native Client-Apps](active-directory-application-proxy-native-client.md)
+##### [Installation im Hintergrund](active-directory-application-proxy-silent-installation.md)
+##### [Benutzerdefinierte Startseite](application-proxy-office365-app-launcher.md)
+#### Veröffentlichen von exemplarische Vorgehensweisen
+##### [Remotedesktop](application-proxy-publish-remote-desktop.md)
+##### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
+##### [Microsoft Forefront](application-proxy-transition-from-uag-tmg.md)
 #### [Problembehandlung](active-directory-application-proxy-troubleshoot.md)
 #### Verwenden des klassischen Portals
 ##### [Herunterladen von Connectors](application-proxy-enable-classic-portal.md)
 ##### [Veröffentlichen von Apps](active-directory-application-proxy-publish.md)
 ##### [Verwenden von Connectors](active-directory-application-proxy-connectors.md)
-
+##### [Bedingter Zugriff](active-directory-application-proxy-conditional-access.md)
 
 ### Verwalten von Unternehmens-Apps
 #### [Zuweisen von Benutzern](active-directory-coreapps-assign-user-azure-portal.md)
@@ -297,14 +304,18 @@
 ### [Konfigurieren der Tokengültigkeitsdauer](active-directory-configurable-token-lifetimes.md)
 
 ## Schützen Ihrer Identitäten
-### [Bedingter Zugriff](active-directory-conditional-access.md)
-#### [Erste Schritte](active-directory-conditional-access-azuread-connected-apps.md)
+### [Bedingter Zugriff](active-directory-conditional-access-azure-portal.md)
+#### [Erste Schritte](active-directory-conditional-access-azure-portal-get-started.md)
 #### [Unterstützte Apps](active-directory-conditional-access-supported-apps.md)
 #### [Grundlegendes zu Geräterichtlinien](active-directory-conditional-access-device-policies.md)
 #### [Einrichten des Zugriffs auf verbundene Apps](active-directory-conditional-access-policy-connected-applications.md)
+#### [Technische Referenz](active-directory-conditional-access-technical-reference.md)
 #### [Häufig gestellte Fragen](active-directory-conditional-faqs.md)
 #### [Problembehandlung](active-directory-conditional-access-device-remediation.md)
-#### [Referenz](active-directory-conditional-access-technical-reference.md)
+#### [Klassisches Portal](active-directory-conditional-access.md)
+##### [Erste Schritte](active-directory-conditional-access-azuread-connected-apps.md)
+
+
 ### Windows Hello
 #### [Authentifizierung ohne Kennwort](active-directory-azureadjoin-passport.md)
 #### [Aktivieren von Windows Hello for Business](active-directory-azureadjoin-passport-deployment.md)

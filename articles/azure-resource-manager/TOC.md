@@ -53,6 +53,7 @@
 ### [REST-API](resource-manager-rest-api.md)
 ### [Verwenden von Tags zum Organisieren von Ressourcen](resource-group-using-tags.md)
 ### [Verschieben von Ressourcen in neue Gruppen oder Abonnements](resource-group-move-resources.md)
+### [Erstellen von Benutzeroberflächen-Definitionen](managed-application-createuidefinition-overview.md)
 ## Steuern des Zugriffs
 ### [Erstellen des Dienstprinzipals mit PowerShell](resource-group-authenticate-service-principal.md)
 ### [Erstellen eines Dienstprinzipals über die Azure-Befehlszeilenschnittstelle 2.0](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
@@ -82,6 +83,7 @@
 ### [Numerische Funktionen](resource-group-template-functions-numeric.md)
 ### [Ressourcenfunktionen](resource-group-template-functions-resource.md)
 ### [Zeichenfolgenfunktionen](resource-group-template-functions-string.md)
+## [Funktionen von Benutzeroberflächen-Definitionen](managed-application-createuidefinition-functions.md)
 ## [PowerShell](/powershell/module/azurerm.resources)
 ## [Azure 2.0 CLI](/cli/azure/resource)
 ## [.NET](/dotnet/api/microsoft.azure.management.resourcemanager)

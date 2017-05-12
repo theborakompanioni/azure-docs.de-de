@@ -20,6 +20,9 @@
 #### [Simulierte Daten](iot-suite-raspberry-pi-kit-node-get-started-simulator.md)
 #### [Verwenden echter Sensoren](iot-suite-raspberry-pi-kit-node-get-started-basic.md)
 #### [Implementieren eines Firmwareupdates](iot-suite-raspberry-pi-kit-node-get-started-advanced.md)
+## Verbinden Ihres NUC-Gateways
+### [Simulierte Daten](iot-suite-gateway-kit-get-started-simulator.md)
+### [Verwenden eines echten Sensors](iot-suite-gateway-kit-get-started-sensortag.md)
 
 # Anleitung
 ## Verbinden eines simulierten Geräts
@@ -33,6 +36,7 @@
 ## [Erstellen einer benutzerdefinierten Regel in der Remoteüberwachungslösung](iot-suite-custom-rule.md)
 ## [Geräteinformationen in der Remoteüberwachungslösung](iot-suite-remote-monitoring-device-info.md)
 ## [Bereitstellen eines Gateways für verbundene Factorys](iot-suite-connected-factory-gateway-deployment.md)
+## [Anpassen einer verbundenen Factory](iot-suite-connected-factory-customize.md)
 
 # Referenz
 ## [Sicherheitsarchitektur](iot-security-architecture.md)

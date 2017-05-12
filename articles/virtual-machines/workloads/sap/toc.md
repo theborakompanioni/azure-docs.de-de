@@ -17,7 +17,7 @@
 ## SAP HANA auf virtuellen Computern
 ### [SAP HANA-Einzelinstanz](hana-get-started.md)
 ### [Bereitstellungshandbuch für S/4 HANA oder BW/4 HANA](cal-s4h.md)
-### [Hohe Verfügbarkeit bei virtuellen Computern] (sap-hana-high-availability.md)
+### [Hohe Verfügbarkeit bei virtuellen Computern](sap-hana-high-availability.md)
 ### [Sicherung – Übersicht](sap-hana-backup-guide.md)
 ### [Sicherung auf Dateiebene](sap-hana-backup-file-level.md)
 ### [Sicherungen von Speichermomentaufnahmen](sap-hana-backup-storage-snapshots.md)

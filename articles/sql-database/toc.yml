@@ -41,6 +41,26 @@
     href: sql-database-migrate-your-sql-server-database.md
   - name: "3: Sichern Ihrer SQL-Datenbank"
     href: sql-database-security-tutorial.md
+  - name: "4 – Verbessern der Leistung der SQL-Datenbank"
+    href: sql-database-performance-tutorial.md
+  - name: "5: Verwalten einer mehrinstanzenfähigen App"
+    href: sql-database-multi-tenant-application.md
+  - name: "6: Bereitstellen einer mehrinstanzenfähigen App"
+    href: sql-database-saas-tutorial.md
+  - name: "7: Bereitstellen/Katalogisieren neuer Mandanten"
+    href: sql-database-saas-tutorial-provision-and-catalog.md
+  - name: "8: Überwachen der Leistung"
+    href: sql-database-saas-tutorial-performance-monitoring.md
+  - name: "9: Wiederherstellen einzelner Mandanten"
+    href: sql-database-saas-tutorial-restore-single-tenant.md
+  - name: "10: Verwalten von Mandantenschemas"
+    href: sql-database-saas-tutorial-schema-management.md
+  - name: "11: Ausführen von Ad-hoc-Analysen"
+    href: sql-database-saas-tutorial-adhoc-analytics.md
+  - name: "12: Überwachen mit Log Analytics"
+    href: sql-database-saas-tutorial-log-analytics.md
+  - name: "13: Verwalten von Mandantenanalysen"
+
 - name: "Beispiele"
   items:
   - name: "Azure-Befehlszeilenschnittstelle"
@@ -142,7 +162,7 @@
       href: sql-database-long-term-retention.md
     - name: "Datenbankwiederherstellung"
       href: sql-database-recovery-using-backups.md
-    - name: "Georeplikation"
+    - name: "Automatisches Failover und Georeplikation"
       href: sql-database-geo-replication-overview.md
     - name: "Anmeldungen"
       href: sql-database-geo-replication-security-config.md
