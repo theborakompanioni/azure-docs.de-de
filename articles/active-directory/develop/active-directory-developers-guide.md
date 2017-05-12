@@ -1,8 +1,7 @@
 ---
-title: Entwicklerhandbuch zu Azure Active Directory | Microsoft Docs
-description: "Dieser Artikel enthält eine umfassende Übersicht über die für Entwickler wichtigen Ressourcen zu Azure Active Directory."
+title: "Azure Active Directory für Entwickler | Microsoft-Dokumentation"
+description: "Dieser Artikel enthält eine Übersicht über die Anmeldung an Geschäfts-, Schul- oder Unikonten von Microsoft mit Azure Active Directory."
 services: active-directory
-documentationcenter: dev-center-name
 author: bryanla
 manager: mbaldwin
 editor: 
@@ -12,129 +11,65 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/09/2016
-ms.author: mbaldwin
-translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 45ff2ff08cb36f9a4bf49ff04de149accf157e0e
-ms.lasthandoff: 03/31/2017
-
+ms.date: 04/07/2017
+ms.author: bryanla
+ms.custom: aaddev
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: 375fdf142f7ecf5881876858178f663f516a6a71
+ms.contentlocale: de-de
+ms.lasthandoff: 04/28/2017
 
 ---
-# <a name="azure-active-directory-developers-guide"></a>Entwicklerhandbuch zu Azure Active Directory
-## <a name="overview"></a>Übersicht
-Als Plattform vom Typ „Identity Management as a Service (IDMaaS)“ stellt Azure Active Directory (AD) für Entwickler eine effektive Möglichkeit zum Integrieren der Identitätsverwaltung in ihre Anwendungen dar. Die folgenden Artikel enthalten Übersichten über die Implementierung sowie wichtige Features von Azure AD. Wir empfehlen Ihnen, die Artikel in der angegebenen Reihenfolge zu lesen. Wenn Sie möchten, können Sie aber auch direkt mit [Erste Schritte](#getting-started) beginnen.
+# <a name="azure-active-directory-for-developers"></a>Azure Active Directory für Entwickler
+Azure Active Directory ist ein Cloudidentitätsdienst, mit dem Entwickler die sichere Anmeldung für alle Benutzer durchführen können, die über ein Geschäfts-, Schul- oder Unikonto von Microsoft verfügen.  Hier wird gezeigt, wie Sie Ihrer Anwendung die Azure AD-Unterstützung hinzufügen, indem Sie branchenübliche Authentifizierungsprotokolle, OAuth und OpenID Connect verwenden.
 
-1. [Vorteile der Integration in Azure AD:](active-directory-how-to-integrate.md)Erfahren Sie, warum die Integration in Azure AD die beste Lösung für eine sichere Anmeldung und Autorisierung ist.
-2. [Azure AD-Authentifizierungsszenarien:](active-directory-authentication-scenarios.md)Nutzen Sie die vereinfachte Authentifizierung von Azure AD, um eine Anmeldung für Ihre Anwendung bereitzustellen.
-3. [Integrieren von Anwendungen in Azure AD:](active-directory-integrating-applications.md)Erfahren Sie, wie Sie Anwendungen über Azure AD hinzufügen, aktualisieren und entfernen, und informieren Sie sich über die Brandingrichtlinien für integrierte Apps.
-4. [Microsoft Graph](https://graph.microsoft.io/) und [Azure AD Graph-API](active-directory-graph-api.md): Greifen Sie programmgesteuert über REST-API-Endpunkte auf Azure AD zu. **Es wird dringend empfohlen, auf Azure Active Directory-Ressourcen nicht mithilfe der Azure AD Graph-API, sondern mithilfe von Microsoft Graph zuzugreifen.** Unsere Entwicklungstätigkeiten konzentrieren sich nun auf Microsoft Graph, während für die Azure AD Graph-API keine weiteren Verbesserungen geplant sind. Die Szenarien, für die die Azure AD Graph-API möglicherweise weiterhin geeignet ist, ist nur sehr begrenzt. Weitere Informationen dazu finden Sie im Blogbeitrag [Microsoft Graph or the Azure AD Graph](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph) (Microsoft Graph oder Azure AD Graph) im Office Dev Center.
-5. [Azure AD-Authentifizierungsbibliotheken:](active-directory-authentication-libraries.md)Authentifizieren Sie Benutzer auf einfache Weise, indem Sie unter anderem Zugriffstoken über die Azure AD-Authentifizierungsbibliotheken für .NET, JavaScript, Objective-C, Android abrufen.
+| | |
+| --- | --- |
+|[Authentifizierungsgrundlagen](active-directory-authentication-scenarios.md) | Einführung in die Azure AD-Authentifizierung |
+|[Anwendungsarten](active-directory-authentication-scenarios.md#application-types-and-scenarios) | Übersicht über die von Azure AD unterstützten Authentifizierungsszenarien |                                
+                                                                              
+## <a name="get-started"></a>Erste Schritte
+In diesen Einrichtungsanleitungen wird Schritt für Schritt beschrieben, wie Sie unsere Authentifizierungsbibliotheken zum Anmelden von Azure Active Directory-Benutzern verwenden.
 
-## <a name="getting-started"></a>Erste Schritte
-Diese Tutorials sind auf verschiedene Plattformen ausgelegt und ermöglichen Ihnen einen schnellen Einstieg in die Entwicklung mit Azure Active Directory. Voraussetzung ist, dass Sie über einen [Azure Active Directory-Mandanten](active-directory-howto-tenant.md)verfügen.
+|  |  |  |  |
+| --- | --- | --- | --- |
+| <center>![Mobile Apps und Desktop-Apps](./media/active-directory-developers-guide/NativeApp_Icon.png)<br />Mobile Apps und Desktop-Apps</center> | [Übersicht](active-directory-authentication-scenarios.md#native-application-to-web-api)<br /><br />[iOS](active-directory-devquickstarts-ios.md)<br /><br />[Android](active-directory-devquickstarts-android.md) | [.NET](active-directory-devquickstarts-dotnet.md)<br /><br />[Windows](active-directory-devquickstarts-windowsstore.md)<br /><br />[Xamarin](active-directory-devquickstarts-xamarin.md) | [Cordova](active-directory-devquickstarts-cordova.md)<br /><br />[OAuth 2.0](active-directory-protocols-oauth-code.md) |
+| <center>![Web-Apps](./media/active-directory-developers-guide/Web_app.png)<br />Web-Apps</center> | [Übersicht](active-directory-authentication-scenarios.md#web-browser-to-web-application)<br /><br />[ASP.NET](active-directory-devquickstarts-webapp-dotnet.md)<br /><br />[Java](active-directory-devquickstarts-webapp-java.md) | [NodeJS](active-directory-devquickstarts-openidconnect-nodejs.md)<br /><br />[OpenID Connect 1.0](active-directory-protocols-openid-connect-code.md) |  |
+| <center>![Einzelseiten-Apps](./media/active-directory-developers-guide/SPA.png)<br />Einzelseiten-Apps</center> | [Übersicht](active-directory-authentication-scenarios.md#single-page-application-spa)<br /><br />[AngularJS](active-directory-devquickstarts-angular.md)<br /><br />[JavaScript]((https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi)) |  |  |
+| <center>![Web-APIs](./media/active-directory-developers-guide/Web_API.png)<br />Web-APIs</center> | [Übersicht](active-directory-authentication-scenarios.md#web-application-to-web-api)<br /><br />[ASP.NET](active-directory-devquickstarts-webapi-dotnet.md)<br /><br />[NodeJS](active-directory-devquickstarts-webapi-nodejs.md) | &nbsp; |
+| <center>![Dienst-zu-Dienst](./media/active-directory-developers-guide/Service_App.png)<br />Dienst-zu-Dienst</center> | [Übersicht](active-directory-authentication-scenarios.md#daemon-or-server-application-to-web-api)<br /><br />[.NET](active-directory-code-samples.md#server-or-daemon-application-to-web-api)<br /><br />[OAuth 2.0-Clientanmeldeinformationen](active-directory-protocols-oauth-service-to-service.md) |  |
 
-### <a name="mobile-and-pc-application-quick-start-guides"></a>Mobile Anwendung und PC-Anwendung – Schnellstartanleitungen
-| [![iOS](./media/active-directory-developers-guide/ios.png)](active-directory-devquickstarts-ios.md) | [![Android](./media/active-directory-developers-guide/android.png)](active-directory-devquickstarts-android.md) | [![.NET](./media/active-directory-developers-guide/net.png)](active-directory-devquickstarts-dotnet.md) | [![Windows Universal](./media/active-directory-developers-guide/windows.png)](active-directory-devquickstarts-windowsstore.md) | 
-|:---:|:---:|:---:|:---:|:---:|
-| [iOS](active-directory-devquickstarts-ios.md) |[Android](active-directory-devquickstarts-android.md) |[.NET](active-directory-devquickstarts-dotnet.md) |[Windows</br>Universal](active-directory-devquickstarts-windowsstore.md) |
+## <a name="guides"></a>Anleitungen
+Diese Artikel enthalten Informationen dazu, wie Sie mit Azure Active Directory häufig anfallende Aufgaben erledigen.
 
-|[![Xamarin](./media/active-directory-developers-guide/xamarin.png)](active-directory-devquickstarts-xamarin.md) | [![Cordova](./media/active-directory-developers-guide/cordova.png)](active-directory-devquickstarts-cordova.md) | [![OAuth 2.0](./media/active-directory-developers-guide/oauth-2.png)](active-directory-protocols-oauth-code.md) |
-|:---:|:---:|:---:|
-|[Xamarin](active-directory-devquickstarts-xamarin.md) |[Cordova](active-directory-devquickstarts-cordova.md) |[Direktes Integrieren</br>mit OAuth 2.0](active-directory-protocols-oauth-code.md) |
-
-### <a name="web-application-quick-start-guides"></a>Webanwendung – Schnellstartanleitungen
-| [![.NET](./media/active-directory-developers-guide/net.png)](active-directory-devquickstarts-webapp-dotnet.md) | [![Java](./media/active-directory-developers-guide/java.png)](active-directory-devquickstarts-webapp-java.md) | [![AngularJS](./media/active-directory-developers-guide/angularjs.png)](active-directory-devquickstarts-angular.md) |
-|:---:|:---:|:---:|
-| [.NET](active-directory-devquickstarts-webapp-dotnet.md) |[Java](active-directory-devquickstarts-webapp-java.md) |[AngularJS](active-directory-devquickstarts-angular.md) |[JavaScript](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) |[Node.js](active-directory-devquickstarts-openidconnect-nodejs.md) |[Direktes Integrieren</br>mit OpenID Connect](active-directory-protocols-openid-connect-code.md) |
-
-| [![JavaScript](./media/active-directory-developers-guide/javascript.png)](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) | [![Node.js](./media/active-directory-developers-guide/nodejs.png)](active-directory-devquickstarts-openidconnect-nodejs.md) | [![OpenID Connect](./media/active-directory-developers-guide/openid-connect.png)](active-directory-protocols-openid-connect-code.md) |
-|:---:|:---:|:---:|
-|[JavaScript](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) |[Node.js](active-directory-devquickstarts-openidconnect-nodejs.md) |[Direktes Integrieren</br>mit OpenID Connect](active-directory-protocols-openid-connect-code.md) |
-
-### <a name="web-api-quick-start-guides"></a>Web-API – Schnellstartanleitungen
-| [![.NET](./media/active-directory-developers-guide/net.png)](active-directory-devquickstarts-webapi-dotnet.md) | [![Node.js](./media/active-directory-developers-guide/nodejs.png)](active-directory-devquickstarts-webapi-nodejs.md) |
-|:---:|:---:|
-| [.NET](active-directory-devquickstarts-webapi-dotnet.md) |[Node.js](active-directory-devquickstarts-webapi-nodejs.md) |
-
-### <a name="microsoft-graph-and-azure-ad-graph-api-quick-start-guides"></a>Schnellstartanleitungen für Microsoft Graph und die Azure AD Graph-API
-| [![Microsoft Graph](./media/active-directory-developers-guide/msgraph.png)](https://developer.microsoft.com/graph/quick-start) | [![Azure AD Graph-API](./media/active-directory-developers-guide/graph.png)](active-directory-graph-api-quickstart.md) |
-|:---:|:---:|
-| [Microsoft Graph](https://developer.microsoft.com/graph/quick-start) | [Azure AD Graph-API](active-directory-graph-api-quickstart.md) |
-
-## <a name="how-tos"></a>Vorgehensweisen
-In diesen Artikeln wird beschrieben, wie Sie mit Azure Active Directory bestimmte Aufgaben ausführen:
-
-* [Erhalten eines Azure AD-Mandanten](active-directory-howto-tenant.md)
-* [How to sign in any Azure Active Directory (AD) user using the multi-tenant application pattern](active-directory-devhowto-multi-tenant-overview.md)
-* [Use a certificate instead of a secret to authenticate an application identity](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/) (Verwenden eines Zertifikats anstelle eines Geheimnisses zum Authentifizieren einer Anwendungsidentität)
-* Aktivieren von App-übergreifendem SSO per ADAL auf [Android](active-directory-sso-android.md)- und [iOS](active-directory-sso-ios.md)-Geräten
-* [How to get AppSource Certified for Azure Active Directory (AD)](active-directory-devhowto-appsource-certified.md)
-* [Auflisten Ihrer Anwendung im Azure AD-Anwendungskatalog](active-directory-app-gallery-listing.md)
-* [Übertragen von Web-Apps für Office 365 an das Verkäuferdashboard (in englischer Sprache)](https://msdn.microsoft.com/office/office365/howto/submit-web-apps-seller-dashboard)
-* [Registrieren einer Anwendung mit Azure Active Directory über das Azure-Portal](../active-directory-app-registration.md)
-* [Grundlegendes zum Azure Active Directory-Anwendungsmanifest](active-directory-application-manifest.md)
-* [Grundlegendes zu den Brandingrichtlinien für die Schaltflächen für Anmeldung und App-Erwerb in Ihrer Clientanwendung](active-directory-branding-guidelines.md)
-* [Vorschau: Erstellen von Apps, bei denen sich Benutzer sowohl mit persönlichen als auch mit Geschäfts-, Schul- oder Unikonto anmelden können](active-directory-appmodel-v2-overview.md)
-* [Vorschau: Erstellen von Apps, die Kunden registrieren und anmelden](../../active-directory-b2c/active-directory-b2c-overview.md)
-* [Preview: Configurable Token Lifetimes in Azure Active Directory](../active-directory-configurable-token-lifetimes.md) (Vorschau: Konfigurierbare Tokenlebensdauern in Azure Active Directory) mit PowerShell Details zur Konfiguration über die Azure AD Graph-API finden Sie unter [Operations on policy](https://msdn.microsoft.com/library/azure/ad/graph/api/policy-operations) (Richtlinienvorgänge) und [Policy entity](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#policy-entity) (Richtlinienentität).
+|                                                                           |  |
+|---------------------------------------------------------------------------| --- |
+|[App-Registrierung](active-directory-integrating-applications.md)           | Registrieren einer App in Azure AD |
+|[Mehrinstanzenfähige Apps](active-directory-devhowto-multi-tenant-overview.md)    | Anmelden bei einem Microsoft-Geschäftskonto |
+|[OAuth und OpenID Connect](active-directory-protocols-openid-connect-code.md)| Anmelden von Benutzern und Aufrufen von Web-APIs über unsere modernen Authentifizierungsprotokolle |
+|[Weitere Anleitungen...](active-directory-developers-guide-index.md#guides)        |     |
 
 ## <a name="reference"></a>Referenz
-Diese Artikel enthalten grundlegende Referenzen zu REST- und Authentifizierungsbibliothek-APIs, Protokollen, Fehlern, Codebeispielen und Endpunkten.  
+Diese Artikel enthalten ausführliche Informationen zu APIs, Protokollmeldungen und Ausdrücken, die in Azure Active Directory verwendet werden.
 
-### <a name="support"></a>Support
-* [Mit Tags markierte Fragen](http://stackoverflow.com/questions/tagged/azure-active-directory): Sie finden Azure Active Directory-Lösungen bei Stack Overflow, indem Sie nach den Tags [azure-active-directory](http://stackoverflow.com/questions/tagged/azure-active-directory) und [adal](http://stackoverflow.com/questions/tagged/adal) suchen.
-* Das [Azure Active Directory-Glossar für Entwickler](active-directory-dev-glossary.md) enthält Definitionen für einige Begriffe, die häufig in Verbindung mit der Anwendungsentwicklung und -integration verwendet werden.
+|                                                                                   | |
+| ----------------------------------------------------------------------------------| --- |
+| [Authentifizierungsbibliotheken (ADAL)](active-directory-authentication-libraries.md)   | Übersicht über die von Azure AD bereitgestellten Bibliotheken und SDKs |
+| [Codebeispiele](active-directory-code-samples.md)                                  | Liste mit allen Azure AD-Codebeispielen |
+| [Glossar](active-directory-dev-glossary.md)                                      | Begriffe und Definitionen von Wörtern, die in dieser Dokumentation verwendet werden |
+| [Weiteres Referenzmaterial...](active-directory-developers-guide-index.md#reference)|     |
 
-### <a name="code"></a>Code
-* [Open-Source-Bibliotheken für Azure Active Directory](http://github.com/AzureAD): Am einfachsten finden Sie die Quelle einer Bibliothek in unserer [Bibliotheksliste](active-directory-authentication-libraries.md).
-* [Azure Active Directory-Beispiele](https://github.com/azure-samples?query=active-directory): Die einfachste Möglichkeit zum Navigieren in der Liste mit den Beispielen bietet der [Index für die Codebeispiele](active-directory-code-samples.md).
-* [Active Directory-Authentifizierungsbibliothek (ADAL) für .NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet): Die Referenzdokumentation ist für die [aktuelle Hauptversion](https://docs.microsoft.com/active-directory/adal/microsoft.identitymodel.clients.activedirectory) und die [vorherige Hauptversion](https://docs.microsoft.com/active-directory/adal/v2/microsoft.identitymodel.clients.activedirectory) verfügbar.
+## <a name="help--support"></a>Hilfe und Support
+Hier sind die besten Hilferessourcen für die Entwicklung mit Azure Active Directory angegeben.
 
-### <a name="microsoft-graph-and-azure-ad-graph-api"></a>Microsoft Graph und Azure AD Graph-API
-> [!IMPORTANT]
-> Es wird dringend empfohlen, dass Sie [Microsoft Graph](https://graph.microsoft.io/) anstelle der Azure AD Graph-API für den Zugriff auf Azure Active Directory-Ressourcen verwenden. Unsere Entwicklungstätigkeiten konzentrieren sich nun auf Microsoft Graph, während für die Azure AD Graph-API keine weiteren Verbesserungen geplant sind. Die Szenarien, für die die Azure AD Graph-API möglicherweise weiterhin geeignet ist, ist nur sehr begrenzt. Weitere Informationen dazu finden Sie im Blogbeitrag [Microsoft Graph or the Azure AD Graph](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph) (Microsoft Graph oder Azure AD Graph) im Office Dev Center.
-> 
+|  |  
+|---|
+|[Tags `azure-active-directory` und `adal` von Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory+or+adal)      |
+|[Feedback zu Azure Active Directory](https://feedback.azure.com/forums/169401-azure-active-directory/category/164757-developer-experiences)|
 
-* [Microsoft Graph:](https://graph.microsoft.io/) Dokumentation, Referenz, Beispiele und SDKs für Microsoft Graph. 
-* [Azure AD Graph-API-Referenz:](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) REST-Referenz für die Azure Active Directory Graph-API. 
-* [Azure AD Graph-API-Berechtigungsbereiche:](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes) OAuth 2.0-Berechtigungsbereiche, mit denen gesteuert wird, welchen Zugriff eine App auf die Verzeichnisdaten für einen Mandanten hat.
+<br />
 
-### <a name="authentication-and-authorization-protocols"></a>Protokolle für Authentifizierung und Autorisierung
-* [Rollover von Signaturschlüsseln in Azure AD](active-directory-signing-key-rollover.md): Erfahren Sie mehr über die Rolloverkadenz von Signaturschlüsseln von Azure AD und über die Aktualisierung des Schlüssels für die häufigsten Anwendungsszenarien.
-* [OAuth 2.0-Protokoll: Verwenden der Autorisierungscodegewährung](active-directory-protocols-oauth-code.md): Sie können die Autorisierungscodegewährung des OAuth 2.0-Protokolls verwenden, um den Zugriff auf Webanwendungen und Web-APIs in Ihrem Azure Active Directory-Mandanten zu autorisieren.
-* [OAuth 2.0-Protokoll: Grundlagen der impliziten Gewährung](active-directory-dev-understanding-oauth2-implicit-grant.md): Hier erhalten Sie weitere Informationen zur impliziten Autorisierungsgewährung und zur Eignung für Ihre Anwendung.
-* [OAuth 2.0-Protokoll: Verwenden von Clientanmeldeinformationen für Dienst-zu-Dienst-Aufrufe](active-directory-protocols-oauth-service-to-service.md): Bei der Erteilung von OAuth 2.0-Clientanmeldeinformationen kann sich ein Webdienst (ein vertraulicher Client), der einen anderen Webdienst aufruft, mit seinen eigenen Anmeldeinformationen authentifizieren, anstatt die Identität eines anderen Benutzers anzunehmen. In diesem Szenario ist der Client normalerweise ein Webdienst der mittleren Ebene, ein Daemondienst oder eine Website.
-* [OpenID Connect 1.0-Protokoll: Anmeldung und Authentifizierung](active-directory-protocols-openid-connect-code.md): Durch das OpenID Connect 1.0-Protokoll kann OAuth 2.0 auch als Authentifizierungsprotokoll verwendet werden. Eine Clientanwendung kann ein ID-Token (id_token) erhalten, um den Anmeldeprozess zu verwalten, oder der Autorisierungscodefluss kann erweitert werden, um sowohl ein ID-Token als auch einen Autorisierungscode zu erhalten.
-* [SAML 2.0-Protokoll – Referenz](active-directory-saml-protocol-reference.md): Mit dem SAML 2.0-Protokoll können Anwendungen für Benutzer das einmalige Anmelden bereitstellen.
-* [WS-Federation 1.2-Protokoll](http://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html): Azure Active Directory unterstützt WS-Federation 1.2 gemäß der Spezifikation für Web Services Federation (Version 1.2). Weitere Informationen zum Verbundmetadaten-Dokument finden Sie unter [Verbundmetadaten](active-directory-federation-metadata.md).
-* [Unterstützte Token und Anspruchstypen](active-directory-token-and-claims.md): Verwenden Sie dieses Handbuch, um die Ansprüche in SAML 2.0- und JSON-Webtoken (JWT) zu verstehen und auszuwerten.
-
-## <a name="videos"></a>Videos
-### <a name="build"></a>Entwickeln
-In diesen Übersichtspräsentationen zur Entwicklung von Apps mithilfe von Azure Active Directory kommen Mitglieder des Entwicklungsteams zu Wort. In den Präsentationen werden grundlegende Themen wie IDMaaS, Authentifizierung, Identitätsverbund und einmaliges Anmelden behandelt.
-
-* [Microsoft Identity: State of the Union and Future Direction (Microsoft Identity: Aktueller Zustand und zukünftige Entwicklung)](https://azure.microsoft.com/documentation/videos/build-2016-microsoft-identity-state-of-the-union-and-future-direction/)
-* [Azure Active Directory: Identitätsverwaltung als Dienst für moderne Anwendungen](https://azure.microsoft.com/documentation/videos/build-2015-azure-active-directory-identity-management-as-a-service-for-modern-applications/)
-* [Entwickeln von modernen Webanwendungen mit Azure Active Directory](https://azure.microsoft.com/documentation/videos/build-2015-develop-modern-web-applications-with-azure-active-directory/)
-* [Entwickeln von modernen systemeigenen Anwendungen mit Azure Active Directory](https://azure.microsoft.com/documentation/videos/build-2015-develop-modern-native-applications-with-azure-active-directory/)
-
-### <a name="azure-friday"></a>Azure Friday
-[Azure Friday](https://azure.microsoft.com/documentation/videos/azure-friday/) ist eine Videoreihe, bei der jeden Freitag neue kurze Videos mit kurzen Experteninterviews zu unterschiedlichen Azure-Themen veröffentlicht werden. Die Videos dauern jeweils etwa 10 bis 15 Minuten.  Verwenden Sie die Dienstfilterfunktion auf der Seite, um alle Azure Active Directory-Videos anzuzeigen.
-
-* [Azure-Identität 101](https://azure.microsoft.com/documentation/videos/azure-identity-basics/)
-* [Azure-Identität 102](https://azure.microsoft.com/documentation/videos/azure-identity-creating-active-directory/)
-* [Azure-Identität 103](https://azure.microsoft.com/documentation/videos/azure-identity-application-to-authenticate/)
-
-## <a name="social"></a>Soziale Netzwerke
-* [Active Directory-Teamblog](http://blogs.technet.com/b/ad/): Hier können Sie sich über die neuesten Entwicklungen der Azure Active Directory-Welt informieren.
-* [Azure Active Directory Graph-Teamblog](https://blogs.msdn.microsoft.com/aadgraphteam): Hier werden Azure Active Directory-Informationen speziell zur Graph-API bereitgestellt.
-* [Cloudidentität](http://www.cloudidentity.net): Hier finden Sie Informationen zu IMaaS (Identity Management as a Service) von einem erfahrenen Azure Active Directory-PM.  
-* [Azure Active Directory auf Twitter](https://twitter.com/azuread): Azure Active Directory-Ankündigungen in höchstens 140 Zeichen.
-
-## <a name="windows-server-on-premises-development"></a>Windows Server – lokale Entwicklung
-Hilfestellung bei der Entwicklung mit Windows Server und Active Directory Federation Services (ADFS) finden Sie unter:
-
-* [AD FS Scenarios for Developers](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/overview/ad-fs-scenarios-for-developers) (AD FS-Szenarios für Entwickler): bietet eine Übersicht über AD FS-Komponenten und deren Funktionsweise sowie Einzelheiten zu den unterstützten Authentifizierungs- und Autorisierungsszenarios.
-* [AD FS walkthroughs](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/ad-fs-development) (Exemplarische Vorgehensweisen für AD FS): enthält eine Liste von Artikeln mit exemplarischen Vorgehensweisen, die ausführliche Anleitungen zum Implementieren der zugehörigen Authentifizierungs- und Autorisierungsabläufe bereitstellen.
+> [!NOTE]
+> Wenn Sie die Anmeldung für persönliche Microsoft-Konten durchführen möchten, kann es ratsam sein, den [Azure AD v2.0-Endpunkt](active-directory-appmodel-v2-overview.md) zu verwenden.  Der Azure AD v2.0-Endpunkt wird für die Zusammenführung von persönlichen Microsoft-Konten und Microsoft-Geschäftskonten (aus Azure AD) in einem gemeinsamen Authentifizierungssystem genutzt.
 

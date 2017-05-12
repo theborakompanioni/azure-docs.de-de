@@ -13,12 +13,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/16/2017
+ms.date: 04/26/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 875b4e3cab6eb4b45ed2d4b6160c60f320703dd8
-ms.openlocfilehash: 1c8ebf2e1dd9400ad153f5b42e7b72f36d28feac
-ms.lasthandoff: 02/23/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 5adffb0d461503b57ff9152671c44716dd044b1e
+ms.contentlocale: de-de
+ms.lasthandoff: 05/03/2017
 
 ---
 # <a name="how-to-get-azure-multi-factor-authentication"></a>Beziehen von Azure Multi-Factor Authentication
@@ -37,7 +38,7 @@ Die folgende Tabelle beschreibt die Unterschiede zwischen den drei Versionen der
 | Version | Beschreibung |
 | --- | --- |
 | Multi-Factor Authentication für Office 365 |Diese Version arbeitet ausschließlich mit Office 365-Anwendungen und wird über das Office 365-Portal verwaltet. Administratoren können [ihre Office 365-Ressourcen mit der Überprüfung in zwei Schritten sichern](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6). Diese Version ist Teil eines Office 365-Abonnements. |
-| Multi-Factor Authentication für Azure-Administratoren | Azure-Administratoren können die Überprüfung in zwei Schritten für ihre Administratorkonten ohne zusätzliche Kosten aktivieren.|
+| Multi-Factor Authentication für Azure-Administratoren | Globale Administratoren von Azure-Mandanten können die Überprüfung in zwei Schritten für ihre globalen Administratorkonten ohne zusätzliche Kosten aktivieren.|
 | Azure Multi-Factor Authentication | Azure Multi-Factor Authentication wird häufig auch als „Vollversion“ bezeichnet und bietet von allen Versionen den größten Funktionsumfang. Über das [klassische Azure-Portal](https://manage.windowsazure.com) sind zusätzliche Konfigurationsoptionen verfügbar. Außerdem stehen erweiterte Funktionen für die Berichterstellung zur Verfügung, und es werden verschiedene lokale Anwendungen und Cloudanwendungen unterstützt. Azure Multi-Factor Authentication ist im Lieferumfang von Azure Active Directory Premium (P1 und P2) und Enterprise Mobility + Security (E3 und E5) enthalten und kann [in der Cloud oder lokal](multi-factor-authentication-get-started.md) bereitgestellt werden. |
 
 ## <a name="feature-comparison-of-versions"></a>Funktionsvergleich der Versionen
@@ -49,7 +50,7 @@ In der folgenden Tabelle werden die Features aufgeführt, die in den verschieden
 
 | Funktion | Multi-Factor Authentication für Office 365 | Multi-Factor Authentication für Azure-Administratoren | Azure Multi-Factor Authentication |
 | --- |:---:|:---:|:---:|
-| Schutz von Administratorkonten mit MFA |● |● (nur für Azure-Administratorkonten verfügbar) |● |
+| Schutz von Administratorkonten mit MFA |● |● (Gilt nur für globale Administratorkonten) |● |
 | Mobile App als zweiter Faktor |● |● |● |
 | Telefonanruf als zweiter Faktor |● |● |● |
 | SMS als zweiter Faktor |● |● |● |
@@ -83,7 +84,7 @@ Erstellen Sie bei dieser Option nur dann einen Azure Multi-Factor Authentication
 
 ### <a name="option-3---mfa-consumption-based-model"></a>Option 3 – Verbrauchsbasiertes MFA-Modell
 
-Erstellen Sie einen Azure Multi-Factor Authentication-Anbieter in einem Azure-Abonnement. Azure MFA-Anbieter sind Azure-Ressourcen, die wie alle anderen Azure-Ressourcen über Ihr Enterprise Agreement, Ihre Azure-Zahlungsverpflichtung oder Ihre Kreditkarte abgerechnet werden. Diese Anbieter können nur in vollständigen Azure-Abonnements erstellt werden und nicht in beschränkten Azure-Abonnements, für die ein Ausgabenlimit von&0; US-Dollar gilt. Beschränkte Abonnements werden beim Aktivieren von Lizenzen erstellt, wie etwa in den Optionen 1 und 2. 
+Erstellen Sie einen Azure Multi-Factor Authentication-Anbieter in einem Azure-Abonnement. Azure MFA-Anbieter sind Azure-Ressourcen, die wie alle anderen Azure-Ressourcen über Ihr Enterprise Agreement, Ihre Azure-Zahlungsverpflichtung oder Ihre Kreditkarte abgerechnet werden. Diese Anbieter können nur in vollständigen Azure-Abonnements erstellt werden und nicht in beschränkten Azure-Abonnements, für die ein Ausgabenlimit von 0 US-Dollar gilt. Beschränkte Abonnements werden beim Aktivieren von Lizenzen erstellt, wie etwa in den Optionen 1 und 2. 
 
 Bei Verwendung eines Azure Multi-Factor Authentication-Anbieters stehen zwei Nutzungsmodelle zur Verfügung, die über Ihr Azure-Abonnement abgerechnet werden:  
 
