@@ -1,300 +1,298 @@
-- name: "Web-Apps-Dokumentation"
-  href: index.md
-- name: "Übersicht"
+- name: Web-Apps-Dokumentation
+  href: index.yml
+- name: Übersicht
   items:
-  - name: "Informationen zu Web-Apps"
+  - name: Informationen zu Web-Apps
     href: app-service-web-overview.md
-  - name: "Vergleich von Hostingoptionen"
+  - name: Vergleich von Hostingoptionen
     href: choose-web-site-cloud-service-vm.md
-- name: "Schnellstarts"
+- name: Schnellstarts
   expanded: true
   items:
-  - name: "Erstellen einer .NET-App"
+  - name: Erstellen einer .NET-App
     href: app-service-web-get-started-dotnet.md
-  - name: "Erstellen einer Node.js-App"
+  - name: Erstellen einer Node.js-App
     href: app-service-web-get-started-nodejs.md
-  - name: "Erstellen einer PHP-App"
+  - name: Erstellen einer PHP-App
     href: app-service-web-get-started-php.md
-  - name: "Erstellen einer Java-App"
+  - name: Erstellen einer Java-App
     href: app-service-web-get-started-java.md
-  - name: "Erstellen einer Python-App"
+  - name: Erstellen einer Python-App
     href: app-service-web-get-started-python.md
-  - name: "Erstellen einer statischen HTML-Website"
+  - name: Erstellen einer statischen HTML-Website
     href: app-service-web-get-started-html.md
-- name: "Lernprogramme"
+- name: Lernprogramme
   items:
-  - name: "1: .NET mit SQL-Datenbank"
+  - name: '1: .NET mit SQL-Datenbank'
     href: app-service-web-tutorial-dotnet-sqldatabase.md
-  - name: "1: Node.js mit MongoDB"
+  - name: '1: Node.js mit MongoDB'
     href: app-service-web-tutorial-nodejs-mongodb-app.md
-  - name: "1: PHP mit MySQL"
+  - name: '1: PHP mit MySQL'
     href: app-service-web-tutorial-php-mysql.md 
-  - name: "1: WordPress mit MySQL"
+  - name: '1: WordPress mit MySQL'
     href: app-service-web-create-web-app-from-marketplace.md
-#  - name: 1 - Java with MySQL
-#    href: app-service-web-tutorial-java-mysql.md
-  - name: "1: Python mit PostgreSQL"
+  - name: '1: Python mit PostgreSQL'
     href: app-service-web-tutorial-docker-python-postgresql-app.md
-  - name: "2: Zuordnen einer benutzerdefinierten Domäne"
+  - name: '2: Zuordnen einer benutzerdefinierten Domäne'
     href: app-service-web-tutorial-custom-domain.md
-  - name: "3: Binden eines SSL-Zertifikats"
+  - name: '3: Binden eines SSL-Zertifikats'
     href: app-service-web-tutorial-custom-ssl.md
-  - name: "4: Hinzufügen eines Content Delivery Network"
+  - name: '4: Hinzufügen eines Content Delivery Network'
     href: app-service-web-tutorial-content-delivery-network.md
 #  - name: 5 - Monitor your app
 #    href: app-service-web-tutorial-monitoring.md
-- name: "Beispiele"
+- name: Beispiele
   items:
-  - name: "Azure-Befehlszeilenschnittstelle"
+  - name: Azure-Befehlszeilenschnittstelle
     href: app-service-cli-samples.md
-  - name: "PowerShell"
+  - name: PowerShell
     href: app-service-powershell-samples.md
-- name: "Konzepte"
+- name: Konzepte
   items:
-  - name: "So funktioniert App Service"
+  - name: So funktioniert App Service
     href: ../app-service/app-service-how-works-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-  - name: "App Service-Pläne"
+  - name: App Service-Pläne
     href: ../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-  - name: "App Service-Umgebungen"
+  - name: App Service-Umgebungen
     href: app-service-app-service-environment-intro.md
-  - name: "Authentifizierung und Autorisierung"
+  - name: Authentifizierung und Autorisierung
     href: ../app-service/app-service-authentication-overview.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-  - name: "Authentifizierung über lokales AD"
+  - name: Authentifizierung über lokales AD
     href: web-sites-authentication-authorization.md
-- name: "Anleitungen"
+- name: Anleitungen
   items:
-  - name: "Entwickeln Ihrer App"
+  - name: Entwickeln Ihrer App
     items:
-    - name: "ASP.NET"
+    - name: ASP.NET
       items:
-      - name: "ASP.NET-App mit SQL-Datenbank"
+      - name: ASP.NET-App mit SQL-Datenbank
         href: web-sites-dotnet-get-started.md
-      - name: "Entwickeln einer ASP.NET Core-App mit VS Code"
+      - name: Entwickeln einer ASP.NET Core-App mit VS Code
         href: web-sites-create-web-app-using-vscode.md
-    - name: "PHP"
+    - name: PHP
       items:
-      - name: "Laravel-App mit MySQL"
+      - name: Laravel-App mit MySQL
         href: app-service-web-php-get-started.md
-      - name: "Einrichten des PHP-Projekts"
+      - name: Einrichten des PHP-Projekts
         href: web-sites-php-configure.md
-      - name: "Einrichten einer WordPress-Multisite"
+      - name: Einrichten einer WordPress-Multisite
         href: web-sites-php-convert-wordpress-multisite.md
-    - name: "Node.js"
+    - name: Node.js
       items:
-      - name: "Sails.js-App mit NoSQL-Datenbank"
+      - name: Sails.js-App mit NoSQL-Datenbank
         href: app-service-web-nodejs-sails.md
-      - name: "Verwenden von io.js"
+      - name: Verwenden von io.js
         href: web-sites-nodejs-iojs.md
-      - name: "Debuggen einer Node.js-App"
+      - name: Debuggen einer Node.js-App
         href: web-sites-nodejs-debug.md
-    - name: "Java"
+    - name: Java
       items:
-      - name: "Java-App mit Eclipse"
+      - name: Java-App mit Eclipse
         href: app-service-web-eclipse-create-hello-world-web-app.md
-      - name: "Java-App mit IntelliJ"
+      - name: Java-App mit IntelliJ
         href: app-service-web-intellij-create-hello-world-web-app.md
-      - name: "Verwenden des Azure SDK für Java"
+      - name: Verwenden des Azure SDK für Java
         href: java-create-azure-website-using-java-sdk.md
-      - name: "Hochladen einer vorhandenen App"
+      - name: Hochladen einer vorhandenen App
         href: web-sites-java-add-app.md
-      - name: "Remotedebuggen von Eclipse"
+      - name: Remotedebuggen von Eclipse
         href: app-service-web-debug-java-web-app-in-eclipse.md
-      - name: "Remotedebuggen von IntelliJ"
+      - name: Remotedebuggen von IntelliJ
         href: app-service-web-debug-java-web-app-in-intellij.md
-    - name: "Python"
+    - name: Python
       items:
-      - name: "Django-App mit MySQL"
+      - name: Django-App mit MySQL
         href: web-sites-python-ptvs-django-mysql.md
-    - name: "Senden von E-Mails mit SendGrid"
+    - name: Senden von E-Mails mit SendGrid
       href: sendgrid-dotnet-how-to-send-email.md
-    - name: "Konfigurieren der Runtime"
+    - name: Konfigurieren der Runtime
       items:
-      - name: "PHP unter Windows"
+      - name: PHP unter Windows
         href: web-sites-php-configure.md
-      - name: "Java"
+      - name: Java
         href: web-sites-java-add-app.md
-      - name: "Python"
+      - name: Python
         href: web-sites-python-configure.md
-    - name: "Konfigurieren der Anwendung"
+    - name: Konfigurieren der Anwendung
       items:
-      - name: "Verwenden der App-Einstellungen"
+      - name: Verwenden der App-Einstellungen
         href: web-sites-configure.md
-    - name: "Web-App unter Linux"
+    - name: Web-App unter Linux
       items:
-      - name: "Übersicht"
+      - name: Übersicht
         href: app-service-linux-intro.md
-      - name: "Erstellen einer Web-App unter Linux"
+      - name: Erstellen einer Web-App unter Linux
         href: app-service-linux-how-to-create-web-app.md
-      - name: "Ruby-Web-App unter Linux"
+      - name: Ruby-Web-App unter Linux
         href: app-service-linux-ruby-get-started.md
-      - name: "Node.js-Web-App unter Linux"
+      - name: Node.js-Web-App unter Linux
         href: app-service-linux-using-nodejs-pm2.md
-      - name: ".NET Core-Web-App unter Linux"
+      - name: .NET Core-Web-App unter Linux
         href: app-service-linux-using-dotnetcore.md
-      - name: "Benutzerdefinierte Docker-Web-App unter Linux"
+      - name: Benutzerdefinierte Docker-Web-App unter Linux
         href: app-service-linux-using-custom-docker-image.md
-      - name: "Herstellen einer Verbindung über SSH"
+      - name: Herstellen einer Verbindung über SSH
         href: app-service-linux-ssh-support.md
-      - name: "Kontinuierliche Bereitstellung"
+      - name: Kontinuierliche Bereitstellung
         href: app-service-linux-ci-cd.md
-      - name: "Web-App unter Linux – Häufig gestellte Fragen"
+      - name: Web-App unter Linux – Häufig gestellte Fragen
         href: app-service-linux-faq.md
-  - name: "Bereitstellen in Azure"
+  - name: Bereitstellen in Azure
     href: web-sites-deploy.md
     items:
-    - name: "Bereitstellen über FTP"
+    - name: Bereitstellen über FTP
       href: app-service-deploy-content-sync.md
-    - name: "Bereitstellen über Cloudsynchronisierung"
+    - name: Bereitstellen über Cloudsynchronisierung
       href: web-sites-deploy.md
-    - name: "Kontinuierliche Bereitstellung"
+    - name: Kontinuierliche Bereitstellung
       href: app-service-continuous-deployment.md
-    - name: "Bereitstellen in der Stagingumgebung"
+    - name: Bereitstellen in der Stagingumgebung
       href: web-sites-staged-publishing.md
-    - name: "Bereitstellen über lokales Git"
+    - name: Bereitstellen über lokales Git
       href: app-service-deploy-local-git.md
-    - name: "Bereitstellen mit Vorlage"
+    - name: Bereitstellen mit Vorlage
       href: app-service-deploy-complex-application-predictably.md
-    - name: "Flexible Bereitstellung"
+    - name: Flexible Bereitstellung
       href: app-service-agile-software-development.md
-    - name: "Beta-Tests"
+    - name: Beta-Tests
       href: app-service-web-test-in-production-controlled-test-flight.md
-    - name: "Anmeldeinformationen für die Bereitstellung zurücksetzen"
+    - name: Anmeldeinformationen für die Bereitstellung zurücksetzen
       href: app-service-deployment-credentials.md
-    - name: "Zuordnen einer benutzerdefinierte Domäne"
+    - name: Zuordnen einer benutzerdefinierte Domäne
       items:
-      - name: "Kaufen einer Domäne"
+      - name: Kaufen einer Domäne
         href: custom-dns-web-site-buydomains-web-app.md
-      - name: "Zuordnen von Drittanbieterdomänen"
+      - name: Zuordnen von Drittanbieterdomänen
         href: web-sites-custom-domain-name.md
-      - name: "Zuordnen von Domänen mithilfe von Traffic Manager"
+      - name: Zuordnen von Domänen mithilfe von Traffic Manager
         href: web-sites-traffic-manager-custom-domain-name.md
-      - name: "Zuordnen von GoDaddy-Domänen"
+      - name: Zuordnen von GoDaddy-Domänen
         href: web-sites-godaddy-custom-domain-name.md
-      - name: "Migrieren einer aktiven Domäne"
+      - name: Migrieren einer aktiven Domäne
         href: app-service-custom-domain-name-migrate.md
-    - name: "Migrieren aus IIS"
+    - name: Migrieren aus IIS
       href: web-sites-migration-from-iis-server.md
-    - name: "Testen in der Produktion"
+    - name: Testen in der Produktion
       href: app-service-web-test-in-production-get-start.md
-    - name: "Erweitern des Funktionsumfangs einer Web-App"
+    - name: Erweitern des Funktionsumfangs einer Web-App
       href: app-service-web-get-started-2.md
-  - name: "Herstellen einer Verbindung mit DB/Ressourcen"
+  - name: Herstellen einer Verbindung mit DB/Ressourcen
     items:
-    - name: "Herstellen einer Verbindung mit lokalen Daten"
+    - name: Herstellen einer Verbindung mit lokalen Daten
       href: web-sites-hybrid-connection-get-started.md
-    - name: "Herstellen einer Verbindung mit einem Azure-VNET"
+    - name: Herstellen einer Verbindung mit einem Azure-VNET
       href: web-sites-integrate-with-vnet.md
-    - name: "Herstellen einer Verbindung mit einem Azure-VNET mithilfe von PowerShell"
+    - name: Herstellen einer Verbindung mit einem Azure-VNET mithilfe von PowerShell
       href: app-service-vnet-integration-powershell.md
-    - name: "Herstellen einer Verbindung mit MongoDB auf einem virtuellen Azure-Computer"
+    - name: Herstellen einer Verbindung mit MongoDB auf einem virtuellen Azure-Computer
       href: web-sites-dotnet-store-data-mongodb-vm.md
-  - name: "Sichern der App"
+  - name: Sichern der App
     items:
-    - name: "Authentifizieren von Benutzern"
+    - name: Authentifizieren von Benutzern
       items:
-      - name: "Authentifizierung über Azure AD"
+      - name: Authentifizierung über Azure AD
         href: ../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-      - name: "Authentifizierung über Facebook"
+      - name: Authentifizierung über Facebook
         href: ../app-service-mobile/app-service-mobile-how-to-configure-facebook-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-      - name: "Authentifizierung über Google"
+      - name: Authentifizierung über Google
         href: ../app-service-mobile/app-service-mobile-how-to-configure-google-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-      - name: "Authentifizierung über Microsoft-Konto"
+      - name: Authentifizierung über Microsoft-Konto
         href: ../app-service-mobile/app-service-mobile-how-to-configure-microsoft-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-      - name: "Authentifizierung über Twitter"
+      - name: Authentifizierung über Twitter
         href: ../app-service-mobile/app-service-mobile-how-to-configure-twitter-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-      - name: "Authentifizierung über lokales AD"
+      - name: Authentifizierung über lokales AD
         href: web-sites-authentication-authorization.md
-      - name: "App mit einer Datenbank mit mehreren Mandanten"
+      - name: App mit einer Datenbank mit mehreren Mandanten
         href: web-sites-dotnet-entity-framework-row-level-security.md
-    - name: "Benutzerdefiniertes SSL zuweisen"
+    - name: Benutzerdefiniertes SSL zuweisen
       items:
-      - name: "Konfigurieren von SSL-Zertifikaten von Drittanbietern"
+      - name: Konfigurieren von SSL-Zertifikaten von Drittanbietern
         href: web-sites-configure-ssl-certificate.md
-    - name: "Erzwingen von HTTPS"
+    - name: Erzwingen von HTTPS
       href: web-sites-configure-ssl-certificate.md#enforce-https-on-your-app
-    - name: "Konfigurieren der gegenseitigen TLS-Authentifizierung"
+    - name: Konfigurieren der gegenseitigen TLS-Authentifizierung
       href: app-service-web-configure-tls-mutual-auth.md
-  - name: "Skalieren der App"
+  - name: Skalieren der App
     items:
-    - name: "Zentrales Hochskalieren"
+    - name: Zentrales Hochskalieren
       href: web-sites-scale.md
-    - name: "Horizontales Skalieren"
+    - name: Horizontales Skalieren
       href: ../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-    - name: "Lastenausgleich mit Traffic Manager"
+    - name: Lastenausgleich mit Traffic Manager
       href: web-sites-traffic-manager.md
-    - name: "Umfangreiche Skalierung in App Service-Umgebungen"
+    - name: Umfangreiche Skalierung in App Service-Umgebungen
       href: ../app-service/app-service-app-service-environments-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-    - name: "Verwenden von Azure CDN für globale Reichweite"
+    - name: Verwenden von Azure CDN für globale Reichweite
       href: cdn-websites-with-cdn.md
-    - name: "Herstellen einer Verbindung mit Redis Cache über Memcache"
+    - name: Herstellen einer Verbindung mit Redis Cache über Memcache
       href: web-sites-connect-to-redis-using-memcache-protocol.md
-    - name: "Erstellen eines Redis-Cache"
+    - name: Erstellen eines Redis-Cache
       href: ../redis-cache/cache-redis-cache-arm-provision.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-    - name: "Verwalten des Sitzungszustands mit Azure Redis Cache"
+    - name: Verwalten des Sitzungszustands mit Azure Redis Cache
       href: web-sites-dotnet-session-state-caching.md
-  - name: "Überwachen"
+  - name: Überwachen
     items:
-    - name: "Überwachen von Apps"
+    - name: Überwachen von Apps
       href: web-sites-monitor.md
-    - name: "Aktivieren von Protokollen"
+    - name: Aktivieren von Protokollen
       href: web-sites-enable-diagnostic-log.md
-    - name: "Streaming von Protokollen"
+    - name: Streaming von Protokollen
       href: web-sites-streaming-logs-and-console.md
-  - name: "Sichern von Inhalt"
+  - name: Sichern von Inhalt
     items:
-    - name: "Sichern der App"
+    - name: Sichern der App
       href: web-sites-backup.md
-    - name: "Wiederherstellen Ihrer App aus einer Sicherung"
+    - name: Wiederherstellen Ihrer App aus einer Sicherung
       href: web-sites-restore.md
-    - name: "Sichern mit REST-API"
+    - name: Sichern mit REST-API
       href: websites-csm-backup.md
-  - name: "Verwalten von Anwendungsressourcen"
+  - name: Verwalten von Anwendungsressourcen
     items:
-    - name: "Klonen der App mit PowerShell"
+    - name: Klonen der App mit PowerShell
       href: app-service-web-app-cloning.md
-    - name: "Klonen der App mit dem Portal"
+    - name: Klonen der App mit dem Portal
       href: app-service-web-app-cloning-portal.md
-    - name: "Verschieben von Ressourcen"
+    - name: Verschieben von Ressourcen
       href: app-service-move-resources.md
-    - name: "Verwenden von Azure Resource Manager mit PowerShell"
+    - name: Verwenden von Azure Resource Manager mit PowerShell
       href: app-service-web-app-azure-resource-manager-powershell.md
-    - name: "Verwalten von Apps mithilfe von Azure Automation"
+    - name: Verwalten von Apps mithilfe von Azure Automation
       href: automation-manage-web-app.md
-- name: "Referenz"
+- name: Referenz
   items:
-  - name: "CLI 2.0"
+  - name: CLI 2.0
     href: /cli/azure/appservice
-  - name: "PowerShell"
+  - name: PowerShell
     href: /powershell
-  - name: "REST-API"
+  - name: REST-API
     href: /rest/api/appservice/
-- name: "Ressourcen"
+- name: Ressourcen
   items:
-  - name: "Problembehandlung"
+  - name: Problembehandlung
     items:
-    - name: "Problembehandlung mit Visual Studio"
+    - name: Problembehandlung mit Visual Studio
       href: web-sites-dotnet-troubleshoot-visual-studio.md
-    - name: "Problembehandlung von Node.js-Apps"
+    - name: Problembehandlung von Node.js-Apps
       href: app-service-web-nodejs-best-practices-and-troubleshoot-guide.md
-    - name: "Problembehandlung bei HTTP 502 und 503"
+    - name: Problembehandlung bei HTTP 502 und 503
       href: app-service-web-troubleshoot-http-502-http-503.md
-    - name: "Behandeln von Leistungsproblemen"
+    - name: Behandeln von Leistungsproblemen
       href: app-service-web-troubleshoot-performance-degradation.md
-  - name: "Preise"
+  - name: Preise
     href: https://azure.microsoft.com/pricing/details/app-service/
-  - name: "Informationen zum Kontingent"
+  - name: Informationen zum Kontingent
     href: ../azure-subscription-service-limits.md#app-service-limits
-  - name: "Dienstupdates und Versionshinweise"
+  - name: Dienstupdates und Versionshinweise
     href: https://azure.microsoft.com/updates/?product=app-service
-  - name: "Bewährte Methoden"
+  - name: Bewährte Methoden
     href: app-service-best-practices.md
-  - name: "Beispiele"
+  - name: Beispiele
     href: https://azure.microsoft.com/resources/samples/?service=app-service
-  - name: "Videos"
+  - name: Videos
     href: https://azure.microsoft.com/resources/videos/index/?services=app-service
-  - name: "Cookbooks"
+  - name: Cookbooks
     items:
-    - name: "Referenzarchitekturen"
+    - name: Referenzarchitekturen
       href: ../guidance/guidance-ra-app-service.md
-    - name: "Bereitstellungsskripts"
+    - name: Bereitstellungsskripts
       href: https://azure.microsoft.com/documentation/scripts/
