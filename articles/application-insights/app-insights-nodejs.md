@@ -1,9 +1,9 @@
 ---
-title: "Überwachen Ihrer Node.js-App per Azure Application Insights | Microsoft-Dokumentation"
-description: "Analysieren Sie die Auslastung, Verfügbarkeit und Leistung Ihrer lokalen oder Microsoft Azure-Webanwendung mit Application Insights."
+title: "Überwachen von Node.js-Diensten per Azure Application Insights | Microsoft-Dokumentation"
+description: "Es wird beschrieben, wie Sie die Leistung überwachen und Probleme in Node.js-Diensten mit Application Insights diagnostizieren."
 services: application-insights
-documentationcenter: 
-author: alancameronwills
+documentationcenter: nodejs
+author: joshgav
 manager: carmonm
 ms.assetid: 2ec7f809-5e1a-41cf-9fcd-d0ed4bebd08c
 ms.service: application-insights
@@ -11,191 +11,197 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/14/2017
-ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 310ada88bb4d9b39eeaa10f303b9e1bd3b1f927f
-ms.lasthandoff: 04/13/2017
+ms.date: 05/01/2017
+ms.author: joshgav
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 76a8025cd2a67533beb321c88e924517c1977dfc
+ms.contentlocale: de-de
+ms.lasthandoff: 05/02/2017
 
 
 ---
-# <a name="add-application-insights-sdk-to-monitor-your-nodejs-app"></a>Hinzufügen des Application Insights SDK zur Überwachung der Node.js-App
 
+# <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Überwachen Ihrer Node.js-Dienste und -Apps mit Application Insights
 
-[Azure Application Insights](app-insights-overview.md) überwacht Ihre Live-Anwendung. So können Sie [Leistungsprobleme und -ausnahmen erkennen und diagnostizieren](app-insights-detect-triage-diagnose.md) und zudem [ermitteln, wie Ihre App verwendet wird](app-insights-web-track-usage.md). Dies funktioniert für Apps, die auf den eigenen lokalen IIS-Servern oder Azure-VMs gehostet werden, sowie für Azure-Web-Apps.
+Mit [Azure Application Insights](app-insights-overview.md) werden Ihre Back-End-Dienste und -Komponenten überwacht, nachdem Sie sie bereitgestellt haben, damit Sie [Leistungsprobleme und andere Probleme erkennen und schnell diagnostizieren können](app-insights-detect-triage-diagnose.md). Nutzen Sie die Anwendung für Node.js-Dienste, die an beliebigen Orten gehostet werden: in Ihrem Datencenter, auf Azure-VMs und in Azure-Web-Apps und sogar in anderen öffentlichen Clouds.
 
-Das SDK ermöglicht die automatische Erfassung der Raten eingehender HTTP-Anforderungen sowie von Antworten, Leistungsindikatoren (CPU, Speicher, RPS) und Ausnahmefehlern. Darüber hinaus können Sie benutzerdefinierte Aufrufe zum Nachverfolgen von Abhängigkeiten, Metriken und anderen Ereignisse hinzufügen.
+Wenn Sie Ihre Überwachungsdaten empfangen, speichern und untersuchen möchten, können Sie die folgende Anleitung befolgen, um einen Agent in Ihren Code einzufügen und in Azure eine entsprechende Application Insights-Ressource festzulegen. Der Agent sendet Daten zur weiteren Analyse und Untersuchung an diese Ressource.
+
+Der Node.js-Agent kann ein- und ausgehende HTTP-Anforderungen, mehrere Systemmetriken sowie Ausnahmen automatisch überwachen. Ab v0.20 können auch einige gängige Drittanbieterpakete überwacht werden, z.B. `mongodb`, `mysql` und `redis`. Alle Ereignisse, die sich auf eine eingehende HTTP-Anforderung beziehen, werden zur Beschleunigung der Problembehandlung korreliert.
+
+Sie können weitere Aspekte Ihrer App und Ihres Systems überwachen, indem Sie diese mit der weiter unten beschriebenen Agent-API instrumentieren.
 
 ![Beispiel für Leistungsüberwachungsdiagramm](./media/app-insights-nodejs/10-perf.png)
 
-#### <a name="before-you-start"></a>Vorbereitung
-Erforderlich:
+## <a name="getting-started"></a>Erste Schritte
 
-* Ein Abonnement für [Microsoft Azure](http://azure.com). Wenn Ihr Team oder Ihre Organisation über ein Azure-Abonnement verfügt, kann der Besitzer Sie mit Ihrem [Microsoft-Konto](http://live.com)hinzufügen.
+Hier wird das Einrichten der Überwachung für eine App oder einen Dienst Schritt für Schritt beschrieben.
 
-## <a name="add"></a>Erstellen einer Application Insights-Ressource
-Melden Sie sich beim [Azure-Portal][portal] an, und erstellen Sie eine neue Application Insights-Ressource. Eine [Ressource][roles] ist in Azure eine Instanz eines Diensts. In dieser Ressource werden Telemetriedaten aus Ihrer App analysiert und Ihnen angezeigt.
+### <a name="resource"></a> Einrichten einer App Insights-Ressource
 
-![Klicken Sie auf "Neu > Application Insights"](./media/app-insights-nodejs/01-new-asp.png)
+Stellen Sie **zuerst** sicher, dass Sie über ein Azure-Abonnement verfügen, oder [beschaffen Sie sich kostenlos ein neues Abonnement][azure-free-offer]. Falls Ihre Organisation bereits über ein Azure-Abonnement verfügt, kann Ihr Administrator Sie anhand [dieser Anleitung][add-aad-user] hinzufügen.
 
-Wählen Sie „Allgemein“ als Anwendungstyp aus. Durch Auswahl des Anwendungstyps werden der Standardinhalt der Ressourcenblätter und die im [Metrik-Explorer][metrics] sichtbaren Eigenschaften festgelegt.
+[azure-free-offer]: https://azure.microsoft.com/en-us/free/
+[add-aad-user]: https://docs.microsoft.com/en-us/azure/active-directory/active-directory-users-create-azure-portal
 
-#### <a name="copy-the-instrumentation-key"></a>Kopieren des Instrumentationsschlüssels
-Der Schlüssel identifiziert die Ressource, den Sie bald im SDK installieren können, um die Daten an die Ressource zu leiten.
+Melden Sie sich nun am [Azure-Portal][portal] an, und erstellen Sie wie unten dargestellt eine Application Insights-Ressource: Klicken Sie auf „Neu“ > „Entwicklertools“ > „Application Insights“. Die Ressource enthält u.a. einen Endpunkt zum Empfangen von Telemetriedaten, Speicherplatz für diese Daten, gespeicherte Berichte und Dashboards, eine Regel- und Warnungskonfiguration.
 
-![Klicken Sie auf "Eigenschaften", wählen Sie den Schlüssel aus, und drücken Sie STRG+C](./media/app-insights-nodejs/02-props-asp.png)
+![Erstellen einer App Insights-Ressource](./media/app-insights-nodejs/03-new_appinsights_resource.png)
 
-## <a name="sdk"></a> Installieren des SDK in Ihrer Anwendung
-```
+Wählen Sie auf der Seite für die Ressourcenerstellung in der Dropdownliste für den Anwendungstyp die Option „Node.js-Anwendung“. Der App-Typ bestimmt, welche Dashboards und Berichte standardmäßig für Sie erstellt werden. Es gibt aber keinen Grund zur Sorge. Mit jeder App Insights-Ressource können Daten aller Sprachen und Plattformen gesammelt werden.
+
+![Formular für neue App Insights-Ressource](./media/app-insights-nodejs/04-create_appinsights_resource.png)
+
+### <a name="agent"></a> Einrichten des Node.js-Agents
+
+Als Nächstes binden Sie den Agent in Ihre App ein, damit er zum Sammeln von Daten genutzt werden kann.
+Beginnen Sie, indem Sie den Instrumentierungsschlüssel Ihrer Ressource (im Folgenden als `ikey` bezeichnet) wie unten gezeigt aus dem Portal kopieren. Im App Insights-System wird dieser Schlüssel zum Zuordnen von Daten zu Ihrer Azure-Ressource verwendet. Sie müssen ihn also in einer Umgebungsvariablen oder im Code angeben, damit er vom Agent genutzt werden kann.  
+
+![Kopieren des Instrumentierungsschlüssels](./media/app-insights-nodejs/05-appinsights_ikey_portal.png)
+
+Fügen Sie als Nächstes die Node.js-Agent-Bibliothek per „package.json“ den Abhängigkeiten Ihrer App hinzu. Führen Sie im Stammordner Ihrer App Folgendes aus:
+
+```bash
 npm install applicationinsights --save
 ```
 
-## <a name="usage"></a>Verwendung
-Dadurch werden die Anforderungsüberwachung, die Nachverfolgung von Ausnahmefehlern und die Systemleistungsüberwachung (CPU/Speicher/RPS) ermöglicht.
+Nun ist es erforderlich, die Bibliothek explizit im Code zu laden. Da der Agent die Instrumentierung in viele andere Bibliotheken einbettet, sollten Sie sie so früh wie möglich laden – noch vor anderen `require`-Anweisungen. Fügen Sie oben in Ihrer ersten JS-Datei Folgendes hinzu, um zu beginnen:
 
 ```javascript
-
-var appInsights = require("applicationinsights");
-appInsights.setup("<instrumentation_key>").start();
+const appInsights = require("applicationinsights");
+appInsights.setup("<instrumentation_key>");
+appInsights.start();
 ```
 
-Der Instrumentierungsschlüssel kann auch in der Umgebungsvariablen APPINSIGHTS_INSTRUMENTATIONKEY festgelegt werden. In diesem Fall ist beim Aufrufen von `appInsights.setup()` oder `appInsights.getClient()` kein Argument erforderlich.
+Mit der `setup`-Methode wird der Instrumentierungsschlüssel (und somit die Azure-Ressource) konfiguriert, der standardmäßig für alle nachverfolgten Elemente verwendet werden soll. Rufen Sie `start` nach Abschluss der Konfiguration auf, um mit dem Sammeln und Senden von Telemetriedaten zu beginnen.
 
-Sie können das SDK testen, ohne Telemetriedaten zu senden: Legen Sie als Instrumentierungsschlüssel eine nicht leere Zeichenfolge fest.
+Sie können einen „ikey“ auch über die Umgebungsvariable „APPINSIGHTS\_INSTRUMENTATIONKEY“ bereitstellen, anstatt ihn manuell an `setup()` oder `getClient()` zu übergeben. Mit dieser Vorgehensweise können Sie „ikeys“ aus festgelegtem Quellcode heraushalten und unterschiedliche „ikeys“ für unterschiedliche Umgebungen angeben.
 
-## <a name="run"></a> Ausführen des Projekts
-Starten Sie Ihre Anwendung, und testen Sie sie: Öffnen Sie verschiedene Seiten, um einige Telemetriedaten zu generieren.
+Weitere Konfigurationsoptionen sind weiter unten beschrieben.
 
-## <a name="monitor"></a> Anzeigen der Telemetrie
-Kehren Sie zum [Azure-Portal](https://portal.azure.com) zurück, und navigieren Sie zur Application Insights-Ressource.
+Sie können den Agent ausprobieren, ohne Telemetriedaten zu senden, indem Sie den Instrumentierungsschlüssel auf eine beliebige Zeichenfolge festlegen, die nicht leer ist.
 
-Suchen Sie nach Daten auf der Übersichtsseite. Zuerst sehen Sie lediglich einen oder zwei Punkte. Zum Beispiel:
+### <a name="monitor"></a> Überwachen Ihrer App
 
-![Klicken Sie, um weitere Daten anzuzeigen.](./media/app-insights-nodejs/12-first-perf.png)
+Der Agent sammelt automatisch Telemetriedaten zur Node.js-Laufzeit und zu einigen Drittanbietermodulen. Verwenden Sie Ihre Anwendung jetzt, um einige dieser Daten zu generieren.
 
-Klicken Sie sich durch ein beliebiges Diagramm, um ausführlichere Metriken anzuzeigen. [Weitere Informationen zu Metriken.][perf]
+Navigieren Sie anschließend im [Azure-Portal][portal] zu der Application Insights-Ressource, die Sie zuvor erstellt haben, und suchen Sie in der Zeitachse „Übersicht“ nach Ihren ersten Daten. Dies ist in der folgenden Abbildung dargestellt. Klicken Sie durch die Diagramme, um weitere Details anzuzeigen.
+
+![Erste Datenpunkte](./media/app-insights-nodejs/12-first-perf.png)
+
+Klicken Sie auf die Schaltfläche „Anwendungszuordnung“, um die Topologie anzuzeigen, die für Ihre App ermittelt wurde. Dies ist in der folgenden Abbildung dargestellt. Klicken Sie in der Zuordnungsübersicht auf die Komponenten, um weitere Details anzuzeigen.
+
+![Einfache App-Zuordnung](./media/app-insights-nodejs/06-appinsights_appmap.png)
+
+Sie können weitere Informationen zu Ihrer App anzeigen und Probleme beheben, indem Sie die anderen Ansichten verwenden, die im Abschnitt „Untersuchen“ verfügbar sind.
+
+![Abschnitt „Untersuchen“](./media/app-insights-nodejs/07-appinsights_investigate_blades.png)
 
 #### <a name="no-data"></a>Sie sehen keine Daten?
-* Verwenden Sie die Anwendung, und öffnen Sie verschiedene Seiten, damit einige Telemetriedaten generiert werden.
-* Öffnen Sie die Kachel [Suche](app-insights-diagnostic-search.md) , um einzelne Ereignisse anzuzeigen. Manchmal dauert es eine Weile, bis Ereignisse über die Metrikpipeline übertragen werden.
-* Warten Sie einige Sekunden, und klicken Sie auf **Aktualisieren**. Diagramme aktualisieren sich in regelmäßigen Abständen selbst, doch Sie können sie auch manuell aktualisieren, wenn Sie auf anzuzeigende Daten warten.
-* Informationen hierzu finden Sie unter [Problembehandlung][qna].
 
-## <a name="publish-your-app"></a>Veröffentlichen der App
-Stellen Sie jetzt Ihre Anwendung für IIS bereit, und beobachten Sie, wie die Daten gesammelt werden.
+Da der Agent Daten zur Übermittlung in Batches zusammenfasst, kann es eine Weile dauern, bis die Elemente im Portal angezeigt werden. Falls in Ihrer Ressource keine Daten angezeigt werden, können Sie folgende Lösungsmöglichkeiten ausprobieren:
 
-#### <a name="no-data-after-you-publish-to-your-server"></a>Keine Daten nach dem Veröffentlichen auf Ihrem Server?
-Stellen Sie sicher, dass [die erforderlichen Firewallports geöffnet sind](app-insights-ip-addresses.md).
+* Nutzen Sie die Anwendung, und führen Sie weitere Aktionen durch, um mehr Telemetriedaten zu generieren.
+* Klicken Sie in der Ressourcenansicht des Portals auf **Aktualisieren**. Diagramme werden regelmäßig automatisch aktualisiert, aber durch das Klicken auf die entsprechende Schaltfläche wird dieser Vorgang sofort ausgelöst.
+* Stellen Sie sicher, dass die [erforderlichen ausgehenden Ports](app-insights-ip-addresses.md) geöffnet sind.
+* Öffnen Sie die Kachel [Suche](app-insights-diagnostic-search.md), und suchen Sie nach bestimmten einzelnen Ereignissen.
+* Lesen Sie die [häufig gestellten Fragen][].
 
-#### <a name="trouble-on-your-build-server"></a>Probleme auf dem Buildserver?
-Weitere Informationen finden Sie in [diesem Artikel zur Problembehandlung](app-insights-asp-net-troubleshoot-no-data.md#NuGetBuild).
 
-## <a name="customized-usage"></a>Benutzerdefinierte Verwendung
-### <a name="disabling-auto-collection"></a>Deaktivieren der automatischen Erfassung
+## <a name="agent-configuration"></a>Agent-Konfiguration
+
+Hier sind die Konfigurationsmethoden des Agents und die dazugehörigen Standardwerte angegeben.
+
+Legen Sie `.setAutoDependencyCorrelation(true)` fest, um die Ereignisse für einen Dienst vollständig zu korrelieren. Auf diese Weise kann der Agent den Kontext in Node.js über asynchrone Rückrufe hinweg nachverfolgen.
+
 ```javascript
-import appInsights = require("applicationinsights");
+const appInsights = require("applicationinsights");
 appInsights.setup("<instrumentation_key>")
-    .setAutoCollectRequests(false)
-    .setAutoCollectPerformance(false)
-    .setAutoCollectExceptions(false)
-    // no telemetry will be sent until .start() is called
+    .setAutoDependencyCorrelation(false)
+    .setAutoCollectRequests(true)
+    .setAutoCollectPerformance(true)
+    .setAutoCollectExceptions(true)
+    .setAutoCollectDependencies(true)
     .start();
 ```
 
-### <a name="custom-monitoring"></a>Benutzerdefinierte Überwachung
-```javascript
-import appInsights = require("applicationinsights");
-var client = appInsights.getClient();
+## <a name="agent-api"></a>Agent-API
 
-client.trackEvent("custom event", {customProperty: "custom property value"});
+<!-- TODO: Fully document agent API. -->
+
+Eine vollständige Beschreibung der .NET-Agent-API finden Sie [hier](app-insights-api-custom-events-metrics.md).
+
+Sie können alle Anforderungen, Ereignisse, Metriken oder Ausnahmen mit dem Application Insights-Node.js-Client nachverfolgen. Im folgenden Beispiel werden einige verfügbare APIs veranschaulicht.
+
+```javascript
+let appInsights = require("applicationinsights");
+appInsights.setup().start(); // assuming ikey in env var
+let client = appInsights.getClient();
+
+client.trackEvent("my custom event", {customProperty: "custom property value"});
 client.trackException(new Error("handled exceptions can be logged with this method"));
 client.trackMetric("custom metric", 3);
 client.trackTrace("trace message");
-```
 
-Erfahren Sie mehr über die [Telemetrie-API](app-insights-api-custom-events-metrics.md).
-
-### <a name="using-multiple-instrumentation-keys"></a>Verwenden mehrerer Instrumentierungsschlüssel
-```javascript
-import appInsights = require("applicationinsights");
-
-// configure auto-collection with one instrumentation key
-appInsights.setup("<instrumentation_key>").start();
-
-// get a client for another instrumentation key
-var otherClient = appInsights.getClient("<other_instrumentation_key>");
-otherClient.trackEvent("custom event");
-```
-
-## <a name="examples"></a>Beispiele
-### <a name="tracking-dependency"></a>Nachverfolgen von Abhängigkeiten
-```javascript
-import appInsights = require("applicationinsights");
-var client = appInsights.getClient();
-
-var startTime = Date.now();
-// execute dependency call
-var endTime = Date.now();
-
-var elapsedTime = endTime - startTime;
-var success = true;
-client.trackDependency("dependency name", "command name", elapsedTime, success);
-```
-
-
-
-### <a name="manual-request-tracking-of-all-get-requests"></a>Manuelle Anforderungsnachverfolgung aller GET-Anforderungen
-```javascript
-var http = require("http");
-var appInsights = require("applicationinsights");
-appInsights.setup("<instrumentation_key>")
-    .setAutoCollectRequests(false) // disable auto-collection of requests for this example
-    .start();
-
-// assign common properties to all telemetry sent from the default client
-appInsights.client.commonProperties = {
-    environment: process.env.SOME_ENV_VARIABLE
-};
-
-// track a system startup event
-appInsights.client.trackEvent("server start");
-
-// create server
-var port = process.env.port || 1337
-var server = http.createServer(function (req, res) {
-    // track all "GET" requests
-    if(req.method === "GET") {
-        appInsights.client.trackRequest(req, res);
-    }
-
-    res.writeHead(200, { "Content-Type": "text/plain" });
-    res.end("Hello World\n");
-}).listen(port);
-
-// track startup time of the server as a custom metric
-var start = +new Date;
-server.on("listening", () => {
-    var end = +new Date;
-    var duration = end - start;
-    appInsights.client.trackMetric("StartupTime", duration);
+let http = require("http");
+http.createServer( (req, res) => {
+  client.trackRequest(req, res); // Place at the beginning of your request handler
 });
 ```
 
-## <a name="video"></a>Video
+### <a name="track-your-dependencies"></a>Nachverfolgen Ihrer Abhängigkeiten
 
-> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
+```javascript
+let appInsights = require("applicationinsights");
+let client = appInsights.getClient();
 
-## <a name="next-steps"></a>Nächste Schritte
+var success = false;
+let startTime = Date.now();
+// execute dependency call here....
+let duration = Date.now() - startTime;
+success = true;
+
+client.trackDependency("dependency name", "command name", duration, success);
+```
+
+### <a name="add-a-custom-property-to-all-events"></a>Hinzufügen einer benutzerdefinierten Eigenschaft zu allen Ereignissen
+
+```javascript
+appInsights.client.commonProperties = {
+    environment: process.env.SOME_ENV_VARIABLE
+};
+```
+
+### <a name="track-http-get-requests"></a>Nachverfolgen von HTTP GET-Anforderungen
+
+```javascript
+var server = http.createServer((req, res) => {
+    if ( req.method === "GET" ) {
+            appInsights.client.trackRequest(req, res);
+    }
+    // other work here....
+    res.end();
+});
+```
+
+### <a name="track-server-startup-time"></a>Nachverfolgen der Serverstartzeit
+
+```javascript
+let start = Date.now();
+server.on("listening", () => {
+    let duration = Date.now() - start;
+    appInsights.client.trackMetric("server startup time", duration);
+});
+```
+
+## <a name="more-resources"></a>Weitere Ressourcen
+
 * [Überwachen Ihrer Telemetriedaten im Portal](app-insights-dashboards.md)
 * [Schreiben von Analytics-Abfragen über Ihre Telemetriedaten](app-insights-analytics-tour.md)
 
-<!--Link references-->
+<!--references-->
 
-[knowUsers]: app-insights-web-track-usage.md
-[metrics]: app-insights-metrics-explorer.md
-[perf]: app-insights-web-monitor-performance.md
-[portal]: http://portal.azure.com/
-[qna]: app-insights-troubleshoot-faq.md
-[roles]: app-insights-resources-roles-access-control.md
+[portal]: https://portal.azure.com/
+[häufig gestellten Fragen]: app-insights-troubleshoot-faq.md
 

@@ -12,20 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/22/2017
+ms.date: 04/26/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: de48da2c77c65f3e806474ae37ffd00772622b02
-ms.lasthandoff: 03/04/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: 2c581a2d152a6d3f16de8f249e27a426aa9f844f
+ms.contentlocale: de-de
+ms.lasthandoff: 04/27/2017
 
 ---
 
 # <a name="introduction-to-network-security-group-view-in-azure-network-watcher"></a>Einführung in die Netzwerksicherheitsgruppen-Ansicht in Azure Network Watcher
 
-Netzwerksicherheitsgruppen können auf Subnetzebene oder Netzwerkkartenebene zugeordnet werden. Bei einer Zuordnung auf Subnetzebene gilt sie für alle VM-Instanzen in dem Subnetz. Die Netzwerksicherheitsgruppen-Ansicht gibt alle konfigurierten NSGs und Regeln zurück, die auf Netzwerkkarten- und Subnetzebene zugeordnet wurden. Darüber hinaus werden die geltenden Sicherheitsregeln für jede Netzwerkkarte auf einem virtuellen Computer zurückgegeben. Mithilfe der Netzwerksicherheitsgruppen-Ansicht können Sie Netzwerksicherheitslücken auf einem virtuellen Computer, z.B. geöffnete Ports, beurteilen. Sie können auch basierend auf einem Vergleich zwischen den konfigurierten und angewendeten Sicherheitsregeln überprüfen, ob die Netzwerksicherheitsgruppe wie erwartet funktioniert.
+Netzwerksicherheitsgruppen werden auf Subnetzebene oder auf NIC-Ebene zugeordnet. Bei einer Zuordnung auf Subnetzebene gilt sie für alle VM-Instanzen in dem Subnetz. Die Netzwerksicherheitsgruppen-Ansicht gibt alle konfigurierten NSGs und Regeln zurück, die auf NIC- und Subnetzebene für einen virtuellen Computer zugeordnet wurden, und bietet dabei Einblicke in die Konfiguration. Darüber hinaus werden die geltenden Sicherheitsregeln für jede Netzwerkkarte auf einem virtuellen Computer zurückgegeben. Mithilfe der Netzwerksicherheitsgruppen-Ansicht können Sie Netzwerksicherheitslücken auf einem virtuellen Computer, z.B. geöffnete Ports, beurteilen. Sie können auch basierend auf einem [Vergleich zwischen den konfigurierten und angewendeten Sicherheitsregeln](network-watcher-nsg-auditing-powershell.md) überprüfen, ob die Netzwerksicherheitsgruppe wie erwartet funktioniert.
 
-Einen weiter gefassten Anwendungsfall stellt die Sicherheitskonformität und Überwachung dar. Sie können einen normativen Satz von Sicherheitsregeln als Modell für die Sicherheitsbestimmungen in Ihrer Organisation definieren. Eine regelmäßige Überwachung der Einhaltung kann programmgesteuert durch einen Vergleich der normativen Regeln mit den angewendeten Regeln für die einzelnen virtuellen Computer in Ihrem Netzwerk implementiert werden.
+Einen weiter gefassten Anwendungsfall stellt die Sicherheitskonformität und -überwachung dar. Sie können einen normativen Satz von Sicherheitsregeln als Modell für die Sicherheitsbestimmungen in Ihrer Organisation definieren. Eine regelmäßige Überwachung der Einhaltung kann programmgesteuert durch einen Vergleich der normativen Regeln mit den angewendeten Regeln für die einzelnen virtuellen Computer in Ihrem Netzwerk implementiert werden.
 
 Im Portal werden die Regeln nach Gültigkeit, Subnetz, Netzwerkschnittstelle und Standard unterteilt. Dies bietet einen einfachen Einblick in die Regeln, die auf einen virtuellen Computer angewendet werden. Über eine Downloadschaltfläche können sämtliche Sicherheitsregeln unabhängig von der Registerkarte in eine CSV-Datei heruntergeladen werden.
 

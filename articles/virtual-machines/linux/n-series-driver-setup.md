@@ -13,37 +13,61 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/10/2017
+ms.date: 05/02/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: e7f6c840be3a284f635114287a69c151f671531d
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 181428e5302c5c8f5b72f06d6c54b0f87802690a
+ms.contentlocale: de-de
+ms.lasthandoff: 05/03/2017
 
 
 ---
 
 # <a name="set-up-gpu-drivers-for-n-series-vms-running-linux"></a>Einrichten von GPU-Treibern für virtuelle Computer der N-Serie unter Linux
 
-Nach der Bereitstellung müssen Sie auf jedem virtuellen Computer NVIDIA-Grafiktreiber installieren, um die GPU-Funktionen von virtuellen Azure-Computern der N-Serie mit einer unterstützten Linux-Distribution nutzen zu können. Informationen zur Einrichtung von Treibern stehen auch für [Windows-VMs](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) zur Verfügung.
+Installieren Sie auf jedem virtuellen Computer NVIDIA-Grafiktreiber, um die GPU-Funktionen von virtuellen Azure-Computern der N-Serie unter Linux nutzen zu können. In diesem Artikel werden die Treiberinstallationsschritte beschrieben, die Sie nach der Bereitstellung eines virtuellen Computers der N-Serie ausführen müssen. Informationen zur Einrichtung von Treibern stehen auch für [Windows-VMs](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) zur Verfügung.
 
+
+Informationen zu Spezifikationen von virtuellen Computern der N-Serie, Speicherkapazitäten und Details zu den Datenträgern finden Sie unter [GPU-optimierte Größen von virtuellen Linux-Computern](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+
+
+
+## <a name="supported-distributions-and-drivers"></a>Unterstützte Verteilungen und Treiber
 
 > [!IMPORTANT]
-> Derzeit ist Linux-GPU-Unterstützung nur auf virtuellen Azure NC-Computern verfügbar, die Ubuntu Server 16.04 LTS ausführen.
-> 
+> Derzeit ist eine Linux-GPU-Treiberunterstützung nur auf virtuellen Azure NC-Computern verfügbar. 
 
-Informationen zu Spezifikationen von virtuellen Computern der N-Serie, Speicherkapazitäten und Details zu den Datenträgern finden Sie unter [Größen für virtuelle Computer](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Siehe auch [Allgemeine Überlegungen für virtuelle Computer der N-Serie](#general-considerations-for-n-series-vms).
+Die folgenden Verteilungen aus dem Azure Marketplace werden zur Ausführung von NVIDIA-Grafiktreibern auf virtuellen Linux-Computern der N-Serie unterstützt.
+
+### <a name="nc-vms-tesla-k80-card"></a>Virtuelle NC-Computer (Tesla K80-Karte)
+* Ubuntu 16.04 LTS 
+* Red Hat Enterprise Linux 7.3 
+* 7.3 (CentOS-basiert) 
+
+**Unterstützte Treiber**: NVIDIA CUDA 8.0, Branch R375. [Installationsschritte](#install-CUDA-drivers-for-NC-VMs)
 
 
 
-## <a name="install-nvidia-cuda-drivers"></a>Installieren von NVIDIA CUDA-Treibern
 
-Hier werden Schritte zum Installieren von NVIDIA-Treibern auf Linux-NC-VMs vom NVIDIA CUDA Toolkit 8.0 aus beschrieben. C- und C++-Entwickler können optional das vollständige Toolkit zum Erstellen GPU-beschleunigter Anwendungen installieren. Weitere Informationen finden Sie im [CUDA-Installationshandbuch](http://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html).
+> [!WARNING] 
+> Die Installation von Drittanbietersoftware auf Red Hat-Produkten kann Auswirkungen auf die Red Hat-Supportbedingungen haben. Weitere Informationen hierzu finden Sie im [Red Hat-Knowledgebase-Artikel](https://access.redhat.com/articles/1067).
+>
+
+
+
+
+## <a name="install-cuda-drivers-for-nc-vms"></a>Installieren von CUDA-Treibern für virtuelle NC-Computer
+
+Hier werden Schritte zum Installieren von NVIDIA-Treibern auf Linux-NC-VMs vom NVIDIA CUDA Toolkit 8.0 aus beschrieben. 
+
+C- und C++-Entwickler können optional das vollständige Toolkit zum Erstellen GPU-beschleunigter Anwendungen installieren. Weitere Informationen finden Sie im [CUDA-Installationshandbuch](http://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html).
 
 
 > [!NOTE]
-> Die hier angebotenen Links zum Herunterladen von Treibern sind zum Zeitpunkt der Veröffentlichung aktuell. Die neuesten Treiber finden Sie auf der [NVIDIA](http://www.nvidia.com/)-Website.
+> Die hier bereitgestellten Links zum Herunterladen der CUDA-Treiber sind zum Zeitpunkt der Veröffentlichung aktuell. Die neuesten Treiber finden Sie auf der [NVIDIA](http://www.nvidia.com/)-Website.
+>
 
 Um das CUDA-Toolkit installieren zu können, stellen Sie eine SSH-Verbindung mit jeder VM her. Führen Sie den folgenden Befehl aus, um sicherzustellen, dass das System über eine CUDA-fähige GPU verfügt:
 
@@ -82,18 +106,64 @@ sudo apt-get install cuda
 
 Starten Sie die VM neu, und fahren Sie mit der Überprüfung der Installation fort.
 
-## <a name="verify-driver-installation"></a>Überprüfen der Treiberinstallation
+### <a name="centos-73-or-red-hat-enterprise-linux-73"></a>CentOS 7.3 oder Red Hat Enterprise Linux 7.3
+
+> [!IMPORTANT] 
+> NVIDIA CUDA-Treiber können auf virtuellen NC24r-Computern unter CentOS 7.3 oder Red Hat Enterprise Linux 7.3 aufgrund eines bekannten Problems nicht installiert werden.
+>
+
+Rufen Sie zuerst Updates ab. 
+
+```bash
+sudo yum update
+
+sudo reboot
+```
+
+Stellen Sie die Verbindung mit dem virtuellen Computer wieder her, und setzen Sie die Installation mit den folgenden Befehlen fort:
+
+```bash
+sudo yum install kernel-devel
+
+sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+
+sudo yum install dkms
+
+CUDA_REPO_PKG=cuda-repo-rhel7-8.0.61-1.x86_64.rpm
+
+wget http://developer.download.nvidia.com/compute/cuda/repos/rhel7/x86_64/${CUDA_REPO_PKG} -O /tmp/${CUDA_REPO_PKG}
+
+sudo rpm -ivh /tmp/${CUDA_REPO_PKG}
+
+rm -f /tmp/${CUDA_REPO_PKG}
+
+sudo yum install cuda-drivers
+```
+
+Die Installation kann einige Minuten dauern. Um das vollständige CUDA-Toolkit optional zu installieren, geben Sie Folgendes ein:
+
+```bash
+sudo yum install cuda
+```
+
+Starten Sie die VM neu, und fahren Sie mit der Überprüfung der Installation fort.
+
+
+### <a name="verify-driver-installation"></a>Überprüfen der Treiberinstallation
 
 
 Stellen Sie zum Abfragen des GPU-Gerätestatus eine SSH-Verbindung mit der VM her, und führen Sie das mit dem Treiber installierte Befehlszeilen-Hilfsprogramm [nvidia-smi](https://developer.nvidia.com/nvidia-system-management-interface) aus. 
 
+Daraufhin wird eine Ausgabe angezeigt, die in etwa wie folgt aussieht:
+
 ![NVIDIA-Gerätestatus](./media/n-series-driver-setup/smi.png)
 
-## <a name="cuda-driver-updates"></a>CUDA-Treiberupdates
+
+### <a name="cuda-driver-updates"></a>CUDA-Treiberupdates
 
 Sie sollten CUDA-Treiber nach der Bereitstellung in regelmäßigen Abständen aktualisieren.
 
-### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
+#### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
 
 ```bash
 sudo apt-get update
@@ -107,12 +177,21 @@ sudo apt-get install cuda-drivers
 
 Nachdem das Update abgeschlossen ist, starten Sie die VM neu.
 
+#### <a name="centos-73-or-red-hat-enterprise-linux-73"></a>CentOS 7.3 oder Red Hat Enterprise Linux 7.3
 
-[!INCLUDE [virtual-machines-n-series-considerations](../../../includes/virtual-machines-n-series-considerations.md)]
+```bash
+sudo yum update
+```
 
-* Sie sollten nicht X-Server oder andere Systeme installieren, die den Nouveau-Treiber auf Ubuntu-NC-VMs verwenden. Vor der Installation von NVIDIA-GPU-Treibern müssen Sie den Nouveau-Treiber deaktivieren.  
+Nachdem das Update abgeschlossen ist, starten Sie die VM neu.
 
-* Wenn Sie ein Image einer Linux-VM erfassen möchten, auf der Sie NVIDIA-Treiber installiert haben, informieren Sie sich unter [Generalisieren und Erfassen eines virtuellen Linux-Computers](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+
+
+## <a name="troubleshooting"></a>Problembehandlung
+
+* Es besteht ein bekanntes Problem bei CUDA-Treibern auf virtuellen Azure-Computern der N-Serie, auf denen Linux Kernel 4.4.0-75 unter Ubuntu 16.04 LTS ausgeführt wird. Um die Treiberfunktion bei einem Upgrade des Kernels aufrechtzuerhalten, müssen Sie mindestens auf Kernelversion 4.4.0-77 aktualisieren. 
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -120,4 +199,4 @@ Nachdem das Update abgeschlossen ist, starten Sie die VM neu.
     * [NVIDIA Tesla K80](http://www.nvidia.com/object/tesla-k80.html) (für virtuelle Azure NC-Computer)
     * [NVIDIA Tesla M60](http://www.nvidia.com/object/tesla-m60.html) (für virtuelle Azure NV-Computer)
 
-
+* Wenn Sie ein Linux-VM-Image mit den installierten NVIDIA-Treibern erfassen möchten, lesen Sie [Generalisieren und Erfassen eines virtuellen Linux-Computers](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

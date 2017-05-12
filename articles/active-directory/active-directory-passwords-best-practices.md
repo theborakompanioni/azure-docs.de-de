@@ -1,163 +1,86 @@
 ---
-title: 'Best Practices: Azure AD-Kennwortverwaltung | Microsoft Docs'
-description: "Best Practices für die Bereitstellung und Nutzung, Beispieldokumentation für Endbenutzer und Schulungshandbücher für die Kennwortverwaltung in Azure Active Directory."
+title: 'Rollout: Azure AD SSPR | Microsoft-Dokumentation'
+description: "Tipps für ein erfolgreiches Rollout der Self-Service-Kennwortzurücksetzung von Azure AD"
 services: active-directory
+keywords: 
 documentationcenter: 
 author: MicrosoftGuyJFlo
 manager: femila
-editor: curtand
 ms.assetid: f8cd7e68-2c8e-4f30-b326-b22b16de9787
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 02/28/2017
+ms.topic: get-started-article
+ms.date: 04/26/2017
 ms.author: joflore
-translationtype: Human Translation
-ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
-ms.openlocfilehash: 66d7b336e0e962069bd702b941b87d1127b86e40
-ms.lasthandoff: 04/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 328537b2bfbe15a23a9199bbb3c07851eaa85390
+ms.contentlocale: de-de
+ms.lasthandoff: 05/03/2017
 
 
 ---
-# <a name="deploying-password-management-and-training-users-to-use-it"></a>Bereitstellen der Kennwortverwaltung und Schulen der Benutzer zu deren Verwendung
-> [!IMPORTANT]
-> **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md#reset-my-password).
->
->
+# <a name="roll-out-password-reset-for-users"></a>Rollout der Kennwortzurücksetzung für Benutzer
 
-Nachdem Sie die Kennwortzurücksetzung aktiviert haben, müssen Sie als Nächstes die Benutzer dazu anhalten, diesen Dienst in Ihrer Organisation zu verwenden. Zu diesem Zweck müssen Sie sicherstellen, dass Ihre Benutzer so konfiguriert sind, dass sie den Dienst ordnungsgemäß verwenden können. Außerdem müssen die Benutzer für die Verwaltung ihrer eigenen Kennwörter geschult werden. In diesem Artikel werden die folgenden Konzepte erläutert:
+Die meisten Kunden führen die hier angegebenen Schritte aus, um für ein reibungsloses Rollout der SSPR-Funktionalität (Self-Service Password Reset, Self-Service-Kennwortzurücksetzung) zu sorgen.
 
-* [**Konfigurieren Ihrer Benutzer für die Kennwortverwaltung**](#how-to-get-users-configured-for-password-reset)
-  * [Erforderliche Konfiguration für die Kontozurücksetzung](#what-makes-an-account-configured)
-  * [Methoden zum selbstständigen Auffüllen der Authentifizierungsdaten](#ways-to-populate-authentication-data)
-* [**Die besten Methoden zum Einführen der Kennwortzurücksetzung in Ihrer Organisation**](#what-is-the-best-way-to-roll-out-password-reset-for-users)
-  * [E-Mail-basierte Einführung und Beispiele für die E-Mail-Kommunikation](#email-based-rollout)
-  * [Erstellen eines benutzerdefinierten Portals zur Kennwortverwaltung für Ihre Benutzer](#creating-your-own-password-portal)
-  * [Verwenden der erzwungenen Registrierung zum Durchsetzen der Benutzerregistrierung bei der Anmeldung](#using-enforced-registration)
-  * [Hochladen von Authentifizierungsdaten für Benutzerkonten](#uploading-data-yourself)
-* [**Beispielschulungsunterlagen für Benutzer und Support (demnächst verfügbar!)**](#sample-training-materials)
+1. [Aktivieren Sie die Kennwortzurücksetzung in Ihrem Verzeichnis](active-directory-passwords-getting-started.md).
+2. [Konfigurieren Sie die lokalen AD-Berechtigungen für das Kennwortrückschreiben](active-directory-passwords-how-it-works.md#active-directory-permissions).
+3. [Weisen Sie die erforderlichen Lizenzen zu, und überprüfen Sie sie](active-directory-passwords-licensing.md).
+4. Wenn Sie das Rollout in Etappen durchführen möchten, können Sie die Kennwortzurücksetzung optional auf eine Gruppe von Benutzern begrenzen, um das Feature nach und nach einzuführen. Ändern Sie hierzu die Umschaltoption **Self-Service-Kennwortzurücksetzung aktiviert** von **Jeder** in **Eine Gruppe**, und wählen Sie eine Sicherheitsgruppe aus, die für die Kennwortzurücksetzung aktiviert werden soll. Allen Mitgliedern dieser Gruppe müssen Lizenzen zugewiesen sein. Dies ist eine gute Gelegenheit, um die [gruppenbasierte Lizenzierung](active-directory-passwords-licensing.md#enable-group-or-user-based-licensing) umzusetzen.
+5. Geben Sie basierend auf Ihrer Richtlinie die mindestens erforderlichen [Authentifizierungsdaten](active-directory-passwords-data.md) ein.
+6. Schulen Sie Ihre Benutzer in der Nutzung von SSPR, indem Sie ihnen eine Anleitung senden, in der die Registrierung und Zurücksetzung beschrieben ist.
+    > [!NOTE]
+    > Testen Sie SSPR nicht als Administrator, sondern als normaler Benutzer, da Microsoft für Azure-Administratorkonten strenge Anforderungen an die Authentifizierung stellt. Weitere Informationen zur Richtlinie für Administratorkennwörter finden Sie in [diesem ausführlichen Artikel](active-directory-passwords-how-it-works.md).
 
-## <a name="how-to-get-users-configured-for-password-reset"></a>Konfigurieren von Benutzern für die Kennwortzurücksetzung
-Dieser Abschnitt beschreibt verschiedene Methoden, mit denen Sie sicherstellen können, dass alle Benutzer in Ihrer Organisation ihre Kennwörter selbstständig und effektiv zurücksetzen können, falls sie ihre Kennwörter vergessen haben.
+7. Sie können einen beliebigen Zeitpunkt für das Erzwingen der Registrierung angeben und außerdem festlegen, dass Benutzer ihre Authentifizierungsinformationen nach einem bestimmten Zeitraum neu bestätigen müssen. Falls Sie nicht möchten, dass Benutzer sich registrieren müssen, können Sie die [Kennwortzurücksetzung bereitstellen, ohne dass eine Registrierung von Endbenutzern erforderlich ist](active-directory-passwords-data.md).
+8. Sie können den Verlauf der Registrierung und Nutzung durch die Benutzer verfolgen, indem Sie die [Berichterstellungsfunktion von Azure AD](active-directory-passwords-reporting.md) verwenden.
 
-### <a name="what-makes-an-account-configured"></a>Erforderliche Kontokonfiguration
-Bevor ein Benutzer die Kennwortzurücksetzung verwenden kann, müssen **alle** folgenden Bedingungen erfüllt sein:
+## <a name="email-based-rollout"></a>E-Mail-basierte Einführung
 
-1. Die Kennwortzurücksetzung muss im Verzeichnis aktiviert sein.  Informationen zum Aktivieren der Kennwortzurücksetzung finden Sie unter [Aktivieren von Benutzern für das Zurücksetzen ihrer Azure AD-Kennwörter](active-directory-passwords-getting-started.md#enable-users-to-reset-their-azure-ad-passwords) oder unter [Aktivieren von Benutzern für das Zurücksetzen ihrer AD-Kennwörter](active-directory-passwords-getting-started.md#enable-users-to-reset-or-change-their-ad-passwords).
-2. Der Benutzer muss lizenziert sein.
-   * Für Cloudbenutzer muss dem Benutzer eine **beliebige kostenpflichtige Office 365-Lizenz** oder eine **AAD Basic**- oder eine **AAD Premium-Lizenz** zugewiesen sein.
-   * Für lokale Benutzer (Verbund oder hashsynchronisiert) muss dem Benutzer **eine AAD Premium-Lizenz zugewiesen sein**.
-3. Für den Benutzer muss der **Mindestsatz an Authentifizierungsdaten definiert** sein in Übereinstimmung mit der aktuellen Kontozurücksetzungsrichtlinie.
-   * Authentifizierungsdaten gelten als definiert, wenn das entsprechende Feld im Verzeichnis wohlgeformte Daten enthält.
-   * Ein Mindestsatz von Authentifizierungsdaten ist definiert als **mindestens eine** der aktivierten Authentifizierungsoptionen, wenn eine Richtlinie für die einstufige Überprüfung konfiguriert ist, bzw. **mindestens zwei** der aktivierten Authentifizierungsoptionen, wenn eine Richtlinie für die zweistufige Überprüfung konfiguriert ist.
-4. Wenn der Benutzer ein lokales Konto verwendet, muss die [Kennwortrückschreibung](active-directory-passwords-getting-started.md#enable-users-to-reset-or-change-their-ad-passwords) aktiviert sein.
+Viele Kunden sind der Meinung, dass eine E-Mail-Kampagne mit einfachen Anweisungen der einfachste Weg ist, um Benutzer über die Nutzung von SSPR zu informieren. Wir haben drei einfache E-Mails erstellt, die Sie beim Rollout als Vorlagen verwenden können:
 
-### <a name="ways-to-populate-authentication-data"></a>Möglichkeiten zum Auffüllen von Authentifizierungsdaten
-Sie haben mehrere Möglichkeiten, für Organisationsbenutzer Daten einzugeben, die für das Zurücksetzen von Kennwörtern verwendet werden.
+* E-Mail-Vorlage **Coming Soon** (In Kürze verfügbar): Kann in den Wochen bzw. Tagen vor dem Rollout eingesetzt werden, um die Benutzer darüber zu informieren, dass bald eine Aufgabe erledigt werden muss.
+* E-Mail-Vorlage **Available Now** (Jetzt verfügbar): Kann am Tag der Einführung eingesetzt werden, um Benutzer zum Registrieren und Bestätigen ihrer Authentifizierungsdaten zu bewegen, damit sie SSPR bei Bedarf nutzen können.
+* E-Mail-Vorlage **Sign up Reminder** (Erinnerung an Registrierung): Kann einige Tage bzw. Wochen nach der Bereitstellung eingesetzt werden, um Benutzer an das Registrieren und Bestätigen ihrer Authentifizierungsdaten zu erinnern.
 
-* Bearbeiten Sie Benutzer im [Azure-Verwaltungsportal](https://manage.windowsazure.com) oder im [Office 365-Verwaltungsportal](https://portal.microsoftonline.com).
-* Verwenden Sie Azure AD Sync, um Benutzereigenschaften aus einer lokalen Active Directory-Domäne mit Azure AD zu synchronisieren.
-* [Führen Sie die folgenden Schritte aus](active-directory-passwords-learn-more.md#how-to-access-password-reset-data-for-your-users), um Windows PowerShell zum Bearbeiten der Benutzereigenschaften zu verwenden.
-* Ermöglichen Sie es Benutzern, ihre eigenen Daten zu registrieren, indem Sie sie auf das Registrierungsportal unter [http://aka.ms/ssprsetup](http://aka.ms/ssprsetup)
-* Legen Sie die Benutzerregistrierung für die Kennwortzurücksetzung bei Anmeldung in ihrem Azure AD-Konto als erforderlich fest, indem Sie die Konfigurationsoption [**Sollen sich Benutzer bei der Anmeldung registrieren müssen?**](active-directory-passwords-customize.md#require-users-to-register-when-signing-in) auf **Ja** festlegen.
+## <a name="creating-your-own-password-portal"></a>Erstellen eines eigenen Kennwortportals
 
-Benutzer müssen sich für die Kennwortzurücksetzung nicht registrieren, damit das System funktioniert.  Wenn Sie beispielsweise über vorhandene Mobil- oder geschäftliche Rufnummern in Ihrem lokalen Verzeichnis verfügen, können Sie diese in Azure AD synchronisieren, und wir verwenden sie automatisch für die Kennwortzurücksetzung.
+Viele der größeren Microsoft-Kunden entscheiden sich für das Hosten einer Webseite und das Erstellen eines DNS-Stammeintrags, z.B. „https://passwords.contoso.com“. Sie fügen auf dieser Seite Links hinzu, die zu folgenden Ressourcen führen: Azure AD-Kennwortzurücksetzung, Registrierung für die Kennwortzurücksetzung, Portale für die Kennwortänderung und andere organisationsbezogene Informationen. Auf diese Weise können Sie in der E-Mail-Korrespondenz oder auf ausgegebenen Flyern dann immer eine einheitliche URL angeben, unter der Benutzer alle Informationen zur Nutzung der Dienste finden.
 
-Es gibt auch weitere Informationen zur [Verwendung von Daten nach der Kennwortzurücksetzung](active-directory-passwords-learn-more.md#what-data-is-used-by-password-reset) und [Auffüllung einzelner Authentifizierungsfelder mit PowerShell](active-directory-passwords-learn-more.md#how-to-access-password-reset-data-for-your-users).
+* Portal für die Kennwortzurücksetzung: https://passwordreset.microsoftonline.com/
+* Portal zur Registrierung für die Kennwortzurücksetzung: http://aka.ms/ssprsetup
+* Portal für die Änderung des Kennworts: https://account.activedirectory.windowsazure.com/ChangePassword.aspx
 
-## <a name="what-is-the-best-way-to-roll-out-password-reset-for-users"></a>Welche Möglichkeit ist am besten zum Einführen der Kennwortzurücksetzung für Benutzer geeignet?
-Im Folgenden finden Sie allgemeine Schritte zur Einführung der Kennwortrücksetzung:
+## <a name="using-enforced-registration"></a>Verwenden der erzwungenen Registrierung
 
-1. Aktivieren Sie die Kennwortzurücksetzung in Ihrem Verzeichnis, indem Sie im [Azure-Verwaltungsportal](https://manage.windowsazure.com) auf der Registerkarte **Konfigurieren** die Option **Benutzer, für die das Zurücksetzen des Kennworts aktiviert ist** auf **Ja** setzen.
-2. Weisen Sie jedem Benutzer, dem Sie die Kennwortzurücksetzung bieten möchten, auf der Registerkarte **Lizenzen** im [Azure-Verwaltungsportal](https://manage.windowsazure.com)die entsprechenden Lizenzen zu.
-3. Beschränken Sie die Kennwortzurücksetzung optional auf eine Gruppe von Benutzern, um das Feature langsam über einen gewissen Zeitraum einzuführen, indem Sie die Option **Zugriff auf die Kennwortrücksetzung beschränken** auf **Ja** festlegen und eine Sicherheitsgruppe für das Aktivieren der Kennwortzurücksetzung auswählen. (Beachten Sie, dass all diesen Benutzern Lizenzen zugewiesen sein müssen.)
-4. Weisen Sie die Benutzer zum Verwenden der Kennwortzurücksetzung an, indem Sie ihnen entweder eine E-Mail mit Anweisungen zur Registrierung senden und die erzwungene Registrierung im Zugriffsbereich aktivieren, oder indem Sie die entsprechenden Authentifizierungsdaten für diese Benutzer selbst über DirSync, PowerShell oder das [Azure-Verwaltungsportal](https://manage.windowsazure.com)hochladen.  Weitere Informationen hierzu finden Sie im Folgenden.
-5. Überprüfen Sie die sich im Laufe der Zeit registrierenden Benutzer, indem Sie auf der Registerkarte „Berichte“ den Bericht [**Aktivität „Registrierung für Zurücksetzen des Kennworts“**](active-directory-passwords-get-insights.md#view-password-reset-registration-activity-in-the-classic-portal) anzeigen.
-6. Sobald sich zahlreiche Benutzer registriert haben, beobachten Sie sie bei der Verwendung der Kennwortzurücksetzung, indem Sie auf der Registerkarte „Berichte“ den Bericht [**Aktivität „Zurücksetzen des Kennworts“**](active-directory-passwords-get-insights.md#view-password-reset-activity-in-the-classic-portal) anzeigen.
+Wenn Sie möchten, dass sich Ihre Benutzer für die Kennwortzurücksetzung registrieren, können Sie die Registrierung bei der Anmeldung an Azure AD erzwingen. Sie können diese Option auf dem Blatt **Kennwortzurücksetzung** Ihres Verzeichnisses aktivieren, indem Sie auf der Registerkarte **Registrierung** die Option **Registrierung von Benutzern bei der Anmeldung verlangen?** aktivieren.
 
-Es gibt mehrere Möglichkeiten, die Benutzer darüber informieren, dass sie sich in Ihrer Organisation für die Kennwortzurücksetzung registrieren und diese verwenden können.  Sie werden nachfolgend beschrieben.
+Administratoren können vorgeben, dass sich Benutzer nach einem bestimmten Zeitraum erneut registrieren müssen, indem sie die Option **Anzahl der Tage, bevor Benutzer aufgefordert werden, ihre Authentifizierungsinformationen erneut zu bestätigen** auf einen Wert von 0 bis 730 Tagen festlegen.
 
-### <a name="email-based-rollout"></a>E-Mail-basierte Einführung
-Der einfachste Ansatz zum Informieren Ihrer Benutzer über die Registrierung für die Kennwortzurücksetzung oder über deren Verwendung besteht wahrscheinlich darin, ihnen eine E-Mail mit entsprechenden Anweisungen zu senden.  Unten sehen Sie eine Vorlage, die Sie zu diesem Zweck verwenden können.  Gerne können Sie die Farben / Logos durch eigene ersetzen und die Vorlage nach Ihren spezifischen Anforderungen anpassen.
+Nachdem Sie diese Option aktiviert haben, wird Benutzern bei der Anmeldung eine Meldung mit dem Hinweis angezeigt, dass vom Administrator die Bestätigung ihrer Authentifizierungsinformationen vorgegeben wurde.
 
-  ![][001]
+## <a name="populate-authentication-data"></a>Auffüllen von Authentifizierungsdaten
 
-Sie können [die E-Mail-Vorlage hier herunterladen](https://1drv.ms/f/s!AharQMeRmrWggcNnPlk_7xHInYJzow).
+Wenn Sie [Authentifizierungsdaten für Ihre Benutzer vorab einfügen](active-directory-passwords-data.md), müssen sich Benutzer nicht für die Kennwortzurücksetzung registrieren, bevor sie SSPR nutzen können. Solange für die Benutzer Authentifizierungsdaten definiert sind, die der von Ihnen definierten Richtlinie für die Kennwortzurücksetzung entsprechen, können Benutzer ihre Kennwörter zurücksetzen.
 
-### <a name="creating-your-own-password-portal"></a>Erstellen eines eigenen Kennwortportals
-Eine für größere Kunden gut geeignete Strategie zur Bereitstellung der Möglichkeit einer Kennwortverwaltung ist die Einrichtung eines einheitlichen „Kennwortportals“, auf dem die Benutzer alle Aufgaben in Bezug auf Kennwörter an einem zentralen Ort durchführen können.  
+## <a name="disabling-self-service-password-reset"></a>Deaktivieren der Self-Service-Kennwortzurücksetzung
 
-Viele der größten Microsoft-Kunden entscheiden sich für das Erstellen eines Stamm-DNS-Eintrags wie beispielsweise „https://passwords.contoso.com“ mit Links zum Azure AD-Portal für die Kennwortzurücksetzung, zum Registrierungsportal für die Kennwortzurücksetzung und zu Seiten zur Kennwortänderung.  Auf diese Weise lässt sich in alle ausgesendeten E-Mails oder Flyer ein kurzer, einprägsamer URL einfügen, auf den Benutzer im Bedarfsfall klicken können, um die Nutzung des Diensts zu beginnen.
-
-Um einen Einstieg zu schaffen, haben wir eine einfache Seite erstellt, in der aktuelle Konzepte für reaktionsfähige Benutzeroberflächen eingesetzt werden und die auf allen Browsern und mobilen Geräten lauffähig ist.
-
-  ![][007]
-
-Sie können [die Website-Vorlage hier herunterladen](https://github.com/kenhoff/password-reset-page).  Es wird empfohlen, das Logo und die Farben dem Bedarf Ihrer Organisation anpassen.
-
-### <a name="using-enforced-registration"></a>Verwenden der erzwungenen Registrierung
-Wenn Ihre Benutzer sich selbst für die Kennwortzurücksetzung registrieren sollen, können Sie sie auch zur Registrierung zwingen, sobald sie sich im Zugriffsbereich unter [http://myapps.microsoft.com](http://myapps.microsoft.com)anmelden.  Aktivieren Sie diese Option auf der Registerkarte **Konfigurieren** des Verzeichnisses, indem Sie die Option **Sollen sich Benutzer bei der Anmeldung im Zugriffsbereich registrieren müssen?** aktivieren.  
-
-Sie können optional auch definieren, ob sie nach einem konfigurierbaren Zeitraum zur Neuregistrierung aufgefordert werden, indem Sie die Option **Anzahl der Tage, bis Benutzer ihre Kontaktdaten bestätigen müssen** auf einen Wert ungleich null festlegen. Weitere Informationen finden Sie unter [Anpassen des Verhaltens der Benutzerkennwortverwaltung](active-directory-passwords-customize.md#password-management-behavior)
-
-  ![][002]
-
-Nachdem Sie diese Option aktiviert haben, wird den Benutzern bei der Anmeldung im Zugriffsbereich ein Popupfenster angezeigt, das sie über die vom Administrator vorgegebene Notwendigkeit zur Prüfung ihrer Kontaktinformationen informiert. Sie können darüber ihr Kennwort zurücksetzen, falls sie jemals den Zugriff auf ihr Konto verlieren.
-
-  ![][003]
-
-Durch Klicken auf **Jetzt überprüfen** gelangen sie zum **Registrierungsportal für die Kennwortzurücksetzung** unter [http://aka.ms/ssprsetup](http://aka.ms/ssprsetup). Dort müssen sie sich registrieren.  Die Registrierung über diese Methode kann durch Klicken auf die Schaltfläche **Abbrechen** oder durch Schließen des Fensters verworfen werden. Benutzer werden jedoch bei jeder Anmeldung daran erinnert, wenn sie sich nicht registrieren.
-
-  ![][004]
-
-### <a name="uploading-data-yourself"></a>Selbstständiges Hochladen von Daten
-Wenn Sie Authentifizierungsdaten selbst hochladen möchten, müssen Benutzer sich nicht für die Kennwortzurücksetzung registrieren, damit sie ihre Kennwörter zurücksetzen können.  Solange in den Konten der Benutzer Authentifizierungsdaten definiert sind, die der von Ihnen definierten Richtlinie für die Kontozurücksetzung entsprechen, können diese Benutzer ihre Kennwörter zurücksetzen.
-
-Informationen zu den Eigenschaften, die Sie über AAD Connect oder Windows PowerShell festlegen können, finden Sie unter [Von der Kennwortzurücksetzung verwendete Daten](active-directory-passwords-learn-more.md#what-data-is-used-by-password-reset).
-
-Sie können die Authentifizierungsdaten über das [Azure-Verwaltungsportal](https://manage.windowsazure.com) hochladen, indem Sie die folgenden Schritte durchführen:
-
-1. Navigieren Sie im **Azure-Verwaltungsportal** in der [Active Directory-Erweiterung](https://manage.windowsazure.com)zu Ihrem Verzeichnis.
-2. Klicken Sie auf die Registerkarte **Benutzer** .
-3. Wählen Sie den für Sie relevanten Benutzer aus der Liste aus.
-4. Auf der ersten Registerkarte finden Sie **Alternative E-Mail-Adresse**, die als Eigenschaft zum Aktivieren der Kennwortzurücksetzung verwendet werden kann.
-
-   ![][005]
-5. Klicken Sie auf die Registerkarte **Arbeitsinformationen** .
-6. Auf dieser Seite finden Sie **Bürotelefon**, **Mobiltelefon**, **Telefon für Authentifizierung** und **Authentifizierungs-E-Mail**.  Diese Eigenschaften können auch so festgelegt werden, dass sie einem Benutzer das Zurücksetzen des Kennworts ermöglichen.
-
-   ![][006]
-
-Unter [Von der Kennwortzurücksetzung verwendete Daten](active-directory-passwords-learn-more.md#what-data-is-used-by-password-reset) erfahren Sie, wie die einzelnen Eigenschaften verwendet werden können.
-
-Unter [Zugriff auf Daten zur Kennwortrücksetzung für Ihre Benutzer in PowerShell](active-directory-passwords-learn-more.md#how-to-access-password-reset-data-for-your-users) erfahren Sie, wie Sie diese Daten in PowerShell lesen und festlegen.
-
-## <a name="sample-training-materials"></a>Beispielschulungsmaterial
-Wir arbeiten an Beispielschulungsmaterial, mit dem Sie Ihre IT-Organisation und Ihre Benutzer im Hinblick auf die Bereitstellung und Verwendung der Kennwortzurücksetzung schnell auf den neuesten Stand bringen können.  Halten Sie sich auf dem Laufenden.
-
-<br/>
-<br/>
-<br/>
+Das Deaktivieren der Self-Service-Kennwortzurücksetzung ist einfach. Öffnen Sie Ihren Azure AD-Mandanten, und navigieren Sie zu **Kennwortzurücksetzung** > **Eigenschaften**, und wählen Sie unter **Self-Service-Kennwortzurücksetzung aktiviert** die Option **Niemand**.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortzurücksetzung für Azure AD:
 
-* **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md#reset-my-password).
-    * [**Funktionsweise**](active-directory-passwords-how-it-works.md) – Erfahren Sie mehr über die sechs verschiedenen Komponenten des Diensts und deren Funktionen.
-* [**Erste Schritte**](active-directory-passwords-getting-started.md) – Erfahren Sie, wie Sie Benutzern das Zurücksetzen und Ändern ihrer Cloud- oder lokalen Kennwörter erlauben.
-* [**Anpassen**](active-directory-passwords-customize.md) – Erfahren Sie, wie Sie das Aussehen und Verhalten des Diensts an die Anforderungen Ihrer Organisation anpassen.
-* [**Einblicke erhalten**](active-directory-passwords-get-insights.md) – Erfahren Sie mehr über unsere integrierten Berichtsfunktionen.
-* [**Häufig gestellte Fragen**](active-directory-passwords-faq.md) – Hier erhalten Sie Antworten auf häufig gestellte Fragen.
-* [**Problembehandlung**](active-directory-passwords-troubleshoot.md) – Erfahren Sie, wie Sie Probleme mit dem Dienst schnell beheben.
-* [**Weitere Informationen**](active-directory-passwords-learn-more.md) – Erhalten Sie tiefgehende technische Details zur Funktionsweise des Diensts.
+Die folgenden Links führen zu weiteren Informationen zur Kennwortzurücksetzung mit Azure AD:
 
-[001]: ./media/active-directory-passwords-best-practices/001.jpg "Image_001.jpg"
-[002]: ./media/active-directory-passwords-best-practices/002.jpg "Image_002.jpg"
-[003]: ./media/active-directory-passwords-best-practices/003.jpg "Image_003.jpg"
-[004]: ./media/active-directory-passwords-best-practices/004.jpg "Image_004.jpg"
-[005]: ./media/active-directory-passwords-best-practices/005.jpg "Image_005.jpg"
-[006]: ./media/active-directory-passwords-best-practices/006.jpg "Image_006.jpg"
-[007]: ./media/active-directory-passwords-best-practices/007.jpg "Image_007.jpg"
-
+* [**Schnellstart:**](active-directory-passwords-getting-started.md) Informieren Sie sich schnell über die Self-Service-Kennwortverwaltung von Azure AD. 
+* [**Lizenzierung:**](active-directory-passwords-licensing.md) Konfigurieren Sie Ihre Azure AD-Lizenzierung.
+* [**Daten:**](active-directory-passwords-data.md) Erfahren Sie, welche Daten erforderlich sind und wie sie für die Kennwortverwaltung verwendet werden.
+* [**Anpassung:**](active-directory-passwords-customize.md) Passen Sie das Aussehen und Verhalten von SSPR für Ihr Unternehmen an.
+* [**Richtlinie:**](active-directory-passwords-policy.md) Machen Sie sich mit den Azure AD-Kennwortrichtlinien vertraut, und legen Sie sie fest.
+* [**Kennwortrückschreiben:**](active-directory-passwords-writeback.md) Hier wird die Funktionsweise des Kennwortrückschreibens in Ihrem lokalen Verzeichnis beschrieben.
+* [**Berichterstellung:**](active-directory-passwords-reporting.md) Ermitteln Sie, ob, wann und wo Ihre Benutzer auf SSPR-Funktionen zugreifen.
+* [**Ausführliche technische Informationen:**](active-directory-passwords-how-it-works.md) Steigen Sie tiefer ein, um zu verstehen, wie alles funktioniert.
+* [**Häufig gestellte Fragen (FAQ):**](active-directory-passwords-faq.md) Wie? Warum? Was? Wo? Wer? Wann? Antworten auf Fragen, die Sie schon immer stellen wollten
+* [**Problembehandlung:**](active-directory-passwords-troubleshoot.md) Erfahren Sie, wie Sie häufig auftretende Probleme bei SSPR beheben.
