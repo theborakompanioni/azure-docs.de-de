@@ -1,6 +1,6 @@
 **So erstellen Sie ein neues CDN-Profil**
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com)oben links auf **Neu**.  Wählen Sie auf dem Blatt **Neu** erst **Medien + CDN** und dann **CDN** aus.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com)oben links auf **Neu**.  Wählen Sie auf dem Blatt **Neu** erst **Web und mobil** und dann **CDN** aus.
    
     Das Blatt für das neue CDN-Profil wird angezeigt.
    

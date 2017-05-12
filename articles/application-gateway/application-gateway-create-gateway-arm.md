@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/04/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
-ms.openlocfilehash: 11ecfc993f17c89d4ac4431e9a835000d30afe76
-ms.lasthandoff: 04/05/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 8a0eb841b1a41a14e443b6ce93e6b8fb8985a803
+ms.contentlocale: de-de
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -107,7 +108,7 @@ Im obigen Beispiel haben wir eine Ressourcengruppe namens **appgw-RG** mit dem S
 > [!NOTE]
 > Wenn Sie einen benutzerdefinierten Test für Ihr Anwendungsgateway konfigurieren müssen, sehen Sie sich den folgenden Artikel an: [Erstellen eines benutzerdefinierten Tests für Azure Application Gateway mithilfe von PowerShell für Azure Resource Manager](application-gateway-create-probe-ps.md). Weitere Informationen finden Sie unter [Benutzerdefinierte Tests und Systemüberwachung](application-gateway-probe-overview.md) .
 
-## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Erstellen eines virtuelles Netzwerkes und eines Subnetzes für das Application Gateway
+## <a name="create-a-virtual-network-and-a-subnet"></a>Erstellen eines virtuellen Netzwerks und eines Subnetzes
 
 Das folgende Beispiel zeigt, wie Sie mit dem Ressourcen-Manager ein virtuelles Netzwerk erstellen: In diesem Beispiel wird ein VNET für das Anwendungsgateway erstellt. Da das Anwendungsgateway ein eigenes Subnetz benötigt, ist das für das Anwendungsgateway erstellte Subnetz kleiner als der VNET-Adressraum. Die Verwendung eines kleineren Subnetzes ermöglicht es, andere Ressourcen (einschließlich Webserver) im gleichen VNET zu konfigurieren.
 
@@ -135,7 +136,7 @@ Weisen Sie die Subnetzvariable für die nächsten Schritte zu. Diese Variable wi
 $subnet=$vnet.Subnets[0]
 ```
 
-## <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>Erstellen der öffentlichen IP-Adresse für die Front-End-Konfiguration
+## <a name="create-a-public-ip-address"></a>Erstellen einer öffentlichen IP-Adresse
 
 Erstellen Sie eine öffentliche IP-Ressource namens **publicIP01** in der Ressourcengruppe **appgw-rg** für die Region „USA, Westen“. Das Anwendungsgateway kann eine öffentliche IP-Adresse und/oder eine interne IP-Adresse verwenden, um Anforderungen für den Lastenausgleich zu empfangen.  In diesem Beispiel wird nur eine öffentliche IP-Adresse verwendet. Im folgenden Beispiel wird für die Erstellung der öffentlichen IP-Adresse kein DNS-Name konfiguriert.  Das Anwendungsgateway unterstützt keine benutzerdefinierten DNS-Namen für öffentliche IP-Adressen.  Falls für einen öffentlichen Endpunkt ein benutzerdefinierter Name erforderlich ist, muss ein CNAME-Eintrag erstellt werden, um auf den automatisch generierten DNS-Namen für die öffentliche IP-Adresse zu verweisen.
 
@@ -219,7 +220,7 @@ $sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Cap
 > [!NOTE]
 > Der Standardwert für **InstanceCount** ist 2, der Maximalwert ist 10. Der Standardwert für **GatewaySize** ist "Medium". Sie können zwischen **Standard_Small**, **Standard_Medium** und **Standard_Large** wählen.
 
-## <a name="create-an-application-gateway-by-using-new-azurermapplicationgateway"></a>Erstellen eines Application Gateways mit dem Cmdlet „New-AzureRmApplicationGateway“
+## <a name="create-the-application-gateway"></a>Erstellen des Anwendungsgateways
 
 Erstellen Sie ein Anwendungsgateway mit allen Konfigurationselementen aus den vorherigen Schritten. In diesem Beispiel heißt das Anwendungsgateway **appgwtest**.
 
@@ -233,7 +234,7 @@ Rufen Sie die DNS- und VIP-Details des Anwendungsgateways aus der öffentlichen 
 Get-AzureRmPublicIpAddress -Name publicIP01 -ResourceGroupName appgw-rg  
 ```
 
-## <a name="delete-an-application-gateway"></a>Löschen eines Anwendungsgateways
+## <a name="delete-the-application-gateway"></a>Löschen des Anwendungsgateways
 
 So löschen Sie ein Anwendungsgateway:
 
@@ -296,6 +297,14 @@ IpConfiguration          : {
 DnsSettings              : {
                                 "Fqdn": "00000000-0000-xxxx-xxxx-xxxxxxxxxxxx.cloudapp.net"
                             }
+```
+
+## <a name="delete-all-resources"></a>Löschen aller Ressourcen
+
+Führen Sie die folgenden Schritte aus, um alle Ressourcen zu löschen, die in diesem Artikel erstellt wurden:
+
+```powershell
+Remove-AzureRmResourceGroup -Name appgw-RG
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

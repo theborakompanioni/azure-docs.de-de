@@ -16,10 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/21/2017
 ms.author: danlep
-translationtype: Human Translation
-ms.sourcegitcommit: 71c6c5ffacf49b907e3e9f488789f31928b25823
-ms.openlocfilehash: e01a9ef7d223e7a5a06475cf419b73959baa803f
-ms.lasthandoff: 02/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: b76020e3e5855a63c416851d9b9adefdbdc5874a
+ms.contentlocale: de-de
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.lasthandoff: 02/22/2017
 
 
 
-Für die Interaktion mit Azure-APIs benötigt Kubernetes in Azure Container Service einen [Azure Active Directory-Dienstprinzipal](../active-directory/active-directory-application-objects.md) als Dienstkonto. Der Dienstprinzipal wird für die dynamische Verwaltung von Ressourcen wie etwa benutzerdefinierte Routen und Azure Load Balancer (Layer 4) benötigt.
+Für die Interaktion mit Azure-APIs benötigt Kubernetes in Azure Container Service einen [Azure Active Directory-Dienstprinzipal](../active-directory/active-directory-application-objects.md) als Dienstkonto. Der Dienstprinzipal wird für die dynamische Verwaltung von Ressourcen wie etwa [benutzerdefinierte Routen](../virtual-network/virtual-networks-udr-overview.md) und [Azure Load Balancer (Layer 4)](../load-balancer/load-balancer-overview.md) benötigt.
 
 In diesem Artikel werden verschiedene Optionen zum Angeben eines Dienstprinzipals für Ihren Kubernetes-Cluster gezeigt. Wenn Sie beispielsweise [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2) installiert und eingerichtet haben, können Sie durch Ausführen des Befehls [`az acs create`](https://docs.microsoft.com/en-us/cli/azure/acs#create) sowohl den Kubernetes-Cluster als auch den Dienstprinzipal erstellen.
 

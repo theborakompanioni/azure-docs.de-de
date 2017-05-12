@@ -1,6 +1,6 @@
 ---
-title: Erste Schritte mit Azure Search in NodeJS | Microsoft Docs
-description: Exemplarische Vorgehensweise zur Erstellung einer Suchanwendung in einem gehosteten Cloudsuchdienst mit der Programmiersprache NodeJS.
+title: Erste Schritte mit Azure Search in Node.js | Microsoft-Dokumentation
+description: Exemplarische Vorgehensweise zur Erstellung einer Suchanwendung in einem gehosteten Cloudsuchdienst mit der Programmiersprache Node.js.
 services: search
 documentationcenter: 
 author: EvanBoyle
@@ -12,26 +12,28 @@ ms.devlang: na
 ms.workload: search
 ms.topic: hero-article
 ms.tgt_pltfrm: na
-ms.date: 07/14/2016
+ms.date: 04/26/2017
 ms.author: evboyle
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 8a66c8f6079671b16c1c60467e6d458ed54be5af
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 32865ed986f5eea961ef2c3813dcc6531498c90a
+ms.contentlocale: de-de
+ms.lasthandoff: 04/27/2017
 
 
 ---
-# <a name="get-started-with-azure-search-in-nodejs"></a>Erste Schritte mit Azure Search in NodeJS
+# <a name="get-started-with-azure-search-in-nodejs"></a>Erste Schritte mit Azure Search in Node.js
 > [!div class="op_single_selector"]
 > * [Portal](search-get-started-portal.md)
 > * [.NET](search-howto-dotnet-sdk.md)
 > 
 > 
 
-Erfahren Sie, wie Sie eine benutzerdefinierte NodeJS-Suchanwendung erstellen, die Azure Search zum Suchen verwendet. Dieses Lernprogramm verwendet die [REST-API für den Azure Search-Dienst](https://msdn.microsoft.com/library/dn798935.aspx) zum Erstellen der Objekte und Vorgänge, die in dieser Übung verwendet werden.
+Erfahren Sie, wie Sie eine benutzerdefinierte Node.js-Suchanwendung erstellen, die Azure Search zum Suchen verwendet. Dieses Lernprogramm verwendet die [REST-API für den Azure Search-Dienst](https://msdn.microsoft.com/library/dn798935.aspx) zum Erstellen der Objekte und Vorgänge, die in dieser Übung verwendet werden.
 
-Zum Entwickeln und Testen dieses Codes wurden [NodeJS](https://nodejs.org) und NPM, [Sublime Text 3](http://www.sublimetext.com/3) und Windows PowerShell unter Windows 8.1 verwendet.
+Zum Entwickeln und Testen dieses Codes wurden [Node.js](https://Nodejs.org) und NPM, [Sublime Text 3](http://www.sublimetext.com/3) und Windows PowerShell unter Windows 8.1 verwendet.
 
-Um dieses Beispiel auszuführen, benötigen Sie einen Azure Search-Dienst, für den Sie sich beim [Azure-Portal](https://portal.azure.com)anmelden können. Schrittweise Anweisungen finden Sie unter [Erstellen eines Azure Search-Diensts im Portal](search-create-service-portal.md) .
+Um dieses Beispiel auszuführen, benötigen Sie einen Azure Search-Dienst, für den Sie sich im [Azure-Portal](https://portal.azure.com) anmelden können. Schrittweise Anweisungen finden Sie unter [Erstellen eines Azure Search-Diensts im Portal](search-create-service-portal.md) .
 
 ## <a name="about-the-data"></a>Informationen zu den Daten
 In dieser Beispielanwendung werden Daten von [United States Geological Services (USGS)](http://geonames.usgs.gov/domestic/download_data.htm)verwendet, die nach dem Bundesstaat Rhode Island gefiltert wurden, um die Größe des Datasets zu verringern. Wir verwenden diese Daten, um eine Suchanwendung zu erstellen, die markante Gebäude, wie Krankenhäuser und Schulen, sowie geologische Merkmale, wie Flüsse, Seen und Gipfel, zurückgibt.
@@ -45,26 +47,24 @@ In dieser Anwendung erstellt das Programm **DataIndexer** den Index und lädt ih
 
 <a id="sub-2"></a>
 
-## <a name="find-the-service-name-and-apikey-of-your-azure-search-service"></a>Ermitteln des Dienstnamens und des API-Schlüssels des Azure Search-Diensts
+## <a name="find-the-service-name-and-api-key-of-your-azure-search-service"></a>Ermitteln des Dienstnamens und des API-Schlüssels des Azure Search-Diensts
 Nachdem Sie den Dienst erstellt haben, kehren Sie zum Portal zurück, um die URL oder den `api-key`zu ermitteln. Für Verbindungen mit Ihrem Search-Dienst benötigen Sie sowohl die URL als auch einen `api-key` , um den Aufruf zu authentifizieren.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
-2. Klicken Sie in der Navigationsleiste auf **Search-Dienst** , um alle für Ihr Abonnement bereitgestellten Azure Search-Dienste aufzuführen.
+2. Klicken Sie in der Navigationsleiste auf **Search-Dienst**, um alle für Ihr Abonnement bereitgestellten Azure Search-Dienste aufzuführen.
 3. Wählen Sie den Dienst aus, den Sie verwenden möchten.
-4. Auf dem Service-Dashboard werden Kacheln für wichtige Informationen sowie das Schlüsselsymbol für den Zugriff auf die Administratorschlüssel angezeigt.
-   
-      ![][3]
-5. Kopieren Sie die Dienst-URL, einen Administratorschlüssel und einen Abfrageschlüssel. Sie benötigen diese später, wenn Sie sie der Datei "config.js" hinzufügen.
+4. Auf dem Dienstdashboard werden Kacheln für wichtige Informationen, etwa das Schlüsselsymbol für den Zugriff auf die Administratorschlüssel, angezeigt.
+5. Kopieren Sie die Dienst-URL, einen Administratorschlüssel und einen Abfrageschlüssel. Sie benötigen diese später, wenn Sie sie der Datei „config.js“ hinzufügen.
 
 ## <a name="download-the-sample-files"></a>Herunterladen der Beispieldateien
 Verwenden Sie eine der folgenden Vorgehensweisen zum Herunterladen des Beispiels.
 
-1. Wechseln Sie zu [AzureSearchNodeJSIndexerDemo](https://github.com/AzureSearch/AzureSearchNodeJSIndexerDemo).
+1. Wechseln Sie zu [AzureSearchNodeJSIndexerDemo](https://github.com/AzureSearch/AzureSearchNodejsIndexerDemo).
 2. Klicken Sie auf **Download ZIP**, um die ZIP-Datei auf dem Datenträger zu speichern, und extrahieren Sie dann die darin enthaltenen Dateien.
 
 Alle nachfolgenden Dateiänderungen und Ausführungsanweisungen werden an den Dateien in diesem Ordner vorgenommen.
 
-## <a name="update-the-configjs-with-your-search-service-url-and-apikey"></a>Aktualisieren von „config.js“ mit Ihrer Search-Dienst-URL und dem API-Schlüssel
+## <a name="update-the-configjs-with-your-search-service-url-and-api-key"></a>Aktualisieren von „config.js“ mit Ihrer Search-Dienst-URL und dem API-Schlüssel
 Unter Verwendung der URL und des API-Schlüssels, die Sie zuvor kopiert haben, geben Sie in der Konfigurationsdatei die URL, den Administratorschlüssel und den Abfrageschlüssel an.
 
 Administratorschlüssel gewähren Ihnen uneingeschränkte Kontrolle über die Dienstvorgänge, einschließlich Erstellen oder Löschen eines Indexes und Laden von Dokumenten. Abfrageschlüssel sind hingegen nur für schreibgeschützte Vorgänge vorgesehen und werden in der Regel von Clientanwendungen verwendet, die eine Verbindung mit Azure Search herstellen.
@@ -104,21 +104,16 @@ Sie können auch einen dieser Begriffe ausprobieren:
 * goose +cape
 
 ## <a name="next-steps"></a>Nächste Schritte
-Dies ist das erste Azure Search-Lernprogramm, das auf NodeJS und dem USGS-Dataset basiert. Im Laufe der Zeit werden wir dieses Lernprogramm erweitern, um zusätzliche Suchfunktionen zu veranschaulichen, die Sie in benutzerdefinierten Lösungen vielleicht verwenden möchten.
+Dies ist das erste auf Node.js und dem USGS-Dataset basierende Azure Search-Tutorial. Im Laufe der Zeit werden wir dieses Lernprogramm erweitern, um zusätzliche Suchfunktionen zu veranschaulichen, die Sie in benutzerdefinierten Lösungen vielleicht verwenden möchten.
 
 Wenn Sie bereits über Erfahrungen mit Azure Search verfügen, können Sie dieses Beispiel als Ausgangspunkt für das Testen von Vorschlägen (Typ-ahead- oder AutoVervollständigen-Abfragen), Filtern und Facettennavigation verwenden. Sie können auch die Suchergebnisseite verbessern, indem Sie Statistiken hinzufügen und Dokumente mit Batchvorgängen verarbeiten, damit die Benutzer die Ergebnisse seitenweise anzeigen können.
 
 Neu bei Azure Search? Es wird empfohlen, auch andere Lernprogramme zu bearbeiten, damit Sie ein Verständnis dafür entwickeln, was Sie erstellen können. Besuchen Sie unsere [Dokumentationsseite](https://azure.microsoft.com/documentation/services/search/) , um weitere Ressourcen zu finden. Sie können auch die Links in unserer [Video- und Lernprogrammliste](search-video-demo-tutorial-list.md) besuchen, um auf weitere Informationen zuzugreifen.
 
 <!--Image references-->
-[1]: ./media/search-get-started-nodejs/create-search-portal-1.PNG
-[2]: ./media/search-get-started-nodejs/create-search-portal-2.PNG
-[3]: ./media/search-get-started-nodejs/create-search-portal-3.PNG
-[5]: ./media/search-get-started-nodejs/AzSearch-NodeJS-configjs.png
-[9]: ./media/search-get-started-nodejs/rogerwilliamsschool.png
-
-
-
-<!--HONumber=Nov16_HO2-->
-
+[1]: ./media/search-get-started-Nodejs/create-search-portal-1.PNG
+[2]: ./media/search-get-started-Nodejs/create-search-portal-2.PNG
+[3]: ./media/search-get-started-Nodejs/create-search-portal-3.PNG
+[5]: ./media/search-get-started-Nodejs/AzSearch-Nodejs-configjs.png
+[9]: ./media/search-get-started-Nodejs/rogerwilliamsschool.png
 

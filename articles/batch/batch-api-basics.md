@@ -15,10 +15,11 @@ ms.workload: big-compute
 ms.date: 03/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 23dfe112411ebc6f47e6a3f09baaf1aa746e6987
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: d05739a4d9f0712c2b4b47432bff97594a11b121
+ms.contentlocale: de-de
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -337,7 +338,7 @@ Wenn Sie in Azure Batch einen Pool mit Computeknoten erstellen, können Sie mith
 
 * Das angegebene Subnetz muss die Kommunikation mit dem Batch-Dienst zulassen, um Aufgaben für die Computeknoten planen zu können. Falls die Kommunikation mit den Computeknoten durch eine dem VNET zugeordnete **Netzwerksicherheitsgruppe (NSG)** verhindert wird, legt der Batch-Dienst den Zustand der Computeknoten auf **Nicht verwendbar** fest. 
 
-* Falls dem angegebenen VNET NSGs zugeordnet sind, muss die eingehende Kommunikation aktiviert sein. Bei einem Linux-Pool müssen die Ports 29876, 29877 und 22 aktiviert sein. Bei einem Windows-Pool muss der Port 3389 aktiviert sein.
+* Falls dem angegebenen VNET NSGs zugeordnet sind, muss die eingehende Kommunikation aktiviert sein. Für Linux- und Windows-Pools müssen die Ports 29876 und 29877 aktiviert sein. Sie können Port 22 oder 3389 für SSH in Linux-Pools bzw. für RDP in Windows-Pools optional aktivieren (oder selektiv filtern).
 
 Zusätzliche Einstellungen für das VNET sind abhängig vom Poolzuordnungsmodus des Batch-Kontos.
 

@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/13/2017
 ms.author: jeffstok
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: bf245d8885e6d6628f182e36e0a9c99a4854873a
-ms.lasthandoff: 04/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: bf5b1c0a6e76f712e0be1f16ed1a6b2ac78d68de
+ms.contentlocale: de-de
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -36,13 +37,9 @@ HDInsight umfasst eine R Server-Option für die Integration in Ihren HDInsight-C
 > Für die Schritte in diesem Dokument wird davon ausgegangen, dass Sie ein Kennwort verwenden.
 
 
-### <a name="access-control-requirements"></a>Voraussetzungen für die Zugriffssteuerung
-
-[!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
-
 ## <a name="automated-cluster-creation"></a>Automatisierte Clustererstellung
 
-Sie können die HDInsight R Server-Erstellung automatisieren, indem Sie ARM-Vorlagen, das SDK und PowerShell verwenden.
+Sie können die HDInsight R Server-Erstellung automatisieren, indem Sie Azure Resource Manager-Vorlagen, das SDK und PowerShell verwenden.
 
 * Informationen zur R Server-Erstellung mit einer Azure Resource Manager-Vorlage finden Sie unter [Deploy an R Server HDInsight cluster](https://azure.microsoft.com/resources/templates/101-hdinsight-rserver/) (Bereitstellen eines R Server-HDInsight-Clusters).
 * Informationen zur R Server-Erstellung mit dem .NET SDK finden Sie unter [Erstellen von Linux-basierten Clustern in HDInsight mit dem .NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md).
@@ -629,6 +626,10 @@ Nachdem alle außer Betrieb gesetzten Workerknoten für die Ausführung als Comp
 * Suchen Sie den Abschnitt „URIs“, und fügen Sie die IP-Adress- und Portdetails des Workerknotens hinzu.
 
 ![Außerbetriebnahme von Workerknoten über die Befehlszeile](./media/hdinsight-hadoop-r-server-get-started/get-started-op-cmd.png)
+
+## <a name="troubleshoot"></a>Problembehandlung
+
+Falls beim Erstellen von HDInsight-Clustern Probleme auftreten, sehen Sie sich die [Voraussetzungen für die Zugriffssteuerung](hdinsight-administer-use-portal-linux.md#create-clusters) an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

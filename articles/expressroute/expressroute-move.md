@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 05/02/2017
 ms.author: ganesr
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 945923d9858ec0ed31272c23268b263f77b5c7a4
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 7f8386b518ada850fc03e23c5cae3b159b3b213e
+ms.contentlocale: de-de
+ms.lasthandoff: 05/03/2017
 
 
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>Umstellen von ExpressRoute-Verbindungen vom klassischen Bereitstellungsmodell auf das Resource Manager-Bereitstellungsmodell
 Dieser Artikel enthält eine Übersicht über die Umstellung einer Azure ExpressRoute-Verbindung vom klassischen Bereitstellungsmodell auf das Azure Resource Manager-Bereitstellungsmodell.
-
-[!INCLUDE [vpn-gateway-sm-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 Über eine einzelne ExpressRoute-Verbindung können Sie eine Verbindung mit virtuellen Netzwerken herstellen, die mit dem klassischen Bereitstellungsmodell oder mit dem Resource Manager-Bereitstellungsmodell bereitgestellt wurden. Eine ExpressRoute-Verbindung kann jetzt unabhängig von der Erstellungsmethode mit virtuellen Netzwerken beider Bereitstellungsmodelle verknüpft werden.
 
@@ -87,11 +87,11 @@ In diesem Abschnitt werden die unterstützten Funktionen für ExpressRoute-Verbi
 * Nach der Umstellung einer ExpressRoute-Verbindung auf das Resource Manager-Bereitstellungsmodell können Sie den Lebenszyklus der ExpressRoute-Verbindung nur noch mit dem Resource Manager-Bereitstellungsmodell verwalten. Das bedeutet, dass das Hinzufügen, Aktualisieren und Löschen von Peerings, das Aktualisieren von Verbindungseigenschaften wie Bandbreite, SKU und Abrechnungstyp und das Löschen von Verbindungen nur im Rahmen des Resource Manager-Bereitstellungsmodells möglich ist.
 * Die ExpressRoute-Verbindung fungiert als Brücke zwischen dem klassischen Bereitstellungsmodell und dem Resource Manager-Bereitstellungsmodell. Der Datenverkehr zwischen virtuellen Computern in virtuellen Netzwerken unter dem klassischen Bereitstellungsmodell und virtuellen Computern in virtuellen Netzwerken unter dem Resource Manager-Bereitstellungsmodell wird über die ExpressRoute abgewickelt, wenn beide virtuellen Netzwerke mit der gleichen ExpressRoute-Verbindung verknüpft sind.
 * Abonnementübergreifende Konnektivität wird sowohl im klassischen Bereitstellungsmodell als auch im Resource Manager-Bereitstellungsmodell unterstützt.
+* Nachdem Sie eine ExpressRoute-Verbindung vom klassischen Modell auf das Azure Resource Manager-Modell umgestellt haben, können Sie [die mit der ExpressRoute-Verbindung verknüpften virtuellen Netzwerke migrieren](expressroute-migration-classic-resource-manager.md).
 
 ## <a name="whats-not-supported"></a>Nicht unterstützte Funktionen
 In diesem Abschnitt werden die nicht unterstützten Funktionen für ExpressRoute-Verbindungen beschrieben:
 
-* Umstellen von Verbindungsverknüpfungen, Gateways und virtuellen Netzwerken vom klassischen Bereitstellungsmodell auf das Resource Manager-Bereitstellungsmodell.
 * Verwalten des Lebenszyklus einer ExpressRoute-Verbindung über das klassische Bereitstellungsmodell.
 * Unterstützung der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) für das klassische Bereitstellungsmodell. Für eine Verbindung unter dem klassischen Bereitstellungsmodell können keine RBAC-Vorgänge ausgeführt werden. Jeder Administrator/Co-Administrator des Abonnements kann virtuelle Netzwerke mit der Verbindung verknüpfen oder die Verknüpfung aufheben.
 
@@ -99,16 +99,12 @@ In diesem Abschnitt werden die nicht unterstützten Funktionen für ExpressRoute
 Folgen Sie den Anweisungen unter [Verschieben von ExpressRoute-Verbindungen vom klassischen zum Resource Manager-Bereitstellungsmodell](expressroute-howto-move-arm.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
+* [Migrieren der mit der ExpressRoute-Verbindung verknüpften virtuellen Netzwerke vom klassischen Modell zum Azure Resource Manager-Modell](expressroute-migration-classic-resource-manager.md)
 * Workflowinformationen finden Sie unter [Bereitstellungsworkflows für ExpressRoute-Verbindungen und Verbindungszustände](expressroute-workflows.md).
 * Gehen Sie zum Konfigurieren Ihrer ExpressRoute-Verbindung wie folgt vor:
   
   * [Erstellen einer ExpressRoute-Verbindung](expressroute-howto-circuit-arm.md)
   * [Konfigurieren des Routings](expressroute-howto-routing-arm.md)
   * [Verknüpfen eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-arm.md)
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

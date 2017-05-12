@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: a7b3f8addbba21e60be0076784ae954f4cedb0b8
-ms.lasthandoff: 04/17/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: d29cf81747390fe153c3c6dc330ef738de0cd83a
+ms.contentlocale: de-de
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -48,7 +49,7 @@ Es gibt keine Einschränkungen für die Länge des Präfixes für die NAT-IP, di
 > 
 
 ## <a name="nat-requirements-for-microsoft-peering"></a>NAT-Anforderungen für Microsoft-Peering
-Mit dem Microsoft-Peeringpfad können Sie eine Verbindung mit den Clouddiensten von Microsoft herstellen, die vom öffentlichen Azure-Peeringpfad nicht unterstützt werden. Die Liste der Dienste umfasst Office 365-Dienste wie z. B. Exchange Online, SharePoint Online, Skype for Business und CRM Online. Microsoft wird die bidirektionale Konnektivität beim Microsoft-Peering voraussichtlich unterstützen. Für Datenverkehr, der auf Microsoft-Clouddiensten über öffentliches Peering abzielt, muss vor dem Eintritt in das Microsoft-Netzwerk SNAT mit gültigen, öffentlichen IPv4-Adressen angewendet werden. Auf Datenverkehr, der aus den Microsoft-Clouddiensten in Ihr Netzwerk fließt, muss SNAT angewendet werden, bevor er in Ihr Netzwerk eintritt. Die folgende Abbildung bietet einen allgemeinen Überblick über die Einrichtung von NAT für Microsoft-Peering.
+Mit dem Microsoft-Peeringpfad können Sie eine Verbindung mit den Clouddiensten von Microsoft herstellen, die vom öffentlichen Azure-Peeringpfad nicht unterstützt werden. Die Liste der Dienste umfasst Office 365-Dienste wie z. B. Exchange Online, SharePoint Online, Skype for Business und CRM Online. Microsoft wird die bidirektionale Konnektivität beim Microsoft-Peering voraussichtlich unterstützen. Für Datenverkehr, der auf Microsoft-Clouddiensten über öffentliches Peering abzielt, muss vor dem Eintritt in das Microsoft-Netzwerk SNAT mit gültigen, öffentlichen IPv4-Adressen angewendet werden. Auf Datenverkehr, der aus Microsoft Cloud Services in Ihr Netzwerk fließt, muss an der Internetgrenze SNAT angewendet werden, um [asymmetrisches Routing](expressroute-asymmetric-routing.md) zu verhindern. Die folgende Abbildung bietet einen allgemeinen Überblick über die Einrichtung von NAT für Microsoft-Peering.
 
 ![](./media/expressroute-nat/expressroute-nat-microsoft.png) 
 
@@ -63,7 +64,9 @@ Mit dem Microsoft-Peeringpfad können Sie eine Verbindung mit den Clouddiensten 
 
 ### <a name="traffic-originating-from-microsoft-destined-to-your-network"></a>Datenverkehr von Microsoft an Ihr Netzwerk
 * Bestimmte Szenarios erfordern, dass Microsoft die Konnektivität zu den Dienstendpunkten innerhalb des Netzwerks initiiert. Ein typisches Szenarios wäre die Konnektivität zum ADFS-Server in Ihrem Netzwerk über Office 365. In solchen Fällen müssen Sie entsprechenden Präfixe aus dem Netzwerk in der Microsoft peering einfließen. 
-* Sie müssen SNAT auf den Datenverkehr an IP-Adressen innerhalb des Netzwerks von Microsoft anwenden. 
+* Sie müssen an der Internetgrenze SNAT auf den Microsoft-Datenverkehr für Dienstendpunkte in Ihrem Netzwerk anwenden, um [asymmetrisches Routing](expressroute-asymmetric-routing.md) zu verhindern. Anforderungen **und Antworten** mit einer Ziel-IP, die einer über ExpressRoute empfangenen Route entspricht, werden immer über ExpressRoute gesendet. Asymmetrische Routing tritt auf, wenn die Anforderung über das Internet empfangen und die Antwort über ExpressRoute gesendet wird. Wenn Sie an der Internetgrenze SNAT auf den eingehenden Microsoft-Verkehr anwenden, wird der Antwortdatenverkehr zurück an die Internetgrenze gezwungen. Dadurch wird das Problem behoben.
+
+![Asymmetrisches Routing mit ExpressRoute](./media/expressroute-asymmetric-routing/AsymmetricRouting2.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Sehen Sie sich die Anforderungen für [Routing](expressroute-routing.md) und [QoS](expressroute-qos.md) an.
