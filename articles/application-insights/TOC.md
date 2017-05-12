@@ -18,12 +18,13 @@
 ### [Web-Apps – Laufzeit](app-insights-java-live.md)
 ### [Docker-Apps](app-insights-docker.md)
 
+## Überwachen von Node.js-Apps
+### [Node.js](app-insights-nodejs.md)
 
 ## Überwachen von Webseiten
 ### [JavaScript](app-insights-javascript.md)
-
+ 
 ## Überwachen von anderen Plattformen
-### [Node.js-Apps](app-insights-nodejs.md)
 ### [SharePoint-Websites](app-insights-sharepoint.md)
 ### [Weitere Plattformen](app-insights-platforms.md)
 
@@ -32,7 +33,6 @@
 ## Planen und Entwerfen
 ### [Eingehende Diagnose für Web-Apps und Dienste](app-insights-devops.md)
 ### [Leistungsüberwachung in Webanwendungen](app-insights-web-monitor-performance.md)
-### [Verwendungsanalyse mit Application Insights](app-insights-web-track-usage.md)
 ### [Trennen von Application Insights-Ressourcen](app-insights-separate-resources.md)
 ### [Wie führe ich in Application Insights ... aus?](app-insights-how-do-i.md)
 
@@ -50,7 +50,7 @@
 #### [Abhängigkeiten](app-insights-asp-net-dependencies.md)
 #### [Versionsanmerkungen](app-insights-annotations.md)
 #### [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md)
-
+#### [Snapshot Debugger](app-insights-snapshot-debugger.md)
 
 ### J2EE
 #### [Protokollablaufverfolgungen](app-insights-java-trace-logs.md)
@@ -86,6 +86,11 @@
 #### [Erkenntnisse mit F5](app-insights-visual-studio.md)
 #### [Trends](app-insights-visual-studio-trends.md)
 #### [CodeLens](app-insights-visual-studio-codelens.md)
+
+### Verwendung
+#### [Übersicht](app-insights-usage-overview.md)
+#### [Aufbewahrung](app-insights-usage-retention.md)
+#### [Benutzer, Sitzungen, Ereignisse](app-insights-usage-segmentation.md)
 
 ### Analyse
 
@@ -152,14 +157,14 @@
 ## Neuigkeiten
 
 ### [Blog](https://azure.microsoft.com/blog/tag/application-insights/)
-### [Dienstupdates](https://azure.microsoft.com/en-us/updates/?product=application-insights) 
+### [Dienstupdates](https://azure.microsoft.com/updates/?product=application-insights) 
 ### [SDK-Versionshinweise](app-insights-release-notes.md)
 ### [Anmerkungen zur Version von Developer Analytics Tools](app-insights-release-notes-vsix.md)
 
 ## [Häufig gestellte Fragen](app-insights-troubleshoot-faq.md)
 
 ## Hilfe
-### [MSDN-Forum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=ApplicationInsights)  
+### [MSDN-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=ApplicationInsights)  
 ### [Stack Overflow](http://stackoverflow.com/questions/tagged/az-application-insights)
 ### [Aussagen von Benutzern](https://visualstudio.uservoice.com/forums/357324-application-insights)
 ### [Unterstützung](https://azure.microsoft.com/support/)

@@ -1,51 +1,86 @@
-# Übersicht
-## [Übersicht](active-directory-b2c-overview.md)
-## [Anwendungsarten](active-directory-b2c-apps.md)
-## [Regionale Verfügbarkeit und Datenresidenz](active-directory-b2c-reference-tenant-type.md)
+# [Übersicht](active-directory-b2c-overview.md)
 
 # Erste Schritte
 ## [Erstellen eines Azure AD B2C-Verzeichnisses](active-directory-b2c-get-started.md)
 ## [Registrieren Ihrer Anwendung](active-directory-b2c-app-registration.md)
-## Schnellstarthandbücher
-### [Erstellen einer iOS-App](active-directory-b2c-devquickstarts-ios.md)
-### [Erstellen einer Android-App](active-directory-b2c-devquickstarts-android.md)
-### Erstellen einer .NET-Web-App
-#### [Registrieren von und Anmelden bei einer .NET-Web-App](active-directory-b2c-devquickstarts-web-dotnet-susi.md)
-#### [Aufrufen einer Web-API über eine .NET-Web-App](active-directory-b2c-devquickstarts-web-api-dotnet.md)
-### [Erstellen einer .NET-Web-API](active-directory-b2c-devquickstarts-api-dotnet.md)
-### [Erstellen einer Node.Js-Web-App](active-directory-b2c-devquickstarts-web-node.md)
-### [Erstellen einer Node.js-Web-API](active-directory-b2c-devquickstarts-api-node.md)
-### [Erstellen einer .NET-Desktop-App](active-directory-b2c-devquickstarts-native-dotnet.md)
-### [Verwenden der Azure AD-Graph-API](active-directory-b2c-devquickstarts-graph-dotnet.md)
-## [Häufig gestellte Fragen](active-directory-b2c-faqs.md)
+## Mobile Apps und Desktop-Apps
+### [Übersicht](active-directory-b2c-reference-oauth-code.md)
+### iOS
+#### [iOS Swift mit MSAL](https://github.com/Azure-Samples/active-directory-b2c-ios-swift-native-msal)
+#### [iOS ObjC mit AppAuth](https://github.com/Azure-Samples/active-directory-b2c-ios-native-appauth)
+### Android
+#### [Android mit MSAL](https://github.com/Azure-Samples/active-directory-b2c-android-native-msal)
+#### [Android mit AppAuth](https://github.com/Azure-Samples/active-directory-b2c-android-native-appauth)
+### [.NET](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop)
+### [Xamarin](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native)
+## Web-Apps
+### [Übersicht](active-directory-b2c-reference-oidc.md)
+### [ASP.NET](active-directory-b2c-devquickstarts-web-dotnet-susi.md)
+### [.NET Core](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapp)
+### [NodeJS](active-directory-b2c-devquickstarts-web-node.md)
+## Einzelseiten-Apps
+### [Übersicht](active-directory-b2c-reference-spa.md)
+### [JavaScript](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)
+### [.NET](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi)
+### [NodeJS](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-nodejs-webapi)
+## Web-APIs
+### [ASP.NET](active-directory-b2c-devquickstarts-api-dotnet.md)
+### [NodeJS](active-directory-b2c-devquickstarts-api-node.md)
+### [Aufrufen einer .NET-Web-API](active-directory-b2c-devquickstarts-web-api-dotnet.md)
 
-# Anleitung
-## Verwalten
-### [Aktivieren der mehrstufigen Authentifizierung](active-directory-b2c-reference-mfa.md)
-### [Einrichten der Self-Service-Kennwortzurücksetzung](active-directory-b2c-reference-sspr.md)
-### [Token-, Sitzungs- und SSO-Konfiguration](active-directory-b2c-token-session-sso.md)
-## Entwickeln
-### Registrieren und Anmelden
-#### [Microsoft-Konto](active-directory-b2c-setup-msa-app.md)
-#### [Facebook](active-directory-b2c-setup-fb-app.md)
-#### [Google+](active-directory-b2c-setup-goog-app.md)
-#### [Amazon](active-directory-b2c-setup-amzn-app.md)
-#### [LinkedIn](active-directory-b2c-setup-li-app.md)
-### [Verwenden von benutzerdefinierten Attributen](active-directory-b2c-reference-custom-attr.md)
-### [OAuth 2.0-Autorisierungscodefluss](active-directory-b2c-reference-oauth-code.md)
-### [Webanmeldung mit OpenID Connect](active-directory-b2c-reference-oidc.md)
-### [Anpassen der Benutzeroberfläche](active-directory-b2c-reference-ui-customization.md)
-#### [Hilfstool für die Anpassung](active-directory-b2c-reference-ui-customization-helper-tool.md)
-## Problembehandlung
-### [Probleme beim Erstellen eines Verzeichnisses](active-directory-b2c-support-create-directory.md)
+# Anleitungen
+## Konfigurieren von Identitätsanbietern
+### [Microsoft-Konto](active-directory-b2c-setup-msa-app.md)
+### [Facebook](active-directory-b2c-setup-fb-app.md)
+### [Google](active-directory-b2c-setup-goog-app.md)
+### [Amazon](active-directory-b2c-setup-amzn-app.md)
+### [LinkedIn](active-directory-b2c-setup-li-app.md)
+### [Twitter](active-directory-b2c-setup-twitter-app.md)
+### [Weibo](active-directory-b2c-setup-weibo-app.md)
+### [QQ](active-directory-b2c-setup-qq-app.md)
+### [WeChat](active-directory-b2c-setup-wechat-app.md)
+## [Verwenden der Azure AD-Graph-API](active-directory-b2c-devquickstarts-graph-dotnet.md)
+## [Abrufen von Zugriffstoken](active-directory-b2c-access-tokens.md)
+## [Deaktivieren der E-Mail-Überprüfung](active-directory-b2c-reference-disable-ev.md)
+## [Konfigurieren von Token](active-directory-b2c-token-session-sso.md)
+## [Aktivieren der MFA](active-directory-b2c-reference-mfa.md)
+## [Verwenden von benutzerdefinierten Attributen](active-directory-b2c-reference-custom-attr.md)
+## [Anpassen der Benutzeroberfläche](active-directory-b2c-reference-ui-customization.md)
+### [Hilfstool für die Anpassung](active-directory-b2c-reference-ui-customization-helper-tool.md)
+## [Sprachanpassung](active-directory-b2c-reference-language-customization.md)
+## [Einrichten der Self-Service-Kennwortzurücksetzung](active-directory-b2c-reference-sspr.md)
+
+# Identity Experience Engine
+## [Benutzerdefinierte Richtlinien](active-directory-b2c-overview-custom.md)
+## Anleitungen
+### [Erste Schritte](active-directory-b2c-get-started-custom.md)
+### Konfigurieren von OIDC-Anbietern
+#### [Azure AD](active-directory-b2c-setup-aad-custom.md)
+### Konfigurieren von SAML-Anbietern
+#### [Salesforce](active-directory-b2c-setup-sf-app-custom.md)
+### Integrieren von RESTful-APIs
+#### [Abrufen zusätzlicher Ansprüche](active-directory-b2c-rest-api-step-custom.md)
+#### [Validieren von Benutzereingaben](active-directory-b2c-rest-api-validation-custom.md)
+### Anpassen der Anmeldung
+#### [Konfigurieren der Benutzereingabe](active-directory-b2c-configure-signup-self-asserted-custom.md)
+#### [Anpassen der Benutzeroberfläche](active-directory-b2c-ui-customization-custom.md)
+#### [Anpassen von Token](active-directory-b2c-reference-manage-sso-and-token-configuration.md)
+### Problembehandlung
+#### [Erfassen von Protokollen von Application Insights](active-directory-b2c-troubleshoot-custom.md)
+## Referenz
+### [Anmerkungen zu dieser Version](active-directory-b2c-developer-notes-custom.md)
+
 
 # Referenz
-## [Beschränkungen und Einschränkungen](active-directory-b2c-limitations.md)
-## [Erweiterbares Richtlinienframework](active-directory-b2c-reference-policies.md)
-## [Authentifizierungsprotokolle](active-directory-b2c-reference-protocols.md)
-## [Token](active-directory-b2c-reference-tokens.md)
-
+## Glossar
+### [Anwendungsarten](active-directory-b2c-apps.md)
+### [Authentifizierungsprotokolle](active-directory-b2c-reference-protocols.md)
+### [Integrierte Richtlinien](active-directory-b2c-reference-policies.md)
+### [Token](active-directory-b2c-reference-tokens.md)
+## [Regionale Verfügbarkeit und Datenresidenz](active-directory-b2c-reference-tenant-type.md)
 ## [Verwaltung von Bedrohungen](active-directory-b2c-reference-threat-management.md)
+## [Beschränkungen und Einschränkungen](active-directory-b2c-limitations.md)
+## [Probleme beim Erstellen eines Verzeichnisses](active-directory-b2c-support-create-directory.md)
 
 # Verwandte Themen
 ## [Azure Active Directory](../active-directory/active-directory-whatis.md)
@@ -54,6 +89,8 @@
 # Ressourcen
 ## [Preise](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 ## [Azure AD B2C-Feedbackforum](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c)
-## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c) 
+## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=active-directory-b2c)
+## [Häufig gestellte Fragen](active-directory-b2c-faqs.md)
+## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-ad-b2c)
 ## [Unterstützung](active-directory-b2c-support.md)

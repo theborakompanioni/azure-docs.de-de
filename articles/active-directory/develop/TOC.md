@@ -67,6 +67,7 @@
 ### [OpenID Connect](active-directory-protocols-openid-connect-code.md)
 ### [OAuth](active-directory-protocols-oauth-code.md)
 ### [Bedienen von Dienstaufrufen](active-directory-protocols-oauth-service-to-service.md)
+### [„Im Auftrag von“-Ablauf](active-directory-protocols-oauth-on-behalf-of.md)
 ### [Unterstützte Token- und Anspruchstypen](active-directory-token-and-claims.md)
 ### [Rollover von Signaturschlüsseln](active-directory-signing-key-rollover.md)
 ### [Verbundmetadaten](active-directory-federation-metadata.md)
@@ -77,31 +78,27 @@
 ## [Diensteinschränkungen](../active-directory-service-limits-restrictions.md)
 # v2.0-Endpunkt
 ## [Übersicht](active-directory-appmodel-v2-overview.md)
-### [Unterschiede](active-directory-v2-compare.md)
 ### [App-Typen](active-directory-v2-flows.md)
 ### [Einschränkungen](active-directory-v2-limitations.md)
-## Schnellstarts
-### Mobile Apps
-#### [iOS](active-directory-v2-devquickstarts-ios.md)
-#### [Windows Phone](active-directory-v2-devquickstarts-wpf.md)
-#### [Android](active-directory-v2-devquickstarts-android.md)
-### Web-Apps und -APIs
-#### [AngularJS mit Node JS](active-directory-v2-devquickstarts-angular-node.md)
-#### [Angular JS mit .NET](active-directory-v2-devquickstarts-angular-dotnet.md)
-#### [.NET-Web-App](active-directory-v2-devquickstarts-dotnet-web.md)
-#### [.NET-Web-API](active-directory-v2-devquickstarts-dotnet-api.md)
-#### [NodeJS-API](active-directory-v2-devquickstarts-node-api.md)
+### [v1-v2-Vergleich](active-directory-v2-compare.md)
+## Erste Schritte
+### Mobile Apps und Desktop-Apps
+#### [iOS](https://github.com/Azure-Samples/active-directory-msal-ios-swift)
+#### [Android](guidedsetups/active-directory-android.md)
+#### [Windows Desktop .NET](guidedsetups/active-directory-windesktop.md)
+### Web-Apps
+#### [JavaScript SPA](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2)
+#### [ASP.NET Web Server](guidedsetups/active-directory-aspnetwebapp.md)
 #### [NodeJS-Web-App](active-directory-v2-devquickstarts-node-web.md)
-#### [Web-API über .NET-Web-App](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md)
 ## Anleitungen
 ### [Registrieren einer App](active-directory-v2-app-registration.md)
 ## Referenz
-### [Referenz zur App-Registrierung](active-directory-v2-registration-portal.md)
 ### [Authentifizierungsbibliotheken](active-directory-v2-libraries.md)
 ### [v2.0-Authentifizierungsprotokolle](active-directory-v2-protocols.md)
-#### [Tokenreferenz](active-directory-v2-tokens.md)
-#### [OAuth 2.0-Autorisierungscodefluss](active-directory-v2-protocols-oauth-code.md)
 #### [OpenID Connect](active-directory-v2-protocols-oidc.md)
-#### [Impliziter Flow](active-directory-v2-protocols-implicit.md)
-#### [OAuth 2.0-Clientanmeldeinformationen](active-directory-v2-protocols-oauth-client-creds.md)
+#### [OAuth 2.0-Autorisierungscodeberechtigung](active-directory-v2-protocols-oauth-code.md)
+#### [Implizite OAuth 2.0-Gewährung](active-directory-v2-protocols-implicit.md)
+#### [Gewähren von OAuth 2.0-Clientanmeldeinformationen](active-directory-v2-protocols-oauth-client-creds.md)
+#### [„Im Auftrag von“-Oauth 2.0-Ablauf](active-directory-v2-protocols-oauth-on-behalf-of.md)
+#### [Tokenreferenz](active-directory-v2-tokens.md)
 ### [Bereiche](active-directory-v2-scopes.md)

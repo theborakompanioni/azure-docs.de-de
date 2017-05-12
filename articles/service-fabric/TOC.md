@@ -18,8 +18,10 @@
 ### [Java unter Linux](service-fabric-create-your-first-linux-application-with-java.md)
 ### [C# unter Linux](service-fabric-create-your-first-linux-application-with-csharp.md)
 ## [Bereitstellen von Apps in einem lokalen Cluster](service-fabric-get-started-with-a-local-cluster.md)
+## [Bereitstellen von .NET-Apps in einem Container](service-fabric-host-app-in-a-container.md)
 ## [Erstellen Ihres ersten Clusters in Azure](service-fabric-get-started-azure-cluster.md)
 ## [Erstellen Ihres ersten eigenständigen Clusters](service-fabric-get-started-standalone-cluster.md)
+## [Erstellen Ihrer ersten Container-App](service-fabric-get-started-containers.md)
 
 # Anleitung
 ## Erstellen einer Anwendung
@@ -27,6 +29,7 @@
 ### Konzepte
 #### [Unterstützte Programmiermodelle](service-fabric-choose-framework.md)
 #### [Anwendungsmodell](service-fabric-application-model.md)
+#### [Hostingmodell](service-fabric-hosting-model.md)
 #### [Dienstmanifestressourcen](service-fabric-service-manifest-resources.md)
 #### [Dienststatus](service-fabric-concepts-state.md)
 #### [Dienstpartitionierung](service-fabric-concepts-partitioning.md)
@@ -44,20 +47,29 @@
 #### [Übersicht](service-fabric-containers-overview.md)
 #### [Bereitstellen von Windows Containern](service-fabric-deploy-container.md)
 #### [Bereitstellen von Linux-Containern](service-fabric-deploy-container-linux.md)
+#### [Docker Compose (Vorschau)](service-fabric-docker-compose.md)
+#### [Ressourcenkontrolle für Container und Dienste](service-fabric-resource-governance.md)
 
 ### Erstellen eines Reliable Services-Diensts
 #### [Übersicht](service-fabric-reliable-services-introduction.md)
 #### Konzepte
 ##### [Reliable Services-Lebenszyklus – C#](service-fabric-reliable-services-lifecycle.md)
 ##### [Reliable Services-Lebenszyklus – Java](service-fabric-reliable-services-lifecycle-java.md)
+
+#### Zuverlässige Auflistungen
 ##### [Zuverlässige Auflistungen](service-fabric-reliable-services-reliable-collections.md)
+##### [Zuverlässige Auflistung – Richtlinien und Empfehlungen](service-fabric-reliable-services-reliable-collections-guidelines.md)
+##### [Arbeiten mit Reliable Collections](service-fabric-work-with-reliable-collections.md)
+##### [Transaktionen und Sperren](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
+##### [Reliable Concurrent Queue](service-fabric-reliable-services-reliable-concurrent-queue.md)
+##### [Reliable Collection-Serialisierung](service-fabric-reliable-services-reliable-collections-serialization.md)
+##### [Reliable State Manager und Reliable Collection – ausführliche Informationen](service-fabric-reliable-services-reliable-collections-internals.md)
 
 #### Erste Schritte
 ##### [C# unter Windows](service-fabric-reliable-services-quick-start.md)
 ##### [Java unter Linux](service-fabric-reliable-services-quick-start-java.md)
 
 #### Reliable Services-Lebenszyklus
-#### [Verwenden zuverlässiger Auflistungen](service-fabric-work-with-reliable-collections.md)
 #### [Konfigurieren](service-fabric-reliable-services-configuration.md)
 #### [Senden von Benachrichtigungen](service-fabric-reliable-services-notifications.md)
 #### [Sichern und Wiederherstellen](service-fabric-reliable-services-backup-restore.md)
@@ -94,6 +106,7 @@
 
 ### Kommunizieren mit Diensten
 #### [Dienstkommunikation](service-fabric-connect-and-communicate-with-services.md)
+#### [DNS-Dienst](service-fabric-dnsservice.md)
 #### [Reverseproxy](service-fabric-reverseproxy.md)
 
 ### [Hinzufügen eines Web-Front-Ends](service-fabric-add-a-web-frontend.md)

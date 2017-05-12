@@ -19,6 +19,7 @@
 ### [Effiziente Listenabfragen](batch-efficient-list-queries.md)
 ### [Vorbereitung und Abschluss von Aufträgen](batch-job-prep-release.md)
 ### [Linux-Computeknoten](batch-linux-nodes.md)
+### [Virtuelle Computer mit niedriger Priorität](batch-low-pri-vms.md)
 ### [Verwalten von Batch-Konten mit Batch Management .NET](batch-management-dotnet.md)
 ### [Persistente Aufträge und Aufgabenausgabe](batch-task-output.md)
 ### [Ausführen von MPI-Aufträgen in Batch](batch-mpi.md)
