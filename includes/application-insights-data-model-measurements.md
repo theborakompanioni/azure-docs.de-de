@@ -12,6 +12,6 @@ customEvents
 ```
 
  > [!NOTE]
- > Benutzerdefinierte Messungen werden dem Telemetrieelement zugeordnet, zu dem sie gehören. Außerdem unterliegen sie dem Sampling mit dem Telemetrieelement, das diese Messungen enthält. Verwenden Sie [Metriktelemetrie](#metric-telemetry), um eine Messung nachzuverfolgen, die einen Wert besitzt, der von anderen Telemetrietypen unabhängig ist. 
+ > Benutzerdefinierte Messungen werden dem Telemetrieelement zugeordnet, zu dem sie gehören. Sie unterliegen dem Sampling mit dem Telemetrieelement, das diese Messungen enthält. Verwenden Sie [Metriktelemetrie](../articles/application-insights/app-insights-api-custom-events-metrics.md#send-metrics), um eine Messung nachzuverfolgen, die einen Wert besitzt, der von anderen Telemetrietypen unabhängig ist.
 
 Maximale Schlüssellänge: 150

@@ -5,7 +5,7 @@ keywords:
 services: time-series-insights
 documentationcenter: 
 author: op-ravi
-manager: santoshb
+manager: jhubbard
 editor: cgronlun
 ms.assetid: 
 ms.service: time-series-insights
@@ -13,23 +13,24 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/21/2017
+ms.date: 05/01/2017
 ms.author: omravi
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 5e9ee102c0375c8c1ac0e0ff6bc93989115b7cfa
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 143d48b9fc551ade0d0fd043cdb0cf1f3340a9af
+ms.contentlocale: de-de
+ms.lasthandoff: 05/02/2017
 
 ---
 
 # <a name="grant-data-access-to-a-time-series-insights-environment-using-azure-portal"></a>Gewähren von Datenzugriff für eine Time Series Insights-Umgebung über das Azure-Portal
 
-Time Series Insights-Umgebungen verfügen über zwei unabhängige Arten von Zugriffsrichtlinien:
+Time Series Insights-Umgebungen verfügen über zwei unabhängige Typen von Zugriffsrichtlinien:
 
 * Verwaltungszugriffsrichtlinien
 * Datenzugriffsrichtlinien
 
-Beide Arten von Richtlinien gewähren Azure Active Directory-Prinzipalen (Benutzern und Apps) diverse Berechtigungen für eine bestimmte Umgebung. Die Prinzipale (Benutzer und Apps) müssen dem Active Directory (oder „Azure-Mandanten“) angehören, der dem Abonnement mit der Umgebung zugeordnet ist.
+Beide Richtlinien gewähren Azure Active Directory-Prinzipalen (Benutzern und Apps) diverse Berechtigungen für eine bestimmte Umgebung. Die Prinzipale (Benutzer und Apps) müssen dem Active Directory (oder „Azure-Mandanten“) angehören, der dem Abonnement mit der Umgebung zugeordnet ist.
 
 Verwaltungszugriffsrichtlinien gewähren Berechtigungen im Zusammenhang mit der Konfiguration der Umgebung. Hierzu zählt beispielsweise Folgendes:
 *    Erstellung und Löschung der Umgebung, Ereignisquellen und Verweisdatasets sowie
@@ -39,6 +40,7 @@ Datenzugriffsrichtlinien gewähren Berechtigungen für die Erstellung von Datena
 
 Die beiden Arten von Richtlinien ermöglichen eine klare Trennung zwischen dem Zugriff auf die Umgebungsverwaltung und dem Zugriff auf die Daten in der Umgebung. Dadurch können Sie eine Umgebung beispielsweise so einrichten, dass der Besitzer/Ersteller der Umgebung keinen Datenzugriff hat. Ebenso können Sie Benutzern und Diensten, die über die Berechtigung zum Lesen von Daten aus der Umgebung verfügen, den Zugriff auf die Konfiguration der Umgebung verweigern.
 
+## <a name="grant-data-access"></a>Gewähren des Datenzugriffs
 Die folgenden Schritte zeigen, wie Sie einem Benutzerprinzipal Datenzugriff gewähren:
 
 1.    Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.

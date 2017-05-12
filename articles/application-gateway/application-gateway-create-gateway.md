@@ -15,10 +15,11 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/12/2016
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 119275f335344858cd20b6a17ef87e3ef32b6e12
-ms.openlocfilehash: 8b72a3f26e356af588e9f5c2039bcc525366ce11
-ms.lasthandoff: 03/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 79e373a69f3b899dea1f10ac447a0284931648f4
+ms.contentlocale: de-de
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -106,11 +107,11 @@ DnsName       :
 
 Sie können das Anwendungsgateway per XML oder mit einem Konfigurationsobjekt konfigurieren.
 
-## <a name="configure-the-application-gateway-by-using-xml"></a>Konfigurieren des Anwendungsgateways per XML
+### <a name="configure-the-application-gateway-by-using-xml"></a>Konfigurieren des Anwendungsgateways per XML
 
 Im folgenden Beispiel verwenden Sie eine XML-Datei, um alle Einstellungen des Anwendungsgateways zu konfigurieren und auf die Anwendungsgatewayressource zu übertragen.  
 
-### <a name="step-1"></a>Schritt 1
+#### <a name="step-1"></a>Schritt 1
 
 Kopieren Sie den folgenden Text in Editor.
 
@@ -211,7 +212,7 @@ Das folgende Beispiel zeigt, wie Sie das Anwendungsgateway mithilfe einer Konfig
 </ApplicationGatewayConfiguration>
 ```
 
-### <a name="step-2"></a>Schritt 2
+#### <a name="step-2"></a>Schritt 2
 
 Legen Sie anschließend das Anwendungsgateway fest. Verwenden Sie das Cmdlet `Set-AzureApplicationGatewayConfig` mit einer XML-Konfigurationsdatei.
 
@@ -219,14 +220,14 @@ Legen Sie anschließend das Anwendungsgateway fest. Verwenden Sie das Cmdlet `Se
 Set-AzureApplicationGatewayConfig -Name AppGwTest -ConfigFile "D:\config.xml"
 ```
 
-## <a name="configure-the-application-gateway-by-using-a-configuration-object"></a>Konfigurieren des Anwendungsgateways mit einem Konfigurationsobjekt
+### <a name="configure-the-application-gateway-by-using-a-configuration-object"></a>Konfigurieren des Anwendungsgateways mit einem Konfigurationsobjekt
 
 Das folgende Beispiel zeigt, wie Sie das Anwendungsgateway mithilfe von Konfigurationsobjekten konfigurieren. Alle Konfigurationselemente müssen einzeln konfiguriert und anschließend einem Konfigurationsobjekt für das Anwendungsgateway hinzugefügt werden. Nach dem Erstellen des Konfigurationsobjekts verwenden Sie den Befehl `Set-AzureApplicationGateway`, um die Konfiguration auf die zuvor erstellte Anwendungsgatewayressource zu übertragen.
 
 > [!NOTE]
 > Bevor Sie dem Konfigurationsobjekt einen Wert zuweisen, müssen Sie deklarieren, welcher Objekttyp in PowerShell zum Speichern verwendet wird. Die erste Zeile zum Erstellen der einzelnen Elemente definiert, welche `Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model(object name)` verwendet werden.
 
-### <a name="step-1"></a>Schritt 1
+#### <a name="step-1"></a>Schritt 1
 
 Erstellen Sie die einzelnen Konfigurationselemente.
 
@@ -297,7 +298,7 @@ $rule.Listener = "listener1"
 $rule.BackendAddressPool = "pool1"
 ```
 
-### <a name="step-2"></a>Schritt 2
+#### <a name="step-2"></a>Schritt 2
 
 Weisen Sie die einzelnen Konfigurationselemente einem Konfigurationsobjekt für das Anwendungsgateway ($appgwconfig) zu.
 
@@ -385,9 +386,9 @@ Vip           : 138.91.170.26
 DnsName       : appgw-1b8402e8-3e0d-428d-b661-289c16c82101.cloudapp.net
 ```
 
-## <a name="delete-an-application-gateway"></a>Löschen eines Anwendungsgateways
+## <a name="delete-the-application-gateway"></a>Löschen des Anwendungsgateways
 
-So löschen Sie ein Anwendungsgateway
+So löschen Sie das Anwendungsgateway:
 
 1. Verwenden Sie das Cmdlet `Stop-AzureApplicationGateway` zum Beenden des Gateways.
 2. Verwenden Sie das Cmdlet `Remove-AzureApplicationGateway` zum Entfernen des Gateways.

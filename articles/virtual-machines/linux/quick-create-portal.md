@@ -15,10 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/13/2017
 ms.author: nepeters
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: ab29f01980bc7c3a8f12aaa55ff35baa3bf3f9fb
-ms.lasthandoff: 04/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 8bfc4892343dd62c958ce6937c4879a2b029cb88
+ms.contentlocale: de-de
+ms.lasthandoff: 05/03/2017
 
 ---
 
@@ -46,9 +47,9 @@ Melden Sie sich unter „http://portal.azure.com“ beim Azure-Portal an.
 
 1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Neu**.
 
-2. Wählen Sie **Berechnen** auf dem Blatt **Neu**, wählen Sie **Ubuntu Server 16.04 LTS** auf dem Blatt **Berechnen**, und klicken Sie dann auf die Schaltfläche **Erstellen**.
+2. Wählen Sie **Berechnen** auf dem Blatt **Neu**, wählen Sie *Ubuntu Server 16.04 LTS* auf dem Blatt **Berechnen**, und klicken Sie dann auf die Schaltfläche **Erstellen**.
 
-3. Füllen Sie das Formular **Grundlagen** für die VM aus. Wählen Sie unter **Authentifizierungstyp** die Option **SSH**. Achten Sie beim Einfügen Ihres **Öffentlichen SSH-Schlüssels** darauf, alle führenden oder nachgestellten Leerzeichen zu entfernen. Erstellen Sie für **Ressourcengruppe** eine neue Ressourcengruppe. Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen erstellt und kollektiv verwaltet werden. Klicken Sie zum Abschluss auf **OK**.
+3. Füllen Sie das Formular **Grundlagen** für die VM aus. Wählen Sie unter **Authentifizierungstyp** die Option *SSH*. Achten Sie beim Einfügen Ihres **Öffentlichen SSH-Schlüssels** darauf, alle führenden oder nachgestellten Leerzeichen zu entfernen. Erstellen Sie für **Ressourcengruppe** eine neue Ressourcengruppe. Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen erstellt und kollektiv verwaltet werden. Klicken Sie zum Abschluss auf **OK**.
 
     ![Eingeben grundlegender Informationen zu Ihrem virtuellen Computer im Portalblatt](./media/quick-create-portal/create-vm-portal-basic-blade.png)  
 
@@ -56,11 +57,11 @@ Melden Sie sich unter „http://portal.azure.com“ beim Azure-Portal an.
 
     ![Screenshot: VM-Größen](./media/quick-create-portal/create-linux-vm-portal-sizes.png)  
 
-5. Wählen Sie auf dem Einstellungenblatt **Ja** unter **Verwaltete Datenträger verwenden**, behalten Sie die Standardwerte für die übrigen Einstellungen bei, und klicken Sie auf **OK**.
+5. Wählen Sie auf dem Einstellungenblatt *Ja* unter **Verwaltete Datenträger verwenden**, behalten Sie die Standardwerte für die übrigen Einstellungen bei, und klicken Sie auf **OK**.
 
 6. Klicken Sie auf der Zusammenfassungsseite auf **OK**, um die Bereitstellung des virtuellen Computers zu starten.
 
-7. Um den Bereitstellungsstatus zu überwachen, klicken Sie auf die VM. Sie finden den virtuellen Computer auf dem Dashboard des Azure-Portals oder durch Auswählen von **Virtuelle Computer** im linken Menü. Nachdem der virtuelle Computer erstellt wurde, ändert sich der Status von **Wird bereitgestellt** in **Wird ausgeführt**.
+7. Um den Bereitstellungsstatus zu überwachen, klicken Sie auf die VM. Sie finden den virtuellen Computer auf dem Dashboard des Azure-Portals oder durch Auswählen von **Virtuelle Computer** im linken Menü. Nachdem der virtuelle Computer erstellt wurde, ändert sich der Status von *Wird bereitgestellt* in *Wird ausgeführt*.
 
 
 ## <a name="open-port-80-for-web-traffic"></a>Öffnen von Port 80 für Webdatenverkehr 
@@ -68,10 +69,10 @@ Melden Sie sich unter „http://portal.azure.com“ beim Azure-Portal an.
 Standardmäßig sind für in Azure bereitgestellte virtuelle Linux-Computer nur eingehende SSH-Verbindungen zulässig. Wenn dieser virtuelle Computer als Webserver fungieren soll, muss Port 80 für Webdatenverkehr geöffnet werden. In diesem Schritt erfahren Sie, wie Sie eine Regel für eine Netzwerksicherheitsgruppe (NSG) erstellen, um eingehende Verbindungen an Port 80 zuzulassen.
 
 1. Klicken Sie auf dem Blatt für den virtuellen Computer im Abschnitt **Zusammenfassung** auf den Namen der **Ressourcengruppe**.
-2. Klicken Sie auf dem Blatt für die Ressourcengruppe in der Ressourcenliste auf die **Netzwerksicherheitsgruppe**. Der NSG-Name muss eine Kombination aus dem Namen des virtuellen Computers und dem Suffix „-nsg“ sein.
+2. Klicken Sie auf dem Blatt für die Ressourcengruppe in der Ressourcenliste auf die **Netzwerksicherheitsgruppe**. Der NSG-Name muss eine Kombination aus dem Namen des virtuellen Computers und dem Suffix *-nsg* sein.
 3. Klicken Sie auf die Überschrift **Eingangssicherheitsregel**, um die Eingangsregelliste zu öffnen. Die Liste müsste bereits eine Regel für RDP enthalten.
 4. Klicken Sie auf **+ Hinzufügen**, um das Blatt **Eingangssicherheitsregel hinzufügen** zu öffnen.
-5. Geben Sie unter **Name** den Namen **nginx** ein. Stellen Sie sicher, dass **Portbereich** auf 80 und **Aktion** auf **Zulassen** festgelegt ist. Klicken Sie auf **OK**.
+5. Geben Sie unter **Name** den Namen *nginx* ein. Stellen Sie sicher, dass **Portbereich** auf *80* und **Aktion** auf *Zulassen* festgelegt ist. Klicken Sie auf **OK**.
 
 
 ## <a name="connect-to-virtual-machine"></a>Herstellen der Verbindung mit dem virtuellen Computer
@@ -104,7 +105,7 @@ apt-get -y install nginx
 
 ## <a name="view-the-ngix-welcome-page"></a>Anzeigen der NGIX-Willkommensseite
 
-Nachdem Sie NGINX installiert und Port 80 auf Ihrem virtuellen Computer für den Zugriff über das Internet geöffnet haben, können Sie nun mit einem Webbrowser Ihrer Wahl die NGINX-Standardwillkommensseite anzeigen. Verwenden Sie dabei den dokumentierten Wert von `publicIpAddress`, um die Standardseite zu besuchen. 
+Nachdem Sie NGINX installiert und Port 80 auf Ihrem virtuellen Computer für den Zugriff über das Internet geöffnet haben, können Sie nun mit einem Webbrowser Ihrer Wahl die NGINX-Standardwillkommensseite anzeigen. Ermitteln Sie auf dem Blatt für den virtuellen Computer die *öffentliche IP-Adresse*, und verwenden Sie sie, um die Standardwebsite aufzurufen.
 
 ![NGINX-Standardwebsite](./media/quick-create-cli/nginx.png) 
 ## <a name="delete-virtual-machine"></a>Löschen des virtuellen Computers

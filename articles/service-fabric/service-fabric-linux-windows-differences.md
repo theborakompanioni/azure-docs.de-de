@@ -14,23 +14,24 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/23/2017
 ms.author: subramar
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 5faf7dc0b544f6fe2f83565cc368e218c6df35af
-ms.lasthandoff: 03/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
+ms.openlocfilehash: 00c1f10f7df865344233143ce9cdf546e64acca0
+ms.contentlocale: de-de
+ms.lasthandoff: 05/02/2017
 
 
 ---
 # <a name="differences-between-service-fabric-on-linux-preview-and-windows-generally-available"></a>Unterschiede zwischen Service Fabric unter Linux (Vorschau) und Windows (allgemein verfügbar)
 
-Da es sich bei Service Fabric unter Linux um eine Vorschauversion handelt, werden einige Features zwar unter Windows unterstützt, aber nicht unter Linux. Beide Featuresätze werden vollständig unterstützt, wenn Service Fabric unter Linux den Status der allgemeinen Verfügbarkeit erreicht.
+Da es sich bei Service Fabric unter Linux um eine Vorschauversion handelt, werden einige Features zwar unter Windows unterstützt, aber noch nicht unter Linux. Beide Featuresätze werden vollständig unterstützt, wenn Service Fabric unter Linux den Status der allgemeinen Verfügbarkeit erreicht.
 
 * Reliable Collections – also zuverlässige Sammlungen – werden unter Linux nicht unterstützt. (Dies gilt auch für zustandsbehaftete Reliable Services.)
 * Reverseproxy ist unter Linux nicht verfügbar.
 * Unter Linux ist kein eigenständiges Installationsprogramm verfügbar.
 * Die XML-Schemaüberprüfung für Manifestdateien wird unter Linux nicht durchgeführt. 
 * Die Konsolenumleitung wird unter Linux nicht unterstützt. 
-* Der Fault Analysis Service (FAS) ist unter Linux nicht verfügbar.
+* Fault Analysis Service (FAS) ist unter Linux nicht verfügbar.
 * Azure Active Directory-Unterstützung ist unter Linux nicht verfügbar.
 * Einige CLI-Entsprechungen von PowerShell-Befehlen sind nicht verfügbar.
 * Für einen Linux-Cluster kann nur eine Teilmenge von PowerShell-Befehlen ausgeführt werden (im nächsten Abschnitt beschrieben).
@@ -38,7 +39,7 @@ Da es sich bei Service Fabric unter Linux um eine Vorschauversion handelt, werde
 >[!NOTE]
 >In Produktionsclustern wird die Konsolenumleitung auch unter Windows nicht unterstützt.
 
-Die Entwicklungstools unterscheiden sich für VisualStudio, PowerShell, VSTS und ETW unter Windows und Yeoman, Eclipse, Jenkins und LTTng unter Linux.
+Die Entwicklungstools unterscheiden sich bei Windows und Linux ebenfalls. VisualStudio, PowerShell, VSTS und ETW werden unter Windows und Yeoman, Eclipse, Jenkins und LTTng unter Linux verwendet.
 
 ## <a name="powershell-cmdlets-that-do-not-work-against-a-linux-service-fabric-cluster"></a>PowerShell-Cmdlets, die für einen Linux-Service Fabric-Cluster nicht funktionieren
 

@@ -1,4 +1,7 @@
 ## <a name="provision-the-solution"></a>Bereitstellen der Lösung
+
+Wenn Sie die vorkonfigurierte Lösung für die Remoteüberwachung noch nicht in Ihrem Konto bereitgestellt haben:
+
 1. Melden Sie sich mit den Anmeldeinformationen für Ihr Azure-Konto bei [azureiotsuite.com][lnk-azureiotsuite] an, und klicken Sie auf **+**, um eine Lösung zu erstellen.
 2. Klicken Sie auf der Kachel **Remoteüberwachung** auf **Auswählen**.
 3. Geben Sie einen **Lösungsnamen** für Ihre vorkonfigurierte Remoteüberwachungslösung ein.

@@ -12,12 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/14/2017
+ms.date: 05/02/2017
 ms.author: magoedte
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 0f80ac93e3ff1ee95477e4fa5dbe21d61ddf8ead
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 8a04fda8eaf6e14a278941e7bb55b23012f67850
+ms.contentlocale: de-de
+ms.lasthandoff: 05/03/2017
 
 ---
 
@@ -98,8 +99,6 @@ Wenn Sie ein Automation-Konto im Azure-Portal erstellen, werden automatisch zwei
 
 Die rollenbasierte Zugriffssteuerung ist für Azure Resource Manager verfügbar, um einem Azure AD-Benutzerkonto und ausführenden Konto zulässige Aktionen zu gewähren und den Dienstprinzipal zu authentifizieren.  Weitere Informationen zur Entwicklung Ihres Modells zum Verwalten von Automation-Berechtigungen finden Sie im Artikel [Rollenbasierte Zugriffssteuerung in Azure Automation](automation-role-based-access-control.md) .  
 
-
-
 #### <a name="authentication-methods"></a>Authentifizierungsmethoden
 In der folgenden Tabelle sind die unterschiedlichen Authentifizierungsmethoden für die einzelnen Umgebungen zusammengefasst, die von Azure Automation unterstützt werden.
 
@@ -136,6 +135,13 @@ Wenn Sie ein Automation-Konto für eine bestimmte Region festgelegt haben und di
 | Australien, Südosten |ase-jobruntimedata-prod-su1.azure-automation.net |
 | UK, Süden | uks-jobruntimedata-prod-su1.azure-automation.net |
 | US Government, Virginia | usge-jobruntimedata-prod-su1.azure-automation.us |
+
+Wenn Sie eine Liste mit IP-Adressen statt Namen benötigen, können Sie die XML-Datei mit [Azure Datacenter-IP-Adressen](https://www.microsoft.com/download/details.aspx?id=41653) aus dem Microsoft Download Center herunterladen und überprüfen. 
+
+> [!NOTE]
+> Diese Datei enthält die IP-Adressbereiche (einschließlich Compute-, SQL- und Speicherbereiche), die in Microsoft Azure-Datencentern verwendet werden. Eine aktualisierte Datei mit den derzeit bereitgestellten Bereichen und alle anstehenden Änderungen an den IP-Adressbereichen wird wöchentlich veröffentlicht. In der Datei enthaltene neue Bereiche werden frühestens nach einer Woche in den Datencentern verwendet. Laden Sie die neue XML-Datei jede Woche herunter, und nehmen Sie die erforderlichen Änderungen an Ihrer Website vor, um in Azure ausgeführte Dienste ordnungsgemäß zu ermitteln. Diese Datei zum Aktualisieren der BGP-Ankündigung von Azure-Bereichen wird ExpressRoute-Benutzern jeweils in der ersten Woche des Monats angezeigt. 
+> 
+
 
 ## <a name="implementation"></a>Implementierung
 
@@ -191,27 +197,6 @@ Die empfohlene Methode zum Integrieren von Automation ist die Auswahl des Angebo
 8. Klicken Sie auf **Erstellen**, um mit der Integration von Automation und eines OMS-Arbeitsbereichs zu beginnen. Alle Einstellungen werden überprüft, und anschließend wird versucht, das Angebot in Ihrem Abonnement bereitzustellen.  Dieser Vorgang kann einige Sekunden dauern, und Sie können den Fortschritt im Menü unter **Benachrichtigungen** nachverfolgen. 
 
 Nach der Integration des Angebots können Sie mit der Erstellung von Runbooks beginnen, die aktivierten Verwaltungslösungen einsetzen oder [Log Analytics](https://docs.microsoft.com/azure/log-analytics) verwenden, um Daten zu erfassen, die von den Ressourcen in Ihrer Cloud- oder lokalen Umgebung generiert werden.   
-
-### <a name="resources-included"></a>Enthaltene Ressourcen
-Nach der erfolgreichen Erstellung des Automation-Kontos werden automatisch verschiedene Ressourcen erstellt. Die Ressourcen werden in den folgenden beiden Tabellen zusammengefasst:<br>
-
-#### <a name="run-as-account-resources"></a>Ressourcen des ausführenden Kontos
-
-| Ressource | Beschreibung |
-| --- | --- |
-| AzureAutomationTutorial-Runbook | Ein grafisches Beispielrunbook, das die Authentifizierung mithilfe des ausführenden Kontos veranschaulicht und alle Resource Manager-Ressourcen abruft. |
-| AzureAutomationTutorialScript-Runbook | Ein PowerShell-Beispielrunbook, das die Authentifizierung mithilfe des ausführenden Kontos veranschaulicht und alle Resource Manager-Ressourcen abruft. |
-| AzureRunAsCertificate | Dies ist das Zertifikatasset, das automatisch erstellt wird, wenn Sie ein Automation-Konto erstellen oder das folgende PowerShell-Skript für ein vorhandenes Konto verwenden. Mit dem Zertifikat ist die Authentifizierung bei Azure möglich, sodass Sie Azure Resource Manager-Ressourcen über Runbooks verwalten können. Das Zertifikat ist ein Jahr lang gültig. |
-| AzureRunAsConnection | Dies ist das Verbindungsasset, das automatisch erstellt wird, wenn Sie ein Automation-Konto erstellen oder das PowerShell-Skript für ein vorhandenes Konto verwenden. |
-
-#### <a name="classic-run-as-account-resources"></a>Ressourcen des klassischen ausführenden Kontos
-
-| Ressource | Beschreibung |
-| --- | --- |
-| AzureClassicAutomationTutorial-Runbook | Ein grafisches Beispielrunbook zum Abrufen aller VMs, die mit dem klassischen Bereitstellungsmodell eines Abonnements erstellt werden, indem das klassische ausführende Konto (Zertifikat) verwendet wird. Anschließend werden der VM-Name und der -Status geschrieben. |
-| AzureClassicAutomationTutorialScript-Runbook | Ein PowerShell-Beispielrunbook, das alle klassischen virtuellen Computer in einem Abonnement mithilfe des klassischen ausführenden Kontos (Zertifikat) abruft und anschließend den VM-Namen und -Status schreibt. |
-| AzureClassicRunAsCertificate | Das automatisch erstellte Zertifikatasset, das Sie zum Authentifizieren bei Azure verwenden, sodass Sie klassische Azure-Ressourcen über Runbooks verwalten können. Das Zertifikat ist ein Jahr lang gültig. |
-| AzureClassicRunAsConnection | Das automatisch erstellte Verbindungsasset, das Sie zum Authentifizieren bei Azure verwenden, sodass Sie klassische Azure-Ressourcen über Runbooks verwalten können.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Sie können überprüfen, ob die Authentifizierung Ihres neuen Automation-Kontos für Azure-Ressourcen funktioniert, indem Sie die Informationen zum [Testen der Authentifizierung für ausführende Azure Automation-Konten](automation-verify-runas-authentication.md) verwenden.

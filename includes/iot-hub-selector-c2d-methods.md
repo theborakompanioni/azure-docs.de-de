@@ -1,11 +1,9 @@
 > [!div class="op_single_selector"]
 > * [Node.js](../articles/iot-hub/iot-hub-node-node-direct-methods.md)
 > * [C#](../articles/iot-hub/iot-hub-csharp-node-direct-methods.md)
-> 
-> 
+> * [Java](../articles/iot-hub/iot-hub-java-java-direct-methods.md)
 
-## <a name="introduction"></a>Einführung
-Azure IoT Hub ist ein vollständig verwalteter Dienst, der eine zuverlässige und sichere bidirektionale Kommunikation zwischen Millionen von Geräten und einem Lösungs-Back-End ermöglicht. Frühere Tutorials ([Erste Schritte mit IoT Hub] und [Senden von C2D-Nachrichten mit IoT Hub]) veranschaulichen die grundlegenden Gerät-zu-Cloud- und Cloud-zu-Gerät-Messagingfunktionen von IoT Hub. IoT Hub gibt Ihnen außerdem die Möglichkeit, nicht dauerhafte Methoden auf Geräten aus der Cloud aufzurufen. Methoden stellen eine Anforderung-Antwort-Interaktion mit einem Gerät dar, die einem HTTP-Aufruf darin ähnelt, dass sie unverzüglich (nach einem vom Benutzer angegebenen Timeout) zu einem Erfolg oder Fehler führt, um den Benutzer über den Status des Aufrufs zu informieren. [Aufrufen einer direkten Methode auf einem Gerät][lnk-devguide-methods] beschreibt Methoden ausführlicher und bietet Hinweise dazu, wann Methoden oder Cloud-zu-Gerät-Nachrichten verwendet werden sollten.
+Azure IoT Hub ist ein vollständig verwalteter Dienst, der eine zuverlässige und sichere bidirektionale Kommunikation zwischen Millionen von Geräten und einem Lösungs-Back-End ermöglicht. Frühere Tutorials ([Erste Schritte mit IoT Hub] und [Senden von C2D-Nachrichten mit IoT Hub]) veranschaulichen die grundlegenden Gerät-zu-Cloud- und Cloud-zu-Gerät-Messagingfunktionen von IoT Hub. IoT Hub gibt Ihnen außerdem die Möglichkeit, nicht dauerhafte Methoden auf Geräten aus der Cloud aufzurufen. Direkte Methoden stellen eine Anforderung-Antwort-Interaktion mit einem Gerät dar, die einem HTTP-Aufruf darin ähnelt, dass sie unverzüglich (nach einem vom Benutzer angegebenen Timeout) zu einem Erfolg oder Fehler führt, um den Benutzer über den Status des Aufrufs zu informieren. [Aufrufen einer direkten Methode auf einem Gerät][lnk-devguide-methods] beschreibt direkte Methoden ausführlicher und bietet Hinweise dazu, wann statt C2D-Nachrichten oder gewünschten Eigenschaften eher direkte Methoden verwendet werden sollten.
 
 Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
@@ -14,11 +12,7 @@ Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 * Erstellen einer Konsolen-App, die eine direkte Methode auf der simulierten Geräte-App über Ihren IoT-Hub aufruft
 
 > [!NOTE]
-> Zurzeit ist der Zugriff auf direkte Methoden nur von Geräten aus möglich, die über das MQTT-Protokoll Verbindungen mit IoT Hub herstellen. Anweisungen zum Konvertieren vorhandener Geräte-Apps für die Verwendung von MQTT finden Sie im Artikel [MQTT-Unterstützung][lnk-devguide-mqtt].
-> 
-> 
-
-
+> Zurzeit werden direkte Methoden nur von Geräten unterstützt, die über das MQTT-Protokoll Verbindungen mit IoT Hub herstellen. Anweisungen zum Konvertieren vorhandener Geräte-Apps für die Verwendung von MQTT finden Sie im Artikel [MQTT-Unterstützung][lnk-devguide-mqtt].
 
 
 [lnk-devguide-methods]: ../articles/iot-hub/iot-hub-devguide-direct-methods.md

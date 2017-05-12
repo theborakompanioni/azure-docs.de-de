@@ -18,10 +18,11 @@ ms.author: magoedte
 ROBOTS: NOINDEX
 redirect_url: /azure/automation/automation-offering-get-started
 redirect_document_id: TRUE
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: fbca3d195290551d37606e231b997a40a602351f
-ms.lasthandoff: 03/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 90570886b3a1ae0c48683691cb438b5a61195d76
+ms.contentlocale: de-de
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -245,7 +246,7 @@ Sie können PowerShell verwenden, um Ihr vorhandenes Automation-Konto zu aktuali
 Für das Skript ist Folgendes erforderlich:
 
 * Das Skript kann nur unter Windows 10 und Windows Server 2016 mit Azure Resource Manager-Modul 2.01 und höher ausgeführt werden. Unter älteren Windows-Versionen wird das Skript nicht unterstützt.
-* Azure PowerShell 1.0 und höher. Informationen zur PowerShell 1.0-Version finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
+* Azure PowerShell 1.0 und höher. Informationen zur PowerShell 1.0-Version finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
 * Ein Automation-Konto, auf das im folgenden PowerShell-Skript als Wert für die Parameter *–AutomationAccountName* und *-ApplicationDisplayName* verwiesen wird.
 
 Gehen Sie wie folgt vor, um die Werte für *SubscriptionID*, *ResourceGroup* und *AutomationAccountName* zu erhalten. Hierbei handelt es sich um erforderliche Parameter für die Skripts:
@@ -515,7 +516,7 @@ Sie können den folgenden aktualisierten Beispielcode aus dem Beispielrunbook *A
          }
     }
 
-Um die einfache Verwendung mehrerer Abonnements zu ermöglichen, enthält das Skript zwei zusätzliche Codezeilen, mit denen das Verweisen auf einen Abonnementkontext unterstützt wird. Ein Variablenasset mit dem Namen *SubscriptionId* enthält die ID des Abonnements. Nach der `Add-AzureRmAccount`-Cmdletanweisung wird das [`Set-AzureRmContext`](https://msdn.microsoft.com/library/mt619263.aspx)-Cmdlet mit dem Parametersatz *-SubscriptionId* angegeben. Wenn der Variablenname zu generisch ist, können Sie ihn ändern und ein Präfix hinzufügen oder eine andere Benennungskonvention nutzen, um die Identifizierung zu vereinfachen. Alternativ können Sie anstelle von *-SubscriptionId* auch den Parametersatz *-SubscriptionName* mit einem entsprechenden Variablenasset verwenden.
+Um die einfache Verwendung mehrerer Abonnements zu ermöglichen, enthält das Skript zwei zusätzliche Codezeilen, mit denen das Verweisen auf einen Abonnementkontext unterstützt wird. Ein Variablenasset mit dem Namen *SubscriptionId* enthält die ID des Abonnements. Nach der `Add-AzureRmAccount`-Cmdletanweisung wird das [`Set-AzureRmContext`](/powershell/module/azurerm.profile/set-azurermcontext)-Cmdlet mit dem Parametersatz *-SubscriptionId* angegeben. Wenn der Variablenname zu generisch ist, können Sie ihn ändern und ein Präfix hinzufügen oder eine andere Benennungskonvention nutzen, um die Identifizierung zu vereinfachen. Alternativ können Sie anstelle von *-SubscriptionId* auch den Parametersatz *-SubscriptionName* mit einem entsprechenden Variablenasset verwenden.
 
 Für das Cmdlet, das Sie für die Authentifizierung im Runbook nutzen (`Add-AzureRmAccount`), wird der Parametersatz *ServicePrincipalCertificate* verwendet. Die Authentifizierung wird nicht mit Anmeldeinformationen vorgenommen, sondern mit dem Dienstprinzipalzertifikat.
 

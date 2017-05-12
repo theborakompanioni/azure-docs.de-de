@@ -1,4 +1,4 @@
-### <a name="noconnection"></a>Ändern von Präfixen – keine Gatewayverbindung
+### <a name="noconnection"></a>So ändern Sie die IP-Adresspräfixe eines Gateways des lokalen Netzwerks: Keine Gatewayverbindung
 
 - So fügen Sie weitere Adresspräfixe hinzu:
 
@@ -8,7 +8,7 @@
   -AddressPrefix @('10.0.0.0/24','20.0.0.0/24','30.0.0.0/24')
   ```
 
-- So entfernen Sie ein Adresspräfix:<br>
+- So entfernen Sie Adresspräfixe:<br>
   Lassen Sie die Präfixe weg, die Sie nicht mehr benötigen. In diesem Beispiel wird das Präfix „20.0.0.0/24“ (aus dem vorherigen Beispiel) nicht mehr benötigt. Daher wird das lokale Netzwerkgateway aktualisiert und das Präfix weggelassen.
 
   ```powershell
@@ -17,13 +17,10 @@
   -AddressPrefix @('10.0.0.0/24','30.0.0.0/24')
   ```
 
-### <a name="withconnection"></a>Ändern von Präfixen – vorhandene Gatewayverbindung
-Führen Sie die folgenden Schritte in der angegebenen Reihenfolge aus, wenn eine Gatewayverbindung besteht und Sie die IP-Adresspräfixe Ihres lokalen Netzwerkgateways hinzufügen oder entfernen möchten. Dies führt zu Ausfallzeiten bei Ihrer VPN-Verbindung.
+### <a name="withconnection"></a>So ändern Sie die IP-Adresspräfixe eines Gateways des lokalen Netzwerks: Vorhandene Gatewayverbindung
 
-> [!IMPORTANT]
-> Löschen Sie nicht das VPN-Gateway. Ansonsten müssen Sie die Schritte erneut ausführen, um es neu zu erstellen. Außerdem müssen Sie Ihr lokales VPN-Gerät mit der neuen IP-Adresse des VPN-Gateways aktualisieren.
-> 
-> 
+Führen Sie die folgenden Schritte in der angegebenen Reihenfolge aus, wenn eine Gatewayverbindung besteht und Sie die IP-Adresspräfixe Ihres lokalen Netzwerkgateways hinzufügen oder entfernen möchten. Dies führt zu Ausfallzeiten bei Ihrer VPN-Verbindung. Beim Ändern von IP-Adresspräfixen müssen Sie das VPN-Gateway nicht löschen. Sie müssen nur die Verbindung entfernen.
+
 
 1. Entfernen Sie die Verbindung.
 

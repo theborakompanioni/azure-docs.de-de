@@ -1,5 +1,5 @@
 ---
-title: "Übersicht über Service Bus Premium- und Standard-Preisstufen für Messaging | Microsoft Docs"
+title: "Übersicht über Azure Service Bus Premium- und Standard-Tarife für Messaging | Microsoft-Dokumentation"
 description: "Service Bus Premium- und Standard-Tarif für Messaging"
 services: service-bus-messaging
 documentationcenter: .net
@@ -12,12 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/19/2017
+ms.date: 04/28/2017
 ms.author: darosa;sethm;jotaub
-translationtype: Human Translation
-ms.sourcegitcommit: e0c999b2bf1dd38d8a0c99c6cdd4976cc896dd99
-ms.openlocfilehash: 606838dbeec5e9762f67159ece1bbc8a78769420
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
+ms.openlocfilehash: 72e4c59e1282d97cfc5aa5f55861c6f70d419ce8
+ms.contentlocale: de-de
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -47,7 +48,7 @@ In den folgenden Abschnitten werden einige Unterschiede zwischen der Premium- un
 
 ### <a name="partitioned-queues-and-topics"></a>Partitionierte Warteschlangen und Themen
 
-Partitionierte Warteschlangen und Themen werden beim Premium-Messaging unterstützt, funktionieren allerdings anders als in den Standard- und Basic-Tarifen des Service Bus-Messaging. Bei Premium-Messaging wird nicht SQL als Datenspeicher verwendet, und im Gegensatz zu einer gemeinsam verwendeten Plattform können Ressourcen nicht mehr gleichzeitig verwendet werden. Daher ist eine Partitionierung zur Steigerung der Leistung nicht erforderlich. Darüber hinaus wurde die Anzahl der Partitionen von 16 bei Standard-Messaging in zwei Partitionen bei Premium-Messaging geändert. Bei zwei Partitionen ist die Verfügbarkeit sichergestellt, und diese Anzahl eignet sich besser für die Premium-Laufzeitumgebung. Weitere Informationen zur Partitionierung finden Sie unter [Partitionierte Warteschlangen und Themen](service-bus-partitioning.md).
+Partitionierte Warteschlangen und Themen werden in Premium-Messaging unterstützt. Diese Entitäten sind tatsächlich immer partitioniert (und können nicht deaktiviert werden). Partitionierte Premium-Warteschlangen und -Themen funktionieren allerdings anders als in den Standard- und Basic-Tarifen des Service Bus-Messaging. Bei Premium-Messaging wird nicht SQL als Datenspeicher verwendet, und im Gegensatz zu einer gemeinsam verwendeten Plattform können Ressourcen nicht mehr gleichzeitig verwendet werden. Daher ist eine Partitionierung zur Steigerung der Leistung nicht erforderlich. Darüber hinaus wurde die Anzahl der Partitionen von 16 bei Standard-Messaging in zwei Partitionen bei Premium-Messaging geändert. Bei zwei Partitionen ist die Verfügbarkeit sichergestellt, und diese Anzahl eignet sich besser für die Premium-Laufzeitumgebung. Weitere Informationen zur Partitionierung finden Sie unter [Partitionierte Warteschlangen und Themen](service-bus-partitioning.md).
 
 ### <a name="express-entities"></a>Expressentitäten
 
