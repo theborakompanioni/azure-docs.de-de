@@ -1,101 +1,101 @@
-- name: "Azure-Datenbank für PostgreSQL – Dokumentation"
+- name: Azure-Datenbank für PostgreSQL – Dokumentation
   href: index.yml
-- name: "Übersicht"
+- name: Übersicht
   items:
-  - name: "Azure-Datenbank für PostgreSQL"
+  - name: Azure-Datenbank für PostgreSQL
     href: overview.md
-- name: "Schnellstarts"
+- name: Schnellstarts
   expanded: true
   items:
-  - name: "Erstellen einer Datenbank – Portal"
+  - name: Erstellen einer Datenbank – Portal
     href: quickstart-create-server-database-portal.md
-  - name: "Erstellen einer Datenbank – Azure-CLI"
+  - name: Erstellen einer Datenbank – Azure-CLI
     href: quickstart-create-server-database-azure-cli.md
-- name: "Beispielskripts"
+- name: Beispielskripts
   items:
-  - name: "Azure-Befehlszeilenschnittstelle"
+  - name: Azure-Befehlszeilenschnittstelle
     href: sample-scripts-azure-cli.md
-- name: "Tutorials"
+- name: Tutorials
   items:
-  - name: "1: Erstellen einer Datenbank"
+  - name: '1: Erstellen einer Datenbank'
     items:
-    - name: "Azure-Portal"
+    - name: Azure-Portal
       href: tutorial-design-database-using-azure-portal.md
-    - name: "Azure-Befehlszeilenschnittstelle"
+    - name: Azure-Befehlszeilenschnittstelle
       href: tutorial-design-database-using-azure-cli.md
-  - name: "2: Erstellen einer Web-App – Python"
+  - name: '2: Erstellen einer Web-App – Python'
     href: ../app-service-web/app-service-web-tutorial-docker-python-postgresql-app.md?toc=%2fazure%2fpostgresql%2ftoc.json
-- name: "Konzepte"
+- name: Konzepte
   items:
-  - name: "Datenbank und Server"
+  - name: Datenbank und Server
     items:
-    - name: "Server"
+    - name: Server
       href: concepts-servers.md
-    - name: "Unterstützte Versionen"
+    - name: Unterstützte Versionen
       href: concepts-supported-versions.md
-    - name: "PostgreSQL-Erweiterungen"
+    - name: PostgreSQL-Erweiterungen
       href: concepts-extensions.md
-    - name: "Serverprotokolle"
+    - name: Serverprotokolle
       href: concepts-server-logs.md
-  - name: "Ressourcen"
+  - name: Ressourcen
     items:
-    - name: "Dienstebenen"
+    - name: Dienstebenen
       href: concepts-service-tiers.md
-    - name: "Computeeinheiten & Speichereinheiten"
+    - name: Computeeinheiten & Speichereinheiten
       href: concepts-compute-unit-and-storage.md
-    - name: "Grenzen"
+    - name: Grenzen
       href: concepts-limits.md
-  - name: "Datenzugriff und Sicherheit"
+  - name: Datenzugriff und Sicherheit
     items:
-    - name: "Firewallregeln"
+    - name: Firewallregeln
       href: concepts-firewall-rules.md
-    - name: "Konfigurieren von SSL"
+    - name: Konfigurieren von SSL
       href: concepts-ssl-connection-security.md
-  - name: "Entwicklung"
+  - name: Entwicklung
     items:
-    - name: "Verbindungsbibliotheken"
+    - name: Verbindungsbibliotheken
       href: concepts-connection-libraries.md
-- name: "Anleitungen"
+- name: Anleitungen
   items:
-  - name: "Firewallregeln"
+  - name: Firewallregeln
     items:
-    - name: "Azure-Portal"
+    - name: Azure-Portal
       href: howto-manage-firewall-using-portal.md
-    - name: "Azure-Befehlszeilenschnittstelle"
+    - name: Azure-Befehlszeilenschnittstelle
       href: howto-manage-firewall-using-cli.md
-  - name: "Wiederherstellen eines Servers"
+  - name: Wiederherstellen eines Servers
     items:
-    - name: "Azure-Portal"
+    - name: Azure-Portal
       href: howto-restore-server-portal.md
-  - name: "Migrieren Ihrer Datenbank"
+  - name: Migrieren Ihrer Datenbank
     items:
-    - name: "Sicherung und Wiederherstellung"
+    - name: Sicherung und Wiederherstellung
       href: howto-migrate-using-dump-and-restore.md
-    - name: "Importieren und Exportieren"
+    - name: Importieren und Exportieren
       href: howto-migrate-using-export-and-import.md
-  - name: "Anpassen von Serverkonfigurationsparametern"
+  - name: Anpassen von Serverkonfigurationsparametern
     items:
-    - name: "Azure-Befehlszeilenschnittstelle"
+    - name: Azure-Befehlszeilenschnittstelle
       href: howto-configure-server-parameters-using-cli.md
-  - name: "Serverprotokolle"
+  - name: Serverprotokolle
     items:
-    - name: "Azure-Befehlszeilenschnittstelle"
+    - name: Azure-Befehlszeilenschnittstelle
       href: howto-configure-server-logs-using-cli.md
-- name: "Referenz"
+- name: Referenz
   items:
-  - name: "Azure-Befehlszeilenschnittstelle"
+  - name: Azure-Befehlszeilenschnittstelle
     href: /cli/azure/postgres
-- name: "Ressourcen"
+- name: Ressourcen
   items:
-  - name: "Preise"
+  - name: Preise
     href: https://azure.microsoft.com/pricing/details/postgresql/
-  - name: "MSDN-Forum"
-    href: https://social.msdn.microsoft.com/Forums/home?forum=AzureDatabaseforPostgreSQL
-  - name: "Stack Overflow"
+  - name: MSDN-Forum
+    href: https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureDatabaseforPostgreSQL
+  - name: Stack Overflow
     href: http://stackoverflow.com/questions/tagged/azure-database-postgresql
-  - name: "Feedbackforum"
+  - name: Feedbackforum
     href: https://feedback.azure.com/forums/597976-azure-database-for-postgresql
-  - name: "Regionale Verfügbarkeit"
+  - name: Regionale Verfügbarkeit
     href: https://azure.microsoft.com/regions/services/
-  - name: "Supportoptionen"
+  - name: Supportoptionen
     href: https://azure.microsoft.com/support/options/
