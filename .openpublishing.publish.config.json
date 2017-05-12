@@ -30,7 +30,7 @@
     "master-sync-work"
   ],
   "skip_source_output_uploading": false,
-  "need_preview_pull_request": false,
+  "need_preview_pull_request":true,
   "git_repository_url_open_to_public_contributors": "https://github.com/Microsoft/azure-docs.de-de",
   "git_repository_branch_open_to_public_contributors": "live",
   "enable_incremental_build": true,
@@ -40,6 +40,11 @@
       "url": "https://github.com/Microsoft/templates.docs.msft.de-de",
       "branch": "master",
       "branch_mapping": {}
+    },
+    {
+      "path_to_root": "_themes.pdf",
+      "url": "https://github.com/Microsoft/templates.docs.msft.pdf",
+      "branch": "master"
     },
     {
        "path_to_root": "_repo.en-us",
@@ -57,5 +62,11 @@
       "url": "https://github.com/Azure/azure-docs-powershell-samples.git",
       "branch": "master"
     }
-  ]
+  ],
+  "need_generate_pdf_url_template": false,
+  "Targets": {
+    "Pdf": {
+      "template_folder": "_themes.pdf"
+    }
+  }
 }
