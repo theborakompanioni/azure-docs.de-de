@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/21/2017
+ms.date: 04/24/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: 0f54fb7d2d8cf010baf79409bc6a528d34982500
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: d3c3f6ba0da73a8297f437a56f190f90274957ab
+ms.contentlocale: de-de
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -34,6 +35,7 @@ Die Azure AD-Passthrough-Authentifizierung bietet diesen Organisationen eine ein
 - Benutzerfreundlich
   - Die Kennwortüberprüfung wird durchgeführt, ohne dass komplexe lokale Bereitstellungen oder Netzwerkkonfigurationen erforderlich sind.
   - Es wird lediglich ein einfacher lokaler Connector verwendet, der Kennwortüberprüfungsanforderungen überwacht und auf diese reagiert.
+  - Der lokale Connector verfügt über ein Feature für automatische Updates, sodass Sie automatisch Verbesserungen und Programmfehlerbehebungen erhalten.
   - Sie kann zusammen mit [Azure AD Connect](active-directory-aadconnect.md) konfiguriert werden. Der einfache lokale Connector ist auf demselben Server wie Azure AD Connect installiert.
 - Schützen
   - Lokale Kennwörter werden niemals in irgendeiner Form in der Cloud gespeichert.
@@ -63,7 +65,7 @@ Folgende Szenarien werden in der Preview-Version NICHT unterstützt:
 - Azure AD Join für Windows 10-Geräte
 
 >[!IMPORTANT]
->Als Problemumgehung für Szenarien, in denen derzeit keine Passthrough-Authentifizierung unterstützt wird (ältere Office-Clientanwendungen, Exchange ActiveSync und Azure AD Join für Windows 10-Geräte), ist die Kennwortsynchronisierung standardmäßig ebenfalls aktiviert, wenn Sie die Passthrough-Authentifizierung aktivieren. Die Synchronisierung von Kennwörtern fungiert nur in diesen speziellen Szenarien als Fallback. Wenn Sie sie nicht benötigen, können Sie die Kennwortsynchronisierung in Azure AD Connect auf der Seite [Optionale Features](active-directory-aadconnect-get-started-custom.md#optional-features) deaktivieren.
+>Als Problemumgehung für Szenarien, in denen derzeit kein Passthrough-Authentifizierungsfeature unterstützt wird (ältere Office-Clientanwendungen, Exchange ActiveSync und Azure AD Join für Windows 10-Geräte), ist die Kennwortsynchronisierung standardmäßig ebenfalls aktiviert, wenn Sie die Passthrough-Authentifizierung aktivieren. Die Synchronisierung von Kennwörtern fungiert nur in diesen speziellen Szenarien als Fallback. Wenn Sie sie nicht benötigen, können Sie die Kennwortsynchronisierung im Azure AD Connect-Assistenten auf der Seite [Optionale Features](active-directory-aadconnect-get-started-custom.md#optional-features) deaktivieren.
 
 ## <a name="how-to-enable-azure-ad-pass-through-authentication"></a>Wie wird die Azure AD-Passthrough-Authentifizierung aktiviert?
 
@@ -74,25 +76,27 @@ Bevor Sie die Azure AD-Passthrough-Authentifizierung aktivieren können, müssen
 - Sie fungieren als globaler Administrator für einen Azure AD-Mandanten.
 
 >[!NOTE]
->Es empfiehlt sich, für das Konto des globalen Administrators ein rein cloudbasiertes Konto zu verwenden, damit Sie die Konfiguration Ihres Mandanten auch dann verwalten können, wenn Ihre lokalen Dienste ausfallen oder nicht erreichbar sind. Sie können ein rein cloudbasiertes Konto für den globalen Administrator hinzufügen, wie [hier](../active-directory-users-create-azure-portal.md) gezeigt wird.
+>Es wird dringend empfohlen, für das Konto des globalen Administrators ein rein cloudbasiertes Konto zu verwenden, damit Sie die Konfiguration Ihres Mandanten auch dann verwalten können, wenn Ihre lokalen Dienste ausfallen oder nicht erreichbar sind. Sie können ein rein cloudbasiertes Konto für den globalen Administrator hinzufügen, wie [hier](../active-directory-users-create-azure-portal.md) gezeigt wird.
 
-- Sie verfügen über Azure AD Connect Version 1.1.484.0 oder höher. Es wird empfohlen, die [neueste Version von Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) zu verwenden.
+- Sie verfügen über Azure AD Connect Version 1.1.486.0 oder höher. Es wird empfohlen, die [neueste Version von Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) zu verwenden.
 - Ein Server unter Windows Server 2012 R2 oder höher, auf dem Azure AD Connect ausgeführt wird.
   - Dieser Server muss ein Mitglied derselben AD-Gesamtstruktur wie die der Benutzer sein, deren Kennwörter überprüft werden müssen.
-  - Beachten Sie, dass auf demselben Server wie Azure AD Connect ein Connector installiert ist.
+  - Beachten Sie, dass ein Connector für die Passthrough-Authentifizierung auf dem gleichen Server wie Azure AD Connect installiert wird. Vergewissern Sie sich, dass die Connectorversion 1.5.58.0 oder höher ist.
 
 >[!NOTE]
 >Umgebungen mit mehreren Gesamtstrukturen werden unterstützt, wenn Gesamtstrukturvertrauensstellungen zwischen den AD-Gesamtstrukturen bestehen und das Namensuffixrouting ordnungsgemäß konfiguriert ist.
 
-- Wenn Sie eine hohe Verfügbarkeit anstreben, benötigen Sie zusätzliche Server, auf denen Windows Server 2012 R2 oder höher ausgeführt wird, um eigenständige Connectors zu installieren.
+- Wenn Sie eine hohe Verfügbarkeit anstreben, benötigen Sie zusätzliche Server, auf denen Windows Server 2012 R2 oder höher ausgeführt wird, um eigenständige Connectors zu installieren (erforderliche Mindestversion: 1.5.58.0).
 - Wenn zwischen einem der Connectors und Azure AD eine Firewall vorhanden ist, stellen Sie Folgendes sicher:
     - Wenn die URL-Filterung aktiviert ist, stellen Sie sicher, dass die Connectors mit den folgenden URLs kommunizieren können:
         -  \*.msappproxy.net
         -  \*.servicebus.windows.net
     - Die Connectors stellen auch direkte IP-Verbindungen zu den [IP-Bereichen des Azure-Rechenzentrums](https://www.microsoft.com/en-us/download/details.aspx?id=41653) her.
     - Stellen Sie sicher, dass die Firewall keine SSL-Überprüfung durchführt, da die Connectors Clientzertifikate zur Kommunikation mit Azure AD verwenden.
-    - Stellen Sie sicher, dass die Connectors über die Ports 80 und 443 Anforderungen über HTTPS (TCP) an Azure AD senden können.
+    - Stellen Sie sicher, dass die Connectors über die Ports 80 und 443 ausgehende Anforderungen an Azure AD senden können.
       - Wenn Ihre Firewall Regeln gemäß Ursprungsbenutzern erzwingt, öffnen Sie diese Ports für den Datenverkehr aus Windows-Diensten, die als Netzwerkdienst ausgeführt werden.
+      - Die Connectors stellen HTTP-Anforderungen über Port 80, um SSL-Zertifikatsperrlisten herunterzuladen. Dies wird auch für die ordnungsgemäße Funktion automatischer Updates benötigt.
+      - Die Connectors stellen die HTTPS-Anforderungen für alle anderen Vorgänge über Port 443 bereit. Dazu gehören z.B. das Aktivieren und Deaktivieren des Features, das Registrieren von Connectors, das Herunterladen von Connectorupdates und das Verarbeiten aller Benutzeranmeldeanforderungen.
 
 >[!NOTE]
 >Wir haben kürzlich Verbesserungen vorgenommen, um die Anzahl der Ports, die von den Connectors zur Kommunikation mit unserem Dienst benötigt werden, zu reduzieren. Wenn ältere Versionen von Azure AD Connect- und/oder eigenständige Connectors ausgeführt werden, sollten Sie diese zusätzlichen Ports (5671, 8080, 9090, 9091, 9350, 9352, 10100-10120) weiterhin geöffnet lassen.
@@ -122,7 +126,7 @@ Befolgen Sie die nachstehenden Anweisungen zum Bereitstellen eines eigenständig
 
 In diesem Schritt laden Sie die Connector-Software herunter und installieren diese auf Ihrem Server.
 
-1.    Den aktuellen Connector können Sie [hier](https://go.microsoft.com/fwlink/?linkid=837580) herunterladen.
+1.    Den aktuellen Connector können Sie [hier](https://go.microsoft.com/fwlink/?linkid=837580) herunterladen. Vergewissern Sie sich, dass die Connectorversion 1.5.58.0 oder höher ist.
 2.    Öffnen Sie eine Eingabeaufforderung als Administrator.
 3.    Führen Sie den folgenden Befehl aus („/q“ steht für die unbeaufsichtigte Installation, d.h., Sie werden bei der Installation nicht aufgefordert, den Endbenutzer-Lizenzvertrag zu akzeptieren.):
 
@@ -173,7 +177,7 @@ Ein Passthrough-Authentifizierungs-Connector kann nicht auf demselben Server wie
 
 #### <a name="an-unexpected-error-occured"></a>Ein unerwarteter Fehler ist aufgetreten.
 
-[Sammeln Sie Connector-Protokolle](#how-to-collect-pass-through-authentication-connector-logs?) vom Server und wenden Sie sich mit Ihrem Problem an den Microsoft-Support.
+[Sammeln Sie Connector-Protokolle](#collecting-pass-through-authentication-connector-logs) vom Server und wenden Sie sich mit Ihrem Problem an den Microsoft-Support.
 
 ### <a name="issues-during-registration-of-connectors"></a>Probleme bei der Registrierung von Connectors
 
@@ -181,9 +185,13 @@ Ein Passthrough-Authentifizierungs-Connector kann nicht auf demselben Server wie
 
 Stellen Sie sicher, dass der Server, auf dem der Connector installiert wurde, mit unseren Dienst-URLs und den [hier](#pre-requisites) aufgeführten Ports kommunizieren kann.
 
+#### <a name="registration-of-the-connector-failed-due-to-token-or-account-authorization-errors"></a>Fehler bei der Connectorregistrierung aufgrund von Token- oder Kontoautorisierungsfehlern
+
+Stellen Sie sicher, dass Sie ein ausschließlich für die Cloud geltendes globales Administratorkonto für alle Vorgänge zur Installation und Registrierung von Azure AD Connect- oder eigenständigen Connectors verwenden. Es gibt ein bekanntes Problem mit MFA-fähigen globalen Administratorkonten. Deaktivieren Sie als Umgehungsmaßnahme vorübergehend MFA (nur bis zum Abschluss der Vorgänge).
+
 #### <a name="an-unexpected-error-occurred"></a>Ein unerwarteter Fehler ist aufgetreten.
 
-[Sammeln Sie Connector-Protokolle](#how-to-collect-pass-through-authentication-connector-logs?) vom Server und wenden Sie sich mit Ihrem Problem an den Microsoft-Support.
+[Sammeln Sie Connector-Protokolle](#collecting-pass-through-authentication-connector-logs) vom Server und wenden Sie sich mit Ihrem Problem an den Microsoft-Support.
 
 ### <a name="issues-during-un-installation-of-connectors"></a>Probleme bei der Deinstallation von Connectors
 
@@ -197,11 +205,15 @@ Vor der Deinstallation von Azure AD Connect muss eine [Hochverfügbarkeitskonfig
 
 #### <a name="the-enabling-of-the-feature-failed-because-there-were-no-connectors-available"></a>Die Aktivierung der Funktion ist fehlgeschlagen, da keine Connectors verfügbar waren.
 
-Es muss mindestens ein Connector-Server aktiv sein, damit Sie die Passthrough-Authentifizierung in Ihrem Mandanten aktivieren können. Sie können einen Connector entweder durch die Installation eines Azure AD Connect- oder eines eigenständigen-Connectors installieren.
+Es muss mindestens ein Connector aktiv sein, damit die Passthrough-Authentifizierung in Ihrem Mandanten aktiviert werden kann. Sie können einen Connector durch die Installation von Azure AD Connect oder als eigenständigen Connector installieren.
 
 #### <a name="the-enabling-of-the-feature-failed-due-to-blocked-ports"></a>Die Aktivierung der Funktion ist aufgrund blockierter Ports fehlgeschlagen.
 
 Stellen Sie sicher, dass der Server, auf dem Azure AD Connect installiert ist, mit unseren Dienst-URLs und den [hier](#pre-requisites) aufgeführten Ports kommunizieren kann.
+
+#### <a name="the-enabling-of-the-feature-failed-due-to-token-or-account-authorization-errors"></a>Fehler bei der Aktivierung des Features aufgrund von Token- oder Kontoautorisierungsfehlern
+
+Stellen Sie sicher, dass Sie ein ausschließlich für die Cloud geltendes globales Administratorkonto verwenden, wenn Sie das Feature aktivieren. Es gibt ein bekanntes Problem mit MFA-fähigen (Multi-Factor Authentication) globalen Administratorkonten. Deaktivieren Sie als Umgehungsmaßnahme vorübergehend MFA (nur bis zum Abschluss der Vorgänge).
 
 ### <a name="issues-while-operating-the-pass-through-authentication-feature"></a>Probleme bei der Verwendung der Passthrough-Authentifizierungsfunktion
 
@@ -217,7 +229,7 @@ Die Funktion meldet folgende Benutzerfehler auf dem Bildschirm „Azure AD-Anmel
 |AADSTS80005|Bei der Überprüfung ist eine unvorhersehbare WebException aufgetreten.|Dies ist wahrscheinlich ein vorübergehender Fehler. Wiederholen Sie die Anforderung. Sollte der Fehler weiterhin auftreten, wenden Sie sich an den Microsoft-Support.
 |AADSTS80007|Bei der Kommunikation mit Active Directory ist ein Fehler aufgetreten.|Suchen Sie in den Connectorprotokollen nach weiteren Informationen, und überprüfen Sie, ob Active Directory erwartungsgemäß funktioniert.
 
-### <a name="how-to-collect-pass-through-authentication-connector-logs"></a>Wie werden Protokolle zu Passthrough-Authentifizierungs-Connectors gesammelt?
+### <a name="collecting-pass-through-authentication-connector-logs"></a>Sammeln von Protokollen zu Passthrough-Authentifizierungs-Connectors
 
 Je nach Art des Problems, müssen Sie an verschiedenen Stellen nach Protokollen zu Passthrough-Authentifizierungs-Connectors suchen.
 

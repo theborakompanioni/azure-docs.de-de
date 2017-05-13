@@ -15,10 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-management
 ms.date: 02/01/2017
 ms.author: thmullan;jackr
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 3efb68c12cd05fc0c4ac68497f8c20d1c671df82
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
+ms.openlocfilehash: 957644b81d373ce8d60a8c57c1ba6431bbdf83cb
+ms.contentlocale: de-de
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -71,7 +72,7 @@ SQL-Datenbank schützt Ihre Daten, indem Funktionen für die Überwachung und Be
 Bei der Überwachung von SQL-Datenbank werden Datenbankaktivitäten nachverfolgt, und Sie erhalten Unterstützung bei der Einhaltung von gesetzlichen Bestimmungen, indem Datenbankereignisse in Ihrem Azure Storage-Konto in einem Überwachungsprotokoll aufgezeichnet werden. Dank der Überwachung können Sie die derzeitigen Datenbankaktivitäten verstehen und die Verlaufsaktivität analysieren und untersuchen, um potenzielle Bedrohungen oder vermutete Missbrauchsfälle und Sicherheitsverletzungen zu identifizieren. Weitere Informationen finden Sie unter [Erste Schritte bei der Überwachung von SQL-Datenbank](sql-database-auditing.md).  
 
 ### <a name="threat-detection"></a>Bedrohungserkennung
-Mit der Bedrohungserkennung wird die Überwachung vervollständigt, indem der Azure SQL-Datenbank-Dienst um eine zusätzliche Security Intelligence-Ebene erweitert wird. Sie ist rund um die Uhr aktiv, um zu lernen, Profile zu erstellen und anomale Datenbankaktivitäten zu erkennen. Sie werden vor verdächtigen Aktivitäten, potenziellen Sicherheitsrisiken, Angriffen mit Einschleusung von SQL-Befehlen und anomalen Datenbank-Zugriffsmustern gewarnt. Sie können auf Warnungen reagieren, indem Sie die bereitgestellten informativen und direkt umsetzbaren Anweisungen befolgen. Weitere Informationen finden Sie unter [Erste Schritte mit der Bedrohungserkennung von SQL-Datenbank](sql-database-threat-detection.md).  
+Mit der Bedrohungserkennung wird die Überwachung vervollständigt, indem der Azure SQL-Datenbank-Dienst um eine zusätzliche Security Intelligence-Ebene erweitert wird, die ungewöhnliche und eventuell schädliche Versuche erkennt, auf Datenbanken zuzugreifen oder diese zu missbrauchen. Sie werden vor verdächtigen Aktivitäten, potenziellen Sicherheitsrisiken sowie Angriffen mit Einschleusung von SQL-Befehlen und anomalen Datenbank-Zugriffsmustern gewarnt. Warnungen der Bedrohungserkennung können in [Azure Security Center](https://azure.microsoft.com/en-us/services/security-center/) angezeigt werden und bieten Detailinformationen zu verdächtigen Aktivitäten sowie Empfehlungen, wie die Bedrohung untersucht und abgewendet werden kann. Die Bedrohungserkennung kostet 15 $/Server/Monat. Die ersten 60 Tage ist sie kostenlos. Weitere Informationen finden Sie unter [Erste Schritte mit der Bedrohungserkennung von SQL-Datenbank](sql-database-threat-detection.md).
  
 ### <a name="data-masking"></a>Datenmaskierung 
 Die dynamische Datenmaskierung für SQL-Datenbanken schränkt die Offenlegung vertraulicher Daten ein, indem sie für nicht berechtigte Benutzer maskiert werden. Mit der dynamischen Datenmaskierung werden in Azure SQL-Datenbank automatisch potenziell sensible Daten ermittelt und direkt umsetzbare Empfehlungen bereitgestellt, um diese Felder mit minimalen Auswirkungen auf die Anwendungsschicht zu maskieren. Hierzu werden die sensiblen Daten im Resultset einer Abfrage in festgelegten Datenbankfeldern verborgen, ohne dass die Daten in der Datenbank geändert werden. Weitere Informationen finden Sie unter [Erste Schritte mit der dynamischen Datenmaskierung für SQL-Datenbanken (Azure-Portal)](sql-database-dynamic-data-masking-get-started.md).

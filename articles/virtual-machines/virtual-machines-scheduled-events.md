@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/10/2016
 ms.author: zivr
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 18c7a013c01fee26c5455535af6d9fba2b98fac7
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
+ms.openlocfilehash: 7f0613285bc548e1329be3c33c30939f5998f379
+ms.contentlocale: de-de
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -50,7 +51,12 @@ Geplante Ereignisse werden allen virtuellen Computern in einem Clouddienst oder 
 Wenn ein virtueller Computer innerhalb eines virtuellen Netzwerks (VNet) erstellt wurde, ist der Metadatendienst über die nicht routingfähige IP-Adresse 169.254.169.254 verfügbar. In den Standardszenarien für Clouddienste und klassische virtuelle Computer ist eine zusätzliche Logik erforderlich, um den zu verwendenden Endpunkt zu ermitteln. In diesem Beispiel erfahren Sie, wie Sie den [Hostendpunkt ermitteln] (https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm).
 
 ### <a name="versioning"></a>Versionsverwaltung 
-Der Metadatendienst nutzt eine API mit Versionsangabe im folgenden Format: http://{ip}/metadata/{version}/scheduledevents. Es wird empfohlen, dass der Dienst die neueste Version nutzt, die Sie unter dieser Adresse finden: http://{ip}/metadata/latest/scheduledevents.
+Für den Instanzmetadatendienst wird die Versionsverwaltung genutzt. Versionen sind obligatorisch, und die aktuelle Version ist 2017-03-01.
+
+> [!NOTE] 
+> In früheren Vorschauversionen von geplanten Ereignissen wird {latest} als „api-version“ unterstützt. Dieses Format wird nicht mehr unterstützt und wird zukünftig veraltet sein.
+>
+
 
 ### <a name="using-headers"></a>Verwenden von Headern
 Zum Abfragen des Metadatendiensts müssen Sie den folgenden Header angeben: *Metadata: true*. 
@@ -67,7 +73,8 @@ In beiden Fällen dauert der vom Benutzer initiierte Vorgang länger, da geplant
 ### <a name="query-for-events"></a>Abfragen von Ereignissen
 Sie können geplante Ereignisse abfragen, indem Sie einfach folgenden Aufruf ausführen
 
-    curl -H Metadata:true http://169.254.169.254/metadata/latest/scheduledevents
+    curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2017-03-01
+
 
 Eine Antwort enthält ein Array geplanter Ereignisse. Ein leeres Array bedeutet, dass derzeit keine Ereignisse geplant sind.
 Sofern geplante Ereignisse vorliegen, enthält die Antwort ein Array mit Ereignissen: 
@@ -136,7 +143,7 @@ function HandleScheduledEvents($scheduledEvents)
 
 # Set up the scheduled events uri for VNET enabled VM
 $localHostIP = "169.254.169.254"
-$scheduledEventURI = 'http://{0}/metadata/latest/scheduledevents' -f $localHostIP 
+$scheduledEventURI = 'http://{0}/metadata/scheduledevents?api-version=2017-03-01' -f $localHostIP 
 
 
 # Get the document
@@ -170,7 +177,7 @@ Das folgende Codebeispiel gilt für einen Client, der APIs für die Kommunikatio
 
         public ScheduledEventsClient()
         {
-            scheduledEventsEndpoint = string.Format("http://{0}/metadata/latest/scheduledevents", defaultIpAddress);
+            scheduledEventsEndpoint = string.Format("http://{0}/metadata/scheduledevents?api-version=2017-03-01", defaultIpAddress);
         }
         /// Retrieve Scheduled Events 
         public string GetDocument()
@@ -293,7 +300,7 @@ import urllib2
 import socket
 import sys
 
-metadata_url="http://169.254.169.254/metadata/latest/scheduledevents"
+metadata_url="http://169.254.169.254/metadata/scheduledevents?api-version=2017-03-01"
 headers="{Metadata:true}"
 this_host=socket.gethostname()
 
@@ -329,4 +336,5 @@ if __name__ == '__main__':
 ```
 ## <a name="next-steps"></a>Nächste Schritte 
 [Geplante Wartung für virtuelle Computer in Azure](linux/planned-maintenance.md)
+[Instanzmetadatendienst](virtual-machines-instancemetadataservice-overview.md)
 

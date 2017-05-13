@@ -14,12 +14,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 03/13/2017
+ms.date: 05/01/2017
 ms.author: sasubram
-translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: a063918766ccff6f5d0ec8a344160b912657d55a
-ms.lasthandoff: 03/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: fd02c79d967c5076353f1f9219c22f068b56fb1d
+ms.contentlocale: de-de
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -31,7 +32,7 @@ ms.lasthandoff: 03/15/2017
 Für Benutzer mit vorhandenen Azure AD- oder Microsoft-Konten ist das Einlösen von Einladungen genauso einfach wie das Anmelden.
 
 ## <a name="social-id-user-first-time-redemption"></a>Erste Einlösung für Benutzer mit IDs aus sozialen Netzwerken
-Mit der Azure AD B2B-Zusammenarbeit lässt sich problemlos jede E-Mail-Adresse für die Einlösung verwenden. Das folgende Video veranschaulicht, wie die Einlösung funktioniert, wenn eine nicht von Microsoft stammende E-Mail-Adresse für die B2B-Zusammenarbeit verwendet wird. Dies ist ein etwas komplexerer Einlösungsworkflow, da der Benutzer zum Zeitpunkt der Einlösung möglicherweise ein Konto erstellen muss. Sehen Sie sich das Video an:
+Mit der Azure AD B2B-Zusammenarbeit lässt sich problemlos jede E-Mail-Adresse für die Einlösung verwenden. Das folgende Video veranschaulicht, wie die Einlösung funktioniert, wenn eine nicht von Microsoft stammende E-Mail-Adresse für die B2B-Zusammenarbeit verwendet wird. Dies ist ein komplexerer Einlösungsworkflow, da der Benutzer zum Zeitpunkt der Einlösung möglicherweise ein Konto erstellen muss. Sehen Sie sich das Video an:
 
 >[!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-collaboration-redemption/Player]
 

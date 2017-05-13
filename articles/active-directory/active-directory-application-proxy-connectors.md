@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 04/23/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 7ed296a6773763f7aaae55e9a1667efca7d9e590
-ms.openlocfilehash: d84eaf5abc80270325e34ec6b5d1ee3edfac637a
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: d37f37f77a32f388fac4271af2a5ebda21c014eb
+ms.contentlocale: de-de
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -37,14 +39,14 @@ Connectorgruppen sind unter anderem in folgenden Szenarien nützlich:
 * Connectorgruppen können auch verwendet werden, um mehrere Unternehmen von einem einzigen Mandanten aus zu bedienen.
 
 ## <a name="prerequisite-create-your-connectors"></a>Voraussetzung: Erstellen der Connectors
-Um Connectors zu gruppieren, müssen Sie sicherstellen, dass [mehrere Connectors installiert sind](active-directory-application-proxy-enable.md), und diese dann entsprechend benennen und gruppieren. Im letzten Schritt müssen die Connectors dann bestimmten Apps zugewiesen werden.
+Um Ihre Connectors zu gruppieren [installieren Sie mehrere Connectors](active-directory-application-proxy-enable.md), und benennen und gruppieren Sie sie. Im letzten Schritt müssen die Connectors dann bestimmten Apps zugewiesen werden.
 
 ## <a name="step-1-create-connector-groups"></a>Schritt 1: Erstellen von Connectorgruppen
 Sie können beliebig viele Connectorgruppen erstellen. Das Erstellen von Connectorgruppen erfolgt im klassischen Azure-Portal.
 
 1. Wählen Sie Ihr Verzeichnis aus, und klicken Sie auf **Konfigurieren**.  
     ![Screenshot zum Konfigurieren des Anwendungsproxys – Klicken auf „Connectorgruppen verwalten“](./media/active-directory-application-proxy-connectors/app_proxy_connectors_creategroup.png)
-2. Klicken Sie dann unter „Anwendungsproxy“ auf **Connectorgruppen verwalten** , und erstellen Sie eine neue Connectorgruppe, indem Sie die Gruppe benennen.  
+2. Klicken Sie dann unter „Anwendungsproxy“ auf **Connectorgruppen verwalten**, und erstellen Sie eine neue Connectorgruppe, indem Sie die Gruppe benennen.  
     ![Screenshot zu Connectorgruppen für Anwendungsproxys – neue Gruppe benennen](./media/active-directory-application-proxy-connectors/app_proxy_connectors_namegroup.png)
 
 ## <a name="step-2-assign-connectors-to-your-groups"></a>Schritt 2: Zuordnen von Connectors zu Ihren Gruppen
@@ -55,7 +57,7 @@ Nachdem die Connectorgruppen erstellt wurden, werden die Connectors in die entsp
     ![Screenshot zu Anwendungsproxyconnectors – Gruppe aus dem Dropdown-Menü auswählen](./media/active-directory-application-proxy-connectors/app_proxy_connectors_connectorlist.png)
 
 ## <a name="step-3-assign-applications-to-your-connector-groups"></a>Schritt 3: Zuweisen von Anwendungen zu Ihren Connectorgruppen
-Der letzte Schritt besteht darin, jede Anwendung der Connectorgruppe zuzuweisen, von der sie bedient wird.
+Der letzte Schritt besteht darin, für jede Anwendung die Connectorgruppe festzulegen, von der sie bedient wird.
 
 1. Wählen Sie im klassischen Azure-Portal in Ihrem Verzeichnis die Anwendung aus, die Sie der Gruppe zuweisen möchten, und klicken Sie auf **Konfigurieren**.
 2. Wählen Sie unter **Connectorgruppe**die Gruppe aus, die die Anwendung verwenden soll. Diese Änderung wird sofort übernommen.  
@@ -68,9 +70,4 @@ Der letzte Schritt besteht darin, jede Anwendung der Connectorgruppe zuzuweisen,
 * [Problembehandlung von Anwendungsproxys](active-directory-application-proxy-troubleshoot.md)
 
 Aktuelle Neuigkeiten und Updates finden Sie im [Blog zum Anwendungsproxy](http://blogs.technet.com/b/applicationproxyblog/)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

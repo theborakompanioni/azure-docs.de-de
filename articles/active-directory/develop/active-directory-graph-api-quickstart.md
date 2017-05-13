@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/07/2017
+ms.date: 04/28/2017
 ms.author: patricka
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 45e899364f467404c9a817825e157ba12494a2fa
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
+ms.openlocfilehash: bf079cab3da388a497fc5b7c7ea3d5157cea5ffd
+ms.contentlocale: de-de
+ms.lasthandoff: 04/29/2017
 
 
 ---
@@ -34,15 +35,15 @@ Die Azure Active Directory (AD) Graph-API ermöglicht programmgesteuerten Zugrif
 In der Graph-API können Sie für den Zugriff auf Verzeichnisdaten und Objekte (also Ressourcen oder Entitäten), für die Sie CRUD-Vorgänge ausführen möchten, URLs verwenden, die auf dem OData-Protokoll (Open Data) basieren. Die URLs, die in der Graph-API verwendet werden, bestehen aus vier Hauptkomponenten: Dienststamm, Mandanten-ID, Ressourcenpfad und Optionen für Abfragezeichenfolgen: `https://graph.windows.net/{tenant-identifier}/{resource-path}?[query-parameters]`. Betrachten Sie beispielsweise die folgende URL: `https://graph.windows.net/contoso.com/groups?api-version=1.6`.
 
 * **Dienststamm:** In Azure AD Graph-API ist der Dienststamm immer https://graph.windows.net.
-* **Mandanten-ID**: Dies kann ein überprüfter (registrierter) Domänenname sein, im Beispiel oben "contoso.com". Es kann aber auch eine Objekt-ID des Mandanten oder der Alias „myorganization“ oder „me“ sein. Weitere Informationen finden Sie unter [Adressieren von Entitäten und Vorgängen in der Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-operations-overview)).
-* **Ressourcenpfad:** Dieser Abschnitt einer URL identifiziert die Ressource, mit der interagiert werden soll (Benutzer, Gruppen, ein bestimmter Benutzer oder eine bestimmte Gruppe usw.). Im obigen Beispiel ist es die oberste Ebene "groups" zum Adressieren dieses Ressourcensatzes. Sie können auch eine bestimmte Entität adressieren, beispielsweise "users/{objectId}" oder "users/userPrincipalName".
-* **Abfrageparameter**: ? trennt den Abschnitt für den Ressourcenpfad vom Abschnitt für Abfrageparameter. Der Abfrageparameter "api-version" ist für alle Anforderungen in der Graph-API erforderlich. Die Graph-API unterstützt außerdem die folgenden OData-Abfrageoptionen: **$filter**, **$orderby**, **$expand**, **$top** und **$format**. Die folgenden Abfrageoptionen werden zurzeit nicht unterstützt: **$count**, **$inlinecount** und **$skip**. Weitere Informationen finden Sie unter [Unterstützte Abfragen, Filter und Paginierungsoptionen in der Azure AD Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-supported-queries-filters-and-paging-options).
+* **Mandanten-ID:** Dieser Abschnitt kann ein überprüfter (registrierter) Domänenname sein, im Beispiel oben ist dies „contoso.com“. Es kann aber auch eine Objekt-ID des Mandanten oder der Alias „myorganization“ oder „me“ sein. Weitere Informationen finden Sie unter [Adressieren von Entitäten und Vorgängen in der Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-operations-overview)).
+* **Ressourcenpfad:** Dieser Abschnitt einer URL identifiziert die Ressource, mit der interagiert werden soll (Benutzer, Gruppen, ein bestimmter Benutzer oder eine bestimmte Gruppe usw.). Im obigen Beispiel ist es die oberste Ebene „groups“ zum Adressieren dieses Ressourcensatzes. Sie können auch eine bestimmte Entität adressieren, beispielsweise "users/{objectId}" oder "users/userPrincipalName".
+* **Abfrageparameter:** Ein Fragezeichen (?) trennt den Abschnitt für den Ressourcenpfad vom Abschnitt für Abfrageparameter. Der Abfrageparameter "api-version" ist für alle Anforderungen in der Graph-API erforderlich. Die Graph-API unterstützt außerdem die folgenden OData-Abfrageoptionen: **$filter**, **$orderby**, **$expand**, **$top** und **$format**. Die folgenden Abfrageoptionen werden zurzeit nicht unterstützt: **$count**, **$inlinecount** und **$skip**. Weitere Informationen finden Sie unter [Unterstützte Abfragen, Filter und Paginierungsoptionen in der Azure AD Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-supported-queries-filters-and-paging-options).
 
 ## <a name="graph-api-versions"></a>Graph-API-Versionen
 Sie geben die Version für eine Graph-API-Anforderung im Abfrageparameter "api-version" an. Verwenden Sie ab Version 1.5 einen numerischen Versionswert; api-version=1.6 Für frühere Versionen verwenden Sie eine Datumszeichenfolge, die dem Format JJJJ-MM-TT entspricht, beispielsweise „api-version=2013-11-08“. Verwenden Sie für Funktionen der Vorschauversion die Zeichenfolge "beta", beispielsweise "api-version=beta". Weitere Informationen zu den Unterschieden zwischen den Graph-API-Versionen finden Sie unter [Versionsverwaltung der Azure AD Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-versioning).
 
 ## <a name="graph-api-metadata"></a>Graph-API-Metadaten
-Um die Graph-API-Metadatendatei zurückzugeben, fügen Sie in der URL nach "tenant-identifier" das Segment "$metadata" hinzu. Beispielsweise gibt die folgende URL Metadaten für das Demo-Unternehmen zurück, die von Graph-Explorer verwendet werden: `https://graph.windows.net/GraphDir1.OnMicrosoft.com/$metadata?api-version=1.6`. Sie können diese URL in die Adressleiste eines Webbrowsers eingeben, um die Metadaten anzuzeigen. Das zurückgegebene CSDL-Metadatendokument beschreibt die Entitäten und komplexen Typen, deren Eigenschaften und die Funktionen und Aktionen, die von der angeforderten Graph-API-Version verfügbar gemacht werden. Wenn der Parameter „api-version“ nicht angegeben wird, werden Metadaten für die neueste Version zurückgegeben.
+Um die Graph-API-Metadatendatei zurückzugeben, fügen Sie in der URL nach dem Mandantenbezeichner das Segment „$metadata“ hinzu. Beispielsweise gibt die folgende URL Metadaten für ein Demonstrationsunternehmen zurück: `https://graph.windows.net/GraphDir1.OnMicrosoft.com/$metadata?api-version=1.6`. Sie können diese URL in die Adressleiste eines Webbrowsers eingeben, um die Metadaten anzuzeigen. Das zurückgegebene CSDL-Metadatendokument beschreibt die Entitäten und komplexen Typen, deren Eigenschaften und die Funktionen und Aktionen, die von der angeforderten Graph-API-Version verfügbar gemacht werden. Wenn der Parameter „api-version“ nicht angegeben wird, werden Metadaten für die neueste Version zurückgegeben.
 
 ## <a name="common-queries"></a>Allgemeine Abfragen
 Unter [Allgemeine Abfragen der Azure AD Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-supported-queries-filters-and-paging-options#CommonQueries) werden allgemeine Abfragen aufgeführt, die mit Azure AD Graph verwendet werden können. Dazu gehören auch Abfragen, die für den Zugriff auf Ressourcen der obersten Ebene in Ihrem Verzeichnis verwendet werden können, und Abfragen zum Ausführen von Vorgängen in Ihrem Verzeichnis.
@@ -54,24 +55,19 @@ Beispielsweise gibt `https://graph.windows.net/contoso.com/tenantDetails?api-ver
 ## <a name="using-the-graph-explorer"></a>Verwenden von Graph-Explorer
 Mit dem Graph-Explorer für die Azure AD Graph-API können Sie Verzeichnisdaten abfragen, während Sie eine Anwendung erstellen.
 
-> [!IMPORTANT]
-> Der Graph-Explorer unterstützt das Schreiben oder Löschen von Daten aus einem Verzeichnis nicht. Sie können mit dem Graph-Explorer nur Lesevorgänge in Ihrem Azure AD-Verzeichnis ausführen.
-> 
-> 
-
-Im Folgenden wird die Ausgabe angezeigt, die Sie sehen würden, wenn Sie zum Graph-Explorer navigieren, "Demo-Unternehmen verwenden" auswählen und `https://graph.windows.net/GraphDir1.OnMicrosoft.com/users?api-version=1.6` zur Anzeige aller Benutzer im Demo-Verzeichnis eingeben:
+Im Folgenden wird die Ausgabe angezeigt, die Sie sehen würden, wenn Sie zum Graph-Tester navigieren, sich anmelden und `https://graph.windows.net/GraphDir1.OnMicrosoft.com/users?api-version=1.6` zur Anzeige aller Benutzer im Verzeichnis des angemeldeten Benutzers eingeben:
 
 ![Azure AD Graph-API-Explorer](./media/active-directory-graph-api-quickstart/graph_explorer.png)
 
-**Laden von Graph-Explorer**: Um das Tool zu laden, wechseln Sie zu [https://graphexplorer.cloudapp.net/](https://graphexplorer.cloudapp.net/). Klicken Sie auf **Demo-Unternehmen verwenden** , um den Graph-Explorer für Daten von einem Beispielmandanten auszuführen. Anmeldeinformationen sind zur Verwendung des Demo-Unternehmens nicht erforderlich. Sie können alternativ auf **Anmelden** klicken und sich mit den Anmeldeinformationen Ihres Azure AD-Kontos anmelden, um den Graph-Explorer für Ihren Mandanten auszuführen. Wenn Sie Graph-Explorer für Ihren eigenen Mandanten ausführen, müssen Sie oder Ihr Administrator während der Anmeldung zustimmen. Wenn Sie ein Office 365-Abonnement haben, verfügen Sie automatisch über einen Azure AD-Mandanten. Die Anmeldeinformationen, die Sie verwenden, um sich bei Office 365 anzumelden, sind tatsächlich Azure AD-Konten, und Sie können diese Anmeldeinformationen mit Graph-Explorer verwenden.
+**Laden von Graph-Tester:** Um das Tool zu laden, navigieren Sie zu [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/). Klicken Sie auf **Anmelden**, um sich mit den Anmeldeinformationen Ihres Azure AD-Kontos anzumelden und den Graph-Tester für Ihren Mandanten auszuführen. Wenn Sie Graph-Explorer für Ihren eigenen Mandanten ausführen, müssen Sie oder Ihr Administrator während der Anmeldung zustimmen. Wenn Sie ein Office 365-Abonnement haben, verfügen Sie automatisch über einen Azure AD-Mandanten. Die Anmeldeinformationen, die Sie verwenden, um sich bei Office 365 anzumelden, sind tatsächlich Azure AD-Konten, und Sie können diese Anmeldeinformationen mit Graph-Explorer verwenden.
 
-**Ausführen einer Abfrage:** Um eine Abfrage auszuführen, geben Sie Ihre Abfrage in das Textfeld für die Anforderung ein, und klicken Sie auf **GET**, oder drücken Sie die **EINGABETASTE**. Die Ergebnisse werden im Antwortfeld angezeigt. Beispielsweise listet `https://graph.windows.net/graphdir1.onmicrosoft.com /groups?api-version=1.6` alle Gruppenobjekte im Demo-Verzeichnis auf.
+**Ausführen einer Abfrage:** Um eine Abfrage auszuführen, geben Sie Ihre Abfrage in das Textfeld für die Anforderung ein, und klicken Sie auf **GET**, oder drücken Sie die **EINGABETASTE**. Die Ergebnisse werden im Antwortfeld angezeigt. Beispielsweise listet `https://graph.windows.net/myorganization/groups?api-version=1.6` alle Gruppenobjekte im Verzeichnis des angemeldeten Benutzers auf.
 
 Beachten Sie die folgenden Funktionen und Einschränkungen von Graph-Explorer:
 
-* Funktion zum automatischen Vervollständigen für Ressourcensätze. Um dies zu sehen, klicken Sie auf **Demo-Unternehmen verwenden** , und klicken Sie dann auf das Textfeld für die Anforderung (in dem die Unternehmens-URL angezeigt wird). Sie können einen Ressourcensatz aus der Dropdownliste auswählen.
-* Unterstützt die Adressierungsaliase "me" und "myorganization". Beispielsweise können Sie `https://graph.windows.net/me?api-version=1.6` verwenden, um das Benutzerobjekt des angemeldeten Benutzers zurückzugeben, oder `https://graph.windows.net/myorganization/users?api-version=1.6`, um alle Benutzer im aktuellen Verzeichnis zurückzugeben. Beachten Sie, dass bei Verwendung des Alias "me" für das Demo-Unternehmen ein Fehler zurückgegeben wird, da kein angemeldeter Benutzer die Anforderung ausführt.
-* Ein Abschnitt für den Antwortheader. Dieser kann zur Behandlung von Problemen beim Ausführen von Abfragen verwendet werden.
+* Funktion zum automatischen Vervollständigen für Ressourcensätze. Um diese Funktion zu sehen, klicken Sie auf das Textfeld für die Anforderung (in dem die Unternehmens-URL angezeigt wird). Sie können einen Ressourcensatz aus der Dropdownliste auswählen.
+* Unterstützt die Adressierungsaliase "me" und "myorganization". Beispielsweise können Sie `https://graph.windows.net/me?api-version=1.6` verwenden, um das Benutzerobjekt des angemeldeten Benutzers zurückzugeben, oder `https://graph.windows.net/myorganization/users?api-version=1.6`, um alle Benutzer im aktuellen Verzeichnis zurückzugeben.
+* Ein Abschnitt für den Antwortheader. Dieser Abschnitt kann zur Behandlung von Problemen beim Ausführen von Abfragen verwendet werden.
 * Ein JSON-Viewer für die Antwort mit Funktionen zum Erweitern und Reduzieren.
 * Keine Unterstützung für die Anzeige einer Miniaturansicht von Fotos.
 

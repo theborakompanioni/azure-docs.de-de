@@ -13,11 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 01/19/2017
+ms.date: 05/03/2017
 ms.author: spelluru
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 9591d7e2dd743e44d228205163ad55cb47992283
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 361ad3a669370419e1080d3e4b3fc646f7a0a958
+ms.contentlocale: de-de
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -98,7 +100,7 @@ Diese Eigenschaften gelten für alle Stammassettypen und für alle Anmerkungstyp
 <p>
 Diese Eigenschaften gelten für alle Stammassettypen.
 
-<table><tr><td><b>Eigenschaftenname</b></td><td><b>Datentyp</b></td><td><b>Kommentare</b></td></tr><tr><td>Name</td><td>String</td><td>Ein Name, der sich aus den Speicherortinformationen der Datenquelle ableitet.</td></tr><tr><td>dsl</td><td>DataSourceLocation</td><td>Beschreibt die Datenquelle eindeutig und ist einer der Bezeichner für das Asset. (Siehe Abschnitt zu dualer Identität.)  Die DSL-Struktur variiert je nach Protokoll und Quelltyp.</td></tr><tr><td>dataSource</td><td>DataSourceInfo</td><td>Weitere Informationen zum Typ des Assets.</td></tr><tr><td>lastRegisteredBy</td><td>SecurityPrincipal</td><td>Beschreibt den Benutzer, der dieses Asset zuletzt registriert hat.  Enthält die eindeutige ID für den Benutzer („Upn“) und einen Anzeigenamen („lastName“ und „firstName“).</td></tr><tr><td>containerId</td><td>String</td><td>Die ID des Containerassets für die Datenquelle. Diese Eigenschaft wird für den Containertyp nicht unterstützt.</td></tr></table>
+<table><tr><td><b>Eigenschaftenname</b></td><td><b>Datentyp</b></td><td><b>Kommentare</b></td></tr><tr><td>name</td><td>String</td><td>Ein Name, der sich aus den Speicherortinformationen der Datenquelle ableitet.</td></tr><tr><td>dsl</td><td>DataSourceLocation</td><td>Beschreibt die Datenquelle eindeutig und ist einer der Bezeichner für das Asset. (Siehe Abschnitt zu dualer Identität.)  Die DSL-Struktur variiert je nach Protokoll und Quelltyp.</td></tr><tr><td>dataSource</td><td>DataSourceInfo</td><td>Weitere Informationen zum Typ des Assets.</td></tr><tr><td>lastRegisteredBy</td><td>SecurityPrincipal</td><td>Beschreibt den Benutzer, der dieses Asset zuletzt registriert hat.  Enthält die eindeutige ID für den Benutzer („Upn“) und einen Anzeigenamen („lastName“ und „firstName“).</td></tr><tr><td>containerId</td><td>String</td><td>Die ID des Containerassets für die Datenquelle. Diese Eigenschaft wird für den Containertyp nicht unterstützt.</td></tr></table>
 
 ### <a name="common-non-singleton-annotation-properties"></a>Allgemeine Nicht-Singleton-Anmerkungseigenschaften
 Diese Eigenschaften gelten für alle Nicht-Singleton-Anmerkungstypen (Anmerkungen, von denen pro Asset mehrere vorhanden sein können).
@@ -173,7 +175,7 @@ Anmerkungstypen stellen Typen von Metadaten dar, die anderen Typen innerhalb des
 Allgemeine Typen können als Typen für Eigenschaften verwendet werden, sind aber keine Elemente.
 
 <table>
-<tr><td><b>Allgemeiner Typ</b></td><td><b>Eigenschaften</b></td><td><b>Datentyp</b></td><td><b>Kommentare</b></td></tr>
+<tr><td><b>Allgemeiner Typ</b></td><td><b>Properties</b></td><td><b>Datentyp</b></td><td><b>Kommentare</b></td></tr>
 <tr><td>DataSourceInfo</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>sourceType</td><td>string</td><td>Beschreibt die Art der Datenquelle.  Beispiele: SQL Server, Oracle-Datenbank usw.  </td></tr>
 <tr><td></td><td>objectType</td><td>string</td><td>Beschreibt die Art des Objekts in der Datenquelle. Beispiele: Tabelle oder Sicht für SQL Server</td></tr>
@@ -219,7 +221,7 @@ Der Satz der unterstützten Protokolle kann programmgesteuert erweitert werden. 
 
 ### <a name="custom-data-source-protocol-specification"></a>Benutzerdefinierte Datenquellenprotokoll-Spezifikation
 <table>
-<tr><td><b>Typ</b></td><td><b>Eigenschaften</b></td><td><b>Datentyp</b></td><td><b>Kommentare</b></td></tr>
+<tr><td><b>Typ</b></td><td><b>Properties</b></td><td><b>Datentyp</b></td><td><b>Kommentare</b></td></tr>
 
 <tr><td>DataSourceProtocol</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>Namespace</td><td>string</td><td>Der Namespace des Protokolls. Der Namespace muss zwischen 1 und 255 Zeichen lang sein, mindestens ein nicht leeres Teil enthalten, die Teile müssen durch den Punkt (.) getrennt sein. Jeder Teil muss zwischen 1 und 255 Zeichen lang sein, mit einem Buchstaben beginnen und darf nur Buchstaben und Zahlen enthalten.</td></tr>
@@ -359,9 +361,4 @@ Die Objekt-ID des speziellen Sicherheitsprinzipals &lt;Everyone&gt; lautet „00
 
 <!--Image references-->
 [1]: ./media/data-catalog-developer-concepts/concept2.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

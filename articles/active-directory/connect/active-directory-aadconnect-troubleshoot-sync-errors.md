@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/31/2017
 ms.author: vakarand
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: a1190f0ab4caf749cce0b5c9ba45e55f7e6ca8ec
-ms.lasthandoff: 04/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
+ms.openlocfilehash: d270d7cc3ceeef29aaaf1c9f984e69984049f815
+ms.contentlocale: de-de
+ms.lasthandoff: 04/29/2017
 
 
 ---
@@ -212,10 +213,10 @@ Wenn ein Attribut die maximal zulässigen Grenzwerte für Größe, Länge oder A
 * proxyAddresses
 
 ### <a name="possible-scenarios"></a>Mögliche Szenarien
-1. Bobs Attribut „userCertificate“ speichert zu viele Zertifikate, die Bob zugewiesen sind. Dazu können auch ältere, abgelaufene Zertifikate gehören. Die harte Grenze liegt bei 15 Zertifikaten.
+1. Bobs Attribut „userCertificate“ speichert zu viele Zertifikate, die Bob zugewiesen sind. Dazu können auch ältere, abgelaufene Zertifikate gehören. Die harte Grenze liegt bei 15 Zertifikaten. Weitere Informationen zum Beheben von LargeObject-Fehlern mit einem userCertificate-Attribut finden Sie im Artikel [Beheben von LargeObject-Fehlern, die auf das userCertificate-Attribut zurückzuführen sind](active-directory-aadconnectsync-largeobjecterror-usercertificate.md).
 2. Bobs Attribut „userSMIMECertificate“ speichert zu viele Zertifikate, die Bob zugewiesen sind. Dazu können auch ältere, abgelaufene Zertifikate gehören. Die harte Grenze liegt bei 15 Zertifikaten.
 3. Bobs „thumbnailPhoto“, das in Active Directory festgelegt ist, ist zu groß, um in Azure AD synchronisiert zu werden.
-4. Während des automatischen Auffüllens des Attributs „ProxyAddresses“ in Active Directory, wurden einem Objekt >500 „ProxyAddresses“ zugewiesen.
+4. Während des automatischen Auffüllens des ProxyAddresses-Attributs in Active Directory wurden einem Objekt zu viele Proxyadressen zugewiesen.
 
 ### <a name="how-to-fix"></a>So behebt man den Fehler
 1. Stellen Sie sicher, dass das Attribut, das den Fehler verursacht, innerhalb der zulässigen Einschränkungen ist.

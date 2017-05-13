@@ -13,9 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/14/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: bf5588885de9c280eb70712dbf800efe509ee912
-ms.openlocfilehash: 96eb66f35a91e769418d179b0997cd32e02cdc97
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 21372b8554901594f6770ef1ad18467801ef5fea
+ms.contentlocale: de-de
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -125,29 +127,8 @@ Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [How to con
    
 ## <a name="configuring-user-provisioning"></a>Konfigurieren der Benutzerbereitstellung
 
-Damit sich Azure AD-Benutzer bei Gigya anmelden können, müssen sie in Gigya bereitgestellt werden.  
-Im Fall von Gigya ist die Bereitstellung eine manuelle Aufgabe.
+Azure AD-Benutzer werden automatisch bei ihrer ersten Anmeldung bei Gigya bereitgestellt.
 
-### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a>Führen Sie zum Bereitstellen von Benutzerkonten die folgenden Schritte aus:
-1. Melden Sie sich bei der **Gigya** -Unternehmenswebsite als Administrator an.
-2. Navigieren Sie zu **Administrator \> Benutzer verwalten**, und klicken Sie dann auf **Benutzer einladen**.
-   
-    ![Benutzer verwalten](./media/active-directory-saas-gigya-tutorial/IC789535.png "Benutzer verwalten")
-
-3. Führen Sie im Dialogfeld „Benutzer einladen“ die folgenden Schritte aus:
-   
-    ![Benutzer einladen](./media/active-directory-saas-gigya-tutorial/IC789536.png "Benutzer einladen")
-   
-    a. Geben Sie im Textfeld **E-Mail** die E-Mail-Adresse eines gültigen Azure Active Directory-Kontos ein, das Sie bereitstellen möchten.
-    
-    b. Klicken Sie auf **Benutzer einladen**.
-      
-    > [!NOTE]
-    > Der Besitzer des Azure Active Directory-Kontos erhält eine E-Mail mit einem Link zur Bestätigung des Kontos, bevor es aktiv wird.
-    > 
-    > 
-
- 
 
 ## <a name="assigning-users"></a>Zuweisen von Benutzern
 Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
@@ -163,10 +144,5 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
     ![Ja](./media/active-directory-saas-gigya-tutorial/IC767830.png "Ja")
 
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

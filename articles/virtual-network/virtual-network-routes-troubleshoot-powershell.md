@@ -15,9 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: b568a9bea9679a9edeb708a5f7fcc6d68854574f
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 6efe6de6cc6d6d4c9788549048c5b50b03b3de42
+ms.contentlocale: de-de
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -57,7 +59,7 @@ Führen Sie die folgenden Schritte aus, um die auf einen virtuellen Computer ang
 ### <a name="view-effective-routes-for-a-network-interface"></a>Anzeigen der effektiven Routen für eine Netzwerkschnittstelle
 Führen Sie die folgenden Schritte durch, um die auf eine Netzwerkschnittstelle angewendeten Aggregatrouten anzuzeigen:
 
-1. Starten Sie eine Azure PowerShell-Sitzung, und melden Sie sich bei Azure an. Wenn Sie nicht mit Azure PowerShell vertraut sind, finden Sie entsprechende Informationen im Artikel [Gewusst wir: Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) .
+1. Starten Sie eine Azure PowerShell-Sitzung, und melden Sie sich bei Azure an. Wenn Sie nicht mit Azure PowerShell vertraut sind, finden Sie entsprechende Informationen im Artikel [Gewusst wir: Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview) .
 2. Mit dem folgenden Befehl werden alle Routen zurückgegeben, die auf die Netzwerkschnittstelle *VM1-NIC1* in der Ressourcengruppe *RG1* angewendet werden.
    
        Get-AzureRmEffectiveRouteTable -NetworkInterfaceName VM1-NIC1 -ResourceGroupName RG1
@@ -135,10 +137,5 @@ Beim Überprüfen der zurückgegebenen Liste der Routen sind einige Punkte zu be
 * Damit der VNET-Peering-Datenverkehr ordnungsgemäß weitergeleitet wird, muss eine Systemroute mit **nextHopType:** *nextHopType* für den Präfixbereich des per Peering verknüpften VNET vorhanden sein. Wenn eine solche Route nicht vorhanden ist und der VNET-Peeringlink korrekt ist:
   * Versuchen Sie es nach einigen Sekunden erneut, wenn es sich um einen neu erstellten Peeringlink handelt. Das Weitergeben von Routen an alle Netzwerkschnittstellen in einem Subnetz dauert gelegentlich etwas länger.
   * Die Regeln von Netzwerksicherheitsgruppen (NSGs) können den Datenverkehrsfluss beeinträchtigen. Weitere Informationen finden Sie im Artikel [Problembehandlung bei Netzwerksicherheitsgruppen](virtual-network-nsg-troubleshoot-powershell.md) .
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 
