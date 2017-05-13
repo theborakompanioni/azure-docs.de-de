@@ -63,7 +63,7 @@
 ## [Netzwerkblog](https://azure.microsoft.com/blog/topics/networking/)
 ## [Fallstudien](https://customers.microsoft.com/Pages/advancedsearch.aspx?mrmcproducts=More%20Products)
 ## [SLA](https://azure.microsoft.com/support/legal/sla/)
-## [Abonnements und Diensteinschränkungen](../azure-subscription-service-limits.md)
+## [Abonnements und Diensteinschränkungen](../azure-subscription-service-limits.md?toc=%2fazure%2fexpressroute%2ftoc.json)
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=expressroute)
 ### [Erstellen einer ExpressRoute-Verbindung](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit/)
 ### [Einrichten von privatem Peering für Verbindungen](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit/)

@@ -50,6 +50,4 @@
 
     ![Gerät aktualisieren](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate16m1.png)
 
-9. Nach erfolgreicher Installation der Updates wird auf dem Blatt **Geräteupdates** eine entsprechende Benachrichtigung angezeigt. Außerdem wird die Softwareversion auf **10.0.10289.0** aktualisiert.
-
-    ![Gerät aktualisieren](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate17m1.png)
+9. Nach erfolgreicher Installation der Updates wird auf dem Blatt **Geräteupdates** eine entsprechende Benachrichtigung angezeigt. 
